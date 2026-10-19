@@ -1,6 +1,6 @@
 # MASAs in expected semifinite subfactors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 An abelian algebra can be maximal inside a subfactor and still commute with extra operators in the ambient algebra. The [pinching test](abelian-pinching-and-relative-commutants.md#theorem-2-1) lets us rule out those extra operators during an increasing matrix construction. Its diagonal will be a MASA in the ambient factor, while the matrix permutations guarantee enough normalizers inside the subfactor.
 
@@ -95,7 +95,7 @@ The matrix embeddings in (8) identify \(F_{n+1}\) with \(F_n\otimes G_n\), where
 R\subset\mathcal P_N(A).
 \tag{10}
 \]
-We verify the factor and the tensor identification directly. Put \(d_n=\dim(F_n)^{1/2}\), and, with its matrix units \(e_{ij}^{(n)}\), define on \(R\)
+The [matrix-stage expectation theorem](../components/matrix-stage-expectations-and-scalar-center.md#mx1) proves the scalar-center assertion from a given faithful trace. We also give the finite-stage calculation and tensor identification here. Put \(d_n=\dim(F_n)^{1/2}\), and, with its matrix units \(e_{ij}^{(n)}\), define on \(R\)
 \[
 Q_n(x)=d_n\sum_{i,j=1}^{d_n}\tau(e_{ji}^{(n)}x)e_{ij}^{(n)}.
 \tag{MC1}
@@ -248,9 +248,9 @@ This corollary keeps the irreducible-centralizer hypothesis. It does not assert 
 
 ## Reading and prerequisites
 
-Sorin Popa, [On a problem of R. V. Kadison on maximal abelian \*-subalgebras in factors](https://imar.ro/~increst/1981/41_1981.pdf), INCREST preprint 41/1981, May 1981, second version; the journal article appeared in *Inventiones Mathematicae* 65 (1981), 269–281, DOI [10.1007/BF01389015](https://doi.org/10.1007/BF01389015). Theorem 1 and its construction in Section 2, printed pp.10–13, produce compatible matrix factors and a diagonal MASA for a separable finite tracial ambient algebra. Corollary 3.1, printed p.14, passes from the finite case to a semifinite ambient factor by common matrix coordinates. Here the finite construction instead uses the state \(\tau E\), so the ambient algebra can be nontracial, and the semifinite reduction is performed on the expected subfactor itself. The faithfulness argument, its normal-state support calculation, both type I cases and every matrix transport are supplied explicitly.
+Sorin Popa, [On a problem of R. V. Kadison on maximal abelian \*-subalgebras in factors](https://imar.ro/~increst/1981/41_1981.pdf), INCREST preprint 41/1981, May 1981, second version. Theorem 1 and its complete construction, printed pp.1–2 and 10–13 (PDF pp.5–6 and 14–17), treat a finite tracial ambient factor. Corollary 3.1, printed p.14 (PDF p.18), treats a semifinite ambient factor by common matrix coordinates. The construction here uses the state \(\tau E\) in a finite corner of an expected subfactor, so its ambient algebra may be nontracial. Faithfulness, normal-state supports, coherent corner transport and the complete type I endpoints are proved explicitly.
 
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft. Section 11.2, printed pp.185–188, provides the dyadic approximation and trace-GNS uniqueness method. The AFD clause here uses the earlier independently proved finite corner and exact containment lemmas. The final AFD \(\mathrm{II}_\infty\) clause also uses AFD-to-injectivity, permanence of injectivity under corners and the later finite injective-factor theorem, as detailed above. The faithful-state expectation and the exact fixed-algebra/centralizer identity are proved in [SE1–SE5](../components/state-expectations-from-bounded-graphs.md#se1), using the bounded-graph modular route. Projection comparison, finite AFD corner/containment, spatial tensor commutation and the later finite injective-factor input retain their separately stated scopes and source records.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, Section 11.2, printed pp.185–188 (PDF pp.191–194), gives the dyadic and compatible-matrix approximation and product-trace GNS methods. The [matrix-stage expectation theorem](../components/matrix-stage-expectations-and-scalar-center.md#mx1) proves the scalar-center step from a given trace, separately from the MASA construction. The finite AFD clause uses the complete earlier corner and exact-containment proofs. The AFD \(\mathrm{II}_\infty\) clause uses AFD-to-injectivity, compressed completely positive retractions and the independently proved finite injective-factor theorem. The faithful-state expectation and exact fixed-algebra/centralizer identity are supplied by [SE1–SE5](../components/state-expectations-from-bounded-graphs.md#se1). Every projection, corner and approximation input retains its stated scope.
 
 ## Countability and the matrix-coordinate proofs
 

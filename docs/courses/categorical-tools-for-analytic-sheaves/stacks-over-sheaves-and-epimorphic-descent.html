@@ -1,0 +1,343 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stacks over sheaves and epimorphic descent</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="stacks-over-sheaves-and-epimorphic-descent">Stacks over sheaves and epimorphic descent</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Public domain (CC0).</em></p>
+<p>A cover of a site can have overlaps that are not objects of that site. The sheaf category contains those overlaps, but a stack originally assigns categories only to site objects. We construct its values on arbitrary sheaves and prove the descent theorem that makes those new bases legitimate. The construction retains every morphism, including noninvertible ones.</p>
+<p>The site may have no terminal object or fiber products, and its topology need not be subcanonical. In particular, the representable presheaf of a site object may need sheafification. Recovery of the original stack will use that sheafification explicitly.</p>
+<p>We use covering sieves, the complete local section tests and sheafification from <a href="sieves-local-isomorphisms-and-presheaf-localization.html#2-the-retained-matching-construction-and-its-local-rules">Sieves, local isomorphisms, and presheaf localization</a>, and cartesian descent with all its arrows from <a href="stackification-by-cartesian-sections-on-covering-sieves.html#1-sieve-descent-includes-all-base-arrows">Stackification by cartesian sections on covering sieves</a>. Identity evaluation and both Yoneda variances are as in <span class="unlinked">Points, fibres and universal representations</span>. The result supplies arbitrary sheaf bases for <a href="representing-objects-from-local-data.html">Representing objects from local data</a>.</p>
+<h2 id="1-cartesian-sections-on-a-presheaf">1. Cartesian sections on a presheaf</h2>
+<p>Fix a small Grothendieck site <span class="math" data-tex="\((C,J)\)">\((C,J)\)</span>, and put <span class="math" data-tex="\(E=\operatorname{Sh}(C,J)\)">\(E=\operatorname{Sh}(C,J)\)</span>. Work in fixed universes large enough for the stated categories and families. A presheaf below is set-valued in the small universe. Its element category has a small set of objects <span class="math" data-tex="\((U,p)\)">\((U,p)\)</span>, with <span class="math" data-tex="\(p\in P(U)\)">\(p\in P(U)\)</span>, and arrows</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ f:(V,p|_f)\longrightarrow(U,p),\qquad f:V\longrightarrow U.
+\]">\[
+f:(V,p|_f)\longrightarrow(U,p),\qquad f:V\longrightarrow U.
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathsf S:C^{op}\to\mathsf{Cat}\)">\(\mathsf S:C^{op}\to\mathsf{Cat}\)</span> be a stack in categories. Choose its restriction functors <span class="math" data-tex="\(f^*\)">\(f^*\)</span>, their unit comparisons, and their coherent composition comparisons</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ a_{f,g}:g^*f^*\xrightarrow{\sim}(fg)^*
+ \qquad(f:V\to U,\ g:W\to V).
+\]">\[
+a_{f,g}:g^*f^*\xrightarrow{\sim}(fg)^*
+\qquad(f:V\to U,\ g:W\to V).
+\]</span>
+<p>For any presheaf <span class="math" data-tex="\(P\)">\(P\)</span>, define <span class="math" data-tex="\(\operatorname{Cart}(P,\mathsf S)\)">\(\operatorname{Cart}(P,\mathsf S)\)</span> as follows. An object consists of <span class="math" data-tex="\(A_{U,p}\in\mathsf S(U)\)">\(A_{U,p}\in\mathsf S(U)\)</span> for every <span class="math" data-tex="\((U,p)\)">\((U,p)\)</span>, and isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+ c_f:f^*A_{U,p}\xrightarrow{\sim}A_{V,p|_f},
+ \qquad
+ c_g\,g^*(c_f)=c_{fg}\,a_{f,g,A_{U,p}}.
+ \tag{1.1}
+\]">\[
+c_f:f^*A_{U,p}\xrightarrow{\sim}A_{V,p|_f},
+\qquad
+c_g\,g^*(c_f)=c_{fg}\,a_{f,g,A_{U,p}}.
+\tag{1.1}
+\]</span>
+<p>The identity comparison is the specified unit comparison. A morphism <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span> is a family of arbitrary fiber morphisms satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+ u_{V,p|_f}\,c_f^A=c_f^B\,f^*(u_{U,p}).
+ \tag{1.2}
+\]">\[
+u_{V,p|_f}\,c_f^A=c_f^B\,f^*(u_{U,p}).
+\tag{1.2}
+\]</span>
+<p>These morphisms need not be isomorphisms. Their identities and compositions are componentwise; equation (1.2) is stable under both. A map <span class="math" data-tex="\(v:P\to Q\)">\(v:P\to Q\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+ v^*:\operatorname{Cart}(Q,\mathsf S)
+       \longrightarrow\operatorname{Cart}(P,\mathsf S),
+ \qquad (v^*A)_{U,p}=A_{U,v(p)}.
+ \tag{1.3}
+\]">\[
+v^*:\operatorname{Cart}(Q,\mathsf S)
+\longrightarrow\operatorname{Cart}(P,\mathsf S),
+\qquad (v^*A)_{U,p}=A_{U,v(p)}.
+\tag{1.3}
+\]</span>
+<p>Its comparisons and morphisms are the same indexed comparisons and morphisms. Thus pullback respects identity and composition of presheaf maps strictly.</p>
+<p>For <span class="math" data-tex="\(h_U=\operatorname{Hom}_C(-,U)\)">\(h_U=\operatorname{Hom}_C(-,U)\)</span>, evaluation at <span class="math" data-tex="\((U,1_U)\)">\((U,1_U)\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+ \operatorname{Cart}(h_U,\mathsf S)\simeq\mathsf S(U).
+ \tag{1.4}
+\]">\[
+\operatorname{Cart}(h_U,\mathsf S)\simeq\mathsf S(U).
+\tag{1.4}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(A\in\mathsf S(U)\)">\(A\in\mathsf S(U)\)</span> gives the family <span class="math" data-tex="\(f^*A\)">\(f^*A\)</span>, with comparisons <span class="math" data-tex="\(a_{f,g}\)">\(a_{f,g}\)</span>. For any cartesian family, its comparison at <span class="math" data-tex="\(f:(V,f)\to(U,1_U)\)">\(f:(V,f)\to(U,1_U)\)</span> identifies its component with <span class="math" data-tex="\(f^*A_{U,1_U}\)">\(f^*A_{U,1_U}\)</span>. These comparisons form a natural isomorphism of families by (1.1). Equation (1.2) says that a family morphism is determined by its component at <span class="math" data-tex="\(1_U\)">\(1_U\)</span>, and any such component extends by restriction. These are the two inverse functors and their identifications. They commute with restriction in <span class="math" data-tex="\(U\)">\(U\)</span>, using the original comparisons <span class="math" data-tex="\(a_{f,g}\)">\(a_{f,g}\)</span>.</p>
+<p>A stack on the sieve site means precisely that, for every covering sieve <span class="math" data-tex="\(R\subseteq h_U\)">\(R\subseteq h_U\)</span>, the restriction</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+ \mathsf S(U)\longrightarrow\operatorname{Cart}(R,\mathsf S)
+ \tag{1.5}
+\]">\[
+\mathsf S(U)\longrightarrow\operatorname{Cart}(R,\mathsf S)
+\tag{1.5}
+\]</span>
+<p>is an equivalence. Its full faithfulness is the sheaf condition for morphisms between fixed objects. Its essential surjectivity is effective object descent. We use both parts, with every base arrow of the sieve included.</p>
+<h2 id="2-local-isomorphisms-do-not-change-cartesian-sections">2. Local isomorphisms do not change cartesian sections</h2>
+<p>A presheaf map <span class="math" data-tex="\(v:P\to Q\)">\(v:P\to Q\)</span> is a <em>local isomorphism</em> if it is locally surjective and locally injective in the exact sieve sense of the first prerequisite. Thus every <span class="math" data-tex="\(q\in Q(U)\)">\(q\in Q(U)\)</span> lifts to <span class="math" data-tex="\(P\)">\(P\)</span> over a covering sieve, and two lifts of the same section become equal over a covering sieve. These conditions are equivalent to <span class="math" data-tex="\(av:aP\to aQ\)">\(av:aP\to aQ\)</span> being an isomorphism, where <span class="math" data-tex="\(a\)">\(a\)</span> denotes sheafification.</p>
+<p><strong>Theorem 2.1.</strong> For a local isomorphism <span class="math" data-tex="\(v:P\to Q\)">\(v:P\to Q\)</span>, the pullback functor <span class="math" data-tex="\(v^*\)">\(v^*\)</span> in (1.3) is an equivalence.</p>
+<p><strong>Proof: full faithfulness.</strong> Let <span class="math" data-tex="\(A,B\in\operatorname{Cart}(Q,\mathsf S)\)">\(A,B\in\operatorname{Cart}(Q,\mathsf S)\)</span>, and suppose a morphism <span class="math" data-tex="\(t:v^*A\to v^*B\)">\(t:v^*A\to v^*B\)</span> is given. For <span class="math" data-tex="\(q\in Q(U)\)">\(q\in Q(U)\)</span>, choose a covering sieve <span class="math" data-tex="\(R_q\)">\(R_q\)</span> of arrows <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> on which <span class="math" data-tex="\(q|_f\)">\(q|_f\)</span> has a lift <span class="math" data-tex="\(p_f\in P(V)\)">\(p_f\in P(V)\)</span>. The component <span class="math" data-tex="\(t_{V,p_f}\)">\(t_{V,p_f}\)</span>, transported through the comparisons of <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, is a morphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ A_{U,q}|_V\longrightarrow B_{U,q}|_V.
+\]">\[
+A_{U,q}|_V\longrightarrow B_{U,q}|_V.
+\]</span>
+<p>This local morphism does not depend on the chosen lift. Two lifts with the same image become equal on a covering sieve; there their <span class="math" data-tex="\(t\)">\(t\)</span>-components are identified by equation (1.2). The sheaf condition for morphisms makes the two transported maps equal on <span class="math" data-tex="\(V\)">\(V\)</span>. The same argument, applied to <span class="math" data-tex="\(p_f|_g\)">\(p_f|_g\)</span> and <span class="math" data-tex="\(p_{fg}\)">\(p_{fg}\)</span>, makes the maps compatible under every arrow of <span class="math" data-tex="\(R_q\)">\(R_q\)</span>. They glue to a unique <span class="math" data-tex="\(t_{U,q}\)">\(t_{U,q}\)</span>.</p>
+<p>For an arbitrary arrow <span class="math" data-tex="\(f:(V,q|_f)\to(U,q)\)">\(f:(V,q|_f)\to(U,q)\)</span>, equation (1.2) for these glued maps can be checked on the pullback of a lifting sieve. There it is the equation for the given <span class="math" data-tex="\(t\)">\(t\)</span>; hence it holds globally. The resulting family is a morphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> whose pullback is <span class="math" data-tex="\(t\)">\(t\)</span>, since that equality can likewise be tested on a lifting sieve. Uniqueness follows from the same local test. This proves bijectivity on all Hom sets, not only on isomorphisms.</p>
+<p><strong>Proof: constructing objects.</strong> Take <span class="math" data-tex="\(D\in\operatorname{Cart}(P,\mathsf S)\)">\(D\in\operatorname{Cart}(P,\mathsf S)\)</span>. For <span class="math" data-tex="\(q\in Q(U)\)">\(q\in Q(U)\)</span>, choose <span class="math" data-tex="\(R_q\)">\(R_q\)</span> and lifts <span class="math" data-tex="\(p_f\)">\(p_f\)</span> as above, and use <span class="math" data-tex="\(D_{V,p_f}\)">\(D_{V,p_f}\)</span> over each <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> in <span class="math" data-tex="\(R_q\)">\(R_q\)</span>. For a base arrow <span class="math" data-tex="\(g:W\to V\)">\(g:W\to V\)</span>, the two lifts <span class="math" data-tex="\(p_f|_g\)">\(p_f|_g\)</span> and <span class="math" data-tex="\(p_{fg}\)">\(p_{fg}\)</span> have the same image. On their equality sieve the comparisons of <span class="math" data-tex="\(D\)">\(D\)</span> give a specified isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ g^*D_{V,p_f}\xrightarrow{\sim}D_{W,p_{fg}}.
+\]">\[
+g^*D_{V,p_f}\xrightarrow{\sim}D_{W,p_{fg}}.
+\]</span>
+<p>These local maps agree after common restriction, by the composition equation (1.1) for <span class="math" data-tex="\(D\)">\(D\)</span>. The sheaf condition for morphisms glues them uniquely. Their inverse maps glue too, so the glued maps are invertible. The two composites for a further base arrow agree on a covering sieve where the finitely many lifts involved are equal. The sheaf condition therefore makes the composition equation hold on all of its domain. The identity equation is verified in the same way. Thus the objects and glued comparisons form a cartesian section on <span class="math" data-tex="\(R_q\)">\(R_q\)</span>.</p>
+<p>Effective descent in (1.5) gives <span class="math" data-tex="\(A_{U,q}\in\mathsf S(U)\)">\(A_{U,q}\in\mathsf S(U)\)</span> together with its specified local identifications. Choose such a descended object and identifications for every <span class="math" data-tex="\((U,q)\)">\((U,q)\)</span>. To give a comparison for <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span>, compare <span class="math" data-tex="\(f^*A_{U,q}\)">\(f^*A_{U,q}\)</span> and <span class="math" data-tex="\(A_{V,q|_f}\)">\(A_{V,q|_f}\)</span> locally on the pullback lifting sieve. After a further covering refinement their chosen lifts agree. The specified descent identifications and the comparisons of <span class="math" data-tex="\(D\)">\(D\)</span> then give local isomorphisms between these two objects. They agree on further restrictions and glue to <span class="math" data-tex="\(c_f\)">\(c_f\)</span>.</p>
+<p>The unit and composition equations for the <span class="math" data-tex="\(c_f\)">\(c_f\)</span> hold after covering refinements where the finitely many relevant lifts agree. Separation of the corresponding Hom sheaf makes them hold globally. Hence <span class="math" data-tex="\(A\)">\(A\)</span> is an object of <span class="math" data-tex="\(\operatorname{Cart}(Q,\mathsf S)\)">\(\operatorname{Cart}(Q,\mathsf S)\)</span>.</p>
+<p>Finally, for <span class="math" data-tex="\((U,p)\)">\((U,p)\)</span>, compare <span class="math" data-tex="\(A_{U,v(p)}\)">\(A_{U,v(p)}\)</span> with <span class="math" data-tex="\(D_{U,p}\)">\(D_{U,p}\)</span> on the chosen lifting sieve. Local injectivity makes the chosen lifts equal to restrictions of <span class="math" data-tex="\(p\)">\(p\)</span> after refinement. Their specified local comparisons therefore glue to an isomorphism. The same local check proves equation (1.2), giving <span class="math" data-tex="\(v^*A\simeq D\)">\(v^*A\simeq D\)</span>. This proves essential surjectivity and completes the equivalence. All chosen comparisons are unique relative to their specified local restrictions; no assertion that arbitrary isomorphisms of the objects are unique is being made.</p>
+<p>Empty covering sieves cause no exception. The stack axiom on such a sieve says that the fiber category is equivalent to the terminal category. Both objects and the unique compatible morphisms then descend from the empty data. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-extension-to-sheaves-and-epimorphic-descent">3. Extension to sheaves and epimorphic descent</h2>
+<p>For <span class="math" data-tex="\(Q\in E\)">\(Q\in E\)</span>, set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+ \overline{\mathsf S}(Q)=\operatorname{Cart}(Q,\mathsf S).
+ \tag{3.1}
+\]">\[
+\overline{\mathsf S}(Q)=\operatorname{Cart}(Q,\mathsf S).
+\tag{3.1}
+\]</span>
+<p>Use (1.3) for every morphism of base sheaves. The unit <span class="math" data-tex="\(h_U\to ah_U\)">\(h_U\to ah_U\)</span> is a local isomorphism, so Theorem 2.1 and (1.4) give equivalences</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+ \overline{\mathsf S}(ah_U)
+       \simeq\operatorname{Cart}(h_U,\mathsf S)
+       \simeq\mathsf S(U),
+ \tag{3.2}
+\]">\[
+\overline{\mathsf S}(ah_U)
+\simeq\operatorname{Cart}(h_U,\mathsf S)
+\simeq\mathsf S(U),
+\tag{3.2}
+\]</span>
+<p>with the coherent restriction identifications just described. We use <span class="math" data-tex="\(ah_U\)">\(ah_U\)</span>, not an assumption that <span class="math" data-tex="\(h_U\)">\(h_U\)</span> is already a sheaf. An object over the terminal sheaf means an object of <span class="math" data-tex="\(\operatorname{Cart}(1,\mathsf S)\)">\(\operatorname{Cart}(1,\mathsf S)\)</span>; it does not require a terminal object of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>For a family <span class="math" data-tex="\((Q_i\to Q)_{i\in I}\)">\((Q_i\to Q)_{i\in I}\)</span>, jointly epic means that its induced map <span class="math" data-tex="\(\coprod_i Q_i\to Q\)">\(\coprod_i Q_i\to Q\)</span> is an epimorphism in <span class="math" data-tex="\(E\)">\(E\)</span>. The sheaf local-lifting criterion gives the following useful formulation: for every <span class="math" data-tex="\(q\in Q(U)\)">\(q\in Q(U)\)</span>, the arrows <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> on which <span class="math" data-tex="\(q|_f\)">\(q|_f\)</span> lifts to some <span class="math" data-tex="\(Q_i(V)\)">\(Q_i(V)\)</span> form a covering sieve. A local section of the sheaf coproduct belongs locally to a summand, by the sheafification local-section rule, so the formulation is equivalent to joint epimorphy.</p>
+<p><strong>Theorem 3.1.</strong> The extension <span class="math" data-tex="\(\overline{\mathsf S}\)">\(\overline{\mathsf S}\)</span> is a stack for jointly epic families of sheaves. In particular,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+ \overline{\mathsf S}(Q)\longrightarrow
+   \operatorname{Desc}\bigl((Q_i\to Q),\overline{\mathsf S}\bigr)
+ \tag{3.3}
+\]">\[
+\overline{\mathsf S}(Q)\longrightarrow
+\operatorname{Desc}\bigl((Q_i\to Q),\overline{\mathsf S}\bigr)
+\tag{3.3}
+\]</span>
+<p>is an equivalence. All products defining the overlaps in this formula are products in <span class="math" data-tex="\(E\)">\(E\)</span>; no intersection object in <span class="math" data-tex="\(C\)">\(C\)</span> is required.</p>
+<p><strong>Proof.</strong> Write a descent datum as objects <span class="math" data-tex="\(A_i\in\overline{\mathsf S}(Q_i)\)">\(A_i\in\overline{\mathsf S}(Q_i)\)</span> and isomorphisms on <span class="math" data-tex="\(Q_i\times_Q Q_j\)">\(Q_i\times_Q Q_j\)</span>, with direction from the <span class="math" data-tex="\(j\)">\(j\)</span>-object to the <span class="math" data-tex="\(i\)">\(i\)</span>-object, satisfying the diagonal and triple-overlap equations. The morphisms of descent data are arbitrary compatible families of morphisms.</p>
+<p>Fix <span class="math" data-tex="\(q\in Q(U)\)">\(q\in Q(U)\)</span>. Choose a covering sieve <span class="math" data-tex="\(R_q\)">\(R_q\)</span> as in the local-lifting formulation, together with an index <span class="math" data-tex="\(i(f)\)">\(i(f)\)</span> and a lift <span class="math" data-tex="\(q_f\in Q_{i(f)}(V)\)">\(q_f\in Q_{i(f)}(V)\)</span> for every <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> in that sieve. Over <span class="math" data-tex="\(f\)">\(f\)</span>, take the object</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ (A_{i(f)})_{V,q_f}\in\mathsf S(V).
+\]">\[
+(A_{i(f)})_{V,q_f}\in\mathsf S(V).
+\]</span>
+<p>For <span class="math" data-tex="\(g:W\to V\)">\(g:W\to V\)</span>, the pair <span class="math" data-tex="\((q_{fg},q_f|_g)\)">\((q_{fg},q_f|_g)\)</span> is a section of <span class="math" data-tex="\(Q_{i(fg)}\times_Q Q_{i(f)}\)">\(Q_{i(fg)}\times_Q Q_{i(f)}\)</span> over <span class="math" data-tex="\(W\)">\(W\)</span>. Use the cartesian comparison in <span class="math" data-tex="\(A_{i(f)}\)">\(A_{i(f)}\)</span>, followed by the overlap isomorphism from the <span class="math" data-tex="\(i(f)\)">\(i(f)\)</span>-object to the <span class="math" data-tex="\(i(fg)\)">\(i(fg)\)</span>-object at that pair. This compares the displayed object restricted to <span class="math" data-tex="\(W\)">\(W\)</span> with the object chosen for <span class="math" data-tex="\(fg\)">\(fg\)</span>. Naturality of the overlap maps and their triple equation give (1.1). The diagonal equation gives the unit condition. This is descent data on the covering sieve <span class="math" data-tex="\(R_q\)">\(R_q\)</span>, and therefore descends to <span class="math" data-tex="\(A_{U,q}\in\mathsf S(U)\)">\(A_{U,q}\in\mathsf S(U)\)</span> with its local identifications.</p>
+<p>For a base arrow <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span>, compare <span class="math" data-tex="\(f^*A_{U,q}\)">\(f^*A_{U,q}\)</span> with <span class="math" data-tex="\(A_{V,q|_f}\)">\(A_{V,q|_f}\)</span> over the common refinement of their lifting sieves. At a local pair of chosen lifts, use the supplied overlap isomorphism. These comparisons agree under further restrictions by the triple equation. They glue uniquely as morphisms in <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span>, as do their inverses. Their unit and composition equations hold on the same local refinements and hence globally. Thus the <span class="math" data-tex="\(A_{U,q}\)">\(A_{U,q}\)</span> form <span class="math" data-tex="\(A\in\operatorname{Cart}(Q,\mathsf S)\)">\(A\in\operatorname{Cart}(Q,\mathsf S)\)</span>.</p>
+<p>For a section <span class="math" data-tex="\(q_i\in Q_i(U)\)">\(q_i\in Q_i(U)\)</span>, compare this construction for its image <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\((A_i)_{U,q_i}\)">\((A_i)_{U,q_i}\)</span>. On each chosen lifting domain there is a pair <span class="math" data-tex="\((q_f,q_i|_f)\)">\((q_f,q_i|_f)\)</span> in the appropriate overlap sheaf. Its specified overlap map gives the comparison. These comparisons glue, are cartesian in <span class="math" data-tex="\((U,q_i)\)">\((U,q_i)\)</span>, and reproduce the original overlap maps by their triple equation. Hence the pullback of <span class="math" data-tex="\(A\)">\(A\)</span> realizes the given descent datum.</p>
+<p>For full faithfulness, suppose maps between two descended objects are given on every <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>, compatibly on overlaps. At <span class="math" data-tex="\((U,q)\)">\((U,q)\)</span>, pull the maps back to a lifting sieve. Overlap compatibility makes them a matching family of maps between the two fixed objects of <span class="math" data-tex="\(\mathsf S(U)\)">\(\mathsf S(U)\)</span>. The Hom sheaf glues them uniquely. Their base-arrow compatibility is local, so the glued maps form a cartesian family. Its pullbacks are the prescribed maps, and it is unique. This proves the required Hom bijection and the equivalence.</p>
+<p>If the family is empty, joint epimorphy forces <span class="math" data-tex="\(Q\)">\(Q\)</span> to be initial. The same proof uses empty lifting sieves at any test section of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Effective empty descent and the Hom sheaf condition give the unique object and maps, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus this extension supports both object descent and morphism descent over arbitrary sheaf bases. Its value at the terminal sheaf, its pullbacks to overlaps, and its effective gluing are all supplied by the original stack axioms on <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<h2 id="4-functors-sheaf-values-and-internal-yoneda">4. Functors, sheaf values and internal Yoneda</h2>
+<p>A cartesian functor <span class="math" data-tex="\(F:\mathsf S\to\mathsf T\)">\(F:\mathsf S\to\mathsf T\)</span> extends by applying <span class="math" data-tex="\(F_U\)">\(F_U\)</span> to every <span class="math" data-tex="\(A_{U,p}\)">\(A_{U,p}\)</span>. Its restriction comparison identifies <span class="math" data-tex="\(f^*F_U(A_{U,p})\)">\(f^*F_U(A_{U,p})\)</span> with <span class="math" data-tex="\(F_V(f^*A_{U,p})\)">\(F_V(f^*A_{U,p})\)</span>, after which <span class="math" data-tex="\(F_V(c_f)\)">\(F_V(c_f)\)</span> supplies (1.1). The coherence axiom of <span class="math" data-tex="\(F\)">\(F\)</span> and equation (1.1) give the new composition equation. Apply <span class="math" data-tex="\(F_U\)">\(F_U\)</span> to a family morphism for its action on arrows. A cartesian transformation between two such functors extends componentwise; its compatibility with restriction is exactly equation (1.2). Identity and composition comparisons extend by these same components, so all their equations remain the original pointwise equations.</p>
+<p>There is also a natural identification</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ \operatorname{Cart}(P,\mathsf S^{op})
+          \simeq\operatorname{Cart}(P,\mathsf S)^{op}.
+ \tag{4.1}
+\]">\[
+\operatorname{Cart}(P,\mathsf S^{op})
+\simeq\operatorname{Cart}(P,\mathsf S)^{op}.
+\tag{4.1}
+\]</span>
+<p>Use the same objects and inverse cartesian comparisons; a component arrow in the opposite fiber is an arrow in the reverse direction in the original fiber. Inverting the comparisons turns (1.1) and (1.2) into the corresponding equations on the other side. These operations are inverse, and commute with base change. In particular, taking an opposite retains effective descent.</p>
+<p>To interpret sheaf-valued functors precisely, let <span class="math" data-tex="\(\mathsf H(U)=\operatorname{Sh}(C/U)\)">\(\mathsf H(U)=\operatorname{Sh}(C/U)\)</span>, with restriction given by composition of arrows into <span class="math" data-tex="\(U\)">\(U\)</span>. The topology on <span class="math" data-tex="\(C/U\)">\(C/U\)</span> is inherited from <span class="math" data-tex="\(C\)">\(C\)</span>. For a presheaf <span class="math" data-tex="\(P\)">\(P\)</span>, give <span class="math" data-tex="\(C/P\)">\(C/P\)</span>, its element category, the topology in which a sieve covers <span class="math" data-tex="\((U,p)\)">\((U,p)\)</span> exactly when its underlying arrows form a covering sieve on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> The prestack <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> is a stack, and there are natural equivalences</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+ \operatorname{Cart}(P,\mathsf H)\simeq\operatorname{Sh}(C/P).
+ \tag{4.2}
+\]">\[
+\operatorname{Cart}(P,\mathsf H)\simeq\operatorname{Sh}(C/P).
+\tag{4.2}
+\]</span>
+<p>For a sheaf <span class="math" data-tex="\(Q\)">\(Q\)</span>, this identifies <span class="math" data-tex="\(\overline{\mathsf H}(Q)\)">\(\overline{\mathsf H}(Q)\)</span> with the slice category <span class="math" data-tex="\(E/Q\)">\(E/Q\)</span>.</p>
+<p><strong>Proof: the displayed equivalence.</strong> Given a cartesian family <span class="math" data-tex="\(B\)">\(B\)</span> of sheaves, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ G(U,p)=B_{U,p}(1_U).
+\]">\[
+G(U,p)=B_{U,p}(1_U).
+\]</span>
+<p>For <span class="math" data-tex="\(f:(V,p|_f)\to(U,p)\)">\(f:(V,p|_f)\to(U,p)\)</span>, first restrict a section of <span class="math" data-tex="\(B_{U,p}\)">\(B_{U,p}\)</span> from <span class="math" data-tex="\(1_U\)">\(1_U\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span>, and then apply the cartesian identification at <span class="math" data-tex="\(1_V\)">\(1_V\)</span>. Equation (1.1) gives the restriction laws. A matching family over a covering sieve of <span class="math" data-tex="\((U,p)\)">\((U,p)\)</span> is, under those identifications, a matching family in the sheaf <span class="math" data-tex="\(B_{U,p}\)">\(B_{U,p}\)</span> on <span class="math" data-tex="\(C/U\)">\(C/U\)</span>. It glues uniquely, so <span class="math" data-tex="\(G\)">\(G\)</span> is a sheaf on <span class="math" data-tex="\(C/P\)">\(C/P\)</span>.</p>
+<p>Conversely, for such a <span class="math" data-tex="\(G\)">\(G\)</span>, define the sheaf <span class="math" data-tex="\(B_{U,p}\)">\(B_{U,p}\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ B_{U,p}(f:V\to U)=G(V,p|_f).
+\]">\[
+B_{U,p}(f:V\to U)=G(V,p|_f).
+\]</span>
+<p>The sheaf condition is the one for <span class="math" data-tex="\(G\)">\(G\)</span>; comparison along a base arrow is the identity on these expressions. The two constructions are inverse up to the original cartesian comparisons: at <span class="math" data-tex="\(f\)">\(f\)</span>, that comparison identifies <span class="math" data-tex="\(B_{U,p}(f)\)">\(B_{U,p}(f)\)</span> with <span class="math" data-tex="\(B_{V,p|_f}(1_V)\)">\(B_{V,p|_f}(1_V)\)</span>. A map of families gives a map of the <span class="math" data-tex="\(G\)">\(G\)</span>'s by evaluation, and a map of the <span class="math" data-tex="\(G\)">\(G\)</span>'s gives all these component maps. These operations are inverse by the same identifications. This proves full faithfulness as well as the assertion on objects.</p>
+<p><strong>Proof: descent for <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>.</strong> Let <span class="math" data-tex="\(R\subseteq h_U\)">\(R\subseteq h_U\)</span> be a covering sieve. By (4.2), its cartesian descent category is <span class="math" data-tex="\(\operatorname{Sh}(C/R)\)">\(\operatorname{Sh}(C/R)\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> is a sheaf there, extend it to a presheaf <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(C/U\)">\(C/U\)</span> by the rule</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+ B(g:V\to U)=
+  \left\{\begin{array}{l}
+    \text{matching families }(x_r),\
+    r:W\to V\text{ with }gr\in R,\\
+    x_r\in G(W,gr)
+  \end{array}\right\}.
+ \tag{4.3}
+\]">\[
+B(g:V\to U)=
+\left\{\begin{array}{l}
+\text{matching families }(x_r),\
+r:W\to V\text{ with }gr\in R,\\
+x_r\in G(W,gr)
+\end{array}\right\}.
+\tag{4.3}
+\]</span>
+<p>Restrictions pull back these families. We verify the sheaf condition. Suppose a covering sieve <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> gives compatible sections <span class="math" data-tex="\(s_t\in B(gt)\)">\(s_t\in B(gt)\)</span>. For <span class="math" data-tex="\(r:Z\to V\)">\(r:Z\to V\)</span> with <span class="math" data-tex="\(gr\in R\)">\(gr\in R\)</span>, the sieve <span class="math" data-tex="\(r^*T\)">\(r^*T\)</span> covers <span class="math" data-tex="\(Z\)">\(Z\)</span>. For <span class="math" data-tex="\(k:W\to Z\)">\(k:W\to Z\)</span> in this sieve, <span class="math" data-tex="\(rk\in T\)">\(rk\in T\)</span>; the section <span class="math" data-tex="\(s_{rk}\)">\(s_{rk}\)</span> has a component at <span class="math" data-tex="\(1_W\)">\(1_W\)</span>, because <span class="math" data-tex="\(grk\in R\)">\(grk\in R\)</span>. These components form a matching family in <span class="math" data-tex="\(G\)">\(G\)</span> over <span class="math" data-tex="\((Z,gr)\)">\((Z,gr)\)</span>. Glue them to <span class="math" data-tex="\(x_r\in G(Z,gr)\)">\(x_r\in G(Z,gr)\)</span>.</p>
+<p>The <span class="math" data-tex="\(x_r\)">\(x_r\)</span> commute with restriction: test the two proposed restrictions on the pullback of <span class="math" data-tex="\(T\)">\(T\)</span>, where both are the corresponding components of the original <span class="math" data-tex="\(s_t\)">\(s_t\)</span>, and use separation of <span class="math" data-tex="\(G\)">\(G\)</span>. Thus they give an element of <span class="math" data-tex="\(B(g)\)">\(B(g)\)</span>. Its restriction to <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span> is <span class="math" data-tex="\(s_t\)">\(s_t\)</span>, since each component is checked on a covering pullback and then by separation. Uniqueness follows by the same test for every <span class="math" data-tex="\(r\)">\(r\)</span>. Hence <span class="math" data-tex="\(B\)">\(B\)</span> is a sheaf.</p>
+<p>If <span class="math" data-tex="\(g\in R\)">\(g\in R\)</span>, its pullback sieve is maximal, so evaluation at <span class="math" data-tex="\(1_V\)">\(1_V\)</span> identifies <span class="math" data-tex="\(B(g)\)">\(B(g)\)</span> with <span class="math" data-tex="\(G(V,g)\)">\(G(V,g)\)</span>. Conversely a sheaf on <span class="math" data-tex="\(C/U\)">\(C/U\)</span> is identified with its matching families over the covering sieve <span class="math" data-tex="\(g^*R\)">\(g^*R\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>. Therefore restriction and (4.3) are inverse equivalences, also on morphisms by applying a map to each matching entry. In view of (4.2), this is precisely the stack condition for <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>.</p>
+<p><strong>Proof: the slice identification.</strong> The fiber construction of <span class="unlinked">Points, fibres and universal representations, Section 6</span> sends a map <span class="math" data-tex="\(A\to Q\)">\(A\to Q\)</span> to its sets of sections lying over <span class="math" data-tex="\(q\in Q(U)\)">\(q\in Q(U)\)</span>. It restricts to sheaves. Indeed, matching local sections in a fiber glue uniquely in <span class="math" data-tex="\(A\)">\(A\)</span>, and their images agree with <span class="math" data-tex="\(q\)">\(q\)</span> by separation of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Conversely, if <span class="math" data-tex="\(G\)">\(G\)</span> is a sheaf on <span class="math" data-tex="\(C/Q\)">\(C/Q\)</span>, its total presheaf is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ A(U)=\coprod_{q\in Q(U)}G(U,q).
+\]">\[
+A(U)=\coprod_{q\in Q(U)}G(U,q).
+\]</span>
+<p>A matching family first glues its labels in the sheaf <span class="math" data-tex="\(Q\)">\(Q\)</span>, then glues its fiber entries in <span class="math" data-tex="\(G\)">\(G\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is a sheaf and has its projection to <span class="math" data-tex="\(Q\)">\(Q\)</span>. The inverse constructions and maps are the stated fiber construction, so <span class="math" data-tex="\(\operatorname{Sh}(C/Q)\simeq E/Q\)">\(\operatorname{Sh}(C/Q)\simeq E/Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently a cartesian functor <span class="math" data-tex="\(\mathcal F:\mathsf S^{op}\to\mathsf H\)">\(\mathcal F:\mathsf S^{op}\to\mathsf H\)</span> extends, with all its functor and restriction data, to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+ \overline{\mathcal F}:\overline{\mathsf S}^{op}
+                   \longrightarrow(Q\mapsto E/Q).
+ \tag{4.4}
+\]">\[
+\overline{\mathcal F}:\overline{\mathsf S}^{op}
+\longrightarrow(Q\mapsto E/Q).
+\tag{4.4}
+\]</span>
+<p>For <span class="math" data-tex="\(A,B\in\overline{\mathsf S}(Q)\)">\(A,B\in\overline{\mathsf S}(Q)\)</span>, their internal Hom sheaf on <span class="math" data-tex="\(C/Q\)">\(C/Q\)</span> is explicitly</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.5); horizontal scroll when needed" data-tex="\[
+ (U,q)\longmapsto
+     \operatorname{Hom}_{\mathsf S(U)}(A_{U,q},B_{U,q}),
+ \tag{4.5}
+\]">\[
+(U,q)\longmapsto
+\operatorname{Hom}_{\mathsf S(U)}(A_{U,q},B_{U,q}),
+\tag{4.5}
+\]</span>
+<p>with restriction by <span class="math" data-tex="\(f^*\)">\(f^*\)</span> and conjugation by the cartesian comparisons. The Hom sheaf condition in <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> proves that it is a sheaf. A compatible family of its sections over a base sheaf <span class="math" data-tex="\(W\to Q\)">\(W\to Q\)</span> is exactly a family morphism <span class="math" data-tex="\(A|_W\to B|_W\)">\(A|_W\to B|_W\)</span>. Thus (4.5) is the internal Hom with its required meaning on every base sheaf, not only on represented tests.</p>
+<p><strong>Proposition 4.2 (Internal identity evaluation).</strong> Cartesian natural transformations from <span class="math" data-tex="\(\mathcal Hom(-,A)\)">\(\mathcal Hom(-,A)\)</span> to a contravariant sheaf-valued functor <span class="math" data-tex="\(\overline{\mathcal F}\)">\(\overline{\mathcal F}\)</span> correspond to global sections of <span class="math" data-tex="\(\overline{\mathcal F}(A)\)">\(\overline{\mathcal F}(A)\)</span> over <span class="math" data-tex="\(Q\)">\(Q\)</span>. In particular,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.6); horizontal scroll when needed" data-tex="\[
+ \operatorname{Nat}_{\mathrm{cart}}
+   \bigl(\mathcal Hom(-,A),\mathcal Hom(-,B)\bigr)
+       \simeq\operatorname{Hom}_{\overline{\mathsf S}(Q)}(A,B).
+ \tag{4.6}
+\]">\[
+\operatorname{Nat}_{\mathrm{cart}}
+\bigl(\mathcal Hom(-,A),\mathcal Hom(-,B)\bigr)
+\simeq\operatorname{Hom}_{\overline{\mathsf S}(Q)}(A,B).
+\tag{4.6}
+\]</span>
+<p><strong>Proof.</strong> Evaluate a transformation on the identity section of <span class="math" data-tex="\(\mathcal Hom(A,A)\)">\(\mathcal Hom(A,A)\)</span>. Conversely, a section <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(\overline{\mathcal F}(A)\)">\(\overline{\mathcal F}(A)\)</span> assigns, to a local arrow <span class="math" data-tex="\(f:T\to A\)">\(f:T\to A\)</span>, the section <span class="math" data-tex="\(\overline{\mathcal F}(f)(s)\)">\(\overline{\mathcal F}(f)(s)\)</span>. The functor composition law gives naturality in <span class="math" data-tex="\(T\)">\(T\)</span>, and cartesian restriction compatibility gives a map of the Hom sheaves on every smaller base. Identity evaluation returns <span class="math" data-tex="\(s\)">\(s\)</span>. For the other composite, naturality of the original transformation along each local <span class="math" data-tex="\(f\)">\(f\)</span> identifies its value at <span class="math" data-tex="\(f\)">\(f\)</span> with the displayed formula. Sheaf maps are determined by these sections on all tests, so the two transformations are equal. The construction commutes with base change. For the particular target <span class="math" data-tex="\(\mathcal Hom(-,B)\)">\(\mathcal Hom(-,B)\)</span>, a global section is exactly a family morphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> by (4.5), proving (4.6). The covariant statement follows from (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Theorem 3.1 and Proposition 4.2 now give the precise setting for local representing objects: their uniquely specified comparison maps live over actual overlap sheaves, obey the triple equation, and descend effectively. Lemma 4.1 gives the target sheaves and Proposition 4.2 gives uniqueness with its universal identification.</p>
+<p><strong>Corollary 4.3 (Linear structure and specified adjunctions).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a sheaf of commutative rings, and suppose <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear stack: its fiber Hom sets are <span class="math" data-tex="\(R(U)\)">\(R(U)\)</span>-modules, composition is bilinear, and restriction is linear with the coefficient restriction <span class="math" data-tex="\(R(U)\to R(V)\)">\(R(U)\to R(V)\)</span>. Then <span class="math" data-tex="\(\overline{\mathsf S}\)">\(\overline{\mathsf S}\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear stack over base sheaves. Its internal Hom in (4.5) is a module over <span class="math" data-tex="\(R_Q\)">\(R_Q\)</span>, the pullback of <span class="math" data-tex="\(R\)">\(R\)</span> to <span class="math" data-tex="\(E/Q\)">\(E/Q\)</span>. Every cartesian <span class="math" data-tex="\(R\)">\(R\)</span>-linear functor extends to a cartesian <span class="math" data-tex="\(R\)">\(R\)</span>-linear functor.</p>
+<p>Any specified adjunction of cartesian stack functors also extends, including its unit, counit, triangles and restriction comparisons. Such an adjunction includes cartesian unit and counit transformations. Separate adjoints to the fiber functors do not provide those data. The gluing of local stack adjoints, with their restriction condition, is proved in <a href="dual-and-tensor-products-of-locally-module-stacks.html#2-the-stack-of-functors-with-a-stack-right-adjoint">Dual and tensor products of locally module stacks, Lemma 2.1</a>; the precise boundary is also explained in <a href="functor-stacks-cartesian-currying-and-two-fibre-products.html#5-linear-functors-and-stack-adjoints-keep-their-extra-conditions">Functor stacks, Section 5</a>.</p>
+<p><strong>Proof.</strong> On the test <span class="math" data-tex="\((U,q)\)">\((U,q)\)</span> over <span class="math" data-tex="\(Q\)">\(Q\)</span>, the Hom set in (4.5) has its given <span class="math" data-tex="\(R(U)\)">\(R(U)\)</span>-module structure. Its restriction is <span class="math" data-tex="\(u\mapsto c_f^B f^*(u)(c_f^A)^{-1}\)">\(u\mapsto c_f^B f^*(u)(c_f^A)^{-1}\)</span>. The restriction functor is linear with the restricted coefficient, and the two compositions are linear by bilinearity. Therefore these module operations commute with restriction. Their axioms hold on every test, so (4.5) is a sheaf of <span class="math" data-tex="\(R_Q\)">\(R_Q\)</span>-modules. All base-sheaf pullbacks in (1.3) simply relabel these same operations.</p>
+<p>For the global fiber category over <span class="math" data-tex="\(Q\)">\(Q\)</span>, write <span class="math" data-tex="\(R(Q)=\operatorname{Hom}_E(Q,R)\)">\(R(Q)=\operatorname{Hom}_E(Q,R)\)</span>, with pointwise ring operations. If <span class="math" data-tex="\(s\in R(Q)\)">\(s\in R(Q)\)</span> and <span class="math" data-tex="\(u,v:A\to B\)">\(u,v:A\to B\)</span> are cartesian family morphisms, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.7); horizontal scroll when needed" data-tex="\[
+ (su)_{U,q}=s_U(q)\,u_{U,q},\qquad
+ (u+v)_{U,q}=u_{U,q}+v_{U,q}.
+ \tag{4.7}
+\]">\[
+(su)_{U,q}=s_U(q)\,u_{U,q},\qquad
+(u+v)_{U,q}=u_{U,q}+v_{U,q}.
+\tag{4.7}
+\]</span>
+<p>Since <span class="math" data-tex="\(s_U(q)|_f=s_V(q|_f)\)">\(s_U(q)|_f=s_V(q|_f)\)</span>, equation (1.2) for <span class="math" data-tex="\(su\)">\(su\)</span> follows from</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.8); horizontal scroll when needed" data-tex="\[
+ \begin{aligned}
+ c_f^B f^*((su)_{U,q})
+   &amp;=s_V(q|_f)\,c_f^B f^*(u_{U,q})\\
+   &amp;=(su)_{V,q|_f}\,c_f^A .
+ \end{aligned}
+ \tag{4.8}
+\]">\[
+\begin{aligned}
+c_f^B f^*((su)_{U,q})
+&amp;=s_V(q|_f)\,c_f^B f^*(u_{U,q})\\
+&amp;=(su)_{V,q|_f}\,c_f^A .
+\end{aligned}
+\tag{4.8}
+\]</span>
+<p>The same calculation with sums, additive inverses and zero proves that all the operations stay inside the family Hom set. The module axioms, the scalar unit and bilinearity of composition are componentwise. This gives the stated linear structure both on global Hom sets and on their internal Hom sheaves.</p>
+<p>If <span class="math" data-tex="\(F:\mathsf S\to\mathsf T\)">\(F:\mathsf S\to\mathsf T\)</span> is cartesian and <span class="math" data-tex="\(R\)">\(R\)</span>-linear, its extension applies <span class="math" data-tex="\(F_U\)">\(F_U\)</span> to each component. Hence <span class="math" data-tex="\(F_U(s_U(q)u_{U,q})=s_U(q)F_U(u_{U,q})\)">\(F_U(s_U(q)u_{U,q})=s_U(q)F_U(u_{U,q})\)</span>, and it preserves sums and zero there. The family equalities prove linearity on every base, with the same coefficient restrictions.</p>
+<p>Finally let <span class="math" data-tex="\(F\dashv G\)">\(F\dashv G\)</span> be a specified cartesian stack adjunction, with unit <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and counit <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Using the identity and composite comparisons of Section 4, its extended unit and counit have components</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.9); horizontal scroll when needed" data-tex="\[
+ (\overline\eta_A)_{U,q}=\eta_{U,A_{U,q}},
+ \qquad
+ (\overline\epsilon_B)_{U,q}=\epsilon_{U,B_{U,q}} .
+ \tag{4.9}
+\]">\[
+(\overline\eta_A)_{U,q}=\eta_{U,A_{U,q}},
+\qquad
+(\overline\epsilon_B)_{U,q}=\epsilon_{U,B_{U,q}} .
+\tag{4.9}
+\]</span>
+<p>Their cartesian equations are exactly the original restriction equations for <span class="math" data-tex="\(\eta,\epsilon\)">\(\eta,\epsilon\)</span>, after the functor restriction comparisons. Their naturality is the original componentwise naturality. Each triangle composite at <span class="math" data-tex="\((U,q)\)">\((U,q)\)</span> is the original triangle at <span class="math" data-tex="\(A_{U,q}\)">\(A_{U,q}\)</span> or <span class="math" data-tex="\(B_{U,q}\)">\(B_{U,q}\)</span>, so is the identity. Family morphisms are equal when their components are equal; thus both triangles hold over every <span class="math" data-tex="\(Q\)">\(Q\)</span>. Relabelling along <span class="math" data-tex="\(W\to Q\)">\(W\to Q\)</span> preserves all these formulas and comparisons, proving the asserted stack adjunction. This argument uses the supplied cartesian adjunction; it does not choose unrelated fiber adjoints. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Hom module in this corollary is the coefficient structure used when local tensor–Hom corepresentations are compared over arbitrary overlap sheaves.</p>
+<h2 id="5-four-exercises-with-complete-solutions">5. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (Foundational: descend a noninvertible arrow).</strong> Let a site have one object and only its identity, with only the maximal covering sieve. Its sheaf category is <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>. Let the stack have value an arbitrary small category <span class="math" data-tex="\(A\)">\(A\)</span>. Describe descent along <span class="math" data-tex="\(\{0,1\}\to\{*\}\)">\(\{0,1\}\to\{*\}\)</span> on objects and morphisms, and exhibit a descended noninvertible morphism.</p>
+<p><strong>Solution.</strong> A presheaf is a set, its element category is discrete, and <span class="math" data-tex="\(\overline{\mathsf S}(Q)=A^Q\)">\(\overline{\mathsf S}(Q)=A^Q\)</span>. Descent along the indicated epimorphism consists of two objects <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span>, identity diagonal comparisons, and isomorphisms <span class="math" data-tex="\(u_{ij}:a_j\to a_i\)">\(u_{ij}:a_j\to a_i\)</span> for <span class="math" data-tex="\(i,j\in\{0,1\}\)">\(i,j\in\{0,1\}\)</span>, with <span class="math" data-tex="\(u_{ij}u_{jk}=u_{ik}\)">\(u_{ij}u_{jk}=u_{ik}\)</span>. These equations say that <span class="math" data-tex="\(u_{10}=u_{01}^{-1}\)">\(u_{10}=u_{01}^{-1}\)</span>; the datum is determined by <span class="math" data-tex="\(a_0,a_1,u_{10}\)">\(a_0,a_1,u_{10}\)</span>. It is isomorphic to the constant datum on <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, with component maps <span class="math" data-tex="\(1_{a_0}\)">\(1_{a_0}\)</span> and <span class="math" data-tex="\(u_{10}:a_0\to a_1\)">\(u_{10}:a_0\to a_1\)</span>.</p>
+<p>A morphism to a second datum <span class="math" data-tex="\(b_0,b_1,v_{10}\)">\(b_0,b_1,v_{10}\)</span> is a pair <span class="math" data-tex="\(f_i:a_i\to b_i\)">\(f_i:a_i\to b_i\)</span> satisfying</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ f_1u_{10}=v_{10}f_0.
+\]">\[
+f_1u_{10}=v_{10}f_0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(f_0\)">\(f_0\)</span> determines <span class="math" data-tex="\(f_1=v_{10}f_0u_{10}^{-1}\)">\(f_1=v_{10}f_0u_{10}^{-1}\)</span>, and every <span class="math" data-tex="\(f_0\)">\(f_0\)</span> is allowed. Evaluation at index zero is an inverse equivalence to constant descent data, on all Hom sets. Take <span class="math" data-tex="\(A\)">\(A\)</span> to have objects <span class="math" data-tex="\(0,1\)">\(0,1\)</span> and a single nonidentity arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>. Between the two constant data, use that arrow at both indices. It descends to <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, which is not invertible. Replacing the fibers by their cores would discard this morphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 (Intermediate: a nonsubcanonical site).</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> have one object with endomorphism monoid <span class="math" data-tex="\(M=\{1,e\}\)">\(M=\{1,e\}\)</span>, <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. Declare the sieve <span class="math" data-tex="\(R=\{e\}\)">\(R=\{e\}\)</span> and the maximal sieve covering. Compute sheaves and the sheafification of the representable presheaf. For any small category <span class="math" data-tex="\(A\)">\(A\)</span>, take the constant stack with identity restrictions. Compute its extension over every sheaf <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Solution.</strong> The only sieves are <span class="math" data-tex="\(\varnothing,R,M\)">\(\varnothing,R,M\)</span>. Pullback along <span class="math" data-tex="\(1\)">\(1\)</span> fixes them, and <span class="math" data-tex="\(e^*R=M\)">\(e^*R=M\)</span>. These rules verify stability of the two declared covering sieves. For transitivity with outer sieve <span class="math" data-tex="\(R\)">\(R\)</span>, the only test is pullback along <span class="math" data-tex="\(e\)">\(e\)</span>; the empty sieve does not pass that test, while <span class="math" data-tex="\(R,M\)">\(R,M\)</span> do. The maximal outer sieve imposes the usual identity test. Thus this is a Grothendieck topology.</p>
+<p>A presheaf is a right <span class="math" data-tex="\(M\)">\(M\)</span>-set, equivalently a set <span class="math" data-tex="\(X\)">\(X\)</span> with an idempotent map <span class="math" data-tex="\(t(x)=x e\)">\(t(x)=x e\)</span>. Matching sections over <span class="math" data-tex="\(R\)">\(R\)</span> are the fixed points of <span class="math" data-tex="\(t\)">\(t\)</span>, and the restriction map is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ X\longrightarrow\operatorname{Fix}(t),\qquad x\longmapsto t(x).
+\]">\[
+X\longrightarrow\operatorname{Fix}(t),\qquad x\longmapsto t(x).
+\]</span>
+<p>It is always surjective. It is injective exactly when <span class="math" data-tex="\(t=1_X\)">\(t=1_X\)</span>: injectivity applied to <span class="math" data-tex="\(t(x)=t(t(x))\)">\(t(x)=t(t(x))\)</span> gives <span class="math" data-tex="\(x=t(x)\)">\(x=t(x)\)</span>. Hence the sheaves are sets with trivial <span class="math" data-tex="\(e\)">\(e\)</span>-action and <span class="math" data-tex="\(E\simeq\mathsf{Set}\)">\(E\simeq\mathsf{Set}\)</span>.</p>
+<p>Sheafification sends <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(\operatorname{Fix}(t)=\operatorname{im}(t)\)">\(\operatorname{Fix}(t)=\operatorname{im}(t)\)</span>, with the displayed unit and trivial action. Every equivariant map to a trivial-action set satisfies <span class="math" data-tex="\(f(x)=f(t(x))\)">\(f(x)=f(t(x))\)</span>, so factors uniquely through that unit, proving the adjunction. The representable is the regular right <span class="math" data-tex="\(M\)">\(M\)</span>-set <span class="math" data-tex="\(\{1,e\}\)">\(\{1,e\}\)</span>, on which <span class="math" data-tex="\(t(1)=e=t(e)\)">\(t(1)=e=t(e)\)</span>. Its sheafification is a singleton. It is not already a sheaf, so the topology is not subcanonical.</p>
+<p>For the constant category <span class="math" data-tex="\(A\)">\(A\)</span>, a cartesian section on <span class="math" data-tex="\(R\)">\(R\)</span> is an object <span class="math" data-tex="\(a\)">\(a\)</span> with an invertible comparison <span class="math" data-tex="\(c_e:a\to a\)">\(c_e:a\to a\)</span> satisfying <span class="math" data-tex="\(c_e^2=c_e\)">\(c_e^2=c_e\)</span>. Invertibility forces <span class="math" data-tex="\(c_e=1_a\)">\(c_e=1_a\)</span>. Its morphisms are all morphisms of <span class="math" data-tex="\(A\)">\(A\)</span>. Consequently <span class="math" data-tex="\(A\to\operatorname{Cart}(R,A)\)">\(A\to\operatorname{Cart}(R,A)\)</span> is an equivalence, so this constant prestack is a stack.</p>
+<p>A sheaf <span class="math" data-tex="\(Q\)">\(Q\)</span> has trivial <span class="math" data-tex="\(e\)">\(e\)</span>-action. Its element category is a disjoint union, indexed by <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span>, of copies of the one-object monoid category. On each copy the same idempotent comparison equation forces <span class="math" data-tex="\(c_e=1\)">\(c_e=1\)</span>. Therefore</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ \overline{\mathsf S}(Q)\simeq\prod_{q\in Q}A=A^Q.
+\]">\[
+\overline{\mathsf S}(Q)\simeq\prod_{q\in Q}A=A^Q.
+\]</span>
+<p>At <span class="math" data-tex="\(ah_*=\{*\}\)">\(ah_*=\{*\}\)</span> it recovers <span class="math" data-tex="\(A\)">\(A\)</span>, even though <span class="math" data-tex="\(h_*\)">\(h_*\)</span> was not a sheaf and its two elements have become equal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 (Advanced: an epimorphism is not a local isomorphism).</strong> Explain why local surjectivity alone cannot replace local isomorphism in Theorem 2.1. Use the one-point site of Exercise 1 and the surjection <span class="math" data-tex="\(\{0,1\}\to\{*\}\)">\(\{0,1\}\to\{*\}\)</span>, and reconcile the failure with Theorem 3.1.</p>
+<p><strong>Solution.</strong> In the trivial topology a covering sieve is maximal, so local equality is actual equality. The surjection is locally surjective but not locally injective: its two different source elements have the same image. If <span class="math" data-tex="\(A\)">\(A\)</span> is the discrete category with two objects <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, pullback is the diagonal</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ A\longrightarrow A\times A.
+\]">\[
+A\longrightarrow A\times A.
+\]</span>
+<p>The pair <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> is not isomorphic to any diagonal pair, so this functor is not an equivalence. Theorem 3.1 instead compares <span class="math" data-tex="\(A\)">\(A\)</span> with objects of <span class="math" data-tex="\(A\times A\)">\(A\times A\)</span> supplied with overlap isomorphisms and their cocycle. The pair <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> admits no comparison between its two entries and is not descent data. In Exercise 1 that additional datum is exactly what made all legitimate pairs effective. Thus epimorphic descent and invariance under a local isomorphism are distinct assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 (Synthesis: morphism gluing does not make objects effective).</strong> Give a prestack on the circle whose morphisms are sheaves, and a contravariant sheaf-valued functor that is locally represented but has no global representation. Prove the obstruction rather than assume a classification of line bundles.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(X=\mathbb R/\mathbb Z\)">\(X=\mathbb R/\mathbb Z\)</span>, with projection <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and let <span class="math" data-tex="\(R\)">\(R\)</span> be the sheaf of continuous real functions. On an open <span class="math" data-tex="\(U\)">\(U\)</span>, let <span class="math" data-tex="\(\mathsf P(U)\)">\(\mathsf P(U)\)</span> have one object, called <span class="math" data-tex="\(R_U\)">\(R_U\)</span>, with endomorphisms <span class="math" data-tex="\(R(U)\)">\(R(U)\)</span> under multiplication. Restrictions restrict functions. The Hom presheaf is the sheaf <span class="math" data-tex="\(R\)">\(R\)</span>, so this is a prestack with morphism descent.</p>
+<p>Define a sheaf of <span class="math" data-tex="\(R\)">\(R\)</span>-modules by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ L(U)=\{f:\pi^{-1}U\to\mathbb R\text{ continuous}:
+           f(t+n)=(-1)^n f(t)\text{ for every }n\in\mathbb Z\}.
+\]">\[
+L(U)=\{f:\pi^{-1}U\to\mathbb R\text{ continuous}:
+f(t+n)=(-1)^n f(t)\text{ for every }n\in\mathbb Z\}.
+\]</span>
+<p>Scalar multiplication is by the pullback of a function on <span class="math" data-tex="\(U\)">\(U\)</span>. Matching functions glue on the open cover of <span class="math" data-tex="\(\pi^{-1}U\)">\(\pi^{-1}U\)</span>, and their displayed equations are local; hence this is a module sheaf. On an arc <span class="math" data-tex="\(U\)">\(U\)</span> with a lift <span class="math" data-tex="\(I\subset\mathbb R\)">\(I\subset\mathbb R\)</span> on which <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a homeomorphism, <span class="math" data-tex="\(\pi^{-1}U\)">\(\pi^{-1}U\)</span> is the disjoint union of <span class="math" data-tex="\(I+n\)">\(I+n\)</span>. The function equal to <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span> on <span class="math" data-tex="\(I+n\)">\(I+n\)</span> is a basis of <span class="math" data-tex="\(L|_U\)">\(L|_U\)</span>. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is locally free of rank one.</p>
+<p>There is no global basis. Such a basis would be a continuous nowhere-zero <span class="math" data-tex="\(f:\mathbb R\to\mathbb R\)">\(f:\mathbb R\to\mathbb R\)</span> with <span class="math" data-tex="\(f(1)=-f(0)\)">\(f(1)=-f(0)\)</span>. If <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> it already vanishes. Otherwise replace <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(-f\)">\(-f\)</span> if necessary, so that <span class="math" data-tex="\(f(0)&gt;0&gt;f(1)\)">\(f(0)&gt;0&gt;f(1)\)</span>, and set <span class="math" data-tex="\(c=\sup\{t\in[0,1]:f(t)&gt;0\}\)">\(c=\sup\{t\in[0,1]:f(t)&gt;0\}\)</span>. Continuity at the endpoints gives <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>. If <span class="math" data-tex="\(f(c)&gt;0\)">\(f(c)&gt;0\)</span>, continuity gives a positive value to the right of <span class="math" data-tex="\(c\)">\(c\)</span>, contradicting the upper bound. If <span class="math" data-tex="\(f(c)&lt;0\)">\(f(c)&lt;0\)</span>, continuity gives a neighborhood of <span class="math" data-tex="\(c\)">\(c\)</span> with no positive values, contradicting positive points arbitrarily close to the supremum from below. Thus <span class="math" data-tex="\(f(c)=0\)">\(f(c)=0\)</span>. A rank-one local module basis must be nowhere zero in the local descriptions, so in every case this section cannot be a basis.</p>
+<p>Let <span class="math" data-tex="\(\mathcal F_U(R_U)=L|_U\)">\(\mathcal F_U(R_U)=L|_U\)</span>; let an endomorphism <span class="math" data-tex="\(r\)">\(r\)</span> act by multiplication by <span class="math" data-tex="\(r\)">\(r\)</span>. Commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> makes this a contravariant functor, compatible with restriction. On each trivializing arc the chosen basis gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ \mathcal Hom_{\mathsf P}(-,R_U)\simeq\mathcal F|_U.
+\]">\[
+\mathcal Hom_{\mathsf P}(-,R_U)\simeq\mathcal F|_U.
+\]</span>
+<p>A global representation could only use the sole object <span class="math" data-tex="\(R_X\)">\(R_X\)</span>. Its identification would be an isomorphism of sheaves <span class="math" data-tex="\(\phi:R\to L\)">\(\phi:R\to L\)</span> natural under every local scalar endomorphism. Naturality gives <span class="math" data-tex="\(\phi(r)=r\phi(1)\)">\(\phi(r)=r\phi(1)\)</span> on every open set. Hence <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is the module map determined by a global basis <span class="math" data-tex="\(\phi(1)\)">\(\phi(1)\)</span>, which has just been ruled out. The local bases instead give invertible scalar transition maps satisfying the cocycle equation. If that object descent were effective in <span class="math" data-tex="\(\mathsf P\)">\(\mathsf P\)</span>, it would give a global identification with <span class="math" data-tex="\(L\)">\(L\)</span>, the same contradiction. Thus morphism descent holds but object descent fails, and the stack hypothesis in local representability is necessary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="further-reading">Further reading</h2>
+<p>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/02ZF">Stacks, Lemma 8.4.2</a>, states the descent-category criterion. Its section on <a href="https://stacks.math.columbia.edu/tag/00WO">Representable sheaves</a> explains the role of sheafified representables on a general site. The cartesian-section and epimorphic-descent arguments above use the full category-valued stack axioms.</p>
+</main></body></html>

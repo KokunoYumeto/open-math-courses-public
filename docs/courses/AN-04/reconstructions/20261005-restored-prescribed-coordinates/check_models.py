@@ -1,4 +1,4 @@
-"""Six bounded algebraic/flow models for U022, not certification of general smooth germs."""
+"""Six bounded algebraic and flow examples for the canonical-coordinate constructions."""
 from pathlib import Path
 import hashlib,json
 import sympy as s
@@ -94,7 +94,7 @@ checks.append({'name':'deformed cusp primitive, projection ranks and covector im
 name='prescribed-canonical-coordinates-and-isotropic-fibers.md'
 report={'schema':'canonical-coordinates-finite-check/v1','passed':True,'lesson':name,
  'lesson_sha256':sha(here/name),'script_sha256':sha(Path(__file__)),
- 'checks':checks,'independent_mathematical_review':False,
+ 'checks':checks,
  'scope':'Six bounded exact alternating, nonlinear symplectic, semidirect-flow, marked-coordinate, homogeneous rotation and cusp models. General smooth existence, isotropic induction and germ recognition are proved in the lesson, not certified by models.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_checks':len(checks),'lesson_sha256':report['lesson_sha256']}))

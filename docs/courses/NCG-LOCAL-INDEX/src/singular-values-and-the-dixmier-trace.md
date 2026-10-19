@@ -428,7 +428,7 @@ For a rigorous tail estimate, bound each decreasing Gaussian tail by an integral
 
 ## 7. From logarithmic traces to geometry
 
-The classical trace calculation follows after the Fourier and symbol estimates in Classical pseudodifferential traces. Its full proof uses the logarithmic trace constructed here.
+The classical trace calculation follows after the Fourier and symbol estimates in [Classical pseudodifferential traces](../hypoelliptic-calculus-and-the-transverse-geometry-of-diffeomorphisms.html#13-the-trace-of-a-classical-pseudodifferential-operator). Its full proof uses the logarithmic trace constructed here.
 
 ## 8. Examples and solved exercises
 

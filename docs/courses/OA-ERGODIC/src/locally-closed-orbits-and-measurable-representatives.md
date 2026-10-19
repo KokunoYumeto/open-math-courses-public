@@ -2,7 +2,7 @@
 
 An orbit space may distinguish every orbit topologically and still fail to be Hausdorff. The useful question for measure theory is whether its Borel sets have a countable description and whether one can choose an orbit representative measurably. This lesson proves the Glimm criterion, including its ergodic-measure converse and its representative construction, for a continuous action of a Polish group.
 
-Read [Polish orbits and their quotient topology](polish-orbits-and-their-quotient-topology.md) first. We use its complete Effros equivalence and countable invariant-open orbit code. The exact written programme prerequisites are *Polish and standard Borel spaces*, Theorems 1.1, 2.4 and 4.3, Theorem 5.6 (Blackwell), and Proposition 7.4, in *Operator algebra foundations*. They supply a continuous Baire-space parametrization, analytic separation and injective Borel images, the countably generated atom theorem, and standard Borel coset spaces. Their proofs are present in that programme lesson. The category, Cantor construction, probability argument and measurable selector needed below are proved here.
+Read [Polish orbits and their quotient topology](polish-orbits-and-their-quotient-topology.md) first. We use its complete Effros equivalence and countable invariant-open orbit code. The exact written prerequisites are Borel models, measurable inversion and Polish group quotients, Theorem 1.1 for continuous Baire-space parametrization, Theorem 2.4 for analytic separation, Theorem 4.3(1),(5) for Borel images, Theorem 5.6 for the countably generated atom theorem, and Proposition 7.4 for standard Borel coset spaces. The category test, Cantor construction, probability argument and representative construction are proved below.
 
 Throughout, \(G\) is Polish, \(X\) is a nonempty Polish space, and \(G\times X\to X\) is continuous. Write \(\pi:X\to Y=X/G\), and equip \(Y\) with both its quotient topology \(\tau_q\) and its quotient Borel structure
 
@@ -265,6 +265,43 @@ Theorem 1.1 makes every nonzero ergodic Borel measure concentrate on one of thes
 
 Here is its full ergodicity check, using only finite-measure uniqueness. Let \(A\) be a Borel set invariant under rational translations, and set \(c=\lambda(A\cap[0,1))\). Translation invariance gives equal \(A\)-measure to all \(2^n\) dyadic cells partitioning \([0,1)\); each has mass \(c2^{-n}\). Integer translations give the same assertion in every unit interval. The finite measures \(\lambda|_A\) and \(c\lambda\) therefore agree on the dyadic interval pi-system in each unit interval, and hence on all its Borel sets, by the pi-lambda proof in Lemma 5.1. Apply that equality to \(A\) itself in \([0,1)\): it gives \(c=c^2\). Thus \(c\) is zero or one, and the equality of measures in every unit interval makes \(A\) null or conull in \(\mathbb R\). Its countable orbits all have measure zero. Alternatively, Sections 3–5 construct an ergodic probability with the same zero-orbit-mass property.
 
+### Hilbert translations and closure conditions
+
+**Example 7.2.** Consider the action \(\ell^2\curvearrowright\mathbb R^{\mathbb N}\) from the preceding lesson, Example 5.4. Its group is not locally compact, but both closure conditions hold. Given a norm neighborhood \(N\) of zero, choose \(R>0\) with \(B_{\ell^2}(0,R)\subset N\), fix \(0<r<R\), and put \(M=B_{\ell^2}(0,r)\). Finite partial sums show that
+\[
+\begin{aligned}
+\overline{Mx}^{\,X}
+ &=x+\{u:\|u\|_2\leq r\}\\
+ &\subset x+B_{\ell^2}(0,R)\subset Nx.
+\end{aligned}
+\tag{7.2}
+\]
+For the equality, every product limit of points of norm less than \(r\) has each finite sum of squares at most \(r^2\). Conversely, for \(\|u\|_2\leq r\), the finitely supported vectors \((1-1/k)(u_1,\ldots,u_k,0,\ldots)\), with \(k\geq2\), have norm less than \(r\) and converge coordinatewise to \(u\). This proves C with the same \(M\) for all \(x\).
+
+For D, take any open neighborhood base \((Q_n)\) at \(x\) and suppose \(y\in\bigcap_n\overline{M Q_n}^{\,X}\). For each \(k\), choose a member \(Q_{n(k)}\) on which \(|z_j-x_j|<1/k\) for \(1\leq j\leq k\). The assumed closure supplies \(h^{(k)}\in M\) and \(z^{(k)}\in Q_{n(k)}\) with \(|h_j^{(k)}+z_j^{(k)}-y_j|<1/k\) for those same coordinates. Thus
+\[
+\begin{gathered}
+|h_j^{(k)}-(y_j-x_j)|<2/k\quad(1\leq j\leq k),\\
+\sum_{j=1}^{m}(y_j-x_j)^2\leq r^2\quad(m\geq1).
+\end{gathered}
+\tag{7.3}
+\]
+For each fixed \(m\), the first bound permits passage to the limit in that finite sum of squares; the corresponding sums for \(h^{(k)}\) are at most \(r^2\), proving the second bound. Taking the supremum over \(m\) gives \(y-x\in\ell^2\) with norm at most \(r<R\), hence \(y\in Nx\). No nesting of the base, norm convergence of the \(h^{(k)}\), or compact neighborhood in the acting group has been assumed.
+
+The action also gives a concrete probability model for Sections 4–5. Embed the binary cube by \(f(a)=(a_1,a_2,\ldots)\). For binary sequences,
+\[
+\begin{aligned}
+f(a)-f(b)\in\ell^2
+ &\ \Longleftrightarrow\ 
+ \sum_{n\geq1}|a_n-b_n|^2<\infty\\
+ &\ \Longleftrightarrow\ aE_0b.
+\end{aligned}
+\tag{7.4}
+\]
+Every summand is zero or one, which proves both directions. Let \(\mu=f_*\eta\), where \(\eta\) is the binary probability of Lemma 5.1. The preimage of any invariant Borel set is \(E_0\)-invariant, so \(\mu\) is ergodic. Every orbit is Borel by the explicit \(F_\sigma\) description in Example 5.4, and its preimage, if nonempty, is one countable \(E_0\)-class. Thus every orbit has \(\mu\)-mass zero. The probability is atomless because \(f\) is injective. It is not quasi-invariant: the full-measure binary cube and its translate by \(\tfrac12e_1\in\ell^2\) are disjoint. This is consistent with Theorem 1.1, whose measure condition does not assume quasi-invariance. The action satisfies C and D while failing all six equivalent conclusions; its dense proper orbits are not open, so are not locally closed.
+
+The [editable Hilbert translation diagram](figures/hilbert-translation-orbits.svg) records the topology, finite-coordinate bounds and binary-cube relation. Exercise 8.9 contrasts this probability with an atomless ergodic probability concentrated on a single orbit of the same action.
+
 ## 8. Graded exercises with complete solutions
 
 **Exercise 8.1.** *Level 1.* Prove D implies C without assuming the point neighborhoods are nested.
@@ -303,12 +340,18 @@ Every defect orbit is dense in \(I\), since any finite injective prefix extends 
 
 One can also see the failure of C directly. Choose \(x\) whose range is \(\mathbb N\setminus\{0\}\), and let \(N\) be the subgroup fixing \(0\). Given any identity neighborhood \(M\), choose a finite set \(K\) containing \(0\) whose pointwise fixer lies in \(M\), and choose \(b\notin K\). There is an injective \(y\) with range \(\mathbb N\setminus\{0,b\}\) which agrees with \(x\) at the coordinates whose values lie in \(K\). Every finite prefix of \(y\) is obtained from the corresponding prefix of \(x\) by a finite partial permutation compatible with fixing \(K\); extend it to a permutation fixing \(K\). Thus \(y\in\overline{Mx}\). But \(Nx\) consists of sequences with complement exactly \(\{0\}\), so \(y\notin Nx\). No \(M\) witnesses C for this \(N\).
 
+**Exercise 8.9.** *Level 3.* In Example 7.2, replace the binary-cube embedding by \(f_c(a)=(2^{-n}a_n)_{n\geq1}\) and let \(\mu_c=(f_c)_*\eta\). Prove that \(\mu_c\) is atomless and ergodic and is concentrated on one translation orbit. Explain why this does not give a countably separated quotient or a Borel transversal. Decide whether \(\mu_c\) is quasi-invariant.
+
+*Solution.* The map \(f_c\) is continuous and injective into the product space. Every image point has squared Hilbert norm at most \(\sum_{n\geq1}4^{-n}=1/3\), so the compact image lies in the zero orbit \(\ell^2\). This orbit is Borel by the finite-sum description in Example 5.4, and \(\mu_c(\ell^2)=1\). If a Borel set is invariant under the whole translation group, its intersection with this one orbit is either the whole orbit or empty. It therefore has \(\mu_c\)-mass one or zero. That proves ergodicity directly, without identifying a tail sigma-algebra. Injectivity makes the preimage of any singleton empty or a singleton; Lemma 5.1 gives zero mass, so \(\mu_c\) is atomless.
+
+For the unscaled embedding, two binary points are in the same orbit exactly when they differ in finitely many coordinates. For \(f_c\), every pair of image points differs by a vector of squared norm at most \(1/3\), so all image points belong to the same orbit. The change of measure leaves the action and its orbit space unchanged. Theorem 1.1 requires concentration for **every** nonzero ergodic sigma-finite Borel measure, and the unscaled probability still disproves that universal condition. Hence countable Borel separation and a Borel transversal still fail. Finally let \(K_c=f_c(2^{\mathbb N})\). Its first coordinate lies in \(\{0,1/2\}\), whereas the first coordinate of \(K_c+\tfrac14e_1\) lies in \(\{1/4,3/4\}\). These compact sets are disjoint. The translate of \(\mu_c\) by \(\tfrac14e_1\) gives mass one to a \(\mu_c\)-null set, proving failure of quasi-invariance.
+
 ## References and provenance
 
-Masamichi Takesaki, *Theory of Operator Algebras III* (2003), Exercise XIII.2(2), PDF page 51, specifies C, D and the Glimm equivalences. Its bibliography entry [508] identifies Edward G. Effros, *Transformation Groups and C\*-Algebras*, *Annals of Mathematics* 81 (1965), 38–55, [publisher record](https://doi.org/10.2307/1970381). The full arguments here are newly written course exposition of known mathematics; a complete comparison of wording and distinctive arrangement against all cited sources remains in progress.
+- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III* (2003), Exercise XIII.2(2), printed p. 31. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). It states C, D and the Glimm equivalences, with Edward G. Effros, *Transformation Groups and C\*-Algebras*, *Annals of Mathematics* 81 (1965), 38–55, [publisher record](https://doi.org/10.2307/1970381), as the historical reference. Theorem 1.1 above proves the six-way statement under C using a closed-set selector; D remains separately defined and verified.
+- [Marker] David Marker, [*Descriptive Set Theory*](https://www.math.uic.edu/~marker/math512/dst.pdf), Lemma 4.21, Theorem 4.22 and Corollary 4.23, printed pp. 39–40. The Baire-envelope and Souslin-operation argument in Lemma 3.1 is a mathematical application of that method. Lemma 3.2 proves the category test in a product directly from closed nowhere dense sets.
+- [Burgess] John P. Burgess, [*A Selection Theorem for Group Actions*](https://msp.org/pjm/1979/80-2/pjm-v80-n2-p05-s.pdf), *Pacific Journal of Mathematics* 80 (1979), 333–336, proves the broader selector statement discussed after Theorem 1.1. Its proof treats arbitrary invariant Borel codes using a Borel-rank construction and general Vaught transforms. Section 6 above uses invariant open codes and the explicit closed-set test (6.2), so does not invoke that broader construction. Sections 4–5 give the Cantor and probability arguments used here.
+- [Programme Borel models] Borel models, measurable inversion and Polish group quotients, Theorems 1.1, 2.4, 4.3 and 5.6 and Proposition 7.4, at the exact scopes stated in the introduction. The Hilbert translation example and Exercise 8.9 compare two atomless ergodic probabilities for one non-locally-compact group action, with opposite orbit-concentration behavior.
 
-David Marker, [*Descriptive Set Theory*](https://www.math.uic.edu/~marker/math512/dst.pdf), Lemma 4.21, Theorem 4.22 and Corollary 4.23 provides the Baire-envelope and Souslin-operation treatment used to check Lemma 3.1. That public draft is a reference source; no copying or translation permission is inferred from access. Lemmas 3.1–3.2 give the required complete course arguments.
+Original expression in this lesson and its nine solved exercises is dedicated under CC0 1.0; cited sources retain their own rights.
 
-John P. Burgess, [*A Selection Theorem for Group Actions*](https://msp.org/pjm/1979/80-2/pjm-v80-n2-p05-s.pdf), *Pacific Journal of Mathematics* 80 (1979), 333–336, proves the broader selector theorem discussed after Theorem 1.1. The complete four-stage proof was checked; it uses Borel-rank refinement and general Vaught transforms. Section 6 instead treats the invariant-open code available here and proves only the needed closed-set category test, so no general Vaught-transform theorem or Burgess proof is left as an external prerequisite. The Cantor argument is credited to the classical Glimm–Effros construction; its entire induction is supplied in Section 4.
-
-The exact programme prerequisites named at the beginning are actual written proofs, used at their stated scope. AI writing and mathematical self-checking do not constitute independent human review or formal verification. This lesson and its eight solved exercises have original expression dedicated under CC0 1.0; cited sources retain their own rights. The course's remaining general measured-groupoid and source-validation obligations are separate from this completed orbit-space criterion.

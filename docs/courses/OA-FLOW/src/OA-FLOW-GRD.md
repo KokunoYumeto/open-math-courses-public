@@ -284,7 +284,7 @@ We use two precise programme results. The [weak compactness theorem, Theorem 10.
  \sup_{\omega\in S}|\omega(a)|<\varepsilon.
  \tag{GRD.5.b}
 \]
-The controlling functional need not be faithful. The [bounded-set theorem, Theorem 11.2 and Remark 11.3](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-19) proves that uniform convergence on relatively weakly compact predual sets, the Mackey topology just defined, and the sigma-strong-star topology agree on each norm-bounded subset. In particular,
+The controlling functional need not be faithful. The [bounded-set theorem, Theorem 11.2 and Proposition 11.3](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-19) proves that uniform convergence on relatively weakly compact predual sets, the Mackey topology just defined, and the sigma-strong-star topology agree on each norm-bounded subset. In particular,
 \[
  \begin{gathered}
  a_i\longrightarrow0\ \text{sigma-strong-star},\qquad

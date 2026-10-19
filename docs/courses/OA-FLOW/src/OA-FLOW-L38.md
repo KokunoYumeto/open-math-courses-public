@@ -2,7 +2,7 @@
 
 
 
-A return section turns a real flow into upward motion between successive visits. There are three separate tasks: find visits separated by a fixed positive time, retain visits in both time directions, and identify the measure class in the resulting coordinates. We first prove the measure-class mechanism, then construct the section directly from coded orbit paths.
+A return section turns a real flow into upward motion between successive visits. There are three separate tasks: find visits separated by a fixed positive time, retain visits in both time directions, and identify the measure class in the resulting coordinates. The measure on the section will come from averaging within these intervals. We prove that local measure-class principle first, construct the return coordinates, and obtain the suspension theorem. The integer cover then describes the two commuting coordinate actions.
 
 <a id="oa-flow.suspension.setting"></a>
 ## What the suspension theorem assumes
@@ -73,6 +73,52 @@ For each fixed \((s,z)\), the inner integral vanishes precisely when the vertica
  \tag{S7}
 \]
 Together with equivalence to \(\kappa\), this proves (S4). Both measures are sigma finite, and completing them gives the same completed null sets. In particular, no measure obtained by restricting an ambient measure to a generally null section is needed.
+
+### Partial translations inside finite intervals
+
+The same idea works before a measure on the base is known. Let \(r:Z\to(0,\infty)\) be finite and Borel, put
+\[
+ E_r=\{(z,u):0\leq u<r(z)\},\qquad
+ A_t=\{(z,u)\in E_r:0\leq u+t<r(z)\},
+ \qquad T_t(z,u)=(z,u+t).
+ \tag{PT1}
+\]
+Thus \(T_t:A_t\to A_{-t}\) is a Borel bijection. Suppose a nonzero sigma-finite Borel measure \(\lambda\) on \(E_r\) has the following **partial-translation property**: for every fixed \(t\), this bijection preserves null sets in both directions. Choose an equivalent probability \(\lambda_0\) by (S2), and let \(\eta\) be its marginal on \(Z\). Then
+\[
+ [\lambda]=[\eta(dz)\,du|_{E_r}].
+ \tag{PT2}
+\]
+Neither integrability nor a uniform lower bound for \(r\) is required for this assertion.
+
+To prove it, use the positive density \(w(t)=e^{-|t|}/2\) and define, for Borel \(E\subseteq E_r\),
+\[
+ \lambda^\circ(E)
+   =\int_{\mathbb R}w(t)\lambda_0\bigl(T_t^{-1}(E\cap A_{-t})\bigr)\,dt
+   =\int_{E_r}\int_0^{r(z)}
+           w(v-u)1_E(z,v)\,dv\,d\lambda_0(z,u).
+ \tag{PT3}
+\]
+The first integrand is Borel by parameter integration. The second equality is Tonelli and the substitution \(v=u+t\). Monotone convergence proves countable additivity, and \(\lambda^\circ(E_r)\leq1\).
+
+If \(\lambda_0(E)=0\), the partial-translation property makes every term in the first integral zero. For the converse, suppose \(\lambda_0(E)>0\). The sets
+\[
+ E_n=E\cap\{(z,v):r(z)-v>1/n\},\qquad n\geq1,
+ \tag{PT4}
+\]
+increase to \(E\), since the upper endpoint is excluded. Some \(E_n\) therefore has positive \(\lambda_0\)-measure. For every \(t\in(-1/n,0)\), every point \((z,v)\in E_n\) lies in \(A_{-t}\): indeed \(0\leq v-t<r(z)\). Nonsingularity of the partial bijection gives
+\(\lambda_0(T_t^{-1}E_n)>0\).
+The first integrand in (PT3) is consequently strictly positive on this whole time interval. A nonnegative measurable function positive on a set of positive Lebesgue measure has positive integral, as follows by taking its level sets above \(1/k\). Thus \(\lambda^\circ(E)>0\). This proves \([\lambda^\circ]=[\lambda_0]=[\lambda]\), including possible mass at the bottom endpoints; no endpoint-null assertion was used.
+
+For fixed \((z,u)\), positivity of \(w(v-u)\) says that the inner integral in the second part of (PT3) is zero exactly when the vertical section \(E_z\subseteq[0,r(z))\) is Lebesgue null. This condition depends only on \(z\). The marginal definition and Tonelli therefore give
+\[
+ \lambda^\circ(E)=0
+ \ \Longleftrightarrow\
+ |E_z|=0\ \text{for }\eta\text{-almost every }z
+ \ \Longleftrightarrow\
+ (\eta(dz)\,du|_{E_r})(E)=0.
+ \tag{PT5}
+\]
+This proves (PT2). The bottom section \(\{u=0\}\) is now seen to be null as a consequence. The base measure is a marginal of an equivalent probability on the whole interval bundle, not a restriction to that null section.
 
 <a id="oa-flow.suspension.paths"></a>
 ## An exact continuous model of the Borel flow
@@ -185,6 +231,98 @@ For \(z\in Z\), one has \(\tau_0(z)=0\). Define
 \]
 The predecessor and successor are inverse by their order among the hits. Hence \(S\) is a Borel automorphism and \(r\) is Borel, finite, and at least \(\delta\).
 
+<a id="oa-flow.suspension.chart"></a>
+## The fundamental domain, ergodicity and aperiodicity
+
+Let
+\[
+ D_r=\{(z,u)\in Z\times\mathbb R:0\leq u<r(z)\},
+ \qquad
+ \Psi(z,u)=F_uz.
+ \tag{S27}
+\]
+The preceding-hit formula supplies the inverse directly:
+\[
+ \Psi^{-1}(y)=\bigl(F_{\tau_0(y)}y,\,-\tau_0(y)\bigr).
+ \tag{S28}
+\]
+Indeed, if \(z=F_{\tau_0(y)}y\), then its next return occurs after
+\(r(z)=\tau_1(y)-\tau_0(y)>-\tau_0(y)\). The proposed inverse therefore lies in \(D_r\) and maps to \(y\). Conversely, when \(0\leq u<r(z)\), the last hit at or before time zero for \(F_uz\) is \(-u\): translating a hit list subtracts \(u\), and there is no hit strictly between \(0\) and \(r(z)\) at \(z\). Formula (S28) recovers \((z,u)\). Both maps are Borel by parameter evaluation and the Borel hitting times, so \(\Psi\) is a Borel isomorphism onto \(\Gamma_1\).
+
+Define the signed roof sums
+\[
+ R_0(z)=0,\qquad
+ R_k(z)=\sum_{j=0}^{k-1}r(S^jz)\ (k>0),\qquad
+ R_k(z)=-\sum_{j=k}^{-1}r(S^jz)\ (k<0).
+ \tag{S29}
+\]
+They are exactly \(\tau_k(z)\). Since \(r\geq\delta\), they tend to \(+\infty\) and \(-\infty\) in the two directions. For each \((t,z,u)\), there is a unique integer \(k\) with
+\(R_k(z)\leq u+t<R_{k+1}(z)\), and the suspension action is
+\[
+ F_t^{\,r}(z,u)
+       =\bigl(S^kz,\ u+t-R_k(z)\bigr).
+ \tag{S30}
+\]
+The integer \(k\) is Borel by these countably many inequalities. The second coordinate lies in \([0,r(S^kz))\). Only finitely many roofs are crossed in any bounded time interval, by the lower bound \(\delta\). For the integer \(k\) in (S30), the point \(F_{u+t}z\) lies between its \(k\)-th and \((k+1)\)-st hits. Its preceding hit is \(S^kz\), and its elapsed time since that hit is \(u+t-R_k(z)\). Formula (S28) consequently gives
+\(\Psi F_t^{\,r}=F_t\Psi\) for every \(t,z,u\).
+Conjugating the original action by this Borel isomorphism proves the group law, including negative times and exact roof hits. Thus (S30) is a strict jointly Borel flow.
+
+Pull back the probability \(v|_{\Gamma_1}\) by \(\Psi\), obtaining a probability \(\lambda\) on \(D_r\), and let \(\nu\) be its marginal on \(Z\). On the domain where no roof is crossed, \(F_t^{\,r}\) is exactly the partial translation \(T_t\) in (PT1). Nonsingularity of the original \(F_t\) therefore supplies the partial-translation property for \(\lambda\). Applying (PT2) gives
+\[
+ [\lambda]=[\nu(dz)\,du|_{D_r}],
+ \qquad
+ [\Psi_*(\nu(dz)\,du|_{D_r})]=[v|_{\Gamma_1}].
+ \tag{PT6}
+\]
+The product restriction is sigma finite: its parts \(0\leq u\leq n\) have measure at most \(n\). Thus unbounded roofs cause no difficulty, and every \(F_t^{\,r}\) is nonsingular for this product class.
+
+We also obtain nonsingularity of the return map without using a variable-time map on an ambient measure. Fix \(h=\delta/2\). For a Borel set \(A\subseteq Z\), the fixed-time map \(F_h^{\,r}\) carries the top strip onto the bottom strip:
+\[
+ \begin{aligned}
+ U_A&=\{(z,u):z\in A,\ r(z)-h\leq u<r(z)\},\\
+ V_{SA}&=\{(z,v):z\in SA,\ 0\leq v<h\},\\
+ F_h^{\,r}(z,u)&=(Sz,u+h-r(z)),\qquad
+ F_h^{\,r}(U_A)=V_{SA}.
+ \end{aligned}
+ \tag{PT7}
+\]
+There is exactly one crossing, since \(r(z)\geq\delta>h\) both before and after the return. The inverse uses \(S^{-1}\) and \(u=r(S^{-1}z)+v-h\), so this is equality of Borel sets, including their half-open edges. Their product measures are \(h\nu(A)\) and \(h\nu(SA)\). Nonsingularity of this one fixed-time flow map yields
+\[
+ \nu(A)=0\quad\Longleftrightarrow\quad\nu(SA)=0.
+ \tag{PT8}
+\]
+Replacing \(A\) by \(S^{-1}A\) gives the usual inverse-image formulation as well. Hence \(S\) is nonsingular for \(\nu\).
+
+If a Borel set \(A\subseteq Z\) is \(S\)-invariant, the part of \(D_r\) above \(A\) is flow invariant. Its product measure is zero exactly when \(\nu(A)=0\), because every roof is positive; the same statement applies to its complement. Flow ergodicity therefore implies that \(S\) is ergodic. For an \(S\)-invariant set modulo null sets, remove the \(S\)-saturation of its invariance failure set. This is a countable union of null sets by nonsingularity, and outside it the set is exactly invariant. Thus the equivalent measured formulation of ergodicity holds as well.
+
+We can now make \(S\) aperiodic on an invariant conull Borel set. The sets of points of exact finite period \(n\) are Borel and invariant. If their union had positive measure, one of them would be conull by ergodicity. On that set, choose in each finite orbit the point with smallest value of a fixed injective Borel real code. This is a Borel orbit-constant map: its finitely many comparisons are Borel and its minimum is unique. The zero-or-one probability argument then concentrates \(\nu\) on a single finite \(S\)-orbit. The whole tube above that finite orbit is one flow orbit, by (S29)–(S30). The product-class identification would concentrate \(v\), and hence the original measure, on that flow orbit, a contradiction.
+
+Remove the periodic points from \(Z\) and their corresponding tube from \(\Gamma_1\). These are invariant Borel null sets in their respective spaces. Keep the same notation for the restrictions. Now
+\[
+ S^nz\ne z\quad(z\in Z,\ n\in\mathbb Z\setminus\{0\}).
+ \tag{S31}
+\]
+The retained flow is free as well. If a point \(F_uz\) has period \(t>0\), then \(F_tz=z\). Thus \(t\) is a positive hit time at \(z\), and (S29) gives \(S^kz=z\) for its positive hit index \(k\), contradicting (S31).
+
+<a id="oa-flow.suspension.theorem"></a>
+## The complete suspension theorem
+
+**Theorem.** Every nonzero standard sigma-finite nonsingular properly ergodic Borel real flow has an invariant conull Borel subset \(X_*\) with the following description. There are a standard Borel probability space \((Z,\nu)\), an aperiodic ergodic nonsingular Borel automorphism \(S:Z\to Z\), a finite Borel function \(r:Z\to(0,\infty)\), and a constant \(\delta>0\) such that \(r(z)\geq\delta\) everywhere. There is a Borel isomorphism
+\[
+ \Xi:D_r\longrightarrow X_*,
+ \qquad
+ [\Xi_*(\nu(dz)\,du|_{D_r})]=[\mu|_{X_*}],
+ \qquad
+ \Xi F_t^{\,r}=F_t\Xi
+       \quad(t\in\mathbb R).
+ \tag{S32}
+\]
+The last equality holds at every point, with \(F^r\) given by (S29)–(S30). In particular the invariant conull original flow is free.
+
+**Proof.** Combine \(\Psi\) with the Borel inverse \(J^{-1}\) on the retained part of \(Y\cap\Gamma\). Every deletion made above was Borel, invariant and null. Equations (S10), (S27)–(S31) and (PT6)–(PT8) supply exact equivariance, the Borel chart, all-time vertical motion, the product measure class, nonsingularity of the base, and aperiodicity. The initial replacement (S2) was equivalent to \(\mu\), which proves exactly the measure-class identity in (S32). \(\square\)
+
+There is also a useful uniformly bounded-roof construction. The [bounded-section theorem for every free Borel flow](../../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#3a4-uniform-gaps-and-the-full-suspension-chart) constructs successive gaps in \([a,3a)\) for any prescribed \(a>0\), using smoothing, sparse levels and Borel finite-degree selection. Its [measure-class passage](../../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#suspension-coordinates-and-the-base-measure) applies positive-density averaging to that chart. The direct proof here obtains the required finite roof and fixed positive lower bound from separated crossings. Its measure-class identification uses only partial translations inside the return intervals. We next construct the integer cover to describe the associated commuting actions.
+
 <a id="oa-flow.suspension.cover"></a>
 ## The integer hitting cover and the deck map
 
@@ -247,87 +385,22 @@ Restrict \(v\) to \(\Gamma_1\), still a probability. Give \(\widehat\Gamma\) the
 \]
 The equality simply reindexes \(k=m+n(t,y)\) for each \(y\). Nonsingularity of \(F_t\) shows that this integral is zero exactly when \(\int f\,dM=0\). Thus each \(\widehat F_t\) preserves the measure class of \(M\). By (S23), every \(R_t\) and \(B\) preserves the class of \(\kappa\).
 
-There is an explicit equivalent probability on the cover: replace counting measure by \(p_m=2^{-|m|}/3\), whose sum is one, and pull back \(p\otimes v\) through \(\Phi\). Let \(\nu\) be its marginal on \(Z\). The product-class lemma now gives
+There is an explicit equivalent probability on the cover: replace counting measure by \(p_m=2^{-|m|}/3\), whose sum is one, and pull back \(p\otimes v\) through \(\Phi\). Let \(\widehat\nu\) be its marginal on \(Z\). The product-class lemma now gives
 \[
- [\kappa]=[ds\,\nu(dz)].
+ [\kappa]=[ds\,\widehat\nu(dz)].
  \tag{S25}
 \]
-Moreover \(S\) is nonsingular for \(\nu\). For every Borel \(A\subseteq Z\),
+Moreover \(S\) is nonsingular for \(\widehat\nu\). For every Borel \(A\subseteq Z\),
 \[
  B^{-1}(\mathbb R\times A)=\mathbb R\times S^{-1}A.
  \tag{S26}
 \]
-A full vertical cylinder is product-null exactly when its base is \(\nu\)-null. Equations (S25)–(S26) and nonsingularity of \(B\) therefore give
-\(\nu(A)=0\) if and only if \(\nu(S^{-1}A)=0\).
+A full vertical cylinder is product-null exactly when its base is \(\widehat\nu\)-null. Equations (S25)–(S26) and nonsingularity of \(B\) therefore give
+\(\widehat\nu(A)=0\) if and only if \(\widehat\nu(S^{-1}A)=0\).
 
-<a id="oa-flow.suspension.chart"></a>
-## The fundamental domain, ergodicity and aperiodicity
-
-Let
-\[
- D_r=\{(z,u)\in Z\times\mathbb R:0\leq u<r(z)\},
- \qquad
- \Psi(z,u)=F_uz.
- \tag{S27}
-\]
-For these points \(n(u,z)=0\). Thus
-\(\Phi(u,z)=(0,\Psi(z,u))\); note the order of coordinates in \(\Phi\).
-The zero-integer slice in (S22) proves that \(\Psi\) is a Borel isomorphism onto \(\Gamma_1\), with inverse
-\[
- \Psi^{-1}(y)=\bigl(F_{\tau_0(y)}y,\,-\tau_0(y)\bigr).
- \tag{S28}
-\]
-The restriction of \(M\) to \(\{0\}\times\Gamma_1\) is \(v\). Consequently (S25), with the two product coordinates interchanged, proves that
-\(\Psi_*(\nu(dz)\,du|_{D_r})\) is equivalent to \(v\).
-The product restriction is sigma finite, by the vertical slabs \(0\leq u\leq n\), even when \(r\) is unbounded.
-
-Define the signed roof sums
-\[
- R_0(z)=0,\qquad
- R_k(z)=\sum_{j=0}^{k-1}r(S^jz)\ (k>0),\qquad
- R_k(z)=-\sum_{j=k}^{-1}r(S^jz)\ (k<0).
- \tag{S29}
-\]
-They are exactly \(\tau_k(z)\). Since \(r\geq\delta\), they tend to \(+\infty\) and \(-\infty\) in the two directions. For each \((t,z,u)\), there is a unique integer \(k\) with
-\(R_k(z)\leq u+t<R_{k+1}(z)\), and the suspension action is
-\[
- F_t^{\,r}(z,u)
-       =\bigl(S^kz,\ u+t-R_k(z)\bigr).
- \tag{S30}
-\]
-The integer \(k\) is Borel by these countably many inequalities. The second coordinate lies in \([0,r(S^kz))\). Only finitely many roofs are crossed in any bounded time interval, by the lower bound \(\delta\). Equation (S20), or direct concatenation of consecutive roof intervals, proves
-\(\Psi F_t^{\,r}=F_t\Psi\) for every \(t,z,u\).
-Thus (S30) is a strict jointly Borel nonsingular flow on the product measure class.
-
-If a Borel set \(A\subseteq Z\) is \(S\)-invariant, the part of \(D_r\) above \(A\) is flow invariant. Its product measure is zero exactly when \(\nu(A)=0\), because every roof is positive; the same statement applies to its complement. Flow ergodicity therefore implies that \(S\) is ergodic. For an \(S\)-invariant set modulo null sets, remove the \(S\)-saturation of its invariance failure set. This is a countable union of null sets by nonsingularity, and outside it the set is exactly invariant. Thus the equivalent measured formulation of ergodicity holds as well.
-
-We can now make \(S\) aperiodic on an invariant conull Borel set. The sets of points of exact finite period \(n\) are Borel and invariant. If their union had positive measure, one of them would be conull by ergodicity. On that set, choose in each finite orbit the point with smallest value of a fixed injective Borel real code. This is a Borel orbit-constant map: its finitely many comparisons are Borel and its minimum is unique. The zero-or-one probability argument then concentrates \(\nu\) on a single finite \(S\)-orbit. The whole tube above that finite orbit is one flow orbit, by (S29)–(S30). The product-class identification would concentrate \(v\), and hence the original measure, on that flow orbit, a contradiction.
-
-Remove the periodic points from \(Z\) and their corresponding tube from \(\Gamma_1\). These are invariant Borel null sets in their respective spaces. Keep the same notation for the restrictions. Now
-\[
- S^nz\ne z\quad(z\in Z,\ n\in\mathbb Z\setminus\{0\}).
- \tag{S31}
-\]
-The retained flow is free as well. If a point \(F_uz\) has period \(t>0\), then \(F_tz=z\). Thus \(t\) is a positive hit time at \(z\), and (S29) gives \(S^kz=z\) for its positive hit index \(k\), contradicting (S31).
-
-<a id="oa-flow.suspension.theorem"></a>
-## The complete suspension theorem
-
-**Theorem.** Every nonzero standard sigma-finite nonsingular properly ergodic Borel real flow has an invariant conull Borel subset \(X_*\) with the following description. There are a standard Borel probability space \((Z,\nu)\), an aperiodic ergodic nonsingular Borel automorphism \(S:Z\to Z\), a finite Borel function \(r:Z\to(0,\infty)\), and a constant \(\delta>0\) such that \(r(z)\geq\delta\) everywhere. There is a Borel isomorphism
-\[
- \Xi:D_r\longrightarrow X_*,
- \qquad
- [\Xi_*(\nu(dz)\,du|_{D_r})]=[\mu|_{X_*}],
- \qquad
- \Xi F_t^{\,r}=F_t\Xi
-       \quad(t\in\mathbb R).
- \tag{S32}
-\]
-The last equality holds at every point, with \(F^r\) given by (S29)–(S30). In particular the invariant conull original flow is free.
-
-**Proof.** Combine \(\Psi\) with the Borel inverse \(J^{-1}\) on the retained part of \(Y\cap\Gamma\). Every deletion made above was Borel, invariant and null. Equations (S10), (S25), (S27)–(S31) supply respectively exact equivariance, the measure class, the Borel chart, all-time vertical motion and aperiodicity. The initial replacement (S2) was equivalent to \(\mu\), which proves exactly the measure-class identity in (S32). \(\square\)
-
-There is also a useful uniformly bounded-roof construction. The [bounded-section theorem for every free Borel flow](../../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#3a4-uniform-gaps-and-the-full-suspension-chart) constructs successive gaps in \([a,3a)\) for any prescribed \(a>0\), using smoothing, sparse levels and Borel finite-degree selection. Its [measure-class passage](../../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#suspension-coordinates-and-the-base-measure) applies positive-density averaging to that chart. The direct proof here obtains the required finite roof and fixed positive lower bound from separated crossings and the explicit hitting cover.
+This cover marginal has the same null sets as the probability \(\nu\) obtained directly in (PT6). For \(0\leq u<r(z)\), one has \(n(u,z)=0\), hence
+\(\Phi(u,z)=(0,\Psi(z,u))\).
+The restriction of \(M\) to \(\{0\}\times\Gamma_1\) is \(v|_{\Gamma_1}\). Thus (S25), with product coordinates interchanged, identifies the class of \(\widehat\nu(dz)\,du|_{D_r}\) with the pullback \(\lambda\) used in (PT6). A tube over \(A\subseteq Z\) has zero product measure exactly when its base is null, since \(0<r(z)<\infty\). Comparing the two product descriptions on these tubes gives \([\widehat\nu]=[\nu]\). We may consequently use \(ds\,\nu(dz)\) for the cover class as well. The cover recovers the same transverse null sets.
 
 <a id="oa-flow.suspension.cover-corollary"></a>
 ## Two free integrable coordinate actions on one cover
@@ -381,6 +454,136 @@ The joint action is ergodic. At the level of exactly invariant Borel sets, (S34)
 It is invariant under every \(F_t\), since translations preserve Lebesgue null sets. On that set the integral
 \(\int h(F_ty)e^{-|t|}dt/2\)
 is its unique constant path value, is Borel, is exactly invariant, and equals \(h(y)\) almost everywhere. Set it to zero on the invariant null complement. Ergodicity makes this invariant representative constant: its real and imaginary level sets are invariant. Thus the joint fixed algebra is scalar. Statements (S33)–(S35) concern the two coordinate actions individually; no integrability assertion about their joint action is needed.
+
+<a id="oa-flow.suspension.nonunique-base"></a>
+## One flow with different return transformations
+
+The return transformation depends on the section. We give one properly ergodic probability-preserving flow with infinitely many return transformations that are pairwise nonconjugate, even if a conjugacy is only required to preserve measure classes. The roof functions and the time parameter are part of the construction: the resulting suspensions are conjugate at the same time, without a time rescaling.
+
+Write \(\mathbb T=\mathbb R/\mathbb Z\), let \(m\) be normalized Lebesgue measure, and fix an irrational \(\alpha\in(0,1)\). The [complete circle Fourier proof](OA-FLOW-CC.md#oa-flow.cc.0), with period one, gives translation invariance of \(m\) and completeness of \(e_n(x)=e^{2\pi inx}\) in \(L^2(\mathbb T,m)\). The only further analytic inputs are the [parameter integration and Tonelli argument](OA-FLOW-L38.md#oa-flow.suspension.setting) and the half-open suspension coordinates in [the fundamental-domain construction](OA-FLOW-L38.md#oa-flow.suspension.chart).
+
+### The common properly ergodic flow
+
+Put \(Ax=x+\alpha\) on \(\mathbb T\). It preserves \(m\), is invertible and has no periodic point. It is ergodic. Indeed, if \(f\in L^2(m)\) satisfies \(f\circ A=f\), translation invariance gives
+\[
+ \widehat{f\circ A}(n)=e^{2\pi in\alpha}\widehat f(n).
+ \tag{NU1}
+\]
+For \(n\ne0\), irrationality makes the displayed phase different from one, so all nonconstant Fourier coefficients vanish. Completeness makes \(f\) constant. Applying this to invariant-set indicators proves ergodicity, including invariance modulo null sets.
+
+We will also need the following exact distinction. If \(\zeta\) is a root of unity and a nonzero bounded measurable \(f\) satisfies \(f\circ A=\zeta f\) almost everywhere, then \(\zeta=1\) and \(f\) is constant almost everywhere. Such an \(f\) belongs to \(L^2(m)\) and has a nonzero Fourier coefficient. Equation (NU1) gives \(\zeta=e^{2\pi in\alpha}\) for its index \(n\). If \(\zeta^k=1\) for some positive integer \(k\), then \(kn\alpha\in\mathbb Z\), forcing \(n=0\). Ergodicity supplies the final assertion.
+
+On the standard Borel probability space
+\[
+ X=\mathbb T\times[0,1),\qquad \mu=m(dx)\,dv,
+\]
+define, for every real \(t\),
+\[
+ n=\lfloor v+t\rfloor,\qquad
+ F_t(x,v)=(A^n x,\,v+t-n).
+ \tag{NU2}
+\]
+The floor function makes this jointly Borel. Its half-open convention applies at negative times and at every seam. The identity
+\[
+ \lfloor v+t+s\rfloor
+ =\lfloor v+t\rfloor+
+   \lfloor v+t-\lfloor v+t\rfloor+s\rfloor
+\]
+proves the action law and the inverse \(F_{-t}\). Each \(F_t\) preserves \(\mu\): partition \([0,1)\) according to the integer \(\lfloor v+t\rfloor\), apply translation in the vertical coordinate and the measure-preserving map \(A^n\) in the circle coordinate, and note that the resulting vertical intervals partition \([0,1)\). This proves the integral identity for nonnegative Borel functions, hence for the whole measure.
+
+The flow is ergodic in the exact Borel sense used in the theorem. If a Borel indicator \(g\) is invariant under every \(F_t\), then \(F_{-v}(x,v)=(x,0)\) gives \(g(x,v)=g(x,0)\). Invariance under \(F_1\) makes the Borel function \(x\mapsto g(x,0)\) invariant under \(A\), so it is constant almost everywhere. Integration in \(v\) proves that the original invariant set is null or conull. The passage from invariant measurable classes to invariant Borel representatives is also supplied by the orbit-averaging argument (S36).
+
+Every orbit is the Borel null set
+\[
+ \bigcup_{n\in\mathbb Z}\{A^n x\}\times[0,1).
+ \tag{NU3}
+\]
+Each singleton in the circle has measure zero, and the union is countable. Thus the flow is properly ergodic. It is free at every point: if (NU2) equals \((x,v)\), then \(A^n x=x\) forces \(n=0\), and the vertical equality forces \(t=0\).
+
+### Subdividing a roof without changing the flow
+
+For each integer \(q\geq1\), set
+\[
+ Z_q=\mathbb T\times\{0,\ldots,q-1\},\qquad
+ \nu_q=m\otimes\frac1q\sum_{j=0}^{q-1}\delta_j,
+ \qquad r_q=\frac1q,
+\]
+and define
+\[
+ B_q(x,j)=
+ \begin{cases}
+ (x,j+1),&0\leq j<q-1,\\
+ (Ax,0),&j=q-1.
+ \end{cases}
+ \tag{NU4}
+\]
+Its inverse sends \((x,j)\) to \((x,j-1)\) for \(j>0\), and \((x,0)\) to \((A^{-1}x,q-1)\). Hence it is an invertible Borel probability-preserving transformation. For every integer \(k\), write the Euclidean division
+\[
+ j+k=qm+\ell,\qquad 0\leq\ell<q.
+ \quad\text{Then}\quad
+ B_q^k(x,j)=(A^m x,\ell).
+ \tag{NU5}
+\]
+For positive and negative powers this follows by iterating (NU4) and its displayed inverse; crossing the last or first level changes the circle coordinate by \(A\) or \(A^{-1}\), respectively.
+
+The transformation \(B_q\) is aperiodic: a fixed point of \(B_q^k\) would require \(q\mid k\) and \(A^{k/q}x=x\), hence \(k=0\). It is ergodic as well. Invariance of a measurable function under \(B_q\) identifies its \(q\) level functions almost everywhere and makes their common value \(A\)-invariant. The finite collection of exceptional sets causes no difficulty, and the preceding Fourier proof makes the common value constant. In particular this argument applies to indicators.
+
+Let \(G^{(q)}\) be the suspension over \(B_q\) with constant roof \(1/q\). Normalize its finite product measure to a probability:
+\[
+ D_q=Z_q\times[0,1/q),\qquad
+ d\eta_q=q\,d\nu_q\,du.
+ \tag{NU6}
+\]
+The factor \(q\) is necessary because \(\nu_q\,du\) has total mass \(1/q\). Define
+\[
+ \Xi_q((x,j),u)=(x,\,u+j/q),
+ \qquad
+ \Xi_q^{-1}(x,v)=((x,\lfloor qv\rfloor),\,v-\lfloor qv\rfloor/q).
+ \tag{NU7}
+\]
+These are inverse Borel maps, including the subdivision boundaries. They preserve the specified probabilities: for every nonnegative Borel \(H\),
+\[
+ \int_{D_q}H(\Xi_q(z,u))\,d\eta_q
+ =\sum_{j=0}^{q-1}\int_{\mathbb T}\int_0^{1/q}
+       H(x,u+j/q)\,du\,dm(x)
+ =\int_X H\,d\mu.
+ \tag{NU8}
+\]
+
+The conjugacy preserves every real time. To verify this without omitting negative times, put \(k=\lfloor q(u+t)\rfloor\), \(u'=u+t-k/q\in[0,1/q)\), and divide \(j+k=qm+\ell\) as in (NU5). The suspension rule gives
+\[
+ G_t^{(q)}((x,j),u)=((A^m x,\ell),u'),\qquad
+ u+j/q+t=m+\ell/q+u'.
+\]
+Since \(0\leq\ell/q+u'<1\), the integer in (NU2) is precisely \(m\). Therefore
+\[
+ \Xi_q G_t^{(q)}=F_t\Xi_q
+ \qquad(t\in\mathbb R)
+ \tag{NU9}
+\]
+holds at every point. In the common flow, the corresponding section is
+\(\Sigma_q=\bigcup_{j=0}^{q-1}\mathbb T\times\{j/q\}\).
+Every first positive return has time \(1/q\), and its return map is exactly (NU4). The base measure \(\nu_q\) is specified by (NU6)–(NU8); it is not a restriction of the ambient measure to the null set \(\Sigma_q\).
+
+![A unit roof and its two half-roof return levels describe the same flow](../assets/suspension-sections/nonunique-return-bases.svg)
+
+For \(q=2\), the lower half is \((x,0,u)\) and the upper half is \((x,1,u)\), both with \(0\leq u<1/2\). The middle return changes only the level. The top return changes \(x\) to \(Ax\) and returns to level zero. The horizontal identification is (NU7); the two heights in the picture are the exact return heights, while the width is a schematic circle coordinate. The proof is (NU5)–(NU9).
+
+### The return transformations are not conjugate
+
+A finite-order measurable eigenvalue means a root of unity \(\zeta\) for which a nonzero bounded measurable \(h\) satisfies \(h\circ B_q=\zeta h\) almost everywhere. Write \(h_j(x)=h(x,j)\). The successive levels and the last return in (NU4) give
+\[
+ h_j=\zeta^j h_0,\qquad h_0\circ A=\zeta^q h_0.
+ \tag{NU10}
+\]
+Here \(h_0\ne0\), since otherwise all the level functions vanish. The finite-order eigenvalue calculation following (NU1) forces \(\zeta^q=1\). Conversely, whenever \(\zeta^q=1\), the bounded function \(h(x,j)=\zeta^j\) satisfies the eigenvalue equation, including at the top return. Thus the set is exactly
+\[
+ E_{\mathrm{fin}}(B_q)=\{\zeta\in\mathbb C:\zeta^q=1\}.
+ \tag{NU11}
+\]
+These sets have different cardinalities for different \(q\). A measure-class-preserving conjugacy would preserve them: composition carries a bounded eigenfunction to a bounded eigenfunction with the same eigenvalue, and nonsingularity in both directions preserves its nonzero almost-everywhere class. Applying the inverse conjugacy gives equality of the two sets, a contradiction. This argument does not assume that such a conjugacy would preserve the particular probability measures.
+
+Consequently the \(B_q\) are pairwise nonconjugate in the nonsingular category, while (NU7)–(NU9) identify all their suspensions with the single properly ergodic flow \(F\). In particular \(B_1=A\) has no eigenvalue \(-1\), whereas \(h(x,j)=(-1)^j\) is a \(-1\) eigenfunction for \(B_2\). The suspension theorem therefore gives no uniqueness of its return base. \(\square\)
 
 <a id="oa-flow.suspension.exercises"></a>
 ## Exercises with complete solutions

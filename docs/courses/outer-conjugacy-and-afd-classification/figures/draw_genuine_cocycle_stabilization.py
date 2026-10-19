@@ -1,0 +1,45 @@
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch,FancyArrowPatch
+plt.rcParams.update({'font.family':'DejaVu Sans','svg.hashsalt':'oa-classify-genuine-stabilization-learner-v1'})
+out=Path(__file__).resolve().parent
+fig,ax=plt.subplots(figsize=(6.1,20),dpi=160)
+fig.subplots_adjust(left=.035,right=.985,bottom=.015,top=.985)
+ax.set_xlim(0,10);ax.set_ylim(0,33);ax.axis('off')
+ink='#183b53';blue='#246d97';red='#a74b43';pale='#eef5f9'
+def box(y,h,label,edge=blue,face=pale):
+ ax.add_patch(FancyBboxPatch((.22,y),9.48,h,boxstyle='round,pad=0.15',linewidth=1.3,edgecolor=edge,facecolor=face))
+ ax.text(.58,y+h-.45,label,fontsize=22,weight='bold',color=edge if edge==red else ink,va='top')
+def equation(y,text,size=22,color=ink):ax.text(.62,y,text,fontsize=size,color=color)
+ax.text(.22,32.65,'Uniform towers and\ngenuine cocycle stabilization',fontsize=25,weight='bold',color=ink,va='top')
+box(24.7,5.7,'A fixed tower\nchanges its action')
+equation(28.25,r'$\gamma:G\to\operatorname{Aut}(F),\quad B\subset F$')
+equation(27.20,r'$\delta_g|_F=\Theta\gamma_g\Theta^{-1}$')
+equation(26.10,r'$\Theta=\theta_\omega,\quad E_{i,s}\mapsto\Theta(E_{i,s})$',20)
+ax.text(.62,25.10,'Same labels and trace masses.',fontsize=19,color=ink)
+ax.add_patch(FancyArrowPatch((5,24.47),(5,24.40),arrowstyle='-|>',mutation_scale=20,color=blue))
+box(17.6,6.6,'The residual preserves\nboth bad supports')
+equation(22.00,r'$Z=E_*+\sum_{i,s}C_sE_{i,s}$')
+equation(20.90,r'$D_g=C_g-Z\delta_g(Z^*)$')
+equation(19.80,r'$V_g-1=Z^*D_g\delta_g(Z)$')
+equation(18.80,r'$D_g^*D_g,\ D_gD_g^*\leq4H_g$',21)
+equation(18.00,r'$\|V_g-1\|_{\rho^\omega}^{\sharp\,2}\leq8\tau(H_g)<8\eta$',20)
+ax.add_patch(FancyArrowPatch((5,17.37),(5,17.30),arrowstyle='-|>',mutation_scale=20,color=blue))
+box(10.4,6.7,'Genuine input,\ngenuine output')
+equation(14.92,r'$u_g\delta_g(u_h)=u_{gh}\quad\mathrm{on}\ M$',20)
+equation(13.75,r'$v_g=z^*u_g\delta_g(z)$',24,blue)
+equation(12.65,r'$v_g\delta_g(v_h)=v_{gh}$')
+equation(11.60,r'$\|v_g-1\|_\rho^\sharp<\varepsilon_c\quad(g\in K)$',20)
+equation(10.75,r'$\|[z,\psi]\|<\varepsilon_f\quad(\psi\in\Phi)$',20)
+box(3.3,6.6,'Approximate cochains\nkeep their defect',red,'#fcf4f1')
+equation(7.65,r'$A_{g,h}=u_g\delta_g(u_h)-u_{gh}$',20)
+equation(6.40,r'$v_g\delta_g(v_h)-v_{gh}$',22,red)
+equation(5.30,r'$\qquad=z^*A_{g,h}\delta_{gh}(z)$',22,red)
+ax.text(.62,3.84,'A gauge transports the defect.',fontsize=18,color=red)
+ax.text(.25,2.43,'Proof (3.1)–(3.4), (4.4)–(4.7),\n(5.2)–(5.6). Exact maps and estimates.',fontsize=15,color=ink,va='top')
+ax.text(.25,.95,'T depends on K and\nthe output tolerances.',fontsize=15,color=ink,va='top')
+for ext in ['svg','png']:
+ fig.savefig(out/f'genuine-cocycle-stabilization.{ext}',metadata={'Date':None} if ext=='svg' else {'Software':'OA-CLASSIFY deterministic figure'})
+plt.close(fig)

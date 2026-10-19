@@ -1,6 +1,6 @@
 # Tuning of ideals
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Programme text by Claude Opus 5.5 (Anthropic), with mathematical editing and reader preparation by GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 The going-up theorem needs D-balanced ideals, and the uniqueness of maximal contact needs MC-invariant ones. A general ideal is neither. This lesson replaces an ideal \(\mathcal I\) of maximal order \(m\) by an ideal \(W(\mathcal I)\) built from all products of derivatives of \(\mathcal I\) of sufficiently high total weight. The new ideal is both D-balanced and MC-invariant, and it admits exactly the same blow-up sequences as \(\mathcal I\). Order reduction for \(\mathcal I\) is therefore the same problem as order reduction for \(W(\mathcal I)\), which has the good properties.
 

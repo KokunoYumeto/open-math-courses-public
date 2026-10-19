@@ -8,6 +8,12 @@ Read [Symbols at infinity](symbols-at-infinity.md), [Regular kernels and changes
 
 Keep \(D=-i\partial\) and the negative-exponential Fourier transform. For \(P\ne0\), \(S_P\) is its full derivative norm and \(\mathcal L(P)\) its set of normalized localizations. A positive localization here means a real polynomial \(Q\) with \(Q(\xi)>0\) for every real \(\xi\), still normalized by \(|Q|_J=1\).
 
+## Existence with tempered growth
+
+For every nonzero complex polynomial \(P\), there is a fundamental solution \(E\in\mathcal S'\) with \(P(D)E=\delta_0\). Theorem 1.1 of [Polynomial reciprocals and tempered fundamental solutions](polynomial-reciprocals-and-tempered-fundamental-solutions.md#complete-proof) proves this for all real dimensions, including repeated zeros and inactive variables. Its complete proof supplies the polynomial differential functional equation, the continuation of \(|P|^{2s}\) as a tempered family, and the constant Laurent coefficient giving a reciprocal.
+
+This proves existence with tempered growth. The regularity estimate studied below imposes an additional condition. Proposition 2.1 will show why a single inverse need not have both properties.
+
 ## A necessary uniform integral bound
 
 **Theorem 1.1.** If \(P(D)\) has a fundamental solution
@@ -238,6 +244,8 @@ Consequently \(E_+\) is tempered but not regular, whereas every regular inverse 
 
 There is no unrestricted uniqueness among tempered inverses. The symbol (17) vanishes at zero, so \(P(D)1=0\). Hence \(E_++c\) is a tempered fundamental solution for every constant \(c\). The support requirement \(t\geq0\) in Proposition 2.1 is what makes its uniqueness true.
 
+*Reference:* [Hörmander II, Example 10.2.15] states uniqueness of a tempered fundamental solution without a support qualification. The constant homogeneous solutions above show why the causal support condition is necessary.
+
 ## Exercises with complete solutions
 
 **Exercise 1. Why normalization is necessary.** If \(Q\) is a positive localization, explain why a bound uniform over all its positive scalar multiples cannot hold. What set is used in Theorem 1.1?
@@ -286,3 +294,4 @@ which diverges as \(a\to0\). Since \(A_c\geq0\), formula (20) still constructs i
 - **[Grubb]** Gerd Grubb, *Distributions and Operators*, author-hosted lecture chapter §5, *Fourier transformation of distributions*: §§5.1–5.3, Definitions 5.1 and 5.8, estimate (5.21), Example 5.11, and Theorems 5.16–5.17 (native pp. 5.1, 5.9 and 5.11–5.14). [Exact freely readable chapter](https://www.math.ku.dk/~grubb/dist5.pdf). [Author's notes](https://web.math.ku.dk/~grubb/).
 - **[Melrose]** Richard Melrose, *Introduction to Microlocal Analysis*, chapters on distributions and Fourier analysis. [MIT notes](https://math.mit.edu/~rbm/iml/).
 - **[Coste]** Michel Coste, *Real Algebraic Sets*, lecture notes, 2003, §1.1 and §1.5. [ICTP notes](https://indico.ictp.it/event/a02455/session/9/contribution/6/material/0/0.pdf).
+- **[Hörmander II]** Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Fundamental solutions, localization of polynomials and regularity.

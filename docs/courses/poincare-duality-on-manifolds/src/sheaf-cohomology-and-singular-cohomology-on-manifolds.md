@@ -1,6 +1,6 @@
 # Sheaf cohomology and singular cohomology on manifolds
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0). Prerequisite exposition revised by GPT-6 Astra (OpenAI), October 2026.*
+*Programme text prepared with Claude Opus 5.5 (Anthropic), GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 On a manifold, the cohomology of a constant sheaf is singular cohomology. The comparison runs through the sheaf of singular cochains: it resolves the constant sheaf, its sections compute singular cohomology, and its terms are flasque. The same resolution identifies cohomology with supports in a closed set with relative singular cohomology, and compactly supported sheaf cohomology with the compactly supported singular cohomology of the previous lessons. Finally, for a manifold embedded as an open subset of a compact Hausdorff space, the cohomology of the extension by zero of a sheaf is its compactly supported cohomology. Together with Poincaré duality these facts give duality and dimension statements for the sheaf cohomology of manifolds, in the form used in étale cohomology. The last section matches connecting maps of sheaf sequences with singular ones and computes the class of the coordinate function of the punctured plane under the exponential and Kummer sequences, including its sign.
 

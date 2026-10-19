@@ -1,6 +1,6 @@
 # Finite maximal quotients
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 A maximal C*-quotient of a finite von Neumann algebra is itself a finite von Neumann factor. Its quotient map can be singular, so ultraweak compactness cannot simply be passed through that map. We instead modify a Cauchy sequence on central projections invisible to the quotient. The modified sequence has uniformly small centre-valued \(L^2\) increments. A weak cluster point then realizes the prescribed GNS limit.
 
@@ -26,7 +26,7 @@ for every \(b\), and the converse follows by applying \(\pi(a)\) to \(\xi\). Thu
 **Lemma 1.1.** Suppose \(a_n\in M_1\) and
 \[
 \tau((a_{n+1}-a_n)^*(a_{n+1}-a_n))<\varepsilon_n^2,
-\qquad \sum_n\varepsilon_n<\infty.
+\qquad \varepsilon_n>0,\qquad\sum_n\varepsilon_n<\infty.
 \tag{1.1}
 \]
 There are \(b_n\in M_1\) satisfying \(\pi(b_n)=\pi(a_n)\) and
@@ -167,6 +167,20 @@ For \(j\geq0\), choose nested coordinate projections \(p_{n,j}\) of rank \(3^{n-
 \tag{4.2}
 \]
 Thus the quotient has an infinite strictly decreasing chain of nonzero projections. It is infinite dimensional. A finite type I factor is a finite matrix algebra, so the finite factor \(N\) is of type II\(_1\). The domain is of type I, being a product of finite type I central pieces. Hence type I is not preserved under arbitrary C*-quotients of von Neumann algebras.
+
+**Proposition 4.1 (Growing matrix dimensions).** Let \((d_n)\) be positive integers and let \(\mathcal V\) be an ultrafilter on \(\mathbb N\) such that \(\{n:d_n\geq r\}\in\mathcal V\) for every positive integer \(r\). In the finite type I algebra
+\[
+M_d=\prod_{n\geq1}M_{d_n}(\mathbb C),
+\]
+the maximal quotient associated with the central character \(\chi((c_n))=\lim_{\mathcal V}c_n\) is a type II\(_1\) factor. In particular this holds for \(d_n=n\) and any free ultrafilter.
+
+**Proof.** The centre-valued trace is the sequence of normalized coordinate traces, so Theorem 3.1 makes this quotient a finite von Neumann factor with its faithful normal quotient trace. For \(j\geq0\), let \(p_{n,j}\) project onto the first \(\lfloor d_n/2^j\rfloor\) coordinate vectors. These projections decrease with \(j\) and \(p_{n,0}=1\). With \(p_j=(p_{n,j})_n\), the quotient map \(\pi\) and its trace satisfy
+\[
+\tau_N(\pi(p_j))
+=\lim_{\mathcal V}\frac{\lfloor d_n/2^j\rfloor}{d_n}
+=2^{-j}.
+\]
+Indeed the fraction differs from \(2^{-j}\) by a number in \([0,1/d_n)\), and \(1/d_n\to0\) along \(\mathcal V\) by the stated hypothesis. Thus every \(\pi(p_j)\) is nonzero and \(\pi(p_j)-\pi(p_{j+1})\) has trace \(2^{-j-1}>0\). The quotient contains an infinite strictly decreasing chain of projections and cannot be a finite matrix algebra. A finite factor is either a finite matrix algebra or type II\(_1\), so it is type II\(_1\). For \(d_n=n\), each required set is cofinite and therefore belongs to every free ultrafilter. \(\square\)
 
 The quotient need not have separable predual or a separable GNS Hilbert space; no countability is claimed for those objects.
 

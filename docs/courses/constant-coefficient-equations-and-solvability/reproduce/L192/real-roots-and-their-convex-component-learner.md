@@ -41,7 +41,7 @@ To apply this to a homogeneous polynomial, choose tangential linear forms \(\ell
                          \qquad s\ne0.
  \tag{13}
 \]
-On an \(e\)-line every \(\ell_j\) is constant, so (13) is exactly a sequence of the operations (12). A line not parallel to \(e\) has at least one nonzero tangential coordinate, which gives simple roots. The polynomial stays homogeneous, \(p_s(e)=1\), and \(p_s\to p\) in coefficients.
+On an \(e\)-line every \(\ell_j\) is constant, so (13) is exactly a sequence of the operations (12). An \(e\)-line that does not pass through the origin has at least one nonzero tangential coordinate, which gives simple roots. The polynomial stays homogeneous, \(p_s(e)=1\), and \(p_s\to p\) in coefficients.
 
 Simple real roots persist for a small change of direction. To make the change uniform, use unit base points in the transverse plane and its compact sphere. Finitely many sign-changing root intervals suffice. A multiple root along any hyperbolic direction would force the gradient to vanish at that zero; complete-proof Lemma 3.1 proves this through a small real displacement and a nonreal scaled root. Strictness in \(e\) rules out such a zero gradient. Thus the hyperbolic directions in the component of \(p_s\) are both open and closed, and include the whole component.
 

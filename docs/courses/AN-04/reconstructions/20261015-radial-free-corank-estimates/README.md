@@ -4,4 +4,4 @@ Read [the lesson](corank-estimates-without-radial-restrictions.html) or edit [it
 
 Three complete solutions and an original reproducible diagram accompany the proof map, source credit, proof review, [reader checks](reader-check.json) and [finite checks](model-check.json). The two different inequalities do not assert a universal continuity theorem in the gap between them.
 
-Original expression is CC0-1.0; linked components retain their terms. The 102 transitive human foundations remain external. Full-course completion and internal export P514 closure are unclaimed.
+Original expression is CC0-1.0; linked components retain their terms. The 92 transitive human foundations remain external. Full-course completion and internal export P514 closure are unclaimed.

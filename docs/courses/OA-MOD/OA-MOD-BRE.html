@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bratteli reflection and the exceptional graph · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/bratteli-reflection-and-the-exceptional-graph.md">Editable Markdown</a></nav><article class="lesson"><h1 id="bratteli-reflection-and-the-exceptional-graph">Bratteli reflection and the exceptional graph</h1>
+<p><em>Original exposition and figures by OpenAI Codex, GPT-6 Astra, Ultra. New text and figures: CC0-1.0.</em></p>
+<p>A diagram of successive finite-dimensional algebras contains repeated copies of graph vertices. Keeping a first appearance, returning along an old edge, and introducing another vertex are different operations. A small example shows how to distinguish them by endpoint sets, matrix-block sizes and a polynomial invariant.</p>
+<p>The example also resolves a specific discrepancy in Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, XIX.4. The illustration after Definition 4.8 on printed page 469 and the rooted <span class="math" data-tex="\(E_8\)">\(E_8\)</span> graph on printed page 492 have different incidence patterns. The later sentence identifying them does not hold for the displayed earlier diagram. We give exact finite graphs and proofs below. The classification and existence of subfactors are separate questions.</p>
+<h2 id="unfold-a-rooted-graph-by-paths"><span id="OA-MOD-BRE-01"></span><span id="oa-mod-bre-01"></span>Unfold a rooted graph by paths</h2>
+<p>Let <span class="math" data-tex="\(G=(V,E)\)">\(G=(V,E)\)</span> be a finite connected simple graph with at least two vertices, and choose a root <span class="math" data-tex="\(r\)">\(r\)</span>. Edges are unordered pairs of distinct vertices. A path of length <span class="math" data-tex="\(k\)">\(k\)</span> here means a walk</p>
+<span class="math math-display" data-tex="\[
+(r=v_0,v_1,\ldots,v_k),\qquad \{v_{j-1},v_j\}\in E;
+\tag{BRE.1}
+\]">\[
+(r=v_0,v_1,\ldots,v_k),\qquad \{v_{j-1},v_j\}\in E;
+\tag{BRE.1}
+\]</span>
+<p>vertices and edges may be revisited. Let <span class="math" data-tex="\(\mathcal P_k(v)\)">\(\mathcal P_k(v)\)</span> be the finite set of such walks ending at <span class="math" data-tex="\(v\)">\(v\)</span>, put <span class="math" data-tex="\(p_k(v)=|\mathcal P_k(v)|\)">\(p_k(v)=|\mathcal P_k(v)|\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+S_k=\{v:p_k(v)&gt;0\}.
+\]">\[
+S_k=\{v:p_k(v)&gt;0\}.
+\]</span>
+<p>At level <span class="math" data-tex="\(k\)">\(k\)</span> of the unfolded diagram put one vertex for each <span class="math" data-tex="\(v\in S_k\)">\(v\in S_k\)</span>. Connect the copy of <span class="math" data-tex="\(v\)">\(v\)</span> at level <span class="math" data-tex="\(k\)">\(k\)</span> to the copy of <span class="math" data-tex="\(w\)">\(w\)</span> at level <span class="math" data-tex="\(k+1\)">\(k+1\)</span> when <span class="math" data-tex="\(\{v,w\}\in E\)">\(\{v,w\}\in E\)</span>. Copies at different levels retain the same label when they come from the same vertex of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Path recurrence.</strong> With <span class="math" data-tex="\(p_0(r)=1\)">\(p_0(r)=1\)</span> and <span class="math" data-tex="\(p_0(v)=0\)">\(p_0(v)=0\)</span> for <span class="math" data-tex="\(v\ne r\)">\(v\ne r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+p_{k+1}(w)=\sum_{\{v,w\}\in E}p_k(v),\qquad
+S_{k+1}=\{w:\text{\(w\) has a neighbour in \(S_k\)}\}.
+\tag{BRE.2}
+\]">\[
+p_{k+1}(w)=\sum_{\{v,w\}\in E}p_k(v),\qquad
+S_{k+1}=\{w:\text{\(w\) has a neighbour in \(S_k\)}\}.
+\tag{BRE.2}
+\]</span>
+<p>Indeed, deleting the last edge partitions the walks ending at <span class="math" data-tex="\(w\)">\(w\)</span> according to their previous endpoint <span class="math" data-tex="\(v\)">\(v\)</span>. Appending that edge is the inverse bijection on each part.</p>
+<p>This recurrence constructs actual inclusions of finite-dimensional algebras. Define</p>
+<span class="math math-display" data-tex="\[
+D_k=\bigoplus_{v\in S_k}\operatorname{End}_{\mathbb C}
+\bigl(\mathbb C^{\mathcal P_k(v)}\bigr).
+\tag{BRE.3}
+\]">\[
+D_k=\bigoplus_{v\in S_k}\operatorname{End}_{\mathbb C}
+\bigl(\mathbb C^{\mathcal P_k(v)}\bigr).
+\tag{BRE.3}
+\]</span>
+<p>The path partition identifies</p>
+<span class="math math-display" data-tex="\[
+\mathbb C^{\mathcal P_{k+1}(w)}
+=\bigoplus_{\{v,w\}\in E}\mathbb C^{\mathcal P_k(v)},
+\]">\[
+\mathbb C^{\mathcal P_{k+1}(w)}
+=\bigoplus_{\{v,w\}\in E}\mathbb C^{\mathcal P_k(v)},
+\]</span>
+<p>where zero summands are omitted. Send <span class="math" data-tex="\(a=(a_v)\in D_k\)">\(a=(a_v)\in D_k\)</span> to the block-diagonal operator whose block on the displayed summand is <span class="math" data-tex="\(a_v\)">\(a_v\)</span>. This map <span class="math" data-tex="\(D_k\to D_{k+1}\)">\(D_k\to D_{k+1}\)</span> preserves sums, products, adjoints and the identity, by their blockwise definitions. It is injective: every <span class="math" data-tex="\(v\in S_k\)">\(v\in S_k\)</span> has a neighbour, so its block occurs in at least one target summand. The inclusion multiplicities are exactly the edges of the unfolded diagram.</p>
+<p>For a rooted tree, the first level at which <span class="math" data-tex="\(v\)">\(v\)</span> appears is its graph distance from <span class="math" data-tex="\(r\)">\(r\)</span>. A walk cannot be shorter than the unique simple path, and that simple path attains the distance. Every later occurrence is at a level with the same parity; inserting a two-step trip along an edge and back realizes every larger level of that parity. Thus</p>
+<span class="math math-display" data-tex="\[
+v\in S_k
+\quad\Longleftrightarrow\quad
+d(r,v)\le k,\qquad k-d(r,v)\in2\mathbb Z.
+\tag{BRE.4}
+\]">\[
+v\in S_k
+\quad\Longleftrightarrow\quad
+d(r,v)\le k,\qquad k-d(r,v)\in2\mathbb Z.
+\tag{BRE.4}
+\]</span>
+<p>The parity assertion follows because each edge changes the parity of distance in a tree.</p>
+<p>Consequently, an edge leading to a first appearance must be distinguished from an edge leading to a later copy of an old vertex. The number <span class="math" data-tex="\(p_k(v)\)">\(p_k(v)\)</span>, which is a matrix-block size, must also be distinguished from the number of vertices in <span class="math" data-tex="\(S_k\)">\(S_k\)</span>.</p>
+<h2 id="two-explicit-trees-behind-the-comparison"><span id="OA-MOD-BRE-02"></span><span id="oa-mod-bre-02"></span>Two explicit trees behind the comparison</h2>
+<p>Use vertices <span class="math" data-tex="\(v_0,\ldots,v_6,w\)">\(v_0,\ldots,v_6,w\)</span>, with root <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. Both trees contain the chain</p>
+<span class="math math-display" data-tex="\[
+v_0-v_1-v_2-v_3-v_4-v_5-v_6.
+\tag{BRE.5}
+\]">\[
+v_0-v_1-v_2-v_3-v_4-v_5-v_6.
+\tag{BRE.5}
+\]</span>
+<p>Define <span class="math" data-tex="\(T\)">\(T\)</span> by adding <span class="math" data-tex="\(\{v_3,w\}\)">\(\{v_3,w\}\)</span>, and define <span class="math" data-tex="\(E\)">\(E\)</span> by adding <span class="math" data-tex="\(\{v_4,w\}\)">\(\{v_4,w\}\)</span>. The three arms of <span class="math" data-tex="\(T\)">\(T\)</span>, measured from its unique degree-three vertex, have lengths <span class="math" data-tex="\(3,3,1\)">\(3,3,1\)</span>. Those of <span class="math" data-tex="\(E\)">\(E\)</span> have lengths <span class="math" data-tex="\(4,2,1\)">\(4,2,1\)</span>. The latter is the rooted <span class="math" data-tex="\(E_8\)">\(E_8\)</span> graph displayed on page 492 of the cited source.</p>
+<p>Formula (BRE.4) gives the following complete endpoint sets through level seven.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Tree <span class="math" data-tex="\(T\)">\(T\)</span>, with <span class="math" data-tex="\(w\)">\(w\)</span> attached to <span class="math" data-tex="\(v_3\)">\(v_3\)</span></th>
+<th>Tree <span class="math" data-tex="\(E\)">\(E\)</span>, with <span class="math" data-tex="\(w\)">\(w\)</span> attached to <span class="math" data-tex="\(v_4\)">\(v_4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><span class="math" data-tex="\(v_0\)">\(v_0\)</span></td>
+<td><span class="math" data-tex="\(v_0\)">\(v_0\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td><span class="math" data-tex="\(v_1\)">\(v_1\)</span></td>
+<td><span class="math" data-tex="\(v_1\)">\(v_1\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="math" data-tex="\(v_0,v_2\)">\(v_0,v_2\)</span></td>
+<td><span class="math" data-tex="\(v_0,v_2\)">\(v_0,v_2\)</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="math" data-tex="\(v_1,v_3\)">\(v_1,v_3\)</span></td>
+<td><span class="math" data-tex="\(v_1,v_3\)">\(v_1,v_3\)</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="math" data-tex="\(v_0,v_2,w,v_4\)">\(v_0,v_2,w,v_4\)</span></td>
+<td><span class="math" data-tex="\(v_0,v_2,v_4\)">\(v_0,v_2,v_4\)</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="math" data-tex="\(v_1,v_3,v_5\)">\(v_1,v_3,v_5\)</span></td>
+<td><span class="math" data-tex="\(v_1,v_3,v_5,w\)">\(v_1,v_3,v_5,w\)</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><span class="math" data-tex="\(v_0,v_2,w,v_4,v_6\)">\(v_0,v_2,w,v_4,v_6\)</span></td>
+<td><span class="math" data-tex="\(v_0,v_2,v_4,v_6\)">\(v_0,v_2,v_4,v_6\)</span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><span class="math" data-tex="\(v_1,v_3,v_5\)">\(v_1,v_3,v_5\)</span></td>
+<td><span class="math" data-tex="\(v_1,v_3,v_5,w\)">\(v_1,v_3,v_5,w\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>After level six the two endpoint sets alternate with period two. This follows directly from (BRE.4), since six is the largest distance from the chosen root in either tree.</p>
+<p><strong>Reading the earlier illustration.</strong> Start at its star, with level zero there. Label the successive vertices on the descending right boundary <span class="math" data-tex="\(v_0,\ldots,v_6\)">\(v_0,\ldots,v_6\)</span>. The additional white vertex directly below the level-three boundary vertex is <span class="math" data-tex="\(w\)">\(w\)</span>. Its incident edges run to the level-three and level-five copies of <span class="math" data-tex="\(v_3\)">\(v_3\)</span>. The copies of <span class="math" data-tex="\(v_3\)">\(v_3\)</span> are repeated black vertices on the central vertical line. The two diagonals from each such copy meet the repeated copies of <span class="math" data-tex="\(v_2\)">\(v_2\)</span> and <span class="math" data-tex="\(v_4\)">\(v_4\)</span>. The other diagonals are the repeated edges of (BRE.5).</p>
+<p>With these labels, every displayed row and edge through level ten agrees with the unfolding of <span class="math" data-tex="\(T\)">\(T\)</span>. In particular, there are four vertices at level four and three at level five. The unfolded <span class="math" data-tex="\(E\)">\(E\)</span> has three at level four and four at level five. This finite discrepancy already rules out the claimed identification; no interpretation of the later ellipses can change those levels.</p>
+<p>The visibly heavier boundary segments in the earlier illustration form the seven-vertex path (BRE.5). They omit the short edge to <span class="math" data-tex="\(w\)">\(w\)</span>. Selecting those heavy segments alone therefore does not give <span class="math" data-tex="\(E_8\)">\(E_8\)</span> either. The full incidence comparison above establishes the discrepancy independently of a choice of line-width threshold.</p>
+<p><img src="assets/bratteli-reflection-and-the-exceptional-graph.svg" alt="Two rooted trees and their first endpoint levels" /></p>
+<p><em>Figure.</em> The upper drawings are defined by the explicit edge lists in this section. The lower drawings unfold those graphs by (BRE.2). The short branch of <span class="math" data-tex="\(T\)">\(T\)</span> first appears at level four; the short branch of <span class="math" data-tex="\(E_8\)">\(E_8\)</span> first appears at level five. These are original drawings, not reproductions of the source illustration.</p>
+<h2 id="the-norm-of-the-first-tree-is-exactly-two"><span id="OA-MOD-BRE-03"></span><span id="oa-mod-bre-03"></span>The norm of the first tree is exactly two</h2>
+<p>For a finite simple graph, let <span class="math" data-tex="\(A\)">\(A\)</span> be its adjacency matrix on <span class="math" data-tex="\(\mathbb C^V\)">\(\mathbb C^V\)</span>, with the usual Euclidean inner product. Suppose <span class="math" data-tex="\(p_v&gt;0\)">\(p_v&gt;0\)</span> and <span class="math" data-tex="\(Ap=\lambda p\)">\(Ap=\lambda p\)</span>, where <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. For <span class="math" data-tex="\(x\in\mathbb C^V\)">\(x\in\mathbb C^V\)</span>, expanding each square gives</p>
+<span class="math math-display" data-tex="\[
+\lambda\sum_v|x_v|^2-\langle Ax,x\rangle
+=\sum_{\{u,v\}\in E}p_up_v
+\left|\frac{x_u}{p_u}-\frac{x_v}{p_v}\right|^2.
+\tag{BRE.6}
+\]">\[
+\lambda\sum_v|x_v|^2-\langle Ax,x\rangle
+=\sum_{\{u,v\}\in E}p_up_v
+\left|\frac{x_u}{p_u}-\frac{x_v}{p_v}\right|^2.
+\tag{BRE.6}
+\]</span>
+<p>The coefficient of <span class="math" data-tex="\(|x_v|^2\)">\(|x_v|^2\)</span> on the right is
+<span class="math" data-tex="\(\sum_{u\sim v}p_u/p_v=\lambda\)">\(\sum_{u\sim v}p_u/p_v=\lambda\)</span>. The mixed terms are exactly the negative adjacency quadratic form. This proves the identity.</p>
+<p>The same positive eigenvector gives an operator-norm bound directly. Weighted Cauchy–Schwarz yields</p>
+<span class="math math-display" data-tex="\[
+|(Ax)_v|^2
+\le \left(\sum_{u\sim v}\frac{p_u}{p_v}\right)
+\left(\sum_{u\sim v}\frac{p_v}{p_u}|x_u|^2\right).
+\]">\[
+|(Ax)_v|^2
+\le \left(\sum_{u\sim v}\frac{p_u}{p_v}\right)
+\left(\sum_{u\sim v}\frac{p_v}{p_u}|x_u|^2\right).
+\]</span>
+<p>Summing over <span class="math" data-tex="\(v\)">\(v\)</span>, and using <span class="math" data-tex="\(Ap=\lambda p\)">\(Ap=\lambda p\)</span> twice, gives
+<span class="math" data-tex="\(\|Ax\|^2\le\lambda^2\|x\|^2\)">\(\|Ax\|^2\le\lambda^2\|x\|^2\)</span>. Here Cauchy–Schwarz is the finite-sum inequality obtained by minimizing <span class="math" data-tex="\(\sum_i|a_i-tb_i|^2\)">\(\sum_i|a_i-tb_i|^2\)</span> over the complex scalar <span class="math" data-tex="\(t\)">\(t\)</span>; the case <span class="math" data-tex="\(b=0\)">\(b=0\)</span> is immediate. Thus <span class="math" data-tex="\(\|A\|\le\lambda\)">\(\|A\|\le\lambda\)</span>, while <span class="math" data-tex="\(Ap=\lambda p\)">\(Ap=\lambda p\)</span> gives equality.</p>
+<p>For <span class="math" data-tex="\(T\)">\(T\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+(p_{v_0},p_{v_1},\ldots,p_{v_6};p_w)
+=(1,2,3,4,3,2,1;2).
+\tag{BRE.7}
+\]">\[
+(p_{v_0},p_{v_1},\ldots,p_{v_6};p_w)
+=(1,2,3,4,3,2,1;2).
+\tag{BRE.7}
+\]</span>
+<p>At an end of the chain the neighbouring weight is twice its own. At an interior chain vertex other than <span class="math" data-tex="\(v_3\)">\(v_3\)</span>, the two neighbouring weights sum to twice its own. At <span class="math" data-tex="\(v_3\)">\(v_3\)</span> the sum is <span class="math" data-tex="\(3+3+2=8\)">\(3+3+2=8\)</span>, and at <span class="math" data-tex="\(w\)">\(w\)</span> it is <span class="math" data-tex="\(4=2\cdot2\)">\(4=2\cdot2\)</span>. Thus <span class="math" data-tex="\(Ap=2p\)">\(Ap=2p\)</span>. The positive-vector norm bound therefore gives</p>
+<span class="math math-display" data-tex="\[
+\|A_T\|=2.
+\tag{BRE.8}
+\]">\[
+\|A_T\|=2.
+\tag{BRE.8}
+\]</span>
+<p>This is an exact finite-matrix calculation. It does not require any claim that the drawn tower comes from a particular subfactor.</p>
+<h2 id="a-determinant-distinguishes-the-graphs-without-a-root"><span id="OA-MOD-BRE-04"></span><span id="oa-mod-bre-04"></span>A determinant distinguishes the graphs without a root</h2>
+<p>Write <span class="math" data-tex="\(P_G(x)=\det(xI-A_G)\)">\(P_G(x)=\det(xI-A_G)\)</span>, and let <span class="math" data-tex="\(P_n\)">\(P_n\)</span> denote the polynomial for the <span class="math" data-tex="\(n\)">\(n\)</span>-vertex path. Set <span class="math" data-tex="\(P_0=1\)">\(P_0=1\)</span>, the determinant of the empty matrix.</p>
+<p><strong>Leaf recurrence.</strong> If <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a leaf with neighbour <span class="math" data-tex="\(u\)">\(u\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+P_G(x)=xP_{G-\ell}(x)-P_{G-\{\ell,u\}}(x).
+\tag{BRE.9}
+\]">\[
+P_G(x)=xP_{G-\ell}(x)-P_{G-\{\ell,u\}}(x).
+\tag{BRE.9}
+\]</span>
+<p>To prove it, expand the determinant by permutations. A nonzero permutation term either fixes <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, contributing the first term, or contains the transposition <span class="math" data-tex="\((\ell,u)\)">\((\ell,u)\)</span>. No longer cycle through <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is possible, because it has only one neighbour. The transposition has negative sign, and its two matrix entries are both <span class="math" data-tex="\(-1\)">\(-1\)</span>; removing the two vertices gives the second term. This accounts for every nonzero term. For disjoint components the matrix is block diagonal, so their determinant polynomials multiply.</p>
+<p>Consequently <span class="math" data-tex="\(P_1=x\)">\(P_1=x\)</span> and</p>
+<span class="math math-display" data-tex="\[
+P_n=xP_{n-1}-P_{n-2}.
+\]">\[
+P_n=xP_{n-1}-P_{n-2}.
+\]</span>
+<p>Repeated substitution gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_2&amp;=x^2-1,&amp;P_3&amp;=x^3-2x,\\
+P_4&amp;=x^4-3x^2+1,&amp;P_7&amp;=x^7-6x^5+10x^3-4x.
+\end{aligned}
+\tag{BRE.10}
+\]">\[
+\begin{aligned}
+P_2&amp;=x^2-1,&amp;P_3&amp;=x^3-2x,\\
+P_4&amp;=x^4-3x^2+1,&amp;P_7&amp;=x^7-6x^5+10x^3-4x.
+\end{aligned}
+\tag{BRE.10}
+\]</span>
+<p>Apply (BRE.9) to the extra leaf <span class="math" data-tex="\(w\)">\(w\)</span>. Removing its neighbour from the remaining chain gives two three-vertex paths for <span class="math" data-tex="\(T\)">\(T\)</span>, and paths of four and two vertices for <span class="math" data-tex="\(E\)">\(E\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_T(x)&amp;=xP_7(x)-P_3(x)^2\\
+&amp;=x^8-7x^6+14x^4-8x^2,\\
+P_E(x)&amp;=xP_7(x)-P_4(x)P_2(x)\\
+&amp;=x^8-7x^6+14x^4-8x^2+1.
+\end{aligned}
+\tag{BRE.11}
+\]">\[
+\begin{aligned}
+P_T(x)&amp;=xP_7(x)-P_3(x)^2\\
+&amp;=x^8-7x^6+14x^4-8x^2,\\
+P_E(x)&amp;=xP_7(x)-P_4(x)P_2(x)\\
+&amp;=x^8-7x^6+14x^4-8x^2+1.
+\end{aligned}
+\tag{BRE.11}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\det A_T=0\)">\(\det A_T=0\)</span>, whereas <span class="math" data-tex="\(\det A_E=1\)">\(\det A_E=1\)</span>, since both matrices have even order eight. Relabelling vertices conjugates an adjacency matrix by a permutation matrix and leaves its determinant unchanged. Thus <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> are not isomorphic even when the root is forgotten.</p>
+<p>There is also a direct counting invariant. Their bipartition sizes are <span class="math" data-tex="\(5+3\)">\(5+3\)</span> and <span class="math" data-tex="\(4+4\)">\(4+4\)</span>, respectively. A connected bipartite graph has a unique bipartition up to swapping its two parts: the parity of the length of a path from a chosen vertex determines its part. Every graph isomorphism preserves these sizes up to that swap. The counts independently distinguish the same two graphs.</p>
+<h2 id="worked-endpoint-and-matrix-block-calculations"><span id="OA-MOD-BRE-05"></span><span id="oa-mod-bre-05"></span>Worked endpoint and matrix-block calculations</h2>
+<p><strong>1. First appearance of the short branch.</strong> At which level can the extra vertex <span class="math" data-tex="\(w\)">\(w\)</span> occur in each tree?</p>
+<p><em>Solution.</em> In <span class="math" data-tex="\(T\)">\(T\)</span>, the simple path is <span class="math" data-tex="\(v_0,v_1,v_2,v_3,w\)">\(v_0,v_1,v_2,v_3,w\)</span>, so its length is four. In <span class="math" data-tex="\(E\)">\(E\)</span>, the path continues through <span class="math" data-tex="\(v_4\)">\(v_4\)</span> before reaching <span class="math" data-tex="\(w\)">\(w\)</span>, so its length is five. Formula (BRE.4) gives all later occurrences: even levels at least four in <span class="math" data-tex="\(T\)">\(T\)</span>, and odd levels at least five in <span class="math" data-tex="\(E\)">\(E\)</span>. Treating the level-five central copy of <span class="math" data-tex="\(v_3\)">\(v_3\)</span> in the first tower as a new short-branch vertex would change the labels and the incidence relations.</p>
+<p><strong>2. Matrix blocks detect the discrepancy.</strong> Calculate <span class="math" data-tex="\(D_4\)">\(D_4\)</span> for the two trees using (BRE.3).</p>
+<p><em>Solution.</em> At level two the walk counts at <span class="math" data-tex="\(v_0,v_2\)">\(v_0,v_2\)</span> are <span class="math" data-tex="\(1,1\)">\(1,1\)</span>. At level three those at <span class="math" data-tex="\(v_1,v_3\)">\(v_1,v_3\)</span> are <span class="math" data-tex="\(2,1\)">\(2,1\)</span>. Thus in <span class="math" data-tex="\(T\)">\(T\)</span> the level-four counts at <span class="math" data-tex="\(v_0,v_2,w,v_4\)">\(v_0,v_2,w,v_4\)</span> are <span class="math" data-tex="\(2,3,1,1\)">\(2,3,1,1\)</span>. In <span class="math" data-tex="\(E\)">\(E\)</span>, the counts at <span class="math" data-tex="\(v_0,v_2,v_4\)">\(v_0,v_2,v_4\)</span> are <span class="math" data-tex="\(2,3,1\)">\(2,3,1\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_4(T)&amp;\cong M_2(\mathbb C)\oplus M_3(\mathbb C)\oplus\mathbb C\oplus\mathbb C,\\
+D_4(E)&amp;\cong M_2(\mathbb C)\oplus M_3(\mathbb C)\oplus\mathbb C.
+\end{aligned}
+\tag{BRE.12}
+\]">\[
+\begin{aligned}
+D_4(T)&amp;\cong M_2(\mathbb C)\oplus M_3(\mathbb C)\oplus\mathbb C\oplus\mathbb C,\\
+D_4(E)&amp;\cong M_2(\mathbb C)\oplus M_3(\mathbb C)\oplus\mathbb C.
+\end{aligned}
+\tag{BRE.12}
+\]</span>
+<p>Their complex dimensions are <span class="math" data-tex="\(15\)">\(15\)</span> and <span class="math" data-tex="\(14\)">\(14\)</span>. The preceding endpoint sets and algebras agree through level three, so agreement of that shorter prefix cannot decide this example.</p>
+<p><strong>3. Which conclusions have been established?</strong> Does a drawing with the correct <span class="math" data-tex="\(E_8\)">\(E_8\)</span> edges prove the existence or classification of the corresponding subfactor?</p>
+<p><em>Solution.</em> Section 1 constructs finite matrix-algebra inclusions from either edge list by a direct formula. It does not provide the additional conditional expectations, Jones relations, compatible traces and analytic realization needed for a subfactor assertion. Sections 2–4 prove a graph comparison, a norm calculation and a determinant calculation. The exceptional subfactor realization and classification require their separate programme proofs. The precise correction here is to the earlier illustration's identification, not to those classification theorems.</p>
+<p>For the source comparison, see M. Takesaki, <em>Theory of Operator Algebras III</em>, XIX.4, Definition 4.8 and the illustration on p. 469, and the graph list on p. 492. The edge list for <span class="math" data-tex="\(E\)">\(E\)</span> specifies the independently drawn rooted <span class="math" data-tex="\(E_8\)">\(E_8\)</span> diagram used here.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

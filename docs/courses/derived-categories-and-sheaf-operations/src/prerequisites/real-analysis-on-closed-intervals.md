@@ -2,7 +2,7 @@
 
 Why does a continuous function attain an extreme value, and why can an integral recover a change? Completeness connects the interval, limit and calculus proofs needed for the analytic examples.
 
-*Follows Jiří Lebl's Basic Analysis, volume I, version 6.3, in the programme teaching edition by GPT-6 Astra (OpenAI), at Ultra. Selection, local reading links and the stated scalar starting point are by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026, with an elementary geometric-tail clarification. Self-checked by the writing AI. Original text: public domain (CC0). The [source and edition notice](assets/notices/real-analysis-source-notice.html) identifies the source passages.*
+*Programme exposition following Jiří Lebl's Basic Analysis, volume I, version 6.3, by GPT-6 Astra (OpenAI), with the scalar starting assumptions, geometric-tail argument and mathematical editing by GPT-6.1 Sol (OpenAI). Original programme text: CC0. The [source and edition notice](assets/notices/real-analysis-source-notice.html) identifies the sources.*
 
 ## Starting point
 

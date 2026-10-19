@@ -186,6 +186,22 @@ Likewise \(f(X)\) is constructible and contains \(\eta\), so it contains a dense
 
 No properness or flatness was needed. Properness would instead ensure nonemptiness everywhere for this dominant map, because its closed image contains \(\eta\). The equality concerns the dense open just constructed; special fibres may be larger.
 
+### Fibres over an integral curve
+
+**Corollary 4.2.** Let \(f:X\to C\) be a dominant morphism of integral schemes of finite type over a field \(k\), with \(\dim X=n\) and \(\dim C=1\). Every fibre has dimension at most \(n-1\), and the generic fibre has dimension exactly \(n-1\). The same upper bound holds after any extension of the residue field of the chosen base point, including geometric fibres. Neither smoothness of \(C\) nor flatness or properness of \(f\) is assumed.
+
+**Proof.** At the generic point \(\eta\) of \(C\), the fibre is an integral finite-type \(K(C)\)-scheme with function field \(K(X)\). The [dimension and transcendence-degree theorem, Theorem 4.2](../../AG-CA/krull-dimension-and-noether-normalization.html#4-parameters-measure-dimension-and-height) and the tower rule give
+
+\[
+\dim X_\eta=\operatorname{trdeg}_{K(C)}K(X)=n-1.
+\]
+
+Every other point \(c\) of an integral finite-type curve is closed. Its fibre is a proper closed subscheme of \(X\): it is closed because \(c\) is closed, and it is proper as a subset because dominance sends the generic point of \(X\) to \(\eta\), not to \(c\). Any chain of irreducible closed subsets in this fibre can be extended by appending the irreducible space \(X\). Its length is therefore at most \(n-1\). Nilpotents do not change this topological dimension. This also treats empty fibres, whose dimension is \(-\infty\).
+
+For completeness, dimension is unchanged by an arbitrary field extension \(E/F\) on a finite-type \(F\)-scheme. On a nonzero affine chart with coordinate algebra \(B\), [Noether normalization, Corollary 3.2](../../AG-CA/krull-dimension-and-noether-normalization.html#3-normalization-that-respects-ideals) gives a finite injective map \(F[t_1,\ldots,t_d]\to B\), where \(d=\dim B\). Tensoring with the faithfully flat field extension preserves injectivity and finiteness, so \(E[t_1,\ldots,t_d]\to B\otimes_F E\) is again finite and injective. Equality of dimension under integral extensions gives dimension \(d\). A finite affine cover computes the dimension of the whole scheme before and after base change. Apply this with \(F=\kappa(c)\) to obtain the asserted fibre bounds. \(\square\)
+
+*Corollary 4.2 and its proof: GPT-6 Astra (OpenAI), Ultra; self-checked by that model. CC0-1.0.*
+
 ## 5. The dimension formula over a Noetherian base
 
 A Noetherian ring is **universally catenary** if every finite-type algebra over it is catenary: all saturated prime chains between two specified comparable primes have the same finite length. A locally Noetherian scheme is universally catenary if its affine coordinate rings are. Fields are universally catenary by Theorem 5.1 of the dimension prerequisite. The extra hypothesis permits subtracting heights along a prime interval.

@@ -4,7 +4,7 @@
 
 A finite corner provides a bounded trace on a small part of an algebra. Partial isometries carry that information to orthogonal ranges covering its central carrier. Summing their diagonal functionals gives a normal semifinite trace there. A maximal family of disjoint central carriers then gives faithfulness on the whole algebra. This construction allows arbitrary Hilbert spaces and arbitrary index sets.
 
-The mathematical antecedents are Takesaki, *Theory of Operator Algebras I*, V.2, Theorem 2.4 and Theorem 2.15, printed pp. 311 and 317 / PDF pp. 319 and 325. The finite-projection escape argument is related to Lemmas V.2.2–2.3, printed p. 310 / PDF p. 318. The support and central-sum statements correspond to Proposition V.2.10 and Lemma V.2.12, printed p. 315 / PDF p. 323. The existing programme proof extends normal traces directly from a corner, including its unique extension and exact faithfulness and semifiniteness clauses. These correspondences identify mathematical inputs; they do not license copied exposition or count an unproved prerequisite as closed.
+The construction rests on separating finite normal traces, normal extension from a corner, and orthogonal sums over central supports. Each of these results has a programme proof linked below. The corner extension is unique on its central carrier and preserves faithfulness and semifiniteness in exactly the stated cases.
 
 ## Conventions and the exact compactness input
 
@@ -14,7 +14,7 @@ For nonnegative numbers indexed by any set, the sum always means the supremum of
 
 The bounded topology, polar decomposition, functional calculus, monotone convergence and finite-cutoff constructions are the course's BK and WG inputs. Positive normal functionals, their supports and predual duality are The concrete predual and its intrinsic norm, Positive functionals, closed cones and norm closure and The sigma-strong seminorms are vector seminorms. Normal weight null projections and support reduction are Normality produces a largest null projection through The faithful semifinite support corner. The weak closedness of a norm-closed convex set uses the real Hahn–Banach separation clause of NW-DEP-CONVEX. Zorn's lemma is used explicitly for maximal families.
 
-Read [Weak compactness in the predual](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-17), Theorem 10.2, in *Foundations of von Neumann algebras* before using the compactness clause below. First read the complete proofs of dual-ball compactness and the Banach-space sequence theorem. The preceding programme proof then supplies precisely implication (3) to (1) using those foundations. The exact existing programme fixed-point proof is reproduced with its original CC0 attribution in TE-14 below; TE-15–16 explain its hypotheses and predual application:
+Read Weak compactness in the predual, Theorem 10.2, in *Foundations of von Neumann algebras* before using the compactness clause below. First read the complete proofs of dual-ball compactness and the Banach-space sequence theorem. The preceding programme proof then supplies precisely implication (3) to (1) using those foundations. The exact existing programme fixed-point proof is reproduced with its original CC0 attribution in TE-14 below; TE-15–16 explain its hypotheses and predual application:
 
 1. **TE-DEP-PREDUAL-COMPACTNESS.** For any von Neumann algebra \(N\), a bounded subset \(K\subseteq N_*\) satisfying
 
@@ -25,14 +25,14 @@ Read [Weak compactness in the predual](https://kokunoyumeto.github.io/open-math-
    \tag{TE.1}
    \]
 
-   is relatively weakly compact in \(\sigma(N_*,N)\). This is the implication (iii) to (i) of Takesaki I, Theorem III.5.4, printed pp. 149–153 / PDF pp. 157–161. No assumption of a faithful normal state on all of \(N\) belongs to this input. The preceding programme theorem proves this implication for bounded complex normal functionals on arbitrary von Neumann algebras. Its proof first takes a weak-star cluster point of a sequence, then uses a positive normal control functional to separate the countable nonzero projection masses from the possibly uncountable null remainder. Complete projection additivity makes the cluster point normal. The Eberlein–Šmulian theorem then gives relative weak compactness. The provider lesson states these two Banach-space theorems as background; the linked compactness lesson now supplies their full proofs, including arbitrary compact products, Baire category and uniform boundedness. The programme's norm-preserving extension and finite-dimensional compactness proofs are identified there by exact item.
+   is relatively weakly compact in \(\sigma(N_*,N)\). This is implication (3) to (1) of the programme Theorem 10.2 linked above. No assumption of a faithful normal state on all of \(N\) belongs to this input. The preceding programme theorem proves this implication for bounded complex normal functionals on arbitrary von Neumann algebras. Its proof first takes a weak-star cluster point of a sequence, then uses a positive normal control functional to separate the countable nonzero projection masses from the possibly uncountable null remainder. Complete projection additivity makes the cluster point normal. The Eberlein–Šmulian theorem then gives relative weak compactness. The provider lesson states these two Banach-space theorems as background; the linked compactness lesson now supplies their full proofs, including arbitrary compact products, Baire category and uniform boundedness. The programme's norm-preserving extension and finite-dimensional compactness proofs are identified there by exact item.
 2. **TE-DEP-AFFINE-FIXED-POINT.** A group of weakly continuous affine bijections preserving norm distances on a nonempty weakly compact convex subset of a real or complex Banach space has a common fixed point. This is **Theorem 5.1**, with **Proposition 4.1**, of the existing programme lesson *Weakly compact convex sets and fixed points*, written by GPT-6.1 Sol (OpenAI), Ultra, September 2026, under CC0. TE-14 reproduces its complete sections 1–5. The given group and Banach space need not be countable or separable. The theorem concerns Banach-space weak compactness, not merely weak-star compactness.
 
 For the trace arguments read **Theorem 4.7, Lemma 6.1, Theorem 6.2 and Theorem 6.7** of Traces on von Neumann algebras. That existing programme lesson was written by Claude Opus 5.5 (Anthropic), September 2026, under CC0. It contains the full separating-trace, corner-extension and arbitrary-algebra trace-existence proofs, along with the needed support and central-sum arguments. The compactness and fixed-point results it names as background are supplied through the precise routes here.
 
 ## Central carriers and the programme intertwiner test
 
-For the central carrier read **Proposition 3.5(1)** of [Projections and types of von Neumann algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-02): \(c(p)\) projects onto \([MpH]\). **Lemma 5.3** in the [same lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-06) proves the exact intertwiner test
+For the central carrier read **Proposition 3.5(1)** of Projections and types of von Neumann algebras: \(c(p)\) projects onto \([MpH]\). **Lemma 5.3** in the same lesson proves the exact intertwiner test
 
 \[
 pMq=0\quad\Longleftrightarrow\quad c(p)c(q)=0.
@@ -52,7 +52,7 @@ Conjugating this join by a unitary permutes its terms, so it commutes with every
 
 ## Finite cancellation from the programme projection proof
 
-Read **Lemma 1.2** of Traces on von Neumann algebras for heredity of finiteness and its invariance under equivalence. In a finite algebra every projection is therefore finite. Read **Proposition 14.2** of [Projections and types of von Neumann algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#oa-fnd-ty-18) for
+Read **Lemma 1.2** of Traces on von Neumann algebras for heredity of finiteness and its invariance under equivalence. In a finite algebra every projection is therefore finite. Read **Proposition 14.2** of Projections and types of von Neumann algebras for
 
 \[
 p\sim q,\quad p\text{ finite}
@@ -133,7 +133,7 @@ For \(z=c(p)\), the block \(v_j^*xv_i\) of \(x\in Mz\) belongs to \(e_jMe_i\subs
 
 ![The typed corner matrix and its trace](assets/trace-corner-matrix.png)
 
-**Figure.** The initial corners \(e_i\leq p\) may overlap; the outgoing \(r_i\) are orthogonal. The finite displayed matrix represents a finite subset of an arbitrary family. TE-07–08 translate programme Lemma 6.1 and Theorem 6.2 to this orientation, including their positive block sums. Mathematical antecedents: Takesaki I, V.2, Proposition 2.14 and Theorem 2.15.
+**Figure.** The initial corners \(e_i\leq p\) may overlap; the outgoing \(r_i\) are orthogonal. The finite displayed matrix represents a finite subset of an arbitrary family. TE-07–08 translate programme Lemma 6.1 and Theorem 6.2 to this orientation, including their positive block sums. For the full argument, see the programme trace lesson, Lemma 6.1 and Theorem 6.2.
 
 ## The exact normal corner-trace extension and an ordered cutoff check
 
@@ -229,7 +229,7 @@ The corresponding ordered approximation is \(x^{1/2}u_{F,b}x^{1/2}\). This descr
 
 ![Local traces, central supports, and finite positive approximations](assets/trace-central-gluing.png)
 
-**Figure.** TE-08–11 apply programme Theorem 6.2, Propositions 3.2, 3.5 and 3.7, and Theorem 6.7. Local traces are restricted to their central faithful supports and summed over disjoint supports. The ordered cutoff is \(x^{1/2}ux^{1/2}\). The final central-gap contradiction is Step 2 of the imported Theorem 6.7. Mathematical antecedents: Takesaki I, V.2, Proposition 2.10, Lemma 2.12 and Theorem 2.15.
+**Figure.** TE-08–11 apply programme Theorem 6.2, Propositions 3.2, 3.5 and 3.7, and Theorem 6.7. Local traces are restricted to their central faithful supports and summed over disjoint supports. The ordered cutoff is \(x^{1/2}ux^{1/2}\). The final central-gap contradiction is Step 2 of the imported Theorem 6.7. For the support and sum arguments, see the programme trace lesson, Propositions 3.2, 3.5 and 3.7 and Theorem 6.7.
 
 ## The programme arbitrary-algebra trace-existence theorem
 
@@ -265,7 +265,7 @@ For a nonzero factor \(M\) with a nonzero finite projection \(p\), \(c(p)=1\). T
 
 For an arbitrary algebra with no nonzero type III central summand, the same programme **Theorem 6.7** gives the faithful normal semifinite trace, without a factor or countability restriction. This is **MB-DEP-SEMIFINITE-TRACE**, used by The corrected criterion retains every projection.
 
-These consequences correspond to Takesaki I, Theorem V.2.15, which is stated and proved as the existing programme Theorem 6.7. Takesaki I, Theorem V.2.4, similarly corresponds to the exact programme Theorem 4.7, which gives a separating family, not one faithful finite trace.
+These consequences follow from Theorem 6.7 of the programme trace lesson. Its finite-algebra input is Theorem 4.7, which gives a separating family of finite normal traces. A single faithful finite trace requires the additional countability condition stated in TE-06.
 
 The predual compactness clause retains the exact programme provider in TE-01 and the AB foundation proofs. The affine group fixed-point clause uses the existing programme Proposition 4.1/Theorem 5.1 reproduced in TE-14. Their original authors and licences are stated explicitly.
 
@@ -313,7 +313,7 @@ The exact existing programme fixed-point proof used by Theorem 4.7 is reproduced
 
 The following **sections 1–5** are an exact CC0 import from *Weakly compact convex sets and fixed points*, written by **GPT-6.1 Sol (OpenAI), Ultra, September 2026**, in the existing **OA-FOUND-REMAINDER** programme course. Its author-draft and pending independent-review states are retained. Only line endings and the five subheading levels are adapted. The imported proof belongs to that lesson. Its geometric method is the classical argument of Namioka and Asplund, as acknowledged by the provider.
 
-Weak means \(\sigma(X,X^*)\). Complex Banach spaces may be treated as real spaces, since every continuous real functional is the real part of a continuous complex functional. The named inputs are Hahn–Banach separation, uniform boundedness and equality of norm and weak convex closures. Baire category and uniform boundedness supplies uniform boundedness and weak boundedness; the exact real/complex separation contract retains its own recorded transitive state. No weak-star compactness, strict convexity, countability of the given group or separability of \(X\) is assumed.
+Weak means \(\sigma(X,X^*)\). Complex Banach spaces may be treated as real spaces, since every continuous real functional is the real part of a continuous complex functional. The named inputs are Hahn–Banach separation, uniform boundedness and equality of norm and weak convex closures. Baire category and uniform boundedness supplies uniform boundedness and weak boundedness; Hahn–Banach separation gives equality of norm and weak closures for convex sets. No weak-star compactness, strict convexity, countability of the given group or separability of \(X\) is assumed.
 
 The provider's proof follows.
 

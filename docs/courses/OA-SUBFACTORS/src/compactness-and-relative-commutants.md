@@ -225,6 +225,90 @@ All equalities are equalities of subalgebras inside the actual tower constructed
 
 Thus a candidate finite grid becomes an actual standard invariant once its initial squares and its finite commutants are checked. For a grid defined by connection coefficients, one must still prove nondegeneracy, trace compatibility and the precise identification of the finite commutants with the claimed flat path spaces. A graph and a numerical check of its coefficients do not establish those assertions.
 
+## Exact finite squares impose an index restriction
+
+Theorem 31.4 starts with an exact nondegenerate finite square. Hyperfiniteness, a generating ordinary tunnel and strong amenability do not themselves provide such a presentation. Here is an obstruction that can be checked inside the prescribed factors.
+
+**Proposition 31.6 — an exact finite square forces an algebraic-integer index.** Let \(P\subset Q\) be II₁ factors with normalized trace \(\tau\), trace-preserving expectation \(E_P:Q\to P\), and finite Jones index \(d=[Q:P]\). Suppose there are unital finite-dimensional subalgebras \(A\subset P\), \(B\subset Q\), with \(A\subset B\), satisfying
+\[
+E_P(B)\subset A,\qquad
+\overline{\operatorname{span}(BP)}^{\,\mathrm{uw}}=Q.
+\tag{31.15}
+\]
+Here the closure is ultraweak closure of the linear span of products. Write
+\[
+\begin{gathered}
+A=\bigoplus_i M_{a_i},\qquad B=\bigoplus_j M_{b_j},\\
+L=(l_{ij}),\qquad b_j=\sum_i a_i l_{ij},\\
+t_j=\tau(\text{a minimal projection of }M_{b_j}),\\
+s_i=\tau(\text{a minimal projection of }M_{a_i}).
+\end{gathered}
+\tag{31.16}
+\]
+Then \(t_j,s_i>0\), \(s=Lt\), and
+\[
+L^{\mathsf T}Lt=d\,t.
+\tag{31.17}
+\]
+In particular \(d\) is a root of a monic polynomial with integer coefficients. No connectedness, extremality or finite-depth hypothesis is required.
+
+**Proof.** The restriction \(E_P|_B\) takes values in \(A\), fixes \(A\), is \(A\)-bimodular and preserves \(\tau\). Pairing with every element of \(A\) identifies it with the trace-preserving expectation \(F:B\to A\). This proves the exact commuting-square condition used below. Trace restriction gives \(s=Lt\): a minimal projection in block \(i\) is the sum of \(l_{ij}\) minimal projections in each block \(j\).
+
+Use the finite frame \(u_1,\ldots,u_m\in B\) of Lemma 30.1, with precisely the weights in (31.16). That lemma proves both
+\[
+\begin{gathered}
+b=\sum_r u_rF(u_r^*b)\quad(b\in B),\\
+\sum_r u_ru_r^*\big|_{M_{b_j}}
+=\frac{(L^{\mathsf T}s)_j}{t_j}1_{M_{b_j}}.
+\end{gathered}
+\tag{31.18}
+\]
+Thus we use its actual matrix frame and index computation, without assuming a Markov trace on \(A\subset B\).
+
+Define a normal bounded linear map
+\[
+\mathcal R:Q\to Q,\qquad
+\mathcal R(x)=\sum_r u_rE_P(u_r^*x).
+\tag{31.19}
+\]
+For \(b\in B\), \(p\in P\), bimodularity and (31.18) give \(\mathcal R(bp)=bp\). It follows from (31.15) and ultraweak continuity that \(\mathcal R=\mathrm{id}_Q\). Mere generation \(W^*(B,P)=Q\) would not justify this step: a linear map fixing \(B\) and \(P\) need not fix their alternating products.
+
+Let \(Q_1=\langle Q,e_P\rangle\) act on \(L^2(Q,\tau)\). On every \(\widehat x\), \(x\in Q\), the identity just proved reads
+\[
+\left(\sum_r u_re_Pu_r^*\right)\widehat x
+=\widehat{\mathcal R(x)}=\widehat x.
+\]
+The sum is finite and bounded, and these vectors are dense, so \(\sum_r u_re_Pu_r^*=1\) in the actual basic construction. Its trace-preserving expectation \(E_Q:Q_1\to Q\) satisfies \(E_Q(e_P)=d^{-1}1\), by the basic-construction trace formula of Lesson 1. Applying it gives
+\[
+\sum_r u_ru_r^*=d1_Q.
+\tag{31.20}
+\]
+The embedding of \(B\) in \(Q\) is faithful. Compare (31.20) in each nonzero block of (31.18), then use \(s=Lt\). This proves (31.17). Finally \(\det(XI-L^{\mathsf T}L)\) is monic with integer coefficients and vanishes at \(d\). \(\square\)
+
+The conclusion is a necessary condition for the exact square (31.15). It is not a restriction on the Jones index of an arbitrary finite-index inclusion. In particular the proposition does not turn approximate commuting squares, local finite approximations or piecewise corners into exact nondegenerate squares.
+
+**Corollary 31.7 — the weighted-spin inclusion is outside this exact-square construction.** Take the actual inclusion of [A generating tunnel with incompatible reflected traces](weighted-spin-tunnel.md), Theorem 47.4, with \(p=1/4\), \(q=3/4\). For any consecutive segment of \(r\geq1\) steps of its ordinary Jones tower or tunnel, no finite-dimensional subalgebras can satisfy (31.15) for that segment. The same holds after common matrix amplification or compression by a nonzero projection in the smaller factor.
+
+This example has a generating ordinary tunnel and compatible smooth hypertraces, as proved in [Scalar relative expectations and tracial tunnels](scalar-commutants-and-tracial-tunnels.md), Theorem 62.6. Its physical bicommutant identity is already proved there. Consequently the obstruction holds even in that strongly amenable example and does not refute the bicommutant identity.
+
+**Proof.** Theorem 47.4 gives \(d=1/(pq)=16/3\). Multiplicativity of module dimension in Lesson 2 gives index \((16/3)^r\) for every segment in the statement. A rational root of a monic integer polynomial is an integer: writing it as \(a/b\) in lowest terms and multiplying a degree-\(n\) relation by \(b^n\) shows that \(b\) divides \(a^n\), so \(b=1\). But \(16^r/3^r\) is in lowest terms and is not an integer. Proposition 31.6 therefore excludes (31.15).
+
+For clarity, the common operations here preserve the physical factor index. Matrix amplification replaces \(P\subset Q\) by \(M_k\otimes P\subset M_k\otimes Q\); its basic construction and Jones projection are \(M_k\otimes Q_1\) and \(1\otimes e_P\), with Jones trace still \(d^{-1}\). For a nonzero projection \(f\in P\), compression replaces the pair by \(fPf\subset fQf\). The common-corner basic construction of Lesson 2 is \(fQ_1f\), with projection \(fe_P=e_Pf\). The normalized trace on this corner gives
+\[
+\tau_{fQ_1f}(fe_P)
+=\frac{\tau_{Q_1}(fe_P)}{\tau_{Q_1}(f)}
+=\frac{d^{-1}\tau_Q(f)}{\tau_Q(f)}=d^{-1}.
+\tag{31.21}
+\]
+The same calculation applies to each blocked segment and to a projection in its amplified smaller factor. Their indices remain \((16/3)^r\), so the algebraic-integer obstruction persists. A projection lying only in a relative commutant, rather than in the smaller factor, is not covered by this common-corner assertion. \(\square\)
+
+![The exact finite-square frame forces an integer-matrix eigenvalue, excluding the weighted-spin index at every blocked depth.](figures/exact-finite-square-index.svg)
+
+*Figure 31.2. The square has the actual inclusions and physical expectation of (31.15). The lower chain is the proof of Proposition 31.6: normal frame transport, the actual Jones projection, and (31.17). The rational denominator in Corollary 31.7 survives every finite block. The figure records an obstruction to this exact-square presentation; the example's bicommutant is proved by the different corrected maps in 62.6. Positions are schematic. [Reproducible figure source](figures/exact-finite-square-index.py).*
+
+Thus Theorem 31.4 remains available at its stated hypotheses. Applying it to a general physical tower requires constructing the exact square and its nondegenerate product spans; neither strong amenability nor the generating-tunnel hypothesis supplies those assertions by itself. The unrestricted nonextremal bicommutant and the separate reconstruction problem retain their full original scope.
+
+
 ## Exercises
 
 **Exercise 31.1 — introductory.** For the tensor inclusion in Exercise 30.2, identify \(P_1'\cap Q_0\), and check the answer in the limit.
@@ -255,6 +339,15 @@ For the first central projection \(z\in P_0\subseteq Q_0\), (31.8) gives \(\tau(
 **Exercise 31.4 — intermediate.** In a planar Hilbert-space example, let \(H_0\) be the horizontal line and \(H_1\) make angle \(\pi/6\) with it. What are \(L\) and the optimal constant \(K\) in (31.12)? If the shift estimate has \(\eta=1/2\), what constant transports the distance inequality?
 
 **Solution.** The intersection is zero. For \(y\in H_0\), its distance to \(H_1\) is \(\|y\|\sin(\pi/6)=\|y\|/2\), so \(K=2\). The transported constant is \(K/\eta=4\). The square roots in the two norm comparisons multiply to \(\eta^{-1}\), not \(\eta^{-1/2}\). This is an angle illustration, not an assertion that these lines themselves form a commuting square of algebras.
+
+**Exercise 31.5 — intermediate.** Let \(R\) be a II₁ factor and \(P=R\otimes1\subset Q=R\overline\otimes M_n\). Exhibit an exact square (31.15) and check (31.17), including the normalization of the minimal-projection weight.
+
+**Solution.** Take \(A=\mathbb C1\), \(B=1\otimes M_n\). The physical expectation is \(\mathrm{id}_R\otimes\mathrm{tr}_n\), so its restriction to \(B\) is scalar and has range \(A\). Every element of \(Q\) is a finite sum \(\sum_{i,j}x_{ij}\otimes e_{ij}\), hence belongs to \(\operatorname{span}(BP)\). The inclusion matrix is the one-entry matrix \(L=(n)\), the upper weight is \(t=1/n\), and \(s=Lt=1\). Thus \(L^{\mathsf T}Lt=n^2t\). Equivalently the finite frame is \(\sqrt n(1\otimes e_{ij})\), whose sum of left index products is \(n^2 1\). The physical index is \(n^2\), in agreement with the basic-construction trace and the tensor example in Lesson 3. The matrix size \(n\) and its index \(n^2\) are different numbers.
+
+**Exercise 31.6 — advanced.** For the weighted-spin inclusion at \(p=1/4\), a proposed exact-square presentation first blocks six consecutive Jones steps, then passes to \(M_7\) of both factors and compresses by a nonzero projection in the smaller amplified factor. Can these operations remove the obstruction in Corollary 31.7? Does their failure contradict its already proved physical bicommutant identity?
+
+**Solution.** The blocked index is \(16^6/3^6=16777216/729\). Matrix amplification and the stipulated common corner preserve that index, by the actual trace calculation (31.21). Its numerator and denominator are relatively prime and its denominator exceeds one, so it is not an algebraic integer. Proposition 31.6 excludes the proposed exact square regardless of the corner's trace. The bicommutant identity nevertheless holds by Theorem 62.6, whose compatible corrected anti-isomorphisms and modified cups do not require such a square. The obstruction concerns the proposed exact-square route alone; it leaves both that proved example and the unrestricted general target in their respective scopes.
+
 
 ## References
 

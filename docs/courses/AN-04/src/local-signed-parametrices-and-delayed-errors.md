@@ -2,14 +2,18 @@
 
 A signed inverse has two different singular structures. Its jump creates the identity on the diagonal; away from that diagonal, it transports singularities along one characteristic direction. We preserve the jump on a small canonical patch and place the cutoff error at a positive travel time from it. The error is then an ordinary Lagrangian distribution that can be treated by the directional kernel correction already proved.
 
-The exact geometric input is Section 1 of Real and complex symplectic normal forms of functions. Sections 5–7 of Graph operators, continuity and Egorov, including GT1–GT17, supply every-real graph mapping, both graph inverses and removal of the entire ordinary lower-order symbol. Sections 1–2 of Singularities along a real characteristic direction prove the model kernels, every diagonal wavefront direction and their off-diagonal order. Sections 1–9 of Kernels, adjoints and clean composition supply the full kernel wavefront bound, proper smooth-kernel ideal and ordinary zero-excess composition with its symbol. We use those written proofs and give the receiving cutoff, cone and support arguments here.
+The exact geometric input is Section 1 of [Real and complex symplectic normal forms of functions](../reconstructions/20261005-restored-function-normal-forms/real-and-complex-symplectic-function-normal-forms.md). Sections 5–7 of [Graph operators, continuity and Egorov](../reconstructions/20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md), including GT1–GT17, supply every-real graph mapping, both graph inverses and removal of the entire ordinary lower-order symbol. Sections 1–2 of [Singularities along a real characteristic direction](../reconstructions/20261005-restored-real-principal/real-principal-type-kernels-and-propagation.md) prove the model kernels, every diagonal wavefront direction and their off-diagonal order. Sections 1–9 of [Kernels, adjoints and clean composition](../reconstructions/20261005-restored-analytic-composition/clean-composition-of-fourier-integral-operators.md) supply the full kernel wavefront bound, proper smooth-kernel ideal and ordinary zero-excess composition with its symbol. We use those written proofs and give the receiving cutoff, cone and support arguments here.
 
 Work with scalar half densities on an \(n\)-dimensional smooth manifold without boundary. Let \(P\in\Psi^1_{1,0}(X)\) be properly supported, with real homogeneous principal symbol \(p\) of degree one and arbitrary ordinary order-zero lower terms. Fix \(c\in T^*X\setminus0\) such that
 \[
  p(c)=0,\qquad H_p(c)\text{ and }R(c)\text{ are independent}.
  \tag{LP1}
 \]
-The nonradial condition is essential; it also implies \(n\ge2\). All conclusions initially concern one smaller conic neighborhood of \(c\). When the global characteristic relation is used, we retain the precise real-principal-type and compact-return hypotheses of Global time and the bicharacteristic relation, Section 6. No global right-parametrix construction is assumed in this local lemma.
+The nonradial condition is essential; it also implies \(n\ge2\). In dimension one Euler's identity gives \(\xi p_\xi=p=0\) at the characteristic point, so \(p_\xi=0\) there. Consequently \(H_p=-p_x\partial_\xi\) is parallel to \(R=\xi\partial_\xi\), contrary to (LP1). All conclusions initially concern one smaller conic neighborhood of \(c\). When the global characteristic relation is used, we retain the precise real-principal-type and compact-return hypotheses of [Global time and the bicharacteristic relation](../reconstructions/20261006-restored-global-flow/global-time-and-bicharacteristic-relation.md), Section 6. No global right-parametrix construction is assumed in this local lemma.
+
+The exact [ordinary cutoff and wavefront proofs W1–W4](../reconstructions/20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), [proper conic localization K3–K4](../reconstructions/20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md), weighted Fourier and distributional pairing proof S1, and [Fourier inversion and Schwartz bounds](../reconstructions/20261004-free-stationary-phase/quadratic-stationary-phase.md) supply the operations below. The later correction is the already proved [normalized directional kernel correction](../reconstructions/20261006-restored-kernel-corrections/global-kernel-corrections-from-directional-symbols.md); it is used only after the global assembly still to come. Every prerequisite has an exact locator in the [proof map](../reconstructions/20261006-restored-local-signed/proof-map.json).
+
+Self-checked by the writing AI.
 
 ## 1. A cutoff depending on displacement preserves every real Sobolev scale
 
@@ -44,7 +48,13 @@ Its total variation is finite. For a Schwartz function \(u\), Fourier transforma
  \quad(a\in\mathbb R).
  \tag{LP5}
 \]
-Indeed multiply the pointwise Fourier inequality by \(\langle(\tau,\zeta)\rangle^{2a}\), integrate and take square roots. The weight is positive for every real \(a\); no interpolation restriction or endpoint loss occurs. Schwartz density in the weighted Fourier norm proves the unique bounded extension. Convolution with a compact measure acts continuously on distributions, by pairing against its compact translates of a test function; hence this extension agrees with the kernel action. The displacement support gives the same compact-support control on that extension.
+Indeed multiply the pointwise Fourier inequality by \(\langle(\tau,\zeta)\rangle^{2a}\), integrate and take square roots. The weight is positive for every real \(a\); no interpolation restriction or endpoint loss occurs. Schwartz density in the weighted Fourier norm proves the unique bounded extension. Convolution with a compact measure acts continuously on distributions, by pairing against its compact translates of a test function; hence this extension agrees with the kernel action. The displacement support gives the same compact-support control on that extension. More explicitly, if \(\nu\) is either measure in (LP4), its action on a distribution is defined by
+\[
+\langle \nu*u,\varphi\rangle
+ =\left\langle u(y),\int\varphi(y+v)\,d\nu(v)\right\rangle.
+\tag{LPA1}
+\]
+For test functions supported in a fixed compact set, the inner function has support in that set minus \(\operatorname{supp}\nu\). Each of its derivatives is bounded by the total variation of \(\nu\) times the corresponding test derivative. This proves continuity in the actual test-function topology and hence the distributional action. On Schwartz inputs the Fourier identity follows by absolute integrability and the complete product-integration theorem. Weighted Fourier convergence implies distributional convergence by Cauchy–Schwarz against the rapidly decreasing transform of a test function. These facts identify the bounded extension in (LP5) with (LPA1).
 
 The complete wavefront bound is
 \[
@@ -104,7 +114,7 @@ The real homogeneous normal form gives a canonical map \(\gamma\) from a model c
  \quad\text{microlocally smoothing}.
  \tag{LP12}
 \]
-Every ordinary lower term has already been removed in these identities. Principal-symbol Egorov alone would be insufficient for the calculation below.
+Choose the representatives with their full graph wavefronts in slightly larger matched cones, and make their base supports compact inside the chosen coordinate patches. This is possible by the interior symbol and kernel cutoffs in the graph proof. Keep all these cutoffs equal to one on neighborhoods of the two compact normalized sets that will be used below. They preserve (LP12) there: their full symbol differences vanish on those neighborhoods, so every coefficient in a product expansion vanishes and the remainder has arbitrarily negative order. Separated kernel pieces are smooth by the full wavefront estimate. Every ordinary lower term has already been removed in these identities. Principal-symbol Egorov alone would be insufficient for the calculation below.
 
 Let \(V\) be an interior model cone where these identities hold, and choose \(W\Subset V\) on compact base and unit-covector slices. Take an order-zero proper \(T\) whose full microsupport is contained in \(\gamma(W)\), and whose kernel base support is compact in the retained original coordinate patch. A full symbol with interior base and angular cutoffs, a low-frequency cutoff and a kernel cutoff near the diagonal supplies such \(T\). Only this full microsupport containment is used; a condition just on the homogeneous principal coefficient would leave an uncontrolled lower-term tail.
 
@@ -133,7 +143,7 @@ We also retain a useful defect. On the retained model input cone,
  \quad\text{is microlocally smoothing}.
  \tag{LP15}
 \]
-Proper interior graph cutoffs make all the relevant products defined. The inverse and conjugation defects in (LP12), together with the graph wavefront bound, show that the two summands have no matched singularity on that input cone. Every factor of \(S\) has graph wavefront with no zero endpoint. Thus composing \(S\) with the entire \(F^0_\pm BT\), whose model output lies in \(V\), gives an actual smooth kernel on the localized original base product. Cone separation controls this whole term, rather than just its action on one forcing-regular solution.
+Proper interior graph cutoffs make all the relevant products defined. The inverse and conjugation defects in (LP12), together with the graph wavefront bound, show that the two summands have no matched singularity on that input cone. Every factor of \(S\) has graph wavefront with no zero endpoint. For the first summand of (LP15), the full input localization of \(BPA-D_t\) inside \(V\) is smoothing. For the second, \(PA\) carries that input cone into its matched original cone, where the full output defect \(I-AB\) is smoothing. An intermediate order-zero cutoff equal to one on each smaller closed matched cone makes these statements actual properly supported smoothing products. The complementary pieces have disjoint matched wavefront covectors, so their full kernels are smooth as well. This also rules out a residual singularity at a different output covector: the complete graph wavefront, including the absence of either zero endpoint, is being localized. Thus composing \(S\) with the entire \(F^0_\pm BT\), whose model output lies in \(V\), gives an actual smooth kernel on the localized original base product. Cone separation controls this whole term, rather than just its action on one forcing-regular solution.
 
 ## 4. The local receiving construction
 
@@ -167,7 +177,7 @@ The last term is smooth by (LP13)–(LP15). The penultimate term is smooth becau
  \operatorname{WF}'(R_\pm)\subset C_\pm.
  \tag{LP19}
 \]
-Here \(R_\pm\) is the exact difference \(PF_\pm-T\), including the smooth terms in (LP18). Smooth kernels belong to the displayed local ordinary class. Composition of \(R^0_\pm\) with either graph, or with the diagonal PDO \(T\), has excess zero: the graph determines its matched middle covector uniquely. The order is \(0-1/2+0+0=-1/2\). The strict sign follows from (LP10) and \(\gamma_*\partial_t=H_p\). In particular the error is microlocally smooth near every characteristic diagonal point in this retained normalized patch.
+Here \(R_\pm\) is the exact difference \(PF_\pm-T\), including the smooth terms in (LP18). Smooth kernels belong to the displayed local ordinary class. Composition of \(R^0_\pm\) with either graph, or with the diagonal PDO \(T\), has excess zero: the graph determines its matched middle covector uniquely. The order is \(0-1/2+0+0=-1/2\). The strict sign follows from (LP10) and \(\gamma_*\partial_t=H_p\). In particular the error is microlocally smooth near every characteristic diagonal point in this retained normalized patch. To check this neighborhood assertion, the normalized model error lies in a compact retained set with \(|t-s|\geq\varepsilon/2\). If a sequence of its conjugated covector pairs approached a diagonal pair, the continuous inverse \(\gamma^{-1}\) would make its two model endpoints approach the same covector. Their time difference would then tend to zero, contradicting that bound. Compactness of the normalized support supplies a neighborhood disjoint from the error wavefront; homogeneity supplies all positive radii.
 
 Likewise the exact difference obeys
 \[
@@ -182,7 +192,7 @@ Finally, for every real \(a\),
  \quad\text{continuously}.
  \tag{LP21}
 \]
-Use the order-zero mapping of \(T,B,A\) and the exact measure estimate (LP5). Proper support keeps the intermediate distributions in common compact sets needed by the next graph estimate. For each compact input and output localization, the product of these four finite bounds is an actual bound in \(H^a\). Smooth approximation in the same compact sets identifies the resulting extension with the distributional kernel product. This is the precise normalized gain zero, including negative and noninteger orders.
+Use the order-zero mapping of \(T,B,A\) and the exact measure estimate (LP5). Proper support keeps the intermediate distributions in common compact sets needed by the next graph estimate. For each compact input and output localization, the product of these four finite bounds is an actual bound in \(H^a\). For the approximation, first enlarge the fixed compact input to a compact neighborhood. In each of finitely many coordinate charts, take a Fourier cutoff and then multiply by a fixed outer base cutoff equal to one near the original support. The proved weighted Fourier approximation converges in \(H^a\); all approximants lie in that one larger compact set. Properness gives one common compact set after each subsequent factor. Distributional continuity of each actual kernel and the weighted-norm convergence then identify the product extension with its distributional kernel action. This is the precise normalized gain zero, including negative and noninteger orders.
 
 ## 5. An exact flat correction shows what happens beyond the local patch
 
@@ -201,7 +211,7 @@ These distributions are ordinary \(I^{-1/2}((C^0)')\). Their coefficients vanish
 \]
 The corrected inverse ceases to be properly supported on the entire time axis. For example one compact nonzero input with nonzero time integral has a constant forward tail for arbitrarily large output times. Its local distribution and Sobolev action is still defined. This is why the later global uniqueness proof uses a compact middle, rather than freely multiplying uncut inverse kernels.
 
-![Displacement cutoff and the two strictly delayed errors](figures/local-signed-cutoff-errors.svg)
+![Displacement cutoff and the two strictly delayed errors](../reconstructions/20261006-restored-local-signed/figures/local-signed-cutoff-errors.svg)
 
 *The picture is the \((s,t)\) base projection for the exact unit-scale flat formulas (LP7)–(LP10), at \(z=w=0\), zero time covectors and one fixed \(\zeta\ne0\). Its coordinates are \(x=420+80s\), \(y=300-80t\). The characteristic diagonal is \(t=s\). The shaded bands \(1\le t-s\le2\) and \(-2\le t-s\le-1\) contain the respective residual wavefronts; the cutoff derivative may vanish at some points in a band. The pale regions \( |t-s|<1\) show the exact plateau where neither residual occurs. The full diagonal with nonzero time covectors is not represented by this selected characteristic section. The correction in (LP22) carries the corresponding signed tails beyond the outer cutoff lines. This original coordinate diagram accompanies complete kernel identities; it is not a global coordinate chart for a general manifold.*
 

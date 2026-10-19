@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Noncharacteristic directions and microlocal regularity</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L198.html">Previous lesson</a> · <a href="#complete-proof">Complete proof</a> · <a href="src/noncharacteristic-directions-and-microlocal-regularity.md">Editable source</a></nav><h1 id="noncharacteristic-directions-and-microlocal-regularity">Noncharacteristic directions and microlocal regularity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0).</em></p>
+<p>A differential equation can fail to control a singularity in a characteristic direction. Away from that set, the regularity of the forcing controls the solution. This is true for variable coefficients, arbitrary finite order and distributions without growth assumptions. Analytic coefficients give an analytic conclusion, and the same argument keeps every admissible derivative class from the preceding lessons.</p>
+<p>We prove the full local result by constructing a finite inverse for an oscillating test function. The construction keeps the order of variable-coefficient operators, counts derivatives by weight, and treats the distribution's order explicitly. Four examples and eight exercises explain what the theorem says at characteristic points, why smooth coefficients do not suffice for analytic regularity, and why the forcing sequence must retain its index.</p>
+<p>The mathematical antecedents are Hörmander's smooth microlocal ellipticity theorem and its derivative-class version, [H, §§8.3 and 8.6]. Complete written inputs are the cutoff construction in <span class="unlinked">Analytic directions of holomorphic boundary values</span>, the polydisk estimates in <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>, and the class definitions and base theorem in <a href="AN02-L190.html#complete-proof">Derivative sequences and microlocal regularity</a>.</p>
+<h2 id="1-the-principal-symbol-marks-the-exceptional-directions">1. The principal symbol marks the exceptional directions</h2>
+<p>Use <span class="math" data-index="0" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and complex-bilinear distribution pairings. For a scalar differential operator of order <span class="math" data-index="1" data-tex="\(m\ge0\)">\(m\ge0\)</span>,</p>
+<span class="math math-display" id="learner-eq-LE1" data-index="2" data-tex="\[
+\begin{aligned}
+P(x,D)&amp;=\sum_{|\alpha|\le m}a_\alpha(x)D^\alpha,\\
+p_m(x,\xi)&amp;=\sum_{|\alpha|=m}a_\alpha(x)\xi^\alpha,\\
+\operatorname{Char}P
+ &amp;=\{(x,\xi):\xi\ne0,\ p_m(x,\xi)=0\}.
+\end{aligned}
+\tag{LE1}
+\]">\[
+\begin{aligned}
+P(x,D)&amp;=\sum_{|\alpha|\le m}a_\alpha(x)D^\alpha,\\
+p_m(x,\xi)&amp;=\sum_{|\alpha|=m}a_\alpha(x)\xi^\alpha,\\
+\operatorname{Char}P
+ &amp;=\{(x,\xi):\xi\ne0,\ p_m(x,\xi)=0\}.
+\end{aligned}
+\tag{LE1}
+\]</span>
+<p>Only the principal part defines this set; all lower terms remain in the equation and in the proof. Coefficients and symbols may be complex. The covector is real and nonzero.</p>
+<p><strong>Theorem A.</strong> For smooth coefficients,</p>
+<span class="math math-display" id="learner-eq-LE2" data-index="3" data-tex="\[
+\operatorname{WF}(u)
+ \subset\operatorname{Char}P\cup\operatorname{WF}(Pu).
+\tag{LE2}
+\]">\[
+\operatorname{WF}(u)
+ \subset\operatorname{Char}P\cup\operatorname{WF}(Pu).
+\tag{LE2}
+\]</span>
+<p>For analytic coefficients and any admissible derivative sequence of L190,</p>
+<span class="math math-display" id="learner-eq-LE3" data-index="4" data-tex="\[
+\operatorname{WF}_L(u)
+ \subset\operatorname{Char}P\cup\operatorname{WF}_L(Pu).
+\tag{LE3}
+\]">\[
+\operatorname{WF}_L(u)
+ \subset\operatorname{Char}P\cup\operatorname{WF}_L(Pu).
+\tag{LE3}
+\]</span>
+<p>Choosing <span class="math" data-index="5" data-tex="\(L_N=N\)">\(L_N=N\)</span> gives the analytic wavefront theorem. Both assertions hold for every distribution and every finite scalar order, including zero. They have their corresponding smooth and analytic manifold forms. The complete proof is Theorem 1.1 below.</p>
+<p>Thus a covector outside the characteristic set cannot be a new singular direction of a solution if it is a regular direction of the forcing. This statement does not remove singularities allowed by the characteristic set, or replace the forcing by zero.</p>
+<p>An operator is elliptic when its characteristic set is empty. The differential-decrease rule gives the opposite wavefront inclusion, so in this case solution and forcing have equal wavefront sets. Smooth forcing gives smooth solutions. Analytic coefficients and analytic forcing give analytic solutions. Corollaries 7.1–7.2 prove these consequences, including connected uniqueness for homogeneous analytic-coefficient elliptic equations.</p>
+<h2 id="2-a-finite-adjoint-inverse-explains-the-estimate">2. A finite adjoint inverse explains the estimate</h2>
+<p>Write <span class="math" data-index="6" data-tex="\(\xi=\rho\theta\)">\(\xi=\rho\theta\)</span>, with <span class="math" data-index="7" data-tex="\(\rho=|\xi|\)">\(\rho=|\xi|\)</span> and <span class="math" data-index="8" data-tex="\(|\theta|=1\)">\(|\theta|=1\)</span>. Near a noncharacteristic pair, the principal denominator stays uniformly away from zero. The full transposed equation has the exact form</p>
+<span class="math math-display" id="learner-eq-LE4" data-index="9" data-tex="\[
+P^t\left(e^{-ix\cdot\xi}\frac{w}{p_m(x,\xi)}\right)
+ =e^{-ix\cdot\xi}(I-\mathcal R_\xi)w,
+\qquad
+\mathcal R_\xi=\sum_{j=1}^m\rho^{-j}R_j,
+\tag{LE4}
+\]">\[
+P^t\left(e^{-ix\cdot\xi}\frac{w}{p_m(x,\xi)}\right)
+ =e^{-ix\cdot\xi}(I-\mathcal R_\xi)w,
+\qquad
+\mathcal R_\xi=\sum_{j=1}^m\rho^{-j}R_j,
+\tag{LE4}
+\]</span>
+<p>where <span class="math" data-index="10" data-tex="\(R_j\)">\(R_j\)</span> differentiates at most <span class="math" data-index="11" data-tex="\(j\)">\(j\)</span> times. Its coefficients include every derivative of the variable coefficients and the principal reciprocal.</p>
+<p>The inverse used in the proof is finite. Sum the ordered products whose total weight is at most <span class="math" data-index="12" data-tex="\(J\)">\(J\)</span>. Applying <span class="math" data-index="13" data-tex="\(I-\mathcal R_\xi\)">\(I-\mathcal R_\xi\)</span> cancels all retained nonempty words. The remainder has weights <span class="math" data-index="14" data-tex="\(J+1\)">\(J+1\)</span> through <span class="math" data-index="15" data-tex="\(J+m\)">\(J+m\)</span>. Since the operators need not commute, the words keep their order. A weight also records a factor <span class="math" data-index="16" data-tex="\(\rho^{-1}\)">\(\rho^{-1}\)</span> for each unit, balancing the derivatives it can introduce.</p>
+<p>The cutoff is smooth rather than analytic. Only its finite Taylor jet is replaced by a polynomial for a local estimate. That polynomial is bounded by a constant to the cutoff index on a fixed complex disk. Applying Cauchy's estimate on successively smaller disks bounds all the ordered coefficient/derivative operations with one derivative scale. The proof never assumes a nonzero compactly supported analytic cutoff.</p>
+<p>Forcing is estimated by Fourier convolution. Its frequency can either stay in the regular cone at a comparable length, where its class estimate applies, or leave that region, where angular or radial separation forces the cutoff amplitude's Fourier transform into its decaying tail. These are the two regions in Lemma 4.1.</p>
+<figure><img class="course-figure" loading="lazy" width="1425" height="1125" src="reproduce/L199/figures/noncharacteristic-frequency-cones.png" alt="Nested noncharacteristic frequency cones and the two separated bad-frequency regions." /><figcaption class="native"><a href="reproduce/L199/figures/noncharacteristic-frequency-cones.png">Open full-size PNG</a> · <a href="reproduce/L199/figures/noncharacteristic-frequency-cones.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 1.</strong> For <span class="math" data-index="17" data-tex="\(p_m(\xi)=\xi_1\)">\(p_m(\xi)=\xi_1\)</span>, take <span class="math" data-index="18" data-tex="\(\Gamma=\{\eta_1&gt;0,|\eta_2|&lt;\eta_1\}\)">\(\Gamma=\{\eta_1&gt;0,|\eta_2|&lt;\eta_1\}\)</span>, the smaller cone <span class="math" data-index="19" data-tex="\(\Gamma&#x27;=\{\xi_1&gt;0,|\xi_2|&lt;\xi_1/2\}\)">\(\Gamma&#x27;=\{\xi_1&gt;0,|\xi_2|&lt;\xi_1/2\}\)</span>, and <span class="math" data-index="20" data-tex="\(\xi=(4,0)\)">\(\xi=(4,0)\)</span>. The good forcing point <span class="math" data-index="21" data-tex="\((3,1)\)">\((3,1)\)</span> is in <span class="math" data-index="22" data-tex="\(\Gamma\)">\(\Gamma\)</span> with length greater than 2. The points <span class="math" data-index="23" data-tex="\((1,3)\)">\((1,3)\)</span> and <span class="math" data-index="24" data-tex="\((1,0)\)">\((1,0)\)</span> illustrate the angular and small-length regions; being outside the forcing cone need not mean being characteristic. Equation (EE22) gives the exact separation constant. The plotted points illustrate integration regions, rather than the wavefront set of a particular forcing.</p>
+<figure><img class="course-figure" loading="lazy" width="1425" height="780" src="reproduce/L199/figures/weighted-adjoint-word-counts.png" alt="Exact counts of retained and first-crossing ordered words for three possible weights and cutoff five." /><figcaption class="native"><a href="reproduce/L199/figures/weighted-adjoint-word-counts.png">Open full-size PNG</a> · <a href="reproduce/L199/figures/weighted-adjoint-word-counts.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 2.</strong> With <span class="math" data-index="25" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-index="26" data-tex="\(N=4\)">\(N=4\)</span>, <span class="math" data-index="27" data-tex="\(\mu=1\)">\(\mu=1\)</span>, retain weights through <span class="math" data-index="28" data-tex="\(J=5\)">\(J=5\)</span>. There are 28 retained ordered words and 57 first-crossing remainder words, with respective remainder counts 24, 20 and 13 at weights 6, 7 and 8. These are exact finite counts from (EE16), derived in Exercise 2; no commuting-operator binomial expansion is used.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-a-directional-derivative-leaves-transverse-singularities">Example 1: a directional derivative leaves transverse singularities.</h3>
+<p>For <span class="math" data-index="29" data-tex="\(P=D_1\)">\(P=D_1\)</span> in the plane, the characteristic set is <span class="math" data-index="30" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>. The function <span class="math" data-index="31" data-tex="\(u(x_1,x_2)=H(x_2)\)">\(u(x_1,x_2)=H(x_2)\)</span> has <span class="math" data-index="32" data-tex="\(Pu=0\)">\(Pu=0\)</span> and is not smooth across <span class="math" data-index="33" data-tex="\(x_2=0\)">\(x_2=0\)</span>. Theorem A confines any singular covectors there to the transverse direction, which is characteristic. It does not imply smoothness of all homogeneous solutions of a nonelliptic equation. In contrast, <span class="math" data-index="34" data-tex="\(D_1H(x_1)=-i\delta(x_1)\)">\(D_1H(x_1)=-i\delta(x_1)\)</span>; the forcing has the singularity that a noncharacteristic normal would require.</p>
+<h3 id="example-2-an-analytic-variable-coefficient-can-have-a-characteristic-boundary">Example 2: an analytic variable coefficient can have a characteristic boundary.</h3>
+<p>Let</p>
+<span class="math math-display" id="learner-eq-LE5" data-index="35" data-tex="\[
+P=x_1D_1+D_2,\qquad u=H(x_1).
+\tag{LE5}
+\]">\[
+P=x_1D_1+D_2,\qquad u=H(x_1).
+\tag{LE5}
+\]</span>
+<p>Distributionally <span class="math" data-index="36" data-tex="\(x_1\delta(x_1)=0\)">\(x_1\delta(x_1)=0\)</span>, so <span class="math" data-index="37" data-tex="\(Pu=0\)">\(Pu=0\)</span>. Its principal symbol is <span class="math" data-index="38" data-tex="\(x_1\xi_1+\xi_2\)">\(x_1\xi_1+\xi_2\)</span>. At a boundary point <span class="math" data-index="39" data-tex="\(x_1=0\)">\(x_1=0\)</span>, the allowed characteristic covectors satisfy <span class="math" data-index="40" data-tex="\(\xi_2=0\)">\(\xi_2=0\)</span>, precisely the possible normals of this nonsmooth solution. The coefficient vanishing in the first direction is part of the principal symbol at that base point. Freezing it at a different point would give the wrong characteristic set.</p>
+<h3 id="example-3-ellipticity-permits-complex-coefficients">Example 3: ellipticity permits complex coefficients.</h3>
+<p>For <span class="math" data-index="41" data-tex="\(P=D_1+iD_2\)">\(P=D_1+iD_2\)</span>, the principal symbol <span class="math" data-index="42" data-tex="\(\xi_1+i\xi_2\)">\(\xi_1+i\xi_2\)</span> is nonzero at every nonzero real covector. Every distributional homogeneous solution is therefore real analytic. For instance <span class="math" data-index="43" data-tex="\(u=e^{x_1+ix_2}\)">\(u=e^{x_1+ix_2}\)</span> satisfies <span class="math" data-index="44" data-tex="\(D_1u=-iu\)">\(D_1u=-iu\)</span>, <span class="math" data-index="45" data-tex="\(D_2u=u\)">\(D_2u=u\)</span>, hence <span class="math" data-index="46" data-tex="\(Pu=0\)">\(Pu=0\)</span>. No real-principal-type hypothesis is used. The nonvanishing here concerns real covectors; a complex polynomial may have complex zeros and still be elliptic in this sense.</p>
+<h3 id="example-4-smooth-coefficients-give-no-automatic-analytic-conclusion">Example 4: smooth coefficients give no automatic analytic conclusion.</h3>
+<p>Put</p>
+<span class="math math-display" id="learner-eq-LE6" data-index="47" data-tex="\[
+f(x)=\begin{cases}e^{-1/x^2},&amp;x&gt;0,\\0,&amp;x\le0,\end{cases}
+\qquad u=e^f,\qquad P=D+if&#x27;(x).
+\tag{LE6}
+\]">\[
+f(x)=\begin{cases}e^{-1/x^2},&amp;x&gt;0,\\0,&amp;x\le0,\end{cases}
+\qquad u=e^f,\qquad P=D+if&#x27;(x).
+\tag{LE6}
+\]</span>
+<p>Every derivative of <span class="math" data-index="48" data-tex="\(f\)">\(f\)</span> is zero at the origin, yet <span class="math" data-index="49" data-tex="\(f\)">\(f\)</span> is positive to its right. Thus <span class="math" data-index="50" data-tex="\(u\)">\(u\)</span> is smooth, has constant Taylor series 1 at zero, and is not analytic there. Direct differentiation gives <span class="math" data-index="51" data-tex="\(Pu=0\)">\(Pu=0\)</span>. The principal symbol is <span class="math" data-index="52" data-tex="\(\xi\)">\(\xi\)</span>, so the operator is elliptic; its zeroth coefficient is smooth and nonanalytic. This satisfies smooth elliptic regularity and shows the need for the analytic-coefficient hypothesis in its analytic counterpart. Exercise 6 supplies the complete flatness and nonanalyticity verification.</p>
+<h2 id="4-exercises-100-points">4. Exercises, 100 points</h2>
+<p><strong>Exercise 1 — Introductory, 10 points: compute the transpose correctly.</strong> In one variable let <span class="math" data-index="53" data-tex="\(P=a(x)D^2+b(x)D+c(x)\)">\(P=a(x)D^2+b(x)D+c(x)\)</span>, where <span class="math" data-index="54" data-tex="\(a\ne0\)">\(a\ne0\)</span> on the neighborhood in question. For <span class="math" data-index="55" data-tex="\(\xi&gt;0\)">\(\xi&gt;0\)</span>, expand <span class="math" data-index="56" data-tex="\(P^t(e^{-ix\xi}w/(a\xi^2))\)">\(P^t(e^{-ix\xi}w/(a\xi^2))\)</span>. Identify <span class="math" data-index="57" data-tex="\(R_1,R_2\)">\(R_1,R_2\)</span> in (LE4), including the derivative of <span class="math" data-index="58" data-tex="\(b/a\)">\(b/a\)</span>. Do not use a conjugate transpose.</p>
+<p><strong>Exercise 2 — Introductory, 10 points: count first crossings.</strong> For <span class="math" data-index="59" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-index="60" data-tex="\(J=5\)">\(J=5\)</span>, count all retained words, including the empty word. Count the remainder words in (EE16) separately at weights 6, 7 and 8. Explain why simply counting all compositions at each remainder weight would be wrong after weight 6.</p>
+<p><strong>Exercise 3 — Intermediate, 15 points: quantify cone separation.</strong> For the cones and three forcing points in Figure 1, obtain an admissible exact constant in (EE21), classify each point and compute the separation ratio for the two bad points. Explain why a bad forcing point need not lie in the characteristic set.</p>
+<p><strong>Exercise 4 — Intermediate, 15 points: low derivatives must be uniform.</strong> Work on the real line with target point 0 and a distinct point <span class="math" data-index="61" data-tex="\(z\)">\(z\)</span>. Choose controlled <span class="math" data-index="62" data-tex="\(\chi_N\)">\(\chi_N\)</span>, equal to one near both points, and controlled <span class="math" data-index="63" data-tex="\(\psi_N\)">\(\psi_N\)</span>, equal to one near <span class="math" data-index="64" data-tex="\(z\)">\(z\)</span> and supported away from 0, all with fixed compact supports. Set</p>
+<span class="math math-display" id="learner-eq-EX1" data-index="65" data-tex="\[
+h_N(x)=\chi_N(x)+\tfrac12\psi_N(x)\sin(N(x-z)).
+\tag{EX1}
+\]">\[
+h_N(x)=\chi_N(x)+\tfrac12\psi_N(x)\sin(N(x-z)).
+\tag{EX1}
+\]</span>
+<p>Show that these functions have a common plateau near 0 and satisfy a bound <span class="math" data-index="66" data-tex="\(C(CN)^k\)">\(C(CN)^k\)</span> through derivative order <span class="math" data-index="67" data-tex="\(k\le N\)">\(k\le N\)</span>. Show nevertheless that <span class="math" data-index="68" data-tex="\(h_N\delta&#x27;_z\)">\(h_N\delta&#x27;_z\)</span> is not a bounded compact-distribution sequence. Which additional cutoff property in (EE4) prevents this in the proof?</p>
+<p><strong>Exercise 5 — Intermediate, 10 points: order zero is included.</strong> For multiplication by <span class="math" data-index="69" data-tex="\(x\)">\(x\)</span>, verify <span class="math" data-index="70" data-tex="\(x\delta_0=0\)">\(x\delta_0=0\)</span> and identify the characteristic set at zero. Compare multiplication by <span class="math" data-index="71" data-tex="\(e^x\)">\(e^x\)</span>. Explain why neither case requires an exception to Theorem A.</p>
+<p><strong>Exercise 6 — Advanced, 15 points: verify the smooth-coefficient counterexample.</strong> Prove every assertion in Example 4. In particular establish all-order smooth flatness of <span class="math" data-index="72" data-tex="\(f\)">\(f\)</span>, nonanalyticity of <span class="math" data-index="73" data-tex="\(u\)">\(u\)</span>, and the exact sign in <span class="math" data-index="74" data-tex="\(Pu=0\)">\(Pu=0\)</span>. Explain why the analytic version of the theorem cannot be applied.</p>
+<p><strong>Exercise 7 — Advanced, 15 points: do not rescale the weight.</strong> Use the admissible sequence <span class="math" data-index="75" data-tex="\(L_N=e^N\)">\(L_N=e^N\)</span>, so <span class="math" data-index="76" data-tex="\(M_N=e^{N^2}\)">\(M_N=e^{N^2}\)</span>. Prove there is no constant <span class="math" data-index="77" data-tex="\(C\)">\(C\)</span> with <span class="math" data-index="78" data-tex="\(M_{2N}\le C^{N+1}M_N\)">\(M_{2N}\le C^{N+1}M_N\)</span>. Even at frequencies <span class="math" data-index="79" data-tex="\(\rho=HN\)">\(\rho=HN\)</span> for fixed <span class="math" data-index="80" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>, explain why the estimate at index <span class="math" data-index="81" data-tex="\(2N\)">\(2N\)</span> need not imply the required estimate at index <span class="math" data-index="82" data-tex="\(N\)">\(N\)</span>. Identify the exact step of the proof that avoids this comparison.</p>
+<p><strong>Exercise 8 — Advanced, 10 points: charts and analytic structure.</strong> Under <span class="math" data-index="83" data-tex="\(x=e^y\)">\(x=e^y\)</span>, compute the expression for <span class="math" data-index="84" data-tex="\(D_x\)">\(D_x\)</span>, the transformed principal symbol and the cotangent map. Account for the density factor. Then use <span class="math" data-index="85" data-tex="\(x=y+f(y)\)">\(x=y+f(y)\)</span>, with <span class="math" data-index="86" data-tex="\(f\)">\(f\)</span> from Example 4, to explain why the analytic manifold conclusion uses analytic coordinate changes, rather than arbitrary smooth ones.</p>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The bilinear transpose is <span class="math" data-index="87" data-tex="\(P^t=D^2(a\,\cdot)-D(b\,\cdot)+c\)">\(P^t=D^2(a\,\cdot)-D(b\,\cdot)+c\)</span>. Conjugation by the exponential replaces <span class="math" data-index="88" data-tex="\(-D\)">\(-D\)</span> by <span class="math" data-index="89" data-tex="\(\xi-D\)">\(\xi-D\)</span>. Hence</p>
+<span class="math math-display" id="learner-eq-EX2" data-index="90" data-tex="\[
+\begin{aligned}
+e^{ix\xi}P^t\left(e^{-ix\xi}\frac{w}{a\xi^2}\right)
+ &amp;=w+\xi^{-1}\left(-2Dw+\frac ba w\right)\\
+ &amp;\quad+\xi^{-2}\left(D^2w-D\left(\frac ba w\right)+\frac ca w\right).
+\end{aligned}
+\tag{EX2}
+\]">\[
+\begin{aligned}
+e^{ix\xi}P^t\left(e^{-ix\xi}\frac{w}{a\xi^2}\right)
+ &amp;=w+\xi^{-1}\left(-2Dw+\frac ba w\right)\\
+ &amp;\quad+\xi^{-2}\left(D^2w-D\left(\frac ba w\right)+\frac ca w\right).
+\end{aligned}
+\tag{EX2}
+\]</span>
+<p>The leading factor cancels exactly inside <span class="math" data-index="91" data-tex="\(D^2(a w/(a\xi^2))\)">\(D^2(a w/(a\xi^2))\)</span>. The first-order term still differentiates <span class="math" data-index="92" data-tex="\((b/a)w\)">\((b/a)w\)</span>. Comparing with <span class="math" data-index="93" data-tex="\(I-\xi^{-1}R_1-\xi^{-2}R_2\)">\(I-\xi^{-1}R_1-\xi^{-2}R_2\)</span> gives</p>
+<span class="math math-display" id="learner-eq-EX3" data-index="94" data-tex="\[
+R_1=2D-\frac ba,
+\qquad
+R_2=-D^2+D\left(\frac ba\,\cdot\right)-\frac ca.
+\tag{EX3}
+\]">\[
+R_1=2D-\frac ba,
+\qquad
+R_2=-D^2+D\left(\frac ba\,\cdot\right)-\frac ca.
+\tag{EX3}
+\]</span>
+<p>In particular <span class="math" data-index="95" data-tex="\(D((b/a)w)=(b/a)Dw-i(b/a)&#x27;w\)">\(D((b/a)w)=(b/a)Dw-i(b/a)&#x27;w\)</span>; deleting the derivative of the coefficient would change the operator. Complex coefficients are not conjugated.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Let <span class="math" data-index="96" data-tex="\(T_q\)">\(T_q\)</span> count ordered words of weight <span class="math" data-index="97" data-tex="\(q\)">\(q\)</span>, with parts 1, 2 or 3. Then</p>
+<span class="math math-display" id="learner-eq-EX4" data-index="98" data-tex="\[
+T_0=1,\quad T_q=0\ (q&lt;0),\quad
+T_q=T_{q-1}+T_{q-2}+T_{q-3}.
+\tag{EX4}
+\]">\[
+T_0=1,\quad T_q=0\ (q&lt;0),\quad
+T_q=T_{q-1}+T_{q-2}+T_{q-3}.
+\tag{EX4}
+\]</span>
+<p>For weights 0 through 6 this gives <span class="math" data-index="99" data-tex="\(1,1,2,4,7,13,24\)">\(1,1,2,4,7,13,24\)</span>. The retained sum through 5 is 28. At weight 6 every first part leaves a tail of weight at most 5, so all 24 words are remainder words. At weight 7 the first part must be 2 or 3, giving <span class="math" data-index="100" data-tex="\(T_5+T_4=20\)">\(T_5+T_4=20\)</span>. At weight 8 it must be 3, giving <span class="math" data-index="101" data-tex="\(T_5=13\)">\(T_5=13\)</span>. Total remainder count is 57. As a check, left multiplication makes <span class="math" data-index="102" data-tex="\(3\cdot28=84\)">\(3\cdot28=84\)</span> nonempty words, of which the 27 retained nonempty words cancel. At weights 7 and 8, a word whose tail is already above 5 never occurs in <span class="math" data-index="103" data-tex="\(\mathcal Rw_J\)">\(\mathcal Rw_J\)</span>, so counting every composition there overcounts.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The two cone half-angles are <span class="math" data-index="104" data-tex="\(\pi/4\)">\(\pi/4\)</span> and <span class="math" data-index="105" data-tex="\(\arctan(1/2)\)">\(\arctan(1/2)\)</span>. Their angular gap is positive. Thus</p>
+<span class="math math-display" id="learner-eq-EX5" data-index="106" data-tex="\[
+d=\min\left(\frac13,
+ \sin\left(\frac{\pi/4-\arctan(1/2)}2\right)\right)
+\tag{EX5}
+\]">\[
+d=\min\left(\frac13,
+ \sin\left(\frac{\pi/4-\arctan(1/2)}2\right)\right)
+\tag{EX5}
+\]</span>
+<p>works by (EE21)–(EE22). The point <span class="math" data-index="107" data-tex="\((3,1)\)">\((3,1)\)</span> is in <span class="math" data-index="108" data-tex="\(\Gamma\)">\(\Gamma\)</span>, with length <span class="math" data-index="109" data-tex="\(\sqrt{10}&gt;2\)">\(\sqrt{10}&gt;2\)</span>, so it is good. The point <span class="math" data-index="110" data-tex="\((1,3)\)">\((1,3)\)</span> is outside <span class="math" data-index="111" data-tex="\(\Gamma\)">\(\Gamma\)</span>; its ratio is <span class="math" data-index="112" data-tex="\(3\sqrt2/(4+\sqrt{10})\)">\(3\sqrt2/(4+\sqrt{10})\)</span>. The point <span class="math" data-index="113" data-tex="\((1,0)\)">\((1,0)\)</span> has length 1, less than 2; its ratio is <span class="math" data-index="114" data-tex="\(3/5\)">\(3/5\)</span>. Both are in the bad integration region. For <span class="math" data-index="115" data-tex="\(p_m(\eta)=\eta_1\)">\(p_m(\eta)=\eta_1\)</span>, neither is characteristic, since its first coordinate is 1. The forcing cone encodes a local regularity witness and may be smaller than the set of noncharacteristic frequencies.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The sine term is supported away from 0, so the common plateau is unchanged. For <span class="math" data-index="116" data-tex="\(k\le N\)">\(k\le N\)</span>, expand the product derivative. A term with <span class="math" data-index="117" data-tex="\(j\)">\(j\)</span> derivatives on <span class="math" data-index="118" data-tex="\(\psi_N\)">\(\psi_N\)</span> is bounded by a constant times <span class="math" data-index="119" data-tex="\(\binom kj(CN)^jN^{k-j}\)">\(\binom kj(CN)^jN^{k-j}\)</span>. Summing gives a bound <span class="math" data-index="120" data-tex="\(C((C+1)N)^k\)">\(C((C+1)N)^k\)</span>, and adding the <span class="math" data-index="121" data-tex="\(\chi_N\)">\(\chi_N\)</span> bound proves the required finite-index estimate.</p>
+<p>At <span class="math" data-index="122" data-tex="\(z\)">\(z\)</span>, both cutoffs are identically one nearby. Therefore <span class="math" data-index="123" data-tex="\(h_N(z)=1\)">\(h_N(z)=1\)</span>, <span class="math" data-index="124" data-tex="\(h_N&#x27;(z)=N/2\)">\(h_N&#x27;(z)=N/2\)</span>, and multiplication of the delta derivative gives</p>
+<span class="math math-display" id="learner-eq-EX6" data-index="125" data-tex="\[
+h_N\delta&#x27;_z=\delta&#x27;_z-\frac N2\delta_z.
+\tag{EX6}
+\]">\[
+h_N\delta&#x27;_z=\delta&#x27;_z-\frac N2\delta_z.
+\tag{EX6}
+\]</span>
+<p>This identity follows by applying <span class="math" data-index="126" data-tex="\(-\partial_x\)">\(-\partial_x\)</span> to the product of <span class="math" data-index="127" data-tex="\(h_N\)">\(h_N\)</span> and a test at <span class="math" data-index="128" data-tex="\(z\)">\(z\)</span>. A fixed test equal to one near <span class="math" data-index="129" data-tex="\(z\)">\(z\)</span> evaluates the right side to <span class="math" data-index="130" data-tex="\(-N/2\)">\(-N/2\)</span>, which is unbounded. Thus no common compact-distribution bound exists. The cutoffs used in the theorem have every fixed low derivative uniformly bounded in their index, not only a bound proportional to <span class="math" data-index="131" data-tex="\(N^k\)">\(N^k\)</span> at each finite order. In particular the first derivative in this example violates that extra property. The example does not claim that these functions satisfy all mixed bounds in (EE4).</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>For any test <span class="math" data-index="132" data-tex="\(\phi\)">\(\phi\)</span>, <span class="math" data-index="133" data-tex="\(\langle x\delta_0,\phi\rangle=(x\phi)(0)=0\)">\(\langle x\delta_0,\phi\rangle=(x\phi)(0)=0\)</span>. In order zero the principal symbol is the multiplier itself. For multiplication by <span class="math" data-index="134" data-tex="\(x\)">\(x\)</span>, its characteristic set at zero is every nonzero covector there, so the singular delta is permitted by the theorem. Away from zero the multiplier is invertible. Multiplication by <span class="math" data-index="135" data-tex="\(e^x\)">\(e^x\)</span> is everywhere elliptic and has analytic reciprocal <span class="math" data-index="136" data-tex="\(e^{-x}\)">\(e^{-x}\)</span>; either the main theorem or the class multiplier rule applied in both directions gives equal wavefront sets of input and output. In the finite inverse the order-zero remainder is simply absent.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>On <span class="math" data-index="137" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, repeated differentiation of <span class="math" data-index="138" data-tex="\(e^{-1/x^2}\)">\(e^{-1/x^2}\)</span> gives a polynomial in <span class="math" data-index="139" data-tex="\(1/x\)">\(1/x\)</span> times that exponential. This follows inductively: differentiating the polynomial adds a factor <span class="math" data-index="140" data-tex="\(-x^{-2}\)">\(-x^{-2}\)</span> times its polynomial derivative, while differentiating the exponential multiplies it by <span class="math" data-index="141" data-tex="\(2x^{-3}\)">\(2x^{-3}\)</span>. For every integer <span class="math" data-index="142" data-tex="\(q\ge0\)">\(q\ge0\)</span>, <span class="math" data-index="143" data-tex="\(x^{-q}e^{-1/x^2}\to0\)">\(x^{-q}e^{-1/x^2}\to0\)</span> as <span class="math" data-index="144" data-tex="\(x\downarrow0\)">\(x\downarrow0\)</span>, by setting <span class="math" data-index="145" data-tex="\(t=x^{-2}\)">\(t=x^{-2}\)</span> and using that the exponential dominates every power. Each derivative therefore extends continuously by zero, and induction on its order proves smoothness and all-order flatness.</p>
+<p>Composition with the entire exponential gives smooth <span class="math" data-index="146" data-tex="\(u=e^f\)">\(u=e^f\)</span>. The function <span class="math" data-index="147" data-tex="\(u-1\)">\(u-1\)</span> is flat at zero, for example from <span class="math" data-index="148" data-tex="\(e^f-1=f\int_0^1e^{tf}\,dt\)">\(e^f-1=f\int_0^1e^{tf}\,dt\)</span> and the product rule. Its Taylor series there is zero, but <span class="math" data-index="149" data-tex="\(u-1&gt;0\)">\(u-1&gt;0\)</span> for positive <span class="math" data-index="150" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-index="151" data-tex="\(u\)">\(u\)</span> is not analytic. Directly,</p>
+<span class="math math-display" id="learner-eq-EX7" data-index="152" data-tex="\[
+Du=-if&#x27;e^f,
+\qquad (D+if&#x27;)u=0.
+\tag{EX7}
+\]">\[
+Du=-if&#x27;e^f,
+\qquad (D+if&#x27;)u=0.
+\tag{EX7}
+\]</span>
+<p>The coefficient <span class="math" data-index="153" data-tex="\(if&#x27;\)">\(if&#x27;\)</span> is smooth and flat but nonzero on the positive side, hence nonanalytic at zero by the same Taylor argument. The smooth principal symbol <span class="math" data-index="154" data-tex="\(\xi\)">\(\xi\)</span> is elliptic. The smooth conclusion is valid; the analytic-coefficient assumption is absent.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>The sequence is increasing, dominates <span class="math" data-index="155" data-tex="\(N\)">\(N\)</span>, and has fixed consecutive ratio <span class="math" data-index="156" data-tex="\(e\)">\(e\)</span>, so it is one of the admissible examples in L190. Its weights satisfy</p>
+<span class="math math-display" id="learner-eq-EX8" data-index="157" data-tex="\[
+\frac{M_{2N}}{M_N}=e^{3N^2}.
+\tag{EX8}
+\]">\[
+\frac{M_{2N}}{M_N}=e^{3N^2}.
+\tag{EX8}
+\]</span>
+<p>Taking logarithms contradicts any bound by <span class="math" data-index="158" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span>. Even a Fourier power cannot repair the comparison uniformly in the needed frequency range: at <span class="math" data-index="159" data-tex="\(\rho=HN\)">\(\rho=HN\)</span>,</p>
+<span class="math math-display" id="learner-eq-EX9" data-index="160" data-tex="\[
+\frac{M_{2N}\rho^{-2N}}{M_N\rho^{-N}}
+   =\exp(3N^2-N\log(HN)),
+\tag{EX9}
+\]">\[
+\frac{M_{2N}\rho^{-2N}}{M_N\rho^{-N}}
+   =\exp(3N^2-N\log(HN)),
+\tag{EX9}
+\]</span>
+<p>which again grows faster than any constant to the power <span class="math" data-index="161" data-tex="\(N+1\)">\(N+1\)</span>. Lemma 4.1 pairs the amplitude with <span class="math" data-index="162" data-tex="\(f_N\)">\(f_N\)</span> itself, whose agreement with the forcing holds on the fixed amplitude support. Its index need not match the cutoff index <span class="math" data-index="163" data-tex="\(\kappa N\)">\(\kappa N\)</span>. All bad-region and remainder terms cost only <span class="math" data-index="164" data-tex="\(C^{N+1}N^N\)">\(C^{N+1}N^N\)</span>, which is bounded by <span class="math" data-index="165" data-tex="\(C^{N+1}M_N\)">\(C^{N+1}M_N\)</span>. This is the exact reason the proof keeps the full derivative-class conclusion.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>The chain rule gives <span class="math" data-index="166" data-tex="\(\partial_x=e^{-y}\partial_y\)">\(\partial_x=e^{-y}\partial_y\)</span>, hence</p>
+<span class="math math-display" id="learner-eq-EX10" data-index="167" data-tex="\[
+D_x=e^{-y}D_y,\qquad
+p_y(y,\eta)=e^{-y}\eta,
+\qquad \eta=e^y\xi.
+\tag{EX10}
+\]">\[
+D_x=e^{-y}D_y,\qquad
+p_y(y,\eta)=e^{-y}\eta,
+\qquad \eta=e^y\xi.
+\tag{EX10}
+\]</span>
+<p>Thus <span class="math" data-index="168" data-tex="\(p_y(y,e^y\xi)=\xi\)">\(p_y(y,e^y\xi)=\xi\)</span>, agreeing with the original principal symbol. The coordinate density is <span class="math" data-index="169" data-tex="\(dx=e^y\,dy\)">\(dx=e^y\,dy\)</span>. Its factor and reciprocal are analytic and nonzero, so the analytic/class multiplier theorem leaves the relevant wavefront set unchanged. The chart and its inverse are analytic, so the cotangent transformation theorem applies in both directions.</p>
+<p>For the second map, <span class="math" data-index="170" data-tex="\(h(y)=y+f(y)\)">\(h(y)=y+f(y)\)</span> has positive derivative near zero: it is 1 for negative <span class="math" data-index="171" data-tex="\(y\)">\(y\)</span> and <span class="math" data-index="172" data-tex="\(1+2y^{-3}e^{-1/y^2}&gt;1\)">\(1+2y^{-3}e^{-1/y^2}&gt;1\)</span> for positive <span class="math" data-index="173" data-tex="\(y\)">\(y\)</span>. It is a smooth local diffeomorphism and is not analytic at zero. The analytic function <span class="math" data-index="174" data-tex="\(u(x)=x\)">\(u(x)=x\)</span> pulls back to <span class="math" data-index="175" data-tex="\(h(y)\)">\(h(y)\)</span>, which is nonanalytic there. Thus analytic-wavefront absence cannot be invariant under arbitrary smooth coordinate changes. The smooth wavefront theorem still uses smooth charts; the analytic/class assertion uses the analytic structure specified in its statement.</p>
+<h2 id="references">References</h2>
+<p>[H] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990, Theorems 8.3.1 and 8.6.1, Corollary 8.3.2, and the finite-cutoff estimates of Lemmas 8.6.2–8.6.4. The complete proof follows below, with exact links to its written scalar, Fourier and class prerequisites.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<h3 id="1-the-local-statement-and-its-written-inputs">1. The local statement and its written inputs</h3>
+<p>Let <span class="math" data-index="176" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open, with <span class="math" data-index="177" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and let</p>
+<span class="math math-display" id="proof-eq-EE1" data-index="178" data-tex="\[
+P(x,D)=\sum_{|\alpha|\le m}a_\alpha(x)D^\alpha,
+\qquad D_j=-i\partial_{x_j},
+\qquad
+p_m(x,\xi)=\sum_{|\alpha|=m}a_\alpha(x)\xi^\alpha.
+\tag{EE1}
+\]">\[
+P(x,D)=\sum_{|\alpha|\le m}a_\alpha(x)D^\alpha,
+\qquad D_j=-i\partial_{x_j},
+\qquad
+p_m(x,\xi)=\sum_{|\alpha|=m}a_\alpha(x)\xi^\alpha.
+\tag{EE1}
+\]</span>
+<p>The operator is scalar, its coefficients may be complex, and its finite order <span class="math" data-index="179" data-tex="\(m\)">\(m\)</span> may be zero. Put</p>
+<span class="math math-display" id="proof-eq-EE2" data-index="180" data-tex="\[
+\operatorname{Char}P
+ =\{(x,\xi):\xi\ne0,\ p_m(x,\xi)=0\}.
+\tag{EE2}
+\]">\[
+\operatorname{Char}P
+ =\{(x,\xi):\xi\ne0,\ p_m(x,\xi)=0\}.
+\tag{EE2}
+\]</span>
+<p>The transpose in this proof is complex bilinear, without conjugating coefficients:</p>
+<span class="math math-display" id="proof-eq-EE3" data-index="181" data-tex="\[
+P^tv=\sum_{|\alpha|\le m}(-D)^\alpha(a_\alpha v),
+\qquad \langle Pu,v\rangle=\langle u,P^tv\rangle.
+\tag{EE3}
+\]">\[
+P^tv=\sum_{|\alpha|\le m}(-D)^\alpha(a_\alpha v),
+\qquad \langle Pu,v\rangle=\langle u,P^tv\rangle.
+\tag{EE3}
+\]</span>
+<p>We use these complete written facts.</p>
+<ul>
+<li><span class="unlinked">Analytic directions of holomorphic boundary values</span>, Lemma 1.1, constructs compact cutoffs <span class="math" data-index="182" data-tex="\(\chi_L\)">\(\chi_L\)</span>, equal to one on a common smaller neighborhood, with</li>
+</ul>
+<span class="math math-display" id="proof-eq-EE4" data-index="183" data-tex="\[
+  \|\partial^{\alpha+\beta}\chi_L\|_\infty
+       \le C_\beta(CL)^{|\alpha|}\quad(|\alpha|\le L),
+  \tag{EE4}
+  \]">\[
+  \|\partial^{\alpha+\beta}\chi_L\|_\infty
+       \le C_\beta(CL)^{|\alpha|}\quad(|\alpha|\le L),
+  \tag{EE4}
+  \]</span>
+<p>for every fixed <span class="math" data-index="184" data-tex="\(\beta\)">\(\beta\)</span>. Every fixed low derivative is uniformly bounded in <span class="math" data-index="185" data-tex="\(L\)">\(L\)</span>. The construction convolves a fixed plateau with <span class="math" data-index="186" data-tex="\(L\)">\(L\)</span> unit-mass bumps of radius proportional to <span class="math" data-index="187" data-tex="\(L^{-1}\)">\(L^{-1}\)</span>; differentiated factors have <span class="math" data-index="188" data-tex="\(L^1\)">\(L^1\)</span> norm proportional to <span class="math" data-index="189" data-tex="\(L\)">\(L\)</span>.</p>
+<ul>
+<li><a href="AN02-L045.html#cauchy-estimates-and-parameter-contours">Cauchy bounds, root counts and analytic extensions</a>, Lemmas 1.1 and 3.1, gives the successive-circle estimate on polydisks and the local holomorphic extension of real-analytic, possibly complex-valued, coefficients.</li>
+<li><a href="AN02-L190.html#2-a-single-bounded-sequence-localizes-the-class">Derivative sequences and microlocal regularity</a>, Lemma 2.2 and Theorem 2.3, gives class multipliers, differential decrease, analytic coordinate changes and the exact base projection. Its admissible sequence has weights</li>
+</ul>
+<span class="math math-display" id="proof-eq-EE5" data-index="190" data-tex="\[
+  M_N=L_N^N\ge N^N,\qquad N\ge1.
+  \tag{EE5}
+  \]">\[
+  M_N=L_N^N\ge N^N,\qquad N\ge1.
+  \tag{EE5}
+  \]</span>
+<p>The analytic case is <span class="math" data-index="191" data-tex="\(L_N=N\)">\(L_N=N\)</span>. At a point outside <span class="math" data-index="192" data-tex="\(\operatorname{WF}_L(f)\)">\(\operatorname{WF}_L(f)\)</span>, the defining witnesses <span class="math" data-index="193" data-tex="\(f_N\)">\(f_N\)</span> have common compact support, a common finite order and bound, agree with <span class="math" data-index="194" data-tex="\(f\)">\(f\)</span> on one neighborhood, and satisfy</p>
+<span class="math math-display" id="proof-eq-EE6" data-index="195" data-tex="\[
+  |\widehat f_N(\eta)|
+     \le A^{N+1}M_N(1+|\eta|)^{-N}
+     \quad(\eta\in\Gamma).
+  \tag{EE6}
+  \]">\[
+  |\widehat f_N(\eta)|
+     \le A^{N+1}M_N(1+|\eta|)^{-N}
+     \quad(\eta\in\Gamma).
+  \tag{EE6}
+  \]</span>
+<ul>
+<li>The compact-distribution Fourier estimates and product formula in <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz Fourier foundations</a> and <span class="unlinked">Pulling back and combining analytic singularities</span> give the common polynomial bound for bounded compact witnesses and the absolutely convergent Fourier convolution used below. We also prove the particular estimates needed here.</li>
+</ul>
+<p><strong>Theorem 1.1 (microlocal ellipticity).</strong> If the coefficients of <span class="math" data-index="196" data-tex="\(P\)">\(P\)</span> are smooth, then</p>
+<span class="math math-display" id="proof-eq-EE7" data-index="197" data-tex="\[
+\operatorname{WF}(u)
+  \subset\operatorname{Char}P\cup\operatorname{WF}(Pu)
+  \quad(u\in\mathcal D&#x27;(X)).
+\tag{EE7}
+\]">\[
+\operatorname{WF}(u)
+  \subset\operatorname{Char}P\cup\operatorname{WF}(Pu)
+  \quad(u\in\mathcal D&#x27;(X)).
+\tag{EE7}
+\]</span>
+<p>If they are analytic, then, for every admissible sequence from the derivative-sequence lesson,</p>
+<span class="math math-display" id="proof-eq-EE8" data-index="198" data-tex="\[
+\operatorname{WF}_L(u)
+  \subset\operatorname{Char}P\cup\operatorname{WF}_L(Pu).
+\tag{EE8}
+\]">\[
+\operatorname{WF}_L(u)
+  \subset\operatorname{Char}P\cup\operatorname{WF}_L(Pu).
+\tag{EE8}
+\]</span>
+<p>In particular (EE8) holds for the analytic wavefront set. No reality or principal-type hypothesis is imposed on the symbol. Both statements are local, and their manifold forms will be explained in Section 7.</p>
+<h3 id="2-a-finite-inverse-for-the-transposed-oscillation">2. A finite inverse for the transposed oscillation</h3>
+<p>Fix <span class="math" data-index="199" data-tex="\((x_0,\xi_0)\notin\operatorname{Char}P\)">\((x_0,\xi_0)\notin\operatorname{Char}P\)</span>, and suppose the corresponding forcing wavefront is absent there. Choose a relatively compact neighborhood of <span class="math" data-index="200" data-tex="\(x_0\)">\(x_0\)</span>, a compact set <span class="math" data-index="201" data-tex="\(K\)">\(K\)</span> in that neighborhood containing a smaller neighborhood of <span class="math" data-index="202" data-tex="\(x_0\)">\(x_0\)</span>, and a conic neighborhood <span class="math" data-index="203" data-tex="\(\Gamma\)">\(\Gamma\)</span> of <span class="math" data-index="204" data-tex="\(\xi_0\)">\(\xi_0\)</span>, with slightly larger angular and spatial neighborhoods still satisfying</p>
+<span class="math math-display" id="proof-eq-EE9" data-index="205" data-tex="\[
+|p_m(x,\theta)|\ge c&gt;0,
+\qquad x\text{ near }K,\quad
+\theta\in\overline\Gamma\cap\mathbb S^{n-1}.
+\tag{EE9}
+\]">\[
+|p_m(x,\theta)|\ge c&gt;0,
+\qquad x\text{ near }K,\quad
+\theta\in\overline\Gamma\cap\mathbb S^{n-1}.
+\tag{EE9}
+\]</span>
+<p>Shrink the original forcing witness cone if necessary. In the class case the common agreement neighborhood of <span class="math" data-index="206" data-tex="\(f_N\)">\(f_N\)</span> contains <span class="math" data-index="207" data-tex="\(K\)">\(K\)</span>; in the smooth case choose one compact localization <span class="math" data-index="208" data-tex="\(f_0\)">\(f_0\)</span> agreeing with <span class="math" data-index="209" data-tex="\(f=Pu\)">\(f=Pu\)</span> near <span class="math" data-index="210" data-tex="\(K\)">\(K\)</span>, with rapidly decreasing Fourier transform in the larger cone. These choices follow directly from the respective wavefront absence definitions, by taking the cutoff support inside the agreement neighborhood. Choose a smaller cone <span class="math" data-index="211" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span>, whose angular closure lies inside <span class="math" data-index="212" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>Write <span class="math" data-index="213" data-tex="\(\xi=\rho\theta\)">\(\xi=\rho\theta\)</span>, where <span class="math" data-index="214" data-tex="\(\rho=|\xi|\ge1\)">\(\rho=|\xi|\ge1\)</span>. Define</p>
+<span class="math math-display" id="proof-eq-EE10" data-index="215" data-tex="\[
+b(x,\xi)=\frac1{p_m(x,\xi)}
+        =\rho^{-m}\frac1{p_m(x,\theta)}.
+\tag{EE10}
+\]">\[
+b(x,\xi)=\frac1{p_m(x,\xi)}
+        =\rho^{-m}\frac1{p_m(x,\theta)}.
+\tag{EE10}
+\]</span>
+<p>This is well-defined on a neighborhood of <span class="math" data-index="216" data-tex="\(K\)">\(K\)</span>. In the analytic case its normalized factor extends holomorphically to a common complex neighborhood, with a uniform bound for all the indicated real <span class="math" data-index="217" data-tex="\(\theta\)">\(\theta\)</span>. Indeed the finitely many coefficients extend near <span class="math" data-index="218" data-tex="\(K\)">\(K\)</span>. On the real compact product, the denominator has the positive lower bound (EE9). Uniform continuity on a smaller compact complex neighborhood keeps its modulus above <span class="math" data-index="219" data-tex="\(c/2\)">\(c/2\)</span>. Its reciprocal is then holomorphic and bounded there. In the smooth case every fixed real derivative is uniformly bounded on the compact product by the ordinary quotient rule.</p>
+<p>Expanding (EE3) after multiplication by the exponential gives the exact identity</p>
+<span class="math math-display" id="proof-eq-EE11" data-index="220" data-tex="\[
+P^t\bigl(e^{-ix\cdot\xi}b(x,\xi)w(x)\bigr)
+  =e^{-ix\cdot\xi}(I-\mathcal R_\xi)w(x),
+\qquad
+\mathcal R_\xi=\sum_{j=1}^m\rho^{-j}R_j(x,\theta,D).
+\tag{EE11}
+\]">\[
+P^t\bigl(e^{-ix\cdot\xi}b(x,\xi)w(x)\bigr)
+  =e^{-ix\cdot\xi}(I-\mathcal R_\xi)w(x),
+\qquad
+\mathcal R_\xi=\sum_{j=1}^m\rho^{-j}R_j(x,\theta,D).
+\tag{EE11}
+\]</span>
+<p>Here <span class="math" data-index="221" data-tex="\(R_j\)">\(R_j\)</span> has differential order at most <span class="math" data-index="222" data-tex="\(j\)">\(j\)</span>. Its coefficients are smooth, or analytic when those of <span class="math" data-index="223" data-tex="\(P\)">\(P\)</span> are analytic, and are uniformly bounded with the required derivatives on the stated neighborhoods. To check every power, use</p>
+<span class="math math-display" id="proof-eq-EE12" data-index="224" data-tex="\[
+(-D)^\alpha(e^{-ix\cdot\xi}a_\alpha b w)
+ =e^{-ix\cdot\xi}(\xi-D)^\alpha(a_\alpha b w).
+\tag{EE12}
+\]">\[
+(-D)^\alpha(e^{-ix\cdot\xi}a_\alpha b w)
+ =e^{-ix\cdot\xi}(\xi-D)^\alpha(a_\alpha b w).
+\tag{EE12}
+\]</span>
+<p>If <span class="math" data-index="225" data-tex="\(|\beta|\)">\(|\beta|\)</span> derivatives in this last expansion do not fall on the exponential, the frequency factor after (EE10) is</p>
+<span class="math math-display" id="proof-eq-EE13" data-index="226" data-tex="\[
+\rho^{|\alpha|-|\beta|-m}=\rho^{-j},
+\qquad j=m-|\alpha|+|\beta|,
+\qquad |\beta|\le j\le m.
+\tag{EE13}
+\]">\[
+\rho^{|\alpha|-|\beta|-m}=\rho^{-j},
+\qquad j=m-|\alpha|+|\beta|,
+\qquad |\beta|\le j\le m.
+\tag{EE13}
+\]</span>
+<p>The only terms with <span class="math" data-index="227" data-tex="\(j=0\)">\(j=0\)</span> are <span class="math" data-index="228" data-tex="\(|\alpha|=m,\beta=0\)">\(|\alpha|=m,\beta=0\)</span>; their sum is exactly <span class="math" data-index="229" data-tex="\(w\)">\(w\)</span>. Put the negative of all other terms into <span class="math" data-index="230" data-tex="\(R_j\)">\(R_j\)</span>. Derivatives hitting coefficients are included in these operators, so no commutation of variable coefficients with differentiation is asserted.</p>
+<p>For a finite ordered word <span class="math" data-index="231" data-tex="\(\mathbf j=(j_1,\ldots,j_k)\)">\(\mathbf j=(j_1,\ldots,j_k)\)</span>, with <span class="math" data-index="232" data-tex="\(1\le j_i\le m\)">\(1\le j_i\le m\)</span>, set</p>
+<span class="math math-display" id="proof-eq-EE14" data-index="233" data-tex="\[
+|\mathbf j|=j_1+\cdots+j_k,
+\qquad
+Q_{\mathbf j}=\rho^{-|\mathbf j|}R_{j_1}\cdots R_{j_k}.
+\tag{EE14}
+\]">\[
+|\mathbf j|=j_1+\cdots+j_k,
+\qquad
+Q_{\mathbf j}=\rho^{-|\mathbf j|}R_{j_1}\cdots R_{j_k}.
+\tag{EE14}
+\]</span>
+<p>The empty word has weight zero and operator <span class="math" data-index="234" data-tex="\(I\)">\(I\)</span>. For an integer <span class="math" data-index="235" data-tex="\(J\ge0\)">\(J\ge0\)</span> and a compact smooth <span class="math" data-index="236" data-tex="\(\chi\)">\(\chi\)</span> supported in <span class="math" data-index="237" data-tex="\(K\)">\(K\)</span>, form the finite sum</p>
+<span class="math math-display" id="proof-eq-EE15" data-index="238" data-tex="\[
+w_J=\sum_{|\mathbf j|\le J}Q_{\mathbf j}\chi.
+\tag{EE15}
+\]">\[
+w_J=\sum_{|\mathbf j|\le J}Q_{\mathbf j}\chi.
+\tag{EE15}
+\]</span>
+<p>It has compact support in <span class="math" data-index="239" data-tex="\(K\)">\(K\)</span>. Left multiplication by <span class="math" data-index="240" data-tex="\(\mathcal R_\xi\)">\(\mathcal R_\xi\)</span> cancels precisely every nonempty word of weight at most <span class="math" data-index="241" data-tex="\(J\)">\(J\)</span>. Therefore</p>
+<span class="math math-display" id="proof-eq-EE16" data-index="242" data-tex="\[
+(I-\mathcal R_\xi)w_J=\chi-E_J,
+\qquad
+E_J=\sum_{\substack{|\mathbf j|&gt;J\ge j_2+\cdots+j_k}}
+           Q_{\mathbf j}\chi.
+\tag{EE16}
+\]">\[
+(I-\mathcal R_\xi)w_J=\chi-E_J,
+\qquad
+E_J=\sum_{\substack{|\mathbf j|&gt;J\ge j_2+\cdots+j_k}}
+           Q_{\mathbf j}\chi.
+\tag{EE16}
+\]</span>
+<p>Every remainder word has weight between <span class="math" data-index="243" data-tex="\(J+1\)">\(J+1\)</span> and <span class="math" data-index="244" data-tex="\(J+m\)">\(J+m\)</span>. These formulas use ordered words and are valid for noncommuting differential operators. There are at most <span class="math" data-index="245" data-tex="\(2^{q-1}\)">\(2^{q-1}\)</span> positive-integer compositions of a positive weight <span class="math" data-index="246" data-tex="\(q\)">\(q\)</span>: mark the breaks among <span class="math" data-index="247" data-tex="\(q\)">\(q\)</span> successive units. Restricting each part to be at most <span class="math" data-index="248" data-tex="\(m\)">\(m\)</span> only reduces the number. All sums are finite. When <span class="math" data-index="249" data-tex="\(m=0\)">\(m=0\)</span>, set <span class="math" data-index="250" data-tex="\(\mathcal R_\xi=0\)">\(\mathcal R_\xi=0\)</span>, <span class="math" data-index="251" data-tex="\(w_J=\chi\)">\(w_J=\chi\)</span>, and <span class="math" data-index="252" data-tex="\(E_J=0\)">\(E_J=0\)</span>; the identities remain exact.</p>
+<h3 id="3-the-analytic-word-estimate-has-one-derivative-scale">3. The analytic word estimate has one derivative scale</h3>
+<p><strong>Lemma 3.1 (holomorphic jets and words).</strong> Suppose the coefficients in the finitely many <span class="math" data-index="253" data-tex="\(R_j\)">\(R_j\)</span> extend holomorphically and are uniformly bounded on a fixed complex neighborhood of <span class="math" data-index="254" data-tex="\(K\)">\(K\)</span>, uniformly in <span class="math" data-index="255" data-tex="\(\theta\)">\(\theta\)</span>. For the cutoffs in (EE4), there is <span class="math" data-index="256" data-tex="\(C\)">\(C\)</span>, independent of the integer <span class="math" data-index="257" data-tex="\(L\)">\(L\)</span>, the word, <span class="math" data-index="258" data-tex="\(x\in K\)">\(x\in K\)</span>, <span class="math" data-index="259" data-tex="\(\theta\)">\(\theta\)</span>, and <span class="math" data-index="260" data-tex="\(\rho\ge1\)">\(\rho\ge1\)</span>, such that</p>
+<span class="math math-display" id="proof-eq-EE17" data-index="261" data-tex="\[
+\left|\partial^\beta Q_{\mathbf j}\chi_L(x)\right|
+ \le C^{L+1}L^{q+|\beta|}\rho^{-q},
+\qquad q=|\mathbf j|,\quad q+|\beta|\le L.
+\tag{EE17}
+\]">\[
+\left|\partial^\beta Q_{\mathbf j}\chi_L(x)\right|
+ \le C^{L+1}L^{q+|\beta|}\rho^{-q},
+\qquad q=|\mathbf j|,\quad q+|\beta|\le L.
+\tag{EE17}
+\]</span>
+<p>The same bound, multiplied by <span class="math" data-index="262" data-tex="\(\rho^{-m}\)">\(\rho^{-m}\)</span>, holds after an additional left multiplication by <span class="math" data-index="263" data-tex="\(1/p_m(x,\theta)\)">\(1/p_m(x,\theta)\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-index="264" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> so that the closed complex polydisk of radius <span class="math" data-index="265" data-tex="\(2r\)">\(2r\)</span> about every <span class="math" data-index="266" data-tex="\(x\in K\)">\(x\in K\)</span> lies in the coefficient neighborhood and all normalized coefficients there are bounded by a common <span class="math" data-index="267" data-tex="\(B\ge1\)">\(B\ge1\)</span>. Fix such a real center <span class="math" data-index="268" data-tex="\(x\)">\(x\)</span>. Replace the smooth cutoff only for this calculation by its degree-<span class="math" data-index="269" data-tex="\(L\)">\(L\)</span> Taylor polynomial at that point:</p>
+<span class="math math-display" id="proof-eq-EE18" data-index="270" data-tex="\[
+F_{L,x}(z)=\sum_{|\alpha|\le L}
+ \frac{\partial^\alpha\chi_L(x)}{\alpha!}(z-x)^\alpha.
+\tag{EE18}
+\]">\[
+F_{L,x}(z)=\sum_{|\alpha|\le L}
+ \frac{\partial^\alpha\chi_L(x)}{\alpha!}(z-x)^\alpha.
+\tag{EE18}
+\]</span>
+<p>It has the same real derivatives through order <span class="math" data-index="271" data-tex="\(L\)">\(L\)</span> at <span class="math" data-index="272" data-tex="\(x\)">\(x\)</span>. On the polydisk of radius <span class="math" data-index="273" data-tex="\(r\)">\(r\)</span>, (EE4) and the multinomial identity give</p>
+<span class="math math-display" id="proof-eq-EE19" data-index="274" data-tex="\[
+|F_{L,x}(z)|
+ \le C\sum_{k=0}^L\frac{(CL\sum_i|z_i-x_i|)^k}{k!}
+ \le C e^{CnrL}.
+\tag{EE19}
+\]">\[
+|F_{L,x}(z)|
+ \le C\sum_{k=0}^L\frac{(CL\sum_i|z_i-x_i|)^k}{k!}
+ \le C e^{CnrL}.
+\tag{EE19}
+\]</span>
+<p>This is an exponential constant in <span class="math" data-index="275" data-tex="\(L\)">\(L\)</span>, with no additional power <span class="math" data-index="276" data-tex="\(L^L\)">\(L^L\)</span>.</p>
+<p>Expand each <span class="math" data-index="277" data-tex="\(R_j\)">\(R_j\)</span> as its finite sum of analytic coefficients times coordinate derivatives. A chosen term in the ordered composition, followed by <span class="math" data-index="278" data-tex="\(\partial^\beta\)">\(\partial^\beta\)</span>, uses at most <span class="math" data-index="279" data-tex="\(q+|\beta|\)">\(q+|\beta|\)</span> individual differentiations and at most <span class="math" data-index="280" data-tex="\(k\le q\)">\(k\le q\)</span> coefficient multiplications. On holomorphic functions keep this composition in its actual order, without expanding product rules. Let <span class="math" data-index="281" data-tex="\(d\)">\(d\)</span> be its actual number of differentiations. Starting on radius <span class="math" data-index="282" data-tex="\(r\)">\(r\)</span>, shrink the radius by <span class="math" data-index="283" data-tex="\(r/(2(d+1))\)">\(r/(2(d+1))\)</span> at each individual derivative. The final radius is larger than <span class="math" data-index="284" data-tex="\(r/2\)">\(r/2\)</span>. The one-variable Cauchy estimate, with the other variables fixed, costs at most <span class="math" data-index="285" data-tex="\(2(d+1)/r\)">\(2(d+1)/r\)</span> per derivative. Each coefficient multiplication costs at most <span class="math" data-index="286" data-tex="\(B\)">\(B\)</span>, on every one of these disks. Thus its value at the center is bounded by</p>
+<span class="math math-display" id="proof-eq-EE20" data-index="287" data-tex="\[
+C e^{CnrL}B^k
+       \left(\frac{2(d+1)}r\right)^d
+ \le C_1^{L+1}L^{q+|\beta|}.
+\tag{EE20}
+\]">\[
+C e^{CnrL}B^k
+       \left(\frac{2(d+1)}r\right)^d
+ \le C_1^{L+1}L^{q+|\beta|}.
+\tag{EE20}
+\]</span>
+<p>The number of choices of monomial terms is at most a fixed constant to the power <span class="math" data-index="288" data-tex="\(k\)">\(k\)</span>, absorbed into <span class="math" data-index="289" data-tex="\(C_1^{L+1}\)">\(C_1^{L+1}\)</span>. The actual differential composition at <span class="math" data-index="290" data-tex="\(x\)">\(x\)</span> uses only the cutoff derivatives through order <span class="math" data-index="291" data-tex="\(d\le L\)">\(d\le L\)</span>. Its value with <span class="math" data-index="292" data-tex="\(F_{L,x}\)">\(F_{L,x}\)</span> is consequently exactly its value with <span class="math" data-index="293" data-tex="\(\chi_L\)">\(\chi_L\)</span>. No analyticity of the cutoff itself has been assumed. Restoring the scalar factor <span class="math" data-index="294" data-tex="\(\rho^{-q}\)">\(\rho^{-q}\)</span> proves (EE17). One extra bounded holomorphic multiplier at the left costs one factor <span class="math" data-index="295" data-tex="\(B\)">\(B\)</span>; the same derivative budget already includes derivatives falling on it. Equation (EE10) supplies the stated <span class="math" data-index="296" data-tex="\(\rho^{-m}\)">\(\rho^{-m}\)</span>. <span class="math" data-index="297" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This estimate counts all derivatives falling on all variable coefficients. Replacing the ordered word by a product of independent factorial bounds would lose this control; the common holomorphic disk and the finite cutoff jet keep one scale.</p>
+<h3 id="4-two-frequency-regions-control-localized-forcing">4. Two frequency regions control localized forcing</h3>
+<p>We first fix the elementary cone geometry. Because the angular closure of <span class="math" data-index="298" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span> is inside <span class="math" data-index="299" data-tex="\(\Gamma\)">\(\Gamma\)</span>, there is <span class="math" data-index="300" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> such that</p>
+<span class="math math-display" id="proof-eq-EE21" data-index="301" data-tex="\[
+|\xi-\eta|\ge d(\rho+|\eta|)
+\tag{EE21}
+\]">\[
+|\xi-\eta|\ge d(\rho+|\eta|)
+\tag{EE21}
+\]</span>
+<p>whenever <span class="math" data-index="302" data-tex="\(\xi\in\Gamma&#x27;\)">\(\xi\in\Gamma&#x27;\)</span>, <span class="math" data-index="303" data-tex="\(\rho=|\xi|\)">\(\rho=|\xi|\)</span>, and either <span class="math" data-index="304" data-tex="\(\eta\notin\Gamma\)">\(\eta\notin\Gamma\)</span> or <span class="math" data-index="305" data-tex="\(|\eta|&lt;\rho/2\)">\(|\eta|&lt;\rho/2\)</span>. In the small-length case the ratio is at least <span class="math" data-index="306" data-tex="\(1/3\)">\(1/3\)</span>. In the other case the angle between their unit directions is at least a positive <span class="math" data-index="307" data-tex="\(\delta\)">\(\delta\)</span>. The cosine identity gives</p>
+<span class="math math-display" id="proof-eq-EE22" data-index="308" data-tex="\[
+\begin{aligned}
+|\xi-\eta|^2
+ &amp;=(\rho+|\eta|)^2
+      -4\rho|\eta|\cos^2(\angle(\xi,\eta)/2)\\
+ &amp;\ge(\rho+|\eta|)^2\sin^2(\delta/2),
+\end{aligned}
+\tag{EE22}
+\]">\[
+\begin{aligned}
+|\xi-\eta|^2
+ &amp;=(\rho+|\eta|)^2
+      -4\rho|\eta|\cos^2(\angle(\xi,\eta)/2)\\
+ &amp;\ge(\rho+|\eta|)^2\sin^2(\delta/2),
+\end{aligned}
+\tag{EE22}
+\]</span>
+<p>since <span class="math" data-index="309" data-tex="\(4\rho|\eta|\le(\rho+|\eta|)^2\)">\(4\rho|\eta|\le(\rho+|\eta|)^2\)</span>. Take the smaller of these constants. Zero frequency belongs to the small-length case and needs no unit direction.</p>
+<p><strong>Lemma 4.1 (forcing estimate).</strong> Let <span class="math" data-index="310" data-tex="\(f_N\)">\(f_N\)</span> be common compact witnesses with the bound (EE6) and</p>
+<span class="math math-display" id="proof-eq-EE23" data-index="311" data-tex="\[
+|\widehat f_N(\eta)|\le B(1+|\eta|)^\nu
+\tag{EE23}
+\]">\[
+|\widehat f_N(\eta)|\le B(1+|\eta|)^\nu
+\tag{EE23}
+\]</span>
+<p>on all real frequencies, for one fixed nonnegative integer <span class="math" data-index="312" data-tex="\(\nu\)">\(\nu\)</span>. Let <span class="math" data-index="313" data-tex="\(A_N(x,\xi)\)">\(A_N(x,\xi)\)</span> be compact smooth amplitudes supported in <span class="math" data-index="314" data-tex="\(K\)">\(K\)</span>, for <span class="math" data-index="315" data-tex="\(\rho\ge HN\)">\(\rho\ge HN\)</span>, with</p>
+<span class="math math-display" id="proof-eq-EE24" data-index="316" data-tex="\[
+\|\partial^\beta A_N(\cdot,\xi)\|_\infty
+ \le B_1^{N+1}\rho^{-m}N^{|\beta|}
+ \quad(|\beta|\le\ell_N),
+\qquad \ell_N=N+\nu+n+2.
+\tag{EE24}
+\]">\[
+\|\partial^\beta A_N(\cdot,\xi)\|_\infty
+ \le B_1^{N+1}\rho^{-m}N^{|\beta|}
+ \quad(|\beta|\le\ell_N),
+\qquad \ell_N=N+\nu+n+2.
+\tag{EE24}
+\]</span>
+<p>If <span class="math" data-index="317" data-tex="\(f_N=f\)">\(f_N=f\)</span> near <span class="math" data-index="318" data-tex="\(K\)">\(K\)</span>, then</p>
+<span class="math math-display" id="proof-eq-EE25" data-index="319" data-tex="\[
+\left|\langle f,e^{-ix\cdot\xi}A_N(x,\xi)\rangle\right|
+ \le C^{N+1}M_N(1+\rho)^{-N}
+ \quad(\xi\in\Gamma&#x27;,\rho\ge HN).
+\tag{EE25}
+\]">\[
+\left|\langle f,e^{-ix\cdot\xi}A_N(x,\xi)\rangle\right|
+ \le C^{N+1}M_N(1+\rho)^{-N}
+ \quad(\xi\in\Gamma&#x27;,\rho\ge HN).
+\tag{EE25}
+\]</span>
+<p><strong>Proof.</strong> Compact support and integrations by parts in one coordinate with largest frequency component give, for every integer <span class="math" data-index="320" data-tex="\(0\le l\le\ell_N\)">\(0\le l\le\ell_N\)</span>,</p>
+<span class="math math-display" id="proof-eq-EE26" data-index="321" data-tex="\[
+|\widehat A_N(\zeta,\xi)|
+ \le C^{N+1}\rho^{-m}N^l(1+|\zeta|)^{-l}.
+\tag{EE26}
+\]">\[
+|\widehat A_N(\zeta,\xi)|
+ \le C^{N+1}\rho^{-m}N^l(1+|\zeta|)^{-l}.
+\tag{EE26}
+\]</span>
+<p>For <span class="math" data-index="322" data-tex="\(|\zeta|\le1\)">\(|\zeta|\le1\)</span> use the zeroth bound; for <span class="math" data-index="323" data-tex="\(|\zeta|&gt;1\)">\(|\zeta|&gt;1\)</span> use that coordinate <span class="math" data-index="324" data-tex="\(l\)">\(l\)</span> times. The factors <span class="math" data-index="325" data-tex="\((2\sqrt n)^l\)">\((2\sqrt n)^l\)</span> are absorbed into <span class="math" data-index="326" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span>, because <span class="math" data-index="327" data-tex="\(\ell_N\)">\(\ell_N\)</span> is <span class="math" data-index="328" data-tex="\(N\)">\(N\)</span> plus a fixed integer. Taking <span class="math" data-index="329" data-tex="\(l=n+1\)">\(l=n+1\)</span> shows</p>
+<span class="math math-display" id="proof-eq-EE27" data-index="330" data-tex="\[
+\|\widehat A_N(\cdot,\xi)\|_1
+       \le C^{N+1}\rho^{-m},
+\tag{EE27}
+\]">\[
+\|\widehat A_N(\cdot,\xi)\|_1
+       \le C^{N+1}\rho^{-m},
+\tag{EE27}
+\]</span>
+<p>where the fixed power <span class="math" data-index="331" data-tex="\(N^{n+1}\)">\(N^{n+1}\)</span> is absorbed by increasing <span class="math" data-index="332" data-tex="\(C\)">\(C\)</span>. This is legitimate for every <span class="math" data-index="333" data-tex="\(N\ge1\)">\(N\ge1\)</span>, since <span class="math" data-index="334" data-tex="\(N^d\le e^{dN}\)">\(N^d\le e^{dN}\)</span> for each fixed <span class="math" data-index="335" data-tex="\(d\)">\(d\)</span>.</p>
+<p>The pairing equals the absolutely convergent integral</p>
+<span class="math math-display" id="proof-eq-EE28" data-index="336" data-tex="\[
+(2\pi)^{-n}\int
+ \widehat f_N(\eta)\widehat A_N(\xi-\eta,\xi)\,d\eta.
+\tag{EE28}
+\]">\[
+(2\pi)^{-n}\int
+ \widehat f_N(\eta)\widehat A_N(\xi-\eta,\xi)\,d\eta.
+\tag{EE28}
+\]</span>
+<p>For justification, Fourier inversion of the compact smooth amplitude and the common finite-order bound allow the distribution to act under the integral after taking more than <span class="math" data-index="337" data-tex="\(\nu+n\)">\(\nu+n\)</span> integrations by parts. Such derivatives are available in (EE24). The support condition lets us replace <span class="math" data-index="338" data-tex="\(f\)">\(f\)</span> by <span class="math" data-index="339" data-tex="\(f_N\)">\(f_N\)</span>. The sign in (EE28) follows from bilinear, rather than sesquilinear, distribution pairing.</p>
+<p>On <span class="math" data-index="340" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>, <span class="math" data-index="341" data-tex="\(|\eta|\ge\rho/2\)">\(|\eta|\ge\rho/2\)</span>, estimate (EE6) and (EE27) bound this part by <span class="math" data-index="342" data-tex="\(C^{N+1}M_N(1+\rho)^{-N}\)">\(C^{N+1}M_N(1+\rho)^{-N}\)</span>. On the rest, use (EE21), (EE23), and (EE26) with <span class="math" data-index="343" data-tex="\(l=\ell_N\)">\(l=\ell_N\)</span>. That part is at most</p>
+<span class="math math-display" id="proof-eq-EE29" data-index="344" data-tex="\[
+C^{N+1}\rho^{-m}N^{\ell_N}
+ \int(1+|\eta|)^\nu(1+\rho+|\eta|)^{-\ell_N}\,d\eta
+ \le C_1^{N+1}\rho^{-m}N^{\ell_N}(1+\rho)^{-N-2}.
+\tag{EE29}
+\]">\[
+C^{N+1}\rho^{-m}N^{\ell_N}
+ \int(1+|\eta|)^\nu(1+\rho+|\eta|)^{-\ell_N}\,d\eta
+ \le C_1^{N+1}\rho^{-m}N^{\ell_N}(1+\rho)^{-N-2}.
+\tag{EE29}
+\]</span>
+<p>To verify the last integral, scale <span class="math" data-index="345" data-tex="\(\eta=(1+\rho)z\)">\(\eta=(1+\rho)z\)</span>. Its power of <span class="math" data-index="346" data-tex="\(1+\rho\)">\(1+\rho\)</span> is <span class="math" data-index="347" data-tex="\(\nu+n-\ell_N=-N-2\)">\(\nu+n-\ell_N=-N-2\)</span>. The remaining integral is uniformly bounded by the integral of a constant times <span class="math" data-index="348" data-tex="\((1+|z|)^{-n-3}\)">\((1+|z|)^{-n-3}\)</span>, since <span class="math" data-index="349" data-tex="\(N\ge1\)">\(N\ge1\)</span>. The angular constant contributes only <span class="math" data-index="350" data-tex="\(d^{-\ell_N}\)">\(d^{-\ell_N}\)</span>, another exponential constant in <span class="math" data-index="351" data-tex="\(N\)">\(N\)</span>. Finally <span class="math" data-index="352" data-tex="\(\ell_N-N\)">\(\ell_N-N\)</span> is fixed, so <span class="math" data-index="353" data-tex="\(N^{\ell_N}\le C^{N+1}N^N\le C^{N+1}M_N\)">\(N^{\ell_N}\le C^{N+1}N^N\le C^{N+1}M_N\)</span>. Also <span class="math" data-index="354" data-tex="\(\rho^{-m}\le1\)">\(\rho^{-m}\le1\)</span>. This proves (EE25). <span class="math" data-index="355" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The forcing witness in this lemma has index exactly <span class="math" data-index="356" data-tex="\(N\)">\(N\)</span>. There is no replacement by <span class="math" data-index="357" data-tex="\(f_{\kappa N}\)">\(f_{\kappa N}\)</span>, and no assumption that a general derivative weight at <span class="math" data-index="358" data-tex="\(\kappa N\)">\(\kappa N\)</span> can be compared with its weight at <span class="math" data-index="359" data-tex="\(N\)">\(N\)</span>.</p>
+<h3 id="5-proof-for-analytic-coefficients-and-every-admissible-class">5. Proof for analytic coefficients and every admissible class</h3>
+<p>Assume the coefficients are analytic and <span class="math" data-index="360" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span> is absent from the right side of (EE8). Make the choices in Section 2 and let <span class="math" data-index="361" data-tex="\(f_N\)">\(f_N\)</span> be its defining witnesses. They have the common polynomial bound (EE23). Let <span class="math" data-index="362" data-tex="\(\mu\)">\(\mu\)</span> be an order bound for <span class="math" data-index="363" data-tex="\(u\)">\(u\)</span> on a fixed compact neighborhood of <span class="math" data-index="364" data-tex="\(K\)">\(K\)</span>. Choose a fixed integer</p>
+<span class="math math-display" id="proof-eq-EE30" data-index="365" data-tex="\[
+\kappa\ge2\mu+2\nu+2m+2n+10,
+\qquad
+J_N=N+\mu,
+\qquad
+u_N=\chi_{\kappa N}u.
+\tag{EE30}
+\]">\[
+\kappa\ge2\mu+2\nu+2m+2n+10,
+\qquad
+J_N=N+\mu,
+\qquad
+u_N=\chi_{\kappa N}u.
+\tag{EE30}
+\]</span>
+<p>The sequence <span class="math" data-index="366" data-tex="\(u_N\)">\(u_N\)</span> has common compact support and a common order and bound, because the derivatives of <span class="math" data-index="367" data-tex="\(\chi_{\kappa N}\)">\(\chi_{\kappa N}\)</span> through order <span class="math" data-index="368" data-tex="\(\mu\)">\(\mu\)</span> are uniform by (EE4). It agrees with <span class="math" data-index="369" data-tex="\(u\)">\(u\)</span> near <span class="math" data-index="370" data-tex="\(x_0\)">\(x_0\)</span> on a fixed plateau. We will prove its class Fourier estimate.</p>
+<p>Use (EE15)–(EE16) with <span class="math" data-index="371" data-tex="\(J=J_N\)">\(J=J_N\)</span> and <span class="math" data-index="372" data-tex="\(\chi=\chi_{\kappa N}\)">\(\chi=\chi_{\kappa N}\)</span>, and write the resulting terms as <span class="math" data-index="373" data-tex="\(w_N,E_N\)">\(w_N,E_N\)</span>. Lemma 3.1 and the composition count show, for the derivative orders used below and for <span class="math" data-index="374" data-tex="\(\rho\ge HN\)">\(\rho\ge HN\)</span>,</p>
+<span class="math math-display" id="proof-eq-EE31" data-index="375" data-tex="\[
+\begin{aligned}
+\|\partial^\beta w_N\|_\infty
+ &amp;\le C^{N+1}N^{|\beta|}
+       \sum_{q=0}^{J_N}(CN/\rho)^q,\\
+\|\partial^\beta E_N\|_\infty
+ &amp;\le C^{N+1}N^{|\beta|}
+       \sum_{q=J_N+1}^{J_N+m}(CN/\rho)^q.
+\end{aligned}
+\tag{EE31}
+\]">\[
+\begin{aligned}
+\|\partial^\beta w_N\|_\infty
+ &amp;\le C^{N+1}N^{|\beta|}
+       \sum_{q=0}^{J_N}(CN/\rho)^q,\\
+\|\partial^\beta E_N\|_\infty
+ &amp;\le C^{N+1}N^{|\beta|}
+       \sum_{q=J_N+1}^{J_N+m}(CN/\rho)^q.
+\end{aligned}
+\tag{EE31}
+\]</span>
+<p>Choose <span class="math" data-index="376" data-tex="\(H\)">\(H\)</span> so large that <span class="math" data-index="377" data-tex="\(CN/\rho\le1/2\)">\(CN/\rho\le1/2\)</span>. The first sum is at most 2; the second is at most twice its first power. When <span class="math" data-index="378" data-tex="\(m=0\)">\(m=0\)</span>, the second sum is empty.</p>
+<p>Here are the complete derivative budgets. For the remainder, <span class="math" data-index="379" data-tex="\(q\le J_N+m\)">\(q\le J_N+m\)</span> and <span class="math" data-index="380" data-tex="\(|\beta|\le\mu\)">\(|\beta|\le\mu\)</span>, so</p>
+<span class="math math-display" id="proof-eq-EE32" data-index="381" data-tex="\[
+q+|\beta|\le N+2\mu+m\le\kappa N.
+\tag{EE32}
+\]">\[
+q+|\beta|\le N+2\mu+m\le\kappa N.
+\tag{EE32}
+\]</span>
+<p>For the forcing amplitude derivatives through <span class="math" data-index="382" data-tex="\(\ell_N=N+\nu+n+2\)">\(\ell_N=N+\nu+n+2\)</span>, we have</p>
+<span class="math math-display" id="proof-eq-EE33" data-index="383" data-tex="\[
+q+|\beta|\le J_N+\ell_N
+       =2N+\mu+\nu+n+2\le\kappa N.
+\tag{EE33}
+\]">\[
+q+|\beta|\le J_N+\ell_N
+       =2N+\mu+\nu+n+2\le\kappa N.
+\tag{EE33}
+\]</span>
+<p>Thus every use of Lemma 3.1 is within the actual finite cutoff jet. Its exponential factor <span class="math" data-index="384" data-tex="\(C^{\kappa N+1}\)">\(C^{\kappa N+1}\)</span> is still a constant to the power <span class="math" data-index="385" data-tex="\(N+1\)">\(N+1\)</span>; <span class="math" data-index="386" data-tex="\(\kappa\)">\(\kappa\)</span> is fixed. The finitely many weight compositions and monomial choices are also absorbed into that exponential factor. None introduces a second power <span class="math" data-index="387" data-tex="\(N^N\)">\(N^N\)</span>.</p>
+<p>Pair the exact identity (EE11), (EE16) with <span class="math" data-index="388" data-tex="\(u\)">\(u\)</span>. Since <span class="math" data-index="389" data-tex="\(Pu=f\)">\(Pu=f\)</span>, it gives</p>
+<span class="math math-display" id="proof-eq-EE34" data-index="390" data-tex="\[
+\widehat u_N(\xi)
+ =\langle u,e^{-ix\cdot\xi}E_N(x,\xi)\rangle
+  +\langle f,e^{-ix\cdot\xi}b(x,\xi)w_N(x,\xi)\rangle.
+\tag{EE34}
+\]">\[
+\widehat u_N(\xi)
+ =\langle u,e^{-ix\cdot\xi}E_N(x,\xi)\rangle
+  +\langle f,e^{-ix\cdot\xi}b(x,\xi)w_N(x,\xi)\rangle.
+\tag{EE34}
+\]</span>
+<p>For the first term, differentiating the phase at most <span class="math" data-index="391" data-tex="\(\mu\)">\(\mu\)</span> times and using (EE31) gives</p>
+<span class="math math-display" id="proof-eq-EE35" data-index="392" data-tex="\[
+\begin{aligned}
+|\langle u,e^{-ix\cdot\xi}E_N\rangle|
+ &amp;\le C^{N+1}\rho^\mu(CN/\rho)^{N+\mu+1}\\
+ &amp;\le C_1^{N+1}N^N(1+\rho)^{-N}.
+\end{aligned}
+\tag{EE35}
+\]">\[
+\begin{aligned}
+|\langle u,e^{-ix\cdot\xi}E_N\rangle|
+ &amp;\le C^{N+1}\rho^\mu(CN/\rho)^{N+\mu+1}\\
+ &amp;\le C_1^{N+1}N^N(1+\rho)^{-N}.
+\end{aligned}
+\tag{EE35}
+\]</span>
+<p>Indeed every phase/amplitude product has a factor <span class="math" data-index="393" data-tex="\(\rho^{\mu-|\beta|}N^{|\beta|}\le C\rho^\mu\)">\(\rho^{\mu-|\beta|}N^{|\beta|}\le C\rho^\mu\)</span>, since <span class="math" data-index="394" data-tex="\(\rho\ge HN\)">\(\rho\ge HN\)</span>. After canceling powers, the remaining fixed power <span class="math" data-index="395" data-tex="\(N^{\mu+1}\)">\(N^{\mu+1}\)</span>, and the change from <span class="math" data-index="396" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-index="397" data-tex="\(1+\rho\)">\(1+\rho\)</span>, are absorbed into the exponential constant. The extra factor <span class="math" data-index="398" data-tex="\(\rho^{-1}\)">\(\rho^{-1}\)</span> can only improve the bound. This step explicitly allows the distribution order and does not assume an order-zero distribution.</p>
+<p>Set <span class="math" data-index="399" data-tex="\(A_N=bw_N\)">\(A_N=bw_N\)</span>. The multiplier assertion of Lemma 3.1, (EE10), the first sum in (EE31), and (EE33) give exactly (EE24). Lemma 4.1 therefore bounds the second term in (EE34) by <span class="math" data-index="400" data-tex="\(C^{N+1}M_N(1+\rho)^{-N}\)">\(C^{N+1}M_N(1+\rho)^{-N}\)</span>. By (EE5), this also bounds (EE35). Hence</p>
+<span class="math math-display" id="proof-eq-EE36" data-index="401" data-tex="\[
+|\widehat u_N(\xi)|
+ \le A_1^{N+1}M_N(1+|\xi|)^{-N}
+ \quad(\xi\in\Gamma&#x27;,\ |\xi|\ge HN).
+\tag{EE36}
+\]">\[
+|\widehat u_N(\xi)|
+ \le A_1^{N+1}M_N(1+|\xi|)^{-N}
+ \quad(\xi\in\Gamma&#x27;,\ |\xi|\ge HN).
+\tag{EE36}
+\]</span>
+<p>For <span class="math" data-index="402" data-tex="\(|\xi|&lt;HN\)">\(|\xi|&lt;HN\)</span>, the common compact-order bound for <span class="math" data-index="403" data-tex="\(u_N\)">\(u_N\)</span> is <span class="math" data-index="404" data-tex="\(C(1+|\xi|)^\mu\)">\(C(1+|\xi|)^\mu\)</span>. Since</p>
+<span class="math math-display" id="proof-eq-EE37" data-index="405" data-tex="\[
+(1+HN)^{N+\mu}
+ \le C_H^{N+\mu}N^{N+\mu}
+ \le A_2^{N+1}N^N
+ \le A_2^{N+1}M_N,
+\tag{EE37}
+\]">\[
+(1+HN)^{N+\mu}
+ \le C_H^{N+\mu}N^{N+\mu}
+ \le A_2^{N+1}N^N
+ \le A_2^{N+1}M_N,
+\tag{EE37}
+\]</span>
+<p>increasing the constant makes (EE36) true at these frequencies too. This uses only absorption of a fixed power of <span class="math" data-index="406" data-tex="\(N\)">\(N\)</span>. All defining conditions for absence from <span class="math" data-index="407" data-tex="\(\operatorname{WF}_L(u)\)">\(\operatorname{WF}_L(u)\)</span> now hold. This proves (EE8), including its analytic specialization. The construction also covers order zero: its remainder is zero, and the same forcing estimate applies to <span class="math" data-index="408" data-tex="\(\chi_{\kappa N}/a_0\)">\(\chi_{\kappa N}/a_0\)</span>. <span class="math" data-index="409" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="6-the-smooth-proof-keeps-one-cutoff-for-every-power">6. The smooth proof keeps one cutoff for every power</h3>
+<p>Assume only smooth coefficients, and take <span class="math" data-index="410" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span> outside the right side of (EE7). Use the fixed compact forcing localization <span class="math" data-index="411" data-tex="\(f_0\)">\(f_0\)</span> and one fixed cutoff <span class="math" data-index="412" data-tex="\(\chi\)">\(\chi\)</span>, equal to one near <span class="math" data-index="413" data-tex="\(x_0\)">\(x_0\)</span>, from Section 2. For each desired integer decay power <span class="math" data-index="414" data-tex="\(p\ge1\)">\(p\ge1\)</span>, choose <span class="math" data-index="415" data-tex="\(J=p+\mu+1\)">\(J=p+\mu+1\)</span>, and use (EE15) with this same <span class="math" data-index="416" data-tex="\(\chi\)">\(\chi\)</span>. All coefficient derivatives of each finite word are bounded on the compact parameter set. Consequently, for every fixed derivative index,</p>
+<span class="math math-display" id="proof-eq-EE38" data-index="417" data-tex="\[
+\|\partial^\beta Q_{\mathbf j}\chi\|_\infty
+       \le C_{p,\beta}\rho^{-|\mathbf j|}.
+\tag{EE38}
+\]">\[
+\|\partial^\beta Q_{\mathbf j}\chi\|_\infty
+       \le C_{p,\beta}\rho^{-|\mathbf j|}.
+\tag{EE38}
+\]</span>
+<p>There is no assertion that these constants are uniform in <span class="math" data-index="418" data-tex="\(p\)">\(p\)</span>; ordinary rapid decrease permits dependence on the requested power.</p>
+<p>The identity corresponding to (EE34) has the fixed left side <span class="math" data-index="419" data-tex="\(\widehat{\chi u}(\xi)\)">\(\widehat{\chi u}(\xi)\)</span>. Its remainder is at most <span class="math" data-index="420" data-tex="\(C_p\rho^{\mu-J-1}\)">\(C_p\rho^{\mu-J-1}\)</span>, hence at most <span class="math" data-index="421" data-tex="\(C_p\rho^{-p}\)">\(C_p\rho^{-p}\)</span>. Put <span class="math" data-index="422" data-tex="\(A_p=bw_J\)">\(A_p=bw_J\)</span>. Every fixed amplitude derivative is bounded by <span class="math" data-index="423" data-tex="\(C_{p,\beta}\rho^{-m}\)">\(C_{p,\beta}\rho^{-m}\)</span>, so its Fourier transform has any fixed inverse power, with a constant depending on that power, and <span class="math" data-index="424" data-tex="\(L^1\)">\(L^1\)</span> norm at most <span class="math" data-index="425" data-tex="\(C_p\rho^{-m}\)">\(C_p\rho^{-m}\)</span>.</p>
+<p>Use the Fourier pairing (EE28), now with <span class="math" data-index="426" data-tex="\(f_0\)">\(f_0\)</span> and <span class="math" data-index="427" data-tex="\(A_p\)">\(A_p\)</span>. On the good region <span class="math" data-index="428" data-tex="\(\eta\in\Gamma\)">\(\eta\in\Gamma\)</span>, <span class="math" data-index="429" data-tex="\(|\eta|\ge\rho/2\)">\(|\eta|\ge\rho/2\)</span>, the rapid decrease of <span class="math" data-index="430" data-tex="\(\widehat f_0\)">\(\widehat f_0\)</span> supplies the power <span class="math" data-index="431" data-tex="\(p\)">\(p\)</span>, and the amplitude <span class="math" data-index="432" data-tex="\(L^1\)">\(L^1\)</span> bound gives <span class="math" data-index="433" data-tex="\(C_p\rho^{-p}\)">\(C_p\rho^{-p}\)</span>. On the other region use its fixed global polynomial order <span class="math" data-index="434" data-tex="\(\nu\)">\(\nu\)</span> and more than <span class="math" data-index="435" data-tex="\(p+\nu+n\)">\(p+\nu+n\)</span> amplitude integrations by parts. The geometric estimate (EE21) and the same radial scaling as (EE29) give <span class="math" data-index="436" data-tex="\(C_p\rho^{-p}\)">\(C_p\rho^{-p}\)</span>. These integrals converge absolutely. Bounded frequencies have a fixed bound. Thus</p>
+<span class="math math-display" id="proof-eq-EE39" data-index="437" data-tex="\[
+|\widehat{\chi u}(\xi)|\le C_p(1+|\xi|)^{-p}
+\quad(\xi\in\Gamma&#x27;,\ p=1,2,\ldots).
+\tag{EE39}
+\]">\[
+|\widehat{\chi u}(\xi)|\le C_p(1+|\xi|)^{-p}
+\quad(\xi\in\Gamma&#x27;,\ p=1,2,\ldots).
+\tag{EE39}
+\]</span>
+<p>The cutoff and the cone in (EE39) are independent of <span class="math" data-index="438" data-tex="\(p\)">\(p\)</span>. This is exactly smooth-wavefront absence, and proves (EE7). It also covers <span class="math" data-index="439" data-tex="\(m=0\)">\(m=0\)</span>, where there is no remainder. <span class="math" data-index="440" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="7-elliptic-regularity-connected-uniqueness-and-charts">7. Elliptic regularity, connected uniqueness and charts</h3>
+<p>The already written differential-decrease properties give <span class="math" data-index="441" data-tex="\(\operatorname{WF}(Pu)\subset\operatorname{WF}(u)\)">\(\operatorname{WF}(Pu)\subset\operatorname{WF}(u)\)</span>, and, for analytic coefficients, <span class="math" data-index="442" data-tex="\(\operatorname{WF}_L(Pu)\subset\operatorname{WF}_L(u)\)">\(\operatorname{WF}_L(Pu)\subset\operatorname{WF}_L(u)\)</span>. The class assertion is Lemma 2.2 of the derivative-sequence lesson; analytic coefficients belong to each of its classes since <span class="math" data-index="443" data-tex="\(L_N\ge N\)">\(L_N\ge N\)</span>. The smooth assertion follows from the fixed-cutoff Fourier product estimate: smooth multiplication preserves rapid conic decrease on a smaller cone, derivatives multiply a compact localization by a polynomial, and the same product estimate controls cutoff derivatives. These are the distributional multiplier and derivative rules used in that lemma's ordinary-wavefront comparison. Combining them with Theorem 1.1 proves equality outside the characteristic set.</p>
+<p><strong>Corollary 7.1 (elliptic regularity).</strong> If <span class="math" data-index="444" data-tex="\(p_m(x,\xi)\ne0\)">\(p_m(x,\xi)\ne0\)</span> for every nonzero real <span class="math" data-index="445" data-tex="\(\xi\)">\(\xi\)</span>, then</p>
+<span class="math math-display" id="proof-eq-EE40" data-index="446" data-tex="\[
+\operatorname{WF}(u)=\operatorname{WF}(Pu),
+\qquad
+\operatorname{singsupp}u=\operatorname{singsupp}Pu.
+\tag{EE40}
+\]">\[
+\operatorname{WF}(u)=\operatorname{WF}(Pu),
+\qquad
+\operatorname{singsupp}u=\operatorname{singsupp}Pu.
+\tag{EE40}
+\]</span>
+<p>For analytic coefficients, the same equality holds for every <span class="math" data-index="447" data-tex="\(\operatorname{WF}_L\)">\(\operatorname{WF}_L\)</span>. In particular, analytic <span class="math" data-index="448" data-tex="\(Pu\)">\(Pu\)</span> implies analytic <span class="math" data-index="449" data-tex="\(u\)">\(u\)</span>, and a homogeneous elliptic solution is analytic.</p>
+<p><strong>Proof.</strong> The characteristic set is empty. The two inclusions just proved give the wavefront equalities. Their base projections are smooth singular support and, by the exact base-regularity theorem of the derivative-sequence lesson, failure of the corresponding local class. For <span class="math" data-index="450" data-tex="\(L_N=N\)">\(L_N=N\)</span>, the class derivative bounds are equivalent to analytic factorial bounds: <span class="math" data-index="451" data-tex="\(k!\le k^k\le e^k k!\)">\(k!\le k^k\le e^k k!\)</span>, the second inequality following from the degree-<span class="math" data-index="452" data-tex="\(k\)">\(k\)</span> term of <span class="math" data-index="453" data-tex="\(e^k\)">\(e^k\)</span>. These bounds imply a convergent local Taylor series by the integral Taylor remainder. Thus this case is real analyticity, not only smoothness. <span class="math" data-index="454" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 7.2 (connected elliptic uniqueness).</strong> On a connected open set, a distributional homogeneous solution of an elliptic operator with analytic coefficients that vanishes on a nonempty open subset vanishes everywhere. This includes every complex constant-coefficient elliptic polynomial.</p>
+<p><strong>Proof.</strong> Corollary 7.1 first makes the solution analytic. The set of points having a zero neighborhood is open and nonempty. If such points tend to an interior point, every derivative is zero at the limit by continuity. The convergent Taylor expansion there is zero, so the limit also has a zero neighborhood. This set is therefore relatively closed. Connectedness makes it the whole domain. No real-coefficient restriction was used. <span class="math" data-index="455" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The smooth theorem is valid on smooth manifolds and the analytic/class theorem on analytic manifolds. To see this, work in a coordinate chart and apply the proofs above to tests compactly supported in that chart. Under coordinate changes, the highest-order chain rule transforms the principal symbol by the transpose derivative, while derivatives falling on coefficients or coordinate Jacobians have lower order. The full smooth and analytic pullback theorems, proved in <span class="unlinked">Pulling back and combining analytic singularities</span> and <a href="AN02-L190.html#complete-proof">Derivative sequences and microlocal regularity</a>, transform the respective wavefront sets by exactly the same cotangent map. Applying the inverse chart map gives equality, not only one inclusion. A chart's distributional pairing uses its coordinate density; any smooth, or analytic in the analytic setting, nonvanishing density factor is covered by the corresponding multiplier rule. Thus the local conclusions agree on overlaps and prove the stated manifold forms. There are no nonzero covectors in dimension zero, where the wavefront statements are empty.</p>
+<h3 id="references-2">References</h3>
+<ul>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990, §8.3, Theorem 8.3.1 and Corollary 8.3.2; §8.6, Theorem 8.6.1 and Lemmas 8.6.2–8.6.4. These locate the smooth and derivative-class microlocal ellipticity statements. The proof here uses the explicit finite ordered inverse, cutoff-jet polynomials and Fourier estimates given above.</li>
+<li>The linked course proofs supply the cutoff construction, polydisk Cauchy bounds, compact-distribution Fourier operations, class normalization, projection and coordinate-change results with the exact scopes stated in Section 1.</li>
+</ul>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

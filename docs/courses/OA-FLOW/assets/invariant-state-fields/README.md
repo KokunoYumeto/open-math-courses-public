@@ -18,4 +18,4 @@ The original mathematical exposition, diagram geometry, labels, exact data and r
 
 The figures use DejaVu Sans supplied with matplotlib. Its separate font terms are retained verbatim in FONT_LICENSE_DEJAVU.txt and continue to apply to that font component. No third-party figure or photograph is used.
 
-Self-checked by the writing AI.
+Figures and reproduction code prepared with AI assistance.

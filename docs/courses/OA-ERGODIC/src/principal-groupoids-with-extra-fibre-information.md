@@ -6,11 +6,11 @@
 
 A principal groupoid has a unique arrow between two related units. This set-theoretic uniqueness does not imply that every measurable function on a range fibre is measurable through its source coordinate. At merely countably generated scope, the fibre sigma-field can contain more information than the unit sigma-field, even modulo a finite measure.
 
-We construct a one-orbit principal groupoid with standard Borel units, a separated countably generated arrow sigma-field, a faithful probability transverse function and a sigma-finite transverse measure. Its square-integrable two-dimensional representation has random-operator algebra and centre both equal to the diagonal algebra \(\mathbb C\oplus\mathbb C\). All invariant scalar functions are constant. Thus the unrestricted centre and factor criteria in [Connes, author-hosted PDF 43–44, Corollaries 7–8] fail. The same example disproves the unrestricted fibre-generation assertion in Proposition 15(b), PDF 38–39.
+We construct a one-orbit principal groupoid with standard Borel units, a separated countably generated arrow sigma-field, a faithful probability transverse function and a sigma-finite transverse measure. Its square-integrable two-dimensional representation has random-operator algebra and centre both equal to the diagonal algebra \(\mathbb C\oplus\mathbb C\). All invariant scalar functions are constant. Thus the unrestricted centre and factor criteria in [Connes, Section 6, Corollaries 7–8, author PDF 43–44](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=43) fail. The same example disproves the unrestricted fibre-generation assertion in [Connes, Proposition 15(b), author PDF 38–39](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=38).
 
 The complete standard Borel fibre-density proof [Claude-RO, Proposition 5.1] uses the one-to-one Borel image theorem exactly where our example fails. Its standard Borel centre and factor consequences retain their stated scope. The ergodicity/extremal-ray equivalence proved in the preceding lesson also remains valid at the weak measurable scope: the present measure is ergodic and extremal.
 
-Prerequisites are Borel spaces, Lebesgue measure and its inner regularity, kernels, bounded measurable Hilbert fields and elementary matrix algebras. We use the explicitly constructed subgroup from [Countable generation and isotropy topologies](countable-generation-and-isotropy-topologies.md), Theorem 1.2. Section 6 uses the exactly compared normal-module theorem [Claude-RO, Theorem 7.1] at its countably generated, sigma-finite scope; the counterexamples in Sections 4–5 need no such theorem. Choice enters only through the cited subgroup construction. No formula for membership in that subgroup is asserted.
+Prerequisites are Borel spaces, Lebesgue measure and its inner regularity, kernels, bounded measurable Hilbert fields and elementary matrix algebras. We use the explicitly constructed subgroup from [Countable generation and isotropy topologies](countable-generation-and-isotropy-topologies.md), Theorem 1.2. Section 6 computes the full convolution algebra directly in two binary Fourier sectors. It also gives a proof using the normal-module theorem [Claude-RO, Theorem 7.1] at its countably generated, sigma-finite scope. The finite-dimensional calculations in Sections 4–5 use the explicit field alone. Choice enters only through the cited subgroup construction. No formula for membership in that subgroup is asserted.
 
 ## 1. A finite measure with an extra binary event
 
@@ -275,11 +275,137 @@ t(y)=(-1)^{d(y,x)}t(x).
 \]
 At the fixed \(x_0\in A^c\), this says \(t(y)=(-1)^{a(y)}t(x_0)\). A nonzero value would make \(A\) Borel, so \(t=0\). No saturated negligible set can be discarded. \(\square\)
 
-For completeness, even the existence of some other faithful proper transverse function cannot restore Corollary 8's factor condition for \(W\). Every such function \(\kappa\) has a nonzero sigma-finite unit measure \(\Lambda_\kappa=\beta\), by the proof of Proposition 3.2. Its two scalar integrated Hilbert spaces are both nonzero: a nonzero sigma-finite measure has a finite positive-measure set, whose indicator is a nonzero square-integrable section. The exactly compared general normal-module theorem [Claude-RO, Theorem 7.1(a),(c)] supplies two nonzero normal representations of \(W(\kappa)\) and identifies their intertwiners with (6.2).
+For completeness, even the existence of some other faithful proper transverse function cannot restore Corollary 8's factor condition for \(W\). Every such function \(\kappa\) has a nonzero sigma-finite unit measure \(\Lambda_\kappa=\beta\), by the proof of Proposition 3.2. Its two scalar integrated Hilbert spaces are both nonzero: a nonzero sigma-finite measure has a finite positive-measure set, whose indicator is a nonzero square-integrable section. The general normal-module theorem [Claude-RO, Theorem 7.1(a),(c)] supplies two nonzero normal representations of \(W(\kappa)\) and identifies their intertwiners with (6.2).
 
 **Lemma 6.2.** Any two nonzero normal unital representations of a von Neumann factor have a nonzero intertwiner.
 
 *Proof.* Each representation is faithful: its kernel is a weakly closed central ideal, and a nonzero unital representation cannot kill the identity. Their direct sum therefore has a von Neumann factor as its range. Its commutant \(N\) is a factor as well, since its centre is the intersection of this range and its commutant. The two nonzero summand projections \(p_+,p_-\) belong to \(N\) and sum to one. If \(p_-Np_+=0\), its adjoint corner is also zero. Both off-diagonal corners then vanish, making \(p_+\) central in \(N\), a contradiction. An element of the nonzero corner is the desired intertwiner. \(\square\)
+
+**Proposition 6.3 (the full algebra for every faithful proper kernel).** Let \(\kappa\) be any faithful proper transverse function in this example, let \(\beta=\Lambda_\kappa\) be its nonzero sigma-finite Borel unit measure from Proposition 3.2, and put \(K_\beta=L^2(X,\beta)\). Then
+
+\[
+\begin{gathered}
+W(\kappa)\cong B(K_\beta)\oplus B(K_\beta),\\
+Z(W(\kappa))\cong\mathbb C^2.
+\end{gathered}
+\tag{6.3}
+\]
+
+In particular, none of these algebras is a factor. This calculation uses the left convolution algebra defining \(W\), as in [Claude-RO, Section 6.2 and Definition 6.3].
+
+*Proof.* Under the source bijections, all fibre measures of \(\kappa\) are the same measure \(\eta\) on \((X,\mathcal S)\), and (3.5) gives
+
+\[
+\eta(B\cap A)=\eta(B\cap A^c)=\tfrac12\beta(B)
+\quad(B\text{ Borel}).
+\tag{6.4}
+\]
+
+Consider the measurable map
+
+\[
+\begin{gathered}
+j:G\longrightarrow X\times X\times\{0,1\},\\
+j(y,x)=(y,x,d(y,x)).
+\end{gathered}
+\tag{6.5}
+\]
+
+The arrow sigma-field is precisely the inverse-image sigma-field of the product Borel structure under \(j\). Thus every arrow-measurable complex function is \(F\circ j\) for a product Borel function \(F\): represent its simple approximations by inverse images, and define the limit on the Borel set where those approximations converge.
+
+Put \(m_\kappa=\beta\circ\kappa\), with range unit first. On Borel rectangles, (6.4) gives
+
+\[
+\begin{aligned}
+&m_\kappa\big((C\times B)\cap E_\varepsilon\big)\\
+&\qquad=\tfrac12\beta(C)\beta(B).
+\end{aligned}
+\tag{6.6}
+\]
+
+A countable finite-\(\beta\) cover localizes the rectangle uniqueness argument, so \(j_*m_\kappa=(\beta\otimes\beta)\otimes u_2\), where \(u_2\) gives each binary label mass \(1/2\). Pullback is an isometry of the corresponding \(L^2\) spaces and is onto, since it contains the simple functions of the generating arrow events. This is a Hilbert-space identification; it does not assert a Borel isomorphism of the underlying point spaces.
+
+For \(F_\varepsilon(y,x)=F(y,x,\varepsilon)\), use the normalized binary Fourier transform
+
+\[
+\begin{gathered}
+F_+=\tfrac12(F_0+F_1),\\
+F_-=\tfrac12(F_0-F_1).
+\end{gathered}
+\tag{6.7}
+\]
+
+The identity \((|F_0|^2+|F_1|^2)/2=|F_+|^2+|F_-|^2\) makes it unitary. Together with the kernel identification, it gives
+
+\[
+\begin{aligned}
+\mathfrak h_\kappa\cong
+&(K_\beta\otimes\overline{K_\beta})\\
+&\quad\oplus(K_\beta\otimes\overline{K_\beta}).
+\end{aligned}
+\tag{6.8}
+\]
+
+The cocycle identity and (6.4) give the convolution formula
+
+\[
+\begin{aligned}
+&(F\star G)(y,x,d)\\
+&\quad=\tfrac12\sum_{\varepsilon=0}^1
+\int_X F(y,z,\varepsilon)\\
+&\hspace{6em}\cdot G(z,x,\varepsilon\mathbin\oplus d)\,d\beta(z).
+\end{aligned}
+\tag{6.9}
+\]
+
+For fixed endpoints and fixed label, each integrand branch is Borel in \(z\); the two branches are integrated with equal weights by (6.4). Formula (6.9) first holds on bounded kernels of finite measure support, and then wherever the defining Schur integrals converge. Its Fourier components are the usual kernel products:
+
+\[
+\begin{aligned}
+&(F\star G)_\pm(y,x)\\
+&\quad=\int_X F_\pm(y,z)G_\pm(z,x)\,d\beta(z),\\
+&(F^\#)_\pm(y,x)=\overline{F_\pm(x,y)}.
+\end{aligned}
+\tag{6.10}
+\]
+
+For every admissible convolution kernel, the row and column integrals of \(|F_\pm|\) are bounded by those of \((|F_0|+|F_1|)/2\). These are exactly the corresponding \(\kappa\)-Schur bounds. Cauchy–Schwarz with the absolute kernel, followed by integration, gives bounded operators \(T_{F_\pm}\) on \(K_\beta\). Under (6.8), left convolution is therefore
+
+\[
+\begin{gathered}
+\lambda_\kappa(F)\\
+\quad=(T_{F_+}\otimes1)\oplus(T_{F_-}\otimes1).
+\end{gathered}
+\tag{6.11}
+\]
+
+This proves containment of \(W(\kappa)\) in the displayed two-block algebra. To obtain equality, let \(h,g\) be bounded Borel functions supported in sets of finite \(\beta\)-measure. The kernels
+
+\[
+\begin{aligned}
+F^{(+)}(y,x,d)&=h(y)\overline{g(x)},\\
+F^{(-)}(y,x,d)&=(-1)^d h(y)\overline{g(x)}
+\end{aligned}
+\tag{6.12}
+\]
+
+are square integrable and have finite uniform Schur bounds; the modulus is one, so they belong to the defining left Hilbert algebra. Their Fourier pairs are respectively \((h\overline g,0)\) and \((0,h\overline g)\). Thus their left operators are the rank-one operator \(h\langle g,\cdot\rangle\) in either block, independently, tensored with the source-coordinate identity. Such \(h,g\) are total in \(K_\beta\) by sigma-finiteness and simple-function approximation. Finite rank operators on their span are strongly dense in \(B(K_\beta)\). Hence
+
+\[
+\begin{gathered}
+W(\kappa)\\
+\quad=(B(K_\beta)\otimes1)\oplus(B(K_\beta)\otimes1)
+\end{gathered}
+\tag{6.13}
+\]
+
+in these coordinates. Since \(K_\beta\ne0\), the two sector identities are nonzero central projections, giving (6.3). \(\square\)
+
+![The binary label has normalized Fourier components F plus and F minus. Equal half weights make convolution act independently in two kernel sectors, each generating the full bounded operator algebra on the unit L2 space.](figures/extra-fibre-two-sectors.svg)
+
+*Figure 2.* Equations (6.6)–(6.10) keep the exact half weights: the Fourier transform is \((F_0\pm F_1)/2\), with no additional square-root factor. Independent rank-one kernels in (6.12) give both full blocks and both nonzero central projections. The product-space coordinates identify measured function classes and Hilbert spaces, rather than the nonstandard arrow point space with a standard Borel product. Complete proof: Proposition 6.3; proper-kernel and sigma-finite input: Proposition 3.2. The challenged human-source assertion is Connes, Corollary 8, author PDF 43–44.
+
+
 
 Thus \(W(\kappa)\) cannot be a factor for any faithful proper \(\kappa\). The five source conditions have the following exact truth values in this example:
 
@@ -287,7 +413,7 @@ Thus \(W(\kappa)\) cannot be a factor for any faithful proper \(\kappa\). The fi
 |---|---|---|
 | Every nonzero random-operator algebra is a factor | False | Theorem 4.1 gives \(\mathbb C\oplus\mathbb C\). |
 | Any two nonzero random Hilbert spaces have a nonzero intertwiner | False | Proposition 6.1. |
-| Some faithful proper transverse function gives a factor \(W\) | False | Theorem 7.1 at its verified sigma-finite scope, Proposition 6.1 and Lemma 6.2. |
+| Some faithful proper transverse function gives a factor \(W\) | False | Proposition 6.3; also the normal-module argument using Theorem 7.1, Proposition 6.1 and Lemma 6.2. |
 | Every saturated measurable set is null or conull | True | The sole orbit has only the empty and full saturated sets. |
 | The transverse measure spans an extremal fixed-modulus ray | True | The preceding lesson's full Theorem 3.1. |
 
@@ -321,8 +447,34 @@ Level 1 asks for a direct calculation. Level 2 asks for a proof using the constr
 
 *Solution.* For the ordinary pair groupoid, the source map on each range fibre is a Borel isomorphism onto the unit space. Every fibre-measurable event and function is recovered from that coordinate. Proposition 5.1 of the written random-operator lesson therefore gives the full fibre algebra at trivial isotropy. The cocycle \((-1)^{d(y,x)}\) used here is not ordinary product Borel, so it is not a measurable representation in that setting. The enlarged arrow structure makes the cocycle measurable while leaving the unit coordinate unable to record \(A\); this is precisely the failed recovery step.
 
+**Exercise 7.7 (two independent operator sectors).** *Level 2.* In Proposition 6.3 take bounded, finite-\(\beta\)-support functions \(h,g\) with \(\|h\|_2=\|g\|_2=1\). For the two kernels in (6.12), compute their left multiplication operators, their norms and their products in either order. Explain how the two central sector identities arise in the strong closure.
+
+*Solution.* Their operators are respectively \((\theta_{h,g}\otimes1,0)\) and \((0,\theta_{h,g}\otimes1)\), where \(\theta_{h,g}k=h\langle g,k\rangle\). Each has norm \(\|h\|_2\|g\|_2=1\); their products in either order are zero because their blocks differ. A countable Borel base together with a finite-measure cover generates a countable algebra whose finite-measure indicators are total in \(K_\beta\), by simple approximation and the monotone class theorem. Apply Gram–Schmidt to this countable family. Finite linear combinations still have bounded finite-measure support. The finite sums of the resulting orthonormal basis projections converge strongly to the identity on \(K_\beta\). Used in the first or second block independently, these sums give \((1,0)\) and \((0,1)\), the two nonzero complementary central projections. Their appearance in the strong closure does not make a non-Borel point event an ordinary Borel unit event.
+
+**Exercise 7.8 (why the half weights are forced).** *Level 2.* For \(0\le p\le1\), define a measure on \(\mathcal S\) by
+
+\[
+\begin{gathered}
+\eta_p\big((B_0\cap A)\cup(B_1\cap A^c)\big)\\
+\quad=p\ell(B_0)+(1-p)\ell(B_1).
+\end{gathered}
+\]
+
+Show that this is a probability extension of \(\ell\). Use it as the same source-coordinate fibre measure at every unit. For which \(p\) is this family a measurable transverse function?
+
+*Solution.* The well-definedness and disjointization proof of Lemma 1.2 applies with the two nonnegative weights \(p,1-p\), including the endpoints. Total mass is one and ordinary Borel events have measure \(p\ell(B)+(1-p)\ell(B)=\ell(B)\). Source-preserving left translations carry this same measure between fibres. But the measurable arrow event \(E_0\) has fibre mass
+
+\[
+y\longmapsto
+\begin{cases}p,&y\in A,\\1-p,&y\in A^c.\end{cases}
+\]
+
+If \(p\ne1/2\), its two different values would make \(A\) Borel, so the family is not a measurable kernel. At \(p=1/2\), Proposition 3.1 proves measurability on every arrow event and all transverse requirements. Thus exactly the equal half weights work; invariance and finite fibre mass alone do not imply kernel measurability.
+
+
+
 ## References
 
-- [Connes] Alain Connes, *Sur la théorie non commutative de l'intégration*, in *Algèbres d'opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, pp. 19–143. The [author-hosted 83-page typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), PDF 10–12, 15–17, 38–40 and 43–44, supplies the exact measurable, transverse, square-integrable and random-operator assertions compared here. It defines separability by countable generation. The original printed facsimile has not been compared. The present construction and proof are newly written exposition, with no novelty claim.
-- [Claude-RO] Claude (Anthropic), [Square-integrable representations and random operators](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/square-integrable-representations-and-random-operators.html), written programme course *Noncommutative integration*, September 2026, CC0. Standing assumptions (S),(F), Definition 4.1, Proposition 4.2(f), complete Theorem 7.1 and Corollary 7.3 at countably generated sigma-finite scope; complete Proposition 5.1 and Corollaries 8.1–8.3 at standard Borel sigma-finite scope. The selected full proofs were compared; provider expression is excluded.
-- [Fremlin] D. H. Fremlin, *Measure Theory*, Volume 3, [author-hosted Chapter 34](https://www1.essex.ac.uk/maths/people/fremlin/chap34.pdf), Section 343, for background on representing measure-algebra maps by measurable maps. No lifting or measure-extension theorem from that chapter is invoked: (1.4) is proved directly above.
+- [Connes] Alain Connes, *Sur la théorie non commutative de l’intégration*, in *Algèbres d’opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, 19–143. The [free author-hosted 83-page typeset edition](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf) gives the measurable and transverse definitions at author PDF 10–12 and 15–17, the square-integrable representation and coefficient constructions at 30 and 35–39, and the random-operator, centre and factor assertions at 40 and 43–44. Proposition 15(b) uses a source-fibre measurable section/product identification; Corollaries 7–8 use that fibre-generation conclusion. Sections 1–6 give the counterexample and its full convolution-algebra calculation.
+- [Claude-RO] Claude (Anthropic), Square-integrable representations and random operators, CC0, written programme course *Noncommutative integration*. Standing assumptions (S),(F), Definition 4.1 and Proposition 4.2(f) specify the representation and coefficient conventions. Section 6.2 and Definition 6.3 define the left convolution algebra used in Proposition 6.3 above. Theorem 7.1 and Corollary 7.3 apply at countably generated, sigma-finite scope; Proposition 5.1 and Corollaries 8.1–8.3 retain their standard Borel, sigma-finite hypotheses.
+- [Fremlin] D. H. Fremlin, *Measure Theory*, Volume 3, [author-hosted Chapter 34](https://www1.essex.ac.uk/maths/people/fremlin/chap34.pdf), Section 343, version of 17 November 2010: 343A–B discuss representing measure-algebra homomorphisms by functions, and 343L–M give nonmeasurable-subspace obstructions. These are background on the distinction between function classes and point-space maps. The binary extension measure here is given by (1.4), with its well-definedness and countable additivity proved in Lemma 1.2.

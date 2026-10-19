@@ -8,11 +8,11 @@ Commutation alone does not prove that two subfactors generate their containing f
 
 We prove the full commuting-copy conclusion for standard Borel principal groupoids with a semifinite transverse measure, allowing uncountable orbits and continuous orbit measures. For a nonzero properly infinite random-operator factor \(M\), there are a normal injective unital endomorphism \(\sigma\) and a self-adjoint unitary \(S\in M\) such that the copies \(\sigma(M)\) and \(S\sigma(M)S\) are mutual relative commutants and generate \(M\). The passage from semifiniteness to a sigma-finite conull support is proved below.
 
-The conclusion is [Connes, supplied PDF 35, Corollary 11; author-hosted PDF 44–45]. The written programme lesson *Square-integrable representations and random operators*, in *Noncommutative integration*, proves the relative-commutant and symmetry construction in Proposition 8.5, but explicitly leaves joint generation unproved in Remark 8.6. Section 3 supplies that step. Corollary 1.5 removes the separate sigma-finiteness assumption when the random-operator algebra is a nonzero factor. The weaker countable-generation scope still requires comparison: the endpoint and fibre-density arguments below use standard Borel structure. [Principal groupoids with extra fibre information](principal-groupoids-with-extra-fibre-information.md) shows why that step cannot simply be omitted: a principal one-orbit measurable groupoid can have a nonscalar random-operator centre and fail full fibre generation. Its algebra is not a factor, so that example does not refute Corollary 11’s properly infinite factor assertion at the broader scope.
+The conclusion is [Connes, Section 6, Corollary 11, author PDF 44–45](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=44). The written programme lesson *Square-integrable representations and random operators*, in *Noncommutative integration*, proves the relative-commutant and symmetry construction in Proposition 8.5, but explicitly leaves joint generation unproved in Remark 8.6. Section 3 supplies that step. Corollary 1.5 removes the separate sigma-finiteness assumption when the random-operator algebra is a nonzero factor. The weaker countable-generation scope still requires comparison: the endpoint and fibre-density arguments below use standard Borel structure. [Principal groupoids with extra fibre information](principal-groupoids-with-extra-fibre-information.md) shows why that step cannot simply be omitted: a principal one-orbit measurable groupoid can have a nonscalar random-operator centre and fail full fibre generation. Its algebra is not a factor, so that example does not refute Corollary 11’s properly infinite factor assertion at the broader scope.
 
 [Principal groupoids with hidden group factors](principal-groupoids-with-hidden-group-factors.md), Theorem 4.1, Corollary 4.3 and Proposition 5.1, supplies a properly infinite factor at the weaker measurable scope and an explicit extra relative-commutant operator for the canonical tensor pair. These two canonical copies fail both relative-commutant equality and joint generation. Existence of some different pair in the broader Corollary 11 remains unresolved. The standard Borel proof below retains its hypotheses.
 
-The exact written prerequisites are the preceding programme lesson's regular embedding (Theorem 4.4), its standard principal fibre-density theorem (Proposition 5.1), its kernel Hilbert algebra (Proposition 6.2 and Remark 6.4), and its normal random-operator representation (Theorems 7.1–7.2). We also use *Decomposable operators and the diagonal algebra*, Theorems 5.1 and 6.1, for sigma-finite bases with varying separable Hilbert fibres; *Projections and types of von Neumann algebras*, Proposition 15.2, for equivalence of infinite projections in a sigma-finite factor; and *The modular group and its analytic algebra*, in *Modular theory and weights*, for the full left Hilbert-algebra commutant theorem. These are actual written programme proofs. Ordinary measure integration and separable Hilbert tensor products are foundational prerequisites. No independent review or closure of every transitive foundation is asserted.
+The exact written prerequisites are Square-integrable representations and random operators, Theorem 4.4, Proposition 5.1, Proposition 6.2 and Remark 6.4, Theorems 7.1–7.2, and Proposition 8.5. Its Remark 8.6 distinguishes the relative-commutant construction from joint generation. We also use Decomposable operators and the diagonal algebra, Theorem 5.1 and Proposition 6.1, for varying separable fibres over a sigma-finite base; Projections and types of von Neumann algebras, Proposition 15.2(4), for equivalence of infinite projections in a sigma-finite factor; and The modular group and its analytic algebra, for the generic left Hilbert-algebra commutant theorem with the original closed involution. Polish spaces and standard Borel spaces, Theorem 4.3(5), supplies the endpoint Borel image and inverse. Ordinary measure integration and separable Hilbert tensor products are foundational prerequisites.
 
 ## 1. Principal fibres and the regular commutant
 
@@ -37,7 +37,7 @@ dm_r=\delta(y,x)dm_s,\qquad
 \delta(z,x)=\delta(z,y)\delta(y,x),\quad \delta(x,x)=1.
 \tag{1.2}
 \]
-The transverse measure identity gives (1.2), with the source/range coordinates specified as above. This convention agrees with Relation kernels and modular coordinates. The derivative is positive and finite off the transverse exceptional set. In particular no invariant unit measure is assumed.
+The transverse measure identity gives (1.2), with the source/range coordinates specified as above. This convention agrees with [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md). The derivative is positive and finite off the transverse exceptional set. In particular no invariant unit measure is assumed.
 
 Let \(B=\operatorname{End}_\Lambda(H^0)\). Its elements are bounded measurable fields \(T_x\) on \(L^2([x],\rho_x)\) that agree under the regular identifications, modulo negligible sets. A Borel kernel \(b:R\to\mathbb C\) of finite uniform Schur bound gives such an element:
 \[
@@ -216,7 +216,28 @@ Next use commutation with the first copy's kernels \(k_n(y,y')\) and formula (2.
 1_{F_n}(y,y')\delta(y',y)^{1/2}(B_y-B_{y'}).
 \tag{3.4}
 \]
-The two operators act on the same \(L^2\) orbit space, by (1.1). Kernel uniqueness applies after finite-measure, coefficient and modulus cutoffs. More explicitly, swapping \(y\) and \(z\) in the pair measure gives
+The two operators act on the same \(L^2\) orbit space, by (1.1). 
+
+The passage from a triple-coordinate null set to an arrow-coordinate null set can be recorded explicitly. On the Borel space of triples with all three entries in one orbit, put
+
+\[
+\begin{gathered}
+d\kappa(z,y,y')=d\mu(z)d\rho_z(y)d\rho_z(y'),\\
+\pi(z,y,y')=(y,y').
+\end{gathered}
+\]
+
+Use the strictly positive finite probability density \(c(y,z)\) from (3.3). The base-swap identity (1.2), followed by integration in \(z\), gives
+
+\[
+\pi_*\bigl(c(y,z)\delta(y,z)\,\kappa\bigr)=m_r.
+\tag{3.4a}
+\]
+
+Indeed, after the swap the weighted triple measure is the product kernel with factors \(d\mu(y)\), \(c(y,z)d\rho_y(z)\) and \(d\rho_y(y')\); its middle factor has mass one. These measures are sigma-finite by properness and the finite unit-measure cover. The weight is positive and finite, so it preserves null sets. Hence any measurable coefficient failure set depending only on \((y,y')\), whose lift is \(\kappa\)-null, is \(m_r\)-null. This is the precise null-set implication used in the next kernel test.
+
+
+Kernel uniqueness applies after finite-measure, coefficient and modulus cutoffs. More explicitly, swapping \(y\) and \(z\) in the pair measure gives
 \[
 d\mu(y)d\rho_y(z)=\delta(z,y)^{-1}d\mu(z)d\rho_z(y).
 \]
@@ -250,9 +271,9 @@ For the amplification \(H^0\otimes\ell^2(\mathbb N)\), the tensor field has two 
 
 *Proof.* Corollary 1.5 supplies a saturated conull subset of the support of \(H\) with sigma-finite transverse measure. Restrict to it. This leaves \(M\) unchanged and satisfies the hypotheses of Sections 1–3, including sigma-finiteness of every proper function's unit measure. The support is ergodic by the same corollary. The centre theorem for a standard principal groupoid, programme Corollary 8.1, makes the regular-amplified algebra a factor on this support as well. It has separable predual by programme Theorem 7.2.
 
-The regular embedding, programme Theorem 4.4, identifies \(H\) with the range of a projection \(p\) in the random regular amplification \(L=H^0\otimes\ell^2(\mathbb N)\). Its corner is \(M\). Thus \(p\) is infinite. It has central support one in the factor \(\operatorname{End}_\Lambda(L)\); Proposition 15.2 of the written projection lesson gives \(p\sim1\). The implementing random partial isometry gives a unitary equivalence \(H\cong L\), modulo transverse null sets. Theorem 3.1 consequently applies to \(H\otimes H\): the two tensor copies generate its entire random-operator algebra \(E_H\).
+The regular embedding, programme Theorem 4.4, identifies \(H\) with the range of a projection \(p\) in the random regular amplification \(L=H^0\otimes\ell^2(\mathbb N)\). Its corner is \(M\). Thus \(p\) is infinite. It has central support one in the factor \(\operatorname{End}_\Lambda(L)\); Proposition 15.2(4) of the projection lesson gives \(p\sim1\). The implementing random partial isometry gives a unitary equivalence \(H\cong L\), modulo transverse null sets. Theorem 3.1 consequently applies to \(H\otimes H\): the two tensor copies generate its entire random-operator algebra \(E_H\).
 
-There is also a random unitary \(W:H\to H\otimes H\). To see this directly, consider \(\operatorname{End}_\Lambda(H\oplus(H\otimes H))\). The centre theorem makes it a factor with separable predual. Both summand projections are infinite: the first because its corner is \(M\), the second because \(T\mapsto T\otimes1\) embeds a nonunitary isometry of \(M\) in its corner. Proposition 15.2 makes these projections equivalent and supplies \(W\).
+There is also a random unitary \(W:H\to H\otimes H\). To see this directly, consider \(\operatorname{End}_\Lambda(H\oplus(H\otimes H))\). The centre theorem makes it a factor with separable predual. Both summand projections are infinite: the first because its corner is \(M\), the second because \(T\mapsto T\otimes1\) embeds a nonunitary isometry of \(M\) in its corner. The same proposition makes these projections equivalent and supplies \(W\).
 
 Let \(\Sigma_x(\xi\otimes\eta)=\eta\otimes\xi\). It is a measurable self-adjoint unitary, commutes with \(U(\gamma)\otimes U(\gamma)\), and hence belongs to \(E_H\). Set
 \[
@@ -356,11 +377,10 @@ so the measure is at most \(3j\). For \(N=\{q=\infty\}\), \(q\ge k1_N\) for ever
 
 ## References
 
-- [Connes] Alain Connes, *Sur la théorie non commutative de l'intégration*, in *Algèbres d'opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, pp. 19–143. The [author-hosted 83-page typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf) was compared at PDF 10–12, 15–17, 30, 38–45 and 82: measurable hypotheses, transverse definitions, the full isotropy and random-operator arguments, and Corollaries 7–11. The supplied 63-page transcription places Corollary 11 at PDF 35; the author-hosted version places it at PDF 44–45. The original printed facsimile has not been compared. The commuting-copy result is credited to Connes; the proof and support reduction here are newly written exposition.
-- [Claude-MGT] Claude (Anthropic), [Measured groupoids and transverse measures](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/measured-groupoids-and-transverse-measures.html), written programme course *Noncommutative integration*, September 2026, CC0, Theorem 3.5: full modular identity for proper transverse functions, proved by convolution and monotone truncation without a sigma-finite unit-measure assumption. The selected statement and complete proof were checked; no provider expression is copied.
-- [Claude-RO] Claude (Anthropic), *Square-integrable representations and random operators*, written programme course *Noncommutative integration*, September 2026, CC0: Theorem 4.4, Proposition 5.1, Proposition 6.2/Remark 6.4, Theorems 7.1–7.2, Corollary 8.1 and Proposition 8.5/Remark 8.6. Complete selected prerequisites checked at their stated standard Borel and sigma-finite scope; provider text remains unchanged.
-- [Claude-DG] Claude (Anthropic), *Decomposable operators and the diagonal algebra*, written operator-algebra foundations programme, September 2026, CC0, Theorems 5.1 and 6.1: varying separable fields and a sigma-finite base.
-- [Claude-TY] Claude (Anthropic), *Projections and types of von Neumann algebras*, written operator-algebra foundations programme, September 2026, CC0, Proposition 15.2: countable absorption and equivalence of infinite projections in a sigma-finite factor. The complete selected proof was checked; its earlier projection-comparison and halving prerequisites remain those of that lesson.
-- [Modular theory and weights] Written programme lesson *The modular group and its analytic algebra*: the arbitrary left Hilbert-algebra commutant theorem. Its general proof is given in that lesson.
-
-- [Claude-PB] Claude (Anthropic), *Polish spaces and standard Borel spaces*, written operator-algebra foundations programme, September 2026, CC0, Theorem 4.3: the injective Borel image theorem and Borel inverse at standard Borel scope.
+- [Connes] Alain Connes, *Sur la théorie non commutative de l’intégration*, in *Algèbres d’opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, 19–143. The [free author-hosted typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf) states the commuting-copy conclusion and the internal-flip distinction in Section 6, Corollary 11 and the following Sakai note, author PDF 44–45. The random-operator and centre constructions are in the same section. Theorem 4.1 gives the conclusion for standard Borel principal groupoids, with the factor-support reduction and the three-coordinate joint-generation argument. The unrestricted weak-measurable existence question retains its separate boundary.
+- [Claude-MGT] Claude (Anthropic), Measured groupoids and transverse measures, CC0, Theorem 3.5: modular symmetry for proper transverse functions before sigma-finiteness of the unit measure. This is the measure identity used in the support reduction.
+- [Claude-RO] Claude (Anthropic), Square-integrable representations and random operators, CC0, Theorem 4.4, Proposition 5.1, Proposition 6.2 and Remark 6.4, Theorems 7.1–7.2, Corollary 8.1 and Proposition 8.5 with Remark 8.6. The tensor-field equivalence, internal symmetry and relative-commutant construction follow its standard Borel, sigma-finite proof; Section 3 supplies the additional joint-generation argument.
+- [Programme-DG] Claude Opus 5.5 (Anthropic) and GPT-6 Astra (OpenAI), Decomposable operators and the diagonal algebra, CC0, Theorem 5.1 and Proposition 6.1: the diagonal commutant and direct-integral intertwiners for varying separable fibres on an arbitrary sigma-finite base.
+- [Claude-TY] Claude (Anthropic), Projections and types of von Neumann algebras, CC0, Proposition 15.2(4): infinite projections in a sigma-finite factor are equivalent. Its projection comparison and halving inputs are retained.
+- [Programme-PB] Polish spaces and standard Borel spaces, CC0, Theorem 4.3(5): an injective Borel map from a standard Borel space has a Borel image and inverse. This is the endpoint identification used in Section 1.
+- [Programme-MF] The modular group and its analytic algebra, the commutant and modular fundamental theorem sections: the generic left Hilbert-algebra theorem passes through full completion and retains the original closed involution and polar data. This is the modular input to Lemmas 1.1 and 2.1.

@@ -87,13 +87,13 @@ Finite type also matters in passing from equal function fields to isomorphic ope
 
 ## 4. Extending across a curve point
 
-**Theorem 4.1 (extension at a DVR).** Let \(X\) be an integral finite-type curve over \(k\), let \(x\) be a closed point with \(R=\mathcal O_{X,x}\) a DVR, and let \(Y\) be proper over \(k\). A morphism \(f:U\to Y\) on a nonempty open \(U\subset X\) extends uniquely to a morphism on \(U\cup W\), for some open neighborhood \(W\) of \(x\).
+**Theorem 4.1 (extension at a DVR).** Let \(X\) be an integral finite-type scheme over \(k\), let \(x\) be a point with \(R=\mathcal O_{X,x}\) a DVR, and let \(Y\) be proper over \(k\). A morphism \(f:U\to Y\) on a nonempty open \(U\subset X\) extends uniquely to a morphism on \(U\cup W\), for some open neighborhood \(W\) of \(x\).
 
 **Proof.** The generic value gives \(\operatorname{Spec}K(X)\to Y\). The valuative criterion of properness supplies a unique extension \(\operatorname{Spec}R\to Y\). Choose an affine open \(V=\operatorname{Spec}B\subset Y\) containing the image of the closed point of \(\operatorname{Spec}R\). Its inverse image is an open containing that closed point, hence is the entire local spectrum. The extension consequently corresponds to \(B\to R\).
 
 As \(Y\) is of finite type, choose finite \(k\)-algebra generators of \(B\). Their images in \(R\) are represented by regular functions on a common affine neighborhood \(W\) of \(x\). All relations among those generators hold in \(K(X)\), and therefore in \(\Gamma(W,\mathcal O_X)\), which embeds in that field. They define a morphism \(W\to V\). It has the same generic value as \(f\). On \(U\cap W\), the two maps agree by the reduced-to-separated equalizer argument. They glue to an extension on \(U\cup W\). Any two extensions agree on their common domain by that same argument. \(\square\)
 
-The proof separates two operations: properness extends to a local valuation spectrum, and finite generation spreads that local map to a neighborhood. This is [Stacks, Tags 0BX7](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-extend-across) and [0BXY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-lemma-extend-over-dvr), here in the integral-curve case needed below.
+The proof separates two operations: properness extends to a local valuation spectrum, and finite generation spreads that local map to a neighborhood. This is [Stacks, Tags 0BX7](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-extend-across) and [0BXY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-lemma-extend-over-dvr), with the same local proof in arbitrary source dimension. Corollary 4.2 specializes it to curves.
 
 **Corollary 4.2.** Every rational map from a normal finite-type integral curve over \(k\) to a proper \(k\)-scheme extends uniquely to the entire curve.
 
@@ -102,6 +102,16 @@ The proof separates two operations: properness extends to a local valuation spec
 In particular, two normal proper curves with \(k\)-isomorphic function fields are isomorphic. Corollary 3.1 gives inverse rational maps; Corollary 4.2 extends them to morphisms on both curves. Their composites agree with the identities on dense opens, hence everywhere by separatedness and reducedness. This is [Stacks, Tag 0BXZ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-lemma-extend-over-normal-curve).
 
 For projective space the local extension is particularly concrete. Represent the generic value by \([a_0:\cdots:a_n]\), with \(a_i\in K(X)\) not all zero. If \(\pi\) is a uniformizer, multiply all entries by \(\pi^{-m}\), where \(m\) is the minimum valuation of the nonzero entries. The resulting coordinates lie in \(R\), with at least one a unit. They define an \(R\)-point of \(\mathbb P^n\). A common neighborhood represents these finitely many functions and keeps the unit entry nonvanishing. This proves extension directly and explains why an apparent common zero of homogeneous coordinates on a regular curve is removable.
+
+### Codimension-one extension
+
+**Corollary 4.3.** Let \(X\) be a normal integral scheme of finite type over a field \(k\), and let \(Y\) be proper over \(k\). The largest domain \(D\) of a rational map \(X\dashrightarrow Y\) contains every point of codimension at most one. Its closed complement has codimension at least two. If \(\dim X=n\), then \(\dim(X\setminus D)\leq n-2\), with the empty complement allowed.
+
+**Proof.** Theorem 1.1 provides the largest domain, because \(X\) is reduced and \(Y\) is separated. It contains the generic point. At a codimension-one point \(x\), the local ring is a one-dimensional Noetherian normal local domain, hence a DVR by [the discrete-valuation-ring theorem, Theorem 1.2](../../AG-CA/discrete-valuation-rings-normal-rings-and-serres-criterion.html#1-a-single-parameter-and-a-discrete-valuation). Theorem 4.1 applies at this point in any dimension of \(X\): the [proper valuative criterion, Theorem 3.1](../proper-morphisms-and-valuative-criteria.html#3-the-general-valuative-criterion) extends the generic map to the local spectrum, and the finite-generation argument in its proof spreads that map to an open neighbourhood. The resulting morphism agrees with the original one on their overlap, so \(x\in D\).
+
+Thus every generic point \(z\) of a component of \(X\setminus D\) has height at least two. On an affine neighbourhood of \(z\), the [finite-type height formula, Theorem 4.3](../../AG-CA/krull-dimension-and-noether-normalization.html#4-parameters-measure-dimension-and-height) gives \(\dim\overline{\{z\}}=n-\operatorname{ht}(z)\leq n-2\). Taking the maximum over the finitely many components proves the dimension bound. No regularity in higher codimension, smoothness, or perfectness of \(k\) is required. \(\square\)
+
+*Theorem 4.1's source-dimension formulation and Corollary 4.3: GPT-6 Astra (OpenAI), Ultra; self-checked by that model. CC0-1.0.*
 
 ## 5. Three birational constructions
 

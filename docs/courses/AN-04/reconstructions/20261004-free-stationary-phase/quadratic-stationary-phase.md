@@ -1,41 +1,42 @@
 # Gaussian regularization and quadratic stationary phase
 
-Written 4 October 2026. This is newly written exposition
-from the freely accessible sources named below. It is not a revision obtained
-by deleting references from an inherited lesson.
-The exact elementary programme proofs used are listed in F0.
-The parameter Morse argument is now written in
-[its companion](parameter-morse-reduction.md), with specific prerequisite
-completions. The existing full stationary-phase revision is retained for
-proof-by-proof reconciliation; its correct free-source arguments are to be
-preserved. The complete lesson has not yet been cleared.
+This reading develops Gaussian regularization, Fourier calculus on Schwartz
+functions, and quadratic stationary phase with every coefficient and an
+explicit finite-order remainder. It includes smooth Hessian and parameter
+families, nonstationary estimates, and an exact Gaussian example with a
+reproducible illustration.
+
+The [parameter-Morse companion](parameter-morse-reduction.md) supplies the
+smooth signed normal form used in the
+[stationary-phase and critical-manifold reading](stationary-phase-and-critical-manifolds.md).
+Mathematical sources and their conventions are described below.
+
+Original programme exposition: CC0 to the extent rights exist. Cited
+human works are external sources and retain their own terms.
 
 ## F0. The exact earlier programme proofs
 
-The proofs below use the following elementary results. This list declares
-actual dependencies; it does not grant an exception to the requirement to prove
-every used result inside the programme.
+The following earlier arguments provide the elementary tools used below.
+The proof index gives the statement, proof locator and
+lower inputs for each named result.
 
-| ID | Result used | Uses below | Current programme binding |
+| ID | Result used | Uses below | Earlier proofs |
 |---|---|---|---|
-| F0-CALC | Fundamental theorem of one-variable calculus, product and chain rules, elementary real and complex exponential differentiation, and smoothness of the positive square root | Q1–Q9 | Exact combined chain in `exponential-proof-chain.json`: differential rules and roots, compact FTC/Taylor, real and complex exponentials, their modulus and derivative rules, and the right-half-plane root phase are proved. Global integration remains separate |
-| F0-INT | Construction, linearity and norm bounds for the used compact and absolutely convergent improper integrals, their tails, and iteration under the explicit product majorants in these proofs | Q1–Q9 | Exact chain in `global-integral-proof-chain.json`, including full compact-rectangle Fubini and its omitted steps, global tails, compact-uniform limits and the interchanges in Q3–Q6. Change of variables remains separate |
-| F0-COV | Change of variables for orthogonal linear maps, positive dilations, and planar polar coordinates, with their Jacobians | Q2, Q4, Q6 | Exact chain in `change-of-variables-proof-chain.json`: full compact Jordan substitution, determinant–volume scaling, global affine changes, compact chart substitution and the polar exhaustion needed for the Gaussian are proved |
-| F0-COMP | Compactness of a closed bounded Euclidean set; attainment of extrema and uniform continuity for continuous functions on it | Q1, Q5, Q9 | Exact transitive proof chain in `topology-proof-chain.json`, including P1/P6/P8 and existing compactness, extrema and uniform-continuity proofs; closed relative to its explicit axioms |
-| F0-ALG | Determinant multiplication, the cofactor inverse formula, and their smooth dependence on matrix entries | Q5, Q6, Q8 | Exact algebra and differentiation chain in `differential-proof-chain.json`, with specific omissions supplied by P7/P9/P10; closed relative to its declared axioms |
+| F0-CALC | Fundamental theorem of calculus, product and chain rules, real and complex exponentials, and smooth positive roots | Q1–Q9 | [Differentiation P9–P10](differential-prerequisite-completions.html), [compact integrals and Taylor P11–P12](integration-prerequisite-completions.html), and [exponentials and root phases P13–P16](exponential-prerequisite-completions.html) |
+| F0-INT | Compact and absolutely convergent improper integrals, linearity, norm and tail bounds, and iteration under product majorants | Q1–Q9 | [Rectangle integrals and tails P17–P18](global-integral-prerequisite-completions.html); [P18.4](global-integral-prerequisite-completions.html#proof-P18.4) states the product-majorant hypothesis for the global interchanges |
+| F0-COV | Orthogonal changes, positive dilations and planar polar coordinates, with their Jacobians | Q2, Q4, Q6 | Affine and chart substitution P21.4 and polar coordinates P21.5 |
+| F0-COMP | Finite-dimensional compactness, extrema and uniform continuity on compact sets | Q1, Q5, Q9 | [Finite-dimensional compactness P1](prerequisite-completions.html#proof-P1), [elementary sequence lemmas P6](elementary-proof-completions.html#proof-P6.0), and the compactness references |
+| F0-ALG | Determinant multiplication, cofactor inversion and smooth dependence on matrix entries | Q5, Q6, Q8 | [Cofactor inversion P2](prerequisite-completions.html#proof-P2), [permutation parity P7](elementary-proof-completions.html#proof-P7), and the algebra references |
 
-Finite sums, multi-indices, Euclidean scalar products and the determinant are
-used with their usual algebraic definitions. An exact earlier linear-algebra
-binding for the determinant identities is recorded in
-`prerequisite-bindings.json` and `differential-proof-chain.json`.
-All integrals in this module have the compact Riemann or absolutely convergent
-improper meaning proved in P17–P18 of
-`global-integral-prerequisite-completions.md`. In particular the global
-interchanges below satisfy the product-majorant hypotheses of P18.4.
-All of Q1–Q9 and E1 now have exact closed prerequisite chains, recorded in
-`change-of-variables-proof-chain.json`. This completes the proofs of this
-quadratic module; it does not complete the proofs of the full stationary-phase
-lesson.
+Finite sums, multi-indices, Euclidean scalar products and the determinant
+have their usual algebraic definitions. The human-proof references
+identify the external foundational statements and proofs, including those
+from Jiří Lebl's freely accessible author edition.
+
+Integrals in this module are compact Riemann integrals or absolutely
+convergent improper integrals, as defined and proved in P17–P18. In
+particular, every global interchange in Q3–Q6 satisfies the product-majorant
+hypotheses of P18.4.
 
 Set
 \[
@@ -459,39 +460,40 @@ The human-source route for the Gaussian and quadratic calculation is
 Guillemin–Sternberg, author draft, §§14.1–14.5; the displayed example and
 figure are written for this reconstruction.
 
-## Free source reading and remaining work
+<span id="free-source-reading-and-remaining-work"></span>
 
-The mathematical source versions actually consulted are:
+## Mathematical sources and notation
 
-- Victor Guillemin and Shlomo Sternberg, *Semi-classical analysis*, author-posted
-  draft dated 13 January 2010, [MIT PDF](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf),
-  §§14.1–14.5, printed pp.459–466: Gaussian evaluation, regularization,
-  quadratic Fourier identity and Taylor remainder. Section 13.14.3,
-  pp.455–457, was read for the later Morse reduction, which is not proved
-  in this module. Section 14.8, p.472, was read to identify that its reverse
-  argument cannot be used to justify the Fourier inversion already needed
-  by quadratic stationary phase.
+- Victor Guillemin and Shlomo Sternberg, *Semi-classical analysis*,
+  [author-posted draft dated 13 January 2010](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf),
+  §§14.1–14.5, printed pp. 459–466, discuss Gaussian evaluation,
+  regularization, the quadratic Fourier identity and the Taylor remainder.
+  Section 13.14.3, pp. 455–457, gives the Morse lemma and its parameter
+  variant, treated in the [Morse companion](parameter-morse-reduction.md).
+  Section 14.8, p. 472, relates stationary phase to Fourier inversion.
 - Richard Melrose, *Tempered distributions and the Fourier transform*,
   [author-posted Chapter 1](https://math.mit.edu/~rbm/iml/Chapter1.pdf),
-  §1.7, printed pp.21–23, linked from the
-  [MIT 18.157 course page](https://math.mit.edu/~rbm/18.157-F09/18.157-F09.html):
-  Fourier normalization, Schwartz estimates and inversion. Q4 gives a
-  Gaussian-regularization proof explicitly, so no distribution-kernel
-  theorem or exercise is silently imported.
+  §1.7, printed pp. 21–23, gives the Fourier normalization, Schwartz
+  estimates and inversion; see also the
+  [MIT 18.157 course page](https://math.mit.edu/~rbm/18.157-F09/18.157-F09.html).
+- Jiří Lebl, *Basic Analysis I–II*, version 6.3 (15 May 2026),
+  [freely accessible author edition](https://www.jirka.org/ra/), supplies
+  foundational calculus and compactness results. The
+  human-proof references give exact
+  statement and proof locators; the local prerequisite companions supply
+  the additional finite-dimensional and integral arguments.
 
-The source PDFs are not redistributed here.
-No permission to copy their text is inferred from free access. All arguments
-above are written out here in new exposition, and the displayed normalization
-is verified directly by (G) and (EX), rather than copied without checking.
+The transform convention is (F), with inverse factor \((2\pi)^{-n}\).
+Q2 derives the complex Gaussian by differential identities along a path
+in the right half-plane. Q4 proves inversion by a Gaussian approximate
+identity before the quadratic identity uses it. Q6 specifies the
+regularization, root phases and absolute majorants, and Q7 gives the
+finite Taylor estimate in this convention. E1 checks the normalization
+and remainder in an exact model. These arguments use the named
+elementary and integral inputs in F0; they do not import a distribution
+kernel theorem.
 
-The F0 programme proofs use the verified free author edition of Jiří Lebl,
-*Basic Analysis* 6.3, with exact earlier proof locators and the used exercises completed in the prerequisite companions. P21 supplies the
-change-of-variables steps instead of invoking a free citation in their place.
-
-Next required mathematical work: integrate the smooth
-parameter inverse-function and Morse arguments now written in P2–P5 and M1;
-and reconcile the existing cutoff, invariant isolated-point and clean
-critical-manifold proofs, including parameter derivatives and normal density.
-Only an actual gap needs a replacement proof. The exact full lesson and all
-its transitive prerequisite files still require source and P514 review before
-any publication.
+The source PDFs are external readings. Their authorship and reuse terms
+remain with their respective works. The independently written programme
+exposition, worked example and reproducible figure are CC0 to the extent
+rights exist.

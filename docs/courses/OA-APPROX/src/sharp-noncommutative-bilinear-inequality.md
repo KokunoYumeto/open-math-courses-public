@@ -1,6 +1,6 @@
 # The sharp noncommutative bilinear inequality
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
+*AI-generated exposition by OpenAI GPT models. CC0-1.0 to the extent of rights held.*
 
 A finite domination coefficient is a starting budget. The [preceding lesson](tensor-completion-injectivity-and-state-domination.md) produces such a budget for every bounded bilinear form. Here a curve through each input compares two vertical boundaries, and an exact finite phase average converts that comparison into a smaller budget. The operation is
 \[
@@ -47,7 +47,7 @@ f_x(z)^*f_x(z)=(x^*x)^s,
 \tag{8}
 \]
 
-The canonical meaning of \(A^{**}\) is supplied by the [all-state representation and predual construction](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it). The support and polar-decomposition construction, applied in that represented von Neumann algebra, identifies the notation in (7). We construct the curve and prove (8) inside \(A\) before making that identification.
+The canonical meaning of \(A^{**}\) is supplied by the [all-state representation and predual construction](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it). The [support and polar-decomposition construction](constant-car-states-and-the-periodic-core.md#8-3-supports-and-polar-decomposition-inside-m), applied in that represented von Neumann algebra, identifies the notation in (7). We construct the curve and prove (8) inside \(A\) before making that identification.
 
 Scalar powers here have the following elementary meaning. The series
 \(\exp z=\sum_{m\ge0}z^m/m!\) and its derivative converge uniformly on bounded disks: after \(m>2|z|\), successive absolute terms have ratio at most \(1/2\). The absolutely convergent Cauchy product and the binomial formula give
@@ -650,4 +650,4 @@ Gilles Pisier, [*Grothendieck's Theorem, past and present*, expanded UNCUT autho
 
 Gilles Pisier, [*Grothendieck inequality, random matrices and quantum expanders*, Kyoto lectures recorded by Kei Hasegawa, March 2015](https://www.math.kyoto-u.ac.jp/sites/default/files/2023-04/Pisier_lecturenote.pdf), §5, pp.9–10, presents the phase fourth-moment and three-lines improvement used in Sections 4 and 6. Remark 5.3 credits these steps to Pisier's 1978 work and the finiteness ingredient to Haagerup. The lecture's subsequent finiteness step is an outline; here the finite starting bound comes from the preceding two lessons, and Sections 2–3 and 7 supply the norm-series, scalar strip and nonunital arguments.
 
-The [random-lift lesson](symmetric-tensor-norms-and-rademacher-truncation.md) and the [completion and state-domination lesson](tensor-completion-injectivity-and-state-domination.md) provide the finite starting constant and full affine compactness argument. The scalar and C*-foundations are [CF1–10](../../OA-FLOW/OA-FLOW-CF.html). The canonical bidual notation uses the [universal all-state/predual construction](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it) followed by the concrete support and polar-decomposition proof. The strip, norm-series and direct unitization arguments are given in full above.
+The [random-lift lesson](symmetric-tensor-norms-and-rademacher-truncation.md) and the [completion and state-domination lesson](tensor-completion-injectivity-and-state-domination.md) provide the finite starting constant and full affine compactness argument. The scalar and C*-foundations are [CF1–10](../../OA-FLOW/OA-FLOW-CF.html). The canonical bidual notation uses the [universal all-state/predual construction](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it) followed by the [concrete support and polar-decomposition proof](constant-car-states-and-the-periodic-core.md#8-3-supports-and-polar-decomposition-inside-m). The strip, norm-series and direct unitization arguments are given in full above.

@@ -125,3 +125,144 @@ The harmonic analytic premises are the earlier [finite-measure interchange](OA-F
 
 The prerequisites are [H0](OA-FLOW-TOPOLOGY.md#l138-h0), [H1](OA-FLOW-HARMONIC.md#l138-h1), [H2](OA-FLOW-HARMONIC-LATE.md#l138-h2), [H3](OA-FLOW-HARMONIC-LATE.md#l138-h3), [H4](OA-FLOW-HARMONIC-LATE.md#l138-h4). Their Haar and Radon measure arguments are proved in the earlier HR lessons. The scalar Plancherel theorem is the earlier [complete proof](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3), with [paired dual Haar normalization](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p2) and [inverse domain](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p4).
 
+
+<a id="harmonic-integrable-inversion"></a>
+
+## H6. Fourier inversion for every integrable transform
+
+Let \(G\) be an arbitrary locally compact Hausdorff abelian group,
+\(\Gamma=\widehat G\), with the paired Haar measures of P2.
+Keep the negative forward transform
+\[
+ \widehat a(\chi)=\int_G a(t)\overline{\chi(t)}\,dm(t).
+\]
+For \(a\in L^1(G)\), square integrability of this actual transform
+already forces \(a\in L^2(G)\). More precisely,
+\[
+ \widehat a\in L^2(\Gamma)
+ \quad\Longrightarrow\quad
+ a\in L^1(G)\cap L^2(G),\qquad
+ \mathcal F_2a=\widehat a,\qquad
+ \|a\|_2=\|\widehat a\|_2 ,
+ \tag{H6.1}
+\]
+where \(\mathcal F_2\) is the onto unitary of
+[P3](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3).
+The equality identifies the original \(L^1\) class, not just another
+function with a formal inverse transform.
+
+Choose the nonnegative mass-one \(b_V\in C_c(G)\) of
+[L24, Theorem 5.2](OA-FLOW-L24.md#oa-flow.grp.algebra), directed by
+shrinking identity neighbourhoods. Set \(a_V=a*b_V\).
+P3's full common-domain convolution proof applies to
+\(a\in L^1(G)\) and \(b_V\in L^1(G)\cap L^2(G)\); hence
+\[
+ \begin{aligned}
+ a_V&\in L^1(G)\cap L^2(G),&
+ \|a_V\|_2&\leq\|a\|_1\|b_V\|_2,\\
+ \|a_V-a\|_1&\longrightarrow0,&
+ \mathcal F_2a_V&=\widehat a\,\widehat b_V .
+ \end{aligned}
+ \tag{H6.2}
+\]
+The last equality combines the \(L^1\) convolution identity with P3's
+proved compatibility on the common domain.
+
+Write \(f=\widehat a\). Positivity and normalization of \(b_V\) give
+\(|\widehat b_V|\leq1\). For every compact \(K\subset\Gamma\), the
+joint character continuity proved in [H3](OA-FLOW-HARMONIC-LATE.md#l138-h3)
+gives
+\[
+ \delta_V(K):=\sup_{\chi\in K}|\widehat b_V(\chi)-1|
+ \leq\sup_{\substack{t\in\operatorname{supp}b_V\\\chi\in K}}
+                    |\chi(t)-1|
+ \longrightarrow0 .
+ \tag{H6.3}
+\]
+This yields the estimate on the entire dual group
+\[
+ \|f\widehat b_V-f\|_2^2
+ \leq \delta_V(K)^2\|f\|_2^2
+       +4\int_{\Gamma\setminus K}|f(\chi)|^2\,d\widehat m(\chi).
+ \tag{H6.4}
+\]
+The finite-density regularity of
+[HR3](OA-FLOW-HR.md#hr-03) makes the second term arbitrarily small
+by choosing \(K\) compact. With that \(K\) fixed, (H6.3) controls
+the first term for all sufficiently small \(V\).
+Thus \(f\widehat b_V\to f\) in \(L^2(\Gamma)\).
+This is a proof for the neighbourhood net; dominated convergence
+for arbitrary nets is not being assumed.
+
+Let \(v=\mathcal F_2^{-1}f\in L^2(G)\).
+Unitarity and (H6.2) now give \(a_V\to v\) in \(L^2(G)\), while
+\(a_V\to a\) in \(L^1(G)\). To identify the two limits without a
+countability assumption on \(G\), choose a sequence of indices \(V_n\)
+far enough in these two norm-convergent nets that
+\[
+ \|a_{V_n}-a\|_1<2^{-n},\qquad
+ \|a_{V_n}-v\|_2^2<2^{-n}.
+ \tag{H6.5}
+\]
+No countable neighbourhood base is claimed. These indices are chosen
+only to control two real-valued norm errors.
+
+Use Borel representatives on the sigma compact carriers supplied
+by L24's finite-exponent convention. The countably many
+representatives involved have one sigma compact union of carriers.
+[SC4](OA-FLOW-SC.md#sc-04) gives
+\[
+ \int_G\sum_{n\geq1}|a_{V_n}-a|\,dm<\infty,\qquad
+ \int_G\sum_{n\geq1}|a_{V_n}-v|^2\,dm<\infty.
+ \tag{H6.6}
+\]
+Both sums are finite outside one common null set. Their terms tend
+to zero there, so the same sequence \(a_{V_n}(t)\) tends both to
+\(a(t)\) and to \(v(t)\). Consequently \(a=v\) almost everywhere.
+This proves (H6.1), including the exact transform and norm identities.
+
+Now suppose merely that \(a\in L^1(G)\) and
+\(\widehat a\in L^1(\Gamma)\).
+The integral bound \(|\widehat a|\leq\|a\|_1\) gives
+\[
+ \|\widehat a\|_2^2
+ \leq \|a\|_1\|\widehat a\|_1<\infty.
+ \tag{H6.7}
+\]
+Apply (H6.1), then [H2's inverse integral](OA-FLOW-HARMONIC-LATE.md#l138-h2)
+to this \(L^1\cap L^2\) transform. The original class \(a\) has the
+continuous representative
+\[
+ a^\circ(t)=\int_\Gamma\widehat a(\chi)\chi(t)\,
+                                      d\widehat m(\chi),
+ \qquad a=a^\circ\ \text{almost everywhere},\qquad
+ \|a^\circ\|_\infty\leq\|\widehat a\|_1 .
+ \tag{H6.8}
+\]
+The integral converges absolutely for every \(t\), with the positive
+inverse character and the precise dual Haar normalization.
+
+In fact this representative is uniformly continuous. For any compact
+\(K\subset\Gamma\) and \(s,t\in G\),
+\[
+ |a^\circ(t+s)-a^\circ(t)|
+ \leq \|\widehat a\|_1\sup_{\chi\in K}|\chi(s)-1|
+        +2\int_{\Gamma\setminus K}|\widehat a|\,d\widehat m .
+ \tag{H6.9}
+\]
+Choose \(K\) by finite-density regularity, then \(s\) by H3's compact
+character estimate. The bound is independent of \(t\), as required.
+If a chosen representative of \(a\) is continuous at \(t_0\), it
+agrees with \(a^\circ\) at \(t_0\): otherwise their difference would
+stay bounded away from zero on a neighbourhood of \(t_0\), which has
+positive Haar measure, contradicting their almost-everywhere equality.
+Uniqueness among continuous representatives follows by the same argument.
+
+Equivalently, if \(f\in A(\Gamma)\cap L^1(\Gamma)\), where
+\(A(\Gamma)=\{\widehat a:a\in L^1(G)\}\), then its uniquely determined
+inverse \(L^1\) class is represented by
+\(\check f(t)=\int_\Gamma f(\chi)\chi(t)\,d\widehat m(\chi)\).
+No compact-support assumption on \(f\), or sigma compactness or
+separability assumption on either group, occurs in this conclusion.
+This is the inverse formula used in Takesaki,
+*Theory of Operator Algebras II*, XI §1, printed p.312.

@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
-Solving an equation is only part of the problem. We also want the solution to retain the regularity of the data, and we want estimates that survive a change in the coefficients. These two questions meet in the choice of a fundamental solution. A poorly chosen inverse can carry avoidable singularities. A regular inverse uses the full derivative norm of the polynomial to control its localized Fourier transform.
+Solving an equation is only part of the problem. We also want the solution to retain the regularity of the data, and we want estimates that survive a change in the coefficients. These two questions meet in the choice of a fundamental solution. A poorly chosen inverse can carry avoidable singularities. A regular inverse uses the full derivative norm of the polynomial to control its localized Fourier transform. A fixed averaging measure also produces holomorphic kernels on small neighborhoods of equally strong operators.
 
 Read [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md) and [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md) first. We also use the distributional convolution identities discussed in [Fundamental solutions and the directions an equation uses](fundamental-solutions-and-active-directions.md). The additional prerequisite is holomorphic averaging for polynomials, stated precisely below. Its construction belongs to the theory of Fourier–Laplace transforms. Basic references are the open treatments of distributions by Grubb [Grubb] and Melrose [Melrose], Malgrange's original existence paper [Malgrange], Hörmander's survey of existence and regularity [Hormander 1971], and Mantlik's work on dependence on a parameter [Mantlik].
 
@@ -161,6 +161,129 @@ For any prescribed positive exponential rate \(\varepsilon\), choose \(\rho<\var
 
 This support statement strengthens the existence result in the first lesson: the family now has both minimal active-subspace support and regularity. The minimality theorem there says that no real linear subspace smaller than \(V_P\) can support a fundamental solution.
 
+## Holomorphic dependence at constant strength
+
+The averaging density in the smooth construction changes with the real and imaginary parts of the coefficients. To obtain a holomorphic family locally, keep that density fixed and vary only the polynomial in its denominator. A uniform comparison of derivative norms makes this possible. The analytic parameter problem is studied in [Mantlik].
+
+Fix a nonzero polynomial \(P_0\), write \(S_0=S_{P_0}\), and set
+\[
+\begin{aligned}
+\mathcal W(P_0)&=\{R\in\mathcal P_m:\|R\|_0<\infty\},\\
+\|R\|_0&=\sup_{\xi\in\mathbb R^n}\frac{S_R(\xi)}{S_0(\xi)}.
+\end{aligned}
+\tag{H1}
+\]
+The zero polynomial has norm zero. The triangle inequality for the derivative vectors makes this a complex norm on a vector subspace. It gives the usual finite-dimensional topology: evaluation of the derivative vector at zero gives a lower bound for a fixed coefficient norm, while expansion in any basis of \(\mathcal W(P_0)\) bounds \(\|\cdot\|_0\) above by a constant times that coefficient norm.
+
+Choose the averaging function \(\Phi\) with support in \(|z|<\rho\) and denominator constant \(c\) from (4). Put
+\[
+T_\rho=\max_{|z|\le\rho}
+\left(\sum_{|\alpha|\le m}\frac{|z^\alpha|^2}{(\alpha!)^2}\right)^{1/2},
+\qquad
+r=\min\left(\frac12,\frac{c}{2T_\rho}\right).
+\tag{H2}
+\]
+Taylor's formula and Cauchy–Schwarz give
+\[
+|R(\xi+z)|\le T_\rho S_R(\xi)
+\le T_\rho\|R\|_0 S_0(\xi)
+\quad (|z|\le\rho).
+\tag{H3}
+\]
+
+**Theorem 3.2 (local holomorphic regular kernels).** On the complex ball \(\|R\|_0<r\) there is a holomorphic family \(F_R\) of fundamental solutions for \(P_0+R\). For every fixed \(\varepsilon>\rho\), the map
+\[
+R\longmapsto \frac{F_R}{w_\varepsilon}
+\quad\hbox{is holomorphic into }B_{\infty,S_0}(\mathbb R^n).
+\tag{H4}
+\]
+Every member is regular for \(P_0+R\) and is supported in the common active subspace \(V_{P_0}\). For \(s<r\) and every integer \(j\ge0\),
+\[
+\left\|\frac{d^jF_R[R_1,\ldots,R_j]}{w_\varepsilon}\right\|_{\infty,S_0}
+\le
+C_\varepsilon
+\frac{j!\,T_\rho^j}{(c-T_\rho s)^{j+1}}
+\prod_{\nu=1}^j\|R_\nu\|_0
+\quad(\|R\|_0\le s).
+\tag{H5}
+\]
+The constant \(C_\varepsilon\) is independent of \(R,j,R_1,\ldots,R_j\). For \(j=0\) the product is one. This is also a holomorphic map into the strong distribution topology. Any prescribed positive exponential rate can be obtained by choosing \(\rho\) below that rate before constructing the family.
+
+**Proof.** Freeze the density at the translated base polynomial:
+\[
+\Phi_0(\xi,z)=\Phi((P_0)_\xi,z),\qquad
+B_R(\xi,z)=\frac{\Phi_0(\xi,z)}{(P_0+R)(\xi+z)}.
+\tag{H6}
+\]
+Define the quotient to be zero off the support of \(\Phi_0\). On that support, (4) and (H3) give
+\[
+\begin{aligned}
+|(P_0+R)(\xi+z)|
+&\ge(c-T_\rho\|R\|_0)S_0(\xi),\\
+S_{P_0+R}(\xi)
+&\in[(1-\|R\|_0)S_0(\xi),
+       (1+\|R\|_0)S_0(\xi)].
+\end{aligned}
+\tag{H7}
+\]
+The first lower bound is positive and holds on a neighborhood of the density's support. Thus extension by zero is smooth wherever the quotient needs that extension. The second bound follows from the triangle inequality and its reverse for the full derivative vectors. In particular these polynomials are nonzero and equally strong.
+
+Scalar homogeneity and compactness of the unit coefficient sphere show that \(\Phi\) is bounded by one constant \(C_\Phi\) for all its arguments. Consequently
+\[
+|B_R(\xi,z)|\le
+\frac{C_\Phi}{(c-T_\rho\|R\|_0)S_0(\xi)}.
+\tag{H8}
+\]
+Define \(F_R\) by (9), replacing \(A(P_\xi,z)\) with \(B_R(\xi,z)\). The positive lower bound for \(S_0\), the compact \(z\)-support, and the rapid decrease of the test transform prove absolute convergence and continuity on each test-function space with fixed compact support. Multiplication by \(P_0+R\) cancels the denominator. The averaging identity (3), which still holds for the frozen density at every \(\xi\), then gives \((P_0+R)(D)F_R=\delta_0\).
+
+The Fourier estimate (1), applied with \(k=S_0\), proves the bound for \(j=0\) in (H5). More explicitly, multiply the inverse transform of \(B_R(\cdot,z)\) by \(f_z\) from (2), then integrate in \(z\). The moderate shift bound for \(S_0\), the uniform Schwartz bounds for \(f_z\), and the finite measure of the \(z\)-support give one bounded linear passage from any coefficient bounded by a constant times \(1/S_0(\xi)\) to \(B_{\infty,S_0}\). Absorb its norm and \(C_\Phi\) into \(C_\varepsilon\).
+
+This passage also proves holomorphy in that Banach space, rather than only scalar holomorphy after testing. On the support of \(\Phi_0\), put
+\[
+q_R(\xi,z)=\frac{R(\xi+z)}{P_0(\xi+z)}.
+\]
+Then \(|q_R|\le T_\rho\|R\|_0/c<1/2\), and
+\[
+B_R(\xi,z)=
+\sum_{k=0}^\infty
+(-1)^k\frac{\Phi_0(\xi,z)R(\xi+z)^k}
+                     {P_0(\xi+z)^{k+1}}.
+\tag{H9}
+\]
+Each term, extended by zero as above, is a continuous homogeneous polynomial of degree \(k\) in the finite-dimensional complex variable \(R\). After the Fourier passage its norm is at most
+\[
+\frac{C_\varepsilon}{c}
+\left(\frac{T_\rho\|R\|_0}{c}\right)^k.
+\tag{H10}
+\]
+The series therefore converges in \(B_{\infty,S_0}\), uniformly on every smaller ball. Its sum agrees with \(F_R/w_\varepsilon\): termwise testing is justified by the same bound and the rapid decrease of the test transform. It is a locally convergent series of continuous complex homogeneous polynomials, which proves Banach-space holomorphy.
+
+For completeness, differentiation gives the exact coefficient formula
+\[
+d^jB_R[R_1,\ldots,R_j]
+=(-1)^j j!\,
+\frac{\Phi_0(\xi,z)\prod_{\nu=1}^jR_\nu(\xi+z)}
+     {(P_0+R)(\xi+z)^{j+1}}.
+\tag{H11}
+\]
+Taylor's bound (H3) for each numerator and (H7) for the denominator give (H5) under the same bounded Fourier passage. The derivatives in (H11) are complex differentials. No parameter derivative falls on the frozen density.
+
+The embedding of \(B_{\infty,S_0}\) into tempered distributions is continuous: \(1/S_0\) has at most polynomial growth, so integration against a Schwartz transform is bounded by a Schwartz seminorm. Multiplication by \(w_\varepsilon\) then gives a continuous map into strong distributions. Indeed a bounded family of test functions with common compact support remains bounded after multiplication by that fixed smooth function. This proves the asserted distributional holomorphy. Multiplication instead by \(\chi w_\varepsilon\), with \(\chi\) compactly supported, proves local regularity with weight \(S_0\), and (H7) makes that weight equivalent to \(S_{P_0+R}\).
+
+Finally take \(\nu\in N_{P_0}\). The function \(S_0(\xi+t\nu)\) is constant in \(t\). The norm bound in (H1) makes \(R(\xi+t\nu)\) a bounded polynomial in real \(t\), so it is constant. Thus every \(R\in\mathcal W(P_0)\) is independent of the inactive variables of \(P_0\). Conversely, along an inactive direction of \(P_0+R\), the reverse comparison in (H7) makes \(P_0(\xi+t\nu)\) bounded and therefore constant. Their active spaces agree. Both factors in (H6) are independent of the inactive component of \(\xi\). The Fourier support argument following (10) therefore puts \(F_R\) in \(V_{P_0}\). The minimality theorem of [Fundamental solutions and the directions an equation uses](fundamental-solutions-and-active-directions.md), Theorem 3.1, gives its minimal supporting linear subspace. This finishes the proof. \(\square\)
+
+![A fixed unit circle stays away from every zero of z minus one quarter plus lambda when the modulus of lambda is at most one quarter; the uniform separation gives a geometric series.](../reproduce/L004/holomorphic-kernels/figures/frozen-averaging-circle.png)
+
+*A one-variable circle model of (H7)–(H10).* On \(|z|=1\), the polynomial \(z-\tfrac14+\lambda\), with \(|\lambda|\le\tfrac14\), has modulus at least \(\tfrac12\). Its root stays in the shaded disk. The fixed circle averages every entire function to its value at zero. Relative to \(z-\tfrac14\), the denominator's geometric-series ratio is at most \(1/3\), so the remainder after degree \(N\) is bounded by \(2\cdot3^{-(N+1)}\). The circle is an exact elementary model of a fixed averaging support; the theorem uses the smooth density in (3).
+
+**Corollary 3.3 (a holomorphic constant-strength parameter).** Let \(\lambda\mapsto P_\lambda\) be a holomorphic map from a finite-dimensional complex manifold into the polynomials, and suppose its members are equally strong near \(\lambda_0\). Locally at \(\lambda_0\) it has a holomorphic family of regular fundamental solutions, with any chosen positive exponential rate.
+
+**Proof.** Set \(P_0=P_{\lambda_0}\). Equal strength puts \(P_\lambda-P_0\) in \(\mathcal W(P_0)\). In local manifold coordinates, the coefficient map into this fixed finite-dimensional subspace is holomorphic. Equivalence of its coefficient topology with the norm in (H1) makes \(P_\lambda-P_0\) enter the ball of Theorem 3.2 after shrinking the neighborhood. Compose the map with that theorem. \(\square\)
+
+A scalar change illustrates the construction exactly. If \(P_\lambda=(1+\lambda)P_0\), the frozen family is \(F_\lambda=(1+\lambda)^{-1}F_0\). This formula extends over \(\lambda\ne-1\). For several coefficient directions, Theorem 3.2 constructs a family on a neighborhood of each base point; agreement of separately chosen families on overlaps is an additional problem.
+
+Uniform denominator estimates for a compact family, with one bounded measurable real shift at every frequency and stable complex translations, are proved in [One contour for a compact family of equations](one-contour-for-a-compact-family-of-equations.md), Theorem 1.1.
+
 ## How differentiation forces the weight
 
 The preceding estimate has a useful converse. It is independent of the averaging construction.
@@ -268,6 +391,57 @@ Multiplication by \(1/w_\varepsilon\) leaves \(\delta_0\) unchanged. The weight 
 **Solution.** Every parameter direction is \(Q=1\), so \(S_Q=1\) and Theorem 4.2 gives the asserted integrability. Along \(\xi_1=0\), the derivative norm is
 \(S_{P_a}(0,\xi_2)^2=|i\xi_2+a|^2+5\), which grows like \(\xi_2^2\), rather than \(\xi_2^4\). Therefore \(S_{P_a}^{j+1}\) has growth of order \(j+1\) in that direction. The proposed isotropic weight has growth of order \(2j+2\) and is not bounded by a constant multiple of the actual weight. The operator is not elliptic of order two, so that stronger uniform gain is unsupported.
 
+**Exercise 5 (20 points).** Explain why (H11) is a complex differential even though the averaging density need not be holomorphic in the polynomial coefficients. Identify the term that would obstruct this argument if the original density were varied.
+
+**Solution.** In (H6), \(\Phi_0\) is fixed independently of \(R\). The parameter enters only through the reciprocal of a nonvanishing complex-linear expression. Repeated complex differentiation of that reciprocal gives (H11), and (H5) justifies it in the asserted Banach space. With the original varying density, a derivative with respect to a conjugate coefficient would also differentiate \(\Phi\). Smoothness in real coefficient coordinates does not make that derivative zero. Assign 10 points to the fixed-density argument and 10 to identifying the conjugate-coefficient derivative.
+
+**Exercise 6 (20 points).** For \(P_0(\xi_1,\xi_2)=\xi_1\), determine \(\mathcal W(P_0)\). Explain why \(R=\lambda\xi_2\), with \(\lambda\ne0\), is outside every ball in (H1).
+
+**Solution.** Here \(S_0=(1+\xi_1^2)^{1/2}\). Boundedness of \(R(\xi_1,\xi_2)\) in \(\xi_2\), for each fixed \(\xi_1\), makes \(R\) independent of \(\xi_2\). Its bound by a constant times \(1+|\xi_1|\) makes its degree at most one. Conversely every \(a\xi_1+b\) has derivative norm bounded by a constant times \(S_0\). Thus \(\mathcal W(P_0)=\operatorname{span}_{\mathbb C}\{1,\xi_1\}\). For \(R=\lambda\xi_2\), the ratio on \(\xi_1=0\) is \(|\lambda|(1+\xi_2^2)^{1/2}\), which is unbounded. The theorem's neighborhood lies in a fixed strength space, not in an unrestricted coefficient ball. Assign 12 points to the exact space and 8 to the diverging ratio.
+
+**Exercise 7 (30 points).** For the scalar family at the end of the holomorphic section, compute every derivative and the norm of the remainder after degree \(N\) in the Taylor expansion at zero. Give a bound uniform on \(|\lambda|\le t<1\).
+
+**Solution.** Direct differentiation gives
+\[
+\frac{d^jF_\lambda}{d\lambda^j}
+=(-1)^j j!(1+\lambda)^{-j-1}F_0.
+\]
+The finite geometric-series identity gives the exact remainder
+\[
+F_\lambda-\sum_{k=0}^N(-\lambda)^kF_0
+=\frac{(-\lambda)^{N+1}}{1+\lambda}F_0.
+\]
+Consequently its weighted norm is
+\[
+\left\|\frac{F_0}{w_\varepsilon}\right\|_{\infty,S_0}
+\frac{|\lambda|^{N+1}}{|1+\lambda|}
+\le
+\left\|\frac{F_0}{w_\varepsilon}\right\|_{\infty,S_0}
+\frac{t^{N+1}}{1-t}.
+\]
+Assign 10 points each to the derivative, exact remainder, and uniform bound.
+
+**Exercise 8 (30 points).** On \(\mathbb R^2\), let \(P_{a,b}(\xi)=a\xi_1+b\), where \(a\ne0\) and \(a,b\) are complex. Prove that
+\[
+E_{a,b}=\frac{i}{a}H(x_1)e^{-ibx_1/a}\otimes\delta_0(x_2)
+\]
+is a globally holomorphic distributional family of regular fundamental solutions. Specify a sufficient exponential rate for this particular forward family.
+
+**Solution.** Distributional differentiation of the Heaviside function gives
+\[
+aD_1E_{a,b}
+=\delta_0(x_1)\otimes\delta_0(x_2)
+-\frac{ib}{a}H(x_1)e^{-ibx_1/a}\otimes\delta_0(x_2).
+\]
+The second term cancels \(bE_{a,b}\). For a fixed compactly supported test function, the pairing is a finite-interval integral of an expression holomorphic in \((a,b)\) on \(a\ne0\). All parameter derivatives are uniformly bounded on compact parameter sets and bounded sets of tests, so the family is holomorphic in the strong distribution topology.
+
+For a cutoff \(\chi\), its transform is
+\[
+\frac{i}{a}\int_0^\infty
+e^{-ibt/a}\chi(t,0)e^{-it\xi_1}\,dt.
+\]
+The direct integral bound and one integration by parts give \(C/(1+|\xi_1|)\), with no dependence on \(\xi_2\). Since \(S_{P_{a,b}}\) is comparable to \(1+|\xi_1|\), this proves regularity. For this forward family, every \(\varepsilon>|\operatorname{Im}(b/a)|\) is sufficient: division by \(\cosh(\varepsilon t)\) leaves an integrable amplitude with integrable first derivative, so the same Fourier bound holds globally. These bounds are uniform on compact parameter sets satisfying that strict inequality. Assign 10 points to the fundamental-solution identity, 8 to holomorphy, 8 to regularity, and 4 to the exponential bound.
+
 ## References
 
 - [Grubb] Gerd Grubb, *Distributions and Operators*, open lecture-note versions, 2007–2008, sections on Fourier transformation and convolution. [Author's lecture-note index](https://web.math.ku.dk/~grubb/distribution.htm).
@@ -275,3 +449,4 @@ Multiplication by \(1/w_\varepsilon\) leaves \(\delta_0\) unchanged. The weight 
 - [Malgrange] Bernard Malgrange, *Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution*, Annales de l'Institut Fourier **6** (1956), 271–355. [Original article](https://aif.centre-mersenne.org/articles/10.5802/aif.65/).
 - [Hormander 1971] Lars Hörmander, *On the existence and the regularity of solutions of linear pseudo-differential equations*, L'Enseignement Mathématique **17** (1971), 99–163. [Original article archive](https://www.e-periodica.ch/digbib/view?lang=en&pid=ens-001%3A1971%3A17%3A%3A213).
 - [Mantlik] Frank Mantlik, *Partial differential operators depending analytically on a parameter*, Annales de l'Institut Fourier **41** (1991), 577–599. [Original article](https://www.numdam.org/item/10.5802/aif.1266/).
+- **[Hörmander II]** Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Fundamental solutions, localization of polynomials and regularity.

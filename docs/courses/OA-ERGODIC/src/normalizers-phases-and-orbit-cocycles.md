@@ -8,7 +8,7 @@ An operator can move points of a measured space and also multiply vectors by a p
 
 The prerequisite lesson [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md) constructs \(\mathcal M=\mathcal M(R,\mu)\) on \(L^2(R,\nu_s)\), with diagonal \(\mathcal A=\{M_f:f\in L^\infty(X)\}\), partial orbit operators \(V_\theta\), and a cyclic separating diagonal vector \(\Omega\). Use an equivalent probability measure throughout. The group presenting \(R\) is countable and acts nonsingularly on a standard Borel space.
 
-The following measure-theoretic lemma supplies the spatial realization of abstract diagonal isomorphisms. Besides normality and bounded Borel functional calculus, it uses the one-to-one image theorem for standard Borel spaces.
+The following measure-theoretic lemma supplies the spatial realization of abstract diagonal isomorphisms. Besides normality and bounded Borel functional calculus, it uses Borel models, measurable inversion and Polish group quotients, Theorems 4.3(5) and 5.2, for a Borel injection into the unit interval and its Borel inverse on its image.
 
 **Lemma 0.1 (realizing a function-algebra isomorphism).** A normal isomorphism \(\alpha:L^\infty(X,\mu)\to L^\infty(Y,\eta)\) of standard probability-space algebras is induced by a measure-class preserving Borel isomorphism \(\rho:Y\to X\) on conull subsets:
 \[
@@ -23,9 +23,9 @@ for every Borel \(B\subset[0,1]\). In particular, \(c\in b(X)\) almost everywher
 
 A null-set indicator maps to zero, proving that \(\rho\) is nonsingular. Apply the same construction to \(\alpha^{-1}\) and obtain a nonsingular \(\sigma:X\to Y\). The two composition identities, applied to Borel injections of \(X\) and \(Y\) into \([0,1]\), give \(\rho\sigma=\mathrm{id}_X\) and \(\sigma\rho=\mathrm{id}_Y\) almost everywhere. Remove these exceptional sets and their preimages under the two nonsingular maps. The maps are then inverse Borel bijections of conull subsets. Their nonsingularity in both directions proves measure-class preservation. \(\square\)
 
-Basic references are [Anantharaman–Popa] and [Takesaki].
+For the phase decomposition, compare [Anantharaman–Popa, Lemma 12.1.16], proved in the invariant-probability setting. Takesaki III, XIII.2.16–2.22, supplies the orbit-equivalence, cocycle and geometric-subgroup questions treated here. The nonsingular change of variables and the phase and cone distinctions are kept explicit below.
 
-Section 5 also uses the modular coordinates in Relation kernels and modular coordinates, together with the natural-cone implementation prerequisite stated in Section 5 below. Its topology argument keeps ordinary pointwise positivity separate from the natural cone.
+Section 5 also uses the modular coordinates in [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md), together with the natural-cone implementation prerequisite stated in Section 5 below. Its topology argument keeps ordinary pointwise positivity separate from the natural cone.
 
 ## 1. A unitary has more information than its motion
 
@@ -262,7 +262,7 @@ Conjugation by \(\beta_\phi\) sends \(c\) to
 
 *Proof.* Lemma 0.1 realizes the restriction of \(\alpha\) as a measure-class map \(\phi\). Theorem 2.1 proves that it preserves \(R\). Therefore \(\alpha\beta_\phi^{-1}\) fixes \(\mathcal A\) pointwise and is \(\alpha_c\) for a unique cocycle by Theorem 3.1. The restriction determines \(\phi\), and then determines \(c\). Conjugate its kernel multiplier by (5.1) to obtain the asserted action on cocycles. \(\square\)
 
-We use one precise general prerequisite for the topology: in the standard GNS form \((\mathcal M,H,J,P)\), each normal automorphism \(\alpha\) has a unique unitary \(U_\alpha\) normalizing \(\mathcal M\) and preserving the natural cone \(P\). These unitaries form a representation, commute with \(J\), and their strong topology equals the topology of pointwise norm convergence on the predual, also called the \(u\)-topology. The prerequisite *The positive cone of a standard representation*, in *Modular theory and weights*, proves the cone construction and this implementation theorem. We use those results here; their general modular proof is not repeated.
+We use one precise general prerequisite for the topology: in the standard GNS form \((\mathcal M,H,J,P)\), each normal automorphism \(\alpha\) has a unique unitary \(U_\alpha\) normalizing \(\mathcal M\) and preserving the natural cone \(P\). These unitaries form a representation, commute with \(J\), and their strong topology equals the topology of pointwise norm convergence on the predual, also called the \(u\)-topology. The positive cone of a standard representation, Sections “The standard-form axioms” and “Canonical implementation of automorphisms,” proves the cone construction and this implementation theorem. We use those results here; their general modular proof is not repeated.
 
 For our faithful diagonal state the natural cone has the useful description
 \[
@@ -389,5 +389,8 @@ agrees eventually with \(W_\phi(V_gM_f\Omega)\). Finite sums of these vectors ar
 
 ## References
 
-- [Anantharaman–Popa] Claire Anantharaman and Sorin Popa, *An introduction to \(II_1\) factors*, author-hosted draft `IIunV15.pdf`. Sections 12.1–12.3 treat Cartan normalizers, orbit equivalence and full groups in the finite invariant-measure setting. [Read the authors’ draft](https://www.math.ucla.edu/~popa/Books/IIunV15.pdf). This is an accessible scholarly reference; no licence to reproduce or translate its text is assumed. The complete proofs used here are the owned and programme arguments identified above.
-- [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+- [Anantharaman–Popa] Claire Anantharaman and Sorin Popa, *An introduction to \(II_1\) factors*, author-hosted draft `IIunV15.pdf`: Lemma 12.1.16, printed pp. 197–198, retains the diagonal phase in a normalizer; Theorem 12.2.2, p. 199, recovers a probability-preserving relation from its diagonal pair; Section 12.2.2, p. 201, describes the cocycle and full-group quotients. [Read the authors’ draft](https://www.math.ucla.edu/~popa/Books/IIunV15.pdf). These statements use an invariant probability measure. Here Lemma 0.1 and the source-coordinate density give the measure-class formulation.
+- [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, XIII.2.16–2.22, printed pp. 24–27. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Theorem 2.21 is the source for the relation-cocycle classification. Theorem 1.1 retains the diagonal phase omitted in Proposition 2.17; equation (5.1) uses a derivative defined on the full geometric group, as required when the pair in equation (36′) lies outside the relation. The natural cone and the pointwise nonnegative cone have different roles in the proof of Lemma 5.2.
+- [Programme-PB] Borel models, measurable inversion and Polish group quotients, Theorems 4.3(5) and 5.2, for the point realization in Lemma 0.1 and the Borel-image step in Section 5.
+- [Programme-SF] The positive cone of a standard representation, “The standard-form axioms” and “Canonical implementation of automorphisms,” for cone-preserving implementation, uniqueness and the predual-norm topology.
+

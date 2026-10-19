@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-unit equations and Thue–Mahler equations · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-14.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 14 of 21</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="s-unit-equations-and-thuemahler-equations">S-unit equations and Thue–Mahler equations</h1>
+<p><em>Authoring and mathematical self-check: OpenAI Codex — GPT-6 Astra,
+Ultra. Original exposition, CC0.</em></p>
+<p>An <span class="math" data-tex="\(S\)">\(S\)</span>-unit can have denominators at specified primes. A small
+archimedean value therefore need not account for its height: some of
+the negative logarithms may occur at finite places. We use a local
+estimate at every allowed place and then the product formula to select
+one of them.</p>
+<p>The free paper of <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa74/aa7416.pdf">Bugeaud and Győry, <em>Bounds for the solutions of unit
+equations</em></a>
+states its height-linear theorem on printed page 68 and
+uses this smallest-place argument on pages 76–78. Its height is
+multiplicative; throughout this lesson <span class="math" data-tex="\(h\)">\(h\)</span> is the absolute
+logarithmic Weil height. We give the argument using the complete
+programme proofs of the archimedean group bound and the refined
+finite-place estimate, including the coefficient-one parameter choice.</p>
+<h2 id="prerequisite-proofs">Prerequisite proofs</h2>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Programme proof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heights, the product formula and effective Northcott finiteness</td>
+<td><a href="../TR-TRANS/TR-TRANS-02.html">Heights of algebraic numbers, Theorems 2.4 and 2.6–2.8</a></td>
+</tr>
+<tr>
+<td>Ideal factorization, class-group finiteness and units</td>
+<td><a href="../NT-ANT/discrete-valuation-rings-and-dedekind-domains.html">Discrete valuation rings and Dedekind domains</a>, <a href="../NT-ANT/finiteness-of-the-class-number.html">Finiteness of the class number, Corollary 8.2</a>, and <a href="../NT-ANT/dirichlets-unit-theorem.html">Dirichlet's unit theorem, Theorems 9.2 and 9.4</a></td>
+</tr>
+<tr>
+<td>Finite-place coefficient refinement over every number field</td>
+<td><a href="TR-BAKER-10.html">Lesson 10, Theorem 10.246 and definitions (10.1086), (10.1093)–(10.1094)</a></td>
+</tr>
+<tr>
+<td>Group coordinates and archimedean approximation</td>
+<td><a href="TR-BAKER-12.html">Lesson 12, Corollary 12.3, Lemma 12.8 and Theorem 12.9</a></td>
+</tr>
+<tr>
+<td>Three-factor identity and recovery of coordinates</td>
+<td><a href="TR-BAKER-13.html">Lesson 13, Theorem 13.2 and equations (13.11)–(13.17)</a></td>
+</tr>
+<tr>
+<td>Subspace theorem and nondegenerate unit equations</td>
+<td><a href="../TR-TRANS/TR-TRANS-12.html">Rational approximation III, Theorem 12.13 and Corollaries 12.17–12.18</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-logarithms-and-effective-generators">1. Logarithms and effective generators</h2>
+<p>Fix a number field <span class="math" data-tex="\(K\)">\(K\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>, and a finite set <span class="math" data-tex="\(S\)">\(S\)</span>
+containing every infinite place. Write <span class="math" data-tex="\(s=|S|\)">\(s=|S|\)</span>. At an infinite
+place put
+<span class="math math-display" data-tex="\[
+\lambda_v(z)=n_v\log|\sigma_vz|,\qquad n_v=1\text{ or }2,
+\]">\[
+\lambda_v(z)=n_v\log|\sigma_vz|,\qquad n_v=1\text{ or }2,
+\]</span>
+and at the prime ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> put
+<span class="math math-display" data-tex="\[
+\lambda_{\mathfrak p}(z)
+ =-\operatorname{ord}_{\mathfrak p}(z)\log N\mathfrak p.
+\tag{14.1}
+\]">\[
+\lambda_{\mathfrak p}(z)
+ =-\operatorname{ord}_{\mathfrak p}(z)\log N\mathfrak p.
+\tag{14.1}
+\]</span>
+These are the unscaled logarithms: the product formula is
+<span class="math" data-tex="\(\sum_v\lambda_v(z)=0\)">\(\sum_v\lambda_v(z)=0\)</span>, and
+<span class="math math-display" data-tex="\[
+dh(z)=\sum_v\max\{0,\lambda_v(z)\}
+     =\sum_v\max\{0,-\lambda_v(z)\}.
+\tag{14.2}
+\]">\[
+dh(z)=\sum_v\max\{0,\lambda_v(z)\}
+     =\sum_v\max\{0,-\lambda_v(z)\}.
+\tag{14.2}
+\]</span>
+In particular <span class="math" data-tex="\(|\lambda_v(z)|\le dh(z)\)">\(|\lambda_v(z)|\le dh(z)\)</span>.</p>
+<p>The ring <span class="math" data-tex="\(O_{K,S}\)">\(O_{K,S}\)</span> consists of the elements integral outside <span class="math" data-tex="\(S\)">\(S\)</span>;
+its units <span class="math" data-tex="\(U_S\)">\(U_S\)</span> are precisely the nonzero elements with
+<span class="math" data-tex="\(\lambda_v(z)=0\)">\(\lambda_v(z)=0\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>. The programme <span class="math" data-tex="\(S\)">\(S\)</span>-unit theorem
+gives <span class="math" data-tex="\(U_S/\mu_K\)">\(U_S/\mu_K\)</span> rank <span class="math" data-tex="\(s-1\)">\(s-1\)</span>. For an <span class="math" data-tex="\(S\)">\(S\)</span>-unit,
+<span class="math math-display" data-tex="\[
+\sum_{v\in S}\lambda_v(z)=0,\qquad
+2dh(z)=\sum_{v\in S}|\lambda_v(z)|.
+\tag{14.3}
+\]">\[
+\sum_{v\in S}\lambda_v(z)=0,\qquad
+2dh(z)=\sum_{v\in S}|\lambda_v(z)|.
+\tag{14.3}
+\]</span>
+Thus the full <span class="math" data-tex="\(S\)">\(S\)</span>-logarithm image is a lattice in the sum-zero
+hyperplane. These assertions are proved in <em>Number fields</em>,
+<em>Dirichlet's unit theorem</em>, Theorem 9.4, and in Lemma 12.8.</p>
+<p><strong>Lemma 14.1 (a terminating construction of generators).</strong>
+A finite generating set of <span class="math" data-tex="\(U_S\)">\(U_S\)</span>, and a basis
+<span class="math" data-tex="\(g_1,\ldots,g_r\)">\(g_1,\ldots,g_r\)</span> of <span class="math" data-tex="\(U_S/\mu_K\)">\(U_S/\mu_K\)</span>, can be found effectively.
+One can compute positive integers <span class="math" data-tex="\(L,V\)">\(L,V\)</span> such that
+<span class="math math-display" data-tex="\[
+z=\zeta\prod_{i=1}^r g_i^{b_i},\qquad
+\max_i|b_i|\le Lh(z),\qquad
+h(z)\le V\max_i|b_i|,
+\tag{14.4}
+\]">\[
+z=\zeta\prod_{i=1}^r g_i^{b_i},\qquad
+\max_i|b_i|\le Lh(z),\qquad
+h(z)\le V\max_i|b_i|,
+\tag{14.4}
+\]</span>
+where <span class="math" data-tex="\(\zeta\in\mu_K\)">\(\zeta\in\mu_K\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> all elements are torsion
+and the exponent inequalities are omitted.</p>
+<p><strong>Proof.</strong> We first construct a subgroup whose logarithms span the
+whole hyperplane. Let the ordinary unit rank be <span class="math" data-tex="\(r_0\)">\(r_0\)</span>. Enumerate
+algebraic integers of norm <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> in expanding integral-basis
+boxes. Interleave this enumeration with increasingly accurate interval
+computations of the logarithmic minors. Dirichlet's theorem ensures
+that a tuple of <span class="math" data-tex="\(r_0\)">\(r_0\)</span> units with a nonzero <span class="math" data-tex="\(r_0\)">\(r_0\)</span>-row minor exists.
+Eventually both that tuple and a rational interval excluding zero for
+its determinant are found. For <span class="math" data-tex="\(r_0=0\)">\(r_0=0\)</span> take the empty tuple.</p>
+<p>Write the finite primes in <span class="math" data-tex="\(S\)">\(S\)</span> as
+<span class="math" data-tex="\(\mathfrak p_1,\ldots,\mathfrak p_t\)">\(\mathfrak p_1,\ldots,\mathfrak p_t\)</span>. For each <span class="math" data-tex="\(j\)">\(j\)</span>, enumerate
+positive integers <span class="math" data-tex="\(k\)">\(k\)</span> and nonzero algebraic integers <span class="math" data-tex="\(a\)">\(a\)</span>, in
+growing finite boxes of pairs, until
+<span class="math math-display" data-tex="\[
+(a)=\mathfrak p_j^k.
+\tag{14.5}
+\]">\[
+(a)=\mathfrak p_j^k.
+\tag{14.5}
+\]</span>
+Test this equality by exact ideal arithmetic. The class group is
+finite, as proved in <em>Finiteness of the class number</em>, Corollary 8.2,
+so some positive power of each <span class="math" data-tex="\(\mathfrak p_j\)">\(\mathfrak p_j\)</span> is principal.
+The search terminates. The selected <span class="math" data-tex="\(a_j\)">\(a_j\)</span> are <span class="math" data-tex="\(S\)">\(S\)</span>-units.
+Their finite valuation vectors have one nonzero coordinate each,
+whereas ordinary units have zero finite valuation vector.
+Together the selected elements
+<span class="math" data-tex="\(\eta_1,\ldots,\eta_{r_0+t}\)">\(\eta_1,\ldots,\eta_{r_0+t}\)</span> have linearly independent logarithms.
+Since <span class="math" data-tex="\(r_0+t=s-1\)">\(r_0+t=s-1\)</span>, these span the full hyperplane.</p>
+<p>Let <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> be their integer logarithm lattice. Any
+<span class="math" data-tex="\(\lambda_S(z)\)">\(\lambda_S(z)\)</span> can be reduced modulo <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> to
+<span class="math math-display" data-tex="\[
+\lambda_S(z&#x27;)=\sum_i t_i\lambda_S(\eta_i),
+\qquad 0\le t_i&lt;1,
+\tag{14.6}
+\]">\[
+\lambda_S(z&#x27;)=\sum_i t_i\lambda_S(\eta_i),
+\qquad 0\le t_i&lt;1,
+\tag{14.6}
+\]</span>
+by multiplying <span class="math" data-tex="\(z\)">\(z\)</span> by integer powers of the <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>.
+Equation (14.3) gives <span class="math" data-tex="\(h(z&#x27;)\le\sum_i h(\eta_i)\)">\(h(z&#x27;)\le\sum_i h(\eta_i)\)</span>.
+Choose an integer <span class="math" data-tex="\(V_0\)">\(V_0\)</span> strictly larger than this last sum.
+The explicit Northcott construction in <em>Heights of algebraic
+numbers</em>, Theorem 2.8, gives a finite list containing every element
+of <span class="math" data-tex="\(K\)">\(K\)</span> with height at most <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. Retain all members that are
+<span class="math" data-tex="\(S\)">\(S\)</span>-units, by factoring their principal fractional ideals.
+No exact comparison of a computed height with <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is needed:
+one may retain the entire finite coefficient-box list after the
+<span class="math" data-tex="\(S\)">\(S\)</span>-unit test.</p>
+<p>This finite set contains a representative of every coset modulo
+the subgroup generated by the <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>. Together with those
+elements it generates all of <span class="math" data-tex="\(U_S\)">\(U_S\)</span>, including its torsion.
+Lemma 12.8 now computes a basis modulo torsion and the constants
+in (14.4). In rank zero, (14.3) gives height zero for every
+<span class="math" data-tex="\(S\)">\(S\)</span>-unit, so the same finite Northcott list already contains
+the whole group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The search above is a proof of termination, not an efficient unit
+algorithm. Its purpose is to make every constant used below
+computable from the fixed field and the fixed set <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<h2 id="2-approximation-by-a-fixed-multiplicative-group-at-every-place">2. Approximation by a fixed multiplicative group at every place</h2>
+<p><strong>Lemma 14.2 (local height absorption).</strong> Fix a finitely generated
+subgroup <span class="math" data-tex="\(\Gamma\subset K^\times\)">\(\Gamma\subset K^\times\)</span>, a place <span class="math" data-tex="\(v\)">\(v\)</span>, and a real
+<span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. There is a computable <span class="math" data-tex="\(K_v&gt;0\)">\(K_v&gt;0\)</span>, depending only on
+these data, such that
+<span class="math math-display" data-tex="\[
+-\lambda_v(1-A\gamma)
+ \le \epsilon h(\gamma)+K_v\max\{h(A),1\}
+\tag{14.7}
+\]">\[
+-\lambda_v(1-A\gamma)
+ \le \epsilon h(\gamma)+K_v\max\{h(A),1\}
+\tag{14.7}
+\]</span>
+for every <span class="math" data-tex="\(A\in K^\times,\gamma\in\Gamma\)">\(A\in K^\times,\gamma\in\Gamma\)</span> with <span class="math" data-tex="\(A\gamma\ne1\)">\(A\gamma\ne1\)</span>.
+The coefficient <span class="math" data-tex="\(A\)">\(A\)</span> varies; it is not among the fixed data.</p>
+<p><strong>Proof at an infinite place.</strong> Write <span class="math" data-tex="\(H=\max\{h(A),1\}\)">\(H=\max\{h(A),1\}\)</span>.
+Use Theorem 12.9 at the embedding <span class="math" data-tex="\(\sigma_v\)">\(\sigma_v\)</span>, with parameter
+<span class="math" data-tex="\(\epsilon/n_v\)">\(\epsilon/n_v\)</span>, and call its computable constant <span class="math" data-tex="\(C_v\)">\(C_v\)</span>.
+If <span class="math" data-tex="\(h(\gamma)&gt;C_vH\)">\(h(\gamma)&gt;C_vH\)</span>, the contrapositive of that theorem gives
+<span class="math math-display" data-tex="\[
+|1-\sigma_v(A\gamma)|&gt;e^{-(\epsilon/n_v)h(\gamma)},
+\]">\[
+|1-\sigma_v(A\gamma)|&gt;e^{-(\epsilon/n_v)h(\gamma)},
+\]</span>
+which proves (14.7) with just its first term.
+If <span class="math" data-tex="\(h(\gamma)\le C_vH\)">\(h(\gamma)\le C_vH\)</span>, the one-place height inequality and
+the height sum inequality give
+<span class="math math-display" data-tex="\[
+-\lambda_v(1-A\gamma)
+ \le d\,h(1-A\gamma)
+ \le d\bigl(h(A)+h(\gamma)+\log2\bigr)
+ \le d(C_v+2)H.
+\tag{14.8}
+\]">\[
+-\lambda_v(1-A\gamma)
+ \le d\,h(1-A\gamma)
+ \le d\bigl(h(A)+h(\gamma)+\log2\bigr)
+ \le d(C_v+2)H.
+\tag{14.8}
+\]</span>
+Thus <span class="math" data-tex="\(K_v=d(C_v+2)\)">\(K_v=d(C_v+2)\)</span> works in both cases. This also explains why
+a conditional approximation theorem suffices for the unconditional
+inequality (14.7).</p>
+<p><strong>Proof at a finite place.</strong> Let <span class="math" data-tex="\(v=\mathfrak p\)">\(v=\mathfrak p\)</span>, above the
+rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, and put <span class="math" data-tex="\(N=N\mathfrak p\)">\(N=N\mathfrak p\)</span>. Take a basis
+of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> modulo torsion as in Lemma 12.8. If its rank is
+zero, <span class="math" data-tex="\(h(\gamma)=0\)">\(h(\gamma)=0\)</span>, and (14.8) gives (14.7) with <span class="math" data-tex="\(K_v=2d\)">\(K_v=2d\)</span>.
+Hence suppose its rank is <span class="math" data-tex="\(\rho\ge1\)">\(\rho\ge1\)</span>, and write
+<span class="math" data-tex="\(\gamma=\zeta\prod_{i=1}^{\rho}g_i^{b_i}\)">\(\gamma=\zeta\prod_{i=1}^{\rho}g_i^{b_i}\)</span>.
+Use <span class="math" data-tex="\(L_\Gamma\ge1\)">\(L_\Gamma\ge1\)</span> from (12.42), so
+<span class="math" data-tex="\(\max_i|b_i|\le L_\Gamma h(\gamma)\)">\(\max_i|b_i|\le L_\Gamma h(\gamma)\)</span>.</p>
+<p>Put <span class="math" data-tex="\(n=\rho+1\)">\(n=\rho+1\)</span>. In Theorem 10.246 use the bases
+<span class="math math-display" data-tex="\[
+\alpha_i=g_i\quad(i&lt;n),\qquad \alpha_n=A\zeta,
+\qquad b_n=1.
+\tag{14.9}
+\]">\[
+\alpha_i=g_i\quad(i&lt;n),\qquad \alpha_n=A\zeta,
+\qquad b_n=1.
+\tag{14.9}
+\]</span>
+Choose fixed integers <span class="math" data-tex="\(w_i\ge\max\{h(g_i),1\}\)">\(w_i\ge\max\{h(g_i),1\}\)</span> for <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span>,
+and choose <span class="math" data-tex="\(w_n=H\)">\(w_n=H\)</span>. Since <span class="math" data-tex="\(Q&gt;1\)">\(Q&gt;1\)</span> in (10.1086), all height
+floors are satisfied. Also
+<span class="math" data-tex="\(v_p(b_n)=0=\min_i v_p(b_i)\)">\(v_p(b_n)=0=\min_i v_p(b_i)\)</span>, allowing zero earlier coefficients.
+Set <span class="math" data-tex="\(B_n=1\)">\(B_n=1\)</span> and
+<span class="math math-display" data-tex="\[
+B=\max\{1,|b_1|,\ldots,|b_\rho|\}
+ \le1+L_\Gamma h(\gamma).
+\tag{14.10}
+\]">\[
+B=\max\{1,|b_1|,\ldots,|b_\rho|\}
+ \le1+L_\Gamma h(\gamma).
+\tag{14.10}
+\]</span>
+No multiplicative-independence or local-unit assumption is required
+in Theorem 10.246.</p>
+<p>For this fixed <span class="math" data-tex="\(n,K,\mathfrak p\)">\(n,K,\mathfrak p\)</span>, let <span class="math" data-tex="\(\mathcal A_n,c_3,c_4\)">\(\mathcal A_n,c_3,c_4\)</span>
+be the explicit constants (10.1086), and define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W=\prod_{i&lt;n}w_i,\qquad T=\mathcal A_n\log N,\\
+0&lt;\tau\le\min\left\{\frac12,
+          \frac{\epsilon c_3}{T L_\Gamma}\right\},\qquad
+J=\log\left(\frac{c_4N^{n+1}W}{\tau}\right).
+\end{gathered}
+\tag{14.11}
+\]">\[
+\begin{gathered}
+W=\prod_{i&lt;n}w_i,\qquad T=\mathcal A_n\log N,\\
+0&lt;\tau\le\min\left\{\frac12,
+          \frac{\epsilon c_3}{T L_\Gamma}\right\},\qquad
+J=\log\left(\frac{c_4N^{n+1}W}{\tau}\right).
+\end{gathered}
+\tag{14.11}
+\]</span>
+A positive rational <span class="math" data-tex="\(\tau\)">\(\tau\)</span> meeting these conditions can be
+chosen using rational upper bounds for the fixed constants.
+In the notation of that theorem, its auxiliary parameter is
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>, its ratio <span class="math" data-tex="\(r\)">\(r\)</span> is <span class="math" data-tex="\(B\)">\(B\)</span>, its height product is <span class="math" data-tex="\(WH\)">\(WH\)</span>,
+and its logarithmic expression <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(J\)">\(J\)</span>.
+Notice that <span class="math" data-tex="\(J\)">\(J\)</span> does not contain <span class="math" data-tex="\(H\)">\(H\)</span> or <span class="math" data-tex="\(B\)">\(B\)</span>, because the
+distinguished exponent equals one.</p>
+<p>The theorem and (14.10) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-\lambda_{\mathfrak p}(1-A\gamma)
+ &amp;=\log N\,\operatorname{ord}_{\mathfrak p}(A\gamma-1)\\
+ &amp;&lt;T\max\{WHJ,\tau B/c_3\}\\
+ &amp;\le TWJH+(T\tau/c_3)(1+L_\Gamma h(\gamma))\\
+ &amp;\le\epsilon h(\gamma)+(TWJ+T\tau/c_3)H .
+\end{aligned}
+\tag{14.12}
+\]">\[
+\begin{aligned}
+-\lambda_{\mathfrak p}(1-A\gamma)
+ &amp;=\log N\,\operatorname{ord}_{\mathfrak p}(A\gamma-1)\\
+ &amp;&lt;T\max\{WHJ,\tau B/c_3\}\\
+ &amp;\le TWJH+(T\tau/c_3)(1+L_\Gamma h(\gamma))\\
+ &amp;\le\epsilon h(\gamma)+(TWJ+T\tau/c_3)H .
+\end{aligned}
+\tag{14.12}
+\]</span>
+Here <span class="math" data-tex="\(H\ge1\)">\(H\ge1\)</span> absorbs the constant term. Thus
+<span class="math" data-tex="\(K_{\mathfrak p}=TWJ+T\tau/c_3\)">\(K_{\mathfrak p}=TWJ+T\tau/c_3\)</span> works. If the valuation is
+nonpositive the same conclusion holds directly; the calculation
+also includes that case. The assumption <span class="math" data-tex="\(A\gamma\ne1\)">\(A\gamma\ne1\)</span>
+is precisely the nonvanishing condition of the logarithmic estimate.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choosing the auxiliary parameter before the variable coefficient
+is essential. An unrefined bound proportional to <span class="math" data-tex="\(H\log B\)">\(H\log B\)</span>
+would not give the height-linear conclusion below by this argument.</p>
+<h2 id="3-the-effective-two-term-s-unit-theorem">3. The effective two-term S-unit theorem</h2>
+<p><strong>Theorem 14.3.</strong> For fixed <span class="math" data-tex="\(K,S\)">\(K,S\)</span> there is a computable integer
+<span class="math" data-tex="\(C_S\ge1\)">\(C_S\ge1\)</span> such that every solution of
+<span class="math math-display" data-tex="\[
+\alpha x+\beta y=1,\qquad x,y\in U_S,\qquad
+\alpha,\beta\in K^\times
+\tag{14.13}
+\]">\[
+\alpha x+\beta y=1,\qquad x,y\in U_S,\qquad
+\alpha,\beta\in K^\times
+\tag{14.13}
+\]</span>
+satisfies
+<span class="math math-display" data-tex="\[
+\max\{h(x),h(y)\}\le
+C_S\max\{h(\alpha),h(\beta),1\}.
+\tag{14.14}
+\]">\[
+\max\{h(x),h(y)\}\le
+C_S\max\{h(\alpha),h(\beta),1\}.
+\tag{14.14}
+\]</span>
+In particular all solutions can be found by a terminating finite search.</p>
+<p><strong>Proof.</strong> Use Lemma 14.1 to compute the fixed group <span class="math" data-tex="\(U_S\)">\(U_S\)</span>.
+Put <span class="math" data-tex="\(H=\max\{h(\alpha),h(\beta),1\}\)">\(H=\max\{h(\alpha),h(\beta),1\}\)</span> and apply Lemma 14.2
+to this group at every <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, with
+<span class="math" data-tex="\(\epsilon=d/(2s)\)">\(\epsilon=d/(2s)\)</span>. Let <span class="math" data-tex="\(K_0=\max_{v\in S}K_v\)">\(K_0=\max_{v\in S}K_v\)</span>.</p>
+<p>The negative logarithms of <span class="math" data-tex="\(x\)">\(x\)</span> sum to <span class="math" data-tex="\(dh(x)\)">\(dh(x)\)</span>, by (14.3).
+One of the <span class="math" data-tex="\(s\)">\(s\)</span> places therefore satisfies
+<span class="math math-display" data-tex="\[
+\lambda_v(x)\le-dh(x)/s.
+\tag{14.15}
+\]">\[
+\lambda_v(x)\le-dh(x)/s.
+\tag{14.15}
+\]</span>
+This remains true when <span class="math" data-tex="\(h(x)=0\)">\(h(x)=0\)</span>, since then all these logarithms
+are zero. As <span class="math" data-tex="\(\lambda_v(\alpha)\le dH\)">\(\lambda_v(\alpha)\le dH\)</span> and
+<span class="math" data-tex="\(1-\beta y=\alpha x\ne0\)">\(1-\beta y=\alpha x\ne0\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+\frac d s h(x)-dH
+ \le-\lambda_v(1-\beta y)
+ \le\epsilon h(y)+K_0H.
+\tag{14.16}
+\]">\[
+\frac d s h(x)-dH
+ \le-\lambda_v(1-\beta y)
+ \le\epsilon h(y)+K_0H.
+\tag{14.16}
+\]</span>
+The equation itself gives
+<span class="math math-display" data-tex="\[
+h(y)=h((1-\alpha x)/\beta)
+ \le h(x)+h(\alpha)+h(\beta)+\log2
+ \le h(x)+3H.
+\tag{14.17}
+\]">\[
+h(y)=h((1-\alpha x)/\beta)
+ \le h(x)+h(\alpha)+h(\beta)+\log2
+ \le h(x)+3H.
+\tag{14.17}
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+h(x)\le
+\left(2s+\frac{2sK_0}{d}+3\right)H,\qquad
+h(y)\le
+\left(2s+\frac{2sK_0}{d}+6\right)H.
+\tag{14.18}
+\]">\[
+h(x)\le
+\left(2s+\frac{2sK_0}{d}+3\right)H,\qquad
+h(y)\le
+\left(2s+\frac{2sK_0}{d}+6\right)H.
+\tag{14.18}
+\]</span>
+Any integer strictly greater than the last coefficient is an
+admissible <span class="math" data-tex="\(C_S\)">\(C_S\)</span>.</p>
+<p>Finally, (14.4) bounds every exponent of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> in the
+computed fundamental system by <span class="math" data-tex="\(LC_SH\)">\(LC_SH\)</span>. Enumerate those integer
+boxes and the finite group of roots of unity and test (14.13)
+exactly. All constants can be replaced by certified rational upper
+bounds before making the boxes. If <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, the group is finite
+and the same conclusion also follows directly by its enumeration.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coefficient height enters only once in (14.14). The constant
+depends on the field and on <span class="math" data-tex="\(S\)">\(S\)</span>, not on the particular coefficients
+or the solution. The use of all places in <span class="math" data-tex="\(S\)">\(S\)</span> is what makes
+denominators harmless to the argument.</p>
+<h2 id="4-balancing-outside-a-fixed-set-of-primes">4. Balancing outside a fixed set of primes</h2>
+<p>For <span class="math" data-tex="\(z\in O_{K,S}\setminus\{0\}\)">\(z\in O_{K,S}\setminus\{0\}\)</span>, define its outside norm by
+<span class="math math-display" data-tex="\[
+\log N_S(z)=
+\sum_{\mathfrak p\notin S}
+\operatorname{ord}_{\mathfrak p}(z)\log N\mathfrak p\ge0.
+\tag{14.19}
+\]">\[
+\log N_S(z)=
+\sum_{\mathfrak p\notin S}
+\operatorname{ord}_{\mathfrak p}(z)\log N\mathfrak p\ge0.
+\tag{14.19}
+\]</span>
+Only finitely many summands are nonzero. The product formula says
+<span class="math" data-tex="\(\sum_{v\in S}\lambda_v(z)=\log N_S(z)\)">\(\sum_{v\in S}\lambda_v(z)=\log N_S(z)\)</span>.</p>
+<p><strong>Lemma 14.4.</strong> Compute a fundamental <span class="math" data-tex="\(S\)">\(S\)</span>-unit system
+<span class="math" data-tex="\(g_1,\ldots,g_{s-1}\)">\(g_1,\ldots,g_{s-1}\)</span>, and choose an integer
+<span class="math" data-tex="\(R&gt;\sum_i h(g_i)\)">\(R&gt;\sum_i h(g_i)\)</span>. For every nonzero <span class="math" data-tex="\(z\in O_{K,S}\)">\(z\in O_{K,S}\)</span>
+one can effectively find <span class="math" data-tex="\(\eta\in U_S\)">\(\eta\in U_S\)</span> such that
+<span class="math math-display" data-tex="\[
+h(\eta z)\le \frac{\log N_S(z)}d+R .
+\tag{14.20}
+\]">\[
+h(\eta z)\le \frac{\log N_S(z)}d+R .
+\tag{14.20}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a\)">\(a\)</span> be the vector all of whose <span class="math" data-tex="\(s\)">\(s\)</span> coordinates
+equal <span class="math" data-tex="\((\log N_S(z))/s\)">\((\log N_S(z))/s\)</span>. Its coordinates are nonnegative.
+The vector <span class="math" data-tex="\(\lambda_S(z)-a\)">\(\lambda_S(z)-a\)</span> has sum zero, so it is a real
+linear combination of the <span class="math" data-tex="\(\lambda_S(g_i)\)">\(\lambda_S(g_i)\)</span>.
+Round the negatives of its coefficients to nearest integers.
+Multiplying by the corresponding <span class="math" data-tex="\(S\)">\(S\)</span>-unit gives
+<span class="math math-display" data-tex="\[
+\lambda_S(\eta z)=a+\sum_i c_i\lambda_S(g_i),
+\qquad |c_i|\le\tfrac12.
+\tag{14.21}
+\]">\[
+\lambda_S(\eta z)=a+\sum_i c_i\lambda_S(g_i),
+\qquad |c_i|\le\tfrac12.
+\tag{14.21}
+\]</span>
+Outside <span class="math" data-tex="\(S\)">\(S\)</span>, the element <span class="math" data-tex="\(\eta z\)">\(\eta z\)</span> remains integral and
+contributes no positive logarithm to height. The proof of
+Lemma 13.1, with (14.3), now gives the stronger bound
+<span class="math math-display" data-tex="\[
+h(\eta z)\le\frac{\log N_S(z)}d
+                    +\frac12\sum_i h(g_i).
+\tag{14.22}
+\]">\[
+h(\eta z)\le\frac{\log N_S(z)}d
+                    +\frac12\sum_i h(g_i).
+\tag{14.22}
+\]</span>
+For effectivity enumerate products of the computed generators
+and roots of unity. At each finite stage use certified intervals
+for the heights and logarithms, with precision tending to infinity.
+The strict margin between (14.22) and (14.20) ensures that some
+candidate is eventually certified and the search stops.
+For <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, the hyperplane is zero-dimensional and <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>
+already works. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-primitive-thuemahler-equations">5. Primitive Thue–Mahler equations</h2>
+<p><strong>Theorem 14.5.</strong> Fix an integral homogeneous form
+<span class="math math-display" data-tex="\[
+F(X,Y)=a\prod_{j=1}^n(X-\theta_jY),\qquad a\ne0,\quad n\ge3,
+\tag{14.23}
+\]">\[
+F(X,Y)=a\prod_{j=1}^n(X-\theta_jY),\qquad a\ne0,\quad n\ge3,
+\tag{14.23}
+\]</span>
+with at least three distinct roots, and fix distinct rational
+primes <span class="math" data-tex="\(q_1,\ldots,q_t\)">\(q_1,\ldots,q_t\)</span>. There is a computable integer
+<span class="math" data-tex="\(C_{F,Q}\ge1\)">\(C_{F,Q}\ge1\)</span> such that every solution of
+<span class="math math-display" data-tex="\[
+F(x,y)=m\prod_{i=1}^tq_i^{z_i},\qquad
+x,y,m\in\mathbb Z,\quad m\ne0,\quad
+\gcd(x,y)=1,\quad z_i\in\mathbb Z_{\ge0},
+\tag{14.24}
+\]">\[
+F(x,y)=m\prod_{i=1}^tq_i^{z_i},\qquad
+x,y,m\in\mathbb Z,\quad m\ne0,\quad
+\gcd(x,y)=1,\quad z_i\in\mathbb Z_{\ge0},
+\tag{14.24}
+\]</span>
+satisfies
+<span class="math math-display" data-tex="\[
+\max\{|x|,|y|\}\le(2|m|)^{C_{F,Q}}.
+\tag{14.25}
+\]">\[
+\max\{|x|,|y|\}\le(2|m|)^{C_{F,Q}}.
+\tag{14.25}
+\]</span>
+For each fixed <span class="math" data-tex="\(m\)">\(m\)</span>, all solutions, including their exponents,
+can therefore be found effectively.</p>
+<p><strong>Proof.</strong> Work in a fixed splitting field <span class="math" data-tex="\(L\)">\(L\)</span>, of degree <span class="math" data-tex="\(D\)">\(D\)</span>.
+Let <span class="math" data-tex="\(S\)">\(S\)</span> consist of its infinite places and the prime ideals
+above the <span class="math" data-tex="\(q_i\)">\(q_i\)</span>. In particular <span class="math" data-tex="\(S\)">\(S\)</span> is independent of <span class="math" data-tex="\(m\)">\(m\)</span>.
+Choose integers <span class="math" data-tex="\(M,P,U\ge1\)">\(M,P,U\ge1\)</span> with
+<span class="math" data-tex="\(M\theta_j\in O_L,\ h(a)\le P,\ h(\theta_j)\le U\)">\(M\theta_j\in O_L,\ h(a)\le P,\ h(\theta_j)\le U\)</span>.
+Choose <span class="math" data-tex="\(R\)">\(R\)</span> for Lemma 14.4 in <span class="math" data-tex="\(L,S\)">\(L,S\)</span>, and let <span class="math" data-tex="\(G=C_S\)">\(G=C_S\)</span>
+be Theorem 14.3's constant for this same field and set.
+For <span class="math" data-tex="\(H=\max\{h(m),1\}\)">\(H=\max\{h(m),1\}\)</span>, put
+<span class="math math-display" data-tex="\[
+T=1+nM+P+R,\qquad W=4U+2+2T,\qquad Z=2T+GW.
+\tag{14.26}
+\]">\[
+T=1+nM+P+R,\qquad W=4U+2+2T,\qquad Z=2T+GW.
+\tag{14.26}
+\]</span></p>
+<p>The nonzero factors <span class="math" data-tex="\(z_j=M(x-\theta_jy)\)">\(z_j=M(x-\theta_jy)\)</span> are algebraic integers.
+Their outside norms are positive integers whose product is
+<span class="math" data-tex="\(N_S(M^nm/a)\)">\(N_S(M^nm/a)\)</span>, since each <span class="math" data-tex="\(q_i\)">\(q_i\)</span> is an <span class="math" data-tex="\(S\)">\(S\)</span>-unit.
+It follows from (14.2) that
+<span class="math math-display" data-tex="\[
+\frac{\log N_S(z_j)}D
+\le h(m)+n\log M+h(a).
+\tag{14.27}
+\]">\[
+\frac{\log N_S(z_j)}D
+\le h(m)+n\log M+h(a).
+\tag{14.27}
+\]</span>
+Indeed the outside logarithms of <span class="math" data-tex="\(M^nm/a\)">\(M^nm/a\)</span> are nonpositive
+for a solution, and their negative sum is bounded by
+<span class="math" data-tex="\(D h(M^nm/a)\)">\(D h(M^nm/a)\)</span>. This argument removes the unknown powers
+without introducing any prime factor of <span class="math" data-tex="\(m\)">\(m\)</span> into <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Lemma 14.4 writes <span class="math" data-tex="\(z_j=\gamma_j\eta_j\)">\(z_j=\gamma_j\eta_j\)</span> with
+<span class="math" data-tex="\(\eta_j\in U_S\)">\(\eta_j\in U_S\)</span> and <span class="math" data-tex="\(h(\gamma_j)\le TH\)">\(h(\gamma_j)\le TH\)</span>.
+Use three distinct roots and the identity (13.11). With exactly
+the coefficients <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> in (13.12), it gives
+<span class="math math-display" data-tex="\[
+\alpha(\eta_1/\eta_3)+\beta(\eta_2/\eta_3)=1,\qquad
+\max\{h(\alpha),h(\beta),1\}\le WH.
+\tag{14.28}
+\]">\[
+\alpha(\eta_1/\eta_3)+\beta(\eta_2/\eta_3)=1,\qquad
+\max\{h(\alpha),h(\beta),1\}\le WH.
+\tag{14.28}
+\]</span>
+Theorem 14.3 therefore gives
+<span class="math math-display" data-tex="\[
+h(\xi_1),h(\xi_2)\le ZH,\qquad
+\xi_i=z_i/z_3\quad(i=1,2).
+\tag{14.29}
+\]">\[
+h(\xi_1),h(\xi_2)\le ZH,\qquad
+\xi_i=z_i/z_3\quad(i=1,2).
+\tag{14.29}
+\]</span>
+Here the indices <span class="math" data-tex="\(i=1,2,3\)">\(i=1,2,3\)</span> refer to the three factors, not to
+the exponents in (14.24).</p>
+<p>If <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, primitivity gives <span class="math" data-tex="\(|x|=1\)">\(|x|=1\)</span>. Otherwise
+<span class="math" data-tex="\(\xi_1-\xi_2\ne0\)">\(\xi_1-\xi_2\ne0\)</span>, and subtracting the first two factors yields
+<span class="math math-display" data-tex="\[
+\frac xy=\theta_1+
+       \frac{(\theta_2-\theta_1)\xi_1}{\xi_1-\xi_2}.
+\tag{14.30}
+\]">\[
+\frac xy=\theta_1+
+       \frac{(\theta_2-\theta_1)\xi_1}{\xi_1-\xi_2}.
+\tag{14.30}
+\]</span>
+The height product, quotient and sum inequalities give
+<span class="math math-display" data-tex="\[
+h(x/y)\le(3Z+3U+3)H.
+\tag{14.31}
+\]">\[
+h(x/y)\le(3Z+3U+3)H.
+\tag{14.31}
+\]</span>
+For coprime integers <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, this height equals
+<span class="math" data-tex="\(\log\max\{|x|,|y|\}\)">\(\log\max\{|x|,|y|\}\)</span>. Thus
+<span class="math" data-tex="\(C_{F,Q}=2(3Z+3U+3)\)">\(C_{F,Q}=2(3Z+3U+3)\)</span> works in (14.25), using the same
+integer-height conversion as in Corollary 13.3.</p>
+<p>Enumerate the finite coordinate box. For each primitive pair,
+compute <span class="math" data-tex="\(F(x,y)/m\)">\(F(x,y)/m\)</span> exactly. Accept it only if it is a positive
+integer all of whose prime factors belong to the prescribed set.
+The <span class="math" data-tex="\(q_i\)">\(q_i\)</span>-valuations then give the unique nonnegative exponents.
+This completes the bound and the finite algorithm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Primitivity is necessary. If <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> and one solution exists,
+then multiplying both coordinates by <span class="math" data-tex="\(q_1^k\)">\(q_1^k\)</span> multiplies <span class="math" data-tex="\(F\)">\(F\)</span>
+by <span class="math" data-tex="\(q_1^{nk}\)">\(q_1^{nk}\)</span>; the resulting solutions need not be bounded.
+For example <span class="math" data-tex="\(X^3-2Y^3=2^{3k}\)">\(X^3-2Y^3=2^{3k}\)</span> has <span class="math" data-tex="\((x,y)=(2^k,0)\)">\((x,y)=(2^k,0)\)</span>.
+The theorem also needs three distinct factors; the Pell example
+in Lesson 13 already disproves an unrestricted two-factor version.</p>
+<p>The fixed-right-side equation <span class="math" data-tex="\(F(x,y)=m\)">\(F(x,y)=m\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>-integers is
+different. There the ratio bound can be combined with the
+homogeneity argument (13.14)–(13.17) to control the common scale.
+For (14.24), primitivity controls that scale instead.</p>
+<h2 id="6-a-fully-explicit-bound-over-the-rationals">6. A fully explicit bound over the rationals</h2>
+<p>Take <span class="math" data-tex="\(K=\mathbb Q\)">\(K=\mathbb Q\)</span> and <span class="math" data-tex="\(S=\{\infty,2,3\}\)">\(S=\{\infty,2,3\}\)</span>. Unique factorization
+of rational integers gives
+<span class="math math-display" data-tex="\[
+U_S=\{\pm2^a3^b:a,b\in\mathbb Z\}.
+\tag{14.32}
+\]">\[
+U_S=\{\pm2^a3^b:a,b\in\mathbb Z\}.
+\tag{14.32}
+\]</span>
+For <span class="math" data-tex="\(\gamma=\pm2^a3^b\)">\(\gamma=\pm2^a3^b\)</span>, reduced numerator and denominator show
+<span class="math math-display" data-tex="\[
+|a|\log2,\ |b|\log3\le h(\gamma)
+ \le(|a|+|b|)\log3.
+\]">\[
+|a|\log2,\ |b|\log3\le h(\gamma)
+ \le(|a|+|b|)\log3.
+\]</span>
+More usefully for (14.4), we may use
+<span class="math math-display" data-tex="\[
+L_\Gamma=2,\qquad V_\Gamma=2,
+\tag{14.33}
+\]">\[
+L_\Gamma=2,\qquad V_\Gamma=2,
+\tag{14.33}
+\]</span>
+because <span class="math" data-tex="\(\log2&gt;1/2\)">\(\log2&gt;1/2\)</span> and <span class="math" data-tex="\(\log2+\log3=\log6&lt;2\)">\(\log2+\log3=\log6&lt;2\)</span>.</p>
+<p><strong>Corollary 14.6.</strong> If <span class="math" data-tex="\(\alpha,\beta\in\mathbb Q^\times\)">\(\alpha,\beta\in\mathbb Q^\times\)</span> and
+<span class="math" data-tex="\(x,y\in U_S\)">\(x,y\in U_S\)</span> satisfy <span class="math" data-tex="\(\alpha x+\beta y=1\)">\(\alpha x+\beta y=1\)</span>, then
+<span class="math math-display" data-tex="\[
+\max\{h(x),h(y)\}\le
+10^{178}\max\{h(\alpha),h(\beta),1\}.
+\tag{14.34}
+\]">\[
+\max\{h(x),h(y)\}\le
+10^{178}\max\{h(\alpha),h(\beta),1\}.
+\tag{14.34}
+\]</span>
+For <span class="math" data-tex="\(\alpha=\beta=1\)">\(\alpha=\beta=1\)</span>, both exponents of each unknown in (14.32)
+have absolute value at most <span class="math" data-tex="\(2\cdot10^{178}\)">\(2\cdot10^{178}\)</span>.</p>
+<p><strong>Proof.</strong> In Theorem 14.3 use <span class="math" data-tex="\(d=1,s=3,\epsilon=1/6\)">\(d=1,s=3,\epsilon=1/6\)</span>.
+We bound the three local constants explicitly.</p>
+<p>At infinity, Theorem 12.9 uses Corollary 12.3 with two fixed
+bases <span class="math" data-tex="\(2,3\)">\(2,3\)</span> and <span class="math" data-tex="\(\delta=\epsilon/(2L_\Gamma)=1/24\)">\(\delta=\epsilon/(2L_\Gamma)=1/24\)</span>.
+Its parameter denoted <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in (12.16) is <span class="math" data-tex="\(1/192\)">\(1/192\)</span>.
+The other quantities there satisfy
+<span class="math math-display" data-tex="\[
+S_0=\log6+3\pi+3&lt;17,\qquad
+C_0=64800S_0(2S_0+1)&lt;4\cdot10^7.
+\tag{14.35}
+\]">\[
+S_0=\log6+3\pi+3&lt;17,\qquad
+C_0=64800S_0(2S_0+1)&lt;4\cdot10^7.
+\tag{14.35}
+\]</span>
+These are the quantities called <span class="math" data-tex="\(S,C\)">\(S,C\)</span> in (12.16).
+Since <span class="math" data-tex="\(200\cdot192\cdot4\cdot10^7&lt;2\cdot10^{12}\)">\(200\cdot192\cdot4\cdot10^7&lt;2\cdot10^{12}\)</span>,
+we may take <span class="math" data-tex="\(q=10^{25}\)">\(q=10^{25}\)</span> in that proof. It only requires
+an integer at least the displayed threshold, so this larger
+integer is admissible. The final exponent constant of Corollary
+12.3 is at most
+<span class="math math-display" data-tex="\[
+48+24q^7.
+\tag{14.36}
+\]">\[
+48+24q^7.
+\tag{14.36}
+\]</span>
+Indeed <span class="math" data-tex="\(2/\delta=48\)">\(2/\delta=48\)</span> and <span class="math" data-tex="\(4(1+\pi+1)&lt;24\)">\(4(1+\pi+1)&lt;24\)</span>.
+The constant of Theorem 12.9 is therefore at most
+<span class="math" data-tex="\(1+2(48+24q^7)\)">\(1+2(48+24q^7)\)</span>, and (14.8) gives
+<span class="math math-display" data-tex="\[
+K_\infty\le99+48q^7&lt;10^{177}.
+\tag{14.37}
+\]">\[
+K_\infty\le99+48q^7&lt;10^{177}.
+\tag{14.37}
+\]</span></p>
+<p>At either finite prime <span class="math" data-tex="\(p=2,3\)">\(p=2,3\)</span>, use <span class="math" data-tex="\(n=3\)">\(n=3\)</span>,
+<span class="math" data-tex="\(w_1=1,w_2=2\)">\(w_1=1,w_2=2\)</span>, so <span class="math" data-tex="\(W=2\)">\(W=2\)</span>, and use <span class="math" data-tex="\(B_n=1\)">\(B_n=1\)</span>.
+In (10.1086) the degree, ramification index and residue degree
+are one. The elementary inequalities
+<span class="math math-display" data-tex="\[
+\mathrm e&lt;3,\quad
+\tfrac12&lt;\log2&lt;1,\quad 1&lt;\log3&lt;2,\quad
+\log6&lt;2,\quad\log10&lt;\tfrac52
+\]">\[
+\mathrm e&lt;3,\quad
+\tfrac12&lt;\log2&lt;1,\quad 1&lt;\log3&lt;2,\quad
+\log6&lt;2,\quad\log10&lt;\tfrac52
+\]</span>
+give
+<span class="math math-display" data-tex="\[
+T=\mathcal A_3\log p&lt;10^{17},\qquad
+c_3=2^7\log2\,(\log3)^3&gt;64,\qquad
+\log c_4=\log(2\log2)+92&lt;93.
+\tag{14.38}
+\]">\[
+T=\mathcal A_3\log p&lt;10^{17},\qquad
+c_3=2^7\log2\,(\log3)^3&gt;64,\qquad
+\log c_4=\log(2\log2)+92&lt;93.
+\tag{14.38}
+\]</span>
+For example
+<span class="math" data-tex="\(\mathcal A_3&lt;50^8\cdot6\cdot2\cdot12\)">\(\mathcal A_3&lt;50^8\cdot6\cdot2\cdot12\)</span> and
+<span class="math" data-tex="\(\log p&lt;2\)">\(\log p&lt;2\)</span>, which prove the first inequality.
+Choose the fixed rational parameter <span class="math" data-tex="\(\tau=10^{-20}\)">\(\tau=10^{-20}\)</span>.
+Then
+<span class="math math-display" data-tex="\[
+\frac{T\tau L_\Gamma}{c_3}
+ &lt;\frac1{32000}&lt;\frac16,\qquad
+J=\log(c_4p^4W/\tau)&lt;93+8+1+50=152.
+\tag{14.39}
+\]">\[
+\frac{T\tau L_\Gamma}{c_3}
+ &lt;\frac1{32000}&lt;\frac16,\qquad
+J=\log(c_4p^4W/\tau)&lt;93+8+1+50=152.
+\tag{14.39}
+\]</span>
+Thus (14.12) permits
+<span class="math math-display" data-tex="\[
+K_p&lt;10^{17}\left(2\cdot152+\frac{10^{-20}}{64}\right)
+ &lt;10^{20}.
+\tag{14.40}
+\]">\[
+K_p&lt;10^{17}\left(2\cdot152+\frac{10^{-20}}{64}\right)
+ &lt;10^{20}.
+\tag{14.40}
+\]</span>
+All these numerical comparisons can be certified by the positive
+exponential series and the series for
+<span class="math" data-tex="\(\log2=2\sum_{k\ge0}(1/3)^{2k+1}/(2k+1)\)">\(\log2=2\sum_{k\ge0}(1/3)^{2k+1}/(2k+1)\)</span>.
+For <span class="math" data-tex="\(\pi&lt;4\)">\(\pi&lt;4\)</span>, one may use
+<span class="math" data-tex="\(\pi=4\int_0^1(1+t^2)^{-1}\,dt&lt;4\)">\(\pi=4\int_0^1(1+t^2)^{-1}\,dt&lt;4\)</span>.</p>
+<p>We may therefore use <span class="math" data-tex="\(K_0=10^{177}\)">\(K_0=10^{177}\)</span> in (14.18). Its last
+coefficient is <span class="math" data-tex="\(12+6\cdot10^{177}&lt;10^{178}\)">\(12+6\cdot10^{177}&lt;10^{178}\)</span>, proving (14.34).
+The exponent assertion follows from (14.33). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The size of this bound reflects the generous constants in the
+proved many-to-two estimate. It is a finite starting box. The
+elementary argument below determines the actual solution set
+without traversing that box.</p>
+<h2 id="7-all-solutions-supported-on-two-primes">7. All solutions supported on two primes</h2>
+<p><strong>Proposition 14.7.</strong> Up to interchanging <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, the coprime
+positive integers <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>, all of whose prime factors are
+among <span class="math" data-tex="\(2,3\)">\(2,3\)</span>, satisfying <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span>, are exactly
+<span class="math math-display" data-tex="\[
+1+1=2,\qquad 1+2=3,\qquad 1+3=4,\qquad 1+8=9.
+\tag{14.41}
+\]">\[
+1+1=2,\qquad 1+2=3,\qquad 1+3=4,\qquad 1+8=9.
+\tag{14.41}
+\]</span>
+The integer <span class="math" data-tex="\(1\)">\(1\)</span>, with no prime factors, is allowed.</p>
+<p><strong>Proof.</strong> From <span class="math" data-tex="\(\gcd(a,b)=1\)">\(\gcd(a,b)=1\)</span> and <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span> it follows that
+all three pairs are coprime. A prime can therefore divide at
+most one of <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>. Since there are only two permitted primes,
+one of the three integers must equal one. It cannot be <span class="math" data-tex="\(c\)">\(c\)</span>.
+Interchange <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to arrange <span class="math" data-tex="\(a=1\)">\(a=1\)</span>.</p>
+<p>If <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, we have <span class="math" data-tex="\(c=2\)">\(c=2\)</span>. Otherwise both <span class="math" data-tex="\(b,c&gt;1\)">\(b,c&gt;1\)</span>; their
+nonempty prime supports are disjoint, so one is a positive
+power of two and the other a positive power of three.
+We must solve the following two equations.</p>
+<p>If <span class="math" data-tex="\(2^u+1=3^v\)">\(2^u+1=3^v\)</span>, with <span class="math" data-tex="\(u,v\ge1\)">\(u,v\ge1\)</span>, then <span class="math" data-tex="\(u=1\)">\(u=1\)</span> gives
+<span class="math" data-tex="\(v=1\)">\(v=1\)</span>. For <span class="math" data-tex="\(u\ge2\)">\(u\ge2\)</span>, reduction modulo four makes <span class="math" data-tex="\(v\)">\(v\)</span>
+even, say <span class="math" data-tex="\(v=2k\)">\(v=2k\)</span>. Hence
+<span class="math math-display" data-tex="\[
+(3^k-1)(3^k+1)=2^u.
+\tag{14.42}
+\]">\[
+(3^k-1)(3^k+1)=2^u.
+\tag{14.42}
+\]</span>
+The two positive even factors are powers of two and differ
+by two. If they are <span class="math" data-tex="\(2^r,2^t\)">\(2^r,2^t\)</span>, with <span class="math" data-tex="\(1\le r&lt;t\)">\(1\le r&lt;t\)</span>, then
+<span class="math" data-tex="\(2^r(2^{t-r}-1)=2\)">\(2^r(2^{t-r}-1)=2\)</span>, forcing <span class="math" data-tex="\(r=1,t=2\)">\(r=1,t=2\)</span>.
+Thus <span class="math" data-tex="\(3^k=3\)">\(3^k=3\)</span>, <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, and <span class="math" data-tex="\(u=3\)">\(u=3\)</span>.</p>
+<p>If <span class="math" data-tex="\(3^v+1=2^u\)">\(3^v+1=2^u\)</span>, then <span class="math" data-tex="\(u\ge2\)">\(u\ge2\)</span>.
+For even <span class="math" data-tex="\(v\)">\(v\)</span>, reduction modulo eight gives <span class="math" data-tex="\(2^u\equiv2\)">\(2^u\equiv2\)</span>,
+which is impossible. For odd <span class="math" data-tex="\(v\)">\(v\)</span> it gives <span class="math" data-tex="\(2^u\equiv4\)">\(2^u\equiv4\)</span>,
+so <span class="math" data-tex="\(u=2\)">\(u=2\)</span>, then <span class="math" data-tex="\(v=1\)">\(v=1\)</span>.
+These possibilities yield precisely (14.41), and direct
+substitution verifies all four. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 14.8.</strong> There are exactly <span class="math" data-tex="\(21\)">\(21\)</span> ordered pairs
+<span class="math" data-tex="\((x,y)\in U_S^2\)">\((x,y)\in U_S^2\)</span> satisfying <span class="math" data-tex="\(x+y=1\)">\(x+y=1\)</span>, for
+<span class="math" data-tex="\(S=\{\infty,2,3\}\)">\(S=\{\infty,2,3\}\)</span>. They are <span class="math" data-tex="\((x,1-x)\)">\((x,1-x)\)</span> for the following
+values of <span class="math" data-tex="\(x\)">\(x\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Positive primitive triple</th>
+<th>Possible values of <span class="math" data-tex="\(x\)">\(x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(1+1=2\)">\(1+1=2\)</span></td>
+<td><span class="math" data-tex="\(1/2,\ 2,\ -1\)">\(1/2,\ 2,\ -1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(1+2=3\)">\(1+2=3\)</span></td>
+<td><span class="math" data-tex="\(1/3,\ 2/3,\ 3,\ 3/2,\ -1/2,\ -2\)">\(1/3,\ 2/3,\ 3,\ 3/2,\ -1/2,\ -2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(1+3=4\)">\(1+3=4\)</span></td>
+<td><span class="math" data-tex="\(1/4,\ 3/4,\ 4,\ 4/3,\ -1/3,\ -3\)">\(1/4,\ 3/4,\ 4,\ 4/3,\ -1/3,\ -3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(1+8=9\)">\(1+8=9\)</span></td>
+<td><span class="math" data-tex="\(1/9,\ 8/9,\ 9,\ 9/8,\ -1/8,\ -8\)">\(1/9,\ 8/9,\ 9,\ 9/8,\ -1/8,\ -8\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(x=a/c,y=b/c\)">\(x=a/c,y=b/c\)</span> with integers <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>,
+<span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and <span class="math" data-tex="\(\gcd(a,b,c)=1\)">\(\gcd(a,b,c)=1\)</span>. One may choose a common
+denominator supported on <span class="math" data-tex="\(2,3\)">\(2,3\)</span>; all three numerators and
+denominators after cancellation are also supported on <span class="math" data-tex="\(2,3\)">\(2,3\)</span>.
+The equation <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span> makes the three integers pairwise coprime.
+They are nonzero, and at most one of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is negative.
+If one is negative, move it to the other side. Thus the three
+absolute values form one of the four primitive positive triples.</p>
+<p>For a positive triple with <span class="math" data-tex="\(t=a/c\)">\(t=a/c\)</span>, the possible first
+coordinates after rearranging and normalizing are
+<span class="math math-display" data-tex="\[
+t,\quad1-t,\quad\frac1t,\quad\frac1{1-t},\quad
+\frac{t}{t-1},\quad\frac{t-1}{t}.
+\tag{14.43}
+\]">\[
+t,\quad1-t,\quad\frac1t,\quad\frac1{1-t},\quad
+\frac{t}{t-1},\quad\frac{t-1}{t}.
+\tag{14.43}
+\]</span>
+Every displayed transformation gives another solution, as direct
+substitution shows. For <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span> there are three distinct values;
+the other three rows each have six. Comparing the reduced fractions
+shows that the four rows are disjoint. This proves both exhaustiveness
+and the count <span class="math" data-tex="\(3+6+6+6=21\)">\(3+6+6+6=21\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every coordinate in this list has height at most <span class="math" data-tex="\(\log9\)">\(\log9\)</span>.
+The largest absolute exponent of two is three, and that of
+three is two. These bounds follow from the complete elementary
+classification, not from an unbounded experimental search.</p>
+<p>For the logarithmic geometry, put <span class="math" data-tex="\(u=a\log2,v=b\log3\)">\(u=a\log2,v=b\log3\)</span>.
+Equation (14.3) gives
+<span class="math math-display" data-tex="\[
+h(\pm2^a3^b)=\frac{|u+v|+|u|+|v|}{2}
+           =\max\{|u|,|v|,|u+v|\}.
+\]">\[
+h(\pm2^a3^b)=\frac{|u+v|+|u|+|v|}{2}
+           =\max\{|u|,|v|,|u+v|\}.
+\]</span>
+The last equality follows by separating equal signs of <span class="math" data-tex="\(u,v\)">\(u,v\)</span>,
+when the maximum is <span class="math" data-tex="\(|u+v|\)">\(|u+v|\)</span>, from opposite signs, when it
+is <span class="math" data-tex="\(\max\{|u|,|v|\}\)">\(\max\{|u|,|v|\}\)</span>. Thus a bounded-height region is a hexagon
+in these two logarithmic coordinates.</p>
+<p><img src="figures/sunit-place-geometry.png" alt="S-unit height and the place where its logarithm is smallest" class="course-figure" width="2046" height="825" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="sunit-place-geometry" data-asset-sha256="FDEDF8D9C447174C8C78F28398F2831E845E73AECF0F9CBC8BB66525F45B28FF"></p>
+<p><em>Figure 14.1. Left: the region <span class="math" data-tex="\(h(x)\le\log9\)">\(h(x)\le\log9\)</span> and the lattice
+<span class="math" data-tex="\((a\log2,b\log3)\)">\((a\log2,b\log3)\)</span>, with three solutions' first coordinates marked.
+The lattice points describe <span class="math" data-tex="\(S\)">\(S\)</span>-units, not an asserted list of
+solutions. Right: their local logarithms from (14.1). For
+<span class="math" data-tex="\(x=8/9,9/8,1/9\)">\(x=8/9,9/8,1/9\)</span>, the smallest logarithm occurs at <span class="math" data-tex="\(2,3,\infty\)">\(2,3,\infty\)</span>,
+respectively. Every marked point has height <span class="math" data-tex="\(\log9\)">\(\log9\)</span>, and each
+has a logarithm below the dotted level <span class="math" data-tex="\(-h(x)/3\)">\(-h(x)/3\)</span>, as (14.15)
+requires.</em></p>
+<h2 id="8-finiteness-for-more-terms-and-the-role-of-degeneracy">8. Finiteness for more terms and the role of degeneracy</h2>
+<p>For fixed nonzero coefficients <span class="math" data-tex="\(a_i\in K\)">\(a_i\in K\)</span>, a solution of
+<span class="math math-display" data-tex="\[
+a_1u_1+\cdots+a_nu_n=1,\qquad u_i\in U_S
+\tag{14.44}
+\]">\[
+a_1u_1+\cdots+a_nu_n=1,\qquad u_i\in U_S
+\tag{14.44}
+\]</span>
+is <strong>nondegenerate</strong> if no nonempty subsum on its left is zero.
+Equivalently the homogeneous equation with the additional term
+<span class="math" data-tex="\(-1\)">\(-1\)</span> has no vanishing nonempty proper subsum.</p>
+<p>The complete programme proof in <em>Rational approximation III</em>,
+Corollary 12.17, shows that (14.44) has only finitely many
+nondegenerate solutions. Its input is the projective Subspace
+theorem proved there as Theorem 12.13. To see the mechanism,
+enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to absorb the fixed coefficients and put
+<span class="math" data-tex="\(x_i=a_iu_i\)">\(x_i=a_iu_i\)</span>. At each place select a largest coordinate and
+use the coordinate forms except that coordinate, together with
+<span class="math" data-tex="\(X_1+\cdots+X_n\)">\(X_1+\cdots+X_n\)</span>. The product formula turns the corresponding
+Subspace-theorem expression into <span class="math" data-tex="\(H([x])^{-n-1}\)">\(H([x])^{-n-1}\)</span>.
+The theorem puts large-height solutions into finitely many
+hyperplanes. On each one, a minimal vanishing subsum fixes
+finitely many ratios by induction; collapsing that subsum gives
+an equation with fewer terms. Nondegeneracy ensures that the
+collapsed coefficient is nonzero. The cited programme proof
+supplies the full induction and the bounded-height step.</p>
+<p>The condition cannot be dropped. In the group generated by
+<span class="math" data-tex="\(-1,2\)">\(-1,2\)</span>, every
+<span class="math math-display" data-tex="\[
+(u_1,u_2,u_3)=(2^k,-2^k,1),\qquad k\ge0,
+\tag{14.45}
+\]">\[
+(u_1,u_2,u_3)=(2^k,-2^k,1),\qquad k\ge0,
+\tag{14.45}
+\]</span>
+satisfies <span class="math" data-tex="\(u_1+u_2+u_3=1\)">\(u_1+u_2+u_3=1\)</span>, and the first two terms cancel.
+Thus even a simple three-unknown equation can have infinitely
+many degenerate solutions.</p>
+<p>The Subspace-theorem argument gives no height bound for its
+exceptional solutions. The two-term proof above does: a small
+term is the difference between one and a single multiplicative
+product, to which a logarithmic estimate applies. With more
+terms, the complementary sum need not be such a product.
+This identifies the obstruction in this proof, rather than
+asserting that effective results are impossible.</p>
+<p>There are effective results for some longer equations under
+additional hypotheses. For example the free paper of
+<a href="https://arxiv.org/abs/2308.05162">Bajpai and Bennett, <em>Effective S-unit Equations Beyond 3 Terms:
+Newman's Conjecture</em></a>,
+Introduction and Theorem 1, treats nondegenerate projective solutions of five-term homogeneous
+equations when the set has at most three places. This is a literature comparison, not an
+input to any proof here. A blanket statement that every equation
+with more than two unknowns has only ineffective results would
+therefore be incorrect.</p>
+<p>Mahler's original article is freely available as
+<a href="https://carmamaths.org/resources/mahler/docs/017.pdf"><em>Zur Approximation algebraischer Zahlen I. Über den grössten
+Primteiler binärer Formen</em></a>,
+<em>Mathematische Annalen</em> 107 (1933), 691–730. Its opening pages
+introduce simultaneous real and <span class="math" data-tex="\(p\)">\(p\)</span>-adic approximation and
+the binary-form consequence. The modern programme proof of the
+classical Thue–Mahler finiteness statement is in <em>Rational
+approximation III</em>, Corollary 12.18 and the following paragraph.
+Evertse's free <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-8.pdf">Chapter 8 notes</a>,
+Theorems 8.10 and 8.13, explain the distinction between that
+finiteness argument and a height bound from logarithms.
+Theorem 14.5 supplies the latter with a fixed allowed-prime set.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>1. (Easy: the two-prime classification.)</strong>
+Prove (14.41) by elementary congruences and factorization.
+Explain why coprimality forces one summand to be one, and
+why the rational <span class="math" data-tex="\(S\)">\(S\)</span>-unit equation has <span class="math" data-tex="\(21\)">\(21\)</span>, rather than
+four, ordered solutions.</p>
+<p><strong>2. (Medium: an explicit search box.)</strong>
+Starting from (12.16) and (10.1086), verify the bound
+<span class="math" data-tex="\(10^{178}H\)">\(10^{178}H\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> for <span class="math" data-tex="\(S=\{\infty,2,3\}\)">\(S=\{\infty,2,3\}\)</span>.
+Give exponent limits, including negative exponents and signs.
+For <span class="math" data-tex="\(x+y=1\)">\(x+y=1\)</span>, compare them with the complete list.</p>
+<p><strong>3. (Medium: degenerate solutions.)</strong>
+Define nondegeneracy for (14.44) and for its homogeneous form.
+For every <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, construct an equation
+<span class="math" data-tex="\(u_1+\cdots+u_n=1\)">\(u_1+\cdots+u_n=1\)</span> in the group generated by <span class="math" data-tex="\(-1,2\)">\(-1,2\)</span>
+with infinitely many degenerate solutions, all coordinates nonzero.</p>
+<p><strong>4. (Hard: finiteness without a numerical bound.)</strong>
+Assume only the finiteness theorem for the two-term <span class="math" data-tex="\(S\)">\(S\)</span>-unit
+equation. Deduce finiteness of primitive Thue–Mahler solutions
+for fixed <span class="math" data-tex="\(m\)">\(m\)</span>. Identify where primitivity is used, and explain
+why this argument by itself does not compute the last solution.</p>
+<p><strong>5. (Medium: the finite-place parameter.)</strong>
+In (14.9)–(14.12), verify every weight, coefficient and
+nonvanishing condition of Theorem 10.246. Explain why neither
+a zero exponent nor a generator that is a nonunit at
+<span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> invalidates the argument.</p>
+<p><strong>6. (Hard: keeping the prime set fixed.)</strong>
+Prove (14.27) without assuming that <span class="math" data-tex="\(m/a\)">\(m/a\)</span> is integral or
+enlarging <span class="math" data-tex="\(S\)">\(S\)</span> by the prime factors of <span class="math" data-tex="\(m\)">\(m\)</span>. Derive (14.31)
+from the two ratio heights, allowing <span class="math" data-tex="\(x=0\)">\(x=0\)</span> or <span class="math" data-tex="\(y=0\)">\(y=0\)</span>.</p>
+<h2 id="10-solutions">10. Solutions</h2>
+<p><strong>1.</strong> If <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span> and <span class="math" data-tex="\(\gcd(a,b)=1\)">\(\gcd(a,b)=1\)</span>, a common divisor of
+any other pair also divides the remaining member, so all pairs
+are coprime. Three integers greater than one would require three
+disjoint nonempty prime supports, but only two primes are available.
+Thus one summand is one. If both are one the triple is <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span>;
+otherwise the other two integers are powers of different primes.</p>
+<p>For <span class="math" data-tex="\(2^u+1=3^v\)">\(2^u+1=3^v\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span> gives <span class="math" data-tex="\((u,v)=(1,1)\)">\((u,v)=(1,1)\)</span>.
+For <span class="math" data-tex="\(u\ge2\)">\(u\ge2\)</span>, reduction modulo four gives <span class="math" data-tex="\(v=2k\)">\(v=2k\)</span>.
+The two factors in (14.42) differ by two, so the argument
+<span class="math" data-tex="\(2^r(2^{t-r}-1)=2\)">\(2^r(2^{t-r}-1)=2\)</span> forces them to be two and four;
+this gives <span class="math" data-tex="\((u,v)=(3,2)\)">\((u,v)=(3,2)\)</span>.
+For <span class="math" data-tex="\(3^v+1=2^u\)">\(3^v+1=2^u\)</span>, reduction modulo three makes <span class="math" data-tex="\(u\)">\(u\)</span>
+even, say <span class="math" data-tex="\(u=2j\)">\(u=2j\)</span>. The odd factors
+<span class="math" data-tex="\((2^j-1)(2^j+1)=3^v\)">\((2^j-1)(2^j+1)=3^v\)</span> have greatest common divisor one,
+so the smaller must be one; hence <span class="math" data-tex="\(j=1,v=1\)">\(j=1,v=1\)</span>.
+This is an alternative to the modulo-eight argument in the proof.
+The four triples follow.
+Common-denominator normalization and the six transformations
+(14.43) give all signed rational solutions. The symmetric
+triple <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span> contributes three rather than six;
+the other three contribute six each, for a total of <span class="math" data-tex="\(21\)">\(21\)</span>.</p>
+<p><strong>2.</strong> For the archimedean estimate use
+<span class="math" data-tex="\(L_\Gamma=V_\Gamma=2,\delta=1/24,\varepsilon=1/192\)">\(L_\Gamma=V_\Gamma=2,\delta=1/24,\varepsilon=1/192\)</span>.
+The bounds <span class="math" data-tex="\(S_0&lt;17,C_0&lt;4\cdot10^7\)">\(S_0&lt;17,C_0&lt;4\cdot10^7\)</span> make <span class="math" data-tex="\(q=10^{25}\)">\(q=10^{25}\)</span>
+admissible. The local constant is at most <span class="math" data-tex="\(99+48q^7\)">\(99+48q^7\)</span>,
+less than <span class="math" data-tex="\(10^{177}\)">\(10^{177}\)</span>.
+At <span class="math" data-tex="\(p=2,3\)">\(p=2,3\)</span>, use <span class="math" data-tex="\(w_1=1,w_2=2,B_n=1,\tau=10^{-20}\)">\(w_1=1,w_2=2,B_n=1,\tau=10^{-20}\)</span>.
+The estimates <span class="math" data-tex="\(T&lt;10^{17},c_3&gt;64,J&lt;152\)">\(T&lt;10^{17},c_3&gt;64,J&lt;152\)</span> prove the
+absorption coefficient is less than <span class="math" data-tex="\(1/32000\)">\(1/32000\)</span> and the
+remaining local constant is less than <span class="math" data-tex="\(10^{20}\)">\(10^{20}\)</span>.
+Thus <span class="math" data-tex="\(12+6\cdot10^{177}&lt;10^{178}\)">\(12+6\cdot10^{177}&lt;10^{178}\)</span> bounds the coefficient
+in (14.18).</p>
+<p>Writing <span class="math" data-tex="\(x=\sigma2^a3^b,y=\tau_03^d2^c\)">\(x=\sigma2^a3^b,y=\tau_03^d2^c\)</span>, with
+<span class="math" data-tex="\(\sigma,\tau_0\in\{1,-1\}\)">\(\sigma,\tau_0\in\{1,-1\}\)</span>, bounds all four integer exponents
+in absolute value by <span class="math" data-tex="\(2\cdot10^{178}H\)">\(2\cdot10^{178}H\)</span>.
+Enumerate both signs and every integer in the symmetric exponent
+intervals; negative exponents are necessary for denominators.
+For <span class="math" data-tex="\(H=1\)">\(H=1\)</span>, the complete list has
+<span class="math" data-tex="\(|a|,|c|\le3,\ |b|,|d|\le2\)">\(|a|,|c|\le3,\ |b|,|d|\le2\)</span>, and height at most <span class="math" data-tex="\(\log9\)">\(\log9\)</span>.
+The smaller box is justified by Proposition 14.7 and
+Corollary 14.8, not by stopping an experimental search.</p>
+<p><strong>3.</strong> In the inhomogeneous form, require every nonempty subsum
+on the left to be nonzero. Add the term <span class="math" data-tex="\(-1\)">\(-1\)</span> for the homogeneous
+form and require every nonempty proper subsum to be nonzero.
+A vanishing subsum containing <span class="math" data-tex="\(-1\)">\(-1\)</span> is equivalent, by taking its
+complement, to a vanishing subsum on the original left.</p>
+<p>For <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, use (14.45). For <span class="math" data-tex="\(n=4\)">\(n=4\)</span>, use
+<span class="math" data-tex="\((2^k,-2^k,2,-1)\)">\((2^k,-2^k,2,-1)\)</span>. Both sum to one. Append as many pairs
+<span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> as needed to reach any larger odd or even <span class="math" data-tex="\(n\)">\(n\)</span>,
+respectively. Every entry is a nonzero <span class="math" data-tex="\(S\)">\(S\)</span>-unit, the first
+two terms always cancel, and their absolute values grow with <span class="math" data-tex="\(k\)">\(k\)</span>.
+This proves infinitude and degeneracy for every requested <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>4.</strong> Pass to a splitting field of <span class="math" data-tex="\(F\)">\(F\)</span>. For this finiteness-only
+argument, enlarge its finite set of places to include the support
+of <span class="math" data-tex="\(m\)">\(m\)</span>, of <span class="math" data-tex="\(a\)">\(a\)</span>, of a common denominator of the roots, and
+of every prescribed rational prime. Each factor
+<span class="math" data-tex="\(x-\theta_jy\)">\(x-\theta_jy\)</span> is integral outside that set. Its nonzero
+product is a unit outside the set, so each individual factor
+is an <span class="math" data-tex="\(S\)">\(S\)</span>-unit: nonnegative valuations with zero sum are zero.</p>
+<p>Three distinct factors satisfy the nonzero-coefficient identity
+(13.11). Divide by the third factor to obtain a two-term
+<span class="math" data-tex="\(S\)">\(S\)</span>-unit equation. Its finite solution set gives finitely
+many ratios of the first two factors. Formula (14.30), or
+the invertible two-by-two system of the first two linear factors,
+gives finitely many projective points <span class="math" data-tex="\((x:y)\)">\((x:y)\)</span>.
+A rational projective point has just two primitive integer
+representatives, differing by sign. This is the exact use of
+primitivity. Each representative determines at most one vector
+of prime exponents by factorization of <span class="math" data-tex="\(F(x,y)/m\)">\(F(x,y)/m\)</span>.
+Finiteness alone supplies no algorithmic bound for the unit
+ratios. The quantitative local estimates and balancing argument
+in Sections 2–5 are what provide the bound in (14.25).</p>
+<p><strong>5.</strong> The last exponent is one, so it has the least possible
+<span class="math" data-tex="\(p\)">\(p\)</span>-adic valuation among the integer exponents, namely zero.
+A zero earlier exponent has valuation <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>.
+The fixed weights exceed both the corresponding heights and
+<span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span>; the last weight <span class="math" data-tex="\(H\)">\(H\)</span> exceeds <span class="math" data-tex="\(h(A\zeta)=h(A)\)">\(h(A\zeta)=h(A)\)</span>
+and <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span>. Also <span class="math" data-tex="\(B_n=1\le B\)">\(B_n=1\le B\)</span>, and <span class="math" data-tex="\(\tau\in(0,1/2]\)">\(\tau\in(0,1/2]\)</span>.
+The product equals <span class="math" data-tex="\(A\gamma\ne1\)">\(A\gamma\ne1\)</span>.
+Theorem 10.246 explicitly allows dependent bases and arbitrary
+original valuations, so no local-unit or independence condition
+is missing. With <span class="math" data-tex="\(B_n=1\)">\(B_n=1\)</span>, its logarithm is
+<span class="math" data-tex="\(\log(c_4N^{n+1}W/\tau)\)">\(\log(c_4N^{n+1}W/\tau)\)</span>; its only variable height factor
+is <span class="math" data-tex="\(WH\)">\(WH\)</span>. Inequality (14.11) absorbs the remaining
+coefficient term into <span class="math" data-tex="\(\epsilon h(\gamma)\)">\(\epsilon h(\gamma)\)</span>.</p>
+<p><strong>6.</strong> Every factor <span class="math" data-tex="\(z_j\)">\(z_j\)</span> is integral, so its outside norm
+is at least one. Multiplicativity and the fact that each
+allowed <span class="math" data-tex="\(q_i\)">\(q_i\)</span> has zero valuation outside <span class="math" data-tex="\(S\)">\(S\)</span> give
+<span class="math math-display" data-tex="\[
+\sum_j\log N_S(z_j)=\log N_S(M^nm/a).
+\]">\[
+\sum_j\log N_S(z_j)=\log N_S(M^nm/a).
+\]</span>
+For a solution, the valuations of <span class="math" data-tex="\(M^nm/a\)">\(M^nm/a\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>
+are nonnegative, even when it is not integral at places
+inside <span class="math" data-tex="\(S\)">\(S\)</span>. Their weighted sum is at most its full sum
+of negative logarithms, namely <span class="math" data-tex="\(D h(M^nm/a)\)">\(D h(M^nm/a)\)</span>.
+The height product inequality proves (14.27).</p>
+<p>If <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, then <span class="math" data-tex="\(\xi_1-\xi_2\ne0\)">\(\xi_1-\xi_2\ne0\)</span>.
+The quotient in (14.30) has height at most
+<span class="math math-display" data-tex="\[
+(2U+\log2)+ZH+(2ZH+\log2).
+\]">\[
+(2U+\log2)+ZH+(2ZH+\log2).
+\]</span>
+Adding <span class="math" data-tex="\(\theta_1\)">\(\theta_1\)</span> costs at most <span class="math" data-tex="\(U+\log2\)">\(U+\log2\)</span>.
+Thus the total is at most <span class="math" data-tex="\(3ZH+3U+3\log2\)">\(3ZH+3U+3\log2\)</span>, bounded by
+<span class="math" data-tex="\((3Z+3U+3)H\)">\((3Z+3U+3)H\)</span>. This remains valid if <span class="math" data-tex="\(x=0\)">\(x=0\)</span>;
+then <span class="math" data-tex="\(h(x/y)=h(0)=0\)">\(h(x/y)=h(0)=0\)</span>. If <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, the ratio is not used:
+primitivity gives <span class="math" data-tex="\(|x|=1\)">\(|x|=1\)</span>, which already satisfies the bound.</p>
+<h2 id="reproducible-checks-and-references">Reproducible checks and references</h2>
+<p>The <a href="verification/sunit-check.py">exact certificate</a> lists and
+checks all 21 displayed ordered pairs, the four primitive triples,
+and the rational numerical margins in Corollary 14.6. Additional
+finite cases test the local absorption inequality and the degenerate
+constructions. The complete proofs above establish the universal
+claims. The <a href="figure_sources/sunit-place-geometry.py">figure program</a>
+reproduces Figure 14.1.</p>
+<ul>
+<li>Yann Bugeaud and Kálmán Győry, <em>Bounds for the solutions of unit equations</em>, Acta Arithmetica 74 (1996), 67–80, theorem on p. 68 and Section 5. <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa74/aa7416.pdf">Free journal PDF</a>.</li>
+<li>Attila Bérczes, Jan-Hendrik Evertse and Kálmán Győry, <em>Effective results for linear equations in two unknowns from a multiplicative division group</em>, Section 5, Theorem B. <a href="https://math.leidenuniv.nl/reports/files/2008-16.pdf">Free author manuscript</a>.</li>
+<li>Kurt Mahler, <em>Zur Approximation algebraischer Zahlen I. Über den grössten Primteiler binärer Formen</em>, Mathematische Annalen 107 (1933), 691–730. <a href="https://carmamaths.org/resources/mahler/docs/017.pdf">Free collected-work scan</a>.</li>
+<li>Jan-Hendrik Evertse, <em>Diophantine Approximation</em>, Chapter 8, Theorems 8.10 and 8.13. <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-8.pdf">Free lecture notes</a>.</li>
+<li>Prajeet Bajpai and Michael A. Bennett, <em>Effective S-unit Equations Beyond 3 Terms: Newman's Conjecture</em>, Introduction and Theorem 1; literature comparison only. <a href="https://arxiv.org/abs/2308.05162">Free arXiv version</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-13.html">← Thue equations, effectively</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-15.html">Superelliptic, hyperelliptic and Mordell equations →</a></span></nav>
+<p class="small source-link"><a href="TR-BAKER-14.pdf" download>PDF of this lesson</a> · <a href="sources/TR-BAKER-14.tex" download>Editable LaTeX source of this lesson</a> · <span class="unlinked">Complete course source package</span> · <a href="src/TR-BAKER-14.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

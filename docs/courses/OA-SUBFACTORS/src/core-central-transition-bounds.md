@@ -21,6 +21,8 @@ D=Z(A)\vee Z(B)\subset B.
 
 The canonical trace is \(\operatorname{Tr}\), with \(\operatorname{Tr}(e)=1\). Write \(\tau\) for the inherited normalized trace on \(R\). The common cup factors \(K_1\subset K\) satisfy \([K:K_1]=d\), \(K_1\subset S\), \(K\subset R\) and \(E_N|_K=E_{K_1}\). Every basis chosen below for \(K/K_1\) is also a basis for \(R/S\) and \(M/N\), by the proof of 52.1. Neither \(S\) nor \(R\) is assumed to be a factor. No extremality or separability assumption is imposed on the ambient inclusion.
 
+For a scalar multiple of one central projection, the exact indicator estimate IRG.1 does control the joint defect by weighted stationarity. Its quantitative extension measures the distance to such a one-level profile. The actual affine example in IRG.3 obstructs this profile for almost central projections after every matrix deletion of one fixed core. It does not turn a variable central density into one scalar level or settle BF when another tunnel may be selected.
+
 ## A first basis vector can be the identity
 
 **Lemma 68.1.** Write \(d=n+s\), with \(n=\lfloor d\rfloor\), \(0\leq s<1\), and \(t=\lceil d\rceil\). There is a common partial orthonormal right basis \(a_1,\ldots,a_t\) in \(K\) such that

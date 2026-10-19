@@ -1,10 +1,10 @@
 # Base changes and disintegration
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text: GPT-6.1 Sol and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 A direct integral describes an operator separately over each point of a measure space. The base itself is encoded by the diagonal multiplication operators. On a standard base, an isomorphism of these diagonal algebras recovers a change of variables outside null sets. After that change of variables, a unitary intertwining the diagonal algebras is a measurable family of fibre unitaries. This gives the precise uniqueness statement for disintegration.
 
-Prerequisites are [Measurable fields and direct integrals](../reader/supplements/measurable-fields-direct-integrals.html), [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html), [Direct integrals of von Neumann algebras](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html), [Abelian operator algebras](../../foundations-of-von-neumann-algebras/abelian-operator-algebras.html), and [Polish spaces and standard Borel spaces](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html). The complete [Proposition 6.1 on diagonal intertwiners](../reader/supplements/decomposable-operators-diagonal-algebra.html#6-intertwiners-between-two-direct-integrals) uses the two-by-two direct-sum operator and the full diagonal-commutant theorem. The complete [Theorem 4.1 on field uniqueness and Theorem 4.3 on centres](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html#4-uniqueness-of-the-field-centres-and-factors), and [Lemma 5.1 on countable generators](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html#5-von-neumann-algebras-between-the-diagonal-and-the-decomposable-algebra), supply the precise algebra-field inputs to Sections 2 and 4. We also use the Radon–Nikodym theorem for sigma-finite measures, Tonelli's theorem and the uniform boundedness principle.
+Prerequisites are [Measurable fields and direct integrals](../reader/supplements/measurable-fields-direct-integrals.html), [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html), [Direct integrals of von Neumann algebras](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html), [Abelian operator algebras](../../foundations-of-von-neumann-algebras/abelian-operator-algebras.html), and [Polish spaces and standard Borel spaces](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html). The complete [Proposition 6.1 on diagonal intertwiners](../reader/supplements/decomposable-operators-diagonal-algebra.html#6-intertwiners-between-two-direct-integrals) uses the two-by-two direct-sum operator and the full diagonal-commutant theorem. The complete [Theorem 4.1 on field uniqueness and Theorem 4.3 on centres](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html#4-uniqueness-of-the-field-centres-and-factors), and [Lemma 5.1 on countable generators](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html#5-von-neumann-algebras-between-the-diagonal-and-the-decomposable-algebra), supply the precise algebra-field inputs to Sections 2 and 4. The [measure-tools lesson, Theorem 4.1](../../harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html#4-densities-and-bounded-functionals), proves Radon–Nikodym for sigma-finite measures. Its [Theorem 2.1 and equation (2.1)](../../harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html#2-integration-and-convergence-without-countability-assumptions) justify the interchange of nonnegative series and integrals used here. The [uniform boundedness principle, Theorem 4.2](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-04), supplies the common operator bound.
 
 Yetter’s freely readable *Measurable Categories* treats measurable fields and changes of base. Here Theorem 2.1 and Exercise 5.1 determine the direction of the square-root density map from its norm identity. The countable-algebra and central-subalgebra constructions give the disintegration and uniqueness results under the standard Borel, sigma-finite and separable-fibre hypotheses stated below.
 
@@ -67,7 +67,7 @@ M_i=\int_{X_i}^{\oplus}M_i(x)\,d\mu_i(x),
 \]
 where \(M_i(x)\subseteq B(H_i(x))\) are measurable fields of von Neumann algebras. Assume \(H_i(x)\neq0\) almost everywhere, so the diagonal algebra \(D_i\) is faithfully identified with \(L^\infty(X_i,\mu_i)\).
 
-**Theorem 2.1.** If a unitary \(U:\mathcal H_1\to\mathcal H_2\) satisfies \(UD_1U^*=D_2\), then, outside conull Borel subsets, it has the form
+**Theorem 2.1.** If a unitary \(U:\mathcal H_1\to\mathcal H_2\) satisfies \(UD_1U^*=D_2\), then, on suitable conull Borel subsets, it has the form
 \[
 (U\xi)(x)=h(\Phi(x))^{-1/2}v(x)\xi(\Phi(x)),
 \qquad
@@ -116,7 +116,7 @@ The nonzero-fibre condition concerns recovery of the base. For example, a one-po
 
 Let \(\mathcal H=\int_X^\oplus H(x)\,d\mu(x)\), with diagonal algebra \(D\). A field of representations \(\pi_x:A\to B(H(x))\) is **measurable** when \(x\mapsto\pi_x(a)\) is a measurable operator field for every \(a\in A\). Contractivity makes these fields essentially bounded. Their direct integral is the representation \(a\mapsto\int_X^\oplus\pi_x(a)\,d\mu(x)\).
 
-**Theorem 3.1.** If \(A\) is separable and \(\pi:A\to B(\mathcal H)\) has image commuting with \(D\), it is the direct integral of a measurable field of representations. That field is unique outside one null set.
+**Theorem 3.1.** If \(A\) is a separable C*-algebra and \(\pi:A\to B(\mathcal H)\) is a *-representation whose image commutes with \(D\), it is the direct integral of a measurable field of representations. That field is unique outside one null set.
 
 **Proof.** Choose a countable norm-dense *-subalgebra \(A_{\mathbb Q}\) over \(\mathbb Q+i\mathbb Q\). To obtain it, start with a countable norm-dense set and close under sums, products, adjoints and rational complex scalar multiples. For every \(a\in A_{\mathbb Q}\), the diagonal commutant theorem supplies a measurable representative \(a(x)\) of \(\pi(a)\), with \(\|a(x)\|\leq\|\pi(a)\|\leq\|a\|\) outside a null set.
 
@@ -143,7 +143,7 @@ Choose successively \(n_j\) so large that
 \[
 \|(T_{n_j}-T)\xi_k\|^2\leq2^{-j}\qquad(k\leq j).
 \]
-For each fixed \(k\), the sum of these squared norms is finite. Tonelli implies
+For each fixed \(k\), the sum of these squared norms is finite. Monotone convergence applied to the nonnegative partial sums gives
 \[
 \sum_j\|(T_{n_j}(x)-T(x))\xi_k(x)\|^2<\infty
 \]
@@ -151,7 +151,7 @@ almost everywhere. Remove the union of these exceptional sets for all \(k\). Sin
 
 **Corollary 3.3.** If \(\pi\) in Theorem 3.1 is nondegenerate, almost every \(\pi_x\) is nondegenerate.
 
-**Proof.** A separable C*-algebra has a sequential contractive approximate identity \((u_n)\). One obtains such a sequence from any approximate identity by choosing terms that act within \(1/n\) of the identity on the first \(n\) members of a countable dense set, on both sides. Nondegeneracy gives \(\pi(u_n)\to1\) strongly. Apply Lemma 3.2 to obtain a subsequence converging strongly to the fibre identity almost everywhere. Its values lie in \(\pi_x(A)\), so their ranges have dense span in \(H(x)\). \(\square\)
+**Proof.** By [Corollary 11.5 of Continuous functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-20), a separable C*-algebra has a sequential contractive approximate identity \((u_n)\). One obtains such a sequence from any approximate identity by choosing terms that act within \(1/n\) of the identity on the first \(n\) members of a countable dense set, on both sides. Nondegeneracy gives \(\pi(u_n)\to1\) strongly. Apply Lemma 3.2 to obtain a subsequence converging strongly to the fibre identity almost everywhere. Its values lie in \(\pi_x(A)\), so their ranges have dense span in \(H(x)\). \(\square\)
 
 ## 4. Existence over any central subalgebra
 
@@ -176,7 +176,7 @@ It is isometric by the Radon–Nikodym identity, and its inverse is multiplicati
 H(t)=\overline{\operatorname{span}}\{\varepsilon_j:t\in F_j\}\subseteq\ell^2(J).
 \tag{4.2}
 \]
-The fields \(1_{F_j}(t)\varepsilon_j\) are a measurable fundamental sequence; (4.2) follows by summing the squared norms and applying Tonelli. Their Gram matrix has Borel entries, so the Hilbert field is measurable. The union of the \(F_j\) is conull: from the definition of \(\mu\), \(\sum_jc_jf_j=1\) almost everywhere. Discard any zero-fibre region and the common exceptional sets. The remaining \(X\) is a Borel subset of the compact metric space \(\sigma(a)\), hence standard, and \(\mu\) is still a probability measure.
+The fields \(1_{F_j}(t)\varepsilon_j\) are a measurable fundamental sequence; (4.2) follows by summing the squared norms and applying monotone convergence to the nonnegative partial sums. Their Gram matrix has Borel entries, so the Hilbert field is measurable. The union of the \(F_j\) is conull: from the definition of \(\mu\), \(\sum_jc_jf_j=1\) almost everywhere. Discard any zero-fibre region and the common exceptional sets. The remaining \(X\) is a Borel subset of the compact metric space \(\sigma(a)\), hence standard, and \(\mu\) is still a probability measure.
 
 In this model \(a\) is multiplication by \(t\). Its bounded Borel functional calculus supplies every diagonal multiplier: every bounded Borel function on \(X\) extends to a bounded Borel function on \(\sigma(a)\). Conversely, diagonal multipliers form a von Neumann algebra containing \(a\). Therefore \(N\), the algebra generated by \(a\), is exactly the diagonal algebra.
 
@@ -283,6 +283,6 @@ The inequality follows by applying Cauchy–Schwarz to \(R_j(\alpha\varepsilon_1
 ## References
 
 - [Yetter] David N. Yetter, *Measurable Categories*, [arXiv:math/0309185v2, 6 September 2004](https://arxiv.org/html/math/0309185v2).
-- [Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer, 1979.
+
 
 Yetter’s Theorem 28 states the source and target of the square-root density map in the reverse direction to its displayed norm identity. The direction used here is derived in Theorem 2.1 and Exercise 5.1.

@@ -1,6 +1,6 @@
 # Integration for a trace, the commutation theorem, and applications
 
-*Written by Claude Opus 5.5 (Anthropic), September 2026, revised October 2026. The September text was spot-checked by Claude Opus 5.5 in a separate session; the October revision of the references is self-checked by the writing AI. Public domain (CC0).*
+*Text: Claude Opus 5.5 (Anthropic) and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 On a von Neumann algebra \(M\), a faithful semifinite normal trace \(\tau\) behaves like the integral on a measure space. The elements of finite trace play the part of integrable functions, and \(M\) itself plays the part of the bounded functions. This lesson makes the picture precise and uses it.
 
@@ -250,6 +250,78 @@ Finally \(a\mapsto(ae_k)_k\) is a \(*\)-isomorphism of \(A\) onto the bounded fa
 
 So the commutation theorem is the noncommutative form of the statement that \(L^\infty\) is maximal abelian on \(L^2\).
 
+<span id="spectrum-trace-model"></span>
+
+**Proposition 3.4** (The finite-trace part of the spectrum). Let \(A\) be a nonzero commutative von Neumann algebra with a faithful semifinite normal trace \(\tau\). Write \(A=C(\Omega)\) through the Gelfand transform \(a\mapsto\widehat a\). For each projection \(e\) with \(\tau(e)<\infty\), put \(E_e=\{\omega:\widehat e(\omega)=1\}\), and set
+
+\[
+\Gamma=\bigcup_{\tau(e)<\infty}E_e.
+\]
+
+Then \(\Gamma\) is an open dense locally compact subspace of \(\Omega\); every compact subset of \(\Gamma\) is contained in one \(E_e\). Restriction identifies \(C(\Omega)\) with \(C_b(\Gamma)\), and \(\Omega\) is the Stone–Čech compactification of \(\Gamma\).
+
+There is a canonical measure \(\mu\) on \(\Gamma\), finite on compact sets and inner regular on every Borel set, such that each restriction \(\mu|_{E_e}\) is the finite Radon measure representing \(\tau|_{Ae}\). Its completion satisfies
+
+\[
+A\cong L^\infty(\Gamma,\mu),\qquad
+\tau(a)=\int_\Gamma\widehat a\,d\mu\quad(a\in A_+).
+\]
+
+This isomorphism sends \(\mathfrak m_\tau\) to \(L^\infty\cap L^1\) and \(\mathfrak n_\tau\) to \(L^\infty\cap L^2\); it extends to the isometric identifications of the corresponding \(L^1\) and \(L^2\) completions. The representation on \(L^2\) becomes multiplication by \(L^\infty(\Gamma,\mu)\), a maximal abelian algebra. No countability assumption is imposed on the family of finite-trace projections. Here the stated inner regular measure is used; global outer regularity on all Borel sets is not part of the assertion.
+
+**Proof.** *The open subset and its compactification.* Bounded increasing nets of self-adjoint elements of \(A\) have their strong limits in \(A\). Taking finite maxima first gives the supremum of every nonempty order-bounded family in \(A_{\rm sa}\). Consequently \(\Omega\) is stonean by Theorem 4.3 of Abelian operator algebras. In particular the clopen sets form a base, by Lemma 4.2 there. Each \(E_e\) is clopen and compact. The finite-trace projections are directed: in this commutative algebra \(e\vee f\le e+f\), so \(\tau(e\vee f)\le\tau(e)+\tau(f)<\infty\). They increase to \(1\), because a nonzero complementary projection would majorize a nonzero finite-trace projection by semifiniteness and a spectral cut.
+
+If \(\Gamma\) were not dense, its complement would contain a nonempty clopen set \(E_p\). A nonzero finite-trace projection \(q\le p\) would then give a nonempty \(E_q\subseteq E_p\cap\Gamma\), a contradiction. A compact \(K\subseteq\Gamma\) is covered by finitely many \(E_{e_j}\), hence contained in \(E_{\bigvee_j e_j}\). The same clopen sets are compact neighbourhoods in \(\Gamma\), proving local compactness. Finally Theorem 4.4 of Abelian operator algebras proves that every bounded continuous function on the dense subspace \(\Gamma\) extends uniquely to \(\Omega\), including the asserted Stone–Čech identification.
+
+*Compatible finite measures.* For each finite-trace \(e\), the algebra \(Ae=C(E_e)\) carries the finite normal trace \(\tau_e=\tau|_{Ae}\). The compact Riesz–Markov theorem stated in the prerequisites supplies a finite Radon measure \(\mu_e\) representing it. The finite-algebra argument in Theorem 3.3 shows that \(C(E_e)\to L^\infty(E_e,\mu_e)\) is an isomorphism. In particular, every essentially bounded measurable function on \(E_e\) has a unique continuous representative. The measure is faithful on nonnegative continuous functions, and its integral preserves bounded increasing suprema in \(C(E_e)\), because \(\tau_e\) is faithful and normal. Thus \(E_e\) is hyperstonean: its single faithful normal measure is already a sufficient family in Definition 6.1 of that lesson. Every compact open subset of \(\Gamma\) is clopen in \(\Omega\), hence equals \(E_p\) for a projection \(p\); containment in some finite-trace \(E_e\) gives \(\tau(p)<\infty\), so the same conclusions hold there.
+
+When \(e\le f\), the restriction of \(\mu_f\) to the clopen subset \(E_e\) equals \(\mu_e\). Indeed, extending a continuous function on \(E_e\) by zero to \(E_f\) gives its element of \(Ae\subseteq Af\), so the two integrals agree; uniqueness in Riesz–Markov applies. For a Borel subset \(B\) of \(\Gamma\), define
+
+\[
+\mu(B)=\sup_{\tau(e)<\infty}\mu_e(B\cap E_e).
+\tag{3.2}
+\]
+
+The finite measures \(B\mapsto\mu_e(B\cap E_e)\) form an increasing directed family. Their supremum is countably additive: for disjoint Borel sets \(B_n\), countable additivity of each \(\mu_e\) gives one inequality; for the other, choose a common upper projection for any finite selection of projections that approximate the first finitely many suprema, then increase the number of terms. Equivalently, directedness gives
+
+\[
+\sup_e\sum_{n\ge1}\mu_e(B_n\cap E_e)
+=\sum_{n\ge1}\sup_e\mu_e(B_n\cap E_e).
+\]
+
+This argument also applies when either side is infinite. Compatibility gives \(\mu|_{E_e}=\mu_e\), hence \(\mu(E_e)=\tau(e)<\infty\). Every compact set is therefore of finite measure. Finite Radon regularity on \(E_e\), followed by (3.2), proves
+
+\[
+\mu(B)=\sup_{K\subseteq B,\ K\text{ compact}}\mu(K).
+\]
+
+for every Borel \(B\). This establishes the specified measure convention without assuming \(\sigma\)-compactness. We henceforth complete this measure; (3.2) remains valid on the completion, since subsets of Borel null sets are null for every local restriction. The same formula shows uniqueness among measures with the stated inner regularity and local restrictions, because each compact set lies in one \(E_e\).
+
+*Trace and bounded functions.* For any nonnegative measurable function \(g\), (3.2) first gives the integral formula for finite simple functions, using directedness, and then for their increasing limits:
+
+\[
+\int_\Gamma g\,d\mu=\sup_e\int_{E_e}g\,d\mu_e.
+\]
+
+For \(a\in A_+\), normality and \(ae\uparrow a\) therefore imply
+
+\[
+\int_\Gamma\widehat a\,d\mu
+=\sup_e\tau(ae)=\tau(a).
+\]
+
+Every \(f\in C_c(\Gamma)\) extends by zero to a continuous function on \(\Omega\): its compact support is closed in \(\Omega\), and it vanishes on a neighbourhood of each point outside \(\Gamma\). That support lies in a finite-trace \(E_e\), so its element \(a\in A\) satisfies \(|a|\le\|f\|_\infty e\), and \(a\in\mathfrak m_\tau\). The displayed trace identity therefore also gives \(\tau(a)=\int_\Gamma f\,d\mu\) by linearity. This identifies the integral on compactly supported continuous functions as well as on positive bounded ones.
+
+Now take a representative \(g\) of an element of \(L^\infty(\Gamma,\mu)\), modified on a null set so that \(|g|\le C\) everywhere. On each \(E_e\), the finite-case isomorphism gives \(a_e\in Ae\) with \(\|a_e\|\le C\) and \(\widehat{a_e}=g\) almost everywhere there. Uniqueness and compatibility give \(a_fe=a_e\) whenever \(e\le f\). Consequently, for \(e\le f\) and \(\xi\in H\),
+
+\[
+\|(a_f-a_e)\xi\|\le C\|(f-e)\xi\|.
+\]
+
+Since \(e\uparrow1\) strongly, these bounded operators form a strongly Cauchy net: compare two indices through a common upper index and apply this inequality twice. Its strong limit \(a\) belongs to \(A\), has norm at most \(C\), and satisfies \(ae=a_e\) for every \(e\). Thus the measurable set where \(\widehat a\ne g\) has zero measure on every \(E_e\), and (3.2) makes it globally null. This proves surjectivity. If \(\widehat a=0\) almost everywhere, each \(ae=0\) by the faithful finite-case isomorphism, and \(e\uparrow1\) gives \(a=0\). Restriction is therefore an isometric \(*\)-isomorphism onto \(L^\infty(\Gamma,\mu)\).
+
+*Integrable functions and the Hilbert space.* Apply the trace identity to \(|a|\) and \(|a|^2\). The definition ideals are exactly the claimed intersections, with their \(L^1\) and \(L^2\) norms. For \(1\le p<\infty\), a function \(g\in L^p\) is approximated in \(L^p\) by \(g1_{\{1/n\le |g|\le n\}}\); these functions are bounded, and their supports have finite measure because \(\mu(\{|g|\ge1/n\})\le n^p\|g\|_p^p\). The cases \(p=1,2\) give surjectivity of the completed isometries. Multiplication intertwines on the dense bounded square-integrable functions, hence on all of \(L^2\). Its maximal abelianness is Theorem 3.3(1). \(\square\)
+
 ## 4. Commutants of semifinite algebras
 
 The commutation theorem gives a concrete model of the commutant for one representation, the standard one. Every other faithful normal representation is built from an amplification of it, and this transfers semifiniteness to all commutants.
@@ -349,6 +421,51 @@ Finiteness can also be read off the closure of the inner automorphisms. By compa
 \(Q\) is bounded by \(\varphi(1)\), so by the weak compactness criterion (background on functionals), \(Q\) is relatively \(\sigma(M_*,M)\)-compact. The net \(\psi_i=\varphi(u_i\,\cdot\,u_i^*)\) in \(Q\) has a subnet converging to some \(\psi\in M_*\) for \(\sigma(M_*,M)\). For \(x\in M\), \(\varphi(T(x))=\lim_i\psi_i(x)=\psi(x)\), as the limit along a subnet is the same. So \(\varphi\circ T\in M_*\) for every \(\varphi\in M_*^+\), hence for every \(\varphi\in M_*\), and \(T\) is normal (background).
 
 Conversely, let \(M\) be infinite. There is a nonzero central projection \(z\) with \(Mz\) properly infinite (background), so \(z=\sum_{n\ge1}e_n\) with orthogonal projections \(e_n\sim z\) (halving). Relabel them by the integers as \((f_k)_{k\in\mathbb Z}\), and choose partial isometries \(w_k\) with \(w_k^*w_k=f_k\) and \(w_kw_k^*=f_{k+1}\). The strong sum \(W=\sum_kw_k+(1-z)\) is a unitary with \(Wf_kW^*=f_{k+1}\) and \(Wz=zW\). By the remark before the theorem, a subnet of the sequence of maps \(x\mapsto W^nxW^{-n}\), \(n\in\mathbb N\), converges pointwise \(\sigma\)-weakly to a map \(T\). The indices of a subnet of a sequence tend to infinity, and \(W^nf_kW^{-n}=f_{k+n}\to0\) \(\sigma\)-weakly, because the \(f_m\) are orthogonal. So \(T(f_k)=0\) for every \(k\), while \(T(z)=z\ne0\) and \(\sum_kf_k=z\). A normal positive map preserves such sums, so \(T\) is not normal. \(\square\)
+
+<span id="inner-automorphism-weakstar-topology"></span>
+
+**Lemma 5.6A** (The weak-star topology on bounded maps). Put \(X=M\widehat\otimes_\pi M_*\), the completion of the algebraic tensor product for the projective norm. There is an isometric identification
+\[
+ B(M,M)=X^*,\qquad
+ \langle T,x\otimes\omega\rangle=\omega(Tx).
+\]
+On each operator-norm bounded subset of \(B(M,M)\), the weak-star topology from this identification equals pointwise ultraweak convergence. Consequently Theorem 5.6 also characterizes finiteness by normality of every map in the weak-star closure of the inner automorphisms.
+
+**Proof.** For completeness, the projective norm is
+\[
+ \|v\|_\pi=\inf\left\{\sum_{j=1}^n\|x_j\|\,\|\omega_j\|:
+       v=\sum_{j=1}^n x_j\otimes\omega_j\right\}.
+\]
+Joining decompositions and scaling one factor prove the triangle inequality and homogeneity. It is nondegenerate: write a nonzero tensor with linearly independent second factors and choose a nonzero first coefficient. The Hahn–Banach theorem supplies a bounded functional on \(M\) nonzero on that coefficient and a bounded functional on \(M_*\) selecting its second factor. Their product defines a functional on the algebraic tensor product, nonzero at the tensor and bounded in absolute value by the product of their norms times \(\|v\|_\pi\). Thus \(\|v\|_\pi>0\). The same norming-functional argument, together with the one-term decomposition, gives \(\|x\otimes\omega\|_\pi=\|x\|\,\|\omega\|\). The completion \(X\) is therefore well defined, with finite sums of elementary tensors dense in it.
+
+If \(T\in B(M,M)\), the bilinear pairing \((x,\omega)\mapsto\omega(Tx)\) defines a linear functional \(f_T\) on the algebraic tensor product. For every decomposition,
+\[
+ |f_T(v)|\le \|T\|\sum_j\|x_j\|\,\|\omega_j\|.
+\]
+It extends uniquely to \(X\), with \(\|f_T\|\le\|T\|\). Conversely, testing elementary tensors with both factors of norm at most one gives \(\|f_T\|\ge\|T\|\), because \(M=(M_*)^*\) isometrically, as in the background.
+
+For \(f\in X^*\) and fixed \(x\in M\), the functional \(\omega\mapsto f(x\otimes\omega)\) has norm at most \(\|f\|\,\|x\|\). The same predual identification supplies a unique \(Tx\in M\) with
+\[
+ \omega(Tx)=f(x\otimes\omega)\qquad(\omega\in M_*).
+\]
+Uniqueness proves linearity of \(T\), and \(\|Tx\|\le\|f\|\,\|x\|\) proves boundedness. The functionals \(f_T\) and \(f\) agree on a dense subspace, hence everywhere. This proves the asserted duality and norm equality.
+
+Weak-star convergence implies convergence on elementary tensors, hence pointwise ultraweak convergence. For the converse, suppose \(T_\gamma\) and \(T\) have norm at most \(C<\infty\) and \(\omega(T_\gamma x)\to\omega(Tx)\) for every \(x\) and \(\omega\). Given \(u\in X\), approximate it in projective norm by a finite sum \(v\). Then
+\[
+ \begin{aligned}
+ &|f_{T_\gamma}(u)-f_T(u)|\\
+ &\quad\le 2C\|u-v\|_\pi\\
+ &\qquad+|f_{T_\gamma}(v)-f_T(v)|.
+ \end{aligned}
+\]
+The last term tends to zero, and the first can be made arbitrarily small. This proves weak-star convergence and equality of the two topologies on bounded sets.
+
+Every inner automorphism has norm at most one. The unit ball is closed for both topologies: for pointwise ultraweak convergence this follows from
+\[
+ |\omega(Tx)|\le\|\omega\|\,\|x\|
+ \qquad(x\in M,\ \omega\in M_*),
+\]
+by passing to the limit; for weak-star convergence it follows by testing every \(u\) in the unit ball of \(X\). The two closures of the inner automorphisms therefore lie in the same unit ball, where the topologies agree. Theorem 5.6 applies to precisely this common closure. \(\square\)
 
 Finiteness can also be read off the absolute values of normal functionals. For \(K\subseteq M_*\) write \(|K|=\{|\varphi|:\varphi\in K\}\).
 
@@ -535,7 +652,104 @@ the last by symmetry. The third expression does not involve the net of \(n\), an
 
 If \(m\) is invertible, let \(c_k\) be the inverse of \(z_k\cdot m\) in \(Zz_k\), and let \(m^{-1}\) be the supremum of the finite partial sums of \(\sum_kc_k\). By Lemma 8.2(5) and (6), \(z_k\cdot(m\cdot m^{-1})=(z_k\cdot m)\,c_k=z_k\) for each \(k\), so \(m\cdot m^{-1}=1\). A product of two invertible elements, or of an invertible and a finite element, is invertible, respectively finite: refine the two families of projections to the family of products \(z_kw_l\).
 
-*Remark.* One can also describe \(\widehat Z_+\) through the Gelfand spectrum of \(Z\), as continuous functions with values in \([0,\infty]\); a finite element in the sense above is one that is finite on a dense open subset of the spectrum. [Kostecki, Section 5.3] describes the extended positive part of any von Neumann algebra through lower semicontinuous functions on the normal positive functionals.
+<span id="extended-positive-spectrum"></span>
+
+**Proposition 8.3A** (The spectral model of extended positive elements). Let \(Z=C(\Omega)\) be a commutative von Neumann algebra. Give \([0,\infty]\) its compact order topology. There is an order isomorphism between the continuous functions \(F:\Omega\to[0,\infty]\) and \(\widehat Z_+\), given by
+
+\[
+m_F(\varphi)=\sup_{n\ge1}\varphi(F\wedge n),
+\qquad \varphi\in Z_*^+.
+\]
+
+Here \(F\wedge n\in C(\Omega)_+\) is viewed as an element of \(Z_+\). Under this identification:
+
+1. Addition and nonnegative scalar multiplication are the pointwise operations, with \(0\cdot\infty=0\).
+2. The product of extended positive elements corresponds to the least upper bound, in the order of continuous \([0,\infty]\)-valued functions, of the functions \((F\wedge n)(G\wedge k)\). This is an order supremum, not necessarily the pointwise supremum. Multiplication by a central projection restricts \(F\) to its clopen set and is zero off that set.
+3. \(m_F\) is finite in Definition 8.3 exactly when \(F\) is finite on a dense open subset of \(\Omega\). It is invertible exactly when \(0<F<\infty\) on a dense open subset.
+4. If \(c\) is invertible, its continuous representative \(C\) is strictly positive and finite on a dense open set \(D\). The representative of \(c\cdot m_F\) equals the ordinary product \(CF\) on \(D\).
+
+**Proof.** The spectrum is stonean by Theorem 4.3 of Abelian operator algebras, so its clopen sets form a base. The zero algebra gives the empty spectrum and the assertions are immediate; assume \(Z\ne0\).
+
+*Order and uniqueness.* Each \(F\wedge n\) is continuous, positive and bounded, and these truncations increase; thus they define \(m_F\). Pointwise order gives \(m_F\le m_G\). Conversely, suppose \(F(\omega)>G(\omega)\). Choose finite numbers \(s<t\) with \(G(\omega)<s<t<F(\omega)\). The open set \(\{G<s,\ F>t\}\) contains a nonempty clopen set \(E\). For its projection \(e\), take a normal positive functional \(\varphi\) supported on \(e\) with \(\varphi(e)>0\); a vector functional at a nonzero vector in \(eH\) suffices. Then
+
+\[
+m_G(\varphi)\le s\varphi(e)<t\varphi(e)\le m_F(\varphi).
+\]
+
+Hence \(m_F\le m_G\) implies \(F\le G\), proving that the map reflects order and is injective.
+
+*Every extended positive element has such a function.* Let \((a_i)\) represent \(m\in\widehat Z_+\). The commuting positive contractions
+
+\[
+u_i=a_i(1+a_i)^{-1}
+\]
+
+increase to a strong limit \(u\in Z\), with \(0\le u\le1\). Let \(\widehat u\) be its Gelfand transform and put
+
+\[
+F=\frac{\widehat u}{1-\widehat u},
+\]
+
+where the value at \(\widehat u=1\) is \(\infty\). This is continuous into \([0,\infty]\). For each integer \(n\ge1\), the function \(f_n(t)=\min(t/(1-t),n)\), with \(f_n(1)=n\), is continuous on \([0,1]\). Continuous functional calculus gives \(f_n(u_i)\to f_n(u)\) strongly: prove this first for polynomials, using bounded strong convergence of products, and then approximate \(f_n\) uniformly by polynomials. These operators increase, since all of them commute and the scalar function \(f_n\) is increasing. Thus normality gives
+
+\[
+\begin{aligned}
+m_F(\varphi)
+&=\sup_n\varphi(f_n(u))\\
+&=\sup_n\sup_i\varphi(a_i\wedge n)\\
+&=\sup_i\varphi(a_i)=m(\varphi).
+\end{aligned}
+\]
+
+For the last equality, \(a_i\wedge n=a_i\) once \(n\ge\|a_i\|\). The interchange is just an interchange of two suprema. Together with injectivity this proves the asserted order isomorphism and independence of the representing net.
+
+*Algebraic operations.* The extended sum \(F+G\) is continuous. Each \((F\wedge n)+(G\wedge k)\) is at most \(F+G\), while
+
+\[
+(F+G)\wedge r\le(F\wedge r)+(G\wedge r).
+\]
+
+Taking the order suprema and applying Lemma 8.2 proves \(m_{F+G}=m_F+m_G\). Positive scalar multiplication follows by rescaling the truncation levels, and multiplication by zero gives the zero function. The product assertion is exactly Lemma 8.2(5) applied to the two truncation sequences, transported through the order isomorphism. For a clopen set \(E\), the function equal to \(F\) on \(E\) and zero off \(E\) is continuous; its truncations are \(1_E(F\wedge n)\), which prove the projection assertion.
+
+*Finiteness.* Write \(u\in Z\) for the element with transform \(F/(1+F)\), taking this ratio to be \(1\) where \(F=\infty\). If \(m_F\) is finite, choose the orthogonal projections \(z_k\) of Definition 8.3. The corresponding clopen sets \(E_k\) have dense union: a nonempty clopen set disjoint from that union would give a nonzero projection orthogonal to every \(z_k\), contradicting \(\sum_kz_k=1\). On each \(E_k\), \(F\) is bounded, by the projection assertion and order reflection. It is therefore finite on that dense open union.
+
+Conversely suppose \(F\) is finite on a dense open set. The spectral projection \(p=1_{\{1\}}(u)\) must vanish: if \(p\ne0\), the equality \(up=p\) gives \(F=\infty\) on the nonempty clopen set of \(p\), contradicting density. Hence
+
+\[
+e_n=1_{[0,n/(n+1)]}(u)\uparrow1.
+\]
+
+On the clopen set of \(e_n\), the operator inequality \(ue_n\le n(n+1)^{-1}e_n\) gives \(F\le n\). So \(e_n\cdot m_F\le ne_n\) belongs to \(Z_+\), by Lemma 8.2(3). The orthogonal projections \(z_1=e_1\) and \(z_n=e_n-e_{n-1}\) for \(n\ge2\) sum to \(1\) and make every \(z_n\cdot m_F\) bounded. This proves finiteness as defined, even without any countability assumption on \(Z\).
+
+*Invertibility.* A partition with upper bounds and strictly positive lower bounds makes \(0<F<\infty\) on the dense union of its clopen sets. Conversely suppose \(0<F<\infty\) on a dense open set. As above, \(1_{\{1\}}(u)=0\), and the same argument with \(up=0\) shows \(1_{\{0\}}(u)=0\). The spectral projections
+
+\[
+e_n=1_{[1/n,\,1-1/n]}(u),\qquad n\ge2,
+\]
+
+therefore increase to \(1\). On their clopen sets,
+
+\[
+\frac1{n-1}\le F\le n-1.
+\]
+
+Passing to \(z_2=e_2\) and \(z_n=e_n-e_{n-1}\) for \(n\ge3\) gives the partition and lower bounds required by Definition 8.3.
+
+*Multiplication on the finite positive locus.* Fix a point of \(D\). It has a clopen neighbourhood \(E\subseteq D\) on which \(\varepsilon\le C\le K\) for some \(\varepsilon>0\) and finite \(K\). The ordinary extended product \(CF\) is continuous on \(E\). Each \(C(F\wedge n)\) is at most \(CF\), and for \(n\ge r/\varepsilon\),
+
+\[
+(CF)\wedge r\le C(F\wedge n)
+\quad\text{on }E.
+\]
+
+The product construction in part 2, restricted to this clopen corner, consequently gives exactly \(CF\). Since these neighbourhoods cover \(D\), this proves part 4. \(\square\)
+
+**Example 8.3B** (Products at the infinite boundary). Take \(Z=\ell^\infty(\mathbb N)\) with \(\mathbb N=\{1,2,\ldots\}\), whose spectrum is \(\beta\mathbb N\). Let \(m\) correspond to the function \(n\mapsto n\), and let \(b(n)=1/n\). On \(\mathbb N\) their product is \(1\). More explicitly, the bounded elements representing \(b\cdot m\) have values \(\min(n,k)/n\); as \(k\) increases, their supremum in \(\ell^\infty(\mathbb N)\) is \(1\). The spectral representative of \(b\cdot m\) is therefore identically \(1\) on \(\beta\mathbb N\).
+
+At a free ultrafilter point, however, the continuous extension of \(b\) is zero and the continuous extended representative of \(m\) is infinite: the bounded transform \(n/(n+1)\) tends to \(1\). Taking the pointwise product with \(0\cdot\infty=0\) would give zero there, not one. Thus the order-supremum product in Proposition 8.3A(2) is essential. On the dense open set where an invertible density is positive and finite, part 4 gives the usual pointwise multiplication.
+
+For a free account of extended positive elements in a general von Neumann algebra, see [Kostecki, Section 5.3]. The proposition supplies the spectral identification used here for the abelian centre.
+
 
 **Lemma 8.4** (Extending a trace of \(Z\)). Let \(\mu\) be a normal trace on \(Z\), written \(\mu=\sum_k\mu_k\) with \(\mu_k\in Z_*^+\) (Proposition 7.1). For \(m\in\widehat Z_+\) put \(\mu(m)=\sum_km(\mu_k)\).
 
@@ -865,7 +1079,7 @@ Example 11.11 shows that the finiteness condition in (2) cannot be omitted. To g
 3. If \(h\) is \(\sigma\)-finite and \(h\approx k\), then \(k\) is \(\sigma\)-finite.
 4. For every \(x\in M\) there is a family \((y_\gamma)\) in \(M\) with \(x^*x=\sum_\gamma y_\gamma^*y_\gamma\), \(xx^*=\sum_\gamma y_\gamma y_\gamma^*\), and every \(y_\gamma^*y_\gamma\) and \(y_\gamma y_\gamma^*\) \(\sigma\)-finite.
 
-**Proof.** (1) The claim about subprojections is clear from the definition. Let \(v^*v=e\) and \(vv^*=f\) with \(f\) \(\sigma\)-finite. If the \(e_i\) are mutually orthogonal nonzero projections below \(e\), the \(ve_iv^*\) are mutually orthogonal nonzero projections below \(f\); so there are countably many. Let \(e=\sum_ne_n\) with \(\sigma\)-finite \(e_n\). Choose faithful normal states \(\varphi_n\) of \(e_nMe_n\) (background) and put \(\varphi(x)=\sum_n2^{-n}\varphi_n(e_nxe_n)\). If \(x\in(eMe)_+\) and \(\varphi(x)=0\), then \(e_nxe_n=0\), so \(x^{1/2}e_n=0\) for every \(n\), and \(x^{1/2}=x^{1/2}e=0\). So \(\varphi\) is a faithful normal state of \(eMe\), and \(e\) is \(\sigma\)-finite. For a nonzero projection \(e\) and a unit vector \(\xi\in eH\), the cyclic projection \(p_\xi\) is \(\sigma\)-finite and lies below \(e\) (background). So a maximal family of mutually orthogonal nonzero \(\sigma\)-finite projections has sum \(1\).
+**Proof.** (1) The claim about subprojections is clear from the definition. Let \(v^*v=e\) and \(vv^*=f\) with \(f\) \(\sigma\)-finite. If the \(e_i\) are mutually orthogonal nonzero projections below \(e\), the \(ve_iv^*\) are mutually orthogonal nonzero projections below \(f\); so there are countably many. Let \(e=\sum_ne_n\) with \(\sigma\)-finite \(e_n\). If all summands vanish, the assertion is immediate. Otherwise discard the zero summands and index the remaining ones by an initial segment of the positive integers. Choose faithful normal states \(\varphi_n\) of \(e_nMe_n\) (background) and put \(\varphi(x)=\sum_n2^{-n}\varphi_n(e_nxe_n)\). If \(x\in(eMe)_+\) and \(\varphi(x)=0\), then \(e_nxe_n=0\), so \(x^{1/2}e_n=0\) for every \(n\), and \(x^{1/2}=x^{1/2}e=0\). For \(e\ne0\), this is a faithful normal positive functional; dividing it by \(\varphi(e)>0\) gives a faithful normal state of \(eMe\). Thus \(e\) is \(\sigma\)-finite. The case \(e=0\) is immediate. For a nonzero projection \(e\) and a unit vector \(\xi\in eH\), the cyclic projection \(p_\xi\) is \(\sigma\)-finite and lies below \(e\) (background). So a maximal family of mutually orthogonal nonzero \(\sigma\)-finite projections has sum \(1\).
 
 (2) Let \(s(h)\) be \(\sigma\)-finite, with a faithful normal state \(\varphi\) of \(s(h)Ms(h)\). If \(h=\sum_ih_i\) with \(h_i\ne0\), then \(h_i\le h\), so \(h_i=s(h)h_is(h)\) and \(\varphi(h_i)>0\). As \(\sum_i\varphi(h_i)=\varphi(h)<\infty\), the set \(I\) is countable. Conversely, if \(s(h)\) is not \(\sigma\)-finite, there are uncountably many mutually orthogonal nonzero projections \(e_\alpha\le s(h)\). With \(r=s(h)-\sum_\alpha e_\alpha\),
 \[
@@ -980,6 +1194,85 @@ So \(F\) is a normal bimodule map for \(N\). Now let \(y\in B(K)_+\) be nonzero.
 
 Conversely, suppose that \(M\) is not atomic. Let \(z_a\) be the supremum of the central supports of the minimal projections of \(M\) (\(z_a=0\) if there are none), and \(z=1-z_a\). If \(z=0\), every nonzero projection \(p\) satisfies \(pc(e)\ne0\) for some minimal \(e\), so \(c(p)c(e)\ne0\), and as in the proof of Lemma 12.2, \(p\) majorizes a minimal projection; then \(M\) would be atomic. So \(z\ne0\). A minimal projection of \(Mz\) is minimal in \(M\), so its central support would lie below both \(z_a\) and \(z\); hence \(Mz\) has no minimal projection. Take a unit vector \(\xi\in zH\) and let \(q\) be the projection onto \(\mathbb C\xi\). By Lemma 12.4, \(E(q)=0\) for every bimodule map \(E\) for \(M\), so \(M\) does not have enough normal bimodule maps. \(\square\)
 
+<span id="atomic-normal-expectations"></span>
+
+**Proposition 12.6** (Separating normal conditional expectations). Let \(M\subseteq B(H)\) be a von Neumann algebra on \(H\ne0\). The following are equivalent:
+
+1. \(M\) is atomic.
+2. There is a family \((E_\lambda)\) of normal positive projections of norm one from \(B(H)\) onto \(M\) such that, for \(X\in B(H)_+\),
+\[
+ E_\lambda(X)=0\text{ for every }\lambda\quad\Longrightarrow\quad X=0.
+\]
+
+The projections can be chosen to be \(M\)-bimodular and to fix \(M\) pointwise. The construction works in every faithful normal representation, with no countability assumption on its Hilbert space or on the center.
+
+**Proof.** Suppose first that \(M\) is atomic. By Lemma 12.2, write \(1=\sum_{i\in I}z_i\) with mutually orthogonal nonzero central projections, and choose normal isomorphisms
+\[
+ \alpha_i:B(K_i)\longrightarrow Mz_i,
+ \qquad K_i\ne0.
+\]
+The isomorphisms exist by Corollary 10.4 of the lesson on projections and types; isomorphisms of von Neumann algebras are normal, as recalled in the background.
+
+*The given representation of each central summand.* Choose an orthonormal basis \((\delta_a)_{a\in A_i}\) of \(K_i\), an index \(o\in A_i\), and put \(e^{(i)}_{ab}=\alpha_i(|\delta_a\rangle\langle\delta_b|)\). These are matrix units with \(\sum_a e^{(i)}_{aa}=z_i\). The Hilbert space \(L_i=e^{(i)}_{oo}H\) is nonzero. The map
+\[
+ U_i:K_i\otimes L_i\longrightarrow z_iH,
+ \qquad U_i(\delta_a\otimes\xi)=e^{(i)}_{ao}\xi
+\]
+extends to a unitary. Indeed, the matrix-unit identities give
+\[
+ \langle e^{(i)}_{ao}\xi,e^{(i)}_{bo}\eta\rangle
+   =\delta_{ab}\langle\xi,\eta\rangle,
+\]
+and the ranges \(e^{(i)}_{aa}H\) have closed linear span \(z_iH\). The finite basis projections \(P_F\) increase to \(1\), and \(P_FAP_F\to A\) strongly with \(\|P_FAP_F\|\le\|A\|\). Thus finite-rank operators are ultraweakly dense in \(B(K_i)\). On matrix units, and then on all of \(B(K_i)\) by normality, this unitary satisfies
+\[
+ \alpha_i(A)=U_i(A\otimes1_{L_i})U_i^*
+ \quad\text{on }z_iH.
+\]
+
+*A norm-one projection for each choice of vectors.* Choose a unit vector \(\xi_i\in L_i\) for every \(i\), and let \(\boldsymbol\xi=(\xi_i)_{i\in I}\). Define the isometry
+\[
+ V_i:K_i\longrightarrow H,
+ \qquad V_i\eta=U_i(\eta\otimes\xi_i),
+\]
+whose range is contained in \(z_iH\). For \(X\in B(H)\), set
+\[
+ E_{\boldsymbol\xi}(X)
+    =\sum_{i\in I}\alpha_i(V_i^*XV_i).
+\tag{12.2}
+\]
+The sum is a bounded diagonal sum over the mutually orthogonal central subspaces \(z_iH\). Its finite partial sums have norm at most \(\|X\|\), converge strongly, and belong to \(M\); hence the sum belongs to \(M\). This also proves linearity and \(\|E_{\boldsymbol\xi}(X)\|\le\|X\|\). If \(X\ge0\), every summand is positive, so the map is positive.
+
+For \(a\in M\), the representation formula gives \(V_i^*aV_i=\alpha_i^{-1}(az_i)\). Thus \(E_{\boldsymbol\xi}(a)=\sum_i az_i=a\). In particular \(E_{\boldsymbol\xi}(1)=1\), its norm is one, its range is exactly \(M\), and it is a projection. The identities
+\[
+ \begin{gathered}
+ aV_i=V_i\alpha_i^{-1}(az_i),\\
+ V_i^*b=\alpha_i^{-1}(bz_i)V_i^*,\\
+ a,b\in M,
+ \end{gathered}
+\]
+give \(E_{\boldsymbol\xi}(aXb)=aE_{\boldsymbol\xi}(X)b\).
+
+To prove normality, let \(X_\gamma\uparrow X\) be a bounded increasing net of positive operators. For each \(i\), compression gives \(V_i^*X_\gamma V_i\uparrow V_i^*XV_i\), and normality of \(\alpha_i\) gives
+\[
+ E_{\boldsymbol\xi}(X_\gamma)z_i
+    \uparrow E_{\boldsymbol\xi}(X)z_i.
+\]
+The supremum \(Y=\sup_\gamma E_{\boldsymbol\xi}(X_\gamma)\) therefore satisfies \(Yz_i=E_{\boldsymbol\xi}(X)z_i\) for every \(i\). Since \(\sum_i z_i=1\), we get \(Y=E_{\boldsymbol\xi}(X)\), proving normality.
+
+*The family separates the positive cone.* Use all choices \(\boldsymbol\xi\) in (12.2). Suppose \(X\ge0\) and \(E_{\boldsymbol\xi}(X)=0\) for every choice. Fix \(i\) and any unit vector \(\xi\in L_i\), completing it by fixed unit vectors in the other \(L_j\). The \(i\)-th component of (12.2), and injectivity of \(\alpha_i\), give \(V_i^*XV_i=0\). Hence
+\[
+ \begin{gathered}
+ \|X^{1/2}U_i(\eta\otimes\xi)\|^2\\
+   =\langle V_i^*XV_i\eta,\eta\rangle=0\\
+ \text{for every }\eta\in K_i.
+ \end{gathered}
+\]
+Product vectors span a dense subspace of \(K_i\otimes L_i\), so \(X^{1/2}\) vanishes on \(z_iH\). This holds for every \(i\), and these subspaces span \(H\); thus \(X=0\).
+
+Conversely, a family as in (2) consists of normal bimodule maps by Tomiyama's theorem. It gives enough such maps in Definition 12.1, so \(M\) is atomic by Theorem 12.5(2). \(\square\)
+
+The separating property belongs to the whole family. It does not assert that one of these expectations is faithful; the multiplicity spaces \(L_i\) can be nonseparable.
+
 ## Exercises
 
 **Exercise 1** (Matrices). Let \(M=M_n(\mathbb C)\). (a) Show that \(h\approx k\) if and only if \(\operatorname{Tr}(h)=\operatorname{Tr}(k)\), for \(h,k\in M_+\). (b) Find an explicit family that implements \(e_{11}\approx\frac1n\cdot1\).
@@ -1009,7 +1302,7 @@ The comparison of projections and the dimension theory of factors go back to Mur
 
 Finding a short proof that a finite algebra carries a trace took several attempts, among them [Dixmier 1949] and [Kadison 1955]. The difficulty is additivity. A dimension function on projections yields a functional that is linear on each commutative subalgebra, and the task is to show that it is additive on elements that do not commute. For \(B(H)\), with \(H\) separable of dimension at least \(3\), [Gleason 1957] showed that every countably additive probability measure on the closed subspaces of \(H\) has the form \(P\mapsto\operatorname{Tr}(\rho P)\) for a positive trace-class operator \(\rho\) of trace \(1\). A short proof of the existence of the center-valued trace on a finite algebra was given in [Yeadon 1971].
 
-The duality between an algebra and the integrable elements of a trace (Theorem 1.1), the Hilbert space of a trace and its two actions belong to the noncommutative integration theory of Segal and of [Dixmier 1953], with further contributions in [Dye 1952] and [Kunze 1958]. A short account of the theory is [Nelson 1974].
+The duality between an algebra and the integrable elements of a trace (Theorem 1.1), the Hilbert space of a trace and its two actions belong to the noncommutative integration theory of Segal and of [Dixmier 1953], with further contributions in [Dye 1952] and [Kunze 1958]. A freely accessible account of the theory is [Kostecki].
 
 Semifiniteness of the tensor product of two semifinite algebras was proved in [Misonou 1954], and the case of type III algebras was settled in [Sakai 1957]; together they give Theorem 6.3. The description of the weakly compact subsets of a predual used in Theorems 5.6 and 5.7 comes from [Akemann 1967].
 
@@ -1019,7 +1312,7 @@ The norms \(\|x\|_1\) and \(\|x\|_2\) are the cases \(p=1,2\) of \(\|x\|_p=\tau(
 
 A faithful normal state that is not a trace still gives a Hilbert space with a left action of \(M\), but \(x\mapsto x^*\) is no longer isometric for its norm, so the conjugation \(J\) of Section 2 is not available directly. The modular operator and the modular conjugation repair this, and the commutation theorem survives in the form \(JMJ=M'\). The lesson *Left and right Hilbert algebras* works out examples of this structure. The lesson Multiplicity of a von Neumann algebra on a Hilbert space compares normal representations through their commutants; there the Hilbert space of a trace is the model of a representation with a conjugation \(J\) such that \(JMJ=M'\).
 
-Traces also enter the topology of unitary groups. For a factor of type II\(_1\), the fundamental group of the unitary group in the norm topology is isomorphic to \(\mathbb R\) under addition [Araki–Smith–Smith 1971], while for many such factors the unitary group is contractible in the strong operator topology, by a theorem of Popa and Takesaki.
+Traces also enter the topology of unitary groups. For a factor of type II\(_1\), the fundamental group of the unitary group in the norm topology is isomorphic to \(\mathbb R\) under addition, as proved in Unitary loops and trace winding, UL-01–UL-07; a free source is [Araki–Smith–Smith 1971], while for many such factors the unitary group is contractible in the strong operator topology, by a theorem of Popa and Takesaki.
 
 ## References
 
@@ -1030,7 +1323,7 @@ Traces also enter the topology of unitary groups. For a factor of type II\(_1\),
 - [Dixmier 1949] J. Dixmier, *Les anneaux d'opérateurs de classe finie*, Ann. Sci. École Norm. Sup. 66 (1949), 209–261. https://doi.org/10.24033/asens.970
 - [Dixmier 1953] J. Dixmier, *Formes linéaires sur un anneau d'opérateurs*, Bull. Soc. Math. France 81 (1953), 9–39. https://doi.org/10.24033/bsmf.1436
 - [Misonou 1954] Y. Misonou, *On the direct product of W\*-algebras*, Tôhoku Math. J. (2) 6 (1954), 189–204. https://www.jstage.jst.go.jp/article/tmj1949/6/2-3/6_2-3_189/_article
-- [Nelson 1974] E. Nelson, *Notes on non-commutative integration*, J. Funct. Anal. 15 (1974), 103–116. https://doi.org/10.1016/0022-1236(74)90014-7. Free at https://linkinghub.elsevier.com/retrieve/pii/0022123674900147
+
 - [Yeadon 1971] F. J. Yeadon, *A new proof of the existence of a trace in a finite von Neumann algebra*, Bull. Amer. Math. Soc. 77 (1971), 257–260. https://doi.org/10.1090/S0002-9904-1971-12708-8. Free at https://www.ams.org/journals/bull/1971-077-02/S0002-9904-1971-12708-8/
 - [Araki–Smith–Smith 1971] H. Araki, M.-S. B. Smith and L. Smith, *On the homotopical significance of the type of von Neumann algebra factors*, Comm. Math. Phys. 22 (1971), 71–88. Free at https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-22/issue-1/On-the-homotopical-significance-of-the-type-of-von-Neumann/cmp/1103857414.full
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*, revised and corrected edition with hyperlinks, free from the author: https://bruceblackadar.com/Mathematics/Cycr.pdf (first published as Encyclopaedia of Mathematical Sciences 122, 2006; the numbering is the same).

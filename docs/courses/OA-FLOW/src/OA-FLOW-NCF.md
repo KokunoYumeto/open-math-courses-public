@@ -2,7 +2,7 @@
 
 # A normal crossed product as a fixed algebra
 
-*New exposition and the finite example are CC0-1.0 to the extent of rights held.*
+*The exposition and finite example are CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be an arbitrary locally compact Hausdorff group, \(M\) a von Neumann algebra, and \(\alpha:G\to\operatorname{Aut}(M)\) a point-ultraweakly continuous action by normal automorphisms. Write \(L=L^2(G)\), with left Haar convention
 
@@ -31,7 +31,7 @@ There is no separability, second-countability, sigma-finiteness, unimodularity o
 
 The substantive crossed-product input is the entire [commutant proof and representation transport](OA-FLOW-CCM.md#ccm-transport), especially [CCM7](OA-FLOW-CCM.md#ccm-7), already at this arbitrary-group scope. [NR1–4](OA-FLOW-NR.md#oa-flow.nr.1) gives the standard implementation, faithful normal regular model and normal representation independence. [AT1–4](OA-FLOW-AT.md#oa-flow.at.1) supplies the exact continuity implications. The elementary tools are [CF1](OA-FLOW-CF.md#oa-flow.cf.1) and [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6), [CP4–6](OA-FLOW-CP.md#oa-flow.cp.4), [BD1/4/5](OA-FLOW-BD.md#oa-flow.bd.1), [ST2](OA-FLOW-ST12.md#oa-flow.st.2), the [SF spectral calculus](OA-FLOW-SF.md#oa-flow.sf1.spectral-calculus), and [L24's Hilbert tensor construction](OA-FLOW-L24.md#oa-flow.grp.vectorintegration).
 
-The historical mathematical statement is Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Theorem X.1.21 and Corollary X.1.22(ii), printed253–255. The present deduction uses the current bounded CCM proof, rather than the historical lesson's then-conditional dual-weight Tomita import. The matrix and normality details are written here. A citation does not supply any internal proof.
+For the fixed-algebra theorem and its commuting-action consequence, see Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Theorem X.1.21 and Corollary X.1.22(ii), pp. 253–255. The proof below starts from the crossed-product commutant theorem and constructs the normal tensor maps explicitly.
 
 <a id="ncf-1"></a>
 
@@ -334,7 +334,7 @@ R\cap Q=
 \]
 Conversely every matrix in the first set is \(\pi(A)+\pi(B)\lambda_1\), so the finite description also follows directly from the generators. Their complex dimensions are \(8\) and \(4\), respectively; the ambient \(P=M_4(\mathbb C)\) has dimension \(16\). The element \(\lambda_1\) belongs to the first algebra and not to \(Q\), since it fails to commute with \(\operatorname{diag}(I_2,0)\). Thus the two conclusions cannot be substituted for each other even in this finite inner-action example.
 
-The complete local conclusions are(NCF19), the commuting-action identity(NCF20), and the support-qualified version(NCF23), at the current CCM/NR foundations. They settle the fixed-algebra component of C2.NC. They do not establish general von Neumann induction, quotient disintegration, a subgroup crossed-product decomposition, or all of C2.
+The fixed-algebra formula (NCF19), the commuting-action identity (NCF20), and the central-support formula (NCF23) apply to arbitrary locally compact Hausdorff groups. The finite example distinguishes the whole crossed product from its coefficient algebra.
 
 <a id="ncf-figure"></a>
 
@@ -390,6 +390,6 @@ It commutes with \(D\), so belongs to \(R\), while
 \]
 Thus it is a concrete witness that \(R\ne R\cap Q\). Blue cells mark entries equal to1, white cells entries equal to0; every entry is labeled exactly. No numerical tolerance determines membership.
 
-The proof of the arbitrary-group result is [NCF1–5](OA-FLOW-NCF.md#ncf-1), using the current CCM and NR bodies. Human source context is Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Theorem X.1.21 and Corollary X.1.22(ii), printed253–255. The illustration and example are independently authored; they reproduce no source figure.
+The proof for arbitrary locally compact Hausdorff groups is [NCF1–5](OA-FLOW-NCF.md#ncf-1), based on the commutant theorem and normal regular representation. See also Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Theorem X.1.21 and Corollary X.1.22(ii), pp. 253–255. The illustration and example are independently authored; they reproduce no source figure.
 
 The renderer writes a \(2800\times1800\) PNG, a deterministic SVG and exact integer data. [Reproduction code](../assets/general-fixed-algebra/render_fixed_algebra.py), [editable SVG](../assets/general-fixed-algebra/assets/fixed-algebra-distinction.svg), [exact data](../assets/general-fixed-algebra/figure-data.json). All are CC0-1.0 to the extent of rights held.

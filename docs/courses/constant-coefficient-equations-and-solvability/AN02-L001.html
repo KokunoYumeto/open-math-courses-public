@@ -1,6 +1,9 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fundamental solutions and the directions an equation uses</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><span class="unlinked">Constant-coefficient equations and solvability</span></nav><h1 id="fundamental-solutions-and-the-directions-an-equation-uses">Fundamental solutions and the directions an equation uses</h1>
-<p>A constant-coefficient equation can act on fewer directions than the surrounding space has. A transport equation differentiates along one line. A planar equation placed in three-dimensional space still acts only in its plane. This lesson identifies that active space directly from the polynomial and proves that it is the smallest linear space that can carry a fundamental solution.</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fundamental solutions and the directions an equation uses</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="fundamental-solutions-and-the-directions-an-equation-uses">Fundamental solutions and the directions an equation uses</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September–October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Hyperplane proof-provider connection and derivative-convention comparison by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the contributing AI. CC0-1.0.</em></p>
+
+<p>A fundamental solution turns a point source into a tool for solving an equation. A constant-coefficient equation can also act on fewer directions than the surrounding space has. We identify its active space and the smallest linear support of an inverse, then construct point-source kernels by iterated integration, radial flux and Gaussian Fourier transformation. The heat and Schrödinger kernels illustrate how support, phase and the distributional initial value fit together.</p>
 <p>The prerequisites are distributional differentiation, convolution with a compactly supported distribution, tensor products of distributions, and elementary linear algebra. Two further distribution results are needed below: existence of a fundamental solution for every nonzero constant-coefficient operator, and the local expansion of a distribution supported on a hyperplane in normal derivatives of delta. Their exact statements are recalled where they are used. Basic references include Melrose's open <em>Differential Analysis</em> notes [Melrose] and the original existence theorem of Malgrange [Malgrange]. Grubb's freely readable lecture chapter §5 [Grubb] supplies tempered-distribution background and the cutoff pairing of compactly supported distributions with exponentials used in Exercise 3. The existence and local hyperplane-structure results retain the precise inputs recalled below.</p>
 <h2 id="from-a-point-source-to-an-inhomogeneous-equation">From a point source to an inhomogeneous equation</h2>
 <p>Our convention is
@@ -53,6 +56,7 @@ P(\xi_1,\xi_2,\xi_3)=(\xi_1+2\xi_2)^2+3(\xi_1+2\xi_2)+2,
 the active space is the line spanned by <span class="math" data-tex="\((1,2,0)\)">\((1,2,0)\)</span>. In contrast, for <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1+i\xi_2\)">\(P(\xi_1,\xi_2)=\xi_1+i\xi_2\)</span>, the active space is all of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>: a real vector <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> is inactive only if <span class="math" data-tex="\(a+ib=0\)">\(a+ib=0\)</span>, hence only if <span class="math" data-tex="\(a=b=0\)">\(a=b=0\)</span>.</p>
 <h2 id="the-smallest-linear-support">The smallest linear support</h2>
 <p>We use the following existence result, due to Malgrange and Ehrenpreis: for every nonzero polynomial <span class="math" data-tex="\(q\)">\(q\)</span> with complex coefficients in <span class="math" data-tex="\(r\)">\(r\)</span> variables, there is <span class="math" data-tex="\(G\in\mathcal D&#x27;(\mathbb R^r)\)">\(G\in\mathcal D&#x27;(\mathbb R^r)\)</span> with <span class="math" data-tex="\(q(D)G=\delta_0\)">\(q(D)G=\delta_0\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> this means division by a nonzero constant. The theorem asserts existence without prescribing support or a normalization among different solutions.</p>
+<p>Theorem 3.1 of <a href="AN02-L004.html#a-smooth-family-with-small-exponential-growth">Regular kernels and changes in the equation</a> proves this existence statement in every positive dimension. It also gives regularity and a prescribed positive exponential growth rate. Its integral construction starts from the <a href="AN02-L120.html">smooth polynomial averaging theorem</a>; from this lesson it uses the convolution identity and the active-space calculation above. Thus the existence assertion used here has an explicit proof. In zero dimensions the polynomial is a nonzero scalar and its inverse acts by scalar division.</p>
 <p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>. There exists a fundamental solution supported in <span class="math" data-tex="\(V_P\)">\(V_P\)</span>. If a fundamental solution is supported in any real linear subspace <span class="math" data-tex="\(W\)">\(W\)</span>, then <span class="math" data-tex="\(V_P\subset W\)">\(V_P\subset W\)</span>.</p>
 <p><strong>Proof of existence.</strong> Choose orthonormal coordinates <span class="math" data-tex="\(x=(y,z)\)">\(x=(y,z)\)</span> in which <span class="math" data-tex="\(V_P\)">\(V_P\)</span> is the <span class="math" data-tex="\(y\)">\(y\)</span>-space and <span class="math" data-tex="\(N_P\)">\(N_P\)</span> is the <span class="math" data-tex="\(z\)">\(z\)</span>-space. By Lemma 2.1 the transformed polynomial is a polynomial <span class="math" data-tex="\(q\)">\(q\)</span> in the <span class="math" data-tex="\(y\)">\(y\)</span>-covariables alone. Choose a fundamental solution <span class="math" data-tex="\(G\)">\(G\)</span> of <span class="math" data-tex="\(q(D_y)\)">\(q(D_y)\)</span>. Then
 <span class="math math-display" data-tex="\[
@@ -70,7 +74,7 @@ E=\sum_{j=0}^r E_j(y)\otimes D_t^j\delta_0(t)
 for a finite <span class="math" data-tex="\(r\)">\(r\)</span>, with distributional coefficients <span class="math" data-tex="\(E_j\)">\(E_j\)</span> in the tangential variables. The coefficients are unique. Finiteness is local; the distribution need not have a globally bounded order.</p>
 <section id="hyperplane-proof-route">
 <h3 id="hyperplane-proof-and-derivative-convention">Hyperplane proof and derivative convention</h3>
-<p>The needed expansion is proved in <a href="prerequisites/jets-supported-distributions-and-local-operators.html#the-exact-structure-on-a-plane">Jets, supported distributions and local operators, Theorem 3.1</a>, together with its local form immediately after the proof. That reading includes the vanishing-jet argument used in the proof as Theorem 1.1. The <a href="../AN-01/reader/AN01-U004.html#the-exact-structure-on-a-plane">current AN-01 edition of the same theorem</a> supplies a second programme route. The bundled reading remains available in this course's download. Its convention uses ordinary derivatives; the following comparison fixes the factors of <span class="math" data-tex="\(i\)">\(i\)</span> and the localization needed here.</p>
+<p>The needed expansion is proved in <a href="prerequisites/jets-supported-distributions-and-local-operators.html#the-exact-structure-on-a-plane">Jets, supported distributions and local operators, Theorem 3.1</a>, together with its local form immediately after the proof. That reading includes the vanishing-jet argument used in the proof as Theorem 1.1. The <a href="prerequisites/jets-supported-distributions-and-local-operators.html#the-exact-structure-on-a-plane">AN-01 chapter reproduced here</a> retains its original proof and attribution. The bundled reading remains available in this course's download. Its convention uses ordinary derivatives; the following comparison fixes the factors of <span class="math" data-tex="\(i\)">\(i\)</span> and the localization needed here.</p>
 <p>Let <span class="math" data-tex="\(E\in\mathcal D&#x27;(\Omega)\)">\(E\in\mathcal D&#x27;(\Omega)\)</span>, where <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is open in <span class="math" data-tex="\(\mathbb R^{n-1}_y\times\mathbb R_t\)">\(\mathbb R^{n-1}_y\times\mathbb R_t\)</span>, and suppose its support is contained in <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Around a point of that plane choose relatively compact product neighborhoods <span class="math" data-tex="\(V\Subset U\Subset\Omega\)">\(V\Subset U\Subset\Omega\)</span>, and a smooth compactly supported function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> equal to one on a neighborhood of <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. The formula
 <span class="math math-display" data-tex="\[
 T(\varphi)=E\bigl(\chi\varphi|_\Omega\bigr)
@@ -193,6 +197,235 @@ S_P(\xi)^2=\xi_1^2\xi_2^2+\xi_1^2+\xi_2^2+1.
 S_P(\xi)^2=\xi_1^2\xi_2^2+\xi_1^2+\xi_2^2+1.
 \]</span>
 It tends to infinity in every direction because <span class="math" data-tex="\(N_P=\{0\}\)">\(N_P=\{0\}\)</span>. This is why <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, rather than <span class="math" data-tex="\(|P|\)">\(|P|\)</span>, is the useful size in local existence estimates.</p>
+<h2 id="iterated-integration-and-point-sources">Iterated integration and point sources</h2>
+<p>Some fundamental solutions can be written directly. Their constants depend on the derivative convention. In this section <span class="math" data-index="addition285-0-0" data-tex="\(\partial^\alpha\)">\(\partial^\alpha\)</span> means ordinary differentiation, while <span class="math" data-index="addition285-0-1" data-tex="\(D^\alpha=(-i)^{|\alpha|}\partial^\alpha\)">\(D^\alpha=(-i)^{|\alpha|}\partial^\alpha\)</span>.</p>
+<p>For one real variable define</p>
+<span class="math math-display" id="proof-eq-M1" data-index="addition285-0-2" data-tex="\[
+ g_0=\delta_0,\qquad
+ g_j(x)=\frac{x^{j-1}}{(j-1)!}\,1_{\{x&gt;0\}},\quad j\geq1.
+ \tag{M1}
+\]">\[
+ g_0=\delta_0,\qquad
+ g_j(x)=\frac{x^{j-1}}{(j-1)!}\,1_{\{x&gt;0\}},\quad j\geq1.
+ \tag{M1}
+\]</span>
+<p>The value at <span class="math" data-index="addition285-0-3" data-tex="\(x=0\)">\(x=0\)</span> of the locally integrable functions is immaterial.</p>
+<p><strong>Theorem 5.1.</strong> For every multi-index <span class="math" data-index="addition285-0-4" data-tex="\(\alpha\in\mathbb N_0^n\)">\(\alpha\in\mathbb N_0^n\)</span>, the tempered distribution</p>
+<span class="math math-display" id="proof-eq-M2" data-index="addition285-0-5" data-tex="\[
+ G_\alpha=\bigotimes_{j=1}^n g_{\alpha_j},\qquad
+ E_\alpha=i^{|\alpha|}G_\alpha
+ \tag{M2}
+\]">\[
+ G_\alpha=\bigotimes_{j=1}^n g_{\alpha_j},\qquad
+ E_\alpha=i^{|\alpha|}G_\alpha
+ \tag{M2}
+\]</span>
+<p>satisfies</p>
+<span class="math math-display" id="proof-eq-M3" data-index="addition285-0-6" data-tex="\[
+              \partial^\alpha G_\alpha=\delta_0,\qquad
+                        D^\alpha E_\alpha=\delta_0.
+ \tag{M3}
+\]">\[
+              \partial^\alpha G_\alpha=\delta_0,\qquad
+                        D^\alpha E_\alpha=\delta_0.
+ \tag{M3}
+\]</span>
+<p>If <span class="math" data-index="addition285-0-7" data-tex="\(\alpha_j=0\)">\(\alpha_j=0\)</span>, the support in that coordinate is the point zero. If <span class="math" data-index="addition285-0-8" data-tex="\(\alpha_j&gt;0\)">\(\alpha_j&gt;0\)</span>, it is the positive closed half-line.</p>
+<p><strong>Proof.</strong> The distributional derivative of <span class="math" data-index="addition285-0-9" data-tex="\(g_1=H\)">\(g_1=H\)</span> is delta, since</p>
+<span class="math math-display" data-index="addition285-0-10" data-tex="\[
+                  -\int_0^\infty\phi&#x27;(x)\,dx=\phi(0).
+\]">\[
+                  -\int_0^\infty\phi&#x27;(x)\,dx=\phi(0).
+\]</span>
+<p>For <span class="math" data-index="addition285-0-11" data-tex="\(j\geq2\)">\(j\geq2\)</span>, integration by parts gives <span class="math" data-index="addition285-0-12" data-tex="\(g&#x27;_j=g_{j-1}\)">\(g&#x27;_j=g_{j-1}\)</span>. There is no term at zero because <span class="math" data-index="addition285-0-13" data-tex="\(x^{j-1}\)">\(x^{j-1}\)</span> vanishes there, and there is no term at infinity because the test is compactly supported. Induction gives <span class="math" data-index="addition285-0-14" data-tex="\(\partial^j g_j=\delta_0\)">\(\partial^j g_j=\delta_0\)</span>.</p>
+<p>The tensor in (M2) has a direct description which also proves temperedness. Put <span class="math" data-index="addition285-0-15" data-tex="\(I=\{j:\alpha_j&gt;0\}\)">\(I=\{j:\alpha_j&gt;0\}\)</span>. Its pairing on a Schwartz test is</p>
+<span class="math math-display" id="proof-eq-M4" data-index="addition285-0-16" data-tex="\[
+ \langle G_\alpha,\phi\rangle
+  =\int_{(0,\infty)^I}
+       \prod_{j\in I}\frac{x_j^{\alpha_j-1}}{(\alpha_j-1)!}\,
+               \phi(x_I,0_{I^c})\,dx_I.
+ \tag{M4}
+\]">\[
+ \langle G_\alpha,\phi\rangle
+  =\int_{(0,\infty)^I}
+       \prod_{j\in I}\frac{x_j^{\alpha_j-1}}{(\alpha_j-1)!}\,
+               \phi(x_I,0_{I^c})\,dx_I.
+ \tag{M4}
+\]</span>
+<p>For <span class="math" data-index="addition285-0-17" data-tex="\(I=\varnothing\)">\(I=\varnothing\)</span>, this means <span class="math" data-index="addition285-0-18" data-tex="\(\phi(0)\)">\(\phi(0)\)</span>. Polynomial weights times the restriction of a Schwartz test to a coordinate plane are integrable. A sufficiently high Schwartz seminorm bounds the absolute value of (M4), proving continuity. Integrate by parts in each positive coordinate, using the one-variable calculation and Fubini. This gives the first equality in (M3); the zero coordinates already carry delta. Finally <span class="math" data-index="addition285-0-19" data-tex="\((-i)^{|\alpha|}i^{|\alpha|}=1\)">\((-i)^{|\alpha|}i^{|\alpha|}=1\)</span>, proving the second equality. Formula (M4) also gives the stated supports. <span class="math" data-index="addition285-0-20" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.2.</strong> On three-dimensional space, the monomial operator <span class="math" data-index="addition285-0-21" data-tex="\(D_1^2D_3^3\)">\(D_1^2D_3^3\)</span> has</p>
+<span class="math math-display" id="proof-eq-M5" data-index="addition285-0-22" data-tex="\[
+       E(x)=\frac i2\,x_{1,+}\,x_{3,+}^{\,2}\delta_0(x_2).
+ \tag{M5}
+\]">\[
+       E(x)=\frac i2\,x_{1,+}\,x_{3,+}^{\,2}\delta_0(x_2).
+ \tag{M5}
+\]</span>
+<p>The factor <span class="math" data-index="addition285-0-23" data-tex="\(i=i^5\)">\(i=i^5\)</span> converts the five ordinary derivatives to <span class="math" data-index="addition285-0-24" data-tex="\(D\)">\(D\)</span>-derivatives. The inactive coordinate carries delta, so the support lies in the smallest linear support plane <span class="math" data-index="addition285-0-25" data-tex="\(x_2=0\)">\(x_2=0\)</span>, and within it in a positive quadrant.</p>
+<h2 id="radial-kernels-and-the-complex-derivative">Radial kernels and the complex derivative</h2>
+<p>Two further normalizations have complete proofs in the linked readings. With <span class="math" data-index="addition285-0-26" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, real area measure <span class="math" data-index="addition285-0-27" data-tex="\(dx\,dy\)">\(dx\,dy\)</span>, and</p>
+<span class="math math-display" data-index="addition285-0-28" data-tex="\[
+             \bar\partial=\tfrac12(\partial_x+i\partial_y),
+             \qquad \partial=\tfrac12(\partial_x-i\partial_y),
+\]">\[
+             \bar\partial=\tfrac12(\partial_x+i\partial_y),
+             \qquad \partial=\tfrac12(\partial_x-i\partial_y),
+\]</span>
+<p>Corollary 1.2 of <span class="unlinked">Cauchy kernels and distributional boundary limits</span> gives</p>
+<span class="math math-display" id="proof-eq-M6" data-index="addition285-0-29" data-tex="\[
+           \bar\partial\frac1{\pi z}=\delta_0,\qquad
+                \partial\frac1{\pi\bar z}=\delta_0. \tag{M6}
+\]">\[
+           \bar\partial\frac1{\pi z}=\delta_0,\qquad
+                \partial\frac1{\pi\bar z}=\delta_0. \tag{M6}
+\]</span>
+<p>Its punctured-circle argument proves the first identity, including the orientation and the factor <span class="math" data-index="addition285-0-30" data-tex="\(\pi\)">\(\pi\)</span>. Conjugating that identity proves the second with the complex-linear distributional convention. These kernels are locally integrable because polar area measure integrates <span class="math" data-index="addition285-0-31" data-tex="\(1/|z|\)">\(1/|z|\)</span> near zero; their decay at infinity makes them tempered.</p>
+<p>For the positive Laplacian <span class="math" data-index="addition285-0-32" data-tex="\(\Delta=\sum_j\partial_j^2\)">\(\Delta=\sum_j\partial_j^2\)</span>, let <span class="math" data-index="addition285-0-33" data-tex="\(\sigma_n\)">\(\sigma_n\)</span> be the area of the unit sphere in <span class="math" data-index="addition285-0-34" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. A fundamental solution is</p>
+<span class="math math-display" id="proof-eq-M7" data-index="addition285-0-35" data-tex="\[
+ \Phi_n(x)=
+ \begin{cases}
+ |x|/2,&amp;n=1,\\
+ (2\pi)^{-1}\log|x|,&amp;n=2,\\
+ ((2-n)\sigma_n)^{-1}|x|^{2-n},&amp;n\geq3.
+ \end{cases}
+ \qquad \Delta\Phi_n=\delta_0.
+ \tag{M7}
+\]">\[
+ \Phi_n(x)=
+ \begin{cases}
+ |x|/2,&amp;n=1,\\
+ (2\pi)^{-1}\log|x|,&amp;n=2,\\
+ ((2-n)\sigma_n)^{-1}|x|^{2-n},&amp;n\geq3.
+ \end{cases}
+ \qquad \Delta\Phi_n=\delta_0.
+ \tag{M7}
+\]</span>
+<p>In dimension one, <span class="math" data-index="addition285-0-36" data-tex="\(|x|/2=g_2-x/2\)">\(|x|/2=g_2-x/2\)</span>, so Theorem 5.1 proves the assertion. In every dimension at least two, the full Green-identity proof is equation (RC4) in <a href="AN02-L196.html#2-the-extra-coordinate-and-its-normalization">Harmonic potentials and real carriers</a>, with its dimension <span class="math" data-index="addition285-0-37" data-tex="\(d\)">\(d\)</span> chosen to be the present <span class="math" data-index="addition285-0-38" data-tex="\(n\)">\(n\)</span>. The outward flux is one. The kernels are locally integrable, with at most polynomial or logarithmic growth at infinity, and hence tempered. The fundamental solution for <span class="math" data-index="addition285-0-39" data-tex="\(-\Delta=\sum_jD_j^2\)">\(-\Delta=\sum_jD_j^2\)</span> is <span class="math" data-index="addition285-0-40" data-tex="\(-\Phi_n\)">\(-\Phi_n\)</span>. This sign change keeps the two Laplacian conventions distinct.</p>
+<p>The complete homogeneous elliptic form, including its polynomial logarithmic term, is proved in <a href="AN02-L213.html">Homogeneous elliptic kernels and logarithmic scaling</a>, Theorem 3.1. Theorem 1.1 there constructs parametrices for arbitrary complex elliptic principal symbols and arbitrary lower-order coefficients.</p>
+<p>Explicit fundamental kernels for all real homogeneous quadratic operators are constructed in <a href="AN02-L214.html">Quadratic boundary kernels and signature phases</a>, Theorems 1.1, 4.1 and 5.1 and Section 6. The proofs retain both boundary signs, determinant and signature phases, zero-source cone layers, the low-dimensional cases and degenerate active-space reductions.</p>
+<h2 id="heat-and-schr-dinger-point-sources">Heat and Schrödinger point sources</h2>
+<p>The same Fourier construction treats diffusion and oscillatory evolution. Let <span class="math" data-index="addition285-1-0" data-tex="\(x\in\mathbb R^n\)">\(x\in\mathbb R^n\)</span>, <span class="math" data-index="addition285-1-1" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, and let <span class="math" data-index="addition285-1-2" data-tex="\(c\in\mathbb C\)">\(c\in\mathbb C\)</span> satisfy <span class="math" data-index="addition285-1-3" data-tex="\(\operatorname{Re}c\geq0\)">\(\operatorname{Re}c\geq0\)</span>. Consider</p>
+<span class="math math-display" id="proof-eq-G1" data-index="addition285-1-4" data-tex="\[
+                            L_c=\partial_t-c\Delta_x. \tag{G1}
+\]">\[
+                            L_c=\partial_t-c\Delta_x. \tag{G1}
+\]</span>
+<p>For <span class="math" data-index="addition285-1-5" data-tex="\(t\geq0\)">\(t\geq0\)</span>, define the spatial tempered distribution</p>
+<span class="math math-display" id="proof-eq-G2" data-index="addition285-1-6" data-tex="\[
+                       K_{c,t}=\mathcal F_x^{-1}
+                                      (e^{-ct|\xi|^2}). \tag{G2}
+\]">\[
+                       K_{c,t}=\mathcal F_x^{-1}
+                                      (e^{-ct|\xi|^2}). \tag{G2}
+\]</span>
+<p>In particular <span class="math" data-index="addition285-1-7" data-tex="\(K_{c,0}=\delta_0\)">\(K_{c,0}=\delta_0\)</span>. A closed-half-plane parameter is important: the multiplier has modulus at most one.</p>
+<p><strong>Theorem 6.1.</strong> There is a unique tempered fundamental solution of <span class="math" data-index="addition285-1-8" data-tex="\(L_c\)">\(L_c\)</span> supported in <span class="math" data-index="addition285-1-9" data-tex="\(t\geq0\)">\(t\geq0\)</span>. It is defined by</p>
+<span class="math math-display" id="proof-eq-G3" data-index="addition285-1-10" data-tex="\[
+ \begin{aligned}
+ \langle E_c,\phi\rangle
+   &amp;=(2\pi)^{-n}\int_0^\infty\int_{\mathbb R^n}
+          e^{-ct|\xi|^2}\,
+          \widehat{\phi(\cdot,t)}(-\xi)\,d\xi\,dt .
+ \end{aligned}
+ \tag{G3}
+\]">\[
+ \begin{aligned}
+ \langle E_c,\phi\rangle
+   &amp;=(2\pi)^{-n}\int_0^\infty\int_{\mathbb R^n}
+          e^{-ct|\xi|^2}\,
+          \widehat{\phi(\cdot,t)}(-\xi)\,d\xi\,dt .
+ \end{aligned}
+ \tag{G3}
+\]</span>
+<p>The map <span class="math" data-index="addition285-1-11" data-tex="\(c\mapsto E_c\)">\(c\mapsto E_c\)</span> is weakly continuous on the closed half-plane. Also <span class="math" data-index="addition285-1-12" data-tex="\(K_{c,t}\to\delta_0\)">\(K_{c,t}\to\delta_0\)</span> in tempered distributions as <span class="math" data-index="addition285-1-13" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>. For <span class="math" data-index="addition285-1-14" data-tex="\(c\ne0\)">\(c\ne0\)</span> and <span class="math" data-index="addition285-1-15" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the spatial distribution is the smooth function</p>
+<span class="math math-display" id="proof-eq-G4" data-index="addition285-1-16" data-tex="\[
+ K_{c,t}(x)=(4\pi ct)^{-n/2}
+                     \exp\!\left(-\frac{|x|^2}{4ct}\right),
+ \tag{G4}
+\]">\[
+ K_{c,t}(x)=(4\pi ct)^{-n/2}
+                     \exp\!\left(-\frac{|x|^2}{4ct}\right),
+ \tag{G4}
+\]</span>
+<p>where the power uses <span class="math" data-index="addition285-1-17" data-tex="\(-\pi/2\leq\arg c\leq\pi/2\)">\(-\pi/2\leq\arg c\leq\pi/2\)</span>.</p>
+<p><strong>Proof of existence and the source.</strong> The partial spatial transform of a Schwartz function is Schwartz in <span class="math" data-index="addition285-1-18" data-tex="\((\xi,t)\)">\((\xi,t)\)</span>. This follows from the same differentiation and integration-by-parts seminorm estimates as the full transform in <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz Fourier foundations</a>. Apply its inverse identities for each fixed <span class="math" data-index="addition285-1-19" data-tex="\(t\)">\(t\)</span>: the partial transform is a continuous isomorphism of the joint Schwartz space, and its transpose is consequently an isomorphism of the joint tempered distributions. For example its product with <span class="math" data-index="addition285-1-20" data-tex="\((1+t)^2(1+|\xi|)^{n+1}\)">\((1+t)^2(1+|\xi|)^{n+1}\)</span>, for <span class="math" data-index="addition285-1-21" data-tex="\(t\geq0\)">\(t\geq0\)</span>, is bounded by a fixed Schwartz seminorm. The inverse of this weight is integrable. Since the exponential in (G3) has modulus at most one, (G3) is a continuous functional on <span class="math" data-index="addition285-1-22" data-tex="\(\mathcal S(\mathbb R^{n+1})\)">\(\mathcal S(\mathbb R^{n+1})\)</span>, with support in <span class="math" data-index="addition285-1-23" data-tex="\(t\geq0\)">\(t\geq0\)</span>.</p>
+<p>In the spatial Fourier variables, integration by parts in time gives</p>
+<span class="math math-display" id="proof-eq-G5" data-index="addition285-1-24" data-tex="\[
+            (\partial_t+c|\xi|^2)
+                        (H(t)e^{-ct|\xi|^2})=\delta_0(t).
+ \tag{G5}
+\]">\[
+            (\partial_t+c|\xi|^2)
+                        (H(t)e^{-ct|\xi|^2})=\delta_0(t).
+ \tag{G5}
+\]</span>
+<p>The boundary at zero is one; the boundary at infinity vanishes on Schwartz tests. Both the differentiated integrals are absolutely convergent after multiplication by a sufficiently high Schwartz weight, so this integration is also valid jointly in <span class="math" data-index="addition285-1-25" data-tex="\((\xi,t)\)">\((\xi,t)\)</span>. Inverse spatial Fourier transformation gives</p>
+<span class="math math-display" id="proof-eq-G6" data-index="addition285-1-26" data-tex="\[
+                             L_cE_c=\delta_0(x,t).
+ \tag{G6}
+\]">\[
+                             L_cE_c=\delta_0(x,t).
+ \tag{G6}
+\]</span>
+<p>For the limit in (G2), test against a spatial Schwartz function and use its integrable Fourier transform to pass to the limit <span class="math" data-index="addition285-1-27" data-tex="\(e^{-ct|\xi|^2}\to1\)">\(e^{-ct|\xi|^2}\to1\)</span>. The same domination in (G3) proves weak continuity when <span class="math" data-index="addition285-1-28" data-tex="\(c\)">\(c\)</span> varies within the closed half-plane. This includes <span class="math" data-index="addition285-1-29" data-tex="\(c=0\)">\(c=0\)</span>, for which <span class="math" data-index="addition285-1-30" data-tex="\(E_0=\delta_0(x)\otimes H(t)\)">\(E_0=\delta_0(x)\otimes H(t)\)</span>.</p>
+<p><strong>Proof of the explicit Gaussian.</strong> For a complex number <span class="math" data-index="addition285-1-31" data-tex="\(a\)">\(a\)</span> with <span class="math" data-index="addition285-1-32" data-tex="\(\operatorname{Re}a&gt;0\)">\(\operatorname{Re}a&gt;0\)</span>, both sides of</p>
+<span class="math math-display" id="proof-eq-G7" data-index="addition285-1-33" data-tex="\[
+ (2\pi)^{-n}\int e^{ix\cdot\xi-a|\xi|^2}\,d\xi
+                  =(4\pi a)^{-n/2}e^{-|x|^2/(4a)}
+ \tag{G7}
+\]">\[
+ (2\pi)^{-n}\int e^{ix\cdot\xi-a|\xi|^2}\,d\xi
+                  =(4\pi a)^{-n/2}e^{-|x|^2/(4a)}
+ \tag{G7}
+\]</span>
+<p>are holomorphic in <span class="math" data-index="addition285-1-34" data-tex="\(a\)">\(a\)</span> on that half-plane. On its compact subsets, a Gaussian dominates all parameter derivatives of the left side. The right side uses the holomorphic logarithm which is real on the positive axis. For real <span class="math" data-index="addition285-1-35" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, (G7) is precisely the Gaussian transform proved in the Fourier foundation reading, Section F3. The scalar identity theorem proves (G7) throughout the connected half-plane. Substitution <span class="math" data-index="addition285-1-36" data-tex="\(a=ct\)">\(a=ct\)</span> proves (G4) when <span class="math" data-index="addition285-1-37" data-tex="\(\operatorname{Re}c&gt;0\)">\(\operatorname{Re}c&gt;0\)</span>.</p>
+<p>If <span class="math" data-index="addition285-1-38" data-tex="\(c=i\sigma\)">\(c=i\sigma\)</span>, with nonzero real <span class="math" data-index="addition285-1-39" data-tex="\(\sigma\)">\(\sigma\)</span>, let <span class="math" data-index="addition285-1-40" data-tex="\(c_\epsilon=\epsilon+i\sigma\)">\(c_\epsilon=\epsilon+i\sigma\)</span>. The Fourier multipliers converge on Schwartz tests by domination with one. The functions in (G4) converge on every spatial compact set with all spatial derivatives, and their moduli are uniformly bounded for each fixed <span class="math" data-index="addition285-1-41" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. They consequently converge as tempered distributions too, by domination with an integrable Schwartz test. The limit is</p>
+<span class="math math-display" id="proof-eq-G8" data-index="addition285-1-42" data-tex="\[
+ K_{i\sigma,t}(x)
+   =(4\pi|\sigma|t)^{-n/2}
+       e^{-i\,\operatorname{sgn}(\sigma)n\pi/4}
+       e^{\,i|x|^2/(4\sigma t)} .
+ \tag{G8}
+\]">\[
+ K_{i\sigma,t}(x)
+   =(4\pi|\sigma|t)^{-n/2}
+       e^{-i\,\operatorname{sgn}(\sigma)n\pi/4}
+       e^{\,i|x|^2/(4\sigma t)} .
+ \tag{G8}
+\]</span>
+<p>This proves (G4) also on both nonzero boundary rays and fixes its phase.</p>
+<p><strong>Proof of causal uniqueness.</strong> Let <span class="math" data-index="addition285-1-43" data-tex="\(w\)">\(w\)</span> be the difference of two tempered inverses with that support. Its partial spatial transform is tempered, is supported in <span class="math" data-index="addition285-1-44" data-tex="\(t\geq0\)">\(t\geq0\)</span>, and satisfies <span class="math" data-index="addition285-1-45" data-tex="\((\partial_t+c|\xi|^2)\widetilde w=0\)">\((\partial_t+c|\xi|^2)\widetilde w=0\)</span>. In ordinary distributions, multiplication by the smooth nowhere-zero function <span class="math" data-index="addition285-1-46" data-tex="\(e^{ct|\xi|^2}\)">\(e^{ct|\xi|^2}\)</span> is legitimate, even when it does not preserve temperedness. Thus <span class="math" data-index="addition285-1-47" data-tex="\(v=e^{ct|\xi|^2}\widetilde w\)">\(v=e^{ct|\xi|^2}\widetilde w\)</span> satisfies <span class="math" data-index="addition285-1-48" data-tex="\(\partial_t v=0\)">\(\partial_t v=0\)</span>.</p>
+<p>Such a distribution has the form <span class="math" data-index="addition285-1-49" data-tex="\(C(\xi)\otimes1\)">\(C(\xi)\otimes1\)</span>. To prove this, choose <span class="math" data-index="addition285-1-50" data-tex="\(\rho\in C_c^\infty(\mathbb R)\)">\(\rho\in C_c^\infty(\mathbb R)\)</span> with integral one. For a compact test <span class="math" data-index="addition285-1-51" data-tex="\(h(\xi,t)\)">\(h(\xi,t)\)</span>, put <span class="math" data-index="addition285-1-52" data-tex="\(I(\xi)=\int h(\xi,s)\,ds\)">\(I(\xi)=\int h(\xi,s)\,ds\)</span>. The function <span class="math" data-index="addition285-1-53" data-tex="\(h-\rho I\)">\(h-\rho I\)</span> has zero time integral and is the time derivative of the compact smooth function</p>
+<span class="math math-display" data-index="addition285-1-54" data-tex="\[
+              \int_{-\infty}^t(h(\xi,s)-\rho(s)I(\xi))\,ds .
+\]">\[
+              \int_{-\infty}^t(h(\xi,s)-\rho(s)I(\xi))\,ds .
+\]</span>
+<p>Therefore <span class="math" data-index="addition285-1-55" data-tex="\(v(h)=v(\rho I)\)">\(v(h)=v(\rho I)\)</span>. The functional <span class="math" data-index="addition285-1-56" data-tex="\(C(I)=v(\rho I)\)">\(C(I)=v(\rho I)\)</span> is a distribution, by continuity of this test map. Now choose <span class="math" data-index="addition285-1-57" data-tex="\(\rho\)">\(\rho\)</span> supported in <span class="math" data-index="addition285-1-58" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>. The support of <span class="math" data-index="addition285-1-59" data-tex="\(v\)">\(v\)</span> is still in <span class="math" data-index="addition285-1-60" data-tex="\(t\geq0\)">\(t\geq0\)</span>, so <span class="math" data-index="addition285-1-61" data-tex="\(C=0\)">\(C=0\)</span>, then <span class="math" data-index="addition285-1-62" data-tex="\(v=0\)">\(v=0\)</span> and <span class="math" data-index="addition285-1-63" data-tex="\(w=0\)">\(w=0\)</span>. <span class="math" data-index="addition285-1-64" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For real <span class="math" data-index="addition285-1-65" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, (G4) is the heat kernel. For the operator <span class="math" data-index="addition285-1-66" data-tex="\(i\partial_t+\Delta_x=iL_i\)">\(i\partial_t+\Delta_x=iL_i\)</span>, the causal inverse is <span class="math" data-index="addition285-1-67" data-tex="\(-iE_i\)">\(-iE_i\)</span>; multiplication of the operator by <span class="math" data-index="addition285-1-68" data-tex="\(i\)">\(i\)</span> divides its fundamental solution by <span class="math" data-index="addition285-1-69" data-tex="\(i\)">\(i\)</span>.</p>
+<p>The oscillatory expression (G8) is asserted as a function only for <span class="math" data-index="addition285-1-70" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Its causal extension at <span class="math" data-index="addition285-1-71" data-tex="\(t=0\)">\(t=0\)</span> is (G3). In dimensions <span class="math" data-index="addition285-1-72" data-tex="\(n\geq2\)">\(n\geq2\)</span>, its absolute value is not locally integrable on a spatial box times a time interval starting at zero, because it is a constant times <span class="math" data-index="addition285-1-73" data-tex="\(t^{-n/2}\)">\(t^{-n/2}\)</span>. The joint distribution is nevertheless well defined by (G3).</p>
+<p><strong>Example 6.2 (a Gaussian packet).</strong> For <span class="math" data-index="addition285-1-74" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-index="addition285-1-75" data-tex="\(t\geq0\)">\(t\geq0\)</span>, the evolution of <span class="math" data-index="addition285-1-76" data-tex="\(g(x)=e^{-a|x|^2}\)">\(g(x)=e^{-a|x|^2}\)</span> is</p>
+<span class="math math-display" id="proof-eq-G9" data-index="addition285-1-77" data-tex="\[
+ K_{c,t}*g(x)=(1+4act)^{-n/2}
+           \exp\!\left(-\frac{a|x|^2}{1+4act}\right).
+ \tag{G9}
+\]">\[
+ K_{c,t}*g(x)=(1+4act)^{-n/2}
+           \exp\!\left(-\frac{a|x|^2}{1+4act}\right).
+ \tag{G9}
+\]</span>
+<p>Indeed <span class="math" data-index="addition285-1-78" data-tex="\(\widehat g=(\pi/a)^{n/2}e^{-|\xi|^2/(4a)}\)">\(\widehat g=(\pi/a)^{n/2}e^{-|\xi|^2/(4a)}\)</span>; multiply by the multiplier in (G2) and apply (G7) with parameter <span class="math" data-index="addition285-1-79" data-tex="\(ct+1/(4a)\)">\(ct+1/(4a)\)</span>, whose real part is positive. This derives both the coefficient and exponent, including the imaginary boundary cases and <span class="math" data-index="addition285-1-80" data-tex="\(c=0\)">\(c=0\)</span>.</p>
+<p>If <span class="math" data-index="addition285-1-81" data-tex="\(c=i\sigma\)">\(c=i\sigma\)</span>, its squared modulus is</p>
+<span class="math math-display" id="proof-eq-G10" data-index="addition285-1-82" data-tex="\[
+ (1+16a^2\sigma^2t^2)^{-n/2}
+       \exp\!\left(-\frac{2a|x|^2}{1+16a^2\sigma^2t^2}\right).
+ \tag{G10}
+\]">\[
+ (1+16a^2\sigma^2t^2)^{-n/2}
+       \exp\!\left(-\frac{2a|x|^2}{1+16a^2\sigma^2t^2}\right).
+ \tag{G10}
+\]</span>
+<p>Integrating this real Gaussian gives the constant squared <span class="math" data-index="addition285-1-83" data-tex="\(L^2\)">\(L^2\)</span> norm <span class="math" data-index="addition285-1-84" data-tex="\((\pi/(2a))^{n/2}\)">\((\pi/(2a))^{n/2}\)</span>. The packet spreads, while its <span class="math" data-index="addition285-1-85" data-tex="\(L^2\)">\(L^2\)</span> norm remains fixed.</p>
 <h2 id="worked-transport-model">Worked transport model</h2>
 <p>Let <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> be a real vector, <span class="math" data-tex="\(c\in\mathbb C\)">\(c\in\mathbb C\)</span>, and <span class="math" data-tex="\(L=v\cdot\nabla_x+c\)">\(L=v\cdot\nabla_x+c\)</span>. Define
 <span class="math math-display" data-tex="\[
@@ -258,13 +491,27 @@ The contradiction proves the assertion. Compact support of <span class="math" da
 <p><strong>Solution.</strong> For every real <span class="math" data-tex="\(v\)">\(v\)</span>,
 <span class="math" data-tex="\(v\cdot\nabla P(\xi)=(Av)\cdot\nabla p(A\xi)\)">\(v\cdot\nabla P(\xi)=(Av)\cdot\nabla p(A\xi)\)</span>.
 Surjectivity implies that this vanishes for all <span class="math" data-tex="\(\xi\)">\(\xi\)</span> precisely when <span class="math" data-tex="\(Av\)">\(Av\)</span> is inactive for <span class="math" data-tex="\(p\)">\(p\)</span>. Under the stated hypothesis, <span class="math" data-tex="\(N_P=\ker A\)">\(N_P=\ker A\)</span>, so <span class="math" data-tex="\(V_P=(\ker A)^\perp=\operatorname{ran}A^T\)">\(V_P=(\ker A)^\perp=\operatorname{ran}A^T\)</span>. In general <span class="math" data-tex="\(N_P=A^{-1}N_p\)">\(N_P=A^{-1}N_p\)</span>; taking orthogonal complements gives <span class="math" data-tex="\(V_P=A^T(N_p^\perp)\)">\(V_P=A^T(N_p^\perp)\)</span>. The last identity follows because <span class="math" data-tex="\(A^T\)">\(A^T\)</span> is injective and its image of <span class="math" data-tex="\(N_p^\perp\)">\(N_p^\perp\)</span> is perpendicular to exactly <span class="math" data-tex="\(A^{-1}N_p\)">\(A^{-1}N_p\)</span>.</p>
+<p><strong>Exercise 5 (intermediate).</strong> Find the fundamental solution in (M2) for <span class="math" data-index="addition285-2-0" data-tex="\(D_1D_2^2\)">\(D_1D_2^2\)</span> on <span class="math" data-index="addition285-2-1" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. Explain why replacing the third-coordinate delta by the constant one changes the source.</p>
+<p><strong>Solution.</strong> The total order is three, so the kernel is <span class="math" data-index="addition285-2-2" data-tex="\(-iH(x_1)x_{2,+}\delta_0(x_3)\)">\(-iH(x_1)x_{2,+}\delta_0(x_3)\)</span>. Formula (M3) gives the point source in all three coordinates. Replacing the last factor by one instead gives <span class="math" data-index="addition285-2-3" data-tex="\(\delta_0(x_1)\delta_0(x_2)\otimes1(x_3)\)">\(\delta_0(x_1)\delta_0(x_2)\otimes1(x_3)\)</span>: there is no differentiation in the third coordinate to change that factor into delta. Its support is an entire line, and it is not the three-dimensional point source.</p>
+<p><strong>Exercise 6 (advanced).</strong> In two spatial dimensions let <span class="math" data-index="addition285-2-4" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Give the causal fundamental solution for <span class="math" data-index="addition285-2-5" data-tex="\(i\partial_t+a\Delta_x\)">\(i\partial_t+a\Delta_x\)</span>, including its phase for <span class="math" data-index="addition285-2-6" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and explain how it is defined at <span class="math" data-index="addition285-2-7" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p><strong>Solution.</strong> The operator is <span class="math" data-index="addition285-2-8" data-tex="\(iL_{ia}\)">\(iL_{ia}\)</span>, so its inverse is <span class="math" data-index="addition285-2-9" data-tex="\(-iE_{ia}\)">\(-iE_{ia}\)</span>. In (G8) take <span class="math" data-index="addition285-2-10" data-tex="\(n=2\)">\(n=2\)</span> and <span class="math" data-index="addition285-2-11" data-tex="\(\sigma=a\)">\(\sigma=a\)</span>. Since <span class="math" data-index="addition285-2-12" data-tex="\(e^{-i\pi/2}=-i\)">\(e^{-i\pi/2}=-i\)</span>, its value for <span class="math" data-index="addition285-2-13" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> is</p>
+<span class="math math-display" id="proof-eq-G11" data-index="addition285-2-14" data-tex="\[
+             -\frac1{4\pi at}\exp\!\left(\frac{i|x|^2}{4at}\right).
+ \tag{G11}
+\]">\[
+             -\frac1{4\pi at}\exp\!\left(\frac{i|x|^2}{4at}\right).
+ \tag{G11}
+\]</span>
+<p>Its absolute value has divergent time integral near zero on every spatial box of positive area. Thus an unqualified ordinary locally integrable extension would be incorrect. Its precise extension is <span class="math" data-index="addition285-2-15" data-tex="\(-i\)">\(-i\)</span> times (G3), whose spatial Fourier expression is <span class="math" data-index="addition285-2-16" data-tex="\(-iH(t)e^{-iat|\xi|^2}\)">\(-iH(t)e^{-iat|\xi|^2}\)</span>. Equation (G5), multiplied by the operator factor <span class="math" data-index="addition285-2-17" data-tex="\(i\)">\(i\)</span>, gives the full space-time point source.</p>
 <h2 id="references">References</h2>
 <ul>
 <li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, section on constant-coefficient differential operators. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/resources/section11/">Open course notes</a>.</li>
 <li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, author-hosted lecture chapter §5, <em>Fourier transformation of distributions</em>: §§5.1–5.3, Example 5.11 and Remark 5.18 (native pp. 5.11 and 5.14–5.15). <a href="https://www.math.ku.dk/~grubb/dist5.pdf">Exact freely readable chapter</a>. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>.</li>
 <li>[Malgrange] Bernard Malgrange, <em>Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution</em>, Annales de l'Institut Fourier <strong>6</strong> (1956), 271–355. <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.65/">Original article</a>.</li>
 <li>[Ehrenpreis] Leon Ehrenpreis, <em>Solution of some problems of division. I. Division by a polynomial of derivation</em>, American Journal of Mathematics <strong>76</strong> (1954), 883–903.</li>
+<li><strong>[Hörmander II]</strong> Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; 2005 reprint. Fundamental solutions, localization of polynomials and regularity.</li>
+<li>[Hörmander I] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990. Distributional point sources, Cauchy kernels and Gaussian evolution.</li>
 </ul>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
-<p><em>Hyperplane proof-provider connection and derivative-convention comparison by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the contributing AI. CC0-1.0.</em></p>
-</main></body></html>
+
+
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

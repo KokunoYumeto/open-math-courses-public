@@ -1,6 +1,6 @@
 # Multiplier ultraproducts and normal embeddings
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 The [central sequence algebra](central-sequence-algebras-and-exact-lifts.md) uses sequences that asymptotically commute with normal functionals. A larger construction uses every bounded sequence that preserves the sequences vanishing strong*. This multiplier condition is essential for a nontracial algebra. We will prove that the resulting quotient is a von Neumann algebra, with normal copies of the original algebra and its central sequence algebra.
 
@@ -95,36 +95,38 @@ p_Y(X)=\|X\|_{\varphi^\omega}+\|XY\|_{\varphi^\omega}.
 \tag{7}
 \]
 
-**Proof.** From a \(p_Y\)-Cauchy sequence choose a subsequence \(X_r\) with
-\(p_Y(X_{r+1}-X_r)<2^{-r-1}\).
-Choose self-adjoint contraction representatives \(a_r(k)\in N_\omega\). Such lifts exist: take a self-adjoint lift and apply the continuous scalar clipping function to \([-1,1]\). Fix a representative \(y(k)\) of \(Y\).
+**Proof.** Select a subsequence \(X_r\) of the given Cauchy sequence so that
+\(p_Y(X_r-X_p)<2^{-p-2}\) whenever \(r>p\). Choose self-adjoint contraction representatives \(a_r(n)\in N_\omega\), using a self-adjoint lift followed by continuous clipping to \([-1,1]\). Fix a multiplier representative \(y(n)\) of \(Y\).
 
-Inductively modify the representative of \(X_{r+1}\) outside an \(\omega\)-large set so that, at every coordinate \(k\),
+For every \(r\), only finitely many earlier rows \(p<r\) need to be tested. Their quotient distances are the ultralimits of the corresponding state seminorms. We can therefore choose decreasing sets \(A_r\in\omega\), with \(A_r\subseteq\{n\ge r\}\), such that
 \[
-\|a_{r+1}(k)-a_r(k)\|_\varphi
-+\|(a_{r+1}(k)-a_r(k))y(k)\|_\varphi
-\le2^{-r}.
+n\in A_r,\quad p<r
+\quad\Longrightarrow\quad
+\|a_r(n)-a_p(n)\|_\varphi+
+\|(a_r(n)-a_p(n))y(n)\|_\varphi<2^{-p}.
 \tag{8}
 \]
-The original differences have ultralimit less than \(2^{-r-1}\), so the set where (8) holds belongs to \(\omega\). Outside it set \(a_{r+1}(k)=a_r(k)\). This changes the sequence by an element of \(I_\omega\), preserving both its multiplier property and its quotient element.
-
-For each fixed \(k\), the self-adjoint contractions \(a_r(k)\) are Cauchy in \(\|\cdot\|_\varphi\), hence in the bounded strong* topology. Their limit \(a(k)\in M\) is a self-adjoint contraction. Telescoping (8), including its action on the fixed vector \(y(k)\Omega_\varphi\), gives
+Start with \(A_0=\mathbb N\), and intersect the finitely many sets where these inequalities hold with \(A_{r-1}\) and the indicated cofinite set. Put \(r(n)=\max\{r\le n:n\in A_r\}\), or zero if the set is empty, and take \(a(n)=a_{r(n)}(n)\), with \(a_0(n)=0\). Each \(a(n)\) is a self-adjoint contraction. For every fixed \(p\), the set \(A_{p+1}\) makes \(r(n)>p\), so (8) gives
 \[
-\|a(k)-a_r(k)\|_\varphi+
-\|(a(k)-a_r(k))y(k)\|_\varphi
-\le2^{1-r}.
+\lim_{n\to\omega}
+\bigl(\|a(n)-a_p(n)\|_\varphi+
+\|(a(n)-a_p(n))y(n)\|_\varphi\bigr)
+\le2^{-p}.
 \tag{9}
 \]
+This selection uses only finite intersections at each stage; no common intersection of all \(A_r\) is required.
 
-We must check that \(a=(a(k))\) is a multiplier. For bounded \(z=(z(k))\in I_\omega\), with \(\|z(k)\|\le K\),
+To prove that \(a\) is a multiplier, let \(z=(z(n))\in I_\omega\), with \(\|z(n)\|\le K\). Since every fixed row \(a_p\) is a multiplier, the triangle inequality and (9) give
 \[
-\|z(k)a(k)\|_\varphi
-\le\|z(k)a_r(k)\|_\varphi+K\,2^{1-r}.
+\lim_{n\to\omega}\|z(n)a(n)\|_\varphi
+\le\lim_{n\to\omega}\|z(n)a_p(n)\|_\varphi
++K\lim_{n\to\omega}\|a(n)-a_p(n)\|_\varphi
+\le K2^{-p}.
 \tag{10}
 \]
-The first term tends to zero along \(\omega\) for fixed \(r\), since \(a_r\in N_\omega\). Letting \(r\to\infty\) shows that \(za\) vanishes in its first seminorm. Its adjoint seminorm is bounded by \(\|z(k)^*\|_\varphi\), since \(a(k)\) is a self-adjoint contraction. Apply the same reasoning to \(z^*\) to obtain both seminorms for \(az\) as well. Thus \(a\in N_\omega\).
+Let \(p\) increase to infinity. This proves the first null seminorm of \(za\). Self-adjointness gives \((za)^*=az^*\), and contractivity gives \(\|a(n)z(n)^*\|_\varphi\le\|z(n)^*\|_\varphi\); hence its other null seminorm vanishes as well. Apply the same argument to \(z^*\) to obtain \(z^*a\in I_\omega\), whose adjoint is \(az\). Thus both \(za\) and \(az\) belong to \(I_\omega\), and \(a\in N_\omega\).
 
-Equation (9) now passes to the quotient, giving \(p_Y(\pi(a)-X_r)\le2^{1-r}\). The selected subsequence converges, hence so does the original Cauchy sequence. \(\square\)
+We may now pass (9) to the quotient: \(p_Y(\pi(a)-X_p)\le2^{-p}\). The selected subsequence converges in the self-adjoint unit ball, and its original Cauchy sequence has the same limit. This proves completeness. \(\square\)
 
 **Theorem 3.2.** \(M^\omega\) is a von Neumann algebra in this GNS representation, and \(\varphi^\omega\) is faithful normal.
 
@@ -298,9 +300,9 @@ Thus \(a_n-A\in I_\omega\), and every quotient element is constant. Normality an
 
 *Solution.* The bounded difference is zero on that set, so its symmetric seminorm has ultralimit zero. It belongs to \(I_\omega\), which is an ideal inside \(N_\omega\) and itself lies in \(N_\omega\). Adding it preserves multiplier membership and the quotient image.
 
-**Exercise 7.** Explain why self-adjointness is used when showing that the coordinate limit in Lemma 3.1 is a multiplier.
+**Exercise 7.** Explain why self-adjointness is used in the multiplier step of Lemma 3.1.
 
-*Solution.* The uniform one-sided estimate (9) controls the error in \(za\), giving its first seminorm by (10). For its adjoint, self-adjointness gives \((za)^*=az^*\), whose first seminorm is bounded directly by the null seminorm of \(z^*\). Applying the same argument to \(z^*\) handles \(az\). A one-sided bound on a general nonsymmetric sequence would not supply these adjoint identities.
+*Solution.* The diagonal representative is a self-adjoint contraction at every coordinate. Its one-sided state distance from each fixed multiplier row has ultralimit at most \(2^{-p}\). For a bounded null sequence \(z\), (10) therefore makes the first seminorm of \(za\) vanish as \(p\) increases. Self-adjointness gives \((za)^*=az^*\), whose first seminorm is at most \(\|z^*\|_\varphi\). Applying this same pair of estimates to \(z^*\) makes \(z^*a\) null in both seminorms; its adjoint \(az\) is consequently null as well. Thus both products belong to \(I_\omega\). A one-sided estimate for a general nonsymmetric representative would not give these adjoint identities or both multiplier conditions.
 
 **Exercise 8.** In Theorem 3.2, why do all the limits \(X_Y\) agree?
 
@@ -332,6 +334,6 @@ Thus \(a_n-A\in I_\omega\), and every quotient element is constant. Normality an
 
 ## References
 
-Adrian Ocneanu's free [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Sections 5.1–5.2, printed pp.47–52 (PDF pp.61–66), supplies the multiplier criterion, self-adjoint completeness, von Neumann quotient, normal subalgebras and convergent automorphism construction. Section 5.1 assumes separable predual. The local completeness and normality proofs in Sections 1–4 use a faithful normal state and no predual countability; Section 5 explicitly retains separable predual. The multiplier criterion's converse, both state seminorms and the arbitrary strong-Cauchy net are supplied in full. A prescribed restriction to the constant copy does not give uniqueness on varying quotient elements.
+Adrian Ocneanu's freely accessible [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Sections 5.1–5.2, printed pp.47–52 (PDF pp.61–66), gives the normalizing quotient, two-vector completeness, normal subalgebras and convergent automorphism families. Its completeness proof modifies representatives and takes an operator limit at each coordinate. Here finite simultaneous row tests select one diagonal representative, and the limiting multiplier estimates establish both null seminorms before passing to the quotient. Sections 1–4 and 6–7 require a given faithful normal state; the centralizing subalgebra in Section 5 explicitly retains separable predual. The normality proof handles arbitrary strong-Cauchy nets, and a semi-liftable automorphism keeps its chosen family.
 
-Hiroshi Ando and Uffe Haagerup, [*Ultraproducts of von Neumann algebras*](https://arxiv.org/pdf/1212.5457v3), v3, Sections 3.1–3.3, especially Lemmas 3.10 and 3.13 and Propositions 3.14–3.15, provide a separate full corner realization for sigma-finite algebras. The referred left-ideal correspondence in their Theorem 3.9 is not proved in that paper and is not a substitute for the local completeness argument. Kaplansky density, faithful-state topology and type I projection foundations remain explicit prerequisites. Source reading and expression-reuse permissions are recorded separately.
+Hiroshi Ando and Uffe Haagerup, [*Ultraproducts of von Neumann algebras*](https://arxiv.org/pdf/1212.5457v3), v3, Lemma 3.13, gives the simultaneous-vector diagonal method comparison. Lemmas 3.8 and 3.10, Propositions 3.14–3.15 and Theorem 3.7 give a separate support-corner realization for sigma-finite algebras. Their Theorem 3.9 quotes the left-ideal/hereditary correspondence from another text; no such correspondence or standard-form corner construction is a premise of the direct completeness argument here. Full faithful-state topology, quotient functional calculus and bounded density proofs are supplied in the programme. Human-source rights remain separate from the course dedication.

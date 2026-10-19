@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>One contour for a compact family of equations</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L202.html">Previous lesson</a> · <a href="#1-the-exact-theorem">The theorem and proof</a> · <a href="src/one-contour-for-a-compact-family-of-equations.md">Editable source</a></nav><h1 id="one-contour-for-a-compact-family-of-equations">One contour for a compact family of equations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Dividing a Fourier transform by a polynomial requires a place where the polynomial does not vanish. For a family of equations, the same place must work for every member. This lesson constructs bounded real vectors whose complex rotations give a common denominator estimate at every real frequency. The estimate survives any prescribed bounded complex translation. The vector field is measurable and can be constant on lattice cubes; no continuity of that field is required.</p>
+<p>Read <a href="AN02-L006.html">Rescaled symbols and stable strength</a> and <a href="AN02-L008.html">The geometry of coefficients and strength</a>. Two polynomials are equally strong when their full derivative norms on real frequency space bound one another by positive constants. The compact-family estimate in the second lesson is the only family comparison used here. <a href="AN02-L004.html">Regular kernels and changes in the equation</a> explains how denominator bounds enter the construction of parameter-dependent inverses.</p>
+<p>Basic references are Mantlik's original analytic-parameter paper [Mantlik], Malgrange's existence and approximation paper [Malgrange], and Grubb's lecture notes [Grubb]. The proof uses positive derivative masses at three scales. A finite list of radii isolates one homogeneous order, and rotating a real point preserves its modulus while the other orders remain small.</p>
+<h2 id="1-the-exact-theorem">1. The exact theorem</h2>
+<p>Fix <span class="math" data-index="0" data-tex="\(n\ge1\)">\(n\ge1\)</span>, a nonzero <span class="math" data-index="1" data-tex="\(Q\in\mathbb C[\xi_1,\ldots,\xi_n]\)">\(Q\in\mathbb C[\xi_1,\ldots,\xi_n]\)</span>, and a compact set <span class="math" data-index="2" data-tex="\(K\subset E(Q)\)">\(K\subset E(Q)\)</span>. Here <span class="math" data-index="3" data-tex="\(E(Q)\)">\(E(Q)\)</span> is the set of polynomials equally strong as <span class="math" data-index="4" data-tex="\(Q\)">\(Q\)</span>, in the finite-dimensional coefficient space of weaker polynomials. Put <span class="math" data-index="5" data-tex="\(m=\deg Q\)">\(m=\deg Q\)</span>. All members of <span class="math" data-index="6" data-tex="\(E(Q)\)">\(E(Q)\)</span> have degree at most <span class="math" data-index="7" data-tex="\(m\)">\(m\)</span>. For any polynomial of that degree bound define</p>
+<span class="math math-display" id="learner-eq-UC1" data-index="8" data-tex="\[
+J_P(a,t)=\sum_{|\alpha|\le m}t^{|\alpha|}
+                            |\partial^\alpha P(a)|,
+\qquad a\in\mathbb C^n,\quad t&gt;0.
+\tag{UC1}
+\]">\[
+J_P(a,t)=\sum_{|\alpha|\le m}t^{|\alpha|}
+                            |\partial^\alpha P(a)|,
+\qquad a\in\mathbb C^n,\quad t&gt;0.
+\tag{UC1}
+\]</span>
+<p>In particular <span class="math" data-index="9" data-tex="\(S_P(\xi)\le J_P(\xi,1)\le\sqrt{\binom{n+m}{n}}S_P(\xi)\)">\(S_P(\xi)\le J_P(\xi,1)\le\sqrt{\binom{n+m}{n}}S_P(\xi)\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> For every <span class="math" data-index="10" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span>, there are <span class="math" data-index="11" data-tex="\(A\ge1\)">\(A\ge1\)</span> and a bounded Borel map
+<span class="math" data-index="12" data-tex="\(\eta:\mathbb R^n\to\mathbb R^n\)">\(\eta:\mathbb R^n\to\mathbb R^n\)</span> such that</p>
+<span class="math math-display" id="learner-eq-UC2" data-index="13" data-tex="\[
+J_P(\xi,1)\le
+A\,|P(\xi+\zeta+z\eta(\xi))|
+\tag{UC2}
+\]">\[
+J_P(\xi,1)\le
+A\,|P(\xi+\zeta+z\eta(\xi))|
+\tag{UC2}
+\]</span>
+<p>for every <span class="math" data-index="14" data-tex="\(P\in K\)">\(P\in K\)</span>, every real <span class="math" data-index="15" data-tex="\(\xi\)">\(\xi\)</span>, every <span class="math" data-index="16" data-tex="\(\zeta\in\mathbb C^n\)">\(\zeta\in\mathbb C^n\)</span> with <span class="math" data-index="17" data-tex="\(|\zeta|_\infty\le\rho\)">\(|\zeta|_\infty\le\rho\)</span>, and every complex <span class="math" data-index="18" data-tex="\(z\)">\(z\)</span> with <span class="math" data-index="19" data-tex="\(|z|=1\)">\(|z|=1\)</span>. The map can be chosen constant on each half-open unit cube <span class="math" data-index="20" data-tex="\(a+[0,1)^n\)">\(a+[0,1)^n\)</span>, <span class="math" data-index="21" data-tex="\(a\in\mathbb Z^n\)">\(a\in\mathbb Z^n\)</span>.</p>
+<p>There is no hypoellipticity, ellipticity, connectedness or small-neighborhood assumption on <span class="math" data-index="22" data-tex="\(K\)">\(K\)</span>. The same map is used for all its members and for all permitted complex shifts. Empty <span class="math" data-index="23" data-tex="\(K\)">\(K\)</span> is vacuous. If <span class="math" data-index="24" data-tex="\(m=0\)">\(m=0\)</span>, all polynomials are nonzero constants and <span class="math" data-index="25" data-tex="\(\eta=0,A=1\)">\(\eta=0,A=1\)</span> prove the assertion. Hence assume <span class="math" data-index="26" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-index="27" data-tex="\(K\ne\varnothing\)">\(K\ne\varnothing\)</span> below.</p>
+<p>We use Proposition 5.1 of <a href="AN02-L008.html">The geometry of coefficients and strength</a>, which proves uniform scaled comparison on compact equally strong families, and Lemma 1.1 of <a href="AN02-L006.html">Rescaled symbols and stable strength</a>, which compares the jet norm with a real-ball supremum. The complex-shift and positive-coefficient estimates are proved below.</p>
+<h2 id="2-jet-shifts-and-a-common-real-point">2. Jet shifts and a common real point</h2>
+<p>For <span class="math" data-index="28" data-tex="\(u\ge0\)">\(u\ge0\)</span>, put</p>
+<span class="math math-display" data-index="29" data-tex="\[
+E_m(u)=\sum_{|\beta|\le m}\frac{u^{|\beta|}}{\beta!}.
+\]">\[
+E_m(u)=\sum_{|\beta|\le m}\frac{u^{|\beta|}}{\beta!}.
+\]</span>
+<p>The zero-power term is one. For every complex base point <span class="math" data-index="30" data-tex="\(a\)">\(a\)</span>, every complex shift <span class="math" data-index="31" data-tex="\(h\)">\(h\)</span> with <span class="math" data-index="32" data-tex="\(|h|_\infty\le ut\)">\(|h|_\infty\le ut\)</span>, and every <span class="math" data-index="33" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the finite Taylor formula gives</p>
+<span class="math math-display" id="learner-eq-UC3" data-index="34" data-tex="\[
+J_P(a+h,t)\le E_m(u)J_P(a,t).
+\tag{UC3}
+\]">\[
+J_P(a+h,t)\le E_m(u)J_P(a,t).
+\tag{UC3}
+\]</span>
+<p>Indeed, expand every <span class="math" data-index="35" data-tex="\(\partial^\alpha P(a+h)\)">\(\partial^\alpha P(a+h)\)</span>. For each total derivative index <span class="math" data-index="36" data-tex="\(\gamma=\alpha+\beta\)">\(\gamma=\alpha+\beta\)</span>, its coefficient after multiplication by <span class="math" data-index="37" data-tex="\(t^{|\alpha|}\)">\(t^{|\alpha|}\)</span> is bounded by</p>
+<span class="math math-display" data-index="38" data-tex="\[
+t^{|\gamma|}\sum_{\beta\le\gamma}
+                              \frac{u^{|\beta|}}{\beta!}
+\le t^{|\gamma|}E_m(u).
+\]">\[
+t^{|\gamma|}\sum_{\beta\le\gamma}
+                              \frac{u^{|\beta|}}{\beta!}
+\le t^{|\gamma|}E_m(u).
+\]</span>
+<p>Summing proves (UC3). Applying it with base <span class="math" data-index="39" data-tex="\(a+h\)">\(a+h\)</span> and shift <span class="math" data-index="40" data-tex="\(-h\)">\(-h\)</span> gives the reverse comparison with the same constant.</p>
+<p>Let <span class="math" data-index="41" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be any compact subset of <span class="math" data-index="42" data-tex="\(E(Q)\)">\(E(Q)\)</span>, enlarged to include <span class="math" data-index="43" data-tex="\(Q\)">\(Q\)</span> if necessary. Uniform scaled comparison and equivalence of the finite <span class="math" data-index="44" data-tex="\(\ell^1\)">\(\ell^1\)</span> and <span class="math" data-index="45" data-tex="\(\ell^2\)">\(\ell^2\)</span> derivative norms give a constant <span class="math" data-index="46" data-tex="\(B\ge1\)">\(B\ge1\)</span> such that</p>
+<span class="math math-display" id="learner-eq-UC4" data-index="47" data-tex="\[
+B^{-1}J_Q(\xi,t)\le J_P(\xi,t)\le B J_Q(\xi,t)
+\quad(P\in\mathcal P,\ \xi\in\mathbb R^n,\ t\ge1).
+\tag{UC4}
+\]">\[
+B^{-1}J_Q(\xi,t)\le J_P(\xi,t)\le B J_Q(\xi,t)
+\quad(P\in\mathcal P,\ \xi\in\mathbb R^n,\ t\ge1).
+\tag{UC4}
+\]</span>
+<p>The reference polynomial <span class="math" data-index="48" data-tex="\(Q\)">\(Q\)</span> remains fixed throughout the construction.</p>
+<p>The real-ball norm equivalence supplies <span class="math" data-index="49" data-tex="\(C_w\ge1\)">\(C_w\ge1\)</span>, depending only on <span class="math" data-index="50" data-tex="\(m,n\)">\(m,n\)</span>, such that</p>
+<span class="math math-display" id="learner-eq-UC5" data-index="51" data-tex="\[
+J_R(\xi,t)\le C_w\max_{|h|\le t}|R(\xi+h)|.
+\tag{UC5}
+\]">\[
+J_R(\xi,t)\le C_w\max_{|h|\le t}|R(\xi+h)|.
+\tag{UC5}
+\]</span>
+<p>The ball here is a closed real Euclidean ball. Passing from the stated <span class="math" data-index="52" data-tex="\(\ell^2\)">\(\ell^2\)</span> version to (UC5) costs only the square root of the number of derivatives. The maximum is positive for a nonzero polynomial: vanishing on a real open ball makes all of its real derivatives at the center zero. This also directly proves that the real-ball supremum is a norm on the finite-dimensional complex polynomial space.</p>
+<p>Write <span class="math" data-index="53" data-tex="\(C_s=E_m(1)\)">\(C_s=E_m(1)\)</span>, <span class="math" data-index="54" data-tex="\(C_0=C_sC_w\)">\(C_0=C_sC_w\)</span>, and set</p>
+<span class="math math-display" id="learner-eq-UC6" data-index="55" data-tex="\[
+\mu=\max(1,2B^2C_0),\qquad
+A_0=2C_sB^2C_0.
+\tag{UC6}
+\]">\[
+\mu=\max(1,2B^2C_0),\qquad
+A_0=2C_sB^2C_0.
+\tag{UC6}
+\]</span>
+<p><strong>Lemma 2.1 (one common real point).</strong> For every real <span class="math" data-index="56" data-tex="\(\xi\)">\(\xi\)</span> and every <span class="math" data-index="57" data-tex="\(r\ge\mu\)">\(r\ge\mu\)</span>, there is a real <span class="math" data-index="58" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-index="59" data-tex="\(|\eta|\le r\)">\(|\eta|\le r\)</span>, such that</p>
+<span class="math math-display" id="learner-eq-UC7" data-index="60" data-tex="\[
+J_P(\xi,r)\le A_0|P(\xi+\eta)|
+\qquad(P\in\mathcal P).
+\tag{UC7}
+\]">\[
+J_P(\xi,r)\le A_0|P(\xi+\eta)|
+\qquad(P\in\mathcal P).
+\tag{UC7}
+\]</span>
+<p><strong>Proof.</strong> Choose <span class="math" data-index="61" data-tex="\(y=\xi+\eta\)">\(y=\xi+\eta\)</span> where <span class="math" data-index="62" data-tex="\(|Q|\)">\(|Q|\)</span> attains its maximum <span class="math" data-index="63" data-tex="\(M&gt;0\)">\(M&gt;0\)</span> on the real ball <span class="math" data-index="64" data-tex="\(\xi+\overline B(0,r)\)">\(\xi+\overline B(0,r)\)</span>. The choice uses only <span class="math" data-index="65" data-tex="\(Q,\xi,r\)">\(Q,\xi,r\)</span>. Since <span class="math" data-index="66" data-tex="\(|y-\xi|_\infty\le r\)">\(|y-\xi|_\infty\le r\)</span>, (UC3) and (UC5) give</p>
+<span class="math math-display" data-index="67" data-tex="\[
+J_Q(y,r)\le C_sJ_Q(\xi,r)\le C_0M.
+\]">\[
+J_Q(y,r)\le C_sJ_Q(\xi,r)\le C_0M.
+\]</span>
+<p>For every <span class="math" data-index="68" data-tex="\(P\in\mathcal P\)">\(P\in\mathcal P\)</span>, (UC4) at scales <span class="math" data-index="69" data-tex="\(r\)">\(r\)</span> and <span class="math" data-index="70" data-tex="\(1\)">\(1\)</span> gives</p>
+<span class="math math-display" data-index="71" data-tex="\[
+J_P(y,r)\le BC_0M,\qquad
+J_P(y,1)\ge B^{-1}J_Q(y,1)\ge M/B.
+\]">\[
+J_P(y,r)\le BC_0M,\qquad
+J_P(y,1)\ge B^{-1}J_Q(y,1)\ge M/B.
+\]</span>
+<p>Every positive-order term in <span class="math" data-index="72" data-tex="\(J_P(y,1)\)">\(J_P(y,1)\)</span> is at most <span class="math" data-index="73" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> times its term in <span class="math" data-index="74" data-tex="\(J_P(y,r)\)">\(J_P(y,r)\)</span>. Therefore</p>
+<span class="math math-display" id="learner-eq-UC8" data-index="75" data-tex="\[
+\begin{aligned}
+|P(y)|
+&amp;=J_P(y,1)-\sum_{|\alpha|\ge1}|\partial^\alpha P(y)|\\
+&amp;\ge M/B-BC_0M/r\ge M/(2B).
+\end{aligned}
+\tag{UC8}
+\]">\[
+\begin{aligned}
+|P(y)|
+&amp;=J_P(y,1)-\sum_{|\alpha|\ge1}|\partial^\alpha P(y)|\\
+&amp;\ge M/B-BC_0M/r\ge M/(2B).
+\end{aligned}
+\tag{UC8}
+\]</span>
+<p>Finally use the reverse real shift at scale <span class="math" data-index="76" data-tex="\(r\)">\(r\)</span>:</p>
+<span class="math math-display" data-index="77" data-tex="\[
+J_P(\xi,r)\le C_sJ_P(y,r)
+             \le C_sBC_0M\le A_0|P(y)|.
+\]">\[
+J_P(\xi,r)\le C_sJ_P(y,r)
+             \le C_sBC_0M\le A_0|P(y)|.
+\]</span>
+<p>This proves the simultaneous estimate. <span class="math" data-index="78" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-finite-list-of-radii-isolates-one-derivative-order">3. A finite list of radii isolates one derivative order</h2>
+<p>Put</p>
+<span class="math math-display" data-index="79" data-tex="\[
+D=\max(2,12A_0B^2),\qquad
+H=\max(2,2mD^m),\qquad
+r_0=\max(D,\mu),\qquad
+N=\frac{m(m+1)}2.
+\]">\[
+D=\max(2,12A_0B^2),\qquad
+H=\max(2,2mD^m),\qquad
+r_0=\max(D,\mu),\qquad
+N=\frac{m(m+1)}2.
+\]</span>
+<p>Use the <span class="math" data-index="80" data-tex="\(N+1\)">\(N+1\)</span> radii</p>
+<span class="math math-display" id="learner-eq-UC9" data-index="81" data-tex="\[
+r_l=r_0H^{3l},\qquad 0\le l\le N.
+\tag{UC9}
+\]">\[
+r_l=r_0H^{3l},\qquad 0\le l\le N.
+\tag{UC9}
+\]</span>
+<p>They depend on the compact family and degree/dimension, and not on the frequency.</p>
+<p>At a fixed real <span class="math" data-index="82" data-tex="\(\xi\)">\(\xi\)</span>, write</p>
+<span class="math math-display" data-index="83" data-tex="\[
+q_j=\sum_{|\alpha|=j}|\partial^\alpha Q(\xi)|,
+\qquad
+p_j=\sum_{|\alpha|=j}|\partial^\alpha P(\xi)|.
+\]">\[
+q_j=\sum_{|\alpha|=j}|\partial^\alpha Q(\xi)|,
+\qquad
+p_j=\sum_{|\alpha|=j}|\partial^\alpha P(\xi)|.
+\]</span>
+<p>These coefficients are nonnegative and <span class="math" data-index="84" data-tex="\(J_Q(\xi,t)=\sum_{j=0}^m q_jt^j\)">\(J_Q(\xi,t)=\sum_{j=0}^m q_jt^j\)</span>. At least one <span class="math" data-index="85" data-tex="\(q_j\)">\(q_j\)</span> is positive, because <span class="math" data-index="86" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>.</p>
+<p><strong>Lemma 3.1 (finite separation of positive masses).</strong> One radius <span class="math" data-index="87" data-tex="\(r\)">\(r\)</span> from (UC9) has a unique largest mass <span class="math" data-index="88" data-tex="\(q_kr^k\)">\(q_kr^k\)</span>, and</p>
+<span class="math math-display" id="learner-eq-UC10" data-index="89" data-tex="\[
+q_jr^j&lt; H^{-1}q_kr^k\qquad(j\ne k).
+\tag{UC10}
+\]">\[
+q_jr^j&lt; H^{-1}q_kr^k\qquad(j\ne k).
+\tag{UC10}
+\]</span>
+<p><strong>Proof.</strong> For a pair <span class="math" data-index="90" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> with <span class="math" data-index="91" data-tex="\(q_iq_j&gt;0\)">\(q_iq_j&gt;0\)</span>, call a candidate radius bad for that pair when</p>
+<span class="math math-display" data-index="92" data-tex="\[
+H^{-1}\le \frac{q_ir^i}{q_jr^j}\le H.
+\]">\[
+H^{-1}\le \frac{q_ir^i}{q_jr^j}\le H.
+\]</span>
+<p>Between consecutive candidates this ratio changes by a factor <span class="math" data-index="93" data-tex="\(H^{3(j-i)}\)">\(H^{3(j-i)}\)</span>, or its reciprocal. Its factor is at least <span class="math" data-index="94" data-tex="\(H^3&gt;H^2\)">\(H^3&gt;H^2\)</span>, so it can belong to the indicated interval at at most one candidate. There are at most <span class="math" data-index="95" data-tex="\(N\)">\(N\)</span> pairs, hence at most <span class="math" data-index="96" data-tex="\(N\)">\(N\)</span> bad candidate indices. At one of the <span class="math" data-index="97" data-tex="\(N+1\)">\(N+1\)</span> candidates no pair is bad. Select a largest mass there. It is unique, because equality of two positive masses would make their pair bad. Every other positive mass is less than <span class="math" data-index="98" data-tex="\(1/H\)">\(1/H\)</span> times it; zero masses satisfy the same strict inequality. <span class="math" data-index="99" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img class="course-figure" loading="lazy" width="2268" height="1296" src="reproduce/L203/figures/separating-derivative-masses.png" alt="Three logarithmic derivative-mass lines for the polynomial (w+3) squared; four candidate radii are spaced by a factor of 64, and at least one candidate lies outside every pairwise bad interval." /><figcaption class="native"><a href="reproduce/L203/figures/separating-derivative-masses.png">Open full-size PNG</a> · <a href="reproduce/L203/figures/separating-derivative-masses.svg">Open SVG</a></figcaption></figure>
+<p><em>The finite-gap choice in Lemma 3.1.</em> This exact model uses <span class="math" data-index="100" data-tex="\(Q(w)=(w+3)^2\)">\(Q(w)=(w+3)^2\)</span> at frequency zero, so the derivative masses are <span class="math" data-index="101" data-tex="\(q_0=9,q_1=6,q_2=2\)">\(q_0=9,q_1=6,q_2=2\)</span>. With <span class="math" data-index="102" data-tex="\(H=4\)">\(H=4\)</span> and starting radius one, the candidates are <span class="math" data-index="103" data-tex="\(1,64,4096,262144\)">\(1,64,4096,262144\)</span>. Each shaded interval is where one pair of logarithmic masses differs by at most one. Its length is at most two, while successive candidates are three units apart. The first candidate with no bad pair is <span class="math" data-index="104" data-tex="\(r=64\)">\(r=64\)</span>, where order two dominates. These constants illustrate the finite-gap argument alone; the later transfer estimate chooses its own larger constants in (UC9).</p>
+<p>The purpose of the wide spacing is to make a <em>single</em> order work for every polynomial, rather than separately isolating an order for each member.</p>
+<p><strong>Lemma 3.2 (transfer to the entire compact family).</strong> For the radius <span class="math" data-index="105" data-tex="\(r\)">\(r\)</span> and order <span class="math" data-index="106" data-tex="\(k\)">\(k\)</span> in Lemma 3.1,</p>
+<span class="math math-display" id="learner-eq-UC11" data-index="107" data-tex="\[
+\sum_{j\ne k}r^jp_j\le \frac1{4A_0}J_P(\xi,r)
+\qquad(P\in\mathcal P).
+\tag{UC11}
+\]">\[
+\sum_{j\ne k}r^jp_j\le \frac1{4A_0}J_P(\xi,r)
+\qquad(P\in\mathcal P).
+\tag{UC11}
+\]</span>
+<p><strong>Proof.</strong> Both <span class="math" data-index="108" data-tex="\(r/D\)">\(r/D\)</span> and <span class="math" data-index="109" data-tex="\(Dr\)">\(Dr\)</span> are at least one. At either of these two scales, (UC10) implies</p>
+<span class="math math-display" id="learner-eq-UC12" data-index="110" data-tex="\[
+J_Q(\xi,r/D)\le\tfrac32q_k(r/D)^k,\qquad
+J_Q(\xi,Dr)\le\tfrac32q_k(Dr)^k.
+\tag{UC12}
+\]">\[
+J_Q(\xi,r/D)\le\tfrac32q_k(r/D)^k,\qquad
+J_Q(\xi,Dr)\le\tfrac32q_k(Dr)^k.
+\tag{UC12}
+\]</span>
+<p>Indeed the ratio of another mass to the <span class="math" data-index="111" data-tex="\(k\)">\(k\)</span>-th mass changes by at most <span class="math" data-index="112" data-tex="\(D^m\)">\(D^m\)</span>, and the sum of the <span class="math" data-index="113" data-tex="\(m\)">\(m\)</span> other ratios is at most <span class="math" data-index="114" data-tex="\(mD^m/H\le1/2\)">\(mD^m/H\le1/2\)</span>.</p>
+<p>For orders below <span class="math" data-index="115" data-tex="\(k\)">\(k\)</span>, compare at <span class="math" data-index="116" data-tex="\(r/D\)">\(r/D\)</span>; for orders above <span class="math" data-index="117" data-tex="\(k\)">\(k\)</span>, compare at <span class="math" data-index="118" data-tex="\(Dr\)">\(Dr\)</span>. Positivity of every derivative mass and (UC4) give</p>
+<span class="math math-display" id="learner-eq-UC13" data-index="119" data-tex="\[
+\begin{aligned}
+\sum_{j&lt;k}r^jp_j
+&amp;\le D^{k-1}J_P(\xi,r/D)
+ \le \frac{3B}{2D}q_kr^k,\\
+\sum_{j&gt;k}r^jp_j
+&amp;\le D^{-k-1}J_P(\xi,Dr)
+ \le \frac{3B}{2D}q_kr^k .
+\end{aligned}
+\tag{UC13}
+\]">\[
+\begin{aligned}
+\sum_{j&lt;k}r^jp_j
+&amp;\le D^{k-1}J_P(\xi,r/D)
+ \le \frac{3B}{2D}q_kr^k,\\
+\sum_{j&gt;k}r^jp_j
+&amp;\le D^{-k-1}J_P(\xi,Dr)
+ \le \frac{3B}{2D}q_kr^k .
+\end{aligned}
+\tag{UC13}
+\]</span>
+<p>If <span class="math" data-index="120" data-tex="\(k=0\)">\(k=0\)</span> or <span class="math" data-index="121" data-tex="\(k=m\)">\(k=m\)</span>, the respective empty sum is zero and its displayed upper bound is still valid. At the middle scale, <span class="math" data-index="122" data-tex="\(J_P(\xi,r)\ge B^{-1}q_kr^k\)">\(J_P(\xi,r)\ge B^{-1}q_kr^k\)</span>. Thus the total in (UC13) is at most</p>
+<span class="math math-display" data-index="123" data-tex="\[
+\frac{3B^2}{D}J_P(\xi,r)\le\frac1{4A_0}J_P(\xi,r).
+\]">\[
+\frac{3B^2}{D}J_P(\xi,r)\le\frac1{4A_0}J_P(\xi,r).
+\]</span>
+<p>This proves (UC11). Only positivity and the three scale comparisons are used in this step. <span class="math" data-index="124" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-rotating-the-common-real-point">4. Rotating the common real point</h2>
+<p>For a real vector <span class="math" data-index="125" data-tex="\(\eta\)">\(\eta\)</span>, let</p>
+<span class="math math-display" data-index="126" data-tex="\[
+P_{\xi,j}(\eta)=
+\sum_{|\alpha|=j}\frac{\partial^\alpha P(\xi)}{\alpha!}\eta^\alpha.
+\]">\[
+P_{\xi,j}(\eta)=
+\sum_{|\alpha|=j}\frac{\partial^\alpha P(\xi)}{\alpha!}\eta^\alpha.
+\]</span>
+<p>The finite Taylor identity is</p>
+<span class="math math-display" id="learner-eq-UC14" data-index="127" data-tex="\[
+P(\xi+z\eta)=\sum_{j=0}^m z^j P_{\xi,j}(\eta).
+\tag{UC14}
+\]">\[
+P(\xi+z\eta)=\sum_{j=0}^m z^j P_{\xi,j}(\eta).
+\tag{UC14}
+\]</span>
+<p>When <span class="math" data-index="128" data-tex="\(|\eta|\le r\)">\(|\eta|\le r\)</span>, each <span class="math" data-index="129" data-tex="\(|P_{\xi,j}(\eta)|\le r^jp_j\)">\(|P_{\xi,j}(\eta)|\le r^jp_j\)</span>. The factorials in (UC14) only decrease that upper bound; the masses defining <span class="math" data-index="130" data-tex="\(J\)">\(J\)</span> have no factorial weights.</p>
+<p><strong>Proposition 4.1 (a circle for the full family).</strong> For every real <span class="math" data-index="131" data-tex="\(\xi\)">\(\xi\)</span> there is a radius <span class="math" data-index="132" data-tex="\(r\)">\(r\)</span> in the fixed finite list (UC9) and a real <span class="math" data-index="133" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-index="134" data-tex="\(|\eta|\le r\)">\(|\eta|\le r\)</span>, such that</p>
+<span class="math math-display" id="learner-eq-UC15" data-index="135" data-tex="\[
+J_P(\xi,r)\le 2A_0|P(\xi+z\eta)|
+\qquad(P\in\mathcal P,\ |z|=1).
+\tag{UC15}
+\]">\[
+J_P(\xi,r)\le 2A_0|P(\xi+z\eta)|
+\qquad(P\in\mathcal P,\ |z|=1).
+\tag{UC15}
+\]</span>
+<p>In particular <span class="math" data-index="136" data-tex="\(|\eta|\le r_0H^{3N}\)">\(|\eta|\le r_0H^{3N}\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-index="137" data-tex="\(r,k\)">\(r,k\)</span> by Lemma 3.1, and choose the real vector <span class="math" data-index="138" data-tex="\(\eta\)">\(\eta\)</span> by Lemma 2.1 at that radius. It is the same vector for every <span class="math" data-index="139" data-tex="\(P\)">\(P\)</span>. Set <span class="math" data-index="140" data-tex="\(e_P=\sum_{j\ne k}r^jp_j\)">\(e_P=\sum_{j\ne k}r^jp_j\)</span>, so <span class="math" data-index="141" data-tex="\(e_P\le J_P(\xi,r)/(4A_0)\)">\(e_P\le J_P(\xi,r)/(4A_0)\)</span>. From the common real-point estimate,</p>
+<span class="math math-display" data-index="142" data-tex="\[
+|P_{\xi,k}(\eta)|
+\ge |P(\xi+\eta)|-e_P
+\ge J_P(\xi,r)/A_0-e_P.
+\]">\[
+|P_{\xi,k}(\eta)|
+\ge |P(\xi+\eta)|-e_P
+\ge J_P(\xi,r)/A_0-e_P.
+\]</span>
+<p>For every unit complex <span class="math" data-index="143" data-tex="\(z\)">\(z\)</span>, the <span class="math" data-index="144" data-tex="\(k\)">\(k\)</span>-th term has the same modulus, while the sum of all other terms has modulus at most <span class="math" data-index="145" data-tex="\(e_P\)">\(e_P\)</span>. Therefore</p>
+<span class="math math-display" data-index="146" data-tex="\[
+|P(\xi+z\eta)|
+\ge J_P(\xi,r)/A_0-2e_P
+\ge J_P(\xi,r)/(2A_0).
+\]">\[
+|P(\xi+z\eta)|
+\ge J_P(\xi,r)/A_0-2e_P
+\ge J_P(\xi,r)/(2A_0).
+\]</span>
+<p>This proves the proposition, including the cases <span class="math" data-index="147" data-tex="\(k=0\)">\(k=0\)</span> and <span class="math" data-index="148" data-tex="\(k=m\)">\(k=m\)</span>. <span class="math" data-index="149" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-complex-shifts-and-a-bounded-borel-choice">5. Complex shifts and a bounded Borel choice</h2>
+<p>We now prove Theorem 1.1 for its full complex-shift radius <span class="math" data-index="150" data-tex="\(\rho\)">\(\rho\)</span>. Form the compact family</p>
+<span class="math math-display" id="learner-eq-UC16" data-index="151" data-tex="\[
+\mathcal P=
+\{P(\,\cdot+h): P\in K,\ h\in\mathbb C^n,\ |h|_\infty\le\rho+1\}
+\ \cup\ \{Q\}.
+\tag{UC16}
+\]">\[
+\mathcal P=
+\{P(\,\cdot+h): P\in K,\ h\in\mathbb C^n,\ |h|_\infty\le\rho+1\}
+\ \cup\ \{Q\}.
+\tag{UC16}
+\]</span>
+<p>The coefficient translation map is continuous, so this set is compact. Every translated polynomial is equally strong as <span class="math" data-index="152" data-tex="\(Q\)">\(Q\)</span>: (UC3) and its reverse at scale one compare its derivative norm with that of <span class="math" data-index="153" data-tex="\(P\)">\(P\)</span>, uniformly for bounded <span class="math" data-index="154" data-tex="\(h\)">\(h\)</span>; the fixed equivalence between <span class="math" data-index="155" data-tex="\(J\)">\(J\)</span> and <span class="math" data-index="156" data-tex="\(S\)">\(S\)</span> gives equal strength. Thus <span class="math" data-index="157" data-tex="\(\mathcal P\subset E(Q)\)">\(\mathcal P\subset E(Q)\)</span>, and all the preceding construction applies with one set of constants.</p>
+<p>For each <span class="math" data-index="158" data-tex="\(a\in\mathbb Z^n\)">\(a\in\mathbb Z^n\)</span>, use Proposition 4.1 at the real center <span class="math" data-index="159" data-tex="\(a\)">\(a\)</span> to choose <span class="math" data-index="160" data-tex="\(r_a\)">\(r_a\)</span> from (UC9) and <span class="math" data-index="161" data-tex="\(\eta_a\in\mathbb R^n\)">\(\eta_a\in\mathbb R^n\)</span>, <span class="math" data-index="162" data-tex="\(|\eta_a|\le r_a\)">\(|\eta_a|\le r_a\)</span>. For a specific choice, take the first radius with no bad pair in Lemma 3.1, let <span class="math" data-index="163" data-tex="\(y_a\)">\(y_a\)</span> be the lexicographically least maximizer of <span class="math" data-index="164" data-tex="\(|Q|\)">\(|Q|\)</span> on <span class="math" data-index="165" data-tex="\(a+\overline B(0,r_a)\)">\(a+\overline B(0,r_a)\)</span>, and set <span class="math" data-index="166" data-tex="\(\eta_a=y_a-a\)">\(\eta_a=y_a-a\)</span>. Such a maximizer exists by successive minimization of coordinates on compact nonempty sets. Only countably many choices are used.</p>
+<p>Define</p>
+<span class="math math-display" id="learner-eq-UC17" data-index="167" data-tex="\[
+\eta(\xi)=\eta_a\quad\text{if }\xi\in a+[0,1)^n.
+\tag{UC17}
+\]">\[
+\eta(\xi)=\eta_a\quad\text{if }\xi\in a+[0,1)^n.
+\tag{UC17}
+\]</span>
+<p>The cubes are Borel, disjoint and cover real space. The preimage of an open set is a countable union of these cubes, so <span class="math" data-index="168" data-tex="\(\eta\)">\(\eta\)</span> is Borel. Its norm is bounded by the common finite maximum <span class="math" data-index="169" data-tex="\(r_0H^{3N}\)">\(r_0H^{3N}\)</span>.</p>
+<p>Fix <span class="math" data-index="170" data-tex="\(P\in K\)">\(P\in K\)</span>, real <span class="math" data-index="171" data-tex="\(\xi\in a+[0,1)^n\)">\(\xi\in a+[0,1)^n\)</span>, and <span class="math" data-index="172" data-tex="\(|\zeta|_\infty\le\rho\)">\(|\zeta|_\infty\le\rho\)</span>. Put <span class="math" data-index="173" data-tex="\(h=\xi-a+\zeta\)">\(h=\xi-a+\zeta\)</span>, so <span class="math" data-index="174" data-tex="\(|h|_\infty\le\rho+1\)">\(|h|_\infty\le\rho+1\)</span>, and <span class="math" data-index="175" data-tex="\(P_h=P(\cdot+h)\in\mathcal P\)">\(P_h=P(\cdot+h)\in\mathcal P\)</span>. Proposition 4.1 gives, for all <span class="math" data-index="176" data-tex="\(|z|=1\)">\(|z|=1\)</span>,</p>
+<span class="math math-display" data-index="177" data-tex="\[
+|P(\xi+\zeta+z\eta(\xi))|
+=|P_h(a+z\eta_a)|
+\ge \frac{J_{P_h}(a,r_a)}{2A_0}.
+\]">\[
+|P(\xi+\zeta+z\eta(\xi))|
+=|P_h(a+z\eta_a)|
+\ge \frac{J_{P_h}(a,r_a)}{2A_0}.
+\]</span>
+<p>Since <span class="math" data-index="178" data-tex="\(r_a\ge1\)">\(r_a\ge1\)</span>, positivity of the derivative masses and the reverse unit-scale shift give</p>
+<span class="math math-display" id="learner-eq-UC18" data-index="179" data-tex="\[
+\begin{aligned}
+J_{P_h}(a,r_a)
+&amp;\ge J_{P_h}(a,1)=J_P(\xi+\zeta,1)\\
+&amp;\ge E_m(\rho)^{-1}J_P(\xi,1).
+\end{aligned}
+\tag{UC18}
+\]">\[
+\begin{aligned}
+J_{P_h}(a,r_a)
+&amp;\ge J_{P_h}(a,1)=J_P(\xi+\zeta,1)\\
+&amp;\ge E_m(\rho)^{-1}J_P(\xi,1).
+\end{aligned}
+\tag{UC18}
+\]</span>
+<p>Taking <span class="math" data-index="180" data-tex="\(A=2A_0E_m(\rho)\)">\(A=2A_0E_m(\rho)\)</span> proves (UC2). The same constants and same real Borel vector field work simultaneously for all <span class="math" data-index="181" data-tex="\(P,\xi,\zeta,z\)">\(P,\xi,\zeta,z\)</span> in the asserted ranges. This completes the proof of Theorem 1.1. <span class="math" data-index="182" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The common contour also gives a Banach-space existence theorem. <a href="AN02-L204.html">Contour spaces and solvability for families of equations</a>, Theorem 5.2, proves a uniform solution bound for every member of the compact family, including both endpoint Fourier exponents.</p>
+<h2 id="6-examples">6. Examples</h2>
+<p><strong>Example 6.1 (a two-valued real shift).</strong> For the monic linear family <span class="math" data-index="183" data-tex="\(P_b(w)=w-b\)">\(P_b(w)=w-b\)</span>, <span class="math" data-index="184" data-tex="\(|b|\le1\)">\(|b|\le1\)</span>, and arbitrary <span class="math" data-index="185" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span>, one can take <span class="math" data-index="186" data-tex="\(A=4\)">\(A=4\)</span> and</p>
+<span class="math math-display" data-index="187" data-tex="\[
+\eta(\xi)=
+\begin{cases}
+4(1+\rho),&amp;|\xi|\le2(1+\rho),\\
+0,&amp;|\xi|&gt;2(1+\rho).
+\end{cases}
+\]">\[
+\eta(\xi)=
+\begin{cases}
+4(1+\rho),&amp;|\xi|\le2(1+\rho),\\
+0,&amp;|\xi|&gt;2(1+\rho).
+\end{cases}
+\]</span>
+<p>Inside the interval, <span class="math" data-index="188" data-tex="\(|\xi+\zeta-b|\le3(1+\rho)\)">\(|\xi+\zeta-b|\le3(1+\rho)\)</span>, so the circle denominator is at least <span class="math" data-index="189" data-tex="\(1+\rho\)">\(1+\rho\)</span>, while <span class="math" data-index="190" data-tex="\(J_{P_b}(\xi,1)=|\xi-b|+1\le4(1+\rho)\)">\(J_{P_b}(\xi,1)=|\xi-b|+1\le4(1+\rho)\)</span>. Outside it, the denominator is at least <span class="math" data-index="191" data-tex="\(|\xi|-(1+\rho)&gt;|\xi|/2\)">\(|\xi|-(1+\rho)&gt;|\xi|/2\)</span>, while <span class="math" data-index="192" data-tex="\(J_{P_b}(\xi,1)\le|\xi|+2\le2|\xi|\)">\(J_{P_b}(\xi,1)\le|\xi|+2\le2|\xi|\)</span>. These prove the claimed constant, uniformly in the complex shift and root. At <span class="math" data-index="193" data-tex="\(\rho=0,\xi=2,b=-1,z=-1\)">\(\rho=0,\xi=2,b=-1,z=-1\)</span>, equality in the bound <span class="math" data-index="194" data-tex="\(J\le4|P|\)">\(J\le4|P|\)</span> is attained.</p>
+<figure><img class="course-figure" loading="lazy" width="2268" height="1007" src="reproduce/L203/figures/a-common-circle-and-bounded-shift.png" alt="The root disk of monic linear polynomials lies strictly inside a circle centered at real frequency two, and the real shift field is four on the closed interval from minus two to two and zero outside." /><figcaption class="native"><a href="reproduce/L203/figures/a-common-circle-and-bounded-shift.png">Open full-size PNG</a> · <a href="reproduce/L203/figures/a-common-circle-and-bounded-shift.svg">Open SVG</a></figcaption></figure>
+<p><em>Example 6.1 at <span class="math" data-index="195" data-tex="\(\rho=0\)">\(\rho=0\)</span>.</em> The roots <span class="math" data-index="196" data-tex="\(b\)">\(b\)</span> fill the closed unit disk. At the center <span class="math" data-index="197" data-tex="\(\xi=2\)">\(\xi=2\)</span>, the chosen contour is <span class="math" data-index="198" data-tex="\(w=2+4z\)">\(w=2+4z\)</span>, <span class="math" data-index="199" data-tex="\(|z|=1\)">\(|z|=1\)</span>. Its distance from the root disk is one. The largest derivative mass there is four, so <span class="math" data-index="200" data-tex="\(A=4\)">\(A=4\)</span> works, with equality at <span class="math" data-index="201" data-tex="\(b=-1,z=-1\)">\(b=-1,z=-1\)</span>. The right panel shows the exact Borel shift: solid endpoints belong to the interval, and the lower endpoints are excluded. Outside that interval the contour is the single point <span class="math" data-index="202" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p><strong>Example 6.2 (good real points and bad circles).</strong> A good real point alone does not give a good circle. For <span class="math" data-index="203" data-tex="\(P_s(w)=w-is\)">\(P_s(w)=w-is\)</span>, <span class="math" data-index="204" data-tex="\(1\le s\le2\)">\(1\le s\le2\)</span>, every positive real point <span class="math" data-index="205" data-tex="\(r\)">\(r\)</span> has <span class="math" data-index="206" data-tex="\(J_{P_s}(0,r)=s+r\le\sqrt2|P_s(r)|\)">\(J_{P_s}(0,r)=s+r\le\sqrt2|P_s(r)|\)</span>. Nevertheless each radius <span class="math" data-index="207" data-tex="\(r\in[1,2]\)">\(r\in[1,2]\)</span> gives a zero on its circle for the member <span class="math" data-index="208" data-tex="\(s=r\)">\(s=r\)</span>, at <span class="math" data-index="209" data-tex="\(z=i\)">\(z=i\)</span>. This is why the derivative-order separation is a substantive part of the argument.</p>
+<p><strong>Example 6.3 (reading the finite list of scales).</strong> For the quadratic used in the first drawing, the three masses at <span class="math" data-index="210" data-tex="\(r=1\)">\(r=1\)</span> are <span class="math" data-index="211" data-tex="\(9,6,2\)">\(9,6,2\)</span>, and some pairs have ratio between <span class="math" data-index="212" data-tex="\(1/4\)">\(1/4\)</span> and <span class="math" data-index="213" data-tex="\(4\)">\(4\)</span>. At <span class="math" data-index="214" data-tex="\(r=64\)">\(r=64\)</span>, they are</p>
+<span class="math math-display" data-index="215" data-tex="\[
+9,\qquad384,\qquad8192.
+\]">\[
+9,\qquad384,\qquad8192.
+\]</span>
+<p>The ratios of the largest mass to the other two are greater than four; the ratio <span class="math" data-index="216" data-tex="\(384/9\)">\(384/9\)</span> is also greater than four. Thus no pair is bad at this candidate. The derivative value <span class="math" data-index="217" data-tex="\(q_2=2\)">\(q_2=2\)</span> is used in the jet mass; the Taylor coefficient of <span class="math" data-index="218" data-tex="\(w^2\)">\(w^2\)</span> is one. The factorial in (UC14) accounts for that distinction.</p>
+<p><strong>Example 6.4 (a compact family with no common real circle).</strong> The constant-strength assumption cannot be replaced by compactness and a fixed positive degree. In dimension at least two, let <span class="math" data-index="219" data-tex="\(P_v(\xi)=v\cdot\xi\)">\(P_v(\xi)=v\cdot\xi\)</span>, <span class="math" data-index="220" data-tex="\(v\)">\(v\)</span> ranging over the real unit sphere. At <span class="math" data-index="221" data-tex="\(\xi=0,\zeta=0\)">\(\xi=0,\zeta=0\)</span>, any real <span class="math" data-index="222" data-tex="\(\eta\)">\(\eta\)</span> has a unit <span class="math" data-index="223" data-tex="\(v\perp\eta\)">\(v\perp\eta\)</span>. That member vanishes on the entire proposed circle <span class="math" data-index="224" data-tex="\(z\eta\)">\(z\eta\)</span>, while <span class="math" data-index="225" data-tex="\(J_{P_v}(0,1)=\sum_j|v_j|&gt;0\)">\(J_{P_v}(0,1)=\sum_j|v_j|&gt;0\)</span>. Thus no common circle exists even at that single center. These operators do not form a constant-strength family.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (20 points).</strong> Derive the complex-shift estimate (UC3) directly from the finite Taylor formula. Compute its constant <span class="math" data-index="226" data-tex="\(E_2(u)\)">\(E_2(u)\)</span> in two complex variables. Explain why no factorial occurs in the definition of the derivative mass <span class="math" data-index="227" data-tex="\(J\)">\(J\)</span>.</p>
+<p><strong>Solution.</strong> Expand every <span class="math" data-index="228" data-tex="\(\partial^\alpha P(a+h)\)">\(\partial^\alpha P(a+h)\)</span> as a sum indexed by <span class="math" data-index="229" data-tex="\(\beta\)">\(\beta\)</span>. If <span class="math" data-index="230" data-tex="\(|h|_\infty\le ut\)">\(|h|_\infty\le ut\)</span>, multiplication by <span class="math" data-index="231" data-tex="\(t^{|\alpha|}\)">\(t^{|\alpha|}\)</span> bounds its term by</p>
+<span class="math math-display" data-index="232" data-tex="\[
+t^{|\alpha+\beta|}\,
+|\partial^{\alpha+\beta}P(a)|\,
+\frac{u^{|\beta|}}{\beta!}.
+\]">\[
+t^{|\alpha+\beta|}\,
+|\partial^{\alpha+\beta}P(a)|\,
+\frac{u^{|\beta|}}{\beta!}.
+\]</span>
+<p>For a fixed <span class="math" data-index="233" data-tex="\(\gamma=\alpha+\beta\)">\(\gamma=\alpha+\beta\)</span>, summing over <span class="math" data-index="234" data-tex="\(\beta\le\gamma\)">\(\beta\le\gamma\)</span> gives a coefficient at most <span class="math" data-index="235" data-tex="\(E_m(u)\)">\(E_m(u)\)</span>, proving (UC3). The factorial is the Taylor coefficient, while <span class="math" data-index="236" data-tex="\(J\)">\(J\)</span> is the unweighted sum of derivative moduli with their scale powers. In two variables the orders zero, one and two give</p>
+<span class="math math-display" data-index="237" data-tex="\[
+E_2(u)=1+2u+
+\left(\frac12+1+\frac12\right)u^2
+=1+2u+2u^2.
+\]">\[
+E_2(u)=1+2u+
+\left(\frac12+1+\frac12\right)u^2
+=1+2u+2u^2.
+\]</span>
+<p>Assign 12 points to the regrouping and 8 to the constant and factorial convention.</p>
+<p><strong>Exercise 2 (25 points).</strong> For <span class="math" data-index="238" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, consider the positive-coefficient mass polynomials</p>
+<span class="math math-display" data-index="239" data-tex="\[
+q(t)=(1+at)^2,\qquad p(t)=2(1+a^2t^2).
+\]">\[
+q(t)=(1+at)^2,\qquad p(t)=2(1+a^2t^2).
+\]</span>
+<p>Prove <span class="math" data-index="240" data-tex="\(q(t)\le p(t)\le2q(t)\)">\(q(t)\le p(t)\le2q(t)\)</span> for <span class="math" data-index="241" data-tex="\(t\ge0\)">\(t\ge0\)</span>, and explain why these comparisons do not compare individual coefficients in both directions. Show that the degree-one mass of <span class="math" data-index="242" data-tex="\(q\)">\(q\)</span> can never satisfy (UC10) with <span class="math" data-index="243" data-tex="\(H&gt;2\)">\(H&gt;2\)</span>.</p>
+<p><strong>Solution.</strong> The exact differences are</p>
+<span class="math math-display" data-index="244" data-tex="\[
+p(t)-q(t)=(1-at)^2\ge0,\qquad
+2q(t)-p(t)=4at\ge0.
+\]">\[
+p(t)-q(t)=(1-at)^2\ge0,\qquad
+2q(t)-p(t)=4at\ge0.
+\]</span>
+<p>Thus these arrays obey the two-sided scale comparison with <span class="math" data-index="245" data-tex="\(B=2\)">\(B=2\)</span>, although <span class="math" data-index="246" data-tex="\(p\)">\(p\)</span>'s degree-one coefficient is zero and <span class="math" data-index="247" data-tex="\(q\)">\(q\)</span>'s is <span class="math" data-index="248" data-tex="\(2a&gt;0\)">\(2a&gt;0\)</span>. Reversing their roles also gives a zero coefficient in the comparison denominator. A proof that transfers domination by comparing each coefficient separately would therefore fail.</p>
+<p>For <span class="math" data-index="249" data-tex="\(q\)">\(q\)</span>'s middle mass to dominate both other masses as in (UC10), one would need</p>
+<span class="math math-display" data-index="250" data-tex="\[
+1&lt;\frac{2ar}{H},\qquad
+a^2r^2&lt;\frac{2ar}{H}.
+\]">\[
+1&lt;\frac{2ar}{H},\qquad
+a^2r^2&lt;\frac{2ar}{H}.
+\]</span>
+<p>These imply <span class="math" data-index="251" data-tex="\(ar&gt;H/2\)">\(ar&gt;H/2\)</span> and <span class="math" data-index="252" data-tex="\(ar&lt;2/H\)">\(ar&lt;2/H\)</span>, which are incompatible for <span class="math" data-index="253" data-tex="\(H&gt;2\)">\(H&gt;2\)</span>. The finite-gap selection consequently chooses order zero or two in this example. Assign 10 points to the two identities, 7 to the coefficient issue and 8 to the excluded order.</p>
+<p><strong>Exercise 3 (25 points).</strong> Replace the unit lattice cubes in the proof by cubes of any fixed side length <span class="math" data-index="254" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>. Give the complex-translation radius needed in (UC16), construct the Borel shift, and identify the reverse Taylor factor in the final denominator estimate.</p>
+<p><strong>Solution.</strong> Enlarge <span class="math" data-index="255" data-tex="\(K\)">\(K\)</span> by translations <span class="math" data-index="256" data-tex="\(P(\cdot+w)\)">\(P(\cdot+w)\)</span> with <span class="math" data-index="257" data-tex="\(|w|_\infty\le\rho+h\)">\(|w|_\infty\le\rho+h\)</span>, and include <span class="math" data-index="258" data-tex="\(Q\)">\(Q\)</span>. This is again a compact equally strong family by (UC3), its reverse and continuity of coefficient translation. Apply Proposition 4.1 at every center <span class="math" data-index="259" data-tex="\(ha\)">\(ha\)</span>, <span class="math" data-index="260" data-tex="\(a\in\mathbb Z^n\)">\(a\in\mathbb Z^n\)</span>, using that one enlarged family. On the cube <span class="math" data-index="261" data-tex="\(ha+[0,h)^n\)">\(ha+[0,h)^n\)</span>, use its chosen vector <span class="math" data-index="262" data-tex="\(\eta_{ha}\)">\(\eta_{ha}\)</span>.</p>
+<p>The countably many half-open cubes are Borel and partition real space, so the resulting bounded piecewise constant map is Borel. For a point <span class="math" data-index="263" data-tex="\(\xi\)">\(\xi\)</span> in that cube and <span class="math" data-index="264" data-tex="\(|\zeta|_\infty\le\rho\)">\(|\zeta|_\infty\le\rho\)</span>, the required translated polynomial uses <span class="math" data-index="265" data-tex="\(w=\xi-ha+\zeta\)">\(w=\xi-ha+\zeta\)</span>, with <span class="math" data-index="266" data-tex="\(|w|_\infty\le h+\rho\)">\(|w|_\infty\le h+\rho\)</span>. Its unit-scale derivative mass at the center is <span class="math" data-index="267" data-tex="\(J_P(\xi+\zeta,1)\)">\(J_P(\xi+\zeta,1)\)</span>. The reverse shift by <span class="math" data-index="268" data-tex="\(\zeta\)">\(\zeta\)</span> therefore still costs exactly <span class="math" data-index="269" data-tex="\(E_m(\rho)\)">\(E_m(\rho)\)</span>, independently of <span class="math" data-index="270" data-tex="\(h\)">\(h\)</span>. The other constants depend on <span class="math" data-index="271" data-tex="\(h\)">\(h\)</span> through the enlarged compact family. The radius is <span class="math" data-index="272" data-tex="\(\rho+h\)">\(\rho+h\)</span> because the complex shifts use the maximum norm; the Euclidean diameter of a cube does not enter this bound. Assign 10 points to the construction and measurability, 10 to the derivative-mass comparison and 5 to the two radius factors.</p>
+<p><strong>Exercise 4 (30 points).</strong> In two variables let <span class="math" data-index="273" data-tex="\(P_v(\xi)=v_1\xi_1+v_2\xi_2\)">\(P_v(\xi)=v_1\xi_1+v_2\xi_2\)</span>, <span class="math" data-index="274" data-tex="\(v\)">\(v\)</span> ranging over the real unit circle. Prove the obstruction to a common real shift at <span class="math" data-index="275" data-tex="\(\xi=0,\zeta=0\)">\(\xi=0,\zeta=0\)</span>. What changes at that single center if complex vectors are allowed and one takes <span class="math" data-index="276" data-tex="\(\eta=(1,i)\)">\(\eta=(1,i)\)</span>? Verify directly that this family is not equally strong, and explain why the single-center complex calculation does not prove a global contour theorem for it.</p>
+<p><strong>Solution.</strong> For every real <span class="math" data-index="277" data-tex="\(\eta\)">\(\eta\)</span>, choose a real unit <span class="math" data-index="278" data-tex="\(v\perp\eta\)">\(v\perp\eta\)</span>. Then <span class="math" data-index="279" data-tex="\(P_v(z\eta)=0\)">\(P_v(z\eta)=0\)</span> for every <span class="math" data-index="280" data-tex="\(z\)">\(z\)</span>, while <span class="math" data-index="281" data-tex="\(J_{P_v}(0,1)=|v_1|+|v_2|\ge1\)">\(J_{P_v}(0,1)=|v_1|+|v_2|\ge1\)</span>. A denominator bound for the full family is impossible.</p>
+<p>For the complex vector <span class="math" data-index="282" data-tex="\((1,i)\)">\((1,i)\)</span>,</p>
+<span class="math math-display" data-index="283" data-tex="\[
+|P_v(z\eta)|=|z|\,|v_1+iv_2|=1
+\quad(|z|=1),
+\qquad J_{P_v}(0,1)\le\sqrt2.
+\]">\[
+|P_v(z\eta)|=|z|\,|v_1+iv_2|=1
+\quad(|z|=1),
+\qquad J_{P_v}(0,1)\le\sqrt2.
+\]</span>
+<p>Thus the single-center, zero-shift obstruction disappears when the vector is allowed to be complex. This only treats <span class="math" data-index="284" data-tex="\(\xi=0,\zeta=0\)">\(\xi=0,\zeta=0\)</span>; it says nothing about uniformity at other real centers or under all bounded complex shifts.</p>
+<p>To check the failed strength hypothesis, take <span class="math" data-index="285" data-tex="\(v=e_1,e_2\)">\(v=e_1,e_2\)</span>. Along <span class="math" data-index="286" data-tex="\(\xi=(0,t)\)">\(\xi=(0,t)\)</span>,</p>
+<span class="math math-display" data-index="287" data-tex="\[
+S_{P_{e_1}}(0,t)=1,\qquad
+S_{P_{e_2}}(0,t)=\sqrt{t^2+1},
+\]">\[
+S_{P_{e_1}}(0,t)=1,\qquad
+S_{P_{e_2}}(0,t)=\sqrt{t^2+1},
+\]</span>
+<p>so these two operators have no uniform two-sided derivative-norm comparison. Assign 12 points to the real obstruction, 10 to the complex-vector calculation and 8 to the strength test and its quantifier limit.</p>
+<h2 id="8-references">8. References</h2>
+<ul>
+<li>[Mantlik] Frank Mantlik, <em>Partial differential operators depending analytically on a parameter</em>, Annales de l'Institut Fourier <strong>41</strong> (1991), 577–599. A reference for the uniform-contour theorem is Theorem 1.2. <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.1266/">Original article</a>.</li>
+<li>[Malgrange] Bernard Malgrange, <em>Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution</em>, Annales de l'Institut Fourier <strong>6</strong> (1956), 271–355. <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.65/">Original article</a>.</li>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, open lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>.</li>
+</ul>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

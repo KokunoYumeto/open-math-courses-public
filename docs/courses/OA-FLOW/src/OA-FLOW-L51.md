@@ -254,6 +254,73 @@ Combining it with the normal corner isomorphism (D10) gives
 \]
 The normal extension of a coefficient isomorphism across an arbitrary operator-matrix factor is proved in [Matrix entries and normal tensor transport](OA-FLOW-NCF.md#ncf-1). Alternatively its proof applies directly to (D27): apply the corner isomorphism entry by entry on finite compressions, retain the uniform norm bound, and use normality on each entry and the vector-series tail estimate. The tensor flip, defined on elementary vectors and extended by completion, puts the factors in the opposite order if desired.
 
+<a id="oa-flow.discrete.generator-formulas"></a>
+### Generator formulas and the subgroup cocycle
+
+Write \(\kappa:Q\to R=N\rtimes_\beta H\) for (D10), and \(\mathcal H_R=\ell^2(H)\otimes K\) for the regular space of \(R\). For \(s\in G\) and \(y\in Y\), put
+\[
+ c(s,y)=t_{sy}^{-1}st_y\in H.
+ \tag{DG1}
+\]
+Membership in \(H\) follows because \(st_y\) and \(t_{sy}\) represent the same right coset. Cancellation of the middle representatives gives
+\[
+ c(rs,y)=c(r,sy)c(s,y),\qquad c(e,y)=e.
+ \tag{DG2}
+\]
+The order of the two factors matters when \(H\) is nonabelian.
+
+Let \(\Gamma:P\to B(\ell^2(Y))\bar\otimes R\) be (D11), with the matrix-coordinate order in (D27). If \(a_y=x(t_y)\), its generator formulas are
+\[
+ \begin{aligned}
+ \Gamma(\pi(x))(\delta_y\otimes\eta)
+    &=\delta_y\otimes\pi_\beta(a_y)\eta,\\
+ \Gamma(u_s)(\delta_y\otimes\eta)
+    &=\delta_{sy}\otimes\lambda_{c(s,y)}\eta.
+ \end{aligned}
+ \tag{DG3}
+\]
+To prove the first identity, the off-diagonal corner entries vanish because \(x\) commutes with the \(p_y\)'s. Its \(y\)-th diagonal entry is
+\(pu_{t_y}^*xu_{t_y}p=p\alpha_{t_y^{-1}}(x)p\), whose value at \(e\) is \(x(t_y)\). Apply \(\kappa\). For the second identity, (D27) gives
+\[
+ E_{oz}u_sE_{yo}=pu_{t_z^{-1}st_y}p.
+ \tag{DG4}
+\]
+This vanishes unless \(z=sy\); in that case it is \(v_{c(s,y)}\), whose image under \(\kappa\) is \(\lambda_{c(s,y)}\).
+
+These formulas define bounded operators even for uncountable \(Y\). The first is a diagonal operator of norm \(\sup_y\|a_y\|\). The second permutes the coordinates by the bijection \(y\mapsto sy\) and applies a unitary within each coordinate. It therefore preserves the squared norm, namely the sum of the squared coordinate norms, and is onto. Formula (DG2) proves directly that these operators satisfy the group law. An infinite operator here is specified by its action on the dense finite-coordinate vectors and its bounded extension; no assertion about convergence of a raw Fourier series is involved.
+
+The covariance formula can also be read off without suppressing the subgroup action. If \(y=sz\), then
+\(s^{-1}t_y=t_zc(s,z)^{-1}\), and the defining equivariance in (D12) yields
+\[
+ (\alpha_sx)(t_y)=\beta_{c(s,s^{-1}y)}(a_{s^{-1}y}).
+ \tag{DG5}
+\]
+Conjugating the first operator of (DG3) by the second gives exactly this diagonal coefficient, because
+\(\lambda_h\pi_\beta(a)\lambda_h^*=\pi_\beta(\beta_h(a))\).
+Thus a coset move carries both a permutation and the indicated subgroup automorphism.
+
+There is an equally explicit formula for the coefficient expectation. Identify \(M\) with \(\ell^\infty(Y,N)\), and let \(E_H:R\to N\) be the expectation (D6) for the subgroup. Then
+\[
+ \bigl(E_G(T)\bigr)(t_y)
+    =E_H\bigl((\Gamma(T))_{yy}\bigr)
+       \qquad(T\in P,\ y\in Y).
+ \tag{DG6}
+\]
+For a Fourier monomial \(T=xu_s\), its \(y\)-th diagonal block in (DG3) is zero unless \(sy=y\). When \(sy=y\), that block is
+\(\pi_\beta(a_y)\lambda_{c(s,y)}\).
+Its \(E_H\)-value vanishes unless \(c(s,y)=e\). The equations \(sy=y\) and \(c(s,y)=e\) imply \(s=t_yet_y^{-1}=e\); in that case the value is \(a_y\). This is exactly \(E_G(xu_s)(t_y)\). Finite sums give the formula on the Fourier algebra. Both sides are normal maps, by the established normality of \(\Gamma\), matrix compression, \(E_H\), \(E_G\) and coordinate evaluation. Ultraweak density therefore proves (DG6) for every \(T\).
+
+Finally, choose new representatives \(t'_y=t_yh_y\), where \(h_y\in H\) and \(h_o=e\). The data become
+\[
+ a'_y=\beta_{h_y^{-1}}(a_y),\qquad
+ c'(s,y)=h_{sy}^{-1}c(s,y)h_y.
+ \tag{DG7}
+\]
+The diagonal unitary with entries \(\lambda_{h_y}\) conjugates the old generator formulas to the new ones by \(A\mapsto D^*AD\): its \((sy,y)\)-block is
+\(\lambda_{h_{sy}^{-1}}\lambda_{c(s,y)}\lambda_{h_y}\), and its coefficient block is
+\(\pi_\beta(\beta_{h_y^{-1}}(a_y))\).
+This computes the change of coordinates on every generator and hence, by normality, on the full crossed product.
+
 <a id="oa-flow.discrete.example"></a>
 ## A three-coset example with an infinite subgroup
 
@@ -277,6 +344,44 @@ The two ordinary steps between representatives contribute the identity of the su
 ![Three coset projections and the exact three-by-three matrix of translation by one, whose wrap entry is the subgroup unitary v3.](../assets/induction-alternatives/discrete-coset-matrix.svg)
 
 *The arrows describe translation on the three cosets; their labels are the subgroup coefficients in (D30). The matrix is an exact element of \(M_3(L(3\mathbb Z))\). Its third power retains the subgroup translation in every diagonal block. The original illustration is generated by the accompanying [figure code](../assets/induction-alternatives/draw_discrete_coset_matrix.py).*
+
+<a id="oa-flow.discrete.nontrivial-action"></a>
+### The same cosets with a nontrivial coefficient action
+
+Keep \(G=\mathbb Z\), \(H=3\mathbb Z\), and the three representatives, but take
+\[
+ N=M_2(\mathbb C),\qquad
+ W=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+ \beta_{3k}(a)=W^kaW^{-k}.
+ \tag{DG8}
+\]
+The induced coefficient algebra is still described by three entries, now in \(M_2\). Formula (DG5), including its value on the return from coset \(2\), gives
+\[
+ \alpha_1(a_0,a_1,a_2)=(Wa_2W^*,a_0,a_1),\qquad
+ \alpha_1^3(a_0,a_1,a_2)=(Wa_0W^*,Wa_1W^*,Wa_2W^*).
+ \tag{DG9}
+\]
+For example \(a_2=e_{12}\) is sent to \(-e_{12}\) in coordinate zero, since \(We_{12}W^*=-e_{12}\). A permutation of the three entries alone would miss this sign.
+
+Put \(R=M_2\rtimes_\beta3\mathbb Z\), and retain its regular generators \(\pi_\beta,\lambda\). The complete matrix dictionary is
+\[
+ \Gamma(\pi(a_0,a_1,a_2))
+   =\operatorname{diag}(\pi_\beta(a_0),\pi_\beta(a_1),\pi_\beta(a_2)),
+ \qquad
+ S:=\Gamma(u_1)
+   =\begin{pmatrix}0&0&\lambda_3\\1&0&0\\0&1&0\end{pmatrix}.
+ \tag{DG10}
+\]
+Here every entry lies in \(R\). The coset arrows in the preceding figure give the positions of the nonzero blocks. Multiplication gives \(S^3=\operatorname{diag}(\lambda_3,\lambda_3,\lambda_3)\), and the subgroup covariance relation gives exactly (DG9) on conjugating the coefficient diagonal.
+
+**Problem.** In this example \(\alpha_1^6=\operatorname{id}\). Must the crossed-product unitary satisfy \(u_1^6=1\)?
+
+**Solution.** No. The subgroup representation is the regular representation of the infinite group \(3\mathbb Z\), so
+\[
+ S^6=\operatorname{diag}(\lambda_6,\lambda_6,\lambda_6)\ne1.
+ \tag{DG11}
+\]
+For a nonzero \(\eta\in\mathbb C^2\), \(\lambda_6\) sends \(\delta_0\otimes\eta\) to \(\delta_6\otimes\eta\); these are orthogonal nonzero vectors. Thus \(\lambda_6\ne1\). The sixth power commutes with all coefficient elements because \(\beta_6=\operatorname{id}\), but the periodicity of the coefficient action does not impose a group relation on its regular implementing unitary.
 
 <a id="oa-flow.discrete.representatives"></a>
 ## Changing representatives and checking the endpoints

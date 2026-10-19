@@ -2,7 +2,7 @@
 
 The favorable direction of propagation is a property of a complex characteristic curve. It must survive multiplication of the symbol and a change of canonical coordinates. A compact piece on which the symbol is locally real does not, by itself, distinguish the two directions: the choice comes from an endpoint at which the characteristic curve can reach a nonzero symbol value.
 
-We prove the intrinsic orientation, propagation from a negative noncharacteristic point, and propagation from a regular starting point on an oriented characteristic interval. The antecedents are Hörmander IV, Theorem 26.6.2, Definition 26.6.3 and Theorem 26.6.4, printed 120–121 in the admitted 2009 edition. All operator and geometry steps used here have exact programme proofs. The unrestricted complex-cutoff question in the neighboring Proposition 26.6.1′ remains a separate obligation; these three invariant results use the already proved ordinary estimate.
+We prove the intrinsic orientation, propagation from a negative noncharacteristic point, and propagation from a regular starting point on an oriented characteristic interval. The antecedents are Hörmander IV, Theorem 26.6.2, Definition 26.6.3 and Theorem 26.6.4, printed 120–121 in the admitted 2009 edition. All operator and geometry steps used here have exact programme proofs. The neighboring [complex-cutoff theorem](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html) treats Proposition 26.6.1′; the three invariant results here use the ordinary sign estimate.
 
 Use the characteristic geometry, [complex homogeneous tubes](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.md), [graph operators and Egorov](../20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md), and ordinary propagation. The proof map pins their actual current sources and locators. External human foundations remain explicit; internal export P514 closure is not claimed.
 
@@ -206,6 +206,6 @@ Inside the open zero region the symbol is just \(\tau\). Both multipliers \(+1\)
 
 ![The two endpoint geometries, their common increasing-time orientation and the exact flat damping coefficients.](figures/intrinsic-directed-propagation.svg)
 
-The [figure source](figures/build_figure.py), [finite checks](model-check.json), [proof review](proof-review.json), [reader checks](reader-check.json), and source credit accompany this lesson. The intrinsic orientation and both invariant propagation theorems are proved. The unrestricted complex-cutoff estimate, arbitrary concave-index construction, later characteristic analysis and all other course obligations remain active.
+The [figure source](figures/build_figure.py), [finite checks](model-check.json), [proof review](proof-review.json), [reader checks](reader-check.json), and source credit accompany this lesson. The ordinary sign estimate is the operator input for the invariant results here. The [complex-cutoff theorem](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html) treats shrinking measurements, and positive Fourier packets realize prescribed concave indices with their exact wavefront ray.
 
 Original expression: CC0-1.0. Linked components retain their terms. All nine approved books remain valid mathematical sources.

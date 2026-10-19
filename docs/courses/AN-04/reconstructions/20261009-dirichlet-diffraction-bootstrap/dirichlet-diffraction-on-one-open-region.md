@@ -292,7 +292,7 @@ Take \(p=\rho^2-[x\zeta^2+\tau^2-\zeta^2]\), coordinates \((x,t,y;\rho,\tau,\zet
 \]
 For \(\mu\ge0\), the physical path runs from \(\rho=-a\) to \(a\), \(a=\sqrt{h-\mu}\). For \(\mu<0\), put \(b=\sqrt{-\mu}\): the two physical pieces are \([-a,-b]\) and \([b,a]\), with the base coordinates continued continuously across reflection and the normal covector jumping from \(-b\) to \(b\). The reflection is not an ordinary Hamilton interval. Set \(b=0\) when \(\mu\ge0\). The complete tangential increments are
 \[
- \Delta t=-4\sqrt{1-\mu}\,(a-b),\qquad
+ \Delta t=-4\tau\,(a-b),\qquad
  \Delta y=4(1-\mu)(a-b)-\tfrac43(a^3-b^3).
  \tag{DB31}
 \]
@@ -328,4 +328,4 @@ Near \(x_n\), all other summands vanish and \(v=a_n|x-x_n|^{n+1/2}\). Its deriva
 
 ![Interior turning, boundary tangency and reflection, with their continuous cap displacement](figures/turning-reflection-and-cap.svg)
 
-**F0. Coordinates and interpretation.** The left panel plots \(x=\mu+\rho^2\) for \(\mu=-1/100,0,1/100\), restricted to \(0\le x\le1/16\). Arrows follow increasing \(\rho\), the positive Hamilton orientation in Exercise 1. The dotted boundary segment for \(\mu<0\) is the covector jump at reflection; it is not a base path or an ordinary Hamilton arc. The right panel plots the exact \(\Delta t\) in (DB31) for \(-1/64\le\mu\le1/64\). It shows continuity of the full cap displacement across tangency, with no claim of differentiability there. The omitted \(y\)-increment is explicitly retained in (DB31). The [figure generator](figures/build_figure.py) preserves the constants and formulas.
+**F0. Coordinates and interpretation.** The left panel plots \(x=\mu+\rho^2\) for \(\mu=-1/100,0,1/100\), restricted to \(0\le x\le1/16\). Arrows follow increasing \(\rho\), the positive Hamilton orientation in Exercise 1. The dotted boundary segment for \(\mu<0\) is the covector jump at reflection; it is not a base path or an ordinary Hamilton arc. On the positive time-frequency branch, the right panel plots the exact \(\Delta t\) in (DB31) for \(-1/64\le\mu\le1/64\). It shows continuity of the full cap displacement across tangency, with no claim of differentiability there. The omitted \(y\)-increment is explicitly retained in (DB31). The [figure generator](figures/build_figure.py) preserves the constants and formulas.

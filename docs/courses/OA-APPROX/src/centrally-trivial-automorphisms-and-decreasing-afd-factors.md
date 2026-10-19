@@ -1,6 +1,6 @@
 # Centrally trivial automorphisms and decreasing AFD factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 Uniform displacement and finite normal-functional tests answer different questions. The first detects an outer automorphism by looking arbitrarily far down a tensor tail. The second lets an approximately inner automorphism be compared with a centrally trivial one. We first construct the tail and fixed-algebra examples, then prove the two-state comparison and finish the abstract group criterion.
 

@@ -1,6 +1,6 @@
 # Fredholm operators and the stable index
 
-*GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; the projection-dimension argument by GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI. Public domain (CC0 1.0).*
 
 An operator can fail to be invertible in a finite number of directions while behaving like an isomorphism everywhere else. Fredholm operators make this precise. Compact perturbations can change the individual numbers of missing directions, but preserve their difference. That difference also classifies the connected components of the invertible group of the Calkin algebra on a separable infinite-dimensional Hilbert space.
 
@@ -65,8 +65,7 @@ In Theorem 1.1, the closed subspaces \((\ker T)^\perp\) and \(T(H)\) are Banach 
 
 **Theorem 1.1.** An operator \(T\in B(H)\) is Fredholm exactly when its range is closed and both \(\ker T\) and \(\ker T^*\) are finite-dimensional. In that case there is \(R\in B(H)\) with
 \[
-RT=1-P_{\ker T},\qquad TR=1-P_{\ker T^*}.
-\tag{1.1}
+\begin{gathered}RT=1-P_{\ker T},\\TR=1-P_{\ker T^*}.\end{gathered}\tag{1.1}
 \]
 
 **Proof.** If \(q(T)\) is invertible, choose a lift \(S\) of its inverse. Then \(ST=1+C\) and \(TS=1+D\), with \(C,D\) compact. On \(\ker T\), \(C=-1\). The identity on an infinite-dimensional Hilbert space is not compact, as an infinite orthonormal sequence shows, so \(\ker T\) is finite-dimensional. Taking adjoints of \(TS=1+D\) gives the same conclusion for \(\ker T^*\).
@@ -93,21 +92,13 @@ Conversely, suppose the range \(Y=T(H)\) is closed and the two kernels are finit
 
 **Proof.** The quotient images of \(S,T\) are invertible, so their product is invertible. It remains to count the finite-dimensional defects. Write \(\operatorname{coker}T=H/T(H)\), which has dimension \(\dim\ker T^*\). There is an exact sequence
 \[
-0\longrightarrow\ker T\longrightarrow\ker(ST)
-\xrightarrow{\ T\ }\ker S
-\xrightarrow{\ q_T\ }\operatorname{coker}T
-\xrightarrow{\ \overline S\ }\operatorname{coker}(ST)
-\xrightarrow{\ q_S\ }\operatorname{coker}S
-\longrightarrow0.
-\tag{2.2}
+\begin{gathered}0\longrightarrow\ker T\longrightarrow\ker(ST)\\\xrightarrow{\ T\ }\ker S\xrightarrow{\ q_T\ }\operatorname{coker}T\\\xrightarrow{\ \overline S\ }\operatorname{coker}(ST)\\\xrightarrow{\ q_S\ }\operatorname{coker}S\longrightarrow0.\end{gathered}\tag{2.2}
 \]
 Here \(q_T\eta=\eta+T(H)\), \(\overline S(\eta+T(H))=S\eta+ST(H)\), and \(q_S(\zeta+ST(H))=\zeta+S(H)\). These maps are well-defined. Exactness can be checked directly: the image of \(T:\ker(ST)\to\ker S\) is \(\ker S\cap T(H)\), which is the kernel of \(q_T\). If \(S\eta\in ST(H)\), then \(S(\eta-T\xi)=0\) for some \(\xi\), so \(\eta+T(H)\) is the image of a vector in \(\ker S\). Finally, the kernel of the last map is \(S(H)/ST(H)\), the image of \(\overline S\); the last map is onto. Exactness at the first two terms is immediate.
 
 All spaces in (2.2) are finite-dimensional. Applying rank–nullity to each map and cancelling its rank against the next term gives zero for the alternating sum of their dimensions. Rearranging yields
 \[
-\dim\ker(ST)-\dim\operatorname{coker}(ST)
-=\dim\ker S-\dim\operatorname{coker}S
-+\dim\ker T-\dim\operatorname{coker}T.
+\begin{gathered}\dim\ker(ST)-\dim\operatorname{coker}(ST)\\=\dim\ker S-\dim\operatorname{coker}S\\+\dim\ker T-\dim\operatorname{coker}T.\end{gathered}
 \]
 Changing signs proves (2.1). \(\square\)
 
@@ -117,12 +108,27 @@ Changing signs proves (2.1). \(\square\)
 
 **Proof.** For \(\xi\in qH\), \(\|p\xi\|\geq(1-\|p-q\|)\|\xi\|\). Thus \(p:qH\to pH\) is injective with closed range. Its adjoint is \(q:pH\to qH\), which satisfies the analogous lower bound and has zero kernel. The orthogonal complement of the range of the first map is that kernel, so the first map is onto. Its polar decomposition gives a unitary between the two ranges. \(\square\)
 
+A related identity explains dimension counts for intersecting subspaces. If \(M,N\subseteq H\) are closed, consider \(R=P_N|_M:M\to N\). Its adjoint is \(R^*=P_M|_N\), so \(\ker R=M\cap N^\perp\) and \(\ker R^*=N\cap M^\perp\). The polar partial isometry of \(R\) is a unitary from \((\ker R)^\perp\) in \(M\) onto \((\ker R^*)^\perp\) in \(N\). Consequently
+
+\[\begin{gathered}\dim\bigl(M\ominus(M\cap N^\perp)\bigr)\\=\dim\bigl(N\ominus(N\cap M^\perp)\bigr).\end{gathered}\]
+
+This remains true for infinite Hilbert-space dimensions: the final space of the polar isometry is the closure of \(R(M)\), so no closed-range assumption on \(R\) is needed. For Fredholm \(S,T\), the map \(T:\ker(ST)\to\ker S\cap T(H)\) is onto and has kernel \(\ker T\). All these spaces are finite-dimensional by Theorem 1.1. Rank–nullity therefore gives
+
+\[\begin{gathered}\dim\ker(ST)=\dim\ker T\\+\dim\bigl(\ker S\cap T(H)\bigr).\end{gathered}\]
+
+The six-term exact sequence in Theorem 2.1 keeps track of the corresponding cokernel dimensions and proves the index formula without subtracting infinite cardinal dimensions.
+
+The corresponding kernel formula also holds for arbitrary bounded \(S,T\), provided the possibly nonclosed image is completed when taking its Hilbert-space dimension. Put \(M=\ker(ST)\) and restrict \(T\) to the bounded map \(R:M\to H\). Its kernel is \(\ker T\), and its range is \(\ker S\cap T(H)\): if \(T\xi\in\ker S\), then \(\xi\in M\). The polar partial isometry of \(R\) identifies \(M\ominus\ker T\) unitarily with \(\overline{\ker S\cap T(H)}\). Orthogonal decomposition therefore gives the cardinal identity
+
+\[\begin{gathered}\dim\ker(ST)=\dim\ker T\\+\dim\overline{\ker S\cap T(H)}.\end{gathered}\]
+
+No subtraction of infinite cardinals is involved. If the intersection is closed, the closure can be omitted. In particular it is finite-dimensional for Fredholm \(S,T\), recovering the preceding finite dimension count.
+
 **Theorem 3.2.** Fredholm operators form an open set. Their index is locally constant. Their kernel and cokernel dimensions are upper semicontinuous, but need not be continuous.
 
 **Proof.** Fix a Fredholm \(T\). Use the decompositions of domain and codomain
 \[
-H=X\oplus K,\quad X=(\ker T)^\perp,\ K=\ker T;
-\qquad H=Y\oplus C,\quad Y=T(H),\ C=\ker T^*.
+\begin{gathered}H=X\oplus K,\\X=(\ker T)^\perp,\quad K=\ker T;\\H=Y\oplus C,\\Y=T(H),\quad C=\ker T^*.\end{gathered}
 \]
 Relative to them, \(T=\begin{pmatrix}A&0\\0&0\end{pmatrix}\), with \(A:X\to Y\) invertible. A sufficiently close operator has the form
 \[
@@ -130,18 +136,11 @@ T'=\begin{pmatrix}A'&B\\C'&D\end{pmatrix},
 \]
 where \(A'\) remains invertible. Bounded invertible row and column operations give
 \[
-\begin{pmatrix}1&0\\-C'(A')^{-1}&1\end{pmatrix}
-T'
-\begin{pmatrix}1&-(A')^{-1}B\\0&1\end{pmatrix}
-=\begin{pmatrix}A'&0\\0&F\end{pmatrix},
-\qquad F=D-C'(A')^{-1}B:K\to C.
-\tag{3.1}
+\begin{gathered}L=\begin{pmatrix}1&0\\-C^{\prime}(A^{\prime})^{-1}&1\end{pmatrix},\\R=\begin{pmatrix}1&-(A^{\prime})^{-1}B\\0&1\end{pmatrix},\\LT^{\prime}R=\begin{pmatrix}A^{\prime}&0\\0&F\end{pmatrix},\\F=D-C^{\prime}(A^{\prime})^{-1}B:K\to C.\end{gathered}\tag{3.1}
 \]
 Such operations carry kernels isomorphically to kernels and ranges by homeomorphisms to ranges, so preserve closed range and cokernel dimension. The right side has closed range, finite kernel and finite cokernel; hence \(T'\) is Fredholm. Its index is
 \[
-\dim C-\operatorname{rank}F
--\bigl(\dim K-\operatorname{rank}F\bigr)
-=\dim C-\dim K=\kappa(T).
+\begin{gathered}\dim C-\operatorname{rank}F\\-\bigl(\dim K-\operatorname{rank}F\bigr)\\=\dim C-\dim K=\kappa(T).\end{gathered}
 \]
 Also \(\dim\ker T'\leq\dim K\) and \(\dim\ker(T')^*\leq\dim C\). These are exactly the local upper-semicontinuity assertions for integer-valued dimensions.
 
@@ -167,8 +166,7 @@ We need one feature of \(B(H)\) that need not hold in an arbitrary C*-algebra.
 
 **Theorem 4.2.** For a Fredholm \(T\),
 \[
-q(T)\in G_0(Q(H))\quad\Longleftrightarrow\quad\kappa(T)=0.
-\tag{4.1}
+\begin{gathered}q(T)\in G_0(Q(H))\\\Longleftrightarrow\quad\kappa(T)=0.\end{gathered}\tag{4.1}
 \]
 If \(H\) is separable and infinite-dimensional, the map \(q(T)\mapsto\kappa(T)\) induces an isomorphism
 \[

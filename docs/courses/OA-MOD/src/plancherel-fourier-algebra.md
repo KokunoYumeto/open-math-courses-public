@@ -2,6 +2,8 @@
 
 *GPT-6 (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. Self-checked by the writing AI.*
 
+*Hilbert-space projection and factor unitary-group measure proofs: GPT-6 Astra (OpenAI), October 2026.*
+
 An arbitrary locally compact group acts on its own \(L^2\) space from the left and the right. Convolution turns compactly supported functions into a Tomita algebra; its weight measures exactly the \(L^2\) norm of bounded convolution vectors. The same representation also produces functions on the group: its normal coefficients form the Fourier algebra. The group-coordinate unitary connects these facts by turning a left translation into two simultaneous translations. Its group-like equation then reconstructs the original group from the characters of the Fourier algebra. For abelian groups this also gives the Plancherel transform and topological Pontryagin biduality. Returning to general groups, positive convolution functionals become continuous unitary coefficients and finite positive kernels. Full group coefficients form the Fourier–Stieltjes Banach algebra, the regular Fourier algebra is its ideal, and weak* convergence of states is compact-uniform convergence. PF37–44 move to standard Borel groups: derivative versions, invariant measures and modular scale, then reconstruction of a locally compact topology and obstructions in infinite dimensions.
 
 The mathematical antecedents are Takesaki, *Theory of Operator Algebras II*, Chapter VI, §1, Example 1.2, Chapter VII, §3, Proposition 3.1 through Proposition 3.26, printed pp. 65–86, and Exercise VII.3(1)–(7), printed pp. 87–88. Through PF-36 the group is locally compact Hausdorff; the Plancherel and biduality items explicitly specialize to abelian groups. No second-countability, separability, sigma-compactness, unimodularity or finite-Haar-measure assumption is added in those items. PF-37–44 begin with a standard Borel group and the stated measure-class hypotheses; the later items construct a group topology rather than assuming one. The printed Lemma 3.3′ omits a modular factor and makes a false \(C_0\) assertion; the printed Exercise 1(b) makes a version-dependent diagonal claim that is also false as stated. We identify these defects and prove the corrected results.
@@ -1672,7 +1674,7 @@ The integrand is Borel on \(G\times G\) because multiplication and inversion are
 
 so \(\delta(gh)=\delta(g)\delta(h)\), \(\delta(e)=1\), and \(\delta(g^{-1})=\delta(g)^{-1}\). If \(\mu=0\), the source conclusion is trivially satisfied by \(\delta\equiv1\); uniqueness then has no content.
 
-The remaining VII.3 exercises start with a standard Borel group and a nonzero sigma-finite invariant measure; no topology is assumed. The regular representation will produce a compatible locally compact topology. Only after that step do we apply PF-10–15 to the group-like operators. Exercise 6 starts instead with a nonzero quasi-invariant measure and uses PF-38. Exercise 7 compares the reconstructed topology with specified Polish topologies. The source is Takesaki II, Exercise VII.3(4)–(7), printed p. 88 / PDF p. 108. The scalar, descriptive-set, compact-group and other course prerequisites used below are not proved in this lesson. The printed omission of nonzero measure and the unstated unitary-group topology are discussed below; literal versions with zero measure are false.
+The remaining VII.3 exercises start with a standard Borel group and a nonzero sigma-finite invariant measure; no topology is assumed. The regular representation will produce a compatible locally compact topology. Only after that step do we apply PF-10–15 to the group-like operators. Exercise 6 starts instead with a nonzero quasi-invariant measure and uses PF-38. Exercise 7 first compares the reconstructed topology with specified Polish topologies; projection then gives the Hilbert-space conclusion in arbitrary dimension. The source is Takesaki II, Exercise VII.3(4)–(7), printed p. 88. PF37–38 supply the scalar measure arguments, and PF41 and PF43 prove the descriptive-set and automatic-continuity results. Compact inner approximation and compact-group representations use the earlier programme proofs cited at their applications. The printed omission of nonzero measure and the unstated unitary-group topology are discussed below; literal versions with zero measure are false.
 
 ## A compact neighborhood from a measured Borel group
 
@@ -1857,7 +1859,32 @@ The inverse \(\lambda^{-1}\) is Borel by the Borel injection theorem proved in P
 
 Let \(\mathcal H\) be an infinite-dimensional separable Hilbert space with its norm topology and norm-Borel sets. It is a Polish additive group but is not locally compact: every neighborhood of zero contains a closed ball of some positive radius, and that ball contains a scaled orthonormal sequence without any convergent subsequence. If a nonzero sigma-finite Borel measure on \(\mathcal H\) were quasi-invariant under every translation, PF-43 would make this norm topology locally compact, a contradiction.
 
-For a nonseparable Hilbert space the norm-Borel structure is not the standard Borel premise of VII.3(1)–(6); the source must specify a measurable structure and topology before the same inference can be made. The zero measure remains a literal counterexample unless excluded.
+### Arbitrary Hilbert dimension
+
+The conclusion holds for every infinite-dimensional Hilbert space with its norm-Borel sets, without separability or a Radon assumption on the proposed measure. Choose an orthonormal sequence \((e_n)\) and let \(K\) be its closed linear span. For \(x\in\mathcal H\), expansion of
+\(\|x-\sum_{n=1}^N\langle x,e_n\rangle e_n\|^2\ge0\) gives
+\(\sum_{n=1}^N|\langle x,e_n\rangle|^2\le\|x\|^2\). Consequently
+\[
+ P x=\sum_{n=1}^{\infty}\langle x,e_n\rangle e_n
+\]
+converges in \(K\), defines a continuous linear map of norm at most one, and fixes \(K\). In particular \(P(x+k)=Px+k\) for \(k\in K\). The space \(K\) is separable and infinite dimensional.
+
+Suppose \(\mu\) were a nonzero sigma-finite norm-Borel measure on \(\mathcal H\), quasi-invariant under every translation. Replace it by an equivalent Borel probability \(\pi\): disjointize a countable cover of finite \(\mu\)-measure to obtain \((F_j)_{j\ge1}\), give \(F_j\) the positive density \(2^{-j}/(1+\mu(F_j))\), and divide by the finite nonzero integral of this density. This construction uses only sigma-finiteness. Thus \(\pi\) and \(\mu\) have exactly the same null sets, and \(\pi\) is still quasi-invariant under every translation.
+
+Define the Borel probability \(\nu=P_*\pi\) on \(K\). For every Borel \(E\subset K\) and every \(k\in K\), continuity and the preceding equivariance give
+\[
+ P^{-1}(E+k)=P^{-1}(E)+k,
+\]
+and therefore
+\[
+ \begin{gathered}
+ \nu(E+k)=0\\
+ \Longleftrightarrow\quad \pi(P^{-1}(E)+k)=0\\
+ \Longleftrightarrow\quad \pi(P^{-1}(E))=0\\
+ \Longleftrightarrow\quad \nu(E)=0.
+ \end{gathered}
+\]
+The nonzero finite measure \(\nu\) is thus quasi-invariant under every translation of the separable infinite-dimensional Hilbert space \(K\), contradicting the preceding argument. This proves Exercise 7(i) for arbitrary Hilbert dimension. The zero measure is excluded throughout.
 
 ### The unitary group of a factor
 
@@ -1876,9 +1903,158 @@ The embedded corner unitary group is closed in \(U(M)\). If the latter had a com
 
 The strong-topology unitary group of an infinite-dimensional factor cannot be compact. The factor argument in PF47, using the exact RT-CPT-01 compact-representation theorem, applies to every faithful normal representation, without a separability assumption: a compact unitary group produces a nonzero compact operator in the commutant, whose finite-dimensional eigenspace gives a faithful normal representation of the factor. The factor would therefore be finite dimensional.
 
-Consequently \(U(M)\) is not locally compact. PF-43 excludes a nonzero sigma-finite Borel measure quasi-invariant under all left translations. The statement requires this strong/strong-star Polish group convention (or another specified Polish group topology) and excludes the zero measure; neither qualification is explicit in the printed Exercise 7(ii).
+Consequently \(U(M)\) is not locally compact. PF-43 excludes a nonzero sigma-finite Borel measure quasi-invariant under all left translations. This argument uses the strong/strong-star Polish group convention and excludes the zero measure. The following argument treats arbitrary factors in the strong operator topology.
 
-The arbitrary-derivative claim in printed Exercise 1(b) is refuted; Exercises 4, 6 and 7 require a nonzero measure, and Exercise 7(ii) is proved here for the strong-topology Polish unitary group of a factor with separable predual. Neither the zero-measure versions nor a version with an unspecified unitary-group topology is proved here.
+### A compact-set obstruction on normal states
+
+Here is an argument that does not require the original unitary group to be Polish. Put \(H_0=L^2([0,1],m)\), where \(m\) is Lebesgue measure, and let \(r_n\) be multiplication by the Rademacher sign which alternates on the dyadic intervals of length \(2^{-n}\). Each \(r_n\) is a self-adjoint unitary, and \(r_n\to0\) weakly. Indeed its integral against a fixed dyadic step function vanishes for all sufficiently large \(n\). Such step functions are dense in \(L^1(m)\): regular approximation of measurable sets by compact and open sets gives continuous approximants, and uniform continuity gives dyadic step approximants. The bound \(|r_n|=1\) then gives convergence against every \(L^1\) function. Apply this to \(\xi\overline\eta\) for \(\xi,\eta\in H_0\).
+
+Let \(D=C^*(1,r_1,r_2,\ldots)\) and give \(G_0=U(D)\) the operator-norm metric. Polynomials in the generators with rational complex coefficients form a countable dense subset of \(D\), and \(U(D)\) is closed in this Banach space. Thus \(G_0\) is a Polish group. Let \(X\) be the normal states of \(B(H_0)\), with the predual norm. The vector-series description and Banach completeness proved in CP04–CP06 show that \(X\) is Polish: normal positive functionals of value one at the identity form a closed subset of the predual, and finite vector-functional sums with rational coefficients and vectors in a countable dense subset of \(H_0\) are dense in that predual. The action
+\[
+ (g\cdot\omega)(A)=\omega(g^*Ag)
+\]
+is continuous on \(G_0\times X\), since it is isometric in \(\omega\) and
+\[
+ \|g\cdot\omega-h\cdot\omega\|\le 2\|g-h\|.
+\]
+
+**Compact displacement.** For every nonempty compact \(K\subset X\) and every identity neighborhood \(V\subset G_0\), there is \(g\in V\) with \(gK\cap K=\varnothing\). Choose \(0<\theta<\pi/2\) so small that the norm ball of radius \(2\sin(\theta/2)\), including its boundary, lies in \(V\). Write \(s=\sin\theta\), \(c=\cos\theta\), and choose \(0<\varepsilon<s^2/16\). An increasing sequence of finite-rank projections tends strongly to \(1\); normality and a finite subcover of \(K\) give one finite-rank projection \(F\) with
+\[
+ \omega(F)>1-\varepsilon\qquad(\omega\in K).
+\]
+Set \(F'_n=r_nFr_n\). Weak convergence of \(r_n\) and finite rank of \(F\) imply \(F'_n\to0\) strongly. Explicitly, for an orthonormal basis \(e_1,\ldots,e_d\) of \(FH_0\),
+\[
+ \|F'_n\xi\|^2
+ =\sum_{j=1}^d|\langle r_n\xi,e_j\rangle|^2\longrightarrow0.
+\]
+The normal vector-series formula gives \(\omega(F'_n)\to0\) for each \(\omega\in X\); a finite norm net in \(K\), together with \(\|F'_n\|\le1\), makes this convergence uniform on \(K\). Choose \(n\) with \(\omega(F'_n)<\varepsilon\) for all \(\omega\in K\), and set \(g=c1+isr_n\). Then \(g\in G_0\) and \(\|g-1\|=2\sin(\theta/2)\), so \(g\in V\).
+
+For a positive functional, \(p_\omega(a)=\omega(a^*a)^{1/2}\) is a seminorm: Cauchy–Schwarz, obtained by expanding \(\omega((a+zb)^*(a+zb))\ge0\), proves its triangle inequality. Since
+\[
+ F'_ng=cF'_n+isr_nF,
+\]
+the reverse triangle inequality yields
+\[
+ \begin{gathered}
+ \sqrt{(g\cdot\omega)(F'_n)}
+ =p_\omega(F'_ng)\\
+ \ge s\sqrt{\omega(F)}-c\sqrt{\omega(F'_n)}\\
+ \mathrel{>}s\sqrt{1-\varepsilon}-c\sqrt\varepsilon
+ \mathrel{>}\sqrt\varepsilon.
+ \end{gathered}
+\]
+For the last inequality, \(\varepsilon<1/16\) gives \(\sqrt{1-\varepsilon}>3/4\), while \(\sqrt\varepsilon<s/4\) and \(c\le1\). Thus every state in \(gK\) assigns \(F'_n\) value greater than \(\varepsilon\), whereas every state in \(K\) assigns it value less than \(\varepsilon\). This proves disjointness. Neither orthogonality of \(F\) and \(F'_n\) nor a uniform choice of \(n\) for all compact sets is asserted.
+
+![The compact displacement estimate and the equivariant passage from a unitary group to normal states.](../assets/pf-unitary-measure-obstruction.png)
+
+*Figure.* The upper panel shows the strict separation by the single observable \(F'_n\); the rotation can be chosen in any norm neighborhood of the identity, with \(\varepsilon\), \(F\), and \(n\) then chosen as in the proof. The lower panel shows the equivariant map constructed below. The diagram represents maps and inequalities, not a finite-dimensional model of \(X\).
+
+**Disjoint translates.** For this compact \(K\), put
+\[
+ T_K=\{h\in G_0:hK\cap K\ne\varnothing\}.
+\]
+It is closed: from \(h_j\to h\) and \(h_j\omega_j\in K\), compactness selects a convergent subsequence of \(\omega_j\in K\), and continuity puts its image under \(h\) in \(K\). It has empty interior. Given \(h\in G_0\) and an identity neighborhood \(V\), apply compact displacement to \(K\cup h^{-1}K\). The resulting \(g\in V\) satisfies \(gK\cap h^{-1}K=\varnothing\), hence \(hg\notin T_K\).
+
+The relation
+\[
+ \mathcal R=\{(g,h):gK\cap hK\ne\varnothing\}
+\]
+is closed and nowhere dense in \(G_0^2\). Indeed it is the inverse image of \(T_K\) under the continuous open map \((g,h)\mapsto g^{-1}h\); openness follows because the image of an open rectangle \(A\times B\) is the open set \(A^{-1}B\).
+
+We give the required uncountable construction explicitly. Inductively choose nonempty open sets \(U_t\subset G_0\) indexed by finite binary words, with child closures inside their parent, diameter at most \(2^{-|t|}\), and
+\[
+ (\overline U_t\times\overline U_{t'})\cap\mathcal R
+ =\varnothing\quad(t\ne t',\ |t|=|t'|).
+\]
+At a finite stage, in the product of the prescribed parent sets choose one center for each child. For every pair of distinct children, the forbidden pairs form a closed nowhere dense subset of that product: coordinate projection is open, and \(\mathcal R\) is nowhere dense. The complement of their finite union is dense and open, so the centers can be chosen there. Closedness of \(\mathcal R\) then allows sufficiently small open balls around all centers whose closures satisfy the displayed separation and lie in their parent sets. Completeness of the norm metric gives a point \(g_\alpha\) in the nested closures along each infinite binary word \(\alpha\). Distinct words eventually lie in separated sets, so \(g_\alpha K\) are pairwise disjoint.
+
+It follows that no Borel probability on \(X\) can be quasi-invariant under every element of \(G_0\). Such a probability has a positive-measure compact set: for each \(j\ge1\), select finitely many closed balls of radius \(2^{-j}\) whose union has measure greater than \(1-2^{-j-2}\), using a countable dense set of centers and continuity from below. The intersection of these finite unions is closed, totally bounded and complete, hence compact, and has measure at least \(3/4\). Quasi-invariance would give positive measure to every one of the uncountably many disjoint compact translates just constructed. A finite measure has only countably many disjoint positive-measure sets: for each positive integer \(k\), at most \(k\) disjoint sets can have measure greater than \(1/k\). This is a contradiction.
+
+### Diffuse abelian subalgebras of infinite-dimensional factors
+
+Every infinite-dimensional von Neumann factor contains a unital normal copy of \(L^\infty([0,1],m)\). We spell out both cases and the extension from step functions. The projection inputs are the proved type I classification and halving results in Sections 10 and 13 of Projections and types.
+
+If the factor is finite, Theorem 4.7 on finite normal traces gives a nonzero finite normal trace. Its support is central, so in a factor it is faithful; normalize it to \(\tau(1)=1\). A finite type I factor is a finite matrix algebra by Corollary 10.4 of the projection lesson. Our factor therefore has no type I part, and Proposition 13.3 splits each projection into two orthogonal equivalent halves. Repeated halving gives refining partitions
+\[
+ 1=\sum_{j=0}^{2^n-1}p_{n,j},\qquad
+ \tau(p_{n,j})=2^{-n}.
+\]
+Send the indicator of the \(j\)-th dyadic interval at level \(n\) to \(p_{n,j}\). This gives a unital isometric star homomorphism \(\iota\) on dyadic step functions, preserving their integrals and their \(L^2\) inner products.
+
+For \(f\in L^\infty(m)\), let \(f_n\) be its averages on level-\(n\) intervals. The averaging maps are \(L^2\) contractions by Cauchy–Schwarz on each interval. Density of dyadic step functions therefore gives \(f_n\to f\) in \(L^2\), and \(\|f_n\|_\infty\le\|f\|_\infty\). Work in the faithful normal tracial GNS representation, the finite-trace specialization of WG006–WG010; WH02 proves that its image is a von Neumann algebra. For \(a\in M\), traciality gives
+\[
+ \|(\iota(f_n)-\iota(f_l))a\|_{2,\tau}
+ \le\|a\|\,\|f_n-f_l\|_{2,m}.
+\]
+The uniformly bounded operators \(\iota(f_n)\) thus converge strongly on the dense GNS core, and then on the whole GNS space, to an element \(\iota(f)\) of the represented von Neumann algebra. The same argument for conjugates gives strong convergence of adjoints. Any uniformly bounded dyadic approximants with the same \(L^2\) limit give the same operator. In particular \(f_ng_n\to fg\) in \(L^2\), by the uniform bounds and the triangle inequality, so this extension is multiplicative, preserves adjoints and the unit, and
+\[
+ \tau(\iota(f)^*\iota(f))=\int|f|^2\,dm.
+\]
+It is injective, positive and integral preserving; positivity also follows directly because the dyadic averages of a positive function are positive.
+
+The extension is normal. To justify the net assertion used here, integration on \(L^\infty(m)_+\) preserves bounded increasing suprema. If \(f_\alpha\uparrow f\) and \(s=\sup_\alpha\int f_\alpha\), choose increasing indices \(\alpha_n\) whose integrals tend to \(s\), and put \(b=\sup_n f_{\alpha_n}\). For any \(\beta\), an index dominating \(\beta,\alpha_n\) shows
+\[
+ \int(f_\beta-f_{\alpha_n})_+\,dm
+ \le s-\int f_{\alpha_n}\,dm\longrightarrow0.
+\]
+Thus \(f_\beta\le b\) in \(L^\infty\) for each \(\beta\), so \(b=f\) and \(\int f=s\). Now \(y=\sup_\alpha\iota(f_\alpha)\le\iota(f)\), while normality of \(\tau\) gives \(\tau(y)=\int f\). Faithfulness forces \(y=\iota(f)\), proving normality of \(\iota\).
+
+If the unit of the factor is infinite, it is properly infinite, since the only nonzero central projection is \(1\). Corollary 13.5 of the projection lesson gives orthogonal projections \(q_n\sim1\) with \(\sum_nq_n=1\). Choose isometries \(v_n\in M\) with \(v_nv_n^*=q_n\). Then
+\[
+ W:H\longrightarrow\ell^2(\mathbb N)\otimes H,
+ \qquad W\xi=\sum_n e_n\otimes v_n^*\xi
+\]
+is unitary: the norm identity uses \(\sum q_n=1\), and its inverse sends \(e_n\otimes\eta\) to \(v_n\eta\). Consequently
+\[
+ W^*(E_{ij}\otimes1)W=v_iv_j^*\in M.
+\]
+Finite matrix compressions of any \(A\in B(\ell^2)\) converge strongly to \(A\); their uniformly bounded amplifications do likewise, first on finite tensors and then by density. Strong closedness gives a unital normal inclusion \(A\mapsto W^*(A\otimes1)W\) into \(M\). Identify \(\ell^2\) unitarily with \(H_0\) and use its multiplication algebra \(L^\infty(m)\). This completes the diffuse-subalgebra construction in both cases, without a separability assumption on the factor or its representation.
+
+### An equivariant map in arbitrary representations
+
+Let \(\rho:L^\infty(m)\to B(H)\) be any normal unital representation, with \(H\) of arbitrary dimension. There is an isometry
+\[
+ \begin{gathered}
+ J:H\longrightarrow H_0\otimes\ell^2(I),\\
+ J\rho(f)=(m_f\otimes1)J.
+ \end{gathered}
+\]
+where \(m_f\) denotes multiplication by \(f\). To construct it, choose a maximal orthogonal family of cyclic reducing subspaces \(H_i=\overline{\rho(L^\infty(m))\xi_i}\), with unit cyclic vectors. The orthogonal complement reduces the star algebra and, if nonzero, contains another such cyclic subspace; hence \(H=\bigoplus_iH_i\). The finite measure
+\[
+ \nu_i(E)=\langle\rho(1_E)\xi_i,\xi_i\rangle
+\]
+is countably additive by normality and absolutely continuous with respect to \(m\). The finite Radon–Nikodym proof in DC05 gives \(d\nu_i=h_i\,dm\). The map
+\[
+ \rho(f)\xi_i\longmapsto f\sqrt{h_i}
+\]
+is well defined and isometric, since both squared norms are \(\int|f|^2h_i\,dm\), and it intertwines the multiplication actions. Extend it by continuity and take its direct sum over \(i\). This constructs \(J\); surjectivity is neither needed nor asserted.
+
+Now let \(M\subset B(H)\) be any infinite-dimensional factor in a faithful normal representation, and use the diffuse inclusion just proved as \(\rho\). Fix a unit vector \(\xi\in H\) and define
+\[
+ \begin{gathered}
+ \Phi:U(M)\longrightarrow X,\\
+ \Phi(u)(A)
+ =\langle(A\otimes1)Ju\xi,Ju\xi\rangle.
+ \end{gathered}
+\]
+A vector in the Hilbert direct sum has at most countably many nonzero components, and the sum of their squared norms is one. Thus this formula is a normal state, by its absolutely norm-convergent sum of vector functionals. Moreover
+\[
+ \|\Phi(u)-\Phi(v)\|\le2\|(u-v)\xi\|,
+\]
+so \(\Phi\) is continuous from the strong unitary topology to the norm topology of \(X\). The intertwining identity gives
+\[
+ \Phi(\rho(g)u)=g\cdot\Phi(u)
+ \qquad(g\in G_0).
+\]
+
+Suppose there were a nonzero sigma-finite Borel measure on \(U(M)\), quasi-invariant under all left translations. Replace it by the equivalent probability \(\pi\) constructed above in the Hilbert-space argument, and put \(\nu=\Phi_*\pi\). For Borel \(E\subset X\), equivariance gives
+\[
+ \Phi^{-1}(g\cdot E)=\rho(g)\Phi^{-1}(E).
+\]
+Consequently \(\nu(g\cdot E)=0\) if and only if \(\nu(E)=0\). This contradicts the compact-set obstruction on \(X\). Therefore the strong-topology unitary group of **every infinite-dimensional factor** has no nonzero sigma-finite Borel measure quasi-invariant under all left translations. No separability or Radon assumption on that proposed measure has been used. The topology and the exclusion of the zero measure remain part of the statement.
+
+The arbitrary-derivative claim in printed Exercise 1(b) is refuted; Exercises 4, 6 and 7 require a nonzero measure. Exercise 7(ii) is proved here for the strong operator topology in arbitrary faithful normal representations. A version with an unspecified unitary-group topology is not asserted.
+
 ## The regular predual is a closed isometric ideal
 
 Let \(G\) be an arbitrary locally compact Hausdorff group, with the Haar conventions of PF-01 and PF-21. Put \(D=C^*(G)\), \(N=M_l\), and \(W=D^{**}\). PF-26 gives the nondegenerate integrated regular representation \(q:D\to B(L^2(G))\). Its bicommutant is \(N\), since \(q(D)\) is the norm closure of the integrated left translations.

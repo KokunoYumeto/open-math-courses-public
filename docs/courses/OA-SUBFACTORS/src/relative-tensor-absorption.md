@@ -1,10 +1,10 @@
 # A common tensor factor in a core inclusion
 
-The smaller member of a core inclusion contains matrix algebras that almost commute with any prescribed finite part of the larger member. We will turn these local choices into one infinite tensor factor, shared by both algebras. The construction works when either algebra has a center.
+The smaller member of a core inclusion contains matrix algebras that almost commute with any prescribed finite part of the larger member. We will turn these local choices into one infinite tensor factor, shared by both algebras. The construction works when either algebra has a center. The actual opposite model has the same property at every proper index. Its entire upper tower admits compatible tensor splittings that fix both Jones cup conventions, their densities and both expectations.
 
 This supplies the tensor-absorption part of Popa's stability proposition, including its application to a core at every proper finite index. Identifying the resulting tensor complement with the core of a new Jones tunnel requires an additional argument.
 
-We use the finite tracial norm, polar decomposition, spectral calculus, and bounded \(L^2\) completeness. Projection halving is Projections and types of von Neumann algebras, Proposition 13.3. Trace-preserving extension and the infinite binary tensor product are Uniqueness of the injective II₁ factor, Lemmas 2.1–2.2. Its Lemmas 8.12–8.13 and Theorem 8.14 prove the factor version of the construction. Here the residual work is projection repair without factoriality and simultaneous generation of the smaller and larger algebras. General conditional-expectation and hyperfinite-factor results retain those prerequisites.
+We use the finite tracial norm, polar decomposition, spectral calculus, and bounded \(L^2\) completeness. Projection halving is [Projections and types of von Neumann algebras](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), Proposition 13.3. Trace-preserving extension and the infinite binary tensor product are [Uniqueness of the injective II₁ factor](../../injective-factors/uniqueness-of-the-injective-ii1-factor.html), Lemmas 2.1–2.2. Its Lemmas 8.12–8.13 and Theorem 8.14 prove the factor version of the construction. Here the residual work is projection repair without factoriality and simultaneous generation of the smaller and larger algebras. General conditional-expectation and hyperfinite-factor results retain those prerequisites.
 
 Write \(\mathcal R\) for the hyperfinite II₁ factor with its normalized trace \(\tau_{\mathcal R}\). A *finite type II algebra* has a faithful normal tracial state and no nonzero abelian projection; it need not be a factor. Every trace below is normalized.
 
@@ -363,9 +363,120 @@ They lie in \(S\). This proves the relative matrix property. All hypotheses of T
 
 The proper-inclusion hypothesis is essential to this argument. At \(d=1\), every Jones projection is \(1\), the cup-generated tail is scalar, and (50.16) supplies no \(M_2\).
 
-This proves the core tensor-absorption assertion in Sorin Popa's [Classification of amenable subfactors of type II](https://doi.org/10.1007/BF02392646), Section 1.4.4. The shared factor and simultaneous maps in (50.9) make this conclusion explicit. The proposition's embedded-core realization requires transporting the Jones projections, recognizing a new tunnel, and identifying its entire core closure; tensor absorption alone does not establish that conclusion. The opposite-model assertion additionally requires its exact tower and trace identification, especially in the nonextremal case.
+This proves the core tensor-absorption assertion in Sorin Popa's [Classification of amenable subfactors of type II](https://doi.org/10.1007/BF02392646), Section 1.4.4. The shared factor and simultaneous maps in (50.9) make this conclusion explicit. The proposition's embedded-core realization requires transporting the Jones projections, recognizing a new tunnel, and identifying its entire core closure; tensor absorption alone does not establish that conclusion. The actual opposite-model assertion and its entire upper-tower trace and cup compatibility are proved in 50.6–50.8.
 
 For the relative Følner argument in [Relative hypertraces and finite Følner projections](relative-hypertraces-and-folner-projections.md), the subsequent change of core must also identify the canonical basic constructions and their centers, and prove the \(n^2\) change in normalized center-valued trace. Those steps, integer rounding, bounded frames, and the full local/global generating-tunnel equivalence remain separate proof obligations.
+
+## Stability of the actual opposite model and its upper tower
+
+Let \(N\subsetneq M\) be II₁ factors of index \(d>1\). Choose any ordinary tunnel and its upward extension \((M_j)_{j\in\mathbb Z}\), with \(M_0=M\). Use the original tracial completion
+\[
+\mathcal T=(\bigcup_{j\ge0}M_j)''_{\tau},\qquad
+B_j=M_j'\cap\mathcal T.
+\tag{50.17}
+\]
+The actual opposite pair is \(B_1\subset B_0\). Its upper tower runs in the decreasing direction of the subscripts:
+\[
+B_1\subset B_0\subset B_{-1}\subset B_{-2}\subset\cdots.
+\tag{50.18}
+\]
+For \(j\le0\), let \(E_j:B_j\to B_{j+1}\) be the inherited tracial expectation. Keep both cups from [63.6–63.8](canonical-rescaling-of-jones-cups.md#the-tracial-tower-in-the-actual-opposite-model):
+\[
+\begin{gathered}
+e_j\in M_{j+1},\qquad h_j=\eta_j(\kappa_j^{-1})\in M_j'\cap M_{j+1},\\
+q_j=h_j^{-1/2}e_jh_j^{-1/2},\\
+F_j(x)=E_j(h_j^{1/2}xh_j^{1/2})\quad(x\in B_j).
+\end{gathered}
+\tag{50.19}
+\]
+The original \(e_j\) implements \(F_j\); \(q_j\) implements \(E_j\). At every step the standard basic-construction trace is \(d\tau\). These assertions apply to every integer \(j\): the tower starting at \(M_{j-1}\subset M_j\) has the same cofinal tracial completion \(\mathcal T\), so reindexing 63.6–63.8 changes neither its algebras nor its trace. No identification of the physical opposite trace with a reflected downward trace is made.
+
+**Proposition 50.6 — relative matrix approximation in the opposite pair.** The actual \(B_1\subset B_0\) has the relative matrix property, both algebras are finite type II, and both have separable predual. No separability of the original factors, extremality or amenability is required.
+
+**Proof.** For \(m\ge1\), put \(C_m=M'\cap M_m\). These are finite dimensional. The original expectations \(E_{M_m}\) preserve commutation with \(M\), and converge to the identity on \(B_0\) in \(L^2\). Consequently \((\bigcup_m C_m)''=B_0\). The same argument with \(M_1\) gives a countable finite-dimensional exhaustion of \(B_1\). It proves the asserted separability for these model algebras even with a nonseparable ambient factor.
+
+The original cup tail
+\[
+K_m=W^*(e_{m+1},e_{m+2},\ldots)
+\ \subset\ B_1\cap M_m'
+\tag{50.20}
+\]
+is a unital II₁ factor. Indeed its Jones relations and the original scalar Markov trace are the canonical path-trace representation of 11.2; the factor argument used in 50.5 applies at every proper admissible index, including four. This also makes \(B_1,B_0\) type II by the type-I exclusion argument in 50.5: a nonzero homogeneous finite type-I central summand cannot contain a normal unital copy of \(K_m\).
+
+For finite \(\mathcal F\subset B_0\) and \(\epsilon>0\), choose \(m\) so \(\|x-E_{M_m}(x)\|_2<\epsilon/2\) for every \(x\in\mathcal F\). Any unital binary matrix algebra in \(K_m\) commutes with every \(E_{M_m}(x)\in C_m\). Its matrix units \(a_{rs}\) therefore satisfy
+\[
+\|[a_{rs},x]\|_2\le2\|x-E_{M_m}(x)\|_2<\epsilon.
+\tag{50.21}
+\]
+This is exactly Definition 50.2. \(\square\)
+
+**Theorem 50.7 — one common factor for the full upper opposite tower.** There is a unital hyperfinite II₁ factor \(H\subset B_1\) such that, on putting \(B_j^0=H'\cap B_j\), multiplication gives trace-preserving normal isomorphisms
+\[
+B_j^0\bar\otimes H\ \cong B_j\qquad(j\le1).
+\tag{50.22}
+\]
+There are also compatible trace-preserving normal isomorphisms \(\Psi_j:B_j\to B_j^0\), for every \(j\le1\). For every \(j\le0\) their precise fixed-element equations are \(\Psi_{j-1}(e_j)=e_j\), \(\Psi_{j-1}(q_j)=q_j\), and \(\Psi_j(h_j)=h_j\). They intertwine both \(E_j\) and \(F_j\) and preserve the canonical trace on every positive element of each basic construction. In particular the actual opposite pair simultaneously absorbs the hyperfinite II₁ factor and every finite matrix algebra.
+
+**Proof.** Apply Theorem 50.4 using 50.6. It supplies \(R_0\cong\mathcal R\) in \(B_1\) and, with \(A_j=R_0'\cap B_j\), the multiplication decompositions
+\[
+B_1=A_1\bar\otimes R_0,\qquad
+B_0=A_0\bar\otimes R_0.
+\tag{50.23}
+\]
+Here and below these equalities mean the specified multiplication maps with the product traces. The complements need not be factors.
+
+Every \(e_j,h_j,q_j\), \(j\le0\), belongs to \(M_1\), so commutes with \(R_0\subset M_1'\cap\mathcal T\). The basic-construction equalities
+\(B_{j-1}=W^*(B_j,q_j)\) therefore extend (50.23) inductively to
+\[
+B_j=A_j\bar\otimes R_0\qquad(j\le1),
+\quad e_j,h_j,q_j\in A_{j-1}\quad(j\le0).
+\tag{50.24}
+\]
+For precision, adjoining \(q_j\otimes1\) to \(A_j\bar\otimes R_0\) has range \(W^*(A_j,q_j)\bar\otimes R_0\). Its commutant of \(R_0\) is \(W^*(A_j,q_j)\otimes1\), by 51.3. This identifies it with \(A_{j-1}\) and proves the entire next decomposition. Trace factorization, faithful product trace and normal extension are the same multiplication argument (50.14); none requires factoriality of \(B_j\).
+
+Identify \(R_0\) with its binary tensor model and split its sites into even and odd sets:
+\[
+R_0=R_{\mathrm{ev}}\bar\otimes R_{\mathrm{odd}},
+\qquad H=R_{\mathrm{odd}}.
+\tag{50.25}
+\]
+Each of the two factors is a copy of \(\mathcal R\). Reindexing all binary sites onto the even sites is a trace-preserving normal isomorphism \(\theta:R_0\to R_{\mathrm{ev}}\). Now
+\[
+B_j^0=A_j\bar\otimes R_{\mathrm{ev}},\qquad
+\Psi_j=\operatorname{id}_{A_j}\bar\otimes\theta
+\quad(j\le1).
+\tag{50.26}
+\]
+These maps have compatible restrictions because the \(A_j\) are nested, and they fix every element of each \(A_j\). In particular they fix the original and corrected cups and the densities in (50.24). The choice of half the binary sites is essential: 50.4 does not assert that removing its entire \(R_0\) leaves a complement isomorphic to the original pair.
+
+The maps preserve each finite trace and both endpoints of every adjacent inclusion. Uniqueness of trace-preserving conditional expectations gives
+\[
+\Psi_{j+1}E_j=E_j^0\Psi_j,
+\qquad
+\Psi_{j+1}F_j=F_j^0\Psi_j.
+\tag{50.27}
+\]
+The second equality follows from the first and the fixed \(h_j\) in (50.19). Since \(\Psi_{j-1}(q_j)=q_j\), the entire standard basic-construction identification in 63.8 is preserved. Its canonical trace is \(d\tau\) on all positive elements; trace preservation gives that same identity on the complement, with no restriction to a finite Jones ideal. This proves the assertion about the entire upper tower. The pair absorption statements also follow directly from 50.4. \(\square\)
+
+**Theorem 50.8 — any prescribed finite matrix factor.** Let \(D\cong\operatorname{Mat}_n\) be any unital subalgebra of \(B_1\), \(n\ge1\). The whole upper tower \((B_j)_{j\le1}\) is normally trace-isomorphic to \((D'\cap B_j)_{j\le1}\), with compatible maps fixing the same \(e_j,h_j,q_j\), \(j\le0\). Both expectations and all canonical positive-cone traces are preserved. Multiplication identifies every \(B_j\) with \((D'\cap B_j)\bar\otimes D\).
+
+**Proof.** First choose a unital \(C\cong\operatorname{Mat}_n\) in \(R_0\). The normalized corner theorem used in the proof of 50.4 gives a normal trace-preserving isomorphism \(R_0\cong C'\cap R_0\). Combining it with the identity on each \(A_j\) in (50.24) gives the claimed compatible maps for \(C\), fixing all cups and densities.
+
+The two unital matrix algebras \(D,C\) are unitarily conjugate inside \(B_1\). Indeed their diagonal minimal projections have center-valued trace \(1/n\). The exact finite-algebra comparison in [TE16](finite-algebras-and-normal-traces.md#how-the-center-determines-traces-and-densities) supplies a partial isometry \(w\) between their first diagonal projections. If \((d_{ij})\) and \((c_{ij})\) are the two systems, take \(w^*w=d_{11}\), \(ww^*=c_{11}\). Then
+\[
+v=\sum_{i=1}^n c_{i1}w d_{1i}\in B_1,
+\qquad v^*v=vv^*=1,\quad vd_{ij}v^*=c_{ij}.
+\tag{50.28}
+\]
+Thus \(vDv^*=C\). Conjugation by \(v\) preserves every \(B_j\), \(j\le1\), and fixes all the cups and densities, since they lie in \(M_1\). Conjugate the compatible maps for \(C\) by \(\operatorname{Ad}v\) on the source and \(\operatorname{Ad}v^*\) on the target. Their images are exactly \(D'\cap B_j\); all the preceding compatibility and trace conclusions persist. The final multiplication statement is the ordinary unital matrix decomposition, with its normalized product trace. \(\square\)
+
+At index one the opposite endpoints are scalar, so they do not absorb a nontrivial matrix factor or \(\mathcal R\). The proper-index hypothesis is necessary. Theorems 50.7–50.8 prove tensor stability of the actual opposite model, as in Popa, Section 1.4.4, Proposition, printed p.189, and specify its coherent upper-tower form. They do not realize an arbitrary prescribed infinite factor complement, identify a different represented copy with an ordinary ambient core, or establish the general nonextremal physical bicommutant.
+
+![One factor and compatible maps split the whole upper opposite tower, fixing both sorts of Jones cups.](figures/opposite-tower-stability.svg)
+
+*Figure 50.2. The top row is the actual upper opposite tower, with subscripts decreasing to the right. The common factor starts in \(B_1\). The lower row uses the odd binary sites as \(H\); the even sites remain in each complement. Equation (50.26) gives one compatible map at every stage, fixing the original cups, their canonical rescalings and densities. Every individual basic-construction trace is \(d\tau\). All boxes are schematic; their widths encode no indices or trace masses. Human context: Popa, Section 1.4.4, printed p.189. [Editable figure source and finite tensor checks](figures/opposite-tower-stability.py).*
+
+
 
 ## Examples and exercises with complete solutions
 
@@ -426,6 +537,32 @@ P_B\bar\otimes\mathcal R_0 .
 Choose a unital \(M_3\subset\mathcal R_0\). Its first diagonal corner is a hyperfinite II₁ factor isomorphic to \(\mathcal R_0\), giving a trace-preserving isomorphism
 \(\theta:\mathcal R_0\bar\otimes M_3\to\mathcal R_0\).
 Then \(\mathrm{id}_{P_B}\bar\otimes\theta\) maps the larger tensor product onto \(P_B\bar\otimes\mathcal R_0\) and restricts to \(\mathrm{id}_{P_A}\bar\otimes\theta\) on the smaller one. Compose with the simultaneous multiplication maps. This is the required isomorphism of inclusions.
+
+### Exercise 50.6 — the opposite finite tests
+
+Let \(x\in B_0\) and \(m\ge1\). Show that \(E_{M_m}(x)\in M'\cap M_m\). If a binary matrix unit \(a\in K_m\) is chosen as in (50.20), prove \(\|[a,x]\|_2\le2\|x-E_{M_m}(x)\|_2\). Explain why this argument adds no separability hypothesis on \(M\).
+
+**Solution.** For each unitary \(u\in M\subset M_m\), bimodularity gives \(uE_{M_m}(x)u^*=E_{M_m}(uxu^*)=E_{M_m}(x)\). Hence its value is in the asserted finite commutant. Every generator of \(K_m\) commutes with \(M_m\), so \([a,E_{M_m}(x)]=0\). The triangle inequality and \(\|a\|\le1\) give the estimate. The countable finite-dimensional commutant union has closure \(B_0\), and the corresponding union for \(B_1\) has closure \(B_1\); these model algebras have separable preduals regardless of the ambient cardinality. Thus 50.4 is applied only where its separability hypothesis has actually been proved.
+
+### Exercise 50.7 — keep half the common factor
+
+Suppose the multiplication decomposition from 50.4 is \(B_j=A_j\bar\otimes R_0\). Why does it not justify \(A_j\cong B_j\)? Give the explicit replacement that produces isomorphic complements while fixing every \(q_j\in A_{j-1}\).
+
+**Solution.** A tensor complement of an infinite factor can be finite dimensional; the original algebra is recovered only after tensoring it with \(R_0\). Split \(R_0=R_{\mathrm{ev}}\bar\otimes R_{\mathrm{odd}}\) and remove \(H=R_{\mathrm{odd}}\). Then \(H'\cap B_j=A_j\bar\otimes R_{\mathrm{ev}}\). Reindexing all binary sites onto the even sites defines the single normal trace-preserving \(\theta:R_0\to R_{\mathrm{ev}}\). The maps \(\operatorname{id}_{A_j}\otimes\theta\) agree on every preceding stage and fix \(q_j\), \(e_j\) and \(h_j\), since these are in the first tensor leg. They preserve both expectations by (50.27); no original cup is replaced by the corrected one.
+
+### Exercise 50.8 — the prescribed matrix unitary
+
+Verify that (50.28) is unitary and carries \(d_{ab}\) to \(c_{ab}\). Why does its use preserve the entire upper opposite tower and both cup conventions even with nonfactor endpoints?
+
+**Solution.** Orthogonality of the matrix units gives
+\[
+v^*v=\sum_i d_{i1}w^*c_{11}wd_{1i}
+=\sum_i d_{ii}=1,
+\qquad
+vv^*=\sum_i c_{i1}wd_{11}w^*c_{1i}=1.
+\]
+The same multiplication gives \(vd_{ab}v^*=c_{ab}\). Since \(v\in B_1\subset B_j\) for every \(j\le1\), it normalizes every such \(B_j\). All \(e_j,h_j,q_j\), \(j\le0\), belong to \(M_1\), which commutes with \(B_1\), so they are fixed. The partial isometry used here exists by equality of the actual center-valued traces \(1/n\); scalar trace equality alone in a nonfactor algebra would not suffice.
+
 
 ---
 

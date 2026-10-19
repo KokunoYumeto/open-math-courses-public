@@ -1,22 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Finite corners, faithful traces, and affine group fixed points · Modular theory and weights</title>
-<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
-<meta name="color-scheme" content="light dark">
-<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TE.html">
-<link rel="stylesheet" href="../../assets/site.css">
+<meta content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-TE.html" rel="canonical"/>
+<link href="../../assets/site.css" rel="stylesheet"/>
 <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
-<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
-<link rel="stylesheet" href="reader.css">
+<script defer="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link href="reader.css" rel="stylesheet"/>
 </head>
 <body class="no-math">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
 <a class="brand" href="../../">Open Mathematics Courses</a>
-<nav class="primary-nav" aria-label="Main">
+<nav aria-label="Main" class="primary-nav">
 <a href="../../#catalogue">Courses</a>
 <span class="unlinked">Licensing</span>
 <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
@@ -24,8 +25,8 @@
 <p class="lang-note">English only for now</p>
 </div></header>
 <main id="main">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 87 of 136</span></nav>
-<aside class="notice" aria-label="About this lesson">
+<nav aria-label="Breadcrumb" class="crumbs"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 87 of 136</span></nav>
+<aside aria-label="About this lesson" class="notice">
 <p>Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026.</p>
 <p class="small">English only for now</p>
 </aside>
@@ -33,7 +34,7 @@
 <h1 id="finite-corners-and-faithful-semifinite-traces">Finite corners and faithful semifinite traces</h1>
 <p><strong>Course draft with exact existing programme trace and fixed-point proof imports, worked applications and hypothesis tests.</strong></p>
 <p>A finite corner provides a bounded trace on a small part of an algebra. Partial isometries carry that information to orthogonal ranges covering its central carrier. Summing their diagonal functionals gives a normal semifinite trace there. A maximal family of disjoint central carriers then gives faithfulness on the whole algebra. This construction allows arbitrary Hilbert spaces and arbitrary index sets.</p>
-<p>The mathematical antecedents are Takesaki, <em>Theory of Operator Algebras I</em>, V.2, Theorem 2.4 and Theorem 2.15, printed pp. 311 and 317 / PDF pp. 319 and 325. The finite-projection escape argument is related to Lemmas V.2.2–2.3, printed p. 310 / PDF p. 318. The support and central-sum statements correspond to Proposition V.2.10 and Lemma V.2.12, printed p. 315 / PDF p. 323. The existing programme proof extends normal traces directly from a corner, including its unique extension and exact faithfulness and semifiniteness clauses. These correspondences identify mathematical inputs; they do not license copied exposition or count an unproved prerequisite as closed.</p>
+<p>The construction rests on separating finite normal traces, normal extension from a corner, and orthogonal sums over central supports. Each of these results has a programme proof linked below. The corner extension is unique on its central carrier and preserves faithfulness and semifiniteness in exactly the stated cases.</p>
 <h2 id="conventions-and-the-exact-compactness-input"><span id="oa-mod-te-01"></span><span id="OA-MOD-TE-01"></span>Conventions and the exact compactness input</h2>
 <p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> be a unital von Neumann algebra. Hilbert spaces, projection families and nets may have arbitrary cardinality. Write <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span> when a partial isometry <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> satisfies <span class="math" data-tex="\(v^*v=p\)">\(v^*v=p\)</span>, <span class="math" data-tex="\(vv^*=q\)">\(vv^*=q\)</span>. Write <span class="math" data-tex="\(p\precsim q\)">\(p\precsim q\)</span> when <span class="math" data-tex="\(p\sim q_0\leq q\)">\(p\sim q_0\leq q\)</span>. A projection <span class="math" data-tex="\(p\)">\(p\)</span> is finite if <span class="math" data-tex="\(p\sim q\leq p\)">\(p\sim q\leq p\)</span> forces <span class="math" data-tex="\(q=p\)">\(q=p\)</span>. The algebra is finite if its identity is finite. A trace is a weight with <span class="math" data-tex="\(\tau(a^*a)=\tau(aa^*)\)">\(\tau(a^*a)=\tau(aa^*)\)</span> for every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, including infinite values.</p>
 <p>For nonnegative numbers indexed by any set, the sum always means the supremum of the sums over finite subsets. Orthogonal projections have the corresponding strong sum. Neither notation asserts countability.</p>
@@ -53,7 +54,7 @@
 \text{ is a sequence of projections}
 \tag{TE.1}
 \]</span>
-<p>is relatively weakly compact in <span class="math" data-tex="\(\sigma(N_*,N)\)">\(\sigma(N_*,N)\)</span>. This is the implication (iii) to (i) of Takesaki I, Theorem III.5.4, printed pp. 149–153 / PDF pp. 157–161. No assumption of a faithful normal state on all of <span class="math" data-tex="\(N\)">\(N\)</span> belongs to this input. The preceding programme theorem proves this implication for bounded complex normal functionals on arbitrary von Neumann algebras. Its proof first takes a weak-star cluster point of a sequence, then uses a positive normal control functional to separate the countable nonzero projection masses from the possibly uncountable null remainder. Complete projection additivity makes the cluster point normal. The Eberlein–Šmulian theorem then gives relative weak compactness. The provider lesson states these two Banach-space theorems as background; the linked compactness lesson now supplies their full proofs, including arbitrary compact products, Baire category and uniform boundedness. The programme's norm-preserving extension and finite-dimensional compactness proofs are identified there by exact item.</p>
+<p>is relatively weakly compact in <span class="math" data-tex="\(\sigma(N_*,N)\)">\(\sigma(N_*,N)\)</span>. This is implication (3) to (1) of the programme Theorem 10.2 linked above. No assumption of a faithful normal state on all of <span class="math" data-tex="\(N\)">\(N\)</span> belongs to this input. The preceding programme theorem proves this implication for bounded complex normal functionals on arbitrary von Neumann algebras. Its proof first takes a weak-star cluster point of a sequence, then uses a positive normal control functional to separate the countable nonzero projection masses from the possibly uncountable null remainder. Complete projection additivity makes the cluster point normal. The Eberlein–Šmulian theorem then gives relative weak compactness. The provider lesson states these two Banach-space theorems as background; the linked compactness lesson now supplies their full proofs, including arbitrary compact products, Baire category and uniform boundedness. The programme's norm-preserving extension and finite-dimensional compactness proofs are identified there by exact item.</p>
 </li>
 <li>
 <p><strong>TE-DEP-AFFINE-FIXED-POINT.</strong> A group of weakly continuous affine bijections preserving norm distances on a nonempty weakly compact convex subset of a real or complex Banach space has a common fixed point. This is <strong>Theorem 5.1</strong>, with <strong>Proposition 4.1</strong>, of the existing programme lesson <em>Weakly compact convex sets and fixed points</em>, written by GPT-6.1 Sol (OpenAI), Ultra, September 2026, under CC0. TE-14 reproduces its complete sections 1–5. The given group and Banach space need not be countable or separable. The theorem concerns Banach-space weak compactness, not merely weak-star compactness.</p>
@@ -157,8 +158,8 @@ r_ir_j=0\ (i\ne j),\qquad \sum_{i\in I}r_i=c(p).
 \]</span>
 <p>The index set is arbitrary. The initial projections <span class="math" data-tex="\(e_i\)">\(e_i\)</span> can overlap or repeat. One can include <span class="math" data-tex="\(v_0=p\)">\(v_0=p\)</span> by starting the provider's maximal-family construction with the projection <span class="math" data-tex="\(p\)">\(p\)</span>. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, use the empty family.</p>
 <p>For <span class="math" data-tex="\(z=c(p)\)">\(z=c(p)\)</span>, the block <span class="math" data-tex="\(v_j^*xv_i\)">\(v_j^*xv_i\)</span> of <span class="math" data-tex="\(x\in Mz\)">\(x\in Mz\)</span> belongs to <span class="math" data-tex="\(e_jMe_i\subseteq pMp\)">\(e_jMe_i\subseteq pMp\)</span>. This is a notation and domain check for the imported proof, not a second construction. The orthogonal range decomposition does not license a strong sum of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, whose initial supports may repeat.</p>
-<figure><img src="assets/trace-corner-matrix.png" alt="The typed corner matrix and its trace" loading="lazy" style="max-width:100%;height:auto"></figure>
-<p><strong>Figure.</strong> The initial corners <span class="math" data-tex="\(e_i\leq p\)">\(e_i\leq p\)</span> may overlap; the outgoing <span class="math" data-tex="\(r_i\)">\(r_i\)</span> are orthogonal. The finite displayed matrix represents a finite subset of an arbitrary family. TE-07–08 translate programme Lemma 6.1 and Theorem 6.2 to this orientation, including their positive block sums. Mathematical antecedents: Takesaki I, V.2, Proposition 2.14 and Theorem 2.15.</p>
+<figure><img alt="The typed corner matrix and its trace" loading="lazy" src="assets/trace-corner-matrix.png" style="max-width:100%;height:auto"/></figure>
+<p><strong>Figure.</strong> The initial corners <span class="math" data-tex="\(e_i\leq p\)">\(e_i\leq p\)</span> may overlap; the outgoing <span class="math" data-tex="\(r_i\)">\(r_i\)</span> are orthogonal. The finite displayed matrix represents a finite subset of an arbitrary family. TE-07–08 translate programme Lemma 6.1 and Theorem 6.2 to this orientation, including their positive block sums. For the full argument, see the programme trace lesson, Lemma 6.1 and Theorem 6.2.</p>
 <h2 id="the-exact-normal-corner-trace-extension-and-an-ordered-cutoff-check"><span id="OA-MOD-TE-08"></span><span id="oa-mod-te-08"></span>The exact normal corner-trace extension and an ordered cutoff check</h2>
 <p>Read <strong>Theorem 6.2</strong> of <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#oa-fnd-ta-17">Traces on von Neumann algebras</a>. It applies to <strong>any normal trace</strong> <span class="math" data-tex="\(\theta\)">\(\theta\)</span> on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>; faithfulness, finiteness and semifiniteness are not assumed. With the orientation in TE-07 its unique normal extension vanishing on <span class="math" data-tex="\(1-c(p)\)">\(1-c(p)\)</span> is</p>
 <span class="math math-display" data-tex="\[
@@ -256,8 +257,8 @@ u_{F,b}=\sum_{j\in F}u_{j,b_j}\uparrow z,\qquad
 \tag{TE.22}
 \]</span>
 <p>The corresponding ordered approximation is <span class="math" data-tex="\(x^{1/2}u_{F,b}x^{1/2}\)">\(x^{1/2}u_{F,b}x^{1/2}\)</span>. This describes the exact imported positive-cutoff mechanism; it is not a separate proof of the central-sum theorem.</p>
-<figure><img src="assets/trace-central-gluing.png" alt="Local traces, central supports, and finite positive approximations" loading="lazy" style="max-width:100%;height:auto"></figure>
-<p><strong>Figure.</strong> TE-08–11 apply programme Theorem 6.2, Propositions 3.2, 3.5 and 3.7, and Theorem 6.7. Local traces are restricted to their central faithful supports and summed over disjoint supports. The ordered cutoff is <span class="math" data-tex="\(x^{1/2}ux^{1/2}\)">\(x^{1/2}ux^{1/2}\)</span>. The final central-gap contradiction is Step 2 of the imported Theorem 6.7. Mathematical antecedents: Takesaki I, V.2, Proposition 2.10, Lemma 2.12 and Theorem 2.15.</p>
+<figure><img alt="Local traces, central supports, and finite positive approximations" loading="lazy" src="assets/trace-central-gluing.png" style="max-width:100%;height:auto"/></figure>
+<p><strong>Figure.</strong> TE-08–11 apply programme Theorem 6.2, Propositions 3.2, 3.5 and 3.7, and Theorem 6.7. Local traces are restricted to their central faithful supports and summed over disjoint supports. The ordered cutoff is <span class="math" data-tex="\(x^{1/2}ux^{1/2}\)">\(x^{1/2}ux^{1/2}\)</span>. The final central-gap contradiction is Step 2 of the imported Theorem 6.7. For the support and sum arguments, see the programme trace lesson, Propositions 3.2, 3.5 and 3.7 and Theorem 6.7.</p>
 <h2 id="the-programme-arbitrary-algebra-trace-existence-theorem"><span id="oa-mod-te-11"></span><span id="OA-MOD-TE-11"></span>The programme arbitrary-algebra trace-existence theorem</h2>
 <p><strong>Proposition 1.6(c)</strong> of <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#oa-fnd-ta-01">Traces on von Neumann algebras</a> equates absence of a type III central summand with existence of a nonzero finite projection below each nonzero projection. <strong>Theorem 6.7</strong> in the <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#oa-fnd-ta-19">same lesson</a> proves equivalence of:</p>
 <ol>
@@ -290,7 +291,7 @@ u_{F,b}=\sum_{j\in F}u_{j,b_j}\uparrow z,\qquad
 <h2 id="exact-theorem-owners-and-the-ft-mb-applications"><span id="oa-mod-te-12"></span><span id="OA-MOD-TE-12"></span>Exact theorem owners and the FT/MB applications</h2>
 <p>For a nonzero factor <span class="math" data-tex="\(M\)">\(M\)</span> with a nonzero finite projection <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(c(p)=1\)">\(c(p)=1\)</span>. The imported carrier intertwiner test supplies a nonzero finite projection below each nonzero <span class="math" data-tex="\(q\)">\(q\)</span>. The imported <strong>Theorem 6.7</strong> therefore gives a faithful normal semifinite trace. This is <strong>FT-DEP-FACTOR-TRACE</strong>, used by <a href="OA-MOD-FT.html#oa-mod-ft-04">Ergodic invariance forces a trace or type III</a>.</p>
 <p>For an arbitrary algebra with no nonzero type III central summand, the same programme <strong>Theorem 6.7</strong> gives the faithful normal semifinite trace, without a factor or countability restriction. This is <strong>MB-DEP-SEMIFINITE-TRACE</strong>, used by <a href="OA-MOD-MB.html#oa-mod-mb-04">The corrected criterion retains every projection</a>.</p>
-<p>These consequences correspond to Takesaki I, Theorem V.2.15, which is stated and proved as the existing programme Theorem 6.7. Takesaki I, Theorem V.2.4, similarly corresponds to the exact programme Theorem 4.7, which gives a separating family, not one faithful finite trace.</p>
+<p>These consequences follow from Theorem 6.7 of the programme trace lesson. Its finite-algebra input is Theorem 4.7, which gives a separating family of finite normal traces. A single faithful finite trace requires the additional countability condition stated in TE-06.</p>
 <p>The predual compactness clause retains the exact programme provider in TE-01 and the AB foundation proofs. The affine group fixed-point clause uses the existing programme Proposition 4.1/Theorem 5.1 reproduced in TE-14. Their original authors and licences are stated explicitly.</p>
 <h2 id="worked-models-and-failure-tests"><span id="OA-MOD-TE-13"></span><span id="oa-mod-te-13"></span>Worked models and failure tests</h2>
 <p><strong>Model 1: repeated incoming corners.</strong> Take <span class="math" data-tex="\(M=M_2(\mathbb C)\oplus M_3(\mathbb C)\)">\(M=M_2(\mathbb C)\oplus M_3(\mathbb C)\)</span>, <span class="math" data-tex="\(p=(E_{11},E_{11})\)">\(p=(E_{11},E_{11})\)</span>, and <span class="math" data-tex="\(\theta(a,b)=2a+5b\)">\(\theta(a,b)=2a+5b\)</span> on <span class="math" data-tex="\(pMp=\mathbb C\oplus\mathbb C\)">\(pMp=\mathbb C\oplus\mathbb C\)</span>. Choose</p>
@@ -329,7 +330,7 @@ x=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad R=E_{11}.
 <p>The exact existing programme fixed-point proof used by Theorem 4.7 is reproduced next. The compactness input has the preceding programme provider identified in TE-01. The separate public registration and review boundaries remain in force.</p>
 <h2 id="the-complete-existing-programme-fixed-point-proof"><span id="oa-mod-te-14"></span><span id="OA-MOD-TE-14"></span>The complete existing programme fixed-point proof</h2>
 <p>The following <strong>sections 1–5</strong> are an exact CC0 import from <em>Weakly compact convex sets and fixed points</em>, written by <strong>GPT-6.1 Sol (OpenAI), Ultra, September 2026</strong>, in the existing <strong>OA-FOUND-REMAINDER</strong> programme course. Its author-draft and pending independent-review states are retained. Only line endings and the five subheading levels are adapted. The imported proof belongs to that lesson. Its geometric method is the classical argument of Namioka and Asplund, as acknowledged by the provider.</p>
-<p>Weak means <span class="math" data-tex="\(\sigma(X,X^*)\)">\(\sigma(X,X^*)\)</span>. Complex Banach spaces may be treated as real spaces, since every continuous real functional is the real part of a continuous complex functional. The named inputs are Hahn–Banach separation, uniform boundedness and equality of norm and weak convex closures. <a href="OA-MOD-AB.html#oa-mod-ab-03">Baire category and uniform boundedness</a> supplies uniform boundedness and weak boundedness; the exact real/complex separation contract retains its own recorded transitive state. No weak-star compactness, strict convexity, countability of the given group or separability of <span class="math" data-tex="\(X\)">\(X\)</span> is assumed.</p>
+<p>Weak means <span class="math" data-tex="\(\sigma(X,X^*)\)">\(\sigma(X,X^*)\)</span>. Complex Banach spaces may be treated as real spaces, since every continuous real functional is the real part of a continuous complex functional. The named inputs are Hahn–Banach separation, uniform boundedness and equality of norm and weak convex closures. <a href="OA-MOD-AB.html#oa-mod-ab-03">Baire category and uniform boundedness</a> supplies uniform boundedness and weak boundedness; Hahn–Banach separation gives equality of norm and weak closures for convex sets. No weak-star compactness, strict convexity, countability of the given group or separability of <span class="math" data-tex="\(X\)">\(X\)</span> is assumed.</p>
 <p>The provider's proof follows.</p>
 <h3 id="1-compactness-faces-and-extreme-points">1. Compactness, faces and extreme points</h3>
 <p>A weakly compact subset of a Banach space is norm bounded. Indeed every <span class="math" data-tex="\(f\in X^*\)">\(f\in X^*\)</span> is bounded on that compact set. Apply uniform boundedness to its canonical images in <span class="math" data-tex="\((X^*)^*\)">\((X^*)^*\)</span>; their operator norms are their original norms.</p>
@@ -421,11 +422,11 @@ C=\{t a+(1-t)d:a\in K_A,\ d\in K_D,\ \delta\leq t\leq1\}.
 \]</span>
 <p>This set is nonempty and weakly compact. It is convex: in a convex combination of two displayed expressions, the new coefficient of <span class="math" data-tex="\(K_A\)">\(K_A\)</span> is a convex combination of their coefficients and remains at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>; regroup the <span class="math" data-tex="\(K_A\)">\(K_A\)</span> and <span class="math" data-tex="\(K_D\)">\(K_D\)</span> terms using their convexity. A vanishing coefficient of <span class="math" data-tex="\(K_D\)">\(K_D\)</span> causes no difficulty.</p>
 <p>The point <span class="math" data-tex="\(p\)">\(p\)</span> is outside <span class="math" data-tex="\(C\)">\(C\)</span>. Indeed a representation in (2.5), together with extremality, would force <span class="math" data-tex="\(p=a\in K_A\)">\(p=a\in K_A\)</span> because <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is proper.</p>
-<p>Every <span class="math" data-tex="\(y\in K\setminus C\)">\(y\in K\setminus C\)</span> has a representation in (2.4) with <span class="math" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>; otherwise it would belong to <span class="math" data-tex="\(C\)">\(C\)</span>. Its distance from the corresponding <span class="math" data-tex="\(d\)">\(d\)</span> is at most <span class="math" data-tex="\(tR&lt;\delta R\)">\(tR&lt;\delta R\)</span>. Consequently for <span class="math" data-tex="\(y,y&#x27;\in K\setminus C\)">\(y,y&#x27;\in K\setminus C\)</span>, using (2.3),</p>
+<p>Every <span class="math" data-tex="\(y\in K\setminus C\)">\(y\in K\setminus C\)</span> has a representation in (2.4) with <span class="math" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>; otherwise it would belong to <span class="math" data-tex="\(C\)">\(C\)</span>. Its distance from the corresponding <span class="math" data-tex="\(d\)">\(d\)</span> is at most <span class="math" data-tex="\(tR&lt;\delta R\)">\(tR&lt;\delta R\)</span>. Consequently for <span class="math" data-tex="\(y,y'\in K\setminus C\)">\(y,y'\in K\setminus C\)</span>, using (2.3),</p>
 <span class="math math-display" data-tex="\[
-\|y-y&#x27;\|&lt;2\delta R+\varepsilon/4&lt;\varepsilon.
+\|y-y'\|&lt;2\delta R+\varepsilon/4&lt;\varepsilon.
 \]">\[
-\|y-y&#x27;\|&lt;2\delta R+\varepsilon/4&lt;\varepsilon.
+\|y-y'\|&lt;2\delta R+\varepsilon/4&lt;\varepsilon.
 \]</span>
 <p>This proves (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>The conclusion does not say that <span class="math" data-tex="\(C\)">\(C\)</span> is invariant under any action. Its purpose is to make two orbit points outside <span class="math" data-tex="\(C\)">\(C\)</span> necessarily close in norm.</p>
@@ -578,18 +579,16 @@ x^2+y^2+2|x|\leq0,
 \tag{TE.40}
 \]</span>
 <p>so both coordinates vanish. The origin satisfies all four inequalities and is fixed by every matrix.</p>
-<figure><img src="assets/affine-fixed-point-model.png" alt="Exact four-point model of the simultaneous radius construction" loading="lazy" style="max-width:100%;height:auto"></figure>
+<figure><img alt="Exact four-point model of the simultaneous radius construction" loading="lazy" src="assets/affine-fixed-point-model.png" style="max-width:100%;height:auto"/></figure>
 <p><strong>Figure.</strong> The diamond is <span class="math" data-tex="\(Q\)">\(Q\)</span>, the four marked vertices form <span class="math" data-tex="\(K\)">\(K\)</span>, and the four unit circles are centered at those vertices. Their closed disks have common intersection only at the origin. The horizontal diameter is exactly <span class="math" data-tex="\(2\)">\(2\)</span>; the displayed radius is exactly <span class="math" data-tex="\(1\)">\(1\)</span>. This is the finite model (TE.38)–(TE.40), not a claim that every weakly compact convex set is norm compact. The diamond is not a minimal invariant convex set: the invariant origin is a proper convex subset. The radius calculation is an exact finite geometric check. The imported fixed-point proof uses the small-diameter complement and averaged fixed-point argument in TE-14; TE-15 computes the group average in this model.</p>
 <p><strong>Problem 3: the nonconvex set is not the fixed-point set.</strong> The eight matrices have no common fixed point <em>in</em> <span class="math" data-tex="\(K\)">\(K\)</span>, although <span class="math" data-tex="\(K\)">\(K\)</span> is compact and invariant. Explain why this does not contradict the programme theorem in TE-14, and which hypothesis fails.</p>
 <p><strong>Solution.</strong> Quarter rotation has no fixed vertex of <span class="math" data-tex="\(K\)">\(K\)</span>. The theorem requires a convex set, and <span class="math" data-tex="\(K\)">\(K\)</span> is not convex. The convex hull contains the fixed origin. The imported theorem applies to a convex set, so it applies to the diamond and supplies its fixed point. A compact invariant nonconvex set alone is insufficient.</p>
 <p><strong>Problem 4: a separability assumption cannot be silently added.</strong> Identify exactly where countability is introduced in the full proof and where it is removed.</p>
 <p><strong>Solution.</strong> In Proposition 4.1, the finitely many maps alleged to move an averaged fixed point generate a countable subgroup. Its orbit hull is norm separable by rational convex combinations and equality of weak and norm convex closures. Lemma 2.1 uses that separability only for its small-diameter complement. Theorem 5.1 obtains a common fixed point for each finite list and then intersects over <em>all</em> elements of the original group in the original weakly compact <span class="math" data-tex="\(Q\)">\(Q\)</span>. The Banach space and the original group retain their arbitrary cardinalities.</p>
 <p>The seventeen stable course items use the exact existing programme trace and fixed-point proofs, with their original authors and licences. The complete selected affine proof is delivered in TE-14; normal corner extension retains its arbitrary normal, nonfaithful and infinite-mass cases. The course keeps its own support application, ordered finite-cutoff checks, FT/MB applications and solved failure tests. The compactness route and its Banach foundations remain explicit.</p>
-
 </article>
-
-<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-NF.html">← Normal-functional polar decomposition and invariant pairs</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-FT.html">Ergodic factors and trace normalization →</a></span></nav>
-<p class="small source-link"><a href="src/finite-corners-and-trace-existence.md" download>Editable Markdown source of this lesson</a></p>
+<nav aria-label="Lessons" class="pager"><span class="pager-prev"><a href="OA-MOD-NF.html" rel="prev">← Normal-functional polar decomposition and invariant pairs</a></span><a href="./">Course contents</a><span class="pager-next"><a href="OA-MOD-FT.html" rel="next">Ergodic factors and trace normalization →</a></span></nav>
+<p class="small source-link"><a download="" href="src/finite-corners-and-trace-existence.md">Editable Markdown source of this lesson</a></p>
 </main>
 <footer class="site-footer">
 <p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>

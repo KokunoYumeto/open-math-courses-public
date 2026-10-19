@@ -1,6 +1,6 @@
 # Integral representations of states
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check of that text. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all its solutions, completed the operator-topology tools and supplied the exact programme prerequisites, October 2026. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), with contributions by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text is dedicated to the public domain under CC0 1.0.*
 
 The states of a unital C\(^*\)-algebra \(A\) form a compact convex set \(\mathfrak S\), and its extreme points are the pure states. This lesson shows how to write an arbitrary state as an average of pure states, that is, as the barycentre of a probability measure on \(\mathfrak S\) that lives on the pure states, as far as that makes sense. The choice of such a measure is governed by the GNS representation \(\pi_\varphi\) of the state: the well-behaved representing measures, called *orthogonal*, correspond one-to-one to the abelian von Neumann subalgebras of the commutant \(\pi_\varphi(A)'\).
 
@@ -549,9 +549,21 @@ The real continuous linear functionals are the real parts of these: for a real-l
 \end{gathered}
 \tag{9.1}
 \]
-It is positive, \(\kappa_\mu(1)=1\), \(\|\kappa_\mu(f)\|\leq\|f\|_\infty\) for real \(f\), and \(\kappa_\mu\) is normal.
+It is positive, \(\kappa_\mu(1)=1\), \(\|\kappa_\mu(f)\|\leq\|f\|_\infty\) for every complex \(f\in L^\infty(\mu)\), and \(\kappa_\mu\) is normal.
 
-**Proof.** An operator \(x\in\pi(A)'\) is determined by the functional \(\Theta_\varphi(x)(a)=\langle\pi(a)x\xi,\xi\rangle=\langle x\pi(a)\xi,\xi\rangle\) ([Proposition 8.1](#oa-fnd-ir-09)(3)). This gives uniqueness. For existence let \(\kappa'(f)(a)=\int f\hat a\,d\mu\). If \(0\leq f\leq c\), then \(\kappa'(f)\) is a positive functional and \(\kappa'(f)\leq c\varphi\), because \(\omega(a^*a)\geq0\). By Proposition 8.1(3) there is a unique \(x_f\in\pi(A)'\) with \(\Theta_\varphi(x_f)=\kappa'(f)\), and \(0\leq x_f\leq c\). Every \(f\in L^\infty\) is a combination \(\sum_{k=0}^3i^kf_k\) with \(f_k\geq0\), so \(\kappa'(f)\) lies in the range of \(\Theta_\varphi\), and \(\kappa_\mu=\Theta_\varphi^{-1}\circ\kappa'\) is linear, positive and satisfies (9.1). \(\kappa_\mu(1)=1\) because \(\kappa'(1)=\varphi=\Theta_\varphi(1)\). For real \(f\), \(-\|f\|\leq f\leq\|f\|\) gives \(-\|f\|\leq\kappa_\mu(f)\leq\|f\|\). Finally, for \(\eta=\pi(a)\xi\) and \(\zeta=\pi(b)\xi\),
+**Proof.** An operator \(x\in\pi(A)'\) is determined by the functional \(\Theta_\varphi(x)(a)=\langle\pi(a)x\xi,\xi\rangle=\langle x\pi(a)\xi,\xi\rangle\) ([Proposition 8.1](#oa-fnd-ir-09)(3)). This gives uniqueness. For existence let \(\kappa'(f)(a)=\int f\hat a\,d\mu\). If \(0\leq f\leq c\), then \(\kappa'(f)\) is a positive functional and \(\kappa'(f)\leq c\varphi\), because \(\omega(a^*a)\geq0\). By Proposition 8.1(3) there is a unique \(x_f\in\pi(A)'\) with \(\Theta_\varphi(x_f)=\kappa'(f)\), and \(0\leq x_f\leq c\). Every \(f\in L^\infty\) is a combination \(\sum_{k=0}^3i^kf_k\) with \(f_k\geq0\), so \(\kappa'(f)\) lies in the range of \(\Theta_\varphi\), and \(\kappa_\mu=\Theta_\varphi^{-1}\circ\kappa'\) is linear, positive and satisfies (9.1). \(\kappa_\mu(1)=1\) because \(\kappa'(1)=\varphi=\Theta_\varphi(1)\). For real \(f\), \(-\|f\|\leq f\leq\|f\|\) gives \(-\|f\|\leq\kappa_\mu(f)\leq\|f\|\).
+
+The norm estimate also holds for complex functions. The Cauchy–Schwarz inequality for each state, followed by the integral Cauchy–Schwarz inequality, gives
+\[
+\begin{gathered}
+\left|\int f(\omega)\,\omega(b^*a)\,d\mu(\omega)\right|\\
+\leq \|f\|_\infty\int\omega(a^*a)^{1/2}\omega(b^*b)^{1/2}\,d\mu(\omega)\\
+\leq \|f\|_\infty\varphi(a^*a)^{1/2}\varphi(b^*b)^{1/2}.
+\end{gathered}
+\]
+Since \(\pi(A)\xi\) is dense in \(H\), this bounds every matrix coefficient of \(\kappa_\mu(f)\) and proves \(\|\kappa_\mu(f)\|\leq\|f\|_\infty\). In particular the complex-linear map satisfies the boundedness hypothesis of Lemma 9.1.
+
+Finally, for \(\eta=\pi(a)\xi\) and \(\zeta=\pi(b)\xi\),
 \[
 \langle\kappa_\mu(f)\eta,\zeta\rangle=\langle\kappa_\mu(f)\pi(b^*a)\xi,\xi\rangle=\int f\,\widehat{b^*a}\,d\mu ,
 \]
@@ -587,7 +599,7 @@ In this case \(\kappa_\mu\) is a \(*\)-isomorphism of \(L^\infty(\mathfrak S,\mu
 \]
 So \(\kappa_\mu\) is multiplicative on simple functions, which are norm-dense in \(L^\infty\); and \(\kappa_\mu\) is bounded.
 
-Now let \(\kappa_\mu\) be multiplicative. Positivity gives \(\kappa_\mu(\bar f)=\kappa_\mu(f)^*\), so \(\kappa_\mu\) is a \(*\)-homomorphism, and \(\|\kappa_\mu(f)\xi\|^2=\langle\kappa_\mu(|f|^2)\xi,\xi\rangle=\int|f|^2d\mu\) by (9.1) with \(a=1\). Hence \(\kappa_\mu\) is one-to-one. For the norm: \(\|\kappa_\mu(f)\|^2=\|\kappa_\mu(|f|^2)\|\leq\|f\|_\infty^2\). Conversely, for \(\varepsilon>0\) the set \(E=\{|f|\geq\|f\|_\infty-\varepsilon\}\) has positive measure, \(p=\kappa_\mu(\chi_E)\) is a nonzero projection, and \(p\kappa_\mu(|f|^2)p=\kappa_\mu(\chi_E|f|^2)\geq(\|f\|_\infty-\varepsilon)^2p\). So \(\|\kappa_\mu(f)p\|\geq\|f\|_\infty-\varepsilon\). \(\square\)
+Now let \(\kappa_\mu\) be multiplicative. Positivity gives \(\kappa_\mu(\bar f)=\kappa_\mu(f)^*\), so \(\kappa_\mu\) is a \(*\)-homomorphism, and \(\|\kappa_\mu(f)\xi\|^2=\langle\kappa_\mu(|f|^2)\xi,\xi\rangle=\int|f|^2d\mu\) by (9.1) with \(a=1\). Hence \(\kappa_\mu\) is one-to-one. For the norm: \(\|\kappa_\mu(f)\|^2=\|\kappa_\mu(|f|^2)\|\leq\|f\|_\infty^2\). For \(f=0\) the norm equality is immediate. If \(\|f\|_\infty>0\), take \(0<\varepsilon<\|f\|_\infty\); then the set \(E=\{|f|\geq\|f\|_\infty-\varepsilon\}\) has positive measure, \(p=\kappa_\mu(\chi_E)\) is a nonzero projection, and \(p\kappa_\mu(|f|^2)p=\kappa_\mu(\chi_E|f|^2)\geq(\|f\|_\infty-\varepsilon)^2p\). So \(\|\kappa_\mu(f)p\|\geq\|f\|_\infty-\varepsilon\). \(\square\)
 
 **Definition 10.3.** \(\mu\in M_1^+(\mathfrak S)\) is *orthogonal* if the conditions of Theorem 10.2 hold. Its *associated abelian algebra* is \(\mathcal C_\mu=\kappa_\mu(L^\infty(\mathfrak S,\mu))\subseteq\pi_\varphi(A)'\).
 
@@ -1033,7 +1045,22 @@ Both ends are continuous in \(F\in\mathcal D\), so \(\int G_0\hat F\,d\nu=\langl
 
 (4) By Zorn's lemma, \(\mathfrak M_\varphi\) has a maximal commutative \(*\)-subalgebra \(\mathcal C\) containing \(1\). If \(x\in\mathcal C'\cap\mathfrak M_\varphi\), its real and imaginary parts lie there too, and each generates with \(\mathcal C\) a commutative \(*\)-algebra; so they lie in \(\mathcal C\). Hence \(\mathcal C=\mathcal C'\cap\mathfrak M_\varphi\), which is weakly closed. \(\square\)
 
-**Remark 19.2** (Non-uniqueness). Different maximal abelian subalgebras give different measures, and they need not be conjugate. For example, let \(H=\ell^2\), \(A=\mathbb C1+K(H)\) (separable and unital), \((e_n)\) the standard basis, and \(\varphi(a)=\sum_n2^{-n}\langle ae_n,e_n\rangle\). On \(H\otimes\ell^2\) the vector \(\zeta=\sum_n2^{-n/2}e_n\otimes e_n\) is cyclic for \(\{a\otimes1\}\), and gives \(\varphi\); a matrix-unit computation with the operators \(e_i\otimes e_j^*\in K(H)\) shows that the commutant is \(1\otimes B(\ell^2)\). In \(B(\ell^2)\) the diagonal algebra \(\ell^\infty\) is maximal abelian and has minimal projections; the multiplication algebra \(L^\infty[0,1]\) on \(L^2[0,1]\cong\ell^2\) is [maximal abelian](hilbert-spaces-and-compact-operators.md#oa-fnd-hs-09) and has none. So the two are not unitarily conjugate. Their orthogonal measures (Theorem 13.1) are different, and both are concentrated on \(P(A)\) by Theorem 19.1(3), since \(A\) is separable. The centre \(\mathcal Z_\varphi=\pi_\varphi(A)''\cap\pi_\varphi(A)'\), on the other hand, is determined by \(\varphi\) alone. This leads to the central measure.
+**Remark 19.2** (Non-uniqueness). Different maximal abelian subalgebras give different measures, and they need not be conjugate. Let \(H=\ell^2\), \(A=\mathbb C1+K(H)\), \((e_n)\) its standard orthonormal basis, and
+\[
+\begin{gathered}
+\varphi(a)=\sum_{n\geq1}2^{-n}\langle ae_n,e_n\rangle,\\
+\zeta=\sum_{n\geq1}2^{-n/2}e_n\otimes e_n\in H\otimes\ell^2.
+\end{gathered}
+\]
+The representation \(\pi(a)=a\otimes1\) and vector \(\zeta\) give \(\varphi\). Write \(E_{ij}\) for the rank-one operator with \(E_{ij}e_k=\delta_{jk}e_i\). Then
+\[
+\pi(2^{j/2}E_{ij})\zeta=e_i\otimes e_j.
+\]
+Finite linear combinations of these vectors are dense, so \(\zeta\) is cyclic. If \(T\) commutes with all \(E_{ij}\otimes1\), commuting with \(E_{jj}\otimes1\) first gives \(T(e_j\otimes v)=e_j\otimes S_jv\). Commuting with \(E_{ij}\otimes1\) gives \(S_i=S_j\), and \(\|S_j\|\leq\|T\|\). Thus \(T=1\otimes S\) for a bounded \(S\) on \(\ell^2\); the converse commutation is immediate. Therefore \(\pi_\varphi(A)'=1\otimes B(\ell^2)\).
+
+The diagonal algebra in \(B(\ell^2)\) is maximal abelian: an operator commuting with every one-dimensional coordinate projection is diagonal. It has minimal projections, namely those coordinate projections. In contrast, identify the separable infinite-dimensional Hilbert space \(L^2[0,1]\) with \(\ell^2\), and take its [maximal abelian multiplication algebra](hilbert-spaces-and-compact-operators.md#oa-fnd-hs-09). Its projections are multiplication by indicators \(1_E\), modulo null sets. If \(E\) has positive Lebesgue measure, the function \(F(t)=|E\cap[0,t]|\) satisfies \(|F(t)-F(s)|\leq|t-s|\), \(F(0)=0\) and \(F(1)=|E|\). The intermediate value theorem provides \(t\) with \(F(t)=|E|/2\). Consequently \(1_{E\cap[0,t]}\) is a nonzero proper subprojection of \(1_E\). This algebra has no minimal projections. Unitary conjugacy preserves minimal projections, so these two maximal abelian algebras are not conjugate.
+
+Their orthogonal measures are different by Theorem 13.1, and both are concentrated on \(P(A)\) by Theorem 19.1(3), since \(A\) is separable. The centre \(\mathcal Z_\varphi=\pi_\varphi(A)''\cap\pi_\varphi(A)'\), on the other hand, is determined by \(\varphi\) alone. This leads to the central measure.
 
 ## 20. The central measure and factorial states
 
@@ -1243,9 +1270,9 @@ Replacing \(S'\pi(y)\zeta\) and \(S'\pi(y)^*\zeta\) by \(e_0\pi(y)\zeta\) and \(
 
 **Proof.** (1) As in Proposition 16.1(1) and (3), using Proposition 17.1(3): \(F^G_\varphi=\Theta_\varphi(\{x\in(\mathfrak M_\varphi)_+:\ \langle x\xi,\xi\rangle=1\})\), and \(\mathfrak M_\varphi\) is abelian by Proposition 23.3. (2) Proposition 17.1(6) and Theorem 19.1(3). (3) Take the algebra and the function \(\xi(\cdot)\) of Proposition 16.1(5). Let \(Z_0=\{\frac12-2^{-k}:\ k\geq1\}\cup\{\frac12\}\), a closed countable set, \(\theta(x)=\operatorname{dist}(x,Z_0)\in[0,\frac12]\), \(\sigma(x)=2|\xi(x)\rangle\langle\xi(x)|-1\), and \(u(x)=\cos\theta(x)\,1+i\sin\theta(x)\,\sigma(x)\). The jumps of \(\sigma\) lie in \(Z_0\), where \(\sin\theta=0\), so \(u\in C([0,1],U(2))\). Let \(\mathbb Z\) act by \(\alpha^n\), \(\alpha(a)(x)=u(x)a(x)u(x)^*\). Since \(u(x)^*\xi(x)=e^{-i\theta(x)}\xi(x)\), \(\varphi\) is invariant, and \(U=U_\varphi(1)\) is multiplication by \(w(x)=e^{-i\theta(x)}u(x)\). Its eigenvalues are \(1\) on \(\xi(x)\) and \(e^{-2i\theta(x)}\neq1\) on \(\xi(x)^\perp\) for almost every \(x\). So \(H_0=\{g\xi:\ g\in L^2\}\), and \(e_0\pi(a)e_0\) is multiplication by the scalar function \(x\mapsto\langle a(x)\xi(x),\xi(x)\rangle\): (i) holds. Here \(\mathfrak M_\varphi=\{M_g\otimes1\}\), so \(F^G_\varphi=F_\varphi\). The four pure states \(\rho_j\) of Proposition 16.1(5) are invariant, since \(u(\frac12)=1\). As there, \(\overline{F^G_\varphi}=\overline{F_\varphi}\) is not a simplex. \(\square\)
 
-**Theorem 23.5.** If (i) holds for every \(\varphi\in\mathfrak S^G\) (the system is *\(G\)-abelian*), then \(\mathfrak S^G\) is a simplex.
+**Theorem 23.5.** If (i) holds for every \(\varphi\in\mathfrak S^G\) (the system is *\(G\)-abelian*), then \(\mathfrak S^G\) is either empty or a simplex.
 
-**Proof.** By Theorem 23.4(2) every point of \(\mathfrak S^G\) has exactly one maximal representing measure on \(\mathfrak S^G\). Apply the Choquet–Meyer theorem (Theorem 7.4). \(\square\)
+**Proof.** If \(\mathfrak S^G\) is empty, the first alternative holds. Otherwise it is a nonempty compact convex set by Proposition 17.1(1). By Theorem 23.4(2) every point has exactly one maximal representing measure on \(\mathfrak S^G\). Apply the Choquet–Meyer theorem (Theorem 7.4). \(\square\)
 
 **Example 23.6** (Diagonal unitaries acting on \(M_n\)). Let \(A=M_n(\mathbb C)\) with \(n\geq2\), \(G\) the diagonal unitary matrices, \(\alpha_s=\operatorname{Ad}s\), and \(\varphi(x)=x_{11}\).
 
@@ -1277,11 +1304,43 @@ For \(\varphi\in\mathfrak S^G\) and \(a\in A\) let \(C_a\) be the weak operator 
 
 We call the action *large* if (S) holds.
 
+**Lemma 24.0** (Extending pointwise commutator tests). Fix an invariant state \(\varphi\), with GNS triple \(\pi,H,\xi\). Suppose that the condition (L\(_p\)) holds for this state. Then, for every \(a,b\in A\) and every vector \(\eta\in H\),
+\[
+\begin{gathered}
+\inf_{a'\in K_G(a)}
+|\langle[\pi(a'),\pi(b)]\eta,\eta\rangle|=0.
+\end{gathered}
+\]
+
+**Proof.** Put \(T_{a'}=[\pi(a'),\pi(b)]\). Since \(a'\) is a convex combination of automorphic images of \(a\),
+\[
+\|T_{a'}\|\leq 2\|a\|\|b\|=:M
+\]
+uniformly in \(a'\). If \(M=0\), all these operators vanish. Otherwise fix \(\varepsilon>0\). The cyclicity of \(\xi\) gives \(x\in A\) such that \(\eta_x=\pi(x^*)\xi\) is sufficiently close to \(\eta\) to satisfy
+\[
+M\|\eta-\eta_x\|(\|\eta\|+\|\eta_x\|)<\varepsilon/2.
+\]
+For any bounded operator \(T\), expanding the difference of its quadratic forms and applying Cauchy–Schwarz gives
+\[
+\begin{gathered}
+|\langle T\eta,\eta\rangle-\langle T\eta_x,\eta_x\rangle|\\
+\leq \|T\|\|\eta-\eta_x\|(\|\eta\|+\|\eta_x\|).
+\end{gathered}
+\]
+Condition (L\(_p\)), applied to this one \(x\) and this one \(b\), supplies \(a'\in K_G(a)\) for which
+\[
+\begin{gathered}
+|\langle T_{a'}\eta_x,\eta_x\rangle|\\
+=|\varphi(x(a'b-ba')x^*)|<\varepsilon/2.
+\end{gathered}
+\]
+The two estimates give \(|\langle T_{a'}\eta,\eta\rangle|<\varepsilon\). Since \(\varepsilon\) is arbitrary, the infimum is zero. This argument chooses an approximant for one vector and one commutator; it makes no simultaneous-approximation assertion. \(\square\)
+
 **Theorem 24.1.**
 
 - (a) (L)\(\iff\)(S), and (S)\(\Rightarrow\)(L\(_p\)).
-- (b) If (S) holds, the system is \(G\)-abelian, so \(\mathfrak S^G\) is a simplex.
-- (c) If (S) holds, then for \(\varphi\in\mathfrak S^G\) the following are equivalent: (i) \(\varphi\) is ergodic; (ii) \(U_\varphi(G)'\cap\mathcal Z_\varphi=\mathbb C1\); (iii) \(H_0=\mathbb C\xi_\varphi\).
+- (b) If (L\(_p\)) holds, the system is \(G\)-abelian. Its invariant state space \(\mathfrak S^G\) is either empty or a simplex.
+- (c) For \(\varphi\in\mathfrak S^G\), consider: (i) \(\varphi\) is ergodic; (ii) \(U_\varphi(G)'\cap\mathcal Z_\varphi=\mathbb C1\); (iii) \(H_0=\mathbb C\xi_\varphi\). If (L\(_p\)) holds, then (i) and (iii) are equivalent and imply (ii). If (S) holds, all three conditions are equivalent.
 
 
 
@@ -1289,7 +1348,9 @@ We call the action *large* if (S) holds.
 
 (a) (S)\(\Rightarrow\)(L): take \(z\in C_a\cap\mathcal Z_\varphi\) and a net \(\pi(a'_k)\to z\) weakly with \(a'_k\in K_G(a)\). For each of the finitely many pairs, \(\langle[\pi(a'_k),\pi(b_i)]\eta_j,\eta_j\rangle\to\langle[z,\pi(b_i)]\eta_j,\eta_j\rangle=0\). (L)\(\Rightarrow\)(L\(_p\)) is clear. (L)\(\Rightarrow\)(S): the sets \(Z_{b,x}=\{z\in C_a:\ \langle[z,\pi(b)]\pi(x^*)\xi,\pi(x^*)\xi\rangle=0\}\) are weakly closed. By (L) and compactness, finitely many of them have a common point: a weak cluster point of \(\pi(a'_k)\), where \(a'_k\) nearly attains the infimum. So all of them have a common point \(z\). Then the quadratic form of \([z,\pi(b)]\) vanishes on the dense subspace \(\pi(A)\xi\), so \(z\in\pi(A)'\cap C_a\subseteq\mathcal Z_\varphi\).
 
-(b) Fix \(\varphi\) and \(a\). \(C_a\cap\mathcal Z_\varphi\) is nonempty, convex, weakly compact, and invariant under \(\operatorname{Ad}U_s\), because \(U_s\pi(K_G(a))U_s^*=\pi(K_G(a))\) and \(U_s\) normalizes \(\pi(A)\). Take \(z\) in it. By the mean ergodic lemma (Lemma 23.1) there are \(T_k=\sum_sc^{(k)}_sU_s\) with \(T_kz\xi\to e_0z\xi\). The elements \(z_k=\sum_sc^{(k)}_sU_szU_s^*\) lie in \(C_a\cap\mathcal Z_\varphi\) and \(z_k\xi=T_kz\xi\). A weak cluster point \(z_\infty\) lies in \(C_a\cap\mathcal Z_\varphi\), and \(z_\infty\xi=e_0z\xi\in H_0\). Then \(U_sz_\infty U_s^*\in\mathcal Z_\varphi\) and \(U_sz_\infty U_s^*\xi=U_sz_\infty\xi=z_\infty\xi\), so \(U_sz_\infty U_s^*=z_\infty\) (separating vector). Thus \(z_\infty\) commutes with \(U(G)\), hence with \(e_0\). Since \(e_0\pi(\alpha_s(a))e_0=e_0\pi(a)e_0\), weak limits give \(e_0\pi(a)e_0=e_0z_\infty e_0=z_\infty e_0\). For \(b\in A\), \(z_\infty\) is central in \(\pi(A)''\), so
+(b) Lemma 24.0 applies, in particular, to every \(\eta\in H_0\). It gives the convex-hull condition (ii\(^*\)) of Theorem 23.2 for every invariant state. Hence \(e_0\pi(A)e_0\) is commutative for every such state: the system is \(G\)-abelian. Theorem 23.5 then proves that \(\mathfrak S^G\) is empty or a simplex.
+
+For the central-intersection implication used in (c), assume now (S). Fix \(\varphi\) and \(a\). \(C_a\cap\mathcal Z_\varphi\) is nonempty, convex, weakly compact, and invariant under \(\operatorname{Ad}U_s\), because \(U_s\pi(K_G(a))U_s^*=\pi(K_G(a))\) and \(U_s\) normalizes \(\pi(A)\). Take \(z\) in it. By the mean ergodic lemma (Lemma 23.1) there are \(T_k=\sum_sc^{(k)}_sU_s\) with \(T_kz\xi\to e_0z\xi\). The elements \(z_k=\sum_sc^{(k)}_sU_szU_s^*\) lie in \(C_a\cap\mathcal Z_\varphi\) and \(z_k\xi=T_kz\xi\). A weak cluster point \(z_\infty\) lies in \(C_a\cap\mathcal Z_\varphi\), and \(z_\infty\xi=e_0z\xi\in H_0\). Then \(U_sz_\infty U_s^*\in\mathcal Z_\varphi\) and \(U_sz_\infty U_s^*\xi=U_sz_\infty\xi=z_\infty\xi\), so \(U_sz_\infty U_s^*=z_\infty\) (separating vector). Thus \(z_\infty\) commutes with \(U(G)\), hence with \(e_0\). Since \(e_0\pi(\alpha_s(a))e_0=e_0\pi(a)e_0\), weak limits give \(e_0\pi(a)e_0=e_0z_\infty e_0=z_\infty e_0\). For \(b\in A\), \(z_\infty\) is central in \(\pi(A)''\), so
 \[
 \begin{gathered}
 e_0\pi(a)e_0\cdot e_0\pi(b)e_0\\
@@ -1299,9 +1360,17 @@ e_0\pi(a)e_0\cdot e_0\pi(b)e_0\\
 \]
 So condition (i) of Theorem 23.2 holds for every \(\varphi\), and Theorem 23.5 applies.
 
-(c) (i)\(\Leftrightarrow\)\(\mathfrak M_\varphi=\mathbb C1\) by Proposition 17.1(4), and \(U(G)'\cap\mathcal Z_\varphi\subseteq\mathfrak M_\varphi\); so (i)\(\Rightarrow\)(ii). (iii)\(\Rightarrow\)(i): for \(x\in\mathfrak M_\varphi\), \(x\xi\in H_0=\mathbb C\xi\), so \(x\) is a scalar (separating vector). (ii)\(\Rightarrow\)(iii): by the proof of (b), each \(a\) has a \(z_\infty\in U(G)'\cap\mathcal Z_\varphi=\mathbb C1\) with \(e_0\pi(a)e_0=z_\infty e_0\). So \(e_0\pi(a)\xi=e_0\pi(a)e_0\xi\in\mathbb C\xi\) for every \(a\), and \(H_0=e_0\overline{\pi(A)\xi}=\mathbb C\xi\). \(\square\)
+(c) By Proposition 17.1(4), (i) is equivalent to \(\mathfrak M_\varphi=\mathbb C1\). Since \(U(G)'\cap\mathcal Z_\varphi\subseteq\mathfrak M_\varphi\), (i) implies (ii). Also (iii) implies (i) without a largeness assumption: if \(x\in\mathfrak M_\varphi\), then \(x\xi\in H_0=\mathbb C\xi\), and the separating property of \(\xi\) for \(\pi(A)'\) makes \(x\) scalar.
 
-Condition (L\(_p\)) has one \(x\) and a separate infimum for each \(b_i\), so the compactness argument in (L)\(\Rightarrow\)(S) does not apply to it. We leave open whether (L\(_p\)) implies (S). Parts (b) and (c) use only (S).
+Assume (L\(_p\)) and (i). Part (b) gives commutativity of \(e_0\pi(A)e_0\). Proposition 23.3 identifies \(\mathfrak M_\varphi\) with \(\pi(A)'\cap\{e_0\}'\), and Proposition 12.3(b) gives
+\[
+H_0=[\mathfrak M_\varphi\xi].
+\]
+Under (i) the right side is \(\mathbb C\xi\), proving (iii). Thus (i) and (iii) are equivalent under (L\(_p\)).
+
+Finally assume (S). (ii)\(\Rightarrow\)(iii): by the proof of (b), each \(a\) has a \(z_\infty\in U(G)'\cap\mathcal Z_\varphi=\mathbb C1\) with \(e_0\pi(a)e_0=z_\infty e_0\). So \(e_0\pi(a)\xi=e_0\pi(a)e_0\xi\in\mathbb C\xi\) for every \(a\), and \(H_0=e_0\overline{\pi(A)\xi}=\mathbb C\xi\). \(\square\)
+
+Condition (L\(_p\)) has one \(x\) and a separate infimum for each \(b_i\), so the compactness argument in (L)\(\Rightarrow\)(S) does not apply to it. We leave open whether (L\(_p\)) implies (S). Part (b) and the equivalence of (i) with (iii) in part (c) already follow from (L\(_p\)); the implication from (ii) to (iii) is proved here under (S).
 
 ## Background used without proof
 
@@ -1349,4 +1418,4 @@ Condition (L\(_p\)) has one \(x\) and a separate infimum for each \(b_i\), so th
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C*-Algebras and von Neumann Algebras*, [revised author edition, 8 February 2017](https://www.bruceblackadar.com/Mathematics/Cycr.pdf).
 - [van Neerven] J. van Neerven, *Functional Analysis*, [corrected author version, arXiv:2112.11166v7](https://arxiv.org/pdf/2112.11166v7).
 
-*Freely accessible reading:* [D. H. Fremlin, *Measure Theory, Chapter 46*, §461A–§461P](https://www1.essex.ac.uk/maths/people/fremlin/chap46.pdf) gives a route through barycenters, maximal representing measures and simplex uniqueness; Baire pseudo-support is distinguished from mass on the extreme boundary. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.
+*Freely accessible reading:* [D. H. Fremlin, *Measure Theory, Chapter 46*, §461A–§461P](https://www1.essex.ac.uk/maths/people/fremlin/chap46.pdf) gives a route through barycenters, maximal representing measures and simplex uniqueness; Baire pseudo-support is distinguished from mass on the extreme boundary.

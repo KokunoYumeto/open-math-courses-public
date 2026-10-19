@@ -489,7 +489,7 @@ Exactly one integral coefficient is therefore \(\pm1\). Consequently \(\phi\) is
 \operatorname{Tr}_{K/\mathbb Q}(\phi^2)
 =\operatorname{Tr}_{K/\mathbb Q}(\gamma^2)
 =\frac{1+5+21+105}{4}=33.
-\tag{5.12}
+\tag{5.12a}
 \]
 
 On the negative eigenspace put \(T(u,v)=\operatorname{Tr}_{K/\mathbb Q}(uv)\); its products lie in \(K\), so this is defined and invariant under \(G\). For an element \(h\) of order four, \(h^2=z\) acts as \(-1\), and
@@ -3239,6 +3239,498 @@ The stabilizer of \(\theta^\omega\) is the same \(H\): equality of two conjugate
 
 The remaining Taylor comparison must realize these homomorphisms by integral group-algebra determinants and compare them with the integral resolvent. The formulas above establish their values and transformation laws; they do not presume that realization.
 
+### Gauss valuations and multiplication modulo roots of unity
+
+The local determinant calculation needs the individual prime valuations of a finite Gauss sum, and the full multiplication relation after taking logarithms. We prove both from the elementary Gauss and Jacobi calculations of Lemmas 5.37–5.38. The short valuation argument is the one in [Davenport–Hasse, Appendix II, pp. 181–182]; the fractional-part calculation also appears in their Section 5, equation (5.11). Every step needed here is supplied below.
+
+Throughout this calculation \(k=\mathbb F_q\), \(q=p^f>2\), and \(\psi\) is a nontrivial additive character. Every multiplicative character, including the trivial one, is extended by zero at zero. Put \(N=q-1\) and \(g(\chi)=g_k(\chi,\psi)\).
+
+**Theorem 5.67 (the digit valuation).** At any prime \(\mathfrak P\) above \(p\) in \(\mathbb Q(\zeta_N,\zeta_p)\), identify its residue field with \(k\), and let \(\omega:k^\times\to\mu_N\) be the multiplicative lift of residue elements. Normalize \(v_{\mathfrak P}(\zeta_p-1)=1\). If \(0\leq a<N\), and \(d_p(a)\) is the sum of its \(f\) base-\(p\) digits, then
+\[
+ v_{\mathfrak P}(g_k(\omega^{-a},\psi))=d_p(a).
+ \tag{5.204}
+\]
+It holds for every nontrivial additive character, including when \(p\mid f\), and includes the trivial multiplicative character. When \(q=2\), that is the only character and its sum is \(-1\), so the valuation is zero.
+
+**Proof of Theorem 5.67.**
+
+We are assuming \(q>2\); put \(N=q-1\). All the Gauss sums lie in \(K=\mathbb Q(\zeta_N,\zeta_p)\). Fix any prime \(\mathfrak P\) of \(K\) above \(p\). The roots of unity of order dividing \(N\) lie in an unramified extension of \(\mathbb Q_p\): reduction of \(X^N-1\) is separable because \(p\nmid N\), and its distinct roots lift uniquely by Hensel's lemma. Its splitting residue field is \(\mathbb F_q\). Indeed the smallest positive \(d\) with \(N\mid p^d-1\) is \(f\), since \(0<p^d-1<N\) for \(d<f\). Thus, after choosing an identification of this residue field with \(k\), reduction gives a group isomorphism
+\[
+ \mu_N\longrightarrow k^\times.
+\]
+Let \(\omega:k^\times\to\mu_N\) be its inverse, the multiplicative lift of residue elements. Adjoining \(\zeta_p\) gives the totally ramified extension of degree \(p-1\), with uniformizer \(\pi=\zeta_p-1\). For \(p>2\), this follows directly from the Eisenstein polynomial
+\[
+ \frac{(1+T)^p-1}{T}=p+\binom p2T+\cdots+T^{p-1}
+\]
+over the unramified ring. For \(p=2\), \(\pi=-2\) and the same assertion has degree one. Normalize the valuation by \(v_{\mathfrak P}(\pi)=1\); then
+\[
+ v_{\mathfrak P}(p)=p-1,\qquad
+ v_{\mathfrak P}(q)=f(p-1).
+\]
+
+First use the additive character
+\[
+ \psi_0(x)=\zeta_p^{\operatorname{Tr}_{k/\mathbb F_p}(x)}.
+\]
+The trace is nonzero and onto: its polynomial \(X+X^p+\cdots+X^{p^{f-1}}\) has degree less than \(q\) and is not the zero polynomial, so it cannot vanish on all of \(k\); its image is a nonzero \(\mathbb F_p\)-subspace of \(\mathbb F_p\). Every nontrivial additive character has the form \(\psi_0(cx)\) for some \(c\ne0\). To see this without an assumption about \(p\nmid f\), the map \(c\mapsto(x\mapsto\operatorname{Tr}(cx))\) is injective: when \(c\ne0\), multiplication by \(c\) is a bijection and the trace is nonzero. Both spaces have \(q\) elements. Changing \(\psi_0\) to \(\psi_0(cx)\) multiplies each Gauss sum by the root of unity \(\chi(c)^{-1}\), so its valuation does not change.
+
+For \(a\in\mathbb Z/N\mathbb Z\), set
+\[
+ s(a)=v_{\mathfrak P}\bigl(g_k(\omega^{-a},\psi_0)\bigr).
+\]
+We prove four elementary facts, then obtain the exact valuation by summing an upper bound.
+
+1. **Integrality and reflection.** Gauss sums are nonzero algebraic integers. The trivial sum is \(-1\), hence \(s(0)=0\). For \(a\ne0\), the inverse-character identity gives
+   \[
+   s(a)+s(-a)=f(p-1).
+   \tag{5.205}
+   \]
+   In particular all \(s(a)\) are nonnegative integers, and summing (5.205) over the \(N-1=q-2\) nonzero residue classes gives
+   \[
+   \sum_{a=0}^{N-1}s(a)=\frac{f(p-1)(q-2)}2.
+   \tag{5.206}
+   \]
+   This summation works also at self-inverse classes; no pairing assumption is needed.
+
+2. **Subadditivity.** For every \(a,b\) modulo \(N\),
+   \[
+   s(a+b)\le s(a)+s(b).
+   \tag{5.207}
+   \]
+   If \(a+b\ne0\), the quotient
+   \(g(\omega^{-a})g(\omega^{-b})/g(\omega^{-(a+b)})\)
+   is the Jacobi sum and is integral. If \(a+b=0\) with \(a\ne0\), that quotient is \(-\omega^{-a}(-1)q\), which is integral. If either class is zero, the quotient is \(-1\). These cases cover all pairs and prove (5.207) without excluding any trivial character.
+
+3. **The first valuation.** We have \(s(1)=1\). For \(x\ne0\), choose \(t_x\in\{0,\ldots,p-1\}\) representing \(\operatorname{Tr}(x)\). Since \(\omega^{-1}\) is nontrivial when \(q>2\), its sum is zero. Therefore
+   \[
+   g_k(\omega^{-1},\psi_0)
+   =\sum_{x\ne0}\omega(x)^{-1}(1+\pi)^{t_x}
+   \equiv \pi\sum_{x\ne0}\omega(x)^{-1}t_x
+   \pmod{\pi^2}.
+   \]
+   The reduction of the coefficient on the right is
+   \[
+   \sum_{x\ne0}x^{-1}\operatorname{Tr}(x)
+   =\sum_{i=0}^{f-1}\sum_{x\ne0}x^{p^i-1}=-1.
+   \]
+   At \(i=0\) the inner sum is \(q-1=-1\) in the residue field. For \(i\ge1\), its exponent lies strictly between zero and \(N\), so the cyclic-group power sum vanishes. Consequently
+   \[
+   g_k(\omega^{-1},\psi_0)\equiv-\pi\pmod{\pi^2},
+   \tag{5.208}
+   \]
+   proving \(s(1)=1\). This calculation is valid when \(p=2\) and when \(p\mid f\).
+
+4. **Frobenius invariance.** Changing \(x\) to \(y^p\) in the defining sum, using \(\operatorname{Tr}(y^p)=\operatorname{Tr}(y)\) and \(\omega(y^p)=\omega(y)^p\), gives
+   \[
+   g_k(\omega^{-a},\psi_0)=g_k(\omega^{-pa},\psi_0),
+   \qquad s(pa)=s(a).
+   \tag{5.209}
+   \]
+
+For the least representative \(0\le a<N\), write
+\[
+ a=a_0+a_1p+\cdots+a_{f-1}p^{f-1},
+ \qquad 0\le a_i\le p-1,
+\]
+and define its digit sum \(d_p(a)=\sum_i a_i\). The all-\((p-1)\) digit string is excluded because its value is \(N\). Repeated subadditivity and \(s(1)=1\) give \(s(a_i)\le a_i\), while Frobenius invariance gives \(s(a_ip^i)=s(a_i)\). Hence
+\[
+ 0\le s(a)\le\sum_i s(a_i)\le d_p(a).
+ \tag{5.210}
+\]
+The sum of the digit sums over all \(q\) strings of length \(f\) is \(fq(p-1)/2\). Removing the one string of value \(N\), whose digit sum is \(f(p-1)\), yields
+\[
+ \sum_{a=0}^{N-1}d_p(a)=\frac{f(p-1)(q-2)}2.
+\]
+By (5.206), the two sides of the pointwise upper bound (5.210) have equal total sums. Every difference is nonnegative, so every difference is zero. We have proved, at the arbitrary chosen prime above \(p\),
+\[
+ v_{\mathfrak P}\bigl(g_k(\omega^{-a},\psi)\bigr)=d_p(a),
+ \qquad 0\le a<N.
+ 
+\]
+Changing the prime changes the identifying character \(\omega\), but the same proof applies separately at every prime. Thus (5.204) supplies every finite valuation needed below, rather than just one chosen embedding.
+
+**Theorem 5.68 (prime-order Gauss multiplication modulo roots of unity).** Let \(\ell\ne p\) be prime with \(\ell\mid q-1\), and let \(X_\ell\) be the \(\ell\) multiplicative characters of order dividing \(\ell\). For every multiplicative character \(\beta\),
+\[
+ \prod_{\mu\in X_\ell}g(\beta\mu)
+       \sim q^{(\ell-1)/2}g(\beta^\ell),
+ \tag{5.211}
+\]
+where \(u\sim v\) means that \(u/v\) is a root of unity and the displayed power of \(q\) is positive. More precisely,
+\[
+ R_\ell(\beta)=
+ \frac{\prod_{\mu\in X_\ell}g(\beta\mu)}
+ {g(\beta^\ell)\prod_{\substack{\mu\in X_\ell\\\mu\ne1}}g(\mu)}
+ \tag{5.212}
+\]
+is a root of unity. If \(\beta^\ell=1\), this last quotient is exactly one. No exact phase is needed when taking logarithms.
+
+#### Distribution of the digits
+
+For any integer \(b\), let \([b]_N\) be its least representative modulo \(N\). Multiplication by \(p\) modulo \(N=p^f-1\) cyclically rotates the \(f\) base-\(p\) digits. Consequently, for \(0\le a<N\),
+\[
+ \frac{d_p(a)}{p-1}
+ =\sum_{r=0}^{f-1}\left\{\frac{p^ra}{N}\right\}.
+ \tag{5.213}
+\]
+Indeed the sum of the \(f\) reduced rotations is
+\(d_p(a)(1+p+\cdots+p^{f-1})=Nd_p(a)/(p-1)\).
+This argument includes \(a=0\).
+
+For every real \(t\),
+\[
+ \sum_{j=0}^{\ell-1}\{t+j/\ell\}-\{\ell t\}
+ =\frac{\ell-1}{2}.
+ \tag{5.214}
+\]
+Writing \(\ell t=n+u\), with \(n\in\mathbb Z\) and \(0\le u<1\), the fractional parts on the left before subtraction form the set \(\{(u+j)/\ell:0\le j<\ell\}\); their sum is \(u+(\ell-1)/2\).
+
+Because multiplication by \(p^r\) permutes the residues modulo \(\ell\), (5.213)–(5.214) give
+\[
+ \sum_{j=0}^{\ell-1}d_p([a+jN/\ell]_N)
+ -d_p([\ell a]_N)
+ =\frac{f(p-1)(\ell-1)}2
+ \quad(a\in\mathbb Z).
+ \tag{5.215}
+\]
+There is no restriction that \([\ell a]_N\ne0\). In particular, taking \(a=0\) in (5.215) shows that
+\[
+ \sum_{j=1}^{\ell-1}d_p(jN/\ell)
+ =\frac{f(p-1)(\ell-1)}2.
+ \tag{5.216}
+\]
+
+**Proof of Theorem 5.68.**
+
+At a prime \(\mathfrak P\) above \(p\), express \(\beta=\omega^{-a}\). The characters in \(X_\ell\) are exactly \(\omega^{-jN/\ell}\), for \(0\le j<\ell\). Formula (5.204) applied to (5.212), and then (5.215)–(5.216), gives
+\[
+ v_{\mathfrak P}(R_\ell(\beta))
+ =\sum_{j=0}^{\ell-1}d_p([a+jN/\ell]_N)
+ -d_p([\ell a]_N)
+ -\sum_{j=1}^{\ell-1}d_p(jN/\ell)=0.
+\]
+This holds at every prime above \(p\), choosing its multiplicative lift \(\omega\) separately at that prime. At every prime of residue characteristic different from \(p\), all Gauss sums are units: for a nontrivial \(\chi\), their inverse-character product is the unit \(\chi(-1)q\), and both factors are integral; for the trivial character the sum is \(-1\). Thus every finite valuation of \(R_\ell(\beta)\) is zero. It is an algebraic unit.
+
+Every complex embedding sends this ratio to a ratio with the same pattern of characters and with a nontrivial additive character. A nontrivial multiplicative character has Gauss absolute value \(\sqrt q\), and the trivial one has absolute value one. If \(\beta^\ell\ne1\), all \(\ell\) numerator characters are nontrivial: the numerator absolute value is \(q^{\ell/2}\), and the denominator absolute value is \(\sqrt q\,q^{(\ell-1)/2}\). If \(\beta^\ell=1\), exactly one numerator character is trivial: its numerator absolute value is \(q^{(\ell-1)/2}\), and the denominator has the same absolute value. Thus every complex conjugate of \(R_\ell(\beta)\) has absolute value one.
+
+For completeness, an algebraic integer with this last property is a root of unity. Let its conjugates, counted with multiplicity in a fixed number field of degree \(d\), be \(z_1,\ldots,z_d\). For each \(n\ge1\),
+\[
+ F_n(T)=\prod_{i=1}^d(T-z_i^n)
+\]
+has integer coefficients: its coefficients are algebraic integers and are fixed by all Galois automorphisms. Their absolute values are at most \(\binom dr\) in degree \(d-r\), since \(|z_i|=1\). There are only finitely many possible polynomials \(F_n\), hence their combined roots form a finite set. Every positive power of the original integer belongs to that finite set, so two powers agree. The integer is nonzero, therefore it is a root of unity. Applying this argument proves the assertion about (5.212).
+
+Finally put
+\[
+ D_\ell=\prod_{\substack{\mu\in X_\ell\\\mu\ne1}}g(\mu).
+\]
+If \(\ell\) is odd, the nontrivial characters pair as \(\mu,\mu^{-1}\), and \(\mu(-1)=1\). The inverse-character identity gives
+\[
+ D_\ell=q^{(\ell-1)/2}.
+\]
+If \(\ell=2\), its unique nontrivial character is the quadratic \(\eta\); then
+\[
+ D_2^2=\eta(-1)q,
+\]
+so \(D_2/\sqrt q\) is a fourth root of unity. In either case \(D_\ell\sim q^{(\ell-1)/2}\), which combines with (5.212) to prove (5.211).
+
+When \(\beta^\ell=1\), \(\beta\in X_\ell\), and multiplication by \(\beta\) permutes that group. Directly, the numerator of (5.212) is \(g(1)D_\ell=-D_\ell\), and its denominator is also \(-D_\ell\). Thus \(R_\ell(\beta)=1\) in every exceptional case, as claimed. \(\square\)
+
+### The Gauss logarithm on a tame prime-power component
+
+We compute the logarithm of an adjusted Gauss homomorphism at a prime different from the residue characteristic. The calculation retains its support on inertia and its index factor, and produces an integral determinant with the same logarithm. These are the logarithmic results in [Taylor, Sections 7–8, Propositions 7.5–7.6 and Theorem 5]. The torsion left by the logarithm is a further arithmetic step.
+
+#### The tame character component
+
+Let \(p\) and \(\ell\) be distinct primes, and let \(M/F_0\) be finite tame Galois between \(p\)-adic fields, with group
+
+\[
+ \Delta=C\times H,\qquad C\text{ cyclic of order }n,\quad \ell\nmid n,\quad H\text{ an }\ell\text{-group}.
+ \tag{5.217}
+\]
+
+Fix a faithful character \(x\) of \(C\). This calculation treats a direct product component; reduction of a general elementary group to these components is a separate step. Let \(I'\) be the inertia subgroup of \(\Delta\), and \(I=I'\cap H\). Lemma 5.62 and its local structural proof make \(I'\), \(I\), and \(H/I\) cyclic. Put
+
+\[
+ \Sigma=C_H(I),\qquad \Lambda=C\times\Sigma,\qquad
+ D=M^\Lambda,\qquad m=[\Delta:\Lambda]=[H:\Sigma].
+ \tag{5.218}
+\]
+
+The group \(\Sigma\) is abelian: it contains \(I\), its quotient by \(I\) is cyclic, and a lift of that quotient's generator commutes with \(I\); the lift and \(I\) generate \(\Sigma\). It is normal because \(I\) is normal, and is the maximal abelian subgroup containing \(I\). The prime-to-\(\ell\) and \(\ell\)-primary factors of the cyclic \(I'\) lie in \(C\) and \(H\), respectively, so \(I'\subseteq\Lambda\). Thus \(D/F_0\) is unramified and
+
+\[
+ q_D=q_{F_0}^{m}.
+ \tag{5.219}
+\]
+
+Let \(L=\mathbb Q(\zeta_p,\zeta_n)\) and \(B=\mathcal O_L\otimes\mathbb Z_\ell\). It is a product of finite unramified DVRs over \(\mathbb Z_\ell\), by the prime-to-\(\ell\) root lifting in Lemma 5.28 or Cyclotomic fields, Theorem 12.3. Work factor by factor. Write \(\mathcal F\) for coefficient Frobenius, raising those roots to their \(\ell\)-th powers. In a field containing the character values of \(H\), extend it to fix the \(\ell\)-power roots. Such an extension exists: the prime-to-\(\ell\) roots generate an unramified local field, the \(\ell\)-power roots a totally ramified one, and the two fields have trivial intersection. Indeed a subfield of both has ramification index and residue degree one, so its degree is one by the degree formula proved above Lemma 5.62.
+
+Choose \(c\in F_0^\times\) with \(c\mathcal O_{F_0}=\mathfrak p_{F_0}\mathfrak D_{F_0/\mathbb Q_p}\). Formula (5.173) proves that the same element generates \(\mathfrak p_E\mathfrak D_{E/\mathbb Q_p}\) in every intermediate field. Define its residue additive character by
+
+\[
+ \bar\psi_{E,c}(\bar u)=\psi_{\mathbb Q_p}\bigl(\operatorname{Tr}_{E/\mathbb Q_p}(u/c)\bigr).
+ \tag{5.220}
+\]
+
+It is well defined and nontrivial by (5.193). We use arithmetic reciprocity for multiplicative character values. Theorem 5.64 gives the exact residue Gauss formula for an abelian character, including the unramified value \(-1\), and its signed induction formula (5.192). Proposition 5.66 gives the unramified-twist and coefficient Galois laws. The monomial character description is Lemma 5.62. Norm lifting is Theorem 5.39, including trivial characters and residue degrees divisible by \(p\). The integral logarithm and its image are Theorem 5.5, Lemma 5.15, and Theorem 5.16.
+
+#### The logarithm on all units
+
+For an \(\ell\)-group \(P\), let \(\mathcal C_P\) be its conjugacy classes, let \(\phi_P\) send group elements to their classes, and let \(\Psi\) be the \(\mathcal F\)-semilinear map \([h]\mapsto[h^\ell]\). On augmentation-one units the earlier logarithm is
+
+\[
+ \nu_P(\operatorname{Det}v)=(\ell-\Psi)\phi_P\log v.
+ \tag{5.221}
+\]
+
+For \(u\in B[P]^\times\), put \(a=\epsilon(u)\), \(v=a^{-1}u\), and define
+
+\[
+ \nu_P(\operatorname{Det}u)=\nu_P(\operatorname{Det}v)
+             +(\ell\log a-\mathcal F\log a)[1].
+ \tag{5.222}
+\]
+
+The logarithm of a coefficient unit kills its finite residue roots of unity and agrees with the principal-unit series. To justify this, lift each nonzero residue to its unique root of \(X^{\ell^r-1}=1\) by simple-root lifting, where \(\ell^r\) is the factor's residue cardinality. Dividing by it leaves a unit in \(1+\ell B\). The logarithm series has every term in \(\ell B\), since \(j-v_\ell(j)\geq1\), and its term valuations tend to infinity. The formal product identity gives additivity on principal units and hence on all units after removing residue roots. Frobenius preserves those roots and commutes with the convergent series. Theorem 5.5 and (5.222) therefore give
+
+\[
+ \nu_P\bigl(\operatorname{Det}(B[P]^\times)\bigr)\subseteq\ell B[\mathcal C_P].
+ \tag{5.223}
+\]
+
+Augmentation is the trivial-character determinant, so (5.222) is well defined on determinants. It is natural for group quotients and subgroup inclusion: the class maps send a group element to its image or ambient class, commute with \(\Psi\), and preserve augmentation.
+
+We first check that the power operation on characters takes values in the virtual character group \(R_P\). For a representation \(V\), the exterior power \(\bigwedge^j V\) is the alternating quotient of its tensor power, with the induced group action; set it to zero for \(j>\dim V\). If the eigenvalues of an element on \(V\) are \(\alpha_1,\ldots,\alpha_d\), its trace on \(\bigwedge^j V\) is the elementary symmetric function \(e_j\) in these eigenvalues. Indeed a finite-order matrix is diagonalizable in characteristic zero, and the wedges of distinct eigenvectors form an eigenbasis. Tensor products multiply traces. Define virtual representations recursively by \(W_1=V\) and, for \(m\geq2\),
+
+\[
+ W_m=\sum_{j=1}^{m-1}(-1)^{j-1}
+       \bigl(\bigwedge^j V\bigr)\otimes W_{m-j}
+          +(-1)^{m-1}m\bigwedge^m V.
+\]
+
+Their characters are \(\sum_i\alpha_i^m\). To prove the recursion, put \(E(t)=\prod_i(1+\alpha_i t)=\sum_j e_jt^j\); formal differentiation gives
+
+\[
+ tE'(t)=E(t)\sum_{m\geq1}(-1)^{m-1}
+                 \left(\sum_i\alpha_i^m\right)t^m.
+\]
+
+Comparing coefficients gives precisely the displayed integer recursion. Thus \(h\mapsto\theta_V(h^m)\) is a virtual character. This character is additive in direct sums, so it extends to every virtual character, independently of its expression as a difference. Denote the resulting additive operation by \(\psi^m\).
+
+For a Galois-equivariant character-unit homomorphism \(f:R_P\to(\overline{\mathbb Q}_\ell)^\times\), whose finitely many irreducible values are units in a finite extension of the coefficient field, extend the logarithm by
+
+\[
+ \theta(\nu_P(f))=\ell\log f(\theta)-\mathcal F\log f(\psi^\ell\theta),\qquad
+             \psi^\ell\theta(h)=\theta(h^\ell).
+ \tag{5.224}
+\]
+
+Irreducible traces detect the quotient by additive commutators, by the split matrix-algebra trace proof in Theorem 5.5, so they determine this additive vector uniquely. It has coefficients in \(B[1/\ell]\): the ordinary logarithm vector descends under the coefficient-field Galois action, and the \(\mathcal F\)-semilinear expression in (5.224) descends with it. More explicitly, the unique trace vector for the values \(\log f(\theta)\) is fixed when both characters and coefficients are conjugated. Its coefficients, on the conjugacy-class basis, are therefore in the coefficient field; applying \(\ell-\Psi\) gives (5.224).
+
+The kernel of this extension is exactly the torsion homomorphisms. If \(\ell^a\) kills \(P\), then \(\Psi^a\) sends a vector to \(\mathcal F^a\) of its augmentation times \([1]\). On the augmentation kernel, \(\ell-\Psi\) has the finite-sum inverse (5.19). On \(B[1/\ell][1]\), \(\ell-\mathcal F\) is invertible: if \(\mathcal F\) has finite order \(d\), multiplication by \(\sum_{j=0}^{d-1}\ell^{d-1-j}\mathcal F^j\) gives \(\ell^d-1\). Thus \(\nu_P(f)=0\) makes every ordinary scalar logarithm zero. The principal-unit valuation proof in Theorem 5.5 then makes every value a root of unity. Finitely many irreducible values have a common finite order. Conversely torsion values have zero logarithm, proving the claim.
+
+#### An integral Gauss element
+
+Put \(A=\mathcal O_{\mathbb Q(\zeta_p)}\otimes\mathbb Z_\ell\), and form
+
+\[
+ T_1=\sum_{\bar u\in k_D^\times}\operatorname{Art}^{\mathrm a}_D(u)\bar\psi_{D,c}(\bar u)\in A[\Lambda],\qquad
+ S=x(T_1)\in B[\Sigma].
+ \tag{5.225}
+\]
+
+The symbol means its image in the abelian group \(\Lambda=\operatorname{Gal}(M/D)\). A unit's symbol belongs to \(I'\), and its value is constant on residue representatives because the extension is tame. Specializing the \(C\)-factor by \(x\) leaves the \(H\)-factor in \(I\), so \(S\in B[I]\). Its augmentation is the Gauss sum of \(x\)'s residue character, including \(-1\) when that character is trivial. Lemma 5.37 makes this augmentation an \(\ell\)-adic unit. The augmentation ideal of the residue algebra of the \(\ell\)-group \(I\) is nilpotent, by Theorem 5.5; hence the augmentation-unit criterion there, followed by a geometric-series lift, proves
+
+\[
+ S\in B[I]^\times\subseteq B[\Sigma]^\times.
+ \tag{5.226}
+\]
+
+For each line character \(\theta\) of \(\Sigma\), the residue Gauss formula gives
+
+\[
+ \operatorname{Det}(S)(\theta)=\tau_D^*(x\theta).
+ \tag{5.227}
+\]
+
+Here and below the adjusted constant uses the fixed element \(c\). Define \(f(\chi)=\tau_{F_0}^*(x\chi)\) on \(R_H\). Proposition 5.66 makes it equivariant over \(L\), and Lemma 5.37 makes its values \(\ell\)-adic units. We prove
+
+\[
+ \operatorname{Det}(S)(\chi)\sim f(\chi)^m,\qquad
+ \nu_H(\operatorname{Det}S)=m\nu_H(f).
+ \tag{5.228}
+\]
+
+It suffices to take \(\chi=\operatorname{Ind}_\Omega^H\lambda\) irreducible, where \(\Omega\) stabilizes an inertia weight and \(\lambda\) is a line, by Lemma 5.62. Then \(\Sigma\subseteq\Omega\). Put \(Q=C\times\Omega\), \(E=M^Q\), \(d=[\Omega:\Sigma]\), and \(r=[H:\Omega]\), so \(m=dr\). These subgroups contain \(I'\), and \(D/E\) is unramified of degree \(d\). The coset model restricts \(\chi\) to the \(r\) lines \(\lambda^h|_\Sigma\), so
+
+\[
+ \operatorname{Det}(S)(\chi)=\prod_{h\in H/\Omega}
+       g_{k_D}\bigl(\overline{x\lambda^h|_\Lambda},\bar\psi_{D,c}\bigr).
+ \tag{5.229}
+\]
+
+Norm functoriality of arithmetic reciprocity makes each multiplicative character here the norm lift of its character on \(k_E^\times\); the trace identity makes the additive character a trace lift. Theorem 5.39 makes each factor a sign times the \(d\)-th power of the corresponding \(k_E\) Gauss sum. Conjugation by \(h\) on \(E\) preserves \(c\) and the absolute trace, so changing the residue variable by \(h\) shows that these smaller-field Gauss sums agree. Formula (5.192) makes that common sum \(f(\chi)\) up to its sign \((-1)^{r+1}\). Their product proves the first assertion of (5.228), including the trivial inertia weight. Logarithms kill the signs, proving the second assertion by (5.224).
+
+#### The support and its coefficients
+
+Since \(\Sigma\) is abelian, write
+
+\[
+ \nu_\Sigma(\operatorname{Det}S)=\sum_{\sigma\in\Sigma}S_\sigma\sigma.
+ \tag{5.230}
+\]
+
+**Theorem 5.69 (the coefficients of the Gauss logarithm).** The coefficients satisfy:
+
+1. \(S_\sigma=0\) for \(\sigma\notin I\).
+2. If \(I\ne1\), then \(S_1=(\ell-1)\log q_D/2\).
+3. \(S_\sigma=0\) when \(1<\langle\sigma\rangle<I\).
+4. \(S_\sigma\in\ell B\) when \(\langle\sigma\rangle=I\), including \(I=1\).
+5. \(S_{\sigma^h}=S_\sigma\) for \(h\in H\).
+
+**Proof.** Since \(S\in B[I]^\times\), naturality of (5.222) puts its logarithm in \(B[I][1/\ell]\); this proves the first assertion. Formula (5.223) makes all its coefficients \(\ell\)-integral, proving the fourth.
+
+For a line character \(\theta\) of \(\Sigma\), put
+
+\[
+ A_\theta=\ell\log\tau_D^*(x\theta)-\mathcal F\log\tau_D^*(x\theta^\ell).
+ \tag{5.231}
+\]
+
+Finite cyclic character orthogonality, obtained by geometric-series summation, gives Fourier inversion. Apply (5.224) and (5.227):
+
+\[
+ |\Sigma|S_\sigma=\sum_{\theta\in\widehat\Sigma}A_\theta\theta(\sigma^{-1}).
+ \tag{5.232}
+\]
+
+Coefficient Frobenius raises the values of \(x\) and \(\bar\psi\) to their \(\ell\)-th powers and fixes the \(\ell\)-power values of \(\theta\). If \(\beta_\theta\) is the residue character of \(x\theta\), the conjugated sum therefore has multiplicative character \(\beta_\theta^\ell\) and additive character \(\bar\psi_\ell(u)=\bar\psi(\ell u)\). Lemma 5.37 changes this additive character by a root of unity, which has zero logarithm. Hence
+
+\[
+ A_\theta=\ell\log g(\beta_\theta,\bar\psi)-\log g(\beta_\theta^\ell,\bar\psi).
+ \tag{5.233}
+\]
+
+Suppose \(I\ne1\). Extend its \(\ell\) characters of order dividing \(\ell\) to characters \(\mu_1,\ldots,\mu_\ell\) of \(\Sigma\). A character of a subgroup of a finite abelian group extends by adjoining one generator at a time and choosing a root for the value of its prescribed power; this proves the needed extensions. Their \(\ell\)-th powers are trivial on \(I\). Proposition 5.66 therefore makes the second term of \(A_{\theta\mu_i}\) independent of \(i\). Units map onto the abelian inertia \(I'\), as proved in Proposition 5.66, so their \(\ell\)-primary residue characters give exactly all twists by \(X_\ell\). In particular \(\ell\mid q_D-1\). Taking logarithms in the fully proved (5.211) yields
+
+\[
+ \sum_{i=1}^{\ell}A_{\theta\mu_i}=\frac{\ell(\ell-1)}2\log q_D.
+ \tag{5.234}
+\]
+
+This includes \(\beta_\theta=1\) and \(\beta_\theta^\ell=1\). At \(\ell=2\), the positive square root has logarithm \(\tfrac12\log q_D\), since its square is \(q_D\); its two choices differ by a root of unity.
+
+If \(\sigma\) is a nongenerator of the cyclic \(\ell\)-group \(I\), then \(\sigma\in I^\ell\), and all \(\mu_i(\sigma)=1\). Average (5.232) over \(\theta\mapsto\theta\mu_i\), and use (5.234):
+
+\[
+ \ell|\Sigma|S_\sigma=\frac{\ell(\ell-1)}2\log q_D
+                 \sum_{\theta\in\widehat\Sigma}\theta(\sigma^{-1}).
+ \tag{5.235}
+\]
+
+The last sum is zero when \(\sigma\ne1\), and is \(|\Sigma|\) when \(\sigma=1\). This proves the second and third assertions.
+
+Finally \(h\in H\) induces an automorphism of \(D/F_0\), because \(\Lambda\) is normal. Reciprocity is conjugation equivariant, \(h(c)=c\), and the absolute trace is invariant. Reindexing the unit residues in (5.225) makes \(T_1\) conjugation invariant. The character \(x\) is fixed by \(H\), so \(S\) is invariant in \(B[I]\). The logarithm, coefficient Frobenius, and group-power map commute with conjugation. Its coefficients are therefore constant on \(H\)-conjugacy orbits, proving the fifth assertion. \(\square\)
+
+#### The index factor on conjugacy classes
+
+Let \(\mathcal D_I\subseteq\mathcal C_H\) be the classes of elements in \(I\), and let \(\eta:B[\Sigma]\to B[\mathcal C_H]\) send an element to its ambient conjugacy class. Naturality gives
+
+\[
+ \nu_H(\operatorname{Det}S)=\eta\bigl(\nu_\Sigma(\operatorname{Det}S)\bigr).
+ \tag{5.236}
+\]
+
+Only the identity and classes of generators of \(I\) can contribute, by Theorem 5.69. For \(I\ne1\), the identity coefficient is
+
+\[
+ S_1=m\frac{\ell-1}{2}\log q_{F_0}\in\ell m\mathbb Z_\ell.
+ \tag{5.237}
+\]
+
+For odd \(\ell\), removing the residue root and estimating the series gives \(\log(\mathbb Z_\ell^\times)\subseteq\ell\mathbb Z_\ell\). For \(\ell=2\), multiply an odd rational \(2\)-adic unit by its sign to make it \(1\pmod4\). The sign has zero logarithm, and the series on \(1+4\mathbb Z_2\) takes values in \(4\mathbb Z_2\). Thus \(\tfrac12\log q_{F_0}\in2\mathbb Z_2\), proving (5.237) also then.
+
+A generator of \(I\) has centralizer exactly \(\Sigma\), since an automorphism fixing a generator fixes \(I\). Its class has exactly \(m\) elements in \(I\), with equal coefficients by Theorem 5.69. Its class coefficient is therefore \(mS_\sigma\in\ell mB\). If \(I=1\), the cyclic quotient makes \(H\) abelian, \(\Sigma=H\), and \(m=1\); use (5.223) directly. Consequently (5.228) gives
+
+\[
+ \nu_H(\operatorname{Det}S)\in\ell mB[\mathcal D_I],\qquad
+ \nu_H(f)\in\ell B[\mathcal D_I].
+ \tag{5.238}
+\]
+
+The division here is by the actual integer \(m\) in the characteristic-zero coefficient space; the first containment supplies the integral result after division.
+
+#### Matching the linear characters
+
+In \(\Delta^{\mathrm{ab}}\), form
+
+\[
+ T_2=\sum_{\bar v\in k_{F_0}^\times}\operatorname{Art}^{\mathrm a}_{F_0}(v)\bar\psi_{F_0,c}(\bar v)\in A[\Delta^{\mathrm{ab}}].
+ \tag{5.239}
+\]
+
+It is supported on the image \(J'\) of \(I'\). Its value on each line character of \(\Delta^{\mathrm{ab}}\) is exactly the adjusted Gauss formula, including \(-1\) for an unramified line. It is a unit in \(A[J']\): split the prime-to-\(\ell\) factor of the cyclic \(J'\) after an unramified coefficient extension, evaluate its characters, and use the augmentation-unit criterion for the remaining cyclic \(\ell\)-factor. Each augmentation is an \(\ell\)-adic Gauss unit. Unit status descends because the multiplication matrix has unit determinant after that faithfully free extension.
+
+The kernel of \(I'\to J'\) is contained in \([H,H]\) and has \(\ell\)-power order. The kernel of \(A[I']\to A[J']\) lies in the Jacobson radical: modulo \(\ell\), after splitting the prime-to-\(\ell\) factor, it is the nilpotent augmentation ideal of a cyclic \(\ell\)-subgroup. That nilpotence descends by faithful scalar extension. Its inverse-image ideal is topologically nilpotent, so geometric series remove both inverse errors of a lift. Thus \(T_2\) lifts to \(X\in A[I']^\times\). Put \(T'=x(X)\in B[I]^\times\). Inflation of the line characters and (5.239) give
+
+\[
+ f(\theta)=\operatorname{Det}(T')(\theta)\qquad(\theta\text{ a line character of }H).
+ \tag{5.240}
+\]
+
+Thus all linear values are matched by a determinant supported on inertia.
+
+#### The supported commutator image
+
+**Lemma 5.70 (the supported image).** Suppose \(h\) is a Galois-equivariant character-unit homomorphism on \(R_H\), with finite coefficient-field values as in (5.224). Suppose it is one on all line characters and \(\nu_H(h)\in\ell B[\mathcal D_I]\). Then there exists
+
+\[
+ \begin{gathered}
+ z\in1+(J_H\cap B[I]),\qquad
+ J_H=\ker(B[H]\to B[H^{\mathrm{ab}}]),\\
+ \nu_H(h)=\nu_H(\operatorname{Det}z).
+ \end{gathered}
+ \tag{5.241}
+\]
+
+**Proof.** The commutator group \([H,H]\) is cyclic and contained in \(I\). Indeed \(H\) is generated by \(I=\langle s\rangle\) and a lift \(t\) of the cyclic \(H/I\); its commutators are generated by \([t,s]\). More explicitly, if conjugation by \(t\) sends \(s\) to \(s^a\), its commutators with \(s^j\) are \(s^{(a-1)j}\), which form this whole cyclic subgroup. If it is trivial, \(H\) is abelian, all irreducibles are lines, and \(h=1\); take \(z=1\).
+
+Otherwise let \(c_0\) generate its subgroup of order \(\ell\). Conjugation factors through the \(\ell\)-group \(H\) into \(\operatorname{Aut}(C_\ell)\), of order \(\ell-1\), so \(c_0\) is central. The homomorphism \(b\mapsto[t,b]\) from the cyclic \(I\) has image \([H,H]\), so \(c_0=[t,b]\) for some \(b\in I\). Put \(\delta=1-c_0\) and \(\bar H=H/\langle c_0\rangle\).
+
+Induct on \(|[H,H]|\). Restrict \(h\) to the inflated characters of \(\bar H\); its line values are one and its logarithm is supported \(\ell\)-integrally on the image of \(I\) in that quotient. The induction hypothesis gives \(\bar z\in1+(J_{\bar H}\cap B[\bar I])\). Lift \(\bar z-1\) to \(x_0\in B[I]\). Since \(\bar H^{\mathrm{ab}}=H^{\mathrm{ab}}\), this lift lies in \(J_H\). It is augmentation zero, so \(z_0=1+x_0\) is a unit by Theorem 5.5. The difference is
+
+\[
+ v=\nu_H(h)-\nu_H(\operatorname{Det}z_0)\in
+ \ell B[\mathcal D_I]\cap\ker(B[\mathcal C_H]\to B[\mathcal C_{\bar H}]).
+ \tag{5.242}
+\]
+
+Multiplication by central \(c_0\) permutes conjugacy classes, and its orbits correspond exactly to classes of \(\bar H\), by the lift-and-conjugate argument in (5.44). The kernel is \(\delta B[\mathcal C_H]\). The set \(\mathcal D_I\) is stable under this permutation. On each orbit the kernel is the module of coefficients of sum zero, generated by successive differences; its quotient is free. Its intersection with \(\ell B[\mathcal D_I]\) is therefore \(\ell\delta B[\mathcal D_I]\). Since the classes in \(\mathcal D_I\) have representatives in \(I\),
+
+\[
+ v\in\ell\phi_H(\delta B[I]).
+ \tag{5.243}
+\]
+
+Let \(A_I\) be the augmentation ideal of \(B[I]\). The identity \(B[I]=Bb+A_I\), together with \(\delta b=b-tbt^{-1}\), gives \(\phi_H(\delta B[I])=\phi_H(\delta A_I)\). Lemma 5.15 applied to the cyclic group \(I\) and its central order-\(\ell\) element \(c_0\) gives
+
+\[
+ \nu_I\bigl(\operatorname{Det}(1+\delta A_I)\bigr)=\ell\delta A_I.
+ \tag{5.244}
+\]
+
+This uses the surjectivity in (5.39), which does not require \(c_0\) to be a commutator in \(I\). Naturality, (5.243), and (5.244) supply \(u\in1+\delta A_I\) with \(\nu_H(\operatorname{Det}u)=v\). Because \(c_0\) is a commutator in \(H\), \(\delta\in J_H\). Thus \(z=z_0u\in1+(J_H\cap B[I])\) has the required logarithm, completing the induction. \(\square\)
+
+**Corollary 5.71 (Gauss sums modulo a supported determinant).** There are \(U\in B[I]^\times\) and a torsion homomorphism \(t\), with trivial values on every line character of \(H\), such that
+
+\[
+ f=t\operatorname{Det}(U).
+ \tag{5.245}
+\]
+
+**Proof.** Take \(h=f\operatorname{Det}(T')^{-1}\). Its line values are one by (5.240). Formulas (5.223), (5.238), and the support of \(T'\) give \(\nu_H(h)\in\ell B[\mathcal D_I]\). Lemma 5.70 supplies \(z\) with the same logarithm. Put \(U=T'z\); then \(f\operatorname{Det}(U)^{-1}\) has zero logarithm and is torsion by the kernel calculation following (5.224). Its linear values are one, because \(z\in1+J_H\). This proves (5.245). \(\square\)
+
+The remaining torsion homomorphism can have nontrivial higher-dimensional values. Taylor's Gauss and integral determinant congruences in Sections 9–10, including the inversion and semidihedral \(2\)-character cases, are needed to show that it is one. The determinant descent in Theorems 5.35–5.36 applies once an integral determinant is known; the supported logarithm calculation alone does not eliminate this torsion.
+
 ## 6. Four computations
 
 For \(\mathbb Q(i)\), the trace of \(a+bi\) is \(2a\), so its image on \(\mathbb Z[i]\) is \(2\mathbb Z\). The prime two is wild, with \(e=2\), and there is no localized normal integral basis there. In fact for any proposed generator \(a+bi\), the determinant of it and its conjugate in the basis \(1,i\) is \(-2ab\), never a unit over \(\mathbb Z\) or \(\mathbb Z_{(2)}\).
@@ -3287,7 +3779,7 @@ Now \(\operatorname{Tr}(\eta_i^2)=5\), because \(\eta_i^2=2+\eta_j\), and \(\ope
 
 ## What this lesson does not prove
 
-The field normal basis theorem has the full internal proof in [Hilbert 90 in Noether's form and Galois descent, Theorem 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-06.html#normal-bases-in-every-characteristic). The Cohen coefficient-field and power-series results have the exact earlier proofs linked in Lemma 4.2; that linked programme lesson retains GNU FDL 1.2 or later, so its proof is an external dependency for a collection restricted to CC0 content. The conductor–discriminant formula has the earlier proof linked in Section 5. Completion, prime decomposition and the cyclotomic integer theorem now have the exact supplied earlier proofs linked at their uses; Section 5 proves the characteristic-zero regular-representation decomposition and Hilbert–Speiser. Theorem 5.3 proves the quaternion example in full, including its group, ramification and failure of a global basis. Lemmas 5.4, 5.6 and 5.7 and Theorem 5.5 supply the cyclic-word congruence, integral determinant logarithm, reduction from matrix determinants to unit determinants, and logarithm near one. Results 5.8–5.11 construct the locally free class group, prove its stable-equivalence interpretation and lattice gluing description, and establish the integer-ring class in the Taylor statement. Results 5.12–5.14 prove prime-power representation induction, the transfer congruence, and the complete torsion determinant theorem, including injectivity of the logarithm on the commutator ideal. Results 5.15–5.17 prove the complete logarithm image on the commutator ideal and determinant descent for prime-power groups. Results 5.18–5.19 construct the determinant norm and prove its complete surjectivity criteria for prime-power groups. Results 5.20–5.22 prove the integral character action, subgroup determinant operations and projection formula, and their use with a supplied induction identity. Results 5.23–5.24 prove the Sylow facts and the rational induction identity at p, including the prime-to-p multiplier and the required cyclotomic conjugation condition. Results 5.25–5.26 prove integral semilinear descent over unramified coefficient extensions and full unit-norm surjectivity, including diagonal actions on abelian prime-power group algebras. Theorem 5.27 proves the elementary crossed-algebra determinant isomorphism, including integral splitting of its abelianized quotient and the commutator lifting argument. Results 5.28–5.30 prove unramified tensor factor descent and complete elementary-group determinant descent, including permuted factors; rational induction then annihilates the remaining general-group quotient by a prime-to-p integer. Results 5.31–5.32 prove finite division-ring commutativity and the finite p-primary Cartan cokernel. Results 5.33–5.36 prove the decomposition–Cartan identity, residue determinant reduction and its pro-p kernel, and full unramified and tame determinant descent for every finite group. Results 5.37–5.42 prove the finite Gauss identities, norm lifting, tame conductor parity, algebraic covariance of local constants, and the Galois-equivariant symplectic sign homomorphism. Results 5.43–5.46 compute the resolvent frame and the actual integer-lattice transition determinants, prove the real-place signature through a quaternionic structure, and supply the totally positive symplectic normalization. Results 5.47–5.53 prove the local reduced-norm image and density of its commutator kernel, elementary approximation, the complete stable determinant quotient with actual rational determinants, the integral unit image away from the group order, and the canonical two-torsion root-number class. Results 5.54–5.66 supply the global norm and rational determinant normalization, tame cyclic inertia and monomial characters, the adjusted residue-field Gauss formulas with their induction sign, and their field and twist laws. The full proof still to supply is Taylor’s root-number identity in Section 5: the complete local resolvent/Gauss-sum integral determinant comparison, including the full Gauss logarithm and torsion congruences. The required determinant descent is proved in Theorems 5.35–5.36. Trace-tameness, Higman's criterion, tame projectivity, characteristic-zero projective rigidity, positive-characteristic freeness, descent from completion, necessity and the discriminant square are proved here.
+The field normal basis theorem has the full internal proof in [Hilbert 90 in Noether's form and Galois descent, Theorem 4.0](https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-06.html#normal-bases-in-every-characteristic). The Cohen coefficient-field and power-series results have the exact earlier proofs linked in Lemma 4.2; the linked lesson dedicates its own text to CC0 and separately records GNU FDL 1.2 or later for the Stacks Project material it cites. Those source terms remain attached to the original material. The conductor–discriminant formula has the earlier proof linked in Section 5. Completion, prime decomposition and the cyclotomic integer theorem now have the exact supplied earlier proofs linked at their uses; Section 5 proves the characteristic-zero regular-representation decomposition and Hilbert–Speiser. Theorem 5.3 proves the quaternion example in full, including its group, ramification and failure of a global basis. Lemmas 5.4, 5.6 and 5.7 and Theorem 5.5 supply the cyclic-word congruence, integral determinant logarithm, reduction from matrix determinants to unit determinants, and logarithm near one. Results 5.8–5.11 construct the locally free class group, prove its stable-equivalence interpretation and lattice gluing description, and establish the integer-ring class in the Taylor statement. Results 5.12–5.14 prove prime-power representation induction, the transfer congruence, and the complete torsion determinant theorem, including injectivity of the logarithm on the commutator ideal. Results 5.15–5.17 prove the complete logarithm image on the commutator ideal and determinant descent for prime-power groups. Results 5.18–5.19 construct the determinant norm and prove its complete surjectivity criteria for prime-power groups. Results 5.20–5.22 prove the integral character action, subgroup determinant operations and projection formula, and their use with a supplied induction identity. Results 5.23–5.24 prove the Sylow facts and the rational induction identity at p, including the prime-to-p multiplier and the required cyclotomic conjugation condition. Results 5.25–5.26 prove integral semilinear descent over unramified coefficient extensions and full unit-norm surjectivity, including diagonal actions on abelian prime-power group algebras. Theorem 5.27 proves the elementary crossed-algebra determinant isomorphism, including integral splitting of its abelianized quotient and the commutator lifting argument. Results 5.28–5.30 prove unramified tensor factor descent and complete elementary-group determinant descent, including permuted factors; rational induction then annihilates the remaining general-group quotient by a prime-to-p integer. Results 5.31–5.32 prove finite division-ring commutativity and the finite p-primary Cartan cokernel. Results 5.33–5.36 prove the decomposition–Cartan identity, residue determinant reduction and its pro-p kernel, and full unramified and tame determinant descent for every finite group. Results 5.37–5.42 prove the finite Gauss identities, norm lifting, tame conductor parity, algebraic covariance of local constants, and the Galois-equivariant symplectic sign homomorphism. Results 5.43–5.46 compute the resolvent frame and the actual integer-lattice transition determinants, prove the real-place signature through a quaternionic structure, and supply the totally positive symplectic normalization. Results 5.47–5.53 prove the local reduced-norm image and density of its commutator kernel, elementary approximation, the complete stable determinant quotient with actual rational determinants, the integral unit image away from the group order, and the canonical two-torsion root-number class. Results 5.54–5.66 supply the global norm and rational determinant normalization, tame cyclic inertia and monomial characters, the adjusted residue-field Gauss formulas with their induction sign, and their field and twist laws. Results 5.67–5.71 prove every finite Gauss valuation, the general-prime multiplication relation modulo roots of unity, the complete supported Gauss logarithm on a tame direct product component, its linear-value inertia unit, and the resulting torsion remainder. The full proof still to supply is Taylor’s root-number identity in Section 5: the integral determinant comparison, including the elementary-group reduction, the Gauss and determinant torsion congruences, and the local resolvent comparison. The required determinant descent is proved in Theorems 5.35–5.36. Trace-tameness, Higman's criterion, tame projectivity, characteristic-zero projective rigidity, positive-characteristic freeness, descent from completion, necessity and the discriminant square are proved here.
 
 ## References
 
@@ -3306,4 +3798,5 @@ The field normal basis theorem has the full internal proof in [Hilbert 90 in Noe
 - **[Chinburg–Pappas–Taylor]** T. Chinburg, G. Pappas and M. Taylor, [*K_1 of a p-adic group ring I. The determinantal image*](https://arxiv.org/abs/0904.2563v1), freely accessible preprint, version 1, 16 April 2009, Sections 2–7.
 - **[Fröhlich, Locally free modules]** A. Fröhlich, [*Locally free modules over arithmetic orders*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN243919689_0274_0275/LOG_0014.pdf), Journal für die reine und angewandte Mathematik **274–275** (1975), 112–124, Sections 2, 4–5 (locally free classes and reduced norms).
 - **[Fröhlich]** A. Fröhlich, [*Arithmetic and Galois module structure for tame extensions*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN243919689_0286_0287/LOG_0033.pdf), Journal für die reine und angewandte Mathematik **286–287** (1976), 380–440, Section 1, Theorem 1 (resolvent class representative), and Section 8, Theorems 9–10 (symplectic signs and resolvent signatures).
+- **[Davenport–Hasse]** H. Davenport and H. Hasse, [*Die Nullstellen der Kongruenzzetafunktionen in gewissen zyklischen Fällen*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN243919689_0172/LOG_0016.pdf), Journal für die reine und angewandte Mathematik **172** (1935), 151–182, Appendix II, pp. 181–182 (Gauss valuations), and Section 5, equation (5.11) (multiplication).
 - **[Taylor]** M. J. Taylor, [*On Fröhlich's conjecture for rings of integers of tame extensions*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0063/LOG_0010.pdf), Inventiones Mathematicae **63** (1981), 41–79. The precise class identity is also in Ph. Cassou-Noguès and M. J. Taylor, [*Galois module structure for wild extensions*](https://www.math.u-bordeaux.fr/~pcassoun/graz1.pdf), introduction, equation (1.1).

@@ -1,0 +1,158 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ampleness of the power family</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Griffiths positivity on the quadric)</a><a href="a-bundle-glued-along-three-graphs.html">Previous lesson</a><a href="a-quadratic-limit-of-dual-norms.html">Next lesson</a><a href="src/ampleness-of-the-power-family.md">Editable source</a></nav><main><article><h1 id="ampleness-of-the-power-family">Ampleness of the power family</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the algebraic half of the theorem of <a href="hermitian-metrics-and-griffiths-positivity.html">Hermitian metrics and Griffiths positivity</a>: every bundle <span class="math" data-tex="\(E_m=f_m^*G\otimes P\)">\(E_m=f_m^*G\otimes P\)</span> is ample, where <span class="math" data-tex="\(G\)">\(G\)</span> is the bundle of <a href="a-bundle-glued-along-three-graphs.html">A bundle glued along three graphs</a>, <span class="math" data-tex="\(f_m\)">\(f_m\)</span> the <span class="math" data-tex="\(m\)">\(m\)</span>th power map of <span class="math" data-tex="\(S=\mathbb P^1\times\mathbb P^1\)">\(S=\mathbb P^1\times\mathbb P^1\)</span> and <span class="math" data-tex="\(P=\mathcal O_S(1,1)\)">\(P=\mathcal O_S(1,1)\)</span>. The proof is explicit: it shows that <span class="math" data-tex="\(\mathcal O_{\mathbb P(E_m)}(n)\)">\(\mathcal O_{\mathbb P(E_m)}(n)\)</span> is very ample for every even <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span>. The two quotient sequences of <span class="math" data-tex="\(G\)">\(G\)</span> are used alternately to filter the symmetric powers by line bundles. Each kernel alone has a negative degree, but their product is positive in both directions.</p>
+<ul>
+<li>Symmetric powers of an extension (Lemma 1.1).</li>
+<li>A filtration of <span class="math" data-tex="\(\operatorname{Sym}^nf_m^*G\)">\(\operatorname{Sym}^nf_m^*G\)</span> by line bundles (Lemma 2.1).</li>
+<li>Global generation after a twist (Lemma 3.1, Proposition 3.2).</li>
+<li>The embedding (Theorem 4.1).</li>
+</ul>
+<p>The lesson follows [OpenAI-GP, Section 3], within the symmetric-power framework of [Ha66].</p>
+<h2 id="1-symmetric-powers-of-an-extension">1. Symmetric powers of an extension</h2>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(0\to K&#x27;\to V&#x27;\to L&#x27;\to0\)">\(0\to K&#x27;\to V&#x27;\to L&#x27;\to0\)</span> be an exact sequence of vector bundles on a scheme, with <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> and <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> line bundles. For every <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, multiplication gives an exact sequence of vector bundles
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\to K&#x27;\otimes\operatorname{Sym}^{r-1}V&#x27;\\
+&amp;\to\operatorname{Sym}^rV&#x27;\to(L&#x27;)^{\otimes r}\to0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;\to K&#x27;\otimes\operatorname{Sym}^{r-1}V&#x27;\\
+&amp;\to\operatorname{Sym}^rV&#x27;\to(L&#x27;)^{\otimes r}\to0 .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The question is local, and locally the sequence splits: <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span> has a basis <span class="math" data-tex="\(k&#x27;,e&#x27;\)">\(k&#x27;,e&#x27;\)</span> with <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> generating <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> and <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span> mapping to a generator of <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span>. Then <span class="math" data-tex="\(\operatorname{Sym}^rV&#x27;\)">\(\operatorname{Sym}^rV&#x27;\)</span> has the basis of monomials <span class="math" data-tex="\(k&#x27;^ie&#x27;^{r-i}\)">\(k&#x27;^ie&#x27;^{r-i}\)</span>, the monomials with <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span> form a basis of the image of <span class="math" data-tex="\(K&#x27;\otimes\operatorname{Sym}^{r-1}V&#x27;\)">\(K&#x27;\otimes\operatorname{Sym}^{r-1}V&#x27;\)</span>, and <span class="math" data-tex="\(e&#x27;^r\)">\(e&#x27;^r\)</span> maps to a generator of <span class="math" data-tex="\((L&#x27;)^{\otimes r}\)">\((L&#x27;)^{\otimes r}\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="2-a-filtration-by-line-bundles">2. A filtration by line bundles</h2>
+<p>Fix <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V=f_m^*G,\quad\widetilde L_i=f_m^*L_i,\quad\widetilde D=f_m^*D,\\
+K_i=\widetilde L_i(-\widetilde D),\qquad K=K_1\otimes K_2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+V=f_m^*G,\quad\widetilde L_i=f_m^*L_i,\quad\widetilde D=f_m^*D,\\
+K_i=\widetilde L_i(-\widetilde D),\qquad K=K_1\otimes K_2 .
+\end{gathered}
+\]</span>
+Pulling back the quotient sequences of Proposition 3.1 of the lesson on the glued bundle gives exact sequences
+<span class="math math-display" data-tex="\[
+0\to K_i\to V\to\widetilde L_j\to0 ,
+\]">\[
+0\to K_i\to V\to\widetilde L_j\to0 ,
+\]</span>
+for <span class="math" data-tex="\(\{i,j\}=\{1,2\}\)">\(\{i,j\}=\{1,2\}\)</span>, exact because the original sequences consist of vector bundles and are locally split. Since <span class="math" data-tex="\(\mathcal O_S(D)=\mathcal O_S(3,3)\)">\(\mathcal O_S(D)=\mathcal O_S(3,3)\)</span>, <span class="math" data-tex="\(L_1=\mathcal O_S(24,0)\)">\(L_1=\mathcal O_S(24,0)\)</span>, <span class="math" data-tex="\(L_2=\mathcal O_S(0,24)\)">\(L_2=\mathcal O_S(0,24)\)</span> and <span class="math" data-tex="\(f_m^*\mathcal O_S(r,t)=\mathcal O_S(mr,mt)\)">\(f_m^*\mathcal O_S(r,t)=\mathcal O_S(mr,mt)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_1=\mathcal O_S(21m,-3m),\\
+K_2=\mathcal O_S(-3m,21m),\\
+K=\mathcal O_S(18m,18m) .
+\end{gathered}
+\]">\[
+\begin{gathered}
+K_1=\mathcal O_S(21m,-3m),\\
+K_2=\mathcal O_S(-3m,21m),\\
+K=\mathcal O_S(18m,18m) .
+\end{gathered}
+\]</span>
+Powers of line bundles are tensor powers.</p>
+<p><strong>Lemma 2.1</strong> ([OpenAI-GP, Section 3]). For even <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(\operatorname{Sym}^nV\)">\(\operatorname{Sym}^nV\)</span> has a filtration by subbundles whose successive quotients are the line bundles
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K^j\otimes\widetilde L_2^{\,n-2j},\\
+K^j\otimes\widetilde L_1^{\,n-2j}(-\widetilde D)
+\end{gathered}
+\]">\[
+\begin{gathered}
+K^j\otimes\widetilde L_2^{\,n-2j},\\
+K^j\otimes\widetilde L_1^{\,n-2j}(-\widetilde D)
+\end{gathered}
+\]</span>
+for <span class="math" data-tex="\(0\le j&lt;n/2\)">\(0\le j&lt;n/2\)</span>, and <span class="math" data-tex="\(K^{n/2}\)">\(K^{n/2}\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>, Lemma 1.1 applied to <span class="math" data-tex="\(0\to K_1\to V\to\widetilde L_2\to0\)">\(0\to K_1\to V\to\widetilde L_2\to0\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\to K_1\otimes\operatorname{Sym}^{r-1}V\\
+&amp;\to\operatorname{Sym}^rV\to\widetilde L_2^{\,r}\to0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;\to K_1\otimes\operatorname{Sym}^{r-1}V\\
+&amp;\to\operatorname{Sym}^rV\to\widetilde L_2^{\,r}\to0 ,
+\end{aligned}
+\]</span>
+and Lemma 1.1 applied to <span class="math" data-tex="\(0\to K_2\to V\to\widetilde L_1\to0\)">\(0\to K_2\to V\to\widetilde L_1\to0\)</span>, with <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, tensored with <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\to K\otimes\operatorname{Sym}^{r-2}V\to K_1\otimes\operatorname{Sym}^{r-1}V\\
+&amp;\quad\to K_1\otimes\widetilde L_1^{\,r-1}\to0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;\to K\otimes\operatorname{Sym}^{r-2}V\to K_1\otimes\operatorname{Sym}^{r-1}V\\
+&amp;\quad\to K_1\otimes\widetilde L_1^{\,r-1}\to0 .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(K_1\otimes\widetilde L_1^{\,r-1}=\widetilde L_1^{\,r}(-\widetilde D)\)">\(K_1\otimes\widetilde L_1^{\,r-1}=\widetilde L_1^{\,r}(-\widetilde D)\)</span>. These two steps pass from <span class="math" data-tex="\(\operatorname{Sym}^rV\)">\(\operatorname{Sym}^rV\)</span> to the subbundle <span class="math" data-tex="\(K\otimes\operatorname{Sym}^{r-2}V\)">\(K\otimes\operatorname{Sym}^{r-2}V\)</span>, with the two quotients <span class="math" data-tex="\(\widetilde L_2^{\,r}\)">\(\widetilde L_2^{\,r}\)</span> and <span class="math" data-tex="\(\widetilde L_1^{\,r}(-\widetilde D)\)">\(\widetilde L_1^{\,r}(-\widetilde D)\)</span>. Apply them with <span class="math" data-tex="\(r=n\)">\(r=n\)</span> to <span class="math" data-tex="\(\operatorname{Sym}^nV\)">\(\operatorname{Sym}^nV\)</span>, then with <span class="math" data-tex="\(r=n-2\)">\(r=n-2\)</span> to <span class="math" data-tex="\(\operatorname{Sym}^{n-2}V\)">\(\operatorname{Sym}^{n-2}V\)</span> tensored with <span class="math" data-tex="\(K\)">\(K\)</span>, and so on. After <span class="math" data-tex="\(j\)">\(j\)</span> pairs of steps the remaining subbundle is <span class="math" data-tex="\(K^j\otimes\operatorname{Sym}^{n-2j}V\)">\(K^j\otimes\operatorname{Sym}^{n-2j}V\)</span>, the next two quotients are the displayed ones, and at the end <span class="math" data-tex="\(K^{n/2}\otimes\operatorname{Sym}^0V=K^{n/2}\)">\(K^{n/2}\otimes\operatorname{Sym}^0V=K^{n/2}\)</span> remains. Each inclusion has a locally free quotient, so all members are subbundles. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Each step uses one of the two sequences only. So the filtration exists although the two kernels <span class="math" data-tex="\(K_1\)">\(K_1\)</span> and <span class="math" data-tex="\(K_2\)">\(K_2\)</span> have the same image in the fibers over <span class="math" data-tex="\(\widetilde D\)">\(\widetilde D\)</span> (Exercise 5.1 makes this explicit for <span class="math" data-tex="\(n=2\)">\(n=2\)</span>).</p>
+<h2 id="3-global-generation-after-a-twist">3. Global generation after a twist</h2>
+<p><strong>Lemma 3.1.</strong> For <span class="math" data-tex="\(c,t\ge0\)">\(c,t\ge0\)</span>, the line bundle <span class="math" data-tex="\(\mathcal O_S(c,t)\)">\(\mathcal O_S(c,t)\)</span> is globally generated and <span class="math" data-tex="\(H^1(S,\mathcal O_S(c,t))=0\)">\(H^1(S,\mathcal O_S(c,t))=0\)</span>.</p>
+<p><strong>Proof.</strong> The products of a monomial of degree <span class="math" data-tex="\(c\)">\(c\)</span> in <span class="math" data-tex="\(z_0,z_1\)">\(z_0,z_1\)</span> and a monomial of degree <span class="math" data-tex="\(t\)">\(t\)</span> in <span class="math" data-tex="\(w_0,w_1\)">\(w_0,w_1\)</span> are sections, and at every point one of them is nonzero. For the cohomology, cover <span class="math" data-tex="\(S\)">\(S\)</span> by the four affine products of the standard charts of the two factors. The Čech complex of <span class="math" data-tex="\(\mathcal O_S(c,t)\)">\(\mathcal O_S(c,t)\)</span> for this cover is the tensor product over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> of the Čech complexes of <span class="math" data-tex="\(\mathcal O(c)\)">\(\mathcal O(c)\)</span> and <span class="math" data-tex="\(\mathcal O(t)\)">\(\mathcal O(t)\)</span> on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> for the two standard charts, and Čech cohomology of affine covers computes sheaf cohomology (Theorem 3.1 of <a href="../AG-QC/affine-cohomology-and-serres-criterion.html">Affine cohomology and Serre's criterion</a>, course <em>Cohomology of quasi-coherent sheaves</em>, with Theorems 3.2 and 4.1 of <span class="unlinked">Čech cohomology</span>). Over a field, the cohomology of a tensor product of complexes is the tensor product of the cohomologies. Since <span class="math" data-tex="\(H^1(\mathbb P^1,\mathcal O(c))=H^1(\mathbb P^1,\mathcal O(t))=0\)">\(H^1(\mathbb P^1,\mathcal O(c))=H^1(\mathbb P^1,\mathcal O(t))=0\)</span> for <span class="math" data-tex="\(c,t\ge0\)">\(c,t\ge0\)</span> (Theorem 2.2 of <span class="unlinked">Cohomology of projective space</span>), <span class="math" data-tex="\(H^1(S,\mathcal O_S(c,t))=0\)">\(H^1(S,\mathcal O_S(c,t))=0\)</span>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p><strong>Proposition 3.2.</strong> Let <span class="math" data-tex="\(n\)">\(n\)</span> be even with <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span>. Then <span class="math" data-tex="\(W=\operatorname{Sym}^nV\otimes P^{n-1}\)">\(W=\operatorname{Sym}^nV\otimes P^{n-1}\)</span> is globally generated.</p>
+<p><strong>Proof.</strong> The quotients of the filtration of Lemma 2.1, twisted by <span class="math" data-tex="\(P^{n-1}=\mathcal O_S(n-1,n-1)\)">\(P^{n-1}=\mathcal O_S(n-1,n-1)\)</span>, have the bidegrees
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(18mj+n-1,\\
+&amp;\qquad18mj+24m(n-2j)+n-1\bigr),\\
+&amp;\bigl(18mj+24m(n-2j)-3m+n-1,\\
+&amp;\qquad18mj-3m+n-1\bigr),\\
+&amp;\bigl(9mn+n-1,\ 9mn+n-1\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(18mj+n-1,\\
+&amp;\qquad18mj+24m(n-2j)+n-1\bigr),\\
+&amp;\bigl(18mj+24m(n-2j)-3m+n-1,\\
+&amp;\qquad18mj-3m+n-1\bigr),\\
+&amp;\bigl(9mn+n-1,\ 9mn+n-1\bigr),
+\end{aligned}
+\]</span>
+for <span class="math" data-tex="\(0\le j&lt;n/2\)">\(0\le j&lt;n/2\)</span>. Each entry is nonnegative: the only negative contribution is <span class="math" data-tex="\(-3m\)">\(-3m\)</span>, and <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span>. By Lemma 3.1 each quotient is globally generated with vanishing <span class="math" data-tex="\(H^1\)">\(H^1\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\to U\to Z\to Q\to0\)">\(0\to U\to Z\to Q\to0\)</span> is exact with <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> globally generated and <span class="math" data-tex="\(H^1(U)=H^1(Q)=0\)">\(H^1(U)=H^1(Q)=0\)</span>, then the long exact sequence gives <span class="math" data-tex="\(H^1(Z)=0\)">\(H^1(Z)=0\)</span> and the surjectivity of <span class="math" data-tex="\(H^0(Z)\to H^0(Q)\)">\(H^0(Z)\to H^0(Q)\)</span>. The lifts of generating sections of <span class="math" data-tex="\(Q\)">\(Q\)</span>, together with generating sections of <span class="math" data-tex="\(U\)">\(U\)</span>, generate <span class="math" data-tex="\(Z\)">\(Z\)</span> at every point. Starting from the innermost member of the filtration and adding one quotient at a time proves that <span class="math" data-tex="\(W\)">\(W\)</span> is globally generated. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<h2 id="4-the-embedding">4. The embedding</h2>
+<p><strong>Theorem 4.1</strong> ([OpenAI-GP, Proposition 3.1]). For every <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-tex="\(E_m=f_m^*G\otimes P\)">\(E_m=f_m^*G\otimes P\)</span> is ample; more precisely, <span class="math" data-tex="\(\mathcal O_{\mathbb P(E_m)}(n)\)">\(\mathcal O_{\mathbb P(E_m)}(n)\)</span> is very ample for every even <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\pi\colon\mathbb P(V)\to S\)">\(\pi\colon\mathbb P(V)\to S\)</span> be the projective bundle of one-dimensional quotients, and <span class="math" data-tex="\(H=H^0(S,W)\)">\(H=H^0(S,W)\)</span> with <span class="math" data-tex="\(W\)">\(W\)</span> as in Proposition 3.2.</p>
+<p><em>Three closed immersions.</em> A surjection of vector bundles <span class="math" data-tex="\(V_1\to V_2\)">\(V_1\to V_2\)</span> induces a closed immersion <span class="math" data-tex="\(\mathbb P(V_2)\to\mathbb P(V_1)\)">\(\mathbb P(V_2)\to\mathbb P(V_1)\)</span> under which <span class="math" data-tex="\(\mathcal O_{\mathbb P(V_1)}(1)\)">\(\mathcal O_{\mathbb P(V_1)}(1)\)</span> restricts to <span class="math" data-tex="\(\mathcal O_{\mathbb P(V_2)}(1)\)">\(\mathcal O_{\mathbb P(V_2)}(1)\)</span> (Theorem 4.1 of <a href="../AG-SS/projective-space-relative-proj-and-maps-to-projective-space.html">Projective space, relative Proj and maps to projective space</a>, course <em>Sheaves and schemes</em>). Applied to the evaluation <span class="math" data-tex="\(H\otimes\mathcal O_S\to W\)">\(H\otimes\mathcal O_S\to W\)</span>, surjective by Proposition 3.2, it gives a closed immersion <span class="math" data-tex="\(\mathbb P(W)\to\mathbb P(H)\times S\)">\(\mathbb P(W)\to\mathbb P(H)\times S\)</span> under which the hyperplane bundle of <span class="math" data-tex="\(\mathbb P(H)\)">\(\mathbb P(H)\)</span> restricts to <span class="math" data-tex="\(\mathcal O_{\mathbb P(W)}(1)\)">\(\mathcal O_{\mathbb P(W)}(1)\)</span>. The relative Veronese map <span class="math" data-tex="\(\mathbb P(V)\to\mathbb P(\operatorname{Sym}^nV)\)">\(\mathbb P(V)\to\mathbb P(\operatorname{Sym}^nV)\)</span>, which sends a quotient line <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to <span class="math" data-tex="\(\ell^{\otimes n}\)">\(\ell^{\otimes n}\)</span>, is a closed immersion pulling back <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> to <span class="math" data-tex="\(\mathcal O_{\mathbb P(V)}(n)\)">\(\mathcal O_{\mathbb P(V)}(n)\)</span>: locally on <span class="math" data-tex="\(S\)">\(S\)</span> it is the base change of the Veronese map of Theorem 4.1 of <a href="../AG-MO/very-ample-sheaves-and-embeddings.html">Very ample sheaves and embeddings</a> (course <em>Morphisms of schemes</em>). Finally <span class="math" data-tex="\(\mathbb P(\operatorname{Sym}^nV)=\mathbb P(W)\)">\(\mathbb P(\operatorname{Sym}^nV)=\mathbb P(W)\)</span>, with <span class="math" data-tex="\(\mathcal O_{\mathbb P(W)}(1)=\mathcal O_{\mathbb P(\operatorname{Sym}^nV)}(1)\otimes\pi^*P^{n-1}\)">\(\mathcal O_{\mathbb P(W)}(1)=\mathcal O_{\mathbb P(\operatorname{Sym}^nV)}(1)\otimes\pi^*P^{n-1}\)</span>.</p>
+<p><em>The composite.</em> The composite closed immersion <span class="math" data-tex="\(\mathbb P(V)\to\mathbb P(H)\times S\)">\(\mathbb P(V)\to\mathbb P(H)\times S\)</span> pulls the hyperplane bundle of <span class="math" data-tex="\(\mathbb P(H)\)">\(\mathbb P(H)\)</span> back to <span class="math" data-tex="\(\mathcal O_{\mathbb P(V)}(n)\otimes\pi^*P^{n-1}\)">\(\mathcal O_{\mathbb P(V)}(n)\otimes\pi^*P^{n-1}\)</span>. Embed <span class="math" data-tex="\(S\)">\(S\)</span> into <span class="math" data-tex="\(\mathbb P^3\)">\(\mathbb P^3\)</span> by the Segre embedding, which pulls <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> back to <span class="math" data-tex="\(P\)">\(P\)</span>, and then <span class="math" data-tex="\(\mathbb P(H)\times\mathbb P^3\)">\(\mathbb P(H)\times\mathbb P^3\)</span> into projective space by the Segre embedding (Theorem 3.1 of the lesson on very ample sheaves). The resulting closed immersion of <span class="math" data-tex="\(\mathbb P(V)\)">\(\mathbb P(V)\)</span> pulls the hyperplane bundle back to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(\mathcal O_{\mathbb P(V)}(n)\otimes\pi^*P^{n-1}\bigr)\otimes\pi^*P\\
+&amp;\quad=\bigl(\mathcal O_{\mathbb P(V)}(1)\otimes\pi^*P\bigr)^{\otimes n} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(\mathcal O_{\mathbb P(V)}(n)\otimes\pi^*P^{n-1}\bigr)\otimes\pi^*P\\
+&amp;\quad=\bigl(\mathcal O_{\mathbb P(V)}(1)\otimes\pi^*P\bigr)^{\otimes n} ,
+\end{aligned}
+\]</span>
+which is therefore very ample.</p>
+<p><em>Conclusion.</em> <span class="math" data-tex="\(\mathbb P(E_m)=\mathbb P(V\otimes P)=\mathbb P(V)\)">\(\mathbb P(E_m)=\mathbb P(V\otimes P)=\mathbb P(V)\)</span> with <span class="math" data-tex="\(\mathcal O_{\mathbb P(E_m)}(1)=\mathcal O_{\mathbb P(V)}(1)\otimes\pi^*P\)">\(\mathcal O_{\mathbb P(E_m)}(1)=\mathcal O_{\mathbb P(V)}(1)\otimes\pi^*P\)</span>. So <span class="math" data-tex="\(\mathcal O_{\mathbb P(E_m)}(n)\)">\(\mathcal O_{\mathbb P(E_m)}(n)\)</span> is very ample, and <span class="math" data-tex="\(E_m\)">\(E_m\)</span> is ample by Section 4 of <a href="hermitian-metrics-and-griffiths-positivity.html">Hermitian metrics and Griffiths positivity</a>. <span class="math" data-tex="\(\blacksquare\)">\(\blacksquare\)</span></p>
+<p>Every <span class="math" data-tex="\(E_m\)">\(E_m\)</span> is ample, for every <span class="math" data-tex="\(m\)">\(m\)</span>. The metric half of the theorem, proved in <a href="a-quadratic-limit-of-dual-norms.html">A quadratic limit of dual norms</a> and <a href="an-invariant-measure-and-the-proof.html">An invariant measure and the proof</a>, concerns large <span class="math" data-tex="\(m\)">\(m\)</span> only.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, use the local basis <span class="math" data-tex="\(e=(1,h)\)">\(e=(1,h)\)</span>, <span class="math" data-tex="\(f=(0,d)\)">\(f=(0,d)\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span> from the lesson on the glued bundle. Show that the kernels of the two projections are generated by <span class="math" data-tex="\(k=de-hf\)">\(k=de-hf\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>, and that the filtration of <span class="math" data-tex="\(\operatorname{Sym}^2V\)">\(\operatorname{Sym}^2V\)</span> is <span class="math" data-tex="\(\mathcal O(kf)\subset kV\subset\operatorname{Sym}^2V\)">\(\mathcal O(kf)\subset kV\subset\operatorname{Sym}^2V\)</span>, with locally free quotients, also at points of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>5.2.</strong> For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> and <span class="math" data-tex="\(n=4\)">\(n=4\)</span>, list the bidegrees of the five quotients of Proposition 3.2 and check that they are nonnegative.</p>
+<p><strong>5.3.</strong> Show that the condition <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span> is exactly the condition that the quotient <span class="math" data-tex="\(\widetilde L_1^{\,n}(-\widetilde D)\otimes P^{n-1}\)">\(\widetilde L_1^{\,n}(-\widetilde D)\otimes P^{n-1}\)</span> (the case <span class="math" data-tex="\(j=0\)">\(j=0\)</span> of the second family) has nonnegative bidegree.</p>
+<p><strong>5.4.</strong> Show that the subbundle <span class="math" data-tex="\(L_2(-D)=\mathcal O_S(-3,21)\)">\(L_2(-D)=\mathcal O_S(-3,21)\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span> has no nonzero section, and explain why the argument of Proposition 3.2 needs the twist by <span class="math" data-tex="\(P^{n-1}\)">\(P^{n-1}\)</span>.</p>
+<p><strong>5.5.</strong> Show that <span class="math" data-tex="\(\det E_m=\mathcal O_S(21m+2,21m+2)\)">\(\det E_m=\mathcal O_S(21m+2,21m+2)\)</span>, and compute <span class="math" data-tex="\(c_2(E_m)\)">\(c_2(E_m)\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> The kernel of <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span> consists of <span class="math" data-tex="\(u_1e+kf\)">\(u_1e+kf\)</span> with <span class="math" data-tex="\(u_1h+kd=0\)">\(u_1h+kd=0\)</span>; since <span class="math" data-tex="\(h\)">\(h\)</span> is a unit, it is generated by <span class="math" data-tex="\(de-hf\)">\(de-hf\)</span>. The kernel of <span class="math" data-tex="\(\rho_1\)">\(\rho_1\)</span> is generated by <span class="math" data-tex="\(f\)">\(f\)</span>. Since <span class="math" data-tex="\(e,k\)">\(e,k\)</span> is again a basis of <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(kV\)">\(kV\)</span> has the basis <span class="math" data-tex="\(ke,k^2\)">\(ke,k^2\)</span> and is a direct summand of <span class="math" data-tex="\(\operatorname{Sym}^2V\)">\(\operatorname{Sym}^2V\)</span>, with complement spanned by <span class="math" data-tex="\(e^2\)">\(e^2\)</span>. Further <span class="math" data-tex="\(f=(de-k)/h\)">\(f=(de-k)/h\)</span>, so <span class="math" data-tex="\(kf=\frac dhke-\frac1hk^2\)">\(kf=\frac dhke-\frac1hk^2\)</span>; the coefficient <span class="math" data-tex="\(-1/h\)">\(-1/h\)</span> is a unit, so <span class="math" data-tex="\(kf\)">\(kf\)</span> is part of a basis of <span class="math" data-tex="\(kV\)">\(kV\)</span>. Both quotients are free, also where <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.</p>
+<p><strong>5.2.</strong> With <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(n=4\)">\(n=4\)</span>: for <span class="math" data-tex="\(j=0\)">\(j=0\)</span>: <span class="math" data-tex="\((3,99)\)">\((3,99)\)</span> and <span class="math" data-tex="\((96,0)\)">\((96,0)\)</span>; for <span class="math" data-tex="\(j=1\)">\(j=1\)</span>: <span class="math" data-tex="\((21,69)\)">\((21,69)\)</span> and <span class="math" data-tex="\((66,18)\)">\((66,18)\)</span>; and <span class="math" data-tex="\((39,39)\)">\((39,39)\)</span>. All entries are nonnegative.</p>
+<p><strong>5.3.</strong> For <span class="math" data-tex="\(j=0\)">\(j=0\)</span> the second family gives <span class="math" data-tex="\(\bigl(24mn-3m+n-1,\ -3m+n-1\bigr)\)">\(\bigl(24mn-3m+n-1,\ -3m+n-1\bigr)\)</span>; the second entry is nonnegative exactly when <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span>, and all other entries are then nonnegative.</p>
+<p><strong>5.4.</strong> By the Čech computation of Lemma 3.1, the space of sections of <span class="math" data-tex="\(\mathcal O_S(-3,21)\)">\(\mathcal O_S(-3,21)\)</span> is the tensor product of <span class="math" data-tex="\(H^0(\mathbb P^1,\mathcal O(-3))=0\)">\(H^0(\mathbb P^1,\mathcal O(-3))=0\)</span> and <span class="math" data-tex="\(H^0(\mathbb P^1,\mathcal O(21))\)">\(H^0(\mathbb P^1,\mathcal O(21))\)</span>, so it is zero. Without the twist, the quotients of the filtration include <span class="math" data-tex="\(\widetilde L_1^{\,n}(-\widetilde D)=\mathcal O_S(24mn-3m,-3m)\)">\(\widetilde L_1^{\,n}(-\widetilde D)=\mathcal O_S(24mn-3m,-3m)\)</span>, which has no nonzero section, so the lifting of sections through the filtration cannot work; the twist by <span class="math" data-tex="\(P^{n-1}\)">\(P^{n-1}\)</span> makes every bidegree nonnegative once <span class="math" data-tex="\(n-1\ge3m\)">\(n-1\ge3m\)</span>.</p>
+<p><strong>5.5.</strong> <span class="math" data-tex="\(\det(f_m^*G)=f_m^*\mathcal O_S(21,21)\)">\(\det(f_m^*G)=f_m^*\mathcal O_S(21,21)\)</span>, which is <span class="math" data-tex="\(\mathcal O_S(21m,21m)\)">\(\mathcal O_S(21m,21m)\)</span>, and twisting a rank-two bundle by <span class="math" data-tex="\(P\)">\(P\)</span> adds <span class="math" data-tex="\(2P\)">\(2P\)</span>: <span class="math" data-tex="\(\det E_m=\mathcal O_S(21m+2,21m+2)\)">\(\det E_m=\mathcal O_S(21m+2,21m+2)\)</span>. Since <span class="math" data-tex="\(f_m\)">\(f_m\)</span> has degree <span class="math" data-tex="\(m^2\)">\(m^2\)</span>, <span class="math" data-tex="\(c_2(V)=m^2\,c_2(G)=504m^2\)">\(c_2(V)=m^2\,c_2(G)=504m^2\)</span>, and <span class="math" data-tex="\(c_2(E_m)=c_2(V\otimes P)\)">\(c_2(E_m)=c_2(V\otimes P)\)</span> equals <span class="math" data-tex="\(c_2(V)+c_1(V)\cdot P+P^2\)">\(c_2(V)+c_1(V)\cdot P+P^2\)</span>, which is <span class="math" data-tex="\(504m^2+42m+2\)">\(504m^2+42m+2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-GP] OpenAI, <em>Ample rank-two bundles on the quadric surface without Griffiths-positive metrics</em>, OpenAI Math Release preprint, 24 September 2026, Section 3. https://github.com/openai/math/tree/main/preprints/ample-rank-two-bundles-on-the-quadric-surface-without-griffiths-positive-metrics-September-24-2026</li>
+<li>[Ha66] R. Hartshorne, <em>Ample vector bundles</em>, Publ. Math. IHÉS 29 (1966), 63–94. https://www.numdam.org/item/PMIHES_1966__29__63_0/</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

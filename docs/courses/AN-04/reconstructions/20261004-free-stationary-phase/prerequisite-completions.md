@@ -1,15 +1,20 @@
 # Completing the finite-dimensional prerequisites
 
-These arguments fill explicit steps used by the existing lesson. They do not replace the earlier programme proofs that are already present. The exact earlier files and proof fragments are recorded in `prerequisite-bindings.json`. The selected P1–P5 dependency chains are closed relative to their explicit axioms. This companion does not certify the whole lesson for publication.
+This companion proves finite-dimensional compactness, cofactor inversion,
+smooth inverse and implicit maps, the Schur-complement Hessian formula,
+and invariance of the positive and negative dimensions of a symmetric form.
+These are the finite-dimensional tools used in the parameter-Morse reading.
 
-The freely accessible human source is Jiří Lebl, *Basic Analysis*, volumes I
-and II, version 6.3 (15 May 2026), [author edition](https://www.jirka.org/ra/).
-In particular, §§7.4, 8.2 and 8.5 have been read for the claims below. The
-programme contains their mathematical text and proofs in its Lebl reading
-collection. This companion follows those notes. Original text: public domain (CC0).
-It supplies the omitted finite-dimensional induction, smooth-regularity
-argument, and algebraic steps needed in the stationary-phase lesson. It does
-not reproduce the book's unrelated further-reading references.
+Mathematical source: Jiří Lebl, *Basic Analysis I–II*, theorem numbering
+from version 6.3 (15 May 2026), [freely accessible author edition](https://www.jirka.org/ra/).
+The C¹ base results are the [inverse theorem and proof, 8.5.1](https://www.jirka.org/ra/html/sec_svinvfuncthm.html#sec_svinvfuncthm-2-9)
+and [implicit theorem and proof, 8.5.6](https://www.jirka.org/ra/html/sec_svinvfuncthm.html#sec_svinvfuncthm-3-12).
+The human-proof references identify
+other external statements and proofs; the programme index
+locates the local arguments and their exact inputs.
+
+Original programme exposition: CC0 to the extent rights exist. Cited
+human works are external sources and retain their own terms.
 
 ## P1. The finite-dimensional step in Heine–Borel
 
@@ -17,14 +22,13 @@ not reproduce the book's unrelated further-reading references.
 sequence in \(K\) has a subsequence converging to a point of \(K\).
 Consequently \(K\) is compact in the open-cover sense.
 
-**Earlier programme inputs.** The real Bolzano–Weierstrass theorem; preservation
-of a convergent sequence's limit by a subsequence; the sequential
-characterization of closed sets; and Lebl's Theorem 7.4.11, including its proof
-that sequential compactness is equivalent to open-cover compactness. These proofs and their transitive inputs have now been read and bound
-in `topology-proof-chain.json`. P6 fills the specific omitted exercises
-in that chain; P8 supplies the positive-root facts used by the Euclidean
-metric. This does not obtain the arbitrary-dimensional case from an
-unproved invocation of Theorem 7.4.14.
+**Proof inputs.** The real Bolzano–Weierstrass theorem, preservation
+of limits by subsequences, the sequential characterization of closed sets,
+and Lebl's Theorem 7.4.11 relating sequential and open-cover compactness.
+Their statement and proof references are in the proof index.
+The local sequence lemmas P6 and
+positive roots P8 supply the indicated elementary
+steps. The induction below proves the arbitrary-dimensional assertion.
 
 **Proof.** If \(n=0\), the Euclidean space consists of the single empty
 tuple. Its only subsets are empty or singletons. The empty set is compact;
@@ -171,9 +175,10 @@ Then
 \]
 In particular \(S\) is invertible if \(H\) is invertible.
 
-**Earlier programme inputs.** P3, the chain rule, the mixed-partial proof
-bound and completed in P11, and the determinant multiplication theorem
-proved in Lebl's Proposition 8.2.9.
+**Proof inputs.** P3, the chain rule, the local
+[mixed-partial identity P11.2](integration-prerequisite-completions.html#proof-P11.2-bridge),
+and determinant multiplication in Lebl's Proposition 8.2.9, located in the
+human-proof references.
 
 **Proof.** Differentiate
 \(\partial_1\phi(u(x',s),x',s)=0\) in \(x'\). At the critical point
@@ -205,11 +210,12 @@ and negative eigenvalues. Consequently the Jacobian factor in Morse
 coordinates is \(|\det H|^{-1/2}\) when the target Hessian has diagonal
 entries \(\pm1\).
 
-**Earlier programme inputs.** The orthogonal diagonalization proof Q5 in
-`quadratic-stationary-phase.md`, elementary finite-dimensional linear
-independence, and determinant multiplication. These selected inputs, including
-the explicit complement construction P9.4 and dimension argument P9.5, are
-now bound in `differential-proof-chain.json`.
+**Proof inputs.** The orthogonal diagonalization
+[Q5](quadratic-stationary-phase.html#proof-Q5), finite-dimensional
+linear independence and determinant multiplication. The explicit
+orthonormal complement P9.4 and
+dimension argument P9.5 supply the linear-algebra
+steps used below.
 
 **Proof.** In an orthogonal eigenbasis, suppose there are \(p\) positive
 and \(q\) negative diagonal entries. The span \(E_+\) of the positive
@@ -233,17 +239,15 @@ multiplication gives
 \(|\det J|=1\), and then the positive square root gives
 \(|\det T|=|\det H|^{-1/2}\). \(\square\)
 
-## What these completions do and do not close
+## Calculus proof references
 
-P1 supplies the general-dimensional induction missing from the cited
-Heine–Borel proof. P2 supplies the explicit inverse formula needed for
-smoothness; P3 supplies the regularity upgrade used when the phase is
-smooth. P4 expands the algebraic elimination in the existing Morse proof,
-and P5 proves the signature invariance used to identify its phase factor.
-All statements retain their full finite-dimensional and smooth-parameter
-scope. The exact topology and differential chains close P1, P2, P3
-and P5 relative to their declared axioms. The mixed-partial input of P4
-and the compact integration/Taylor inputs of the Morse construction are
-now supplied by P11–P12 and bound in `integration-proof-chain.json`.
-Neither a free external link nor this dependency declaration replaces
-any of those proofs.
+P1 gives finite-dimensional compactness; P2 gives the inverse-matrix
+formula; P3 gives smooth inverse and implicit maps, jointly in parameters;
+P4 gives the Hessian and determinant under one-variable elimination; and
+P5 gives congruence invariance and the Morse Jacobian. Their lower inputs
+are identified in the programme proof index.
+
+The [mixed-partial and compact-integral companion](integration-prerequisite-completions.html)
+contains P11–P12, including the integral Taylor formula and smooth
+parameter integration. Global absolute integration and multidimensional
+substitution are treated in their respective readings.

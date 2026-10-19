@@ -1,10 +1,10 @@
 # Symmetric tensor norms and Rademacher truncation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 Let \(A,B\) be arbitrary C*-algebras. A tensor described by square sums need not come with a summable decomposition into elementary tensors. The problem here is to produce such a decomposition after completion: lift a self-adjoint tensor from the symmetric norm to the real projective tensor product, spending at most \(81/16\) times its norm, with any prescribed positive excess.
 
-The construction has two budgets. Clipping a finite random realization bounds the projective cost of the part we keep; a fourth-moment estimate bounds the symmetric cost of the part we return to the construction. Iterating this trade on the actual completed residual produces a convergent projective series. The zero tensor is lifted by zero throughout. No unit, trace, separability or countability assumption on either algebra is needed.
+The construction has two budgets. A bounded resolvent controls the projective cost of the part we keep; exact scalar square identities and a fourth-moment estimate control the symmetric cost of the residual. Spectral clipping supplies a second finite construction with the same budget. Iterating the trade on the actual completed residual produces a convergent projective series. The zero tensor is lifted by zero throughout. No unit, trace, separability or countability assumption on either algebra is needed.
 
 <a id="1-the-symmetric-square-norm"></a>
 
@@ -169,6 +169,91 @@ is positive. Apply it to \(z=a_ja_k\), and collect the ordered pairs:
 \]
 Finally continuous calculus gives \(S^2\le\|S\|S\). These are order inequalities, not rearrangements of noncommuting coefficients. They also cover \(S=0\). \(\square\)
 
+<a id="resolvent-average"></a>
+
+## A bounded resolvent gives the lift budget
+
+For \(\tau>0\), define the continuous odd functions
+\[
+ R_\tau(t)=\frac{4\tau^2t}{4\tau^2+t^2},
+ \qquad
+ E_\tau(t)=t-R_\tau(t)=\frac{t^3}{4\tau^2+t^2}.
+\tag{RF1}
+\]
+They vanish at zero. Unlike a clipped function, \(R_\tau\) tends to zero as \(|t|\) tends to infinity; its residual still has the fourth-moment control needed for the lift.
+
+Here are the exact scalar certificates. With \(D=4\tau^2+t^2>0\), direct expansion gives
+\[
+\begin{aligned}
+ \tau^2-R_\tau(t)^2
+   &=\frac{\tau^2(t^2-4\tau^2)^2}{D^2},\\
+ t^2-R_\tau(t)^2
+   &=\frac{t^4(t^2+8\tau^2)}{D^2},\\
+ \frac{t^4}{16\tau^2}-E_\tau(t)^2
+   &=\frac{t^4(t^2-4\tau^2)^2}{16\tau^2D^2}.
+\end{aligned}
+\tag{RF2}
+\]
+Every right-hand side is nonnegative. Consequently, for any self-adjoint \(a\),
+\[
+ \|R_\tau(a)\|\le\tau,\qquad
+ R_\tau(a)^2\le a^2,\qquad
+ E_\tau(a)^2\le\frac{a^4}{16\tau^2}.
+\tag{RF3}
+\]
+These inequalities follow from the continuous calculus and order results F04–F08. They include zero elements and zero algebras. In a nonunital algebra one may also write
+\[
+ R_\tau(a)=4\tau^2a(4\tau^2 1+a^2)^{-1}
+\]
+in the forced unitization. The denominator is invertible because its scalar spectrum is bounded below by \(4\tau^2\). Multiplication by \(a\), or equivalently the zero value of \(R_\tau\) at zero in F06, places the result in the original algebra. The same is true for \(E_\tau(a)\). No identity is being added to either tensor factor.
+
+Now let \(u=\sum_j a_j\otimes b_j\) be a finite self-adjoint decomposition with
+\[
+ \left\|\sum_j a_j^2\right\|
+ =\left\|\sum_j b_j^2\right\|=M>0.
+\]
+Use the same finite uniform signs in \(A=\sum_j r_ja_j\) and \(B=\sum_j r_jb_j\). Sign orthogonality gives \(\mathbb E A\otimes B=u\). Define
+\[
+\begin{aligned}
+ v_\tau&=\mathbb E R_\tau(A)\otimes R_\tau(B),\\
+ w_\tau&=\mathbb E\bigl[
+       E_\tau(A)\otimes B+
+       R_\tau(A)\otimes E_\tau(B)\bigr].
+\end{aligned}
+\tag{RF4}
+\]
+The exact identity
+\[
+ R_\tau(A)\otimes R_\tau(B)
+ +E_\tau(A)\otimes B
+ +R_\tau(A)\otimes E_\tau(B)=A\otimes B
+\]
+proves \(u=v_\tau+w_\tau\) before any norm estimate. In particular the first residual uses the whole \(B\), including its own residual. All averages have finitely many terms, so both tensors are algebraic and self-adjoint.
+
+Put \(S=\sum_j a_j^2\), \(T=\sum_j b_j^2\). Averaging (RF3) and using the complete noncommuting fourth-moment Lemma 2.1 gives
+\[
+\begin{aligned}
+ \mathbb E R_\tau(A)^2&\le S,&
+ \mathbb E E_\tau(A)^2&\le\frac{3M}{16\tau^2}S,\\
+ \mathbb E R_\tau(B)^2&\le T,&
+ \mathbb E E_\tau(B)^2&\le\frac{3M}{16\tau^2}T.
+\end{aligned}
+\tag{RF5}
+\]
+For finite self-adjoint random factors \(C,D\) with probabilities \(p_\omega\), use the decomposition with factors \(\sqrt{p_\omega}C(\omega)\) and \(\sqrt{p_\omega}D(\omega)\). The defining symmetric cost is at most
+\(\|\mathbb E C^2\|^{1/2}\|\mathbb E D^2\|^{1/2}\).
+Applying this separately to the two residual terms gives, for each, a bound
+\(\sqrt3M^{3/2}/(4\tau)\). The triangle inequality from Proposition 1.1 and the bounded factor norms in (RF3) therefore give
+\[
+ \|v_\tau\|_{\pi_{\mathbb R}}\le\tau^2,\qquad
+ \|w_\tau\|_\sigma\le
+                 \frac{\sqrt3}{2\tau}M^{3/2}.
+\tag{RF6}
+\]
+At \(\tau=3\sqrt3\sqrt M/4\), these are exactly \(27M/16\) and \(2M/3\). If \(M=0\), positivity and the C*-identity make every coefficient zero, and \(v=w=0\) supplies both bounds without using a zero resolvent parameter.
+
+This construction uses a rational bounded filter throughout. The spectral clipping calculation below gives another finite construction with the same budgets.
+
 <a id="3-truncating-the-random-sum"></a>
 
 ## Clipping spends the fourth moment
@@ -213,7 +298,22 @@ u=v+w,
 \tag{13}
 \]
 
-**Proof.** For \(u\ne0\), choose a balanced self-adjoint decomposition
+**Proof.** If \(u=0\), take \(v=w=0\). Otherwise Proposition 1.1 supplies a finite self-adjoint balanced decomposition with common square-sum norm \(M<\|u\|_\sigma+\delta\). Choose
+\[
+ 0<\delta<\min(16\eta/27,3\eta/2)\|u\|_\sigma.
+\]
+The [bounded resolvent construction](#resolvent-average), with \(\tau=3\sqrt3\sqrt M/4\), gives the exact identity \(u=v_\tau+w_\tau\) and the bounds \(27M/16\) and \(2M/3\). Therefore
+\[
+\begin{aligned}
+ \|v_\tau\|_{\pi_{\mathbb R}}
+   &\le 27M/16<(27/16+\eta)\|u\|_\sigma,\\
+ \|w_\tau\|_\sigma
+   &\le 2M/3<(2/3+\eta)\|u\|_\sigma.
+\end{aligned}
+\]
+The finite construction already includes every residual term and keeps all factors in the original algebras. These are precisely (13). \(\square\)
+
+**Second proof, using spectral clipping.** For \(u\ne0\), choose a balanced self-adjoint decomposition
 \[
 u=\sum_ja_j\otimes b_j,\qquad
 \Big\|\sum_ja_j^2\Big\|=\Big\|\sum_jb_j^2\Big\|=M
@@ -459,6 +559,8 @@ If \(M=0\), positivity makes every \(a_j,b_j\) zero, so \(u=0\) and one may take
 Gilles Pisier, [*Grothendieck's Theorem, past and present*, expanded UNCUT author version, 21 August 2013](https://webusers.imj-prg.fr/~gilles.pisier/grothendieck.UNCUT.pdf), Section 9, Lemma 9.2 and the real truncation proof of Theorem 9.1, printed pp.29–31 (PDF pp.31–33). The [arXiv:1101.4195v3 version](https://arxiv.org/pdf/1101.4195v3) contains the selected argument on printed pp.28–30 (PDF pp.30–32). These are distinct versions.
 
 The source supplies the real clipping and iterative coefficient-lift method. Its fourth-moment lemma is stated by reference, and its closing complex reduction is described without the full calculations. Here (9) is proved directly in operator order, (14) retains the double residual, and (C1)–(C3) retain the completed approximation error. The normalization gives \(27/16\), \(2/3\) and \(81/16\); those coefficients are not Pisier's Khintchine constants. The scalar calculus, order, norm-preserving extension and tensor completions used here are the precise local constructions linked above.
+
+The bounded resolvent construction uses the rational function (RF1) and the three exact nonnegative square identities (RF2). It gives the finite tensor split (RF4) and budget (RF6) without a piecewise clipping function or spectral projection. The full spectral clipping proof is a separate construction; the constants in both proofs describe the symmetric-to-projective lift.
 
 
 ## State squares and a quantitative final tolerance

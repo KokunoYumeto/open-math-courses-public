@@ -267,7 +267,7 @@ Take the real-frequency supremum. If \(G=0\), this says every \(V(\xi)=0\). If \
                  e^{\,R(1/a_*-1)L}.
  \tag{21}
 \]
-This proves(2), with \(\kappa=R(1/a_*-1)\ge0\). Every constant introduced by the pointwise weight comparisons and norm interpolations is independent of the specific weight and of the norm exponent. Allowing them to depend on those choices would give the same stated conclusion.
+This proves(2), with \(\kappa=R(1/a_*-1)\ge0\). Every constant introduced by the pointwise weight comparisons and norm interpolations is independent of the specific weight and of the norm exponent.
 
 If \(q=0\), there are no root shifts. On the regular ball, \(P(z,D_t)\widehat v=a(z)\widehat v=\widehat g\). The [Root factors and the full symbol norm](root-factors-and-the-full-symbol-norm.md) degree-zero comparison and(3) show that \(S_P(\xi,s)\le C|a(\eta)|\), while the coefficient ratio on \(B(\eta,A)\) is bounded below. Hence \(\sup_{B(\eta,A)}V\le C G\) directly. Use(7) with \(a_*=\theta_0\) and repeat the same cancellation. This proves the vacuous-root case as well.
 

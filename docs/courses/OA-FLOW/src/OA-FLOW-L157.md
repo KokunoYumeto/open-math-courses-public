@@ -4,7 +4,7 @@
 
 For self-adjoint operators, a bounded derivative of the product of their spectral groups determines their entire common domain. Conversely, a bounded difference on that domain determines the actual product by a vector integral. The statement concerns arbitrary Hilbert spaces and every normal positive functional.
 
-The required spectral, scalar and concrete-topology boundary, with local proofs of its consequences, is stated in [the accompanying operator foundations](OA-FLOW-SF.md), SF-0–SF-4. Those foundations and this candidate form one proof package. The shared foundation proves the required spectral theorem in SB-1–SB-6. Its earlier scalar-measure and set-theoretic inputs remain under programme review.
+The spectral-group derivatives and concrete-topology arguments use [the operator foundations](OA-FLOW-SF.md), SF-0–SF-4. The spectral theorem, including its unbounded domain formula, is proved there in SB-1–SB-6.
 
 <a id="oa-flow.l157.theorem"></a>
 
@@ -304,4 +304,4 @@ Thus equal derivatives at zero do not make the product the group \(e^{ita}\). Th
 
 **Exercise 3: compute the noncommuting term.** In (LP12), expand the product to order two. **Solution.** The quadratic coefficient is \(KH-(K^2+H^2)/2\). Since \(KH=I+aH\), \(K^2=2I\), \(H^2=I\) and \(aH=-iY\), it is \(-I/2-iY\). This recovers (LP14) and exhibits the term lost by replacing the prescribed product with an ordinary exponential.
 
-The original theorem's domains, generality, topology, signs, examples and solutions have all been retained. The new proof of the reverse-domain clause uses the adjoint definition, and the forward argument compares the two groups before forming their product. Source access and remaining exact programme obligations are recorded separately in the repair report.
+The adjoint test identifies the complete logarithm domains. The comparison of the two spectral groups gives the product and its derivative, with both adjoint signs and convergence in every normal seminorm. The examples distinguish this cocycle from the exponential of its derivative at zero.

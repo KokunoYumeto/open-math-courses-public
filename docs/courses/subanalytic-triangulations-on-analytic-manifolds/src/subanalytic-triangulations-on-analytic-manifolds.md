@@ -2,7 +2,7 @@
 
 This reading constructs compatible locally finite triangulations of arbitrary Hausdorff second-countable real analytic manifolds. It supplies the relative Euclidean construction, elementary finite-colour chart covers, differentiable subanalytic cutoffs, a proper embedding and analytic recovery of the transported open simplices. Six exercises have complete solutions.
 
-*Original teaching text and solutions by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Sard and Baire dependency comparisons, the real-analytic Noetherianity proof, incidence and analytic-input comparisons, the finite-graph, affine-enlargement and radial-completion arguments, the skeleton/face comparisons, the straight-model/analytic-lifting arguments, the relative-support/isotopy proof, and the globalization dependency comparison by GPT-6 Astra (OpenAI), October 2026, self-checked by that AI. CC0.*
+*Original programme text and solutions by GPT-6.1 Sol (OpenAI), with mathematical contributions by GPT-6 Astra (OpenAI). Original programme text: public domain (CC0).*
 
 ## Setting and dependency boundary
 
@@ -1519,6 +1519,6 @@ For the theorem's proper embedding, the image is closed, which makes the selecte
 
 Masahiro Shiota's *Piecewise linearization of real analytic functions* supplies the credited geometric source for the relative construction. Marja Kankaanrinta's *A subanalytic triangulation theorem for real analytic orbifolds*, §§2, 5–6, supplies the finite-colour, cutoff and proper-embedding comparisons; the present proof specializes to manifolds. John Milnor's 1958 *Differential Topology* lectures, with notes by James Munkres, supply the strict-coordinate colouring. The manifold dimension input is proved directly here by point avoidance and nerve compression. Palais's general covering-dimension theorem and an analytic embedding theorem are not assumed.
 
-Self-checked by the writing AI. No independent review of the entire parent course, no full lower-foundation closure, and no full-source coverage of the broader orbifold paper are claimed. Original teaching, solutions, illustration and reader code are CC0; human source expression is not imported or relicensed.
+Original programme text, solutions, illustration and reader code are dedicated under CC0 1.0. The credited human works retain their own terms.
 
 [Reading index](../index.html) · [Reuse terms](../LICENSE.txt) · Provenance

@@ -1,12 +1,12 @@
 # Cohomology on sites
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Proof-provider integration and Sections 3A and 8A by GPT-6 Astra (OpenAI), Ultra. Sections 3A and 8A are self-checked by that AI; no independent review is claimed. Public domain (CC0).*
 
 A section of a quotient sheaf can lift on every member of a covering and still fail to lift globally. Cohomology records this failure. In degree one, the local lifts themselves form a torsor. In higher degrees, an injective resolution organizes the successive failures into groups and connecting maps.
 
 We develop the construction on an arbitrary small site. The proof of enough injectives uses generators and local exactness; it does not require points. A covering then supplies a second resolution, the Čech complex. Comparing the two resolutions explains when a calculation with overlaps computes cohomology, and when additional local cohomology intervenes. Finally, Leray compares cohomology before and after a morphism of topoi.
 
-We use [Topoi, morphisms and points](topoi-morphisms-and-points.md), including its slice adjunctions, exact inverse image on abelian sheaves, and profinite classifying topos. Ordinary injective resolutions, their comparison maps and the spectral sequences of a first quadrant double complex are homological algebra prerequisites. The relevant exact statements and locators appear at the end. All rings in the discussion of line bundles are commutative. Sites and their covering families are small in a fixed universe; sheaves take values in a larger universe if necessary. We use the axiom of choice.
+We use [Topoi, morphisms and points](topoi-morphisms-and-points.md), including its slice adjunctions, exact inverse image on abelian sheaves, and profinite classifying topos. For ordinary injective resolutions and their comparison maps, use [Theorems 3.3 and 4.1 of the bounded-below derived-functor reading](../../derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#4-right-derived-functors-on-bounded-below-complexes). Those statements apply to arbitrary abelian categories with enough injectives; they do not assume that a site has points. The abelian-group spectral sequences below use the finite-filtration construction in the earlier Čech reading, Section 3. [Section 3A](#filtered-complexes-in-abelian-categories) gives the arbitrary-abelian construction, and [Section 8A](#cartan-eilenberg-comparison) proves the Leray comparison. The relevant exact statements and locators appear at the end. All rings in the discussion of line bundles are commutative. Sites and their covering families are small in a fixed universe; sheaves take values in a larger universe if necessary. We use the axiom of choice.
 
 Cohomology of sheaves on topological spaces and Čech cohomology are treated in [Stacks, Tags 01DX and 01ED](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-section-introduction); here the proofs work on sites. Torsors under group schemes that are represented by schemes are a special case of the torsors here, which are sheaves with a locally simply transitive action, whether or not a geometric object represents them; see also [Stacks, Tag 03AG](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-cohomology.html#sites-cohomology-section-h1-torsors).
 
@@ -67,7 +67,7 @@ H^n(\mathcal C,F)=H^n(\Gamma(\mathcal C,I^\bullet)).
 \]
 
 These are the right derived functors of sections. In particular
-\(H^n(\mathcal C,F)=\operatorname{Ext}^n(\mathbf Z^\#,F)\), including when the site has no final object. The usual resolution comparison theorem makes (2.2) independent of the resolution and supplies functorial restriction maps, long exact sequences, and connecting homomorphisms. For modules, first use an injective resolution in \(\operatorname{Mod}(\mathcal O)\); section 5 will prove agreement with (2.2).
+\(H^n(\mathcal C,F)=\operatorname{Ext}^n(\mathbf Z^\#,F)\), including when the site has no final object. The [resolution comparison theorem and Theorem 4.1(3)](../../derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#3-complexes-that-admit-comparison-maps) make (2.2) independent of the resolution and supply functorial restriction maps, long exact sequences, and connecting homomorphisms. For modules, first use an injective resolution in \(\operatorname{Mod}(\mathcal O)\); section 5 will prove agreement with (2.2).
 
 **Proposition 2.1.** For every \(U\), restriction to the slice site gives
 
@@ -131,7 +131,7 @@ whose differential is the alternating sum of projections. It is exact as a compl
 
 Applying \(\operatorname{Hom}(-,J)\) for an injective abelian sheaf gives an exact augmented cochain complex. By (1.2), its unaugmented complex is (3.1), and its augmentation is \(J(U)\). This proves the assertion. Replace each \(P^{\mathbf Z}\) by \(P^{\mathcal O}\) for the module assertion. The same local contraction is \(\mathcal O\)-linear, so its chain complex is exact, without any flatness assumption on \(\mathcal O\) over \(\mathbf Z\). Applying module Hom into an injective module again gives precisely (3.1) on underlying groups. \(\square\)
 
-For completeness, the presheaf \(\delta\)-functor above is universal. Before sheafification, let \(S(V)\) be the image of \(\coprod_i h_{U_i}(V)\to h_U(V)\). The free chain complex on the tuples in (3.3) is a resolution of \(\mathbf Z[S]\): separately over each arrow in \(S(V)\), insertion of one lift contracts the nonempty set of lifts. This is sectionwise exact, although the augmented map to \(\mathbf Z[h_U]\) may fail to be surjective. Each chain term is a coproduct of free representables, hence projective in abelian presheaves by (1.2). Injective presheaves consequently have zero positive Čech cohomology. Enough injectives and the resolution comparison theorem identify this effaceable \(\delta\)-functor with \(R^p\check H^0(\mathcal U,-)\). An injective sheaf is also injective as a presheaf, because sheafification is an exact left adjoint of inclusion. See [Stacks, Tags 03AR and 03AU].
+For completeness, the presheaf \(\delta\)-functor above is universal. Before sheafification, let \(S(V)\) be the image of \(\coprod_i h_{U_i}(V)\to h_U(V)\). The free chain complex on the tuples in (3.3) is a resolution of \(\mathbf Z[S]\): separately over each arrow in \(S(V)\), insertion of one lift contracts the nonempty set of lifts. This is sectionwise exact, although the augmented map to \(\mathbf Z[h_U]\) may fail to be surjective. Each chain term is a coproduct of free representables, hence projective in abelian presheaves by (1.2). Injective presheaves consequently have zero positive Čech cohomology. Enough injectives and [Theorem 4.1(3), including its universal-functor comparison](../../derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#4-right-derived-functors-on-bounded-below-complexes) identify this effaceable \(\delta\)-functor with \(R^p\check H^0(\mathcal U,-)\). An injective sheaf is also injective as a presheaf, because sheafification is an exact left adjoint of inclusion. See [Stacks, Tags 03AR and 03AU].
 
 **Theorem 3.2 (Čech-to-cohomology).** There is a natural spectral sequence
 
@@ -149,10 +149,103 @@ with \(d_r:E_r^{p,q}\to E_r^{p+r,q-r+1}\).
 First take horizontal cohomology. Lemma 3.1 and (3.2) leave only \(I^q(U)\) in horizontal degree zero. The augmentation from \(I^\bullet(U)\) to the total complex therefore induces an isomorphism on cohomology. This identifies the total cohomology with the right side of (3.4).
 
 Next filter the same total complex by the Čech degree \(p\). Taking vertical cohomology gives
-\(E_1^{p,q}=\prod_{i_0,\ldots,i_p}H^q(U_{i_0\ldots i_p},F)\), since products are exact. The induced next differential is exactly the alternating restriction map in (3.1). Its cohomology is the stated \(E_2\). The first quadrant double complex theorem gives the indicated differentials and convergence, with a finite filtration on each total cohomology group. Resolution comparison maps induce maps of filtered double complexes; a homotopy between comparison maps induces the corresponding homotopy with the total signs. Thus the pages from \(E_2\) and their abutment maps are natural and independent of the resolution. This constructs the spectral sequence. \(\square\)
+\(E_1^{p,q}=\prod_{i_0,\ldots,i_p}H^q(U_{i_0\ldots i_p},F)\), since products are exact. The induced next differential is exactly the alternating restriction map in (3.1). Its cohomology is the stated \(E_2\). The finite-filtration double-complex argument gives the indicated differentials and convergence, with a finite filtration on each total cohomology group. Resolution comparison maps induce maps of filtered double complexes; a homotopy between comparison maps induces the corresponding homotopy with the total signs. Thus the pages from \(E_2\) and their abutment maps are natural and independent of the resolution. This constructs the spectral sequence. \(\square\)
 
 In particular, if every \(U_{i_0\ldots i_p}\) is \(F\)-acyclic, meaning \(H^q(U_{i_0\ldots i_p},F)=0\) for \(q>0\), only the row \(q=0\) remains. The resulting canonical map
 \(\check H^n(\mathcal U,F)\to H^n(U,F)\) is an isomorphism for every \(n\). This is the acyclic-cover form of Leray's theorem. It is a condition on all finite intersections, including the individual members.
+
+<h2 id="filtered-complexes-in-abelian-categories">3A. Filtered complexes without an element assumption</h2>
+
+The relative Leray sequence takes values in an abelian category of sheaves, not merely in abelian groups. Here is the filtered-complex argument in that generality. It also applies to the double complex of Theorem 3.2. The earlier Čech reading retains the useful group-valued calculation.
+
+**Proposition 3A.1.** Let \(C^\bullet\) be a cochain complex in an abelian category, with a decreasing filtration by subcomplexes \(F^pC\). Assume that in each degree the filtration is finite: for each \(n\), there are integers \(a_n,b_n\) with \(F^{a_n}C^n=C^n\) and \(F^{b_n}C^n=0\). There is a functorial spectral sequence
+
+\[
+E_0^{p,q}=F^pC^{p+q}/F^{p+1}C^{p+q},\qquad
+E_1^{p,q}=H^{p+q}(\operatorname{gr}^p_F C),\qquad
+d_r:E_r^{p,q}\longrightarrow E_r^{p+r,q-r+1}.
+\tag{3A.1}
+\]
+
+Its limiting terms are the associated graded objects of \(H^{p+q}(C)\) for a finite filtration. A bound uniform in \(n\), infinite products, and points of a topos are not required.
+
+**Proof.** Intersections, sums, inverse images and images below are operations on subobjects. Put
+
+\[
+Z_r^{p,n}=F^pC^n\cap d^{-1}(F^{p+r}C^{n+1})\quad(r\geq0),
+\qquad
+D_r^{p,n}=Z_{r-1}^{p+1,n}+dZ_{r-1}^{p-r+1,n-1}\quad(r\geq1).
+\tag{3A.2}
+\]
+
+Here \(dZ\) means the image of the restriction of \(d\), not a set of actual elements. In particular \(Z_0^{p,n}=F^pC^n\). Both summands of \(D_r^{p,n}\) lie in \(Z_r^{p,n}\): the first has differential in \(F^{p+r}\), and the second has image in \(F^p\) and zero differential. Define
+
+\[
+E_r^{p,n-p}=Z_r^{p,n}/D_r^{p,n}\qquad(r\geq1).
+\tag{3A.3}
+\]
+
+For \(r=1\), these are exactly the cycles modulo boundaries of the associated graded complex. The differential restricts to a map from \(Z_r^{p,n}\) into \(Z_r^{p+r,n+1}\). It carries the first denominator summand into \(dZ_{r-1}^{p+1,n}\), a denominator summand at the target, and kills the second. It therefore induces \(d_r\) in (3A.1), and \(d_r^2=0\).
+
+We spell out why the calculation of its cohomology is valid in an arbitrary abelian category. A generalized element is a morphism from a test object. When an image membership or a sum decomposition needs a lift, pull back the epimorphism onto that image or sum. This replaces the test object by an object mapping epimorphically onto it, on which the lift exists. A finite sequence of such replacements is still an epimorphism. A morphism factors through a given subobject if it does so after this replacement: compose with the quotient by the subobject and use that an epimorphism is right-cancellable. Thus the following finite calculations establish equalities of subobjects, without assuming that the category is a category of modules.
+
+The inverse image in \(Z_r^{p,n}\) of \(\ker d_r\) is
+
+\[
+Z_{r+1}^{p,n}+D_r^{p,n}.
+\tag{3A.4}
+\]
+
+Indeed, if the differential of a generalized element \(x\) is in the target denominator, after the just-described epimorphic replacement write \(dx=z+dy\), where \(z\in Z_{r-1}^{p+r+1,n+1}\) and \(y\in Z_{r-1}^{p+1,n}\). Then \(d(x-y)\in F^{p+r+1}\), so \(x-y\in Z_{r+1}^{p,n}\), while \(y\in D_r^{p,n}\). Conversely, for \(x\in Z_{r+1}^{p,n}\), its differential lies in \(F^{p+r+1}\) and is closed, hence belongs to the first summand of the target denominator. The denominator itself maps to zero, which proves (3A.4).
+
+The incoming image, pulled back to \(Z_r^{p,n}\), is
+\(dZ_r^{p-r,n-1}+D_r^{p,n}\). The old boundary summand is contained in the new one:
+\(dZ_{r-1}^{p-r+1,n-1}\subset dZ_r^{p-r,n-1}\).
+The new boundary summand lies in \(Z_{r+1}^{p,n}\). Finally
+
+\[
+Z_{r+1}^{p,n}\cap Z_{r-1}^{p+1,n}=Z_r^{p+1,n}.
+\tag{3A.5}
+\]
+
+The modular identity for subobjects, applied with the new boundary summand contained in \(Z_{r+1}^{p,n}\), now gives
+
+\[
+Z_{r+1}^{p,n}\cap\bigl(D_r^{p,n}+dZ_r^{p-r,n-1}\bigr)
+=Z_r^{p+1,n}+dZ_r^{p-r,n-1}=D_{r+1}^{p,n}.
+\tag{3A.6}
+\]
+
+For clarity, this modular identity needs only the same finite sum calculation: if \(W\subset X\), an element of \(X\cap(Y+W)\) can locally be written \(y+w\); subtracting \(w\) puts \(y\) in \(X\cap Y\). The reverse inclusion is immediate, and epimorphic descent gives the categorical identity. Equations (3A.4)–(3A.6) and the quotient isomorphism theorem prove \(H(E_r,d_r)=E_{r+1}\).
+
+For fixed \(p,n\), take \(r\) large enough for the filtration bounds in the three degrees \(n-1,n,n+1\). The numerator and denominator then stabilize to
+
+\[
+Z_\infty^{p,n}=F^pC^n\cap\ker d,
+\qquad
+D_\infty^{p,n}=(F^{p+1}C^n\cap\ker d)+(F^pC^n\cap\operatorname{im}d).
+\tag{3A.7}
+\]
+
+The second equality uses the inverse-image description of \(Z_{r-1}^{p-r+1,n-1}\): its source filtration has become all of \(C^{n-1}\), while its differential is required to lie in \(F^pC^n\). Its image is precisely \(F^pC^n\cap\operatorname{im}d\). Filter cohomology by
+
+\[
+F^pH^n(C)=\operatorname{im}\bigl(F^pC^n\cap\ker d\longrightarrow H^n(C)\bigr).
+\tag{3A.8}
+\]
+
+The quotient in (3A.7) is \(F^pH^n(C)/F^{p+1}H^n(C)\). This filtration is finite, exhaustive and separated in each degree. There is consequently no completion or inverse-limit qualification to the asserted convergence. A filtered chain map preserves all the subobjects and quotients used above, commutes with every page differential, and induces the filtered cohomology map. This proves functoriality. \(\square\)
+
+**The two double-complex filtrations.** Suppose \(D^{p,q}\) has commuting differentials \(d_p,d_q\), with \(p\geq0\) and \(q\geq a\) for one integer \(a\). Define
+
+\[
+\operatorname{Tot}^n D=\bigoplus_{p+q=n}D^{p,q},\qquad
+d=d_p+(-1)^p d_q,\qquad
+F^i\operatorname{Tot}^n D=\bigoplus_{p\geq i}D^{p,n-p}.
+\tag{3A.9}
+\]
+
+The mixed differential terms cancel. Every displayed sum is finite. Proposition 3A.1 gives first the \(q\)-cohomology, then its \(p\)-cohomology. On the associated graded the differential is \((-1)^p d_q\); the sign changes neither its kernel nor its image. Thus its cohomology identifies canonically with \(H^q(D^{p,\bullet})\), and the next differential is induced by \(d_p\). Filtering instead by \(q\) first gives \(p\)-cohomology, and then the differential induced by \((-1)^p d_q\). Both filtrations converge to the same total cohomology, with their respective finite filtrations. In particular a comparison inducing an isomorphism on a page induces isomorphisms on all subsequent pages and on the limiting graded objects; a map between finite filtered objects that is an isomorphism on each graded object is an isomorphism, by induction on the filtration and short exact sequences.
 
 ## 4. A practical vanishing criterion
 
@@ -184,7 +277,7 @@ Local vanishing has an intrinsic version here. A cycle is a map \(A\to\ker(I^n\t
 
 Induct on \(n>0\), simultaneously for every topos object \(A\). Kill a class in \(H^n(A,J)\) by the epimorphism just constructed. All rows \(0<q<n\) in its Čech spectral sequence vanish by induction, and its \(E_2^{n,0}\) vanishes by the module contraction. The edge injection from the proof of Theorem 4.1 makes the class zero. This proves acyclicity for every \(A\), in particular for \(1\). The induction uses a chosen cover for a chosen class at each step; it requires no small site containing every topos object.
 
-An injective module resolution is therefore an acyclic resolution for every abelian sections functor. The forgetful functor is exact, so it is still a resolution after forgetting the module action. The acyclic-resolution theorem identifies its section complex with the abelian derived functor. This gives the claimed natural comparisons. \(\square\)
+An injective module resolution is therefore an acyclic resolution for every abelian sections functor. The forgetful functor is exact, so it is still a resolution after forgetting the module action. [Theorem 4.1(4), for a bounded-below complex of acyclic objects](../../derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#4-right-derived-functors-on-bounded-below-complexes) identifies its section complex with the abelian derived functor. This gives the claimed natural comparisons. \(\square\)
 
 An injective module need not be injective as an abelian sheaf. On the one-point site, an injective \(\mathbf F_p\)-module can be \(\mathbf F_p\) itself. It is not injective as an abelian group: the map \(p\mathbf Z\to\mathbf F_p\) taking \(p\) to \(1\) cannot extend to \(\mathbf Z\). The proof above requires acyclicity, which is exactly what holds.
 
@@ -372,11 +465,11 @@ in abelian sheaves on \(\mathcal G\). Both have differentials of bidegree \((r,1
 To obtain the required second page, resolve the complex \(A^\bullet\) together with its cycles, boundaries and cohomology. More explicitly, write \(Z^q=\ker d\), \(B^q=\operatorname{im}d\), \(H^q=Z^q/B^q\). Starting in degree zero, choose injective resolutions compatible with
 \(0\to Z^q\to A^q\to B^{q+1}\to0\) and
 \(0\to B^{q+1}\to Z^{q+1}\to H^{q+1}\to0\).
-The injective horseshoe construction extends the already chosen left-hand resolution at each step. Its degreewise short exact sequences split, because their left-hand terms are injective. Composing the maps through the boundary resolutions gives a double complex \(J^{p,q}\), where \(p\) is resolution degree and \(q\) is the degree of \(A\). For fixed \(q\), \(J^{\bullet,q}\) resolves \(A^q\); for fixed \(p\), its \(q\)-cycles, boundaries and cohomology are injective, and its \(q\)-cohomology, as \(p\) varies, is an injective resolution of \(H^q\). This is a Cartan–Eilenberg resolution. Its existence is the ordinary homological algebra lemma [Stacks, Tag 015I]; here we have specified the complex to which it is applied and the maps it resolves.
+The [injective horseshoe construction with a prescribed left-hand resolution](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/derived.tex#L6920-L7015) extends the already chosen left-hand resolution at each step. Its degreewise short exact sequences split, because their left-hand terms are injective. Composing the maps through the boundary resolutions gives a double complex \(J^{p,q}\), where \(p\) is resolution degree and \(q\) is the degree of \(A\). For fixed \(q\), \(J^{\bullet,q}\) resolves \(A^q\); for fixed \(p\), its \(q\)-cycles, boundaries and cohomology are injective, and its \(q\)-cohomology, as \(p\) varies, is an injective resolution of \(H^q\). This is a Cartan–Eilenberg resolution. Its existence is proved by the [bounded-below Cartan–Eilenberg construction](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/derived.tex#L7453-L7534), the ordinary homological algebra lemma [Stacks, Tag 015I]; here we have specified the complex to which it is applied and the maps it resolves.
 
 Apply \(\Gamma(\mathcal F,-)\) and totalize, with differential \(d_p+(-1)^p d_q\) for commuting resolution and complex differentials. Taking \(p\)-cohomology first leaves only \(\Gamma(\mathcal F,A^q)\), since each \(A^q\) is injective. The augmentation therefore identifies total cohomology with \(H^*(\mathcal E,F)\).
 
-Take \(q\)-cohomology first instead. The degreewise splitting in the construction is preserved by every additive functor, so this gives \(\Gamma(\mathcal F,J_H^{p,q})\), where \(J_H^{\bullet,q}\) resolves \(H^q(A)\). Taking \(p\)-cohomology then gives \(H^p(\mathcal F,R^qf_*F)\). Filter the total complex by \(p\); the usual double complex indexing in this direction gives the claimed \(E_2\) and differentials. In each total degree the filtration is finite. Comparison of resolutions and the horseshoe comparisons yield the natural pages from \(E_2\). This proves (8.1).
+Take \(q\)-cohomology first instead. The degreewise splitting in the construction is preserved by every additive functor, so this gives \(\Gamma(\mathcal F,J_H^{p,q})\), where \(J_H^{\bullet,q}\) resolves \(H^q(A)\). Taking \(p\)-cohomology then gives \(H^p(\mathcal F,R^qf_*F)\). Filter the total complex by \(p\); the usual double complex indexing in this direction gives the claimed \(E_2\) and differentials. In each total degree the filtration is finite. The comparison argument of [Proposition 8A.1](#cartan-eilenberg-comparison) yields the natural pages from \(E_2\). This proves (8.1).
 
 For (8.2), apply \(g_*\) to this same Cartan–Eilenberg resolution instead of applying global sections. Injectivity of the \(A^q\) makes the first computation leave \(g_*A^\bullet\); it computes \(R(gf)_*F\) by the original resolution \(I^\bullet\). The second computation uses the same splittings and leaves \(R^p g_*H^q(A)\). This proves the relative assertion. A bounded below complex in place of \(F\) is treated by a bounded below injective resolution and the same construction; translating the lower bound keeps each total-degree filtration finite. \(\square\)
 
@@ -409,6 +502,93 @@ on underlying abelian sheaves, with its inherited module structure.
 We also need the acyclicity of \(f_*J\) for subsequent sections or pushforward. For any epimorphism \(E\to A\) in \(\mathcal F\), its Čech cochains with \(f_*J\) are, by adjunction, maps from the free module sheaves on \(f^{-1}(E\times_A\cdots\times_AE)\) into \(J\). Exact inverse image takes this nerve to the covering nerve of the epimorphism \(f^{-1}E\to f^{-1}A\). The module contraction of Lemma 3.1 makes its Hom complex acyclic. The intrinsic vanishing induction of section 5 now gives \(H^n(A,f_*J)=0\) for all \(A\) and \(n>0\). Such a sheaf is often called **totally acyclic**. Equation (8.3), now for any following morphism \(g\), makes it abelian \(g_*\)-acyclic; comparison (8.4) makes it module \(g_*\)-acyclic too.
 
 Consequently, in the ringed proof of (8.1)–(8.2) the complex \(A^\bullet=f_*I^\bullet\) has terms acyclic for the next functor, even when they are not injective. A Cartan–Eilenberg resolution in target modules still computes \(H^q(A)=R^q f_*F\). In the first computation, positive derived functors of each \(A^q\) vanish by this acyclicity; the other computation is unchanged. This proves both ringed spectral sequences. See [Stacks, Tags 072Z, 0730–0732 and 0734] for the distinctions between injectivity, flat pullback and total acyclicity.
+
+<h2 id="cartan-eilenberg-comparison">8A. Why the Leray pages are canonical</h2>
+
+The existence construction in Section 8 is not itself a comparison theorem. We now prove the comparison needed there. This also explains why the choice-independent starting page is \(E_2\). The argument uses the ordinary bounded-below results in [Theorems 3.3 and 4.1](../../derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#4-right-derived-functors-on-bounded-below-complexes), and the compatible term, cycle, boundary and cohomology resolutions specified in Section 8.
+
+**Proposition 8A.1.** Let \(\mathcal A,\mathcal B\) be abelian categories, let \(\mathcal A\) have enough injectives, and let \(T:\mathcal A\to\mathcal B\) be additive and left exact. For a bounded-below complex \(K\), a Cartan–Eilenberg resolution supplies a spectral sequence
+
+\[
+E_2^{p,q}=R^pT(H^qK)\ \Longrightarrow\ H^{p+q}(RT(K)),
+\qquad p\geq0,
+\tag{8A.1}
+\]
+
+with finite filtration in each total degree. It is natural from \(E_2\), together with its filtered abutment, as a functor of \(K\) in the bounded-below derived category. No finite cohomological dimension of \(T\) is assumed.
+
+**The extension property used in the proof.** Call a short exact sequence of complexes admissible here if it is also short exact on cycles, boundaries and cohomology in every degree. This is just a definition of the sequences on which we shall extend maps, not an appeal to an abstract exact-category theorem.
+
+Let \(J\) be a complex whose terms, cycles, boundaries and cohomology objects are injective in \(\mathcal A\). The two defining short exact sequences split, since their left terms are injective. Choose splittings to write
+
+\[
+J^q=B^qJ\oplus H^qJ\oplus B^{q+1}J,
+\tag{8A.2}
+\]
+
+with differential taking the last summand identically to the first summand in the next degree and killing the other two. This expresses \(J\) as stalk complexes with values \(H^qJ\) and two-term complexes with an injective object \(E\) in degrees \(q,q+1\) and differential \(1_E\). Only three such summands meet any given degree. Thus we do not need an infinite product in \(\mathcal A\) to assemble componentwise maps.
+
+A chain map from \(X\) to a stalk with value \(H\) in degree \(q\) is exactly a map \(X^q/B^qX\to H\). A chain map to the two-term complex just described is exactly a map \(X^{q+1}\to E\): its degree-\(q\) component must be that map composed with \(d_X\). For an admissible monomorphism \(X\to Y\), both
+\(X^{q+1}\to Y^{q+1}\) and \(X^q/B^qX\to Y^q/B^qY\) are monomorphisms. The latter follows from the diagram of the exact boundary and term sequences: \(B^qY\cap X^q=B^qX\), because \(B^qY\to B^q(Y/X)\) is the quotient map and \(B^q(Y/X)\to(Y/X)^q\) is injective. Injectivity of \(E,H\) therefore extends each component map. The components assemble to a chain map into \(J\). We have proved that maps into \(J\) extend across every admissible monomorphism.
+
+**Why this property applies to the resolution.** Write a Cartan–Eilenberg resolution as
+
+\[
+0\longrightarrow K\longrightarrow I^0\xrightarrow{d_p}I^1
+\xrightarrow{d_p}I^2\longrightarrow\cdots,
+\qquad (I^p)^q=I^{p,q},
+\tag{8A.3}
+\]
+
+where each \(I^p\) is a complex with the extension property just proved. The augmented sequence is a resolution on terms, cycles, boundaries and cohomology. Its successive short exact syzygy sequences are admissible. Here is the needed verification. If a monomorphism of complexes is monic also on cycles, boundaries and cohomology, take cokernels in the two diagrams
+
+\[
+0\to B^q\to Z^q\to H^q\to0,
+\qquad
+0\to Z^q\to K^q\to B^{q+1}\to0.
+\tag{8A.4}
+\]
+
+The cokernel rows are short exact. The differential on the termwise cokernel factors as the epimorphism onto the boundary cokernel followed by its injections into the cycle and term cokernels in the next degree. Its kernel, image and cohomology are therefore exactly the respective cokernels on cycles, boundaries and cohomology. Applied to \(K\to I^0\), this identifies its cokernel with the first syzygy in all four augmented resolutions. Repeating the argument proves the assertion for every successive syzygy. This uses only the elementary kernel/cokernel diagram chase (or the snake lemma), not exactness of an infinite limit.
+
+**Comparison and its homotopy.** Given \(f:K\to L\) and resolutions \(I,J\), extend \(K\to L\to J^0\) across \(K\to I^0\) to a chain map \(F^0:I^0\to J^0\). Its composite with \(d_p\) kills \(K\), so factors through the first syzygy of \(I\). Extend that map across the syzygy's inclusion into \(I^1\), using the extension property of \(J^1\). Continuing gives \(F^p:I^p\to J^p\) commuting with both differentials and lifting \(f\).
+
+If \(F,G\) lift the same \(f\), there are chain maps in the \(q\)-direction
+
+\[
+h^p:I^p\longrightarrow J^{p-1},\qquad h^0=0,
+\qquad F-G=d_p h+h d_p.
+\tag{8A.5}
+\]
+
+To construct them, suppose the identity is established below degree \(p\). The residual map \(F^p-G^p-d_p h^p\) kills \(\operatorname{im}(I^{p-1}\to I^p)\); this follows by composing with \(d_p\), using the preceding identity and \(d_p^2=0\). At \(p=0\), it kills \(K\) because both lifts agree there. Factor through the next syzygy and extend to \(I^{p+1}\to J^p\), which defines \(h^{p+1}\). All extensions take place among complexes in \(q\), so \(h\) commutes with \(d_q\). This proves (8A.5) in all degrees. Comparing resolutions in both directions shows their composites homotopic to their identities in this sense.
+
+**Pages and abutment.** Apply \(T\) termwise and totalize with differential \(D=d_p+(-1)^p d_q\). All sums on a total diagonal are finite, since there is a common lower bound on \(q\). Applying Proposition 3A.1 with the filtration by \(p\) gives
+
+\[
+E_1^{p,q}=H^q(T(I^p))=T(H^q(I^p)),\qquad
+E_2^{p,q}=R^pT(H^qK).
+\tag{8A.6}
+\]
+
+The middle equality is canonical: the cycle and boundary sequences for \(I^p\) split, so applying any additive functor preserves their exactness and gives the stated cohomology identification. The splittings prove the identification is an isomorphism; the identification itself is induced by the cycle inclusion and quotient, and is natural. The complexes \(H^q(I^\bullet)\) are injective resolutions of \(H^qK\), which proves the second equality.
+
+The comparison maps induce the ordinary derived maps \(R^pT(H^qf)\) on \(E_2\). Equation (8A.5), after taking \(q\)-cohomology, is a chain homotopy for the \(p\)-complex on \(E_1\). Consequently two choices induce the same map on \(E_2\), and hence on every later page by the page recursion of Proposition 3A.1. Identities and composition follow from the same uniqueness argument. The maps on \(E_1\) themselves need not be independent of choices.
+
+The total complex \(\operatorname{Tot}I\) is bounded below and termwise injective, because its terms are finite sums of injectives. The augmentation \(K\to\operatorname{Tot}I\) is a quasi-isomorphism: filter by \(q\), take resolution-degree cohomology, and use Proposition 3A.1; only the augmentation row survives. Thus \(T(\operatorname{Tot}I)\) represents \(RT(K)\) by the earlier bounded-below derived-functor theorem, and it equals \(\operatorname{Tot}(TI)\) since \(T\) preserves finite sums. This identifies the abutment in (8A.1).
+
+There is also a direct check of the abutment comparison sign. The operator \(h\) lowers \(p\) by one, and commutes with \(d_q\). On bidegree \((p,q)\) the two mixed terms in \(Dh+hD\) have signs \((-1)^{p-1}\) and \((-1)^p\), so cancel. Therefore
+
+\[
+T(F)-T(G)=D\,T(h)+T(h)D.
+\tag{8A.7}
+\]
+
+The induced total-cohomology maps agree. Each comparison preserves the filtration, so this is also equality of the filtered abutment maps. Comparisons in both directions give inverse filtered isomorphisms, not just isomorphisms of unfiltered objects.
+
+Finally, homotopic maps \(f,g\) have the same maps on \(H^qK\); they therefore have the same maps on \(E_2\) and all subsequent pages. Their abutment maps agree because they are the maps of \(RT\). A quasi-isomorphism induces isomorphisms on \(E_2\) and on the abutment, and hence on all later pages; the finite filtrations make the abutment isomorphism strict, by induction on its graded pieces. The construction thus factors through the bounded-below derived category by the universal property of localization. This proves the asserted naturality and independence. \(\square\)
+
+For the Leray applications take \(K=f_*I\) and \(T=\Gamma(\mathcal F,-)\) or \(T=g_*\). Section 8 proves that the terms of \(K\) are injective in the abelian case, or acyclic for \(T\) in the ringed case. The earlier acyclic-resolution theorem identifies \(RT(K)\) with the required derived composite. Thus (8A.1) yields exactly (8.1) and (8.2), including their natural maps. No assumption that a ringed direct image preserves injectives has been added. If the original injective resolution of the source complex is changed, its comparison maps are homotopy equivalences; their images under \(f_*\) are still homotopy equivalences. The derived-category naturality just proved therefore includes that choice as well as the choice of Cartan–Eilenberg resolution.
 
 ## 9. The base change map
 
@@ -485,7 +665,7 @@ Now resolve an arbitrary module \(M\) by injective modules. Forgetting the actio
 
 ## What this lesson does not prove
 
-The sheafification, local image, generator presentation of sheaves of sets, slice adjunctions and exact abelian inverse-image results are the prerequisites [Sites and sheaves](sites-and-sheaves.md) and [Topoi, morphisms and points](topoi-morphisms-and-points.md). The comparison theorem for ordinary bounded below injective resolutions, long exact derived-functor sequences, acyclic resolutions and universal effaceable \(\delta\)-functors are homological algebra prerequisites; precise statements are [Stacks, Tags 013P, 013S, 015B, 0156, 015E, 015M and 010T]. We use the first quadrant double complex spectral-sequence theorem: its two filtrations converge with a finite filtration in each total degree, and its differentials have bidegree \((r,1-r)\), as in [Stacks, Tags 0130 and 0132]. We use the injective horseshoe and Cartan–Eilenberg resolution existence theorem, with the cycle, boundary and cohomology compatibility described in section 8, at [Stacks, Tags 013T and 015I]. These general homological algebra tools are separate from the site-specific constructions proved here.
+The sheafification, local image, generator presentation of sheaves of sets, slice adjunctions and exact abelian inverse-image results are the prerequisites [Sites and sheaves](sites-and-sheaves.md) and [Topoi, morphisms and points](topoi-morphisms-and-points.md). The comparison theorem for ordinary bounded below injective resolutions, long exact derived-functor sequences, acyclic resolutions and universal effaceable \(\delta\)-functors are supplied by [Theorems 3.3 and 4.1 of the earlier bounded-below derived-functor reading](../../derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#4-right-derived-functors-on-bounded-below-complexes); supplementary statements are [Stacks, Tags 013P, 013S, 015B, 0156, 015E, 015M and 010T]. Proposition 3A.1 and its two-filtration application prove the double-complex spectral-sequence theorem used here: its two filtrations converge with a finite filtration in each total degree, and its differentials have bidegree \((r,1-r)\), as in [Stacks, Tags 0130 and 0132]. We use the injective horseshoe and Cartan–Eilenberg resolution existence theorem, with the cycle, boundary and cohomology compatibility described in section 8, at [Stacks, Tags 013T and 015I]. The existence providers are retained; Proposition 8A.1 supplies their comparison and naturality for the spectral sequences used here. These arguments apply to arbitrary abelian categories with enough injectives.
 
 Compactness of closed bounded real intervals is an elementary real-analysis prerequisite. Section 7 proves the small-diameter cover property it needs, constructs the chain refinement, and proves its Čech contraction and its application to derived cohomology. We do not prove a general comparison with singular cohomology, the higher continuous group-cohomology comparison, or any base change isomorphism. Each has its own later lesson.
 

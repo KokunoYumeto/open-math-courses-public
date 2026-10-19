@@ -2,7 +2,7 @@
 
 *Original exposition and diagram by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New text and diagram: CC0-1.0. Human sources retain their own terms.*
 
-Let \(M\ne0\) be a concrete von Neumann algebra, and let \(\alpha:\mathbb R\to\operatorname{Aut}(M)\) be a point-ultraweakly continuous group of normal automorphisms with a period \(P>0\). Set \(\omega=2\pi/P\) and \(N=M^\alpha\). Inner products follow the second-variable-linear convention of this course. The concrete predual and its dual are proved in H03. Positive roots, supports, arbitrary projection joins and the expression of an operator as a linear combination of unitaries are proved in Sections 8.1–8.5 of the periodic CAR lesson. Scalar Lebesgue integration and the elementary exponential integral are used below.
+Let \(M\ne0\) be a concrete von Neumann algebra, and let \(\alpha:\mathbb R\to\operatorname{Aut}(M)\) be a point-ultraweakly continuous group of normal automorphisms with a period \(P>0\). Set \(\omega=2\pi/P\) and \(N=M^\alpha\). Inner products follow the second-variable-linear convention of this course. The concrete predual and its dual are proved in H03. Positive roots, supports, arbitrary projection joins and the expression of an operator as a linear combination of unitaries are proved in [Sections 8.1–8.5 of the periodic CAR lesson](../src/constant-car-states-and-the-periodic-core.md#8-projection-comparison-and-the-finite-factor-alternative). Scalar Lebesgue integration and the elementary exponential integral are used below.
 
 The classical definitions are Connes's action spectrum and fixed-corner intersection. We prove their periodic specialization directly. The proof does not require a spectrum theorem for arbitrary locally compact groups, a spectral-synthesis theorem, or a general dual-center kernel theorem.
 
@@ -177,7 +177,7 @@ For the faithful constant CAR product with \(0<p<1\), \(p\ne1/2\), put
  \omega=|\log\lambda|,\qquad P=2\pi/\omega.
  \tag{PP16}
 \]
-The periodic lesson constructs a nonzero eigenoperator of every integer degree in equation (6), proves that the fixed algebra is a factor in Theorem 3.2 and Section 10, and gives the entire core center action in Theorems 4.2–5.1 and equations (24)–(27). Therefore (PP2) gives, at exactly that CAR scope,
+The periodic lesson constructs a nonzero eigenoperator of every integer degree in [equation (6)](../src/constant-car-states-and-the-periodic-core.md#1-the-constant-faithful-product-state), proves that the fixed algebra is a factor in [Theorem 3.2 and Section 10](../src/constant-car-states-and-the-periodic-core.md#10-complete-local-expectations-and-the-constant-state-centralizer), and gives the entire core center action in [Theorems 4.2–5.1 and equations (24)–(27)](../src/constant-car-states-and-the-periodic-core.md#4-crossing-by-the-period-circle). Therefore (PP2) gives, at exactly that CAR scope,
 \[
  \Gamma(\sigma^\phi)=\omega\mathbb Z
      =\ker(\theta|_{Z(C)}).

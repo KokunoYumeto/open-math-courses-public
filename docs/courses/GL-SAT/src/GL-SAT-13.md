@@ -20341,13 +20341,500 @@ are different operations. \(\square\)
 
 Theorem C.78.1.1 gives the full tensor-unit mapping restriction; Theorem C.78.2.1 gives canonical entire tensor squares and the lift of supplied native external comparisons. Exercises C.78.3.1–C.78.3.2 check the shifted Hom sign and the full mixed/unit-output words. Editable SVG source.
 
+### C.79. Positive native inputs and fixed covariance
+
+Positive common-input towers retain the full bar unit and every
+ordered pure-state cut. Their actual projection kernels lift the
+whole coherent native operator diagram. Changes of presentation
+must also transport, or preserve, each fixed product and graft map.
+
+#### C.79.1. One positive common-input tower, with the actual pure maps
+
+Let \(C=B\mathcal M\) be the fixed positive minimal IC bar of C34,
+\(U=\Omega C\), and \(v:U\to\mathcal G\) the actual strict dg
+generator quasi-equivalence constructed in Theorem C.68.4.1. Retain its
+finite additive matrix interpretation. For \(m\geq0\), set
+\[
+ \begin{gathered}V_m=\Omega(C^{\otimes m}),\\
+P_m=T(U,\ldots,U).\end{gathered}
+ \tag{C.79.1}
+\]
+At zero factors these are the coefficient category. Define
+\[
+ \begin{gathered}\xi_m:V_m\to P_m,\\
+\xi_m=\Omega(\eta_C^{\otimes m}),\\
+p_m:P_m\to U^{\otimes m},\\
+p_m=(\epsilon_U^{\otimes m})\rho_m.\end{gathered}
+ \tag{C.79.2}
+\]
+The first formula uses the augmented identification of \(P_m\) below;
+the second uses the actual counits and projection of C72 and C76.
+
+**Proposition C.79.1.1 (the actual positive state tower).** These are strict dg
+mapping quasi-isomorphisms. The projection \(p_m\) is graded-surjective,
+and its actual kernel has a finite normalized linear contraction. The
+entire tower is positive on its reduced pure-state generators and satisfies
+\[
+ \begin{gathered}p_m\xi_m=\kappa_m,\\
+\kappa_m:V_m\to U^{\otimes m}.\end{gathered}
+ \tag{C.79.3}
+\]
+For an ordered root partition \(\pi\), its cut maps satisfy
+\[
+ \begin{gathered}\kappa_\pi^P\xi_m\\
+\quad=(\bigotimes_j\xi_{I_j})\kappa_\pi^V,\\
+(\bigotimes_jp_{I_j})\kappa_\pi^P=p_m.\end{gathered}
+ \tag{C.79.4}
+\]
+Thus all pure-state ordered-root input squares agree exactly before any
+capacity or native full face is selected.
+
+The actual geometric attachment is the strict dg quasi-equivalence
+\[
+ \begin{gathered}\chi_m=\zeta_{\mathcal G}T(v,\ldots,v)\xi_m,\\
+\chi_m:V_m\to Q^{\mathrm u}(\mathcal G^{\otimes m}).\end{gathered}
+ \tag{C.79.5}
+\]
+and its exact projection square is
+\[
+ \epsilon_{\mathcal G^{\otimes m}}\chi_m=v^{\otimes m}\kappa_m.
+ \tag{C.79.6}
+\]
+All coefficient and zero-fold maps are their actual identities. The
+structural positive tower is strictly natural under the given pure
+coalgebra maps and their cobar powers, including the calibrated \(g\)
+and \(q=\Omega g\) of C48. No strict square for an attaching geometric
+comparison is asserted when that comparison is given only as a full
+\(A_\infty\) map; its actual higher comparison is retained separately.
+
+**Proof.** The augmentation of \(U\) is its actual positive cobar
+augmentation. Its reduced mappings have degree at least two and are a
+dg ideal. Consequently the normalized quotient description of C74 is
+exactly
+\[
+ P_m=\Omega((B_{\rm red}U)^{\otimes m}).
+ \tag{C.79.7}
+\]
+Indeed its free generators are tuples of nonempty reduced \(U\)-words,
+with the other factors empty. There are no scalar unary or binary
+outputs from this dg augmentation ideal. Its tensor bar differential
+and all proper tensor cuts are therefore precisely that augmented
+cobar differential. This is an equality of the actual free models,
+not an identification made only after taking cohomology.
+
+The unit \(\eta_C:C\to B_{\rm red}U\) is a chain coalgebra
+quasi-isomorphism by Lemma C.39.4.1. Both reduced coalgebras have positive
+degrees. Its finite tensor powers remain quasi-isomorphisms by the split
+tensor contractions of C.30.1, and the positive cobar comparison clause
+of C.39.4.1 applies to them. This proves the assertion for \(\xi_m\).
+The actual projection \(p_m\) is graded-surjective by its pure
+one-letter generator values. C76's projection and C72's tensor counits
+make it a quasi-isomorphism. Its mapping kernel is acyclic; the
+coefficient-linear splitting argument of C.30.1 provides its normalized
+linear contraction. Alternatively its original-letter finite kernel
+contraction follows by the same filtered kernel construction as C75.
+The pure generators in \(P_m\) have degree at least two, since each
+reduced suspended \(U\)-letter has degree at least one. The same
+positive bound holds for \(V_m\) by C34 and C41.
+
+Project \(p_m\xi_m\) on a generator of \(V_m\). If more than one
+original \(C\)-factor is noncoaugmented, every term has support in
+those factors and its \(\rho_m\)-projection is zero. If only factor
+\(i\) is noncoaugmented, the factor unit is the sum of all consecutive
+cobar blocks. Its actual counit keeps exactly its one-letter projection,
+the original \(\mathsf tc\) in factor \(i\). This is the defining
+generator formula for \(\kappa_m\). Coefficients agree. Extending by
+products proves the first exact square.
+
+The same support calculation with groups proves
+\(\kappa_\pi^P\xi_m=(\bigotimes_j\xi_{I_j})\kappa_\pi^V\).
+A generator meeting two groups is killed on both sides. One supported
+in a single group has that same group's entire tensor unit on both
+sides. The factor units do not send a noncoaugmented element to a
+coaugmentation, so this support argument loses no unit term. C76's
+projection regrouping square, followed by the actual factor counits,
+proves the second ordered-cut identity. These are generator identities
+of strict dg functors, so hold on all words and with the actual matrix
+balancing signs.
+
+For the geometric attachment, C74 gives the actual strict
+\(T(v,\ldots,v)\), and strict dg factor naturality in C76 gives
+\[
+ \begin{gathered}p_{\mathcal G}T(v,\ldots,v)\\
+\quad=v^{\otimes m}p_m,\\
+p_{\mathcal G}=(\epsilon_{\mathcal G}^{\otimes m})\rho_{\mathcal G}.\end{gathered}
+ \tag{C.79.8}
+\]
+The right-hand composite is a mapping quasi-isomorphism, and
+\(p_{\mathcal G}\) is one by C72 and C76. Thus
+\(T(v,\ldots,v)\) is one as well. C76's \(\zeta_{\mathcal G}\)
+and the already proved \(\xi_m\) make \(\chi_m\) a mapping
+quasi-isomorphism. Its counit square follows by substituting the exact
+actual shuffle counit square of C76 and then the preceding two strict
+projection identities. No positivity of the intermediate geometric
+dg model or its unaugmented normalized resolution was used.
+
+Finally the explicit unit is natural for a pure coalgebra map, its
+cobar is natural on every generator, and all projections use those
+same pure-factor twisting values. Thus the positive structural tower
+and ordered cuts are strictly natural under the actual \(g\) and
+the powers of \(q=\Omega g\). Its zero-fold instance is the
+coefficient identity. The finite additive extension uses the full
+matrix-unit balanced-tensor calculation in C.38.1, independently of
+any extra geometric comparison. This proves the proposition. \(\square\)
+
+#### C.79.2. Full native lifting through the positive projection
+
+Write \(A_m=U^{\otimes m}\). First retain the actual native diagram
+on these coefficient-linear enhanced input models, as in C.48.2, with
+the complete geometric interpretation supplied by C.68.4. The maps at
+this stage are full normalized unital \(A_\infty\) functors and full
+natural transformations. In particular they are not obtained by taking
+cohomology of the original native operators. Denote an original operator
+by \(F:A_a\to\operatorname{Add}(A_b)\).
+
+For each such operator choose a lift \(\widetilde F:P_a\to
+\operatorname{Add}(P_b)\) with its fixed IC-sum object labels. The
+required projection identity is the equality of entire bar maps
+\[
+ Bp_b\,B\widetilde F=BF\,Bp_a.
+ \tag{C.79.9}
+\]
+For an entire operator-word family \(\widehat\Theta\), let
+\(\Theta\) be its original native family. Its corresponding condition
+is the whole evaluation identity
+\[
+ \begin{gathered}Bp_b\operatorname{ev}(\widehat\Theta\otimes1)\\
+\quad=\operatorname{ev}(\Theta\otimes Bp_a).\end{gathered}
+ \tag{C.79.10}
+\]
+All original operator parameters remain on both sides. Thus this identity
+also specifies every mixed higher output, not just each separately marked
+natural transformation.
+
+**Proposition C.79.2.1 (the positive lift of the actual coherent native diagram).**
+The supplied whole native diagram of C.47.2 has lifts through the
+\(p_m\)'s satisfying these identities. They retain its original joint
+index labels, its formal identities, every higher native composition cell
+and any already chosen compatible union of full generator faces. The
+construction applies to the single supplied calibrated two-endpoint
+comparison as well. On a pure comparison fiber its prescribed map is
+exactly
+\[
+ \begin{gathered}Q_m=T(q,\ldots,q),\\
+p'_mQ_m=q^{\otimes m}p_m.\end{gathered}
+ \tag{C.79.11}
+\]
+Here the primes denote the target positive models from C48; the second
+equation is exact strict-dg naturality. The assertion concerns the native
+operator diagram and its supplied higher comparison. It does not impose
+unwritten external-product or grafting equations.
+
+**Proof.** The object map is fixed using the actual finite IC-sum
+decompositions. Proposition C.79.1.1 gives surjective quasi-isomorphisms on its
+mapping blocks, including their full relative matrix coefficients. The
+normalized functor \(Fp_a\) has a strict representative from
+\(\Omega B_{\rm red}P_a\). Its output is augmented: on \(r\)
+reduced inputs of degrees at least two, its output has degree at least
+\(2r+1-r=r+1\), so cannot be a coefficient identity. On the
+relative coefficient algebra use the actual prescribed identity map.
+
+Lift this strict representative through \(p_b\) by C.46.2. Its free
+generator complex retains the entire unary differential of
+\(B_{\rm red}P_a\); its other differential terms use smaller original
+bar length. The normalized coefficient-linear contraction of
+\(\ker p_b\) therefore corrects the closed defect on that generator
+complex. Precomposing by the actual normalized bar-cobar unit gives
+\(\widetilde F\). The recovery triangle is exact, so its entire
+projection is \(Fp_a\), as required. The relative clause keeps a
+previously assigned differential-stable generator family. A formal
+identity is assigned \(1_{P_a}\), which has the required exact
+projection without any correction.
+
+For two fixed lifts the full normalized Nat projection is
+\[
+ \begin{gathered}(p_b)_*:\\
+\operatorname{Nat}_\infty(\widetilde F,\widetilde G)\\
+\quad\longrightarrow\\
+\operatorname{Nat}_\infty(Fp_a,Gp_a).\end{gathered}
+ \tag{C.79.12}
+\]
+It is graded-surjective with acyclic actual kernel by C.66.3. The
+leading contraction postcomposes every source Taylor value with the
+mapping-kernel contraction of \(p_b\). It includes the complete
+source unary differential. Its remaining perturbation consumes a
+nonempty source piece. Hence its geometric series is finite on every
+original source word. This is the full Nat kernel; no assertion of
+acyclicity of the whole Nat space is being used.
+
+Now order the original positive native index words by their number of
+nonidentity labels. Choose their free resolved parameter generators once,
+keeping every source Taylor component. Their lower faces are built from
+shorter original index words and the complete horizontal operation of
+C69. At a new generator take a graded lift of its supplied native value
+after source \(p_a\). Subtract its already assigned lower-face
+expression from its differential. The resulting defect has zero
+\((p_b)_*\)-image, because the native word satisfies its original
+equation and the lower words have their exact projections. Its differential
+is zero: expanding it gives the square-zero source parameter differential,
+the already established lower equations and the full C69 horizontal chain
+equation. Applying the Nat-kernel contraction corrects that defect.
+
+This step is legitimate at changing frontier types. To see the essential
+closure, take two whole lifted families from \(a\) to \(b\) and
+from \(b\) to \(c\). Evaluate their composite by the nested
+evaluation formula of C.69.2. First apply \(Bp_c\) to the outer
+whole output. Its prescribed identity replaces that outer family by its
+native one evaluated after \(Bp_b\) on the entire inner output.
+The inner identity replaces the latter by its native evaluation after
+\(Bp_a\). The nested evaluation identity now gives precisely the
+native composite after \(Bp_a\). This works before projection to a
+single output, and therefore includes all higher marked and unit-output
+terms. There is no assumed tensor product of arbitrary \(A_\infty\)
+functors in this argument.
+
+For a union of previously chosen full generator faces, the new defect
+vanishes on that union. Regard it as a map from the quotient generator
+complex and use the same output-kernel contraction. The correction then
+vanishes there too. In particular shared original block words receive
+their choice once; their later occurrences are restrictions. This is
+C.46.2's relative argument applied to the actual full Nat kernel, or
+equivalently C74's full boundary-kernel induction. It does not claim that
+arbitrary prescribed homotopy classes on unrelated faces extend.
+
+Formal-identity slots have their normalized values. At an internal such
+slot the two neighboring source-composition terms are the same shorter
+positive word with opposite suspended signs. At an end the corresponding
+source face cancels the ordinary functor identity action. These are all
+terms meeting the identity slot, so the normalized extension satisfies its
+full equation. A positive original label whose native operator happens
+to equal the identity remains a positive parameter letter. It is never
+deleted or identified with a formal identity.
+
+For the calibrated comparison use the one actual C48 two-endpoint
+diagram, with the endpoint retained in the type. Give a comparison arrow
+its additional positive endpoint height. Its positive words have exactly
+the same induction. On its pure comparison fibers fix \(Q_m\)
+above. Its projection square follows from Proposition C.79.1.1's strict
+naturality, so these prescribed free-generator faces already have the
+correct entire projection. The relative construction retains them.
+Every later native comparison cell is the lift of the given cell in this
+same two-endpoint diagram. It is not inferred merely from its bare
+components.
+
+The native joint indices are locally forward finite by C64. For a fixed
+original input, source-word length and the number of original parameter
+letters bound all the perturbation/evaluation sums. Consequently the
+construction is one global assignment on original words; its finite
+forward corners and full faces inherit literal restrictions. The
+zero-frontier input is the coefficient category, while a nullary output
+still has its full target unit-object mapping module. These conventions
+also satisfy the same projection and lifting equations. This proves the
+proposition. \(\square\)
+
+#### C.79.3. Fixed rational marks under a change of presentation
+
+The following algebraic identity distinguishes a change made to both
+presentations from a correction made only to a comparison.
+
+**Proposition C.79.3.1 (transport every actual marked map).** Suppose actual
+source and target presentations \(L,L'\) over \(k\) have
+differentials \(D,D'\) and specified maps
+\(\mu:L^{\otimes r}\supset X\to L^{\otimes s}\),
+\(\mu':(L')^{\otimes r}\supset X'\to(L')^{\otimes s}\).
+The domains are the complete specified domains. Let
+\(N:L\to\overline L\) and
+\(N':L'\to\overline L'\) be actual invertible presentation maps
+defined over \(k\), preserving the prescribed labels and windows.
+Transport every differential, domain and marked map, including all
+multi-input graft marks, by these same maps. If \(G:L_E\to L'_E\)
+is a simultaneous comparison over \(E\), then
+\[
+ \overline G=N'GN^{-1}
+ \tag{C.79.13}
+\]
+is a simultaneous comparison of the transported presentations, which are
+still defined over \(k\). Its restrictions and leading coordinates are
+the corresponding transported ones.
+
+In contrast, if \(A\) is only a chain automorphism of the target,
+then \(AG\) retains the *original fixed* graft marks precisely when
+\[
+ A^{\otimes s}\mu'=\mu'A^{\otimes r}
+ \tag{C.79.14}
+\]
+on their actual domains. Chain compatibility alone is insufficient.
+
+**Proof.** Set
+\(\overline D=NDN^{-1}\) and
+\(\overline\mu=N^{\otimes s}\mu(N^{-1})^{\otimes r}\),
+with domain \(N^{\otimes r}X\), and similarly on the target.
+The differential equality is
+\[
+ \begin{gathered}\overline D'\overline G=N'D'GN^{-1}\\
+=N'GDN^{-1}=\overline G\overline D.\end{gathered}
+ \tag{C.79.15}
+\]
+On the full transported domain, substitute the same inverse pairs into
+the marked-map equation. Write \(R=(N')^{\otimes s}\) and \(S=(N^{-1})^{\otimes r}\). This gives
+\[
+ \begin{gathered}\overline G^{\otimes s}\overline\mu\\
+=R(G^{\otimes s}\mu)S\\
+=R(\mu'G^{\otimes r})S\\
+=\overline\mu'\overline G^{\otimes r}.\end{gathered}
+ \tag{C.79.16}
+\]
+These identities retain every intermediate tensor factor. Degree-zero
+presentation maps introduce exactly the original graded tensor signs.
+They prove all marks simultaneously, including nullary marks. Their
+coefficients and the transported domains are over \(k\), since
+\(N,N'\) and both original presentations are. Any shared-face or
+window restriction preserved by these maps restricts the same equations.
+Leading components are obtained by taking the leading components in the
+same formula.
+
+For the final assertion use the known equality
+\(G^{\otimes s}\mu=\mu'G^{\otimes r}\).
+The equality for \(AG\), followed by \((G^{-1})^{\otimes r}\)
+on its complete transported domain, is exactly the displayed covariance
+condition on \(A\). The converse follows by substitution. Thus an
+extension-field conjugate of the target marks cannot silently replace
+the fixed rational target marks in a descent problem. \(\square\)
+
+#### C.79.4. Solved positive-unit, native-path and covariance calculations
+
+**Exercise C.79.4.1 (the nonprimitive unit term; intermediate).** Let
+\(C=k1\oplus kc\oplus kd\), with degrees \(0,1,2\), zero
+differential and \(\overline\Delta d=c\otimes c\). Put
+\(U=\Omega C=T(x,z)\), where \(|x|=2,|z|=3\) and
+\(dz=x^2\). In \(P_1=\Omega B_{\rm red}U\), set
+\[
+ \begin{gathered}X=\mathsf t(sx),\\
+Z=\mathsf t(sz),\\
+Y=\mathsf t(s(x^2)),\\
+H=\mathsf t(sx|sx).\end{gathered}
+ \tag{C.79.17}
+\]
+Compute the unit image of \(z\), its differential and the failure of
+the formula which keeps just \(Z\).
+
+**Solution.** The internal unary term of \(Z\) is \(Y\).
+For \(H\) the bar binary term is \(-Y\), since \(|sx|=1\),
+and its cobar cut term is \(+X^2\). Thus
+\[
+ \begin{gathered}DZ=Y,\\
+DH=X^2-Y,\\
+D(Z+H)=X^2.\end{gathered}
+ \tag{C.79.18}
+\]
+The full coalgebra unit has
+\(\eta_C(d)=sz+sx|sx\), so \(\xi_1(z)=Z+H\).
+This is a chain map on the free generator \(z\), and therefore on
+the whole free dg algebra. The incomplete value \(Z\) has defect
+\(Y-X^2\), which is nonzero: a single generator with original
+\(U\)-letter \(x^2\) and a product of two generators are distinct
+basis words. The actual projection gives
+\(p_1Z=z,p_1H=0,p_1Y=x^2\), and hence
+\(p_1\xi_1(z)=z\). It detects neither a license to omit \(H\)
+nor equality of the two source basis words. \(\square\)
+
+**Exercise C.79.4.2 (a nonzero positive native path; advanced).** Add a primitive
+\(e\) of degree three to \(C\). Its cobar generator \(w\) has
+degree four and zero differential. Let \(W=\mathsf t(sw)\) in
+the new \(P_1\). Define two functors from
+\(T(x,z,w)\), with \(dz=x^2\), by
+\[
+ \begin{gathered}F_0(x)=X,\\
+F_1(x)=X,\\
+F_0(z)=Z+H,\\
+F_1(z)=Z+H,\\
+F_0(w)=W,\\
+F_1(w)=W+DH.\end{gathered}
+ \tag{C.79.19}
+\]
+Construct their actual path lift and show why its third component cannot
+be dropped.
+
+**Solution.** Both assignments are dg functors: the only nonzero generator
+differential was checked in Exercise C.79.4.1, and \(D(W+DH)=0\).
+Use the path dg category of C.50.3 on the identity object. Its maps are
+\((f,g,a)\), with
+\[
+ \begin{gathered}D\begin{pmatrix}f\\
+g\\
+a\end{pmatrix}\\
+=\begin{pmatrix}Df\\
+Dg\\
+-Da+f-g\end{pmatrix}.\end{gathered}
+ \tag{C.79.20}
+\]
+Send \(x,z,w\), respectively, to
+\[
+ \begin{gathered}(X,X,0),\\
+(Z+H,Z+H,0),\\
+(W,W+DH,-H).\end{gathered}
+ \tag{C.79.21}
+\]
+On the last generator its third differential is
+\(DH+W-(W+DH)=0\). The image of the \(z\) differential
+is the square of the image of \(x\). Thus these assignments extend
+to a strict dg functor on the entire free input algebra. Its product
+third component, for homogeneous left input of degree \(r\), is
+\(a_2f_1+(-1)^r g_2a_1\); this determines all longer-word
+components and includes the actual unit \((1,1,0)\).
+
+Both projections followed by \(p_1\) are exactly the identity
+input functor; the third component has zero \(p_1\)-image, since
+\(p_1H=0\). This is therefore an actual positive lift of one
+projected comparison. Dropping its third component on \(w\)
+leaves the nonzero third-slot defect \(-DH=Y-X^2\).
+Equality of the two projected functors alone does not supply that missing
+term. \(\square\)
+
+**Exercise C.79.4.3 (chain and coalgebra equations do not imply covariance;
+advanced).** Let \(T^c(ka\oplus kb)\) have deconcatenation,
+\(|a|=1,|b|=3\), zero differential and its signed shuffle product.
+Let \(A\) be the cofree coalgebra map with primitive components
+\(A_1=1\), \(A_3(a,a,a)=b\), all its other nonlinear primitive
+values zero. Show that it is a degree-zero chain coalgebra automorphism
+with identity leading map, but does not preserve this fixed product.
+
+**Solution.** Its full formula is the sum over consecutive partitions
+whose blocks are either single letters or the triple \(aaa\),
+replacing each such triple by \(b\). Cutting an output word is
+equivalent to cutting between two consecutive input blocks. This proves
+the coalgebra equation including the coaugmentation. Every nonlinear
+replacement lowers letter length by two and preserves degree, so the
+finite geometric inverse exists on every input word. The differential
+is zero, hence it and its inverse are chain maps. In particular
+\(A(a)=a,A(a|a)=a|a\) and
+\(A(a|a|a)=a|a|a+b\).
+
+There are three signed shuffles of \(a\) with \(a|a\), with
+coefficients \(+1,-1,+1\). Therefore
+\[
+ \begin{gathered}a\mathbin{\operatorname{sh}}(a|a)=a|a|a,\\
+A(a\mathbin{\operatorname{sh}}(a|a))\\
+\quad=a|a|a+b,\\
+A(a)\mathbin{\operatorname{sh}}A(a|a)\\
+\quad=a|a|a.\end{gathered}
+ \tag{C.79.22}
+\]
+Their difference is the nonzero primitive \(b\). Thus even the
+chain, coalgebra, inverse and leading-component conditions together do
+not imply the fixed-product equation of Proposition C.79.3.1. \(\square\)
+
+![The nonprimitive positive unit retains its higher term; an actual native path retains its third component, and a chain coalgebra map has a separate fixed-covariance equation](assets/positive-native-graphs.png)
+
+Propositions C.79.1.1–C.79.3.1 prove the positive state tower, the full native projection lift and transport of fixed rational marks. Exercises C.79.4.1–C.79.4.3 compute the nonprimitive unit, a nonzero positive path and a shuffle-covariance counterexample. Editable SVG source.
+
 ## 11. Scope and free reading
 
 Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
 
 Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model transfer,Frobenius formality and spherical generator envelopes. Appendix B treats the polynomial Kostant slice,the universal centralizer,equivariant coherent restriction and composition on free dual polynomial generators. Appendix C.1–C.29 develops the geometric generator mapping comparison,finite-jet and constant-group comparisons,the graded tensor cohomology functor,determinant and primitive cup operators,geometric Kostant modules,and the arithmetic enhanced symmetric monoidal finite-envelope equivalence. Its Betti and trait comparisons retain the full action nerves,trace normalizations and ordered convolution data.
 
-Appendix C.30–C.78 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams. Actual dg model bridges retain geometric object representatives and give relative fixed-outer-type native operator diagrams without requiring source augmentations. Full marked evaluation gives entire associative horizontal substitution, retaining the mixed cochain homotopy and nonlinear model-change terms. A full-differential relative contraction preserves the complete split source image and yields exact unit comparisons for transport across changing intermediate types. The actual native joint diagram has normalized formal units, retains every positive index label, and carries its supplied full comparison through the model bridges. Normalized unital cobar models retain actual scalar constants and give strict dg operator objects with exact composition and full unit naturality. Their full transformation restriction has an exact section, a contracted kernel and an entire projected horizontal comparison. Full tensor-parameter categories and relative coherent cube extensions retain prescribed compatible boundaries and all original unary and unit data. Their actual binary tensor projection has a finite kernel contraction, and the full shuffle gives a common unital tensor input with the exact counit square. Finite ordered families share exact regrouping and multishuffle squares, with one contraction compatible with all ordered tensor cuts. Entire projected evaluation is preserved under composition, yielding compatible strictly unital native sequential operator cubes with their full parameter restrictions. Full tensor-unit mapping restriction retains all transformation classes and primitives, and its exact tensor squares lift supplied native external comparisons.
+Appendix C.30–C.79 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams. Actual dg model bridges retain geometric object representatives and give relative fixed-outer-type native operator diagrams without requiring source augmentations. Full marked evaluation gives entire associative horizontal substitution, retaining the mixed cochain homotopy and nonlinear model-change terms. A full-differential relative contraction preserves the complete split source image and yields exact unit comparisons for transport across changing intermediate types. The actual native joint diagram has normalized formal units, retains every positive index label, and carries its supplied full comparison through the model bridges. Normalized unital cobar models retain actual scalar constants and give strict dg operator objects with exact composition and full unit naturality. Their full transformation restriction has an exact section, a contracted kernel and an entire projected horizontal comparison. Full tensor-parameter categories and relative coherent cube extensions retain prescribed compatible boundaries and all original unary and unit data. Their actual binary tensor projection has a finite kernel contraction, and the full shuffle gives a common unital tensor input with the exact counit square. Finite ordered families share exact regrouping and multishuffle squares, with one contraction compatible with all ordered tensor cuts. Entire projected evaluation is preserved under composition, yielding compatible strictly unital native sequential operator cubes with their full parameter restrictions. Full tensor-unit mapping restriction retains all transformation classes and primitives, and its exact tensor squares lift supplied native external comparisons. Positive native input towers and whole projection lifts retain the original native higher cells; fixed rational product and graft marks have their separate covariance equations.
 
 A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires the transferred profile-changing joint-execution and external grafting data,with every higher covariance equation on its complete compatible domain. The fixed-profile restriction result does not identify those domains with independent root products. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 

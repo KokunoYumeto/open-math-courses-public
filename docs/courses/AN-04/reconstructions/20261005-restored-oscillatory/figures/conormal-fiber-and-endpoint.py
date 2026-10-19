@@ -1,15 +1,16 @@
 """Exact conormal model and dyadic endpoint; no numerical theorem inference."""
 from pathlib import Path
-import datetime, hashlib, json, shutil
+import datetime, hashlib, json
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import numpy as np
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / 'courses/AN-04/public/src').is_dir())
-DEST = ROOT / 'courses/AN-04/revisions/20261004-open-oscillatory-distributions/figures'
-DEST.mkdir(parents=True, exist_ok=True)
+DEST = Path(__file__).resolve().parent
+notice = DEST / 'notices/LICENSE_DEJAVU.txt'
+if not notice.is_file():
+    raise FileNotFoundError('Keep notices/LICENSE_DEJAVU.txt beside this generator.')
 plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 12,
                      'svg.fonttype': 'path', 'svg.hashsalt': 'AN04-U003-conormal-endpoint-v1',
                      'axes.spines.top': False, 'axes.spines.right': False})
@@ -82,10 +83,10 @@ fig.savefig(png, dpi=140, metadata={'Software': 'Matplotlib; independently autho
 fig.savefig(svg, metadata={'Date': None, 'Creator': 'Matplotlib; independently authored AN04-U003 teaching figure',
                           'Description': 'Fixed-base covector projection and exact normal delta dyadic endpoint.'})
 font = Path(fm.findfont('DejaVu Sans'))
-notice = ROOT / 'courses/AN-04/public/src/figures/notices/LICENSE_DEJAVU.txt'
-(DEST / 'notices').mkdir(exist_ok=True)
-shutil.copyfile(notice, DEST / 'notices/LICENSE_DEJAVU.txt')
-shutil.copyfile(Path(__file__), DEST / 'conormal-fiber-and-endpoint.py')
+# The retained local notice accompanies the embedded DejaVu outlines.
+
+
+
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
 labels = [t.get_text() for t in fig.findobj(matplotlib.text.Text) if t.get_text()]
 fig.canvas.draw()
@@ -105,9 +106,9 @@ record = {'schema': 'an04-u003-conormal-endpoint-figure/v1',
           'source_sha256': sha(Path(__file__)), 'svg_sha256': sha(svg), 'png_sha256': sha(png),
           'labels': labels, 'labels_sha256': hashlib.sha256(json.dumps(labels, ensure_ascii=False).encode()).hexdigest(),
           'canvas':canvas, 'label_boxes':text_boxes, 'all_labels_inside_canvas':True,
-          'font': {'family': 'DejaVu Sans', 'actual_font_path': str(font).replace('\\', '/'),
+          'font': {'family': 'DejaVu Sans', 'font_filename': font.name,
                    'actual_font_sha256': sha(font), 'full_notice_sha256': sha(notice),
-                   'actually_used_font_files':[{'path':p.replace('\\','/'),'sha256':sha(p)} for p in font_files],
+                   'actually_used_font_files':[{'filename':Path(p).name,'sha256':sha(p)} for p in font_files],
                    'svg_glyph_policy': 'DejaVu outlines embedded as SVG paths; no remote fonts.'},
           'mathematical_scope': {'base': 'R^2', 'submanifold': 'x1=0', 'phase': 'x1 theta',
              'nonzero_conormal': '(0,x2;theta,0), theta!=0', 'scalar_order': '1/2-2/4=0',
@@ -119,5 +120,5 @@ record = {'schema': 'an04-u003-conormal-endpoint-figure/v1',
           'proof_locators': ['AN04-U002 §5, Theorem 5.1; §8 conormal model',
                              'AN04-U003 §6, (6.1)–(6.4); Exercises 7.1 and 7.2'],
           'actual_visual_inspection_pending': True}
-(ROOT / 'work/oscillatory-native-reader/figure.json').write_text(json.dumps(record, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
+(DEST / 'conormal-fiber-and-endpoint-record.json').write_text(json.dumps(record, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
 print(json.dumps({k:record[k] for k in ['svg_sha256','png_sha256','labels_sha256']}))

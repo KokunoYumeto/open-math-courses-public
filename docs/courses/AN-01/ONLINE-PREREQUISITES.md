@@ -18,3 +18,11 @@ Each result used by a lesson has its proof locally or in an exact supplied earli
 - [Weierstrass preparation and division](prerequisites/U011-free-foundations/weierstrass-preparation-U070.html) · [editable source](prerequisites/U011-free-foundations/weierstrass-preparation-U070.md) · CC0 1.0
 
 [The HA-LCA quotient/lattice route](prerequisites/HA-LCA-724d1a8/AN01-INTEGRATION.html) includes its complete provider edition and precise record of the 192 proof blocks checked for AN-01.
+
+- [Smooth pullback and the Fourier normal condition](reader/AN01-U083-prerequisite.html): complete AN-03 Sections18.1–18.5, with the programme foundation proofs used for noncharacteristic pullback, coordinate changes and submersions. CC0.
+
+- [Supporting quadratics and nearest-point normals](reader/AN01-U085-prerequisite.html): complete geometric arguments from AN-03 Sections1 and7 on strict quadratic support and nearest-point normals, with their programme calculus proofs. CC0.
+
+- [Contour identity for holomorphic approximation](prerequisites/U011-free-foundations/contour-homotopy-U095.html): exact AN-04 Section A2 identity, determinant proof and cutoff discussion. CC0.
+
+- [Smooth parameter slices from the normal condition](reader/AN01-U101-prerequisite.html): complete AN-03 Section18.6, identifying the actual strong smooth distribution family and its normal restrictions, with all preceding proofs supplied. CC0.

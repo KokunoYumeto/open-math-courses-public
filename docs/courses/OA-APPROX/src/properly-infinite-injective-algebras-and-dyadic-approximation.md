@@ -1,6 +1,6 @@
 # Properly infinite injective algebras and dyadic approximation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*AI-generated exposition by OpenAI GPT models. CC0-1.0 to the extent of rights held.*
 
 Finite completely positive models record operators in a matrix algebra. In a properly infinite algebra, their reconstruction map can be implemented by one isometry. Approximating that isometry by unitaries then moves the matrix algebra itself into a position that approximates the original operators.
 
@@ -24,7 +24,69 @@ Here \(\varphi\) is a normal state, and \(\xi_\varphi\) is the unit cyclic vecto
 
 The normality of this representation can be checked directly. Its coefficients on quotient vectors represented by bounded \(a,b\) are \(x\mapsto\varphi(b^*xa)\), which are normal by the predual coefficient and bounded multiplication proofs. Approximating arbitrary GNS vectors by these quotient vectors gives convergence in functional norm of the coefficients, using Cauchy–Schwarz and the norm bound for the representation. The predual is norm closed, so every vector coefficient is normal. Square-summable coefficient series converge in functional norm too, which proves ultraweak continuity of the representation on its entire domain. If \(\varphi\) is faithful, its GNS vector is separating, the representation is faithful, and the faithful normal range and inverse theorem identifies its image as a von Neumann algebra. In the nonfaithful case only the representation and its normal coefficients are needed.
 
-## 1. A unitary can converge strongly to an isometry
+We first implement a finite CP reconstruction by one compression and turn that compression into approximation by a conjugated matrix algebra. The dyadic construction then fills a small defect, replaces finite algebras by matrix factors, and closes an exactly nested sequence.
+
+<a id="4-a-finite-cp-reconstruction-is-one-compression"></a>
+
+## Finite CP reconstruction inside the algebra
+
+<a id="finite-matrix-coordinate-model"></a>
+
+### Matrix coordinates and the properly infinite commutant
+
+Let \(e_{ij}\), \(1\le i,j\le d\), be a unital matrix system in \(M\), put \(p=e_{11}\), and let \(D\) be its linear span. The maps
+\[
+\begin{aligned}
+\Phi(x)&=[e_{1i}xe_{j1}]_{i,j}\in M_d(pMp),\\
+\Psi([b_{ij}])&=\sum_{i,j}e_{i1}b_{ij}e_{1j}\in M
+\end{aligned}
+\tag{C1}
+\]
+are inverse unital \*-homomorphisms. For example, the \((i,j)\) coordinate of \(\Phi(x)\Phi(y)\) is
+\[
+\sum_k e_{1i}xe_{k1}e_{1k}ye_{j1}
+=e_{1i}x\Bigl(\sum_ke_{kk}\Bigr)ye_{j1}
+=e_{1i}xye_{j1}.
+\]
+The adjoint identity follows by interchanging the indices. Substituting the two formulas into one another gives the identity maps, using \(pb_{ij}p=b_{ij}\). Both maps are normal because each coordinate is a finite sum of fixed left and right multiplications, whose normality was proved among the coefficient foundations. Both are contractive by the C\*-homomorphism norm theorem, so they are isometric inverses.
+
+Commutation with all \(e_{ij}\) is equivalent under \(\Phi\) to being a constant diagonal matrix. In detail, commutation with \(e_{ii}\) kills every off-diagonal entry, and commutation with \(e_{ij}\) equates the two corresponding diagonal entries. Consequently
+\[
+\theta(b)=\sum_i e_{i1}be_{1i},\qquad
+b\in pMp,
+\tag{C2}
+\]
+is a normal unital \*-isomorphism onto \(C=D'\cap M\), with inverse \(c\mapsto pcp\). Every \(x\in M\) has the finite expansion
+\[
+x=\sum_{i,j}\theta(e_{1i}xe_{j1})e_{ij}.
+\tag{C3}
+\]
+Indeed its \((i,j)\) summand is \(e_{ii}xe_{jj}\), and the diagonal projections sum to one.
+
+Suppose now that \(M\) is properly infinite. We show that \(p\) is properly infinite in its corner. A central projection \(z\) of \(pMp\) corresponds, through the constant diagonal matrix and \(\Psi\), to the central projection \(Z=\theta(z)\) of \(M\). If \(z\ne0\) were finite, its \(d\) orthogonal translates \(e_{i1}ze_{1i}\) would be finite by equivalence. Their sum \(Z\ne0\) would be finite by the finite-join consequence PC-6. This would be a nonzero finite central part of \(M\), a contradiction. The finite central-part criterion PC-5 therefore makes \(p\) properly infinite.
+
+Repeated halving partitions \(p\) into \(d\) projections, each equivalent to \(p\). Each is then equivalent to the corresponding \(e_{ii}\). Adding their implementing partial isometries gives \(v^*v=1\) and \(vv^*=p\). Thus \(p\sim1\), and
+\[
+x\longmapsto vxv^*
+\]
+is a normal \*-isomorphism from \(M\) onto \(pMp\), with normal inverse \(b\mapsto v^*bv\). Together with \(\theta\), this proves \(C\cong pMp\cong M\). In particular the relative commutant is properly infinite. Normal \*-isomorphisms with normal inverses preserve the sigma-strong\* neighborhoods: each defining normal positive functional pulls back to one, and multiplication and adjoints are preserved. They therefore also preserve local AFD. These facts will supply both the one-isometry implementation and the later exact dyadic containment.
+
+**Lemma 4.1.** Let \(D\cong M_m\) be a unital subfactor of \(M\). Every cp \(T:D\to M\) has
+\[
+T(x)=\sum_{k,\ell=1}^m a_{k\ell}^*xa_{k\ell}.
+\tag{9}
+\]
+If \(M\) is properly infinite, it also has \(T(x)=v^*xv\) for one \(v\in M\). If \(T\) is unital, \(v\) is an isometry.
+
+**Proof.** The Choi matrix \([T(e_{ij})]\) is positive. Write its positive square root as \([b_{ki}]\), so \(T(e_{ij})=\sum_kb_{ki}^*b_{kj}\). Put \(a_{k\ell}=\sum_i e_{i\ell}b_{ki}\). Matrix-unit multiplication gives
+\[
+a_{k\ell}^*e_{ij}a_{k\ell}=b_{ki}^*e_{\ell\ell}b_{kj}.
+\]
+Summing \(k,\ell\) proves (9). The matrix-coordinate argument above makes \(D'\cap M\) properly infinite in the properly infinite case. Choose \(m^2\) isometries \(s_{k\ell}\) there with orthogonal ranges, and set \(v=\sum s_{k\ell}a_{k\ell}\). Commutation with \(D\) and \(s_{k\ell}^*s_{rs}=\delta_{kr}\delta_{\ell s}1\) give \(v^*xv=T(x)\). At \(x=1\) the unital case gives \(v^*v=1\). \(\square\)
+
+<a id="1-a-unitary-can-converge-strongly-to-an-isometry"></a>
+
+## Unitary implementation and local finite approximation
 
 **Lemma 1.1.** In any von Neumann algebra \(M\), the sigma-strong closure of \(\mathcal U(M)\) is the set of isometries.
 
@@ -50,86 +112,6 @@ The same estimate in a countable Hilbert-space amplification proves sigma-strong
 
 An isometry with nonzero range defect cannot be a strong* limit of unitaries: strong* convergence would give both \(v^*v=1\) and \(vv^*=1\). We will use only the strong convergence in Lemma 1.1.
 
-**Lemma 1.2.** In a properly infinite \(M\), there are isometries \(u_n\to1\) sigma-strong* whose defects \(q_n=1-u_nu_n^*\) satisfy \(q_n\sim1\) and \(q_n\to0\) sigma-strong.
-
-**Proof.** Choose orthogonal \(p_j\sim1\) with sum one, and put \(r_n=\sum_{j\ge n}p_j\). Both \(r_n\) and \(r_n-p_n\) are equivalent to one: each dominates a projection equivalent to one and is bounded above by one. Projection Schroeder–Bernstein gives the assertion. Choose \(a_n\) with \(a_n^*a_n=r_n\), \(a_na_n^*=r_n-p_n\), and put \(u_n=1-r_n+a_n\). Then \(u_n^*u_n=1\), \(q_n=p_n\), and
-\[
-\|(1-u_n)\eta\|\le2\|r_n\eta\|,\qquad
-\|(1-u_n^*)\eta\|\le2\|r_n\eta\|,\qquad
-\|q_n\eta\|\le\|r_n\eta\|.
-\tag{4}
-\]
-The tails decrease strongly to zero; square-summable vector tests give the stated topologies. Thus the errors can be made small on any prescribed finite collection of vectors at once. \(\square\)
-
-## 2. Membership from possibly unbounded approximants
-
-**Lemma 2.1.** Let \(N\subset M\) be a unital von Neumann subalgebra and \(\varphi\) a faithful normal state. If \(x_n\in N\) and \(\|x_n-x\|_\varphi^\#\to0\), then \(x\in N\). No bound on \(\|x_n\|\) is required.
-
-**Proof.** Splitting real and imaginary parts reduces to self-adjoint \(x_n,x\). Set \(\eta=(x+i)\xi_\varphi\). Resolvent multiplication gives
-\[
-\bigl((x_n+i)^{-1}-(x+i)^{-1}\bigr)\eta
-=(x_n+i)^{-1}(x-x_n)\xi_\varphi\longrightarrow0,
-\tag{5}
-\]
-because the first resolvent has norm at most one. The vector \(\eta\) is separating for \(M\): if \(b\eta=0\), faithfulness of \(\varphi\) implies \(b(x+i)=0\), hence \(b=0\).
-
-A separating vector is cyclic for \(M'\). Indeed the projection onto \(\overline{M'\eta}\) belongs to \(M\); its complement annihilates \(\eta\) and is therefore zero. A uniformly bounded sequence in \(M\) converging on \(\eta\) converges strongly on \(M'\eta\), by commutation, and then on the whole Hilbert space by density. This applies to the resolvent differences in (5). Their limit \((x+i)^{-1}\) belongs to \(N\). A unital C*-subalgebra is inverse closed; inverting this element shows \(x+i\in N\), hence \(x\in N\). Apply this conclusion to both self-adjoint parts. \(\square\)
-
-The same cyclic-commutant argument shows that, on bounded sets, the seminorm (1) for a faithful normal state determines sigma-strong* convergence. It does not assert that the original unbounded approximants in Lemma 2.1 converge in that topology.
-
-## 3. Replacing a finite algebra by a dyadic subfactor
-
-**Lemma 3.1.** If a properly infinite algebra is locally AFD, every finite set can be approximated in any sigma-strong* neighborhood by a unital matrix subfactor \(M_{2^k}\). Its size can be required to exceed any fixed bound.
-
-**Proof.** First approximate by a finite-dimensional unital algebra \(D\), adjoining \(1\) if necessary. Write its matrix systems as \(e_{ij}^{(a)}\), with block sizes \(d_a\), and put \(t=\sum_a d_a\). Lemma 1.2 gives an isometry \(u\) close enough to one that \(uzu^*\) is close to \(z\) for each of the finitely many chosen \(z\in D\), with small defect \(q=1-uu^*\sim1\).
-
-Choose \(2^k>t\). Partition \(q\) into \(2^k\) projections equivalent to one. For the first \(t\) projections choose block matrix systems \(g_{ij}^{(a)}\) with the same sizes as \(D\). Then
-\[
-f_{ij}^{(a)}=ue_{ij}^{(a)}u^*+g_{ij}^{(a)}
-\tag{6}
-\]
-are orthogonal block matrix systems. For \(z=\sum\lambda_{ij}^{(a)}e_{ij}^{(a)}\), put \(\rho(z)=\sum\lambda_{ij}^{(a)}g_{ij}^{(a)}\). This *-homomorphism has norm at most one, range supported on \(q\), and
-\[
-\rho(z)^*\rho(z),\ \rho(z)\rho(z)^*\le\|z\|^2q.
-\tag{7}
-\]
-Thus \(\rho(z)\) tends to zero in every specified strong* test as \(q\) does. The new approximant \(uzu^*+\rho(z)\) is close to \(z\).
-
-Every diagonal projection in (6) is equivalent to one, since it dominates the corresponding \(g_{ii}^{(a)}\sim1\). Include the unused defect projections too. There are \(2^k\) mutually equivalent diagonals summing to one. They extend to a full matrix system respecting all the prescribed block connections: choose a reference diagonal, connect it to the first diagonal of each block, and use that block's existing matrix units to connect to its other diagonals. If these connecting partial isometries are \(v_j\), the operators \(v_iv_j^*\) are the desired system. Its span contains every new approximant. Choosing the original error and the two new errors sufficiently small proves the lemma. \(\square\)
-
-**Theorem 3.2.** For properly infinite \(M\) with separable predual, local AFD is equivalent to generation by an increasing sequence \(A_k\cong M_{2^k}\).
-
-**Proof.** An increasing generating sequence gives local approximation by bounded density on its support corner. Conversely choose a faithful normal state \(\varphi\) and a sigma-strong* dense sequence \((x_j)\) in the unit ball.
-
-Here are explicit countability arguments. Choose a countable norm-dense family of positive normal states and take their convex sum with strictly positive summable coefficients. Positive normal functionals separate the positive cone, so this sum is faithful as well as normal. The unit ball is compact metrizable for the weak* topology, by the separable-predual dual-ball theorem. Take a countable weak* dense subset. Its rational convex combinations remain a countable set of contractions. In the faithful normal GNS representation, the map taking \(x\) to the pair \(x\xi_\varphi,x^*\xi_\varphi\) is real-linear and weakly continuous on the unit ball: testing either coordinate gives normal vector coefficients. The weak closure of a convex subset of a real Hilbert space equals its norm closure, by the Hilbert separation proof. Thus those rational convex combinations are dense for the faithful-state seminorm (1). The cyclic-commutant argument following Lemma 2.1 identifies that topology with sigma-strong* convergence on bounded sets. Enumerating this countable family gives the required \((x_j)\); no assertion about the boundedness of later reconstructed approximants is used.
-
-Suppose a unital dyadic subfactor \(A\cong M_d\) has already been chosen, with units \(e_{ij}\). Matrix coordinates identify
-\[
-M\cong M_d\bar\otimes e_{11}Me_{11},\qquad
-C=A'\cap M\cong e_{11}Me_{11}.
-\tag{8}
-\]
-The projection \(e_{11}\) is properly infinite. A finite nonzero central cut of it would make the corresponding sum of its \(d\) equivalent cuts finite, contrary to proper infiniteness of \(M\). A properly infinite projection absorbs finitely many equivalent copies of itself; consequently \(e_{11}\sim1\). Thus \(C\cong M\), so \(C\) is properly infinite and locally AFD.
-
-Write the next finitely many \(x_j\)'s as \(\sum_{r,s}b_{rs}^{(j)}e_{rs}\), with \(b_{rs}^{(j)}\in C\). Multiplication by any fixed operator is continuous for sigma-strong*: its seminorms are bounded by finitely many seminorms obtained from normal positive functionals. Lemma 3.1 in \(C\) therefore gives a dyadic \(B\subset C\) and coefficients in \(B\) whose reconstructed sums approximate the \(x_j\)'s within \(1/n\) in (1). The algebra \(A\vee B\cong A\otimes B\) is a larger dyadic factor containing \(A\) exactly. This constructs increasing \(N_n\), with approximants to the first \(n\) elements and errors tending to zero.
-
-Let \(P=(\bigcup_nN_n)''\). Lemma 2.1 puts every \(x_j\) in \(P\), without imposing bounds on the reconstructed sums. Density and closedness give \(P=M\). Between successive dyadic matrix sizes insert the missing \(M_2\) tensor levels of their finite-dimensional relative commutants, and insert the initial levels inside \(N_1\). This gives all the sizes \(2^k\). \(\square\)
-
-## 4. A finite CP reconstruction is one compression
-
-**Lemma 4.1.** Let \(D\cong M_m\) be a unital subfactor of \(M\). Every cp \(T:D\to M\) has
-\[
-T(x)=\sum_{k,\ell=1}^m a_{k\ell}^*xa_{k\ell}.
-\tag{9}
-\]
-If \(M\) is properly infinite, it also has \(T(x)=v^*xv\) for one \(v\in M\). If \(T\) is unital, \(v\) is an isometry.
-
-**Proof.** The Choi matrix \([T(e_{ij})]\) is positive. Write its positive square root as \([b_{ki}]\), so \(T(e_{ij})=\sum_kb_{ki}^*b_{kj}\). Put \(a_{k\ell}=\sum_i e_{i\ell}b_{ki}\). Matrix-unit multiplication gives
-\[
-a_{k\ell}^*e_{ij}a_{k\ell}=b_{ki}^*e_{\ell\ell}b_{kj}.
-\]
-Summing \(k,\ell\) proves (9). In the properly infinite case, (8) makes \(D'\cap M\) properly infinite. Choose \(m^2\) isometries \(s_{k\ell}\) there with orthogonal ranges, and set \(v=\sum s_{k\ell}a_{k\ell}\). Commutation with \(D\) and \(s_{k\ell}^*s_{rs}=\delta_{kr}\delta_{\ell s}1\) give \(v^*xv=T(x)\). At \(x=1\) the unital case gives \(v^*v=1\). \(\square\)
-
 **Theorem 4.2.** Every properly infinite injective von Neumann algebra is locally AFD. If its predual is separable, it is generated by an increasing dyadic sequence as in Theorem 3.2.
 
 **Proof.** Semidiscreteness supplies normal ucp recording maps \(S_i:M\to M_{m_i}\) and cpc reconstruction maps \(T_i\), with \(T_iS_i\to\mathrm{id}\) sigma-strong* pointwise. Both maps can be made unital. Choose a state \(\omega_i\) on \(M_{m_i}\) and replace
@@ -153,37 +135,80 @@ Indeed its difference from \(1\) is bounded by \(\|(v^*z_jv-U_j)\xi_\varphi\|\).
 <\bigl(2(\sqrt2+1)\theta\bigr)^{1/2}.
 \tag{12}
 \]
-Taking \(\theta\) sufficiently small gives the desired approximation inside the finite-dimensional subfactor \(w^*Dw\). No faithful state or separability was needed for this local conclusion. Apply Theorem 3.2 when the predual is separable. \(\square\)
+Taking \(\theta\) sufficiently small gives the desired approximation inside the finite-dimensional subfactor \(w^*Dw\). No faithful state or separability was needed for this local conclusion. Theorem 3.2, proved below in the dyadic assembly argument, supplies the conclusion when the predual is separable. \(\square\)
+
+<a id="3-replacing-a-finite-algebra-by-a-dyadic-subfactor"></a>
+
+## Filling the defect with a dyadic factor
+
+**Lemma 1.2.** In a properly infinite \(M\), there are isometries \(u_n\to1\) sigma-strong* whose defects \(q_n=1-u_nu_n^*\) satisfy \(q_n\sim1\) and \(q_n\to0\) sigma-strong.
+
+**Proof.** Choose orthogonal \(p_j\sim1\) with sum one, and put \(r_n=\sum_{j\ge n}p_j\). Both \(r_n\) and \(r_n-p_n\) are equivalent to one: each dominates a projection equivalent to one and is bounded above by one. Projection Schroeder–Bernstein gives the assertion. Choose \(a_n\) with \(a_n^*a_n=r_n\), \(a_na_n^*=r_n-p_n\), and put \(u_n=1-r_n+a_n\). Then \(u_n^*u_n=1\), \(q_n=p_n\), and
+\[
+\|(1-u_n)\eta\|\le2\|r_n\eta\|,\qquad
+\|(1-u_n^*)\eta\|\le2\|r_n\eta\|,\qquad
+\|q_n\eta\|\le\|r_n\eta\|.
+\tag{4}
+\]
+The tails decrease strongly to zero; square-summable vector tests give the stated topologies. Thus the errors can be made small on any prescribed finite collection of vectors at once. \(\square\)
+
+**Lemma 3.1.** If a properly infinite algebra is locally AFD, every finite set can be approximated in any sigma-strong* neighborhood by a unital matrix subfactor \(M_{2^k}\). Its size can be required to exceed any fixed bound.
+
+**Proof.** First approximate by a finite-dimensional unital algebra \(D\), adjoining \(1\) if necessary. Write its matrix systems as \(e_{ij}^{(a)}\), with block sizes \(d_a\), and put \(t=\sum_a d_a\). Lemma 1.2 gives an isometry \(u\) close enough to one that \(uzu^*\) is close to \(z\) for each of the finitely many chosen \(z\in D\), with small defect \(q=1-uu^*\sim1\).
+
+Choose \(2^k>t\). Partition \(q\) into \(2^k\) projections equivalent to one. For the first \(t\) projections choose block matrix systems \(g_{ij}^{(a)}\) with the same sizes as \(D\). Then
+\[
+f_{ij}^{(a)}=ue_{ij}^{(a)}u^*+g_{ij}^{(a)}
+\tag{6}
+\]
+are orthogonal block matrix systems. For \(z=\sum\lambda_{ij}^{(a)}e_{ij}^{(a)}\), put \(\rho(z)=\sum\lambda_{ij}^{(a)}g_{ij}^{(a)}\). This *-homomorphism has norm at most one, range supported on \(q\), and
+\[
+\rho(z)^*\rho(z),\ \rho(z)\rho(z)^*\le\|z\|^2q.
+\tag{7}
+\]
+Thus \(\rho(z)\) tends to zero in every specified strong* test as \(q\) does. The new approximant \(uzu^*+\rho(z)\) is close to \(z\).
+
+Every diagonal projection in (6) is equivalent to one, since it dominates the corresponding \(g_{ii}^{(a)}\sim1\). Include the unused defect projections too. There are \(2^k\) mutually equivalent diagonals summing to one. They extend to a full matrix system respecting all the prescribed block connections: choose a reference diagonal, connect it to the first diagonal of each block, and use that block's existing matrix units to connect to its other diagonals. If these connecting partial isometries are \(v_j\), the operators \(v_iv_j^*\) are the desired system. Its span contains every new approximant. Choosing the original error and the two new errors sufficiently small proves the lemma. \(\square\)
+
+<a id="2-membership-from-possibly-unbounded-approximants"></a>
+
+## Closing an exactly nested dyadic system
+
+**Lemma 2.1.** Let \(N\subset M\) be a unital von Neumann subalgebra and \(\varphi\) a faithful normal state. If \(x_n\in N\) and \(\|x_n-x\|_\varphi^\#\to0\), then \(x\in N\). No bound on \(\|x_n\|\) is required.
+
+**Proof.** Splitting real and imaginary parts reduces to self-adjoint \(x_n,x\). Set \(\eta=(x+i)\xi_\varphi\). Resolvent multiplication gives
+\[
+\bigl((x_n+i)^{-1}-(x+i)^{-1}\bigr)\eta
+=(x_n+i)^{-1}(x-x_n)\xi_\varphi\longrightarrow0,
+\tag{5}
+\]
+because the first resolvent has norm at most one. The vector \(\eta\) is separating for \(M\): if \(b\eta=0\), faithfulness of \(\varphi\) implies \(b(x+i)=0\), hence \(b=0\).
+
+A separating vector is cyclic for \(M'\). Indeed the projection onto \(\overline{M'\eta}\) belongs to \(M\); its complement annihilates \(\eta\) and is therefore zero. A uniformly bounded sequence in \(M\) converging on \(\eta\) converges strongly on \(M'\eta\), by commutation, and then on the whole Hilbert space by density. This applies to the resolvent differences in (5). Their limit \((x+i)^{-1}\) belongs to \(N\). A unital C*-subalgebra is inverse closed; inverting this element shows \(x+i\in N\), hence \(x\in N\). Apply this conclusion to both self-adjoint parts. \(\square\)
+
+The same cyclic-commutant argument shows that, on bounded sets, the seminorm (1) for a faithful normal state determines sigma-strong* convergence. It does not assert that the original unbounded approximants in Lemma 2.1 converge in that topology.
+
+**Theorem 3.2.** For properly infinite \(M\) with separable predual, local AFD is equivalent to generation by an increasing sequence \(A_k\cong M_{2^k}\).
+
+**Proof.** An increasing generating sequence gives local approximation by bounded density on its support corner. Conversely choose a faithful normal state \(\varphi\) and a sigma-strong* dense sequence \((x_j)\) in the unit ball.
+
+Here are explicit countability arguments. Choose a countable norm-dense family of positive normal states and take their convex sum with strictly positive summable coefficients. Positive normal functionals separate the positive cone, so this sum is faithful as well as normal. The unit ball is compact metrizable for the weak* topology, by the separable-predual dual-ball theorem. Take a countable weak* dense subset. Its rational convex combinations remain a countable set of contractions. In the faithful normal GNS representation, the map taking \(x\) to the pair \(x\xi_\varphi,x^*\xi_\varphi\) is real-linear and weakly continuous on the unit ball: testing either coordinate gives normal vector coefficients. The weak closure of a convex subset of a real Hilbert space equals its norm closure, by the Hilbert separation proof. Thus those rational convex combinations are dense for the faithful-state seminorm (1). The cyclic-commutant argument following Lemma 2.1 identifies that topology with sigma-strong* convergence on bounded sets. Enumerating this countable family gives the required \((x_j)\); no assertion about the boundedness of later reconstructed approximants is used.
+
+Suppose a unital dyadic subfactor \(A\cong M_d\) has already been chosen, with units \(e_{ij}\). Matrix coordinates identify
+\[
+M\cong M_d\bar\otimes e_{11}Me_{11},\qquad
+C=A'\cap M\cong e_{11}Me_{11}.
+\tag{8}
+\]
+The projection \(e_{11}\) is properly infinite. A finite nonzero central cut of it would make the corresponding sum of its \(d\) equivalent cuts finite, contrary to proper infiniteness of \(M\). A properly infinite projection absorbs finitely many equivalent copies of itself; consequently \(e_{11}\sim1\). Thus \(C\cong M\), so \(C\) is properly infinite and locally AFD.
+
+Write the next finitely many \(x_j\)'s as \(\sum_{r,s}b_{rs}^{(j)}e_{rs}\), with \(b_{rs}^{(j)}\in C\). Multiplication by any fixed operator is continuous for sigma-strong*: its seminorms are bounded by finitely many seminorms obtained from normal positive functionals. Lemma 3.1 in \(C\) therefore gives a dyadic \(B\subset C\) and coefficients in \(B\) whose reconstructed sums approximate the \(x_j\)'s within \(1/n\) in (1). The algebra \(A\vee B\cong A\otimes B\) is a larger dyadic factor containing \(A\) exactly. This constructs increasing \(N_n\), with approximants to the first \(n\) elements and errors tending to zero.
+
+Let \(P=(\bigcup_nN_n)''\). Lemma 2.1 puts every \(x_j\) in \(P\), without imposing bounds on the reconstructed sums. Density and closedness give \(P=M\). Between successive dyadic matrix sizes insert the missing \(M_2\) tensor levels of their finite-dimensional relative commutants, and insert the initial levels inside \(N_1\). This gives all the sizes \(2^k\). \(\square\)
 
 ## 5. Problems with complete solutions
 
-**Exercise 1.** For the unilateral shift \(v\) on \(\ell^2(\mathbb N)\), describe the unitaries (2) and verify (3) directly.
-
-*Solution.* The defect is the first coordinate, and \(e_j\) is the \(j\)-th coordinate projection. The unitary cycles coordinates \(1,\ldots,n+1\), sends the last back to the first, and fixes all later coordinates. It agrees with the shift on the first \(n\) coordinates. Thus its difference from the shift has norm at most two and annihilates that initial span, giving exactly the tail bound (3).
-
-**Exercise 2.** Explain why the same unitaries do not converge strong* to the shift.
-
-*Solution.* The shift adjoint annihilates the first basis vector, whereas each cycling unitary's adjoint sends it to the \((n+1)\)-st basis vector, of norm one. Strong convergence of the adjoints fails. Alternatively a strong* limit would preserve the identity \(w_nw_n^*=1\), while the shift has a one-dimensional range defect.
-
-**Exercise 3.** Prove the two estimates in (4) involving \(u_n\) and \(u_n^*\).
-
-*Solution.* Both differences are supported on \(r_n\): the partial isometry and its adjoint have initial and final projections below \(r_n\). On that space each difference is the difference of two contractions, hence has norm at most two. Apply this to \(r_n\eta\). Outside that space the differences vanish.
-
-**Exercise 4.** Give unbounded approximants converging in a faithful-state norm, and explain why a boundedness argument would miss them.
-
-*Solution.* In \(L^\infty[0,1]\) with the integration state take \(x_n=n1_{[0,n^{-4}]}\). Their operator norms are \(n\), while their \(2\)-norms are \(1/n\); adjoints are the same, so (1) tends to zero. They lie outside every fixed operator-norm ball. Lemma 2.1 applies through their uniformly bounded resolvents rather than through boundedness of the original sequence.
-
-**Exercise 5.** Why does a bounded sequence converging on a separating vector converge strongly on every vector?
-
-*Solution.* For \(a'\in M'\), \(b_n a'\eta=a'b_n\eta\to0\) if \(b_n\eta\to0\). The vectors \(a'\eta\) are dense because \(\eta\) is separating. If \(\sup\|b_n\|=C\), approximating a vector by such a vector gives an error at most \(C\) times the approximation error, uniformly in \(n\). First take the limit in \(n\), then make the density error tend to zero.
-
-**Exercise 6.** Verify (7), including its adjoint version, without assuming a trace.
-
-*Solution.* The homomorphism \(\rho\) is contractive and supported on \(q\). Thus \(\rho(z)^*\rho(z)\) is positive, supported on \(q\), and has norm at most \(\|z\|^2\), giving the first inequality. Apply the same argument to \(z^*\). Consequently (1) is at most \(\|z\|\varphi(q)^{1/2}\) for every normal state, whether tracial or not.
-
-**Exercise 7.** Explain why the relative-commutant step in Theorem 3.2 gives exact containment of the old factor.
-
-*Solution.* The new matrix factor \(B\) lies in \(A'\cap M\), so it commutes with \(A\). Matrix coordinates (8) identify their generated algebra with \(M_d\otimes B\), a full matrix algebra with the shared identity. The inclusion of \(A\) is its first tensor leg, so every old matrix unit is retained exactly; only the other leg is being approximated.
+### Unitary implementation and CP models
 
 **Exercise 8.** Check the reconstruction formula (9) on a matrix unit.
 
@@ -193,9 +218,39 @@ Taking \(\theta\) sufficiently small gives the desired approximation inside the 
 
 *Solution.* A positive scalar functional is cp, and multiplication of its scalar values by the fixed positive element \(1-T_i(1)\) is cp at every matrix size. Their sum with \(T_i\) is cp and has unit value one. The composite correction is a scalar of modulus at most \(\|x\|\) times \(1-T_i(1)\), which tends to zero sigma-strong*. Both incoming and outgoing maps therefore become unital without losing the finite approximation.
 
+**Exercise 1.** For the unilateral shift \(v\) on \(\ell^2(\mathbb N)\), describe the unitaries (2) and verify (3) directly.
+
+*Solution.* The defect is the first coordinate, and \(e_j\) is the \(j\)-th coordinate projection. The unitary cycles coordinates \(1,\ldots,n+1\), sends the last back to the first, and fixes all later coordinates. It agrees with the shift on the first \(n\) coordinates. Thus its difference from the shift has norm at most two and annihilates that initial span, giving exactly the tail bound (3).
+
+**Exercise 2.** Explain why the same unitaries do not converge strong* to the shift.
+
+*Solution.* The shift adjoint annihilates the first basis vector, whereas each cycling unitary's adjoint sends it to the \((n+1)\)-st basis vector, of norm one. Strong convergence of the adjoints fails. Alternatively a strong* limit would preserve the identity \(w_nw_n^*=1\), while the shift has a one-dimensional range defect.
+
 **Exercise 10.** Derive (12) from the two real-part bounds following (11).
 
 *Solution.* Put \(c=(\sqrt2+1)\theta\). The vectors \(wU_j\xi\) have norm one and \(z_jw\xi\) have norm at most one. Their squared difference is at most \(2-2(1-c)=2c\). The same bound holds with both operators adjointed. Conjugating by \(w^*\) gives the two vector errors defining (1); their squared average is at most \(2c\). Taking square roots gives (12).
+
+### Defect filling and nested systems
+
+**Exercise 3.** Prove the two estimates in (4) involving \(u_n\) and \(u_n^*\).
+
+*Solution.* Both differences are supported on \(r_n\): the partial isometry and its adjoint have initial and final projections below \(r_n\). On that space each difference is the difference of two contractions, hence has norm at most two. Apply this to \(r_n\eta\). Outside that space the differences vanish.
+
+**Exercise 6.** Verify (7), including its adjoint version, without assuming a trace.
+
+*Solution.* The homomorphism \(\rho\) is contractive and supported on \(q\). Thus \(\rho(z)^*\rho(z)\) is positive, supported on \(q\), and has norm at most \(\|z\|^2\), giving the first inequality. Apply the same argument to \(z^*\). Consequently (1) is at most \(\|z\|\varphi(q)^{1/2}\) for every normal state, whether tracial or not.
+
+**Exercise 5.** Why does a bounded sequence converging on a separating vector converge strongly on every vector?
+
+*Solution.* For \(a'\in M'\), \(b_n a'\eta=a'b_n\eta\to0\) if \(b_n\eta\to0\). The vectors \(a'\eta\) are dense because \(\eta\) is separating. If \(\sup\|b_n\|=C\), approximating a vector by such a vector gives an error at most \(C\) times the approximation error, uniformly in \(n\). First take the limit in \(n\), then make the density error tend to zero.
+
+**Exercise 4.** Give unbounded approximants converging in a faithful-state norm, and explain why a boundedness argument would miss them.
+
+*Solution.* In \(L^\infty[0,1]\) with the integration state take \(x_n=n1_{[0,n^{-4}]}\). Their operator norms are \(n\), while their \(2\)-norms are \(1/n\); adjoints are the same, so (1) tends to zero. They lie outside every fixed operator-norm ball. Lemma 2.1 applies through their uniformly bounded resolvents rather than through boundedness of the original sequence.
+
+**Exercise 7.** Explain why the relative-commutant step in Theorem 3.2 gives exact containment of the old factor.
+
+*Solution.* The new matrix factor \(B\) lies in \(A'\cap M\), so it commutes with \(A\). Matrix coordinates (8) identify their generated algebra with \(M_d\otimes B\), a full matrix algebra with the shared identity. The inclusion of \(A\) is its first tensor leg, so every old matrix unit is retained exactly; only the other leg is being approximated.
 
 ## References and proof scope
 

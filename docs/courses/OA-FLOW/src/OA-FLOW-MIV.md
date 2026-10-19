@@ -757,6 +757,47 @@ Indeed \(J_n\Delta_n^{1/2}(xD_n^{1/2})=x^*D_n^{1/2}\), and the displayed positiv
        \quad(x\text{ in leg }n).
  \tag{MIV8.b}
 \]
+Here is a coordinate proof of the closed-domain assertion for these matrix legs. In the Hilbert–Schmidt space of leg \(n\), choose an orthonormal basis of the real diagonal matrices whose first vector is \(b_{n,0}=D_n^{1/2}\), and adjoin the off-diagonal matrix units. Its complex span is the whole Hilbert–Schmidt space. Give a diagonal basis vector the number \(r_{n,k}=1\), and give \(b_{n,k}=E_{ij}\), \(i\ne j\), the number \(r_{n,k}=p_{n,i}/p_{n,j}\). Adjoint fixes each chosen diagonal vector and exchanges \(E_{ij}\) with \(E_{ji}\).
+
+Let \(\mathcal I\) be the set of sequences \(\alpha=(\alpha_n)\) with finite support in these basis labels, where label \(0\) means the reference vector. Then
+\[
+ e_\alpha=\bigotimes_n b_{n,\alpha_n},\qquad
+ q_\alpha=\prod_n r_{n,\alpha_n}>0
+ \tag{MIV8.b1}
+\]
+give an orthonormal basis of the pointed product and a positive number for each basis vector. Only finitely many factors in each displayed product differ from \(1\). Define
+\[
+ \begin{aligned}
+ Q\Bigl(\sum_\alpha c_\alpha e_\alpha\Bigr)
+   &=\sum_\alpha q_\alpha c_\alpha e_\alpha,\\
+ D(Q)&=\Bigl\{\sum_\alpha c_\alpha e_\alpha:
+                    \sum_\alpha q_\alpha^2|c_\alpha|^2<\infty\Bigr\}.
+ \end{aligned}
+ \tag{MIV8.b2}
+\]
+Testing an adjoint against each \(e_\alpha\) forces exactly the same coefficients and square-summability condition, so \(Q\) is positive selfadjoint. It is injective, since every \(q_\alpha\) is positive; this does not exclude \(0\) from its spectrum. The same coordinate test gives its positive square root, with coefficients \(q_\alpha^{1/2}\) and domain
+\[
+ D(Q^{1/2})=
+   \Bigl\{\sum_\alpha c_\alpha e_\alpha:
+                 \sum_\alpha q_\alpha|c_\alpha|^2<\infty\Bigr\}.
+ \tag{MIV8.b3}
+\]
+Finite sums of basis vectors are a graph core for this square root: truncate the two convergent sums \(\sum_\alpha|c_\alpha|^2\) and \(\sum_\alpha q_\alpha|c_\alpha|^2\) together.
+
+Coordinatewise adjoint defines an antiunitary \(K\) on the pointed product, because it fixes every reference vector and permutes the chosen basis, conjugating coefficients. Put \(\mathcal C=\bigcup_m M_{\{1,\ldots,m\}}\Omega\). Invertibility of each \(D_n^{1/2}\) makes \(M_{\{1,\ldots,m\}}\Omega\) the entire finite-leg Hilbert space. Hence \(\mathcal C\) is precisely the span of the \(e_\alpha\). The one-leg computation above gives
+\[
+ KQ^{1/2}(x\Omega)=x^*\Omega
+       \qquad(x\text{ supported on finitely many legs}).
+ \tag{MIV8.b4}
+\]
+It remains to compare this core with the initial Tomita operator on the whole algebra. For \(x\in M\), the product-state expectations used above satisfy
+\[
+ E_m(x)\Omega\longrightarrow x\Omega,\qquad
+ E_m(x)^*\Omega=E_m(x^*)\Omega\longrightarrow x^*\Omega.
+ \tag{MIV8.b5}
+\]
+Thus restriction to \(\mathcal C\) has the same graph closure as the initial involution \(x\Omega\mapsto x^*\Omega\) on \(M\Omega\). On the other hand, the weighted-square-sum argument makes \(\mathcal C\) a graph core for the closed antilinear operator \(KQ^{1/2}\). Equation (MIV8.b4) therefore identifies the full Tomita operator with \(KQ^{1/2}\). Uniqueness of polar decomposition gives \(J=K\) and \(\Delta=Q\). On every finite leg, \(Q^{it}\) acts by \(X\mapsto D_n^{it}XD_n^{-it}\); conjugating left multiplication by this operator yields (MIV8.b). This proves the claimed modular action together with its full closed domain.
+
 The product modular operator is not being defined merely on a formal algebraic tensor product.
 
 Set

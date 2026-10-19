@@ -1,6 +1,6 @@
 # Borel supports and isomorphism classes
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 To choose a projection measurably, it helps to describe its range by countably many vectors. This simple method makes supports and central carriers Borel as the algebra varies. We then use a Borel choice from closed cosets to prove that each fixed unitary equivalence class of von Neumann algebras is Borel. Infinite amplification gives the corresponding result for each fixed abstract isomorphism class.
 
@@ -8,7 +8,7 @@ Our fixed Hilbert space \(H\) is infinite dimensional and separable. Write \(\ma
 
 For amplification we use Theorem 4.1 of [Multiplicity](../reader/supplements/normal-representation-comparison.html): two faithful normal representations whose commutants are sigma-finite and properly infinite are unitarily equivalent. Its full projection-comparison proof applies here. [Spatial tensor products](../reader/supplements/spatial-tensor-products.html) supplies the normal tensor representation and commutant formula; the formula also follows directly from operator matrix entries in Lemma 8.2 of [Projections and types](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html). Normal positive functionals have positive vector expansions by Theorem 10.1 of [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html). Normality of isomorphisms is proved in Corollary 11.4 of [The universal enveloping algebra](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html).
 
-The linked programme lessons supply the complete prerequisites for these constructions. Effros’s freely readable paper develops fixed-space Borel coding, dense choices and commutants. Takesaki’s book and the further works listed below provide scholarly context for reduction theory.
+The constructions below use the stated forms of the linked programme results. Effros’s freely readable paper develops fixed-space Borel coding, dense choices and commutants; the required proofs are given in the Effros lesson.
 
 ## 1. Countable choices and measurable ranges
 
@@ -135,7 +135,20 @@ An isomorphism between von Neumann algebras is automatically normal, as proved i
 
 **Theorem 5.1.** The set \(\mathcal O_M\) is Borel in \(\mathcal V(H)\).
 
-**Proof.** The unitary group \(\mathcal U(H)\) is Polish in its strong-star topology. A complete metric is obtained from a countable dense family of vectors by recording both \(u\xi_k\) and \(u^*\xi_k\); a Cauchy limit preserves both unitary identities. It is separable as a subspace of a countable product of separable Hilbert spaces. On the unitary group, strong and strong-star topologies agree.
+**Proof.** First give \(\mathcal U(H)\) its strong-star topology. Choose \((\xi_k)\) dense in the unit ball of \(H\). A compatible metric is
+\[
+d(u,v)=\sum_{k\geq1}2^{-k}\bigl(\|(u-v)\xi_k\|+\|(u^*-v^*)\xi_k\|\bigr).
+\]
+To check completeness, let \((u_n)\) be Cauchy for this metric. Each \(u_n\xi_k\) and \(u_n^*\xi_k\) converges. The uniform norm bound one extends these limits to strong limits \(u\) and \(v\) on all of \(H\), both contractions. Taking limits in \(\langle u_n\xi,\eta\rangle=\langle\xi,u_n^*\eta\rangle\) gives \(v=u^*\). Moreover
+\[
+\|u_nu_n^*\xi-uv\xi\|
+\leq\|u_n^*\xi-v\xi\|+\|(u_n-u)v\xi\|\longrightarrow0,
+\]
+and the reversed product has the same estimate. Hence \(uv=vu=1\), so \(u\) is unitary. The summands defining \(d(u_n,u)\) converge to zero and are bounded by \(4\cdot2^{-k}\); a finite-head and small-tail argument gives metric convergence. The coordinate map into \(H^{\mathbb N}\times H^{\mathbb N}\) is a topological embedding, so the group is second countable and separable. Inversion exchanges the two coordinate sequences; the displayed product estimate also proves joint continuity of multiplication. Thus it is a Polish topological group. Finally, if unitaries \(u_i\to u\) strongly with unitary limit, then
+\[
+\|(u_i^*-u^*)\xi\|=\|\xi-u_i u^*\xi\|\longrightarrow0.
+\]
+Thus the strong and strong-star topologies agree on this group.
 
 The stabilizer
 \[
@@ -195,21 +208,14 @@ For the stated vector with \(r=s=2\), \(V=1_2/\sqrt2\), so \(VV^*=1_2/2\). Its r
 
 An abstract algebra and the multiplicity of its represented action are different pieces of information. Theorems 5.1–5.2 express that difference: fixed unitary classes use the represented algebra, whereas fixed abstract classes are recovered after identity amplification makes the commutant properly infinite. The full representation-comparison proof is in the multiplicity lesson, with both its proper-infiniteness and sigma-finiteness hypotheses.
 
-Related constructions have their own proof locations. [Central averaging and maximal ideals](../reader/central-averaging-and-maximal-ideals.html) proves the norm-closed orbit-hull assertions. [Finite type II and separable representations](../reader/finite-type-ii-and-separable-representations.html) proves the automatic-normality result, and [Finite maximal quotients](../reader/finite-maximal-quotients.html) treats the finite quotient construction. The historical bibliography includes Feldman–Fell, Takesaki, Wright, Feldman and Misonou. Those identities are bibliographic context for the subjects; the proof inputs are the complete named lessons.
+Related constructions have their own proof locations. [Central averaging and maximal ideals](../reader/central-averaging-and-maximal-ideals.html) proves the norm-closed orbit-hull assertions. [Finite type II and separable representations](../reader/finite-type-ii-and-separable-representations.html) proves the automatic-normality result, and [Finite maximal quotients](../reader/finite-maximal-quotients.html) treats the finite quotient construction.
 
-Effros's 1965 paper develops the Borel space on a fixed separable Hilbert space. Schwartz's *Type II factors in a central decomposition* and Nielsen's *Borel sets of von Neumann algebras* are further historical references. The full proofs of measurable type loci and fibre transfer used here are in [Borel types and fibre types](../reader/borel-types-and-fibre-types.html); their Borel and analytic conclusions retain their precise scope. [Crossed-product coefficients and factor tests](../reader/crossed-product-coefficients-and-factor-tests.html) and [Expected MASAs and factor types](../reader/expected-masas-and-factor-types.html) develop the factor examples separately.
+Effros's 1965 paper develops the Borel space on a fixed separable Hilbert space. The full proofs of measurable type loci and fibre transfer used here are in [Borel types and fibre types](../reader/borel-types-and-fibre-types.html); their Borel and analytic conclusions retain their precise scope. [Crossed-product coefficients and factor tests](../reader/crossed-product-coefficients-and-factor-tests.html) and [Expected MASAs and factor types](../reader/expected-masas-and-factor-types.html) develop the factor examples separately.
 
 The mathematical dependencies are supplied by the exact programme proof locators above.
 
 ## References
 
-[Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer. The projection, Effros and multiplicity results cited above are the prerequisites for these Borel constructions.
 
-- [Effros 1965] Edward G. Effros, [The Borel space of von Neumann algebras on a separable Hilbert space](https://msp.org/pjm/1965/15-4/pjm-v15-n4-p07-s.pdf), *Pacific Journal of Mathematics* 15(4) (1965), 1153–1164. Also, [Global structure in von Neumann algebras](https://doi.org/10.1090/S0002-9947-1966-0192360-9), *Transactions of the American Mathematical Society* 121 (1966), 434–454.
-- J. T. Schwartz, [Type II factors in a central decomposition](https://doi.org/10.1002/cpa.3160160302), *Communications on Pure and Applied Mathematics* 16 (1963), 247–252.
-- Ole A. Nielsen, [Borel sets of von Neumann algebras](https://doi.org/10.2307/2373648), *American Journal of Mathematics* 95 (1973), 145–164.
-- J. Feldman and J. M. G. Fell, [Separable representations of rings of operators](https://doi.org/10.2307/1969960), *Annals of Mathematics* 65 (1957), 241–249.
-- Masamichi Takesaki, [On the conjugate space of operator algebra](https://doi.org/10.2748/tmj/1178244713), *Tohoku Mathematical Journal* 10 (1958), 194–203; [On the non-separability of singular representation of operator algebra](https://doi.org/10.2996/kmj/1138844294), *Kodai Mathematical Seminar Reports* 12 (1960), 102–108.
-- Fred B. Wright, [A reduction for algebras of finite type](https://doi.org/10.2307/1969851), *Annals of Mathematics* 60 (1954), 560–570; Jacob Feldman, [Embedding of AW*-algebras](https://doi.org/10.1215/S0012-7094-56-02329-8), *Duke Mathematical Journal* 23 (1956), 303–308.
-- Yosinao Misonou, [On a weakly central operator algebra](https://doi.org/10.2748/tmj/1178245422), *Tohoku Mathematical Journal* 4 (1952), 194–202.
 
+- [Effros 1965] Edward G. Effros, [The Borel space of von Neumann algebras on a separable Hilbert space](https://msp.org/pjm/1965/15-4/pjm-v15-n4-p07-s.pdf), *Pacific Journal of Mathematics* 15(4) (1965), 1153–1164.

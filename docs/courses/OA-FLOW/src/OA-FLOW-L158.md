@@ -4,7 +4,7 @@
 
 The lower strip of depth \(a\) detects the closed form of the power \(2a\). The product order in this lesson is \(h^{it}k^{-it}\). The result holds on arbitrary Hilbert spaces, even when both positive operators and their inverses are unbounded. Its extension has genuine joint continuity at both edges for all normal positive functional seminorms, including adjoints.
 
-The exact elementary Hilbert, spectral, scalar and concrete-topology foundations are listed in [the accompanying proof](OA-FLOW-SF.md), SF-0–SF-4. Those lemmas and this candidate are a single proof package.
+The Hilbert-space, spectral, scalar and concrete-topology inputs are proved in [the operator foundations](OA-FLOW-SF.md), SF-0–SF-4. They supply the domain tests and boundary-continuity arguments used below.
 
 <a id="oa-flow.l158.theorem"></a>
 

@@ -514,6 +514,203 @@ Lebesgue density \(1\) would instead give an invariant local integral. At a cros
 \]
 The full proof (ZDC38)–(ZDC45) establishes this mechanism without substituting a variable time into a fixed-time almost-everywhere identity.
 
+<a id="zdc-fiber-traces"></a>
+## 6A. Fiber traces, Jacobians and a coherent return identity
+
+The global trace formulas have precise fiber versions. We first fix the measure convention and prove an equality on an entire fiber positive cone. We then choose a suspension model in which the return identity holds at every height and time on one retained base.
+
+### Disintegration over the specified measure
+
+Let \(N\ne0\) have separable predual, and let \(\tau\) be a faithful n.s.f. trace. Fix a standard sigma-finite central model
+\[
+ N=\int_\Omega^\oplus N_\omega\,d\mu(\omega),
+ \qquad Z(N)=L^\infty(\Omega,\mu).
+ \tag{ZDC-FT1}
+\]
+The [weighted central decomposition MW7](../../OA-MOD/OA-MOD-MW.html#central-disintegration-of-a-separable-weighted-algebra), with its proved change of base and compatible GNS realization, supplies a measurable family of faithful normal semifinite weights on this full algebra field. The static algebra identifications are those of [DC7](../../OA-MOD/OA-MOD-DC.html#existence-over-any-specified-central-abelian-subalgebra) and [DC11](../../OA-MOD/OA-MOD-DC.html#change-of-base-and-the-square-root-density-in-general-uniqueness). If the initial construction uses an equivalent measure \(d\nu=a\,d\mu\), multiply its fiber weights by \(a\) to express the same integral over \(\mu\). This is MW7's inverse-density normalization, not an arbitrary normalization of each factor.
+
+These fiber weights are traces. Indeed, the GNS involution for \(\tau\) is isometric on its finite star ideal, because \(\tau(x^*x)=\tau(xx^*)\). Its closed extension is an antiunitary involution, so \(\Delta_\tau=1\). The full modular decomposition in [MW4](../../OA-MOD/OA-MOD-MW.html#constructing-the-integral-weight-and-its-full-operators) identifies its resolvent with the integral of the fiber resolvents. Thus
+\((1+\Delta_\omega)^{-1}=\tfrac12 1\) almost everywhere, by uniqueness of bounded decomposable fields. Consequently \(\Delta_\omega=1\), and [KT5](OA-FLOW-KT.md#oa-flow.kt.5) makes each retained weight a trace. Denote it by \(\tau_\omega\).
+
+The all-positive formula and full finite ideal are [MW5](../../OA-MOD/OA-MOD-MW.html#every-positive-value-and-the-exact-finite-left-ideal):
+\[
+ \begin{aligned}
+ \tau(x)&=\int_\Omega\tau_\omega(x(\omega))\,d\mu(\omega)
+       &&(x\in N_+),\\
+ \mathfrak n_\tau
+   &=\left\{x\in N:
+        \int_\Omega\tau_\omega(x(\omega)^*x(\omega))\,d\mu<\infty\right\}.
+ \end{aligned}
+ \tag{ZDC-FT2}
+\]
+The first equality includes infinite values. Normality for arbitrary increasing nets is part of that proved weighted decomposition, not an inference from a pointwise sequential formula.
+
+We will need the following precise uniqueness fact. Suppose \(\lambda_\omega\) is another family of faithful n.s.f. **traces on the same algebra field**, its evaluations on positive measurable sections are measurable, and its integral is also \(\tau\). Then
+\[
+ \lambda_\omega=\tau_\omega
+ \quad\text{on }(N_\omega)_+
+ \quad\text{for every }\omega\text{ outside one null set}.
+ \tag{ZDC-FT3}
+\]
+Here is a direct finite-corner proof, which specifies the quantifiers.
+
+The finite-\(\tau\) projections form an increasing directed family with supremum one, as proved in [Section 1](#zdc-1). In a faithful separable representation choose a total sequence of unit vectors \(\xi_j\). The sum
+\(\varphi(x)=\sum_{j\ge1}2^{-j}\langle x\xi_j,\xi_j\rangle\)
+is a faithful normal state: positivity and normality follow termwise, and zero on a positive element forces that element to vanish on the total family. Choose finite-\(\tau\) projections \(q_n\) with \(\varphi(1-q_n)<2^{-n}\), and put \(p_n=q_1\vee\cdots\vee q_n\). Finite joins have finite trace. Hence \(p_n\uparrow1\), since their supremum has complement of zero \(\varphi\)-value. Off a common null set, their fields are increasing projections with supremum one, and both \(\tau_\omega(p_n(\omega))\) and \(\lambda_\omega(p_n(\omega))\) are finite for every \(n\).
+
+Choose a countable unital rational star algebra of bounded sections from DC7, written \(\{a_j\}\), whose values generate every retained \(N_\omega\). For every central indicator \(z=1_E\) and every \(n,j\), equality of the two global traces gives
+\[
+ \int_E\tau_\omega(p_n a_j^*a_j p_n)\,d\mu
+ =
+ \int_E\lambda_\omega(p_n a_j^*a_j p_n)\,d\mu.
+ \tag{ZDC-FT4}
+\]
+Both integrands are integrable, bounded in integral by
+\(\|a_j\|^2\tau(p_n)\). Testing all measurable \(E\) makes them equal almost everywhere. Only the countable pairs \(n,j\) are now intersected. Polarization and norm continuity give equality on \(p_n A p_n\), where \(A\) is the norm closure of this star algebra. The two restricted weights are bounded normal functionals on \(p_nN_\omega p_n\), and that compressed algebra is ultraweakly dense there. Thus they agree on the whole corner. Finally, for every \(x\in(N_\omega)_+\),
+\[
+ \tau_\omega(p_nxp_n)
+ =\tau_\omega(x^{1/2}p_nx^{1/2})\uparrow\tau_\omega(x),
+ \tag{ZDC-FT5}
+\]
+and the same holds for \(\lambda_\omega\). Traciality and normality prove (ZDC-FT3), including infinity, on the same conull fibers for **all** \(x\).
+
+### Which Jacobian enters the trace formula
+
+Let \(\alpha\in\operatorname{Aut}(N)\). Use the [fixed-generator transport](OA-FLOW-L41.md#oa-flow.cstd.transport) and its specified central base identification to write
+\[
+ (\alpha x)(T\omega)=\alpha_\omega(x(\omega)),
+ \qquad \alpha_\omega:N_\omega\longrightarrow N_{T\omega}.
+ \tag{ZDC-FT6}
+\]
+The maps are normal isomorphisms of the full fiber algebras, on a fixed conull domain for this automorphism. For the nonsingular invertible Borel \(T\), define the **image-measure** Jacobian by
+\[
+ \mu(T E)=\int_E J_T(\omega)\,d\mu(\omega).
+ \tag{ZDC-FT7}
+\]
+Both measures are sigma-finite and equivalent, so \(0<J_T<\infty\) almost everywhere. In terms of the pushforward derivative \(j_T=d(T_*\mu)/d\mu\) used in [L41's normalizer formula](OA-FLOW-L41.md#oa-flow.cstd.normalizer),
+\[
+ J_T(\omega)=\frac{1}{j_T(T\omega)},\qquad
+ \int F(\eta)\,d\mu(\eta)
+   =\int J_T(\omega)F(T\omega)\,d\mu(\omega)
+ \tag{ZDC-FT8}
+\]
+for every nonnegative measurable \(F\). The last identity follows first for indicators from (ZDC-FT7), then for simple functions and increasing limits. Applying the pushforward identity to \(F(\eta)/j_T(\eta)\) gives the reciprocal formula.
+
+Suppose \(\tau\alpha=\tau_h\), where \(h\) is finite, strictly positive and centrally affiliated. By bounded central truncation in (ZDC-FT2), the field \(h(\omega)\tau_\omega\) integrates to \(\tau_h\). Equations (ZDC-FT6)–(ZDC-FT8) show that the field
+\[
+ x\longmapsto
+ J_T(\omega)\tau_{T\omega}(\alpha_\omega(x))
+\]
+integrates to \(\tau\alpha\). Each fiber functional is a faithful n.s.f. trace. Its evaluation on a positive measurable section is measurable: it is \(J_T(\omega)\) times the evaluation of the original trace field on \(\alpha(x)\), composed with \(T\). These are exactly the measurability and integration hypotheses used by the finite-corner uniqueness proof; no additional choice of GNS identifications is needed here. Apply (ZDC-FT3) to the common integral trace \(\tau_h\). We obtain the whole-cone identity
+\[
+ \boxed{\quad
+ h(\omega)\tau_\omega
+   =J_T(\omega)\,\tau_{T\omega}\circ\alpha_\omega
+ \quad\text{almost everywhere.}\quad}
+ \tag{ZDC-FT9}
+\]
+The identity is not only a test on selected global sections.
+
+In particular the contracting trace of Section 5 has \(h=e^{-r}\), so (ZDC-FT9) is its exact discrete fiber formula. For a continuous trace-scaling action \(\theta_t\) on a fixed central model \((Y,\nu,S_t)\), apply the same argument separately to each \(\theta_t\):
+\[
+ e^{-t}\tau_y
+   =J_{S_t}(y)\,\tau_{S_ty}\circ\theta_{t,y}
+ \quad\text{for almost every }y,\quad\text{for each fixed }t.
+ \tag{ZDC-FT10}
+\]
+This statement alone does not permit insertion of a measurable time depending on \(y\).
+
+### One model on which all return times are legitimate
+
+Return now to \(N,\alpha,\tau,T,r\) of Sections 5–6. Remove the null sets in (ZDC-FT9), in the integer transport laws, and in all their integer translates. There are only countably many. We obtain a \(T\)-invariant conull Borel base \(\Omega_0\) where the fibers are defined, \(r\ge\delta>0\), and the identities hold as maps and weights on full algebras. Define \(\alpha_\omega^{(n)}\) by actual composition for \(n>0\), the identity for \(n=0\), and inverse compositions for \(n<0\).
+
+Choose a positive finite representative \(J_T\) on this base and define
+\[
+ \begin{aligned}
+ J_n(\omega)&=\prod_{k=0}^{n-1}J_T(T^k\omega) &&(n>0),\\
+ J_0&=1,\qquad
+ J_{-n}(\omega)=J_n(T^{-n}\omega)^{-1} &&(n>0).
+ \end{aligned}
+ \tag{ZDC-FT11}
+\]
+Repeated change of variables proves that \(J_n\) represents the image-measure derivative of \(T^n\). The products satisfy
+\(J_{m+n}(\omega)=J_n(\omega)J_m(T^n\omega)\) exactly. Iterating (ZDC-FT9), and solving it for the inverse at \(T^{-1}\omega\), now gives
+\[
+ J_n(\omega)\,\tau_{T^n\omega}\circ\alpha_\omega^{(n)}
+       =e^{-r_n(\omega)}\tau_\omega
+ \quad(n\in\mathbb Z,\ \omega\in\Omega_0).
+ \tag{ZDC-FT12}
+\]
+No further exceptional set depends on a fiber element.
+
+On the half-open suspension
+\[
+ Y_0=\{(u,\omega):\omega\in\Omega_0,\ 0\le u<r(\omega)\},
+ \qquad d\nu=du\,d\mu(\omega),
+\]
+choose, at **every** displayed height, the algebra \(N_\omega\) and the trace
+\[
+ \widehat\tau_{u,\omega}=e^{-u}\tau_\omega.
+ \tag{ZDC-FT13}
+\]
+This is a definition from the already chosen coefficient field, including at height zero. Measurability and the full-cone product formula show that it disintegrates precisely the suspension trace (ZDC39)–(ZDC43); its finite ideal is (ZDC41). No trace is recovered by sampling a pre-existing null slice.
+
+For any \(t\in\mathbb R\), let \(n=n(t,u,\omega)\) be the unique integer with
+\(r_n(\omega)\le u+t<r_{n+1}(\omega)\). Put
+\[
+ \begin{aligned}
+ S_t(u,\omega)&=(u+t-r_n(\omega),T^n\omega),\\
+ \widehat\theta_{t,(u,\omega)}&=\alpha_\omega^{(n)},\\
+ \widehat J_t(u,\omega)&=J_n(\omega).
+ \end{aligned}
+ \tag{ZDC-FT14}
+\]
+The signed roof sums diverge in both directions. Thus these expressions are defined for every \(u,t,\omega\) in the stated domain, including negative times and roof endpoints. The signed-sum law and the integer composition laws prove the real-action and transport laws exactly.
+
+For each fixed \(t\), \(\widehat J_t\) is the image-measure derivative of \(S_t\). To verify this, partition \(Y_0\) into the Borel pieces where \(n(t,u,\omega)=n\). On each piece, substitute \(v=u+t-r_n(\omega)\) in the height integral, whose Jacobian is one, and then \(\eta=T^n\omega\) in the base integral, whose image-measure factor is \(J_n(\omega)\). The pieces have disjoint images and cover \(Y_0\), because \(S_t\) is a Borel bijection. Nonnegative summation therefore proves
+\[
+ \int_{Y_0}F\,d\nu
+   =\int_{Y_0}\widehat J_t(y)F(S_ty)\,d\nu(y)
+ \tag{ZDC-FT15}
+\]
+for every nonnegative measurable \(F\). This also proves nonsingularity with the stated derivative convention.
+
+Combining the explicitly defined fields with (ZDC-FT12) gives, as an identity on the full fiber positive cone,
+\[
+ \begin{aligned}
+ \widehat J_t(u,\omega)\,
+ \widehat\tau_{S_t(u,\omega)}
+       \circ\widehat\theta_{t,(u,\omega)}
+ &=e^{-(u+t-r_n(\omega))}
+       J_n(\omega)\tau_{T^n\omega}\circ\alpha_\omega^{(n)}\\
+ &=e^{-t}e^{-u}\tau_\omega
+  =e^{-t}\widehat\tau_{u,\omega}.
+ \end{aligned}
+ \tag{ZDC-FT16}
+\]
+This identity holds for **all** \(t\) and all \((u,\omega)\in Y_0\) in this chosen model. Its quantifiers follow from countable integer coherence and explicit formulas, not from intersecting uncountably many fixed-time conull sets.
+
+For \(0<d\le\delta\), \(0\le u<d\), and \(t=r(\omega)\), exactly one roof is crossed, since \(u<r(T\omega)\). Consequently (ZDC-FT16) gives the legitimate variable-return formula
+\[
+ e^{-r(\omega)}\widehat\tau_{u,\omega}
+   =J_T(\omega)\widehat\tau_{u,T\omega}\circ\alpha_\omega.
+ \tag{ZDC-FT17}
+\]
+Averaging over this fixed strip yields
+\[
+ \frac1d\int_0^d\widehat\tau_{u,\omega}\,du
+   =\frac{1-e^{-d}}d\,\tau_\omega.
+ \tag{ZDC-FT18}
+\]
+All integrals here are nonnegative extended values. Integrating over the base recovers exactly the fixed-strip trace and its contracting return density in Section 4A.
+
+![A return crosses one roof; the Jacobian and fiber trace change cancel the roof contribution to exponential height](../assets/typeiii-zero-decomposition/fiber-trace-return.svg)
+
+The diagram shows a short-strip point and its image at time \(r(\omega)\). Its height stays \(u\); the base changes to \(T\omega\), and the algebra moves by \(\alpha_\omega\). Equations (ZDC-FT12), (ZDC-FT16) and (ZDC-FT17) give the complete trace identities behind these arrows. The drawn heights are schematic; the formulas use the actual roof and Jacobian.
+
+Finally this coherent model also applies to the original continuous coefficient in Section 4. The signed cover [SR8–SR9](OA-FLOW-SR.md#sr-cover) sends
+\([0,r(\omega))\times\{\omega\}\) to integer coordinate zero. Hence the central projection of that coordinate in \(\ell^\infty(\mathbb Z)\bar\otimes K\) becomes \(p_E\) under the [full central identification in the return product model](OA-FLOW-SR.md#sr-iw), used in (ZDC19). The fixed algebra of the deck action is the constant \(K\)-sequences, and compression to coordinate zero is its normal inverse, as SR10 proves. Equations (ZDC20) and (ZDC39) then identify the original \(\tau\) with the trace of this strip: both evaluate a fixed sequence by the trace of its zero coordinate. The fixed-algebra restriction map (ZDC34) transports the real action and its full normal algebra, while the product field supplies (ZDC-FT13)–(ZDC-FT17). Thus we obtain a compatible fiber realization for that original continuous system as well. A different arbitrary representative is still governed only by the fixed-time assertion (ZDC-FT10). \(\square\)
+
 <a id="zdc-7"></a>
 ## 7. The two crossed products, with their normal inverses
 

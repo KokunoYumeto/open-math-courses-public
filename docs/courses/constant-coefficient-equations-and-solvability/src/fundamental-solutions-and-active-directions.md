@@ -1,6 +1,10 @@
 # Fundamental solutions and the directions an equation uses
 
-A constant-coefficient equation can act on fewer directions than the surrounding space has. A transport equation differentiates along one line. A planar equation placed in three-dimensional space still acts only in its plane. This lesson identifies that active space directly from the polynomial and proves that it is the smallest linear space that can carry a fundamental solution.
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September–October 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+*Hyperplane proof-provider connection and derivative-convention comparison by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the contributing AI. CC0-1.0.*
+
+A fundamental solution turns a point source into a tool for solving an equation. A constant-coefficient equation can also act on fewer directions than the surrounding space has. We identify its active space and the smallest linear support of an inverse, then construct point-source kernels by iterated integration, radial flux and Gaussian Fourier transformation. The heat and Schrödinger kernels illustrate how support, phase and the distributional initial value fit together.
 
 The prerequisites are distributional differentiation, convolution with a compactly supported distribution, tensor products of distributions, and elementary linear algebra. Two further distribution results are needed below: existence of a fundamental solution for every nonzero constant-coefficient operator, and the local expansion of a distribution supported on a hyperplane in normal derivatives of delta. Their exact statements are recalled where they are used. Basic references include Melrose's open *Differential Analysis* notes [Melrose] and the original existence theorem of Malgrange [Malgrange]. Grubb's freely readable lecture chapter §5 [Grubb] supplies tempered-distribution background and the cutoff pairing of compactly supported distributions with exponentials used in Exercise 3. The existence and local hyperplane-structure results retain the precise inputs recalled below.
 
@@ -55,6 +59,8 @@ the active space is the line spanned by \((1,2,0)\). In contrast, for \(P(\xi_1,
 
 We use the following existence result, due to Malgrange and Ehrenpreis: for every nonzero polynomial \(q\) with complex coefficients in \(r\) variables, there is \(G\in\mathcal D'(\mathbb R^r)\) with \(q(D)G=\delta_0\). For \(r=0\) this means division by a nonzero constant. The theorem asserts existence without prescribing support or a normalization among different solutions.
 
+Theorem 3.1 of [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md#a-smooth-family-with-small-exponential-growth) proves this existence statement in every positive dimension. It also gives regularity and a prescribed positive exponential growth rate. Its integral construction starts from the [smooth polynomial averaging theorem](averaging-an-entire-function-while-avoiding-polynomial-zeros.md); from this lesson it uses the convolution identity and the active-space calculation above. Thus the existence assertion used here has an explicit proof. In zero dimensions the polynomial is a nonzero scalar and its inverse acts by scalar division.
+
 **Theorem 3.1.** Let \(P\ne0\). There exists a fundamental solution supported in \(V_P\). If a fundamental solution is supported in any real linear subspace \(W\), then \(V_P\subset W\).
 
 **Proof of existence.** Choose orthonormal coordinates \(x=(y,z)\) in which \(V_P\) is the \(y\)-space and \(N_P\) is the \(z\)-space. By Lemma 2.1 the transformed polynomial is a polynomial \(q\) in the \(y\)-covariables alone. Choose a fundamental solution \(G\) of \(q(D_y)\). Then
@@ -71,7 +77,7 @@ for a finite \(r\), with distributional coefficients \(E_j\) in the tangential v
 
 ### Hyperplane proof and derivative convention
 
-The needed expansion is proved in Jets, supported distributions and local operators, Theorem 3.1, together with its local form immediately after the proof. That reading includes the vanishing-jet argument used in the proof as Theorem 1.1. The current AN-01 edition of the same theorem supplies a second programme route. The bundled reading remains available in this course's download. Its convention uses ordinary derivatives; the following comparison fixes the factors of \(i\) and the localization needed here.
+The needed expansion is proved in Jets, supported distributions and local operators, Theorem 3.1, together with its local form immediately after the proof. That reading includes the vanishing-jet argument used in the proof as Theorem 1.1. The AN-01 chapter reproduced here retains its original proof and attribution. The bundled reading remains available in this course's download. Its convention uses ordinary derivatives; the following comparison fixes the factors of \(i\) and the localization needed here.
 
 Let \(E\in\mathcal D'(\Omega)\), where \(\Omega\) is open in \(\mathbb R^{n-1}_y\times\mathbb R_t\), and suppose its support is contained in \(t=0\). Around a point of that plane choose relatively compact product neighborhoods \(V\Subset U\Subset\Omega\), and a smooth compactly supported function \(\chi\) on \(\Omega\) equal to one on a neighborhood of \(\overline V\). The formula
 \[
@@ -173,6 +179,178 @@ S_P(\xi)^2=\xi_1^2\xi_2^2+\xi_1^2+\xi_2^2+1.
 \]
 It tends to infinity in every direction because \(N_P=\{0\}\). This is why \(S_P\), rather than \(|P|\), is the useful size in local existence estimates.
 
+## Iterated integration and point sources
+
+Some fundamental solutions can be written directly. Their constants depend on the derivative convention. In this section \(\partial^\alpha\) means ordinary differentiation, while \(D^\alpha=(-i)^{|\alpha|}\partial^\alpha\).
+
+For one real variable define
+\[
+ g_0=\delta_0,\qquad
+ g_j(x)=\frac{x^{j-1}}{(j-1)!}\,1_{\{x>0\}},\quad j\geq1.
+ \tag{M1}
+\]
+The value at \(x=0\) of the locally integrable functions is immaterial.
+
+**Theorem 5.1.** For every multi-index \(\alpha\in\mathbb N_0^n\), the tempered distribution
+\[
+ G_\alpha=\bigotimes_{j=1}^n g_{\alpha_j},\qquad
+ E_\alpha=i^{|\alpha|}G_\alpha
+ \tag{M2}
+\]
+satisfies
+\[
+              \partial^\alpha G_\alpha=\delta_0,\qquad
+                        D^\alpha E_\alpha=\delta_0.
+ \tag{M3}
+\]
+If \(\alpha_j=0\), the support in that coordinate is the point zero. If \(\alpha_j>0\), it is the positive closed half-line.
+
+**Proof.** The distributional derivative of \(g_1=H\) is delta, since
+\[
+                  -\int_0^\infty\phi'(x)\,dx=\phi(0).
+\]
+For \(j\geq2\), integration by parts gives \(g'_j=g_{j-1}\). There is no term at zero because \(x^{j-1}\) vanishes there, and there is no term at infinity because the test is compactly supported. Induction gives \(\partial^j g_j=\delta_0\).
+
+The tensor in (M2) has a direct description which also proves temperedness. Put \(I=\{j:\alpha_j>0\}\). Its pairing on a Schwartz test is
+\[
+ \langle G_\alpha,\phi\rangle
+  =\int_{(0,\infty)^I}
+       \prod_{j\in I}\frac{x_j^{\alpha_j-1}}{(\alpha_j-1)!}\,
+               \phi(x_I,0_{I^c})\,dx_I.
+ \tag{M4}
+\]
+For \(I=\varnothing\), this means \(\phi(0)\). Polynomial weights times the restriction of a Schwartz test to a coordinate plane are integrable. A sufficiently high Schwartz seminorm bounds the absolute value of (M4), proving continuity. Integrate by parts in each positive coordinate, using the one-variable calculation and Fubini. This gives the first equality in (M3); the zero coordinates already carry delta. Finally \((-i)^{|\alpha|}i^{|\alpha|}=1\), proving the second equality. Formula (M4) also gives the stated supports. \(\square\)
+
+**Example 5.2.** On three-dimensional space, the monomial operator \(D_1^2D_3^3\) has
+\[
+       E(x)=\frac i2\,x_{1,+}\,x_{3,+}^{\,2}\delta_0(x_2).
+ \tag{M5}
+\]
+The factor \(i=i^5\) converts the five ordinary derivatives to \(D\)-derivatives. The inactive coordinate carries delta, so the support lies in the smallest linear support plane \(x_2=0\), and within it in a positive quadrant.
+
+## Radial kernels and the complex derivative
+
+Two further normalizations have complete proofs in the linked readings. With \(z=x+iy\), real area measure \(dx\,dy\), and
+\[
+             \bar\partial=\tfrac12(\partial_x+i\partial_y),
+             \qquad \partial=\tfrac12(\partial_x-i\partial_y),
+\]
+Corollary 1.2 of Cauchy kernels and distributional boundary limits gives
+\[
+           \bar\partial\frac1{\pi z}=\delta_0,\qquad
+                \partial\frac1{\pi\bar z}=\delta_0. \tag{M6}
+\]
+Its punctured-circle argument proves the first identity, including the orientation and the factor \(\pi\). Conjugating that identity proves the second with the complex-linear distributional convention. These kernels are locally integrable because polar area measure integrates \(1/|z|\) near zero; their decay at infinity makes them tempered.
+
+For the positive Laplacian \(\Delta=\sum_j\partial_j^2\), let \(\sigma_n\) be the area of the unit sphere in \(\mathbb R^n\). A fundamental solution is
+\[
+ \Phi_n(x)=
+ \begin{cases}
+ |x|/2,&n=1,\\
+ (2\pi)^{-1}\log|x|,&n=2,\\
+ ((2-n)\sigma_n)^{-1}|x|^{2-n},&n\geq3.
+ \end{cases}
+ \qquad \Delta\Phi_n=\delta_0.
+ \tag{M7}
+\]
+In dimension one, \(|x|/2=g_2-x/2\), so Theorem 5.1 proves the assertion. In every dimension at least two, the full Green-identity proof is equation (RC4) in [Harmonic potentials and real carriers](harmonic-potentials-and-real-carriers.md#2-the-extra-coordinate-and-its-normalization), with its dimension \(d\) chosen to be the present \(n\). The outward flux is one. The kernels are locally integrable, with at most polynomial or logarithmic growth at infinity, and hence tempered. The fundamental solution for \(-\Delta=\sum_jD_j^2\) is \(-\Phi_n\). This sign change keeps the two Laplacian conventions distinct.
+
+The complete homogeneous elliptic form, including its polynomial logarithmic term, is proved in [Homogeneous elliptic kernels and logarithmic scaling](homogeneous-elliptic-kernels-and-logarithmic-scaling.md), Theorem 3.1. Theorem 1.1 there constructs parametrices for arbitrary complex elliptic principal symbols and arbitrary lower-order coefficients.
+
+Explicit fundamental kernels for all real homogeneous quadratic operators are constructed in [Quadratic boundary kernels and signature phases](quadratic-boundary-kernels-and-signature-phases.md), Theorems 1.1, 4.1 and 5.1 and Section 6. The proofs retain both boundary signs, determinant and signature phases, zero-source cone layers, the low-dimensional cases and degenerate active-space reductions.
+
+## Heat and Schrödinger point sources
+
+The same Fourier construction treats diffusion and oscillatory evolution. Let \(x\in\mathbb R^n\), \(t\in\mathbb R\), and let \(c\in\mathbb C\) satisfy \(\operatorname{Re}c\geq0\). Consider
+\[
+                            L_c=\partial_t-c\Delta_x. \tag{G1}
+\]
+For \(t\geq0\), define the spatial tempered distribution
+\[
+                       K_{c,t}=\mathcal F_x^{-1}
+                                      (e^{-ct|\xi|^2}). \tag{G2}
+\]
+In particular \(K_{c,0}=\delta_0\). A closed-half-plane parameter is important: the multiplier has modulus at most one.
+
+**Theorem 6.1.** There is a unique tempered fundamental solution of \(L_c\) supported in \(t\geq0\). It is defined by
+\[
+ \begin{aligned}
+ \langle E_c,\phi\rangle
+   &=(2\pi)^{-n}\int_0^\infty\int_{\mathbb R^n}
+          e^{-ct|\xi|^2}\,
+          \widehat{\phi(\cdot,t)}(-\xi)\,d\xi\,dt .
+ \end{aligned}
+ \tag{G3}
+\]
+The map \(c\mapsto E_c\) is weakly continuous on the closed half-plane. Also \(K_{c,t}\to\delta_0\) in tempered distributions as \(t\downarrow0\). For \(c\ne0\) and \(t>0\), the spatial distribution is the smooth function
+\[
+ K_{c,t}(x)=(4\pi ct)^{-n/2}
+                     \exp\!\left(-\frac{|x|^2}{4ct}\right),
+ \tag{G4}
+\]
+where the power uses \(-\pi/2\leq\arg c\leq\pi/2\).
+
+**Proof of existence and the source.** The partial spatial transform of a Schwartz function is Schwartz in \((\xi,t)\). This follows from the same differentiation and integration-by-parts seminorm estimates as the full transform in [Schwartz Fourier foundations](../prerequisites/schwartz-fourier-foundations.html). Apply its inverse identities for each fixed \(t\): the partial transform is a continuous isomorphism of the joint Schwartz space, and its transpose is consequently an isomorphism of the joint tempered distributions. For example its product with \((1+t)^2(1+|\xi|)^{n+1}\), for \(t\geq0\), is bounded by a fixed Schwartz seminorm. The inverse of this weight is integrable. Since the exponential in (G3) has modulus at most one, (G3) is a continuous functional on \(\mathcal S(\mathbb R^{n+1})\), with support in \(t\geq0\).
+
+In the spatial Fourier variables, integration by parts in time gives
+\[
+            (\partial_t+c|\xi|^2)
+                        (H(t)e^{-ct|\xi|^2})=\delta_0(t).
+ \tag{G5}
+\]
+The boundary at zero is one; the boundary at infinity vanishes on Schwartz tests. Both the differentiated integrals are absolutely convergent after multiplication by a sufficiently high Schwartz weight, so this integration is also valid jointly in \((\xi,t)\). Inverse spatial Fourier transformation gives
+\[
+                             L_cE_c=\delta_0(x,t).
+ \tag{G6}
+\]
+For the limit in (G2), test against a spatial Schwartz function and use its integrable Fourier transform to pass to the limit \(e^{-ct|\xi|^2}\to1\). The same domination in (G3) proves weak continuity when \(c\) varies within the closed half-plane. This includes \(c=0\), for which \(E_0=\delta_0(x)\otimes H(t)\).
+
+**Proof of the explicit Gaussian.** For a complex number \(a\) with \(\operatorname{Re}a>0\), both sides of
+\[
+ (2\pi)^{-n}\int e^{ix\cdot\xi-a|\xi|^2}\,d\xi
+                  =(4\pi a)^{-n/2}e^{-|x|^2/(4a)}
+ \tag{G7}
+\]
+are holomorphic in \(a\) on that half-plane. On its compact subsets, a Gaussian dominates all parameter derivatives of the left side. The right side uses the holomorphic logarithm which is real on the positive axis. For real \(a>0\), (G7) is precisely the Gaussian transform proved in the Fourier foundation reading, Section F3. The scalar identity theorem proves (G7) throughout the connected half-plane. Substitution \(a=ct\) proves (G4) when \(\operatorname{Re}c>0\).
+
+If \(c=i\sigma\), with nonzero real \(\sigma\), let \(c_\epsilon=\epsilon+i\sigma\). The Fourier multipliers converge on Schwartz tests by domination with one. The functions in (G4) converge on every spatial compact set with all spatial derivatives, and their moduli are uniformly bounded for each fixed \(t>0\). They consequently converge as tempered distributions too, by domination with an integrable Schwartz test. The limit is
+\[
+ K_{i\sigma,t}(x)
+   =(4\pi|\sigma|t)^{-n/2}
+       e^{-i\,\operatorname{sgn}(\sigma)n\pi/4}
+       e^{\,i|x|^2/(4\sigma t)} .
+ \tag{G8}
+\]
+This proves (G4) also on both nonzero boundary rays and fixes its phase.
+
+**Proof of causal uniqueness.** Let \(w\) be the difference of two tempered inverses with that support. Its partial spatial transform is tempered, is supported in \(t\geq0\), and satisfies \((\partial_t+c|\xi|^2)\widetilde w=0\). In ordinary distributions, multiplication by the smooth nowhere-zero function \(e^{ct|\xi|^2}\) is legitimate, even when it does not preserve temperedness. Thus \(v=e^{ct|\xi|^2}\widetilde w\) satisfies \(\partial_t v=0\).
+
+Such a distribution has the form \(C(\xi)\otimes1\). To prove this, choose \(\rho\in C_c^\infty(\mathbb R)\) with integral one. For a compact test \(h(\xi,t)\), put \(I(\xi)=\int h(\xi,s)\,ds\). The function \(h-\rho I\) has zero time integral and is the time derivative of the compact smooth function
+\[
+              \int_{-\infty}^t(h(\xi,s)-\rho(s)I(\xi))\,ds .
+\]
+Therefore \(v(h)=v(\rho I)\). The functional \(C(I)=v(\rho I)\) is a distribution, by continuity of this test map. Now choose \(\rho\) supported in \(t<0\). The support of \(v\) is still in \(t\geq0\), so \(C=0\), then \(v=0\) and \(w=0\). \(\square\)
+
+For real \(c>0\), (G4) is the heat kernel. For the operator \(i\partial_t+\Delta_x=iL_i\), the causal inverse is \(-iE_i\); multiplication of the operator by \(i\) divides its fundamental solution by \(i\).
+
+The oscillatory expression (G8) is asserted as a function only for \(t>0\). Its causal extension at \(t=0\) is (G3). In dimensions \(n\geq2\), its absolute value is not locally integrable on a spatial box times a time interval starting at zero, because it is a constant times \(t^{-n/2}\). The joint distribution is nevertheless well defined by (G3).
+
+**Example 6.2 (a Gaussian packet).** For \(a>0\) and \(t\geq0\), the evolution of \(g(x)=e^{-a|x|^2}\) is
+\[
+ K_{c,t}*g(x)=(1+4act)^{-n/2}
+           \exp\!\left(-\frac{a|x|^2}{1+4act}\right).
+ \tag{G9}
+\]
+Indeed \(\widehat g=(\pi/a)^{n/2}e^{-|\xi|^2/(4a)}\); multiply by the multiplier in (G2) and apply (G7) with parameter \(ct+1/(4a)\), whose real part is positive. This derives both the coefficient and exponent, including the imaginary boundary cases and \(c=0\).
+
+If \(c=i\sigma\), its squared modulus is
+\[
+ (1+16a^2\sigma^2t^2)^{-n/2}
+       \exp\!\left(-\frac{2a|x|^2}{1+16a^2\sigma^2t^2}\right).
+ \tag{G10}
+\]
+Integrating this real Gaussian gives the constant squared \(L^2\) norm \((\pi/(2a))^{n/2}\). The packet spreads, while its \(L^2\) norm remains fixed.
+
 ## Worked transport model
 
 Let \(v\ne0\) be a real vector, \(c\in\mathbb C\), and \(L=v\cdot\nabla_x+c\). Define
@@ -233,6 +411,19 @@ The contradiction proves the assertion. Compact support of \(E\) is essential to
 \(v\cdot\nabla P(\xi)=(Av)\cdot\nabla p(A\xi)\).
 Surjectivity implies that this vanishes for all \(\xi\) precisely when \(Av\) is inactive for \(p\). Under the stated hypothesis, \(N_P=\ker A\), so \(V_P=(\ker A)^\perp=\operatorname{ran}A^T\). In general \(N_P=A^{-1}N_p\); taking orthogonal complements gives \(V_P=A^T(N_p^\perp)\). The last identity follows because \(A^T\) is injective and its image of \(N_p^\perp\) is perpendicular to exactly \(A^{-1}N_p\).
 
+**Exercise 5 (intermediate).** Find the fundamental solution in (M2) for \(D_1D_2^2\) on \(\mathbb R^3\). Explain why replacing the third-coordinate delta by the constant one changes the source.
+
+**Solution.** The total order is three, so the kernel is \(-iH(x_1)x_{2,+}\delta_0(x_3)\). Formula (M3) gives the point source in all three coordinates. Replacing the last factor by one instead gives \(\delta_0(x_1)\delta_0(x_2)\otimes1(x_3)\): there is no differentiation in the third coordinate to change that factor into delta. Its support is an entire line, and it is not the three-dimensional point source.
+
+**Exercise 6 (advanced).** In two spatial dimensions let \(a>0\). Give the causal fundamental solution for \(i\partial_t+a\Delta_x\), including its phase for \(t>0\), and explain how it is defined at \(t=0\).
+
+**Solution.** The operator is \(iL_{ia}\), so its inverse is \(-iE_{ia}\). In (G8) take \(n=2\) and \(\sigma=a\). Since \(e^{-i\pi/2}=-i\), its value for \(t>0\) is
+\[
+             -\frac1{4\pi at}\exp\!\left(\frac{i|x|^2}{4at}\right).
+ \tag{G11}
+\]
+Its absolute value has divergent time integral near zero on every spatial box of positive area. Thus an unqualified ordinary locally integrable extension would be incorrect. Its precise extension is \(-i\) times (G3), whose spatial Fourier expression is \(-iH(t)e^{-iat|\xi|^2}\). Equation (G5), multiplied by the operator factor \(i\), gives the full space-time point source.
+
 ## References
 
 - [Melrose] Richard Melrose, *Differential Analysis*, MIT OpenCourseWare, Fall 2004, section on constant-coefficient differential operators. [Open course notes](https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/resources/section11/).
@@ -240,6 +431,6 @@ Surjectivity implies that this vanishes for all \(\xi\) precisely when \(Av\) is
 - [Malgrange] Bernard Malgrange, *Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution*, Annales de l'Institut Fourier **6** (1956), 271–355. [Original article](https://aif.centre-mersenne.org/articles/10.5802/aif.65/).
 - [Ehrenpreis] Leon Ehrenpreis, *Solution of some problems of division. I. Division by a polynomial of derivation*, American Journal of Mathematics **76** (1954), 883–903.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-*Hyperplane proof-provider connection and derivative-convention comparison by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the contributing AI. CC0-1.0.*
+- **[Hörmander II]** Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Fundamental solutions, localization of polynomials and regularity.
+- [Hörmander I] Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 1990. Distributional point sources, Cauchy kernels and Gaussian evolution.

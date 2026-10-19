@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ultraproduct corners and hypercentral tests · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/ultraproduct-corners-and-hypercentral-tests.md">Editable Markdown</a></nav><article class="lesson"><h1 id="ultraproduct-corners-and-hypercentral-tests">Ultraproduct corners and hypercentral tests</h1>
+<p><em>Original exposition by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0-1.0.</em></p>
+<p>A norm of a normal functional is tested against an entire operator unit ball. In an ultrapower, only the sequences that preserve the null ideal represent operators. We prove that this restriction loses none of the norm of a functional obtained by multiplying the ultrapower state on either side. The proof identifies the ultrapower with a support corner, including the two off-diagonal corners that explain why arbitrary bounded sequences cannot be used as representatives.</p>
+<p>For a fixed algebra, the norm identity identifies its asymptotic centralizer with the centralizer of the canonical state on its central-sequence algebra. A diagonal argument then gives an exact bicentralizer description of the weaker-input hypercentral test. These are statements for general algebras; no finite, amenable or factor hypothesis is imposed. The final equality with the center of the asymptotic centralizer is a further assertion, isolated in Section 07.</p>
+<p>We use <a href="OA-MOD-FS.html#constructing-the-gns-von-neumann-algebra">the faithful-state GNS construction, Constructing the GNS von Neumann algebra</a>, <a href="OA-MOD-BK.html#oa-mod-bk-02">the operator bicommutant theorem, Finite-vector approximation and the bicommutant</a>, and <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/kaplansky-s-density-theorem-and-its-consequences.md#7-kaplanskys-density-theorem">Kaplansky's density theorem, Theorem 7.1</a>. The normal-predual duality and Hahn–Banach argument are in <a href="OA-MOD-CP.html#oa-mod-cp-06">Concrete preduals, The concrete predual and its intrinsic norm</a>. Faithful-state seminorms and normal-functional module operations are proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-APPROX/components/central-sequence-foundations.md">Central-sequence foundations, NT1–NT2</a>. We use both directions of <a href="OA-MOD-ME.html#oa-mod-me-01">Conditional expectations from modular invariance, The criterion and its exact setting–The converse reduces the closed Tomita map</a>, and the precise hypercentral conventions of <a href="OA-MOD-NHC.html#oa-mod-nhc-01">Null sequences and hypercentral commutants, Null sequences and the two commutation tests–The null-sequence test forces the multiplier condition</a>.</p>
+<h2 id="sequences-states-and-the-ambient-hilbert-space"><span id="OA-MOD-HUC-01"></span><span id="oa-mod-huc-01"></span>Sequences, states and the ambient Hilbert space</h2>
+<p>Let <span class="math" data-tex="\((M_n,\varphi_n)\)">\((M_n,\varphi_n)\)</span> be a sequence of von Neumann algebras with faithful normal states, and let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be a free ultrafilter on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathscr B&amp;=\{(x_n):x_n\in M_n,\ \sup_n\|x_n\|&lt;\infty\},\\
+L&amp;=\{x\in\mathscr B:\lim_\omega\varphi_n(x_n^*x_n)=0\},\\
+I&amp;=L\cap L^*,\\
+\mathscr N&amp;=\{x\in\mathscr B:xI\subseteq I,\ Ix\subseteq I\},\qquad
+Q=\mathscr N/I.
+\end{aligned}
+\tag{HUC.1}
+\]">\[
+\begin{aligned}
+\mathscr B&amp;=\{(x_n):x_n\in M_n,\ \sup_n\|x_n\|&lt;\infty\},\\
+L&amp;=\{x\in\mathscr B:\lim_\omega\varphi_n(x_n^*x_n)=0\},\\
+I&amp;=L\cap L^*,\\
+\mathscr N&amp;=\{x\in\mathscr B:xI\subseteq I,\ Ix\subseteq I\},\qquad
+Q=\mathscr N/I.
+\end{aligned}
+\tag{HUC.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(L^*=\{x^*:x\in L\}\)">\(L^*=\{x^*:x\in L\}\)</span>. Coordinate operations and the supremum norm make <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span> a unital C* algebra. Throughout, the bimodule convention is</p>
+<span class="math math-display" data-tex="\[
+(x\varphi)(a)=\varphi(ax),\qquad
+(\varphi y)(a)=\varphi(ya).
+\tag{HUC.2}
+\]">\[
+(x\varphi)(a)=\varphi(ax),\qquad
+(\varphi y)(a)=\varphi(ya).
+\tag{HUC.2}
+\]</span>
+<p>Let <span class="math" data-tex="\((H_n,\xi_n)\)">\((H_n,\xi_n)\)</span> be the faithful GNS representation of <span class="math" data-tex="\((M_n,\varphi_n)\)">\((M_n,\varphi_n)\)</span>. The Hilbert ultraproduct <span class="math" data-tex="\(H_\omega\)">\(H_\omega\)</span> consists of bounded vector sequences modulo those with norm tending to zero along <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\langle[\eta_n],[\zeta_n]\rangle
+=\lim_\omega\langle\eta_n,\zeta_n\rangle.
+\]">\[
+\langle[\eta_n],[\zeta_n]\rangle
+=\lim_\omega\langle\eta_n,\zeta_n\rangle.
+\]</span>
+<p>The quotient is complete. To see this directly, pass from a Cauchy sequence to a subsequence whose consecutive quotient distances are less than <span class="math" data-tex="\(2^{-k-2}\)">\(2^{-k-2}\)</span>. Representatives may be chosen with a common bound: a quotient vector of norm at most <span class="math" data-tex="\(C\)">\(C\)</span> can be clipped coordinatewise to the ball of radius <span class="math" data-tex="\(C+1\)">\(C+1\)</span> without changing its class. On a decreasing sequence of large sets impose the first <span class="math" data-tex="\(k\)">\(k\)</span> consecutive-distance bounds, each with bound <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>, and also <span class="math" data-tex="\(n\geq k\)">\(n\geq k\)</span>. Choosing the <span class="math" data-tex="\(k\)">\(k\)</span>-th row on the difference of consecutive large sets gives a bounded vector sequence. The tail estimate <span class="math" data-tex="\(\sum_{j\geq k}2^{-j}\)">\(\sum_{j\geq k}2^{-j}\)</span> proves convergence to its class. The original Cauchy sequence has the same limit.</p>
+<p>For <span class="math" data-tex="\(x\in\mathscr B\)">\(x\in\mathscr B\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat x[\eta_n]&amp;=[x_n\eta_n],\qquad
+R=\{\widehat x:x\in\mathscr B\}&#x27;&#x27;,\\
+\xi&amp;=[\xi_n],\qquad \Phi(T)=\langle T\xi,\xi\rangle.
+\end{aligned}
+\tag{HUC.3}
+\]">\[
+\begin{aligned}
+\widehat x[\eta_n]&amp;=[x_n\eta_n],\qquad
+R=\{\widehat x:x\in\mathscr B\}&#x27;&#x27;,\\
+\xi&amp;=[\xi_n],\qquad \Phi(T)=\langle T\xi,\xi\rangle.
+\end{aligned}
+\tag{HUC.3}
+\]</span>
+<p>This is a star representation. Its norm is</p>
+<span class="math math-display" data-tex="\[
+\|\widehat x\|=\lim_\omega\|x_n\|.
+\tag{HUC.4}
+\]">\[
+\|\widehat x\|=\lim_\omega\|x_n\|.
+\tag{HUC.4}
+\]</span>
+<p>The upper bound follows by applying the coordinate norm bound on any large set. For the lower bound choose a unit vector <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span> with <span class="math" data-tex="\(\|x_n\eta_n\|&gt;\|x_n\|-1/n\)">\(\|x_n\eta_n\|&gt;\|x_n\|-1/n\)</span>, and use its class. Thus the represented algebra is the norm ultraproduct, a C* algebra, and its strong closure is the von Neumann algebra <span class="math" data-tex="\(R\)">\(R\)</span>. The functional <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a normal state on <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Let <span class="math" data-tex="\(p\)">\(p\)</span> be the projection onto <span class="math" data-tex="\(\overline{R&#x27;\xi}\)">\(\overline{R&#x27;\xi}\)</span>. This subspace reduces <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span>, so <span class="math" data-tex="\(p\in R\)">\(p\in R\)</span>, and <span class="math" data-tex="\(p\xi=\xi\)">\(p\xi=\xi\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\Phi(T)=\Phi(pTp)\qquad(T\in R).
+\tag{HUC.5}
+\]">\[
+\Phi(T)=\Phi(pTp)\qquad(T\in R).
+\tag{HUC.5}
+\]</span>
+<p>The restriction of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(pRp\)">\(pRp\)</span> is faithful. Indeed, if <span class="math" data-tex="\(T\in pRp\)">\(T\in pRp\)</span> is positive and <span class="math" data-tex="\(\Phi(T)=0\)">\(\Phi(T)=0\)</span>, then <span class="math" data-tex="\(T^{1/2}\xi=0\)">\(T^{1/2}\xi=0\)</span>. Commutation with <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> gives <span class="math" data-tex="\(T^{1/2}R&#x27;\xi=0\)">\(T^{1/2}R&#x27;\xi=0\)</span>, hence <span class="math" data-tex="\(T^{1/2}p=0\)">\(T^{1/2}p=0\)</span> and <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. This also explains the term <em>support projection</em> for <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h2 id="the-left-null-ideal-and-its-two-sided-normalizer"><span id="OA-MOD-HUC-02"></span><span id="oa-mod-huc-02"></span>The left null ideal and its two-sided normalizer</h2>
+<p><strong>Lemma.</strong> The space <span class="math" data-tex="\(L\)">\(L\)</span> is a closed left ideal, <span class="math" data-tex="\(I\)">\(I\)</span> is a closed star subalgebra, and <span class="math" data-tex="\(\mathscr N\)">\(\mathscr N\)</span> is a unital C* algebra in which <span class="math" data-tex="\(I\)">\(I\)</span> is a closed two-sided ideal. Moreover,</p>
+<span class="math math-display" data-tex="\[
+L\mathscr N\subseteq L,\qquad
+\mathscr N L^*\subseteq L^*,\qquad
+\mathscr N\cap(L+L^*)=I.
+\tag{HUC.6}
+\]">\[
+L\mathscr N\subseteq L,\qquad
+\mathscr N L^*\subseteq L^*,\qquad
+\mathscr N\cap(L+L^*)=I.
+\tag{HUC.6}
+\]</span>
+<p><strong>Proof.</strong> Left multiplication preserves <span class="math" data-tex="\(L\)">\(L\)</span> because
+<span class="math" data-tex="\(\varphi_n(x_n^*a_n^*a_nx_n)\leq\|a\|^2\varphi_n(x_n^*x_n)\)">\(\varphi_n(x_n^*a_n^*a_nx_n)\leq\|a\|^2\varphi_n(x_n^*x_n)\)</span>.
+The seminorm <span class="math" data-tex="\(x\mapsto\lim_\omega\varphi_n(x_n^*x_n)^{1/2}\)">\(x\mapsto\lim_\omega\varphi_n(x_n^*x_n)^{1/2}\)</span> is norm continuous, proving closedness. Taking adjoints gives the corresponding right-ideal facts for <span class="math" data-tex="\(L^*\)">\(L^*\)</span>. These facts prove that <span class="math" data-tex="\(I=L\cap L^*\)">\(I=L\cap L^*\)</span> is a star algebra. The two ideal-preservation conditions defining <span class="math" data-tex="\(\mathscr N\)">\(\mathscr N\)</span> are closed under sums, products, adjoints and norm limits, and contain the unit and <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>For every <span class="math" data-tex="\(a\in L\)">\(a\in L\)</span>, one has <span class="math" data-tex="\(a^*a\in I\)">\(a^*a\in I\)</span>: it belongs to <span class="math" data-tex="\(L\)">\(L\)</span> by the left-ideal property and is selfadjoint. If <span class="math" data-tex="\(b\in\mathscr N\)">\(b\in\mathscr N\)</span>, then <span class="math" data-tex="\(b^*a^*ab\in I\)">\(b^*a^*ab\in I\)</span>, so its coordinate state limit is zero. This says <span class="math" data-tex="\(ab\in L\)">\(ab\in L\)</span>, proving the first inclusion in (HUC.6). Adjointing proves the second.</p>
+<p>If <span class="math" data-tex="\(a\in\mathscr N\cap L\)">\(a\in\mathscr N\cap L\)</span>, then <span class="math" data-tex="\(a^*a\in I\)">\(a^*a\in I\)</span>, and
+<span class="math" data-tex="\((aa^*)^2=a(a^*a)a^*\in I\)">\((aa^*)^2=a(a^*a)a^*\in I\)</span>. Continuous positive functional calculus inside the closed C* subalgebra <span class="math" data-tex="\(I\)">\(I\)</span> gives <span class="math" data-tex="\(aa^*\in I\)">\(aa^*\in I\)</span>. Thus <span class="math" data-tex="\(a\in L^*\)">\(a\in L^*\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathscr N\cap L=\mathscr N\cap L^*=I.
+\tag{HUC.7}
+\]">\[
+\mathscr N\cap L=\mathscr N\cap L^*=I.
+\tag{HUC.7}
+\]</span>
+<p>Finally write <span class="math" data-tex="\(a=b+c\in\mathscr N\)">\(a=b+c\in\mathscr N\)</span>, with <span class="math" data-tex="\(b\in L\)">\(b\in L\)</span>, <span class="math" data-tex="\(c\in L^*\)">\(c\in L^*\)</span>. For <span class="math" data-tex="\(d\in I\)">\(d\in I\)</span>, the product <span class="math" data-tex="\(bd\)">\(bd\)</span> belongs to <span class="math" data-tex="\(L\)">\(L\)</span>, and <span class="math" data-tex="\(bd=ad-cd\)">\(bd=ad-cd\)</span> also belongs to <span class="math" data-tex="\(L^*\)">\(L^*\)</span>. The product <span class="math" data-tex="\(db\)">\(db\)</span> belongs to both ideals directly. Hence <span class="math" data-tex="\(b\in\mathscr N\)">\(b\in\mathscr N\)</span>, and then <span class="math" data-tex="\(c=a-b\in\mathscr N\)">\(c=a-b\in\mathscr N\)</span>. Equation (HUC.7) puts both in <span class="math" data-tex="\(I\)">\(I\)</span>. This proves the last equality in (HUC.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every sequence in <span class="math" data-tex="\(I\)">\(I\)</span> has zero limit under the states, by Cauchy–Schwarz. This observation was used above when passing from membership of a positive sequence in <span class="math" data-tex="\(I\)">\(I\)</span> to the vanishing of its state values.</p>
+<h2 id="a-contraction-can-be-lifted-on-two-vectors-at-once"><span id="OA-MOD-HUC-03"></span><span id="oa-mod-huc-03"></span>A contraction can be lifted on two vectors at once</h2>
+<p><strong>Lemma.</strong> For every contraction <span class="math" data-tex="\(T\in R\)">\(T\in R\)</span>, there is a sequence of contractions <span class="math" data-tex="\(a_n\in M_n\)">\(a_n\in M_n\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\widehat a\xi=T\xi,\qquad
+\widehat a^{\,*}\xi=T^*\xi.
+\tag{HUC.8}
+\]">\[
+\widehat a\xi=T\xi,\qquad
+\widehat a^{\,*}\xi=T^*\xi.
+\tag{HUC.8}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\widehat a p=Tp\)">\(\widehat a p=Tp\)</span> and <span class="math" data-tex="\(p\widehat a=pT\)">\(p\widehat a=pT\)</span>.</p>
+<p><strong>Proof.</strong> Consider the pairs</p>
+<span class="math math-display" data-tex="\[
+\mathcal E=\{(\widehat a\xi,\widehat a^{\,*}\xi):\|a_n\|\leq1\text{ for every }n\}
+\subset H_\omega\oplus H_\omega.
+\]">\[
+\mathcal E=\{(\widehat a\xi,\widehat a^{\,*}\xi):\|a_n\|\leq1\text{ for every }n\}
+\subset H_\omega\oplus H_\omega.
+\]</span>
+<p>We first prove that this set is closed. If <span class="math" data-tex="\((\eta,\zeta)\)">\((\eta,\zeta)\)</span> belongs to its closure, choose contraction rows <span class="math" data-tex="\(a^{(k)}\)">\(a^{(k)}\)</span> for which each of the two vector errors is less than <span class="math" data-tex="\(2^{-k-3}\)">\(2^{-k-3}\)</span>. The two consecutive-row distances in the ultraproduct are then strictly less than <span class="math" data-tex="\(2^{-k-1}\)">\(2^{-k-1}\)</span>. Thus the sets</p>
+<span class="math math-display" data-tex="\[
+B_k=\{n:\|(a_n^{(k+1)}-a_n^{(k)})\xi_n\|&lt;2^{-k},\
+\|((a_n^{(k+1)})^*-(a_n^{(k)})^*)\xi_n\|&lt;2^{-k}\}
+\]">\[
+B_k=\{n:\|(a_n^{(k+1)}-a_n^{(k)})\xi_n\|&lt;2^{-k},\
+\|((a_n^{(k+1)})^*-(a_n^{(k)})^*)\xi_n\|&lt;2^{-k}\}
+\]</span>
+<p>belong to <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+G_k=\{n:n\geq k\}\cap\bigcap_{j\leq k}B_j.
+\]">\[
+G_k=\{n:n\geq k\}\cap\bigcap_{j\leq k}B_j.
+\]</span>
+<p>They decrease, are large, and have empty intersection. Use <span class="math" data-tex="\(a_n=a_n^{(k)}\)">\(a_n=a_n^{(k)}\)</span> on <span class="math" data-tex="\(G_k\setminus G_{k+1}\)">\(G_k\setminus G_{k+1}\)</span>, and use the first row outside <span class="math" data-tex="\(G_1\)">\(G_1\)</span>. If <span class="math" data-tex="\(n\in G_k\)">\(n\in G_k\)</span>, telescoping from row <span class="math" data-tex="\(k\)">\(k\)</span> to the selected row gives, for both the vector and its adjoint vector, an error at most
+<span class="math" data-tex="\(\sum_{j\geq k}2^{-j}=2^{-k+1}\)">\(\sum_{j\geq k}2^{-j}=2^{-k+1}\)</span>.
+Taking ultralimits and then <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> proves that the resulting pair equals <span class="math" data-tex="\((\eta,\zeta)\)">\((\eta,\zeta)\)</span>. The same selected row works for both components. Therefore <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is closed.</p>
+<p>By the strong* form of Kaplansky density, <span class="math" data-tex="\((T\xi,T^*\xi)\)">\((T\xi,T^*\xi)\)</span> is in the closure of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. Here a contraction in the represented norm ultraproduct has contraction representatives: clip a representative's coordinate norms to one; the change has norm ultralimit zero by (HUC.4). Closedness now gives (HUC.8).</p>
+<p>For <span class="math" data-tex="\(S\in R&#x27;\)">\(S\in R&#x27;\)</span>, the first identity implies
+<span class="math" data-tex="\(\widehat a S\xi=S\widehat a\xi=ST\xi=TS\xi\)">\(\widehat a S\xi=S\widehat a\xi=ST\xi=TS\xi\)</span>.
+Density in <span class="math" data-tex="\(pH_\omega\)">\(pH_\omega\)</span> gives <span class="math" data-tex="\(\widehat a p=Tp\)">\(\widehat a p=Tp\)</span>. Apply the same reasoning to the adjoint identity and take adjoints to get <span class="math" data-tex="\(p\widehat a=pT\)">\(p\widehat a=pT\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-support-corner-is-exactly-the-ultraproduct"><span id="OA-MOD-HUC-04"></span><span id="oa-mod-huc-04"></span>The support corner is exactly the ultraproduct</h2>
+<p><strong>Theorem.</strong> For <span class="math" data-tex="\(a\in\mathscr B\)">\(a\in\mathscr B\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a\in\mathscr N\quad\Longleftrightarrow\quad
+\widehat a p=p\widehat a.
+\tag{HUC.9}
+\]">\[
+a\in\mathscr N\quad\Longleftrightarrow\quad
+\widehat a p=p\widehat a.
+\tag{HUC.9}
+\]</span>
+<p>The map</p>
+<span class="math math-display" data-tex="\[
+\Theta:Q\longrightarrow pRp,\qquad
+\Theta(a+I)=p\widehat a p
+\tag{HUC.10}
+\]">\[
+\Theta:Q\longrightarrow pRp,\qquad
+\Theta(a+I)=p\widehat a p
+\tag{HUC.10}
+\]</span>
+<p>is a star isomorphism. In particular <span class="math" data-tex="\(Q\)">\(Q\)</span> is a von Neumann algebra with faithful normal state</p>
+<span class="math math-display" data-tex="\[
+\varphi^\omega(a+I)=\lim_\omega\varphi_n(a_n).
+\tag{HUC.11}
+\]">\[
+\varphi^\omega(a+I)=\lim_\omega\varphi_n(a_n).
+\tag{HUC.11}
+\]</span>
+<p>Every contraction in <span class="math" data-tex="\(Q\)">\(Q\)</span> has a representative consisting of contractions in <span class="math" data-tex="\(\mathscr N\)">\(\mathscr N\)</span>.</p>
+<p><strong>Proof.</strong> The definition of <span class="math" data-tex="\(p\)">\(p\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a\in L&amp;\Longleftrightarrow\widehat a p=0,\\
+a\in L^*&amp;\Longleftrightarrow p\widehat a=0,\\
+a\in I&amp;\Longleftrightarrow\widehat a\in(1-p)R(1-p).
+\end{aligned}
+\tag{HUC.12}
+\]">\[
+\begin{aligned}
+a\in L&amp;\Longleftrightarrow\widehat a p=0,\\
+a\in L^*&amp;\Longleftrightarrow p\widehat a=0,\\
+a\in I&amp;\Longleftrightarrow\widehat a\in(1-p)R(1-p).
+\end{aligned}
+\tag{HUC.12}
+\]</span>
+<p>For example, <span class="math" data-tex="\(a\in L\)">\(a\in L\)</span> means <span class="math" data-tex="\(\widehat a\xi=0\)">\(\widehat a\xi=0\)</span>; commuting with <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> extends this vanishing to <span class="math" data-tex="\(pH_\omega\)">\(pH_\omega\)</span>. The other statements follow by adjoints and intersection.</p>
+<p>If <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> commutes with <span class="math" data-tex="\(p\)">\(p\)</span>, multiplication on either side preserves the bottom-right corner in (HUC.12), so <span class="math" data-tex="\(a\in\mathscr N\)">\(a\in\mathscr N\)</span>.</p>
+<p>Conversely, take <span class="math" data-tex="\(a\in\mathscr N\)">\(a\in\mathscr N\)</span>. Apply Section 03, with scaling if necessary, separately to the three operators</p>
+<span class="math math-display" data-tex="\[
+p\widehat a p,\qquad p\widehat a(1-p),\qquad (1-p)\widehat a p.
+\]">\[
+p\widehat a p,\qquad p\widehat a(1-p),\qquad (1-p)\widehat a p.
+\]</span>
+<p>It gives sequences <span class="math" data-tex="\(b,c,d\)">\(b,c,d\)</span> whose corners touching <span class="math" data-tex="\(p\)">\(p\)</span> equal, respectively, those three operators. Thus <span class="math" data-tex="\(\widehat b\)">\(\widehat b\)</span> commutes with <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(\widehat c p=0\)">\(\widehat c p=0\)</span>, <span class="math" data-tex="\(p\widehat d=0\)">\(p\widehat d=0\)</span>, and
+<span class="math" data-tex="\(a-b-c-d\in I\)">\(a-b-c-d\in I\)</span>.
+We already know <span class="math" data-tex="\(b\in\mathscr N\)">\(b\in\mathscr N\)</span>; (HUC.12) puts <span class="math" data-tex="\(c\in L\)">\(c\in L\)</span>, <span class="math" data-tex="\(d\in L^*\)">\(d\in L^*\)</span>. Therefore
+<span class="math" data-tex="\(a-b\in\mathscr N\cap(L+L^*)=I\)">\(a-b\in\mathscr N\cap(L+L^*)=I\)</span>
+by Section 02. It follows that the two off-diagonal corners of <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> vanish. This proves (HUC.9).</p>
+<p>The corner map has kernel exactly <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(\mathscr N\)">\(\mathscr N\)</span>, by (HUC.9) and (HUC.12). It preserves products and adjoints because each representative commutes with <span class="math" data-tex="\(p\)">\(p\)</span>. Section 03, applied to <span class="math" data-tex="\(T\in pRp\)">\(T\in pRp\)</span>, proves surjectivity and supplies contraction representatives when <span class="math" data-tex="\(\|T\|\leq1\)">\(\|T\|\leq1\)</span>. This proves the isomorphism. Transporting the faithful normal corner state proves (HUC.11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="assets/ultraproduct-corners-and-hypercentral-tests.svg" alt="The support corner, its off-diagonal null ideals, and the hypercentral reduction" /></p>
+<p><em>Figure.</em> The top-left corner is the ultraproduct. The left null ideal has zero first column; its adjoint has zero first row. The two-sided null ideal occupies only the bottom-right corner. Sections 06–07 identify the two algebras in the lower diagram; the additional center equality is stated separately there.</p>
+<h2 id="exact-transfer-of-functional-norms"><span id="OA-MOD-HUC-05"></span><span id="oa-mod-huc-05"></span>Exact transfer of functional norms</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(x,y\in\mathscr N\)">\(x,y\in\mathscr N\)</span>, and <span class="math" data-tex="\(X=x+I\)">\(X=x+I\)</span>, <span class="math" data-tex="\(Y=y+I\)">\(Y=y+I\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|X\varphi^\omega-\varphi^\omega Y\|
+=\lim_\omega\|x_n\varphi_n-\varphi_n y_n\|.
+\tag{HUC.13}
+\]">\[
+\|X\varphi^\omega-\varphi^\omega Y\|
+=\lim_\omega\|x_n\varphi_n-\varphi_n y_n\|.
+\tag{HUC.13}
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+X\in Q_{\varphi^\omega}
+\quad\Longleftrightarrow\quad
+\lim_\omega\|x_n\varphi_n-\varphi_n x_n\|=0.
+\tag{HUC.14}
+\]">\[
+X\in Q_{\varphi^\omega}
+\quad\Longleftrightarrow\quad
+\lim_\omega\|x_n\varphi_n-\varphi_n x_n\|=0.
+\tag{HUC.14}
+\]</span>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(R\)">\(R\)</span>, consider the normal functional</p>
+<span class="math math-display" data-tex="\[
+f(T)=\Phi(T\widehat x-\widehat yT).
+\]">\[
+f(T)=\Phi(T\widehat x-\widehat yT).
+\]</span>
+<p>On a represented sequence it has value</p>
+<span class="math math-display" data-tex="\[
+f(\widehat a)=\lim_\omega
+(x_n\varphi_n-\varphi_n y_n)(a_n).
+\tag{HUC.15}
+\]">\[
+f(\widehat a)=\lim_\omega
+(x_n\varphi_n-\varphi_n y_n)(a_n).
+\tag{HUC.15}
+\]</span>
+<p>Write the right side of (HUC.13) as <span class="math" data-tex="\(c\)">\(c\)</span>. For contraction sequences, (HUC.15) has absolute value at most <span class="math" data-tex="\(c\)">\(c\)</span>. Kaplansky density and normality extend this bound to the whole unit ball of <span class="math" data-tex="\(R\)">\(R\)</span>. Conversely, choose contractions <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and multiply each by a scalar of modulus one so that</p>
+<span class="math math-display" data-tex="\[
+(x_n\varphi_n-\varphi_n y_n)(a_n)
+\geq \|x_n\varphi_n-\varphi_n y_n\|-1/n
+\]">\[
+(x_n\varphi_n-\varphi_n y_n)(a_n)
+\geq \|x_n\varphi_n-\varphi_n y_n\|-1/n
+\]</span>
+<p>is real. Formula (HUC.15) gives <span class="math" data-tex="\(\|f\|\geq c\)">\(\|f\|\geq c\)</span>. Therefore <span class="math" data-tex="\(\|f\|=c\)">\(\|f\|=c\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\widehat x\)">\(\widehat x\)</span> and <span class="math" data-tex="\(\widehat y\)">\(\widehat y\)</span> commute with <span class="math" data-tex="\(p\)">\(p\)</span>, (HUC.5) gives
+<span class="math" data-tex="\(f(T)=f(pTp)\)">\(f(T)=f(pTp)\)</span>.
+Compression is contractive and is the identity on <span class="math" data-tex="\(pRp\)">\(pRp\)</span>, so the norm of <span class="math" data-tex="\(f\)">\(f\)</span> equals the norm of its restriction to that corner. Through <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, the restriction is exactly <span class="math" data-tex="\(X\varphi^\omega-\varphi^\omega Y\)">\(X\varphi^\omega-\varphi^\omega Y\)</span>. This proves (HUC.13), and setting <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span> proves (HUC.14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No assertion that arbitrary bounded test sequences are multipliers occurs here. They measure the norm in <span class="math" data-tex="\(R\)">\(R\)</span>; the support compression then identifies that norm with the norm in <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<h2 id="the-canonical-state-and-its-centralizer"><span id="OA-MOD-HUC-06"></span><span id="oa-mod-huc-06"></span>The canonical state and its centralizer</h2>
+<p>Now fix one von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> with faithful normal state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and take <span class="math" data-tex="\(M_n=M\)">\(M_n=M\)</span>, <span class="math" data-tex="\(\varphi_n=\varphi\)">\(\varphi_n=\varphi\)</span>. Write <span class="math" data-tex="\(Q=M^\omega\)">\(Q=M^\omega\)</span>, and identify <span class="math" data-tex="\(M\)">\(M\)</span> with its constant sequences. This is legitimate because fixed multiplication preserves bounded strong*-null sequences. The constant embedding is injective, unital and state preserving. It is normal: for a bounded increasing positive net <span class="math" data-tex="\(a_i\uparrow a\)">\(a_i\uparrow a\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, its image has supremum <span class="math" data-tex="\(b\leq a\)">\(b\leq a\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>, and normality of both states gives <span class="math" data-tex="\(\varphi^\omega(b)=\sup_i\varphi(a_i)=\varphi(a)\)">\(\varphi^\omega(b)=\sup_i\varphi(a_i)=\varphi(a)\)</span>. Faithfulness gives <span class="math" data-tex="\(b=a\)">\(b=a\)</span>.</p>
+<p><strong>Theorem.</strong> There is a faithful normal conditional expectation</p>
+<span class="math math-display" data-tex="\[
+E_M:Q\longrightarrow M,\qquad
+E_M(x+I)=\mathop{\mathrm{uw}\!\lim}_{\omega}x_n,
+\qquad \varphi E_M=\varphi^\omega.
+\tag{HUC.16}
+\]">\[
+E_M:Q\longrightarrow M,\qquad
+E_M(x+I)=\mathop{\mathrm{uw}\!\lim}_{\omega}x_n,
+\qquad \varphi E_M=\varphi^\omega.
+\tag{HUC.16}
+\]</span>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+A=M&#x27;\cap Q,\qquad \psi=\varphi^\omega|_A,
+\qquad F=M_\omega=C_\omega/I.
+\]">\[
+A=M&#x27;\cap Q,\qquad \psi=\varphi^\omega|_A,
+\qquad F=M_\omega=C_\omega/I.
+\]</span>
+<p>Then <span class="math" data-tex="\(A\)">\(A\)</span> is invariant under the modular group of <span class="math" data-tex="\(\varphi^\omega\)">\(\varphi^\omega\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+A_\psi=F.
+\tag{HUC.17}
+\]">\[
+A_\psi=F.
+\tag{HUC.17}
+\]</span>
+<p>If two faithful normal states of <span class="math" data-tex="\(M\)">\(M\)</span> agree on <span class="math" data-tex="\(Z(M)\)">\(Z(M)\)</span>, their induced states on <span class="math" data-tex="\(A\)">\(A\)</span> agree. In particular <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is independent of the state when <span class="math" data-tex="\(M\)">\(M\)</span> is a factor.</p>
+<p><strong>Proof.</strong> A bounded sequence has a unique ultraweak ultralimit: for each <span class="math" data-tex="\(\eta\in M_*\)">\(\eta\in M_*\)</span>, assign <span class="math" data-tex="\(\lim_\omega\eta(x_n)\)">\(\lim_\omega\eta(x_n)\)</span>; this is a bounded linear functional on <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, hence an element of <span class="math" data-tex="\(M\)">\(M\)</span>. Strong*-null bounded sequences have ultraweak limit zero. The assignment is therefore well defined on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Positivity follows by positive lifting through the C* quotient: lift the positive square root and take its square. The map is unital, fixes <span class="math" data-tex="\(M\)">\(M\)</span>, and is <span class="math" data-tex="\(M\)">\(M\)</span>-bimodular because left and right multiplication by fixed elements are ultraweakly continuous. Thus it is a conditional expectation, and the state identity in (HUC.16) follows directly.</p>
+<p>For a bounded increasing positive net <span class="math" data-tex="\(X_i\uparrow X\)">\(X_i\uparrow X\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>, let <span class="math" data-tex="\(b=\sup_i E_M(X_i)\leq E_M(X)\)">\(b=\sup_i E_M(X_i)\leq E_M(X)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\varphi(b)=\sup_i\varphi^\omega(X_i)=\varphi^\omega(X)=\varphi(E_M(X)).
+\]">\[
+\varphi(b)=\sup_i\varphi^\omega(X_i)=\varphi^\omega(X)=\varphi(E_M(X)).
+\]</span>
+<p>Faithfulness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> proves equality, hence normality. If <span class="math" data-tex="\(X\geq0\)">\(X\geq0\)</span> and <span class="math" data-tex="\(E_M(X)=0\)">\(E_M(X)=0\)</span>, faithfulness of <span class="math" data-tex="\(\varphi^\omega\)">\(\varphi^\omega\)</span> gives <span class="math" data-tex="\(X=0\)">\(X=0\)</span>.</p>
+<p>The converse direction of the modular expectation theorem now implies that the constant copy of <span class="math" data-tex="\(M\)">\(M\)</span> is invariant under <span class="math" data-tex="\(\sigma^{\varphi^\omega}\)">\(\sigma^{\varphi^\omega}\)</span>. Automorphisms preserving <span class="math" data-tex="\(M\)">\(M\)</span> preserve its relative commutant, so <span class="math" data-tex="\(A\)">\(A\)</span> is invariant too. The forward direction supplies a <span class="math" data-tex="\(\varphi^\omega\)">\(\varphi^\omega\)</span>-preserving faithful normal expectation <span class="math" data-tex="\(E_A:Q\to A\)">\(E_A:Q\to A\)</span>. Bimodularity gives, for <span class="math" data-tex="\(X\in A\)">\(X\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+X\varphi^\omega-\varphi^\omega X
+=(X\psi-\psi X)\circ E_A.
+\tag{HUC.18}
+\]">\[
+X\varphi^\omega-\varphi^\omega X
+=(X\psi-\psi X)\circ E_A.
+\tag{HUC.18}
+\]</span>
+<p>Restriction to <span class="math" data-tex="\(A\)">\(A\)</span> gives the reverse norm inequality, so these two functionals have equal norms.</p>
+<p>Take <span class="math" data-tex="\(X=x+I\in A_\psi\)">\(X=x+I\in A_\psi\)</span>. Equations (HUC.13) and (HUC.18) give <span class="math" data-tex="\(\|x_n\varphi-\varphi x_n\|\to_\omega0\)">\(\|x_n\varphi-\varphi x_n\|\to_\omega0\)</span>. Membership in <span class="math" data-tex="\(A\)">\(A\)</span> also gives <span class="math" data-tex="\([x_n,b]\to_\omega0\)">\([x_n,b]\to_\omega0\)</span> strong* for every fixed <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>. For <span class="math" data-tex="\(\varphi_b(a)=\varphi(ba)\)">\(\varphi_b(a)=\varphi(ba)\)</span>, direct expansion and Cauchy–Schwarz give</p>
+<span class="math math-display" data-tex="\[
+\|x_n\varphi_b-\varphi_bx_n\|
+\leq \|b\|\,\|x_n\varphi-\varphi x_n\|
++\varphi([x_n,b][x_n,b]^*)^{1/2}.
+\tag{HUC.19}
+\]">\[
+\|x_n\varphi_b-\varphi_bx_n\|
+\leq \|b\|\,\|x_n\varphi-\varphi x_n\|
++\varphi([x_n,b][x_n,b]^*)^{1/2}.
+\tag{HUC.19}
+\]</span>
+<p>Indeed, evaluated at <span class="math" data-tex="\(a\)">\(a\)</span>, the difference is
+<span class="math" data-tex="\((x_n\varphi-\varphi x_n)(ba)+\varphi([x_n,b]a)\)">\((x_n\varphi-\varphi x_n)(ba)+\varphi([x_n,b]a)\)</span>.
+The range <span class="math" data-tex="\(\{\varphi_b:b\in M\}\)">\(\{\varphi_b:b\in M\}\)</span> is norm dense in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>: an annihilator <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span> satisfies <span class="math" data-tex="\(\varphi(bz)=0\)">\(\varphi(bz)=0\)</span> for every <span class="math" data-tex="\(b\)">\(b\)</span>, and choosing <span class="math" data-tex="\(b=z^*\)">\(b=z^*\)</span> gives <span class="math" data-tex="\(z=0\)">\(z=0\)</span>; Hahn–Banach then proves density. Uniform boundedness of <span class="math" data-tex="\(x_n\)">\(x_n\)</span> extends (HUC.19) to every normal functional. Thus <span class="math" data-tex="\(x\in C_\omega\)">\(x\in C_\omega\)</span>, so <span class="math" data-tex="\(X\in F\)">\(X\in F\)</span>.</p>
+<p>Conversely, NHC-01 proves that a predual-centralizing sequence is a multiplier and commutes with all constant operators modulo <span class="math" data-tex="\(I\)">\(I\)</span>. Equation (HUC.14) then puts its class in <span class="math" data-tex="\(A_\psi\)">\(A_\psi\)</span>. This proves (HUC.17).</p>
+<p>Finally, bimodularity gives <span class="math" data-tex="\(E_M(A)\subseteq Z(M)\)">\(E_M(A)\subseteq Z(M)\)</span>. Applying the state identity in (HUC.16) proves the assertion about two states. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="hypercentral-tests-are-a-bicentralizer"><span id="OA-MOD-HUC-07"></span><span id="oa-mod-huc-07"></span>Hypercentral tests are a bicentralizer</h2>
+<p>Assume from now on that <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is separable. The algebras <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> need not have separable predual. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\|a\|_\psi^\#=
+\bigl(\psi(a^*a)+\psi(aa^*)\bigr)^{1/2}.
+\]">\[
+\|a\|_\psi^\#=
+\bigl(\psi(a^*a)+\psi(aa^*)\bigr)^{1/2}.
+\]</span>
+<p>Define the bicentralizer using ordinary sequences in <span class="math" data-tex="\(A\)">\(A\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathrm B(A,\psi)=\{X\in A:\ &amp;\|[X,Y_k]\|_\psi^\#\longrightarrow0\\
+&amp;\text{whenever }\sup_k\|Y_k\|&lt;\infty,\
+\|Y_k\psi-\psi Y_k\|\longrightarrow0\}.
+\end{aligned}
+\tag{HUC.20}
+\]">\[
+\begin{aligned}
+\mathrm B(A,\psi)=\{X\in A:\ &amp;\|[X,Y_k]\|_\psi^\#\longrightarrow0\\
+&amp;\text{whenever }\sup_k\|Y_k\|&lt;\infty,\
+\|Y_k\psi-\psi Y_k\|\longrightarrow0\}.
+\end{aligned}
+\tag{HUC.20}
+\]</span>
+<p>Using a faithful-state symmetric seminorm is equivalent to testing bounded strong* convergence, by NT2.</p>
+<p><strong>Theorem.</strong> With the notation of Section 06,</p>
+<span class="math math-display" data-tex="\[
+F&#x27;\cap A=\mathrm B(A,\psi).
+\tag{HUC.21}
+\]">\[
+F&#x27;\cap A=\mathrm B(A,\psi).
+\tag{HUC.21}
+\]</span>
+<p>Consequently the two hypercentral input conventions of NHC-02 agree exactly when</p>
+<span class="math math-display" data-tex="\[
+\mathrm B(A,\psi)\subseteq A_\psi;
+\quad\text{equivalently,}\quad
+\mathrm B(A,\psi)=Z(F).
+\tag{HUC.22}
+\]">\[
+\mathrm B(A,\psi)\subseteq A_\psi;
+\quad\text{equivalently,}\quad
+\mathrm B(A,\psi)=Z(F).
+\tag{HUC.22}
+\]</span>
+<p><strong>Proof.</strong> Constant sequences <span class="math" data-tex="\(Y_k=Y\in A_\psi=F\)">\(Y_k=Y\in A_\psi=F\)</span> show immediately that <span class="math" data-tex="\(\mathrm B(A,\psi)\subseteq F&#x27;\cap A\)">\(\mathrm B(A,\psi)\subseteq F&#x27;\cap A\)</span>.</p>
+<p>For the reverse inclusion, fix <span class="math" data-tex="\(X\in F&#x27;\cap A\)">\(X\in F&#x27;\cap A\)</span>, with a bounded multiplier representative <span class="math" data-tex="\(x_n\)">\(x_n\)</span>. Suppose (HUC.20) fails. After scaling and passing to a subsequence, there are contractions <span class="math" data-tex="\(Y_k\in A\)">\(Y_k\in A\)</span>, a number <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, and arbitrarily small state-commutator norms such that</p>
+<span class="math math-display" data-tex="\[
+\|[X,Y_k]\|_\psi^\#&gt;\delta.
+\tag{HUC.23}
+\]">\[
+\|[X,Y_k]\|_\psi^\#&gt;\delta.
+\tag{HUC.23}
+\]</span>
+<p>By the density proved after (HUC.19) and separability of <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, choose <span class="math" data-tex="\(b_j\in M\)">\(b_j\in M\)</span> so that the functionals <span class="math" data-tex="\(\varphi_{b_j}\)">\(\varphi_{b_j}\)</span> are norm dense in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. More explicitly, approximate a countable dense subset of <span class="math" data-tex="\(M_*\)">\(M_*\)</span> by elements of that range to every positive rational accuracy, and enumerate the resulting countable family. Set</p>
+<span class="math math-display" data-tex="\[
+K_k=1+\max_{j\leq k}\|b_j\|.
+\]">\[
+K_k=1+\max_{j\leq k}\|b_j\|.
+\]</span>
+<p>Choose the subsequence in (HUC.23) so that also
+<span class="math" data-tex="\(\|Y_k\psi-\psi Y_k\|&lt;2^{-k-2}/K_k\)">\(\|Y_k\psi-\psi Y_k\|&lt;2^{-k-2}/K_k\)</span>.</p>
+<p>Lift each <span class="math" data-tex="\(Y_k\)">\(Y_k\)</span> to a row of contractions <span class="math" data-tex="\(y_n^{(k)}\in\mathscr N\)">\(y_n^{(k)}\in\mathscr N\)</span>, using Section 04. Equations (HUC.13) and (HUC.18) give</p>
+<span class="math math-display" data-tex="\[
+\lim_\omega\|y_n^{(k)}\varphi-\varphi y_n^{(k)}\|
+&lt;2^{-k-2}/K_k.
+\]">\[
+\lim_\omega\|y_n^{(k)}\varphi-\varphi y_n^{(k)}\|
+&lt;2^{-k-2}/K_k.
+\]</span>
+<p>Since <span class="math" data-tex="\(Y_k\in A\)">\(Y_k\in A\)</span>, the fixed-operator commutator term in (HUC.19) tends to zero for each <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. Therefore, for every <span class="math" data-tex="\(j\leq k\)">\(j\leq k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\lim_\omega\|y_n^{(k)}\varphi_{b_j}-\varphi_{b_j}y_n^{(k)}\|
+&lt;2^{-k-2}.
+\tag{HUC.24}
+\]">\[
+\lim_\omega\|y_n^{(k)}\varphi_{b_j}-\varphi_{b_j}y_n^{(k)}\|
+&lt;2^{-k-2}.
+\tag{HUC.24}
+\]</span>
+<p>At the same time, the quotient state formula and (HUC.23) imply</p>
+<span class="math math-display" data-tex="\[
+\lim_\omega\|[x_n,y_n^{(k)}]\|_\varphi^\#&gt;\delta.
+\tag{HUC.25}
+\]">\[
+\lim_\omega\|[x_n,y_n^{(k)}]\|_\varphi^\#&gt;\delta.
+\tag{HUC.25}
+\]</span>
+<p>Here <span class="math" data-tex="\(\|\cdot\|_\varphi^\#\)">\(\|\cdot\|_\varphi^\#\)</span> uses the same unnormalized sum of two squares as <span class="math" data-tex="\(\|\cdot\|_\psi^\#\)">\(\|\cdot\|_\psi^\#\)</span>.</p>
+<p>For each <span class="math" data-tex="\(k\)">\(k\)</span>, choose a large set <span class="math" data-tex="\(B_k\)">\(B_k\)</span> on which all the first <span class="math" data-tex="\(k\)">\(k\)</span> norms in (HUC.24) are less than <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>, and the norm in (HUC.25) exceeds <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+G_k=\{n:n\geq k\}\cap\bigcap_{r\leq k}B_r.
+\]">\[
+G_k=\{n:n\geq k\}\cap\bigcap_{r\leq k}B_r.
+\]</span>
+<p>For <span class="math" data-tex="\(n\in G_k\setminus G_{k+1}\)">\(n\in G_k\setminus G_{k+1}\)</span>, put <span class="math" data-tex="\(z_n=y_n^{(k)}\)">\(z_n=y_n^{(k)}\)</span>, and put <span class="math" data-tex="\(z_n=0\)">\(z_n=0\)</span> outside <span class="math" data-tex="\(G_1\)">\(G_1\)</span>. The selected row number tends to infinity along <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Thus, for each fixed <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math" data-tex="\(\|z_n\varphi_{b_j}-\varphi_{b_j}z_n\|\to_\omega0\)">\(\|z_n\varphi_{b_j}-\varphi_{b_j}z_n\|\to_\omega0\)</span>.
+Norm density and the bound <span class="math" data-tex="\(\|z_n\|\leq1\)">\(\|z_n\|\leq1\)</span> extend this to all of <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Hence <span class="math" data-tex="\(z\in C_\omega\)">\(z\in C_\omega\)</span>, and its quotient <span class="math" data-tex="\(Z\)">\(Z\)</span> lies in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>But on <span class="math" data-tex="\(G_1\)">\(G_1\)</span> the coordinate commutator with the original <span class="math" data-tex="\(x_n\)">\(x_n\)</span> has symmetric seminorm greater than <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>. Its quotient commutator therefore has positive seminorm, contradicting <span class="math" data-tex="\(X\in F&#x27;\)">\(X\in F&#x27;\)</span>. This proves (HUC.21). The original coordinate <span class="math" data-tex="\(x_n\)">\(x_n\)</span> was kept throughout the construction; only the row of its partner was selected.</p>
+<p>Finally <span class="math" data-tex="\(Z(F)\subseteq F&#x27;\cap A\)">\(Z(F)\subseteq F&#x27;\cap A\)</span>, and intersecting <span class="math" data-tex="\(F&#x27;\cap A\)">\(F&#x27;\cap A\)</span> with <span class="math" data-tex="\(A_\psi=F\)">\(A_\psi=F\)</span> gives exactly <span class="math" data-tex="\(Z(F)\)">\(Z(F)\)</span>. Combine this fact with (HUC.21) and the quotient identities of NHC-02 to obtain (HUC.22). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a general proof of the inclusion in (HUC.22) would settle the hypercentral identity. Neither (HUC.17) nor (HUC.21) alone asserts that inclusion.</p>
+<h2 id="examples-and-exercises-with-solutions"><span id="OA-MOD-HUC-08"></span><span id="oa-mod-huc-08"></span>Examples and exercises with solutions</h2>
+<p><strong>1. A one-sided null sequence need not represent an operator.</strong> On <span class="math" data-tex="\(M=B(\ell^2(\mathbb N))\)">\(M=B(\ell^2(\mathbb N))\)</span>, take <span class="math" data-tex="\(\varphi(a)=\sum_{j\geq1}2^{-j}\langle ae_j,e_j\rangle\)">\(\varphi(a)=\sum_{j\geq1}2^{-j}\langle ae_j,e_j\rangle\)</span> and <span class="math" data-tex="\(a_n=e_{1n}\)">\(a_n=e_{1n}\)</span>. Determine its null-ideal and multiplier memberships.</p>
+<p><em>Solution.</em> We have <span class="math" data-tex="\(a_n^*a_n=e_{nn}\)">\(a_n^*a_n=e_{nn}\)</span> and <span class="math" data-tex="\(a_na_n^*=e_{11}\)">\(a_na_n^*=e_{11}\)</span>. Thus <span class="math" data-tex="\(\varphi(a_n^*a_n)=2^{-n}\to0\)">\(\varphi(a_n^*a_n)=2^{-n}\to0\)</span>, whereas <span class="math" data-tex="\(\varphi(a_na_n^*)=1/2\)">\(\varphi(a_na_n^*)=1/2\)</span>. The sequence lies in <span class="math" data-tex="\(L\setminus I\)">\(L\setminus I\)</span>. Equation (HUC.7) shows that it cannot lie in <span class="math" data-tex="\(\mathscr N\)">\(\mathscr N\)</span>. In the support picture, <span class="math" data-tex="\(\widehat a p=0\)">\(\widehat a p=0\)</span> but <span class="math" data-tex="\(p\widehat a\ne0\)">\(p\widehat a\ne0\)</span>, since its adjoint does not annihilate <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p><strong>2. Check the norm and distinguish the two centralizers in a matrix algebra.</strong> Let <span class="math" data-tex="\(M=M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\varphi(a)=\operatorname{Tr}(\rho a)\)">\(\varphi(a)=\operatorname{Tr}(\rho a)\)</span>, and <span class="math" data-tex="\(\rho=\operatorname{diag}(s,t)\)">\(\rho=\operatorname{diag}(s,t)\)</span>, where <span class="math" data-tex="\(s,t&gt;0\)">\(s,t&gt;0\)</span>, <span class="math" data-tex="\(s+t=1\)">\(s+t=1\)</span>, <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span>. Compute the state commutator norm of <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span>, and determine <span class="math" data-tex="\(Q_{\varphi^\omega}\)">\(Q_{\varphi^\omega}\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><em>Solution.</em> The module convention gives
+<span class="math" data-tex="\((e_{12}\varphi-\varphi e_{12})(a)=(t-s)a_{21}\)">\((e_{12}\varphi-\varphi e_{12})(a)=(t-s)a_{21}\)</span>, so its norm is <span class="math" data-tex="\(|s-t|\)">\(|s-t|\)</span>; <span class="math" data-tex="\(|a_{21}|\leq\|a\|\)">\(|a_{21}|\leq\|a\|\)</span> and equality is attained at <span class="math" data-tex="\(a=e_{21}\)">\(a=e_{21}\)</span>. Every bounded matrix sequence has a norm ultralimit by finite-dimensional compactness. Thus <span class="math" data-tex="\(Q=M_2(\mathbb C)\)">\(Q=M_2(\mathbb C)\)</span>, and (HUC.13) reproduces this norm for the constant sequence. The centralizer of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is the diagonal algebra: <span class="math" data-tex="\(\varphi(ay)=\varphi(ya)\)">\(\varphi(ay)=\varphi(ya)\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span> is equivalent, by the nondegenerate matrix trace pairing, to <span class="math" data-tex="\(y\rho=\rho y\)">\(y\rho=\rho y\)</span>. On the other hand <span class="math" data-tex="\(A=M&#x27;\cap Q=\mathbb C1\)">\(A=M&#x27;\cap Q=\mathbb C1\)</span>, so (HUC.17) gives <span class="math" data-tex="\(F=\mathbb C1\)">\(F=\mathbb C1\)</span>. The centralizer must be taken inside <span class="math" data-tex="\(A\)">\(A\)</span> to obtain <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>3. Recover the finite tracial identity.</strong> Suppose <span class="math" data-tex="\(M\)">\(M\)</span> has a faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Prove (HUC.22).</p>
+<p><em>Solution.</em> For every bounded sequence <span class="math" data-tex="\(x_n\)">\(x_n\)</span>, <span class="math" data-tex="\(x_n\tau-\tau x_n=0\)">\(x_n\tau-\tau x_n=0\)</span>. Formula (HUC.13) says that the faithful normal state <span class="math" data-tex="\(\tau^\omega\)">\(\tau^\omega\)</span> is a trace on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Its restriction <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is therefore a trace on <span class="math" data-tex="\(A\)">\(A\)</span>, and (HUC.17) gives <span class="math" data-tex="\(F=A\)">\(F=A\)</span>. Every constant element of <span class="math" data-tex="\(A\)">\(A\)</span> is a permissible test in (HUC.20), so <span class="math" data-tex="\(\mathrm B(A,\psi)\subseteq Z(A)\)">\(\mathrm B(A,\psi)\subseteq Z(A)\)</span>. Every central element commutes with every test term, giving the reverse inclusion. Hence <span class="math" data-tex="\(\mathrm B(A,\psi)=Z(A)=Z(F)\)">\(\mathrm B(A,\psi)=Z(A)=Z(F)\)</span>. This argument for the tracial case does not need predual separability.</p>
+<p><strong>4. Locate the countability assumption.</strong> Which step above uses separability of <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, and is separability of <span class="math" data-tex="\(A_*\)">\(A_*\)</span> required?</p>
+<p><em>Solution.</em> Sections 01–06 use a sequence of faithful normal states and a free ultrafilter, but no separability of any predual. In Section 07, the countable dense family <span class="math" data-tex="\(\varphi_{b_j}\)">\(\varphi_{b_j}\)</span> allows the selected row at coordinate <span class="math" data-tex="\(n\)">\(n\)</span> to pass successively all normal-functional tests on <span class="math" data-tex="\(M\)">\(M\)</span>. Density then gives centralizing for every normal functional. The outer sequence <span class="math" data-tex="\(Y_k\)">\(Y_k\)</span> comes from the definition of the bicentralizer and requires no dense family in <span class="math" data-tex="\(A_*\)">\(A_*\)</span>. Thus separability is imposed on <span class="math" data-tex="\(M_*\)">\(M_*\)</span> alone.</p>
+<p>The freely accessible primary comparison is Hiroshi Ando and Uffe Haagerup, <a href="https://arxiv.org/abs/1212.5457"><em>Ultraproducts of von Neumann algebras</em></a>, Sections 3.2–3.3 (especially Lemma 3.13 and Proposition 3.15), Proposition 4.29, Proposition 4.35 and Lemma 4.36. Sections 01–06 supply these corner, norm-transfer and canonical-state arguments in the notation used here. Section 07 supplies the explicit diagonal reduction for the hypercentral question, with the moving coordinate retained.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

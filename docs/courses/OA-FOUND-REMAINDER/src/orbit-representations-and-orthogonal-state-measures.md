@@ -1,7 +1,7 @@
 <span id="orbit-representations-and-orthogonal-state-measures"></span>
 # Orbit representations and orthogonal state measures
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 A free action on a compact space gives one irreducible representation for each orbit. Evaluating the identity coefficient at a point gives a pure state, and integrating those states recovers a vector state of the represented crossed-product algebra. We prove the norm bound that makes point evaluation legitimate on the completed algebra, then identify the abelian algebra associated with this representing measure.
 
@@ -13,7 +13,7 @@ The decomposable operator norm formula is Theorem 10.1 of [Measurable fields and
 
 Elementary measure and topology prerequisites are the Radon–Nikodym theorem for equivalent finite measures, the chain rule for transported measures, Fubini, regularity of finite Borel measures on compact metric spaces, density of continuous functions in \(L^2\), and Tietze extension from a closed subspace.
 
-For a freely accessible comparison, Kawamura, Takemoto and Tomiyama's [State extensions in transformation group C*-algebras](https://acta.bibl.u-szeged.hu/15269/1/math_054_fasc_001_002_191-200.pdf), Section 1, proves a unique-extension criterion using singular translated measures; Corollary 1.4 specializes it to points with trivial stabilizer. Their abstract C*-crossed product differs from the represented algebra used here. Our complete arguments below establish the norm bound, purity, orbit equivalence and orthogonal measure in this representation. The arbitrary-covariant commutant provider retains its explicitly named standard-form and modular inputs. [Takesaki] identifies the historical assignment.
+For a freely accessible comparison, Kawamura, Takemoto and Tomiyama's [State extensions in transformation group C*-algebras](https://acta.bibl.u-szeged.hu/15269/1/math_054_fasc_001_002_191-200.pdf), Section 1, proves a unique-extension criterion using singular translated measures; Corollary 1.4 specializes it to points with trivial stabilizer. Their abstract C*-crossed product differs from the represented algebra used here. Our complete arguments below establish the norm bound, purity, orbit equivalence and orthogonal measure in this representation. The arbitrary-covariant commutant provider retains its explicitly named standard-form and modular inputs.
 
 <span id="1-the-support-and-the-implemented-model"></span>
 ## 1. The support and the implemented model
@@ -410,7 +410,7 @@ Every singleton has Lebesgue measure zero. Proposition 5.2 therefore excludes a 
 <span id="references"></span>
 ## References
 
-[Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer-Verlag, 1979, Chapter V, §7, Exercise 2(a–d), printed p. 373. The pointwise assertions require the support qualification proved above.
+
 
 [Existing commutant theorem] OA-FLOW, *The regular commutant in every covariant representation*, equation E9, specialized to the multiplication representation. Its proof uses the standard-form commutant and normal representation-comparison results linked above.
 

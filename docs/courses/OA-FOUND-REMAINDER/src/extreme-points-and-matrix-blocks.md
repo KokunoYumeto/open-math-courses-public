@@ -1,6 +1,6 @@
 # Extreme points and matrix blocks
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; the subsection “States and mixtures on a matrix block” by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; the subsection “States and mixtures on a matrix block” by Claude Opus 5.5 (Anthropic). The scalar extremality, support-projection and finite-dimensional corner calculations are by GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI. Original text: CC0 1.0.*
 
 An extreme point of a convex set cannot move in two opposite directions while staying inside the set. For the unit ball of a C*-algebra, the directions that remain available are described by two defect projections. In finite dimensions those defects disappear, and the algebra itself separates into full matrix blocks. The same blocks then describe every representation, including representations on Hilbert spaces of arbitrary dimension.
 
@@ -18,7 +18,7 @@ A point \(x\) of a convex set \(C\) is **extreme** if \(x=(y+z)/2\), with \(y,z\
 2. The extreme points of \(A_1\cap A_+\) are exactly the projections, that is, the continuous functions taking only the values \(0,1\) and vanishing at infinity.
 3. If \(0\leq h\leq1\) is not a projection, there is \(a\in A_+\), with \(\|a\|\leq1\) and \(ha\neq0\), such that \(0\leq h(1\pm a)\leq1\). Products with \(1\pm a\) can be computed in the unitization.
 
-**Proof.** If \(|f(t_0)|<1\), choose a compactly supported continuous bump \(g\geq0\), nonzero at \(t_0\), in a neighbourhood on which \(|f|\leq c<1\). For sufficiently small \(\varepsilon>0\), both \(f+\varepsilon g\) and \(f-\varepsilon g\) lie in the unit ball. Thus \(f\) is not extreme. Conversely, a point of modulus one is extreme in the scalar unit disk; evaluating any midpoint identity at every \(t\in X\) proves extremality of \(f\). If \(|f|=1\) everywhere and \(f\in C_0(X)\), the set where \(|f|\geq1/2\) is all of \(X\), so \(X\) is compact.
+**Proof.** If \(|f(t_0)|<1\), choose a compactly supported continuous bump \(g\geq0\), nonzero at \(t_0\), in a neighbourhood on which \(|f|\leq c<1\). For sufficiently small \(\varepsilon>0\), both \(f+\varepsilon g\) and \(f-\varepsilon g\) lie in the unit ball. Thus \(f\) is not extreme. Conversely, suppose \(|z|=1\) and \(|z\pm w|\leq1\). The identity \(|z+w|^2+|z-w|^2=2+2|w|^2\) forces \(w=0\). Thus a point of modulus one is extreme in the scalar unit disk; evaluating any midpoint identity at every \(t\in X\) proves extremality of \(f\). If \(|f|=1\) everywhere and \(f\in C_0(X)\), the set where \(|f|\geq1/2\) is all of \(X\), so \(X\) is compact.
 
 A function taking values in \(\{0,1\}\) is pointwise extreme in the interval \([0,1]\). If \(h(t_0)\in(0,1)\), choose a nonnegative bump \(g\), with \(g(t_0)>0\), supported where \(\delta\leq h\leq1-\delta\) for some \(\delta>0\). A small multiple \(a=\varepsilon g\) satisfies the third assertion. The two distinct positive contractions \(h(1+a),h(1-a)\) have midpoint \(h\). This proves the second assertion as well. \(\square\)
 
@@ -40,21 +40,20 @@ An element \(v\in A\) is a **partial isometry** if \(v^*v\) is a projection. The
 \[
 p=v^*v,\qquad q=vv^*,\qquad v=vp=qv.
 \]
+To obtain these identities directly, compute \(\|v(1-p)\|^2=\|(1-p)p(1-p)\|=0\) in the unitization. Thus \(v=vp\), so \(q=q^*\), \(q^2=vv^*vv^*=vpv^*=vv^*=q\), and \(qv=v(v^*v)=vp=v\). Taking adjoints also gives \(v^*=pv^*=v^*q\). These identities apply equally when the algebra has no identity.
+
 The projections \(1-p\) and \(1-q\) describe its initial and final defects.
 
 **Theorem 2.1.** The unit ball of a C*-algebra has an extreme point if and only if the algebra is unital. In a unital algebra its extreme points are exactly the partial isometries \(v\) satisfying
 \[
-(1-q)A(1-p)=\{0\},\qquad p=v^*v,\quad q=vv^*.
+\begin{gathered}(1-q)A(1-p)=\{0\},\\p=v^*v,\qquad q=vv^*.\end{gathered}
 \tag{2.1}
 \]
 Taking adjoints gives the equivalent condition \((1-p)A(1-q)=\{0\}\).
 
 **Proof.** First suppose \(x\in A_1\) and \(h=|x|=(x^*x)^{1/2}\) is not a projection. A nonnegative spectral bump \(a\in C^*(h,1)\) as in Lemma 1.1 satisfies \(ha\neq0\) and \(\|h(1\pm a)\|\leq1\). It can be chosen to vanish at \(0\), although that is not needed for \(x(1\pm a)\in A\). Since \(a\) commutes with \(h\),
 \[
-\|x(1\pm a)\|^2
-=\|(1\pm a)h^2(1\pm a)\|
-=\|h(1\pm a)\|^2\leq1,
-\qquad \|xa\|=\|ha\|>0.
+\begin{gathered}\|x(1\pm a)\|^2\\=\|(1\pm a)h^2(1\pm a)\|\\=\|h(1\pm a)\|^2\leq1,\\\|xa\|=\|ha\|>0.\end{gathered}
 \]
 Thus \(x\) is not extreme. Every extreme point must be a partial isometry.
 
@@ -62,20 +61,17 @@ For a partial isometry \(v\), let \(a\in(1-q)A(1-p)\) be a contraction. Orthogon
 \[
 (v\pm a)^*(v\pm a)=p+a^*a.
 \]
-The two positive terms have orthogonal supports; their sum has norm at most one. If \(a\neq0\), this is a nontrivial midpoint decomposition of \(v\). Consequently extremality forces (2.1), computed initially in the unitization.
+Since \(a=a(1-p)\) and \(a^*a\leq1\) in the unitization, compression gives \(0\leq a^*a=(1-p)a^*a(1-p)\leq1-p\). Consequently \(0\leq p+a^*a\leq1\), and its norm is at most one. If \(a\neq0\), this is a nontrivial midpoint decomposition of \(v\). Consequently extremality forces (2.1), computed initially in the unitization.
 
 Let \((e_\lambda)\) be a contractive approximate identity of \(A\). Condition (2.1) implies
 \[
-e_\lambda=qe_\lambda+e_\lambda p-qe_\lambda p
-\longrightarrow q+p-qp\in A
+\begin{gathered}e_\lambda=qe_\lambda+e_\lambda p-qe_\lambda p\\\longrightarrow q+p-qp\in A.\end{gathered}
 \]
 in norm. The limit \(e\) satisfies \(ea=ae=a\) for every \(a\in A\), because the approximate identity does. Hence \(A\) is unital.
 
 For the converse, represent a unital \(A\) faithfully and unitally on \(H\). Suppose \(v\) satisfies (2.1) and \(v\pm h\in A_1\). If \(\xi\in pH\), the parallelogram identity yields
 \[
-\|(v+h)\xi\|^2+\|(v-h)\xi\|^2
-=2\|v\xi\|^2+2\|h\xi\|^2
-=2\|\xi\|^2+2\|h\xi\|^2.
+\begin{gathered}\|(v+h)\xi\|^2+\|(v-h)\xi\|^2\\=2\|v\xi\|^2+2\|h\xi\|^2\\=2\|\xi\|^2+2\|h\xi\|^2.\end{gathered}
 \]
 The left side is at most \(2\|\xi\|^2\). Thus \(hp=0\). Apply the same argument to \(v^*\pm h^*\) on \(qH\) to obtain \(h^*q=0\), or \(qh=0\). It follows that \(h=(1-q)h(1-p)=0\). This proves extremality. In particular \(1\) is extreme, so a unital algebra always has an extreme point. The zero-algebra case is immediate under our convention. \(\square\)
 
@@ -86,6 +82,10 @@ The distinction between the positive ball and the whole ball is substantial. Eve
 The defect criterion is Kadison's theorem (1951) [Blackadar, II.3.2.19]. The proof above includes its converse for every partial isometry, using the parallelogram identity on both support subspaces. No assumption about finite dimension or separability enters that argument.
 
 ## 3. Recovering the matrix blocks
+
+We first record the finite-dimensional topological facts used below. Let \(V\) be a complex normed space with basis \(v_1,\ldots,v_d\), where \(d>0\), and put \(T(c)=\sum_j c_jv_j\). The triangle inequality gives \(\|T(c)\|\leq C\|c\|_2\), where \(C=\sum_j\|v_j\|\); hence \(c\mapsto\|T(c)\|\) is continuous. It is strictly positive on the Euclidean unit sphere, so it has a positive minimum \(\delta\). Here compactness of the sphere and attainment of the minimum are proved in [Metric and topological foundations, Sections 12.5–12.7](../../elliptic-operators-and-boundary-problems/metric-foundation-bridges.html#open-cover-compactness-and-the-exact-closed-and-bounded-criterion), identifying \(\mathbb C^d\) with \(\mathbb R^{2d}\). Scaling gives \(\delta\|c\|_2\leq\|T(c)\|\leq C\|c\|_2\). Thus \(T\) and its inverse are continuous, and the inverse image of every closed bounded subset of \(V\) is closed and bounded in \(\mathbb C^d\), hence compact.
+
+The same inequalities show that \(V\) is complete: coordinates of a Cauchy sequence converge, and their image under \(T\) is its norm limit. Consequently a finite-dimensional linear subspace of any normed space is closed, since a convergent sequence in it is Cauchy and has its limit there. The coordinate functionals are bounded, so every linear functional is bounded and \(\dim V^*=\dim V^{**}=d\). The canonical map \(V\to V^{**}\) is injective because coordinate functionals separate points, and it is onto by equality of dimensions. This proves reflexivity in finite dimension. For \(V=\{0\}\), compactness, completeness, closedness and reflexivity hold directly.
 
 **Lemma 3.1.** A finite-dimensional C*-algebra is unital. Every two-sided ideal \(I\subseteq A\) is \(Az\) for a central projection \(z\in A\).
 
@@ -107,8 +107,7 @@ The unordered list of positive integers \(n_1,\ldots,n_s\) is unique. Two such a
 
 **Proof.** Choose a maximal abelian self-adjoint subalgebra \(D\subseteq A\). It contains \(1\), since adjoining \(1\) preserves commutativity. Its Gelfand spectrum is finite: if it had arbitrarily large finite sets of distinct points, continuous functions separating those points would give arbitrarily large linearly independent families in \(D\). Thus
 \[
-D=\bigoplus_{i=1}^N\mathbb Cp_i,
-\qquad p_ip_j=0\ (i\neq j),\qquad\sum_i p_i=1.
+\begin{gathered}D=\bigoplus_{i=1}^N\mathbb Cp_i,\\p_ip_j=0\ (i\neq j),\qquad\sum_i p_i=1.\end{gathered}
 \]
 Every self-adjoint element of \(p_iAp_i\) commutes with \(D\). Adjoining it to \(D\) still gives an abelian algebra, so maximality puts it in \(D\). Taking real and imaginary parts proves \(p_iAp_i=\mathbb Cp_i\).
 
@@ -122,9 +121,13 @@ For uniqueness, the centre of (3.2) is \(\bigoplus_r\mathbb C1_{n_r}\). Its mini
 
 This also proves that a finite-dimensional algebra is simple exactly when it is one full matrix algebra. Its ideals correspond to subsets of the block list. Minimal projections in a block are the rank-one projections; any two in that block are connected by a partial isometry. More explicitly, if \(p,q\) are minimal in \(M_n(\mathbb C)\), choose unit vectors \(\xi,\eta\) spanning their ranges. The operator \(v\zeta=\langle\zeta,\xi\rangle\eta\) satisfies \(v^*v=p,vv^*=q\).
 
+The corner description also proves the equivalence of the two finite-dimensional minimality conditions. For a projection \(p\in M_n(\mathbb C)\) of rank \(r\), restriction to its range identifies \(pM_n(\mathbb C)p\) with \(B(p\mathbb C^n)\cong M_r(\mathbb C)\): any operator on that range extends by zero on its orthogonal complement. Thus for a nonzero projection \(p=(p_j)\) in a direct sum of matrix blocks, \(pAp=\mathbb Cp\) precisely when one component has rank one and all others are zero. If two components are nonzero, retaining either one gives a proper nonzero subprojection. If one component has rank at least two, projecting onto a line in its range does the same. Conversely, a rank-one projection has no nonzero proper subprojection. Hence, in finite dimension, minimality is equivalent to having no smaller nonzero projection.
+
+In a simple matrix block, nonzero elements \(a,b\) always satisfy \(aAb\neq\{0\}\). Choose vectors \(\xi,\eta\) with \(b\xi\neq0\) and \(a\eta\neq0\), and define \(T\zeta=\langle\zeta,b\xi\rangle\eta/\|b\xi\|^2\). Then \(Tb\xi=\eta\), so \(aTb\xi=a\eta\neq0\). This makes the nonvanishing of the connecting corners concrete.
+
 ### Recovering the blocks from irreducible representations
 
-*Adapted and expanded by GPT-6.1 Sol (OpenAI), Ultra, from S. Sundar, [Notes on C*-algebras](https://arxiv.org/abs/2505.17456v1), Section 2.1, arXiv:2505.17456v1, 23 May 2025, licensed CC0. This entire subsection is CC0. Changes: a finite average constructs a normalized faithful state; the intertwiner and bicommutant calculations are written out; a concrete example distinguishes block sizes from GNS multiplicities. The proof uses the supplied TeX source.*
+*Adapted and expanded by GPT-6.1 Sol (OpenAI), Ultra, from S. Sundar, [Notes on C*-algebras](https://arxiv.org/abs/2505.17456v1), Section 2.1, arXiv:2505.17456v1, 23 May 2025, licensed CC0. This entire subsection is CC0. The argument uses a normalized faithful state, explicit intertwiner and bicommutant calculations, and an example distinguishing block sizes from GNS multiplicities. The proof uses the supplied TeX source.*
 
 Theorem 3.2 can also be proved by asking which irreducible representations distinguish the elements of \(A\). This gives a second way to recognize its blocks, and prepares the multiplicity calculation in Section 4.
 
@@ -141,8 +144,7 @@ are relatively open and cover the unit sphere of \(A\). That sphere is compact, 
 \]
 Then \(\omega\) is positive and \(\omega(1)=1\). Moreover,
 \[
-\omega(a^*a)=\frac1m\sum_{j=1}^m\|\rho(a)\xi_j\|^2>0
-\qquad(a\neq0).
+\begin{gathered}\omega(a^*a)=\frac1m\sum_{j=1}^m\|\rho(a)\xi_j\|^2>0\\(a\neq0).\end{gathered}
 \]
 Thus \(\omega\) is faithful. This construction avoids a normalization slip in the cited version: its displayed coefficients \(2^{-(i-1)}\), starting at \(i=1\), sum to two rather than one. A normalized infinite average would instead use \(2^{-i}\).
 
@@ -173,9 +175,7 @@ is still faithful. Equivalent representations have the same kernel, so removing 
 
 **Read the two commutants.** Write an operator on \(H\) in blocks \(T_{rt}:H_t\to H_r\). It commutes with \(\pi(A)\) exactly when every block intertwines \(\pi_t\) and \(\pi_r\). Schur's lemma and the absence of intertwiners between distinct classes give
 \[
-\pi(A)'=
- \{\operatorname{diag}(\lambda_1 1_{H_1},\ldots,
-                       \lambda_s 1_{H_s}):\lambda_r\in\mathbb C\}.
+\begin{gathered}\pi(A)^{\prime}=\\\left\{\begin{pmatrix}\lambda_1 1_{H_1}&&0\\&\ddots&\\0&&\lambda_s 1_{H_s}\end{pmatrix}:\lambda_r\in\mathbb C\right\}.\end{gathered}
 \]
 This algebra contains the projection onto each \(H_r\). Commuting with those projections forces an operator in \(\pi(A)''\) to be block diagonal. Every such operator commutes with all the displayed scalar blocks. Therefore
 \[
@@ -229,9 +229,7 @@ Among mixtures with orthonormal vectors and positive weights, the weights and th
 \]
 Then
 \[
-P_{w_\pm}=\begin{pmatrix}3/4&\pm\sqrt3/4\\\pm\sqrt3/4&1/4\end{pmatrix},
-\qquad
-\rho=\tfrac34P_{e_1}+\tfrac14P_{e_2}=\tfrac12P_{w_+}+\tfrac12P_{w_-}.
+\begin{gathered}P_{w_\pm}=\begin{pmatrix}3/4&\pm\sqrt3/4\\\pm\sqrt3/4&1/4\end{pmatrix},\\\rho=\tfrac34P_{e_1}+\tfrac14P_{e_2}\\=\tfrac12P_{w_+}+\tfrac12P_{w_-}.\end{gathered}
 \]
 The vectors \(w_\pm\) are unit vectors at angle \(60^\circ\), with \(w_+^*w_-=\tfrac12\). The spectral mixture is the unique orthogonal one, but the same state is also an equal mixture of two non-orthogonal pure states.
 
@@ -246,8 +244,7 @@ up to unitary equivalence, for a Hilbert space \(K\) of arbitrary dimension. Its
 
 **Proof.** Let \((e_{ij})\) be the standard matrix units and set \(K=\pi(e_{11})H\). Nondegeneracy gives \(\pi(1)=1_H\). Define
 \[
-U:\mathbb C^n\otimes K\longrightarrow H,
-\qquad U(\varepsilon_i\otimes\xi)=\pi(e_{i1})\xi.
+\begin{gathered}U:\mathbb C^n\otimes K\longrightarrow H,\\U(\varepsilon_i\otimes\xi)=\pi(e_{i1})\xi.\end{gathered}
 \]
 The relations (3.1) show that
 \[
@@ -265,15 +262,13 @@ Finally, the commutant computation below shows that a nonzero representation has
 (M_n(\mathbb C)\otimes1_K)'=1_{\mathbb C^n}\otimes B(K).
 \tag{4.2}
 \]
-If \(m=\dim K<\infty\), it is \(M_m(\mathbb C)\), represented with multiplicity \(n\).
+If \(0<m=\dim K<\infty\), it is \(M_m(\mathbb C)\), represented with multiplicity \(n\). When \(K=\{0\}\), both the represented algebra and its commutant are zero; there is no nonzero simple block to which a multiplicity could be attached.
 
-**Proof.** Write an operator \(T\in B(\mathbb C^n\otimes K)\) as an \(n\times n\) matrix of operators on \(K\). Commutation with all \(e_{ii}\otimes1\) makes the off-diagonal entries zero. Commutation with \(e_{ij}\otimes1\) makes all diagonal entries equal. This is exactly \(T=1\otimes S\), with arbitrary \(S\in B(K)\). When \(K=\mathbb C^m\), the flip unitary identifies its action with \(S\otimes1_{\mathbb C^n}\), of multiplicity \(n\). \(\square\)
+**Proof.** Write an operator \(T\in B(\mathbb C^n\otimes K)\) as an \(n\times n\) matrix of operators on \(K\). Commutation with all \(e_{ii}\otimes1\) makes the off-diagonal entries zero. Commutation with \(e_{ij}\otimes1\) makes all diagonal entries equal. This is exactly \(T=1\otimes S\), with arbitrary \(S\in B(K)\). When \(0<m<\infty\) and \(K=\mathbb C^m\), the flip unitary identifies its action with \(S\otimes1_{\mathbb C^n}\), of multiplicity \(n\). \(\square\)
 
 **Corollary 4.3.** If \(A=\bigoplus_{r=1}^sM_{n_r}(\mathbb C)\), every nondegenerate representation is
 \[
-H=\bigoplus_{r=1}^s(\mathbb C^{n_r}\otimes K_r),
-\qquad \pi((a_r))=\bigoplus_{r=1}^s(a_r\otimes1_{K_r}).
-\tag{4.3}
+\begin{gathered}H=\bigoplus_{r=1}^s(\mathbb C^{n_r}\otimes K_r),\\\pi((a_r))=\bigoplus_{r=1}^s(a_r\otimes1_{K_r}).\end{gathered}\tag{4.3}
 \]
 The list \(m_r=\dim K_r\), with zero entries allowed, determines it up to unitary equivalence, and every such list occurs. Its commutant is
 \[

@@ -272,6 +272,6 @@ This is the measure constructed in (P15), specialized to a finite group. Applyin
 
 The [figure source](../assets/plancherel-reconstruction/render_plancherel.py) uses an exact Gaussian-integer Fourier matrix, verifies all four identities before plotting, and saves the [exact displayed data](../assets/plancherel-reconstruction/figures/plancherel-data.json). It illustrates this finite instance of [P1](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p1)–[P4](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p4); the arbitrary-group proof is the text above. The human comparison source is Fremlin 445N/P/R, linked at the start of the lesson. Figure, source and caption are original and carry the same CC0 terms as this exposition.
 
-The new proof is mathematically conditional only on its explicitly listed earlier foundations.
+The coefficient representation and Fourier normalization use the earlier foundations specified at the start of the lesson.
 
 [Original editable figure](../assets/plancherel-reconstruction/figures/plancherel-normalization.svg).

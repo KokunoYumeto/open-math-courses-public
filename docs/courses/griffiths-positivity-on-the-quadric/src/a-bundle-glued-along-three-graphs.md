@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-This lesson constructs the rank-two bundle \(G\) of the theorem of Hermitian metrics and Griffiths positivity. It is obtained from \(\mathcal O_S(24,0)\oplus\mathcal O_S(0,24)\) on \(S=\mathbb P^1\times\mathbb P^1\) by keeping the pairs of sections that agree, along three graphs of projective transformations, under prescribed identifications. Two properties of the transformations matter. Their linear lifts and the relative lift have finite order, which makes the identifications agree where the graphs meet. Their product is hyperbolic, which will rule out a common invariant measure in [An invariant measure and the proof](an-invariant-measure-and-the-proof.md).
+This lesson constructs the rank-two bundle \(G\) of the theorem of [Hermitian metrics and Griffiths positivity](hermitian-metrics-and-griffiths-positivity.md). It is obtained from \(\mathcal O_S(24,0)\oplus\mathcal O_S(0,24)\) on \(S=\mathbb P^1\times\mathbb P^1\) by keeping the pairs of sections that agree, along three graphs of projective transformations, under prescribed identifications. Two properties of the transformations matter. Their linear lifts and the relative lift have finite order, which makes the identifications agree where the graphs meet. Their product is hyperbolic, which will rule out a common invariant measure in [An invariant measure and the proof](an-invariant-measure-and-the-proof.md).
 
 - The two matrices (Lemma 1.1).
 - The three graphs and their six intersection points (Lemma 2.1).

@@ -22,7 +22,7 @@ supply matrix inversion and the inverse theorem. Its
 and [complex exponential and circle proofs](../20261004-free-stationary-phase/exponential-prerequisite-completions.md)
 give determinant identities, compact extrema, convergent geometric sums,
 complex arithmetic, all circle angles and differentiation of exponentials.
-Exact entries are recorded in the [proof map](proof-map.json).
+Exact entries are recorded in the proof map.
 
 Gaussian elimination works over the complex field just as over the real
 field: choose a nonzero pivot, divide its row by that pivot and subtract
@@ -426,4 +426,4 @@ no book text or figure is reproduced. It supplies full arguments
 in addition to the main lesson's mathematical source citation.
 The [figure source](figures/draw_common_upper_contour.py) and
 font notice are retained.
-The [proof map](proof-map.json) connects every earlier input.
+The proof map connects every earlier input.

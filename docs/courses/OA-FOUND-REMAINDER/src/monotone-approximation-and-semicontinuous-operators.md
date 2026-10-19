@@ -1,6 +1,6 @@
 # Monotone approximation and semicontinuous operators
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*AI authors: GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra. Original text: CC0 1.0. Self-checked by the writing AIs.*
 
 Lower semicontinuity on the quasi-state space has an operator interpretation: the element is a norm limit of bounded increasing limits from the original algebra. More precisely, every positive scalar shift of it is already one such increasing limit. The scalar shift matters for a nonunital algebra, where negative multiples of the bidual identity need not have this property.
 
@@ -39,6 +39,90 @@ f_\alpha(t)=\frac{t}{1+\alpha t},\qquad t>-1/\alpha.
 Since \(f_\alpha(x)=\alpha^{-1}(1-(1+\alpha x)^{-1})\), inverse order proves that \(f_\alpha\) is operator monotone on this domain. It vanishes at zero, so \(f_\alpha(a)\in A\) for \(a\in A_{\mathrm{sa}}\) with spectrum in the domain; it preserves positivity as well.
 
 On a bounded spectral interval in the domain, continuous functional calculus preserves strong convergence of uniformly bounded self-adjoint nets. To see this, approximate the continuous function uniformly by polynomials on that interval. Products preserve strong convergence for uniformly bounded families, and the uniform error bounds apply to every operator and vector. In particular a bounded increasing net \(x_i\uparrow x\) with a common strict lower bound above \(-1/\alpha\) has \(f_\alpha(x_i)\uparrow f_\alpha(x)\) strongly.
+
+<a id="rational-identities-and-exact-monotone-limits"></a>
+
+**Lemma 1.1 — rational identities and domains.** For \(\alpha>0\), the function \(f_\alpha\) is an increasing bijection
+\[
+(-1/\alpha,\infty)\longrightarrow(-\infty,1/\alpha).
+\]
+Its inverse is \(s\mapsto s/(1-\alpha s)\). If \(0<\alpha\le\beta\) and \(t>-1/\beta\), then
+\[
+f_\beta(t)\le f_\alpha(t)\le t.
+\tag{1.4}
+\]
+For fixed real \(t\), \(f_\alpha(t)\to t\) as \(\alpha\downarrow0\). For \(\alpha,\beta>0\), composition satisfies
+\[
+f_\alpha(f_\beta(t))=f_{\alpha+\beta}(t),
+\qquad t>-1/(\alpha+\beta).
+\tag{1.5}
+\]
+All these identities also hold in continuous functional calculus, with the spectrum contained in the stated domain. If \(x=x^*\) and \(\alpha\|x\|<1\), the norm estimates
+\[
+\|x-f_\alpha(x)\|
+\le\frac{\alpha\|x\|^2}{1-\alpha\|x\|},
+\qquad
+\left\|\frac{x-f_\alpha(x)}{\alpha}-x^2\right\|
+\le\frac{\alpha\|x\|^3}{1-\alpha\|x\|}
+\tag{1.6}
+\]
+hold.
+
+**Proof.** The identity
+\(f_\alpha(t)=\alpha^{-1}(1-(1+\alpha t)^{-1})\) shows strict increase, with limits \(-\infty\) and \(1/\alpha\) at the two ends of its domain. Solving \(s=t/(1+\alpha t)\) gives the asserted inverse, whose denominator is positive for \(s<1/\alpha\).
+
+The two inequalities in (1.4) follow from
+\[
+t-f_\alpha(t)=\frac{\alpha t^2}{1+\alpha t},
+\qquad
+f_\alpha(t)-f_\beta(t)
+=\frac{(\beta-\alpha)t^2}{(1+\alpha t)(1+\beta t)}.
+\]
+The denominators are positive on the common domain, including when \(t<0\). The first identity also proves convergence at each fixed \(t\).
+
+For (1.5), the domain assumption gives both \(1+\beta t>0\) and
+\[
+1+\alpha f_\beta(t)
+=\frac{1+(\alpha+\beta)t}{1+\beta t}>0.
+\]
+Thus both stages of the composition are defined, and substitution gives (1.5). Continuous functional calculus preserves these scalar identities and inequalities. Finally,
+\[
+x-f_\alpha(x)=\alpha x^2(1+\alpha x)^{-1},
+\qquad
+\frac{x-f_\alpha(x)}{\alpha}-x^2
+=-\alpha x^3(1+\alpha x)^{-1}.
+\]
+The inverse has norm at most \((1-\alpha\|x\|)^{-1}\), proving (1.6). \(\square\)
+
+**Lemma 1.2 — exact monotone stability.** If \(x\in A_{\mathrm{sa}}^\uparrow\) and \(x\ge m1\) for some \(m>-1/\alpha\), then
+\[
+f_\alpha(x)\in A_{\mathrm{sa}}^\uparrow.
+\tag{1.7}
+\]
+If \(x\in A_+^\uparrow\), then \(f_\alpha(x)\in A_+^\uparrow\) for every \(\alpha>0\).
+
+**Proof.** Choose a bounded increasing net \(a_i\in A_{\mathrm{sa}}\) with strong limit \(x\), and a real number
+\[
+-1/\alpha<c<\min\{0,m\}.
+\tag{1.8}
+\]
+For every \(\varphi\in Q(A)\), normality of its bidual extension gives \(\varphi(a_i)\uparrow\varphi(x)>c\). Indeed, if \(m\ge0\), then \(\varphi(x)\ge0>c\); if \(m<0\), then \(\varphi(x)\ge m\|\varphi\|\ge m>c\). This includes the zero functional.
+
+The sets
+\[
+V_i=\{\varphi\in Q(A):\varphi(a_i)>c\}
+\]
+are weak* open, increase with \(i\), and cover the compact space \(Q(A)\). A finite subcover and directedness give an index \(j\) with \(V_j=Q(A)\). State detection of order now gives \(a_j\ge c1\), and hence \(a_i\ge c1\) for every \(i\ge j\). Here order detection can also be seen in the universal representation: a unit vector determines a state of \(A\), so positivity of every such quadratic form means positivity of the operator.
+
+On this tail the spectra lie in a common compact interval contained in \((-1/\alpha,\infty)\). The operator monotonicity and bounded strong functional calculus proved above yield
+\[
+f_\alpha(a_i)\uparrow f_\alpha(x).
+\]
+Each transformed element belongs to \(A\), because \(f_\alpha(0)=0\), and the transformed net is bounded. This proves (1.7). For the positive assertion start with positive \(a_i\); their transforms are positive, increasing, bounded by \(1/\alpha\), and converge strongly to \(f_\alpha(x)\). \(\square\)
+
+![The ordered rational curves and the compactness step for monotone approximants](../supplements/rational-order-transforms.svg)
+
+*The curves show \(f_2(t)\le f_1(t)\le t\) on a finite window of their common domain \(t>-1/2\); the graph continues outside that window. The lower panel displays the compactness step in Lemma 1.2. Identities, domains and estimates are proved in Lemmas 1.1–1.2. [Figure source](../supplements/draw-rational-order-transforms.py).*
 
 ## 2. Lower semicontinuity on the quasi-state space
 

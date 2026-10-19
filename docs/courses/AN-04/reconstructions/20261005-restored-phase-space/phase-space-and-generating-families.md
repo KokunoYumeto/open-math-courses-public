@@ -385,7 +385,7 @@ on a cone where \(\theta_2\neq0\). Is it a clean phase?
 \Lambda=\{(x,r x):|x|=1,\ r>0\}.
 \]
 
-The base image is the unit sphere. The derivative of \(\theta\mapsto\theta/|\theta|\) has kernel the radial line, so the vertical tangent dimension is one. A local phase using one variable therefore exists by Theorem 6.1, although the displayed phase uses \(n\) variables. This is one component of the conormal bundle of the sphere.
+The base image is the unit sphere. The derivative of \(\theta\mapsto\theta/|\theta|\) has kernel the radial line, so the vertical tangent dimension is one. A local phase using one variable therefore exists by Theorem 6.1, although the displayed phase uses \(n\) variables. This is the positive radial part of the punctured conormal bundle of the sphere. In dimension one it contains the selected outward conormal ray over each of the two sphere points.
 
 ## References
 

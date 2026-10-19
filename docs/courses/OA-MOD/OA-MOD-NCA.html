@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Characteristic classes and subgroup alignment · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/characteristic-classes-and-subgroup-alignment.md">Editable Markdown</a></nav><article class="lesson"><h1 id="characteristic-classes-and-subgroup-alignment">Characteristic classes and subgroup alignment</h1>
+<p><em>Written by GPT-6 Astra (OpenAI), Ultra. Original text and editable diagram: CC0.</em></p>
+<p>The intertwining theorem starts with two cocycle actions that agree exactly on a normal subgroup. Equality of characteristic classes initially gives less: the implementing unitaries in the continuous core have central discrepancies. We remove those discrepancies, construct aligning unitaries in the original algebra, and retain the original subgroup cocycles.</p>
+<p>The argument uses <a href="OA-MOD-MCC.html#oa-mod-mcc-01">canonical extension and its continuity, MCC01</a>, <a href="OA-MOD-LP.html#oa-mod-lp-01">the fixed algebra of the dual flow, LP01</a>, and <a href="OA-MOD-QCA.html#oa-mod-qca-01">the cocycle conventions, QCA01</a>. The equivariant-extension viewpoint is developed for genuine actions in <a href="OA-MOD-CCI.html#oa-mod-cci-01">CCI01–04</a>. Here we prove the construction for normalized cocycle actions and invariance under arbitrary unitary cochains. The resulting alignment supplies the algebraic input to <a href="OA-MOD-TSI.html#oa-mod-tsi-01">the two-sided intertwining theorem, TSI01–11</a>.</p>
+<h2 id="core-implementers-for-a-cocycle-action"><span id="OA-MOD-NCA-01"></span><span id="oa-mod-nca-01"></span>Core implementers for a cocycle action</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a nonzero von Neumann algebra with continuous core <span class="math" data-tex="\(Q\)">\(Q\)</span> and dual flow <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>. We identify <span class="math" data-tex="\(M\)">\(M\)</span> with the fixed algebra <span class="math" data-tex="\(Q^\vartheta\)">\(Q^\vartheta\)</span>, as proved in LP01. Put <span class="math" data-tex="\(C=Z(Q)\)">\(C=Z(Q)\)</span> and <span class="math" data-tex="\(A=\mathcal U(C)\)">\(A=\mathcal U(C)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a countable discrete group and let <span class="math" data-tex="\((a,v)\)">\((a,v)\)</span> be a normalized cocycle action on <span class="math" data-tex="\(M\)">\(M\)</span>:</p>
+<span class="math math-display" data-tex="\[
+a_ga_h=\operatorname{Ad}v(g,h)\,a_{gh},\qquad
+v(g,h)v(gh,k)=a_g(v(h,k))v(g,hk).
+\tag{1.1}
+\]">\[
+a_ga_h=\operatorname{Ad}v(g,h)\,a_{gh},\qquad
+v(g,h)v(gh,k)=a_g(v(h,k))v(g,hk).
+\tag{1.1}
+\]</span>
+<p>The identity map and every coefficient with an identity argument are normalized to 1 in the appropriate sense.</p>
+<p>MCC01 extends the maps canonically to <span class="math" data-tex="\(Q\)">\(Q\)</span>. Their extensions commute with <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>, preserve <span class="math" data-tex="\(M\)">\(M\)</span>, and satisfy the same cocycle equations with the original <span class="math" data-tex="\(v(g,h)\in M\)">\(v(g,h)\in M\)</span>. For</p>
+<span class="math math-display" data-tex="\[
+E=G\times\mathbb R,\qquad
+b_{(g,t)}=\widetilde a_g\vartheta_t,\qquad
+v_E((g,t),(h,s))=v(g,h),
+\tag{1.2}
+\]">\[
+E=G\times\mathbb R,\qquad
+b_{(g,t)}=\widetilde a_g\vartheta_t,\qquad
+v_E((g,t),(h,s))=v(g,h),
+\tag{1.2}
+\]</span>
+<p>these are again cocycle-action equations. Indeed <span class="math" data-tex="\(\vartheta_t\)">\(\vartheta_t\)</span> fixes every coefficient and commutes with every <span class="math" data-tex="\(\widetilde a_g\)">\(\widetilde a_g\)</span>; substituting (1.1) proves both equations for <span class="math" data-tex="\(b,v_E\)">\(b,v_E\)</span>. The restriction
+<span class="math" data-tex="\(\rho_x=b_x|_C\)">\(\rho_x=b_x|_C\)</span> is a genuine action of <span class="math" data-tex="\(E\)">\(E\)</span>, since inner automorphisms fix the centre.</p>
+<p>Fix <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> such that <span class="math" data-tex="\(\widetilde a_n\)">\(\widetilde a_n\)</span> is inner for every <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>. Choose implementing unitaries <span class="math" data-tex="\(T_n\in Q\)">\(T_n\in Q\)</span>, with <span class="math" data-tex="\(T_e=1\)">\(T_e=1\)</span>. All the alignment arguments below work for any such normal subgroup. For the full characteristic invariant one takes the entire core-inner kernel. That kernel is normal: the map from <span class="math" data-tex="\(G\)">\(G\)</span> to <span class="math" data-tex="\(\operatorname{Aut}(Q)/\operatorname{Int}(Q)\)">\(\operatorname{Aut}(Q)/\operatorname{Int}(Q)\)</span> is a homomorphism by (1.1), and its kernel is precisely the indicated set.</p>
+<p>Write <span class="math" data-tex="\(x=(g,t)\)">\(x=(g,t)\)</span> and <span class="math" data-tex="\(l=g^{-1}ng\)">\(l=g^{-1}ng\)</span>. There are unique central unitaries <span class="math" data-tex="\(\mu(m,n)\)">\(\mu(m,n)\)</span> and <span class="math" data-tex="\(\lambda(x,n)\)">\(\lambda(x,n)\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_mT_n&amp;=\mu(m,n)v(m,n)T_{mn},\\
+b_x(T_l)&amp;=\lambda(x,n)\delta(g,n)T_n,\\
+\delta(g,n)&amp;=v(g,g^{-1}ng)v(n,g)^*.
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+T_mT_n&amp;=\mu(m,n)v(m,n)T_{mn},\\
+b_x(T_l)&amp;=\lambda(x,n)\delta(g,n)T_n,\\
+\delta(g,n)&amp;=v(g,g^{-1}ng)v(n,g)^*.
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>To prove centrality in the first line, the two products implement the same automorphism by (1.1). For the second, (1.1) gives</p>
+<span class="math math-display" data-tex="\[
+b_x\widetilde a_l
+=\operatorname{Ad}\delta(g,n)\,\widetilde a_n b_x.
+\tag{1.4}
+\]">\[
+b_x\widetilde a_l
+=\operatorname{Ad}\delta(g,n)\,\widetilde a_n b_x.
+\tag{1.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(b_x(T_l)\)">\(b_x(T_l)\)</span> and <span class="math" data-tex="\(\delta(g,n)T_n\)">\(\delta(g,n)T_n\)</span> also implement the same automorphism. If unitaries <span class="math" data-tex="\(U,V\)">\(U,V\)</span> have the same conjugation action on <span class="math" data-tex="\(Q\)">\(Q\)</span>, then <span class="math" data-tex="\(V^*U\)">\(V^*U\)</span> commutes with every element of <span class="math" data-tex="\(Q\)">\(Q\)</span>; their quotient is a central unitary. This proves existence and uniqueness in (1.3).</p>
+<p>For fixed <span class="math" data-tex="\(g,n\)">\(g,n\)</span>, the function <span class="math" data-tex="\(t\mapsto\lambda((g,t),n)\)">\(t\mapsto\lambda((g,t),n)\)</span> is strongly continuous. It is the product of <span class="math" data-tex="\(b_{(g,t)}(T_l)\)">\(b_{(g,t)}(T_l)\)</span> and fixed unitaries. Strong continuity of products and adjoints on unitary groups follows from the bounded product estimates given in CCI01. We use precisely this continuity in defining characteristic pairs.</p>
+<h2 id="the-group-extension-behind-the-phases"><span id="OA-MOD-NCA-02"></span><span id="oa-mod-nca-02"></span>The group extension behind the phases</h2>
+<p>On the set <span class="math" data-tex="\(\mathcal U(Q)\times E\)">\(\mathcal U(Q)\times E\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(u,x)(w,y)=\bigl(u\,b_x(w)v_E(x,y),xy\bigr).
+\tag{2.1}
+\]">\[
+(u,x)(w,y)=\bigl(u\,b_x(w)v_E(x,y),xy\bigr).
+\tag{2.1}
+\]</span>
+<p>This makes a group <span class="math" data-tex="\(H\)">\(H\)</span>. Here are the full verifications. In a product of three elements, the first coordinate when multiplying from the left is</p>
+<span class="math math-display" data-tex="\[
+u\,b_x(w)v_E(x,y)b_{xy}(z)v_E(xy,r).
+\]">\[
+u\,b_x(w)v_E(x,y)b_{xy}(z)v_E(xy,r).
+\]</span>
+<p>The first coordinate when multiplying from the right is</p>
+<span class="math math-display" data-tex="\[
+u\,b_x(w)b_xb_y(z)b_x(v_E(y,r))v_E(x,yr).
+\]">\[
+u\,b_x(w)b_xb_y(z)b_x(v_E(y,r))v_E(x,yr).
+\]</span>
+<p>Replace <span class="math" data-tex="\(b_xb_y(z)\)">\(b_xb_y(z)\)</span> by <span class="math" data-tex="\(v_E(x,y)b_{xy}(z)v_E(x,y)^*\)">\(v_E(x,y)b_{xy}(z)v_E(x,y)^*\)</span>, and then use the cocycle equation. The two expressions agree in the displayed order. The identity is <span class="math" data-tex="\((1,e_E)\)">\((1,e_E)\)</span>. A right inverse of <span class="math" data-tex="\((u,x)\)">\((u,x)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\left(b_x^{-1}\bigl(u^*v_E(x,x^{-1})^*\bigr),x^{-1}\right).
+\tag{2.2}
+\]">\[
+\left(b_x^{-1}\bigl(u^*v_E(x,x^{-1})^*\bigr),x^{-1}\right).
+\tag{2.2}
+\]</span>
+<p>Every element therefore has a right inverse. In an associative monoid this also gives left inverses: if <span class="math" data-tex="\(hk=1\)">\(hk=1\)</span> and <span class="math" data-tex="\(kj=1\)">\(kj=1\)</span>, then <span class="math" data-tex="\(h=h(kj)=(hk)j=j\)">\(h=h(kj)=(hk)j=j\)</span>, so <span class="math" data-tex="\(kh=1\)">\(kh=1\)</span>. Hence (2.1) is a group law.</p>
+<p>Projection <span class="math" data-tex="\(\pi:H\to E\)">\(\pi:H\to E\)</span> is an onto homomorphism with normal kernel <span class="math" data-tex="\(L=\mathcal U(Q)\times\{e_E\}\)">\(L=\mathcal U(Q)\times\{e_E\}\)</span>. An element <span class="math" data-tex="\((u,x)\)">\((u,x)\)</span> centralizes <span class="math" data-tex="\(L\)">\(L\)</span> exactly when</p>
+<span class="math math-display" data-tex="\[
+u\,b_x(w)=wu\quad(w\in\mathcal U(Q)).
+\tag{2.3}
+\]">\[
+u\,b_x(w)=wu\quad(w\in\mathcal U(Q)).
+\tag{2.3}
+\]</span>
+<p>Equality on all unitaries implies equality on <span class="math" data-tex="\(Q\)">\(Q\)</span>, by <a href="OA-MOD-BK.html#oa-mod-bk-08">BK08</a>: every self-adjoint contraction <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\((U+U^*)/2\)">\((U+U^*)/2\)</span>, with
+<span class="math" data-tex="\(U=h+i(1-h^2)^{1/2}\)">\(U=h+i(1-h^2)^{1/2}\)</span> unitary by the continuous functional calculus; arbitrary elements are complex linear combinations of self-adjoint elements. Thus, for <span class="math" data-tex="\(x=(n,0)\)">\(x=(n,0)\)</span>, condition (2.3) is equivalent to <span class="math" data-tex="\(b_x=\operatorname{Ad}(u^*)\)">\(b_x=\operatorname{Ad}(u^*)\)</span>.</p>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+K=C_H(L)\cap\pi^{-1}(N\times\{0\})
+=\{(T^*,(n,0)):\operatorname{Ad}T=\widetilde a_n\}
+\tag{2.4}
+\]">\[
+K=C_H(L)\cap\pi^{-1}(N\times\{0\})
+=\{(T^*,(n,0)):\operatorname{Ad}T=\widetilde a_n\}
+\tag{2.4}
+\]</span>
+<p>is a normal subgroup. To check the only group-theoretic point, a conjugate <span class="math" data-tex="\(hch^{-1}\)">\(hch^{-1}\)</span> of an element centralizing the normal subgroup <span class="math" data-tex="\(L\)">\(L\)</span> centralizes <span class="math" data-tex="\(hLh^{-1}=L\)">\(hLh^{-1}=L\)</span>. Therefore <span class="math" data-tex="\(C_H(L)\)">\(C_H(L)\)</span> is normal; the other subgroup in the intersection is normal because <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span>.</p>
+<p>We suppress the zero real coordinate on <span class="math" data-tex="\(N\)">\(N\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\iota(z)=(z^*,e),\qquad k_n=(T_n^*,n).
+\tag{2.5}
+\]">\[
+\iota(z)=(z^*,e),\qquad k_n=(T_n^*,n).
+\tag{2.5}
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+1\longrightarrow A\xrightarrow{\ \iota\ }K
+\xrightarrow{\ \pi\ }N\longrightarrow1
+\tag{2.6}
+\]">\[
+1\longrightarrow A\xrightarrow{\ \iota\ }K
+\xrightarrow{\ \pi\ }N\longrightarrow1
+\tag{2.6}
+\]</span>
+<p>is a central extension. The kernel consists exactly of central unitaries; <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is a homomorphism because they commute. Every fibre is nonempty by the choice of <span class="math" data-tex="\(T_n\)">\(T_n\)</span>, and <span class="math" data-tex="\(K\)">\(K\)</span> centralizes <span class="math" data-tex="\(L\)">\(L\)</span>, which contains <span class="math" data-tex="\(\iota(A)\)">\(\iota(A)\)</span>.</p>
+<p>The multiplication of its chosen lifts is</p>
+<span class="math math-display" data-tex="\[
+k_mk_n
+=(T_n^*T_m^*v(m,n),mn)
+=\iota(\mu(m,n))\,k_{mn}.
+\tag{2.7}
+\]">\[
+k_mk_n
+=(T_n^*T_m^*v(m,n),mn)
+=\iota(\mu(m,n))\,k_{mn}.
+\tag{2.7}
+\]</span>
+<p>The first equality uses <span class="math" data-tex="\(\widetilde a_m=\operatorname{Ad}T_m\)">\(\widetilde a_m=\operatorname{Ad}T_m\)</span>; the second is the adjoint of the first line of (1.3), multiplied on the right by <span class="math" data-tex="\(v(m,n)\)">\(v(m,n)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\ell_x=(1,x)\)">\(\ell_x=(1,x)\)</span>. Conjugation by <span class="math" data-tex="\(\ell_x\)">\(\ell_x\)</span> restricts to an automorphism <span class="math" data-tex="\(\Gamma_x\)">\(\Gamma_x\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. It defines a genuine <span class="math" data-tex="\(E\)">\(E\)</span>-action on <span class="math" data-tex="\(K\)">\(K\)</span>, although <span class="math" data-tex="\(b\)">\(b\)</span> need not be a genuine action: the identity</p>
+<span class="math math-display" data-tex="\[
+\ell_x\ell_y=(v_E(x,y),e_E)\ell_{xy}
+\tag{2.8}
+\]">\[
+\ell_x\ell_y=(v_E(x,y),e_E)\ell_{xy}
+\tag{2.8}
+\]</span>
+<p>has a first factor in <span class="math" data-tex="\(L\)">\(L\)</span>, which centralizes <span class="math" data-tex="\(K\)">\(K\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+\Gamma_x(\iota(z))=\iota(\rho_x(z)),\qquad
+\Gamma_x(k_{g^{-1}ng})=\iota(\lambda(x,n))k_n.
+\tag{2.9}
+\]">\[
+\Gamma_x(\iota(z))=\iota(\rho_x(z)),\qquad
+\Gamma_x(k_{g^{-1}ng})=\iota(\lambda(x,n))k_n.
+\tag{2.9}
+\]</span>
+<p>For the second formula, (1.3) gives</p>
+<span class="math math-display" data-tex="\[
+b_x(T_{g^{-1}ng}^*)v(g,g^{-1}ng)
+=\lambda(x,n)^*T_n^*v(n,g).
+\]">\[
+b_x(T_{g^{-1}ng}^*)v(g,g^{-1}ng)
+=\lambda(x,n)^*T_n^*v(n,g).
+\]</span>
+<p>This is exactly the equality of the first coordinates of
+<span class="math" data-tex="\(\ell_x k_{g^{-1}ng}\)">\(\ell_x k_{g^{-1}ng}\)</span> and <span class="math" data-tex="\(\iota(\lambda(x,n))k_n\ell_x\)">\(\iota(\lambda(x,n))k_n\ell_x\)</span>, so it proves (2.9).</p>
+<p>Finally <span class="math" data-tex="\(\ell_{(m,0)}=(T_m,e_E)k_m\)">\(\ell_{(m,0)}=(T_m,e_E)k_m\)</span>. Its first factor centralizes <span class="math" data-tex="\(K\)">\(K\)</span>, whence <span class="math" data-tex="\(\Gamma_{(m,0)}=\operatorname{Ad}k_m\)">\(\Gamma_{(m,0)}=\operatorname{Ad}k_m\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. These exact facts replace any assumption that the original cocycle coefficients are 1.</p>
+<h2 id="characteristic-identities-and-central-changes-of-lifts"><span id="OA-MOD-NCA-03"></span><span id="oa-mod-nca-03"></span>Characteristic identities and central changes of lifts</h2>
+<p>For <span class="math" data-tex="\(x=(g,t)\)">\(x=(g,t)\)</span>, <span class="math" data-tex="\(y=(h,s)\)">\(y=(h,s)\)</span>, and <span class="math" data-tex="\(l,m,n\in N\)">\(l,m,n\in N\)</span>, equations (2.7)–(2.9) imply</p>
+<span class="math math-display" data-tex="\[
+\mu(l,m)\mu(lm,n)=\mu(m,n)\mu(l,mn).
+\tag{3.1}
+\]">\[
+\mu(l,m)\mu(lm,n)=\mu(m,n)\mu(l,mn).
+\tag{3.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\lambda(xy,n)
+=\rho_x\bigl(\lambda(y,g^{-1}ng)\bigr)\lambda(x,n).
+\tag{3.2}
+\]">\[
+\lambda(xy,n)
+=\rho_x\bigl(\lambda(y,g^{-1}ng)\bigr)\lambda(x,n).
+\tag{3.2}
+\]</span>
+<span class="math math-display" data-tex="\[
+\frac{\lambda(x,m)\lambda(x,n)}{\lambda(x,mn)}
+=\frac{\rho_x\bigl(\mu(g^{-1}mg,g^{-1}ng)\bigr)}
+{\mu(m,n)}.
+\tag{3.3}
+\]">\[
+\frac{\lambda(x,m)\lambda(x,n)}{\lambda(x,mn)}
+=\frac{\rho_x\bigl(\mu(g^{-1}mg,g^{-1}ng)\bigr)}
+{\mu(m,n)}.
+\tag{3.3}
+\]</span>
+<span class="math math-display" data-tex="\[
+\lambda((m,0),n)
+=\frac{\mu(m,m^{-1}nm)}{\mu(n,m)}.
+\tag{3.4}
+\]">\[
+\lambda((m,0),n)
+=\frac{\mu(m,m^{-1}nm)}{\mu(n,m)}.
+\tag{3.4}
+\]</span>
+<span class="math math-display" data-tex="\[
+\mu(e,n)=\mu(n,e)=\lambda(x,e)=\lambda(e_E,n)=1.
+\tag{3.5}
+\]">\[
+\mu(e,n)=\mu(n,e)=\lambda(x,e)=\lambda(e_E,n)=1.
+\tag{3.5}
+\]</span>
+<p>Fractions are products with inverses in the abelian group <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Here are the proofs with the cocycle coefficients already incorporated into the extension. Associate <span class="math" data-tex="\(k_lk_mk_n\)">\(k_lk_mk_n\)</span> in two ways and cancel <span class="math" data-tex="\(k_{lmn}\)">\(k_{lmn}\)</span> to obtain (3.1). Apply <span class="math" data-tex="\(\Gamma_x\Gamma_y=\Gamma_{xy}\)">\(\Gamma_x\Gamma_y=\Gamma_{xy}\)</span> to <span class="math" data-tex="\(k_{h^{-1}g^{-1}ngh}\)">\(k_{h^{-1}g^{-1}ngh}\)</span>, and use the action <span class="math" data-tex="\(\rho_x\)">\(\rho_x\)</span> on the central coefficient; this gives (3.2). Apply <span class="math" data-tex="\(\Gamma_x\)">\(\Gamma_x\)</span> to <span class="math" data-tex="\(k_{g^{-1}mg}k_{g^{-1}ng}\)">\(k_{g^{-1}mg}k_{g^{-1}ng}\)</span>, using (2.7) before and after applying it. The two coefficients of <span class="math" data-tex="\(k_{mn}\)">\(k_{mn}\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\rho_x\bigl(\mu(g^{-1}mg,g^{-1}ng)\bigr)\lambda(x,mn)
+\quad\text{and}\quad
+\lambda(x,m)\lambda(x,n)\mu(m,n),
+\]">\[
+\rho_x\bigl(\mu(g^{-1}mg,g^{-1}ng)\bigr)\lambda(x,mn)
+\quad\text{and}\quad
+\lambda(x,m)\lambda(x,n)\mu(m,n),
+\]</span>
+<p>proving (3.3). Since <span class="math" data-tex="\(\Gamma_{(m,0)}=\operatorname{Ad}k_m\)">\(\Gamma_{(m,0)}=\operatorname{Ad}k_m\)</span>, compare <span class="math" data-tex="\(k_mk_{m^{-1}nm}\)">\(k_mk_{m^{-1}nm}\)</span> with <span class="math" data-tex="\(k_nk_m\)">\(k_nk_m\)</span>; both project to <span class="math" data-tex="\(nm\)">\(nm\)</span>, and their coefficients give (3.4). Equation (3.5) follows from <span class="math" data-tex="\(T_e=1\)">\(T_e=1\)</span>.</p>
+<p>Replace the core implementers by <span class="math" data-tex="\(T&#x27;_n=z_nT_n\)">\(T&#x27;_n=z_nT_n\)</span>, where <span class="math" data-tex="\(z_n\in A\)">\(z_n\in A\)</span> and <span class="math" data-tex="\(z_e=1\)">\(z_e=1\)</span>. Direct substitution in (1.3) yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mu&#x27;(m,n)&amp;=z_mz_nz_{mn}^*\mu(m,n),\\
+\lambda&#x27;(x,n)&amp;=\rho_x(z_{g^{-1}ng})z_n^*\lambda(x,n).
+\end{aligned}
+\tag{3.6}
+\]">\[
+\begin{aligned}
+\mu&#x27;(m,n)&amp;=z_mz_nz_{mn}^*\mu(m,n),\\
+\lambda&#x27;(x,n)&amp;=\rho_x(z_{g^{-1}ng})z_n^*\lambda(x,n).
+\end{aligned}
+\tag{3.6}
+\]</span>
+<p>Centrality is what permits the <span class="math" data-tex="\(z\)">\(z\)</span>'s to move past <span class="math" data-tex="\(v(m,n)\)">\(v(m,n)\)</span> and <span class="math" data-tex="\(\delta(g,n)\)">\(\delta(g,n)\)</span>. The formulas include every real time in <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(G,N,\rho\)">\(G,N,\rho\)</span>, the normalized pairs satisfying (3.1)–(3.5), with the real-variable continuity from Section 1, form an abelian group <span class="math" data-tex="\(Z_\rho\)">\(Z_\rho\)</span>. Each equation is multiplicative in central coefficients, so products and inverses preserve it and preserve continuity. The pairs</p>
+<span class="math math-display" data-tex="\[
+\mu_z(m,n)=z_mz_nz_{mn}^*,\qquad
+\lambda_z(x,n)=\rho_x(z_{g^{-1}ng})z_n^*
+\tag{3.7}
+\]">\[
+\mu_z(m,n)=z_mz_nz_{mn}^*,\qquad
+\lambda_z(x,n)=\rho_x(z_{g^{-1}ng})z_n^*
+\tag{3.7}
+\]</span>
+<p>form a subgroup <span class="math" data-tex="\(B_\rho\)">\(B_\rho\)</span>. The map <span class="math" data-tex="\(z\mapsto(\lambda_z,\mu_z)\)">\(z\mapsto(\lambda_z,\mu_z)\)</span> preserves multiplication, since <span class="math" data-tex="\(A\)">\(A\)</span> is abelian. Its values satisfy all the identities: start with the trivial central extension <span class="math" data-tex="\(A\times N\)">\(A\times N\)</span>, let <span class="math" data-tex="\(x=(g,t)\)">\(x=(g,t)\)</span> act by
+<span class="math" data-tex="\((w,n)\mapsto(\rho_x(w),gng^{-1})\)">\((w,n)\mapsto(\rho_x(w),gng^{-1})\)</span>, and change its lift of <span class="math" data-tex="\(n\)">\(n\)</span> from <span class="math" data-tex="\((1,n)\)">\((1,n)\)</span> to <span class="math" data-tex="\((z_n,n)\)">\((z_n,n)\)</span>. Since <span class="math" data-tex="\(\rho_{(n,0)}=\mathrm{id}\)">\(\rho_{(n,0)}=\mathrm{id}\)</span>, the action of <span class="math" data-tex="\((n,0)\)">\((n,0)\)</span> is conjugation by <span class="math" data-tex="\((1,n)\)">\((1,n)\)</span>. The calculations establishing (3.1)–(3.5) therefore apply and produce exactly (3.7). Normality of <span class="math" data-tex="\(B_\rho\)">\(B_\rho\)</span> follows from commutativity.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\chi_N(a,v)=[\lambda,\mu]\in Z_\rho/B_\rho.
+\tag{3.8}
+\]">\[
+\chi_N(a,v)=[\lambda,\mu]\in Z_\rho/B_\rho.
+\tag{3.8}
+\]</span>
+<p>Every other normalized family of implementing unitaries differs by a unique central <span class="math" data-tex="\(z_n\)">\(z_n\)</span>; (3.6) proves independence of the choice. This is an algebraic quotient with the stated continuity condition on its representatives. No topological separation property of the quotient is asserted.</p>
+<p>In particular, equality of two classes means that there is a single normalized central family <span class="math" data-tex="\(z_n\)">\(z_n\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\lambda^\alpha=\lambda_z\lambda^\beta,\qquad
+\mu^\alpha=\mu_z\mu^\beta.
+\tag{3.9}
+\]">\[
+\lambda^\alpha=\lambda_z\lambda^\beta,\qquad
+\mu^\alpha=\mu_z\mu^\beta.
+\tag{3.9}
+\]</span>
+<p>Choosing <span class="math" data-tex="\(T^\beta_n\)">\(T^\beta_n\)</span> anew as <span class="math" data-tex="\(z_nT^\beta_n\)">\(z_nT^\beta_n\)</span> makes the two characteristic pairs exactly equal. Equation (3.9) fixes the direction of this change of lifts.</p>
+<h2 id="the-real-coefficients-and-the-fixed-algebra-test"><span id="OA-MOD-NCA-04"></span><span id="oa-mod-nca-04"></span>The real coefficients and the fixed-algebra test</h2>
+<p>Write <span class="math" data-tex="\(\lambda_g(n)=\lambda((g,0),n)\)">\(\lambda_g(n)=\lambda((g,0),n)\)</span> and <span class="math" data-tex="\(d_t(n)=\lambda((e,t),n)\)">\(d_t(n)=\lambda((e,t),n)\)</span>. Since the coefficients with an identity argument are normalized, (1.3) gives</p>
+<span class="math math-display" data-tex="\[
+\vartheta_t(T_n)=d_t(n)T_n.
+\tag{4.1}
+\]">\[
+\vartheta_t(T_n)=d_t(n)T_n.
+\tag{4.1}
+\]</span>
+<p>Applying two flow times, applying the flow to the first equation of (1.3), and commuting it past <span class="math" data-tex="\(\widetilde a_g\)">\(\widetilde a_g\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d_{s+t}(n)&amp;=\vartheta_s(d_t(n))d_s(n),\\
+d_t(m)d_t(n)\mu(m,n)
+&amp;=\vartheta_t(\mu(m,n))d_t(mn),\\
+\vartheta_t(\lambda_g(n))d_t(n)
+&amp;=\rho_{(g,0)}(d_t(g^{-1}ng))\lambda_g(n).
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+d_{s+t}(n)&amp;=\vartheta_s(d_t(n))d_s(n),\\
+d_t(m)d_t(n)\mu(m,n)
+&amp;=\vartheta_t(\mu(m,n))d_t(mn),\\
+\vartheta_t(\lambda_g(n))d_t(n)
+&amp;=\rho_{(g,0)}(d_t(g^{-1}ng))\lambda_g(n).
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>In the second line <span class="math" data-tex="\(\vartheta_t(v(m,n))=v(m,n)\)">\(\vartheta_t(v(m,n))=v(m,n)\)</span>; in the third it also fixes <span class="math" data-tex="\(\delta(g,n)\)">\(\delta(g,n)\)</span>. Cancel the common implementing unitaries in each calculation. This proves the identities without a trivial-subgroup-cocycle assumption.</p>
+<p>The entire extended coefficient is</p>
+<span class="math math-display" data-tex="\[
+\lambda((g,t),n)
+=\vartheta_t(\lambda_g(n))d_t(n)
+=\rho_{(g,0)}(d_t(g^{-1}ng))\lambda_g(n).
+\tag{4.3}
+\]">\[
+\lambda((g,t),n)
+=\vartheta_t(\lambda_g(n))d_t(n)
+=\rho_{(g,0)}(d_t(g^{-1}ng))\lambda_g(n).
+\tag{4.3}
+\]</span>
+<p>Both expressions follow by applying the commuting maps <span class="math" data-tex="\(\vartheta_t,\widetilde a_g\)">\(\vartheta_t,\widetilde a_g\)</span> in the two orders to <span class="math" data-tex="\(T_{g^{-1}ng}\)">\(T_{g^{-1}ng}\)</span>. Under the change <span class="math" data-tex="\(T&#x27;_n=z_nT_n\)">\(T&#x27;_n=z_nT_n\)</span>, formula (4.1) becomes</p>
+<span class="math math-display" data-tex="\[
+d&#x27;_t(n)=\vartheta_t(z_n)z_n^*d_t(n).
+\tag{4.4}
+\]">\[
+d&#x27;_t(n)=\vartheta_t(z_n)z_n^*d_t(n).
+\tag{4.4}
+\]</span>
+<p>Thus equality of the extended characteristic pairs in (3.9) aligns the real coefficients as well as the discrete ones.</p>
+<p>If two implementing families <span class="math" data-tex="\(T^\alpha_n,T^\beta_n\)">\(T^\alpha_n,T^\beta_n\)</span> have the same <span class="math" data-tex="\(d_t(n)\)">\(d_t(n)\)</span>, their quotients</p>
+<span class="math math-display" data-tex="\[
+q_n=T^\alpha_nT_n^{\beta*}
+\tag{4.5}
+\]">\[
+q_n=T^\alpha_nT_n^{\beta*}
+\tag{4.5}
+\]</span>
+<p>are fixed by the flow. Indeed
+<span class="math" data-tex="\(\vartheta_t(q_n)=d_t(n)q_nd_t(n)^*=q_n\)">\(\vartheta_t(q_n)=d_t(n)q_nd_t(n)^*=q_n\)</span>, since <span class="math" data-tex="\(d_t(n)\)">\(d_t(n)\)</span> is central. The fixed-algebra theorem LP01 therefore gives <span class="math" data-tex="\(q_n\in\mathcal U(M)\)">\(q_n\in\mathcal U(M)\)</span>. This is the membership step needed for perturbing the original actions.</p>
+<p><img src="assets/characteristic-classes-and-subgroup-alignment.svg" alt="From characteristic classes to exactly aligned subgroup data" /></p>
+<p>The central change aligns the discrete and real coefficients simultaneously. The quotient of the resulting core implementers lies in the original algebra, and Sections 5–6 show exactly which data its cochain perturbation preserves.</p>
+<h2 id="invariance-under-an-arbitrary-unitary-cochain"><span id="OA-MOD-NCA-05"></span><span id="oa-mod-nca-05"></span>Invariance under an arbitrary unitary cochain</h2>
+<p>Let <span class="math" data-tex="\(r_g\in\mathcal U(M)\)">\(r_g\in\mathcal U(M)\)</span> be any normalized family, <span class="math" data-tex="\(r_e=1\)">\(r_e=1\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+a&#x27;_g=\operatorname{Ad}r_g\,a_g,\qquad
+v&#x27;(g,h)=r_ga_g(r_h)v(g,h)r_{gh}^*.
+\tag{5.1}
+\]">\[
+a&#x27;_g=\operatorname{Ad}r_g\,a_g,\qquad
+v&#x27;(g,h)=r_ga_g(r_h)v(g,h)r_{gh}^*.
+\tag{5.1}
+\]</span>
+<p>The normalized cocycle-action equations follow by the cochain calculation in QCA01, also written explicitly in TSI01. There is no hypothesis that <span class="math" data-tex="\(r\)">\(r\)</span> is a genuine 1-cocycle.</p>
+<p>By MCC01 the extended maps are
+<span class="math" data-tex="\(\widetilde a&#x27;_g=\operatorname{Ad}r_g\,\widetilde a_g\)">\(\widetilde a&#x27;_g=\operatorname{Ad}r_g\,\widetilde a_g\)</span>. They have the same core-inner kernel and the same action on <span class="math" data-tex="\(C\)">\(C\)</span>. The natural implementers on <span class="math" data-tex="\(N\)">\(N\)</span> are</p>
+<span class="math math-display" data-tex="\[
+T&#x27;_n=r_nT_n.
+\tag{5.2}
+\]">\[
+T&#x27;_n=r_nT_n.
+\tag{5.2}
+\]</span>
+<p>We prove that their <span class="math" data-tex="\(\mu,\lambda,d\)">\(\mu,\lambda,d\)</span> are exactly those of <span class="math" data-tex="\(T_n\)">\(T_n\)</span>.</p>
+<p>First,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&#x27;_mT&#x27;_n
+&amp;=r_ma_m(r_n)T_mT_n\\
+&amp;=\mu(m,n)r_ma_m(r_n)v(m,n)T_{mn}\\
+&amp;=\mu(m,n)v&#x27;(m,n)T&#x27;_{mn}.
+\end{aligned}
+\tag{5.3}
+\]">\[
+\begin{aligned}
+T&#x27;_mT&#x27;_n
+&amp;=r_ma_m(r_n)T_mT_n\\
+&amp;=\mu(m,n)r_ma_m(r_n)v(m,n)T_{mn}\\
+&amp;=\mu(m,n)v&#x27;(m,n)T&#x27;_{mn}.
+\end{aligned}
+\tag{5.3}
+\]</span>
+<p>Second, put <span class="math" data-tex="\(l=g^{-1}ng\)">\(l=g^{-1}ng\)</span>. Expanding the two coefficients defining <span class="math" data-tex="\(\delta&#x27;\)">\(\delta&#x27;\)</span>, and using <span class="math" data-tex="\(gl=ng\)">\(gl=ng\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\delta&#x27;(g,n)
+=r_ga_g(r_l)\delta(g,n)a_n(r_g^*)r_n^*.
+\tag{5.4}
+\]">\[
+\delta&#x27;(g,n)
+=r_ga_g(r_l)\delta(g,n)a_n(r_g^*)r_n^*.
+\tag{5.4}
+\]</span>
+<p>The terminal factors <span class="math" data-tex="\(r_{ng}^*r_{ng}\)">\(r_{ng}^*r_{ng}\)</span> cancel; this is why there is no additional terminal coefficient in (5.4). Since <span class="math" data-tex="\(r_l\)">\(r_l\)</span> is flow-fixed, for <span class="math" data-tex="\(x=(g,t)\)">\(x=(g,t)\)</span> we obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b&#x27;_x(T&#x27;_l)
+&amp;=r_ga_g(r_l)b_x(T_l)r_g^*\\
+&amp;=\lambda(x,n)r_ga_g(r_l)\delta(g,n)T_nr_g^*\\
+&amp;=\lambda(x,n)\delta&#x27;(g,n)T&#x27;_n.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+b&#x27;_x(T&#x27;_l)
+&amp;=r_ga_g(r_l)b_x(T_l)r_g^*\\
+&amp;=\lambda(x,n)r_ga_g(r_l)\delta(g,n)T_nr_g^*\\
+&amp;=\lambda(x,n)\delta&#x27;(g,n)T&#x27;_n.
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>In the last line use <span class="math" data-tex="\(T_nr_g^*=a_n(r_g^*)T_n\)">\(T_nr_g^*=a_n(r_g^*)T_n\)</span>. Finally <span class="math" data-tex="\(r_n\in M\)">\(r_n\in M\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\vartheta_t(T&#x27;_n)=r_n d_t(n)T_n=d_t(n)T&#x27;_n.
+\tag{5.6}
+\]">\[
+\vartheta_t(T&#x27;_n)=r_n d_t(n)T_n=d_t(n)T&#x27;_n.
+\tag{5.6}
+\]</span>
+<p>These are the three required equalities. They prove invariance of <span class="math" data-tex="\(\chi_N\)">\(\chi_N\)</span> under arbitrary cochains with the transformed cocycle (5.1).</p>
+<p>Normal conjugacy has an equally explicit effect. If <span class="math" data-tex="\(\theta\in\operatorname{Aut}(M)\)">\(\theta\in\operatorname{Aut}(M)\)</span>, transport <span class="math" data-tex="\(a,v\)">\(a,v\)</span> by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and choose core implementers <span class="math" data-tex="\(\widetilde\theta(T_n)\)">\(\widetilde\theta(T_n)\)</span>. Functoriality from MCC01 transports every equation (1.3), and <span class="math" data-tex="\(\widetilde\theta\)">\(\widetilde\theta\)</span> commutes with the dual flow. With <span class="math" data-tex="\(\tau=\widetilde\theta|_C\)">\(\tau=\widetilde\theta|_C\)</span>, the new data are</p>
+<span class="math math-display" data-tex="\[
+\rho&#x27;=\tau\rho\tau^{-1},\qquad
+\mu&#x27;=\tau(\mu),\qquad
+\lambda&#x27;=\tau(\lambda),\qquad d&#x27;=\tau(d).
+\tag{5.7}
+\]">\[
+\rho&#x27;=\tau\rho\tau^{-1},\qquad
+\mu&#x27;=\tau(\mu),\qquad
+\lambda&#x27;=\tau(\lambda),\qquad d&#x27;=\tau(d).
+\tag{5.7}
+\]</span>
+<p>Applying <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to (3.6) also transports the coboundaries, so (5.7) acts on characteristic classes.</p>
+<p>If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is approximately inner, <span class="math" data-tex="\(\tau=\mathrm{id}\)">\(\tau=\mathrm{id}\)</span>. To see this, choose a net of inner automorphisms converging to <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Their canonical extensions are inner and fix <span class="math" data-tex="\(C\)">\(C\)</span>. MCC01 gives u-convergence of the extensions and hence pointwise ultraweak convergence; their limit fixes each central element. Equations (5.1)–(5.7) consequently prove necessity of equal core-inner kernels, equal modules and equal characteristic classes for strong cocycle conjugacy.</p>
+<h2 id="exact-alignment-on-the-normal-subgroup"><span id="OA-MOD-NCA-06"></span><span id="oa-mod-nca-06"></span>Exact alignment on the normal subgroup</h2>
+<p>Let <span class="math" data-tex="\((\alpha,v^\alpha)\)">\((\alpha,v^\alpha)\)</span> and <span class="math" data-tex="\((\beta,v^\beta)\)">\((\beta,v^\beta)\)</span> be normalized cocycle actions on the same <span class="math" data-tex="\(M\)">\(M\)</span>. Suppose that <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> is core-inner for both, their core actions on <span class="math" data-tex="\(C\)">\(C\)</span> coincide, and</p>
+<span class="math math-display" data-tex="\[
+\chi_N(\alpha,v^\alpha)=\chi_N(\beta,v^\beta).
+\tag{6.1}
+\]">\[
+\chi_N(\alpha,v^\alpha)=\chi_N(\beta,v^\beta).
+\tag{6.1}
+\]</span>
+<p>The common core-centre action and the common dual flow give the same <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, so (6.1) is equality in one quotient group.</p>
+<p><strong>Alignment theorem.</strong> There is a normalized full cochain <span class="math" data-tex="\(q_g\in\mathcal U(M)\)">\(q_g\in\mathcal U(M)\)</span> such that <span class="math" data-tex="\((\beta&#x27;,v^{\beta&#x27;})=q\cdot(\beta,v^\beta)\)">\((\beta&#x27;,v^{\beta&#x27;})=q\cdot(\beta,v^\beta)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\beta&#x27;_n=\alpha_n,\qquad
+v^{\beta&#x27;}(m,n)=v^\alpha(m,n)
+\quad(m,n\in N).
+\tag{6.2}
+\]">\[
+\beta&#x27;_n=\alpha_n,\qquad
+v^{\beta&#x27;}(m,n)=v^\alpha(m,n)
+\quad(m,n\in N).
+\tag{6.2}
+\]</span>
+<p>The two actions have common core implementers on <span class="math" data-tex="\(N\)">\(N\)</span> and exactly equal characteristic coefficients for those implementers.</p>
+<p><strong>Proof.</strong> Use (3.9) to replace the <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-implementers so that</p>
+<span class="math math-display" data-tex="\[
+\mu^\alpha=\mu^\beta,\qquad
+\lambda^\alpha=\lambda^\beta,\qquad
+d^\alpha=d^\beta
+\tag{6.3}
+\]">\[
+\mu^\alpha=\mu^\beta,\qquad
+\lambda^\alpha=\lambda^\beta,\qquad
+d^\alpha=d^\beta
+\tag{6.3}
+\]</span>
+<p>hold exactly. The third equality is the real restriction of the second. For <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, set <span class="math" data-tex="\(q_n=T^\alpha_nT_n^{\beta*}\)">\(q_n=T^\alpha_nT_n^{\beta*}\)</span>. Section 4 gives <span class="math" data-tex="\(q_n\in M\)">\(q_n\in M\)</span>, and <span class="math" data-tex="\(q_e=1\)">\(q_e=1\)</span>. The two implementing identities immediately give
+<span class="math" data-tex="\(\alpha_n=\operatorname{Ad}q_n\,\beta_n\)">\(\alpha_n=\operatorname{Ad}q_n\,\beta_n\)</span>.</p>
+<p>For the coefficients, calculate in the core:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;q_m\beta_m(q_n)v^\beta(m,n)q_{mn}^*\\
+&amp;\quad=T^\alpha_mT^\alpha_n
+\bigl(T_n^{\beta*}T_m^{\beta*}
+v^\beta(m,n)T^\beta_{mn}\bigr)T_{mn}^{\alpha*}\\
+&amp;\quad=\mu(m,n)^*T^\alpha_mT^\alpha_nT_{mn}^{\alpha*}
+=v^\alpha(m,n).
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+&amp;q_m\beta_m(q_n)v^\beta(m,n)q_{mn}^*\\
+&amp;\quad=T^\alpha_mT^\alpha_n
+\bigl(T_n^{\beta*}T_m^{\beta*}
+v^\beta(m,n)T^\beta_{mn}\bigr)T_{mn}^{\alpha*}\\
+&amp;\quad=\mu(m,n)^*T^\alpha_mT^\alpha_nT_{mn}^{\alpha*}
+=v^\alpha(m,n).
+\end{aligned}
+\tag{6.4}
+\]</span>
+<p>The parenthesis is <span class="math" data-tex="\(\mu(m,n)^*\)">\(\mu(m,n)^*\)</span> by the first line of (1.3). This proves the second identity in (6.2), with the full subgroup cocycle retained.</p>
+<p>Extend <span class="math" data-tex="\(q_n\)">\(q_n\)</span> to <span class="math" data-tex="\(G\)">\(G\)</span> by taking <span class="math" data-tex="\(q_g=1\)">\(q_g=1\)</span> for <span class="math" data-tex="\(g\notin N\)">\(g\notin N\)</span>. Formula (5.1) defines a full normalized cocycle action. Its natural core implementers on <span class="math" data-tex="\(N\)">\(N\)</span> are</p>
+<span class="math math-display" data-tex="\[
+T^{\beta&#x27;}_n=q_nT^\beta_n=T^\alpha_n.
+\tag{6.5}
+\]">\[
+T^{\beta&#x27;}_n=q_nT^\beta_n=T^\alpha_n.
+\tag{6.5}
+\]</span>
+<p>Section 5 proves that their characteristic coefficients remain the <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-coefficients in (6.3). Hence these are exactly the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-coefficients for the common implementers (6.5). This proves every assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The aligning family is a cochain. Equation (6.4), which includes <span class="math" data-tex="\(v^\beta\)">\(v^\beta\)</span> and <span class="math" data-tex="\(v^\alpha\)">\(v^\alpha\)</span>, is its precise equation; it is not replaced by the genuine-cocycle equation <span class="math" data-tex="\(q_m\beta_m(q_n)=q_{mn}\)">\(q_m\beta_m(q_n)=q_{mn}\)</span>.</p>
+<h2 id="applying-intertwining-and-returning-to-the-original-actions"><span id="OA-MOD-NCA-07"></span><span id="oa-mod-nca-07"></span>Applying intertwining and returning to the original actions</h2>
+<p>We now give the consequence at explicit analytic hypotheses.</p>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a factor with separable predual, <span class="math" data-tex="\(F=M_\omega\)">\(F=M_\omega\)</span> of type II, and <span class="math" data-tex="\(G\)">\(G\)</span> countable. Suppose the two normalized cocycle actions have a common core-inner kernel <span class="math" data-tex="\(N\)">\(N\)</span>, which is also the centrally trivial kernel of each action on <span class="math" data-tex="\(F\)">\(F\)</span>. Suppose <span class="math" data-tex="\(G/N\)">\(G/N\)</span> is amenable, their core-centre actions coincide, and</p>
+<span class="math math-display" data-tex="\[
+\alpha_g\beta_g^{-1}\in\overline{\operatorname{Int}(M)}
+\quad(g\in G).
+\tag{7.1}
+\]">\[
+\alpha_g\beta_g^{-1}\in\overline{\operatorname{Int}(M)}
+\quad(g\in G).
+\tag{7.1}
+\]</span>
+<p>Then equality of their characteristic classes is equivalent to strong cocycle conjugacy.</p>
+<p><strong>Proof of sufficiency.</strong> The alignment theorem produces <span class="math" data-tex="\(\beta&#x27;=q\cdot\beta\)">\(\beta&#x27;=q\cdot\beta\)</span> with exact common subgroup maps, cocycle and core implementers. The inner perturbation preserves the core-centre action and the centrally trivial kernel: inner automorphisms act trivially on <span class="math" data-tex="\(F\)">\(F\)</span>, as used and proved in the TSI01 setup. Also</p>
+<span class="math math-display" data-tex="\[
+\alpha_g(\beta&#x27;_g)^{-1}
+=(\alpha_g\beta_g^{-1})\operatorname{Ad}q_g^*
+\in\overline{\operatorname{Int}(M)}.
+\tag{7.2}
+\]">\[
+\alpha_g(\beta&#x27;_g)^{-1}
+=(\alpha_g\beta_g^{-1})\operatorname{Ad}q_g^*
+\in\overline{\operatorname{Int}(M)}.
+\tag{7.2}
+\]</span>
+<p>The closure is a subgroup by the topological-group proof CL01, used in TSI01. Section 6 supplies the common exact central <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for the common implementers. Thus every hypothesis of TSI01 holds.</p>
+<p>The proof TSI02–11 gives an approximately inner <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> and normalized unitaries <span class="math" data-tex="\(V_g\)">\(V_g\)</span> such that, with <span class="math" data-tex="\(A_g=\Theta\alpha_g\Theta^{-1}\)">\(A_g=\Theta\alpha_g\Theta^{-1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\beta&#x27;_g=\operatorname{Ad}V_g A_g,\qquad
+v^{\beta&#x27;}(g,h)
+=V_gA_g(V_h)\Theta(v^\alpha(g,h))V_{gh}^*.
+\tag{7.3}
+\]">\[
+\beta&#x27;_g=\operatorname{Ad}V_g A_g,\qquad
+v^{\beta&#x27;}(g,h)
+=V_gA_g(V_h)\Theta(v^\alpha(g,h))V_{gh}^*.
+\tag{7.3}
+\]</span>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+W_g=q_g^*V_g.
+\tag{7.4}
+\]">\[
+W_g=q_g^*V_g.
+\tag{7.4}
+\]</span>
+<p>Then <span class="math" data-tex="\(\beta_g=\operatorname{Ad}W_g A_g\)">\(\beta_g=\operatorname{Ad}W_g A_g\)</span>. To verify its coefficient equation, retain the order in</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;W_gA_g(W_h)\Theta(v^\alpha(g,h))W_{gh}^*\\
+&amp;\quad=q_g^*\beta&#x27;_g(q_h^*)v^{\beta&#x27;}(g,h)q_{gh}\\
+&amp;\quad=\beta_g(q_h^*)q_g^*
+q_g\beta_g(q_h)v^\beta(g,h)q_{gh}^*q_{gh}\\
+&amp;\quad=v^\beta(g,h).
+\end{aligned}
+\tag{7.5}
+\]">\[
+\begin{aligned}
+&amp;W_gA_g(W_h)\Theta(v^\alpha(g,h))W_{gh}^*\\
+&amp;\quad=q_g^*\beta&#x27;_g(q_h^*)v^{\beta&#x27;}(g,h)q_{gh}\\
+&amp;\quad=\beta_g(q_h^*)q_g^*
+q_g\beta_g(q_h)v^\beta(g,h)q_{gh}^*q_{gh}\\
+&amp;\quad=v^\beta(g,h).
+\end{aligned}
+\tag{7.5}
+\]</span>
+<p>The first equality substitutes <span class="math" data-tex="\(W=q^*V\)">\(W=q^*V\)</span> and (7.3); the second substitutes both equations defining <span class="math" data-tex="\(q\cdot\beta\)">\(q\cdot\beta\)</span>. This proves strong cocycle conjugacy of the original two actions.</p>
+<p><strong>Proof of necessity.</strong> Strong cocycle conjugacy is a conjugacy by an approximately inner <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, followed by a normalized unitary cochain with its transformed cocycle. Equations (5.1)–(5.7) preserve the characteristic class under those two operations. Thus the classes are equal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem states its analytic inputs explicitly. Identifying the core-inner and centrally trivial kernels throughout a proposed factor class, establishing (7.1) from module data in that class, and lifting arbitrary centre-flow automorphisms are additional mathematical results. They are not consequences of the algebraic alignment theorem.</p>
+<h2 id="models-and-exercises-with-solutions"><span id="OA-MOD-NCA-08"></span><span id="oa-mod-nca-08"></span>Models and exercises with solutions</h2>
+<p><strong>The real coefficient cannot be omitted.</strong> In the tracial matrix-core model, use</p>
+<span class="math math-display" data-tex="\[
+Q=M_d(\mathbb C)\,\bar\otimes\,L^\infty(\mathbb R),
+\qquad(\vartheta_t f)(r)=f(r+t).
+\tag{8.1}
+\]">\[
+Q=M_d(\mathbb C)\,\bar\otimes\,L^\infty(\mathbb R),
+\qquad(\vartheta_t f)(r)=f(r+t).
+\tag{8.1}
+\]</span>
+<p>Here is the identification with the continuous core, including its sign. For the matrix trace, the Tomita map <span class="math" data-tex="\(x\mapsto x^*\)">\(x\mapsto x^*\)</span> is antiunitary in the Hilbert–Schmidt norm, so its modular operator is 1. The regular core representation in LP01 therefore has constant matrix operators and scalar translations <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span>; its generated algebra is <span class="math" data-tex="\(M_d(\mathbb C)\bar\otimes\operatorname{VN}(\mathbb R)\)">\(M_d(\mathbb C)\bar\otimes\operatorname{VN}(\mathbb R)\)</span>. <a href="OA-MOD-PF.html#oa-mod-pf-19">PF19–21</a> identify the second factor with the entire multiplication algebra on the character group. <a href="OA-MOD-PF.html#oa-mod-pf-25">PF25</a> gives the real coordinate, rescaled here so that <span class="math" data-tex="\(\lambda_s\)">\(\lambda_s\)</span> becomes <span class="math" data-tex="\(e^{-irs}\)">\(e^{-irs}\)</span>. Translation <span class="math" data-tex="\(r\mapsto r+t\)">\(r\mapsto r+t\)</span> sends this generator to <span class="math" data-tex="\(e^{-its}e^{-irs}\)">\(e^{-its}e^{-irs}\)</span>, exactly the dual-flow convention of LP01. The two normal automorphisms thus agree on all generators, proving (8.1). The constant matrix algebra is the original algebra, and LP01 identifies it with <span class="math" data-tex="\(Q^\vartheta\)">\(Q^\vartheta\)</span>.</p>
+<p>Let <span class="math" data-tex="\(G=N=\mathbb Z\)">\(G=N=\mathbb Z\)</span>, and take both actions to be identity with cocycle 1. Choose two implementing families</p>
+<span class="math math-display" data-tex="\[
+T^\alpha_n(r)=e^{inr}1,\qquad T^\beta_n(r)=1.
+\tag{8.2}
+\]">\[
+T^\alpha_n(r)=e^{inr}1,\qquad T^\beta_n(r)=1.
+\tag{8.2}
+\]</span>
+<p>Their multiplication phases and discrete conjugation phases are all 1. Their real coefficients are</p>
+<span class="math math-display" data-tex="\[
+d^\alpha_t(n)=e^{int},\qquad d^\beta_t(n)=1.
+\tag{8.3}
+\]">\[
+d^\alpha_t(n)=e^{int},\qquad d^\beta_t(n)=1.
+\tag{8.3}
+\]</span>
+<p>For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, the unadjusted quotient <span class="math" data-tex="\(e^{inr}1\)">\(e^{inr}1\)</span> is not fixed by every translation and does not belong to the original matrix algebra. The central change <span class="math" data-tex="\(z_n(r)=e^{inr}1\)">\(z_n(r)=e^{inr}1\)</span> makes the <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-implementers equal to the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-implementers; it changes the real coefficients by exactly (4.4). The extended classes are equal, as they must be for identical actions, but the real part of the change of lifts is essential for the membership argument.</p>
+<p><strong>A cochain that is not a genuine cocycle.</strong> Let <span class="math" data-tex="\(G=N=\mathbb Z/2\mathbb Z\)">\(G=N=\mathbb Z/2\mathbb Z\)</span> and choose unitaries <span class="math" data-tex="\(a,b\in M_d(\mathbb C)\)">\(a,b\in M_d(\mathbb C)\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\alpha_1=\operatorname{Ad}a,\quad
+\beta_1=\operatorname{Ad}b,\quad
+v^\alpha(1,1)=a^2,\quad v^\beta(1,1)=b^2,
+\tag{8.4}
+\]">\[
+\alpha_1=\operatorname{Ad}a,\quad
+\beta_1=\operatorname{Ad}b,\quad
+v^\alpha(1,1)=a^2,\quad v^\beta(1,1)=b^2,
+\tag{8.4}
+\]</span>
+<p>with identity normalization elsewhere. These are cocycle actions: they arise from the unitary families <span class="math" data-tex="\(a_0=b_0=1,a_1=a,b_1=b\)">\(a_0=b_0=1,a_1=a,b_1=b\)</span>, with coefficients <span class="math" data-tex="\(a_ga_ha_{g+h}^*\)">\(a_ga_ha_{g+h}^*\)</span> and <span class="math" data-tex="\(b_gb_hb_{g+h}^*\)">\(b_gb_hb_{g+h}^*\)</span>; associativity cancels the intermediate factors in (1.1). Choose core implementers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, whose characteristic phases are all 1. The alignment is <span class="math" data-tex="\(q_1=ab^*\)">\(q_1=ab^*\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+q_1\beta_1(q_1)=a^2b^{*2},\qquad
+q_1\beta_1(q_1)v^\beta(1,1)=a^2.
+\tag{8.5}
+\]">\[
+q_1\beta_1(q_1)=a^2b^{*2},\qquad
+q_1\beta_1(q_1)v^\beta(1,1)=a^2.
+\tag{8.5}
+\]</span>
+<p>If <span class="math" data-tex="\(a^2\ne b^2\)">\(a^2\ne b^2\)</span>, the first expression is not <span class="math" data-tex="\(q_0=1\)">\(q_0=1\)</span>, but the second is exactly the required transformed cocycle. The matrix example illustrates the algebraic alignment theorem; it has no type II centralizing quotient and does not illustrate the analytic hypotheses of Section 7.</p>
+<p><strong>Exercise 1. The order in the twisted product.</strong> Verify that (2.7) has first coordinate <span class="math" data-tex="\(T_n^*T_m^*v(m,n)\)">\(T_n^*T_m^*v(m,n)\)</span>, rather than <span class="math" data-tex="\(T_m^*T_n^*v(m,n)\)">\(T_m^*T_n^*v(m,n)\)</span>.</p>
+<p><strong>Solution.</strong> Formula (2.1) gives <span class="math" data-tex="\(T_m^*\widetilde a_m(T_n^*)v(m,n)\)">\(T_m^*\widetilde a_m(T_n^*)v(m,n)\)</span>. Since <span class="math" data-tex="\(\widetilde a_m=\operatorname{Ad}T_m\)">\(\widetilde a_m=\operatorname{Ad}T_m\)</span>, the first two factors are <span class="math" data-tex="\(T_m^*T_mT_n^*T_m^*=T_n^*T_m^*\)">\(T_m^*T_mT_n^*T_m^*=T_n^*T_m^*\)</span>. Taking the adjoint of <span class="math" data-tex="\(T_mT_n=\mu vT_{mn}\)">\(T_mT_n=\mu vT_{mn}\)</span> now gives the multiplier <span class="math" data-tex="\(\mu^*\)">\(\mu^*\)</span> in this first coordinate, which is <span class="math" data-tex="\(\iota(\mu)\)">\(\iota(\mu)\)</span> under (2.5).</p>
+<p><strong>Exercise 2. Why the entire extended class?</strong> Which exact equality puts <span class="math" data-tex="\(q_n\)">\(q_n\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>?</p>
+<p><strong>Solution.</strong> Equality of the real coefficients gives <span class="math" data-tex="\(\vartheta_t(q_n)=d_t(n)q_nd_t(n)^*=q_n\)">\(\vartheta_t(q_n)=d_t(n)q_nd_t(n)^*=q_n\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. Centrality gives the last equality; LP01 identifies the fixed algebra. Equality of only the discrete <span class="math" data-tex="\(\lambda_g\)">\(\lambda_g\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> does not justify this step, as (8.2)–(8.3) show.</p>
+<p><strong>Exercise 3. Undoing the alignment.</strong> Explain why the final family is <span class="math" data-tex="\(W_g=q_g^*V_g\)">\(W_g=q_g^*V_g\)</span>.</p>
+<p><strong>Solution.</strong> From <span class="math" data-tex="\(\operatorname{Ad}q_g\,\beta_g=\operatorname{Ad}V_g A_g\)">\(\operatorname{Ad}q_g\,\beta_g=\operatorname{Ad}V_g A_g\)</span>, multiplying the implementing factors on the left by <span class="math" data-tex="\(q_g^*\)">\(q_g^*\)</span> gives <span class="math" data-tex="\(\beta_g=\operatorname{Ad}(q_g^*V_g)A_g\)">\(\beta_g=\operatorname{Ad}(q_g^*V_g)A_g\)</span>. The noncommutative coefficient calculation (7.5) verifies the same order for both cocycles. Reversing it is not justified by the automorphism equation.</p>
+<p><strong>Exercise 4. A subgroup smaller than the full kernel.</strong> Identify what changes in Sections 1–6 if <span class="math" data-tex="\(N\)">\(N\)</span> is only a normal subgroup of the core-inner kernel.</p>
+<p><strong>Solution.</strong> Nothing in those proofs uses maximality of <span class="math" data-tex="\(N\)">\(N\)</span>. Normality keeps <span class="math" data-tex="\(g^{-1}ng\)">\(g^{-1}ng\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>, and innerness supplies <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. The extension, central changes, fixed-algebra quotient and cochain alignment therefore remain valid for the relative characteristic class <span class="math" data-tex="\(\chi_N\)">\(\chi_N\)</span>. Section 7 separately requires its specified <span class="math" data-tex="\(N\)">\(N\)</span> to be the full core-inner and centrally trivial kernel.</p>
+<p>Free primary comparison source: Toshihiko Masuda, <em>Unified approach to classification of actions of discrete amenable groups on injective factors</em>, <a href="https://arxiv.org/abs/1006.1176">arXiv:1006.1176</a>, Section 2 and Lemma 3.1, PDF pages 3–6. The proofs above construct the characteristic extension, establish arbitrary-cochain invariance and exact subgroup alignment, and apply the earlier intertwining proof at its stated analytic hypotheses.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

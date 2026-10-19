@@ -389,3 +389,303 @@ It extends by completeness to an isometry on \(L\otimes K\). Every rank-one imag
 Nondegeneracy and finite-rank density make the range dense, while isometry makes it closed; hence \(W\) is onto. Subsequent vector-domain recovery intertwines both original unitary actions. For an arbitrary orthonormal basis the resulting coordinate projections sum strongly over finite subsets, not through an assumed countable sequence. The zero system is represented by \(K=0\).
 
 The original [renderer and exact checker](../assets/general-lca-weyl-multiplicity/render_weyl_multiplicity.py) verifies all 625 finite matrix-unit products, all 25 adjoints, all 125 modular phase identities and all ten basis images. The stored floating-point selector error is a cross-check of the exact geometric-sum proof. The PNG, SVG and [integer data](../assets/general-lca-weyl-multiplicity/figures/weyl-multiplicity-data.json) are reproducible. The diagram and caption are original CC0 expression. The human-source comparison is Rieffel's [complete author-hosted 1974 paper](https://math.berkeley.edu/~rieffel/papers/rieffel-C-induced.pdf), printed231–232 and239–240, for the rank-one/module mechanism; every assertion used in the diagram is proved in the linked local body.
+
+<a id="wy-left-convention"></a>
+## WY7. Left translations, conjugate characters and multiplier recovery
+
+There is a useful second realization of the same positive-sign relation. On \(L=L^2(G)\), put
+\[
+ (L_s\xi)(r)=\xi(r-s),\qquad
+ (Q_\chi\xi)(r)=\overline{\chi(r)}\xi(r),\qquad
+ (J\xi)(r)=\xi(-r).
+ \tag{WM1}
+\]
+Here \(J\) is complex linear. Inversion preserves Haar measure on an abelian group, by L24, so \(J\) is a selfadjoint unitary. Direct substitution gives
+\[
+ J\rho_sJ=L_s,\qquad JM_\chi J=Q_\chi,\qquad
+ L_sQ_\chi L_s^*=\chi(s)Q_\chi .
+ \tag{WM2}
+\]
+Indeed the last multiplier is
+\(\overline{\chi(r-s)}=\chi(s)\overline{\chi(r)}\).
+Strong continuity follows from WY0 by conjugation; it also follows directly from L24's translation estimate and the compact-support character estimate (WY4). No inversion of a group parameter is implicit in (WM2).
+
+For a Weyl pair \((U,V)\), let \(\pi_+\) be the representation (WY8), and define
+\[
+ \pi_-(a)=\pi_+(a(-\,\cdot)),\qquad
+ q_-g(r)=\int_{\widehat G}g(\chi)\overline{\chi(r)}\,d\chi .
+ \tag{WM3}
+\]
+Reflection is an isometric star automorphism of \(C_0(G)\). Thus \(\pi_-\) is nondegenerate,
+\(\pi_-(q_-g)=V(g)\), and the \(q_-g\)'s are uniformly dense in \(C_0(G)\), by WY1. Its exact covariance is
+\[
+ U_s\pi_-(a)U_s^*=\pi_-(\beta_s a),\qquad
+             (\beta_s a)(r)=a(r-s).
+ \tag{WM4}
+\]
+To check the sign, the right side transported through reflection is
+\(a(-r-s)\), which is the right-translation covariance of
+\(\pi_+\) applied to \(a(-r)\).
+
+The character functions need not vanish at infinity. We therefore construct their multiplier action, rather than treat them as elements of \(C_0(G)\). Let \(0\leq e_i\leq1\) be compact cutoffs forming a \(C_0(G)\) approximate identity. For \(a\in C_b(G)\), the operators \(\pi_-(ae_i)\) have norm at most \(\|a\|_\infty\). On each generating vector,
+\[
+ \pi_-(ae_i)\pi_-(b)h
+       =\pi_-(ae_i b)h\longrightarrow\pi_-(ab)h
+       \qquad(b\in C_0(G)).
+ \tag{WM5}
+\]
+They converge on the dense span of these vectors and hence strongly on all of \(H\): approximate an arbitrary vector by one in that span and use the common norm bound. Write the limit as \(\widetilde\pi_-(a)\). Formula (WM5) proves independence of the cutoffs and uniqueness among bounded operators with this action on the generating vectors. It also proves multiplication and linearity. Applying the same construction to \(\overline a\), and passing to inner products in
+\(\pi_-(ae_i)^*=\pi_-(\overline a e_i)\), proves the adjoint law. Nondegeneracy gives \(\widetilde\pi_-(1)=1_H\). This is the unique unital star extension to \(C_b(G)\), since any extension must satisfy (WM5).
+
+For a fixed character \(\chi\), set
+\(g_\chi(\eta)=g(\chi^{-1}\eta)\) on the dual group. Haar substitution and the representation law give
+\[
+ q_-g_\chi=\overline\chi\,q_-g,\qquad
+ V(g_\chi)=V_\chi V(g).
+ \tag{WM6}
+\]
+First use \(b=q_-g\) in (WM5), then its uniform density and nondegeneracy. It follows that
+\[
+                    \widetilde\pi_-(\overline\chi)=V_\chi.
+ \tag{WM7}
+\]
+This also verifies the multiplier convention without a spectral-measure uniqueness theorem.
+
+In the canonical model, integrating the \(Q_\chi\)'s gives \(M_{q_-g}\). Any operator commuting with all \(Q_\chi\) commutes with these vector integrals, and their uniform closure contains every \(M_a\), \(a\in C_0(G)\). Conversely
+\(M_{\overline\chi e_i}\to Q_\chi\) strongly, since compact cutoffs converge strongly on \(L^2(G)\), first on \(C_c(G)\) and then by density. Consequently
+\[
+       \{Q_\chi:\chi\in\widehat G\}''
+          =\{M_a:a\in C_0(G)\}'' .
+ \tag{WM8}
+\]
+These arguments use only finite-exponent Haar integration and bounded cutoff nets.
+
+Finally, if \(W_+\) is the onto unitary of WY3–WY4, put
+\[
+ W_-=W_+(J\otimes1_K).
+\]
+Then
+\[
+ U_sW_-=W_-(L_s\otimes1_K),\quad
+ V_\chi W_-=W_-(Q_\chi\otimes1_K),\quad
+ \pi_-(a)W_-=W_-(M_a\otimes1_K).
+ \tag{WM9}
+\]
+All three equalities follow by substituting (WM2)–(WM3) into (WY24)–(WY25). The map is onto, and \(K\) is unchanged. Thus the left-translation and right-translation realizations have exactly the same multiplicity, including \(K=0\).
+
+<a id="wy-compact-kernels"></a>
+## WY8. Compact kernels, both operator orders and the generated algebra
+
+Continue with (WM3)–(WM4). For \(F\in C_c(G\times G)\), define
+\[
+ a_s^F(r)=F(r,r-s),\qquad b_s^F(q)=F(q+s,q).
+ \tag{WM10}
+\]
+If the two coordinate projections of \(\operatorname{supp}F\) are contained in compact sets \(A,B\), then \(a_s^F=0\) for \(s\notin A-B\), and every slice is supported in \(A\). The map \(s\mapsto a_s^F\) is continuous in the \(C_0\) norm. To see this at \(s_0\), restrict \(s\) to a compact neighbourhood of \(s_0\). The variables \((r,r-s)\), with \(r\in A\), then range over a compact set. Continuity at each point and a finite subcover give uniform convergence in \(r\) as \(s\to s_0\); outside \(A\) every slice is zero. This is the compact-parameter argument of L25 Section10.
+
+The integrand \(\pi_-(a_s^F)U_s h\) is norm continuous for each \(h\), has compact support in \(s\), and has norm at most
+\(\|a_s^F\|_\infty\|h\|\). L24's vector integral therefore defines a bounded operator
+\[
+ S_Fh=\int_G\pi_-(a_s^F)U_s h\,ds,\qquad
+ \|S_F\|\leq\int_G\|a_s^F\|_\infty\,ds
+          \leq m(A-B)\|F\|_\infty .
+ \tag{WM11}
+\]
+No operator-norm continuity of \(U_s\) is required. Since
+\(\beta_s(b_s^F)=a_s^F\), covariance gives the second, exactly equal order
+\[
+                 S_Fh=\int_G U_s\pi_-(b_s^F)h\,ds.
+ \tag{WM12}
+\]
+
+Define kernel composition and involution by
+\[
+ (F\star H)(r,q)=\int_G F(r,z)H(z,q)\,dz,\qquad
+ F^\sharp(r,q)=\overline{F(q,r)}.
+ \tag{WM13}
+\]
+The product has support in the product of the first projection for \(F\) and the second projection for \(H\). Its integration variable lies in the compact intersection of their other two projections. The same finite-cover continuity estimate, followed by multiplication by the finite measure of that compact intersection, proves continuity of \(F\star H\). Hence \(F\star H\in C_c(G\times G)\). The involution plainly preserves compact support and continuity. In a triple product, both intermediate variables lie in fixed compact sets; the product of the three sup norms is an integrable majorant there. L24's qualified Radon-product Fubini theorem gives associativity. Conjugation of (WM13) gives
+\((F\star H)^\sharp=H^\sharp\star F^\sharp\) and
+\((F^\sharp)^\sharp=F\).
+
+Here is the full represented product calculation. Write the second translation variable as \(t\), and then set \(v=s+t\). Covariance makes the coefficient of \(U_v\)
+\[
+ \begin{aligned}
+ \int_G a_s^F(r)(\beta_s a_{v-s}^H)(r)\,ds
+ &=\int_G F(r,r-s)H(r-s,r-v)\,ds\\
+ &=\int_G F(r,z)H(z,r-v)\,dz\\
+ &=(F\star H)(r,r-v).
+ \end{aligned}
+ \tag{WM14}
+\]
+The substitution \(z=r-s\) preserves Haar measure because \(G\) is abelian. On each vector, the original double integral has a norm majorant supported on a product of compact difference sets; therefore vector Fubini and the substitution are legitimate. For adjoints, first test an inner product against two vectors, use the scalar integral, and set \(v=-s\). The resulting coefficient is
+\[
+ (\beta_v\overline{a_{-v}^F})(r)
+       =\overline{F(r-v,r)}
+       =a_v^{F^\sharp}(r).
+\]
+Thus the actual bounded operators satisfy
+\[
+               S_FS_H=S_{F\star H},\qquad S_F^*=S_{F^\sharp}.
+ \tag{WM15}
+\]
+All product integrals here are Radon integrals on compact, hence sigma-finite, carriers; no equality of uncompleted product Borel sigma algebras is assumed.
+
+In the canonical left model, the substitution \(q=r-s\) gives
+\[
+       (S_F\xi)(r)=\int_G F(r,q)\xi(q)\,dq .
+ \tag{WM16}
+\]
+This identity is first checked on compact continuous vectors, with the preceding Fubini bounds, and then extended to every \(L^2\) vector by (WM11). In particular, for \(p,q\in C_c(G)\),
+\[
+ F_{p,q}(r,t)=p(r)\overline{q(t)},\qquad
+ S_{F_{p,q}}=\theta_{p,q},\qquad
+ \theta_{p,q}\xi=p\langle\xi,q\rangle .
+ \tag{WM17}
+\]
+In the arbitrary Weyl system, conjugating (WM11) by the already constructed \(W_-\) gives instead
+\[
+ S_F=W_-(T_F\otimes1_K)W_-^*,\qquad
+ T_{p,q}:=S_{F_{p,q}}
+       =W_-(\theta_{p,q}\otimes1_K)W_-^* ,
+ \tag{WM18}
+\]
+where \(T_F\) is the canonical kernel operator (WM16). The finite-rank norm argument and extension in WY2–WY3 therefore apply with exactly this kernel convention. Approximation in \(L^2\) extends \(T_{p,q}\) to arbitrary \(p,q\in L^2(G)\). In particular
+\[
+ \begin{split}
+ T_{p,q}T_{u,v}&=\langle u,q\rangle T_{p,v},\qquad
+ T_{p,q}^*=T_{q,p},\\
+ U_sT_{p,q}&=T_{L_sp,q},\qquad
+ V_\chi T_{p,q}=T_{Q_\chi p,q}.
+ \end{split}
+ \tag{WM19}
+\]
+These are identities on all of \(H\), not just on an algebraic tensor domain.
+
+For completeness, the compact kernels generate precisely
+\(N=\{U_s,V_\chi\}''\). First \(S_F\in N\): an operator in \(N'\) commutes with \(\pi_-(a)\), by the integrated formula and uniform density in WY7, and then commutes with (WM11). Conversely put \(\mathcal N=\{S_F:F\in C_c(G\times G)\}''\).
+For \(a,h\in C_c(G)\), the function
+\[
+                    F(r,q)=a(r)h(r-q)
+\]
+is compactly supported and gives
+\(S_F=\pi_-(a)U(h)\). The bounds on integrated representations and density extend membership in \(\mathcal N\) to \(a\in C_0(G)\), \(h\in L^1(G)\). Shrinking Haar bumps make \(U(h_i)\to1\) strongly, so \(\pi_-(a)\in\mathcal N\). Coefficient cutoffs then give \(U(h)\in\mathcal N\). Translated Haar bumps give \(U_s\in\mathcal N\) for every \(s\): their integrals are \(U_sU(h_i)\) and converge strongly to \(U_s\). Finally
+\(\pi_-(\overline\chi e_i)\to V_\chi\) strongly by (WM5)–(WM7). Thus \(N=\mathcal N\).
+
+This argument does not infer generation merely from the algebraic rank-one relations. It uses the actual nondegenerate integrated operators and their strong recovery limits. Uniform approximation of compact kernels by finite product kernels on one compact rectangle, proved in L25 Section10, also gives
+\[
+ \|S_F-S_{F_n}\|
+       \leq m(A-B)\|F-F_n\|_\infty\longrightarrow0
+ \tag{WM20}
+\]
+whenever their common rectangle is \(A\times B\). Hence the represented finite-rank algebra has the same von Neumann closure.
+
+<a id="wy-generated-corners"></a>
+## WY9. Generated-algebra corners and the multiplicity projection
+
+Assume \(H\ne0\), so that \(K\ne0\). Work through \(W_-\) on \(L\otimes K\). WY5 gives the joint commutant \(1_L\otimes B(K)\). Its commutant is exactly \(B(L)\otimes1_K\), with no countable-basis hypothesis. Here is a direct proof. Fix a unit vector \(\eta\in K\). An operator \(T\) commuting with \(1\otimes B(K)\) preserves \(L\otimes\mathbb C\eta\), because it commutes with the projection onto that space. Therefore
+\[
+                   T(\xi\otimes\eta)=A\xi\otimes\eta
+\]
+for one \(A\in B(L)\), with \(\|A\|\leq\|T\|\). Commutation with
+\(1\otimes\theta_{\zeta,\eta}\) gives
+\(T(\xi\otimes\zeta)=A\xi\otimes\zeta\) for every \(\zeta\in K\). Finite tensor sums are dense, so \(T=A\otimes1\). The reverse inclusion follows by multiplication of elementary tensors. Consequently the full generated algebra is
+\[
+        W_-^*NW_-=B(L)\otimes1_K,\qquad
+        W_-^*N'W_-=1_L\otimes B(K).
+ \tag{WM21}
+\]
+In the canonical system \(K=\mathbb C\), this proves that the Weyl pair generates all of \(B(L)\).
+
+For a unit vector \(e\in L\), the projection
+\[
+              P_e=\theta_{e,e}\otimes1_K
+ \tag{WM22}
+\]
+belongs to the generated algebra and satisfies
+\(P_e(B(L)\otimes1)P_e=\mathbb CP_e\).
+Indeed \(\theta_{e,e}A\theta_{e,e}=\langle Ae,e\rangle\theta_{e,e}\), and every scalar occurs by choosing \(A\) scalar. Thus \(P_e\) is a nonzero minimal projection of the generated algebra, even when its range has large Hilbert dimension. Its range \(e\otimes K\) is unitarily \(K\). By contrast, for a unit vector \(\eta\in K\),
+\[
+                  Q_\eta=1_L\otimes\theta_{\eta,\eta}
+ \tag{WM23}
+\]
+is minimal in the commutant, and its range \(L\otimes\eta\) is unitarily \(L\). These two projection choices recover the two different tensor factors.
+
+The center in (WM21) consists of scalars. If \(A\otimes1\) is central, \(A\) commutes with every rank-one operator on \(L\). Commutation with \(\theta_{e,e}\) gives \(Ae=ce\); commutation with \(\theta_{\xi,e}\) then gives \(A\xi=c\xi\) for every \(\xi\). This proves factoriality, and (WM22) proves that it is type I. The algebra and the multiplicity are both identified; factoriality by itself would not identify \(K\).
+
+The orientation of a rank-one corner is also explicit. Let
+\(f=\theta_{u,v}\), \(g=\theta_{p,q}\), with all four vectors nonzero. For every \(A\in B(L)\),
+\[
+ \begin{split}
+ gAf^*&=\langle Av,q\rangle\,\theta_{p,u},\\
+ g^*Af&=\langle Au,p\rangle\,\theta_{q,v}.
+ \end{split}
+ \tag{WM24}
+\]
+These follow by applying each side to a vector and using the linear-first inner product. In the first line, take \(A=\theta_{q,v}\) to obtain a nonzero coefficient; in the second take \(A=\theta_{p,u}\). Thus each full corner space is exactly one dimensional. Its normalized generator is respectively
+\(\theta_{p/\|p\|,u/\|u\|}\) or
+\(\theta_{q/\|q\|,v/\|v\|}\).
+Each is a partial isometry from the second displayed unit-vector line onto the first. Tensoring with \(1_K\) gives the corresponding corner of the full von Neumann algebra and an onto partial isometry between its image ranges.
+
+For example on \(\mathbb C^2\), with \(E_{ij}=\theta_{e_i,e_j}\),
+\[
+        f=g=E_{01},\quad A=E_{00}
+        \quad\Longrightarrow\quad g^*Af=E_{11}.
+ \tag{WM25}
+\]
+The output line is \(\mathbb Ce_1\). Every index and adjoint in this calculation determines a different initial or final line.
+
+If one rank-one input is zero, or \(H=0\), the corresponding corner is the zero space, of dimension zero. The nonzero qualifications in the one-dimensional and minimal-projection assertions are therefore necessary. The multiplicity construction itself retains the zero system as \(K=0\).
+
+<a id="wy-infinite-multiplicities"></a>
+## WY10. Two inequivalent multiplicities on the same infinite Hilbert space
+
+Let \(G=\mathbb Z\), with counting measure, and identify its dual with the circle
+\(\mathbb T\), with probability Haar measure. Write
+\(\chi_z(n)=z^n\).
+On the single Hilbert space \(\mathcal H=\ell^2(\mathbb Z)\), the first Weyl pair is
+\[
+ U_s^{(1)}\delta_k=\delta_{k+s},\qquad
+ V_z^{(1)}\delta_k=z^{-k}\delta_k.
+ \tag{WM26}
+\]
+Define the second pair by the unique decomposition \(k=2n+a\), \(a\in\{0,1\}\):
+\[
+ U_s^{(2)}\delta_{2n+a}=\delta_{2(n+s)+a},\qquad
+ V_z^{(2)}\delta_{2n+a}=z^{-n}\delta_{2n+a}.
+ \tag{WM27}
+\]
+The unitary
+\[
+ R:\ell^2(\mathbb Z)\otimes\mathbb C^2\longrightarrow\mathcal H,
+       \qquad R(\delta_n\otimes e_a)=\delta_{2n+a}
+ \tag{WM28}
+\]
+is onto because this indexing is a bijection of orthonormal bases. It identifies (WM27) with two canonical copies. For both pairs, evaluation on each basis vector gives
+\(U_s^{(j)}V_z^{(j)}=z^sV_z^{(j)}U_s^{(j)}\).
+Continuity in the discrete variable is automatic. Continuity in \(z\) holds on finite coordinate sums, and the unitary bounds extend it to every \(\ell^2\) vector. Thus these are continuous Weyl systems, not just algebraic pairs.
+
+Their ambient Hilbert spaces are identical, but their multiplicities can be recovered without cancelling infinite dimensions. Form the actual strong vector averages
+\[
+                         P^{(j)}=\int_{\mathbb T}V_z^{(j)}\,dz .
+ \tag{WM29}
+\]
+The scalar Haar integral of \(z^{-n}\) is \(1\) for \(n=0\) and \(0\) otherwise. For \(n\ne0\), choose \(w\in\mathbb T\) with \(w^{-n}\ne1\); invariance makes the integral equal to \(w^{-n}\) times itself, so it vanishes. Applying this to the basis vectors in (WM26)–(WM27), and using the bounded extension of the integrals, gives
+\[
+ \operatorname{ran}P^{(1)}=\mathbb C\delta_0,\qquad
+ \operatorname{ran}P^{(2)}
+          =\operatorname{span}\{\delta_0,\delta_1\}.
+ \tag{WM30}
+\]
+A simultaneous unitary intertwiner of the two pairs would intertwine (WM29), by bounded maps through vector integration, and hence give a unitary between these ranges. Their dimensions are one and two, a contradiction. The multiplicities are exactly one and two although both underlying Hilbert spaces have the same countably infinite dimension.
+
+In the second model, \(P^{(2)}=R(\theta_{\delta_0,\delta_0}\otimes1)R^*\) is minimal in the generated algebra and has rank two on \(\mathcal H\). The commutant projection
+\[
+ Q=R(1\otimes\theta_{e_0,e_0})R^*
+ \tag{WM31}
+\]
+is the projection onto the even coordinates. It is minimal in the commutant but has infinite-dimensional range. This is a concrete instance of the two different factor-recovery statements (WM22)–(WM23).
+
+![One and two Weyl copies on the same integer coordinate Hilbert space, with the generated-algebra and commutant projections distinguished](../assets/weyl-corner-models/infinite-multiplicity.svg)
+
+The diagram displays finite windows of infinite bases. In the lower panel, the integer \(n\) is the canonical group-coordinate label, while the physical coordinate is \(2n+a\). Translation by one moves both rows one column to the right, or two physical coordinates. The blue column is \(\operatorname{ran}P^{(2)}\), of dimension two. The orange row is a finite window of \(\operatorname{ran}Q\), whose basis continues in both directions and whose dimension is infinite. No truncation of either representation is used in the proof.

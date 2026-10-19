@@ -89,6 +89,17 @@ def write_tex(unit, pandoc):
         if result.returncode:
             raise RuntimeError(result.stderr)
         tex = bind_figures(output_file.read_text(encoding='utf-8'))
+    # Released PDFs sit at the course root; Markdown links start in src/.
+    def pdf_link(match):
+        href = match.group(1)
+        parsed = urlsplit(href)
+        if parsed.scheme or parsed.netloc or not parsed.path:
+            return match.group(0)
+        path = posixpath.normpath(posixpath.join('src', parsed.path))
+        target = path + ('?' + parsed.query if parsed.query else '')
+        target += ('#' + parsed.fragment if parsed.fragment else '')
+        return '\\href{' + target + '}'
+    tex = re.sub(r'\\href\{([^}]+)\}', pdf_link, tex)
     # amsmath requires the outer display, rather than aligned/gathered, to own a tag.
     def move_tag(match):
         inner = match.group(0)
@@ -145,10 +156,14 @@ def render_unit(unit, template, number, total, units):
     for row in unit.get('assets', []):
         generated = asset_output_path('TR-BAKER', uid, row).split('/', 2)[2]
         body = body.replace('src="' + generated + '"', 'src="' + row['source'] + '"')
-    direct = '<p class="small source-link"><a href="sources/' + uid + '.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/' + uid + '.md" download>Markdown source</a></p>'
+    downloads = []
     edition = current_pdf(unit)
     if edition is not None:
-        direct = direct[:-4] + ' · <a href="' + edition.name + '" download>PDF of this lesson</a></p>'
+        downloads.append('<a href="' + edition.name + '" download>PDF of this lesson</a>')
+    downloads += ['<a href="sources/' + uid + '.tex" download>Editable LaTeX source of this lesson</a>',
+                  '<a href="../../downloads/TR-BAKER-source.zip" download>Complete course source package</a>',
+                  '<a href="src/' + uid + '.md" download>Markdown source</a>']
+    direct = '<p class="small source-link">' + ' · '.join(downloads) + '</p>'
     document = re.sub(r'(<article class="lesson">).*?(</article>)',
                       lambda m: m.group(1) + '\n' + body + '\n' + m.group(2), template, count=1, flags=re.S)
     document = re.sub(r'<title>.*?</title>', '<title>' + html.escape(unit['title']) + ' · Linear forms in logarithms and their applications</title>', document, count=1)

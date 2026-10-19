@@ -15,15 +15,143 @@ The lesson uses two analytic theorems proved in other courses:
 - **Riemann existence:** analytification gives an equivalence between finite étale covers of any finite-type complex scheme and finite topological covering spaces of its analytic space, with no normality assumption ([The Riemann existence theorem, Theorem 2.1](course:riemann-existence-theorem/the-riemann-existence-theorem)). We use full faithfulness as well as existence; this includes group actions on covers.
 - **Projective-curve GAGA:** for a projective complex curve, analytification is an equivalence between coherent algebraic and coherent analytic sheaves ([Serre's comparison theorems and Chow's theorem, Theorems 4.1 and 5.2](course:AG-QC/serres-comparison-theorems-and-chows-theorem)), compatible with tensor products. In particular it identifies algebraic and holomorphic line bundles, their morphisms and tensor products, and hence their Picard groups.
 
-The scheme-theoretic prerequisites are finite normalization over \(\mathbf C\), the projectivity of a proper normal complex curve, and the invariance of the étale topos under nilpotent thickening. These are the same geometric foundations used in Lessons 6 and 12. Lesson 11 supplies constructible presentations, their Serre property, and filtered-cohomology continuity on a Noetherian étale site. Lessons 13–14 supply proper base change, compactification and \(Rf_!\), including their natural maps. General proper constructibility retains the stated-input status recorded in Lesson 14. Lessons 17–18 supply normalized curve and smooth duality; their exact current versions are prerequisites.
+The scheme-theoretic prerequisites are finite normalization over \(\mathbf C\), the projectivity of a proper normal complex curve, and the invariance of the étale topos under nilpotent thickening. These are the same geometric foundations used in Lessons 6 and 12. Lesson 11 supplies constructible presentations, their Serre property, and filtered-cohomology continuity on a Noetherian étale site. Lessons 13–14 supply proper base change, compactification and \(Rf_!\), including their natural maps. [Lesson 14, Theorem 12.3 and Corollary 12.4](../cohomology-with-compact-support.html#proof-of-general-constructibility) supply general constructibility and compact-support finiteness, using the exact affine-line proof provider identified there. Their finite-presentation, Noetherian-coefficient and derived-category hypotheses are retained; no invertibility restriction on torsion is added. Lessons 17–18 supply normalized curve and smooth duality; their exact current versions are prerequisites.
 
 For the ordinary comparison argument in Section 11 we also use **resolution of singularities**: a reduced finite-type complex scheme has a proper map from a smooth scheme which is an isomorphism over a dense open ([Resolution of singularities in characteristic zero, Corollary 5.1](course:resolution-of-singularities-in-characteristic-zero/principalization-and-resolution)). The proper-support proof, Sections 5–9, does not use it.
 
-The classical topological and analytic facts used are proved in the following lessons. Duality and dimension for the sheaf cohomology of manifolds, including compactly supported cohomology computed by extension by zero into a compact space, are Corollaries 5.1 and 5.2 and Theorem 4.1 of [Sheaf cohomology and singular cohomology on manifolds](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds); complex manifolds carry their canonical orientation by [Orientations and fundamental classes, Corollary 3.5](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes). A compact smooth manifold has a finite compatible triangulation by [Smooth triangulations and the integral PL obstruction, Theorem N.1](course:DG-CHAR/DG-CHAR-15C). The universal coefficient sequence is [Thom classes and Euler classes, Theorem 5.2](course:DG-CHAR/DG-CHAR-06). Coherent cohomology of an \(n\)-dimensional complex manifold vanishes above degree \(n\) by [The Dolbeault complex, Corollary 3.3](course:complex-analytic-spaces-and-coherent-sheaves/the-dolbeault-complex). For the orientation theorem of Section 10 we use the orientation of products and of local biholomorphisms ([Orientations and fundamental classes, Proposition 3.8 and the remark after Corollary 3.5](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes)), the integration map and its point classes ([Poincaré duality, Corollary 2.5](course:poincare-duality-on-manifolds/poincare-duality)), and the class of the coordinate of the punctured plane under the Kummer sequence, with its sign ([Sheaf cohomology and singular cohomology on manifolds, Corollary 6.4](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds)).
+The classical topological and analytic facts used are proved in the following lessons. Duality and dimension for the sheaf cohomology of manifolds, including compactly supported cohomology computed by extension by zero into a compact space, are Corollaries 5.1 and 5.2 and Theorem 4.1 of [Sheaf cohomology and singular cohomology on manifolds](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds); complex manifolds carry their canonical orientation by [Orientations and fundamental classes, Corollary 3.5](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes). A compact smooth manifold has a finite compatible triangulation by [Smooth triangulations and the integral PL obstruction, Theorem N.1](../../DG-CHAR/DG-CHAR-15C.html#n-1-chart-gluing-for-a-compact-manifold). The universal coefficient sequence is [Thom classes and Euler classes, Theorem 5.2](../../DG-CHAR/DG-CHAR-06.html#5-coefficient-groups-without-a-compactness-shortcut). Coherent cohomology of an \(n\)-dimensional complex manifold vanishes above degree \(n\) by [Theorem 1A.1 below](#coherent-cohomological-dimension). For the orientation theorem of Section 10 we use the orientation of products and of local biholomorphisms ([Orientations and fundamental classes, Proposition 3.8 and the remark after Corollary 3.5](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes)), the integration map and its point classes ([Poincaré duality, Corollary 2.5](course:poincare-duality-on-manifolds/poincare-duality)), and the class of the coordinate of the punctured plane under the Kummer sequence, with its sign ([Sheaf cohomology and singular cohomology on manifolds, Corollary 6.4](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds)).
+
+<h2 id="coherent-cohomological-dimension">1A. Coherent cohomology above the complex dimension</h2>
+
+**Theorem 1A.1.** Let \(M\) be a Hausdorff, second-countable complex manifold of complex dimension \(n\), and let \(\mathcal F\) be a coherent analytic sheaf on \(M\). Then
+
+\[
+H^k(M,\mathcal F)=0\qquad(k>n).
+\tag{1A.1}
+\]
+
+Neither compactness nor a Stein hypothesis is imposed. In particular \(\mathcal F\) need not be locally free. The proof below uses the top-degree case of the Andreotti–Grauert exhaustion method. The general source comparison is J.-P. Demailly, *Complex Analytic and Differential Geometry*, 21 June 2012, Chapter IX, Corollary 4.15(a), p.428; for manifolds see also the opening of Section 3, p.414, and Corollary 4.11, p.425 ([author's edition](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf#page=428)). We give the needed argument using the following earlier programme proofs.
+
+* [Local syzygies, Corollary 3.3 and Theorem 3.4](../../complex-analytic-spaces-and-coherent-sheaves/coherent-sheaves-and-okas-theorem.html#3-the-category-of-coherent-analytic-sheaves) give a finite free resolution near each point. Their proof includes the coordinate Koszul complex and the finite resolution bound.
+* [The Dolbeault complex, Theorem 3.2 and Corollary 3.3](../../complex-analytic-spaces-and-coherent-sheaves/the-dolbeault-complex.html#3-fine-sheaves-and-the-dolbeault-isomorphism) give the fine resolution for holomorphic vector bundles, including the trivial bundles on arbitrary open subsets.
+* [Fréchet spaces of sections, Theorem 2.2 and Remark 2.3](../../complex-analytic-spaces-and-coherent-sheaves/frechet-spaces-of-sections-and-schwartzs-theorem.html#2-schwartz-s-theorem) give the compact-cochain finiteness criterion and openness of a surjection on cohomology. [Section 5](../../complex-analytic-spaces-and-coherent-sheaves/frechet-spaces-of-sections-and-schwartzs-theorem.html#5-the-topology-on-sections-of-coherent-sheaves) gives continuous coherent-sheaf maps, compact restrictions and the covering-independent quotient topology on cohomology. These quotient spaces are not assumed Hausdorff.
+* [The two-open Mayer–Vietoris sequence](../../AG-QC/cohomology-of-sheaves-on-ringed-spaces.html#5-two-open-sets-and-the-connecting-map) and the acyclic-cover comparison give the algebraic cohomological comparisons used below. The final passage to an exhaustion uses [the Fréchet inverse-limit theorem, Proposition 3.1(3)](../../complex-analytic-spaces-and-coherent-sheaves/frechet-spaces-of-sections-and-schwartzs-theorem.html#3-an-abstract-mittag-leffler-theorem).
+
+**Local calculation.** Call a coordinate ball resolving if \(\mathcal F\) has a finite free resolution on a neighbourhood of its closure. Arbitrarily small such balls exist by local syzygies. On any open subset \(V\) of one resolving ball, restrict that resolution. For its short exact sequences
+
+\[
+0\longrightarrow K_{i+1}\longrightarrow\mathcal O^{p_i}
+\longrightarrow K_i\longrightarrow0,
+\qquad K_0=\mathcal F,
+\tag{1A.2}
+\]
+
+the last kernel is free. Bundle Dolbeault gives \(H^k(V,\mathcal O^{p_i})=0\) for \(k>n\). Starting at the last kernel and using the long exact sequences proves \(H^k(V,K_i)=0\) for \(k>n\). It also proves the surjection
+
+\[
+H^n(V,\mathcal O^{p_0})\longrightarrow H^n(V,\mathcal F).
+\tag{1A.3}
+\]
+
+If the resolution has length zero, this is simply its isomorphism. No global resolution of \(\mathcal F\) is asserted.
+
+For any inclusion \(V'\subset V\) inside this ball, restriction in degree \(n\) has dense image for \(\mathcal O^{p_0}\). Indeed, a Dolbeault class on \(V'\) is represented by a smooth vector-valued \((0,n)\)-form \(\alpha\); every such form is closed. Choose compactly supported smooth functions \(\chi_j\) on \(V'\) that are identically one on successively larger compact sets exhausting \(V'\). Extension by zero of \(\chi_j\alpha\) is a smooth \((0,n)\)-form on \(V\), is still closed for degree reasons, and its restrictions converge to \(\alpha\) with every derivative on compact subsets. Taking cohomology gives density. By (1A.3) and its naturality, restriction
+
+\[
+H^n(V,\mathcal F)\longrightarrow H^n(V',\mathcal F)
+\tag{1A.4}
+\]
+
+also has dense image: lift a target class through (1A.3), approximate its lift, and apply the continuous map to coherent cohomology.
+
+The covers used here really are acyclic. A finite intersection of Stein open subsets of a Hausdorff complex manifold is Stein: add bounded-below strictly plurisubharmonic exhaustions of the factors on their intersection. A bounded sublevel is contained in the intersection of finitely many compact sublevels, hence is relatively compact there. The complex Hessian remains positive definite. This is [Proposition 2.2(4) on Stein manifolds](../../complex-analytic-spaces-and-coherent-sheaves/plurisubharmonic-functions-and-stein-manifolds.html#2-stein-manifolds), and does not require all factors to be described by the same chart. An intersection of resolving chart opens lies in any one of their resolution neighbourhoods. The restricted finite free resolution and [Stein domains, Theorem 4.1](../../complex-analytic-spaces-and-coherent-sheaves/stein-domains-in-complex-space.html#4-coherent-sheaves-on-stein-domains) give its positive-degree coherent vanishing. An empty intersection contributes zero. This uses local Stein-domain vanishing, not the global dimension theorem being proved.
+
+Here the topology in that argument is indeed the programme's Čech quotient topology. On a countable locally finite cover by Stein subsets of resolving charts, use the Čech–Dolbeault double complex for the trivial bundle. Its two augmentations, from the global Dolbeault complex and from the holomorphic Čech complex, are continuous. Horizontal exactness follows from the smooth partition-of-unity contraction; vertical cohomology on finite intersections is holomorphic sections in degree zero and zero otherwise, by the local vanishing just checked. Thus both augmentations induce cohomology isomorphisms. The total complex is a Fréchet complex: in each total degree there are finitely many Čech degrees and countable products of smooth-form spaces. Remark 2.3 makes the induced bijections homeomorphisms. This also shows that the comparison commutes with restriction. The coherent-sheaf morphism in (1A.3) is continuous on Čech complexes by Section 5 of the Fréchet lesson, so the density conclusion uses precisely the stated coherent quotient topology, not an unproved Hausdorff topology.
+
+**A topological form of Mayer–Vietoris.** We will need continuity of the boundary and openness of a surjective cohomology difference map. Here is a model that justifies both. Fix a countable basis of relatively compact Stein subsets of resolving charts on \(M\). For an open set \(Y\), let \(C^\bullet(Y)\) be the ordered Čech complex on all basis members contained in \(Y\). Finite intersections are acyclic for \(\mathcal F\), so these Fréchet complexes compute \(H^\bullet(Y,\mathcal F)\) with its canonical topology. For \(Y=G\cup U\) and \(I=G\cap U\), restrictions give a continuous cochain map
+
+\[
+r:C^\bullet(G)\oplus C^\bullet(U)\longrightarrow C^\bullet(I),
+\qquad r(a,b)=b|_I-a|_I.
+\tag{1A.5}
+\]
+
+The shifted cone has terms \(D^k=C^k(G)\oplus C^k(U)\oplus C^{k-1}(I)\) and differential \(d(a,b,c)=(da,db,r(a,b)-dc)\). The map \(C^\bullet(Y)\to D^\bullet\) sends a cochain to its two restrictions and zero. It is a quasi-isomorphism. To verify this identification, apply the acyclic-cover comparison to an injective resolution of \(\mathcal F\) on these four open sets. In that resolution the sequence of sections on \(Y,G,U,I\) is degreewise exact: surjectivity onto the intersection follows from flasqueness, and the kernel is sections on the union by sheaf gluing. Its shifted cone therefore computes sections of the resolution on \(Y\). The natural Čech double-complex augmentations give the displayed quasi-isomorphism and identify its long exact sequence with the two-open sequence. This is exactly the resolution construction in the cited Mayer–Vietoris proof, applied compatibly to the four covers.
+
+Because the displayed quasi-isomorphism is between Fréchet complexes, Remark 2.3 makes its cohomology isomorphism a homeomorphism. The cone inclusion from the intersection consequently gives a continuous Mayer–Vietoris boundary. Moreover, whenever \(H^k(r)\) is surjective it is open, again by Remark 2.3. This reasoning does not require the cohomology groups to be Hausdorff. The cited Mayer–Vietoris lesson uses first restriction minus second; multiplying its intersection term and boundary by minus one gives (1A.5), with the same exactness.
+
+**Finite enlargement and closed coboundaries.** Choose a nonnegative smooth proper exhaustion \(\psi\) of \(M\). Such an exhaustion follows from a countable locally finite partition of unity \((\rho_i)\) subordinate to relatively compact open sets: the locally finite sum \(\sum_i i\rho_i\) is smooth, and each set \(\{\psi\leq c\}\) is closed and contained in a finite union of the compact supports of the low-index terms. Indeed, outside all supports with \(i\leq c\), the weighted average is strictly greater than \(c\). Write \(M_c=\{\psi<c\}\).
+
+For \(c<d\), cover the compact collar \(\overline{M_d}\setminus M_c\) by finitely many resolving balls \(B_1,\ldots,B_s\). Choose nonnegative smooth \(\theta_i\) supported compactly in \(B_i\), with \(\sum_i\theta_i\leq1\) everywhere and equal to one near that collar. Put \(\varepsilon=d-c\) and
+
+\[
+\psi_j=\psi-\varepsilon\sum_{i\leq j}\theta_i,
+\qquad G_j=\{\psi_j<c\},\qquad U_j=G_j\cap B_j.
+\tag{1A.6}
+\]
+
+Then \(G_0=M_c\), \(G_s=M_d\), and \(G_j=G_{j-1}\cup U_j\). To check the last endpoint, points with \(c\leq\psi<d\) have the full sum one and therefore enter \(G_s\); points with \(\psi\geq d\) cannot enter, since the sum is at most one. The change at stage \(j\) is supported in \(B_j\), proving the union assertion. Each \(\psi_j\) is still a proper smooth exhaustion, since it differs from \(\psi\) by a bounded function. If the collar is empty, no enlargement is needed. No positivity of a complex Hessian is used here, and \(U_j\) is not claimed Stein.
+
+Both \(U_j\) and \(G_{j-1}\cap U_j\) are open subsets of a resolving ball. The local calculation and Mayer–Vietoris therefore show that
+\(H^k(G_j,\mathcal F)\to H^k(G_{j-1},\mathcal F)\)
+is surjective for \(k=n+1\) and bijective for \(k>n+1\). In particular restriction \(H^k(M_d,\mathcal F)\to H^k(M_c,\mathcal F)\) is surjective for every \(k>n\).
+
+These surjections imply that \(H^k(M_c,\mathcal F)\) is Hausdorff and finite-dimensional for \(k>n\). Here is the compactness check. Choose an acyclic Stein resolving cover of \(M_d\), and finitely many members \(V_i\) with smaller opens \(V'_i\Subset V_i\) covering \(\overline{M_c}\). Refine \((V'_i\cap M_c)\) by an acyclic cover of \(M_c\). The induced Čech map factors, in each degree, through the finitely many restrictions
+\(\mathcal F(V_{i_0}\cap\cdots\cap V_{i_k})\to
+\mathcal F(V'_{i_0}\cap\cdots\cap V'_{i_k})\).
+Each is compact by Fréchet Proposition 5.2(3); the smaller intersection has compact closure in the larger. Subsequent restrictions to the refining cover are continuous. Repeated assigned indices are handled by alternating extension, with zero on repetitions. Thus the cochain map is compact and induces the surjection just proved. Fréchet Theorem 2.2 gives closed coboundaries and finite-dimensional cohomology. Apply this argument also to each exhaustion \(\psi_j\), with a slightly larger level, to obtain Hausdorffness of \(H^k(G_j,\mathcal F)\) for \(k>n\).
+
+**The borderline degree.** In the Mayer–Vietoris sequence for \(G_j=G_{j-1}\cup U_j\), the boundary from \(H^n(G_{j-1}\cap U_j,\mathcal F)\) has target \(H^{n+1}(G_j,\mathcal F)\). It is continuous, the target is Hausdorff, and it vanishes on the dense image of \(H^n(U_j,\mathcal F)\) by (1A.4) and exactness. It is therefore zero. Restriction in degree \(n+1\) is consequently injective as well as surjective.
+
+We also need density of \(H^n(G_j,\mathcal F)\to H^n(G_{j-1},\mathcal F)\). With the boundary zero, the difference map
+\(Q:H^n(G_{j-1},\mathcal F)\oplus H^n(U_j,\mathcal F)\to H^n(G_{j-1}\cap U_j,\mathcal F)\)
+is surjective and open by (1A.5). For a class \(g\) on \(G_{j-1}\), choose classes \(u_\nu\) on \(U_j\) whose restrictions tend to \(g|_{G_{j-1}\cap U_j}\). Openness gives pairs \((a_\nu,b_\nu)\to0\) with
+\(Q(a_\nu,b_\nu)=Q(g,u_\nu)\). Explicitly, choose a decreasing countable zero-neighbourhood basis in the domain; the errors eventually lie in the image of each neighbourhood, so choose their lifts in neighbourhoods tending to zero. This uses no continuous choice of lifts and no Hausdorff assumption on degree-\(n\) cohomology. The pair \((g-a_\nu,u_\nu-b_\nu)\) has zero difference, so exactness lifts it to a class on \(G_j\); its restriction tends to \(g\). Composing the finite chain proves density between any two sublevels in degree \(n\), and isomorphisms between them in all degrees greater than \(n\).
+
+**Passing to the whole manifold.** Start below \(\inf\psi\), where the sublevel is empty. The preceding isomorphisms give \(H^k(M_d,\mathcal F)=0\) for every finite level \(d\) and \(k>n\). This alone is not a claim that cohomology commutes with an increasing union.
+
+Use the fixed countable basis above and take its subfamily contained in \(M_{c+\nu}\), for \(c<\inf\psi\). The resulting Čech complexes \(E^\bullet_\nu\) are Fréchet, and their transition maps are product projections, hence onto in each degree. Every finite family of basis members has relatively compact union and is contained in some common sublevel. Consequently
+
+\[
+C^\bullet(M)=\varprojlim_\nu E^\bullet_\nu
+\tag{1A.7}
+\]
+
+as topological complexes: both directions are continuous coordinate projections at sufficiently large stages. For \(k>n\), the maps on \(H^k(E_\nu)\) are injective because those groups vanish. In degree \(k-1\) they have dense image: for \(k=n+1\) this is the density just proved, and for larger \(k\) both groups vanish. Fréchet Proposition 3.1(3) now injects \(H^k(M,\mathcal F)\) into the zero group at the initial empty level. This proves (1A.1). The same coordinate argument is written out in [the existing exhaustion-limit comparison](../../complex-analytic-spaces-and-coherent-sheaves/theorems-a-and-b-on-stein-manifolds.html#theorem-b-exhaustion-limit-inputs); here its cohomological degrees and the density input are the ones checked above.
+
+If \(n=0\), the manifold is discrete. Sections are products of stalks, and taking those products is exact for vector spaces, by choosing preimages in each coordinate. Hence all positive cohomology vanishes directly. The empty manifold is included. \(\square\)
+
+For the curve application below, the sheaf is \(\mathcal O\). Bundle Dolbeault already proves \(H^2(C^{\mathrm{an}},\mathcal O)=0\); that shorter proof remains valid and does not need the general argument above.
+
+*Proof exposition by GPT-6 Astra (OpenAI), Ultra; self-checked by that model, not independently reviewed. The classical theorem and method are credited above; the linked programme proofs retain their authorship. Original exposition CC0.*
 
 ## 2. From analytic charts to a morphism of topoi
 
-If \(u:U\to X\) is étale, the analytic inverse function theorem makes \(u^{\mathrm{an}}\) a local biholomorphism, hence a local homeomorphism. Surjective étale families give jointly surjective analytic families. Analytification preserves finite fibre products. The site of local homeomorphisms over a space presents its usual sheaf topos: an open subset is a local homeomorphism, and every local homeomorphism is covered by such opens.
+If \(u:U\to X\) is étale, the full-ideal local calculation below makes \(u^{\mathrm{an}}\) a local biholomorphism, hence a local homeomorphism. Surjective étale families give jointly surjective analytic families. Analytification preserves finite fibre products. The site of local homeomorphisms over a space presents its usual sheaf topos: an open subset is a local homeomorphism, and every local homeomorphism is covered by such opens.
+
+<h3 id="nonreduced-etale-analytic-graph">Local chart calculation, including nilpotents</h3>
+
+Here “local biholomorphism” means an isomorphism of complex analytic spaces on neighbourhoods, including their structure sheaves; the base need not be a manifold. We spell out the passage from the [local graph in Riemann existence, Lemma 2.2](../../riemann-existence-theorem/finite-etale-covers-and-their-analytification.html#2-finite-morphisms-and-%C3%A9tale-morphisms) to the [full-ideal analytification construction, Theorem 3.2](../../AG-QC/complex-analytic-spaces-and-analytification.html#3-constructing-analytification-with-the-full-ideal).
+
+Around a chosen point of an étale map, the [standard-étale presentation](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/morphisms.tex#L8301) writes the base as \(A=\mathbf C[x_1,\ldots,x_N]/J\) and the source as \(A[t]_g/(f)\), with \(f_t\) invertible. Lift \(f,g\) to polynomials \(F,G\) in the ambient variables. At the complex point \((x_0,t_0)\), \(F_t(x_0,t_0)\ne0\). The [holomorphic implicit function theorem, Lemma 2.2](../../AG-QC/complex-analytic-spaces-and-analytification.html#2-local-analytic-algebra) gives \(t=\varphi(x)\) on an ambient neighbourhood. The local graph proof gives
+
+\[
+F(x,t)=(t-\varphi(x))v(x,t),\qquad v(x_0,t_0)\ne0.
+\]
+
+Shrink the neighbourhood so that \(v\) and \(G\) are units. In the ring of holomorphic germs, with \(J\) extended from the base coordinates, the full ideals satisfy
+
+\[
+(J,F)=(J,t-\varphi(x)),\qquad
+\frac{\mathbf C\{x-x_0,t-t_0\}}{(J,F)}
+\cong\frac{\mathbf C\{x-x_0\}}{J}.
+\]
+
+Substitution \(t=\varphi(x)\) gives this isomorphism. Its kernel before quotienting by \(J\) is exactly \((t-\varphi(x))\): the holomorphic divided-difference identity factors every germ minus its substituted value by \(t-\varphi(x)\). These substitutions define sheaf maps on the graph neighbourhoods, so the point-set graph homeomorphism is an isomorphism of analytic spaces. At no point is \(J\) replaced by its radical. In particular, a nonzero nilpotent class in the base quotient is carried to the identical nonzero class under the displayed isomorphism. Thus the claim applies to singular and nonreduced bases, not only to the reduced-variety case of the finite-cover presentation.
+
+The two further compatibility claims have the same full-ideal interpretation. Locally a fibre product over an affine target is presented by the source ideals together with the coordinate relations equating the two target maps. Holomorphic substitution gives that same analytic quotient; these identifications agree on overlaps. A surjective étale family lifts every complex point: its nonempty fibre contains a closed point of finite type over the algebraically closed field \(\mathbf C\), whose residue field is \(\mathbf C\). These observations justify the analytic covering families and finite fibre products used in the site construction, without a smoothness, normality or reduction assumption.
+
+*Receiving exposition by GPT-6 Astra (OpenAI), Ultra; AI author self-check, not independent review. Earlier programme contributors and the native Stacks Project authors retain their credits. Original exposition CC0.*
 
 Consequently the assignment \(U\mapsto U^{\mathrm{an}}\) induces a geometric morphism
 
@@ -433,7 +561,45 @@ Let \(X\) be smooth projective over \(\mathbf C\), and \(\ell\) a prime. Write
 b_q(X^{\mathrm{an}})=\dim_{\mathbf Q}H^q(X^{\mathrm{an}},\mathbf Q).
 \]
 
-Its analytic space is a compact complex manifold, which has a finite compatible triangulation ([Smooth triangulations and the integral PL obstruction, Theorem N.1](course:DG-CHAR/DG-CHAR-15C)). Let \(C_\bullet\) be the simplicial chain complex of such a triangulation, a bounded complex of finitely generated free abelian groups, and \(C^\bullet=\operatorname{Hom}(C_\bullet,\mathbf Z)\), so that \(C^\bullet\otimes A=\operatorname{Hom}(C_\bullet,A)\) for every abelian group \(A\). Simplicial and singular homology agree [Fomberg, Proposition 1.32, in the core course [Algebraic Topology](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60)]; applying the natural universal coefficient sequences ([Thom classes and Euler classes, Theorem 5.2](course:DG-CHAR/DG-CHAR-06)) and the five lemma to the comparison chain map, \(H^q(C^\bullet\otimes A)\) is singular cohomology with coefficients in \(A\), naturally in \(A\), and singular cohomology is sheaf cohomology by [Sheaf cohomology and singular cohomology on manifolds, Theorem 1.3](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds). For every \(m\), comparison therefore naturally identifies the algebraic \(\mathbf Z/\ell^m\)-cohomology with \(H^q(C^\bullet\otimes\mathbf Z/\ell^m)\); these identifications commute with reduction of coefficients.
+Its analytic space is a compact complex manifold, which has a finite compatible triangulation ([Smooth triangulations and the integral PL obstruction, Theorem N.1](../../DG-CHAR/DG-CHAR-15C.html#n-1-chart-gluing-for-a-compact-manifold)). Let \(C_\bullet\) be the simplicial chain complex of such a triangulation, a bounded complex of finitely generated free abelian groups, and \(C^\bullet=\operatorname{Hom}(C_\bullet,\mathbf Z)\), so that \(C^\bullet\otimes A=\operatorname{Hom}(C_\bullet,A)\) for every abelian group \(A\). Simplicial and singular homology agree by [the finite-chain comparison below](#finite-topology-coefficient-route); applying the natural universal coefficient sequences ([Thom classes and Euler classes, Theorem 5.2](../../DG-CHAR/DG-CHAR-06.html#5-coefficient-groups-without-a-compactness-shortcut)) and the five lemma to the comparison chain map, \(H^q(C^\bullet\otimes A)\) is singular cohomology with coefficients in \(A\), naturally in \(A\), and singular cohomology is sheaf cohomology by [Sheaf cohomology and singular cohomology on manifolds, Theorem 1.3](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds). For every \(m\), comparison therefore naturally identifies the algebraic \(\mathbf Z/\ell^m\)-cohomology with \(H^q(C^\bullet\otimes\mathbf Z/\ell^m)\); these identifications commute with reduction of coefficients.
+
+<h3 id="finite-topology-coefficient-route">Finite chains and natural coefficient comparison</h3>
+
+Let \(K\) be the finite triangulation supplied by [Theorem N.1 on smooth triangulations](../../DG-CHAR/DG-CHAR-15C.html#n-1-chart-gluing-for-a-compact-manifold). The relevant comparison is an isomorphism of **homology** groups induced by the chain map from oriented simplices to their singular characteristic simplices. For the finite skeleta, its relative comparison has the precise form
+
+\[
+H_q^{\Delta}(K^k,K^{k-1})\ \cong\ H_q(|K^k|,|K^{k-1}|)
+\ \cong\begin{cases}
+\displaystyle\bigoplus_{\sigma\in K_k}\mathbf Z[\sigma],&q=k,\\
+0,&q\ne k.
+\end{cases}
+\]
+
+For \(k\geq1\), the good-pair quotient is a finite wedge of \(k\)-spheres. Excision identifies its relative generators with the oriented characteristic simplices, so it is the actual comparison map, not merely an abstract isomorphism of free groups, that gives the displayed identification. For \(k=0\), compare the finite set of vertices directly, taking \(K^{-1}=\varnothing\). The maps between the long exact homology sequences of adjacent skeleta commute because they come from the chain inclusion. Induction and the five lemma therefore give the integral homology isomorphism for the entire finite complex.
+
+This is the finite-skeleton argument of Yeheli Fomberg's *Algebraic Topology*, lectures by Nir Lazarovich, Spring 2025, proposition labelled `prop:sing-simp` in the [author's native TeX](https://yp.srht.site/notes/math/algebraic_topology.tex) (snapshot of 9 October 2026; source SHA-256 `d27095de0f38f0c14b2d7716cb52d51d064f0594dd9f82f9d1b3e6af5b35a483`). The formulation used here is the homology assertion and the relative-degree formula displayed above. The five-lemma step is supplied by the [native Stacks Project five lemma](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L1226) and its preceding [four-lemma proof](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/homology.tex#L1180). These native texts remain separate sources with their own authorship and terms; this is not a transcription or alteration of either source.
+
+Write \(j:C_\bullet^{\Delta}(K)\to C_\bullet^{\mathrm{sing}}(|K|)\) for that chain map. Both complexes are free over \(\mathbf Z\). For an arbitrary abelian group \(A\), the [natural universal coefficient sequence, Theorem 5.2](../../DG-CHAR/DG-CHAR-06.html#5-coefficient-groups-without-a-compactness-shortcut) is
+
+\[
+0\longrightarrow\operatorname{Ext}^1_{\mathbf Z}(H_{q-1}(C_\bullet),A)
+\longrightarrow H^q\operatorname{Hom}_{\mathbf Z}(C_\bullet,A)
+\longrightarrow\operatorname{Hom}_{\mathbf Z}(H_q(C_\bullet),A)
+\longrightarrow0.
+\]
+
+Apply it to the singular and simplicial complexes. Precomposition by \(j\) gives a map from the singular sequence to the simplicial one. Its two outer maps are isomorphisms by the integral homology comparison; exactness gives the middle isomorphism. This is the short-exact-sequence case of the same five lemma, with zero terms added at the ends. No splitting of either universal coefficient sequence is chosen.
+
+Each simplicial chain group is finitely generated free. Consequently
+
+\[
+\operatorname{Hom}_{\mathbf Z}(C_\bullet^{\Delta}(K),\mathbf Z)\otimes_{\mathbf Z}A
+\cong\operatorname{Hom}_{\mathbf Z}(C_\bullet^{\Delta}(K),A)
+\]
+
+degree by degree, naturally in \(A\). Thus this bounded integral cochain complex computes singular cohomology with every abelian coefficient group, not only with fields. Evaluation, the universal coefficient sequence and precomposition by \(j\) commute with coefficient homomorphisms. In particular the resulting identifications commute with every reduction \(\mathbf Z/\ell^{m+1}\to\mathbf Z/\ell^m\), which is the compatibility needed for the coefficient limit below. This argument asserts no triangulation theorem for arbitrary compact topological spaces and no natural splitting of the universal coefficient sequence.
+
+*Receiving exposition by GPT-6 Astra (OpenAI), Ultra; AI author self-check, not independent review. Human sources and earlier programme proofs retain their credits. Original exposition CC0.*
 
 Define the integral étale coefficient-limit complex as \(R\varprojlim_m R\Gamma(X,\mathbf Z/\ell^m)\). Each finite-coefficient cohomology group is finite, so its tower is Mittag–Leffler: for a fixed target the descending images stabilize. Its \(\varprojlim^1\) vanishes, and the Milnor sequence identifies the limit cohomology with the inverse limit of the cohomology groups. On the cellular side the degreewise reduction maps are surjective, so derived inverse limit is the ordinary complex \(C^\bullet\otimes\mathbf Z_\ell\). Consequently
 
@@ -493,7 +659,7 @@ For ordinary constructible comparison, first use compact comparison, cup product
 
 ## 17. Sources, proof dependencies and status
 
-The historical comparison result is due to Artin; see [SGA 4½](https://publications.ias.edu/sites/default/files/Number32.pdf), *Arcata*, IV, 6.3. Its concise reduction to proper smooth curves is expanded here into explicit coefficient resolutions, the proper graph induction, and filtered-colimit arguments. [SGA 4](https://www.normalesup.org/~forgogozo/SGA4/), Exposé XVI, Section 4, including Theorem 4.1 and Lemmas 4.2–4.6, proves a more general relative comparison and uses resolution of singularities for the nonproper case. This lesson proves the absolute statement; the relative theorem is not proved here.
+The historical comparison result is due to Artin; see [SGA 4½](https://publications.ias.edu/sites/default/files/Number32.pdf), *Arcata*, IV, 6.3. Its concise reduction to proper smooth curves is expanded here into explicit coefficient resolutions, the proper graph induction, and filtered-colimit arguments. [SGA 4](https://www.normalesup.org/~forgogozo/SGA4/), Exposé XVI, Section 4, including Theorem 4.1 and Lemmas 4.2–4.6, proves a more general relative comparison and uses resolution of singularities for the nonproper case. The ordinary comparison proved here is an absolute cohomology statement; no ordinary comparison theorem for general relative direct images is asserted. The proper-support theorem of Section 9 does apply to relative maps.
 
 - **[Riemann existence]** [The Riemann existence theorem](course:riemann-existence-theorem/the-riemann-existence-theorem), Theorems 2.1 and 3.2, proved in its course without normality hypotheses; the historical source is SGA 1, Exposé XII, Theorem 5.1.
 - **[Curve GAGA]** [Serre's comparison theorems and Chow's theorem](course:AG-QC/serres-comparison-theorems-and-chows-theorem), Theorems 4.1 and 5.2. The projective-curve Picard consequence is the input used in Section 5; no general coherent analytic comparison is substituted for the torsion comparison proved here.
@@ -503,6 +669,6 @@ The historical comparison result is due to Artin; see [SGA 4½](https://publicat
 - **[Resolution of singularities, Section 11]** [Resolution of singularities in characteristic zero](course:resolution-of-singularities-in-characteristic-zero/principalization-and-resolution), Corollary 5.1 (proper smooth models), proved in its course; Temkin, *Functorial desingularization of quasi-excellent schemes in characteristic zero: the non-embedded case*, [arXiv:0904.1592](https://arxiv.org/abs/0904.1592), treats the general quasi-excellent case.
 - **[Classical topology]** [Poincaré duality on manifolds](course:poincare-duality-on-manifolds/poincare-duality) and [Sheaf cohomology and singular cohomology on manifolds](course:poincare-duality-on-manifolds/sheaf-cohomology-and-singular-cohomology-on-manifolds) prove duality, dimension, integration and the sheaf-singular comparison used in Sections 5, 10 and 14, and [Orientations and fundamental classes](course:poincare-duality-on-manifolds/orientations-and-fundamental-classes) the orientations of complex manifolds, their products and local biholomorphisms used in Theorem 10.1; [A. Hatcher, *Algebraic Topology*](https://pi.math.cornell.edu/~hatcher/AT/AT.pdf), Section 3.3, is a freely available account of manifold duality.
 
-Within this course, [Lesson 11](constructible-sheaves-and-extension-by-zero.md) supplies the constructible and continuity machinery, [Lesson 13](the-proper-base-change-theorem.md) proper base change, and [Lesson 14](cohomology-with-compact-support.md) compactification and proper support. [Lesson 17](poincare-duality-for-curves.md) fixes the curve trace and coefficient self-injectivity. [Lesson 18](poincare-duality-for-smooth-varieties.md) supplies smooth duality, the point/divisor Gysin normalization and the projective-space computation. Their stated geometric and higher-trace inputs retain their stated status.
+Within this course, [Lesson 11](constructible-sheaves-and-extension-by-zero.md) supplies the constructible and continuity machinery, [Lesson 13](the-proper-base-change-theorem.md) proper base change, and [Lesson 14](cohomology-with-compact-support.md) compactification and proper support. [Lesson 17](poincare-duality-for-curves.md) fixes the curve trace and coefficient self-injectivity. Lesson 18 supplies smooth duality, the point/divisor Gysin normalization and the projective-space computation. The exact geometric prerequisites are proved in the providers linked in those lessons, and Lesson 18, Theorem 2.1, proves the full higher trace used here.
 
 The Artin proper-support theorem and the ordinary constructible theorem are proved in Sections 5–11; neither is relegated to an unproved citation. Riemann existence, curve GAGA, resolution of singularities and the classical topological facts are proved in the lessons linked in Section 1. All examples and all four exercises have full solutions.

@@ -1,359 +1,402 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Oscillatory distributions and their order</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><span class="unlinked">Constant-coefficient equations and solvability</span> · <a href="index.html">Prerequisites</a></nav><h1 id="oscillatory-distributions-and-their-order">Oscillatory distributions and their order</h1>
-<p>An integral over all frequencies may fail to converge as a function while still defining a distribution. Its phase gives a controlled way to move derivatives onto the amplitude and test function. Once the distribution is defined, stationary phase converts its local representation into a frequency symbol and explains every dimension-dependent order shift.</p>
-<p>We use the symbol conventions, Fourier transformation and support-preserving asymptotic summation of <a href="euclidean-symbol-calculus.html">Symbols, operators and Sobolev scales</a>. <a href="geometric-microlocal-calculus.html">Detecting regularity without choosing coordinates</a> supplies the Fourier definition of the wavefront set. The geometric prerequisites are <a href="phase-space-and-generating-families.html">Phase space and generating families</a>; the estimates are in <a href="stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a>. Basic references are [Guillemin–Sternberg] and [Hörmander IV].</p>
-<h2 id="frequency-cutoffs-define-a-distribution"><span id="1-frequency-cutoffs-define-a-distribution"></span><span id="section-1"></span>1. Frequency cutoffs define a distribution</h2>
-<p>Let <span class="math" data-tex="\(\phi(x,\theta)\)">\(\phi(x,\theta)\)</span> be a real smooth homogeneous phase on an open cone <span class="math" data-tex="\(\Gamma\subset U\times(\mathbb R^N\setminus0)\)">\(\Gamma\subset U\times(\mathbb R^N\setminus0)\)</span>. It need not be nondegenerate for this section. Fix a compact set of base points and phase directions contained in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and let the amplitude vanish for <span class="math" data-tex="\(|\theta|\leq1\)">\(|\theta|\leq1\)</span>. All its high-frequency support lies in that fixed cone. Low-frequency smooth amplitudes can be added separately.</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Oscillatory distributions and their order</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}.math.display{display:block;max-width:100%;overflow-x:auto;padding:1em 0}.math.inline{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}mjx-container{max-width:100%}main img{max-width:100%;height:auto}.intrinsic-figure-scroll{display:block;max-width:100%;overflow-x:auto}.intrinsic-figure-scroll:focus-visible{outline:2px solid #165d83;outline-offset:3px}@media(max-width:600px){.intrinsic-figure-scroll img{width:1000px!important;max-width:none!important;height:auto}}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><main><h1 id="oscillatory-distributions-and-their-order">Oscillatory distributions and their order</h1>
+<p>An integral over all frequencies may fail to converge as a function while still defining a distribution. Its phase lets us move derivatives onto the amplitude and test function. Stationary phase then converts a local representation into a frequency symbol and explains its dimension-dependent order.</p>
+<p>The analytic prerequisites are proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#appendix-a-the-analytic-prerequisites-used-in-the-proof">Stationary phase and critical manifolds, Appendix A</a>: Fourier inversion and Plancherel, distributions, parameter estimates and finite smooth cutoffs. Its <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#6-amplitudes-that-are-symbols-in-the-large-parameter">Corollary 6.1</a> and <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#7-cancellation-normal-to-a-critical-manifold">Theorem 7.2</a> prove every differentiated stationary remainder used here. The <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md">Lebesgue integration proofs M0–M8</a> supply dominated convergence and product integration.</p>
+<p><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md#c3-construct-the-base-coordinates-and-the-conic-chart">Conic frequency coordinates, C3–C5</a> and <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md#f1-clean-geometry-and-a-transverse-fourier-test">clean-phase geometry F0–F1</a> supply the geometric inputs. Symbol products, the coordinate Fourier-wavefront criterion and the dyadic endpoint are justified below. <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-oscillatory/proof-map.json">The exact proof map</a> identifies every earlier programme dependency.</p>
+<p>Mathematical sources are [Hörmander FIO I], [Hörmander IV], [Guillemin–Sternberg] and [Melrose]. The 1971 article gives the symbol, cutoff and wavefront constructions; §25.1 of the 2009 Hörmander IV reprint gives the nondegenerate and clean Fourier-symbol comparisons. The complementary <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md">intrinsic representation proof</a> and <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-canonical-composition/homogeneous-symbol-transport.md">symbol transport and topology proof</a> provide their stated local constructions and support conditions.</p>
+<span aria-hidden="true" id="1-frequency-cutoffs-define-a-distribution"></span><span aria-hidden="true" id="section-1"></span><h2 id="frequency-cutoffs-define-a-distribution">1. Frequency cutoffs define a distribution</h2>
+<p>Let <span class="math inline">\(\phi(x,\theta)\)</span> be real and smooth on an open cone <span class="math inline">\(\Gamma\subset U\times(\mathbb R^N\setminus0)\)</span>, homogeneous of degree one in <span class="math inline">\(\theta\)</span>, with <span class="math inline">\(d_{x,\theta}\phi\neq0\)</span>. It need not be nondegenerate. Fix a compact set <span class="math inline">\(K\subset\Gamma\cap\{|\theta|=1\}\)</span> of base points and phase directions, and let</p>
+<p><span class="math display">\[
+\mathcal C=\{(x,r\omega):(x,\omega)\in K,\ r&gt;0\}
+\]</span></p>
+<p>be the fixed supporting cone. The high-frequency support of <span class="math inline">\(a\)</span> lies in <span class="math inline">\(\mathcal C\)</span>, and <span class="math inline">\(a=0\)</span> for <span class="math inline">\(|\theta|\leq1\)</span>. All estimates take place in a fixed conic neighborhood of <span class="math inline">\(\mathcal C\)</span> whose normalized closure is compact inside <span class="math inline">\(\Gamma\)</span>; amplitudes supported there extend by zero. The compact containment supplies a support margin for the integration-by-parts coefficients. Low-frequency smooth amplitudes can be added separately.</p>
 <p>For</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math display">\[
 0&lt;\rho\leq1,\qquad 0\leq\delta&lt;1,
-\]">\[
-0&lt;\rho\leq1,\qquad 0\leq\delta&lt;1,
-\]</span>
-<p>an amplitude in <span class="math" data-tex="\(S^\mu_{\rho,\delta}\)">\(S^\mu_{\rho,\delta}\)</span> satisfies, on each working compact base set,</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>an amplitude in <span class="math inline">\(S^\mu_{\rho,\delta}\)</span> satisfies, on each working compact base set,</p>
+<p><span class="math display">\[
 |\partial_\theta^\alpha\partial_x^\beta a(x,\theta)|
 \leq C_{\alpha,\beta}\langle\theta\rangle^{\mu-\rho|\alpha|+\delta|\beta|}.
 \tag{1.1}
-\]">\[
-|\partial_\theta^\alpha\partial_x^\beta a(x,\theta)|
-\leq C_{\alpha,\beta}\langle\theta\rangle^{\mu-\rho|\alpha|+\delta|\beta|}.
-\tag{1.1}
-\]</span>
-<p>We use the notation <span class="math" data-tex="\(S^\mu=S^\mu_{1,0}\)">\(S^\mu=S^\mu_{1,0}\)</span>. These are local-in-base bounds; uniform global bounds require a separate assertion.</p>
-<p><strong>Theorem 1.1 (oscillatory integral).</strong> Choose <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R^N)\)">\(\chi\in C_c^\infty(\mathbb R^N)\)</span> equal to one near zero. The limit</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>We use <span class="math inline">\(S^\mu=S^\mu_{1,0}\)</span>. These are local-in-base bounds; uniform global bounds require a separate assertion.</p>
+<p>Two elementary rules follow directly from this definition. Products of symbols of orders <span class="math inline">\(p,q\)</span> in the same two-index class have order <span class="math inline">\(p+q\)</span>: every term of the Leibniz formula has total exponent <span class="math inline">\(p+q-\rho|\alpha|+\delta|\beta|\)</span>. A smooth coefficient homogeneous of degree <span class="math inline">\(d\)</span> satisfies <span class="math inline">\(\partial_\theta^\alpha\partial_x^\beta b=O(r^{d-|\alpha|})\)</span> on a compact normalized cone. Differentiate <span class="math inline">\(b(x,r\omega)=r^d b(x,\omega)\)</span> and use bounded derivatives on its normalized neighborhood. These ordinary coefficient bounds will also control products with general two-index symbols.</p>
+<p><strong>Theorem 1.1 (oscillatory integral).</strong> Choose <span class="math inline">\(\chi\in C_c^\infty(\mathbb R^N)\)</span> equal to one near zero. The limit</p>
+<p><span class="math display">\[
 \langle u,f\rangle=
 \lim_{\varepsilon\downarrow0}
 \iint e^{i\phi(x,\theta)}a(x,\theta)
 \chi(\varepsilon\theta)f(x)\,dx\,d\theta,
 \qquad f\in C_c^\infty(U),
 \tag{1.2}
-\]">\[
-\langle u,f\rangle=
-\lim_{\varepsilon\downarrow0}
-\iint e^{i\phi(x,\theta)}a(x,\theta)
-\chi(\varepsilon\theta)f(x)\,dx\,d\theta,
-\qquad f\in C_c^\infty(U),
-\tag{1.2}
-\]</span>
-<p>exists and defines a distribution. It is independent of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. On fixed supports its distribution seminorms are controlled by finitely many amplitude seminorms. Bounded symbol families converging smoothly on compact sets have convergent resulting distributions.</p>
-<p><strong>Proof.</strong> Put <span class="math" data-tex="\(r=|\theta|\)">\(r=|\theta|\)</span>. Homogeneity and <span class="math" data-tex="\(d\phi\neq0\)">\(d\phi\neq0\)</span> give, on the specified compact set of directions,</p>
-<span class="math math-display" data-tex="\[
-A=|\phi_x&#x27;|^2+r^2|\phi_\theta&#x27;|^2\geq c r^2.
-\]">\[
-A=|\phi_x&#x27;|^2+r^2|\phi_\theta&#x27;|^2\geq c r^2.
-\]</span>
+\]</span></p>
+<p>exists and defines a distribution, independently of <span class="math inline">\(\chi\)</span>. On fixed supports its distribution seminorms are controlled by finitely many amplitude seminorms. Bounded families in a fixed <span class="math inline">\(S^\mu_{\rho,\delta}\)</span>, with the same support control and smooth convergence on compact sets, have convergent resulting distributions.</p>
+<p><strong>Proof.</strong> Put <span class="math inline">\(r=|\theta|\)</span>. Homogeneity and the compact support control give</p>
+<p><span class="math display">\[
+A=|\phi_x'|^2+r^2|\phi_\theta'|^2\geq c r^2.
+\]</span></p>
 <p>Define</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math display">\[
 L=\frac{1}{iA}
-\left(\phi_x&#x27;\cdot\partial_x+
-r^2\phi_\theta&#x27;\cdot\partial_\theta\right).
+\left(\phi_x'\cdot\partial_x+
+r^2\phi_\theta'\cdot\partial_\theta\right).
 \tag{1.3}
-\]">\[
-L=\frac{1}{iA}
-\left(\phi_x&#x27;\cdot\partial_x+
-r^2\phi_\theta&#x27;\cdot\partial_\theta\right).
-\tag{1.3}
-\]</span>
-<p>Then <span class="math" data-tex="\(Le^{i\phi}=e^{i\phi}\)">\(Le^{i\phi}=e^{i\phi}\)</span>. The coefficients of its <span class="math" data-tex="\(x\)">\(x\)</span> derivatives are homogeneous of degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, and those of its <span class="math" data-tex="\(\theta\)">\(\theta\)</span> derivatives are degree zero. Their derivatives satisfy the corresponding ordinary symbol bounds. The formal transpose is obtained by taking minus the divergence of each coefficient times the function.</p>
-<p>Set <span class="math" data-tex="\(\kappa=\min(\rho,1-\delta)&gt;0\)">\(\kappa=\min(\rho,1-\delta)&gt;0\)</span>. The product rule shows that <span class="math" data-tex="\(L^t\)">\(L^t\)</span> takes a compact-base-supported amplitude of order <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to one of order at most <span class="math" data-tex="\(\nu-\kappa\)">\(\nu-\kappa\)</span>. An <span class="math" data-tex="\(x\)">\(x\)</span> derivative costs <span class="math" data-tex="\(\delta\)">\(\delta\)</span> but has a coefficient of order <span class="math" data-tex="\(-1\)">\(-1\)</span>; a <span class="math" data-tex="\(\theta\)">\(\theta\)</span> derivative gains <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and has a coefficient of order zero. Derivatives of those coefficients gain at least one frequency order or cost no base order. The same estimates hold after differentiating the result.</p>
-<p>The cutoff amplitudes <span class="math" data-tex="\(a\chi(\varepsilon\theta)\)">\(a\chi(\varepsilon\theta)\)</span> form a bounded family in (1.1). A derivative of the cutoff is supported where <span class="math" data-tex="\(r\asymp\varepsilon^{-1}\)">\(r\asymp\varepsilon^{-1}\)</span>, and contributes <span class="math" data-tex="\(\varepsilon^{|\alpha|}\leq C r^{-\rho|\alpha|}\)">\(\varepsilon^{|\alpha|}\leq C r^{-\rho|\alpha|}\)</span>. Integrate by parts <span class="math" data-tex="\(M\)">\(M\)</span> times in the cutoff integral. Choose <span class="math" data-tex="\(M\kappa&gt;\mu+N\)">\(M\kappa&gt;\mu+N\)</span>; then <span class="math" data-tex="\((L^t)^M(a\chi(\varepsilon\theta)f)\)">\((L^t)^M(a\chi(\varepsilon\theta)f)\)</span> has an integrable majorant <span class="math" data-tex="\(C_f\langle\theta\rangle^{\mu-M\kappa}\)">\(C_f\langle\theta\rangle^{\mu-M\kappa}\)</span>, uniformly in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
-<p>For each fixed <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, derivatives of the cutoff tend to those of the constant one. Dominated convergence therefore gives the limit as</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>Then <span class="math inline">\(Le^{i\phi}=e^{i\phi}\)</span>. Write its coefficients as <span class="math inline">\(b_j\)</span> for the base derivatives and <span class="math inline">\(c_j\)</span> for the phase-variable derivatives. Their homogeneity gives, for <span class="math inline">\(r\geq1\)</span>,</p>
+<p><span class="math display">\[
+|\partial_\theta^\alpha\partial_x^\beta b_j|
+\leq C_{\alpha,\beta}r^{-1-|\alpha|},\qquad
+|\partial_\theta^\alpha\partial_x^\beta c_j|
+\leq C_{\alpha,\beta}r^{-|\alpha|}.
+\]</span></p>
+<p>The formal transpose is</p>
+<p><span class="math display">\[
+L^t q=-b\cdot\partial_x q-c\cdot\partial_\theta q
+-(\operatorname{div}_x b+\operatorname{div}_\theta c)q.
+\]</span></p>
+<p>Its three terms take order <span class="math inline">\(\nu\)</span> to orders at most <span class="math inline">\(\nu-(1-\delta)\)</span>, <span class="math inline">\(\nu-\rho\)</span>, and <span class="math inline">\(\nu-1\)</span>. The same bounds hold after every derivative: ordinary coefficient estimates are stronger than the required general symbol estimates because <span class="math inline">\(\rho\leq1\)</span> and <span class="math inline">\(\delta\geq0\)</span>. Consequently <span class="math inline">\(L^t:S^\nu_{\rho,\delta}\to S^{\nu-\kappa}_{\rho,\delta}\)</span>, continuously, where <span class="math inline">\(\kappa=\min(\rho,1-\delta)&gt;0\)</span>.</p>
+<p>The amplitudes <span class="math inline">\(a\chi(\varepsilon\theta)\)</span> form a bounded family in (1.1), for <span class="math inline">\(0&lt;\varepsilon\leq1\)</span>. The undifferentiated cutoff is bounded. A positive derivative of order <span class="math inline">\(j\)</span> is supported where <span class="math inline">\(\varepsilon r\)</span> lies in a fixed annulus and is bounded by <span class="math inline">\(C\varepsilon^j\leq C'r^{-j}\leq C'r^{-\rho j}\)</span>. The product rule gives all the required uniform seminorm bounds.</p>
+<p>Integrate by parts <span class="math inline">\(M\)</span> times, with <span class="math inline">\(M\kappa&gt;\mu+N\)</span>. The transformed amplitude <span class="math inline">\((L^t)^M(a\chi(\varepsilon\theta)f)\)</span> has an integrable majorant <span class="math inline">\(C_f\langle\theta\rangle^{\mu-M\kappa}\)</span>, uniformly in <span class="math inline">\(\varepsilon\)</span>. On compact sets the cutoffs and all their derivatives converge to those of the constant one. Dominated convergence gives</p>
+<p><span class="math display">\[
+\langle u,f\rangle=
 \iint e^{i\phi}(L^t)^M(af)\,dx\,d\theta.
-\]">\[
-\iint e^{i\phi}(L^t)^M(af)\,dx\,d\theta.
-\]</span>
-<p>It is bounded by finitely many derivatives of <span class="math" data-tex="\(f\)">\(f\)</span>, hence defines a distribution. Different cutoffs give this same expression. The same domination proves continuity for the asserted bounded families. ∎</p>
-<p>The construction works when <span class="math" data-tex="\(\delta\geq\rho\)">\(\delta\geq\rho\)</span>; it needs positive <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, rather than an asymptotic pseudodifferential calculus in that range. No endpoint with <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span> or <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span> is asserted by this proof.</p>
-<h2 id="the-directions-where-singularities-can-occur"><span id="2-the-directions-where-singularities-can-occur"></span><span id="section-2"></span>2. The directions where singularities can occur</h2>
-<p>Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be the closure, away from the zero section, of</p>
-<span class="math math-display" data-tex="\[
-\{(x,\phi_x&#x27;(x,\theta)):
-\phi_\theta&#x27;(x,\theta)=0,
-(x,\theta)\text{ lies in the amplitude&#x27;s supporting cone}\}.
+\]</span></p>
+<p>This expression is bounded by finitely many derivatives of <span class="math inline">\(f\)</span> and amplitude seminorms. It defines a distribution and has the same value for every cutoff. The same argument, using a common majorant and compact smooth convergence, proves the bounded-family convergence. ∎</p>
+<p>The construction works when <span class="math inline">\(\delta\geq\rho\)</span>: its positive integration-by-parts gain is <span class="math inline">\(\kappa\)</span>, without the restrictions needed for an asymptotic pseudodifferential calculus. This argument asserts no endpoint with <span class="math inline">\(\rho=0\)</span> or <span class="math inline">\(\delta=1\)</span>. The original construction and cutoff formula are [Hörmander FIO I], Lemma 1.2.1 and Proposition 1.2.2, pp. 89-90; Proposition 1.1.11, p. 88, gives the cutoff approximation.</p>
+<span aria-hidden="true" id="2-the-directions-where-singularities-can-occur"></span><span aria-hidden="true" id="section-2"></span><h2 id="the-directions-where-singularities-can-occur">2. The directions where singularities can occur</h2>
+<p>In the chosen base coordinates, <span class="math inline">\((x_0,\xi_0)\)</span>, <span class="math inline">\(\xi_0\neq0\)</span>, is absent from the wavefront set if there is a <span class="math inline">\(\zeta\in C_c^\infty(U)\)</span>, equal to one near <span class="math inline">\(x_0\)</span>, and an open frequency cone <span class="math inline">\(V\)</span> about <span class="math inline">\(\xi_0\)</span> such that</p>
+<p><span class="math display">\[
+|\widehat{\zeta u}(\xi)|\leq C_q\langle\xi\rangle^{-q},
+\qquad \xi\in V,\quad q=0,1,2,\ldots.
+\]</span></p>
+<p>Here <span class="math inline">\(\widehat{\zeta u}(\xi)=\langle u,\zeta(x)e^{-ix\cdot\xi}\rangle\)</span>. This pairing is a smooth function of <span class="math inline">\(\xi\)</span>: each derivative differentiates the compactly supported test function, and its finitely many seminorms control the distribution pairing. This coordinate Fourier criterion is the definition needed for the next proof. Its coordinate-invariance extension is additional context.</p>
+<p>Let <span class="math inline">\(\mathcal A\)</span> be the closure, away from the zero section, of</p>
+<p><span class="math display">\[
+\{(x,\phi_x'(x,\theta)):
+\phi_\theta'(x,\theta)=0,\ (x,\theta)\in\mathcal C\}.
 \tag{2.1}
-\]">\[
-\{(x,\phi_x&#x27;(x,\theta)):
-\phi_\theta&#x27;(x,\theta)=0,
-(x,\theta)\text{ lies in the amplitude&#x27;s supporting cone}\}.
-\tag{2.1}
-\]</span>
+\]</span></p>
 <p><strong>Theorem 2.1 (wavefront inclusion).</strong> For the distribution of Theorem 1.1,</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math display">\[
 \operatorname{WF}(u)\subset\mathcal A.
 \tag{2.2}
-\]">\[
-\operatorname{WF}(u)\subset\mathcal A.
-\tag{2.2}
-\]</span>
-<p><strong>Proof.</strong> Localize in <span class="math" data-tex="\(x\)">\(x\)</span> by a compact smooth function supported sufficiently close to a point <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, and examine the Fourier transform in a small cone of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> whose closure is disjoint from (2.1). Its phase is <span class="math" data-tex="\(\phi(x,\theta)-x\cdot\xi\)">\(\phi(x,\theta)-x\cdot\xi\)</span>. Write <span class="math" data-tex="\(R=|\xi|\geq1\)">\(R=|\xi|\geq1\)</span>, and split the <span class="math" data-tex="\(\theta\)">\(\theta\)</span> integral by smooth cutoffs into <span class="math" data-tex="\(r\leq cR\)">\(r\leq cR\)</span> and <span class="math" data-tex="\(r\geq cR/2\)">\(r\geq cR/2\)</span>, choosing <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> small. The cutoffs satisfy uniform symbol estimates; their derivatives have size <span class="math" data-tex="\(O(R^{-j})\)">\(O(R^{-j})\)</span> on the transition region.</p>
-<p>On the first region, <span class="math" data-tex="\(|\phi_x&#x27;|\leq C r\)">\(|\phi_x&#x27;|\leq C r\)</span> and therefore <span class="math" data-tex="\(|\phi_x&#x27;-\xi|\geq R/2\)">\(|\phi_x&#x27;-\xi|\geq R/2\)</span>. Integration by parts using only the <span class="math" data-tex="\(x\)">\(x\)</span> gradient gives a factor <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> each time. Derivatives of the amplitude cost at most <span class="math" data-tex="\(\langle\theta\rangle^\delta\)">\(\langle\theta\rangle^\delta\)</span>, so after <span class="math" data-tex="\(M\)">\(M\)</span> iterations the absolute integral is bounded by</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p><strong>Proof.</strong> Take <span class="math inline">\((x_0,\xi_0)\notin\mathcal A\)</span>. Choose <span class="math inline">\(\zeta\in C_c^\infty(U)\)</span>, equal to one near <span class="math inline">\(x_0\)</span>, and an open frequency cone <span class="math inline">\(V\)</span> containing <span class="math inline">\(\xi_0\)</span>, so that <span class="math inline">\((\operatorname{supp}\zeta\times\overline V)\cap\mathcal A=\varnothing\)</span> in the punctured cotangent bundle. Shrink these neighborhoods so their angular closures have the same separation. For the cutoff distributions <span class="math inline">\(u_\varepsilon\)</span> in (1.2), the localized Fourier transform has phase <span class="math inline">\(\phi(x,\theta)-x\cdot\xi\)</span>. Put <span class="math inline">\(R=|\xi|\geq2\)</span>.</p>
+<p>Split the integral with smooth cutoffs into <span class="math inline">\(r\leq cR\)</span> and <span class="math inline">\(r\geq cR/2\)</span>, taking <span class="math inline">\(c&gt;0\)</span> small. The splitting cutoffs are bounded ordinary symbols of order zero uniformly in <span class="math inline">\(R\)</span>: their positive derivatives are <span class="math inline">\(O(R^{-j})=O(r^{-j})\)</span> on their transition annulus. Together with <span class="math inline">\(\chi(\varepsilon\theta)\)</span>, they give amplitudes bounded uniformly in both <span class="math inline">\(\varepsilon\)</span> and <span class="math inline">\(R\)</span> in the original symbol class.</p>
+<p>On the first region, <span class="math inline">\(|\phi_x'|\leq Cr\)</span>, hence <span class="math inline">\(|\phi_x'-\xi|\geq R/2\)</span>. Use</p>
+<p><span class="math display">\[
+B_\xi=\frac{\phi_x'-\xi}{i|\phi_x'-\xi|^2}\cdot\partial_x.
+\]</span></p>
+<p>It fixes the exponential, and every base derivative of its coefficients is <span class="math inline">\(O(R^{-1})\)</span>. After <span class="math inline">\(M\)</span> integrations by parts, derivatives of the amplitude cost at most <span class="math inline">\(\langle\theta\rangle^{M\delta}\)</span>; neither frequency cutoff has a base derivative. The absolute integral is bounded, uniformly in <span class="math inline">\(\varepsilon\)</span>, by</p>
+<p><span class="math display">\[
 C_M R^{-M}\int_{1\leq r\leq cR}
-\langle\theta\rangle^{\mu+M\delta}\,d\theta.
-\]">\[
-C_M R^{-M}\int_{1\leq r\leq cR}
-\langle\theta\rangle^{\mu+M\delta}\,d\theta.
-\]</span>
-<p>This is bounded by a fixed polynomial times <span class="math" data-tex="\(R^{-M(1-\delta)}\)">\(R^{-M(1-\delta)}\)</span>, with a possible logarithm at the radial exponent <span class="math" data-tex="\(-N\)">\(-N\)</span>. Since <span class="math" data-tex="\(1-\delta&gt;0\)">\(1-\delta&gt;0\)</span>, it decreases faster than any prescribed inverse power after taking <span class="math" data-tex="\(M\)">\(M\)</span> sufficiently large.</p>
-<p>On the second region there is a uniform bound</p>
-<span class="math math-display" data-tex="\[
-|\phi_x&#x27;-\xi|^2+r^2|\phi_\theta&#x27;|^2
+\langle\theta\rangle^{\mu+M\delta}\,d\theta
+\leq C'_M(1+\log R)
+R^{\max(\mu+N,0)-M(1-\delta)}.
+\]</span></p>
+<p>Since <span class="math inline">\(1-\delta&gt;0\)</span>, this is smaller than every prescribed inverse power after increasing <span class="math inline">\(M\)</span>.</p>
+<p>On the second region,</p>
+<p><span class="math display">\[
+A_\xi=|\phi_x'-\xi|^2+r^2|\phi_\theta'|^2
 \geq c_1(r+R)^2.
 \tag{2.3}
-\]">\[
-|\phi_x&#x27;-\xi|^2+r^2|\phi_\theta&#x27;|^2
-\geq c_1(r+R)^2.
-\tag{2.3}
-\]</span>
-<p>For <span class="math" data-tex="\(r/R\)">\(r/R\)</span> in a compact interval this follows by compactness and exclusion of the simultaneous critical equations. For <span class="math" data-tex="\(r/R\)">\(r/R\)</span> large it follows from the original nonvanishing-gradient bound, since subtracting <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is a small perturbation on that scale. Thus the operator (1.3), with <span class="math" data-tex="\(\phi_x&#x27;\)">\(\phi_x&#x27;\)</span> replaced by <span class="math" data-tex="\(\phi_x&#x27;-\xi\)">\(\phi_x&#x27;-\xi\)</span>, has uniform symbol coefficients for <span class="math" data-tex="\(r\asymp r+R\)">\(r\asymp r+R\)</span>. Its transpose lowers the amplitude order by <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. After <span class="math" data-tex="\(M\)">\(M\)</span> iterations the integral is bounded by</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>To prove this, write <span class="math inline">\(\omega=\theta/r\)</span>, <span class="math inline">\(\eta=\xi/R\)</span>, and <span class="math inline">\(t=r/R\)</span>. When <span class="math inline">\(t\)</span> ranges in a fixed compact interval bounded away from zero, use the compact set of <span class="math inline">\((x,\omega)\in K\)</span> with <span class="math inline">\(x\in\operatorname{supp}\zeta\)</span>, <span class="math inline">\(|\omega|=1\)</span>, together with <span class="math inline">\(\eta\in\overline V\cap S^{n-1}\)</span>. A zero of <span class="math inline">\((t\phi_x'(x,\omega)-\eta,t\phi_\theta'(x,\omega))\)</span> would yield a critical covector in the excluded product neighborhood. For sufficiently large <span class="math inline">\(t\)</span>, the original estimate gives</p>
+<p><span class="math display">\[
+\bigl(|\phi_x'-\xi|^2+r^2|\phi_\theta'|^2\bigr)^{1/2}
+\geq c_0r-R\geq c_0r/2.
+\]</span></p>
+<p>These two bounds imply (2.3) on the amplitude support and in a fixed surrounding conic neighborhood.</p>
+<p>Replace <span class="math inline">\(\phi_x'\)</span> by <span class="math inline">\(\phi_x'-\xi\)</span> in (1.3), and <span class="math inline">\(A\)</span> by <span class="math inline">\(A_\xi\)</span>, obtaining <span class="math inline">\(L_\xi\)</span>. On <span class="math inline">\(r\geq cR/2\)</span>, its base coefficients have bounds <span class="math inline">\(C_{\alpha,\beta}r^{-1-|\alpha|}\)</span> and its phase-variable coefficients have bounds <span class="math inline">\(C_{\alpha,\beta}r^{-|\alpha|}\)</span>, uniformly for <span class="math inline">\(\xi\in V\)</span>. Indeed <span class="math inline">\(R\leq2r/c\)</span>, (2.3) controls the denominator, and all differentiated numerators have their ordinary homogeneous bounds. Thus <span class="math inline">\(L_\xi^t\)</span> lowers general symbol order by <span class="math inline">\(\kappa\)</span>, uniformly including all derivatives of both cutoff families. After <span class="math inline">\(M\)</span> integrations the absolute integral is at most</p>
+<p><span class="math display">\[
 C_M\int_{r\geq cR/2}
 \langle\theta\rangle^{\mu-M\kappa}\,d\theta
-\leq C_M&#x27;R^{\mu+N-M\kappa},
-\]">\[
-C_M\int_{r\geq cR/2}
-\langle\theta\rangle^{\mu-M\kappa}\,d\theta
-\leq C_M&#x27;R^{\mu+N-M\kappa},
-\]</span>
-<p>once the exponent is integrable. Choose <span class="math" data-tex="\(M\)">\(M\)</span> arbitrarily large. The estimates are uniform in the chosen frequency cone and apply to the cutoff approximations defining <span class="math" data-tex="\(u\)">\(u\)</span>; passage to their limit is justified by Theorem 1.1. This gives the rapid Fourier decay characterizing absence from the wavefront set. ∎</p>
-<p>For a clean phase, the possible singular directions therefore lie on its Lagrangian image. The inclusion can be strict: a vanishing amplitude can remove all or part of that image.</p>
-<h2 id="order-is-fixed-by-the-dimension-balance"><span id="3-order-is-fixed-by-the-dimension-balance"></span><span id="section-3"></span>3. Order is fixed by the dimension balance</h2>
-<p>Let <span class="math" data-tex="\(n=\dim X\)">\(n=\dim X\)</span>. For a nondegenerate phase with <span class="math" data-tex="\(N\)">\(N\)</span> variables, we normalize a local half-density by</p>
-<span class="math math-display" data-tex="\[
+\leq C'_M R^{\mu+N-M\kappa},
+\]</span></p>
+<p>when <span class="math inline">\(\mu-M\kappa&lt;-N\)</span>. Increase <span class="math inline">\(M\)</span> to obtain every prescribed inverse power.</p>
+<p>For each <span class="math inline">\(q\)</span>, the two regions therefore give</p>
+<p><span class="math display">\[
+|\widehat{\zeta u_\varepsilon}(\xi)|
+\leq C_q(1+|\xi|)^{-q},\qquad \xi\in V,\ |\xi|\geq2,
+\]</span></p>
+<p>with <span class="math inline">\(C_q\)</span> independent of <span class="math inline">\(\varepsilon\)</span>. For each fixed <span class="math inline">\(\xi\)</span>, Theorem 1.1 applied to the test function <span class="math inline">\(\zeta(x)e^{-ix\cdot\xi}\)</span> gives <span class="math inline">\(\widehat{\zeta u_\varepsilon}(\xi)\to\widehat{\zeta u}(\xi)\)</span>. The same bound passes to this limit, giving the Fourier decay that excludes <span class="math inline">\((x_0,\xi_0)\)</span> from the wavefront set. ∎</p>
+<p>This inclusion is [Hörmander FIO I], Proposition 2.5.7, p. 123. For a clean phase, the possible singular directions lie on its Lagrangian image. The inclusion can be strict: a vanishing amplitude can remove all or part of that image.</p>
+<span aria-hidden="true" id="3-order-is-fixed-by-the-dimension-balance"></span><span aria-hidden="true" id="section-3"></span><h2 id="order-is-fixed-by-the-dimension-balance">3. Order is fixed by the dimension balance</h2>
+<p>The geometric conventions are proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md#f0-inputs-orders-and-support-conventions">F0–F1</a>. A phase is clean of excess <span class="math inline">\(e\)</span> when its critical set <span class="math inline">\(C_\phi=\{\phi_\theta=0\}\)</span> is a smooth manifold of dimension <span class="math inline">\(n+e\)</span>, with tangent space <span class="math inline">\(\ker d(\phi_\theta)\)</span> and rank <span class="math inline">\(N-e\)</span>. Nondegeneracy is the case <span class="math inline">\(e=0\)</span>.</p>
+<p>Let <span class="math inline">\(n=\dim X\)</span>. For a nondegenerate phase with <span class="math inline">\(N\)</span> variables, we normalize a local half-density by</p>
+<p><span class="math display">\[
 u(x)|dx|^{1/2}
 =(2\pi)^{-(n+2N)/4}
 \left(\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta\right)|dx|^{1/2},
 \qquad
 a\in S^{m+(n-2N)/4}.
 \tag{3.1}
-\]">\[
-u(x)|dx|^{1/2}
-=(2\pi)^{-(n+2N)/4}
-\left(\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta\right)|dx|^{1/2},
-\qquad
-a\in S^{m+(n-2N)/4}.
-\tag{3.1}
-\]</span>
-<p>The number <span class="math" data-tex="\(m\)">\(m\)</span> is the order of this local Lagrangian representation. A half-density transforms by the square root of the absolute coordinate Jacobian. This removes an arbitrary choice of volume from the geometric amplitude later on.</p>
-<p>For a clean phase of excess <span class="math" data-tex="\(e\)">\(e\)</span>, use instead</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>The number <span class="math inline">\(m\)</span> is the order of this local Lagrangian representation. A half-density transforms by the square root of the absolute coordinate Jacobian. This removes an arbitrary choice of volume from the geometric amplitude later on.</p>
+<p>For a clean phase of excess <span class="math inline">\(e\)</span>, use instead</p>
+<p><span class="math display">\[
 u(x)|dx|^{1/2}
 =(2\pi)^{-(n+2N-2e)/4}
 \left(\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta\right)|dx|^{1/2},
 \qquad
 a\in S^{m+(n-2N-2e)/4}.
 \tag{3.2}
-\]">\[
-u(x)|dx|^{1/2}
-=(2\pi)^{-(n+2N-2e)/4}
-\left(\int e^{i\phi(x,\theta)}a(x,\theta)\,d\theta\right)|dx|^{1/2},
-\qquad
-a\in S^{m+(n-2N-2e)/4}.
-\tag{3.2}
-\]</span>
-<p>Both formulas have the same effective order. The extra <span class="math" data-tex="\(-e/2\)">\(-e/2\)</span> in the amplitude compensates for the loss of <span class="math" data-tex="\(e\)">\(e\)</span> cancellation directions. These formulas are for ordinary symbols <span class="math" data-tex="\(S_{1,0}\)">\(S_{1,0}\)</span>. A different derivative-loss class has its own remainder scale.</p>
+\]</span></p>
+<p>Both formulas have the same effective order. The extra <span class="math inline">\(-e/2\)</span> in the amplitude compensates for the loss of <span class="math inline">\(e\)</span> cancellation directions. These formulas are for ordinary symbols <span class="math inline">\(S_{1,0}\)</span>. A different derivative-loss class has its own remainder scale.</p>
 <p>The next theorem derives the balance and a usable leading coefficient. It compares local representations; the invariant symbol and the intrinsic iterated-regularity characterization require further results.</p>
-<h2 id="fourier-reduction-near-a-frequency-graph"><span id="4-fourier-reduction-near-a-frequency-graph"></span><span id="section-4"></span>4. Fourier reduction near a frequency graph</h2>
+<span aria-hidden="true" id="4-fourier-reduction-near-a-frequency-graph"></span><span aria-hidden="true" id="section-4"></span><h2 id="fourier-reduction-near-a-frequency-graph">4. Fourier reduction near a frequency graph</h2>
 <p>Choose base coordinates in which the Lagrangian is</p>
-<span class="math math-display" data-tex="\[
-\Lambda=\{(H&#x27;(\xi),\xi)\},
-\]">\[
-\Lambda=\{(H&#x27;(\xi),\xi)\},
-\]</span>
-<p>where <span class="math" data-tex="\(H\)">\(H\)</span> is homogeneous of degree one, as in Theorem 6.2 of <a href="phase-space-and-generating-families.html">Phase space and generating families</a>. Let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be a clean phase for a small part of that Lagrangian. Restrict its amplitude to a sufficiently small compact-base cone about a point of its critical set. On this cone <span class="math" data-tex="\(|\phi_x&#x27;|\asymp|\theta|\)">\(|\phi_x&#x27;|\asymp|\theta|\)</span>. Compactly supported cutoffs in the local fiber coordinates are included in the amplitude.</p>
+<p><span class="math display">\[
+\Lambda=\{(H'(\xi),\xi)\},
+\]</span></p>
+<p>where <span class="math inline">\(H\)</span> is homogeneous of degree one, as in C3–C4 of <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md#c4-the-homogeneous-generating-function-and-its-extension">Conic frequency coordinates</a>. Let <span class="math inline">\(\phi\)</span> be a clean phase for a small part of that Lagrangian. Restrict its amplitude to a sufficiently small compact-base cone about a point of its critical set. On this cone <span class="math inline">\(|\phi_x'|\asymp|\theta|\)</span>. Compactly supported cutoffs in the local fiber coordinates are included in the amplitude.</p>
 <p><strong>Theorem 4.1 (local Fourier-symbol reduction).</strong> For (3.2), the function</p>
-<span class="math math-display" data-tex="\[
+<p><span class="math display">\[
 v(\xi)=e^{iH(\xi)}\widehat u(\xi)
-\]">\[
-v(\xi)=e^{iH(\xi)}\widehat u(\xi)
-\]</span>
-<p>is a symbol of order <span class="math" data-tex="\(m-n/4\)">\(m-n/4\)</span> on the corresponding high-frequency cone, modulo a rapidly decreasing symbol. In the nondegenerate case <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, write</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>is a symbol of order <span class="math inline">\(m-n/4\)</span> on the corresponding high-frequency cone, modulo a rapidly decreasing symbol. In the nondegenerate case <span class="math inline">\(e=0\)</span>, write</p>
+<p><span class="math display">\[
 G(x,\theta)=
 \begin{pmatrix}
-\phi_{xx}&#x27;&#x27;&amp;\phi_{x\theta}&#x27;&#x27;\\
-\phi_{\theta x}&#x27;&#x27;&amp;\phi_{\theta\theta}&#x27;&#x27;
+\phi_{xx}''&amp;\phi_{x\theta}''\\
+\phi_{\theta x}''&amp;\phi_{\theta\theta}''
 \end{pmatrix}.
-\]">\[
-G(x,\theta)=
-\begin{pmatrix}
-\phi_{xx}&#x27;&#x27;&amp;\phi_{x\theta}&#x27;&#x27;\\
-\phi_{\theta x}&#x27;&#x27;&amp;\phi_{\theta\theta}&#x27;&#x27;
-\end{pmatrix}.
-\]</span>
-<p>At the unique point determined locally by <span class="math" data-tex="\(\phi_\theta&#x27;=0\)">\(\phi_\theta&#x27;=0\)</span>, <span class="math" data-tex="\(\phi_x&#x27;=\xi\)">\(\phi_x&#x27;=\xi\)</span>, this matrix is invertible, and</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>At the unique point determined locally by <span class="math inline">\(\phi_\theta'=0\)</span>, <span class="math inline">\(\phi_x'=\xi\)</span>, this matrix is invertible, and</p>
+<p><span class="math display">\[
 v(\xi)-
 (2\pi)^{n/4}
 e^{i\pi\operatorname{sgn}G/4}
 \frac{a(x,\theta)}{|\det G(x,\theta)|^{1/2}}
 \in S^{m-n/4-1}.
 \tag{4.1}
-\]">\[
-v(\xi)-
-(2\pi)^{n/4}
-e^{i\pi\operatorname{sgn}G/4}
-\frac{a(x,\theta)}{|\det G(x,\theta)|^{1/2}}
-\in S^{m-n/4-1}.
-\tag{4.1}
-\]</span>
-<p>There is a full expansion with successive orders <span class="math" data-tex="\(m-n/4-j\)">\(m-n/4-j\)</span>. Every remainder has the differentiated symbol estimates in its stated order.</p>
-<p>For excess <span class="math" data-tex="\(e\)">\(e\)</span>, split <span class="math" data-tex="\(\theta=(\theta&#x27;,\theta&#x27;&#x27;)\)">\(\theta=(\theta&#x27;,\theta&#x27;&#x27;)\)</span>, with <span class="math" data-tex="\(\dim\theta&#x27;&#x27;=e\)">\(\dim\theta&#x27;&#x27;=e\)</span>, so that <span class="math" data-tex="\(\theta&#x27;&#x27;\)">\(\theta&#x27;&#x27;\)</span> locally parametrizes the fiber</p>
-<span class="math math-display" data-tex="\[
-C_\xi=\{(x,\theta):\phi_\theta&#x27;=0,\ \phi_x&#x27;=\xi\}.
-\]">\[
-C_\xi=\{(x,\theta):\phi_\theta&#x27;=0,\ \phi_x&#x27;=\xi\}.
-\]</span>
-<p>Replace <span class="math" data-tex="\(G\)">\(G\)</span> by the Hessian <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> in the <span class="math" data-tex="\((x,\theta&#x27;)\)">\((x,\theta&#x27;)\)</span> directions. The leading coefficient becomes</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>There is a full expansion with successive orders <span class="math inline">\(m-n/4-j\)</span>. Every remainder has the differentiated symbol estimates in its stated order.</p>
+<p>For excess <span class="math inline">\(e\)</span>, split <span class="math inline">\(\theta=(\theta',\theta'')\)</span>, with <span class="math inline">\(\dim\theta''=e\)</span>, so that <span class="math inline">\(\theta''\)</span> locally parametrizes the fiber</p>
+<p><span class="math display">\[
+C_\xi=\{(x,\theta):\phi_\theta'=0,\ \phi_x'=\xi\}.
+\]</span></p>
+<p>Replace <span class="math inline">\(G\)</span> by the Hessian <span class="math inline">\(G'\)</span> in the <span class="math inline">\((x,\theta')\)</span> directions. The leading coefficient becomes</p>
+<p><span class="math display">\[
 (2\pi)^{n/4}
 \int_{C_\xi}
-e^{i\pi\operatorname{sgn}G&#x27;/4}
-\frac{a(x,\theta)}{|\det G&#x27;(x,\theta)|^{1/2}}\,d\theta&#x27;&#x27;.
+e^{i\pi\operatorname{sgn}G'/4}
+\frac{a(x,\theta)}{|\det G'(x,\theta)|^{1/2}}\,|d\theta''|.
 \tag{4.2}
-\]">\[
-(2\pi)^{n/4}
-\int_{C_\xi}
-e^{i\pi\operatorname{sgn}G&#x27;/4}
-\frac{a(x,\theta)}{|\det G&#x27;(x,\theta)|^{1/2}}\,d\theta&#x27;&#x27;.
-\tag{4.2}
-\]</span>
+\]</span></p>
 <p>The same order and remainder conclusion holds. These are local fiber integrals on the compact part of the fiber met by the amplitude.</p>
-<p><strong>Proof.</strong> The Fourier transform has phase <span class="math" data-tex="\(\phi(x,\theta)-x\cdot\xi\)">\(\phi(x,\theta)-x\cdot\xi\)</span>. If <span class="math" data-tex="\(|\theta|\)">\(|\theta|\)</span> is much larger or much smaller than <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>, then <span class="math" data-tex="\(|\phi_x&#x27;-\xi|\)">\(|\phi_x&#x27;-\xi|\)</span> is bounded below by a fixed positive multiple of <span class="math" data-tex="\(|\theta|+|\xi|\)">\(|\theta|+|\xi|\)</span>. Repeated integration by parts in <span class="math" data-tex="\(x\)">\(x\)</span> makes those regions rapidly decreasing in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, with every derivative. Differentiating in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> inserts bounded powers of <span class="math" data-tex="\(x\)">\(x\)</span>; the extra powers from an order estimate are absorbed by more integrations. Thus insert a cutoff restricting <span class="math" data-tex="\(|\theta|\asymp|\xi|\)">\(|\theta|\asymp|\xi|\)</span>.</p>
-<p>Set <span class="math" data-tex="\(R=|\xi|\)">\(R=|\xi|\)</span>, <span class="math" data-tex="\(\eta=\xi/R\)">\(\eta=\xi/R\)</span>, and <span class="math" data-tex="\(\theta=R\vartheta\)">\(\theta=R\vartheta\)</span>. The phase of <span class="math" data-tex="\(v\)">\(v\)</span> becomes <span class="math" data-tex="\(R\Psi\)">\(R\Psi\)</span>, where</p>
-<span class="math math-display" data-tex="\[
-\Psi(x,\vartheta,\eta)=
-\phi(x,\vartheta)+H(\eta)-x\cdot\eta.
-\]">\[
-\Psi(x,\vartheta,\eta)=
-\phi(x,\vartheta)+H(\eta)-x\cdot\eta.
-\]</span>
-<p>Its critical equations are <span class="math" data-tex="\(\phi_\vartheta&#x27;=0\)">\(\phi_\vartheta&#x27;=0\)</span> and <span class="math" data-tex="\(\phi_x&#x27;=\eta\)">\(\phi_x&#x27;=\eta\)</span>. On the critical set, <span class="math" data-tex="\(x=H&#x27;(\eta)\)">\(x=H&#x27;(\eta)\)</span>, Euler's identity gives <span class="math" data-tex="\(\phi=0\)">\(\phi=0\)</span>, and <span class="math" data-tex="\(H(\eta)=H&#x27;(\eta)\cdot\eta\)">\(H(\eta)=H&#x27;(\eta)\cdot\eta\)</span>. Hence the critical value is zero.</p>
-<p>The critical set has dimension <span class="math" data-tex="\(e\)">\(e\)</span>. Its tangent kernel is exactly the kernel of the Hessian of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, because the critical equations are its full gradient equations and the clean critical map has fibers of dimension <span class="math" data-tex="\(e\)">\(e\)</span>. Thus it is a clean critical manifold in the <span class="math" data-tex="\(n+N\)">\(n+N\)</span> integration variables. For <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, the Hessian is invertible.</p>
-<p>The amplitude <span class="math" data-tex="\(a(x,R\vartheta)\)">\(a(x,R\vartheta)\)</span> is a symbol in <span class="math" data-tex="\(R\)">\(R\)</span> of order</p>
-<span class="math math-display" data-tex="\[
-\mu=m+(n-2N-2e)/4
-\]">\[
-\mu=m+(n-2N-2e)/4
-\]</span>
-<p>with bounded derivatives in <span class="math" data-tex="\(x,\vartheta,\eta\)">\(x,\vartheta,\eta\)</span> on the fixed compact annulus. The measure contributes <span class="math" data-tex="\(R^N\)">\(R^N\)</span>, and clean stationary phase contributes <span class="math" data-tex="\(R^{-(n+N-e)/2}\)">\(R^{-(n+N-e)/2}\)</span>. Their combined order is</p>
-<span class="math math-display" data-tex="\[
-\mu+N-\frac{n+N-e}{2}=m-\frac n4.
-\tag{4.3}
-\]">\[
-\mu+N-\frac{n+N-e}{2}=m-\frac n4.
-\tag{4.3}
-\]</span>
-<p>The prefactor in (3.2) times the stationary-phase constant is</p>
-<span class="math math-display" data-tex="\[
-(2\pi)^{-(n+2N-2e)/4}
-(2\pi)^{(n+N-e)/2}=(2\pi)^{n/4}.
-\]">\[
-(2\pi)^{-(n+2N-2e)/4}
-(2\pi)^{(n+N-e)/2}=(2\pi)^{n/4}.
-\]</span>
-<p>The symbol-remainder result of <a href="stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a> supplies all <span class="math" data-tex="\(R\)">\(R\)</span> derivatives and angular-parameter derivatives, in successively lower orders. Polar-coordinate differentiation converts them to the ordinary differentiated symbol bounds in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
-<p>In the nondegenerate case, the Hessian of the scaled phase is <span class="math" data-tex="\(G(x,\vartheta)\)">\(G(x,\vartheta)\)</span>. Homogeneity gives</p>
-<span class="math math-display" data-tex="\[
-\det G(x,R\vartheta)=R^{n-N}\det G(x,\vartheta).
-\]">\[
-\det G(x,R\vartheta)=R^{n-N}\det G(x,\vartheta).
-\]</span>
-<p>This follows by scaling the first <span class="math" data-tex="\(n\)">\(n\)</span> rows by <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> and the last <span class="math" data-tex="\(N\)">\(N\)</span> columns by <span class="math" data-tex="\(R\)">\(R\)</span> in the matrix at <span class="math" data-tex="\(R\vartheta\)">\(R\vartheta\)</span>. The resulting matrix is the one at <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>. Congruence by a positive diagonal scaling preserves its signature. Returning to the original variables gives (4.1).</p>
-<p>For excess <span class="math" data-tex="\(e\)">\(e\)</span>, the differential of <span class="math" data-tex="\(\theta&#x27;&#x27;\)">\(\theta&#x27;&#x27;\)</span> on each fiber can be chosen invertible, since a critical-map fiber has <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span> and an <span class="math" data-tex="\(e\)">\(e\)</span>-dimensional phase-variable tangent. With <span class="math" data-tex="\(\theta&#x27;&#x27;\)">\(\theta&#x27;&#x27;\)</span> fixed, the Hessian in <span class="math" data-tex="\((x,\theta&#x27;)\)">\((x,\theta&#x27;)\)</span> is invertible: a vector in its kernel extends to a full Hessian-kernel vector with <span class="math" data-tex="\(\delta\theta&#x27;&#x27;=0\)">\(\delta\theta&#x27;&#x27;=0\)</span>, and hence is zero. Equivalently, the full symmetric Hessian has radical equal to the fiber tangent; every complementary subspace carries a nondegenerate restriction. Its determinant is homogeneous of degree <span class="math" data-tex="\(n-N+e\)">\(n-N+e\)</span>; the physical fiber measure <span class="math" data-tex="\(d\theta&#x27;&#x27;\)">\(d\theta&#x27;&#x27;\)</span> contributes degree <span class="math" data-tex="\(e\)">\(e\)</span>. Undoing the scaling therefore gives exactly (4.2), with the order in (4.3). The normal-density transformation rule in clean stationary phase makes the fiber expression independent of this split. ∎</p>
-<h2 id="changing-phase-variables-and-adding-a-quadratic-block"><span id="5-changing-phase-variables-and-adding-a-quadratic-block"></span><span id="section-5"></span>5. Changing phase variables and adding a quadratic block</h2>
-<p>An invertible homogeneous change <span class="math" data-tex="\(\theta=T(x,\eta)\)">\(\theta=T(x,\eta)\)</span> leaves an oscillatory distribution unchanged when its amplitude is replaced by</p>
-<span class="math math-display" data-tex="\[
+<p><strong>Proof.</strong> Localize the base support compactly in the chosen coordinate neighborhood. By homogeneity and the restriction to a sufficiently small phase cone, there are constants <span class="math inline">\(0&lt;c_0&lt;C_0\)</span> such that</p>
+<p><span class="math display">\[
+c_0|\theta|\leq|\phi_x'(x,\theta)|\leq C_0|\theta|
+\]</span></p>
+<p>on the amplitude support. Put <span class="math inline">\(\mu=m+(n-2N-2e)/4\)</span>, the amplitude order in (3.2), and write <span class="math inline">\(R=|\xi|\geq1\)</span>. Choose constants <span class="math inline">\(0&lt;c&lt;C\)</span> so small and large, respectively, that <span class="math inline">\(|\phi_x'-\xi|\geq c_1(|\theta|+R)\)</span> where <span class="math inline">\(|\theta|\leq2cR\)</span> or <span class="math inline">\(|\theta|\geq CR/2\)</span>. Choose a smooth cutoff <span class="math inline">\(\chi_0(t)\)</span> supported in <span class="math inline">\((c,C)\)</span> and equal to one on <span class="math inline">\([2c,C/2]\)</span>, enlarging <span class="math inline">\(C\)</span> and decreasing <span class="math inline">\(c\)</span> if necessary. The omitted frequencies are therefore nonstationary in <span class="math inline">\(x\)</span>.</p>
+<p>On the omitted part use</p>
+<p><span class="math display">\[
+L_\xi=\frac{\phi_x'-\xi}{i|\phi_x'-\xi|^2}\cdot\partial_x,
+\qquad
+L_\xi^t b=-\operatorname{div}_x\!\left(
+\frac{\phi_x'-\xi}{i|\phi_x'-\xi|^2}b\right).
+\]</span></p>
+<p>Every iteration supplies an inverse power of <span class="math inline">\(R\)</span> on the smaller-frequency region and of <span class="math inline">\(|\theta|\)</span> on the larger-frequency region. Base derivatives of an ordinary symbol preserve its order. The smaller-frequency integral has at most a fixed polynomial growth, with a possible logarithm, before these inverse powers; for the larger-frequency integral, choose <span class="math inline">\(M&gt;\mu+N\)</span> and use</p>
+<p><span class="math display">\[
+\int_{|\theta|\geq CR/2}|\theta|^{\mu-M}\,d\theta
+\leq C_M R^{\mu+N-M}.
+\]</span></p>
+<p>Any fixed <span class="math inline">\(\xi\)</span> derivative inserts bounded powers of <span class="math inline">\(x\)</span> and differentiates smooth cutoff or integration-by-parts coefficients. Increasing <span class="math inline">\(M\)</span> gives arbitrary decay for all these derivatives. Perform this argument first with the frequency regularization of Theorem 1.1; the integrable majorants are uniform in that cutoff and pass each fixed frequency derivative through the defining distributional limit. Thus the omitted contribution belongs to <span class="math inline">\(S^{-\infty}\)</span>. Since the fixed-order derivatives of <span class="math inline">\(e^{iH(\xi)}\)</span> are bounded on the chosen high-frequency cone, this remains true after multiplying by that factor.</p>
+<p>In the annular part set</p>
+<p><span class="math display">\[
+\eta=\xi/R,\qquad\theta=R\vartheta,
+\qquad
+\Psi(x,\vartheta,\eta)=\phi(x,\vartheta)+H(\eta)-x\cdot\eta.
+\]</span></p>
+<p>All cutoffs are included in</p>
+<p><span class="math display">\[
+A_R(x,\vartheta,\eta)=\chi_0(|\vartheta|)a(x,R\vartheta).
+\]</span></p>
+<p>Additional local partitions, when needed, are smooth in the angular parameter and supported in fixed compact charts. The support of <span class="math inline">\(A_R\)</span> is fixed and compact in <span class="math inline">\((x,\vartheta)\)</span>, with <span class="math inline">\(\vartheta\)</span> in a compact annulus. The ordinary symbol estimates and the chain rule give</p>
+<p><span class="math display">\[
+\left|\partial_R^k\partial_x^\alpha
+\partial_\vartheta^\gamma\partial_\eta^\beta A_R\right|
+\leq C_{k,\alpha,\gamma,\beta}R^{\mu-k},
+\qquad
+\mu=m+\frac{n-2N-2e}{4}.
+\tag{4.4}
+\]</span></p>
+<p>For example, every <span class="math inline">\(\vartheta\)</span> derivative introduces a factor <span class="math inline">\(R\)</span> and one frequency derivative of <span class="math inline">\(a\)</span>, whose symbol estimate gives the compensating inverse power. These estimates remain valid after the fixed smooth coordinate changes used below.</p>
+<p>The critical equations of <span class="math inline">\(\Psi\)</span> are <span class="math inline">\(\phi_\vartheta'=0\)</span> and <span class="math inline">\(\phi_x'=\eta\)</span>. On their solution set, the frequency graph gives <span class="math inline">\(x=H'(\eta)\)</span>. Euler’s identity gives <span class="math inline">\(\phi=0\)</span> there and <span class="math inline">\(H(\eta)=H'(\eta)\cdot\eta\)</span>, so the critical value of <span class="math inline">\(\Psi\)</span> is zero for every angular parameter.</p>
+<p>Let <span class="math inline">\(C_\phi\)</span> be the phase critical set and put <span class="math inline">\(q=\phi_x'|_{C_\phi}\)</span>. F1 of <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md#f1-clean-geometry-and-a-transverse-fourier-test">Clean geometry and a transverse Fourier test</a> gives rank <span class="math inline">\(n\)</span> for the clean critical map, and frequency projection on the graph is a local diffeomorphism. Hence <span class="math inline">\(q\)</span> is a submersion. Its level set <span class="math inline">\(C_\eta\)</span> is a smooth manifold of dimension <span class="math inline">\(e\)</span> and</p>
+<p><span class="math display">\[
+T C_\eta
+=\ker d(\phi_\vartheta')\cap\ker d(\phi_x')
+=\ker\Psi_{(x,\vartheta)(x,\vartheta)}''.
+\tag{4.5}
+\]</span></p>
+<p>The first equality uses the clean tangent condition. The second follows because these two differentials are the two row blocks of the Hessian. Thus <span class="math inline">\(\Psi\)</span> has a clean critical manifold with normal dimension <span class="math inline">\(r=n+N-e\)</span>. After shrinking the parameter patch and using finitely many compact clean charts, their normal Hessians are uniformly invertible. On the remaining compact support the full gradient has a positive uniform lower bound.</p>
+<p>Apply Theorem 7.2, including its symbol-family conclusion from Corollary 6.1, of <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#7-cancellation-normal-to-a-critical-manifold">Stationary phase and critical manifolds</a> to this family, using (4.4). The factor <span class="math inline">\(R^N\)</span> comes from the measure change. Clean stationary phase contributes <span class="math inline">\(R^{-r/2}\)</span>, and</p>
+<p><span class="math display">\[
+\mu+N-r/2=m-n/4=:s.\tag{4.3}
+\]</span></p>
+<p>The product of the normalization in (3.2) and the stationary-phase constant is</p>
+<p><span class="math display">\[
+(2\pi)^{-(n+2N-2e)/4}(2\pi)^{r/2}=(2\pi)^{n/4}.
+\]</span></p>
+<p>For each <span class="math inline">\(L\)</span>, write the resulting expansion as <span class="math inline">\(\sum_{j&lt;L}B_j(R,\eta)+T_L(R,\eta)\)</span>. The normalized stationary-phase remainder estimates give</p>
+<p><span class="math display">\[
+|\partial_R^k\partial_\eta^\beta B_j|
+\leq C_{j,k,\beta}R^{s-j-k},
+\qquad
+|\partial_R^k\partial_\eta^\beta T_L|
+\leq C_{L,k,\beta}R^{s-L-k}.
+\tag{4.6}
+\]</span></p>
+<p>Here angular derivatives are taken in a fixed smooth sphere chart. There is no varying critical-value exponential to estimate, since the critical value is zero. With a sphere-tangent vector field <span class="math inline">\(V_j\)</span>, Cartesian frequency differentiation has the form</p>
+<p><span class="math display">\[
+\partial_{\xi_j}=\eta_j\partial_R+R^{-1}V_j.
+\]</span></p>
+<p>Iteration of this identity and (4.6) proves all ordinary symbol estimates, including <span class="math inline">\(T_L\in S^{s-L}\)</span>. This is an asymptotic symbol expansion; homogeneous classical coefficients are not assumed for a general ordinary symbol amplitude.</p>
+<p>It remains to express the leading term in physical variables. In the nondegenerate case, the scaled Hessian is <span class="math inline">\(G(x,\vartheta)\)</span>. Put</p>
+<p><span class="math display">\[
+D_R=\operatorname{diag}(R^{1/2}I_n,R^{-1/2}I_N).
+\]</span></p>
+<p>Homogeneity gives <span class="math inline">\(G(x,R\vartheta)=D_R^T G(x,\vartheta)D_R\)</span>, so</p>
+<p><span class="math display">\[
+\det G(x,R\vartheta)=R^{n-N}\det G(x,\vartheta)
+\]</span></p>
+<p>and its signature is unchanged. The scaled leading term has the factor <span class="math inline">\(R^{N-(n+N)/2}\)</span>; combining it with this determinant identity gives exactly (4.1).</p>
+<p>For excess <span class="math inline">\(e\)</span>, a tangent to a fixed-frequency fiber has <span class="math inline">\(\delta x=0\)</span>: its critical-map image has <span class="math inline">\(\delta\xi=0\)</span>, and the graph tangent equation is <span class="math inline">\(\delta x=H''(\xi)\delta\xi\)</span>. Choose <span class="math inline">\(e\)</span> of the original phase coordinates whose projection is invertible on that tangent at the chosen point, and preserve this fixed linear split after shrinking the patch. Call them <span class="math inline">\(\theta''\)</span>, with the remaining coordinates <span class="math inline">\(\theta'\)</span>. The slice <span class="math inline">\(W=\ker d\theta''\)</span> complements the full Hessian’s radical. If a vector of <span class="math inline">\(W\)</span> is Hessian-orthogonal to <span class="math inline">\(W\)</span>, it is also orthogonal to the radical and hence to the whole tangent space. It belongs to the radical and therefore to the zero intersection <span class="math inline">\(W\cap T C_\xi\)</span>. Thus <span class="math inline">\(G'\)</span>, the restriction in <span class="math inline">\((x,\theta')\)</span>, is nondegenerate.</p>
+<p>Use</p>
+<p><span class="math display">\[
+D_R'=\operatorname{diag}(R^{1/2}I_n,R^{-1/2}I_{N-e}).
+\]</span></p>
+<p>Then <span class="math inline">\(G'(x,R\vartheta)=(D_R')^T G'(x,\vartheta)D_R'\)</span>, giving determinant degree <span class="math inline">\(n-N+e\)</span> and the same signature. At fixed frequency the fiber is a graph <span class="math inline">\((x,\theta')=Y(\theta'')\)</span>; translating these transverse variables by <span class="math inline">\(Y\)</span> has ambient Jacobian one. The clean leading density of Theorem 7.2 is consequently</p>
+<p><span class="math display">\[
+\frac{a(x,\theta)}{|\det G'(x,\theta)|^{1/2}}\,|d\theta''|.
+\]</span></p>
+<p>The physical fiber density contributes degree <span class="math inline">\(e\)</span>. Since <span class="math inline">\(\vartheta''=\theta''/R\)</span>, undoing the scaling has net factor</p>
+<p><span class="math display">\[
+R^{N-r/2}R^{-e}R^{(n-N+e)/2}=1.
+\]</span></p>
+<p>This proves (4.2). Dividing the ambient density by the Hessian density on the normal quotient is independent of the chosen complement: a normal frame change multiplies both by its absolute determinant, and adding tangent vectors changes no Hessian pairing. Thus the fiber expression is independent of the selected split. The same remainder conclusion follows from (4.6). ∎</p>
+<span aria-hidden="true" id="5-changing-phase-variables-and-adding-a-quadratic-block"></span><span aria-hidden="true" id="section-5"></span><h2 id="changing-phase-variables-and-adding-a-quadratic-block">5. Changing phase variables and adding a quadratic block</h2>
+<p>An invertible homogeneous change <span class="math inline">\(\theta=T(x,\eta)\)</span> leaves an oscillatory distribution unchanged when its amplitude is replaced by</p>
+<p><span class="math display">\[
 \widetilde a(x,\eta)=
-a(x,T(x,\eta))|\det T_\eta&#x27;(x,\eta)|.
+a(x,T(x,\eta))|\det T_\eta'(x,\eta)|.
 \tag{5.1}
-\]">\[
-\widetilde a(x,\eta)=
-a(x,T(x,\eta))|\det T_\eta&#x27;(x,\eta)|.
-\tag{5.1}
-\]</span>
-<p>On fixed compact-base cones the map and its inverse make the two frequency sizes comparable. Their homogeneity and the chain rule preserve the ordinary symbol order. Formula (5.1) follows first with bounded frequency support from change of variables, then with unrestricted frequency support by the bounded-family convergence in Theorem 1.1. The cutoffs need not have the same shape after transformation; their equality follows from that same defining estimate.</p>
-<p>A stabilization adds new phase variables while preserving the Lagrangian. Homogeneity requires some care. Let <span class="math" data-tex="\(r(\theta)&gt;0\)">\(r(\theta)&gt;0\)</span> be smooth and homogeneous of degree one, comparable to <span class="math" data-tex="\(|\theta|\)">\(|\theta|\)</span> on the working cone, and let <span class="math" data-tex="\(A\)">\(A\)</span> be a real symmetric invertible <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span> matrix. Set</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>On fixed compact-base cones, the map and its inverse make the two frequency sizes comparable. The derivatives of a degree-one map satisfy <span class="math inline">\(\partial_\eta^\alpha\partial_x^\beta T=O(|\eta|^{1-|\alpha|})\)</span>; the absolute Jacobian is degree zero. In a chain-rule term, each derivative of <span class="math inline">\(a\)</span> in its frequency variables gains one order, canceling the degree-one factor introduced by differentiating <span class="math inline">\(T\)</span> in the base. Frequency derivatives lower the total degree by one each. Together with the product rule of Section 1, this proves <span class="math inline">\(\widetilde a\in S^\mu\)</span> whenever <span class="math inline">\(a\in S^\mu\)</span>.</p>
+<p>For bounded frequencies, ordinary change of variables replaces <span class="math inline">\(\chi(\varepsilon\theta)\)</span> by <span class="math inline">\(\chi(\varepsilon T(x,\eta))\)</span>. This changed cutoff family is bounded in <span class="math inline">\(S^0\)</span> on the fixed comparable cones, and converges smoothly on compact sets to one. To see the bounds, a positive derivative is supported where <span class="math inline">\(\varepsilon|\eta|\asymp1\)</span>; every factor <span class="math inline">\(\varepsilon T\)</span> is then bounded, and each frequency derivative contributes <span class="math inline">\(|\eta|^{-1}\)</span>. Base derivatives preserve order zero. Thus both the changed and original cutoff amplitudes are bounded in the same <span class="math inline">\(S^\mu\)</span>, with the same support control and local smooth limit. Theorem 1.1 gives the unrestricted distribution identity (5.1). If the transformed low-frequency threshold differs from one, separate the remaining bounded frequencies as a smooth integral.</p>
+<p>A stabilization adds new phase variables while preserving the Lagrangian. Homogeneity requires some care. Let <span class="math inline">\(r(\theta)&gt;0\)</span> be smooth and homogeneous of degree one, comparable to <span class="math inline">\(|\theta|\)</span> on the working cone, and let <span class="math inline">\(A\)</span> be a real symmetric invertible <span class="math inline">\(k\times k\)</span> matrix. Set</p>
+<p><span class="math display">\[
 \widetilde\phi(x,\theta,\eta)=
 \phi(x,\theta)+\frac{\eta^TA\eta}{2r(\theta)}.
 \tag{5.2}
-\]">\[
-\widetilde\phi(x,\theta,\eta)=
-\phi(x,\theta)+\frac{\eta^TA\eta}{2r(\theta)}.
-\tag{5.2}
-\]</span>
-<p>This is homogeneous of degree one under joint dilation of <span class="math" data-tex="\((\theta,\eta)\)">\((\theta,\eta)\)</span>. Its new critical equations force <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>; the remaining equations and the critical covector are those of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. The Hessian gains a nondegenerate block <span class="math" data-tex="\(A/r\)">\(A/r\)</span>.</p>
-<p><strong>Proposition 5.1 (stabilized amplitude).</strong> Suppose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is nondegenerate and <span class="math" data-tex="\(a\)">\(a\)</span> has the order in (3.1). There is an ordinary symbol <span class="math" data-tex="\(\widetilde a\)">\(\widetilde a\)</span> of order</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>This is homogeneous of degree one under joint dilation of <span class="math inline">\((\theta,\eta)\)</span>. Its new critical equations force <span class="math inline">\(\eta=0\)</span>; the remaining equations and the critical covector are those of <span class="math inline">\(\phi\)</span>. The Hessian gains a nondegenerate block <span class="math inline">\(A/r\)</span>.</p>
+<p><strong>Proposition 5.1 (stabilized amplitude).</strong> Suppose <span class="math inline">\(\phi\)</span> is nondegenerate and <span class="math inline">\(a\)</span> has the order in (3.1). There is an ordinary symbol <span class="math inline">\(\widetilde a\)</span> of order</p>
+<p><span class="math display">\[
 m+\frac{n-2(N+k)}4
-\]">\[
-m+\frac{n-2(N+k)}4
-\]</span>
-<p>supported where <span class="math" data-tex="\(|\eta|\leq C r(\theta)\)">\(|\eta|\leq C r(\theta)\)</span>, such that the normalized integrals for <span class="math" data-tex="\((\phi,a)\)">\((\phi,a)\)</span> and <span class="math" data-tex="\((\widetilde\phi,\widetilde a)\)">\((\widetilde\phi,\widetilde a)\)</span> differ by a smooth function locally. Its leading restriction is</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>supported where <span class="math inline">\(|\eta|\leq C r(\theta)\)</span>, such that the normalized integrals for <span class="math inline">\((\phi,a)\)</span> and <span class="math inline">\((\widetilde\phi,\widetilde a)\)</span> differ by a smooth function locally. Its leading restriction is</p>
+<p><span class="math display">\[
 \widetilde a(x,\theta,0)
 \equiv
 r(\theta)^{-k/2}|\det A|^{1/2}
 e^{-i\pi\operatorname{sgn}A/4}a(x,\theta)
 \quad\text{in the leading symbol order}.
 \tag{5.3}
-\]">\[
-\widetilde a(x,\theta,0)
-\equiv
-r(\theta)^{-k/2}|\det A|^{1/2}
-e^{-i\pi\operatorname{sgn}A/4}a(x,\theta)
-\quad\text{in the leading symbol order}.
-\tag{5.3}
-\]</span>
-<p><strong>Proof.</strong> Choose a smooth compactly supported <span class="math" data-tex="\(\psi\)">\(\psi\)</span> equal to one near zero and begin with the right side of (5.3) times <span class="math" data-tex="\(\psi(\eta/r)\)">\(\psi(\eta/r)\)</span>. Substitute <span class="math" data-tex="\(\eta=rz\)">\(\eta=rz\)</span> in its inner integral. The measure gives <span class="math" data-tex="\(r^k\)">\(r^k\)</span>, the phase is <span class="math" data-tex="\(r z^TAz/2\)">\(r z^TAz/2\)</span>, and stationary phase gives <span class="math" data-tex="\((2\pi/r)^{k/2}e^{i\pi\operatorname{sgn}A/4}|\det A|^{-1/2}\)">\((2\pi/r)^{k/2}e^{i\pi\operatorname{sgn}A/4}|\det A|^{-1/2}\)</span>. Multiplying by the amplitude factor in (5.3) leaves <span class="math" data-tex="\((2\pi)^{k/2}a\)">\((2\pi)^{k/2}a\)</span> to leading order. The normalization in the stabilized integral has an additional factor <span class="math" data-tex="\((2\pi)^{-k/2}\)">\((2\pi)^{-k/2}\)</span>, so the leading integral agrees.</p>
-<p>All positive-degree quadratic stationary-phase coefficients of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> vanish, because <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is constant near zero. Thus the explicit amplitude just constructed already gives an inner difference of order <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, with all parameter derivatives; no successive amplitude corrections are required. Multiplying by the fixed-order symbol <span class="math" data-tex="\(a\)">\(a\)</span> preserves that rapid decrease.</p>
-<p>The outer difference is smooth: every base derivative inserts at most a fixed power of <span class="math" data-tex="\(|\theta|\)">\(|\theta|\)</span>, still integrable for a sufficiently negative symbol order. For a bounded outer-frequency cutoff, the support condition <span class="math" data-tex="\(|\eta|\leq Cr\)">\(|\eta|\leq Cr\)</span> also bounds the inner frequencies, so ordinary Fubini applies. Pass to unrestricted outer frequencies by the bounded-symbol convergence of Theorem 1.1. This justifies the successive integrations as distributions. ∎</p>
+\]</span></p>
+<p><strong>Proof.</strong> Choose a smooth compactly supported <span class="math inline">\(\psi\)</span> equal to one near zero, and set exactly</p>
+<p><span class="math display">\[
+\widetilde a(x,\theta,\eta)
+=r(\theta)^{-k/2}|\det A|^{1/2}
+ e^{-i\pi\operatorname{sgn}A/4}a(x,\theta)\psi(\eta/r(\theta)).
+\]</span></p>
+<p>On this support <span class="math inline">\(|(\theta,\eta)|\asymp|\theta|\asymp r\)</span>. Homogeneous coefficient bounds and the chain rule show that this is an ordinary joint symbol of order <span class="math inline">\(\mu-k/2\)</span>, where <span class="math inline">\(\mu=m+(n-2N)/4\)</span>; each joint frequency derivative gains one order. Its normalized support is compact inside the joint phase cone. The stabilized phase has nonzero full differential: if its <span class="math inline">\(\eta\)</span> gradient vanishes then <span class="math inline">\(\eta=0\)</span>, where the old differential is nonzero. Substitute <span class="math inline">\(\eta=rz\)</span> in its inner integral. The measure gives <span class="math inline">\(r^k\)</span>, the phase is <span class="math inline">\(r z^TAz/2\)</span>, and stationary phase gives <span class="math inline">\((2\pi/r)^{k/2}e^{i\pi\operatorname{sgn}A/4}|\det A|^{-1/2}\)</span>. Multiplying by the amplitude factor in (5.3) leaves <span class="math inline">\((2\pi)^{k/2}a\)</span> to leading order. The normalization in the stabilized integral has an additional factor <span class="math inline">\((2\pi)^{-k/2}\)</span>, so the leading integral agrees.</p>
+<p>By <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#6-amplitudes-that-are-symbols-in-the-large-parameter">Corollary 6.1 of Stationary phase and critical manifolds</a>, all positive-degree quadratic stationary-phase coefficients of <span class="math inline">\(\psi\)</span> vanish, because <span class="math inline">\(\psi\)</span> is constant near zero. Thus the explicit amplitude just constructed already gives an inner difference of order <span class="math inline">\(-\infty\)</span>, with all parameter derivatives; no successive amplitude corrections are required. Multiplying by the fixed-order symbol <span class="math inline">\(a\)</span> preserves that rapid decrease.</p>
+<p>The outer difference is smooth: every base derivative inserts at most a fixed power of <span class="math inline">\(|\theta|\)</span>, still integrable for a sufficiently negative symbol order. For a bounded outer-frequency cutoff, the support condition <span class="math inline">\(|\eta|\leq Cr\)</span> also bounds the inner frequencies, so ordinary Fubini applies. The cutoffs <span class="math inline">\(\chi(\varepsilon\theta)\)</span>, although depending only on the old frequencies, form a bounded <span class="math inline">\(S^0\)</span> family on this joint support because <span class="math inline">\(|(\theta,\eta)|\asymp|\theta|\)</span>; they converge locally smoothly to one. Multiplying by <span class="math inline">\(\widetilde a\)</span> gives a bounded joint-symbol family of the asserted order. Theorem 1.1 identifies its limit with the joint oscillatory distribution and also supplies convergence for the old integral. Pass to unrestricted outer frequencies with these two bounded-family limits. This justifies the successive integrations as distributions. ∎</p>
 <p>The signature factor in (5.3) is the local compensation that later becomes part of the Maslov transition data. This proposition establishes one elementary phase change; a general phase-equivalence theorem still needs its own proof.</p>
-<h2 id="examples-and-the-endpoint-regularity"><span id="6-examples-and-the-endpoint-regularity"></span><span id="section-6"></span>6. Examples and the endpoint regularity</h2>
-<p><strong>A delta distribution on a submanifold.</strong> Let <span class="math" data-tex="\(x=(t,z)\)">\(x=(t,z)\)</span>, with <span class="math" data-tex="\(t\in\mathbb R^k\)">\(t\in\mathbb R^k\)</span>, and let <span class="math" data-tex="\(b(z)\)">\(b(z)\)</span> be smooth with compact support. Fourier inversion gives</p>
-<span class="math math-display" data-tex="\[
+<span aria-hidden="true" id="6-examples-and-the-endpoint-regularity"></span><span aria-hidden="true" id="section-6"></span><h2 id="examples-and-the-endpoint-regularity">6. Examples and the endpoint regularity</h2>
+<p><strong>A delta distribution on a submanifold.</strong> Let <span class="math inline">\(x=(t,z)\)</span>, with <span class="math inline">\(t\in\mathbb R^k\)</span>, <span class="math inline">\(1\leq k\leq n\)</span>, and let <span class="math inline">\(b(z)\)</span> be smooth with compact support. Fourier inversion, proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#appendix-a-the-analytic-prerequisites-used-in-the-proof">Appendix A of Stationary phase and critical manifolds</a>, gives the distribution identity</p>
+<p><span class="math display">\[
 b(z)\delta(t)=(2\pi)^{-k}\int e^{it\cdot\theta}b(z)\,d\theta.
-\]">\[
-b(z)\delta(t)=(2\pi)^{-k}\int e^{it\cdot\theta}b(z)\,d\theta.
-\]</span>
-<p>In (3.1), its amplitude is <span class="math" data-tex="\((2\pi)^{n/4-k/2}b(z)\)">\((2\pi)^{n/4-k/2}b(z)\)</span>, of order zero. Its Lagrangian representation order is therefore</p>
-<span class="math math-display" data-tex="\[
+\]</span></p>
+<p>For completeness, test the frequency-cutoff formula against a compact smooth function <span class="math inline">\(f(t,z)\)</span>. Its inner <span class="math inline">\(t\)</span> integral is <span class="math inline">\(\widehat{f(\cdot,z)}(-\theta)\)</span>, which decreases rapidly uniformly for <span class="math inline">\(z\)</span> on the working compact set. Dominated convergence and Schwartz inversion make its limit <span class="math inline">\((2\pi)^k f(0,z)\)</span>; integrating against <span class="math inline">\(b(z)\)</span> proves the displayed distribution identity with its exact factor.</p>
+<p>To fit Section 1 literally, choose a smooth <span class="math inline">\(h(\theta)\)</span> that is zero for <span class="math inline">\(|\theta|\leq1\)</span> and one for <span class="math inline">\(|\theta|\geq2\)</span>. The amplitude <span class="math inline">\(h b\)</span> satisfies the high-frequency convention; the remaining integral with amplitude <span class="math inline">\((1-h)b\)</span> is smooth because its frequency support is compact. Base cutoffs are also inserted when applying the local theorem. In (3.1), the full amplitude is <span class="math inline">\((2\pi)^{n/4-k/2}b(z)\)</span>, of order zero. Its Lagrangian representation order is therefore</p>
+<p><span class="math display">\[
 m=\frac k2-\frac n4.
 \tag{6.1}
-\]">\[
-m=\frac k2-\frac n4.
-\tag{6.1}
-\]</span>
-<p>This agrees with the nonzero conormal directions generated by <span class="math" data-tex="\(t\cdot\theta\)">\(t\cdot\theta\)</span>.</p>
-<p><strong>The identity kernel.</strong> On <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, the kernel <span class="math" data-tex="\(\delta(x-y)\)">\(\delta(x-y)\)</span> lives on a base of dimension <span class="math" data-tex="\(n=2d\)">\(n=2d\)</span> and uses <span class="math" data-tex="\(N=d\)">\(N=d\)</span> phase variables. Formula (3.1) becomes <span class="math" data-tex="\((2\pi)^{-d}\int e^{i(x-y)\cdot\theta}\,d\theta\)">\((2\pi)^{-d}\int e^{i(x-y)\cdot\theta}\,d\theta\)</span>. Its order is zero. The ambient dimension is the kernel's base dimension, which differs from the dimension of its input or output manifold.</p>
-<p>The intrinsic Lagrangian definition uses an iterated-regularity endpoint. The conormal result in <a href="conormal-transmission.html">Singularities along a submanifold and smooth boundary passage</a> uses</p>
-<span class="math math-display" data-tex="\[
-B^s_{2,\infty}:
-\qquad \sup_{j\geq0}2^{js}\|\Pi_j u\|_2&lt;\infty.
-\]">\[
-B^s_{2,\infty}:
-\qquad \sup_{j\geq0}2^{js}\|\Pi_j u\|_2&lt;\infty.
-\]</span>
-<p>This is a dyadic supremum, rather than the square sum defining <span class="math" data-tex="\(H^s\)">\(H^s\)</span>. Conormal and Lagrangian order conventions must preserve that distinction when an iterated-regularity characterization is used. The present lesson proves phase-integral and Fourier-symbol statements; it does not replace that endpoint by a Sobolev assertion.</p>
-<h2 id="exercises-with-complete-solutions"><span id="7-exercises-with-complete-solutions"></span><span id="section-7"></span>7. Exercises with complete solutions</h2>
-<p><strong>Exercise 7.1 (order of a normal derivative; introductory).</strong> Find the representation order of <span class="math" data-tex="\(\partial_{t_1}^q(b(z)\delta(t))\)">\(\partial_{t_1}^q(b(z)\delta(t))\)</span>, with <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span> and <span class="math" data-tex="\(b\neq0\)">\(b\neq0\)</span>.</p>
-<p><strong>Solution.</strong> Its amplitude acquires <span class="math" data-tex="\((i\theta_1)^q\)">\((i\theta_1)^q\)</span>, of ordinary symbol order <span class="math" data-tex="\(q\)">\(q\)</span>. Therefore <span class="math" data-tex="\(m=q+k/2-n/4\)">\(m=q+k/2-n/4\)</span>. The wavefront directions remain conormal where the corresponding leading amplitude does not vanish; differentiation does not change the phase.</p>
-<p><strong>Exercise 7.2 (endpoint versus square sum; intermediate).</strong> For a delta distribution at zero in <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span>, compare <span class="math" data-tex="\(B^{-k/2}_{2,\infty}\)">\(B^{-k/2}_{2,\infty}\)</span> with <span class="math" data-tex="\(H^{-k/2}\)">\(H^{-k/2}\)</span>.</p>
-<p><strong>Solution.</strong> The Fourier transform is one. A dyadic annulus of radius <span class="math" data-tex="\(2^j\)">\(2^j\)</span> has volume comparable to <span class="math" data-tex="\(2^{jk}\)">\(2^{jk}\)</span>, so its Fourier <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is comparable to <span class="math" data-tex="\(2^{jk/2}\)">\(2^{jk/2}\)</span>. Multiplying by <span class="math" data-tex="\(2^{-jk/2}\)">\(2^{-jk/2}\)</span> gives a bounded sequence with terms bounded below. Its supremum is finite and its square sum diverges. Thus the delta distribution belongs to the Besov endpoint but not to the Sobolev endpoint. This is an exact obstruction to silently strengthening the iterated-regularity space.</p>
-<p><strong>Exercise 7.3 (homogeneous stabilization; intermediate).</strong> Explain why adding <span class="math" data-tex="\(\eta^TA\eta/2\)">\(\eta^TA\eta/2\)</span> directly to a degree-one phase is incompatible with its joint homogeneity, and verify (5.2).</p>
-<p><strong>Solution.</strong> Joint dilation multiplies the unscaled quadratic term by <span class="math" data-tex="\(t^2\)">\(t^2\)</span>, while multiplying the original phase by <span class="math" data-tex="\(t\)">\(t\)</span>. In (5.2), the numerator has degree two and <span class="math" data-tex="\(r\)">\(r\)</span> has degree one; their quotient has degree one. Its <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gradient is <span class="math" data-tex="\(A\eta/r\)">\(A\eta/r\)</span>, which vanishes only at <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. There its other derivatives vanish, so the original critical equations and covector are preserved.</p>
-<p><strong>Exercise 7.4 (clean order compensation; advanced).</strong> A clean phase has <span class="math" data-tex="\(N\)">\(N\)</span> variables and excess <span class="math" data-tex="\(e\)">\(e\)</span>. Under the prefactor for excess zero, an amplitude of order <span class="math" data-tex="\(m+(n-2N)/4\)">\(m+(n-2N)/4\)</span> is used without changing its order. What Fourier-symbol order does the calculation yield?</p>
-<p><strong>Solution.</strong> Substitution <span class="math" data-tex="\(\theta=R\vartheta\)">\(\theta=R\vartheta\)</span> contributes <span class="math" data-tex="\(R^N\)">\(R^N\)</span>. The clean normal rank is <span class="math" data-tex="\(n+N-e\)">\(n+N-e\)</span>, so stationary phase contributes <span class="math" data-tex="\(R^{-(n+N-e)/2}\)">\(R^{-(n+N-e)/2}\)</span>. The result has order <span class="math" data-tex="\(m-n/4+e/2\)">\(m-n/4+e/2\)</span>. It is higher by <span class="math" data-tex="\(e/2\)">\(e/2\)</span> than the desired order. Decreasing the amplitude order by <span class="math" data-tex="\(e/2\)">\(e/2\)</span>, as in (3.2), restores <span class="math" data-tex="\(m-n/4\)">\(m-n/4\)</span>. The modified prefactor also makes the leading scalar constant <span class="math" data-tex="\((2\pi)^{n/4}\)">\((2\pi)^{n/4}\)</span>.</p>
-<p><strong>Exercise 7.5 (regular amplitude; advanced).</strong> Show that an amplitude of order <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> produces a smooth function, and determine which part of Theorem 1.1 becomes unnecessary.</p>
-<p><strong>Solution.</strong> Every base derivative of <span class="math" data-tex="\(e^{i\phi}a\)">\(e^{i\phi}a\)</span> is a finite sum of products of phase derivatives, bounded by polynomial powers of <span class="math" data-tex="\(|\theta|\)">\(|\theta|\)</span>, with derivatives of <span class="math" data-tex="\(a\)">\(a\)</span>, which decrease faster than every power. All such integrals are absolutely convergent locally, uniformly on compact base sets. Dominated differentiation therefore proves smoothness. Frequency-cutoff regularization and integration by parts are no longer needed to define these integrals.</p>
+\]</span></p>
+<p>The phase <span class="math inline">\(t\cdot\theta\)</span> has independent critical equations <span class="math inline">\(t=0\)</span>; its covectors are <span class="math inline">\((\theta,0)\)</span>. Thus it parametrizes the nonzero conormal bundle of that submanifold, by these explicit equations; the general rank and Lagrangian argument is proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md#f1-clean-geometry-and-a-transverse-fourier-test">F1</a>. A conormal covector annihilates the tangent space of the submanifold. This concrete definition and phase calculation are sufficient for this example.</p>
+<p><span aria-label="Conormal fiber and exact endpoint diagram; scroll horizontally on a narrow screen" class="intrinsic-figure-scroll" role="region" tabindex="0"><img alt="A conormal line, its punctured normal covector fiber, and the exact one-dimensional dyadic endpoint." src="figures/conormal-fiber-and-endpoint.svg"/></span></p>
+<p>In <span class="math inline">\(X=\mathbb R^2\)</span>, let <span class="math inline">\(Y=\{x_1=0\}\)</span> and <span class="math inline">\(\phi(x,\theta)=x_1\theta\)</span>, with <span class="math inline">\(\theta\neq0\)</span>. The critical equation is <span class="math inline">\(x_1=0\)</span>, and <span class="math inline">\(\phi_x'=(\theta,0)\)</span>. Hence the critical map has image</p>
+<p><span class="math display">\[
+N^*Y\setminus0=\{(0,x_2;\theta,0):x_2\in\mathbb R,\ \theta\neq0\}.
+\]</span></p>
+<p>Panel A draws a bounded window in the base. Panel B is the projection to <span class="math inline">\((\xi_1,\xi_2)\)</span> of the covector fiber over the fixed point <span class="math inline">\(x_0=(0,0)\)</span>, with its zero covector omitted. Both rays continue beyond the drawn window. It is one fiber of the conormal bundle; varying <span class="math inline">\(x_2\)</span> gives the full bundle. The line in panel B represents the punctured fiber, rather than a finite collection of selected wavefront arrows.</p>
+<p>For this delta distribution, the wavefront set equals the displayed nonzero conormal bundle. Theorem 2.1 supplies the inclusion. To check the reverse inclusion, let <span class="math inline">\(\zeta\)</span> be any compact smooth cutoff equal to one near <span class="math inline">\((0,x_2^0)\)</span>. Then <span class="math inline">\(\widehat{\zeta\delta(x_1)}(\xi_1,\xi_2)=\widehat{\zeta(0,\cdot)}(\xi_2)\)</span>. The nonzero smooth trace has a nonzero Fourier value at some fixed <span class="math inline">\(\eta\)</span>. On either sequence <span class="math inline">\((\xi_1,\eta)\)</span>, with <span class="math inline">\(\xi_1\to+\infty\)</span> or <span class="math inline">\(\xi_1\to-\infty\)</span>, this value is constant and nonzero. The sequence eventually lies in any cone about the corresponding normal direction, precluding rapid decrease. Thus every nonzero normal covector occurs.</p>
+<p>The scalar representation order is <span class="math inline">\(m=k/2-n/4=0\)</span>, since <span class="math inline">\(k=1\)</span> and <span class="math inline">\(n=2\)</span>. The full normalized amplitude in (3.1) is one and the prefactor is <span class="math inline">\((2\pi)^{-1}\)</span>, giving <span class="math inline">\(\delta(x_1)=(2\pi)^{-1}\int e^{ix_1\theta}\,d\theta\)</span> as a distribution. This order is not its Sobolev endpoint exponent.</p>
+<p>Panels C–D use the <strong>one-dimensional normal model</strong> <span class="math inline">\(\delta_0\)</span> on <span class="math inline">\(\mathbb R\)</span>. They do not claim a global <span class="math inline">\(L^2\)</span> norm for the unlocalized line distribution on <span class="math inline">\(\mathbb R^2\)</span>. For the nonzero smooth multiplier <span class="math inline">\(p\)</span> of (6.2), put <span class="math inline">\(C=(2\pi)^{-1/2}\|p\|_2&gt;0\)</span>. Exercise 7.2 proves, for every integer <span class="math inline">\(j\geq1\)</span>,</p>
+<p><span class="math display">\[
+2^{-j/2}\|\Pi_j\delta_0\|_2=C,
+\qquad
+\sum_{j=1}^{J}\left(\frac{2^{-j/2}\|\Pi_j\delta_0\|_2}{C}\right)^2=J.
+\]</span></p>
+<p>The graph gives exact initial values, normalized by <span class="math inline">\(C\)</span>. Their finite supremum and divergent square sum establish <span class="math inline">\(\delta_0\in B^{-1/2}_{2,\infty}\)</span> and <span class="math inline">\(\delta_0\notin H^{-1/2}\)</span>; the low-frequency block has finite norm. Formula (6.4) supplies the precise Sobolev square-sum comparison.</p>
+<p><strong>Proof locators.</strong> The complete critical-map argument is in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md#f1-clean-geometry-and-a-transverse-fourier-test">Clean geometry and a transverse Fourier test, F1</a>; the conormal model itself is calculated immediately above. The order and endpoint calculations are in <a href="oscillatory-distributions-and-order.html#6-examples-and-the-endpoint-regularity">Oscillatory distributions and their order, §6</a>, <a href="oscillatory-distributions-and-order.html#7-exercises-with-complete-solutions">Exercise 7.1</a> (with <span class="math inline">\(q=0\)</span>), and <a href="oscillatory-distributions-and-order.html#7-exercises-with-complete-solutions">Exercise 7.2</a>. Plancherel and the Fourier convention are proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md#a2-plancherel-and-the-pairing-calculation">Stationary phase and critical manifolds, Appendix A.2</a>.</p>
+<p><strong>Human source comparison.</strong> Richard Melrose, <em>From Microlocal to Global Analysis</em>, version 0.7I, §§1.7, 5.11 and 9.1–9.5, discusses conormal distributions and their Sobolev order conventions (<a href="https://math.mit.edu/~rbm/18-157-S14/iml.pdf">author reading</a>). The exact dyadic endpoint pictured here is proved in the local lesson and is not asserted to follow from the strict Sobolev inequalities of Melrose’s Lemma 9.2.</p>
+<p>The independently authored diagram and reproducible Matplotlib source are CC0, following the course’s original-content notice. DejaVu Sans glyphs are embedded as SVG paths; their full <span class="unlinked">font notices</span> accompany the figure. No external source image is reproduced.</p>
+<p><strong>The identity kernel.</strong> On <span class="math inline">\(\mathbb R^d\)</span>, <span class="math inline">\(d\geq1\)</span>, the kernel <span class="math inline">\(\delta(x-y)\)</span> lives on a base of dimension <span class="math inline">\(n=2d\)</span> and uses <span class="math inline">\(N=d\)</span> phase variables. Formula (3.1) becomes <span class="math inline">\((2\pi)^{-d}\int e^{i(x-y)\cdot\theta}\,d\theta\)</span>. Its amplitude has order zero and its representation order is zero. The same cutoff <span class="math inline">\(h\)</span> splits this formula into the permitted high-frequency integral and a smooth compact-frequency term. The ambient dimension is the kernel’s base dimension, which differs from the dimension of its input or output manifold.</p>
+<p><strong>Smooth dyadic blocks.</strong> In <span class="math inline">\(\mathbb R^k\)</span>, choose a nonincreasing smooth radial <span class="math inline">\(\chi_0\)</span>, equal to one on the unit ball and zero outside the ball of radius two. Set</p>
+<p><span class="math display">\[
+p_0(\xi)=\chi_0(\xi),\qquad
+p(\xi)=\chi_0(\xi)-\chi_0(2\xi),\qquad
+p_j(\xi)=p(2^{-j}\xi),\quad j\geq1,
+\qquad\Pi_j u=\mathcal F^{-1}(p_j\widehat u).
+\tag{6.2}
+\]</span></p>
+<p>The nonzero <span class="math inline">\(p\)</span> is smooth and supported in <span class="math inline">\(1/2\leq|\xi|\leq2\)</span>. Telescoping gives <span class="math inline">\(\sum_{j\geq0}p_j=1\)</span>. Only a fixed finite number of these multipliers is nonzero at each frequency. Define the dyadic endpoint by</p>
+<p><span class="math display">\[
+u\in B^s_{2,\infty}\quad\Longleftrightarrow\quad
+\sup_{j\geq0}2^{js}\|\Pi_j u\|_2&lt;\infty.
+\tag{6.3}
+\]</span></p>
+<p>The corresponding square sum is <span class="math inline">\(\sum_{j\geq0}2^{2js}\|\Pi_j u\|_2^2\)</span>. It gives the Sobolev condition, with equivalent norm, when the Fourier transform is a function and the blocks under consideration obey Plancherel. Indeed, on each high annulus <span class="math inline">\(2^{2js}\asymp\langle\xi\rangle^{2s}\)</span>. Since <span class="math inline">\(p_j\geq0\)</span>, <span class="math inline">\(\sum p_j=1\)</span>, and at most <span class="math inline">\(J\)</span> terms overlap, Cauchy–Schwarz gives <span class="math inline">\(\sum p_j^2\geq J^{-1}\)</span>, while boundedness gives a fixed upper bound. Consequently</p>
+<p><span class="math display">\[
+c_s\langle\xi\rangle^{2s}
+\leq\sum_{j\geq0}2^{2js}|p_j(\xi)|^2
+\leq C_s\langle\xi\rangle^{2s}.
+\tag{6.4}
+\]</span></p>
+<p>Integrating this comparison and using Plancherel on the blocks proves the asserted square-sum equivalence in that setting. Every block of delta used below is Schwartz, so Appendix A.2 supplies the entire Plancherel input needed for the example. The Fourier convention defines the Sobolev norm by <span class="math inline">\((2\pi)^{-k}\int\langle\xi\rangle^{2s}|\widehat u(\xi)|^2d\xi\)</span> when that integral is finite.</p>
+<p>The AN-03 conormal lesson <em>Singularities along a submanifold and smooth boundary passage</em> places this dyadic supremum in its intrinsic iterated-regularity endpoint. The present phase-integral and Fourier-symbol results preserve the distinction between that supremum and the Sobolev square sum. The intrinsic Lagrangian characterization requires further results.</p>
+<span aria-hidden="true" id="7-exercises-with-complete-solutions"></span><span aria-hidden="true" id="section-7"></span><h2 id="exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 (order of a normal derivative; introductory).</strong> Find the representation order of <span class="math inline">\(\partial_{t_1}^q(b(z)\delta(t))\)</span>, with integer <span class="math inline">\(q\geq0\)</span>, <span class="math inline">\(1\leq k\leq n\)</span>, and <span class="math inline">\(b\neq0\)</span>.</p>
+<p><strong>Solution.</strong> Its amplitude acquires <span class="math inline">\((i\theta_1)^q\)</span>, of ordinary symbol order <span class="math inline">\(q\)</span>. Therefore <span class="math inline">\(m=q+k/2-n/4\)</span>. Differentiation does not change the phase, so Theorem 2.1 still puts the possible wavefront directions in the conormal bundle. The zero locus <span class="math inline">\(\theta_1=0\)</span> of the leading polynomial alone does not remove a conormal direction: every open frequency cone about such a direction contains directions where <span class="math inline">\(\theta_1\neq0\)</span>.</p>
+<p><strong>Exercise 7.2 (endpoint versus square sum; intermediate).</strong> For a delta distribution at zero in <span class="math inline">\(\mathbb R^k\)</span>, <span class="math inline">\(k\geq1\)</span>, compare <span class="math inline">\(B^{-k/2}_{2,\infty}\)</span> with <span class="math inline">\(H^{-k/2}\)</span>.</p>
+<p><strong>Solution.</strong> The Fourier transform is one. Thus <span class="math inline">\(\Pi_j\delta=\mathcal F^{-1}p_j\)</span>, a Schwartz function. Appendix A.2 gives, for <span class="math inline">\(j\geq1\)</span>,</p>
+<p><span class="math display">\[
+\|\Pi_j\delta\|_2=(2\pi)^{-k/2}\|p_j\|_2
+=(2\pi)^{-k/2}2^{jk/2}\|p\|_2.
+\]</span></p>
+<p>The weighted sequence <span class="math inline">\(2^{-jk/2}\|\Pi_j\delta\|_2\)</span> is therefore a nonzero constant; the low block also has finite norm. Its supremum is finite, but its square sum diverges. Formula (6.4) confirms the Sobolev interpretation. Directly, the proposed endpoint Fourier integral is</p>
+<p><span class="math display">\[
+(2\pi)^{-k}\int_{\mathbb R^k}\langle\xi\rangle^{-k}\,d\xi,
+\]</span></p>
+<p>whose radial integrand at infinity is comparable to <span class="math inline">\(r^{-1}\)</span>, so it diverges logarithmically. Hence <span class="math inline">\(\delta\in B^{-k/2}_{2,\infty}\)</span> and <span class="math inline">\(\delta\notin H^{-k/2}\)</span>. This is an exact obstruction to strengthening the iterated-regularity endpoint to the Sobolev endpoint.</p>
+<p><strong>Exercise 7.3 (homogeneous stabilization; intermediate).</strong> Explain why adding <span class="math inline">\(\eta^TA\eta/2\)</span> directly to a degree-one phase is incompatible with its joint homogeneity, and verify (5.2).</p>
+<p><strong>Solution.</strong> Joint dilation multiplies the unscaled quadratic term by <span class="math inline">\(t^2\)</span>, while multiplying the original phase by <span class="math inline">\(t\)</span>. In (5.2), the numerator has degree two and <span class="math inline">\(r\)</span> has degree one; their quotient has degree one. Its <span class="math inline">\(\eta\)</span> gradient is <span class="math inline">\(A\eta/r\)</span>, which vanishes only at <span class="math inline">\(\eta=0\)</span>. There its other derivatives vanish, so the original critical equations and covector are preserved.</p>
+<p><strong>Exercise 7.4 (clean order compensation; advanced).</strong> A clean phase has <span class="math inline">\(N\)</span> variables and excess <span class="math inline">\(e\)</span>. Under the prefactor for excess zero, an amplitude of order <span class="math inline">\(m+(n-2N)/4\)</span> is used without changing its order. What Fourier-symbol order does the calculation yield?</p>
+<p><strong>Solution.</strong> Substitution <span class="math inline">\(\theta=R\vartheta\)</span> contributes <span class="math inline">\(R^N\)</span>. The clean normal rank is <span class="math inline">\(n+N-e\)</span>, so stationary phase contributes <span class="math inline">\(R^{-(n+N-e)/2}\)</span>. The result has order <span class="math inline">\(m-n/4+e/2\)</span>. It is higher by <span class="math inline">\(e/2\)</span> than the desired order. Decreasing the amplitude order by <span class="math inline">\(e/2\)</span>, as in (3.2), restores <span class="math inline">\(m-n/4\)</span>. The modified prefactor also makes the leading scalar constant <span class="math inline">\((2\pi)^{n/4}\)</span>.</p>
+<p><strong>Exercise 7.5 (regular amplitude; advanced).</strong> Show that an amplitude of order <span class="math inline">\(-\infty\)</span> produces a smooth function, and determine which part of Theorem 1.1 becomes unnecessary.</p>
+<p><strong>Solution.</strong> Every base derivative of <span class="math inline">\(e^{i\phi}a\)</span> is a finite sum of products of phase derivatives, bounded by polynomial powers of <span class="math inline">\(|\theta|\)</span>, with derivatives of <span class="math inline">\(a\)</span>, which decrease faster than every power. All such integrals are absolutely convergent locally, uniformly on compact base sets. Dominated differentiation therefore proves smoothness. Frequency-cutoff regularization and integration by parts are no longer needed to define these integrals.</p>
 <h2 id="references">References</h2>
 <ul>
-<li>[Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, <em>Semi-classical Analysis</em>, January 13, 2010. <a href="https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf">Online reading</a>.</li>
-<li>[Hörmander IV] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 1985.</li>
+<li>[Hörmander FIO I] Lars Hörmander, <em>Fourier integral operators. I</em>, Acta Mathematica 127 (1971), 79–183, DOI 10.1007/BF02392052. Definition 1.1.1, p. 83; Proposition 1.1.11, p. 88; Lemma 1.2.1 and Proposition 1.2.2, pp. 89–90, with the cone passage on p. 91; Fourier criterion, pp. 121–122, and Proposition 2.5.7, p. 123. <a href="https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf">Publisher reading</a>.</li>
+<li>[Guillemin–Sternberg] Victor Guillemin and Shlomo Sternberg, <em>Semi-classical Analysis</em>, author draft, January 13, 2010. §5.9, §§8.9.1 and 8.11–8.14, and Chapter 14 provide the generating-graph, clean-fiber and stationary-phase comparisons. The exact differentiated ordinary-symbol estimates used here are proved in the linked stationary-phase lesson. <a href="https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf">Online reading</a>.</li>
+<li>[Melrose] Richard Melrose, <em>From Microlocal to Global Analysis</em>, version 0.7I, run February 3, 2014, §1.7, §5.11 and §§9.1–9.5. The conormal order conventions and frequency-graph comparison are pertinent; the strict Sobolev inequalities of Lemma 9.2 do not supply the Besov endpoint, and the cutoff passage left open in Lemma 9.9 is completed here. <a href="https://math.mit.edu/~rbm/18-157-S14/iml.pdf">Author reading</a>. His <em>Introduction to Microlocal Analysis</em>, version 0.5B, Lemma 4.6, pp. 109–110, provides another Fourier-wavefront account. <a href="https://math.mit.edu/~rbm/iml90.pdf">Author reading</a>.</li>
+<li>[Hörmander IV] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Classics in Mathematics, Springer, 2009, reprint of the 1994 edition, e-ISBN 978-3-642-00136-9, <a href="https://doi.org/10.1007/978-3-642-00136-9">DOI 10.1007/978-3-642-00136-9</a>. Section 25.1, Propositions 25.1.5 and 25.1.5′, printed pp. 7–10, gives the nondegenerate and clean Fourier-symbol comparisons.</li>
 </ul>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).</em></p>
-<footer><p>Original text: CC0.</p><p><a href="src/oscillatory-distributions-and-order.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>
+<p><em>AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text: CC0 to the extent rights exist; cited human works retain their own terms.</em></p>
+</main></body></html>

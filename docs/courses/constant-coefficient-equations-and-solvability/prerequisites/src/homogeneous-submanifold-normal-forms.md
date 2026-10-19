@@ -1,10 +1,22 @@
 # Homogeneous submanifold normal forms
 
-A submanifold of phase space can contain symplectic directions, directions on which its restricted form vanishes, and pairs of transverse normal directions. Constant rank makes these three blocks persist locally. Homogeneous coordinates can straighten them when the canonical one-form is nonzero on the submanifold. This gives characteristic foliations and the missing geometry behind sharp constant-rank FIO estimates.
+A submanifold of phase space can contain symplectic directions, directions on which its restricted form vanishes, and pairs of transverse normal directions. Constant rank makes these three blocks persist locally. Homogeneous coordinates can straighten them when the canonical one-form is nonzero on the submanifold. This gives characteristic foliations and the geometry behind sharp constant-rank FIO estimates.
 
-We use the signs \(\omega=d\xi\wedge dx\), \(\iota_{H_f}\omega=-df\), and \(\{f,g\}=H_fg\) from [Phase space and generating families](phase-space-and-generating-families.md). That lesson proves symplectic bases, reduction, Hamiltonian commutators and ordinary Darboux coordinates. [Corank geometry and sufficient continuity](corank-geometry-and-sufficient-continuity.md) supplies homogeneous Darboux coordinates with a prescribed tangent map and the sharp flat operator family. [Graph operators, continuity and Egorov](graph-operators-continuity-and-egorov.md) supplies the order-zero graph quantizations and microlocal inverses used in the final operator argument.
+We use the signs \(\omega=d\xi\wedge dx\), \(\iota_{H_f}\omega=-df\), and \(\{f,g\}=H_fg\) from [Phase space and generating families](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-phase-space/phase-space-and-generating-families.md). That lesson proves symplectic bases, reduction, Hamiltonian commutators and ordinary Darboux coordinates. [Corank geometry and sufficient continuity](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-corank-continuity/corank-geometry-and-sufficient-continuity.md) supplies homogeneous Darboux coordinates with a prescribed tangent map and the sharp flat operator family. [Graph operators, continuity and Egorov](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md) supplies the order-zero graph quantizations and microlocal inverses used in the final operator argument.
 
-The authorities are [Hörmander III, §21.2] and the constant-rank discussion in [Hörmander IV, §25.3]. We prove the full submanifold normal form with constant restricted rank and a nonzero restricted canonical one-form, its ordinary counterpart, and the characteristic-foliation consequences. The single canonical pair constructed below is a supporting case of [Hörmander III, Theorem 21.1.9]; extending arbitrary already prescribed canonical functions remains a separate target.
+The primary mathematical sources are Lars Hörmander,
+*The Analysis of Linear Partial Differential Operators III*, §21.2,
+printed pp. 283–286 in the [2007 reprint of the 1994 edition](https://doi.org/10.1007/978-3-540-49938-1),
+and the constant-rank discussion in *Hörmander IV*, §25.3,
+printed p. 31 in the [2009 reprint of the 1994 edition](https://doi.org/10.1007/978-3-642-00136-9).
+The arguments below give the constant-rank submanifold normal form with
+nonzero restricted canonical one-form, its ordinary counterpart and
+the characteristic-foliation consequences. The single canonical pair
+is a supporting case of *Hörmander III*, Theorem 21.1.9, printed pp. 279–281.
+The full function-preserving extension is developed in
+[Prescribed canonical coordinates and isotropic fibers](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-prescribed-coordinates/prescribed-canonical-coordinates-and-isotropic-fibers.md).
+
+The [flow, bundle and leaf companion F0–F3](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-submanifolds/flows-constant-rank-and-leaves.md) supplies the complete supporting proofs: tangent fields preserve submanifolds, commuting fields have joint flow coordinates, dilation gives the stated pushforward weights, constant-rank kernels and quotients are smooth bundles, and local plaques assemble into unique maximal connected immersed leaves. The constant-rank coordinate argument is proved in [Prescribed phase representation F1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md). The [proof map](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-submanifolds/proof-map.json) binds each result and exercise to its exact current earlier proofs.
 
 ## 1. Three linear blocks describe a subspace
 
@@ -66,7 +78,7 @@ The coordinate \(q\) has degree zero, \(p\) degree one, and dilation acts on \(\
 \iota_{[R,H_f]}\omega
 =-d(Rf)+df=0.
 \]
-The two commuting independent real fields admit joint flow coordinates. Choose a codimension-two local slice transverse to their span at \(c\). Apply first the \(H_f\) flow with time \(b\), then the \(R\) flow with time \(a\). The differential of this map, in \((a,b,z)\), is invertible at \((0,0,c)\). Commutativity gives \(R=\partial_a\), \(H_f=\partial_b\) in the resulting coordinates. Set \(q=b\). It has \(Rq=0\), \(H_fq=1\), and value zero at \(c\); extend along rays to the smaller conic neighborhood. This proves (2.1).
+The two commuting independent real fields admit joint flow coordinates by companion F1, using the complete flow law and variational equation. Choose a codimension-two local slice transverse to their span at \(c\). Apply first the \(H_f\) flow with time \(b\), then the \(R\) flow with time \(a\). The differential of this map, in \((a,b,z)\), is invertible at \((0,0,c)\). Commutativity gives \(R=\partial_a\), \(H_f=\partial_b\) in the resulting coordinates. Set \(q=b\). It has \(Rq=0\), \(H_fq=1\), and value zero at \(c\); extend along rays to the smaller conic neighborhood. This proves (2.1).
 
 The differentials \(df,dq\) are independent. Their Hamilton plane is symplectic since \(\omega(H_f,H_q)=\{f,q\}=1\), and the tangent to \(\Sigma\) is its orthogonal. Thus \(\omega_\Sigma\) is nondegenerate. Both \(q\) and \(f\) vanish on \(\Sigma\), so homogeneity makes \(R\) tangent there. It remains nonzero. The slice is a conic symplectic manifold.
 
@@ -82,7 +94,7 @@ Its parameter tangents are \(\partial_q=H_f\) and \(\partial_p=-H_q\), with \(\o
 \Psi^*\omega=\omega_\Sigma+dp\wedge dq.
 \tag{2.4}
 \]
-Finally \([R,H_q]=-H_q\), by the same contraction calculation with \(Rq=0\). If \(M_t\) denotes dilation, its pushforward sends \(H_f\) to \(H_f\) and \(H_q\) to \(tH_q\). Hence
+Finally \([R,H_q]=-H_q\), by the same contraction calculation with \(Rq=0\). The pushforward computation in companion F1 has the sign needed here: the pullback satisfies the bracket ODE, and its inverse gives the pushforward weight. If \(M_t\) denotes dilation, its pushforward sends \(H_f\) to \(H_f\) and \(H_q\) to \(tH_q\). Hence
 \[
 M_t\Psi(q,p,z)=\Psi(q,tp,M_tz).
 \]
@@ -121,7 +133,7 @@ The symplectic slice \(\Sigma_* =\{Q=p=0\}\) contains \(V\). Its dimension is \(
 
 **Separate a characteristic direction when \(k+\ell=N\) and \(k>0\).** Here \(V\) is coisotropic. Choose a nonzero defining differential \(df_1(c)\). Since \(f_1\) vanishes on \(V\), \(H_{f_1}\in(TV)^\omega\subset TV\); it is a characteristic vector field. It cannot be proportional to \(R_c\), because \(R_c\) is outside that radical. Lemma 2.1 gives product coordinates with \(p=f_1\), \(H_{f_1}=\partial_q\), and \(V\subset\{p=0\}\).
 
-Tangency of this smooth field implies that its local flow preserves \(V\). Thus
+Companion F0 proves that tangency of this smooth field makes its local flow preserve \(V\), by solving on \(V\) and applying ambient uniqueness. Thus
 \[
 V=\{(q,0,z):z\in V_0\}
 \tag{3.2}
@@ -145,11 +157,11 @@ For a constant-rank restricted form define
 \mathcal Z_v=T_vV\cap(T_vV)^\omega.
 \tag{4.1}
 \]
-It is a smooth rank-\(k\) vector bundle: in any smooth frame it is the kernel of a matrix of constant rank.
+It is a smooth rank-\(k\) vector bundle: in any smooth frame it is the kernel of a matrix of constant rank. Companion F2 proves this with an invertible minor and an explicit smooth kernel frame.
 
 **Theorem 4.1 (characteristic foliation).** The bundle \(\mathcal Z\) is the tangent bundle of a local foliation of \(V\) by isotropic leaves of dimension \(k\). Under Theorem 3.1 these leaves are transverse to the radial field. For an arbitrary conic \(V\) of constant restricted rank, each maximal connected characteristic leaf is either everywhere transverse to the radial field or is dilation invariant.
 
-**Proof.** In the coordinates of Theorem 3.2, the free \(q_1,\ldots,q_k\) directions are exactly the radical. Their coordinate slices form a foliation. The distribution and its maximal connected integral leaves are intrinsic, so these local descriptions patch; on chart overlaps two descriptions with the same tangent distribution have the same local leaf components. The restricted form vanishes on their tangent spaces, giving isotropy and dimension \(k\).
+**Proof.** In the coordinates of Theorem 3.2, the free \(q_1,\ldots,q_k\) directions are exactly the radical. Their coordinate slices form a foliation. Companion F3 proves that these local plaques assemble into unique maximal connected immersed leaves, including the Hausdorff and countable-atlas properties of each leaf. On chart overlaps their transverse coordinates have zero derivative along plaques, so the fundamental theorem of calculus makes their local leaf components agree. The leaves are intrinsic; they need not be embedded in the ambient subspace topology. The restricted form vanishes on their tangent spaces, giving isotropy and dimension \(k\).
 
 Under Theorem 3.1, \(\lambda|_{TV}\neq0\) means \(R\notin\mathcal Z\) at every point in the smaller working neighborhood. This gives radial transversality there.
 
@@ -173,7 +185,7 @@ Its coefficients therefore depend only on transverse variables. It descends to a
 \]
 form a smooth symplectic vector bundle of rank \(2(N-k)\). It splits orthogonally into \(TV/\mathcal Z\) and \((TV)^\omega/\mathcal Z\), of ranks \(2\ell\) and \(2(N-k-\ell)\). On a characteristic leaf \(B\), it is the symplectic normal bundle \((TB)^\omega/TB\).
 
-**Proof.** Constant rank makes \(\mathcal Z\), \(TV+(TV)^\omega\), and their quotient smooth bundles. Their fiber forms descend with radical exactly \(\mathcal Z\), by (1.2). The two quotient subbundles and their ranks are those of the linear decomposition, and their intersection is zero. On a leaf, \(TB=\mathcal Z\) and
+**Proof.** Companion F2 proves that constant rank makes \(\mathcal Z\), \(TV+(TV)^\omega\), and their quotient smooth bundles, and that the descended fiber forms are smooth in quotient frames. Their fiber forms descend with radical exactly \(\mathcal Z\), by (1.2). The two quotient subbundles and their ranks are those of the linear decomposition, and their intersection is zero. On a leaf, \(TB=\mathcal Z\) and
 \[
 TV+(TV)^\omega=\mathcal Z^\omega
 \]
@@ -220,11 +232,11 @@ C_{\mathrm{flat}}=
 \]
 with \(n\) shared variables and \(a,b\) free kernel variables.
 
-**Proof.** The pointwise identities of the linear relation lemma give projection ranks \(n_1+n\), \(n_2+n\), both constant. The constant-rank theorem therefore supplies smooth local projection images \(\Sigma_1,\Sigma_2\). In a rank chart, a map of rank \(r\) has image a coordinate \(r\)-plane; shrinking the domain gives the embedded image germ and surjective tangent map. Dilation preserves these image germs, and their tangent spaces equal the pointwise projection images \(K_j^\omega\).
+**Proof.** The pointwise identities of the linear relation lemma give projection ranks \(n_1+n\), \(n_2+n\), both constant. The constant-rank coordinate proof in prescribed-phase F1 therefore supplies smooth local projection images \(\Sigma_1,\Sigma_2\). Its proof applies to any smooth map of constant rank: choose independent output coordinates, complete them to input coordinates by the inverse theorem, and use zero transverse derivatives for the remaining outputs. In a rank chart, a map of rank \(r\) has image a coordinate \(r\)-plane; shrinking the domain gives the embedded image germ and surjective tangent map. Dilation preserves these image germs, and their tangent spaces equal the pointwise projection images \(K_j^\omega\). Choose a smaller image branch on a transverse radial slice and saturate it by positive dilation. This gives the conic embedded germ in use; no globally embedded projection image is asserted.
 
 Each image is coisotropic, since \((K_j^\omega)^\omega=K_j\subset K_j^\omega\). The radial exclusion says that its canonical one-form is nonzero on its tangent space, as proved in the corank lesson. Theorem 3.1 makes the two images respectively \(\xi''=0\) and \(\eta''=0\), after reordering the shared pairs to the first \(n\) positions. The kernel spaces are now exactly the individual horizontal \(x''\) and \(y''\) directions.
 
-These individual coordinate vector fields are tangent to \(C\) at every point, so their local translation flows preserve it. Consequently \(C\) is locally independent of \(x'',y''\) and is the product of these free variables with a reduced relation \(D\) in the shared cotangent variables. The reduced relation has dimension \(2n\), is Lagrangian for the difference of the shared forms, and has locally bijective projections: the only original projection kernels were precisely the removed free directions. It is therefore a homogeneous canonical graph \(\chi\) between the shared \(n\)-dimensional cotangent cones.
+These individual coordinate vector fields are tangent to \(C\) at every point, so companion F0 makes their local translation flows preserve it. Consequently \(C\) is locally independent of \(x'',y''\) and is the product of these free variables with a reduced relation \(D\) in the shared cotangent variables. The reduced relation has dimension \(2n\), is Lagrangian for the difference of the shared forms, and has locally bijective projections: the only original projection kernels were precisely the removed free directions. It is therefore a homogeneous canonical graph \(\chi\) between the shared \(n\)-dimensional cotangent cones.
 
 Apply \(\chi\) as a canonical change to the input shared variables and leave its remaining \((y'',\eta'')\) pairs fixed. This product map is symplectic and homogeneous on a cone where the shared covector is nonzero. In the resulting input coordinates the graph becomes the identity. This gives (6.1). ∎
 
@@ -235,7 +247,11 @@ m\leq-k/4.
 \]
 The same sharp assertion holds for bundles whose two ranks are positive at the working point. It is a statement about **every** operator in the class, not a claim that every individual operator above the threshold is unbounded.
 
-**Proof.** Sufficiency is the corank-continuity theorem. For necessity, flatten the germ by Proposition 6.1. In flat coordinates the proved tensor model of the corank lesson has partial amplitude order \(\mu=m+k/4\). If \(\mu>0\), choose compact nonzero base factors and an angular multiplier equal to \(\langle\eta'\rangle^\mu\) near a shared direction. Its fixed-norm modulated inputs have output norms growing like \(R^\mu\). Add input and output base cutoffs equal to one on the tested supports. This makes the kernel support compact and preserves that lower bound. The angular cutoff confines its wavefront to the small working graph cone, so it gives a localized unbounded operator \(\widetilde A\in I^m(C_{\mathrm{flat}}')\).
+**Proof.** Sufficiency is the corank-continuity theorem. For necessity, flatten the germ by Proposition 6.1. In flat coordinates the proved tensor model of the corank lesson has partial amplitude order \(\mu=m+k/4\). If \(\mu>0\), choose compact nonzero base factors and an angular multiplier equal to \(\langle\eta'\rangle^\mu\) near a shared direction. Its fixed-norm modulated inputs have output norms growing like \(R^\mu\). Add input and output base cutoffs equal to one on the tested supports. This makes the kernel support compact and preserves that lower bound.
+
+More explicitly, use the compact modulated input \(v(y')w(y'')e^{iR\omega\cdot y'}\) from the corank model. An input cutoff equal to one on its fixed support changes none of these inputs. After demodulation and division by \(R^\mu\), the output converges in \(L^2\) to the model's nonzero compactly supported product \(q(x')v(x')h(x'')\), times its nonzero averaging constant. Choose the output cutoff equal to one on that product's support. Multiplication by this bounded cutoff preserves the convergence and its nonzero limit. All base factors can be chosen inside arbitrarily small interior coordinate sets, and the angular multiplier can equal one near the chosen shared ray while being supported in the required smaller cone.
+
+ The angular cutoff confines its wavefront to the small working graph cone, so it gives a localized unbounded operator \(\widetilde A\in I^m(C_{\mathrm{flat}}')\).
 
 Quantize the two full homogeneous canonical changes by proper elliptic order-zero graph operators \(U_X,U_Y\), from the original charts to the flat charts, with microlocal inverses \(V_X,V_Y\). Set
 \[
@@ -247,7 +263,7 @@ The graph-factor composition theorem gives order \(m\) and the original relation
 U_X A V_Y=\widetilde A+S,
 \tag{6.4}
 \]
-where \(S\) has a smooth localized kernel. This follows from the two microlocal inverse identities and the wavefront composition theorem on the working cones. Proper supports keep common compact sets for all these operators.
+where \(S\) has a smooth localized kernel. This follows from the two microlocal inverse identities and the wavefront composition theorem on the working cones. Proper supports keep common compact sets for all these operators. In particular the compact kernel support of \(\widetilde A\) and properness of each graph factor make the kernel support of \(V_X\widetilde A U_Y\) compact: over the two compact intermediate projections, properness gives compact sets of exterior base points. Local smooth inverse errors on these supports have bounded kernels. Additional interior cutoffs may be taken equal to one on those compact sets.
 
 If every localized original \(I^m(C')\) operator were bounded, \(A\) would be bounded. Both graph factors in (6.4) are locally bounded, and \(S\) is bounded on the fixed compact supports. Thus \(\widetilde A\) would be bounded, contradicting the actual modulated family. This forces \(\mu\leq0\), hence (6.2). Extension by zero from interior coordinate products realizes the same local counterexample on the original manifolds.
 
@@ -312,7 +328,7 @@ Its partial amplitude has order zero, giving FIO order \(-k/4=-1/2\); the normal
 
 ## References
 
-- [Hörmander III, §21.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, Proposition 21.2.1, Proposition 21.2.3, Theorem 21.2.4, Theorems 21.2.6–21.2.7 and the following symplectic-bundle discussion. The single canonical-pair construction also uses the context of Theorem 21.1.9.
-- [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, constant-rank sharpness discussion following Theorem 25.3.8.
+- [Hörmander III, §21.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, Classics in Mathematics, Springer, 2007, reprint of the 1994 edition, e-ISBN 978-3-540-49938-1, [DOI 10.1007/978-3-540-49938-1](https://doi.org/10.1007/978-3-540-49938-1). Proposition 21.2.1, Proposition 21.2.3, Theorem 21.2.4, Theorems 21.2.6–21.2.7 and the symplectic-bundle discussion, printed pp. 283–286; Theorem 21.1.9, printed pp. 279–281.
+- [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Classics in Mathematics, Springer, 2009, reprint of the 1994 edition, e-ISBN 978-3-642-00136-9, [DOI 10.1007/978-3-642-00136-9](https://doi.org/10.1007/978-3-642-00136-9), constant-rank sharpness discussion following Theorem 25.3.8, printed p. 31.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text and coordinate figure: public domain (CC0).*
+*AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text, solved exercises and coordinate illustrations: CC0 to the extent rights exist. Cited human works and separately identified components retain their own terms.*

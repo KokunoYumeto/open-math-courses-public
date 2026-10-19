@@ -8,7 +8,7 @@ An amenable group can contain a noncompact solvable part. The positive affine gr
 
 Read [Haar averages and compact translation control](haar-averages-and-compact-translation-control.md) and [Closed subgroups and continuous averaging](closed-subgroups-and-continuous-averaging.md) first. Their full locally compact mean, fixed-point, normal-extension and closed-subgroup proofs are used here. The reduced-word proof for the discrete free group is in [Means, Følner sets, and regular representations](means-folner-sets-and-regular-representations.md), Example 4.4.
 
-Throughout, groups are locally compact Hausdorff unless explicitly stated otherwise. No countable base, separability, metrizability or unimodularity is assumed. Section 1A proves the compact-normal quotient input S3 in full, at its stated compact-representation and finite-dimensional Lie prerequisites. Section 1B proves the compact case and the reduction of arbitrary locally compact Lie approximation to the metrizable case, including the quotient topology and metrization proofs. Section 1C constructs the Lie radical and proves the full locally compact radical assertion S1 assuming S2. Sections 1D–1E construct compact conjugation and prove the closed rank-one subgroup input S4 at the explicit root, Lie and geometry prerequisites. The general metrizable Lie-approximation theorem remains unfinished. The other arguments, examples and exercise solutions are given below.
+Throughout, groups are locally compact Hausdorff unless explicitly stated otherwise. No countable base, separability, metrizability or unimodularity is assumed. Section 1A proves the compact-normal quotient input S3 in full, at its stated compact-representation and finite-dimensional Lie prerequisites. Section 1B proves the compact case and the reduction of arbitrary locally compact Lie approximation to the metrizable case, including the quotient topology and metrization proofs. Section 1C constructs the Lie radical and proves the full locally compact radical assertion S1 assuming S2. Sections 1D–1E construct compact conjugation and prove the closed rank-one subgroup input S4 at the explicit root, Lie and geometry prerequisites. Section 1B also constructs the metrizable Lie quotient and lifts it to arbitrary locally compact groups; its Haar and Peter–Weyl prerequisites are explicit. The other arguments, examples and exercise solutions are given below.
 
 ## 1. Means, components, and the structural inputs
 
@@ -26,7 +26,7 @@ Here are the four structure inputs used in the proof. They concern general local
 | Input | Exact assertion | Source locator |
 | --- | --- | --- |
 | S1 | A locally compact group has a largest connected solvable normal subgroup, its radical \(R=\operatorname{rad}G\). It is closed and characteristic. | Corollary 1C.9 below, conditional on S2; classical credit: Iwasawa, as recorded in [Rickert], Section 3, pages 439–440. |
-| S2 | A connected locally compact group has a compact normal subgroup \(K\) with Lie quotient. | [Rickert], Theorem 1.1, pages 433–434, applied to a connected group; its proof uses the structure theorem of Gleason, Montgomery–Zippin and Yamabe, which is proved in [Tao], Theorem 1.1.17 and Section 1.5. |
+| S2 | A connected locally compact group has a compact normal subgroup \(K\) with Lie quotient. | Corollary 1B.21 below, with the full metrizable construction in Theorem 1B.20; classical credit: [Rickert], Theorem 1.1, and [Tao], Theorem 1.1.17 and Section 1.5. |
 | S3 | A quotient of a connected semisimple locally compact group by a compact normal subgroup is semisimple. | Theorem 1A.10 below; classical credit: [Rickert], Lemma 3.4, page 440. |
 | S4 | A noncompact connected semisimple Lie group has a closed connected Lie subgroup locally isomorphic to \(\mathrm{SL}_2(\mathbb R)\). | Theorem 1E.1 below, at the exact root/Lie/geometry providers; classical credit: [Rickert], Lemmas 3.11 and 5.11, pages 442 and 452. |
 
@@ -57,7 +57,7 @@ For a group \(A\), define its algebraic derived series by \(D^0A=A\) and \(D^{j+
 
 We first prove these two mechanisms. The conclusion is Theorem 1A.10, which supplies the compact-normal quotient input used in Proposition 4.1. Section 1C proves existence of the largest solvable radical assuming S2. General Lie approximation remains a separate structure input; Sections 1D–1E prove the closed rank-one subgroup theorem at their exact root, Lie and geometry prerequisites.
 
-The representation prerequisites are [finite-dimensional complete reducibility](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html#result-proposition-1-2), [finite-dimensionality of compact irreducibles](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html#result-theorem-2-7), [Schur orthogonality](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/matrix-coefficients-and-the-peter-weyl-theorem.html#result-theorem-2-1), and [Peter–Weyl point separation](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/matrix-coefficients-and-the-peter-weyl-theorem.html#result-theorem-4-1). They apply to arbitrary compact Hausdorff groups. In the finite matrix models we use the closed Lie subgroup theorem, [matrix exponentials](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/local-tools-for-bundles-and-transport.html), and [smooth quotients and local sections](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/local-tools-for-bundles-and-transport.html). These inputs are applied inside finite unitary groups, where their finite-dimensional hypotheses hold.
+The representation prerequisites are finite-dimensional complete reducibility, finite-dimensionality of compact irreducibles, Schur orthogonality, and Peter–Weyl point separation. They apply to arbitrary compact Hausdorff groups. In the finite matrix models we use the closed Lie subgroup theorem, matrix exponentials, and smooth quotients and local sections. These inputs are applied inside finite unitary groups, where their finite-dimensional hypotheses hold.
 
 The classical compact-normal centralizer theorem is due to Kenkichi Iwasawa, as credited in [Rickert, Theorem 1.4, printed page 434](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA8DDE78BAC12477EB8CBA64DF42E078/S1446788700004389a.pdf/some-properties-of-locally-compact-groups.pdf#page=2). Rickert's Lemma 3.4 gives the compact-normal semisimple quotient conclusion. The proof expression below is original and imports no prose from those papers.
 
@@ -139,7 +139,7 @@ The groups \(L^\circ\) and \(C^\circ\) commute elementwise. Their product is a c
 
 **Lemma 1A.3 (connected automorphisms of a compact Lie group are inner).** Let a connected topological group \(A\) act continuously by automorphisms on a compact Lie group \(L\), including a disconnected one. Each action automorphism is conjugation by an element of \(L^\circ\).
 
-*Proof.* Choose a faithful continuous unitary representation \(\rho:L\hookrightarrow U(n)\). Such a representation exists by [the no-small-subgroups lemma](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/matrix-coefficients-and-the-peter-weyl-theorem.html#result-lemma-5-1) and [the compact Lie embedding theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/matrix-coefficients-and-the-peter-weyl-theorem.html#result-theorem-5-2); in the matrix-model application (1A.4), the inclusion itself is faithful. Finite-dimensional complete reducibility and Lemma 1A.1 imply \(\rho\circ\alpha_a\simeq\rho\). A unitary intertwiner \(u_a\) then satisfies
+*Proof.* Choose a faithful continuous unitary representation \(\rho:L\hookrightarrow U(n)\). Such a representation exists by the no-small-subgroups lemma and the compact Lie embedding theorem; in the matrix-model application (1A.4), the inclusion itself is faithful. Finite-dimensional complete reducibility and Lemma 1A.1 imply \(\rho\circ\alpha_a\simeq\rho\). A unitary intertwiner \(u_a\) then satisfies
 \[
 \rho(\alpha_a(\ell))=u_a\rho(\ell)u_a^{-1}\qquad(\ell\in L). \tag{1A.10}
 \]
@@ -276,7 +276,7 @@ In that case \(C^\circ\cap K\) is central in \(G\): it commutes with \(K\) by be
 
 ## 1B. Lie approximation: finite kernels and the countability reduction
 
-The general Lie-approximation input S2 concerns a connected locally compact Hausdorff group, which may have no countable neighbourhood base. Two preliminary steps are sometimes hidden when that input is cited: the compact case needs only finitely many representations at each neighbourhood, and the general case can first pass through a compact kernel to a metrizable open subgroup. We prove those steps here. The remaining theorem for metrizable locally compact groups is still an input; the argument below does not replace its no-small-subgroups and Lie-structure proofs.
+The general Lie-approximation input S2 concerns a connected locally compact Hausdorff group, which may have no countable neighbourhood base. Two preliminary steps are sometimes hidden when that input is cited: the compact case needs only finitely many representations at each neighbourhood, and the general case can first pass through a compact kernel to a metrizable open subgroup. We prove those steps here. The metrizable proof follows the preliminary reductions: Theorem 1B.20 constructs the compact normal kernel and the Lie structure, and Corollary 1B.21 gives the unrestricted conclusion.
 
 For classical credit, the finite-kernel argument is the compact Peter–Weyl route to Lie approximation. The countability reduction and the metrization argument are the Kakutani–Gleason part of that route; see Terence Tao, *Hilbert's Fifth Problem and Related Topics*, Sections 1.4–1.5, especially Theorem 1.4.14, Theorem 1.5.2 and Exercise 1.5.4. The [author's freely accessible preliminary version](https://terrytao.wordpress.com/wp-content/uploads/2014/11/gsm-153.pdf) supplies a reading source. We organize the argument around compact fibres and kernel lifting, and give a direct word-cost proof of metrization.
 
@@ -369,7 +369,7 @@ G'=q^{-1}(L'),\qquad K=q^{-1}(B).
 \]
 Then \(G'\) is open in \(H\), hence in \(G\); \(K\) is normal in \(G'\), is contained in \(U\), and is compact by Lemma 1B.2. The surjective composite \(G'\to L'\to L'/B\) is continuous and open, with kernel \(K\). It consequently induces a topological group isomorphism \(G'/K\cong L'/B\), a Lie group. If \(G\) is connected, \(G'=G\) because an open subgroup is closed. \(\square\)
 
-This reduction retains the arbitrary locally compact scope. It leaves a specific mathematical obligation: the metrizable theorem in Proposition 1B.5. In particular, a proof only for compact groups, or an invocation that a no-small-subgroups group is Lie without its proof, does not finish S2.
+This reduction retains arbitrary locally compact scope. Theorem 1B.20 below proves its metrizable input, including the small-subgroup, exponential-neighbourhood and analytic-atlas arguments. Corollary 1B.21 then gives S2 without an extra countability or local-connectedness hypothesis.
 
 **Exercise 1B.1 (what a finite compact quotient can see).** *Level 2.* Let \(I\) be uncountable, let \(C=\mathbb T^I\) with the product topology, and let \(U\) be any open identity neighbourhood. Prove directly that there is a compact normal subgroup \(N\subset U\) with \(C/N\) a finite-dimensional torus. Prove also that \(C\) has no countable identity neighbourhood base. Explain why these two facts are consistent with Proposition 1B.1.
 
@@ -387,11 +387,776 @@ Suppose that \(O_1,O_2,\ldots\) were a countable identity base. For each \(n\), 
 
 Addition in the real coordinate gives \(V^m=(-m,m)\times\{e\}\) and \(H=\mathbb R\times\{e\}\). This is a proper open and closed sigma-compact subgroup. Every connected subset containing the identity has constant projection to \(D\), and \(\mathbb R\times\{e\}\) itself is connected; thus it is \(G^\circ\). The construction cannot force \(H=G\) here. For a connected group, however, the complement of any proper open subgroup is a nonempty union of open cosets, giving a separation. This is the step that forces \(H=G\), and subsequently \(G'=G\), in the connected case.
 
+### The metrizable case: compact kernels, escape and coordinates
+
+We now prove the metrizable theorem used in Proposition 1B.5. The route follows the classical convolution and escape mechanisms in [Tao], Sections 1.2.5, 1.3.2–1.3.3 and 1.5. We begin with the desired quotient, then construct its metric and coordinates. The proof includes regularization, the full product limit, finite-dimensionality, an exponential neighbourhood and a global analytic atlas.
+
+
+For a metrizable locally compact Hausdorff \(G\), take the compact-generated, sigma-compact open subgroup \(P\) constructed in the first paragraph of Lemma 1B.3. Lemma 1B.4 makes \(P\) second countable. Every open subgroup of \(P\) is open in \(G\). If \(G\) is connected, \(P=G\). Thus this reduction adds no hypothesis to the original group.
+
+The proof uses two exact programme prerequisites. The Haar lesson, Theorem 8.3, Proposition 9.1 and Theorem 14.2(6)–(7), supplies the measure and convolution facts. Peter–Weyl, Theorem 4.1, supplies point separation for every compact Hausdorff group. Their precise uses are:
+
+- **Haar input:** each locally compact Hausdorff group used below, including \(P\) and the quotient \(H=P'/N\), has a nonzero left-invariant Radon measure \(\mu\), finite on compact sets and positive on nonempty open sets. Uniqueness is unused. Convolution of bounded Borel functions with precompact support is well-defined; the usual \(L^1\)/\(L^2\) translation continuity gives a continuous convolution. Where continuity is not needed, we say so.
+- **Completed compact approximation input:** for compact Hausdorff \(C\) and an open identity neighbourhood \(O\subset C\), there is a compact normal \(K\subset O\) such that \(C/K\) is topologically isomorphic to the compact image of a finite-dimensional continuous unitary representation. This is the existing finite Peter–Weyl argument in Proposition 1B.1, not a new countable-family assumption.
+
+All convolutions below have bounded Borel factors with compact support. The first half of Haar Theorem 14.2(7) therefore makes them pointwise defined and continuous, without unimodularity; it applies because the first factor is in \(L^1\) and the second is bounded. Left invariance gives the difference identities directly. The selected group \(P\), its compact-generated open subgroups and their quotients are sigma-compact. On these groups the locally completed Haar convention agrees with the completion of the ordinary sigma-finite Borel measure. No global sigma-finiteness is imposed on the original \(G\).
+
+Only the finite representation and kernel part of the compact argument is consumed here. Its matrix image is NSS by the next direct calculation; the closed Lie-subgroup theorem appearing in the conclusion of Proposition 1B.1 is unnecessary for this construction. Thus the eventual NSS recognition is not being presumed through a compact-quotient recognition step.
+
+Such a matrix image is NSS. Indeed, in its ambient matrix Lie group choose a norm ball \(B_R(0)\) on which matrix exponential is injective and which supplies a logarithm neighbourhood. A subgroup contained in \(\exp B_{R/3}(0)\) cannot contain \(g=\exp X\ne e\): at the first integer \(k\) with \(k|X|\ge R/3\), one has \(R/3\le k|X|<2R/3<R\), whereas \(g^k\) would have a logarithm of norm less than \(R/3\), contradicting injectivity on \(B_R(0)\). Intersect the witness with the matrix image.
+
+For bounded functions define
+\[
+\begin{gathered}
+\tau_g f(x)=f(g^{-1}x),\\ \partial_g=I-\tau_g,\\
+p_f(g)=\|\partial_g f\|_\infty.
+\end{gathered}
+\]
+Translations are isometries in the supremum norm. Therefore
+\[
+\begin{gathered}
+p_f(g^{-1})=p_f(g),\\ p_f(gh)\le p_f(g)+p_f(h).
+\tag{GY.1}
+\end{gathered}
+\]
+For convolution \(f*\eta(x)=\int f(y)\eta(y^{-1}x)\,d\mu(y)\), left invariance and direct expansion give the exact identities
+\[
+\begin{gathered}
+\partial_b(f*\eta)=(\partial_b f)*\eta,\\
+\partial_a\partial_b(f*\eta)(x)
+\\
+=\int(\partial_b f)(y)\,
+ \partial_{y^{-1}ay}\eta(y^{-1}x)\,d\mu(y).
+\end{gathered}
+\tag{GY.2}
+\]
+For a fixed \(q\), powers of its translation commute and
+\[
+n\partial_q=\partial_{q^n}
+ +\sum_{i=0}^{n-1}\partial_{q^i}\partial_q.
+\tag{GY.3}
+\]
+This follows by subtracting \(I-\tau_q^n=\sum_{i=0}^{n-1}\tau_q^i(I-\tau_q)\) from \(n(I-\tau_q)\). These formulas specify the operator order and the conjugation twist used throughout.
+
+### Finite trapping of products of tiny subgroups
+
+Write
+\[
+Q[V]=\bigcup\{J:J\leq P,\ J\subset V\}.
+\]
+Every member of \(Q[V]\) has all its integer powers in \(V\). If \(V\) is symmetric, \(Q[V]\) is symmetric and contains \(e\).
+
+**Lemma 1B.6 (finite trapping).** Let \(A\) be a symmetric open precompact identity neighbourhood and \(m\ge1\). There is a symmetric open identity neighbourhood \(V\) such that, for every symmetric \(Q\subset Q[V]\) containing \(e\) and every \(n\ge1\),
+\[
+Q^n\subset A\quad\Longrightarrow\quad Q^{mn}\subset A^8.
+\tag{GY.4}
+\]
+
+**Proof.** Set \(a=\mu(A)>0\), \(D=\mu(\overline{A^4})<\infty\), and choose an integer \(M>2mD/a\). Choose a symmetric identity neighbourhood \(T\) with \(T^M\subset A\). Compactness of \(\overline{A^4}\) and continuity of conjugation give a symmetric \(V\subset A\) with \(y^{-1}Vy\subset T\) for every \(y\in\overline{A^4}\): take identity neighbourhoods supplied at each \((y,e)\), and use a finite cover of that compact parameter set. Put
+\[
+S=\{y^{-1}vy:v\in V,\ y\in A^4\};
+\]
+then \(S\) is symmetric, contains \(e\), and \(S^M\subset A\).
+
+For \(Q,n\) as in the statement define
+\[
+\begin{gathered}
+f(x)=\max\bigl(\\
+\{1-j/n:x\in Q^jA,\ 0\le j\le n\}\cup\{0\}\bigr),\\
+\eta(x)=\max\bigl(\\
+\{1-j/M:x\in S^jA,\ 0\le j\le M\}\cup\{0\}\bigr).
+\end{gathered}
+\]
+Their level sets are open unions of translates of \(A\), so the functions are Borel. Both lie in \([0,1]\), equal one on \(A\), and vanish outside \(A^2\). Inserting \(e\) in words makes \(Q^j\subset Q^n\subset A\) for \(j\le n\), and similarly \(S^j\subset A\). Adding one letter, and then reversing the argument using symmetry, gives
+\[
+\begin{gathered}
+\|\partial_q f\|_\infty\le n^{-1}\ (q\in Q),\\
+\|\partial_s\eta\|_\infty\le M^{-1}\ (s\in S).
+\tag{GY.5}
+\end{gathered}
+\]
+
+Let \(\phi=f*\eta\). It vanishes outside \(A^4\), and \(\phi(e)\ge a\), since both factors equal one on symmetric \(A\). Thus
+\[
+\begin{gathered}
+p_\phi(g)<a\\\Longrightarrow\quad \phi(g^{-1})>0
+\\\Longrightarrow\quad g\in A^4\subset A^8.
+\tag{GY.6}
+\end{gathered}
+\]
+Continuity of \(\phi\) is unnecessary for this estimate.
+
+For \(q\in Q\), all \(q^i\in V\). Moving \(\partial_{q^n}\) to the second convolution factor gives \(p_\phi(q^n)\le D/M\): the integration variable belongs to \(A^2\), and \(y^{-1}q^ny\in S\). Likewise \(\partial_q f\) vanishes outside \(A^2\cup qA^2\subset A^3\), and (GY.2), with outer \(q^i\) and inner \(q\), gives
+\[
+\|\partial_{q^i}\partial_q\phi\|_\infty\le D/(Mn)
+\qquad(0\le i<n).
+\]
+Equation (GY.3) now gives \(p_\phi(q)\le2D/(Mn)\). For \(g\in Q^{mn}\), (GY.1) yields \(p_\phi(g)\le2mD/M<a\). Apply (GY.6). The choices of \(M,V\) are independent of \(Q,n\). \(\square\)
+
+### From finite products to a trapped subgroup
+
+**Lemma 1B.7 (subgroup trapping).** For every open identity neighbourhood \(O\subset P\), some symmetric open \(V\) satisfies
+\[
+\langle Q[V]\rangle\subset O.
+\tag{GY.7}
+\]
+
+**Proof.** Choose symmetric open precompact \(A\) with \(\overline A\subset O\), and a decreasing symmetric identity base \(V_i\subset A\). Put \(Q_i=Q[V_i]\). Suppose no \(\langle Q_i\rangle\) is contained in \(A\). Define
+\[
+n_i=\min\{r\ge1:Q_i^r\not\subset A\}-1.
+\]
+After dropping finitely many indices,
+\[
+Q_i^{n_i}\subset A,\qquad Q_i^{n_i+1}\not\subset A,\qquad n_i\to\infty.
+\tag{GY.8}
+\]
+For each fixed \(r\), continuity of \(r\)-fold multiplication makes \(V_i^r\subset A\) eventually, which proves the last assertion. Lemma 1B.6 implies \(Q_i^{rn_i}\subset A^8\) eventually for every fixed \(r\).
+
+The sets \(E_i=\overline{Q_i^{n_i}}\) are genuinely compact subsets of \(\overline A\). Pass to a subsequence converging in Hausdorff distance to a nonempty compact \(E\). Here is the compactness fact being used. The nonempty closed subsets of a compact metric space form a totally bounded Hausdorff metric space, by approximating each set with subsets of a finite \(\varepsilon\)-net. For a Hausdorff Cauchy sequence \((F_i)\), the set \(\bigcap_j\overline{\bigcup_{i\ge j}F_i}\) is nonempty compact; the Cauchy bounds show both one-sided distances to it tend to zero. Thus that hyperspace is complete and compact. Also \(E_i^r\to E^r\) for each fixed \(r\), by uniform continuity of multiplication on the compact product.
+
+The limit \(E\) is symmetric and contains \(e\). Since \(E_i^r\subset\overline{Q_i^{rn_i}}\subset\overline{A^8}\) eventually, \(E^r\subset\overline{A^8}\) for every \(r\). Consequently
+\[
+C=\overline{\langle E\rangle}
+\]
+is a compact subgroup. Indeed \(\langle E\rangle=\bigcup_rE^r\) is a subgroup inside the compact set \(\overline{A^8}\), and the closure of a subgroup is a subgroup. We have not presumed \(\langle E\rangle\) itself closed.
+
+Apply completed compact approximation to \(C\) and \(A\cap C\). Obtain \(K\lhd C\), \(K\subset A\), and a compact NSS quotient \(L=C/K\), with quotient map \(p\). Choose symmetric open \(D\subset L\) whose closure is contained in an NSS witness. Choose a still smaller symmetric open \(B\subset L\) such that
+\[
+(\overline B)^8\subset D,\qquad F_0:=p^{-1}(\overline B)\subset A.
+\tag{GY.9}
+\]
+The second choice is possible because \(p(C\setminus A)\) is compact and omits \(e\), since \(K\subset A\).
+
+There is \(k\ge1\) such that every \(x\in L\setminus B\) has some \(x^j\notin\overline D\), \(1\le j\le k\). Otherwise all positive powers of some nonidentity \(x\) could remain in \(\overline D\); symmetry would put its whole cyclic subgroup there, contrary to NSS. For each \(x\in L\setminus B\), an escaping power remains outside \(\overline D\) on an open neighbourhood of \(x\). A finite subcover of compact \(L\setminus B\) supplies the common \(k\).
+
+Let \(F=C\setminus p^{-1}(D)\), a compact closed set disjoint from \(F_0^8\). Choose a symmetric open precompact neighbourhood \(W\) of compact \(F_0\) such that
+\[
+\overline W\subset A,\qquad (\overline W)^8\cap F=\varnothing.
+\tag{GY.10}
+\]
+For justification, first choose a symmetric precompact neighbourhood \(R\) of \(F_0\) with \(\overline R\subset A\), and shrink symmetric metric tubes around \(F_0\) within \(R\). If (GY.10) failed for every tube, eight-tuples in their closures with products in \(F\) would have a subsequential limit in \(F_0^8\cap F\), a contradiction.
+
+Let \(r_i\) be the first integer for which \(Q_i^{r_i}\not\subset W\). Since \(W\subset A\), \(r_i\le n_i+1\); since \(W\) is an identity neighbourhood, \(r_i\to\infty\). Lemma 1B.6 applied to \(W\) with multiplier \(2k\) gives
+\[
+Q_i^{2k(r_i-1)}\subset W^8
+\tag{GY.11}
+\]
+eventually. Pick \(g_i\in Q_i^{r_i}\setminus W\). Because \(r_i\le2n_i\) eventually, \(g_i\in E_i^2\); compactness and product convergence give a subsequence \(g_i\to h\in E^2\subset C\). Openness of \(W\) gives \(h\notin W\), and \(p^{-1}(B)\subset F_0\subset W\) gives \(p(h)\notin B\).
+
+For \(1\le j\le k\), eventually \(jr_i\le2k(r_i-1)\). By (GY.11), \(g_i^j\in W^8\). In the limit \(h^j\in C\cap(\overline W)^8\subset p^{-1}(D)\), contradicting the defining escape property of \(k\). The supposition before (GY.8) was false. Some \(\langle Q_i\rangle\subset A\subset O\), proving (GY.7). \(\square\)
+
+### The compact normal kernel and the NSS quotient
+
+**Theorem 1B.8.** For every identity neighbourhood \(U\) in \(P\), there are a compact-generated open \(P'\le P\) and compact \(N\lhd P'\), with \(N\subset U\), such that \(P'/N\) is locally compact Hausdorff, second countable and NSS.
+
+**Proof.** Choose symmetric open precompact \(U_1\) with \(\overline{U_1}\subset U\). Lemma 1B.7 supplies symmetric open \(V\subset U_1\) with \(\langle Q[V]\rangle\subset U_1\). Then
+\[
+C=\overline{\langle Q[V]\rangle}\subset\overline{U_1}\subset U
+\]
+is a compact subgroup. Apply completed compact approximation to \(C\) and \(V\cap C\): obtain compact \(N\lhd C\), \(N\subset V\), with \(C/N\) NSS. Let \(p:C\to C/N\), and choose a symmetric open NSS witness \(B\) there.
+
+Relative openness and symmetry give a symmetric ambient open set \(T\) containing \(N\), with \(T\subset V\) and \(T\cap C\subset p^{-1}(B)\). Compactness of \(N\) gives a symmetric open precompact identity neighbourhood \(W\) with \(WNW\subset T\): cover \(N\) by finitely many neighbourhoods on which small left and right multiplications remain in \(T\), and intersect the associated identity neighbourhoods.
+
+For \(w\in W\), \(w^{-1}Nw\subset WNW\subset V\). This is a subgroup, so lies in \(Q[V]\subset C\). Its image under \(p\) is a subgroup in \(B\), hence trivial. Thus \(w^{-1}Nw\subset N\). Apply the same argument to \(w^{-1}\in W\) for the reverse inclusion. Every \(w\in W\) normalizes \(N\), and
+\[
+P'=\langle N\cup W\rangle
+\]
+is open, with \(N\lhd P'\). The previously proved compact-kernel quotient lemma gives local compactness and Hausdorffness of \(P'/N\).
+
+Write \(q:P'\to P'/N\). Normalization makes \(S=WNW=W^2N\) an open \(N\)-saturated set; thus \(q^{-1}(q(S))=S\). If a subgroup \(J\le P'/N\) is contained in \(q(S)\), its full inverse image \(R=q^{-1}(J)\) is a subgroup in \(S\subset V\), hence in \(Q[V]\subset C\). Then \(p(R)\subset p(S\cap C)\subset B\), so \(p(R)\) is trivial. It follows that \(R\subset N\) and \(J=\{e\}\). Thus \(q(S)\) witnesses NSS.
+
+An open subgroup is closed, so \(\overline W\subset P'\). The compact symmetric set \(N\cup\overline W\) generates \(P'\); therefore \(P'\) is sigma-compact. The existing countability result makes it second countable, and openness of \(q\) makes its quotient second countable as well. This proves the exact claim, including normality in the selected open subgroup and the full inverse-image step. \(\square\)
+
+The original target has now been reduced to Lie recognition for the second-countable locally compact NSS group \(P'/N\). The next sections develop that recognition rather than citing “NSS implies Lie” as a completed proof.
+
+### NSS escape and a weak Gleason metric
+
+Fix a locally compact Hausdorff NSS group \(H\). Choose a symmetric open precompact identity neighbourhood \(A\) with \(\overline{A^{16}}\) contained in an NSS witness. For symmetric sufficiently small \(B\), set
+\[
+\begin{gathered}
+E_B(g)=\frac1{r_B(g)+1},\\
+r_B(g)=\\
+\sup\{r\ge0:g,g^2,\ldots,g^r\in B\};
+\tag{GY.12}
+\end{gathered}
+\]
+take \(1/(\infty+1)=0\).
+
+**Lemma 1B.9 (uniform escape).** \(E_B(g)>0\) for \(g\ne e\). For every identity neighbourhood \(D\) there is \(k\ge1\) such that \(g,\ldots,g^k\in B\) implies \(g\in D\), provided \(\overline B\) is inside the fixed NSS witness.
+
+**Proof.** If all positive powers are in symmetric \(B\), all integer powers are too, giving a forbidden nontrivial cyclic subgroup. For uniformity, otherwise choose \(g_i\notin D\) with its first \(i\) powers in \(B\). Compactness of \(\overline B\) gives a subnet, or a subsequence in the metrizable case, tending to \(g\in\overline B\setminus D\). Each fixed positive power of \(g\) lies in \(\overline B\); symmetry supplies the negative powers. The NSS witness forces \(g=e\in D\), a contradiction. \(\square\)
+
+For any two such symmetric \(B,D\), their escape functions are comparable. If the uniform escape integer is \(k\), then the first \(r\) powers of \(g\) in \(B\) put the first \(\lfloor r/k\rfloor\) powers in \(D\), by applying the lemma to \(g^j\). Therefore \(E_D(g)\le kE_B(g)\). Interchange \(B,D\) for the other bound. Each \(E_B\) is symmetric and upper semicontinuous: strict sublevel sets are determined by finitely many powers lying in the open set \(B\). In particular \(E_B(g)\to0\) as \(g\to e\).
+
+**Lemma 1B.10 (uniform approximate triangle inequality).** There is a finite constant \(K\) such that
+\[
+\begin{gathered}
+E_A(g_1\cdots g_r)\le K\sum_{i=1}^r E_A(g_i)
+\\\text{for every finite word.}
+\tag{GY.13}
+\end{gathered}
+\]
+
+**Proof.** Write \(E=E_A\). For \(\varepsilon>0\) put
+\[
+p_\varepsilon(g)=\inf_{g=g_1\cdots g_r}
+ \sum_{i=1}^r(E(g_i)+\varepsilon),
+\]
+and allow the empty word only for \(g=e\). It is symmetric, subadditive, zero at \(e\), and \(p_\varepsilon(g)\le E(g)+\varepsilon\). Initially,
+\[
+E(g_1\cdots g_r)\le \varepsilon^{-1}
+ \sum_i(E(g_i)+\varepsilon)
+\tag{GY.14}
+\]
+for every nonempty word, since \(E\le1\). Suppose more generally that this holds with some finite \(M\). Taking the infimum gives \(E(g)\le Mp_\varepsilon(g)\).
+
+Use a right-distance bump, which is necessary for the uniform left-translation estimate:
+\[
+f(x)=\left(1-M\inf_{u\in A}p_\varepsilon(xu^{-1})\right)_+.
+\tag{GY.15}
+\]
+It equals one on \(A\), takes values in \([0,1]\), and vanishes outside \(A^2\). Indeed a positive value gives some \(u\in A\) with \(E(xu^{-1})\le Mp_\varepsilon(xu^{-1})<1\), so \(xu^{-1}\in A\). Its strict positive level sets are unions of translates of open \(A\), hence are open; thus \(f\) is Borel, even though \(p_\varepsilon\) need not be a compatible continuous metric. Subadditivity gives
+\[
+\|\partial_g f\|_\infty\le Mp_\varepsilon(g)
+\le M(E(g)+\varepsilon).
+\tag{GY.16}
+\]
+This uses \(xu^{-1}\) in (GY.15); a left-distance bump would require a separate conjugation estimate.
+
+Choose a large integer \(L\) later, then symmetric open \(A_1\subset A\) with \(A_1^L\subset A\), and put
+\[
+\begin{gathered}
+\eta(x)=\max\bigl(\\
+\{1-j/L:x\in A_1^jA,\ 0\le j\le L\}\cup\{0\}\bigr).
+\end{gathered}
+\]
+It is Borel, equals one on \(A\), vanishes outside \(A^2\), and \(\|\partial_g\eta\|_\infty\le L^{-1}\) for \(g\in A_1\). Choose symmetric \(A_2\subset A_1\) so that \(y^{-1}A_2y\subset A_1\) for all \(y\in\overline{A^3}\). The compact parameter set makes this choice uniform. All these sets depend on \(L,A\), but not on \(M,\varepsilon\).
+
+Let \(\phi=f*\eta\). It vanishes outside \(A^4\), is bounded by a constant \(b\) depending only on \(\mu,A\), and \(\phi(e)\ge a:=\mu(A)>0\). If \(jp_\phi(g)<a\), (GY.1) and evaluation at \(e\) imply \(g^j\in A^4\). Choose \(j\) up to \(\lfloor a/(2p_\phi(g))\rfloor\), and use comparability of \(E_{A^4}\) and \(E_A\). This gives
+\[
+E(g)\le c\,p_\phi(g)
+\tag{GY.17}
+\]
+with \(c\) independent of \(L,M,\varepsilon\). If \(p_\phi(g)=0\), all powers lie in \(A^4\), so NSS gives \(g=e\); if \(p_\phi(g)\ge a/4\), use \(E\le1\) for the same inequality after increasing \(c\).
+
+For \(h\in A\), the support of \(\partial_h f\) is in \(A^2\cup hA^2\subset A^3\). Thus (GY.2), (GY.16) and the bound for \(\eta\) imply
+\[
+\begin{gathered}
+\|\partial_g\partial_h\phi\|_\infty
+\le \frac{dM}{L}(E(h)+\varepsilon)
+\\(g\in A_2,\ h\in A),
+\tag{GY.18}
+\end{gathered}
+\]
+where \(d=\mu(\overline{A^3})\) is independent of \(L,M,\varepsilon\).
+
+If \(g,\ldots,g^n\in A_2\), use (GY.3) and commute powers of the same translation, so the inner derivative in (GY.18) is always \(\partial_g\). One obtains
+\[
+p_\phi(g)\le b/n+(dM/L)(E(g)+\varepsilon).
+\]
+Take the largest available \(n\), and treat \(n=0\) by the trivial boundedness estimate. Uniform escape comparability gives
+\[
+p_\phi(g)\le b_L E(g)+(dM/L)(E(g)+\varepsilon)
+\tag{GY.19}
+\]
+for all \(g\), with finite \(b_L\) independent of \(M,\varepsilon\).
+
+Combining (GY.17), subadditivity of \(p_\phi\), and (GY.19) improves the constant in (GY.14) from \(M\) to
+\[
+\theta M+B,\qquad \theta=cd/L,\quad B=cb_L.
+\]
+Choose \(L\) once with \(\theta\le1/2\); its associated \(A_1,A_2,B\) are then fixed. Starting with \(M_0\le\varepsilon^{-1}+2B\), iteration gives \(M_j\le2^{-j}\varepsilon^{-1}+2B\). For each fixed \(\varepsilon\), let \(j\to\infty\); then, for each fixed finite word, let \(\varepsilon\downarrow0\). The result is (GY.13) with \(K=2B\). The regularization establishes a finite starting bound and keeps the two limiting operations separate. \(\square\)
+
+Define
+\[
+\begin{gathered}
+p(g)=\inf_{g=g_1\cdots g_r}\sum_iE(g_i),\\
+d(g,h)=p(g^{-1}h).
+\tag{GY.20}
+\end{gathered}
+\]
+Equation (GY.13) gives \(E/K\le p\le E\). Symmetry and subadditivity make \(d\) a left-invariant metric; NSS makes it nondegenerate. It induces the original topology: small \(E\), hence small \(p\), is forced by finitely many powers near \(e\); conversely uniform escape gives, for every identity neighbourhood, an \(E\)-sublevel contained in it, and \(E\le Kp\).
+
+**Lemma 1B.11 (weak Gleason escape).** For some \(C\ge1\),
+\[
+np(g)\le1/C\quad\Longrightarrow\quad
+p(g^n)\ge np(g)/C.
+\tag{GY.21}
+\]
+
+**Proof.** Choose symmetric \(D\) with \(D^2\subset A\) and a \(\delta>0\) such that \(p(x)\le\delta\) implies \(x\in D\). Comparability gives \(E_D\le kE\le kKp\). If \(np(g)\le\delta\), then \(g^j\in D\) for \(0\le j\le n\). For \(g\ne e\), let \(m=r_A(g)+1=1/E(g)\) be its first escape from \(A\); then \(m>n\). Put \(\ell=n\lceil m/n\rceil\), so \(m\le\ell<m+n\le2m\). If \(g^\ell\in D\), then \(g^m=g^\ell(g^{\ell-m})^{-1}\in D^2\subset A\), a contradiction. Hence
+\[
+E_D(g^n)\ge n/\ell\ge nE(g)/2\ge np(g)/2.
+\]
+It follows that \(p(g^n)\ge np(g)/(2kK)\). Take \(C\ge\max(\delta^{-1},2kK,1)\). The case \(g=e\) is immediate. \(\square\)
+
+### Convolution and the commutator estimate
+
+Let \(d\) be the compatible left-invariant metric from the weak metric construction, with norm \(p(g)=d(g,e)\) and escape constant \(C\). A useful reverse form of (GY.21) is:
+\[
+\begin{gathered}
+p(x^j)\le r\ (1\le j\le n),\\
+r<\min(1/(2C),1/(2C^2))
+\\\Longrightarrow\quad p(x)\le Cr/n.
+\tag{GY.22}
+\end{gathered}
+\]
+Indeed \(p(x)\le r\). If \(np(x)>1/C\), take \(j=\lfloor1/(Cp(x))\rfloor\le n\); then \(jp(x)\ge1/(2C)\), and escape gives \(p(x^j)\ge1/(2C^2)>r\). Otherwise apply escape directly at \(n\).
+
+Choose \(\rho>0\) so small that the closed \(p\)-ball of radius \(6\rho\) is compact and \(5\rho\) satisfies (GY.22). Use the specific radial bump
+\[
+f(x)=(1-p(x)/\rho)_+,\qquad \phi=f*f.
+\]
+It is continuous with compact support. The triangle inequality gives
+\[
+\|\partial_g f\|_\infty\le p(g)/\rho.
+\tag{GY.23}
+\]
+This estimate uses the radial norm; it is not asserted for an arbitrary function Lipschitz only with respect to a left-invariant metric.
+
+For \(p(y)\le2\rho\), \(p(g)\le\rho\), conjugating the first \(\lfloor\rho/p(g)\rfloor\) powers of \(g\) puts them in the ball of radius \(5\rho\). Equation (GY.22) gives \(p(y^{-1}gy)\le A p(g)\), with \(A\) depending only on \(C\). If \(p(g)\ge\rho/2\), the same bound follows directly from \(p(y^{-1}gy)\le5\rho\). For \(g=e\) it is trivial.
+
+Equation (GY.2), with the support of \(\partial_hf\) in the \(2\rho\)-ball for \(p(h)\le\rho\), now gives
+\[
+\|\partial_g\partial_h\phi\|_\infty\le Dp(g)p(h)
+\quad(p(g),p(h)\le\rho)
+\tag{GY.24}
+\]
+for finite \(D\).
+
+Put \(q(g)=p_\phi(g)\). Upper comparison \(q(g)\le Bp(g)\) follows from (GY.23) by moving the difference onto the first convolution factor. For lower comparison, let \(a=\|\phi\|_\infty>0\). If \(jq(g)<a\), the translates of nonnegative \(\phi\) overlap, so \(g^j\) lies in the product of its support and inverse support, hence \(p(g^j)\le4\rho\). Applying (GY.22) for all \(1\le j\le\lfloor a/(2q(g))\rfloor\) yields \(p(g)\le Aq(g)\) whenever \(q(g)\) is small. If \(q(g)=0\), this works for every integer and forces \(g=e\). Thus \(q\) defines a genuine compatible left-invariant metric, with local two-sided comparison to \(p\).
+
+Take the commutator convention \([g,h]=g^{-1}h^{-1}gh\) in the convolution and exponential-coordinate arguments. The translation identity and (GY.24) give
+\[
+\begin{aligned}
+q([g,h])
+&=\|\tau_g\tau_h\phi-\tau_h\tau_g\phi\|_\infty\\
+&\le\|\partial_g\partial_h\phi\|_\infty
+ +\|\partial_h\partial_g\phi\|_\infty
+\\
+&\le2Dp(g)p(h).
+\end{aligned}
+\]
+Local comparison gives \(q([g,h])\le C_1q(g)q(h)\) near \(e\). The same comparisons transfer weak escape to \(q\): if \(nq(g)\) is sufficiently small, then \(np(g)\) is small, \(p(g^n)\le np(g)\) stays in the comparison neighbourhood, and (GY.21) gives \(q(g^n)\ge c\,nq(g)\). Increase one constant to cover both estimates. We have constructed a compatible left-invariant **Gleason metric** on the NSS group, using no assumed Lie or locally connected structure.
+
+### Finite-dimensional exponential coordinates
+
+In this section write \(p(g)=d(g,e)\) for the Gleason metric just constructed. Increase its constant \(C\ge1\), if necessary, so that
+\[
+a=(100C^2)^{-1}
+\]
+has the closed \(20a\)-ball compact. Increasing \(C\) weakens the escape requirement and enlarges the permitted commutator constant, so preserves both properties.
+
+**Lemma 1B.12 (power estimates).** If \(n(p(g)+p(h))\le1/(10C)\), then
+\[
+d(g^nh^n,(gh)^n)\le4Cn^2p(g)p(h).
+\tag{GY.25}
+\]
+If \(p(g),p(h)\le a/n\), then
+\[
+\frac{n}{2C}d(g,h)\le d(g^n,h^n)\le2n\,d(g,h).
+\tag{GY.26}
+\]
+
+**Proof.** The commutator bound gives
+\[
+p(k^{-1}uk)\le(1+Cp(k))p(u)
+\]
+when \(p(k),p(u)\le1/C\), because \(k^{-1}uk=u[u,k]\). Consequently right translation by a sufficiently small \(k\) changes sufficiently small distances by a factor at most two.
+
+Telescope between the words \((gh)^i g^{n-i}h^{n-i}\), \(0\le i\le n\). Left invariance removes the common prefix; right multiplication by the remaining \(h\)-power costs at most a factor two. The \(i\)-th difference is at most
+\[
+2C(n-i-1)p(g)p(h),
+\]
+using the commutator of \(g^{n-i-1}\) and \(h\). All powers and differences have norm below the stated threshold, by subadditivity. Summing proves (GY.25), with room in the constant.
+
+For (GY.26) write \(g=hk\), so \(p(k)=d(g,h)\le2a/n\). Applying (GY.25) to \(h,k\) is legitimate since \(n(p(h)+p(k))\le3a\le1/(10C)\). It gives
+\[
+d(g^n,h^nk^n)\le4Ca\,n p(k)=np(k)/(25C).
+\]
+Escape applies to \(k^n\), since \(np(k)\le2a\le1/C\), and yields \(p(k^n)\ge np(k)/C\); the triangle inequality gives \(p(k^n)\le np(k)\). Compare \(g^n\) with \(h^n\) through \(h^nk^n\). The two asserted bounds follow. \(\square\)
+
+Let \(\mathcal L(H)\) be the continuous homomorphisms \(\gamma:\mathbb R\to H\), with compact-open topology. Uniform control on \([-1,1]\) determines this topology: values on a larger compact interval are fixed finite powers of values on a smaller interval, and the power map is uniformly continuous on the relevant compact sets.
+
+Every compatible left-invariant metric on a locally compact group is complete. A Cauchy sequence has a tail in a translate of a sufficiently small compact closed ball; a convergent subsequence in that ball, together with the Cauchy property, gives convergence of the full sequence. No assertion of global properness of the metric is needed.
+
+**Lemma 1B.13 (speed and compactness).** Every \(\gamma\in\mathcal L(H)\) is globally Lipschitz for \(d\), and
+\[
+v(\gamma)=\lim_{s\downarrow0}\frac{p(\gamma(s))}{s}
+          =\sup_{t>0}\frac{p(\gamma(t))}{t}
+\tag{GY.27}
+\]
+exists and is finite. It is positive for a nontrivial \(\gamma\), and \(v(b\gamma)=|b|v(\gamma)\) for \(b\gamma(t)=\gamma(bt)\). Moreover \(\mathcal L(H)\) is locally compact.
+
+**Proof.** Choose \(T,r>0\) with \(r\) below the threshold of (GY.22) and \(p(\gamma(t))\le r\) for \(|t|\le T\). For \(0<|s|\le T/2\), apply (GY.22) to \(\gamma(s)\) and \(n=\lfloor T/|s|\rfloor\), obtaining \(p(\gamma(s))\le2Cr|s|/T\). For \(T/2\le|s|\le T\), use \(p\le r\). Subdivision and the homomorphism property extend this Lipschitz bound to every \(s\in\mathbb R\), and left invariance gives it for every pair of parameters.
+
+Put \(f(t)=p(\gamma(t))\) for \(t\ge0\). It is subadditive and \(f(t)\le Lt\). For fixed \(t>0\), write \(t=ns+r_s\), \(0\le r_s<s\); then \(f(t)\le nf(s)+Ls\). Hence
+\[
+\liminf_{s\downarrow0}f(s)/s\ge f(t)/t.
+\]
+The reverse upper bound is supplied by the supremum in (GY.27). This proves the limit and equality. Positivity and absolute homogeneity follow from nontriviality and \(p(g^{-1})=p(g)\).
+
+For local compactness choose small \(r\) with the closed \(r\)-ball compact. The family
+\[
+\mathcal K=\{\gamma:\sup_{|t|\le1}p(\gamma(t))\le r\}
+\]
+has a common Lipschitz constant by the first paragraph and has values in that compact ball. A finite parameter grid and finite nets of the compact ball show total boundedness for uniform convergence on \([-1,1]\). Equivalently, diagonal convergence on a countable dense grid and the common Lipschitz bound give a uniformly convergent subsequence. Its limit is continuous and preserves addition whenever all parameters are in \([-1,1]\), by passing to the limit in the homomorphism identity.
+
+Such a local homomorphism extends uniquely to \(\mathbb R\): define \(\gamma(t)=\gamma(t/m)^m\) for an integer \(m>|t|\). A common multiple proves independence of \(m\); choosing \(m>|s|+|t|\) proves the homomorphism identity, and fixing \(m\) locally proves continuity. Thus the limit again belongs to \(\mathcal K\). This proves compactness of \(\mathcal K\), which contains an open identity neighbourhood in \(\mathcal L(H)\). Local compactness at other points follows once the vector operations below have been established. \(\square\)
+
+**Lemma 1B.14 (product limits and the vector-space operations).** For \(\gamma,\eta\in\mathcal L(H)\),
+\[
+(\gamma+\eta)(t)=
+\lim_{n\to\infty}(\gamma(t/n)\eta(t/n))^n
+\tag{GY.28}
+\]
+exists, uniformly on every compact parameter interval. Together with \(b\gamma(t)=\gamma(bt)\), this makes \(\mathcal L(H)\) a Hausdorff topological real vector space, and \(v\) is a norm generating its topology.
+
+**Proof.** Set \(A_n(t)=(\gamma(t/n)\eta(t/n))^n\). For \((v(\gamma)+v(\eta))|t|\le a\), apply (GY.25) to the factors at scale \(nm\), and then (GY.26) to the \(n\)-th powers. This gives
+\[
+d(A_n(t),A_{nm}(t))
+\le 8C\,v(\gamma)v(\eta)t^2/n
+\tag{GY.29}
+\]
+for every \(m\ge1\). Comparing \(A_n,A_k\) through \(A_{nk}\) makes the sequence uniformly Cauchy on a small interval. Completeness gives a continuous local limit \(\sigma\).
+
+For positive integers \(b\), \(A_{bn}(bt)=A_n(t)^b\), so \(\sigma(bt)=\sigma(t)^b\) whenever the parameters are in that small interval. Also \(A_n(-t)^{-1}\) is the swapped-factor word, conjugate to \(A_n(t)\) by \(\gamma(t/n)\to e\); hence \(\sigma(-t)=\sigma(t)^{-1}\). On common rational multiples of a sufficiently small fixed nonzero parameter, the integer-power identities give \(\sigma(s+t)=\sigma(s)\sigma(t)\); continuity extends this to every local pair. Extend \(\sigma\) uniquely to a one-parameter subgroup as in Lemma 1B.13.
+
+The full limit for arbitrary \(t\) really is (GY.28). On a fixed compact interval choose an integer \(b\) with \((v(\gamma)+v(\eta))|t|/b\le a/2\). Write \(n=bq+r\), \(0\le r<b\). The base words at times \(t/n\) and \(t/(bq)\) differ by \(O(n^{-2})\), by the Lipschitz bounds and local right-translation estimate. Their \(q\)-th powers differ by \(O(n^{-1})\), by (GY.26). Therefore
+\[
+\begin{aligned}
+A_n(t)&=\bigl((\gamma(t/n)\eta(t/n))^q\bigr)^b\\
+&\quad (\gamma(t/n)\eta(t/n))^r\\
+&\longrightarrow \sigma(t/b)^b=\sigma(t).
+\end{aligned}
+\]
+All bounds are uniform on the fixed compact interval; finite powers are uniformly continuous on the compact limiting ranges. This proves the stated global uniform limit.
+
+The same estimates give the useful local defect bound
+\[
+d((\gamma+\eta)(t),\gamma(t)\eta(t))
+\le4C\,v(\gamma)v(\eta)t^2
+\tag{GY.30}
+\]
+when \((v(\gamma)+v(\eta))|t|\le1/(10C)\), by applying (GY.25) to the scale-\(n\) factors and taking the limit. Subadditivity before the limit gives
+\[
+v(\gamma+\eta)\le v(\gamma)+v(\eta).
+\tag{GY.31}
+\]
+
+Here are all vector axioms. The zero subgroup is the identity; \((-\gamma)+\gamma=0\) follows from the exact inverse factors in (GY.28). Swapping the two factors changes the \(n\)-th power by conjugation with a factor tending to \(e\), so addition commutes. For associativity compare both bracketings with
+\[
+(\gamma(t/n)\eta(t/n)\zeta(t/n))^n.
+\]
+Equation (GY.30) makes each replacement inside one factor \(O(n^{-2})\); local right translation and (GY.26) make its effect after \(n\) powers \(O(n^{-1})\). Equation (GY.29) controls the outer sum as well. The two bracketings thus have distance \(O(n^{-1})\) for small \(t\), and equality follows by \(n\to\infty\), then globally by the homomorphism property. Reparametrizing (GY.28) proves \(b(\gamma+\eta)=b\gamma+b\eta\) for every real \(b\). Since factors from the same \(\gamma\) commute, the same formula gives \((b+c)\gamma=b\gamma+c\gamma\). Associativity and the identity for scalar multiplication are immediate from reparametrization.
+
+The operations are jointly continuous, rather than just separately continuous. Scalar continuity follows directly from uniform convergence on compact parameter intervals. For addition near any fixed pair, choose a small common interval on which that pair and all nearby pairs have values in a fixed small ball. Lemma 1B.13 gives common Lipschitz bounds, and (GY.29) gives uniform convergence of (GY.28) over that neighbourhood. Each finite product expression is continuous, so the sum is continuous on this interval; fixed finite powers extend the convergence to \([-1,1]\) and hence to the compact-open topology.
+
+Equation (GY.31), positivity and homogeneity in Lemma 1B.13 make \(v\) a norm. Writing \(p_1(\gamma)=\sup_{|t|\le1}p(\gamma(t))\), one has \(p_1\le v\), while the reverse escape estimate in Lemma 1B.13 gives \(v\le2Cp_1\) whenever \(p_1\) is sufficiently small. Thus the norm and compact-open topologies agree at zero, and continuous vector translations make them agree everywhere. The locally compact neighbourhood from Lemma 1B.13 now translates to every point. \(\square\)
+
+**Lemma 1B.15 (finite dimension).** A locally compact Hausdorff real topological vector space \(V\) is finite-dimensional.
+
+**Proof.** First, a finite-dimensional subspace has its ordinary Euclidean topology. A basis map from \(\mathbb R^d\) is continuous by the vector operations. Its Euclidean unit sphere is therefore compact in \(V\) and can be separated from zero by a \(V\)-neighbourhood. Joint continuity of scalar multiplication supplies a smaller neighbourhood whose products with a fixed interval about zero avoid that sphere; this smaller neighbourhood is Euclidean bounded. Dilating it supplies \(V\)-neighbourhoods inside every Euclidean ball, proving equality of topologies. Such a finite-dimensional subspace \(W\) is closed in \(V\): for \(x\notin W\), work in the finite-dimensional span of \(W,x\), separate \(x\) from \(W\) there, and extend that relative neighbourhood to \(V\); since all of \(W\) lies in that span, the extended neighbourhood still misses \(W\).
+
+Now take a compact identity neighbourhood \(K\subset V\). Finite covering by translates of \(\tfrac12K\) gives \(K\subset S+\tfrac12K\) for finite \(S\). Let \(W\) be the span of \(S\). Iteration yields \(K\subset W+2^{-n}K\). Joint scalar continuity and compactness of \(K\) make \(2^{-n}K\) tend uniformly to zero: for any identity neighbourhood use finitely many parameter neighbourhoods covering \(\{0\}\times K\). Consequently \(K\subset\overline W=W\). Every vector eventually scales into \(K\), so \(V=W\), proving finite dimension. \(\square\)
+
+Apply Lemma 1B.15 to \(\mathcal L(H)\), and identify it linearly with \(\mathbb R^d\). Define
+\[
+\operatorname{Exp}(\gamma)=\gamma(1).
+\]
+For \(v(\gamma)\le a\), escape and (GY.27) give
+\[
+v(\gamma)/C\le p(\operatorname{Exp}\gamma)\le v(\gamma).
+\tag{GY.32}
+\]
+Indeed apply escape to \(\gamma(1/n)\) and let \(n\to\infty\).
+
+**Lemma 1B.16 (local injectivity and quantitative inverse).** For \(v(\gamma),v(\eta)\le a\),
+\[
+\frac1{2C}v(\eta-\gamma)
+\le d(\operatorname{Exp}\gamma,\operatorname{Exp}\eta)
+\le2v(\eta-\gamma).
+\tag{GY.33}
+\]
+
+**Proof.** Apply (GY.26) to \(g=\gamma(1/n)\), \(h=\eta(1/n)\). Equation (GY.30) for \(-\gamma,\eta\) shows that
+\[
+n\,d(g,h)-n\,p((\eta-\gamma)(1/n))\longrightarrow0.
+\]
+The latter expression tends to \(v(\eta-\gamma)\) by (GY.27). Take the limit in (GY.26). \(\square\)
+
+**Lemma 1B.17 (the exponential image is a neighbourhood).** The exponential image of every neighbourhood of zero in \(\mathcal L(H)\) contains an identity neighbourhood in \(H\).
+
+**Proof.** It suffices to consider a small closed \(v\)-ball \(K\), radius at most \(a/4\), inside the given neighbourhood. It is compact and its exponential image is compact. Suppose there are \(g_i\to e\) outside \(\operatorname{Exp}(K)\). Choose a nearest \(h_i\in\operatorname{Exp}(K)\), and put \(k_i=h_i^{-1}g_i\ne e\). Then
+\[
+\begin{gathered}
+p(k_i)=d(g_i,h_i)\le p(g_i),\\ p(h_i)\le2p(g_i)\to0.
+\end{gathered}
+\]
+Write \(h_i=\operatorname{Exp}\psi_i\), \(\psi_i\in K\). Equation (GY.32) gives \(v(\psi_i)\to0\).
+
+Fix \(0<b<a/8\), and put \(N_i=\lfloor b/p(k_i)\rfloor\). Then \(N_i\to\infty\) and \(N_ip(k_i)\to b\). The step functions
+\[
+\gamma_i(t)=k_i^{\lfloor N_it\rfloor},\qquad |t|\le1,
+\]
+have values in a fixed compact ball and satisfy
+\[
+\begin{gathered}
+d(\gamma_i(t),\gamma_i(s))\le b|t-s|+p(k_i),\\
+d(\gamma_i(s+t),\gamma_i(s)\gamma_i(t))\\
+\le p(k_i).
+\end{gathered}
+\]
+A diagonal subsequence on a finite-grid exhaustion, using these asymptotic Lipschitz bounds, converges uniformly to a continuous local homomorphism. Extend it to \(\gamma\in\mathcal L(H)\). Its speed is at most \(b\), and \(k_i^{N_i}\to\operatorname{Exp}\gamma\). Escape also gives \(p(k_i^{N_i})\ge N_ip(k_i)/C\), so its limit is nontrivial. This compactness argument does not incorrectly apply the continuous-function version of Arzelà–Ascoli to discontinuous step functions.
+
+The vector \(\psi_i+\gamma/N_i\) is in \(K\) for large \(i\), since both summands tend to zero. By (GY.30),
+\[
+d(\operatorname{Exp}(\psi_i+\gamma/N_i),
+  h_i\operatorname{Exp}(\gamma/N_i))
+=o(1/N_i).
+\]
+By the lower bound in (GY.26),
+\[
+\begin{gathered}
+d(k_i,\operatorname{Exp}(\gamma/N_i))
+\le \frac{2C}{N_i}
+ d(k_i^{N_i},\operatorname{Exp}\gamma)
+\\
+=o(1/N_i).
+\end{gathered}
+\]
+Both hypotheses hold because \(N_ip(k_i)\le b<a\) and \(v(\gamma)\le b<a\). Thus a point of \(\operatorname{Exp}(K)\) lies at distance \(o(1/N_i)\) from \(g_i\), contradicting the nearest-point distance \(p(k_i)\), since \(N_ip(k_i)\to b>0\). \(\square\)
+
+Lemmas 1B.16–1B.17 give an actual exponential coordinate chart on an open identity neighbourhood. Shrink an open \(H\)-neighbourhood inside the compact exponential image so that its preimage lies in the interior of the small ball; (GY.33) makes the inverse continuous and its image open in \(\mathbb R^d\).
+
+Pull multiplication back to this chart, writing \(x*y=\operatorname{Exp}^{-1}(\operatorname{Exp}x\,\operatorname{Exp}y)\). Equation (GY.30) and the inverse bound (GY.33) give
+\[
+v(x*y-x-y)\le8C^2v(x)v(y).
+\tag{GY.34}
+\]
+It is therefore \(C^{1,1}\) in the precise sense of a continuous local group law with quadratic mixed error. Radial homogeneity is exact:
+\[
+(sx)*(tx)=(s+t)x,\qquad x^{-1}=-x
+\tag{GY.35}
+\]
+wherever these local operations are defined, by the one-parameter homomorphism identity. No local connectedness or Euclidean structure of \(H\) was assumed before this construction.
+
+### The analytic local group law
+
+Ordinary finite-dimensional matrix power series and Riemann integration turn the continuous local law into an analytic one. The argument establishes differentiability before integrating its derivative.
+
+**Theorem 1B.18 (radially homogeneous \(C^{1,1}\) local groups are analytic).** Let a continuous local group on an open neighbourhood of \(0\) in \(\mathbb R^d\) satisfy (GY.35) and
+\[
+|x*y-x-y|\le A|x||y|
+\tag{GY.36}
+\]
+for sufficiently small \(x,y\). After shrinking, multiplication and inverse are real analytic.
+
+**Proof.** All subsequent estimates are uniform on a fixed sufficiently small coordinate ball. If \(w=x*y\), the identities \(w*(-y)=x\), \((-x)*w=y\) and (GY.36) give
+\[
+\begin{gathered}
+|w-x-y|\le A|w||y|,\\
+|w-x-y|\le A|x||w|.
+\end{gathered}
+\]
+For small \(x,y\), absorption yields \(|w|\le2|x+y|\), hence
+\[
+\begin{aligned}
+x*y&=x+y+O(|x+y||y|)\\
+&=x+y+O(|x+y||x|).
+\tag{GY.37}
+\end{aligned}
+\]
+These improved cancellation bounds imply local Lipschitz bounds in both factors. For example \(q=(-z)*y\) has \(|q|\le2|y-z|\), and \(x*y=(x*z)*q\); (GY.36) bounds its difference from \(x*z\) by a fixed multiple of \(|y-z|\). For the other factor use \(q=y*(-z)\) and \(y*x=q*(z*x)\).
+
+Fix small \(x\), and let \(T_x(y)=x*y*(-x)\). The preceding bounds make \(T_x\) locally Lipschitz, and (GY.36)–(GY.37) give
+\[
+T_x(y)=y+O(|x||y|).
+\tag{GY.38}
+\]
+Conjugation preserves local products. Radial homogeneity, first for integer subdivisions and then by continuity for real scalars, gives \(T_x(ty)=tT_x(y)\). All intermediate products lie in the chosen local chart: (GY.38) bounds \(T_x(y/n)\) by a fixed multiple of \(|y|/n\), so its first \(n\) radial powers stay in that chart.
+
+For additivity compare \((y+z)/n\) with \((y/n)*(z/n)\); their difference is \(O(n^{-2})\). The Lipschitz bound for \(T_x\) preserves this error, while conjugation and (GY.36) give
+\[
+\begin{gathered}
+T_x((y+z)/n)\\
+=T_x(y/n)+T_x(z/n)+O(n^{-2}).
+\end{gathered}
+\]
+Multiply by \(n\) and use radial homogeneity, then let \(n\to\infty\). Thus \(T_x\) is additive near zero and extends to a real linear map on \(\mathbb R^d\). Denote it by \(\mathcal A_x\). It is invertible for small \(x\), and
+\[
+\|\mathcal A_x-I\|=O(|x|),\qquad
+\mathcal A_{x*y}=\mathcal A_x\mathcal A_y.
+\tag{GY.39}
+\]
+Also \(\mathcal A_x\) is Lipschitz in \(x\): use
+\(\mathcal A_x\mathcal A_y^{-1}=\mathcal A_{x*(-y)}\),
+the bound \(|x*(-y)|\le2|x-y|\), and (GY.39).
+
+For fixed \(x\), \(t\mapsto\mathcal A_{tx}\) is a continuous local matrix homomorphism. Its principal matrix logarithm is additive for small parameters: the matrices commute, their logarithms commute, and the exponential/logarithm power series are mutually inverse near zero and identity. The continuous Cauchy equation therefore gives
+\[
+\mathcal A_{tx}=e^{t b_x},\qquad b_x=\log\mathcal A_x.
+\]
+Thus \(b_{tx}=tb_x\). From (GY.36), (GY.39) and the Lipschitz bound,
+\[
+\mathcal A_{tx}\mathcal A_{ty}
+=\mathcal A_{t(x+y)}+O(t^2).
+\]
+Expand the matrix exponentials, divide by \(t\), and let \(t\to0\). This gives \(b_{x+y}=b_x+b_y\). Consequently \(x\mapsto b_x\) extends to a real linear map into matrices, and
+\[
+\mathcal A_x=e^{b_x}
+\tag{GY.40}
+\]
+is analytic in \(x\). No Jacobi identity or Lie's third theorem has been presumed.
+
+Define the analytic matrix function
+\[
+B(x)=\left(\int_0^1 e^{-t b_x}\,dt\right)^{-1},
+\]
+well-defined for small \(x\) because the matrix in parentheses is near \(I\). We next establish
+\[
+(-x)*(x+z)=
+\left(\int_0^1e^{-t b_x}\,dt\right)z+O(|z|^2).
+\tag{GY.41}
+\]
+For an integer \(n\), put
+\[
+F_j=(-jx/n)*(j(x+z)/n),\qquad 0\le j\le n.
+\]
+Radial homogeneity splits \(F_{j+1}\) by inserting the middle product
+\((-x/n)*((x+z)/n)=z/n+O(|z|/n^2)\), using (GY.37). Local Lipschitz bounds propagate that error through the outer factors. Conjugating the resulting \(z/n\) past \(-jx/n\), and using (GY.38) and \(|F_j|=O(|z|)\), gives
+\[
+\begin{aligned}
+F_{j+1}-F_j
+&=\frac1n e^{-j b_x/n}z+O(|z|^2/n)\\
+&\quad +O(|z|/n^2).
+\end{aligned}
+\]
+Sum over \(j\) and let \(n\to\infty\). The Riemann sums converge uniformly for small \(x\), yielding (GY.41). All intermediates are in the fixed chart, by (GY.37) and the smallness of \(x,z\).
+
+If \(z=x*y-x\), then \(z=O(|y|)\) and \((-x)*(x+z)=y\). Invert the matrix in (GY.41). We obtain
+\[
+x*y=x+B(x)y+O(|y|^2).
+\tag{GY.42}
+\]
+For \(f(t)=x*(ty)\), associativity and radial homogeneity give \(f(t+h)=f(t)*(hy)\). Hence (GY.42) proves the derivative, with uniform remainder,
+\[
+f'(t)=B(f(t))y.
+\]
+The adjoint identity gives
+\[
+\mathcal A_{f(t)}=\mathcal A_x\mathcal A_{ty}
+                =e^{b_x}e^{t b_y}.
+\]
+For a matrix \(Z\) near \(I\), define
+\[
+\mathcal F(Z)=
+\left(\int_0^1e^{-s\log Z}\,ds\right)^{-1}.
+\]
+It is analytic by the convergent logarithm, exponential and inverse power series. Since \(\log\mathcal A_w=b_w\) for small \(w\), we have \(B(f(t))=\mathcal F(e^{b_x}e^{t b_y})\). Integrating the derivative therefore gives the exact identity
+\[
+x*y=x+\int_0^1
+ \mathcal F(e^{b_x}e^{t b_y})y\,dt.
+\tag{GY.43}
+\]
+This right side is real analytic in \(x,y\): on a small complex polydisc, the matrix logarithm, exponential and inverse series converge absolutely and uniformly for \(0\le t\le1\); their resulting power series can be integrated coefficientwise. Its restriction to real coordinates is (GY.43). Inverse is the linear map \(x\mapsto-x\). This proves the analytic upgrade. \(\square\)
+
+The analytic mechanism is classical; see [Tao], Theorem 1.2.24. The cancellation, local Lipschitz bounds and matrix logarithm arguments above specify all the finite-dimensional inputs needed here.
+
+**Theorem 1B.19 (global Lie recognition from a Gleason metric).** A second-countable locally compact Hausdorff group carrying a compatible Gleason metric has a finite-dimensional real analytic Lie-group structure inducing its original topology.
+
+**Proof.** The exponential-coordinate and analytic-law constructions produce an analytic local exponential chart. There is no separate unproved automatic-smoothness step in globalization. For each \(a\in H\), conjugation induces
+\[
+(T_a\gamma)(t)=a\gamma(t)a^{-1}
+\]
+on \(\mathcal L(H)\). Reparametrization and the product limit (GY.28) show that \(T_a\) is real linear, and \(T_{a^{-1}}\) is its inverse. It is therefore analytic on this finite-dimensional space. Also
+\[
+a\operatorname{Exp}(\gamma)a^{-1}
+=\operatorname{Exp}(T_a\gamma).
+\]
+
+Translate the analytic local chart by all left translations. If the charts at \(a,b\) overlap at \(a\operatorname{Exp}u_0=b\operatorname{Exp}w_0\), their transition near \(u_0\) is explicitly
+\[
+u\longmapsto w_0*((-u_0)*u).
+\]
+Indeed \(b^{-1}a=\operatorname{Exp}w_0\,\operatorname{Exp}(-u_0)\). Choose the initial chart sufficiently small within the analytic-law domain; then \((-u_0)*u\) is near zero and the last product is near \(w_0\), so both operations are analytic on a neighbourhood of this overlap point. This gives a compatible analytic atlas; second countability gives a countable subatlas.
+
+More explicitly, multiplication near \((x_0,y_0)\), with \(x=x_0\operatorname{Exp}u\), \(y=y_0\operatorname{Exp}v\), is in the left chart at \(x_0y_0\) the map
+\[
+(u,v)\longmapsto (T_{y_0^{-1}}u)*v.
+\]
+It is analytic. Inversion near \(x_0\) is in the left chart at \(x_0^{-1}\) the map \(u\mapsto T_{x_0}(-u)\), also analytic. The given topology is unchanged because every chart is an original open-neighbourhood homeomorphism. Thus the global group is Lie. \(\square\)
+
+### The Lie quotient theorem
+
+**Theorem 1B.20 (metrizable Gleason–Yamabe).** For every metrizable locally compact Hausdorff group \(G\) and every open identity neighbourhood \(U\), there are an open subgroup \(G'\leq G\) and a compact normal subgroup \(N\lhd G'\), with \(N\subset U\), such that \(G'/N\) is a finite-dimensional real analytic Lie group with its quotient topology. If \(G\) is connected, \(G'=G\).
+
+**Proof.** For the given \(G,U\), choose the already available compact-generated open \(P\). Apply Lemmas 1B.6–1B.7 and Theorem 1B.8 to \(U\cap P\). Obtain open \(P'\le G\), compact normal \(N\subset U\), and a second-countable locally compact Hausdorff NSS quotient \(H=P'/N\). Lemmas 1B.9–1B.11 construct its compatible weak Gleason metric; the commutator construction constructs a compatible Gleason metric; Theorem 1B.19 gives the finite-dimensional Lie structure with exactly its quotient topology. Set \(G'=P'\).
+
+If \(G\) is connected, any open subgroup is also closed, because its other cosets form an open complement. Therefore the selected nonempty \(G'\) is all of \(G\). No finite-centre, linearity, compactness, local-connectedness or extra countability hypothesis on the original \(G\) has entered. \(\square\)
+
+**Corollary 1B.21 (Lie approximation without countability assumptions).** For every locally compact Hausdorff group \(G\) and open identity neighbourhood \(U\), there are an open \(G'\leq G\) and compact \(N\lhd G'\), with \(N\subset U\), such that \(G'/N\) is a finite-dimensional real analytic Lie group with its quotient topology. When \(G\) is connected, \(G'=G\).
+
+*Proof.* Theorem 1B.20 supplies exactly the metrizable hypothesis of Proposition 1B.5. That proposition constructs the open preimage subgroup, proves compactness of the lifted kernel by Lemma 1B.2, and identifies the quotient topology by an open surjective homomorphism. Its final connectedness argument gives the last assertion. Thus the conclusion has the original unrestricted locally compact scope. \(\square\)
+
+Theorem 8.3 of the Haar lesson and Peter–Weyl point separation remain explicit programme prerequisites. The proof here constructs the compact kernel, the NSS quotient and the complete Lie recognition; no general Lie recognition is used inside the finite compact-approximation input.
+
+### Exercises on the Lie quotient construction
+
+**Exercise 1B.3 (metrizability and the selected atlas).** *Level 1.* Let \(D\) be an uncountable discrete group. Test the conclusion of Theorem 1B.20 and determine whether the whole original group must have a countable atlas.
+
+*Solution.* Let \(D\) be an uncountable discrete group. Give it the discrete metric. For every identity neighbourhood \(U\), the choice \(G'=\{e\}\), \(N=\{e\}\) solves the target: \(G'\) is open, the kernel is compact and normal inside \(U\), and its quotient is the zero-dimensional one-point Lie group. The whole group \(D\) is not second countable: every singleton needs a base member contained in it, so every base has at least \(|D|\) members. In this construction second countability is obtained for the selected compact-generated open subgroup and its quotient. It is not an extra premise on \(G\), nor a claim about all of \(G\).
+
+**Exercise 1B.4 (a non-locally-connected noncompact input).** *Level 2.* For \(G=\mathbb R\times\prod_{j\ge1}\mathbb Z/2\mathbb Z\), exhibit a compatible metric, a compact normal kernel inside an arbitrary identity neighbourhood and the resulting Lie quotient. Prove that \(G\) is not locally connected.
+
+*Solution.* Let
+\[
+\begin{gathered}
+G=\mathbb R\times\prod_{j\ge1}\mathbb Z/2\mathbb Z,
+\\
+d((s,x),(t,y))=\min(1,|s-t|)\\
+ +\sum_{j\ge1}2^{-j}\mathbf1_{x_j\ne y_j}.
+\end{gathered}
+\]
+The metric gives the product topology. The second factor is compact: diagonal subsequence selection on its finite coordinates gives a coordinatewise convergent subsequence, and the uniformly small tail in the metric gives metric convergence. Thus \(G\) is locally compact Hausdorff and metrizable. It is noncompact because it projects onto \(\mathbb R\).
+
+Any identity neighbourhood \(U\) contains a cylinder
+\[
+(-\delta,\delta)\times
+\{x:x_j=0\text{ for every }j\in F\}
+\]
+for a finite set \(F\). Set
+\[
+N=\{0\}\times\{x:x_j=0\text{ for every }j\in F\}.
+\]
+It is compact, normal and contained in \(U\). Coordinate projection is an open continuous surjection with kernel \(N\), so
+\[
+G/N\cong\mathbb R\times(\mathbb Z/2\mathbb Z)^F
+\]
+topologically, a one-dimensional Lie group with finitely many components. Here one can choose \(G'=G\). Nevertheless \(G\) is not locally connected: projection of a connected set to any two-point coordinate is constant, so a connected set is contained in a fibre \(\mathbb R\times\{x\}\). Such a fibre has empty interior, since no basic product neighbourhood restricts every one of the infinitely many coordinates. Hence no point has an open connected neighbourhood. This tests precisely the hypothesis that the proof must not assume.
+
+**Exercise 1B.5 (torsion and small square roots).** *Level 2.* Test the NSS property on \(\prod_{j\ge1}\mathbb Z/2\mathbb Z\). Then use the power estimate (GY.26) to prove uniqueness of sufficiently small square roots in the constructed Gleason metric.
+
+*Solution.* In the compact product \(\prod_{j\ge1}\mathbb Z/2\mathbb Z\), every identity cylinder contains a nontrivial subgroup supported in an unrestricted coordinate. It is therefore not NSS. Passing to a quotient by a compact kernel is necessary for this example; one cannot begin the weak metric construction on the original group merely because it is metrizable and locally compact.
+
+Conversely, in the Gleason-metric group of the exponential-coordinate construction, if \(p(g),p(h)\le a/2\) and \(g^2=h^2\), equation (GY.26) with \(n=2\) gives \(d(g,h)/C\le0\), so \(g=h\). In particular the sufficiently small ball contains no nonidentity involution. This is a proved consequence of the escape and commutator estimates, rather than an assumed local Lie feature.
+
+**Exercise 1B.6 (the order of bootstrap limits).** *Level 3.* In Lemma 1B.10, justify the order of the iteration limit and the regularization limit for every finite word. Explain why neither reversing the limits nor varying the word arbitrarily with the regularization parameter proves the required estimate.
+
+*Solution.* For a fixed finite word of length \(r\), the iteration in Lemma 1B.10 first gives
+\[
+E(g_1\cdots g_r)
+\le(2^{-j}/\varepsilon+2B)
+       \bigl(\sum_iE(g_i)+r\varepsilon\bigr).
+\]
+Keep \(\varepsilon>0\) fixed and let \(j\to\infty\); next keep the word fixed and let \(\varepsilon\downarrow0\). The bound becomes \(2B\sum_iE(g_i)\). Letting \(\varepsilon\) go to zero before the iteration would retain the divergent \(2^{-j}/\varepsilon\). Letting word length depend arbitrarily on \(\varepsilon\) would not justify discarding \(r\varepsilon\). The theorem needs every individual finite word, so the stated order proves exactly the required uniform constant.
+
+
 ## 1C. Constructing the closed solvable radical
 
-The full locally compact radical requires a common finite bound, not just solvability of each subgroup separately. We first establish the unrestricted finite-dimensional Lie-group contract, including nonlinear groups and infinite centres. Then one compact Lie quotient supplies the same bound for every connected solvable normal subgroup of the original group. This proves S1 at the Lie-approximation input S2; the remaining metrizable Gleason–Yamabe theorem in Proposition 1B.5 is still an explicit prerequisite.
+The full locally compact radical requires a common finite bound, not just solvability of each subgroup separately. We first establish the unrestricted finite-dimensional Lie-group contract, including nonlinear groups and infinite centres. Then one compact Lie quotient supplies the same bound for every connected solvable normal subgroup of the original group. This proves S1 at the Lie-approximation input S2; Corollary 1B.21 supplies that approximation at the stated Haar and compact-representation prerequisites.
 
-The finite-dimensional prerequisites are the closed subgroup theorem, [connected immersed integration](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/flat-connections-and-infinitesimal-holonomy.html), and the [smoothly generated subgroup proof](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/curvature-and-holonomy-groups.html). Covering groups, unrestricted-target integration, the adjoint differential and the compact Lie-algebra structure are proved in [Compact Lie groups, their Lie algebras and the adjoint representation](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/compact-lie-groups-their-lie-algebras-and-the-adjoint-representation.html), Theorems 1.2 and 3.2. Peter–Weyl point separation is the arbitrary compact Hausdorff theorem already linked in Section 1A. Ordinary inverse-function calculus and exponential neighbourhoods retain their stated finite-dimensional scope.
+The finite-dimensional prerequisites are the closed subgroup theorem, connected immersed integration, and the smoothly generated subgroup proof. Covering groups, unrestricted-target integration, the adjoint differential and the compact Lie-algebra structure are proved in Compact Lie groups, their Lie algebras and the adjoint representation, Theorems 1.2 and 3.2. Peter–Weyl point separation is the arbitrary compact Hausdorff theorem already linked in Section 1A. Ordinary inverse-function calculus and exponential neighbourhoods retain their stated finite-dimensional scope.
 
 The radical and quotient algebra assertions can also be compared with [Etingof, Section 16.1](https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/mit18_745_f20_lec_full.pdf#page=85). The locally compact radical is classically attributed to Iwasawa in [Rickert, Section 3, printed pages 439–440](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA8DDE78BAC12477EB8CBA64DF42E078/S1446788700004389a.pdf/some-properties-of-locally-compact-groups.pdf#page=7).
 
@@ -684,7 +1449,7 @@ for every subgroup \(A\): approximate each pair by a product net from \(A\times 
 
 *Proof.* For every finite-dimensional continuous unitary representation \(\pi:C\to U(n)\), the image \(J=\pi(C)\) is compact and hence closed, connected, and algebraically solvable. It is a compact Lie group by the closed subgroup theorem. Its Lie algebra \(\mathfrak j\) is solvable, as follows. Define the balanced group words \(w_0(x)=x\) and \(w_{j+1}=[w_j(x_1,\ldots,x_{2^j}),w_j(x_{2^j+1},\ldots,x_{2^{j+1}})]\), and the same balanced expressions \(v_j\) with Lie brackets. If \(D^dJ=\{e\}\), then \(w_d\) is identically \(e\) on \(J^{2^d}\). Evaluate it at \(x_i=\exp(t_iX_i)\). Matrix exponential multiplication gives the coefficient \([X,Y]\) of \(ts\) in \(\exp(tX)\exp(sY)\exp(-tX)\exp(-sY)\). Induction on the balanced expressions therefore gives \(v_j(X_1,\ldots,X_{2^j})\) as the coefficient of \(t_1\cdots t_{2^j}\) in \(w_j-I\). One can track this coefficient exactly: each expression is the identity when any of its variables is zero, so every nonconstant term contains every variable in its block; in the next commutator the term containing each variable once is precisely the commutator of the two corresponding coefficients. The identity for \(w_d\) makes \(v_d=0\). Bilinearity of the Lie bracket shows inductively that the values of \(v_j\) span \(D^j\mathfrak j\), so \(D^d\mathfrak j=0\).
 
-The finite-dimensional compact Lie-algebra structure theorem gives \(\mathfrak j=\mathfrak z\oplus\mathfrak s\), with \(\mathfrak z\) central and \(\mathfrak s\) semisimple. Its proof is the invariant-positive-inner-product argument of [the compact Lie-algebra structure theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/representations-of-compact-groups/reader/courses/representations-of-compact-groups/compact-lie-groups-their-lie-algebras-and-the-adjoint-representation.html#result-theorem-3-2). A solvable algebra has no nonzero semisimple direct summand, so \(\mathfrak s=0\) and \(\mathfrak j\) is abelian. The exponential identity neighbourhood in \(J\) is consequently commuting. It generates connected \(J\), so \(J\) is abelian.
+The finite-dimensional compact Lie-algebra structure theorem gives \(\mathfrak j=\mathfrak z\oplus\mathfrak s\), with \(\mathfrak z\) central and \(\mathfrak s\) semisimple. Its proof is the invariant-positive-inner-product argument of the compact Lie-algebra structure theorem. A solvable algebra has no nonzero semisimple direct summand, so \(\mathfrak s=0\) and \(\mathfrak j\) is abelian. The exponential identity neighbourhood in \(J\) is consequently commuting. It generates connected \(J\), so \(J\) is abelian.
 
 For \(x,y\in C\), every such representation has \(\pi([x,y])=I\). Peter–Weyl point separation on arbitrary compact Hausdorff groups forces \([x,y]=e\). Thus \(C\) is abelian. This applies to all finite representations, not to an assumed countable separating family. \(\square\)
 
@@ -723,7 +1488,7 @@ This identifies the group with the connected sphere \(S^3\). The matrices obtain
 
 The closed subgroup proof in Section 1E needs a positive inner product compatible with the Lie bracket. We construct it here on every complex semisimple algebra. The compact conjugation is obtained on the actual algebra, so assigning values to simple generators will not conceal an unproved presentation theorem.
 
-The root-production prerequisite RP is [Theorem 12.1 and its complete proof, Sections 12.2–12.10, in Symmetric Lie algebras and Hermitian symmetric spaces](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/symmetric-lie-algebras-and-hermitian-symmetric-spaces.html#section-12). Its complete reducibility proof uses the operator Casimir and the first Whitehead lemma before any compact real form is available. We use its exact assertion as follows.
+The root-production prerequisite RP is [Lemma Q.1 and Theorems Q.2–Q.5, Section Q of Symmetric Lie algebras and Hermitian symmetric spaces](../../DG-FND/symmetric-lie-algebras-and-hermitian-symmetric-spaces.html#part-q). Its complete reducibility proof uses the operator Casimir and the first Whitehead lemma before any compact real form is available. We use its exact assertion as follows.
 
 For finite-dimensional complex semisimple \(\mathfrak g\), there are a toral self-centralizing Cartan subalgebra \(\mathfrak h\), a real vector-space form \(\mathfrak h_{\mathbb R}\), and a finite reduced crystallographic root system \(R\subset\mathfrak h_{\mathbb R}^{*}\), spanning that real dual, with
 
@@ -1028,7 +1793,7 @@ No claim about the centre of an integrating Lie group is needed for this constru
 
 The six steps prove Theorem 1D.1. \(\square\)
 
-The simple-root and generator mechanisms are classical; compare [Etingof II], Sections 21.4 and 24.1–24.2. The diagonal-graph method is also developed in [The isomorphism theorem and Serre's theorem, Section 3](https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-LIE/RT-LIE-11.html#3-a-root-system-isomorphism-gives-a-lie-algebra-isomorphism). We prove the triangular spanning and both graph kernels here. For the compact-form theorem itself, compare [Etingof II], Proposition 41.1. The height induction above proves positivity using the coefficient \(q(p+1)\), without invoking unitary integration or a compact-form theorem as an input.
+The simple-root and generator mechanisms are classical; compare [Etingof II], Sections 21.4 and 24.1–24.2. The diagonal-graph method is also developed in The isomorphism theorem and Serre's theorem, Section 3. We prove the triangular spanning and both graph kernels here. For the compact-form theorem itself, compare [Etingof II], Proposition 41.1. The height induction above proves positivity using the coefficient \(q(p+1)\), without invoking unitary integration or a compact-form theorem as an input.
 
 ### Solved exercises for the compact conjugation
 
@@ -1099,7 +1864,7 @@ An injected Lie algebra integrates to an immersed subgroup. For the amenability 
 
 **Theorem 1E.1 (closed split rank-one subgroup).** Every noncompact connected real Lie group with trivial connected solvable radical has a closed connected Lie subgroup locally isomorphic to \(\mathrm{SL}_2(\mathbb R)\). No linearity, simplicity or finite-centre hypothesis is imposed on the original group.
 
-The finite-dimensional inputs are the closed Lie subgroup theorem, the exponential charts and covering/integration results already used in Section 1C, and [Cartan's criterion and the inner-derivation theorem in Symmetric spaces, Section 8](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/symmetric-spaces.html#section-8). To detect noncompact directions we use [Lemma 2.4 on negative Killing form and compact covers](https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-FND/symmetric-lie-algebras-and-hermitian-symmetric-spaces.html#section-2). Its proof uses homogeneous metric completeness, the bi-invariant curvature calculation and Bonnet–Myers, with its conclusions applied to the original group and its universal cover. General locally compact Lie approximation is not an input to this finite-dimensional theorem.
+The finite-dimensional inputs are the closed Lie subgroup theorem, the exponential charts and covering/integration results already used in Section 1C, and [Trace and Killing criteria and inner derivations in Symmetric spaces, Theorems H.5–H.6](../../DG-FND/symmetric-spaces.html#part-h). To detect noncompact directions we use [Theorem F.2 on negative Killing form and compact covers](../../DG-FND/symmetric-lie-algebras-and-hermitian-symmetric-spaces.html#theorem-f-2). Its proof uses homogeneous metric completeness, the bi-invariant curvature calculation and Bonnet–Myers, with its conclusions applied to the original group and its universal cover. General locally compact Lie approximation is not an input to this finite-dimensional theorem.
 
 *Proof.* Let \(\mathfrak g\) be the Lie algebra of \(G\). By Theorem 1C.5, its algebraic radical integrates to the closed connected solvable normal radical of \(G\). The hypothesis therefore makes \(\mathfrak g\) semisimple. Write
 
@@ -1759,7 +2524,7 @@ This construction is an explicit case of the classical diagonal-lattice mechanis
 ## References
 
 - [Etingof] Pavel Etingof, *Lie Groups and Lie Algebras*, MIT OpenCourseWare lecture notes, 2020–2021. Exercise 15.7(ii); Section 16.1, Proposition 16.1, Definition 16.2 and Theorem 16.6; Section 10.2.1–10.2.2. [Official freely accessible notes](https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/mit18_745_f20_lec_full.pdf).
-- [Tao] Terence Tao, *Hilbert's Fifth Problem and Related Topics*, American Mathematical Society, 2014. Sections 1.4–1.5: Theorem 1.4.14, Theorem 1.5.2 and Exercise 1.5.4. [Author's freely accessible preliminary version](https://terrytao.wordpress.com/wp-content/uploads/2014/11/gsm-153.pdf). Proposition 1B.5 states the remaining metrizable theorem as an input; it is not claimed proved here.
+- [Tao] Terence Tao, *Hilbert's Fifth Problem and Related Topics*, American Mathematical Society, 2014. Sections 1.4–1.5: Theorem 1.4.14, Theorem 1.5.2 and Exercise 1.5.4. [Author's freely accessible preliminary version](https://terrytao.wordpress.com/wp-content/uploads/2014/11/gsm-153.pdf). Results 1B.6–1B.20 give the convolution, small-kernel, metric and analytic-coordinate construction; Corollary 1B.21 retains the full locally compact scope.
 
 - [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. Definition XIII.4.2 and Example XIII.4.4. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
 - [Etingof II] P. Etingof, [*Lie Groups and Lie Algebras*, MIT OpenCourseWare, Spring 2024, complete lecture notes](https://ocw.mit.edu/courses/18-755-lie-groups-and-lie-algebras-ii-spring-2024/mit18_755_s24_lec_full.pdf). Sections 21.4 and 24.1–24.2 give the simple-root and generator background; Sections 41.1 and 41.3 give compact-form and polar-conjugation comparisons. The proofs in Sections 1D–1E state their programme inputs and supply their own descent, positivity and group-closedness arguments.

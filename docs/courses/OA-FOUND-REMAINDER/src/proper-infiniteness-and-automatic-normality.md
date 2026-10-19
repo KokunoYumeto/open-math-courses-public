@@ -1,12 +1,12 @@
 # Proper infiniteness and automatic normality
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 Countable sums of projections detect normality. In a properly infinite algebra, a singular representation that kills a countable partition of the identity would produce an uncountable orthogonal family of nonzero projections in its range. This contradicts sigma-finiteness of the generated range. The same construction, combined with completeness of a von Neumann projection lattice, also proves automatic normality for surjective homomorphisms from properly infinite algebras with separable predual.
 
 The freely accessible construction uses [The universal enveloping von Neumann algebra and W*-algebras](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-10), Theorem 10.3 on normal–singular representations, its [complete singular-functional criterion](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-23), Theorem 11.2, and Corollary 11.4 on normality of isomorphisms. The full normal-extension and vector-functional proof, Theorem 9.1(ii), of [Operator spaces and preduals](../../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#oa-fnd-lt-10) lets us apply the splitting to a normal functional of the generated algebra. We use the full [bounded polar-decomposition argument](../reader/normal-products-and-closed-operator-graphs.html#polar-decomposition-for-closed-operators) and spectral projections in a von Neumann algebra. For the disintegration application we use [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html#5-decomposable-means-commuting-with-the-diagonal-algebra), Theorems 5.1 and 7.1. The normal state and the separating Borel coordinate needed there are constructed explicitly below.
 
-Blackadar’s freely readable *Operator Algebras* treats the factor case and the abelian boundary example; Takesaki’s book provides further context. The arguments below establish the arbitrary-centre theorem and the arbitrary-target cardinality result using the complete programme prerequisites linked above.
+Blackadar’s freely readable *Operator Algebras* treats the factor case and the abelian boundary example. The arguments below establish the arbitrary-centre theorem and the arbitrary-target cardinality result using the complete programme prerequisites linked above.
 
 A von Neumann algebra is **sigma-finite** here if it has a faithful normal state. Such an algebra has no uncountable orthogonal family of nonzero projections: a faithful state is positive on each of them, while all finite sums of their values are at most one. The equivalent projection formulation can also be used as the definition.
 
@@ -87,7 +87,7 @@ If \(H\) is separable, choose a total sequence of unit vectors \((\xi_n)\). The 
 \]
 is normal and faithful on any unital von Neumann algebra acting on \(H\). Thus its generated algebra is sigma-finite. Restriction to the support handles degenerate representations. \(\square\)
 
-The proper-infiniteness hypothesis applies to the domain. An abelian infinite-dimensional algebra can have singular one-dimensional representations, as shown in the imported universal-enveloping lesson. The finite type II normality result requires additional finite-algebra arguments.
+The proper-infiniteness hypothesis applies to the domain. An abelian infinite-dimensional algebra can have singular one-dimensional representations, as shown in the imported universal-enveloping lesson. [Finite type II algebras and separable representations](../reader/finite-type-ii-and-separable-representations.html#5-automatic-normality), Theorem 5.1 and Corollary 5.2, proves the complementary finite type II result and combines both cases for algebras with no nonzero finite type I central summand.
 
 ## 3. The Calkin obstruction
 
@@ -119,7 +119,7 @@ Its diagonal \(D=L^\infty(X,\mu)\) has commutant
 A=D'=\int_X^\oplus B(\ell^2)\,d\mu(x).
 \tag{4.1}
 \]
-This is a properly infinite sigma-finite von Neumann algebra. Proper isometries can be taken constant on the fibres. To see sigma-finiteness explicitly, choose \(w>0\) with \(\int w\,d\mu=1\) and use
+If the base has zero measure, the integral Hilbert space and algebra are zero and the atomicity conclusion below is vacuous. Otherwise this is a properly infinite sigma-finite von Neumann algebra. Proper isometries can be taken constant on the fibres. To see sigma-finiteness explicitly, choose \(w>0\) with \(\int w\,d\mu=1\) and use
 \[
 \Omega(a)=\int_X w(x)\sum_{n\geq1}2^{-n}
 \langle a(x)e_n,e_n\rangle\,d\mu(x).
@@ -136,7 +136,7 @@ A separating Borel coordinate also needs no classification theorem. By the defin
 \pi_x(T)=t(x)1_{\ell^2}
 \tag{4.3}
 \]
-almost everywhere. Each \(\pi_x\) is normal by Theorem 2.1, because it acts on a separable Hilbert space.
+almost everywhere. Applying the same uniqueness statement to the identity of \(A\) gives \(\pi_x(1_A)=1_{\ell^2}\) almost everywhere. Remove the union of these two exceptional null sets. Each retained \(\pi_x\) is therefore unital, and it is normal by Theorem 2.1 because it acts on a separable Hilbert space. Thus continuous and bounded monotone functional calculus may be applied below with the fibre identity unchanged.
 
 Fix a retained \(x\). The continuous functions
 \[
@@ -152,6 +152,22 @@ If \(\mu(\{x\})=0\), the projection on the left is zero in \(A\), a contradictio
 Conversely, if these atoms exhaust the measure, the integral algebra is the product of the fibre algebras, with point weights in the Hilbert norm. Evaluation at each positive-mass atom is a well-defined normal representation of the whole product. Their direct integral is its identity representation. \(\square\)
 
 If the base has a diffuse part of positive measure, \(H\) is still separable but the proposed full-algebra representation field cannot exist. Choosing a separable strong-dense C*-subalgebra permits disintegration; replacing it by the entire nonseparable commutant loses that conclusion. Only the one coordinate operator \(T\) was needed to put the contradiction on a common conull set.
+
+**Example 4.2** (A nonstandard base). The standard-base hypothesis in Theorem 4.1 cannot be omitted. Let \(X=[0,1]\), let \(\Sigma\) consist of the countable and co-countable subsets of \(X\), and put
+\[
+\mu(E)=
+\begin{cases}
+0,&E\text{ is countable},\\
+1,&X\setminus E\text{ is countable}.
+\end{cases}
+\]
+This is a complete probability measure. In a disjoint countable family at most one member is co-countable; if none is, the union is countable. This proves countable additivity. Every singleton has measure zero.
+
+Every \(\Sigma\)-measurable map \(f:X\to Y\) into a separable metric space is constant outside a countable set. Indeed, choose a countable base \((U_n)\) of \(Y\). For each \(n\), one of \(f^{-1}(U_n)\) and its complement is countable. Let \(N\) be the union of these countable choices. Any two points of \(X\setminus N\) have images with the same membership in every \(U_n\). The base separates distinct points, so those images are equal.
+
+Use the constant Hilbert field \(\ell^2\). Its measurable sections are norm-Borel measurable by the separable-measurability proof in [Proposition 5.3 of Measurable fields](../reader/supplements/measurable-fields-direct-integrals.html#5-reduction-to-constant-fields). Therefore every measurable section is constant off a countable set. The constant-section map identifies the direct integral isometrically and onto with \(\ell^2\), since \(\mu(X)=1\). Scalar measurable functions are likewise essentially constant, so the diagonal is \(D=\mathbb C1\) and \(A=D'=B(\ell^2)\).
+
+For every \(x\in X\), let \(\pi_x:A\to B(\ell^2)\) be the identity representation. Each operator field \(x\mapsto\pi_x(a)\) is constant and measurable, and its direct integral is \(a\) under the constant-section identification. Thus the identity representation of the full algebra disintegrates on this base although no point is an atom. The standard-base coordinate used in Theorem 4.1 is essential to its point-atom conclusion. \(\square\)
 
 ## 5. Surjective homomorphisms: a cardinality argument
 
@@ -232,6 +248,6 @@ The unitary to the usual Hilbert direct sum is \((\xi_0,\xi_1)\mapsto(\xi_0,\sqr
 
 ## References
 
-- [Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer, 1979.
-- [Blackadar] B. Blackadar, *Operator Algebras*, [free author-hosted PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf).
+
+- [Blackadar] B. Blackadar, *Operator Algebras*, Sections III.2.2.16–17, [free author-hosted PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf).
 - The universal-enveloping lesson linked above supplies the normal–singular and singular-projection results.

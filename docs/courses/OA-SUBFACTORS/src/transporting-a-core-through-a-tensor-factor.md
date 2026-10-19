@@ -1,10 +1,10 @@
 # Transported cups realize a smaller core
 
-A tensor decomposition of a core does not itself give a new tunnel in the ambient factors. We must transport the Jones projections, recognize each successive predecessor, and prove that the entire new core has the prescribed closure. This lesson gives that argument for a specified tensor-pair isomorphism. It then proves that the commutant of any prescribed finite matrix factor in the smaller core is again a core.
+A tensor decomposition of a core does not itself give a new tunnel in the ambient factors. We must transport the Jones projections, recognize each successive predecessor, and prove that the entire new core has the prescribed closure. This lesson gives that argument for a specified tensor-pair isomorphism. A controlled-unitary family also determines exactly when a nondegenerate commuting-square copy of the standard model can be an embedded ordinary core. Its missing first relative commutant gives a quantitative obstruction for every ambient tunnel. It then proves that the commutant of any prescribed finite matrix factor in the smaller core is again a core.
 
 An arbitrary infinite common hyperfinite factor requires more care. We give a generating index-four example whose commutant pair is finite dimensional. It satisfies the displayed tensor-splitting conditions but cannot be a core of the original proper II₁ inclusion.
 
-We assume [Going up and down the Jones tower](towers-and-tunnels.md), especially Theorem 4.5 and Proposition 4.7, and [A common tensor factor in a core inclusion](relative-tensor-absorption.md). For finite algebras we use the normalized center-valued trace and projection comparison, proved in Traces on von Neumann algebras, Theorem 5.2 and Corollary 5.4. Equivalence extends to unitary conjugacy by Projections and types of von Neumann algebras, Proposition 14.2. Normal trace-preserving extension is Lemma 2.1 of the uniqueness lesson cited in lesson 50. These general prerequisites remain distinct from the relative argument here.
+We assume [Going up and down the Jones tower](towers-and-tunnels.md), especially Theorem 4.5 and Proposition 4.7, and [A common tensor factor in a core inclusion](relative-tensor-absorption.md). For finite algebras we use the normalized center-valued trace and projection comparison, proved in [Traces on von Neumann algebras](../../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#oa-fnd-ta-13), Theorem 5.2 and Corollary 5.4. Equivalence extends to unitary conjugacy by [Projections and types of von Neumann algebras](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), Proposition 14.2. Normal trace-preserving extension is Lemma 2.1 of the uniqueness lesson cited in lesson 50. These general prerequisites remain distinct from the relative argument here.
 
 ## A convention for every predecessor
 
@@ -382,6 +382,131 @@ The stability proposition in Sorin Popa's [Classification of amenable subfactors
 
 The next analytic step must identify the nested canonical basic constructions for the old and new cores, their center embeddings, and the \(n^2\) trace normalization. It must then prove integer rounding and the subsequent bounded-frame and local/global approximation results. None of these conclusions follows merely from (51.10).
 
+## A represented standard model need not be an embedded core
+
+An actual ordinary core has a constraint at its first finite level. For every tunnel beginning with the fixed inclusion \(N\subset M\),
+\[
+N'\cap M\ \subset\ (\bigcup_j L_j'\cap M)''.
+\tag{51.26}
+\]
+Indeed every later predecessor \(L_j\) lies in \(N\). This is a statement about the specified subalgebra of \(M\), and is stronger than an abstract isomorphism of pairs.
+
+**Theorem 51.7 — a full family of represented-core obstructions.** Let \(H=\overline{\bigotimes}_{k\ge1}(\operatorname{Mat}_2,\operatorname{tr}_2)\) and let \(K\) be any II₁ factor. In the product trace put
+\[
+\begin{gathered}
+M=\operatorname{Mat}_2\bar\otimes H\bar\otimes K,
+\qquad N=1_2\otimes H\bar\otimes K,\\
+P_0=\operatorname{Mat}_2\bar\otimes H\bar\otimes1,
+\qquad Q=1_2\otimes H\otimes1.
+\end{gathered}
+\tag{51.27}
+\]
+For a unitary \(v\in K\), set \(v_0=1,v_1=v\) and
+\[
+u=\sum_{i=0}^1 E_{ii}\otimes1\otimes v_i,
+\qquad P_v=uP_0u^*.
+\tag{51.28}
+\]
+Then \(Q\subset P_0\) is an actual core of \(N\subset M\). The normal trace-preserving map \(\operatorname{Ad}u:P_0\to P_v\) fixes \(Q\) pointwise. Both inclusions have index four, and
+\[
+\begin{matrix}Q&\subset&P_v\\ \cap&&\cap\\N&\subset&M\end{matrix}
+\qquad
+E_NE_{P_v}=E_{P_v}E_N=E_Q,
+\qquad \overline{\operatorname{span}}^{\,uw}(P_vN)=M.
+\tag{51.29}
+\]
+Nevertheless \(Q\subset P_v\) is an actual core of the fixed ambient inclusion if and only if \(v\) is scalar. The represented inclusion is smooth if and only if \(v\) is scalar. In particular, taking \(K=H\) and any nonscalar \(v\) gives a proper, extremal, finite-depth inclusion of hyperfinite II₁ factors and a nondegenerate commuting-square copy of its standard model which is not any embedded ordinary core.
+
+**Proof.** Write \(H=F_r\bar\otimes H^{(r)}\), where \(F_r=\operatorname{Mat}_2^{\otimes r}\) and \(F_0=\mathbb C\). There is an ordinary tunnel
+\[
+L_0=M,\qquad
+L_j=1_2\otimes1_{F_{j-1}}\otimes H^{(j-1)}\bar\otimes K
+\quad(j\ge1).
+\tag{51.30}
+\]
+To check every predecessor, use at each step the projection onto
+\(2^{-1/2}(e_0\otimes e_0+e_1\otimes e_1)\) in the two adjacent binary matrix sites. Its normalized partial trace is \(\tfrac14 1_2\), and its commutant in the second-site algebra is scalar. Together with that second-site algebra it generates both matrix sites: multiplying the projection on either side by the second-site matrix units gives all products \(\tfrac12 E_{ab}\otimes E_{cd}\). Tensoring the remaining factors verifies the entire Jones triple, its compression identity and the index four. Thus (51.30) is an actual tunnel, not just a decreasing chain.
+
+Factoriality of the two tail factors now gives
+\[
+L_j'\cap M=\operatorname{Mat}_2\bar\otimes F_{j-1}\otimes1,
+\qquad
+L_j'\cap N=1_2\otimes F_{j-1}\otimes1.
+\tag{51.31}
+\]
+Their closures are exactly \(P_0,Q\). This proves the core assertion directly. When \(K=H\), enumerating all binary sites in \(H\bar\otimes K\) gives, by the same construction, a second tunnel whose core is all of \(N\subset M\). The displayed tensor inclusion has finite depth: its generating bimodule is two copies of the elementary matrix Morita module, whose product with its conjugate consists of four copies of the identity module. Each even category therefore has only its identity simple object. It is extremal since the two canonical normalized traces on its first relative commutant \(\operatorname{Mat}_2\) are equal to the unique normalized matrix trace.
+
+The unitary \(u\) commutes with \(Q\), and every element of \(P_v\) has the unique matrix form
+\[
+x=\sum_{i,j=0}^1 E_{ij}\otimes b_{ij}\otimes v_iv_j^*,
+\qquad b_{ij}\in H.
+\tag{51.32}
+\]
+Here \(E_N=\operatorname{tr}_2\otimes\operatorname{id}\otimes\operatorname{id}\), so
+\[
+E_N(x)=1_2\otimes\tfrac12(b_{00}+b_{11})\otimes1\in Q.
+\tag{51.33}
+\]
+It is the trace-preserving expectation of \(P_v\) onto \(Q\). The orthogonal projections onto \(L^2(N)\) and \(L^2(P_v)\) consequently have product equal to the projection onto \(L^2(Q)\): first \(E_NE_{P_v}=E_Q\), and taking Hilbert space adjoints gives the other order. This proves both expectation equations in (51.29), and also \(N\cap P_v=Q\).
+
+There is a common four-element basis. Put
+\[
+a_{ij}=\sqrt2\,E_{ij}\otimes1\otimes v_iv_j^*
+\quad(0\le i,j\le1).
+\tag{51.34}
+\]
+Matrix multiplication and (51.33) give
+\[
+\begin{gathered}
+E_N(a_{ij}^*a_{kl})=\delta_{ik}\delta_{jl}1,\qquad
+\sum_{ij}a_{ij}a_{ij}^*=4\,1,\\
+y=\sum_{ij}a_{ij}E_N(a_{ij}^*y)\quad(y\in M).
+\end{gathered}
+\tag{51.35}
+\]
+For the last equality expand \(y=\sum E_{kl}\otimes y_{kl}\), with \(y_{kl}\in H\bar\otimes K\); the \((i,j)\)-term is exactly \(E_{ij}\otimes y_{ij}\). For \(y\in P_v\), every coefficient lies in \(Q\). Thus the same basis is a right \(Q\)-basis of \(P_v\) and a right \(N\)-basis of \(M\). It proves nondegeneracy and the common index four, including the scalar index normalization, without any density assumption about the square.
+
+The fixed first commutant is
+\[
+D=N'\cap M=\operatorname{Mat}_2\otimes1\otimes1.
+\tag{51.36}
+\]
+If \(v\) is nonscalar, (51.32) gives
+\[
+P_v\cap D=\operatorname{span}\{E_{00},E_{11}\}\otimes1\otimes1.
+\tag{51.37}
+\]
+For an off-diagonal matrix entry to be scalar in both tail factors would require \(b\otimes v\), or \(b\otimes v^*\), to be a nonzero scalar multiple of the identity. Applying a normal slice functional nonzero on \(b\) would make \(v\) scalar. The diagonal entries in (51.32) give exactly the two diagonal scalars. Equations (51.26) and (51.37) rule out every ambient tunnel with larger core \(P_v\).
+
+Smoothness already fails at its initial relative-commutant test. Namely
+\(Q'\cap P_v=uDu^*\), whose off-diagonal entry \(E_{01}\otimes1\otimes v^*\) does not commute with \(N\) for nonscalar \(v\). Such a \(v\) is noncentral in the factor \(K\), so some element of \(K\) does not commute with it. If \(v\) is scalar, \(P_v=P_0\). The square is then the tensor embedding \((Q\subset P_0)\to(Q\bar\otimes K\subset P_0\bar\otimes K)\). Its whole represented tower is obtained by tensoring the original tower with \(K\); every required relative commutant embeds. It is smooth and (51.31) makes it a core. This proves both equivalences. \(\square\)
+
+**Proposition 51.8 — an exact distance from every core.** In Theorem 51.7 let \(c=\tau_K(v)\), and put
+\(X=(E_{01}+E_{10})\otimes1\otimes1\). Then
+\[
+\begin{gathered}
+X=X^*=X^{-1},\qquad X\in D,\\
+E_{P_v}(X)=c E_{01}\otimes1\otimes v^*
+ +\overline c E_{10}\otimes1\otimes v,\\
+\operatorname{dist}_2(X,P_v)^2=1-|c|^2.
+\end{gathered}
+\tag{51.38}
+\]
+Every ordinary core \(R_*\) of the ambient pair contains this same unitary \(X\). Hence the one-sided distance from its operator-norm unit ball to \(P_v\), measured in \(L^2\), is at least \(\sqrt{1-|c|^2}\).
+
+**Proof.** The trace expectation onto \(P_v\) is
+\(\operatorname{Ad}u\circ(\operatorname{id}\otimes\operatorname{id}\otimes\tau_K)\circ\operatorname{Ad}u^*\). Apply it to the two matrix entries of \(X\). Their orthogonality gives \(\|E_{P_v}(X)\|_2^2=|c|^2\), while \(\|X\|_2=1\). Orthogonal projection in \(L^2\) proves (51.38). Finally use (51.26). \(\square\)
+
+For a trace-zero self-adjoint unitary in a binary matrix subalgebra of \(K\), the distance is exactly one. Equality \(|c|=1\) would force \(\|v-c1\|_2=0\), hence scalar \(v\), so the obstruction is positive for every nonscalar member of the family.
+
+The Corollary following Popa's Section 1.4.4, printed p.190, asserts realization of a represented copy of the standard model as an embedded core, describing the representation as a commuting square. Theorem 51.7 refutes that assertion with those displayed hypotheses, even for trace-preserving nondegenerate squares of hyperfinite factors at finite depth. The missing initial relative-commutant condition is explicit here. This does not refute Theorem 51.4, the prescribed finite-factor complement in 51.5, or the abstract ordinary-model comparison in 17.9. A general sufficiency theorem with an additional smoothness requirement is a separate assertion; no such theorem is assumed in this proof. The general nonextremal physical bicommutant also remains a separate obligation.
+
+![A nondegenerate commuting square which omits part of the fixed first commutant.](figures/represented-core-obstruction.svg)
+
+*Figure 51.2. The controlled unitary changes the off-diagonal entries while fixing \(Q\). The two expectations and the four common basis elements are exact formulas (51.33)–(51.35). The bottom matrix is the single finite-core witness used for every ambient tunnel. Its distance is (51.38), with value one for the displayed trace-zero choice. Tensor factors and arrows are schematic. Source context: Popa, Section 1.4.4, Corollary, printed p.190. [Reproducible figure source and exact finite matrix checks](figures/represented-core-obstruction.py).*
+
+
+
 ## Exercises with complete solutions
 
 **Exercise 51.1 — which tensor leg remains in a tail? (basic).** Why must \(B_j\) in (51.11) be \(\sigma(A_j\bar\otimes P)\), rather than \(\sigma(A_j\bar\otimes1)\)? Compute its commutant in \(R\).
@@ -420,6 +545,32 @@ Its range is \(\mathbb C\Omega\). On a range vector \(\Omega_{12}\otimes e_a\), 
 **Exercise 51.5 — a finite deletion in the test inclusion (advanced).** In Proposition 51.6, take \(D\) to be the matrix algebra on site two, rather than the entire \(N\). Compute its complement pair. Why does the theorem now realize it?
 
 **Solution.** The smaller complement is the infinite tail beginning at site three, with identities on sites one and two. The larger complement is the tensor product of the first-site \(M_2\) with that same tail, with identity on site two. Both are II₁ factors, and the complement inclusion still has index four. This prescribed \(D\cong M_2\) is a unital subalgebra of \(S=N\), so Corollary 51.5 supplies a new tunnel whose core is exactly this pair. The original tunnel's core was \(N\subset M\); deleting a finite site is a concrete proper core embedding inside it.
+
+### Exercise 51.6 — the common basis and both expectations
+
+In (51.27) take three binary matrix sites and \(v=\operatorname{diag}(1,-1)\) in the third. Verify the common basis on a matrix entry \(E_{kl}\otimes b\otimes z\), for arbitrary \(b,z\in\operatorname{Mat}_2\), and compute \(E_NE_{P_v}\) in either order.
+
+**Solution.** Matrix multiplication gives
+\[
+E_N\bigl(a_{ij}^*(E_{kl}\otimes b\otimes z)\bigr)
+=\frac{\delta_{ik}\delta_{jl}}{\sqrt2}
+ 1_2\otimes b\otimes v_jv_i^*z.
+\]
+Multiplication by \(a_{ij}\) cancels the two adjacent unitaries and recovers the input after summing. Similarly \(E_N(a_{ij}^*a_{kl})=\delta_{ik}\delta_{jl}1\), and the sum of the four \(a_{ij}a_{ij}^*\) is \(4\,1\). For the expectations, \(E_{P_v}\) kills the third-factor part after conjugating by \(u^*\), and then conjugates back by \(u\). Applying \(E_N\) leaves
+\(\operatorname{tr}_2(E_{kl})\operatorname{tr}_2(z)\,1_2\otimes b\otimes1_2=E_Q(E_{kl}\otimes b\otimes z)\). Reversing the order gives the same expression, by invariance of the third trace under conjugation by \(v_i\). These identities tensor with arbitrary remaining factors; they are not finite-dimensional approximations to the claimed square.
+
+### Exercise 51.7 — the witness survives every change of tunnel
+
+Use the trace-zero choice of Exercise 51.6. Show that no change of ordinary tunnel can remove the obstruction to \(P_v\) being its larger core, and compute the best \(L^2\) approximation in \(P_v\) to \(X=(E_{01}+E_{10})\otimes1\otimes1\).
+
+**Solution.** Every later predecessor lies in the fixed \(N\), so its commutant contains \(N'\cap M\). Thus every larger core contains \(X\). Equation (51.38) gives \(E_{P_v}(X)=0\). For every \(y\in P_v\), orthogonality yields \(\|X-y\|_2^2=1+\|y\|_2^2\). The unique best approximation is zero, with distance one. Isomorphism of the abstract pairs does not change the specified subalgebras in this argument.
+
+### Exercise 51.8 — the complete parameter boundary
+
+For arbitrary unitary \(v\in K\), determine exactly when the square (51.29) is smooth and when \(Q\subset P_v\) is an actual core. Explain why a nonscalar unitary with trace close to one is still an obstruction.
+
+**Solution.** Smoothness requires \(Q'\cap P_v\subset N'\cap M\). Its element \(E_{01}\otimes1\otimes v^*\) can satisfy this only if \(v\) commutes with all of the factor \(K\), hence only if it is scalar. Scalar \(v\) gives \(P_v=P_0\); the explicit tunnel (51.30) realizes the pair, and the whole tensor representation is smooth. Nonscalar \(v\) omits the off-diagonal part of \(D\), so no ambient tunnel realizes it. Moreover \(1-|\tau(v)|^2>0\), because equality would imply \(v=\tau(v)1\) in \(L^2\). Thus (51.38) gives a strictly positive obstruction for every nonscalar \(v\), however small that particular distance may be.
+
 
 ---
 

@@ -267,6 +267,6 @@ For \(u\in C([0,T];H^s)\), add and subtract \(\operatorname{Op}(a(t))u(t_0)\). T
 
 ## Sources and exact receiving scope
 
-The retained P22–P43 proof is a modified ordinary-parameter selection from AN03-U011, *Positivity through a moving family of scalar probes*. Its moving-window normalization, quadratic positivity, both moment cancellations and complete differentiated remainder are retained. Wider parameter extensions were omitted, and G1, G6–G7 give explicit current receiving arguments. The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, the approved 2007 edition, Theorem 18.1.14 and its proof; the first-order energy application is §23.1. No book text or files are included.
+The positive-quantization argument P22–P43 comes from AN03-U011, *Positivity through a moving family of scalar probes*. It supplies the normalized moving window, quadratic positivity, two moment cancellations and differentiated error bounds. G1 and G6–G7 give the global Sobolev inequality and strong continuity used here. The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, 2007, Theorem 18.1.14; §23.1 gives its first-order energy application.
 
-This companion completes the sharp lower-bound and global continuity inputs of U030. It does not yet certify U030's spacetime composition, restriction or entire dependency chain.
+This companion supplies the sharp lower bound and global continuity for scalar first-order evolution. The energy estimate, existence argument, mixed spacetime composition and time-slice pullback appear in their linked programme lessons.

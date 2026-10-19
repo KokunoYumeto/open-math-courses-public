@@ -8,7 +8,7 @@
 
 A finite family of tower projections can almost commute with a cocycle without commuting exactly. Its levels can also have different traces. Summing the labelled cocycle unitaries on those projections need not give a unitary. We correct that sum inside the projection corners and estimate the resulting cocycle error.
 
-The estimate has five contributions: commutation error, covariance error, the two weighted boundary masses, and uncovered trace. It gives a more flexible condition for the exact cohomology theorem in [From approximate cocycles to exact coboundaries](from-approximate-cocycles-to-exact-coboundaries.md), Theorem 2.1. Constructing the required projections for a general amenable action remains a separate step.
+The estimate has five contributions: commutation error, covariance error, the two weighted boundary masses, and uncovered trace. It gives a more flexible condition for the exact cohomology theorem in [From approximate cocycles to exact coboundaries](from-approximate-cocycles-to-exact-coboundaries.md), Theorem 2.1. For faithful induced countable amenable actions on an asymptotic centralizer, [Gaussian models and amenable towers](gaussian-models-and-amenable-towers.md), Theorem 1.1 and Sections 6–8 constructs the required projections. The present estimate applies under its stated finite-algebra hypotheses independently of that existence theorem.
 
 We use polar decomposition and spectral calculus. The complete central comparison argument is [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md), Section 2.3 (NP2), applied inside the corner; it uses the orthogonal-sum and central-support arguments in Sections 2.1–2.2. Lemma 1.1 below supplies the additional central-cut trace and faithfulness argument, without a factor hypothesis. The inequalities and all eight solutions are written out here. [Connes] and [Jones–Takesaki] provide the precise historical context for the central-sequence cohomology application, not substitutes for the local estimates.
 
@@ -83,7 +83,8 @@ The polar supports can have nonzero kernels. Completing the partial isometry on 
 \[
  \begin{aligned}
  0\leq\tau(d^*d)
- &=s^2\|x\|_2^2-\lambda\overline\alpha-\bar\lambda\alpha+s^{-2}\|y\|_2^2\\
+ &=s^2\|x\|_2^2-\lambda\overline\alpha-\bar\lambda\alpha\\
+ &\quad+s^{-2}\|y\|_2^2\\
  &=s^2\|x\|_2^2-2|\alpha|+s^{-2}\|y\|_2^2.
  \end{aligned}
  \tag{1.9}
@@ -257,7 +258,7 @@ When \(E_{i,s}\) commutes with \(V_s\) and every level of shape \(S_i\) has trac
 \]
 The equality of the two boundary cardinalities follows from left translation, including for nonabelian groups. Thus (3.4) recovers the earlier approximate-covariance estimate.
 
-Small unweighted boundaries alone do not imply the weighted inequalities in (4.1). Their projections could carry most of the trace. Nor does a Følner shape supply orthogonal projections or covariance estimates. The required relative projection construction for arbitrary amenable free actions remains to be proved. This criterion identifies exactly which approximate commutation and weighted errors such a construction must control.
+Small unweighted boundaries alone do not imply the weighted inequalities in (4.1). Their projections could carry most of the trace. Nor does a Følner shape supply orthogonal projections or covariance estimates. For faithful induced countable amenable actions, [Gaussian models and amenable towers](gaussian-models-and-amenable-towers.md), Theorem 1.1 and Sections 6–8 supplies these projections in any prescribed countably generated invariant coefficient commutant. Its exact interior covariance and commutation set both corresponding errors to zero. This criterion retains its broader conditional scope in arbitrary finite algebras.
 
 ## 5. Exercises with complete solutions
 

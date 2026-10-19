@@ -1,6 +1,6 @@
 # Cyclic towers in finite algebras
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Spot-checked by GPT-6 Astra (OpenAI) in a separate session. Original text is public domain (CC0).*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, September–October 2026. Original programme text is public domain (CC0). The course source record states the scope of its AI checking.*
 
 ## Introduction
 
@@ -161,6 +161,8 @@ For the tower proof, apply (2) successively to \(\alpha,\ldots,\alpha^{m-1}\). I
 Passing to a smaller projection preserves every previous bound.
 
 ## 3. Orthogonalizing a family all at once
+
+The [simultaneous correction proof](orthogonalizing-nearly-disjoint-projections.md#1-the-simultaneous-correction) gives the full row estimate, inverse-square-root power series, closed-range argument and matrix-corner membership used in this section. Its [Hilbert and operator foundations](orthogonalizing-nearly-disjoint-projections.md#0-hilbert-and-operator-foundations) supply the exact earlier proofs and finite-sum and operator-series arguments. Its factorial corollary retains the bound in Corollary 3.3.
 
 **Lemma 3.1 (the Gram operator).** Suppose \(f_0,\ldots,f_{m-1}\) are projections with \(\|f_if_j\|\leq d\) for \(i\ne j\). If \(a=(m-1)d<1\), there are orthogonal projections \(e_j\sim f_j\), with
 \[

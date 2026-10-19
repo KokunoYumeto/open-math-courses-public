@@ -1,0 +1,45 @@
+"""Exact closed-set examples from AN01-U086 Exercises 1–2. CC0."""
+from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,'svg.fonttype':'none'})
+fig,axs=plt.subplots(1,2,figsize=(13,6),layout='constrained')
+fig.set_facecolor('#f8fafc')
+ax=axs[0];ax.set_aspect('equal')
+ax.add_patch(Circle((0,0),1,facecolor='#dce9ef',edgecolor='#286274',lw=2))
+t=np.linspace(-.3,1.7,300)
+ax.plot(np.cos(t),np.sin(t),color='#a23b47',lw=4)
+for a in [0,.65,1.3]:
+ x=np.array([np.cos(a),np.sin(a)]);tangent=np.array([-x[1],x[0]])
+ ax.plot(*x,'o',color='#a23b47',ms=5)
+ ax.annotate('',xy=x+.36*x,xytext=x,arrowprops={'arrowstyle':'->','lw':2,'color':'#286274'})
+ ax.annotate('',xy=x+.30*tangent,xytext=x,arrowprops={'arrowstyle':'->','lw':2,'color':'#a23b47'})
+ax.text(-.66,-.22,r'$F=\{|x|\leq 1\}$',fontsize=15)
+ax.text(-.80,-.56,r'$\Phi=(|x|^2-1)/2$',fontsize=13)
+ax.text(1.07,-.18,r'$\xi=x$',color='#286274')
+ax.text(.43,1.46,r'$x^\prime=Jx,\quad \xi^\prime=J\xi$',color='#a23b47')
+ax.set(xlim=(-1.55,1.6),ylim=(-1.4,1.75),xlabel=r'$x_1$',ylabel=r'$x_2$')
+ax.set_title('Characteristic motion of actual normals',pad=14,fontweight='bold')
+ax.grid(alpha=.18)
+ax=axs[1]
+x=np.linspace(-1.65,1.65,601)
+ax.plot(x,(1-np.abs(x))**2,lw=3,color='#286274',label=r'$q(x)=(1-|x|)^2$')
+h=np.linspace(-.45,.45,101)
+ax.plot(h,1-2*np.abs(h),'--',color='#a23b47',lw=2,label=r'$q(0)+q^\prime(0;h)=1-2|h|$')
+ax.scatter([-1,1],[0,0],color='#172334',s=45,zorder=4)
+ax.scatter([0],[1],color='#a23b47',s=45,zorder=4)
+ax.annotate('Two nearest points at zero',xy=(0,1),xytext=(-1.45,1.22),arrowprops={'arrowstyle':'->','color':'#172334'},fontsize=12)
+ax.text(-1,-.17,r'$-1$',ha='center');ax.text(1,-.17,r'$1$',ha='center')
+ax.set(xlim=(-1.65,1.65),ylim=(-.24,1.48),xlabel=r'$x$',ylabel='Squared distance')
+ax.set_title('A directional expansion without a differential',pad=14,fontweight='bold')
+ax.legend(loc='lower center',bbox_to_anchor=(.5,.17),fontsize=11,framealpha=.95)
+ax.grid(alpha=.18)
+fig.suptitle('Closed-set geometry: transport and nearest-point variation',fontsize=17,fontweight='bold')
+fig.supxlabel('Left arrows show 0.36 ξ and 0.30 Jx. Right dashed graph is a first-order expansion, not a tangent.',fontsize=11)
+out=Path(__file__).with_suffix('')
+fig.savefig(out.with_suffix('.png'),dpi=190)
+fig.savefig(out.with_suffix('.svg'))
+svg=out.with_suffix('.svg');svg.write_text('\n'.join(l.rstrip() for l in svg.read_text().splitlines())+'\n')

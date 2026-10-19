@@ -30,7 +30,7 @@ def render(out):
     panel(ax,.310,'Typed matrix entries',r'$a_{ji}=v_j^*av_i\in e_jMe_i\subseteq pMp$'+'\n'+r'$a\in Mz$'+'\nEach block lies in the trace domain.',h=.17)
     arrow(ax,.292)
     panel(ax,.067,'Nonnegative double sums',r'$\Theta(a^*a)=\sum_{i,j}\theta(a_{ji}^*a_{ji})$'+'\n'+r'$=\sum_{j,i}\theta(a_{ji}a_{ji}^*)=\Theta(aa^*)$'+'\nNormality inserts the range sum.',h=.185,color=GREEN)
-    ax.text(.5,.009,'TE-07–08; TE.13–17. Any index set I.\nSums: finite-subset suprema.\nAntecedent: Takesaki I, V.2.14–2.15.',ha='center',va='bottom',fontsize=10,color=INK)
+    ax.text(.5,.009,'TE-07–08; TE.13–17. Any index set I.\nSums: finite-subset suprema.\nTrace lesson: Lemma 6.1, Theorem 6.2.',ha='center',va='bottom',fontsize=10,color=INK)
     save(fig,out/'trace-corner-matrix-v004.png')
     fig=plt.figure(figsize=(4.4,10.2));ax=fig.add_axes((.02,.01,.96,.98));ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off')
     ax.text(.5,.99,'Filling central trace supports',ha='center',va='top',fontsize=16,fontweight='bold',color=INK)
@@ -41,7 +41,7 @@ def render(out):
     panel(ax,.313,'Ordered positive cutoffs',r'$0\leq u\leq z,\quad\tau(u)<\infty,\quad u\uparrow z$'+'\n'+r'$y=x^{1/2}ux^{1/2}\leq x,\quad y\uparrow x$'+'\n'+r'$\tau(y)\leq\|x\|\tau(u)<\infty$',h=.17,color=GREEN)
     arrow(ax,.295)
     panel(ax,.073,'A trace in any central gap',r'$d=1-\sum_jz_j\ne0$'+'\nSemifiniteness gives a finite p under d.\nTE-06 gives a nonzero corner trace.\nTE-08–09 yield a new support in d.',h=.18)
-    ax.text(.5,.004,'Contradiction to maximality: sum of supports is 1.\nTE-08–11; TE.18–24. Arbitrary families and nets.\nAntecedent: Takesaki I, V.2.10, 2.12, 2.15.',ha='center',va='bottom',fontsize=10,color=INK)
+    ax.text(.5,.004,'Maximality forces the supports to sum to 1.\nTE-08–11; TE.18–24. Arbitrary nets.\nTrace lesson: Propositions 3.2–3.7, Theorem 6.7.',ha='center',va='bottom',fontsize=10,color=INK)
     save(fig,out/'trace-central-gluing-v004.png')
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output-directory',type=Path,default=Path(__file__).resolve().parent)

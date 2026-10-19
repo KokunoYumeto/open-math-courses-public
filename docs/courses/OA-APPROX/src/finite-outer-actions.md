@@ -182,13 +182,13 @@ E(x)=|G|^{-1}\sum_{g\in G}\alpha_g(x),
 \]
 with range \(N\), its bimodule identity and trace \(2\)-contraction. Its Hilbert extension is the orthogonal projection onto the whole \(L^2(N)\): the finite average of the \(W_g\)'s is self-adjoint and idempotent, and its image of \(M\Omega\) is \(N\Omega\).
 
-Each \(E(F_n)=F_n^G\) is a finite-dimensional star algebra, and these algebras increase. AF1's normal trace projection \(P_n:M\to F_n\) has \(\|P_n(x)\|\leq\|x\|\). The union \(F_n\Omega\) is dense in \(L^2(M)\), because its star algebra generates \(M\) and BD gives bounded strong approximation on \(\Omega\). The \(P_n\)'s are exactly its increasing trace-vector orthogonal projections, so \(P_n(x)\to x\) in trace norm.
+Each \(E(F_n)=F_n^G\) is a finite-dimensional star algebra, and these algebras increase. AF1's normal trace projection \(P_n:M\to F_n\) has \(\|P_n(x)\|\leq\|x\|\). The union \(F_n\Omega\) is dense in \(L^2(M)\), because its star algebra generates \(M\) and BD gives bounded strong approximation on \(\Omega\). The \(P_n\)'s are exactly its increasing trace-vector orthogonal projections, so \(P_n(x)\to x\) in trace \(2\)-norm.
 
-At \(x\in N\), the bounded \(E(P_n(x))\in F_n^G\) still converge in trace norm, hence intrinsically strong* by NT2. Thus the increasing finite-dimensional fixed stages generate \(N\), proving AFD. Their rational complex basis combinations give a countable dense set in the trace Hilbert space of \(N\). FO0 gives its faithful normal representation with a whole normal inverse; CP's concrete projective-tensor predual is separable on that Hilbert space, and so is its quotient \(N_*\). Theorem 2.1 supplies the complete \(\mathrm{II}_1\) conclusion; AF5 consequently identifies \(N\) normally with \(R\). \(\square\)
+At \(x\in N\), the bounded \(E(P_n(x))\in F_n^G\) still converge in trace \(2\)-norm, hence intrinsically strong* by NT2. Thus the increasing finite-dimensional fixed stages generate \(N\), proving AFD. Their rational complex basis combinations give a countable dense set in the trace Hilbert space of \(N\). FO0 gives its faithful normal representation with a whole normal inverse; CP's concrete projective-tensor predual is separable on that Hilbert space, and so is its quotient \(N_*\). Theorem 2.1 supplies the complete \(\mathrm{II}_1\) conclusion; AF5 consequently identifies \(N\) normally with \(R\). \(\square\)
 
 Nonunital approximants may be replaced by \(\operatorname{span}(F_n,1_M)\). This is a finite-dimensional algebra: if \(e_n\) is the unit of \(F_n\), it is \(F_n+\mathbb C(1-e_n)\). Inclusion, invariance and the ambient generated algebra are preserved.
 
-For an increasing invariant directed family of finite-dimensional algebras, the same trace projections form a directed family of Hilbert projections with dense union. Their trace convergence follows by approximating a vector in one stage and then taking every larger stage; averaging gives bounded approximants in the fixed directed family. This proves local AFD without a countability or separability assumption. The identification with the separable \(R\) in Theorem 2.2 uses its countable sequence.
+For an increasing invariant directed family of finite-dimensional algebras, the same trace projections form a directed family of Hilbert projections with dense union. Their trace \(2\)-norm convergence follows by approximating a vector in one stage and then taking every larger stage; averaging gives bounded approximants in the fixed directed family. This proves local AFD without a countability or separability assumption. The identification with the separable \(R\) in Theorem 2.2 uses its countable sequence.
 
 **Exercise 5.** Prove that (12) is \(N\)-bimodular and self-adjoint on \(L^2(M)\).
 
@@ -216,7 +216,7 @@ R_H=\overline{\bigotimes_{(h,n)\in H\times\mathbb N}}
 \]
 FO3 constructs it through SS2 and identifies its whole normal closure with \(R\). Left multiplication by \(k\in H\) sends \((h,n)\) to \((kh,n)\), preserving all finite trace inner products. Its Hilbert unitary gives a normal \(\beta_k\), and composition of the site maps gives \(\beta_k\beta_l=\beta_{kl}\).
 
-Choose \(Z=\operatorname{diag}(1,-1)\) at \((e,n)\), with units elsewhere, and call it \(z_n\). It has trace zero and norm and trace norm one. It commutes with each fixed finite-coordinate stage eventually. For arbitrary \(x\) and a local approximant \(a\),
+Choose \(Z=\operatorname{diag}(1,-1)\) at \((e,n)\), with units elsewhere, and call it \(z_n\). It has trace zero, operator norm one and trace \(2\)-norm one. It commutes with each fixed finite-coordinate stage eventually. For arbitrary \(x\) and a local approximant \(a\),
 \[
 \|[z_n,x]\|_2\leq2\|x-a\|_2+\|[z_n,a]\|_2.
 \tag{14}
@@ -228,7 +228,7 @@ For \(k\ne e\), the original and translated sites are distinct. Product trace in
 \|\beta_k(z_n)-z_n\|_2^2=2.
 \tag{15}
 \]
-If \(\beta_k=\operatorname{Ad}(u)\) with fixed \(u\in R_H\), that distance would tend to zero by (14) at \(x=u\) and unitary trace-norm invariance. Hence every nonidentity \(\beta_k\) is outer.
+If \(\beta_k=\operatorname{Ad}(u)\) with fixed \(u\in R_H\), that distance would tend to zero by (14) at \(x=u\) and unitary invariance of \(\|\cdot\|_2\). Hence every nonidentity \(\beta_k\) is outer.
 
 The stages on \(H\times\{1,\ldots,n\}\) are increasing invariant full matrix algebras and generate \(R_H\). Theorems 2.1–2.2 now give the full conclusions
 \[
@@ -239,7 +239,7 @@ For nontrivial \(H\), any nonidentity \(k\) moves \(z_n\), so the fixed inclusio
 
 **Exercise 6.** With \(H=\mathbb Z/3\) in (13), exhibit an element outside its fixed algebra and compute its distance from its image under a generator.
 
-*Solution.* Put \(Z\) at \((e,1)\). A generator moves it to the distinct site \((k,1)\). Both have squared trace norm one, and their mixed trace is the product of their zero traces. Thus their squared distance is two, and their distance is \(\sqrt2\). The element is not fixed. The same computation in each tail layer, together with (14), proves outerness of the generator rather than merely showing it is nonidentity.
+*Solution.* Put \(Z\) at \((e,1)\). A generator moves it to the distinct site \((k,1)\). Both have squared trace \(2\)-norm one, and their mixed trace is the product of their zero traces. Thus their squared distance is two, and their distance is \(\sqrt2\). The element is not fixed. The same computation in each tail layer, together with (14), proves outerness of the generator rather than merely showing it is nonidentity.
 
 <a id="4-countable-bernoulli-actions-and-the-inverse-index"></a>
 
@@ -280,8 +280,8 @@ These are individually normal automorphisms, outer away from the identity, but t
 
 ## Complete freely accessible proofs and source comparisons
 
-The full current route uses [FO0–4](../components/finite-outer-action-trace-and-normal-inputs.md), the exact finite matrix, canonical trace, comparison, normal-predual, bounded density, variable product, free-word normal-form and AFD uniqueness proofs. It retains all six statements and eight whole problems and solutions. The general finite-action arguments do not require separable predual; the countable invariant stages are used exactly where the separable \(R\) conclusion is proved.
+The [FO0–4 proof inputs](../components/finite-outer-action-trace-and-normal-inputs.md) develop finite matrices, the canonical trace, projection comparison, the normal predual, bounded density, matrix-base products, free-word normal forms and AFD uniqueness. The finite-action conclusions apply without separable predual. Countable invariant stages give the separable \(R\) conclusion.
 
 Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), Section 5.2, printed pp.68–70 (PDF pp.74–76), compares the Fourier trace and outer-action methods. Exercise 5.11, printed p.81 (PDF p.87), asks for the canonical faithful normal realization; the full finite coefficient, central-kernel, range and inverse arguments above supply a complete proof for arbitrary nondegenerate faithful normal covariant representations. Its Bernoulli convention composes in reverse order when read as an output-site placement; (17) spells out the inverse. Footnote 13, printed p.17 (PDF p.23), defines countable groups in the draft as infinite. The finite bare matrix index and the infinite repeated finite-group index are proved separately here.
 
-Jesse Peterson, [*Notes on operator algebras*, April 27, 2020](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf#page=107), Proposition 6.4.12, printed/PDF p.107, is the full tracial-conjugation comparison. FO0 supplies an independent bounded trace-vector ball argument identifying every commutant operator as right multiplication, on the entire Hilbert space. FO1 proves whole-domain normality of its inverse using the full linear predual criterion. The tracial identities (FJ1)–(FJ3) follow without an arbitrary-weight modular theorem.
+Jesse Peterson, [*Notes on operator algebras*, April 27, 2020](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf#page=107), Proposition 6.4.12, printed/PDF p.107, is the full tracial-conjugation comparison. FO0 identifies every commutant operator as right multiplication through the bounded trace-vector ball and its support functionals. FO1 proves whole-domain normality of its inverse using the full linear predual criterion. The tracial identities (FJ1)–(FJ3) follow without an arbitrary-weight modular theorem.

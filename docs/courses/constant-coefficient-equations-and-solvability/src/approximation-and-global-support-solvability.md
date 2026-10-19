@@ -4,7 +4,7 @@
 
 A regular fundamental solution solves an equation with compact data. Data with unrestricted growth near the boundary need a further idea. We construct solutions on increasingly large regions and correct their differences by homogeneous solutions. The geometric condition that makes this correction possible is a uniform bound on the supports of compact test functions under the transposed operator.
 
-The prerequisites are [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md), [Operator strength and local inverses](operator-strength-and-local-inverses.md), the Hahn–Banach separation theorem, and the Baire theorem for Fréchet spaces. Malgrange's original paper [Malgrange] is a classical source for approximation. Hörmander [HII], Sections 10.5–10.6, supplies the theorem-specific correspondence for approximation in finite-exponent weighted spaces, the support condition, and the exhaustion argument used here. The Fourier support results used at the entry to the argument are recorded precisely below; their distribution and Fourier proofs belong to the prerequisite course.
+The prerequisites are [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md), [Operator strength and local inverses](operator-strength-and-local-inverses.md), the Hahn–Banach separation theorem, and the Baire theorem for Fréchet spaces. Malgrange's approximation paper [Malgrange] and Hörmander's treatment of constant-coefficient equations [HII] are basic references. The compact-support Fourier statements used below have the full internal proofs specified in the next section.
 
 Fix a nonzero complex polynomial \(P\), put \(D=-i\partial\), and use complex-linear distribution pairings. The formal transpose is
 \[
@@ -40,7 +40,7 @@ We use the following two entry results.
   \]
   The solution is unique by (2). In Fourier–Laplace language, annihilation makes \(\widehat\mu(z)/P(-z)\) entire, and polynomial division preserves the growth estimate needed for compact support.
 
-Convex supports and convolution cancellation, Corollary 4.3, proves the differential support-hull equality in (2). Under our D convention the polynomial applied to ordinary derivatives is obtained by substituting minus i times each variable; this is again a nonzero complex polynomial. Empty support and the nonzero scalar case are included. The compact division and exponential-polynomial annihilator equivalence in (3) are proved in Compact Fourier division and multiplicity-sensitive annihilators, Theorems CF2.1–CF5.1, under its exact stated Fourier and Cauchy entries. CF4.1 also supplies an additional ordinary-hull proof of (2); the AN-01 Corollary 4.3 remains the other complete proof. Hörmander [HI], Theorems 7.3.1–7.3.2 and Lemma 7.3.3, gives the Paley–Wiener growth and compact-division route; Definition 7.3.5 and Lemma 7.3.7 give the exponential-polynomial annihilator argument, including polynomial multiplicities and the transpose sign. The linked L122 proof supplies the bounded division input; its lower Fourier, Cauchy, weak, elliptic and general Green provider scopes remain separate, and recursive prerequisite closure is not asserted. Malgrange [Malgrange] gives the classical approximation context.
+The ordinary support-hull equality in (2) is proved in [Compact Fourier division and multiplicity-sensitive annihilators](compact-fourier-division-and-multiplicity-sensitive-annihilators.md#4-compact-inverses-and-equality-of-ordinary-support-hulls), Theorem CF4.1, and in Convex supports and convolution cancellation, Corollary 4.3. To apply the ordinary-derivative version of that corollary, substitute minus i times each polynomial variable. Empty support and nonzero scalar operators are included. Theorem CF5.1 of the compact Fourier lesson proves the exact annihilator criterion (3), with all polynomial multiplicities and the transpose sign. Its Theorems CF2.1 and CF3.2 prove the entire growth criterion and the division estimate, retaining the same convex carrier. The Fourier and Cauchy facts used in those proofs are linked there. Hörmander's distribution and Fourier treatment [HI] and Malgrange's paper [Malgrange] give the classical context.
 
 ## Approximation in several regularity scales at once
 
@@ -275,7 +275,91 @@ Here finite order means that one derivative order works in the test-function est
 \(f\in B_{1,\langle\xi\rangle^{-M}}^{\mathrm{loc}}\) for any integer \(M>N+n\). Theorem 6.2 supplies a solution in the same local space, since its output weight is at least a positive multiple of \(\langle\xi\rangle^{-M}\). Membership there gives an order at most \(M\) on every compact subset: the distribution pairing is bounded by the weighted Fourier \(L^1\) norm times
 \(\sup\langle\xi\rangle^M|\widehat\psi(\xi)|\), which is bounded by finitely many derivatives of \(\psi\) of order at most \(M\) on its fixed compact support. Thus one order works throughout \(X\). \(\square\)
 
-An arbitrary distribution can have orders that grow along an exhaustion. Corollary 6.4 alone does not establish solvability for all distributions. That question requires the additional geometry of singular supports.
+An arbitrary distribution can have orders that grow along an exhaustion. Corollary 6.4 alone does not establish solvability for all distributions. The next two results describe its finite-order class exactly and show why hypoellipticity makes the additional singular-support condition automatic.
+
+### Which distributions fit a single weighted scale?
+
+Write \(\mathcal D'_F(X)\) for distributions with one finite derivative order valid on every compact subset of \(X\), with constants allowed to depend on that subset.
+
+**Lemma 6.5.** For every fixed \(p\in[1,\infty]\),
+\[
+ \mathcal D'_F(X)
+   =\bigcup_{k\ {\rm moderate}}B_{p,k}^{\rm loc}(X)
+   =\bigcup_{M\in\mathbb N_0}
+                B_{p,\langle\xi\rangle^{-M}}^{\rm loc}(X).
+ \tag{FO1}
+\]
+The order in the definition is uniform over the compact subsets, rather than a different order on each subset.
+
+**Proof.** If \(f\) has order \(N\), each compact localization has the Fourier estimate
+\[
+                  |\widehat{\chi f}(\xi)|
+                         \le C_\chi\langle\xi\rangle^N .
+ \tag{FO2}
+\]
+Indeed, pair \(f\) with a compact cutoff times the Fourier exponential and apply its order-\(N\) estimate. Every derivative of that exponential contributes at most one factor of the frequency; the cutoff derivatives have fixed bounds. For any integer \(M>N+n\), multiplying (FO2) by \(\langle\xi\rangle^{-M}\) gives an \(L^p\) function for every \(1\le p\le\infty\). This proves membership in the last union. Those weights are moderate: the inequality
+\[
+ \langle\xi+\eta\rangle\le\sqrt2\langle\xi\rangle\langle\eta\rangle
+\]
+applied also with \(-\eta\) bounds either quotient of the two shifted weights by a fixed power of \(\langle\eta\rangle\).
+
+Conversely, let \(f\in B_{p,k}^{\rm loc}(X)\) for one moderate weight. Its defining shift bound, applied with one endpoint zero, gives constants \(c>0\), \(a\ge0\) such that
+\[
+                       k(\xi)\ge c\langle\xi\rangle^{-a}.
+ \tag{FO3}
+\]
+Fix a compact \(K\subset X\), choose \(\chi\) equal to one near \(K\), and let \(\psi\) be a smooth test supported in \(K\). Complex-linear Fourier duality and Hölder's inequality give
+\[
+ |f(\psi)|\le C\|\chi f\|_{p,k}
+                   \left\|\frac{\widehat\psi(-\xi)}{k(\xi)}
+                                                    \right\|_{L^{p'}},
+ \qquad \frac1p+\frac1{p'}=1.
+ \tag{FO4}
+\]
+Both endpoint conventions are included. Choose an integer \(L>a+n\), independently of \(K\). Integration by parts in the Fourier integral gives
+\[
+ |\widehat\psi(\xi)|
+ \le C_K\langle\xi\rangle^{-L}
+                 \max_{|\alpha|\le L}\sup_K|\partial^\alpha\psi|.
+ \tag{FO5}
+\]
+For example, bound each Fourier transform of a derivative by its \(L^1\) norm and use that \(\langle\xi\rangle^L\) is bounded by a constant times the sum of the coordinate monomials of orders at most \(L\). Every such \(L^1\) norm is bounded by a fixed compact-volume constant times the displayed maximum. By (FO3), the norm in (FO4) is at most that maximum times
+\[
+                    C_K\|\langle\xi\rangle^{a-L}\|_{L^{p'}}<\infty.
+\]
+The chosen \(L\) works for every \(p'\), including one and infinity. Thus
+\[
+             |f(\psi)|\le C_{f,k,K}
+                   \max_{|\alpha|\le L}\sup_K|\partial^\alpha\psi|.
+ \tag{FO6}
+\]
+One derivative order works on all compact subsets, as required. This proves the reverse inclusion and (FO1). Empty domains and zero distributions satisfy all three descriptions trivially. \(\square\)
+
+### When hypoellipticity removes the order restriction
+
+A constant-coefficient operator is **hypoelliptic** if, on every open set, a distribution with smooth image is itself smooth there.
+
+**Corollary 6.6.** If \(P(D)\) is hypoelliptic and \(X\) is \(P\)-convex for supports, then every \(f\in\mathcal D'(X)\) has a solution \(u\in\mathcal D'(X)\). The datum need not have a uniform finite order.
+
+**Proof.** Hypoellipticity passes to the transpose \(P^t=P(-D)\). If \(v\) is defined on an open set \(U\), reflect it to \(-U\) by
+\[
+                     (Rv)(\phi)=v(\phi(-\cdot)).
+ \tag{HO1}
+\]
+The chain rule, followed by distributional transposition, gives
+\[
+                         P(D)Rv=R(P^t v).
+ \tag{HO2}
+\]
+Consequently a smooth \(P^t v\) makes \(Rv\), then \(v\), smooth. Locality gives the other inclusion between singular supports, so
+\[
+                   \operatorname{singsupp}v
+                     =\operatorname{singsupp}P^t v .
+ \tag{HO3}
+\]
+For a compact \(v\) in \(X\), any compact bound \(K\) on the singular support of its image is therefore a bound on its own singular support. Thus \(X\) is \(P\)-convex for singular supports with \(K'=K\).
+
+Theorem 6.1 of [Singular supports and arbitrary distribution data](singular-supports-and-distribution-data.md#solving-for-every-distribution) proves that the two support-convexity conditions give a solution for every distributional datum. Apply that theorem. Its smooth solvability input is Corollary 6.3 above; no finite-order hypothesis on the present datum is used. \(\square\)
 
 ## Exercises with solutions
 
@@ -299,6 +383,26 @@ Pass to the limit to obtain the same bound for \(u-u_r\). This estimates one sem
 **Exercise 4 (advanced).** Explain exactly which part of the proof fails if (4) includes \(p=\infty\). Does this prove that approximation or solvability is false at that endpoint?
 
 **Solution.** Lemma 2.1 extends annihilation from smooth functions by mollifying a compact distribution and taking a limit in all the chosen norms. Approximate identities need not converge in \(B_{\infty,k}\), so that step is unavailable. The same extension is needed in the Runge argument and therefore in Lemma 6.1. This identifies a missing proof mechanism; it is not a counterexample to every possible endpoint theorem. The finite-exponent assumptions in the stated results cannot be dropped on the strength of this argument.
+
+**Exercise 5 (intermediate: an exact order threshold).** Let \(n\ge1\), \(r\in\mathbb N_0\), and \(f=D_1^r\delta_0\) on \(\mathbb R^n\). For real \(M\), determine exactly when
+\[
+                         f\in B_{p,\langle\xi\rangle^{-M}}.
+ \tag{FO7}
+\]
+Include \(p=1\) and \(p=\infty\).
+
+**Solution.** The Fourier transform is \(\xi_1^r\). For \(1\le p<\infty\), its weighted \(p\)-th power is integrable near zero. Outside the unit ball, polar coordinates separate a positive finite angular factor from a radial integral comparable to
+\[
+                         \int_1^\infty
+                                  s^{rp-Mp+n-1}\,ds .
+ \tag{FO8}
+\]
+The angular factor is positive because \(|\theta_1|^{rp}\) is positive on an open part of the sphere; for \(r=0\), it is the sphere's area. The integral converges exactly when
+\[
+                              M>r+\frac np .
+ \tag{FO9}
+\]
+For \(p=\infty\), the weighted function is bounded exactly when \(M\ge r\). Sufficiency follows from \(|\xi_1|\le|\xi|\le\langle\xi\rangle\); necessity follows along the first coordinate ray. The equality endpoint is therefore included only in this supremum case. The datum has a finite order independent of its localization, as Lemma 6.5 requires.
 
 ## References
 

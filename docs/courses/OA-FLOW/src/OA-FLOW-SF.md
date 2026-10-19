@@ -268,7 +268,7 @@ Disjoint sums now give strong countable additivity of \(B\mapsto\pi(E_A(B))\). I
 
 ![The spectral proof route and its full-domain test](../assets/operator-spectral/assets/spectral-route.png)
 
-*Proof map, not a spectral plot. SB-1 controls each finite orbit polynomial by a scalar circle norm; SB-2 constructs its scalar measures; SB-3 makes the unitary multiplication; SB-4 recovers the entire graph of \(A\) through the equal resolvents. The bottom formula is the exact domain test, including unbounded functions. Source and rendering script are retained beside this candidate.*
+*Proof map, not a spectral plot. SB-1 controls each finite orbit polynomial by a scalar circle norm; SB-2 constructs its scalar measures; SB-3 makes the unitary multiplication; SB-4 recovers the entire graph of \(A\) through the equal resolvents. The bottom formula is the exact domain test, including unbounded functions. The editable diagram source and rendering script accompany the lesson.*
 
 <a id="oa-flow.shared-foundations.sf-1"></a>
 
@@ -418,7 +418,7 @@ f(z)=\frac1{2\pi i}\int_{\partial R}\frac{f(w)}{w-z}\,dw.
 
 <a id="oa-flow.sf4.power-series"></a>
 
-For \(R\) centered at \(z_0\), geometric expansion of the kernel is uniform when \(|z-z_0|\) is smaller than the distance from \(z_0\) to its boundary. Termwise integration gives the local power series, with coefficients bounded by the contour length times \(\sup|f|\) divided by \(2\pi\) times the corresponding power of that distance. In particular derivatives of holomorphic functions are holomorphic. Integrating the power series on a smaller circle, and then geometrically expanding its Cauchy kernel, gives the circle Cauchy formula and the sharper coefficient bound \(\sup_{\mathrm{circle}}|f|/r^n\). For a circle inside a horizontal strip, one may first choose a slightly larger centered rectangle still in the strip, so every circle used in the candidates is covered. The first nonzero power-series coefficient makes a zero isolated; this proves the identity theorem on connected domains by the usual open-and-closed propagation of zero neighborhoods.
+For \(R\) centered at \(z_0\), geometric expansion of the kernel is uniform when \(|z-z_0|\) is smaller than the distance from \(z_0\) to its boundary. Termwise integration gives the local power series, with coefficients bounded by the contour length times \(\sup|f|\) divided by \(2\pi\) times the corresponding power of that distance. In particular derivatives of holomorphic functions are holomorphic. Integrating the power series on a smaller circle, and then geometrically expanding its Cauchy kernel, gives the circle Cauchy formula and the sharper coefficient bound \(\sup_{\mathrm{circle}}|f|/r^n\). For a circle inside a horizontal strip, one may first choose a slightly larger centered rectangle still in the strip, so every circle used in the strip arguments is covered. The first nonzero power-series coefficient makes a zero isolated; this proves the identity theorem on connected domains by the usual open-and-closed propagation of zero neighborhoods.
 
 <a id="oa-flow.sf4.maximum"></a>
 
@@ -432,4 +432,4 @@ If a continuous function on a disk has zero integrals around all sufficiently sm
 
 In particular, a holomorphic function below a real interval, continuous and zero on that interval, extends holomorphically by zero across it. For a crossing rectangle, cut a distance \(\varepsilon\) away from the interval. The integrals on the two sides vanish; continuity and the zero trace remove the intervening pieces as \(\varepsilon\) tends to zero. The preceding rectangle criterion applies, and the local identity theorem makes the extension zero. This proves uniqueness from a real boundary interval without presupposing a strip uniqueness theorem.
 
-These lemmas and the candidates are new local proof text. They establish the displayed consequences of the explicitly retained scalar, spectral and Hilbert foundations; they do not certify every ancestor of those foundations.
+These lemmas give the contour formula, power-series bounds, maximum principles and boundary uniqueness used in the operator and strip arguments. Their scalar, spectral and Hilbert-space prerequisites are the earlier foundations specified above.

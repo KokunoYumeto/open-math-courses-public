@@ -165,6 +165,69 @@ Apply [DC7](../../OA-MOD/OA-MOD-DC.html#existence-over-any-specified-central-abe
 
 Next apply [MW7](../../OA-MOD/OA-MOD-MW.html#central-disintegration-of-a-separable-weighted-algebra) to the faithful normal state \(\varphi\) and this central diagonal. Its [DI13 construction](../../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal) starts with that whole algebra decomposition, localizes the actual left and right involution graphs, and recovers the full fibre Hilbert algebras and the same represented algebra. The compatible GNS realization is part of MW7's proof: the canonical fibre maps are made measurable by pulling back a fundamental family, and both operator transports satisfy the [GFR10 comparison](../../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction). Thus a bare algebra decomposition is not being treated as a standard-form decomposition.
 
+### Identify the algebra through its represented graph core
+
+The last identification in central disintegration uses the multiplication operators of the localized core, as well as its closed involution. The following criterion makes that identification explicit.
+
+**Common-core criterion.** Let \(\mathcal E_1,\mathcal E_2\) be full left Hilbert algebras on the same Hilbert space \(K\). Suppose \(\mathcal C\) is a common complex star subalgebra, with the same products and involution in both algebras, and is a graph core for each closed involution. Then
+\[
+ \mathcal E_1=\mathcal E_2
+ \quad\text{with the same products, involution and represented multipliers}.
+ \tag{A10a}
+\]
+
+**Proof.** The two involutions agree on \(\mathcal C\), so their closures are one operator \(S\), and their adjoints are one operator \(F=S^*\). The subalgebra \(\mathcal C\) is Hilbert dense. For \(c,d\in\mathcal C\), the two bounded left multipliers satisfy \(L_c^{(1)}d=cd=L_c^{(2)}d\). Density therefore gives
+\[
+ L_c^{(1)}=L_c^{(2)}\quad(c\in\mathcal C).
+ \tag{A10b}
+\]
+
+We compare the associated right algebras directly. Take \(\eta\in(\mathcal E_1)_r\), and write \(Q=R_\eta^{(1)}\) for its bounded right multiplier. In particular \(\eta\in D(F)\), and
+\[
+ Qc=L_c^{(1)}\eta=L_c^{(2)}\eta
+ \quad(c\in\mathcal C).
+ \tag{A10c}
+\]
+Fix \(b\in\mathcal E_2\). Since \(\mathcal C\) is a graph core, there are \(c_n\in\mathcal C\) with \(c_n\to b\) and \(c_n^\sharp\to b^\sharp\). For every \(r\in(\mathcal E_2)_r\), use the fixed bounded right multiplier \(R_r^{(2)}\) and the left adjoint identity to obtain
+\[
+ \begin{aligned}
+ \langle Qc_n,r\rangle
+ &=\langle L_{c_n}^{(2)}\eta,r\rangle
+  =\langle\eta,L_{c_n^\sharp}^{(2)}r\rangle\\
+ &=\langle\eta,R_r^{(2)}c_n^\sharp\rangle
+  \longrightarrow\langle\eta,R_r^{(2)}b^\sharp\rangle
+  =\langle L_b^{(2)}\eta,r\rangle.
+ \end{aligned}
+ \tag{A10d}
+\]
+The left side also tends to \(\langle Qb,r\rangle\). The right algebra is Hilbert dense by the [right-algebra cutoff theorem](../../OA-MOD/OA-MOD-RD.html#oa-mod-rd-04), so \(Qb=L_b^{(2)}\eta\) for every \(b\in\mathcal E_2\). Hence \(\eta\) is right bounded for \(\mathcal E_2\), with the same operator \(Q\); membership in \(D(F)\) puts it in \((\mathcal E_2)_r\).
+
+Interchanging the two algebras proves equality of their right algebras and right multiplication operators. Their right involution is the restriction of the same \(F\). Thus their right products agree as well. Taking the left dual of this identical right algebra gives the same full left algebra, by [two-step dualization](../../OA-MOD/OA-MOD-WH.html#oa-mod-wh-04). Fullness of both \(\mathcal E_i\) proves (A10a), including multiplication and involution. The left multipliers agree because they act identically on this common dense algebra. \(\square\)
+
+Notice the domain argument in (A10d): graph convergence controls the pairing through the fixed bounded \(R_r^{(2)}\). No operator-norm bound or strong convergence for the sequence \(L_{c_n}^{(2)}\) is required.
+
+Here is how the criterion applies to the reverse assembly used above. Let \(\mathcal E_1\) be the original full Hilbert algebra of \(\varphi\), and let \(\mathcal E_2\) be the integral of the constructed full fibre algebras. The latter is full by the full-fibres implication in DI. The construction starts with the actual countable left and right graph cores of \(\mathcal E_1\), decomposes their multiplication operators, and defines the fibre products on these core representatives. Localize those sections on finite-measure sets where their vector, involution and multiplier norms are bounded, include their further bounded measurable scalar multiples, and take their complex star algebra \(\mathcal C\).
+
+Central projections preserve \(\mathcal E_1\) and its involution graph: the [central-domain identity](../../OA-MOD/OA-MOD-HAP.html#central-elements-preserve-both-involution-domains) gives \(S(q_Ea)=q_ESa\). The norm bounds put the same localized sections in \(\mathcal E_2\). Their products and involutions agree by the defining fibre identities. For each such section, its two left multipliers agree on the fibrewise dense chosen core, hence as bounded fibre operators and as their integrals.
+
+The core has the required two graph-density properties. In the original algebra, increasing the localization sets recovers each original graph-core vector and its involution in Hilbert norm. In the reconstructed integral, the localized pairs are graph fundamental: after linearizing the involution in \(\overline K\oplus K\), orthogonality to all bounded scalar localizations forces fibrewise orthogonality to every countable graph-core pair. It therefore forces the orthogonal vector to be zero. This is the graph-localization argument proved in [DI's integral construction](../../OA-MOD/OA-MOD-DI.html#oa-mod-di-07). Consequently (A10a) identifies the original and reconstructed full algebras with their actual multiplication.
+
+**A scalar test of the premise.** For each real \(c>0\), give \(K=\mathbb C\), with its usual inner product, the product and involution
+\[
+ a\mathbin{\cdot_c}b=cab,\qquad a^{\sharp_c}=\overline a.
+ \tag{A10e}
+\]
+Associativity is immediate, and
+\(\langle a\cdot_c b,d\rangle
+=\langle b,a^{\sharp_c}\cdot_c d\rangle\)
+because \(c\) is real. Every left multiplier is the bounded scalar \(L_a^{(c)}=ca\); every vector is a product, since \(z=(1/c)\cdot_c z\). Thus this is a left Hilbert algebra. Its right algebra and its second dual are all of \(\mathbb C\), with the same product, so it is full. For every \(c\), its closed involution is conjugation, its modular operator is \(1\), and its represented von Neumann algebra is \(\mathbb C1\). Nevertheless
+\[
+ 1\cdot_1 1=1,\qquad 1\cdot_2 1=2.
+ \tag{A10f}
+\]
+The two algebras cannot share a dense subalgebra with identical represented multiplication: any nonzero \(a\) has \(L_a^{(1)}=a\) and \(L_a^{(2)}=2a\). The common represented core in the central construction supplies precisely this additional information.
+
+### Normalize the weights and identify the base
 Write the initial base and weights as \((Y,\widetilde\nu)\) and \(\widetilde\varphi_y\), retaining a Borel realization \(Y\subseteq[0,1]\). Zero fibres and exceptional sets can first be removed. The all-positive evaluation formula [MW5](../../OA-MOD/OA-MOD-MW.html#every-positive-value-and-the-exact-finite-left-ideal), applied to the identity, gives
 \[
  r(y)=\widetilde\varphi_y(1),\qquad

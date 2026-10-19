@@ -25,7 +25,7 @@ Fix also $\sigma\in\operatorname{Aut}(M)$ which commutes with every member of
 $\mathscr A_\alpha$ and fixes $M^\alpha$ pointwise.  The eventual goal is to
 recover $\sigma$ from one element of $G$.
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
+*Original AI-written exposition and illustration sources: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
 <a id="oa-flow.l132.inputs"></a>
 ## Earlier results and the countability consequences

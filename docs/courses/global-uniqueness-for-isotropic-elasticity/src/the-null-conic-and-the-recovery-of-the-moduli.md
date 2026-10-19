@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-For each point \(x\), the comparison field \(G(x,\cdot)\) of [Matching the transports](matching-the-transports.md) is a holomorphic endomorphism field of the bundle \(\mathcal E=H\oplus\mathbb C\) over the null conic \(\mathcal C\). The bundle \(H\) of planes \(H_\theta=\theta^\perp\) has no holomorphic sections other than zero, and together with the transport equation this forces \(G=\mathrm{Id}\) [OpenAI-EL, Section 6]. The two transport equations then coincide. Their last entries determine the ratio \(k/\ell\), and their bottom rows give a second-order equation for \(\log\mu_1-\log\mu_2\) whose solutions are determined by their values on an open set. This proves Theorem 4.1 of The displacement-to-traction map.
+For each point \(x\), the comparison field \(G(x,\cdot)\) of [Matching the transports](matching-the-transports.md) is a holomorphic endomorphism field of the bundle \(\mathcal E=H\oplus\mathbb C\) over the null conic \(\mathcal C\). The bundle \(H\) of planes \(H_\theta=\theta^\perp\) has no holomorphic sections other than zero, and together with the transport equation this forces \(G=\mathrm{Id}\) [OpenAI-EL, Section 6]. The two transport equations then coincide. Their last entries determine the ratio \(k/\ell\), and their bottom rows give a second-order equation for \(\log\mu_1-\log\mu_2\) whose solutions are determined by their values on an open set. This proves Theorem 4.1 of [The displacement-to-traction map](the-displacement-to-traction-map.md).
 
 - Holomorphic sections over the null conic (Section 1).
 - Rigidity of the comparison (Section 2).
@@ -113,7 +113,7 @@ Suppose \(\eta=0\) on a nonempty open set \(V\subset U\), and fix \(x_0\in V\). 
 
 ## 4. Recovery of the moduli
 
-*Proof of Theorem 4.1 of The displacement-to-traction map.* Let the two pairs satisfy the hypotheses of that theorem with \(\Lambda_{\lambda_1,\mu_1}=\Lambda_{\lambda_2,\mu_2}\). Lemma 3.1 of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md) extends them to \(\mathbb R^3\), equal outside \(\Omega\) and constant outside a ball, and all constructions of the course apply to these extensions. By Proposition 4.1 of [Matching the transports](matching-the-transports.md) and Proposition 2.1, (2.1) holds for every \(x\) and every nonzero null \(\theta\).
+*Proof of Theorem 4.1 of [The displacement-to-traction map](the-displacement-to-traction-map.md).* Let the two pairs satisfy the hypotheses of that theorem with \(\Lambda_{\lambda_1,\mu_1}=\Lambda_{\lambda_2,\mu_2}\). Lemma 3.1 of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md) extends them to \(\mathbb R^3\), equal outside \(\Omega\) and constant outside a ball, and all constructions of the course apply to these extensions. By Proposition 4.1 of [Matching the transports](matching-the-transports.md) and Proposition 2.1, (2.1) holds for every \(x\) and every nonzero null \(\theta\).
 
 *The ratio \(k/\ell\).* The bottom-right entries of (2.1) give \(T_{1,\theta}=T_{2,\theta}\), that is, \(\theta\cdot\nabla\bigl(\log(k_1/\ell_1)-\log(k_2/\ell_2)\bigr)=0\) for every null \(\theta\). By Lemma 1.1(2) the gradient vanishes, so the difference is constant on \(\mathbb R^3\), and it is zero outside \(\Omega\). Hence \(k_1/\ell_1=k_2/\ell_2\). As \(m_j/\ell_j=1-k_j/\ell_j\) and \(k_j/m_j=(k_j/\ell_j)/(1-k_j/\ell_j)\), the functions
 \[
@@ -154,7 +154,7 @@ with coefficients smooth on \(\mathbb R^3\).
 
 *Conclusion.* The pairs agree on the nonempty open set \(\mathbb R^3\setminus\overline\Omega\), so \(\eta=0\) there. Lemma 3.1, applied to (4.3) on \(U=\mathbb R^3\), gives \(\eta=0\) on \(\mathbb R^3\), that is, \(m_1=m_2\). By (4.1), \(k_1=m_1e^{b_*}=m_2e^{b_*}=k_2\). Hence \(\mu_1=m_1=m_2=\mu_2\) and \(\lambda_1=k_1-m_1=k_2-m_2=\lambda_2\) on \(\mathbb R^3\), in particular on \(\overline\Omega\). \(\square\)
 
-Theorem 4.1 of The displacement-to-traction map is thereby proved from four named results of the literature: Hypotheses (BD) and (ER) of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md), Hypothesis (CE) of An augmented system and a Carleman estimate and Hypothesis (HF) of [Planar transport equations](planar-transport-equations.md). All other steps are proved in this course and in the lessons it names.
+Theorem 4.1 of [The displacement-to-traction map](the-displacement-to-traction-map.md) is thereby proved from four named results of the literature: Hypotheses (BD) and (ER) of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md), Hypothesis (CE) of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md) and Hypothesis (HF) of [Planar transport equations](planar-transport-equations.md). All other steps are proved in this course and in the lessons it names.
 
 ## 5. Exercises
 

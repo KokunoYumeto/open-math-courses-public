@@ -1,25 +1,28 @@
 # A smooth quadratic reduction with parameters
 
-Prerequisite companion to the stationary-phase lesson. This supplies the full local reduction needed
-between the quadratic calculation and the isolated/clean stationary-phase
-formulae. It retains the parameter scope of the earlier AN04-U001 Lemma 4.1
-and makes its inverse-function, elimination and signature steps explicit.
+This companion proves a signed quadratic normal form with smooth parameters,
+its critical-point Jacobian and the finite-chart consequence for compact
+parameter sets. Two exact families illustrate curved coordinates, zero
+coordinate pivots and the limitations of determinant bounds.
 
-The free human inputs are Lebl's *Basic Analysis II*, version 6.3,
-[§8.5](https://www.jirka.org/ra/html/sec_svinvfuncthm.html), and the
-Morse lemma in Guillemin–Sternberg's
-[13 January 2010 author draft](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf),
-§13.14.3, pp.455–457. The latter explains the parameter normal-form target;
-the proof below uses scalar elimination and the programme's inverse theorem.
-It does not import an unproved ODE flow. The supporting completions P2–P5 are
-in [the preceding companion](prerequisite-completions.md); the Gaussian and
-quadratic arguments Q1–Q9 are in
-[the analytic module](quadratic-stationary-phase.md).
+Mathematical sources: Jiří Lebl, *Basic Analysis II*, theorem numbering from
+version 6.3 (15 May 2026), gives the [inverse theorem and proof](https://www.jirka.org/ra/html/sec_svinvfuncthm.html#sec_svinvfuncthm-2-9)
+and the [implicit theorem and proof](https://www.jirka.org/ra/html/sec_svinvfuncthm.html#sec_svinvfuncthm-3-12),
+Theorems 8.5.1 and 8.5.6. Guillemin–Sternberg's [13 January 2010 author draft](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf),
+§13.14.3, pp. 455–457, presents the classical Morse lemma and its smooth
+parameter variant. The proof here uses scalar elimination, the smooth
+inverse upgrade and the integral Taylor formula.
 
-This exposition follows the cited Lebl material. Original text: public domain (CC0).
-The Guillemin–Sternberg source is cited for mathematics actually read, without
-copying its text or distributing its PDF. The selected local Morse inputs are
-bound in `integration-proof-chain.json`.
+The programme proof index locates the local arguments;
+the human-proof references identify
+external statements and proofs, which retain their own terms. The
+[finite-dimensional companion](prerequisite-completions.md) gives P1–P5;
+the [compact-integral companion](integration-prerequisite-completions.md)
+gives mixed derivatives and parameter integration. Gaussian and quadratic
+arguments are in the [analytic module](quadratic-stationary-phase.md).
+
+Original programme exposition: CC0 to the extent rights exist. Cited human
+works are external mathematical sources and retain their own terms.
 
 ## M1. Parameter Morse lemma and its Jacobian
 
@@ -46,11 +49,17 @@ The signs are independent of \(s\) on this neighbourhood. If
  \tag{M1.2}
 \]
 
-**Programme inputs.** The \(C^1\) inverse and implicit proofs already
-present in Lebl's programme §8.5; the smooth upgrade P3; P4–P5; the mixed
-derivative and compact-integral completions P11–P12; and the root and
-compactness inputs in the earlier exact chains. These exact inputs are not
-replaced by the two external human-source links above.
+**Proof inputs.** The freely accessible \(C^1\) inverse and implicit proofs linked
+above supply the base theorems. Their [smooth parameter upgrade P3](prerequisite-completions.html#proof-P3),
+[matrix inverse P2](prerequisite-completions.html#proof-P2),
+[Schur calculation P4](prerequisite-completions.html#proof-P4) and
+[congruence and determinant argument P5](prerequisite-completions.html#proof-P5)
+are written locally. The [mixed-partial identity P11.2](integration-prerequisite-completions.html#proof-P11.2-bridge),
+[Taylor formula P12.6](integration-prerequisite-completions.html#proof-P12.6)
+and [joint parameter integration P12.7](integration-prerequisite-completions.html#proof-P12.7)
+give the differential and integral steps. The [positive square root P8](elementary-proof-completions.html#proof-P8-smooth)
+supplies existence and smoothness; finite compactness
+supplies the compact-parameter step.
 
 For \(n=0\), the coordinate space is a singleton. Take \(x_c(s)=x_0\),
 \(F(0,s)=x_0\), and \(c(s)=\phi(x_0,s)\). The quadratic sum and
@@ -221,3 +230,91 @@ in the others. Curves are numerical samples of these exact formulae,
 not numerical proofs. Reproducible source: `figures/draw_parameter_morse.py`.
 The example is constructed here from the parameter normal-form mechanism
 in M1, with the free human sources identified at the start of this module.
+
+## M4. A zero-diagonal pivot and a determinant bound
+
+**Exercise.** For every real parameter \(s\), consider
+
+\[
+ \psi_s(x,y)=xy+\tfrac{s}{2}y^2,\qquad
+ H_s=\begin{pmatrix}0&1\\1&s\end{pmatrix},\qquad \det H_s=-1.
+ \tag{M4.1}
+\]
+
+Find its critical point and a signed Morse chart. Explain why the two
+coordinate directions cannot supply the first pivot when \(s=0\), and
+why a uniform determinant bound does not give uniform chart derivatives
+on the whole parameter line. Throughout this exercise,
+\(\|D\|_2=\sup_{|z|=1}|Dz|\) is the Euclidean operator norm.
+
+**Solution.** The gradient is \((y,x+sy)\), so the only critical point
+is the origin. At \(s=0\) both diagonal Hessian entries vanish, but
+\((e_1+e_2)^TH_0(e_1+e_2)=2\). This is the nonzero direction used in
+M1. Its quadratic value for general \(s\) is \(2+s\); that particular
+pivot is suitable near zero and vanishes at \(s=-2\), although the full
+Hessian is invertible there too.
+
+Put \(u=x+sy/2\) and \(v=y\). Then \(\psi_s=uv\). Taking
+\(u=(z_1+z_2)/\sqrt2\) and \(v=(z_1-z_2)/\sqrt2\) gives the global,
+jointly smooth chart
+\[
+ F_s(z)=\frac1{\sqrt2}\bigl((1-s/2)z_1+(1+s/2)z_2,\ z_1-z_2\bigr),
+ \qquad \psi_s(F_s(z))=\tfrac12(z_1^2-z_2^2).
+ \tag{M4.2}
+\]
+Its inverse is \(z_1=(x+(s/2+1)y)/\sqrt2\),
+\(z_2=(x+(s/2-1)y)/\sqrt2\). Direct expansion gives
+\(\det D_zF_s=-1\), so its absolute Jacobian agrees with M1.2 for
+every \(s\). The Hessian has signature zero, since it is congruent to
+\(J=\operatorname{diag}(1,-1)\).
+
+There cannot be a uniform first-derivative bound for any such choice of
+Morse charts over all real \(s\). Indeed, let \(D\) be the derivative at
+zero of any chart with target \(J\). The differentiated normal form gives
+\(D^TH_sD=J\). Inverting and multiplying yields
+\[
+ H_s^{-1}=\begin{pmatrix}-s&1\\1&0\end{pmatrix}=DJD^T.
+\]
+For \(r=D^Te_1\), the upper-left entry says
+\(-s=r^TJr\), whence \(|s|\leq |r|^2\). The row \(r^T\) is nonzero
+because \(D\) is invertible. Testing \(D\) on the unit vector \(r/|r|\)
+gives a first coordinate equal to \(|r|\), and hence
+\[
+ \|D\|_2\geq |r|\geq\sqrt{|s|}.
+ \tag{M4.3}
+\]
+For every proposed finite bound \(B>0\), choosing \(|s|>B^2\)
+contradicts it. Thus even the constant value \(|\det H_s|=1\) is
+insufficient on a noncompact parameter set. On each compact parameter
+interval the explicit chart and its inverse do have bounded derivatives
+of each fixed order on compact coordinate sets, as M2 states.
+
+For the displayed chart write \(D_s=D_zF_s=A_sR\), where
+\(A_s=\left(\begin{smallmatrix}1&-s/2\\0&1\end{smallmatrix}\right)\)
+and \(R=2^{-1/2}\left(\begin{smallmatrix}1&1\\1&-1\end{smallmatrix}\right)\)
+is orthogonal. The matrix \(A_s^TA_s\) has determinant \(1\) and trace
+\(2+s^2/4\). Its larger eigenvalue is
+\(1+s^2/8+|s|\sqrt{s^2+16}/8\), by the quadratic formula.
+Orthogonal diagonalization Q5 shows that the square of the operator norm
+is this larger eigenvalue. Taking its positive square root gives
+\[
+ \|D_s\|_2=\frac{\sqrt{s^2+16}+|s|}{4}.
+ \tag{M4.4}
+\]
+This calculation also fixes the meaning of the plotted norm; it is not
+an entrywise or Frobenius norm. \(\square\)
+
+![A unit circle, its Morse-coordinate image and exact chart-norm bounds](figures/parameter-morse-pivot-norms.png)
+
+**Figure 3.** The first two panels show the unit circle and its image
+under \(F_4\), with the coordinate vectors and their images labelled.
+The last panel plots the exact norm M4.4 of the displayed chart, the
+lower bound M4.3 valid for every such chart, and the constant absolute
+Jacobian \(1\). Its parameter range is \([-8,8]\). Curves are numerical
+samples of the exact formulae; the proofs are above. Reproducible source:
+[parameter-morse-pivot-norms.py](figures/parameter-morse-pivot-norms.py);
+[vector illustration](figures/parameter-morse-pivot-norms.svg).
+
+*Worked exercise and Figure 3: GPT-6.1 Sol (OpenAI), Ultra. Original
+programme contribution: CC0 to the extent rights exist. Human sources
+and plotting software retain their own terms.*

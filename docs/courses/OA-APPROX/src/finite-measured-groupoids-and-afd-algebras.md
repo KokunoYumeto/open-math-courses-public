@@ -4,7 +4,7 @@
 
 Finite equivalence classes give matrix algebras with a measurable center. They need not give finite-dimensional algebras. To obtain finite-dimensional approximation, one must also discretize that center. We carry out both steps and prove that an ergodic principal measured AF groupoid of type \(\mathrm{II}_1\) has an AFD factor of type \(\mathrm{II}_1\).
 
-We use standard Borel spaces, countable separating families, measure completion, monotone convergence and Hilbert-space operator theory. The injective-image input is the exact Lusin–Souslin Theorem 3.6 and Polish topology refinement F4 from *Polish spaces and standard Borel spaces*, already used in the [fullness lesson](central-sequences-and-free-group-factors.md). We explain its needed Borel-map version below. The finite-trace local AFD criterion and separable uniqueness theorem are proved in [Hyperfinite finite factors](hyperfinite-finite-factors.md). General modular weights or expectations are not needed for the kernel construction.
+We use standard Borel spaces, countable separating families, measure completion, monotone convergence and Hilbert-space operator theory. The injective-image input is [Lusin–Souslin, Theorem 3.6](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-05), with [Polish topology refinement, Theorem 2.2](../../foundations-of-von-neumann-algebras/support/polish-and-effros-spaces.html#oa-fnd-ef-02). Section 2 derives the needed Borel-map version; Section 8 gives the counting and operator-model details. The finite-trace local AFD criterion and separable uniqueness theorem are proved in [Hyperfinite finite factors](hyperfinite-finite-factors.md). General modular weights or expectations are not needed for the kernel construction.
 
 The freely readable equivalence-relation construction is Anantharaman–Popa, §1.5. We use the type \(\mathrm{II}_1\) hypothesis to choose an equivalent invariant probability measure; we do not infer invariance from quasi-invariance alone. The AF exhaustion and its fixed finite class sizes are given hypotheses.
 
@@ -20,7 +20,7 @@ Its source counting measure relative to a probability measure \(\mu\) is
 \nu(E)=\int_X\#\{x:(x,y)\in E\}\,d\mu(y).
 \tag{2}
 \]
-The measured-relation setup includes measurability of source counting functions for Borel arrow sets and of countable-relation saturations. These are countable-section inputs; the finite-class labels below do not by themselves prove them for an arbitrary countable relation. Complete proofs of these Borel inputs are not established in these lessons.
+The measured-relation datum includes the source-counting measure (2) and its measurable counting functions. The conull AF model constructed below has explicit countably many stage graphs. Section 8 proves counting and saturation measurability on that model directly from those graphs. We use the given measure to pass to the conull model; we do not assume a selection theorem for an arbitrary countable relation.
 
 Invariance means that \(\nu\) is unchanged by the flip \((x,y)\mapsto(y,x)\). Equivalently, every Borel partial bijection whose graph lies in \(\mathcal R\) preserves the restricted measure. The forward implication follows by comparing its graph and inverse graph over any Borel subset of its domain. The converse follows by decomposing the relation into countably many such graphs; our finite-class labels below provide that decomposition in the AF case.
 
@@ -61,11 +61,37 @@ X=A_1\sqcup\cdots\sqcup A_k
 \]
 such that each \(A_i\) meets every class once. With \(Y=A_1\), there are Borel isomorphisms \(\phi_i:Y\to A_i\), with \(\phi_1=\operatorname{id}_Y\), which list each class.
 
-**Proof.** A countable separating family embeds \(X\) injectively and Borel measurably into the Cantor space by its membership bits. The preceding injective-image fact supplies a Borel order on \(X\), obtained from the lexicographic order of those bit sequences. Every finite class has a unique increasing listing.
+**Proof.** Choose a countable Borel family \((C_n)\) separating the points of \(X\). Give two distinct points the order \(x\prec y\) when, at the first index where their membership bits differ, \(x\notin C_n\) and \(y\in C_n\). This is a strict linear order. Its graph is Borel: it is the countable union, over that first index, of the Borel conditions that all earlier bits agree and the two indicated bits differ. Every nonempty finite subset has a unique least element in this order. If \(X\) is empty, take all the sections and coordinate maps to be empty.
 
-Let \(T\subset X^k\) consist of the increasing \(k\)-tuples all of whose entries are equivalent. It is Borel. Each coordinate projection \(p_i:T\to X\) is injective: an entry determines its entire finite class, and hence its unique increasing tuple. The images \(A_i=p_i(T)\) are Borel and partition \(X\). The maps
-\(\phi_i=p_i(p_1|_T)^{-1}\)
-are Borel bijections and list the class as claimed. \(\square\)
+We first produce one Borel section on a Borel subset \(Z\subseteq X\) on which the restricted relation has classes of one fixed size \(m\geq1\). Use a compatible Polish topology on \(X\). The complete [analytic-image and Borel-set facts and separation theorem](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html#2-souslin-sets), Proposition 2.2, Corollary 2.6 and Theorem 2.4, have the following consequences: a coordinate projection of a Borel subset of a finite power of \(X\) is analytic, and disjoint analytic subsets of \(X\) can be separated by a Borel set. The first assertion follows by viewing the Borel set as a continuous Polish image and composing with the coordinate projection. These facts apply to Borel subsets \(Z\) of the ambient \(X\) without requiring their relative topology to be Polish.
+
+Let
+\[
+ U_Z=\{x\in Z:\text{some }y\in Z\text{ has }x\mathcal R y
+                                      \text{ and }y\prec x\}.
+\]
+This is analytic, as the projection of its displayed Borel witness relation. For the opposite case, consider the Borel set of witnesses
+\[
+ \begin{split}
+ T_{Z,m}=\{(x,y_1,\ldots,y_{m-1})\in Z^m:\;&
+       x,y_1,\ldots,y_{m-1}\text{ are pairwise distinct},\\
+       &x\mathcal R y_j\text{ and }x\prec y_j
+                                      \ (1\leq j<m)\}.
+ \end{split}
+\]
+Write \(V_Z\) for its projection onto the first coordinate. When \(m=1\), this definition means \(T_{Z,1}=Z\) and \(V_Z=Z\). For any \(m\), the set \(V_Z\) is analytic. A witness lists exactly the other \(m-1\) points of the restricted class, so it exists precisely when \(x\) is its least point. Thus
+\[
+ U_Z\cap V_Z=\varnothing,\qquad U_Z\cup V_Z=Z.
+\]
+Separation gives a Borel set \(B\subseteq X\) containing \(V_Z\) and disjoint from \(U_Z\). Hence \(B\cap Z=V_Z\), so \(V_Z\) itself is Borel. It meets every restricted class exactly once. The exact class size is used in the exhaustive-witness implication; an upper bound alone would not justify it.
+
+Start with \(Z_1=X\). Take \(A_1=V_{Z_1}\), remove it, and apply the same construction to \(Z_2=X\setminus A_1\), whose restricted classes have size \(k-1\). Continue for \(k\) steps. At step \(i\), the Borel set \(Z_i=X\setminus\bigcup_{j<i}A_j\) has exactly \(k-i+1\) members of each original class, so \(A_i=V_{Z_i}\) is Borel and selects one of them. After the last step nothing remains. The sets \(A_i\) therefore form the required partition and each meets every original class once.
+
+Put \(Y=A_1\). For each \(i\), the Borel graph
+\[
+ H_i=\{(t,x)\in Y\times A_i:t\mathcal R x\}
+\]
+has both coordinate maps bijective onto their indicated ranges. The injective Borel-map theorem proved above makes each coordinate map a Borel isomorphism. Composing the inverse of the first coordinate map with the second gives a Borel isomorphism \(\phi_i:Y\to A_i\). For \(i=1\), equivalence and the one-point section property give \(H_1=\{(t,t):t\in Y\}\), so \(\phi_1=\operatorname{id}_Y\). These maps list exactly each class. \(\square\)
 
 For an invariant measure, the maps \(\phi_i\) preserve its restriction on \(Y\), so
 \[
@@ -307,7 +333,7 @@ This section supplies the scalar integration, measurable partition, and matrix a
 \|F\|=\operatorname*{ess\,sup}_{t\in Y}\|F(t)\|_{\mathrm{op}},\qquad
 \|F\|_{2,\tau}^2=\frac1k\int_Y\sum_{i,j=1}^k|F_{ij}(t)|^2\,d\beta(t).
 \]
-The argument applies to any probability measure space, including one with atoms and one whose sigma-algebra is completed. The Borel labeling, the faithful normal operator model, and the trace construction that establish (15)-(16) keep their separate prerequisite status.
+The argument applies to any probability measure space, including one with atoms and one whose sigma-algebra is completed. Sections 2, 3 and 8 establish the Borel labels, the faithful normal operator model and the trace construction in (15)-(16).
 
 ### Bounded scalar integration
 
@@ -407,12 +433,74 @@ Expanding the trace square gives
 \]
 so this averaging is also contractive in the tracial \(2\)-norm. These conclusions concern the finite-partition map constructed here.
 
-The scalar finite-bin method can be compared with Sheldon Axler, [*Measure, Integration & Real Analysis*](https://measure.axler.net/MIRA.pdf), author revision of 12 June 2026, Theorem 2.89, printed p.65 / PDF p.80. The complete proof on that page constructs measurable simple approximants and proves uniform convergence for bounded real functions. The scalar integration and matrix arguments above are independently written. The Borel, operator-model, trace, Kaplansky, concrete-predual, and type foundations retain their separately stated status.
+The scalar finite-bin method can be compared with Sheldon Axler, [*Measure, Integration & Real Analysis*](https://measure.axler.net/MIRA.pdf), author revision of 12 June 2026, Theorem 2.89, printed p.65 / PDF p.80. The complete proof on that page constructs measurable simple approximants and proves uniform convergence for bounded real functions. Section 7 gives the scalar integration and matrix arguments, including the complex entries and every matrix amplification. Sections 2, 3 and 8 and the linked operator foundations supply the Borel, representation and topology inputs.
+
+## 8. Counting, diagonal closure and the measure model
+
+The measured groupoid includes the source-counting measure (2). The passage to the exact conull AF model in Section 1 uses this given measure and its flip invariance. Once that model is chosen, the finite labels give the following direct formulas for every counting operation in the proof.
+
+### Counting through disjoint stage graphs
+
+List all the pair-coordinate graphs of all the finite stages as \(G_1,G_2,\ldots\), including the diagonal. They cover the relation. Replace \(G_j\) by
+\[
+P_j=G_j\setminus\bigcup_{i<j}G_i.
+\]
+These sets are disjoint Borel graphs of partial Borel bijections. Indeed, a Borel subset of the graph of a Borel bijection is obtained by restricting its domain to the inverse image of that subset under its Borel graph map. Its domain and range are Borel, since the bijection and its inverse are Borel. Write the restricted bijection as \(\psi_j:U_j\to V_j\), with graph \(P_j=\{(\psi_j(y),y):y\in U_j\}\).
+
+For a Borel arrow set \(E\), put
+\[
+U_j(E)=\{y\in U_j:(\psi_j(y),y)\in E\}.
+\]
+Each set on the right is Borel, and disjointness gives the exact, possibly infinite, identity
+\[
+\#\{x:(x,y)\in E\}=\sum_j1_{U_j(E)}(y).
+\]
+Thus the counting function is measurable, and monotone convergence defines its integral. For a Borel set \(A\subset X\), its saturation is
+\[
+[A]_{\mathcal R}=\bigcup_j\psi_j(A\cap U_j),
+\]
+a Borel set. Images here are images under the stated partial Borel isomorphisms, rather than arbitrary projections. Invariance makes the saturation of a Borel null set null, by the calculation in Section 1. Every set in the completed sigma-algebra differs from a Borel set inside a Borel null set. Consequently saturation preserves measurability after completion, and the same formulas determine completed counting and kernel operations independently of representatives. In particular a completed arrow-null set has empty source fiber outside a null set, since its nonnegative counting function has integral zero. This justifies the almost-everywhere conventions for all the sums above.
+
+For invariance in the reverse direction in Section 1, apply preservation by \(\psi_j\) to the restriction \(U_j(E)\). The source integral on \(E\cap P_j\) is \(\mu(U_j(E))\), and the source integral on its flip is \(\mu(\psi_j(U_j(E)))\); these are equal. Sum over the disjoint pieces. The forward direction follows by the same calculation on one graph. No uniformization of an arbitrary countable relation enters this AF argument.
+
+### The diagonal is a normally represented von Neumann algebra
+
+For bounded measurable \(d\), multiplication by \(d(x)\) on \(H\) has norm at most \(\|d\|_\infty\). Its restriction to the diagonal vectors has the usual multiplication norm on \(L^2(X,\mu)\), so the norm is exactly \(\|d\|_\infty\), including when that norm is zero. For the lower bound, use \(1_A\Omega\) on a positive-measure set where \(|d|>\|d\|_\infty-\varepsilon\). Pullback along the first coordinate preserves null sets by flip invariance. Thus \(D_d\) is well-defined on almost-everywhere classes and faithful.
+
+We can verify weak closedness directly. If \(T\) lies in the weak operator closure of the diagonal operators, it commutes both with all \(D_d\) and with all right convolutions \(Q_f\). Put \(\eta=T\Omega\). Since \(D_d\Omega=Q_d\Omega\), these commutations give
+\[
+(d(x)-d(y))\eta(x,y)=0.
+\]
+A countable separating family makes \(\eta=h1_\Delta\). Commutation with \(D_{1_A}\), for every measurable \(A\), gives
+\[
+\int_A|h|^2\,d\mu=\|TD_{1_A}\Omega\|^2
+\leq\|T\|^2\mu(A).
+\]
+Testing the sets where \(|h|>\|T\|+1/m\) proves \(h\in L^\infty\) and \(\|h\|_\infty\leq\|T\|\). Both \(T\) and \(D_h\) commute with the right algebra and agree on \(\Omega\). Its dense right orbit therefore gives \(T=D_h\). This proves weak closedness, without an assumption that an arbitrary convergent net is norm bounded. Compressing by \(D_{1_Y}\) proves the diagonal-corner closedness used in (15). The finite matrix-unit reconstruction then proves the whole stage closedness.
+
+Here is also an all-net normality argument. Let \(0\leq d_a\uparrow d\) in \(L^\infty(X,\mu)\). It suffices to consider a common finite upper bound. Put \(s=\sup_a\int d_a\,d\mu\), choose indices with integrals tending to \(s\), and choose increasing upper bounds \(a_n\) for them. The pointwise limit \(d_0=\lim_n d_{a_n}\) has integral \(s\). For any \(a\), directedness implies \(\int\max(d_a,d_{a_n})\leq s\). Monotone convergence shows \(\int(d_a-d_0)_+=0\). Thus \(d_0\) is an essential upper bound for the net, and it equals its essential supremum \(d\). On \(H\), dominated convergence now gives \(D_{d_{a_n}}\to D_d\) strongly: the exceptional \(\mu\)-null set pulls back to a \(\nu\)-null set, and the square of the common bound times \(|\xi|^2\) is integrable. For \(a\geq a_n\), the pointwise inequality \(0\leq d-d_a\leq d-d_{a_n}\) gives the same vector estimate. Hence the entire net converges strongly to \(D_d\). The representation preserves every bounded increasing positive supremum and is normal. The finite corner extraction and matrix-unit reconstruction in (15) preserve this normality in both directions.
+
+### Equivalent probabilities and separability
+
+The density used in (4) can be constructed using only Hilbert space and finite integration. Given equivalent probabilities \(\mu,\mu'\), let \(\lambda=\mu+\mu'\). On the simple functions,
+\[
+\left|\int f\,d\mu\right|^2\leq\int|f|^2\,d\mu
+\leq\int|f|^2\,d\lambda.
+\]
+This functional extends to \(L^2(\lambda)\). Hilbert representation gives an integrable function \(r\) with \(\mu(A)=\int_A r\,d\lambda\) for every measurable \(A\). These identities, tested on real and imaginary level sets, give \(0\leq r\leq1\); also \(\mu'(A)=\int_A(1-r)\,d\lambda\). Equivalence implies \(0<r<1\) almost everywhere: \(\{r=0\}\) is \(\mu\)-null and hence \(\lambda\)-null, and similarly for \(\{r=1\}\). Therefore
+\[
+h=\frac{1-r}{r}>0,\qquad \mu'(A)=\int_A h\,d\mu.
+\]
+The integral identity follows first for nonnegative simple functions and then by monotone convergence; it applies to \(h1_A\) by truncation. Applying the counting formula to each disjoint graph gives \(d\nu'/d\nu(x,y)=h(y)\). The map in (4) is consequently an onto isometry, with inverse multiplication by \(h(y)^{1/2}\), and its stated intertwining holds on a dense subspace and then everywhere.
+
+Finally, a finite measure on a countably generated Borel space has separable \(L^2\). The algebra of finite Boolean combinations of a countable generator is countable. The sets approximable in measure by that algebra form a sigma-algebra: complements preserve the approximation error, finite unions add errors, and a countable union is first approximated by a finite union using continuity from below of the finite measure. Thus every Borel set is approximable. Completion changes sets only by null sets. Simple functions with rational real and imaginary coefficients from that countable algebra are dense in \(L^2\), by truncation and simple approximation. Apply this to each finite-measure standard Borel stage \(\mathcal R_n\). Their dense increasing union proves separability of \(H\). The full concrete coefficient-series predual theorem gives \(M_*\) as a quotient of the trace-class space on \(H\); finite-rank operators formed from a countable dense set make that space separable. This supplies the predual assertion in Theorem 5.2.
+
+The scalar integration and Hilbert tools in this section are proved in the collected scalar, spectral and concrete predual foundations. The complete bounded-density argument is BD1–5 there, and the coefficient-series and quotient-predual construction is CP1–6. The topology refinements for Section 2 are [Theorem 2.2 and its preceding elementary metric proofs](../../foundations-of-von-neumann-algebras/support/polish-and-effros-spaces.html#oa-fnd-ef-02); the separation and injective-image proofs are [Theorems 2.4 and 3.6](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-05). These are distinct from the finite-factor containment and uniqueness argument in [Theorem 5.1](../hyperfinite-finite-factors.html#theorem-5-1).
 
 ## References and proof scope
 
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, §1.5.2, printed pp.19–21 (PDF pp.25–27), uses the same invariant source-counting measure and convolution construction. Its operator and tracial-vector assertions omit some details; Section 3 supplies them here in full. The full Proposition 1.5.5 proof, p.21, gives the actual center/factor comparison. Appendix B.3 and B.5 state the injective-image and countable-section inputs; complete transitive free proofs of those foundations remain pending. Section 12.5, p.209, assumes a nonatomic Lebesgue probability space; Section 5 here derives nonatomicity from its stated measured type hypothesis.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, §1.5.2, printed pp.19–21 (PDF pp.25–27), uses the same invariant source-counting measure and convolution construction. Its operator and tracial-vector assertions omit some details; Section 3 supplies them here in full. The full Proposition 1.5.5 proof, p.21, gives the actual center/factor comparison. Appendix B.3 and B.5 state the injective-image and countable-section inputs. The analytic-image, Borel-set, separation, topology-refinement and injective-image proofs used here are linked in Sections 2 and 8; the AF stage-graph formulas in Section 8 supply the required counting operations. Section 12.5, p.209, assumes a nonatomic Lebesgue probability space; Section 5 here derives nonatomicity from its stated measured type hypothesis.
 
 Alain Connes, Jacob Feldman and Benjamin Weiss, [*An amenable equivalence relation is generated by a single transformation*](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B3AB853E37B8B8C77565C2AABC7E47F1/S014338570000136Xa.pdf/an-amenable-equivalence-relation-is-generated-by-a-single-transformation.pdf), *Ergodic Theory and Dynamical Systems* 1(4) (1981), 431–450, §4, pp.436–439, gives invariant-mean and regular Cartan context. Its converse on p.439 is explicitly a sketch. Lemma 8 is in §5, pp.440–442; Lemma 9 and Theorem 10 are in §6, pp.442–444. Theorem 10 obtains a finite-subrelation exhaustion from amenability; this lesson already assumes an AF exhaustion with fixed finite class sizes and does not use that implication. Both comparisons concern principal equivalence-relation groupoids.
 
-The finite labeling, matrix-field approximation and nonfactor topology bridge are complete local arguments relative to the declared Borel, operator and trace-class inputs. Kaplansky density, concrete preduals, type classification and the exact local hyperfinite uniqueness prerequisites remain pending full freely accessible closure. No source expression was imported.
+The proof proceeds from finite Borel class coordinates to matrix fields, then discretizes their measurable centers. The collected bounded-density and concrete predual proofs justify the operator closures and bounded topology passage. The finite-factor containment and uniqueness theorem supplies the final identification with the tracial matrix product.

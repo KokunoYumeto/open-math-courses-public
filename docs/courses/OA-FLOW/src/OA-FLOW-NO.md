@@ -271,6 +271,6 @@ Thus \(t_f=I\) on the original GNS space. Nevertheless,
 \]
 The compressed functional \(f_e(a)=a_{11}\) has the same \(t_f\), proving explicitly why unrestricted \(f\mapsto t_f\) need not be injective and why NO12 must use \(f(e)\).
 
-These finite examples are proved locally and are not substitutes for the arbitrary-net construction in NO. For the related positive right-multiplier mechanism see the freely accessible [Combes, Theorem 2.13 and Proposition 2.14, printed pp.55–57](https://www.numdam.org/item/CM_1971__23_1_49_0.pdf#page=8), whose earlier imports have been replaced in [WR](OA-FLOW-WR.md#oa-flow.wr.4) and NO. This figure, reproducible source and example proof are CC0-1.0 to the extent of rights held.
+These finite examples are proved locally and are not substitutes for the arbitrary-net construction in NO. For the related positive right-multiplier mechanism see the freely accessible [Combes, Theorem 2.13 and Proposition 2.14, printed pp.55–57](https://www.numdam.org/item/CM_1971__23_1_49_0.pdf#page=8). The prerequisites for the argument here are proved in [WR](OA-FLOW-WR.md#oa-flow.wr.4) and NO. This figure, reproducible source and example proof are CC0-1.0 to the extent of rights held.
 
 [Editable SVG](../assets/general-opposite/assets/general-opposite-support.svg); [exact numerical data](../assets/general-opposite/general-opposite-figure-numerics.json).

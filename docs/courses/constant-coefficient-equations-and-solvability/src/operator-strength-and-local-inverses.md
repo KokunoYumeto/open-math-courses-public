@@ -4,7 +4,7 @@
 
 The degree of a polynomial does not by itself measure the regularity of its equation. The operators with symbols \(\xi_1^2+i\xi_2\) and \(\xi_1^2+\xi_2^2\) both have degree two, but they control different derivatives. The relevant comparison uses all derivatives of the symbols. We develop that comparison, prove that it is forced by solvability with regularity, and build an inverse on a bounded open set without a boundary smoothness assumption.
 
-The prerequisites are [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md), [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md), and [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md). We use Plancherel's theorem to identify \(B_{2,1}\) with \(L^2\). Basic references are Grubb's open notes [Grubb], Melrose's open differential-analysis course [Melrose], and Malgrange's existence and approximation paper [Malgrange].
+The prerequisites are [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md), [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md), and [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md). We use Plancherel's theorem to identify \(B_{2,1}\) with \(L^2\). Basic references are Grubb's open notes [Grubb], Melrose's open differential-analysis course [Melrose], and Malgrange's existence and approximation paper [Malgrange]. For singularity directions, we use the Fourier definition and cutoff lemma in [Wavefronts of regular kernels](wavefronts-of-regular-kernels.md#cutoffs-and-the-projection-onto-singular-support).
 
 Throughout, \(P\ne0\), \(D=-i\partial\), and
 \[
@@ -28,7 +28,7 @@ The zero polynomial is weaker than every nonzero polynomial. Two nonzero polynom
 \]
 Every polynomial weaker than a polynomial of degree \(m\) has degree at most \(m\). The set of weaker polynomials is a finite-dimensional complex vector space.
 
-**Proof.** Equation (1) immediately implies (2). Conversely, let \(d=\deg Q\). On the finite-dimensional space of polynomials of degree at most \(d\), the supremum over the real unit ball is a norm: if the supremum is zero, the polynomial vanishes on an open set and all its coefficients vanish. Equivalence of finite-dimensional norms gives
+**Proof.** The zero polynomial satisfies both conditions. For a nonzero polynomial, equation (1) immediately implies (2). Conversely, let \(d=\deg Q\). On the finite-dimensional space of polynomials of degree at most \(d\), the supremum over the real unit ball is a norm: if the supremum is zero, the polynomial vanishes on an open set and all its coefficients vanish. Equivalence of finite-dimensional norms gives
 \[
 \left(\sum_\alpha|\partial^\alpha q(0)|^2\right)^{1/2}
 \leq C_d\sup_{|h|\leq1}|q(h)|.
@@ -103,6 +103,73 @@ E*P(D)u=P(D)E*u=\delta_0*u=u.
 Apply Theorem 2.1 to \(f=P(D)u\). This puts \(u\) in the local space in (4). Since its support is compact, its local and global weighted memberships agree, proving (6). For (7), first use (6), then the cutoff estimate in \(B_{p,kS_P}\), and then the forward implication of (6). \(\square\)
 
 Compact support is a real hypothesis here. A homogeneous solution can be irregular in uncontrolled directions, as the final exercises of the regular-kernels lesson show. Equation (6) should not be applied to an arbitrary global distributional solution.
+
+### Which singularities a convolution can carry
+
+The gain in Theorem 2.1 has the best possible weight in the same scale. Indeed, for any solution \(v\in B_{p,kS_P}^{\mathrm{loc}}\), the local differential-operator estimate gives \(P(D)v\in B_{p,k}^{\mathrm{loc}}\). If that right-hand side has compact support, its local and global memberships agree. Thus the condition on the datum in Theorem 2.1 is also necessary for a solution in that scale. This does not force every solution to have that regularity.
+
+The wavefront estimate has a different character: it is an upper bound and can be strict.
+
+**Theorem 2.3.** If \(u\in\mathcal D'(\mathbb R^n)\) and \(f\in\mathcal E'(\mathbb R^n)\), their convolution satisfies
+\[
+ \operatorname{WF}(u*f)\subseteq
+ \{(a+b,\xi):(a,\xi)\in\operatorname{WF}(u),\
+                    (b,\xi)\in\operatorname{WF}(f)\}.
+ \tag{WF1}
+\]
+Every covector in this formula is nonzero. In particular, for the averaging fundamental solution \(E_\rho(P)\),
+\[
+ \operatorname{WF}(E_\rho(P)*f)\subseteq
+ \{(a+b,\xi):(a,\xi)\in\mathcal F_P,\
+                    (b,\xi)\in\operatorname{WF}(f)\},
+ \tag{WF2}
+\]
+where \(\mathcal F_P\) is the closed localization carrier in [Wavefronts of regular kernels](wavefronts-of-regular-kernels.md#the-canonical-upper-bound). Both formulas allow compact distributions of arbitrary finite order.
+
+**Proof for compact factors.** First let \(u\) also have compact support. Write \(A=\operatorname{supp}u\), \(B=\operatorname{supp}f\). Empty support gives zero convolution. Fix \((x_0,\xi_0)\) outside the right side of (WF1).
+
+For each \((a,b)\in A\times B\) with \(a+b=x_0\), at least one of \((a,\xi_0)\), \((b,\xi_0)\) is regular for its corresponding distribution. Choose product neighborhoods \(U\times V\) of that pair so small that the regular factor has a cutoff equal to one on a neighborhood of the appropriate closure, and its localized transform decreases rapidly on a cone about \(\xi_0\). If \(a+b\ne x_0\), choose bounded product neighborhoods whose closed sums avoid a neighborhood of \(x_0\).
+
+These product rectangles cover the compact set \(A\times B\). Choose a finite subcover and a positive number \(\delta\) such that the radius-\(\delta\) ball about every point of \(A\times B\) lies in one of the chosen rectangles. Here is the elementary compactness argument: around each point first choose a ball whose fourfold enlargement lies in a cover rectangle; take a finite cover by the smaller balls, and let \(\delta\) be the minimum of their radii. A point in one smaller ball has its radius-\(\delta\) ball inside that ball's doubled enlargement.
+
+Choose finite smooth partitions \(\rho_l\) and \(\sigma_m\), each summing to one near \(A\) and \(B\) respectively, with supports in balls of radius less than \(\delta/10\), centered in those compact sets. Such partitions follow by choosing finitely many bump functions positive on a cover, dividing by their positive sum near the compact set, and multiplying by a compact cutoff equal to one there. Each product of two supports then lies in one of the chosen rectangles. Bilinearity gives the finite sum
+\[
+                     u*f=\sum_{l,m}(\rho_lu)*(\sigma_mf).
+ \tag{WF3}
+\]
+For the rectangles whose closed sums avoid \(x_0\), choose one common open neighborhood \(W\) of \(x_0\) avoiding all those finitely many sums. Their convolution terms vanish on \(W\), by the support rule for compact convolution.
+
+For every other rectangle, one localized factor is rapidly decreasing in a cone about \(\xi_0\). The cutoff lemma in [Wavefronts of regular kernels](wavefronts-of-regular-kernels.md#cutoffs-and-the-projection-onto-singular-support) shows that its further multiplication by \(\rho_l\) or \(\sigma_m\) retains rapid decrease on a smaller cone. Choose one cone about \(\xi_0\) with unit-sphere closure inside all the finitely many such cones.
+
+For compact factors the Fourier transform of convolution is the product:
+\[
+       \widehat{(\rho_lu)*(\sigma_mf)}
+                           =\widehat{\rho_lu}\,\widehat{\sigma_mf}.
+ \tag{WF4}
+\]
+Indeed, evaluate the compact convolution pairing on an exponential, inserting cutoffs equal to one near the two supports. Its factorization into the two exponential pairings gives (WF4). The definition and differentiation identities for this compact convolution are proved in [Proper convolution and compact support](../prerequisites/proper-convolution-and-compact-support.html).
+
+Each factor has a smooth Fourier transform of polynomial growth. One factor has arbitrary decay on the common cone, so their product does too. Multiply (WF3) by a compact smooth \(\chi\), supported in \(W\) and equal to one near \(x_0\). The vanishing terms disappear; the cutoff lemma preserves rapid decrease for every remaining term on a still smaller cone. The sum is finite, so \(\widehat{\chi(u*f)}\) decreases rapidly there. This proves (WF1) for compact factors.
+
+**Localizing the unrestricted factor.** For the general \(u\), fix a relatively compact neighborhood \(W_0\) of \(x_0\). Choose \(\psi\in C_c^\infty\) equal to one near the compact set \(\overline W_0-B\). On \(W_0\) one has
+\[
+                             u*f=(\psi u)*f.
+\]
+The compact-factor result applies to \(\psi u\). The same cutoff lemma gives \(\operatorname{WF}(\psi u)\subseteq\operatorname{WF}(u)\), so (WF1) follows near \(x_0\), hence everywhere. This uses no growth condition on \(u\). For (WF2), Theorem 2.1 of the wavefront lesson gives \(\operatorname{WF}(E_\rho(P))\subseteq\mathcal F_P\); substitute it in (WF1). \(\square\)
+
+**Example 2.4 (a strict wavefront bound).** In two variables let \(P(\xi)=\xi_1\) and \(f=D_1\delta_0\). For any fundamental solution \(E\),
+\[
+                          E*f=D_1E=\delta_0. \tag{WF5}
+\]
+The wavefront of \(f\) consists of every nonzero covector over zero. Its localized transform is \(\xi_1\); every open cone contains a ray on which that polynomial grows, so no direction is rapidly decreasing. The actual solution in (WF5) has only the same base point zero in its wavefront.
+
+For this \(P\), the computation (W1) in the wavefront lesson gives
+\[
+ \mathcal F_P=(\{0\}\times(\mathbb R^2\setminus\{0\}))
+                 \cup((\mathbb R e_1)\times(\mathbb R^*e_2)).
+ \tag{WF6}
+\]
+Thus the right side of (WF2) also contains vertical covectors over nonzero points of the horizontal axis. They are absent from the actual solution delta. This proves that the wavefront upper bound can be strict even for the particular averaging inverse. A shifted point datum \(f=\delta_b\), by contrast, gives \(E*f=E(\cdot-b)\) and exactly translates its wavefront, as follows directly from the translated cutoff Fourier transform.
 
 ## Why weaker operators are necessary
 
@@ -224,3 +291,4 @@ Then (12) gives a convergent Neumann series and the right inverse \(T(I+RT)^{-1}
 - [Grubb] Gerd Grubb, *Distributions and Operators*, open lecture-note versions, 2007–2008, sections on Fourier transformation and convolution. [Author's lecture-note index](https://web.math.ku.dk/~grubb/distribution.htm).
 - [Melrose] Richard Melrose, *Differential Analysis*, MIT OpenCourseWare, Fall 2004, sections on constant-coefficient operators and Sobolev estimates. [Open course](https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/).
 - [Malgrange] Bernard Malgrange, *Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution*, Annales de l'Institut Fourier **6** (1956), 271–355. [Original article](https://aif.centre-mersenne.org/articles/10.5802/aif.65/).
+- [Hörmander II] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Regular fundamental solutions, comparison of operators and local solvability.

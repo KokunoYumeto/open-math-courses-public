@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-We continue in the standing setting (S1)–(S6) of Gaussian first moments of partitions, Section 4. The bounds of [Rearrangement bounds for one cell](rearrangement-bounds-for-one-cell.md) and [Ehrhard concavity and the loss of one score](ehrhard-concavity-and-the-loss-of-one-score.md) concern one cell at a time. This lesson looks at the cell with the shortest moment and uses its moment identity to constrain how the other scores are correlated. The result is Corollary 3.1: two inequalities between the three largest normalized lengths and the smallest one.
+We continue in the standing setting (S1)–(S6) of [Gaussian first moments of partitions](gaussian-first-moments-of-partitions.md), Section 4. The bounds of [Rearrangement bounds for one cell](rearrangement-bounds-for-one-cell.md) and [Ehrhard concavity and the loss of one score](ehrhard-concavity-and-the-loss-of-one-score.md) concern one cell at a time. This lesson looks at the cell with the shortest moment and uses its moment identity to constrain how the other scores are correlated. The result is Corollary 3.1: two inequalities between the three largest normalized lengths and the smallest one.
 
 Relabel the cells so that
 \[
@@ -47,7 +47,7 @@ Every row of \(H\) sums to zero, and \(H_{jk}<0\) for \(j\ne k\).
 
 **Proof.** (a) Since \(t=|z_m|/\sqrt C\), \(\langle z_j,z_m\rangle/(\sqrt C|z_m|)=-a_jt\), so \(\langle w_j,e\rangle=-a_jt+a_jt=0\). Also \(\sum_{j<m}w_j=-z_m/\sqrt C+te=0\).
 
-(b) In an orthonormal basis of \(V\) whose first vector is \(e\), \(T\) is the first coordinate of \(g\) and each \(Y_j\) is a linear function of the other coordinates, which are independent of the first (product rule, Gaussian first moments of partitions, Section 1). The identity follows from \(z_j/\sqrt C=w_j-a_jte\).
+(b) In an orthonormal basis of \(V\) whose first vector is \(e\), \(T\) is the first coordinate of \(g\) and each \(Y_j\) is a linear function of the other coordinates, which are independent of the first (product rule, [Gaussian first moments of partitions](gaussian-first-moments-of-partitions.md), Section 1). The identity follows from \(z_j/\sqrt C=w_j-a_jte\).
 
 (c) Expand \(\langle w_j,w_k\rangle\) and use \(\langle e,z_k\rangle/\sqrt C=-a_kt\). The row sums vanish by (a). For \(j\ne k\) both terms of \(H_{jk}\) are negative by (S2).
 

@@ -9,7 +9,7 @@ An automorphism of the Turing degrees is a bijection of the set of degrees that 
 - An automorphism with a Borel representation moves no degree downwards (Theorem 3.1).
 - Rigidity (Theorem 3.2).
 
-The lesson follows [OpenAI-R, Sections 3 and 5]. It uses all three earlier lessons of the course: Relative computability and the Turing degrees, [Category and computability](category-and-computability.md) and [Recovery from four values](recovery-from-four-values.md).
+The lesson follows [OpenAI-R, Sections 3 and 5]. It uses all three earlier lessons of the course: [Relative computability and the Turing degrees](relative-computability-and-the-turing-degrees.md), [Category and computability](category-and-computability.md) and [Recovery from four values](recovery-from-four-values.md).
 
 ## 1. Representations
 

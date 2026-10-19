@@ -1,6 +1,6 @@
 # Slow reindexing and semi-lift compatibility
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 Fast reindexing makes a centralizing input commute with a prescribed separable algebra. Slow reindexing reverses which sequences are held fixed during the selection: its entire image commutes with the centralizing part of that prescribed algebra. It also makes a semi-lift agree on the image with its constant limit lift. That compatibility survives the counterexample to unrestricted fast equivariance.
 
@@ -37,57 +37,67 @@ No factor or trace hypothesis on \(M\) is needed.
 
 The final line concerns \(b_\gamma(x)\) in the domain. It does not require \(\Phi(\gamma(x))=\gamma(\Phi(x))\). The associated constant lifts belong to \(H\), so \(b_\gamma(P)=P\), making the stated expression meaningful.
 
-## 2. Countable data and the first selection
+<a id="2-countable-data-and-the-first-selection"></a>
 
-Adjoin \(M\) to \(P,Q\), as in [fast reindexing](fast-reindexing-with-liftable-actions.md#2-countable-data-and-bounded-representatives). The joins have separable predual, and the enlarged \(P\) is \(H\)-invariant because every semi-lift preserves the constant \(M\).
+## 2. Error arrays and admissible rows
 
-Choose countable unital \(\mathbb Q(i)\)-*-algebras
-\(\mathcal A\subset P,\mathcal B\subset Q\), ultraweakly dense, with dense intersections with \(M\) and \(M_\omega\). Make \(\mathcal A\) invariant under \(H\) by including all translates before forming the algebra. Use increasing finite exhausting sets \(\mathcal A_n,\mathcal B_n,H_n\), with \(1\) included, and a norm-dense sequence \(\psi_j\) in \(M_*\).
+The selection mechanism can be separated from the operator algebra. Suppose that \(S_n\in\omega\) is an acceptable set of columns for row \(n\). On row \(n\), an increasing finite list of demands has error at most \(1/n\) whenever the column belongs to \(S_n\), and every demand eventually enters that list. A demand is allowed to enter at a later row; after it enters it must be tested at every subsequent row.
 
-Choose contractive multiplier representatives \(u_x(k)\) of \(x\in\mathcal A\), bounded by \(\|x\|\), and \(v_a(k)\) of \(a\in\mathcal B\). Use constants for elements of \(M\), and centralizing representatives for elements of \(M_\omega\). Choose one family in (1) for each \(\gamma\); use a constant family when the actual automorphism is a constant lift. The limit restriction is independent of that representative choice.
+Define a column's depth to be the largest \(n\le k\) for which \(k\) belongs to every \(S_i\) with \(i\le n\), using depth zero if there is no such \(n\). This depth is finite and tends to infinity along \(\omega\): for each fixed \(n\), the finite intersection \(S_1\cap\cdots\cap S_n\cap\{k\ge n\}\) is large and has depth at least \(n\). Sampling each column at its depth therefore makes every demand's error tend to zero. The argument uses only finite intersections. It does not intersect countably many large sets.
 
-For completeness, the [countable-data proof](fast-reindexing-with-liftable-actions.md#2-countable-data-and-bounded-representatives) applies to these enlarged algebras: countably many generators and their rational words give a separable faithful-state GNS space. The concrete predual is a quotient of trace class on that space, whose finite rational rank-one sums are dense in trace norm. Intersections with either normal subalgebra therefore have separable predual as well. Include bounded strong* dense sets from each intersection before forming the rational algebra. Taking the countable union of the \(H\)-orbits preserves countability and makes \(\mathcal A\) invariant. Both \(\gamma\) and \(b_\gamma\) act on it because they are in \(H\).
+There is a second kind of demand that must be retained without shrinking its parameter. Suppose that row \(n\), once \(n\) is large enough for a fixed label \(l\), satisfies an implication with a fixed positive threshold \(\delta_l\). Sampling rows at the same depth retains that implication on a large set of columns. A null input is eventually below \(\delta_l\); only after applying the implication may \(l\) increase. This order of quantifiers is what will preserve multiplier membership.
 
-The finite sets exhaust the algebras; they are not themselves subalgebras. For example, the representative of \(xy\) has already been chosen whether or not \(xy\in\mathcal A_n\). At stage \(n\), include the associated constant lift for every action in \(H_n\), as well as the first \(n\) independently enumerated constant lifts. This is still a finite list, and eventually tests every required action.
+We now build the rows for this criterion. Adjoin \(M\) to \(P,Q\). The [countable-data construction](fast-reindexing-with-liftable-actions.md#2-countable-data-and-bounded-representatives) proves separability of both joins and of their intersections with the normal constant and centralizing subalgebras. In that construction a faithful-state GNS space has a countable dense set of rational words; its concrete predual is a quotient of trace class, with dense finite rational rank-one sums. The enlarged \(P\) remains \(H\)-invariant because semi-lifts preserve the constant copy of \(M\). At the end we restrict to the original domain.
 
-Norm-controlled lifts are obtained inside the multiplier or centralizing \(C^*\)-algebra by radial clipping: for \(C=\|x\|>0\), replace a lift \(t\) by \(t f(t^*t)\), where \(f(s)=\min(1,C/\sqrt{s})\) and \(f(0)=1\). Functional calculus keeps the lift in the same algebra and its quotient image unchanged. Use zero for \(x=0\). If an element is both constant and centralizing in the quotient, its constant representative is centralizing: its commutator with each normal functional is a constant sequence and has limit zero. Thus the two representative requirements agree on their overlap.
+Choose ultraweakly dense unital rational complex *-algebras \(\mathcal A\subset P\), \(\mathcal B\subset Q\), containing bounded strong* dense subsets of each constant and centralizing intersection. Include the countable \(H\)-orbits in \(\mathcal A\) before taking rational words. In particular every \(b_\gamma\) acts on \(\mathcal A\). Let \(\mathcal A_n,\mathcal B_n,H_n\) be increasing finite exhausting sets, and let \((\psi_j)\) be norm dense in \(M_*\). Every finite set contains the unit. When testing \(H_n\), also test its associated constant lifts; this adds only finitely many labels.
 
-For each \(x\in\mathcal A\) choose decreasing positive moduli \(\delta_l(x)\) and sets \(W_l(x)\in\omega\) so that
+For each \(x\in\mathcal A\), choose a multiplier representative \(u_x\) with \(\sup_k\|u_x(k)\|\le\|x\|\). Choose \(v_a\) in the same way for \(a\in\mathcal B\). Use constant representatives on \(M\) and centralizing representatives on \(M_\omega\). The two instructions agree on their overlap: a constant representative of a quotient-centralizing element has constant normal-functional commutators with zero limit. Norm control follows by radial clipping inside the appropriate \(C^*\)-algebra: for \(C=\|x\|>0\), replace \(t\) by \(t f(t^*t)\), where \(f(s)=\min(1,C/\sqrt{s})\) and \(f(0)=1\). Its quotient image is still \(x\). Use zero when \(x=0\).
+
+Fix one representing automorphism family for each actual \(\gamma\in H\), taking a constant family if that actual automorphism is a constant lift. For every \(x\), the multiplier criterion supplies fixed positive decreasing thresholds \(\delta_l(x)\) and large sets \(W_l(x)\) with
 \[
-k\in W_l(x),\quad \|z\|\le1,\quad\|z\|_\#<\delta_l(x)
-\ \Longrightarrow\
+k\in W_l(x),\quad \|z\|\le1,\quad \|z\|_\#<\delta_l(x)
+\quad\Longrightarrow\quad
 \|u_x(k)z\|_\#+\|zu_x(k)\|_\#<1/l.
 \tag{3}
 \]
-These are the previously proved multiplier moduli.
+These are the fixed-threshold demands of the transfer criterion.
 
-Choose an inner index \(p(n)\ge n\) satisfying this finite list:
+For row \(n\), select one coordinate \(p(n)\ge n\). Its admissibility conditions have the following meanings.
 
-1. \(p(n)\in W_l(x)\) for \(x\in\mathcal A_n,\ l\le n\).
-2. All addition, adjoint and multiplication discrepancies for operands in \(\mathcal A_n\), and scalar discrepancies for the first \(n\) rational complex scalars, have symmetric seminorm below \(1/n\) at \(p(n)\).
-3. \(\|[u_x(p(n)),\psi_j]\|<1/n\) for \(x\in\mathcal A_n\cap M_\omega,\ j\le n\). Also require \(\|[u_x(p(n)),a]\|_\#<1/n\) for these \(x\) and \(a\in\mathcal B_n\cap M\).
-4. For \(x\in\mathcal A_n,\ a\in\mathcal B_n,\ j\le n\),
+| Data being retained | Required row test |
+|---|---|
+| Every fixed multiplier threshold already introduced | \(p(n)\in W_l(x)\) for \(x\in\mathcal A_n,\ l\le n\) |
+| The rational *-algebra | All addition, adjoint and product discrepancies for operands in \(\mathcal A_n\), and scalar discrepancies for the first \(n\) rational complex scalars, have symmetric seminorm below \(1/n\) |
+| Centralizing inputs | \(\Vert[u_x(p(n)),\psi_j]\Vert<1/n\) for \(x\in\mathcal A_n\cap M_\omega,\ j\le n\); also \(\Vert[u_x(p(n)),a]\Vert_\#<1/n\) for \(a\in\mathcal B_n\cap M\) |
+| The inner part of the ordered expectation error | The test (4) below |
+| The action of every constant lift in the finite action list | The test (5) below |
+
+The two remaining row tests are
 \[
-|\psi_j(E_\omega(a)(u_x(p(n))-E_\omega(x)))|<1/n.
+|\psi_j(E_\omega(a)(u_x(p(n))-E_\omega(x)))|<1/n
+\quad(x\in\mathcal A_n,\ a\in\mathcal B_n,\ j\le n)
 \tag{4}
 \]
-5. For every constant lift \(b=\beta^\omega\) among the finitely many associated lifts being tested, and \(x\in\mathcal A_n\),
+and
 \[
-\|\beta(u_x(p(n)))-u_{b(x)}(p(n))\|_\#<1/n.
+\|\beta(u_x(p(n)))-u_{b(x)}(p(n))\|_\#<1/n
+\quad(x\in\mathcal A_n,\ b=\beta^\omega
+\text{ in the finite action list}).
 \tag{5}
 \]
+The coordinate of \(xy\), or of \(b(x)\), has been chosen even when that output is not in the finite operand set.
 
 **Lemma 2.1.** This finite selection is possible.
 
-**Proof.** The first condition uses (3). Every algebraic discrepancy in the second represents zero, hence is in \(I_\omega\). The third uses the centralizing representative and the fact that centralizing sequences commute strong* with fixed operators. For the fourth, \(u_x(k)\to_\omega E_\omega(x)\) ultraweakly and the coefficient \(E_\omega(a)\) is fixed in \(M\). The fifth discrepancy represents zero by the definition of a constant lift. Each condition therefore holds on an \(\omega\)-large set; their finite intersection with \(\{k\ge n\}\) is nonempty. \(\square\)
+**Proof.** Each row is a finite collection of tests on one coordinate. The algebraic defects and the defects in (5) represent zero in the quotient, so their seminorms tend to zero along \(\omega\). The functional commutators tend to zero by centralizing membership. Their strong* commutation with each fixed \(a\in M\) follows from the [centralizing estimate](central-sequences-and-free-group-factors.md#lemma-1-1), applied also to the adjoint. Finally the coefficient \(E_\omega(a)\) in (4) is fixed: ultraweak convergence of \(u_x(k)\) may be tested against the single normal functional \(y\mapsto\psi_j(E_\omega(a)y)\). Intersect these finitely many acceptable sets with the sets in (3) and with \(\{k\ge n\}\). The intersection is large, hence nonempty, and any member is a valid \(p(n)\). \(\square\)
 
-Each item has only finitely many operands, functionals, scalars and action labels. In the third item, the [complete centralizing estimate](central-sequences-and-free-group-factors.md#lemma-1-1) applies to the fixed operator \(a\): the squared \(\varphi\)-seminorm of its commutator is bounded by normal-functional commutator norms, and the same estimate for the adjoint gives strong* convergence. In the fourth item, \(y\mapsto\psi_j(E_\omega(a)y)\) is one fixed normal functional. In the fifth, both \(\beta(u_x(k))\) and \(u_{b(x)}(k)\) are multipliers representing exactly \(b(x)\); their difference belongs to \(I_\omega\). No moving coefficient or moving automorphism is used in this first ultraweak-limit test.
+Thus each row now consists of fixed operators \(u_x(p(n))\). The column tests may vary \(v_a(k)\) and \(\gamma_k\) while keeping these operators fixed.
 
-This selection fixes the operators \(u_x(p(n))\) in \(M\). The second selection will then let the outer coordinate grow while these operators stay fixed.
+<a id="3-the-second-selection-and-the-slow-index"></a>
 
-## 3. The second selection and the slow index
+## 3. Column tests and the depth function
 
-Choose decreasing \(V_n\in\omega\), with \(V_n\subset\{k\ge n\}\), such that for \(k\in V_n\):
+For row \(n\), let \(S_n\) be the set of columns \(k\) satisfying all of
 \[
 \begin{aligned}
 \|[u_x(p(n)),v_a(k)]\|_\#&<1/n
@@ -99,106 +109,110 @@ Choose decreasing \(V_n\in\omega\), with \(V_n\subset\{k\ge n\}\), such that for
 \end{aligned}
 \tag{6}
 \]
-Include the associated constant lifts in the finite action tests as needed.
+Include the associated constant lifts in the finite action list. Put \(V_0=\mathbb N\) and \(V_n=S_1\cap\cdots\cap S_n\cap\{k\ge n\}\).
 
 **Lemma 3.1.** Such sets exist, and they can be chosen with empty total intersection.
 
-**Proof.** In the first line, \(v_a(k)\) is centralizing, so it commutes strong* with the fixed element \(u_x(p(n))\). In the second line, its ultraweak limit is \(E_\omega(a)\), and the right factor and functional are fixed. In the last line, \(u\)-convergence of the automorphism family implies strong* convergence on every fixed element. All finitely many conditions hold on \(\omega\)-large sets. Intersect with the preceding \(V_{n-1}\) and \(\{k\ge n\}\). The latter restriction makes \(\bigcap_n V_n=\varnothing\). \(\square\)
+**Proof.** The first column error vanishes because the varying \(v_a(k)\) is centralizing and its other operand is fixed. The second vanishes by its ultraweak limit, again against a fixed coefficient. For the third, \(u\)-convergence of the chosen automorphism family implies strong* convergence on each fixed element.
 
-For the last line of (6), set \(\alpha_k=\beta_\gamma^{-1}\gamma_k\). Its predual action converges in norm to the identity. For fixed \(t\), expand
+To check that last implication without a uniform unit-ball assertion, write \(\alpha_k=\beta_\gamma^{-1}\gamma_k\). For fixed \(t\), expand
 \[
 \varphi((\alpha_k(t)-t)^*(\alpha_k(t)-t))
 =\varphi(\alpha_k(t^*t))-\varphi(\alpha_k(t^*)t)
 -\varphi(t^*\alpha_k(t))+\varphi(t^*t).
 \]
-The first term converges by predual norm convergence; each cross term converges by ultraweak convergence against a fixed normal coefficient. The limit is zero. Apply the same argument to \(t^*\), and transport by the fixed normal automorphism \(\beta_\gamma\), to obtain strong* convergence of \(\gamma_k(t)\) to \(\beta_\gamma(t)\). This is the fixed-element argument in the chosen-family construction, not an estimate uniform over all unit-ball elements. Here there are only finitely many already fixed \(t=u_x(p(n))\).
+Predual norm convergence gives the limit of the first term and ultraweak convergence gives both cross terms. The limit is zero. Repeat for \(t^*\); transport the resulting bounded strong* convergence by the fixed normal automorphism \(\beta_\gamma\). This proves the third error test for every one of the finitely many fixed operators in this row.
 
-More explicitly, let \(S_n\in\omega\) be the intersection of the finitely many sets supplied by (6). Define \(V_1=S_1\cap\{k\ge1\}\) and then \(V_n=V_{n-1}\cap S_n\cap\{k\ge n\}\). Every \(V_n\) is large. For a fixed coordinate \(k\), membership fails when \(n>k\), which proves empty total intersection without a countable intersection property for the ultrafilter.
+Consequently \(S_n\in\omega\), so each finite intersection \(V_n\) is large. The sequence is decreasing, and \(k\notin V_n\) for \(n>k\), proving empty total intersection. \(\square\)
 
-Put \(V_0=\mathbb N\), define
+The abstract depth construction is now exactly
 \[
-r(k)=\max\{n\ge1:k\in V_n\},
-\qquad q(k)=p(r(k)),
+r(k)=\max\bigl(\{n\ge1:k\in V_n\}\cup\{0\}\bigr),
+\qquad q(k)=p(r(k)),\qquad p(0)=1.
 \tag{7}
 \]
-and use \(r(k)=0,p(0)=1\) if the set is empty. The maximum is finite because \(r(k)\le k\). For each fixed \(n\), the set \(V_n\) makes \(r(k)\ge n\), so \(r(k)\to_\omega\infty\). Equivalently, on the band \(V_n\setminus V_{n+1}\) the chosen operator is \(u_x(p(n))\). This includes the initial band \(V_0\setminus V_1\), which has no effect on any ultralimit.
+It has \(r(k)\le k\) and \(r(k)\to_\omega\infty\). On \(V_n\setminus V_{n+1}\) it samples the fixed row \(p(n)\). On the initial, non-large band \(V_0\setminus V_1\) it uses \(p(0)\). No rate comparison between \(q(k)\) and \(k\) is needed.
 
-## 4. Multiplier membership and the map
+<a id="4-multiplier-membership-and-the-map"></a>
 
-Set
+## 4. Transfer to the quotient
+
+Apply the transfer criterion to
 \[
 w_x(k)=u_x(q(k)),\qquad \Phi_0(x)=\pi(w_x),
 \quad x\in\mathcal A.
 \tag{8}
 \]
+Before using \(\pi\), we must prove that its argument is a multiplier.
 
 **Lemma 4.1.** Every \(w_x\) is a multiplier. If \(x\in\mathcal A\cap M_\omega\), it is centralizing along \(\omega\).
 
-**Proof.** Fix \(x,l\), and choose \(n_0\) so \(x\in\mathcal A_n\) and \(n\ge l\) whenever \(n\ge n_0\). On the \(\omega\)-large set where \(r(k)\ge n_0\), the selected \(p(r(k))\) belongs to \(W_l(x)\). The fixed modulus \(\delta_l(x)\) in (3) therefore controls multiplication at every such outer coordinate. If \(z_k\in I_\omega\) is a contraction sequence, its seminorm is below that modulus on another \(\omega\)-large set. Both product seminorms have ultralimit at most \(1/l\). Let \(l\to\infty\) and rescale general bounded null sequences. This proves \(w_x\in N_\omega\).
+**Proof.** Fix a label \(l\) and any bounded null input sequence \(z_k\), chosen after \(q\) if desired. Divide by a common norm bound to make it contractive. On a large set of columns the depth is high enough to include \(x,l\), so \(q(k)\in W_l(x)\). On another large set \(\|z_k\|_\#<\delta_l(x)\). The retained implication (3) makes both product seminorms have ultralimit at most \(1/l\). The same products are considered for every \(l\), hence both ultralimits are zero. Rescaling proves both normalizer conditions for the original bounded input.
 
-For centralizing \(x\), the third first-selection test gives
-\(\|[w_x(k),\psi_j]\|<1/r(k)\) on the large set where that datum is included. Norm density and the bound \(2\|x\|\|\psi\|\) extend this to every normal functional. \(\square\)
-
-This argument proves the two normalizer conditions for every bounded null sequence, including one chosen after the slow index. Indeed divide such a sequence by a common operator bound; for any fixed \(l\), the large set of levels containing \(x,l\) meets the large set where that rescaled input is smaller than \(\delta_l(x)\). Each product has ultralimit seminorm at most \(1/l\); the same product is considered for every \(l\), so its limit is zero. The adjoint condition is also included because (3) controls both sides in the symmetric seminorm. For a general \(\psi\in M_*\), the centralizing conclusion uses
+For centralizing \(x\), the retained row test gives \(\|[w_x(k),\psi_j]\|<1/r(k)\) once \(x,j\) have entered. For any \(\psi\in M_*\),
 \[
 \|[w_x(k),\psi]\|
-\le \|[w_x(k),\psi_j]\|+2\|x\|\,\|\psi-\psi_j\|.
+\le\|[w_x(k),\psi_j]\|+2\|x\|\|\psi-\psi_j\|.
 \]
-First let \(k\to\omega\), then approximate \(\psi\) in norm.
+Take the ultralimit and then approximate \(\psi\) in norm. This proves the asserted centralizing membership. \(\square\)
 
-Every fixed rational relation is tested at all sufficiently high levels. For instance the representative of
-\(\Phi_0(x)\Phi_0(y)-\Phi_0(xy)\) has seminorm at most \(1/r(k)\) on the large set of levels containing \(x,y\); hence it is null. The same argument gives addition, adjoints and rational scalar multiplication. The identity representative is constantly one. The uniform coordinate bound gives the quotient norm bound without any lower bound on \(q(k)/k\).
+All subsequent conclusions follow by sending particular error arrays to zero. Rational algebraic defects were tested on the rows, so their sampled representatives are null. Thus \(\Phi_0\) is a unital rational *-homomorphism; its coordinate bound gives \(\|\Phi_0(x)\|\le\|x\|\). Constants are fixed because their representatives never vary.
 
-The algebraic tests make \(\Phi_0\) a unital rational *-homomorphism, with \(\|\Phi_0(x)\|\le\|x\|\). Combining (4) and the second line of (6) gives, for fixed \(x,a,j\) and sufficiently high levels,
+The expectation array is the sum of one column error and one row error. With \(n=r(k)\), its exact decomposition is
+\[
+\begin{aligned}
+v_a(k)w_x(k)-E_\omega(a)E_\omega(x)
+={}&(v_a(k)-E_\omega(a))u_x(p(n))\\
+&+E_\omega(a)(u_x(p(n))-E_\omega(x)).
+\end{aligned}
+\]
+Equations (6) and (4) give
 \[
 |\psi_j(v_a(k)w_x(k)-E_\omega(a)E_\omega(x))|
-<2/r(k).
+<2/r(k)
 \tag{9}
 \]
-To see the order and the constant explicitly, write \(n=r(k)\) and split the expression tested in (9) as
-\[
-(v_a(k)-E_\omega(a))u_x(p(n))
-+E_\omega(a)(u_x(p(n))-E_\omega(x)).
-\]
-The two chosen tests bound its functional value by \(1/n+1/n\). All operators in this expression have common norm bounds for fixed \(a,x\). Norm density of the \(\psi_j\) therefore gives the same zero ultralimit for every normal functional. The sequence \(v_a(k)w_x(k)\) is a multiplier, and its weak ultralimit is exactly \(E_\omega(a\Phi_0(x))\). This justifies (10) in \(M\), with its ordered product.
-
-Thus
+at every sufficiently deep column. Norm density of the \(\psi_j\), together with the common operator bound for each fixed \(a,x\), extends the zero limit to every normal functional. Both factors in \(v_a w_x\) are multipliers. Their product's weak ultralimit therefore gives
 \[
 E_\omega(a\Phi_0(x))=E_\omega(a)E_\omega(x).
 \tag{10}
 \]
-Taking \(a=1\) shows state preservation and, by applying it to \(x^*x\) and \(xx^*\), preservation of the symmetric state seminorm.
+The order of the two factors has been retained throughout.
 
-In particular, applying \(\varphi\) to (10) for \(a=1\) yields \(\rho(\Phi_0(x))=\rho(x)\). Apply this identity separately to \(x^*x\) and \(xx^*\) and use multiplicativity to obtain
+With \(a=1\), (10) preserves \(\rho\). Apply it to \(x^*x\) and \(xx^*\), using multiplicativity, to obtain
 \[
 \|\Phi_0(x)\|_{\rho,\#}^2
 =\tfrac12\rho(x^*x+xx^*)=\|x\|_{\rho,\#}^2.
 \]
-This is a faithful-state isometry of the map being constructed; it places no state-invariance requirement on \(H\).
+This state isometry belongs to the constructed map and does not require any element of \(H\) to preserve \(\rho\).
 
-The first line of (6) makes the full image commute with \(\mathcal B\cap M_\omega\). Lemma 4.1 places centralizing inputs in \(M_\omega\). Constants in \(\mathcal A\cap M\) are fixed by their chosen representatives.
+The commutation array in the first line of (6) vanishes for every \(x\) and centralizing \(a\). Lemma 4.1 separately controls centralizing inputs. These are distinct outputs of the criterion: the first controls the full image, the second the image of an intersection.
 
-For actions, the last line of (6) gives
+There are also two distinct action arrays. The column array uses the actual outer automorphism, yielding
 \[
 \gamma\Phi_0(x)=b_\gamma\Phi_0(x).
 \tag{11}
 \]
-Equation (5), sampled at the same selected inner index on both sides, gives
+The row array (5) compares the two representatives at the same inner coordinate and yields
 \[
 b_\gamma\Phi_0(x)=\Phi_0(b_\gamma(x)).
 \tag{12}
 \]
-The first comparison uses \(\gamma_k\) at the actual outer coordinate \(k\); it does not replace it by \(\gamma_{q(k)}\).
+In (11) it is \(\gamma_k\) that acts on \(u_x(q(k))\). Replacing it by \(\gamma_{q(k)}\) would change the automorphism being applied.
 
-## 5. Normal extension and an explicit example
+<a id="5-normal-extension-and-an-explicit-example"></a>
 
-The [faithful-state extension lemma](fast-reindexing-with-liftable-actions.md#lemma-5-1) applies: norm closure first, then bounded Kaplansky approximation and the exact symmetric state isometry give a unique normal injective *-homomorphism on \(P\). Constants are fixed by normal density. The image of \(P\cap M_\omega\) stays in the normal subalgebra \(M_\omega\). The commutation conclusion extends from the dense centralizing intersections because relative commutants are strongly closed. Equation (10) extends separately in \(x\) and \(a\) by normality. Equations (11)–(12) extend by normality of all automorphisms. This proves Theorem 1.1, including restriction back from the enlarged \(P,Q\).
+## 5. Normal extension and the two action identities
 
-Here are the extension steps for each clause. Complete \(\mathcal A\) in norm first; rational complex linearity extends to complex linearity by the norm bound. For every bounded strong* approximating net from that completion, the state isometry makes its image a strong*-Cauchy net in the full target von Neumann algebra. The full proof of Lemma 5.1 establishes its limit using the cyclic separating vector, its dense commutant orbit and the common operator bound, proves independence of the approximating net, and passes bounded products and adjoints to the limit. Faithfulness gives injectivity. On increasing positive nets, preservation of \(\rho\) forces the image supremum to equal the image of the original supremum; the complete order-normal-functional/predual theorem then gives normality against every normal functional. None of these steps uses action invariance of \(\rho\).
+The dense-algebra construction is now complete. Its normal extension uses the [faithful-state extension lemma](fast-reindexing-with-liftable-actions.md#lemma-5-1) at precisely its bounded strong* scope. First the norm bound extends the rational map to the complex \(C^*\)-completion of \(\mathcal A\). For any bounded strong* approximating net in that completion, the exact symmetric state isometry makes the image strong*-Cauchy. The lemma's cyclic separating vector and dense commutant orbit produce a bounded operator limit, independent of the approximating net. Bounded products and adjoints pass to that limit. Faithfulness of the preserved state proves injectivity.
 
-The subalgebra \(M_\omega\) is normally embedded, so bounded strong* limits of its elements stay there. For a fixed dense input \(x\), its image commutes with \(\mathcal B\cap M_\omega\) by the first outer test. Separate ultraweak continuity of multiplication extends commutation to \(Q\cap M_\omega\). For a general input, bounded strong* approximation and the strong closedness of that relative commutant give the full-image clause. The chosen dense constant intersection similarly gives the identity on \(M\).
+For clarity, normality uses increasing nets, not just sequences: if \(0\le x_i\uparrow x\), let \(y=\sup_i\Phi(x_i)\le\Phi(x)\). State preservation and normality of \(\rho\) give \(\rho(\Phi(x)-y)=0\). Faithfulness gives \(y=\Phi(x)\). The complete order-normal-functional/predual argument in the same premise then proves normality against every normal functional. Thus we obtain the normal unital embedding \(\Phi:P\to M^\omega\).
 
-For fixed \(a\in\mathcal B\), the two maps \(x\mapsto E_\omega(a\Phi(x))\) and \(x\mapsto E_\omega(a)E_\omega(x)\) are normal linear maps. Extend (10) to all \(x\in P\); then for each such fixed \(x\) extend in \(a\) by normality of the corresponding two maps on \(Q\). For actions, \(\gamma\Phi\), \(b_\gamma\Phi\) and \(\Phi b_\gamma\) are normal linear maps on the same invariant domain and agree on \(\mathcal A\), so they agree everywhere. Restricting the enlarged construction to the original \(P\) preserves all five clauses for the original \(Q\).
+Each output array has its own extension step. Constants are fixed by bounded strong* density in the constant intersection. The centralizing intersection maps into \(M_\omega\) because that subalgebra is normally embedded and closed under bounded strong* limits. For a dense \(x\), (6) gives commutation with the dense algebra in \(Q\cap M_\omega\); separate ultraweak continuity extends it to that whole subalgebra. Its relative commutant is strongly closed, so bounded strong* approximation then gives the assertion for every \(x\in P\).
+
+For fixed \(a\in\mathcal B\), both sides of (10) are normal linear functions of \(x\); extend first in \(x\). For each resulting fixed \(x\), both sides are normal linear functions of \(a\); extend next in \(a\). This proves the full ordered expectation identity.
+
+Finally \(\gamma\Phi\), \(b_\gamma\Phi\), and \(\Phi b_\gamma\) are normal maps on the same invariant domain. Equations (11) and (12) identify their dense-algebra values, so they agree everywhere. They compare the action on the output with the constant-lift action on the input. They do not assert an identity with \(\Phi\gamma\). Restricting from the joined algebras to the original \(P,Q\) proves every clause of Theorem 1.1.
 
 The [Pauli example](ultraproduct-expectations-and-semilift-ambiguity.md#proposition-5-1) shows why the action condition matters. In \(R=\bigotimes_{k\ge1}(M_2,\operatorname{tr}_2)\), let \(X,Z\in R_\omega\) come from Pauli operators in leg \(k\), and let \(\gamma=\operatorname{Ad}(Z)\). Then \(\beta_\gamma=\mathrm{id}\). For \(P=Q=M_2(X,Z)\), replace leg \(k\) by leg \(\lfloor\sqrt k\rfloor\) in the representatives of its matrix generators. Their matrix relations remain exact, giving an injective map of \(P\). The new leg tends to infinity, so the images remain centralizing. For all sufficiently large \(k\), it differs from leg \(k\), so the image commutes with \(Q\) and is fixed by \(\gamma\). Thus
 \[
@@ -270,6 +284,6 @@ The traces here use the evident two matrix-copy identifications. The state is pr
 
 ## References
 
-The free construction source is Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Section 5.4, Slow Reindexation Trick, printed pp.55–56 (PDF pp.69–70). Its action condition includes each semi-lift's constant limit lift. The proof first chooses fixed inner operators, then chooses outer neighborhoods for central commutation, ultraweak product tests and convergence of the chosen automorphism families. Its final extension steps are referred to the fast lemma.
+The slow-reindexing method and its five conclusion clauses are due to Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Section 5.4, printed pp.55–56 (PDF pp.69–70). The statement includes the associated constant lifts, and the proof selects inner coordinates and then outer neighborhoods. It refers the remaining extension argument to the preceding fast lemma.
 
-Here all multiplier, algebraic, normal-extension and action estimates are written out. The equality compares the actual semi-lift on the new image with its constant limit lift, and with the image of that limit lift's action on the domain. It does not impose equivariance with the original semi-lift on the domain. The full nonfactor and nontracial setting is retained; the tensor-tail example checks the distinction directly.
+The finite-error transfer criterion separates that classical selection mechanism from the quotient: vanishing row and column errors transfer by a depth function, whereas multiplier thresholds remain fixed until a later null input has been tested. The complete multiplier and faithful-state extension proofs are supplied by the linked programme lessons. The ordered expectation is \(M\)-valued, and the Pauli tensor-tail model distinguishes output compatibility from equivariance with the original semi-lift. These arguments use a faithful normal state and separable predual without a factor or trace assumption.

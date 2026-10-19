@@ -59,8 +59,11 @@ Explicitly, a vector with branchwise Borel representatives \(f_g\) goes to \((f_
 
 Take the underlying pair groupoid \(G=X\times X\), with arrow \((y,x):x\to y\), inverse \((x,y)\) and product \((z,y)(y,x)=(z,x)\). Adjoin the labels
 \[
-d(y,x)=a(y)a(x)^{-1},\qquad
-\mathcal B_G=\sigma\bigl(\mathcal B(X^2),\,d^{-1}(\{g\}):g\in\Gamma\bigr).
+\begin{gathered}
+d(y,x)=a(y)a(x)^{-1},\\
+\mathcal B_G=\sigma\bigl(\mathcal B(X^2),\\
+d^{-1}(\{g\}):g\in\Gamma\bigr).
+\end{gathered}
 \tag{2.1}
 \]
 This sigma-field is separated and countably generated; all arrow singletons are measurable. Its trace on the identity diagonal is exactly \(\mathcal B_X\), since \(d(x,x)=e\).
@@ -69,8 +72,10 @@ This sigma-field is separated and countably generated; all arrow singletons are 
 
 *Proof.* Range and source are measurable through the ordinary product generators. Equality of two unit coordinates is product-Borel, so the composable-pair set is measurable. The identities
 \[
-d(x,y)=d(y,x)^{-1},\qquad
-d(z,x)=d(z,y)d(y,x)
+\begin{aligned}
+d(x,y)&=d(y,x)^{-1},\\
+d(z,x)&=d(z,y)d(y,x)
+\end{aligned}
 \tag{2.2}
 \]
 make inversion and composition measurable on each new generator; the ordinary generators are handled by the ordinary pair operations. Every endpoint pair has exactly one arrow, so isotropy is trivial and there is one orbit.
@@ -130,10 +135,10 @@ For fixed \(h,B\) this is ordinary Borel in \(u\), and \(\sum_h\pi_h^u(X)=1\).
 If \(u\in A_t\), then \(v\in A_l\) is equivalent to \(d(u,v)=tl^{-1}\). Integrating against the source measure \(\eta_\beta\) of \(\kappa\), countable branch decomposition and Tonelli give
 \[
 \begin{aligned}
-(\kappa*\pi)^y\{s\in B,\ a(s)=l\}
-&=\sum_{t\in\Gamma}\int_X\pi_{tl^{-1}}^u(B)\,d\beta(u)\\
-&=\int_X\sum_{h\in\Gamma}\pi_h^u(B)\,d\beta(u)
-=:\beta'(B).
+&(\kappa*\pi)^y\{s\in B,\ a(s)=l\}\\
+&\quad=\sum_{t\in\Gamma}\int_X\pi_{tl^{-1}}^u(B)\,d\beta(u)\\
+&\quad=\int_X\sum_{h\in\Gamma}\pi_h^u(B)\,d\beta(u)\\
+&\quad=:\beta'(B).
 \end{aligned}
 \tag{3.5}
 \]
@@ -144,8 +149,10 @@ For semifiniteness, finite-\(\beta\) sets \(C_n\uparrow X\) give proper \(\kappa
 
 The integrated arrow measure has, in the relative-label coordinates, ordinary product values
 \[
-\int_G F(y,x,d(y,x))\,dm
-=\sum_{g\in\Gamma}\int_{X^2}F(y,x,g)\,d\ell(y)d\ell(x).
+\begin{aligned}
+&\int_G F(y,x,d(y,x))\,dm\\
+&\quad=\sum_{g\in\Gamma}\int_{X^2}F(y,x,g)\,d\ell(y)d\ell(x).
+\end{aligned}
 \tag{3.6}
 \]
 This follows first for the generating rectangles and then for nonnegative measurable \(F\). It is sigma-finite. Inversion interchanges \(x,y\) and sends \(g\) to \(g^{-1}\), so it preserves \(m\), in agreement with modulus \(1\).
@@ -156,18 +163,22 @@ When \(\Gamma\) is infinite, every nonzero proper transverse function has infini
 
 Use \(H_y=L^2(G^y,\nu^y)\). Under the measurable relative-label chart, (1.5) identifies every fibre with
 \[
-V=K\otimes\ell^2(\Gamma),\qquad
-U(z,y)=1_K\otimes\lambda_{d(z,y)},\qquad
-\lambda_h\delta_g=\delta_{hg}.
+\begin{aligned}
+V&=K\otimes\ell^2(\Gamma),\\
+U(z,y)&=1_K\otimes\lambda_{d(z,y)},\\
+\lambda_h\delta_g&=\delta_{hg}.
+\end{aligned}
 \tag{4.1}
 \]
 The chart uses \(d(y,x)\), rather than the non-Borel unit function \(a(y)\). If \(b_j\) is a countable Borel orthonormal basis of \(K\), its measurable fibre vectors are \(b_j(s)1_{\{d=g\}}\). They form an orthonormal basis at every unit. Equation (2.2) verifies (4.1) and the representation law.
 
 The representation is square integrable, directly at the coefficient criterion. For the bounded measurable basis section \(e_{j,g}=b_j\otimes\delta_g\) and \(\zeta\in V\), (2.3) gives
 \[
-\int_{G^y}|\langle\zeta,U(\gamma)e_{j,g}\rangle|^2\,d\nu^y(\gamma)
-=\sum_{h\in\Gamma}|\langle\zeta,b_j\otimes\delta_{hg}\rangle|^2
-\le\|\zeta\|^2.
+\begin{aligned}
+&\int_{G^y}|\langle\zeta,U(\gamma)e_{j,g}\rangle|^2\,d\nu^y(\gamma)\\
+&\quad=\sum_{h\in\Gamma}|\langle\zeta,b_j\otimes\delta_{hg}\rangle|^2\\
+&\quad\le\|\zeta\|^2.
+\end{aligned}
 \tag{4.2}
 \]
 The countable family is total at every unit. Each associated coefficient map is a contraction; for any fixed \(g\), its Gram operators sum to the identity as \(j\) ranges over the basis. Thus this is the exact square-integrability notion of the programme, with explicit total sections.
@@ -225,22 +236,30 @@ Trivial set-theoretic isotropy, one orbit, sigma-finite transverse measure and a
 
 Retain \(\Gamma=F_2\). On \(H\otimes H\), the group coordinate is \(\ell^2(\Gamma)\otimes\ell^2(\Gamma)\), with diagonal transport \(\lambda_l\otimes\lambda_l\). The same coefficient argument as in (4.4) gives
 \[
-E=\operatorname{End}_\Lambda(H\otimes H)
-=\{(1_K\otimes\lambda_l)\otimes(1_K\otimes\lambda_l):l\in\Gamma\}'.
+\begin{gathered}
+E=\operatorname{End}_\Lambda(H\otimes H)\\
+=\{(1_K\otimes\lambda_l)\otimes\\
+(1_K\otimes\lambda_l):l\in\Gamma\}'.
+\end{gathered}
 \tag{5.1}
 \]
 Here the commutant is on \(V\otimes V\), in the constant chart.
 The tensor field is also square integrable directly: for a product basis section \(b_i\otimes\delta_g\otimes b_j\otimes\delta_k\), its coefficient-square integral is the sum of the squared coefficients of a vector along the orthonormal family indexed by \((lg,lk)\), \(l\in\Gamma\). This sum is at most that vector's squared norm. All product basis sections are bounded, measurable and total. Put
 \[
-P=\{T\otimes1:T\in M\},\qquad Q=\{1\otimes T:T\in M\}.
+\begin{aligned}
+P&=\{T\otimes1:T\in M\},\\
+Q&=\{1\otimes T:T\in M\}.
+\end{aligned}
 \tag{5.2}
 \]
 They are normal unital copies of \(M\) in \(E\), commute, and the self-adjoint flip \(\Sigma\) belongs to \(E\), satisfies \(\Sigma^2=1\), and exchanges them.
 
 For \(h\in\Gamma\), let \(p_k\) be projection onto \(\mathbb C\delta_k\) in the **second** group coordinate, and define, with the \(K\) identities suppressed,
 \[
-W_h=\sum_{k\in\Gamma}\lambda_{khk^{-1}}\otimes p_k,\qquad
-W_h(\delta_g\otimes\delta_k)=\delta_{khk^{-1}g}\otimes\delta_k.
+\begin{aligned}
+W_h&=\sum_{k\in\Gamma}\lambda_{khk^{-1}}\otimes p_k,\\
+W_h(\delta_g\otimes\delta_k)&=\delta_{khk^{-1}g}\otimes\delta_k.
+\end{aligned}
 \tag{5.3}
 \]
 This is a norm-one unitary: on the orthogonal second-coordinate slices it is a unitary left translation, and its inverse is \(W_{h^{-1}}\).
@@ -287,15 +306,19 @@ This pinpoints the hypothesis used by the positive standard Borel proof: commuti
 
 We now take a different member of the countable-group family in Sections 1–4. Let
 \[
- \Gamma=F(a_0,a_1,a_2,\ldots),\qquad
- \Delta=F(b_0,b_1,b_2,\ldots).
- \tag{5A.1}
+\begin{aligned}
+\Gamma&=F(a_0,a_1,a_2,\ldots),\\
+\Delta&=F(b_0,b_1,b_2,\ldots).
+\end{aligned}
+\tag{5A.1}
 \]
 There are two distinct maps between these free groups:
 \[
- \pi(a_0)=e,\quad \pi(a_{n+1})=b_n;\qquad
- \beta(a_n)=b_n\quad(n\ge0).
- \tag{5A.2}
+\begin{gathered}
+\pi(a_0)=e,\quad \pi(a_{n+1})=b_n;\\
+\beta(a_n)=b_n\quad(n\ge0).
+\end{gathered}
+\tag{5A.2}
 \]
 The first is a surjective homomorphism with nontrivial kernel \(H=\ker\pi\); the second is an isomorphism. The construction uses both maps for different purposes. Neither identifies the two-generator factor in Section 5 with the factor used here.
 
@@ -303,9 +326,11 @@ For a countable group \(G\), let \(\lambda_g\delta_x=\delta_{gx}\), \(\rho_g\del
 
 **Lemma 5A.1 (the discrete regular commutation theorem, with proof).** For every countable group,
 \[
- \{\lambda_g:g\in G\}'=\{\rho_g:g\in G\}'',\qquad
- \{\rho_g:g\in G\}'=\{\lambda_g:g\in G\}''.
- \tag{5A.3}
+\begin{gathered}
+\{\lambda_g:g\in G\}'=\{\rho_g:g\in G\}'',\\
+\{\rho_g:g\in G\}'=\{\lambda_g:g\in G\}''.
+\end{gathered}
+\tag{5A.3}
 \]
 
 *Proof.* Let \(T\) commute with all left translations and \(U\) with all right translations. If \(c=T\delta_e\) and \(d=U\delta_e\), their matrix entries, with output index first, are \(T_{x,z}=c_{z^{-1}x}\) and \(U_{x,z}=d_{xz^{-1}}\). For arbitrary \(x,z\),
@@ -342,9 +367,11 @@ A central element of \(R_\Gamma\) satisfies this condition because every \(\rho_
 
 On \(\mathcal V=\ell^2(\Gamma)\otimes\ell^2(\Delta)\), define
 \[
- A=\{\lambda_g\otimes1:g\in\Gamma\}'',\qquad
- B=\{\rho_g\otimes\rho_{\pi(g)}:g\in\Gamma\}''.
- \tag{5A.7}
+\begin{aligned}
+A&=\{\lambda_g\otimes1:g\in\Gamma\}'',\\
+B&=\{\rho_g\otimes\rho_{\pi(g)}:g\in\Gamma\}''.
+\end{aligned}
+\tag{5A.7}
 \]
 The two algebras commute.
 
@@ -431,10 +458,12 @@ The finite factors \(A,B\) are not yet copies of the properly infinite \(E\). Th
 \]
 There are a normal injective unital endomorphism \(\sigma\) of \(\widetilde M\) and a self-adjoint unitary \(S\in\widetilde M\) with
 \[
- \sigma(\widetilde M)=P,\quad S P S=Q,\quad
- S^2=1,\quad P\vee Q=\widetilde M,\quad
- Q\subsetneq P'\cap\widetilde M.
- \tag{5A.17}
+\begin{gathered}
+\sigma(\widetilde M)=P,\quad S P S=Q,\\
+S^2=1,\quad P\vee Q=\widetilde M,\\
+Q\subsetneq P'\cap\widetilde M.
+\end{gathered}
+\tag{5A.17}
 \]
 The reverse relative-commutant equality fails as well. This factor is normally isomorphic to the principal random-operator factor of Sections 1–4 for \(\Gamma=F_\infty\).
 
@@ -458,9 +487,11 @@ Write \(\mathcal L_G=\{\lambda_g:g\in G\}''\), and take all unqualified commutan
 
 **Lemma 5B.1 (the full relative commutants).** Define
 \[
- C=A'\cap E=R_\Gamma\overline\otimes R_\Delta,
- \qquad D=B'\cap E=JCJ.
- \tag{5B.1}
+\begin{gathered}
+C=A'\cap E=R_\Gamma\overline\otimes R_\Delta,\\
+D=B'\cap E=JCJ.
+\end{gathered}
+\tag{5B.1}
 \]
 These are finite factors, with \(B\subsetneq C\) and \(A\subsetneq D\).
 
@@ -520,9 +551,11 @@ For the unit vector \(\xi=\delta_{a_2}\otimes\delta_e\), it gives
 \]
 In particular,
 \[
- \|[Z,Y]\xi\|=\sqrt2,\qquad
- C\cap D=\mathbb C1,\qquad C\vee D=E.
- \tag{5B.8}
+\begin{gathered}
+\|[Z,Y]\xi\|=\sqrt2,\\
+C\cap D=\mathbb C1,\qquad C\vee D=E.
+\end{gathered}
+\tag{5B.8}
 \]
 
 *Proof.* Apply \(J\), then \(Z\), then \(J\) using (5A.11). The last application restores \(x\) and multiplies the second coordinate on the right by \(\pi(x)\), proving (5B.6). Since \(\pi(a_2)=b_1\), the two compositions give (5B.7). Both displayed words are reduced and they start with different generators, so the resulting basis vectors are orthogonal. Their difference has norm \(\sqrt2\). We have \(Z\in C\) and \(Y\in JCJ=D\), so this is a concrete failure of commutation, with operator-norm lower bound \(\|[Z,Y]\|\ge\sqrt2\).
@@ -541,10 +574,14 @@ An element in \(C\cap D\) commutes with \(A\) and \(B\), hence with \(E=A\vee B\
 \]
 They contain \(Q,P\) respectively, jointly generate \(\widetilde M\), are exchanged by the same internal \(S\), and have scalar intersection. They do not commute:
 \[
- S\widehat C S=\widehat D,\qquad
- \|[\,1_L\otimes1_L\otimes Z,\,
-        1_L\otimes1_L\otimes Y\,]\|\ge\sqrt2.
- \tag{5B.10}
+\begin{gathered}
+S\widehat C S=\widehat D,\\
+\begin{aligned}
+&\|[\,1_L\otimes1_L\otimes Z,\,\\
+&\qquad1_L\otimes1_L\otimes Y\,]\|\ge\sqrt2.
+\end{aligned}
+\end{gathered}
+\tag{5B.10}
 \]
 
 *Proof.* Commutation with the first full \(B(L)\)-coordinate of \(P\) forces that coordinate of an operator in its commutant to be an identity. Take matrix coefficients in the remaining \(L\)-coordinate. Membership in \(\widetilde M\) puts them in \(E\), and commutation with \(A\) puts them in \(C=A'\cap E\). Finite compressions in this unrestricted matrix coordinate converge strongly, proving the first formula of (5B.9); the reverse inclusion is immediate. Applying \(S=F_L\otimes J\), with \(SPS=Q\), gives the second formula and the stated exchange.
@@ -619,9 +656,11 @@ are unitary. For a finite algebraic tensor sum \(A=\sum_{j=1}^k a_j\otimes b_j\)
 \]
 The first coefficient tends to zero by (5C.5); the second is bounded by \(\|b_i\|_2\|b_j\|_2\). Algebraic tensor sums are dense in the product \(L^2\)-space. For any \(\zeta\) and approximant \(A\), Cauchy–Schwarz gives, uniformly in \(n\),
 \[
- \left|\langle\zeta,T_n\zeta\rangle-\langle A,T_nA\rangle\right|
- \le(\|\zeta\|_2+\|A\|_2)\|\zeta-A\|_2.
- \tag{5C.8}
+\begin{aligned}
+&\left|\langle\zeta,T_n\zeta\rangle-\langle A,T_nA\rangle\right|\\
+&\quad\le(\|\zeta\|_2+\|A\|_2)\|\zeta-A\|_2.
+\end{aligned}
+\tag{5C.8}
 \]
 Therefore \(\langle\zeta,T_n\zeta\rangle\to0\) for every \(\zeta\). If (5C.4) holds, then \(T_n\zeta=\zeta\), forcing \(\|\zeta\|_2^2=0\). A flip unitary would be a nonzero \(L^2\)-vector satisfying (5C.4), so cannot exist. \(\square\)
 
@@ -645,9 +684,11 @@ The range is all of \(L^2(F,t)\): linear combinations of products form a unital 
 
 **Theorem 5C.4 (infinite ambient trace on every product projection).** Let \(P,Q\subset M\) be commuting unital type \(\mathrm{II}_\infty\) factors with
 \[
- P\vee Q=M,\qquad S\in M,\quad S=S^*,\quad S^2=1,
- \quad SPS=Q.
- \tag{5C.11}
+\begin{gathered}
+P\vee Q=M,\qquad S\in M,\\
+S=S^*,\quad S^2=1,\quad SPS=Q.
+\end{gathered}
+\tag{5C.11}
 \]
 Then, for every pair of nonzero projections \(p\in P\), \(q\in Q\),
 \[
@@ -696,11 +737,13 @@ The condition does not exclude every endomorphism. In the pair of Theorem 5A.7, 
 \]
 These projections are finite in \(P,Q\) respectively. Nevertheless the displayed ambient trace is
 \[
- \tau_{\widetilde M}
- =\operatorname{Tr}_L\otimes\operatorname{Tr}_L
-   \otimes\operatorname{Tr}_{\ell^2(\Gamma)}\otimes\tau_\Delta,
- \qquad \tau_{\widetilde M}(pq)=\infty.
- \tag{5C.16}
+\begin{aligned}
+\tau_{\widetilde M}
+&=\operatorname{Tr}_L\otimes\operatorname{Tr}_L\\
+&\quad\otimes\operatorname{Tr}_{\ell^2(\Gamma)}\otimes\tau_\Delta,\\
+\tau_{\widetilde M}(pq)&=\infty.
+\end{aligned}
+\tag{5C.16}
 \]
 Here \(\Gamma\) is countably infinite, so its identity has infinite matrix trace. This concrete pair passes the necessary trace test and still fails mutual relative-commutant equality. A hypothetical different pair in the hidden-group factor would have to pass both tests. Neither finite-corner normalization nor an abstract tensor-primeness assertion settles its existence.
 
@@ -957,9 +1000,9 @@ Compression \(x\mapsto V^*xV\) is normal, unital and completely positive. On ele
 
 If an internal \(U\in M_1\) conjugated \(P_1\) onto \(Q_1\), Lemma 5F.2 would give a normal expectation \(F_Q:Q_1\vee N_1\to N_1\). The second algebra in (5F.8) contains the unital last-coordinate algebra \(1\otimes1\otimes1\otimes B(H_\Delta)\). Restricting \(F_Q\) to it and removing the identity coordinates gives a normal conditional expectation \(B(H_\Delta)\to\mathcal L_\Delta\). This contradicts Lemma 5F.1, since \(\Delta\) is infinite.
 
-A normal isomorphism of \(M_1\) would pull any proposed internal conjugating unitary in its image back to one just excluded. This proves the transport assertion. The argument concerns internal unitaries: an arbitrary unitary in the full Hilbert-space operator algebra need not fix \(N_1\), so Lemma 5F.2 would not apply to it. No exclusion of every ambient conjugacy after stabilization is claimed. \(\square\)
+A normal isomorphism of \(M_1\) would pull any proposed internal conjugating unitary in its image back to one just excluded. This proves the transport assertion. The argument concerns internal unitaries: an arbitrary unitary in the full Hilbert-space operator algebra need not fix \(N_1\), so Lemma 5F.2 would not apply to it. This expectation argument does not exclude external conjugacies; Corollary 5J.4 supplies a separate factor-type obstruction for the specified pair. \(\square\)
 
-This completes the missing stabilized check for the one-sided closure operation. Its full relative commutants and join are correct, but its internal-exchange clause fails. The unrestricted existence of a different source pair remains open. In particular, this argument requires no identification of \(R_\Gamma\overline\otimes R_\Delta\) with \(R_\Gamma\), and supplies none.
+The one-sided closure has the full relative commutants and join stated above, but its internal-exchange clause fails. The unrestricted existence of a different source pair remains open. In particular, this argument requires no identification of \(R_\Gamma\overline\otimes R_\Delta\) with \(R_\Gamma\), and supplies none.
 
 ![The ambient commutant is fixed by every internal unitary; a normal expectation would then transfer to an impossible infinite-group regular expectation](figures/stable-one-sided-internal-flip-obstruction.svg)
 
@@ -1324,6 +1367,150 @@ For \(D=A\) and for \(D=B\), noncommutation provides an element whose real or im
 
 For the converse, use \(\sigma,S\) constructed in Theorem 5H.1. Its selected projections are \(p=\Theta(E_{11}\otimes1_L\otimes1_R)\), \(q=\Theta(1_L\otimes E_{11}\otimes1_R)\), and their product is \(r_0=\Theta(E_{11}\otimes E_{11}\otimes1_R)\). The map \(y\mapsto\Theta(E_{11}\otimes E_{11}\otimes y)\) is a normal isomorphism of \(R\) onto \(r_0Mr_0\), carrying \(A,B\) to the forward reduced copies. Pulling the faithful normal semifinite corner trace back gives exactly (5H.19). The assertions just proved transport through this isomorphism. \(\square\)
 
+**Proposition 5H.3 (the full norm of every finite-compression defect).** Let \(R\) have a faithful normal semifinite trace \(T_R\), with identity \(r\), and let \(D\subset R\) be a unital von Neumann subalgebra. The following are equivalent:
+
+1. \(D'\cap R\) has no nonzero projection of finite \(T_R\)-trace.
+2. For every projection \(0\ne h\le r\) with \(t=T_R(h)<\infty\),
+   \[
+   \inf_{u\in\mathcal U(D)}T_R(h u^*h u h)=0.
+   \tag{5H.22}
+   \]
+3. For every such \(h\), its compression \(c_h(x)=hxh\) satisfies
+   \[
+   \begin{gathered}
+   \begin{aligned}
+   \delta_h(u)&=c_h(u^*u)\\
+   &\quad-c_h(u)^*c_h(u),
+   \end{aligned}\\
+   \sup_{u\in\mathcal U(D)}\|\delta_h(u)\|=1.
+   \end{gathered}
+   \tag{5H.23}
+   \]
+
+Under these conditions one also has
+
+\[
+\begin{gathered}
+\sup_{u\in\mathcal U(D)}\|(r-h)u h\|=1,\\
+\sup_{u\in\mathcal U(D)}
+\|h-u^*h u\|_{2,T_R}^{\,2}=2t.
+\end{gathered}
+\tag{5H.24}
+\]
+
+Here the squared trace norm is \(\|x\|_{2,T_R}^{\,2}=T_R(x^*x)\), whenever finite. These are suprema; attainment by a single unitary is not asserted. In the coefficient corner of Theorem 5H.1, the conclusions apply separately to \(D=A\) and \(D=B\).
+
+*Proof.* We first prove the compactness step, including the trace continuity it needs. The finite-trace projections form an increasing net under inclusion. Indeed, \((e\vee f)-e\) is the range projection of \((r-e)f\). Polar decomposition identifies it with a subprojection of \(f\), so \(T_R(e\vee f)\le T_R(e)+T_R(f)\). Their supremum is \(r\). Otherwise semifiniteness in its nonzero complement would give a nonzero finite-trace positive element there, and one of its positive spectral cuts would give a further finite-trace projection. For such a projection \(e\),
+
+\[
+\phi_e(x)=T_R(exe)
+\]
+
+is a bounded normal positive functional, with \(\phi_e(r)=T_R(e)\). Normality of the trace gives, for every positive \(z\),
+
+\[
+\begin{aligned}
+T_R(z)
+&=\sup_e T_R(z^{1/2}ez^{1/2})\\
+&=\sup_e\phi_e(z).
+\end{aligned}
+\tag{5H.25}
+\]
+
+For any bounded normal positive functional \(\phi\), positivity of \(\phi((x-y)^*(x-y))\), with equality when \(y=x\), proves
+
+\[
+\begin{aligned}
+\phi(x^*x)=\sup_{y\in R}\bigl\{
+&2\operatorname{Re}\phi(y^*x)\\
+&-\phi(y^*y)\bigr\}.
+\end{aligned}
+\tag{5H.26}
+\]
+
+The expression inside braces is ultraweakly continuous in \(x\). Equations (5H.25)–(5H.26) therefore prove that \(x\mapsto T_R(x^*x)\) is ultraweakly lower semicontinuous. The trace identities used here also show that the finite-square-trace elements form a vector space: the inequality \((x+y)^*(x+y)\le2x^*x+2y^*y\) gives closure under addition. Expansion and linearity of the trace on its finite-trace ideal give the usual parallelogram identity there. No assertion that the trace is bounded on \(R\) is needed.
+
+Assume condition 1 and fix \(h\) as in condition 2. Let
+
+\[
+\mathcal K_h=
+\overline{\operatorname{conv}}^{\,\mathrm{uw}}
+\{u^*h u:u\in\mathcal U(D)\}.
+\tag{5H.27}
+\]
+
+It is a nonempty ultraweakly compact convex subset of \(\{x\in R:0\le x\le r\}\). Lower semicontinuity and compactness give a minimizer \(k\in\mathcal K_h\) of \(T_R(k^2)\); its minimum is finite because \(h\in\mathcal K_h\). This minimizer is unique. Indeed, two minimizers \(k,l\), of value \(m\), would satisfy
+
+\[
+\begin{aligned}
+m&\le T_R\!\left(\left(\frac{k+l}{2}\right)^2\right)\\
+&=m-\frac14T_R((k-l)^2).
+\end{aligned}
+\tag{5H.28}
+\]
+
+Faithfulness forces \(k=l\). Unitary conjugation by \(D\) preserves both \(\mathcal K_h\) and the trace, so uniqueness puts \(k\) in \(D'\cap R\). If \(k\ne0\), a spectral projection
+
+\[
+\begin{gathered}
+0\ne p=1_{[a,1]}(k)\in D'\cap R,\quad a>0,\\
+T_R(p)\le a^{-2}T_R(k^2)<\infty
+\end{gathered}
+\]
+
+contradicts condition 1. Thus \(k=0\), and \(0\in\mathcal K_h\).
+
+The normal positive functional \(x\mapsto T_R(hxh)\) takes arbitrarily small values on finite convex combinations defining (5H.27). Its values on every orbit point are nonnegative. For each \(0<\varepsilon<1\), at least one unitary in such a combination consequently satisfies
+
+\[
+0\le T_R(h u^*h u h)<\varepsilon t.
+\tag{5H.29}
+\]
+
+This proves condition 2. For any unitary \(u\in D\), put
+
+\[
+\begin{aligned}
+\delta_h(u)
+&=h-hu^*huh\\
+&=h u^*(r-h)u h.
+\end{aligned}
+\tag{5H.30}
+\]
+
+Then \(0\le\delta_h(u)\le h\), so its norm is at most one. From (5H.29) we obtain
+
+\[
+\begin{aligned}
+\|\delta_h(u)\|
+&\ge \frac{T_R(\delta_h(u))}{t}\\
+&=1-\frac{T_R(h u^*h u h)}{t}\\
+&>1-\varepsilon.
+\end{aligned}
+\tag{5H.31}
+\]
+
+This proves condition 3. Conversely, if a nonzero finite-trace projection \(h\) belongs to \(D'\cap R\), its overlap in (5H.22) is always \(t\), and every defect in (5H.23) is zero. Thus either condition 2 or condition 3, for every finite \(h\), implies condition 1.
+
+Finally, the norm of (5H.30) is the square of the norm of the off-diagonal block in (5H.24). The trace identity for two finite-trace projections gives
+
+\[
+\begin{aligned}
+&\|h-u^*h u\|_{2,T_R}^{\,2}\\
+&\qquad=2t-2T_R(h u^*h u h).
+\end{aligned}
+\tag{5H.32}
+\]
+
+Equation (5H.22) proves both sharp suprema. For the coefficient copies, (5H.6) identifies their relative commutants as \(B,A\), respectively; (5H.20) supplies condition 1 for both. The converse data use the transported trace (5H.19). \(\square\)
+
+For either prescribed copy, every nonzero finite-trace compression therefore has unitary multiplicativity defects arbitrarily close to the full value one. Such a compression cannot have a uniform defect bound smaller than one on the entire unitary group. This conclusion permits approximation on specified finite test sets and says nothing against different normal representation maps. It does not exclude the infinite-trace data required by Theorem 5H.1.
+
+![In a finite-trace corner h, absence of finite projections in the relative commutant forces the convex unitary orbit of h to contain zero in its ultraweak closure. The overlap has infimum zero, the compression defect has norm supremum one, and the squared trace displacement has supremum twice the trace of h.](figures/finite-compression-norm.svg)
+
+*Figure 11.* Fix \(t=T_R(h)\in(0,\infty)\). The upper panel states the exact relative-commutant hypothesis and the compact convex set (5H.27). Its unique finite-square-trace minimizer is zero by (5H.28) and the spectral-cut argument. The middle panel uses the normal functional \(T_R(h\,\cdot\,h)\) to obtain (5H.29) for an actual unitary. The lower panel gives the operator norm and trace norm conclusions (5H.30)–(5H.32), with the exact constants one and \(2t\). This is a proof diagram, with no sampled geometry or assertion that a supremum is attained. Complete proof: Proposition 5H.3; coefficient application: (5H.6), (5H.19) and (5H.20). Human-source target: Connes, Corollary 11, author-hosted PDF 44–45. The unrestricted existence question remains open.
+
+
 These statements identify the finite-corner obstruction exactly. The intrinsic units of \(A,B\) are finite in those copies, whereas the coefficient identity \(r\) has infinite ambient trace. Every projection \(0\ne h\le r\) with \(T_R(h)<\infty\) destroys the multiplication of both prescribed copies. The condition \(h\le r\) matters: if a projection \(h\in M\) is orthogonal to \(r\), then \(hAh=hBh=0\); these are multiplicative zero maps and give no unital copies. A compressed set \(hAh\) need not be an algebra, and closing it under multiplication does not make \(a\mapsto hah\) a homomorphism. Commutation of \(A,B\) alone also does not imply commutation of their separately compressed sets when \(h\) commutes with neither. An explicit finite counterexample appears in Exercise 6.28. A different proposed finite-corner construction would have to supply its own actual normal representations and verify their properties.
 
 The reduced source problem is therefore to produce \(R,A,B,s,\Theta\) with all the hypotheses of Theorem 5H.1, or to exclude that exact infinite-trace position. The theorem does not construct those data. The normal-expectation exclusion in Theorem 5D.4 also applies to the finite copies \(A,B\subset R\), using their join and internal \(s\); its absence does not settle the source question, which asks for no such expectation. The unrestricted assertion of Connes's Corollary 11 remains open at the present measurable scope. The human source is [Connes's author-hosted typeset text](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), Corollary 11 and the following Sakai note, PDF 44–45. The simultaneous reduction, converse and compression proof here are new original arguments dedicated to CC0; no human proof has been copied into that dedication.
@@ -1331,6 +1518,391 @@ The reduced source problem is therefore to produce \(R,A,B,s,\Theta\) with all t
 ![The two commuting matrix-unit families give an exact simultaneous reduction to an infinite-trace corner with the same two relative commutants and an actual internal involution; every nonzero finite ambient compression inside that corner has a nonzero positive multiplicativity defect.](figures/hidden-factor-matrix-reduction.svg)
 
 *Figure 9. The source panel retains the entire normal copies in (5H.2), with \(p=e_{11}\), \(q=f_{11}=SpS\) and \(r=pq\ne0\). The coordinate map is the actual \(U\) in (5H.7), and the symmetry becomes \(F_L\otimes s\), with \(s=rSr\), \(s^2=r\). The coefficient panel retains \(A\cong N\cong B\), both equalities \(A'\cap R=B\), \(B'\cap R=A\), and \(A\vee B=R\), where \(N=L(F_\infty)\) has countably many free generators. The converse panel requires the normal ambient \(\Theta\) in (5H.9). The lower panel applies to every projection \(0\ne h\le r\) with \(T_R(h)<\infty\): (5H.20) excludes commutation with either copy, and (5H.18) gives a nonzero positive defect for some self-adjoint element in each copy. Complete proof locators: Theorem 5H.1 and Proposition 5H.2; trace input: Theorem 5C.4. Human-source target and internal-flip distinction: Connes, Corollary 11 and Sakai note, author-hosted PDF 44–45. This is an exact conditional reduction and a finite-compression obstruction; the unrestricted existence assertion remains open.* [Full-size diagram](figures/hidden-factor-matrix-reduction.svg).
+
+## 5I. Testing an internal exchange in a normal factor quotient
+
+The matrix reduction in Section 5H leaves an existence problem in an infinite-trace factor. We now give an exact test for the exchange in a proposed coefficient factor, and place the possible factors in one universal algebra. Every condition on the original two copies is retained. The test does not assert that a suitable quotient exists.
+
+### The centre of a two-by-two algebra detects innerness
+
+Let \(R\) be a von Neumann factor and let \(\beta\) be a normal automorphism with \(\beta^2=\operatorname{id}\). Inside \(M_2(R)\) put
+
+\[
+\begin{aligned}
+\pi(x)&=\begin{pmatrix}x&0\\0&\beta(x)\end{pmatrix},\\
+v&=\begin{pmatrix}0&1_R\\1_R&0\end{pmatrix},\\
+\mathcal C_\beta&=\{\pi(x)+\pi(y)v:x,y\in R\}.
+\end{aligned}
+\tag{5I.1}
+\]
+
+In particular, \(v\pi(x)v=\pi(\beta(x))\). The off-diagonal coefficient is part of the algebra, rather than an additional Hilbert-space implementer.
+
+**Proposition 5I.1 (an exact inner-exchange test).** The set \(\mathcal C_\beta\) is a von Neumann algebra. The following are equivalent:
+
+1. \(\beta\) is inner on the actual \(R\).
+2. There is \(s=s^*\in R\) with \(s^2=1_R\) and \(\beta=\operatorname{Ad}s\).
+3. \(\mathcal C_\beta\) is not a factor.
+
+If these conditions hold, then
+
+\[
+\begin{gathered}
+w=\pi(s)v,\qquad w=w^*,\qquad w^2=1,\\
+Z(\mathcal C_\beta)=\mathbb C1+\mathbb Cw,\\
+e_\pm=\tfrac12(1\pm w),\\
+\mathcal C_\beta\cong R\oplus R.
+\end{gathered}
+\tag{5I.2}
+\]
+
+If \(\beta\) is outer, \(Z(\mathcal C_\beta)=\mathbb C1\). In either case the calculation concerns the centre of this specified algebra.
+
+*Proof.* Multiplication and adjoints preserve the form in (5I.1), using \(v\pi(x)=\pi(\beta(x))v\). Its matrix entries are
+
+\[
+\pi(x)+\pi(y)v
+=\begin{pmatrix}x&y\\\beta(y)&\beta(x)\end{pmatrix}.
+\tag{5I.3}
+\]
+
+This is an ultraweakly closed linear subspace of \(M_2(R)\), because \(\beta\) is normal. It is a unital star algebra, hence a von Neumann algebra.
+
+An element in (5I.3) commutes with every \(\pi(a)\) precisely when
+
+\[
+xa=ax,\qquad y\beta(a)=ay\quad(a\in R).
+\tag{5I.4}
+\]
+
+The first condition makes \(x\) scalar. Suppose \(y\ne0\) satisfies the second. Taking adjoints and using (5I.4) shows that \(y^*y\) commutes with \(\beta(R)\) and \(yy^*\) commutes with \(R\). Both are therefore the scalar \(\|y\|^2 1_R\). Hence \(u=y/\|y\|\) is unitary and \(\beta(a)=u^*au\) is inner. Any unitary \(t\) implementing an automorphism of square one has \(t^2=\lambda1_R\), \(|\lambda|=1\). Multiplying \(t\) by a scalar of modulus one whose square is \(\lambda^{-1}\) gives a unitary \(s\) with \(s^2=1_R\), hence \(s=s^*\).
+
+If \(\beta\) is outer, (5I.4) forces \(y=0\). Commuting also with \(v\) leaves just the scalar elements. If \(\beta=\operatorname{Ad}s\) with the normalized \(s\), the second condition in (5I.4) instead says that \(ys\) is scalar. Thus \(y\) is a scalar multiple of \(s\). Since \(\beta(s)=s\), these elements commute with \(v\) too, proving the centre formula.
+
+The two central projections in (5I.2) are nonzero: their diagonal matrix entries are both \(1_R/2\). More explicitly, the normal maps
+
+\[
+q_\pm\bigl(\pi(x)+\pi(y)v\bigr)=x\pm ys
+\tag{5I.5}
+\]
+
+are unital star homomorphisms. Their joint map is an isomorphism onto \(R\oplus R\): given \((a,b)\), take \(x=(a+b)/2\), \(y=(a-b)s/2\). These formulas also give a normal inverse. The kernels are the opposite central summands, completing every assertion. \(\square\)
+
+### A universal algebra for separately normal commuting copies
+
+Keep the specified finite factor \(N=L(F_\infty)\) and \(L=\ell^2\mathbb N\) of (5H.1); the free generating set is countable. Write \(C=N\otimes_{\max}N\) for the unital maximal C*-tensor product. Its construction here uses only bounded commuting star representations: on an algebraic sum \(t=\sum_j a_j\otimes b_j\), take the supremum of their operator norms. Cyclic subrepresentations suffice for this supremum. Their Hilbert-space dimensions are bounded by the cardinality of the algebraic tensor product, because the algebraic orbit of one cyclic vector is dense. One can therefore take the supremum over a set of representations on chosen Hilbert spaces of those dimensions. The supremum is finite, bounded by \(\sum_j\|a_j\|\|b_j\|\), and satisfies the C*-identity inherited from operator norms. It is a norm, because the spatial representation is among them. Completing gives \(C\).
+
+Let \(\mathscr S_{\mathrm{bn}}\) be the set of states of \(C\) whose restrictions to both specified copies of \(N\) are normal. The set is nonempty: the normal trace product state is an example. For each such state use its GNS representation, and set
+
+\[
+\begin{gathered}
+\Pi=\bigoplus_{\omega\in\mathscr S_{\mathrm{bn}}}\pi_\omega,
+\qquad W=\Pi(C)'',\\
+\iota_1(a)=\Pi(a\otimes1),\\
+\iota_2(a)=\Pi(1\otimes a).
+\end{gathered}
+\tag{5I.6}
+\]
+
+The direct sum is over a set of functionals on the fixed C*-algebra. No countability or separability claim is made for \(W\).
+
+**Lemma 5I.2 (normal marginals and the universal quotient).** The two maps \(\iota_j:N\to W\) are normal unital faithful homomorphisms with commuting ranges, and their ranges generate \(W\). For every pair of commuting normal unital homomorphisms \(\alpha_j:N\to R\) which generate a von Neumann algebra \(R\), there is a unique normal onto homomorphism
+
+\[
+\begin{gathered}
+\rho:W\longrightarrow R,\\
+\rho(\iota_j(a))=\alpha_j(a)\quad(j=1,2).
+\end{gathered}
+\tag{5I.7}
+\]
+
+There is also a unique normal automorphism \(\tau\) of \(W\) such that
+
+\[
+\begin{aligned}
+\tau(\iota_1(a))&=\iota_2(a),\\
+\tau(\iota_2(a))&=\iota_1(a),\\
+\tau^2&=\operatorname{id}.
+\end{aligned}
+\tag{5I.8}
+\]
+
+*Proof.* We first justify normality of the GNS restrictions, rather than assuming that normal marginals suffice for it. Let \(0\le a_i\downarrow0\) be bounded in the first \(N\). On the dense algebraic GNS vectors, with \(t=\sum_{j=1}^m c_j\otimes d_j\), commutation and the triangle inequality give
+
+\[
+\begin{aligned}
+&\|\pi_\omega(a_i^{1/2}\otimes1)[t]_\omega\|\\
+&\quad\leq\sum_{j=1}^m\|d_j\|
+\,\omega(c_j^*a_i c_j\otimes1)^{1/2}
+\longrightarrow0.
+\end{aligned}
+\tag{5I.9}
+\]
+
+The limit uses only normality of the first marginal. The operators have a common norm bound, so the convergence holds on every GNS vector. Equivalently, the represented positive net decreases strongly to zero. Subtracting from the supremum of an increasing bounded positive net proves normality. The same argument interchanging the legs proves the second restriction normal. Direct sums preserve these suprema, proving normality of \(\iota_j\). Their kernels are ultraweakly closed central ideals of the factor \(N\); unitality forces both kernels to be zero. Their ranges commute by construction, and generate \(W\).
+
+Represent the target \(R\) faithfully and normally on a Hilbert space. The two commuting maps extend to a representation of \(C\). Decompose this representation into orthogonal cyclic reducing subspaces: take maximal orthogonal cyclic subspaces, whose orthogonal complement, if nonzero, would supply another one. The vector state on each subspace has normal marginals, so its cyclic representation is one of the summands in (5I.6), up to its GNS unitary.
+
+Projection onto that summand commutes with \(W\). Compression therefore gives a normal homomorphism from \(W\) onto the corresponding cyclic von Neumann image. Assemble these maps on the target cyclic summands. The assembled map is normal and agrees with the target representations on the generators. Its range lies in \(R\): approximate elements of \(W\) ultraweakly by elements of \(\Pi(C)\), using Kaplansky density; normality carries the approximations into the target's weakly closed generated algebra. Conversely the range contains both target copies and is a von Neumann algebra. For this last assertion, remove the central kernel of the normal homomorphism; the resulting faithful representation has weakly closed image by the unit-ball argument of Lemma 5D.1. Joint generation gives surjectivity. Ultraweak density of the generators' star algebra gives uniqueness.
+
+Apply (5I.7) to the pair \((\iota_2,\iota_1)\) in \(W\). It supplies a normal onto homomorphism \(\tau:W\to W\). Its square fixes every generator, so uniqueness makes its square the identity. It is therefore the required automorphism. \(\square\)
+
+The general framework of weak* tensor completions and their universal normal quotient appears in [Wiersma], Section 2, especially Proposition 2.4; Section 3 discusses binormal states. The normal-marginal estimate above gives the needed GNS step explicitly. We do not use a spatial normal multiplication map or the classification of tensor-uniqueness algebras.
+
+### The exact factor-quotient criterion
+
+**Theorem 5I.3 (the whole-copy problem as a factor-quotient test).** Put \(M=B(L)\overline\otimes N\), with the fixed \(N,L\) above. The original operator conditions (5H.2) hold for some normal unital endomorphism of this \(M\) and some internal symmetry if and only if there is a nonzero minimal central projection \(z\in Z(W)\) with the following properties:
+
+1. \(\tau(z)=z\). Write \(R=zW\), \(A=z\iota_1(N)\), \(B=z\iota_2(N)\), and \(\beta=\tau|_R\).
+2. The two actual relative commutants satisfy \(A'\cap R=B\) and \(B'\cap R=A\).
+3. The concrete algebra \(\mathcal C_\beta\subset M_2(R)\) of (5I.1), with identity \(z\) in place of \(1_R\), is not a factor.
+4. There is a normal onto isomorphism
+
+\[
+\Theta:B(L)\overline\otimes B(L)
+\overline\otimes R\longrightarrow M.
+\tag{5I.10}
+\]
+
+The two reduced copies are copies of the specified \(N\), rather than unspecified finite factors. Their join is automatically \(R\). Any quotient meeting all four properties is a sigma-finite type \(\mathrm{II}_\infty\) factor; it has the infinite-trace projection restrictions of Proposition 5H.2.
+
+*Proof.* Suppose first that (5H.2) holds. Theorem 5H.1 supplies \(R_0,A_0,B_0,s_0,\Theta_0\) with every reduced condition. Choose a normal isomorphism \(\alpha:N\to A_0\), and define
+
+\[
+\alpha_1(a)=\alpha(a),\qquad
+\alpha_2(a)=s_0\alpha(a)s_0.
+\tag{5I.11}
+\]
+
+These normal copies commute and generate \(R_0\). Lemma 5I.2 gives a normal onto \(\rho:W\to R_0\). Its kernel is \(W(1-z)\) for a central projection \(z\), and its restriction \(zW\to R_0\) is a normal isomorphism. Since \(R_0\) is a nonzero factor, \(z\) is a nonzero minimal central projection. On both sets of generators,
+
+\[
+\rho\circ\tau=\operatorname{Ad}s_0\circ\rho.
+\tag{5I.12}
+\]
+
+Normality extends this equality to \(W\). Its kernel is therefore \(\tau\)-invariant, so \(\tau(z)=z\). Transport the two commutants and \(\Theta_0\) through the isomorphism. The automorphism \(\beta\) transports to \(\operatorname{Ad}s_0\), so Proposition 5I.1 supplies property 3.
+
+Conversely, a minimal central \(z\ne0\) makes \(R=zW\) a factor. The compressed \(\iota_j\)'s are normal unital homomorphisms from the factor \(N\); they are faithful because their unit has nonzero image \(z\). Their ranges commute and generate \(R\), as follows by compressing the generating algebra of \(W\). Property 1 makes \(\beta\) a normal involutive automorphism exchanging those actual ranges. Property 3 and Proposition 5I.1 give \(s=s^*\in R\), \(s^2=z\), implementing \(\beta\). Properties 2 and 4 now give exactly the data for the converse in Theorem 5H.1. That theorem constructs a normal endomorphism of the entire original \(M\), an internal symmetry, both full relative commutants and their full join.
+
+Applying its forward reduction to the constructed pair identifies \(R\) with the resulting coefficient corner through \(y\mapsto\Theta(E_{11}\otimes E_{11}\otimes y)\). Thus it has the asserted sigma-finite type and infinite-trace restrictions; Proposition 5H.2 applies under this identification. No type conclusion was inferred merely from separate normality of the two copies. \(\square\)
+
+**Corollary 5I.4 (a universal swap is not a universal inner symmetry).** The automorphism \(\tau\) of \(W\) is outer. A \(\tau\)-invariant central atom by itself does not imply property 3 of Theorem 5I.3.
+
+*Proof.* The spatial pair in \(N\overline\otimes N\) gives a normal factor quotient of \(W\) by Lemma 5I.2. Its supporting central atom is \(\tau\)-invariant, because the spatial flip gives (5I.12). If \(\tau\) were inner in \(W\), its implementing unitary would map to a unitary implementing that spatial flip. Normalizing its square as in Proposition 5I.1 would contradict Proposition 5D.3. The same spatial quotient shows that a fixed central atom need not give an inner restricted exchange. \(\square\)
+
+The type-I construction in Exercise 6.27 supplies the complementary warning: its exchange is internal, its two finite copies are the specified \(N\), and its relative commutants and join are correct, but the required ambient \(\Theta\) cannot exist. An invariant state also supplies a Hilbert-space implementer without deciding innerness; Exercise 6.29 computes this distinction even when the automorphism happens to be inner. Theorem 5I.3 is an exact criterion for the original existence question, not a construction of an eligible central atom or a proof that none exists. Connes's unrestricted weak-measurable assertion remains unresolved here.
+
+![The universal normal quotient must pass the two relative-commutant tests, the centre test for its two-by-two exchange algebra and the full stable ambient isomorphism.](figures/inner-exchange-factor-quotient.svg)
+
+*Figure 10.* The objects are those of (5I.1), (5I.6) and (5I.10). Minimality of the central projection makes \(R=zW\) a factor; invariance under \(\tau\) gives its exchange automorphism. Nonfactoriality of \(\mathcal C_\beta\) detects an actual internal self-adjoint implementer in \(R\), by Proposition 5I.1. Both relative commutants and the normal onto \(\Theta\) remain separate conditions. The spatial quotient fails the centre test; Exercise 6.27's type-I quotient fails the ambient test. Complete proof locators: Lemma 5I.2, Theorem 5I.3 and Corollary 5I.4. Human-source context: Connes, Corollary 11 and Sakai note, author typeset PDF 44–45; Wiersma, version 1, Sections 2–3. This diagram displays an exact conditional criterion, not an existence or nonexistence finding.
+
+
+**Proposition 5I.5 (an internal exchange lifts from any nonzero fixed corner).** Let \(R\) be a von Neumann factor, let \(\beta\) be a normal automorphism with \(\beta^2=\operatorname{id}\), and let \(0\ne e\in R\) be a projection with \(\beta(e)=e\). Write \(\beta_e=\beta|_{eRe}\). Then \(\beta\) is inner if and only if \(\beta_e\) is inner. More precisely, every self-adjoint unitary \(t\in eRe\) with
+
+\[
+t^2=e,\qquad \beta_e=\operatorname{Ad}t
+\tag{5I.13}
+\]
+
+has a unique self-adjoint unitary lift \(u\in R\) satisfying
+
+\[
+u^2=1_R,\qquad ue=t,\qquad
+\beta=\operatorname{Ad}u.
+\tag{5I.14}
+\]
+
+Neither finiteness nor sigma-finiteness is required in this proposition.
+
+*Proof.* Two nonzero projections \(p,q\) in a factor satisfy \(pRq\ne0\). Indeed, the ultraweakly closed ideal generated by \(q\) has central support \(1_R\); if \(pRq=0\), multiplication by \(p\) annihilates that ideal and hence \(p=0\). This also shows that \(eRe\) is a factor: a nontrivial central projection \(f\) in it would give \(fR(e-f)=f(eRe)(e-f)=0\). A nonscalar centre would have such a spectral projection.
+
+If \(\beta=\operatorname{Ad}s\), normalize its implementer as in Proposition 5I.1 so that \(s=s^*\) and \(s^2=1_R\). Since \(\beta(e)=e\), \(s\) commutes with \(e\). Its restriction \(t=ese=se\) satisfies (5I.13). Conversely, an inner \(\beta_e\) has a normalized implementer \(t\) as in (5I.13), because \(eRe\) is a factor and \(\beta_e^2=\operatorname{id}\).
+
+Choose a maximal family of partial isometries \((v_i)_{i\in I}\) in \(R\), including \(v_0=e\), such that
+
+\[
+\begin{gathered}
+p_i=v_i^*v_i\le e,\qquad q_i=v_iv_i^*,\\
+q_iq_j=0\quad(i\ne j),\qquad
+\sum_{i\in I}q_i=1_R.
+\end{gathered}
+\tag{5I.15}
+\]
+
+Here and below sums over an arbitrary index set mean strong limits over its finite subsets. To justify the last equality, if \(f=1_R-\sum_iq_i\ne0\), then \(fRe\ne0\). The polar part of any nonzero element of \(fRe\) is an additional partial isometry with initial projection under \(e\) and range projection under \(f\), contradicting maximality. Zorn's lemma supplies a maximal family; no countable enumeration is assumed.
+
+Put
+
+\[
+w_i=\beta(v_i)t v_i^*,\qquad
+u=\sum_{i\in I}w_i.
+\tag{5I.16}
+\]
+
+Since \(\beta(p_i)=tp_it^*\), direct multiplication gives
+
+\[
+w_i^*w_i=q_i,\qquad
+w_iw_i^*=\beta(q_i).
+\tag{5I.17}
+\]
+
+Both families of projections are orthogonal and sum strongly to the identity. The finite sums of the \(w_i\)'s and of their adjoints therefore converge strongly: on any vector, the squared norms of their orthogonal summands add and are bounded by that vector's squared norm. Their limits are adjoints, and (5I.17) makes \(u\) unitary. Strong closure places \(u\) in \(R\).
+
+For \(a\in R\), all matrix coefficients \(b_{ij}=v_i^*av_j\) belong to \(eRe\). The corner identity gives \(\beta(b_{ij})t=tb_{ij}\). Since \(v_i^*v_j=0\) for distinct indices, (5I.16) now yields
+
+\[
+\begin{aligned}
+&\beta(v_i^*)\bigl(\beta(a)u-ua\bigr)v_j\\
+&\qquad=\beta(b_{ij})t p_j
+          -\beta(p_i)t b_{ij}\\
+&\qquad=tb_{ij}-tb_{ij}=0.
+\end{aligned}
+\tag{5I.18}
+\]
+
+Multiplying by \(\beta(v_i)\) and \(v_j^*\), then summing the range projections in (5I.15), proves \(\beta(a)u=ua\). Thus \(\beta=\operatorname{Ad}u\). The term \(v_0=e\) and orthogonality give \(ue=t\). Since \(\beta^2=\operatorname{id}\), \(u^2\) is a scalar; but \(u^2e=t^2=e\), so that scalar is one. Unitarity then makes \(u=u^*\). If two implementing unitaries restrict to the same \(t\), their quotient is scalar by factoriality, and its restriction to \(e\ne0\) makes that scalar one. This proves uniqueness. \(\square\)
+
+**Corollary 5I.6 (a finite-corner centre test).** Suppose in addition that \(R\) has a faithful normal semifinite trace \(T_R\). Then \(\beta\) is inner if and only if there is a projection \(e\) such that
+
+\[
+0<T_R(e)<\infty,\qquad \beta(e)=e,
+\tag{5I.19}
+\]
+
+and the two-by-two algebra \(\mathcal C_{\beta_e}\subset M_2(eRe)\), defined as in (5I.1) with identity \(e\), is not a factor. Given any nonzero fixed projection \(e\), its centre test gives the same answer as the test on \(R\).
+
+*Proof.* Proposition 5I.1 applies to the factor \(eRe\); Proposition 5I.5 lifts its internal symmetry. For the other direction, let \(\beta=\operatorname{Ad}s\) with \(s=s^*\), \(s^2=1_R\). At least one spectral projection \(p=(1_R+s)/2\) or \(p=(1_R-s)/2\) is nonzero. Semifiniteness supplies a nonzero positive \(a\le p\) with finite trace. A nonzero spectral cut \(e=1_{[\varepsilon,\infty)}(a)\) has \(T_R(e)\le\varepsilon^{-1}T_R(a)<\infty\). Since \(e\le p\), it commutes with \(s\), so \(\beta(e)=e\), and \(ese\) implements \(\beta_e\). Faithfulness gives \(T_R(e)>0\). \(\square\)
+
+For the candidate quotients in Theorem 5I.3, this is a finite test for property 3. It is a test of the actual corner automorphism, not a claim that \(eAe\) or \(eBe\) is a copy of \(N\). In fact, whenever the whole quotient passes the theorem's other conditions, Proposition 5H.3 still gives norm supremum one for the multiplicativity defects of both finite compressions. The fixedness of \(e\) under the exchange does not imply commutation with either copy. Both full relative-commutant equalities and the normal onto \(\Theta\) in (5I.10) remain required. No eligible quotient is constructed by this criterion.
+
+![A self-adjoint implementer in a nonzero fixed corner lifts through a full family of partial isometries to a unique internal self-adjoint implementer on the whole factor.](figures/full-corner-inner-exchange.svg)
+
+*Figure 12.* Proposition 5I.5 uses a full corner, meaning that its central support in the factor is the identity. The initial projections \(p_i\) may overlap inside \(e\); it is the range projections \(q_i\) and their images under \(\beta\) that are orthogonal. These two partitions make the sum in (5I.16) an actual unitary of \(R\). Its corner value fixes its phase and gives \(u^2=1_R\). Corollary 5I.6 obtains a finite fixed corner from an internal symmetry by a spectral cut in one of its two eigenspaces; it assumes no trace-scaling theorem. The finite centre test concerns \(\beta_e\), while the two compressed copies remain subject to Proposition 5H.3. The full source target remains Connes, Corollary 11 and the Sakai note, author-hosted PDF 44–45; the universal quotient is Theorem 5I.3. This conditional test retains the unresolved existence and ambient-isomorphism conditions.
+
+
+
+## 5J. Stable tensor squares and the fixed free factor
+
+The source problem fixes the abstract ambient factor, as well as the two represented copies. There is an additional obstruction to the one-sided pair in (5F.5): its two algebras have different abstract factor types. The analytic input in this section is Ozawa's primeness theorem. We state that input explicitly and prove the finite-corner passage needed for the infinite amplification.
+
+Put \(N=L(F_\infty)\), with its normalized group trace \(\tau_N\), and write
+\[
+ \begin{aligned}
+ \mathcal S(N)&=B(\ell^2\mathbb N)\overline\otimes N,\\
+ T_N&=\operatorname{Tr}\otimes\tau_N.
+ \end{aligned}
+ \tag{5J.1}
+\]
+We use the same notation \(\mathcal S(P)=B(\ell^2\mathbb N)\overline\otimes P\) for any finite factor \(P\). The trace of a rank-one matrix identity corner in (5J.1) is one. A finite factor is called *prime* if a spatial tensor decomposition into two factors forces at least one tensor factor to be finite dimensional.
+
+### The finite-factor input
+
+**Lemma 5J.1 (the primeness input for this countable free factor).** The specified \(N\) is a noninjective prime \(\mathrm{II}_1\) factor.
+
+*Proof at the stated analytic input.* We use [Ozawa], Theorem 1 and Proposition 2: the factor of the free group on two generators is solid, and a noninjective subfactor of a solid factor is prime. These are the analytic results supplied by that paper; the following checks identify their application to the actual countably generated \(N\).
+
+Let \(F_2=\langle a,b\rangle\). The words
+\[
+ c_n=a^n b a^{-n},\qquad n=0,1,2,\ldots,
+ \tag{5J.2}
+\]
+freely generate a countably generated free subgroup \(H\). Indeed, after grouping equal adjacent indices, a nonempty reduced word in these generators has the form
+\[
+ \begin{aligned}
+ &a^{n_1}b^{k_1}a^{n_2-n_1}b^{k_2}\cdots\\
+ &\qquad\cdots a^{n_r-n_{r-1}}b^{k_r}a^{-n_r},
+ \end{aligned}
+ \tag{5J.3}
+\]
+where every \(k_j\neq0\) and adjacent \(n_j\)'s differ. The internal powers of \(a\) are nonzero, so the displayed \(b\)-blocks cannot cancel. The left \(H\)-orbits \(H x\) decompose the restricted left regular representation into copies of its own regular representation, through the basis correspondence \(h x\mapsto h\). Consequently the inclusion gives a normal unital trace-preserving embedding of \(N\) into \(L(F_2)\). No isomorphism between the two free group factors is assumed.
+
+To check noninjectivity, suppose a conditional expectation
+\(F:B(\ell^2(F_\infty))\to N\) exists, with no normality requirement. For a bounded function \(f\) on the group let \(D_f\) be its diagonal multiplication operator. Then
+\[
+ m(f)=\tau_N(F(D_f))
+ \tag{5J.4}
+\]
+is a state invariant under left translation, because the expectation is \(N\)-bimodular, the group unitaries implement those translations, and \(\tau_N\) is tracial. The quotient of \(F_\infty\) onto \(F_2\) would give an invariant mean on \(F_2\) by pullback of bounded functions. The explicit reduced-word obstruction in [Means, Følner sets, and regular representations, Example 4.4](means-folner-sets-and-regular-representations.md#4-fixed-points-and-permanence) rules this out. The conditional-expectation characterization of injectivity therefore makes \(N\) noninjective. Ozawa's stated result now gives primeness. \(\square\)
+
+Normality was deliberately absent from this last expectation test. The no-normal-expectation result of Section 5G also applies to injective infinite-dimensional finite factors; Exercise 6.36 exhibits this distinction concretely.
+
+### Finite corners under an arbitrary stable isomorphism
+
+**Lemma 5J.2 (finite trace and comparison).**
+
+1. Let \(R\) be a factor with a faithful normal semifinite trace \(T\). If projections \(e,f\in R\) have finite trace and \(T(e)\leq T(f)\), there is a partial isometry \(v\in R\) with \(v^*v=e\) and \(vv^*\leq f\). If their traces agree, one can have \(vv^*=f\).
+2. Suppose \(p\neq0\) is a projection in a semifinite von Neumann algebra \(R\), and a normal unital isomorphism \(i:N\to pRp\) is given. For every faithful normal semifinite trace \(T\) on \(R\), one has \(0<T(p)<\infty\).
+
+*Proof.* In a factor, two nonzero projections \(e_0,f_0\) satisfy \(f_0Re_0\neq0\). To see this, the projection onto the closed span of \(Re_0\mathcal H\) commutes with both \(R\) and \(R'\), hence is central. It contains \(e_0\), so it is the identity. If \(f_0Re_0=0\), the nonzero \(f_0\) would annihilate that dense subspace, a contradiction.
+
+Choose by Zorn's lemma a maximal partial isometry with initial projection at most \(e\) and final projection at most \(f\), ordered by extension on orthogonal initial and final complements. An increasing chain has a strong-star upper bound: its initial and final projections increase, and the squared norm of a difference on a vector is the corresponding difference of projection quadratic forms. If both residual projections are nonzero, the polar decomposition of a nonzero element between them extends the partial isometry, contradicting maximality. If only the initial residual were nonzero, finiteness, traciality and faithfulness would give \(T(e)>T(f)\). Thus the initial residual is zero. Equality of the traces makes the final residual zero as well. This proves (1).
+
+For (2), semifiniteness supplies a nonzero projection \(r\leq p\) with \(T(r)<\infty\). More explicitly, choose a nonzero positive finite-trace element below \(p\), then a nonzero spectral projection above a positive threshold. Put \(r_0=i^{-1}(r)\), so \(\tau_N(r_0)>0\).
+
+The algebra \(N\) contains projections of every trace in \([0,1]\). For completeness, one free group generator gives a unitary \(u\) with \(\tau_N(u^k)=0\) for every nonzero integer \(k\). Its spectral measure is normalized arc length on the circle: trigonometric polynomials determine the measure, and their continuous uniform closure is all continuous functions. Borel spectral projections for arcs thus have their prescribed arc-length traces. In particular, for any positive integer \(d\) there is a partition of \(1_N\) into \(d\) projections of trace \(1/d\).
+
+Choose \(d\) with \(1/d\leq\tau_N(r_0)\), and such a partition \((e_j)_{j=1}^d\). Apply (1) inside the finite factor \(N\): each \(e_j\) is equivalent to a subprojection of \(r_0\). Their images under \(i\) are consequently equivalent to subprojections of \(r\). Hence
+\[
+ 0<T(p)=\sum_{j=1}^d T(i(e_j))
+       \leq d\,T(r)<\infty.
+ \tag{5J.5}
+\]
+Faithfulness gives the strict lower bound. This argument proves finite trace without assuming that the given isomorphism preserves any chosen trace normalization. \(\square\)
+
+**Theorem 5J.3 (the stable tensor square has a different factor type).** There is no normal unital isomorphism
+\[
+ \mathcal S(N)\ \longrightarrow\
+ B(\ell^2\mathbb N)\overline\otimes N\overline\otimes N.
+ \tag{5J.6}
+\]
+
+*Proof.* Suppose \(\Phi\) is such an isomorphism and put
+\(p=\Phi(E_{00}\otimes1_N)\). Its corner is normally isomorphic to \(N\). By Lemma 5J.2(2), the canonical product trace of \(p\) is a number \(t\) with \(0<t<\infty\).
+
+Write \(t=k+s\), where \(k\) is a nonnegative integer and \(0\leq s<1\). Choose a projection \(r_s\in N\) with trace \(s\), as in the proof of Lemma 5J.2, and define in \(\mathcal S(N)\)
+\[
+ q=\sum_{j=0}^{k-1}E_{jj}\otimes1_N
+                 +E_{kk}\otimes r_s.
+ \tag{5J.7}
+\]
+The sum is empty when \(k=0\); when \(s=0\), the last term is zero. Thus \(q\neq0\) and \(T_N(q)=t\). In the target of (5J.6), \(p\) and \(q\otimes1_N\) have the same finite trace. Lemma 5J.2(1) gives a partial isometry with these as its initial and final projections. Conjugating the corners by it yields normal unital isomorphisms
+\[
+ \begin{aligned}
+ N&\cong p\,\mathcal S(N\overline\otimes N)\,p\\
+  &\cong K\overline\otimes N,\\
+ K&=q\mathcal S(N)q.
+ \end{aligned}
+ \tag{5J.8}
+\]
+The tensor-corner equality in (5J.8) follows by compressing the algebraic spatial tensors and taking their ultraweak closure.
+
+Here \(K\) is a diffuse finite factor. Its normalized trace is \(T_N(\cdot)/t\). To check factoriality directly, a nontrivial central projection \(z\) in the corner would give \(z\mathcal S(N)(q-z)=0\), contradicting the nonzero-corner fact used in Lemma 5J.2. For diffuseness, a minimal projection \(e\) in that corner would be minimal in \(\mathcal S(N)\). A nonzero element of
+\((E_{00}\otimes1)\mathcal S(N)e\), followed by polar decomposition, would carry \(e\) to a minimal projection in
+\((E_{00}\otimes1)\mathcal S(N)(E_{00}\otimes1)\cong N\). This contradicts diffuseness of \(N\).
+
+Both tensor factors on the right of (5J.8) are therefore infinite-dimensional finite factors. This contradicts Lemma 5J.1. \(\square\)
+
+**Corollary 5J.4 (the one-sided repair misses the fixed whole-factor type).** At the actual represented position (5F.5),
+\[
+ \begin{aligned}
+ M_1&\cong\mathcal S(N),\\
+ P_1&\cong\mathcal S(N),\\
+ Q_1&\cong\mathcal S(N\overline\otimes N).
+ \end{aligned}
+ \tag{5J.9}
+\]
+In particular, no normal unital isomorphism from \(M_1\) onto \(Q_1\) exists. No normal automorphism of \(M_1\), and no unitary in the full Hilbert-space operator algebra, takes \(P_1\) onto \(Q_1\).
+
+*Proof.* Lemmas 5A.2–5A.3 identify the two countably generated free group factors with \(N\); the group isomorphism and inversion used in Theorem 5A.7 give the normal identifications. Equations (5A.9), (5B.1) and (5F.5) then give (5J.9). Combine the countably infinite matrix Hilbert coordinates by a basis unitary, without altering the finite coefficient factors. Theorem 5J.3 distinguishes the displayed abstract algebras. An ambient automorphism or any Hilbert-space unitary conjugacy would restrict to the forbidden normal isomorphism between \(P_1\) and \(Q_1\). \(\square\)
+
+![A hypothetical stable isomorphism carries a unit matrix corner to finite trace t; comparison exposes a tensor decomposition of the prime free factor](figures/free-factor-stable-tensor-obstruction.svg)
+
+*Figure 13. The trace parameter \(t\) is arbitrary and positive; trace preservation is not assumed. Lemma 5J.2 proves that the image corner has finite trace. The projection (5J.7) places that same trace in the first matrix/free-factor coordinate, so comparison gives (5J.8). Both coefficient factors are diffuse, contradicting the explicitly named primeness input. Corollary 5J.4 applies this calculation to the literal one-sided pair (5F.5).*
+
+Theorem 5J.3 uses a spatial tensor-square identification. Applying it to a different candidate would first require such an identification of that actual factor. The separately normal factor quotients in Theorem 5I.3 retain their stated mutual-commutant, generation, internal-exchange and stable-ambient requirements. Their unrestricted existence remains unresolved.
+
 
 ## 6. Exercises with complete solutions
 
@@ -1363,7 +1935,7 @@ Its minimum is \(1/2\), attained by \(f=1/2\). Thus even on a finite proper stag
 
 **Exercise 6.6.** *Level 3.* Which source conclusion has this factor example disproved: existence of some suitable pair in Connes's Corollary 11, or validity of the canonical tensor pair at the weaker measurable scope? Why is it consistent with Claude-SQ's actual Proposition 8.5?
 
-*Solution.* The explicit unitary disproves the relative-commutant and generation claims for the particular canonical tensor pair at the weaker scope. It does not rule out a different endomorphism and symmetry in \(M\), so it does not refute the existential Corollary 11. Claude-SQ states a standard Borel arrow hypothesis for all of Sections 5 and 8, including Proposition 8.5. Our arrow space is not standard Borel by Proposition 2.1. Its proof uses the standard fibre-density Proposition 5.1; Exercise 6.3 shows that the required density is false here. The positive standard Borel theorem and the broader unresolved source comparison therefore remain separate.
+*Solution.* The explicit unitary disproves the relative-commutant and generation claims for the particular canonical tensor pair at the weaker scope. It does not rule out a different endomorphism and symmetry in \(M\), so it does not refute the existential Corollary 11. Claude-SQ states a standard Borel arrow hypothesis for all of Sections 5 and 8, including Proposition 8.5. Our arrow space is not standard Borel by Proposition 2.1. Its proof uses the standard fibre-density Proposition 5.1; Exercise 6.3 shows that the required density is false here. The positive standard Borel theorem therefore does not settle the existential statement under the broader measurable-space hypotheses.
 
 **Exercise 6.7.** *Level 2.* Prove the discrete regular commutation theorem (5A.3) by matrix coefficients. Justify both changes of variable and absolute convergence, rather than assuming that a general convolution operator is a bounded finite-support limit.
 
@@ -1693,16 +2265,206 @@ Both are nonzero positive operators, of norms \(1/4\) and \(1/2\), respectively.
 
 *Grading: 2 points* for the general compression formula and both full ranges; *2 points* for the exact commutator and its norm; *2 points* for both positive defects and the precise closure and scope comparison.
 
+**Exercise 6.29 (the GNS implementer need not be internal).** *Level 2.* Let \(R=M_2(\mathbb C)\otimes M_2(\mathbb C)=M_4(\mathbb C)\), with normalized trace \(\phi\), and let \(s\) interchange the two tensor coordinates of \(\mathbb C^2\otimes\mathbb C^2\). Put \(\beta=\operatorname{Ad}s\). On the GNS Hilbert space \(L^2(R,\phi)\), let \(L(R)\) denote left multiplication. Compute the trace-preserving implementing unitary \(U[\xi]=[\beta(\xi)]\). Prove that \(U\notin L(R)\), even though \(\beta\) is inner. Determine the centre of \(\mathcal C_\beta\).
+
+*Solution.* In the ordered basis \((e_0\otimes e_0,e_0\otimes e_1,e_1\otimes e_0,e_1\otimes e_1)\),
+
+\[
+s=\begin{pmatrix}
+1&0&0&0\\0&0&1&0\\0&1&0&0\\0&0&0&1
+\end{pmatrix}.
+\tag{6.29a}
+\]
+
+Thus \(s=s^*\), \(s^2=1\), and \(s(a\otimes b)s=b\otimes a\). Traciality makes \(\phi\) invariant under \(\beta\), so
+
+\[
+\begin{aligned}
+U[\xi]&=[s\xi s],\\
+\|U[\xi]\|_2&=\|[\xi]\|_2,\\
+U[1]&=[1].
+\end{aligned}
+\tag{6.29b}
+\]
+
+The map is onto and of square one, hence unitary. It implements \(\beta\) on \(L(R)\) by direct multiplication. If \(U=L_x\) for some \(x\in R\), applying it to \([1]\) gives \([x]=[1]\). Faithfulness of \(\phi\) gives \(x=1\), so \(U\) would be the identity. But
+
+\[
+U[E_{00}\otimes1]=[1\otimes E_{00}]
+\ne[E_{00}\otimes1].
+\tag{6.29c}
+\]
+
+The matrices differ, and their \(L^2\) classes differ by faithfulness. This proves \(U\notin L(R)\). The internal implementer in the represented algebra is \(L_s\); unlike \(U\), it does not fix \([1]\), since \(s\ne1\). Proposition 5I.1 gives
+
+\[
+\begin{gathered}
+Z(\mathcal C_\beta)=\mathbb C1+\mathbb C\pi(s)v,\\
+\mathcal C_\beta\cong M_4\oplus M_4.
+\end{gathered}
+\tag{6.29d}
+\]
+
+The canonical GNS implementer and an internal implementing unitary are different operators. Invariance of a state proves the existence of the former, which alone decides neither innerness nor the required ambient isomorphism in Theorem 5I.3.
+
+**Exercise 6.30 (recover the symmetry from a central projection).** *Level 3.* In Proposition 5I.1 suppose \(c\) is a central projection of \(\mathcal C_\beta\), with \(c\ne0,1\). Write \(c=\pi(x)+\pi(y)v\). Recover an internal self-adjoint implementer of \(\beta\) directly from \(y\), without first choosing a phase in a polar decomposition. Show that \(c\) and \(1-c\) give the two opposite choices.
+
+*Solution.* Commuting with \(\pi(R)\) gives \(x=\lambda1_R\) and \(y\beta(a)=ay\) for every \(a\). Commuting with \(v\) gives \(\beta(y)=y\). The off-diagonal coefficient of the adjoint is \(\beta(y^*)\), so self-adjointness of \(c\) gives \(y=y^*\); also \(\lambda\) is real. If \(y=0\), projectionhood would give \(\lambda=0\) or \(1\), contrary to the hypothesis. Thus \(y\ne0\).
+
+Squaring (5I.3) and comparing the diagonal and off-diagonal coefficients with \(c\) gives
+
+\[
+\begin{gathered}
+\lambda^2 1_R+y^2=\lambda1_R,\\
+2\lambda y=y.
+\end{gathered}
+\tag{6.30a}
+\]
+
+The second equality and \(y\ne0\) force \(\lambda=1/2\). The first gives \(y^2=1_R/4\). Therefore
+
+\[
+s=2y=s^*,\qquad s^2=1_R,\qquad \|y\|=1/2.
+\tag{6.30b}
+\]
+
+The relation \(y\beta(a)=ay\) now implies \(\beta(a)=sas\). Hence
+
+\[
+\begin{aligned}
+c&=\tfrac12(1+\pi(s)v),\\
+1-c&=\tfrac12(1-\pi(s)v).
+\end{aligned}
+\tag{6.30c}
+\]
+
+The complement has off-diagonal coefficient \(-y\), and recovers \(-s\). These are the two normalized implementers: two unitaries inducing the same automorphism of a factor differ by a scalar, and square one restricts that scalar to \(\pm1\). This recovers a unitary in the actual coefficient algebra \(R\); the remaining relative-commutant and stable ambient conditions of Theorem 5I.3 still require their own proofs.
+
+
+**Exercise 6.31 (the finite invariant boundary).** *Level 2.* Let \(R=M_m(\mathbb C)\overline\otimes B(\ell^2\mathbb N)\), with the product of the unnormalized matrix traces, let \(D=M_m(\mathbb C)\otimes1\), and let \(h=1_m\otimes e_{11}\). Compute the overlap, both defects and the trace displacement in Proposition 5H.3. Which exact hypothesis fails?
+
+*Solution.* Here \(T_R(h)=m\), and \(h\) commutes with every \(u\in\mathcal U(D)\). Consequently
+\[
+\begin{gathered}
+T_R(h u^*h u h)=m,\qquad
+\delta_h(u)=0,\\
+(1_R-h)u h=0,\qquad
+\|h-u^*h u\|_{2,T_R}^{\,2}=0.
+\end{gathered}
+\]
+The relative commutant is \(1_m\otimes B(\ell^2\mathbb N)\), which contains the nonzero finite-trace projection \(h\). Thus condition 1 fails. Compression is exactly the normal isomorphism from \(D\) onto \(hRh\), after suppressing the one-dimensional second coordinate. The ambient trace is semifinite and infinite on the identity; these facts alone do not create a compression obstruction. Award 1 point for the exact values and 1 for the failed relative-commutant condition and the homomorphism.
+
+**Exercise 6.32 (sharp constants in a regular position).** *Level 3.* Let \(\Gamma=F_\infty\), \(R=B(\ell^2\Gamma)\), \(T_R=\operatorname{Tr}\), and \(D=\mathcal L_\Gamma\). For a nonempty finite \(F\subset\Gamma\), let \(h_F\) project onto the span of its basis vectors. Prove condition 1 of Proposition 5H.3. Find a single unitary attaining all its sharp bounds for \(h_F\). Explain why this is not the coefficient factor required by Theorem 5H.1.
+
+*Solution.* Lemma 5A.1 gives \(D'=R_\Gamma\). For any projection \(p\in R_\Gamma\), commutation with the left translations makes every basis diagonal equal to \(c=\langle p\delta_e,\delta_e\rangle\ge0\). Thus
+\[
+\operatorname{Tr}(p)=\sum_{g\in\Gamma}c.
+\]
+If this is finite, then \(c=0\). Since \(p\) is a projection, \(\|p\delta_g\|^2=c=0\) for every \(g\), so \(p=0\). This proves condition 1.
+
+Choose \(g\notin FF^{-1}\), which is possible because \(\Gamma\) is infinite. Then \(gF\cap F=\varnothing\). For \(u=\lambda_g\), this disjointness gives \(h_Fu h_F=0\), hence
+\[
+\begin{gathered}
+T_R(h_Fu^*h_Fu h_F)=0,\\
+\delta_{h_F}(u)=h_F,\qquad
+\|(1_R-h_F)u h_F\|=1,\\
+\|h_F-u^*h_Fu\|_{2,T_R}^{\,2}=2|F|.
+\end{gathered}
+\]
+The last identity uses the orthogonal supports of \(h_F\) and \(u^*h_Fu\); disjointness for \(g^{-1}F\) is equivalent to the same condition on \(g\). Thus all sharp bounds are attained in this example. The algebra \(D\) is the prescribed finite free-group factor, but this ambient \(R\) is type \(\mathrm I_\infty\), with rank-one projections. The coefficient factor in Theorem 5H.1 must be type \(\mathrm{II}_\infty\) and admit its actual stable ambient isomorphism. The example proves sharpness without supplying those data. Award 2 points for the commutant/trace argument, 2 for the unitary and exact constants, and 2 for the ambient-type distinction.
+
+
+**Exercise 6.33 (lifting a finite matrix exchange).** *Level 2.* Put \(R=M_2(\mathbb C)\overline\otimes B(\ell^2\mathbb N)\), let \(s=\begin{pmatrix}0&1\\1&0\end{pmatrix}\), and let \(\beta=\operatorname{Ad}(s\otimes1)\). With matrix units \((E_{ij})_{i,j\ge0}\) on the second coordinate, take \(e=1_2\otimes E_{00}\). Find the corner implementer, the two central projections of \(\mathcal C_{\beta_e}\), and an explicit family in (5I.15). Compute the global lift. Why does a nonzero corner not fixed by \(\beta\) fail to define the same test?
+
+*Solution.* The corner implementer is \(t=s\otimes E_{00}\), with \(t=t^*\), \(t^2=e\). With the corner identity in the diagonal, the two central projections are
+
+\[
+\frac12\begin{pmatrix}e&\pm t\\\pm t&e\end{pmatrix}.
+\]
+
+They are nonzero complementary projections by direct multiplication, and are central by Proposition 5I.1. Choose \(v_n=1_2\otimes E_{n0}\). Then \(p_n=e\), \(q_n=1_2\otimes E_{nn}\), \(\beta(v_n)=v_n\), and
+
+\[
+w_n=s\otimes E_{nn},\qquad
+u=\sum_{n\ge0}w_n=s\otimes1.
+\]
+
+This is the unique lift with \(ue=t\). In contrast, for \(f=\begin{pmatrix}1&0\\0&0\end{pmatrix}\otimes E_{00}\), \(\beta(f)\) projects onto the second basis vector in the first tensor leg and the zeroth basis vector in the second. It is orthogonal to \(f\). Thus \(\beta\) maps \(fRf\) onto a different corner; the compressed map \(x\mapsto f\beta(x)f\) sends its identity \(f\) to zero. It is not a unital corner automorphism, despite the global automorphism being inner.
+
+**Exercise 6.34 (an exact corner exchange with a full compression defect).** *Level 3.* On \(H=\ell^2(F_\infty)\), let \(I\delta_g=\delta_{g^{-1}}\), let \(R=B(H)\), and put \(\beta=\operatorname{Ad}I\). For a free generator \(a\), let \(h\) project onto the span of \(\delta_e,\delta_a,\delta_{a^{-1}}\), in that order. Compute the matrix of \(t=hIh\), the compression \(h\lambda_a h\), and its unitary multiplicativity defect. Relate the result to the finite-corner test and to Theorem 5I.3.
+
+*Solution.* Inversion preserves this three-element set, so \(\beta(h)=h\). The corner matrices are
+
+\[
+t=\begin{pmatrix}1&0&0\\0&0&1\\0&1&0\end{pmatrix},
+\qquad
+h\lambda_a h=\begin{pmatrix}0&0&1\\1&0&0\\0&0&0\end{pmatrix}.
+\]
+
+The latter sends the predecessor of the identity to the identity, the identity to \(a\), and \(a\) outside the selected set. Consequently
+
+\[
+\begin{aligned}
+&h\lambda_a^*\lambda_a h
+ -(h\lambda_a h)^*(h\lambda_a h)\\
+&\qquad=\begin{pmatrix}0&0&0\\0&1&0\\0&0&0\end{pmatrix}.
+\end{aligned}
+\]
+
+Its norm is exactly one, even though \(t\) is an exact internal symmetry of the fixed corner. Proposition 5I.5 lifts \(t\) to \(I\); uniqueness follows because \(Ih=t\). The corner centre test is positive by Proposition 5I.1. This does not make compression of either finite group-factor copy multiplicative. The uncompressed left and right factors have the mutual commutants and join computed in Exercise 6.27, but \(R\) is type I, so the stable ambient isomorphism required in (5I.10) still fails. The example satisfies the corner exchange test without satisfying the whole source target.
+
+
+
+**Exercise 6.35 (a nonunit trace parameter).** *Level 2.* In the contradiction argument of Theorem 5J.3 take \(t=5/2\). Give the comparison projection \(q\) explicitly and identify the normalized trace of its corner \(K\). Explain why setting \(t=1\) without proof would lose a required case.
+
+*Solution.* Choose an arc projection \(r\in N\) of trace \(1/2\). Then
+\[
+ \begin{aligned}
+ q&=E_{00}\otimes1+E_{11}\otimes1+E_{22}\otimes r,\\
+ T_N(q)&=\frac52.
+ \end{aligned}
+\]
+The corner \(K=q\mathcal S(N)q\) is a diffuse finite factor by the proof of Theorem 5J.3, and its normalized trace is \((2/5)T_N|_K\). The projection \(q\otimes1_N\) has trace \(5/2\) in the target. Finite-trace comparison identifies its corner with the hypothetical image corner, giving \(N\cong K\overline\otimes N\), which contradicts primeness. The assumed isomorphism was not specified to preserve the canonical semifinite trace. Its unit matrix corner can therefore only be assigned the initially unknown positive finite parameter proved in Lemma 5J.2; the argument must handle every such parameter. This exercise constructs the comparison corner, not the impossible isomorphism.
+
+**Exercise 6.36 (a finite factor with a nonnormal expectation).** *Level 3.* Let \(G\) be the countable group of finite permutations of the positive integers, and let \(G_m\) be its subgroup permuting the first \(m\) integers. In the regular representation put \(N_G=L(G)\). Construct a conditional expectation \(B(\ell^2G)\to N_G\) that is not normal. Check that \(N_G\) is an infinite-dimensional finite factor. Explain why Lemma 5G.1 alone could not establish the noninjectivity used in Lemma 5J.1.
+
+*Solution.* Every nonidentity finite permutation has infinitely many conjugates. Choose a point in its finite support and conjugate by swaps with points outside that support; the supports of the resulting conjugates contain distinct new points. The regular commutation and trace arguments of Lemmas 5A.1–5A.2 therefore give a scalar centre and a faithful normal tracial state. Infinitely many linearly independent group unitaries make \(N_G\) infinite dimensional.
+
+Using right translations, define normal unital completely positive maps
+\[
+ F_m(T)=\frac1{m!}\sum_{g\in G_m}\rho_g T\rho_g^*,
+ \qquad T\in B(\ell^2G).
+ \tag{6.4}
+\]
+They are \(N_G\)-bimodular and fix \(N_G\), because all the right translations commute with that left group algebra. The operator ball of radius \(\|T\|\) is ultraweakly compact for each \(T\). Taking a cluster point of the maps in the product of these balls gives a linear unital completely positive map \(F\), with pointwise ultraweak convergence along one subnet. Positivity at every finite matrix level, linearity and bimodularity pass to that subnet limit.
+
+For each fixed \(h\in G\), eventually \(h\in G_m\), and the finite-group average satisfies \(\rho_h F_m(T)\rho_h^*=F_m(T)\). Thus the range of \(F\) commutes with every right translation. Lemma 5A.1 puts the range in \(N_G\). Since \(F\) fixes that algebra, it is the claimed conditional expectation.
+
+Let \(p_g\) project onto \(\mathbb C\delta_g\). Directly,
+\[
+ \begin{aligned}
+ F_m(p_e)&=\frac1{m!}\sum_{g\in G_m}p_g,\\
+ \|F_m(p_e)\|&=\frac1{m!}\longrightarrow0.
+ \end{aligned}
+ \tag{6.5}
+\]
+Hence \(F(p_e)=0\), and \(N_G\)-bimodularity gives \(F(p_g)=0\) for every \(g\). The finite-rank projections onto \(\ell^2G_m\) increase strongly to one, but all have image zero while \(F(1)=1\). Therefore \(F\) is not normal. This is consistent with Lemma 5G.1, which excludes normal expectations. The expectation criterion for injectivity allows nonnormal expectations, so the distinct nonamenability argument in Lemma 5J.1 is necessary.
+
+
 ## 7. Source comparison and remaining scope
 
 Connes's author-hosted Corollary 11, PDF 44–45, assumes a properly infinite random-operator factor on a principal measurable groupoid and asks for two mutually commuting copies, each the relative commutant of the other, generating the factor and exchanged by a symmetry of square one. The source leaves the proof as an exercise and mentions the equivalence of the field with its tensor square.
 
-The full current Claude-SQ Proposition 8.5 constructs the tensor pair and proves relative-commutant equality under the **actual standing standard Borel hypothesis of Section 8**. Its Remark 8.6 explicitly does not prove generation. [Commuting copies in principal groupoid factors](commuting-copies-in-principal-groupoid-factors.md), Sections 1–4, supplies the standard Borel generation proof and semifinite factor-support reduction. Neither proof is contradicted by the present construction.
+[Claude-SQ], Proposition 8.5, constructs the tensor pair and proves relative-commutant equality under the **standard Borel hypothesis of its Section 8**. Its Remark 8.6 explicitly does not prove generation. [Commuting copies in principal groupoid factors](commuting-copies-in-principal-groupoid-factors.md), Sections 1–4, supplies the standard Borel generation proof and semifinite factor-support reduction. Neither proof is contradicted by the present construction.
 
-The present full calculation supplies a properly infinite factor at the weaker countably generated, point-separated, faithful proper, sigma-finite scope. It demonstrates that the factor premise does not restore the missing fibre-density step, and exhibits the precise extra relative-commutant operator for the canonical tensor construction. An existential counterexample or a different full construction would still be needed to settle Connes's broader Corollary 11. Its source parent remains open; the other recorded source obligations and final prerequisite/source validation remain.
+The present full calculation supplies a properly infinite factor at the weaker countably generated, point-separated, faithful proper, sigma-finite scope. It demonstrates that the factor premise does not restore the missing fibre-density step, and exhibits the precise extra relative-commutant operator for the canonical tensor construction. An existential counterexample or a different full construction would still be needed to settle Connes's broader Corollary 11. At this weak measurable generality, neither a full construction nor an existential counterexample is proved here.
 
 Bibliography:
 
-- [Connes] A. Connes, *Sur la théorie non commutative de l'intégration*, in *Algèbres d'opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, pp. 19–143; [author-hosted later typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), Corollary 11, PDF 44–45. The later version and the original Springer facsimile are distinguished in the source records.
-- [Claude-SQ] Claude (Anthropic), *Square-integrable representations and random operators*, existing programme *Noncommutative integration*, September 2026, standing hypotheses in Section 1.1, Sections 5 and 8, full Proposition 8.5 and Remark 8.6. Its standard Borel boundary is retained; provider sources remain read only.
+- [Connes] A. Connes, *Sur la théorie non commutative de l'intégration*, in *Algèbres d'opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, pp. 19–143; [author-hosted later typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), Corollary 11, PDF 44–45. These page locators refer to the free author-hosted typeset edition.
+- [Claude-SQ] Claude (Anthropic), Square-integrable representations and random operators, CC0, written programme *Noncommutative integration*, September 2026, standing hypotheses in Section 1.1, Sections 5 and 8, full Proposition 8.5 and Remark 8.6. The standard Borel hypothesis is part of the cited theorem.
 - [Owned predecessors] The complete subgroup, perfect-set and binary-field proofs are in the two linked preceding lessons. The countable-label measures, full transverse classification, properly infinite factor and controlled-translation argument here are written out in full.
+
+- [Wiersma] Matthew Wiersma, *Weak\* tensor products for von Neumann algebras*, arXiv:1506.01671v1 (2015), Sections 2–3, especially Propositions 2.4 and 3.2. [Free exact preprint](https://arxiv.org/pdf/1506.01671v1). The universal normal-completion framework is used with an explicit normal-marginal GNS argument in Section 5I.
+
+- [Ozawa] Narutaka Ozawa, *Solid von Neumann Algebras*, arXiv:math/0302082v2, 24 February 2003, Theorem 1 and Proposition 2, p. 1. [Free exact preprint](https://arxiv.org/pdf/math/0302082v2). Section 5J uses the primeness conclusion for the specified noninjective subfactor and proves its passage to arbitrary finite-trace corners. The analytic solidity and primeness results are named inputs; the section does not supply a separate proof of all their C*-algebraic prerequisites.

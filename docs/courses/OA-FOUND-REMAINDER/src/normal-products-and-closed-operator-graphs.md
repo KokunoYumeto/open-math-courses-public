@@ -1,12 +1,12 @@
 # Normal products and closed operator graphs
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*AI-assisted text by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original contributions: CC0 1.0.*
 
 The spatial tensor product of von Neumann algebras supports normal maps and normal functionals. A commuting action need not realize that product normally. We will characterize normal factorization by a product functional, then use two-by-two operator matrices to recognize unbounded observables through their graphs.
 
 Prerequisites are [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html), [Tensor independence and ideals](../reader/tensor-independence-and-ideals.html), [Completely positive maps](../../foundations-of-von-neumann-algebras/completely-positive-maps.html#OA-FND-CM-05), and [Polar decomposition of functionals](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-02). For the unbounded graph calculation, use the proved [closed-form representation theorem](../reader/supplements/closed-positive-forms.html#OA-MOD-QF-03) and [spectral calculus with exact domains](../reader/supplements/spectral-calculus-kernel.html#OA-MOD-SK-05). Section 3 derives the closed-operator adjoint and polar decomposition from these results before using them. There is no separability or countable-decomposability assumption on the algebras or Hilbert spaces.
 
-Freely readable treatments are Blackadar’s [Operator Algebras](https://bruceblackadar.com/Mathematics/Cycr.pdf), on normal completely positive tensor maps, slices and product states, and Peterson’s [Notes on operator algebras](https://math.vanderbilt.edu/peters10/teaching/spring2015/OperatorAlgebras.pdf), April 6, 2015, on graph adjoints, positive operators, spectral calculus and polar decomposition. The proofs here include the normal preadjoint extension, all four graph entries and the nondense-domain formula. The polar isometry’s initial space is the closure of the range of the absolute value. Takesaki, Stinespring, and Rieffel and van Daele provide further scholarly context.
+Freely readable treatments are Blackadar’s [Operator Algebras](https://bruceblackadar.com/Mathematics/Cycr.pdf), on normal completely positive tensor maps, slices and product states, and Peterson’s [Notes on operator algebras](https://math.vanderbilt.edu/peters10/teaching/spring2015/OperatorAlgebras.pdf), April 6, 2015, on graph adjoints, positive operators, spectral calculus and polar decomposition. The proofs here include the normal preadjoint extension, all four graph entries and the nondense-domain formula. The polar isometry’s initial space is the closure of the range of the absolute value. Further freely readable references include Stinespring on completely positive maps and Rieffel and van Daele on real Hilbert subspaces and modular theory.
 
 ## 1. Normal completely positive maps tensor normally
 
@@ -17,16 +17,22 @@ Freely readable treatments are Blackadar’s [Operator Algebras](https://brucebl
 \]
 Its norm is \(\|\Phi\|\|\Psi\|\).
 
-**Proof.** The C*-tensor theorem gives a completely positive map \(\Theta_0:M\otimes_{\min}N\to P\otimes_{\min}Q\) with that norm. On finite sums of normal product functionals define
+**Proof.** Theorem 4.1 of [Tensor norms and independent systems](../reader/tensor-norms-and-independent-systems.html#4-positive-maps-pass-to-the-appropriate-completion) gives a completely positive map \(\Theta_0:M\otimes_{\min}N\to P\otimes_{\min}Q\) with that norm. On finite sums of normal product functionals define
 \[
 T\Big(\sum_i\alpha_i\otimes\beta_i\Big)
 =\sum_i(\alpha_i\circ\Phi)\otimes(\beta_i\circ\Psi).
 \]
 This is the Banach adjoint of \(\Theta_0\) on the indicated subspace. In particular it is well defined and bounded by \(\|\Phi\|\|\Psi\|\). Normality of the two factor maps makes every displayed factor functional normal.
 
-The product-predual theorem in *Spatial tensor products* says that these finite sums are norm dense in the predual of each spatial tensor product, and that their norm equals their functional norm on the minimal C*-product. Hence \(T\) extends to a map \((P\bar\otimes Q)_*\to(M\bar\otimes N)_*\). Its adjoint \(\Theta=T^*\) is normal and agrees with \(\Theta_0\) on algebraic tensors.
+The product-predual theorem in *Spatial tensor products* says that these finite sums are norm dense in the predual of each spatial tensor product, and that their norm equals their functional norm on the minimal C\*-product. Hence \(T\) extends to a map \((P\bar\otimes Q)_*\to(M\bar\otimes N)_*\). Its adjoint \(\Theta=T^*\) is normal and agrees with \(\Theta_0\) on algebraic tensors.
 
-To verify complete positivity of the extension, take a positive matrix \(X\) over \(M\bar\otimes N\). By Kaplansky density, approximate its positive square root strongly by a bounded net of matrices over the minimal C*-product. Their squares are positive and converge ultraweakly to \(X\). Their images under every matrix amplification of \(\Theta\) are positive; ultraweak continuity and closedness of the positive cone give positivity of \(\Theta^{(k)}(X)\). Thus \(\Theta\) is completely positive. The upper norm bound comes from \(T\), and elementary tensors give the opposite bound. Algebraic tensors are ultraweakly dense, proving uniqueness. \(\square\)
+To verify complete positivity of the extension, take a positive matrix \(X\) over \(M\bar\otimes N\). Matrix Kaplansky density gives a bounded net \(Y_\lambda\) over the minimal C\*-product converging strongly to \(X^{1/2}\). Use the positive matrices \(Y_\lambda^*Y_\lambda\). For arbitrary vectors \(\xi,\eta\),
+\[
+ \langle Y_\lambda^*Y_\lambda\xi,\eta\rangle
+ =\langle Y_\lambda\xi,Y_\lambda\eta\rangle
+ \longrightarrow\langle X\xi,\eta\rangle.
+\]
+Their norms are uniformly bounded, so vector-series approximation upgrades this weak operator convergence to ultraweak convergence. Their images under \(\Theta^{(k)}\) are positive because \(\Theta\) agrees with the completely positive \(\Theta_0\) on the minimal product. Ultraweak continuity and closedness of the positive cone now give \(\Theta^{(k)}(X)\ge0\). This works for every matrix size. The upper norm bound comes from \(T\), and elementary tensors give the opposite bound. Algebraic tensors are ultraweakly dense, proving uniqueness. \(\square\)
 
 For example, normal states \(\varphi\in M_*\), \(\psi\in N_*\) have a normal product state. Its support is
 \[
@@ -40,7 +46,7 @@ Let \(A,B\subseteq M\) be commuting subfactors generating the factor \(M\), with
 
 **Theorem 2.1.** The following are equivalent.
 
-1. Multiplication extends to a normal *-isomorphism \(A\bar\otimes B\to M\).
+1. Multiplication extends to a normal \*-isomorphism \(A\bar\otimes B\to M\).
 2. There is a nonzero normal functional \(f\in M_*\) with
    \[
    f(ab)=f(a)f(b)\quad(a\in A,b\in B).
@@ -146,7 +152,7 @@ We say \(T\) is affiliated with \(M\subseteq B(H)\) when every unitary \(u\in M'
 
 **Proof.** The domain and commutation conditions say exactly that \(u\oplus u\) takes \(G(T)\) onto itself. A closed subspace is invariant under a unitary and its inverse exactly when its projection commutes with that unitary. Thus affiliation is equivalent to \(p_T\) commuting with every \(u\oplus u\), \(u\in U(M')\). Unitaries linearly span \(M'\), so this means all four matrix entries of \(p_T\) lie in \((M')'=M\). \(\square\)
 
-*Reference:* [Takesaki, Exercise IV.5.3] specifies unitaries of \(M\) in its affiliation definition; the graph criterion requires unitaries of \(M'\). For \(M=M_2(\mathbb C)\) and \(T=\operatorname{diag}(1,2)\), the graph projection belongs to \(M_2(M)\), while \(T\) does not commute with the swap unitary of \(M\).
+Affiliation uses the unitaries of the commutant \(M'\). Requiring commutation with the unitaries of \(M\) gives a different condition. For example, with \(M=M_2(\mathbb C)\) and \(T=\operatorname{diag}(1,2)\), the graph projection lies in \(M_2(M)\), but \(T\) does not commute with the swap unitary in \(M\).
 
 **Theorem 3.2.** Suppose first that \(T\) is densely defined. Write
 \[
@@ -184,7 +190,7 @@ The upper-left entry vanishes on \(H_0^\perp\). If \(T\) is affiliated with \(M\
 
 An instructive commutative example separates norm closure from weak closure. Let \(a,b>0\) with \(a/b\) irrational. Inside \(L^\infty(\mathbb R)\), let \(A\) and \(B\) consist of the essentially bounded functions of period \(a\) and period \(b\), respectively.
 
-**Proposition 4.1.** These two algebras generate \(L^\infty(\mathbb R)\) as a von Neumann algebra. Their generated C*-algebra is canonically \(A\otimes_{\min}B\). There is no nonzero normal functional \(f\) on \(L^\infty(\mathbb R)\) satisfying \(f(uv)=f(u)f(v)\) for \(u\in A,v\in B\).
+**Proposition 4.1.** These two algebras generate \(L^\infty(\mathbb R)\) as a von Neumann algebra. Their generated C\*-algebra is canonically \(A\otimes_{\min}B\). There is no nonzero normal functional \(f\) on \(L^\infty(\mathbb R)\) satisfying \(f(uv)=f(u)f(v)\) for \(u\in A,v\in B\).
 
 **Proof.** The map
 \[
@@ -192,19 +198,50 @@ An instructive commutative example separates norm closure from weak closure. Let
 \]
 is continuous and injective: an equal pair of residues would make a difference simultaneously an integer multiple of both periods. The real line and the two-circle torus are standard Borel spaces. The injective Borel-map theorem gives a Borel inverse on the image. Therefore the two residue maps jointly generate the Borel sigma-algebra of \(\mathbb R\). Their bounded functions generate all of \(L^\infty(\mathbb R)\), including the Lebesgue completion. This uses Theorem 4.3 of [Polish spaces and standard Borel spaces](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html).
 
-To prove the C*-claim, verify the no-zero-product condition. If \(u,v\) are nonzero periodic functions, put \(F=|u|^2,G=|v|^2\). Their period means are positive. Their joint long-interval mean is the product of those means. Here are the details. Approximate \(F,G\) in their period \(L^2\) spaces by trigonometric polynomials. Long-interval means of the approximation errors converge to the period means of those errors, and Cauchy–Schwarz bounds the error in the mean of the product. For trigonometric polynomials, every mixed nonconstant frequency has the form \(n/a+m/b\ne0\), so its long-interval mean is zero. Passing to the approximations proves the asserted positive product mean. Thus \(uv\) cannot vanish almost everywhere. Corollary 3.2 of *Tensor independence and ideals* now gives the C*-isomorphism.
+To prove the C\*-claim, verify the no-zero-product condition. For a periodic integrable function of period \(c>0\), write
+\[
+ m_c(F)=\frac1c\int_0^c F(t)\,dt,
+ \qquad m_T(F)=\frac1T\int_0^T F(t)\,dt.
+\]
+Splitting \([0,T]\) into full periods and one remainder shows \(m_T(F)\to m_c(F)\). If \(u,v\) are nonzero bounded periodic functions, put \(F=|u|^2\) and \(G=|v|^2\), with periods \(a,b\). Their period means are positive. We claim
+\[
+ m_T(FG)\longrightarrow m_a(F)m_b(G).
+\tag{4.a}
+\]
+Choose trigonometric polynomials \(P,Q\) approximating \(F,G\) in the normalized period \(L^2\) norms. Cauchy–Schwarz gives
+\[
+ \begin{aligned}
+ |m_T(FG-PQ)|\le{}&m_T(|F-P|^2)^{1/2}m_T(|G|^2)^{1/2}\\
+ &+m_T(|P|^2)^{1/2}m_T(|G-Q|^2)^{1/2}.
+ \end{aligned}
+\]
+The limit superior is at most
+\(\|F-P\|_{2,a}\|G\|_{2,b}+\|P\|_{2,a}\|G-Q\|_{2,b}\).
+For \(P,Q\), integration of each exponential shows that the mean tends to the product of their constant coefficients: irrationality makes \(n/a+m/b=0\) possible only for \(n=m=0\). Finally \(|m_a(F-P)|\le\|F-P\|_{2,a}\), and similarly for \(G-Q\). Letting both approximation errors tend to zero proves (4.a). Its positive limit rules out \(uv=0\) almost everywhere. Corollary 3.2 of *Tensor independence and ideals* gives the C\*-isomorphism.
+
+Here the trigonometric approximation can be obtained directly. On the circle of length one, interval step functions are dense in \(L^2\); replacing their finitely many jumps by linear transitions on intervals of arbitrarily small total length gives continuous periodic approximations. For completeness, interval approximation follows from the definition of Lebesgue outer measure: a measurable set in a finite interval has an open superset with arbitrarily small excess measure; an open subset of the line is a countable disjoint union of intervals, and a finite subunion loses arbitrarily little of its finite measure. Truncation and approximation of the range by finitely many values then give the asserted density of interval step functions. For a continuous periodic \(g\), let
+\[
+ K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2.
+\]
+It is a nonnegative trigonometric polynomial with integral one. For \(\delta\le t\le1-\delta\), the geometric-sum formula gives \(K_N(t)\le1/(N\sin^2(\pi\delta))\). Thus
+\(\int_0^1K_N(t)g(s-t)\,dt\) tends uniformly to \(g(s)\): use uniform continuity for \(t\) within \(\delta\) of an integer, and the displayed bound on the complement. Each convolution is a trigonometric polynomial. Rescaling the circle proves the approximation for either period.
 
 For the last assertion write a normal functional as integration against \(h\in L^1(\mathbb R)\), and put
 \[
 H(\xi)=\int_{\mathbb R}h(t)e^{2\pi i\xi t}\,dt.
 \]
-Nonzeroness of a product functional forces \(f(1)=1\), so \(H(0)=1\). The product identity on periodic exponentials gives
+If \(f(1)\ne1\), applying the product identity with either factor equal to \(1\) makes both restrictions zero, and then makes \(f\) zero on all finite product sums. Normality and the generation proved above would give \(f=0\). Hence a nonzero product functional has \(f(1)=1\), so \(H(0)=1\). The identity on periodic exponentials gives
 \[
 H(n/a+m/b)=H(n/a)H(m/b)
 \qquad(n,m\in\mathbb Z).
 \tag{4.1}
 \]
-There are integers \(n_k,m_k\), with both absolute values tending to infinity, such that \(n_k/a+m_k/b\to0\). This follows by the pigeonhole approximation of the irrational number \(b/a\); bounded denominators could not yield arbitrarily small nonzero errors. The Riemann–Lebesgue lemma gives \(H(n_k/a),H(m_k/b)\to0\). Continuity gives \(H(n_k/a+m_k/b)\to H(0)=1\), contradicting (4.1).
+To obtain the required integer approximations, put \(\theta=b/a\). Divide \([0,1)\) into \(N\) equal intervals and place the \(N+1\) fractional parts of \(0,\theta,\ldots,N\theta\) in them. Two lie in the same interval, giving integers \(1\le q_N\le N\) and \(p_N\) with \(0<|q_N\theta-p_N|<1/N\). The strict lower bound follows from irrationality. For any fixed bound on \(q_N\), the finitely many distances \(\operatorname{dist}(q\theta,\mathbb Z)\) have a positive minimum. Consequently \(q_N\to\infty\), and \(p_N\to\infty\) because \(\theta>0\). Take \(n_N=q_N\), \(m_N=-p_N\); then
+\[
+ \left|\frac{n_N}{a}+\frac{m_N}{b}\right|
+ =\frac{|q_N\theta-p_N|}{b}<\frac1{bN}.
+\]
+The Riemann–Lebesgue lemma gives \(H(n_N/a),H(m_N/b)\to0\), whereas continuity gives \(H(n_N/a+m_N/b)\to H(0)=1\). This contradicts (4.1).
 
 The two scalar Fourier facts used here follow directly from \(L^1\) approximation by step functions on bounded intervals: their transforms are continuous and tend to zero, and the transform difference is bounded uniformly by the \(L^1\) difference. \(\square\)
 
@@ -237,7 +274,7 @@ Formula (3.2) gives this: \(T_0^*T_0=4\) on \(H_0=\mathbb Ce_1\), while \(T_0T_0
 
 The concrete construction starts with an action on a Hilbert tensor product. There is also a definition using just the two algebras and their preduals. Its central projection records exactly which functionals remain normal in that action.
 
-The additional prerequisite for this section is the universal-bidual and normal-extension theorem: a nondegenerate representation of a C*-algebra \(C\) extends to a normal surjection from \(C^{**}\), with a central kernel, and the restriction to the complementary central summand has a normal inverse. The complete existing proof is in Sections 3–8 of [Every bounded functional becomes normal in one representation](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it). Section 8 proves normality of that inverse through the preadjoint, without an automatic-normality assumption. This supplies the normal-extension theorem used in Lemma 2.1 of *The universal enveloping von Neumann algebra*. The automatic normality of a von Neumann algebra isomorphism, when needed below, is the result in Sections 2–4 and 6 of [Normal positive maps and their preadjoints](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#positive-maps-and-increasing-suprema). For its bounded scalar-functional step, Lemma 6.3 below gives an alternative using complete additivity. The general normal-weight recovery theorem is unnecessary for that step. The predual, monotone-net and positive-spanning facts remain the stated prerequisites.
+The additional prerequisite for this section is the universal-bidual and normal-extension theorem: a nondegenerate representation of a C\*-algebra \(C\) extends to a normal surjection from \(C^{**}\), with a central kernel, and the restriction to the complementary central summand has a normal inverse. The complete existing proof is in Sections 3–8 of [Every bounded functional becomes normal in one representation](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#constructing-the-bidual-before-using-it). Section 8 proves normality of that inverse through the preadjoint, without an automatic-normality assumption. This supplies the normal-extension theorem used in Lemma 2.1 of *The universal enveloping von Neumann algebra*. The automatic normality of a von Neumann algebra isomorphism, when needed below, is the result in Sections 2–4 and 6 of [Normal positive maps and their preadjoints](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#positive-maps-and-increasing-suprema). For its bounded scalar-functional step, Lemma 6.3 below gives an alternative using complete additivity. The general normal-weight recovery theorem is unnecessary for that step. The predual, monotone-net and positive-spanning facts remain the stated prerequisites.
 
 Let \(M,N\) be von Neumann algebras. Put
 \[
@@ -247,7 +284,7 @@ E=\overline{M_*\odot N_*}^{\,\|\cdot\|_{C^*}}\subseteq C^*.
 \]
 The product functional \(\varphi\otimes\psi\) on \(C\) is specified by
 \((\varphi\otimes\psi)(a\otimes b)=\varphi(a)\psi(b)\).
-Here \(\odot\) means the algebraic span, and the closure uses the bounded-functional norm on the minimal C*-product. No assertion about a Banach projective tensor norm is being made.
+Here \(\odot\) means the algebraic span, and the closure uses the bounded-functional norm on the minimal C\*-product. No assertion about a Banach projective tensor norm is being made.
 
 **Theorem 6.1.** There is a unique central projection \(z\in U=C^{**}\) such that, under \(U_*=C^*\),
 \[
@@ -259,7 +296,7 @@ The dual \(E^*\) is canonically the von Neumann algebra \(Uz\). The map
 \iota:C\longrightarrow Uz,\qquad c\longmapsto z j_C(c)
 \tag{6.3}
 \]
-is an isometric *-homomorphism with ultraweakly dense range. For any faithful normal nondegenerate representations \(\pi_M,\pi_N\), its product representation extends uniquely to a normal isomorphism
+is an isometric \*-homomorphism with ultraweakly dense range. For any faithful normal nondegenerate representations \(\pi_M,\pi_N\), its product representation extends uniquely to a normal isomorphism
 \[
 \Theta:Uz\longrightarrow
 P=\pi_M(M)\bar\otimes\pi_N(N),
@@ -276,7 +313,7 @@ R:P_*\longrightarrow C^*,\qquad R\rho=\rho\pi_0,
 \]
 and that its range is precisely \(E\). The density assertion follows by approximating both vectors in a normal vector coefficient by finite sums of elementary tensors, then using norm convergence of the coefficient functionals and of the normal vector series. The norm assertion uses bounded Kaplansky approximation in \(\pi_0(C)\). Completeness of \(P_*\) makes its isometric image closed. These arguments apply to arbitrary Hilbert spaces; they do not select a countable set of vectors spanning either space.
 
-By the declared universal-extension theorem, \(\pi_0\) extends to a normal onto *-homomorphism
+By the declared universal-extension theorem, \(\pi_0\) extends to a normal onto \*-homomorphism
 \[
 \overline\pi_0:U\longrightarrow P,
 \quad \ker\overline\pi_0=U(1-z),
@@ -310,7 +347,7 @@ with the prescribed elementary-tensor values.
 
 **Proof.** Both leg isomorphisms and their inverses are positive order isomorphisms. They preserve every bounded increasing positive supremum: pull any candidate upper bound back through the inverse and use the least-upper-bound property. The declared positive-map normality criterion therefore makes all four maps normal. Corollary 8.4 of *Spatial tensor products* constructs their normal tensor maps; composing the tensor maps for the legs and their inverses is the identity on algebraic tensors and hence, by normality and density, everywhere. Theorem 6.1 identifies these concrete maps with the intrinsic product. Uniqueness uses the same density. \(\square\)
 
-**The remaining realization clauses.** Proposition 3.1(4) of *Spatial tensor products* represents every normal functional by two vectors in an infinite amplification; for a positive functional its proof gives one vector in both positions. Theorem 8.2 uses that positive-vector version on each cyclic summand to realize every normal unital homomorphism as an amplification followed by a commutant-projection induction and a spatial isomorphism. Its arbitrary direct sum of cyclic summands retains nonseparable representations. Corollary 8.3 then places two isomorphic concrete algebras into commutant corners of one amplification, with both projections of central carrier one. These complete existing proofs supply Takesaki IV.5.4–5.6. They use distinct constructions: the central projection \(z\) in (6.6) cuts the universal enveloping algebra, whereas the corner projections for a concrete representation belong to the commutant of its amplification.
+The amplification and common-corner constructions are proved in Theorem 8.2 and Corollary 8.3 of *Spatial tensor products*. Positive normal functionals are represented there by single vectors after amplification.
 
 ### 6.3. The finite scalar normality step
 
@@ -333,21 +370,21 @@ Use Lemma 6.3 for each bounded positive scalar functional \(\psi\circ T\) in the
 
 ### 6.4. States, cyclic vectors and bounded approximation
 
-The universal extension used in Theorem 6.1 starts with three facts about an arbitrary C*-algebra \(A\).
+The universal extension used in Theorem 6.1 starts with three facts about an arbitrary C\*-algebra \(A\).
 
 1. **States and the full bounded dual.** If \(A\ne0\), every \(a\in A_+\) has a state \(\omega\) with \(\omega(a)=\|a\|\). Every bounded functional has the form
    \[
      f=(p_1-p_2)+i(p_3-p_4),\qquad p_j\in A^*_+,
      \qquad \sum_{j=1}^4\|p_j\|\le2\|f\|.
    \]
-   Sections 2–7 of [States detect the norm and positive functionals span the dual](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-01) prove both facts. The signed convex hull of the compact unital state set is the real dual unit ball, by Hahn–Banach separation and the state norm formula. The nonunital case passes through a unitization; its state set itself need not be weak-star compact. Proposition 3.4 of [Banach algebras and spectrum](../../foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-05) constructs the needed C*-unitization from the original norm, without states or a universal representation. Remark 8.4 of [Continuous functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-15) identifies the inherited positive cone. For an already unital algebra, the unital proof applies directly. The zero algebra has only the zero functional and is handled separately.
+   Sections 2–7 of [States detect the norm and positive functionals span the dual](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-01) prove both facts. The signed convex hull of the compact unital state set is the real dual unit ball, by Hahn–Banach separation and the state norm formula. The nonunital case passes through a unitization; its state set itself need not be weak-star compact. Proposition 3.4 of [Banach algebras and spectrum](../../foundations-of-von-neumann-algebras/banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html#OA-FND-BN-05) constructs the needed C\*-unitization from the original norm, without states or a universal representation. Remark 8.4 of [Continuous functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-15) identifies the inherited positive cone. For an already unital algebra, the unital proof applies directly. The zero algebra has only the zero functional and is handled separately.
 2. **Cyclic vectors without an identity.** Construction 5.1 and Theorems 5.3–5.5 of [Representations and positive functionals](../../foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-05) give, for every bounded positive \(\omega\), a nondegenerate cyclic representation and a vector with
    \[
      \omega(a)=\langle\pi_\omega(a)\xi_\omega,\xi_\omega\rangle,
      \qquad \|\xi_\omega\|^2=\|\omega\|.
    \]
-   An approximate identity of positive contractions gives the representing vector as the limit of its quotient vectors. Theorem 11.4 and Corollary 11.5(1) of [Continuous functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-19) provide that approximate identity for every C*-algebra, with no countability assumption. The state representations may therefore be summed over all states. The first fact makes this universal representation faithful and lets every bounded functional extend as a normal vector-functional combination.
-3. **Approximation with the norm bound retained.** Theorem 7.1 of [Density theorems](../../foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html#oa-fnd-kd-07) proves strong-star density of the contractions of a *-subalgebra in the contractions of its weak closure. It includes nonunital and degenerate algebras. For a nondegenerate representation, the double-commutant theorem identifies that weak closure with \(\pi(A)''\). The approximating net is bounded explicitly, so it also converges ultraweakly by Lemma 1.1(3) of the density lesson. This is the approximation used to prove that restriction of the concrete predual is isometric and that the normal extension maps the relevant central-corner unit ball onto the target unit ball.
+   An approximate identity of positive contractions gives the representing vector as the limit of its quotient vectors. Theorem 11.4 and Corollary 11.5(1) of [Continuous functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-19) provide that approximate identity for every C\*-algebra, with no countability assumption. The state representations may therefore be summed over all states. The first fact makes this universal representation faithful and lets every bounded functional extend as a normal vector-functional combination.
+3. **Approximation with the norm bound retained.** Theorem 7.1 of [Density theorems](../../foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html#oa-fnd-kd-07) proves strong-star density of the contractions of a \*-subalgebra in the contractions of its weak closure. It includes nonunital and degenerate algebras. For a nondegenerate representation, the double-commutant theorem identifies that weak closure with \(\pi(A)''\). The approximating net is bounded explicitly, so it also converges ultraweakly by Lemma 1.1(3) of the density lesson. This is the approximation used to prove that restriction of the concrete predual is isometric and that the normal extension maps the relevant central-corner unit ball onto the target unit ball.
 
 These facts concern different spaces: positive functionals span the full dual \(A^*\) in the universal construction, while the positive **normal** functionals in Section 6.3 span the specified predual \(M_*\). The normal inverse is then obtained by the preadjoint argument; its construction does not use the scalar automatic-normality criterion.
 
@@ -368,14 +405,14 @@ are positive contractions with \(rs=1\) and \(s\) isometric. Thus
 \]
 The second identification is the map \(s\), rather than an unspecified identification of a quotient with a subspace. The proof extends each square-summable vector series from \(pH\) by zero and compresses both vector sequences when restricting from \(H\). It proves continuity on the entire algebra, with no uniform-bound assumption on an arbitrary convergent net. Centrality of \(p\) is unnecessary. This supplies the corner input in the preadjoint proof of the normal inverse used in Section 6.
 
-**Supports and central kernels.** Section 6 of [Bounded operators needed for comparing weights](../../OA-MOD/bounded-operator-kernel.html#OA-MOD-BK-06) proves, using only bounded continuous functional calculus and Hilbert-space geometry, that for \(b\in M_+\)
+**Supports and central kernels.** Section 6 of [Bounded operators needed for comparing weights](../../OA-MOD/OA-MOD-BK.html#supports-from-bounded-resolvent-cutoffs) proves, using only bounded continuous functional calculus and Hilbert-space geometry, that for \(b\in M_+\)
 \[
  b(b+\varepsilon1)^{-1}\uparrow s(b)
  \quad\text{strongly and ultraweakly as }\varepsilon\downarrow0,
  \qquad
  s(b)H=\overline{bH}.
 \]
-Its [Section 4](../../OA-MOD/bounded-operator-kernel.html#OA-MOD-BK-04) proves bounded increasing-net convergence, including the supremum of arbitrary finite joins of projections. Its [Section 8](../../OA-MOD/bounded-operator-kernel.html#OA-MOD-BK-08) proves that commutation with all unitaries implies commutation with the entire algebra. These are exactly the support, supremum and centrality inputs in Section 7 of [Every bounded functional becomes normal in one representation](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-05), which identifies an ultraweakly closed two-sided star ideal as \(Mz\) for a central projection \(z\). That proof does not identify the support of a positive functional with the central projection of a representation kernel.
+Its [Section 4](../../OA-MOD/OA-MOD-BK.html#bounded-increasing-positive-nets-have-strong-suprema) proves bounded increasing-net convergence, including the supremum of arbitrary finite joins of projections. Its [Section 8](../../OA-MOD/OA-MOD-BK.html#testing-commutation-on-unitaries) proves that commutation with all unitaries implies commutation with the entire algebra. These are exactly the support, supremum and centrality inputs in Section 7 of [Every bounded functional becomes normal in one representation](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-05), which identifies an ultraweakly closed two-sided star ideal as \(Mz\) for a central projection \(z\). That proof does not identify the support of a positive functional with the central projection of a representation kernel.
 
 For a bounded positive normal functional \(\omega\), Sections 4–5 of [Finite domains, null directions and support corners](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#state-support-and-continuity-tools) give the largest projection \(q\) with \(\omega(q)=0\). With \(p=1-q\), they prove
 \[
@@ -404,7 +441,7 @@ On the support corner \(pMp\), this normal GNS representation is faithful: \(\pi
 
 ### 6.6. Faithful normal images and positive vector series
 
-The same compact-ball argument applies beyond the cyclic representation. Let \(\pi:M\to B(K)\) be a faithful normal star homomorphism, put \(p=\pi(1)\), and work on \(K_0=pK\). The identity of its image is \(p|_{K_0}=I_{K_0}\). Faithfulness makes \(\pi\) isometric, so \(\pi(M)\) is a norm-closed unital C*-algebra on \(K_0\).
+The same compact-ball argument applies beyond the cyclic representation. Let \(\pi:M\to B(K)\) be a faithful normal star homomorphism, put \(p=\pi(1)\), and work on \(K_0=pK\). The identity of its image is \(p|_{K_0}=I_{K_0}\). Faithfulness makes \(\pi\) isometric, so \(\pi(M)\) is a norm-closed unital C\*-algebra on \(K_0\).
 
 Banach–Alaoglu makes \(M_1\) ultraweakly compact. Normality makes \(\pi(M_1)\) compact in the ultraweak topology of \(B(K_0)\), hence compact and closed in its Hausdorff weak operator topology. Contractive density from Section 6.4 gives, for each contraction in \(\pi(M)''\) on \(K_0\), a strongly convergent net of contractions in \(\pi(M)\). Isometry says that these are precisely elements of \(\pi(M_1)\). Their weak operator limit remains in that closed set. Thus \(\pi(M)=\pi(M)''\) on \(K_0\): the image is a von Neumann algebra \(N\).
 
@@ -421,44 +458,51 @@ Apply the supplied [positive normal vector-series proof](../reader/supplements/s
 \]
 Every summand is positive normal and is dominated by \(\omega\); the series is absolutely convergent. The existing proof first dominates the functional by a vector sum using Section 8 of the concrete-predual text. On the resulting cyclic subspace it represents the dominated positive form by a positive contraction in the commutant, then applies its square root to the cyclic vector. Thus this particular vector-series input uses bounded forms and continuous functional calculus. It does not require a construction for extended-valued weights. The countable index belongs to one functional; it gives no countable separating family for \(M\), and places no separability condition on \(K\). For \(\omega=0\), take all \(v_j=0\).
 
-The range unit matters throughout. For example, \(\pi:\mathbb C\to B(\mathbb C^2)\), \(\pi(\lambda)=\operatorname{diag}(\lambda,0)\), is faithful and normal. Its image is a von Neumann algebra on \(p\mathbb C^2\), extended by zero on the orthogonal complement. Its bicommutant on all of \(\mathbb C^2\) also contains the ambient identity and is larger. Continuous functional calculus is natural in the image corner with unit \(p\): for the constant function \(g=1\), \(\pi(g(1))=p\). Calculus with the ambient unit would instead give \(I_2\). Accordingly, whenever this lesson uses functional-calculus naturality from the universal-enveloping prerequisite, it uses unital maps or the stated range corner; an ambient degenerate map requires functions vanishing at zero. This qualification preserves the original prerequisite bytes. The zero algebra and zero range are included by the same corner convention.
+The range unit matters throughout. For example, \(\pi:\mathbb C\to B(\mathbb C^2)\), \(\pi(\lambda)=\operatorname{diag}(\lambda,0)\), is faithful and normal. Its image is a von Neumann algebra on \(p\mathbb C^2\), extended by zero on the orthogonal complement. Its bicommutant on all of \(\mathbb C^2\) also contains the ambient identity and is larger. Continuous functional calculus is natural in the image corner with unit \(p\): for the constant function \(g=1\), \(\pi(g(1))=p\). Calculus with the ambient unit would instead give \(I_2\). Accordingly, whenever this lesson uses functional-calculus naturality from the universal-enveloping prerequisite, it uses unital maps or the stated range corner; an ambient degenerate map requires functions vanishing at zero. The zero algebra and zero range are included by the same corner convention.
 
 ## 7. Why tensor norms and normal tensor products developed together
 
 ### 7.1. A completion records more than the algebraic tensor
 
-The algebraic tensor product specifies how bilinear expressions combine. A norm specifies which infinite limits are admitted. [Takesaki, Chapter IV, Section 5 Notes, pp. 229–230] traces this distinction through Schatten's 1943 paper [Schatten] and the subsequent cross-space papers of Schatten and von Neumann (1946–1948); [Blackadar, I.8.6–I.8.7] treats the resulting dualities between compact, trace-class and bounded operators and the Schatten ideals. The norm calculations used in this lesson are proved below and in the linked tensor-norm prerequisites. Grothendieck developed tensor products in locally convex spaces and the theory of nuclear spaces; [Grothendieck] summarizes the main results. The finite-dimensional examples already show why choosing a norm matters, even though all norms on a fixed finite-dimensional space define the same topology.
+The algebraic tensor product specifies how bilinear expressions combine. A norm specifies which infinite limits are admitted. Schatten's paper [Schatten] develops tensor norms for Banach spaces; [Blackadar, I.8.6–I.8.7] treats the dualities between compact, trace-class and bounded operators and the Schatten ideals. Grothendieck's account [Grothendieck] describes topological tensor products and nuclear spaces. The finite-dimensional example below already distinguishes three cross norms, although they define the same topology in each fixed finite dimension. Their definitions and bounds are proved in the linked programme lesson.
 
-For example, on \(\mathbb C^d\odot\mathbb C^d\), with the Euclidean norm on both factors, put \(w_d=\sum_{j=1}^d e_j\otimes e_j\). The injective Banach norm is \(1\): its definition tests \(\sum_j f(e_j)g(e_j)\) over two dual unit balls, and Cauchy–Schwarz gives the upper bound, attained by the first coordinate functionals. The projective Banach norm is \(d\). The displayed decomposition gives the upper bound; the bilinear form \(b(x,y)=\sum_jx_jy_j\) has norm \(1\) and evaluates to \(d\) on \(w_d\), giving the lower bound. The Hilbert tensor norm is \(\sqrt d\), since the \(e_j\otimes e_j\) are orthonormal. Thus the three norms agree on elementary tensors and give different values on their sums. The Banach cross-norm definitions and their bounds are proved in Theorem 2.3 of [Tensor products of Hilbert spaces and operators](../reader/supplements/banach-tensor-cross-norms.html#banach-tensor-cross-norms). No identification of these Banach norms with the minimal or maximal C*-tensor norms is intended.
+For example, on \(\mathbb C^d\odot\mathbb C^d\), with the Euclidean norm on both factors, put \(w_d=\sum_{j=1}^d e_j\otimes e_j\). The injective Banach norm is \(1\): its definition tests \(\sum_j f(e_j)g(e_j)\) over two dual unit balls, and Cauchy–Schwarz gives the upper bound, attained by the first coordinate functionals. The projective Banach norm is \(d\). The displayed decomposition gives the upper bound; the bilinear form \(b(x,y)=\sum_jx_jy_j\) has norm \(1\) and evaluates to \(d\) on \(w_d\), giving the lower bound. The Hilbert tensor norm is \(\sqrt d\), since the \(e_j\otimes e_j\) are orthonormal. Thus the three norms agree on elementary tensors and give different values on their sums. The Banach cross-norm definitions and their bounds are proved in Theorem 2.3 of [Tensor products of Hilbert spaces and operators](../reader/supplements/banach-tensor-cross-norms.html#banach-tensor-cross-norms). No identification of these Banach norms with the minimal or maximal C\*-tensor norms is intended.
 
 ### 7.2. Commuting factors need not split normally
 
-Murray and von Neumann's investigation of factors (1936) asked when an action can be written on \(H_1\otimes H_2\) with the factor and its commutant occupying separate legs. In that case the factor is of type I; compare [Blackadar, III.1.5.3]. For instance, the commutant of \(B(H_1)\otimes1\) is \(1\otimes B(H_2)\), by the operator-matrix calculation in Section 7 of *Spatial tensor products*. The two algebras generate \(B(H_1\otimes H_2)\). For a general factor, algebraic injectivity of multiplication still holds, but its topology need not be the normal spatial product topology. Theorem 2.1 isolates the extra requirement through a nonzero normal product functional, equivalently a nonzero normal bimodule map. The irrational-period example in Section 4 shows the distinction even for commuting abelian algebras: their C*-product embeds faithfully, while normal splitting fails. These are concrete manifestations of the topology question described in Takesaki's Notes; the type classification itself belongs to the factor theory.
+A nonzero factor \(M\subseteq B(H)\) admits a spatial decomposition
+\[
+ H\cong H_1\otimes H_2,\qquad
+ M=B(H_1)\otimes1,\qquad M'=1\otimes B(H_2)
+\]
+exactly when it is of type I. Here is the specialization of [Theorem 11.4, the spatial form of a type I algebra](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-15). In that theorem the factor's centre is scalar, so just one central summand survives. Its abelian matrix-entry algebra must be scalar as well. Since that abelian algebra is maximal abelian on its Hilbert space \(K\), \(B(K)=\mathbb C1\), and \(\dim K=1\). The theorem therefore gives the displayed tensor model. Conversely, \(B(H_1)\otimes1\) is of type I: a rank-one projection in the first leg gives a nonzero abelian corner, and unitary conjugation preserves this property. Proposition 7.1 of *Spatial tensor products* computes its commutant, and Theorem 5.2(5) shows that the two legs generate \(B(H_1\otimes H_2)\).
+
+More generally, suppose a spatial decomposition puts \(M=P\otimes1\) and \(M'=1\otimes Q\) for von Neumann algebras \(P\subseteq B(H_1)\), \(Q\subseteq B(H_2)\). Since \((M\cup M')'=Z(M)=\mathbb C1\), the two legs generate \(B(H_1\otimes H_2)\), so \(P\bar\otimes Q=B(H_1\otimes H_2)\). Slicing \(x\otimes1\), for arbitrary \(x\in B(H_1)\), by a normal state of \(B(H_2)\) gives \(x\in P\); hence \(P=B(H_1)\), and similarly \(Q=B(H_2)\). This proves that separate spatial legs force the same type I model.
+
+For general commuting factors, algebraic injectivity of multiplication still holds, while its extension to the normal spatial product needs the extra condition in Theorem 2.1. The irrational-period example in Section 4 separates the C\*-product from the normal product even for abelian algebras. The free author edition [Blackadar, III.1.5.3–III.1.5.10] discusses the type I and tensor-product setting.
 
 ### 7.3. Minimal, maximal and normal products
 
-The Notes credit Turumaru with the early C*-tensor-product construction and the representation-independent minimal norm [Turumaru I; Turumaru III], and Guichardet with the maximal construction [Guichardet]. The maximal product organizes every pair of commuting representations; the minimal product organizes separate faithful representations on a Hilbert tensor product. The proofs in *Tensor norms and independent systems* and *States, ideals and the smallest tensor norm* explain their universal properties and minimality, including nonunital algebras. Takesaki's 1958 and 1964 papers are the references given in the Notes for the commutative-factor, minimality and simplicity results [Takesaki, cross norms]. The free-group example shows that the two C*-norms can differ. Nuclear C*-algebras, mentioned there as a direction for further work, are those whose minimal and maximal tensor norms agree against every C*-algebra; that additional theory is outside this lesson.
+The minimal product is computed by separate faithful representations on a Hilbert tensor product; the maximal product organizes all pairs of commuting representations. The proofs in *Tensor norms and independent systems* and *States, ideals and the smallest tensor norm* establish their universal properties and minimality, including nonunital algebras. Freely readable early papers include the spatial constructions of Turumaru [Turumaru I; Turumaru III], the maximal construction of Guichardet [Guichardet], and Takesaki's results on cross norms [Takesaki, cross norms]. The free-group example proves that the minimal and maximal norms can differ. A C\*-algebra is called nuclear when these norms agree against every C\*-algebra; nuclearity is a further topic, not an assumption in the proofs here.
 
-Misonou's W*-tensor-product work addresses independence from the faithful normal Hilbert-space realization [Misonou]. Theorem 6.1 makes the intrinsic construction visible: the closed span of the two preduals selects the central summand of the universal bidual that carries precisely the normal product functionals. It need not select the whole universal algebra. Takesaki's Notes describe their presentation as following Takeda and Sakai [Takeda; Sakai, characterization]. The central-summand construction and the representation change therefore belong to the same argument. The amplification and induction theorem, credited there to Dixmier (compare [Takesaki I, Theorem IV.5.5]), is a different representation tool: its corner projection lies in a concrete commutant, whereas the projection selecting the intrinsic product lies in the universal algebra's centre. Section 6 keeps these two projections distinct.
+Misonou's paper [Misonou] studies tensor products of W\*-algebras. Takeda's representation paper [Takeda] and Sakai's characterization [Sakai, characterization] give related freely readable foundations. Theorem 6.1 describes the intrinsic construction: the closed span of the factor preduals selects the central summand of the universal bidual carrying the normal product functionals. It need not select the whole universal algebra. The amplification and induction theorem in *Spatial tensor products* uses a different projection, in a concrete commutant. The central projection selecting the intrinsic product and this commutant projection have distinct roles.
 
 ### 7.4. Positivity and the full commutation theorem
 
-Stinespring's dilation theorem [Stinespring] explains why complete positivity, rather than positivity alone, works with matrix amplifications. Takesaki's Notes point to Lance and to Effros–Lance for its role in tensor products [Lance; Effros–Lance]. The transpose examples in *Tensor norms and independent systems* expose the obstruction for a merely positive factor map. Theorem 1.1 then supplies the normal CP tensor map: its preadjoint preserves the product predual, and bounded matrix approximation proves that the normal extension is still completely positive.
+Stinespring's dilation theorem [Stinespring] supplies the representation used for completely positive tensor maps. The transpose examples in *Tensor norms and independent systems* show why positivity alone is insufficient. Theorem 1.1 constructs the normal CP tensor map: its preadjoint preserves the product predual, and bounded matrix approximation proves complete positivity of the normal extension.
 
-The identity \((M\bar\otimes N)'=M'\bar\otimes N'\) requires a further argument. [Takesaki, Chapter IV, Section 5 Notes, pp. 229–230] credits Misonou with the semifinite case [Misonou], Sakai with a partial result (1968), and Tomita with the general result (1967). That account lists a later proof by Cuculescu (1971) and describes its own use of the Rieffel–van Daele approach; compare [Takesaki I, Lemmas IV.5.7–IV.5.8 and Theorem IV.5.9]. [Blackadar, III.4.5.8] states the theorem and sketches a proof through modular Hilbert algebras. The complete proof in [Theorem 11.4 of Spatial tensor products](../reader/supplements/spatial-tensor-products.html#11-the-commutation-theorem-and-its-consequences) follows real-orthogonal cyclic density, the real tensor-density lemma and compression to cyclic corners. Those compressions allow arbitrary Hilbert spaces; they impose neither semifiniteness nor a countable cyclic decomposition. Its intersection and centre formulas, and its tensor-MASA exercise, then follow from that commutation theorem. The historical attributions follow Takesaki’s chapter notes.
+The identity \((M\bar\otimes N)'=M'\bar\otimes N'\) requires a further argument. The free author edition [Blackadar, III.4.5.8] gives a modular-theoretic route. Rieffel and van Daele [Rieffel–van Daele] develop the real-subspace viewpoint on operator algebras and their commutants. The proof in [Theorem 11.4 of Spatial tensor products](../reader/supplements/spatial-tensor-products.html#11-the-commutation-theorem-and-its-consequences) uses real-orthogonal cyclic density, a real tensor-density lemma and compression to cyclic corners. The last step tests elementary tensor vectors and polarizes separately in both factors. These compressions allow arbitrary Hilbert spaces without semifiniteness or a countable cyclic decomposition. The intersection, centre and tensor-MASA formulas follow from the commutation theorem.
 
 ## References
 
-- [Stinespring] W. F. Stinespring, [“Positive functions on C*-algebras,”](https://www.ams.org/journals/proc/1955-006-02/S0002-9939-1955-0069403-4/S0002-9939-1955-0069403-4.pdf) *Proceedings of the American Mathematical Society* **6** (1955), 211–216.
-- [Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer-Verlag, 1979. Chapter IV, Section 5 Notes, pp. 229–230 (1979 first edition, softcover reprint).
+- [Stinespring] W. F. Stinespring, [“Positive functions on C\*-algebras,”](https://www.ams.org/journals/proc/1955-006-02/S0002-9939-1955-0069403-4/S0002-9939-1955-0069403-4.pdf) *Proceedings of the American Mathematical Society* **6** (1955), 211–216.
 - [Schatten] R. Schatten, [“On the direct product of Banach spaces,”](https://www.ams.org/journals/tran/1943-053-02/S0002-9947-1943-0007568-7/S0002-9947-1943-0007568-7.pdf) *Transactions of the American Mathematical Society* **53** (1943), 195–217.
 - [Blackadar] B. Blackadar, [*Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*](https://bruceblackadar.com/Mathematics/Cycr.pdf), revised author edition, 8 February 2017.
 - [Grothendieck] A. Grothendieck, [“Résumé des résultats essentiels dans la théorie des produits tensoriels topologiques et des espaces nucléaires,”](https://www.numdam.org/item/10.5802/aif.46.pdf) *Annales de l'Institut Fourier* **4** (1952), 73–112.
 - [Turumaru I; Turumaru III] T. Turumaru, “On the direct-product of operator algebras,” [I](https://www.jstage.jst.go.jp/article/tmj1949/4/3/4_3_242/_pdf), *Tôhoku Mathematical Journal* **4** (1952), 242–251; [III](https://www.jstage.jst.go.jp/article/tmj1949/6/2-3/6_2-3_208/_pdf), **6** (1954), 208–211.
-- [Guichardet] A. Guichardet, [“Tensor products of C*-algebras,”](https://www.mathnet.ru/php/getFT.phtml?jrnid=dan&paperid=30719&what=fullt&option_lang=eng) *Doklady Akademii Nauk SSSR* **160** (1965), 986–989.
-- [Takesaki, cross norms] M. Takesaki, [“A note on the cross-norm of the direct product of operator algebras,”](https://www.jstage.jst.go.jp/article/kodaimath1949/10/3/10_3_137/_pdf) *Kodai Mathematical Seminar Reports* **10** (1958), 137–140; [“On the cross-norm of the direct product of C*-algebras,”](https://www.jstage.jst.go.jp/article/tmj1949/16/1/16_1_111/_pdf) *Tôhoku Mathematical Journal* **16** (1964), 111–122.
-- [Misonou] Y. Misonou, “On the direct product of W*-algebras,” *Tôhoku Mathematical Journal* **6** (1954), 189–204. [Journal](https://www.jstage.jst.go.jp/article/tmj1949/6/2-3/6_2-3_189/_article/-char/en).
+- [Guichardet] A. Guichardet, [“Tensor products of C\*-algebras,”](https://www.mathnet.ru/php/getFT.phtml?jrnid=dan&paperid=30719&what=fullt&option_lang=eng) *Doklady Akademii Nauk SSSR* **160** (1965), 986–989.
+- [Takesaki, cross norms] M. Takesaki, [“A note on the cross-norm of the direct product of operator algebras,”](https://www.jstage.jst.go.jp/article/kodaimath1949/10/3/10_3_137/_pdf) *Kodai Mathematical Seminar Reports* **10** (1958), 137–140; [“On the cross-norm of the direct product of C\*-algebras,”](https://www.jstage.jst.go.jp/article/tmj1949/16/1/16_1_111/_pdf) *Tôhoku Mathematical Journal* **16** (1964), 111–122.
+- [Misonou] Y. Misonou, “On the direct product of W\*-algebras,” *Tôhoku Mathematical Journal* **6** (1954), 189–204. [Journal](https://www.jstage.jst.go.jp/article/tmj1949/6/2-3/6_2-3_189/_article/-char/en).
 - [Takeda] Z. Takeda, “On the representations of operator algebras, II,” *Tôhoku Mathematical Journal* **6** (1954), 212–219. [Journal](https://www.jstage.jst.go.jp/article/tmj1949/6/2-3/6_2-3_212/_article/-char/en).
-- [Sakai, characterization] S. Sakai, [“A characterization of W*-algebras,”](https://msp.org/pjm/1956/6-4/pjm-v6-n4-p11-s.pdf) *Pacific Journal of Mathematics* **6** (1956), 763–773.
-- [Lance] C. Lance, [“On nuclear C*-algebras,”](https://www.sciencedirect.com/science/article/pii/0022123673900219) *Journal of Functional Analysis* **12** (1973), 157–176.
-- [Effros–Lance] E. Effros and C. Lance, [“Tensor products of operator algebras,”](https://www.sciencedirect.com/science/article/pii/0001870877900858) *Advances in Mathematics* **25** (1977), 1–34.
+- [Sakai, characterization] S. Sakai, [“A characterization of W\*-algebras,”](https://msp.org/pjm/1956/6-4/pjm-v6-n4-p11-s.pdf) *Pacific Journal of Mathematics* **6** (1956), 763–773.
+- [Rieffel–van Daele] M. A. Rieffel and A. van Daele, [“A bounded operator approach to Tomita–Takesaki theory,”](https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf) *Pacific Journal of Mathematics* **69** (1977), 187–221.

@@ -1,6 +1,6 @@
 # Hypercoverings
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Simplex-decomposition argument by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
 
 A covering chooses local pieces. Its Čech nerve uses every intersection of those pieces. A hypercovering allows a further choice: cover the intersections, then cover the compatible boundaries made from those covers, and continue. These extra choices let us lift a cochain locally without changing all earlier choices by hand. They are the reason that a colimit over hypercoverings computes every cohomology group.
 
@@ -69,7 +69,7 @@ T\longmapsto
 \]
 It is a finite limit: choose the images of the finitely many nondegenerate simplices and impose their face relations. Degeneracies then determine the other images.
 
-For completeness, every simplex has a unique expression as a degeneracy of a nondegenerate simplex. Existence follows by reducing dimension until no degeneracy remains. If \(x=\varphi^*y=\psi^*z\) for surjections \(\varphi:[n]\twoheadrightarrow[k]\), \(\psi:[n]\twoheadrightarrow[l]\) and nondegenerate \(y,z\), choose a right inverse \(\xi\) of \(\psi\). Nondegeneracy of \(z=(\varphi\xi)^*y\) forces \(\varphi\xi\) to be surjective, so \(l\ge k\). Interchanging the roles gives equality. Thus \(\varphi\xi\) is the identity for every right inverse \(\xi\). Any element of a fibre of \(\psi\) can be chosen as the value of such a right inverse, since its fibres are ordered consecutive blocks. It follows that \(\varphi=\psi\); applying a right inverse gives \(y=z\). This proves the claim and the finite-limit description in (2.4).
+For completeness, every simplex has a unique expression as a degeneracy of a nondegenerate simplex. Existence follows by reducing dimension until no degeneracy remains. If \(x=\varphi^*y=\psi^*z\) for surjections \(\varphi:[n]\twoheadrightarrow[k]\), \(\psi:[n]\twoheadrightarrow[l]\) and nondegenerate \(y,z\), choose a right inverse \(\xi\) of \(\psi\). Factor \(\varphi\xi\) as a surjection followed by an injection. If that surjection were not an isomorphism, \(z=(\varphi\xi)^*y\) would be degenerate. Thus \(\varphi\xi\) is injective, so \(l\le k\). Interchanging the roles gives equality. Thus \(\varphi\xi\) is the identity for every right inverse \(\xi\). Any element of a fibre of \(\psi\) can be chosen as the value of such a right inverse, since its fibres are ordered consecutive blocks. It follows that \(\varphi=\psi\); applying a right inverse gives \(y=z\). This proves the claim and the finite-limit description in (2.4).
 
 In particular
 \[

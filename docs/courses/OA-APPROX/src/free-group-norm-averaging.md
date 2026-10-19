@@ -1,6 +1,6 @@
 # Norm averaging in a free group algebra
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Human-source notices retain their separate terms.*
 
 A finite operator average can erase the nonscalar part of an element of a reduced free-group algebra in operator norm. We begin with the operator algebra and the averaging target, derive simplicity and uniqueness of trace, and then construct the word and Hilbert-space mechanisms that make the target work. The word construction uses the same two selected generators for every finite test family, even when the full generator set is uncountable.
 
@@ -219,7 +219,7 @@ The diagram records the two exact inputs of Theorem 3.1 and Lemma 1.1. The three
 
 <a id="5-exercises-with-complete-solutions"></a>
 
-The original exercise numbers identify the same complete tasks. We group their solutions by the mechanism they test.
+The problems test range estimates, operator-norm consequences, cancellation and finite-family uniformity.
 
 ### Range bounds
 

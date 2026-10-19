@@ -10,7 +10,7 @@ Basic references are Kalmes's two papers on surjectivity listed below and Grubb'
 
 Throughout, \(P\ne0\) is a complex polynomial with constant coefficients, \(D=-i\partial\), and \(P^t=P(-D)\). Write \(m=\deg P\) and \(P_m\) for its homogeneous principal part. Lower order coefficients may be complex. All distances and orthogonal complements use the Euclidean inner product.
 
-The support-normal, analytic elliptic and analytic propagation statements specified below are planned prerequisites of [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html). The geometric implications in this lesson use those exact statements.
+The support-normal theorem is proved in [Support normals and analytic singularities](../AN02-L194.html#3-a-supporting-analytic-function-produces-a-singular-normal), Theorem 3.1 and Corollary 4.1. Elliptic continuation on convex sets is proved in [Lorentz cones and domain solvability](../AN02-L016.html#convex-continuation), Theorem 0.1 and Corollary 0.3. The microlocal elliptic bounds are proved in [Noncharacteristic directions and microlocal regularity](../AN02-L199.html#complete-proof), Theorem 1.1 and Corollary 7.1, including variable analytic coefficients and all the derivative classes of L190. Smooth wavefront propagation and global exact one-ray realization are proved in [Characteristic rays and directional kernels](../AN02-L200.html#complete-proof), Theorem 1.1, assertions 2 and 3, with arbitrary complex lower terms and every prescribed finite differentiability. Analytic propagation and its full admissible derivative-class form are proved in [Resolving singular directions at a holomorphic boundary](../AN02-L201.html#complete-proof), Theorem 6.1, including arbitrary complex lower terms.
 
 ## Distance tests and continuation inputs
 
@@ -53,11 +53,11 @@ v\in\mathcal E'(X).
 \]
 For sufficiency in (3), it is enough to establish the distance equality for test functions: the proof there then constructs the required compact support bound. Empty singular supports in (4) cause no problem, by the singular-support hull identity.
 
-We assume the following distribution and wavefront results. They concern the operator \(A\) itself, and will be used with \(A=P^t\). They do not require its lower order coefficients to be real.
+The following distribution and wavefront statements have their proof references or remaining prerequisites specified below. They concern the operator \(A\) itself, and will be used with \(A=P^t\). They do not require its lower order coefficients to be real.
 
 - **Halfspace solution.** If the principal part of \(A\) vanishes at a real nonzero normal \(N\), each closed halfspace with that normal is the exact support of a global smooth solution of \(Au=0\). This exact construction is supplied by Theorem1 of [Smooth solutions with an exact characteristic halfspace as support](exact-solutions-on-characteristic-half-spaces.md#exact-characteristic-halfspace-theorem). Reverse its normal as needed, translate the boundary plane and apply it to the transposed polynomial. That lesson’s written scalar-calculus and algebra entries remain explicit.
-- **Analytic elliptic regularity.** A homogeneous distributional solution of a constant-coefficient elliptic operator is real analytic. In particular it vanishes throughout a connected open set if it vanishes on a nonempty open subset.
-- **Smooth wavefront propagation and realization.** Suppose \(A_m\) is real and \(\nabla A_m(\xi)\ne0\) for every nonzero characteristic \(\xi\). If \((x,\xi)\in\operatorname{WF}(u)\setminus\operatorname{WF}(Au)\), then \(A_m(\xi)=0\), and the wavefront point propagates along any segment in direction \(\nabla A_m(\xi)\) avoiding \(\operatorname{WF}(Au)\) at the same covector. Conversely, for each such \(\xi\) there is a global \(u\in C^m\) for which \(Au\) is smooth and
+- **Elliptic continuation.** A homogeneous distributional solution of a constant-coefficient elliptic operator on a convex open set vanishes there if it vanishes on a nonempty open subset. This is Corollary 0.3 of [Lorentz cones and domain solvability](../AN02-L016.html#two-consequences-with-different-geometric-hypotheses). For the support and active-slice arguments below, this uniqueness statement is sufficient.
+- **Smooth wavefront propagation and realization.** The complete proof is [Characteristic rays and directional kernels](../AN02-L200.html#complete-proof), Theorem 1.1. Suppose \(A_m\) is real and \(\nabla A_m(\xi)\ne0\) for every nonzero characteristic \(\xi\). If \((x,\xi)\in\operatorname{WF}(u)\setminus\operatorname{WF}(Au)\), then \(A_m(\xi)=0\), and the wavefront point propagates along any segment in direction \(\nabla A_m(\xi)\) avoiding \(\operatorname{WF}(Au)\) at the same covector. Conversely, for each such \(\xi\) there is a global \(u\in C^m\) for which \(Au\) is smooth and
   \[
   \begin{gathered}
   \operatorname{WF}(u)=\{(t\nabla A_m(\xi),s\xi):\\
@@ -65,8 +65,8 @@ We assume the following distribution and wavefront results. They concern the ope
   \end{gathered}
   \tag{5}
   \]
-- **Analytic wavefront propagation.** Under the same principal type hypothesis, the preceding propagation statement holds with \(\operatorname{WF}_A\) in place of \(\operatorname{WF}\).
-- **A support normal is an analytic singularity.** If a real analytic function \(h\) attains its maximum on \(\operatorname{supp}u\) at \(x\), with \(dh(x)\ne0\), then \((x,\pm dh(x))\in\operatorname{WF}_A(u)\).
+- **Analytic wavefront propagation.** The full class proof is [Resolving singular directions at a holomorphic boundary](../AN02-L201.html#complete-proof), Theorem 6.1 and Corollary 6.2. Under the same principal type hypothesis, the preceding propagation statement holds with \(\operatorname{WF}_A\) in place of \(\operatorname{WF}\).
+- **A support normal is an analytic singularity.** The proof is [Support normals and analytic singularities](../AN02-L194.html#3-a-supporting-analytic-function-produces-a-singular-normal), Theorem 3.1 and Corollary 4.1. If a real analytic function \(h\) attains its maximum on \(\operatorname{supp}u\) at \(x\), with \(dh(x)\ne0\), then \((x,\pm dh(x))\in\operatorname{WF}_A(u)\).
 
 Both wavefront sets are closed conic subsets of the cotangent bundle with the zero covectors removed. Their projections are respectively the smooth and analytic singular supports; the latter lies in the support. Differential operators do not increase either wavefront set. Elliptic regularity at a covector means
 \[
@@ -78,7 +78,7 @@ Both wavefront sets are closed conic subsets of the cotangent bundle with the ze
 \end{gathered}
 \tag{6}
 \]
-The arguments below use these prerequisites with their stated hypotheses. In particular, smooth and analytic propagation are separate results.
+The elliptic bounds in (6) are proved in [Noncharacteristic directions and microlocal regularity](../AN02-L199.html#complete-proof), Theorem 1.1. The smooth propagation and realization statements in (5) are proved in [Characteristic rays and directional kernels](../AN02-L200.html#complete-proof), Theorem 1.1. Analytic propagation is proved in [Resolving singular directions at a holomorphic boundary](../AN02-L201.html#complete-proof), Theorem 6.1. Smooth and analytic propagation are separate results with their respective written proofs.
 
 ## What a characteristic hyperplane forces
 
@@ -133,11 +133,34 @@ The point \(y-t=q+t\) belongs to \(\operatorname{supp}v\): it lies on the bounda
 
 The use of an exact halfspace support matters: vanishing on one side of a characteristic plane alone would not ensure that the selected point belongs to the support.
 
+**Corollary 2.2 (a concave characteristic boundary).** Suppose \(n\ge2\), \(X\) is support convex for \(P\), and near a boundary point the domain has orthonormal affine coordinates
+\[
+X=\{(z,s):s>g(z)\},\qquad
+g(0)=0,\quad dg(0)=0,
+\tag{BC1}
+\]
+where \(g\) is \(C^2\). If the tangent hyperplane is characteristic, so \(P_m(e_s)=0\), then \(d^2g(0)\) cannot be negative definite. The sign convention in (BC1) describes strict concavity as viewed from the side occupied by \(X\).
+
+**Proof.** If the Hessian were negative definite, continuity would give \(\lambda>0\) and a small radius \(r>0\) with
+\[
+g(z)=\int_0^1(1-t)d^2g(tz)[z,z]\,dt
+\le-\frac\lambda2|z|^2\quad(|z|\le r).
+\tag{BC2}
+\]
+Keep the entire closed coordinate cylinder involved inside the boundary chart. The compact ring \(\{(z,0):|z|=r\}\) lies in \(X\), so its distance \(\gamma\) to the full complement of \(X\) is positive. For sufficiently small \(0<\delta<\gamma/3\), the compact disk
+\[
+K_\delta=\{(z,\delta):|z|\le r\}
+\tag{BC3}
+\]
+lies inside \(X\), by (BC2) and the local description. Its relative boundary has distance at least \(\gamma-\delta>\delta\), by the 1-Lipschitz property. Its center has distance at most \(\delta\), because the origin belongs to the complement. The affine plane \(s=\delta\) is characteristic, with the same normal as the tangent plane. Thus \(K_\delta\) violates the minimum principle of Theorem 2.1. This contradiction proves the claim. The argument uses the full boundary distance, so no assumption about distant boundary components is hidden in the chart. \(\square\)
+
+The curvature condition in each individual bicharacteristic direction is proved in [Characteristic supporting surfaces and boundary curvature](characteristic-supporting-surfaces-and-boundary-curvature.md), Theorem 1.1. It applies in every dimension, allows an indefinite tangent Hessian and arbitrary complex lower-order coefficients, and includes a full construction of smooth one-sided null solutions.
+
 ## Ellipticity and the active subspace
 
 **Theorem 3.1.** Every open set is \(P\)-convex for supports if and only if \(P\) is elliptic.
 
-**Proof.** Suppose first that \(P\) is elliptic. Extend \(v\in\mathcal E'(X)\) by zero to \(\mathbb R^n\), and let \(r=d_X(\operatorname{supp}P^tv)>0\). For any \(q\notin X\), the ball \(B(q,r)\) avoids that image support. On this ball, \(v\) is analytic by elliptic regularity. It is zero near \(q\), because its support is compactly contained in \(X\). The analytic identity theorem gives \(v=0\) throughout the ball. Taking all such \(q\) proves \(d_X(\operatorname{supp}v)\ge r\); the reverse inequality is locality. Apply (3). The case \(X=\mathbb R^n\) was already covered, and a constant nonzero \(P\) simply preserves supports.
+**Proof.** Suppose first that \(P\) is elliptic. Extend \(v\in\mathcal E'(X)\) by zero to \(\mathbb R^n\), and let \(r=d_X(\operatorname{supp}P^tv)>0\). For any \(q\notin X\), the ball \(B(q,r)\) avoids that image support. On this ball, \(v\) is a homogeneous solution. It is zero near \(q\), because its support is compactly contained in \(X\). Elliptic continuation from a small zero ball gives \(v=0\) throughout the ball. Taking all such \(q\) proves \(d_X(\operatorname{supp}v)\ge r\); the reverse inequality is locality. Apply (3). The case \(X=\mathbb R^n\) was already covered, and a constant nonzero \(P\) simply preserves supports.
 
 If \(P\) is nonelliptic, choose a real characteristic normal \(N\) of unit length. Take \(X=\mathbb R^n\setminus\{0\}\), so \(d_X(x)=|x|\), and take the characteristic plane \(\Pi=\{x:x\cdot N=1\}\). On a positive radius closed ball in \(\Pi\) centered at \(N\), the minimum is 1, while every relative boundary point has norm greater than 1. Theorem 2.1 excludes support convexity. Such a nonelliptic scalar polynomial cannot occur in dimension one, where its nonzero leading monomial has no nonzero real zero. \(\square\)
 
@@ -167,7 +190,7 @@ Otherwise, since the image support has distance at least \(r\), there is a ball 
 \[
 \{y+w+a:a\in V,\ |a|<R/2\}
 \]
-lies in \(B(y,R)\). On that connected slice \(v\) is an analytic homogeneous solution of the elliptic operator on \(V\), and is zero on a neighborhood of \(z+w\). It is therefore zero on the whole slice. Uniformly small \(w\) give an open tube around \(y\) on which \(v=0\), contradicting \(y\in\operatorname{supp}v\). This proves the claim even if the restriction of \(v\) to the original slice happened to be identically zero.
+lies in \(B(y,R)\). On that connected slice \(v\) is a homogeneous solution of the elliptic operator on \(V\), and is zero on a neighborhood of \(z+w\). The elliptic continuation corollary makes it zero on the whole convex slice. Uniformly small \(w\) give an open tube around \(y\) on which \(v=0\), contradicting \(y\in\operatorname{supp}v\). This proves the claim even if the restriction of \(v\) to the original slice happened to be identically zero.
 
 Apply (2) to \(K\). Its relative boundary has distance at least \(r\), so the whole of \(K\), including \(y_0\), has that distance. Since \(y_0\) was arbitrary, (3) holds for every test function. Its test-function form proves support convexity. \(\square\)
 

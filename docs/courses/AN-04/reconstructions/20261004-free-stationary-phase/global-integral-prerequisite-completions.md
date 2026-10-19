@@ -480,18 +480,17 @@ integration by parts, with zero boundary term. Repetition and the norm bound
 give exactly (NS), using the already proved \(|e^{i\phi/h}|=1\).
 The parameter estimates use finite product/chain rules and bounds on that
 common compact set, as stated in Q9. Thus Q1, Q3 and Q9 have complete
-selected programme proof chains. Q2, Q4 and Q6–Q8 still require the indicated
-change-of-variables proofs; this companion does not close the whole lesson.
+selected programme proof chains. The substitution arguments for Q2, Q4 and Q6–Q8 are supplied by
+the change-of-variables companion,
+including its full compact Jordan theorem and absolute-improper applications.
 \(\square\)
 
-## Next dependency: the actual change-of-variables proof
+## Change of variables and the quadratic calculations
 
-The free source §10.7 has been read, but its theorem is not imported yet.
-Proposition 10.7.1 leaves the determinant/volume assertion to an exercise.
-Theorem 10.7.2 also uses the Jordan-set and null-set image results, finite
-rectangle covering, controlled subdivision, and a restriction to a
-neighborhood where the Jacobian is nonzero before replacing the compact set
-by surrounding rectangles. These inputs must be supplied explicitly.
-The polar-coordinate and whole-line applications need their own domain and
-exhaustion justification. This records the actual missing proofs rather than
-turning free access to the page into mathematical clearance.
+The change-of-variables companion
+proves the null-image and Jordan-set results, the determinant–volume formula,
+controlled finite subdivisions and the full compact Jordan substitution theorem.
+Its affine and compact-chart substitutions have their exact Jacobians; its
+polar-coordinate exhaustion treats the origin, missing ray and absolute tails.
+The [quadratic reading](quadratic-stationary-phase.html) uses those proofs for
+Gaussian normalization, Fourier inversion and the finite stationary-phase remainder.

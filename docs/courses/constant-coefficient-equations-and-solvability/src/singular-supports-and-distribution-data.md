@@ -311,7 +311,180 @@ Conversely, singular support convexity and Theorem 5.2 give \(P(D)u=f+g\) with s
 
 Every open convex set satisfies both conditions, by the compact support and singular-support hull identities. Thus it admits solutions for all distribution data, regardless of how their orders grow near its boundary or at infinity.
 
-Translation invariance was used in Theorems 2.1 and 3.2. For a variable coefficient operator, those necessity arguments require separate justification. The closed graph and exhaustion estimate also use the precise compact regularity bounds and the empty-image implication specified here. They do not by themselves establish an unrestricted statement for every smooth variable coefficient operator on every manifold.
+Translation invariance was used in Theorems 2.1 and 3.2. For a variable coefficient operator, those necessity arguments require separate justification. The following section isolates the compact regularity input in sufficiency and proves the smooth-coefficient examples explicitly.
+
+## What changes with smooth coefficients?
+
+Translation invariance has two separate roles. It supplies the empty-image regularity in Lemma 1.1, and it supports the necessity argument in Theorem 3.2. The following sufficient criterion identifies exactly the extra input used by the functional-analytic construction when the coefficients vary.
+
+Let \(M\) be a second-countable smooth manifold without boundary, equipped with a positive smooth density \(dV\). Distributions pair complex-linearly with smooth compact tests using this density. Let \(P\) be a finite-order differential operator with smooth complex coefficients, and let \(Q=P^t\) be its formal transpose, including the coefficient and density derivatives.
+
+**Theorem 7.1.** Suppose that the following two conditions hold.
+
+1. For every compact \(K\subset M\) there is a compact \(K'\subset M\) such that
+   \[
+   v\in\mathcal E'(M),\quad
+   \operatorname{singsupp}Qv\subset K
+       \quad\Longrightarrow\quad \operatorname{singsupp}v\subset K'.
+   \tag{VC1}
+   \]
+2. Compact distributions with smooth image are smooth:
+   \[
+   v\in\mathcal E'(M),\quad Qv\in C^\infty(M)
+                       \quad\Longrightarrow\quad v\in C^\infty(M).
+   \tag{VC2}
+   \]
+
+Then every \(f\in\mathcal D'(M)\) has a solution modulo a smooth function:
+\[
+       Pu=f+g,\qquad u\in\mathcal D'(M),\quad g\in C^\infty(M).
+ \tag{VC3}
+\]
+Condition (VC2) is sufficient, rather than asserted necessary.
+
+**Proof.** The test spaces and smooth seminorms are defined chart by chart. A countable relatively compact coordinate cover gives a countable compact exhaustion; compact annuli and coordinate bump functions give the cutoffs used below. Each compact meets only finitely many members of a suitably chosen locally finite refinement. On a fixed compact support space, finitely many coordinate charts define the usual Fréchet derivative topology. Their union defines the test-function LF topology. In particular a seminorm on tests is continuous if its restriction to every fixed compact support space is continuous. These are the same test-space and closed-graph facts used in Lemmas 4.1 and 5.1.
+
+Choose compact exhaustions \(K_j,K_j'\), \(j\ge1\), with
+\[
+ K_j\subset\operatorname{int}K_j',\qquad
+ K_j'\subset\operatorname{int}K_{j+1},
+ \tag{VC4}
+\]
+and with \(K_j'\) a bound in (VC1) for \(K_j\). This is possible successively: include a fixed exhaustion and the preceding sets in \(K_j\), take a bound from (VC1), and enlarge that bound to a compact neighborhood. Put
+\[
+                  K_{-1}=K_0=K_{-1}'=K_0'=\varnothing.
+\]
+Condition (VC2), rather than (VC1) with an unspecified bound, permits the empty bound here.
+
+For \(j\ge0\), let \(V_j\) be the space of continuous functions supported in \(K_{j+1}'\) whose image under \(Q\) is smooth on \(M\setminus K_{j-1}\). Give it the supremum norm and all compact chart-derivative seminorms of that image. It is Fréchet. Indeed a Cauchy sequence has a uniform continuous supported limit and a smooth image limit on the indicated open set; continuity of differential operators on distributions identifies that limit with \(Qv\).
+
+Conditions (VC1) and (VC2) make restriction a map
+\[
+                V_j\longrightarrow C^\infty(M\setminus K_{j-1}').
+ \tag{VC5}
+\]
+For the empty initial sets use (VC2); otherwise apply (VC1). Its graph is closed, since uniform convergence identifies any possible smooth restriction limit. The Fréchet closed graph theorem makes (VC5) continuous. A bounded sequence therefore bounds every derivative on compact subsets of its target. Arzelà–Ascoli in finitely many charts, followed by a diagonal choice over compact sets and derivative orders, gives a smoothly convergent subsequence there.
+
+We now construct the estimate needed for Hahn–Banach. For tests write
+\[
+                       A(v)=|f(v)|+\sup_M|v|.
+\]
+Suppose that on \(\mathcal D_{K_j}(M)\) we already have
+\[
+ A(v)\le C\left(q(Qv)+\sum_{\ell\le b}
+                         \left|\int_M v\psi_\ell\,dV\right|\right),
+ \tag{VC6}
+\]
+where \(q\) is a continuous test seminorm and the list is finite. At \(j=0\) take \(C=1,q=0,b=0\); the assertion is vacuous.
+
+Fix \(\varepsilon>0\). We claim that (VC6) extends to \(\mathcal D_{K_{j+1}}(M)\) with constant \(C(1+\varepsilon)\), after adding finitely many compact derivative seminorms supported outside \(K_{j-1}\) to \(q\), and finitely many smooth tests supported there to the list. Choose a countable defining family \(p_a\) for smooth functions on \(M\setminus K_{j-1}\), and a countable dense collection \(\eta_a\) of tests on that open set. Such a collection comes from a countable compact exhaustion and countable dense families in its Fréchet support spaces.
+
+If the claim failed, for each positive integer \(N\) rescaling a counterexample would give \(v_N\in\mathcal D_{K_{j+1}}(M)\) with
+\[
+ \begin{aligned}
+ A(v_N)&=C(1+\varepsilon),\\
+ q(Qv_N)+\sum_{\ell\le b}\left|\int_M v_N\psi_\ell\,dV\right|
+ &+N\sum_{a\le N}p_a(Qv_N)
+   +N\sum_{a\le N}\left|\int_M v_N\eta_a\,dV\right|<1.
+ \end{aligned}
+ \tag{VC7}
+\]
+These functions are uniformly bounded in supremum norm, and their images tend to zero smoothly on \(M\setminus K_{j-1}\). They are bounded in \(V_j\). By (VC5) their restrictions are precompact on \(M\setminus K_{j-1}'\). Every restriction limit is zero: the pairings with every \(\eta_a\) tend to zero, and the uniform supremum bound extends this convergence to all tests by approximation in \(L^1(dV)\). Thus the whole sequence tends to zero smoothly on that smaller open set; otherwise a subsequence bounded away from zero in one smooth seminorm would have a further subsequence converging to zero.
+
+Choose \(\chi\in C_c^\infty(\operatorname{int}K_j)\) equal to one near \(K_{j-1}'\), with \(0\le\chi\le1\). For \(j=0\) take \(\chi=0\). Since the supports stay in \(K_{j+1}\),
+\[
+                  (1-\chi)v_N\longrightarrow0
+                              \quad\hbox{in }\mathcal D(M).
+ \tag{VC8}
+\]
+Continuity of \(f,q,Q\), and the finitely many old integral pairings now gives
+\[
+ \begin{aligned}
+ A(\chi v_N)&\ge C(1+\varepsilon)-o(1),\\
+ q(Q(\chi v_N))+
+ \sum_{\ell\le b}\left|\int_M\chi v_N\psi_\ell\,dV\right|
+                          &\le1+o(1).
+ \end{aligned}
+\]
+But \(\chi v_N\in\mathcal D_{K_j}(M)\), so this contradicts (VC6). No commutation of \(Q\) with translations or cutoffs was used: the difference in (VC8) tends to zero in the full test topology, and a smooth-coefficient differential operator is continuous in that topology.
+
+Iterate with positive \(\varepsilon_j\) of finite sum. The products of \(1+\varepsilon_j\) stay bounded. Every new seminorm and every new test at stage \(j\) is supported outside \(K_{j-1}\). Consequently their sum restricts to a finite continuous seminorm on each fixed support space, and the new tests form a locally finite family. The limit of (VC6) gives
+\[
+ |f(v)|+\sup|v|\le C\left(q(Qv)+
+                 \sum_\ell\left|\int_Mv\psi_\ell\,dV\right|\right)
+                    \qquad(v\in\mathcal D(M)).
+ \tag{VC9}
+\]
+
+Define \(Tv=(Qv,(\int_Mv\psi_\ell\,dV)_\ell)\). Its second component has finite support for each compact test and belongs to \(\ell^1\). Estimate (VC9) makes \(Tv\mapsto f(v)\) well defined and bounded by \(C(q(w)+\|a\|_{\ell^1})\). Complex Hahn–Banach extends it to \(\mathcal D(M)\oplus\ell^1\) with this bound. The first restriction is a distribution \(u\); the second is represented by a bounded scalar sequence \(c_\ell\). Therefore
+\[
+ f(v)=u(Qv)+\sum_\ell c_\ell\int_Mv\psi_\ell\,dV.
+\]
+The locally finite sum \(h=\sum_\ell c_\ell\psi_\ell\) is smooth, so \(Pu=f-h\). Taking \(g=-h\) proves (VC3). \(\square\)
+
+For constant coefficients, singular-support convexity supplies (VC2) by Lemma 1.1. Theorem 7.1 therefore preserves the full constant-coefficient sufficient theorem already proved above.
+
+### A compact zero region defeats the bound alone
+
+**Example 7.2.** On the line define
+\[
+ a_0(x)=
+ \begin{cases}
+  0,& |x|\le1,\\
+  \exp\!\bigl(-1/(x^2-1)\bigr),& |x|>1,
+ \end{cases}
+ \qquad P_0u=a_0u.
+ \tag{VC10}
+\]
+This is a nonzero smooth differential operator of order zero. To check smoothness at the two endpoints, put \(b(t)=e^{-1/t}\) for \(t>0\) and \(b(t)=0\) otherwise. Each positive-side derivative is a polynomial in \(1/t\) times \(e^{-1/t}\). Every such product tends to zero at zero: an exponential dominates every fixed power, as its power series shows. All one-sided derivatives therefore join with zero. Now \(a_0(x)=b(x^2-1)\).
+
+Here \(P_0^t=P_0\). Off the compact zero set \([-1,1]\), multiplication by \(1/a_0\) is smooth, so
+\[
+ \operatorname{singsupp}v
+       \subset\operatorname{singsupp}(a_0v)\cup[-1,1].
+ \tag{VC11}
+\]
+For every compact \(K\), the choice \(K'=K\cup[-1,1]\) proves (VC1). Nevertheless \(P_0u=\delta_0+g\) is impossible for smooth \(g\): its left side vanishes on \((-1,1)\), which would make \(\delta_0\) smooth there. A smooth function supported at one point is zero, whereas delta is not. Condition (VC2) fails as well, because \(a_0\delta_0=0\).
+
+*Reference:* [HII, remark after Theorem 10.7.8] extends the sufficient assertion to smooth coefficients; (VC10)–(VC11) show why the singularity bound, with the literal definition (VC1), needs an additional regularity input.
+
+### Isolated zero points defeat necessity
+
+**Example 7.3.** The operator
+\[
+                   P_1u=\sin(\pi x)\,u'
+ \tag{VC12}
+\]
+is surjective on \(\mathcal D'(\mathbb R)\), although the analogue of singular-support convexity fails.
+
+We first prove the required division statement. Near a simple zero \(j\in\mathbb Z\), write \(\sin(\pi x)=(x-j)b_j(x)\), where \(b_j\) is smooth and nonzero on a sufficiently small interval \(I_j\). Choose \(\rho_j\in C_c^\infty(I_j)\) with \(\rho_j(j)=1\). The map
+\[
+ R_j\phi(x)=\frac{\phi(x)-\phi(j)\rho_j(x)}{x-j}
+ \tag{VC13}
+\]
+has a smooth value at \(j\) and compact support. It is continuous on test functions: near \(j\), the zero numerator divided by \(x-j\) equals the integral of its first derivative along the segment from \(j\) to \(x\); away from \(j\), ordinary division has bounded derivatives on each relevant compact set. For tests in one fixed support space, the output support lies in its union with \(\operatorname{supp}\rho_j\).
+
+For any distribution \(T\) on \(I_j\), define \(W(\phi)=T(R_j\phi)\). Since \(R_j((x-j)\phi)=\phi\), one has \((x-j)W=T\). Multiplying \(W\) by \(1/b_j\) solves \(\sin(\pi x)V=T\) there. Away from the integers division is ordinary smooth multiplication. Choose a locally finite interval cover of these two types and a subordinate smooth partition of unity. Multiply the local solutions by the partition functions and sum. Multiplication by the coefficient commutes with these cutoffs, so for every global \(f\) this gives \(V\in\mathcal D'(\mathbb R)\) with \(\sin(\pi x)V=f\).
+
+Every distribution on the line has a primitive. Explicitly choose \(\rho\in C_c^\infty(\mathbb R)\) with integral one, and put
+\[
+ J\phi(x)=\int_{-\infty}^{x}
+       \left(\phi(t)-\rho(t)\int_{\mathbb R}\phi(s)\,ds\right)dt .
+ \tag{VC14}
+\]
+The integrand has total integral zero, so \(J\phi\) is smooth and compactly supported. On a fixed support space its support stays in one compact interval and every derivative is bounded by finitely many derivatives of \(\phi\). Thus \(u(\phi)=-V(J\phi)\) is a distribution. Since \(J(\phi')=\phi\), distributional differentiation gives \(u'=V\), hence \(P_1u=f\).
+
+For the transpose,
+\[
+ P_1^tv=-\partial_x(\sin(\pi x)v),\qquad
+                           P_1^t\delta_j=0\quad(j\in\mathbb Z).
+ \tag{VC15}
+\]
+The last equality uses \(\sin(\pi j)=0\). Each \(\delta_j\) has singular support \(\{j\}\), while every image has empty singular support. No fixed compact \(K'\) can contain all these integers. Thus (VC1) fails, even though \(P_1\) is surjective. This proves the necessity distinction directly, without assigning an unproved inverse to the ordinary differential operator.
+
+![A compact zero interval blocks a delta datum, while isolated integer zeros give transpose point kernels for a surjective differential operator](../reproduce/L012-variable-coefficients/figures/variable-coefficient-singularities.png)
+
+**Figure 7.1.** The top graph is the exact coefficient in (VC10), with its zero interval shaded. Its point marker locates the obstructed datum \(\delta_0\); the compact set \(K\cup[-1,1]\) bounds hidden singularities but does not give solvability. The bottom graph is the coefficient in (VC12), with transpose-kernel supports at integers. The displayed interval is \([-3,3]\); those supports continue over the whole line. Marks locate Dirac supports and do not represent distribution values. Examples 7.2–7.3 give the complete obstruction and surjectivity proofs. [Editable SVG](../reproduce/L012-variable-coefficients/figures/variable-coefficient-singularities.svg) and [reproduction source and mathematical data](../reproduce/L012-variable-coefficients/README.md) accompany the diagram.
 
 ## Exercises
 
@@ -322,6 +495,8 @@ Translation invariance was used in Theorems 2.1 and 3.2. For a variable coeffici
 **Exercise 3 (intermediate: increasing orders).** On \(X=\mathbb R\), show that \(f=\sum_{j\ge1}\partial_x^j\delta_j\) is a distribution but has no globally bounded order. Prove that it is valid data for Theorem 6.1 and explain why a fixed-order theorem would not cover it.
 
 **Exercise 4 (advanced: the Hahn–Banach range).** Suppose a differential operator \(A\) and a distribution \(f\) satisfy \(|f(v)|\le C(q(A^tv)+\sum|v(\psi_\ell)|)\), with continuous LF \(q\) and locally finite compact smooth \(\psi_\ell\). Prove directly that \(f=Au+h\) for a distribution \(u\) and a smooth locally finite sum \(h\). Specify why the range functional is well defined even if the displayed map has a kernel.
+
+**Exercise 5 (advanced: a sufficient hypothesis need not be necessary).** On the real line let \(Pu=xu\). Prove that (VC1) holds and (VC2) fails, but \(P\) is nevertheless surjective on all distributions. Give the inverse construction on test functions. Explain what this says about Theorem 7.1.
 
 ## Complete solutions
 
@@ -344,6 +519,30 @@ Even the order estimate on this fixed compact fails, contradicting the proposed 
 
 **Solution 4.** Set \(Tv=(A^tv,(v(\psi_\ell))_\ell)\). The second component has finite support, so belongs to \(\ell^1\). If \(Tv=0\), the estimate gives \(f(v)=0\); hence \(Tv\mapsto f(v)\) is well defined on the range, even without injectivity. Extend it by complex Hahn–Banach with bound \(C(q(w)+\|a\|_1)\). Its first restriction is LF continuous and therefore a distribution \(u\). Its second restriction is represented by bounded scalars \(c_\ell\), since the dual of \(\ell^1\) is \(\ell^\infty\). Thus \(f(v)=u(A^tv)+\sum c_\ell v(\psi_\ell)\). The sum \(h=\sum c_\ell\psi_\ell\) is smooth on each compact set, where only finitely many terms occur, and the equality says \(f=Au+h\).
 
+**Solution 5.** Off zero, smooth division by \(x\) shows
+\[
+       \operatorname{singsupp}v
+          \subset\operatorname{singsupp}(xv)\cup\{0\}.
+\]
+Thus \(K'=K\cup\{0\}\) proves (VC1). Condition (VC2) fails for \(v=\delta_0\), since \(x\delta_0=0\).
+
+Choose \(\rho\in C_c^\infty(\mathbb R)\) with \(\rho(0)=1\), and set
+\[
+                R\phi(x)=\frac{\phi(x)-\phi(0)\rho(x)}x .
+ \tag{VC16}
+\]
+The smooth extension and test-space continuity were proved for (VC13). For any \(f\in\mathcal D'(\mathbb R)\), define the distribution
+\[
+                         u(\phi)=f(R\phi).
+\]
+Then
+\[
+              (xu)(\phi)=u(x\phi)=f(R(x\phi))=f(\phi).
+\]
+So every datum has a solution. Theorem 7.1 supplies a sufficient pair of hypotheses. It does not classify all smooth-coefficient operators for which surjectivity holds, and its compact regularity condition is not asserted necessary.
+
 ## References
 
 For the distribution and Sobolev conventions, see G. Grubb, *Distributions and Operators*, open lecture chapters [Distributions](https://web.math.ku.dk/~grubb/dist3.pdf), [Fourier transformation](https://web.math.ku.dk/~grubb/dist5.pdf), and [Sobolev spaces](https://web.math.ku.dk/~grubb/dist6.pdf). For the classical support and approximation setting, see B. Malgrange, [*Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution*](https://aif.centre-mersenne.org/articles/10.5802/aif.65/), Annales de l'Institut Fourier 6 (1956), 271–355.
+
+[HII] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Constant-coefficient solvability, singular supports and comparison with smooth-coefficient operators.

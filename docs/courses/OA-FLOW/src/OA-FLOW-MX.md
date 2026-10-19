@@ -1,12 +1,12 @@
 # Normal operator filters and their relative topology
 
-This chapter supplies the exact operator-space foundation for the spectral sum and filtration theorems that follow. It retains the projective-tensor and preadjoint arguments from the preserved operator-module lesson, and binds them to the current complete Fourier and integration proofs. Normal operators are used as a norm-closed space with a specified relative topology; no full-dual or ambient weak-star-closed assertion is made.
+This chapter develops the operator-space foundation for the spectral sum and filtration theorems that follow. Projective tensors describe the coefficient topology, and preadjoints control integration and Fourier filtering. Normal operators are used as a norm-closed space with a specified relative topology; no full-dual or ambient weak-star-closed assertion is made.
 
-*Newly written original expression is dedicated under CC0.*
+*Original exposition is dedicated under CC0.*
 
 The earlier inputs are [BS0–4](OA-FLOW-BS.md#bs-0) for specified-dual vector actions, [BS6](OA-FLOW-BS.md#bs-6) for the preadjoint integration mechanism, [LF0–7](OA-FLOW-LF.md#lf-0) for Fourier products, local cutoffs and closed ideals, [L24 §§2–5](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Haar representatives, translations and full-domain integrals, [HR5](OA-FLOW-HR.md#hr-05) for qualified Radon-product interchange, [H1](OA-FLOW-HARMONIC.md#l138-h1) for Fourier uniqueness, and [H2–4](OA-FLOW-HARMONIC-LATE.md#l138-h2) for the scalar Fourier unitary and paired dual Haar measure. Finite compact partitions are proved in [H0](OA-FLOW-TOPOLOGY.md#l138-h0). Norm separation uses [CF1](OA-FLOW-CF.md#oa-flow.cf.1); the norm completion needed here is constructed in MX0.
 
-Throughout this packet, write
+Throughout this lesson, write
 
 <a id="equation-mx1"></a>
 
@@ -330,3 +330,191 @@ For \(f=\mathcal Fa,g=\mathcal Fb\in A_c(H)\), the full \(L^2\) product formula 
 The kernel on the left is \(L^1\) by Cauchy–Schwarz. The integral on the right exists at every \(q\) and is continuous; LF0 proves the identity pointwise, not merely as an almost-everywhere statement. This is the exact domain and sign used in the filtration converse.
 
 The mathematical context is [Takesaki, Theory of Operator Algebras II](https://doi.org/10.1007/978-3-662-10451-4), XI §1. The proof here retains the programme's projective-norm construction of the filter pullback and its independent preadjoint construction. It does not import the book's compact-convex-hull theorem.
+
+<a id="mx-compact-hulls"></a>
+## MX5. Compact hulls of normal operators and probability averages
+
+Let \(X=X_*^*\), \(Y=Y_*^*\), \(Q=X\widehat\otimes_\pi Y_*\), and
+\(V=\mathcal L_w(X,Y)\), with the relative topology
+\(\sigma_0=\sigma(Q^*,Q)|_V\) constructed in MX0. No group action is needed
+in this section. Both preduals may be nonseparable.
+
+**Theorem.** If \(K\subset V\) is nonempty and \(\sigma_0\)-compact, then
+\[
+ C=\overline{\operatorname{co}K}^{\,\sigma(Q^*,Q)}
+       \ \subset V,\qquad
+ C=\overline{\operatorname{co}K}^{\,\sigma_0}
+ \tag{MX-C1}
+\]
+is compact. Here convex coefficients are nonnegative real numbers summing
+to one. Every Radon probability measure \(\mu\) on \(K\) has a unique
+barycentre \(T_\mu\in C\), characterized by
+\[
+ \langle T_\mu,q\rangle_Q
+       =\int_K\langle T,q\rangle_Q\,d\mu(T)
+       \qquad(q\in Q).
+ \tag{MX-C2}
+\]
+The map \(\mu\mapsto T_\mu\) is affine and continuous from convergence
+against every function of \(C(K)\) to \(\sigma_0\). Moreover
+\[
+ \begin{aligned}
+ \|T_\mu\|&\le \sup_{T\in K}\|T\|,\\
+ \langle x,(T_\mu)_*\psi\rangle
+   &=\int_K\langle x,T_*\psi\rangle\,d\mu(T)
+       &&(x\in X,\ \psi\in Y_*).
+ \end{aligned}
+ \tag{MX-C3}
+\]
+In particular the second formula represents an element of \(X_*\), not
+only a functional in \(X_*^{**}\).
+
+The compactness inputs are the earlier [uniform boundedness
+principle](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-04),
+[Banach–Alaoglu theorem](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-03),
+and the full arbitrary-Banach-space [weak compact convex-hull
+theorem](OA-FLOW-GBAC.md#gbac-closed-convex-hull). The last of these was
+proved before the orbital averaging theorem and does not assume an
+operator barycentre construction.
+
+**Proof of compactness and normality.** For each \(q\in Q\), the continuous
+scalar function \(T\mapsto\langle T,q\rangle_Q\) is bounded on \(K\).
+Uniform boundedness on the Banach space \(Q\) gives
+\[
+ M=\sup_{T\in K}\|T\|_{Q^*}
+    =\sup_{T\in K}\|T\|<\infty .
+ \tag{MX-C4}
+\]
+The closed ball of radius \(M\) in \(Q^*\) is weak-star compact by
+Banach–Alaoglu; when \(M=0\) it is the singleton \(\{0\}\).
+Thus the set \(C\) in (MX-C1) is compact in that ball. At this stage it
+is a set of bounded maps \(X\to Y\); normality still has to be proved.
+
+Fix \(\psi\in Y_*\). The map
+\[
+ K\longrightarrow (X_*,\sigma(X_*,X)),\qquad T\longmapsto T_*\psi
+ \tag{MX-C5}
+\]
+is continuous: testing it against any \(x\in X=X_*^*\) gives precisely
+the continuous tensor test \(\langle T,x\otimes\psi\rangle_Q\).
+Its image \(K_\psi\) is weakly compact. The earlier convex-hull theorem
+therefore makes
+\[
+ H_\psi=\overline{\operatorname{co}K_\psi}^{\,\|\cdot\|}
+ \tag{MX-C6}
+\]
+weakly compact in \(X_*\), with every element of norm at most
+\(M\|\psi\|\).
+
+Take \(A\in C\). There is a net \(A_i\in\operatorname{co}K\) converging
+to \(A\) in \(\sigma(Q^*,Q)\): direct the neighbourhoods of \(A\) by
+reverse inclusion and choose a point of the convex hull in each.
+Every \(A_i\) is normal and \(A_{i,*}\psi\in H_\psi\). Compactness
+gives a subnet converging weakly to some \(u_\psi\in H_\psi\).
+For each \(x\in X\), the two convergences give
+\[
+ \langle x,u_\psi\rangle
+  =\lim_i\langle x,A_{i,*}\psi\rangle
+  =\lim_i\langle A_i x,\psi\rangle
+  =\langle Ax,\psi\rangle .
+ \tag{MX-C7}
+\]
+The limits in this display are along that subnet. The last value does
+not depend on its choice, so separation by \(X\) makes \(u_\psi\)
+unique. A simultaneous subnet for all \(\psi\) is unnecessary.
+
+The scalar identity (MX-C7) shows that \(\psi\mapsto u_\psi\) is linear:
+test a proposed linear relation against every \(x\).
+Its norm is bounded by \(M\|\psi\|\), by (MX-C6).
+It is consequently a bounded map \(S:Y_*\to X_*\), and (MX-C7) says
+\(A=S^*\). MX0 proves that \(A\in V\) with preadjoint \(S\).
+This proves \(C\subset V\). Ambient closure and relative closure now
+agree, and the compactness assertion in (MX-C1) follows. \(\square\)
+
+**Construction of the probability average.** For \(q\in Q\), write
+\(f_q(T)=\langle T,q\rangle_Q\in C(K)\).
+Fix finitely many tests \(q_1,\ldots,q_m\) and \(\varepsilon>0\).
+Their continuity and compactness of \(K\) give a finite relative open
+cover on each member of which all these functions have oscillation
+less than \(\varepsilon\). Subtract earlier members of the cover to
+make a disjoint finite Borel partition \(B_1,\ldots,B_l\).
+Discard empty pieces and choose \(T_j\in B_j\). Then
+\[
+ A_{\mathcal P}=\sum_{j=1}^l\mu(B_j)T_j\in\operatorname{co}K,\qquad
+ \left|\langle A_{\mathcal P},q_k\rangle_Q-\int_K f_{q_k}\,d\mu\right|
+       \le\varepsilon .
+ \tag{MX-C8}
+\]
+The bound follows by integrating the pointwise oscillation on each
+piece and using \(\sum_j\mu(B_j)=1\). Zero-mass pieces cause no problem.
+
+In the compact set \(C\), impose the closed conditions
+\[
+ \left|\langle A,q\rangle_Q-\int_Kf_q\,d\mu\right|\le\varepsilon
+\]
+for arbitrary finite sets of tests and positive errors.
+They have the finite intersection property: collect the tests and
+choose the least of finitely many prescribed errors in (MX-C8).
+Compactness gives an \(A\) satisfying all the conditions.
+Letting each error tend to zero gives (MX-C2); separation by \(Q\)
+gives uniqueness. Set \(T_\mu=A\). Its norm bound follows from
+\(C\subset M(Q^*)_1\), and applying (MX-C2) to \(x\otimes\psi\)
+gives (MX-C3), because normality is already proved.
+
+Linearity of scalar integrals and uniqueness prove affinity.
+If \(\mu_i\to\mu\) against all of \(C(K)\), then (MX-C2) converges
+for every \(q\in Q\). This is exactly \(\sigma_0\)-convergence,
+including for arbitrary nets. No replacement of all tensor tests
+by unbounded pointwise tests is being made. Also
+\(T_{\sum_j a_j\delta_{T_j}}=\sum_j a_jT_j\) for every finite
+probability combination. For \(K=\varnothing\), no probability combination
+exists, so its convex hull and both closures are empty. The singleton \(\{0\}\)
+contains this empty hull but is not equal to it; no probability measure exists. \(\square\)
+
+### Why compactness inside the normal maps matters
+
+The whole space \(V\) need not be weak-star closed in \(Q^*\).
+Here is an explicit example. Take
+\[
+ X=\ell^\infty(\mathbb N)=(\ell^1(\mathbb N))^*,\qquad Y=\mathbb C,
+ \qquad
+ A_n(x)=\frac1n\sum_{j=1}^n x_j .
+ \tag{MX-C9}
+\]
+For completeness, \(\ell^1\) is Banach: a norm-Cauchy sequence has
+coordinatewise limits \(a_j\); bounds for each finite sum pass to
+the limit, giving \(\sum_j|a_j|<\infty\). If the Cauchy differences
+have norm at most \(\varepsilon\) beyond an index, the same
+finite-sum argument gives \(\|a^{(n)}-a\|_1\le\varepsilon\).
+A bounded functional on \(\ell^1\) has bounded coefficients
+\(x_j=\ell(e_j)\), is given by \(\ell(a)=\sum_jx_ja_j\) first on
+finite sequences and then by norm density, and has norm
+\(\sup_j|x_j|\). Conversely every bounded coefficient sequence
+defines this functional. This proves the specified dual
+identification in (MX-C9).
+
+Each \(A_n\) is normal with preadjoint vector
+\(n^{-1}(1,\ldots,1,0,\ldots)\in\ell^1\), and has norm one.
+MX0 identifies the ambient dual here with \((\ell^\infty)^*\).
+Banach–Alaoglu gives a weak-star convergent subnet with limit \(A\).
+If \(\mathbf1=(1,1,\ldots)\) and \(e_j\) is the \(j\)-th coordinate
+vector in \(\ell^\infty\), then
+\[
+ A(\mathbf1)=1,\qquad A(e_j)=0\quad\hbox{for every }j.
+ \tag{MX-C10}
+\]
+Indeed \(A_n(\mathbf1)=1\) and \(A_n(e_j)\to0\).
+If \(A\) were normal, MX0 would give a vector \(a\in\ell^1\)
+representing it. The equalities \(a_j=A(e_j)=0\) force \(a=0\),
+contradicting \(A(\mathbf1)=1\).
+Thus the ambient closure of this bounded set contains a nonnormal
+map. In particular \(\{A_n:n\ge1\}\) is not compact inside \(V\):
+a compact subset of \(V\) would have compact, hence closed, image
+in the Hausdorff ambient dual and would contain every such limit.
+
+The compact-hull theorem is Takesaki, *Theory of Operator Algebras II*,
+Lemma XI.1.4(i), printed pages 315–316. The construction above first
+proves that the entire ambient closed convex hull consists of
+normal maps, then obtains probability averages by finite scalar
+constraints. MX2's preadjoint construction of the operator filters
+remains valid independently of this compactness theorem.

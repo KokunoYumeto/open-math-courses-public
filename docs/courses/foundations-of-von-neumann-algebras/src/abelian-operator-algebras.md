@@ -728,7 +728,7 @@ The last statement follows from Theorem 8.2 and the fact that von Neumann algebr
 
 An algebra can have every bounded increasing supremum and still fail to be a von Neumann algebra. To see the obstruction rather than just its name, partition a stonean spectrum by where normal measures can live, then build the other regions using Borel functions modulo meager functions. Here the negligible sets come from category, not from a fixed measure. The quotient remains a C*-algebra and is order complete, but its normal observations can all vanish.
 
-This construction also makes the three-region decomposition useful: it predicts precisely which part an example realizes. The final extension theorem asks a different question—when continuous functions defined on a closed subspace can be extended by a positive norm-one operator—and identifies stonean spaces through that property.
+This construction also makes the three-region decomposition useful: it determines which part an example realizes. The final theorem proves that the continuous-function algebra of a stonean space is injective: every bounded linear map into it from a subspace of a Banach space extends to the whole Banach space with the same norm.
 
 ### The three clopen regions of a stonean space
 

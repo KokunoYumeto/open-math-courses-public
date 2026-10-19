@@ -582,6 +582,206 @@ so \(h\in\mathcal U(N^\theta)\) and \(u=hv\). Each such \(h\) is uniquely determ
 
 For \(N=0\), the unit is \(0\), its unitary group has its unique element, and the action, cocycle, implementer, and inner conjugacy all have their unique zero-algebra interpretation. Thus the conclusion includes that case as well.
 
+<a id="cst-translation-model"></a>
+## 5A. The whole translation model of a semifinite fixed algebra
+
+Let \(N\ne0\), \(\tau\), and \(\theta\) satisfy the trace-scaling hypotheses (CST0.a), and put \(B=N^\theta\). This section does not require a cocycle. We prove the following criterion, with no separability or countability assumption:
+\[
+ \begin{gathered}
+ B\text{ admits a faithful normal semifinite trace}\\
+ \Longleftrightarrow\\
+ \text{there is a normal }*\text{-isomorphism }\quad
+ \Phi:B\bar\otimes L^\infty(\mathbb R,dr)\longrightarrow N,\\
+ \Phi(a\otimes1)=a,\qquad
+ \theta_s\Phi=\Phi(\mathrm{id}_B\bar\otimes T_s),\qquad
+ (T_sf)(r)=f(r+s).
+ \end{gathered}
+ \tag{TM1}
+\]
+For each chosen faithful normal semifinite trace \(\rho\) on \(B\), the forward construction also identifies the given trace, with its full normalization:
+\[
+ \tau\circ\Phi=\rho\bar\otimes(e^r\,dr).
+ \tag{TM2}
+\]
+Below we define this product weight on every positive element by an increasing family of finite normal functionals. Thus (TM2) is not just a formula on elementary tensors.
+
+### A central coordinate with the correct sign
+
+The faithful normal semifinite action integral \(E(x)=\int_{\mathbb R}\theta_s(x)\,ds\) is the one proved in [L19, Sections 1–2](OA-FLOW-L19.md#l19-1). The measure here is ordinary Lebesgue measure \(ds\). Choose the trace \(\rho\) on \(B\). [L19, Section 3](OA-FLOW-L19.md#l19-3) gives a faithful normal semifinite weight and its nonsingular positive affiliated density:
+\[
+ \Psi=\widehat\rho\circ E=\tau_h,\qquad
+ \theta_s(h)=e^{-s}h.
+ \tag{TM3}
+\]
+The modular restriction theorem [OT5](OA-FLOW-OT.md#oa-flow.ot.5), the density formula [CZ5](OA-FLOW-CZ.md#oa-flow.cz.5), and the trace criterion [KT5](OA-FLOW-KT.md#oa-flow.kt.5) imply
+\[
+ h^{it}ah^{-it}=a\quad(a\in B).
+ \tag{TM4}
+\]
+
+We also have \(N=W^*(B,h^{it}:t\in\mathbb R)\). Here is the precise application of the generation argument in [Section 2](#cst-2). Its spectral sandwiches, normal-functional estimates, Fourier integrals and removal of the sandwich use only a covariant algebra, its scaled trace, its fixed algebra and the density of the composed weight. They therefore apply with \((A,\alpha,T,F,\omega,H)\) replaced by \((N,\theta,\tau,B,\rho,h)\). In detail, with \(L=\log h\) and \(k(r)=(\pi(1+r^2))^{-1/2}\), the Fourier transforms of
+\(k(L-s)\theta_s(x)k(L-s)\) belong to \(W^*(B,h^{it})\) by (CST2.h)–(CST2.i). A normal functional annihilating that algebra annihilates each scalar Fourier transform. The integrability and continuity proved there, followed by Fourier uniqueness, give its vanishing at time zero. Thus \(k(L)xk(L)\) belongs to that algebra. Multiplication by the bounded inverses on \(1_{[1/n,\infty)}(k(L))\), and the bounded strong-star limit in (CST2.j), recover every \(x\in N\). No matrix-corner property occurs in these steps.
+
+Equation (TM4) and this generation show that \(h^{it}\) is central in \(N\). The [resolvent construction in RF5](OA-FLOW-RF.md#oa-flow.rf.5) recovers all spectral projections from this group. Consequently
+\[
+ Q=-\log h\text{ is affiliated with }Z(N),\qquad
+ \theta_s(Q)=Q+s1,\qquad
+ N=W^*(B,f(Q):f\text{ bounded Borel}).
+ \tag{TM5}
+\]
+The modular group of \(\Psi=\tau_h\) is now trivial on all of \(N\), so KT5 makes \(\Psi\) a trace on its whole positive cone.
+
+For every nonnegative bounded Borel \(f\) with finite Lebesgue integral, scalar spectral integration and Tonelli give
+\[
+ E(f(Q))=\left(\int_{\mathbb R}f(r)\,dr\right)1.
+ \tag{TM6}
+\]
+Indeed a positive normal functional \(\eta\) has finite spectral measure
+\(\eta(1_{dr}(Q))\), and its test of the action average is
+\(\int\int f(r+s)\,ds\,d\eta(1_{dr}(Q))=\eta(1)\int f\).
+The equality is an equality of extended-positive elements, with a bounded value on the right. In particular a Lebesgue-null Borel set has zero spectral projection, since \(E\) is faithful. Thus bounded Lebesgue classes have well-defined spectral multipliers \(f(Q)\).
+
+### A Hilbert-space identification that proves normality and injectivity
+
+Use the GNS construction [GW3](OA-FLOW-GW.md#oa-flow.gw.3) for the two faithful normal semifinite traces \(\rho,\Psi\). Their representations are faithful and normal, with normal inverses onto their von Neumann images, as established in [WR1](OA-FLOW-WR.md#oa-flow.wr.1). Write their maps as \(\Lambda_\rho,\pi_\rho\) and \(\Lambda_\Psi,\pi_\Psi\), with the inner product linear in the first entry.
+
+For \(a,b\in\mathfrak n_\rho\) and bounded Borel \(f,g\) of compact support, (TM6), bimodularity of \(E\) and polarization yield
+\[
+ \left\langle\Lambda_\Psi(af(Q)),\Lambda_\Psi(bg(Q))\right\rangle
+ =\rho(b^*a)\int_{\mathbb R}f(r)\overline{g(r)}\,dr.
+ \tag{TM7}
+\]
+For the norm identity, apply \(E\) to
+\(f(Q)^*a^*af(Q)\); centrality of \(f(Q)\) permits the bimodule calculation. All cross terms then belong to the finite algebra and follow by polarization. Hence the map
+\[
+ U:H_\rho\otimes L^2(\mathbb R,dr)\longrightarrow H_\Psi,\qquad
+ U(\Lambda_\rho(a)\otimes f)=\Lambda_\Psi(af(Q))
+ \tag{TM8}
+\]
+extends to an isometry. Bounded compactly supported Borel functions are dense in scalar \(L^2\), by truncating both their support and their values; no countability hypothesis on \(H_\rho\) is involved.
+
+We prove that \(U\) is onto. Its closed range \(\mathcal H_0\) is invariant under \(\pi_\Psi(B)\), every \(\pi_\Psi(g(Q))\) with \(g\) bounded, and their adjoints: multiply the finite-core expression in (TM8), using centrality of the spectral multipliers. Thus \(\mathcal H_0\) reduces \(\pi_\Psi(N)\) by (TM5).
+
+Take [GW4](OA-FLOW-GW.md#oa-flow.gw.4)'s increasing finite positive contractions \(e_i\in B\), with \(\rho(e_i)<\infty\) and \(e_i\uparrow1\). They need not be projections. Set
+\[
+ p_n=1_{[-n,n]}(Q),\qquad
+ r_{i,n}=e_ip_n,\qquad q_{i,n}=e_i^{1/2}p_n,\qquad n\geq1.
+\]
+The \(r_{i,n}\) form an increasing positive contraction net with supremum one; \(q_{i,n}^2=r_{i,n}\). Since
+\(\rho((e_i^{1/2})^*e_i^{1/2})=\rho(e_i)<\infty\), (TM8) places \(\Lambda_\Psi(q_{i,n})\) in \(\mathcal H_0\). For every \(x\in\mathfrak n_\Psi\), reduction then places \(\Lambda_\Psi(xq_{i,n})\) there as well. Traciality gives
+\[
+ \begin{aligned}
+ \|\Lambda_\Psi(x-xq_{i,n})\|^2
+ &=\Psi\bigl(x(1-q_{i,n})^2x^*\bigr)\\
+ &\leq\Psi\bigl(x(1-r_{i,n})x^*\bigr)\longrightarrow0.
+ \end{aligned}
+ \tag{TM9}
+\]
+The inequality uses \((1-q)^2\leq1-q^2\) for \(0\leq q\leq1\). The limit follows from normality and the finite value
+\(\Psi(xx^*)=\Psi(x^*x)\). Thus \(\mathcal H_0=H_\Psi\), and \(U\) is unitary.
+
+On the same finite core,
+\[
+ \begin{aligned}
+ U(\pi_\rho(a)\otimes1)U^*&=\pi_\Psi(a),\\
+ U(1\otimes M_f)U^*&=\pi_\Psi(f(Q)).
+ \end{aligned}
+ \tag{TM10}
+\]
+The [multiplication representation and its predual](OA-FLOW-ND.md#nd-multiplication) show that \(f\mapsto M_f\) on \(L^2(dr)\) is faithful and normal. Therefore conjugation by \(U\), followed by the normal inverse of \(\pi_\Psi\), defines a faithful normal isomorphism of the full spatial tensor algebra onto \(N\):
+\[
+ \Phi(a\otimes f)=af(Q).
+ \tag{TM11}
+\]
+Surjectivity follows from (TM5) and (TM10). This argument establishes the spatial tensor product, rather than assuming that separate normality of two commuting representations would suffice. Finally, \(\theta_s(Q)=Q+s1\) proves the equivariance in (TM1) on the generators. Normality extends it to the whole algebra.
+
+### The entire positive cone and the given trace
+
+For the same increasing finite contractions, define finite normal positive functionals
+\[
+ \rho_i(a)=\rho(e_i^{1/2}ae_i^{1/2}),\qquad
+ \ell_n(f)=\int_{-n}^n f(r)\,dr,\qquad
+ \ell_n^+(f)=\int_{-n}^n e^r f(r)\,dr.
+ \tag{TM12}
+\]
+For \(a\geq0\), traciality rewrites the first expression as
+\(\rho(a^{1/2}e_i a^{1/2})\), so \(\rho_i\uparrow\rho\). These functionals are bounded, with respective norms \(\rho(e_i)\), \(2n\), and \(e^n-e^{-n}\). Their normal tensor products are also explicit vector functionals: use \(\Lambda_\rho(e_i^{1/2})\) in \(H_\rho\), and respectively \(1_{[-n,n]}\) or \(e^{r/2}1_{[-n,n]}\) in \(L^2(dr)\).
+
+For every \(Y\in(B\bar\otimes L^\infty(\mathbb R))_+\), (TM8)–(TM10) give
+\[
+ (\rho_i\otimes\ell_n)(Y)
+ =\Psi\bigl(q_{i,n}\Phi(Y)q_{i,n}\bigr)
+ =\Psi\bigl(\Phi(Y)^{1/2}r_{i,n}\Phi(Y)^{1/2}\bigr).
+\]
+Taking the increasing supremum proves the exact whole-cone formula
+\[
+ \Psi(\Phi(Y))=\sup_{i,n}(\rho_i\otimes\ell_n)(Y)
+             =:(\rho\bar\otimes dr)(Y).
+ \tag{TM13}
+\]
+
+To recover \(\tau\), let \(v_{i,n}=e^{Q/2}q_{i,n}\), a bounded operator because of the spectral window \(p_n\). From \(\Psi=\tau_h\), \(h=e^{-Q}\), and the bounded spectral cutoffs in [TD2](OA-FLOW-TD.md#oa-flow.td.2), one obtains for every \(X\in N_+\)
+\[
+ \begin{aligned}
+ \Psi(v_{i,n}Xv_{i,n})
+ &=\lim_{j\to\infty}
+   \tau\bigl(X^{1/2}v_{i,n}(h\wedge j)v_{i,n}X^{1/2}\bigr)\\
+ &=\tau\bigl(X^{1/2}r_{i,n}X^{1/2}\bigr).
+ \end{aligned}
+ \tag{TM14}
+\]
+Indeed central spectral calculus gives
+\(v_{i,n}(h\wedge j)v_{i,n}\uparrow q_{i,n}^2=r_{i,n}\); these operators are bounded by one. Normality of \(\tau\) gives the second equality, including infinite values.
+
+The vector \(\Lambda_\Psi(v_{i,n})\) corresponds under \(U\) to
+\(\Lambda_\rho(e_i^{1/2})\otimes e^{r/2}1_{[-n,n]}(r)\). Thus (TM14), with \(X=\Phi(Y)\), and \(r_{i,n}\uparrow1\), prove
+\[
+ \boxed{\quad
+ \tau(\Phi(Y))=\sup_{i,n}(\rho_i\otimes\ell_n^+)(Y)
+             =:(\rho\bar\otimes(e^r\,dr))(Y).
+ \quad}
+ \tag{TM15}
+\]
+The finite functionals increase in both indices. Their suprema in (TM13) and (TM15) are therefore normal weights: additivity follows by choosing one common upper index, and order normality by interchanging the two suprema. The equalities identify them with the specified faithful normal semifinite traces on all positives. In particular, for positive elementary tensors the values are
+\(\rho(a)\int f(r)\,dr\) and \(\rho(a)\int e^r f(r)\,dr\), with \(0\cdot\infty=0\). No finite-value restriction or unspecified scalar factor remains.
+
+![The normal tensor isomorphism intertwines translation and the trace-scaling action, with both complete trace normalizations](../assets/trace-scaling-cocycle-stability/translation-tensor-model.svg)
+
+The diagram records (TM5), (TM11), (TM13) and (TM15). Translation has the positive coordinate sign \(r\mapsto r+s\), while the given trace scales by \(e^{-s}\), since substituting \(u=r+s\) in \(e^r\,dr\) contributes \(e^{-s}\). The spectral coordinate is central; no operator-valued field representation or choice of pointwise representatives is part of the isomorphism.
+
+### The converse does not assume a trace on the fixed algebra
+
+Suppose an isomorphism as in (TM1) is given, without assuming a trace on \(B\). By [FR1](OA-FLOW-FR.md#oa-flow.fr.1), choose a faithful normal semifinite weight \(\omega\) on \(B\). The construction in L19 applies to \(\widehat\omega\circ E\), giving a nonsingular positive affiliated \(k\) such that
+\[
+ \widehat\omega\circ E=\tau_k,\qquad
+ \theta_s(k)=e^{-s}k,\qquad
+ k^{it}ak^{-it}=\sigma_t^\omega(a)\quad(a\in B).
+ \tag{TM16}
+\]
+The last identity is the same modular restriction and density formula used in (TM4), with no traciality assumption on \(\omega\).
+
+Let
+\[
+ z_t=\Phi(1\otimes e^{itr}),\qquad w_t=z_tk^{it}.
+ \tag{TM17}
+\]
+The \(z_t\) are central unitaries, form a strongly continuous group, and satisfy \(\theta_s(z_t)=e^{ist}z_t\). Hence the \(w_t\) form a strongly continuous unitary group as well, and \(\theta_s(w_t)=w_t\), so \(w_t\in B\). Centrality of \(z_t\) also gives
+\[
+ \sigma_t^\omega(a)=w_taw_t^*\quad(a\in B).
+ \tag{TM18}
+\]
+By RF5 there is a self-adjoint generator \(A\) affiliated with \(B\), with \(w_t=e^{itA}\). Affiliation follows directly because its Laplace resolvent is in \(B\). Set \(b=e^A\); then \(b\) is positive, nonsingular and self-adjoint, with \(b^{it}=w_t\). The group law and (TM18) imply \(\sigma_s^\omega(w_t)=w_t\) for every \(s,t\). Spectral recovery consequently puts \(b\) in the affiliated centralizer of \(\omega\).
+
+The [centralizer perturbation construction](OA-FLOW-CZ.md#oa-flow.cz.2) makes \(\omega_{b^{-1}}\) faithful normal semifinite. Its full modular formula, CZ5, is
+\[
+ \sigma_t^{\omega_{b^{-1}}}
+ =\operatorname{Ad}(b^{-it})\,\sigma_t^\omega
+ =\operatorname{Ad}(w_t^*)\operatorname{Ad}(w_t)
+ =\mathrm{id}.
+ \tag{TM19}
+\]
+KT5 therefore makes \(\omega_{b^{-1}}\) a trace on the entire positive cone of \(B\). This proves the converse in (TM1). The scalar Hilbert factor and the finite contraction nets were the only auxiliary spaces and approximations in the forward proof; the center and predual of \(N\) remain unrestricted. \(\square\)
+
 <a id="cst-6"></a>
 ## 6. Exact models and the boundaries of the argument
 

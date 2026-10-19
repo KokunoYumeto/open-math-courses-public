@@ -1,12 +1,14 @@
 # Double cosets and intrinsic MASA multiplicity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
-A MASA acts on the trace Hilbert space from the left and from the right. For a malnormal abelian subgroup, every nontrivial double coset carries the same regular representation of a product group. The number of those copies becomes a type I multiplicity. Separating the copy coming from the subgroup itself requires an additional argument: a reducing subspace alone need not give a central summand.
+A subgroup acts on the trace Hilbert space from the left and from the right. For an infinite malnormal abelian subgroup, the subgroup space is a central summand, and the regular product orbits on its complement give a type I multiplicity. For a finite subgroup, diagonal character fibers instead mix one subgroup coordinate with the off-subgroup coordinates. The complete comparison separates a reducing subspace from a central summand and explains the role of the infinite-subgroup hypothesis.
 
 We use the [group trace and subgroup criterion](group-masas-and-singular-affine-examples.md) and its [regular-group operator foundations](regular-group-operator-foundations.md). G00 proves the regular commutants; H03–H04 supply separable predual and the type \(\mathrm{II}_1\) conclusion. T03 proves uniqueness of the normal normalized trace for an ICC group algebra. T04 proves trace preservation for an abstract isomorphism of the group factors, using positive-supremum preservation and the bounded trace-square continuity proved in T04c; T05–T06 prove the intrinsic finite or countably infinite size of the particular matrix blocks below. These give the precise trace and multiplicity inputs without a general projection-comparison or type-classification argument.
 
 The freely readable comparison is [Sinclair–Smith, *The Pukánszky invariant for masas in group von Neumann factors*](https://people.tamu.edu/~rrsmith/papers/pukanszky.pdf), §2, manuscript p. 4, for the intrinsic complement invariant; Theorem 3.2, pp. 8–10, for double-coset intertwiners; and Theorem 4.1 with its proof, p. 11, for the stabilizer multiplicity calculation. Under (1), every off-subgroup stabilizer is trivial, so all nontrivial double cosets belong to a single class and the Pukánszky invariant is the singleton \(\{n\}\). The explicit regular-product model and full matrix commutant are proved below. [Anantharaman–Popa, *An introduction to II1 factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), Theorem 1.3.6, Proposition 4.1.3 and Lemma 12.1.9, supply freely readable proofs of regular commutation, factor-trace uniqueness and the central subgroup projection.
+
+The [finite-subgroup comparison](#finite-subgroup-fibers) computes the entire left/right commutant when the subgroup is finite, including the zero-complement and countably infinite cases. Its finite character decomposition is obtained from explicit polynomial projections. Figure 1 displays the actual six-dimensional example with the order-two subgroup of the symmetric group on three letters.
 
 ## 1. The left/right algebra and its canonical projection
 
@@ -116,6 +118,87 @@ Commutation with every constant multiplicity matrix unit forces a central operat
 The individual double-coset projections are generally not central in \(\mathcal C\). All nontrivial double-coset representations are equivalent, so their commutant contains off-diagonal matrix units. The central separation is between the subgroup block and the entire multiplicity block.
 
 The decomposition proof also works for arbitrary discrete \(G\), infinite abelian \(H\) satisfying (1), and an arbitrary double-coset index set. In Lemma 1.1 one may choose a countably infinite subgroup \(H_0\subset H\): select countably many distinct elements of \(H\) and take the subgroup they generate; the finite words in these generators and their inverses form a countable set. Then its conjugation action is still free outside \(H\), and its fixed vectors are exactly \(\ell^2(H)\). Finite-coordinate compressions in Theorem 3.1 then form a net rather than a sequence. Formula (11) remains valid with \(\mathcal K=\ell^2(\Gamma_0)\); countability is used here only for the countable multiplicity and separable-factor formulation of the source exercise.
+
+<a id="finite-subgroup-fibers"></a>
+
+## Finite subgroups: the complete comparison
+
+Here the assumptions are different: let \(G\) be any discrete group and let \(H\subset G\) be a **finite** abelian subgroup of order \(q\), still satisfying (1). Write
+\[
+ \Gamma_0=H\backslash G/H\setminus\{H\},\qquad
+ \mathcal K=\ell^2(\Gamma_0).
+\]
+Let \(\widehat H\) denote the homomorphisms \(H\to\mathbb T\). The following calculation will also prove directly that there are exactly \(q\) such characters. With the same left/right algebra \(\mathcal B\) and commutant \(\mathcal C\) as in (2), one has
+\[
+\begin{aligned}
+ \mathcal C\cong&
+ \bigoplus_{\chi\in\widehat H}
+             B(\mathbb C\oplus\mathcal K)\\
+ &\quad\oplus
+ \bigoplus_{\substack{\chi,\psi\in\widehat H\\\chi\ne\psi}}
+             B(\mathcal K).
+\end{aligned}
+\tag{DF1}
+\]
+The canonical projection \(e_A\) is the projection onto the \(\mathbb C\) coordinate in every diagonal-character block \((\chi,\chi)\), and is zero on the off-diagonal blocks. In particular it is central exactly when \(G=H\).
+
+**Proof.** We begin with an elementary finite character construction. If a unitary \(V\) has \(V^m=1\), put \(\zeta=\exp(2\pi i/m)\) and
+\[
+ P_k=\frac1m\sum_{j=0}^{m-1}\zeta^{-kj}V^j
+       \qquad(0\le k<m).
+\tag{DF2}
+\]
+Reindexing \(j\) by \(-j\) modulo \(m\) gives \(P_k^*=P_k\). In the product \(P_kP_l\), collect terms with \(i+j=r\); the inner sum \(\sum_i\zeta^{(l-k)i}\) is \(m\) when \(k=l\) and zero otherwise. Thus \(P_kP_l=\delta_{kl}P_k\). The same finite geometric sum gives \(\sum_kP_k=1\), and shifting the exponent of \(V\) gives \(VP_k=\zeta^kP_k\). These are explicit orthogonal spectral projections; no character-duality theorem is needed.
+
+Apply this to the finite-order commuting translations \(\lambda_H(h)\), for all \(h\in H\), on \(\ell^2(H)\). Products of their commuting projections decompose that \(q\)-dimensional space into common eigenspaces. On any nonzero common eigenspace, the eigenvalues form a character \(\chi\): the identities \(\lambda_H(hk)=\lambda_H(h)\lambda_H(k)\) and \(\lambda_H(e)=1\) prove multiplicativity and normalization, and unitarity gives unit modulus.
+
+Each common eigenspace has dimension one. Indeed, if \(\lambda_H(h)\xi=\chi(h)\xi\), comparison of the coefficient at \(h\) gives
+\(\xi(e)=\chi(h)\xi(h)\). Hence every coefficient is determined by \(\xi(e)\), and a nonzero vector has the form
+\[
+ \xi_\chi=q^{-1/2}\sum_{h\in H}
+                   \overline{\chi(h)}\,\delta_h
+\tag{DF3}
+\]
+up to a scalar. Conversely (DF3) is a common unit eigenvector for every character \(\chi\), by direct translation. The orthogonal decomposition therefore gives exactly \(q\) distinct characters, and these \(q\) vectors are an orthonormal basis.
+
+For each \(\gamma\in\Gamma_0\), the map
+\[
+ (a,b)\longmapsto ag_\gamma b
+\]
+is a bijection \(H\times H\to Hg_\gamma H\). Surjectivity is the definition of the double coset. If two such products agree, then
+\((a'^{-1}a)g_\gamma(bb'^{-1})=g_\gamma\), and (1) forces both outer factors to be the identity. This proof uses no infinitude assumption. It gives the regular-product basis (5) also in the finite case.
+
+On each off-subgroup copy, \(\xi_\chi\otimes\xi_\psi\) is an eigenvector for \(\lambda_h\rho_k\) with eigenvalue
+\[
+ \chi(h)\psi(k)^{-1}.
+\tag{DF4}
+\]
+On the subgroup space \(\ell^2(H)\), the vector \(\xi_\chi\) has eigenvalue \(\chi(h)\chi(k)^{-1}\), because left and right translations there are \(\lambda_H(h)\) and \(\lambda_H(k^{-1})\). Thus the subgroup contributes one extra coordinate precisely for the pairs \((\chi,\chi)\).
+
+Let \(\mathcal H_{\chi,\psi}\) be the whole common eigenspace of the pair family on \(\ell^2(G)\). The disjoint double-coset bases give
+\[
+ \mathcal H_{\chi,\psi}\cong
+ \begin{cases}
+   \mathbb C\oplus\mathcal K,&\chi=\psi,\\
+   \mathcal K,&\chi\ne\psi.
+ \end{cases}
+\tag{DF5}
+\]
+Different pairs give different eigenvalue functions: set \(k=e\) and then \(h=e\) in (DF4). Applying the polynomial projections (DF2) to the finite-order left and right translations on \(\ell^2(G)\) puts every projection onto \(\mathcal H_{\chi,\psi}\) in \(\mathcal B\). Conversely the finitely many pair projections sum to one, and every generating translation is its scalar eigenvalue on each of them. Hence \(\mathcal B\) is exactly the algebra of independent scalars on these nonzero common eigenspaces. This scalar-block algebra is strongly closed: a unit vector in each of the finitely many nonzero fibers detects its scalar coordinate under strong convergence, and the limit has those same scalar actions on the whole fibers. It contains every generating translation, while each of its finitely many block projections is a polynomial in those translations. The generated von Neumann algebra is therefore exactly this scalar-block algebra.
+
+An operator commuting with \(\mathcal B\) must preserve each of those eigenspaces. Within a single eigenspace every generator is scalar, so every bounded operator on it commutes with the pair family. This proves the full direct sum (DF1), including all operators mixing equivalent subgroup and off-subgroup coordinates in a diagonal-character block.
+
+The description of \(e_A\) now follows from its definition as the projection onto \(\ell^2(H)\). If \(\mathcal K\ne0\), take a unit vector \(\eta\in\mathcal K\) and, within any one diagonal block, interchange its subgroup basis vector with \(\eta\). This bounded interchange belongs to \(\mathcal C\) but fails to commute with \(e_A\). Thus \(e_A\) is not central. If \(\mathcal K=0\), there are no elements outside \(H\), so \(G=H\) and \(e_A=1\), which is central. \(\square\)
+
+Formula (DF1) includes the zero-complement convention \(B(0)=0\). If \(|\Gamma_0|=n\) is a finite positive integer, its \(q\) diagonal blocks are \(M_{n+1}(\mathbb C)\), while its \(q(q-1)\) off-diagonal blocks are \(M_n(\mathbb C)\). If \(G\) is countably infinite, every double coset has at most \(q^2\) elements, so \(\Gamma_0\) is countably infinite. Each block is then \(B(\ell^2(\mathbb N))\): for a diagonal block, send the extra subgroup vector to the first basis vector and shift the \(\mathcal K\) basis by one.
+
+When \(G\ne H\), a finite \(H\) does not give a MASA. The conjugacy orbit of any element outside \(H\) is finite, and its finite orbit sum is a commuting bounded operator outside \(L(H)\), exactly as in the subgroup-orbit criterion. The finite calculation is therefore a comparison of left/right subgroup algebras, rather than an assertion of a MASA invariant in that setting.
+
+![Character fibers for the finite comparison S3 with its order-two subgroup: the diagonal fibers have dimension two, the off-diagonal fibers dimension one, and the subgroup projection selects one vector in each diagonal fiber.](../assets/finite-subgroup-masa-character-fibers.svg)
+
+*Figure 1.* Take \(G=S_3\), \(s=(12)\) and \(H=\{e,s\}\). Only the elements of \(H\) preserve the unordered pair \(\{1,2\}\), so \(H\) is malnormal. For \(g=(13)\), the four distinct elements \(g,sg,gs,sgs\) form the unique double coset outside \(H\); thus \(q=2\) and \(n=1\). The row and column signs are \(\chi(s)\) and \(\psi(s)\) in (DF4). The subgroup vectors \(v_\pm=\xi_\pm\) occupy the diagonal fibers; \(w_{\chi,\psi}=W_g(\xi_\chi\otimes\xi_\psi)\) denotes the off-subgroup vector in each fiber. Therefore \(\mathcal C\cong M_2(\mathbb C)\oplus M_2(\mathbb C)\oplus\mathbb C\oplus\mathbb C\), and \(e_A\) has rank two but is not central. The arrows show intertwiners inside the diagonal-character fibers. This finite-group example is separate from the ICC, infinite-subgroup MASA hypotheses of the four numbered results.
+
+The following intrinsic-MASA section returns to the infinite-subgroup, ICC hypotheses of Section 1.
 
 ## 4. Why the multiplicity is intrinsic to the MASA
 

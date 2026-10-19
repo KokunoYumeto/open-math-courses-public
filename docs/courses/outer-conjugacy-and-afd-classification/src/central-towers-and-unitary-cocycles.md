@@ -232,7 +232,7 @@ We first supply the modular fact used in the counterexample. Only this section u
 \|\xi_\rho-\xi_\eta\|^2\le\|\rho-\eta\|
 \qquad(\rho,\eta\in M_*^+).
 \]
-These are named modular prerequisites, including the estimate for general normal positive functionals, not only for matrices or tracial states. The precise source is [Takesaki II], Theorem IX.1.2, inequality (9), whose norm-estimate proof ends on.
+These are named modular prerequisites, including the estimate for general normal positive functionals, not only for matrices or tracial states. The precise source is [Takesaki II], Theorem IX.1.2, inequality (9), whose norm-estimate proof ends on printed page 151.
 
 **Modular fixed-point lemma.** For every faithful normal state \(\varphi\) on our factor and every real \(t\), the induced automorphism \((\sigma_t^\varphi)_\omega\) is the identity.
 
@@ -304,7 +304,7 @@ Take \(u=-1\). Equation (5.1) would become \(v=-v\), which is impossible for a u
 
 [Connes] Alain Connes, *Outer conjugacy classes of automorphisms of factors*, Annales scientifiques de l'École Normale Supérieure, série 4, 8 (1975), 383–419. [Article and original text](https://numdam.org/articles/10.24033/asens.1295/).
 
-[Connes–Størmer] Alain Connes and Erling Størmer, *Homogeneity of the state space of factors of type III₁*, Journal of Functional Analysis 28 (1978), 187–196. [DOI](https://doi.org/10.1016/0022-1236(78)90085-X).
+[Connes–Størmer] Alain Connes and Erling Størmer, *Homogeneity of the state space of factors of type III₁*, Journal of Functional Analysis 28 (1978), 187–196. [DOI](https://doi.org/10.1016/0022-1236(78)90085-X). [Freely readable journal scan, linked by Denise Vella Chemla](http://cm2vivi2002.free.fr/AC-biblio/AC-biblio35.pdf).
 
 [Ando–Haagerup] Hiroshi Ando and Uffe Haagerup, *Ultraproducts of von Neumann algebras*, Journal of Functional Analysis 266 (2014), 6842–6913. [Open author version](https://arxiv.org/abs/1212.5457).
 

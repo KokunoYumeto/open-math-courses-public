@@ -1,6 +1,6 @@
 # Course contents
 
-Seventy-seven lessons treat distributions and their order, kernels, boundary values, singular powers, convolution, wave kernels, Fourier growth, derivative-growth classes, wavefront localization, analytic substitution and spherical holomorphic decompositions of tempered distributions. The reader includes editable lesson sources, reproducible illustrations and the prerequisite readings used by its proofs.
+One hundred and eight lessons treat distributions and their order, kernels, boundary values, singular powers, convolution, wave kernels, Fourier growth, derivative-growth classes, wavefront localization, holomorphic decompositions, complex kernel continuation, prescribed wavefront sets, holomorphic wedges, homogeneous Fourier correspondence, analytic pullbacks, distribution products, proper integration, conic convergence, general kernel composition, analytic support boundaries, convex contact, characteristic transport, closed-set invariance, analytic differential regularity, Holmgren uniqueness, Poisson-bracket tests for support, convergent ramified roots, exact characteristic-half-space solutions, their analytic wavefronts, convex-domain uniqueness, support criteria in half-spaces and proper cones, analytic parametrices with entire errors, propagation along straight characteristics at every derivative-growth scale, exact prescribed global singular rays with smooth forcing, analytic regularity for convolution equations on proper supports, microhyperbolic cones, boundary inverses, exact convex wavefront bounds, homogeneous waves with prescribed one-sign light rays, analytic functionals with real-carrier approximation, entire harmonic lifts, canonical Poisson fields, their full converse modulo entire harmonic functions, decay normalization, smallest real carriers, finite carrier splitting with exact overlap ambiguity, completeness modulo smaller carriers, arbitrary-cover hyperfunction gluing, analytic coordinate changes, atlas independence and extension with support in the relative closure, spherical hyperfunction recovery, analytic wavefronts, growth-free holomorphic boundaries, their exact converse, the opposite-cone extension theorem, angular localization, closed-cone splitting with exact intersection ambiguity, the holomorphic-germ quotient, analytic substitution for hyperfunctions, the inverse-Jacobian coordinate comparison, distributional restriction agreement, and exact coordinate and submersion wavefronts, full hyperfunction tensor wavefront bounds, admissible products, chain and Leibniz rules, compatible analytic pullbacks and finite products under joint noncancellation, proper hyperfunction integration, closed-ball angular recovery, zero-fiber-covector bounds, differentiation and iterated integration, analytic fiber-coordinate changes and analytic-input kernels, singular-input kernel action with output-axis terms, contraction through zero intermediate covectors, proper-support convolution, simultaneous compact replacement and convolution associativity, uniform Baire bounds for analytic fiber weights, Cauchy carrier separation, both hyperfunction support-normal signs, rough and convex boundary contact, and growth-free open-set uniqueness, fixed-fiber contour representatives, integration of canceling holomorphic sides, noncharacteristic analytic substitution through proper integrals, singular projection formulas, composed kernel action and finite kernel associativity with every zero intermediate covector, rectangular analytic primitives, weighted derivative and primitive bounds, convergent analytic perturbation with exact remainder and germ uniqueness, and thin-polydisc analytic Cauchy existence with arbitrary normal jets, analytic Cauchy germs along noncharacteristic hypersurfaces, continuation through real C1 boundaries, expanding convex domains, global analytic Cauchy solutions and complex-cone existence with continuation across the vertex. The reader includes editable sources, reproducible illustrations and the prerequisite readings used by its proofs.
 
 [Learning guide](LEARNING_GUIDE.md) · [Prerequisite readings](ONLINE-PREREQUISITES.md) · [Offline reader and sources](downloads/README.md)
 
@@ -81,3 +81,34 @@ Seventy-seven lessons treat distributions and their order, kernels, boundary val
 - [Holomorphic boundaries and analytic directions](reader/AN01-U075.html)
 - [Analytic maps and derivative growth](reader/AN01-U076.html)
 - [Holomorphic decompositions of tempered distributions](reader/AN01-U077.html)
+- [Continuing the spherical kernel](reader/AN01-U078.html)
+- [Boundary regularity and conic decomposition](reader/AN01-U079.html)
+- [Prescribing every singular direction](reader/AN01-U080.html)
+- [From wavefront cones to holomorphic wedges](reader/AN01-U081.html)
+- [Fourier rotation and directions at infinity](reader/AN01-U082.html)
+- [Analytic pullback and cotangent directions](reader/AN01-U083.html)
+- [Keeping zero covectors in kernel operations](reader/AN01-U084.html)
+- [Both analytic directions at support boundaries](reader/AN01-U085.html)
+- [Characteristic motion and closed-set barriers](reader/AN01-U086.html)
+- [Analytic equations and characteristic directions](reader/AN01-U087.html)
+- [Characteristic half-spaces and ramified roots](reader/AN01-U088.html)
+- [Characteristic planes and convex-domain uniqueness](reader/AN01-U089.html)
+- [Analytic parametrices and straight characteristics](reader/AN01-U090.html)
+- [A whole characteristic line with smooth forcing](reader/AN01-U091.html)
+- [Analytic regularity for convolution equations](reader/AN01-U092.html)
+- [Imaginary displacements and microhyperbolic cones](reader/AN01-U093.html)
+- [Exact waves on a single light ray](reader/AN01-U094.html)
+- Analytic tests and real carriers
+- Recovering analytic data from harmonic fields
+- [Localizing analytic sources without analytic cutoffs](reader/AN01-U097.html)
+- [Hyperfunctions from local analytic sources](reader/AN01-U098.html)
+- [Holomorphic boundary values without growth bounds](reader/AN01-U099.html)
+- [Directional splitting and holomorphic compatibility](reader/AN01-U100.html)
+- [Analytic substitution for hyperfunctions](reader/AN01-U101.html)
+- [Tensor directions and admissible hyperfunction products](reader/AN01-U102.html)
+- [Integrating hyperfunctions over proper fibers](reader/AN01-U103.html)
+- [Singular inputs and zero covectors in hyperfunction kernels](reader/AN01-U104.html)
+- [Support normals force both hyperfunction directions](reader/AN01-U105.html)
+- [Interchanging hyperfunction integration and analytic substitution](reader/AN01-U106.html)
+- [Analytic Cauchy data on small polydiscs](reader/AN01-U107.html)
+- [Continuing analytic Cauchy solutions through convex domains](reader/AN01-U108.html)

@@ -6,17 +6,17 @@
 
 The derivative along an orbit arrow gives a concrete modular operator. Its spectrum can contain frequencies that disappear after restricting to a smaller positive-measure set. The asymptotic ratio set retains precisely the frequencies that survive every such restriction. We prove that, for an ergodic countable measured relation, it is the factor's intrinsic modular spectrum. This identifies the exact type III subtypes of our affine examples.
 
-Read Relation kernels and modular coordinates, especially Proposition 6.1, and [Diagonal expectations and invariant measures](diagonal-expectations-and-invariant-measures.md), especially Theorem 3.4. We use the maximal diagonal and factor criterion from [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md), Theorem 4.2 and Corollary 4.3. General action spectra and the flow of weights belong to the prerequisite course *Crossed products and duality*. The exact results needed here are:
+Read [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md), especially Proposition 6.1, and [Diagonal expectations and invariant measures](diagonal-expectations-and-invariant-measures.md), especially Theorem 3.4. We use the maximal diagonal and factor criterion from [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md), Theorem 4.2 and Corollary 4.3. General action spectra and the flow of weights belong to the prerequisite course *Crossed products and duality*. The exact results needed here are:
 
 | Prerequisite lesson | Result used |
 | --- | --- |
-| *An invariant weight realizes the action spectrum* | For an action preserving a faithful normal semifinite weight, its standard GNS implementation has the same spectrum as the action. |
-| *Connes spectrum through fixed corners* | In the intersection defining the Connes spectrum, central projections of the fixed algebra suffice. Equivalent fixed corners have equal Connes spectra. |
-| *Cocycle matrix actions and covariant representations* | A unitary cocycle perturbation preserves the Connes spectrum. |
-| *The Connes spectrum as a dual-center kernel* | The Connes spectrum is a closed subgroup of the dual group. |
-| *Continuous decompositions, modular invariants, and canonical extensions* | For a type III factor and any faithful normal semifinite weight, the intrinsic modular spectrum is zero together with the exponential of its modular action's Connes spectrum. The three resulting sets determine the type III subtype. |
+| Invariant weights realize the action spectrum | The full GNS implementation is strongly continuous, every integrable filter preserves its finite ideal, and the action and unitary spectra agree. |
+| Connes spectrum through fixed corners | Central projections of the fixed algebra suffice in the defining intersection; the proof imposes no factor assumption on the fixed algebra. |
+| The real Connes spectrum: orbit supports, corners and cocycles | Sections CS-3–5 prove fixed-corner invariance, the closed additive subgroup law and invariance under an actual unitary cocycle perturbation for factors. |
+| The full weight spectral identity and the modular intersection comparison | MG-2 identifies every fixed-corner restricted weight and modular group. MG-3–4 compare all faithful weights and identify the positive modular invariant for type III factors with separable predual. |
+| Zero in every modular spectrum and the type III spectral trichotomy | MT-1–4 prove zero belongs to every complete modular spectrum of a type III algebra. MT-5–6 combine that separate zero result with the positive comparison. |
 
-The last result uses general continuous decomposition, modular cocycle comparison, and the fact that a nonzero corner of a type III factor is isomorphic to the factor. These remain prerequisites. Their general proofs are not part of the relation-specific argument below. The result includes zero; taking logarithms only detects its positive part. Takesaki II, XI.1.24, XI.2.2–2.3 and XII.1.5–1.6, gives the source locators for these imports.
+The type III comparison applies here: the relation Hilbert space is separable because countably many orbit graphs reduce it to countably many standard sigma-finite base spaces. A von Neumann algebra on that Hilbert space has separable predual, as its normal functionals are a quotient of the separable trace class. The general proofs use full GNS domains, balanced modular weights and isomorphisms between a type III factor and each nonzero corner. They remain prerequisites to the relation argument below. Zero requires the separate MT proof; taking logarithms only detects the positive part. Takesaki II, XI.1.24, XI.2.1–2.3 and XII.1.5–1.6, gives the corresponding source locators. The subtype names in Section 4 use their spectral characterization in Theorem XII.1.6(i)–(iii).
 
 ## 1. The measured ratio set survives a change of density
 
@@ -247,5 +247,6 @@ It approaches zero on intervals of positive \(\mu\)-measure. Hence zero is in th
 
 ## References
 
-- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Encyclopaedia of Mathematical Sciences 125, Springer, 2003. XI.1.24, XI.2.1–2.3, XII.1.5–1.6. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
-- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. XIII.2.12–2.14. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Encyclopaedia of Mathematical Sciences 125, Springer, 2003: Proposition XI.1.24, printed p. 329, compares an invariant weight’s implementation with its action spectrum; Definition XI.2.1 and Lemmas XI.2.2–2.3, pp. 332–333, supply the fixed-corner intersection, central-support reduction and cocycle matrix action; Definition XII.1.5 and Theorem XII.1.6(i)–(iii), pp. 368–369, give the modular invariant and its type III alternatives. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
+- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Definition XIII.2.12, Theorem XIII.2.13 and Definition XIII.2.14, printed p. 23. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). These are the source for the asymptotic ratio set, its equality with the modular invariant, and the relation-type terminology. The density-band argument, central-diagonal sandwich and separate reduced-corner zero argument above make those steps explicit.
+

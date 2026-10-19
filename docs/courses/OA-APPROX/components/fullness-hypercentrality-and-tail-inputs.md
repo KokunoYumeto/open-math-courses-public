@@ -1,6 +1,6 @@
 # Finite corners, unitary displacement and the tensor tail
 
-*Original programme exposition: CC0-1.0 to the extent of rights held.*
+*Programme exposition: CC0-1.0 to the extent of rights held. Human-source terms remain separate.*
 
 The [fullness and hypercentrality lesson](../src/fullness-hypercentrality-and-ultrafilter-corners.md) needs three constructions beyond the centralizing quotient: division of a finite algebra with its center retained, a unitary moving a trace-zero element, and an exact map onto a tensor tail. Its nonfactor example also needs a proof of its center and type, rather than an appeal to unspecified fibers.
 
@@ -124,6 +124,58 @@ Finally,
 \tag{FH3.4}
 \]
 Each fixed-multiplier term tends to zero in trace \(2\)-norm for an ordinary or ultrafilter central sequence, by NT2. The finite sum gives the corresponding convergence of \(\mathcal E_r(x_n)-x_n\), for each fixed \(r\). The complete preceding finite-algebra criterion equates centrality and predual centralizing here. This argument supplies the quantitative tail approximation used in both parts of Theorem 5.2.
+
+**Finite Pauli witnesses.** Put
+\[
+X=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+Z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+\mathcal P=\{1,X,Z,XZ\}.
+\]
+All four matrices are unitary. For \(b=\begin{pmatrix}\alpha&\beta\\\gamma&\delta\end{pmatrix}\), direct multiplication gives
+\[
+b+ZbZ=\begin{pmatrix}2\alpha&0\\0&2\delta\end{pmatrix},\qquad
+XbX+(XZ)b(XZ)^*=\begin{pmatrix}2\delta&0\\0&2\alpha\end{pmatrix}.
+\]
+Adding and dividing by four therefore gives \(4^{-1}\sum_{u\in\mathcal P}ubu^*=\operatorname{tr}_2(b)1\), for every complex matrix, without a self-adjointness assumption.
+
+For \(s>r\), let \(F_{r,s}=\bigotimes_{j=r+1}^{s}M_2\subset N_r\) and let \(\Gamma_{r,s}\) consist of the \(4^{s-r}\) tensor products of matrices from \(\mathcal P\) in those legs, with identity on the initial \(r\) legs. Applying the one-leg formula successively to an elementary tensor gives its product trace times the identity. Elementary tensors span \(F_{r,s}\), so linearity proves
+\[
+\frac1{4^{s-r}}\sum_{u\in\Gamma_{r,s}}ubu^*=\tau(b)1
+\qquad(b\in F_{r,s}).
+\tag{FH3.5}
+\]
+Unitary invariance of the trace norm and expansion of the square now give
+\[
+\begin{aligned}
+\frac1{4^{s-r}}\sum_{u\in\Gamma_{r,s}}\|b-ubu^*\|_2^2
+&=2\|b\|_2^2-
+2\operatorname{Re}\tau\!\left(b^*\frac1{4^{s-r}}\sum_{u\in\Gamma_{r,s}}ubu^*\right)\\
+&=2\bigl(\|b\|_2^2-|\tau(b)|^2\bigr).
+\end{aligned}
+\tag{FH3.6}
+\]
+In particular, if \(\tau(b)=0\), at least one member of this finite family moves \(b\) by at least \(\sqrt2\|b\|_2\).
+
+Write \(\Gamma_r=\bigcup_{s>r}\Gamma_{r,s}\). For any trace-zero \(a\in N_r\), this family contains a unitary moving \(a\) by at least \(\|a\|_2/2\). At \(a=0\), use the identity. Otherwise the tail Hilbert identification proved above makes finite tail polynomials dense in trace \(2\)-norm. Choose \(c\in F_{r,s}\) with \(\|c-a\|_2<\varepsilon/2\) and set \(b=c-\tau(c)1\). Trace Schwarz gives \(|\tau(c)|\leq\|c-a\|_2\), so \(\tau(b)=0\) and \(\|b-a\|_2<\varepsilon\). A unitary supplied by (FH3.6) satisfies
+\[
+\|a-uau^*\|_2
+\geq\sqrt2\|b\|_2-2\varepsilon
+\geq\sqrt2\|a\|_2-(\sqrt2+2)\varepsilon.
+\]
+Taking \(\varepsilon=\|a\|_2/8\) gives a lower bound at least \(5\|a\|_2/8>\|a\|_2/2\), since \(\sqrt2\geq1\). Thus the witness can always be a finite Pauli word in the specified tail.
+
+For any \(x\in R\), put \(b=\mathcal E_r(x)-\tau(x)1\in N_r\), which has trace zero. Choose the preceding unitary for \(b\). If \(b=0\), the identity has the same half-displacement property. With \(\varepsilon_r(x)=\|x-\mathcal E_r(x)\|_2\) and \(\Delta(x)=\|x-\tau(x)1\|_2\), the triangle inequality gives
+\[
+\begin{aligned}
+\|[x,u]\|_2
+&=\|x-uxu^*\|_2\\
+&\geq\tfrac12\|b\|_2-2\varepsilon_r(x)\\
+&\geq\tfrac12\Delta(x)-\tfrac52\varepsilon_r(x),
+\qquad u\in\Gamma_r\subset\mathcal U(N_r).
+\end{aligned}
+\tag{FH3.7}
+\]
+This is a finite-matrix witness estimate followed by trace-norm approximation. It applies to every bounded element of \(R\), and its unitary commutes with the whole prescribed initial matrix stage.
 
 <a id="fh4-the-whole-nonfactor-example"></a>
 

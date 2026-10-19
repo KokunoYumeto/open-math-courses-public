@@ -2,11 +2,11 @@
 
 *CC0-1.0 to the extent of rights in this exposition.*
 
-This earlier portion proves ST-1–2 for arbitrary Hilbert spaces and faithful ultraweakly continuous representations. The faithful-state GNS/modular application ST-3 is a later separate lesson. No modular or arbitrary-weight theorem is an input here.
+This lesson proves ST-1–2 for arbitrary Hilbert spaces and faithful ultraweakly continuous representations. ST-3 applies these topology results to the faithful-state GNS construction and modular theory. No modular or arbitrary-weight theorem is an input here.
 
 The precise earlier inputs are [CF Section 1](OA-FLOW-CF.md#OA-FLOW.CF.1), [CF Section 4](OA-FLOW-CF.md#OA-FLOW.CF.4), [CF Sections 6–7](OA-FLOW-CF.md#OA-FLOW.CF.6), [GNS Sections 2–5](OA-FLOW-GNS.md#gns-positive-form), [SF-0](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-0)/[SB-0](OA-FLOW-SF.md#OA-FLOW.SF.SB0), [SF-2](OA-FLOW-SF.md#oa-flow.shared-foundations.sf-2), [CP-01–06](OA-FLOW-CP.md#oa-flow.cp.1), and [BD-4–5](OA-FLOW-BD.md#oa-flow.bd.4). Only the six proved concrete-predual items are used; no CP support or arbitrary-weight descendants are premises.
 
-For clarity, the entire CP contract used here is this: the completion of the projective-norm algebraic tensor \(H\otimes\overline H\) has dual \(B(H)\), via vector pairings; every completed tensor is an absolutely summable pure-tensor series, whose factors may be balanced into two square-summable sequences. Quotienting by the annihilator of a concrete von Neumann algebra \(M\) gives a Banach space \(M_*\), isometric to the vector-series functionals in \(M^*\), with \(M=(M_*)^*\). In particular \(M_*\) is norm closed in \(M^*\). These statements are proved, including tensor norm, completion, quotient and annihilator arguments, in the exact CP range just identified; a source-history judgment is separate from this mathematical proof binding.
+The predual facts from CP used here are as follows: the completion of the projective-norm algebraic tensor \(H\otimes\overline H\) has dual \(B(H)\), via vector pairings; every completed tensor is an absolutely summable pure-tensor series, whose factors may be balanced into two square-summable sequences. Quotienting by the annihilator of a concrete von Neumann algebra \(M\) gives a Banach space \(M_*\), isometric to the vector-series functionals in \(M^*\), with \(M=(M_*)^*\). In particular \(M_*\) is norm closed in \(M^*\). These statements are proved, including tensor norm, completion, quotient and annihilator arguments, in CP-01–06.
 
 <a id="oa-flow.st.1"></a>
 

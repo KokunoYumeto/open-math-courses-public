@@ -1,6 +1,6 @@
 # Projections in the reduced free group algebra
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Human-source notices retain their separate terms.*
 
 For the rank-two free group \(\Gamma=\mathbb F(a,b)\), the norm-closed algebra \(A=C_r^*(\Gamma)\) has only the projections \(0,1\). The mechanism is an integer trace: a projection can be moved into a dense algebra where its canonical trace is the trace of a trace-class difference of two projections. All eigenvalues of that difference except \(1,-1\) cancel in equal-multiplicity pairs.
 
@@ -228,7 +228,7 @@ in \(\mathcal S_1(H)\). Hence \(f(x)\in A_0\). The full given holomorphic domain
 
 <a id="6-exercises-with-complete-solutions"></a>
 
-The original exercise numbers retain the complete tasks. Their solutions are grouped by the part of the argument they test.
+The problems examine spectral pairing, projection boundaries, basis maps, finite differences and the trace topology.
 
 ### Spectral pairing and the projection boundary
 
@@ -284,4 +284,4 @@ Its eigenvalues are \((3\pm\sqrt5)/2\), with sum \(3\) and product \(1\). The tw
 
 Thomas Schick, [*The trace on the K-theory of group C\*-algebras*, arXiv:math/9907121v5](https://arxiv.org/pdf/math/9907121v5), the complete Lemma 2.6 proof on pp.7–8, Lemma 2.8 on pp.8–10 and Lemma 2.9 on pp.10–11, gives freely readable comparisons for the diagonal trace and different-unit resolvent method. Its trace-ideal facts and dense holomorphic K-theory equivalence are cited there by reference. The argument here uses the complete ordinary-Hilbert analytic module, the explicit two-copy basis unitary, spectral pairing and nearby-projection unitary instead of those imported premises. It does not assert the source's general Hilbert-module relative theorem or a K-theory computation.
 
-All original conclusions retain their stated scope: the final projection-absence assertion is in the rank-two reduced algebra itself; the projection-difference trace formula allows arbitrary Hilbert spaces; holomorphic closure allows general elements and arbitrary given neighborhoods. The human paper retains its own distribution terms, and its text and PDF are not redistributed or assigned the programme's CC0 terms.
+Projection absence is asserted in the rank-two reduced algebra itself. The projection-difference trace formula allows arbitrary Hilbert spaces, and holomorphic closure allows general elements and arbitrary given neighborhoods. The human paper retains its own distribution terms, and its text and PDF are not redistributed or assigned the programme's CC0 terms.

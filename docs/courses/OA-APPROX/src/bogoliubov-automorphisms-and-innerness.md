@@ -1,8 +1,8 @@
 # Bogoliubov automorphisms and the Hilbert–Schmidt criterion
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026; analytic proof route reconstructed and self-checked at Ultra, October 2026. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. New original text: public domain (CC0).*
 
-A unitary change of one-particle coordinates acts on the CAR algebra. In its tracial representation this action extends normally to the hyperfinite factor. We prove that the resulting automorphism is inner exactly when the one-particle unitary differs from the identity by a Hilbert–Schmidt operator. The diagonal case is an infinite tensor product calculation. A controlled diagonal perturbation supplies the general case.
+A unitary change of one-particle coordinates acts on the CAR algebra. In its tracial representation this action extends normally to the hyperfinite factor. The innerness criterion below answers when its implementer belongs to that factor. Sufficiency follows from the eigenvectors of the compact difference from the identity; necessity uses a controlled diagonalizing perturbation. The eigenmode calculation constructs the local implementing matrices and their convergent product. The normal-extension and continuity theorem then describes the action as a map of topological groups. The complete analytic arguments and twelve worked problems supply the details used throughout.
 
 The concrete CAR, its half-state trace and its completed pointed matrix product are supplied by Fermions, Fock space and quasi-free factors, Sections 10 and 15–16. The diagonal step uses the proved product-innerness theorem. Section 6 below supplies the whole analytic passage to arbitrary unitaries: the Hilbert–Schmidt ideal, compact diagonalization, interval projections, a bounded logarithm, and a dyadic diagonal perturbation with an explicit square-sum bound. It also constructs the unitary groups and the resolvent criterion needed for the possibly unbounded statement in Lemma 3.1. Its continuous calculus is the complete local ITP F03–F04, F06 and F08 argument and its scalar proofs; the underlying Hilbert estimates are ITP Sections 10.1–10.2. Normal continuity is proved directly on square-summable vector coefficients. This route uses neither a factor uniqueness theorem nor a trace-density theorem.
 
@@ -20,47 +20,36 @@ Our annihilator \(a(f)\) is conjugate-linear in \(f\). Thus
 \]
 In particular an eigenvalue \(e^{is}\) multiplies the annihilator by \(e^{-is}\). The one-mode implementers below reflect this convention. Changing to a linear creation generator changes that sign and the placement of the occupation projections together; the trace criterion is unchanged.
 
-## 1. Normal extension and continuity
+## 4. The general innerness theorem
 
-Every tracial state on \(A\) restricts to the normalized trace on each finite-mode full matrix algebra. Their union is norm dense, so \(\tau\) is the unique tracial state. Hence \(\tau\alpha_u=\tau\).
-
-**Theorem 1.1.** Each \(\alpha_u\) has a canonical normal extension to \(R\), still denoted by \(\alpha_u\). The map
+**Theorem 4.1.** For every unitary \(u\) on the separable infinite-dimensional space \(K\),
 \[
-\mathcal U(K)\longrightarrow\operatorname{Aut}(R),\qquad u\longmapsto\alpha_u
-\tag{2}
+\boxed{\ \alpha_u\text{ is inner on }R
+\quad\Longleftrightarrow\quad u-1\in\mathcal L^2(K).\ }
+\tag{15}
 \]
-is an injective continuous homomorphism, for the strong operator topology on \(\mathcal U(K)\) and the point-predual norm topology on \(\operatorname{Aut}(R)\).
 
-**Proof.** On the dense tracial GNS subspace put
+**Proof.** Suppose first that \(u-1\in\mathcal L^2(K)\). This difference is compact by Section 6.1. Lemma 3.2 therefore gives an orthonormal eigenbasis for \(u\). If its eigenvalues are \(e^{is_j}\), basis independence gives
 \[
-W_u(x\Omega)=\alpha_u(x)\Omega,\qquad x\in A.
-\tag{3}
+ \sum_j|e^{is_j}-1|^2=\|u-1\|_{\mathrm{HS}}^2<\infty.
 \]
-Trace preservation gives \(\|W_u(x\Omega)\|=\|x\Omega\|\), and \(W_{u^{-1}}\) gives its inverse. Thus \(W_u\) is unitary. On \(A\), \(W_u xW_u^*=\alpha_u(x)\), so conjugation maps \(R=A''\) onto itself and gives a normal extension. Two normal extensions agreeing on an ultraweakly dense algebra agree everywhere. Formula (3) also gives the homomorphism law.
+The diagonal criterion of Theorem 2.1 makes \(\alpha_u\) inner. Its phase-normalized matrix products give an implementing unitary in \(R\), with any finite zero-overlap prefix retained. Thus the sufficient implication is already established for every one-particle unitary with Hilbert–Schmidt difference.
 
-If \(u_j\to u\) strongly, the CAR norm identity gives
+Now suppose that \(\alpha_u\) is inner. Apply Lemma 3.3 to obtain \(v,w\), with \(v-1\) Hilbert–Schmidt and \(w=uv\) diagonalizable. The sufficient implication just proved applies to \(v\); consequently \(\alpha_v\) is inner. Since \(\alpha_w=\alpha_u\alpha_v\), composition with this inner automorphism gives
 \[
-\|\alpha_{u_j}(a(f))-\alpha_u(a(f))\|=\|(u_j-u)f\|\longrightarrow0.
+\alpha_u\text{ inner}\quad\Longleftrightarrow\quad
+\alpha_w\text{ inner}.
+\tag{16}
 \]
-Finite product telescoping and norm density give convergence on every \(x\in A\). Consequently \(W_{u_j}\to W_u\) strongly. Also \(u_j^*\to u^*\) strongly, since
-\(\|(u_j^*-u^*)f\|=\|f-u_j u^*f\|\).
+In particular \(\alpha_w\) is inner, and its eigenbasis lets Theorem 2.1 conclude that \(w-1\) is Hilbert–Schmidt. The two exact difference identities are
+\[
+w-1=(u-1)+u(v-1),\qquad
+u-1=(w-1)-u(v-1).
+\tag{17}
+\]
+The second identity and the linear two-sided ideal estimate of Section 6.1 put \(u-1\) in the same class. This proves necessity and completes both implications. \(\square\)
 
-Here is the entire normal-functional argument, without a trace density. On the concrete \(R\subset B(H_\tau)\), a normal functional is the restriction of
-\[
-\psi(x)=\sum_{n=1}^\infty\langle \xi_n,x\eta_n\rangle,\qquad
-\sum_n\|\xi_n\|^2<\infty,\quad\sum_n\|\eta_n\|^2<\infty.
-\tag{4}
-\]
-The exact coefficient topology and its continuous dual are explained in Section 6.7. Conjugation by \(W_{u_j}\) pulls this functional back to the same series with \(\xi_n,\eta_n\) replaced by \(W_{u_j}^*\xi_n,W_{u_j}^*\eta_n\). Strong convergence of these adjoints follows from the already proved convergence for \(u_j^{-1}\). It implies convergence on each square-summable list in its square-sum norm: first retain finitely many vectors, and then bound each omitted difference by twice the vector's norm. Cauchy–Schwarz bounds the functional-norm difference by
-\[
-\big\|((W_{u_j}^*-W_u^*)\xi_n)_n\big\|_{\ell^2}\,
- \|(\eta_n)_n\|_{\ell^2}
-+\|(\xi_n)_n\|_{\ell^2}\,
- \big\|((W_{u_j}^*-W_u^*)\eta_n)_n\big\|_{\ell^2}.
-\]
-This tends to zero and proves convergence in the specified point-predual norm topology. The finite-list and tail argument works for nets as well as sequences.
-
-Finally, if \(\alpha_u=\operatorname{id}\), then \(a(uf-f)=0\). The identity \(\|a(g)\|=\|g\|\) makes \(uf=f\) for every \(f\), so \(u=1\). \(\square\)
+**Example 4.2.** A nontrivial scalar gauge \(u=e^{is}1\), \(s\notin2\pi\mathbb Z\), produces an outer automorphism of \(R\): \(u-1\) has the same nonzero norm on infinitely many orthonormal vectors and is not Hilbert–Schmidt. Every finite-mode restriction is nevertheless inner by (6). Conversely every unitary equal to the identity off a finite-dimensional subspace gives an inner automorphism.
 
 Spatial implementation by \(W_u\) is always available. Innerness asks the stronger question whether an implementer belongs to \(R\).
 
@@ -180,30 +169,47 @@ These operators are unitary. Lemma 3.1 at \(t=1\) gives the required Hilbert–S
 
 Separability enters through this diagonal perturbation input. The argument does not assert the same diagonal perturbation theorem on an arbitrary nonseparable space.
 
-## 4. The general innerness theorem
+## 1. Normal extension and continuity
 
-**Theorem 4.1.** For every unitary \(u\) on the separable infinite-dimensional space \(K\),
-\[
-\boxed{\ \alpha_u\text{ is inner on }R
-\quad\Longleftrightarrow\quad u-1\in\mathcal L^2(K).\ }
-\tag{15}
-\]
+Every tracial state on \(A\) restricts to the normalized trace on each finite-mode full matrix algebra. Their union is norm dense, so \(\tau\) is the unique tracial state. Hence \(\tau\alpha_u=\tau\).
 
-**Proof.** Choose \(v,w\) as in Lemma 3.3. Since \(v-1\) is Hilbert–Schmidt, it is compact. Lemma 3.2 makes \(v\) diagonalizable, so Theorem 2.1 proves that \(\alpha_v\) is inner. As \(\alpha_w=\alpha_u\alpha_v\), membership in the subgroup of inner automorphisms gives
+**Theorem 1.1.** Each \(\alpha_u\) has a canonical normal extension to \(R\), still denoted by \(\alpha_u\). The map
 \[
-\alpha_u\text{ inner}\quad\Longleftrightarrow\quad
-\alpha_w\text{ inner}.
-\tag{16}
+\mathcal U(K)\longrightarrow\operatorname{Aut}(R),\qquad u\longmapsto\alpha_u
+\tag{2}
 \]
-The eigenbasis of \(w\) and Theorem 2.1 identify the right side with \(w-1\in\mathcal L^2(K)\). Finally
-\[
-w-1=(u-1)+u(v-1),\qquad
-u-1=(w-1)-u(v-1).
-\tag{17}
-\]
-The Hilbert–Schmidt class is a linear two-sided ideal, so these identities make \(w-1\) Hilbert–Schmidt exactly when \(u-1\) is. This proves both implications without assuming the desired result for the original arbitrary \(u\). \(\square\)
+is an injective continuous homomorphism, for the strong operator topology on \(\mathcal U(K)\) and the point-predual norm topology on \(\operatorname{Aut}(R)\).
 
-**Example 4.2.** A nontrivial scalar gauge \(u=e^{is}1\), \(s\notin2\pi\mathbb Z\), produces an outer automorphism of \(R\): \(u-1\) has the same nonzero norm on infinitely many orthonormal vectors and is not Hilbert–Schmidt. Every finite-mode restriction is nevertheless inner by (6). Conversely every unitary equal to the identity off a finite-dimensional subspace gives an inner automorphism.
+**Proof.** On the dense tracial GNS subspace put
+\[
+W_u(x\Omega)=\alpha_u(x)\Omega,\qquad x\in A.
+\tag{3}
+\]
+Trace preservation gives \(\|W_u(x\Omega)\|=\|x\Omega\|\), and \(W_{u^{-1}}\) gives its inverse. Thus \(W_u\) is unitary. On \(A\), \(W_u xW_u^*=\alpha_u(x)\), so conjugation maps \(R=A''\) onto itself and gives a normal extension. Two normal extensions agreeing on an ultraweakly dense algebra agree everywhere. Formula (3) also gives the homomorphism law.
+
+If \(u_j\to u\) strongly, the CAR norm identity gives
+\[
+\|\alpha_{u_j}(a(f))-\alpha_u(a(f))\|=\|(u_j-u)f\|\longrightarrow0.
+\]
+Finite product telescoping and norm density give convergence on every \(x\in A\). Consequently \(W_{u_j}\to W_u\) strongly. Also \(u_j^*\to u^*\) strongly, since
+\(\|(u_j^*-u^*)f\|=\|f-u_j u^*f\|\).
+
+Here is the entire normal-functional argument, without a trace density. On the concrete \(R\subset B(H_\tau)\), a normal functional is the restriction of
+\[
+\psi(x)=\sum_{n=1}^\infty\langle \xi_n,x\eta_n\rangle,\qquad
+\sum_n\|\xi_n\|^2<\infty,\quad\sum_n\|\eta_n\|^2<\infty.
+\tag{4}
+\]
+The exact coefficient topology and its continuous dual are explained in Section 6.7. Conjugation by \(W_{u_j}\) pulls this functional back to the same series with \(\xi_n,\eta_n\) replaced by \(W_{u_j}^*\xi_n,W_{u_j}^*\eta_n\). Strong convergence of these adjoints follows from the already proved convergence for \(u_j^{-1}\). It implies convergence on each square-summable list in its square-sum norm: first retain finitely many vectors, and then bound each omitted difference by twice the vector's norm. Cauchy–Schwarz bounds the functional-norm difference by
+\[
+\big\|((W_{u_j}^*-W_u^*)\xi_n)_n\big\|_{\ell^2}\,
+ \|(\eta_n)_n\|_{\ell^2}
++\|(\xi_n)_n\|_{\ell^2}\,
+ \big\|((W_{u_j}^*-W_u^*)\eta_n)_n\big\|_{\ell^2}.
+\]
+This tends to zero and proves convergence in the specified point-predual norm topology. The finite-list and tail argument works for nets as well as sequences.
+
+Finally, if \(\alpha_u=\operatorname{id}\), then \(a(uf-f)=0\). The identity \(\|a(g)\|=\|g\|\) makes \(uf=f\) for every \(f\), so \(u=1\). \(\square\)
 
 ## 5. Exercises with complete solutions
 

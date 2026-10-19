@@ -1,0 +1,209 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Closed subsets and continuity of sheaf cohomology</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="closed-subsets-and-continuity-of-sheaf-cohomology">Closed subsets and continuity of sheaf cohomology</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Public domain (CC0).</em></p>
+<p>A section along a closed set can be represented on one neighborhood of that set. The same principle holds for cohomology, provided the ambient space has the separation and refinement properties needed for soft sheaves. A single injective model makes the comparison concrete in every degree and preserves its maps. Compactness then gives a second continuity theorem for decreasing families of closed sets.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be paracompact Hausdorff and <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> a sheaf of unital rings. Modules are left modules, and the rings need not be commutative. All indices are sets in fixed universes, with choice. Restriction to a subset means inverse-image restriction of sheaves, with all ambient germs retained. Every derived complex below is bounded below.</p>
+<p>Use <a href="soft-sheaves-on-paracompact-hausdorff-spaces.html#2-gluing-on-closed-subsets-and-extending-to-a-neighborhood">Soft sheaves on paracompact Hausdorff spaces</a>, Theorem 2.2 and Sections 3–5, for the closed-neighborhood section theorem and closed restrictions of soft sheaves; <a href="godement-resolutions-and-flabby-sheaf-cohomology.html">Godement resolutions and flabby sheaf cohomology</a>, Sections 1–6, for enough injectives, their flabbiness and their injective restrictions to opens; and <a href="universal-cohomology-and-acyclic-resolutions.html#4-complete-bounded-below-acyclic-computation">Universal cohomology and acyclic resolutions</a>, Theorem 4.1, for the full normalized acyclic comparison. Closed-restriction maps are constructed in <a href="finite-closed-covers-and-sheaf-cohomology.html#1-closed-restriction-its-maps-and-its-cohomology">Finite closed covers and sheaf cohomology</a>. The examples use the contractible-space theorem of <a href="interval-cohomology-and-homotopy-invariance-for-sheaves.html#6-the-cohomological-homotopy-theorem">Interval cohomology and homotopy invariance for sheaves</a> and the diagram description in <a href="finite-poset-sheaves-and-canonical-homological-resolutions.html#1-recover-every-sheaf-and-every-map-from-its-point-diagram">Finite-poset sheaves and canonical homological resolutions</a>. Basic references are the Stacks project's compact-neighborhood theorem [S] and Demailly's discussion of soft sheaves [D].</p>
+<h2 id="1-the-neighborhood-functor-and-its-scalars">1. The neighborhood functor and its scalars</h2>
+<p>For a closed subset <span class="math" data-tex="\(C\subseteq X\)">\(C\subseteq X\)</span>, let <span class="math" data-tex="\(\mathcal N(C)\)">\(\mathcal N(C)\)</span> be the open neighborhoods of <span class="math" data-tex="\(C\)">\(C\)</span>, ordered by shrinking: there is an arrow <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span> when <span class="math" data-tex="\(V\subseteq U\)">\(V\subseteq U\)</span>. It is filtered, since <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span> is a common later neighborhood. For <span class="math" data-tex="\(C=\varnothing\)">\(C=\varnothing\)</span>, its empty neighborhood is terminal. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+ N_C(\mathcal F)=\operatorname*{colim}_{U\in\mathcal N(C)}\Gamma(U,\mathcal F),
+ \qquad
+ R_C=\Gamma(C,i_C^{-1}\mathcal R).
+ \tag{1.1}
+\]">\[
+N_C(\mathcal F)=\operatorname*{colim}_{U\in\mathcal N(C)}\Gamma(U,\mathcal F),
+\qquad
+R_C=\Gamma(C,i_C^{-1}\mathcal R).
+\tag{1.1}
+\]</span>
+<p>The closed-neighborhood section theorem identifies <span class="math" data-tex="\(N_C(\mathcal R)\)">\(N_C(\mathcal R)\)</span> with <span class="math" data-tex="\(R_C\)">\(R_C\)</span> as a ring, and identifies <span class="math" data-tex="\(N_C(\mathcal F)\)">\(N_C(\mathcal F)\)</span> with <span class="math" data-tex="\(\Gamma(C,i_C^{-1}\mathcal F)\)">\(\Gamma(C,i_C^{-1}\mathcal F)\)</span> as a left <span class="math" data-tex="\(R_C\)">\(R_C\)</span>-module. To see the action directly, represent a scalar on <span class="math" data-tex="\(U\)">\(U\)</span> and a section on <span class="math" data-tex="\(V\)">\(V\)</span>, restrict both to <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span>, and multiply there. Refining again shows independence of representatives. The same construction verifies the unit, addition and associativity laws, in the original left-action order.</p>
+<p><strong>Lemma 1.1.</strong> Filtered colimits of abelian groups are exact and commute with cohomology of diagrams of complexes. Consequently <span class="math" data-tex="\(N_C\)">\(N_C\)</span> is an additive left exact functor to <span class="math" data-tex="\(\operatorname{Mod}(R_C)\)">\(\operatorname{Mod}(R_C)\)</span>.</p>
+<p><strong>Proof.</strong> An element of a filtered colimit has a representative at one stage. It is zero precisely when its representative becomes zero at a later stage: the finite chain of identifications defining equality can be put at a common stage, with any parallel arrows equalized there. For a stagewise short exact row, a kernel element therefore lifts into the stage kernel after moving far enough; a target element lifts at its representative stage; and a source element that becomes zero is already zero at some later stage. These are exactness at all three positions. The construction uses compatible representatives to preserve addition. Applied to cycles, boundaries and their quotient, exactness gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_t H^q(K_t^\bullet)
+ \xrightarrow{\sim}
+ H^q\!\left(\operatorname*{colim}_t K_t^\bullet\right).
+ \tag{1.2}
+\]">\[
+\operatorname*{colim}_t H^q(K_t^\bullet)
+\xrightarrow{\sim}
+H^q\!\left(\operatorname*{colim}_t K_t^\bullet\right).
+\tag{1.2}
+\]</span>
+<p>The map takes a represented cocycle class to that same cocycle in the colimit. Each section functor is left exact, and the filtered colimit preserves that exactness. Thus <span class="math" data-tex="\(N_C\)">\(N_C\)</span> is left exact on underlying groups, hence on the modules in (1.1). Its maps are <span class="math" data-tex="\(R_C\)">\(R_C\)</span>-linear by the common-neighborhood multiplication rule. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>cofinal neighborhood basis</strong> here means a family <span class="math" data-tex="\(\mathcal B\subseteq\mathcal N(C)\)">\(\mathcal B\subseteq\mathcal N(C)\)</span> such that every neighborhood contains a member of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. It is directed under shrinking: given two members, choose a member inside their intersection. Restricting (1.1) to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> does not change it. Indeed a representative moves to a member inside its domain, and any equality moves to a member inside the neighborhood witnessing the equality. This proves both surjectivity and injectivity of the basis comparison, including its operations.</p>
+<h2 id="2-restrict-one-injective-model">2. Restrict one injective model</h2>
+<p>Write <span class="math" data-tex="\(\mathcal F_C=i_C^{-1}\mathcal F\)">\(\mathcal F_C=i_C^{-1}\mathcal F\)</span>. A closed subset <span class="math" data-tex="\(C\)">\(C\)</span> is paracompact Hausdorff, by the refinement theorem in the soft-sheaf prerequisite. An injective <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> is soft. Its restriction <span class="math" data-tex="\(\mathcal I_C\)">\(\mathcal I_C\)</span> is soft on <span class="math" data-tex="\(C\)">\(C\)</span>, and therefore <span class="math" data-tex="\(\Gamma(C,-)\)">\(\Gamma(C,-)\)</span>-acyclic there. Restriction to an open <span class="math" data-tex="\(U\)">\(U\)</span>, on the other hand, preserves injectives: its left adjoint, extension by zero, is exact, as proved in the Godement prerequisite.</p>
+<p>These facts give two usable restrictions of one global injective resolution. The open neighborhoods need not themselves be paracompact; their injective restrictions compute cohomology without that hypothesis.</p>
+<p><strong>Theorem 2.1 (closed-neighborhood cohomology).</strong> For every module sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, every closed <span class="math" data-tex="\(C\subseteq X\)">\(C\subseteq X\)</span>, and every <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, the actual restriction maps induce an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+ \nu_C^q:
+ \operatorname*{colim}_{U\supseteq C}H^q(U,\mathcal F|_U)
+ \xrightarrow{\sim}H^q(C,\mathcal F_C).
+ \tag{2.1}
+\]">\[
+\nu_C^q:
+\operatorname*{colim}_{U\supseteq C}H^q(U,\mathcal F|_U)
+\xrightarrow{\sim}H^q(C,\mathcal F_C).
+\tag{2.1}
+\]</span>
+<p>It is natural in coefficients, respects nested closed-subset restrictions, and commutes with all connecting maps of short exact coefficient rows. A closed subset with this property is called <strong>taut</strong> for sheaf cohomology.</p>
+<p><strong>Proof.</strong> Choose an injective resolution <span class="math" data-tex="\(\mathcal F\to\mathcal I^\bullet\)">\(\mathcal F\to\mathcal I^\bullet\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. For every open <span class="math" data-tex="\(U\)">\(U\)</span>, its restricted resolution is injective, so its actual section complex computes <span class="math" data-tex="\(H^q(U,\mathcal F|_U)\)">\(H^q(U,\mathcal F|_U)\)</span>. On <span class="math" data-tex="\(C\)">\(C\)</span>, inverse image is exact and every <span class="math" data-tex="\(\mathcal I_C^n\)">\(\mathcal I_C^n\)</span> is soft and acyclic. The full acyclic-resolution comparison therefore identifies the cohomology of <span class="math" data-tex="\(\Gamma(C,\mathcal I_C^\bullet)\)">\(\Gamma(C,\mathcal I_C^\bullet)\)</span> with that of <span class="math" data-tex="\(\mathcal F_C\)">\(\mathcal F_C\)</span>, with its given augmentation. In every degree the closed-neighborhood section theorem gives a natural isomorphism, and those isomorphisms commute with the differentials:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_{U\supseteq C}\Gamma(U,\mathcal I^\bullet)
+ \xrightarrow{\sim}\Gamma(C,\mathcal I_C^\bullet).
+ \tag{2.2}
+\]">\[
+\operatorname*{colim}_{U\supseteq C}\Gamma(U,\mathcal I^\bullet)
+\xrightarrow{\sim}\Gamma(C,\mathcal I_C^\bullet).
+\tag{2.2}
+\]</span>
+<p>Take cohomology and apply Lemma 1.1. The resulting isomorphism is (2.1). Its contribution from a fixed neighborhood is the map restricting that very injective section complex to its closed inverse image, followed by the normalized acyclic comparison. This is the usual derived restriction: the chain map starts with the actual restriction on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, and the acyclic comparison respects that augmentation. Thus (2.1) is the asserted canonical map. Section 3 proves the full derived naturality, including its connecting maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The colimit on the left of (2.1) is naturally an <span class="math" data-tex="\(R_C\)">\(R_C\)</span>-module. Represent a scalar by a section on a neighborhood <span class="math" data-tex="\(V\)">\(V\)</span>, and a cohomology class on <span class="math" data-tex="\(U\)">\(U\)</span>; restrict the class to <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span> and multiply there. The cochain action commutes with the differential. Common refinements prove independence, and (2.2) proves that (2.1) respects this action. No commutation of ring elements is needed.</p>
+<h2 id="3-the-full-bounded-below-comparison-and-all-its-maps">3. The full bounded-below comparison and all its maps</h2>
+<p>For a bounded-below complex <span class="math" data-tex="\(K\)">\(K\)</span>, choose a bounded-below injective model <span class="math" data-tex="\(K\to I\)">\(K\to I\)</span>. Define the concrete neighborhood complex</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+ \mathsf N_C(K;I)=\operatorname*{colim}_{U\supseteq C}\Gamma(U,I).
+ \tag{3.1}
+\]">\[
+\mathsf N_C(K;I)=\operatorname*{colim}_{U\supseteq C}\Gamma(U,I).
+\tag{3.1}
+\]</span>
+<p>It computes <span class="math" data-tex="\(RN_C(K)\)">\(RN_C(K)\)</span>. This definition uses an actual diagram of complexes with restriction maps. In particular, no colimit of an unspecified diagram in the ordinary derived category is being presumed.</p>
+<p><strong>Theorem 3.1.</strong> There is a natural normalized isomorphism of functors on <span class="math" data-tex="\(D^+(\operatorname{Mod}(\mathcal R))\)">\(D^+(\operatorname{Mod}(\mathcal R))\)</span>, with values in <span class="math" data-tex="\(D^+(\operatorname{Mod}(R_C))\)">\(D^+(\operatorname{Mod}(R_C))\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+ RN_C(K)\xrightarrow{\sim}R\Gamma(C,i_C^{-1}K).
+ \tag{3.2}
+\]">\[
+RN_C(K)\xrightarrow{\sim}R\Gamma(C,i_C^{-1}K).
+\tag{3.2}
+\]</span>
+<p>Its representative on the model <span class="math" data-tex="\(I\)">\(I\)</span> is the degreewise isomorphism <span class="math" data-tex="\(\mathsf N_C(K;I)\to\Gamma(C,i_C^{-1}I)\)">\(\mathsf N_C(K;I)\to\Gamma(C,i_C^{-1}I)\)</span> from (2.2), followed by the canonical acyclic comparison. It preserves the degree-zero identification (1.1), all derived morphisms, shifts, triangles and connecting maps. For every integer <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_{U\supseteq C}\mathbb H^q(U,K|_U)
+ \xrightarrow{\sim}\mathbb H^q(C,i_C^{-1}K).
+ \tag{3.3}
+\]">\[
+\operatorname*{colim}_{U\supseteq C}\mathbb H^q(U,K|_U)
+\xrightarrow{\sim}\mathbb H^q(C,i_C^{-1}K).
+\tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(I^n\)">\(I^n\)</span> is injective on <span class="math" data-tex="\(X\)">\(X\)</span>. Thus <span class="math" data-tex="\(I_C^n\)">\(I_C^n\)</span> is soft on <span class="math" data-tex="\(C\)">\(C\)</span>, and the full bounded-below acyclic-computation theorem identifies <span class="math" data-tex="\(\Gamma(C,I_C)\)">\(\Gamma(C,I_C)\)</span> with <span class="math" data-tex="\(R\Gamma(C,i_C^{-1}K)\)">\(R\Gamma(C,i_C^{-1}K)\)</span>, with the actual map from <span class="math" data-tex="\(K\)">\(K\)</span>. Applying (2.2) termwise gives (3.2).</p>
+<p>Here are its independence and morphism checks. A map between bounded-below injective models restricts on every open and on <span class="math" data-tex="\(C\)">\(C\)</span>; section restriction commutes with it. Hence the degreewise isomorphism is a natural map of complexes. A chain homotopy remains a chain homotopy after either restriction, sections or filtered colimit, since these operations are additive and preserve its defining equation. Comparison maps of injective models and their inverse homotopy classes therefore give the same derived isomorphism. Every derived map is represented by the corresponding homotopy class between such injective models, by the injective comparison theorem in the prerequisites. This proves naturality for all those maps.</p>
+<p>Finite direct sums of injectives are injective. Consequently the cone of a map between these injective models is again an injective-term bounded-below complex. The degreewise map (2.2) commutes with shifts and with the standard signed cone differential, because it is additive and commutes with each component map. The canonical acyclic comparison has the same cone and shift compatibility. Thus (3.2) is a comparison of exact functors and respects all distinguished triangles. In particular it respects the triangle of a short exact sheaf row, including every connecting map. On a sheaf in degree zero, the augmentation makes its zeroth map precisely (1.1); this verifies the normalization.</p>
+<p>Finally, <span class="math" data-tex="\(I|_U\)">\(I|_U\)</span> is a bounded-below injective model of <span class="math" data-tex="\(K|_U\)">\(K|_U\)</span> for each open <span class="math" data-tex="\(U\)">\(U\)</span>. Lemma 1.1 applied to (3.1) now gives (3.3), with exactly these restriction maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(D\subseteq C\)">\(D\subseteq C\)</span> are closed, the map <span class="math" data-tex="\(N_C(\mathcal F)\to N_D(\mathcal F)\)">\(N_C(\mathcal F)\to N_D(\mathcal F)\)</span> regards a section near <span class="math" data-tex="\(C\)">\(C\)</span> as one near <span class="math" data-tex="\(D\)">\(D\)</span>. On (2.2) it is exactly restriction from <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\(D\)">\(D\)</span>. The same is true on the injective-model complexes in Theorem 3.1. For a further closed subset, both composites are the same section restriction, so the derived comparisons compose coherently. These maps are semilinear for the natural ring map <span class="math" data-tex="\(R_C\to R_D\)">\(R_C\to R_D\)</span>. Restricting to any cofinal neighborhood basis gives the same comparisons by the representative argument in Section 1.</p>
+<h2 id="4-continuity-for-decreasing-closed-families">4. Continuity for decreasing closed families</h2>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be a nonempty directed partially ordered set. Suppose <span class="math" data-tex="\((C_t)_{t\in T}\)">\((C_t)_{t\in T}\)</span> is a family of closed subsets of <span class="math" data-tex="\(X\)">\(X\)</span>, with <span class="math" data-tex="\(C_s\subseteq C_t\)">\(C_s\subseteq C_t\)</span> for <span class="math" data-tex="\(t\leq s\)">\(t\leq s\)</span>, and with at least one <span class="math" data-tex="\(C_{t_0}\)">\(C_{t_0}\)</span> compact. Put <span class="math" data-tex="\(C_\infty=\bigcap_tC_t\)">\(C_\infty=\bigcap_tC_t\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> Every open neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span> contains some <span class="math" data-tex="\(C_s\)">\(C_s\)</span>. One can require <span class="math" data-tex="\(s\)">\(s\)</span> to lie beyond any specified finite set of indices.</p>
+<p><strong>Proof.</strong> Pass to the cofinal tail <span class="math" data-tex="\(t\geq t_0\)">\(t\geq t_0\)</span>. If no <span class="math" data-tex="\(C_t\)">\(C_t\)</span> on this tail lay in <span class="math" data-tex="\(U\)">\(U\)</span>, the sets <span class="math" data-tex="\(C_t\cap(X\setminus U)\)">\(C_t\cap(X\setminus U)\)</span> would be nonempty closed subsets of the compact space <span class="math" data-tex="\(C_{t_0}\)">\(C_{t_0}\)</span>. Every finite intersection contains one of them, by directedness. They therefore have nonempty total intersection: otherwise their complements would be an open cover of the compact space with a finite subcover, contrary to the finite-intersection property. But the total intersection is <span class="math" data-tex="\(C_\infty\setminus U=\varnothing\)">\(C_\infty\setminus U=\varnothing\)</span>. This contradiction proves the assertion. To impose finitely many lower bounds on <span class="math" data-tex="\(s\)">\(s\)</span>, choose a common upper bound with the index already found. Its closed set is smaller. The proof also covers an empty intersection: taking <span class="math" data-tex="\(U=\varnothing\)">\(U=\varnothing\)</span> then forces some <span class="math" data-tex="\(C_s\)">\(C_s\)</span> to be empty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2.</strong> For every sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, the actual closed restrictions induce a bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_t\Gamma(C_t,\mathcal F|_{C_t})
+ \xrightarrow{\sim}\Gamma(C_\infty,\mathcal F|_{C_\infty}).
+ \tag{4.1}
+\]">\[
+\operatorname*{colim}_t\Gamma(C_t,\mathcal F|_{C_t})
+\xrightarrow{\sim}\Gamma(C_\infty,\mathcal F|_{C_\infty}).
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> A section on <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span> is represented on an open neighborhood <span class="math" data-tex="\(U\)">\(U\)</span>, by the closed-neighborhood theorem. Choose <span class="math" data-tex="\(C_s\subseteq U\)">\(C_s\subseteq U\)</span> by Lemma 4.1 and restrict that representative to <span class="math" data-tex="\(C_s\)">\(C_s\)</span>. This proves surjectivity.</p>
+<p>For injectivity, represent a section on <span class="math" data-tex="\(C_t\)">\(C_t\)</span> by a section <span class="math" data-tex="\(f\)">\(f\)</span> on an open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(C_t\)">\(C_t\)</span>. If its restriction to <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span> is zero, the zero-germ locus of <span class="math" data-tex="\(f\)">\(f\)</span> inside <span class="math" data-tex="\(V\)">\(V\)</span> is an open neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span>. Lemma 4.1 gives <span class="math" data-tex="\(s\geq t\)">\(s\geq t\)</span> with <span class="math" data-tex="\(C_s\subseteq W\)">\(C_s\subseteq W\)</span>. The restriction of the original section to <span class="math" data-tex="\(C_s\)">\(C_s\)</span> is therefore zero. This is precisely the zero criterion in the filtered colimit. Apply the argument to the difference for two module sections; for sheaves of sets use their open equality locus instead. The actual restriction maps prove naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3.</strong> Under these hypotheses, for every bounded-below <span class="math" data-tex="\(K\)">\(K\)</span> and integer <span class="math" data-tex="\(q\)">\(q\)</span>, the canonical map is an isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_t\mathbb H^q(C_t,K|_{C_t})
+ \xrightarrow{\sim}\mathbb H^q(C_\infty,K|_{C_\infty}).
+ \tag{4.2}
+\]">\[
+\operatorname*{colim}_t\mathbb H^q(C_t,K|_{C_t})
+\xrightarrow{\sim}\mathbb H^q(C_\infty,K|_{C_\infty}).
+\tag{4.2}
+\]</span>
+<p>It has a concrete complex representative, is natural in all derived coefficient maps, and respects the restriction maps and connecting maps. For a sheaf in degree zero this gives the same formula for ordinary sheaf cohomology.</p>
+<p><strong>Proof.</strong> Choose one global bounded-below injective model <span class="math" data-tex="\(K\to I\)">\(K\to I\)</span>. Every <span class="math" data-tex="\(C_t\)">\(C_t\)</span>, and also <span class="math" data-tex="\(C_\infty\)">\(C_\infty\)</span>, is closed in <span class="math" data-tex="\(X\)">\(X\)</span>. The restricted terms of <span class="math" data-tex="\(I\)">\(I\)</span> are therefore soft and acyclic on each of these spaces, regardless of whether a particular earlier <span class="math" data-tex="\(C_t\)">\(C_t\)</span> was compact. They compute all the displayed hypercohomology groups. Lemma 4.2 gives a natural degreewise isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_t\Gamma(C_t,I|_{C_t})
+ \xrightarrow{\sim}\Gamma(C_\infty,I|_{C_\infty}).
+ \tag{4.3}
+\]">\[
+\operatorname*{colim}_t\Gamma(C_t,I|_{C_t})
+\xrightarrow{\sim}\Gamma(C_\infty,I|_{C_\infty}).
+\tag{4.3}
+\]</span>
+<p>Apply Lemma 1.1 and the normalized acyclic comparisons to get (4.2). The injective-model homotopy, shift and cone argument of Section 3 applies to (4.3) as well, proving all the stated map compatibilities. These complexes can be regarded as modules over <span class="math" data-tex="\(\Gamma(X,\mathcal R)\)">\(\Gamma(X,\mathcal R)\)</span>. More precisely, Lemma 4.2 applied to the ring sheaf gives <span class="math" data-tex="\(\operatorname{colim}_tR_{C_t}\simeq R_{C_\infty}\)">\(\operatorname{colim}_tR_{C_t}\simeq R_{C_\infty}\)</span>; the common-stage multiplication rule equips (4.2) and (4.3) with that full left action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no countability assumption on <span class="math" data-tex="\(T\)">\(T\)</span> and no bound on the cardinality of a closed set. Compactness supplies eventual containment of a whole closed set in a prescribed neighborhood. The hypotheses do not assert an analogous containment for decreasing noncompact sets.</p>
+<h2 id="5-four-exercises-with-complete-solutions">5. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: separate neighborhood radii).</strong> Take <span class="math" data-tex="\(C=\mathbb Z\subset\mathbb R\)">\(C=\mathbb Z\subset\mathbb R\)</span>, an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, and the constant sheaf <span class="math" data-tex="\(A_{\mathbb R}\)">\(A_{\mathbb R}\)</span>. Compute (2.1) in every degree. Show that the neighborhoods</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+ U_{\boldsymbol\varepsilon}=\bigcup_{n\in\mathbb Z}(n-\varepsilon_n,n+\varepsilon_n),
+ \qquad 0&lt;\varepsilon_n&lt;\tfrac13,
+ \tag{5.1}
+\]">\[
+U_{\boldsymbol\varepsilon}=\bigcup_{n\in\mathbb Z}(n-\varepsilon_n,n+\varepsilon_n),
+\qquad 0&lt;\varepsilon_n&lt;\tfrac13,
+\tag{5.1}
+\]</span>
+<p>are cofinal, but the family with a single constant radius is not cofinal.</p>
+<p><strong>Solution.</strong> An arbitrary neighborhood of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> contains an interval of some positive radius about each integer. Shrink those radii below <span class="math" data-tex="\(1/3\)">\(1/3\)</span>; their union in (5.1) is still a neighborhood and is contained in the prescribed one. Thus this family is cofinal. Its intervals are disjoint. Each is contractible, so the interval-homotopy prerequisite gives <span class="math" data-tex="\(H^0=A\)">\(H^0=A\)</span> and <span class="math" data-tex="\(H^{q&gt;0}=0\)">\(H^{q&gt;0}=0\)</span> on each component. An injective section complex on the disjoint union is the product of its component section complexes. Products of abelian groups are exact by coordinatewise lifts with choice, so their cohomology is the product of the component cohomologies. Hence <span class="math" data-tex="\(H^0(U_{\boldsymbol\varepsilon},A)=\prod_{n\in\mathbb Z}A\)">\(H^0(U_{\boldsymbol\varepsilon},A)=\prod_{n\in\mathbb Z}A\)</span> and the positive groups vanish. The restrictions between smaller such neighborhoods identify the same integer coordinates.</p>
+<p>The closed space <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is discrete. Sheaves on it are families of stalk groups, and sections are their product. This product functor is exact, proving <span class="math" data-tex="\(H^0(\mathbb Z,A)=\prod_nA\)">\(H^0(\mathbb Z,A)=\prod_nA\)</span> and all positive groups zero, directly as well. The map (2.1) sends each component value to its germ at that integer and is this product identification.</p>
+<p>For noncofinality of a common radius, use the neighborhood with <span class="math" data-tex="\(\varepsilon_n=1/(10+|n|)\)">\(\varepsilon_n=1/(10+|n|)\)</span>. For any constant radius <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, set <span class="math" data-tex="\(d=\min(\varepsilon/2,1/4)\)">\(d=\min(\varepsilon/2,1/4)\)</span> and choose <span class="math" data-tex="\(n\)">\(n\)</span> so large that <span class="math" data-tex="\(\varepsilon_n&lt;d\)">\(\varepsilon_n&lt;d\)</span>. Then <span class="math" data-tex="\(n+d\)">\(n+d\)</span> is in the constant-radius neighborhood but outside (5.1): it is outside the interval about <span class="math" data-tex="\(n\)">\(n\)</span>, and its distance from every other integer is at least <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. Thus no constant-radius member lies in this neighborhood. The closed set is noncompact, and separate radii are essential. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 (intermediate: the Cantor set).</strong> Let <span class="math" data-tex="\(C_n\subset[0,1]\)">\(C_n\subset[0,1]\)</span> be the union of the <span class="math" data-tex="\(2^n\)">\(2^n\)</span> closed intervals remaining after <span class="math" data-tex="\(n\)">\(n\)</span> middle-third removals, with <span class="math" data-tex="\(C_0=[0,1]\)">\(C_0=[0,1]\)</span>, and let <span class="math" data-tex="\(K=\bigcap_nC_n\)">\(K=\bigcap_nC_n\)</span>. Compute all <span class="math" data-tex="\(H^q(K,A_K)\)">\(H^q(K,A_K)\)</span>, including the actual transition maps. Explain why degree zero is generally smaller than the group of all functions <span class="math" data-tex="\(K\to A\)">\(K\to A\)</span>.</p>
+<p><strong>Solution.</strong> The ambient interval is compact Hausdorff and paracompact, the latter also following from its closed inclusion in the real line. Each <span class="math" data-tex="\(C_n\)">\(C_n\)</span> is a finite disjoint union of contractible closed intervals. Its component sheaf categories and section complexes split as finite products. The interval-homotopy theorem therefore gives <span class="math" data-tex="\(H^0(C_n,A)=A^{2^n}\)">\(H^0(C_n,A)=A^{2^n}\)</span> and zero positive groups. Restriction to <span class="math" data-tex="\(C_{n+1}\)">\(C_{n+1}\)</span> sends the value on a parent interval to that same value on each of its two children. Theorem 4.3 yields</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+ H^0(K,A_K)\simeq\operatorname*{colim}_n A^{2^n},
+ \quad (a_w)_{|w|=n}\longmapsto(a_w,a_w)_{|w|=n},
+ \qquad H^{q&gt;0}(K,A_K)=0.
+ \tag{5.2}
+\]">\[
+H^0(K,A_K)\simeq\operatorname*{colim}_n A^{2^n},
+\quad (a_w)_{|w|=n}\longmapsto(a_w,a_w)_{|w|=n},
+\qquad H^{q&gt;0}(K,A_K)=0.
+\tag{5.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(w\)">\(w\)</span> records the successive left or right choices. To identify the first group concretely, the intersections of <span class="math" data-tex="\(K\)">\(K\)</span> with the level-<span class="math" data-tex="\(n\)">\(n\)</span> intervals are clopen in <span class="math" data-tex="\(K\)">\(K\)</span>: the finitely many complementary level-<span class="math" data-tex="\(n\)">\(n\)</span> pieces are closed. These cylinders have diameter <span class="math" data-tex="\(3^{-n}\)">\(3^{-n}\)</span> and form a neighborhood basis. Indeed, a sufficiently small cylinder containing a point lies inside any prescribed relative open neighborhood of that point. A locally constant map <span class="math" data-tex="\(K\to A\)">\(K\to A\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> discrete, is constant on a cylinder around every point. Compactness of <span class="math" data-tex="\(K\)">\(K\)</span> gives finitely many such cylinders covering it. Refine to the largest of their levels; the function is constant on each cylinder at that level. Conversely every level assignment gives a locally constant function. These are exactly the representatives and identifications in (5.2).</p>
+<p>If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, choose <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> and a point <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>. Every cylinder containing <span class="math" data-tex="\(x\)">\(x\)</span> has another point: continue its left/right choices in two different ways, whose nested intervals of lengths tending to zero determine distinct points. Thus the function taking value <span class="math" data-tex="\(a\)">\(a\)</span> just at <span class="math" data-tex="\(x\)">\(x\)</span> and zero elsewhere is not locally constant. It is an element of the product <span class="math" data-tex="\(\prod_{x\in K}A\)">\(\prod_{x\in K}A\)</span>, but not of the group in (5.2). The cohomology comparison retains local constancy. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 (intermediate: restriction and support give different degrees).</strong> Let <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be an abelian group. Compute the neighborhood-cohomology colimit for <span class="math" data-tex="\(A_X\)">\(A_X\)</span>. Compare it with the right derived groups of supported sections</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+ \Gamma_C(X,\mathcal F)=\ker\bigl(\Gamma(X,\mathcal F)
+       \longrightarrow\Gamma(X\setminus C,\mathcal F)\bigr).
+ \tag{5.3}
+\]">\[
+\Gamma_C(X,\mathcal F)=\ker\bigl(\Gamma(X,\mathcal F)
+\longrightarrow\Gamma(X\setminus C,\mathcal F)\bigr).
+\tag{5.3}
+\]</span>
+<p><strong>Solution.</strong> Theorem 2.1 identifies the neighborhood colimit with <span class="math" data-tex="\(H^q(\{0\},A)=A\)">\(H^q(\{0\},A)=A\)</span> in degree zero and zero otherwise. It uses closed inverse image, which retains the stalk at zero.</p>
+<p>For support, take an injective resolution <span class="math" data-tex="\(A_X\to I\)">\(A_X\to I\)</span>. Injective sheaves are flabby, so in every degree restriction from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(X\setminus C\)">\(X\setminus C\)</span> is onto. Thus there is a short exact row of complexes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+ 0\longrightarrow\Gamma_C(X,I)
+ \longrightarrow\Gamma(X,I)
+ \longrightarrow\Gamma(X\setminus C,I)\longrightarrow0.
+ \tag{5.4}
+\]">\[
+0\longrightarrow\Gamma_C(X,I)
+\longrightarrow\Gamma(X,I)
+\longrightarrow\Gamma(X\setminus C,I)\longrightarrow0.
+\tag{5.4}
+\]</span>
+<p>By definition the first complex computes <span class="math" data-tex="\(R\Gamma_C\)">\(R\Gamma_C\)</span>; open restriction preserves injectives, so the others compute the indicated ordinary cohomology. The real line is contractible, and its punctured complement is two disjoint contractible half-lines. The homotopy theorem and the finite-product calculation give <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(A\oplus A\)">\(A\oplus A\)</span> in degree zero, respectively, and zero positive groups. Their restriction map is the diagonal <span class="math" data-tex="\(a\mapsto(a,a)\)">\(a\mapsto(a,a)\)</span>. The exact cohomology sequence of (5.4) therefore gives <span class="math" data-tex="\(H_C^0(X,A_X)=0\)">\(H_C^0(X,A_X)=0\)</span>, <span class="math" data-tex="\(H_C^1(X,A_X)\simeq(A\oplus A)/\Delta A\simeq A\)">\(H_C^1(X,A_X)\simeq(A\oplus A)/\Delta A\simeq A\)</span>, and zero in every degree <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>. An explicit quotient isomorphism is <span class="math" data-tex="\([(u,v)]\mapsto v-u\)">\([(u,v)]\mapsto v-u\)</span>; its kernel is exactly the diagonal and it is onto. With this isomorphism the connecting map sends a pair of half-line values to their right-minus-left difference. This computes the actual boundary normalization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 (advanced: two hypotheses that prevent escape).</strong> Give a decreasing noncompact closed family for which (4.2) fails. Then let <span class="math" data-tex="\(Y=\{a,b,c\}\)">\(Y=\{a,b,c\}\)</span> have the upper-set topology for <span class="math" data-tex="\(a&lt;c\)">\(a&lt;c\)</span>, <span class="math" data-tex="\(b&lt;c\)">\(b&lt;c\)</span>, and let <span class="math" data-tex="\(D=\{a,b\}\)">\(D=\{a,b\}\)</span>. For a nonzero abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, compute the degree-zero neighborhood comparison for the constant sheaf <span class="math" data-tex="\(A_Y\)">\(A_Y\)</span>. Explain the topological hypotheses that fail in these examples.</p>
+<p><strong>Solution.</strong> In <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, take <span class="math" data-tex="\(C_n=[n,\infty)\)">\(C_n=[n,\infty)\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. These are decreasing noncompact closed sets with empty intersection. Each is contractible, so its zeroth constant-sheaf cohomology is <span class="math" data-tex="\(A\)">\(A\)</span>, and restriction to a later tail is the identity under the constant-value identification. The colimit is therefore <span class="math" data-tex="\(A\)">\(A\)</span>, whereas the cohomology of the empty intersection is zero. No stage is compact. The sets keep escaping toward infinity instead of entering the empty neighborhood of their intersection.</p>
+<p>For <span class="math" data-tex="\(Y\)">\(Y\)</span>, the complement <span class="math" data-tex="\(\{c\}\)">\(\{c\}\)</span> is open, so <span class="math" data-tex="\(D\)">\(D\)</span> is closed. Every open containing <span class="math" data-tex="\(a\)">\(a\)</span> contains <span class="math" data-tex="\(c\)">\(c\)</span>, and the same is true for <span class="math" data-tex="\(b\)">\(b\)</span>. Therefore the only open neighborhood of all of <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(Y\)">\(Y\)</span>. The finite-poset sheaf description identifies <span class="math" data-tex="\(A_Y\)">\(A_Y\)</span> with the diagram <span class="math" data-tex="\(A\xrightarrow{1}A\xleftarrow{1}A\)">\(A\xrightarrow{1}A\xleftarrow{1}A\)</span>, whose entries are at <span class="math" data-tex="\(a,c,b\)">\(a,c,b\)</span>. Its global sections are triples with the two endpoint values both equal to the value at <span class="math" data-tex="\(c\)">\(c\)</span>, hence form one copy of <span class="math" data-tex="\(A\)">\(A\)</span>. The subspace <span class="math" data-tex="\(D\)">\(D\)</span> is discrete: intersect <span class="math" data-tex="\(\{a,c\}\)">\(\{a,c\}\)</span> or <span class="math" data-tex="\(\{b,c\}\)">\(\{b,c\}\)</span> with it. Its restricted sheaf has global sections <span class="math" data-tex="\(A\oplus A\)">\(A\oplus A\)</span>. The neighborhood comparison is thus the diagonal</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_{U\supseteq D}\Gamma(U,A_Y)=A
+ \longrightarrow\Gamma(D,A_D)=A\oplus A,
+ \qquad a\longmapsto(a,a),
+ \tag{5.5}
+\]">\[
+\operatorname*{colim}_{U\supseteq D}\Gamma(U,A_Y)=A
+\longrightarrow\Gamma(D,A_D)=A\oplus A,
+\qquad a\longmapsto(a,a),
+\tag{5.5}
+\]</span>
+<p>which is not onto when <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. This finite space is paracompact: every open cover has a finite subcover, and a finite family is locally finite. It is not Hausdorff, since any neighborhoods of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> meet at <span class="math" data-tex="\(c\)">\(c\)</span>. Thus closedness and paracompactness alone do not supply the degree-zero comparison used throughout the lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>[S] The Stacks Project Authors, <a href="https://stacks.math.columbia.edu/tag/09V0"><em>Cohomology on Hausdorff quasi-compact spaces</em>, Lemma 20.16.3</a>. This gives the compact-subset neighborhood-cohomology theorem with its ambient separation condition. The arguments above use the linked soft-sheaf results for general closed subsets of paracompact Hausdorff spaces.</li>
+<li>[D] Jean-Pierre Demailly, <a href="https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf"><em>Complex Analytic and Differential Geometry</em></a>, Chapter IV, Section 4.B, for soft sheaves and their acyclicity. Freely accessible author-hosted text.</li>
+</ul>
+</main></body></html>

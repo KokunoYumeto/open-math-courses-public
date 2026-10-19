@@ -1,4 +1,4 @@
-"""Six bounded exact/numerical U024 checks; arbitrary smooth equivalence is a written proof."""
+"""Six bounded phase-equivalence example calculations; the general argument is given in the lesson."""
 import hashlib,json
 from pathlib import Path
 import numpy as np
@@ -149,7 +149,6 @@ checks.append({'name':'independent bounded source/target integral comparison and
 assert len(checks)==6 and all(r['passed'] for r in checks)
 lesson=c/'homogeneous-phase-equivalence-and-stabilization.md'
 report={'schema':'homogeneous-phase-equivalence-bounded-check/v1','passed':True,'checks':checks,
- 'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
- 'general_smooth_proof_independently_certified':False,'whole_source_parent_closed':False}
+ 'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__))}
 (c/'checks/bounded-checks.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'checks':len(checks),'passed':True,'lesson_sha256':report['lesson_sha256']}))

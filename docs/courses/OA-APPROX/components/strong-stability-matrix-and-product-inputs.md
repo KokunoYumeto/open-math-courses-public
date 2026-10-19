@@ -1,6 +1,6 @@
 # Exact matrix averages and complete tracial product inputs
 
-*Original programme exposition: CC0-1.0 to the extent of rights held.*
+*Programme exposition: CC0-1.0 to the extent of rights held. Human-source terms remain separate.*
 
 The [tensor-absorption lesson](../src/strong-stability-and-tensor-absorption.md) needs a finite matrix average, two kinds of normal limit map, and the entire tracial product for varying matrix sizes. These constructions retain arbitrary centers; a factor assumption will be used only where it is explicitly specified.
 
@@ -61,26 +61,37 @@ This includes \(p=1\), where the map is the identity. No existence or integratio
 
 The finite multiplier formula proves normality and complete positivity at every matrix level. It is unital, has range \(B\), fixes \(B\), and is a \(B\)-bimodule map. It is faithful: for \(x\geq0\), vanishing of the sum in SS0.4 makes every positive summand zero. In particular \(e_{ii}xe_{ii}=0\), so \(x^{1/2}e_{ii}=0\) for every \(i\); their sum gives \(x=0\). NT1's unital positive-map bound gives norm contraction. A faithful normal tracial state, when given, is preserved by the finite formula, and its Schwarz inequality gives trace \(2\)-norm contraction.
 
-For a unitary \(u=\sum_{i,j}\lambda_{ij}e_{ij}\), the scalar matrix identity \(u^*u=1_p\) gives \(\sum_{i,j}|\lambda_{ij}|^2=p\). The finite scalar Schwarz inequality yields, for every normal functional \(\psi\),
+The numerical bounds follow from the finite matrix-unit formula itself. With the normal-functional convention \([e,\psi](z)=\psi(ze)-\psi(ez)\), expansion gives
 \[
-\|[u,\psi]\|
-\leq\sqrt p\left(\sum_{i,j}\|[e_{ij},\psi]\|^2\right)^{1/2}
-\leq p^{3/2}\max_{i,j}\|[e_{ij},\psi]\|.
+\begin{aligned}
+\frac1p\sum_{i,j}[e_{ij},\psi](xe_{ji})
+&=\frac1p\sum_{i,j}\bigl(\psi(xe_{jj})-\psi(e_{ij}xe_{ji})\bigr)\\
+&=\psi(x)-\psi(E_D(x)),\\
+\frac1p\sum_{i,j}[x,e_{ij}]e_{ji}
+&=\frac1p\sum_{i,j}\bigl(xe_{ii}-e_{ij}xe_{ji}\bigr)\\
+&=x-E_D(x).
+\end{aligned}
 \tag{SS0.6}
 \]
-The same estimate holds in trace \(2\)-norm for operator commutators. Also
+These identities hold for every \(x\in M\); its entries need not commute with one another. Since \(\|xe_{ji}\|\leq\|x\|\), taking the supremum over the operator unit ball gives
 \[
-(\psi-\psi\circ\operatorname{Ad}u)(x)
-=[u,\psi](xu^*),
+\|\psi-\psi E_D\|\leq p\max_{i,j}\|[e_{ij},\psi]\|.
 \]
-so its functional norm equals \(\|[u,\psi]\|\), since fixed multiplication by a unitary is an isometry onto the unit ball. Apply the triangle inequality to the exact finite average SS0.5. This proves the full bounds
+For a faithful normal tracial state, the trace law and positive order prove the right-multiplier estimate
 \[
-\|\psi-\psi E_D\|\leq p^{3/2}\max_{i,j}\|[e_{ij},\psi]\|,
-\qquad
-\|x-E_D(x)\|_2\leq p^{3/2}\max_{i,j}\|[e_{ij},x]\|_2.
+\|yv\|_2^2=\tau(y^*yvv^*)
+=\tau\!\left((y^*y)^{1/2}vv^*(y^*y)^{1/2}\right)
+\leq\|v\|^2\tau(y^*y).
+\]
+Apply it to \(v=e_{ji}\), then use the second identity and the triangle inequality. Thus both complete bounds are
+\[
+\begin{aligned}
+\|\psi-\psi E_D\|&\leq p\max_{i,j}\|[e_{ij},\psi]\|,\\
+\|x-E_D(x)\|_2&\leq p\max_{i,j}\|[e_{ij},x]\|_2.
+\end{aligned}
 \tag{SS0.7}
 \]
-For the second assertion right multiplication by \(u^*\) preserves the trace norm. All unitary coefficient, finite averaging and contraction steps are supplied here.
+They imply the \(p^{3/2}\) bounds in the lesson because \(p\leq p^{3/2}\). The coefficient calculation in Exercise 2 gives that stated factor as well. All assertions apply to every positive finite matrix size, including \(p=1\), when the two defects are zero.
 
 <a id="ss1-trace-domination-normality-and-complete-balls"></a>
 

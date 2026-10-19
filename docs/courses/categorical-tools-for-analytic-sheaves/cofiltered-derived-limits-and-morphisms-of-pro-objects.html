@@ -1,0 +1,286 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cofiltered derived limits and morphisms of pro-objects</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="cofiltered-derived-limits-and-morphisms-of-pro-objects">Cofiltered derived limits and morphisms of pro-objects</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Public domain (CC0).</em></p>
+<p>An inverse system has two interpretations. It is a diagram on a specified category, and it presents an object of a Pro-category. These interpretations have different morphisms: a Pro morphism can change the index and need not be a transformation on the original diagrams. We prove that their derived limits agree, including the maps obtained from every Pro morphism. We then compute extensions into constant Pro objects and give four examples that distinguish level maps, formal products and ordinary limits.</p>
+<p>Fix universes and choice. Throughout, <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is a locally small abelian category with enough injectives and exact small products. Every indexing category is small; a cofiltered category is nonempty. Products and their equalizers give all small ordinary limits. Write <span class="math" data-tex="\(c:\mathcal A\to\operatorname{Pro}(\mathcal A)\)">\(c:\mathcal A\to\operatorname{Pro}(\mathcal A)\)</span> for the constant embedding, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> for its right adjoint, and <span class="math" data-tex="\(P_I:\mathcal A^I\to\operatorname{Pro}(\mathcal A)\)">\(P_I:\mathcal A^I\to\operatorname{Pro}(\mathcal A)\)</span> for formal realization when <span class="math" data-tex="\(I\)">\(I\)</span> is cofiltered. No essential-smallness assumption on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is made.</p>
+<p>We use <a href="finite-diagrams-and-comma-objects.html#2-8-reverse-the-construction-for-pro-objects">Finite diagrams and comma objects, Theorems 1.1 and 2.1 and Section 2.8</a>: finite acyclic shapes have common level models with cofinal projections, and the comparison for every finite shape is fully faithful. <a href="ind-abelian-categories-and-controlled-exact-sequences.html#4-a-constant-kernel-inside-a-growing-exact-row">Two cokernels, controlled rows and abelian completion, Theorems 2.2, 3.2 and 4.1</a>, applied to the opposite category, supplies abelian Pro-categories and level models of exact rows. <a href="formal-pro-products-and-derived-limit-classes.html#1-formal-products-and-their-finite-support-maps">Formal Pro products and classes that compute derived limits, Sections 1–4</a> supplies formal products, constant injectives, enough Pro injectives and <span class="math" data-tex="\(R\pi\)">\(R\pi\)</span> on the full bounded-below derived category.</p>
+<p>The other main input is <span class="unlinked">Derived limits on small categories and cofinal restriction, Sections 1–6</span>. We retain its covariant convention, its Roos complex <span class="math" data-tex="\(C_I^\bullet(F)\)">\(C_I^\bullet(F)\)</span>, its restriction map <span class="math" data-tex="\(\rho_u\)">\(\rho_u\)</span>, and its actual prism homotopies. <a href="universal-cohomology-and-acyclic-resolutions.html#2-effacement-gives-the-complete-universal-property">Universal cohomology and acyclic resolutions, Sections 2, 4 and 5</a> gives uniqueness of effaceable delta-functors and normalized bounded-below acyclic computation. The extension calculation also uses exact filtered colimits of abelian groups from <span class="unlinked">Hom, tensor and the exactness of module limits, Section 4</span>.</p>
+<p>Basic references are Prosmans's <a href="https://popups.uliege.be/0037-9565/index.php?id=2128">Derived Limits in Quasi-Abelian Categories</a>, especially its Pro-category construction, Schapira's <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf">An Introduction to Categories and Homological Algebra</a>, and The Stacks Project's <a href="https://stacks.math.columbia.edu/tag/07KV">Rlim of abelian groups</a>. Our proofs below use the linked course results. All complexes used to construct the comparison are bounded below; there is no assertion that an arbitrary unbounded complex has one common level presentation.</p>
+<h2 id="1-cofinal-restriction-and-finite-level-models">1. Cofinal restriction and finite level models</h2>
+<p>For a cofiltered <span class="math" data-tex="\(I\)">\(I\)</span>, formal realization is exact. Indeed a transformation has its kernel and cokernel computed objectwise in <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span>. The common-index kernel and cokernel theorem identifies their formal realizations with the kernel and cokernel of the realized Pro arrow. The ordinary limit universal property gives the normalized equality</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+ \pi P_I F=\Gamma_I F,\qquad
+ \Gamma_I F=\lim_{i\in I}F(i).
+ \tag{1.1}
+\]">\[
+\pi P_I F=\Gamma_I F,\qquad
+\Gamma_I F=\lim_{i\in I}F(i).
+\tag{1.1}
+\]</span>
+<p>Here and below equalities of these functors mean their specified cone identifications. They commute with every transformation of diagrams. Exactness does not imply that <span class="math" data-tex="\(P_I\)">\(P_I\)</span> preserves arbitrary products or injective objects.</p>
+<p>Call <span class="math" data-tex="\(u:J\to I\)">\(u:J\to I\)</span> cofinal for inverse systems when every <span class="math" data-tex="\((u\downarrow i)\)">\((u\downarrow i)\)</span> is nonempty and connected. The arrows in this comma category are arrows <span class="math" data-tex="\(b:j\to j&#x27;\)">\(b:j\to j&#x27;\)</span> such that <span class="math" data-tex="\(a=a&#x27;u(b)\)">\(a=a&#x27;u(b)\)</span>, for objects <span class="math" data-tex="\((j,a:u(j)\to i)\)">\((j,a:u(j)\to i)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(J\)">\(J\)</span> is cofiltered and <span class="math" data-tex="\(u\)">\(u\)</span> is cofinal in this sense, then every <span class="math" data-tex="\((u\downarrow i)\)">\((u\downarrow i)\)</span> is cofiltered. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+ \rho_u:C_I^\bullet(F)\longrightarrow C_J^\bullet(u^*F)
+ \tag{1.2}
+\]">\[
+\rho_u:C_I^\bullet(F)\longrightarrow C_J^\bullet(u^*F)
+\tag{1.2}
+\]</span>
+<p>is a quasi-isomorphism, and the corresponding restriction is invertible on full bounded-below derived limits.</p>
+<p><strong>Proof.</strong> Connect two comma objects by a finite zigzag. Cofilteredness of <span class="math" data-tex="\(J\)">\(J\)</span> supplies an incoming cone to the finite diagram of all the underlying objects and arrows of that zigzag. Composing its cone arrows with the arrows to <span class="math" data-tex="\(i\)">\(i\)</span> gives equal arrows to <span class="math" data-tex="\(i\)">\(i\)</span>, successively along the zigzag. Thus the cone vertex, with that common composite, is a comma object mapping to both given objects. For parallel comma arrows, equalize their underlying arrows in <span class="math" data-tex="\(J\)">\(J\)</span>; composing the resulting arrow to either source with its arrow to <span class="math" data-tex="\(i\)">\(i\)</span> makes it a comma morphism. This proves the cofiltered axioms. The acyclic-comma theorem in the small-category lesson applies, because its proof contracts every finite-support integral cycle by an incoming cone. It gives (1.2), and the same theorem gives its bounded-below total comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also use the following concrete form of finite strictification. Given finitely many Pro objects in an arrow, a composable pair, a parallel pair, or a commuting square, choose their stated presentations. The finite acyclic shape theorem supplies a common cofiltered <span class="math" data-tex="\(K\)">\(K\)</span>, cofinal projections to these presentations and actual natural stage maps satisfying all the shape equations. For a finite shape, full faithfulness also compares any two such presentations by the unique formal transformation that induces a specified transformation of the realized diagrams. One may then strictify that transformation as an arrow in the coefficient category of diagrams. Only finite acyclic shapes are used for essential surjectivity; no cyclic strictification claim is needed.</p>
+<h2 id="2-why-a-model-of-the-identity-gives-the-identity">2. Why a model of the identity gives the identity</h2>
+<p>This is the point at which equality of formal morphisms must be converted into equality of derived maps. Let <span class="math" data-tex="\(X:I\to\mathcal A\)">\(X:I\to\mathcal A\)</span>, let <span class="math" data-tex="\(K\)">\(K\)</span> be cofiltered, and let <span class="math" data-tex="\(r,s:K\to I\)">\(r,s:K\to I\)</span> be cofinal. Suppose a transformation</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+ a:Xr\longrightarrow Xs
+ \tag{2.1}
+\]">\[
+a:Xr\longrightarrow Xs
+\tag{2.1}
+\]</span>
+<p>represents the identity of <span class="math" data-tex="\(P_I X\)">\(P_I X\)</span>, using the canonical cofinal identifications.</p>
+<p>Define <span class="math" data-tex="\(W\)">\(W\)</span> to have objects <span class="math" data-tex="\((k,i,\alpha,\beta)\)">\((k,i,\alpha,\beta)\)</span>, where <span class="math" data-tex="\(\alpha:i\to r(k)\)">\(\alpha:i\to r(k)\)</span>, <span class="math" data-tex="\(\beta:i\to s(k)\)">\(\beta:i\to s(k)\)</span>, and</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+ a_kX(\alpha)=X(\beta).
+ \tag{2.2}
+\]">\[
+a_kX(\alpha)=X(\beta).
+\tag{2.2}
+\]</span>
+<p>A morphism to <span class="math" data-tex="\((k&#x27;,i&#x27;,\alpha&#x27;,\beta&#x27;)\)">\((k&#x27;,i&#x27;,\alpha&#x27;,\beta&#x27;)\)</span> is a pair <span class="math" data-tex="\((t:k\to k&#x27;,h:i\to i&#x27;)\)">\((t:k\to k&#x27;,h:i\to i&#x27;)\)</span> with <span class="math" data-tex="\(r(t)\alpha=\alpha&#x27;h\)">\(r(t)\alpha=\alpha&#x27;h\)</span> and <span class="math" data-tex="\(s(t)\beta=\beta&#x27;h\)">\(s(t)\beta=\beta&#x27;h\)</span>. Composition is componentwise. Local smallness and the smallness of <span class="math" data-tex="\(I,K\)">\(I,K\)</span> make <span class="math" data-tex="\(W\)">\(W\)</span> small.</p>
+<p><strong>Lemma 2.1 (finite witnesses).</strong> Given <span class="math" data-tex="\(k\)">\(k\)</span>, any incoming finite index diagram containing <span class="math" data-tex="\(r(k),s(k)\)">\(r(k),s(k)\)</span> can be refined so that (2.2) holds. More generally the refinement can preserve any finite list of already prescribed index-arrow equations.</p>
+<p><strong>Proof.</strong> Choose an incoming cone in <span class="math" data-tex="\(I\)">\(I\)</span>, with vertex <span class="math" data-tex="\(i_0\)">\(i_0\)</span>, on that finite index diagram. The equality saying that (2.1) represents the identity, projected to <span class="math" data-tex="\(cX(s(k))\)">\(cX(s(k))\)</span>, is an equality in</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_{i\in I^{\mathrm{op}}}
+ \operatorname{Hom}_{\mathcal A}(X(i),X(s(k))).
+ \tag{2.3}
+\]">\[
+\operatorname*{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{\mathcal A}(X(i),X(s(k))).
+\tag{2.3}
+\]</span>
+<p>At the chosen cone, its two representatives are <span class="math" data-tex="\(a_kX(i_0\to r(k))\)">\(a_kX(i_0\to r(k))\)</span> and <span class="math" data-tex="\(X(i_0\to s(k))\)">\(X(i_0\to s(k))\)</span>. Eventual equality in a filtered colimit gives a further arrow <span class="math" data-tex="\(i\to i_0\)">\(i\to i_0\)</span> on which they agree. Precomposing every cone component with this arrow preserves all the installed index equations. Finitely many coefficient equations can be imposed successively, or by one further incoming cone on their witnesses. No equality of coefficient maps is used to infer equality of index arrows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2.</strong> The category <span class="math" data-tex="\(W\)">\(W\)</span> is cofiltered and its projection <span class="math" data-tex="\(t:W\to K\)">\(t:W\to K\)</span> is cofinal.</p>
+<p><strong>Proof.</strong> A witness exists over each <span class="math" data-tex="\(k\)">\(k\)</span> by Lemma 2.1. To cone finitely many objects of <span class="math" data-tex="\(W\)">\(W\)</span>, first choose an incoming cone <span class="math" data-tex="\(k\to k_h\)">\(k\to k_h\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. In <span class="math" data-tex="\(I\)">\(I\)</span>, take an incoming cone on the finite graph containing <span class="math" data-tex="\(r(k),s(k)\)">\(r(k),s(k)\)</span>, all old witness indices <span class="math" data-tex="\(i_h\)">\(i_h\)</span>, their arrows to <span class="math" data-tex="\(r(k_h),s(k_h)\)">\(r(k_h),s(k_h)\)</span>, and the images of <span class="math" data-tex="\(k\to k_h\)">\(k\to k_h\)</span>. This installs exactly the index equations required for morphisms to those witnesses. Lemma 2.1 then installs (2.2) over <span class="math" data-tex="\(k\)">\(k\)</span> without disturbing them. The result is a witness mapping to all the old objects. For two parallel morphisms in <span class="math" data-tex="\(W\)">\(W\)</span>, first equalize their <span class="math" data-tex="\(K\)">\(K\)</span> components, and then form an incoming cone on the finite index graph including their <span class="math" data-tex="\(I\)">\(I\)</span> components. It equalizes those components as well; a further use of Lemma 2.1 preserves all these equations. Hence <span class="math" data-tex="\(W\)">\(W\)</span> is cofiltered.</p>
+<p>For a fixed <span class="math" data-tex="\(k_0\)">\(k_0\)</span>, the comma <span class="math" data-tex="\((t\downarrow k_0)\)">\((t\downarrow k_0)\)</span> is nonempty by a witness over <span class="math" data-tex="\(k_0\)">\(k_0\)</span>. Given finitely many of its objects and arrows, make the preceding construction with the specified arrows <span class="math" data-tex="\(k_h\to k_0\)">\(k_h\to k_0\)</span> included in the finite diagram in <span class="math" data-tex="\(K\)">\(K\)</span>. The resulting cone has a single arrow <span class="math" data-tex="\(k\to k_0\)">\(k\to k_0\)</span> and the required commuting equations. Parallel arrows are equalized by the same construction. Thus this comma is cofiltered, proving cofinality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(v:W\to I\)">\(v:W\to I\)</span> select the witness index. Its arrows <span class="math" data-tex="\(\alpha:v\Rightarrow rt\)">\(\alpha:v\Rightarrow rt\)</span>, <span class="math" data-tex="\(\beta:v\Rightarrow st\)">\(\beta:v\Rightarrow st\)</span> are natural, and (2.2) says <span class="math" data-tex="\(X\beta=(at)X\alpha\)">\(X\beta=(at)X\alpha\)</span>. The prism formula from the small-category lesson gives equalities in <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+ \rho_{rt}=C_W(X\alpha)\rho_v,\qquad
+ \rho_{st}=C_W(X\beta)\rho_v
+           =C_W(at)\rho_{rt}.
+ \tag{2.4}
+\]">\[
+\rho_{rt}=C_W(X\alpha)\rho_v,\qquad
+\rho_{st}=C_W(X\beta)\rho_v
+=C_W(at)\rho_{rt}.
+\tag{2.4}
+\]</span>
+<p>Naturality of restriction in coefficients and its strict composition law rewrite the last equality as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+ \rho_t^{Xs}\rho_s
+ =\rho_t^{Xs}C_K(a)\rho_r.
+ \tag{2.5}
+\]">\[
+\rho_t^{Xs}\rho_s
+=\rho_t^{Xs}C_K(a)\rho_r.
+\tag{2.5}
+\]</span>
+<p>All <span class="math" data-tex="\(\rho_t,\rho_r,\rho_s\)">\(\rho_t,\rho_r,\rho_s\)</span> here are invertible by Lemmas 1.1 and 2.2. Cancellation proves</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+ \rho_s^{-1}C_K(a)\rho_r=1_{C_I(X)}.
+ \tag{2.6}
+\]">\[
+\rho_s^{-1}C_K(a)\rho_r=1_{C_I(X)}.
+\tag{2.6}
+\]</span>
+<p>We did not need to assert cofinality of <span class="math" data-tex="\(v\)">\(v\)</span>. The two prism equalities use it only as a functor.</p>
+<h2 id="3-every-pro-morphism-acts-on-the-complex">3. Every Pro morphism acts on the complex</h2>
+<p>For a presented Pro object <span class="math" data-tex="\(\mathbf X=P_I X\)">\(\mathbf X=P_I X\)</span>, put <span class="math" data-tex="\(L(\mathbf X)=C_I^\bullet(X)\)">\(L(\mathbf X)=C_I^\bullet(X)\)</span>. For a Pro morphism <span class="math" data-tex="\(f:P_I X\to P_JY\)">\(f:P_I X\to P_JY\)</span>, take a common model <span class="math" data-tex="\(r:K\to I\)">\(r:K\to I\)</span>, <span class="math" data-tex="\(s:K\to J\)">\(s:K\to J\)</span>, <span class="math" data-tex="\(a:Xr\to Ys\)">\(a:Xr\to Ys\)</span> and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+ L(f)=\rho_s^{-1}C_K(a)\rho_r.
+ \tag{3.1}
+\]">\[
+L(f)=\rho_s^{-1}C_K(a)\rho_r.
+\tag{3.1}
+\]</span>
+<p><strong>Proposition 3.1.</strong> Formula (3.1) is independent of the common model. It defines an additive functor from <span class="math" data-tex="\(\operatorname{Pro}(\mathcal A)\)">\(\operatorname{Pro}(\mathcal A)\)</span> to <span class="math" data-tex="\(D^+(\mathcal A)\)">\(D^+(\mathcal A)\)</span>, with its canonical comparisons between different presentations and with <span class="math" data-tex="\(H^0L=\pi\)">\(H^0L=\pi\)</span>.</p>
+<p><strong>Proof.</strong> Take two common models of <span class="math" data-tex="\(f\)">\(f\)</span>. They are Pro objects in the category of arrows of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Full faithfulness of the finite-arrow comparison lifts the identity commuting square on <span class="math" data-tex="\(f\)">\(f\)</span> to the unique isomorphism between these formal arrow objects. Strictify this isomorphism as a single arrow in the coefficient category <span class="math" data-tex="\(\operatorname{Arr}(\mathcal A)\)">\(\operatorname{Arr}(\mathcal A)\)</span>. Its level maps are commuting squares, and its two vertex maps represent identities of the original source and target Pro objects. Equation (2.6) makes their induced maps identities under the canonical source and target comparisons. Applying <span class="math" data-tex="\(C\)">\(C\)</span> to the commuting squares therefore identifies the two expressions (3.1). This also proves coherence when the stated presentation itself is changed.</p>
+<p>For composable <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, strictify the finite shape <span class="math" data-tex="\(0\to1\to2\)">\(0\to1\to2\)</span>, including its composite. It supplies actual stage maps <span class="math" data-tex="\(a,b,ba\)">\(a,b,ba\)</span> and one cofinal projection at each vertex. In (3.1) the two middle inverse comparisons cancel, leaving <span class="math" data-tex="\(C(ba)=C(b)C(a)\)">\(C(ba)=C(b)C(a)\)</span>. Equation (2.6) gives the identity law. For parallel <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, strictify their parallel-pair shape; at every stage the map representing <span class="math" data-tex="\(f+g\)">\(f+g\)</span> is <span class="math" data-tex="\(a+b\)">\(a+b\)</span>. The product cochain functors and their differentials are additive, so <span class="math" data-tex="\(C(a+b)=C(a)+C(b)\)">\(C(a+b)=C(a)+C(b)\)</span>, proving additivity. In degree zero, <span class="math" data-tex="\(H^0C_I(X)=\Gamma_I X\)">\(H^0C_I(X)=\Gamma_I X\)</span>, and all restrictions and level maps have their ordinary cone maps. Thus the normalization (1.1) identifies <span class="math" data-tex="\(H^0L(f)\)">\(H^0L(f)\)</span> with <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction is on actual formal morphisms. Choosing separate isomorphisms only for the higher-limit groups of individual presentations would not establish this proposition.</p>
+<h2 id="4-exact-rows-and-their-connecting-maps">4. Exact rows and their connecting maps</h2>
+<p>Let <span class="math" data-tex="\(T^q(\mathbf X)=H^qL(\mathbf X)\)">\(T^q(\mathbf X)=H^qL(\mathbf X)\)</span> for <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>. Every short exact Pro row has a common cofiltered presentation by actual short exact rows in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, by the dual exact-row theorem in the prerequisites. Exact products make</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ 0\longrightarrow C_K(X&#x27;)\longrightarrow C_K(X)
+   \longrightarrow C_K(X&#x27;&#x27;)\longrightarrow0
+ \tag{4.1}
+\]">\[
+0\longrightarrow C_K(X&#x27;)\longrightarrow C_K(X)
+\longrightarrow C_K(X&#x27;&#x27;)\longrightarrow0
+\tag{4.1}
+\]</span>
+<p>termwise exact. Give its cohomology the connecting maps of its exact-sequence triangle, with the course's fixed cone convention.</p>
+<p><strong>Proposition 4.1.</strong> These maps are independent of the exact-row presentation and natural for every morphism of short exact Pro rows. Together they make <span class="math" data-tex="\(T^\bullet\)">\(T^\bullet\)</span> a cohomological delta-functor with <span class="math" data-tex="\(T^0=\pi\)">\(T^0=\pi\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the full subcategory of <span class="math" data-tex="\(\mathcal A^{[2]}\)">\(\mathcal A^{[2]}\)</span> whose objects are short exact rows, writing the two maps and their composite zero as the diagram on <span class="math" data-tex="\(0\to1\to2\)">\(0\to1\to2\)</span>. It is locally small. Choose exact-row presentations of two Pro rows. Full faithfulness of
+<span class="math" data-tex="\(\operatorname{Pro}(\mathcal A^{[2]})\to\operatorname{Pro}(\mathcal A)^{[2]}\)">\(\operatorname{Pro}(\mathcal A^{[2]})\to\operatorname{Pro}(\mathcal A)^{[2]}\)</span>
+lifts a morphism of the Pro rows to a formal morphism of their presented diagrams. Since <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is full, the Hom limit–colimit formula shows that <span class="math" data-tex="\(\operatorname{Pro}(\mathcal E)\to\operatorname{Pro}(\mathcal A^{[2]})\)">\(\operatorname{Pro}(\mathcal E)\to\operatorname{Pro}(\mathcal A^{[2]})\)</span> is fully faithful as well. Thus the lift is a morphism in <span class="math" data-tex="\(\operatorname{Pro}(\mathcal E)\)">\(\operatorname{Pro}(\mathcal E)\)</span>.</p>
+<p>Strictify that one arrow in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. Its stage squares are genuine maps of short exact rows, with cofinal projections to the selected exact-row indices. Their cochain maps are maps of (4.1). Naturality of the exact-sequence triangle makes every connecting square commute. Formula (3.1) identifies their vertex maps with the prescribed Pro maps. Apply this also to the identity map between two presentations of one exact row; Proposition 3.1 identifies the vertex comparisons with identities, proving independence of the connecting maps. The long cohomology sequence of (4.1) is exact, and negative cohomology is zero. This proves every delta-functor axiom. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-formal-products-give-effacement">5. Formal products give effacement</h2>
+<p>For a small family <span class="math" data-tex="\((A_s)_{s\in S}\)">\((A_s)_{s\in S}\)</span>, write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+ \mathcal P(A_s)=\prod_{s\in S}^{\mathrm{Pro}}cA_s.
+ \tag{5.1}
+\]">\[
+\mathcal P(A_s)=\prod_{s\in S}^{\mathrm{Pro}}cA_s.
+\tag{5.1}
+\]</span>
+<p>Its finite-subset presentation is <span class="math" data-tex="\(F(T)=\prod_{s\in T}A_s\)">\(F(T)=\prod_{s\in T}A_s\)</span> on <span class="math" data-tex="\(D=\operatorname{Fin}(S)^{\mathrm{op}}\)">\(D=\operatorname{Fin}(S)^{\mathrm{op}}\)</span>, with restriction projections. The empty product in an abelian category is zero.</p>
+<p><strong>Lemma 5.1.</strong> This particular diagram is a product of evaluation-coinduced diagrams:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+ F=\prod_{s\in S}R_{\{s\}}A_s,
+ \qquad T^0\mathcal P(A_s)=\prod_{s\in S}A_s,
+ \qquad T^q\mathcal P(A_s)=0\quad(q&gt;0).
+ \tag{5.2}
+\]">\[
+F=\prod_{s\in S}R_{\{s\}}A_s,
+\qquad T^0\mathcal P(A_s)=\prod_{s\in S}A_s,
+\qquad T^q\mathcal P(A_s)=0\quad(q&gt;0).
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> There is one arrow <span class="math" data-tex="\(T\to\{s\}\)">\(T\to\{s\}\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span> if <span class="math" data-tex="\(s\in T\)">\(s\in T\)</span>, and no such arrow otherwise. Thus <span class="math" data-tex="\((R_{\{s\}}A_s)(T)\)">\((R_{\{s\}}A_s)(T)\)</span> is <span class="math" data-tex="\(A_s\)">\(A_s\)</span> in the first case and zero in the second. Its transition maps are exactly the appropriate identity maps and projections to zero. Taking the product over <span class="math" data-tex="\(s\)">\(s\)</span> gives <span class="math" data-tex="\(F\)">\(F\)</span>, including all its diagram maps. Lemma 1.2 of the small-category lesson makes this product of coinduced diagrams <span class="math" data-tex="\(\Gamma_D\)">\(\Gamma_D\)</span>-acyclic. Its ordinary limit is the product of all coefficients by compatible finite tuples. This proves (5.2), also for empty <span class="math" data-tex="\(S\)">\(S\)</span>, where the entire diagram is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every Pro object <span class="math" data-tex="\(P_I X\)">\(P_I X\)</span> embeds in <span class="math" data-tex="\(\mathcal P(X(i))_{i\in\operatorname{Ob}I}\)">\(\mathcal P(X(i))_{i\in\operatorname{Ob}I}\)</span>: take its coordinate projections. If two maps into <span class="math" data-tex="\(P_I X\)">\(P_I X\)</span> have the same composites with this arrow, they have the same projection to every <span class="math" data-tex="\(cX(i)\)">\(cX(i)\)</span>; the Pro Hom formula then makes them equal. This proves monicity without requiring the individual projections to be monic. By (5.2), this one embedding effaces every positive <span class="math" data-tex="\(T^q\)">\(T^q\)</span>.</p>
+<p><strong>Theorem 5.2.</strong> There is a unique isomorphism of cohomological delta-functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+ T^\bullet\xrightarrow{\sim}R^\bullet\pi
+ \tag{5.3}
+\]">\[
+T^\bullet\xrightarrow{\sim}R^\bullet\pi
+\tag{5.3}
+\]</span>
+<p>whose degree-zero map is (1.1). It preserves all Pro morphisms and every exact-row connecting map.</p>
+<p><strong>Proof.</strong> Proposition 4.1 and the preceding embedding make <span class="math" data-tex="\(T\)">\(T\)</span> effaceable. The Pro-category has enough injectives by the formal-product lesson, so <span class="math" data-tex="\(R^\bullet\pi\)">\(R^\bullet\pi\)</span> exists and is effaceable by injective embeddings. The uniqueness theorem for effaceable delta-functors extends the degree-zero identity and its inverse. The composites extend identities and hence are identities. The same uniqueness includes all naturality and connecting-map squares. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The use of (5.2) concerns the finite-subset presentation of a formal product. It does not assert that arbitrary products in a fixed diagram category are carried by <span class="math" data-tex="\(P_I\)">\(P_I\)</span> to formal products.</p>
+<h2 id="6-the-full-bounded-below-comparison">6. The full bounded-below comparison</h2>
+<p><strong>Theorem 6.1.</strong> For every small cofiltered <span class="math" data-tex="\(I\)">\(I\)</span>, there is a normalized natural isomorphism of exact functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+ \theta_I:R\Gamma_I\xrightarrow{\sim}R\pi\,D^+P_I
+ \quad\text{on }D^+(\mathcal A^I).
+ \tag{6.1}
+\]">\[
+\theta_I:R\Gamma_I\xrightarrow{\sim}R\pi\,D^+P_I
+\quad\text{on }D^+(\mathcal A^I).
+\tag{6.1}
+\]</span>
+<p>It agrees on objects in degree zero with Proposition 3.1, and its cohomology comparison is (5.3). For a cofinal <span class="math" data-tex="\(u:J\to I\)">\(u:J\to I\)</span>, the diagram formed by <span class="math" data-tex="\(\theta_I,\theta_J\)">\(\theta_I,\theta_J\)</span>, derived restriction and the canonical cofinal Pro isomorphism commutes. Its ordinary normalization is (1.1).</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(Q\)">\(Q\)</span> is injective in <span class="math" data-tex="\(\mathcal A^I\)">\(\mathcal A^I\)</span>, then <span class="math" data-tex="\(R^{q&gt;0}\Gamma_I(Q)=0\)">\(R^{q&gt;0}\Gamma_I(Q)=0\)</span>. Theorems 5.2 and 3.1 therefore give <span class="math" data-tex="\(R^{q&gt;0}\pi(P_IQ)=0\)">\(R^{q&gt;0}\pi(P_IQ)=0\)</span>. Thus <span class="math" data-tex="\(P_I\)">\(P_I\)</span> sends injectives to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-acyclic objects. It is exact, so <span class="math" data-tex="\(RP_I=D^+P_I\)">\(RP_I=D^+P_I\)</span>. The normalized composition theorem applies to <span class="math" data-tex="\(P_I\)">\(P_I\)</span> followed by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, with <span class="math" data-tex="\(\pi P_I=\Gamma_I\)">\(\pi P_I=\Gamma_I\)</span>; its canonical comparison is (6.1), and is invertible on the full bounded-below category. The theorem's normalization identifies its augmentation, shifts and maps of replacements.</p>
+<p>We verify the particular cofinal compatibility, rather than infer a derived equality merely from cohomology. For a diagram <span class="math" data-tex="\(F\)">\(F\)</span>, use its augmented coinduced resolution <span class="math" data-tex="\(F\to B_I^\bullet(F)\)">\(F\to B_I^\bullet(F)\)</span> from the small-category lesson. Its terms are <span class="math" data-tex="\(\Gamma_I\)">\(\Gamma_I\)</span>-acyclic, and hence their realizations are <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-acyclic by (5.3). Applying <span class="math" data-tex="\(\pi P_I\)">\(\pi P_I\)</span> to this resolution is exactly <span class="math" data-tex="\(C_I(F)\)">\(C_I(F)\)</span>. Therefore acyclic computation identifies (6.1) with this actual augmented model. Its resulting cohomology maps form a delta-functor comparison normalized in degree zero; uniqueness identifies them with (5.3).</p>
+<p>There is a natural augmented chain map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+ u^*B_I^\bullet(F)\longrightarrow B_J^\bullet(u^*F).
+ \tag{6.2}
+\]">\[
+u^*B_I^\bullet(F)\longrightarrow B_J^\bullet(u^*F).
+\tag{6.2}
+\]</span>
+<p>At <span class="math" data-tex="\(j\)">\(j\)</span>, its target coordinate <span class="math" data-tex="\(j\to j_0\to\cdots\to j_n\)">\(j\to j_0\to\cdots\to j_n\)</span> selects the source coordinate <span class="math" data-tex="\(u(j)\to u(j_0)\to\cdots\to u(j_n)\)">\(u(j)\to u(j_0)\to\cdots\to u(j_n)\)</span>. Deleting a vertex, composing the initial arrow, or applying the last coefficient map commutes with this selection. Thus (6.2) commutes with the differential, diagram maps and augmentation. By Lemma 1.1, restriction preserves <span class="math" data-tex="\(\Gamma_I\)">\(\Gamma_I\)</span>-acyclicity, so its source terms are <span class="math" data-tex="\(\Gamma_J\)">\(\Gamma_J\)</span>-acyclic; their formal realizations are <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-acyclic by (5.3). The target terms have the same property. Hence both augmented complexes compute the required derived objects. Applying the ordinary cone identification to (6.2) gives precisely <span class="math" data-tex="\(\rho_u\)">\(\rho_u\)</span> on the Roos complexes. The comparison of these two acyclic models therefore computes the canonical derived image of the cofinal Pro isomorphism, by naturality of acyclic computation. This proves the claimed commuting square in degree-zero input, including its actual derived arrows.</p>
+<p>For a bounded-below complex <span class="math" data-tex="\(F^\bullet\)">\(F^\bullet\)</span>, apply this construction in each degree and totalize. In total degree <span class="math" data-tex="\(n\)">\(n\)</span>, only the finitely many pairs <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> with <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span> above the common lower bound and <span class="math" data-tex="\(p+q=n\)">\(p+q=n\)</span> occur. The total terms are finite biproducts of the acyclic objects just used. The augmented total is a quasi-isomorphism by the pointwise contractions, and (6.2) totalizes with differential <span class="math" data-tex="\(d_B+(-1)^p d_F\)">\(d_B+(-1)^p d_F\)</span>. The same bounded-below acyclic comparison proves the square on the full stated domain and on its localized morphisms. Restriction selection composes strictly, so the squares also respect successive cofinal functors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a Pro arrow represented by <span class="math" data-tex="\(a:Xr\to Ys\)">\(a:Xr\to Ys\)</span>, the two cofinal squares just proved and naturality of <span class="math" data-tex="\(\theta_K\)">\(\theta_K\)</span> in <span class="math" data-tex="\(a\)">\(a\)</span> identify its <span class="math" data-tex="\(R\pi\)">\(R\pi\)</span>-image with (3.1). In particular every Pro isomorphism gives an isomorphism of derived limits, with its actual functorial map. This conclusion does not say that derived limit detects Pro isomorphisms; Exercise 3 shows it does not. Nor does it require strictifying infinitely many chain maps in an arbitrary object of <span class="math" data-tex="\(D^+(\operatorname{Pro}(\mathcal A))\)">\(D^+(\operatorname{Pro}(\mathcal A))\)</span>.</p>
+<h2 id="7-extensions-into-constant-objects">7. Extensions into constant objects</h2>
+<p>For <span class="math" data-tex="\(A\in\mathcal A\)">\(A\in\mathcal A\)</span>, choose an injective resolution <span class="math" data-tex="\(A\to J^\bullet\)">\(A\to J^\bullet\)</span> in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The constant functor is exact, and each <span class="math" data-tex="\(cJ^n\)">\(cJ^n\)</span> is injective in the Pro-category by Theorem 1.1 of the formal-product lesson. Hence <span class="math" data-tex="\(cA\to cJ^\bullet\)">\(cA\to cJ^\bullet\)</span> is an actual injective resolution there.</p>
+<p><strong>Theorem 7.1.</strong> For every <span class="math" data-tex="\(\mathbf X=P_I X\)">\(\mathbf X=P_I X\)</span>, every <span class="math" data-tex="\(A\in\mathcal A\)">\(A\in\mathcal A\)</span> and every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, there is a natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+ \operatorname{Ext}^n_{\operatorname{Pro}(\mathcal A)}(\mathbf X,cA)
+ \simeq
+ \operatorname*{colim}_{i\in I^{\mathrm{op}}}
+ \operatorname{Ext}^n_{\mathcal A}(X(i),A).
+ \tag{7.1}
+\]">\[
+\operatorname{Ext}^n_{\operatorname{Pro}(\mathcal A)}(\mathbf X,cA)
+\simeq
+\operatorname*{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Ext}^n_{\mathcal A}(X(i),A).
+\tag{7.1}
+\]</span>
+<p>The transition maps on the right precompose with the inverse-system arrows. The comparison includes every Pro morphism in the first argument, maps in <span class="math" data-tex="\(A\)">\(A\)</span>, and the exact-sequence connecting maps in the second argument.</p>
+<p><strong>Proof.</strong> The constant-target Hom formula is a natural isomorphism of complexes of abelian groups:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+ \operatorname{Hom}_{\mathrm{Pro}}(\mathbf X,cJ^\bullet)
+ =\operatorname*{colim}_{i\in I^{\mathrm{op}}}
+   \operatorname{Hom}_{\mathcal A}(X(i),J^\bullet).
+ \tag{7.2}
+\]">\[
+\operatorname{Hom}_{\mathrm{Pro}}(\mathbf X,cJ^\bullet)
+=\operatorname*{colim}_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{\mathcal A}(X(i),J^\bullet).
+\tag{7.2}
+\]</span>
+<p>Filtered colimits in abelian groups are exact. Applying them to the short exact descriptions of cycles, boundaries and their quotient identifies cohomology of (7.2) with the filtered colimit of the cohomologies of its terms on the right. Those are <span class="math" data-tex="\(\operatorname{Ext}_{\mathcal A}^n(X(i),A)\)">\(\operatorname{Ext}_{\mathcal A}^n(X(i),A)\)</span> by the chosen injective resolution. This proves (7.1), and its degree-zero map is the original Hom formula.</p>
+<p>For a Pro arrow, precomposition on the left of (7.2) is defined before taking cohomology. At each degree its right-hand description is the Pro Hom formula, which is independent of representatives and respects composition. Thus it induces exactly the corresponding filtered Ext map; equality of representatives is preserved on passing from chain maps to cohomology classes. For a map <span class="math" data-tex="\(A\to A&#x27;\)">\(A\to A&#x27;\)</span>, injective comparison maps exist and are unique up to homotopy. Applying (7.2) respects these homotopies, so the induced map is independent of the resolution.</p>
+<p>For completeness, reduce a connecting-map square for <span class="math" data-tex="\(0\to A\to B\to C\to0\)">\(0\to A\to B\to C\to0\)</span> to dimension shifting as follows. Embed <span class="math" data-tex="\(B\)">\(B\)</span> in an injective <span class="math" data-tex="\(J\)">\(J\)</span>. There is a map of this row to <span class="math" data-tex="\(0\to A\to J\to J/A\to0\)">\(0\to A\to J\to J/A\to0\)</span>, with identity on <span class="math" data-tex="\(A\)">\(A\)</span> and the induced map <span class="math" data-tex="\(C\to J/A\)">\(C\to J/A\)</span>. In both Ext theories, naturality of connecting maps expresses the original boundary as the boundary of this latter row after that induced map. Resolve <span class="math" data-tex="\(A\)">\(A\)</span> starting with <span class="math" data-tex="\(A\to J\)">\(A\to J\)</span>, and then resolve <span class="math" data-tex="\(J/A\)">\(J/A\)</span>. The auxiliary boundaries are the degree-zero quotient map and the higher dimension-shift maps on the same tail resolution, with the same cone signs. Formula (7.2), followed by exact filtered colimit, commutes with those quotients and tail maps. Thus its cohomology comparison commutes with the auxiliary boundaries, and hence with the original ones. This proves all the stated compatibilities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When the first object is constant, (7.1) recovers <span class="math" data-tex="\(\operatorname{Ext}_{\mathcal A}^n(B,A)\)">\(\operatorname{Ext}_{\mathcal A}^n(B,A)\)</span>. For a general Pro object it is a formula for extensions from that formal object, not for extensions from its ordinary limit.</p>
+<h2 id="8-four-exercises-with-complete-solutions">8. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: a level map need not be an isomorphism).</strong> Let <span class="math" data-tex="\(Q_n=\mathbb Z/(n+2)!\)">\(Q_n=\mathbb Z/(n+2)!\)</span> for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, with zero transitions, and put <span class="math" data-tex="\(X_n=\mathbb Z\oplus Q_n\)">\(X_n=\mathbb Z\oplus Q_n\)</span>, with transition <span class="math" data-tex="\((z,q)\mapsto(z,0)\)">\((z,q)\mapsto(z,0)\)</span>. Show that the projections <span class="math" data-tex="\(X_n\to\mathbb Z\)">\(X_n\to\mathbb Z\)</span> are never isomorphisms, while their Pro morphism is an isomorphism and induces an isomorphism on derived limits. Compute both derived limits.</p>
+<p><strong>Solution.</strong> Every <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> is nonzero, so a level projection has nonzero kernel. The identity of the formal system <span class="math" data-tex="\(Q\)">\(Q\)</span> is zero: at each target stage, the transition from the next stage is already zero, and hence its identity class vanishes in the filtered Hom colimit. An object whose identity is zero is a zero object in an additive category. Thus <span class="math" data-tex="\(P X=c\mathbb Z\oplus P Q\simeq c\mathbb Z\)">\(P X=c\mathbb Z\oplus P Q\simeq c\mathbb Z\)</span>; the maps given by projection and the inclusion of the first summand are inverse in Pro.</p>
+<p>For the zero-transition tower, the two-term limit complex has difference map <span class="math" data-tex="\(\Delta=1\)">\(\Delta=1\)</span> on <span class="math" data-tex="\(\prod_nQ_n\)">\(\prod_nQ_n\)</span>. Its cohomology vanishes. For the constant tower <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, <span class="math" data-tex="\(\Delta(z)_n=z_n-z_{n+1}\)">\(\Delta(z)_n=z_n-z_{n+1}\)</span> has kernel the constant sequences and is surjective: given <span class="math" data-tex="\(b\)">\(b\)</span>, start with <span class="math" data-tex="\(z_0=0\)">\(z_0=0\)</span> and recursively put <span class="math" data-tex="\(z_{n+1}=z_n-b_n\)">\(z_{n+1}=z_n-b_n\)</span>. Consequently</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+ R\Gamma(Q)=0,\qquad R\Gamma(X)\simeq\mathbb Z[0].
+ \tag{8.1}
+\]">\[
+R\Gamma(Q)=0,\qquad R\Gamma(X)\simeq\mathbb Z[0].
+\tag{8.1}
+\]</span>
+<p>The projection induces this specified identification of the first summand. Theorem 6.1 identifies it with the derived image of the Pro isomorphism, including its inverse.</p>
+<p><strong>Exercise 2 (intermediate: finite labelled probes).</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be any small set and <span class="math" data-tex="\((A_s)_{s\in S}\)">\((A_s)_{s\in S}\)</span> any family in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Let <span class="math" data-tex="\(D=(\operatorname{FinSet}/S)^{\mathrm{op}}\)">\(D=(\operatorname{FinSet}/S)^{\mathrm{op}}\)</span>, using finite subsets of a fixed countable set as finite domains. A map before taking opposites is any label-preserving function, not just an injection. Define <span class="math" data-tex="\(F(L\xrightarrow{\ell}S)=\prod_{x\in L}A_{\ell(x)}\)">\(F(L\xrightarrow{\ell}S)=\prod_{x\in L}A_{\ell(x)}\)</span>, with coordinate pullback along those functions. Compute its derived limit. If <span class="math" data-tex="\(S\)">\(S\)</span> is uncountable, show that finite subsets of <span class="math" data-tex="\(S\)">\(S\)</span> have no countable cofinal family.</p>
+<p><strong>Solution.</strong> The category <span class="math" data-tex="\(\operatorname{FinSet}/S\)">\(\operatorname{FinSet}/S\)</span> is filtered: a disjoint union receives two labelled finite sets, and a pair of parallel label-preserving functions is coequalized by its finite quotient, whose labels are well defined. It is nonempty because it contains the empty set. The use of the chosen finite domains only replaces these finite colimits by isomorphic representatives. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is cofiltered. Coordinate pullback is functorial because composite coordinate selections compose.</p>
+<p>Choose finite representatives of each finite subset <span class="math" data-tex="\(T\subseteq S\)">\(T\subseteq S\)</span>, labelled bijectively by <span class="math" data-tex="\(T\)">\(T\)</span>. They give a functor <span class="math" data-tex="\(u:\operatorname{Fin}(S)^{\mathrm{op}}\to D\)">\(u:\operatorname{Fin}(S)^{\mathrm{op}}\to D\)</span>. For a labelled <span class="math" data-tex="\(L\)">\(L\)</span>, an object in <span class="math" data-tex="\((u\downarrow L)\)">\((u\downarrow L)\)</span> is a finite <span class="math" data-tex="\(T\)">\(T\)</span> containing <span class="math" data-tex="\(\ell(L)\)">\(\ell(L)\)</span>; its label-preserving map <span class="math" data-tex="\(L\to T\)">\(L\to T\)</span> is unique. The image subset <span class="math" data-tex="\(\ell(L)\)">\(\ell(L)\)</span> is terminal in this comma category, since the arrows are reverse inclusions. Hence <span class="math" data-tex="\(u\)">\(u\)</span> is cofinal. Its restricted coefficient diagram is exactly the finite-subset model in Lemma 5.1. Lemma 1.1 and (5.2) give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+ R\Gamma_D(F)\simeq\left(\prod_{s\in S}A_s\right)[0].
+ \tag{8.2}
+\]">\[
+R\Gamma_D(F)\simeq\left(\prod_{s\in S}A_s\right)[0].
+\tag{8.2}
+\]</span>
+<p>If finite subsets <span class="math" data-tex="\(T_0,T_1,\ldots\)">\(T_0,T_1,\ldots\)</span> were cofinal, every singleton <span class="math" data-tex="\(\{s\}\)">\(\{s\}\)</span> would be contained in some <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. Their countable union would be all of <span class="math" data-tex="\(S\)">\(S\)</span>, contradicting uncountability. Thus (8.2) is a genuinely noncountable presentation in this case. The availability of noninjective functions matters: injections alone would not coequalize parallel maps and would not give the cofiltered category used above.</p>
+<p><strong>Exercise 3 (advanced: derived limit is not conservative).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a nonzero field and <span class="math" data-tex="\(V=k^{\mathbb N}\)">\(V=k^{\mathbb N}\)</span>. Let <span class="math" data-tex="\(\mathcal P=\prod_{n\geq0}^{\mathrm{Pro}}ck\)">\(\mathcal P=\prod_{n\geq0}^{\mathrm{Pro}}ck\)</span>, with finite-prefix presentation <span class="math" data-tex="\(F_N=k^N\)">\(F_N=k^N\)</span>, <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>. Consider the canonical arrow <span class="math" data-tex="\(cV\to\mathcal P\)">\(cV\to\mathcal P\)</span>. Prove that it is epic with a nonzero kernel <span class="math" data-tex="\(\mathbf K\)">\(\mathbf K\)</span>, but that <span class="math" data-tex="\(R\pi(\mathbf K)=0\)">\(R\pi(\mathbf K)=0\)</span>. Decide whether its kernel tower is Mittag–Leffler.</p>
+<p><strong>Solution.</strong> The level maps are the surjections <span class="math" data-tex="\(V\to k^N\)">\(V\to k^N\)</span>. Their kernels are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+ K_N=\{(v_j)_{j\geq0}:v_0=\cdots=v_{N-1}=0\},
+ \qquad K_{N+1}\longrightarrow K_N\text{ is inclusion}.
+ \tag{8.3}
+\]">\[
+K_N=\{(v_j)_{j\geq0}:v_0=\cdots=v_{N-1}=0\},
+\qquad K_{N+1}\longrightarrow K_N\text{ is inclusion}.
+\tag{8.3}
+\]</span>
+<p>Common-index kernels and cokernels therefore give a short exact Pro row <span class="math" data-tex="\(0\to\mathbf K\to cV\to\mathcal P\to0\)">\(0\to\mathbf K\to cV\to\mathcal P\to0\)</span>. The finite prefixes form a cofinal subsystem of finite subsets of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>: the prefixes containing a given finite subset have a least member and hence a terminal object in the inverse comma convention. Thus they really present <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>.</p>
+<p>For any <span class="math" data-tex="\(N\)">\(N\)</span>, all later maps <span class="math" data-tex="\(K_M\to K_N\)">\(K_M\to K_N\)</span> are nonzero, since the vector with its only nonzero coordinate at <span class="math" data-tex="\(M\)">\(M\)</span> survives. The identity class of <span class="math" data-tex="\(K_N\)">\(K_N\)</span> consequently never becomes zero in <span class="math" data-tex="\(\operatorname{colim}_M\operatorname{Hom}(K_M,K_N)\)">\(\operatorname{colim}_M\operatorname{Hom}(K_M,K_N)\)</span>. The identity of <span class="math" data-tex="\(\mathbf K\)">\(\mathbf K\)</span> is not zero, so <span class="math" data-tex="\(\mathbf K\ne0\)">\(\mathbf K\ne0\)</span>.</p>
+<p>Both <span class="math" data-tex="\(cV\)">\(cV\)</span> and <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> are <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-acyclic. The first assertion follows from <span class="math" data-tex="\(R\pi\,c=1\)">\(R\pi\,c=1\)</span> in the formal-product lesson; the second follows from (5.2) and (5.3). Their ordinary limits are both <span class="math" data-tex="\(V\)">\(V\)</span>, and the induced map is identity in every coordinate. The long derived-limit sequence of their exact row gives <span class="math" data-tex="\(\pi\mathbf K=0\)">\(\pi\mathbf K=0\)</span>, <span class="math" data-tex="\(R^1\pi\mathbf K=0\)">\(R^1\pi\mathbf K=0\)</span>, and all higher groups zero. Hence <span class="math" data-tex="\(R\pi\mathbf K=0\)">\(R\pi\mathbf K=0\)</span> in the derived category, despite <span class="math" data-tex="\(\mathbf K\ne0\)">\(\mathbf K\ne0\)</span>. At fixed <span class="math" data-tex="\(N\)">\(N\)</span>, the images of <span class="math" data-tex="\(K_M\)">\(K_M\)</span> in <span class="math" data-tex="\(K_N\)">\(K_N\)</span> form a strictly decreasing tail sequence: the vector at coordinate <span class="math" data-tex="\(M\)">\(M\)</span> belongs to the image of <span class="math" data-tex="\(K_M\)">\(K_M\)</span> but not <span class="math" data-tex="\(K_{M+1}\)">\(K_{M+1}\)</span>. It is not Mittag–Leffler. Thus that condition is sufficient, but not necessary, for a tower to be limit-acyclic.</p>
+<p><strong>Exercise 4 (advanced: a filtered extension group).</strong> Fix a prime <span class="math" data-tex="\(p\)">\(p\)</span>, and let <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> be the Pro object given by <span class="math" data-tex="\(\mathbb Z/p^n\)">\(\mathbb Z/p^n\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, with quotient transitions. Compute <span class="math" data-tex="\(\operatorname{Ext}^q_{\operatorname{Pro}(\mathsf{Ab})}(\mathbf Z_p,c\mathbb Z)\)">\(\operatorname{Ext}^q_{\operatorname{Pro}(\mathsf{Ab})}(\mathbf Z_p,c\mathbb Z)\)</span> for all <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, including the filtered transition maps. Also compute its derived limit.</p>
+<p><strong>Solution.</strong> The free resolution <span class="math" data-tex="\(0\to\mathbb Z\xrightarrow{p^n}\mathbb Z\to\mathbb Z/p^n\to0\)">\(0\to\mathbb Z\xrightarrow{p^n}\mathbb Z\to\mathbb Z/p^n\to0\)</span> gives zero Hom to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, first Ext <span class="math" data-tex="\(\mathbb Z/p^n\)">\(\mathbb Z/p^n\)</span>, and zero higher Ext. The quotient <span class="math" data-tex="\(\mathbb Z/p^{n+1}\to\mathbb Z/p^n\)">\(\mathbb Z/p^{n+1}\to\mathbb Z/p^n\)</span> lifts on these resolutions by identity in degree zero and multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> in degree minus one. The square commutes because <span class="math" data-tex="\(p^n p=p^{n+1}\)">\(p^n p=p^{n+1}\)</span>. Applying Hom into <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> therefore induces multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on first Ext. The sign convention for the Hom differential changes neither its cokernel nor this chain comparison.</p>
+<p>The injective maps <span class="math" data-tex="\(\mathbb Z/p^n\to\mathbb Z[1/p]/\mathbb Z\)">\(\mathbb Z/p^n\to\mathbb Z[1/p]/\mathbb Z\)</span>, <span class="math" data-tex="\(\bar a\mapsto a/p^n+\mathbb Z\)">\(\bar a\mapsto a/p^n+\mathbb Z\)</span>, are compatible with those multiplication-by-<span class="math" data-tex="\(p\)">\(p\)</span> transitions: <span class="math" data-tex="\(pa/p^{n+1}=a/p^n\)">\(pa/p^{n+1}=a/p^n\)</span>. Their images have union the indicated quotient. Theorem 7.1 now gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.4); horizontal scroll when needed" data-tex="\[
+ \operatorname{Ext}^q_{\mathrm{Pro}(\mathsf{Ab})}
+   (\mathbf Z_p,c\mathbb Z)
+ \simeq
+ \begin{cases}
+ \mathbb Z[1/p]/\mathbb Z,&amp;q=1,\\
+ 0,&amp;q\ne1.
+ \end{cases}
+ \tag{8.4}
+\]">\[
+\operatorname{Ext}^q_{\mathrm{Pro}(\mathsf{Ab})}
+(\mathbf Z_p,c\mathbb Z)
+\simeq
+\begin{cases}
+\mathbb Z[1/p]/\mathbb Z,&amp;q=1,\\
+0,&amp;q\ne1.
+\end{cases}
+\tag{8.4}
+\]</span>
+<p>The limit of the quotient tower is the group <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> of compatible residue classes. Its difference map is surjective: having chosen <span class="math" data-tex="\(x_n\)">\(x_n\)</span>, choose <span class="math" data-tex="\(x_{n+1}\)">\(x_{n+1}\)</span> mapping to <span class="math" data-tex="\(x_n-b_n\)">\(x_n-b_n\)</span>, possible by surjectivity of the quotient. The two-term tower model and Theorem 6.1 therefore give <span class="math" data-tex="\(R\pi(\mathbf Z_p)\simeq\mathbb Z_p[0]\)">\(R\pi(\mathbf Z_p)\simeq\mathbb Z_p[0]\)</span>. Formula (8.4) computes extensions from the formal system; it is not obtained by replacing that system by its ordinary limit in an Ext group.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Fabienne Prosmans, <em>Derived Limits in Quasi-Abelian Categories</em>, Bulletin de la Société Royale des Sciences de Liège 68 (1999), 335–401. <a href="https://popups.uliege.be/0037-9565/index.php?id=2128">Freely accessible publisher edition</a>. Section 7 treats the limit of Pro objects and its derivation.</li>
+<li>Pierre Schapira, <em>An Introduction to Categories and Homological Algebra</em>. <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf">Freely accessible notes</a>.</li>
+<li>The Stacks Project Authors, <em>The Stacks Project</em>, <a href="https://stacks.math.columbia.edu/tag/07KV">Rlim of abelian groups</a>. Its fixed-diagram tower model is compared with the Pro-category functor by Theorem 6.1 here.</li>
+</ul>
+</main></body></html>

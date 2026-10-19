@@ -1,6 +1,6 @@
 # Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check; revised and self-checked by that writing AI in October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all five solutions, completed its elementary and Bochner-density proofs and supplied the exact prerequisites, October 2026. Public domain (CC0).*
+*AI authorship: Claude Opus 5.5 (Anthropic), GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 A Banach algebra is an algebra with a complete norm that satisfies \(\|xy\|\leq\|x\|\|y\|\). The bounded operators on a Banach space and the continuous functions on a compact space are the basic examples. This lesson develops the elementary theory of Banach algebras, on which the rest of the operator-algebra course stands.
 
@@ -556,9 +556,18 @@ By Cauchy's theorem 6.1 for \(g\), the inner integral of \(I_2\) is \(-2\pi i\op
 
 *Commutation.* \(f(x)g(x)=(fg)(x)=(gf)(x)=g(x)f(x)\). \(\square\)
 
-**Proposition 6.8** (power series). Let \(f(\lambda)=\sum_nc_n(\lambda-c)^n\) converge for \(|\lambda-c|<\rho_0\), and let \(r(x-c)<\rho_0\). Then \(\sigma_A(x)\) lies in the disc \(|\lambda-c|<\rho_0\), and \(f(x)=\sum_nc_n(x-c)^n\), with the series converging in norm. In particular, the calculus of \(\lambda\mapsto e^\lambda\) is \(\exp x=\sum_nx^n/n!\) ([Section 7](#oa-fnd-bn-14)).
+**Proposition 6.8** (power series). Let \(f(\lambda)=\sum_nc_n(\lambda-c)^n\) converge for \(|\lambda-c|<\rho_0\), and let \(r(x-c)<\rho_0\). Then \(\sigma_A(x)\) lies in the disc \(|\lambda-c|<\rho_0\), and \(f(x)=\sum_nc_n(x-c)^n\), with the series converging absolutely in norm. In particular, the calculus of \(\lambda\mapsto e^\lambda\) is \(\exp x=\sum_nx^n/n!\) ([Section 7](#oa-fnd-bn-14)).
 
-**Proof.** By parts (5) and (1) of [Proposition 4.2](#oa-fnd-bn-06), \(\sigma_A(x)=c+\sigma_A(x-c)\) lies in \(|\lambda-c|\leq r(x-c)\). Choose \(\rho\) with \(r(x-c)<\rho<\rho_0\), and let \(\Gamma\) be the positively oriented circle \(|\lambda-c|=\rho\). By Lemma 6.3 it surrounds \(\sigma_A(x)\) in the disc \(\{|\lambda-c|<\rho_0\}\). The series of \(f\) converges uniformly on \(\Gamma^*\). Integrating term by term, and using the theorem for the polynomials \((\lambda-c)^n\), gives \(f(x)=\sum_nc_n(x-c)^n\); the partial sums converge in norm. \(\square\)
+**Proof.** By parts (5) and (1) of [Proposition 4.2](#oa-fnd-bn-06), \(\sigma_A(x)=c+\sigma_A(x-c)\) lies in \(|\lambda-c|\leq r(x-c)\). Choose \(\rho\) with \(r(x-c)<\rho<\rho_0\), and let \(\Gamma\) be the positively oriented circle \(|\lambda-c|=\rho\). By Lemma 6.3 it surrounds \(\sigma_A(x)\) in the disc \(\{|\lambda-c|<\rho_0\}\). The series of \(f\) converges uniformly on \(\Gamma^*\). Integrating term by term, and using the theorem for the polynomials \((\lambda-c)^n\), gives \(f(x)=\sum_nc_n(x-c)^n\); the partial sums converge in norm.
+
+To prove absolute convergence, choose \(q\) with \(r(x-c)<q<\rho_0\). The spectral radius formula gives \(\|(x-c)^n\|\leq q^n\) for all sufficiently large \(n\). Enlarging a constant to cover the finitely many remaining powers, including \(n=0\), gives \(C\geq1\) such that \(\|(x-c)^n\|\leq Cq^n\) for every \(n\geq0\). Choose \(Q\) with \(q<Q<\rho_0\). Convergence of the scalar series at \(c+Q\) implies that its terms are bounded: \(|c_n|Q^n\leq B\) for some \(B>0\) and every \(n\). Consequently
+\[
+\begin{gathered}
+\sum_{n\geq0}\|c_n(x-c)^n\|\\
+\leq CB\sum_{n\geq0}(q/Q)^n\\
+=\frac{CB}{1-q/Q}<\infty.
+\end{gathered}
+\] \(\square\)
 
 **Example 6.9.** Let \(x=\alpha+N\) with \(N^2=0\) and \(N\neq0\), for instance a \(2\times2\) Jordan block. Then \(\sigma_A(x)=\{\alpha\}\) (the spectrum of \(N\) is not empty and \(r(N)=0\)), and by the proposition \(f(x)=f(\alpha)+f'(\alpha)N\) for every \(f\) holomorphic near \(\alpha\). So \(f(x)\) is not determined by the values of \(f\) on \(\sigma_A(x)\).
 

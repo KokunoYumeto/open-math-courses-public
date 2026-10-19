@@ -1,10 +1,10 @@
 # Measurable equivalence and constant fibres
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text: GPT-6.1 Sol and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 An isomorphism available at each point is useful in a direct integral only after it can be chosen measurably. A spatial isomorphism is described by a unitary. An abstract isomorphism may change the multiplicity of the representation, so it needs an amplification and a faithful compression before a unitary can describe it. We make both choices using countable operator equations.
 
-Prerequisites are [Base changes and disintegration](../reader/base-changes-and-disintegration.html), [Measurable fields and direct integrals](../reader/supplements/measurable-fields-direct-integrals.html), and [The Effros Borel structure](../reader/supplements/effros-borel-structure.html). We use the measurable-section theorem, Theorem 7.7, and the injective Borel-image theorem, Theorem 4.3, of [Polish spaces and standard Borel spaces](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html). For normal representations we use the complete amplification-and-induction proof in [Spatial tensor products](../reader/supplements/spatial-tensor-products.html), Theorem 8.2 and Proposition 6.1(2). The linked programme lessons contain the complete prerequisite proofs. Elliott’s freely readable paper treats the assembly of fibre equivalences, and Takesaki’s book provides further context. Here Lemma 1.1 and Theorems 2.1–3.1 give the full countable relations, both isomorphism directions and measurable inverse, under the standard sigma-finite base and separable-fibre hypotheses.
+Prerequisites are [Base changes and disintegration](../reader/base-changes-and-disintegration.html), [Measurable fields and direct integrals](../reader/supplements/measurable-fields-direct-integrals.html), and [The Effros Borel structure](../reader/supplements/effros-borel-structure.html). We use the [measurable-section theorem, Theorem 7.7](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-11), and the [injective Borel-image theorem, Theorem 4.3](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-06), proved in Polish spaces and standard Borel spaces. For normal representations we use the amplification proof in [Theorem 8.2 of Spatial tensor products](../reader/supplements/spatial-tensor-products.html#8-maps-between-tensor-products-and-normal-homomorphisms) and the induction and central-carrier proof in its [Proposition 6.1(2)](../reader/supplements/spatial-tensor-products.html#6-reduced-and-induced-algebras). The linked programme lessons contain the complete prerequisite proofs. Elliott’s freely readable paper treats the assembly of fibre equivalences. Here Lemma 1.1 and Theorems 2.1–3.1 give the full countable relations, both isomorphism directions and measurable inverse, under the standard sigma-finite base and separable-fibre hypotheses.
 
 Throughout, \(X\) is a standard Borel space with a sigma-finite measure \(\mu\); measurability may be taken in its completion. All Hilbert fibres are separable. A von Neumann algebra on a nonzero fibre contains that fibre's identity. Zero Hilbert fibres are allowed. We work outside one common null set whenever countably many field identities are involved.
 
@@ -61,7 +61,7 @@ The same assertion holds for two measurable fields of representations of one sep
 
 **Proof.** Discard the null set on which spatial equivalence fails. The dimension functions agree there. Trivialize on their common dimension strata. The zero stratum has its unique zero-space unitary; elsewhere both Hilbert fibres are one fixed \(K\).
 
-Choose countable generators \(a_j(x)\) and \(b_j(x)\) of \(M_1(x)\) and \(M_2(x)\), and \(c_j(x)\), \(d_j(x)\) of their respective commutants. Let \(R\) consist of \((x,u)\), with \(u\) unitary on \(K\), satisfying
+Choose countable measurable contraction generators \(a_j(x)\) and \(b_j(x)\) of \(M_1(x)\) and \(M_2(x)\), and \(c_j(x)\), \(d_j(x)\) of their respective commutants. Let \(R\) consist of \((x,u)\), with \(u\) unitary on \(K\), satisfying
 \[
 [ua_j(x)u^*,d_k(x)]=0,\qquad
 [u^*b_j(x)u,c_k(x)]=0
@@ -70,7 +70,7 @@ Choose countable generators \(a_j(x)\) and \(b_j(x)\) of \(M_1(x)\) and \(M_2(x)
 \]
 It is Borel by Section 1. The first set of equations says that \(uM_1(x)u^*\subseteq M_2(x)\); the second gives the reverse inclusion. To pass from the generators to the algebras, use commutants and the bicommutant theorem. Every section is nonempty by hypothesis. Lemma 1.1 supplies \(U_x\).
 
-The operator field \(U_x\) and its adjoint are measurable and have norm one. Their direct integrals are inverse unitaries. Conjugation takes measurable bounded algebra fields to measurable bounded algebra fields and has the inverse conjugation, so it carries the entire direct-integral algebra onto the other one.
+The operator field \(U_x\) and its adjoint are measurable and have norm at most one. Their direct integrals are inverse unitaries. Conjugation takes measurable bounded algebra fields to measurable bounded algebra fields and has the inverse conjugation, so it carries the entire direct-integral algebra onto the other one.
 
 For representations \(\pi_i(x)\) of a separable C*-algebra \(A\), choose a countable norm-dense subset \((r_j)\subseteq A\). Replace (2.2) by
 \[
@@ -193,7 +193,7 @@ In this representation let \(D\) be the diagonal algebra and let \(\mathcal N=(D
 
 By the full diagonal-commutant theorem, Theorem 5.1 of [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html), an operator in \(\mathcal N'\) is a bounded measurable operator field. Choose a countable strong-star dense family in the unit ball of \(M_0\). Commutation with its constant fields holds fibrewise outside one common null set, by uniqueness of decomposable fields. Strong continuity on bounded sets extends these identities to all of \(M_0\). Thus \(\mathcal N'\) consists exactly of bounded measurable fields with values in \(M_0'\).
 
-Every bounded measurable \(M_0\)-valued field commutes pointwise with these fields, so its direct integral belongs to \((\mathcal N')'=\mathcal N\). Conversely, \(\mathcal N\) commutes with \(D\) and every constant operator from \(M_0'\). The same theorem and a countable strong-star dense family in \((M_0')_1\) show that its representing field has values in \((M_0')'=M_0\) almost everywhere. These are precisely the two inclusions needed for the constant-field identification. The diagonal is preserved throughout. This also gives the constant-field assertion of [Vector-valued functions and preduals](../reader/measurable-equivalence-and-constant-fibres.html#4-when-all-fibres-have-one-algebraic-type), Theorem 9.1(1), in the present base setting. \(\square\)
+Every bounded measurable \(M_0\)-valued field commutes pointwise with these fields, so its direct integral belongs to \((\mathcal N')'=\mathcal N\). Conversely, \(\mathcal N\) commutes with \(D\) and every constant operator from \(M_0'\). The same theorem and a countable strong-star dense family in \((M_0')_1\) show that its representing field has values in \((M_0')'=M_0\) almost everywhere. These are precisely the two inclusions needed for the constant-field identification. The diagonal is preserved throughout. This also gives the constant-field assertion of [Vector-valued functions and preduals](../../measurable-fields-and-direct-integrals/vector-valued-functions-tensor-products-with-lp-and-preduals.html#9-the-predual-of-l-infty-gamma-mu-bar-otimes-m), Theorem 9.1(1), in the present base setting. \(\square\)
 
 This statement concerns the algebra and its diagonal. It places no condition that the original representation have constant multiplicity.
 
@@ -234,6 +234,6 @@ with kernel \(0\oplus\mathbb C\). But \([N'pK]=pK\), not \(K\). The countable te
 
 ## References
 
-- [Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer, 1979.
+
 - [Elliott 1971] George A. Elliott, [An extension of some results of Takesaki in the reduction theory of von Neumann algebras](https://msp.org/pjm/1971/39-1/pjm-v39-n1-p12-s.pdf), *Pacific Journal of Mathematics* 39(1) (1971), 145–148.
 - The prerequisite lessons cited above contain the selection, Borel-image and induction theorems used here, with their proofs and source attributions.

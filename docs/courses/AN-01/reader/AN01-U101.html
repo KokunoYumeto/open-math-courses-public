@@ -1,0 +1,589 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Analytic substitution for hyperfunctions</title><style>body{margin:0;background:#f8fafc;color:#172334;font:18px/1.65 Georgia,serif}main{max-width:76ch;margin:2rem auto;padding:0 1.2rem 4rem}h1,h2,h3,nav{font-family:system-ui,sans-serif}h1{font-size:2.1rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#155699}nav{font-size:.85rem;margin-bottom:2rem}p,li{overflow-wrap:anywhere}.math{white-space:nowrap}.math-display{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.65rem 0;margin:.7rem 0}.math-display mjx-container{max-width:none}svg{vertical-align:middle}img{max-width:100%;height:auto}li{margin:.6rem 0}</style></head><body><main><nav><a href="index.html">Course contents</a> · <a href="sources.html">Editable sources</a> · <a href="../downloads/README.md">Offline edition</a></nav><h1 id="analytic-substitution-for-hyperfunctions">Analytic substitution for hyperfunctions</h1>
+<p><em>Original exposition and proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI; no independent review. CC0.</em></p>
+<p>A hyperfunction can be composed with a real analytic map when none of its singular covectors is killed by the transpose derivative. The construction must respect the relations between holomorphic sides: composing an arbitrary list of sides would otherwise depend on the list. We prove the construction, its precise wavefront bound, and its agreement with both distributional pullback and the earlier coordinate-change formula. In particular, the absolute inverse Jacobian in that formula is retained.</p>
+<p>Write <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(Y\subset\mathbb R^m\)">\(Y\subset\mathbb R^m\)</span> for open sets and <span class="math" data-tex="\(F:X\to Y\)">\(F:X\to Y\)</span> for a real analytic map. Initially <span class="math" data-tex="\(n,m\ge1\)">\(n,m\ge1\)</span>. Set
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ N_F&amp;=\{(F(x),\eta):x\in X,\ \eta\ne0,\ DF(x)^T\eta=0\},\\
+ F^\sharp S&amp;=\{(x,DF(x)^T\eta):(F(x),\eta)\in S,\
+                                      DF(x)^T\eta\ne0\}.
+ \end{aligned}
+ \tag{P1}
+\]">\[
+ \begin{aligned}
+ N_F&amp;=\{(F(x),\eta):x\in X,\ \eta\ne0,\ DF(x)^T\eta=0\},\\
+ F^\sharp S&amp;=\{(x,DF(x)^T\eta):(F(x),\eta)\in S,\
+                                      DF(x)^T\eta\ne0\}.
+ \end{aligned}
+ \tag{P1}
+\]</span>
+The sufficient condition for <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span> will be
+<span class="math math-display" data-tex="\[
+ N_F\cap\operatorname{WF}_A(u)=\varnothing.
+ \tag{P2}
+\]">\[
+ N_F\cap\operatorname{WF}_A(u)=\varnothing.
+ \tag{P2}
+\]</span>
+No constant-rank assumption is made.</p>
+<p>The local spaces and existing operations are <a href="AN01-U098.html">Hyperfunctions from local analytic sources</a>, Theorems 3 and 6. Boundary construction, uniqueness, the positive-dual estimate and the wedge converse are <a href="AN01-U099.html">Holomorphic boundary values without growth bounds</a>, Theorems 4, 6–7. We use the full splitting and ambiguity theorem, including the optional common wavefront bound, in <a href="AN01-U100.html">Directional splitting and holomorphic compatibility</a>, Theorem 2. Its Lemma 3 proves the convex separation and duality used below. These are supplied proofs, not external citations in their place.</p>
+<p>For comparison with distributions, <a href="AN01-U083.html">Analytic pullback and cotangent directions</a>, Theorems 2, 4 and 6, gives their existing pullback and exact coordinate and submersion bounds. Its Lemma 3 proves the analytic local inverse. The full <a href="AN01-U083-prerequisite.html">smooth construction</a>, Section 18.5, and <a href="AN01-U101-prerequisite.html">parameter-slice theorem</a>, Section 18.6, are included with their prerequisite readings.</p>
+<h2 id="which-imaginary-directions-survive-a-map">Which imaginary directions survive a map?</h2>
+<p>All closed convex cones in this section include zero. Their positive dual is <span class="math" data-tex="\(C^*=\{v:v\cdot\eta\ge0\text{ for every }\eta\in C\}\)">\(C^*=\{v:v\cdot\eta\ge0\text{ for every }\eta\in C\}\)</span>. A cone is pointed when it contains no nonzero vector together with its negative.</p>
+<p><strong>Lemma 1 (the image cone and its approach directions).</strong> Let <span class="math" data-tex="\(A:\mathbb R^n\to\mathbb R^m\)">\(A:\mathbb R^n\to\mathbb R^m\)</span> be linear, and let <span class="math" data-tex="\(C\subset\mathbb R^m\)">\(C\subset\mathbb R^m\)</span> be closed, convex and pointed. Suppose
+<span class="math math-display" data-tex="\[
+ A^T\eta\ne0\qquad(\eta\in C\setminus\{0\}).
+ \tag{G1}
+\]">\[
+ A^T\eta\ne0\qquad(\eta\in C\setminus\{0\}).
+ \tag{G1}
+\]</span>
+Then <span class="math" data-tex="\(A^TC\)">\(A^TC\)</span> is closed, convex and pointed. With <span class="math" data-tex="\(G=\operatorname{int}C^*\)">\(G=\operatorname{int}C^*\)</span>,
+<span class="math math-display" data-tex="\[
+ H:=\operatorname{int}(A^TC)^*
+                      =\{v:Av\in G\}\ne\varnothing.
+ \tag{G2}
+\]">\[
+ H:=\operatorname{int}(A^TC)^*
+                      =\{v:Av\in G\}\ne\varnothing.
+ \tag{G2}
+\]</span>
+If <span class="math" data-tex="\(C\ne\{0\}\)">\(C\ne\{0\}\)</span>, every compact set of unit directions in <span class="math" data-tex="\(H\)">\(H\)</span> has a uniform positive margin inside <span class="math" data-tex="\(G\)">\(G\)</span> after applying <span class="math" data-tex="\(A\)">\(A\)</span>, and its images have a positive lower norm.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, both approach cones are their full spaces and the assertions follow directly. Otherwise compactness gives <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+ |A^T\eta|\ge c|\eta|\qquad(\eta\in C).
+ \tag{G3}
+\]">\[
+ |A^T\eta|\ge c|\eta|\qquad(\eta\in C).
+ \tag{G3}
+\]</span>
+Thus a convergent sequence of images has bounded lifts in <span class="math" data-tex="\(C\)">\(C\)</span>; a convergent subsequence of lifts proves closedness of the image. Convexity is preserved by a linear map. If <span class="math" data-tex="\(A^T\eta_1=-A^T\eta_2\)">\(A^T\eta_1=-A^T\eta_2\)</span>, then <span class="math" data-tex="\(\eta_1+\eta_2\in C\)">\(\eta_1+\eta_2\in C\)</span> is in the kernel. It is zero by (G1), and pointedness gives <span class="math" data-tex="\(\eta_1=\eta_2=0\)">\(\eta_1=\eta_2=0\)</span>. The image is pointed.</p>
+<p>For any closed pointed cone <span class="math" data-tex="\(D\)">\(D\)</span>, a vector is in <span class="math" data-tex="\(\operatorname{int}D^*\)">\(\operatorname{int}D^*\)</span> exactly when it pairs strictly positively with every nonzero vector of <span class="math" data-tex="\(D\)">\(D\)</span>. In one direction a small ball in the dual excludes a zero pairing. In the other, the minimum on <span class="math" data-tex="\(D\cap S\)">\(D\cap S\)</span> is positive and gives such a ball. Lemma 3 of the preceding lesson proves that the interior is nonempty. Apply this characterization to <span class="math" data-tex="\(D=C\)">\(D=C\)</span> and <span class="math" data-tex="\(D=A^TC\)">\(D=A^TC\)</span>. The pairings are identical:
+<span class="math math-display" data-tex="\[
+ v\cdot A^T\eta=(Av)\cdot\eta.
+ \tag{G4}
+\]">\[
+ v\cdot A^T\eta=(Av)\cdot\eta.
+ \tag{G4}
+\]</span>
+This proves (G2). On a compact set of unit vectors in <span class="math" data-tex="\(H\)">\(H\)</span>, the minimum of (G4) over its product with <span class="math" data-tex="\(C\cap S\)">\(C\cap S\)</span> is positive. It provides both a fixed ball about each <span class="math" data-tex="\(Av\)">\(Av\)</span> inside <span class="math" data-tex="\(G\)">\(G\)</span>, and a positive lower bound for <span class="math" data-tex="\(|Av|\)">\(|Av|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2 (composition of one holomorphic side).</strong> Put <span class="math" data-tex="\(A=DF(x_0)\)">\(A=DF(x_0)\)</span>, and suppose <span class="math" data-tex="\(C\ne\{0\}\)">\(C\ne\{0\}\)</span> satisfies (G1). Let <span class="math" data-tex="\(f\)">\(f\)</span> be <span class="math" data-tex="\(G\)">\(G\)</span>-holomorphic near <span class="math" data-tex="\(F(x_0)\)">\(F(x_0)\)</span>, where <span class="math" data-tex="\(G=\operatorname{int}C^*\)">\(G=\operatorname{int}C^*\)</span>. For every nonempty open convex cone <span class="math" data-tex="\(H_1\)">\(H_1\)</span> with
+<span class="math math-display" data-tex="\[
+ \overline{H_1}\setminus\{0\}\subset H=A^{-1}G,
+ \tag{G5}
+\]">\[
+ \overline{H_1}\setminus\{0\}\subset H=A^{-1}G,
+ \tag{G5}
+\]</span>
+the composition <span class="math" data-tex="\(f\circ F^{\mathbb C}\)">\(f\circ F^{\mathbb C}\)</span> is <span class="math" data-tex="\(H_1\)">\(H_1\)</span>-holomorphic on a sufficiently small real neighborhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Here <span class="math" data-tex="\(F^{\mathbb C}\)">\(F^{\mathbb C}\)</span> is its holomorphic extension. The resulting boundary germ at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> is independent of <span class="math" data-tex="\(H_1\)">\(H_1\)</span>.</p>
+<p><strong>Proof.</strong> The extension exists by the convergent real power series; overlapping extensions agree near the real set by the power-series identity. On a compact real neighborhood, its Taylor expansion gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Im}F^{\mathbb C}(x+iy)
+               =DF(x)y+R(x,y),\qquad |R(x,y)|\le M|y|^2.
+ \tag{G6}
+\]">\[
+ \operatorname{Im}F^{\mathbb C}(x+iy)
+               =DF(x)y+R(x,y),\qquad |R(x,y)|\le M|y|^2.
+ \tag{G6}
+\]</span>
+The Cauchy derivative bounds on a fixed smaller complex neighborhood give one <span class="math" data-tex="\(M\)">\(M\)</span>; the real constant and linear Taylor terms have the displayed imaginary parts. Lemma 1 supplies a uniform angular and norm margin for <span class="math" data-tex="\(A(\overline H_1\cap S)\)">\(A(\overline H_1\cap S)\)</span>. Shrink the real neighborhood so <span class="math" data-tex="\(DF(x)\)">\(DF(x)\)</span> is uniformly close to <span class="math" data-tex="\(A\)">\(A\)</span>, then shrink the height so the remainder divided by <span class="math" data-tex="\(|y|\)">\(|y|\)</span> is small. The output imaginary vectors stay in a fixed closed subcone of <span class="math" data-tex="\(G\)">\(G\)</span>, with
+<span class="math math-display" data-tex="\[
+ c_1|y|\le|\operatorname{Im}F^{\mathbb C}(x+iy)|
+                                      \le c_2|y|.
+ \tag{G7}
+\]">\[
+ c_1|y|\le|\operatorname{Im}F^{\mathbb C}(x+iy)|
+                                      \le c_2|y|.
+ \tag{G7}
+\]</span>
+Their real parts stay in a fixed compact target neighborhood. These facts meet the exact local wedge condition for <span class="math" data-tex="\(f\)">\(f\)</span>, proving the composition assertion.</p>
+<p>For two choices of <span class="math" data-tex="\(H_1\)">\(H_1\)</span>, their closed unit-direction sets have a common positive margin in the open convex cone <span class="math" data-tex="\(H\)">\(H\)</span>. Their positive convex hull, thickened slightly, has closure away from zero inside <span class="math" data-tex="\(H\)">\(H\)</span>. To see the separation from zero, choose a nonzero <span class="math" data-tex="\(\eta\in C\)">\(\eta\in C\)</span>: the functional <span class="math" data-tex="\(v\mapsto v\cdot A^T\eta\)">\(v\mapsto v\cdot A^T\eta\)</span> has a positive minimum on those compact direction sets, and controls the sum of the positive coefficients. Convexity and a sufficiently small thickening preserve their common strict margins. Thus a larger open convex cone still satisfies (G5) and contains both choices. On a smaller common real neighborhood the compositions are restrictions of the same holomorphic function on that wedge. Boundary cone independence gives the same germ. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We will denote this germ by <span class="math" data-tex="\(F^\circ(b_Gf)\)">\(F^\circ(b_Gf)\)</span> while proving independence of the entire representation. For an ordinary analytic function <span class="math" data-tex="\(g\)">\(g\)</span>, set <span class="math" data-tex="\(F^\circ g=g\circ F\)">\(F^\circ g=g\circ F\)</span>.</p>
+<h2 id="relations-between-sides-survive-substitution">Relations between sides survive substitution</h2>
+<p>An <strong>adapted representation at <span class="math" data-tex="\(x_0\)">\(x_0\)</span></strong> means, near <span class="math" data-tex="\(y_0=F(x_0)\)">\(y_0=F(x_0)\)</span>,
+<span class="math math-display" data-tex="\[
+ u=g+\sum_{j=1}^r b_{G_j}f_j,\qquad
+ G_j=\operatorname{int}C_j^*,
+ \tag{R1}
+\]">\[
+ u=g+\sum_{j=1}^r b_{G_j}f_j,\qquad
+ G_j=\operatorname{int}C_j^*,
+ \tag{R1}
+\]</span>
+where <span class="math" data-tex="\(g\)">\(g\)</span> is real analytic, each <span class="math" data-tex="\(C_j\ne\{0\}\)">\(C_j\ne\{0\}\)</span> is closed convex pointed, and <span class="math" data-tex="\(DF(x_0)^T\)">\(DF(x_0)^T\)</span> kills no nonzero vector in <span class="math" data-tex="\(C_j\)">\(C_j\)</span>.</p>
+<p><strong>Proposition 3 (existence and independence of adapted representations).</strong> Under (P2), such representations exist at every <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. The germ
+<span class="math math-display" data-tex="\[
+ g\circ F+\sum_j F^\circ(b_{G_j}f_j)
+ \tag{R2}
+\]">\[
+ g\circ F+\sum_j F^\circ(b_{G_j}f_j)
+ \tag{R2}
+\]</span>
+depends only on <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof: existence.</strong> The unit singular directions of <span class="math" data-tex="\(u\)">\(u\)</span> over <span class="math" data-tex="\(y_0\)">\(y_0\)</span> form a compact set. If it is empty, compactness of the sphere and openness of the regular locus give a real neighborhood with no analytic wavefront; the projection theorem makes <span class="math" data-tex="\(u\)">\(u\)</span> analytic there.</p>
+<p>Otherwise (P2) gives a positive norm margin for <span class="math" data-tex="\(A^T\)">\(A^T\)</span> on that compact set. Cover it by interiors of finitely many sufficiently small closed convex pointed cones retaining the margin. For example, at a unit direction <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, circular cones
+<span class="math" data-tex="\(\{\eta:\eta\cdot\theta\ge c|\eta|\}\)">\(\{\eta:\eta\cdot\theta\ge c|\eta|\}\)</span>, with <span class="math" data-tex="\(c&lt;1\)">\(c&lt;1\)</span> close to one, have these properties. Let <span class="math" data-tex="\(C_0\)">\(C_0\)</span> be the closed punctured complement of the union of those interiors. Every direction in <span class="math" data-tex="\(C_0\cap S\)">\(C_0\cap S\)</span> is regular at <span class="math" data-tex="\(y_0\)">\(y_0\)</span>; a finite regular cover gives one target neighborhood on which no such direction occurs. Apply the preceding lesson's closed-cover splitting theorem on a smaller bounded target neighborhood. Its <span class="math" data-tex="\(C_0\)">\(C_0\)</span> piece has empty wavefront and is analytic. Each other piece has wavefront in <span class="math" data-tex="\(C_j\)">\(C_j\)</span>, so the exact wedge converse represents it by <span class="math" data-tex="\(b_{G_j}f_j\)">\(b_{G_j}f_j\)</span>. This gives (R1).</p>
+<p><strong>Proof: enlarging the safe cones.</strong> For the independence assertion, combine the finite lists from two representations and insert zero functions in the unused components. Write their difference as
+<span class="math math-display" data-tex="\[
+ 0=d_0+\sum_{j=1}^r d_j,\qquad d_j=b_{G_j}h_j,
+ \tag{R3}
+\]">\[
+ 0=d_0+\sum_{j=1}^r d_j,\qquad d_j=b_{G_j}h_j,
+ \tag{R3}
+\]</span>
+where <span class="math" data-tex="\(d_0\)">\(d_0\)</span> is analytic. Every <span class="math" data-tex="\(C_j\)">\(C_j\)</span> still satisfies (G1). Choose <span class="math" data-tex="\(v_j\in\operatorname{int}(A^TC_j)^*\)">\(v_j\in\operatorname{int}(A^TC_j)^*\)</span>. Its pairing with <span class="math" data-tex="\(A^T\eta\)">\(A^T\eta\)</span>, for <span class="math" data-tex="\(\eta\in C_j\cap S\)">\(\eta\in C_j\cap S\)</span>, has a minimum <span class="math" data-tex="\(a_j&gt;0\)">\(a_j&gt;0\)</span>. For <span class="math" data-tex="\(0&lt;b_j&lt;a_j\)">\(0&lt;b_j&lt;a_j\)</span> put
+<span class="math math-display" data-tex="\[
+ C&#x27;_j=\{\eta:v_j\cdot A^T\eta\ge b_j|\eta|\}.
+ \tag{R4}
+\]">\[
+ C&#x27;_j=\{\eta:v_j\cdot A^T\eta\ge b_j|\eta|\}.
+ \tag{R4}
+\]</span>
+This is a closed convex pointed cone, with <span class="math" data-tex="\(C_j\setminus0\)">\(C_j\setminus0\)</span> in its interior. The inequality implies
+<span class="math" data-tex="\(|A^T\eta|\ge b_j|\eta|/|v_j|\)">\(|A^T\eta|\ge b_j|\eta|/|v_j|\)</span> on <span class="math" data-tex="\(C&#x27;_j\)">\(C&#x27;_j\)</span>, so it remains noncharacteristic. Replace each <span class="math" data-tex="\(h_j\)">\(h_j\)</span> by its restriction to <span class="math" data-tex="\(G&#x27;_j=\operatorname{int}(C&#x27;_j)^*\subset G_j\)">\(G&#x27;_j=\operatorname{int}(C&#x27;_j)^*\subset G_j\)</span>; its boundary does not change.</p>
+<p>Let <span class="math" data-tex="\(C&#x27;_0\)">\(C&#x27;_0\)</span> be the closed punctured complement of the union of the interiors of <span class="math" data-tex="\(C&#x27;_1,\ldots,C&#x27;_r\)">\(C&#x27;_1,\ldots,C&#x27;_r\)</span>. The finite closed conic set
+<span class="math math-display" data-tex="\[
+ \mathcal F=\bigcup_{j=1}^r\operatorname{WF}_A(d_j)
+ \tag{R5}
+\]">\[
+ \mathcal F=\bigcup_{j=1}^r\operatorname{WF}_A(d_j)
+ \tag{R5}
+\]</span>
+is disjoint from <span class="math" data-tex="\(Y_0\times C&#x27;_0\)">\(Y_0\times C&#x27;_0\)</span> on the chosen target neighborhood <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>, because each wavefront lies in its original <span class="math" data-tex="\(C_j\)">\(C_j\)</span>. Apply Theorem 2 of the preceding lesson to the zero tuple and <span class="math" data-tex="\((d_0,d_1,\ldots,d_r)\)">\((d_0,d_1,\ldots,d_r)\)</span>, with this common wavefront bound. There are skew exchanges <span class="math" data-tex="\(e_{jk}\)">\(e_{jk}\)</span> with exact row sums <span class="math" data-tex="\(d_j\)">\(d_j\)</span>. Every <span class="math" data-tex="\(e_{j0}\)">\(e_{j0}\)</span> has empty wavefront, hence is an analytic function; call it <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ d_j=a_j+\sum_{k\ge1}e_{jk}\quad(j\ge1),
+ \qquad d_0=-\sum_{j\ge1}a_j.
+ \tag{R6}
+\]">\[
+ d_j=a_j+\sum_{k\ge1}e_{jk}\quad(j\ge1),
+ \qquad d_0=-\sum_{j\ge1}a_j.
+ \tag{R6}
+\]</span>
+For <span class="math" data-tex="\(j,k\ge1\)">\(j,k\ge1\)</span>, the wavefront of <span class="math" data-tex="\(e_{jk}\)">\(e_{jk}\)</span> lies in <span class="math" data-tex="\(C&#x27;_j\cap C&#x27;_k\)">\(C&#x27;_j\cap C&#x27;_k\)</span>.</p>
+<p><strong>Proof: the exchanges cancel after composition.</strong> The dual geometry and wedge converse give skew holomorphic germs <span class="math" data-tex="\(h_{jk}\)">\(h_{jk}\)</span> on <span class="math" data-tex="\(G&#x27;_j+G&#x27;_k\)">\(G&#x27;_j+G&#x27;_k\)</span> with boundary <span class="math" data-tex="\(e_{jk}\)">\(e_{jk}\)</span>. If that sum is the full space, use its ordinary analytic germ. Boundary uniqueness and (R6) give
+<span class="math math-display" data-tex="\[
+ h_j=a_j^{\mathbb C}+\sum_{k\ge1}h_{jk}|_{G&#x27;_j}.
+ \tag{R7}
+\]">\[
+ h_j=a_j^{\mathbb C}+\sum_{k\ge1}h_{jk}|_{G&#x27;_j}.
+ \tag{R7}
+\]</span>
+The source approach cones chosen for <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> both lie in
+<span class="math" data-tex="\(A^{-1}(G&#x27;_j+G&#x27;_k)\)">\(A^{-1}(G&#x27;_j+G&#x27;_k)\)</span>. If the target sum is proper, this is a nonempty open convex cone, by Lemma 1 applied to <span class="math" data-tex="\(C&#x27;_j\cap C&#x27;_k\)">\(C&#x27;_j\cap C&#x27;_k\)</span>; the intersection inherits (G1). Lemma 2 and cone independence identify the two boundaries of <span class="math" data-tex="\(h_{jk}\circ F^{\mathbb C}\)">\(h_{jk}\circ F^{\mathbb C}\)</span>. If the sum is the full space, ordinary analytic trace gives the same conclusion. Thus the pair terms cancel by skewness after composition. The analytic terms in (R7) cancel <span class="math" data-tex="\(d_0\circ F\)">\(d_0\circ F\)</span> by (R6). The image of (R3) is zero, proving independence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The analytic remainder in this proof is essential. A cover of all target directions can include cones containing normal covectors, whose inverse image approach cone may be empty. Those pieces are handled as analytic functions, rather than by attempting a holomorphic composition on an empty wedge.</p>
+<h2 id="the-pullback-and-its-exact-covector-bound">The pullback and its exact covector bound</h2>
+<p><strong>Theorem 4 (noncharacteristic analytic substitution).</strong> If (P2) holds, formula (R2) defines a linear hyperfunction <span class="math" data-tex="\(F^*u\in\mathcal B(X)\)">\(F^*u\in\mathcal B(X)\)</span>, local in <span class="math" data-tex="\(u\)">\(u\)</span> and in <span class="math" data-tex="\(F\)">\(F\)</span>, with
+<span class="math math-display" data-tex="\[
+ \operatorname{supp}F^*u\subset F^{-1}(\operatorname{supp}u),
+ \qquad
+ \operatorname{WF}_A(F^*u)\subset F^\sharp\operatorname{WF}_A(u).
+ \tag{P3}
+\]">\[
+ \operatorname{supp}F^*u\subset F^{-1}(\operatorname{supp}u),
+ \qquad
+ \operatorname{WF}_A(F^*u)\subset F^\sharp\operatorname{WF}_A(u).
+ \tag{P3}
+\]</span>
+It agrees with composition for analytic functions. It also satisfies
+<span class="math math-display" data-tex="\[
+ F^*(gu)=(g\circ F)F^*u
+ \tag{P4}
+\]">\[
+ F^*(gu)=(g\circ F)F^*u
+ \tag{P4}
+\]</span>
+for analytic <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Proof.</strong> Proposition 3 gives a germ at each source point. On overlaps, the two local formulas are adapted representations of the same restricted input; their cone norm margins persist after shrinking about any point of the overlap. Proposition 3 proves agreement there. The full gluing theorem supplies <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span>. It also proves locality and linearity, by using combined finite representations. Zero input gives zero output, proving the support inclusion.</p>
+<p>For the wavefront assertion fix <span class="math" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span> outside the right side of (P3). If the target singular fiber is empty, the input and output are locally analytic. Otherwise its compact unit directions have nonzero images under <span class="math" data-tex="\(A^T\)">\(A^T\)</span>, and none has image in the positive direction of <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>. The norms and normalized direction separation have positive minima. Choose the cones in the existence proof small enough that their images retain those margins. Every <span class="math" data-tex="\(A^TC_j\)">\(A^TC_j\)</span> is closed convex pointed and excludes <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span>.</p>
+<p>The separation proof in Lemma 3 of the preceding lesson gives <span class="math" data-tex="\(v\in(A^TC_j)^*\)">\(v\in(A^TC_j)^*\)</span> with <span class="math" data-tex="\(v\cdot\xi_0&lt;0\)">\(v\cdot\xi_0&lt;0\)</span>. Add a sufficiently small vector in the interior of that dual to retain the strict negative pairing and obtain <span class="math" data-tex="\(v\in H_j=A^{-1}G_j\)">\(v\in H_j=A^{-1}G_j\)</span>. Choose a small source cone about <span class="math" data-tex="\(v\)">\(v\)</span> whose closure lies in <span class="math" data-tex="\(H_j\)">\(H_j\)</span>. Lemma 2 supplies the composed holomorphic side; the positive-dual boundary estimate excludes <span class="math" data-tex="\(\xi_0\)">\(\xi_0\)</span> from its wavefront over <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. This can be done separately for each of the finitely many pieces. Their sum and the analytic remainder are regular at <span class="math" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span>, proving (P3). This argument uses arbitrarily fine cones around the actual singular fiber, rather than a fixed larger directional bound.</p>
+<p>For (P4), the germ product <span class="math" data-tex="\(g^{\mathbb C}f_j\)">\(g^{\mathbb C}f_j\)</span> has boundary <span class="math" data-tex="\(g\,b_{G_j}f_j\)">\(g\,b_{G_j}f_j\)</span>. To verify this identity with the existing analytic-functional multiplication, multiply the exact translated boundary representatives by the germ <span class="math" data-tex="\(g\)">\(g\)</span>, and use their every-neighborhood carrier bounds; the entire-test identity is the same multiplication, and boundary-carried differences remain boundary-carried. Uniqueness identifies the classes. This also proves <span class="math" data-tex="\(\operatorname{WF}_A(gu)\subset\operatorname{WF}_A(u)\)">\(\operatorname{WF}_A(gu)\subset\operatorname{WF}_A(u)\)</span>: at a pair outside the latter set, take a finite conic splitting with all singular pieces in sufficiently small cones avoiding that covector and an analytic remainder. Multiplying the holomorphic sides by <span class="math" data-tex="\(g^{\mathbb C}\)">\(g^{\mathbb C}\)</span> preserves each cone bound, and the remainder stays analytic. The sum rule excludes the pair. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is noncharacteristic for <span class="math" data-tex="\(gu\)">\(gu\)</span>. Ordinary composition of holomorphic functions now gives (P4) in each adapted representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5 (composition of maps).</strong> Let <span class="math" data-tex="\(G:Z\to X\)">\(G:Z\to X\)</span> be real analytic. If <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F\circ G\)">\(F\circ G\)</span> are noncharacteristic for <span class="math" data-tex="\(u\)">\(u\)</span>, then <span class="math" data-tex="\(G\)">\(G\)</span> is noncharacteristic for <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span>, and
+<span class="math math-display" data-tex="\[
+ G^*(F^*u)=(F\circ G)^*u.
+ \tag{P5}
+\]">\[
+ G^*(F^*u)=(F\circ G)^*u.
+ \tag{P5}
+\]</span></p>
+<p><strong>Proof.</strong> If a covector in the right side of (P3) were killed by <span class="math" data-tex="\(DG^T\)">\(DG^T\)</span>, its original target covector would be killed by <span class="math" data-tex="\(D(F\circ G)^T=DG^TDF^T\)">\(D(F\circ G)^T=DG^TDF^T\)</span>, contrary to the second hypothesis. Thus the iterated pullback is defined.</p>
+<p>At a fixed point refine the adapted target cones until both transpose maps have nonzero margins on each. For one such cone <span class="math" data-tex="\(C\)">\(C\)</span>, choose a vector <span class="math" data-tex="\(w\)">\(w\)</span> strictly positive on the pointed cone <span class="math" data-tex="\((DF\,DG)^TC\)">\((DF\,DG)^TC\)</span>. Then <span class="math" data-tex="\(DG\,w\)">\(DG\,w\)</span> is in the interior of <span class="math" data-tex="\((DF^TC)^*\)">\((DF^TC)^*\)</span>. Take a sufficiently small intermediate approach cone about <span class="math" data-tex="\(DG\,w\)">\(DG\,w\)</span>, with closure in that interior, and a sufficiently small source approach cone about <span class="math" data-tex="\(w\)">\(w\)</span> whose image lies strictly inside the intermediate one. The two applications of Lemma 2 use exactly the holomorphic function <span class="math" data-tex="\(f\circ F^{\mathbb C}\circ G^{\mathbb C}\)">\(f\circ F^{\mathbb C}\circ G^{\mathbb C}\)</span> on a common wedge. Their boundaries coincide. Independence of adapted representations and of the smaller approach cones removes these choices. The analytic remainder composes ordinarily, and local gluing proves (P5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-coordinate-change-retains-its-jacobian">A coordinate change retains its Jacobian</h2>
+<p>We need a contour fact slightly more general than translation. Its complete determinant identity is the supplied <a href="../prerequisites/U011-free-foundations/contour-homotopy-U095.html">contour homotopy proof</a>, equations (A3)–(A4).</p>
+<p><strong>Lemma 6 (the carrier of a moving boundary).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be bounded and open, and <span class="math" data-tex="\(Z_s\)">\(Z_s\)</span>, <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>, a smooth family of complex-valued maps on a neighborhood of <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. Let <span class="math" data-tex="\(q\)">\(q\)</span> be holomorphic near their compact union. For entire <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, set
+<span class="math math-display" data-tex="\[
+ I_s(\phi)=\int_V q(Z_s(x))\phi(Z_s(x))
+                               \det D_xZ_s(x)\,dx.
+ \tag{C1}
+\]">\[
+ I_s(\phi)=\int_V q(Z_s(x))\phi(Z_s(x))
+                               \det D_xZ_s(x)\,dx.
+ \tag{C1}
+\]</span>
+Then <span class="math" data-tex="\(I_1-I_0\)">\(I_1-I_0\)</span> is carried by the compact set
+<span class="math math-display" data-tex="\[
+ B=\{Z_s(x):x\in\partial V,\ 0\le s\le1\}.
+ \tag{C2}
+\]">\[
+ B=\{Z_s(x):x\in\partial V,\ 0\le s\le1\}.
+ \tag{C2}
+\]</span>
+The determinant is complex and oriented.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(w=q\phi\)">\(w=q\phi\)</span>, let <span class="math" data-tex="\(B_\ell(s,x)\)">\(B_\ell(s,x)\)</span> be the determinant obtained from the columns of <span class="math" data-tex="\(D_xZ_s\)">\(D_xZ_s\)</span> by replacing column <span class="math" data-tex="\(\ell\)">\(\ell\)</span> by <span class="math" data-tex="\(\partial_sZ_s\)">\(\partial_sZ_s\)</span>. The cited, fully proved algebraic identity gives
+<span class="math math-display" data-tex="\[
+ \partial_s\big(w(Z_s)\det D_xZ_s\big)
+              =\sum_\ell\partial_{x_\ell}\big(w(Z_s)B_\ell\big).
+ \tag{C3}
+\]">\[
+ \partial_s\big(w(Z_s)\det D_xZ_s\big)
+              =\sum_\ell\partial_{x_\ell}\big(w(Z_s)B_\ell\big).
+ \tag{C3}
+\]</span>
+No invertibility of <span class="math" data-tex="\(D_xZ_s\)">\(D_xZ_s\)</span> is required by that identity. Fix a complex neighborhood <span class="math" data-tex="\(N\)">\(N\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>. Uniform continuity on the compact family gives a sufficiently small real boundary collar whose image, with a small added complex radius, lies in <span class="math" data-tex="\(N\)">\(N\)</span>. Choose <span class="math" data-tex="\(\chi\in C_c^\infty(V)\)">\(\chi\in C_c^\infty(V)\)</span> equal to one off that collar. The integral of
+<span class="math" data-tex="\(\partial_{x_\ell}(\chi w(Z_s)B_\ell)\)">\(\partial_{x_\ell}(\chi w(Z_s)B_\ell)\)</span> is zero, by its compactly supported zero extension. Subtract these divergences from (C3). Every remaining term is supported in the collar and contains only <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and its first derivatives there. Cauchy estimates on the added complex radius bound them by <span class="math" data-tex="\(C_N\sup_N|\phi|\)">\(C_N\sup_N|\phi|\)</span>. All coefficients, derivatives, the parameter interval and the volume of <span class="math" data-tex="\(V\)">\(V\)</span> have fixed finite bounds. Integrating in <span class="math" data-tex="\(x,s\)">\(x,s\)</span> proves the required bound on every <span class="math" data-tex="\(N\)">\(N\)</span>, hence (C2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7 (agreement with coordinate pullback).</strong> If <span class="math" data-tex="\(F:X\to Y\)">\(F:X\to Y\)</span> is a real analytic diffeomorphism, the pullback in Theorem 4 equals the earlier analytic-functional coordinate pullback. Thus, on a compact representative <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span>, with <span class="math" data-tex="\(h=F^{-1}\)">\(h=F^{-1}\)</span>,
+<span class="math math-display" data-tex="\[
+ (F^*a)(\phi)=a\big((\phi\circ h)|\det Dh|\big).
+ \tag{C4}
+\]">\[
+ (F^*a)(\phi)=a\big((\phi\circ h)|\det Dh|\big).
+ \tag{C4}
+\]</span>
+The expression on the right uses the analytic germ whose value on the real set is the absolute determinant.</p>
+<p><strong>Proof.</strong> Work on connected small neighborhoods with compact closure inside the coordinate domains. Let <span class="math" data-tex="\(s=\operatorname{sign}\det DF\)">\(s=\operatorname{sign}\det DF\)</span>, constant there, and <span class="math" data-tex="\(J_h=s\det Dh\)">\(J_h=s\det Dh\)</span>, a holomorphic germ equal to <span class="math" data-tex="\(|\det Dh|\)">\(|\det Dh|\)</span> on the real set. By linearity and adapted representations it suffices to consider <span class="math" data-tex="\(u=b_G f\)">\(u=b_G f\)</span>; ordinary analytic functions already have the correct substitution by the real change-of-variables theorem.</p>
+<p>Choose <span class="math" data-tex="\(V\Subset X\)">\(V\Subset X\)</span> small enough for a strict source direction <span class="math" data-tex="\(v\)">\(v\)</span> in Lemma 2 to work on <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>, and put <span class="math" data-tex="\(W=F(V)\)">\(W=F(V)\)</span>. Its closure lies inside <span class="math" data-tex="\(Y\)">\(Y\)</span>, and <span class="math" data-tex="\(F(\partial V)=\partial W\)">\(F(\partial V)=\partial W\)</span>. Choose a compact boundary representative <span class="math" data-tex="\(a\in A&#x27;(\overline W)\)">\(a\in A&#x27;(\overline W)\)</span>. The exact growth-free boundary construction gives, for <span class="math" data-tex="\(y\)">\(y\)</span> sufficiently small along any fixed strict direction in <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+ a-a_y\in A&#x27;(N),\qquad
+ a_y(\psi)=\int_W f(t+iy)\psi(t+iy)\,dt,
+ \tag{C5}
+\]">\[
+ a-a_y\in A&#x27;(N),\qquad
+ a_y(\psi)=\int_W f(t+iy)\psi(t+iy)\,dt,
+ \tag{C5}
+\]</span>
+for every prescribed complex compact neighborhood <span class="math" data-tex="\(N\)">\(N\)</span> of <span class="math" data-tex="\(\partial W\)">\(\partial W\)</span>.</p>
+<p>Apply the germ test <span class="math" data-tex="\((\phi\circ h)J_h\)">\((\phi\circ h)J_h\)</span>. This use of a germ on the remainder is justified as follows. Choose <span class="math" data-tex="\(N\)">\(N\)</span> to be a sufficiently small thickened real set about <span class="math" data-tex="\(\partial W\)">\(\partial W\)</span>, on which <span class="math" data-tex="\(h,J_h\)">\(h,J_h\)</span> are holomorphic. <a href="AN01-U097.html">Localizing analytic sources without analytic cutoffs</a>, Lemma 3, gives its unique germ action and bounds. Those actions agree with the difference of the actions of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(a_y\)">\(a_y\)</span>: approximate the common germ by entire functions on a slightly larger thickened copy of <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span>, then use the bounds on the smaller carriers. For each prescribed neighborhood of <span class="math" data-tex="\(\partial V\)">\(\partial V\)</span>, continuity puts the image under <span class="math" data-tex="\(h\)">\(h\)</span> of a sufficiently small <span class="math" data-tex="\(N\)">\(N\)</span> inside it, and <span class="math" data-tex="\(J_h\)">\(J_h\)</span> is bounded on a smaller closed neighborhood. The transformed difference in (C5) is therefore carried arbitrarily close to <span class="math" data-tex="\(\partial V\)">\(\partial V\)</span>.</p>
+<p>The transformed <span class="math" data-tex="\(a_y\)">\(a_y\)</span> is
+<span class="math math-display" data-tex="\[
+ \int_W f(t+iy)\phi(h(t+iy))J_h(t+iy)\,dt.
+ \tag{C6}
+\]">\[
+ \int_W f(t+iy)\phi(h(t+iy))J_h(t+iy)\,dt.
+ \tag{C6}
+\]</span>
+Use the full real substitution from <a href="AN01-U025.html">Zero hypersurfaces as curvature measures</a>, Lemma 3.0, with <span class="math" data-tex="\(t=F(x)\)">\(t=F(x)\)</span>. Define <span class="math" data-tex="\(Z_y(x)=h(F(x)+iy)\)">\(Z_y(x)=h(F(x)+iy)\)</span>. Since <span class="math" data-tex="\(|\det DF(x)|=s\det DF(x)\)">\(|\det DF(x)|=s\det DF(x)\)</span>, the weight becomes
+<span class="math math-display" data-tex="\[
+ J_h(F(x)+iy)|\det DF(x)|
+       =\det Dh(F(x)+iy)\det DF(x)=\det D_xZ_y(x).
+ \tag{C7}
+\]">\[
+ J_h(F(x)+iy)|\det DF(x)|
+       =\det Dh(F(x)+iy)\det DF(x)=\det D_xZ_y(x).
+ \tag{C7}
+\]</span>
+Thus (C6) is precisely the contour integral (C1) for <span class="math" data-tex="\(q=f\circ F^{\mathbb C}\)">\(q=f\circ F^{\mathbb C}\)</span> on <span class="math" data-tex="\(Z_y\)">\(Z_y\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(w\in G\)">\(w\in G\)</span> and set <span class="math" data-tex="\(y=\varepsilon w\)">\(y=\varepsilon w\)</span>. Compare <span class="math" data-tex="\(Z_y\)">\(Z_y\)</span> with <span class="math" data-tex="\(x+i\varepsilon v\)">\(x+i\varepsilon v\)</span> by the target-coordinate homotopy
+<span class="math math-display" data-tex="\[
+ Z_r(x)=h\big((1-r)(F(x)+i\varepsilon w)
+                            +rF^{\mathbb C}(x+i\varepsilon v)\big),
+                      \quad 0\le r\le1.
+ \tag{C8}
+\]">\[
+ Z_r(x)=h\big((1-r)(F(x)+i\varepsilon w)
+                            +rF^{\mathbb C}(x+i\varepsilon v)\big),
+                      \quad 0\le r\le1.
+ \tag{C8}
+\]</span>
+Its imaginary target part is a convex combination of two vectors strictly inside <span class="math" data-tex="\(G\)">\(G\)</span>. Their normalized compact sets have a common positive margin; pairing with any fixed nonzero covector in <span class="math" data-tex="\(C\)">\(C\)</span> bounds the combination away from zero at scale <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> the entire homotopy is inside the holomorphic domain of <span class="math" data-tex="\(f\)">\(f\)</span> and inside the inverse chart. Its boundary paths stay within <span class="math" data-tex="\(O(\varepsilon)\)">\(O(\varepsilon)\)</span> of <span class="math" data-tex="\(\partial V\)">\(\partial V\)</span>, uniformly in <span class="math" data-tex="\(x,r\)">\(x,r\)</span>. Lemma 6 therefore makes the difference between (C6) and
+<span class="math math-display" data-tex="\[
+ \int_V f(F^{\mathbb C}(x+i\varepsilon v))
+                               \phi(x+i\varepsilon v)\,dx
+ \tag{C9}
+\]">\[
+ \int_V f(F^{\mathbb C}(x+i\varepsilon v))
+                               \phi(x+i\varepsilon v)\,dx
+ \tag{C9}
+\]</span>
+carried in any prescribed boundary neighborhood, for sufficiently small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>The earlier pullback (C4) of <span class="math" data-tex="\(a\)">\(a\)</span> is carried by <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. Combining (C5)–(C9) gives exactly the shrinking-boundary-carrier comparison that characterizes the boundary class of <span class="math" data-tex="\(f\circ F^{\mathbb C}\)">\(f\circ F^{\mathbb C}\)</span>. The difference of this representative and a representative supplied by the source boundary theorem is carried in every complex neighborhood of <span class="math" data-tex="\(\partial V\)">\(\partial V\)</span>, hence in <span class="math" data-tex="\(\partial V\)">\(\partial V\)</span> itself. The two classes agree. This proves agreement on each side, then on <span class="math" data-tex="\(u\)">\(u\)</span>, and locality proves it on the whole chart. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="boundaries-in-product-variables">Boundaries in product variables</h2>
+<p><strong>Lemma 8 (tensor compatibility).</strong> For holomorphic sides <span class="math" data-tex="\(f,g\)">\(f,g\)</span> with convex approach cones <span class="math" data-tex="\(G,H\)">\(G,H\)</span>,
+<span class="math math-display" data-tex="\[
+ b_{G\times H}(f\otimes g)=(b_G f)\otimes(b_H g).
+ \tag{T1}
+\]">\[
+ b_{G\times H}(f\otimes g)=(b_G f)\otimes(b_H g).
+ \tag{T1}
+\]</span>
+An analytic factor may use the full space as its approach cone and ordinary trace. The tensor on the right is the existing analytic-functional tensor from <span class="unlinked">Analytic tests and real carriers</span>, Proposition 7, localized by Theorem 6 of the hyperfunction lesson.</p>
+<p><strong>Proof.</strong> On a relatively compact rectangle <span class="math" data-tex="\(V\times W\)">\(V\times W\)</span>, choose the compact boundary representatives <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and their translated integrals <span class="math" data-tex="\(a_y,b_z\)">\(a_y,b_z\)</span>. Fubini identifies the translated integral of <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span> with <span class="math" data-tex="\(a_y\otimes b_z\)">\(a_y\otimes b_z\)</span>, including the translation of the entire test in both variables. Algebra gives
+<span class="math math-display" data-tex="\[
+ a\otimes b-a_y\otimes b_z
+       =(a-a_y)\otimes b+a_y\otimes(b-b_z).
+ \tag{T2}
+\]">\[
+ a\otimes b-a_y\otimes b_z
+       =(a-a_y)\otimes b+a_y\otimes(b-b_z).
+ \tag{T2}
+\]</span>
+The complete tensor bound applies to complex compact carriers. For any chosen neighborhood of <span class="math" data-tex="\(\partial(V\times W)\)">\(\partial(V\times W)\)</span>, take the boundary neighborhoods in the two factors and the imaginary displacements sufficiently small. Each term on the right is then carried in that chosen neighborhood: its first or second factor is near the respective boundary, while the other factor is near its closed real domain. This proves the required shrinking-carrier comparison on the rectangle.</p>
+<p>For an analytic factor take its ordinary real integral as representative. The contour lemma gives its comparison with the translated integral for every small height, including zero. For a closed subcone of <span class="math" data-tex="\(G\times H\)">\(G\times H\)</span>, each nonanalytic factor's component is bounded below by a positive multiple of the total height and has directions compactly in its cone. Thus the comparisons are uniform in precisely the required approaches. Boundary uniqueness and restriction to smaller rectangles prove (T1); gluing covers the open product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the projection <span class="math" data-tex="\(\pi(x,y)=y\)">\(\pi(x,y)=y\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \pi^*u=1\otimes u.
+ \tag{T3}
+\]">\[
+ \pi^*u=1\otimes u.
+ \tag{T3}
+\]</span>
+Indeed each adapted side composes to <span class="math" data-tex="\(f(y)\)">\(f(y)\)</span>, whose approach cone is <span class="math" data-tex="\(\mathbb R^n\times G\)">\(\mathbb R^n\times G\)</span>; Lemma 8 identifies its boundary with the existing tensor. The analytic remainder has the same property.</p>
+<h2 id="agreement-with-distributional-restriction">Agreement with distributional restriction</h2>
+<p>We first make the parameter limit explicit. This is the point where a polynomial bound is used for distributional comparison; it is not an assumption in the hyperfunction construction.</p>
+<p><strong>Lemma 9 (a polynomially bounded side with real parameters).</strong> Let <span class="math" data-tex="\(f(x,t)\)">\(f(x,t)\)</span> be a holomorphic side in the joint variables, with polynomial bounds on each compact real neighborhood and each closed approach subcone. Suppose its approach cone contains a vector <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span>, <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>. Then its boundaries
+<span class="math math-display" data-tex="\[
+ w_t=\lim_{\delta\downarrow0}f(\,\cdot+i\delta h,t)
+ \tag{D1}
+\]">\[
+ w_t=\lim_{\delta\downarrow0}f(\,\cdot+i\delta h,t)
+ \tag{D1}
+\]</span>
+exist as distributions in <span class="math" data-tex="\(x\)">\(x\)</span>, depend smoothly on the real parameter <span class="math" data-tex="\(t\)">\(t\)</span> in the strong distribution topology, and reconstruct the joint distributional boundary of <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Proof.</strong> Fix a compact real product and a slightly larger one. Because <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span> is an interior approach direction, a complex polydisk of radius <span class="math" data-tex="\(c\delta\)">\(c\delta\)</span> about <span class="math" data-tex="\((x+i\delta h,t)\)">\((x+i\delta h,t)\)</span> remains within a fixed closed approach subcone for sufficiently small <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. Cauchy estimates therefore give, for each parameter multi-index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+ |\partial_t^\alpha f(x+i\delta h,t)|
+                    \le C_\alpha\delta^{-M-|\alpha|},
+ \tag{D2}
+\]">\[
+ |\partial_t^\alpha f(x+i\delta h,t)|
+                    \le C_\alpha\delta^{-M-|\alpha|},
+ \tag{D2}
+\]</span>
+uniformly on the compact real product. The polynomial exponent <span class="math" data-tex="\(M\)">\(M\)</span> can be enlarged to an integer.</p>
+<p>Apply the full finite Taylor test formula, (2.6)–(2.8) of <a href="AN01-U015.html">Holomorphic boundaries in convex cones</a>, with spatial direction <span class="math" data-tex="\(h\)">\(h\)</span>, to <span class="math" data-tex="\(\partial_t^\alpha f\)">\(\partial_t^\alpha f\)</span>. Choose the test-polynomial order <span class="math" data-tex="\(k\ge M+|\alpha|\)">\(k\ge M+|\alpha|\)</span>. In its remainder integral the bound is a constant times
+<span class="math math-display" data-tex="\[
+ s^k(\delta+s)^{-M-|\alpha|}
+                          \le s^{k-M-|\alpha|},\qquad 0&lt;s&lt;T.
+ \tag{D3}
+\]">\[
+ s^k(\delta+s)^{-M-|\alpha|}
+                          \le s^{k-M-|\alpha|},\qquad 0&lt;s&lt;T.
+ \tag{D3}
+\]</span>
+The right side is integrable. On <span class="math" data-tex="\(s\ge a&gt;0\)">\(s\ge a&gt;0\)</span>, all coefficients converge uniformly on the compact <span class="math" data-tex="\(x,t\)">\(x,t\)</span> product as <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span>. On <span class="math" data-tex="\(0&lt;s&lt;a\)">\(0&lt;s&lt;a\)</span>, the integral of the displayed majorant tends to zero with <span class="math" data-tex="\(a\)">\(a\)</span>, uniformly in <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The top-height term converges uniformly as well. Since the test derivatives occur only up to order <span class="math" data-tex="\(k+1\)">\(k+1\)</span>, this proves convergence uniformly for <span class="math" data-tex="\(t\)">\(t\)</span> in the compact parameter set and for bounded sets of spatial tests.</p>
+<p>Do this for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The ordinary fundamental theorem along a real parameter segment holds before the limit. The uniform bounds just proved permit passage of its integral to the limit, so the limit for <span class="math" data-tex="\(\alpha+e_j\)">\(\alpha+e_j\)</span> is the <span class="math" data-tex="\(j\)">\(j\)</span>-th derivative of the limit for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, uniformly on bounded test sets. Repeating proves strong smoothness. The test order may increase with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; no common finite order for all parameter derivatives is claimed.</p>
+<p>Finally test with <span class="math" data-tex="\(\psi(x,t)\in C_c^\infty\)">\(\psi(x,t)\in C_c^\infty\)</span>. The family <span class="math" data-tex="\(\psi(\,\cdot,t)\)">\(\psi(\,\cdot,t)\)</span> has a common compact support and uniformly bounded derivatives. Fubini at positive height, followed by the same uniform estimates, identifies the limit with <span class="math" data-tex="\(\int w_t(\psi(\,\cdot,t))\,dt\)">\(\int w_t(\psi(\,\cdot,t))\,dt\)</span>. Since translation along <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span> lies in the original cone, its distributional boundary is exactly this limit. This proves reconstruction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 10 (agreement on distributions).</strong> If <span class="math" data-tex="\(u\in\mathcal D&#x27;(Y)\)">\(u\in\mathcal D&#x27;(Y)\)</span> satisfies (P2), the hyperfunction <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span> of Theorem 4 is the embedded distribution defined by the supplied smooth pullback construction.</p>
+<p><strong>Proof: a flat inclusion.</strong> Consider <span class="math" data-tex="\(i(x)=(x,0)\)">\(i(x)=(x,0)\)</span> and a distribution <span class="math" data-tex="\(v(x,t)\)">\(v(x,t)\)</span> with no analytic normal covectors near that slice. On a small product neighborhood, first multiply by a compact cutoff equal to one on a larger neighborhood. Apply the distributional conic splitting in <a href="AN01-U079.html">Boundary regularity and conic decomposition</a>, Theorem 4, with sufficiently small cones around the local analytic wavefront. The remaining pieces are analytic on the smaller neighborhood. The singular cones avoid covectors with zero <span class="math" data-tex="\(x\)">\(x\)</span>-component. For each such cone Lemma 1 supplies a vector <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span> in its dual interior. Choose a smaller open convex approach cone containing this vector, with closure strictly inside that interior. The analytic case of <a href="AN01-U081.html">From wavefront cones to holomorphic wedges</a>, Theorem 3 and its absorbed analytic remainder, represents the piece on a smaller real neighborhood by a polynomially bounded side on this smaller cone. Its dual still contains no nonzero pure parameter covector: such a covector has zero pairing with the interior vector <span class="math" data-tex="\((h,0)\)">\((h,0)\)</span>, so a small perturbation of that vector gives a negative pairing. The resulting representation is therefore adapted to <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>Lemma 9 gives a strong smooth family <span class="math" data-tex="\(w_t\)">\(w_t\)</span> reconstructing each distributional piece. The complete supplied parameter-slice theorem, Section 18.6, gives its existing restrictions <span class="math" data-tex="\(i_t^*v\)">\(i_t^*v\)</span> as another strong smooth family reconstructing the same distribution. These families agree: for every fixed spatial test their difference is a continuous scalar function of <span class="math" data-tex="\(t\)">\(t\)</span> with zero pairing against all compact parameter tests. A nonzero value would, after multiplication by a fixed phase, give positive real part on a small ball and a nonzero pairing with a nonnegative bump. Thus their difference is zero. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, (D1) is exactly the new holomorphic-side pullback by <span class="math" data-tex="\(i\)">\(i\)</span>. Analytic remainders agree ordinarily. This proves agreement for the flat inclusion.</p>
+<p><strong>Proof: reduce an arbitrary map to that inclusion.</strong> Locally introduce
+<span class="math math-display" data-tex="\[
+ \pi(x,y)=y,\qquad
+ \kappa(x,t)=(x,F(x)+t),\qquad
+ i(x)=(x,0).
+ \tag{D4}
+\]">\[
+ \pi(x,y)=y,\qquad
+ \kappa(x,t)=(x,F(x)+t),\qquad
+ i(x)=(x,0).
+ \tag{D4}
+\]</span>
+The map <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is an analytic diffeomorphism with inverse
+<span class="math" data-tex="\((x,y)\mapsto(x,y-F(x))\)">\((x,y)\mapsto(x,y-F(x))\)</span>, and <span class="math" data-tex="\(F=\pi\circ\kappa\circ i\)">\(F=\pi\circ\kappa\circ i\)</span>.
+Projection compatibility (T3) and Theorem 7 identify the first two
+hyperfunction operations with their distribution operations. Denote the resulting distribution by
+<span class="math math-display" data-tex="\[
+ v(x,t)=u(F(x)+t).
+ \tag{D5}
+\]">\[
+ v(x,t)=u(F(x)+t).
+ \tag{D5}
+\]</span>
+This notation means the defined tensor and coordinate pullback. The existing distributional coordinate and projection wavefront equalities give its possible covectors as
+<span class="math math-display" data-tex="\[
+ (x,t;DF(x)^T\eta,\eta),
+                \qquad (F(x)+t,\eta)\in\operatorname{WF}_A(u).
+ \tag{D6}
+\]">\[
+ (x,t;DF(x)^T\eta,\eta),
+                \qquad (F(x)+t,\eta)\in\operatorname{WF}_A(u).
+ \tag{D6}
+\]</span>
+At a fixed <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, compactness of the unit singular directions and (P2) give a positive lower norm for their <span class="math" data-tex="\(DF(x_0)^T\)">\(DF(x_0)^T\)</span>-images. Closedness of the analytic wavefront and continuity preserve this margin for <span class="math" data-tex="\(x\)">\(x\)</span> near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, <span class="math" data-tex="\(t\)">\(t\)</span> near zero and the relevant nearby target singular directions. Thus no nonzero covector in (D6) has zero <span class="math" data-tex="\(x\)">\(x\)</span>-component there. The flat-inclusion result applies. Hyperfunction functoriality now identifies the new <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span> with the existing slice <span class="math" data-tex="\(i^*v\)">\(i^*v\)</span>.</p>
+<p>It remains to identify this slice with the original arbitrary-map distribution construction, without presuming a general composition law for distributions. Choose a compact target cutoff <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near the relevant image and put <span class="math" data-tex="\(a=\chi u\)">\(a=\chi u\)</span>. Let <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span> be a smooth compactly supported parameter test of integral one, and <span class="math" data-tex="\(\rho_\varepsilon(t)=\varepsilon^{-m}\rho(t/\varepsilon)\)">\(\rho_\varepsilon(t)=\varepsilon^{-m}\rho(t/\varepsilon)\)</span>. For a source test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, the distributional tensor and coordinate definitions, followed by Fourier inversion, give
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ v(\phi(x)\rho_\varepsilon(t))
+  =(2\pi)^{-m}\int \widehat a(\eta)
+     \left(\int \phi(x)e^{iF(x)\cdot\eta}\,dx\right)
+                          \widehat\rho(-\varepsilon\eta)\,d\eta .
+ \end{split}
+ \tag{D7}
+\]">\[
+ \begin{split}
+ v(\phi(x)\rho_\varepsilon(t))
+  =(2\pi)^{-m}\int \widehat a(\eta)
+     \left(\int \phi(x)e^{iF(x)\cdot\eta}\,dx\right)
+                          \widehat\rho(-\varepsilon\eta)\,d\eta .
+ \end{split}
+ \tag{D7}
+\]</span>
+For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> the cutoff is one at all required points. The exact two absolute envelopes in the supplied Section 18.5 apply: rapid input decay near normal directions, and nonstationary decay of the inner integral elsewhere. They dominate (D7) uniformly, since <span class="math" data-tex="\(|\widehat\rho|\le\|\rho\|_1=1\)">\(|\widehat\rho|\le\|\rho\|_1=1\)</span>. Hence its limit is exactly the original formula (WF12) for <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span>. On the left, the strong smooth family of Section 18.6 makes the approximate-identity limit its actual slice at zero. This proves the required identification and the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="coordinates-and-submersions">Coordinates and submersions</h2>
+<p><strong>Corollary 11 (exact geometric consequences).</strong> For an analytic diffeomorphism <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>,
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_A(\kappa^*u)
+       =\{(x,D\kappa(x)^T\eta):
+                          (\kappa(x),\eta)\in\operatorname{WF}_A(u)\}.
+ \tag{E1}
+\]">\[
+ \operatorname{WF}_A(\kappa^*u)
+       =\{(x,D\kappa(x)^T\eta):
+                          (\kappa(x),\eta)\in\operatorname{WF}_A(u)\}.
+ \tag{E1}
+\]</span>
+Consequently the analytic wavefront of a hyperfunction is well defined in the nonzero cotangent bundle of a real analytic manifold, with the existing hyperfunction coordinate convention. If <span class="math" data-tex="\(F\)">\(F\)</span> is an analytic submersion, every hyperfunction can be pulled back and
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_A(F^*u)=F^\sharp\operatorname{WF}_A(u),
+ \qquad
+ \operatorname{supp}F^*u=F^{-1}(\operatorname{supp}u).
+ \tag{E2}
+\]">\[
+ \operatorname{WF}_A(F^*u)=F^\sharp\operatorname{WF}_A(u),
+ \qquad
+ \operatorname{supp}F^*u=F^{-1}(\operatorname{supp}u).
+ \tag{E2}
+\]</span></p>
+<p><strong>Proof.</strong> The normal set of a diffeomorphism is empty. Apply (P3) to it and to its inverse, and use (P5), or the now identified inverse-Jacobian formula, to obtain both inclusions in (E1). The chain rule gives consistency on triple chart overlaps, while Theorem 7 identifies these transitions with the existing hyperfunction sheaf on the manifold.</p>
+<p>For a projection <span class="math" data-tex="\(\pi(x,z)=x\)">\(\pi(x,z)=x\)</span>, (P3) places the wavefront of <span class="math" data-tex="\(\pi^*u\)">\(\pi^*u\)</span> only at covectors <span class="math" data-tex="\((\eta,0)\)">\((\eta,0)\)</span>. Each section <span class="math" data-tex="\(j_z(x)=(x,z)\)">\(j_z(x)=(x,z)\)</span> is therefore noncharacteristic for it. Functoriality gives <span class="math" data-tex="\(j_z^*\pi^*u=u\)">\(j_z^*\pi^*u=u\)</span>. Applying (P3) to this identity supplies the reverse inclusion, and proves equality at every fiber point. The same identity and locality give equality of supports.</p>
+<p>A submersion admits analytic projection coordinates: select a nonzero maximal minor of <span class="math" data-tex="\(DF\)">\(DF\)</span> and complete its components with the remaining original source coordinates. The resulting square analytic map has nonzero determinant. Lemma 3 of the earlier analytic-pullback lesson proves its analytic local inverse, so locally <span class="math" data-tex="\(F=\pi\circ\kappa\)">\(F=\pi\circ\kappa\)</span>. Functoriality, projection equality and (E1) give (E2), with <span class="math" data-tex="\(D\kappa^T(\eta,0)=DF^T\eta\)">\(D\kappa^T(\eta,0)=DF^T\eta\)</span>. The support equality transfers in the same way. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If the target has dimension zero, its hyperfunctions are constants: the one-point open set has empty boundary, and its analytic-functional quotient is the linear dual of the constant entire tests, namely <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. All pullbacks are ordinary constant functions. If the source has dimension zero, (P2) requires the whole target singular fiber at the image point to be empty; the projection theorem makes the input analytic nearby, and pullback is its value. All these wavefront sets are empty. The zero-dimensional identity is included.</p>
+<p><a href="../figures/analytic-substitution-parabola.svg"><img src="assets/AN01-U101/analytic-substitution-parabola-30BCAA92F213AF84448255E2125BA529108ADA4AA26C27666B02F687289EC001.png" alt="A transverse parabola and its pulled-back singular covectors" class="course-figure" width="1860" height="1005" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="analytic-substitution-parabola" data-asset-sha256="30BCAA92F213AF84448255E2125BA529108ADA4AA26C27666B02F687289EC001"></a></p>
+<p><em>The map <span class="math" data-tex="\(F(s)=(s,s^2-1)\)">\(F(s)=(s,s^2-1)\)</span> crosses <span class="math" data-tex="\(y_2=0\)">\(y_2=0\)</span> at <span class="math" data-tex="\(s=-1,1\)">\(s=-1,1\)</span>. The left panel draws the selected target covector <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> at each crossing using the Euclidean coordinate identification. The right panel uses cotangent coordinates <span class="math" data-tex="\((s,\xi)\)">\((s,\xi)\)</span>: the transpose derivative sends these covectors to <span class="math" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, respectively. Both nonzero covector directions occur over each root for the delta distribution. Its scalar pullback has weight <span class="math" data-tex="\(1/|2s|=1/2\)">\(1/|2s|=1/2\)</span> at each root. The figure shows exact coordinates and the calculation in Exercise 2; it does not impose a rank condition away from the singular set. <a href="../figures/analytic-substitution-parabola.py">Editable figure source</a>.</em></p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic) — the constant-map case.</strong> Let <span class="math" data-tex="\(F(x)=y_0\)">\(F(x)=y_0\)</span>. State exactly when (P2) holds and compute the pullback then. Include a source consisting of one point.</p>
+<p><strong>Solution.</strong> The derivative is zero, so <span class="math" data-tex="\(N_F\)">\(N_F\)</span> contains every nonzero covector at <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. Condition (P2) is precisely emptiness of that analytic singular fiber. The projection theorem, with compactness of the sphere, makes <span class="math" data-tex="\(u\)">\(u\)</span> an analytic function near <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. Its pullback is the constant <span class="math" data-tex="\(u(y_0)\)">\(u(y_0)\)</span>. For a one-point source this same argument defines its scalar value; there is no nonzero source covector. If the target also consists of one point, every input is already such a scalar.</p>
+<p><strong>Exercise 2 (intermediate) — all weights at transverse roots.</strong> Let <span class="math" data-tex="\(u(y_1,y_2)=\delta_0(y_2)\)">\(u(y_1,y_2)=\delta_0(y_2)\)</span>, and <span class="math" data-tex="\(F(s)=(s,s^2-1)\)">\(F(s)=(s,s^2-1)\)</span>. Verify (P2), compute <span class="math" data-tex="\(F^*u\)">\(F^*u\)</span>, and determine its complete analytic wavefront.</p>
+<p><strong>Solution.</strong> Projection equality and the two directions of the one-dimensional delta give
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_A(u)
+       =\{(y_1,0;0,\eta):\eta\ne0\}.
+ \tag{X1}
+\]">\[
+ \operatorname{WF}_A(u)
+       =\{(y_1,0;0,\eta):\eta\ne0\}.
+ \tag{X1}
+\]</span>
+Only <span class="math" data-tex="\(s=\pm1\)">\(s=\pm1\)</span> meets its base. The transpose sends <span class="math" data-tex="\((0,\eta)\)">\((0,\eta)\)</span> to <span class="math" data-tex="\(2s\eta\)">\(2s\eta\)</span>, which is nonzero there; thus (P2) holds everywhere. Near either root, <span class="math" data-tex="\(p(s)=s^2-1\)">\(p(s)=s^2-1\)</span> is a local analytic diffeomorphism. Formula (C4) gives a delta of weight <span class="math" data-tex="\(1/|p&#x27;(s)|\)">\(1/|p&#x27;(s)|\)</span>. Off the roots locality gives zero, so
+<span class="math math-display" data-tex="\[
+ F^*u=\frac12\delta_{-1}+\frac12\delta_1.
+ \tag{X2}
+\]">\[
+ F^*u=\frac12\delta_{-1}+\frac12\delta_1.
+ \tag{X2}
+\]</span>
+The local inverse also gives wavefront equality at each root by (E1). Equivalently, each nonzero delta coefficient has both analytic directions, and the other term vanishes in a neighborhood of that root. Therefore
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_A(F^*u)
+                 =\{(-1,\xi),(1,\xi):\xi\ne0\}.
+ \tag{X3}
+\]">\[
+ \operatorname{WF}_A(F^*u)
+                 =\{(-1,\xi),(1,\xi):\xi\ne0\}.
+ \tag{X3}
+\]</span>
+The weights use the absolute derivative; the opposite signs of <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> do not cancel the two masses.</p>
+<p><strong>Exercise 3 (intermediate) — failure of a sufficient criterion.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be the locally integrable function equal to zero on the negative half-line and one on the positive half-line, with any value at zero. For <span class="math" data-tex="\(p(s)=s^2\)">\(p(s)=s^2\)</span>, show that (P2) fails at zero, although pointwise composition of this bounded representative defines the constant-one distribution.</p>
+<p><strong>Solution.</strong> The distribution <span class="math" data-tex="\(H\)">\(H\)</span> is not analytic near zero. Indeed an analytic representative agreeing with it would be zero on a negative open interval and one on a positive open interval, contradicting continuity and the identity principle. By the projection theorem there is at least one nonzero analytic singular covector at zero. Since <span class="math" data-tex="\(p&#x27;(0)=0\)">\(p&#x27;(0)=0\)</span>, it is normal to <span class="math" data-tex="\(p\)">\(p\)</span>, and (P2) fails. Nevertheless <span class="math" data-tex="\(H(s^2)=1\)">\(H(s^2)=1\)</span> for every <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>. Its exceptional value at one point does not affect its locally integrable distribution, which is the constant one. This is a calculation for this representative and input; Theorem 4 does not assert a pullback for arbitrary hyperfunctions at a failed normal condition.</p>
+<p><strong>Exercise 4 (advanced) — a substitution beyond distributions.</strong> Put
+<span class="math math-display" data-tex="\[
+ v=b_+\exp(-1/z^2),\qquad u=1\otimes v,\qquad F(s)=(s,s).
+ \tag{X4}
+\]">\[
+ v=b_+\exp(-1/z^2),\qquad u=1\otimes v,\qquad F(s)=(s,s).
+ \tag{X4}
+\]</span>
+Show that <span class="math" data-tex="\(F^*u=v\)">\(F^*u=v\)</span>, verify transversality, and explain why the result is not a distribution.</p>
+<p><strong>Solution.</strong> The preceding growth-free lesson proves that <span class="math" data-tex="\(v\)">\(v\)</span> is analytic off zero, has only the positive analytic covector ray at zero, and is not a distribution: its holomorphic representative takes the value <span class="math" data-tex="\(e^{1/t^2}\)">\(e^{1/t^2}\)</span> at <span class="math" data-tex="\(it\)">\(it\)</span>, contradicting any polynomial boundary estimate if its boundary were a distribution, by the proved converse and uniqueness. Projection equality gives
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_A(u)
+                    =\{(y_1,0;0,\eta):\eta&gt;0\}.
+ \tag{X5}
+\]">\[
+ \operatorname{WF}_A(u)
+                    =\{(y_1,0;0,\eta):\eta&gt;0\}.
+ \tag{X5}
+\]</span>
+Along <span class="math" data-tex="\(F\)">\(F\)</span> the transpose maps <span class="math" data-tex="\((0,\eta)\)">\((0,\eta)\)</span> to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, so (P2) holds. The holomorphic representative independent of <span class="math" data-tex="\(y_1\)">\(y_1\)</span> composes to <span class="math" data-tex="\(\exp(-1/s^2)\)">\(\exp(-1/s^2)\)</span> on the upper side. Tensor compatibility and the definition give <span class="math" data-tex="\(F^*u=v\)">\(F^*u=v\)</span>, retaining its nondistributional character. No growth bound was needed to construct this pullback.</p>
+<p><strong>Exercise 5 (intermediate) — an orientation-reversing chart.</strong> For <span class="math" data-tex="\(F(s)=a-cs\)">\(F(s)=a-cs\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, compute <span class="math" data-tex="\(F^*(\partial_y^k\delta_a)\)">\(F^*(\partial_y^k\delta_a)\)</span>. Also compute the pullback of the point functional
+<span class="math math-display" data-tex="\[
+ A(\psi)=\sum_{k\ge0}\frac{\psi^{(k)}(a)}{(k!)^2},
+ \tag{X6}
+\]">\[
+ A(\psi)=\sum_{k\ge0}\frac{\psi^{(k)}(a)}{(k!)^2},
+ \tag{X6}
+\]</span>
+and check composition with <span class="math" data-tex="\(G(t)=dt\)">\(G(t)=dt\)</span>, <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>.</p>
+<p><strong>Solution.</strong> The inverse germ is <span class="math" data-tex="\(h(y)=(a-y)/c\)">\(h(y)=(a-y)/c\)</span>, with absolute derivative <span class="math" data-tex="\(1/c\)">\(1/c\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ F^*(\partial_y^k\delta_a)
+                =\frac{(-1)^k}{c^{k+1}}\partial_s^k\delta_0,
+ \qquad
+ (F^*A)(\phi)=
+       \sum_{k\ge0}\frac{(-1)^k\phi^{(k)}(0)}
+                              {c^{k+1}(k!)^2}.
+ \tag{X7}
+\]">\[
+ F^*(\partial_y^k\delta_a)
+                =\frac{(-1)^k}{c^{k+1}}\partial_s^k\delta_0,
+ \qquad
+ (F^*A)(\phi)=
+       \sum_{k\ge0}\frac{(-1)^k\phi^{(k)}(0)}
+                              {c^{k+1}(k!)^2}.
+ \tag{X7}
+\]</span>
+The first formula follows by differentiating <span class="math" data-tex="\(\phi((a-y)/c)/c\)">\(\phi((a-y)/c)/c\)</span> exactly <span class="math" data-tex="\(k\)">\(k\)</span> times, including the sign in the distributional derivative. For the second, Cauchy bounds on any disk of radius <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> give absolute convergence bounded by
+<span class="math" data-tex="\(c^{-1}\sup|\phi|\sum_k(cr)^{-k}/k!\)">\(c^{-1}\sup|\phi|\sum_k(cr)^{-k}/k!\)</span>, so the germ pairing is legitimate. Pulling back once more by <span class="math" data-tex="\(G\)">\(G\)</span> multiplies the <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative coefficient by <span class="math" data-tex="\(d^{-k-1}\)">\(d^{-k-1}\)</span>. This is exactly (X7) with <span class="math" data-tex="\(c\)">\(c\)</span> replaced by <span class="math" data-tex="\(cd\)">\(cd\)</span>, as required by <span class="math" data-tex="\(F\circ G(t)=a-cdt\)">\(F\circ G(t)=a-cdt\)</span>.</p>
+<p><strong>Exercise 6 (intermediate) — parameter order in the boundary formula.</strong> Under the hypotheses of Lemma 9, suppose the original polynomial exponent is <span class="math" data-tex="\(M\)">\(M\)</span>. Give a sufficient spatial test order for <span class="math" data-tex="\(q\)">\(q\)</span> parameter derivatives, and explain why the proof does not assert one common order for all <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Solution.</strong> Cauchy bounds give exponent at most <span class="math" data-tex="\(M+q\)">\(M+q\)</span> for a derivative of order <span class="math" data-tex="\(q\)">\(q\)</span>. A Taylor test polynomial of degree <span class="math" data-tex="\(k\ge M+q\)">\(k\ge M+q\)</span> has integrable remainder (D3) and requires derivatives of the spatial test up to order <span class="math" data-tex="\(k+1\)">\(k+1\)</span>. Thus <span class="math" data-tex="\(M+q+1\)">\(M+q+1\)</span> is a sufficient test order. Each bounded set of tests controls that finite collection of derivatives, proving the corresponding strong derivative. As <span class="math" data-tex="\(q\)">\(q\)</span> increases the sufficient order increases; the proof makes no finite-order assertion uniform over all parameter derivatives, and no such assertion is needed for smoothness in the strong distribution topology.</p>
+<p><strong>Exercise 7 (advanced) — why a composite condition is needed.</strong> Let <span class="math" data-tex="\(F(x_1,x_2)=x_1\)">\(F(x_1,x_2)=x_1\)</span>, <span class="math" data-tex="\(u=\delta_0\)">\(u=\delta_0\)</span>, and compare <span class="math" data-tex="\(G_0(t)=(0,t)\)">\(G_0(t)=(0,t)\)</span> with <span class="math" data-tex="\(G_1(t)=(t,t^2)\)">\(G_1(t)=(t,t^2)\)</span>. Determine which composition is covered by Proposition 5 and compute it.</p>
+<p><strong>Solution.</strong> The map <span class="math" data-tex="\(F\)">\(F\)</span> is a submersion, so it is noncharacteristic for <span class="math" data-tex="\(u\)">\(u\)</span>, and
+<span class="math" data-tex="\(F^*u=\delta_0(x_1)\otimes1\)">\(F^*u=\delta_0(x_1)\otimes1\)</span>. Its wavefront is
+<span class="math math-display" data-tex="\[
+ \{(0,x_2;\eta,0):\eta\ne0\}.
+ \tag{X8}
+\]">\[
+ \{(0,x_2;\eta,0):\eta\ne0\}.
+ \tag{X8}
+\]</span>
+The derivative of <span class="math" data-tex="\(G_0\)">\(G_0\)</span> kills all these covectors; also <span class="math" data-tex="\(F\circ G_0\)">\(F\circ G_0\)</span> is the constant zero map and fails (P2) for <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. Proposition 5 consequently does not define that iterated operation. In contrast <span class="math" data-tex="\(F\circ G_1(t)=t\)">\(F\circ G_1(t)=t\)</span>, whose normal set is empty. The proposition applies and gives
+<span class="math math-display" data-tex="\[
+ G_1^*(\delta_0(x_1)\otimes1)=\delta_0(t).
+ \tag{X9}
+\]">\[
+ G_1^*(\delta_0(x_1)\otimes1)=\delta_0(t).
+ \tag{X9}
+\]</span>
+This verifies both the relevant hypothesis and the normalization, without inferring nonexistence of every possible input-specific operation at <span class="math" data-tex="\(G_0\)">\(G_0\)</span>.</p>
+<p><strong>Exercise 8 (advanced) — singularity detection along every fiber.</strong> Let <span class="math" data-tex="\(u\in\mathcal B(U)\)">\(u\in\mathcal B(U)\)</span>, let <span class="math" data-tex="\(\pi:U\times V\to U\)">\(\pi:U\times V\to U\)</span> be projection, and fix <span class="math" data-tex="\(z_0\in V\)">\(z_0\in V\)</span>. Prove directly from the pullback bound and composition that every <span class="math" data-tex="\((x,\eta)\in\operatorname{WF}_A(u)\)">\((x,\eta)\in\operatorname{WF}_A(u)\)</span> produces <span class="math" data-tex="\((x,z_0;\eta,0)\in\operatorname{WF}_A(\pi^*u)\)">\((x,z_0;\eta,0)\in\operatorname{WF}_A(\pi^*u)\)</span>. State the corresponding support conclusion.</p>
+<p><strong>Solution.</strong> The pullback bound already places every wavefront covector of <span class="math" data-tex="\(\pi^*u\)">\(\pi^*u\)</span> in the form <span class="math" data-tex="\((\eta,0)\)">\((\eta,0)\)</span>. Hence the section <span class="math" data-tex="\(j_{z_0}(x)=(x,z_0)\)">\(j_{z_0}(x)=(x,z_0)\)</span> is noncharacteristic for it: the transpose sends this covector to <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>. By composition <span class="math" data-tex="\(j_{z_0}^*\pi^*u=u\)">\(j_{z_0}^*\pi^*u=u\)</span>. The bound for this section gives
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}_A(u)
+ \subset\{(x,\eta):(x,z_0;\eta,0)
+                         \in\operatorname{WF}_A(\pi^*u)\},
+ \tag{X10}
+\]">\[
+ \operatorname{WF}_A(u)
+ \subset\{(x,\eta):(x,z_0;\eta,0)
+                         \in\operatorname{WF}_A(\pi^*u)\},
+ \tag{X10}
+\]</span>
+which proves the assertion at the chosen fiber point, and <span class="math" data-tex="\(z_0\)">\(z_0\)</span> was arbitrary. If <span class="math" data-tex="\(\pi^*u\)">\(\pi^*u\)</span> vanished on a neighborhood of <span class="math" data-tex="\((x,z_0)\)">\((x,z_0)\)</span>, its pullback by that section would vanish near <span class="math" data-tex="\(x\)">\(x\)</span>. Together with locality of projection pullback this proves
+<span class="math" data-tex="\(\operatorname{supp}\pi^*u=\operatorname{supp}u\times V\)">\(\operatorname{supp}\pi^*u=\operatorname{supp}u\times V\)</span>.</p>
+<h2 id="programme-proofs-and-mathematical-source">Programme proofs and mathematical source</h2>
+<ul>
+<li><span class="unlinked">Analytic tests and real carriers</span>, Proposition 7, proves complex-carrier tensors and the real-germ transport formula. <a href="AN01-U097.html">Localizing analytic sources without analytic cutoffs</a>, Lemma 3, proves the thickened-real germ action used in (C5). <a href="AN01-U098.html">Hyperfunctions from local analytic sources</a>, Theorems 3 and 6–7, supplies the existing local spaces, tensor and coordinate conventions.</li>
+<li><a href="AN01-U099.html">Holomorphic boundary values without growth bounds</a>, Theorems 4 and 6–7, and <a href="AN01-U100.html">Directional splitting and holomorphic compatibility</a>, Theorem 2 and Lemma 3, supply the exact boundary and decomposition interfaces. The full <a href="../prerequisites/U011-free-foundations/contour-homotopy-U095.html">contour identity</a> is used with its oriented determinant.</li>
+<li><a href="AN01-U015.html">Holomorphic boundaries in convex cones</a>, Theorem 2.1 and its explicit Taylor formula, supplies the finite-order distribution boundary estimate. The <a href="AN01-U083-prerequisite.html">smooth pullback construction</a> and <a href="AN01-U101-prerequisite.html">strong parameter slices</a> supply the actual distributional comparison. Their original programme authorship is retained.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, reprint of the second edition, Springer, 2003, <a href="https://doi.org/10.1007/978-3-642-61497-2">doi:10.1007/978-3-642-61497-2</a>, Section 9.3, the analytic pullback construction and equation (9.3.2), its coordinate interpretation and the required agreement with earlier diffeomorphism pullback; compare Theorem 8.5.1. These supply the mathematical target. The explicit treatment of analytic remainders, contour-carrier comparison, distributional agreement, teaching organization, examples, exercises and figure here are independently expressed.</li>
+</ul>
+<p>The full two-factor tensor wavefront estimate, admissible products, proper integration and general kernel operations require their additional proofs. Tensor compatibility (T1) provides the boundary identity used here, without asserting those further bounds.</p>
+</main></body></html>

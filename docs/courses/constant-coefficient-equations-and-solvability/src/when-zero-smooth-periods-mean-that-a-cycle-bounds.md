@@ -114,7 +114,7 @@ Suppose the projection \(p:M_x\to Y_x\) sends a smooth cycle \(k\) to zero in co
 
 AH5 says that each closed smooth form on \(M_x\), modulo an exact form, is a sum of these two kinds. Stokes kills the exact term. All smooth periods of \(k\) therefore vanish, so (L1) gives \([k]=0\) over \(\mathbb C\), and over \(\mathbb Q\) if the cycle is rational. In degree zero there is no fiber term.
 
-For the canonical cycle, AH4 supplies the fiber-period premise relative to its stated D7 deformation input and C7 adapter. The projected-class premise still needs its own proof and exact orientation/multiplicity comparison. Rational-form completeness, tube injectivity and global component constancy remain separate.
+For the canonical cycle, AH4 supplies the fiber-period premise using the compact permitted-field and whole-sphere extension proofs in [Tangent cones that permit an imaginary push](../AN02-L118.html#lc035-6-the-exact-field-adapters-used-in-c7-c8-and-ah3). The projected-class premise still needs its own proof and exact orientation/multiplicity comparison. Rational-form completeness, tube injectivity and global component constancy remain separate.
 
 ## Exercises with complete solutions
 
@@ -551,7 +551,7 @@ For a finite smooth \(q\)-cycle \(k\), suppose \(p_*[k]=0\) in ordinary complex 
 
 In degree zero the second condition is absent. The projective smooth/continuous comparison gives a smooth bounding chain for \(p_\# k\), so Stokes kills \(\int_k p^*\eta\) for every closed smooth \(q\)-form \(\eta\) on \(Y_x\). Equation (CD9.1) means that each closed \(\omega\) on \(M_x\) is \(p^*\eta+\vartheta\wedge p^*\beta+\mathrm d\gamma\), with closed base forms. Stokes also kills the exact term. Thus every closed smooth period of \(k\) is zero, and CD034 gives \([k]=0\) over \(\mathbb C\). If \(k\) has rational coefficients, (CD7.1) gives zero over \(\mathbb Q\). For a reduced zero-cycle, use the injected reduced class as described in CD7.
 
-For the canonical \(k_x\) and \(q=n-2\), AH4 supplies (CD9.2) **relative to its still-declared D7 compact-cone/imaginary-deformation inputs and its exact C7 adapter**. This lemma does not prove those inputs. It also does not prove the premise \(p_*[k_x]=0\), the precise orientation or scalar identifying that projected class with a projective Petrowsky boundary, completeness of rational projective forms, injectivity of a projective tube map, Stein homology vanishing or compact-support duality. Testing a special family of rational forms becomes sufficient only after a separate proof that it covers the relevant smooth cohomology. Global component constancy and the full course dependency closure remain separate obligations.
+For the canonical \(k_x\) and \(q=n-2\), AH4 supplies (CD9.2) using [Tangent cones that permit an imaginary push](../AN02-L118.html#lc035-5-uniform-bounds-for-compact-permitted-field-values) for the compact-cone deformation and whole-sphere field extension. Those inputs have available proofs. It also does not prove the premise \(p_*[k_x]=0\), the precise orientation or scalar identifying that projected class with a projective Petrowsky boundary, completeness of rational projective forms, injectivity of a projective tube map, Stein homology vanishing or compact-support duality. Testing a special family of rational forms becomes sufficient only after a separate proof that it covers the relevant smooth cohomology. Global component constancy and the full course dependency closure remain separate obligations.
 
 ## CD10. Human-source credit and limits
 

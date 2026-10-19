@@ -94,13 +94,13 @@ To prove continuity, let \(g\) vary in a compact neighborhood \(D\). The set \(q
 
 For \(a\in H\), left Haar substitution \(h=ak\) gives
 \[
-\begin{aligned}
-T(L_a^Hf)(g)
-&=\int_Hf(a^{-1}h)\chi(h^{-1}g)\,dh\\
-&=\int_Hf(k)\chi(k^{-1}a^{-1}g)\,dk
+\begin{gathered}
+T(L_a^Hf)(g)\\
+=\int_Hf(a^{-1}h)\chi(h^{-1}g)\,dh\\
+=\int_Hf(k)\chi(k^{-1}a^{-1}g)\,dk\\
 =Tf(a^{-1}g).
-\end{aligned}
 \tag{2.4}
+\end{gathered}
 \]
 This is (2.3). Equivalently \(\tau_{ag}=a_*\tau_g\). No Haar modular factor appears in this substitution because it is left translation on \(H\).
 
@@ -119,16 +119,20 @@ It is a positive unital functional, and (2.3) and the left invariance of \(M\) m
 
 **Example 3.1 (a Haar-null subgroup).** Take \(G=\mathbb R^2\) and \(H=\mathbb R\times\{0\}\), with their usual Haar measures. If \(p\in C_c(\mathbb R)_+\) has integral one, then
 \[
-\chi(x,y)=p(x),\qquad
+\begin{gathered}
+\chi(x,y)=p(x),\\
 Tf(x,y)=\int_{\mathbb R}f(t)p(x-t)\,dt.
 \tag{3.1}
+\end{gathered}
 \]
 The cutoff is normalized and has compact support over each compact set of cosets, parametrized by the vertical coordinate \(y\); the cosets themselves are horizontal lines. Ambient \(\mathbf1_H\) is the zero Haar class, whereas its pointwise restriction to \(H\) is one. This shows why restriction of ambient measurable classes cannot be the transfer map. The continuous map \(T\) is unital and well defined.
 
 **Example 3.2 (the nonunimodular affine group).** Let
 \[
-G=\{(a,b):a>0,\ b\in\mathbb R\},\qquad
+\begin{gathered}
+G=\{(a,b):a>0,\ b\in\mathbb R\},\\
 (a,b)(a',b')=(aa',b+ab'),
+\end{gathered}
 \]
 and let \(H=\{(1,t):t\in\mathbb R\}\). Ambient left Haar measure is \(a^{-2}\,da\,db\), while subgroup left Haar measure is \(dt\). For the same density \(p\), choose
 \[
@@ -137,10 +141,12 @@ and let \(H=\{(1,t):t\in\mathbb R\}\). Ambient left Haar measure is \(a^{-2}\,da
 \]
 Since \((1,t)^{-1}(a,b)=(a,b-t)\),
 \[
-\int_{\mathbb R}a^{-1}p((b-t)/a)\,dt=1,
-\qquad
-Tf(a,b)=\int_{\mathbb R}f(t)a^{-1}p((b-t)/a)\,dt.
+\begin{gathered}
+\int_{\mathbb R}a^{-1}p((b-t)/a)\,dt=1,\\
+Tf(a,b)\\
+=\int_{\mathbb R}f(t)a^{-1}p((b-t)/a)\,dt.
 \tag{3.3}
+\end{gathered}
 \]
 The factor \(a^{-1}\) is essential: without it the integral would be \(a\). Over a compact set of cosets, \(a\) is bounded above and away from zero, and the support of \(p\) bounds \(b/a\); this gives (1.3). Translation by \((1,c)\) changes \(b\) to \(b+c\), and (2.3) is exactly ordinary translation of the kernel in \(t\). The affine group's modular function \(\Delta_G(a,b)=a^{-1}\) is a separate ambient Haar fact; the subgroup substitution in (2.4) is left invariant without an extra scalar.
 
@@ -192,4 +198,4 @@ Enumerate the nonidentity words and take the product of these finite homomorphis
 
 ## References
 
-- [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. Example XIII.4.4(ii)–(iii). [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+- [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. Example XIII.4.4(ii)–(iii), pp. 63–64 (normal extensions and closed subgroups). The source proves subgroup heredity in the separable case by a Borel cross-section. Lemmas 1.1–1.2 and Theorem 2.1 above give the continuous-cutoff proof for arbitrary locally compact Hausdorff groups. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).

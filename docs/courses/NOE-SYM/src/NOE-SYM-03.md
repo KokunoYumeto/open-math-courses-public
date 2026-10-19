@@ -4,7 +4,7 @@
 
 A boundary term changes an action without changing its equations. An invariant action can therefore be studied through its Euler expressions, whose transformation law is more rigid than that of a chosen density. For a metric, the same principle of discarding coordinate choices leads to normal coordinates: its derivatives at a point can be replaced by curvature and its covariant derivatives.
 
-This lesson connects those three ideas. We use the first-variation identity, smooth metrics and their Levi-Civita connections, and the jet transformation rule in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). Basic references are Noether's papers *Invariants of arbitrary differential expressions*, *Formal calculus of variations and differential invariants*, and *Algebraic and differential invariants*, together with Compère's Appendix A. Their subject matter is connected here by explicit homotopies and normal-coordinate calculations. Section 6 proves differential generation on a nonempty open domain of metric jets and explains why separating real orbits is a distinct question. Section 6 proves differential generation on a nonempty open domain of metric jets and explains why separating real orbits is a distinct question.
+This lesson connects those three ideas. We use the first-variation identity, smooth metrics and their Levi-Civita connections, and the jet transformation rule in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). Basic references are Noether's papers *Invariants of arbitrary differential expressions*, *Formal calculus of variations and differential invariants*, and *Algebraic and differential invariants*, together with Compère's Appendix A. Their subject matter is connected here by explicit homotopies and normal-coordinate calculations. Section 6 proves differential generation on a nonempty open domain of metric jets and explains why separating real orbits is a distinct question.
 
 ## 1. When the equations vanish before any variation
 
@@ -336,7 +336,9 @@ To spell out that approximation, for disjoint compact orbits $A,B$ take $f(z)=d(
 
 For curvature tuples subject to further, possibly nonlinear, identities, a polynomial invariant means the restriction of an ambient polynomial. Average that polynomial over $O(n)$. The restriction is unchanged because the realized set is invariant, and the averaged polynomial is an ambient invariant. Thus the contraction assertion also applies to polynomial invariants on realized curvature-jet sets.
 
-## 6. Differential generation for Riemannian metrics
+<a id="6-differential-generation-for-riemannian-metrics"></a>
+
+## 6. Differential generation and rational quotients
 
 Fixed-order polynomial finiteness and generation at every differential order are different assertions. The first follows from the orthogonal contraction theorem and Hilbert's basis theorem in §5. The second requires derivatives of a fixed collection of invariants. We prove it here on an explicit open set of metric jets.
 
@@ -525,7 +527,354 @@ Finally, every nonempty Zariski-open subset of the real equation jets meets both
 
 *Figure 6.1.* The exact functions $u_+=(x_1^2+x_2^2)/2$ and $u_-=(x_1^2-x_2^2)/2$ solve (6.10). Their Hessians have determinants $1$ and $-1$. Equation (6.11) preserves that sign under real transformations, although the rational invariant field on the quadratic-graph equation consists only of constants. The plotted contours are level sets of the displayed functions. Vector figure; figure source. Original computed illustration, CC0.
 
-This example identifies a real-versus-geometric-orbit qualification; it does not contradict differential generation of the rational invariant algebra, which here has no nonconstant generators. For the metric action, positive definiteness makes the remaining orthogonal group compact, and §5 proves the orbit-separation assertion actually needed in Theorem 6.1. The full general algebraic-pseudogroup generation argument is a separate theorem: the proof above establishes the metric case and does not claim to prove every pseudogroup case. Kruglikov and Lychagin's free preprint is further reading on that broader problem.
+This example identifies a real-versus-geometric-orbit qualification; it does not contradict differential generation of the rational invariant algebra, which here has no nonconstant generators. For the metric action, positive definiteness makes the remaining orthogonal group compact, and §5 proves the orbit-separation assertion actually needed in Theorem 6.1. The full general algebraic-pseudogroup theorem is stated with its hypotheses in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups), §4.2. Its general proof is not yet complete. Theorem 6.1 concerns metrics; Proposition 6.2 assumes a uniform horizontal span, and Example 6.3 establishes the rank-one action (6.16). Proposition 6.4 constructs a finite-level domain for horizontal rank in the stated regular jet-groupoid setting. Theorem 6.10 constructs the geometric quotient of one algebraic action, including its invariant field and regular functions.
+
+### Derivatives when the horizontal invariant rank is smaller
+
+The intrinsic metric coordinates above use $n$ invariants with independent horizontal differentials. A general action can have fewer independent invariant directions. The appropriate object is then a quotient of the horizontal tangent space. The following construction states exactly which uniformity assumption it needs.
+
+Let $E^\infty$ be the compatible prolongation of an invariant equation in a graph chart with $n$ independent variables. Its total derivatives $D_i$ commute and differentiate identities on the prolonged equation. Fix an integer $\ell\geq1$. Write $\mathscr R_\ell$ for the finite-order differential functions that are smooth in the base coordinates, rational in the fibre jet coordinates through order $\ell$, and polynomial in higher-order jet coordinates, restricted to domains where their denominators are nonzero. Let $\mathcal A=\mathscr R_\ell^G$ denote invariance under the full pseudogroup action, including every component. All identities below are on common domains of definition.
+
+For an infinite equation jet $z$, its horizontal space $\mathcal H_z$ has basis $D_1,\ldots,D_n$. In the following definition use invariant functions defined on a neighborhood of $z$, so their derivatives can be evaluated there. Define its common invariant annihilator by
+
+$$
+\mathcal N_z=\bigcap_{F\in\mathcal A}\ker(d_HF)_z.
+\tag{6.12}
+$$
+
+**Proposition 6.2 (derivatives on the horizontal quotient).** Suppose a $G$-invariant domain $U\subset E^\infty$ is the full inverse image of a finite-level domain, and there are $I^1,\ldots,I^s\in\mathcal A$, each of order at most $\ell-1$, such that throughout $U$:
+
+1. The horizontal differentials $d_HI^1,\ldots,d_HI^s$ are independent.
+2. For every $F\in\mathcal A$, its horizontal differential belongs to their span, at every order where $F$ is defined.
+
+Then $\mathcal H/\mathcal N$ has rank $s$. There are well-defined commuting derivations $\nabla_a:\mathcal A\to\mathcal A$, characterized by
+
+$$
+\begin{gathered}
+d_HF=\sum_{a=1}^s(\nabla_aF)d_HI^a,\\
+\nabla_a I^b=\delta_a^b.
+\end{gathered}
+\tag{6.13}
+$$
+
+They have rational representatives in the fibre coordinates of order at most $\ell$. They preserve the rational-low-order/polynomial-higher-order function class, and increase order by at most one for input order at least $\ell$. The representatives can differ, but their actions on $\mathcal A$ agree. Every derivation of $\mathcal A$ induced by a horizontal field preserving $\mathcal A$ is uniquely $\sum_a J^a\nabla_a$, with $J^a\in\mathcal A$.
+
+*Proof.* At a given point the second assumption and its converse for the $I^a$ show
+
+$$
+\mathcal N_z=\bigcap_{a=1}^s\ker(d_HI^a)_z.
+$$
+
+Consequently the map $[v]\mapsto(vI^1,\ldots,vI^s)$ is an isomorphism from $\mathcal H_z/\mathcal N_z$ to $\mathbf F^s$, where $\mathbf F=\mathbb R$ or $\mathbb C$: independence gives rank $s$, and the displayed intersection identifies its kernel. The inverse images of the coordinate basis are unique classes $[e_a]$.
+
+Here is a finite-order formula for representatives. Choose columns $i_1,\ldots,i_s$ for which the matrix $C^a{}_b=D_{i_b}I^a$ is invertible, and put
+
+$$
+e_a=\sum_{b=1}^s(C^{-1})^b{}_aD_{i_b}.
+\tag{6.14}
+$$
+
+Then $e_aI^c=\delta_a^c$. If another minor gives $\widetilde e_a$, their difference kills every $I^c$, hence every $F\in\mathcal A$, by the span assumption. Thus the operators $F\mapsto e_aF$ agree on overlaps. All the finitely many column minors together cover $U$; no one minor is asserted to be invariant or nonzero everywhere.
+
+Evaluating a span expression for $d_HF$ on $e_a$ proves (6.13) and uniqueness of its coefficients. These coefficients are invariant under the full action. Indeed, horizontal differentiation commutes with prolonged pullback. In graph coordinates this is the chain rule $D_i=\sum_j(D_i\widetilde x^j)\widetilde D_j$, on a common transformed graph chart. Pulling back (6.13) therefore leaves $d_HF$ and all $d_HI^a$ fixed. Independence forces every pulled-back coefficient to equal the original coefficient. This argument uses each pseudogroup map, rather than just infinitesimal invariance.
+
+It remains to check the stated function class, rather than only invariance. Every entry of $C$ is rational in fibre jets through order $\ell$, with smooth base coefficients. Its inverse is given by its cofactor matrix divided by $\det C$, so the same is true of every coefficient in (6.14). Clearing the finitely many lower denominators writes a function of the specified class as $F=P/Q$, where $P$ is polynomial in finitely many fibre jets, $Q$ is polynomial in fibre jets through order $\ell$, and both have smooth base coefficients. The total-derivative and quotient rules give
+
+$$
+\begin{aligned}
+D_i(P/Q)&=\frac{D_iP}{Q}\\
+&\quad-\frac{P D_iQ}{Q^2}.
+\end{aligned}
+\tag{6.15}
+$$
+
+Differentiating a lower coefficient can introduce jets of order $\ell+1$, but only polynomially. Differentiating a higher jet replaces it by a jet one order higher. Putting (6.15) over the common denominator $Q^2$ therefore gives a numerator polynomial in the jets above $\ell$, with no higher-order variable in the denominator. Multiplication by a coefficient of (6.14) has the same property. Hence $e_aF\in\mathscr R_\ell$, and the full-action argument makes it an element of $\mathcal A$. If $F$ has order $r\geq\ell$, this calculation has order at most $r+1$. The only additional chart denominators are the fixed finite-level minors; iteration does not introduce new higher-order denominators. Because the operators agree on overlaps, these chart calculations define the asserted derivations on $U$. The same denominator argument applies to the span coefficients in (6.13).
+
+The bracket $[e_a,e_b]$ is horizontal: expand it using $[D_i,D_j]=0$. It kills each $I^c$, because $e_aI^c$ is constant. It therefore belongs to $\mathcal N$. Since the $e_a$ already preserve $\mathcal A$, this proves $[\nabla_a,\nabla_b]F=0$ for every $F\in\mathcal A$.
+
+Finally let $v$ be a horizontal field whose induced derivation preserves $\mathcal A$. Put $J^a=vI^a\in\mathcal A$. The field $v-\sum_aJ^ae_a$ kills every $I^b$ and consequently every invariant, proving the expansion. Applying it to each $I^b$ proves uniqueness. If $s=0$, the span assumption says that every horizontal field kills every invariant; the quotient and all its induced derivations are zero. This covers the empty-matrix case. $\square$
+
+The proposition assumes the span condition for **all** invariant orders over the same domain. Finding a maximal rank at one order, or a minor that is nonzero at one infinite jet, does not prove this assumption. In particular it supplies the derivative construction after a uniform horizontal-rank theorem; it does not supply that theorem or the uniform orbit-symbol comparison. Proposition 6.4 below supplies a horizontal-rank domain under its explicit transformation-jet hypotheses.
+
+**Example 6.3 (one invariant direction on a two-dimensional equation).** Consider graphs $u=u(x,y)$ satisfying $u_y=0$ and all its differential consequences. Write $p_j=\partial_x^ju$ for $j\geq1$, $p=p_1$ and $q=p_2$. A compatible finite jet has coordinates $(x,y,u,p_1,\ldots,p_k)$; every derivative with a $y$ index is zero. The transformations
+
+$$
+\begin{gathered}
+\widetilde x=x+a,\qquad\widetilde y=\psi(y),\\
+\widetilde u=u+b,\qquad \psi'(y)\ne0.
+\end{gathered}
+\tag{6.16}
+$$
+
+preserve this equation and every $p_j$. They can change $x,y,u$ arbitrarily while leaving the $p_j$ fixed. Thus an invariant is exactly a function of the $p_j$, in its prescribed rational-polynomial class. The equation is formally integrable and its finite jet spaces are irreducible: its displayed coordinates are free, each next jet adds the single free coordinate $p_{k+1}$, and every compatible finite jet is realized by a polynomial in $x$ independent of $y$.
+
+Take $\ell=2$ and the invariant domain $q\ne0$. For every invariant $F$,
+
+$$
+d_HF=(D_xF)\,dx,\qquad d_Hp=q\,dx.
+$$
+
+Hence Proposition 6.2 applies with $s=1<n=2$. Its quotient has $\mathcal N=\operatorname{span}(D_y)$, and
+
+$$
+\nabla F=q^{-1}D_xF.
+\tag{6.17}
+$$
+
+The common annihilator is exactly this line: $D_y$ kills every invariant, and a horizontal field $aD_x+bD_y$ killing $p$ must have $a q=0$. Each field $q^{-1}D_x+cD_y$ represents the same derivation, whenever its coefficient functions are defined. Under $y\mapsto\psi(y)$ a representative with a chosen $D_y$ component can change; its action on invariants does not.
+
+Here the invariant algebra with rational dependence through order two and polynomial dependence above order two is
+
+$$
+\begin{gathered}
+\mathcal A=\mathbf F(p,q)[p_3,p_4,\ldots],\\
+\mathbf F=\mathbb R\text{ or }\mathbb C,
+\end{gathered}
+\tag{6.18}
+$$
+
+where every element involves only finitely many variables and is evaluated where its lower denominator is nonzero. It is differentially generated by $p,q$ and (6.17). Indeed $\nabla p=1$, and for $j\geq2$,
+
+$$
+p_{j+1}=q\,\nabla p_j.
+\tag{6.19}
+$$
+
+Starting with $p_2=q$, induction gives every higher $p_j$. The product rule expresses each resulting $p_j$ polynomially in iterated derivatives of $p,q$, with coefficients rational in $p,q$. Conversely, $D_xp_j=p_{j+1}$, and the quotient rule shows that (6.17) preserves (6.18); its coefficient $q^{-1}$ is of order two. This proves both inclusions of the generated algebra, including the lower-denominator restriction. The values of $p,q$ and their iterated derivatives determine every finite equation jet up to (6.16), since (6.19) recovers every $p_j$ and the remaining three coordinates can be changed freely. This example establishes a rank-one case; it does not replace the general pseudogroup theorem.
+
+![The quotient of the horizontal space by its common invariant annihilator has one dual coordinate for each independent invariant differential. In the equation u_y=0, representatives D_x and D_x+D_y at q=1 have the same quotient class.](figures/horizontal-quotient.svg)
+
+*Figure 6.2.* Proposition 6.2 identifies the quotient by evaluation on $I^1,\ldots,I^s$. The lower panel depicts Example 6.3 at a jet with $q=1$: the vectors have coordinates $(1,0)$ and $(1,1)$ in the basis $(D_x,D_y)$, and their difference $(0,1)$ annihilates every invariant. Equation (6.19) gives the higher-jet reconstruction. Original diagram, CC0-1.0.
+
+### Detecting horizontal rank at a finite level
+
+The span hypothesis in Proposition 6.2 concerns every invariant order. There is an existence argument for detecting this rank at a finite level: horizontal rank is bounded by $n$, even though the family of invariants has no prescribed order bound. We give the argument together with the construction of its invariant domain.
+
+Use the regular finite-jet-groupoid formulation of a Lie pseudogroup. At each finite order its jets of local transformations form a smooth Lie groupoid: the source map is a submersion, composition and inversion are smooth, and local transformations induce smooth local bisections. Fixed-source spaces have their submanifold topology and are second countable. These are structural assumptions about transformation jets, and do not assert constant rank of their actions on equation jets. Assume the action is transitive on the point manifold $M$, its fixed-base actions are algebraic, and the invariant formally prolonged equation has nonsingular irreducible algebraic fibres. Use intrinsic submanifold-jet spaces, with graph charts as their coordinate charts. A transformation jet induces an algebraic isomorphism of the corresponding equation fibres. Its rational chart expressions follow from the jet chain rule; their denominators are the transversality determinants defining the target graph chart, so they are nonzero on that chart's inverse image. These charts cover the transformed fibre, and the inverse transformation supplies the inverse map. Base coordinates and the coefficients depending on them remain smooth. Arrow composites below are ordinary composition of maps, read from right to left.
+
+Let $U_0\subset E^{r_0}$ be a nonempty invariant open domain with fibrewise Zariski-open fibres, and use its full higher-jet inverse image. Denote by $\mathcal B$ **all** finite-order rational differential invariants there, smooth in the base variables. Elements may have their own pole domains: include invariants on further invariant finite-level Zariski-open subdomains, with invariance understood as an identity of rational functions under every admissible transformation. No rational-low-order/polynomial-higher-order cutoff is imposed on $\mathcal B$.
+
+**Proposition 6.4 (finite detection of horizontal rank).** There are an order $\ell\geq\max(1,r_0)$, an invariant open set
+
+$$
+\Omega\subseteq\pi_{\ell,r_0}^{-1}(U_0),
+\tag{6.20}
+$$
+
+with a nonempty Zariski-open intersection with every equation fibre, and invariants $I^1,\ldots,I^s\in\mathcal B$ of order at most $\ell-1$, where $0\leq s\leq n$, such that their horizontal differentials are independent throughout $\Omega$. At every higher compatible jet over $\Omega$, the horizontal differential of every member of $\mathcal B$, wherever defined, is in their span. The same order and domain work for all these invariant orders.
+
+*Proof.* First take the maximum over every finite family in $\mathcal B$ and every compatible finite jet where its horizontal differentials can be evaluated; allow the empty family. Each rank belongs to $\{0,\ldots,n\}$. This nonempty finite set of possible integers has a greatest member $s$, and the definition of the set supplies a finite family and a finite jet attaining it. If $s=0$, choose $\ell=\max(1,r_0)$ and take $\Omega=\pi_{\ell,r_0}^{-1}(U_0)$ with the empty family. Transitivity makes $U_0$ meet every base fibre, and formal integrability keeps its higher pullbacks nonempty. Every horizontal differential in $\mathcal B$ is zero by the definition of $s$, so all the conclusions hold.
+
+Suppose now that $s>0$. Remove redundant members of the witnessing family, leaving functions $I^1,\ldots,I^s$. Choose $\ell$ at least $\max(1,r_0)$ and one more than their maximum order. Project the witnessing jet to this level, or prolong it if necessary. Formal integrability permits the latter. The matrix of their horizontal differentials only uses this finite level, so its rank is still $s$. The maximum here was taken over **all orders before $\ell$ was chosen**.
+
+Let $a\in M$ be the base point of the witnessing jet. Restrict the $I^b$ and $d_HI^b$ to the fibre $E^\ell_a$, pulling the functions up from their own orders. They are finitely many rational functions and rational sections of the horizontal cotangent bundle. Their common regularity locus is Zariski open. To see this directly, trivialize that bundle on algebraic charts: regularity of a rational coefficient means that it has a local fraction whose denominator is nonzero. Such loci are unions of principal algebraic opens; take the intersection for the finitely many coefficients. The horizontal derivatives are rational on the fibre because differentiating a smooth base coefficient gives another smooth coefficient, and the total-derivative formula introduces only finite jet coordinates.
+
+Intersect this common regularity locus with $\pi_{\ell,r_0}^{-1}(U_0)_a$ and the locus where the horizontal rank is $s$. Call the result $\Omega_a$. The rank condition is the union of the nonvanishing loci of the finitely many $s$-rowed minors. Consequently $\Omega_a$ is a nonempty Zariski open, containing the witnessing jet. It is invariant under the **full** isotropy group at $a$. Indeed pullback fixes the rational functions $I^b$ and the rational horizontal forms $d_HI^b$. The isotropy acts by algebraic isomorphisms, including on the horizontal bundle, so both their intrinsic regularity loci and their ranks are preserved. Applying the inverse gives preservation in both directions.
+
+We next justify the local smooth transport needed to extend this fibre domain. At this fixed finite order, let $P_a$ be the manifold of transformation jets with source $a$, and let $t:P_a\to M$ be their target map. It is onto by transitivity. Its rank is constant: for two arrows $h_1,h_2\in P_a$, the jet $h_2h_1^{-1}$ is supplied by a local transformation $\phi$. Left composition with the jets of $\phi$ is a local diffeomorphism taking $h_1$ to $h_2$, and it intertwines $t$ with the base diffeomorphism $\phi$. Hence the two target ranks agree.
+
+This constant rank must equal the real dimension of $M$; regard the manifolds as real for this argument. Otherwise the constant-rank theorem would cover the image of $t$ by countably many smooth images of boxes of a fixed dimension $d<\dim_{\mathbb R}M$. Each has zero $\dim_{\mathbb R}M$-dimensional volume in coordinate charts: on compact boxes the chart maps are Lipschitz, and a covering by $O(\varepsilon^{-d})$ boxes of side $\varepsilon$ gives image volume at most $O(\varepsilon^{\dim_{\mathbb R}M-d})$, tending to zero. Exhausting coordinate charts by compact boxes and using a countable atlas proves the same for their union. It cannot cover a nonempty coordinate ball. Thus $t$ is a submersion. The constant-rank and submersion-coordinate results used here are proved in Local tools for bundles and transport, Corollaries 1.3–1.4 (Foundations of differential geometry). In submersion coordinates, holding the complementary coordinates fixed gives local smooth sections $b\mapsto g_b$ with source $a$ and target $b$. This uses only the transformation-jet groupoid, not a regularity claim about an orbit map on $E^k$.
+
+For any arrow $g:a\to b$ define
+
+$$
+\Omega_b=g\Omega_a.
+\tag{6.21}
+$$
+
+The definition is independent of $g$: the ratio of two such arrows lies in the isotropy at $a$, which preserves $\Omega_a$. Each $\Omega_b$ is a nonempty Zariski open because the induced map of fibres is an algebraic isomorphism. In a local section $b\mapsto g_b$, the map $(b,z)\mapsto g_bz$, with inverse $w\mapsto(b,g_b^{-1}w)$, identifies the union of these sets with a product of a base chart and $\Omega_a$. Thus their union $\Omega$ is open, has smooth base dependence, and is invariant. It satisfies (6.20) because $U_0$ was invariant. Consequently $E^\ell\setminus\Omega$ is a proper invariant closed set with algebraic fibres. The base itself has not been made algebraic.
+
+The same transport defines the selected invariants wherever their transported rational expressions are regular. Isotropy invariance makes the definition independent of the arrow. In local sections their coefficients depend smoothly on $b$, and the expressions retain their original finite orders. They are invariant under all transformations: for arrows $g_b:a\to b$, $g_c:a\to c$ and $h:b\to c$, the composition $g_c^{-1}hg_b$ belongs to the isotropy at $a$ and fixes each $I^j_a$. On the original common regular domain these extensions agree with the original functions in both base and fibre variables. Horizontal differentiation there agrees with transport of $d_HI^j$, by the chain rule in Proposition 6.2. Restricting to $E^\ell_a$, this is equality of rational sections on a nonempty common Zariski open. Irreducibility makes it a rational identity, so it holds throughout $\Omega_a$ where both sides are regular. Naturality under transport then proves rank $s$ throughout $\Omega$.
+
+Finally let $F\in\mathcal B$ be defined at any compatible higher jet over $\Omega$. If $d_HF$ were outside the span of the $d_HI^b$ there, this finite family would have rank $s+1$ at a finite jet: only the orders of $F$, the $I^b$ and one further derivative are involved. This contradicts the definition of $s$. Independence of the $d_HI^b$ persists under every higher pullback because its matrix already depends only on the level-$\ell$ projection. Thus the span assertion holds on the entire cylinder over $\Omega$, without any further higher-order rank exclusions. $\square$
+
+**Corollary 6.5 (derivations on a common finite-level domain).** On the domain of Proposition 6.4, choose any $m\geq\ell$ and let $\mathcal A_m$ be the invariant functions rational through order $m$ and polynomial in higher orders. There are $s$ commuting invariant derivations on $\mathcal A_m$ with the properties of Proposition 6.2. Their horizontal representatives have rational coefficients of order at most $\ell$, with smooth base dependence; the representatives agree on invariants modulo their common annihilator. They preserve this rational-polynomial class and have filtration at most $+1$ above order $m$.
+
+*Proof.* Each selected $I^b$ belongs to $\mathcal A_m$, since it is rational and has order at most $\ell-1\leq m-1$. Also $\mathcal A_m\subseteq\mathcal B$: a finite polynomial in higher coordinates with rational lower coefficients is a finite-order rational function. The rank and span assertions of Proposition 6.4 therefore give both hypotheses of Proposition 6.2, with cutoff $m$. Formula (6.14) uses only derivatives of the selected $I^b$, hence only jets through order $\ell$. The quotient-rule proof (6.15) permits all lower denominators through order $m$ and introduces no denominator above it. The remaining assertions are exactly the representative, invariance, commutator and expansion conclusions already proved in Proposition 6.2. $\square$
+
+The prescribed $U_0$ can be an independently established finite-level orbit-symbol domain. The construction then refines it at one finite order. This explains how the horizontal-rank and derivative steps can share such a domain. Propositions 6.2 and 6.4 and Corollary 6.5 do not prove the existence or the required regularity of that orbit-symbol domain, the affine orbit-quotient statements, or the order induction needed for general finite differential generation.
+
+![A finite family attains the maximum horizontal rank s. Its independent differentials are detected at level ell and remain a basis of the invariant horizontal span at every higher jet above the same open domain Omega.](figures/horizontal-rank-domain.svg)
+
+*Figure 6.3.* Proposition 6.4 and Corollary 6.5. The arrows are jet truncations restricted to the full inverse images of $\Omega$. The maximum is taken over all finite invariant families at all finite orders. Every displayed rank and span assertion holds at each compatible point over this one domain, with $F$ evaluated wherever it is defined. Original diagram, CC0-1.0.
+
+### Rational quotients at a fixed algebraic level
+
+An invariant field is not yet a quotient whose fibres are orbits. We now construct such a quotient for one algebraic action. This supplies a finite-level input to the general differential-invariant problem. Throughout this subsection, $k$ is a field of characteristic zero, $G$ is an algebraic group, and varieties are reduced separated schemes of finite type over $k$. Invariance includes every component of $G$ and is an identity for the algebraic action. A geometric point is a point with values in an algebraically closed extension of $k$.
+
+We will construct a nonempty invariant open $U$ in an integral variety $X$, and a surjective morphism $q:U\to Y$, such that its geometric fibres are $G$-orbits, $q$ is open, and
+
+$$
+\begin{gathered}
+\mathcal O_Y=(q_*\mathcal O_U)^G,\\
+k(Y)=k(X)^G.
+\end{gathered}
+\tag{6.22}
+$$
+
+These are the geometric-quotient properties used here. The construction will also make $q$ flat and of finite presentation. We first prove the algebraic facts that permit the construction and descent of regular functions.
+
+**Lemma 6.6 (finite elimination certificates).** Let $R$ be an integral Noetherian ring, and let finitely many finitely presented $R$-algebras $A_i$ be given with homomorphisms $R[y_1,\ldots,y_N]\to A_i$. After inverting one nonzero $f\in R$, their kernels and every finite intersection of these kernels have finite polynomial generating sets whose specializations are the corresponding actual kernels and intersections for every field-valued specialization $R_f\to L$. The intersection has a monic reduced Gröbner basis over $\operatorname{Frac}R$ which specializes to the monic reduced basis at every such point. In addition, any finitely presented $R$-algebra becomes a free $R_f$-module after one such localization; the module basis is allowed to be infinite.
+
+*Proof.* Present $A_i$ as $R[y,z]/J_i$, by adjoining variables $z$ for finitely many algebra generators and relations specifying the images of the $y_j$. The ideals $J_i$ are finitely generated. Over $K=\operatorname{Frac}R$, order monomials with the $z$ block larger than the $y$ block. Compute a monic Gröbner basis of $J_iK[y,z]$. Division, the finite completion by $S$-polynomials, and the leading-term proof of the basis criterion are given in Prolongation, differential invariants and the projective group, Lemma 4.16 (Lie’s theory of transformation groups). Those steps do not require homogeneous generators: each division lowers a leading monomial, each new nonzero remainder enlarges the leading ideal, and Noetherianity makes the enlargements finite. Homogeneity in that lemma is needed for its graded conclusions, which are not asserted here.
+
+There are finitely many basis coefficients, expressions of the basis in the original generators, expressions of those generators in the basis, and zero-remainder reductions of the $S$-polynomials. Invert their finitely many nonzero denominators. The resulting identities hold over $R_f$, and the leading coefficients remain one in every field specialization. The recorded $S$-reductions still decrease the relevant leading monomials; specialization can remove terms but cannot introduce larger ones. Thus they prove the Gröbner criterion after every specialization. The members involving only $y$ generate the elimination ideal, both before and after specialization: division of a polynomial in $y$ can use only such members. This elimination ideal is precisely the kernel of the displayed presentation map. No general assertion that tensoring preserves a kernel has been used.
+
+For two ideals $I,J\subset R_f[y]$, their intersection is
+
+$$
+\begin{aligned}
+I\cap J&=\bigl(tI+(1-t)J\bigr)\\
+&\qquad\cap R_f[y].
+\end{aligned}
+\tag{6.23}
+$$
+
+The forward inclusion follows by writing $h=th+(1-t)h$. For the reverse inclusion evaluate an expression at $t=1$ and $t=0$. Apply the same elimination argument to this finite presentation and repeat for a finite list of ideals. Invert the finitely many further denominators.
+
+Over $K$, discard redundant leading monomials and reduce every remaining tail by the other basis elements. The result is a reduced monic basis. It is unique: its leading monomials are the uniquely determined minimal monomial generators of the leading ideal; subtracting two monic basis elements with the same leading monomial leaves a polynomial in the ideal whose monomials are all standard, which must be zero. After specialization its leading monomials remain unchanged and its tail monomials are a subset of the former tails. Thus it remains reduced as well as a Gröbner basis. Include the finitely many tail-reduction identities in the denominators already cleared.
+
+Finally apply the argument, without an elimination block, to a presentation $A=R[z]/J$. Division by the monic basis expresses every class as an $R_f$-linear combination of monomials outside its leading ideal. Such a combination is unique: a nonzero relation among these monomials would remain a nonzero relation over $K$, contrary to the leading-term criterion. These standard monomials are therefore an actual free-module basis. A free module is flat, since tensoring with it is a direct sum of copies of the original sequence. The zero algebra has the empty basis. All the arguments use finitely many certificates, so one product $f$ suffices. $\square$
+
+**Lemma 6.7 (reducedness and geometric points in characteristic zero).** A reduced finite-type $k$-algebra remains reduced after any field extension. A tensor product over $k$ of two reduced finite-type algebras is reduced. An element of a finite-type $k$-algebra which vanishes at every geometric point is nilpotent.
+
+*Proof.* First let $F/k$ be a finitely generated field. Choose a finite transcendence basis $t$; then $F/k(t)$ is finite and separable. Separability follows in characteristic zero by taking the derivative of a minimal polynomial. The primitive-element proof in Algebraic generators, Proposition 0.1 (Local fields) gives
+
+$$
+\begin{gathered}
+F=k(t)[w],\\
+P(w)=0,
+\end{gathered}
+\tag{6.24}
+$$
+
+with $P$ monic and relatively prime to $P'$. For any field extension $L/k$, the ring $B=L\otimes_k k(t)$ is a localization of the domain $L[t]$. The Bézout identity for $P,P'$ persists in $B[T]$. The algebra $B[T]/(P)$ is free over $B$ and embeds in its localization over $\operatorname{Frac}B$. That localization is reduced because $P$ has no repeated irreducible factor. Hence $F\otimes_k L$ is reduced.
+
+A reduced finite-type algebra $A$ embeds in the finite product of the fraction fields of its minimal-prime quotients: the kernel is the intersection of the minimal primes, namely its nilradical. Tensoring over a field preserves this injection. The preceding paragraph makes each factor reduced after extension, so $A\otimes_k L$ is reduced. To prove the tensor-product assertion, embed the first algebra in those same fraction fields and tensor with the second algebra. Each resulting factor is a field extension of the second algebra and is reduced; their subalgebra is reduced as well.
+
+For the last assertion, if $h$ is not nilpotent then $A[1/h]\ne0$. A maximal ideal of this finite-type algebra has residue field finite over $k$, by The Nullstellensatz and Jacobson rings, Theorem 1.3 (Commutative algebra for geometry). Embedding that field in an algebraic closure gives a geometric point at which $h$ is nonzero, a contradiction. This also shows that a nonempty finite-type scheme over an algebraically closed field has a point with values in that field. $\square$
+
+**Lemma 6.8 (regularity and open saturation).** The regularity locus of a rational function on an integral variety commutes with field extension. For a geometrically reduced variety $T$, projection $T\times Z\to Z$ is open. Consequently, for an action of $G$, the saturation $GW$ of an open set $W\subset X$ is open.
+
+*Proof.* On an affine chart $\operatorname{Spec}A$, write the rational function as $a/b$ with $b\ne0$. Its regularity locus is $D(J)$, where
+
+$$
+\begin{gathered}
+J=(bA:a),\\
+J=\{s\in A:sa\in bA\}.
+\end{gathered}
+\tag{6.25}
+$$
+
+Indeed $a/b\in A_{\mathfrak p}$ exactly when some $s\notin\mathfrak p$ clears its denominator. The ideal $J$ is the kernel of multiplication by $a$ from $A$ to $A/bA$. Tensoring this sequence with a field extension is exact, so it gives the same ideal after extension. Also $b$ remains a nonzerodivisor, since its multiplication map remains injective. Formula (6.25) therefore proves the regularity assertion, including when the extended variety has several components.
+
+For the projection assertion cover $T$ and $Z$ by affine charts, and first take $T$ affine and $Z=\operatorname{Spec}R$. A principal open in their product is defined by an element $h=\sum_i a_i\otimes b_i$, with the finitely many $a_i\in k[T]$ chosen linearly independent over $k$. At a point $\mathfrak p$ of $\operatorname{Spec}R$, its image in $k[T]\otimes_k\kappa(\mathfrak p)$ is nonzero exactly when some $b_i\notin\mathfrak p$. This fibre ring is reduced, so its principal open is nonempty exactly in that case. The projection of $D(h)$ is therefore the open $\bigcup_iD(b_i)$. Principal opens cover every open in this product; taking the union over the affine charts proves the general assertion. For saturation, the isomorphism $(g,x)\mapsto(g,gx)$ of $G\times X$ turns the action map into projection. Lemma 6.7 makes $G$ geometrically reduced on its affine charts, so the action sends $G\times W$ to an open subset. $\square$
+
+**Lemma 6.9 (flat openness and regular-function descent).** A flat finite-type morphism between Noetherian schemes is open. If $q:U\to Y$ is a flat surjective finite-type morphism of integral $k$-varieties, its geometric fibres are single $G$-orbits, and $q$ is invariant, then $\mathcal O_Y=(q_*\mathcal O_U)^G$.
+
+*Proof.* We first recall the needed going-down argument. For a flat ring map and a prime $\mathfrak q$ over $\mathfrak p$, the localized map $R_{\mathfrak p}\to A_{\mathfrak q}$ is flat and local, hence faithfully flat. Its spectrum is onto. These facts, and injectivity of $M\to M\otimes_R A$ for a faithfully flat map, are proved in Faithful flatness and the local criterion for flatness, Theorems 2.1–2.2 (Commutative algebra for geometry). A prime $\mathfrak p'\subseteq\mathfrak p$ therefore lifts to a prime inside $\mathfrak q$. Thus the image of an open under a flat map is stable under generalization. By Quasi-finite morphisms and Chevalley, Theorems 3.1 and 4.2 (Morphisms of schemes), that image is constructible. A constructible set stable under generalization is open: its complement is constructible and specialization-stable; in each irreducible component of its closure, constructibility puts the generic point in the set, and specialization puts the entire component there. Hence that complement is closed. This proves openness. The going-down argument also shows that every irreducible component over an integral base under a flat map dominates the base: the contraction of a minimal prime must be minimal.
+
+For descent, take an affine open $V=\operatorname{Spec}R\subset Y$ and a finite affine cover $\operatorname{Spec}A_i$ of $q^{-1}V$. Each $A_i$ is flat over the domain $R$. Put $K=\operatorname{Frac}R$. The rings
+
+$$
+A_i\otimes_R A_j
+\tag{6.26}
+$$
+
+are flat over $R$. Their generic fibres are reduced by Lemma 6.7, since $A_i\otimes_RK$ and $A_j\otimes_RK$ are localizations of domains and are finite type over $K$. A nilpotent in (6.26) is therefore killed by a nonzero element of $R$. Flatness makes multiplication by that element injective, so the nilpotent is zero. Thus (6.26) is reduced.
+
+Let $h$ be an invariant regular function on $q^{-1}V$, with restrictions $h_i\in A_i$. At every geometric point of (6.26), its two entries have the same image in $Y$ and hence belong to one $G$-orbit. Therefore
+
+$$
+h_i\otimes1=1\otimes h_j
+\tag{6.27}
+$$
+
+at all such points. Lemma 6.7 and reducedness make this an equality in the ring itself.
+
+Set $A=\prod_iA_i$. This is flat over $R$, and its spectrum maps onto $\operatorname{Spec}R$ because the cover and $q$ are surjective. Hence it is faithfully flat. For completeness its equalizer is $R$: if $c\in A$ satisfies $c\otimes1=1\otimes c$, pass to the module $M=A/R$. Exactness after tensoring with $A$ shows that the class $\bar c$ has $\bar c\otimes1=0$. The faithful-flat injection $M\to M\otimes_R A$ gives $\bar c=0$. Thus $c\in R$. Equation (6.27) applies this argument to the tuple $(h_i)$ and gives a unique regular function on $V$ pulling back to $h$. Conversely a function on $V$ has invariant pullback. Uniqueness glues these identifications on affine opens, proving the sheaf identity. $\square$
+
+**Theorem 6.10 (a geometric quotient on an invariant open).** Let the algebraic group $G$ act on an integral $k$-variety $X$. There are a nonempty invariant open $U\subset X$, an integral affine variety $Y$, and a flat surjective invariant morphism $q:U\to Y$ with the properties (6.22). At every algebraically closed field extension, two points of $U$ have the same image exactly when they belong to the same orbit of the full group. The geometric fibres are reduced. The morphism is open and induces the quotient topology.
+
+*Proof.* Choose a nonempty affine window $V=\operatorname{Spec}R\subset X$ with finitely many coordinate generators $y_1,\ldots,y_N$. Keep the entire group, including its disconnected components. The set
+
+$$
+\begin{gathered}
+\Gamma\subseteq G\times V,\\
+\Gamma=\{(g,x):gx\in V\}.
+\end{gathered}
+\tag{6.28}
+$$
+
+is open in $G\times V$. Choose a finite affine cover of $G$, and cover the intersection with each product chart by finitely many principal affine opens. On each, the coordinates of $gx$ are regular functions and have expressions with powers of the defining principal denominator. Its coordinate algebra $A_i$ is therefore finitely presented over $R$, with a map $R[y]\to A_i$ specifying the target point. After a field-valued specialization at $x$, this is exactly the corresponding open part of $G$ mapping $x$ into $V$. Its coordinate algebra is reduced, by Lemma 6.7. The intersection of the kernels of these maps, after specialization, is consequently the ideal of the closure in $V$ of
+
+$$
+Gx\cap V.
+\tag{6.29}
+$$
+
+Here the orbit closure means the closure of the action morphism, evaluated at geometric points after an algebraically closed field extension. The finitely many graph pieces cover all transformations with target in $V$, and a kernel into a reduced algebra is radical. A polynomial vanishes on their union exactly when it lies in every kernel; Lemma 6.7 identifies vanishing at geometric points with this radical ideal.
+
+Apply Lemma 6.6 to these maps and their intersection. On one nonempty principal open $W=D(f)\subset V$, a finite list $H(y)$ specializes to the reduced monic Gröbner basis of the actual ideal (6.29), at every field-valued point. Let $c_1,\ldots,c_t\in k(X)$ be its finitely many coefficients; coefficients in $k$ can be included or omitted. Their values determine the specialized polynomials. If the list is empty the coefficient map has target a point.
+
+We need two facts about orbits. Over an algebraically closed field an orbit is constructible by Chevalley’s theorem. In its closure it is dense, so constructibility gives a nonempty open contained in the orbit. Translating that open by group elements covers the orbit and remains open in the same closure. Thus an orbit is locally closed and open in its closure. Distinct orbits cannot have the same closure in a window they both meet: their intersections with that window would be two dense open subsets of the same closed set and would intersect.
+
+It follows that, for points $x,x'\in W$ with values in any algebraically closed extension,
+
+$$
+\begin{gathered}
+c(x)=c(x')\\
+\Longleftrightarrow Gx=Gx'.
+\end{gathered}
+\tag{6.30}
+$$
+
+For the reverse direction use uniqueness of the reduced monic basis of their common orbit-closure ideal. For the forward direction the equal coefficient lists give the same ideal, and the orbit fact just proved applies.
+
+These coefficients are invariant rational functions. On the open set where $x$ and $gx$ both lie in $W$, the two orbit-closure ideals coincide, so their reduced bases and coefficients coincide. This open is dense in every component of $G\times X$: projection to the integral $X$ is flat, so each component dominates $X$ by the going-down argument in Lemma 6.9; the action is projection composed with the isomorphism $(g,x)\mapsto(g,gx)$. Intersect the two resulting dense opens. The product is reduced by Lemma 6.7, so equality there proves the rational invariance identity under the full action, with no connectedness assumption.
+
+Let $U=GW$, open by Lemma 6.8. Each $c_i$ is regular on $U$. To justify this beyond the initial window, its regularity locus commutes with field extension by Lemma 6.8. At geometric points it is preserved by every group element, since pullback fixes $c_i$ and group elements are isomorphisms. It contains $W$, hence contains the saturation. This proves regularity on $U$ itself. We obtain an invariant morphism $c:U\to\mathbb A^t$.
+
+The geometric fibres of this morphism are orbits. For points $x,x'\in U$ with values in an algebraically closed field, the definition of saturation supplies group elements moving both into $W$. More explicitly the nonempty finite-type fibre of $G\times W\to U$ has a point over that algebraically closed field, by Lemma 6.7. Invariance preserves their coefficient values; apply (6.30), and transport back.
+
+Their reducedness follows from the same orbit equations. Work over an algebraically closed extension $L$ and fix $x\in W(L)$. In $A=\mathcal O(W_L)$ let $J_x$ be the ideal generated by the differences $c_i(x')-c_i(x)$, where $x'$ denotes the variable point of $W_L$. Let $I_xA$ be the restriction of the orbit-closure ideal, generated by the polynomials $H_x(x')$. The identity transformation in the action graph gives $H_{x'}(x')=0$ as a regular identity on $W_L$. Subtracting it from $H_x(x')$ expresses every generator of $I_xA$ as a sum of coefficient differences times fixed monomials. Thus $I_xA\subseteq J_x$. Conversely the coefficient differences vanish on the orbit and hence on its closure inside $W_L$, because they are regular there. The ideal $I_xA$ is radical, as a localization of the radical orbit-closure ideal. Therefore $J_x\subseteq I_xA$, giving equality. This proves that the scheme fibre on $W_L$ has exactly the reduced orbit ideal. Translates of $W_L$ cover $U_L$ and preserve the quotient map, so reducedness holds on every geometric fibre. It is preserved by the subsequent restrictions of the target.
+
+Let $Y'$ be the reduced closure of $c(U)$. It is integral. The constructible dense image contains a nonempty open of $Y'$, by the constructibility theorem. Choose a nonempty affine open $Y_0$ contained in that image and replace $U$ by $c^{-1}Y_0$. The resulting map $q:U\to Y_0$ is surjective with the same geometric orbit fibres.
+
+Now make this map flat. Write $Y_0=\operatorname{Spec}B$ and cover $U$ by finitely many affine opens $\operatorname{Spec}A_i$. These are finitely presented $B$-algebras. Lemma 6.6 gives one nonzero $b\in B$ such that each $(A_i)_b$ is free, hence flat, over $B_b$. Replace $Y_0$ by $D(b)$ and $U$ by its inverse image. Surjectivity is preserved. This is a flat surjective finite-type morphism between Noetherian schemes, hence of finite presentation. Lemma 6.9 proves that it is open and gives the sheaf identity in (6.22). Surjectivity and openness give the quotient topology: a subset whose inverse image is open is itself the image of that open and is open.
+
+For the function-field equality, put $K=k(Y)$ and $F=k(X)$. Pullback identifies $K$ with a subfield of $F^G$. Let $h\in F^G$. Choose a nonempty affine open of the generic fibre on which $h$ is regular, with coordinate domain $A$ over $K$. Such an open exists by dominance and the regularity of a rational function at the generic point. After extension to an algebraic closure $L$ of $K$, the algebra $A\otimes_K L$ is reduced by Lemma 6.7. Its geometric points all lie in a single geometric fibre of $q$ and hence in one $G_L$-orbit. The invariance identity makes $h$ take one value $\lambda\in L$ at all these points. Lemma 6.7 therefore gives
+
+$$
+\begin{gathered}
+h\otimes1=1\otimes\lambda,\\
+\text{in }A\otimes_KL,
+\end{gathered}
+\tag{6.31}
+$$
+
+and then in $F\otimes_KL$, since tensoring a vector-space injection preserves injectivity. If $h\notin K$, the elements $1,h$ are linearly independent over $K$ and remain independent after field extension, contradicting (6.31). Hence $h\in K$. This proves $K=F^G$ and completes (6.22). All constructions used the full algebraic action. $\square$
+
+**Example 6.11 (a disconnected group and geometric fibres).** Let $G=\{1,-1\}$ act on the affine line by $x\mapsto-x$. For the generic source coordinate $x$, introduce a group coordinate $z$ and a target coordinate $y$. The action graph has equations
+
+$$
+z^2=1,\qquad y=zx.
+\tag{6.32}
+$$
+
+For $x\ne0$ its elimination ideal is generated by $y^2-x^2$. Thus the coefficient $x^2$ labels its two-point geometric orbits. At $x=0$ the actual orbit-closure ideal is $(y)$; merely substituting into the generic polynomial would give $(y^2)$. This is why the localization in Lemma 6.6 includes the denominators in the full graph-elimination certificates, not just the denominators visible in the final polynomial.
+
+On $U=\mathbb G_m$, the quotient is $q(x)=x^2$ with $Y=\mathbb G_m$. The algebra $k[x,x^{-1}]$ is free of rank two over $k[t,t^{-1}]$, $t=x^2$, with basis $1,x$: separate the even and odd Laurent powers, whose coefficients are unique. Its invariant Laurent polynomials are exactly the even ones, proving the regular-function identity directly. Theorem 6.10 gives the rational-field identity as well. Over $\mathbb R$ the map on real points has only positive values. Its geometric fibres are nevertheless nonempty over every geometric point of $Y$, including those over negative real values after extension to $\mathbb C$. Surjectivity of the geometric quotient is not a surjectivity assertion on real points.
+
+**Corollary 6.12 (the quotient input for a fixed equation-jet level).** In the regular transitive jet-groupoid setting of Proposition 6.4, fix a finite order $r$. An invariant open part of $E^r$ admits finitely many smooth-base, fibre-rational scalar invariants whose values separate geometric isotropy orbits after transport to one base fibre. Every rational invariant of this fixed order is rational in these functions. The fixed-base quotient also has the regular-function descent of Theorem 6.10.
+
+*Proof.* At a base point $a$, the finite transformation isotropy is an affine algebraic group, a subgroup of the ordinary invertible $r$-jet group, acting on the integral equation fibre $E^r_a$. Apply Theorem 6.10. Its affine quotient has finitely many coordinate generators; pull them back to invariants on its open domain $U_a$. For an arrow $g_b:a\to b$, transport the domain by $U_b=g_bU_a$ and the functions by $I_b=I_a\circ g_b^{-1}$. Isotropy invariance makes this independent of the arrow. The local smooth target sections proved in Proposition 6.4 give smooth dependence on $b$ and rational dependence on fibre coordinates. Geometric orbit separation is exactly Theorem 6.10 after this transport. Restriction of a full invariant to $E^r_a$ lies in the quotient function field; equality there transports to every base fibre, proving the rational-generation assertion. $\square$
+
+![The action and projection from G times U have the same image under the quotient map q. Geometric fibres are full group orbits; invariant regular functions and the invariant rational field descend to Y.](figures/rational-orbit-quotient.svg)
+
+*Figure 6.4.* Theorem 6.10. The upper map is the action $a(g,x)=gx$ and the left map is the second projection. The square commutes because $q$ is invariant. In the fibre formula, $L/k$ is algebraically closed, $y\in Y(L)$ and $x\in q^{-1}(y)(L)$. Lemma 6.9 proves the regular-function descent; (6.31) proves the function-field equality. Original diagram, CC0-1.0.
+
+The order $r$ in this subsection is fixed. Its exceptional open can depend on $r$. These results do not select one finite-level domain that works simultaneously for all higher orbit symbols and quotients, and do not replace that uniform-domain requirement in the general Lie–Tresse theorem.
 
 ## 7. Exercises
 
@@ -571,11 +920,11 @@ For the unit sphere the radial Jacobi field remains $te_r$, whereas a tangential
 
 ## Proof dependencies
 
-The first-variation identity, its divergence corollary and the fundamental lemma are supplied with proofs by Variational symmetries and Noether's first theorem. The point-prolongation rule is proved in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). Section 6 proves differential generation on the explicitly specified metric rank domain, including its nonemptiness, and proves the real-orbit counterexample. Hilbert's basis theorem has the internal commutative-algebra provider identified beside the finiteness argument. The curvature reduction, orthogonal contraction theorem, Euler covariance and both curve variation calculations are proved here.
+The first-variation identity, its divergence corollary and the fundamental lemma are supplied with proofs by Variational symmetries and Noether's first theorem. The point-prolongation rule is proved in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). Section 6 proves differential generation on the explicitly specified metric rank domain, including its nonemptiness, and proves the real-orbit counterexample. Hilbert's basis theorem has the internal commutative-algebra provider identified beside the finiteness argument. The curvature reduction, orthogonal contraction theorem, Euler covariance and both curve variation calculations are proved here. Proposition 6.2 proves the horizontal-quotient derivative construction under its explicit all-order span assumption; Example 6.3 verifies that assumption and finite differential generation for the equation $u_y=0$ under (6.16). Proposition 6.4 proves finite detection of horizontal rank in the stated regular jet-groupoid setting, and Corollary 6.5 supplies the associated invariant derivations. Its constant-rank and submersion inputs are the linked differential-geometry proofs. Theorem 6.10 proves the fixed-level geometric quotient, including regular-function and rational-field descent; Corollary 6.12 transports this input over the smooth base. The needed elimination, reducedness and flatness arguments are proved in Lemmas 6.6–6.9 with exact earlier algebraic inputs. The general theorem is stated, but not yet proved, in the linked Lie transformation groups lesson.
 
 ## References
 
 - Emmy Noether, *Invarianten beliebiger Differentialausdrücke*, Nachrichten der Gesellschaft der Wissenschaften zu Göttingen (1918), 37--44; *Formale Variationsrechnung und Differentialinvarianten*, Encyklopädie der mathematischen Wissenschaften II, 3 (1922), 68--71, §28, contributed by Noether; *Algebraische und Differentialinvarianten*, Jahresbericht der Deutschen Mathematiker-Vereinigung **32** (1923), 177--184. [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en). These are Noether's works on reduction, variational construction and finiteness.
 - Geoffrey Compère, *Symmetries and conservation laws in Lagrangian gauge theories* (2007), Appendix A, Theorem 20 and the horizontal homotopy discussion. [Thesis](https://arxiv.org/abs/0708.3153).
-- Boris Kruglikov and Valentin Lychagin, *Global Lie--Tresse theorem*, Selecta Mathematica **22** (2016), 1357--1411, Theorems 1--2. [Research preprint](https://arxiv.org/abs/1111.5480). Further reading on the general algebraic-pseudogroup problem. Section 6 proves the metric generation result used in this lesson and states its precise scope.
-- The first fundamental theorem for the orthogonal group is due to Hermann Weyl (1939); H. Kraft and C. Procesi, [*Classical Invariant Theory: A Primer*](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Personen/Kraft_Hanspeter/Classical_Invariant_Theory.pdf), §10.2, proves it from Weyl's theorems on polarization. Theorem 5.1 gives an independent averaging proof of the contraction assertion.
+- Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, Theorems 1–2 and §2.3 for the horizontal quotient. Further reading on the general algebraic-pseudogroup problem. Section 6 proves the metric generation result used in this lesson and states its precise scope.
+- Hanspeter Kraft and Claudio Procesi, [*Classical Invariant Theory: A Primer*](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Personen/Kraft_Hanspeter/Classical_Invariant_Theory.pdf), §10.2, on Weyl's orthogonal invariant theorem and polarization. Theorem 5.1 proves the contraction assertion by averaging.

@@ -1,7 +1,9 @@
 # Component terms
 
-The preserved L108 proof carries its original September 2026 Codex/OpenAI CC0 notice. The restoration, expanded estimates, finite matrix example, solved calculation, diagram, caption, exact data and renderer were written in the existing OA-FLOW session by GPT-6 Astra (OpenAI), Ultra, on 5 October 2026. Their newly written expression is dedicated under CC0-1.0 to the extent of rights held.
+The original proof exposition, finite matrix example, solved calculation, diagram, caption, data and renderer are dedicated under CC0-1.0 to the extent of rights held.
 
-Human mathematical sources are credited in the lesson and source-comparison record. No ownership or licence over those sources is asserted. Source-page images and text extracts are private review evidence and must not be included in a course export. Font terms and all existing programme component notices must be retained on integration.
+AI-assisted authorship: OpenAI Codex, including GPT-6 Astra.
 
-Spot-checked by GPT-6.1 Sol in a separate session.
+DejaVu glyphs and font designs retain the separate terms in the font notice.
+
+Other course components and cited works retain their applicable terms; see course licensing and credits.

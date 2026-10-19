@@ -149,7 +149,7 @@ font_license=Path(matplotlib.get_data_path())/"fonts/ttf/LICENSE_DEJAVU"
 shutil.copyfile(font_license,D/"FONT-LICENSE-DEJAVU.txt")
 (D/"LICENSE.txt").write_text(
     "Original diagram, geometry, coordinate data and reproduction code: CC0-1.0.\n"
-    "Self-checked by the writing AI. Human review and formal verification are not asserted.\n"
+    "Diagram and reproduction code prepared with AI assistance.\n"
     "DejaVu glyph designs retain the terms in FONT-LICENSE-DEJAVU.txt.\n"
     "No third-party source page or source illustration is included.\n",encoding="utf-8")
 print("Wrote 3000×2200 PNG, editable SVG, exact data, and retained font terms.")

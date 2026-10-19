@@ -1,10 +1,20 @@
 # Orthogonalizing nearly disjoint projections
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026, with writing-AI self-checking. Original exposition, proof and exercises: CC0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, October 2026. Checked by the writing AI. Original exposition, proof and exercises: CC0.*
 
 Almost orthogonal subspaces can be corrected simultaneously. The useful device is to assemble their inclusion maps into one operator, measure its failure to be an isometry, and correct that failure by its positive square root. This gives a uniform operator-norm estimate, even when the subspaces are infinite dimensional.
 
-Projection orthogonalization is one of the geometric tools in Alain Connes's work on noncommutative Rokhlin towers and outer conjugacy. Here the Gram operator gives a direct proof with an explicit linear bound. Basic preparation is [Hilbert spaces and compact operators](../../foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html). The square-root correction needed below is constructed by convergent operator power series, so the proof includes that calculation.
+Projection orthogonalization is one of the geometric tools in Alain Connes's work on noncommutative Rokhlin towers and outer conjugacy. Here the Gram operator gives a direct proof with an explicit linear bound. The Hilbert-space and bounded-operator prerequisites are supplied below. The square-root correction is constructed by a norm-convergent operator power series, including its coefficient identities.
+
+## 0. Hilbert and operator foundations
+
+We use complete real and complex scalars, the inner-product axioms and finite-dimensional algebra. A Hilbert space is complete in its inner-product norm; a concrete von Neumann algebra is a unital adjoint-closed algebra of bounded operators that is closed in the strong operator topology.
+
+**H1. Inner products, orthogonal projections and adjoints.** [Bounded topology foundations, Foundation A](../foundations/bounded-topology-foundations.md#foundation-a-real-hilbert-geometry), proves Cauchy–Schwarz, the triangle and parallelogram identities, orthogonal projection onto a closed real subspace, and real Riesz representation. The opening four paragraphs of [GP0](../foundations/bounded-topology-foundations.md#gp0-the-bounded-calculus-used-in-the-proof), through the adjoint norm identity, prove completeness of bounded-operator spaces, the positive-operator norm formula, the real-to-complex Riesz conversion, bounded adjoints, their product rule, and the norm-square identity for a Gram operator. These proofs apply to arbitrary Hilbert dimensions. For a closed complex subspace, its real-orthogonal residual is also complex-orthogonal, by testing a subspace vector and its multiple by the imaginary unit; thus Foundation A supplies its complex orthogonal projection too.
+
+**H2. Finite sums and matrix corners.** The range of a bounded projection is the kernel of identity minus that projection, so it is closed and complete. A finite orthogonal direct sum of these ranges is complete: a Cauchy sequence has a limit in each coordinate, and the sum of the finitely many squared coordinate errors tends to zero. A norm-convergent sequence converges strongly, because its error on a vector is bounded by the norm error times the vector norm. Hence a von Neumann algebra is norm closed. A block entry of an operator matrix is obtained by composing it with coordinate inclusion and projection, both contractions; operator-norm convergence therefore implies norm convergence of every entry. This proves norm closedness of the finite matrix algebra over the original algebra. Multiplication by a fixed projection is norm continuous, so its corner is norm closed as well. The same argument applies to rows of operators. This is the precise matrix-corner membership used in (1.7)–(1.10).
+
+**H3. Operator series.** A series with summable operator norms is norm convergent by GP0's completeness proof. The double norm sum for the product of two such series is bounded by the product of their two norm sums. The omitted terms outside a finite rectangle have norm bounded by the corresponding scalar tails. Thus regrouping by total degree gives the Cauchy product. Every formal coefficient identity used below is a finite sum identity; absolute norm convergence then permits substitution of a bounded operator of norm less than one. No general spectral-calculus or analytic differentiation theorem is an additional prerequisite of this construction.
 
 ## 1. The simultaneous correction
 
@@ -64,7 +74,7 @@ The lower bound shows that \(T\) has closed range: if \(T\xi_n\) is Cauchy, then
  \end{gathered}
 \tag{1.6}
 \]
-For completeness, \(c_0=1\) and \((n+1)c_{n+1}=(n+1/2)c_n\). Since \(0<c_n\le1\), the series and its termwise derivative converge for \(|z|<1\). The recurrence gives \((1-z)F'(z)=F(z)/2\), so differentiating \((1-z)F(z)^2\) makes it constant, with value one at zero. This proves the indicated identity, choosing the value positive on \(0\le z<1\).
+For completeness, \(c_0=1\) and \((n+1)c_{n+1}=(n+1/2)c_n\). Since \(0<c_n\le1\), the series converges absolutely for \(|z|<1\). The recurrence gives \((1-z)F'(z)=F(z)/2\) as a formal coefficient identity: the prime multiplies a coefficient by its nonnegative integer degree. The formal product rule is valid because each product coefficient is a finite sum. Hence the formal derivative of \((1-z)F(z)^2\) is zero, so this series has only its constant coefficient, which is one. Equivalently, writing \(F(z)^2=\sum_{n\ge0}b_nz^n\), the same coefficient calculation gives \((n+1)b_{n+1}=(n+1)b_n\) and \(b_0=1\), whence every \(b_n=1\). H3 justifies the numerical and operator Cauchy products. The scalar identity has the positive value on \(0\le z<1\), since every coefficient of F is nonnegative. Thus (1.6) follows by algebraic coefficient comparison and convergent sums.
 
 Because \(\|B\|\le a<1\), the following series converge absolutely in operator norm:
 \[

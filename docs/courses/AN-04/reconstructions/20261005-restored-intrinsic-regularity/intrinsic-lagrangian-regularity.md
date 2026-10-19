@@ -6,10 +6,18 @@ The exact earlier programme proofs used below are:
 
 - [L2 completeness and compact smooth density, M6–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md), [Fourier extension, L1–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), and [dyadic endpoints, B1–B6](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md).
 - [Ordinary operator calculus, O0–O6](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md), [coordinate and frame transport, T0–T3 and W1–W5](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), and [matrix parametrices and intrinsic localization, K0–K7](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md).
-- The restored [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) and oscillatory-distribution lesson, together with [frequency coordinates, C0–C5](../20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](../20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
+- The [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) and [oscillatory-distribution lesson](../20261005-restored-oscillatory/oscillatory-distributions-and-order.md), together with [frequency coordinates, C0–C5](../20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](../20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
 - [Prescribed-phase reconstruction, F0–F6](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md), [homogeneous symbol transport, H2 and H5–H6](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), and [Sobolev localization and refinement, S0–S5](../20261004-free-intrinsic-graph/prerequisites/sobolev-order-refinement.md).
 
-The [proof map](proof-map.json) binds each use to its exact source and full dependency chain. These complete programme proofs replace the earlier broad AN-03 references. The primary mathematical source is Hörmander IV, Section 25.1 read in the exact reprint of the corrected second printing (1994). The exposition below, its additional explanations and its exercises are independently written. The reference does not replace any programme proof.
+The [proof map](proof-map.json) locates the arguments and their named earlier
+inputs. The primary mathematical source is Lars Hörmander,
+*The Analysis of Linear Partial Differential Operators IV*, §25.1,
+in the [2009 reprint of the 1994 edition](https://doi.org/10.1007/978-3-642-00136-9),
+printed pp. 4–10: Definition 25.1.1, Lemma 25.1.2, Proposition 25.1.3,
+Theorem 25.1.4, Lemma 25.1.6 and the nondegenerate and clean statements
+of Proposition 25.1.5. The arguments below use proper frequency
+regularization, ordinary symbol estimates and explicit Fourier bounds.
+Matrix commutators are kept inside the vanishing ideal.
 
 Throughout, \(D=-i\partial\), \(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\), and inverse Fourier transformation has factor \((2\pi)^{-n}\). Symbols are ordinary \(S^r=S^r_{1,0}\); a homogeneous expansion is required only when stated.
 
@@ -222,7 +230,7 @@ and the amplitude is supported inside a sufficiently small compact-base cone. Fo
 
 Both assertions follow from the Fourier-symbol reduction and Theorem 3.1, after the base change making \(\Lambda\) a frequency graph. Theorem 2.1 and coordinate invariance then remove that choice.
 
-The clean normalization in (4.2) agrees with the restored oscillatory lesson. The earlier prescribed-phase companion instead keeps the prefactor \((2\pi)^{-(n+2N)/4}\) for every excess. Thus its amplitude for the same distribution is \((2\pi)^{e/2}a\). This constant changes neither the symbol order nor the proof of reconstruction; it must be retained when comparing the exact leading coefficients. In particular, (4.6) and Exercise 6.4 below use the normalization (4.2).
+The clean normalization in (4.2) agrees with the oscillatory lesson. The earlier prescribed-phase companion instead keeps the prefactor \((2\pi)^{-(n+2N)/4}\) for every excess. Thus its amplitude for the same distribution is \((2\pi)^{e/2}a\). This constant changes neither the symbol order nor the proof of reconstruction; it must be retained when comparing the exact leading coefficients. In particular, (4.6) and Exercise 6.4 below use the normalization (4.2).
 
 The extension of amplitudes uses the following symbol fact, also useful for changing the number of base or phase variables.
 
@@ -355,7 +363,7 @@ For a fixed \(\mu\) satisfying (5.1), choose \(\varepsilon<\mu+s_0+n/4\). The bo
 
 ## 6. Examples and exercises with complete solutions
 
-**The point mass.** On \(\mathbb R^n\), take \(H=0\). The graph is \(T^*_0\mathbb R^n\setminus0\), and \(\widehat{\delta_0}=1\). Theorem 3.1 gives \(\delta_0\in I^{n/4}\). It is not in any smaller order because a nonzero constant is not a negative-order symbol. Its limiting Besov regularity is \(-n/2\), while its Sobolev regularity is strictly below \(-n/2\).
+**The point mass.** Assume \(n\geq1\). On \(\mathbb R^n\), take \(H=0\). The graph is \(T^*_0\mathbb R^n\setminus0\), and \(\widehat{\delta_0}=1\). Theorem 3.1 gives \(\delta_0\in I^{n/4}\). It is not in any smaller order because a nonzero constant is not a negative-order symbol. Its limiting Besov regularity is \(-n/2\), while its Sobolev regularity is strictly below \(-n/2\).
 
 **Exercise 6.1 (the dimension shift; introductory).** If \(v(\xi)=\langle\xi\rangle^r\), what is the intrinsic order of \(\mathcal F^{-1}(e^{-iH}v)\)? What regularity bound follows immediately?
 
@@ -378,7 +386,7 @@ w(\theta_2/\theta_1).
 \]
 Its order is \(m-1/4-1=m-5/4\), and \((2\pi)^{1/4}\int a_0\,d\theta_2=v(\theta_1)\). A base cutoff equal to one at zero extends the amplitude. The normalized factor in (4.2) is \((2\pi)^{-3/4}\), so integrating out \(\theta_2\) gives the inverse Fourier coefficient \((2\pi)^{-1}\), as required.
 
-**Exercise 6.5 (the strict inequality; advanced).** Construct a symbol \(v\) such that \(\mathcal F^{-1}v\in H^{s_0}\) and \(v\in S^{-s_0-n/2+\varepsilon}\) for every \(\varepsilon>0\), but \(v\notin S^{-s_0-n/2}\). Explain why this prevents replacing the strict inequality in Theorem 5.1 by equality.
+**Exercise 6.5 (the strict inequality; advanced).** Assume \(n\geq1\). Construct a symbol \(v\) such that \(\mathcal F^{-1}v\in H^{s_0}\) and \(v\in S^{-s_0-n/2+\varepsilon}\) for every \(\varepsilon>0\), but \(v\notin S^{-s_0-n/2}\). Explain why this prevents replacing the strict inequality in Theorem 5.1 by equality.
 
 **Solution.** Let \(q=-s_0-n/2\), choose a nonzero smooth bump \(b\), supported in the unit ball with \(b(0)=1\), and choose \(a>3/n\). For sufficiently large integers \(j\), set \(R_j=2^{j^2}\), \(\xi_j=R_je_1\), and define disjoint bumps
 \[
@@ -404,6 +412,6 @@ Suppose the endpoint membership held microlocally at \((0,e_1)\). The full-symbo
 
 ## References
 
-- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1.
+- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Classics in Mathematics, Springer, 2009, reprint of the 1994 edition, e-ISBN 978-3-642-00136-9, [DOI 10.1007/978-3-642-00136-9](https://doi.org/10.1007/978-3-642-00136-9), §25.1, printed pp. 4–10.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text: CC0 to the extent rights exist; cited human works retain their own terms.*

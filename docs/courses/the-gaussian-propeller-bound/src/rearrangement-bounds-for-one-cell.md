@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-We work in the standing setting (S1)–(S6) of Gaussian first moments of partitions, Section 4: an optimal partition with \(m\ge5\) active cells, cones \(K_i\) in \(V\cong\mathbb R^{m-1}\), moments \(z_i\), cell measures \(P_i\) and normalized lengths \(r_i=|z_i|/\sqrt C\), under the hypothesis \(C>B^2=9/(8\pi)\). A cell with a long moment must carry a lot of mass, because mass far out in one direction is limited. This lesson proves (Proposition 2.4): with \(A=0.929\) if \(m=5\) and \(A=0.884\) if \(m\ge6\), every cell satisfies
+We work in the standing setting (S1)–(S6) of [Gaussian first moments of partitions](gaussian-first-moments-of-partitions.md), Section 4: an optimal partition with \(m\ge5\) active cells, cones \(K_i\) in \(V\cong\mathbb R^{m-1}\), moments \(z_i\), cell measures \(P_i\) and normalized lengths \(r_i=|z_i|/\sqrt C\), under the hypothesis \(C>B^2=9/(8\pi)\). A cell with a long moment must carry a lot of mass, because mass far out in one direction is limited. This lesson proves (Proposition 2.4): with \(A=0.929\) if \(m=5\) and \(A=0.884\) if \(m\ge6\), every cell satisfies
 \[
 r_i<\frac23\qquad\text{and}\qquad P_i>Ar_i^2 .
 \]
@@ -222,7 +222,7 @@ The values used in this lesson:
 
 **4.1** (easy). Show that Lemma 1.1 fails without the condition \(\gamma_d(K)=\gamma_d(H)\): find \(K\) with \(\int_K\langle e,y\rangle\,d\gamma_d>\phi(x)\) when \(K\) is allowed a larger measure than \(H\).
 
-**4.2** (medium). For the propeller of Gaussian first moments of partitions, Corollary 2.2, compute \(P\) and \(r\) for each sector (with \(C=9/(8\pi)\)) and the ratio \(P/r^2\). Compare it with \(\min f\).
+**4.2** (medium). For the propeller of [Gaussian first moments of partitions](gaussian-first-moments-of-partitions.md), Corollary 2.2, compute \(P\) and \(r\) for each sector (with \(C=9/(8\pi)\)) and the ratio \(P/r^2\). Compare it with \(\min f\).
 
 **4.3** (medium). Show that \(f(x)\to\infty\) as \(x\to\pm\infty\) without using Lemma 1.3, using \(\Phi(-x)\ge\frac{x}{1+x^2}\phi(x)\) for \(x>0\).
 

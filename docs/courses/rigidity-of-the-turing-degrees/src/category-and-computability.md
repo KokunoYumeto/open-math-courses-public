@@ -9,7 +9,7 @@ A subset of the line or of the plane is *meager* if it is a countable union of n
 - The reduction relations are Borel (Lemmas 3.1 and 3.2).
 - The avoidance lemma (Lemma 4.1).
 
-The lesson follows [OpenAI-R, Section 2]; according to [OpenAI-R], the avoidance lemma is a principle of G. Sacks. It continues Relative computability and the Turing degrees and uses its reductions \(\Phi_e\), joins and cuts \(C(x)\). It uses the topology of \(\mathbb R^k\) and the notion of a Borel set from the core course [Measure and Integration (D10)](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10).
+The lesson follows [OpenAI-R, Section 2]; according to [OpenAI-R], the avoidance lemma is a principle of G. Sacks. It continues [Relative computability and the Turing degrees](relative-computability-and-the-turing-degrees.md) and uses its reductions \(\Phi_e\), joins and cuts \(C(x)\). It uses the topology of \(\mathbb R^k\) and the notion of a Borel set from the core course [Measure and Integration (D10)](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10).
 
 ## 1. Meager sets
 

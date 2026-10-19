@@ -1,10 +1,10 @@
 # Semiregular MASAs and scalar pinching
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
-A semiregular MASA has enough normalizers to match any two of its projections of equal trace. Compatible matches build finite matrix algebras whose diagonals approximate the entire MASA. Their closure is an irreducible AFD subfactor. A second construction, using decreasing irreducible AFD factors, turns finite pinching into simultaneous approximation by the ambient trace.
+A semiregular MASA has enough normalizers to match any two of its projections of equal trace. Compatible matches build finite matrix algebras whose diagonals approximate the entire MASA. Their closure is an irreducible AFD subfactor. A coupled finite Fourier basis makes each chosen matrix stage scalar on a conjugate MASA; finite partitions in that MASA give scalar pinching for an ambient finite list.
 
-We use the [relative pinching preparation](abelian-pinching-and-relative-commutants.md), the [expected-subfactor construction](masas-in-expected-semifinite-subfactors.md), and the [decreasing AFD subfactors](centrally-trivial-automorphisms-and-decreasing-afd-factors.md#theorem-5-1). [Finite trace expectations](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation), TL3, constructs the normal, ucp, bimodular expectation onto every unital subalgebra and identifies it with the trace-GNS orthogonal projection. TL4 proves the intersection assertion for decreasing trace spaces by bounded operator clusters. These are finite tracial arguments. Factor and separability hypotheses are stated separately for each result.
+We use the [relative pinching preparation](abelian-pinching-and-relative-commutants.md), and the [expected-subfactor construction](masas-in-expected-semifinite-subfactors.md). [Finite trace expectations](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation), TL3, constructs the normal, ucp, bimodular expectation onto every unital subalgebra and identifies it with the trace-GNS orthogonal projection. TL4 proves the intersection assertion for decreasing trace spaces by bounded operator clusters. These are finite tracial arguments. Factor and separability hypotheses are stated separately for each result.
 
 Let \(N\) be a \(\mathrm{II}_1\) factor, \(\tau\) its normalized trace, and \(A\subset N\) a semiregular MASA. Put
 \[
@@ -129,7 +129,7 @@ E_{(i,s),(j,t)}=e_{i1}f_{st}e_{1j}.
 \]
 Products of partial normalizers retain (2). These units generate a dyadic factor \(F_{n+1}\) containing \(F_n\), with diagonal \(A_{n+1}\subset A\). Reconstruct each \(a_j\) by its diagonal entries (6), using their simple-function approximants in \(B\). Their errors are orthogonal, and the ambient squared \(2\)-norm is \(1/d\) times the sum of the normalized corner squared norms. This proves (5) at the next stage. Choose \(s\ge2\).
 
-Let \(R=(\bigcup_n F_n)''\). Apply the explicit finite-stage projections [formula (MC1)](masas-in-expected-semifinite-subfactors.md#theorem-2-1) to these actual \(F_n\)'s and the faithful trace restricted from \(N\). The formula \(Q_n(x)=d_n\sum_{i,j}\tau(e_{ji}^{(n)}x)e_{ij}^{(n)}\), \(d_n=2^{K_n}\), is the normal trace-preserving projection onto \(F_n\), with its full positivity, bimodularity, contractivity and GNS checks given there. Its GNS projections increase to the identity on \(\overline{R\Omega_\tau}\). For \(x\in Z(R)\), bimodularity gives \(Q_n(x)=\tau(x)1\); their limit and faithfulness make \(x=\tau(x)1\). Thus \(R\) is a factor directly.
+Let \(R=(\bigcup_n F_n)''\). Apply the explicit finite-stage projections from [the matrix-stage expectation theorem](../components/matrix-stage-expectations-and-scalar-center.md#mx1) to these actual \(F_n\)'s and the faithful trace restricted from \(N\). The formula \(Q_n(x)=d_n\sum_{i,j}\tau(e_{ji}^{(n)}x)e_{ij}^{(n)}\), \(d_n=2^{K_n}\), is the normal trace-preserving projection onto \(F_n\), with its full positivity, bimodularity, contractivity and GNS checks given there. Its GNS projections increase to the identity on \(\overline{R\Omega_\tau}\). For \(x\in Z(R)\), bimodularity gives \(Q_n(x)=\tau(x)1\); their limit and faithfulness make \(x=\tau(x)1\). Thus \(R\) is a factor directly.
 
 The relative commutant of \(F_n\) in \(F_{n+1}\) is the unital diagonal copy of the chosen first-corner factor: \(f\mapsto\sum_i e_{i1}fe_{1i}\). Matrix multiplication in (7) identifies \(F_{n+1}\) with \(F_n\otimes M_{2^{K_{n+1}-K_n}}\), so this copy is precisely the relative commutant and has identity \(1\), although the original corner has identity \(e\). Split its binary matrix indices into exactly \(K_{n+1}-K_n\) commuting \(M_2\) legs. These identifications are compatible with every previous stage. The algebraic union has the product trace, so its trace-preserving isomorphism with the dyadic tensor union extends to a GNS unitary intertwining all local left multipliers. Their von Neumann closures give \(R\cong R_{\mathrm{hyperfinite}}\). The matrix sizes grow without bound, so this finite factor is of type \(\mathrm{II}_1\). In the reconstruction for (5), use the trace expectation \(E_B(b_{ij})\) for each entry; its nearest-point property preserves the error bound and its contractivity bounds the reconstructed operator by \(\|a_j\|\). Equation (5) therefore puts \(A\subset R\), since bounded \(2\)-norm convergence is strong convergence on the finite trace representation and \(R\) is closed.
 
@@ -141,7 +141,7 @@ The diagonals in this construction are chosen in the current first corner and th
 
 <a id="3-scalar-pinching-in-an-irreducible-finite-subfactor"></a>
 
-## Two refinements that make pinching scalar
+## Scalar pinching through a coupled Fourier diagonal
 
 **Theorem 3.1.** Let \(M\) be a \(\mathrm{II}_1\) factor with separable predual, let \(\tau\) be its normalized trace, and let \(N\subset M\) be a unital subfactor with \(N'\cap M=\mathbb C\). For a finite \(F\subset M\) and \(\varepsilon>0\), there is a finite partition \(e_1,\ldots,e_r\) of \(1\) in \(N\) such that
 \[
@@ -152,52 +152,78 @@ The diagonals in this construction are chosen in the current first corner and th
 \]
 Neither \(N\) nor \(M\) is assumed AFD.
 
-**Proof.** Use the normal trace-preserving expectations of [TL3](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation), in the ambient algebra and in every nonzero normalized corner. If \(N\) is type I, irreducibility and its matrix decomposition force \(M=N\), which is impossible for type II. Thus \(N\) is \(\mathrm{II}_1\). The expected-subfactor construction gives an AFD \(R_0\subset N\) containing a MASA of \(M\); consequently \(R_0'\cap M=\mathbb C\). Equivalently one can use that MASA and Theorem 2.2.
+**Proof.** All expectations below are the normal trace-preserving expectations constructed in [TL3](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation). A type I subfactor \(N\) would have matrix coordinates \(M\cong N\mathbin{\overline\otimes}(N'\cap M)\). Irreducibility would give \(M=N\), contrary to type II. Thus \(N\) is \(\mathrm{II}_1\). Its predual is separable: \(\psi\mapsto\psi E_N\) embeds \(N_*\) isometrically in \(M_*\).
 
-The decreasing AFD theorem supplies
+Apply the expected-subfactor construction to obtain a MASA \(A\) of \(M\) contained in \(N\) and semiregular there. Theorem 2.2 supplies an irreducible dyadic AFD subfactor \(R\subset N\) containing \(A\), with \(A\) regular in \(R\). Use its actual increasing full matrix stages \(F_n\cong M_{d_n}\), \(d_n=2^{K_n}\), and diagonals \(A_n\subset A\). Their matrix units partially normalize all of \(A\), their union generates \(R\), and the union of the \(A_n\)'s generates \(A\).
+
+We first construct a conjugate \(B\) of \(A\) whose expectation makes a prescribed matrix stage exactly scalar. Fix \(F_n\cong M_d\), with \(d\ge2\). Choose a later stage \(F_m\) with \(K_m\ge2K_n\). The compatible binary matrix legs from Theorem 2.2 give
 \[
-R_n\subset R_0,\qquad R_n'\cap R_0=\mathbb C,\qquad
-\bigcap_n R_n=\mathbb C.
+ F_m=F_n\otimes G\otimes H,\qquad
+ G\cong M_d,\qquad H\cong M_h,
+ \qquad
+ A_m=D_d\otimes D_d\otimes D_h,
 \tag{9}
 \]
-Their trace GNS projections in \(L^2(M,\tau)\) decrease to the scalar projection. To identify the intersection, use the bounded cluster argument of the pinching lesson: for \(x\in M\), \(E_{R_n}(x)\) is bounded, its GNS vectors converge, and any ultraweak cluster point belongs to every \(R_n\); the normal pairings identify the vector limit. It follows that
+where \(D_r\) is the ordinary matrix diagonal and \(h=d_m/d^2\) is a positive integer. These identifications follow from the chosen first-corner propagation: the new first-corner diagonal is transported through every old row, so both the matrix tensor identification and its diagonal agree with the earlier stages. Split the later relative matrix factor into its first \(K_n\) binary legs and its remaining legs to obtain \(G\) and \(H\).
+
+In the standard representation of \(F_n\otimes G\), index both bases by \(\mathbb Z/d\mathbb Z\), put \(\zeta=\exp(2\pi i/d)\), and set
 \[
-E_{R_n}(x)\longrightarrow\tau(x)1\quad\text{in }2\text{-norm}.
+ \xi_{ab}=\frac1{\sqrt d}\sum_{j=0}^{d-1}
+                 \zeta^{aj}\,e_j\otimes e_{j+b}
+ \qquad(a,b\in\mathbb Z/d\mathbb Z).
+\]
+These \(d^2\) vectors form an orthonormal basis. The inner product vanishes when the second indices \(b\) differ; when they agree it is \(d^{-1}\sum_j\zeta^{(a'-a)j}=\delta_{aa'}\). Let \(U\in F_n\otimes G\subset F_m\) send the standard tensor basis to this basis, and let it act as the identity on \(H\). For every \(x\in F_n\),
+\[
+ \langle\xi_{ab},(x\otimes1)\xi_{ab}\rangle
+       =\frac1d\sum_j\langle e_j,xe_j\rangle
+       =\tau(x).
+\]
+Indeed the inner products of \(e_{j+b}\) and \(e_{k+b}\) remove all terms with \(j\ne k\). This identity holds for every matrix \(x\), including its off-diagonal entries.
+
+On \(F_m\), the expectation \(E_A\) is exactly its matrix diagonal expectation onto \(A_m\). To check this, it fixes each diagonal matrix unit, while bimodularity by the distinct diagonal projections makes its value on every off-diagonal unit zero. Therefore the preceding basis calculation, also for each diagonal index of \(H\), gives
+\[
+ E_A(U^*xU)=\tau(x)1\qquad(x\in F_n).
+\]
+Put \(B=UAU^*\). It remains a MASA in \(M\), and it lies in \(R\). Conjugating the trace expectation identifies \(E_B(x)=U E_A(U^*xU)U^*\), as can also be checked from its trace pairings with every element of \(B\). Consequently
+\[
+ E_B(x)=\tau(x)1\qquad(x\in F_n).
 \tag{10}
 \]
-Choose \(n\) so that the square sum of these errors over \(F\) has square root below \(\varepsilon/4\).
 
-Put \(y_x=E_{R_0}(x)\) and \(z_x=x-y_x\). Within \(R_0\), apply the simultaneous pinching theorem to \(R_n\) and
+We now choose the stage for the given finite list. The projections \(E_{F_n}\) on trace GNS space increase to \(E_R\), by the bounded-density argument of MX1. Thus \(y_x=E_{F_n}(x)\) can be chosen, for one sufficiently large \(n\), so that
 \[
-y_x-E_{R_n}(x)\in\ker E_{R_n}.
+ \left(\sum_{x\in F}\|E_R(x)-y_x\|_2^2\right)^{1/2}
+       <\varepsilon/2.
 \]
-Its relative commutant in \(R_0\) is scalar, so that theorem applies to this whole kernel. It gives a finite partition \(f_1,\ldots,f_s\in R_n\) with
+Construct \(B\) for this stage. Since \(B\subset R\), the nested orthogonal projection identity gives \(E_B E_R=E_B\). Equation (10), trace preservation and contractivity then show
 \[
-\left(\sum_{x\in F}
-\|T_f(y_x-E_{R_n}(x))\|_2^2\right)^{1/2}
-<\varepsilon/4.
+ \left(\sum_{x\in F}\|E_B(x)-\tau(x)1\|_2^2\right)^{1/2}
+       <\varepsilon/2.
 \tag{11}
 \]
-Here \(T_f(b)=\sum_j f_jbf_j\). For example choose its common relative error below \(\varepsilon/(4(1+Y))\), where \(Y\) is the square sum norm of the finite list. Its \(2\)-norm contractivity, (10) and (11) yield
+In particular the part orthogonal to \(R\) has zero \(B\)-expectation; no separate refinement is required to control it.
+
+Finally use the finite diagonal algebras \(C_k=UA_kU^*\subset B\). They increase and generate \(B\). Write their minimal projections as \(e_1^{(k)},\ldots,e_{r_k}^{(k)}\). Their pinching maps
 \[
-\left(\sum_{x\in F}\|T_f(y_x)-\tau(x)1\|_2^2\right)^{1/2}
-<\varepsilon/2.
+ T_k(x)=\sum_i e_i^{(k)}x e_i^{(k)}
+\]
+are the trace expectations onto \(C_k'\cap M\). The range assertion follows by checking commutation with each diagonal projection, and the trace pairing with an element of that commutant identifies the expectation. These commutants decrease to \(B'\cap M=B\).
+
+Here is the full bounded limit argument. Their Hilbert projections decrease to the projection onto the intersection of their closed ranges. This follows from
+\(\|p_k\xi-p_l\xi\|^2=\|p_k\xi\|^2-\|p_l\xi\|^2\) for \(l\ge k\), which makes each projected vector Cauchy and identifies its limit in every range. For bounded \(x\), the operators \(T_k(x)\) have norm at most \(\|x\|\). An ultraweak cluster point belongs to every \(C_k'\cap M\), hence to \(B\). Its normal GNS pairings identify its vector with the projection limit. Pairing also with each element of \(B\) makes that cluster point \(E_B(x)\). It follows that
+\[
+ \|T_k(x)-E_B(x)\|_2\longrightarrow0.
 \tag{12}
 \]
-
-It remains to suppress \(z_x\), the part outside \(R_0\). In each nonzero corner \(f_jMf_j\), the algebra \(f_jR_0f_j\) is irreducible by the corner commutant lemma. Its trace expectation is the restriction of \(E_{R_0}\), so \(f_jz_xf_j\) belongs to its kernel. Apply simultaneous pinching there and refine \(f_j\) into a finite partition \((e_{jk})\subset f_jR_0f_j\).
-
-Use a common relative error less than \(\varepsilon/(2(1+Z))\), where \(Z=(\sum_{x\in F}\|z_x\|_2^2)^{1/2}\). Normalized corner norms are converted to ambient squared norms by multiplying by \(\tau(f_j)\). Corner orthogonality and contractivity of \(T_f\) consequently give, for the combined partition \(e=(e_{jk})\),
+Choose one \(k\) so that the square sum of these errors over the finite set has square root below \(\varepsilon/2\). The triangle inequality in the Hilbert direct sum, together with (11), gives
 \[
-\left(\sum_{x\in F}\|T_e(z_x)\|_2^2\right)^{1/2}
-<\varepsilon/2.
+ \left(\sum_{x\in F}\|T_k(x)-\tau(x)1\|_2^2\right)^{1/2}
+       <\varepsilon.
 \tag{13}
 \]
-If \(Z=0\), no additional refinements are needed for this estimate.
+The selected partition belongs to \(B\subset R\subset N\), as required. An empty list or a list consisting of scalars already admits the partition \(\{1\}\). \(\square\)
 
-Since \(e\) refines \(f\), \(T_e=T_eT_f\), and \(T_e\) fixes scalars. Thus (12) stays valid with \(T_e\) in place of \(T_f\). Add that bound and (13) in the Hilbert direct sum over \(F\). This gives (8). Every selected projection lies in \(R_0\subset N\). \(\square\)
-
-The two refinement stages have different jobs. The first suppresses the nonscalar part already inside \(R_0\), after a decreasing expectation has become nearly scalar. The second removes the part orthogonal to \(R_0\). Irreducibility inside \(R_0\) in the first stage is not replaced by an unsupported irreducibility assertion about \(R_n\) in \(M\).
+The finite coupled basis makes a whole matrix stage scalar at once. A single partition limit in its conjugate MASA then treats the ambient finite list. Only the actual compatible matrix stages and the trace expectation calculus enter this construction.
 
 ## 4. Exercises with complete solutions
 
@@ -233,26 +259,32 @@ The two refinement stages have different jobs. The first suppresses the nonscala
 
 *Solution.* It must lie in the current first corner, and its propagated copies must commute with the old matrix algebra in the specified tensor embedding. Old normalizing unitaries can act nontrivially on any previously fixed unused coordinate. Choosing the partition after pulling the finite approximation targets into the current corner, as in (6), supplies the needed compatibility.
 
-**Exercise 9.** Identify the limit of the decreasing projections in (10).
+**Exercise 9.** Let \(R_n\) be decreasing unital subalgebras of a finite tracial algebra \(M\), with \(\bigcap_nR_n=\mathbb C1\). Identify the limit of their trace-GNS projections.
 
-*Solution.* For a fixed bounded \(x\), their expected operators remain bounded. A cluster point lies in every \(R_n\), hence in \(\mathbb C\). Trace preservation makes it \(\tau(x)1\). Normal GNS pairings identify its vector with the strong projection limit. Density of bounded vectors gives the scalar projection on all of \(L^2(M,\tau)\).
+*Solution.* For bounded \(x\), the operators \(E_{R_n}(x)\) stay bounded. Their GNS projections decrease, so their vectors converge by the decreasing-projection norm identity used in (12). An ultraweak cluster point belongs to every \(R_n\), hence is scalar. Trace preservation identifies it as \(\tau(x)1\), and normal GNS pairings identify its vector with that limit. Density of bounded GNS vectors gives the scalar projection on all of \(L^2(M,\tau)\).
 
-**Exercise 10.** Why is the first application of simultaneous pinching made inside \(R_0\)?
+**Exercise 10.** Suppose \(R_n\subset R_0\subset M\) are finite tracial factors, \(R_n'\cap R_0=\mathbb C\), and \(y_x=E_{R_0}(x)\). Explain why pinching the finite list \(y_x-E_{R_n}(x)\) using the known irreducibility must be performed inside \(R_0\).
 
-*Solution.* The known relative commutant is \(R_n'\cap R_0=\mathbb C\), which makes its relevant join equal to \(R_n\) there. The operators \(y_x-E_{R_n}(x)\) belong to \(R_0\) and have zero expectation onto \(R_n\). The proof does not establish \(R_n'\cap M=\mathbb C\), so an ambient application at that stage would not be justified.
+*Solution.* The displayed relative commutant is computed in \(R_0\). The list belongs to \(R_0\), and nested trace expectations give \(E_{R_n}(y_x-E_{R_n}(x))=0\). Thus it lies in the kernel required by simultaneous relative pinching in that ambient algebra. The stated hypotheses do not assert \(R_n'\cap M=\mathbb C\); that commutant may be larger. An application in \(M\) would therefore need a separate premise. This is a scope test for relative pinching; Theorem 3.1 uses the coupled-basis route.
 
-**Exercise 11.** Verify that refinement preserves (12).
+**Exercise 11.** Let a finite partition \(e\) refine a finite partition \(f\) in a finite tracial algebra. Prove that a square-sum bound on \(T_f(y_x)-\tau(x)1\) is preserved by \(T_e\).
 
-*Solution.* If \(e\) refines \(f\), every fine projection is under one \(f_j\), so \(T_eT_f=T_e\). Since \(T_e\) is an orthogonal projection on trace GNS space and fixes \(1\), \(\|T_e(y_x)-\tau(x)1\|_2\le\|T_f(y_x)-\tau(x)1\|_2\). Squaring and summing gives the assertion.
+*Solution.* Every fine projection lies under one coarse projection, so \(T_eT_f=T_e\). Pinching is the trace-GNS orthogonal projection onto the corresponding block diagonal algebra, and it fixes \(1\). Hence
+\[
+\|T_e(y_x)-\tau(x)1\|_2
+\le \|T_f(y_x)-\tau(x)1\|_2.
+\]
+Squaring and summing over the finite list proves preservation of its square-sum bound.
 
-**Exercise 12.** Convert a normalized corner error to an ambient one in (13).
+**Exercise 12.** Convert a normalized error in a corner \(f_jMf_j\) to an ambient error, and explain how orthogonal corner errors are added.
 
-*Solution.* In the corner \(f_jMf_j\), the normalized trace is \(\tau(f_j)^{-1}\tau\). An error of squared normalized norm \(c^2\) therefore has squared ambient norm \(\tau(f_j)c^2\). Multiply each corner estimate by this weight before adding. The total is controlled by the ambient squared norms of the original orthogonal diagonal corners, not by the number of corner partitions.
+*Solution.* The normalized corner trace is \(\tau(f_j)^{-1}\tau\). An error of squared normalized norm \(c_j^2\) has squared ambient norm \(\tau(f_j)c_j^2\). Orthogonal diagonal corners have zero cross pairings, so the ambient squared norm of their sum is \(\sum_j\tau(f_j)c_j^2\). Apply this identity to each input and then sum over the finite list. The estimate depends on the original ambient square-sum norms, rather than on the number of refined pieces.
 
 ## Reading and prerequisites
 
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://www.math.ucla.edu/~popa/Books/IIun.pdf), author draft. Lemma 12.1.2, printed p.192, proves extension of partial normalizers by a maximal orthogonal family. Lemmas 1.1–1.2 above supply the complete orbit-join matching argument in the normalizer factor and its corner, with no separability assumption. Lemma 2.1 also supplies exact diffuse abelian trace cuts and dyadic movements; no equal-atom approximation is left as an exercise.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft. Lemma 12.1.2, printed p.192 (PDF p.198), proves extension of partial normalizers by a maximal orthogonal family. Lemmas 1.1–1.2 above give the complete orbit-join matching argument in the normalizer factor and its corner, without separability. Lemma 2.1 supplies exact diffuse trace cuts and dyadic movements. Proposition 12.1.3 and Corollary 12.1.4, printed p.193 (PDF p.199), describe the finite-partition MASA limit. The complete bounded trace-expectation argument is written in Theorem 3.1.
 
-Sorin Popa, [On a problem of R. V. Kadison on maximal abelian \*-subalgebras in factors](https://imar.ro/~increst/1981/41_1981.pdf), INCREST preprint 41/1981, May 1981, second version. Theorem 1 and its compatible matrix construction, printed pp.10–13, build a particular regular MASA inside an irreducible AFD subfactor. Here Theorem 2.2 starts with an arbitrary given semiregular MASA, matches its projections by its own partial normalizers, and proves that its entire algebra is contained in the constructed factor. These are distinct hypotheses, justified by the matching and first-corner induction above.
+Sorin Popa, [On a problem of R. V. Kadison on maximal abelian \*-subalgebras in factors](https://imar.ro/~increst/1981/41_1981.pdf), INCREST preprint 41/1981, May 1981, second version. Theorem 1 and its compatible matrix construction, printed pp.10–13 (PDF pp.14–17), build a particular regular MASA in an irreducible AFD subfactor. Theorem 2.2 here instead starts with a given semiregular MASA and transports its chosen first-corner partitions by its own partial normalizers.
 
-The scalar pinching proof combines the freely accessible finite tracial pinching mechanism with the explicit [decreasing AFD construction](centrally-trivial-automorphisms-and-decreasing-afd-factors.md#theorem-5-1). That construction uses finite outer actions and Bernoulli mixing. Both refinement stages, their relative commutants, normalized corner errors and the scalar expectation limit are given above, retaining arbitrary irreducible subfactors of a separable finite factor. No AFD assumption on either given factor is added. The finite trace expectation and decreasing-space limit are constructed in [TL3–TL4](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation), bounded trace topology is proved in [PB1–PB2](hyperfinite-finite-factors.md#bounded-trace-topology), and the matrix-factor limit is proved by [MC1](masas-in-expected-semifinite-subfactors.md#theorem-2-1). Projection comparison, the finite outer-action construction and the exact prerequisites of those proofs supply their remaining foundations.
+The scalar-pinching construction uses the standard finite Fourier basis on two equal matrix factors. Its full orthogonality and compression calculations appear above: every matrix in the first factor has constant diagonal in that coupled basis. Conjugating the ambient MASA by this finite unitary and passing to one of its finite partitions gives the stated approximation. Finite trace expectations and bounded decreasing-range limits are supplied by [TL3–TL4](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation); [MX1](../components/matrix-stage-expectations-and-scalar-center.md#mx1) supplies the finite-stage projection limit and scalar center. The last four exercises retain the decreasing-expectation, relative-commutant, refinement and normalized-corner estimates as independent applications of the same trace calculus.
+

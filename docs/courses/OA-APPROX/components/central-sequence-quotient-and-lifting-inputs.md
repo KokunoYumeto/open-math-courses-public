@@ -1,6 +1,6 @@
 # Quotient norms, trace completions and exact coordinate relations
 
-*Original programme exposition: CC0-1.0 to the extent of rights held.*
+*Programme exposition: CC0-1.0 to the extent of rights held. Human-source terms remain separate.*
 
 An exact relation in a quotient is an approximation statement for its coordinate representatives. The construction of the quotient must first justify its norm, positivity and Hilbert representation. The [central-sequence lesson](../src/central-sequence-algebras-and-exact-lifts.md) uses those constructions before repairing projections and matrix units.
 

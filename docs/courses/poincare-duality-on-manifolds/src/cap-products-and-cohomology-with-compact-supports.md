@@ -1,6 +1,6 @@
 # Cap products and cohomology with compact supports
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0). Prerequisite exposition revised by GPT-6 Astra (OpenAI), October 2026.*
+*Programme text prepared with Claude Opus 5.5 (Anthropic), GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 Poincaré duality compares cohomology in degree \(k\) with homology in degree \(n-k\) on an oriented \(n\)-manifold. The comparison map is the cap product with the fundamental class. On a noncompact manifold there is no fundamental class, but there are classes \(\mu_K\) for every compact \(K\), and the correct cohomology to pair with them is cohomology with compact supports. This lesson defines the cap product, establishes its formal properties, defines compactly supported cohomology of a manifold as a direct limit, proves its Mayer–Vietoris sequence, and constructs the duality map together with its compatibility with the two Mayer–Vietoris sequences.
 
@@ -21,7 +21,7 @@ For a singular \(k\)-simplex \(\sigma:\Delta^k\to X\) and \(0\leq l\leq k\), wri
 \end{aligned}
 \]
 
-extended \(R\)-linearly to chains. Then the boundary formula (1.2) holds:
+extended \(R\)-linearly to chains. We use the unaugmented singular complex, with \(C_j(X;R)=0\) for \(j<0\) and zero boundary on \(C_0\). Define \(c\frown\varphi=0\) when the cochain degree exceeds the chain degree. Then the boundary formula (1.2) holds:
 
 \[
 \begin{aligned}
@@ -30,7 +30,7 @@ extended \(R\)-linearly to chains. Then the boundary formula (1.2) holds:
 \end{aligned}
 \]
 
-**Proof of (1.2).** Write \(\sigma_{\hat\imath}\) for the \(i\)-th face of \(\sigma\) and \(F=\varphi(\sigma|[v_0,\ldots,v_l])\). The front \(l\)-face of \(\sigma_{\hat\imath}\) is \(\sigma|[v_0,\ldots,\hat v_i,\ldots,v_{l+1}]\) with back face \(\sigma|[v_{l+1},\ldots,v_k]\) if \(i\leq l\), and is \(\sigma|[v_0,\ldots,v_l]\) with back face \(\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k]\) if \(i>l\). Hence
+**Proof of (1.2).** If \(k\leq l\), the boundary of the cap is zero and both caps on the right side of (1.2) are zero by this convention. Thus (1.2) holds in those degrees. In the following calculation assume \(k>l\), so every displayed face exists. Write \(\sigma_{\hat\imath}\) for the \(i\)-th face of \(\sigma\) and \(F=\varphi(\sigma|[v_0,\ldots,v_l])\). The front \(l\)-face of \(\sigma_{\hat\imath}\) is \(\sigma|[v_0,\ldots,\hat v_i,\ldots,v_{l+1}]\) with back face \(\sigma|[v_{l+1},\ldots,v_k]\) if \(i\leq l\), and is \(\sigma|[v_0,\ldots,v_l]\) with back face \(\sigma|[v_l,\ldots,\hat v_i,\ldots,v_k]\) if \(i>l\). Hence
 \[
 \begin{aligned}
 &\partial\sigma\frown\varphi\\
@@ -85,7 +85,7 @@ Let \(M\) be a manifold. The compact subsets of \(M\) are directed by inclusion,
 
 If \(M\) is compact, \(K=M\) is cofinal and \(H^i_c(M)=H^i(M)\).
 
-**Example 2.2.** For \(M=\mathbf R^n\), the closed balls \(\overline B_r\) about \(0\) are cofinal, and each restriction \(H^i(\mathbf R^n,\mathbf R^n\setminus\overline B_r)\to H^i(\mathbf R^n,\mathbf R^n\setminus\overline B_s)\), \(r<s\), is an isomorphism, the inclusions of complements being homotopy equivalences. Using the long exact sequence [Roberts, Proposition 24], the contractibility of \(\mathbf R^n\) and \(\mathbf R^n\setminus\overline B_r\simeq S^{n-1}\) [Roberts, Proposition 27], \(H^i_c(\mathbf R^n;R)\cong R\) for \(i=n\) and \(0\) otherwise.
+**Example 2.2.** For \(n=0\), the space \(\mathbf R^0\) is one point and is compact. Its singular complex has one generator in each nonnegative degree; the differential is the identity in positive even degrees and zero in odd degrees. Thus its cohomology is \(R\) in degree zero and zero otherwise, which is also its compactly supported cohomology. Assume \(n\geq1\) for the sphere calculation below. For \(M=\mathbf R^n\), the closed balls \(\overline B_r\) about \(0\) are cofinal, and each restriction \(H^i(\mathbf R^n,\mathbf R^n\setminus\overline B_r)\to H^i(\mathbf R^n,\mathbf R^n\setminus\overline B_s)\), \(r<s\), is an isomorphism, the inclusions of complements being homotopy equivalences. Using the long exact sequence [Roberts, Proposition 24], the contractibility of \(\mathbf R^n\) and \(\mathbf R^n\setminus\overline B_r\simeq S^{n-1}\) [Roberts, Proposition 27], \(H^i_c(\mathbf R^n;R)\cong R\) for \(i=n\) and \(0\) otherwise.
 
 **Functoriality for open embeddings.** Let \(U\subset M\) be open and \(K\subset U\) compact. Excision [Roberts, Theorem 15] identifies \(H^i(M,M\setminus K)\cong H^i(U,U\setminus K)\), since the closed set \(M\setminus U\) lies in the open set \(M\setminus K\). Composing the inverse of this isomorphism with the map to the direct limit defines \(H^i_c(U)\to H^i_c(M)\), "extension by zero". These maps are compatible with compositions \(U\subset V\subset M\).
 

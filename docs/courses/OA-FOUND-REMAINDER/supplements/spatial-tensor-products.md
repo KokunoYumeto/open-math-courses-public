@@ -1,6 +1,6 @@
 # Spatial tensor products: complete proof supplement through the commutation theorem
 
-*Original text by Claude Opus 5.5 (Anthropic), September 2026; public domain (CC0). Scoped selection and prerequisite bindings by GPT-6.1 Sol (OpenAI), Ultra, October 2026; original contributions CC0. The mathematical text of the selected proofs is retained.*
+*AI-assisted text by Claude Opus 5.5 (Anthropic), GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original contributions: public domain (CC0).*
 
 Sections 1–11 give the complete construction of spatial tensor products and the tensor commutation theorem. Hilbert spaces and orthogonal families can have arbitrary cardinality. Countable vector series describe one normal functional and impose no separability hypothesis.
 
@@ -115,7 +115,7 @@ so \(\rho(\,\cdot\otimes1)\in B(H)_*\). It is strongly continuous on bounded set
 3. (*Order form.*) Let \((a_\alpha)\) be a bounded increasing net of self-adjoint operators on \(H\). It converges strongly to its least upper bound \(a\) among self-adjoint operators. The net \((a_\alpha\otimes1)\) is increasing, converges strongly to \(a\otimes1\), and \(a\otimes1\) is its least upper bound. If all \(a_\alpha\) lie in a von Neumann algebra \(M\), then \(a\in M\), and \(x\mapsto x\otimes1\) carries the supremum in \(M\) to the supremum in every von Neumann algebra that contains \(M\otimes1\).
 4. (*Normal functionals as vector functionals.*) Let \(M\subseteq B(H)\) be a \(*\)-subalgebra with \(1\in M\), let \(\varphi\in M_*\), and let \(R\) be an infinite-dimensional Hilbert space. There are \(\zeta,\zeta'\in H\otimes R\) with \(\varphi(x)=\langle(x\otimes1)\zeta,\zeta'\rangle\) for \(x\in M\). If \(\varphi\) is positive, one can take \(\zeta'=\zeta\). Then \(\varphi=\sum_n\omega_{\xi_n}|_M\) with \(\sum_n\|\xi_n\|^2=\varphi(1)\).
 
-*Reference:* Part (4) extends [Takesaki I, Lemma IV.5.4], which assumes \(R\) separable and gives two vectors. The proof of [Takesaki I, Theorem IV.5.5] needs a single vector at that point; the positive case of (4) supplies it.
+*Remark.* Part (4) gives one vector for a positive normal functional after an infinite-dimensional amplification. It imposes no separability condition on the original Hilbert space or on the algebra; this is the form used in Theorem 8.2.
 
 **Proof.** (1) Restrictions are continuous by definition. Conversely, let \(\varphi\) be continuous at \(0\). There are \(\rho_1,\ldots,\rho_m\in B(H)_*\) and \(\delta>0\) with \(|\varphi(y)|<1\) whenever \(y\in Y\) and \(\max_i|\rho_i(y)|<\delta\). If \(\rho_i(y)=0\) for all \(i\), the same holds for \(ty\), \(t>0\); so \(|\varphi(y)|<1/t\) for every \(t\), and \(\varphi(y)=0\). Hence \(\varphi\) vanishes on the kernel of \(y\mapsto(\rho_1(y),\ldots,\rho_m(y))\in\mathbb C^m\). So \(\varphi\) factors through the image of this map. Extending the factor linearly to \(\mathbb C^m\) gives constants \(c_i\) with \(\varphi=\sum_ic_i\rho_i\) on \(Y\), and \(\sum_ic_i\rho_i\in B(H)_*\). Boundedness follows from the estimate after (3.1).
 
@@ -163,7 +163,7 @@ Expanding \(\xi''=\sum_k\xi_k\otimes g_k\) along an orthonormal basis \((g_k)\) 
 
 **Proof.** Strong density is Lemma 4.1 for finite families. For ultraweak density, let \(x\in A''\) and \(\rho_1,\ldots,\rho_m\in B(H)_*\) with \(\rho_i=\sum_n\omega_{\xi^i_n,\eta^i_n}\). Apply Lemma 4.1 to the merged family \((\xi^i_n)_{i,n}\). Then \(|\rho_i(x-a)|\le(\sum_n\|(x-a)\xi^i_n\|^2)^{1/2}(\sum_n\|\eta^i_n\|^2)^{1/2}\) is small for all \(i\) at once. Conversely, \(A''\) is weakly closed and the weak topology is coarser than the other two, so each closure of \(A\) lies in \(A''\). The last sentence follows. \(\square\)
 
-The general form of the theorem, for \(*\)-subalgebras that need not contain \(1\), is proved in the lesson [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html). The unital case is all we need.
+The general form of the theorem, for \(*\)-subalgebras that need not contain \(1\), is proved in the lesson [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html). The unital case supplies the tensor construction; Lemma 11.2(c) also uses the nondegenerate version.
 
 **Proposition 4.3** (normal extension principle). Let \(M\) be a von Neumann algebra on \(H\), \(A\subseteq M\) a \(*\)-subalgebra with \(1\in A\) and \(A''=M\), and \(\Phi,\Psi:M\to B(L)\) normal linear maps.
 
@@ -213,7 +213,7 @@ and \(B(H)\bar\otimes B(K)=B(H\otimes K)\).
 
 (5) The entries of \(x\otimes y\) are multiples of \(x\), so \(M\odot B(K)\subseteq\mathcal C:=\{X:X_{jk}\in M\}\). By (2.1), \(\mathcal C=(M'\otimes1)'\), the commutant of a self-adjoint set; so \(\mathcal C''=\mathcal C\) and \(M\bar\otimes B(K)\subseteq\mathcal C\). Conversely, for \(X\in\mathcal C\) the truncations (2.2) lie in \(M\odot B(K)\), are bounded by \(\|X\|\) and converge strongly to \(X\). By (3), \(X\in M\bar\otimes B(K)\). For \(M=B(H)\) we have \(M'=\mathbb C1\) and \((\mathbb C1\otimes1)'=B(H\otimes K)\). \(\square\)
 
-Part (3) is how membership in a tensor product is usually proved in practice: one exhibits a norm-bounded net in \(M\odot N\) that converges on a total set of test vectors. Example 12.2 does this for a discrete group, and the end of Section 12 describes the same argument for a locally compact group. Without the norm bound, convergence on a total set does not give strong convergence (Example 5.5). Part (2) allows generating sets that are not von Neumann algebras themselves. For instance, let \(G\) be a locally compact group, \(m\) the multiplication representation of \(L^\infty(G)\) on \(L^2(G)\), and \(\lambda\) the left regular representation. Both \(m(L^\infty(G))\) and \(\lambda(G)\) are self-adjoint sets, so \(m(L^\infty(G))''\bar\otimes\lambda(G)''=(m(L^\infty(G))\otimes1\cup1\otimes\lambda(G))''\), whether or not \(m(L^\infty(G))\) is already a von Neumann algebra.
+Part (3) is how membership in a tensor product is usually proved in practice: one exhibits a norm-bounded net in \(M\odot N\) that converges on a total set of test vectors. The [coproduct lesson](../../tensor-products-of-operator-algebras/spatial-tensor-products-of-von-neumann-algebras.html#12-coproducts-implemented-by-a-unitary) applies this to discrete and locally compact groups. Without the norm bound, convergence on a total set does not give strong convergence (Example 5.5). Part (2) allows generating sets that are not von Neumann algebras themselves. For instance, let \(G\) be a locally compact group, \(m\) the multiplication representation of \(L^\infty(G)\) on \(L^2(G)\), and \(\lambda\) the left regular representation. Both \(m(L^\infty(G))\) and \(\lambda(G)\) are self-adjoint sets, so \(m(L^\infty(G))''\bar\otimes\lambda(G)''=(m(L^\infty(G))\otimes1\cup1\otimes\lambda(G))''\), whether or not \(m(L^\infty(G))\) is already a von Neumann algebra.
 
 **Example 5.3** (diagonal algebras of any size). Let \(I\) and \(J\) be arbitrary sets, possibly uncountable, and let \(\ell^\infty(I)\) act on \(\ell^2(I)\) by multiplication. It is its own commutant, by the argument given below for \(I\times J\), so it is a von Neumann algebra. Counting measure on an uncountable set is not \(\sigma\)-finite, so the \(\sigma\)-finite result in [the lesson on decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html#oa-fnd-dg-06) does not apply. By Proposition 1.3(1), \(\delta_i\otimes\delta_j\mapsto\delta_{(i,j)}\) is a unitary \(\ell^2(I)\otimes\ell^2(J)\to\ell^2(I\times J)\), and under it
 \[
@@ -233,7 +233,7 @@ For a set \(S\subseteq B(H)\) and a projection \(e\), write \(S_e=\{ese|_{eH}:s\
 **Proposition 6.1.** Let \(M\) be a von Neumann algebra on \(H\).
 
 1. For a projection \(e\in M\), \(M_e\) is a von Neumann algebra on \(eH\), and \((M_e)'=(M')_e\).
-2. For a projection \(e'\in M'\), \(M_{e'}\) is a von Neumann algebra on \(e'H\) with commutant \((M')_{e'}=\{e'x'e'|_{e'H}:x'\in M'\}\). The induction is a normal unital \(*\)-homomorphism of \(M\) onto \(M_{e'}\). Let \(c\) be the projection onto the closed span \([M'e'H]\). Then \(c\in M\), and the induction is injective if and only if \(c=1\).
+2. For a projection \(e'\in M'\), \(M_{e'}\) is a von Neumann algebra on \(e'H\) with commutant \((M')_{e'}=\{e'x'e'|_{e'H}:x'\in M'\}\). The induction is a normal unital \(*\)-homomorphism of \(M\) onto \(M_{e'}\). Let \(c\) be the projection onto the closed span \([M'e'H]\). Then \(c\) is the least central projection of \(M\) (equivalently, of \(M'\)) majorizing \(e'\), and the induction is injective if and only if \(c=1\).
 3. (*Reductions of tensor products.*) Let \(N\) be a von Neumann algebra on \(K\), and \(e\in M\), \(f\in N\) projections. Identify \((e\otimes f)(H\otimes K)\) with \(eH\otimes fK\), the closure of \(eH\odot fK\). Then
 \[
 (M\bar\otimes N)_{e\otimes f}=M_e\bar\otimes N_f,\qquad (M'\bar\otimes N')_{e\otimes f}=(M')_e\bar\otimes(N')_f ,
@@ -253,7 +253,7 @@ the first a reduced algebra, the second an induced one. Applied to \(M'\) and \(
 
 *\(M_e\) is a von Neumann algebra*: let \(S\in B(eH)\) commute with \((M')_e\), and let \(\tilde S\) be the operator \(\xi\mapsto S(e\xi)\) on \(H\). For \(x'\in M'\), \(\tilde Sx'\xi=S(x'e\xi)=x'S(e\xi)=x'\tilde S\xi\), using \(ex'=x'e\). So \(\tilde S\in M''=M\), and \(S=e\tilde Se|_{eH}\in M_e\). Hence \((M_e)''=((M')_e)'\subseteq M_e\).
 
-(2) Apply (1) to the von Neumann algebra \(M'\) and \(e'\in M'\). The reduced algebra \((M')_{e'}\) is a von Neumann algebra with commutant \((M'')_{e'}=M_{e'}\). So \(M_{e'}=((M')_{e'})'\) is a von Neumann algebra, with commutant \((M')_{e'}\). The induction is multiplicative because \(e'\) commutes with \(M\), and unital. It is normal because \(\sum_n\langle xe'\zeta_n,\zeta_n'\rangle\), for \(\zeta_n,\zeta_n'\in e'H\), is an element of \(B(H)_*\) evaluated at \(x\). The subspace \([M'e'H]\) is invariant under the self-adjoint set \(M'\), so \(c\in M''=M\). If \(xe'=0\) with \(x\in M\), then \(xa'e'=a'xe'=0\) for \(a'\in M'\), so \(xc=0\); hence \(c=1\) forces \(x=0\). If \(c\ne1\), then \(1-c\) is a nonzero element of \(M\) with \((1-c)e'=0\), because \(e'H\subseteq[M'e'H]\).
+(2) Apply (1) to the von Neumann algebra \(M'\) and \(e'\in M'\). The reduced algebra \((M')_{e'}\) is a von Neumann algebra with commutant \((M'')_{e'}=M_{e'}\). So \(M_{e'}=((M')_{e'})'\) is a von Neumann algebra, with commutant \((M')_{e'}\). The induction is multiplicative because \(e'\) commutes with \(M\), and unital. It is normal because \(\sum_n\langle xe'\zeta_n,\zeta_n'\rangle\), for \(\zeta_n,\zeta_n'\in e'H\), is an element of \(B(H)_*\) evaluated at \(x\). The subspace \([M'e'H]\) is invariant under the self-adjoint set \(M'\), so \(c\in M''=M\). It is also invariant under \(M\), since \(x a'e'\xi=a'e'x\xi\) for \(x\in M\), \(a'\in M'\); hence \(c\in M'\) and \(c\) is central. It majorizes \(e'\). If a central projection \(z\) majorizes \(e'\), then \(z a'e'\xi=a'e'\xi\), so \(z\) fixes \([M'e'H]\) and \(c\le z\). Thus \(c\) is precisely the central carrier of \(e'\). If \(xe'=0\) with \(x\in M\), then \(xa'e'=a'xe'=0\) for \(a'\in M'\), so \(xc=0\); hence \(c=1\) forces \(x=0\). If \(c\ne1\), then \(1-c\) is a nonzero element of \(M\) with \((1-c)e'=0\), because \(e'H\subseteq[M'e'H]\).
 
 (3) The range of \(e\otimes f\) is the closed span of the vectors \(e\xi\otimes f\eta\), a copy of \(eH\otimes fK\). On it, \((e\otimes f)(x\otimes y)(e\otimes f)\) acts as \((exe|_{eH})\otimes(fyf|_{fK})\). The compression \(\Phi(X)=(e\otimes f)X(e\otimes f)|_{eH\otimes fK}\) is normal and maps \(M\odot N\) onto \(M_e\odot N_f\). By the normal extension principle (Proposition 4.3(ii)), \(\Phi(M\bar\otimes N)\subseteq M_e\bar\otimes N_f\). Conversely, \(e\otimes f\in M\bar\otimes N\), so \(\Phi(M\bar\otimes N)=(M\bar\otimes N)_{e\otimes f}\) is a von Neumann algebra by (1), and it contains \(M_e\odot N_f\); hence it contains \(M_e\bar\otimes N_f\). For the second identity, \(e\otimes f\) commutes with \(M'\odot N'\), hence lies in \((M'\bar\otimes N')'\). The induction by \(e\otimes f\) is a normal \(*\)-homomorphism on \(M'\bar\otimes N'\) that maps \(x'\otimes y'\) to \(x'_e\otimes y'_f\). Its range is a von Neumann algebra by (2), and the same two inclusions follow. \(\square\)
 
@@ -326,7 +326,7 @@ So \(\pi\) is the amplification \(x\mapsto x\otimes1_R\), followed by the induct
 1. \(\pi(M)\) is a von Neumann algebra on \(L\);
 2. if \(L\ne0\), \(\pi\) is injective if and only if the projection onto \([(M\otimes1_R)'e'(H\otimes R)]\) is \(1\).
 
-*Reference:* Compare [Takesaki I, Theorem IV.5.5].
+*Reference:* [Dixmier, “Sur les anneaux d’opérateurs dans les espaces hilbertiens”](https://gallica.bnf.fr/ark:/12148/bpt6k31909/f439.item), 1954, pp. 439–441.
 
 **Proof.** If \(L=0\), take \(R=0\). Otherwise, by Zorn's lemma, choose nonzero vectors \(\lambda_i\in L\), \(i\in I\), whose cyclic subspaces \(L_i=[\pi(M)\lambda_i]\) are pairwise orthogonal, with the index set \(I\) maximal for this property. Each \(L_i\) is invariant under the self-adjoint set \(\pi(M)\). If \(\lambda\) is orthogonal to every \(L_i\), then so is \([\pi(M)\lambda]\), since \(\langle\pi(x)\lambda,\pi(y)\lambda_i\rangle=\langle\lambda,\pi(x^*y)\lambda_i\rangle=0\); maximality forces \(\lambda=0\). So \(L=\bigoplus_iL_i\). Let \(R=\ell^2(I\times\mathbb N)\), the orthogonal sum of the subspaces \(R_i=\ell^2(\{i\}\times\mathbb N)\). The functional \(\psi_i(x)=\langle\pi(x)\lambda_i,\lambda_i\rangle\) is positive and normal on \(M\). By the positive case of Proposition 3.1(4), applied with the infinite-dimensional space \(R_i\), there is \(\zeta_i\in H\otimes R_i\subseteq H\otimes R\) with \(\psi_i(x)=\langle(x\otimes1)\zeta_i,\zeta_i\rangle\). Then \(\|(x\otimes1)\zeta_i\|^2=\psi_i(x^*x)=\|\pi(x)\lambda_i\|^2\), so \((x\otimes1)\zeta_i\mapsto\pi(x)\lambda_i\) extends to a unitary \(U_i\) of \([(M\otimes1)\zeta_i]\) onto \(L_i\). The spaces \([(M\otimes1)\zeta_i]\subseteq H\otimes R_i\) are mutually orthogonal. Let \(e'\) be the projection onto their sum; it commutes with \(M\otimes1\) because the sum is invariant under this self-adjoint set. Let \(V:L\to H\otimes R\) be the isometry equal to \(U_i^{-1}\) on each \(L_i\); its range projection is \(e'\). For \(x,y\in M\), \(V\pi(x)\pi(y)\lambda_i=V\pi(xy)\lambda_i=(xy\otimes1)\zeta_i=(x\otimes1)V\pi(y)\lambda_i\). So \(V\pi(x)=(x\otimes1)V\) on each \(L_i\), hence on \(L\), and \(\pi(x)=V^*(x\otimes1)V\). The identity \((M\otimes1_R)'=M'\bar\otimes B(R)\) is (7.1).
 
@@ -440,15 +440,15 @@ The proof of (4) does not use the commutation theorem of Section 11.
 
 In this section \(\langle\xi,\eta\rangle_{\mathbb R}=\operatorname{Re}\langle\xi,\eta\rangle\). It is a real inner product with the same norm, and it makes \(H\) a real Hilbert space. For a real subspace \(X\subseteq H\), \(X^\perp\) is its real-orthogonal complement; \(X^{\perp\perp}\) is the closure \(\overline X\), and \((iX)^\perp=iX^\perp\). If \(X\perp Y\) and \(X+Y\) is dense, then \(X^\perp=\overline Y\): indeed \(\overline X+\overline Y\) is closed, as an orthogonal sum of closed subspaces, and dense, so it is \(H\). For a set \(S\) of operators, \(S_h\) is its self-adjoint part.
 
-**Lemma 11.1.** If \(a,b\in B(H)\) are commuting self-adjoint operators and \(\xi\in H\), then \(a\xi\perp ib\xi\) in the real sense. In particular \(M_h\xi\perp iM'_h\xi\) for a von Neumann algebra \(M\).
+**Lemma 11.1.** If \(a,b\in B(H)\) are commuting self-adjoint operators and \(\xi\in H\), then \(a\xi\perp ib\xi\) in the real sense. Conversely, if this real orthogonality holds for every \(\xi\in H\), then \(a\) and \(b\) commute. In particular \(M_h\xi\perp iM'_h\xi\) for a von Neumann algebra \(M\).
 
-**Proof.** \(\langle a\xi,ib\xi\rangle=-i\langle ba\xi,\xi\rangle\), and \(ba=ab\) is self-adjoint, so \(\langle ba\xi,\xi\rangle\) is real. \(\square\)
+**Proof.** \(\langle a\xi,ib\xi\rangle=-i\langle ba\xi,\xi\rangle\), and \(ba=ab\) is self-adjoint, so \(\langle ba\xi,\xi\rangle\) is real. Conversely, real orthogonality makes \(\langle ba\xi,\xi\rangle\) real for every \(\xi\). Therefore \(\langle(ba-ab)\xi,\xi\rangle=0\). Complex polarization gives every matrix coefficient of \(ba-ab\) equal to zero, hence \(ba=ab\). \(\square\)
 
 **Lemma 11.2.** Let \(M\) be a von Neumann algebra on \(H\) with a cyclic vector \(\xi_0\), that is, \([M\xi_0]=H\). Let \(A\subseteq M\) and \(B\subseteq M'\) be \(*\)-subalgebras.
 
 - (a) If \(A_h\xi_0+iB_h\xi_0\) is dense in \(H\), then \(A''=M\) and \(B''=M'\).
 - (b) (*Rieffel–van Daele.*) \(M_h\xi_0+iM'_h\xi_0\) is dense in \(H\), and \((M_h\xi_0)^\perp\) is the closure of \(iM'_h\xi_0\).
-- (c) If \(1\in A\), \(1\in B\), \(A''=M\) and \(B''=M'\), then \(A_h\xi_0+iB_h\xi_0\) is dense in \(H\).
+- (c) If \(A\) and \(B\) act nondegenerately, \(A''=M\) and \(B''=M'\), then \(A_h\xi_0+iB_h\xi_0\) is dense in \(H\). In particular this applies when both contain the identity. Together with (a), this is equivalent to \((A_h\xi_0)^\perp=\overline{iB_h\xi_0}\).
 
 **Proof.** (a) Put \(X=A_h\xi_0\) and \(Y=iB_h\xi_0\). By Lemma 11.1, \(X\perp Y\), so \(X^\perp=\overline Y\) and \(Y^\perp=\overline X\).
 
@@ -465,17 +465,17 @@ Here \(bx=xb\) and \(by=yb\) because \(b\in A'\); \(b_n\in M'\) commutes with \(
 (b) Let \(\eta_0\) be real-orthogonal to \(M_h\xi_0+iM'_h\xi_0\). On \(H\otimes\mathbb C^2\) with basis \(\varepsilon_1,\varepsilon_2\), let \(\pi(x)=x\otimes1\). By (7.1) and (5.2), \(\pi(M)'=M'\bar\otimes B(\mathbb C^2)\) consists of the \(2\times2\) matrices with entries in \(M'\). Let \(\zeta_0=\xi_0\otimes\varepsilon_1+\eta_0\otimes\varepsilon_2\), and let \(P\in\pi(M)'\) be the projection onto \([\pi(M)\zeta_0]\), with entries \(p,r,r^*,q\in M'\); then \(0\le p\le1\). The first component of \(P\zeta_0=\zeta_0\) is
 \[
 p\xi_0+r\eta_0=\xi_0 .
-\tag{\(\alpha\)}
+\tag{$\alpha$}
 \]
 For \(a\in M_h\), \(\langle a\xi_0,\eta_0\rangle\) is purely imaginary, so \(\langle a\xi_0,\eta_0\rangle=-\overline{\langle a\xi_0,\eta_0\rangle}=-\langle a\eta_0,\xi_0\rangle\). Both sides are complex-linear in \(a\), so this holds for all \(a\in M\). It says that \(\eta_0\otimes\varepsilon_1+\xi_0\otimes\varepsilon_2\) is orthogonal to every \(\pi(a)\zeta_0\). So \(P\) annihilates it, and the first component gives
 \[
 p\eta_0+r\xi_0=0 .
-\tag{\(\beta\)}
+\tag{$\beta$}
 \]
 For \(b\in M'_h\), \(\operatorname{Re}\langle ib\xi_0,\eta_0\rangle=0\), so \(\langle b\xi_0,\eta_0\rangle\) is real and equals \(\langle b\eta_0,\xi_0\rangle\). By linearity,
 \[
 \langle b\xi_0,\eta_0\rangle=\langle b\eta_0,\xi_0\rangle\qquad(b\in M').
-\tag{\(\gamma\)}
+\tag{$\gamma$}
 \]
 By (\(\beta\)), (\(\gamma\)) for \(b=r\), and (\(\alpha\)),
 \[
@@ -483,7 +483,7 @@ By (\(\beta\)), (\(\gamma\)) for \(b=r\), and (\(\alpha\)),
 \]
 So \(p^{1/2}\eta_0=0\) and \((1-p)^{1/2}\xi_0=0\), hence \(p\eta_0=0\) and \((1-p)\xi_0=0\). A cyclic vector for \(M\) is separating for \(M'\): if \(b\in M'\) and \(b\xi_0=0\), then \(bM\xi_0=Mb\xi_0=0\), so \(b=0\). So \(p=1\), and \(\eta_0=p\eta_0=0\). This proves the density. The statement about \((M_h\xi_0)^\perp\) follows from Lemma 11.1 and the remark at the start of this section.
 
-(c) By the bicommutant theorem (Theorem 4.2), \(A\) is weakly dense in \(M\). If \(a_\alpha\in A\) tend weakly to \(x\in M_h\), then \((a_\alpha+a_\alpha^*)/2\in A_h\) tend weakly to \(x\), and \((a_\alpha+a_\alpha^*)\xi_0/2\) tends weakly to \(x\xi_0\) in \(H\). A closed real subspace \(Z\) of \(H\) is weakly closed: if \(v\notin Z\) and \(u=v-P_Zv\), with \(P_Z\) the real orthogonal projection, then \(\langle v,u\rangle_{\mathbb R}=\|u\|^2>0\) while \(\langle z,u\rangle_{\mathbb R}=0\) on \(Z\). Hence \(M_h\xi_0\) lies in the closure of \(A_h\xi_0\). Likewise \(M'_h\xi_0\) lies in the closure of \(B_h\xi_0\). Apply (b). \(\square\)
+(c) The [nondegenerate bicommutant theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html) makes \(A\) weakly dense in \(M\), including when it has no identity. The same applies to \(B\). If \(a_\alpha\in A\) tend weakly to \(x\in M_h\), then \((a_\alpha+a_\alpha^*)/2\in A_h\) tend weakly to \(x\), and \((a_\alpha+a_\alpha^*)\xi_0/2\) tends weakly to \(x\xi_0\) in \(H\). A closed real subspace \(Z\) of \(H\) is weakly closed: if \(v\notin Z\) and \(u=v-P_Zv\), with \(P_Z\) the real orthogonal projection, then \(\langle v,u\rangle_{\mathbb R}=\|u\|^2>0\) while \(\langle z,u\rangle_{\mathbb R}=0\) on \(Z\). Hence \(M_h\xi_0\) lies in the closure of \(A_h\xi_0\). Likewise \(M'_h\xi_0\) lies in the closure of \(B_h\xi_0\). Apply (b). The orthogonal-complement formulation follows because \(A_h\xi_0\) and \(iB_h\xi_0\) are real orthogonal: their closed spans are complementary exactly when their sum is dense. \(\square\)
 
 *Remark.* The hypothesis of (a) forces \(A\) and \(B\) to be nondegenerate. Step 1 gives \([A\xi_0]=H\). Step 2 with \(b=1\) gives \(\xi_0\in\overline{B_h\xi_0}\subseteq[BH]\). The projection onto \([BH]\) lies in \(M'\), because \([BH]\) is invariant under \(M\), and it fixes \(\xi_0\), which is separating for \(M'\); so it is \(1\). Some condition of this kind is needed in (c): on \(H=\mathbb C\) with \(M=M'=\mathbb C\), \(A=\{0\}\) and \(B=M'\) satisfy \(A''=M\) and \(B''=M'\), but \(A_h\xi_0+iB_h\xi_0=i\mathbb R\xi_0\) is not dense.
 
@@ -503,11 +503,11 @@ Hence \(TX^\perp\subseteq t'(i\overline Y)=-it'(\overline Y)\subseteq iX^\perp\)
 \tag{11.1}
 \]
 
-*Reference:* Compare [Takesaki I, Lemmas IV.5.7–IV.5.8 and Theorem IV.5.9].
+*Reference:* The real-subspace viewpoint is developed in [Rieffel and van Daele, “A bounded operator approach to Tomita–Takesaki theory”](https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf).
 
 **Proof.** *Step 0.* \(M'\odot N'\) commutes with \(M\odot N\). So \(M'\bar\otimes N'\subseteq(M\bar\otimes N)'\) and \(M\bar\otimes N\subseteq(M'\bar\otimes N')'\).
 
-*Step 1: cyclic vectors.* Let \(\xi_0\) be cyclic for \(M\) and \(\eta_0\) cyclic for \(N\). Put \(X=M_h\xi_0\) and \(Y=N_h\eta_0\); then \(X+iX=M\xi_0\) and \(Y+iY=N\eta_0\) are dense. By Lemma 11.2(b), \(X^\perp\) and \(Y^\perp\) are the closures of \(iM'_h\xi_0\) and \(iN'_h\eta_0\). By Lemma 11.3 and the continuity of \((\xi,\eta)\mapsto\xi\otimes\eta\) (Proposition 1.3(1)), the real span of \(M_h\xi_0\odot N_h\eta_0\) and \(i\,(iM'_h\xi_0\odot iN'_h\eta_0)=i\,(M'_h\xi_0\odot N'_h\eta_0)\) is dense in \(H\otimes K\). With \(\zeta_0=\xi_0\otimes\eta_0\), the first set lies in \((M\bar\otimes N)_h\zeta_0\) and the second in \((M'\bar\otimes N')_h\zeta_0\), since \(x\otimes y\) is self-adjoint for self-adjoint \(x,y\). So \((M\bar\otimes N)_h\zeta_0+i(M'\bar\otimes N')_h\zeta_0\) is dense. The vector \(\zeta_0\) is cyclic for \(M\bar\otimes N\): \((M\odot N)\zeta_0\) contains \(M\xi_0\odot N\eta_0\), which is dense by Proposition 1.3(1). Lemma 11.2(a), for the von Neumann algebra \(M\bar\otimes N\) with \(A=M\bar\otimes N\) and \(B=M'\bar\otimes N'\), gives \(M'\bar\otimes N'=(M'\bar\otimes N')''=(M\bar\otimes N)'\).
+*Step 1: cyclic vectors.* Let \(\xi_0\) be cyclic for \(M\) and \(\eta_0\) cyclic for \(N\). Put \(X=M_h\xi_0\) and \(Y=N_h\eta_0\); then \(X+iX=M\xi_0\) and \(Y+iY=N\eta_0\) are dense. By Lemma 11.2(b), \(X^\perp\) and \(Y^\perp\) are the closures of \(iM'_h\xi_0\) and \(iN'_h\eta_0\). By Lemma 11.3 and the continuity of \((\xi,\eta)\mapsto\xi\otimes\eta\) (Proposition 1.3(1)), the real span of \(M_h\xi_0\odot N_h\eta_0\) and \(i\,(iM'_h\xi_0\odot iN'_h\eta_0)=i\,(M'_h\xi_0\odot N'_h\eta_0)\) is dense in \(H\otimes K\). With \(\zeta_0=\xi_0\otimes\eta_0\), the first set lies in \((M\bar\otimes N)_h\zeta_0\) and the second in \(i(M'\bar\otimes N')_h\zeta_0\), since \(x\otimes y\) is self-adjoint for self-adjoint \(x,y\). So \((M\bar\otimes N)_h\zeta_0+i(M'\bar\otimes N')_h\zeta_0\) is dense. The vector \(\zeta_0\) is cyclic for \(M\bar\otimes N\): \((M\odot N)\zeta_0\) contains \(M\xi_0\odot N\eta_0\), which is dense by Proposition 1.3(1). Lemma 11.2(a), for the von Neumann algebra \(M\bar\otimes N\) with \(A=M\bar\otimes N\) and \(B=M'\bar\otimes N'\), gives \(M'\bar\otimes N'=(M'\bar\otimes N')''=(M\bar\otimes N)'\).
 
 *Step 2: the general case.* Let \(Y'\in(M\bar\otimes N)'\) and \(X'\in(M'\bar\otimes N')'\). It suffices to show \(X'Y'=Y'X'\): then \((M\bar\otimes N)'\subseteq(M'\bar\otimes N')''=M'\bar\otimes N'\), and Step 0 gives equality. It suffices in turn to show \(\langle X'Y'\zeta,\zeta\rangle=\langle Y'X'\zeta,\zeta\rangle\) for \(\zeta=\xi\otimes\eta\). Indeed, if \(\langle T(\xi\otimes\eta),\xi\otimes\eta\rangle=0\) for all \(\xi,\eta\), polarization in \(\xi\) gives \(R_\eta^*TR_\eta=0\), so \(\langle S_{\xi'}^*TS_\xi\eta,\eta\rangle=0\) for all \(\xi,\xi',\eta\); polarization in \(\eta\) gives \(S_{\xi'}^*TS_\xi=0\), and \(T=0\) by Proposition 1.3(1).
 
@@ -533,7 +533,7 @@ Hence \(AB=BA\). Since \(X'\) commutes with \(g'\), \(g'X'Y'g'=(g'X'g')(g'Y'g')\
 
 (4) Necessity is Lemma 9.1, together with Theorem 9.2(3) for the slices of \(B(H_1)\bar\otimes B(H_2)=B(H_1\otimes H_2)\). Conversely, the matrix entries of \(X\) along any basis of \(H_2\) lie in \(M_1\), so \(X\) commutes with \(M_1'\otimes1\) by the commutation criterion (Proposition 2.1(3)). Rows give \(X\in(1\otimes M_2')'\). So \(X\in(M_1'\otimes1\cup1\otimes M_2')'=(M_1'\bar\otimes M_2')'\), which is \(M_1\bar\otimes M_2\) by (11.1). For \(M_2=B(H_2)\), use (5.2) instead. \(\square\)
 
-Part (4) is the "Fubini" description of the tensor product. It is the usual route to statements like \(W\in L^\infty(G)\bar\otimes L(G)\) for a multiplicative unitary \(W\). The bounded strong limits of Theorem 5.2(3) give another route, which needs neither the commutation theorem nor any countability; Example 12.2 follows it.
+Part (4) is the "Fubini" description of the tensor product. It is the usual route to statements like \(W\in L^\infty(G)\bar\otimes L(G)\) for a multiplicative unitary \(W\). The bounded strong limits of Theorem 5.2(3) give another route, which needs neither the commutation theorem nor any countability; The [discrete-group example](../../tensor-products-of-operator-algebras/spatial-tensor-products-of-von-neumann-algebras.html#12-coproducts-implemented-by-a-unitary) follows it.
 
 **Exercise 11.6** (factors without the commutation theorem). Let \(M_1\subseteq B(H_1)\) and \(M_2\subseteq B(H_2)\) be factors, with \(H_1,H_2\ne0\). Show, without the commutation theorem, that \(M_1\bar\otimes M_2\) is a factor.
 
@@ -542,3 +542,17 @@ Part (4) is the "Fubini" description of the tensor product. It is the usual rout
 **Exercise 11.7** (maximal abelian subalgebras). Let \(A_k\subseteq M_k\) be von Neumann subalgebras with \(A_k'\cap M_k=A_k\) (\(k=1,2\)). Show that \((A_1\bar\otimes A_2)'\cap(M_1\bar\otimes M_2)=A_1\bar\otimes A_2\), and that \(A_1\bar\otimes A_2\) is abelian.
 
 *Solution.* Each \(A_k\) is abelian, since \(A_k=A_k'\cap M_k\subseteq A_k'\). So \(A_1\odot A_2\) is commutative, and for a commutative set \(S\), \(S\subseteq S'\) gives \(S''\subseteq S'=(S'')'\); so \(A_1\bar\otimes A_2\) is abelian. By (11.1), \((A_1\bar\otimes A_2)'=A_1'\bar\otimes A_2'\). By Corollary 11.5(2), \((A_1'\bar\otimes A_2')\cap(M_1\bar\otimes M_2)=(A_1'\cap M_1)\bar\otimes(A_2'\cap M_2)=A_1\bar\otimes A_2\).
+
+## Results used from other lessons
+
+Four standard facts are used. Each is stated here in full, with the lesson that proves it.
+
+(a) *Kaplansky's density theorem.* Let \(A\subseteq B(H)\) be a \(*\)-subalgebra, and let \(x\) be an operator of norm at most \(1\) in the weak closure of \(A\). Then there is a net \((a_\alpha)\) in \(A\) with \(\|a_\alpha\|\le1\) for all \(\alpha\) that converges strongly to \(x\). It is used only in Theorem 10.1(3). Proved in [Kaplansky's density theorem and its consequences, Theorem 7.1](../../foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html#OA-FND-KD-07). See also [Kaplansky 1951](https://doi.org/10.2140/pjm.1951.1.227).
+
+(b) *The predual is norm-closed.* For a von Neumann algebra \(M\), the normal functionals form a norm-closed subspace of the dual space of \(M\). It is used only in the last sentence of Theorem 10.1(3). Proved in [Compact and trace-class operators, Theorem 9.4(a)](../../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10).
+
+(c) *Support projections.* Let \(\psi\) be a nonzero positive normal functional on a von Neumann algebra \(Q\). There is a unique projection \(e\in Q\) such that \(\psi(x)=\psi(exe)\) for all \(x\in Q\) and \(\psi\) is faithful on \(eQe\). It is used only for the support formula in Theorem 10.1(4); the faithfulness statement there does not need it. Proved in [Finite domains, null directions, and support
+corners, §§WS-05 and WS-06](../../OA-FOUND-REMAINDER/reader/orbit-proof-route/wsdirect.html#OA-MOD-WS-05), applied to \(\psi\) as a normal weight.
+
+(d) *Isomorphisms are normal.* Every \(*\)-isomorphism of one von Neumann algebra onto another is normal. It is used only in the comments on Corollaries 8.3 and 8.4. Proved in [The universal enveloping von Neumann algebra
+of a C\*-algebra, and W\*-algebras, Corollary 11.4](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18).

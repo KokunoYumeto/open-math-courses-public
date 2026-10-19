@@ -1,12 +1,17 @@
 # Completing the elementary inputs actually used
 
-Prerequisite companion. The source is Jiří Lebl's freely accessible
-*Basic Analysis*, version 6.3, [author edition](https://www.jirka.org/ra/).
-Original text: public domain (CC0).
-It fills particular omitted proofs in §§1.2, 2.1–2.4, 7.2–7.6 and 8.2.
-The complete human proofs already in the programme are retained through exact
-bindings; they are not replaced by a fresh treatment of those chapters.
-The Archimedean argument is written out here so that the needed proof can be carried separately from unrelated material on its source page.
+This companion proves elementary sequence, determinant and positive-root
+facts used in finite-dimensional compactness, contraction and smooth calculus.
+The Archimedean and square-root arguments are written from the stated real-field
+axioms and natural-number induction.
+
+Mathematical source: Jiří Lebl, *Basic Analysis*, theorem numbering from
+version 6.3, [freely accessible author edition](https://www.jirka.org/ra/),
+§§1.2, 2.1–2.4, 7.2–7.6 and 8.2. The
+human-proof references identify external
+statements and proofs. The programme proof index locates
+the local arguments and their inputs. Original programme exposition is CC0
+to the extent rights exist; cited human works retain their own terms.
 
 The underlying definitions are those of an ordered field of real numbers with
 the least-upper-bound axiom, natural-number induction, finite sums, functions,
@@ -191,6 +196,43 @@ the Archimedean argument P6.0. Thus that source cross-reference uses
 the full proof here, including both directions, rather than an
 unproved external result. \(\square\)
 
+### P6.7. Compact sets and the empty-ambient boundedness convention
+
+For a subset \(E\) of a metric space \(X\), call \(E\) bounded when
+there is \(M\geq0\) such that \(d(x,y)\leq M\) for every
+\(x,y\in E\). Thus the empty set is bounded, including in the empty
+ambient space. When \(X\ne\varnothing\), this agrees with containment
+in a ball with centre in \(X\). Indeed a radius bound \(B\geq0\)
+about one centre gives the pairwise bound \(2B\). Conversely, if
+\(E\ne\varnothing\), choose \(p\in E\) and use its pairwise bound
+as the radius about \(p\); if \(E=\varnothing\), any \(p\in X\)
+and radius zero suffice. An open ball can instead have radius \(M+1\).
+The author definition in §7.1 requires a centre in \(X\); the convention
+here specifies the case where that centre cannot exist.
+
+Every compact subset \(K\subset X\) is closed and bounded with this
+convention. If \(K=\varnothing\), it is closed because its complement
+is open, and its pairwise bound can be zero. Otherwise choose \(p\in K\).
+The open balls \(B(p,n)\), for positive integers \(n\), cover \(K\):
+the Archimedean property P6.0 puts every finite distance below some integer.
+A finite subcover has a largest radius \(N\), so \(K\subset B(p,N)\)
+and \(d(x,y)<2N\) for \(x,y\in K\).
+
+To prove closedness, let \(x\in X\setminus K\). For each \(z\in K\)
+put \(r_z=d(x,z)/3>0\). The open balls \(B(z,r_z)\) cover \(K\);
+choose a finite subcover \(B(z_j,r_j)\), and put
+\(r=\min_j r_j>0\). If \(y\in K\), one of these balls contains it,
+and the triangle inequality gives
+
+\[
+ d(x,y)\geq d(x,z_j)-d(z_j,y)>3r_j-r_j=2r_j\geq2r.
+\]
+
+Hence \(B(x,r)\cap K=\varnothing\). Every point outside \(K\)
+has such a ball, so its complement is open and \(K\) is closed.
+This proof also covers the compactness conclusion of Proposition 7.4.9
+without requiring a point in an empty ambient space. \(\square\)
+
 ## P7. Why permutation parity in the determinant is well defined
 
 This completes the parity exercise preceding Lebl's determinant formula in
@@ -275,6 +317,13 @@ whose proof later uses these roots. The derivative step inherits the
 declared elementary product and chain rules; it does not close all of F0-CALC.
 \(\square\)
 
-## Remaining proof review
+## Further calculus readings
 
-The exact existing programme files, anchors and these local completions form one dependency chain. Their mathematical arguments must be distinguished from the eligibility of whole source pages or whole-book downloads. The selected dimension and differential-calculus inputs, including P8's smoothness, are now bound in `differential-proof-chain.json`. The compact integral, fundamental theorem and Taylor inputs are bound separately in `integration-proof-chain.json`. Global integration, exponentials and multidimensional change of variables are not proved in this companion.
+The [finite-dimensional companion](prerequisite-completions.html) gives
+cofactor inversion and the smooth inverse upgrade. The
+[differentiation companion](differential-prerequisite-completions.html)
+gives algebraic and differential arguments, while the
+[compact-integral companion](integration-prerequisite-completions.html)
+gives mixed derivatives, integral bounds, the fundamental theorem and
+Taylor's formula. Global integration, exponentials and multidimensional
+substitution are treated in their respective readings.

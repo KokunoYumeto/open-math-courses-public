@@ -1,0 +1,38 @@
+"""Original weighted group laws and their physical bicommutants. CC0-1.0."""
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,'svg.fonttype':'none'})
+fig,ax=plt.subplots(figsize=(8,13));fig.subplots_adjust(0,0,1,1);ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off')
+ink='#173b50'
+def box(y,h,c):ax.add_patch(FancyBboxPatch((.045,y),.91,h,boxstyle='round,pad=0.012',fc=c,ec=ink,lw=1.3))
+def t(y,s,size=13,bold=False):ax.text(.5,y,s,ha='center',va='center',fontsize=size,color=ink,weight='bold' if bold else 'normal')
+def ar(y,z):ax.annotate('',xy=(.5,z),xytext=(.5,y),arrowprops=dict(arrowstyle='->',lw=1.5,color=ink))
+t(.97,'Physical bicommutants with unequal weights',17,True)
+t(.94,'Factor hypothesis: the actual balanced left completion',12)
+box(.755,.14,'#edf4fb');t(.871,'1. Retain both original phase laws',14,True)
+t(.836,r'$a_i=\chi(x_i)/A,\quad b_i=\chi(x_i)^{-1}/B$',13)
+t(.799,r'$p=\alpha*\beta,\quad q=\beta*\alpha,\quad a_i b_i=1/d$',13)
+t(.771,r'$d=AB,\quad\alpha=\sum_i a_i\delta_{x_i^{-1}},\quad\beta=\sum_i b_i\delta_{x_i}$',12)
+ar(.74,.715)
+box(.49,.205,'#eaf5ed');t(.668,'2. Transfer entropy, then prove mixing',14,True)
+t(.633,r'$Z(\mathsf{P}_0)=\mathbb{C}\ \Longrightarrow\ H(\check p^{*n})=o(n)$',13)
+t(.595,r'$H(p^{*n})=H(\check p^{*n}),\quad q^{*n}=\beta*p^{*(n-1)}*\alpha$',12)
+t(.557,r'$p,\ q,\ \check p,\ \check q$ : full marked tails are trivial',12)
+t(.519,r'$\|\delta_g*\rho^{*n}-\rho^{*n}\|_1,\ \|\rho^{*n}*\delta_g-\rho^{*n}\|_1\ \longrightarrow\ 0$',12)
+ar(.473,.447)
+box(.275,.15,'#fff2df');t(.399,'3. Recover the entire commutants',14,True)
+t(.36,r'$\mathsf{P}_c^{\prime}\cap\mathsf{P}_t=C_{[c+1,t]}$',14)
+t(.326,r'$\mathsf{Q}_c^{\prime}\cap\mathsf{Q}_s=C_{[s,c-1]}$',14)
+t(.291,r'$\mathsf{P}_c^{\prime}\cap T_G=\mathsf{Q}_{c+1},\quad\mathsf{Q}_s^{\prime}\cap T_G=\mathsf{P}_{s-1}$',12)
+ar(.26,.234)
+box(.07,.142,'#edf4fb');t(.186,'4. Realize the original ordinary Jones tower',14,True)
+t(.148,r'$\Omega_j=\sum_i\sqrt{w_j(i)}\,|i,i\rangle,\quad e_j=|\Omega_j\rangle\langle\Omega_j|$',13)
+t(.112,r'$M_j=\mathsf{P}_j,\quad(M_j^{\prime}\cap T_G)^{\prime}\cap T_G=M_j$',13)
+t(.083,r'$k_j=H_j=1$  in this whole group-model class',12)
+t(.035,'PH.29–PH.31 • Abelian and subexponential-growth groups are included',10)
+t(.016,'The unrestricted non-group zero-return exclusion remains open',10)
+p=Path(__file__).with_suffix('');fig.savefig(p.with_suffix('.svg'));fig.savefig(p.with_suffix('.png'),dpi=200);plt.close(fig)
+svg=p.with_suffix('.svg');svg.write_text('\n'.join(s.rstrip() for s in svg.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8',newline='\n')

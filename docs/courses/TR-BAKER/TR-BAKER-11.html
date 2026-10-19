@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Powers of two and three, S-unit gaps, and 3x+1 cycles · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-11.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 11 of 21</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="powers-of-two-and-three-s-unit-gaps-and-3x-1-cycles">Powers of two and three, S-unit gaps, and 3x+1 cycles</h1>
+<p><em>Authoring and mathematical self-check: OpenAI Codex — GPT-6 Astra, Ultra. Public domain (CC0).</em></p>
+<p>An effective lower bound makes an infinite Diophantine problem finite.
+Continued fractions then reduce the finite interval to a short list whose
+entries can be checked with integers. The distinction matters: checking
+many powers is an experiment until a proof bounds every possible exponent.</p>
+<p>We use <a href="TR-BAKER-07.html#1-an-explicit-bound-without-multiplicative-independence">Theorem 7.1 of Two logarithms II: explicit lower bounds</a>, equation
+(7.1), with its proved constant 21600. All logarithms below are real natural
+logarithms. The continued-fraction facts needed in the reduction are proved
+here. Ben Lynn's freely accessible <a href="https://crypto.stanford.edu/pbc/notes/contfrac/converge.html">notes on convergence of continued
+fractions</a>
+give complementary discussion of convergents and Legendre's criterion.</p>
+<h2 id="1-the-lattice-behind-continued-fractions">1. The lattice behind continued fractions</h2>
+<p>Let <span class="math" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span> be irrational. Starting with <span class="math" data-tex="\(\theta_0=\theta\)">\(\theta_0=\theta\)</span>, define
+<span class="math math-display" data-tex="\[
+a_j=\lfloor\theta_j\rfloor,\qquad
+\theta_{j+1}=\frac1{\theta_j-a_j}.
+\tag{11.1}
+\]">\[
+a_j=\lfloor\theta_j\rfloor,\qquad
+\theta_{j+1}=\frac1{\theta_j-a_j}.
+\tag{11.1}
+\]</span>
+Each remainder is nonzero and irrational, so the construction continues
+indefinitely. For <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, <span class="math" data-tex="\(\theta_j&gt;1\)">\(\theta_j&gt;1\)</span> and <span class="math" data-tex="\(a_j\ge1\)">\(a_j\ge1\)</span>.
+Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_{-2}=0,\quad p_{-1}=1,\qquad q_{-2}=1,\quad q_{-1}=0,\\
+p_j=a_jp_{j-1}+p_{j-2},\qquad
+q_j=a_jq_{j-1}+q_{j-2}.
+\end{gathered}
+\tag{11.2}
+\]">\[
+\begin{gathered}
+p_{-2}=0,\quad p_{-1}=1,\qquad q_{-2}=1,\quad q_{-1}=0,\\
+p_j=a_jp_{j-1}+p_{j-2},\qquad
+q_j=a_jq_{j-1}+q_{j-2}.
+\end{gathered}
+\tag{11.2}
+\]</span></p>
+<p><strong>Lemma 11.1 (exact convergent identities).</strong> For every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_jq_{j-1}-p_{j-1}q_j&amp;=(-1)^{j-1},\\
+\theta&amp;=\frac{p_j\theta_{j+1}+p_{j-1}}
+                  {q_j\theta_{j+1}+q_{j-1}}.
+\end{aligned}
+\tag{11.3}
+\]">\[
+\begin{aligned}
+p_jq_{j-1}-p_{j-1}q_j&amp;=(-1)^{j-1},\\
+\theta&amp;=\frac{p_j\theta_{j+1}+p_{j-1}}
+                  {q_j\theta_{j+1}+q_{j-1}}.
+\end{aligned}
+\tag{11.3}
+\]</span>
+In particular <span class="math" data-tex="\(p_j,q_j\)">\(p_j,q_j\)</span> are coprime. If
+<span class="math" data-tex="\(e_j=q_j\theta-p_j\)">\(e_j=q_j\theta-p_j\)</span>, then
+<span class="math math-display" data-tex="\[
+e_j=\frac{(-1)^j}{q_j\theta_{j+1}+q_{j-1}},\qquad
+e_{j-1}=-\theta_{j+1}e_j.
+\tag{11.4}
+\]">\[
+e_j=\frac{(-1)^j}{q_j\theta_{j+1}+q_{j-1}},\qquad
+e_{j-1}=-\theta_{j+1}e_j.
+\tag{11.4}
+\]</span>
+Here <span class="math" data-tex="\(e_{-1}=-1\)">\(e_{-1}=-1\)</span>. The denominators tend to infinity and
+<span class="math" data-tex="\(p_j/q_j\)">\(p_j/q_j\)</span> tends to <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p><strong>Proof.</strong> Substituting (11.2) into the determinant in (11.3) changes
+its sign at each step; at <span class="math" data-tex="\(j=0\)">\(j=0\)</span> its value is <span class="math" data-tex="\(-1\)">\(-1\)</span>. A common divisor
+of <span class="math" data-tex="\(p_j,q_j\)">\(p_j,q_j\)</span> therefore divides one. For the second identity at
+<span class="math" data-tex="\(j=0\)">\(j=0\)</span>, use <span class="math" data-tex="\(\theta=a_0+1/\theta_1\)">\(\theta=a_0+1/\theta_1\)</span>. Substitution of
+<span class="math" data-tex="\(\theta_j=a_j+1/\theta_{j+1}\)">\(\theta_j=a_j+1/\theta_{j+1}\)</span> proves the next identity from the
+previous one. Subtract <span class="math" data-tex="\(p_j\)">\(p_j\)</span> from <span class="math" data-tex="\(q_j\theta\)">\(q_j\theta\)</span> in that identity
+and use the determinant; this proves the first formula in (11.4).
+Rearranging the same identity proves the second.</p>
+<p>We have <span class="math" data-tex="\(q_0=1\)">\(q_0=1\)</span>, <span class="math" data-tex="\(q_1\ge1\)">\(q_1\ge1\)</span>, and
+<span class="math" data-tex="\(q_j\ge q_{j-1}+q_{j-2}\)">\(q_j\ge q_{j-1}+q_{j-2}\)</span> for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>. Thus the denominators
+are strictly increasing from <span class="math" data-tex="\(q_1\)">\(q_1\)</span> onward and unbounded. Formula
+(11.4) gives <span class="math" data-tex="\(|\theta-p_j/q_j|&lt;1/q_j^2\)">\(|\theta-p_j/q_j|&lt;1/q_j^2\)</span>, proving convergence.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 11.2 (best approximation for the numerator error).</strong>
+If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are integers and <span class="math" data-tex="\(0&lt;b&lt;q_{j+1}\)">\(0&lt;b&lt;q_{j+1}\)</span>, then
+<span class="math math-display" data-tex="\[
+|b\theta-a|\ge |e_j|.
+\tag{11.5}
+\]">\[
+|b\theta-a|\ge |e_j|.
+\tag{11.5}
+\]</span></p>
+<p><strong>Proof.</strong> The determinant in (11.3) is a unit in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.
+Its inverse has integer entries, so there are integers <span class="math" data-tex="\(r,s\)">\(r,s\)</span> with
+<span class="math math-display" data-tex="\[
+(a,b)=r(p_j,q_j)+s(p_{j-1},q_{j-1}).
+\]">\[
+(a,b)=r(p_j,q_j)+s(p_{j-1},q_{j-1}).
+\]</span>
+If the claimed inequality failed, (11.4) would give
+<span class="math" data-tex="\(|r-s\theta_{j+1}|&lt;1\)">\(|r-s\theta_{j+1}|&lt;1\)</span>. When <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, positivity of <span class="math" data-tex="\(b\)">\(b\)</span>
+implies <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, a contradiction. When <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>, the strict
+inequality <span class="math" data-tex="\(\theta_{j+1}&gt;a_{j+1}\)">\(\theta_{j+1}&gt;a_{j+1}\)</span> implies
+<span class="math" data-tex="\(r&gt;s a_{j+1}-1\)">\(r&gt;s a_{j+1}-1\)</span>. Since <span class="math" data-tex="\(r\)">\(r\)</span> is an integer,
+<span class="math" data-tex="\(r\ge s a_{j+1}\)">\(r\ge s a_{j+1}\)</span>, whence
+<span class="math math-display" data-tex="\[
+b=rq_j+sq_{j-1}\ge s q_{j+1}\ge q_{j+1},
+\]">\[
+b=rq_j+sq_{j-1}\ge s q_{j+1}\ge q_{j+1},
+\]</span>
+again a contradiction. Finally, if <span class="math" data-tex="\(s\le-1\)">\(s\le-1\)</span>, the same inequality
+implies <span class="math" data-tex="\(r&lt;s a_{j+1}+1\)">\(r&lt;s a_{j+1}+1\)</span>, hence <span class="math" data-tex="\(r\le s a_{j+1}\)">\(r\le s a_{j+1}\)</span> and
+<span class="math" data-tex="\(b\le s q_{j+1}&lt;0\)">\(b\le s q_{j+1}&lt;0\)</span>. These cases are exhaustive. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 11.3 (Legendre's criterion).</strong> Suppose <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are coprime
+integers, <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+\left|\theta-\frac ab\right|&lt;\frac1{2b^2}.
+\tag{11.6}
+\]">\[
+\left|\theta-\frac ab\right|&lt;\frac1{2b^2}.
+\tag{11.6}
+\]</span>
+Then <span class="math" data-tex="\(a/b\)">\(a/b\)</span> is a convergent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p><strong>Proof.</strong> Choose the largest <span class="math" data-tex="\(j\)">\(j\)</span> such that <span class="math" data-tex="\(q_j\le b\)">\(q_j\le b\)</span>. Such an
+index exists by Lemma 11.1, including when <span class="math" data-tex="\(q_0=q_1=1\)">\(q_0=q_1=1\)</span>, and
+<span class="math" data-tex="\(b&lt;q_{j+1}\)">\(b&lt;q_{j+1}\)</span>. If <span class="math" data-tex="\(a/b\ne p_j/q_j\)">\(a/b\ne p_j/q_j\)</span>, the nonzero integer
+<span class="math" data-tex="\(a q_j-b p_j\)">\(a q_j-b p_j\)</span> has absolute value at least one. Lemma 11.2 gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1&amp;\le |a q_j-b p_j|\\
+ &amp;\le q_j|b\theta-a|+b|q_j\theta-p_j|\\
+ &amp;\le(q_j+b)|b\theta-a|\le2b|b\theta-a|&lt;1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+1&amp;\le |a q_j-b p_j|\\
+ &amp;\le q_j|b\theta-a|+b|q_j\theta-p_j|\\
+ &amp;\le(q_j+b)|b\theta-a|\le2b|b\theta-a|&lt;1.
+\end{aligned}
+\]</span>
+This contradiction proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-powers-whose-difference-is-at-most-twenty">2. Powers whose difference is at most twenty</h2>
+<p><strong>Theorem 11.4.</strong> The only positive integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span> with <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span>
+and <span class="math" data-tex="\(|2^m-3^n|\le20\)">\(|2^m-3^n|\le20\)</span> are
+<span class="math math-display" data-tex="\[
+(m,n)=(6,4),\qquad (m,n)=(8,5).
+\tag{11.7}
+\]">\[
+(m,n)=(6,4),\qquad (m,n)=(8,5).
+\tag{11.7}
+\]</span></p>
+<p><strong>Proof: an initial bound.</strong> We have <span class="math" data-tex="\(2^m\ge3^4-20=61\)">\(2^m\ge3^4-20=61\)</span>, so
+<span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span>. If <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span>, then
+<span class="math" data-tex="\(3^n-2^m\ge3^m-2^m\ge3^6-2^6&gt;20\)">\(3^n-2^m\ge3^m-2^m\ge3^6-2^6&gt;20\)</span>; the last expression increases
+with <span class="math" data-tex="\(m\)">\(m\)</span>. Hence <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span>. Unique prime factorization shows that
+<span class="math" data-tex="\(2^m\ne3^n\)">\(2^m\ne3^n\)</span>, so
+<span class="math" data-tex="\(\Lambda=m\log2-n\log3\ne0\)">\(\Lambda=m\log2-n\log3\ne0\)</span>.</p>
+<p>For positive <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, integration of <span class="math" data-tex="\(1/t\)">\(1/t\)</span> between them gives
+<span class="math math-display" data-tex="\[
+|\log x-\log y|\le\frac{|x-y|}{\min(x,y)}.
+\tag{11.8}
+\]">\[
+|\log x-\log y|\le\frac{|x-y|}{\min(x,y)}.
+\tag{11.8}
+\]</span>
+Consequently,
+<span class="math math-display" data-tex="\[
+|\Lambda|\le\frac{20}{2^m-20}
+\le\frac{320}{11}\,2^{-m}&lt;30\,2^{-m},
+\tag{11.9}
+\]">\[
+|\Lambda|\le\frac{20}{2^m-20}
+\le\frac{320}{11}\,2^{-m}&lt;30\,2^{-m},
+\tag{11.9}
+\]</span>
+where <span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span> gives <span class="math" data-tex="\(20/2^m\le5/16\)">\(20/2^m\le5/16\)</span>.</p>
+<p>In Theorem 7.1 take <span class="math" data-tex="\(D=1\)">\(D=1\)</span>, <span class="math" data-tex="\(\alpha_1=2\)">\(\alpha_1=2\)</span>, <span class="math" data-tex="\(\alpha_2=3\)">\(\alpha_2=3\)</span>,
+<span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>, <span class="math" data-tex="\(a_2=\log3\)">\(a_2=\log3\)</span>, and coefficients <span class="math" data-tex="\(m,-n\)">\(m,-n\)</span>.
+The heights of these integers are their logarithms, so every height
+condition holds. Since <span class="math" data-tex="\(\log3&gt;1\)">\(\log3&gt;1\)</span> and <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span>,
+<span class="math" data-tex="\(B&#x27;=m/\log3+n&lt;2m\)">\(B&#x27;=m/\log3+n&lt;2m\)</span>. Combining the lower bound there with
+(11.9) yields
+<span class="math math-display" data-tex="\[
+m\log2&lt;\log30+21600\log3\bigl(\max\{10,\log(2m)\}\bigr)^2.
+\tag{11.10}
+\]">\[
+m\log2&lt;\log30+21600\log3\bigl(\max\{10,\log(2m)\}\bigr)^2.
+\tag{11.10}
+\]</span>
+This implies
+<span class="math math-display" data-tex="\[
+m&lt;10^7.
+\tag{11.11}
+\]">\[
+m&lt;10^7.
+\tag{11.11}
+\]</span>
+Here is a uniform numerical check, rather than a test at a single
+exponent. For <span class="math" data-tex="\(x\ge10^7\)">\(x\ge10^7\)</span>, <span class="math" data-tex="\(\log(2x)&gt;10\)">\(\log(2x)&gt;10\)</span> and
+<span class="math math-display" data-tex="\[
+F(x)=x\log2-21600\log3\log^2(2x)-\log30.
+\]">\[
+F(x)=x\log2-21600\log3\log^2(2x)-\log30.
+\]</span>
+Use
+<span class="math" data-tex="\(\log2&gt;69/100\)">\(\log2&gt;69/100\)</span>, <span class="math" data-tex="\(\log3&lt;11/10\)">\(\log3&lt;11/10\)</span>,
+<span class="math" data-tex="\(\log(2\cdot10^7)&lt;17\)">\(\log(2\cdot10^7)&lt;17\)</span>, and <span class="math" data-tex="\(\log30&lt;4\)">\(\log30&lt;4\)</span>.
+They give <span class="math" data-tex="\(F(10^7)&gt;33356&gt;0\)">\(F(10^7)&gt;33356&gt;0\)</span>. The function
+<span class="math" data-tex="\(\log(2x)/x\)">\(\log(2x)/x\)</span> decreases for <span class="math" data-tex="\(x\ge10^7\)">\(x\ge10^7\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+F&#x27;(x)\ge\frac{69}{100}
+-\frac{43200(11/10)17}{10^7}&gt;0.
+\]">\[
+F&#x27;(x)\ge\frac{69}{100}
+-\frac{43200(11/10)17}{10^7}&gt;0.
+\]</span>
+Thus (11.10) cannot hold at or above <span class="math" data-tex="\(10^7\)">\(10^7\)</span>. The logarithm bounds
+are certified below; <span class="math" data-tex="\(\log(2\cdot10^7)&gt;10\)">\(\log(2\cdot10^7)&gt;10\)</span> also follows from
+<span class="math" data-tex="\(2\cdot10^7&gt;2^{20}\)">\(2\cdot10^7&gt;2^{20}\)</span> and <span class="math" data-tex="\(20\log2&gt;13.8\)">\(20\log2&gt;13.8\)</span>.</p>
+<p><strong>Proof: the continued-fraction reduction.</strong> Put
+<span class="math" data-tex="\(\theta=\log3/\log2\)">\(\theta=\log3/\log2\)</span>. It is irrational: a rational value would,
+on exponentiating, equate a positive power of three to a positive power
+of two. For <span class="math" data-tex="\(n\ge6\)">\(n\ge6\)</span>, (11.8) gives
+<span class="math math-display" data-tex="\[
+\left|\theta-\frac mn\right|
+\le\frac{20}{n\log2(3^n-20)}&lt;\frac1{2n^2}.
+\tag{11.12}
+\]">\[
+\left|\theta-\frac mn\right|
+\le\frac{20}{n\log2(3^n-20)}&lt;\frac1{2n^2}.
+\tag{11.12}
+\]</span>
+The strict inequality is <span class="math" data-tex="\(40n&lt;\log2(3^n-20)\)">\(40n&lt;\log2(3^n-20)\)</span>. It holds at
+<span class="math" data-tex="\(n=6\)">\(n=6\)</span> using <span class="math" data-tex="\(\log2&gt;69/100\)">\(\log2&gt;69/100\)</span>, and remains true because
+<span class="math" data-tex="\((3^n-20)/n\)">\((3^n-20)/n\)</span> increases: the numerator of its successive difference
+is <span class="math" data-tex="\((2n-1)3^n+20&gt;0\)">\((2n-1)3^n+20&gt;0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(g=\gcd(m,n)\)">\(g=\gcd(m,n)\)</span>, <span class="math" data-tex="\(m=ga\)">\(m=ga\)</span>, <span class="math" data-tex="\(n=gb\)">\(n=gb\)</span>. Then <span class="math" data-tex="\(a/b\)">\(a/b\)</span> is
+reduced and the right side in (11.12) is at most <span class="math" data-tex="\(1/(2b^2)\)">\(1/(2b^2)\)</span>.
+Theorem 11.3 therefore makes <span class="math" data-tex="\(a/b\)">\(a/b\)</span> a convergent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.
+The reduced numerator satisfies <span class="math" data-tex="\(a\le m&lt;10^7\)">\(a\le m&lt;10^7\)</span>.</p>
+<p>The table below contains every such convergent and the first excluded
+one. The column <span class="math" data-tex="\(L_j\)">\(L_j\)</span> is an integer for which
+<span class="math" data-tex="\(10^8|p_j\log2-q_j\log3|&gt;L_j\)">\(10^8|p_j\log2-q_j\log3|&gt;L_j\)</span>. Each value comes from rational
+intervals, as specified after the table.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(j\)">\(j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(a_j\)">\(a_j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(p_j\)">\(p_j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(q_j\)">\(q_j\)</span></th>
+<th style="text-align:center">sign</th>
+<th style="text-align:right"><span class="math" data-tex="\(L_j\)">\(L_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">40546510</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">28768207</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">2</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">11778303</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">5</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">5211600</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">19</td>
+<td style="text-align:right">12</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">1355103</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">65</td>
+<td style="text-align:right">41</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">1146290</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">84</td>
+<td style="text-align:right">53</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">208813</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">485</td>
+<td style="text-align:right">306</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">102223</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1054</td>
+<td style="text-align:right">665</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">4365</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">24727</td>
+<td style="text-align:right">15601</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">1819</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">50508</td>
+<td style="text-align:right">31867</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">726</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">125743</td>
+<td style="text-align:right">79335</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">366</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">176251</td>
+<td style="text-align:right">111202</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">360</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">301994</td>
+<td style="text-align:right">190537</td>
+<td style="text-align:center">+</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">55</td>
+<td style="text-align:right">16785921</td>
+<td style="text-align:right">10590737</td>
+<td style="text-align:center"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">5</td>
+</tr>
+</tbody>
+</table>
+<p>The final row is excluded by its numerator.</p>
+<p>All relevant rows have <span class="math" data-tex="\(L_j\ge1\)">\(L_j\ge1\)</span>. The recurrence has positive
+terms and its numerators are strictly increasing here, so no later
+convergent has numerator below <span class="math" data-tex="\(10^7\)">\(10^7\)</span>. Importantly, the common
+factor <span class="math" data-tex="\(g\)">\(g\)</span> is not discarded:
+<span class="math math-display" data-tex="\[
+|\Lambda|=g|a\log2-b\log3|&gt;10^{-8}.
+\]">\[
+|\Lambda|=g|a\log2-b\log3|&gt;10^{-8}.
+\]</span>
+Combining this with <span class="math" data-tex="\(|\Lambda|\le20/(3^n-20)\)">\(|\Lambda|\le20/(3^n-20)\)</span> gives
+<span class="math" data-tex="\(3^n&lt;2\cdot10^9+20\)">\(3^n&lt;2\cdot10^9+20\)</span>. Since
+<span class="math" data-tex="\(3^{20}=3486784401&gt;2000000020\)">\(3^{20}=3486784401&gt;2000000020\)</span>, we obtain <span class="math" data-tex="\(n\le19\)">\(n\le19\)</span>.
+The cases <span class="math" data-tex="\(n=4,5\)">\(n=4,5\)</span>, which did not use (11.12), are included in the
+following final table as well.</p>
+<p><strong>Proof: the final integer check.</strong> For each <span class="math" data-tex="\(4\le n\le19\)">\(4\le n\le19\)</span>, let
+<span class="math" data-tex="\(k\)">\(k\)</span> be the integer with <span class="math" data-tex="\(2^k&lt;3^n&lt;2^{k+1}\)">\(2^k&lt;3^n&lt;2^{k+1}\)</span>. Powers with exponent
+below <span class="math" data-tex="\(k\)">\(k\)</span> are farther from <span class="math" data-tex="\(3^n\)">\(3^n\)</span> than <span class="math" data-tex="\(2^k\)">\(2^k\)</span>; those with
+exponent above <span class="math" data-tex="\(k+1\)">\(k+1\)</span> are farther than <span class="math" data-tex="\(2^{k+1}\)">\(2^{k+1}\)</span>. Thus only these
+two nearest powers need checking.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(k\)">\(k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3^n-2^k\)">\(3^n-2^k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2^{k+1}-3^n\)">\(2^{k+1}-3^n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">47</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">115</td>
+<td style="text-align:right">13</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">217</td>
+<td style="text-align:right">295</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">139</td>
+<td style="text-align:right">1909</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">2465</td>
+<td style="text-align:right">1631</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">3299</td>
+<td style="text-align:right">13085</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">26281</td>
+<td style="text-align:right">6487</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">46075</td>
+<td style="text-align:right">84997</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">19</td>
+<td style="text-align:right">7153</td>
+<td style="text-align:right">517135</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">545747</td>
+<td style="text-align:right">502829</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">588665</td>
+<td style="text-align:right">3605639</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">5960299</td>
+<td style="text-align:right">2428309</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">25</td>
+<td style="text-align:right">9492289</td>
+<td style="text-align:right">24062143</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">26</td>
+<td style="text-align:right">62031299</td>
+<td style="text-align:right">5077565</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right">118985033</td>
+<td style="text-align:right">149450423</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">88519643</td>
+<td style="text-align:right">985222181</td>
+</tr>
+</tbody>
+</table>
+<p>Exactly two entries are at most twenty: <span class="math" data-tex="\(3^4-2^6=17\)">\(3^4-2^6=17\)</span> and
+<span class="math" data-tex="\(2^8-3^5=13\)">\(2^8-3^5=13\)</span>. This proves (11.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="figures/powers-gap-certificate.png" alt="Exact distances to the powers of two on either side of each power of three" class="course-figure" width="1728" height="928" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="powers-gap-certificate" data-asset-sha256="C03005E0ED971BED6A775032F7DDE60AD91D729B02CD89E7F6ACA5C8861CBD5F"></p>
+<p><em>Figure 11.1. Theorem 11.4 reduces all possible solutions to the displayed integer interval. Each marker is an exact entry of its final table, with <span class="math" data-tex="\(2^k&lt;3^n&lt;2^{k+1}\)">\(2^k&lt;3^n&lt;2^{k+1}\)</span>; the vertical axis is logarithmic. Connecting segments guide the eye between integer exponents. Only the distances 17 and 13 are at most 20. <a href="figure_sources/gap_certificate_figure.py">Figure program</a>, <a href="verification/powers_2_3_certificate.py">exact continued-fraction and integer certificate</a>.</em></p>
+<h2 id="3-checking-the-certificate-with-rational-arithmetic">3. Checking the certificate with rational arithmetic</h2>
+<p>For <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>, put <span class="math" data-tex="\(z=(x-1)/(x+1)\)">\(z=(x-1)/(x+1)\)</span>. Integrating the geometric series
+for <span class="math" data-tex="\(2/(1-z^2)\)">\(2/(1-z^2)\)</span> from zero to <span class="math" data-tex="\(z\)">\(z\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_N(x)&amp;=2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1},\\
+L_N(x)&amp;&lt;\log x&lt;L_N(x)
++\frac{2z^{2N+1}}{(2N+1)(1-z^2)}=:U_N(x).
+\end{aligned}
+\tag{11.13}
+\]">\[
+\begin{aligned}
+L_N(x)&amp;=2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1},\\
+L_N(x)&amp;&lt;\log x&lt;L_N(x)
++\frac{2z^{2N+1}}{(2N+1)(1-z^2)}=:U_N(x).
+\end{aligned}
+\tag{11.13}
+\]</span>
+The tail bound follows by replacing each later denominator by <span class="math" data-tex="\(2N+1\)">\(2N+1\)</span>
+and summing a geometric series. All entries are rational when <span class="math" data-tex="\(x\)">\(x\)</span>
+is rational. We use <span class="math" data-tex="\(N=100\)">\(N=100\)</span> for <span class="math" data-tex="\(x=2,3\)">\(x=2,3\)</span>.</p>
+<p>Start with the rational interval
+<span class="math" data-tex="\([L_N(3)/U_N(2),U_N(3)/L_N(2)]\)">\([L_N(3)/U_N(2),U_N(3)/L_N(2)]\)</span> for <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. At every
+continued-fraction step both endpoints have the same integer part
+<span class="math" data-tex="\(a_j\)">\(a_j\)</span>. Subtract it and invert the interval, exchanging the two
+endpoints. This proves each listed partial quotient, rather than merely
+approximating it in floating point. For a listed <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, the interval
+<span class="math math-display" data-tex="\[
+[pL_N(2)-qU_N(3),\ pU_N(2)-qL_N(3)]
+\tag{11.14}
+\]">\[
+[pL_N(2)-qU_N(3),\ pU_N(2)-qL_N(3)]
+\tag{11.14}
+\]</span>
+has one strict sign. Its distance from zero is a rational lower bound
+for <span class="math" data-tex="\(|p\log2-q\log3|\)">\(|p\log2-q\log3|\)</span>; the integer part of <span class="math" data-tex="\(10^8\)">\(10^8\)</span> times that
+lower bound gives the printed <span class="math" data-tex="\(L_j\)">\(L_j\)</span>. Only the first excluded row
+is unnecessary for the error bound.</p>
+<p>For the remaining scalar checks, finite exponential sums suffice:
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^{60}\frac{17^j}{j!}&gt;20000000,\qquad
+\sum_{j=0}^{10}\frac{4^j}{j!}&gt;30.
+\]">\[
+\sum_{j=0}^{60}\frac{17^j}{j!}&gt;20000000,\qquad
+\sum_{j=0}^{10}\frac{4^j}{j!}&gt;30.
+\]</span>
+Every omitted term is positive, so these prove the needed upper bounds
+on the corresponding logarithms. The supplied program checks these
+rational inequalities, the signs and partial quotients, the common
+error bound, and every entry in the final integer table. Its role is
+to execute a finite certificate; the preceding proofs explain why
+these finite checks exhaust the infinite problem.</p>
+<h2 id="4-exercises-and-solutions">4. Exercises and solutions</h2>
+<ol>
+<li>
+<p><strong>Initial denominators.</strong> For <span class="math" data-tex="\(1&lt;\theta&lt;2\)">\(1&lt;\theta&lt;2\)</span>, explain why the two
+first denominators may coincide and why this causes no gap in the
+proof of Legendre's criterion.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(q_0=1\)">\(q_0=1\)</span> and <span class="math" data-tex="\(q_1=a_1\)">\(q_1=a_1\)</span>, which equals one
+when <span class="math" data-tex="\(1&lt;\theta_1&lt;2\)">\(1&lt;\theta_1&lt;2\)</span>. From <span class="math" data-tex="\(q_2=a_2q_1+q_0\)">\(q_2=a_2q_1+q_0\)</span> onward the
+denominators strictly increase. Choosing the largest index with
+<span class="math" data-tex="\(q_j\le b\)">\(q_j\le b\)</span> still gives <span class="math" data-tex="\(b&lt;q_{j+1}\)">\(b&lt;q_{j+1}\)</span>, including <span class="math" data-tex="\(b=1\)">\(b=1\)</span>.</p>
+</li>
+<li>
+<p><strong>Reduction of the fraction.</strong> Why would it be incorrect to list
+only pairs <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span> equal to convergent numerators and denominators
+in the proof of Theorem 11.4?</p>
+<p><strong>Solution.</strong> Legendre makes the rational number <span class="math" data-tex="\(m/n\)">\(m/n\)</span> a
+convergent, but <span class="math" data-tex="\(m,n\)">\(m,n\)</span> need not be coprime. They may be
+<span class="math" data-tex="\((gp_j,gq_j)\)">\((gp_j,gq_j)\)</span>. The proof retains all <span class="math" data-tex="\(g\ge1\)">\(g\ge1\)</span> because the
+logarithmic error is multiplied by <span class="math" data-tex="\(g\)">\(g\)</span>; its lower bound remains
+valid for every such pair.</p>
+</li>
+<li>
+<p><strong>A particular near miss.</strong> Compute <span class="math" data-tex="\(3^{12}-2^{19}\)">\(3^{12}-2^{19}\)</span>, and compare
+its size with its relative logarithmic error.</p>
+<p><strong>Solution.</strong> The exact integers are <span class="math" data-tex="\(3^{12}=531441\)">\(3^{12}=531441\)</span> and
+<span class="math" data-tex="\(2^{19}=524288\)">\(2^{19}=524288\)</span>, with difference <span class="math" data-tex="\(7153\)">\(7153\)</span>. Formula (11.8) gives
+<span class="math" data-tex="\(0&lt;12\log3-19\log2\le7153/524288&lt;14/1000\)">\(0&lt;12\log3-19\log2\le7153/524288&lt;14/1000\)</span>. A small relative
+logarithmic discrepancy need not mean a small absolute difference.</p>
+</li>
+<li>
+<p><strong>Legendre without a black box.</strong> Starting from (11.3), prove
+Lemma 11.2 and then Theorem 11.3, including both signs of <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Solution.</strong> The unimodular adjacent pair expresses <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> as
+an integral combination with coefficients <span class="math" data-tex="\(r,s\)">\(r,s\)</span>. A smaller error
+forces <span class="math" data-tex="\(|r-s\theta_{j+1}|&lt;1\)">\(|r-s\theta_{j+1}|&lt;1\)</span>. If <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, then
+<span class="math" data-tex="\(r\ge s a_{j+1}\)">\(r\ge s a_{j+1}\)</span> forces <span class="math" data-tex="\(b\ge q_{j+1}\)">\(b\ge q_{j+1}\)</span>. If <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, then
+<span class="math" data-tex="\(r\le s a_{j+1}\)">\(r\le s a_{j+1}\)</span> forces <span class="math" data-tex="\(b&lt;0\)">\(b&lt;0\)</span>. The case <span class="math" data-tex="\(s=0\)">\(s=0\)</span> gives
+<span class="math" data-tex="\(|r|\ge1\)">\(|r|\ge1\)</span>. For Legendre, use the nonzero integer
+<span class="math" data-tex="\(a q_j-b p_j\)">\(a q_j-b p_j\)</span> and bound its absolute value by
+<span class="math" data-tex="\((q_j+b)|b\theta-a|\)">\((q_j+b)|b\theta-a|\)</span>; (11.6) makes this less than one.</p>
+</li>
+</ol>
+<h2 id="5-a-uniform-growth-estimate-for-powers">5. A uniform growth estimate for powers</h2>
+<p><strong>Theorem 11.5.</strong> For all positive integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>,
+<span class="math math-display" data-tex="\[
+|2^m-3^n|\ge 2^{m-1}
+\exp\!\left(-21600\log3\,[\max\{10,\log(2m)\}]^2\right).
+\tag{11.15}
+\]">\[
+|2^m-3^n|\ge 2^{m-1}
+\exp\!\left(-21600\log3\,[\max\{10,\log(2m)\}]^2\right).
+\tag{11.15}
+\]</span>
+In particular the difference tends to infinity when <span class="math" data-tex="\(m\)">\(m\)</span> tends to
+infinity, uniformly in <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> If the difference is at least <span class="math" data-tex="\(2^{m-1}\)">\(2^{m-1}\)</span>, the conclusion
+is immediate. Otherwise <span class="math" data-tex="\(3^n\)">\(3^n\)</span> lies strictly between <span class="math" data-tex="\(2^{m-1}\)">\(2^{m-1}\)</span>
+and <span class="math" data-tex="\(3\cdot2^{m-1}\)">\(3\cdot2^{m-1}\)</span>. This case cannot occur for <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.
+For <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, the upper inequality gives
+<span class="math" data-tex="\(n&lt;1+(m-1)\log2/\log3&lt;m\)">\(n&lt;1+(m-1)\log2/\log3&lt;m\)</span>. Thus the same application of
+Theorem 7.1 as in Theorem 11.4 gives
+<span class="math math-display" data-tex="\[
+|m\log2-n\log3|\ge
+\exp\!\left(-21600\log3\,[\max\{10,\log(2m)\}]^2\right).
+\]">\[
+|m\log2-n\log3|\ge
+\exp\!\left(-21600\log3\,[\max\{10,\log(2m)\}]^2\right).
+\]</span>
+By (11.8), the left side is at most
+<span class="math" data-tex="\(2|2^m-3^n|/2^m\)">\(2|2^m-3^n|/2^m\)</span>, proving (11.15).
+The logarithm of its right side is
+<span class="math" data-tex="\((m-1)\log2-O((\log m)^2)\)">\((m-1)\log2-O((\log m)^2)\)</span>, which tends to infinity.
+For example, <span class="math" data-tex="\(\log x/x^{1/4}\)">\(\log x/x^{1/4}\)</span> is bounded for <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>, by
+differentiation, so <span class="math" data-tex="\((\log m)^2/m\)">\((\log m)^2/m\)</span> tends to zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(m\)">\(m\)</span> is bounded and <span class="math" data-tex="\(n\)">\(n\)</span> tends to infinity, the difference
+also tends to infinity directly. Hence each fixed bound on the absolute
+difference admits only finitely many pairs. Formula (11.15), followed
+by the monotonicity check used in Theorem 11.4, makes that finiteness
+effective.</p>
+<h2 id="6-why-a-linear-logarithmic-bound-gives-an-irrationality-measure">6. Why a linear logarithmic bound gives an irrationality measure</h2>
+<p>For later use write the real constant in Theorem 8.6 as
+<span class="math math-display" data-tex="\[
+\mathcal C_s=C_1(s,1)
+=\min\left\{\frac{\mathrm e s}{2}\,30^{s+3}s^{7/2},
+                     2^{6s+20}\right\}.
+\tag{11.16}
+\]">\[
+\mathcal C_s=C_1(s,1)
+=\min\left\{\frac{\mathrm e s}{2}\,30^{s+3}s^{7/2},
+                     2^{6s+20}\right\}.
+\tag{11.16}
+\]</span>
+<a href="TR-BAKER-08.html#4-matveev-s-homogeneous-estimate">Theorem 8.6 and its proof</a> give, over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>,
+<span class="math math-display" data-tex="\[
+\left|\sum_{j=1}^s b_j\log\alpha_j\right|&gt;\exp(-\mathcal C_s H_1\cdots H_s\log(\mathrm e B)),
+\tag{11.17}
+\]">\[
+\left|\sum_{j=1}^s b_j\log\alpha_j\right|&gt;\exp(-\mathcal C_s H_1\cdots H_s\log(\mathrm e B)),
+\tag{11.17}
+\]</span>
+when the form is nonzero, <span class="math" data-tex="\(B\ge\max\{1,|b_1|,\ldots,|b_s|\}\)">\(B\ge\max\{1,|b_1|,\ldots,|b_s|\}\)</span>,
+and <span class="math" data-tex="\(H_j\ge\max\{h(\alpha_j),|\log\alpha_j|,0.16\}\)">\(H_j\ge\max\{h(\alpha_j),|\log\alpha_j|,0.16\}\)</span>.
+The real positive bases used here have nonzero logarithms. This is an
+application of the earlier programme proof, with its complete height
+normalization retained.</p>
+<p><strong>Theorem 11.6 (an effective irrationality measure).</strong> Let
+<span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> be multiplicatively independent positive rational
+numbers, both different from one. Put <span class="math" data-tex="\(\theta=\log\alpha/\log\beta\)">\(\theta=\log\alpha/\log\beta\)</span>,
+choose the two heights required in (11.17), and set
+<span class="math math-display" data-tex="\[
+A=\mathcal C_2H_1H_2,\quad M=1+|\theta|,\quad
+c=\min\{1,(\mathrm e M)^{-A}/|\log\beta|\}.
+\]">\[
+A=\mathcal C_2H_1H_2,\quad M=1+|\theta|,\quad
+c=\min\{1,(\mathrm e M)^{-A}/|\log\beta|\}.
+\]</span>
+For all integers <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\left|\theta-\frac ab\right|&gt;c b^{-(A+1)}.
+\tag{11.18}
+\]">\[
+\left|\theta-\frac ab\right|&gt;c b^{-(A+1)}.
+\tag{11.18}
+\]</span></p>
+<p><strong>Proof.</strong> The ratio <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is irrational, since a rational
+relation between the logarithms would contradict multiplicative
+independence. If the difference is at least one, (11.18) follows from
+<span class="math" data-tex="\(c\le1\)">\(c\le1\)</span>; equality at one is impossible for an irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.
+Otherwise <span class="math" data-tex="\(|a|&lt;b(1+|\theta|)=bM\)">\(|a|&lt;b(1+|\theta|)=bM\)</span>. Apply (11.17) to
+<span class="math" data-tex="\(b\log\alpha-a\log\beta\ne0\)">\(b\log\alpha-a\log\beta\ne0\)</span>, taking <span class="math" data-tex="\(B=bM\)">\(B=bM\)</span>, and divide by
+<span class="math" data-tex="\(b|\log\beta|\)">\(b|\log\beta|\)</span>. This is the required strict inequality.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exponent <span class="math" data-tex="\(A+1\)">\(A+1\)</span> may be large, but it is a fixed computable
+number. A bound with <span class="math" data-tex="\((\log B)^2\)">\((\log B)^2\)</span> instead of <span class="math" data-tex="\(\log B\)">\(\log B\)</span> does
+not give this conclusion: its exponential becomes
+<span class="math" data-tex="\(B^{-C\log B}\)">\(B^{-C\log B}\)</span>, whose exponent grows with <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<h2 id="7-gaps-between-integers-built-from-fixed-primes">7. Gaps between integers built from fixed primes</h2>
+<p>Let <span class="math" data-tex="\(S=\{p_1,\ldots,p_s\}\)">\(S=\{p_1,\ldots,p_s\}\)</span> be a nonempty finite set of distinct
+primes. A positive integral <span class="math" data-tex="\(S\)">\(S\)</span>-unit here is an integer
+<span class="math" data-tex="\(p_1^{u_1}\cdots p_s^{u_s}\)">\(p_1^{u_1}\cdots p_s^{u_s}\)</span> with all <span class="math" data-tex="\(u_i\ge0\)">\(u_i\ge0\)</span>; in particular
+one is included. There are only finitely many such integers below any
+bound, and infinitely many in total, so they can be arranged increasingly.</p>
+<p><strong>Theorem 11.7 (an effective gap bound).</strong> Set
+<span class="math math-display" data-tex="\[
+C_S=6\mathcal C_s\prod_{j=1}^s\log p_j.
+\]">\[
+C_S=6\mathcal C_s\prod_{j=1}^s\log p_j.
+\]</span>
+For any two distinct positive integral <span class="math" data-tex="\(S\)">\(S\)</span>-units <span class="math" data-tex="\(x&lt;y\)">\(x&lt;y\)</span>,
+<span class="math math-display" data-tex="\[
+y-x&gt;x(\log(2x))^{-C_S}\qquad(x\ge2).
+\tag{11.19}
+\]">\[
+y-x&gt;x(\log(2x))^{-C_S}\qquad(x\ge2).
+\tag{11.19}
+\]</span>
+The uniform non-strict version, including <span class="math" data-tex="\(x=1\)">\(x=1\)</span>, is
+<span class="math math-display" data-tex="\[
+y-x\ge x\bigl(\max\{1,\log(2x)\}\bigr)^{-C_S}.
+\tag{11.20}
+\]">\[
+y-x\ge x\bigl(\max\{1,\log(2x)\}\bigr)^{-C_S}.
+\tag{11.20}
+\]</span>
+In particular these inequalities hold for consecutive integral
+<span class="math" data-tex="\(S\)">\(S\)</span>-units. This is the effective logarithmic gap phenomenon of
+<a href="https://www.numdam.org/item/CM_1973__26_3_319_0/">Tijdeman's freely available 1973 paper</a>.
+We deduce the displayed explicit constant from (11.17).</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>, put <span class="math" data-tex="\(L=\log(2x)&gt;1\)">\(L=\log(2x)&gt;1\)</span>. If <span class="math" data-tex="\(y\ge2x\)">\(y\ge2x\)</span>,
+then <span class="math" data-tex="\(y-x\ge x&gt;xL^{-C_S}\)">\(y-x\ge x&gt;xL^{-C_S}\)</span>. Otherwise write
+<span class="math" data-tex="\(x=\prod p_j^{u_j}\)">\(x=\prod p_j^{u_j}\)</span>, <span class="math" data-tex="\(y=\prod p_j^{v_j}\)">\(y=\prod p_j^{v_j}\)</span>, and
+<span class="math" data-tex="\(b_j=v_j-u_j\)">\(b_j=v_j-u_j\)</span>. Every exponent is at most
+<span class="math" data-tex="\(\log y/\log2&lt;L/\log2\)">\(\log y/\log2&lt;L/\log2\)</span>. Thus
+<span class="math math-display" data-tex="\[
+0&lt;\Lambda=\log(y/x)=\sum_j b_j\log p_j,\qquad
+B:=L/\log2&gt;\max_j|b_j|.
+\]">\[
+0&lt;\Lambda=\log(y/x)=\sum_j b_j\log p_j,\qquad
+B:=L/\log2&gt;\max_j|b_j|.
+\]</span>
+Take <span class="math" data-tex="\(H_j=\log p_j\)">\(H_j=\log p_j\)</span> in (11.17); these are the rational heights
+and exceed <span class="math" data-tex="\(0.16\)">\(0.16\)</span>. The elementary integral inequality
+<span class="math" data-tex="\(\log(1+t)&lt;t\)">\(\log(1+t)&lt;t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> gives <span class="math" data-tex="\(y-x&gt;x\Lambda\)">\(y-x&gt;x\Lambda\)</span>.
+Write <span class="math" data-tex="\(A_S=\mathcal C_s\prod_j\log p_j\)">\(A_S=\mathcal C_s\prod_j\log p_j\)</span>. Then
+<span class="math math-display" data-tex="\[
+y-x&gt;x(\mathrm e B)^{-A_S}.
+\]">\[
+y-x&gt;x(\mathrm e B)^{-A_S}.
+\]</span>
+We have <span class="math" data-tex="\(\mathrm e&lt;3\)">\(\mathrm e&lt;3\)</span>, <span class="math" data-tex="\(\log2&gt;69/100\)">\(\log2&gt;69/100\)</span>, and
+<span class="math" data-tex="\(L\ge\log4&gt;69/50\)">\(L\ge\log4&gt;69/50\)</span>. The rational inequality
+<span class="math math-display" data-tex="\[
+\frac{100}{23}&lt;\left(\frac{69}{50}\right)^5
+\]">\[
+\frac{100}{23}&lt;\left(\frac{69}{50}\right)^5
+\]</span>
+therefore implies <span class="math" data-tex="\(\mathrm e/\log2&lt;L^5\)">\(\mathrm e/\log2&lt;L^5\)</span>. Hence
+<span class="math" data-tex="\(\mathrm e B&lt;L^6\)">\(\mathrm e B&lt;L^6\)</span>, proving (11.19). Finally, when <span class="math" data-tex="\(x=1\)">\(x=1\)</span>,
+the positive integer <span class="math" data-tex="\(y-x\)">\(y-x\)</span> is at least one, which is exactly the
+right side of (11.20). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The cutoff in (11.20) records a real boundary issue: for
+<span class="math" data-tex="\(S=\{2\}\)">\(S=\{2\}\)</span>, the pair <span class="math" data-tex="\(1,2\)">\(1,2\)</span> cannot satisfy (11.19) with a
+positive exponent, since <span class="math" data-tex="\((\log2)^{-C_S}&gt;1\)">\((\log2)^{-C_S}&gt;1\)</span>.</p>
+<p><strong>Proposition 11.8 (infinitely many relatively small gaps).</strong> If
+<span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span>, there are infinitely many consecutive positive integral
+<span class="math" data-tex="\(S\)">\(S\)</span>-units <span class="math" data-tex="\(x&lt;y\)">\(x&lt;y\)</span> with
+<span class="math math-display" data-tex="\[
+y-x&lt;K_S\frac{x}{(\log x)^{s-1}},\qquad
+K_S=2^s(p_1-1)(s-1)^{s-1}\prod_{j=2}^s\log p_j.
+\tag{11.21}
+\]">\[
+y-x&lt;K_S\frac{x}{(\log x)^{s-1}},\qquad
+K_S=2^s(p_1-1)(s-1)^{s-1}\prod_{j=2}^s\log p_j.
+\tag{11.21}
+\]</span>
+For <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, every consecutive gap equals <span class="math" data-tex="\((p_1-1)x\)">\((p_1-1)x\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(X\)">\(X\)</span> so large that <span class="math" data-tex="\(X\ge p_1\)">\(X\ge p_1\)</span> and
+<span class="math" data-tex="\(\log X\ge2(s-1)\max_{j\ge2}\log p_j\)">\(\log X\ge2(s-1)\max_{j\ge2}\log p_j\)</span>. For every choice
+<span class="math math-display" data-tex="\[
+0\le u_j\le\left\lfloor\frac{\log X}{(s-1)\log p_j}\right\rfloor
+\quad(2\le j\le s),
+\]">\[
+0\le u_j\le\left\lfloor\frac{\log X}{(s-1)\log p_j}\right\rfloor
+\quad(2\le j\le s),
+\]</span>
+the product <span class="math" data-tex="\(r=\prod_{j=2}^s p_j^{u_j}\)">\(r=\prod_{j=2}^s p_j^{u_j}\)</span> is at most <span class="math" data-tex="\(X\)">\(X\)</span>.
+Choose <span class="math" data-tex="\(a=\lceil\log(X/r)/\log p_1\rceil\ge0\)">\(a=\lceil\log(X/r)/\log p_1\rceil\ge0\)</span>. Then
+<span class="math" data-tex="\(X\le p_1^a r&lt;p_1X\)">\(X\le p_1^a r&lt;p_1X\)</span>. Unique prime factorization distinguishes
+all these integers, so their number <span class="math" data-tex="\(N_X\)">\(N_X\)</span> satisfies
+<span class="math math-display" data-tex="\[
+N_X&gt;\frac{(\log X)^{s-1}}
+{(s-1)^{s-1}\prod_{j=2}^s\log p_j},\qquad N_X\ge3.
+\]">\[
+N_X&gt;\frac{(\log X)^{s-1}}
+{(s-1)^{s-1}\prod_{j=2}^s\log p_j},\qquad N_X\ge3.
+\]</span>
+Among the adjacent members of this finite list, one gap is smaller
+than <span class="math" data-tex="\((p_1-1)X/(N_X-1)&lt;2(p_1-1)X/N_X\)">\((p_1-1)X/(N_X-1)&lt;2(p_1-1)X/N_X\)</span>. If other <span class="math" data-tex="\(S\)">\(S\)</span>-units
+lie inside that gap, select an adjacent pair from the full increasing
+sequence inside it; its distance is no larger. For its smaller member
+<span class="math" data-tex="\(x\)">\(x\)</span>, we have <span class="math" data-tex="\(X\le x&lt;p_1X\le X^2\)">\(X\le x&lt;p_1X\le X^2\)</span>, so
+<span class="math" data-tex="\(\log X\ge\tfrac12\log x\)">\(\log X\ge\tfrac12\log x\)</span>. These inequalities give (11.21).
+Letting <span class="math" data-tex="\(X\)">\(X\)</span> tend to infinity proves infinitude because each selected
+<span class="math" data-tex="\(x\)">\(x\)</span> is at least <span class="math" data-tex="\(X\)">\(X\)</span>. The one-prime assertion is immediate from
+the sequence <span class="math" data-tex="\(1,p_1,p_1^2,\ldots\)">\(1,p_1,p_1^2,\ldots\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a uniform lower bound with exponent smaller than <span class="math" data-tex="\(s-1\)">\(s-1\)</span> is
+impossible when <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span>: dividing it by (11.21) would require an
+unbounded positive power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span> to remain bounded. The much
+larger explicit exponent in Theorem 11.7 is effective, without being
+an assertion of the optimal exponent.</p>
+<h2 id="8-cycles-of-the-accelerated-3x-1-map">8. Cycles of the accelerated 3x+1 map</h2>
+<p>We use the convention
+<span class="math math-display" data-tex="\[
+T(n)=\begin{cases}n/2,&amp;n\text{ even},\\(3n+1)/2,&amp;n\text{ odd}.
+\end{cases}
+\tag{11.22}
+\]">\[
+T(n)=\begin{cases}n/2,&amp;n\text{ even},\\(3n+1)/2,&amp;n\text{ odd}.
+\end{cases}
+\tag{11.22}
+\]</span>
+Let <span class="math" data-tex="\(n_0,\ldots,n_{\ell-1}&gt;0\)">\(n_0,\ldots,n_{\ell-1}&gt;0\)</span> be a cycle, with
+<span class="math" data-tex="\(T(n_i)=n_{i+1}\)">\(T(n_i)=n_{i+1}\)</span>, subscripts taken modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Let <span class="math" data-tex="\(k\)">\(k\)</span>
+be its number of odd entries and <span class="math" data-tex="\(m=\min_i n_i\)">\(m=\min_i n_i\)</span>. An all-even
+positive cycle is impossible: after <span class="math" data-tex="\(\ell\)">\(\ell\)</span> steps it would give
+<span class="math" data-tex="\(n_0=2^{-\ell}n_0\)">\(n_0=2^{-\ell}n_0\)</span>. Thus <span class="math" data-tex="\(1\le k\le\ell\)">\(1\le k\le\ell\)</span>.</p>
+<p><strong>Proposition 11.9 (the exact cycle product).</strong> One has
+<span class="math math-display" data-tex="\[
+2^\ell=3^k\prod_{n_i\text{ odd}}
+\left(1+\frac1{3n_i}\right),\qquad
+0&lt;\ell\log2-k\log3&lt;\frac{k}{3m}.
+\tag{11.23}
+\]">\[
+2^\ell=3^k\prod_{n_i\text{ odd}}
+\left(1+\frac1{3n_i}\right),\qquad
+0&lt;\ell\log2-k\log3&lt;\frac{k}{3m}.
+\tag{11.23}
+\]</span></p>
+<p><strong>Proof.</strong> For an even entry <span class="math" data-tex="\(n_i\)">\(n_i\)</span>, the ratio
+<span class="math" data-tex="\(n_{i+1}/n_i\)">\(n_{i+1}/n_i\)</span> equals <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. For an odd entry it equals
+<span class="math" data-tex="\((3/2)(1+1/(3n_i))\)">\((3/2)(1+1/(3n_i))\)</span>. Multiplication around the cycle telescopes
+to one, proving the product formula. Every displayed factor exceeds
+one. Taking logarithms and using <span class="math" data-tex="\(0&lt;\log(1+t)&lt;t\)">\(0&lt;\log(1+t)&lt;t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>
+gives
+<span class="math math-display" data-tex="\[
+0&lt;\ell\log2-k\log3
+&lt;\sum_{n_i\text{ odd}}\frac1{3n_i}\le\frac{k}{3m}.
+\]">\[
+0&lt;\ell\log2-k\log3
+&lt;\sum_{n_i\text{ odd}}\frac1{3n_i}\le\frac{k}{3m}.
+\]</span>
+This proves both strict inequalities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 11.10 (bounds for the minimum and the length).</strong> Every
+such cycle satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+m&amp;&lt;\frac{k}{3(\ell\log2-k\log3)}\\
+ &amp;\le\frac{\ell}{3}
+\exp\!\left(21600\log3[\max\{10,\log(2\ell)\}]^2\right).
+\end{aligned}
+\tag{11.24}
+\]">\[
+\begin{aligned}
+m&amp;&lt;\frac{k}{3(\ell\log2-k\log3)}\\
+ &amp;\le\frac{\ell}{3}
+\exp\!\left(21600\log3[\max\{10,\log(2\ell)\}]^2\right).
+\end{aligned}
+\tag{11.24}
+\]</span>
+If <span class="math" data-tex="\(m&gt;k/(3\log2)\)">\(m&gt;k/(3\log2)\)</span>, then
+<span class="math math-display" data-tex="\[
+\ell=\left\lceil k\frac{\log3}{\log2}\right\rceil.
+\tag{11.25}
+\]">\[
+\ell=\left\lceil k\frac{\log3}{\log2}\right\rceil.
+\tag{11.25}
+\]</span></p>
+<p><strong>Proof.</strong> The first bound is (11.23). Apply Theorem 7.1 with
+coefficients <span class="math" data-tex="\(\ell,-k\)">\(\ell,-k\)</span> and the same heights as before.
+Here <span class="math" data-tex="\(B&#x27;=\ell/\log3+k&lt;2\ell\)">\(B&#x27;=\ell/\log3+k&lt;2\ell\)</span>, so the reciprocal of the
+positive form is at most the exponential in (11.24); also
+<span class="math" data-tex="\(k\le\ell\)">\(k\le\ell\)</span>. For (11.25), the assumed lower bound on <span class="math" data-tex="\(m\)">\(m\)</span>
+makes (11.23) imply <span class="math" data-tex="\(0&lt;\ell-k\log3/\log2&lt;1\)">\(0&lt;\ell-k\log3/\log2&lt;1\)</span>.
+The number <span class="math" data-tex="\(k\log3/\log2\)">\(k\log3/\log2\)</span> is irrational, so the only integer
+in this interval is its ceiling. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The cycle <span class="math" data-tex="\(1\mapsto2\mapsto1\)">\(1\mapsto2\mapsto1\)</span> has <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>, <span class="math" data-tex="\(k=1\)">\(k=1\)</span>,
+and product identity <span class="math" data-tex="\(4=3(1+1/3)\)">\(4=3(1+1/3)\)</span>. A bound for the minimum in
+terms of an unbounded length does not exclude other cycles or establish
+that every positive trajectory reaches this one.</p>
+<h3 id="historical-computational-results">Historical computational results</h3>
+<p>Lagarias's freely accessible <a href="https://arxiv.org/html/2111.02635#S6.SS1">overview, Section 6.1</a>
+was published in 2010 and deposited on arXiv in 2021. It reports
+verification for starting values below <span class="math" data-tex="\(20\cdot2^{58}\)">\(20\cdot2^{58}\)</span>, and,
+using that computation with Eliahou's bounds, excludes other positive
+cycles with fewer than <span class="math" data-tex="\(10439860591\)">\(10439860591\)</span> steps or <span class="math" data-tex="\(6586818670\)">\(6586818670\)</span> odd
+entries. It also discusses the work of Simons and de Weger on cycles
+with a prescribed number of alternating increasing and decreasing
+blocks. These are historical reports from that survey, not claims
+that we repeated those computations or that they are today's records.
+None of these external computational results is used in the proofs
+above.</p>
+<h2 id="9-further-exercises-and-solutions">9. Further exercises and solutions</h2>
+<ol start="5">
+<li>
+<p><strong>Negative cycles.</strong> Check the cycles <span class="math" data-tex="\((-1)\)">\((-1)\)</span> and
+<span class="math" data-tex="\((-5,-7,-10)\)">\((-5,-7,-10)\)</span> for (11.22), and explain why positivity matters
+in (11.23).</p>
+<p><strong>Solution.</strong> The images are <span class="math" data-tex="\(-1\mapsto-1\)">\(-1\mapsto-1\)</span> and
+<span class="math" data-tex="\(-5\mapsto-7\mapsto-10\mapsto-5\)">\(-5\mapsto-7\mapsto-10\mapsto-5\)</span>. The exact products are
+<span class="math" data-tex="\(2=3(1-1/3)\)">\(2=3(1-1/3)\)</span> and
+<span class="math" data-tex="\(8=9(1-1/15)(1-1/21)\)">\(8=9(1-1/15)(1-1/21)\)</span>. Every odd-entry factor is now less
+than one, so <span class="math" data-tex="\(\ell\log2-k\log3&lt;0\)">\(\ell\log2-k\log3&lt;0\)</span>. The positive lower
+inequality used to take its reciprocal therefore fails.</p>
+</li>
+<li>
+<p><strong>The ceiling condition.</strong> Derive (11.25), explaining why a floor
+or a rounded real number is not interchangeable with the ceiling.</p>
+<p><strong>Solution.</strong> The product gives a strictly positive discrepancy,
+while the minimum hypothesis makes it smaller than <span class="math" data-tex="\(\log2\)">\(\log2\)</span>.
+Dividing by <span class="math" data-tex="\(\log2\)">\(\log2\)</span> puts <span class="math" data-tex="\(\ell\)">\(\ell\)</span> strictly between <span class="math" data-tex="\(k\theta\)">\(k\theta\)</span>
+and <span class="math" data-tex="\(k\theta+1\)">\(k\theta+1\)</span>. Irrationality excludes both integer endpoints,
+so the unique integer is <span class="math" data-tex="\(\lceil k\theta\rceil\)">\(\lceil k\theta\rceil\)</span>.</p>
+</li>
+<li>
+<p><strong>Consecutive powers.</strong> For <span class="math" data-tex="\(m\ge1,n\ge0\)">\(m\ge1,n\ge0\)</span>, solve
+<span class="math" data-tex="\(2^m-3^n=1\)">\(2^m-3^n=1\)</span> and <span class="math" data-tex="\(2^m-3^n=-1\)">\(2^m-3^n=-1\)</span> by congruences and
+factorization.</p>
+<p><strong>Solution.</strong> For the plus sign, <span class="math" data-tex="\(n=0\)">\(n=0\)</span> gives <span class="math" data-tex="\((m,n)=(1,0)\)">\((m,n)=(1,0)\)</span>.
+If <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, reduction modulo three makes <span class="math" data-tex="\(m=2u\)">\(m=2u\)</span> even.
+Then <span class="math" data-tex="\((2^u-1)(2^u+1)=3^n\)">\((2^u-1)(2^u+1)=3^n\)</span>. These odd factors have greatest
+common divisor one, since their difference is two. Thus the smaller
+is one, giving <span class="math" data-tex="\(u=1\)">\(u=1\)</span> and <span class="math" data-tex="\((m,n)=(2,1)\)">\((m,n)=(2,1)\)</span>.</p>
+<p>For the minus sign, <span class="math" data-tex="\(n=0\)">\(n=0\)</span> is impossible, and reduction modulo
+three makes <span class="math" data-tex="\(m\)">\(m\)</span> odd. The case <span class="math" data-tex="\(m=1\)">\(m=1\)</span> gives <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.
+For <span class="math" data-tex="\(m\ge3\)">\(m\ge3\)</span>, reduction modulo eight forces <span class="math" data-tex="\(n=2v\)">\(n=2v\)</span> even.
+Thus <span class="math" data-tex="\((3^v-1)(3^v+1)=2^m\)">\((3^v-1)(3^v+1)=2^m\)</span>. After dividing both factors by
+two, they are coprime consecutive powers of two, hence one and
+two. This gives <span class="math" data-tex="\(v=1\)">\(v=1\)</span> and <span class="math" data-tex="\((m,n)=(3,2)\)">\((m,n)=(3,2)\)</span>.</p>
+</li>
+<li>
+<p><strong>A bound using only the number of odd entries.</strong> Prove an explicit
+upper bound for <span class="math" data-tex="\(m\)">\(m\)</span> in terms of <span class="math" data-tex="\(k\)">\(k\)</span>, without leaving <span class="math" data-tex="\(\ell\)">\(\ell\)</span>
+inside the formula.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(m\le k/(3\log2)\)">\(m\le k/(3\log2)\)</span>, that already bounds it.
+Otherwise (11.25) and <span class="math" data-tex="\(\log3/\log2&lt;2\)">\(\log3/\log2&lt;2\)</span> give
+<span class="math" data-tex="\(\ell=\lceil k\log3/\log2\rceil\le2k\)">\(\ell=\lceil k\log3/\log2\rceil\le2k\)</span>. Formula (11.24)
+consequently yields the uniform bound
+<span class="math math-display" data-tex="\[
+m&lt;\frac{2k}{3}
+\exp\!\left(21600\log3[\max\{10,\log(4k)\}]^2\right).
+\]">\[
+m&lt;\frac{2k}{3}
+\exp\!\left(21600\log3[\max\{10,\log(4k)\}]^2\right).
+\]</span>
+This also exceeds <span class="math" data-tex="\(k/(3\log2)\)">\(k/(3\log2)\)</span>, since <span class="math" data-tex="\(2\log2&gt;1\)">\(2\log2&gt;1\)</span>, so it
+covers the first case as well.</p>
+</li>
+<li>
+<p><strong>The first integral S-unit.</strong> Why is the cutoff in (11.20)
+necessary if one is included in the sequence? What happens when
+<span class="math" data-tex="\(S\)">\(S\)</span> is empty?</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(S=\{2\}\)">\(S=\{2\}\)</span>, the first gap is <span class="math" data-tex="\(2-1=1\)">\(2-1=1\)</span>,
+while <span class="math" data-tex="\((\log2)^{-C}&gt;1\)">\((\log2)^{-C}&gt;1\)</span> for every positive <span class="math" data-tex="\(C\)">\(C\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span>
+is empty, the only positive integral <span class="math" data-tex="\(S\)">\(S\)</span>-unit is one and there
+are no consecutive pairs; the gap assertion is vacuous.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>Ben Lynn, <em>Continued fractions: Convergence</em>. <a href="https://crypto.stanford.edu/pbc/notes/contfrac/converge.html">Freely accessible notes</a>.</li>
+<li>R. Tijdeman, <em>On integers with many small prime factors</em>, Compositio Mathematica 26 (1973), 319–330. <a href="https://www.numdam.org/item/CM_1973__26_3_319_0/">Free Numdam edition</a>.</li>
+<li>Jeffrey C. Lagarias, <em>The 3x+1 problem: an overview</em>, arXiv:2111.02635v1 (2021), surveying the position in 2010. <a href="https://arxiv.org/html/2111.02635">Free text</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-10.html">← Two p-adic logarithms: determinant bounds</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-12.html">From many logarithms to two, and the unit equation →</a></span></nav>
+<p class="small source-link"><a href="TR-BAKER-11.pdf" download>PDF of this lesson</a> · <a href="sources/TR-BAKER-11.tex" download>Editable LaTeX source of this lesson</a> · <span class="unlinked">Complete course source package</span> · <a href="src/TR-BAKER-11.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

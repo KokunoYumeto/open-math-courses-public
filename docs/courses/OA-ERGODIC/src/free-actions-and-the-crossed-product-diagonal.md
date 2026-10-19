@@ -8,7 +8,7 @@ For a free action, the orbit position \(sx\) determines the group coordinate \(s
 
 Unlike the countable relation construction, this representation uses Haar measure on group labels. Freeness makes those labels distinguish orbit positions. The counterexample in Section 4 explains why “each nonidentity element fixes a null set” is too weak for a nondiscrete group.
 
-The forward proof uses the double-commutant theorem, standard Borel one-to-one images, and Radon–Nikodym change of variables. The converse also uses completed measurable sections and the standard regular crossed-product conjugation theorem, stated precisely in Section 3. The counting-measure construction is developed in [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md). The group conventions agree with [Haar averages and compact translation control](haar-averages-and-compact-translation-control.md).
+The forward proof uses the double-commutant theorem, standard Borel one-to-one images (Theorem 4.3(5)), and Radon–Nikodym change of variables. The converse uses the standard regular crossed-product conjugation theorem stated in Section 3. Proposition 3.2a constructs the required Borel selector directly on compact stabilizer pieces; Theorem 3.2 also gives the completed-section and Borel-version route. The counting-measure construction is developed in [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md). The group conventions agree with [Haar averages and compact translation control](haar-averages-and-compact-translation-control.md).
 
 Let \(G\) be second countable and locally compact, with left Haar measure \(ds\). Let it act jointly Borel and nonsingularly on a standard probability space \((X,\mu)\). A sigma-finite measure can first be replaced by an equivalent probability. Theorem 3.1 assumes that almost every \(x\) has trivial stabilizer, with the exceptional set contained in a measurable null set. Theorem 3.2 allows nontrivial stabilizers and proves the converse.
 
@@ -154,6 +154,59 @@ Right translation commutes with every left translation, so \(T\lambda_g=\lambda_
 Maximal abelianness of \(N_A\) would make \(T=N_a\) for some \(a\in L^\infty(X)\). Uniqueness of separable operator-field decomposition would then make \(R_{h(x)}=a(x)1\) for almost every \(x\). This is impossible on \(E_0\). For any \(h\ne e\), choose a relatively compact nonempty open \(V\) with \(V\cap Vh^{-1}=\varnothing\). Its indicator is a nonzero \(L^2\) vector, and its image under \(R_h\) has disjoint support, so \(R_h\) cannot be scalar. Thus the positive-measure field in (3.8) contradicts maximal abelianness. Nontrivial stabilizers must be null. \(\square\)
 
 The selector in (3.6) can have uncountably many possible values. Its completed-measurable choice and Borel version suffice. No countable Borel partition of the stabilizer fibres is required.
+
+### Direct Borel choice on compact stabilizer pieces
+
+**Proposition 3.2a (the compact selector needed for the converse).** Under the second countable group hypotheses of Theorem 3.2, let \(C\subset G\setminus\{e\}\) be compact. If the set \(E_C\) in that theorem has positive measure, there are a positive Borel subset \(E_0\subset E_C\) and a Borel map \(h:E_0\to C\) with \(h(x)x=x\) for every \(x\in E_0\). Thus the selector used in (3.6) and Theorem 4.6 can be constructed without an arbitrary-fibre measurable-section theorem.
+
+*Proof.* The compact model and its simultaneous point realization, Measurable actions and compact models, Theorems 4.1 and 4.4, give invariant conull Borel sets \(Z\subset X\) and \(\Omega_0\subset\Omega\), and a Borel isomorphism \(\phi:Z\to\Omega_0\) with
+\[
+ \begin{aligned}
+ \phi(gx)&=g\phi(x),\\
+ &g\in G,\ x\in Z.
+ \end{aligned}
+ \tag{3.9}
+\]
+Here \(\Omega\) is compact metrizable and the action on it is continuous. This point realization requires no freeness assumption. It is independent of the crossed-product argument.
+
+For \(\omega\in\Omega\) set
+\[
+ \begin{aligned}
+ F_\omega&=\{g\in C:g\omega=\omega\},\\
+ D&=\{\omega:F_\omega\ne\varnothing\}.
+ \end{aligned}
+ \tag{3.10}
+\]
+The fixed-pair set is closed in \(C\times\Omega\). For every closed \(K\subset C\), the set of \(\omega\) with \(F_\omega\cap K\ne\varnothing\) is closed: it is the projection onto \(\Omega\) of a closed subset of the compact space \(K\times\Omega\). In particular, \(D\) is closed.
+
+Fix a compatible metric on the compact metrizable space \(C\). For each \(n\geq1\), choose a finite cover \((C_{n,j})_{1\leq j\leq m_n}\) of \(C\) by nonempty closed sets of diameter at most \(2^{-n}\), and fix a point \(c_{n,j}\in C_{n,j}\). Finite covers by intersections with sufficiently small closed metric balls have these properties.
+
+For \(\omega\in D\), recursively choose the least index \(j_n(\omega)\) such that
+\[
+ K_n(\omega)=F_\omega\cap
+       \bigcap_{r=1}^{n}C_{r,j_r(\omega)}
+       \ne\varnothing.
+ \tag{3.11}
+\]
+The choice exists: the preceding nonempty compact intersection is covered by the next finite cover. Each index function is Borel. Indeed, at a fixed finite word of preceding indices, every candidate nonemptiness test is one of the closed projection tests proved above; choosing the first successful index takes finite differences and unions of Borel sets. Induction gives the assertion at every stage.
+
+The \(K_n(\omega)\) are nested nonempty compact sets of diameter at most \(2^{-n}\). Their intersection therefore consists of one point, say \(h_0(\omega)\), and this point belongs to \(F_\omega\). The finite-valued Borel maps \(\omega\mapsto c_{n,j_n(\omega)}\) converge to \(h_0\): both their value and \(h_0(\omega)\) lie in the same diameter-\(2^{-n}\) set. Their metric limit is Borel. For example, its distances to a countable dense set in \(C\) are limits of Borel functions, and open balls from those centres generate the Borel sets. Thus \(h_0:D\to C\) is Borel. Its finite approximations need not themselves lie in \(F_\omega\); the nested nonempty intersections are what make their limit a fixing element.
+
+By exact equivariance and injectivity in (3.9), \(x\in Z\) belongs to \(E_C\) if and only if \(\phi(x)\in D\). Hence
+\[
+ E_0=\{x\in Z:\phi(x)\in D\}
+ \tag{3.12}
+\]
+is Borel and differs from \(E_C\) only inside the null complement of \(Z\). It is positive. Set \(h(x)=h_0(\phi(x))\) on \(E_0\). Then \(\phi(h(x)x)=h(x)\phi(x)=\phi(x)\); the invariance of \(Z\) and injectivity of \(\phi\) give \(h(x)x=x\). Extend \(h\) by \(e\) outside \(E_0\) when defining the operator field (3.8). This proves the required selector at precisely the scope used in the converse. \(\square\)
+
+The completed-section and Borel-version argument in Theorem 3.2 remains an alternative route. The present proof uses compact stabilizer pieces on an exact continuous point model. It asserts no Borel selector for every surjective Borel map between standard Borel spaces.
+
+![Dyadic compact cells choose the fixing time one on the first circle and converge to square root of two on the second](figures/compact-stabilizer-dyadic-choice.svg)
+
+[Open diagram at full size](figures/compact-stabilizer-dyadic-choice.svg)
+
+*Figure 3. The two circle actions in Exercise 6.12 have stabilizer pieces \(\{1,2\}\) and \(\{\sqrt2\}\) inside \(C=[1,2]\). The first successful closed dyadic cells shrink around the selected fixing time. Their chosen left endpoints are Borel finite approximations. On the second circle these rational endpoints are never stabilizer elements; their limit is \(\sqrt2\). The proof uses nonempty intersections with the true compact fibre at every stage.*
+
 
 **Theorem 3.3 (the source's group generality).** The equivalence in Theorem 3.2 also holds for a separable locally compact Hausdorff group. Thus second countability is a consequence in every nonzero case where any of its three conditions holds.
 
@@ -442,10 +495,32 @@ for almost every \(x\in F\). Integrating over \(F\) shows that \(\int_K\mu(F\cap
 
 *Solution.* The algebra is \(B(L^2(\mathbb R))\bar\otimes L^\infty([0,1])\). Choose a countable orthonormal basis \((e_n)_{n\geq0}\) of \(L^2(\mathbb R)\) and define \(Ve_n=e_{n+1}\). Then \((V\otimes1)^*(V\otimes1)=1\), whereas \((V\otimes1)(V\otimes1)^*=1-|e_0\rangle\langle e_0|\otimes1<1\). This is a proper isometry, so the algebra is not finite. Finiteness of the base probability is not invariance: the Gaussian is not translation invariant. More generally Theorem 5.3 forbids finiteness of every free crossed product by a nondiscrete group, including cases where a finite invariant base measure does exist.
 
+**Exercise 6.12 (finite approximations need not fix the point).** *Level 2.* Let the additive group \(\mathbb R\) translate the disjoint union of the circles \(\mathbb R/\mathbb Z\) and \(\mathbb R/(\sqrt2\mathbb Z)\). Give each circle half the total mass, with its normalized rotation-invariant measure. Take \(C=[1,2]\) and the finite closed covers
+\[
+ \begin{aligned}
+ I_{n,j}&=[1+j2^{-n},\,1+(j+1)2^{-n}],\\
+ &0\leq j<2^n.
+ \end{aligned}
+\]
+Apply Proposition 3.2a, choosing the left endpoint of each selected interval as its finite representative. Determine the true compact stabilizer fibre, selected cells and limiting fixing time on each component. Explain why simply using a finite representative in (3.8) would be invalid on the second circle.
+
+*Solution.* A point on the first circle has stabilizer \(\mathbb Z\), so its intersection with \(C\) is \(\{1,2\}\). The first successful interval at every level is \(I_{n,0}\). Its representative is \(1\), and its nested intersection with the fibre is \(\{1\}\); thus the selected fixing time is \(1\).
+
+A point on the second circle has stabilizer \(\sqrt2\mathbb Z\), whose intersection with \(C\) is \(\{\sqrt2\}\). Since \(\sqrt2\) is not dyadic, there is exactly one interval of the displayed cover containing it. Its index is
+\[
+ \begin{aligned}
+ j_n&=\lfloor 2^n(\sqrt2-1)\rfloor,\\
+ c_n&=1+2^{-n}j_n.
+ \end{aligned}
+\]
+These selected intervals are nested. Moreover \(c_n<\sqrt2<c_n+2^{-n}\), so \(c_n\to\sqrt2\). Each \(c_n\) is a nonzero rational number and therefore does not belong to \(\sqrt2\mathbb Z\): a nonzero integer multiple of \(\sqrt2\) is irrational. Thus no finite representative fixes a point on this component, although the limit does. The finite-valued maps are Borel because the two components are clopen. In the general proof their Borel property instead follows from the successive closed-projection tests. The commutation with orbit-position multiplication in (3.8) needs the exact identity \(h(x)x=x\); approximation alone supplies no such identity.
+
+
 ## References
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Chapter XIII: Definition 1.3, Theorem 1.5 and Corollary 1.6, printed pp. 4–6; Theorem 1.7(ii), pp. 7 and 9–10; Exercise XIII.1.5, pp. 11–12, and XIII.1.7, pp. 12–13. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). The normal-expectation contradiction in Theorem 5.3 uses the argument for Theorem 1.7(ii). The compact-neighborhood argument in Proposition 4.2 is the method of Exercise XIII.1.5. The general-group orbit-coordinate framework is developed in Exercise XIII.1.7; the main-text proof of Theorem 1.5 treats abelian groups. Sections 2–4 here give the countable separating-function, measurable stabilizer-field and simultaneous point-model arguments used for the stated group scope.
+- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Encyclopaedia of Mathematical Sciences 125, Springer, 2003, Chapter X: Lemmas 1.13–1.15, printed pp. 247–249, and Theorem 1.21, pp. 253–255. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4). Formula (37) and the standard-representation part of Theorem 1.21 supply the antiunitary and commutant identity used in (3.4)–(3.5). Their general closed Tomita-algebra construction is a modular-theory prerequisite.
+- [Anantharaman–Popa] Claire Anantharaman and Sorin Popa, *An introduction to II₁ factors*, author-hosted draft `IIunV15.pdf`, Theorem 9.1.2 and Remark 9.1.3, printed p. 140. [Read the authors’ draft](https://www.math.ucla.edu/~popa/Books/IIunV15.pdf). These give the normal faithful trace-preserving expectation in a finite tracial algebra and its orthogonal-projection characterization, the finite setting of (5.3).
 
-The standard regular crossed-product conjugation prerequisite is Takesaki, *Theory of Operator Algebras II*, Chapter X, Theorem 1.21 and its preceding dual-Hilbert-algebra construction. Its general closed Tomita correspondence and crossed-product calculation are not proved here.
+The finite-trace prerequisites are Traces on von Neumann algebras, Corollary 5.12 and Theorem 6.7. The type decomposition and type I structure are Projections and types of von Neumann algebras, Theorem 7.2, Theorem 10.3 and Corollary 10.4. The compression in (5.3) is the finite tracial specialization of the modular expectation theorem; the general modular proof is not developed in this lesson.
 
-The finite-trace and type prerequisites are [Traces on von Neumann algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html), Corollary 5.12 and Theorem 6.7, and [Projections and types of von Neumann algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), Theorems 7.2 and 10.3 and Corollary 10.4. The normal compression in (5.3) is the finite tracial specialization of the modular expectation theorem; its general proof is not given here.

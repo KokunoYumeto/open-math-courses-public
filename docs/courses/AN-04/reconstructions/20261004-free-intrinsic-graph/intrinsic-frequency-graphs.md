@@ -226,7 +226,7 @@ and angular derivatives. Induction therefore gives exactly
 remainder orders and finite-seminorm continuity. ∎
 
 In particular multiplication by a compact smooth function preserves the
-class \\(\mathcal F^{-1}(e^{-iH_e}S^r)\). This conclusion follows by
+class \(\mathcal F^{-1}(e^{-iH_e}S^r)\). This conclusion follows by
 applying G8 to \(a(x,\theta)=\chi(x)b(\theta)\); it is not an
 unproved assertion that multiplying an oscillatory distribution simply
 multiplies its frequency amplitude.

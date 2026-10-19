@@ -135,6 +135,101 @@ For completeness the countable operator tests alone also extend to every Borel c
 
 For the completed-measurable version, choose Borel versions of the countably many Hilbert frames, operator tests, conjugations and cone sections, and remove a common Borel null set containing their exceptions and any exceptions to the supplied isomorphism hypothesis. Polish-valued Borel versions exist by [SCF5](../../OA-MOD/OA-MOD-SCF.html#choose-a-witness-after-completing-the-measure)'s last step, or by the scalar coordinate version proof; countability is essential. On this conull Borel subset the Borel argument applies verbatim. Alternatively apply [SCF5](../../OA-MOD/OA-MOD-SCF.html#choose-a-witness-after-completing-the-measure) directly to the already coded (MSF9): it selects its unique canonical value in the completed measure, then gives a Borel representative almost everywhere. This alternative proves the measured assertion, not an everywhere Borel selector for arbitrary nonunique relations. The arbitrary standard Borel parameter theorem above cannot be strengthened by intersecting uncountably many parameter-dependent conull sets. \(\square\)
 
+### A direct construction from functional distances
+
+<a id="oa-flow.msf.constructive"></a>
+
+The same measurable unitary can be constructed from the countable data without the singleton-relation theorem. This gives explicit vector error bounds and works over any measurable parameter space carrying the indicated measurable fields. On a standard Borel base with Borel data, every section constructed below is Borel.
+
+Keep \(b_\ell(x)\), \(d_\ell(x)=\theta_x(b_\ell(x))\), and the norm-dense cone sections \(p_j(x)\in P_x\), \(q_k(x)\in Q_x\). Pointwise existence of the canonical unitary \(W_x\) is already [MC1](OA-FLOW-MC.md#oa-flow.mc.1); none of the following steps presupposes its measurability. For fixed \(j,k\), form the scalar function
+\[
+ D_{jk}(x)=\sup_{\ell\geq1}
+ \left|
+ \langle d_\ell(x)q_k(x),q_k(x)\rangle
+ -
+ \langle b_\ell(x)p_j(x),p_j(x)\rangle
+ \right|.
+ \tag{MSF.D1}
+\]
+Every term is measurable by the operator-section hypothesis and the measurable-field scalar-product rules. The countable supremum is measurable and finite: it is bounded by \(\|q_k(x)\|^2+\|p_j(x)\|^2\).
+
+For a fixed \(x\), put
+\[
+ f_{j,x}(c)=\langle\theta_x^{-1}(c)p_j(x),p_j(x)\rangle
+          =\langle cW_xp_j(x),W_xp_j(x)\rangle
+ \quad(c\in N_x).
+ \tag{MSF.D2}
+\]
+Conjugation by the individually existing \(W_x\) makes \(d_\ell(x)\) strong-star dense in \((N_x)_1\). The difference between the two vector functionals in (MSF.D2) and (MSF.D1) is continuous on this bounded ball: strong convergence of \(c_n\) implies convergence of each coefficient \(\langle c_n v,v\rangle\) for its fixed vector \(v\). A continuous scalar function has the same supremum on a dense subset. Consequently
+\[
+ D_{jk}(x)=\|\omega_{q_k(x)}-f_{j,x}\|
+          =\|\omega_{q_k(x)}-\omega_{W_xp_j(x)}\|.
+ \tag{MSF.D3}
+\]
+Thus (MSF.D1) computes the full functional norm from the supplied countable coefficients. No measurable inverse-isomorphism field was used.
+
+For any two vectors \(u,v\), expansion of their coefficient difference and Cauchy–Schwarz give
+\[
+ \|\omega_u-\omega_v\|
+ \leq \|u-v\|(\|u\|+\|v\|).
+ \tag{MSF.D4}
+\]
+Since \(W_xp_j(x)\in Q_x\) and \(q_k(x)\) is norm-dense in \(Q_x\), for every \(n\geq1\) there is a \(k\) with \(D_{jk}(x)<2^{-2n}\). Choose the least such index:
+\[
+ k(j,n,x)=\min\{k:D_{jk}(x)<2^{-2n}\},\qquad
+ z_{j,n}(x)=q_{k(j,n,x)}(x).
+ \tag{MSF.D5}
+\]
+For a fixed \(k\), its level set is the intersection of the measurable event \(D_{jk}<2^{-2n}\) with the finitely many events \(D_{jr}\geq2^{-2n}\), \(r<k\). Thus \(k(j,n,\cdot)\) is measurable and \(z_{j,n}\) is a countable measurable paste. The [cone square-root estimate CR6](OA-FLOW-CR.md#oa-flow.cr.6) now gives the uniform absolute error
+\[
+ \|z_{j,n}(x)-W_xp_j(x)\|^2\leq D_{j,k(j,n,x)}(x)<2^{-2n}.
+ \tag{MSF.D6}
+\]
+Its pointwise limit \(\zeta_j(x)=W_xp_j(x)\) is therefore a measurable vector section. The argument includes zero and nonfaithful cone functionals; no lower bound on their supports is required.
+
+Enumerate all finite rational-complex linear combinations of the \(p_j(x)\) as
+\[
+ a_t(x)=\sum_{j\in I_t}r_{tj}p_j(x),\qquad
+ a'_t(x)=\sum_{j\in I_t}r_{tj}\zeta_j(x).
+ \tag{MSF.D7}
+\]
+Here \(I_t\) is finite, the coefficients are fixed elements of \(\mathbb Q(i)\), and the list includes the zero combination. By [CR1](OA-FLOW-CR.md#oa-flow.cr.1), the complex span of \(P_x\) is \(H_x\). Density of the \(p_j(x)\), followed by rational approximation of the finitely many coefficients, makes the values \(a_t(x)\) dense in \(H_x\).
+
+For a measurable Hilbert-frame vector \(e_i(x)\), choose the least \(t=t(i,m,x)\) with \(\|a_t(x)-e_i(x)\|<2^{-m}\). These indices are measurable by the same level-set argument. Because \(a'_t(x)=W_xa_t(x)\) pointwise and \(W_x\) is isometric,
+\[
+ \|a'_{t(i,m,x)}(x)-W_xe_i(x)\|<2^{-m}.
+ \tag{MSF.D8}
+\]
+The left approximants are measurable pastes. Hence every \(W_xe_i(x)\) is measurable. The [DF5 operator-field and adjoint criterion](../../OA-MOD/OA-MOD-DF.html#pointwise-bounded-operator-fields-adjoints-and-exact-norm-tests) proves measurability of \(W\) and \(W^*\). Products with measurable operator sections prove both isomorphism-field conventions and all the two-sided conclusions of Theorem 5.1.
+
+One can also approximate a frame image directly by finitely many of the original \(q_k\), without first taking the limits \(\zeta_j\). After choosing \(t=t(i,m,x)\), put
+\[
+ R_t=\sum_{j\in I_t}|r_{tj}|,\qquad
+ \epsilon_{t,m}=\frac{2^{-m}}{1+R_t}.
+ \tag{MSF.D9}
+\]
+For each \(j\in I_t\), take the least \(k_j\) with \(D_{jk_j}(x)<\epsilon_{t,m}^2\), and set
+\[
+ h_{i,m}(x)=\sum_{j\in I_t}r_{tj}q_{k_j}(x).
+ \tag{MSF.D10}
+\]
+On every measurable level set of \(t\), this is a finite sum of measurable pastes; the countable union of those level sets makes it a measurable section. The empty combination gives zero. Equations (MSF.D3), (MSF.D6) and the triangle inequality yield
+\[
+ \begin{split}
+ \|h_{i,m}(x)-W_xe_i(x)\|
+ &\leq R_t\epsilon_{t,m}+\|a_t(x)-e_i(x)\|\\
+ &<2^{-m}\frac{R_t}{1+R_t}+2^{-m}
+ <2^{1-m}.
+ \end{split}
+ \tag{MSF.D11}
+\]
+All bounds are pointwise on the supplied field; no measure or countable union of almost-everywhere exceptions is needed for Borel data given everywhere. With completed-measurable data the construction gives completed-measurable fields on their supplied conull domain. Choosing Borel versions on a standard measured base remains the separate version statement proved above.
+
+The construction uses an exact countable supremum in (MSF.D1). Its error bounds do not assert that finitely many coefficient tests can decide the least-index inequalities. The earlier singleton-graph proof and this norm construction establish the same canonical field through different explicitly proved mechanisms. \(\square\)
+
+![Countable coefficient tests determine cone-vector approximations and then the canonical unitary on a Hilbert frame.](../assets/canonical-field/countable-cone-transport.svg)
+
+The diagram records (MSF.D1)–(MSF.D11). Its two error contributions are the cone-image approximation and the source-frame approximation, both in the indicated fibre Hilbert norms. [Editable construction data](../assets/canonical-field/countable-cone-transport.json) give the same formulas and proof locators.
 <a id="oa-flow.msf.composition"></a>
 
 **Corollary 5.2.** Borel isomorphism fields compose and invert in the same convention; their canonical fields compose and invert. For example \(W_{\eta_x\circ\theta_x}=W_{\eta_x}W_{\theta_x}\). The product is Borel between the correctly pulled-back fields, implements the composite and maps its cones onto each other; [MC1](OA-FLOW-MC.md#oa-flow.mc.1) uniqueness proves the displayed identity. No common factor algebra is needed. If all data, including the specified isomorphism images, are jointly Borel in a standard Borel parameter, Theorem 5.1 applies on that entire parameter space. It does not turn separate almost-everywhere measurability in each parameter into a joint strict version.
@@ -175,7 +270,130 @@ Indeed the pushforward identity gives its exact squared norm, and its inverse se
 \]
 Theorem 5.1 gives measurability in both directions and preservation of essential bounds, hence this is an onto normal star isomorphism of the whole integral algebras. Normality follows also immediately from unitary conjugation. The scalar density cancels in (MSF12), while remaining indispensable in (MSF11).
 
-Conversely, for a global normal isomorphism between such whole integral algebras, [MC1](OA-FLOW-MC.md#oa-flow.mc.1) gives its global canonical unitary. Its centre map has a measure-class Borel realization by [DC11](../../OA-MOD/OA-MOD-DC.html#change-of-base-and-the-square-root-density-in-general-uniqueness)'s scalar reconstruction of the centre isomorphism. To meet that proof's explicitly supplied coordinate models, encode each standard Borel base in the Cantor set using a countable separating family; [PB4.3](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-06) makes this injective Borel code a Borel isomorphism onto its Borel image in \([0,1]\). Undo the resulting base change. The given unitary now intertwines the two scalar diagonals and disintegrates by the existing two-field [DC10](../../OA-MOD/OA-MOD-DC.html#uniqueness-over-the-same-diagonal-structure)/[DF8](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra) proof into measurable fibre unitaries. Whole-algebra equality follows on one common conull set from the countable dense contraction fields on both sides; equality of the fibre cones follows by testing bounded dense cone sections in the two directions, localizing on a countable finite-measure exhaustion as in [DF6](../../OA-MOD/OA-MOD-DF.html#the-hilbert-direct-integral-localization-and-subsequences), and using closure. Conjugation equality follows on a countable Hilbert fundamental family with the same finite-measure and norm cutoffs. [MC1](OA-FLOW-MC.md#oa-flow.mc.1) then identifies each retained fibre unitary as canonical, and Theorem 5.1 gives exactly the usual normal-isomorphism convention. Thus a global normal isomorphism reconstructs a measure-class base map and canonical fibre isomorphisms between the two given fields. [The variable-field reconstruction theorem](../../OA-ERGODIC/reader/variable-factor-fields-and-measurable-conjugacy.html#1-reconstructing-an-isomorphism-of-variable-fields) applies this argument. A null set may depend on a subsequently specified algebra section; the whole fibre-algebra identity is established using the countable tests and does not require an uncountable union of null sets.
+### From a global isomorphism to its base map
+
+Conversely, let \(\alpha:\mathcal M\longrightarrow\mathcal N\) be a normal star isomorphism of the two whole integral algebras. Proposition 3.1 makes their given Hilbert-space representations standard forms. [MC1](OA-FLOW-MC.md#oa-flow.mc.1) therefore supplies the unique global canonical unitary \(U:H_\mu\longrightarrow K_\nu\), with
+\[
+ U aU^*=\alpha(a),\qquad UP=Q,\qquad UJ=LU.
+ \tag{MSF15}
+\]
+The whole-centre formula [DC8](../../OA-MOD/OA-MOD-DC.html#centers-and-the-factor-decomposition) identifies the two centres with their scalar diagonals. Thus \(U\) takes one diagonal onto the other. The construction in [DC11](../../OA-MOD/OA-MOD-DC.html#change-of-base-and-the-square-root-density-in-general-uniqueness) gives a measure-class Borel isomorphism \(F:X_0\longrightarrow Y_0\) of conull Borel sets such that
+\[
+ U M_f U^*=M_{f\circ F^{-1}}
+ \qquad(f\in L^\infty(X,\mu)).
+ \tag{MSF16}
+\]
+DC11 proves the required real-coordinate realization for arbitrary standard Borel bases by least-index Cauchy codes, including the Borel image and inverse. Its subsequent reconstruction of the diagonal isomorphism therefore applies to the present bases directly. Remove the null complements and use \(X,Y\) for the retained bases.
+
+### Removing the change of measure before disintegrating
+
+Set \(\rho=dF_*\mu/d\nu\), as in (MSF10), and pull the target field back to \(X\). Write
+\[
+ \widetilde K_x=K_{Fx},\quad
+ \widetilde N_x=N_{Fx},\quad
+ \widetilde L_x=L_{Fx},\quad
+ \widetilde Q_x=Q_{Fx}.
+ \tag{MSF17}
+\]
+Composing the target fundamental sections with \(F\) gives the measurable structure on this field. Define
+\[
+ \begin{split}
+ C:K_\nu&\longrightarrow
+          \int_X^\oplus\widetilde K_x\,d\mu(x),\\
+ (C\eta)(x)&=\rho(Fx)^{-1/2}\eta(Fx).
+ \end{split}
+ \tag{MSF18}
+\]
+This map is defined on every vector of \(K_\nu\), even when the displayed scalar is unbounded. Its exact domain calculation is
+\[
+ \int_X\|\rho(Fx)^{-1/2}\eta(Fx)\|^2\,d\mu(x)
+ =\int_Y\rho(y)^{-1}\|\eta(y)\|^2\,d(F_*\mu)(y)
+ =\|\eta\|_{K_\nu}^2.
+ \tag{MSF19}
+\]
+The inverse sends \(\zeta\) to \(y\mapsto\rho(y)^{1/2}\zeta(F^{-1}y)\), and the same integral identity proves that it is defined on the entire pulled-back direct integral. Thus \(C\) is onto unitary. It sends the target integral cone onto the pulled-back integral cone and intertwines the conjugations, since its scalar factor is positive and real. It also conjugates every bounded target algebra section \(c_y\) to the section \(c_{Fx}\); the two scalar factors cancel.
+
+Put \(V=CU\). Equation (MSF16) implies \(VM_f=M_fV\), now between fields over the same base and the same measure. The two-field proof of [DC10](../../OA-MOD/OA-MOD-DC.html#uniqueness-over-the-same-diagonal-structure), using [DF8](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra), gives
+\[
+ V=\int_X^\oplus W_x\,d\mu(x),\qquad
+ W_x:H_x\longrightarrow K_{Fx}\text{ unitary a.e.}
+ \tag{MSF20}
+\]
+Here both \(V^*V=1\) and \(VV^*=1\) are localized on countable Hilbert frames; the field consists of onto unitaries, not merely isometries. Solving \(U=C^{-1}V\) recovers exactly (MSF11), with \(\rho^{1/2}\) in the forward direction.
+
+### Recovering the entire fibre algebra
+
+Let \(b_j(x)\) and \(c_k(y)\) be the countable strong-star dense contraction sections in the two given algebra fields. Each \(B_j=\int^\oplus b_j\,d\mu\) belongs to \(\mathcal M\). Write \(\alpha(B_j)=\int^\oplus d_j(y)\,d\nu(y)\), with \(d_j(y)\in N_y\), using the definition of the whole target integral algebra. Conjugating by \(C\) and using (MSF20) yields equality of two bounded decomposable operators. [DF8](../../OA-MOD/OA-MOD-DF.html#the-diagonal-commutant-is-exactly-the-decomposable-algebra)'s uniqueness proof gives
+\[
+ W_xb_j(x)W_x^*=d_j(Fx)
+ \quad\text{for almost every }x.
+ \tag{MSF21}
+\]
+Apply the same argument to \(\alpha^{-1}(\int^\oplus c_k\,d\nu)\). Remove the countable union of these exceptional sets, together with the null sets needed for (MSF20). For every retained \(x\), conjugation by \(W_x\) takes all \(b_j(x)\) into \(N_{Fx}\), and conjugation by \(W_x^*\) takes all \(c_k(Fx)\) into \(M_x\). Unitary conjugation is strong-star continuous. Density on each contraction ball and strong closure of the two von Neumann algebras now prove both inclusions:
+\[
+ W_xM_xW_x^*=N_{Fx}.
+ \tag{MSF22}
+\]
+This equality is valid on one conull set for the entire fibre algebras. It is not obtained by taking an uncountable union of exceptional sets for their individual elements. Define \(\theta_x=\operatorname{Ad}W_x\) on these fibres. It is a normal star isomorphism, and the measurable operator-field product and adjoint rules make \(\theta\) and its inverse measurable in Section 4's convention.
+
+### Recovering the cones on the same conull set
+
+Let \(p_j(x)\) be norm-dense cone sections in \(P_x\), and choose a countable finite-measure exhaustion \(E_n\uparrow X\). Put \(t_j(x)=p_j(x)/(1+\|p_j(x)\|)\). Then \(1_{E_n}t_j\) is a square-integrable cone section. Since \(V=CU\) takes the source integral cone onto the pulled-back target integral cone, (MSF20) gives
+\[
+ W_xt_j(x)\in Q_{Fx}
+ \quad\text{for almost every }x\in E_n.
+ \tag{MSF23}
+\]
+The countable union in \(j,n\) removes all these exceptions at once. Multiplying back by the positive scalar \(1+\|p_j(x)\|\), then using density and closure, proves \(W_xP_x\subseteq Q_{Fx}\). Apply the same argument to \(V^*\) and the bounded radial truncations of the dense sections \(q_k(Fx)\). This proves \(W_x^*Q_{Fx}\subseteq P_x\), hence
+\[
+ W_xP_x=Q_{Fx}.
+ \tag{MSF24}
+\]
+Together with (MSF22), [MC1](OA-FLOW-MC.md#oa-flow.mc.1) identifies \(W_x\) as the canonical unitary of \(\theta_x\), and gives \(W_xJ_x=L_{Fx}W_x\). The countable null sets from the algebra and cone tests can be removed together. Theorem 5.1 consequently gives both usual measurability conventions for these specified fibre isomorphisms.
+
+For an arbitrary subsequently chosen bounded algebra section \(a_x\), integration of \(W_xa_xW_x^*\), followed by \(C^{-1}\), gives (MSF12) and therefore the original \(\alpha(a)\). The representative of that particular section may have its own null exception; this does not alter the already established whole-algebra identity (MSF22). [The variable-field reconstruction theorem](../../OA-ERGODIC/reader/variable-factor-fields-and-measurable-conjugacy.html#1-reconstructing-an-isomorphism-of-variable-fields) uses precisely this reconstruction. \(\square\)
+
+### A nonlinear base map with an unbounded density
+
+Take \(X=Y=(0,1)\), with Lebesgue probability on both sides, and \(F(x)=x^2\). On each fibre use the standard form of \(M_2(\mathbb C)\) on its Hilbert–Schmidt space: left multiplication, conjugation \(a\mapsto a^*\), and the cone of positive matrices. A substitution \(y=x^2\) gives
+\[
+ \rho(y)=\frac1{2\sqrt y},\qquad
+ \int_0^1 h(x^2)\,dx
+   =\int_0^1 h(y)\frac{dy}{2\sqrt y}
+ \tag{MSF25}
+\]
+for nonnegative measurable \(h\), first by the scalar change of variables for intervals and then by simple approximation and monotone convergence. In particular \(\rho\) is unbounded near zero, positive everywhere and integrable with integral one.
+
+Let
+\[
+ v_x=\begin{pmatrix}e^{2\pi ix}&0\\0&1\end{pmatrix},
+ \qquad \theta_x(a)=v_xav_x^*,\qquad W_x(a)=v_xav_x^*.
+ \tag{MSF26}
+\]
+The last formula denotes a unitary on the Hilbert–Schmidt space. Direct multiplication shows that it implements the left-algebra automorphism, commutes with adjoint conjugation and maps the positive-matrix cone onto itself. Thus it is the canonical unitary. Its coefficients are continuous in \(x\). Formula (MSF11) and its inverse become
+\[
+ \begin{split}
+ (U\xi)(y)&=\frac{v_{\sqrt y}\xi(\sqrt y)v_{\sqrt y}^*}
+                         {\sqrt2\,y^{1/4}},\\
+ (U^{-1}\eta)(x)&=\sqrt{2x}\,v_x^*\eta(x^2)v_x.
+ \end{split}
+ \tag{MSF27}
+\]
+Substitution in (MSF25) proves that both maps have their full \(L^2\) domains and preserve the norm. The algebra map has no density multiplier:
+\[
+ (UaU^*)_y=v_{\sqrt y}a_{\sqrt y}v_{\sqrt y}^*.
+ \tag{MSF28}
+\]
+For instance the constant algebra section \(E_{12}\) becomes \(e^{2\pi i\sqrt y}E_{12}\).
+
+For a test of the density factor, choose \(0<\varepsilon<1\) and the Hilbert–Schmidt vector section \(\xi(x)=1_{(0,\varepsilon)}(x)E_{11}\). Its squared norm is \(\varepsilon\). The correct image satisfies
+\[
+ \|U\xi\|^2
+   =\int_0^{\varepsilon^2}\frac{dy}{2\sqrt y}
+   =\varepsilon.
+ \tag{MSF29}
+\]
+Omitting the scalar factor in (MSF27) would give squared norm \(\varepsilon^2\). The error occurs even though every \(W_x\) is a fibre unitary and every \(\theta_x\) is a normal algebra isomorphism. The density compensates for the change of base measure; it is independent of the fibre isomorphism.
 
 <a id="oa-flow.msf.boundary"></a>
 ## 7. Resolved scope and genuine limits

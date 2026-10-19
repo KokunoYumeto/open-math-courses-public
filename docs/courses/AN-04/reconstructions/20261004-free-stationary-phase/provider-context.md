@@ -1,7 +1,7 @@
 # Notation for the selected prerequisite proofs
 
 These definitions make the selected proofs from Jiří Lebl's *Basic Analysis
-I–II*, version 6.3, readable together. They use the same conventions as the
+I–II*, version 6.3, readable together. They specify the conventions used with the
 [free author edition](https://www.jirka.org/ra/). The accompanying programme
 proof map identifies the complete proofs and the local completions of used
 exercises. A definition here does not assert a theorem about the object defined.
@@ -41,7 +41,7 @@ A metric \(d\) on \(X\) is nonnegative, symmetric, zero exactly for equal
 points, and satisfies the triangle inequality. The subspace metric is the
 restriction to a subset. We write
 \(B(x,r)=\{y:d(x,y)<r\}\) and \(C(x,r)=\{y:d(x,y)\leq r\}\).
-A subset is bounded if it lies in some ball of finite radius.
+A subset is bounded if some \(M\geq0\) bounds all pairwise distances. The empty set is bounded even in the empty ambient space. In a nonempty ambient space this agrees with containment in a ball of finite radius, as proved in [P6.7](elementary-proof-completions.html#proof-L7.4.9).
 In \(\mathbb R^n\) the Euclidean scalar product is
 \(x\cdot y=\sum_jx_jy_j\), the norm is \(|x|=\sqrt{x\cdot x}\),
 and the distance is \(|x-y|\).

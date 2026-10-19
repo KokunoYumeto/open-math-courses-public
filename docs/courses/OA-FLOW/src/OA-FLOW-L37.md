@@ -162,6 +162,124 @@ The marker lemma supplies the exact finite exhaustion. Apply the fully proved [f
 \]
 Its construction preserves each old arrow's discrepancy exactly when enlarging a finite stage; only the corrections on units converge. Hence \(\ell\) takes values in \(H\), even when \(H\) is nonclosed. Neither ergodicity nor a uniform bound on finite class sizes is required by that proof.
 
+
+**Constructing the return correction.** Here are the finite-stage maps behind
+(F14). This also specifies where membership in \(H\), rather than merely in
+\(K=\overline H\), enters the argument. Write the marker exhaustion as
+\(R_0\subseteq R_1\subseteq\cdots\), with \(R_0\) the diagonal and union \(R_S\).
+Choose an injective Borel code \(\beta:Z\to[0,1]\). In each finite
+\(R_n\)-class let \(t_n(x)\) be the point with least code, and put
+\(S_n=\{x:t_n(x)=x\}\). These maps are Borel: the countable-section theorem
+enumerates the class by Borel partial maps, and being its least coded point
+is a countable collection of Borel comparisons. Finiteness ensures that the
+least value is attained. Moreover \(S_{n+1}\subseteq S_n\).
+
+Fix a complete compatible metric \(d\) on \(P\); no invariance of this
+metric under multiplication is required. Start with \(g_0=1\). At stage
+\(n\), define the cocycle and its discrepancy on the whole return relation by
+\[
+ A_n(y,x)=g_n(y)c_1(y,x)g_n(x)^{-1},\qquad
+ D_n(y,x)=c_2(y,x)A_n(y,x)^{-1}.
+ \tag{F14a}
+\]
+We maintain \(g_n:Z\to K\), \(g_n|_{S_n}=1\), and \(D_n|_{R_n}\in H\).
+All three conditions hold at \(n=0\).
+
+Set \(\eta_n=2^{-n-1}\). For each old root \(t\in S_n\), choose
+a positive Borel radius \(\varepsilon_n(t)\) such that
+\[
+ d\bigl(g_n(x)c_1(x,t)v c_1(t,x),g_n(x)\bigr)<\eta_n
+ \quad(x\,R_n\,t,\ d(v,1)<\varepsilon_n(t)).
+ \tag{F14b}
+\]
+Continuity gives such a radius simultaneously for the finitely many \(x\)
+in that class. Its choice can be made Borel without taking an uncountable
+supremum. Fix a countable dense set \((p_j)\) in \(P\), test the radii
+\(2^{-k}\), and require the displayed distances to be at most \(\eta_n/2\)
+for every enumerated class point and every \(p_j\) in the open ball.
+These are countably many Borel tests. A sufficiently small radius passes.
+Density and continuity then give a bound of \(\eta_n/2<\eta_n\) throughout
+that open ball. Take the first passing radius.
+
+For \(t\in S_n\), write \(r(t)=t_{n+1}(t)\). Since the least point of a
+new class is also least in its old class, \(r(t)\in S_{n+1}\).
+Choose a countable sequence \((b_j)\) in \(H\) dense in \(K\), including \(1\).
+Such a sequence is obtained by choosing a point of \(H\) in each nonempty
+member of a countable base of \(K\). Put
+\[
+ e(t)=c_2(t,r(t))c_1(t,r(t))^{-1}\in K,\qquad
+ w_n(t)=b(t)^{-1}e(t),
+ \tag{F14c}
+\]
+where \(b(t)\) is the first \(b_j\) making
+\(d(b_j^{-1}e(t),1)<\varepsilon_n(t)\). Density and continuity guarantee
+a choice, and its first-index rule is Borel. At \(t\in S_{n+1}\), prescribe
+\(b(t)=1\), so \(w_n(t)=1\). For old roots \(t,t'\) in the same new class,
+their common \(r\) and the cocycle identities give
+\[
+ c_2(t',t)
+ =b(t')w_n(t')c_1(t',t)w_n(t)^{-1}b(t)^{-1}.
+ \tag{F14d}
+\]
+Thus the discrepancy from the cocycle corrected by \(w_n\) is in \(H\):
+it is \(b(t')\) times a conjugate of \(b(t)^{-1}\).
+
+Extend this correction from old roots to every point by
+\[
+ g_{n+1}(x)=
+ g_n(x)c_1(x,t_n(x))w_n(t_n(x))c_1(t_n(x),x).
+ \tag{F14e}
+\]
+Normality of \(K\) makes this \(K\)-valued. It is Borel, is one on
+\(S_{n+1}\), and (F14b) gives \(d(g_{n+1}(x),g_n(x))<\eta_n\).
+For an old pair \(y\,R_n\,x\), put \(t=t_n(y)=t_n(x)\).
+Substitution, with every factor kept in order, gives
+\[
+ \begin{aligned}
+ A_{n+1}(y,x)
+ &=g_n(y)c_1(y,t)w_n(t)
+   \bigl[c_1(t,y)c_1(y,x)c_1(x,t)\bigr]
+   w_n(t)^{-1}c_1(t,x)g_n(x)^{-1}\\
+ &=g_n(y)c_1(y,x)g_n(x)^{-1}=A_n(y,x).
+ \end{aligned}
+ \tag{F14f}
+\]
+The bracket is \(1\). Consequently \(D_{n+1}=D_n\) on \(R_n\) exactly.
+
+On pairs of old roots, (F14e) is just \(g_{n+1}=w_n\), so (F14d)
+puts the new discrepancy in \(H\). Any pair in \(R_{n+1}\) factors through
+its two old roots. The outer arrows lie in \(R_n\), and the middle arrow
+is a pair of roots. For any composable return arrows \(\gamma,\delta\),
+multiplication of \(c_2=D_{n+1}A_{n+1}\) gives
+\[
+ D_{n+1}(\gamma\delta)
+ =D_{n+1}(\gamma)\,
+   A_{n+1}(\gamma)D_{n+1}(\delta)A_{n+1}(\gamma)^{-1}.
+ \tag{F14g}
+\]
+Normality of \(H\) therefore proves \(D_{n+1}|_{R_{n+1}}\in H\).
+This completes the induction.
+
+The summable bounds \(\eta_n\) make \((g_n(x))\) Cauchy at every \(x\).
+Let \(g(x)=\lim_n g_n(x)\); completeness and closedness of \(K\) give
+\(g(x)\in K\). The limit is Borel. Indeed, for every nonempty closed
+\(C\subseteq P\), its inverse image is the Borel set
+\[
+ \{x:g(x)\in C\}
+ =\bigcap_{k\ge1}\ \bigcup_{N\ge0}\ \bigcap_{n\ge N}
+       \{x:d(g_n(x),C)<1/k\}.
+ \tag{F14h}
+\]
+The empty closed set has empty inverse image.
+
+For an arrow \((y,x)\), take the first \(n\) with \((y,x)\in R_n\)
+and set \(\ell(y,x)=D_n(y,x)\). The first-stage sets are Borel, and
+(F14f) makes every later value identical. Hence \(\ell\) is Borel and
+\(H\)-valued. Passing to the limit in
+\(c_2(y,x)=D_m(y,x)g_m(y)c_1(y,x)g_m(x)^{-1}\), for \(m\ge n\),
+proves (F14). The argument takes a limit only in the closed group \(K\);
+the value in \(H\) was already fixed at a finite stage.
+
 Put, for \(x=(z,u)\) and \(F_tx=(y,v)\),
 \[
  \begin{aligned}

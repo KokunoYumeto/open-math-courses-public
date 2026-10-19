@@ -1,6 +1,6 @@
 # Ultraproduct expectations and semi-lift ambiguity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 The [multiplier construction](multiplier-ultraproducts-and-normal-embeddings.md) gives a von Neumann algebra \(M^\omega=N_\omega/I_\omega\) with a normal constant copy of \(M\). Taking the ultraweak limit of a representative recovers an element of \(M\). We construct this map, prove its normality directly, and use it to distinguish the information in a convergent automorphism family from the information in its limit.
 
@@ -280,6 +280,6 @@ For a factor and a centralizing \(x\), its right side has the scalar factorizati
 
 ## References
 
-Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Section 5.1, printed pp.49–50 (PDF pp.63–64), constructs the canonical normal expectation and its center-valued tracial restriction. Section 5.2, printed pp.50–52 (PDF pp.64–66), constructs actions from convergent automorphism families. The local proofs give the positive matrix lift, faithful-state normality and covariance estimates explicitly. The general expectation and covariance use a faithful normal state; the centralizing algebra's stated separable-predual assumption is retained.
+Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Section 5.1, printed pp.49–50 (PDF pp.63–64), defines the ultraweak-limit map and states the center-valued trace properties. Section 5.2, printed pp.50–52 (PDF pp.64–66), constructs actions from chosen convergent automorphism families. The direct proofs here supply the positive matrix lifts, faithfulness, normal-state supremum argument and full normal-functional continuity. A given faithful normal state suffices for the expectation and covariance; separable predual is retained for the centralizing algebra.
 
-The two Pauli tensor-tail obstructions are proved here directly. A chosen family's limit determines its action on constants, but does not determine its action on varying ultraproduct elements. Ocneanu's fast reindexing lemma in Section 5.3, printed pp.53–54 (PDF pp.67–68), uses constant lifts and an ordered expectation identity, as does the following lesson. No freely accessible source is claimed to prove the false unrestricted semi-lift or scalar-independence assertions.
+The Pauli tensor tails give distinct semi-lifts with the same constant restriction and obstruct unrestricted semi-lift equivariance with relative commutation. Constant trace-zero unitaries separately obstruct unqualified scalar factorization. Ocneanu's Fast Reindexation Trick, Section 5.3, printed pp.53–54 (PDF pp.67–68), uses constant lifts and an ordered expectation identity. These hypotheses govern the following lesson. Human-source rights remain separate from the course dedication.

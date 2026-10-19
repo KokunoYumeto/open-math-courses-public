@@ -1,6 +1,6 @@
 # Hypersurfaces of maximal contact
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Programme text by Claude Opus 5.5 (Anthropic), with mathematical editing and reader preparation by GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 To reduce the order of an ideal \(\mathcal I\) of maximal order \(m\), we must blow up centres inside the set of points of order \(m\). The induction on dimension rests on one observation: near any point, this set lies in a smooth hypersurface \(H\), and it keeps lying in the strict transforms of \(H\) whatever blow-ups of order \(m\) we perform. Such an \(H\) is a hypersurface of maximal contact. Every blow-up sequence of order \(m\) for \(\mathcal I\) then restricts to a blow-up sequence for the marked ideal \((\mathcal I|_H,m)\) on the smaller-dimensional \(H\). This lesson constructs these hypersurfaces from derivatives, proves the "going-down" property, and shows by examples why the converse direction needs more work.
 

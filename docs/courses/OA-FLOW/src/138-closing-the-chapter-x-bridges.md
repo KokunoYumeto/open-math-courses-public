@@ -4,11 +4,11 @@
 
 Let \(A\) be an arbitrary C\* algebra, \(G\) an arbitrary locally compact Hausdorff group, and \(\alpha:G\to\operatorname{Aut}(A)\) a point-norm continuous action. The duality statements below assume that \(G\) is abelian. They require no unit in \(A\), separability of \(A\) or a Hilbert space, second countability, or sigma compactness. Inner products are linear in the first variable. Full crossed products and their nondegenerate covariant representations use L25's convention \(\pi(F(s))U_s\) in the integrated form.
 
-The earlier operator inputs are the complete [CF](OA-FLOW-CF.md#oa-flow.cf.1), [SC](OA-FLOW-SC.md#sc-00), [GNS](OA-FLOW-GNS.md#gns-theorem-7-3), [L24](OA-FLOW-L24.md#oa-flow.grp.completions), [L25](OA-FLOW-L25.md#oa-flow.ccov.completions) proofs. The companion [Fourier completions, compact tests and the returned measure](OA-FLOW-TOPOLOGY.md#l138-h0) supplies [H0](OA-FLOW-TOPOLOGY.md#l138-h0)–[H4](OA-FLOW-HARMONIC-LATE.md#l138-h4): compact cutoffs and finite partitions, \(C^*(G)=C_0(\widehat G)\), equality with the reduced group norm, topological biduality, and exact Haar return. Its Haar/Radon inputs now use the complete earlier HR proof cone. The scalar Plancherel premise is now the complete earlier [onto Fourier unitary proof](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3), with [its dual Haar normalization](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p2) and [its exact inverse-integral domain](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p4). The proof below is complete at those specified inputs and does not treat an external source citation as their proof.
+The earlier operator inputs are the complete [CF](OA-FLOW-CF.md#oa-flow.cf.1), [SC](OA-FLOW-SC.md#sc-00), [GNS](OA-FLOW-GNS.md#gns-theorem-7-3), [L24](OA-FLOW-L24.md#oa-flow.grp.completions), [L25](OA-FLOW-L25.md#oa-flow.ccov.completions) proofs. The earlier [topology and harmonic lessons](OA-FLOW-TOPOLOGY.md#l138-h0) supply [H0](OA-FLOW-TOPOLOGY.md#l138-h0)–[H4](OA-FLOW-HARMONIC-LATE.md#l138-h4): compact cutoffs and finite partitions, \(C^*(G)=C_0(\widehat G)\), equality with the reduced group norm, topological biduality, and exact Haar return. Their Haar and Radon measure arguments are proved in the earlier HR lessons. The scalar Plancherel input is the earlier [onto Fourier unitary proof](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p3), with [its dual Haar normalization](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p2) and [its exact inverse-integral domain](OA-FLOW-PLANCHEREL.md#scalar-plancherel-p4). The proof below is complete at those specified inputs and does not treat an external source citation as their proof.
 
 <a id="oa-flow.xgaps.cstar.harmonic"></a><a id="OA-FLOW.XGAPS.CSTAR.HARMONIC"></a>
 
-The historical harmonic prerequisites now have their actual earlier reader: [H0–H5](OA-FLOW-HARMONIC-LATE.md#oa-flow.xgaps.cstar.harmonic).
+The [H0–H5 overview](OA-FLOW-HARMONIC-LATE.md#oa-flow.xgaps.cstar.harmonic) collects the harmonic prerequisites and their proof locators.
 
 <a id="l138-weyl"></a>
 
@@ -345,6 +345,47 @@ The illustration shows the selected column, translated row and the coefficient c
 The upper row gives the exact order-three matrices from (FC1)–(FC3). The lower row is the exact shear on \((\mathbb Z/3\mathbb Z)^2\): simultaneous basis translation increments \(x,t\) by one and fixes \(q=x-t\). The complete proof retains arbitrary LCA groups. Reproduction source: render_figures.py; [editable SVG](../assets/l138-reconstruction/figures/finite-clock-and-shear.svg).
 
 For \(n=2\), let \(A=\mathbb C^2\) and let \(\alpha_1\) interchange its two coordinates. The first crossing is \(M_2(\mathbb C)\): represent \((a,b)\) by \(\operatorname{diag}(a,b)\) and the group generator by the flip matrix. The four elements \(p_0,p_1,p_0S_1,p_1S_1\) give the four matrix units. They span the four-dimensional coefficient algebra and are linearly independent in this representation. Its operator norm bounds each matrix entry, while the universal norm is bounded by the sum of the coefficient norms, so the finite-dimensional completion adds no elements. The represented algebra is therefore exactly \(M_2(\mathbb C)\). Its second crossing is \(M_2(\mathbb C^2)\cong M_2(\mathbb C)\oplus M_2(\mathbb C)\), by (55) and the coordinatewise matrix identification.
+
+<a id="l138-discrete"></a>
+
+## Every discrete abelian group has the same matrix-unit description
+
+The finite matrix construction extends to a discrete abelian group \(G\) of any cardinality. Use counting Haar measure on \(G\). Then \(\Gamma=\widehat G\) is compact: the convolution unit \(\delta_0\) is the unit of \(C^*(G)\), and [H1](OA-FLOW-HARMONIC.md#l138-h1) identifies its character space with \(\Gamma\). Its Plancherel Haar measure has total mass one, since \(\widehat{\delta_0}=1\) and \(\|\delta_0\|_2=1\).
+
+The coefficient model and multipliers are those in (56). For \(u\in G\), let \(g_u(\chi)=\chi(u)\). This is in \(C_c(\Gamma)\), and its integrated multiplier is
+\[
+ p_u=Q(g_u)=\int_\Gamma\chi(u)Q_\chi\,d\widehat m(\chi),
+ \qquad p_u\delta_t=1_{\{u\}}(t)\delta_t.
+ \tag{UC1}
+\]
+The integral has the vector meaning of [L24's integration theorem](OA-FLOW-L24.md#oa-flow.grp.integration). To check its value, the coefficient on \(\delta_t\) is the integral of \(\chi(u-t)\). It is one if \(u=t\). Otherwise [H3](OA-FLOW-HARMONIC-LATE.md#l138-h3) supplies a character \(\chi_0\) with \(\chi_0(u-t)\ne1\). Haar translation by \(\chi_0\) multiplies that integral by this scalar different from one, forcing it to be zero. Equality on all basis vectors gives equality of the bounded operators by density of finite-support vectors; no countable basis is assumed.
+
+Put \(E_{ru}=|\delta_r\rangle\langle\delta_u|\). Counting measure makes \(\Lambda(\delta_s)=\Lambda_s\), and
+\[
+ \Lambda_{r-u}p_u=E_{ru},\qquad
+ A_{\alpha_r(b)}\Lambda_{r-u}p_u
+       =\sigma(b)\otimes E_{ru}\quad(b\in A).
+ \tag{UC2}
+\]
+At the sole nonzero row \(r\), the coefficient is
+\(\sigma(\alpha_{-r}(\alpha_r(b)))=\sigma(b)\).
+The left side is an actual element of \(D\): it is the integrated product (56a) with first group function \(\delta_{r-u}\) and second group function \(g_u\). This argument does not require \(A\) to have an identity. In particular it does not infer membership merely from a product of arbitrary multipliers.
+
+Conversely, (56a) is a norm-dense span of products \(A_a\Lambda(f)Q(g)\). Here \(f\in C_c(G)\) has finite support, and \(Q(g)=M_h\) with \(h\in C_0(G)\), by H1 on \(\Gamma\) and H3. For every \(\varepsilon>0\), the set \(\{u:|h(u)|\ge\varepsilon\}\) is compact in the discrete space and hence finite. Thus finite truncations \(h_F=h1_F\) converge uniformly to \(h\), directed by finite subsets \(F\subset G\), and
+\[
+ \|A_a\Lambda(f)(M_h-M_{h_F})\|
+       \le\|a\|\,\|f\|_1\,\|h-h_F\|_\infty.
+ \tag{UC3}
+\]
+Each truncated product is a finite sum of entries in (UC2), since
+\(\Lambda_sM_{h_F}=\sum_{u\in F}h(u)E_{u+s,u}\).
+Consequently \(D\) is precisely the norm closure of the finite \(A\)-valued matrices indexed by \(G\). Section 6's finite-corner norm proof identifies this closure with
+\(A\otimes_{\min}\mathcal K(\ell^2(G))\).
+This supplies a direct discrete proof of (55), including uncountable \(G\), without a sequence of finite subsets exhausting the group.
+
+The difference between norm and strong closure is visible even when \(A=\mathbb C\) and its action is trivial. If \(G\) is infinite, the identity on \(\ell^2(G)\) is not compact: every finite-rank operator \(T\) has a unit vector in its kernel, so \(\|1-T\|\ge1\), and norm approximation transfers this obstruction to compact operators. On the other hand, the finite-coordinate projections \(P_F=\sum_{u\in F}p_u\) converge strongly to \(1\). Indeed every \(\ell^2\) vector is approximated in norm by a finite-support vector, and the projections are contractions. For every bounded operator \(T\), the finite-rank operators \(P_FTP_F\) converge strongly to \(T\), because
+\(\|P_FTP_F\xi-T\xi\|\le\|T\|\,\|P_F\xi-\xi\|+\|P_FT\xi-T\xi\|\).
+Thus the strong closure is \(B(\ell^2(G))\), while the crossed-product norm closure in this example is \(\mathcal K(\ell^2(G))\).
 
 <a id="l138-exercises"></a>
 

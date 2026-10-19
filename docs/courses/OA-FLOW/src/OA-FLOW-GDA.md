@@ -911,3 +911,396 @@ The equality covers every positive operator, not only finite Fourier sums or dia
 
 This is the discrete normalization relevant to Takesaki, [*Theory of Operator Algebras II*](https://doi.org/10.1007/978-3-662-10451-4), Chapter X.1, Exercise3. Counting measure gives \(c=1\); an unnormalized discrete Haar measure retains the factor in (GDA13.j).
 
+
+<a id="gda-paired-coefficients"></a>
+
+## GDA14. Paired coefficients and finite normal sandwiches
+
+Write \(P=\pi(M)\subset R=M\rtimes_\alpha G\), and let \(T:R_+\to\widehat P_+\) be the canonical operator-valued weight constructed in GDA4–6. All groups retain the locally compact Hausdorff hypotheses of GDW, without a countability assumption. The compact coefficient algebra \(\mathscr K\), its integrated operators \(L_x\), and its involution \(x^\#\) use the conventions of [GDW1](OA-FLOW-GDW.md#gdw-1).
+
+The square formula determines an ordered pairing on the actual finite linear domain:
+\[
+ L_x^*L_y\in m_T,\qquad
+ T_0(L_x^*L_y)=
+ \pi\left(\int_G x(t)^*y(t)\,dt\right)
+ \quad(x,y\in\mathscr K).
+ \tag{GDA14.a}
+\]
+Here \(T_0\) is the unique linear extension on \(m_T\) proved in [EP6](OA-FLOW-EP.md#ep-6). Indeed, GDA6 puts \(L_x,L_y\) in \(N_T\), and
+\[
+ A^*B=\frac14\sum_{k=0}^3 i^{-k}
+       (A+i^kB)^*(A+i^kB).
+ \tag{GDA14.b}
+\]
+Apply this identity to \(A=L_x,B=L_y\), use the square formula on each term, and use the same identity inside the bounded weak operator integral. This proves (GDA14.a) with the order \(x^*y\). It requires neither a bounded extension of \(T\) to all of \(R\) nor pointwise finiteness for a scalar coefficient weight.
+
+The pairing has a concrete Hilbert-space meaning. For a faithful normal representation \(\rho:M\to B(H)\), define
+\[
+ V_x:H\longrightarrow L^2(G,H),\qquad
+ (V_x\xi)(t)=\rho(x(t))\xi .
+\]
+The continuous compactly supported vector field is square integrable. Its norm identity, first tested on vectors and then polarized, gives
+\[
+ V_x^*V_y=\rho\left(\int_G x(t)^*y(t)\,dt\right).
+ \tag{GDA14.c}
+\]
+In particular, for finitely many \(x_1,\ldots,x_n\), the matrix
+\(\bigl[\int x_i^*x_j\bigr]_{i,j}\) is positive in \(M_n(M)\): its represented quadratic form at \((\xi_1,\ldots,\xi_n)\) is
+\(\int\|\sum_j\rho(x_j(t))\xi_j\|^2dt\).
+The representation is faithful, so this proves positivity in the coefficient algebra itself. The operator inequality
+\(\|V_x^*V_y\|\le\|V_x\|\|V_y\|\) also gives
+\[
+ \left\|\int x^*y\right\|^2
+ \le \left\|\int x^*x\right\|
+       \left\|\int y^*y\right\|.
+ \tag{GDA14.d}
+\]
+
+There is a second use of polarization in comparing scalar weights. Put
+\(\Phi=\widehat\varphi\), where \(\varphi\) is faithful normal semifinite on \(M\). Suppose \(\Psi\) is another faithful normal semifinite weight on \(R\) satisfying
+\[
+ \Psi(L_f^*L_f)=\Phi(L_f^*L_f)<\infty
+       \qquad(f\in\mathscr B_\varphi).
+ \tag{GDA14.e}
+\]
+For \(a=L_f\), both expressions
+\[
+ \omega_{\Psi,a}(X)=\Psi_0(a^*Xa),\qquad
+ \omega_{\Phi,a}(X)=\Phi_0(a^*Xa)
+ \tag{GDA14.f}
+\]
+are bounded normal positive functionals on the entire algebra \(R\). For example, the first is
+\(\langle\pi_\Psi(X)\Lambda_\Psi(a),\Lambda_\Psi(a)\rangle\);
+its norm is \(\Psi(a^*a)\). The expression is defined because
+\(a,Xa\in\mathfrak n_\Psi\), hence \(a^*Xa\in\mathfrak m_\Psi\).
+The same reasoning applies to \(\Phi\).
+
+The two functionals in (GDA14.f) agree everywhere. To see this without applying continuity to an unbounded weight, fix \(k\in\mathscr K\). The left-ideal statement in GDW1 gives
+\(L_ka=L_{k*f}\in L(\mathscr B_\varphi)\).
+Polarizing (GDA14.e) on the linear space \(L(\mathscr B_\varphi)\) therefore gives
+\[
+ \Psi_0(a^*L_ka)=\Phi_0(a^*L_ka).
+\]
+They agree at \(1\) as well. The compact integrated algebra is ultraweakly dense by GDW2, so normality of these two bounded functionals proves
+\[
+ \boxed{\ \Psi_0(a^*Xa)=\Phi_0(a^*Xa)
+          \quad(X\in R,\ a\in L(\mathscr B_\varphi)).\ }
+ \tag{GDA14.g}
+\]
+
+Finite normal sandwiches also give a bounded-resolvent proof of uniqueness when
+\(\sigma^\Psi=\sigma^\Phi\). Use only the central-density construction of
+[GDA7](#gda-7): there is a nonsingular positive central affiliated operator \(h\)
+such that
+\[
+ \Psi(b)=\sup_n\Phi(h_n^{1/2}bh_n^{1/2}),\qquad
+ h_n=\min(h,n),\qquad b\in R_+.
+\]
+Set \(c=(1+h)^{-1}\), a central positive contraction. The following four
+operators are bounded and positive:
+\[
+ X_0=c^2,\qquad Y_0=c(1-c),\qquad
+ X_1=c(1-c),\qquad Y_1=(1-c)^2.
+ \tag{GDA14.h1}
+\]
+The scalar identities
+\[
+ t(1+t)^{-2}=(1+t)^{-1}\bigl(1-(1+t)^{-1}\bigr),
+ \qquad
+ t^2(1+t)^{-2}=\bigl(1-(1+t)^{-1}\bigr)^2
+\]
+show that \(h_nX_j\uparrow Y_j\) for \(j=0,1\). This is an identity
+of bounded spectral functions followed by an increasing limit; no
+product with an undefined unbounded-operator domain is used.
+
+Fix \(a\in L(\mathscr B_\varphi)\). Centrality, the density formula and
+normality of \(\Phi\) give
+\[
+ \begin{aligned}
+ \Psi(a^*X_j a)
+ &=\sup_n\Phi(a^*h_nX_j a)\\
+ &=\Phi(a^*Y_j a)\qquad(j=0,1).
+ \end{aligned}
+ \tag{GDA14.h2}
+\]
+All these values are finite: \(0\le X_j,Y_j\le1\), and \(a\) lies in
+both finite GNS ideals by (GDA14.e). The bounded sandwich identity
+(GDA14.g), applied separately to \(X_0\) and \(X_1\), therefore yields
+\[
+ \Phi(a^*c^2a)=\Phi(a^*c(1-c)a)
+             =\Phi(a^*(1-c)^2a).
+ \tag{GDA14.h3}
+\]
+Apply the *bounded linear functional* \(\omega_{\Phi,a}\) to
+\[
+ (1-2c)^2=c^2-2c(1-c)+(1-c)^2.
+\]
+The finite equalities above give the positive-square identity
+\[
+ \boxed{\ \Phi\bigl(a^*(1-2c)^2a\bigr)=0
+          \qquad(a\in L(\mathscr B_\varphi)).\ }
+ \tag{GDA14.h}
+\]
+Faithfulness implies \((1-2c)a=0\). The space
+\(L(\mathscr B_\varphi)\) contains the ultraweakly dense algebra
+\(L(\mathscr D_\varphi)\) of GDW2. Multiplication by the fixed bounded
+operator \(1-2c\) is ultraweakly continuous, so \(1-2c=0\).
+
+Consequently \(c=\tfrac12\,1\). The full spectral inverse has
+\(D(h)=\operatorname{ran}c\) and \(h=c^{-1}-1\) there. Thus \(D(h)\)
+is the entire representation space and \(h=1\). The density formula
+proves \(\Psi=\Phi\) on all of \(R_+\), including infinite values.
+In particular both central projections
+\(1_{[1+\varepsilon,\infty)}(h)\) and
+\(1_{(0,1-\varepsilon]}(h)\) vanish for every \(0<\varepsilon<1\).
+Only bounded normal functionals were linearly combined; no
+continuity of an unbounded weight on an ultraweakly dense set was used.
+
+<a id="gda-column-domains"></a>
+
+## GDA15. Balanced coefficient columns and full finite domains
+
+Let \(\varphi_1,\ldots,\varphi_k\) be faithful normal semifinite weights on \(M\), where \(1\le k<\infty\), and set
+\[
+ \chi(A)=\sum_{j=1}^k\varphi_j(A_{jj})
+ \quad(A\in M_k(M)_+),\qquad
+ \beta=\alpha\otimes\mathrm{id}_{M_k}.
+\]
+The normal crossed-product identification of GDA12 extends to this finite matrix size by the same coordinate unitary:
+\[
+ M_k(M)\rtimes_\beta G\ \cong\ M_k(R).
+ \tag{GDA15.a}
+\]
+It sends the coefficient embedding to the entrywise embedding and sends each group unitary to the scalar diagonal matrix with that group unitary in every diagonal position. These statements follow by applying the defining regular operators to each of the \(k\) coordinates.
+
+Write \(\mathscr B_j=\mathscr B_{\varphi_j}\) and
+\(\mathscr D_j=\mathscr B_j\cap\mathscr B_j^\#\).
+The exact compact coefficient domains for the balanced weight are
+\[
+ \begin{aligned}
+ \mathscr K_\beta&=M_k(\mathscr K_\alpha),\\
+ \mathscr B_\chi
+   &=\{F=(F_{ij}): F_{ij}\in\mathscr B_j\},\\
+ \mathscr D_\chi
+   &=\{F: F_{ij}\in\mathscr B_j,\
+                 F_{ij}^{\#}\in\mathscr B_i\text{ for every }i,j\}.
+ \end{aligned}
+ \tag{GDA15.b}
+\]
+In particular, the input weight is indexed by the **column**.
+
+Here are the domain proofs. A finite matrix-valued function is strongly* continuous exactly when its entries are; finitely many compact supports have a compact union, and finite matrix norm bounds control the operator norm. Hence the first equality holds. Matrix convolution multiplies the entries in their stated order, and
+\((F^\#)_{ij}=(F_{ji})^\#\).
+
+By [BC1](OA-FLOW-BC.md#bc-1), a matrix \(A=(a_{ij})\) belongs to \(\mathfrak n_\chi\) exactly when \(a_{ij}\in\mathfrak n_{\varphi_j}\). Expand an elementary coefficient \(ZA\), with \(Z\in M_k(\mathscr K)\) and \(A\in\mathfrak n_\chi\):
+\[
+ (ZA)_{ij}(t)=\sum_{\ell=1}^k Z_{i\ell}(t)a_{\ell j}.
+\]
+Every term is in \(\mathscr B_j\). Conversely, each elementary term \(z(t)a\) in an \((i,j)\)-entry, with \(a\in\mathfrak n_{\varphi_j}\), factors as
+\((zE_{ij})(aE_{jj})\); the second factor belongs to \(\mathfrak n_\chi\). Finite sums prove the second equality of (GDA15.b). Apply the entrywise transpose-involution to obtain the third. This reasoning uses right factors in the specified scalar finite ideals; it does not assert that \(\mathscr B_j\) is a right \(M\)-module.
+
+The coefficient GNS map has the exact norm identity
+\[
+ \|\eta_\chi(F)\|^2
+   =\sum_{i,j=1}^k
+       \|\eta_{\varphi_j}(F_{ij})\|_{L^2(G,H_{\varphi_j})}^2
+ \quad(F\in\mathscr B_\chi).
+ \tag{GDA15.c}
+\]
+Indeed, BC1 identifies
+\(H_\chi=\bigoplus_{i,j}H_{\varphi_j}\) and
+\(\Lambda_\chi(A)=(\Lambda_{\varphi_j}(a_{ij}))_{i,j}\).
+Applying this at each group coordinate and integrating the finite sum proves (GDA15.c), including the order of its summands.
+
+The full balanced dual weight is
+\[
+ \widehat\chi(X)=
+      \sum_{j=1}^k\widehat{\varphi_j}(X_{jj}),
+       \qquad X\in M_k(R)_+.
+ \tag{GDA15.d}
+\]
+To verify that this is a whole-cone identity, use the directed bounded completely positive Schur maps \(E_p\) of GDA4. At matrix size \(k\), their formulas on integrated coefficients are precisely \(E_p\otimes\mathrm{id}_{M_k}\); normality extends this equality to the whole matrix algebra. Compression to the \(j\)-th coordinate gives \(E_p(X_{jj})\). Taking the directed supremum defines the amplified extended-positive value and commutes with this compression, since both are tested by the same normal positive functionals. Evaluation by \(\chi\) is the sum of the \(k\) diagonal evaluations, by the extended-cone construction of EP3–5 and the formula for \(\chi\) on bounded positive matrices. Finite sums commute with a common directed supremum: the upper bound is immediate, and any finitely many indices have a common larger index. Now compose with the scalar weights using GDA8. This proves (GDA15.d) even when one or more summands are infinite.
+
+Let \(n_j=\mathfrak n_{\widehat{\varphi_j}}\). Applying the balanced finite-domain theorem BC1 to (GDA15.d) gives
+\[
+ \begin{aligned}
+ \mathfrak n_{\widehat\chi}
+   &=\{A=(a_{ij})\in M_k(R):a_{ij}\in n_j\},\\
+ \mathfrak n_{\widehat\chi}\cap\mathfrak n_{\widehat\chi}^{\,*}
+   &=\{A:a_{ij}\in n_j\cap n_i^*\},\\
+ \mathfrak m_{\widehat\chi}
+   &=\{A:a_{ij}\in\operatorname{span}(n_i^*n_j)\}.
+ \end{aligned}
+ \tag{GDA15.e}
+\]
+For the last equality, an entry of \(B^*C\) is a finite sum
+\(\sum_\ell b_{\ell i}^*c_{\ell j}\). Conversely each product \(b^*c\) in the \((i,j)\)-entry is obtained from matrices supported in positions \((1,i)\) and \((1,j)\), respectively. This proves both inclusions and the claimed whole finite linear domain.
+
+The full GNS space is therefore
+\(\bigoplus_{i,j}L^2(G,H_{\varphi_j})\), with
+\[
+ \Lambda_{\widehat\chi}(A)
+   =(\Lambda_{\widehat{\varphi_j}}(a_{ij}))_{i,j}.
+ \tag{GDA15.f}
+\]
+The compact domain (GDA15.b) embeds in these full domains through \(F\mapsto L_F=(L_{F_{ij}})\). Formula (GDA15.e) is not restricted to compact coefficients. On the full finite-star domain the involution interchanges \((i,j)\) and \((j,i)\) and takes adjoints; [BC2](OA-FLOW-BC.md#bc-2) closes this operator with its full adjoint and relative spectral domains.
+
+<a id="gda-haar-rescaling"></a>
+
+## GDA16. Haar rescaling on the entire extended cone
+
+Fix \(c>0\), and compare Haar measures \(\mu\) and \(\nu=c\mu\) for the same action. The unitary
+\[
+ U_c:L^2(G,\nu;H)\longrightarrow L^2(G,\mu;H),
+       \qquad U_c\xi=c^{1/2}\xi
+ \tag{GDA16.a}
+\]
+intertwines both the coefficient representations and the regular group unitaries. We identify the crossed products through it. Their modular functions are the same, whereas integration gives
+\[
+ L_x^\nu=cL_x^\mu,\qquad
+ \int x^*x\,d\nu=c\int x^*x\,d\mu .
+ \tag{GDA16.b}
+\]
+The coefficient spaces \(\mathscr K,\mathscr B_\varphi,\mathscr D_\varphi\) themselves do not change: scaling convolution by \(c\) does not change their underlying linear spaces, and the coefficient involution depends only on the unchanged modular function and action.
+
+For every faithful normal semifinite coefficient weight \(\varphi\),
+\[
+ \boxed{\ \widehat\varphi_\nu
+                  =c^{-1}\widehat\varphi_\mu
+                  \quad\hbox{on }R_+.\ }
+ \tag{GDA16.c}
+\]
+To prove the whole-cone assertion, put
+\(\Psi=c^{-1}\widehat\varphi_\mu\).
+The scalar-weight calculation [BC5](OA-FLOW-BC.md#bc-5) gives
+\(\sigma^\Psi=\sigma^{\widehat\varphi_\mu}\). GDW's two modular generator formulas are independent of the Haar scale, so this is also the modular group of \(\widehat\varphi_\nu\). For each \(x\in\mathscr B_\varphi\),
+\[
+ \begin{aligned}
+ \Psi((L_x^\nu)^*L_x^\nu)
+  &=c^{-1}\widehat\varphi_\mu(c^2(L_x^\mu)^*L_x^\mu)\\
+  &=c\int_G\varphi(x(t)^*x(t))\,d\mu(t)\\
+  &=\int_G\varphi(x(t)^*x(t))\,d\nu(t)
+   =\widehat\varphi_\nu((L_x^\nu)^*L_x^\nu).
+ \end{aligned}
+ \tag{GDA16.d}
+\]
+These values are finite. The full uniqueness criterion GDA7, with the dense GNS domain constructed for \(\nu\), proves (GDA16.c). Thus the equality includes positive elements of infinite weight.
+
+The canonical maps satisfy the corresponding extended-valued identity
+\[
+ \boxed{\ T_\nu(X)=c^{-1}T_\mu(X)
+            \quad(X\in R_+).\ }
+ \tag{GDA16.e}
+\]
+For a nonzero coefficient algebra, choose one faithful normal semifinite weight \(\varphi\), whose existence was proved in GDA10. By GDA8 and (GDA16.c), \(T_\nu\) and \(c^{-1}T_\mu\) have the same composition with \(\varphi\) on the whole cone. The uniqueness theorem [GDA10](#gda-10) therefore proves (GDA16.e). Multiplication by the finite positive scalar \(c^{-1}\) preserves normality, semifiniteness and faithfulness; it multiplies every normal-functional test of an extended value and retains its infinite part. The zero algebra satisfies the equality directly.
+
+Consequently \(N_{T_\nu}=N_{T_\mu}\) and \(m_{T_\nu}=m_{T_\mu}\), and their finite linear extensions obey
+\((T_\nu)_0=c^{-1}(T_\mu)_0\).
+For any normal coefficient weight \(\theta\), including a nonfaithful or nonsemifinite one, GDA8's definition by scalar composition gives
+\(\widehat\theta_\nu=c^{-1}\widehat\theta_\mu\) with the same finite and null ideals.
+
+There are two useful Hilbert-space normalization formulas. For a fixed operator \(X\) in the common scalar finite left ideal, the unitary between weight GNS spaces is
+\[
+ W_c\Lambda_{\widehat\varphi_\nu}(X)
+       =c^{-1/2}\Lambda_{\widehat\varphi_\mu}(X).
+ \tag{GDA16.f}
+\]
+Its isometry follows from (GDA16.c); the common finite ideal makes its range dense, hence onto. At the integrated coefficient \(X=L_x^\nu=cL_x^\mu\), the right side becomes
+\(c^{1/2}\eta_{\varphi,\mu}(x)\).
+Under the GDW GNS identifications this is exactly \(U_c\eta_{\varphi,\nu}(x)\). The inverse factor in (GDA16.f) is attached to a fixed operator \(X\); the factor in (GDA16.a) compares the same coefficient function.
+
+Finally, these identifications preserve full operator domains. Both weights have the same finite-star algebra. On it,
+\[
+ W_cS_{\nu,0}\Lambda_\nu(X)
+   =c^{-1/2}\Lambda_\mu(X^*)
+   =S_{\mu,0}W_c\Lambda_\nu(X),
+\]
+where the scalar is real and positive. Taking graph closures gives
+\(W_cS_\nu W_c^*=S_\mu\); taking adjoints and positive products gives the corresponding identity for \(\Delta_\nu\) and \(\Delta_\mu\). Unitary transport of their spectral resolutions identifies the domains of every Borel function, including unbounded powers, by the spectral integral criterion in SF. For two coefficient weights, both dual weights are multiplied by the same \(c^{-1}\). BC5 and the chain rule cancel these scalar factors in their normalized relative cocycle. Equivalently, apply the preceding graph argument to their balanced matrix weight and then take the corners described by BC2.
+
+<a id="gda-nondiscrete-identity"></a>
+
+## GDA17. Nondiscrete groups and the infinite identity value
+
+Assume \(M\ne0\). For every nondiscrete locally compact Hausdorff group \(G\),
+\[
+ \boxed{\ T(1_R)=\infty\,1_P.\ }
+ \tag{GDA17.a}
+\]
+The right side is the extended-positive element that is infinite on every nonzero normal positive functional and zero at the zero functional.
+
+We first justify the required Haar functions in full generality. If a Haar measure had \(\mu(\{e\})>0\), any compact identity neighborhood \(C\) would contain at most \(\mu(C)/\mu(\{e\})\) distinct points: apply finite additivity to arbitrary finite subsets of \(C\). Hence \(C\) would be finite. An open identity neighborhood contained in \(C\), after removing its finitely many other points using the Hausdorff property, would make \(\{e\}\) open. The group would be discrete. Therefore a nondiscrete group has \(\mu(\{e\})=0\).
+
+Fix \(A>0\). Outer regularity at the singleton and local compactness provide a relatively compact open identity neighborhood \(V\) with
+\(0<\mu(V)<A^{-1}\).
+The strict positivity follows from the full support of Haar measure proved in [HR6](OA-FLOW-HR.md#hr-06). The compact cutoff construction [H0](OA-FLOW-TOPOLOGY.md#l138-h0) supplies a nonzero \(h\in C_c(G)\) with \(h\ge0\) and \(\operatorname{supp}h\subset V\). Normalize
+\(f=h/\int h\,d\mu\). Then
+\[
+ \|f\|_1=1,\qquad
+ 1=\left|\int_V f\,d\mu\right|^2
+       \le\mu(V)\|f\|_2^2,\qquad
+ \|f\|_2^2>A.
+ \tag{GDA17.b}
+\]
+The compact coefficient \(x(t)=f(t)1_M\) is in \(\mathscr K\). Its integrated operator is \(\lambda(f)\), a contraction by the [integrated representation estimate](OA-FLOW-L24.md#oa-flow.grp.vectorintegration). Hence GDA6 and monotonicity give
+\[
+ T(1_R)\ \ge\ T(\lambda(f)^*\lambda(f))
+          =\|f\|_2^2\,1_P>A1_P .
+ \tag{GDA17.c}
+\]
+For any nonzero \(\omega\in P_*^+\), \(\omega(1)>0\). Let \(A\) increase in (GDA17.c) to obtain \(T(1)(\omega)=\infty\). Extended-positive elements are determined by all these functional tests, so (GDA17.a) follows. This proof uses neither a faithful state nor a countable neighborhood basis.
+
+Bimodularity now determines the canonical value on every positive coefficient:
+\[
+ T(\pi(a))=\infty\,s(\pi(a))
+       \quad(a\in M_+),
+ \tag{GDA17.d}
+\]
+where \(s(b)=1_{(0,\infty)}(b)\) is the support projection. In fact,
+\(T(\pi(a))=\pi(a)^{1/2}T(1)\pi(a)^{1/2}\);
+its value at \(\omega\) is infinite exactly when \(\omega(\pi(a))>0\).
+This is equivalent to \(\omega(s(\pi(a)))>0\): one direction uses
+\(\pi(a)\le\|a\|s(\pi(a))\); the other uses the increasing spectral projections \(1_{[1/n,\infty)}(\pi(a))\), each bounded above by \(n\pi(a)\), and normality of \(\omega\).
+At \(a=0\), both sides of (GDA17.d) are zero.
+
+It follows that
+\[
+ N_T\cap P=\{0\}
+ \quad\hbox{when }G\hbox{ is nondiscrete}.
+ \tag{GDA17.e}
+\]
+Indeed, a nonzero \(b\in P\) has \(b^*b\ne0\), whose value in (GDA17.d) has a nonzero infinite part and is not a bounded element of \(P\). This coexists with the ultraweak density of \(N_T\) established in GDA6. A dense finite left ideal need not contain a nonzero element of the coefficient subalgebra.
+
+Together with GDA13, this proves that the canonical operator-valued weight is bounded exactly when \(G\) is discrete. For singleton Haar mass \(c\), its bounded linear extension is \(c^{-1}E_0\) and has norm \(c^{-1}\). It is a conditional expectation precisely for counting normalization \(c=1\).
+
+The assertion concerns the canonical map; a different conditional expectation can exist. For a complete example, take the scalar coefficient algebra, the circle group with probability Haar measure, and the trivial action. The characters \(z\mapsto z^n\), \(n\in\mathbb Z\), form an orthonormal basis of \(L^2(\mathbb T)\). Here is the completeness argument. Haar invariance gives \(\int z^n dz=0\) for \(n\ne0\), by rotating by a point whose \(n\)-th power is not one. This proves orthogonality. The nonnegative trigonometric polynomials
+\[
+ K_N(z)=\frac1{N+1}\left|\sum_{j=0}^Nz^j\right|^2
+\]
+have integral one. On any closed set not containing \(1\), the geometric sum formula bounds \(K_N(z)\) by \(4/((N+1)|1-z|^2)\), so their mass there tends to zero. For a continuous function \(g\), split the convolution integral for \(K_N*g-g\) between a small identity neighborhood and its complement. Uniform continuity makes the first contribution arbitrarily small; the displayed bound makes the second tend to zero. Thus \(K_N*g\to g\) uniformly. Each convolution is a finite linear combination of characters, by expanding \(K_N\) and applying Haar substitution. Continuous functions are dense in \(L^2\) by [HR3](OA-FLOW-HR.md#hr-03), proving completeness. In these coordinates,
+\(R=\operatorname{VN}(\mathbb T)\cong\ell^\infty(\mathbb Z)\):
+translations are diagonal, and integrating the character \(z^n\) against the translation operators gives the projection \(p_n\) onto the \(n\)-th Fourier coordinate. These coordinate projections generate the entire diagonal algebra by bounded strong sums.
+
+Each integrated character has squared \(L^2\)-norm one, so GDA6 gives \(T(p_n)=1\). Normality, applied to the increasing finite-coordinate truncations of any \(a=(a_n)\in\ell^\infty(\mathbb Z)_+\), gives
+\[
+ T(a)=\sum_{n\in\mathbb Z}a_n .
+ \tag{GDA17.f}
+\]
+This includes infinite sums. On the same algebra put
+\[
+ w_n=\frac13\,2^{-|n|},\qquad
+ E_w(a)=\left(\sum_{n\in\mathbb Z}w_na_n\right)1 .
+ \tag{GDA17.g}
+\]
+The weights are strictly positive and sum to
+\((1+2\sum_{n\ge1}2^{-n})/3=1\).
+Thus the series defines a positive unital contraction onto the scalars. It is a scalar bimodule map and fixes the scalars. It is normal: for an increasing bounded positive net, finite sums commute with its supremum, and the supremum over finite subsets then gives the whole weighted series. It is faithful because every coordinate has a strictly positive weight.
+
+For the finite projection \(p_{[-N,N]}=\sum_{n=-N}^Np_n\), \(N\ge0\), the two exact values are
+\[
+ T(p_{[-N,N]})=2N+1,\qquad
+ E_w(p_{[-N,N]})
+     =\left(1-\frac23\,2^{-N}\right)1 .
+ \tag{GDA17.h}
+\]
+The canonical values increase without bound, whereas the conditional-expectation values increase to \(1\). Both formulas concern the same projections in the same algebra.

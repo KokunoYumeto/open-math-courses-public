@@ -8,7 +8,7 @@ Solutions of \(Lu=0\) of the form \(u=e^{\tau\theta\cdot x}\bigl(a_0+O(\tau^{-1}
 - The constrained transport equation (Section 2).
 - Exact solutions (Section 3).
 
-We keep the notation of An augmented system and a Carleman estimate: one pair of moduli on \(\mathbb R^3\) from Lemma 3.1 of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md), constant outside \(B_r\); \(m,k,\ell\); the operators \(R,S,P\); a fixed nonzero \(\theta\in\mathbb C^3\) with \(\theta\cdot\theta=0\); \(D=D_\theta=\theta\cdot\nabla\), \(E_\tau=e^{\tau\theta\cdot x}\) and \(h=\tau^{-1}\). The frames and inhomogeneous solutions come from Lemmas 2.2 and 2.3 of [Planar transport equations](planar-transport-equations.md).
+We keep the notation of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md): one pair of moduli on \(\mathbb R^3\) from Lemma 3.1 of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md), constant outside \(B_r\); \(m,k,\ell\); the operators \(R,S,P\); a fixed nonzero \(\theta\in\mathbb C^3\) with \(\theta\cdot\theta=0\); \(D=D_\theta=\theta\cdot\nabla\), \(E_\tau=e^{\tau\theta\cdot x}\) and \(h=\tau^{-1}\). The frames and inhomogeneous solutions come from Lemmas 2.2 and 2.3 of [Planar transport equations](planar-transport-equations.md).
 
 ## 1. The leading operators
 
@@ -26,7 +26,7 @@ where
 \begin{aligned}&R^\theta(a,b)=2m\,Da\\&\quad+(Dm)\,a\\&\quad+\theta\,(kb+\nabla m\cdot a),\\&S^\theta(a,b)=2\ell\,Db\\&\quad+2(Dk)\,b+4\nabla m\cdot Da\\&\quad+2(D\nabla m)\cdot a,\\&P^\theta g=2m\,Dg+(Dm)\,g .\end{aligned}\tag{1.1}
 \]
 
-*Proof.* Replace every derivative \(\partial_j\) in (1.1) of An augmented system and a Carleman estimate by \(\partial_j+\tau\theta_j\). In \(R\): \(m\Delta a_i\) gives \(2\tau m\,Da_i\); \(k\partial_ib\) gives \(\tau k\theta_ib\); \(C(a)_i=\sum_j(\partial_jm)(\partial_ja_i+\partial_ia_j)\) gives \(\tau\bigl((Dm)a_i+\theta_i\,\nabla m\cdot a\bigr)\); the term \((\partial_i\lambda)b\) gives nothing. In \(S\): \(\ell\Delta b\) gives \(2\tau\ell\,Db\); \(2\nabla k\cdot\nabla b\) gives \(2\tau(Dk)b\); \(2\nabla m\cdot\Delta a\) gives \(4\tau\nabla m\cdot Da\); \(2\sum_{i,j}(\partial_i\partial_jm)\partial_ia_j\) gives \(2\tau\sum_{i,j}\theta_i(\partial_i\partial_jm)a_j=2\tau(D\nabla m)\cdot a\). In \(P\): \(m\Delta g\) gives \(2\tau m\,Dg\) and \(\nabla m\cdot\nabla g\) gives \(\tau(Dm)g\). No product of two \(\tau\theta\) occurs except in \(\Delta\), where it is \(\tau^2\theta\cdot\theta=0\). \(\square\)
+*Proof.* Replace every derivative \(\partial_j\) in (1.1) of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md) by \(\partial_j+\tau\theta_j\). In \(R\): \(m\Delta a_i\) gives \(2\tau m\,Da_i\); \(k\partial_ib\) gives \(\tau k\theta_ib\); \(C(a)_i=\sum_j(\partial_jm)(\partial_ja_i+\partial_ia_j)\) gives \(\tau\bigl((Dm)a_i+\theta_i\,\nabla m\cdot a\bigr)\); the term \((\partial_i\lambda)b\) gives nothing. In \(S\): \(\ell\Delta b\) gives \(2\tau\ell\,Db\); \(2\nabla k\cdot\nabla b\) gives \(2\tau(Dk)b\); \(2\nabla m\cdot\Delta a\) gives \(4\tau\nabla m\cdot Da\); \(2\sum_{i,j}(\partial_i\partial_jm)\partial_ia_j\) gives \(2\tau\sum_{i,j}\theta_i(\partial_i\partial_jm)a_j=2\tau(D\nabla m)\cdot a\). In \(P\): \(m\Delta g\) gives \(2\tau m\,Dg\) and \(\nabla m\cdot\nabla g\) gives \(\tau(Dm)g\). No product of two \(\tau\theta\) occurs except in \(\Delta\), where it is \(\tau^2\theta\cdot\theta=0\). \(\square\)
 
 **Lemma 1.2** (compatibility; [OpenAI-EL, Section 4]). For all smooth \((a,b)\),
 \[
@@ -37,7 +37,7 @@ where
 \begin{aligned}&\operatorname{div}R^\theta(a,b)+\theta\cdot R(a,b)\\&\qquad-S^\theta(a,b)\\&\quad=P(\theta\cdot a)\\&\qquad+P^\theta(\operatorname{div}a-b).\end{aligned}\tag{1.3}
 \]
 
-*Proof.* Apply the identity \(\operatorname{div}R(u,d)-S(u,d)=P(\operatorname{div}u-d)\) of Lemma 1.1 of An augmented system and a Carleman estimate to \(u=E_\tau a\), \(d=E_\tau b\), and multiply by \(E_\tau^{-1}\). By Lemma 1.1, and since \(E_\tau^{-1}\operatorname{div}(E_\tau w)=\operatorname{div}w+\tau\theta\cdot w\) and \(\operatorname{div}u-d=E_\tau(\operatorname{div}a-b+\tau\,\theta\cdot a)\),
+*Proof.* Apply the identity \(\operatorname{div}R(u,d)-S(u,d)=P(\operatorname{div}u-d)\) of Lemma 1.1 of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md) to \(u=E_\tau a\), \(d=E_\tau b\), and multiply by \(E_\tau^{-1}\). By Lemma 1.1, and since \(E_\tau^{-1}\operatorname{div}(E_\tau w)=\operatorname{div}w+\tau\theta\cdot w\) and \(\operatorname{div}u-d=E_\tau(\operatorname{div}a-b+\tau\,\theta\cdot a)\),
 \[
 \begin{aligned}&\operatorname{div}R(a,b)-S(a,b)+\tau^2\,\theta\cdot R^\theta(a,b)\\&\qquad+\tau\bigl(\theta\cdot R(a,b)+\operatorname{div}R^\theta(a,b)\\&\qquad\qquad-S^\theta(a,b)\bigr)\\&=P(\operatorname{div}a-b)+\tau^2P^\theta(\theta\cdot a)\\&\qquad+\tau\bigl(P^\theta(\operatorname{div}a-b)+P(\theta\cdot a)\bigr).\end{aligned}
 \]
@@ -95,7 +95,7 @@ By (1.3) applied to \((a_{j-1},b_{j-1})\), it suffices to show
 \[
 \begin{aligned}&P(\theta\cdot a_{j-1})+S^\theta(a_{j-1},b_{j-1})\\&\quad-\operatorname{div}R^\theta(a_{j-1},b_{j-1})=0 .\end{aligned}
 \]
-For \(j=1\) all three terms vanish, as \((a_0,b_0)\) solves (2.2) with values in \(\mathcal E_\theta\). For \(j\ge2\), (3.2) at the step \(j-1\) and the identity \(\operatorname{div}R-S=P(\operatorname{div}a-b)\) of Lemma 1.1 of An augmented system and a Carleman estimate give
+For \(j=1\) all three terms vanish, as \((a_0,b_0)\) solves (2.2) with values in \(\mathcal E_\theta\). For \(j\ge2\), (3.2) at the step \(j-1\) and the identity \(\operatorname{div}R-S=P(\operatorname{div}a-b)\) of Lemma 1.1 of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md) give
 \[
 \begin{aligned}&S^\theta(a_{j-1},b_{j-1})-\operatorname{div}R^\theta(a_{j-1},b_{j-1})\\&\quad=\operatorname{div}R(a_{j-2},b_{j-2})-S(a_{j-2},b_{j-2})\\&\quad=Pq_{j-2},\end{aligned}
 \]
@@ -115,13 +115,13 @@ Similarly \(E_\tau^{-1}\operatorname{div}(E_\tau a^{[N]})\) is \(\sum_j\tau^{-j}
 \[
 \begin{aligned}&E_\tau^{-1}\operatorname{div}(E_\tau a^{[N]})\\&\quad=b^{[N]}+\tau^{-N}q_N .\end{aligned}\tag{3.5}
 \]
-As \(R(u,d)\) depends on \(d\) only through \(k\nabla d+(\nabla\lambda)d\), Lemma 1.1 of An augmented system and a Carleman estimate, (3.4) and (3.5) give the physical residual
+As \(R(u,d)\) depends on \(d\) only through \(k\nabla d+(\nabla\lambda)d\), Lemma 1.1 of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md), (3.4) and (3.5) give the physical residual
 \[
 \begin{aligned}f_\tau&:=E_\tau^{-1}L(E_\tau a^{[N]})\\&=\tau^{-N}\bigl[R(a_N,b_N)\\&\qquad+k\nabla q_N+(\nabla\lambda)q_N\\&\qquad+\tau k\,\theta\,q_N\bigr],\end{aligned}\tag{3.6}
 \]
 a smooth function with \(\|f_\tau\|_{L^2(B_{5r})}=O(\tau^{1-N})\).
 
-*The correction.* Corollary 4.1 of An augmented system and a Carleman estimate, on the ball \(B_{5r}\), gives \(r_\tau\in L^2(B_{5r};\mathbb C^3)\) with \(E_\tau^{-1}L(E_\tau r_\tau)=-f_\tau\) and \(\|r_\tau\|_{L^2(B_{5r})}=O(\tau^{1-N})\). By Lemma 5.1 of that lesson, \(r_\tau\) is smooth in \(B_{5r}\), and on \(B_{4r}\)
+*The correction.* Corollary 4.1 of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md), on the ball \(B_{5r}\), gives \(r_\tau\in L^2(B_{5r};\mathbb C^3)\) with \(E_\tau^{-1}L(E_\tau r_\tau)=-f_\tau\) and \(\|r_\tau\|_{L^2(B_{5r})}=O(\tau^{1-N})\). By Lemma 5.1 of that lesson, \(r_\tau\) is smooth in \(B_{5r}\), and on \(B_{4r}\)
 \[
 \begin{aligned}&\sum_{j=0}^2h^j\|\nabla^jr_\tau\|_{L^2(B_{4r})}\\&\quad=O(\tau^{1-N}).\end{aligned}\tag{3.7}
 \]

@@ -1,6 +1,6 @@
 # Polar decomposition of functionals and weak compactness in preduals
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and replayed the entire lesson and all five solutions, compared the full programme prerequisite proofs, and completed the boundary and construction details, October 2026. Public domain (CC0).*
+*Mathematical exposition by Claude Opus 5.5 (Anthropic), GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 An integrable complex function \(h\) determines a functional \(x\mapsto\int xh\,d\mu\), whose positive absolute value is \(x\mapsto\int x|h|\,d\mu\); Example 2.6 proves this formula. A matrix \(\rho\) can be written as \(\rho=w|\rho|\), where \(|\rho|=(\rho^*\rho)^{1/2}\) and \(w\) is a partial isometry. Both are cases of one fact about von Neumann algebras: in any such algebra \(M\), every normal functional \(\varphi\) factors as \(\varphi=v|\varphi|\), where \(|\varphi|\) is a positive normal functional with \(\||\varphi|\|=\|\varphi\|\) and \(v\in M\) is a partial isometry. This lesson proves the factorization, identifies \(|\varphi|\) by an inequality that does not mention \(v\), and studies how \(|\varphi|\) depends on \(\varphi\). Then it uses the absolute value to study the predual \(M_*\) as a Banach space.
 
@@ -52,7 +52,7 @@ Then \(a(b\varphi)=(ab)\varphi\), \((\varphi a)b=\varphi(ab)\), \((a\varphi)b=a(
 7. *Annihilators.* For a subspace \(N\) of the dual \(X^*\) of a Banach space, the weak\(^*\) closure of \(N\) is the set of functionals that vanish on \(N_\perp=\{x:\psi(x)=0\ \forall\psi\in N\}\); for a subspace \(L\subseteq X\), the norm closure of \(L\) is the set of \(x\) annihilated by \(L^\perp\). Full programme proof: [WT Theorem 5.1](weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.md#oa-fnd-wt-05).
 8. *Finite dimension.* On a finite-dimensional vector space all Hausdorff vector topologies coincide. Full programme proof: [HB Theorem 7.1](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md#oa-fnd-hb-07).
 9. *Eberlein–Šmulian theorem.* For a subset \(K\) of a Banach space \(E\) the following are equivalent: \(K\) is relatively weakly compact; every sequence in \(K\) has a subsequence that converges weakly in \(E\); every sequence in \(K\) has a weak cluster point in \(E\). Full programme proof: [WT Lemma 7.1 and Theorem 7.2, the full bidual and subsequence proof](weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.md#oa-fnd-wt-07).
-10. *Further reading, unproved and unused:* the Mackey–Arens compatibility theorem identifies the topology defined directly in Section 11 with the finest locally convex topology having the given dual . No proof or solution here uses that compatibility characterization.
+10. *Mackey–Arens compatibility.* Proposition 11.3 below proves that uniform convergence on absolutely convex weakly compact subsets of the predual is the finest locally convex topology having that predual as its continuous dual. Its proof uses the Hahn–Banach and Banach–Alaoglu results above.
 
 **\(C^*\)-algebras.** These facts are proved in the lessons on \(C^*\)-algebras, on Banach algebras and on the bidual, named above.
 
@@ -712,6 +712,15 @@ For the rest of the lesson we attach to each functional one positive functional 
 1. \(\varphi^\sharp\ge0\), \(\|\varphi^\sharp\|=2\|\varphi\|\), and \(|\varphi(x)|^2\le\|\varphi\|\varphi^\sharp(xx^*)\), \(|\varphi(x)|^2\le\|\varphi\|\varphi^\sharp(x^*x)\).
 2. If \(\varphi\) is normal, so is \(\varphi^\sharp\), and \(\varphi(x)=\varphi(gxg)\) with \(g=s(\varphi^\sharp)\). If \(\varphi\) is singular, so is \(\varphi^\sharp\).
 3. If \(p\) is a projection with \(\varphi^\sharp(p)=0\), then \(\varphi(p)=0\).
+4. An alternative positive envelope is \(\varphi^{\rm J}=|\alpha|+|\beta|\), where \(\alpha=(\varphi+\varphi^*)/2\) and \(\beta=(\varphi-\varphi^*)/(2i)\). It is the sum of the positive and negative Jordan parts of \(\alpha\) and \(\beta\), and
+\[
+\begin{gathered}
+\|\varphi^{\rm J}\|\le2\|\varphi\|,\\
+|\varphi(x)|^2\le2\|\varphi\|\varphi^{\rm J}(xx^*),\\
+|\varphi(x)|^2\le2\|\varphi\|\varphi^{\rm J}(x^*x).
+\end{gathered}
+\]
+If \(\varphi\) is normal or singular, respectively, so is \(\varphi^{\rm J}\). In the normal case, \(\varphi(x)=\varphi(exe)\) for \(e=s(\varphi^{\rm J})\); and \(\varphi^{\rm J}(p)=0\) implies \(\varphi(p)=0\) for every projection \(p\).
 
 **Proof.** (1) follows from (2.4) and Theorem 2.7, the second inequality by applying the first to \(\varphi^*\) and \(x^*\). (2) If \(\varphi\) is normal, \(|\varphi|\) and \(|\varphi^*|\) are normal by Corollary 3.2. Their supports are \(s_r(\varphi)\) and \(s_l(\varphi)\) (Theorem 2.2), both under \(g\), so \[
 \begin{gathered}
@@ -721,6 +730,19 @@ For the rest of the lesson we attach to each functional one positive functional 
 =\varphi(x)
 \end{gathered}
 \] by Lemma 1.4(2). If \(\varphi\) is singular, then \(\varphi\in M^*(1-z_0)\) (background fact 22), and so is \(\varphi^*\) since \(z_0\) is central. The space \(M^*(1-z_0)\) is invariant under \(M^{**}\), so \(|\varphi|=v^*\varphi\) and \(|\varphi^*|\) lie in it. (3) By (1), \(|\varphi(p)|^2\le\|\varphi\|\varphi^\sharp(p)=0\). \(\square\)
+
+(4) The functionals \(\alpha,\beta\) are hermitian and have norm at most \(\|\varphi\|\). Corollary 2.8 identifies their absolute values with the sums of their Jordan parts, so positivity and the norm bound follow. For \(t=xx^*\), Theorem 2.7 and scalar Cauchy–Schwarz give
+\[
+\begin{gathered}
+|\varphi(x)|\le
+\|\alpha\|^{1/2}|\alpha|(t)^{1/2}
++\|\beta\|^{1/2}|\beta|(t)^{1/2},\\
+|\varphi(x)|^2\le
+(\|\alpha\|+\|\beta\|)(|\alpha|(t)+|\beta|(t))
+\le2\|\varphi\|\varphi^{\rm J}(t).
+\end{gathered}
+\]
+Because \(\alpha,\beta\) are hermitian, applying the same estimates to \(x^*\) proves the inequality for \(t=x^*x\). Normality follows from Corollary 3.2, and singularity follows from the central invariant subspace argument in (2). In the normal case, with \(e=s(\varphi^{\rm J})\), the first inequality applied to \((1-e)x\) gives \(\varphi((1-e)x)=0\); the second applied to \(x(1-e)\) gives \(\varphi(x(1-e))=0\). Hence \(\varphi(x)=\varphi(exe)\). Taking \(x=p\) proves the final assertion. \(\square\)
 
 **Theorem 8.2.** Let \((\varphi_k)\) be a sequence in \(M^*\) that converges to \(\varphi\) in \(\sigma(M^*,M)\). Then \(\varphi_k^{\rm n}\to\varphi^{\rm n}\) and \(\varphi_k^{\rm s}\to\varphi^{\rm s}\) in \(\sigma(M^*,M)\).
 
@@ -821,6 +843,8 @@ For \(X=M_*\) we have \(X^*=M\) and \(X^{**}=M^*\), so a bounded \(K\subseteq M_
 7. \(K\) is bounded, and \(\varphi(q_n)\to0\) uniformly in \(\varphi\in K\) for every sequence \((q_n)\) of mutually orthogonal projections.
 
 
+It suffices in (2) to test maximal abelian von Neumann subalgebras. Indeed, extend the commuting self-adjoint elements of an abelian subalgebra, together with \(1\), to a maximal commuting self-adjoint family by Zorn's lemma. Its generated von Neumann algebra is abelian: the commuting family lies in its own commutant, and the double commutant theorem preserves this inclusion. If a further self-adjoint element commutes with that algebra, maximality puts it in the family. Thus the algebra is maximal abelian. Restriction from its predual to the original abelian subalgebra is weakly continuous. Relative weak compactness on maximal abelian subalgebras therefore implies (2); the converse is immediate.
+
 We prove the easy implications first; the implication (1)\(\Rightarrow\)(4) needs two lemmas.
 
 **Proof of (1)\(\Rightarrow\)(2).** Restriction \(\varphi\mapsto\varphi|_{\mathcal A}\) is continuous from \(\sigma(M_*,M)\) to \(\sigma(\mathcal A_*,\mathcal A)\), and continuous images of compact sets are compact. \(\square\)
@@ -919,6 +943,8 @@ Let \(\omega=\sum_k2^{-k}\varphi_k^\sharp\) and \(e=s(\omega)\). Since \(\varphi
 \]
 In \(N=eMe\) the functional \(\omega\) is faithful, and \(b_n=ea_ne\) has \(\omega(b_n^*b_n+b_nb_n^*)\le\omega(a_n^*a_n+a_na_n^*)\), because \(b_n^*b_n\le ea_n^*a_ne\), \(b_nb_n^*\le ea_na_n^*e\) and \(\omega(eye)=\omega(y)\). By Proposition 9.1, \(b_n\to0\) \(\sigma\)-strongly\(^*\) in \(N\). By the Eberlein–Šmulian theorem, \((\varphi_n)\) has a weakly convergent subsequence \((\varphi_{n_j})\), and Lemma 10.3 in \(N\) gives \(\sup_j|\varphi_{n_j}(b_n)|\to0\) as \(n\to\infty\). But \(\varphi_{n_j}(b_n)=\varphi_{n_j}(a_n)\) (Lemma 8.1(2)), and \(|\varphi_{n_j}(a_{n_j-1})|\ge\varepsilon\) for all \(j\) with \(n_j\ge2\). As \(n_j-1\to\infty\), this is a contradiction. \(\square\)
 
+**Jordan-envelope form of the finite-control lemma.** Lemma 10.4 remains true with \(\psi^{\rm J}=|\operatorname{Re}\psi|+|\operatorname{Im}\psi|\) in place of \(\psi^\sharp\). To prove this form, repeat its contradiction argument with \(\omega=\sum_k2^{-k}\varphi_k^{\rm J}\). Lemma 8.1(4) gives positivity, normality and \(\|\varphi_k^{\rm J}\|\le2\), so the estimate \(\omega(a_n^*a_n+a_na_n^*)\le5\cdot2^{-n}\) is unchanged. It also gives \(\varphi_k(x)=\varphi_k(exe)\) for \(e=s(\omega)\): first compress by \(s(\varphi_k^{\rm J})\le e\). Thus \(ea_ne\) tends to zero strongly\(^*\) in the faithful corner, and the same weakly convergent subsequence and Lemma 10.3 contradict \(|\varphi_{n_j}(a_{n_j-1})|\ge\varepsilon\). The empty and zero cases are unchanged. \(\square\)
+
 **Proof of (1)\(\Rightarrow\)(4).** For \(m\ge1\), Lemma 10.4 with \(\varepsilon=1/m\) gives a finite \(F_m\subseteq K\) and \(\delta_m>0\). Put \(\gamma_m=\big(1+\sum_{\psi\in F_m}\|\psi^\sharp\|\big)^{-1}\) and
 \[
 \omega=\sum_m2^{-m}\gamma_m\sum_{\psi\in F_m}\psi^\sharp\in M_*^+ .
@@ -973,7 +999,7 @@ because \(vv^*\) and \(v^*v\) are projections that commute with \(a^*a\) and \(a
 \[
 p_K(x)=\sup_{\varphi\in K}|\varphi(x)|,
 \]
-where \(K\) runs over the relatively weakly compact subsets of \(M_*\), with \(p_\varnothing=0\). It is Hausdorff, since singletons are compact. We also define the *Mackey topology* \(\tau(M,M_*)\) directly as uniform convergence on the absolutely convex weakly compact subsets of \(M_*\). Thus its seminorms form a subfamily of these \(p_K\). The finest-compatible-topology characterization is not needed.
+where \(K\) runs over the relatively weakly compact subsets of \(M_*\), with \(p_\varnothing=0\). It is Hausdorff, since singletons are compact. We also define the *Mackey topology* \(\tau(M,M_*)\) directly as uniform convergence on the absolutely convex weakly compact subsets of \(M_*\). Thus its seminorms form a subfamily of these \(p_K\). Proposition 11.3 proves the characterization by the continuous dual.
 
 **Theorem 11.2.** On every bounded subset of \(M\), the topology \(\tau\) coincides with the \(\sigma\)-strong\(^*\) topology. More precisely, the \(\sigma\)-strong\(^*\) topology is coarser than \(\tau\) on all of \(M\), and on bounded sets \(\tau\) is coarser than the \(\sigma\)-strong\(^*\) topology.
 
@@ -1002,7 +1028,15 @@ So every \(\sigma\)-strong\(^*\) seminorm is dominated by \(p_{K_\omega}+p_{K'_\
 
 *On bounded sets \(\tau\) is coarser.* Let \(D\subseteq M\) be bounded, with \(\|x\|\le R\) on \(D\), and let \(x_i\to x\) \(\sigma\)-strongly\(^*\) in \(D\). If \(R=0\), then \(D\subseteq\{0\}\) and there is nothing to prove. For \(R>0\), put \(a_i=(x_i-x)/(2R)\in M_1\). Let \(K\) be relatively weakly compact, \(\varepsilon>0\), and \(\omega,\delta\) as in Theorem 10.2(4). Since \(\omega(a_i^*a_i+a_ia_i^*)\to0\), eventually \(\omega(a_i^*a_i+a_ia_i^*)<\delta\), and then \(p_K(x_i-x)=2Rp_K(a_i)\le2R\varepsilon\). So \(x_i\to x\) in \(\tau\). \(\square\)
 
-**Remark 11.3.** By the direct definition above, \(\tau(M,M_*)\) is coarser than \(\tau\). The absolutely convex weakly compact sets \(K_\omega,K'_\omega\) in the proof show directly that \(\tau(M,M_*)\) is finer than the \(\sigma\)-strong\(^*\) topology. Theorem 11.2 therefore proves, without an additional theorem, that all three topologies coincide on bounded sets. The Mackey–Arens theorem further identifies \(\tau(M,M_*)\) as the finest locally convex topology whose continuous functionals are the normal ones. That compatibility characterization is unproved here, is only further reading (background item 10), and is not used by any proof or solution.
+**Proposition 11.3** (Mackey–Arens compatibility). The topology \(\tau(M,M_*)\) is the finest locally convex topology on \(M\) whose continuous linear functionals are exactly \(M_*\). It is equivalently uniform convergence on weakly compact convex subsets of \(M_*\). On bounded subsets it agrees with \(\tau\) and the \(\sigma\)-strong\(^*\) topology.
+
+**Proof.** *The continuous dual.* Every \(\varphi\in M_*\) is continuous because the disk \(\{\lambda\varphi:|\lambda|\le1\}\) is absolutely convex and weakly compact. Conversely, continuity of a linear functional \(L\) gives finitely many absolutely convex weakly compact sets \(K_1,\dots,K_r\) and a constant \(C>0\) with \(|L(x)|\le C\max_jp_{K_j}(x)\). This follows by scaling a basic neighbourhood of zero; when all its seminorms vanish, scale by arbitrarily large constants. The set \(K=C(K_1+\cdots+K_r)\) is absolutely convex and weakly compact, and \(|L(x)|\le p_K(x)\).
+
+For any finite \(F=\{x_1,\dots,x_m\}\subseteq M\), the point \((L(x_1),\dots,L(x_m))\) belongs to the compact absolutely convex image \(\{(\varphi(x_1),\dots,\varphi(x_m)):\varphi\in K\}\). Otherwise finite-dimensional separation gives coefficients \(c_j\), and \(x=\sum_jc_jx_j\), such that \(\operatorname{Re}L(x)>\sup_{\varphi\in K}\operatorname{Re}\varphi(x)=p_K(x)\), a contradiction. Consequently the closed subsets \(\{\varphi\in K:\varphi(x)=L(x)\text{ for }x\in F\}\) are nonempty and have the finite-intersection property. Compactness supplies one \(\varphi\in K\) agreeing with \(L\) on every \(x\in M\). Hence \(L=\varphi\in M_*\).
+
+*Maximality.* Let \(\mathcal T\) be a locally convex topology on \(M\) with continuous dual \(M_*\), and let \(p\) be any \(\mathcal T\)-continuous seminorm. Complete the normed quotient \(M/\ker p\) to a Banach space \(E\), and write \(q:M\to E\) for the canonical map, so \(\|q(x)\|=p(x)\). Each functional \(\ell\circ q\), \(\ell\in E^*\), is \(\mathcal T\)-continuous and therefore normal. The image \(K_p\) of the dual unit ball of \(E\) under \(\ell\mapsto\ell\circ q\) is absolutely convex and weakly compact in \(M_*\), by Banach–Alaoglu and continuity of every evaluation \(\ell\mapsto\ell(q(x))\). Hahn–Banach gives \(p(x)=\|q(x)\|=\sup_{\varphi\in K_p}|\varphi(x)|\). Thus every \(\mathcal T\)-continuous seminorm is \(\tau(M,M_*)\)-continuous, proving maximality.
+
+*Convex compact sets.* For a weakly compact convex \(B\subseteq M_*\), put \(B_0=\{tb:0\le t\le1,\ b\in B\}\), including \(0\); the empty case has zero seminorm. This is compact and convex. Splitting each coefficient into its positive and negative real and imaginary parts shows that the absolutely convex hull of \(B\) lies in the weakly compact set \(B_0-B_0+iB_0-iB_0\). Its weak closure is therefore absolutely convex and weakly compact. Its seminorm dominates \(p_B\), proving the equivalent description. Finally, \(\tau(M,M_*)\) is coarser than \(\tau\), while the absolutely convex compact sets \(K_\omega,K'_\omega\) in Theorem 11.2 make it finer than the \(\sigma\)-strong\(^*\) topology. The bounded-set assertion follows from that theorem. \(\square\)
 
 On unbounded sets the topologies differ, unless \(M\) is finite-dimensional.
 

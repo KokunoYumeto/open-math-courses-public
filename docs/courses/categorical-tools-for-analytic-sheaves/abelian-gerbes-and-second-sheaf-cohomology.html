@@ -1,0 +1,471 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Abelian gerbes and second sheaf cohomology</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="abelian-gerbes-and-second-sheaf-cohomology">Abelian gerbes and second sheaf cohomology</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Public domain (CC0).</em></p>
+<p>Local objects may exist without admitting compatible identifications. A torsor records the failure to choose one local origin consistently; a gerbe records the failure to choose both objects and their identifications consistently. For a fixed abelian sheaf of automorphisms, this second obstruction is exactly second sheaf cohomology. We prove the classification by turning arrows of a gerbe into an exact row of abelian sheaves and by turning such a row back into a stack.</p>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be a small site and <span class="math" data-tex="\(E=\mathsf{Sh}(C)\)">\(E=\mathsf{Sh}(C)\)</span> its sheaf topos. Write <span class="math" data-tex="\(1\)">\(1\)</span> for its terminal sheaf, <span class="math" data-tex="\(A\)">\(A\)</span> for an abelian group sheaf, and <span class="math" data-tex="\(\mathbb Z=\mathbb Z[1]\)">\(\mathbb Z=\mathbb Z[1]\)</span> for the free abelian sheaf on <span class="math" data-tex="\(1\)">\(1\)</span>. All object, arrow and relation sets lie in fixed ambient universes. The site need not be subcanonical or have enough points. We work over arbitrary base sheaves using <a href="stacks-over-sheaves-and-epimorphic-descent.html#3-extension-to-sheaves-and-epimorphic-descent">Stacks over sheaves and epimorphic descent, Theorems 2.1 and 3.1</a>. Thus intersections below are products in <span class="math" data-tex="\(E\)">\(E\)</span>, including when they are not represented in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><a href="twisted-modules-from-coherent-gluing.html#7-module-sheaves-on-the-element-site">Module sheaves on the element site, Lemma 7.1 and Proposition 7.2</a> supplies sheafification, its finite local descriptions, local exactness and the Grothendieck category of abelian sheaves. <span class="unlinked">The entire injective construction</span> supplies enough injectives. <a href="higher-extensions-roofs-and-yoneda-composition.html#1-the-augmented-roof-and-its-normalization">Higher extensions, roofs and Yoneda composition, Sections 1–4</a> proves classification by exact rows, their endpoint-preserving comparisons and the sign of their derived classes. <a href="stackification-by-cartesian-sections-on-covering-sieves.html">Stackification by cartesian sections</a> supplies stackification with unchanged morphism sheaves and its functor universal property. These are the proof prerequisites. Basic references for the notion of a gerbe and its cocycle obstruction are [Stacks, Gerbes] and [Stacks, Second cohomology].</p>
+<h2 id="1-fixed-bands-and-local-equivalences">1. Fixed bands and local equivalences</h2>
+<p>An <strong><span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbe</strong> <span class="math" data-tex="\(\mathsf G\)">\(\mathsf G\)</span> is a stack in groupoids with objects locally over <span class="math" data-tex="\(1\)">\(1\)</span>, with any two objects locally isomorphic, and with specified identifications</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+ \iota_x:A|_T\xrightarrow{\sim}\mathcal Aut(x)
+ \quad(x\in\mathsf G(T)).
+ \tag{1.1}
+\]">\[
+\iota_x:A|_T\xrightarrow{\sim}\mathcal Aut(x)
+\quad(x\in\mathsf G(T)).
+\tag{1.1}
+\]</span>
+<p>They commute with restriction. For every arrow <span class="math" data-tex="\(r:x\to y\)">\(r:x\to y\)</span>, they satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+ r\iota_x(a)r^{-1}=\iota_y(a).
+ \tag{1.2}
+\]">\[
+r\iota_x(a)r^{-1}=\iota_y(a).
+\tag{1.2}
+\]</span>
+<p>A cartesian functor of banded gerbes respects these identifications. Equivalence classes always use this fixed band: changing <span class="math" data-tex="\(A\)">\(A\)</span> by an automorphism is not silently allowed. The sheaf <span class="math" data-tex="\(\mathcal Isom(x,y)\)">\(\mathcal Isom(x,y)\)</span> is an <span class="math" data-tex="\(A|_T\)">\(A|_T\)</span>-torsor, with action <span class="math" data-tex="\(r+a=r\iota_x(a)=\iota_y(a)r\)">\(r+a=r\iota_x(a)=\iota_y(a)r\)</span>. Indeed it has local sections by local connectedness; two arrows differ by one unique automorphism, and (1.2) identifies its two actions. Composition adds the two torsor coordinates.</p>
+<p><strong>Lemma 1.1.</strong> Every functor between <span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbes that respects the band is an equivalence.</p>
+<p><strong>Proof.</strong> Its map on each isomorphism sheaf is an equivariant map of <span class="math" data-tex="\(A\)">\(A\)</span>-torsors. Locally choose one arrow; both torsors become <span class="math" data-tex="\(A\)">\(A\)</span>, and the map is a translation. It is consequently an isomorphism of sheaves. On sections over any base this proves full faithfulness. For an object <span class="math" data-tex="\(y\)">\(y\)</span> in the target, locally choose source objects <span class="math" data-tex="\(x_i\)">\(x_i\)</span> and identifications <span class="math" data-tex="\(F x_i\simeq y\)">\(F x_i\simeq y\)</span>. The comparisons between their images lift uniquely by full faithfulness. They satisfy the cocycle equation because their images do. Effective descent in the source glues the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, and descent of morphisms glues their identifications with <span class="math" data-tex="\(y\)">\(y\)</span>. Hence <span class="math" data-tex="\(y\)">\(y\)</span> is in the essential image over its original base. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(BA\)">\(BA\)</span> denote the stack of <span class="math" data-tex="\(A\)">\(A\)</span>-torsors and equivariant isomorphisms. Sheaves, their actions and the assertion that the action is simply transitive descend: first descend the underlying sheaves, then descend the action maps, and check their equations locally. The sheaf-category descent used here is <a href="stacks-over-sheaves-and-epimorphic-descent.html#4-functors-sheaf-values-and-internal-yoneda">Stacks over sheaves, Lemma 4.1</a>. Local torsor origins show that <span class="math" data-tex="\(BA\)">\(BA\)</span> is an <span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbe. Its automorphism corresponding to <span class="math" data-tex="\(a\)">\(a\)</span> is translation by <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Lemma 1.2.</strong> A gerbe has an object over <span class="math" data-tex="\(1\)">\(1\)</span> if and only if it is band-preservingly equivalent to <span class="math" data-tex="\(BA\)">\(BA\)</span>.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(x\in\mathsf G(1)\)">\(x\in\mathsf G(1)\)</span>, send <span class="math" data-tex="\(y\)">\(y\)</span> to the torsor <span class="math" data-tex="\(\mathcal Isom(x,y)\)">\(\mathcal Isom(x,y)\)</span>. On arrows use postcomposition. This is a band-preserving functor, hence an equivalence by Lemma 1.1. Conversely the image of the trivial torsor under an equivalence <span class="math" data-tex="\(BA\simeq\mathsf G\)">\(BA\simeq\mathsf G\)</span> is a global object. More explicitly, the inverse transports <span class="math" data-tex="\(x\)">\(x\)</span> by a torsor: choose local torsor origins, use their differences as automorphisms of <span class="math" data-tex="\(x\)">\(x\)</span>, and apply effective descent. A change of origins changes the descent datum by its specified comparison and therefore gives the same equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A gerbe with a global object is called <strong>neutral</strong>. A neutral gerbe can have many nonisomorphic global objects; neutrality is an existence assertion.</p>
+<h2 id="2-an-exact-row-made-from-objects-and-arrows">2. An exact row made from objects and arrows</h2>
+<p>Choose an epimorphism <span class="math" data-tex="\(U\to1\)">\(U\to1\)</span> and <span class="math" data-tex="\(x\in\mathsf G(U)\)">\(x\in\mathsf G(U)\)</span>. Such a choice exists: take a small family of local objects and combine them over the coproduct of their bases by descent. Define a sheaf <span class="math" data-tex="\(R\)">\(R\)</span> of arrows. A section over <span class="math" data-tex="\(T\)">\(T\)</span> consists of <span class="math" data-tex="\(u,v:T\to U\)">\(u,v:T\to U\)</span> and an isomorphism <span class="math" data-tex="\(r:u^*x\to v^*x\)">\(r:u^*x\to v^*x\)</span>. Its source and target are <span class="math" data-tex="\(u,v\)">\(u,v\)</span>; composition is composition of these isomorphisms. Morphism descent proves that <span class="math" data-tex="\(R\)">\(R\)</span> is a sheaf, and local connectedness says <span class="math" data-tex="\(R\to U\times U\)">\(R\to U\times U\)</span> is epic.</p>
+<p>For a sheaf <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(\mathbb Z[S]\)">\(\mathbb Z[S]\)</span> means the sheafification of the presheaf of free abelian groups on <span class="math" data-tex="\(S(T)\)">\(S(T)\)</span>. A section is locally a finite integer combination of sections of <span class="math" data-tex="\(S\)">\(S\)</span>. An equality holds exactly when, locally, it is an equality of the corresponding finite combinations. This follows from the local representative and equality assertions of the sheafification prerequisite. Its free property follows from extending a map on generators and then sheafifying.</p>
+<p>Put <span class="math" data-tex="\(F=\mathbb Z[U]\)">\(F=\mathbb Z[U]\)</span>. Let <span class="math" data-tex="\(M\)">\(M\)</span> be the quotient of <span class="math" data-tex="\(\mathbb Z[R]\)">\(\mathbb Z[R]\)</span> by the subsheaf generated by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+ [r_2r_1]-[r_2]-[r_1],\qquad [1_u].
+ \tag{2.1}
+\]">\[
+[r_2r_1]-[r_2]-[r_1],\qquad [1_u].
+\tag{2.1}
+\]</span>
+<p>The first relation ranges over composable arrows.</p>
+<p>Equivalently, the relation subsheaf is the image of the map from <span class="math" data-tex="\(\mathbb Z[R\times_U R]\oplus\mathbb Z[U]\)">\(\mathbb Z[R\times_U R]\oplus\mathbb Z[U]\)</span> sending its generators to the two expressions in (2.1). Thus its local sections, and local witnesses for quotient equalities, use finitely many such relations.</p>
+<p>Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+ d:M\longrightarrow F,\qquad d[r]=[s(r)]-[t(r)],\\
+ p:F\longrightarrow\mathbb Z,\qquad p[u]=1.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+d:M\longrightarrow F,\qquad d[r]=[s(r)]-[t(r)],\\
+p:F\longrightarrow\mathbb Z,\qquad p[u]=1.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Composition telescopes sources and targets, so <span class="math" data-tex="\(d\)">\(d\)</span> respects (2.1), and <span class="math" data-tex="\(pd=0\)">\(pd=0\)</span>. The sign in (2.2) is part of the convention.</p>
+<p>There is a canonical map <span class="math" data-tex="\(i:A\to M\)">\(i:A\to M\)</span>. Locally choose <span class="math" data-tex="\(u\)">\(u\)</span> and send <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\([\iota_{x_u}(a)]\)">\([\iota_{x_u}(a)]\)</span>. For <span class="math" data-tex="\(r:u\to v\)">\(r:u\to v\)</span>, relation (1.2) and (2.1) give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+ [\iota_{x_v}(a)]
+ =[r]+[\iota_{x_u}(a)]-[r]
+ =[\iota_{x_u}(a)].
+ \tag{2.3}
+\]">\[
+[\iota_{x_v}(a)]
+=[r]+[\iota_{x_u}(a)]-[r]
+=[\iota_{x_u}(a)].
+\tag{2.3}
+\]</span>
+<p>After any two choices, such an <span class="math" data-tex="\(r\)">\(r\)</span> exists locally. Thus the local maps agree and descend to <span class="math" data-tex="\(i\)">\(i\)</span>. Composition of automorphisms proves additivity.</p>
+<p><strong>Theorem 2.1.</strong> These actual maps form an exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+ e(\mathsf G,x):\quad
+ 0\longrightarrow A\xrightarrow{i}M
+ \xrightarrow{d}F\xrightarrow{p}\mathbb Z
+ \longrightarrow0.
+ \tag{2.4}
+\]">\[
+e(\mathsf G,x):\quad
+0\longrightarrow A\xrightarrow{i}M
+\xrightarrow{d}F\xrightarrow{p}\mathbb Z
+\longrightarrow0.
+\tag{2.4}
+\]</span>
+<p><strong>Proof: finite local normal forms.</strong> Every assertion of exactness is local. An element, an equality in a free abelian sheaf, or a relation in its quotient has a finite witness after refinement. Only finitely many objects and arrows occur in such a witness. Choose one local base object <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, and, for each of those objects <span class="math" data-tex="\(v\)">\(v\)</span>, choose an arrow <span class="math" data-tex="\(q_v:u_0\to v\)">\(q_v:u_0\to v\)</span>, taking <span class="math" data-tex="\(q_{u_0}=1\)">\(q_{u_0}=1\)</span>. This requires only a finite successive refinement of epimorphisms, not a choice of arrows for every section of <span class="math" data-tex="\(U\)">\(U\)</span>. For every arrow <span class="math" data-tex="\(r:v\to w\)">\(r:v\to w\)</span> in the witness, define <span class="math" data-tex="\(a_r\in A\)">\(a_r\in A\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+ q_w^{-1}r q_v=\iota_{x_{u_0}}(a_r).
+ \qquad
+ [r]=[q_w]+i(a_r)-[q_v].
+ \tag{2.5}
+\]">\[
+q_w^{-1}r q_v=\iota_{x_{u_0}}(a_r).
+\qquad
+[r]=[q_w]+i(a_r)-[q_v].
+\tag{2.5}
+\]</span>
+<p>Transport of the band shows <span class="math" data-tex="\(a_{r_2r_1}=a_{r_2}+a_{r_1}\)">\(a_{r_2r_1}=a_{r_2}+a_{r_1}\)</span>, and <span class="math" data-tex="\(a_{1_v}=0\)">\(a_{1_v}=0\)</span>. Thus replacing every arrow in a finite relation witness by its coordinate <span class="math" data-tex="\(a_r\)">\(a_r\)</span> preserves each relation (2.1). If <span class="math" data-tex="\(i(a)=0\)">\(i(a)=0\)</span>, use a finite witness for this equality and choose the indicated <span class="math" data-tex="\(q_v\)">\(q_v\)</span>. Its coordinate equation is <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. This proves that <span class="math" data-tex="\(i\)">\(i\)</span> is monic. It does not assume that all arrow torsors can be trivialized simultaneously.</p>
+<p>For an element <span class="math" data-tex="\(m=\sum n_r[r]\)">\(m=\sum n_r[r]\)</span> with <span class="math" data-tex="\(dm=0\)">\(dm=0\)</span>, refine to finite representatives. Refine further so the equality in <span class="math" data-tex="\(\mathbb Z[U]\)">\(\mathbb Z[U]\)</span> is a literal equality of finite free abelian combinations. In (2.5) the coefficient of <span class="math" data-tex="\([q_v]\)">\([q_v]\)</span> is the total target coefficient at <span class="math" data-tex="\(v\)">\(v\)</span> minus the total source coefficient there. These coefficients vanish because <span class="math" data-tex="\(dm=0\)">\(dm=0\)</span>; when labels agree, choose the same <span class="math" data-tex="\(q_v\)">\(q_v\)</span> for that label. Consequently <span class="math" data-tex="\(m=i(\sum n_r a_r)\)">\(m=i(\sum n_r a_r)\)</span>. Also <span class="math" data-tex="\(di=0\)">\(di=0\)</span>. This proves <span class="math" data-tex="\(\ker d=\operatorname{im}i\)">\(\ker d=\operatorname{im}i\)</span>.</p>
+<p>For <span class="math" data-tex="\(\sum n_v[v]\in\ker p\)">\(\sum n_v[v]\in\ker p\)</span>, choose <span class="math" data-tex="\(u_0,q_v\)">\(u_0,q_v\)</span> for its finite representatives. Locally its integer sum is zero. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+ \sum n_v[v]
+ =\sum n_v([v]-[u_0])
+ =-d\!\left(\sum n_v[q_v]\right).
+ \tag{2.6}
+\]">\[
+\sum n_v[v]
+=\sum n_v([v]-[u_0])
+=-d\!\left(\sum n_v[q_v]\right).
+\tag{2.6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\operatorname{im}d=\ker p\)">\(\operatorname{im}d=\ker p\)</span>. Finally a local integer <span class="math" data-tex="\(n\)">\(n\)</span> lifts to <span class="math" data-tex="\(n[u_0]\)">\(n[u_0]\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> is epic. These local assertions give exactness of sheaves. Empty covers and empty finite combinations obey the same sheafification rules; no stalk criterion was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Presentation independence.</strong> If a second chosen object is identified with the pullback of <span class="math" data-tex="\(x\)">\(x\)</span> over a refined cover, conjugating arrows by that identification gives a map of the two groupoid presentations. The free maps respect (2.1), (2.2) and the band. They give a commuting map of exact rows with identity on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>For two unrelated presentations <span class="math" data-tex="\(x\)">\(x\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> over <span class="math" data-tex="\(V\)">\(V\)</span>, take over <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span> the sheaf of isomorphisms between their pullbacks. It is epic over <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span>, hence its total sheaf <span class="math" data-tex="\(W\)">\(W\)</span> covers <span class="math" data-tex="\(1\)">\(1\)</span>. Its tautological comparison gives a common presentation mapping to both. Therefore the two rows are equivalent as two-extensions. The same construction for a band-preserving functor of gerbes gives the same extension class: present the source by <span class="math" data-tex="\(x\)">\(x\)</span> and the target by its image. Lemma 1.1 identifies the arrow torsors.</p>
+<h2 id="3-recover-the-gerbe-and-identify-its-cohomology-class">3. Recover the gerbe and identify its cohomology class</h2>
+<p>Start with any exact row <span class="math" data-tex="\(e\)">\(e\)</span> of the form (2.4). Define a prestack <span class="math" data-tex="\(\mathsf P_e\)">\(\mathsf P_e\)</span>. Over <span class="math" data-tex="\(T\)">\(T\)</span>, its objects are sections <span class="math" data-tex="\(f\in F(T)\)">\(f\in F(T)\)</span> with <span class="math" data-tex="\(p(f)=1\)">\(p(f)=1\)</span>. An arrow from <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is a section <span class="math" data-tex="\(m\in M(T)\)">\(m\in M(T)\)</span> such that</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+ dm=f-f&#x27;.
+ \tag{3.1}
+\]">\[
+dm=f-f&#x27;.
+\tag{3.1}
+\]</span>
+<p>Compose by addition; the identity is zero and the inverse is negation. All restriction maps are those of the sheaves. Morphisms form sheaves. Exactness of <span class="math" data-tex="\(p\)">\(p\)</span> gives objects locally, and exactness at <span class="math" data-tex="\(F\)">\(F\)</span> gives arrows locally between any two objects. The automorphism <span class="math" data-tex="\(i(a)\)">\(i(a)\)</span> gives the band <span class="math" data-tex="\(A\)">\(A\)</span>. Stackify this prestack and call the result <span class="math" data-tex="\(\mathsf G_e\)">\(\mathsf G_e\)</span>. Stackification retains its morphism sheaves and local objects, so it is an <span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbe.</p>
+<p>An endpoint-preserving row map gives a band-preserving functor <span class="math" data-tex="\(\mathsf G_e\to\mathsf G_{e&#x27;}\)">\(\mathsf G_e\to\mathsf G_{e&#x27;}\)</span>, hence an equivalence by Lemma 1.1. Thus equivalent two-extensions give equivalent gerbes.</p>
+<p><strong>Proposition 3.1.</strong> The two constructions are mutually inverse on equivalence classes.</p>
+<p><strong>Proof.</strong> Starting with a gerbe, its presentation groupoid maps to <span class="math" data-tex="\(\mathsf P_{e(\mathsf G,x)}\)">\(\mathsf P_{e(\mathsf G,x)}\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+ u\longmapsto[u],\qquad r\longmapsto[r].
+ \tag{3.2}
+\]">\[
+u\longmapsto[u],\qquad r\longmapsto[r].
+\tag{3.2}
+\]</span>
+<p>Equation (2.2) is exactly (3.1). Composition and identities follow from (2.1), and the band map is the identity. Stackifying the presentation recovers <span class="math" data-tex="\(\mathsf G\)">\(\mathsf G\)</span>: its morphism sheaves are the original ones, and every object is locally isomorphic to a restriction of <span class="math" data-tex="\(x\)">\(x\)</span>. The same descent proof as in Lemma 1.1 gives an equivalence. After stackification, (3.2) is therefore an equivalence of the two gerbes by that lemma.</p>
+<p>Conversely present <span class="math" data-tex="\(\mathsf G_e\)">\(\mathsf G_e\)</span> over an epimorphism <span class="math" data-tex="\(U\to1\)">\(U\to1\)</span> by actual objects of <span class="math" data-tex="\(\mathsf P_e\)">\(\mathsf P_e\)</span>. This is possible after refinement because every stackified object locally comes from the prestack. Let <span class="math" data-tex="\(f_u\)">\(f_u\)</span> be its section of <span class="math" data-tex="\(F\)">\(F\)</span>. Each presentation arrow is an actual section <span class="math" data-tex="\(m_r\)">\(m_r\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, since stackification did not change morphism sheaves. The assignments</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+ \mathbb Z[U]\longrightarrow F,\quad [u]\mapsto f_u,
+ \qquad
+ M(\mathsf G_e,x)\longrightarrow M,\quad [r]\mapsto m_r
+ \tag{3.3}
+\]">\[
+\mathbb Z[U]\longrightarrow F,\quad [u]\mapsto f_u,
+\qquad
+M(\mathsf G_e,x)\longrightarrow M,\quad [r]\mapsto m_r
+\tag{3.3}
+\]</span>
+<p>respect the composition relations, commute with <span class="math" data-tex="\(d,p\)">\(d,p\)</span>, and are the identity on the kernel <span class="math" data-tex="\(A\)">\(A\)</span>. On <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> they are the identity because <span class="math" data-tex="\(p(f_u)=1\)">\(p(f_u)=1\)</span>. Thus (3.3) is an endpoint-preserving map from the reconstructed two-extension to <span class="math" data-tex="\(e\)">\(e\)</span>. The extension classes agree. Presentation independence proves all choices harmless. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+ \operatorname{Hom}(\mathbb Z,B)=\Gamma(E,B).
+ \tag{3.4}
+\]">\[
+\operatorname{Hom}(\mathbb Z,B)=\Gamma(E,B).
+\tag{3.4}
+\]</span>
+<p>Indeed a map from the free abelian sheaf on <span class="math" data-tex="\(1\)">\(1\)</span> is determined by the image of its generator, and any global section supplies that map. Apply (3.4) termwise to an injective resolution <span class="math" data-tex="\(A\to I^\bullet\)">\(A\to I^\bullet\)</span>. Bounded-below injective complexes compute derived Hom by the injective prerequisite. Consequently <span class="math" data-tex="\(\operatorname{Ext}^2(\mathbb Z,A)=H^2(E,A)\)">\(\operatorname{Ext}^2(\mathbb Z,A)=H^2(E,A)\)</span>. The higher-extension prerequisite identifies this Ext group with equivalence classes of the exact rows (2.4).</p>
+<p><strong>Theorem 3.2.</strong> There is a canonical bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+ \operatorname{Gerb}_A(E)\xrightarrow{\sim}H^2(E,A),
+ \qquad
+ [\mathsf G]\longmapsto\operatorname{cl}(\mathsf G).
+ \tag{3.5}
+\]">\[
+\operatorname{Gerb}_A(E)\xrightarrow{\sim}H^2(E,A),
+\qquad
+[\mathsf G]\longmapsto\operatorname{cl}(\mathsf G).
+\tag{3.5}
+\]</span>
+<p>It uses band-preserving equivalences and applies to every small site, without enough points or an acyclicity hypothesis on covers.</p>
+<p><strong>Proof.</strong> Compose Theorem 2.1, presentation independence, Proposition 3.1 and (3.4) with the proven two-extension classification. These are inverse classifications, so (3.5) is both surjective and injective. Its definition uses only the gerbe and its fixed band; any presentation gives the same class. In particular the collection of equivalence classes is a set in the stated universe, because it is in bijection with this cohomology group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here is the precise sign and a concrete cohomology representative. Write <span class="math" data-tex="\(j:A\to I^0\)">\(j:A\to I^0\)</span>, choose <span class="math" data-tex="\(v:M\to I^0\)">\(v:M\to I^0\)</span> extending <span class="math" data-tex="\(j\)">\(j\)</span>, and factor <span class="math" data-tex="\(d_Iv\)">\(d_Iv\)</span> through <span class="math" data-tex="\(\operatorname{im}d=\ker p\)">\(\operatorname{im}d=\ker p\)</span>. Injectivity of <span class="math" data-tex="\(I^1\)">\(I^1\)</span> extends that factor to <span class="math" data-tex="\(w:F\to I^1\)">\(w:F\to I^1\)</span>. Thus <span class="math" data-tex="\(wd=d_Iv\)">\(wd=d_Iv\)</span>. There is a unique global degree-two cocycle <span class="math" data-tex="\(z\)">\(z\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+ d_I w=z p,\qquad \operatorname{cl}(\mathsf G_e)=-[z].
+ \tag{3.6}
+\]">\[
+d_I w=z p,\qquad \operatorname{cl}(\mathsf G_e)=-[z].
+\tag{3.6}
+\]</span>
+<p>To prove the sign, use the augmented complex <span class="math" data-tex="\(A\to M\to F\)">\(A\to M\to F\)</span> in degrees <span class="math" data-tex="\(-2,-1,0\)">\(-2,-1,0\)</span>. Its normalized extension numerator is <span class="math" data-tex="\(-1_A\)">\(-1_A\)</span>, as proved in the higher-extension prerequisite. After mapping to <span class="math" data-tex="\(I^\bullet[2]\)">\(I^\bullet[2]\)</span>, compare that numerator with the map <span class="math" data-tex="\(-zp\)">\(-zp\)</span> in degree zero. The degree-minus-one homotopy has components <span class="math" data-tex="\(-v:M\to I^0\)">\(-v:M\to I^0\)</span> and <span class="math" data-tex="\(w:F\to I^1\)">\(w:F\to I^1\)</span>. Its three differential equations are <span class="math" data-tex="\(-vi=-j\)">\(-vi=-j\)</span>, <span class="math" data-tex="\(-d_Iv+wd=0\)">\(-d_Iv+wd=0\)</span>, and <span class="math" data-tex="\(d_Iw=zp\)">\(d_Iw=zp\)</span>. This proves (3.6), including the minus sign.</p>
+<p>For example, a global cocycle <span class="math" data-tex="\(a\in I^2\)">\(a\in I^2\)</span> has the explicit representative</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+ F_a=\{(t,n)\in I^1\oplus\mathbb Z:d_It=-na\},\\
+ 0\longrightarrow A\longrightarrow I^0
+ \xrightarrow{\,b\mapsto(d_Ib,0)\,}F_a
+ \xrightarrow{(t,n)\mapsto n}\mathbb Z
+ \longrightarrow0.
+\end{gathered}
+\tag{3.7}
+\]">\[
+\begin{gathered}
+F_a=\{(t,n)\in I^1\oplus\mathbb Z:d_It=-na\},\\
+0\longrightarrow A\longrightarrow I^0
+\xrightarrow{\,b\mapsto(d_Ib,0)\,}F_a
+\xrightarrow{(t,n)\mapsto n}\mathbb Z
+\longrightarrow0.
+\end{gathered}
+\tag{3.7}
+\]</span>
+<p>The last map is locally surjective by exactness of the resolution at <span class="math" data-tex="\(I^2\)">\(I^2\)</span>. Its kernel is the image of <span class="math" data-tex="\(I^0\)">\(I^0\)</span>, and the preceding kernel is <span class="math" data-tex="\(A\)">\(A\)</span>. Taking <span class="math" data-tex="\(v=1\)">\(v=1\)</span> and <span class="math" data-tex="\(w(t,n)=t\)">\(w(t,n)=t\)</span> in (3.6) gives class <span class="math" data-tex="\([a]\)">\([a]\)</span>. If <span class="math" data-tex="\(a&#x27;=a+d_Ib\)">\(a&#x27;=a+d_Ib\)</span>, the map <span class="math" data-tex="\((t,n)\mapsto(t-nb,n)\)">\((t,n)\mapsto(t-nb,n)\)</span>, together with the identity on <span class="math" data-tex="\(I^0\)">\(I^0\)</span>, is a row map from (3.7) for <span class="math" data-tex="\(a\)">\(a\)</span> to that for <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>. The resulting gerbes are equivalently banded. This gives actual inverse objects and actual comparisons for cohomology representatives.</p>
+<h2 id="4-neutralization-coefficient-changes-and-addition">4. Neutralization, coefficient changes and addition</h2>
+<p><strong>Theorem 4.1.</strong> A gerbe is neutral if and only if its class is zero.</p>
+<p><strong>Proof.</strong> The zero two-extension can be represented by <span class="math" data-tex="\(M=A\)">\(M=A\)</span>, <span class="math" data-tex="\(F=\mathbb Z\)">\(F=\mathbb Z\)</span>, <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(p=1\)">\(p=1\)</span>. Its lifting prestack has one object, with automorphism sheaf <span class="math" data-tex="\(A\)">\(A\)</span>; its stackification is <span class="math" data-tex="\(BA\)">\(BA\)</span>. Proposition 3.1 identifies its class with zero. Theorem 3.2 and Lemma 1.2 now give both implications. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a homomorphism <span class="math" data-tex="\(\phi:A\to B\)">\(\phi:A\to B\)</span>, extend each arrow torsor of a presentation by contracted product with <span class="math" data-tex="\(B\)">\(B\)</span>. In local coordinates this sends the relation <span class="math" data-tex="\((r+a,b-\phi(a))\sim(r,b)\)">\((r+a,b-\phi(a))\sim(r,b)\)</span> to its <span class="math" data-tex="\(B\)">\(B\)</span>-coordinate. Composition adds coordinates and hence descends; identities and inverses descend too. Stackification gives the <strong>change of band</strong> <span class="math" data-tex="\(\phi_*\mathsf G\)">\(\phi_*\mathsf G\)</span>. Common presentation refinements show independence of the presentation.</p>
+<p>The row for this changed gerbe receives a map from the pushout row whose first middle sheaf is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+ M^\phi=(B\oplus M)/\{(-\phi(a),i(a)):a\in A\}.
+ \tag{4.1}
+\]">\[
+M^\phi=(B\oplus M)/\{(-\phi(a),i(a)):a\in A\}.
+\tag{4.1}
+\]</span>
+<p>The maps from the two summands are its new band map and the old arrow map. They agree on the indicated relation; their row map is identity on <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Thus the extension classes agree, and the endpoint naturality of derived Ext gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+ \operatorname{cl}(\phi_*\mathsf G)
+ =H^2(\phi)\operatorname{cl}(\mathsf G).
+ \tag{4.2}
+\]">\[
+\operatorname{cl}(\phi_*\mathsf G)
+=H^2(\phi)\operatorname{cl}(\mathsf G).
+\tag{4.2}
+\]</span>
+<p>The product of two gerbes has band <span class="math" data-tex="\(A\oplus A\)">\(A\oplus A\)</span>. Change that band by addition. This defines their contracted sum. Its class is the sum of their classes. Here is the extension comparison establishing the assertion. Present the two gerbes over one common cover. The product presentation maps into the direct sum of their middle rows, pulled back at the last term along <span class="math" data-tex="\(\mathbb Z\to\mathbb Z\oplus\mathbb Z\)">\(\mathbb Z\to\mathbb Z\oplus\mathbb Z\)</span>. On each object generator it gives the pair of its object generators; on each arrow it gives the pair of arrow classes. The kernel map is identity on <span class="math" data-tex="\(A\oplus A\)">\(A\oplus A\)</span>, and the terminal map is identity. Push out by addition as in (4.1). To compute its class, use one injective resolution of <span class="math" data-tex="\(A\)">\(A\)</span>, and sum the two maps <span class="math" data-tex="\(v,w\)">\(v,w\)</span> of (3.6). They descend through the pushout because they add the two kernel coordinates. Their degree-two cocycle is <span class="math" data-tex="\(z_1+z_2\)">\(z_1+z_2\)</span>; (3.6) gives <span class="math" data-tex="\(-[z_1+z_2]=-[z_1]-[z_2]\)">\(-[z_1+z_2]=-[z_1]-[z_2]\)</span>. This is also the usual direct-sum, diagonal-pullback and addition-pushout definition of the Baer sum.</p>
+<p>The neutral element is <span class="math" data-tex="\(BA\)">\(BA\)</span>. Changing the band by <span class="math" data-tex="\(-1_A\)">\(-1_A\)</span> gives the inverse. Associativity and commutativity on equivalence classes follow either from the just-proved class calculation and injectivity of (3.5), or from the corresponding tuple quotients. Thus (3.5) is an isomorphism of abelian groups for these operations. All coefficient maps and restriction comparisons are the ones induced by the actual local arrow formulas, not choices of unrelated group structures.</p>
+<p>For completeness, restriction to a base sheaf commutes with this classification. The inverse image into its slice topos is exact and preserves colimits by the module-sheaf prerequisite. It therefore preserves the free abelian sheaves, relation quotients and exact rows above. Pulling back <span class="math" data-tex="\(x\)">\(x\)</span> gives the pulled-back presentation, with the same bands and arrow formulas. Applying the exact inverse-image functor to the normalized extension roof is the canonical map on <span class="math" data-tex="\(\operatorname{Ext}^2(\mathbb Z,A)\)">\(\operatorname{Ext}^2(\mathbb Z,A)\)</span>, and hence on sheaf cohomology under (3.4). This proves the restriction assertion without assuming that inverse image preserves injective objects.</p>
+<h2 id="5-actual-cocycles-coboundaries-and-refinement">5. Actual cocycles, coboundaries and refinement</h2>
+<p>Fix an epimorphism <span class="math" data-tex="\(U\to1\)">\(U\to1\)</span>, <span class="math" data-tex="\(x\in\mathsf G(U)\)">\(x\in\mathsf G(U)\)</span>, and an actual arrow <span class="math" data-tex="\(\lambda_{01}:x_1\to x_0\)">\(\lambda_{01}:x_1\to x_0\)</span> over <span class="math" data-tex="\(U\times U\)">\(U\times U\)</span>. Number subscripts denote pullback along the coordinate projections. The arrow is additional data: local connectedness alone does not give a global section of its arrow torsor. We may normalize its diagonal to the identity. Indeed its diagonal is a section <span class="math" data-tex="\(h\in A(U)\)">\(h\in A(U)\)</span>; multiplying <span class="math" data-tex="\(\lambda_{01}\)">\(\lambda_{01}\)</span> by <span class="math" data-tex="\(\iota_{x_0}(-h_0)\)">\(\iota_{x_0}(-h_0)\)</span> removes that diagonal. Hereafter <span class="math" data-tex="\(\Delta^*\lambda=1_x\)">\(\Delta^*\lambda=1_x\)</span>.</p>
+<p>The full Čech nerve of this cover has <span class="math" data-tex="\(U^{n+1}\)">\(U^{n+1}\)</span> in degree <span class="math" data-tex="\(n\)">\(n\)</span>. A cochain is a section of <span class="math" data-tex="\(A\)">\(A\)</span> there; its differential is the alternating sum of coordinate-deletion pullbacks. For an indexed family, use <span class="math" data-tex="\(U=\coprod U_i\)">\(U=\coprod U_i\)</span>. Equal index labels do not identify two coordinates in <span class="math" data-tex="\(U_i\times U_i\)">\(U_i\times U_i\)</span>. Normalization in this section means pullback along actual diagonal maps, not setting all repeated-index components to zero.</p>
+<p>Define <span class="math" data-tex="\(c\in A(U^3)\)">\(c\in A(U^3)\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+ \lambda_{01}\lambda_{12}
+ =\iota_{x_0}(c_{012})\lambda_{02}.
+ \tag{5.1}
+\]">\[
+\lambda_{01}\lambda_{12}
+=\iota_{x_0}(c_{012})\lambda_{02}.
+\tag{5.1}
+\]</span>
+<p>Comparing the two composites of three arrows and using (1.2) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+ c_{012}+c_{023}=c_{123}+c_{013},
+ \qquad \delta c=0.
+ \tag{5.2}
+\]">\[
+c_{012}+c_{023}=c_{123}+c_{013},
+\qquad \delta c=0.
+\tag{5.2}
+\]</span>
+<p>The identity on the diagonal gives <span class="math" data-tex="\(c(u,u,v)=0=c(u,v,v)\)">\(c(u,u,v)=0=c(u,v,v)\)</span>. No condition <span class="math" data-tex="\(c(u,v,u)=0\)">\(c(u,v,u)=0\)</span> is imposed. Values such as these mean pullback of the section along the indicated maps into <span class="math" data-tex="\(U^3\)">\(U^3\)</span>.</p>
+<p>For <span class="math" data-tex="\(b\in A(U^2)\)">\(b\in A(U^2)\)</span> with <span class="math" data-tex="\(\Delta^*b=0\)">\(\Delta^*b=0\)</span>, replace the arrow by <span class="math" data-tex="\(\lambda&#x27;_{01}=\iota_{x_0}(b_{01})\lambda_{01}\)">\(\lambda&#x27;_{01}=\iota_{x_0}(b_{01})\lambda_{01}\)</span>. The normalized cocycle changes by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+ c&#x27;_{012}=c_{012}+b_{01}+b_{12}-b_{02}
+ =c_{012}+(\delta b)_{012}.
+ \tag{5.3}
+\]">\[
+c&#x27;_{012}=c_{012}+b_{01}+b_{12}-b_{02}
+=c_{012}+(\delta b)_{012}.
+\tag{5.3}
+\]</span>
+<p>This follows by substituting the two modified arrows into (5.1) and transporting the middle scalar by (1.2).</p>
+<p>Conversely take any normalized two-cocycle <span class="math" data-tex="\(c\in A(U^3)\)">\(c\in A(U^3)\)</span>, where normalization is the two adjacent-diagonal conditions just stated. Make an internal groupoid with object sheaf <span class="math" data-tex="\(U\)">\(U\)</span>. Its arrows <span class="math" data-tex="\(v\to u\)">\(v\to u\)</span> form the trivial <span class="math" data-tex="\(A\)">\(A\)</span>-torsor on <span class="math" data-tex="\(U^2\)">\(U^2\)</span>, and composition is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+ (u,v,a)(v,w,b)=(u,w,a+b+c(u,v,w)).
+ \tag{5.4}
+\]">\[
+(u,v,a)(v,w,b)=(u,w,a+b+c(u,v,w)).
+\tag{5.4}
+\]</span>
+<p>The two associative products agree by (5.2). The identity is <span class="math" data-tex="\((u,u,0)\)">\((u,u,0)\)</span>, by the adjacent-diagonal conditions. The inverse is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+ (u,v,a)^{-1}=(v,u,-a-c(u,v,u)).
+\]">\[
+(u,v,a)^{-1}=(v,u,-a-c(u,v,u)).
+\]</span>
+<p>Indeed (5.2) on <span class="math" data-tex="\((u,v,u,v)\)">\((u,v,u,v)\)</span> gives <span class="math" data-tex="\(c(u,v,u)=c(v,u,v)\)">\(c(u,v,u)=c(v,u,v)\)</span>, since its other two terms are adjacent-degenerate. Both inverse composites are therefore their identity arrows. Every formula is a sheaf map and preserves the additive band. Stackification gives an <span class="math" data-tex="\(A\)">\(A\)</span>-gerbe <span class="math" data-tex="\(\mathsf G_c\)">\(\mathsf G_c\)</span>, whose tautological arrow <span class="math" data-tex="\((u,v,0)\)">\((u,v,0)\)</span> has cocycle exactly <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>For <span class="math" data-tex="\(c&#x27;=c+\delta b\)">\(c&#x27;=c+\delta b\)</span> with diagonal-zero <span class="math" data-tex="\(b\)">\(b\)</span>, the map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+ (u,v,a)\longmapsto(u,v,a-b(u,v))
+ \tag{5.5}
+\]">\[
+(u,v,a)\longmapsto(u,v,a-b(u,v))
+\tag{5.5}
+\]</span>
+<p>is a functor from the first presentation to the second. In its composition equation, the three <span class="math" data-tex="\(b\)">\(b\)</span>-terms in (5.3) cancel to the single term <span class="math" data-tex="\(-b(u,w)\)">\(-b(u,w)\)</span>. The diagonal-zero condition preserves identities; preservation of inverses then follows from uniqueness of an inverse. The reverse map adds <span class="math" data-tex="\(b\)">\(b\)</span>. These maps and their stackifications are inverse band-preserving equivalences.</p>
+<p>For a refinement <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span>, with <span class="math" data-tex="\(V\to1\)">\(V\to1\)</span> epic, use <span class="math" data-tex="\(f^{n+1}\)">\(f^{n+1}\)</span> on the full nerves. The induced groupoid functor maps objects by <span class="math" data-tex="\(f\)">\(f\)</span> and keeps the arrow coefficient. It is band-preserving; the stackified gerbes are equivalent by Lemma 1.1. No epimorphism <span class="math" data-tex="\(V\to U\)">\(V\to U\)</span> is required. Thus the construction is compatible with actual cover-refinement maps.</p>
+<p>Every two-cocycle has a normalized representative. Put <span class="math" data-tex="\(h(u)=c(u,u,u)\)">\(h(u)=c(u,u,u)\)</span>. The cocycle equations on <span class="math" data-tex="\((u,u,u,v)\)">\((u,u,u,v)\)</span> and <span class="math" data-tex="\((u,v,v,v)\)">\((u,v,v,v)\)</span> give respectively <span class="math" data-tex="\(c(u,u,v)=h(u)\)">\(c(u,u,v)=h(u)\)</span> and <span class="math" data-tex="\(c(u,v,v)=h(v)\)">\(c(u,v,v)=h(v)\)</span>. For the one-cochain <span class="math" data-tex="\(t(u,v)=h(u)\)">\(t(u,v)=h(u)\)</span> we have</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+ (\delta t)(u,v,w)=h(v).
+ \qquad c^{\mathrm n}=c-\delta t
+ \tag{5.6}
+\]">\[
+(\delta t)(u,v,w)=h(v).
+\qquad c^{\mathrm n}=c-\delta t
+\tag{5.6}
+\]</span>
+<p>satisfies both adjacent-diagonal normalization conditions and represents the same Čech cohomology class. This explicit degree-two normalization requires neither an ordering of the cover sheaf nor an alternating-index reduction.</p>
+<h2 id="6-match-the-cocycle-with-derived-cohomology">6. Match the cocycle with derived cohomology</h2>
+<p>Here is a canonical Čech comparison on the full nerve of <span class="math" data-tex="\(\mathcal U=(U\to1)\)">\(\mathcal U=(U\to1)\)</span>. Put <span class="math" data-tex="\(C_n=\mathbb Z[U^{n+1}]\)">\(C_n=\mathbb Z[U^{n+1}]\)</span>, with boundary the alternating coordinate-deletion maps. The augmentation <span class="math" data-tex="\(C_0\to\mathbb Z\)">\(C_0\to\mathbb Z\)</span> is a resolution: locally choose a section of the cover, and prepend that section to a tuple. This operation contracts the augmented complex by <span class="math" data-tex="\(\partial h+h\partial=1\)">\(\partial h+h\partial=1\)</span>, verified by separating the first deletion from the remaining deletions. Exactness is local, so this proves exactness globally without points.</p>
+<p>For an injective resolution <span class="math" data-tex="\(A\to I^\bullet\)">\(A\to I^\bullet\)</span>, set <span class="math" data-tex="\(D^{p,q}=\operatorname{Hom}(C_p,I^q)=I^q(U^{p+1})\)">\(D^{p,q}=\operatorname{Hom}(C_p,I^q)=I^q(U^{p+1})\)</span>. Applying <span class="math" data-tex="\(\operatorname{Hom}(-,I^q)\)">\(\operatorname{Hom}(-,I^q)\)</span> to the exact augmented resolution gives exact augmented rows: factor each differential through its image and use injectivity on the resulting short exact sequences. Give the first-quadrant total complex differential</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+ D=\delta+(-1)^p d_I.
+ \tag{6.1}
+\]">\[
+D=\delta+(-1)^p d_I.
+\tag{6.1}
+\]</span>
+<p>There are chain maps <span class="math" data-tex="\(a:\Gamma(I^\bullet)\to\operatorname{Tot}D\)">\(a:\Gamma(I^\bullet)\to\operatorname{Tot}D\)</span> by restriction in column zero and <span class="math" data-tex="\(b:C^\bullet(\mathcal U,A)\to\operatorname{Tot}D\)">\(b:C^\bullet(\mathcal U,A)\to\operatorname{Tot}D\)</span> by <span class="math" data-tex="\(A\to I^0\)">\(A\to I^0\)</span> in row zero. The exact augmented rows make <span class="math" data-tex="\(a\)">\(a\)</span> a rowwise quasi-isomorphism from the double complex concentrated in column zero. The finite-diagonal comparison in <a href="filtered-complexes-and-cartan-eilenberg-resolutions.html#2-finite-convergence-and-comparison">Filtered complexes, Sections 1–3</a> makes its total map a quasi-isomorphism. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+ \sigma^n_{\mathcal U}=H^n(a)^{-1}H^n(b):
+ H^nC^\bullet(\mathcal U,A)\longrightarrow H^n(E,A).
+ \tag{6.2}
+\]">\[
+\sigma^n_{\mathcal U}=H^n(a)^{-1}H^n(b):
+H^nC^\bullet(\mathcal U,A)\longrightarrow H^n(E,A).
+\tag{6.2}
+\]</span>
+<p>Injective-resolution comparisons commute with <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; their homotopies give the same cohomology map. Refinement acts by the coordinate maps of the full nerves and commutes with the augmentations. Hence (6.2) is independent of the resolution and natural for refinement.</p>
+<p><strong>Theorem 6.1.</strong> For the presentation and actual arrow of Section 5,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+ \operatorname{cl}(\mathsf G)=\sigma^2_{\mathcal U}[c].
+ \tag{6.3}
+\]">\[
+\operatorname{cl}(\mathsf G)=\sigma^2_{\mathcal U}[c].
+\tag{6.3}
+\]</span>
+<p><strong>Proof.</strong> Use its presentation row (2.4). There is the tautological section <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span>, sending <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\([u]\)">\([u]\)</span>, and the section <span class="math" data-tex="\(e=[\lambda]\)">\(e=[\lambda]\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> over <span class="math" data-tex="\(U^2\)">\(U^2\)</span>. Their exact equations are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+ de=f_1-f_0,\qquad \delta e=i(c).
+ \tag{6.4}
+\]">\[
+de=f_1-f_0,\qquad \delta e=i(c).
+\tag{6.4}
+\]</span>
+<p>Choose <span class="math" data-tex="\(v,w,z\)">\(v,w,z\)</span> as in (3.6). In the double complex let <span class="math" data-tex="\(b_1=ve\)">\(b_1=ve\)</span> have bidegree <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, and let <span class="math" data-tex="\(b_0=wf\)">\(b_0=wf\)</span> have bidegree <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Equations (6.4) and <span class="math" data-tex="\(wd=d_Iv\)">\(wd=d_Iv\)</span> give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+ \delta b_1=b(c),\qquad
+ \delta b_0=d_I b_1,\qquad
+ d_I b_0=a(z).
+ \tag{6.5}
+\]">\[
+\delta b_1=b(c),\qquad
+\delta b_0=d_I b_1,\qquad
+d_I b_0=a(z).
+\tag{6.5}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(D(b_0+b_1)=a(z)+b(c)\)">\(D(b_0+b_1)=a(z)+b(c)\)</span>, so <span class="math" data-tex="\(H(b)[c]=-H(a)[z]\)">\(H(b)[c]=-H(a)[z]\)</span>. Equations (3.6) and (6.2) prove (6.3). This checks the degree-two normalization against the source-minus-target arrow convention on the full Čech nerve. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an arbitrary site, (6.3) concerns the stated actual presentation and arrow; it does not supply a global arrow section on an arbitrary chosen cover. The classification of all gerbes is Theorem 3.2, proved independently using two-extensions.</p>
+<p>Now let <span class="math" data-tex="\(X\)">\(X\)</span> be paracompact Hausdorff and take indexed open covers. Their members are subterminal sheaves: a repeated open factor in an intersection is the same open. In precisely this open-cover setting the full tuple and increasing alternating complexes agree by the integral proof in <span class="unlinked">Čech comparison, Section 4</span>. The complete all-open-cover theorem gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.6); horizontal scroll when needed" data-tex="\[
+ \operatorname*{colim}_{\mathcal U}
+ H^2C^\bullet(\mathcal U,A)\xrightarrow{\sim}H^2(X,A).
+ \tag{6.6}
+\]">\[
+\operatorname*{colim}_{\mathcal U}
+H^2C^\bullet(\mathcal U,A)\xrightarrow{\sim}H^2(X,A).
+\tag{6.6}
+\]</span>
+<p>Its proof is <span class="unlinked">Čech comparison, Sections 2–3</span>. These are the same augmentation and coefficient comparison maps as (6.2). The two common total-differential conventions are related by multiplying bidegree <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> by <span class="math" data-tex="\((-1)^{pq}\)">\((-1)^{pq}\)</span>, which is identity on both axes and hence leaves that comparison unchanged.</p>
+<p>Every cover cohomology class has a normalized representative by (5.6), and in this open-cover case it also has an alternating representative by the cited integral comparison. Theorems 3.2 and 6.1 imply that every <span class="math" data-tex="\(A\)">\(A\)</span>-gerbe on such a space is equivalent to some <span class="math" data-tex="\(\mathsf G_c\)">\(\mathsf G_c\)</span> after choosing an open cover. Two such gerbes are equivalent exactly when their cohomology classes agree after a common open-cover refinement, by (6.6). This conclusion uses the proved refinement-limit isomorphism, rather than a simultaneous choice of all overlap arrows.</p>
+<h2 id="7-scalar-twisting-and-the-locally-ringed-hypothesis">7. Scalar twisting and the locally ringed hypothesis</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative ring sheaf and set <span class="math" data-tex="\(A=R^\times\)">\(A=R^\times\)</span>, now written multiplicatively. Given an <span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbe, its presentation arrow torsor from <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(v\)">\(v\)</span> gives an associated rank-one module <span class="math" data-tex="\(L_{v,u}\)">\(L_{v,u}\)</span>. It is the sheaf quotient of pairs <span class="math" data-tex="\((r,t)\)">\((r,t)\)</span>, where <span class="math" data-tex="\(r:u\to v\)">\(r:u\to v\)</span> and <span class="math" data-tex="\(t\in R\)">\(t\in R\)</span>, by <span class="math" data-tex="\((ra,t)\sim(r,at)\)">\((ra,t)\sim(r,at)\)</span>. A local choice of <span class="math" data-tex="\(r\)">\(r\)</span> gives a basis, so this is locally free of rank one. Composition of arrows induces</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+ L_{w,v}\otimes_RL_{v,u}\xrightarrow{\sim}L_{w,u},
+ \qquad [s,t]\otimes[r,t&#x27;]\longmapsto[sr,tt&#x27;].
+ \tag{7.1}
+\]">\[
+L_{w,v}\otimes_RL_{v,u}\xrightarrow{\sim}L_{w,u},
+\qquad [s,t]\otimes[r,t&#x27;]\longmapsto[sr,tt&#x27;].
+\tag{7.1}
+\]</span>
+<p>The relation and commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> make it well-defined. In local bases it is the usual product <span class="math" data-tex="\(R\otimes_RR\to R\)">\(R\otimes_RR\to R\)</span>, hence an isomorphism. Composition proves associativity and the identity arrow gives the unit. <a href="twisted-modules-from-coherent-gluing.html#2-the-twisted-category">Twisted modules, Theorem 2.1</a> therefore constructs a stack <span class="math" data-tex="\(\mathsf S_{\mathsf G}\)">\(\mathsf S_{\mathsf G}\)</span> of all modules with this twisting. Its refinement equivalences and line-change comparisons are proved in that lesson's Sections 9–10.</p>
+<p>When actual arrows <span class="math" data-tex="\(\lambda_{ij}\)">\(\lambda_{ij}\)</span> as in Section 5 are chosen, their associated bases <span class="math" data-tex="\(l_{ij}\)">\(l_{ij}\)</span> satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+ l_{ij}l_{jk}=c_{ijk}l_{ik}.
+ \tag{7.2}
+\]">\[
+l_{ij}l_{jk}=c_{ijk}l_{ik}.
+\tag{7.2}
+\]</span>
+<p>This is precisely the scalar twisting law. Equations (5.3), (5.5) and (6.3) identify its changes of bases and its <span class="math" data-tex="\(H^2(R^\times)\)">\(H^2(R^\times)\)</span> class.</p>
+<p>For a full classification of locally ordinary module stacks, assume now that <span class="math" data-tex="\(X\)">\(X\)</span> is a locally ringed space with structure sheaf <span class="math" data-tex="\(R\)">\(R\)</span>. A tensor-invertible module is then locally free of rank one, by the complete proof in <a href="torsors-first-cohomology-and-line-bundles.html#7-when-tensor-invertible-really-means-a-line-bundle">Torsors and line bundles, Section 7</a>.</p>
+<p>For an <span class="math" data-tex="\(R\)">\(R\)</span>-linear stack <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> locally equivalent to <span class="math" data-tex="\(\mathsf{Mod}(R)\)">\(\mathsf{Mod}(R)\)</span>, let <span class="math" data-tex="\(\mathsf L(\mathsf S)\)">\(\mathsf L(\mathsf S)\)</span> be the groupoid of objects that become locally free rank-one modules in local module descriptions, using only isomorphisms as arrows. This condition is independent of the description: transition equivalences are tensoring with invertible modules by <a href="local-module-categories-and-morita-equivalence.html">Local module categories, Theorem 4.1</a>, and these modules are locally free rank one by the preceding hypothesis. Rank-one objects and isomorphisms descend, so this is an <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>-banded gerbe. Its band is the actual scalar action.</p>
+<p>There is a sign in recovering this gerbe from (7.1). For a presentation object <span class="math" data-tex="\(u\)">\(u\)</span>, the corresponding local twisted line <span class="math" data-tex="\(H^u\)">\(H^u\)</span> has component <span class="math" data-tex="\(L_{v,u}\)">\(L_{v,u}\)</span> at <span class="math" data-tex="\(v\)">\(v\)</span>; its action is (7.1). An arrow <span class="math" data-tex="\(r:u\to u&#x27;\)">\(r:u\to u&#x27;\)</span> gives <span class="math" data-tex="\(H^u\to H^{u&#x27;}\)">\(H^u\to H^{u&#x27;}\)</span> by composing on the right with <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span>. On an automorphism <span class="math" data-tex="\(a\)">\(a\)</span> this is multiplication by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. Thus this functor induces the inverse band and, by Lemma 1.1 after that band change, gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+ \mathsf L(\mathsf S_{\mathsf G})
+ \simeq (-1)_*\mathsf G.
+ \tag{7.3}
+\]">\[
+\mathsf L(\mathsf S_{\mathsf G})
+\simeq (-1)_*\mathsf G.
+\tag{7.3}
+\]</span>
+<p>Conversely take the opposite gerbe of <span class="math" data-tex="\(\mathsf L(\mathsf S)\)">\(\mathsf L(\mathsf S)\)</span>, keeping the same scalar identifications on automorphisms. Inversion of arrows identifies its class with the negative of the original one. Present its objects by local rank-one objects <span class="math" data-tex="\(H_u\)">\(H_u\)</span> of <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span>. Its associated line <span class="math" data-tex="\(L_{v,u}\)">\(L_{v,u}\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+ L_{v,u}=\mathcal Hom_{\mathsf S}(H_v,H_u).
+ \tag{7.4}
+\]">\[
+L_{v,u}=\mathcal Hom_{\mathsf S}(H_v,H_u).
+\tag{7.4}
+\]</span>
+<p>Indeed an isomorphism <span class="math" data-tex="\(r:H_v\to H_u\)">\(r:H_v\to H_u\)</span> sends the associated-line element <span class="math" data-tex="\([r,t]\)">\([r,t]\)</span> to <span class="math" data-tex="\(tr\)">\(tr\)</span>. In a local choice of <span class="math" data-tex="\(r\)">\(r\)</span>, this is the basis isomorphism <span class="math" data-tex="\(R\to\mathcal Hom(H_v,H_u)\)">\(R\to\mathcal Hom(H_v,H_u)\)</span>, so it is an isomorphism of sheaves and respects composition.</p>
+<p>For <span class="math" data-tex="\(K\in\mathsf S\)">\(K\in\mathsf S\)</span>, put <span class="math" data-tex="\(M_u=\mathcal Hom_{\mathsf S}(H_u,K)\)">\(M_u=\mathcal Hom_{\mathsf S}(H_u,K)\)</span>. Composition gives the required twisted action <span class="math" data-tex="\(L_{v,u}\otimes M_u\to M_v\)">\(L_{v,u}\otimes M_u\to M_v\)</span>. Locally choose a rank-one basis for <span class="math" data-tex="\(H_u\)">\(H_u\)</span>. This functor is then the ordinary module equivalence <span class="math" data-tex="\(\mathcal Hom(H_u,-)\)">\(\mathcal Hom(H_u,-)\)</span>, with inverse <span class="math" data-tex="\(N\mapsto H_u\otimes N\)">\(N\mapsto H_u\otimes N\)</span>. The arbitrary-module tensor–Hom and restriction comparisons are proved in <a href="tensor-and-hom-for-twisted-module-stacks.html#1-the-module-operations-used-on-a-slice">Tensor and Hom for twisted module stacks, Lemma 1.1</a>.</p>
+<p>These local equivalences give a global equivalence: morphisms lift uniquely because the maps on their sheaves are locally isomorphisms; local inverse objects and their uniquely lifted comparisons satisfy descent and therefore glue. The same argument applies to all module maps, including noninvertible ones. It is compatible with restrictions and scalar actions. A band-preserving equivalence of gerbes gives isomorphisms of their arrow torsors, hence of their associated lines and multiplication maps; it therefore gives an equivalence of the constructed module stacks. An equivalence of module stacks preserves rank-one objects and their scalar bands. Thus both constructions respect the equivalence relations as well as recovering every object.</p>
+<p><strong>Corollary 7.1.</strong> On a locally ringed space, equivalence classes of <span class="math" data-tex="\(R\)">\(R\)</span>-linear stacks locally equivalent to <span class="math" data-tex="\(\mathsf{Mod}(R)\)">\(\mathsf{Mod}(R)\)</span> are classified by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+ \mathsf S\longmapsto-\operatorname{cl}\mathsf L(\mathsf S)
+ \quad\text{in }H^2(X,R^\times).
+ \tag{7.5}
+\]">\[
+\mathsf S\longmapsto-\operatorname{cl}\mathsf L(\mathsf S)
+\quad\text{in }H^2(X,R^\times).
+\tag{7.5}
+\]</span>
+<p>For a scalar presentation (7.2), this is <span class="math" data-tex="\(\sigma^2[c]\)">\(\sigma^2[c]\)</span>. The neutral class consists exactly of stacks equivalent to <span class="math" data-tex="\(\mathsf{Mod}(R)\)">\(\mathsf{Mod}(R)\)</span>.</p>
+<p><strong>Proof.</strong> Equations (7.3)–(7.4) and the just-proved equivalences give inverse classifications by module stacks and gerbes with the indicated inverse band. Theorem 3.2 supplies (7.5); (6.3) and (7.3) give its scalar sign. The neutral gerbe constructs ordinary module descent, whose equivalence with modules is <a href="twisted-modules-from-coherent-gluing.html#9-descent-and-refinement-of-the-covering">Twisted modules, Lemma 9.1</a>. Conversely an ordinary module stack has the global rank-one object <span class="math" data-tex="\(R\)">\(R\)</span>, so its line gerbe is neutral by Lemma 1.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On a general ringed site the full Morita presentation by tensor-invertible modules remains valid, as proved in the earlier lesson. Such modules need not admit local bases on that site. The construction (7.1) and the gerbe classification remain valid there, but (7.5) is asserted with the locally ringed hypothesis just used. The distinction between tensor-invertible modules and locally free line bundles, including a counterexample, is proved in the torsor lesson's Section 7 and Exercise 4.</p>
+<h2 id="8-four-graded-exercises-with-full-solutions">8. Four graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (foundation: a neutral class has many objects).</strong> For an abelian sheaf <span class="math" data-tex="\(A\)">\(A\)</span>, compute the automorphism sheaf of an object <span class="math" data-tex="\(P\)">\(P\)</span> of <span class="math" data-tex="\(BA\)">\(BA\)</span>. Show directly how a global object of an <span class="math" data-tex="\(A\)">\(A\)</span>-gerbe identifies all its objects with torsors. Decide whether a zero class forces the gerbe to have a unique global object up to isomorphism.</p>
+<p><strong>Solution.</strong> Locally choose an origin <span class="math" data-tex="\(p\)">\(p\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span>. An equivariant automorphism is <span class="math" data-tex="\(p+a\mapsto p+a+b\)">\(p+a\mapsto p+a+b\)</span>, determined by one section <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. Changing the origin leaves this translation unchanged because <span class="math" data-tex="\(A\)">\(A\)</span> is abelian. Hence these local identifications glue to <span class="math" data-tex="\(\mathcal Aut(P)=A\)">\(\mathcal Aut(P)=A\)</span>, with global automorphism group <span class="math" data-tex="\(\Gamma(E,A)\)">\(\Gamma(E,A)\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in\mathsf G(1)\)">\(x\in\mathsf G(1)\)</span>, the assignment <span class="math" data-tex="\(y\mapsto\mathcal Isom(x,y)\)">\(y\mapsto\mathcal Isom(x,y)\)</span> takes values in torsors. An arrow <span class="math" data-tex="\(y\to z\)">\(y\to z\)</span> acts by postcomposition. Conversely, local origins of an <span class="math" data-tex="\(A\)">\(A\)</span>-torsor supply copies of <span class="math" data-tex="\(x\)">\(x\)</span>; their translations are automorphisms of <span class="math" data-tex="\(x\)">\(x\)</span>, and their cocycle glues these copies. The morphism-sheaf condition shows that both composites give the original objects and arrows. This is the specified equivalence of Lemma 1.2. Thus global isomorphism classes are the isomorphism classes of <span class="math" data-tex="\(A\)">\(A\)</span>-torsors. Whenever a nontrivial torsor exists, zero cohomology class of the gerbe does not force uniqueness of its global object. Exercise 3 gives an explicit example.</p>
+<p><strong>Exercise 2 (calculation: a nonzero cocycle with zero class).</strong> Over a point, take the indexed cover with three copies of that point. For an abelian group <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, let the alternating two-cochain have <span class="math" data-tex="\(c_{012}=a\)">\(c_{012}=a\)</span>, with repeated-index values zero. Prove it is a cocycle, find a one-cochain whose coboundary is <span class="math" data-tex="\(c\)">\(c\)</span>, and write the band-preserving equivalence from the zero-cocycle gerbe to <span class="math" data-tex="\(\mathsf G_c\)">\(\mathsf G_c\)</span>.</p>
+<p><strong>Solution.</strong> The full tuple differential preserves alternating cochains: swapping adjacent positions negates each term, while the two terms deleting one of two equal positions cancel and every other term has a repeated argument. Thus its values on repeated tuples are zero. Every four-tuple of three indices has a repeated index, so <span class="math" data-tex="\(\delta c=0\)">\(\delta c=0\)</span>.</p>
+<p>Put <span class="math" data-tex="\(b_{01}=a\)">\(b_{01}=a\)</span>, <span class="math" data-tex="\(b_{02}=b_{12}=0\)">\(b_{02}=b_{12}=0\)</span>, extend by <span class="math" data-tex="\(b_{ji}=-b_{ij}\)">\(b_{ji}=-b_{ij}\)</span>, and set <span class="math" data-tex="\(b_{ii}=0\)">\(b_{ii}=0\)</span>. Then <span class="math" data-tex="\((\delta b)_{012}=b_{12}-b_{02}+b_{01}=a\)">\((\delta b)_{012}=b_{12}-b_{02}+b_{01}=a\)</span>. Both sides are alternating and zero on repeats, so <span class="math" data-tex="\(\delta b=c\)">\(\delta b=c\)</span> on every tuple. Formula (5.5) is the functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+ (i,j,t)\longmapsto(i,j,t-b_{ij})
+ \quad\text{from }\mathsf G_0\text{ to }\mathsf G_c.
+ \tag{8.1}
+\]">\[
+(i,j,t)\longmapsto(i,j,t-b_{ij})
+\quad\text{from }\mathsf G_0\text{ to }\mathsf G_c.
+\tag{8.1}
+\]</span>
+<p>Its composition check is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.2); horizontal scroll when needed" data-tex="\[
+ (t-b_{ij})+(s-b_{jk})+c_{ijk}
+ =t+s-b_{ik},
+ \tag{8.2}
+\]">\[
+(t-b_{ij})+(s-b_{jk})+c_{ijk}
+=t+s-b_{ik},
+\tag{8.2}
+\]</span>
+<p>exactly the image of the zero-cocycle composite. Its inverse adds <span class="math" data-tex="\(b_{ij}\)">\(b_{ij}\)</span>, so the presentation functors and their stackifications are mutually inverse. The band is unchanged. The index-zero object is already defined over the point and is a global object. Also sections on a point form an exact functor on abelian groups, so <span class="math" data-tex="\(H^2(\mathrm{pt},A)=0\)">\(H^2(\mathrm{pt},A)=0\)</span>. A nonzero value <span class="math" data-tex="\(a\)">\(a\)</span> in a chosen presentation therefore does not itself imply a nonzero gerbe class.</p>
+<p><strong>Exercise 3 (hypotheses: chosen objects can lack overlap arrows).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be the finite topological space with upper-open topology for the order having minimal elements <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, maximal elements <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, and all four relations from a minimal to a maximal element. Let <span class="math" data-tex="\(A\)">\(A\)</span> be the constant <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>-sheaf. Construct an <span class="math" data-tex="\(A\)">\(A\)</span>-torsor <span class="math" data-tex="\(P\)">\(P\)</span> with no global origin. In the neutral gerbe <span class="math" data-tex="\(BA\)">\(BA\)</span>, use the cover with two copies of <span class="math" data-tex="\(X\)">\(X\)</span> and choose the objects <span class="math" data-tex="\(A,P\)">\(A,P\)</span>. Explain why the overlap arrow needed in Section 5 cannot be chosen, and how refinement repairs that problem.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(U=\{u,p,q\}\)">\(U=\{u,p,q\}\)</span> and <span class="math" data-tex="\(V=\{v,p,q\}\)">\(V=\{v,p,q\}\)</span>. Glue <span class="math" data-tex="\(A|_U\)">\(A|_U\)</span> to <span class="math" data-tex="\(A|_V\)">\(A|_V\)</span> by translation zero at <span class="math" data-tex="\(p\)">\(p\)</span> and translation one at <span class="math" data-tex="\(q\)">\(q\)</span>. Gluing sheaves and actions gives a torsor. A section of the constant sheaf on <span class="math" data-tex="\(U\)">\(U\)</span> is constant: a neighborhood of its least point <span class="math" data-tex="\(u\)">\(u\)</span> is all of <span class="math" data-tex="\(U\)">\(U\)</span>. The same holds on <span class="math" data-tex="\(V\)">\(V\)</span>. A global origin would consequently give <span class="math" data-tex="\(b_U,b_V\in\mathbb Z/2\)">\(b_U,b_V\in\mathbb Z/2\)</span> with both <span class="math" data-tex="\(b_U=b_V\)">\(b_U=b_V\)</span> and <span class="math" data-tex="\(b_U=b_V+1\)">\(b_U=b_V+1\)</span>, which is impossible.</p>
+<p>An equivariant map <span class="math" data-tex="\(A\to P\)">\(A\to P\)</span> is determined by the image of zero, and every section of <span class="math" data-tex="\(P\)">\(P\)</span> supplies one. Thus <span class="math" data-tex="\(\mathcal Isom(A,P)=P\)">\(\mathcal Isom(A,P)=P\)</span>; an isomorphism <span class="math" data-tex="\(A\to P\)">\(A\to P\)</span> on the full overlap <span class="math" data-tex="\(X\)">\(X\)</span> would give the nonexistent origin. Nevertheless <span class="math" data-tex="\(BA\)">\(BA\)</span> is neutral, with the global object <span class="math" data-tex="\(A\)">\(A\)</span>, so its gerbe class is zero.</p>
+<p>Refine both indexed copies of <span class="math" data-tex="\(X\)">\(X\)</span> by <span class="math" data-tex="\(U,V\)">\(U,V\)</span>. The chosen trivializations of <span class="math" data-tex="\(P\)">\(P\)</span> there give local comparisons <span class="math" data-tex="\(\phi_i:A\to x_i\)">\(\phi_i:A\to x_i\)</span> to every chosen object. Set <span class="math" data-tex="\(\lambda_{ij}=\phi_i\phi_j^{-1}\)">\(\lambda_{ij}=\phi_i\phi_j^{-1}\)</span>. Their composites obey <span class="math" data-tex="\(\lambda_{ij}\lambda_{jk}=\lambda_{ik}\)">\(\lambda_{ij}\lambda_{jk}=\lambda_{ik}\)</span>, so their cocycle is identically zero. Local existence of objects and neutral cohomology class therefore did not provide arrows between the initially chosen objects on the initially chosen overlap. Actual arrows required the refinement just constructed.</p>
+<p><strong>Exercise 4 (advanced: dimension shifting gives every obstruction).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be any topological space, let <span class="math" data-tex="\(0\to A\to I\xrightarrow{\pi}B\to0\)">\(0\to A\to I\xrightarrow{\pi}B\to0\)</span> be an exact sequence of abelian sheaves with <span class="math" data-tex="\(I\)">\(I\)</span> injective, and let <span class="math" data-tex="\(P\)">\(P\)</span> be a <span class="math" data-tex="\(B\)">\(B\)</span>-torsor. A lift of <span class="math" data-tex="\(P\)">\(P\)</span> is an <span class="math" data-tex="\(I\)">\(I\)</span>-torsor <span class="math" data-tex="\(Q\)">\(Q\)</span> with an identification <span class="math" data-tex="\(\pi_*Q\simeq P\)">\(\pi_*Q\simeq P\)</span>. Prove that their stack is an <span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbe with class <span class="math" data-tex="\(\partial[P]\in H^2(X,A)\)">\(\partial[P]\in H^2(X,A)\)</span>, for the positive connecting convention of the extension prerequisite. Prove it is neutral exactly when <span class="math" data-tex="\(P\)">\(P\)</span> is trivial, and explain why every <span class="math" data-tex="\(A\)">\(A\)</span>-gerbe has a representative of this form.</p>
+<p><strong>Solution.</strong> A local origin <span class="math" data-tex="\(p\)">\(p\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> gives the lift <span class="math" data-tex="\(Q=I\)">\(Q=I\)</span>, with identification <span class="math" data-tex="\(t\mapsto p+\pi(t)\)">\(t\mapsto p+\pi(t)\)</span>. Two such local lifts have an arrow when their origins differ by a section of <span class="math" data-tex="\(\operatorname{im}\pi\)">\(\operatorname{im}\pi\)</span>, which holds locally by the exact sequence. An automorphism is translation by a section of <span class="math" data-tex="\(I\)">\(I\)</span> mapping to zero in <span class="math" data-tex="\(B\)">\(B\)</span>, hence is a unique section of <span class="math" data-tex="\(A\)">\(A\)</span>. These identifications are unchanged by conjugation. Torsors, their equivariant maps and their specified identifications descend, so the lift category is an <span class="math" data-tex="\(A\)">\(A\)</span>-banded gerbe <span class="math" data-tex="\(\mathsf L(P)\)">\(\mathsf L(P)\)</span>.</p>
+<p>The complete first-cohomology and extension classification in <a href="torsors-first-cohomology-and-line-bundles.html#3-the-complete-first-cohomology-classification">Torsors and line bundles, Sections 3–5</a> identifies <span class="math" data-tex="\(P\)">\(P\)</span> with the fibre over one of an exact row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.3); horizontal scroll when needed" data-tex="\[
+ 0\longrightarrow B\longrightarrow F_P
+ \longrightarrow\mathbb Z\longrightarrow0,
+ \tag{8.3}
+\]">\[
+0\longrightarrow B\longrightarrow F_P
+\longrightarrow\mathbb Z\longrightarrow0,
+\tag{8.3}
+\]</span>
+<p>whose positive extension class is <span class="math" data-tex="\([P]\)">\([P]\)</span>. Splice it with <span class="math" data-tex="\(0\to A\to I\to B\to0\)">\(0\to A\to I\to B\to0\)</span>. Its lifting prestack has objects <span class="math" data-tex="\(p\in P\)">\(p\in P\)</span> and arrows <span class="math" data-tex="\(t:p\to p&#x27;\)">\(t:p\to p&#x27;\)</span> satisfying <span class="math" data-tex="\(\pi(t)=p-p&#x27;\)">\(\pi(t)=p-p&#x27;\)</span>. An equivariant map between the two trivial lifts is <span class="math" data-tex="\(s\mapsto s+t\)">\(s\mapsto s+t\)</span>; compatibility with their maps to <span class="math" data-tex="\(P\)">\(P\)</span> is precisely that equation. Every lifted torsor is locally trivial, so stackification of this prestack is <span class="math" data-tex="\(\mathsf L(P)\)">\(\mathsf L(P)\)</span>.</p>
+<p>The normalized splicing theorem in <a href="higher-extensions-roofs-and-yoneda-composition.html#4-splicing-and-the-sign-of-composition">Higher extensions, Theorem 4.1</a> identifies the class of the spliced two-extension with the positive connecting map applied to <span class="math" data-tex="\([P]\)">\([P]\)</span>. Theorem 3.2 therefore gives <span class="math" data-tex="\(\operatorname{cl}\mathsf L(P)=\partial[P]\)">\(\operatorname{cl}\mathsf L(P)=\partial[P]\)</span>, with no sign left unspecified.</p>
+<p>Injectivity gives <span class="math" data-tex="\(H^1(X,I)=H^2(X,I)=0\)">\(H^1(X,I)=H^2(X,I)=0\)</span>, because the one-term injective resolution computes them. The long exact sequence makes <span class="math" data-tex="\(\partial:H^1(X,B)\to H^2(X,A)\)">\(\partial:H^1(X,B)\to H^2(X,A)\)</span> an isomorphism. Consequently <span class="math" data-tex="\(\mathsf L(P)\)">\(\mathsf L(P)\)</span> is neutral exactly when <span class="math" data-tex="\([P]=0\)">\([P]=0\)</span>, equivalently when <span class="math" data-tex="\(P\)">\(P\)</span> has a global origin. Directly, every <span class="math" data-tex="\(I\)">\(I\)</span>-torsor is trivial by the same first-cohomology classification, so a global lift can only map to a trivial <span class="math" data-tex="\(B\)">\(B\)</span>-torsor; a trivial <span class="math" data-tex="\(P\)">\(P\)</span> has the displayed trivial lift. Finally every class in <span class="math" data-tex="\(H^2(X,A)\)">\(H^2(X,A)\)</span> is <span class="math" data-tex="\(\partial[P]\)">\(\partial[P]\)</span> for some <span class="math" data-tex="\(B\)">\(B\)</span>-torsor, and Theorem 3.2 identifies its gerbe with <span class="math" data-tex="\(\mathsf L(P)\)">\(\mathsf L(P)\)</span>. This supplies a concrete representative for every obstruction.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/06NY">Gerbes, Section 8.11</a>, for the stack and abelian-band notions.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/0CJZ">Second cohomology and gerbes, Section 21.11</a>, for the relation between overlap torsors, cocycle obstructions and objects.</li>
+<li>The internal proof prerequisites are the stackification and arbitrary-base descent theorems, the module-sheafification and injective constructions, the normalized higher-extension comparison, and the Čech comparison linked above. The local finite relation proof, inverse constructions, sign calculation and exercises are given here. Original exposition and solutions are CC0; linked works retain their own licences.</li>
+</ul>
+</main></body></html>

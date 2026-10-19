@@ -2,7 +2,7 @@
 
 This lesson makes the transverse reflection argument quantitative for a compact smooth family of scalar operators. It proves a uniform estimate from one observed branch on a positive normal strip, the actual tested forcing, the actual Dirichlet value and a coarse mixed norm. The parameter neighborhood and geometric cutoffs are fixed before the desired Sobolev order is chosen.
 
-The starting point is Hörmander, *The Analysis of Linear Partial Differential Operators III*, §24.2, Theorem 24.2.1, and the parameter question in Proposition 24.7.1′. The exact approved 2007 edition is an admitted source. The argument below is independent exposition using the programme's complete [reflection proof](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html), ordered Cauchy calculus and uniform glancing estimates. The last is needed only to identify the remaining assembly problem.
+The starting point is Hörmander, *The Analysis of Linear Partial Differential Operators III*, §24.2, Theorem 24.2.1, and the parameter question in Proposition 24.7.1′. The exact approved 2007 edition is an admitted source. The argument below is independent exposition using the programme's complete [reflection proof](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html), [ordered Cauchy calculus](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.html) and uniform glancing estimates. The last is needed only to identify the remaining assembly problem.
 
 ## 1. Fix the geometry before the regularity order
 

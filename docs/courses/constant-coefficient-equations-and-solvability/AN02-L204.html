@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contour spaces and solvability for families of equations</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L203.html">Previous lesson</a> · <a href="#5-polynomial-operators-and-pointwise-lifting">The lifting theorem</a> · <a href="src/contour-spaces-and-solvability-for-families-of-equations.md">Editable source</a></nav><h1 id="contour-spaces-and-solvability-for-families-of-equations">Contour spaces and solvability for families of equations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A contour on which every polynomial stays away from zero can do more than define an integral. It gives a norm on test functions, and the dual of that norm is a Banach space of distributions. In these spaces the denominator estimate becomes a lower bound for the transposed differential operator. Hahn–Banach then produces a solution with a common norm bound for an entire compact family of equations.</p>
+<p>The central result is Theorem 5.2. It includes every Fourier exponent, from one to infinity, and gives the full derivative-weight gain. Theorem 4.1 explains why the dual elements have local Fourier regularity and a common growth allowance. The supremum test norm requires the separate smoothing argument in Section 3. Section 6 describes operator-valued holomorphic families; selecting their solutions analytically is a further problem.</p>
+<p>Basic references are Grubb's lecture notes [Grubb], Malgrange's existence and approximation paper [Malgrange], and Mantlik's analytic-parameter paper [Mantlik]. The arguments below use the linked prerequisite proofs and an explicit bounded-frequency test for the supremum endpoint.</p>
+<h2 id="conventions-and-prerequisite-results">Conventions and prerequisite results</h2>
+<p>Fix <span class="math" data-index="0" data-tex="\(n\ge1\)">\(n\ge1\)</span>, a nonzero <span class="math" data-index="1" data-tex="\(Q\in\mathbb C[\xi_1,\ldots,\xi_n]\)">\(Q\in\mathbb C[\xi_1,\ldots,\xi_n]\)</span>, and <span class="math" data-index="2" data-tex="\(m=\deg Q\)">\(m=\deg Q\)</span>.</p>
+<p>Use <span class="math" data-index="3" data-tex="\(\widehat\phi(\xi)=\int e^{-ix\cdot\xi}\phi(x)\,dx\)">\(\widehat\phi(\xi)=\int e^{-ix\cdot\xi}\phi(x)\,dx\)</span>,
+<span class="math" data-index="4" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, the complex-bilinear distribution pairing, and
+<span class="math" data-index="5" data-tex="\(d\nu(\xi)=(2\pi)^{-n}d\xi\)">\(d\nu(\xi)=(2\pi)^{-n}d\xi\)</span>. Put</p>
+<span class="math math-display" id="learner-eq-CD1" data-index="6" data-tex="\[
+ k^*(\xi)=1/k(-\xi),\qquad
+ J_Q(\xi)=\sum_{|\alpha|\le m}|\partial^\alpha Q(\xi)|.
+ \tag{CD1}
+\]">\[
+ k^*(\xi)=1/k(-\xi),\qquad
+ J_Q(\xi)=\sum_{|\alpha|\le m}|\partial^\alpha Q(\xi)|.
+ \tag{CD1}
+\]</span>
+<p>Thus <span class="math" data-index="7" data-tex="\((kJ_Q)^*(\xi)=k^*(\xi)/J_Q(-\xi)\)">\((kJ_Q)^*(\xi)=k^*(\xi)/J_Q(-\xi)\)</span>.
+The star on a weight includes both reciprocal and reflection. No complex
+conjugation is implicit in the distribution pairing.
+The positive weight <span class="math" data-index="8" data-tex="\(J_Q\)">\(J_Q\)</span> is moderate:
+finite Taylor expansion gives
+<span class="math" data-index="9" data-tex="\(J_Q(\xi+h)\le E_m(|h|_\infty)J_Q(\xi)\)">\(J_Q(\xi+h)\le E_m(|h|_\infty)J_Q(\xi)\)</span>, and
+<span class="math" data-index="10" data-tex="\(E_m(u)=\sum_{j=0}^m(nu)^j/j!\le(1+nu)^m\)">\(E_m(u)=\sum_{j=0}^m(nu)^j/j!\le(1+nu)^m\)</span>.
+Thus the product <span class="math" data-index="11" data-tex="\(kJ_Q\)">\(kJ_Q\)</span> is an admitted moderate weight.</p>
+<p>The prerequisites are <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, Theorems 3.1, 4.1 and 5.1, for density, Schwartz multiplication and finite-exponent bilinear duality; <a href="prerequisites/banach-foundation-bridges.html#section-5">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 5, for complex Hahn–Banach; <a href="AN02-L008.html">The geometry of coefficients and strength</a>, Proposition 5.1, for compact equally strong families; and <a href="AN02-L203.html">One contour for a compact family of equations</a>, Theorem 1.1, for the common contour.</p>
+<p>All weights below use the moderate-weight convention of the weighted Fourier lesson, so they are continuous and positive, and are bounded above and below on each compact set. Proposition 2.2 of that lesson extends the conclusions, with equivalent norms, to measurable weights satisfying its weaker temperate estimate.</p>
+<h2 id="1-norms-obtained-from-several-complex-circles">1. Norms obtained from several complex circles</h2>
+<p>Write <span class="math" data-index="12" data-tex="\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span> for the unit circle.</p>
+<p>Let <span class="math" data-index="13" data-tex="\(r\ge0\)">\(r\ge0\)</span> and let <span class="math" data-index="14" data-tex="\(\eta_1,\ldots,\eta_r:\mathbb R^n\to\mathbb R^n\)">\(\eta_1,\ldots,\eta_r:\mathbb R^n\to\mathbb R^n\)</span>
+be bounded Borel functions. Write</p>
+<span class="math math-display" id="learner-eq-CD2" data-index="15" data-tex="\[
+ H^r(\xi,z)=\sum_{s=1}^r z_s\eta_s(\xi),\qquad
+ z\in\mathbb T^r,\qquad
+ d\mu_r(z)=\prod_{s=1}^r\frac{d\theta_s}{2\pi}.
+ \tag{CD2}
+\]">\[
+ H^r(\xi,z)=\sum_{s=1}^r z_s\eta_s(\xi),\qquad
+ z\in\mathbb T^r,\qquad
+ d\mu_r(z)=\prod_{s=1}^r\frac{d\theta_s}{2\pi}.
+ \tag{CD2}
+\]</span>
+<p>For <span class="math" data-index="16" data-tex="\(r=0\)">\(r=0\)</span> take <span class="math" data-index="17" data-tex="\(H^0=0\)">\(H^0=0\)</span> and a one-point probability space.
+For <span class="math" data-index="18" data-tex="\(\phi\in\mathcal D=C_c^\infty(\mathbb R^n)\)">\(\phi\in\mathcal D=C_c^\infty(\mathbb R^n)\)</span> and <span class="math" data-index="19" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span>
+define</p>
+<span class="math math-display" id="learner-eq-CD3" data-index="20" data-tex="\[
+ N^{H^r}_{p,\omega}(\phi)^p
+ =\int_{\mathbb R^n}\int_{\mathbb T^r}
+  |\omega(\xi)\widehat\phi(\xi+H^r(\xi,z))|^p
+                 d\mu_r(z)d\nu(\xi).
+ \tag{CD3}
+\]">\[
+ N^{H^r}_{p,\omega}(\phi)^p
+ =\int_{\mathbb R^n}\int_{\mathbb T^r}
+  |\omega(\xi)\widehat\phi(\xi+H^r(\xi,z))|^p
+                 d\mu_r(z)d\nu(\xi).
+ \tag{CD3}
+\]</span>
+<p>For <span class="math" data-index="21" data-tex="\(p=\infty\)">\(p=\infty\)</span>, take the essential supremum for this product measure.
+Since the integrand is continuous in each circle variable, its essential
+supremum there agrees with its supremum at every fixed real frequency.
+Measurability in all variables follows from the Borel property of the
+fields and continuity of the entire Fourier transform.</p>
+<p><strong>Lemma 1.1.</strong> These are finite norms, and</p>
+<span class="math math-display" id="learner-eq-CD4" data-index="22" data-tex="\[
+ \|\phi\|_{p,\omega}=N^{H^0}_{p,\omega}(\phi)
+ \le N^{H^1}_{p,\omega}(\phi)\le\cdots
+ \le N^{H^r}_{p,\omega}(\phi).
+ \tag{CD4}
+\]">\[
+ \|\phi\|_{p,\omega}=N^{H^0}_{p,\omega}(\phi)
+ \le N^{H^1}_{p,\omega}(\phi)\le\cdots
+ \le N^{H^r}_{p,\omega}(\phi).
+ \tag{CD4}
+\]</span>
+<p>On tests supported in any fixed compact set, each contour norm is bounded
+by a finite test-function seminorm.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-index="23" data-tex="\(\xi,z_1,\ldots,z_{r-1}\)">\(\xi,z_1,\ldots,z_{r-1}\)</span>, the function</p>
+<span class="math math-display" data-index="24" data-tex="\[
+ t\longmapsto\widehat\phi\bigl(\xi+H^{r-1}(\xi,z&#x27;)
+                                      +t\eta_r(\xi)\bigr)
+\]">\[
+ t\longmapsto\widehat\phi\bigl(\xi+H^{r-1}(\xi,z&#x27;)
+                                      +t\eta_r(\xi)\bigr)
+\]</span>
+<p>is entire. Cauchy's value formula at zero, followed by the triangle
+inequality and Jensen's inequality for the probability circle, gives
+the <span class="math" data-index="25" data-tex="\(p\)">\(p\)</span>-power submean inequality. Integrate in <span class="math" data-index="26" data-tex="\(\xi,z&#x27;\)">\(\xi,z&#x27;\)</span>.
+For <span class="math" data-index="27" data-tex="\(p=\infty\)">\(p=\infty\)</span> use the maximum bound; the same almost-everywhere
+argument applies. Iterate to obtain (CD4). The ordinary Fourier norm
+is a norm, so every larger one is a norm.</p>
+<p>Let <span class="math" data-index="28" data-tex="\(M=\sup_{\xi,z}|H^r(\xi,z)|_\infty&lt;\infty\)">\(M=\sup_{\xi,z}|H^r(\xi,z)|_\infty&lt;\infty\)</span>.
+For tests supported in <span class="math" data-index="29" data-tex="\(K\)">\(K\)</span>, write their shifted transform as the
+ordinary real transform of <span class="math" data-index="30" data-tex="\(e^{-ix\cdot h}\phi(x)\)">\(e^{-ix\cdot h}\phi(x)\)</span>, where
+<span class="math" data-index="31" data-tex="\(|h|_\infty\le M\)">\(|h|_\infty\le M\)</span>. Integrating by parts in <span class="math" data-index="32" data-tex="\(x\)">\(x\)</span>, with
+the factor <span class="math" data-index="33" data-tex="\((1+|\xi|^2)^{-L}\)">\((1+|\xi|^2)^{-L}\)</span>, bounds its modulus by</p>
+<span class="math math-display" data-index="34" data-tex="\[
+ C_{K,L,M}(1+|\xi|^2)^{-L}
+                     \max_{|\alpha|\le2L}\|\partial^\alpha\phi\|_\infty .
+\]">\[
+ C_{K,L,M}(1+|\xi|^2)^{-L}
+                     \max_{|\alpha|\le2L}\|\partial^\alpha\phi\|_\infty .
+\]</span>
+<p>All derivatives of the modulation are uniformly bounded on <span class="math" data-index="35" data-tex="\(K\)">\(K\)</span>.
+The polynomial upper growth of <span class="math" data-index="36" data-tex="\(\omega\)">\(\omega\)</span> makes the indicated
+majorant integrable to the <span class="math" data-index="37" data-tex="\(p\)">\(p\)</span>-power for sufficiently large <span class="math" data-index="38" data-tex="\(L\)">\(L\)</span>;
+it is bounded for <span class="math" data-index="39" data-tex="\(p=\infty\)">\(p=\infty\)</span>. This proves the assertions. <span class="math" data-index="40" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-one-growth-weight-accommodates-every-bounded-contour">2. One growth weight accommodates every bounded contour</h2>
+<p>Fix any real <span class="math" data-index="41" data-tex="\(\sigma\in C^\infty([0,\infty))\)">\(\sigma\in C^\infty([0,\infty))\)</span> with
+<span class="math" data-index="42" data-tex="\(\sigma(t)\to+\infty\)">\(\sigma(t)\to+\infty\)</span> and every <span class="math" data-index="43" data-tex="\(\sigma^{(j)}\)">\(\sigma^{(j)}\)</span>, <span class="math" data-index="44" data-tex="\(j\ge1\)">\(j\ge1\)</span>, bounded.
+No rate of divergence is prescribed. Put</p>
+<span class="math math-display" id="learner-eq-CD5" data-index="45" data-tex="\[
+ a(x)=\exp\!\left(\sigma(|x|^2)\sqrt{1+|x|^2}\right).
+ \tag{CD5}
+\]">\[
+ a(x)=\exp\!\left(\sigma(|x|^2)\sqrt{1+|x|^2}\right).
+ \tag{CD5}
+\]</span>
+<p>For <span class="math" data-index="46" data-tex="\(1\le q\le\infty\)">\(1\le q\le\infty\)</span> let</p>
+<span class="math math-display" id="learner-eq-CD6" data-index="47" data-tex="\[
+ B^{-a}_{q,k}=\{a u:u\in B_{q,k}\},\qquad
+ \|v\|_{-a,q,k}=\|v/a\|_{q,k}.
+ \tag{CD6}
+\]">\[
+ B^{-a}_{q,k}=\{a u:u\in B_{q,k}\},\qquad
+ \|v\|_{-a,q,k}=\|v/a\|_{q,k}.
+ \tag{CD6}
+\]</span>
+<p>Multiplication by <span class="math" data-index="48" data-tex="\(a\)">\(a\)</span> is understood in <span class="math" data-index="49" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>, not as an
+assertion that <span class="math" data-index="50" data-tex="\(a u\)">\(a u\)</span> is tempered. This is an isometric copy of a Banach
+space. Also <span class="math" data-index="51" data-tex="\(B^{-a}_{q,k}\hookrightarrow B^{\rm loc}_{q,k}\)">\(B^{-a}_{q,k}\hookrightarrow B^{\rm loc}_{q,k}\)</span>:
+for each <span class="math" data-index="52" data-tex="\(\chi\in\mathcal D\)">\(\chi\in\mathcal D\)</span>,
+<span class="math" data-index="53" data-tex="\(\chi v=(\chi a)(v/a)\)">\(\chi v=(\chi a)(v/a)\)</span>, and the weighted Fourier lesson, Theorem 4.1 applies to
+the compact smooth multiplier <span class="math" data-index="54" data-tex="\(\chi a\)">\(\chi a\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For each fixed finite list <span class="math" data-index="55" data-tex="\(H^r\)">\(H^r\)</span>, every <span class="math" data-index="56" data-tex="\(p\)">\(p\)</span> including
+both endpoints, and every moderate <span class="math" data-index="57" data-tex="\(\omega\)">\(\omega\)</span>, there is a finite
+constant <span class="math" data-index="58" data-tex="\(C\)">\(C\)</span> such that</p>
+<span class="math math-display" id="learner-eq-CD7" data-index="59" data-tex="\[
+ N^{H^r}_{p,\omega}(\phi)\le C\|a\phi\|_{p,\omega}
+                       \qquad(\phi\in\mathcal D).
+ \tag{CD7}
+\]">\[
+ N^{H^r}_{p,\omega}(\phi)\le C\|a\phi\|_{p,\omega}
+                       \qquad(\phi\in\mathcal D).
+ \tag{CD7}
+\]</span>
+<p>The same fixed <span class="math" data-index="60" data-tex="\(a\)">\(a\)</span> works for all the finite prefixes of any countable
+list of bounded fields. The constants may depend on the prefix.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-index="61" data-tex="\(R=1+M\)">\(R=1+M\)</span>, where <span class="math" data-index="62" data-tex="\(M\)">\(M\)</span> is as in Lemma 1.1.
+Apply the iterated Cauchy formula to the entire function
+<span class="math" data-index="63" data-tex="\(\zeta\mapsto\widehat\phi(\xi+\zeta)\)">\(\zeta\mapsto\widehat\phi(\xi+\zeta)\)</span> on the polydisc of radius <span class="math" data-index="64" data-tex="\(R\)">\(R\)</span>.
+For any <span class="math" data-index="65" data-tex="\(|h|_\infty\le M\)">\(|h|_\infty\le M\)</span>, every Cauchy kernel factor has modulus
+at most <span class="math" data-index="66" data-tex="\(R/(R-M)=R\)">\(R/(R-M)=R\)</span>. Consequently</p>
+<span class="math math-display" id="learner-eq-CD8" data-index="67" data-tex="\[
+ |\widehat\phi(\xi+h)|^p
+ \le R^{np}\int_{\mathbb T^n}
+           |\widehat\phi(\xi+Rw)|^p\,d\mu_n(w)
+ \quad(p&lt;\infty).
+ \tag{CD8}
+\]">\[
+ |\widehat\phi(\xi+h)|^p
+ \le R^{np}\int_{\mathbb T^n}
+           |\widehat\phi(\xi+Rw)|^p\,d\mu_n(w)
+ \quad(p&lt;\infty).
+ \tag{CD8}
+\]</span>
+<p>For infinity the corresponding supremum estimate holds.
+This estimate is uniform in <span class="math" data-index="68" data-tex="\(h\)">\(h\)</span>, so it may be used even when
+<span class="math" data-index="69" data-tex="\(h=H^r(\xi,z)\)">\(h=H^r(\xi,z)\)</span> depends merely measurably on <span class="math" data-index="70" data-tex="\(\xi,z\)">\(\xi,z\)</span>.</p>
+<p>The functions</p>
+<span class="math math-display" id="learner-eq-CD9" data-index="71" data-tex="\[
+ b_w(x)=e^{-iR w\cdot x}/a(x),\qquad w\in\mathbb T^n,
+ \tag{CD9}
+\]">\[
+ b_w(x)=e^{-iR w\cdot x}/a(x),\qquad w\in\mathbb T^n,
+ \tag{CD9}
+\]</span>
+<p>form a bounded subset of <span class="math" data-index="72" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Indeed derivatives of
+<span class="math" data-index="73" data-tex="\(\log a=\sigma(|x|^2)\sqrt{1+|x|^2}\)">\(\log a=\sigma(|x|^2)\sqrt{1+|x|^2}\)</span> have polynomial bounds:
+<span class="math" data-index="74" data-tex="\(\sigma(t)=O(1+t)\)">\(\sigma(t)=O(1+t)\)</span> and its positive derivatives are bounded.
+Every derivative of <span class="math" data-index="75" data-tex="\(1/a\)">\(1/a\)</span> is therefore bounded by a polynomial
+times <span class="math" data-index="76" data-tex="\(1/a\)">\(1/a\)</span>. The factor <span class="math" data-index="77" data-tex="\(1/a\)">\(1/a\)</span> decays faster than
+<span class="math" data-index="78" data-tex="\(\exp(-L|x|)\)">\(\exp(-L|x|)\)</span> for every fixed <span class="math" data-index="79" data-tex="\(L\)">\(L\)</span>, whereas the modulation and
+its derivatives grow at most exponentially, uniformly for <span class="math" data-index="80" data-tex="\(w\)">\(w\)</span>.
+This proves all the required Schwartz bounds.</p>
+<p>By the weighted Fourier lesson, Theorem 4.1, all these multipliers act boundedly on
+<span class="math" data-index="81" data-tex="\(B_{p,\omega}\)">\(B_{p,\omega}\)</span>, with one bound</p>
+<span class="math math-display" id="learner-eq-CD10" data-index="82" data-tex="\[
+ C_b=\sup_w\int M_\omega(h)|\widehat b_w(h)|\,d\nu(h)&lt;\infty.
+ \tag{CD10}
+\]">\[
+ C_b=\sup_w\int M_\omega(h)|\widehat b_w(h)|\,d\nu(h)&lt;\infty.
+ \tag{CD10}
+\]</span>
+<p>Use <span class="math" data-index="83" data-tex="\(\widehat\phi(\xi+Rw)=
+\widehat{b_w(a\phi)}(\xi)\)">\(\widehat\phi(\xi+Rw)=
+\widehat{b_w(a\phi)}(\xi)\)</span>, multiply (CD8) by <span class="math" data-index="84" data-tex="\(\omega(\xi)^p\)">\(\omega(\xi)^p\)</span>,
+and integrate. For finite <span class="math" data-index="85" data-tex="\(p\)">\(p\)</span> this gives (CD7) with <span class="math" data-index="86" data-tex="\(C=R^nC_b\)">\(C=R^nC_b\)</span>.
+The same pointwise supremum and multiplier estimate prove infinity.
+There was no bound on how slowly <span class="math" data-index="87" data-tex="\(\sigma\)">\(\sigma\)</span> diverges. <span class="math" data-index="88" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-schwartz-smoothing-at-the-l-infty-endpoint">3. Schwartz smoothing at the <span class="math" data-index="89" data-tex="\(L^\infty\)">\(L^\infty\)</span> endpoint</h2>
+<p><strong>Lemma 3.1 (Schwartz smoothing of a weighted-supremum functional).</strong>
+Suppose <span class="math" data-index="90" data-tex="\(t\in\mathcal S&#x27;\)">\(t\in\mathcal S&#x27;\)</span> is complex-linear and</p>
+<span class="math math-display" id="learner-eq-CD11" data-index="91" data-tex="\[
+ |\langle t,\psi\rangle|\le L\|\psi\|_{\infty,\omega}
+                         \qquad(\psi\in\mathcal S).
+ \tag{CD11}
+\]">\[
+ |\langle t,\psi\rangle|\le L\|\psi\|_{\infty,\omega}
+                         \qquad(\psi\in\mathcal S).
+ \tag{CD11}
+\]</span>
+<p>For every <span class="math" data-index="92" data-tex="\(b\in\mathcal S\)">\(b\in\mathcal S\)</span>, the product <span class="math" data-index="93" data-tex="\(bt\)">\(bt\)</span> belongs to
+<span class="math" data-index="94" data-tex="\(B_{1,\omega^*}\)">\(B_{1,\omega^*}\)</span>, and</p>
+<span class="math math-display" id="learner-eq-CD12" data-index="95" data-tex="\[
+ \|bt\|_{1,\omega^*}\le L A_\omega(b),\qquad
+ A_\omega(b)=\int M_\omega(h)|\widehat b(h)|\,d\nu(h).
+ \tag{CD12}
+\]">\[
+ \|bt\|_{1,\omega^*}\le L A_\omega(b),\qquad
+ A_\omega(b)=\int M_\omega(h)|\widehat b(h)|\,d\nu(h).
+ \tag{CD12}
+\]</span>
+<p><strong>Proof.</strong> The function</p>
+<span class="math math-display" id="learner-eq-CD13" data-index="96" data-tex="\[
+ g(\xi)=\langle t,b(x)e^{-ix\cdot\xi}\rangle
+ \tag{CD13}
+\]">\[
+ g(\xi)=\langle t,b(x)e^{-ix\cdot\xi}\rangle
+ \tag{CD13}
+\]</span>
+<p>is smooth, of polynomial growth, and is the Fourier transform of <span class="math" data-index="97" data-tex="\(bt\)">\(bt\)</span>.
+Differentiating its Schwartz-valued test proves smoothness.
+Pairing with a Schwartz frequency test and interchanging its convergent
+Schwartz integral proves the Fourier identity.</p>
+<p>Let <span class="math" data-index="98" data-tex="\(E\)">\(E\)</span> be a bounded measurable frequency set. Choose any measurable
+<span class="math" data-index="99" data-tex="\(u:E\to\mathbb C\)">\(u:E\to\mathbb C\)</span> with <span class="math" data-index="100" data-tex="\(|u|\le1\)">\(|u|\le1\)</span>, and set</p>
+<span class="math math-display" id="learner-eq-CD14" data-index="101" data-tex="\[
+ \psi_{E,u}(x)=b(x)\int_E
+       \frac{u(\xi)e^{-ix\cdot\xi}}{\omega(-\xi)}\,d\nu(\xi).
+ \tag{CD14}
+\]">\[
+ \psi_{E,u}(x)=b(x)\int_E
+       \frac{u(\xi)e^{-ix\cdot\xi}}{\omega(-\xi)}\,d\nu(\xi).
+ \tag{CD14}
+\]</span>
+<p>This is Schwartz: on each bounded <span class="math" data-index="102" data-tex="\(E\)">\(E\)</span> the integral is smooth with
+every derivative bounded, and <span class="math" data-index="103" data-tex="\(\omega\)">\(\omega\)</span> is bounded away from zero.
+The integral converges in each Schwartz seminorm after multiplication
+by <span class="math" data-index="104" data-tex="\(b\)">\(b\)</span>, so it can be interchanged with <span class="math" data-index="105" data-tex="\(t\)">\(t\)</span>.
+One may justify this without a vector-valued integration theorem:
+approximate the bounded measurable factor on the bounded set <span class="math" data-index="106" data-tex="\(E\)">\(E\)</span>
+in <span class="math" data-index="107" data-tex="\(L^1\)">\(L^1\)</span> by simple functions. Every Schwartz seminorm of the resulting
+error is bounded by a fixed constant times that <span class="math" data-index="108" data-tex="\(L^1\)">\(L^1\)</span> error.
+The map <span class="math" data-index="109" data-tex="\(\xi\mapsto b e^{-ix\cdot\xi}\)">\(\xi\mapsto b e^{-ix\cdot\xi}\)</span> is continuous into
+<span class="math" data-index="110" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, uniformly on a compact frequency box; partitions
+into small boxes approximate it by finite step functions in any
+specified finite list of seminorms. Those finite vector sums commute
+with <span class="math" data-index="111" data-tex="\(t\)">\(t\)</span>, and their limits justify the claimed interchange.
+Its Fourier transform obeys</p>
+<span class="math math-display" id="learner-eq-CD15" data-index="112" data-tex="\[
+ \begin{aligned}
+ \omega(\eta)|\widehat\psi_{E,u}(\eta)|
+ &amp;\le\int_E
+   \frac{\omega(\eta)}{\omega(-\xi)}
+                       |\widehat b(\eta+\xi)|\,d\nu(\xi)\\
+ &amp;\le\int_{\mathbb R^n}
+   M_\omega(h)|\widehat b(h)|\,d\nu(h)=A_\omega(b).
+ \end{aligned}
+ \tag{CD15}
+\]">\[
+ \begin{aligned}
+ \omega(\eta)|\widehat\psi_{E,u}(\eta)|
+ &amp;\le\int_E
+   \frac{\omega(\eta)}{\omega(-\xi)}
+                       |\widehat b(\eta+\xi)|\,d\nu(\xi)\\
+ &amp;\le\int_{\mathbb R^n}
+   M_\omega(h)|\widehat b(h)|\,d\nu(h)=A_\omega(b).
+ \end{aligned}
+ \tag{CD15}
+\]</span>
+<p>Here the moderate-weight ratio uses <span class="math" data-index="113" data-tex="\(h=\eta+\xi\)">\(h=\eta+\xi\)</span>;
+this is where the reflection in <span class="math" data-index="114" data-tex="\(\omega^*\)">\(\omega^*\)</span> is essential.
+Choose <span class="math" data-index="115" data-tex="\(u(\xi)=\overline{g(\xi)}/|g(\xi)|\)">\(u(\xi)=\overline{g(\xi)}/|g(\xi)|\)</span> where <span class="math" data-index="116" data-tex="\(g\ne0\)">\(g\ne0\)</span>
+and zero elsewhere. Equations (CD11),(CD14),(CD15) give</p>
+<span class="math math-display" id="learner-eq-CD16" data-index="117" data-tex="\[
+ \int_E\frac{|g(\xi)|}{\omega(-\xi)}\,d\nu(\xi)
+       =|\langle t,\psi_{E,u}\rangle|
+       \le L A_\omega(b).
+ \tag{CD16}
+\]">\[
+ \int_E\frac{|g(\xi)|}{\omega(-\xi)}\,d\nu(\xi)
+       =|\langle t,\psi_{E,u}\rangle|
+       \le L A_\omega(b).
+ \tag{CD16}
+\]</span>
+<p>Increase <span class="math" data-index="118" data-tex="\(E\)">\(E\)</span> through balls and use monotone convergence.
+This is exactly (CD12). No measure representation theorem,
+identification of <span class="math" data-index="119" data-tex="\((L^\infty)&#x27;\)">\((L^\infty)&#x27;\)</span>, or norm density of tests in
+<span class="math" data-index="120" data-tex="\(B_{\infty,\omega}\)">\(B_{\infty,\omega}\)</span> was used. <span class="math" data-index="121" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-full-contour-dual-is-a-space-of-regular-distributions">4. The full contour dual is a space of regular distributions</h2>
+<p>Let <span class="math" data-index="122" data-tex="\(1/p+1/q=1\)">\(1/p+1/q=1\)</span>. Define</p>
+<span class="math math-display" id="learner-eq-CD17" data-index="123" data-tex="\[
+ F^{H^r}_{q,k}=
+       (\mathcal D,N^{H^r}_{p,k^*})&#x27;
+ \tag{CD17}
+\]">\[
+ F^{H^r}_{q,k}=
+       (\mathcal D,N^{H^r}_{p,k^*})&#x27;
+ \tag{CD17}
+\]</span>
+<p>with its operator norm. A functional on this normed test space is
+identified with its action on <span class="math" data-index="124" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> The space in (CD17) is Banach, every one of its elements
+is a distribution, and, for every admissible <span class="math" data-index="125" data-tex="\(a\)">\(a\)</span> from (CD5),</p>
+<span class="math math-display" id="learner-eq-CD18" data-index="126" data-tex="\[
+ B_{q,k}\hookrightarrow F^{H^0}_{q,k}
+ \hookrightarrow\cdots\hookrightarrow F^{H^r}_{q,k}
+ \hookrightarrow B^{-a}_{q,k}\hookrightarrow B^{\rm loc}_{q,k}.
+ \tag{CD18}
+\]">\[
+ B_{q,k}\hookrightarrow F^{H^0}_{q,k}
+ \hookrightarrow\cdots\hookrightarrow F^{H^r}_{q,k}
+ \hookrightarrow B^{-a}_{q,k}\hookrightarrow B^{\rm loc}_{q,k}.
+ \tag{CD18}
+\]</span>
+<p>The first <span class="math" data-index="127" data-tex="\(r+1\)">\(r+1\)</span> arrows have norm at most one. In particular this
+holds at <span class="math" data-index="128" data-tex="\(q=1\)">\(q=1\)</span> and <span class="math" data-index="129" data-tex="\(q=\infty\)">\(q=\infty\)</span>; no endpoint is excluded.</p>
+<p><strong>Proof.</strong> The continuous dual of any normed space is Banach:
+a norm-Cauchy sequence of functionals has pointwise scalar limits,
+which are linear and bounded by the limiting uniform norm bound;
+the original Cauchy estimates then give operator-norm convergence.
+Lemma 1.1 gives continuity on tests with any fixed compact support,
+so each dual element is in <span class="math" data-index="130" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>.</p>
+<p>For <span class="math" data-index="131" data-tex="\(v\in B_{q,k}\)">\(v\in B_{q,k}\)</span>, the bilinear Fourier formula and Hölder give</p>
+<span class="math math-display" id="learner-eq-CD19" data-index="132" data-tex="\[
+ |\langle v,\phi\rangle|
+ \le\|v\|_{q,k}\|\phi\|_{p,k^*}
+ \le\|v\|_{q,k}N^{H^r}_{p,k^*}(\phi).
+ \tag{CD19}
+\]">\[
+ |\langle v,\phi\rangle|
+ \le\|v\|_{q,k}\|\phi\|_{p,k^*}
+ \le\|v\|_{q,k}N^{H^r}_{p,k^*}(\phi).
+ \tag{CD19}
+\]</span>
+<p>This proves the first arrow even when <span class="math" data-index="133" data-tex="\(q=1\)">\(q=1\)</span>.
+The remaining norm-one arrows before <span class="math" data-index="134" data-tex="\(B^{-a}\)">\(B^{-a}\)</span> follow from (CD4).</p>
+<p>Write <span class="math" data-index="135" data-tex="\(\omega=k^*\)">\(\omega=k^*\)</span> and <span class="math" data-index="136" data-tex="\(L=\|\ell\|_{F^{H^r}_{q,k}}\)">\(L=\|\ell\|_{F^{H^r}_{q,k}}\)</span>.
+If <span class="math" data-index="137" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, (CD7) shows that the distribution <span class="math" data-index="138" data-tex="\(\ell/a\)">\(\ell/a\)</span> obeys</p>
+<span class="math math-display" id="learner-eq-CD20" data-index="139" data-tex="\[
+ | \langle\ell/a,\psi\rangle|
+       \le CL\|\psi\|_{p,\omega}\qquad(\psi\in\mathcal D).
+ \tag{CD20}
+\]">\[
+ | \langle\ell/a,\psi\rangle|
+       \le CL\|\psi\|_{p,\omega}\qquad(\psi\in\mathcal D).
+ \tag{CD20}
+\]</span>
+<p>Finite-exponent density and bilinear duality in
+the weighted Fourier lesson, Theorems 3.1 and 5.1 give
+<span class="math" data-index="140" data-tex="\(\ell/a\in B_{q,\omega^*}=B_{q,k}\)">\(\ell/a\in B_{q,\omega^*}=B_{q,k}\)</span>, with norm at most <span class="math" data-index="141" data-tex="\(CL\)">\(CL\)</span>.
+This includes <span class="math" data-index="142" data-tex="\(p=1,q=\infty\)">\(p=1,q=\infty\)</span>.</p>
+<p>If <span class="math" data-index="143" data-tex="\(p=\infty,q=1\)">\(p=\infty,q=1\)</span>, that duality theorem does not apply.
+Instead put</p>
+<span class="math math-display" id="learner-eq-CD21" data-index="144" data-tex="\[
+ a_1(x)=a(x)e^{-\sqrt{1+|x|^2}},\qquad
+ b(x)=a_1(x)/a(x)=e^{-\sqrt{1+|x|^2}}.
+ \tag{CD21}
+\]">\[
+ a_1(x)=a(x)e^{-\sqrt{1+|x|^2}},\qquad
+ b(x)=a_1(x)/a(x)=e^{-\sqrt{1+|x|^2}}.
+ \tag{CD21}
+\]</span>
+<p>The function <span class="math" data-index="145" data-tex="\(a_1\)">\(a_1\)</span> has the same form(CD5), with <span class="math" data-index="146" data-tex="\(\sigma-1\)">\(\sigma-1\)</span>.
+Lemma 2.1 applied to <span class="math" data-index="147" data-tex="\(a_1\)">\(a_1\)</span> shows that <span class="math" data-index="148" data-tex="\(t=\ell/a_1\)">\(t=\ell/a_1\)</span>, initially on
+<span class="math" data-index="149" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, is bounded by <span class="math" data-index="150" data-tex="\(C_1L\|\psi\|_{\infty,\omega}\)">\(C_1L\|\psi\|_{\infty,\omega}\)</span>.
+This norm is continuous in the Schwartz topology. Since
+<span class="math" data-index="151" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is dense in <span class="math" data-index="152" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> for that topology
+(the cutoff argument in the weighted Fourier lesson, Theorem 3.1), <span class="math" data-index="153" data-tex="\(t\)">\(t\)</span> extends uniquely
+to a tempered distribution with the same displayed bound on
+<span class="math" data-index="154" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Lemma 3.1 now yields</p>
+<span class="math math-display" id="learner-eq-CD22" data-index="155" data-tex="\[
+ \ell/a=bt\in B_{1,\omega^*}=B_{1,k},\qquad
+ \|\ell/a\|_{1,k}\le C_1 A_\omega(b)L .
+ \tag{CD22}
+\]">\[
+ \ell/a=bt\in B_{1,\omega^*}=B_{1,k},\qquad
+ \|\ell/a\|_{1,k}\le C_1 A_\omega(b)L .
+ \tag{CD22}
+\]</span>
+<p>Thus the arrow into <span class="math" data-index="156" data-tex="\(B^{-a}\)">\(B^{-a}\)</span> is continuous at this endpoint as well.
+The last arrow was proved immediately after(CD6). <span class="math" data-index="157" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span class="math" data-index="158" data-tex="\(F^{H^0}_{1,k}\)">\(F^{H^0}_{1,k}\)</span> need not equal <span class="math" data-index="159" data-tex="\(B_{1,k}\)">\(B_{1,k}\)</span>. For instance, with
+<span class="math" data-index="160" data-tex="\(k=1\)">\(k=1\)</span>, the functional <span class="math" data-index="161" data-tex="\(\phi\mapsto\widehat\phi(\xi_0)\)">\(\phi\mapsto\widehat\phi(\xi_0)\)</span>
+belongs to the dual of the supremum test norm. Its distribution is
+<span class="math" data-index="162" data-tex="\(e^{-ix\cdot\xi_0}\)">\(e^{-ix\cdot\xi_0}\)</span>, whose Fourier transform is
+<span class="math" data-index="163" data-tex="\((2\pi)^n\delta_{-\xi_0}\)">\((2\pi)^n\delta_{-\xi_0}\)</span>, not an <span class="math" data-index="164" data-tex="\(L^1\)">\(L^1\)</span> function.
+After division by <span class="math" data-index="165" data-tex="\(a\)">\(a\)</span>, however, it is Schwartz, exactly as
+Theorem 4.1 asserts.</p>
+<h2 id="5-polynomial-operators-and-pointwise-lifting">5. Polynomial operators and pointwise lifting</h2>
+<p>Let <span class="math" data-index="166" data-tex="\(W(Q)\)">\(W(Q)\)</span> be the complex vector space of polynomials weaker than
+a fixed nonzero complex <span class="math" data-index="167" data-tex="\(Q\)">\(Q\)</span>. Give it the norm</p>
+<span class="math math-display" id="learner-eq-CD23" data-index="168" data-tex="\[
+ b_Q(P)=\sup_{\xi\in\mathbb R^n}J_P(\xi)/J_Q(\xi).
+ \tag{CD23}
+\]">\[
+ b_Q(P)=\sup_{\xi\in\mathbb R^n}J_P(\xi)/J_Q(\xi).
+ \tag{CD23}
+\]</span>
+<p>Finite equivalence of the derivative norms makes this finite precisely
+on <span class="math" data-index="169" data-tex="\(W(Q)\)">\(W(Q)\)</span>. It is a norm: vanishing forces <span class="math" data-index="170" data-tex="\(P=0\)">\(P=0\)</span>.
+Use a common finite degree bound throughout.</p>
+<p><strong>Proposition 5.1.</strong> For each fixed <span class="math" data-index="171" data-tex="\(H^r\)">\(H^r\)</span>, all <span class="math" data-index="172" data-tex="\(q,k\)">\(q,k\)</span>, and
+<span class="math" data-index="173" data-tex="\(P\in W(Q)\)">\(P\in W(Q)\)</span>,</p>
+<span class="math math-display" id="learner-eq-CD24" data-index="174" data-tex="\[
+ P(D):F^{H^r}_{q,kJ_Q}\longrightarrow F^{H^r}_{q,k}
+ \tag{CD24}
+\]">\[
+ P(D):F^{H^r}_{q,kJ_Q}\longrightarrow F^{H^r}_{q,k}
+ \tag{CD24}
+\]</span>
+<p>is bounded, with norm at most <span class="math" data-index="175" data-tex="\(E_m(M)b_Q(P)\)">\(E_m(M)b_Q(P)\)</span>;
+here <span class="math" data-index="176" data-tex="\(M=\sup|H^r|_\infty\)">\(M=\sup|H^r|_\infty\)</span> and <span class="math" data-index="177" data-tex="\(E_m\)">\(E_m\)</span> is the common-contour lesson's complex
+Taylor constant. The operator depends complex-linearly and
+continuously on <span class="math" data-index="178" data-tex="\(P\)">\(P\)</span>, hence holomorphically in operator norm.</p>
+<p><strong>Proof.</strong> Finite Taylor expansion gives</p>
+<span class="math math-display" id="learner-eq-CD25" data-index="179" data-tex="\[
+ |P(-\xi-H^r(\xi,z))|
+ \le E_m(M)J_P(-\xi)
+ \le E_m(M)b_Q(P)J_Q(-\xi).
+ \tag{CD25}
+\]">\[
+ |P(-\xi-H^r(\xi,z))|
+ \le E_m(M)J_P(-\xi)
+ \le E_m(M)b_Q(P)J_Q(-\xi).
+ \tag{CD25}
+\]</span>
+<p>Since
+<span class="math" data-index="180" data-tex="\(\widehat{P(-D)\phi}(\zeta)=P(-\zeta)\widehat\phi(\zeta)\)">\(\widehat{P(-D)\phi}(\zeta)=P(-\zeta)\widehat\phi(\zeta)\)</span>,
+multiply by <span class="math" data-index="181" data-tex="\(k^*(\xi)/J_Q(-\xi)\)">\(k^*(\xi)/J_Q(-\xi)\)</span> and take the product norm.
+This proves</p>
+<span class="math math-display" id="learner-eq-CD26" data-index="182" data-tex="\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+ \le E_m(M)b_Q(P)N^{H^r}_{p,k^*}(\phi).
+ \tag{CD26}
+\]">\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+ \le E_m(M)b_Q(P)N^{H^r}_{p,k^*}(\phi).
+ \tag{CD26}
+\]</span>
+<p>Duality gives (CD24), with the complex-bilinear transposition
+<span class="math" data-index="183" data-tex="\(\langle P(D)v,\phi\rangle=\langle v,P(-D)\phi\rangle\)">\(\langle P(D)v,\phi\rangle=\langle v,P(-D)\phi\rangle\)</span>.
+On the finite-dimensional space <span class="math" data-index="184" data-tex="\(W(Q)\)">\(W(Q)\)</span>, the stated linear
+operator map is continuous by this bound. Its differential is
+itself and its higher differentials vanish, proving the
+holomorphic assertion without selecting any solutions. <span class="math" data-index="185" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (pointwise surjectivity on one fixed contour space).</strong>
+Let <span class="math" data-index="186" data-tex="\(K\subset E(Q)\)">\(K\subset E(Q)\)</span> be compact. Choose any finite prefix
+<span class="math" data-index="187" data-tex="\(\eta_1,\ldots,\eta_{r-1}\)">\(\eta_1,\ldots,\eta_{r-1}\)</span>, including the empty prefix.
+There is one further bounded real Borel field <span class="math" data-index="188" data-tex="\(\eta_r\)">\(\eta_r\)</span> such that
+for every <span class="math" data-index="189" data-tex="\(P\in K\)">\(P\in K\)</span>, every <span class="math" data-index="190" data-tex="\(1\le q\le\infty\)">\(1\le q\le\infty\)</span>, and every moderate <span class="math" data-index="191" data-tex="\(k\)">\(k\)</span>,
+the bounded operator(CD24) is onto. In fact there is one <span class="math" data-index="192" data-tex="\(C_K&lt;\infty\)">\(C_K&lt;\infty\)</span>,
+independent of <span class="math" data-index="193" data-tex="\(P,q,k\)">\(P,q,k\)</span>, such that for every
+<span class="math" data-index="194" data-tex="\(w\in F^{H^r}_{q,k}\)">\(w\in F^{H^r}_{q,k}\)</span> there is a <span class="math" data-index="195" data-tex="\(v\in F^{H^r}_{q,kJ_Q}\)">\(v\in F^{H^r}_{q,kJ_Q}\)</span> satisfying</p>
+<span class="math math-display" id="learner-eq-CD27" data-index="196" data-tex="\[
+ P(D)v=w,\qquad
+ \|v\|_{F^{H^r}_{q,kJ_Q}}\le C_K\|w\|_{F^{H^r}_{q,k}} .
+ \tag{CD27}
+\]">\[
+ P(D)v=w,\qquad
+ \|v\|_{F^{H^r}_{q,kJ_Q}}\le C_K\|w\|_{F^{H^r}_{q,k}} .
+ \tag{CD27}
+\]</span>
+<p>No bounded linear right inverse, continuous choice in <span class="math" data-index="197" data-tex="\(w\)">\(w\)</span>, or
+holomorphic choice in <span class="math" data-index="198" data-tex="\(P\)">\(P\)</span> is asserted.</p>
+<p><strong>Proof.</strong> Set
+<span class="math" data-index="199" data-tex="\(\rho=\sum_{s&lt;r}\sup_{\xi\in\mathbb R^n}|\eta_s(\xi)|_\infty\)">\(\rho=\sum_{s&lt;r}\sup_{\xi\in\mathbb R^n}|\eta_s(\xi)|_\infty\)</span>.
+These are the actual pointwise bounds of the specified bounded fields,
+so the conclusion below holds at every real frequency.
+Theorem 1.1 of <a href="AN02-L203.html">One contour for a compact family of equations</a> provides <span class="math" data-index="200" data-tex="\(A\)">\(A\)</span> and a bounded Borel <span class="math" data-index="201" data-tex="\(\eta\)">\(\eta\)</span> such that</p>
+<span class="math math-display" id="learner-eq-CD28" data-index="202" data-tex="\[
+ J_P(x)\le A|P(x+\zeta+z\eta(x))|
+ \quad(P\in K,\ x\in\mathbb R^n,\ |\zeta|_\infty\le\rho,\ |z|=1).
+ \tag{CD28}
+\]">\[
+ J_P(x)\le A|P(x+\zeta+z\eta(x))|
+ \quad(P\in K,\ x\in\mathbb R^n,\ |\zeta|_\infty\le\rho,\ |z|=1).
+ \tag{CD28}
+\]</span>
+<p>Take <span class="math" data-index="203" data-tex="\(\eta_r(\xi)=\eta(-\xi)\)">\(\eta_r(\xi)=\eta(-\xi)\)</span>, <span class="math" data-index="204" data-tex="\(x=-\xi\)">\(x=-\xi\)</span>,
+<span class="math" data-index="205" data-tex="\(\zeta=-H^{r-1}(\xi,z&#x27;)\)">\(\zeta=-H^{r-1}(\xi,z&#x27;)\)</span>, and replace the phase <span class="math" data-index="206" data-tex="\(z\)">\(z\)</span> by <span class="math" data-index="207" data-tex="\(-z_r\)">\(-z_r\)</span>.
+Then</p>
+<span class="math math-display" id="learner-eq-CD29" data-index="208" data-tex="\[
+ J_P(-\xi)\le A|P(-\xi-H^r(\xi,z))|
+                 \qquad(P\in K,\ \xi,z).
+ \tag{CD29}
+\]">\[
+ J_P(-\xi)\le A|P(-\xi-H^r(\xi,z))|
+                 \qquad(P\in K,\ \xi,z).
+ \tag{CD29}
+\]</span>
+<p>The compact comparison in Proposition 5.1 of <a href="AN02-L008.html">The geometry of coefficients and strength</a> gives
+<span class="math" data-index="209" data-tex="\(J_Q(-\xi)\le B J_P(-\xi)\)">\(J_Q(-\xi)\le B J_P(-\xi)\)</span>, uniformly for <span class="math" data-index="210" data-tex="\(P\in K\)">\(P\in K\)</span>.
+Consequently, pointwise on the <em>whole same torus</em>,</p>
+<span class="math math-display" id="learner-eq-CD30" data-index="211" data-tex="\[
+ \frac{|P(-\xi-H^r(\xi,z))|}{J_Q(-\xi)}
+                                      \ge(AB)^{-1}.
+ \tag{CD30}
+\]">\[
+ \frac{|P(-\xi-H^r(\xi,z))|}{J_Q(-\xi)}
+                                      \ge(AB)^{-1}.
+ \tag{CD30}
+\]</span>
+<p>Multiplying the shifted test transform by <span class="math" data-index="212" data-tex="\(k^*\)">\(k^*\)</span>, and using
+(CD30) directly, yields for every exponent, including infinity,</p>
+<span class="math math-display" id="learner-eq-CD31" data-index="213" data-tex="\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+                    \ge(AB)^{-1}N^{H^r}_{p,k^*}(\phi).
+ \tag{CD31}
+\]">\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+                    \ge(AB)^{-1}N^{H^r}_{p,k^*}(\phi).
+ \tag{CD31}
+\]</span>
+<p>Both sides use <span class="math" data-index="214" data-tex="\(H^r\)">\(H^r\)</span>, not different prefixes. Replacing the right
+side by the smaller prefix norm would lose precisely the surjectivity
+onto the full claimed target space.</p>
+<p>For the given <span class="math" data-index="215" data-tex="\(w\)">\(w\)</span>, define on the subspace <span class="math" data-index="216" data-tex="\(P(-D)\mathcal D\)">\(P(-D)\mathcal D\)</span>
+of <span class="math" data-index="217" data-tex="\((\mathcal D,N^{H^r}_{p,(kJ_Q)^*})\)">\((\mathcal D,N^{H^r}_{p,(kJ_Q)^*})\)</span> the functional</p>
+<span class="math math-display" id="learner-eq-CD32" data-index="218" data-tex="\[
+ L(P(-D)\phi)=\langle w,\phi\rangle.
+ \tag{CD32}
+\]">\[
+ L(P(-D)\phi)=\langle w,\phi\rangle.
+ \tag{CD32}
+\]</span>
+<p>It is well defined: if <span class="math" data-index="219" data-tex="\(P(-D)\phi=0\)">\(P(-D)\phi=0\)</span>, (CD31) implies
+<span class="math" data-index="220" data-tex="\(N^{H^r}_{p,k^*}(\phi)=0\)">\(N^{H^r}_{p,k^*}(\phi)=0\)</span>, hence <span class="math" data-index="221" data-tex="\(\phi=0\)">\(\phi=0\)</span>.
+Equation (CD31) also gives</p>
+<span class="math math-display" id="learner-eq-CD33" data-index="222" data-tex="\[
+ |L(P(-D)\phi)|
+ \le AB\|w\|_{F^{H^r}_{q,k}}
+                     N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi).
+ \tag{CD33}
+\]">\[
+ |L(P(-D)\phi)|
+ \le AB\|w\|_{F^{H^r}_{q,k}}
+                     N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi).
+ \tag{CD33}
+\]</span>
+<p>Complex Hahn–Banach extends <span class="math" data-index="223" data-tex="\(L\)">\(L\)</span> to the full normed test space
+without increasing this bound. Theorem 4.1 identifies the extension
+with <span class="math" data-index="224" data-tex="\(v\in F^{H^r}_{q,kJ_Q}\)">\(v\in F^{H^r}_{q,kJ_Q}\)</span>.
+On every <span class="math" data-index="225" data-tex="\(\phi\in\mathcal D\)">\(\phi\in\mathcal D\)</span> it satisfies</p>
+<span class="math math-display" id="learner-eq-CD34" data-index="226" data-tex="\[
+ \langle P(D)v,\phi\rangle
+ =\langle v,P(-D)\phi\rangle
+ =\langle w,\phi\rangle.
+ \tag{CD34}
+\]">\[
+ \langle P(D)v,\phi\rangle
+ =\langle v,P(-D)\phi\rangle
+ =\langle w,\phi\rangle.
+ \tag{CD34}
+\]</span>
+<p>Thus (CD27) holds with <span class="math" data-index="227" data-tex="\(C_K=AB\)">\(C_K=AB\)</span>. Constants and empty <span class="math" data-index="228" data-tex="\(K\)">\(K\)</span>
+cause no difficulty: for nonzero constant <span class="math" data-index="229" data-tex="\(Q\)">\(Q\)</span>, use <span class="math" data-index="230" data-tex="\(\eta=0\)">\(\eta=0\)</span>;
+for empty <span class="math" data-index="231" data-tex="\(K\)">\(K\)</span> the assertion is vacuous. <span class="math" data-index="232" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-a-sequence-of-banach-spaces-for-parameter-families">6. A sequence of Banach spaces for parameter families</h2>
+<p>Let <span class="math" data-index="233" data-tex="\(K_1\subset K_2\subset\cdots\subset E(Q)\)">\(K_1\subset K_2\subset\cdots\subset E(Q)\)</span> be compact.
+Construct each new field by Theorem 5.2 for <span class="math" data-index="234" data-tex="\(K_r\)">\(K_r\)</span> and the previously
+chosen prefix. Put, for one fixed <span class="math" data-index="235" data-tex="\(q,k\)">\(q,k\)</span>,</p>
+<span class="math math-display" id="learner-eq-CD35" data-index="236" data-tex="\[
+ X_r=F^{H^r}_{q,kJ_Q},\qquad Y_r=F^{H^r}_{q,k}.
+ \tag{CD35}
+\]">\[
+ X_r=F^{H^r}_{q,kJ_Q},\qquad Y_r=F^{H^r}_{q,k}.
+ \tag{CD35}
+\]</span>
+<p>Then the inclusions <span class="math" data-index="237" data-tex="\(X_r\hookrightarrow X_{r+1}\)">\(X_r\hookrightarrow X_{r+1}\)</span> and
+<span class="math" data-index="238" data-tex="\(Y_r\hookrightarrow Y_{r+1}\)">\(Y_r\hookrightarrow Y_{r+1}\)</span> are norm-decreasing, each embeds
+continuously into its corresponding <em>same fixed</em>
+<span class="math" data-index="239" data-tex="\(B^{-a}\)">\(B^{-a}\)</span> space for every admissible <span class="math" data-index="240" data-tex="\(a\)">\(a\)</span>, and</p>
+<span class="math math-display" id="learner-eq-CD36" data-index="241" data-tex="\[
+ P(D):X_r\to Y_r\quad\hbox{is onto for every }P\in K_r.
+ \tag{CD36}
+\]">\[
+ P(D):X_r\to Y_r\quad\hbox{is onto for every }P\in K_r.
+ \tag{CD36}
+\]</span>
+<p>For any basis <span class="math" data-index="242" data-tex="\(R_1,\ldots,R_d\)">\(R_1,\ldots,R_d\)</span> of <span class="math" data-index="243" data-tex="\(W(Q)\)">\(W(Q)\)</span>, each
+<span class="math" data-index="244" data-tex="\(R_j(D):X_r\to Y_r\)">\(R_j(D):X_r\to Y_r\)</span> is bounded. If
+<span class="math" data-index="245" data-tex="\(P(\lambda)=\sum b_j(\lambda)R_j\)">\(P(\lambda)=\sum b_j(\lambda)R_j\)</span> is holomorphic and
+<span class="math" data-index="246" data-tex="\(P(\lambda)\in K_r\)">\(P(\lambda)\in K_r\)</span> on a given parameter domain, the family</p>
+<span class="math math-display" id="learner-eq-CD37" data-index="247" data-tex="\[
+ T_r(\lambda)=\sum b_j(\lambda)R_j(D)\in\mathcal L(X_r,Y_r)
+ \tag{CD37}
+\]">\[
+ T_r(\lambda)=\sum b_j(\lambda)R_j(D)\in\mathcal L(X_r,Y_r)
+ \tag{CD37}
+\]</span>
+<p>is holomorphic and pointwise onto there. The given domain need
+not be Stein to make this assertion.</p>
+<p>The spaces in (CD35) combine a common growth allowance, the derivative-weight regularity and pointwise solvability for every member of the compact family. To choose solutions holomorphically on a Stein parameter domain, one also needs an analytic-selection theorem and approximation of homogeneous sections. Pointwise Hahn–Banach extensions alone do not prescribe that choice. Example 7.4 illustrates this distinction in two dimensions.</p>
+<p>The first analytic step is proved in <a href="AN02-L205.html">Power series and analytic lifting in Banach spaces</a>, Theorem 3.1. It constructs local holomorphic solutions by a norm-convergent coefficient recursion, without assuming a bounded linear right inverse.</p>
+<p>The global selection and convergence step is proved in <span class="unlinked">Holomorphic solutions on expanding contour scales</span>, Sections 2–5. It uses the actual contour spaces above, includes both Fourier endpoints, and absorbs every scale-dependent embedding and derivative bound.</p>
+<h2 id="7-examples">7. Examples</h2>
+<p><strong>Example 7.1 (a genuinely slow super-exponential allowance).</strong>
+Take <span class="math" data-index="248" data-tex="\(\sigma(t)=\log\log(e+t)\)">\(\sigma(t)=\log\log(e+t)\)</span>. It tends to infinity, but very slowly.
+Its positive derivatives are bounded: every derivative is a finite sum
+of constants times <span class="math" data-index="249" data-tex="\((e+t)^{-j}(\log(e+t))^{-\ell}\)">\((e+t)^{-j}(\log(e+t))^{-\ell}\)</span>, with positive
+integers <span class="math" data-index="250" data-tex="\(j,\ell\)">\(j,\ell\)</span>. These terms are bounded on <span class="math" data-index="251" data-tex="\(t\ge0\)">\(t\ge0\)</span>.
+The resulting</p>
+<span class="math math-display" data-index="252" data-tex="\[
+ a(x)=\exp\!\left(\sqrt{1+|x|^2}\log\log(e+|x|^2)\right)
+\]">\[
+ a(x)=\exp\!\left(\sqrt{1+|x|^2}\log\log(e+|x|^2)\right)
+\]</span>
+<p>eventually exceeds <span class="math" data-index="253" data-tex="\(e^{L|x|}\)">\(e^{L|x|}\)</span> for every fixed <span class="math" data-index="254" data-tex="\(L\)">\(L\)</span>.
+Nevertheless, the proof does not replace this <span class="math" data-index="255" data-tex="\(a\)">\(a\)</span> by <span class="math" data-index="256" data-tex="\(e^{|x|^2}\)">\(e^{|x|^2}\)</span>
+or any fixed faster weight. Every finite contour prefix is controlled
+in its corresponding <span class="math" data-index="257" data-tex="\(B^{-a}\)">\(B^{-a}\)</span> norm by its own finite constant.
+There is no claim that those constants are bounded as the number or
+size of the contours tends to infinity.</p>
+<p><strong>Example 7.2 (why the supremum endpoint needs its own proof).</strong>
+At <span class="math" data-index="258" data-tex="\(H^0=0,k=1\)">\(H^0=0,k=1\)</span>, fix a real frequency <span class="math" data-index="259" data-tex="\(c\)">\(c\)</span> and let
+<span class="math" data-index="260" data-tex="\(\ell(\phi)=\widehat\phi(c)\)">\(\ell(\phi)=\widehat\phi(c)\)</span>. Its norm on the supremum Fourier test
+space is one. The upper bound is immediate. For the lower bound,
+choose a nonnegative compact smooth function <span class="math" data-index="261" data-tex="\(h\)">\(h\)</span> with integral one
+and put <span class="math" data-index="262" data-tex="\(\phi(x)=e^{ic\cdot x}h(x)\)">\(\phi(x)=e^{ic\cdot x}h(x)\)</span>.
+Then <span class="math" data-index="263" data-tex="\(\widehat\phi(c)=1\)">\(\widehat\phi(c)=1\)</span> and
+<span class="math" data-index="264" data-tex="\(|\widehat\phi(\xi)|\le\int h=1\)">\(|\widehat\phi(\xi)|\le\int h=1\)</span>.</p>
+<p>The represented distribution is <span class="math" data-index="265" data-tex="\(v(x)=e^{-ic\cdot x}\)">\(v(x)=e^{-ic\cdot x}\)</span>, whose
+Fourier transform is <span class="math" data-index="266" data-tex="\((2\pi)^n\delta_{-c}\)">\((2\pi)^n\delta_{-c}\)</span>.
+It is not in <span class="math" data-index="267" data-tex="\(B_{1,1}\)">\(B_{1,1}\)</span>. Thus the ordinary dual of the supremum
+test norm cannot simply be identified with <span class="math" data-index="268" data-tex="\(B_{1,1}\)">\(B_{1,1}\)</span>.
+After division by any admissible <span class="math" data-index="269" data-tex="\(a\)">\(a\)</span>, however,
+<span class="math" data-index="270" data-tex="\(e^{-ic\cdot x}/a(x)\)">\(e^{-ic\cdot x}/a(x)\)</span> is Schwartz, so it belongs to <span class="math" data-index="271" data-tex="\(B_{1,1}\)">\(B_{1,1}\)</span>.
+This is exactly the weaker global-growth assertion supplied by
+Theorem 4.1, and it also implies the required local Fourier regularity.</p>
+<p>For the smoothing lemma alone, on the line choose <span class="math" data-index="272" data-tex="\(b(x)=e^{-x^2}\)">\(b(x)=e^{-x^2}\)</span>.
+It gives the explicit Fourier function</p>
+<span class="math math-display" data-index="273" data-tex="\[
+ \widehat{b v}(\xi)=\sqrt\pi\,e^{-(\xi+c)^2/4},
+ \qquad
+ \|bv\|_{1,1}=(2\pi)^{-1}\sqrt\pi
+                 \int_{\mathbb R}e^{-(\xi+c)^2/4}\,d\xi=1.
+\]">\[
+ \widehat{b v}(\xi)=\sqrt\pi\,e^{-(\xi+c)^2/4},
+ \qquad
+ \|bv\|_{1,1}=(2\pi)^{-1}\sqrt\pi
+                 \int_{\mathbb R}e^{-(\xi+c)^2/4}\,d\xi=1.
+\]</span>
+<p>Since <span class="math" data-index="274" data-tex="\(M_1=1\)">\(M_1=1\)</span>, <span class="math" data-index="275" data-tex="\(A_1(b)=1\)">\(A_1(b)=1\)</span>, so the smoothing estimate is attained.
+Here the Gaussian is a Schwartz multiplier; it is not an element of <span class="math" data-index="276" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<figure><img class="course-figure" loading="lazy" width="1760" height="752" src="reproduce/L204/figures/a-plane-wave-after-schwartz-smoothing.png" alt="The real part of the plane wave exp(-2ix) and its Gaussian-damped version, together with the normalized Fourier point mass at minus two and the integrable Gaussian density centered there." /><figcaption class="native"><a href="reproduce/L204/figures/a-plane-wave-after-schwartz-smoothing.png">Open full-size PNG</a> · <a href="reproduce/L204/figures/a-plane-wave-after-schwartz-smoothing.svg">Open SVG</a></figcaption></figure>
+<p><em>Schwartz smoothing in Example 7.2.</em> The left panel shows real parts of the complex functions. The right panel uses the normalized Fourier measure: the unsmoothed wave gives a unit point mass at frequency minus two, while multiplication by the Gaussian gives the displayed density of total mass one. The point-mass arrow has schematic height; it is not a finite density.</p>
+<p><strong>Example 7.3 (one Banach lifting estimate for a root disk).</strong>
+Let <span class="math" data-index="277" data-tex="\(Q(w)=w\)">\(Q(w)=w\)</span> and <span class="math" data-index="278" data-tex="\(P_b(w)=w-b\)">\(P_b(w)=w-b\)</span>, <span class="math" data-index="279" data-tex="\(|b|\le1\)">\(|b|\le1\)</span>, in one dimension.
+Then <span class="math" data-index="280" data-tex="\(J_Q(\xi)=|\xi|+1\)">\(J_Q(\xi)=|\xi|+1\)</span> and</p>
+<span class="math math-display" data-index="281" data-tex="\[
+ J_Q(\xi)\le2J_{P_b}(\xi)
+ \quad(\xi\in\mathbb R,\ |b|\le1).
+\]">\[
+ J_Q(\xi)\le2J_{P_b}(\xi)
+ \quad(\xi\in\mathbb R,\ |b|\le1).
+\]</span>
+<p>Indeed <span class="math" data-index="282" data-tex="\(|\xi|\le|\xi-b|+1\)">\(|\xi|\le|\xi-b|+1\)</span>, and <span class="math" data-index="283" data-tex="\(J_{P_b}\ge1\)">\(J_{P_b}\ge1\)</span>.
+Example 6.1 of <a href="AN02-L203.html">One contour for a compact family of equations</a> gives the common field</p>
+<span class="math math-display" data-index="284" data-tex="\[
+ \eta(\xi)=
+ \begin{cases}4,&amp;|\xi|\le2,\\0,&amp;|\xi|&gt;2,\end{cases}
+ \qquad
+ J_{P_b}(\xi)\le4|P_b(\xi+z\eta(\xi))|
+ \quad(|z|=1).
+\]">\[
+ \eta(\xi)=
+ \begin{cases}4,&amp;|\xi|\le2,\\0,&amp;|\xi|&gt;2,\end{cases}
+ \qquad
+ J_{P_b}(\xi)\le4|P_b(\xi+z\eta(\xi))|
+ \quad(|z|=1).
+\]</span>
+<p>This field is even, so <span class="math" data-index="285" data-tex="\(\eta(-\xi)=\eta(\xi)\)">\(\eta(-\xi)=\eta(\xi)\)</span>.
+With <span class="math" data-index="286" data-tex="\(H^1(\xi,z)=z\eta(\xi)\)">\(H^1(\xi,z)=z\eta(\xi)\)</span>, Theorem 5.2 yields</p>
+<span class="math math-display" data-index="287" data-tex="\[
+ (D-b)v=w,\qquad
+ \|v\|_{F^{H^1}_{q,k(|\cdot|+1)}}
+                \le8\|w\|_{F^{H^1}_{q,k}}
+\]">\[
+ (D-b)v=w,\qquad
+ \|v\|_{F^{H^1}_{q,k(|\cdot|+1)}}
+                \le8\|w\|_{F^{H^1}_{q,k}}
+\]</span>
+<p>for every <span class="math" data-index="288" data-tex="\(q\in[1,\infty]\)">\(q\in[1,\infty]\)</span>, every moderate <span class="math" data-index="289" data-tex="\(k\)">\(k\)</span>, every
+<span class="math" data-index="290" data-tex="\(|b|\le1\)">\(|b|\le1\)</span>, and every <span class="math" data-index="291" data-tex="\(w\)">\(w\)</span> in that fixed target Banach space.
+The constants and spaces are common to the whole root disk.
+For <span class="math" data-index="292" data-tex="\(w=\delta_0,q=\infty,k=1\)">\(w=\delta_0,q=\infty,k=1\)</span>, the target norm is at most one
+by <span class="math" data-index="293" data-tex="\(B_{\infty,1}\hookrightarrow F^{H^1}_{\infty,1}\)">\(B_{\infty,1}\hookrightarrow F^{H^1}_{\infty,1}\)</span>, since
+<span class="math" data-index="294" data-tex="\(\widehat\delta_0=1\)">\(\widehat\delta_0=1\)</span>. The result is a regular fundamental solution
+with a uniform contour-dual norm and every admissible growth
+allowance <span class="math" data-index="295" data-tex="\(a\)">\(a\)</span>.</p>
+<p>No analytic choice <span class="math" data-index="296" data-tex="\(b\mapsto v_b\)">\(b\mapsto v_b\)</span> has been made in this example.
+The operator family <span class="math" data-index="297" data-tex="\(D-b\)">\(D-b\)</span> is holomorphic, but the pointwise
+Hahn–Banach extension does not itself specify a holomorphic inverse.</p>
+<p><strong>Example 7.4 (even a smooth preferred choice may fail to be analytic).</strong>
+For <span class="math" data-index="298" data-tex="\(\lambda\in\mathbb C\)">\(\lambda\in\mathbb C\)</span> take</p>
+<span class="math math-display" data-index="299" data-tex="\[
+ T(\lambda):\mathbb C^2\to\mathbb C,\qquad
+ T(\lambda)(u,v)=u+\lambda v.
+\]">\[
+ T(\lambda):\mathbb C^2\to\mathbb C,\qquad
+ T(\lambda)(u,v)=u+\lambda v.
+\]</span>
+<p>It is an entire operator-valued family and is onto at every point.
+The solution of <span class="math" data-index="300" data-tex="\(T(\lambda)(u,v)=1\)">\(T(\lambda)(u,v)=1\)</span> with least Euclidean norm is</p>
+<span class="math math-display" data-index="301" data-tex="\[
+ u(\lambda)=\frac1{1+|\lambda|^2},\qquad
+ v(\lambda)=\frac{\overline\lambda}{1+|\lambda|^2}.
+\]">\[
+ u(\lambda)=\frac1{1+|\lambda|^2},\qquad
+ v(\lambda)=\frac{\overline\lambda}{1+|\lambda|^2}.
+\]</span>
+<p>Complex Cauchy–Schwarz gives
+<span class="math" data-index="302" data-tex="\(1=|u+\lambda v|\le\sqrt{1+|\lambda|^2}\sqrt{|u|^2+|v|^2}\)">\(1=|u+\lambda v|\le\sqrt{1+|\lambda|^2}\sqrt{|u|^2+|v|^2}\)</span>;
+equality identifies the displayed vector.
+It is smooth but not holomorphic:
+<span class="math" data-index="303" data-tex="\(\partial_{\overline\lambda}v(0)=1\)">\(\partial_{\overline\lambda}v(0)=1\)</span>.
+An analytic solution does exist, namely <span class="math" data-index="304" data-tex="\((1,0)\)">\((1,0)\)</span>.
+The distinction is between pointwise solvability and the analytic
+behavior of a particular choice; it is not a counterexample to an
+analytic-selection theorem.</p>
+<figure><img class="course-figure" loading="lazy" width="1696" height="752" src="reproduce/L204/figures/least-norm-choice-and-complex-conjugation.png" alt="A counterclockwise parameter circle of radius three quarters maps under the least-norm solution coordinate to a clockwise circle of radius twelve twenty-fifths, while the holomorphic solution has coordinate zero." /><figcaption class="native"><a href="reproduce/L204/figures/least-norm-choice-and-complex-conjugation.png">Open full-size PNG</a> · <a href="reproduce/L204/figures/least-norm-choice-and-complex-conjugation.svg">Open SVG</a></figcaption></figure>
+<p><em>The choice of a solution in Example 7.4.</em> On the parameter circle shown, the least-norm vector has the constant first coordinate sixteen twenty-fifths. Its second coordinate reverses the angular direction. The antiholomorphic derivative computed in the example proves the failure of holomorphic dependence; the picture illustrates the complex conjugation. The fixed solution with first coordinate one and second coordinate zero is holomorphic.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (20 points).</strong> Keep the complex-bilinear distribution
+pairing. Derive the reflected reciprocal weight in the Fourier dual
+of <span class="math" data-index="305" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>, and derive the test weight used for
+<span class="math" data-index="306" data-tex="\(F^{H}_{q,kJ_Q}\)">\(F^{H}_{q,kJ_Q}\)</span>. Check the signs on
+<span class="math" data-index="307" data-tex="\(\ell(\phi)=\widehat\phi(c)\)">\(\ell(\phi)=\widehat\phi(c)\)</span> and on <span class="math" data-index="308" data-tex="\(P(D)=D-b\)">\(P(D)=D-b\)</span>.</p>
+<p><strong>Solution.</strong> Fourier inversion gives</p>
+<span class="math math-display" data-index="309" data-tex="\[
+ \langle u,\phi\rangle
+ =\int\widehat u(\xi)\widehat\phi(-\xi)\,d\nu(\xi).
+\]">\[
+ \langle u,\phi\rangle
+ =\int\widehat u(\xi)\widehat\phi(-\xi)\,d\nu(\xi).
+\]</span>
+<p>Hölder pairs <span class="math" data-index="310" data-tex="\(k(\xi)\widehat u(\xi)\)">\(k(\xi)\widehat u(\xi)\)</span> with
+<span class="math" data-index="311" data-tex="\(\widehat\phi(-\xi)/k(\xi)\)">\(\widehat\phi(-\xi)/k(\xi)\)</span>. After <span class="math" data-index="312" data-tex="\(\eta=-\xi\)">\(\eta=-\xi\)</span> the latter
+norm has weight <span class="math" data-index="313" data-tex="\(k^*(\eta)=1/k(-\eta)\)">\(k^*(\eta)=1/k(-\eta)\)</span>.
+Replacing <span class="math" data-index="314" data-tex="\(k\)">\(k\)</span> by <span class="math" data-index="315" data-tex="\(kJ_Q\)">\(kJ_Q\)</span> gives
+<span class="math" data-index="316" data-tex="\((kJ_Q)^*(\eta)=k^*(\eta)/J_Q(-\eta)\)">\((kJ_Q)^*(\eta)=k^*(\eta)/J_Q(-\eta)\)</span>.
+For the functional in the question, <span class="math" data-index="317" data-tex="\(u=e^{-icx}\)">\(u=e^{-icx}\)</span> and
+<span class="math" data-index="318" data-tex="\(\widehat u=(2\pi)\delta_{-c}\)">\(\widehat u=(2\pi)\delta_{-c}\)</span> in one dimension, so the
+pairing gives <span class="math" data-index="319" data-tex="\(\widehat\phi(c)\)">\(\widehat\phi(c)\)</span>, with the indicated minus sign
+in the point mass. Finally <span class="math" data-index="320" data-tex="\(P(-D)=-D-b\)">\(P(-D)=-D-b\)</span>, and
+<span class="math" data-index="321" data-tex="\(\widehat{P(-D)\phi}(\zeta)=(-\zeta-b)\widehat\phi(\zeta)\)">\(\widehat{P(-D)\phi}(\zeta)=(-\zeta-b)\widehat\phi(\zeta)\)</span>.
+The coefficient <span class="math" data-index="322" data-tex="\(b\)">\(b\)</span> is not conjugated.
+Assign 8 points to the reflected dual weight, 4 to the product
+weight, 4 to the plane-wave sign and 4 to the transpose.</p>
+<p><strong>Exercise 2 (25 points).</strong> In Lemma 3.1, justify explicitly why
+<span class="math" data-index="323" data-tex="\(\psi_{E,u}\)">\(\psi_{E,u}\)</span> is Schwartz for bounded measurable <span class="math" data-index="324" data-tex="\(E\)">\(E\)</span> and why its
+Schwartz integral can be interchanged with <span class="math" data-index="325" data-tex="\(t\)">\(t\)</span>. Then prove the
+weighted bound independently, including its constant.</p>
+<p><strong>Solution.</strong> On bounded <span class="math" data-index="326" data-tex="\(E\)">\(E\)</span>, <span class="math" data-index="327" data-tex="\(\omega(-\xi)^{-1}\)">\(\omega(-\xi)^{-1}\)</span> is bounded and
+all moments <span class="math" data-index="328" data-tex="\(\int_E|\xi|^j/\omega(-\xi)\,d\nu\)">\(\int_E|\xi|^j/\omega(-\xi)\,d\nu\)</span> are finite.
+Every derivative of
+<span class="math" data-index="329" data-tex="\(\int_Eu(\xi)e^{-ix\xi}/\omega(-\xi)\,d\nu\)">\(\int_Eu(\xi)e^{-ix\xi}/\omega(-\xi)\,d\nu\)</span>
+is therefore bounded, by differentiation under an integrable
+majorant. Multiplying by <span class="math" data-index="330" data-tex="\(b\in\mathcal S\)">\(b\in\mathcal S\)</span> and applying Leibniz
+proves every Schwartz seminorm finite.
+To interchange the integral with <span class="math" data-index="331" data-tex="\(t\)">\(t\)</span>, approximate the scalar
+coefficient <span class="math" data-index="332" data-tex="\(u/\omega(-\cdot)\)">\(u/\omega(-\cdot)\)</span> on <span class="math" data-index="333" data-tex="\(E\)">\(E\)</span> in <span class="math" data-index="334" data-tex="\(L^1\)">\(L^1\)</span> by simple
+functions. The Schwartz seminorms of the error after multiplication
+by <span class="math" data-index="335" data-tex="\(b\)">\(b\)</span> are bounded by that <span class="math" data-index="336" data-tex="\(L^1\)">\(L^1\)</span> error times finite constants
+depending on the bounded frequency set. The continuous Schwartz-valued
+map <span class="math" data-index="337" data-tex="\(\xi\mapsto b e^{-ix\cdot\xi}\)">\(\xi\mapsto b e^{-ix\cdot\xi}\)</span>, on a compact box containing <span class="math" data-index="338" data-tex="\(E\)">\(E\)</span>,
+is also approximated by finite step functions in each specified finite
+list of Schwartz seminorms. Interchange is immediate for finite vector
+sums. Continuity of <span class="math" data-index="339" data-tex="\(t\)">\(t\)</span> permits passage to both limits.</p>
+<p>The Fourier transform is</p>
+<span class="math math-display" data-index="340" data-tex="\[
+ \widehat\psi_{E,u}(\eta)
+ =\int_E\frac{u(\xi)}{\omega(-\xi)}
+                                  \widehat b(\eta+\xi)\,d\nu(\xi).
+\]">\[
+ \widehat\psi_{E,u}(\eta)
+ =\int_E\frac{u(\xi)}{\omega(-\xi)}
+                                  \widehat b(\eta+\xi)\,d\nu(\xi).
+\]</span>
+<p>The definition of <span class="math" data-index="341" data-tex="\(M_\omega\)">\(M_\omega\)</span>, with base <span class="math" data-index="342" data-tex="\(-\xi\)">\(-\xi\)</span> and shift
+<span class="math" data-index="343" data-tex="\(\eta+\xi\)">\(\eta+\xi\)</span>, bounds <span class="math" data-index="344" data-tex="\(\omega(\eta)/\omega(-\xi)\)">\(\omega(\eta)/\omega(-\xi)\)</span> by
+<span class="math" data-index="345" data-tex="\(M_\omega(\eta+\xi)\)">\(M_\omega(\eta+\xi)\)</span>.
+After extending the nonnegative integral from <span class="math" data-index="346" data-tex="\(E\)">\(E\)</span> to all
+frequencies and substituting <span class="math" data-index="347" data-tex="\(h=\eta+\xi\)">\(h=\eta+\xi\)</span>, the supremum norm
+is at most
+<span class="math" data-index="348" data-tex="\(A_\omega(b)=\int M_\omega(h)|\widehat b(h)|\,d\nu(h)\)">\(A_\omega(b)=\int M_\omega(h)|\widehat b(h)|\,d\nu(h)\)</span>.
+This bound is independent of <span class="math" data-index="349" data-tex="\(E\)">\(E\)</span> and <span class="math" data-index="350" data-tex="\(u\)">\(u\)</span>. Choosing the conjugate
+phase of <span class="math" data-index="351" data-tex="\(g\)">\(g\)</span> gives its absolute integral, and monotone convergence
+through balls proves the smoothing lemma.
+Assign 8 points to Schwartz membership, 7 to interchange, 7 to the
+weighted estimate and 3 to the final phase/limit argument.</p>
+<p><strong>Exercise 3 (25 points).</strong> Explain why the lower estimate in the
+lifting theorem must control the full <span class="math" data-index="352" data-tex="\(H^r\)">\(H^r\)</span> test norm, rather
+than just the <span class="math" data-index="353" data-tex="\(H^{r-1}\)">\(H^{r-1}\)</span> norm. Given only the weaker estimate,
+state precisely which data can still be lifted by the same
+Hahn–Banach argument.</p>
+<p><strong>Solution.</strong> A datum <span class="math" data-index="354" data-tex="\(w\in F^{H^r}_{q,k}\)">\(w\in F^{H^r}_{q,k}\)</span> is controlled by
+<span class="math" data-index="355" data-tex="\(N^{H^r}_{p,k^*}\)">\(N^{H^r}_{p,k^*}\)</span>. An estimate for a smaller norm cannot bound
+its value on arbitrary tests. The pointwise denominator bound
+(CD30) multiplies the same shifted transform on the same
+torus, so it gives</p>
+<span class="math math-display" data-index="356" data-tex="\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+                       \ge c N^{H^r}_{p,k^*}(\phi).
+\]">\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+                       \ge c N^{H^r}_{p,k^*}(\phi).
+\]</span>
+<p>It is this estimate that bounds
+<span class="math" data-index="357" data-tex="\(L(P(-D)\phi)=\langle w,\phi\rangle\)">\(L(P(-D)\phi)=\langle w,\phi\rangle\)</span> by the required
+domain test norm for every datum in <span class="math" data-index="358" data-tex="\(F^{H^r}_{q,k}\)">\(F^{H^r}_{q,k}\)</span>.</p>
+<p>If one knew only</p>
+<span class="math math-display" data-index="359" data-tex="\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+                       \ge c N^{H^{r-1}}_{p,k^*}(\phi),
+\]">\[
+ N^{H^r}_{p,(kJ_Q)^*}(P(-D)\phi)
+                       \ge c N^{H^{r-1}}_{p,k^*}(\phi),
+\]</span>
+<p>the same construction would lift every
+<span class="math" data-index="360" data-tex="\(w\in F^{H^{r-1}}_{q,k}\)">\(w\in F^{H^{r-1}}_{q,k}\)</span> to <span class="math" data-index="361" data-tex="\(F^{H^r}_{q,kJ_Q}\)">\(F^{H^r}_{q,kJ_Q}\)</span>,
+with norm at most <span class="math" data-index="362" data-tex="\(c^{-1}\|w\|_{F^{H^{r-1}}}\)">\(c^{-1}\|w\|_{F^{H^{r-1}}}\)</span>.
+It would not prove surjectivity onto all of <span class="math" data-index="363" data-tex="\(F^{H^r}_{q,k}\)">\(F^{H^r}_{q,k}\)</span>.
+Both sides still define honest norms, so well-definedness of
+the subspace functional follows as before.
+Assign 10 points to the direction of the dual-norm comparison,
+10 to the exact weaker conclusion and 5 to its norm estimate
+and well-definedness.</p>
+<p><strong>Exercise 4 (30 points).</strong> For <span class="math" data-index="364" data-tex="\(T(\lambda)(u,v)=u+\lambda v\)">\(T(\lambda)(u,v)=u+\lambda v\)</span>,
+find its least-norm solution of <span class="math" data-index="365" data-tex="\(T(\lambda)(u,v)=1\)">\(T(\lambda)(u,v)=1\)</span>, calculate
+its antiholomorphic derivative at zero, and explain what the
+example does and does not show about the later global step.
+Also state which hypotheses a global analytic-selection theorem
+must check for the contour scales.</p>
+<p><strong>Solution.</strong> Equality in the Cauchy–Schwarz estimate from Example 7.4
+requires <span class="math" data-index="366" data-tex="\((u,v)\)">\((u,v)\)</span> proportional to <span class="math" data-index="367" data-tex="\((1,\overline\lambda)\)">\((1,\overline\lambda)\)</span>.
+The equation fixes the multiple as <span class="math" data-index="368" data-tex="\((1+|\lambda|^2)^{-1}\)">\((1+|\lambda|^2)^{-1}\)</span>.
+Thus <span class="math" data-index="369" data-tex="\(u=1/(1+\lambda\overline\lambda)\)">\(u=1/(1+\lambda\overline\lambda)\)</span> and
+<span class="math" data-index="370" data-tex="\(v=\overline\lambda/(1+\lambda\overline\lambda)\)">\(v=\overline\lambda/(1+\lambda\overline\lambda)\)</span>.
+Direct differentiation gives</p>
+<span class="math math-display" data-index="371" data-tex="\[
+ \partial_{\overline\lambda}u
+   =-\frac{\lambda}{(1+|\lambda|^2)^2},\qquad
+ \partial_{\overline\lambda}v
+   =\frac1{(1+|\lambda|^2)^2};
+\]">\[
+ \partial_{\overline\lambda}u
+   =-\frac{\lambda}{(1+|\lambda|^2)^2},\qquad
+ \partial_{\overline\lambda}v
+   =\frac1{(1+|\lambda|^2)^2};
+\]</span>
+<p>the derivative of the second coordinate equals one at zero. Therefore the
+least-norm choice is not holomorphic. The analytic choice
+<span class="math" data-index="372" data-tex="\((1,0)\)">\((1,0)\)</span> shows that analytic solvability remains possible.</p>
+<p>For the contour scales the objects are actual Banach spaces
+<span class="math" data-index="373" data-tex="\(X_r,Y_r\)">\(X_r,Y_r\)</span>, an operator-norm holomorphic family
+<span class="math" data-index="374" data-tex="\(T_r(\lambda)\in\mathcal L(X_r,Y_r)\)">\(T_r(\lambda)\in\mathcal L(X_r,Y_r)\)</span>, and onto maps at each
+parameter on the domain in question. A theorem with a Stein
+hypothesis also needs that hypothesis on the actual parameter
+domain; the spaces and pointwise lifting theorem do not prove it.
+Global gluing additionally requires approximation of homogeneous
+sections on the selected holomorphically convex subdomains, followed by
+convergence in the common growth/regularity spaces.
+No linear right inverse or analytic Hahn–Banach extension
+may be inferred from the pointwise bound.
+Assign 10 points to least norm, 8 to the derivatives, 6 to the
+logical scope and 6 to the remaining hypotheses.</p>
+<h2 id="9-references">9. References</h2>
+<ul>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, open lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>.</li>
+<li>[Malgrange] Bernard Malgrange, <em>Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution</em>, Annales de l'Institut Fourier <strong>6</strong> (1956), 271–355. <a href="https://aif.centre-mersenne.org/item/AIF_1956__6__271_0/">Original article</a>.</li>
+<li>[Mantlik] Frank Mantlik, <em>Partial differential operators depending analytically on a parameter</em>, Annales de l'Institut Fourier <strong>41</strong> (1991), 577–599. A reference for the distribution-space and pointwise-surjectivity statements is Section 2. <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.1266/">Original article</a>.</li>
+</ul>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

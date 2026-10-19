@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Characteristic rays and directional kernels</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L199.html">Previous lesson</a> · <a href="#complete-proof">Complete proof</a> · <a href="src/characteristic-rays-and-directional-kernels.md">Editable source</a></nav><h1 id="characteristic-rays-and-directional-kernels">Characteristic rays and directional kernels</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A characteristic covector identifies a frequency at which the principal part of an equation can vanish. For an operator with constant coefficients, its gradient then identifies a line in physical space. A singularity with that covector travels along this line until it meets a singularity of the forcing. We prove this statement and construct global solutions whose wavefront set consists of exactly one such line with one positive frequency ray.</p>
+<p>The mechanism is a pair of inverse kernels with opposite directional wavefront bounds. Their construction allows arbitrary complex lower-order terms. It also gives an analytic wavefront bound for the kernels. The propagation assertion in this lesson concerns ordinary wavefront: its smooth localization argument does not by itself prove propagation of analytic or derivative-class wavefront. The full class propagation theorem and its boundary localization are proved in <a href="AN02-L201.html#complete-proof">Resolving singular directions at a holomorphic boundary</a>, Theorem 6.1.</p>
+<p>Read <a href="AN02-L199.html">Noncharacteristic directions and microlocal regularity</a> for the exceptional characteristic set, <span class="unlinked">Analytic directions of holomorphic boundary values</span> for the tube-boundary sign, and <span class="unlinked">Pulling back and combining analytic singularities</span> for convolution wavefronts. The complete proof also uses the Fréchet closed graph theorem proved in <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 14.5. Basic references are Grubb [G], Dyatlov [D], and Hörmander [H]. All proof inputs used here are linked within the course.</p>
+<h2 id="1-the-frequency-stays-fixed-while-the-base-point-moves">1. The frequency stays fixed while the base point moves</h2>
+<p>Write <span class="math" data-index="0" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, and let <span class="math" data-index="1" data-tex="\(P(D)\)">\(P(D)\)</span> be a scalar constant-coefficient operator of positive order <span class="math" data-index="2" data-tex="\(m\)">\(m\)</span>. Its highest homogeneous term is <span class="math" data-index="3" data-tex="\(p_m\)">\(p_m\)</span>. We assume</p>
+<span class="math math-display" id="learner-eq-CR1" data-index="4" data-tex="\[
+ p_m(\xi)\in\mathbb R\quad(\xi\in\mathbb R^n),\qquad
+ p_m(\xi)=0,\ \xi\ne0\ \Longrightarrow\ a(\xi):=\nabla p_m(\xi)\ne0.
+ \tag{CR1}
+\]">\[
+ p_m(\xi)\in\mathbb R\quad(\xi\in\mathbb R^n),\qquad
+ p_m(\xi)=0,\ \xi\ne0\ \Longrightarrow\ a(\xi):=\nabla p_m(\xi)\ne0.
+ \tag{CR1}
+\]</span>
+<p>This is <strong>real principal type</strong>. Reality is required only of the principal part. At a characteristic covector, Euler's identity gives</p>
+<span class="math math-display" id="learner-eq-CR2" data-index="5" data-tex="\[
+ \xi\cdot a(\xi)=m p_m(\xi)=0.
+ \tag{CR2}
+\]">\[
+ \xi\cdot a(\xi)=m p_m(\xi)=0.
+ \tag{CR2}
+\]</span>
+<p>The ray direction in physical space is therefore perpendicular to the frequency covector. A covector is not a velocity vector.</p>
+<p><strong>Theorem A (propagation).</strong> Let <span class="math" data-index="6" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span> on an open set <span class="math" data-index="7" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-index="8" data-tex="\((x_0,\xi_0)\in\operatorname{WF}(u)\setminus\operatorname{WF}(f)\)">\((x_0,\xi_0)\in\operatorname{WF}(u)\setminus\operatorname{WF}(f)\)</span>, then <span class="math" data-index="9" data-tex="\(p_m(\xi_0)=0\)">\(p_m(\xi_0)=0\)</span>. If a line segment <span class="math" data-index="10" data-tex="\(I\subset X\)">\(I\subset X\)</span> contains <span class="math" data-index="11" data-tex="\(x_0\)">\(x_0\)</span>, is parallel to <span class="math" data-index="12" data-tex="\(a(\xi_0)\)">\(a(\xi_0)\)</span>, and contains no pair <span class="math" data-index="13" data-tex="\((x,\xi_0)\in\operatorname{WF}(f)\)">\((x,\xi_0)\in\operatorname{WF}(f)\)</span>, then</p>
+<span class="math math-display" id="learner-eq-CR3" data-index="14" data-tex="\[
+ I\times\{\xi_0\}\subset\operatorname{WF}(u).
+ \tag{CR3}
+\]">\[
+ I\times\{\xi_0\}\subset\operatorname{WF}(u).
+ \tag{CR3}
+\]</span>
+<p>The forcing may be singular at other covectors. The hypothesis concerns the same fixed <span class="math" data-index="15" data-tex="\(\xi_0\)">\(\xi_0\)</span> along the segment. Endpoints contained in <span class="math" data-index="16" data-tex="\(X\)">\(X\)</span> are included.</p>
+<p><strong>Theorem B (one exact ray).</strong> For every nonzero characteristic <span class="math" data-index="17" data-tex="\(\xi_0\)">\(\xi_0\)</span> and every integer <span class="math" data-index="18" data-tex="\(r\geq0\)">\(r\geq0\)</span>, there is a global <span class="math" data-index="19" data-tex="\(u\in C^r(\mathbb R^n)\)">\(u\in C^r(\mathbb R^n)\)</span> with smooth <span class="math" data-index="20" data-tex="\(P(D)u\)">\(P(D)u\)</span> and</p>
+<span class="math math-display" id="learner-eq-CR4" data-index="21" data-tex="\[
+ \operatorname{WF}(u)
+ =\{(t a(\xi_0),s\xi_0):t\in\mathbb R,\ s&gt;0\}.
+ \tag{CR4}
+\]">\[
+ \operatorname{WF}(u)
+ =\{(t a(\xi_0),s\xi_0):t\in\mathbb R,\ s&gt;0\}.
+ \tag{CR4}
+\]</span>
+<p>Thus one can require <span class="math" data-index="22" data-tex="\(u\in C^m\)">\(u\in C^m\)</span>, or any other prescribed finite differentiability. Equality describes all its singular covectors, including their sign. A translated solution realizes the corresponding line through any chosen point. Theorems A and B are assertions 2 and 3 of complete-proof Theorem 1.1.</p>
+<h2 id="2-two-kernels-see-the-two-ends-of-a-segment">2. Two kernels see the two ends of a segment</h2>
+<p><strong>Theorem C (directional inverse kernels).</strong> There are distributions <span class="math" data-index="23" data-tex="\(E_\pm\)">\(E_\pm\)</span> and entire functions <span class="math" data-index="24" data-tex="\(w_\pm\)">\(w_\pm\)</span> such that</p>
+<span class="math math-display" id="learner-eq-CR5" data-index="25" data-tex="\[
+ P(D)E_\pm=\delta_0+w_\pm,
+ \tag{CR5}
+\]">\[
+ P(D)E_\pm=\delta_0+w_\pm,
+ \tag{CR5}
+\]</span>
+<p>and</p>
+<span class="math math-display" id="learner-eq-CR6" data-index="26" data-tex="\[
+ \operatorname{WF}_A(E_\pm)
+ \subseteq\{(t a(\xi),\xi):p_m(\xi)=0,\ \xi\ne0,\ \pm t\geq0\}
+       \cup\{(0,\xi):\xi\ne0\}.
+ \tag{CR6}
+\]">\[
+ \operatorname{WF}_A(E_\pm)
+ \subseteq\{(t a(\xi),\xi):p_m(\xi)=0,\ \xi\ne0,\ \pm t\geq0\}
+       \cup\{(0,\xi):\xi\ne0\}.
+ \tag{CR6}
+\]</span>
+<p>This is a bound on singularities, not a support restriction. The kernels can be nonzero away from these rays and need not be tempered.</p>
+<p>To understand their construction, first raise the order by multiplying <span class="math" data-index="27" data-tex="\(P(\zeta)\)">\(P(\zeta)\)</span> by <span class="math" data-index="28" data-tex="\((\zeta_1^2+\cdots+\zeta_n^2)^k\)">\((\zeta_1^2+\cdots+\zeta_n^2)^k\)</span>. This is a holomorphic polynomial, and its real principal gradient on the characteristic set is a positive multiple of the original gradient. For the resulting polynomial <span class="math" data-index="29" data-tex="\(Q\)">\(Q\)</span> of order <span class="math" data-index="30" data-tex="\(M&gt;n+1\)">\(M&gt;n+1\)</span>, put</p>
+<span class="math math-display" id="learner-eq-CR7" data-index="31" data-tex="\[
+ v(\eta)=|\eta|^{1-M}\nabla q_M(\eta).
+ \tag{CR7}
+\]">\[
+ v(\eta)=|\eta|^{1-M}\nabla q_M(\eta).
+ \tag{CR7}
+\]</span>
+<p>A sufficiently large fixed <span class="math" data-index="32" data-tex="\(T\)">\(T\)</span> and then a sufficiently large <span class="math" data-index="33" data-tex="\(R\)">\(R\)</span> give</p>
+<span class="math math-display" id="learner-eq-CR8" data-index="34" data-tex="\[
+ \operatorname{Im}Q(\eta+iTv(\eta))\geq c|\eta|^{M-1}&gt;0
+ \qquad(|\eta|\geq R).
+ \tag{CR8}
+\]">\[
+ \operatorname{Im}Q(\eta+iTv(\eta))\geq c|\eta|^{M-1}&gt;0
+ \qquad(|\eta|\geq R).
+ \tag{CR8}
+\]</span>
+<p>The fixed imaginary shift dominates the complex lower terms. The inverse Fourier integral can therefore run over this complex graph without meeting a zero. Its missing compact cap contributes an entire error. A further angular shift produces exponential decrease near any base point outside the appropriate characteristic ray. The remaining angular pieces are holomorphic tube boundaries, whose positive polars exclude the unwanted covector. Complete-proof Sections 2–3 give all estimates, the Stokes boundaries, and the reduction back to the original order.</p>
+<figure><img class="course-figure" loading="lazy" width="1500" height="720" src="reproduce/L200/figures/imaginary-frequency-push.png" alt="For P equal to D subscript 2 plus 2i and frequencies eta equal to r times the first coordinate vector, the deformed complex coordinates have imaginary parts r over 3 and 4 plus r over 3; at base point (1,0) the exponential modulus is exp minus r over 3." /><figcaption class="native"><a href="reproduce/L200/figures/imaginary-frequency-push.png">Open full-size PNG</a> · <a href="reproduce/L200/figures/imaginary-frequency-push.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> An exact two-dimensional model of the additional imaginary push. Here <span class="math" data-index="35" data-tex="\(P(\zeta)=\zeta_2+2i\)">\(P(\zeta)=\zeta_2+2i\)</span>, <span class="math" data-index="36" data-tex="\(\eta=(r,0)\)">\(\eta=(r,0)\)</span>, and <span class="math" data-index="37" data-tex="\(\zeta=(r+ir/3,i(4+r/3))\)">\(\zeta=(r+ir/3,i(4+r/3))\)</span>. Hence <span class="math" data-index="38" data-tex="\(\operatorname{Im}P(\zeta)=6+r/3&gt;0\)">\(\operatorname{Im}P(\zeta)=6+r/3&gt;0\)</span>, while <span class="math" data-index="39" data-tex="\(|e^{i(1,0)\cdot\zeta}|=e^{-r/3}\)">\(|e^{i(1,0)\cdot\zeta}|=e^{-r/3}\)</span>. The two panels show complex-frequency coordinates and the resulting exponential decrease. They illustrate this contour model, not the support of its inverse kernel.</p>
+<p>For compactly supported <span class="math" data-index="40" data-tex="\(v\)">\(v\)</span>, the kernels give the exact identities</p>
+<span class="math math-display" id="learner-eq-CR9" data-index="41" data-tex="\[
+ v=E_\pm*P(D)v-w_\pm*v.
+ \tag{CR9}
+\]">\[
+ v=E_\pm*P(D)v-w_\pm*v.
+ \tag{CR9}
+\]</span>
+<p>The second term is entire. If <span class="math" data-index="42" data-tex="\(v\)">\(v\)</span> has a wavefront point at <span class="math" data-index="43" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>, convolution with <span class="math" data-index="44" data-tex="\(E_-\)">\(E_-\)</span> finds an image wavefront point farther along the positive <span class="math" data-index="45" data-tex="\(a(\xi)\)">\(a(\xi)\)</span> direction; convolution with <span class="math" data-index="46" data-tex="\(E_+\)">\(E_+\)</span> finds one in the negative direction. A smooth cutoff around a segment puts its commutator only near the two ends. Shrinking the end transitions and using closedness proves Theorem A. The signs refer to <span class="math" data-index="47" data-tex="\(x-y\)">\(x-y\)</span> in the kernel; the image point <span class="math" data-index="48" data-tex="\(y\)">\(y\)</span> lies on the opposite side.</p>
+<h2 id="3-why-approximate-solutions-imply-an-exact-realization">3. Why approximate solutions imply an exact realization</h2>
+<p>Smooth oscillating packets do not themselves have a nonempty wavefront set. Their role is to disprove a regularity estimate that would follow if every admissible global function were smoother than requested.</p>
+<p>Fix a characteristic <span class="math" data-index="49" data-tex="\(\xi_0\)">\(\xi_0\)</span>, let <span class="math" data-index="50" data-tex="\(a=\nabla p_m(\xi_0)\)">\(a=\nabla p_m(\xi_0)\)</span>, and write <span class="math" data-index="51" data-tex="\(x=sa+y\)">\(x=sa+y\)</span>, <span class="math" data-index="52" data-tex="\(y\perp a\)">\(y\perp a\)</span>. Expanding the shifted operator gives</p>
+<span class="math math-display" id="learner-eq-CR10" data-index="53" data-tex="\[
+ P(t\xi_0+D)=t^{m-1}(B_0+t^{-1}B_1+\cdots+t^{-(m-1)}B_{m-1}),
+ \qquad B_0=a\cdot D+p_{m-1}(\xi_0).
+ \tag{CR10}
+\]">\[
+ P(t\xi_0+D)=t^{m-1}(B_0+t^{-1}B_1+\cdots+t^{-(m-1)}B_{m-1}),
+ \qquad B_0=a\cdot D+p_{m-1}(\xi_0).
+ \tag{CR10}
+\]</span>
+<p>One solves successive first-order equations along <span class="math" data-index="54" data-tex="\(s\)">\(s\)</span>, starting from</p>
+<span class="math math-display" id="learner-eq-CR11" data-index="55" data-tex="\[
+ v_0(sa+y)=e^{-ip_{m-1}(\xi_0)s}\psi(y).
+ \tag{CR11}
+\]">\[
+ v_0(sa+y)=e^{-ip_{m-1}(\xi_0)s}\psi(y).
+ \tag{CR11}
+\]</span>
+<p>All amplitudes remain in the thin cylinder containing <span class="math" data-index="56" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span>. The finite packet</p>
+<span class="math math-display" id="learner-eq-CR12" data-index="57" data-tex="\[
+ u_t=e^{itx\cdot\xi_0}\sum_{j=0}^{J-1}t^{-j}v_j
+ \tag{CR12}
+\]">\[
+ u_t=e^{itx\cdot\xi_0}\sum_{j=0}^{J-1}t^{-j}v_j
+ \tag{CR12}
+\]</span>
+<p>has compact <span class="math" data-index="58" data-tex="\(C^r\)">\(C^r\)</span> norms <span class="math" data-index="59" data-tex="\(O(t^r)\)">\(O(t^r)\)</span>, arbitrarily small compact image norms when <span class="math" data-index="60" data-tex="\(J\)">\(J\)</span> is large enough, and rapidly decreasing Fourier tails outside any cone about the positive ray. Yet one derivative of order <span class="math" data-index="61" data-tex="\(r+1\)">\(r+1\)</span> at the origin grows as <span class="math" data-index="62" data-tex="\(t^{r+1}\)">\(t^{r+1}\)</span>.</p>
+<p>Complete-proof Section 6 constructs the Fréchet space of global <span class="math" data-index="63" data-tex="\(C^r\)">\(C^r\)</span> functions with smooth image, smoothness off the line, and wavefront in that positive ray. It proves completeness, including the Fourier seminorms. If all its members were <span class="math" data-index="64" data-tex="\(C^{r+1}\)">\(C^{r+1}\)</span>, closed graph would bound that derivative by finitely many of the stated seminorms. The packets contradict this bound. An actual nonsmooth member therefore exists. Its wavefront is nonempty, lies over the line, and has only the selected positive direction. Propagation then fills the whole line, proving Theorem B.</p>
+<figure><img class="course-figure" loading="lazy" width="1500" height="780" src="reproduce/L200/figures/fixed-covector-and-moving-base.png" alt="The symbol xi1 times xi2 has the coordinate axes as its characteristic set; the selected covector (1,0) has gradient (0,1). In base space the line x1 equal to zero carries vertical propagation and horizontal positive covector arrows." /><figcaption class="native"><a href="reproduce/L200/figures/fixed-covector-and-moving-base.png">Open full-size PNG</a> · <a href="reproduce/L200/figures/fixed-covector-and-moving-base.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> For <span class="math" data-index="65" data-tex="\(p_2(\xi)=\xi_1\xi_2\)">\(p_2(\xi)=\xi_1\xi_2\)</span>, choose <span class="math" data-index="66" data-tex="\(\xi_0=(1,0)\)">\(\xi_0=(1,0)\)</span>. Its gradient is <span class="math" data-index="67" data-tex="\((0,1)\)">\((0,1)\)</span>. The base line is <span class="math" data-index="68" data-tex="\(x_1=0\)">\(x_1=0\)</span>, and every singular covector in (CR4) is a positive horizontal covector. The short horizontal arrows represent covectors attached to the line; they are not trajectories leaving it.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-one-sign-survives-a-complex-transport-coefficient">Example 1: one sign survives a complex transport coefficient</h3>
+<p>Let <span class="math" data-index="69" data-tex="\(P(D)=D_s+i\)">\(P(D)=D_s+i\)</span> on the <span class="math" data-index="70" data-tex="\((t,s)\)">\((t,s)\)</span>-plane. Its principal symbol is <span class="math" data-index="71" data-tex="\(\sigma\)">\(\sigma\)</span>, so the characteristic covector <span class="math" data-index="72" data-tex="\((1,0)\)">\((1,0)\)</span> has gradient <span class="math" data-index="73" data-tex="\((0,1)\)">\((0,1)\)</span>. For an integer <span class="math" data-index="74" data-tex="\(r\geq0\)">\(r\geq0\)</span>, take the upper-half-plane boundary</p>
+<span class="math math-display" id="learner-eq-CR13" data-index="75" data-tex="\[
+ h_r(t)=(t+i0)^{r+1/2},\qquad
+ u(t,s)=e^s h_r(t).
+ \tag{CR13}
+\]">\[
+ h_r(t)=(t+i0)^{r+1/2},\qquad
+ u(t,s)=e^s h_r(t).
+ \tag{CR13}
+\]</span>
+<p>The branch has argument between zero and <span class="math" data-index="76" data-tex="\(\pi\)">\(\pi\)</span>. Its boundary is <span class="math" data-index="77" data-tex="\(t^{r+1/2}\)">\(t^{r+1/2}\)</span> for <span class="math" data-index="78" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-index="79" data-tex="\(e^{i\pi(r+1/2)}|t|^{r+1/2}\)">\(e^{i\pi(r+1/2)}|t|^{r+1/2}\)</span> for <span class="math" data-index="80" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, with value zero at zero. Derivatives through order <span class="math" data-index="81" data-tex="\(r\)">\(r\)</span> extend continuously by zero. The next derivative has a nonzero multiple of <span class="math" data-index="82" data-tex="\(|t|^{-1/2}\)">\(|t|^{-1/2}\)</span> on either side, so the function is not <span class="math" data-index="83" data-tex="\(C^{r+1}\)">\(C^{r+1}\)</span> there. The holomorphic tube-boundary theorem gives only positive <span class="math" data-index="84" data-tex="\(t\)">\(t\)</span>-covectors. Nonsmoothness and the ordinary base projection theorem make the positive fiber nonempty; positive conicity fills it. Analytic multiplication by the nonzero <span class="math" data-index="85" data-tex="\(e^s\)">\(e^s\)</span> and the tensor formula give</p>
+<span class="math math-display" id="learner-eq-CR14" data-index="86" data-tex="\[
+ \operatorname{WF}(u)=\{((0,s);\tau,0):s\in\mathbb R,\ \tau&gt;0\}.
+ \tag{CR14}
+\]">\[
+ \operatorname{WF}(u)=\{((0,s);\tau,0):s\in\mathbb R,\ \tau&gt;0\}.
+ \tag{CR14}
+\]</span>
+<p>Finally <span class="math" data-index="87" data-tex="\((D_s+i)e^s=0\)">\((D_s+i)e^s=0\)</span>, so <span class="math" data-index="88" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span>. A complex lower coefficient does not destroy the conclusion.</p>
+<h3 id="example-2-an-exact-integral-for-a-mixed-second-order-operator">Example 2: an exact integral for a mixed second-order operator</h3>
+<p>Let</p>
+<span class="math math-display" id="learner-eq-CR15" data-index="89" data-tex="\[
+ P(D)=D_1D_2+2iD_1+3,\qquad
+ u_r(x_1,x_2)=\int_1^\infty
+       e^{itx_1+2x_2-3ix_2/t}\,t^{-r-2}\,dt.
+ \tag{CR15}
+\]">\[
+ P(D)=D_1D_2+2iD_1+3,\qquad
+ u_r(x_1,x_2)=\int_1^\infty
+       e^{itx_1+2x_2-3ix_2/t}\,t^{-r-2}\,dt.
+ \tag{CR15}
+\]</span>
+<p>On compact sets, derivatives through order <span class="math" data-index="90" data-tex="\(r\)">\(r\)</span> are dominated by <span class="math" data-index="91" data-tex="\(C t^{-2}\)">\(C t^{-2}\)</span>, since an <span class="math" data-index="92" data-tex="\(x_1\)">\(x_1\)</span>-derivative contributes <span class="math" data-index="93" data-tex="\(t\)">\(t\)</span> and an <span class="math" data-index="94" data-tex="\(x_2\)">\(x_2\)</span>-derivative contributes <span class="math" data-index="95" data-tex="\(2-3i/t\)">\(2-3i/t\)</span>. Thus <span class="math" data-index="96" data-tex="\(u_r\in C^r\)">\(u_r\in C^r\)</span> globally. For each integrand, <span class="math" data-index="97" data-tex="\(D_1=t\)">\(D_1=t\)</span> and <span class="math" data-index="98" data-tex="\(D_2+2i=-3/t\)">\(D_2+2i=-3/t\)</span>, so <span class="math" data-index="99" data-tex="\(P(D)u_r=0\)">\(P(D)u_r=0\)</span> distributionally. This follows by pairing first with a compact test and integrating by parts; its Fourier decay in <span class="math" data-index="100" data-tex="\(x_1\)">\(x_1\)</span> makes the differentiated pairing integrable at every required order.</p>
+<p>The integral is smooth for <span class="math" data-index="101" data-tex="\(x_1\ne0\)">\(x_1\ne0\)</span>: integration by parts in <span class="math" data-index="102" data-tex="\(t\)">\(t\)</span> makes every differentiated tail convergent, locally uniformly there. To determine its sign, allow complex <span class="math" data-index="103" data-tex="\(z_1,z_2\)">\(z_1,z_2\)</span> with <span class="math" data-index="104" data-tex="\(\operatorname{Im}z_1&gt;0\)">\(\operatorname{Im}z_1&gt;0\)</span>, and bounded <span class="math" data-index="105" data-tex="\(z_2\)">\(z_2\)</span>. The integral is holomorphic and bounded uniformly up to the real boundary on compact sets, because its amplitude has size at most <span class="math" data-index="106" data-tex="\(C t^{-r-2}\)">\(C t^{-r-2}\)</span>. Apply the tube-boundary theorem on every smaller cone in <span class="math" data-index="107" data-tex="\(\{y_1&gt;0\}\)">\(\{y_1&gt;0\}\)</span>. Its positive polar consists of <span class="math" data-index="108" data-tex="\((\tau,0)\)">\((\tau,0)\)</span>, <span class="math" data-index="109" data-tex="\(\tau\geq0\)">\(\tau\geq0\)</span>. Therefore only positive horizontal covectors can occur.</p>
+<p>They do occur at every point of <span class="math" data-index="110" data-tex="\(x_1=0\)">\(x_1=0\)</span>. Away from that line,</p>
+<span class="math math-display" id="learner-eq-CR16" data-index="111" data-tex="\[
+ D_1^{r+1}u_r=e^{2x_2}\int_1^\infty
+                  e^{itx_1-3ix_2/t}\,\frac{dt}{t}.
+ \tag{CR16}
+\]">\[
+ D_1^{r+1}u_r=e^{2x_2}\int_1^\infty
+                  e^{itx_1-3ix_2/t}\,\frac{dt}{t}.
+ \tag{CR16}
+\]</span>
+<p>Replacing <span class="math" data-index="112" data-tex="\(e^{-3ix_2/t}\)">\(e^{-3ix_2/t}\)</span> by one changes this by a uniformly bounded function on compact <span class="math" data-index="113" data-tex="\(x_2\)">\(x_2\)</span>-sets. The real part of the remaining integral is
+<span class="math" data-index="114" data-tex="\(\int_{|x_1|}^\infty\cos v\,dv/v=-\log|x_1|+O(1)\)">\(\int_{|x_1|}^\infty\cos v\,dv/v=-\log|x_1|+O(1)\)</span>: on <span class="math" data-index="115" data-tex="\((|x_1|,1)\)">\((|x_1|,1)\)</span>, subtract one from <span class="math" data-index="116" data-tex="\(\cos v\)">\(\cos v\)</span>, and on <span class="math" data-index="117" data-tex="\((1,\infty)\)">\((1,\infty)\)</span>, integrate by parts. Thus no <span class="math" data-index="118" data-tex="\(C^{r+1}\)">\(C^{r+1}\)</span> extension exists across the line. The base projection theorem and the positive-direction bound give exactly (CR14), with <span class="math" data-index="119" data-tex="\((t,s)=(x_1,x_2)\)">\((t,s)=(x_1,x_2)\)</span>.</p>
+<h3 id="example-3-the-wave-covector-is-perpendicular-to-its-light-ray">Example 3: the wave covector is perpendicular to its light ray</h3>
+<p>For</p>
+<span class="math math-display" id="learner-eq-CR17" data-index="120" data-tex="\[
+ P(\tau,\eta_1,\eta_2)=\tau^2-4\eta_1^2-4\eta_2^2+(2+i),
+ \qquad \xi_0=(2,-1,0),
+ \tag{CR17}
+\]">\[
+ P(\tau,\eta_1,\eta_2)=\tau^2-4\eta_1^2-4\eta_2^2+(2+i),
+ \qquad \xi_0=(2,-1,0),
+ \tag{CR17}
+\]</span>
+<p>the principal value is zero and <span class="math" data-index="121" data-tex="\(a(\xi_0)=(4,8,0)\)">\(a(\xi_0)=(4,8,0)\)</span>. Thus the base line is <span class="math" data-index="122" data-tex="\((t,x_1,x_2)=(s,2s,0)\)">\((t,x_1,x_2)=(s,2s,0)\)</span>. Its pairing with the covector is <span class="math" data-index="123" data-tex="\(2s-2s=0\)">\(2s-2s=0\)</span>. Theorem B gives a global <span class="math" data-index="124" data-tex="\(C^r\)">\(C^r\)</span> function with smooth image and precisely</p>
+<span class="math math-display" id="learner-eq-CR18" data-index="125" data-tex="\[
+ \{((s,2s,0);2\lambda,-\lambda,0):s\in\mathbb R,\ \lambda&gt;0\}
+ \tag{CR18}
+\]">\[
+ \{((s,2s,0);2\lambda,-\lambda,0):s\in\mathbb R,\ \lambda&gt;0\}
+ \tag{CR18}
+\]</span>
+<p>as wavefront set. The complex constant changes the equation but leaves this characteristic line unchanged. The principal gradient is nonzero at every nonzero characteristic covector, so all hypotheses are satisfied.</p>
+<h3 id="example-4-an-elliptic-principal-part-has-no-line-to-realize">Example 4: an elliptic principal part has no line to realize</h3>
+<p>Take <span class="math" data-index="126" data-tex="\(P(\xi)=\xi_1^2+\xi_2^2+3i\xi_1+1\)">\(P(\xi)=\xi_1^2+\xi_2^2+3i\xi_1+1\)</span>. Its real principal part is positive at every nonzero real covector. Condition (CR1) is satisfied, but the characteristic set is empty. Theorem C then makes <span class="math" data-index="127" data-tex="\(E_\pm\)">\(E_\pm\)</span> analytic away from zero. Theorem B has no characteristic covector to which it can be applied. Direct microlocal ellipticity gives smooth <span class="math" data-index="128" data-tex="\(u\)">\(u\)</span> whenever <span class="math" data-index="129" data-tex="\(P(D)u\)">\(P(D)u\)</span> is smooth, and analytic <span class="math" data-index="130" data-tex="\(u\)">\(u\)</span> whenever the image is analytic. There is no claim that every real principal type operator has a nonempty characteristic set.</p>
+<h2 id="5-exercises-100-points">5. Exercises, 100 points</h2>
+<ol>
+<li><strong>A fixed shift and a bad shift; 10 points.</strong> For <span class="math" data-index="131" data-tex="\(P(\zeta)=\zeta_2+2i\)">\(P(\zeta)=\zeta_2+2i\)</span>, compute <span class="math" data-index="132" data-tex="\(P(\eta+iT e_2)\)">\(P(\eta+iT e_2)\)</span>. Compare <span class="math" data-index="133" data-tex="\(T=4,-2,-3\)">\(T=4,-2,-3\)</span>. Explain why the reality of the lower coefficient is unnecessary and why the zero-avoiding contour must actually be checked.</li>
+<li><strong>Separating a base point from a negative ray; 12 points.</strong> Let <span class="math" data-index="134" data-tex="\(a=(0,2)\)">\(a=(0,2)\)</span>. Find a vector <span class="math" data-index="135" data-tex="\(V\)">\(V\)</span> with <span class="math" data-index="136" data-tex="\(x\cdot V&gt;0\)">\(x\cdot V&gt;0\)</span>, <span class="math" data-index="137" data-tex="\(a\cdot V&gt;0\)">\(a\cdot V&gt;0\)</span> for <span class="math" data-index="138" data-tex="\(x=(3,1)\)">\(x=(3,1)\)</span> and <span class="math" data-index="139" data-tex="\(x=(2,0)\)">\(x=(2,0)\)</span>. Prove there is no such vector when <span class="math" data-index="140" data-tex="\(x=(0,-1)\)">\(x=(0,-1)\)</span>. Prove the general criterion used in (RP15).</li>
+<li><strong>The first two transport corrections; 12 points.</strong> For the operator in (CR15), take <span class="math" data-index="141" data-tex="\(\xi_0=(1,0)\)">\(\xi_0=(1,0)\)</span>, <span class="math" data-index="142" data-tex="\(s=x_2\)">\(s=x_2\)</span>, <span class="math" data-index="143" data-tex="\(y=x_1\)">\(y=x_1\)</span>, and <span class="math" data-index="144" data-tex="\(v_0=e^{2s}\psi(y)\)">\(v_0=e^{2s}\psi(y)\)</span>. Compute <span class="math" data-index="145" data-tex="\(B_0,B_1,v_1,v_2\)">\(B_0,B_1,v_1,v_2\)</span> with zero initial corrections at <span class="math" data-index="146" data-tex="\(s=0\)">\(s=0\)</span>. Check the sign in the integrating-factor formula.</li>
+<li><strong>Why the order is raised; 12 points.</strong> Find the smallest nonnegative integer <span class="math" data-index="147" data-tex="\(k\)">\(k\)</span> guaranteeing <span class="math" data-index="148" data-tex="\(m+2k&gt;n+1\)">\(m+2k&gt;n+1\)</span>. Compute it for <span class="math" data-index="149" data-tex="\((n,m)=(3,2),(2,1),(1,1)\)">\((n,m)=(3,2),(2,1),(1,1)\)</span>. Check both the radial integral and the outer Stokes boundary at the borderline order <span class="math" data-index="150" data-tex="\(M=n+1\)">\(M=n+1\)</span>.</li>
+<li><strong>The kernel direction and the image direction; 12 points.</strong> Fix <span class="math" data-index="151" data-tex="\(a=(0,1)\)">\(a=(0,1)\)</span> and <span class="math" data-index="152" data-tex="\(x=0\)">\(x=0\)</span>. For <span class="math" data-index="153" data-tex="\(E_-\)">\(E_-\)</span> and <span class="math" data-index="154" data-tex="\(E_+\)">\(E_+\)</span>, solve <span class="math" data-index="155" data-tex="\(x-y=t a\)">\(x-y=t a\)</span> with the allowed sign of <span class="math" data-index="156" data-tex="\(t\)">\(t\)</span>. Explain how both end transitions are used in the propagation proof and why one kernel alone does not give that proof.</li>
+<li><strong>Local differentiability misses a Fourier seminorm; 14 points.</strong> On <span class="math" data-index="157" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, put <span class="math" data-index="158" data-tex="\(v_k(x)=k^{-r-1}e^{-ikx_1}\)">\(v_k(x)=k^{-r-1}e^{-ikx_1}\)</span>. Show that <span class="math" data-index="159" data-tex="\(v_k\to0\)">\(v_k\to0\)</span> locally in <span class="math" data-index="160" data-tex="\(C^r\)">\(C^r\)</span>. If <span class="math" data-index="161" data-tex="\(\theta\geq0\)">\(\theta\geq0\)</span> is a nonzero compact smooth cutoff and <span class="math" data-index="162" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a cone about <span class="math" data-index="163" data-tex="\((1,0)\)">\((1,0)\)</span> excluding <span class="math" data-index="164" data-tex="\((-1,0)\)">\((-1,0)\)</span>, show that its Fourier seminorm with exponent <span class="math" data-index="165" data-tex="\(r+2\)">\(r+2\)</span> diverges. Explain the role of the extra seminorms in completeness and closed graph.</li>
+<li><strong>One frequency sign requires a complex function; 14 points.</strong> Verify every regularity and wavefront assertion in (CR13)–(CR14). Then prove that a real-valued distribution has symmetric ordinary wavefront under <span class="math" data-index="166" data-tex="\(\xi\mapsto-\xi\)">\(\xi\mapsto-\xi\)</span>, and conclude that no nonempty wavefront set of the form (CR4) can belong to a real-valued function.</li>
+<li><strong>A vanishing gradient breaks the hypothesis; 14 points.</strong> For <span class="math" data-index="167" data-tex="\(P(D)=D_1^2\)">\(P(D)=D_1^2\)</span> in two dimensions and <span class="math" data-index="168" data-tex="\(u(x)=H(x_2)\)">\(u(x)=H(x_2)\)</span>, compute the image, principal characteristic set, gradient, and wavefront. Explain why this does not contradict the propagation theorem. Compare with the empty characteristic set in Example 4.</li>
+</ol>
+<h2 id="6-complete-solutions">6. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The value is <span class="math" data-index="169" data-tex="\(\eta_2+i(T+2)\)">\(\eta_2+i(T+2)\)</span>. At <span class="math" data-index="170" data-tex="\(T=4\)">\(T=4\)</span> its imaginary part is <span class="math" data-index="171" data-tex="\(6\)">\(6\)</span>, so its reciprocal has no pole on the graph. At <span class="math" data-index="172" data-tex="\(T=-2\)">\(T=-2\)</span> it vanishes whenever <span class="math" data-index="173" data-tex="\(\eta_2=0\)">\(\eta_2=0\)</span>; that graph is invalid. At <span class="math" data-index="174" data-tex="\(T=-3\)">\(T=-3\)</span> its imaginary part is <span class="math" data-index="175" data-tex="\(-1\)">\(-1\)</span>, so the graph again avoids zeros, with the opposite sign of imaginary part. The lower coefficient is <span class="math" data-index="176" data-tex="\(2i\)">\(2i\)</span>, genuinely nonreal, and the first and third shifts still avoid zeros. A shift of the right size and sign supplies the needed lower bound; a formal translation of the contour without that check would cross poles.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Take <span class="math" data-index="177" data-tex="\(V=(1,1)\)">\(V=(1,1)\)</span> in the first two cases. The dot products with <span class="math" data-index="178" data-tex="\(a\)">\(a\)</span> are <span class="math" data-index="179" data-tex="\(2\)">\(2\)</span>, and those with the two <span class="math" data-index="180" data-tex="\(x\)">\(x\)</span>'s are <span class="math" data-index="181" data-tex="\(4\)">\(4\)</span> and <span class="math" data-index="182" data-tex="\(2\)">\(2\)</span>. For <span class="math" data-index="183" data-tex="\(x=(0,-1)\)">\(x=(0,-1)\)</span>, positivity against <span class="math" data-index="184" data-tex="\(x\)">\(x\)</span> requires <span class="math" data-index="185" data-tex="\(V_2&lt;0\)">\(V_2&lt;0\)</span>, while positivity against <span class="math" data-index="186" data-tex="\(a\)">\(a\)</span> requires <span class="math" data-index="187" data-tex="\(V_2&gt;0\)">\(V_2&gt;0\)</span>, impossible.</p>
+<p>For nonzero <span class="math" data-index="188" data-tex="\(x,a\)">\(x,a\)</span>, if <span class="math" data-index="189" data-tex="\(x=-t a\)">\(x=-t a\)</span>, <span class="math" data-index="190" data-tex="\(t\geq0\)">\(t\geq0\)</span>, the two dot products cannot both be positive. Conversely if they are not opposite, set <span class="math" data-index="191" data-tex="\(V=x/|x|+a/|a|\)">\(V=x/|x|+a/|a|\)</span>. Its dot products are <span class="math" data-index="192" data-tex="\(|x|(1+\cos\alpha)\)">\(|x|(1+\cos\alpha)\)</span> and <span class="math" data-index="193" data-tex="\(|a|(1+\cos\alpha)\)">\(|a|(1+\cos\alpha)\)</span>, both positive since the angle <span class="math" data-index="194" data-tex="\(\alpha\)">\(\alpha\)</span> is less than <span class="math" data-index="195" data-tex="\(\pi\)">\(\pi\)</span>. If <span class="math" data-index="196" data-tex="\(x=0\)">\(x=0\)</span>, the first dot product is always zero, and zero belongs to the excluded negative ray. This proves the exact criterion.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The exact expansion is</p>
+<span class="math math-display" id="learner-eq-CR19" data-index="197" data-tex="\[
+ P(t\xi_0+D)=t(D_s+2i)+(D_yD_s+2iD_y+3),
+ \quad B_0=D_s+2i,\quad B_1=D_yB_0+3.
+ \tag{CR19}
+\]">\[
+ P(t\xi_0+D)=t(D_s+2i)+(D_yD_s+2iD_y+3),
+ \quad B_0=D_s+2i,\quad B_1=D_yB_0+3.
+ \tag{CR19}
+\]</span>
+<p>Thus <span class="math" data-index="198" data-tex="\(B_0v_0=0\)">\(B_0v_0=0\)</span>, <span class="math" data-index="199" data-tex="\(B_1v_0=3e^{2s}\psi\)">\(B_1v_0=3e^{2s}\psi\)</span>, and <span class="math" data-index="200" data-tex="\(F_1=-3e^{2s}\psi\)">\(F_1=-3e^{2s}\psi\)</span>. Formula (RP27), with <span class="math" data-index="201" data-tex="\(b=2i\)">\(b=2i\)</span>, gives</p>
+<span class="math math-display" id="learner-eq-CR20" data-index="202" data-tex="\[
+ v_1=-3is e^{2s}\psi.
+ \tag{CR20}
+\]">\[
+ v_1=-3is e^{2s}\psi.
+ \tag{CR20}
+\]</span>
+<p>Since <span class="math" data-index="203" data-tex="\(B_0v_1=-3e^{2s}\psi\)">\(B_0v_1=-3e^{2s}\psi\)</span>,</p>
+<span class="math math-display" data-index="204" data-tex="\[
+ B_1v_1=D_y(-3e^{2s}\psi)+3v_1
+       =3i e^{2s}\psi&#x27;-9is e^{2s}\psi.
+\]">\[
+ B_1v_1=D_y(-3e^{2s}\psi)+3v_1
+       =3i e^{2s}\psi&#x27;-9is e^{2s}\psi.
+\]</span>
+<p>Integrating its negative gives</p>
+<span class="math math-display" id="learner-eq-CR21" data-index="205" data-tex="\[
+ v_2=e^{2s}\left(3s\psi&#x27;-\frac92s^2\psi\right).
+ \tag{CR21}
+\]">\[
+ v_2=e^{2s}\left(3s\psi&#x27;-\frac92s^2\psi\right).
+ \tag{CR21}
+\]</span>
+<p>Both corrections vanish at <span class="math" data-index="206" data-tex="\(s=0\)">\(s=0\)</span>. For any <span class="math" data-index="207" data-tex="\(F\)">\(F\)</span>, differentiation of <span class="math" data-index="208" data-tex="\(v=i e^{-ibs}\int_0^s e^{ibt}F(t)\,dt\)">\(v=i e^{-ibs}\int_0^s e^{ibt}F(t)\,dt\)</span> gives <span class="math" data-index="209" data-tex="\(-i\partial_sv+bv=F\)">\(-i\partial_sv+bv=F\)</span>, so the displayed sign is fixed by <span class="math" data-index="210" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The least choice is</p>
+<span class="math math-display" id="learner-eq-CR22" data-index="211" data-tex="\[
+ k=\max\left(0,\left\lceil\frac{n+2-m}{2}\right\rceil\right).
+ \tag{CR22}
+\]">\[
+ k=\max\left(0,\left\lceil\frac{n+2-m}{2}\right\rceil\right).
+ \tag{CR22}
+\]</span>
+<p>The three cases give <span class="math" data-index="212" data-tex="\(k=2,2,1\)">\(k=2,2,1\)</span> and <span class="math" data-index="213" data-tex="\(M=6,5,3\)">\(M=6,5,3\)</span>, respectively. The radial majorant is <span class="math" data-index="214" data-tex="\(\int_R^\infty\rho^{n-M}\,d\rho\)">\(\int_R^\infty\rho^{n-M}\,d\rho\)</span>. At <span class="math" data-index="215" data-tex="\(M=n+1\)">\(M=n+1\)</span> its exponent is <span class="math" data-index="216" data-tex="\(-1\)">\(-1\)</span>, giving logarithmic divergence. The outer homotopy boundary is <span class="math" data-index="217" data-tex="\(O(S^{n+1-M})=O(1)\)">\(O(S^{n+1-M})=O(1)\)</span>, so that estimate alone does not make it vanish either. A strictly larger order makes the radial exponent less than <span class="math" data-index="218" data-tex="\(-1\)">\(-1\)</span> and the boundary exponent negative. Raising order changes the gradient on the characteristic set only by the positive factor <span class="math" data-index="219" data-tex="\(|\xi|^{2k}\)">\(|\xi|^{2k}\)</span>, preserving its oriented rays.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>For <span class="math" data-index="220" data-tex="\(E_-\)">\(E_-\)</span>, <span class="math" data-index="221" data-tex="\(t\leq0\)">\(t\leq0\)</span>, so <span class="math" data-index="222" data-tex="\(y=-t a=(0,-t)\)">\(y=-t a=(0,-t)\)</span> lies above the origin. For <span class="math" data-index="223" data-tex="\(E_+\)">\(E_+\)</span>, <span class="math" data-index="224" data-tex="\(t\geq0\)">\(t\geq0\)</span>, so <span class="math" data-index="225" data-tex="\(y\)">\(y\)</span> lies below it. The origin term is absent if the image has no wavefront at that pair. A cutoff image can then have the required line covector only in its forward or backward commutator transition. The negative kernel forces a forward transition point; the positive kernel forces a backward one. Letting each transition shrink gives both endpoint wavefront points. One sign provides only one of these two deductions; the proof as stated needs both to fill arbitrary segments in both directions.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>Every derivative of order at most <span class="math" data-index="226" data-tex="\(r\)">\(r\)</span> has modulus at most <span class="math" data-index="227" data-tex="\(k^{-1}\)">\(k^{-1}\)</span> for <span class="math" data-index="228" data-tex="\(k\geq1\)">\(k\geq1\)</span>, or is zero if it differentiates in <span class="math" data-index="229" data-tex="\(x_2\)">\(x_2\)</span>. Hence convergence is local <span class="math" data-index="230" data-tex="\(C^r\)">\(C^r\)</span>, even uniform for these derivatives on all of real space. At <span class="math" data-index="231" data-tex="\(\zeta=(-k,0)\)">\(\zeta=(-k,0)\)</span>,</p>
+<span class="math math-display" id="learner-eq-CR23" data-index="232" data-tex="\[
+ \widehat{\theta v_k}(-k,0)
+      =k^{-r-1}\widehat\theta(0)
+      =k^{-r-1}\int\theta&gt;0.
+ \tag{CR23}
+\]">\[
+ \widehat{\theta v_k}(-k,0)
+      =k^{-r-1}\widehat\theta(0)
+      =k^{-r-1}\int\theta&gt;0.
+ \tag{CR23}
+\]</span>
+<p>This covector lies outside <span class="math" data-index="233" data-tex="\(\Gamma\)">\(\Gamma\)</span>. The seminorm of exponent <span class="math" data-index="234" data-tex="\(r+2\)">\(r+2\)</span> is therefore at least
+<span class="math" data-index="235" data-tex="\((1+k)^{r+2}k^{-r-1}\int\theta\)">\((1+k)^{r+2}k^{-r-1}\int\theta\)</span>, which grows linearly. Thus local <span class="math" data-index="236" data-tex="\(C^r\)">\(C^r\)</span> convergence does not supply convergence in the topology used for realization. Its Fourier seminorms keep the uniform off-ray bounds, while the off-line and image seminorms keep their smooth limits. All are needed in the completeness argument before closed graph can be applied to that particular space.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>For <span class="math" data-index="237" data-tex="\(t\ne0\)">\(t\ne0\)</span>, differentiating the two explicit powers in Example 1 gives a fixed nonzero coefficient times <span class="math" data-index="238" data-tex="\(|t|^{r+1/2-j}\)">\(|t|^{r+1/2-j}\)</span> at order <span class="math" data-index="239" data-tex="\(j\)">\(j\)</span>. For <span class="math" data-index="240" data-tex="\(j\leq r\)">\(j\leq r\)</span> these derivatives tend to zero and define continuous derivatives through zero; successive difference quotients give the same extensions. At order <span class="math" data-index="241" data-tex="\(r+1\)">\(r+1\)</span> their moduli are a nonzero multiple of <span class="math" data-index="242" data-tex="\(|t|^{-1/2}\)">\(|t|^{-1/2}\)</span>, so no continuous extension is possible. The upper holomorphic boundary gives <span class="math" data-index="243" data-tex="\(\operatorname{WF}_A(h_r)\subset\{(0,\tau):\tau&gt;0\}\)">\(\operatorname{WF}_A(h_r)\subset\{(0,\tau):\tau&gt;0\}\)</span>: away from zero each power has a holomorphic continuation, and the positive-polar theorem gives the sign at zero. Ordinary inclusion and nonsmoothness force the entire positive fiber. Tensoring with the analytic nonzero <span class="math" data-index="244" data-tex="\(e^s\)">\(e^s\)</span> and multiplying by its analytic inverse preserve exactly these horizontal covectors. Direct differentiation gives <span class="math" data-index="245" data-tex="\((D_s+i)e^s=0\)">\((D_s+i)e^s=0\)</span>.</p>
+<p>For real <span class="math" data-index="246" data-tex="\(v\)">\(v\)</span>, use real cutoffs. The compact transform satisfies <span class="math" data-index="247" data-tex="\(\widehat{\theta v}(-\xi)=\overline{\widehat{\theta v}(\xi)}\)">\(\widehat{\theta v}(-\xi)=\overline{\widehat{\theta v}(\xi)}\)</span>. Rapid decrease on a cone is therefore equivalent to rapid decrease on its reflected cone. The ordinary wavefront is symmetric. The positive ray in (CR4) does not contain its negative and is nonempty, so such a realizing function is necessarily complex-valued.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>The symbol is <span class="math" data-index="248" data-tex="\(p_2(\xi)=\xi_1^2\)">\(p_2(\xi)=\xi_1^2\)</span>, and</p>
+<span class="math math-display" id="learner-eq-CR24" data-index="249" data-tex="\[
+ \operatorname{Char}P=\{\xi_1=0,\ \xi_2\ne0\},\qquad
+ \nabla p_2=(2\xi_1,0).
+ \tag{CR24}
+\]">\[
+ \operatorname{Char}P=\{\xi_1=0,\ \xi_2\ne0\},\qquad
+ \nabla p_2=(2\xi_1,0).
+ \tag{CR24}
+\]</span>
+<p>The gradient is zero on every characteristic covector, so (CR1) fails. The function <span class="math" data-index="250" data-tex="\(H(x_2)\)">\(H(x_2)\)</span> is independent of <span class="math" data-index="251" data-tex="\(x_1\)">\(x_1\)</span>, giving <span class="math" data-index="252" data-tex="\(D_1^2u=0\)">\(D_1^2u=0\)</span>. The one-dimensional jump has both nonzero frequency signs at zero: it is real, nonsmooth, and smooth away from zero, and its localized transform has a nonzero <span class="math" data-index="253" data-tex="\(1/\xi_2\)">\(1/\xi_2\)</span> leading term on either half-line, obtained by one integration by parts. The tensor formula with the smooth constant factor therefore gives</p>
+<span class="math math-display" id="learner-eq-CR25" data-index="254" data-tex="\[
+ \operatorname{WF}(u)=\{((x_1,0);0,\eta):x_1\in\mathbb R,\ \eta\ne0\}.
+ \tag{CR25}
+\]">\[
+ \operatorname{WF}(u)=\{((x_1,0);0,\eta):x_1\in\mathbb R,\ \eta\ne0\}.
+ \tag{CR25}
+\]</span>
+<p>There is no nonzero gradient direction to which the theorem applies. Example 4 has the opposite situation: there are no nonzero characteristic covectors, so the implication defining real principal type is vacuous, and ellipticity excludes singularities for smooth forcing. A nonempty degenerate characteristic set and an empty characteristic set have different consequences.</p>
+<h2 id="references">References</h2>
+<p>[G] Gerd Grubb, <em>Distributions and Operators</em>, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, University of Copenhagen lecture notes. This is background reading; the Fourier inputs used here are proved in the linked course foundations.</p>
+<p>[D] Semyon Dyatlov, <a href="https://math.mit.edu/~dyatlov/18.156/"><em>18.156: Differential Analysis</em>, Spring 2017</a>, MIT, lectures on Hamiltonian flow and propagation of singularities. The present lesson treats constant coefficients and proves its own directional construction.</p>
+<p>[H] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990, Sections 8.3 and 8.6. The complete proof below supplies the directional kernels, ordinary propagation and global realization for the full stated hypotheses.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<p>Write <span class="math" data-index="255" data-tex="\(D_j=-i\partial_{x_j}\)">\(D_j=-i\partial_{x_j}\)</span>, and use the Fourier transform with phase <span class="math" data-index="256" data-tex="\(e^{-ix\cdot\xi}\)">\(e^{-ix\cdot\xi}\)</span>. Let</p>
+<span class="math math-display" id="proof-eq-RP1" data-index="257" data-tex="\[
+ P(\xi)=\sum_{j=0}^m p_j(\xi),\qquad m\geq1,
+ \quad p_j(t\xi)=t^jp_j(\xi)\quad(t&gt;0).
+ \tag{RP1}
+\]">\[
+ P(\xi)=\sum_{j=0}^m p_j(\xi),\qquad m\geq1,
+ \quad p_j(t\xi)=t^jp_j(\xi)\quad(t&gt;0).
+ \tag{RP1}
+\]</span>
+<p>The coefficients of the lower terms may be complex. We assume that <span class="math" data-index="258" data-tex="\(p_m\)">\(p_m\)</span> is real on real covectors and</p>
+<span class="math math-display" id="proof-eq-RP2" data-index="259" data-tex="\[
+ p_m(\xi)=0,\quad \xi\ne0
+ \quad\Longrightarrow\quad a(\xi):=\nabla p_m(\xi)\ne0.
+ \tag{RP2}
+\]">\[
+ p_m(\xi)=0,\quad \xi\ne0
+ \quad\Longrightarrow\quad a(\xi):=\nabla p_m(\xi)\ne0.
+ \tag{RP2}
+\]</span>
+<p>This is the constant-coefficient real principal type condition. Euler's identity <span class="math" data-index="260" data-tex="\(\xi\cdot\nabla p_m(\xi)=mp_m(\xi)\)">\(\xi\cdot\nabla p_m(\xi)=mp_m(\xi)\)</span> shows that <span class="math" data-index="261" data-tex="\(\nabla p_m\)">\(\nabla p_m\)</span> is nonzero at every nonzero real covector: a zero gradient would first imply <span class="math" data-index="262" data-tex="\(p_m=0\)">\(p_m=0\)</span>, contradicting (RP2). At a characteristic covector, Euler's identity also gives <span class="math" data-index="263" data-tex="\(\xi\cdot a(\xi)=0\)">\(\xi\cdot a(\xi)=0\)</span>.</p>
+<p>The Fourier, convolution and ordinary wavefront operations used below have their complete proofs in <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz Fourier foundations</a>, <a href="prerequisites/geometric-microlocal-calculus.html">Detecting regularity without choosing coordinates</a>, and Section 1 of <span class="unlinked">Pulling back and combining analytic singularities</span>. The geometric-microlocal reading retains its GNU FDL 1.2 component terms. The analytic tube-boundary estimate is Theorem 4.1 of <span class="unlinked">Analytic directions of holomorphic boundary values</span>. Smooth and analytic ellipticity, including all finite orders, are Theorem 1.1 of <a href="AN02-L199.html">Noncharacteristic directions and microlocal regularity</a>. Section 14.5 of <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> proves the Fréchet closed graph theorem. The compact-contour Stokes argument is included in <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. These are available proofs, rather than additional assumptions on <span class="math" data-index="264" data-tex="\(P\)">\(P\)</span>.</p>
+<h3 id="1-three-assertions-about-one-characteristic-direction">1. Three assertions about one characteristic direction</h3>
+<p><strong>Theorem 1.1.</strong> Under (RP1)–(RP2), the following assertions hold.</p>
+<ol>
+<li>There are distributions <span class="math" data-index="265" data-tex="\(E_+,E_-\)">\(E_+,E_-\)</span> on <span class="math" data-index="266" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> and entire functions <span class="math" data-index="267" data-tex="\(w_+,w_-\)">\(w_+,w_-\)</span> on <span class="math" data-index="268" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> such that</li>
+</ol>
+<span class="math math-display" id="proof-eq-RP3" data-index="269" data-tex="\[
+ \begin{gathered}
+ P(D)E_\pm=\delta_0+w_\pm,\\
+ \begin{aligned}
+ \operatorname{WF}_A(E_\pm)
+ &amp;\subseteq \{(t a(\xi),\xi):p_m(\xi)=0,\ \xi\ne0,\ \pm t\geq0\}\\
+ &amp;\qquad\cup\{(0,\xi):\xi\ne0\}.
+ \end{aligned}
+ \end{gathered}
+ \tag{RP3}
+\]">\[
+ \begin{gathered}
+ P(D)E_\pm=\delta_0+w_\pm,\\
+ \begin{aligned}
+ \operatorname{WF}_A(E_\pm)
+ &amp;\subseteq \{(t a(\xi),\xi):p_m(\xi)=0,\ \xi\ne0,\ \pm t\geq0\}\\
+ &amp;\qquad\cup\{(0,\xi):\xi\ne0\}.
+ \end{aligned}
+ \end{gathered}
+ \tag{RP3}
+\]</span>
+<p>Only an inclusion is asserted; the actual support of a kernel need not lie on these rays.</p>
+<ol start="2">
+<li>Let <span class="math" data-index="270" data-tex="\(X\)">\(X\)</span> be open, <span class="math" data-index="271" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>, and <span class="math" data-index="272" data-tex="\(f=P(D)u\)">\(f=P(D)u\)</span>. If
+<span class="math" data-index="273" data-tex="\((x_0,\xi_0)\in\operatorname{WF}(u)\setminus\operatorname{WF}(f)\)">\((x_0,\xi_0)\in\operatorname{WF}(u)\setminus\operatorname{WF}(f)\)</span>, then <span class="math" data-index="274" data-tex="\(p_m(\xi_0)=0\)">\(p_m(\xi_0)=0\)</span>. Every line segment <span class="math" data-index="275" data-tex="\(I\subset X\)">\(I\subset X\)</span> containing <span class="math" data-index="276" data-tex="\(x_0\)">\(x_0\)</span>, directed by <span class="math" data-index="277" data-tex="\(a(\xi_0)\)">\(a(\xi_0)\)</span>, and satisfying</li>
+</ol>
+<span class="math math-display" id="proof-eq-RP4" data-index="278" data-tex="\[
+ (I\times\{\xi_0\})\cap\operatorname{WF}(f)=\varnothing
+ \tag{RP4}
+\]">\[
+ (I\times\{\xi_0\})\cap\operatorname{WF}(f)=\varnothing
+ \tag{RP4}
+\]</span>
+<p>obeys <span class="math" data-index="279" data-tex="\(I\times\{\xi_0\}\subset\operatorname{WF}(u)\)">\(I\times\{\xi_0\}\subset\operatorname{WF}(u)\)</span>.</p>
+<ol start="3">
+<li>For every nonzero characteristic <span class="math" data-index="280" data-tex="\(\xi_0\)">\(\xi_0\)</span> and every integer <span class="math" data-index="281" data-tex="\(r\geq0\)">\(r\geq0\)</span>, there is a global <span class="math" data-index="282" data-tex="\(u\in C^r(\mathbb R^n)\)">\(u\in C^r(\mathbb R^n)\)</span> for which <span class="math" data-index="283" data-tex="\(P(D)u\in C^\infty(\mathbb R^n)\)">\(P(D)u\in C^\infty(\mathbb R^n)\)</span> and</li>
+</ol>
+<span class="math math-display" id="proof-eq-RP5" data-index="284" data-tex="\[
+ \operatorname{WF}(u)
+ =\{(t a(\xi_0),s\xi_0):t\in\mathbb R,\ s&gt;0\}.
+ \tag{RP5}
+\]">\[
+ \operatorname{WF}(u)
+ =\{(t a(\xi_0),s\xi_0):t\in\mathbb R,\ s&gt;0\}.
+ \tag{RP5}
+\]</span>
+<p>In particular one may take <span class="math" data-index="285" data-tex="\(r=m\)">\(r=m\)</span>. Translation gives the same assertion on a line through any prescribed base point.</p>
+<p>We first construct the ray kernels and prove propagation. We then prove the existence assertion with a complete function-space argument and explicit transport amplitudes.</p>
+<h3 id="2-a-bounded-imaginary-shift-avoids-every-large-real-zero">2. A bounded imaginary shift avoids every large real zero</h3>
+<p>First suppose that the order is <span class="math" data-index="286" data-tex="\(M&gt;n+1\)">\(M&gt;n+1\)</span>; write the polynomial as <span class="math" data-index="287" data-tex="\(Q\)">\(Q\)</span>, with real principal part <span class="math" data-index="288" data-tex="\(q_M\)">\(q_M\)</span> satisfying (RP2). Put <span class="math" data-index="289" data-tex="\(\rho=|\eta|\)">\(\rho=|\eta|\)</span> and</p>
+<span class="math math-display" id="proof-eq-RP6" data-index="290" data-tex="\[
+ v(\eta)=\rho^{1-M}\nabla q_M(\eta)\qquad(\eta\ne0).
+ \tag{RP6}
+\]">\[
+ v(\eta)=\rho^{1-M}\nabla q_M(\eta)\qquad(\eta\ne0).
+ \tag{RP6}
+\]</span>
+<p>This is a smooth degree-zero real vector field. Compactness of the unit sphere gives constants <span class="math" data-index="291" data-tex="\(c_0,C_0&gt;0\)">\(c_0,C_0&gt;0\)</span> with</p>
+<span class="math math-display" id="proof-eq-RP7" data-index="292" data-tex="\[
+ \nabla q_M(\eta)\cdot v(\eta)\geq c_0\rho^{M-1},
+ \qquad |v(\eta)|\leq C_0.
+ \tag{RP7}
+\]">\[
+ \nabla q_M(\eta)\cdot v(\eta)\geq c_0\rho^{M-1},
+ \qquad |v(\eta)|\leq C_0.
+ \tag{RP7}
+\]</span>
+<p>Taylor's finite polynomial formula, with a fixed <span class="math" data-index="293" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, gives</p>
+<span class="math math-display" id="proof-eq-RP8" data-index="294" data-tex="\[
+ \operatorname{Im}Q(\eta+iTv(\eta))
+ \geq (Tc_0-C_1)\rho^{M-1}-C_T\rho^{M-2}.
+ \tag{RP8}
+\]">\[
+ \operatorname{Im}Q(\eta+iTv(\eta))
+ \geq (Tc_0-C_1)\rho^{M-1}-C_T\rho^{M-2}.
+ \tag{RP8}
+\]</span>
+<p>Indeed the first-order contribution of <span class="math" data-index="295" data-tex="\(q_M\)">\(q_M\)</span> is exactly <span class="math" data-index="296" data-tex="\(T\nabla q_M\cdot v\)">\(T\nabla q_M\cdot v\)</span>; its higher Taylor terms have degree at most <span class="math" data-index="297" data-tex="\(M-2\)">\(M-2\)</span> in <span class="math" data-index="298" data-tex="\(\rho\)">\(\rho\)</span>. The imaginary part of the degree <span class="math" data-index="299" data-tex="\(M-1\)">\(M-1\)</span> term is bounded below by <span class="math" data-index="300" data-tex="\(-C_1\rho^{M-1}\)">\(-C_1\rho^{M-1}\)</span>, and all its shifted terms and all lower homogeneous terms have size at most <span class="math" data-index="301" data-tex="\(C_T\rho^{M-2}\)">\(C_T\rho^{M-2}\)</span>. Thus complex lower coefficients have been included. Choose <span class="math" data-index="302" data-tex="\(T\)">\(T\)</span> so that <span class="math" data-index="303" data-tex="\(Tc_0&gt;C_1+2\)">\(Tc_0&gt;C_1+2\)</span>, then <span class="math" data-index="304" data-tex="\(R\)">\(R\)</span> large enough. For some <span class="math" data-index="305" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>,</p>
+<span class="math math-display" id="proof-eq-RP9" data-index="306" data-tex="\[
+ \operatorname{Im}Q(\eta+iTv(\eta))\geq c\rho^{M-1}
+ \qquad(\rho\geq R).
+ \tag{RP9}
+\]">\[
+ \operatorname{Im}Q(\eta+iTv(\eta))\geq c\rho^{M-1}
+ \qquad(\rho\geq R).
+ \tag{RP9}
+\]</span>
+<p>There is a useful uniform extension. Suppose <span class="math" data-index="307" data-tex="\(V\)">\(V\)</span> is a fixed real vector and <span class="math" data-index="308" data-tex="\(W\)">\(W\)</span> a spherical neighborhood on which
+<span class="math" data-index="309" data-tex="\(\nabla q_M(\eta)\cdot V\geq d\rho^{M-1}\)">\(\nabla q_M(\eta)\cdot V\geq d\rho^{M-1}\)</span>, with <span class="math" data-index="310" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. For <span class="math" data-index="311" data-tex="\(0\leq\tau\leq\varepsilon\rho\)">\(0\leq\tau\leq\varepsilon\rho\)</span>, the fundamental theorem of calculus applied to the polynomial gives</p>
+<span class="math math-display" id="proof-eq-RP10" data-index="312" data-tex="\[
+ \left|Q(\eta+iTv+i\tau V)-Q(\eta+iTv)
+           -i\tau\nabla q_M(\eta)\cdot V\right|
+ \leq C\tau(1+\tau)\rho^{M-2}.
+ \tag{RP10}
+\]">\[
+ \left|Q(\eta+iTv+i\tau V)-Q(\eta+iTv)
+           -i\tau\nabla q_M(\eta)\cdot V\right|
+ \leq C\tau(1+\tau)\rho^{M-2}.
+ \tag{RP10}
+\]</span>
+<p>Here <span class="math" data-index="313" data-tex="\(T,V\)">\(T,V\)</span> are fixed, <span class="math" data-index="314" data-tex="\(\rho\)">\(\rho\)</span> is large, and <span class="math" data-index="315" data-tex="\(\varepsilon\leq1\)">\(\varepsilon\leq1\)</span>. To see the estimate directly, subtract <span class="math" data-index="316" data-tex="\(\nabla q_M(\eta)\)">\(\nabla q_M(\eta)\)</span> from <span class="math" data-index="317" data-tex="\(\nabla Q(\eta+iTv+isV)\)">\(\nabla Q(\eta+iTv+isV)\)</span>; each remaining monomial has bound <span class="math" data-index="318" data-tex="\(C(1+s)\rho^{M-2}\)">\(C(1+s)\rho^{M-2}\)</span> for <span class="math" data-index="319" data-tex="\(0\leq s\leq\tau\leq\rho\)">\(0\leq s\leq\tau\leq\rho\)</span>, and integrate in <span class="math" data-index="320" data-tex="\(s\)">\(s\)</span>. Choose <span class="math" data-index="321" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> small and then increase <span class="math" data-index="322" data-tex="\(R\)">\(R\)</span>, so that <span class="math" data-index="323" data-tex="\(C(1/R+\varepsilon)\leq d/2\)">\(C(1/R+\varepsilon)\leq d/2\)</span>. Equations (RP9)–(RP10) imply</p>
+<span class="math math-display" id="proof-eq-RP11" data-index="324" data-tex="\[
+ \operatorname{Im}Q(\eta+iTv+i\tau V)
+ \geq c\rho^{M-1}+(d/2)\tau\rho^{M-1}
+ \qquad(\eta/\rho\in W).
+ \tag{RP11}
+\]">\[
+ \operatorname{Im}Q(\eta+iTv+i\tau V)
+ \geq c\rho^{M-1}+(d/2)\tau\rho^{M-1}
+ \qquad(\eta/\rho\in W).
+ \tag{RP11}
+\]</span>
+<p>In particular every contour in this deformation avoids zeros.</p>
+<h3 id="3-the-contour-integral-and-its-analytic-remainder">3. The contour integral and its analytic remainder</h3>
+<p>Let <span class="math" data-index="325" data-tex="\(\Gamma\)">\(\Gamma\)</span> be the oriented graph <span class="math" data-index="326" data-tex="\(\zeta=\eta+iTv(\eta)\)">\(\zeta=\eta+iTv(\eta)\)</span>, <span class="math" data-index="327" data-tex="\(|\eta|\geq R\)">\(|\eta|\geq R\)</span>, with the orientation of real <span class="math" data-index="328" data-tex="\(\eta\)">\(\eta\)</span>-space. Define</p>
+<span class="math math-display" id="proof-eq-RP12" data-index="329" data-tex="\[
+ F_-(x)=(2\pi)^{-n}\int_\Gamma
+        \frac{e^{ix\cdot\zeta}}{Q(\zeta)}
+                  \,d\zeta_1\wedge\cdots\wedge d\zeta_n.
+ \tag{RP12}
+\]">\[
+ F_-(x)=(2\pi)^{-n}\int_\Gamma
+        \frac{e^{ix\cdot\zeta}}{Q(\zeta)}
+                  \,d\zeta_1\wedge\cdots\wedge d\zeta_n.
+ \tag{RP12}
+\]</span>
+<p>The graph Jacobian is <span class="math" data-index="330" data-tex="\(J(\eta)=\det(I+iT\,Dv(\eta))\)">\(J(\eta)=\det(I+iT\,Dv(\eta))\)</span>. Since <span class="math" data-index="331" data-tex="\(Dv=O(\rho^{-1})\)">\(Dv=O(\rho^{-1})\)</span>, it is bounded for <span class="math" data-index="332" data-tex="\(\rho\geq R\)">\(\rho\geq R\)</span>. On compact real <span class="math" data-index="333" data-tex="\(x\)">\(x\)</span>-sets, <span class="math" data-index="334" data-tex="\(|e^{ix\cdot\zeta}|\leq e^{TC_0|x|}\)">\(|e^{ix\cdot\zeta}|\leq e^{TC_0|x|}\)</span>. Equation (RP9) bounds the reciprocal by <span class="math" data-index="335" data-tex="\(C\rho^{1-M}\)">\(C\rho^{1-M}\)</span>. The radial integral is bounded by a multiple of <span class="math" data-index="336" data-tex="\(\int_R^\infty\rho^{n-M}\,d\rho\)">\(\int_R^\infty\rho^{n-M}\,d\rho\)</span>, which converges because <span class="math" data-index="337" data-tex="\(M&gt;n+1\)">\(M&gt;n+1\)</span>. Thus (RP12) is a continuous function of real <span class="math" data-index="338" data-tex="\(x\)">\(x\)</span>, and a distribution; no global tempered bound is required.</p>
+<p>Extend <span class="math" data-index="339" data-tex="\(v\)">\(v\)</span> smoothly and boundedly into <span class="math" data-index="340" data-tex="\(|\eta|\leq R\)">\(|\eta|\leq R\)</span>, preserving its boundary values, and let <span class="math" data-index="341" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> be this compact graph over the ball. The combined graph <span class="math" data-index="342" data-tex="\(\Gamma\cup\Gamma_0\)">\(\Gamma\cup\Gamma_0\)</span> is homotopic to real space by multiplying its imaginary part by a parameter between zero and one. For a compact test function <span class="math" data-index="343" data-tex="\(\phi\)">\(\phi\)</span>, the entire function <span class="math" data-index="344" data-tex="\(\widehat\phi(-\zeta)\)">\(\widehat\phi(-\zeta)\)</span> decreases faster than every power of <span class="math" data-index="345" data-tex="\(|\operatorname{Re}\zeta|\)">\(|\operatorname{Re}\zeta|\)</span> on these uniformly bounded imaginary strips. Integration by parts in <span class="math" data-index="346" data-tex="\(x\)">\(x\)</span> proves that assertion directly.</p>
+<p>The form <span class="math" data-index="347" data-tex="\(H(\zeta)\,d\zeta_1\wedge\cdots\wedge d\zeta_n\)">\(H(\zeta)\,d\zeta_1\wedge\cdots\wedge d\zeta_n\)</span> is closed when <span class="math" data-index="348" data-tex="\(H\)">\(H\)</span> is holomorphic: every term of <span class="math" data-index="349" data-tex="\(dH\)">\(dH\)</span> repeats one of the <span class="math" data-index="350" data-tex="\(d\zeta_j\)">\(d\zeta_j\)</span>. Stokes on truncated homotopies, followed by the preceding rapid bound, therefore gives</p>
+<span class="math math-display" id="proof-eq-RP13" data-index="351" data-tex="\[
+ \begin{aligned}
+ \langle Q(D)F_-,\phi\rangle
+ &amp;=(2\pi)^{-n}\int_\Gamma\widehat\phi(-\zeta)
+                                      \,d\zeta_1\cdots d\zeta_n\\
+ &amp;=\phi(0)-(2\pi)^{-n}\int_{\Gamma_0}\widehat\phi(-\zeta)
+                                      \,d\zeta_1\cdots d\zeta_n.
+ \end{aligned}
+ \tag{RP13}
+\]">\[
+ \begin{aligned}
+ \langle Q(D)F_-,\phi\rangle
+ &amp;=(2\pi)^{-n}\int_\Gamma\widehat\phi(-\zeta)
+                                      \,d\zeta_1\cdots d\zeta_n\\
+ &amp;=\phi(0)-(2\pi)^{-n}\int_{\Gamma_0}\widehat\phi(-\zeta)
+                                      \,d\zeta_1\cdots d\zeta_n.
+ \end{aligned}
+ \tag{RP13}
+\]</span>
+<p>In the first equality the bilinear transpose is <span class="math" data-index="352" data-tex="\(Q(-D)\)">\(Q(-D)\)</span>; its pairing with <span class="math" data-index="353" data-tex="\(e^{ix\cdot\zeta}\)">\(e^{ix\cdot\zeta}\)</span> produces <span class="math" data-index="354" data-tex="\(Q(\zeta)\)">\(Q(\zeta)\)</span>, cancelling the denominator. The second equality uses Fourier inversion on real space. Consequently</p>
+<span class="math math-display" id="proof-eq-RP14" data-index="355" data-tex="\[
+ Q(D)F_-=\delta_0+W_-,\qquad
+ W_-(z)=-(2\pi)^{-n}\int_{\Gamma_0}e^{iz\cdot\zeta}
+                                  \,d\zeta_1\cdots d\zeta_n.
+ \tag{RP14}
+\]">\[
+ Q(D)F_-=\delta_0+W_-,\qquad
+ W_-(z)=-(2\pi)^{-n}\int_{\Gamma_0}e^{iz\cdot\zeta}
+                                  \,d\zeta_1\cdots d\zeta_n.
+ \tag{RP14}
+\]</span>
+<p>The last integral is entire: its frequencies range over one compact chain, so all complex derivatives converge uniformly on compact <span class="math" data-index="356" data-tex="\(z\)">\(z\)</span>-sets. No inverse of <span class="math" data-index="357" data-tex="\(Q\)">\(Q\)</span> on that chain is used.</p>
+<p>We prove the analytic directional bound. Fix <span class="math" data-index="358" data-tex="\(x_0\ne0\)">\(x_0\ne0\)</span> and a nonzero characteristic <span class="math" data-index="359" data-tex="\(\xi_0\)">\(\xi_0\)</span>. Suppose</p>
+<span class="math math-display" id="proof-eq-RP15" data-index="360" data-tex="\[
+ x_0\notin\{-t\nabla q_M(\xi_0):t\geq0\}.
+ \tag{RP15}
+\]">\[
+ x_0\notin\{-t\nabla q_M(\xi_0):t\geq0\}.
+ \tag{RP15}
+\]</span>
+<p>There is a real <span class="math" data-index="361" data-tex="\(V\)">\(V\)</span> with <span class="math" data-index="362" data-tex="\(x_0\cdot V&gt;0\)">\(x_0\cdot V&gt;0\)</span> and <span class="math" data-index="363" data-tex="\(\nabla q_M(\xi_0)\cdot V&gt;0\)">\(\nabla q_M(\xi_0)\cdot V&gt;0\)</span>. For example, the sum of the unit vectors in these two directions has both positive dot products unless the directions are opposite, precisely the excluded case. By continuity choose a cone <span class="math" data-index="364" data-tex="\(W\)">\(W\)</span> about <span class="math" data-index="365" data-tex="\(\xi_0\)">\(\xi_0\)</span> on which (RP11) applies. Let <span class="math" data-index="366" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span> be a smooth degree-zero angular function supported in <span class="math" data-index="367" data-tex="\(W\)">\(W\)</span> and equal to one on a smaller cone <span class="math" data-index="368" data-tex="\(W_0\)">\(W_0\)</span> about <span class="math" data-index="369" data-tex="\(\xi_0\)">\(\xi_0\)</span>. Deform the exterior graph to</p>
+<span class="math math-display" id="proof-eq-RP16" data-index="370" data-tex="\[
+ \zeta(\eta)=\eta+iTv(\eta)+i\varepsilon\rho\chi(\eta)V.
+ \tag{RP16}
+\]">\[
+ \zeta(\eta)=\eta+iTv(\eta)+i\varepsilon\rho\chi(\eta)V.
+ \tag{RP16}
+\]</span>
+<p>All intermediate graphs avoid zeros by (RP11). Their Jacobians are bounded, since <span class="math" data-index="371" data-tex="\(\rho\chi\)">\(\rho\chi\)</span> has bounded first derivatives. Restrict <span class="math" data-index="372" data-tex="\(x\)">\(x\)</span> to a neighborhood <span class="math" data-index="373" data-tex="\(U\)">\(U\)</span> of <span class="math" data-index="374" data-tex="\(x_0\)">\(x_0\)</span> on which <span class="math" data-index="375" data-tex="\(x\cdot V\geq b&gt;0\)">\(x\cdot V\geq b&gt;0\)</span>. The exponential on the homotopy is bounded by <span class="math" data-index="376" data-tex="\(e^{TC_0|x|}\)">\(e^{TC_0|x|}\)</span>; the added shift only decreases it. The outer boundary at radius <span class="math" data-index="377" data-tex="\(S\)">\(S\)</span> has size <span class="math" data-index="378" data-tex="\(O(S^{n+1-M})\)">\(O(S^{n+1-M})\)</span>, which tends to zero. This bound includes the factor <span class="math" data-index="379" data-tex="\(S\)">\(S\)</span> from the derivative in the homotopy parameter. Stokes therefore replaces (RP12), on <span class="math" data-index="380" data-tex="\(U\)">\(U\)</span>, by the new exterior integral plus an entire compact-chain integral. An increased inner radius changes only entire compact-chain terms.</p>
+<p>On <span class="math" data-index="381" data-tex="\(W_0\)">\(W_0\)</span>, where <span class="math" data-index="382" data-tex="\(\chi=1\)">\(\chi=1\)</span>, the exponential decays at least as <span class="math" data-index="383" data-tex="\(e^{-\varepsilon b\rho}\)">\(e^{-\varepsilon b\rho}\)</span>, apart from a locally bounded factor. It continues to decay at least as <span class="math" data-index="384" data-tex="\(e^{-\varepsilon b\rho/2}\)">\(e^{-\varepsilon b\rho/2}\)</span> when <span class="math" data-index="385" data-tex="\(x\)">\(x\)</span> is replaced by a complex <span class="math" data-index="386" data-tex="\(z\)">\(z\)</span> with real part in a smaller <span class="math" data-index="387" data-tex="\(U\)">\(U\)</span> and sufficiently small imaginary part. This portion of the integral is therefore holomorphic across real <span class="math" data-index="388" data-tex="\(U\)">\(U\)</span>.</p>
+<p>The remaining unit directions lie in the closed complement of <span class="math" data-index="389" data-tex="\(W_0\)">\(W_0\)</span>. Cover them by finitely many closed pointed convex cones <span class="math" data-index="390" data-tex="\(G_j\)">\(G_j\)</span> avoiding <span class="math" data-index="391" data-tex="\(\xi_0\)">\(\xi_0\)</span>, and split the integral into measurable angular pieces contained in these cones. Such a cover exists: around each unit direction different from <span class="math" data-index="392" data-tex="\(\xi_0/|\xi_0|\)">\(\xi_0/|\xi_0|\)</span>, take a sufficiently small spherical cap and its closed convex cone, still avoiding that direction; compactness gives finitely many. Each piece is holomorphic for</p>
+<span class="math math-display" id="proof-eq-RP17" data-index="393" data-tex="\[
+ z=x+iy,\qquad x\in U,\quad
+ y\in\operatorname{int}(G_j^*),\quad |y|&lt;h,
+ \qquad G_j^*=\{y:y\cdot\eta\geq0\ (\eta\in G_j)\}.
+ \tag{RP17}
+\]">\[
+ z=x+iy,\qquad x\in U,\quad
+ y\in\operatorname{int}(G_j^*),\quad |y|&lt;h,
+ \qquad G_j^*=\{y:y\cdot\eta\geq0\ (\eta\in G_j)\}.
+ \tag{RP17}
+\]</span>
+<p>Indeed the real part of its exponent is</p>
+<span class="math math-display" id="proof-eq-RP18" data-index="394" data-tex="\[
+ \operatorname{Re}(iz\cdot\zeta)
+ =-T x\cdot v(\eta)-\varepsilon\rho\chi(\eta)x\cdot V-y\cdot\eta
+ \leq TC_0|x|.
+ \tag{RP18}
+\]">\[
+ \operatorname{Re}(iz\cdot\zeta)
+ =-T x\cdot v(\eta)-\varepsilon\rho\chi(\eta)x\cdot V-y\cdot\eta
+ \leq TC_0|x|.
+ \tag{RP18}
+\]</span>
+<p>For interior <span class="math" data-index="395" data-tex="\(y\)">\(y\)</span>, its last term gives exponential decrease at infinity on any smaller directional cone; differentiation under the integral proves holomorphy. Even up to the real boundary the original integrable majorant is uniform in <span class="math" data-index="396" data-tex="\(y\)">\(y\)</span>. Dominated convergence identifies its full cone boundary with its real integral. The analytic tube-boundary theorem thus places its analytic wavefront covectors in <span class="math" data-index="397" data-tex="\((\operatorname{int}G_j^*)^*=G_j\)">\((\operatorname{int}G_j^*)^*=G_j\)</span>. The last equality is finite-dimensional separation for a closed convex cone with nonempty dual interior; a point outside <span class="math" data-index="398" data-tex="\(G_j\)">\(G_j\)</span> has a strictly separating dual vector, which may be moved a little into that interior. None of these pieces can have analytic wavefront covector <span class="math" data-index="399" data-tex="\(\xi_0\)">\(\xi_0\)</span>.</p>
+<p>The analytic part and the compact-chain correction have empty analytic wavefront. This proves absence at every pair in (RP15). At a noncharacteristic covector over <span class="math" data-index="400" data-tex="\(x_0\ne0\)">\(x_0\ne0\)</span>, (RP14) and analytic ellipticity prove absence directly. Therefore</p>
+<span class="math math-display" id="proof-eq-RP19" data-index="401" data-tex="\[
+ \operatorname{WF}_A(F_-)
+ \subseteq\{(-t\nabla q_M(\xi),\xi):t\geq0,\ q_M(\xi)=0,\ \xi\ne0\}
+                 \cup\{(0,\xi):\xi\ne0\}.
+ \tag{RP19}
+\]">\[
+ \operatorname{WF}_A(F_-)
+ \subseteq\{(-t\nabla q_M(\xi),\xi):t\geq0,\ q_M(\xi)=0,\ \xi\ne0\}
+                 \cup\{(0,\xi):\xi\ne0\}.
+ \tag{RP19}
+\]</span>
+<p>For the original order <span class="math" data-index="402" data-tex="\(m\)">\(m\)</span>, choose <span class="math" data-index="403" data-tex="\(k\geq0\)">\(k\geq0\)</span> so that <span class="math" data-index="404" data-tex="\(M=m+2k&gt;n+1\)">\(M=m+2k&gt;n+1\)</span>, and use</p>
+<span class="math math-display" id="proof-eq-RP20" data-index="405" data-tex="\[
+ Q(\zeta)=(\zeta_1^2+\cdots+\zeta_n^2)^k P(\zeta).
+ \tag{RP20}
+\]">\[
+ Q(\zeta)=(\zeta_1^2+\cdots+\zeta_n^2)^k P(\zeta).
+ \tag{RP20}
+\]</span>
+<p>Its principal part is real; at a real characteristic covector its gradient is <span class="math" data-index="406" data-tex="\(|\xi|^{2k}a(\xi)\)">\(|\xi|^{2k}a(\xi)\)</span>, so (RP2) and the oriented rays are preserved. Set <span class="math" data-index="407" data-tex="\(E_-=(-\Delta)^kF_-\)">\(E_-=(-\Delta)^kF_-\)</span> and <span class="math" data-index="408" data-tex="\(w_-=(-\Delta)^kW_-\)">\(w_-=(-\Delta)^kW_-\)</span>. Then <span class="math" data-index="409" data-tex="\(P(D)E_-=\delta_0+w_-\)">\(P(D)E_-=\delta_0+w_-\)</span>; analytic differential decrease preserves (RP19), and <span class="math" data-index="410" data-tex="\(w_-\)">\(w_-\)</span> is entire. Construct the negative kernel for <span class="math" data-index="411" data-tex="\(-P\)">\(-P\)</span> and change its sign to obtain <span class="math" data-index="412" data-tex="\(E_+\)">\(E_+\)</span>; the principal gradient changes sign, giving the positive rays. This proves assertion 1 of Theorem 1.1 in every dimension and every positive scalar order.</p>
+<h3 id="4-why-one-singular-point-fills-its-characteristic-segment">4. Why one singular point fills its characteristic segment</h3>
+<p>Ordinary wavefront is contained in analytic wavefront, so (RP3) also bounds <span class="math" data-index="413" data-tex="\(\operatorname{WF}(E_\pm)\)">\(\operatorname{WF}(E_\pm)\)</span>. If <span class="math" data-index="414" data-tex="\(v\)">\(v\)</span> has compact support and <span class="math" data-index="415" data-tex="\(g=P(D)v\)">\(g=P(D)v\)</span>, constant-coefficient convolution gives</p>
+<span class="math math-display" id="proof-eq-RP21" data-index="416" data-tex="\[
+ v=E_\pm*g-w_\pm*v.
+ \tag{RP21}
+\]">\[
+ v=E_\pm*g-w_\pm*v.
+ \tag{RP21}
+\]</span>
+<p>The correction is entire. In fact pairing the compactly supported finite-order distribution <span class="math" data-index="417" data-tex="\(v(y)\)">\(v(y)\)</span> with the entire function <span class="math" data-index="418" data-tex="\(w_\pm(z-y)\)">\(w_\pm(z-y)\)</span> gives a holomorphic function of <span class="math" data-index="419" data-tex="\(z\)">\(z\)</span> on every compact complex set; the finite order allows differentiation and Cauchy estimates there. The ordinary convolution wavefront theorem gives</p>
+<span class="math math-display" id="proof-eq-RP22" data-index="420" data-tex="\[
+ (x,\xi)\in\operatorname{WF}(v)
+ \ \Longrightarrow\;
+ \text{there is }y\text{ with }(y,\xi)\in\operatorname{WF}(g),
+ \quad x-y= t a(\xi),\quad \pm t\geq0,
+ \tag{RP22}
+\]">\[
+ (x,\xi)\in\operatorname{WF}(v)
+ \ \Longrightarrow\;
+ \text{there is }y\text{ with }(y,\xi)\in\operatorname{WF}(g),
+ \quad x-y= t a(\xi),\quad \pm t\geq0,
+ \tag{RP22}
+\]</span>
+<p>provided <span class="math" data-index="421" data-tex="\(p_m(\xi)=0\)">\(p_m(\xi)=0\)</span>. The case <span class="math" data-index="422" data-tex="\(t=0\)">\(t=0\)</span> includes the origin fiber in (RP3). For this use of the convolution theorem, addition is proper over compact output sets on the support of <span class="math" data-index="423" data-tex="\(E_\pm\otimes g\)">\(E_\pm\otimes g\)</span>, since <span class="math" data-index="424" data-tex="\(g\)">\(g\)</span> has compact support. Its transpose maps <span class="math" data-index="425" data-tex="\(\xi\)">\(\xi\)</span> to <span class="math" data-index="426" data-tex="\((\xi,\xi)\)">\((\xi,\xi)\)</span>, so both input covectors are nonzero; there are no omitted zero-component terms. These facts verify the precise operation hypotheses.</p>
+<p>Now fix the pair in assertion 2. Smooth ellipticity first gives <span class="math" data-index="427" data-tex="\(p_m(\xi_0)=0\)">\(p_m(\xi_0)=0\)</span>. Let <span class="math" data-index="428" data-tex="\(L=x_0+\mathbb R a(\xi_0)\)">\(L=x_0+\mathbb R a(\xi_0)\)</span>. Choose any two points <span class="math" data-index="429" data-tex="\(y_-,y_+\)">\(y_-,y_+\)</span> in the interior of the given segment, on opposite sides of <span class="math" data-index="430" data-tex="\(x_0\)">\(x_0\)</span>. A compact thin tube around <span class="math" data-index="431" data-tex="\([y_-,y_+]\)">\([y_-,y_+]\)</span> lies in <span class="math" data-index="432" data-tex="\(X\)">\(X\)</span>. In axial and perpendicular coordinates take a product cutoff <span class="math" data-index="433" data-tex="\(\phi\)">\(\phi\)</span> equal to one near that segment, whose axial transitions occur just outside its two endpoints, and whose perpendicular cutoff is constant near <span class="math" data-index="434" data-tex="\(L\)">\(L\)</span>. Its support on <span class="math" data-index="435" data-tex="\(L\)">\(L\)</span> and both transitions may be kept in the original segment. If necessary first work in a slightly extended interval near <span class="math" data-index="436" data-tex="\(x_0\)">\(x_0\)</span>, where the forcing covector is absent by openness of its complement.</p>
+<p>Set <span class="math" data-index="437" data-tex="\(v=\phi u\)">\(v=\phi u\)</span>. Then <span class="math" data-index="438" data-tex="\((x_0,\xi_0)\in\operatorname{WF}(v)\)">\((x_0,\xi_0)\in\operatorname{WF}(v)\)</span> and</p>
+<span class="math math-display" id="proof-eq-RP23" data-index="439" data-tex="\[
+ P(D)v=\phi f+[P(D),\phi]u.
+ \tag{RP23}
+\]">\[
+ P(D)v=\phi f+[P(D),\phi]u.
+ \tag{RP23}
+\]</span>
+<p>Along <span class="math" data-index="440" data-tex="\(L\)">\(L\)</span>, the first term has no covector <span class="math" data-index="441" data-tex="\(\xi_0\)">\(\xi_0\)</span> by (RP4). The second can have that covector only where <span class="math" data-index="442" data-tex="\(d\phi\ne0\)">\(d\phi\ne0\)</span>, and then only if <span class="math" data-index="443" data-tex="\(u\)">\(u\)</span> has it. Apply (RP22) with the two signs. The negative kernel finds such a point on the forward part of <span class="math" data-index="444" data-tex="\(L\)">\(L\)</span>, and the positive kernel finds one on its backward part. They must lie in the two arbitrarily short transition intervals. Let their widths tend to zero. Closedness of <span class="math" data-index="445" data-tex="\(\operatorname{WF}(u)\)">\(\operatorname{WF}(u)\)</span> gives <span class="math" data-index="446" data-tex="\((y_\pm,\xi_0)\in\operatorname{WF}(u)\)">\((y_\pm,\xi_0)\in\operatorname{WF}(u)\)</span>.</p>
+<p>Every interior point on either side can be chosen this way. Endpoints included in the given segment follow by closedness. The case when <span class="math" data-index="447" data-tex="\(x_0\)">\(x_0\)</span> itself is an endpoint follows by the small extension near <span class="math" data-index="448" data-tex="\(x_0\)">\(x_0\)</span> just described. This proves assertion 2. Notice that the covector stays fixed; only the base point moves.</p>
+<h3 id="5-transport-amplitudes-in-an-arbitrarily-thin-cylinder">5. Transport amplitudes in an arbitrarily thin cylinder</h3>
+<p>Fix <span class="math" data-index="449" data-tex="\(\xi_0\ne0\)">\(\xi_0\ne0\)</span> characteristic, put <span class="math" data-index="450" data-tex="\(a=a(\xi_0)\)">\(a=a(\xi_0)\)</span>, <span class="math" data-index="451" data-tex="\(b=p_{m-1}(\xi_0)\)">\(b=p_{m-1}(\xi_0)\)</span>, and write
+<span class="math" data-index="452" data-tex="\(x=s a+y\)">\(x=s a+y\)</span>, with <span class="math" data-index="453" data-tex="\(y\perp a\)">\(y\perp a\)</span>. Thus <span class="math" data-index="454" data-tex="\(a\cdot\nabla_x=\partial_s\)">\(a\cdot\nabla_x=\partial_s\)</span>. The exact polynomial identity</p>
+<span class="math math-display" id="proof-eq-RP24" data-index="455" data-tex="\[
+ P(t\xi_0+D)=t^{m-1}\sum_{\ell=0}^{m-1}t^{-\ell}B_\ell(D),
+ \qquad B_0=a\cdot D+b,
+ \tag{RP24}
+\]">\[
+ P(t\xi_0+D)=t^{m-1}\sum_{\ell=0}^{m-1}t^{-\ell}B_\ell(D),
+ \qquad B_0=a\cdot D+b,
+ \tag{RP24}
+\]</span>
+<p>follows by expanding every homogeneous term at <span class="math" data-index="456" data-tex="\(\xi_0\)">\(\xi_0\)</span>. More explicitly,</p>
+<span class="math math-display" id="proof-eq-RP25" data-index="457" data-tex="\[
+ B_\ell(D)=\sum_{q=0}^{\ell+1}\ \sum_{|\alpha|=q}
+   \frac{\partial^\alpha p_{m-1-\ell+q}(\xi_0)}{\alpha!}D^\alpha.
+ \tag{RP25}
+\]">\[
+ B_\ell(D)=\sum_{q=0}^{\ell+1}\ \sum_{|\alpha|=q}
+   \frac{\partial^\alpha p_{m-1-\ell+q}(\xi_0)}{\alpha!}D^\alpha.
+ \tag{RP25}
+\]</span>
+<p>The sole removed term is <span class="math" data-index="458" data-tex="\(t^mp_m(\xi_0)=0\)">\(t^mp_m(\xi_0)=0\)</span>. In particular the order of <span class="math" data-index="459" data-tex="\(B_\ell\)">\(B_\ell\)</span> is at most <span class="math" data-index="460" data-tex="\(\ell+1\)">\(\ell+1\)</span>, and all lower complex coefficients remain in these operators.</p>
+<p>Let <span class="math" data-index="461" data-tex="\(\psi(y)\)">\(\psi(y)\)</span> be a smooth compact cutoff on <span class="math" data-index="462" data-tex="\(a^\perp\)">\(a^\perp\)</span>, equal to one near zero, with support in any chosen small disk. Define</p>
+<span class="math math-display" id="proof-eq-RP26" data-index="463" data-tex="\[
+ v_0(sa+y)=e^{-ibs}\psi(y),\qquad
+ B_0v_j=-\sum_{\ell=1}^{\min(j,m-1)}B_\ell v_{j-\ell},
+ \quad v_j|_{s=0}=0\quad(j\geq1).
+ \tag{RP26}
+\]">\[
+ v_0(sa+y)=e^{-ibs}\psi(y),\qquad
+ B_0v_j=-\sum_{\ell=1}^{\min(j,m-1)}B_\ell v_{j-\ell},
+ \quad v_j|_{s=0}=0\quad(j\geq1).
+ \tag{RP26}
+\]</span>
+<p>For <span class="math" data-index="464" data-tex="\(B_0v_j=F_j\)">\(B_0v_j=F_j\)</span>, the complete solution formula is</p>
+<span class="math math-display" id="proof-eq-RP27" data-index="465" data-tex="\[
+ v_j(sa+y)=i e^{-ibs}\int_0^s e^{ibt}F_j(ta+y)\,dt.
+ \tag{RP27}
+\]">\[
+ v_j(sa+y)=i e^{-ibs}\int_0^s e^{ibt}F_j(ta+y)\,dt.
+ \tag{RP27}
+\]</span>
+<p>Differentiation gives <span class="math" data-index="466" data-tex="\(-i\partial_sv_j+bv_j=F_j\)">\(-i\partial_sv_j+bv_j=F_j\)</span>, including its sign. Every amplitude is smooth globally and vanishes outside the same closed cylinder <span class="math" data-index="467" data-tex="\(y\in\operatorname{supp}\psi\)">\(y\in\operatorname{supp}\psi\)</span>; differentiation and integration in <span class="math" data-index="468" data-tex="\(s\)">\(s\)</span> do not enlarge this transverse support. On compact sets all its derivatives are bounded. They may grow along the infinite axis, which causes no difficulty for compact seminorms.</p>
+<p>For a fixed integer <span class="math" data-index="469" data-tex="\(J\geq1\)">\(J\geq1\)</span>, put</p>
+<span class="math math-display" id="proof-eq-RP28" data-index="470" data-tex="\[
+ u_t(x)=e^{itx\cdot\xi_0}\sum_{j=0}^{J-1}t^{-j}v_j(x),\qquad t\geq1.
+ \tag{RP28}
+\]">\[
+ u_t(x)=e^{itx\cdot\xi_0}\sum_{j=0}^{J-1}t^{-j}v_j(x),\qquad t\geq1.
+ \tag{RP28}
+\]</span>
+<p>Equations (RP24)–(RP26) cancel every coefficient with <span class="math" data-index="471" data-tex="\(\ell+j&lt;J\)">\(\ell+j&lt;J\)</span>. Consequently, on any fixed compact set and for every fixed <span class="math" data-index="472" data-tex="\(N\)">\(N\)</span>,</p>
+<span class="math math-display" id="proof-eq-RP29" data-index="473" data-tex="\[
+ \|u_t\|_{C^r}=O(t^r),\qquad
+ \|P(D)u_t\|_{C^N}=O(t^{m-1-J+N}).
+ \tag{RP29}
+\]">\[
+ \|u_t\|_{C^r}=O(t^r),\qquad
+ \|P(D)u_t\|_{C^N}=O(t^{m-1-J+N}).
+ \tag{RP29}
+\]</span>
+<p>For <span class="math" data-index="474" data-tex="\(m=1\)">\(m=1\)</span> the remainder is identically zero: only <span class="math" data-index="475" data-tex="\(B_0\)">\(B_0\)</span> is present. If <span class="math" data-index="476" data-tex="\(\eta_0=\xi_0/|\xi_0|^2\)">\(\eta_0=\xi_0/|\xi_0|^2\)</span>, then</p>
+<span class="math math-display" id="proof-eq-RP30" data-index="477" data-tex="\[
+ ((\eta_0\cdot D)^{r+1}u_t)(0)=t^{r+1}+O(t^r).
+ \tag{RP30}
+\]">\[
+ ((\eta_0\cdot D)^{r+1}u_t)(0)=t^{r+1}+O(t^r).
+ \tag{RP30}
+\]</span>
+<p>Indeed <span class="math" data-index="478" data-tex="\(\eta_0\cdot\xi_0=1\)">\(\eta_0\cdot\xi_0=1\)</span>, <span class="math" data-index="479" data-tex="\(v_0(0)=1\)">\(v_0(0)=1\)</span>, and <span class="math" data-index="480" data-tex="\(v_j(0)=0\)">\(v_j(0)=0\)</span> for <span class="math" data-index="481" data-tex="\(j\geq1\)">\(j\geq1\)</span>; every term differentiating an amplitude loses at least one factor of <span class="math" data-index="482" data-tex="\(t\)">\(t\)</span>.</p>
+<p>For any fixed compact smooth cutoff <span class="math" data-index="483" data-tex="\(\theta\)">\(\theta\)</span> and any open cone <span class="math" data-index="484" data-tex="\(\Gamma\)">\(\Gamma\)</span> containing the positive ray <span class="math" data-index="485" data-tex="\(\mathbb R_+\xi_0\)">\(\mathbb R_+\xi_0\)</span>, angular separation gives</p>
+<span class="math math-display" id="proof-eq-RP31" data-index="486" data-tex="\[
+ 1+|\zeta-t\xi_0|\geq c(1+|\zeta|+t)
+ \quad(\zeta\notin\Gamma,\ t\geq1).
+ \tag{RP31}
+\]">\[
+ 1+|\zeta-t\xi_0|\geq c(1+|\zeta|+t)
+ \quad(\zeta\notin\Gamma,\ t\geq1).
+ \tag{RP31}
+\]</span>
+<p>To verify this, if <span class="math" data-index="487" data-tex="\(|\zeta|\)">\(|\zeta|\)</span> and <span class="math" data-index="488" data-tex="\(t|\xi_0|\)">\(t|\xi_0|\)</span> differ by at least a factor two, their radial difference controls the sum; otherwise their directions have a fixed positive angular gap. The cosine law controls the sum in that case. Compact Fourier integration by parts for the finitely many <span class="math" data-index="489" data-tex="\(\theta v_j\)">\(\theta v_j\)</span> then gives, for every <span class="math" data-index="490" data-tex="\(A,N\)">\(A,N\)</span>,</p>
+<span class="math math-display" id="proof-eq-RP32" data-index="491" data-tex="\[
+ \sup_{\zeta\notin\Gamma}(1+|\zeta|)^N
+             |\widehat{\theta u_t}(\zeta)|=O(t^{-A}).
+ \tag{RP32}
+\]">\[
+ \sup_{\zeta\notin\Gamma}(1+|\zeta|)^N
+             |\widehat{\theta u_t}(\zeta)|=O(t^{-A}).
+ \tag{RP32}
+\]</span>
+<p>These are finite-amplitude estimates with <span class="math" data-index="492" data-tex="\(J\)">\(J\)</span> fixed before <span class="math" data-index="493" data-tex="\(t\)">\(t\)</span> tends to infinity; no convergence of a formal infinite amplitude series is asserted.</p>
+<h3 id="6-a-complete-space-turns-the-packet-estimates-into-an-actual-solution">6. A complete space turns the packet estimates into an actual solution</h3>
+<p>Let <span class="math" data-index="494" data-tex="\(L=\mathbb R a\)">\(L=\mathbb R a\)</span>. Let <span class="math" data-index="495" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span> consist of all global <span class="math" data-index="496" data-tex="\(C^r\)">\(C^r\)</span> functions <span class="math" data-index="497" data-tex="\(u\)">\(u\)</span> satisfying</p>
+<span class="math math-display" id="proof-eq-RP33" data-index="498" data-tex="\[
+ P(D)u\in C^\infty,\qquad
+ u\in C^\infty(\mathbb R^n\setminus L),\qquad
+ \operatorname{WF}(u)\subseteq\mathbb R^n\times\mathbb R_+\xi_0.
+ \tag{RP33}
+\]">\[
+ P(D)u\in C^\infty,\qquad
+ u\in C^\infty(\mathbb R^n\setminus L),\qquad
+ \operatorname{WF}(u)\subseteq\mathbb R^n\times\mathbb R_+\xi_0.
+ \tag{RP33}
+\]</span>
+<p>Choose closed balls <span class="math" data-index="499" data-tex="\(K_j\)">\(K_j\)</span> exhausting <span class="math" data-index="500" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, compact sets <span class="math" data-index="501" data-tex="\(A_j\)">\(A_j\)</span> exhausting <span class="math" data-index="502" data-tex="\(\mathbb R^n\setminus L\)">\(\mathbb R^n\setminus L\)</span> with positive distance from <span class="math" data-index="503" data-tex="\(L\)">\(L\)</span>, and cutoffs <span class="math" data-index="504" data-tex="\(\theta_j=1\)">\(\theta_j=1\)</span> near <span class="math" data-index="505" data-tex="\(K_j\)">\(K_j\)</span>. Choose decreasing open cones <span class="math" data-index="506" data-tex="\(\Gamma_j\)">\(\Gamma_j\)</span> about <span class="math" data-index="507" data-tex="\(\xi_0\)">\(\xi_0\)</span> whose spherical intersection is exactly its positive unit direction. Equip <span class="math" data-index="508" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span> with the countable seminorms</p>
+<span class="math math-display" id="proof-eq-RP34" data-index="509" data-tex="\[
+ \begin{gathered}
+ \|u\|_{C^r(K_j)},\qquad
+ \|u\|_{C^N(A_j)},\qquad
+ \|P(D)u\|_{C^N(K_j)},\\
+ q_{j,N}(u)=\sup_{\zeta\notin\Gamma_j}(1+|\zeta|)^N
+                              |\widehat{\theta_j u}(\zeta)|,\\
+ j\geq1,\qquad N\geq0.
+ \end{gathered}
+ \tag{RP34}
+\]">\[
+ \begin{gathered}
+ \|u\|_{C^r(K_j)},\qquad
+ \|u\|_{C^N(A_j)},\qquad
+ \|P(D)u\|_{C^N(K_j)},\\
+ q_{j,N}(u)=\sup_{\zeta\notin\Gamma_j}(1+|\zeta|)^N
+                              |\widehat{\theta_j u}(\zeta)|,\\
+ j\geq1,\qquad N\geq0.
+ \end{gathered}
+ \tag{RP34}
+\]</span>
+<p>All are finite. For the last assertion, the compact support of <span class="math" data-index="510" data-tex="\(\theta_j\)">\(\theta_j\)</span>, the closed spherical complement of <span class="math" data-index="511" data-tex="\(\Gamma_j\)">\(\Gamma_j\)</span>, and the local definition of wavefront give a finite regularity cover; the smooth cutoff-convolution lemma in the linked wavefront foundations gives uniform rapid decay on that complement. Conversely finiteness of all these last seminorms proves the wavefront inclusion in (RP33), since every point has a neighborhood where some <span class="math" data-index="512" data-tex="\(\theta_j=1\)">\(\theta_j=1\)</span>, and every other direction lies outside a sufficiently small <span class="math" data-index="513" data-tex="\(\Gamma_j\)">\(\Gamma_j\)</span>.</p>
+<p>Here is the completeness verification. A Cauchy sequence for (RP34) converges in local <span class="math" data-index="514" data-tex="\(C^r\)">\(C^r\)</span> to <span class="math" data-index="515" data-tex="\(u\)">\(u\)</span>. Its images under <span class="math" data-index="516" data-tex="\(P(D)\)">\(P(D)\)</span> converge locally smoothly to a function <span class="math" data-index="517" data-tex="\(g\)">\(g\)</span>. Distributional differentiation of the first limit identifies <span class="math" data-index="518" data-tex="\(g=P(D)u\)">\(g=P(D)u\)</span>. Its restrictions away from <span class="math" data-index="519" data-tex="\(L\)">\(L\)</span> converge smoothly; their values agree with <span class="math" data-index="520" data-tex="\(u\)">\(u\)</span> by the local uniform limit. For fixed <span class="math" data-index="521" data-tex="\(j,N\)">\(j,N\)</span>, the weighted Fourier transforms on the complement of <span class="math" data-index="522" data-tex="\(\Gamma_j\)">\(\Gamma_j\)</span> are uniformly Cauchy. Their pointwise limits are the Fourier transform of <span class="math" data-index="523" data-tex="\(\theta_j u\)">\(\theta_j u\)</span>, because the compactly supported functions converge in <span class="math" data-index="524" data-tex="\(L^1\)">\(L^1\)</span>. Thus the weighted convergence also holds to that transform. All seminorms of the difference tend to zero, and their finiteness puts <span class="math" data-index="525" data-tex="\(u\)">\(u\)</span> in <span class="math" data-index="526" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span>. The countable seminorm topology is Hausdorff, so <span class="math" data-index="527" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span> is Fréchet.</p>
+<p>Suppose, for a contradiction, that every member of <span class="math" data-index="528" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span> belongs to <span class="math" data-index="529" data-tex="\(C^{r+1}(\mathbb R^n)\)">\(C^{r+1}(\mathbb R^n)\)</span>. Its inclusion into that Fréchet space has closed graph: any pair of convergent graph sequences has the same distributional limit. The linked closed graph theorem makes the inclusion continuous. In particular the scalar evaluation in (RP30) has a bound by finitely many of the seminorms (RP34):</p>
+<span class="math math-display" id="proof-eq-RP35" data-index="530" data-tex="\[
+ |((\eta_0\cdot D)^{r+1}u)(0)|
+ \leq C\sum_{\text{a finite list}}p(u)
+ \qquad(u\in\mathcal F_r).
+ \tag{RP35}
+\]">\[
+ |((\eta_0\cdot D)^{r+1}u)(0)|
+ \leq C\sum_{\text{a finite list}}p(u)
+ \qquad(u\in\mathcal F_r).
+ \tag{RP35}
+\]</span>
+<p>This exact finite bound also follows by scaling a basic neighborhood supplied by continuity. The list can be grouped into a compact <span class="math" data-index="531" data-tex="\(C^r\)">\(C^r\)</span> norm, finitely many off-line compact smooth norms, finitely many image norms of maximal derivative order <span class="math" data-index="532" data-tex="\(N\)">\(N\)</span>, and finitely many Fourier norms.</p>
+<p>Use the packets (RP28). They are smooth, hence belong to <span class="math" data-index="533" data-tex="\(\mathcal F_r\)">\(\mathcal F_r\)</span>. Choose the support of <span class="math" data-index="534" data-tex="\(\psi\)">\(\psi\)</span> so thin that its cylinder misses every off-line compact set in this finite list; all the corresponding seminorms are then zero. Choose <span class="math" data-index="535" data-tex="\(J\geq m+N+r+2\)">\(J\geq m+N+r+2\)</span>. The image norms in (RP29) are <span class="math" data-index="536" data-tex="\(O(t^{-r-3})\)">\(O(t^{-r-3})\)</span>, the Fourier norms decrease faster than any power by (RP32), and the first compact norm is <span class="math" data-index="537" data-tex="\(O(t^r)\)">\(O(t^r)\)</span>. The left side of (RP35) is <span class="math" data-index="538" data-tex="\(t^{r+1}+O(t^r)\)">\(t^{r+1}+O(t^r)\)</span>. Division by <span class="math" data-index="539" data-tex="\(t^{r+1}\)">\(t^{r+1}\)</span> and passage to infinity give a contradiction.</p>
+<p>Thus some <span class="math" data-index="540" data-tex="\(u\in\mathcal F_r\)">\(u\in\mathcal F_r\)</span> is not <span class="math" data-index="541" data-tex="\(C^{r+1}\)">\(C^{r+1}\)</span>, and in particular is not smooth. The base projection theorem for ordinary wavefront makes its wavefront nonempty. By (RP33), it is contained in <span class="math" data-index="542" data-tex="\(L\times\mathbb R_+\xi_0\)">\(L\times\mathbb R_+\xi_0\)</span>. Choose one of its points. Assertion 2, applied on all of <span class="math" data-index="543" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with smooth image <span class="math" data-index="544" data-tex="\(P(D)u\)">\(P(D)u\)</span>, propagates that point along the whole line <span class="math" data-index="545" data-tex="\(L\)">\(L\)</span>. Positive conicity supplies every <span class="math" data-index="546" data-tex="\(s\xi_0\)">\(s\xi_0\)</span>, <span class="math" data-index="547" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. This proves equality (RP5), and completes Theorem 1.1. <span class="math" data-index="548" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The function furnished by this argument is an actual global function, not one of the smooth packets and not an unproved formal sum. No bound uniform over the entire unbounded axis was used or needed.</p>
+<h3 id="references-2">References</h3>
+<p>[H] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990, the directional parametrix, propagation and realization theorems in Section 8.3 and the analytic directional parametrix in Section 8.6. These results motivate the statements; their complete arguments and exact available prerequisites are given above.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

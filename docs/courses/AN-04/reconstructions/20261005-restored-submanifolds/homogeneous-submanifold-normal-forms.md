@@ -1,10 +1,20 @@
 # Homogeneous submanifold normal forms
 
-A submanifold of phase space can contain symplectic directions, directions on which its restricted form vanishes, and pairs of transverse normal directions. Constant rank makes these three blocks persist locally. Homogeneous coordinates can straighten them when the canonical one-form is nonzero on the submanifold. This gives characteristic foliations and the missing geometry behind sharp constant-rank FIO estimates.
+A submanifold of phase space can contain symplectic directions, directions on which its restricted form vanishes, and pairs of transverse normal directions. Constant rank makes these three blocks persist locally. Homogeneous coordinates can straighten them when the canonical one-form is nonzero on the submanifold. This gives characteristic foliations and the geometry behind sharp constant-rank FIO estimates.
 
 We use the signs \(\omega=d\xi\wedge dx\), \(\iota_{H_f}\omega=-df\), and \(\{f,g\}=H_fg\) from [Phase space and generating families](../20261005-restored-phase-space/phase-space-and-generating-families.md). That lesson proves symplectic bases, reduction, Hamiltonian commutators and ordinary Darboux coordinates. [Corank geometry and sufficient continuity](../20261005-restored-corank-continuity/corank-geometry-and-sufficient-continuity.md) supplies homogeneous Darboux coordinates with a prescribed tangent map and the sharp flat operator family. [Graph operators, continuity and Egorov](../20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md) supplies the order-zero graph quantizations and microlocal inverses used in the final operator argument.
 
-The primary sources are the reprints of the corrected second printings (1994): [Hörmander III, §21.2] and the constant-rank discussion in [Hörmander IV, §25.3]. We prove the full submanifold normal form with constant restricted rank and a nonzero restricted canonical one-form, its ordinary counterpart, and the characteristic-foliation consequences. The single canonical pair constructed below is a supporting case of [Hörmander III, Theorem 21.1.9]; extending arbitrary already prescribed canonical functions remains a separate target.
+The primary mathematical sources are Lars Hörmander,
+*The Analysis of Linear Partial Differential Operators III*, §21.2,
+printed pp. 283–286 in the [2007 reprint of the 1994 edition](https://doi.org/10.1007/978-3-540-49938-1),
+and the constant-rank discussion in *Hörmander IV*, §25.3,
+printed p. 31 in the [2009 reprint of the 1994 edition](https://doi.org/10.1007/978-3-642-00136-9).
+The arguments below give the constant-rank submanifold normal form with
+nonzero restricted canonical one-form, its ordinary counterpart and
+the characteristic-foliation consequences. The single canonical pair
+is a supporting case of *Hörmander III*, Theorem 21.1.9, printed pp. 279–281.
+The full function-preserving extension is developed in
+[Prescribed canonical coordinates and isotropic fibers](../20261005-restored-prescribed-coordinates/prescribed-canonical-coordinates-and-isotropic-fibers.md).
 
 The [flow, bundle and leaf companion F0–F3](flows-constant-rank-and-leaves.md) supplies the complete supporting proofs: tangent fields preserve submanifolds, commuting fields have joint flow coordinates, dilation gives the stated pushforward weights, constant-rank kernels and quotients are smooth bundles, and local plaques assemble into unique maximal connected immersed leaves. The constant-rank coordinate argument is proved in [Prescribed phase representation F1](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md). The [proof map](proof-map.json) binds each result and exercise to its exact current earlier proofs.
 
@@ -318,7 +328,7 @@ Its partial amplitude has order zero, giving FIO order \(-k/4=-1/2\); the normal
 
 ## References
 
-- [Hörmander III, §21.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Springer, Proposition 21.2.1, Proposition 21.2.3, Theorem 21.2.4, Theorems 21.2.6–21.2.7 and the following symplectic-bundle discussion. The single canonical-pair construction also uses the context of Theorem 21.1.9.
-- [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, reprint of the corrected second printing (1994), constant-rank sharpness discussion following Theorem 25.3.8.
+- [Hörmander III, §21.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, Classics in Mathematics, Springer, 2007, reprint of the 1994 edition, e-ISBN 978-3-540-49938-1, [DOI 10.1007/978-3-540-49938-1](https://doi.org/10.1007/978-3-540-49938-1). Proposition 21.2.1, Proposition 21.2.3, Theorem 21.2.4, Theorems 21.2.6–21.2.7 and the symplectic-bundle discussion, printed pp. 283–286; Theorem 21.1.9, printed pp. 279–281.
+- [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Classics in Mathematics, Springer, 2009, reprint of the 1994 edition, e-ISBN 978-3-642-00136-9, [DOI 10.1007/978-3-642-00136-9](https://doi.org/10.1007/978-3-642-00136-9), constant-rank sharpness discussion following Theorem 25.3.8, printed p. 31.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original text and coordinate figure: public domain (CC0).*
+*AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text, solved exercises and coordinate illustrations: CC0 to the extent rights exist. Cited human works and separately identified components retain their own terms.*

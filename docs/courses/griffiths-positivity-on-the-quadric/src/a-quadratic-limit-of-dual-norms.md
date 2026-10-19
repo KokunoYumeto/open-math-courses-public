@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Suppose that the bundles \(E_m=f_m^*G\otimes P\) of Hermitian metrics and Griffiths positivity carry strictly Griffiths-positive metrics for infinitely many \(m\). This lesson extracts from them a single object on the total space of \(F=G^\vee\): a nonzero, nonnegative plurisubharmonic function that is a Hermitian quadratic form on every fiber. The power maps make the twist by \(P\) disappear in the limit: averaging the dual norms over the fibers of \(f_m\) produces functions on \(F\) that differ from quadratic forms on \(F\) only by a factor that tends to one.
+Suppose that the bundles \(E_m=f_m^*G\otimes P\) of [Hermitian metrics and Griffiths positivity](hermitian-metrics-and-griffiths-positivity.md) carry strictly Griffiths-positive metrics for infinitely many \(m\). This lesson extracts from them a single object on the total space of \(F=G^\vee\): a nonzero, nonnegative plurisubharmonic function that is a Hermitian quadratic form on every fiber. The power maps make the twist by \(P\) disappear in the limit: averaging the dual norms over the fibers of \(f_m\) produces functions on \(F\) that differ from quadratic forms on \(F\) only by a factor that tends to one.
 
 The proof needs care at two places. The limit must not vanish, and it must remain quadratic and plurisubharmonic at every point of the base, not only almost everywhere; the next lesson evaluates it along the divisor \(D\), which has measure zero.
 
@@ -30,7 +30,7 @@ Let \(G\) be any holomorphic vector bundle of rank \(r\ge1\) on \(S=\mathbb P^1\
 \[
 (f_m^*G\otimes P)^\vee=f_m^*F\otimes P^{-1},
 \]
-and its squared norm is plurisubharmonic on the total space by the dual norm criterion (Proposition 3.1 of Hermitian metrics and Griffiths positivity). Fix holomorphic isomorphisms \(f_m^*P^{-1}\cong P^{-m}\).
+and its squared norm is plurisubharmonic on the total space by the dual norm criterion (Proposition 3.1 of [Hermitian metrics and Griffiths positivity](hermitian-metrics-and-griffiths-positivity.md)). Fix holomorphic isomorphisms \(f_m^*P^{-1}\cong P^{-m}\).
 
 **The trace.** Let \(t\) be a nonvanishing holomorphic section of \(P^{-1}\) over an open set \(U\subseteq S\). For \(x\in U\) and \(v\in F_x\) put
 \[

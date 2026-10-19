@@ -1,6 +1,6 @@
 # Direct integrals of von Neumann algebras
 
-*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text: Claude Opus 5.5 (Anthropic) and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 A direct integral of Hilbert spaces \(\mathcal H=\int_\Gamma^\oplus H(\gamma)\,d\mu(\gamma)\) comes with two von Neumann algebras of its own. The *diagonal algebra* \(\mathcal A\) multiplies every fibre by a scalar that varies measurably with the point. The *decomposable algebra* \(\mathcal D\) acts on every fibre by a bounded operator. Each of the two is the commutant of the other. Many algebras lie between them. Pick, at each point \(\gamma\), a von Neumann algebra \(M(\gamma)\) on the fibre \(H(\gamma)\), and keep the decomposable operators whose fibres lie in \(M(\gamma)\) at almost every point. The resulting set is written \(\int_\Gamma^\oplus M(\gamma)\,d\mu(\gamma)\).
 
@@ -10,9 +10,9 @@ These facts form the core of von Neumann's reduction theory (1949); see [Blackad
 
 The base is an arbitrary \(\sigma\)-finite measure space throughout. We need no standard Borel structure, no completeness of the measure and no separability of \(\mathcal H\). Section 6 explains where standard bases will matter later. It also gives a base on which a harmless-looking family is not measurable, and on which the commutant formula fails for it.
 
-We assume the lessons [Measurable fields of Hilbert spaces and their direct integrals](../reader/supplements/measurable-fields-direct-integrals.html), [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html) and [The Effros Borel structure](../reader/supplements/effros-borel-structure.html). Every fact we take from them is stated in full in the section *Background used without proof*. Example 7.2 also uses [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html).
+We assume the lessons [Measurable fields of Hilbert spaces and their direct integrals](../reader/supplements/measurable-fields-direct-integrals.html), [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html) and [The Effros Borel structure](../reader/supplements/effros-borel-structure.html). Their relevant results and proof locations are collected in *Prerequisite proofs*. Example 7.2 also uses [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html).
 
-Basic references are [Takesaki I, Chapter IV] and [Blackadar, Section III.1.6].
+An accessible survey is [Blackadar, Section III.1.6]. The prerequisite results used below have programme proof locations in the next section.
 
 ## Conventions
 
@@ -37,7 +37,7 @@ We use four elementary facts about commutants. Let \(S,T\subseteq B(K)\).
 
 The bicommutant theorem is not needed anywhere in this lesson.
 
-## Background used without proof
+## Prerequisite proofs
 
 Throughout, \((H(\gamma))_{\gamma\in\Gamma}\), with its space \(\mathfrak M\) of measurable sections, is a fixed measurable field of Hilbert spaces over \((\Gamma,\Sigma,\mu)\), and \(\mathcal H=\int_\Gamma^\oplus H(\gamma)\,d\mu(\gamma)\) is its direct integral. The following facts are proved in the lessons named.
 
@@ -65,7 +65,7 @@ From [The Effros Borel structure](../reader/supplements/effros-borel-structure.h
   - (c) the sets of those \(\gamma\) for which \(L(\gamma)\) is a factor, is abelian, or equals \(B(H(\gamma))\) belong to \(\Sigma\);
   - (d) a family \((L(\gamma))\) of von Neumann algebras on the fibres is measurably generated if and only if, for every \(d\), the map \(\gamma\mapsto U(\gamma)L(\gamma)U(\gamma)^*\) from \(\Gamma_d\) to \(\mathrm{vN}(\ell^2_d)\) is measurable, with \(U(\gamma)\) as in (B2).
 
-  None of this uses the measure. (Definition 10.1 and Theorem 10.3.)
+  None of this uses the measure. ([Definition 10.1 and Theorem 10.3](../reader/supplements/effros-borel-structure.html#oa-fnd-ef-10).)
 
 From [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html), for Example 7.2 only:
 
@@ -306,7 +306,7 @@ Now compute. Let \(T=\int^\oplus x\) with \(x(\gamma)\in\mathcal E(\gamma)\) out
 \]
 So Theorem 3.2(1) fails for this field. Theorem 4.1 fails as well: \(\int^\oplus\mathcal E=\int^\oplus\mathbb C1\), although \(\mathcal E(\gamma)\neq\mathbb C1\) for every \(\gamma\).
 
-*What the base does not see.* Over \(\Sigma_c\), the diagonal algebra is \(\mathbb C1\), and the direct integral of the constant field is \(\mathbb C^2\), exactly as over a single point of mass one. But no bijection exists between a co-countable subset of \([0,1]\) and a point. So without standardness, the base of a direct integral cannot be recovered from its diagonal algebra, even up to null sets. For standard \(\sigma\)-finite bases, an isomorphism between the \(L^\infty\)-algebras does come from a Borel isomorphism of the bases, defined outside null sets [Takesaki I, Lemma IV.8.22]. This is why the uniqueness of disintegrations is stated for standard bases.
+*What the base does not see.* Over \(\Sigma_c\), the diagonal algebra is \(\mathbb C1\), and the direct integral of the constant field is \(\mathbb C^2\), exactly as over a single point of mass one. But no bijection exists between a co-countable subset of \([0,1]\) and a point. So without standardness, the base of a direct integral cannot be recovered from its diagonal algebra, even up to null sets. For standard \(\sigma\)-finite bases, an isomorphism between the \(L^\infty\)-algebras does come from a Borel isomorphism of the bases, defined outside null sets by [Theorem 1.1 of Base changes and disintegration](../reader/base-changes-and-disintegration.html#1-the-diagonal-algebra-recovers-the-base). This is why the uniqueness of disintegrations is stated for standard bases.
 
 ## 7. Examples
 
@@ -393,6 +393,5 @@ Now let \(M(\gamma)\) be a factor outside a null set \(N'\). The function \(c=\l
 
 ## References
 
-- [Effros 1965] E. G. Effros, The Borel space of von Neumann algebras on a separable Hilbert space, *Pacific Journal of Mathematics* 15 (1965), 1153–1164. https://doi.org/10.2140/pjm.1965.15.1153
+- [Effros 1965] E. G. Effros, *The Borel space of von Neumann algebras on a separable Hilbert space*, Pacific Journal of Mathematics 15 (1965), 1153–1164. [Free publisher PDF](https://msp.org/pjm/1965/15-4/pjm-v15-n4-p07-s.pdf).
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*, [revised author edition, 8 February 2017](https://bruceblackadar.com/Mathematics/Cycr.pdf).
-- [Takesaki I] M. Takesaki, *Theory of Operator Algebras I*, Springer, New York, 1979; reprinted as Encyclopaedia of Mathematical Sciences 124, Springer, Berlin, 2002.

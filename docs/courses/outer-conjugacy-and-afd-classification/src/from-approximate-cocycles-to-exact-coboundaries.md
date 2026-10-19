@@ -10,7 +10,7 @@ A cocycle may admit a different approximate solution for every finite collection
 
 This gives exact cohomology vanishing for free actions of countable locally finite groups from the programme's finite-group theorem. It also separates two steps in the general amenable argument: constructing relative towers, and using those towers to solve the cocycle equation. We prove the second step with an explicit estimate for boundary mass, uncovered trace and covariance error. The required general tower construction is stated precisely.
 
-For the asymptotic centralizer, use Central sequence algebras and exact lifts: Proposition 2.1 proves its state-independent trace, Theorem 3.1 proves the finite von Neumann algebra and induced normal action, and Theorem 5.1, with both prescribed endpoint projections equal to 1, supplies exact unitary representatives. That provider divides the squared sharp seminorm by 2; equation (1.2) below records our conversion. The finite-group input is the theorem in Section 1.3, with its proof in Sections 3–10, of [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md). Its nonfactor scope is essential because an asymptotic centralizer need not be a factor. Inner approximations compatible with characteristic data, Theorem 4.1, supplies only the final approximation consequence. The earlier analytic and projection foundations of these providers remain explicit prerequisites; this lesson does not certify their full transitive closure.
+For the asymptotic centralizer, use Central sequence algebras and exact lifts: Proposition 2.1 proves its state-independent trace, Theorem 3.1 proves the finite von Neumann algebra and induced normal action, and Theorem 5.1, with both prescribed endpoint projections equal to 1, supplies exact unitary representatives. That provider divides the squared sharp seminorm by 2; equation (1.2) below records our conversion. The finite-group input is the theorem in Section 1.3, with its proof in Sections 3–10, of [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md). Its nonfactor scope is essential because an asymptotic centralizer need not be a factor. [Inner approximations compatible with characteristic data](characteristic-compatible-inner-approximations.md), Theorem 4.1, supplies only the final approximation consequence. The earlier analytic and projection foundations of these providers remain explicit prerequisites; this lesson does not certify their full transitive closure.
 
 The controlled-diagonal method has its classical cyclic antecedent in [Connes], Theorem 2.1.3. Here the finite tests keep every prescribed cocycle coordinate fixed, treat arbitrary countable groups under the stated approximation hypothesis, and separate equal-weight tower estimates from projection existence. [Jones–Takesaki], Lemma 2.5.6 is the context for the final compatibility consequence; its invoked general cohomology theorem is not used in place of a proof here.
 
@@ -266,7 +266,7 @@ B_g&<b\sum_i t_i|S_i|\le b.
 \]
 Multiple shapes are allowed. We do not require one shape to tile the group.
 
-Constructing the relative projections, with the commutation, coverage and covariance bounds in (5.4), is the remaining general amenable tower step. Følner sets alone do not provide those projections. The estimate proves exactly what such a construction must supply, rather than assuming that ordinary outerness already supplies it.
+Følner sets alone do not provide the relative projections required in (5.4). For a faithful induced countable amenable action, [Gaussian models and amenable towers](gaussian-models-and-amenable-towers.md), Theorem 1.1 and Sections 6–8 constructs weighted towers in a prescribed countably generated invariant coefficient commutant. Its Theorem 8.1 uses the corresponding weighted estimate and the fixed-cocycle diagonal proved here. The conditional equal-weight estimate (5.4) retains its own stated hypotheses.
 
 ## 6. Returning to characteristic-compatible approximation
 
@@ -277,17 +277,17 @@ N=\{n:\sigma_n\text{ is inner}\},\qquad Q=G/N.
 \]
 The quotient acts on \(M_\omega\). A section \(s:Q\to G\) supplies lifts \(\beta_q=\sigma_{s(q)}\). Their induced maps form the quotient action, although the section need not be a homomorphism.
 
-Suppose \(\pi\) is approximately inner and \((\pi,w)\) is a genuine comparison pair compatible on \(N\), in the exact sense of Inner approximations compatible with characteristic data, Section 2.
+Suppose \(\pi\) is approximately inner and \((\pi,w)\) is a genuine comparison pair compatible on \(N\), in the exact sense of [Inner approximations compatible with characteristic data](characteristic-compatible-inner-approximations.md), Section 2.
 
 **Corollary 6.1.** If the quotient action is free and \(Q\) is locally finite, then \((\pi,w)\) is a limit of compatible inner pairs. The same conclusion follows for a general countable quotient whenever it has the relative tower property (5.4).
 
 *Proof.* In the first case Theorem 3.1 proves the cohomology hypothesis of the cited Theorem 4.1. In the second case Lemma 5.1 and Theorem 2.1 prove that hypothesis. Apply that theorem, including both moving-multiplier estimates and the ordinary subsequence extraction. \(\square\)
 
-For \(M=R_\infty\), the existing [Trace scaling on the hyperfinite semifinite factor](trace-scaling-on-the-hyperfinite-semifinite-factor.md), Theorem 4.2, gives \(\operatorname{Ct}(R_\infty)=\operatorname{Inn}(R_\infty)\) under its stated programme prerequisites. The proper-outerness argument in [Relative character eigenunitaries](relative-character-eigenunitaries.md), Lemma 2.1, then makes the quotient action free. A trace-preserving \(\pi\) is approximately inner by Inner approximations compatible with a crossed product, Proposition 2.1. Thus the locally finite quotient case is fully covered under these exact foundations, including nonabelian quotients.
+For \(M=R_\infty\), the existing [Trace scaling on the hyperfinite semifinite factor](trace-scaling-on-the-hyperfinite-semifinite-factor.md), Theorem 4.2, gives \(\operatorname{Ct}(R_\infty)=\operatorname{Inn}(R_\infty)\) under its stated programme prerequisites. The proper-outerness argument in [Relative character eigenunitaries](relative-character-eigenunitaries.md), Lemma 2.1, then makes the quotient action free. A trace-preserving \(\pi\) is approximately inner by [Inner approximations compatible with a crossed product](inner-approximations-compatible-with-a-crossed-product.md), Proposition 2.1. Thus the locally finite quotient case is fully covered under these exact foundations, including nonabelian quotients.
 
 For abelian \(G\), the character-extension proof in the comparison lesson can first correct a scalar compatibility phase on \(N\). For nonabelian \(G\), compatibility must be supplied: the quaternion obstruction in that lesson rules out arbitrary extension.
 
-The relative tower construction for arbitrary amenable quotients, the initial characteristic-and-trace isotropy comparison, model absorption, outer-isotropy gluing and continuous reconstruction remain distinct requirements of the full classification argument.
+The relative tower construction for faithful induced countable amenable actions is supplied by [Gaussian models and amenable towers](gaussian-models-and-amenable-towers.md), Theorem 1.1 and Sections 6–8. The initial characteristic-and-trace isotropy comparison, model absorption, outer-isotropy gluing and continuous reconstruction remain distinct requirements of the full classification argument.
 
 ## 7. Exercises with complete solutions
 

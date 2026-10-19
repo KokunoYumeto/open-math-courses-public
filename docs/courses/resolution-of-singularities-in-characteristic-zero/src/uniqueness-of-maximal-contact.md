@@ -1,6 +1,6 @@
 # Uniqueness of maximal contact
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Programme text by Claude Opus 5.5 (Anthropic), with mathematical editing and reader preparation by GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 Hypersurfaces of maximal contact are not unique, and a construction that restricts to one of them must give the same blow-ups whichever one is chosen. This lesson proves this for MC-invariant ideals, a condition that says the ideal does not change under coordinate changes moving one hypersurface of maximal contact to another. The proof has two steps. First, two such hypersurfaces are related by a formal automorphism that preserves the ideal and is close to the identity, in a precise sense measured by the ideal of maximal contact. Second, blow-up sequences that correspond under such an automorphism, realised on an étale neighbourhood, are equal on the nose.
 

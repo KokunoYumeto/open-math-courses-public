@@ -1,6 +1,6 @@
 # Ordinary multipliers and predual compactness
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 Ordinary convergence gives a multiplier algebra that works for every free ultrafilter simultaneously. Its small-vector test must control both adjoints. Its predual counterpart is relative weak compactness of quadratic functional orbits; it does not assert preservation of every weakly-null sequence of functionals.
 
@@ -256,7 +256,7 @@ It omits its weak limit zero, so is not weakly compact. Its closure is compact. 
 
 ## References
 
-C. A. Akemann, [*The dual space of an operator algebra*](https://www.ams.org/journals/tran/1967-126-02/S0002-9947-1967-0206732-8/S0002-9947-1967-0206732-8.pdf), *Transactions of the American Mathematical Society* 126 (1967), 286–302, Theorem II.3 and Lemmas II.3a–II.3c. The Baire and projection-cutting method is classical. [PC00–PC09](../components/predual-compactness-from-uniform-control.md) give the complete positive-vector-control criterion and Bernoulli construction used here, including the required sequential extraction and the direct graph-extension converse.
+C. A. Akemann, [*The dual space of an operator algebra*](https://www.ams.org/journals/tran/1967-126-02/S0002-9947-1967-0206732-8/S0002-9947-1967-0206732-8.pdf), *Transactions of the American Mathematical Society* 126 (1967), 286–302, Theorem II.3 and Lemmas II.3a–II.3c, printed pp.289–291 (PDF pp.4–6). The Baire and projection-cutting method constructs a positive controller; the primary proof refers its converse to an earlier criterion. [PC00–PC09](../components/predual-compactness-from-uniform-control.md) supply positive vector envelopes, the complete faithful-corner metric, the weak-compactness subsequence argument, a direct graph-extension converse and the Bernoulli measure with its exact normal L1 predual.
 
-Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), Section 5.1, printed p.47 (PDF p.61), states its ultrafilter multiplier criterion for separable preduals. Section 1 here proves the full ordinary-convergence criterion and the all-free-ultrafilters equivalence directly. The rank-one, Bernoulli and one-dimensional examples fully establish why both adjoints, relative compactness and the absence of a prescribed weak limit matter. No factor or separable-predual assumption is added.
+Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), Section 5.1, printed p.47 (PDF p.61), states the ultrafilter multiplier criterion for separable preduals. The ordinary tail criterion and its all-free-ultrafilters consequence are proved here without a factor or separable-predual assumption. The two positive quadratic orbits encode both adjoint directions. The rank-one, Bernoulli and scalar models establish the exact adjoint, weak-limit and relative-compactness boundaries.
 

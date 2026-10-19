@@ -9,6 +9,25 @@ parser.add_argument('--pandoc', default='pandoc', help='Pandoc executable or abs
 parser.add_argument('--unit',action='append',help='Render a specified current unit; repeat for a bounded subset.')
 args = parser.parse_args()
 
+def align_overlines(soup):
+    """Render each overbar across its full argument, retaining its semantics."""
+    for mover in soup.select('mover'):
+        children=mover.find_all(recursive=False)
+        if len(children)!=2 or children[1].name!='mo' or children[1].get_text()!='¯':
+            continue
+        if 'programme-overline' in mover.get('class',[]):
+            continue
+        base,accent=children
+        mover['accent']='true'
+        mover['class']=list(mover.get('class',[]))+['programme-overline']
+        if base.name!='mrow':
+            group=soup.new_tag('mrow')
+            base.wrap(group)
+            base=group
+        base['style']=base.get('style','').rstrip(';')+';border-top:.045em solid currentColor;padding-top:.06em'
+        accent['style']=accent.get('style','').rstrip(';')+';opacity:0'
+
+
 def render_group(value):
     pieces=[];i=0
     while i<len(value):
@@ -125,4 +144,5 @@ for entry in [r for r in course['readings']+course.get('supplements',[]) if r.ge
         tag=re.search(r'\\tag\*?\{([^}]+)\}',annotation.get_text() if annotation else '')
         if tag:
             mathematical['id']='eq-'+tag[1]
+    align_overlines(soup)
     (root / entry['reader']).write_bytes(str(soup).replace(chr(13), '&#13;').encode('utf-8'))

@@ -1,14 +1,14 @@
 # Traces on von Neumann algebras
 
-*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text: Claude Opus 5.5 (Anthropic) and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 A trace on a von Neumann algebra measures the size of positive elements, and it cannot tell \(x^*x\) from \(xx^*\). The usual trace of matrices is the model. Since a trace gives equivalent projections the same value, it turns the comparison of projections into arithmetic. It is also the starting point of integration on von Neumann algebras.
 
 This lesson develops traces from the definition up to the trace norm. We introduce the definition ideal of a trace and show that the usual forms of semifiniteness agree. For traces that take infinite values we construct supports, semifinite parts and sums. We prove that an algebra is finite exactly when its finite normal traces separate its positive elements. For a finite algebra we build the center-valued trace, and we show that every finite trace on it, normal or not, is determined by its values on the center. We extend normal traces from corners and amplify them by type I factors, and we show that an algebra is semifinite exactly when it carries a faithful semifinite normal trace. The last section introduces the trace norm and, for a faithful semifinite normal trace, identifies the completion of the definition ideal with the predual.
 
-The lesson assumes the comparison theory of projections and the type decomposition, from [Projections and types of von Neumann algebras](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html); the basic structure of von Neumann algebras, from [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html); and normal functionals and preduals, from [The universal enveloping von Neumann algebra of a C\*-algebra, and W\*-algebras](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html). One step uses [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html). The results used without proof are stated in full below.
+The lesson assumes the comparison theory of projections and the type decomposition, from [Projections and types of von Neumann algebras](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html); the basic structure of von Neumann algebras, from [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html); and normal functionals and preduals, from [The universal enveloping von Neumann algebra of a C\*-algebra, and W\*-algebras](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html). One step uses [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html). The prerequisites are stated below with links to their programme proofs.
 
-Traces go back to the work of Murray and von Neumann on rings of operators (1936); the trace of a finite factor is constructed in [Murray–von Neumann 1937]. Other proofs that finite algebras carry traces came later, among them [Dixmier 1949] and [Yeadon 1971]; Section 4 uses Yeadon's fixed-point argument. Integration with respect to a trace goes back to Segal (1953) and [Dixmier 1953]; [Nelson 1974] presents Segal's theory through convergence in measure. Basic references are [Kostecki] and [Takesaki I].
+The proof of trace existence in Section 4 uses the fixed-point method of [Yeadon 1971]. The freely accessible works listed below provide further reading on traces and noncommutative integration.
 
 ## Conventions
 
@@ -25,9 +25,9 @@ Traces go back to the work of Murray and von Neumann on rings of operators (1936
 
 Standard background, used without comment: the bounded Borel functional calculus (spectral projections of self-adjoint elements of \(M\) lie in \(M\)); the polar decomposition \(x=u|x|\) with \(u,|x|\in M\) (proved in [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#oa-fnd-bi-09)); the bicommutant theorem; the \(\sigma\)-weak compactness of the closed balls of \(M\); on bounded sets, strong convergence implies \(\sigma\)-weak convergence; the Hahn–Banach theorem and Mazur's theorem (a norm-closed convex set in a Banach space is weakly closed); Zorn's lemma; and the Cauchy–Schwarz inequality \(|\varphi(y^*x)|^2\leq\varphi(x^*x)\varphi(y^*y)\) for positive functionals.
 
-## Background used without proof
+## Programme prerequisites
 
-The following results are used as stated. In the proofs we refer to each of them by its name.
+The following results are used in the proofs. Their linked programme lessons provide the arguments; the two compactness inputs are identified by theorem and implication.
 
 *Comparison of projections.* These facts are proved in [Projections and types of von Neumann algebras](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html).
 
@@ -35,7 +35,7 @@ The following results are used as stated. In the proofs we refer to each of them
 - **Equivalent pieces.** If \(c(e)c(f)\neq0\), there are nonzero projections \(e_1\leq e\) and \(f_1\leq f\) with \(e_1\sim f_1\).
 - **The comparison theorem.** For projections \(e,f\) there is a central projection \(h\) with \(he\precsim hf\) and \((1-h)f\precsim(1-h)e\).
 - **The type decomposition.** \(M\) is the direct sum of its parts of type I, II\(_1\), II\(_\infty\) and III, cut out by central projections \(z_{\rm I},z_{{\rm II}_1},z_{{\rm II}_\infty},z_{\rm III}\) with sum \(1\). Every projection is uniquely the sum of two centrally orthogonal projections, one finite and one properly infinite.
-- **Abelian projections are smallest.** If \(e\) is abelian and \(c(f)\geq e\), then \(e\precsim f\). *Reference:* [Takesaki I, Lemma V.1.25] states the relation the other way round; that version fails for \(M_2(\mathbb C)\) with \(e=e_{11}\) and \(f=1\).
+- **Abelian projections are smallest.** If \(e\) is abelian and \(c(f)\geq e\), then \(e\precsim f\). The reverse comparison fails for \(e=E_{11}\) and \(f=1\) in \(M_2(\mathbb C)\), as shown in Remark 9.4 of the projection lesson.
 - **Structure of type I algebras.** If \(M\) is of type I, then \(1=\sum_\alpha z_\alpha\), where \(\alpha\) runs over the nonzero cardinals, the \(z_\alpha\) are mutually orthogonal central projections, and \(z_\alpha\) is a sum of \(\alpha\) orthogonal abelian projections each with central support \(z_\alpha\). If \(M\) is finite, \(z_\alpha=0\) for every infinite \(\alpha\).
 - **Type I factors.** A factor of type I is \(*\)-isomorphic to \(B(K)\) for some Hilbert space \(K\).
 - **Halving.** If \(M\) has no direct summand of type I, every projection is the sum of two orthogonal equivalent projections.
@@ -49,9 +49,9 @@ The following results are used as stated. In the proofs we refer to each of them
 - **\(\sigma\)-weakly closed ideals.** Every two-sided ideal of \(M\) that is closed in the \(\sigma\)-weak topology equals \(Mz\) for exactly one central projection \(z\). This is proved in [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#oa-fnd-bi-11).
 - **Normal functionals.** A bounded linear functional on \(M\) lies in \(M_*\) exactly when it is completely additive on orthogonal families of projections. For a positive functional, preserving suprema of bounded increasing nets implies complete additivity, and membership in \(M_*\) implies preserving such suprema; so the two notions of normality agree. The first statement is proved in [The universal enveloping von Neumann algebra of a C\*-algebra, and W\*-algebras](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-25).
 - **Positive parts of normal functionals.** A hermitian element of \(M_*\) is the difference of two elements of \(M_*^+\). Hence \(M_*\) is spanned by \(M_*^+\). This follows from the Jordan decomposition of a hermitian functional and the splitting of functionals into normal and singular parts, both proved in [the same lesson](../../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#oa-fnd-wa-10).
-- **Akemann's weak compactness criterion.** Let \(K\subseteq M_*\) be bounded, and suppose that \(\sup_{\psi\in K}|\psi(p_n)|\to0\) for every decreasing sequence of projections \(p_n\) with infimum \(0\). Then \(K\) is relatively \(\sigma(M_*,M)\)-compact. *Reference:* [Akemann 1967].
+- **Akemann's weak compactness criterion.** Let \(K\subseteq M_*\) be bounded, and suppose that \(\sup_{\psi\in K}|\psi(p_n)|\to0\) for every decreasing sequence of projections \(p_n\) with infimum \(0\). Then \(K\) is relatively \(\sigma(M_*,M)\)-compact. The complete proof is [Theorem 10.2, implication (3) to (1)](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-17). It applies to bounded complex normal functionals on an arbitrary von Neumann algebra. Its Banach-space inputs are proved in [Dual-ball compactness and weakly convergent subsequences](../../OA-MOD/OA-MOD-AB.html#oa-mod-ab-05), Sections AB-05–06.
 - **Tensor products of isomorphisms.** If \(\pi_1:M_1\to N_1\) and \(\pi_2:M_2\to N_2\) are \(*\)-isomorphisms of von Neumann algebras, there is a \(*\)-isomorphism of \(M_1\bar\otimes M_2\) onto \(N_1\bar\otimes N_2\) that sends \(x_1\otimes x_2\) to \(\pi_1(x_1)\otimes\pi_2(x_2)\). This is proved in [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html#8-maps-between-tensor-products-and-normal-homomorphisms); recall that a \(*\)-isomorphism of von Neumann algebras and its inverse are normal.
-- **The fixed point theorem of Ryll-Nardzewski.** If \(Q\) is a nonempty weakly compact convex subset of a Banach space and \(G\) is a group of linear isometries of the space with \(g(Q)\subseteq Q\) for \(g\in G\), then some point of \(Q\) is fixed by every \(g\in G\). *Reference:* [Ryll-Nardzewski 1967]; a short proof is in [Namioka–Asplund 1967].
+- **The fixed point theorem of Ryll-Nardzewski.** If \(Q\) is a nonempty weakly compact convex subset of a Banach space and \(G\) is a group of linear isometries of the space with \(g(Q)\subseteq Q\) for \(g\in G\), then some point of \(Q\) is fixed by every \(g\in G\). The complete group-action proof is [Theorem 5.1 of Weakly compact convex sets and fixed points](../reader/weakly-compact-convex-sets-and-fixed-points.html#5-the-common-fixed-point-theorem), using Lemmas 1.1–3.1 and Proposition 4.1 there. It also allows weakly continuous affine isometries and places no countability assumption on the group or separability assumption on the Banach space.
 
 ## 1. Facts about projections
 
@@ -268,7 +268,7 @@ A weight \(\varphi\) is *normal* if \(\varphi(x_i)\uparrow\varphi(x)\) whenever 
 
 **Proposition 3.7** (The semifinite part). Let \(\tau\) be any trace on \(M\); normality is not needed. There is a unique central projection \(z\) such that \(\tau\) is semifinite on \(Mz\) and \(\tau(x)=\infty\) for every nonzero \(x\in M_+(1-z)\). The \(\sigma\)-weak closures of \(\mathfrak n_\tau\) and of \(\mathfrak m_\tau\) are both \(Mz\). Moreover, the elements \(e_a=a(1+a)^{-1}\) (\(a\in F_\tau\)) form an increasing net of positive contractions in \(F_\tau\) with \(e_a\uparrow z\).
 
-*Reference:* [Takesaki I, Lemma V.2.13], for a normal trace. Its proof takes an increasing net in \(\mathfrak n_\tau\) that converges to \(z\); Remark 3.8 shows that such a net does not suffice.
+Remark 3.8 explains why the increasing approximants must belong to the finite-trace cone \(F_\tau\), rather than merely to the square-integrability ideal \(\mathfrak n_\tau\).
 
 **Proof.** With the notation of (2.2), \(\mathfrak n_\tau\) is a two-sided ideal by Lemma 2.4(1). Multiplication by a fixed element is \(\sigma\)-weakly continuous, so the \(\sigma\)-weak closure of \(\mathfrak n_\tau\) is again a two-sided ideal, now closed. By the description of \(\sigma\)-weakly closed ideals, it equals \(Mz\) for a unique central projection \(z\).
 
@@ -276,7 +276,7 @@ Order \(F_\tau\) by the operator order. It is directed, since \(a+b\) is an uppe
 
 \(p\leq z\): for \(a\in F_\tau\), \(a^{1/2}\in\mathfrak n_\tau\subseteq Mz\), so \(a=az\) and \(e_a\leq s(a)\leq z\).
 
-\(z\leq p\): let \(x\in\mathfrak n_\tau\) and \(b=x^*x\in F_\tau\). For \(t>0\), \(tb\in F_\tau\), and \(e_{tb}=tb(1+tb)^{-1}\uparrow s(b)\) as \(t\to\infty\), by the spectral theorem. So \(s(b)\leq p\). The right support of \(x\) is \(s(x^*x)=s(b)\), so \(xp=x\). Thus \(\mathfrak n_\tau\subseteq Mp\). As \(Mp\) is \(\sigma\)-weakly closed, \(Mz\subseteq Mp\), and \(z\leq p\).
+\(z\leq p\): let \(x\in\mathfrak n_\tau\) and \(b=x^*x\in F_\tau\). For \(t>0\), \(tb\in F_\tau\), and \(e_{tb}=tb(1+tb)^{-1}\uparrow s(b)\) as \(t\to\infty\), by the spectral theorem. So \(s(b)\leq p\leq1\). Positivity gives \((1-p)^{1/2}s(b)=0\), hence \(ps(b)=s(b)p=s(b)\). Since \(x=xs(b)\), this yields \(xp=x\). Thus \(\mathfrak n_\tau\) lies in the \(\sigma\)-weakly closed linear space \(F_p=\{y\in M:y(1-p)=0\}\), the kernel of multiplication on the right by \(1-p\). Consequently \(Mz\subseteq F_p\), so \(zp=z\). But \(0\leq p\leq z\) gives \(zp=p\), and therefore \(p=z\). This also proves that the supremum \(p\) is a projection.
 
 Semifinite on \(Mz\): let \(0\neq x\in(Mz)_+\). Since \(e_a\uparrow z\) strongly and \(x^{1/2}z=x^{1/2}\), \(x^{1/2}e_ax^{1/2}\to x\) strongly, so some \(y=x^{1/2}e_ax^{1/2}\) is nonzero. Then \(y\leq x\), since \(e_a\leq1\). With \(w=e_a^{1/2}x^{1/2}\), (2.1) gives \(\tau(y)=\tau(w^*w)=\tau(ww^*)=\tau(e_a^{1/2}xe_a^{1/2})\leq\|x\|\tau(e_a)<\infty\).
 
@@ -302,7 +302,7 @@ Choose \(q_0\leq f\) with \(q_0\sim p_0=e_1\). Suppose \(q_0,\dots,q_{n-1}\) are
 
 **Theorem 4.2** (Finiteness is not needed). Let \(e_1\leq e_2\leq\cdots\) be any projections and \(f\) a projection with \(e_n\precsim f\) for all \(n\). Then \(\bigvee_ne_n\precsim f\).
 
-*Reference:* [Takesaki I, Lemma V.2.2] assumes the \(e_n\) finite; that case is Lemma 4.1.
+Lemma 4.1 gives the finite-projection case. The type decomposition and countable absorption extend it to arbitrary projections.
 
 **Proof.** By the type decomposition, \(f=f_1+f_2\) with \(f_1\) finite, \(f_2\) properly infinite (either may be zero) and \(c(f_1)c(f_2)=0\). Put \(c=c(f_1)\). Then \(fc=f_1\) and \(f(1-c)=f_2\). Let \(e=\bigvee_ne_n\) and let \(p_n\) be as in the proof of Lemma 4.1.
 
@@ -358,15 +358,15 @@ Moreover, let \(M\) be finite and \(\varphi\in M_*^+\). Then the norm-closed con
 
 *Step 1 (uniform smallness).* For every sequence \((e_n)\) of mutually orthogonal projections, \(\sup_{\psi\in K_\varphi}\psi(e_n)\to0\). It suffices to prove this for \(\psi\in Q_\varphi\): the supremum over convex combinations is the same, and a norm limit changes \(\psi(e_n)\) by at most the norm distance. Suppose instead that \(\delta>0\), indices \(n_1<n_2<\cdots\) and unitaries \(u_k\) satisfy \(\varphi(u_k^*e_{n_k}u_k)\geq\delta\). The projection \(f_k=u_k^*e_{n_k}u_k\) is equivalent to \(e_{n_k}\) through \(e_{n_k}u_k\), and the \(e_{n_k}\) are mutually orthogonal. Since \(M\) is finite, Lemma 4.4 gives \(f_k\to0\) \(\sigma\)-strongly, so \(\varphi(f_k)\to0\), a contradiction.
 
-*Step 2 (weak compactness).* Let \(p_n\downarrow0\) be projections. We claim \(\sup_{\psi\in K_\varphi}\psi(p_n)\to0\). These suprema decrease in \(n\). If they stayed at least \(\delta>0\), choose \(\psi_1\in K_\varphi\) and \(n_1\) with \(\psi_1(p_{n_1})>\delta/2\); normality of \(\psi_1\) gives \(n_2>n_1\) with \(\psi_1(p_{n_2})<\delta/4\). Choose \(\psi_2\in K_\varphi\) with \(\psi_2(p_{n_2})>\delta/2\) and \(n_3>n_2\) with \(\psi_2(p_{n_3})<\delta/4\); and so on. The projections \(e_k=p_{n_k}-p_{n_{k+1}}\) are mutually orthogonal and \(\psi_k(e_k)>\delta/4\), against Step 1. Since \(K_\varphi\) is bounded, Akemann's criterion shows that \(K_\varphi\) is relatively \(\sigma(M_*,M)\)-compact. It is norm closed and convex, hence weakly closed by Mazur's theorem, and the weak topology of \(M_*\) is \(\sigma(M_*,M)\) because \((M_*)^*=M\). So \(K_\varphi\) is \(\sigma(M_*,M)\)-compact.
+*Step 2 (weak compactness).* Let \(p_n\downarrow0\) be projections. We claim \(\sup_{\psi\in K_\varphi}\psi(p_n)\to0\). These suprema decrease in \(n\). If they stayed at least \(\delta>0\), choose \(\psi_1\in K_\varphi\) and \(n_1\) with \(\psi_1(p_{n_1})>\delta/2\); normality of \(\psi_1\) gives \(n_2>n_1\) with \(\psi_1(p_{n_2})<\delta/4\). Choose \(\psi_2\in K_\varphi\) with \(\psi_2(p_{n_2})>\delta/2\) and \(n_3>n_2\) with \(\psi_2(p_{n_3})<\delta/4\); and so on. The projections \(e_k=p_{n_k}-p_{n_{k+1}}\) are mutually orthogonal and \(\psi_k(e_k)>\delta/4\), against Step 1. Since \(K_\varphi\) is bounded, [Theorem 10.2(3) to (1)](../../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#oa-fnd-pd-17) shows that \(K_\varphi\) is relatively \(\sigma(M_*,M)\)-compact. It is norm closed and convex, hence weakly closed by Mazur's theorem, and the weak topology of \(M_*\) is \(\sigma(M_*,M)\) because \((M_*)^*=M\). So \(K_\varphi\) is \(\sigma(M_*,M)\)-compact.
 
-*Step 3 (fixed point).* The maps \(\psi\mapsto u\cdot\psi\) form a group of linear isometries of \(M_*\) that leave the weakly compact convex set \(K_\varphi\) invariant. By the fixed point theorem of Ryll-Nardzewski there is \(\tau_\varphi\in K_\varphi\) with \(u\cdot\tau_\varphi=\tau_\varphi\) for every unitary \(u\).
+*Step 3 (fixed point).* The maps \(\psi\mapsto u\cdot\psi\) form a group of linear isometries of \(M_*\) that leave the weakly compact convex set \(K_\varphi\) invariant. For fixed \(u\) and \(x\in M\), the coordinate \(\psi\mapsto\psi(u^*xu)\) is weakly continuous, and the inverse action is conjugation by \(u^*\). Thus the action has the weak continuity and inverse properties required by [the group fixed-point theorem](../reader/weakly-compact-convex-sets-and-fixed-points.html#5-the-common-fixed-point-theorem). By that theorem there is \(\tau_\varphi\in K_\varphi\) with \(u\cdot\tau_\varphi=\tau_\varphi\) for every unitary \(u\).
 
 *Step 4 (\(\tau_\varphi\) is a trace).* \(\tau_\varphi\) is a normal positive functional with \(\tau_\varphi(u^*xu)=\tau_\varphi(x)\) for all \(u\) and \(x\). By Proposition 2.2(6) it is a finite normal trace. For \(a\in\mathcal Z\), \((u\cdot\psi)(a)=\psi(a)\); this passes to convex combinations and norm limits, so \(\tau_\varphi(a)=\varphi(a)\).
 
 *Step 5 (separation).* Let \(0\neq x\in M_+\). Choose \(\xi\) with \(x\xi\neq0\), put \(\eta=x\xi\) and \(\varphi=\langle\,\cdot\,\eta,\eta\rangle\in M_*^+\), and let \(s=s(\tau_\varphi)\), a central projection by Proposition 3.2. Since \(\tau_\varphi(1-s)=0\) and \(1-s\in\mathcal Z\), Step 4 gives \(\|(1-s)\eta\|^2=\varphi(1-s)=0\). So \(sx\xi=x\xi\neq0\), and \(sx=x^{1/2}sx^{1/2}\) is a nonzero positive element of \(Ms\), where \(\tau_\varphi\) is faithful. Hence \(\tau_\varphi(x)\geq\tau_\varphi(sx)>0\). \(\square\)
 
-**Remark.** The proof uses two results that are not proved here: Akemann's criterion and the fixed point theorem of Ryll-Nardzewski. The minimal-norm argument that constructs the center-valued trace in Section 5 does not replace them. Every \(\psi\in K_\varphi\) has the same norm \(\varphi(1)\), and that argument would need a unitarily invariant strictly convex norm on \(M_*\), which is not at hand before a trace exists.
+**Remark.** The compactness and fixed-point steps use the complete programme proofs linked above. The topology is the Banach-space weak topology \(\sigma(M_*,M)\); compactness in the weak-star topology of \(M^*\) alone would not supply a normal fixed functional. The minimal-norm argument that constructs the center-valued trace in Section 5 does not replace them. Every \(\psi\in K_\varphi\) has the same norm \(\varphi(1)\), and that argument would need a unitarily invariant strictly convex norm on \(M_*\), which is not at hand before a trace exists.
 
 ## 5. The center-valued trace
 
@@ -524,7 +524,7 @@ Adding the two parts, \(|\sigma(e)-\sigma(T(e))|\leq2\sigma(1)/2^m\) for every \
 
 ### Countable decomposability of finite algebras
 
-**Lemma 5.11.** \(M\) is \(\sigma\)-finite if and only if it has a faithful normal state.
+**Lemma 5.11.** A nonzero von Neumann algebra \(M\) is \(\sigma\)-finite if and only if it has a faithful normal state.
 
 The same lemma is proved in [The double commutation theorem](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#oa-fnd-bi-13).
 
@@ -536,7 +536,7 @@ The same lemma is proved in [The double commutation theorem](../../foundations-o
 2. There are orthogonal central projections \(z_k\) with \(\sum_kz_k=1\) and every \(Mz_k\) \(\sigma\)-finite.
 3. A finite factor is \(\sigma\)-finite.
 
-**Proof.** (1) An orthogonal family of central projections is an orthogonal family in \(M\), so \(\mathcal Z\) is \(\sigma\)-finite when \(M\) is. Conversely, if \(\mathcal Z\) is \(\sigma\)-finite, Lemma 5.11 gives a faithful normal state \(\varphi\) of \(\mathcal Z\). Then \(\varphi\circ T\) is a normal finite trace (Theorem 5.2) and a state. If \(\varphi(T(x))=0\) with \(x\geq0\), then \(T(x)=0\) and \(x=0\) by (d). So \(\varphi\circ T\) is a faithful normal state, and Lemma 5.11 gives \(\sigma\)-finiteness of \(M\).
+**Proof.** (1) For the zero algebra the \(\sigma\)-finiteness equivalence holds, and the statement about faithful normal states has no instances. Suppose \(M\ne0\). An orthogonal family of central projections is an orthogonal family in \(M\), so \(\mathcal Z\) is \(\sigma\)-finite when \(M\) is. Conversely, if \(\mathcal Z\) is \(\sigma\)-finite, Lemma 5.11 gives a faithful normal state \(\varphi\) of \(\mathcal Z\). Then \(\varphi\circ T\) is a normal finite trace (Theorem 5.2) and a state. If \(\varphi(T(x))=0\) with \(x\geq0\), then \(T(x)=0\) and \(x=0\) by (d). So \(\varphi\circ T\) is a faithful normal state, and Lemma 5.11 gives \(\sigma\)-finiteness of \(M\).
 
 (2) In the abelian von Neumann algebra \(\mathcal Z\), choose a maximal family of normal states with orthogonal supports \(z_k\), taken in \(\mathcal Z\). As in the proof of Lemma 5.11, \(\sum_kz_k=1\), and \(\mathcal Zz_k\) has a faithful normal state, so it is \(\sigma\)-finite. The algebra \(Mz_k\) is finite with center \(\mathcal Zz_k\); apply (1).
 
@@ -550,7 +550,7 @@ A properly infinite semifinite algebra decomposes into pieces \(Mz_\alpha\cong N
 
 **Theorem 5.14.** Let \((e_i)_{i\in I}\) and \((f_j)_{j\in J}\) be infinite families of nonzero projections in \(M\). Suppose the \(e_i\) are mutually orthogonal, mutually equivalent and finite, that the same holds for the \(f_j\), and that \(\sum_ie_i=\sum_jf_j\). Then \(|I|=|J|\).
 
-*Reference:* the counting step in the proof of [Takesaki I, Proposition V.1.40], which omits the hypothesis that the projections are nonzero.
+The nonzero hypothesis is essential: zero projection families have equal sums regardless of their index cardinalities.
 
 **Proof.** Let \(p=\sum_ie_i\). All the projections and the partial isometries between them lie in \(pMp\), so we may assume \(p=1\). The \(e_i\) have one central support (Lemma 1.2), which majorizes \(\sum_ie_i=1\); so \(c(e_i)=1\), and likewise \(c(f_j)=1\).
 
@@ -621,11 +621,11 @@ So \(av_k\in\mathfrak n_\tau\). Hence \(v_j^*b^*av_k=(bv_j)^*(av_k)\in\mathfrak 
 
 Every element of \(M\) is \(xc(e)+x(1-c(e))\), so \(\mathfrak m_\tau\) is \(\sigma\)-weakly dense in \(M\). \(\square\)
 
-**Example 6.3** (All normal traces on \(B(H)\)). For \(c\in[0,\infty]\), \(c\operatorname{Tr}\) is a normal trace on \(B(H)\), with \(0\cdot\infty=0\) and \(c\cdot\infty=\infty\) for \(c>0\). Every normal trace \(\tau\) on \(B(H)\) has this form. Indeed, let \(e\) be the projection onto \(\mathbb C\varepsilon_{i_0}\) for an orthonormal basis \((\varepsilon_i)\). The corner \(eB(H)e=\mathbb Ce\) carries the normal trace \(te\mapsto ct\) with \(c=\tau(e)\), and \(c(e)=1\) because \(B(H)\) is a factor. With \(v_j\) the rank-one partial isometry \(\varepsilon_j\mapsto\varepsilon_{i_0}\), Theorem 6.2(2) gives \(\tau(x)=\sum_jc\langle x\varepsilon_j,\varepsilon_j\rangle=c\operatorname{Tr}(x)\). The edge cases: for \(c=\infty\), \(\tau\) is faithful and normal but not semifinite, and Proposition 3.7 gives \(z=0\); for \(c=0\), the support is \(0\) (Proposition 3.2) and \(\tau\) is semifinite; for \(0<c<\infty\), \(\tau\) is faithful, normal and semifinite, and finite exactly when \(\dim H<\infty\). If \(\dim H=\infty\), then \(B(H)\) is properly infinite, and Theorem 5.9(1) says it has no nonzero finite trace at all, normal or not.
+**Example 6.3** (All normal traces on \(B(H)\)). For \(c\in[0,\infty]\), \(c\operatorname{Tr}\) is a normal trace on \(B(H)\), with \(0\cdot\infty=0\) and \(c\cdot\infty=\infty\) for \(c>0\). Every normal trace \(\tau\) on \(B(H)\) has this form. For \(H=0\) there is only the zero trace and every coefficient \(c\) gives that trace. For \(H\ne0\), let \(e\) be the projection onto \(\mathbb C\varepsilon_{i_0}\) for an orthonormal basis \((\varepsilon_i)\). The corner \(eB(H)e=\mathbb Ce\) carries the normal trace \(te\mapsto ct\) with \(c=\tau(e)\), and \(c(e)=1\) because \(B(H)\) is a factor. With \(v_j\) the rank-one partial isometry \(\varepsilon_j\mapsto\varepsilon_{i_0}\), Theorem 6.2(2) gives \(\tau(x)=\sum_jc\langle x\varepsilon_j,\varepsilon_j\rangle=c\operatorname{Tr}(x)\). The edge cases: for \(c=\infty\), \(\tau\) is faithful and normal but not semifinite, and Proposition 3.7 gives \(z=0\); for \(c=0\), the support is \(0\) (Proposition 3.2) and \(\tau\) is semifinite; for \(0<c<\infty\), \(\tau\) is faithful, normal and semifinite, and finite exactly when \(\dim H<\infty\). If \(\dim H=\infty\), then \(B(H)\) is properly infinite, and Theorem 5.9(1) says it has no nonzero finite trace at all, normal or not.
 
 ### Amplification by a type I factor
 
-Let \(N\) be a von Neumann algebra on \(H\), and \(K\) a Hilbert space with orthonormal basis \((\varepsilon_i)_{i\in I}\). Let \(V_i:H\to H\otimes K\), \(V_i\xi=\xi\otimes\varepsilon_i\), and for \(x\in B(H\otimes K)\) put \(x_{ij}=V_i^*xV_j\). Let \(e_{ij}\in B(K)\) be the matrix units, \(e_{ij}\varepsilon_k=\delta_{jk}\varepsilon_i\). The von Neumann tensor product \(N\bar\otimes B(K)\) is the von Neumann algebra generated by the operators \(a\otimes b\).
+Let \(N\) be a von Neumann algebra on \(H\), and \(K\) a nonzero Hilbert space with orthonormal basis \((\varepsilon_i)_{i\in I}\). Let \(V_i:H\to H\otimes K\), \(V_i\xi=\xi\otimes\varepsilon_i\), and for \(x\in B(H\otimes K)\) put \(x_{ij}=V_i^*xV_j\). Let \(e_{ij}\in B(K)\) be the matrix units, \(e_{ij}\varepsilon_k=\delta_{jk}\varepsilon_i\). The von Neumann tensor product \(N\bar\otimes B(K)\) is the von Neumann algebra generated by the operators \(a\otimes b\). When \(K=0\), the tensor product algebra is zero and the empty diagonal sum defines its unique trace. That trace is faithful and semifinite for every \(\tau\), so the converses in Proposition 6.5(3) require \(K\ne0\); there is also no rank-one projection for the normalization in part (2).
 
 **Lemma 6.4.** \(N\bar\otimes B(K)=\{x\in B(H\otimes K):x_{ij}\in N\text{ for all }i,j\}\).
 
@@ -745,5 +745,3 @@ where both factors on the right are finite and nonnegative.
 - [Dixmier 1949] J. Dixmier, *Les anneaux d'opérateurs de classe finie*, Ann. Sci. École Norm. Sup. 66 (1949), 209–261. https://doi.org/10.24033/asens.970
 - [Dixmier 1953] J. Dixmier, *Formes linéaires sur un anneau d'opérateurs*, Bull. Soc. Math. France 81 (1953), 9–39. https://doi.org/10.24033/bsmf.1436
 - [Murray–von Neumann 1937] F. J. Murray and J. von Neumann, *On rings of operators. II*, Trans. Amer. Math. Soc. 41 (1937), 208–248. https://www.ams.org/journals/tran/1937-041-02/S0002-9947-1937-1501899-4/S0002-9947-1937-1501899-4.pdf
-- [Nelson 1974] E. Nelson, *Notes on non-commutative integration*, J. Funct. Anal. 15 (1974), 103–116. https://doi.org/10.1016/0022-1236(74)90014-7
-- [Takesaki I] M. Takesaki, *Theory of Operator Algebras I*, Springer, 1979.

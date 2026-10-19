@@ -1,15 +1,21 @@
 # Completing the algebra and differentiation inputs
 
-Prerequisite companion to the stationary-phase lesson. It follows Jiří Lebl, *Basic Analysis*, version 6.3, [freely accessible author edition](https://www.jirka.org/ra/). Original text: public domain (CC0).
-The precise source sections are §§3.1.3, 4.1.1, 4.2.1–4.2.3 and 8.1–8.5.
-Their complete programme proofs are retained through exact bindings in
-`differential-proof-chain.json`. The arguments below supply particular
-exercises, omitted cases and intermediate steps actually needed here.
+This companion gives finite-dimensional algebra and differentiation
+arguments used by the stationary-phase readings: linear maps and norms,
+orthonormal complements, dimension comparisons, scalar and vector derivative
+rules, finite-order smoothness, and the domain restriction in implicit inversion.
+
+Mathematical source: Jiří Lebl, *Basic Analysis*, theorem numbering from
+version 6.3, [freely accessible author edition](https://www.jirka.org/ra/),
+§§3.1.3, 4.1.1, 4.2.1–4.2.3 and 8.1–8.5. The
+human-proof references locate external
+statements and proofs; the programme proof index locates
+the local arguments. Original programme text is CC0 to the extent rights
+exist. Human works retain their own terms.
 
 We use the ordered complete real-field axioms and induction declared in
 `elementary-proof-completions.md`, the definitions of real vector spaces,
-linear maps, norms, derivatives and finite matrices, and the already closed
-topology chain. Finite sums and products include the empty sum 0 and empty
+linear maps, norms, derivatives and finite matrices, and the topology inputs listed in the proof index. Finite sums and products include the empty sum 0 and empty
 product 1. The zero vector space has the empty basis, dimension 0 and its
 unique linear map as its identity. Its operator norm is 0. Statements with
 \(1/\|A^{-1}\|\) concern a space of positive dimension; inversion on
@@ -396,6 +402,11 @@ theorem with zero target dimension, the unknown block lies in
 tuple. These observations cover the cases excluded by positive-dimensional
 operator-norm denominators. \(\square\)
 
-## Scope of the completion
+## Related calculus readings
 
-The exact dependency graph distinguishes these algebra/differentiation arguments from the later compact-integral and Taylor completions in `integration-proof-chain.json`. Global integration, exponential and multidimensional change-of-variables inputs, the assembled stationary-phase lesson and its complete distribution payload still require review.
+The proof index identifies the inputs to the algebra
+and differentiation arguments above. The
+[compact-integral companion](integration-prerequisite-completions.html)
+provides the mixed-derivative, fundamental-theorem, Taylor and parameter
+integration arguments. Global absolute integration, exponential functions
+and multidimensional substitution have their own readings.

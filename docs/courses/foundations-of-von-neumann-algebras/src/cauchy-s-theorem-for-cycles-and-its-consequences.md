@@ -1,6 +1,6 @@
 # Cauchy's theorem for cycles and its consequences
 
-*Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all four solutions, supplied the elementary integration proofs and corrected the edge cases, October 2026. Public domain (CC0).*
+*Mathematical exposition and worked exercises prepared with Claude Opus 5.5 (Anthropic) and GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 This lesson proves the complex analysis that the operator-algebra lessons use. It covers:
 - the index of a cycle;
@@ -37,6 +37,8 @@ taken piece by piece. The integral over a cycle is the sum over its paths, and \
 The following tools apply to functions with values in any real or complex Banach space \(X\). They supply the integration facts used throughout this lesson and in the Banach-algebra lesson.
 
 **Lemma 0.1** (Intervals, rectangles and parameters).
+
+Derivative statements use parameter intervals of positive length. Integrals over degenerate intervals are zero.
 
 1. A continuous \(F:[a,b]\to X\) has a Riemann integral. It is linear, commutes with bounded linear maps, satisfies \(\|\int_a^b F\|\leq\int_a^b\|F\|\), and respects uniform limits.
 2. The function \(P(t)=\int_a^t F(s)\,ds\) has derivative \(P'(t)=F(t)\) in the interior, with one-sided derivatives at the endpoints. If \(G\) is continuously differentiable, then \(\int_a^bG'(t)\,dt=G(b)-G(a)\). The chain rule and substitution hold for continuously differentiable real paths; a holomorphic primitive with continuous derivative satisfies the same chain rule along a piecewise continuously differentiable complex path.
@@ -109,7 +111,7 @@ For a cycle \(\Gamma\) and \(z\notin\Gamma^*\), the *index* is
 2. For the circle \(\partial D(c,r)\), the index is \(1\) on \(D(c,r)\) and \(0\) outside \(\bar D(c,r)\).
 3. For the positively oriented boundary \(\partial Q\) of a closed square \(Q\), the index is \(1\) on the interior of \(Q\) and \(0\) outside \(Q\).
 
-**Proof.** (1) *Integer values.* Let \(\gamma:[a,b]\to\mathbb C\) be a closed path and \(z\notin\gamma^*\). Put
+**Proof.** For the empty cycle, the index is zero by definition and part (1) follows. Assume the cycle is nonempty for the estimates in part (1). (1) *Integer values.* Let \(\gamma:[a,b]\to\mathbb C\) be a closed path and \(z\notin\gamma^*\). Put
 \[
 \begin{gathered}
 h(t)\\
@@ -314,7 +316,9 @@ f(z)\operatorname{Ind}_\Gamma(z)\\
 
 *Reference:* The Dixon argument for a closed curve is presented in [MIT OCW Lecture 13, by Zuoqin Wang for Sigurdur Helgason’s course](https://ocw.mit.edu/courses/18-112-functions-of-a-complex-variable-fall-2008/8793d412fa0da2a4183539f5d8f7e3fd_lecture13.pdf). The proof below includes the finite-cycle formulation.
 
-**Proof.** *Step 1: a continuous difference quotient.* Define \(\varphi\) on \(U\times U\) by
+**Proof.** If the cycle is empty, its index and every integral over it are zero, so both conclusions hold. Assume henceforth that the cycle is nonempty. 
+
+*Step 1: a continuous difference quotient.* Define \(\varphi\) on \(U\times U\) by
 \[
 \begin{gathered}
 \varphi(z,w)\\
@@ -476,6 +480,8 @@ Expanding as in the proof of Theorem 3.2 gives \(g(z)=\sum_na_n(z-c)^n\), with \
 [Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory](banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.md) defines \(f(x)\) for \(f\) holomorphic near the spectrum of \(x\) as an integral over a cycle that surrounds the spectrum. Theorem 5.1 provides the cycle, and Theorems 4.2 and 6.1 show that the result does not depend on it. Exercise 4 is the step used in Example 3.4 of the lesson on C\*-algebras. Liouville's theorem is used in [Kaplansky's density theorem and its consequences](kaplansky-s-density-theorem-and-its-consequences.md).
 
 ## References
+
+- [Dixon 1971] John D. Dixon, ["A brief proof of Cauchy's integral theorem"](https://www.ams.org/journals/proc/1971-029-03/S0002-9939-1971-0277699-8/S0002-9939-1971-0277699-8.pdf), *Proceedings of the American Mathematical Society* 29 (1971), 625–626. The cycle argument in Section 4 uses Dixon's difference-quotient and Liouville method.
 
 - É. Goursat, ["Sur la définition générale des fonctions analytiques, d'après Cauchy"](https://www.ams.org/journals/tran/1900-001-01/S0002-9947-1900-1500519-7/S0002-9947-1900-1500519-7.pdf), *Transactions of the American Mathematical Society* 1 (1900), 14–16.
 

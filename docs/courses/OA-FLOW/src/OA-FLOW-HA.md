@@ -20,7 +20,7 @@ Let \(R\) be the tracial infinite tensor product of countably many copies of \(M
 \]
 where the traces are specified below. Nevertheless, for every pair of nonzero central projections \(e_i\in Z(N_i)\), the induced coefficient systems \(((N_i)_{e_i},(\alpha_i)_{e_i})\) are not conjugate. Neither \(N_i\) admits a faithful normal semifinite trace contracted uniformly by \(\alpha_i\) with a constant strictly below one.
 
-These systems satisfy the three assumptions in the literal wider induced-corner assertion: type \(\mathrm{II}_\infty\), separable predual, and ergodic action on a nonatomic center. They refute its converse. They are outside the trace-contraction hypothesis of the repaired type \(\mathrm{III}_0\) classification. The repaired classification and the forward implication from induced conjugacy remain intact.
+These systems satisfy the three assumptions in the literal wider induced-corner assertion: type \(\mathrm{II}_\infty\), separable predual, and ergodic action on a nonatomic center. They refute its converse. They are outside the trace-contraction hypothesis of the type \(\mathrm{III}_0\) classification. The classification under the trace-contraction hypothesis and the forward implication from induced conjugacy retain their stated scopes.
 
 The construction combines injectivity of an amenable crossed product with finite-factor classification. Sections 3 and 4 identify the earlier programme proofs used for these two steps. It gives a second realization of the obstruction in [the induced-corner lesson](OA-FLOW-IC.md#ic-obstruction), whose infinite-tensor absorption argument also remains available.
 
@@ -103,6 +103,108 @@ Joint finite spectral partitions approximate each finite family in \(D\) in norm
 
 This independently proves the abelian case of Averaging, crossed products, and injectivity, Proposition 5.3. Its more general type I conclusion is not required here.
 
+<a id="ha-finite-retraction"></a>
+### A direct retraction for the probability-preserving integer action
+
+For the finite crossed products in (HA4), the retraction can be constructed on their actual regular Hilbert spaces. Fix one system and omit its subscript. Thus \(D=L^\infty(S,\mu)\), \(\mu(S)=1\), \(\beta\) preserves \(\mu\), and \(A=D\rtimes_\beta\mathbb Z\) has the faithful normal trace \(\tau=\mu E\) proved in Section 2. Neither ergodicity nor freeness is needed for the construction below.
+
+Let \(H_0=L^2(S,\mu)\), \(H=\ell^2(\mathbb Z)\otimes H_0\), and \(V_s:H_0\to H\) be the inclusion into coordinate \(s\). The finite-partition construction (HA9)–(HA10) gives a ucp retraction
+\[
+ P:B(H_0)\longrightarrow D.
+ \tag{HAFR1}
+\]
+It fixes every multiplication operator in \(D\), although it need not be normal. For \(n\ge0\), put \(F_n=\{-n,\ldots,n\}\) and \(N_n=2n+1\). Define
+\[
+ \begin{aligned}
+ C_n(T)&=[P(V_s^*TV_t)]_{s,t\in F_n},
+       &&T\in B(H),\\
+ \Gamma_n([d_{st}])&=\frac1{N_n}
+       \sum_{s,t\in F_n}u^s\pi(d_{st})u^{-t},
+       &&[d_{st}]\in M_{F_n}(D),\\
+ R_n&=\Gamma_n C_n:B(H)\longrightarrow A.
+ \end{aligned}
+ \tag{HAFR2}
+\]
+Compression by the isometry \(\bigoplus_{s\in F_n}V_s\) is ucp, and entrywise application of \(P\) is its matrix amplification. Hence \(C_n\) is ucp. To check the second map at every matrix level, represent \(M_{F_n}(D)\) on \(H^{F_n}\) entrywise by \(\pi\), and use the row operator
+\[
+ W_n=N_n^{-1/2}[u^s]_{s\in F_n}:H^{F_n}\longrightarrow H,
+ \qquad W_nW_n^*=1.
+\]
+Then \(\Gamma_n(d)=W_n[\pi(d_{st})]W_n^*\). Thus \(\Gamma_n\), and consequently \(R_n\), is ucp. Its range lies in \(A\) by the finite sum in (HAFR2). In particular \(\|R_n(T)\|\le\|T\|\).
+
+**The coefficient calculation.** For \(X\in A\), every \(V_s^*XV_t\) already belongs to \(D\), by (HA5), so \(P\) fixes it. Therefore the restriction \(R_n|_A\) is normal: it is a finite sum of normal coordinate compressions, normal applications of \(\pi\), and fixed left and right multiplications. For a covariant word, (HA4) gives
+\[
+ V_s^*\pi(f)u^rV_t
+   =1_{\{s-t=r\}}\beta^{-s}(f).
+\]
+The covariance relation \(u^s\pi(\beta^{-s}(f))=\pi(f)u^s\) now gives the exact multiplier
+\[
+ R_n(\pi(f)u^r)
+   =q_n(r)\pi(f)u^r,\qquad
+ q_n(r)=\frac{|F_n\cap(F_n+r)|}{N_n}
+       =\max\left(1-\frac{|r|}{N_n},0\right).
+ \tag{HAFR3}
+\]
+Indeed there are \(N_n-|r|\) pairs with \(s-t=r\) when \(|r|<N_n\), and none otherwise. In particular \(q_n(r)\to1\) for each fixed integer \(r\).
+
+**Trace and whole-algebra convergence.** For \(d\in D\),
+\[
+ \tau(u^s\pi(d)u^{-t})
+   =1_{\{s=t\}}\int_S d\,d\mu.
+\]
+When \(s=t\), invariance of \(\mu\) removes \(\beta^s\); when \(s\ne t\), the zero Fourier coefficient vanishes. Applying this identity to (HAFR2) and using (HA5) gives, for every \(X\in A\),
+\[
+ \tau(R_n(X))
+   =\frac1{N_n}\sum_{s\in F_n}
+        \int_S\beta^{-s}(E(X))\,d\mu
+   =\tau(X).
+ \tag{HAFR4}
+\]
+Thus the full restriction, not just its polynomial part, preserves the trace.
+
+A ucp map \(L\) satisfies \(L(x)^*L(x)\le L(x^*x)\). In this instance the inequality follows directly by applying its two-by-two amplification to the positive Gram matrix
+\(\left[\begin{smallmatrix}x^*x&x^*\\x&1\end{smallmatrix}\right]\)
+and evaluating the resulting quadratic form on \((\xi,-L(x)\xi)\).
+Together with (HAFR4), this gives
+\[
+ \|R_n(X)\|_2\le\|X\|_2.
+ \tag{HAFR5}
+\]
+
+Let \(\Omega\in H\) have value \(1\in L^2(S,\mu)\) at coordinate zero and zero elsewhere. For \(X\in A\), the definition of \(E\) gives
+\(\langle X\Omega,\Omega\rangle=\tau(X)\); hence
+\(\|X\Omega\|=\|X\|_2\). The word \(\pi(f)u^r\Omega\) has only coordinate \(r\), with value \(\beta^{-r}(f)\). Bounded functions are dense in \(L^2(S,\mu)\), so these word vectors span a dense subspace of \(H\). This proves directly that this is the full trace-GNS representation and that covariant polynomials are \(2\)-norm dense in \(A\).
+
+For such a polynomial \(Y\), (HAFR3) gives
+\(\|R_n(Y)-Y\|_2\to0\). For arbitrary \(X\in A\), (HAFR5) gives
+\[
+ \|R_n(X)-X\|_2
+ \le2\|X-Y\|_2+\|R_n(Y)-Y\|_2.
+\]
+First choose \(Y\) close in \(2\)-norm and then let \(n\) increase. We obtain convergence for every \(X\in A\).
+
+This implies ultraweak convergence in the actual representation, with no assumption that a Fourier series converges in operator norm. Write \(a_n=R_n(X)-X\). For \(y,z\in A\), traciality and Cauchy–Schwarz give
+\[
+ |\langle a_ny\Omega,z\Omega\rangle|
+ =|\tau(z^*a_ny)|
+ \le\|zy^*\|_2\,\|a_n\|_2\longrightarrow0.
+ \tag{HAFR6}
+\]
+The uniform bound \(\|a_n\|\le2\|X\|\) extends this convergence from the dense vectors \(A\Omega\) to all vector pairs. For a normal functional written as a summable series of vector coefficients, a finite prefix tends to zero and its remaining tail is bounded uniformly by this same operator bound. Hence \(R_n(X)\to X\) ultraweakly.
+
+Finally, the values \(R_n(T)\) lie in the ultraweakly compact ball of radius \(\|T\|\) of \(A\), for every \(T\in B(H)\). Product compactness supplies a subnet converging pointwise ultraweakly to a map
+\[
+ R:B(H)\longrightarrow A.
+\]
+Finite linearity and unit equations pass to the limit. Positivity at every matrix level passes by testing every finite vector tuple, so \(R\) is ucp. The whole-algebra convergence just proved gives \(R(X)=X\) for every \(X\in A\). This is a retraction in the very trace-GNS representation used for the finite-factor and hypertrace arguments. The retraction criterion already stated above proves injectivity. Normality of \(R\) is neither asserted nor needed. \(\square\)
+
+For a concrete window, \(F_3=\{-3,-2,\ldots,3\}\) has seven points. The word of degree \(r=2\) contributes in exactly five matrix positions, so its multiplier is \(q_3(2)=5/7\). The diagonal degree has multiplier one, and degrees \(|r|\ge7\) have multiplier zero. These finite formulas illustrate the approximation; exact recovery of arbitrary \(X\in A\) uses (HAFR5)–(HAFR6) and the limiting retraction.
+
+![Finite compression, five surviving degree-two entries, and reconstruction with exact multiplier five sevenths](../assets/hyperfinite-output/finite-window-retraction.svg)
+
+**Finite-window retraction.** The grid lists the row and column indices of \(F_3\); a marked square has \(s-t=2\). The row-operator reconstruction in (HAFR2) assigns weight \(1/7\) to each of the five surviving entries, giving (HAFR3). The diagram displays one Fourier coefficient, not an operator-norm approximation of an arbitrary Fourier series. The [editable SVG](../assets/hyperfinite-output/finite-window-retraction.svg), [drawing script](../assets/hyperfinite-output/finite-window-retraction.py) and [exact finite data](../assets/hyperfinite-output/finite-window-retraction.json) accompany it.
+
+**The general averaging argument.** The same conclusion also follows through commutants and an invariant mean, as follows.
 The states
 \[
  m_n(f)=\frac1{2n+1}\sum_{k=-n}^n f(k)\qquad(f\in\ell^\infty(\mathbb Z))
@@ -134,9 +236,232 @@ We use the proved statement of [Unitary couplings and finite injective factors](
 4. [Unitary couplings](../../OA-APPROX/unitary-couplings-and-finite-injective-factors.html#1-sampling-a-countable-coupling), Sections 1–4, samples and clips the coupling, uses a faithfully tracial von Neumann ultrapower, tests every central projection in the intertwiner algebra, and compares its two diagonal projections. It produces one unitary \(w\) with all \(\|u_k-wv_kw^*\|_2\) small. The ultrapower is proved to be a von Neumann algebra in [Multiplier ultraproducts and normal embeddings](../../OA-APPROX/multiplier-ultraproducts-and-normal-embeddings.html#3-completeness-on-two-cyclic-vectors), Theorem 3.2. In the tracial case every bounded sequence is a multiplier. The proof does not assume that the ultrapower is a factor.
 5. [Hyperfinite finite factors](../../OA-APPROX/hyperfinite-finite-factors.html#4-making-containment-exact), Lemmas 3.1 and 4.1 and Theorem 5.1, converts finite approximants into increasing dyadic matrix algebras with exact containment and constructs the normal trace-GNS isomorphism. Only the countable generating step requires separable predual.
 
-The normalization in step 1 deserves an explicit check. If \(S\) is the normal ucp incoming map and \(T\) is cpc, replace \(T(y)\) by
-\(T(y)+\omega(y)(1-T(1))\), where \(\omega\) is a matrix state. This is ucp. The cpc Schwarz inequality upgrades \(TS\to\operatorname{id}\) from ultraweak to \(\sigma\)-strong-star convergence; in particular \(T(1)=TS(1)\to1\). The correction tends to zero in those seminorms. Thus the subsequent arguments receive genuinely unital maps; exact trace preservation is then constructed in step 2, not presumed initially.
+<a id="ha-unital-normalization"></a>
+### Strong-star approximation and the unitality defect
 
+The matrix maps in step 1 can be made unital while retaining their approximation property. We prove this for an arbitrary von Neumann algebra \(M\). Let \(i\) run through a directed set, and suppose
+\[
+ S_i:M\longrightarrow M_{m_i},\qquad
+ T_i:M_{m_i}\longrightarrow M,\qquad
+ \Phi_i=T_iS_i,
+ \tag{HAU1}
+\]
+where \(S_i\) is normal, unital and completely positive, and \(T_i\) is completely positive and contractive. Assume \(\Phi_i(x)\to x\) ultraweakly for every \(x\in M\). The dimensions \(m_i\) may vary, and no separability or tracial hypothesis is needed in this deduction.
+
+For a positive normal functional \(\psi\), write
+\[
+ p_\psi(z)=\psi(z^*z)^{1/2},\qquad
+ D_i=1-T_i(1)=1-\Phi_i(1),\qquad
+ d_{i,\psi}=\psi(D_i).
+ \tag{HAU2}
+\]
+The two seminorms \(p_\psi(z)\) and \(p_\psi(z^*)\), as \(\psi\) varies, define the intrinsic \(\sigma\)-strong-star topology. Positivity and contractivity give \(0\le D_i\le1\). Ultraweak convergence at the identity gives \(d_{i,\psi}\to0\).
+
+**First, the uncorrected maps converge in both seminorms.** A completely positive contraction \(\Phi\) satisfies
+\[
+ \Phi(x)^*\Phi(x)\le\Phi(x^*x).
+ \tag{HAU3}
+\]
+Indeed apply its size-two amplification to the positive Gram block
+\(\left[\begin{smallmatrix}x^*x&x^*\\x&1\end{smallmatrix}\right]\).
+Add the positive block with bottom-right entry \(1-\Phi(1)\) and other entries zero. The resulting block has bottom-right entry one. Its sandwich by the column \(\left[\begin{smallmatrix}1\\-\Phi(x)\end{smallmatrix}\right]\) is \(\Phi(x^*x)-\Phi(x)^*\Phi(x)\), proving (HAU3). Positive linear maps preserve adjoints, since every selfadjoint element is a difference of positive elements.
+
+Define the nonnegative error
+\[
+ e_{i,\psi}(x)=
+ \bigl|\psi(\Phi_i(x^*x)-x^*x)\bigr|
+ +2\bigl|\psi(x^*(\Phi_i(x)-x))\bigr|.
+ \tag{HAU4}
+\]
+Both terms tend to zero. For the second term, use [CP6](OA-FLOW-CP.md#oa-flow.cp.6) to write \(\psi(z)=\sum_j\langle z\xi_j,\eta_j\rangle\), with square-summable vector families. Then \(\psi(x^*z)=\sum_j\langle z\xi_j,x\eta_j\rangle\). The sum of the products of vector norms is bounded by \(\|x\|\sum_j\|\xi_j\|\|\eta_j\|<\infty\). Thus multiplication by the fixed \(x^*\) gives another normal vector-series functional, so this term also tends to zero.
+
+Expand the square, apply (HAU3), and use that \(\psi\) preserves adjoints:
+\[
+ \begin{aligned}
+ p_\psi(\Phi_i(x)-x)^2
+ &\le \psi(\Phi_i(x^*x))
+       -2\operatorname{Re}\psi(x^*\Phi_i(x))+\psi(x^*x)\\
+ &\le e_{i,\psi}(x)\longrightarrow0.
+ \end{aligned}
+ \tag{HAU5}
+\]
+Applying the same calculation to \(x^*\) controls \(p_\psi((\Phi_i(x)-x)^*)\), because \(\Phi_i(x^*)=\Phi_i(x)^*\). Thus ultraweak convergence of these completely positive contractions to the identity gives pointwise \(\sigma\)-strong-star convergence. The estimates hold for the original directed net.
+
+**Second, correct the outgoing map.** Choose any state \(\omega_i\) on each \(M_{m_i}\), and put
+\[
+ \widehat T_i(y)=T_i(y)+\omega_i(y)D_i,
+ \qquad \widehat\Phi_i=\widehat T_iS_i.
+ \tag{HAU6}
+\]
+For a positive matrix \([y_{ab}]\) over \(M_{m_i}\), the scalar matrix \([\omega_i(y_{ab})]\) is positive: test it on a scalar column and apply positivity of \(\omega_i\). Tensoring its positive square-root factorization with \(D_i^{1/2}\) proves positivity of \([\omega_i(y_{ab})D_i]\). This proves complete positivity of the correction at every size. Adding it to \(T_i\) preserves complete positivity, and \(\widehat T_i(1)=T_i(1)+D_i=1\). The map is normal because its domain is finite dimensional. The unital case of (HAU3) gives contractivity of \(S_i\) and \(\widehat T_i\). Thus \(\widehat\Phi_i\) is normal and unital completely positive.
+
+The correction has an error bound uniform over the choice of matrix state. Since \(D_i^2\le D_i\) and \(|\omega_i(S_i(x))|\le\|x\|\),
+\[
+ \begin{aligned}
+ p_\psi(\widehat\Phi_i(x)-\Phi_i(x))^2
+ &=|\omega_i(S_i(x))|^2\psi(D_i^2)\\
+ &\le\|x\|^2d_{i,\psi}.
+ \end{aligned}
+ \tag{HAU7}
+\]
+Together with the seminorm triangle inequality and (HAU5), this gives
+\[
+ \begin{aligned}
+ p_\psi(\widehat\Phi_i(x)-x)
+ &\le\sqrt{e_{i,\psi}(x)}+\|x\|\sqrt{d_{i,\psi}},\\
+ p_\psi((\widehat\Phi_i(x)-x)^*)
+ &\le\sqrt{e_{i,\psi}(x^*)}+\|x\|\sqrt{d_{i,\psi}}.
+ \end{aligned}
+ \tag{HAU8}
+\]
+Both right-hand sides tend to zero. For any finite list of operators and normal positive functionals, directedness supplies one index after which all the displayed bounds meet a prescribed tolerance. This supplies normal unital matrix approximations in the exact topology needed by step 2. Exact trace preservation is subsequently constructed there; the unitality correction alone makes no such assertion. \(\square\)
+
+<a id="ha-defect-tails"></a>
+### Finite stages of the balanced reconstruction
+
+Step 3 involves a countable family of operators. Its finite stages have two different residuals, and their size determines the convergence available for the reconstructed maps.
+
+Let \(M\) be any finite von Neumann algebra with a faithful normal tracial state \(\tau\). Suppose \(h,k\in M_+\) have the same center-valued trace. The [positive-defect matching theorem](../../OA-APPROX/balancing-kraus-families-and-unitary-couplings.html#countable-trace-exhaustion) supplies a finite or countable family \((a_j)\) with
+\[
+ \sum_{j\ge1}a_j^*a_j=h,\qquad
+ \sum_{j\ge1}a_ja_j^*=k
+ \tag{HADT1}
+\]
+in the strong topology. A finite family is extended by zeros. Put
+\[
+ h_n=h-\sum_{j=1}^na_j^*a_j,\qquad
+ k_n=k-\sum_{j=1}^na_ja_j^*,\qquad
+ r_n=\tau(h_n)=\tau(k_n).
+ \tag{HADT2}
+\]
+Then \(h_n\downarrow0\), \(k_n\downarrow0\), and \(r_n\downarrow0\). The equality of the two scalar residuals follows from traciality of each summand and \(\tau(h)=\tau(k)\); the limits use normality. No factoriality or separable-predual assumption is imposed.
+
+Here the matching theorem can be used with successive choices instead of a maximal family. At stage \(n\), consider all \(a\) with \(a^*a\le h_n\) and \(aa^*\le k_n\), and choose one whose squared trace Hilbert norm exceeds half the supremum of those norms. The theorem proves that this supremum is positive whenever \(h_n\ne0\), using spectral subprojections, their central supports and polar decomposition. If a nonzero residual survived all stages, one fixed positive-size match inside it would be available at every stage. This contradicts the finite total sum \(\sum_j\tau(a_j^*a_j)\le\tau(h)\). Thus the construction gives (HADT1). It does not give a uniform geometric rate for \(r_n\).
+
+**Tail-map theorem.** For \(x,y\in M\), define
+\[
+ B(x)=\sum_{j\ge1}a_j^*xa_j,\qquad
+ C(y)=\sum_{j\ge1}a_jya_j^*,
+ \tag{HADT3}
+\]
+and let \(B^{(n)},C^{(n)}\) denote their first \(n\) terms. These series converge strongly for every bounded input and define normal completely positive maps. Their tails \(B_n=B-B^{(n)}\), \(C_n=C-C^{(n)}\) satisfy
+\[
+ \begin{aligned}
+ B_n(1)&=h_n,& C_n(1)&=k_n,\\
+ \|B_n\|&=\|h_n\|,& \|C_n\|&=\|k_n\|,\\
+ \tau(B_n(x))&=\tau(xk_n),&
+ \tau(C_n(y))&=\tau(yh_n).
+ \end{aligned}
+ \tag{HADT4}
+\]
+The trace-adjoint relation and the quantitative bounds are
+\[
+ \tau(yB_n(x))=\tau(C_n(y)x),
+ \tag{HADT5}
+\]
+\[
+ \begin{aligned}
+ \|B_n(x)\|_2^2
+   &\le\|h_n\|\,\tau(x^*xk_n)
+    \le\|h\|\,\|x\|^2r_n,\\
+ \|C_n(y)\|_2^2
+   &\le\|k_n\|\,\tau(y^*yh_n)
+    \le\|k\|\,\|y\|^2r_n.
+ \end{aligned}
+ \tag{HADT6}
+\]
+In particular the finite sums converge to the full maps in trace Hilbert norm, uniformly for inputs in a fixed operator-norm ball. This does not assert convergence in the operator norm of maps.
+
+**Proof.** Represent \(M\) faithfully and normally on a Hilbert space \(H\). For a fixed \(n\), the column
+\[
+ V_n:H\longrightarrow\bigoplus_{j>n}H,
+ \qquad V_n\xi=(a_j\xi)_{j>n}
+ \tag{HADT7}
+\]
+is bounded, because the sum of squared coordinate norms is \(\langle h_n\xi,\xi\rangle\). Hence \(V_n^*V_n=h_n\) and \(\|V_n\|^2=\|h_n\|\). If \(D(x)\) acts as \(x\) on every coordinate, the finite coordinate projections \(P_N\uparrow1\) give
+\[
+ V_n^*P_ND(x)P_NV_n\longrightarrow V_n^*D(x)V_n
+ \quad\hbox{strongly}.
+ \tag{HADT8}
+\]
+Indeed the omitted coordinate tail of the single vector \(V_n\xi\) tends to zero, and \(D(x)\) commutes with \(P_N\). The finite operators lie in \(M\), so their limit does too. This limit is \(B_n(x)\). For \(n=0\) it defines \(B\), and subtraction of finite sums proves the tail formula. Replacing \(a_j\) by \(a_j^*\) defines \(C_n\) and \(C\).
+
+The compression formula proves complete positivity at every matrix level: amplify the column and test positivity of the diagonal representation. It gives \(\|B_n(x)\|\le\|h_n\|\|x\|\); evaluation at the unit gives equality of the map norm with \(\|h_n\|\). The same reasoning applies to \(C_n\).
+
+For normality, let \(0\le x_\alpha\uparrow x\). For every \(\xi\), the positive scalar series gives
+\[
+ \begin{aligned}
+ \sup_\alpha\langle B_n(x_\alpha)\xi,\xi\rangle
+ &=\sup_\alpha\sup_N
+       \sum_{j=n+1}^N\langle x_\alpha a_j\xi,a_j\xi\rangle\\
+ &=\sup_N\sum_{j=n+1}^N\langle xa_j\xi,a_j\xi\rangle
+  =\langle B_n(x)\xi,\xi\rangle.
+ \end{aligned}
+ \tag{HADT9}
+\]
+The exchange is between suprema of nonnegative finite sums. Thus \(B_n\) preserves increasing positive suprema and is normal by the [bounded positive-map criterion](../../OA-MOD/OA-MOD-NP.html#oa-mod-np-04). The argument for \(C_n\) is identical.
+
+The column also supplies the needed Schwarz bound without assuming that the map is unital:
+\[
+ \begin{aligned}
+ B_n(x)^*B_n(x)
+ &=V_n^*D(x)^*V_nV_n^*D(x)V_n\\
+ &\le\|h_n\|V_n^*D(x^*x)V_n
+  =\|h_n\|B_n(x^*x).
+ \end{aligned}
+ \tag{HADT10}
+\]
+For a positive input, traciality of each term and normality give
+\[
+ \tau(B_n(x))
+ =\sum_{j>n}\tau(x^{1/2}a_ja_j^*x^{1/2})
+ =\tau(x^{1/2}k_nx^{1/2})=\tau(xk_n).
+ \tag{HADT11}
+\]
+Linear decomposition into four positive elements gives this identity for every \(x\in M\), and similarly for \(C_n\). Applying \(\tau\) to (HADT10) now proves (HADT6). The middle quantity \(\tau(x^*xk_n)\) is real and nonnegative, since it equals \(\tau(k_n^{1/2}x^*xk_n^{1/2})\).
+
+For a finite sum, the trace-adjoint identity (HADT5) is just \(\tau(ya_j^*xa_j)=\tau(a_jya_j^*x)\). To pass to the full tail, its finite sums converge strongly by (HADT8) and remain uniformly bounded. Bounded strong convergence is ultraweak convergence; the functionals \(z\mapsto\tau(yz)\) and \(z\mapsto\tau(zx)\) are normal. They therefore preserve these limits. This proves (HADT5) and completes the theorem. \(\square\)
+
+**What a truncated balanced map preserves.** In step 3 the initial finite family \((b_i)\) has sums \(\sum_i b_i^*b_i=1-h\) and \(\sum_i b_ib_i^*=1-k\). The complete map and its finite truncations are
+\[
+ \Psi(x)=\sum_i b_i^*xb_i+B(x),\qquad
+ \Psi_n(x)=\sum_i b_i^*xb_i+B^{(n)}(x).
+ \tag{HADT12}
+\]
+The full map is normal, unital and trace preserving. At a finite stage the exact statements are
+\[
+ \Psi_n(1)=1-h_n,\qquad
+ \tau(\Psi_n(x))=\tau(x)-\tau(xk_n),\qquad
+ \|\Psi(x)-\Psi_n(x)\|_2
+       \le\|x\|\sqrt{\|h\|r_n}.
+ \tag{HADT13}
+\]
+These follow by adding the finite initial family to (HADT4) and (HADT6). The finite map is completely positive and subunital; exact unitality and exact trace preservation belong to the full sum unless both residuals have vanished. For the balancing choice \(h=\eta1\), the last bound becomes \(\|x\|\sqrt{\eta r_n}\). If the full reconstruction differs from a prescribed map on a matrix subfactor by at most \(2\eta\|x\|\) in operator norm, then its \(n\)-th finite truncation differs by at most
+\[
+ \bigl(2\eta+\sqrt{\eta r_n}\bigr)\|x\|
+ \quad\hbox{in trace Hilbert norm}.
+ \tag{HADT14}
+\]
+Here \(\|z\|_2\le\|z\|\) uses \(\tau(1)=1\). This gives the finite-stage error budget while retaining both normalization defects explicitly.
+
+**A sharp diffuse example.** Take \(M=L^\infty((0,1])\), Lebesgue trace, and
+\[
+ a_j=1_{(3^{-j},\,3^{-(j-1)}]},\qquad h=k=1.
+ \tag{HADT15}
+\]
+The intervals are disjoint and exhaust \((0,1]\), so both sums in (HADT1) equal one. Both full maps are the identity. Their residuals and tails are
+\[
+ h_n=k_n=1_{(0,3^{-n}]},\quad r_n=3^{-n},\quad
+ B_n(x)=C_n(x)=1_{(0,3^{-n}]}x.
+ \tag{HADT16}
+\]
+Thus \(\|B_n\|=1\) for every finite \(n\), whereas \(\|B_n(1)\|_2=3^{-n/2}\). Equality holds in (HADT6) at \(x=1\). At each stage the largest admissible trace match is the whole residual projection; the chosen next interval uses two thirds of that mass and therefore satisfies the preceding greater-than-half choice rule. The geometric rate is a feature of this example, not a general bound for that rule.
+
+![Residual intervals and exact trace, Hilbert-norm and map-norm errors](assets/hyperfinite-output/defect-exhaustion.svg)
+
+The left panel shows the remaining interval after each finite stage. The right panel uses a base-three logarithmic vertical scale: the residual trace is \(3^{-n}\), the Hilbert error at the unit is \(3^{-n/2}\), and the map norm stays one. These are the exact values in (HADT16). The editable figure source and exact data accompany the diagram.
+
+### Trace expectations and normal isomorphisms
 The finite expectations and bounded trace topology used by the dyadic argument can also be obtained directly. Write a unital finite-dimensional subalgebra as \(B=\bigoplus_r M_{d_r}\), with matrix units \(f_{ij}^{(r)}\), and put \(t_r=\tau(f_{11}^{(r)})>0\). Its expectation is
 \[
  E_B(x)=\sum_{r,i,j}t_r^{-1}\tau(f_{ji}^{(r)}x)f_{ij}^{(r)}.

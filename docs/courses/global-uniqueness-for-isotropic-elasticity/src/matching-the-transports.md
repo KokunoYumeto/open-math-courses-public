@@ -100,7 +100,7 @@ with coefficients restricted to the plane of \(t\). Then (3.1) says \(\mathcal P
 \]
 For each fixed \(x\), \(G(x,\cdot)\) is a holomorphic section of the endomorphism bundle of \(\mathcal E\) over \(\mathcal C\). For each fixed direction, the first equation in (4.1) has at most one smooth solution \(G\) with \(G-\mathrm{Id}\) of compact support.
 
-*Proof.* *Physical transfer and weak limits.* Fix \(\theta\) and \(t_0\in(-2r,2r)\). Proposition 3.1 of [Exact solutions with prescribed leading terms](exact-solutions-with-prescribed-leading-terms.md), for the first pair, gives an interval \(J\ni t_0\), three solutions \((a_0^\nu,b_0^\nu)\) of the first transport equation forming a basis of \(\mathcal E_\theta\) on \(D^2_{2r}\times J\), and exact solutions \(u^\nu_{1,\tau}\) on \(B_{5r}\) with (3.1) of that lesson. We work with one column and omit \(\nu\). By Proposition 4.1 of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md), \(u_{1,\tau}\) has a smooth counterpart \(u_{2,\tau}\) on \(B_{5r}\) with \(L_2u_{2,\tau}=0\) and \(u_{2,\tau}=u_{1,\tau}\) outside \(\overline\Omega\). Put \(V_{j,\tau}=(u_{j,\tau},\operatorname{div}u_{j,\tau})\). Then \(V_{2,\tau}-V_{1,\tau}\) is smooth with support in \(\overline\Omega\subset B_r\). By Lemma 1.1 of An augmented system and a Carleman estimate, \(R_j\) and \(S_j\) vanish at \(V_{j,\tau}\), so \(\mathcal L_jV_{j,\tau}=0\) by (1.3) of that lesson, and
+*Proof.* *Physical transfer and weak limits.* Fix \(\theta\) and \(t_0\in(-2r,2r)\). Proposition 3.1 of [Exact solutions with prescribed leading terms](exact-solutions-with-prescribed-leading-terms.md), for the first pair, gives an interval \(J\ni t_0\), three solutions \((a_0^\nu,b_0^\nu)\) of the first transport equation forming a basis of \(\mathcal E_\theta\) on \(D^2_{2r}\times J\), and exact solutions \(u^\nu_{1,\tau}\) on \(B_{5r}\) with (3.1) of that lesson. We work with one column and omit \(\nu\). By Proposition 4.1 of [Boundary jets and the transfer of solutions](boundary-jets-and-the-transfer-of-solutions.md), \(u_{1,\tau}\) has a smooth counterpart \(u_{2,\tau}\) on \(B_{5r}\) with \(L_2u_{2,\tau}=0\) and \(u_{2,\tau}=u_{1,\tau}\) outside \(\overline\Omega\). Put \(V_{j,\tau}=(u_{j,\tau},\operatorname{div}u_{j,\tau})\). Then \(V_{2,\tau}-V_{1,\tau}\) is smooth with support in \(\overline\Omega\subset B_r\). By Lemma 1.1 of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md), \(R_j\) and \(S_j\) vanish at \(V_{j,\tau}\), so \(\mathcal L_jV_{j,\tau}=0\) by (1.3) of that lesson, and
 \[
 \mathcal L_2(V_{2,\tau}-V_{1,\tau})=(\mathcal L_1-\mathcal L_2)V_{1,\tau}.
 \]
@@ -108,7 +108,7 @@ By Lemma 1.2 of that lesson, \(\mathcal L_1-\mathcal L_2\) has order at most one
 \[
 \begin{aligned}\|F_\tau\|_{L^2}&\le C\bigl(\|E_\tau^{-1}V_{1,\tau}\|_{L^2(B_{4r})}\\&\quad+\|E_\tau^{-1}\nabla V_{1,\tau}\|_{L^2(B_{4r})}\bigr)=O(\tau).\end{aligned}
 \]
-Proposition 3.1 of An augmented system and a Carleman estimate, for the second pair on \(B_{5r}\), and Lemma 2.1(1) of that lesson give
+Proposition 3.1 of [An augmented system and a Carleman estimate](an-augmented-system-and-a-carleman-estimate.md), for the second pair on \(B_{5r}\), and Lemma 2.1(1) of that lesson give
 \[
 \begin{aligned}&\|E_\tau^{-1}(V_{2,\tau}-V_{1,\tau})\|_{H^1_h}\\&\quad\le Ch\,\|F_\tau\|_{L^2}\le C .\end{aligned}\tag{4.2}
 \]

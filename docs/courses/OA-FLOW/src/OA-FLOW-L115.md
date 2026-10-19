@@ -857,3 +857,179 @@ For LCA groups, [normal coefficient cocycle conjugacy](OA-FLOW-L29.md#l29-cocycl
 
 The three inheritance statements in the LCA setting are Takesaki's *Theory of Operator Algebras II*, Chapter X, Lemma 2.7. The arbitrary-group formulation here uses the compact-average construction and the modular input factor \(\Delta_G(t)^{-1}\); the preceding Fourier and Connes-spectrum conclusions retain their LCA hypotheses.
 
+
+<a id="l115-regular-multiplier-domain"></a>
+
+## The exact multiplier domains of the regular action
+
+The compact compressions used above prove that the regular action is integrable. Its bounded domain also has an exact intersection with the multiplication algebra, including complex functions. That equality requires a reverse argument: a decomposition of a multiplication operator into positive integrable operators need not remain inside the multiplication algebra.
+
+Let \(G\) be an arbitrary LCH abelian group with its fixed Haar normalization, let \(\mathcal K=L^2(G)\), and let
+\[
+ (R_s\xi)(r)=\xi(r+s),\qquad \rho_s=\operatorname{Ad}R_s.
+ \tag{RD1}
+\]
+Use the concrete multiplication representation \(h\mapsto M_h\) from the [regular-integrability proof](OA-FLOW-L115.md#dk-regular-integrability). Its \(L^\infty\) classes use the complete locally determined Haar measure of [HR9](OA-FLOW-HR.md#hr-09). Finite-exponent \(L^p\) classes have the isometric outer-regular representatives proved there. The group is not assumed sigma compact or first countable.
+
+Write \(T_\rho\) for the full normal orbit weight constructed in [L114](OA-FLOW-L114.md#ip-average), and put
+\[
+ \begin{aligned}
+ F_\rho&=\{a\in B(\mathcal K)_+:T_\rho(a)\text{ is bounded}\},\\
+ \mathfrak n_\rho&=\{x:T_\rho(x^*x)\text{ is bounded}\},\qquad
+ \mathfrak p_\rho=\operatorname{span}_{\mathbb C}F_\rho.
+ \end{aligned}
+ \tag{RD2}
+\]
+The weight takes values in the entire extended positive cone of the fixed algebra. In particular, a value \(+\infty\,1\) below denotes the extended positive element with infinite-part projection \(1\).
+
+**Theorem.** For every \(h\in L^\infty(G)\),
+\[
+ \begin{aligned}
+ M_h\in\mathfrak p_\rho
+   &\quad\Longleftrightarrow\quad h\in L^1(G),\\
+ M_h\in\mathfrak n_\rho
+   &\quad\Longleftrightarrow\quad h\in L^2(G).
+ \end{aligned}
+ \tag{RD3}
+\]
+For \(h\geq0\), including nonintegrable \(h\),
+\[
+ T_\rho(M_h)=\left(\int_G h\,dm\right)1.
+ \tag{RD4}
+\]
+All intersections in (RD3) are inside the specified multiplication representation.
+
+**Positive functions and the full extended value.** For a compact \(K\subset G\), the function \(h1_K\) is bounded and integrable. Formula (K24), proved with normal vector tests and qualified Haar product integration, gives
+\[
+ T_\rho(M_{h1_K})=\left(\int_K h\,dm\right)1.
+ \tag{RD5}
+\]
+The projections \(q_K=M_{1_K}\), directed by inclusion of all compact sets, increase strongly to \(1\), as already proved before (K24a). Thus
+\(M_{h1_K}=M_{h^{1/2}}q_KM_{h^{1/2}}\) increases strongly to \(M_h\).
+Normality of the full extended weight gives (RD4) by taking these directed suprema.
+
+Here the scalar identity
+\(\int h=\sup_K\int_Kh\) holds even when the integral is infinite. To spell out the use of [HR9](OA-FLOW-HR.md#hr-09), compact inner regularity holds for each locally measurable level set. For a nonnegative simple function below \(h\), approximate the finitely many level sets by compact subsets and take their finite union. This makes its full integral the supremum of its compactly restricted integrals. Taking the supremum over simple functions proves the identity for \(h\). When one level set has infinite measure, choose compact subsets with arbitrarily large finite measure instead. This argument concerns the locally determined convention and does not assert global inner regularity of every Borel set for a different raw Haar measure.
+
+It follows that \(F_\rho\) meets the positive multiplication operators exactly in \(L^1(G)_+\cap L^\infty(G)\). Decomposing the real and imaginary parts of an integrable complex \(h\) into positive and negative parts proves
+\[
+ L^1(G)\cap L^\infty(G)
+ \ \subseteq\ \{h:M_h\in\mathfrak p_\rho\}.
+ \tag{RD6}
+\]
+
+**A uniform coefficient bound for the reverse implication.** Suppose \(x=M_h\in\mathfrak p_\rho\). The gauge and constant-one estimate (IP6)–(IP8) in the [complete integrable-domain proof](OA-FLOW-L114.md#ip-coefficients) give a finite number
+\[
+ Q=q_\rho(x)=
+ \inf_{x=\sum_j c_j a_j,\ a_j\in F_\rho}
+       \sum_j |c_j|\,\|T_\rho(a_j)\|,
+ \qquad
+ \int_G|\omega(\rho_s(x))|\,ds\leq Q\|\omega\|
+ \quad(\omega\in B(\mathcal K)_*).
+ \tag{RD7}
+\]
+The bound is uniform over normal functionals, not just a separate integrability assertion for each one. It holds for this possibly nonpositive \(x\).
+
+Take the positive compact cutoffs \(k_U\) of [L113, (D24)](OA-FLOW-L113.md#l113-averages):
+\[
+ k_U\in C_c(G),\quad k_U\geq0,\quad
+ \int k_U=1,\quad \operatorname{supp}k_U\subset U,
+ \qquad \xi_U=k_U^{1/2}\in L^2(G).
+ \tag{RD8}
+\]
+The index \(U\) runs through all relatively compact identity neighborhoods, ordered by reverse inclusion. The vector \(\xi_U\) has norm one. Its vector functional is normal by [CP6](OA-FLOW-CP.md#oa-flow.cp.6); Cauchy–Schwarz bounds its norm by one, and evaluation at the identity attains one. Since \(\rho_s(M_h)=M_{h(s+\,\cdot\,)}\), define the actual coefficient
+\[
+ c_U(s)=\langle \rho_s(M_h)\xi_U,\xi_U\rangle
+       =\int_G k_U(r)h(s+r)\,dr .
+ \tag{RD9}
+\]
+It is continuous by the already established normal-action continuity. Equations (RD7)–(RD9) give
+\[
+ c_U\in L^1(G),\qquad \|c_U\|_1\leq Q
+ \quad\text{for every }U.
+ \tag{RD10}
+\]
+The integral in (RD9) depends only on the multiplication class of \(h\): translations preserve compact-local null sets, and \(k_U\) has compact support.
+
+**Recovering every compact test.** Fix \(f\in C_c(G)\). Haar substitution \(t=s+r\) and scalar Fubini give
+\[
+ \begin{aligned}
+ \int_G f(s)c_U(s)\,ds
+ &=\int_G h(t)\,(k_U*f)(t)\,dt,\\
+ (k_U*f)(t)&=\int_G k_U(r)f(t-r)\,dr .
+ \end{aligned}
+ \tag{RD11}
+\]
+Only the product of the two compact supports is needed before the substitution; afterward \(t\) lies in their compact sum. On the finitely many open sigma compact cosets meeting those sets, \(h\) has a bounded measurable representative in the completed sigma-finite Haar restriction. [HR3/5/9](OA-FLOW-HR.md#hr-03) supply a Borel representative and the qualified Radon-product Fubini rule. Changing that representative on a compact-local null set changes none of these integrals. No global product-Borel identity or sigma compact exhaustion of \(G\) is used.
+
+By [L24's translation theorem](OA-FLOW-L24.md#oa-flow.grp.translations),
+\[
+ \begin{aligned}
+ \|k_U*f-f\|_1
+ &\leq \int_G k_U(r)\|L_r f-f\|_1\,dr\\
+ &\leq \sup_{r\in U}\|L_r f-f\|_1\longrightarrow0,
+ \qquad (L_rf)(t)=f(t-r).
+ \end{aligned}
+ \tag{RD12}
+\]
+The first inequality follows by the scalar triangle inequality and the same finite-carrier Tonelli rule; \(\int k_U=1\). Norm continuity at zero proves the last limit along the neighborhood net. Because \(h\) is bounded, (RD11)–(RD12) imply
+\[
+ \int f c_U\longrightarrow\int f h.
+\]
+Combining this with (RD10) yields the compact-test inequality
+\[
+ \left|\int_G f h\,dm\right|\leq Q\|f\|_\infty
+ \qquad(f\in C_c(G)).
+ \tag{RD13}
+\]
+This limit is a pairing identity. It assumes neither pointwise convergence of \(c_U\) nor an arbitrary-net version of Fatou's lemma.
+
+**Compact phase tests give global integrability.** Fix a compact \(K\subset G\). Set
+\[
+ g_K(r)=
+ \begin{cases}
+   \overline{h(r)}/|h(r)|,&r\in K,\ h(r)\ne0,\\
+   0,&\text{otherwise}.
+ \end{cases}
+ \qquad |g_K|\leq1 .
+ \tag{RD14}
+\]
+This is a compactly supported \(L^1\) class in the locally determined convention, and
+\(\int h g_K=\int_K|h|\).
+The finite-exponent identification in HR9 and [HR3's density proof](OA-FLOW-HR.md#hr-03) give \(a_n\in C_c(G)\) with
+\(\|a_n-g_K\|_1\to0\). A sequence is legitimate here because only approximation in a normed function space is involved; it is not a countable neighborhood base of \(G\).
+
+Clip the approximants radially:
+\[
+ f_n=\frac{a_n}{\max(1,|a_n|)}\in C_c(G),\qquad
+ \|f_n\|_\infty\leq1,\qquad
+ \|f_n-g_K\|_1\leq2\|a_n-g_K\|_1\longrightarrow0.
+ \tag{RD15}
+\]
+Indeed, where \(|a_n|>1\), the displacement caused by clipping is
+\(|a_n|-1\leq|a_n-g_K|\); elsewhere it is zero. The triangle inequality proves the displayed pointwise bound and its integral.
+
+Apply (RD13) to \(f_n\). Boundedness of \(h\) permits the \(L^1\) limit in the pairing, giving
+\[
+ \int_K|h|\,dm=\lim_n\int h f_n\,dm\leq Q .
+ \tag{RD16}
+\]
+The middle terms can be complex; the conclusion follows from their absolute-value bound \(Q\) and their real nonnegative limit. Taking the supremum over all compact \(K\), with the scalar compact-inner formula proved above, gives
+\[
+ \|h\|_1\leq q_\rho(M_h)<\infty.
+ \tag{RD17}
+\]
+This proves the reverse inclusion in (RD3). For its square-integrable assertion, use
+\(M_h^*M_h=M_{|h|^2}\) and (RD4). Its orbit value is bounded exactly when
+\(\int |h|^2<\infty\). This completes both domain equalities. \(\square\)
+
+<figure style="margin-left:0;margin-right:0">
+<img src="../assets/regular-multiplier-domain/domain-tests.svg" alt="A uniform bound on normal orbit coefficients gives bounded L1 averages. Pairing them with every compact continuous test recovers the original multiplier. Clipped phase tests on arbitrary compact sets then bound its full L1 norm." style="width:100%;max-width:1200px" />
+<figcaption>The reverse inclusion uses a uniform estimate before taking a limit. The coefficients \(c_U\) in (RD9) have \(L^1\) norm at most \(Q=q_\rho(M_h)\). Equations (RD11)–(RD13) pass that bound to every compact continuous test. The clipped phase tests (RD14)–(RD16) bound each compact integral of \(|h|\); compact inner regularity gives (RD17). The boxes describe exact implications for an arbitrary LCA group, not a numerical approximation or a countable exhaustion. <a href="../assets/regular-multiplier-domain/domain-tests.svg">Open the diagram</a>; the SVG is the editable figure source.</figcaption>
+</figure>
+
+**Solved check.** Why is mere integrability of every \(c_U\) insufficient for the last argument?
+
+**Solution.** The bound in (RD13) must be independent of \(U\) to survive the limit. That uniform bound comes from (RD7) and the unit norm of every vector functional. On \(G=\mathbb R\), for example, the functions \(1_{[-n,n]}\) are individually integrable and converge pointwise to \(1\), but their integrals are \(2n\), and \(1\notin L^1(\mathbb R)\). The proof uses the common bound \(Q\) and compact test pairings, rather than drawing an integrability conclusion from pointwise convergence.
+
+The exact intersection \(\mathfrak p_\rho\cap L^\infty(G)=L^1(G)\cap L^\infty(G)\) occurs in Takesaki, *Theory of Operator Algebras II*, [XI.2, proof of Theorem 2.7(iv), printed 336](https://doi.org/10.1007/978-3-662-10451-4). The argument here proves its complex reverse implication through uniform normal coefficients and compact phase tests. The earlier Haar, normal-integration and bounded-domain lessons supply the complete local premises; the citation does not replace them.

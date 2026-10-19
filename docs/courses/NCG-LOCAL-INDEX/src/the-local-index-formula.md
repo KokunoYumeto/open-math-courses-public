@@ -2412,7 +2412,7 @@ The corollary concerns the odd pairing. In an even triple the constant Laurent c
 
 ## 12. Geometric index formulas
 
-The abstract residue formula now has its analytic and algebraic proofs. Continue with Geometric Dirac operators and their index formulas, after the symbol calculus and closed-domain estimates needed for that specialization.
+The abstract residue formula now has its analytic and algebraic proofs. Continue with [Geometric Dirac operators and their index formulas](../hypoelliptic-calculus-and-the-transverse-geometry-of-diffeomorphisms.html#14-geometric-dirac-operators-and-their-index-formulas), after the symbol calculus and closed-domain estimates needed for that specialization.
 
 ## 13. Exercises with complete solutions
 

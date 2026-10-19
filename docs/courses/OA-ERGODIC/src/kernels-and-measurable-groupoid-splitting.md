@@ -218,6 +218,6 @@ where centrality of \(H\) gives the second equality. Cancel the last factor to o
 
 ## Bibliography and scope
 
-Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §3, Exercise 8(a)–(b); supplied PDF page 79. The exact source passage and page image were checked. Its invoked amenability and lifting mechanisms correspond to XIII.4.10 and XIII.3.17; complete local application proofs appear in the linked prerequisite lessons.
+Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §3, Exercise 8(a)–(b), printed p. 59. The amenability and lifting mechanisms are Theorem XIII.4.10 and Theorem XIII.3.17. Their applications are proved in the linked prerequisite lessons.
 
 This lesson solves both parts at the source's countable discrete abelian, ergodic, possibly nonfaithful scope. Its product is an isomorphism on a common invariant conull Borel reduction, preserving source and range counting classes. It also proves the explicitly narrower central-kernel generalization in Proposition 2.2. It does not supply the arbitrary locally compact factor-action localization or the uniform-source cocycle strictification requested in the preceding source Exercise 7.

@@ -1,8 +1,8 @@
 # States, ideals and the smallest tensor norm
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; zero-algebra and forced-unitization arguments by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the respective writing AI. Original text: CC0 1.0.*
 
-The spatial tensor norm has a concrete operator formula. Its minimality is a different assertion: every C*-norm on the same algebraic tensor product must dominate that formula. The difficulty is that a positive algebraic product functional need not be continuous for an arbitrary norm merely because it is continuous for the maximal one.
+The spatial tensor norm has a concrete operator formula. Its minimality is a different assertion: every C\*-norm on the same algebraic tensor product must dominate that formula. The difficulty is that a positive algebraic product functional need not be continuous for an arbitrary norm merely because it is continuous for the maximal one.
 
 We will resolve this using pure states and ideals. Along the way, the same tools explain why tensor products of simple algebras are simple and why a pure state can still describe an entangled pair of systems.
 
@@ -14,15 +14,15 @@ Freely readable treatments are Courtney, Gillaspy and Ismert’s *Notes on C\*-a
 
 We begin with a fact about two commutative algebras. It gives the elementary-tensor estimate needed later without assuming minimality.
 
-**Lemma 1.1.** Every C*-norm on \(C(X)\odot C(Y)\), for compact Hausdorff spaces \(X,Y\), is the supremum norm of the corresponding function on \(X\times Y\).
+**Lemma 1.1.** Every C\*-norm on \(C(X)\odot C(Y)\), for compact Hausdorff spaces \(X,Y\), is the supremum norm of the corresponding function on \(X\times Y\).
 
-**Proof.** Complete for the given norm to obtain a commutative C*-algebra \(E=C(Z)\). Restriction of a character of \(E\) to the two unital subalgebras gives a point of \(X\times Y\). Thus \(Z\) has a continuous map into \(X\times Y\), with compact image \(F\), and the norm of an algebraic tensor is its supremum on \(F\).
+**Proof.** Complete for the given norm to obtain a commutative C\*-algebra \(E=C(Z)\). Restriction of a character of \(E\) to the two unital subalgebras gives a point of \(X\times Y\). Thus \(Z\) has a continuous map into \(X\times Y\), with compact image \(F\), and the norm of an algebraic tensor is its supremum on \(F\).
 
 If \(F\ne X\times Y\), its complement contains a nonempty open rectangle \(U\times V\). Choose nonzero continuous functions supported in \(U\) and \(V\). Their elementary tensor is a nonzero algebraic tensor but vanishes on \(F\), contradicting that the given seminorm is a norm. Hence \(F=X\times Y\). \(\square\)
 
-**Corollary 1.2.** Every C*-norm \(\gamma\) on \(A\odot B\) is a cross norm.
+**Corollary 1.2.** Every C\*-norm \(\gamma\) on \(A\odot B\) is a cross norm.
 
-**Proof.** Its restriction to \(C^*(1,a^*a)\odot C^*(1,b^*b)\) is a C*-norm, so Lemma 1.1 gives
+**Proof.** Its restriction to \(C^*(1,a^*a)\odot C^*(1,b^*b)\) is a C\*-norm, so Lemma 1.1 gives
 \[
 \|a\otimes b\|_\gamma^2
 =\|a^*a\otimes b^*b\|_\gamma
@@ -30,12 +30,12 @@ If \(F\ne X\times Y\), its complement contains a nonempty open rectangle \(U\tim
 \]
 The inclusions of the two factors into the completion are faithful: their restrictions are injective \*-homomorphisms of C\*-algebras, hence isometric. This justifies using the original spectra in Lemma 1.1. \(\square\)
 
-**Theorem 1.3.** If \(X\) is compact Hausdorff and \(B\) is a C*-algebra, then
+**Theorem 1.3.** If \(X\) is compact Hausdorff and \(B\) is a C\*-algebra, then
 \[
 C(X)\otimes_{\max}B=C(X)\otimes_{\min}B=C(X,B)
 \tag{1.1}
 \]
-canonically. Every C*-norm on \(C(X)\odot B\) is this norm.
+canonically. Every C\*-norm on \(C(X)\odot B\) is this norm.
 
 **Proof.** For \(x=\sum_{j=1}^r f_j\otimes b_j\), put \(F(t)=\sum_j f_j(t)b_j\). Its spatial norm is \(\sup_t\|F(t)\|\), by taking the direct sum of point evaluations on \(C(X)\) and a faithful representation of \(B\).
 
@@ -44,7 +44,7 @@ Given \(\varepsilon>0\), choose a finite open cover and subordinate continuous p
 \Big\|f_j-\sum_k f_j(t_k)h_k\Big\|<\varepsilon
 \qquad(1\le j\le r).
 \]
-The maps \(u:C(X)\to\mathbb C^m\), \(u(f)=(f(t_k))_k\), and \(v:\mathbb C^m\to C(X)\), \(v(c)=\sum_k c_kh_k\), are unital completely positive: their matrix amplifications are pointwise positive, and \(u\) is a *-homomorphism. The direct product \(\mathbb C^m\odot B=B^m\) has a unique C*-norm, the largest coordinate norm. Indeed the coordinate embeddings are isometric *-homomorphisms, their units are orthogonal central projections, and the norm of a block-diagonal element is the largest block norm.
+The maps \(u:C(X)\to\mathbb C^m\), \(u(f)=(f(t_k))_k\), and \(v:\mathbb C^m\to C(X)\), \(v(c)=\sum_k c_kh_k\), are unital completely positive: their matrix amplifications are pointwise positive, and \(u\) is a \*-homomorphism. The direct product \(\mathbb C^m\odot B=B^m\) has a unique C\*-norm, the largest coordinate norm. Indeed the coordinate embeddings are isometric \*-homomorphisms, their units are orthogonal central projections, and the norm of a block-diagonal element is the largest block norm.
 
 The commuting-map part of Theorem 4.1 of *Tensor norms and independent systems*, applied inside \(C(X)\otimes_{\max}B\), makes \(v\otimes\mathrm{id}\) contractive for the maximal norms. Consequently
 \[
@@ -53,7 +53,7 @@ The commuting-map part of Theorem 4.1 of *Tensor norms and independent systems*,
 \]
 The projective upper bound shows that this tensor sum tends to \(x\) in the maximal norm as \(\varepsilon\to0\). Hence \(\|x\|_{\max}\le\sup_t\|F(t)\|\), proving (1.1). Partitions of unity also approximate every continuous \(B\)-valued function uniformly by finite tensor sums, so the completion is all of \(C(X,B)\).
 
-Now let \(q:C(X,B)\to E\) be the quotient associated to an arbitrary C*-norm \(\gamma\). Suppose \(0\ne F\in\ker q\). Choose \(t_0\) and \(\delta>0\) with \(\|F(t_0)\|>4\delta\), and an algebraic \(x\) with \(\|x-F\|_\infty<\delta\). Continuity gives a neighborhood \(U\) of \(t_0\) on which \(\|x(t)-x(t_0)\|<\delta\). Choose \(h\in C(X)\), \(0\le h\le1\), \(h(t_0)=1\), supported in \(U\). Then
+Now let \(q:C(X,B)\to E\) be the quotient associated to an arbitrary C\*-norm \(\gamma\). Suppose \(0\ne F\in\ker q\). Choose \(t_0\) and \(\delta>0\) with \(\|F(t_0)\|>4\delta\), and an algebraic \(x\) with \(\|x-F\|_\infty<\delta\). Continuity gives a neighborhood \(U\) of \(t_0\) on which \(\|x(t)-x(t_0)\|<\delta\). Choose \(h\in C(X)\), \(0\le h\le1\), \(h(t_0)=1\), supported in \(U\). Then
 \[
 \|q(hx)\|<\delta,
 \qquad
@@ -94,7 +94,7 @@ We spell out the compact-convex step. If a compact subset \(L\) of a compact con
 
 Apply this with \(L\) the compact weak-* closure of \(K\) in the quotient state space. Every pure quotient state lies in \(L\). Its pullback is a pure state of \(A\), so relative closedness of \(K\) puts it in \(K\). This proves (2.1). Finally, pure states of a quotient separate its elements, because their irreducible GNS representations form a faithful family. Thus an ideal is recovered from its annihilator. \(\square\)
 
-**Lemma 2.2.** Let \(A\subseteq C\) be a unital C*-subalgebra. If a state \(w\) of \(C\) restricts to a pure state \(\varphi\) of \(A\), then
+**Lemma 2.2.** Let \(A\subseteq C\) be a unital C\*-subalgebra. If a state \(w\) of \(C\) restricts to a pure state \(\varphi\) of \(A\), then
 \[
 w(ab)=\varphi(a)w(b)
 \qquad(a\in A,\ b\in A'\cap C).
@@ -105,9 +105,9 @@ w(ab)=\varphi(a)w(b)
 
 A pure state of a unital subalgebra has a pure extension: norm-preserving Hahn–Banach gives a state extension, and the extensions form a nonempty compact face of the state space. An extreme point of that face is extreme in the whole state space. This uses only the compactness and Krein–Milman theorem stated in *Representations and positive functionals*.
 
-## 3. The lower bound for every C*-norm
+## 3. The lower bound for every C\*-norm
 
-**Theorem 3.1 (Takesaki's minimality theorem).** For any C*-norm \(\gamma\) on \(A\odot B\),
+**Theorem 3.1 (Takesaki's minimality theorem).** For any C\*-norm \(\gamma\) on \(A\odot B\),
 \[
 \|x\|_{\min}\le\|x\|_\gamma\le\|x\|_{\max}.
 \tag{3.1}
@@ -122,7 +122,7 @@ A continuous product state has norm one in the completion. Thus \(S\) is relativ
 
 Suppose \(S\) is proper. Its complement contains a nonempty open rectangle \(U\times V\). Enlarge \(U,V\) separately by their unitary translates; the enlarged rectangle still misses \(S\), because \(S\) is invariant. Put \(K_A=P(A)\setminus U\), \(K_B=P(B)\setminus V\). Lemma 2.1 supplies nonzero ideals \(J_A,J_B\) with these annihilators. Choose nonzero positive \(a\in J_A,b\in J_B\). Every pair in \(S\) belongs to \((K_A\times P(B))\cup(P(A)\times K_B)\), so every such product state vanishes at \(a\otimes b\).
 
-Let \(C=C^*(1,a)\subseteq A\). The restriction of \(\gamma\) to \(C\odot B\) is a C*-norm. Theorem 1.3 identifies its completion with \(C\otimes_{\min}B\). Choose a character \(\chi\) of \(C\) with \(\chi(a)>0\), and a pure state \(\psi\) of \(B\) with \(\psi(b)>0\). The state \(\chi\otimes\psi\) is pure: its GNS representation is the irreducible representation \(\pi_\psi\) multiplied by the character \(\chi\). Extend it to a pure state \(w\) of the \(\gamma\)-completion.
+Let \(C=C^*(1,a)\subseteq A\). The restriction of \(\gamma\) to \(C\odot B\) is a C\*-norm. Theorem 1.3 identifies its completion with \(C\otimes_{\min}B\). Choose a character \(\chi\) of \(C\) with \(\chi(a)>0\), and a pure state \(\psi\) of \(B\) with \(\psi(b)>0\). The state \(\chi\otimes\psi\) is pure: its GNS representation is the irreducible representation \(\pi_\psi\) multiplied by the character \(\chi\). Extend it to a pure state \(w\) of the \(\gamma\)-completion.
 
 Its restriction to \(B\) is the pure state \(\psi\). Lemma 2.2 therefore gives \(w=\varphi\otimes\psi\) on algebraic tensors, where \(\varphi=w|_A\). This \(\varphi\) is pure. Otherwise a proper decomposition of \(\varphi\) would decompose \(w\): each positive summand is dominated by a scalar multiple of \(\varphi\), hence its product functional is dominated on algebraic positive squares by the same scalar multiple of \(w\). Algebraic Cauchy–Schwarz then makes those summands continuous for \(\gamma\), so they extend to states. This contradicts purity of \(w\).
 
@@ -134,7 +134,7 @@ a contradiction. Hence \(S=P(A)\times P(B)\).
 
 The direct sum of all pure-state GNS representations is faithful in each factor. Its spatial tensor representation computes \(\|\cdot\|_{\min}\) by Theorem 3.1 of *Tensor norms and independent systems*. Every block is the GNS representation of one product pure state, by (3.1) there. These states extend to the \(\gamma\)-completion, so their GNS representations are contractive for \(\gamma\). Taking the supremum over blocks proves the lower bound. \(\square\)
 
-The proof also shows that every product of pure states is continuous for every C*-norm. Arbitrary product states have the same property, by weak-* approximation with finite convex combinations of pure states and the norm-one inequalities.
+The proof also shows that every product of pure states is continuous for every C\*-norm. Arbitrary product states have the same property, by weak-* approximation with finite convex combinations of pure states and the norm-one inequalities.
 
 ## 4. Pure states and entanglement
 
@@ -152,7 +152,7 @@ If both representations are irreducible, their tensor representation is irreduci
 
 1. At least one of \(A,B\) is commutative.
 2. Every pure state of \(A\otimes_{\min}B\) is a product of pure states.
-3. The minimal C*-norm equals the Banach injective norm
+3. The minimal C\*-norm equals the Banach injective norm
    \[
    \lambda(x)=\sup_{\|f\|,\|g\|\le1}|(f\otimes g)(x)|.
    \]
@@ -177,19 +177,35 @@ Thus every pure state is \(f\otimes g\) with \(\|f\|,\|g\|\le1\). Its value one 
 
 ## 5. Removing units without changing the result
 
-**Lemma 5.1.** Any C*-norm \(\gamma\) on \(A\odot B\) extends to a C*-norm on \(\widetilde A\odot\widetilde B\), where a unit is adjoined only to a factor that lacks one.
+**Lemma 5.1.** Any C\*-norm \(\gamma\) on \(A\odot B\) extends to a C\*-norm on \(\widetilde A\odot\widetilde B\), where a unit is adjoined only to a factor that lacks one.
 
-**Proof.** Faithfully and nondegenerately represent the \(\gamma\)-completion. Recover its commuting representations by Theorem 1.1 of *Tensor norms and independent systems*, and extend each by sending its new unit to the identity. Their product representation \(R\) extends the original one.
+**Proof.** If either factor is the zero algebra, the original algebraic tensor product is zero; the minimal norm on the unitized tensor product supplies an extension. We may therefore assume both factors are nonzero.
+
+Faithfully and nondegenerately represent the \(\gamma\)-completion. Recover its commuting representations by Theorem 1.1 of *Tensor norms and independent systems*, and extend each by sending its new unit to the identity. Their product representation \(R\) extends the original one.
 
 We must verify that it is algebraically faithful. The ideal \(A\odot B\) is an essential algebraic ideal in \(\widetilde A\odot\widetilde B\). Here is the needed justification. If a finite tensor \(z\) annihilates \(A\odot B\), choose finite linearly independent presentations of its coefficients. The maps \(a\mapsto ca\) from \(A\) to \(A\), with \(c\in\widetilde A\), distinguish the coefficients: a coefficient annihilating every \(a\) is zero, since an approximate identity tends to the identity in the multiplier action. The analogous maps in the other factor have the same property. On each finite-dimensional coefficient space finitely many of these evaluation maps jointly are injective. Their tensor products are jointly injective, so \(z=0\).
 
 If \(R(z)=0\), then \(R(zw)=0\) for every \(w\in A\odot B\). Original faithfulness gives \(zw=0\); essentiality gives \(z=0\). Thus \(\|R(z)\|\) is the required extended norm. \(\square\)
 
-Applying the unital minimality theorem to this extension and restricting gives (3.1) for arbitrary C*-algebras. The minimal norm on the unitized pair restricts to the original minimal norm by injectivity of minimal tensoring. The maximal norm also restricts to the original one: every commuting representation extends to the unitizations on its active support, and restriction of a commuting representation gives the opposite inequality.
+Applying the unital minimality theorem to this extension and restricting gives (3.1) for arbitrary C\*-algebras. The minimal norm on the unitized pair restricts to the original minimal norm by injectivity of minimal tensoring. The maximal norm also restricts to the original one: every commuting representation extends to the unitizations on its active support, and restriction of a commuting representation gives the opposite inequality.
 
 Theorem 4.2 also holds for nonzero nonunital algebras. A pure state has a unique unital extension to its unitization, with the same irreducible GNS representation. Product representations extend similarly. The central-character argument and the entangled-vector argument apply in those representations. For the Banach norm, unitization is not needed: \(C_0(X)\otimes_{\min}B=C_0(X,B)\) follows by restricting (1.1) and using compactly supported partitions of unity, and its supremum norm is \(\lambda\).
 
 For the converse, a pure state is still extreme in the dual unit ball. Indeed, if \(\omega=(f+g)/2\) with \(\|f\|,\|g\|\le1\), a positive approximate identity satisfies \(\omega(e_i)\to1\), which forces \(f(e_i),g(e_i)\to1\). Realize \(f\) by vectors with product of norms \(\|f\|\), as in (4.1) of *Tensor norms and independent systems*. The limit of \(f(e_i)\) is their inner product. Equality in Cauchy–Schwarz makes that functional positive of norm one; the same holds for \(g\). Purity then gives \(f=g=\omega\). The compact dual-ball argument therefore expresses \(\omega=f_1\otimes f_2\). Positivity on elementary positive tensors makes the two factors positive after opposite phase rescalings: fix a positive element on which one factor is nonzero to determine the phase of the other, then reverse the roles. Formula (4.1) gives \(\|f_1\|\|f_2\|=1\); rescale by opposite positive constants to make both norms one. They are states, and purity forces both to be pure.
+
+**Corollary 5.2 (forced unitizations).** Write \(A^+=A\oplus\mathbb C\) with
+\[
+(a,\lambda)(c,\mu)=(ac+\lambda c+\mu a,\lambda\mu),
+\qquad (a,\lambda)^*=(a^*,\overline\lambda),
+\]
+even when \(A\) already has a unit, and define \(B^+\) in the same way. Every C\*-norm on \(A\odot B\) extends to a C\*-norm on \(A^+\odot B^+\).
+
+**Proof.** If a factor is zero, use the minimal norm, as in Lemma 5.1. Otherwise that lemma supplies a norm \(\widetilde\gamma\) on \(\widetilde A\odot\widetilde B\). For a nonunital factor, its forced unitization is precisely its usual unitization. For a unital factor the map
+\[
+A^+\longrightarrow A\oplus\mathbb C,
+\qquad(a,\lambda)\longmapsto(a+\lambda1_A,\lambda)
+\]
+is a \*-isomorphism: the displayed product verifies multiplicativity, and the inverse is \((c,\lambda)\mapsto(c-\lambda1_A,\lambda)\). In this decomposition the original \(A\) is the first summand. Distribute the algebraic tensor product over these finite direct sums. Its first summand is \(\widetilde A\odot\widetilde B\); every additional summand is a copy of \(\widetilde A\), \(\widetilde B\), or \(\mathbb C\). Give the first summand the norm \(\widetilde\gamma\), the others their C\*-norms, and the direct sum the maximum of these norms. Multiplication and involution are coordinatewise, so this is a C\*-norm. The original \(A\odot B\) lies in the first summand and has its prescribed norm there. \(\square\)
 
 ## 6. Exercises with solutions
 

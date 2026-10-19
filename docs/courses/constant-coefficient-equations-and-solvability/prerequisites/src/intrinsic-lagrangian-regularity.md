@@ -2,7 +2,22 @@
 
 A phase representation tells us how to produce a singular distribution. An intrinsic definition tells us how to recognize the same object without first choosing a phase. The link is an endpoint regularity condition: applying any sequence of first-order operators whose principal symbols vanish on the Lagrangian leaves the distribution in one fixed Besov space. Near a frequency graph, those operators become frequency derivatives of a symbol.
 
-We use the ordinary pseudodifferential calculus, its properly supported versions, and its Sobolev and Besov mapping theorems from Symbols, operators and Sobolev scales. Coordinate and bundle invariance, conic parametrices and pseudolocality are supplied by Detecting regularity without choosing coordinates. The dyadic endpoint and local frequency Sobolev estimate are also developed in Singularities along a submanifold and smooth boundary passage. Our local geometry and Fourier reduction are in [Phase space and generating families](phase-space-and-generating-families.md) and [Oscillatory distributions and their order](oscillatory-distributions-and-order.md). The authority for the intrinsic results is [Hörmander IV, §25.1].
+The exact earlier programme proofs used below are:
+
+- [L2 completeness and compact smooth density, M6–M8](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md), [Fourier extension, L1–L3](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), and [dyadic endpoints, B1–B6](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md).
+- [Ordinary operator calculus, O0–O6](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md), [coordinate and frame transport, T0–T3 and W1–W5](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), and [matrix parametrices and intrinsic localization, K0–K7](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md).
+- The [phase-space lesson](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-phase-space/phase-space-and-generating-families.md) and [oscillatory-distribution lesson](oscillatory-distributions-and-order.md), together with [frequency coordinates, C0–C5](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
+- [Prescribed-phase reconstruction, F0–F6](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md), [homogeneous symbol transport, H2 and H5–H6](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-canonical-composition/homogeneous-symbol-transport.md), and [Sobolev localization and refinement, S0–S5](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/sobolev-order-refinement.md).
+
+The [proof map](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-intrinsic-regularity/proof-map.json) locates the arguments and their named earlier
+inputs. The primary mathematical source is Lars Hörmander,
+*The Analysis of Linear Partial Differential Operators IV*, §25.1,
+in the [2009 reprint of the 1994 edition](https://doi.org/10.1007/978-3-642-00136-9),
+printed pp. 4–10: Definition 25.1.1, Lemma 25.1.2, Proposition 25.1.3,
+Theorem 25.1.4, Lemma 25.1.6 and the nondegenerate and clean statements
+of Proposition 25.1.5. The arguments below use proper frequency
+regularization, ordinary symbol estimates and explicit Fourier bounds.
+Matrix commutators are kept inside the vanishing ideal.
 
 Throughout, \(D=-i\partial\), \(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\), and inverse Fourier transformation has factor \((2\pi)^{-n}\). Symbols are ordinary \(S^r=S^r_{1,0}\); a homogeneous expansion is required only when stated.
 
@@ -26,7 +41,7 @@ H^s_{\mathrm{loc}}\subset\mathcal B^s
 
 The second inclusion follows by summing the squared block estimates multiplied by \(2^{-2j\varepsilon}\). It does not identify either endpoint with the intersection of the lower Sobolev spaces.
 
-Let \(\Lambda\subset T^*X\setminus0\) be a smooth closed conic Lagrangian. Denote by \(\mathcal J_\Lambda\) the properly supported operators in \(\Psi^1(X;E,E)\) whose order-one principal symbols vanish on \(\Lambda\). If a degree-one homogeneous principal representative \(l_1\) is used, this means \(l_1|_\Lambda=0\). More generally, for ordinary symbols the condition means that restriction of a full order-one symbol to \(\Lambda\) has order zero; this is unchanged by an order-zero change of representative. Every order-zero operator belongs to \(\mathcal J_\Lambda\).
+Let \(\Lambda\subset T^*X\setminus0\) be a smooth closed conic Lagrangian. Denote by \(\mathcal J_\Lambda\) the properly supported operators in \(\Psi^1(X;E,E)\) whose order-one principal symbols vanish on \(\Lambda\). If a degree-one homogeneous principal representative \(l_1\) is used, this means \(l_1|_\Lambda=0\). More generally, for ordinary symbols the condition means that restriction of a full order-one symbol to \(\Lambda\) has order zero; this includes all differentiated conic symbol bounds, not only a pointwise bound, and is unchanged by an order-zero change of representative. Every order-zero operator belongs to \(\mathcal J_\Lambda\).
 
 **Definition 1.1.** A section \(u\in\mathcal D'(X;E)\) lies in \(I^m(X,\Lambda;E)\) if
 
@@ -215,6 +230,8 @@ and the amplitude is supported inside a sufficiently small compact-base cone. Fo
 
 Both assertions follow from the Fourier-symbol reduction and Theorem 3.1, after the base change making \(\Lambda\) a frequency graph. Theorem 2.1 and coordinate invariance then remove that choice.
 
+The clean normalization in (4.2) agrees with the oscillatory lesson. The earlier prescribed-phase companion instead keeps the prefactor \((2\pi)^{-(n+2N)/4}\) for every excess. Thus its amplitude for the same distribution is \((2\pi)^{e/2}a\). This constant changes neither the symbol order nor the proof of reconstruction; it must be retained when comparing the exact leading coefficients. In particular, (4.6) and Exercise 6.4 below use the normalization (4.2).
+
 The extension of amplitudes uses the following symbol fact, also useful for changing the number of base or phase variables.
 
 **Lemma 4.1 (homogeneous pullback).** Let \(\Gamma_j\subset\mathbb R^{n_j}\times(\mathbb R^{N_j}\setminus0)\) be open cones, and let \(F:\Gamma_1\to\Gamma_2\) be smooth and proper. Suppose
@@ -346,7 +363,7 @@ For a fixed \(\mu\) satisfying (5.1), choose \(\varepsilon<\mu+s_0+n/4\). The bo
 
 ## 6. Examples and exercises with complete solutions
 
-**The point mass.** On \(\mathbb R^n\), take \(H=0\). The graph is \(T^*_0\mathbb R^n\setminus0\), and \(\widehat{\delta_0}=1\). Theorem 3.1 gives \(\delta_0\in I^{n/4}\). It is not in any smaller order because a nonzero constant is not a negative-order symbol. Its limiting Besov regularity is \(-n/2\), while its Sobolev regularity is strictly below \(-n/2\).
+**The point mass.** Assume \(n\geq1\). On \(\mathbb R^n\), take \(H=0\). The graph is \(T^*_0\mathbb R^n\setminus0\), and \(\widehat{\delta_0}=1\). Theorem 3.1 gives \(\delta_0\in I^{n/4}\). It is not in any smaller order because a nonzero constant is not a negative-order symbol. Its limiting Besov regularity is \(-n/2\), while its Sobolev regularity is strictly below \(-n/2\).
 
 **Exercise 6.1 (the dimension shift; introductory).** If \(v(\xi)=\langle\xi\rangle^r\), what is the intrinsic order of \(\mathcal F^{-1}(e^{-iH}v)\)? What regularity bound follows immediately?
 
@@ -369,7 +386,7 @@ w(\theta_2/\theta_1).
 \]
 Its order is \(m-1/4-1=m-5/4\), and \((2\pi)^{1/4}\int a_0\,d\theta_2=v(\theta_1)\). A base cutoff equal to one at zero extends the amplitude. The normalized factor in (4.2) is \((2\pi)^{-3/4}\), so integrating out \(\theta_2\) gives the inverse Fourier coefficient \((2\pi)^{-1}\), as required.
 
-**Exercise 6.5 (the strict inequality; advanced).** Construct a symbol \(v\) such that \(\mathcal F^{-1}v\in H^{s_0}\) and \(v\in S^{-s_0-n/2+\varepsilon}\) for every \(\varepsilon>0\), but \(v\notin S^{-s_0-n/2}\). Explain why this prevents replacing the strict inequality in Theorem 5.1 by equality.
+**Exercise 6.5 (the strict inequality; advanced).** Assume \(n\geq1\). Construct a symbol \(v\) such that \(\mathcal F^{-1}v\in H^{s_0}\) and \(v\in S^{-s_0-n/2+\varepsilon}\) for every \(\varepsilon>0\), but \(v\notin S^{-s_0-n/2}\). Explain why this prevents replacing the strict inequality in Theorem 5.1 by equality.
 
 **Solution.** Let \(q=-s_0-n/2\), choose a nonzero smooth bump \(b\), supported in the unit ball with \(b(0)=1\), and choose \(a>3/n\). For sufficiently large integers \(j\), set \(R_j=2^{j^2}\), \(\xi_j=R_je_1\), and define disjoint bumps
 \[
@@ -389,10 +406,12 @@ For \(H=0\), Theorem 3.1 gives membership in \(I^{-s_0-n/4+\varepsilon}\) for ev
 \[
 \widehat{\chi\mathcal F^{-1}v}-v\in S^{q+\varepsilon-1}.
 \]
-Choose \(0<\varepsilon<1\). That remainder is of strictly lower order than \(q\) and cannot cancel the values \(R_j^q j\) at the centers. The compact localization is therefore not in \(I^{-s_0-n/4}\) by Theorem 3.1. Its singular directions lie on the cotangent fiber at zero; thus the asserted endpoint improvement would fail there. Multiplication preserves its \(H^{s_0}\) membership. This proves the need for the strict range.
+Choose \(0<\varepsilon<1\). That remainder is of strictly lower order than \(q\) and cannot cancel the values \(R_j^q j\) at the centers. The compact localization is therefore not in \(I^{-s_0-n/4}\) by Theorem 3.1. To locate the failure at a specific covector, put \(u=\mathcal F^{-1}v\). The angular radii of the bump supports tend to zero and their directions tend to \(e_1\). The oscillatory wavefront proof, with phase \(x\cdot\xi\) and its amplitude essential-support condition, therefore gives \(\operatorname{WF}(u)\subset\{(0,t e_1):t>0\}\): on every other closed angular set the high-frequency amplitude eventually vanishes.
+
+Suppose the endpoint membership held microlocally at \((0,e_1)\). The full-symbol cutoff construction in K7 would give a compact proper \(P\), with full symbol one modulo smoothing on a smaller cone about that covector, such that \(Pu\in I^{q+n/4}\). The difference \(\chi u-Pu\) has no wavefront on that ray by the full-symbol identity and conic smoothing, and none elsewhere by pseudolocality and the preceding wavefront inclusion. It is compact smooth, so its Fourier transform is rapidly decreasing. Theorem 3.1 would then imply \(\widehat{\chi u}\in S^q\), contradicting the center values already proved. Thus the endpoint actually fails at \((0,e_1)\). Multiplication preserves \(H^{s_0}\) by the proved Sobolev localization theorem S3. This proves the need for the strict range. The different bump sequence and complete argument in the earlier S5 remain available as an alternative proof.
 
 ## References
 
-- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, §25.1.
+- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Classics in Mathematics, Springer, 2009, reprint of the 1994 edition, e-ISBN 978-3-642-00136-9, [DOI 10.1007/978-3-642-00136-9](https://doi.org/10.1007/978-3-642-00136-9), §25.1, printed pp. 4–10.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text: CC0 to the extent rights exist; cited human works retain their own terms.*

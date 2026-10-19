@@ -1,14 +1,14 @@
 # Central averaging and maximal ideals
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 In a von Neumann algebra, finite averages of unitary conjugates can approach the centre in norm. They can do so simultaneously for finitely many elements, and successive averages can be arranged to converge. In a finite algebra the central limit is its centre-valued trace. In general the central limits need not be unique, but they still determine the maximal norm-closed ideals.
 
-Prerequisites are [Projections and types](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), Theorem 5.5 on central comparison, the finite/properly infinite decomposition in Theorem 7.2, and Proposition 15.2 on countable absorption. We use the centre-valued trace already constructed in [Traces on von Neumann algebras, Part A](../reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html), Theorem 5.2. We also use spectral projections and [C*-algebra functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html), including closed ideals and commutative Gelfand theory. Each of these programme results has a complete proof under its stated background inputs.
+Prerequisites are [Projections and types](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), Theorem 5.5 on central comparison, the finite/properly infinite decomposition in Theorem 7.2, and Proposition 15.2 on countable absorption. We use the centre-valued trace already constructed in [Traces on von Neumann algebras, Part A](../reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html), Theorem 5.2. We also use spectral projections and [C*-algebra functional calculus](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html), including closed ideals and commutative Gelfand theory. The proofs below use the stated forms of these programme results.
 
 Blackadar’s freely accessible corrected manuscript treats Dixmier averaging and its finite-algebra uniqueness form. The proof below develops the spectral-width estimate, simultaneous convergent averages, converse finiteness test and maximal-ideal correspondence in full. The type III argument retains its sigma-finiteness hypothesis, and Lemma 5.1 retains the closure on the central-ideal side.
 
-Let \(M\) be a von Neumann algebra and \(Z=Z(M)\). No separability or sigma-finiteness is assumed until Section 4. Put
+Let \(M\) be a von Neumann algebra and \(Z=Z(M)\). The zero algebra has only the zero averaging map and no proper maximal ideals, so all central-hull and ideal assertions are immediate there. In the spectral arguments take \(M\ne0\). No separability or sigma-finiteness is assumed until Section 4. Put
 \[
 D(a)=\overline{\operatorname{co}}^{\,\|\cdot\|}
 \{uau^*:u\in\mathcal U(M)\},\qquad
@@ -253,7 +253,7 @@ Apply Theorem 2.2 simultaneously to \(F(axb)\) and \(F(ayb)\). Their central lim
 \]
 Closedness of \(L\), as \(\varepsilon\downarrow0\), gives \(c\in L\).
 
-*Central intersection.* If \(x\in J_L\cap Z\), take \(a=b=1\) to get \(x\in L\). Conversely let \(x\in L\). Identify \(Z=C(S)\) by commutative Gelfand theory, and let \(F\subseteq S\) be the common zero set of \(L\). A closed ideal of \(C(S)\) consists exactly of the functions vanishing on \(F\). One elementary justification is this: away from \(F\), finitely many squared absolute values of elements of \(L\) have a strictly positive sum on any specified compact set; division by that sum and a cutoff approximates every function vanishing on \(F\).
+*Central intersection.* If \(x\in J_L\cap Z\), take \(a=b=1\) to get \(x\in L\). Conversely let \(x\in L\). Identify \(Z=C(S)\) by commutative Gelfand theory, and let \(F\subseteq S\) be the common zero set of \(L\). A closed ideal of \(C(S)\) consists exactly of the functions vanishing on \(F\). To prove this description, let \(f\in C(S)\) vanish on \(F\) and fix \(\varepsilon>0\). If \(K=\{s:|f(s)|\geq\varepsilon\}\) is empty, zero approximates \(f\) within \(\varepsilon\). Otherwise, for each point of the compact set \(K\), some element of \(L\) is nonzero there. A finite subcover gives \(g_1,\ldots,g_n\in L\) with \(h=\sum_j|g_j|^2\in L\) and \(h\geq m>0\) on \(K\). Choose \(\delta>0\) with \(\|f\|\delta/m<\varepsilon\). The element \(fh/(h+\delta)\) belongs to \(L\). Its difference from \(f\) has modulus \(|f|\delta/(h+\delta)\), which is less than \(\varepsilon\) on \(K\) by the choice of \(\delta\), and less than \(\varepsilon\) outside \(K\) because \(|f|<\varepsilon\). Closedness gives \(f\in L\). The reverse inclusion follows from the definition of \(F\).
 
 Fix \(a,b\) and \(c\in D(axb)\cap Z\). At \(s\in F\), \(x(s)=0\). The central positive contraction
 \[
@@ -360,5 +360,5 @@ Thus \((p_n)\in I_{\mathcal V}\). On the other hand \(T_M(1)=1\), so the identit
 
 ## References
 
-- [Blackadar] B. Blackadar, *Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*, freely accessible corrected manuscript. [Author’s PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf).
-- The projection and trace lessons linked above supply the comparison, type and centre-valued-trace results, with proofs and their historical attributions.
+- [Blackadar] B. Blackadar, *Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*, freely accessible corrected manuscript, Theorems III.2.5.18–19 (printed pages 282–283). [Author’s PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf).
+- The projection and trace lessons linked above supply the comparison, type and centre-valued-trace results. [Invariant states and ergodic projections](../reader/invariant-states-and-ergodic-projections.html) develops fixed-point averages, weak compactness of automorphism orbits and tracial-state simplices.

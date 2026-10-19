@@ -8,9 +8,9 @@ Read [Small Gevrey solutions of the full Cauchy problem](small-gevrey-cauchy-sol
 
 The local distributional Holmgren theorem is proved in [Analytic coefficients and one-sided uniqueness](../AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening), Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic \(C^1\) surface vanishes near that surface. The uses of the Holmgren theorem draw on that complete proof.
 
-Every direction in the component of a homogeneous hyperbolic polynomial is a hyperbolic direction, as proved in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1. The following real-carrier realization remains planned in the prerequisite course. Compact real-carrier analytic functionals define hyperfunctions with the same support bound; their restrictions preserve equality off a carrier, compatible local hyperfunctions glue, and constant-coefficient derivatives and the Dirac functional have their usual meanings. The analytic carrier estimates and their application to the equation are proved below.
+Every direction in the component of a homogeneous hyperbolic polynomial is a hyperbolic direction, as proved in [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1. For every compact real carrier, local holomorphic test action, harmonic reconstruction, least real supports and compatibility with derivatives and the Dirac functional are proved in [Harmonic potentials and real carriers](../AN02-L196.html#5-least-real-carriers-and-differentiation), Lemma 1.1 and Theorems 4.2-5.1. Finite carrier decomposition,restriction and arbitrary compatible hyperfunction gluing are proved in [Splitting real carriers and gluing hyperfunctions](../AN02-L197.html#6-gluing-and-the-local-differential-equation), Theorems 3.1,5.1,6.1 and 6.2. Corollary 6.3 realizes the local fundamental equation with the same support. The analytic carrier estimates and their application to the equation are proved below.
 
-Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's *The Analysis of Linear Partial Differential Operators*. The proofs below use the linked prerequisite lessons and the stated planned results.
+Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's *The Analysis of Linear Partial Differential Operators*. The proofs below use the linked complete prerequisite proofs.
 
 ## The test-space topology and the statement
 
@@ -38,7 +38,7 @@ the final locally convex topology for an increasing compact exhaustion whose int
 
 Products with fixed small-class cutoffs and constant-coefficient derivatives preserve these test spaces continuously, with a possibly smaller input scale. For products, apply the proof of ([equation 2 in Small Gevrey classes and compact Fourier decay](small-gevrey-and-compact-fourier-decay.md)) to \(\chi\) at scale \(\varepsilon/2\) and to \(\phi\) using \(q_{K,\varepsilon/2}\). For a derivative of fixed order \(r\), use \((k+r)!\le2^{k+r}k!r!\) and an input scale at most \(\varepsilon/2^\delta\). The fixed remaining factors depend on \(r,\varepsilon\), not on \(k\). Reflection preserves each derivative modulus and replaces \(K\) by \(-K\).
 
-**Theorem.** Relative to the stated planned prerequisites, there is a continuous complex linear functional \(E\in(\mathcal D^{(\delta)})'\) such that
+**Theorem.** There is a continuous complex linear functional \(E\in(\mathcal D^{(\delta)})'\) such that
 \[
  P(D)E=\delta_0,\qquad \operatorname{supp}E\subset C.
  \tag{3}
@@ -49,7 +49,7 @@ The support of a test-space functional is the complement of the union of open se
 
 ## Retarded solutions and their sufficient cone
 
-For a unit vector \(e\in\Gamma\), the planned hyperbolic-direction theorem makes \(F\) hyperbolic in \(e\). For a compact forcing \(f\in\mathcal D^{(\delta)}\), choose
+For a unit vector \(e\in\Gamma\), Theorem 4.1 of [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity) makes \(F\) hyperbolic in \(e\). For a compact forcing \(f\in\mathcal D^{(\delta)}\), choose
 \[
  a<\min_{x\in\operatorname{supp}f}x\cdot e
  \tag{4}
@@ -203,15 +203,15 @@ there, using \(\alpha!\le|\alpha|!\). The factorial-gap argument bounds the anal
  |T_\chi(g)|\le C_{\chi,W}\sup_W|g|.
  \tag{16}
 \]
-If that supremum is infinite the inequality is vacuous; a smaller relatively compact neighborhood supplies the finite bound needed for each local germ. This proves the every-neighborhood carrier estimate. It is the original adapter from (12), a direct analytic carrier estimate.
+If that supremum is infinite the inequality is vacuous; a smaller relatively compact neighborhood supplies the finite bound needed for each local germ. This proves the every-neighborhood carrier estimate. This establishes the required analytic carrier bound.
 
-For a relatively compact open \(X\), choose \(\chi=1\) on a neighborhood of \(\overline X\). The planned real-carrier localization theorem turns \(T_\chi\) into a compactly supported hyperfunction on a bounded larger open set, and then restricts it to \(X\). Different such cutoffs give the same restriction: their difference in (15) is carried by the compact set
+For a relatively compact open \(X\), choose \(\chi=1\) on a neighborhood of \(\overline X\). Theorem 6.2 of [Splitting real carriers and gluing hyperfunctions](../AN02-L197.html#6-gluing-and-the-local-differential-equation) turns \(T_\chi\) into a compactly supported hyperfunction on a bounded larger open set, and then restricts it to \(X\). Different such cutoffs give the same restriction: their difference in (15) is carried by the compact set
 \(\operatorname{supp}(\chi-\chi')\cap\operatorname{supp}E\),
-which misses \(X\), so its restriction is zero. The same argument on overlaps gives compatible local hyperfunctions. The planned hyperfunction localization theorem glues them to \(E_{\mathcal B}\) on the full real space. The carrier bound implies \(\operatorname{supp}E_{\mathcal B}\subset\operatorname{supp}E\subset C\).
+which misses \(X\), so its restriction is zero. The same argument on overlaps gives compatible local hyperfunctions. Theorem 6.1 of the same lesson glues them to \(E_{\mathcal B}\) on the full real space. The carrier bound implies \(\operatorname{supp}E_{\mathcal B}\subset\operatorname{supp}E\subset C\).
 
-The equation survives this realization. Write \(P(D)=\sum_\alpha a_\alpha D^\alpha\). Apply (13) to the compact small test \(\chi g\) and expand \(P(-D)(\chi g)\). The term with no derivative on \(\chi\) is \(T_\chi(P(-D)g)\). Every other term has a factor \((-D)^\beta\chi\), \(\beta\ne0\), and is an analytic functional carried outside \(X\), because \(\chi=1\) near \(\overline X\). Derivatives of analytic functionals preserve their carriers, by Cauchy's inequalities on a slightly smaller neighborhood, so these remaining terms restrict to zero on \(X\). The right side is \(\chi(0)g(0)\), whose restriction is the Dirac hyperfunction on \(X\). The planned derivative/restriction compatibility therefore gives \(P(D)E_{\mathcal B}=\delta_0\) locally, and hence globally. This finishes both conclusions of the theorem. \(\square\)
+The equation survives this realization. Write \(P(D)=\sum_\alpha a_\alpha D^\alpha\). Apply (13) to the compact small test \(\chi g\) and expand \(P(-D)(\chi g)\). The term with no derivative on \(\chi\) is \(T_\chi(P(-D)g)\). Every other term has a factor \((-D)^\beta\chi\), \(\beta\ne0\), and is an analytic functional carried outside \(X\), because \(\chi=1\) near \(\overline X\). Derivatives of analytic functionals preserve their carriers, by Cauchy's inequalities on a slightly smaller neighborhood, so these remaining terms restrict to zero on \(X\). The right side is \(\chi(0)g(0)\), whose restriction is the Dirac hyperfunction on \(X\). The derivative/restriction compatibility in Theorem 6.2 therefore gives \(P(D)E_{\mathcal B}=\delta_0\) locally, and hence globally. This finishes both conclusions of the theorem. \(\square\)
 
-The uniqueness comparisons concern smooth retarded solutions. The hyperfunction conclusion uses the planned analytic-functional localization theorem stated in the prerequisites.
+The uniqueness comparisons concern smooth retarded solutions. The hyperfunction conclusion follows from the complete localization and differential compatibility in [Splitting real carriers and gluing hyperfunctions](../AN02-L197.html#6-gluing-and-the-local-differential-equation), Theorems 6.1-6.2 and Corollary 6.3,with the carrier estimates proved above.
 
 ## Exercises with complete solutions
 

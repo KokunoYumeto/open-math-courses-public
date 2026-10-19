@@ -1,6 +1,6 @@
 # Compact and trace-class operators, the predual of B(H), and the operator topologies
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check; revised and self-checked by that writing AI in October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all five solutions, completed the measure, Fourier and Schatten-extension proofs and corrected the topology hypothesis and examples, October 2026. Public domain (CC0).*
+*AI authors: Claude Opus 5.5 (Anthropic), GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 Let \(H\) be a Hilbert space. The algebra \(B(H)\) of all bounded operators on \(H\) is the dual of a Banach space, and this one fact produces most of the topologies used in the theory of operator algebras. This lesson builds the three Banach spaces behind it: the compact operators \(K(H)\), the trace-class operators \(\mathcal L^1(H)\), and \(B(H)\) itself. The dual of \(K(H)\) is \(\mathcal L^1(H)\), and the dual of \(\mathcal L^1(H)\) is \(B(H)\), just as the dual of the sequence space \(c_0\) is \(\ell^1\) and the dual of \(\ell^1\) is \(\ell^\infty\). On the way we develop the Schmidt decomposition of a compact operator, its singular values, the Hilbert–Schmidt operators and the trace.
 
@@ -800,6 +800,86 @@ By Lemma 7.6, \(D(s(x)+s(y))\in E\), and by solidity \(s(x+y)\in E\). Also \(s(c
 *Step 5: \(J(E(J))=J\).* Let \(x\in J\). Then \(x\) is compact. Write \(x\) as in (2.1). If the family \((e_n)\) is finite, extend it to an orthonormal sequence, which is possible since \(H\) is infinite-dimensional. By Theorem 2.3(b),(d), \(|x|=vx\in J\) and \(|x|=d^e_{s(x)}\). So \(s(x)\in E(J)\) and \(x\in J(E(J))\). Conversely, if \(x\in J(E(J))\), then \(s(x)\in E(J)\), so \(|x|=d^e_{s(x)}\in J\) by Step 1, and \(x=v^*|x|\in J\) by Theorem 2.3(d).
 
 The last two statements of the theorem are Step 1 and Step 5. \(\square\)
+
+**Proposition 7.7A (algebraic sequence ideals and solidity).**
+
+(a) A linear subspace \(E\subseteq c_0\) is solid if and only if it is stable under multiplication by every \(b\in\ell^\infty\). Thus the sequence spaces in Theorem 7.7 are exactly the nonzero permutation-invariant ideals of \(\ell^\infty\) contained in \(c_0\).
+
+(b) Being an algebraic ideal of \(c_0\), invariant under permutations, subsequences and adjoining arbitrary finite prefixes, does **not** suffice. There is even such a self-adjoint ideal invariant under arbitrary insertions of zeros which is not solid and cannot equal \(E(J)\) for any operator ideal \(J\).
+
+**Proof.** For (a), if \(E\) is solid and \(b\) is bounded, then \(|b\lambda|\le\|b\|_\infty|\lambda|\) gives \(b\lambda\in E\). Conversely, if \(|\mu_n|\le|\lambda_n|\), set \(b_n=\mu_n/\lambda_n\) where \(\lambda_n\ne0\), and \(b_n=0\) otherwise. Then \(b\in\ell^\infty\), \(\mu=b\lambda\), and bounded-multiplier stability gives solidity. Apply Theorem 7.7 for the last assertion.
+
+For (b), let \(c\) denote the algebra of convergent complex sequences. Set
+\[
+\begin{gathered}
+m_k=2^{2^k},\qquad a_k=m_k^{-1},\qquad N_0=0,\\
+N_k=\sum_{j=1}^k m_j,\qquad
+B_k=\{N_{k-1}+1,\ldots,N_k\}.
+\end{gathered}
+\]
+Define positive null sequences \(\lambda,\mu\) by
+\[
+\lambda_{N_{k-1}+j}=a_k,\qquad
+\mu_{N_{k-1}+j}=\frac{j}{m_k}a_k
+\quad(1\le j\le m_k).
+\tag{7.1}
+\]
+In particular \(0\le\mu\le\lambda\). The blocks have two properties:
+\[
+\frac{N_{k-1}}{m_k}\longrightarrow0,
+\qquad
+q_k:=\frac{a_{k+1}}{a_k}=\frac1{m_k}\longrightarrow0.
+\tag{7.2}
+\]
+Indeed, \(m_k=m_{k-1}^2\) and
+\(N_{k-1}/m_k\le(k-1)/m_{k-1}\to0\).
+
+For an injection \(\sigma:D\to\mathbb N\), where \(D\subseteq\mathbb N\) is arbitrary, define
+\[
+(T_\sigma x)_n=
+\begin{cases}x_{\sigma(n)},&n\in D,\\0,&n\notin D.\end{cases}
+\]
+This maps \(c_0\) into \(c_0\): the inverse image under an injection of a finite set is finite. Let
+\[
+E=\left\{f+\sum_{i=1}^r b^{(i)}T_{\sigma_i}\lambda:
+f\in c_{00},\ b^{(i)}\in c,\ r<\infty\right\},
+\tag{7.3}
+\]
+where an empty sum is permitted and multiplication is coordinatewise.
+
+*Step 1: the stated ideal and invariance properties.* The set \(E\) is a linear subspace of \(c_0\), contains \(c_{00}\) and \(\lambda\), and is closed under complex conjugation. If \(d\in c_0\), then \(db^{(i)}\in c_0\subset c\), so \(dE\subseteq E\): it is an algebraic ideal of \(c_0\).
+
+It is stable under every \(T_\tau\). To see this for a summand \(bT_\sigma\lambda\), let \(z=\lim b_n\), and define \(b'_n=b_{\tau(n)}\) on the domain of \(\tau\) and \(b'_n=z\) elsewhere. Since \(\tau\) is injective, \(b'\to z\). On the domain
+\(D'=\{n\in\operatorname{dom}\tau:\tau(n)\in\operatorname{dom}\sigma\}\),
+the composition \(\sigma\circ\tau\) is injective, and
+\[
+T_\tau(bT_\sigma\lambda)=b'T_{\sigma\circ\tau}\lambda.
+\]
+Also \(T_\tau f\) has finite support. Permutations, subsequences and insertions of zeros are special cases of these partial injections. Adjoining a finite prefix is a right shift, realized by a partial injection, followed by addition of a member of \(c_{00}\).
+
+*Step 2: the restriction on values within a long block.* Suppose \(\mu\in E\), and fix a representation (7.3) with coefficients \(b^{(i)}\to z_i\). For large \(k\), the block \(B_k\) misses the support of \(f\). Call a coordinate \(n\in B_k\) exceptional if some \(\sigma_i(n)\) belongs to an earlier block. Each \(\sigma_i\) is injective, so there are at most \(rN_{k-1}\) exceptional coordinates in \(B_k\).
+
+At every other coordinate, each \((T_{\sigma_i}\lambda)_n/a_k\) is either \(1\), or has absolute value at most \(q_k\). The latter case includes a missing coordinate of the partial injection. Put
+\[
+\begin{gathered}
+S=\left\{\sum_{i\in A}z_i:A\subseteq\{1,\ldots,r\}\right\},\\
+\delta_k=\max_{1\le i\le r}\ \sup_{n>N_{k-1}}|b^{(i)}_n-z_i|,\\
+\varepsilon_k=r\delta_k+q_k\sum_{i=1}^r|z_i|\longrightarrow0.
+\end{gathered}
+\]
+For \(r=0\), interpret \(S=\{0\}\), \(\delta_k=\varepsilon_k=0\). Replacing each coefficient by its limit costs at most \(r\delta_k\); omitting the terms from later blocks costs at most \(q_k\sum_i|z_i|\). Thus every nonexceptional coordinate satisfies
+\[
+\operatorname{dist}(\mu_n/a_k,S)\le\varepsilon_k.
+\tag{7.4}
+\]
+
+*Step 3: the ramp violates that restriction.* Choose a closed interval \(I=[u,v]\subset(0,1)\) of positive length with \(I\cap S=\varnothing\). Such an interval exists because \(S\) is finite. Its distance \(d\) from \(S\) is positive. Among the grid points \(j/m_k\), at least \((v-u)m_k-2\) lie in \(I\). By (7.2), for all sufficiently large \(k\) this number exceeds \(rN_{k-1}\), and also \(\varepsilon_k<d\). Hence some nonexceptional \(n=N_{k-1}+j\) has \(\mu_n/a_k=j/m_k\in I\), contradicting (7.4).
+
+Therefore \(\mu\notin E\), although \(\lambda\in E\) and \(0\le\mu\le\lambda\). This proves that \(E\) is not solid. The same ramp is a bounded multiplier: \(\mu=d\lambda\) with \(d_{N_{k-1}+j}=j/m_k\in[0,1]\). Thus \(E\) is not an ideal of \(\ell^\infty\). Finally, Step 2 of Theorem 7.7 proves that every \(E(J)\) is solid, so no operator ideal can have \(E(J)=E\). \(\square\)
+
+![The block construction and the finite-set obstruction for a non-solid sequence ideal.](../assets/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies/sequence-ideal-blocks-CE7EB32837DE3CCFC8AAAFC3A939200FC71437AE9AF441271C2E22A9D948FEE2.png)
+
+*Figure 7.1.* Proposition 7.7A uses exact blocks of length \(m_k\) and height \(a_k\). After normalization, the dominated sequence fills the grid \(j/m_k\) in \([0,1]\). A putative representation restricts all but at most \(rN_{k-1}\) coordinates to shrinking neighbourhoods of a fixed finite set \(S\). The lower panel illustrates this restriction for two coefficient limits; the proof treats every finite set of complex limits. [Reproducible figure source](../figures/sequence-ideal-blocks.py). [Vector figure](../figures/sequence-ideal-blocks.svg).
 
 **Example 7.8** (why the doubling operation matters). One may try to describe an ideal \(J\) by the set \(\Sigma(J)=\{s(x):x\in J\}\) of decreasing sequences alone. This set is hereditary (a decreasing sequence below a member is a member) and closed under addition. These two properties do not suffice. Let \(\Sigma\) be the set of decreasing nonnegative sequences \(\alpha\) with \(\alpha_n\le C2^{-n}\) for some \(C\). It is hereditary and closed under addition, but \(\{x\in K(H):s(x)\in\Sigma\}\) is not closed under addition. Indeed, let \(\xi\) and \(\eta\) be orthonormal sequences with \(\xi_n\perp\eta_m\) for all \(n,m\), and \(\lambda_n=2^{-n}\). Then \(s(d^\xi_\lambda)=s(d^\eta_\lambda)=\lambda\in\Sigma\), while \(d^\xi_\lambda+d^\eta_\lambda\) has each eigenvalue \(2^{-n}\) twice, so \(s_{2n}(d^\xi_\lambda+d^\eta_\lambda)=2^{-n}\), which is not \(O(2^{-2n})\). The missing condition is closure under \(D\), which Theorem 7.7 obtains from symmetry and solidity (Lemma 7.6).
 

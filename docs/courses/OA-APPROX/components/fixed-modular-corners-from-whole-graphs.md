@@ -177,4 +177,4 @@ For the balanced matrix weight of BC1, its diagonal fixed projection is \(E_{ii}
 
 For the modular comparison in [MG2](../../OA-FLOW/OA-FLOW-MG.html#oa-flow.mg.2), FC1–5 supply the fixed-corner restriction step. For [balanced weights, BC1–3](../../OA-FLOW/OA-FLOW-BC.html#oa-flow.bc.1), FC5 supplies the exact diagonal and finite-submatrix restrictions. The [all-weight intersection in MG0–4](../../OA-FLOW/OA-FLOW-MG.html#oa-flow.mg.4) also uses its finite-ideal filters, every-weight comparison and type III corner transport; it retains all faithful normal semifinite weights and its stated separable-predual factor scope.
 
-Return to the periodic CAR application.
+[Return to the periodic CAR application](../src/constant-car-states-and-the-periodic-core.md).

@@ -1,16 +1,16 @@
 # Gaussian models and amenable towers
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it, under the stated prerequisites. Original text and figures are public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.*
+*Mathematical exposition and figures by GPT-6.1 Sol (OpenAI); source comparison, prerequisite exposition and the finite covering proof by GPT-6 Astra (OpenAI). Original programme expression is CC0; cited human works retain their rights.*
 
 ## Introduction
 
 A cocycle can be corrected along the levels of a tower. The remaining error sits at its boundaries and on the uncovered part of the space. For an infinite amenable group, finite shapes with small boundaries therefore replace the finite averaging projections of the preceding lesson.
 
-We construct those towers inside an asymptotic centralizer, while keeping a prescribed invariant coefficient algebra fixed. First, independent orbit copies give bounded character moments with a classical Gaussian limit. We realize the limit in the same centralizer and obtain a free probability-preserving action on an abelian subalgebra. A measurable packing rule and a descending hierarchy of Følner shapes then give finite disjoint projection towers with arbitrarily small weighted boundaries. Finally, the towers correct every unitary cocycle in the prescribed relative commutant.
+We construct those towers inside an asymptotic centralizer, while keeping a prescribed invariant coefficient algebra fixed. First, independent orbit copies give bounded character moments with a classical Gaussian limit. We realize the limit in the same centralizer and obtain a free probability-preserving action on an abelian subalgebra. There are two routes to finite disjoint projection towers with arbitrarily small weighted boundaries. Sections 5–6 use a measurable packing rule and a descending hierarchy of Følner shapes. Section 6A starts with finite classes exhausting the orbit relation: an exact boundary identity, a bound on the mass of bad classes and a finite selection of good shapes give the same tower conclusion. Finally, the towers correct every unitary cocycle in the prescribed relative commutant.
 
 Prerequisites are [Independent copies of orbit algebras](independent-copies-of-orbit-algebras.md), Theorem 1.1 and Corollary 8.1, and Central sequence algebras and exact lifts: Proposition 2.1, Theorem 3.1, Lemma 4.1, Theorem 5.1 with both endpoints equal to 1, and Theorem 6.1. Their centralizer lifting and normal tracial GNS foundations retain their stated hypotheses, including arbitrary separable-predual factors and every free ultrafilter. Section 8 proves the exact-covariance weighted-boundary calculation directly. We use the finite Følner criterion as the definition of amenability for the countable groups considered here.
 
-The tensor-tracial limit is compared with [Kuperberg], Section 3. The measurable packing method is treated in [Conley et al.], Lemmas 2.3, 3.3 and 3.4. We prove the bounded Gaussian realization and the finite near-covering estimates below, including the passage to projection towers with fixed coefficients. The conclusion is cohomology in the asymptotic centralizer; action absorption on the original factor requires a further argument.
+The tensor-tracial limit is compared with [Kuperberg], Section 3. The measurable packing method is treated in [Conley et al.], Lemmas 2.3, 3.3 and 3.4. The paragraph preceding their Lemma 3.4 credits the probability-measure version to Ornstein–Weiss; that classical ancestry also applies to the method in Sections 5–6. The finite-relation route uses [Invariant means on measured relations](../../OA-ERGODIC/reader/invariant-means-on-measured-relations.html#6-increasing-finite-relations), Theorem 6.1 and Corollary 6.2, whose hyperfiniteness construction follows the Connes–Feldman–Weiss theorem [CFW]. We prove the bounded Gaussian realization and the finite near-covering estimates below, including the passage to projection towers with fixed coefficients. The conclusion is cohomology in the asymptotic centralizer; action absorption on the original factor requires a further argument.
 
 ## 1. The setting and the precise construction
 
@@ -18,7 +18,7 @@ Let \(M\) be a factor with separable predual, and \(F=M_\omega\) its asymptotic 
 
 Let \(Q\) be a countable discrete group. Fix automorphisms \(\beta_{g}\) of \(M\) inducing a genuine trace-preserving action \(\gamma\) of \(Q\) on \(F\). The \(\beta_{g}\) themselves need not form an action on \(M\). Suppose \(\gamma_{g}\) is nontrivial for every \(g\) other than the identity. Let \(P\) be a countably generated invariant unital von Neumann subalgebra of \(F\), and \(D=P^\prime\cap F\). We use the complete independent-copy theorem and its countably many copies, the independent-copy lesson, Theorem 1.1 and Corollary 8.1, with their exact hypotheses.
 
-For an amenable \(Q\) we use its finite Følner criterion: given finite \(K\subset Q\) and \(b>0\), there is nonempty finite \(S\subset Q\) with \(|kS\triangle S|<b|S|\) for every \(k\in K\). A right translate can arrange that \(S\) contains the identity; it preserves these left-invariance inequalities. This is the only group amenability input below.
+For an amenable \(Q\) we use its finite Følner criterion: given finite \(K\subset Q\) and \(b>0\), there is nonempty finite \(S\subset Q\) with \(|kS\triangle S|<b|S|\) for every \(k\in K\). A right translate can arrange that \(S\) contains the identity; it preserves these left-invariance inequalities. Sections 5–6 use this finite criterion directly. Section 6A uses the programme hyperfiniteness theorem, which is also derived from this criterion, with its stated measure-theoretic and functional-analytic foundations.
 
 **Theorem 1.1.** Under these foundations, \(F\) contains a countably generated \(\gamma\)-invariant abelian von Neumann subalgebra \(A\subset D\), whose probability-space action is essentially free. If \(Q\) is amenable, then for every finite \(K\subset Q\) and \(\epsilon>0\), there are finitely many nonempty finite shapes \(R_i\subset Q\) and projections \(E_{i,s}\in D\), for \(s\in R_i\), such that all these projections are pairwise orthogonal,
 
@@ -42,7 +42,7 @@ and both weighted boundary masses are less than \(\epsilon\) for every \(g\) in 
 
 All levels in one shape have the same trace. Distinct shapes need not have equal base traces. The internal covariance defects are exactly zero. If desired, each shape can be reanchored to contain the identity, without changing the inequalities.
 
-The theorem is proved in Sections 2–7. Section 8 derives exact amenable unitary cohomology, keeping the given cocycle and prescribed coefficients fixed.
+The theorem is proved by Sections 2–4, either Sections 5–6 or Section 6A, and Section 7. Section 8 derives exact amenable unitary cohomology, keeping the given cocycle and prescribed coefficients fixed.
 
 ## 2. Independent copies have a classical Gaussian limit
 
@@ -320,6 +320,59 @@ The normality assertion follows from unitary conjugation of the GNS von Neumann 
 
 ## 5. A measurable packing rule with a quantitative stopping condition
 
+The elementary averaging mechanism appears in [Ornstein–Weiss 1980], p.163. That research announcement states the tower theorems but defers their detailed proofs. The finite lemma below is proved here; the measurable selection and successive-shape estimates then require their own arguments.
+
+**Lemma 5.0 (averaging and disjoint retained pieces).** Let \((X,\mu)\) be a probability space, and let \(E_1,\ldots,E_N\) be measurable sets satisfying
+\[
+\begin{gathered}
+\sum_{i=1}^N1_{E_i}=m\quad\text{almost everywhere},\\
+m>0.
+\end{gathered}
+\tag{5.0a}
+\]
+For every measurable \(A\), some positive-measure \(E_i\) satisfies
+\[
+\frac{\mu(E_i\cap A)}{\mu(E_i)}\leq\mu(A).
+\tag{5.0b}
+\]
+For each \(0<a<1\), one can select some of the \(E_i\), with pairwise disjoint measurable subsets \(F_i\subseteq E_i\), such that
+\[
+\begin{aligned}
+\mu(F_i)&>(1-a)\mu(E_i),\\
+\mu\left(\bigcup F_i\right)&\geq a.
+\end{aligned}
+\tag{5.0c}
+\]
+The union of the retained subsets equals the union of the selected full sets.
+
+*Proof.* Integrating (5.0a), first on \(X\) and then on \(A\), gives
+\[
+\begin{aligned}
+\sum_i\mu(E_i)&=m,\\
+\sum_i\mu(E_i\cap A)&=m\mu(A).
+\end{aligned}
+\tag{5.0d}
+\]
+Discard zero-measure sets. The ratios in (5.0b), weighted by \(\mu(E_i)/m\), have weighted average \(\mu(A)\). At least one ratio is no larger than that average.
+
+For the second assertion inspect the remaining sets in their given finite order. Initially let \(U=\varnothing\). Accept \(E_i\) precisely when
+\[
+\mu(E_i\cap U)<a\mu(E_i).
+\tag{5.0e}
+\]
+When accepting it, retain \(F_i=E_i\setminus U\), then replace \(U\) by \(U\cup E_i\). Otherwise leave \(U\) unchanged. Each retained set has the strict size in (5.0c), and all retained sets are disjoint. At every step their union equals the union of the accepted full sets.
+
+Write \(U_*\) for the final union. For a rejected set, its overlap with the coverage at the time of rejection was at least \(a\mu(E_i)\); subsequent coverage can only increase. For an accepted set, \(E_i\subseteq U_*\). Thus every \(i\) satisfies
+\[
+\mu(E_i\cap U_*)\geq a\mu(E_i).
+\tag{5.0f}
+\]
+Summing this inequality and applying (5.0d) to \(A=U_*\) yields \(m\mu(U_*)\geq am\). Division by \(m>0\) proves the coverage assertion. The proof permits atoms and unequal set measures. The parameter \(a\) is strictly between zero and one, so the first positive-measure set is accepted. \(\square\)
+
+The constant multiplicity in (5.0a) supplies the weighted average. Covering the space with arbitrary multiplicities need not give (5.0b). For example, give three points masses \(1/2,1/4,1/4\), let \(A\) be the first singleton, and let the two covering sets each contain the first point and one of the other points. Both overlap ratios are \(2/3>\mu(A)=1/2\).
+
+For an action on a general standard probability space, the family of all point-orbit tiles is not a finite measured cover of this kind. We use Borel colors to select disjoint levels, then integrate the resulting pointwise coverage inequality. Those two steps are established next.
+
 We now work on any standard probability space with a free Borel probability-preserving action of \(Q\). Write \(sx=T_s(x)\). Fix a nonempty finite shape \(S\) containing the identity and \(0<a<1\). For any measurable previously covered set \(U_0\), we select countably many center sets \(B_c\) and enlarge \(U_0\) by their full \(S\)-tiles. Each new tile keeps at least \((1-a)|S|\) previously uncovered points; all the kept points are disjoint. The coloring and selection mechanism can be compared with [Conley et al.], Lemmas 2.3 and 3.3. We give the countable-color construction and its measure estimate explicitly.
 
 First partition \(X\) into countably many Borel colors \(C_c\) such that \(Sx\) and \(Sy\) are disjoint for distinct points of the same color. Choose a countable Borel separating family of sets, with binary codes separating all points. The finite forbidden-neighbor set is \(L=S^{-1}S\setminus\{e\}\). Freeness gives \(lx\ne x\) for all \(l\in L\). At \(x\) choose the least \(n\) for which its first \(n\) code bits differ from those of every \(lx\). Color \(x\) by this length and its bit prefix. This is a countable Borel coloring. If adjacent points \(x,y=lx\) had the same color, that prefix would both agree and differ. An overlap \(sx=ty\) with \(x\ne y\) gives \(y=t^{-1}sx\), precisely such a neighbor. This proves the separation of full tiles.
@@ -380,6 +433,34 @@ If each summand on the right is at most \(d/(1-a)\), this proves
 \]
 
 The gain in (5.6) is independent of the cardinality of \(S\). Controlling old-coverage invariance is the reason for the descending hierarchy in the next section.
+
+The integral estimate also has an exact form before imposing the uniform bound in (5.5). Define the mean incoming boundary of the old coverage by
+\[
+\partial_S(U_0)
+=\frac1{|S|}\sum_{s\in S}\mu(s^{-1}U_0\setminus U_0).
+\tag{5.7}
+\]
+Integrating (5.4) over \(X\setminus U_0\), and separating old and new coverage, gives
+\[
+\begin{aligned}
+a\mu(X\setminus U_0)
+&\leq\frac1{|S|}\sum_{s\in S}
+  \mu(s^{-1}U_\infty\setminus U_0)\\
+&\leq\partial_S(U_0)+\mu(C).
+\end{aligned}
+\tag{5.8}
+\]
+For the second line, the old part is exactly (5.7), and each new part has measure at most \(\mu(s^{-1}C)=\mu(C)\). The first line remains valid when the complement is null. Hence
+\[
+\begin{aligned}
+1-\mu(U_\infty)
+&\leq(1-a)(1-\mu(U_0))\\
+&\qquad+\partial_S(U_0).
+\end{aligned}
+\tag{5.9}
+\]
+Equation (5.6) is the consequence of \(\partial_S(U_0)\leq d/(1-a)\). This calculation needs neither a Banach-density argument nor a passage from a finite point-orbit cover to a measure-space cover.
+
 
 ## 6. A finite hierarchy covers almost all the space
 
@@ -468,9 +549,103 @@ For the first bound, targets outside \(S_j\) are counted by \(gS_j\setminus S_j\
 
 This proves a finite measurable collection of disjoint towers, with all its shapes approximately invariant and uncovered mass below \(\zeta\). The descending-shape method is developed in [Conley et al.], Lemma 3.4. Equations (5.5)–(6.5) provide the probability-measure estimate needed here, using full-tile invariance and disjoint retained pieces. Theorem 3.6 of that paper additionally removes the residual set modulo null sets; our finite near-covering proof is complete at (6.8).
 
+## 6A. Towers from finite orbit relations
+
+The input for this route is an increasing exhaustion of the orbit relation by finite equivalence relations. [Invariant means on measured relations](../../OA-ERGODIC/reader/invariant-means-on-measured-relations.html#6-increasing-finite-relations), Theorem 6.1 and Corollary 6.2, supplies this exhaustion for a countable amenable probability-preserving action, without an ergodicity hypothesis. Its proof passes from the finite Følner criterion to an invariant mean, constructs disjoint finite patches, and takes tail intersections of finite relations. It does not use this lesson's Gaussian model or projection towers. Its measure-theoretic, Borel and Hahn–Banach foundations remain prerequisites. The classical hyperfiniteness source is [CFW], Lemma 9 and Theorem 10.
+
+**Proposition 6A.1.** Let a countable group \(Q\) act freely by Borel probability-preserving transformations \(T_g\) on a standard probability space \((X,\mu)\). Suppose its orbit relation is the increasing union of finite Borel equivalence relations \(E_n\) on an invariant conull Borel set. For finite \(K\subset Q\) and \(0<\kappa,\zeta<1\), there are finitely many nonempty finite shapes \(R_i\subset Q\), each containing the identity, and Borel bases \(B_i\), such that all levels \(T_rB_i\), \(r\in R_i\), are pairwise disjoint, their union has measure greater than \(1-\zeta\), and
+
+\[
+ \begin{aligned}
+ d_g(R_i)&:=|\{r\in R_i:gr\notin R_i\}|,\\
+ d_g(R_i)&<\kappa|R_i|
+       \quad(g\in K\cup K^{-1}).
+ \end{aligned}
+ \tag{6A.1}
+\]
+
+All levels of a given tower have measure \(\mu(B_i)\). In particular, this gives both oriented boundary estimates needed in (7.2).
+
+*Proof.* Restrict to the invariant conull set; it still has total measure one. Put \(H=K\cup K^{-1}\). For every fixed \(g\), the Borel sets
+
+\[
+ D_{n,g}=\{x:(x,T_gx)\notin E_n\}
+ \tag{6A.2}
+\]
+
+decrease to the empty set. Continuity of probability from above gives \(\mu(D_{n,g})\to0\). Finiteness of \(H\) therefore permits a single \(n\) with
+
+\[
+ \sum_{g\in H}\mu(D_{n,g})<\kappa\zeta/2.
+ \tag{6A.3}
+\]
+
+If \(H\) is empty, any \(n\) works. Fix this \(n\) and write \(E=E_n\). No uniform bound on the sizes of its finite classes is needed.
+
+Choose a countable Borel family separating the points of \(X\), and encode its membership values by a Borel injection \(c:X\to\{0,1\}^{\mathbb N}\). Lexicographic comparison of two distinct codes is Borel: it is a countable union of conditions on their first differing coordinate. Every nonempty finite set of codes has a unique least member. Define the root set \(B\) by
+
+\[
+ \begin{gathered}
+ x\in B\quad\Longleftrightarrow\\
+ c(x)\leq_{\mathrm{lex}}c(T_hx)\\
+ \text{whenever }(x,T_hx)\in E,\quad h\in Q .
+ \end{gathered}
+ \tag{6A.4}
+\]
+
+This is a countable intersection of Borel conditions. It selects exactly one point from every \(E\)-class.
+
+For \(b\in B\), use the free action to label its class:
+
+\[
+ \begin{aligned}
+ R(b)&=\{h\in Q:(b,T_hb)\in E\},\\
+ B_R&=\{b\in B:R(b)=R\}.
+ \end{aligned}
+ \tag{6A.5}
+\]
+
+Freeness makes the map \(h\mapsto T_hb\) injective. Thus \(R(b)\) is finite, nonempty, and contains the identity. For each fixed finite \(R\), its base \(B_R\) is Borel, by imposing the membership condition in (6A.5) for every \(h\in Q\). There are only countably many finite subsets of \(Q\).
+
+The levels \(T_rB_R\), indexed by \(R\) and \(r\in R\), partition \(X\). Indeed, a point belongs to its own class's unique root tower. If two levels share a point, their roots are \(E\)-equivalent and hence equal; freeness then makes their labels equal. Each level is Borel because \(T_r\) has a Borel inverse. Probability preservation gives
+
+\[
+ \begin{aligned}
+ \mu(T_rB_R)&=\mu(B_R),\\
+ \sum_R |R|\mu(B_R)&=1.
+ \end{aligned}
+ \tag{6A.6}
+\]
+
+For \(x=T_rb\) with \(b\in B_R\), the pair \((x,T_gx)\) belongs to \(E\) precisely when \(gr\in R\). This uses transitivity of \(E\) and the action law \(T_gT_r=T_{gr}\); the label is \(gr\), not \(rg\). Consequently the bad-edge set in (6A.2) is the disjoint union of levels with missing target, and
+
+\[
+ \mu(D_{n,g})=\sum_R d_g(R)\mu(B_R).
+ \tag{6A.7}
+\]
+
+Call a shape bad if \(d_g(R)\geq\kappa|R|\) for at least one \(g\in H\). Summing over bad shapes, and then over the finite set \(H\), gives
+
+\[
+ \begin{aligned}
+ \sum_{R\ {\rm bad}}|R|\mu(B_R)
+ &\leq \kappa^{-1}
+       \sum_{g\in H}\sum_R d_g(R)\mu(B_R)\\
+ &=\kappa^{-1}\sum_{g\in H}\mu(D_{n,g})\\
+ &<\zeta/2.
+ \end{aligned}
+ \tag{6A.8}
+\]
+
+This estimate controls the mass of whole bad classes. A small average edge defect alone would not say that every class has a small relative boundary.
+
+The countable union of good-shape towers therefore has mass greater than \(1-\zeta/2\). By convergence of the nonnegative series in (6A.6), select finitely many good shapes whose omitted good towers have total mass less than \(\zeta/2\). Discard any zero-measure bases. Call the selected shapes and bases \(R_i,B_i\). Their residual is the disjoint union of the bad towers and the omitted good towers, and hence has measure less than \(\zeta\). The selected shapes satisfy (6A.1), and all levels are still disjoint and have the asserted equal measures. This proves the proposition. □
+
+This argument allows finite groups, atoms and nonergodic actions. The finite classes themselves may have unbounded sizes. It is existential: the exhaustion gives no claimed numerical bound on the required stage or shape sizes. Once the action, \(K,\kappa,\zeta\), exhaustion and root coding are fixed, the finite shapes can be fixed before any later cocycle or finite list of normal functionals is supplied.
+
 ## 7. Projection towers and their exact weighted bounds
 
-Use the free Gaussian model \(A\) of Sections 2–4, and apply Sections 5–6 on its probability space. List the finitely many retained shapes and bases as \(R_i,B_i\). Set
+Use the free Gaussian model \(A\) of Sections 2–4, and apply either Sections 5–6 or Proposition 6A.1 on its probability space. In the latter case, the cited programme Corollary 6.2 supplies the hyperfinite orbit relation. Countability lets us intersect its invariant conull domain with the invariant conull free domain from Section 4. List the finitely many retained shapes and bases as \(R_i,B_i\). Set
 
 \[
  \begin{aligned}
@@ -480,9 +655,9 @@ Use the free Gaussian model \(A\) of Sections 2–4, and apply Sections 5–6 on
  \tag{7.1}
 \]
 
-The disjointness in Section 6 makes these projections an exact finite partition after adding \(E_0\). Normality of \(J\) makes their traces equal to their measures. Equivariance gives \(\gamma_g(E_{i,s})=J(1_{gsB_i})=E_{i,gs}\) whenever both labels belong to \(R_i\). Every internal covariance defect is zero.
+The disjointness in Section 6 or Proposition 6A.1 makes these projections an exact finite partition after adding \(E_0\). Normality of \(J\) makes their traces equal to their measures. Equivariance gives \(\gamma_g(E_{i,s})=J(1_{gsB_i})=E_{i,gs}\) whenever both labels belong to \(R_i\). Every internal covariance defect is zero.
 
-Since each action map preserves measure, \(\tau(E_{i,s})=\mu(B_i)\) for every label in one shape. The weighted boundary estimates, using (6.8), are
+Since each action map preserves measure, \(\tau(E_{i,s})=\mu(B_i)\) for every label in one shape. The weighted boundary estimates, using (6.8) or (6A.1), are
 
 \[
  \begin{aligned}
@@ -500,6 +675,10 @@ These are nonrelative towers when \(P\) is the scalar algebra, and towers in the
 ![Gaussian movement, retained levels and the proved coverage bound](../figures/amenable-gaussian-towers.svg)
 
 Figure 1. The upper panel shows the bounded character moments of (2.3), the equivariant normal embedding (4.5), and the reflection example \(\delta=G(-f)-G(f)\), with \(\|f\|=1\). Its normal density has variance 4. The density at zero is positive, but the singleton zero has probability zero; this is the freeness mechanism of Section 4. The middle panel uses the actual integer labels in Exercise 9.7. Hatched cells are deleted labels. The two oriented boundary sets give the exact ratio \(3/18\) in (6.7). This is one retained shape. The lower panel plots the proved recurrence bound (6.5) for \(a=1/4\) and \(d=3/1600\). The curve bounds uncovered mass; it is not a sample from a particular action. The hierarchy in (6.2)–(6.4) establishes the bound. The [editable figure source](../figures/draw_amenable_gaussian_towers.py) uses exactly these coordinates.
+
+![Finite orbit classes, their oriented boundaries and the mass of discarded classes](../figures/finite-relation-towers.svg)
+
+Figure 2. A concrete free translation action of the cyclic group of order 100 on itself, with uniform probability, is partitioned into classes of sizes 4, 48 and 48. Root labels give shapes \(\{0,\ldots,3\}\) and \(\{0,\ldots,47\}\); the second base has two points. Each class has one outgoing and one incoming missing edge for translation by one. With \(\kappa=1/4\), only the four-point shape is bad. The exact residual is \(4/100\), while (6A.8) bounds it by \(24/100\). The diagram shows these exact finite counts, not an estimate on every amenable action. Exercise 9.9 gives the full calculation. The [editable figure source](../figures/draw_finite_relation_towers.py) retains the class lengths and counts.
 
 ## 8. Exact amenable cohomology with fixed coefficients
 
@@ -676,8 +855,31 @@ This is a cohomology theorem in the asymptotic centralizer. Turning it into mode
  \tag{9.8}
 \]
 
+**Exercise 9.9 (whole-class mass and edge mass).** Let \(Q=\mathbb Z/100\mathbb Z\) act on itself by translation, with uniform measure. Partition it into the intervals \(\{0,\ldots,3\}\), \(\{4,\ldots,51\}\), and \(\{52,\ldots,99\}\). Take their least representatives as roots, \(H=\{1,-1\}\), and \(\kappa=1/4\). Compute the bases, both bad-edge masses, the actual discarded mass and the bound (6A.8).
+
+*Solution.* The root 0 has shape \(R_4=\{0,\ldots,3\}\); roots 4 and 52 have the common shape \(R_{48}=\{0,\ldots,47\}\). Thus the two base measures are \(1/100\) and \(2/100\). In each shape the outgoing boundary for \(+1\) is its last label and that for \(-1\) is its first label. Both counts equal one. Each bad-edge mass is therefore \(1/100+2/100=3/100\), in agreement with the three interval endpoints in each orientation. The four-point shape has boundary ratio \(1/4\), so it is bad at the stated strict threshold; the other has ratio \(1/48<1/4\). Deleting the first tower removes \(4/100\), whereas the general bound is
+
+\[
+ \begin{aligned}
+ \kappa^{-1}\sum_{g\in H}\mu(D_g)
+ &=4(3/100+3/100)\\
+ &=24/100.
+ \end{aligned}
+ \tag{9.9}
+\]
+
+The retained two-base tower covers \(96/100\). Equal boundary counts for the two shapes do not give equal boundary ratios, and a shape's base mass must be multiplied by its size to obtain its whole tower mass.
+
+**Exercise 9.10 (why freeness and probability preservation matter).** In Proposition 6A.1, replace the free action by the trivial action of an infinite countable group on one point. Identify the failed step. Separately explain where probability preservation is used, and why later choices of cocycles or normal functionals cannot affect the previously chosen shapes.
+
+*Solution.* The orbit relation on one point is already finite. However, \(R(b)=Q\), since every group element fixes the root; the map from labels to class points is not injective. Thus a finite class no longer gives a finite shape, and the disjoint-level proof also fails. Hyperfiniteness of a principal relation does not by itself remove isotropy from its presenting action. Probability preservation gives \(\mu(T_rB_R)=\mu(B_R)\), which turns pointwise class counts into (6A.6)–(6A.8). For a merely nonsingular action these masses need not agree; the displayed counting argument would need weights. Finally, the choices of the stage, roots and finite good-shape family depend only on the action, \(K,\kappa,\zeta\) and the chosen exhaustion and code. They can be completed before a later cocycle or functional family is given. This is an order-of-quantifiers statement, not a uniform bound on shape size.
+
 ## References
 
 [Kuperberg] Greg Kuperberg, *A tracial quantum central limit theorem*, Transactions of the American Mathematical Society 357 (2005), 459–471. [Author preprint, arXiv:math-ph/0202035v1](https://arxiv.org/abs/math-ph/0202035v1), Section 3: ordered joint distributions and commutator estimates. The bounded character calculation used in this lesson is proved in Section 2 above.
 
 [Conley et al.] Clinton T. Conley, Steve C. Jackson, David Kerr, Andrew S. Marks, Brandon Seward and Robin D. Tucker-Drob, *Følner tilings for actions of amenable groups*, Mathematische Annalen 371 (2018), 663–683. [Author preprint, arXiv:1704.00699v2](https://arxiv.org/abs/1704.00699v2), Lemma 2.3 (countable Borel coloring), Lemma 3.3 (measurable selection of trimmed tiles), Lemma 3.4 (the descending hierarchy), and Theorem 3.6 (conull tilings). Sections 5–6 above prove the finite measure estimates and both oriented boundary bounds used here.
+
+[CFW] Alain Connes, Jacob Feldman and Benjamin Weiss, *An amenable equivalence relation is generated by a single transformation*, Ergodic Theory and Dynamical Systems 1 (1981), 431–450; [journal PDF](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B3AB853E37B8B8C77565C2AABC7E47F1/S014338570000136Xa.pdf/an-amenable-equivalence-relation-is-generated-by-a-single-transformation.pdf). Lemma 9 and Theorem 10, pp.443–444, give finite approximation and hyperfiniteness; Corollary 18, pp.447–448, treats amenable actions. The exact programme provider for Section 6A is Theorem 6.1 and Corollary 6.2 of the linked measured-relations lesson.
+
+[Ornstein–Weiss 1980] Donald S. Ornstein and Benjamin Weiss, *Ergodic theory of amenable group actions. I: The Rohlin lemma*, Bulletin of the American Mathematical Society (New Series) 2 (1980), 161–164; [publisher PDF](https://www.ams.org/journals/bull/1980-02-01/S0273-0979-1980-14702-3/S0273-0979-1980-14702-3.pdf). The lemma on p.163 states the finite-cover averaging mechanism. The tower statements on pp.162–163 are research announcements; they do not supply the full measurable tower proof. Lemma 5.0 and equations (5.7)–(5.9) above give the elementary proofs used for this comparison.

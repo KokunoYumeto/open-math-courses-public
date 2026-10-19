@@ -421,6 +421,153 @@ If a normal automorphism \(\beta\) satisfies \(\tau_0\circ\beta=c\tau_0\), \(c>0
 \]
 Thus the center weight has precisely the scalar covariance of the given trace. An invariant full abelian projection was not required.
 
+<a id="l18-center-trace"></a>
+### The center-valued trace and scalar disintegration
+
+The two center weights above arise from a center-valued trace on the direct sum of the type-I and finite type-II parts. We now construct that trace, prove its normalization and naturality, and recover the given scalar trace on the entire positive cone. Extended positive values and the extension \(\widehat\nu\) of a normal scalar weight have the meanings proved in [EP2–6](OA-FLOW-EP.md#oa-flow.ep.2).
+
+**An arbitrary type-I algebra.** Retain \(P\), \(Z=Z(P)\), and the full abelian projection \(p\) from (L18.7.e). Let
+\[
+ \chi:Z\longrightarrow pPp,\qquad \chi(z)=zp.
+ \tag{L18.7.l}
+\]
+This is the normal isomorphism (L18.7.g). The maximal-family construction in [PC4](OA-FLOW-PC.md#oa-flow.pc.4) gives partial isometries \(v_i\), indexed by a possibly uncountable set \(I\), with
+\[
+ v_0=p,\qquad v_i^*v_i=pz_i,\quad z_i\in\operatorname{Proj}(Z),
+ \qquad e_i=v_iv_i^*,\qquad
+ e_i e_j=0\ (i\ne j),\quad \sum_{i\in I}e_i=1.
+ \tag{L18.7.m}
+\]
+Indeed start with \(p\) and maximize orthogonal range projections subequivalent to \(p\). A nonzero residual projection has a polar bridge to \(p\), since \(c_P(p)=1\), contradicting maximality. Every initial projection lies in the abelian corner \(pPp=\chi(Z)\), and so has the displayed form. The \(e_i\) sum strongly. The central projections \(z_i\) need not be orthogonal.
+
+For \(x\in P_+\) set
+\[
+ d_i(x)=\chi^{-1}(v_i^*xv_i)\in Z_+,\qquad
+ T_P(x)=\sum_{i\in I}d_i(x)\in\widehat Z_+.
+ \tag{L18.7.n}
+\]
+The meaning of the sum is exact:
+\[
+ T_P(x)(\omega)=\sup_{F\subset I,\ F\ {\rm finite}}
+                    \sum_{i\in F}\omega(d_i(x)),
+ \qquad \omega\in Z_*^+.
+ \tag{L18.7.o}
+\]
+Each finite sum is a norm-continuous positive linear function of \(\omega\). Their supremum is lower semicontinuous, additive and positively homogeneous; additivity follows by using a common finite superset for the two finite sums. EP2–3 therefore identify it with an extended positive element. Each map \(d_i\) is normal and positive, by compression and the normal inverse of \(\chi\).
+
+Finite nonnegative sums commute with increasing suprema, and the two directed suprema over the positive net and over finite subsets \(F\) commute. Consequently \(T_P\) is normal in the operator-valued-weight sense of EP6. For \(b\in Z\), central commutation gives \(d_i(b^*xb)=b^*d_i(x)b\), hence
+\[
+ T_P(b^*xb)=b^*T_P(x)b.
+ \tag{L18.7.p}
+\]
+Additivity and positive homogeneity in \(x\) follow from the same finite-sum formula. Thus \(T_P\) is an operator-valued weight into the center.
+
+**The trace law.** For \(a\in P\) write
+\[
+ a_{ji}=\chi^{-1}(v_j^*av_i)\in Z.
+ \tag{L18.7.q}
+\]
+For fixed \(i\), insertion of the increasing finite sums of the \(e_j\) between \(a^*\) and \(a\), followed by normal compression and \(\chi^{-1}\), gives
+\[
+ d_i(a^*a)=\sum_{j\in I}a_{ji}^*a_{ji}.
+ \tag{L18.7.r}
+\]
+Indeed \(v_i^*a^*e_jav_i=(v_j^*av_i)^*(v_j^*av_i)\), so every summand has exactly the claimed central coefficient. The sum in (L18.7.r) is bounded by \(\|a\|^2z_i\), as its left side shows. Summing over \(i\) now gives
+\[
+ T_P(a^*a)=\sum_{i,j\in I}a_{ji}^*a_{ji}
+          =\sum_{i,j\in I}a_{ij}a_{ij}^*
+          =T_P(aa^*).
+ \tag{L18.7.s}
+\]
+The middle equality uses commutativity of \(Z\) and interchanges the two indices. It is valid after every \(\omega\in Z_*^+\): both sides are the supremum of finite nonnegative subsums. No infinite values are subtracted.
+
+**Faithfulness and semifiniteness.** If \(T_P(x)=0\), then every \(v_i^*xv_i=0\). Thus \(x^{1/2}v_i=0\), and hence \(x^{1/2}e_i=0\) for all \(i\). Their strong sum is \(1\), so \(x=0\).
+
+Since the range projections are orthogonal, (L18.7.n) gives
+\[
+ T_P(e_i)=z_i,\qquad
+ T_P(e_F)=\sum_{i\in F}z_i\le |F|1,\qquad
+ e_F=\sum_{i\in F}e_i .
+ \tag{L18.7.t}
+\]
+For any \(a\in P\), the element \(a_F=e_Fae_F\) satisfies
+\[
+ a_F^*a_F\le\|a\|^2e_F,\qquad
+ T_P(a_F^*a_F)\le\|a\|^2|F|1.
+ \tag{L18.7.u}
+\]
+Thus every \(a_F\) belongs to \(N_{T_P}\). The bounded finite compressions \(a_F\) converge strongly-star to \(a\), proving that \(N_{T_P}\) is weakly dense. This is precisely semifiniteness in EP6. It does not assert that every bounded \(x\ge0\) has bounded \(T_P(x)\).
+
+**Normalization, uniqueness and automorphisms.** The index \(0\) gives \(T_P(p)=1\), so
+\[
+ T_P(zp)=z\qquad(z\in Z_+).
+ \tag{L18.7.v}
+\]
+If \(q\) is any abelian projection and \(z=c_P(q)\), the equivalence argument (L18.7.i), applied in \(Pz\), identifies \(q\) with \(pz\): both are full and abelian there. The trace law therefore gives \(T_P(q)=z\).
+
+Suppose \(S:P_+\to\widehat Z_+\) is another normal center-module trace with \(S(p)=1\). Normality, the trace law applied to \(x^{1/2}v_i\), and the center-module property give, for every \(x\in P_+\),
+\[
+ \begin{aligned}
+ S(x)
+ &=\sum_i S(x^{1/2}e_i x^{1/2})
+   =\sum_i S(v_i^*xv_i)\\
+ &=\sum_i S(d_i(x)p)
+   =\sum_i d_i(x)=T_P(x).
+ \end{aligned}
+ \tag{L18.7.w}
+\]
+All sums are increasing suprema of finite sums. This proves uniqueness, in particular independence of the chosen maximal family. The normalization on every abelian projection also makes the construction independent of the full abelian \(p\). For a normal automorphism \(\beta\) of \(P\), transport of extended positive elements makes \(\beta^{-1}T_P\beta\) another normal center-module trace with that normalization: automorphisms preserve abelian projections and their central supports. Uniqueness proves
+\[
+ T_P\beta=\beta T_P.
+ \tag{L18.7.x}
+\]
+
+**Recovering the scalar trace.** Let \(\nu(z)=\tau_0(zp)\), the faithful n.s.f. center weight already constructed in (L18.7.h)–(L18.7.j). For arbitrary \(x\in P_+\), normality of \(\tau_0\) and its trace law give
+\[
+ \begin{aligned}
+ \tau_0(x)
+ &=\sum_i\tau_0(x^{1/2}e_i x^{1/2})
+   =\sum_i\tau_0(v_i^*xv_i)\\
+ &=\sum_i\nu(d_i(x))
+   =\widehat\nu(T_P(x)).
+ \end{aligned}
+ \tag{L18.7.y}
+\]
+The final equality is the normal extension theorem EP5, applied to the increasing finite central sums in (L18.7.n). This proves the disintegration on all positive elements, including infinite values.
+
+On a finite algebra \(A\), the earlier notation \(\rho=\nu\circ T_A\), \(\tau_0=\rho_h\), and \(h_n=h\wedge n\) gives the corresponding full-cone calculation
+\[
+ \begin{aligned}
+ \tau_0(x)
+ &=\sup_n\nu\!\left(T_A(h_n^{1/2}xh_n^{1/2})\right)\\
+ &=\sup_n\nu(h_nT_A(x))
+   =\nu_h(T_A(x))
+   =(\tau_0|_{Z(A)})(T_A(x)),
+ \qquad x\in A_+ .
+ \end{aligned}
+ \tag{L18.7.z}
+\]
+Here the last equality is (L18.7.c). Thus the finite center weight is also the scalar factor of the normalized center-valued trace.
+
+Finally let \(N_0=P\oplus A\), where \(P\) is its type-I part and \(A\) is its finite type-II part. Either part may be zero. Define
+\[
+ T=T_P\oplus T_A,\qquad
+ \psi=\nu_P\oplus(\tau_0|_{Z(A)}).
+ \tag{L18.7.aa}
+\]
+The preceding arguments prove that \(T\) is a faithful normal semifinite center-valued trace, that \(\psi\) is faithful normal semifinite, and that \(\tau_0=\widehat\psi\circ T\). The normalization is rank-one normalization \(T_P(q)=c_P(q)\) on the type-I part and \(T_A(1_A)=1_A\) on the finite type-II part. Automorphisms preserve these parts: the first is the central join of abelian supports, and its complement is finite. Naturality (L18.7.x) and FCT8 therefore give \(T\beta=\beta T\).
+
+The range of \(T\) contains every bounded positive central element: for \(z=z_P\oplus z_A\) take \(x=z_Pp\oplus z_A\), so \(T(x)=z\). If \(\tau_0\beta=c\tau_0\), \(c>0\), this surjectivity gives
+\[
+ \psi(\beta(z))
+ =\widehat\psi(T(\beta(x)))
+ =\tau_0(\beta(x))
+ =c\,\tau_0(x)=c\,\psi(z),
+ \qquad z\in Z(N_0)_+ .
+ \tag{L18.7.ab}
+\]
+Thus the center weight has exactly the original trace-scaling law, with a canonical center-valued trace accounting for the factorization.
+
 <a id="l18-8"></a>
 ## 8. A type III crossed product has type II∞ coefficients
 

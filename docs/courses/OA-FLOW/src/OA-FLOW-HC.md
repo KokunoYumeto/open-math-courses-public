@@ -13,9 +13,9 @@ Let \(M\ne0\) be a type \(\mathrm{III}_1\) factor that is sigma-finite. Given no
 \]
 The norm is the predual norm, the supremum on the operator-norm unit ball. No faithfulness assumption on the two states occurs in the conclusion.
 
-The freely accessible primary source is Connes and Størmer, [*Homogeneity of the State Space of Factors of Type III₁*](http://cm2vivi2002.free.fr/AC-biblio/AC-biblio35.pdf), printed pp.187–196. The proof below reconstructs the maximal-extension method on pp.193–196, supplies all limit and domain passages, and proves its own cutoff and error constants. The preliminary cutoff argument is the complete [finite-partition proof FP1–FP5](OA-FLOW-FP.md#oa-flow.fp.1); its scalar inequality and discontinuous-cutoff limit replace the joint-measure import.
+The freely accessible primary source is Connes and Størmer, [*Homogeneity of the State Space of Factors of Type III₁*](http://cm2vivi2002.free.fr/AC-biblio/AC-biblio35.pdf), printed pp.187–196. The proof uses the cone-pinching mechanism of pp.193–196, constructs a maximal compatible partial isometry by successive support-mass approximation, and supplies all limit passages, cutoff estimates and completion constants. The preliminary cutoff argument is the complete [finite-partition proof FP1–FP5](OA-FLOW-FP.md#oa-flow.fp.1); its scalar inequality and discontinuous-cutoff limit replace the joint-measure import.
 
-The earlier mathematical inputs are the actual [NC1–NC5](OA-FLOW-NC.md#oa-flow.nc.1), [CR1–CR9](OA-FLOW-CR.md#oa-flow.cr.1), and [MC1–MC5](OA-FLOW-MC.md#oa-flow.mc.1) standard-form constructions; [RF1–RF5](OA-FLOW-RF.md#oa-flow.rf.1) and [AL1–AL6](OA-FLOW-AL.md#oa-flow.al.1) for real spectral localization; [TS1–TS3](OA-FLOW-TS.md#oa-flow.ts.1) for the direct type-\(\mathrm{III}_1\) implication; [CT](OA-FLOW-CT.md#oa-flow.ct.1) for corners and finite matrix type transport; [PC1, PC2, PC5, PC7, PC8](OA-FLOW-PC.md#oa-flow.projection.pc1) for projections and their strong sums; and [CZ0, CZ5](OA-FLOW-CZ.md#oa-flow.cz.0) for centralizers and modular restriction. Scalar convergence and bounded spectral calculus are the SC/SF proofs specified in FP. The maximal principle is [CF1](OA-FLOW-CF.md#oa-flow.cf.1). These are complete earlier written proofs, not replacements by literature citations.
+The earlier mathematical inputs are the actual [NC1–NC5](OA-FLOW-NC.md#oa-flow.nc.1), [CR1–CR9](OA-FLOW-CR.md#oa-flow.cr.1), and [MC1–MC5](OA-FLOW-MC.md#oa-flow.mc.1) standard-form constructions; [RF1–RF5](OA-FLOW-RF.md#oa-flow.rf.1) and [AL1–AL6](OA-FLOW-AL.md#oa-flow.al.1) for real spectral localization; [TS1–TS3](OA-FLOW-TS.md#oa-flow.ts.1) for the direct type-\(\mathrm{III}_1\) implication; [CT](OA-FLOW-CT.md#oa-flow.ct.1) for corners and finite matrix type transport; [PC1, PC2, PC5, PC7, PC8](OA-FLOW-PC.md#oa-flow.projection.pc1) for projections and their strong sums; and [CZ0, CZ5](OA-FLOW-CZ.md#oa-flow.cz.0) for centralizers and modular restriction. Scalar convergence and bounded spectral calculus are the SC/SF proofs specified in FP. The successive countable choices use the set-theoretic convention of [CF1](OA-FLOW-CF.md#oa-flow.cf.1). These are complete earlier written proofs, not replacements by literature citations.
 
 Type \(\mathrm{III}_1\) here means that the defining intersection \(S(M)\) of the spectra of all faithful normal semifinite modular operators is \([0,\infty)\). TS deduces the needed full invariant-corner spectrum directly from this definition and CT/CZ. The general identification of \(S(M)\) with an exponential Connes spectrum is not used.
 
@@ -206,7 +206,24 @@ Equivalently, the operator extension conditions are \(w'a=w\) and \(w'^*b=w^*\).
 
 This is a partial order: two successive increments have orthogonal initial and final projections, and their vector increments have orthogonal left supports. Thus squared vector norms and state budgets add, proving transitivity. If both directions hold then the supports coincide, the partial-isometry increment is zero, and both norm budgets are zero; the triples coincide.
 
-Here is the full chain argument. Along a chain, strict extension strictly increases \(\phi_0(a)\): equality of these numbers gives \(a=a'\) by faithfulness, hence equality of triples. If a nonempty chain has no maximum, write \(s\) for the supremum of its numbers and choose successively an increasing sequence of chain elements with numbers larger than \(s-1/n\); take the larger of the preceding choice and the new choice at each step. Every chain element has number strictly below \(s\), since an element attaining \(s\) would be a maximum. The sequence is therefore cofinal.
+Write \(t=(w,\alpha,\beta)\) for an admissible triple and \(m(t)=\phi_0(w^*w)\). If \(t\le t'\), then \(m(t)\le m(t')\); equality forces \(a=a'\) by faithfulness of \(\phi_0\). The partial-isometry increment and both vector increments then vanish by HC13, so \(t=t'\). Thus this bounded scalar quantity detects every strict extension.
+
+We construct an increasing sequence starting with the zero triple \(t_0\). Given \(t_n\), put
+\[
+ s_n=\sup\{m(t):t\text{ is admissible and }t_n\le t\}.
+ \tag{HC13a}
+\]
+The set is nonempty because it contains \(t_n\), and its values lie in \([0,1]\). By the definition of supremum choose an admissible extension \(t_{n+1}\) with
+\[
+ t_n\le t_{n+1},\qquad
+ s_n-2^{-n-1}<m(t_{n+1})\le s_n.                         \tag{HC13b}
+\]
+These countably many successive choices use the set-theoretic convention of CF1. Transitivity makes the sets of permitted extensions decrease. Hence
+\[
+ m(t_n)\le m(t_{n+1})\le s_{n+1}\le s_n,\qquad
+ \sup_n m(t_n)=\inf_n s_n=:s.                              \tag{HC13c}
+\]
+For the equality, the nonnegative difference \(s_n-m(t_{n+1})\) is smaller than \(2^{-n-1}\), so the two monotone limits coincide.
 
 For this sequence \(a_n\uparrow a\), \(b_n\uparrow b\) strongly by PC1, and for \(m\ge n\),
 
@@ -225,7 +242,13 @@ The convergence of \(w_n\) is also sigma-strong-star. For a square-summable fami
 \]
 first keep finitely many terms, which tend to zero by strong convergence, and then bound the remaining sum by \(4\sum_{\rm tail}\|h_j\|^2\). Apply the identical argument to the adjoints. These are the defining vector-family seminorms of the sigma-strong-star topology. [CP6](OA-FLOW-CP.md#oa-flow.cp.6) also makes the assertion intrinsic: its square-summable vector-series formula, with the same finite-head and uniformly bounded tail argument, gives \(f((w_n-w)^*(w_n-w))\to0\) and \(f((w_n-w)(w_n-w)^*)\to0\) for every normal positive \(f\).
 
-For each fixed index the same limits in HC13 prove that this limit triple dominates that index. Cofinality and transitivity then dominate the whole chain. A chain with a maximum already has an upper bound, and the empty chain is bounded by the zero triple. CF1's maximal principle supplies a maximal triple.
+For each fixed \(n\), pass to the limit in HC13 for \(t_n\le t_m\); its support identities pass by strong convergence and its norm budgets by normality. The resulting triple \(t_\infty=(w,\alpha,\beta)\) therefore dominates every \(t_n\), and normality gives \(m(t_\infty)=\lim_n\phi_0(a_n)=s\).
+
+If an admissible \(t'\) extends \(t_\infty\), it extends every \(t_n\), so its mass lies in every interval \([m(t_\infty),s_n]\). Thus
+\[
+ s=m(t_\infty)\le m(t')\le\inf_n s_n=s.                    \tag{HC14a}
+\]
+Equality of the masses forces \(t'=t_\infty\), by the strict-extension test above. This proves that \(t_\infty\) is maximal. The construction specifies a sequence whose remaining attainable support mass tends to zero; the faithful state turns that scalar exhaustion into the absence of any nonzero extension.
 
 <a id="oa-flow.hc.5"></a>
 
@@ -319,7 +342,7 @@ I_{\Theta'}(W+U)
 \]
 because \(\tau/(1-\tau)=\delta/(2+\delta)\le\delta\). Thus HC17 is an admissible strict extension satisfying HC13, a contradiction. A maximal triple has \(a=1\) or \(b=1\).
 
-**Independent error budgets.** We will also use the construction with positive constants \(d,k\): replace \(\delta\) by \(d\) in both defect-vector budgets of HC12 and in HC13, and by \(k\) in the commutator budget of HC12. The zero triple, partial order, cofinal sequence and all chain limits have the same proofs. For the extension choose
+**Independent error budgets.** We will also use the construction with positive constants \(d,k\): replace \(\delta\) by \(d\) in both defect-vector budgets of HC12 and in HC13, and by \(k\) in the commutator budget of HC12. The zero triple, partial order, successive support-mass choices and their admissible limit have the same proofs. For the extension choose
 \[
  \tau=\min\left(\frac d2,\frac{k}{2(1+k)}\right).
 \]
@@ -535,4 +558,4 @@ HC23–HC27 bound them by \(4,1,4,8,4\) times \(\sqrt\delta\), with the second s
 
 The historical human source for the cutoff and extension mechanisms is Connes and Størmer, [the complete freely readable primary paper](http://cm2vivi2002.free.fr/AC-biblio/AC-biblio35.pdf), printed pp.188–191 and 193–196. The finite-array replacement and the displayed constants are proved in the present FP/HC texts. The projection and cone mechanisms have the exact local providers linked there.
 
-Reproduction: [Python source](../assets/homogeneity/render_homogeneity.py), [Figure 1 SVG](../assets/homogeneity/finite-partition-and-pinching.svg), [Figure 2 SVG](../assets/homogeneity/strong-unitary-and-error-budget.svg). All coordinates, endpoints and bounds are deterministic. SVG uses a fixed hash salt and no Date metadata; JSON and SVG are written as UTF-8 with LF newlines. Original expression and code are CC0-1.0 to the extent of rights held; Matplotlib's DejaVu font glyphs retain their own licence. A three-dimensional scene would add no geometric information to these finite arrays and operator arrows.
+Reproduction: [Python source](../assets/homogeneity/render_homogeneity.py), [Figure 1 SVG](../assets/homogeneity/finite-partition-and-pinching.svg), [Figure 2 SVG](../assets/homogeneity/strong-unitary-and-error-budget.svg). All coordinates, endpoints and bounds are deterministic. Original expression and code are CC0-1.0 to the extent of rights held; Matplotlib's DejaVu font glyphs retain their own licence.

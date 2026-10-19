@@ -975,3 +975,187 @@ Conversely, every \(\xi\in\mathcal B_l\) gives
 Finally apply the established proof to the opposite right Hilbert algebra \(\mathcal A_r^{\mathrm{op}}\). Its generated algebra is \(M'\), its completed left multiplication map is \(R\) on \(\mathcal B_r\), and its commutant is \(M\), as established in WH-03–04 and WH-12. Therefore (WH.49) becomes exactly (WH.50); its positivity and matrix tests give \(\Theta_r\), and (WH.51) gives the two claimed right-hand range identities. This proves all assertions in (WH.48–51). \(\square\)
 
 The domains \(\mathfrak m_l,\mathfrak m_r\) need not be norm closed, and no bounded extension of \(\Theta_l,\Theta_r\) to the entire algebras is asserted. Their complete positivity means exactly the finite matrix tests above. Together with WH12, this proves the predual-map and functional-cone statements compared with Nelson, Lemma 4.2 and Corollary 4.3. The construction of the weights precedes these maps.
+
+
+## Strict finite cutoffs and directed observations
+
+The positive part of an open unit ball requires an order argument; convexity alone does not make a set upward directed. The following argument supplies the directedness used in the variational description.
+
+**Proposition.** For a weight \(\rho\) on a von Neumann algebra \(N\), the set
+
+\[
+ \begin{gathered}
+ \mathcal U_\rho=\{a\in N_+:\\
+ \rho(a)<\infty,\ \|a\|<1\}.
+ \end{gathered}
+ \tag{WH.55}
+\]
+
+is upward directed in the operator order. If \(\rho\) is semifinite, its increasing net, indexed by this order, converges strongly to \(1\). Consequently the two strict functional sets in (WH.43) and its left-right counterpart are upward directed. Their pointwise suprema are normal weights.
+
+**Proof.** For \(a,b\in\mathcal U_\rho\), put
+
+\[
+ \begin{aligned}
+ A&=a(1-a)^{-1},\\
+ B&=b(1-b)^{-1},\\
+ c&=q(A+B).
+ \end{aligned}
+ \tag{WH.56}
+\]
+
+The inverses exist by the strict norm bounds. Continuous calculus gives
+\(0\leq A\leq(1-\|a\|)^{-1}a\), and similarly for \(B\). Hence both have finite weight, as does \(A+B\). The function \(q(t)=t/(1+t)\) is operator monotone on positive operators by inverse order BK05. Thus
+\(c=q(A+B)\geq q(A)=a\) and \(c\geq b\). Moreover \(0\leq c\leq A+B\), so \(\rho(c)<\infty\), and
+
+\[
+ \begin{aligned}
+ \|c\|&=\frac{\|A+B\|}{1+\|A+B\|}\\
+ &<1.
+ \end{aligned}
+ \tag{WH.57}
+\]
+
+This proves directedness, including the case \(A+B=0\).
+
+If \(\rho\) is semifinite, WG008 supplies finite positive contractions \(e_i\uparrow1\). Every \(t e_i\), \(0<t<1\), belongs to \(\mathcal U_\rho\). The strong supremum \(u\leq1\) of the increasing net \(\mathcal U_\rho\) therefore dominates \(t e_i\), then \(t1\) for each \(t<1\), and finally \(1\). Hence \(u=1\). This uses directed sets, without a countability assumption.
+
+Apply this to \(\psi\) and \(\chi\). By (WH.51), the positive maps \(\Theta_l,\Theta_r\) carry their strict finite positive balls onto the displayed strict functional sets. A positive linear map preserves order, so an upper bound in the domain gives a common upper bound in the corresponding image.
+
+For completeness, let \(\mathcal F\) be either image family and set
+\(w(x)=\sup_{\omega\in\mathcal F}\omega(x)\) for \(x\geq0\). The zero functional belongs to \(\mathcal F\). Positivity gives
+\(w(x+y)\leq w(x)+w(y)\). Conversely, approximate the two suprema from below using two functionals and choose a common upper bound in \(\mathcal F\). Its value on \(x+y\) exceeds the sum of those lower approximations. This proves the opposite inequality, also when a supremum is infinite. Homogeneity is immediate, with \(0\cdot\infty=0\). If \(x_i\uparrow x\), normality of every functional and interchange of suprema give
+
+\[
+ \begin{aligned}
+ w(x)&=\sup_{\omega\in\mathcal F}\sup_i\omega(x_i)\\
+ &=\sup_i w(x_i).
+ \end{aligned}
+ \tag{WH.58}
+\]
+
+Thus \(w\) is a normal weight. This argument also supplies a direct justification of the directedness step in the source proof of the variational formula, after the finite domains and maps have been constructed. \(\square\)
+
+## Closed GNS graphs and the finite-star domain
+
+Keep a faithful normal semifinite weight \(\varphi\), and identify \(M\) with \(\pi_\varphi(M)\) using WH02. Write
+
+\[
+ \begin{aligned}
+ \mathfrak a_\varphi&=\mathfrak n_\varphi\cap\mathfrak n_\varphi^*,\\
+ \mathcal A_\varphi&=\Lambda(\mathfrak a_\varphi),\\
+ \mathcal B_l&=\Lambda(\mathfrak n_\varphi).
+ \end{aligned}
+ \tag{WH.59}
+\]
+
+The bijection \(\lambda:\mathcal B_l\to\mathfrak n_\varphi\) is the inverse of \(\Lambda\), by WH11. A claim that a graph is closed must specify whether its vector coordinate ranges over \(\mathcal A_\varphi\), its Hilbert completion \(H\), or the domain of the closed involution.
+
+**Proposition.**
+
+1. The graph of \(\lambda:\mathcal B_l\subseteq H\to M\) is closed in \(H_{\mathrm{norm}}\times M_{\sigma\text{-strong}}\). Equivalently, the full GNS map has a closed graph in \(M_{\sigma\text{-strong}}\times H_{\mathrm{norm}}\).
+2. The graph of \(\Lambda:\mathfrak a_\varphi\to\mathcal A_\varphi\) is closed in \(M_{\sigma\text{-strong}*}\times(\mathcal A_\varphi)_{\mathrm{norm}}\). Its inverse has the corresponding closed graph with the factors interchanged.
+3. Let \(S_\varphi\) be the closed involution of WH10. Give its domain the graph norm
+   \[
+\small
+    \begin{aligned}
+    \|\xi\|_{S_\varphi}&=(\|\xi\|^2\\
+    &+\|S_\varphi\xi\|^2)^{1/2}.
+    \end{aligned}
+    \tag{WH.60}
+   \]
+   Then the graph of \(\Lambda:\mathfrak a_\varphi\to D(S_\varphi)\) is closed in \(M_{\sigma\text{-strong}*}\times D(S_\varphi)_{\|\cdot\|_{S_\varphi}}\).
+
+**Proof.** For the first assertion, suppose
+\(\xi_i\in\mathcal B_l\), \(\xi_i\to\xi\) in norm, and
+\(\lambda_{\xi_i}\to x\in M\) sigma-strongly. For each \(\eta\in\mathcal A_r\), the mixed multiplication identity gives
+
+\[
+ \begin{aligned}
+ x\eta&=\lim_i\lambda_{\xi_i}\eta\\
+      &=\lim_i R_\eta\xi_i=R_\eta\xi.
+ \end{aligned}
+ \tag{WH.61}
+\]
+
+The first limit follows from strong convergence on this fixed vector; the second uses the bounded operator \(R_\eta\). Therefore
+\(\|R_\eta\xi\|\leq\|x\|\|\eta\|\). Definition (WH.3) puts \(\xi\) in \(\mathcal B_l\), with \(\lambda_\xi=x\). No uniform norm bound on the original net is needed. Interchanging the two coordinates and using WH11 proves the GNS formulation. This is also a consequence of the stronger sigma-strong/weak graph theorem NW12.
+
+For the second assertion, suppose \(x_i\in\mathfrak a_\varphi\),
+\(x_i\to x\) sigma-strong*, and \(\Lambda(x_i)\to\xi\) in norm **with \(\xi\in\mathcal A_\varphi\)**. The first assertion gives \(x\in\mathfrak n_\varphi\) and \(\Lambda(x)=\xi\). By the displayed range condition, \(\xi=\Lambda(y)\) for some \(y\in\mathfrak a_\varphi\). Faithfulness makes \(\Lambda\) injective, so \(x=y\in\mathfrak a_\varphi\). This proves closedness in the stated product space, and coordinate interchange proves it for the inverse.
+
+For the third assertion, graph-norm convergence gives
+\(\Lambda(x_i)\to\xi\) and
+\(\Lambda(x_i^*)=S_\varphi\Lambda(x_i)\to S_\varphi\xi\) in norm. Sigma-strong* convergence gives both \(x_i\to x\) and \(x_i^*\to x^*\) sigma-strongly. Apply the first assertion to these two pairs. It yields
+
+\[
+ \begin{gathered}
+ x,x^*\in\mathfrak n_\varphi,\\
+ \Lambda(x)=\xi,\\
+ \Lambda(x^*)=S_\varphi\xi.
+ \end{gathered}
+ \tag{WH.62}
+\]
+
+Thus \(x\in\mathfrak a_\varphi\), with the required graph value. \(\square\)
+
+The distinction in the second assertion cannot be dropped.
+
+**Counterexample to closedness in the whole Hilbert completion.** Let
+\(M=\prod_{n\geq1}M_2(\mathbb C)\), represented diagonally on
+\(\bigoplus_{n\geq1}\mathbb C^2\), and define
+
+\[
+ \begin{gathered}
+ \varphi(a)=\sum_{n\geq1}w_n(a),\\
+ w_n(a)=(a_n)_{11}\\
+ \qquad+n^4(a_n)_{22},\\
+ a\in M_+.
+ \end{gathered}
+ \tag{WH.63}
+\]
+
+This is a faithful normal semifinite weight. To check all three conditions, each coordinate expression is a positive normal vector functional multiplied by a finite scalar. Finite nonnegative subsums commute with addition and with increasing positive suprema, so their sum is a normal weight, as proved in NW12. If its value at a positive element is zero, both diagonal entries of every positive block are zero. The square root of that block then annihilates both coordinate vectors, so the block is zero; this proves faithfulness. The projections equal to the identity in the first \(N\) blocks and zero elsewhere have finite weight and increase strongly to \(1\). WG008 proves semifiniteness. The diagonal algebra is a von Neumann algebra because the block-diagonal condition is weakly closed and each two-dimensional block algebra is all of \(B(\mathbb C^2)\).
+
+Let \(x_n=n^{-1}E_{21}\), and let \(y_N\) retain the first \(N\) blocks of \(x=(x_n)\) and vanish elsewhere. Direct multiplication gives
+
+\[
+ \begin{gathered}
+ \varphi(x^*x)=\sum_{n\geq1}n^{-2}<\infty,\\
+ \varphi(xx^*)=\sum_{n\geq1}n^2=\infty,\\
+ \varphi(y_N^*y_N)=\sum_{n=1}^N n^{-2},\\
+ \varphi(y_Ny_N^*)=\sum_{n=1}^N n^2\\
+ =\frac{N(N+1)(2N+1)}6.
+ \end{gathered}
+ \tag{WH.64}
+\]
+
+The final identity follows by induction: subtracting its value at \(N-1\) leaves \(N^2\). Also, for \(n\geq2\),
+\(n^{-2}\leq[n(n-1)]^{-1}=1/(n-1)-1/n\). Telescoping proves convergence and the tail bound used below.
+
+Every \(y_N\) belongs to \(\mathfrak a_\varphi\), whereas
+\(x\in\mathfrak n_\varphi\setminus\mathfrak a_\varphi\). Put \(\xi=\Lambda(x)\) and \(\xi_N=\Lambda(y_N)\). Nevertheless,
+
+\[
+\small
+ \begin{gathered}
+ \|x-y_N\|=\frac1{N+1}\longrightarrow0,\\
+ \|\xi-\xi_N\|^2\\
+ =\sum_{n>N}n^{-2}\\
+ \leq\frac1N\longrightarrow0.
+ \end{gathered}
+ \tag{WH.65}
+\]
+
+Operator-norm convergence implies sigma-strong* convergence: each defining seminorm is bounded by the operator norm times the square root of the testing functional's value at \(1\). Hence
+\((y_N,\Lambda(y_N))\) converges in
+\(M_{\sigma\text{-strong}*}\times H_{\mathrm{norm}}\) to
+\((x,\Lambda(x))\), which is outside the restricted graph. Injectivity also gives \(\Lambda(x)\notin\mathcal A_\varphi\). Thus the graph need not be closed in that larger product. The adjoint energies in (WH.64) diverge, so this sequence does not contradict the graph-norm assertion. \(\square\)
+
+![The GNS energies of the finite-block truncations stay bounded by two, while their adjoint energies grow as N(N+1)(2N+1)/6.](../figures/gns-graph-energies.png)
+
+The plotted points are the exact finite sums in (WH.64), evaluated for \(1\leq N\leq12\). The first energy has tail at most \(1/N\); the adjoint energy diverges. The comparison uses different vertical scales, both labelled. [Reproducible figure source](../figures/draw-gns-graph-energies.py).
+
+These statements distinguish the two readings of Takesaki, *Theory of Operator Algebras II*, Exercise VII.2(1), printed pp. 64–65. Part (b) has the ambient closed graph in the first assertion. Part (a) is valid with the displayed range \(\mathcal A_\varphi\) carrying its inherited Hilbert norm, as in the second assertion. If it is read as asserting closedness in the entire Hilbert completion, the counterexample applies; the third assertion supplies a stronger valid replacement by controlling both energies.
+
+Proofs in these two sections and the figure: OpenAI GPT-6 Astra, October 2026, CC0.

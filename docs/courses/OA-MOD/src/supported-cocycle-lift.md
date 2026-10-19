@@ -1,6 +1,6 @@
 # Recovering a supported weight from a partial cocycle
 
-*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
+*Written with OpenAI Codex (GPT-6 Sol and GPT-6 Astra). Original prose: CC0.*
 
 A faithful weight gives a unitary Connes cocycle. When the weight to be recovered has support smaller than \(1\), the comparison instead has a moving initial projection and a fixed final projection. The trick is to fill the complementary corner, reconstruct a faithful weight from the resulting unitary cocycle, and then restrict back to the desired support. The antecedent is Takesaki, *Theory of Operator Algebras II*, Chapter VIII, §3, Theorem 3.21. Here “n.s.f.” means normal, semifinite and faithful.
 
@@ -83,7 +83,27 @@ Q_\theta[\xi]
 \tag{PL.6}
 \]
 
-On the bounded-vector form core, this is the form of \(A_\rho|_{eH}\oplus0_{(1-e)H}\). The core theorem and uniqueness of the represented closed form extend the equality to the full square-root domain. Thus the supported imaginary powers give
+We verify the core needed to identify the full operator. Set
+
+\[
+B=A_\rho|_{eH}\oplus0_{(1-e)H},\qquad
+D(B^{1/2})=\bigl(D(A_\rho^{1/2})\cap eH\bigr)\oplus(1-e)H.
+\tag{PL.6a}
+\]
+
+Let \(D_\kappa\) be the bounded-vector space for the commutant reference, and let
+\(E_\rho=\{\xi\in D_\kappa:Q_\rho[\xi]<\infty\}\).
+The spatial form-core theorem makes \(E_\rho\) a core for \(A_\rho^{1/2}\). The coefficient identity above shows that \(eD_\kappa\subseteq D_\kappa\). Since \(e\) reduces \(A_\rho\), it also preserves \(E_\rho\) and commutes with \(A_\rho^{1/2}\) on its domain. For any \(\xi\in D(A_\rho^{1/2})\cap eH\), choose \(\xi_n\in E_\rho\) converging to \(\xi\) in that graph norm. Then \(e\xi_n\to\xi\) and \(A_\rho^{1/2}e\xi_n=eA_\rho^{1/2}\xi_n\to A_\rho^{1/2}\xi\). Hence \(eE_\rho\) is a core for the restricted square-root operator.
+
+The space \((1-e)D_\kappa\) is dense in \((1-e)H\): the space \(D_\kappa\) contains \(E_\rho\), which is Hilbert-norm dense because it is a form core for the densely defined operator \(A_\rho^{1/2}\). The operator \(B^{1/2}\) vanishes there, so
+
+\[
+\mathcal C=eE_\rho+(1-e)D_\kappa
+\quad\text{is a core for }B^{1/2}.
+\tag{PL.6b}
+\]
+
+For every \(\xi\in D_\kappa\), (PL.6) and the full bounded-vector energy identity give \(Q_\theta[\xi]=\|B^{1/2}\xi\|^2\), with both sides interpreted as infinity off \(D(B^{1/2})\). Thus the finite bounded-vector domain of \(\theta\) is exactly \(D_\kappa\cap D(B^{1/2})\), and it contains \(\mathcal C\). Closing its initial spatial form therefore gives precisely the closed square-root form of \(B\). The spatial form-core theorem and uniqueness of the represented closed form now prove \(A_\theta=B\), including its full operator and square-root domains. Consequently the supported imaginary powers give
 
 \[
 A_\theta^{it}=eA_\rho^{it},\qquad

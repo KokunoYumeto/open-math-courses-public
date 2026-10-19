@@ -1,6 +1,6 @@
 # Predual compactness from positive vector control
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition and diagram: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 A weakly compact family of normal functionals has one positive normal functional that controls all its values on small bounded operators. We prove that criterion by constructing positive envelopes from vector coefficients. The reverse direction uses a real Hahn–Banach extension on a graph: a functional continuous for the controlling seminorm is a norm limit of normal vector functionals.
 

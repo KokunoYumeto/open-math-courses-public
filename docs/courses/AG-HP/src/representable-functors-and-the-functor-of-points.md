@@ -6,7 +6,7 @@ A parameter space should classify families as well as individual objects. For ex
 
 This lesson develops a practical method for constructing parameter spaces. First describe what a family over \(T\) is, including its pullback along every morphism \(T'\to T\). Then find conditions selecting open parts of that family. If those parts have explicit parameter spaces and families glue uniquely, their spaces glue too. We apply this method to projective space and to projectivizations of arbitrary quasi-coherent modules. A final example constructs a parameter space for finite subschemes of the affine line.
 
-We assume schemes, sheaf pullback, symmetric algebras, the affine and projective spectrum constructions, and the gluing theorem for schemes. Yoneda's lemma is a prerequisite: natural transformations \(h_X\to F\) correspond to elements of \(F(X)\). Basic references are [Stacks] and [Vakil]. The proofs below use these prerequisites to establish the representability statements themselves.
+The prerequisites are schemes, sheaf pullback, symmetric algebras, affine and projective spectra, scheme gluing and Yoneda's lemma. Yoneda identifies natural transformations \(h_X\to F\) with elements of \(F(X)\). Their precise programme proofs are linked in the final prerequisite section. Basic references are [Stacks] and [Vakil]. The proofs below establish the representability statements from these foundations.
 
 ## 1 Families and equations
 
@@ -148,7 +148,7 @@ Here is a moduli problem with a particularly explicit answer. Define \(H_d(T)\) 
 x^d+a_{d-1}x^{d-1}+\cdots+a_0=0.
 \]
 
-**Proof.** Over \(T=\operatorname{Spec}A\), a family is a quotient \(B=A[x]/I\) that is finite locally free of rank \(d\) as an \(A\)-module. On every residue field, a quotient of the polynomial ring having dimension \(d\) is the quotient by a unique monic polynomial of degree \(d\). Hence \(1,x,\ldots,x^{d-1}\) is a basis of every residue-field fibre of \(B\).
+**Proof.** Over \(T=\operatorname{Spec}A\), a family is a quotient \(B=A[x]/I\) that is finite locally free of rank \(d\) as an \(A\)-module. On a residue field \(k\), the kernel of \(k[x]\to B\otimes_A k\) is nonzero, since the quotient is finite-dimensional. Choose a monic kernel polynomial \(g\) of least degree. Dividing any kernel polynomial by \(g\) gives a remainder of smaller degree in the kernel, which must vanish. Thus the kernel is \((g)\), and the quotient basis \(1,x,\ldots,x^{\deg g-1}\) shows that \(\deg g=d\). Its monic generator is unique by division. Hence \(1,x,\ldots,x^{d-1}\) is a basis of every residue-field fibre of \(B\).
 
 The map \(A^d\to B\) defined by these powers is an isomorphism. To see this, localize at a prime of \(A\), choose a basis of the free rank-\(d\) module \(B\), and use its invertible determinant modulo the maximal ideal. The determinant is then a unit in that local ring. The map is an isomorphism at every prime, hence globally.
 
@@ -188,7 +188,12 @@ Extend each given open subfunctor in the same way. Its pullbacks on an arbitrary
 
 ## What this lesson does not prove
 
-We use Yoneda's lemma, gluing of schemes along open subschemes, and the standard affine charts of relative Proj as prerequisites. References are [Stacks, Tags 001P, 01JA, 01NS and 01O0]. We also use \(\Gamma(\mathbb P^1_k,\mathcal O(1))\simeq k^2\) and \(\Gamma(\mathbb P^1_k,\mathcal O)\simeq k\), which follow directly from homogeneous degree-one and degree-zero polynomials. No representability theorem for Hilbert or Picard functors is used here.
+The scheme-theoretic prerequisites have the following complete programme proofs.
+
+- **Maps and gluing.** The functor of points and representability, Theorem 1.1 proves Yoneda by evaluation at the identity. Schemes, gluing and immersions, Theorem 2.1 constructs the glued space, its structure sheaf and the gluing of morphisms. Affine schemes, Theorem 4.1 identifies maps to a spectrum with homomorphisms into global functions, including for a nonaffine source.
+- **Modules and projective charts.** Quasi-coherent sheaves on schemes, Theorem 3.1 proves the affine tensor formula for pullback. Proj of a graded ring, Lemma 1.1 and Theorems 2.1, 3.1–3.2 constructs the degree-zero localization charts, their overlaps and the degree-one twisting sheaves without finite-generation assumptions. Projective space, relative Proj and maps to projective space, Lemma 3.1 and Theorem 3.2 constructs relative Proj and proves arbitrary base change. Section 3 above uses these chart formulas to prove its own invertible-quotient classification for every quasi-coherent \(E\).
+
+These are the foundations corresponding to [Stacks, Tags 001P, 01JA, 01NS and 01O0]. The calculations \(\Gamma(\mathbb P^1_k,\mathcal O(1))\simeq k^2\) and \(\Gamma(\mathbb P^1_k,\mathcal O)\simeq k\) also follow directly from the two standard charts: Laurent coefficient comparison leaves homogeneous degree-one and degree-zero polynomials respectively. No representability theorem for Hilbert or Picard functors is used here.
 
 ## References
 

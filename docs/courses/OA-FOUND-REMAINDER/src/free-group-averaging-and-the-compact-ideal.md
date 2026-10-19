@@ -4,7 +4,7 @@
 
 The left and right regular actions of a free group commute. Their joint action on one Hilbert space has an ideal of compact operators, and removing that ideal gives the spatial tensor product of the two reduced group algebras. We will prove each part of this statement. The proof separates three mechanisms: an averaging argument proves simplicity of the factors; a spectral gap isolates a rank-one projection; and an average over word cuts compares the joint action with the spatial action modulo compact operators.
 
-Prerequisites are [Tensor norms and independent systems](../reader/tensor-norms-and-independent-systems.html), [Tensor independence and ideals](../reader/tensor-independence-and-ideals.html), and the functional calculus and quotient results in [C*-algebra foundations](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html), Theorem 5.1, Theorem 15.1 and Corollary 15.4. We reuse Theorem 2.1 of the tensor-independence lesson, which proves that a spatial tensor product of simple C*-algebras is simple, and Proposition 4.1 of that lesson, which computes the four-regular tree adjacency norm as \(2\sqrt3\). Familiarity with reduced words and orthogonal projections on Hilbert space is sufficient for the group arguments below.
+Prerequisites are [Tensor norms and independent systems](../reader/tensor-norms-and-independent-systems.html), [Tensor independence and ideals](../reader/tensor-independence-and-ideals.html), and the functional calculus and quotient results in [C\*-algebra foundations](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html), Theorem 5.1, Theorem 15.1 and Corollary 15.4. We reuse Theorem 2.1 of the tensor-independence lesson, which proves that a spatial tensor product of simple C\*-algebras is simple, and Proposition 4.1 of that lesson, which computes the four-regular tree adjacency norm as \(2\sqrt3\). Familiarity with reduced words and orthogonal projections on Hilbert space is sufficient for the group arguments below.
 
 Freely readable treatments are de la Harpe’s exposition of Powers averaging and Akemann and Ostrand’s paper on the compact ideal and spatial quotient. The arguments here give a reduced-word partition, an explicit cyclic-coset comparison and a word-cut isometry with a compact intertwining error. The last construction proves the essential-norm bound in Proposition 3.2 directly. The earlier programme lessons supply the norm, tensor and simplicity prerequisites.
 
@@ -281,9 +281,9 @@ The only closed two-sided ideals of \(\mathcal A\) are
 \tag{4.2}
 \]
 
-**Proof.** Commutation of \(L\) and \(R\) makes the algebraic multiplication map multiplicative and *-preserving. Proposition 3.2 and its norm-density extension make its composition with \(q\) contractive for the spatial norm. It therefore extends to a *-homomorphism on \(L\otimes_{\min}R\).
+**Proof.** Commutation of \(L\) and \(R\) makes the algebraic multiplication map multiplicative and \*-preserving. Proposition 3.2 and its norm-density extension make its composition with \(q\) contractive for the spatial norm. It therefore extends to a \*-homomorphism on \(L\otimes_{\min}R\).
 
-Corollary 2.4 identifies \(q(\mathcal A)\) with \(\mathcal A/\mathcal K(H)\). The extended homomorphism has dense range in this algebra, because products of elements of \(L\) and \(R\) have dense span in \(\mathcal A\). The range of a C*-algebra *-homomorphism is closed, so it is surjective.
+Corollary 2.4 identifies \(q(\mathcal A)\) with \(\mathcal A/\mathcal K(H)\). The extended homomorphism has dense range in this algebra, because products of elements of \(L\) and \(R\) have dense span in \(\mathcal A\). The range of a C\*-algebra \*-homomorphism is closed, so it is surjective.
 
 Theorem 1.4 makes \(L\) and \(R\) simple. The imported tensor-independence Theorem 2.1 consequently makes \(L\otimes_{\min}R\) simple. Our homomorphism is nonzero: it sends \(1\otimes1\) to \(q(1)\ne0\), since \(H\) is infinite dimensional. Its kernel, a proper closed ideal of a simple algebra, is zero. This proves (4.1).
 
@@ -358,8 +358,7 @@ Conversely the product state \(\tau_L\otimes\tau_R\) exists on the spatial produ
 
 ## References
 
-Powers proved simplicity of the reduced free-group C*-algebra; Akemann and Ostrand identified the spatial quotient by the compact ideal. The proofs here give the partition estimate, cyclic-stabilizer comparison, and word-cut compactness argument explicitly, while reusing the earlier spatial simplicity and adjacency results.
+Powers proved simplicity of the reduced free-group C\*-algebra; Akemann and Ostrand identified the spatial quotient by the compact ideal. The proofs here give the partition estimate, cyclic-stabilizer comparison, and word-cut compactness argument explicitly, while reusing the earlier spatial simplicity and adjacency results.
 
-- [Powers] R. T. Powers, *Simplicity of the C\*-algebra associated with the free group on two generators*, Duke Mathematical Journal **42** (1975), 151–156. [Publisher DOI](https://doi.org/10.1215/S0012-7094-75-04213-1).
 - [de la Harpe] P. de la Harpe, *On simplicity of reduced C\*-algebras of groups*, arXiv:math/0509450v1, 20 September 2005. [Free preprint](https://arxiv.org/pdf/math/0509450v1). This freely accessible exposition treats Powers’ result.
 - [Akemann–Ostrand] C. A. Akemann and P. A. Ostrand, *On a tensor product C\*-algebra associated with the free group on two generators*, Journal of the Mathematical Society of Japan **27** (1975), 589–599. [Free published PDF](https://www.jstage.jst.go.jp/article/jmath1948/27/4/27_4_589/_pdf) · [Publisher DOI](https://doi.org/10.2969/jmsj/02740589).

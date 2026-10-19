@@ -1,6 +1,6 @@
 # Hahn–Banach, Baire and the basic theorems on Banach spaces
 
-*Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all six solutions, supplied the well-ordering and infinite-product proof and corrected the non-Hausdorff example, October 2026. GPT-6 Astra (OpenAI), at the Ultra setting, supplied and self-checked Theorem 3.2 and Corollary 3.3, October 2026. Public domain (CC0).*
+*Mathematical exposition and worked exercises prepared with Claude Opus 5.5 (Anthropic), GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Original programme text: public domain (CC0).*
 
 The lessons of this course use a small number of theorems about normed spaces again and again. This lesson proves them.
 
@@ -303,9 +303,9 @@ F(a)-F(b)+1\\
 2. A point \(x\) outside a closed convex set \(C\) is strictly separated from \(C\) by a continuous linear functional.
 3. Every continuous linear functional on a subspace \(M\subseteq X\) extends to a continuous linear functional on \(X\).
 
-**Proof.** 1 and 2 are Theorem 6.3 with \(K=\{x\}\), and with \(C=\{y\}\) for 1.
+**Proof.** For an empty set in part 2, the zero functional and a threshold below its value at the given point give the required vacuous separation. For a nonempty set, 1 and 2 are Theorem 6.3 with \(K=\{x\}\), and with \(C=\{y\}\) for 1.
 
-3. If \(\varphi\) is continuous on \(M\), then \(\{m\in M:|\varphi(m)|<1\}\) contains a basic neighbourhood \(\{m\in M:p_i(m)<\varepsilon,\ i\le n\}\). Hence \(|\varphi(m)|\le\varepsilon^{-1}\max_ip_i(m)\) on \(M\): if this failed at some \(m\), a scalar multiple \(m'\) of \(m\) would have \(\max_ip_i(m')<\varepsilon\) and \(|\varphi(m')|\ge1\). The function \(q=\varepsilon^{-1}\max_ip_i\) is a continuous seminorm on \(X\). Theorem 2.2 extends \(\varphi\) to \(\Phi\) with \(|\Phi|\le q\), and \(\Phi\) is continuous. \(\square\)
+3. For the zero functional, the zero extension suffices. Otherwise, if \(\varphi\) is continuous on \(M\), then \(\{m\in M:|\varphi(m)|<1\}\) contains a basic neighbourhood \(\{m\in M:p_i(m)<\varepsilon,\ i\le n\}\). Hence \(|\varphi(m)|\le\varepsilon^{-1}\max_ip_i(m)\) on \(M\): if this failed at some \(m\), a scalar multiple \(m'\) of \(m\) would have \(\max_ip_i(m')<\varepsilon\) and \(|\varphi(m')|\ge1\). The function \(q=\varepsilon^{-1}\max_ip_i\) is a continuous seminorm on \(X\). Theorem 2.2 extends \(\varphi\) to \(\Phi\) with \(|\Phi|\le q\), and \(\Phi\) is continuous. \(\square\)
 
 **Lemma 6.5** (Closed kernels). A linear functional \(f\) on a topological vector space \(X\) is continuous if and only if its kernel is closed.
 
@@ -446,6 +446,6 @@ Apply Cantor–Schröder–Bernstein again. Finally, choose a bijection \(b:X\ti
 
 ## References
 
-The results are classical: Hahn (1927) and Banach (1929) for the extension theorem, Baire (1899), Banach and Steinhaus (1927), Banach and Schauder for the open mapping theorem, and Zorn (1935) for the maximality principle. Readers who want a single textbook account can use the core course Functional Analysis (J. M. Erdman, *Functional Analysis and Operator Algebras: An Introduction*), which states these theorems with hints for their proofs.
+The results are classical: Hahn (1927) and Banach (1929) for the extension theorem, Baire (1899), Banach and Steinhaus (1927), Banach and Schauder for the open mapping theorem, and Zorn (1935) for the maximality principle. Readers who want a single textbook account can use the core course Functional Analysis (J. M. Erdman, [*Functional Analysis and Operator Algebras: An Introduction*, version October 4, 2015](https://web.pdx.edu/~erdman/FAOA/functional_analysis_operator_algebras_pdf.pdf)), which states these theorems with hints for their proofs.
 
-*Freely accessible reading:* [J. van Neerven, *Functional Analysis*, §§4.2 and 5.1–5.3](https://arxiv.org/pdf/2112.11166v7) gives a route through Hahn–Banach, separation, Baire and the basic Banach-space theorems. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.
+*Freely accessible reading:* [J. van Neerven, *Functional Analysis*, §§4.2, 4.4 and 5.1–5.3](https://arxiv.org/pdf/2112.11166v7) gives a route through Hahn–Banach, separation, Baire and the basic Banach-space theorems. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.

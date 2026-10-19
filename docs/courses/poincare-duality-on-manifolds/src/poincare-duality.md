@@ -1,6 +1,6 @@
 # Poincaré duality
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Programme text prepared with Claude Opus 5.5 (Anthropic), GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 On an oriented \(n\)-dimensional manifold, cohomology with compact supports in degree \(k\) is isomorphic to homology in degree \(n-k\), by capping with the orientation classes. For a closed manifold this says that cohomology and homology are mirror images of each other around the middle dimension. The proof is local-to-global: the statement is checked on \(\mathbf R^n\), and the Mayer–Vietoris sequences and direct limits of the previous lesson propagate it to every manifold. This lesson proves the theorem for every commutative coefficient ring, in particular for the finite rings \(\mathbf Z/m\), and derives four consequences: the nondegeneracy of the cup product pairing over a field, the duality between ordinary and compactly supported cohomology over \(\mathbf Z/m\), the vanishing of the cohomology of an \(n\)-manifold above degree \(n\), and the integration map on compactly supported cohomology in the top degree, with its point classes and its behaviour under open embeddings, orientation-preserving homeomorphisms and products.
 

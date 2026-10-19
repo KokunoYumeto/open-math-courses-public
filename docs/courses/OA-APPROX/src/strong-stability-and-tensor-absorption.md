@@ -1,6 +1,6 @@
 # Strong stability and tensor absorption
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 The useful distinction is between an exact finite matrix coordinate and a limit of such coordinates. A finite matrix can always be removed from the central sequence algebra. An infinite string splits off only after a summability condition makes its tail averages tend to the identity. We construct the finite coordinates first, prove the finite-head removal, then treat the two summability hypotheses separately before building the commuting string needed for absorption.
 
@@ -75,14 +75,27 @@ If \(M\) has a faithful normal tracial state, then
 \tag{5}
 \]
 
-**Proof.** Write a unitary of \(D\) as \(u=\sum_{i,j}\lambda_{ij}e_{ij}\). Summing the \(p\) diagonal entries of its scalar identity \(u^*u=1\) gives \(\sum_{i,j}|\lambda_{ij}|^2=p\). Consequently
+**Proof.** The finite matrix-unit formula gives two defect identities directly:
 \[
-\|[u,\psi]\|
-\leq\sqrt p\left(\sum_{i,j}\|[e_{ij},\psi]\|^2\right)^{1/2}
-\leq p^{3/2}\max_{i,j}\|[e_{ij},\psi]\|.
+\begin{aligned}
+(\psi-\psi\circ E_D)(x)
+&=\frac1p\sum_{i,j}[e_{ij},\psi](xe_{ji}),\\
+x-E_D(x)
+&=\frac1p\sum_{i,j}[x,e_{ij}]e_{ji}.
+\end{aligned}
 \tag{7}
 \]
-The identity \((\psi-\psi\operatorname{Ad}u)(x)=[u,\psi](xu^*)\) makes these functional norms equal: multiplication by \(u^*\) bijects the unit ball. Average this bound over the exact finite list in (6), using the triangle inequality. This proves (4). In the tracial setting, the same coefficient calculation gives the same bound for \(\|[u,x]\|_2\); the trace law makes right multiplication by \(u^*\) a \(2\)-norm isometry, so \(\|uxu^*-x\|_2=\|[u,x]\|_2\). The finite triangle inequality now proves (5). All finite matrix sizes are covered. \(\square\)
+For the first identity expand each functional commutator using the stated convention. The first terms sum to \(p\psi(x)\), since \(\sum_{i,j}e_{ji}e_{ij}=p1\); the second terms sum to \(p\psi(E_D(x))\). The operator identity uses \(\sum_{i,j}e_{ij}e_{ji}=p1\) in the same way.
+
+If \(\|x\|\leq1\), each \(xe_{ji}\) has norm at most one. There are \(p^2\) summands, so the first identity gives the stronger bound
+\[
+\|\psi-\psi\circ E_D\|\leq p\max_{i,j}\|[e_{ij},\psi]\|.
+\]
+In the tracial setting, multiplication on the right by \(e_{ji}\) contracts the trace \(2\)-norm: positive order and the trace law give \(\|ye_{ji}\|_2\leq\|y\|_2\). The second identity and the triangle inequality therefore give
+\[
+\|x-E_D(x)\|_2\leq p\max_{i,j}\|[x,e_{ij}]\|_2.
+\]
+The sign change \([x,e_{ij}]=-[e_{ij},x]\) does not change these norms. Finally \(p\leq p^{3/2}\) for every positive integer \(p\), proving both stated inequalities. At \(p=1\) the matrix unit is the identity and both defects vanish. \(\square\)
 
 **Exercise 2.** Obtain the factor \(p^{3/2}\) in Lemma 2.1 from the scalar coefficients of a unitary matrix.
 
@@ -316,12 +329,12 @@ The same argument works for a fixed size \(p\geq2\) in place of two. Use \(p^{3/
 
 **Exercise 10.** Give a stable factor that is not strongly stable.
 
-*Solution.* Retain the full example \(M=B(\ell^2(\mathbb N))\). For each positive finite \(p\), every operator on the finite direct sum of \(p\) copies of this Hilbert space is its finite matrix of bounded operators. Thus
+*Solution.* Take \(M=B(\ell^2(\mathbb N))\). For each positive finite \(p\), every operator on the finite direct sum of \(p\) copies of this Hilbert space is its finite matrix of bounded operators. Thus
 \[
 B(\ell^2)\bar\otimes M_p
 =B(\ell^2\otimes\mathbb C^p).
 \]
-The basis bijection \((n,j)\mapsto pn+j\), \(n\geq0\), \(0\leq j<p\), extends to a Hilbert unitary from \(\ell^2\otimes\mathbb C^p\) to \(\ell^2\); its conjugation is normal with normal inverse. This proves stability for every \(p\). SS4 checks factoriality, separable predual and an explicit faithful normal state. CQ6 proves that its central sequence algebra is \(\mathbb C\) for every free ultrafilter, using all rank-one tests and the scalar ultraweak limit. Theorem 5.1 consequently excludes strong stability. No different example or finite-only version has replaced the given infinite type I factor.
+The basis bijection \((n,j)\mapsto pn+j\), \(n\geq0\), \(0\leq j<p\), extends to a Hilbert unitary from \(\ell^2\otimes\mathbb C^p\) to \(\ell^2\); its conjugation is normal with normal inverse. This proves stability for every \(p\). SS4 checks factoriality, separable predual and an explicit faithful normal state. CQ6 proves that its central sequence algebra is \(\mathbb C\) for every free ultrafilter, using all rank-one tests and the scalar ultraweak limit. Theorem 5.1 consequently excludes strong stability.
 
 <a id="references"></a>
 
@@ -329,4 +342,4 @@ The basis bijection \((n,j)\mapsto pn+j\), \(n\geq0\), \(0\leq j<p\), extends to
 
 The full current arguments use [SS0–4](../components/strong-stability-matrix-and-product-inputs.md), the completed finite comparison and trace construction, the normal predual and faithful normal GNS inputs, AF1–5, and the preceding complete central sequence, exact lifting and fullness/corner proofs. The finite and infinite limits are treated separately: faithfulness uses the converging tails, trace-preserving maps have whole-domain normality, and product states supply the spatial identification.
 
-Alain Connes, [*Outer conjugacy classes of automorphisms of factors*](https://www.numdam.org/articles/10.24033/asens.1295/), Lemmas 2.3.5–2.3.6, printed pp.406–407 (PDF pp.25–26), is the freely accessible comparison for the matrix-functional estimate and commuting-matrix summability method. Its estimate is \(p^2\), and its splitting proof calls on Haar averaging, finite-factor identification and modular conditional-expectation results. Here the finite sign/permutation average gives \(p^{3/2}\), the complete variable product supplies the factor identification, and the entire product-GNS argument supplies the splitting. The independent trace-norm construction and every boundary case above are proved explicitly.
+Alain Connes, [*Outer conjugacy classes of automorphisms of factors*](https://www.numdam.org/articles/10.24033/asens.1295/), Lemmas 2.3.5–2.3.6, printed pp.406–407 (PDF pp.25–26), gives the freely accessible comparison for matrix-functional estimates and commuting-matrix summability. Lemma 2.3.5 records \(p^2\); its splitting proof uses Haar averaging, finite-factor identification and modular conditional-expectation results. The finite sign/permutation formula defines the expectation here, and the direct matrix-unit defect identities give \(p\). Exercise 2 derives the stated coefficient factor \(p^{3/2}\) as well. The complete variable matrix product supplies the factor identification, and the whole normal product-GNS argument supplies the splitting. Both normal-functional and trace \(2\)-norm constructions include their full hypotheses and boundary cases.

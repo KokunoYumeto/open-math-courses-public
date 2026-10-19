@@ -332,6 +332,175 @@ It is continuous, equals one on \([\varepsilon,1-\varepsilon]\), and vanishes of
 
 **Solution.** In \(\alpha_h(\int\phi(g)\alpha_g(p)\,dg)\), substitute \(k=hg\). Left invariance changes the kernel to \(\phi(h^{-1}k)\) and introduces no scalar. In \(E(\alpha_g(p))\), the integration variable occurs as \(hg\) with \(g\) fixed on its right; (C3) gives the factor \(\Delta_G(g)^{-1}\). Integrating that factor against the compactly supported kernel proves (C6).
 
+
+### A faithful probability and its unitary translations
+
+The same translation system has an explicit probability model. Set
+\[
+ \rho(x)=\tfrac12e^{-|x|},\qquad d\lambda(x)=\rho(x)\,dx,\qquad
+ \varphi(F)=\int_{\mathbb R}F(x)\rho(x)\,dx .
+ \tag{PM1}
+\]
+Integration on the two half-lines gives \(\int\rho\,dx=1\).
+For precision, the products and derivatives of the exponential follow
+from the uniformly convergent factorial-series argument in
+[CF3](OA-FLOW-CF.md#oa-flow.cf.3), with the series regrouping proved in CF1.
+The identities \(e^xe^{-x}=1\) and \(e^x=(e^{x/2})^2\) show positivity.
+For \(x\ge0\), the series gives \(e^x\ge1+x\); hence \(e^{-x}\to0\).
+SC8 now integrates the exponential on finite intervals, and SC4 passes
+to the two infinite half-lines.
+Since \(\rho\) is everywhere positive and continuous, \(\lambda\) is a
+full-support Radon probability with exactly the Lebesgue null sets.
+The \(L^1\) predual description in IW1 makes \(\varphi\) normal, and
+positivity of \(\rho\) makes it faithful.
+
+Here \(\Theta:L^\infty(\mathbb R,dx)\to L^\infty(\mathbb R,\lambda)\)
+is simply the identity on measurable classes. It and its inverse are
+normal. Indeed, for every \(k\in L^1(dx)\),
+\[
+ \int Fk\,dx=\int F\,\frac{k}{\rho}\,d\lambda,\qquad
+ \left\|\frac{k}{\rho}\right\|_{L^1(\lambda)}=\|k\|_{L^1(dx)}.
+ \tag{PM2}
+\]
+Conversely \(q\mapsto q\rho\) is the inverse isometry from \(L^1(\lambda)\)
+to \(L^1(dx)\). These formulas give the preadjoints of the two identity
+maps. Although \(1/\rho\) is unbounded, division by \(\rho\) in (PM2)
+takes place between the stated weighted \(L^1\) spaces and is well defined.
+
+The translation \(x\mapsto x+t\) carries \(\lambda\) to a measure with
+density \(\rho(x-t)\) against \(dx\). Consequently
+\[
+ r_t(x)=\frac{d(t_*\lambda)}{d\lambda}(x)
+       =\frac{\rho(x-t)}{\rho(x)}
+       =e^{|x|-|x-t|},\qquad
+ e^{-|t|}\le r_t(x)\le e^{|t|}.
+ \tag{PM3}
+\]
+The change of variables \(y=x+t\) proves the density formula on every
+nonnegative measurable test. The two bounds follow from the triangle
+inequality. These everywhere positive continuous representatives obey
+\[
+ r_{s+t}(x)=r_s(x)\,r_t(x-s).
+ \tag{PM4}
+\]
+This is direct cancellation of \(\rho(x-s)\) between the two ratios,
+so no exceptional sets depending on \(s\) and \(t\) are needed.
+
+Write \(B_tF(x)=F(x-t)\). Formula (C20) becomes the explicit preadjoint
+\[
+ (B_t)_*q(x)=r_{-t}(x)q(x+t)
+            =e^{|x|-|x+t|}q(x+t).
+ \tag{PM5}
+\]
+For example, multiplying this expression by \(\rho(x)\), integrating,
+and setting \(y=x+t\) gives
+\(\|(B_t)_*q\|_{L^1(\lambda)}=\|q\|_{L^1(\lambda)}\).
+The same substitution against \(F\) proves the duality identity.
+Thus the sign of the density in the preadjoint is \(-t\).
+
+On the Hilbert space \(L^2(\lambda)\), the implementing unitary is instead
+\[
+ (U_t\xi)(x)=r_t(x)^{1/2}\xi(x-t)
+           =e^{(|x|-|x-t|)/2}\xi(x-t).
+ \tag{PM6}
+\]
+Indeed
+\[
+ \begin{aligned}
+ \|U_t\xi\|_{L^2(\lambda)}^2
+ &=\int r_t(x)|\xi(x-t)|^2\rho(x)\,dx\\
+ &=\int|\xi(y)|^2\rho(y)\,dy=\|\xi\|_{L^2(\lambda)}^2.
+ \end{aligned}
+ \tag{PM7}
+\]
+The cocycle identity (PM4) gives \(U_sU_t=U_{s+t}\) and \(U_0=1\);
+in particular \(U_{-t}\) is the inverse. If \(M_F\) denotes multiplication
+by \(F\), direct substitution gives
+\[
+ U_tM_FU_t^*=M_{B_tF}.
+ \tag{PM8}
+\]
+Thus these unitaries implement the entire normal algebra action.
+
+The density unitary makes strong continuity transparent:
+\[
+ J:L^2(\lambda)\longrightarrow L^2(dx),\quad J\xi=\rho^{1/2}\xi,
+ \qquad JU_tJ^{-1}\eta(x)=\eta(x-t).
+ \tag{PM9}
+\]
+Both the norm equality for \(J\) and surjectivity follow by dividing
+an arbitrary \(\eta\in L^2(dx)\) by \(\rho^{1/2}\); the resulting
+function has exactly the required weighted square integral.
+In the conjugation formula the three density factors cancel.
+The strong continuity of Lebesgue translations proved in
+[L24](OA-FLOW-L24.md#oa-flow.grp.translations) therefore proves strong
+continuity of \(U\). This argument applies to every vector of
+\(L^2(\lambda)\).
+
+The probability measure has not made the averaging domain larger.
+For any bounded nonnegative Borel \(F\), Lebesgue substitution gives,
+with infinity allowed,
+\[
+ I_F(x)=\int_{\mathbb R}F(x-t)\,dt=\int_{\mathbb R}F(y)\,dy
+ \quad\text{for every }x.
+\]
+By the full-domain identity (C22),
+\[
+ P_b=L^\infty(\lambda)_+\cap L^1(dx),\qquad
+ D_b=L^\infty(\lambda)\cap L^1(dx),\qquad
+ E(F)=\left(\int F\,dx\right)1\quad(F\in P_b).
+ \tag{PM10}
+\]
+The intersections use the common measurable classes of the equivalent
+measures. In particular \(1\in L^1(\lambda)\) but \(1\notin P_b\):
+its group orbit integral is infinite. Every compactly supported
+continuous function does belong to \(D_b\). The group average uses the
+group's Haar measure \(dt\); \(\lambda\) supplies the faithful normal
+state and the Hilbert-space norm.
+
+For a concrete norm calculation, take \(t=1\) and
+\(\xi=1_{[0,1]}\). Then \(B_1\xi=1_{[1,2]}\), whereas
+\(U_1\xi=\sqrt e\,1_{[1,2]}\) by (PM3). Integration gives
+\[
+ \|\xi\|_\lambda^2=\frac{1-e^{-1}}2,\qquad
+ \|B_1\xi\|_\lambda^2=e^{-1}\frac{1-e^{-1}}2,\qquad
+ \|U_1\xi\|_\lambda^2=\frac{1-e^{-1}}2.
+ \tag{PM11}
+\]
+The unweighted pullback still defines the algebra automorphism, but its
+action on vectors fails to preserve this Hilbert norm.
+
+![Three interval indicator graphs: the original vector, its plain translated pullback, and the translated vector with amplitude square root of e. The original and unitary images have equal weighted squared norms.](../assets/measure-models/continuous/translation-probability.png)
+
+All three panels use \(d\lambda(x)=\tfrac12e^{-|x|}\,dx\). The graphs show
+amplitudes, while the labels give their squared integrals against this
+measure, as proved in (PM11). The displayed intervals are the full supports
+of these vectors; the probability measure is defined on the whole real
+line. [Editable vector figure](../assets/measure-models/continuous/translation-probability.svg),
+[reproduction code](../assets/measure-models/continuous/translation-probability.py),
+[exact data](../assets/measure-models/continuous/translation-probability.json),
+and [component terms](../assets/measure-models/continuous/translation-probability-LICENSE.txt).
+
+**Problem.** The vector \(1\) lies in \(L^2(\lambda)\). Is it fixed by
+the unitary translations, and how far does it move?
+
+**Solution.** Put \(a=|t|\). Equation (PM6) gives \(U_t1=\sqrt{r_t}\).
+Both vectors have norm one, so
+\[
+ \|U_t1-1\|_\lambda^2
+ =2-2\int_{\mathbb R}\sqrt{\rho(x-t)\rho(x)}\,dx
+ =2-2(1+a/2)e^{-a/2}.
+ \tag{PM12}
+\]
+To evaluate the integral for \(t\ge0\), split the real line at \(0\) and
+\(t\). The three contributions are respectively
+\(\tfrac12e^{-t/2}\), \(\tfrac t2e^{-t/2}\), and
+\(\tfrac12e^{-t/2}\). Reflection \(x\mapsto-x\) treats negative \(t\).
+For \(a>0\), the derivative of \((1+a/2)e^{-a/2}\) is
+\(-a e^{-a/2}/4<0\); its value at zero is one.
+Thus \(1\) is moved by every nonzero translation, and the displayed
+distance tends to zero as \(t\to0\).
+
 The bounded-integral convention and the continuous-spectrum construction are classical; compare M. Takesaki, *Theory of Operator Algebras II*, §X.2, printed pp.265–266, and the construction preceding Lemma X.4.14, printed p.306. The theorem proved here concerns a continuous measured model. It makes no assertion that this chosen space is proper or that all of its bounded orbit averages are continuous.
 
 Original exposition, proofs as expressed here, and diagrams are dedicated under CC0-1.0 to the extent of rights held. The accompanying figure uses DejaVu Sans and its mathematical font; the DejaVu font terms remain applicable.

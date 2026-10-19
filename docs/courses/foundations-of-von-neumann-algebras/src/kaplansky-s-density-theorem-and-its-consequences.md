@@ -1,6 +1,6 @@
 # Kaplansky's density theorem and its consequences
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check; revised and self-checked by that writing AI in October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all five solutions, compared the exact programme prerequisites and supplied the remaining background details, October 2026. The bounded-net proof in Theorem 7.2 was added by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*AI authors: Claude Opus 5.5 (Anthropic) and GPT-6.1 Sol (OpenAI). Mathematical review: GPT-6 Astra (OpenAI), Ultra. Public domain (CC0).*
 
 The double commutant theorem says that a nondegenerate \(*\)-algebra \(A\) of operators is dense in its bicommutant \(A''\) for the strong and weak operator topologies. The nets that it produces can be unbounded. That makes them hard to use: a product of two strongly convergent nets need not converge unless the nets are bounded, and the functional calculus need not follow unbounded nets. Kaplansky's density theorem removes the difficulty. Every element of \(A''\) of norm at most one is a strong\(^*\) limit of a net of elements of \(A\) of norm at most one, and the same holds for self-adjoint and for positive elements.
 
@@ -688,7 +688,7 @@ WJW^*\zeta\\
 
 (2) Let \(y\) be the self-adjoint completion of Lemma 10.3, with \(ye=xe\) and \(\|y\|=\|xe\|\), and \(B=A_h\cap\|xe\|S\). By Theorem 7.1(2), \(y\) lies in the strong closure of \(B\).
 
-(3) Let \(y=x\) and \(B=U(A,\|x-1\|)\). By Theorem 9.1, \(x\) lies in its strong closure. \(\square\)
+(3) If \(x=1\), take \(a=1\) and \(f=e\). Otherwise \(\|x-1\|>0\); let \(y=x\) and \(B=U(A,\|x-1\|)\). By Theorem 9.1, \(x\) lies in its strong closure. \(\square\)
 
 **Lemma 10.5** (correcting a unitary). Let \(w\in U(M)\) and let \(e\in M\) be a projection with \(\|(1-w)e\|\le\frac18\). There is \(v\in U(M)\) with \(ve=we\) and \(\|1-v\|\le6\|(1-w)e\|\).
 
@@ -715,7 +715,7 @@ U-(1-e)\\
 \]
 The spectrum of \(|T|^2\) in \((1-e)M(1-e)\) lies in \([1-\theta,1+\theta]\), and for \(|s|\le\theta\le\frac14\) we have \(|(1+s)^{-1/2}-1|\le\theta\) and \((1+s)^{-1/2}\le(1-\theta)^{-1/2}\le\frac2{\sqrt3}\). So \(\|U-(1-e)\|\le\theta+\frac2{\sqrt3}\theta\le2.2\,\theta\le4.4\,\delta\).
 
-*The unitary \(v\).* Put \(v=we+U\). Then \(ve=we\), because \(Ue=0\). Next, \(U^*we=|T|^{-1}(1-e)(1-f)fw=0\) and \(eU^*=0\), so the cross terms in \(v^*v\) and \(vv^*\) vanish. Hence \(v^*v=ew^*we+U^*U=e+(1-e)=1\) and \(vv^*=wew^*+UU^*=f+(1-f)=1\). Finally \(1-v=(1-w)e+\big((1-e)-U\big)\), so \(\|1-v\|\le\delta+4.4\,\delta<6\delta\). \(\square\)
+*The unitary \(v\).* Put \(v=we+U\). Then \(ve=we\), because \(Ue=0\). Next, \(U^*we=|T|^{-1}(1-e)(1-f)fw=0\) and \(eU^*=0\), so the cross terms in \(v^*v\) and \(vv^*\) vanish. Hence \(v^*v=ew^*we+U^*U=e+(1-e)=1\) and \(vv^*=wew^*+UU^*=f+(1-f)=1\). Finally \(1-v=(1-w)e+\big((1-e)-U\big)\), so \(\|1-v\|\le\delta+4.4\,\delta\le6\delta\). \(\square\)
 
 **Theorem 10.6** (noncommutative Lusin theorem). Let \(\varphi\in M_*^+\), \(e\in M\) a projection, \(\varepsilon>0\) and \(\delta>0\).
 
@@ -798,6 +798,12 @@ By (10.3), \(\|1-u_1\|\le\|1-x\|\) and \(\|1-u_k\|\le\|1-w_k\|<2^{-k+1}\delta\) 
 \]
 and \(xf=af\). \(\square\)
 
+**Simultaneous norm bounds.** In parts (1) and (2), one can require, for any further \(\eta>0\),
+\[
+\|a\|\le\min\{(1+\delta)\|xf\|,\ \|x\|+\eta\}.
+\]
+Indeed, apply the theorem with \(\gamma=\min\{\delta,\eta/(1+\|x\|)\}>0\) in place of \(\delta\). Since \(\|xf\|\le\|x\|\), the resulting estimate gives both \(\|a\|\le(1+\delta)\|xf\|\) and \(\|a\|\le\|x\|+\gamma\|x\|\le\|x\|+\eta\). The equality on \(fH\), the measure bound, and self-adjointness in part (2) are unchanged. \(\square\)
+
 **Example 10.7** (the commutative case). Let \(\mu\) be Lebesgue measure on \([0,1]\), \(M\) the algebra of multiplication operators \(m_g\) by bounded measurable \(g\) on \(L^2[0,1]\), \(A\) the multiplication operators by continuous functions, and \(\varphi(m_g)=\int g\,d\mu\), the vector functional of the constant function \(1\). The projections of \(M\) are the operators \(m_{1_E}\), and \(\varphi(1-m_{1_E})=\mu([0,1]\setminus E)\). A bounded sequence \(g_k\to g\) almost everywhere gives \(m_{g_k}\to m_g\) strongly, by dominated convergence. Theorem 10.2 then yields a set \(E\) with small complement on which a sequence of the \(g_k\) converges uniformly, up to a null set: a form of Egoroff's theorem. Theorem 10.6(1) yields a continuous \(a\) that agrees with a bounded measurable \(g\) almost everywhere on a set \(E\) with small complement, with \(\max|a|\le(1+\delta)\operatorname{ess\,sup}_E|g|\): this is Lusin's theorem with control of the norm. (That \(M\) is the weak closure of \(A\) is shown in Exercise 14.2.)
 
 ## 11. Kadison's transitivity theorem
@@ -807,7 +813,7 @@ A concrete C\(^*\)-algebra \(A\) on \(H\) is *irreducible* if \(A\ne\{0\}\) and 
 **Theorem 11.1** (Kadison's transitivity theorem). Let \(A\) be an irreducible concrete C\(^*\)-algebra on \(H\), let \(e\) be a projection of finite rank on \(H\), and let \(\varepsilon>0\).
 
 1. For every \(b\in B(H)\) there is \(a\in A\) with \(ae=be\) and \(\|a\|\le(1+\varepsilon)\|be\|\). In particular \(Ae=B(H)e\).
-2. If \(b\) is self-adjoint, \(a\) can be chosen self-adjoint with \(ae=be\) and \(\|a\|\le(1+\varepsilon)\|be\|\).
+2. If \(b\) is self-adjoint, \(a\) can be chosen self-adjoint with \(ae=be\) and \(\|a\|\le\min\{(1+\varepsilon)\|be\|,\ \|b\|+\varepsilon\}\).
 3. If \(b\ge0\), \(a\) can be chosen with \(a\ge0\), \(ae=be\) and \(\|a\|\le(1+\varepsilon)\|b\|\).
 4. For every unitary \(u\in B(H)\) there is a unitary \(v\) in the C\(^*\)-algebra \(A+\mathbb C1\) with \(ve=ue\) and \(\|v-1\|\le\|u-1\|+\varepsilon\).
 
@@ -816,7 +822,7 @@ A concrete C\(^*\)-algebra \(A\) on \(H\) is *irreducible* if \(A\ne\{0\}\) and 
 
 *A normal functional that detects \(e\).* Let \(\varepsilon_1,\dots,\varepsilon_r\) be an orthonormal basis of \(eH\) and \(\varphi(y)=\sum_{j=1}^r\langle y\varepsilon_j,\varepsilon_j\rangle\), the trace of \(eye\). It is a positive normal functional on \(B(H)\). For a projection \(f\le e\), \(\varphi(e-f)\) is the rank of \(e-f\), an integer. So \(\varphi(e-f)<\frac12\) forces \(f=e\).
 
-(1) and (2). Apply Theorem 10.6(1), respectively (2), to \(x=b\), \(M=B(H)\), the projection \(e\) and the functional \(\varphi\), with \(\frac12\) in place of \(\varepsilon\) and \(\varepsilon\) in place of \(\delta\). The projection \(f\) it produces is \(e\), so \(ae=be\) and \(\|a\|\le(1+\varepsilon)\|be\|\).
+(1) and (2). Apply Theorem 10.6(1), respectively (2), to \(x=b\), \(M=B(H)\), the projection \(e\) and the functional \(\varphi\), with \(\frac12\) in place of \(\varepsilon\) and \(\varepsilon\) in place of \(\delta\). The projection \(f\) it produces is \(e\), so \(ae=be\) and \(\|a\|\le(1+\varepsilon)\|be\|\). For the simultaneous bound in (2), use the consequence following Theorem 10.6 with \(\delta=\eta=\varepsilon\); the same rank argument forces \(f=e\).
 
 (3) Let \(e'\) be the projection onto the finite-dimensional space \(eH+b^{1/2}eH\). Choose \(\varepsilon'>0\) with \((1+\varepsilon')^2\le1+\varepsilon\). By (2) there is a self-adjoint \(c\in A\) with \(ce'=b^{1/2}e'\) and \(\|c\|\le(1+\varepsilon')\|b^{1/2}\|\). Put \(a=c^2\ge0\). Since \(e\le e'\), \(ce=b^{1/2}e\), and since \(b^{1/2}e=e'b^{1/2}e\),
 \[
@@ -1054,7 +1060,13 @@ M_h\\
 =\Big(\big((A_h)^{\uparrow}\big)^{\downarrow}\Big)^{\uparrow}.
 \end{gathered}
 \]
-If \(1\in A\), then moreover \(M_+\cap S=\Big(\big((A_+\cap S)^{\nearrow}\big)^{\downarrow}\Big)^{\uparrow}\).
+If \(1\in A\), then moreover
+\[
+\begin{gathered}
+M_+\cap S=\Big(\big((A_+\cap S)^{\nearrow}\big)^{\downarrow}\Big)^{\uparrow},\\
+M_h=\Big(\big((A_h)^{\nearrow}\big)^{\downarrow}\Big)^{\uparrow}.
+\end{gathered}
+\]
 
 
 **Proof.** The inclusions \(\supseteq\) hold by Lemma 12.2(5).
@@ -1065,7 +1077,7 @@ If \(1\in A\), then moreover \(M_+\cap S=\Big(\big((A_+\cap S)^{\nearrow}\big)^{
 
 *Step 3: projections.* Let \(p\in M\) be a projection. For \(\xi\in pH\) and \(\eta\in(1-p)H\), Lemma 12.5 applied to \(p\) and the two vectors \(\xi,\eta\) gives a projection \(q_{\xi,\eta}\in\big((A_+\cap S)^{\nearrow}\big)^{\searrow}\subseteq Y\) with \(q_{\xi,\eta}\xi=\xi\) and \(q_{\xi,\eta}\eta=0\). Put \(p_\xi=\bigwedge_{\eta\in(1-p)H}q_{\xi,\eta}\), which lies in \(Y\) by Step 2. Then \(p_\xi\xi=\xi\), and \(p_\xi\eta=p_\xi q_{\xi,\eta}\eta=0\) for every \(\eta\in(1-p)H\), so \(p_\xi\le p\). Hence \(p=\bigvee_{\xi\in pH}p_\xi\), and \(p\in Y^{\uparrow}\) by Lemma 12.8.
 
-*Step 4: positive contractions.* Let \(x\in M_+\cap S\), and write \(x=\sum_k2^{-k}p_k\) with projections \(p_k\in M\) (Corollary 4.6). By Step 3 each \(p_k\) is the limit of an increasing net \((y_{k,j})_{j\in J_k}\) in \(Y\); add a least element with value \(0\) as in Lemma 12.8. Let \(\Gamma\) be the set of functions \(\gamma\) on \(\{1,2,\dots\}\) with \(\gamma(k)\in J_k\), equal to the least element for all but finitely many \(k\), ordered pointwise, and put \(x_\gamma=\sum_k2^{-k}y_{k,\gamma(k)}\). The sum is finite, and \(x_\gamma\in Y\), as a convex combination of elements of \(Y\) and \(0\). The net \((x_\gamma)\) increases, and \(x_\gamma\le x\). For every \(N\), \(\lim_\gamma x_\gamma\ge\sum_{k\le N}2^{-k}p_k\ge x-2^{-N}\). So \(x_\gamma\to x\), and \(x\in Y^{\uparrow}=\Big(\big((A_+\cap S)^{\nearrow}\big)^{\downarrow}\Big)^{\uparrow}\). This proves the last statement of the theorem, and the first one for unital \(A\).
+*Step 4: positive contractions.* Let \(x\in M_+\cap S\), and write \(x=\sum_k2^{-k}p_k\) with projections \(p_k\in M\) (Corollary 4.6). By Step 3 each \(p_k\) is the limit of an increasing net \((y_{k,j})_{j\in J_k}\) in \(Y\); add a least element with value \(0\) as in Lemma 12.8. Let \(\Gamma\) be the set of functions \(\gamma\) on \(\{1,2,\dots\}\) with \(\gamma(k)\in J_k\), equal to the least element for all but finitely many \(k\), ordered pointwise, and put \(x_\gamma=\sum_k2^{-k}y_{k,\gamma(k)}\). The sum is finite, and \(x_\gamma\in Y\), as a convex combination of elements of \(Y\) and \(0\). The net \((x_\gamma)\) increases, and \(x_\gamma\le x\). For every \(N\), \(\lim_\gamma x_\gamma\ge\sum_{k\le N}2^{-k}p_k\ge x-2^{-N}\). So \(x_\gamma\to x\), and \(x\in Y^{\uparrow}=\Big(\big((A_+\cap S)^{\nearrow}\big)^{\downarrow}\Big)^{\uparrow}\). This proves the positive-contraction formula with a sequential first stage, and the first formula for unital \(A\).
 
 *Step 5: the general case.* Let \(\tilde A=A+\mathbb C1\). Since \(A\) is nondegenerate, \(1\in A''\), so \(\tilde A''=A''=M\). By Step 4 for \(\tilde A\), and Lemma 12.7(2),
 \[
@@ -1076,7 +1088,7 @@ M_+\cap S\\
 \end{gathered}
 \]
 
-*Step 6: self-adjoint elements.* The decomposition used for Theorem 12.6 writes \(y\in M_h\) as \(2\|y\|x-\|y\|\cdot1\) with \(x\in M_+\cap S\). An increasing approximate identity of \(A\) converges strongly to \(1\) (proof of Lemma 12.7), so \(1\in(A_h)^{\uparrow}\) and \(-\|y\|\cdot1\in(A_h)^{\downarrow}\subseteq\Big(\big((A_h)^{\uparrow}\big)^{\downarrow}\Big)^{\uparrow}\). This set is closed under sums and contains \(2\|y\|x\) by Lemma 12.2. \(\square\)
+*Step 6: self-adjoint elements.* The decomposition used for Theorem 12.6 writes \(y\in M_h\) as \(2\|y\|x-\|y\|\cdot1\) with \(x\in M_+\cap S\). An increasing approximate identity of \(A\) converges strongly to \(1\) (proof of Lemma 12.7), so \(1\in(A_h)^{\uparrow}\) and \(-\|y\|\cdot1\in(A_h)^{\downarrow}\subseteq\Big(\big((A_h)^{\uparrow}\big)^{\downarrow}\Big)^{\uparrow}\). This set is closed under sums and contains \(2\|y\|x\) by Lemma 12.2. If \(1\in A\), the case \(y=0\) follows from constant sequences and nets. For \(y\ne0\), apply the affine map \(t\mapsto2\|y\|t-\|y\|1\) to each stage of the positive-contraction formula in Step 4. This map takes \(A_h\) into itself, preserves increasing sequences and monotone nets, and commutes with their strong limits. It therefore gives the stated self-adjoint formula with a sequence at the first stage. \(\square\)
 
 **Corollary 12.10** (the monotone closure criterion). Let \(A\) be a concrete C\(^*\)-algebra acting nondegenerately on \(H\).
 
@@ -1218,7 +1230,7 @@ For fixed \(y\) and \(\xi\), the right side tends to \(0\) when \(x\to y\) stron
 
 *Solution.* (a) For a finite-dimensional subspace \(F\), let \(F'=F+uF\). The argument of Theorem 8.1(3) extends \(u|_F\) to a unitary \(W\) of \(F'\). Let \(u_F=W\) on \(F'\) and \(1\) on \(F'^\perp\). Then \(u_F-1\) vanishes on \(F'^\perp\) and has range in \(F'\), so it has finite rank, and \(u_F\xi=u\xi\) for \(\xi\in F\). Directed by inclusion, \(u_F\to u\) strongly, and strongly\(^*\) by Corollary 2.4.
 
-(b) \(A\) is a unital concrete C\(^*\)-algebra, and its weak closure is \(B(H)\), because already \(K(H)\) is weakly dense ([Example 4.6 of the double commutant lesson](the-double-commutant-theorem.md#oa-fnd-bi-07)). Theorem 9.1 gives a net in \(U(A,\lambda)\) that converges strongly\(^*\) to \(u\).
+(b) \(A\) is a unital concrete C\(^*\)-algebra, and its weak closure is \(B(H)\), because already \(K(H)\) is weakly dense ([Example 4.6 of the double commutant lesson](the-double-commutant-theorem.md#oa-fnd-bi-07)). If \(\lambda=0\), then \(u=1\), and the constant net \(1\) suffices. If \(\lambda>0\), Theorem 9.1 gives a net in \(U(A,\lambda)\) that converges strongly\(^*\) to \(u\).
 
 (c) Let \(\xi,\eta\) be orthonormal, \(0<\theta<\pi/2\), and let \(u\) be the rotation by \(\theta\) in the plane spanned by \(\xi,\eta\), and \(1\) on its orthogonal complement; then \(\|u-1\|=2\sin(\theta/2)\) is small for small \(\theta\). For \(F=\mathbb C\xi\), \(F'\) is that plane, and \(W\) must send \(\xi\) to \(u\xi\) and the unit vector \(\zeta\in F'\ominus F\) to a unit vector of \(F'\ominus uF\). Choosing \(W\zeta=-u\zeta\) is allowed, and then \(\|(u_F-1)\zeta\|=\|u\zeta+\zeta\|\ge2-\|u\zeta-\zeta\|\), which is close to \(2\). \(\square\)
 

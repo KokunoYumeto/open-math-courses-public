@@ -473,6 +473,72 @@ The vector integral is bounded by \(\|f\|_2\|\xi\|\), and
 \]
 Every constant operator in \(B'\) commutes with \(Y\); [ND's actual tensor-commutant theorem](OA-FLOW-ND.md#nd-tensor) puts \(Y\) in \(B\bar\otimes B(K)\). Its initial and final supports are below \(e\otimes1\). It is nonzero: choose \(\eta\) with \(x\eta\ne0\) and \(\xi(t)=\overline{f(t)}\eta\); continuity of \(r\mapsto\beta_{-r}(x)\eta\) gives a positive-norm output near zero.
 
+**Transporting the kernel through a normal automorphism.** We justify the tensor transport used below on the full Hilbert space. Put
+\[
+ A=E_\beta(x^*x)\in B_+,\qquad
+ d_s(r)=\alpha_s(\beta_{-r}(x)),\qquad
+ L_f\xi=\int_{\mathbb R}f(t)\xi(t)\,dt.
+ \tag{CI31a}
+\]
+The bounded element \(A\) is the increasing supremum of the compact interval averages of \(\beta_{-r}(x^*x)\); the substitution \(t=-r\) gives this normalization. For a fixed \(s\), normality and multiplicativity of \(\alpha_s\) therefore give
+\[
+ \int_{\mathbb R}\|d_s(r)\eta\|^2\,dr
+   =\langle\alpha_s(A)\eta,\eta\rangle
+   \le\|A\|\,\|\eta\|^2
+       \qquad(\eta\in H).
+ \tag{CI31b}
+\]
+Indeed the identity on a compact interval follows by testing its ultraweak integral with the normal positive functional
+\(b\mapsto\langle\alpha_s(b)\eta,\eta\rangle\); increasing those intervals proves the displayed equality. The vector function \(r\mapsto d_s(r)\eta\) is continuous. One way to check this without choosing a spatial implementer of \(\alpha_s\) is to write the squared norm of a difference as that same normal functional applied to
+\((\beta_{-r}(x)-\beta_{-r_0}(x))^*(\beta_{-r}(x)-\beta_{-r_0}(x))\).
+Strong-star continuity on this bounded orbit makes the value tend to zero. In a faithful normal representation this also follows directly by expressing the normal functional as a summable family of vector functionals and controlling its tail uniformly.
+
+Thus
+\[
+ (Z_s\xi)(r)=d_s(r)L_f\xi,\qquad
+ \|Z_s\|\le\|A\|^{1/2}\|f\|_2
+ \tag{CI31c}
+\]
+defines an everywhere-defined bounded operator. Equation (CI31b) supplies square integrability for every \(L_f\xi\), even when the original orbit is not integrable in operator norm.
+
+For \(g,h\in C_c(\mathbb R)\), define
+\(I_g:H\to L^2(\mathbb R,H)\) by \((I_g\eta)(t)=g(t)\eta\). Its adjoint is \(I_h^*\zeta=\int\overline{h(r)}\zeta(r)\,dr\). Direct integration of (CI30) gives the bounded coefficient in \(B\)
+\[
+ I_h^*YI_g
+   =\left(\int_{\mathbb R} f(t)g(t)\,dt\right)
+      \int_{\mathbb R}\overline{h(r)}\beta_{-r}(x)\,dr .
+ \tag{CI31d}
+\]
+The final integral is ultraweak: each normal functional is integrated against the compactly supported scalar function \(\overline h\). Its absolute value is bounded by
+\(\|\omega\|\,\|x\|\,\|h\|_1\), so it defines an element of the dual space \(B=(B_*)^*\). This specifies the integral even when the orbit fails to be norm continuous.
+
+For every \(T\in B\bar\otimes B(K)\), tensor transport and scalar slicing satisfy
+\[
+ I_h^*\widetilde\alpha_s(T)I_g
+       =\alpha_s(I_h^*TI_g).
+ \tag{CI31e}
+\]
+To prove this identity, first take \(T=b\otimes S\); both sides are
+\(\langle Sg,h\rangle\alpha_s(b)\). Both maps in (CI31e) are normal, since compression by fixed bounded maps is normal and \(\widetilde\alpha_s\) and \(\alpha_s\) are normal. The algebraic tensor product is ultraweakly dense in the spatial tensor product, so the identity follows for every bounded \(T\).
+
+Apply (CI31e) to \(Y\). A normal automorphism passes through the ultraweak integral in (CI31d): testing with \(\omega\in B_*\) amounts to using the normal functional \(\omega\circ\alpha_s\) before integration. Consequently
+\[
+ \begin{aligned}
+ I_h^*\widetilde\alpha_s(Y)I_g
+ &=\left(\int f(t)g(t)\,dt\right)
+       \int\overline{h(r)}\,d_s(r)\,dr\\
+ &=I_h^*Z_s I_g .
+ \end{aligned}
+ \tag{CI31f}
+\]
+Finite sums of vectors \(I_g\eta\), with \(g\in C_c(\mathbb R)\), are dense in \(L^2(\mathbb R,H)\). Indeed a Bochner square-integrable function is approximated by finite simple functions, and their scalar coefficients are approximated in \(L^2(\mathbb R)\) by compactly supported continuous functions. This argument permits arbitrary \(H\). The two operators in (CI31f) are bounded, so equality of all these coefficients proves
+\[
+ \widetilde\alpha_s(Y)=Z_s
+       \quad\text{on all of }L^2(\mathbb R,H).
+ \tag{CI31g}
+\]
+This establishes the kernel formula needed for the intertwiner while keeping the original normal representation and its full domain.
+
 The intertwining calculation is pointwise on this complete bounded operator:
 \[
  \begin{aligned}

@@ -8,7 +8,7 @@ Basic references are Kalmes's papers on surjectivity and augmented equations, an
 
 We use \(D=-i\partial\), the complex-linear transpose \(P^t=P(-D)\), and the Euclidean boundary distance \(d_X\) from [Boundary distance and propagation](boundary-distance-and-propagation.md). The nonzero complex polynomial \(P\) has constant coefficients. No condition of reality is placed on its lower order coefficients.
 
-[Polygonal regions and the directions on a circle](polygonal-regions-and-circle-directions.md) proves polygonal connectedness, finite simple polygon separation and the circle-arc facts used in the filling argument. The conic continuation statement used in the support criterion is a planned prerequisite of [Distributions, kernels and analytic singularities](../prerequisites/planned-foundation-proofs.html), with its exact geometric hypothesis stated below.
+[Polygonal regions and the directions on a circle](polygonal-regions-and-circle-directions.md) proves polygonal connectedness, finite simple polygon separation and the circle-arc facts used in the filling argument. The conic continuation statement used in the support criterion follows from the complete proof of [convex continuation](../AN02-L016.html#convex-continuation), Theorem 0.1 and Corollary 0.4 of the Lorentz lesson. The directional singular-support test also has the direct proof in Lemma 5.2 below.
 
 ## A geometric filling argument
 
@@ -63,7 +63,7 @@ We need one exact continuation input for general constant-coefficient operators:
 
 **Conic continuation input.** Let \(\Gamma\) be an open proper convex cone with vertex \(q\). Suppose no characteristic hyperplane through \(q\) meets \(\overline\Gamma\) only at \(q\). If \(P^tu=0\) on \(\Gamma\) and \(u\) vanishes there outside a bounded set, then \(u=0\) on \(\Gamma\).
 
-This distributional uniqueness result follows from continuation between convex open sets; we assume it here as an analytic continuation prerequisite. In the application every characteristic line has a ray in the interior of \(\Gamma\), a stronger version of its hypothesis.
+For the cones used here, this distributional uniqueness result is proved by Theorem 0.1 and Corollary 0.4 of [Lorentz cones and domain solvability](../AN02-L016.html#two-consequences-with-different-geometric-hypotheses). In the application every characteristic line has a ray in the interior of \(\Gamma\), a stronger version of its hypothesis.
 
 **Theorem 3.1.** Let \(P\) be nonelliptic on \(\mathbb R^2\), and let \(X\) be nonempty, open and connected. The following are equivalent:
 
@@ -128,6 +128,47 @@ It is not an interval, so \(X\) is not support convex. The two support-convex op
 
 The figure depicts the exact rectangles in (5); their boundary lines are excluded. The top rectangle belongs to both covering domains. The dashed line is characteristic, and its missing middle interval supplies the obstruction in (6). The drawing is an original coordinate illustration of this example.
 
+### Circular boundary pieces give another nonlocal obstruction
+
+**Example 4.1.** For the same symbol \(P(\xi)=\xi_1\xi_2\), let
+\[
+\begin{aligned}
+U&=\{(x,y):y>0,\ x^2+y^2<9\},\\
+B_\pm&=\{(x,y):(x\mp2)^2+y^2<1\},\\
+Y&=U\cup B_-\cup B_+.
+\end{aligned}
+\tag{CG1}
+\]
+This connected open set is not support convex, although each of its intersections with \(\{x>a\}\), \(a\ge-1\), and with \(\{x<b\}\), \(b\le1\), is support convex. We verify every slice needed for those assertions.
+
+The three pieces are connected and each small disk meets the upper half disk, so \(Y\) is connected. For \(0<y<1\), put \(r=\sqrt{1-y^2}\). All points of either small disk at that height belong to the upper half disk: their largest possible absolute horizontal coordinate is \(2+r\), and
+\[
+(2+r)^2+y^2=5+4r<9.
+\tag{CG2}
+\]
+For \(1\le y<3\) there are no small-disk points. Thus every positive-height slice of \(Y\) is the single interval cut from \(U\). At height zero, however,
+\[
+Y\cap\{y=0\}
+ =\bigl((-3,-1)\cup(1,3)\bigr)\times\{0\}.
+\tag{CG3}
+\]
+At negative heights \(-1<y<0\), the two disk intervals remain disjoint. Consequently Theorem 3.1 excludes support convexity of \(Y\).
+
+All vertical slices are intervals. For \(1<x<3\), the upper endpoint from the large disk is \(h=\sqrt{9-x^2}\); the half-length from the right disk is \(s=\sqrt{1-(x-2)^2}\). They obey
+\[
+h^2-s^2=4(3-x)>0.
+\tag{CG4}
+\]
+The vertical union is therefore \((-s,h)\). Reflecting in \(x=0\) gives the left-hand case. At \(|x|\le1\) there is just \((0,\sqrt{9-x^2})\), and at \(|x|\ge3\) the slice is empty. The endpoint cases \(x=\pm1\) exclude the small-disk boundary, as required by openness.
+
+Now impose \(x>a\), \(a\ge-1\). The left disk disappears. At positive heights the horizontal interval from \(U\) remains an interval after truncation; at zero and negative heights only a truncated right-disk interval can remain. Vertical slices are unchanged or empty. If \(a<3\), the two nonempty truncated convex pieces \(U\cap\{x>a\}\) and \(B_+\cap\{x>a\}\) intersect: choose \(\max(a,1)<x<3\) and a sufficiently small positive \(y\). Thus their union is connected, and the planar criterion proves support convexity. If \(a\ge3\), it is empty and the support condition is automatic. Reflection proves the assertion for \(x<b\), \(b\le1\), including its empty cases.
+
+In particular the two relatively open sets \(Y\cap\{x>-1\}\) and \(Y\cap\{x<1\}\) cover \(Y\), and both are support convex. Their union is not. These exact circular pieces give the same failure of locality as the earlier rectangular example, with curved boundary and explicit endpoint checks.
+
+![An upper half disk of radius three joined to two unit disks; horizontal slice gaps and two support-convex truncations are marked.](../reproduce/L016-convex-continuation/figures/circular-domain-and-truncations.png)
+
+**Figure 4.1.** The three open pieces in (CG1) are drawn in their exact coordinates. At \(y=0\), the missing interval between the small disks separates two characteristic horizontal intervals. The dashed vertical lines \(x=-1\) and \(x=1\) specify the two support-convex covering sets just proved; the boundary circles and the half-disk diameter are excluded wherever another open piece does not include the point. The drawing uses parametric circle samples; all slice and domain assertions are proved in (CG2)–(CG4).
+
 ## Testing every real direction
 
 **Theorem 5.1.** For a nonempty open connected \(X\subset\mathbb R^n\), the following are equivalent:
@@ -138,13 +179,38 @@ The figure depicts the exact rectangles in (5); their boundary lines are exclude
 
 **Proof.** A convex open set has both properties for every nonzero constant polynomial operator, by the two compact hull identities. This proves that item 1 implies the others.
 
-If item 2 holds, Theorem 3.2 of the boundary-distance lesson, with active subspace \(\mathbb Rt\), gives the minimum principle on every affine line in every direction. If item 3 holds, its Theorem 4.1 gives the same conclusion: \(P_t\) is of real principal type and its bicharacteristic direction is \(t\). In dimension one connectedness already makes \(X\) an interval, so assume \(n\ge2\).
+If item 2 holds, Theorem 3.2 of the boundary-distance lesson, with active subspace \(\mathbb Rt\), gives the minimum principle on every affine line in every direction. If item 3 holds, the direct directional test in Lemma 5.2 below gives the same conclusion: \(P_t\) is of real principal type and its bicharacteristic direction is \(t\). In dimension one connectedness already makes \(X\) an interval, so assume \(n\ge2\).
 
 For any affine two dimensional plane \(M\), apply Lemma 1.1 in every direction in \(M\). Each connected component of \(X\cap M\) has interval intersections with every line in \(M\), so it is convex: two of its points lie on a line, and the interval property includes their segment. Here the distance in Lemma 1.1 is still the ambient \(d_X\); no smooth-extension theorem from the slice is needed.
 
 Finally take any \(x,y\in X\) and a finite polygonal path between them, with vertices \(x=x_0,x_1,\ldots,x_N=y\). Any two adjacent edges lie in an affine plane of dimension at most two. If its dimension is two, the edges belong to the same component of \(X\cap M\), which is convex, so their endpoints \(x_0,x_2\) can be joined by the straight segment inside \(X\). If their dimension is one, their two overlapping intervals already contain that segment. Replace the two edges by this segment, and repeat to shorten the path. Ultimately \([x,y]\subset X\). This proves convexity from either item 2 or item 3. \(\square\)
 
 For a fixed direction, these properties permit many nonconvex domains. Testing every direction, together with connectedness, is what recovers ordinary convexity.
+
+**Lemma 5.2 (a direct directional singularity test).** Let \(n\ge2\), \(t\in\mathbb R^n\setminus\{0\}\), and \(c\in\mathbb C\). If \(X\) is convex for singular supports with respect to \(P(\xi)=t\cdot\xi+c\), then \(d_X\) satisfies the minimum principle on every line parallel to \(t\).
+
+**Proof.** Choose orthonormal coordinates \((s,z)\in\mathbb R\times\mathbb R^{n-1}\) with \(t=|t|e_s\), and translate the line to \(z=0\). The complex-linear transpose is \(P^t=i|t|\partial_s+c\). The distribution
+\[
+w(s,z)=e^{ics/|t|}\otimes\delta_0(z)
+\tag{DL1}
+\]
+has \(P^tw=0\), because differentiating the exponential gives \(-c\) after multiplication by \(i|t|\). Its singular support is the whole line. It vanishes off that line, while on any neighborhood of a line point it is nonzero on a suitable product test. A smooth representative on that neighborhood would vanish on the dense complement of the line, hence everywhere by continuity, which is impossible. The exponential is nowhere zero even for complex \(c\).
+
+If the minimum principle failed, choose a compact witness \(K\) on this line. A minimizing point is in its relative interior. The closure \(I=[a,b]\) of the component of that interior containing the point is compactly contained in \(X\), and its endpoints lie in the relative boundary of \(K\). Thus
+\[
+\min_I d_X<\min(d_X(a),d_X(b)).
+\tag{DL2}
+\]
+Take an interval cutoff equal to one near \(I\), with derivatives confined to short endpoint neighborhoods where the distance exceeds the left side of (DL2). Multiply it by a normal cutoff equal to one near the line, in a thin tube inside \(X\), and call the resulting compact smooth cutoff \(\chi\). Since the operator differentiates only in \(s\),
+\[
+\begin{gathered}
+v=\chi w\in\mathcal E'(X),\qquad
+I\subset\operatorname{singsupp}v,\\
+P^tv=i|t|(\partial_s\chi)w.
+\end{gathered}
+\tag{DL3}
+\]
+Its image singularities lie only in the selected endpoint neighborhoods. The singular-support distance criterion therefore contradicts (DL2). This proves the lemma directly, without a general wavefront realization or propagation theorem. \(\square\)
 
 ## Exercises
 
@@ -156,6 +222,13 @@ For a fixed direction, these properties permit many nonconvex domains. Testing e
 
 **Exercise 4 (advanced: finite exterior rays).** Suppose three prescribed line directions through zero meet a connected open \(X\), but zero is outside \(X\) and each line meets \(X\) in an interval. Prove that the three exterior ray directions lie in a closed arc of length less than \(\pi\). Your proof must not assume \(X\) is bounded or has a smooth boundary.
 
+**Exercise 5 (advanced: a compact singular witness).** Let \(X=\mathbb R^2\setminus\{0\}\) and \(P(\xi)=\xi_1\). Choose a smooth \(\chi_1\), equal to one on \([-1,1]\), positive on \((-2,2)\), zero outside that interval, and with derivative nonzero exactly where \(1<|s|<2\). Let \(\chi_2\) be a compact smooth function supported in \((1/2,3/2)\), equal to one near 1. For
+\[
+v=\chi_1(x_1)\chi_2(x_2)\delta(x_2-1),
+\tag{DL4}
+\]
+compute both singular supports and their distances to the missing point. Explain why this is a direct obstruction to singular-support convexity.
+
 ## Complete solutions
 
 **Solution 1.** Each disk is convex, hence support convex for every nonzero constant polynomial operator. Compact subsets of their disjoint union meet finitely many components, so their support bounds combine to give support convexity for the union. The characteristic normals of \(P\) satisfy \(N_1=0\); the characteristic lines are horizontal. The line \(x_2=0\) meets the two disks in \((-4,-2)\times\{0\}\) and \((2,4)\times\{0\}\). This is not one interval. The theorem applies to each connected component, not to a disconnected union as though it were connected.
@@ -165,6 +238,19 @@ For a fixed direction, these properties permit many nonconvex domains. Testing e
 **Solution 3.** A distribution can vanish in an open cone while having support at its vertex; \(\delta_q\) is a simple example. Fix \(z=q+h\), \(|h|<r\), and a unit vector \(a\) pointing along a ray of \(A\). Choose \(\varepsilon>0\) with \(|h-\varepsilon a|<r\). The construction applied at shift \(h'=h-\varepsilon a\) gives an open cone containing the nonzero ray point \((q+h')+\varepsilon a=z\), and the distribution vanishes on that open cone. Hence it vanishes on a neighborhood of \(z\), which excludes \(z\) from its support. Since \(h\) was arbitrary, the entire ball is excluded.
 
 **Solution 4.** For each line choose the ray opposite its interval intersection with \(X\); the interval cannot occupy both rays because zero is excluded. The radial image of \(X\) is connected and lies in a single open arc \(J\) of the circle after removing these three exterior directions. The opposite of either endpoint exterior direction belongs to \(J\), since the line in question meets \(X\) on that opposite ray. It follows that \(J\) has length greater than \(\pi\). The closed complementary arc, containing all three exterior directions, has length less than \(\pi\), as required. Only connectedness, the interval property, and the topology of the circle were used.
+
+**Solution 5.** Multiplication by \(\chi_2\) leaves the line delta unchanged. The transverse delta argument in Lemma 5.2, at points where the scalar coefficient is nonzero and then by closure, gives
+\[
+\begin{aligned}
+\operatorname{singsupp}v&=[-2,2]\times\{1\},\\
+P^tv&=i\chi_1'(x_1)\delta(x_2-1),\\
+\operatorname{singsupp}P^tv
+ &=[-2,-1]\times\{1\}\\
+ &\quad\cup[1,2]\times\{1\}.
+\end{aligned}
+\tag{DL5}
+\]
+The endpoints belong by closedness of singular support; outside these closed intervals the corresponding distribution is zero. Since \(d_X(x)=|x|\), the two distances are 1 and \(\sqrt2\), respectively. The distribution is compactly supported inside \(X\), and its image singularities are strictly farther from the complement than its own. This contradicts the exact distance characterization of singular-support convexity. A smooth normal cutoff cannot smooth a transverse delta that it equals one on.
 
 ## References
 

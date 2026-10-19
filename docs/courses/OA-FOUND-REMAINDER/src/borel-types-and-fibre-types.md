@@ -1,6 +1,6 @@
 # Borel types and fibre types
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 An algebra is finite precisely when it has a faithful normal tracial state, provided it acts on a separable Hilbert space. Its failure to be finite also has a witness: a proper isometry. Encoding both witnesses makes finiteness a Borel condition. A finite projection with full central carrier witnesses semifiniteness; a nonzero finite projection only witnesses the presence of a semifinite part. These distinctions matter when algebras have several central summands.
 
@@ -10,7 +10,7 @@ We use [Borel supports and isomorphism classes](../reader/borel-supports-and-iso
 
 The descriptive-set-theoretic inputs are the analytic-image, separation, measurability and selection theorems in [Polish spaces and standard Borel spaces](../../foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html), Corollary 2.5, Theorem 4.3, Theorem 6.2 and Theorem 7.7. Their complete arguments include the recursive prefix choice and analytic measurability needed for completed-measure selection. Normal functionals on varying fibres are integrated by [Normal functionals across fibres](../reader/normal-functionals-across-fibres.html), Theorem 4.1. Measurable operator fields, countable generators and the centre of a factor integral come from [Direct integrals of von Neumann algebras](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html), Theorem 4.3 and Lemma 5.1.
 
-Related freely readable treatments are Effros’s paper on fixed-space Borel coding, Lurie’s lectures on separable fields and the commutant/centre dictionary, and Vaes and Wouters’s paper on Borel and measured fields. The selections used here are made for a specified measure, with a standard base, separable fibres and countable data; their Borel versions are defined on a common conull set. No everywhere-Borel witness choice or determinacy assumption is needed. Takesaki’s book supplies further context for type decomposition.
+Related freely readable treatments are Effros’s paper on fixed-space Borel coding, Lurie’s lectures on separable fields and the commutant/centre dictionary, and Vaes and Wouters’s paper on Borel and measured fields. The selections used here are made for a specified measure, with a standard base, separable fibres and countable data; their Borel versions are defined on a common conull set. No everywhere-Borel witness choice or determinacy assumption is needed.
 
 Throughout Sections 1–3, \(H\) is a fixed infinite-dimensional separable Hilbert space, \(\mathcal V(H)\) is the Effros standard Borel space of unital von Neumann subalgebras of \(B(H)\), and \(a_n(M)\) are Borel contractions strongly-star dense in \(M_1\). Write \(\mathcal P(H)\) for the projections and \(\mathcal T(H)_+\) for the positive trace-class operators. All operator balls carry their common weak/strong/strong-star Borel structure.
 
@@ -356,13 +356,13 @@ This is a measurable norm-one field of faithful normal tracial states. Therefore
 \]
 is a normal state and trace by the varying-predual theorem. For positive nonzero \(a\), some set of positive measure has \(a(x)\ne0\), where \(\tau_x(a(x))>0\); hence \(\tau\) is faithful. The integral is finite and type I. The matrix dimensions need not have a uniform bound.
 
-In the modified integral all fibres are still type I and semifinite. Its central cut over \(I_0\) is properly infinite, witnessed by the constant unilateral-shift field, so the whole algebra is nonfinite. Its complementary central cut, over \((0,1/2]\), is nonzero and finite, so the whole algebra is not properly infinite.
+In the modified integral all fibres are still type I and semifinite. Its central cut over \(I_0\) is properly infinite, witnessed by the two constant isometry fields \(s_0e_k=e_{2k}\) and \(s_1e_k=e_{2k+1}\), with the basis indexed by \(k\geq0\): their initial projections are \(1\), their range projections are orthogonal, and those ranges sum to the identity, so the whole algebra is nonfinite. Its complementary central cut, over \((0,1/2]\), is nonzero and finite, so the whole algebra is not properly infinite.
 
 Choose \(p(x)\) rank one on \(I_0\) and equal to the identity on every other \(I_n\). Each \(p(x)\) is nonzero and finite, so Lemma 3.1 makes \(P=\int^\oplus p(x)\,dx\) finite. Since the fibres are factors and the projection is nonzero everywhere, (4.1) gives \(c_M(P)=1\). This explicitly witnesses global semifiniteness.
 
 ## References
 
-- [Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer, New York, 1979.
+
 - [Effros] Edward G. Effros, [The Borel space of von Neumann algebras on a separable Hilbert space](https://msp.org/pjm/1965/15-4/pjm-v15-n4-p07-s.pdf), *Pacific Journal of Mathematics* 15(4) (1965), 1153–1164.
 - [Lurie 18–20] Jacob Lurie, *Math 261y: von Neumann Algebras*, [Lecture 18](https://www.math.ias.edu/~lurie/261ynotes/lecture18.pdf), [Lecture 19](https://www.math.ias.edu/~lurie/261ynotes/lecture19.pdf) (17 October 2011), and [Lecture 20](https://www.math.ias.edu/~lurie/261ynotes/lecture20.pdf) (19 October 2011).
 - [Vaes–Wouters] Stefaan Vaes and Lise Wouters, [Borel fields and measured fields of Polish spaces, Banach spaces, von Neumann algebras and C*-algebras](https://arxiv.org/html/2405.16603v2), arXiv:2405.16603v2 (3 April 2025). Their Proposition 3.2 obtains dense sections on a conull Borel set from a countable Borel basis; Proposition 2.5 has the additional hypothesis of analytic determinacy.

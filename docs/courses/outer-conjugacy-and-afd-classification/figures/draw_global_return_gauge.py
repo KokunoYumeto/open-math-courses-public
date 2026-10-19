@@ -1,0 +1,31 @@
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+plt.rcParams.update({'font.family':'DejaVu Sans','svg.hashsalt':'global-return-gauge-v1'})
+fig,ax=plt.subplots(figsize=(6,9));fig.subplots_adjust(left=.025,right=.975,top=.98,bottom=.02)
+ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off');ink='#173e50';blue='#edf5fc'
+def box(y,h):ax.add_patch(FancyBboxPatch((.03,y),.94,h,boxstyle='round,pad=.01',facecolor=blue,edgecolor=ink))
+def txt(y,text,size=14):ax.text(.5,y,text,ha='center',va='center',fontsize=size,color=ink)
+txt(.965,'One repaired pair retains\none shared characteristic phase',17)
+box(.59,.31)
+txt(.865,r'$(u_x,v_x)\ \sim\ (\zeta u_x,\zeta v_x)$',17)
+txt(.81,'Normalize both entries together',14)
+txt(.757,r'$f(x)=\mathfrak{n}(u_x,v_x)\in Y$',17)
+txt(.695,r'$F(T_gx)=\mathcal{V}(g,x)F(x)$',17)
+txt(.635,'Haar repair gives every arrow',14)
+txt(.545,r'$\alpha_{g,x}(U_x)=\lambda(g,x)U_{T_gx}$',16)
+txt(.49,r'$\beta_{g,x}(V_x)=\lambda(g,x)V_{T_gx}$',16)
+box(.105,.31)
+txt(.378,'A null-section trace example',16)
+txt(.32,r'$r(0)=3,\qquad r(1)=1$',17)
+ax.annotate('',xy=(.78,.26),xytext=(.22,.26),arrowprops={'arrowstyle':'->','color':ink,'lw':2})
+ax.text(.22,.265,'0',ha='right',va='bottom',fontsize=16,color=ink)
+ax.text(.78,.265,'1',ha='left',va='bottom',fontsize=16,color=ink)
+txt(.21,r'$\rho(1,0)=r(1)/r(0)=1/3$',16)
+txt(.15,r'$d^{1\prime}(g,x)=r(T_gx)d^1(g,x)/r(x)=d^2(g,x)$',13)
+txt(.056,'Exact identities (3.3)–(3.4), (4.1)–(4.4).\nThe translation example illustrates a point version.',11)
+dest=Path(__file__).resolve().parent;dest.mkdir(parents=True,exist_ok=True)
+for ext in ['svg','png']:fig.savefig(dest/f'global-return-gauge.{ext}',dpi=160,metadata={'Date':None} if ext=='svg' else {'Software':'Matplotlib'})
+plt.close(fig)

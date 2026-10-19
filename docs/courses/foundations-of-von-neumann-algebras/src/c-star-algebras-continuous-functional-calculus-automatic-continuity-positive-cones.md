@@ -1,6 +1,6 @@
 # Order, local units and quotients of C*-algebras
 
-*Original lesson by Claude Opus 5.5 (Anthropic). Learner routes, explanatory checkpoints and proof self-checks by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Original course contributions: CC0.*
+*Original lesson by Claude Opus 5.5 (Anthropic). Learner routes, explanatory checkpoints and proof self-checks by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Operator factorization and quotient extension arguments by GPT-6 Astra (OpenAI). Original course contributions: CC0.*
 
 The practical problem is to manipulate elements of an abstract C*-algebra as reliably as matrices. Can we take a square root, cut off the small spectrum of a positive element, remove an ideal, and recover positive elements from the quotient? Each operation needs a norm or order guarantee. This lesson develops those guarantees and uses them to connect functional calculus with localization and quotients.
 
@@ -194,7 +194,7 @@ where the last step uses \(r_A(y)\leq\|y\|\) ([the spectrum is compact](banach-a
 **Theorem 4.4** (Injective homomorphisms do not shrink normal elements). Let \(A\) be a C\*-algebra, \(B\) a Banach algebra and \(\pi:A\to B\) an injective algebra homomorphism. Neither continuity nor compatibility with an involution is assumed.
 1. \(\|\pi(x)\|\geq\|x\|\) for every normal \(x\in A\).
 2. If \(B\) has an involution and \(\pi\) is a \(*\)-homomorphism, then \(\|x\|^2\leq\|\pi(x)^*\|\,\|\pi(x)\|\) for all \(x\). If moreover the involution of \(B\) is isometric, then \(\|\pi(x)\|\geq\|x\|\) for all \(x\).
-3. If, in (2), \(\pi(A)\) is closed, the last inequality also follows from Theorem 4.2 applied to \(\pi^{-1}:\pi(A)\to A\).
+3. If, in the isometric-involution case of (2), \(\pi(A)\) is closed, the last inequality also follows from Theorem 4.2 applied to \(\pi^{-1}:\pi(A)\to A\).
 
 The proof below uses the closure of \(\pi(C^*(h))\), so it makes no continuity assumption on \(\pi\).
 
@@ -244,7 +244,7 @@ We show that \(\sharp\) has a closed graph. Let \(x_n\to x\) and \(x_n^\sharp\to
 \leq\|y^\sharp-x_n\|\,\|y-x_n^\sharp\|\to0 ,
 \end{gathered}
 \]
-because in each product the first factor stays bounded and the second tends to \(0\). Since \(\pi(x_n^\sharp)=\pi(x_n)^*\to\pi(x)^*\), we get \(\pi(y)=\pi(x)^*=\pi(x^\sharp)\), and \(y=x^\sharp\). By the closed graph theorem, applied to the real-linear map \(\sharp\), there is \(k\) with \(\|x^\sharp\|\leq k\|x\|\). Then (4.2) gives \(\|\pi(x)\|\leq k^{1/2}\|x\|\). \(\square\)
+because in each product the first factor stays bounded and the second tends to \(0\). Since \(\pi(x_n^\sharp)=\pi(x_n)^*\to\pi(x)^*\), we get \(\pi(y)=\pi(x)^*=\pi(x^\sharp)\), and \(y=x^\sharp\). By the [closed graph theorem](hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.md#oa-fnd-hb-05), applied to the real-linear map \(\sharp\), there is \(k\) with \(\|x^\sharp\|\leq k\|x\|\). Then (4.2) gives \(\|\pi(x)\|\leq k^{1/2}\|x\|\). \(\square\)
 
 **Corollary 4.8.** Let \(\pi\) be an algebra isomorphism of a C\*-algebra \(A\) onto a C\*-algebra \(B\), not assumed to preserve the involution. Then \(\pi\) and \(\pi^{-1}\) are continuous: \(c\|x\|\leq\|\pi(x)\|\leq C\|x\|\) with constants \(c,C>0\). Moreover \(\|\pi(x)\|\geq\|x\|\) for every normal \(x\).
 
@@ -485,7 +485,7 @@ The next proposition collects the rules for working with the order; they are use
 
 **Theorem 9.1** (Löwner–Heinz inequality). Let \(A\) be a C\*-algebra, \(0\leq b\leq a\) and \(0<\alpha\leq1\). Then \(b^\alpha\leq a^\alpha\).
 
-Here \(t^\alpha\) vanishes at \(0\), so \(a^\alpha,b^\alpha\in A\). The statement also makes sense for \(\alpha=0\) when \(a\) and \(b\) are invertible, with \(a^0=b^0=1\).
+Here \(t^\alpha\) vanishes at \(0\), so \(a^\alpha,b^\alpha\in A\). At \(\alpha=0\), define the scalar function to be constantly \(1\) on \([0,\infty)\), including at \(0\). Its continuous functional calculus gives \(a^0=b^0=1_{\widetilde A}\), so the endpoint inequality is equality even when \(a\) or \(b\) is not invertible. These values need not belong to a nonunital \(A\). If \(A\) is unital, calculus with its own identity instead gives \(a^0=b^0=1_A\).
 
 **Proof.** We may work in \(\widetilde A\) (Theorem 5.3(3) and Remark 8.4), so let \(A\) be unital and nontrivial.
 *Step 1: \(b\geq\varepsilon\) for some \(\varepsilon>0\).* Then \(a\geq b\geq\varepsilon\), and both are invertible (Proposition 8.5(7)). Let \(E=\{\alpha\in[0,1]:b^\alpha\leq a^\alpha\}\), with \(a^0=b^0=1\). It contains \(0\) and \(1\). It is closed: on a compact interval \([\varepsilon,M]\), \(t^\beta\to t^\alpha\) uniformly as \(\beta\to\alpha\), so \(\alpha\mapsto a^\alpha\) and \(\alpha\mapsto b^\alpha\) are norm continuous (Theorem 5.1(4)), and \(A_+\) is closed. Let \(\alpha,\beta\in E\) and \(\gamma=\frac12(\alpha+\beta)\). From \(b^\alpha\leq a^\alpha\) and Proposition 8.5(3), \(a^{-\alpha/2}b^\alpha a^{-\alpha/2}\leq1\), so by Proposition 8.5(4)
@@ -749,7 +749,7 @@ Once local units exist, the quotient norm can be computed by removing the part s
 
 ### 11. Approximate identities
 
-Adjoining an identity is not always enough: the unitization of an ideal is no longer an ideal, so statements about ideals cannot be reduced to the unital case. Approximate identities replace the identity in such cases.
+Adjoining an identity need not preserve the ideal property. For example, in \(A=\mathbb C^3\) with coordinatewise multiplication, \(I=\mathbb C\oplus0\oplus0\) is an ideal, while \(I+\mathbb C1_A\) consists of the triples \((a,b,b)\). It contains \((0,1,1)\), but multiplication by \((0,1,0)\in A\) gives \((0,1,0)\), which is outside it. Thus adjoining the ambient identity does not in general reduce questions about ideals to the unital case. Approximate identities supply the needed internal approximations.
 
 **Definition 11.1.** Let \(A\) be a Banach algebra and \(J\subseteq A\). A net \((u_i)\) in \(A\) is a *right approximate identity for \(J\)* if \(\|xu_i-x\|\to0\) for every \(x\in J\), a *left* one if \(\|u_ix-x\|\to0\), and an *approximate identity for \(J\)* if both hold; for \(J=A\) we say "of \(A\)". It is *bounded* if \(\sup_i\|u_i\|<\infty\). In a C\*-algebra one often also asks that \(0\leq u_i\leq u_j\) for \(i\leq j\) and \(\|u_i\|\leq1\); we call such a net *increasing and contractive*.
 
@@ -976,7 +976,7 @@ Identifying \(A\) with \(C_0(\Omega)\) (Theorem 2.1 and Proposition 2.2): \(\mat
 since \(tg(t)^2=\min(t,c^2)\). By Corollary 5.4(2), \(\pi(x)=k\,g(k^*k)=k\), because \(\sigma'(k^*k)\subseteq[0,c^2]\), where \(g=1\). So \(\|x\|=c\).
 (3) \(\pi(A_+)\subseteq B_+\) by Proposition 8.5(12), and (1) gives the rest. \(\square\)
 
-A second proof of (1) uses Tietze's extension theorem. The C\*-algebra \(C^*(h'')\) is abelian, and restricting \(\pi\) to it reduces (1) to the abelian case. There, by Proposition 16.1, the quotient map is restriction \(C_0(\Omega)\to C_0(\Gamma)\), and a bounded extension exists by Tietze's theorem on the one-point compactification, which is compact Hausdorff but need not be metrizable. Neither proof needs separability.
+A second proof of (1) uses Tietze's extension theorem. The C\*-algebra \(C^*(h'')\) is abelian, and restricting \(\pi\) to it reduces (1) to the abelian case. By Proposition 16.1, the quotient map is restriction \(C_0(\Omega)\to C_0(\Gamma)\), where \(\Gamma\) is closed in \(\Omega\). Let \(K=\Omega\cup\{\infty\}\) be the compact Hausdorff space of the one-point construction; if \(\Omega\) is already compact, the added point is isolated. The subset \(F=\Gamma\cup\{\infty\}\) is closed in \(K\), since its complement is the open set \(\Omega\setminus\Gamma\). For real \(k\in C_0(\Gamma)\), define \(g|_\Gamma=k\) and \(g(\infty)=0\). This is continuous at \(\infty\): for every \(\varepsilon>0\), the set \(\{\omega\in\Gamma:|k(\omega)|\geq\varepsilon\}\) is compact in \(\Gamma\), hence in \(\Omega\), and its complement in \(K\) is a neighbourhood of \(\infty\) on which \(|g|<\varepsilon\). By Tietze's theorem, \(g\) has a real continuous extension \(H\) to \(K\) with \(\|H\|=\|g\|=\|k\|\). Since \(H(\infty)=0\), its restriction \(h=H|_\Omega\) lies in \(C_0(\Omega)\), restricts to \(k\), and has the same norm. If \(k\geq0\), replace \(H\) by \(\max(H,0)\); this preserves its prescribed values and the norm. For \(\Gamma=\varnothing\), take the zero extension. Neither proof needs separability.
 
 **Proposition 17.2** (Lifting \(\{y^*y\leq\pi(a)\}\)). Let \(\pi:A\to B\) be a surjective \(*\)-homomorphism of C\*-algebras and \(a\in A_+\). Then
 \[
@@ -1237,16 +1237,16 @@ Here \[
 \] so the right side has norm at most \(\|R_F\|\). Let \(t\to0\): \(\|y_jy_j^*-\sum_{i\in F}z_{ij}z_{ij}^*\|\leq\|R_F\|\), which tends to \(0\).
 *The first identity.* In the same way, with \(R'_{F'}=a-\sum_{j\in F'}y_j^*y_j\) and \(g'_t=x_ia^{1/2}(a+t)^{-1}\), we get \((x_iu_t)(x_iu_t)^*-\sum_{j\in F'}z_{ij,t}^*z_{ij,t}=g'_tR'_{F'}g_t'^*\), with \(\|g'_t\|\leq1\) because \(x_i^*x_i\leq a\). Since \(x_iu_t\to x_i\), the limit gives \(\|x_ix_i^*-\sum_{j\in F'}z_{ij}^*z_{ij}\|\leq\|R'_{F'}\|\). \(\square\)
 
-For operators on a Hilbert space there is also a direct proof in the style of the polar decomposition; Exercise 14.3 gives it for finite families.
+For operators on a Hilbert space there is also a direct proof using column operators. Exercise 14.3 covers finite families and arbitrary families whose positive sums converge strongly to a bounded operator.
 
 **Corollary 14.2.** If \(\sum_jy_j^*y_j\leq\sum_ix_i^*x_i\), with both sums as in the theorem, there are \(z_{ij}\) with \(y_jy_j^*=\sum_iz_{ij}z_{ij}^*\) and \(x_ix_i^*\geq\sum_jz_{ij}^*z_{ij}\).
 
 **Proof.** Add to the family \((y_j)\) one element \(y_\star=\big(\sum_ix_i^*x_i-\sum_jy_j^*y_j\big)^{1/2}\), so that the two sums become equal. The theorem gives \(z_{ij}\) and \(z_{i\star}\) with \(x_ix_i^*=\sum_jz_{ij}^*z_{ij}+z_{i\star}^*z_{i\star}\geq\sum_jz_{ij}^*z_{ij}\). \(\square\)
 
-**Exercise 14.3** (medium; Factorization of operators). (a) Let \(x:H\to K_1\) and \(y:H\to K_2\) be bounded operators between Hilbert spaces with \(x^*x\leq y^*y\). Then \(x=cy\) for some \(c:K_2\to K_1\) with \(\|c\|\leq1\), and \(c\) can be taken to vanish on the orthogonal complement of the range of \(y\). (b) Prove Theorem 14.1 for finite families in \(A=B(H)\) from (a).
+**Exercise 14.3** (medium; Factorization of operators). (a) Let \(x:H\to K_1\) and \(y:H\to K_2\) be bounded operators between Hilbert spaces with \(x^*x\leq y^*y\). Then \(x=cy\) for some \(c:K_2\to K_1\) with \(\|c\|\leq1\), and \(c\) can be taken to vanish on the orthogonal complement of the range of \(y\). (b) Prove Theorem 14.1 for finite families in \(A=B(H)\) from (a). More generally, prove the same identities with strong operator convergence when \(I,J\) are arbitrary index sets and both positive sums converge strongly to the same \(a\in B(H)\). Each sum is the net of its finite partial sums.
 
 *Solution.* (a) By Proposition 8.5(11) in \(B(H)\), \(\|x\xi\|^2=\langle x^*x\xi,\xi\rangle\leq\langle y^*y\xi,\xi\rangle=\|y\xi\|^2\). So \(c_0(y\xi)=x\xi\) is well defined and linear on the range of \(y\), with norm at most one. Extend it by continuity to the closure of the range, and by \(0\) on the orthogonal complement.
-(b) Let \(\sum_{i\leq m}x_i^*x_i=\sum_{j\leq n}y_j^*y_j=a\) in \(B(H)\). The column operators \(X\xi=(x_i\xi)_i\) from \(H\) to \(H^m\) and \(Y\xi=(y_j\xi)_j\) from \(H\) to \(H^n\) satisfy \(X^*X=Y^*Y=a=(a^{1/2})^2\). By (a), \(X=Ca^{1/2}\), with \(C\) isometric on the closure of the range of \(a^{1/2}\), since \(\|X\xi\|=\|a^{1/2}\xi\|\), and zero on its complement. So \(C^*C=P\), the projection onto that closure, and \(Pa^{1/2}=a^{1/2}\). Writing \(C\) as a column \((c_i)\) gives \(x_i=c_ia^{1/2}\) and \(\sum_ic_i^*c_i=P\). In the same way \(y_j=d_ja^{1/2}\) with \(\sum_jd_j^*d_j=P\). Put \(z_{ij}=d_ja^{1/2}c_i^*\). Then
+(b) The Hilbert direct sum \(\bigoplus_{i\in I}H\) is the completion of the finite-support families with inner product \(\sum_i\langle\xi_i,\eta_i\rangle\), using the Hilbert-space completion construction. A family with \(\sum_i\|\xi_i\|^2<\infty\) determines an element of this completion: its finite truncations are Cauchy, with squared differences equal to the corresponding finite tails. Conversely, every completed vector has such coordinates: coordinate evaluation is contractive, and approximation by finite-support families shows both square summability and convergence of the truncations to the vector. This identifies the completion with the square-summable families and proves that their norm is \((\sum_i\|\xi_i\|^2)^{1/2}\). Suppose \(\sum_{i\in I}x_i^*x_i=\sum_{j\in J}y_j^*y_j=a\) strongly in \(B(H)\). For each \(\xi\in H\), the identity \(\sum_i\|x_i\xi\|^2=\langle a\xi,\xi\rangle\) makes \(X\xi=(x_i\xi)_i\) a vector of \(\bigoplus_{i\in I}H\). It defines a bounded column operator with \(\|X\|\leq\|a\|^{1/2}\) and \(X^*X=a\); the latter follows from the quadratic-form identity by polarization. Similarly define \(Y\xi=(y_j\xi)_j\) with \(Y^*Y=a\). By (a), \(X=Ca^{1/2}\), where \(C\) is isometric on \(\overline{\operatorname{ran}a^{1/2}}\), since \(\|X\xi\|=\|a^{1/2}\xi\|\), and zero on its orthogonal complement. Hence \(C^*C=P\), the projection onto this closed range, and \(Pa^{1/2}=a^{1/2}\). Let \(c_i\) be the coordinate operators of \(C\). For a finite \(F\subseteq I\), let \(Q_F\) be the projection onto those coordinates. The tails of a square-summable family tend to zero, so \(Q_F\to1\) strongly. Consequently \(\sum_{i\in F}c_i^*c_i=C^*Q_FC\to P\) strongly. Also \(x_i=c_ia^{1/2}\). In the same way \(y_j=d_ja^{1/2}\) and \(\sum_jd_j^*d_j=P\) strongly. Put \(z_{ij}=d_ja^{1/2}c_i^*\). Multiplication on either side by a fixed bounded operator preserves strong convergence, since \(\|B(T_F-T)D\xi\|\leq\|B\|\|(T_F-T)D\xi\|\to0\). Taking the strong limits of the finite partial sums therefore gives
 \[
 \begin{gathered}
 \sum_iz_{ij}z_{ij}^*\\

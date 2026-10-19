@@ -228,7 +228,7 @@ Let
 \[
 R=\bar\bigotimes_{j\ge1}(M_2,\operatorname{tr}_2).
 \]
-The tracial product construction gives its faithful normal product trace and separable trace GNS space. The explicit finite-stage projections in [MC1](masas-in-expected-semifinite-subfactors.md#theorem-2-1) applied to its local matrix factors give scalar center: a central element has scalar projection at every stage and is their GNS limit. Their matrix sizes are unbounded, so \(R\) is of type \(\mathrm{II}_1\).
+The tracial product construction gives its faithful normal product trace and separable trace GNS space. The explicit finite-stage projections in [the matrix-stage expectation theorem](../components/matrix-stage-expectations-and-scalar-center.md#mx1) applied to its local matrix factors give scalar center: a central element has scalar projection at every stage and is their GNS limit. Their matrix sizes are unbounded, so \(R\) is of type \(\mathrm{II}_1\).
 
 **Theorem 5.1.** For a \(\mathrm{II}_1\) factor \(M\) with separable predual, the following are equivalent:
 
@@ -290,9 +290,65 @@ For \(y\in N'\cap M\), bimodularity gives \(E_N(y)\in Z(N)=\mathbb C1\); trace p
 
 **Lemma 2.1.** If \(G\) is any subgroup of \(\mathcal U(M)\) and \(B=G'\cap M\), then \(E_B(x)\) is the unique element of \(B\) in the ultraweakly closed convex hull of \(\{uxu^*:u\in G\}\).
 
-**Proof.** That hull \(K\) is contained in a norm-bounded ball and is ultraweakly compact. Its map into \(L^2(M)\) is weakly continuous: this is immediate on pairings with bounded \(y\in M\), and follows on general \(L^2\) vectors by approximation and the uniform norm bound. Thus \(K\) is weakly compact and convex in \(L^2\), hence norm closed. It has a unique element of least Hilbert norm. Conjugation by \(G\) preserves both the hull and this norm, so that element is in \(B\).
+**Proof.** Work in the faithful normal trace GNS model \(H=L^2(M,\tau)\) from [HF0](../components/hyperfinite-finite-algebra-and-vacuum-inputs.md#hf0), with \(\Omega=1\). For \(g\in G\), the rule \(U_g(a\Omega)=gag^*\Omega\) extends to a unitary, and \(U_g^*=U_{g^{-1}}\). We will construct bounded finite averages whose limits give the required expectation.
 
-For \(b\in B\), traciality gives \(\tau(b^*uxu^*)=\tau(b^*x)\). The \(L^2\)-projection formula therefore makes \(E_B\) constant on the orbit, and normality makes it constant on the hull. The least-norm element is consequently \(E_B(x)\). Any other element of \(K\cap B\) would equal its own expectation and hence equal \(E_B(x)\). \(\square\)
+First fix a nonempty finite **set** \(F\subset G\); it need not be a subgroup. Define bounded operators on \(H\) by
+\[
+ T_F=\frac1{2|F|}\sum_{g\in F}(U_g+U_g^*),\qquad
+ A_F=\frac{I+T_F}{2}.
+\]
+The operator \(T_F\) is selfadjoint of norm at most one, so \(0\le A_F\le I\). Moreover
+\[
+ \langle\eta,(I-A_F)\eta\rangle
+ =\frac1{4|F|}\sum_{g\in F}\|U_g\eta-\eta\|^2.
+\]
+Consequently its fixed space is
+\[
+ H_F=\ker(I-A_F)=\bigcap_{g\in F}\ker(I-U_g).
+\]
+
+The powers of a positive contraction \(A\) converge strongly to the orthogonal projection onto \(\ker(I-A)\). Here is the elementary estimate needed for that assertion. The powers decrease in operator order; multiplying their commuting positive differences by \(I-A\) gives
+\[
+ 0\le(n+1)A^n(I-A)
+ \le\sum_{j=0}^n A^j(I-A)
+ =I-A^{n+1}\le I.
+\]
+Thus \(\|A^n(I-A)\|\le1/(n+1)\), so the powers tend to zero on \(\operatorname{ran}(I-A)\). Uniform boundedness extends this limit to its closure. Since \(I-A\) is selfadjoint, that closure is the orthogonal complement of its kernel. On the kernel every power is the identity. This proves the strong convergence, without invoking a mean ergodic theorem. Apply it to \(A_F\), and denote the resulting projection by \(P_F\).
+
+For the chosen \(x\in M\), write \(A_F^n(x\Omega)=a_{F,n}\Omega\). Each \(a_{F,n}\) is a finite convex combination of \(wxw^*\), \(w\in G\): expand the power of
+\[
+ x\longmapsto\frac{x}{2}
+       +\frac1{4|F|}\sum_{g\in F}(gxg^*+g^*xg).
+\]
+All coefficients are nonnegative and sum to one. Hence \(\|a_{F,n}\|\le\|x\|\), and their vectors converge to \(P_F(x\Omega)\).
+
+We use the bounded \(2\)-norm completeness explicitly. If \((z_i)\subset M\) is \(2\)-norm Cauchy and \(\|z_i\|\le C\), then
+\[
+ \|(z_i-z_j)b\|_2\le\|b\|\,\|z_i-z_j\|_2
+ \qquad(b\in M).
+\]
+The left multiplication operators are therefore strongly Cauchy on the dense set \(M\Omega\); their common bound gives a bounded strong limit on all of \(H\). The trace model is strongly closed by HF0, so the limit is left multiplication by some \(z\in M\), with \(\|z\|\le C\). Its value at \(\Omega\) is the \(2\)-norm limit. This works for nets as well as sequences. On such bounded families, the trace topology (PB1)–(PB2) also gives ultraweak convergence.
+
+It follows that \(P_F(x\Omega)=y_F\Omega\) for an element \(y_F\in M\), with \(\|y_F\|\le\|x\|\). If \(K\) denotes the ultraweakly closed convex hull in the statement, the finite averages and their bounded \(2\)-norm limit show \(y_F\in K\).
+
+Now direct the nonempty finite subsets \(F\) of \(G\) by inclusion. The spaces \(H_F\) decrease. For a fixed vector \(\xi\in H\), set \(c=\inf_F\|P_F\xi\|^2\). If \(F\subset F'\), orthogonality of the nested projections gives
+\[
+ \|P_F\xi-P_{F'}\xi\|^2
+     =\|P_F\xi\|^2-\|P_{F'}\xi\|^2.
+\]
+Choose \(F_0\) with \(\|P_{F_0}\xi\|^2<c+\varepsilon\). Comparing two supersets of \(F_0\) with their union bounds their vector difference by \(2\sqrt\varepsilon\). Thus \((P_F\xi)\) is Cauchy. Its limit lies in every \(H_F\), while \(\xi-P_F\xi\) is orthogonal to their intersection. The limit is exactly the projection of \(\xi\) onto
+\[
+ H_G=\bigcap_{g\in G}\ker(I-U_g).
+\]
+No enumeration of \(G\) is used.
+
+Apply this to \(\xi=x\Omega\). The uniformly bounded \(y_F\) have a \(2\)-norm limit \(y\in M\), and ultraweak closedness gives \(y\in K\). Its vector is fixed by every \(U_g\), so \((gyg^*-y)\Omega=0\). Faithfulness of the trace implies \(y\in G'\cap M=B\). Every \(b\Omega\), \(b\in B\), belongs to \(H_G\). The projection characterization therefore gives
+\[
+ \tau(b^*y)=\tau(b^*x)\qquad(b\in B).
+\]
+HF0's full trace-preserving expectation has exactly these pairings, so \(y=E_B(x)\). This proves membership in the hull.
+
+Finally, for \(b\in B\) and \(g\in G\), traciality gives \(\tau(b^*gxg^*)=\tau(b^*x)\). The same projection characterization makes \(E_B\) constant on the orbit. Its normality makes it constant on its ultraweakly closed convex hull. If \(z\in K\cap B\), then \(z=E_B(z)=E_B(x)\), proving uniqueness. The trivial subgroup is included: its averaging operators and fixed-space projection are the identity. \(\square\)
 
 Applying the lemma to \(G=\mathcal U(N)\) proves the quantitative commutant estimate
 \[
@@ -300,7 +356,13 @@ Applying the lemma to \(G=\mathcal U(N)\) proves the quantitative commutant esti
 \le\sup_{\substack{y\in N\\\|y\|\le1}}\|[x,y]\|_2.
 \tag{9}
 \]
-Every orbit point lies in the indicated \(2\)-norm ball around \(x\); that ball is weakly closed and convex, so it contains the hull. None of these statements requires separability.
+Every orbit point lies in the indicated \(2\)-norm ball around \(x\). For \(z\in M\), trace Cauchy–Schwarz and the test \(b=(z-x)/\|z-x\|_2\), when the denominator is nonzero, give
+\[
+ \|z-x\|_2
+ =\sup_{\substack{b\in M\\\|b\|_2\le1}}
+                         |\tau(b^*(z-x))|.
+\]
+Each pairing on the right is ultraweakly continuous. Hence the ball is ultraweakly closed and convex, contains the entire orbit, and contains its ultraweakly closed convex hull. The lemma puts the expectation in that ball and proves (9). The zero denominator gives the same identity with value zero. None of these statements requires separability.
 
 ## 6. Subfactors and automorphisms
 

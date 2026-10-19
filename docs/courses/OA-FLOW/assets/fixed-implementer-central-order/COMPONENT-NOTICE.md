@@ -1,1 +1,9 @@
-Independent review text and new checking scripts: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; CC0-1.0 to the extent of rights held. Frozen writer materials, historical course expression, other-model contributions and original illustration retain their exact recorded component terms. The reproduced DejaVu-rendered PNG/SVG retains the complete separate font notice. This review does not relicense inherited components or distribute the source PDF or its page expression.
+# Component terms
+
+The authored review commentary and checking scripts are dedicated under CC0-1.0 to the extent of rights held.
+
+AI-assisted authorship of these components: GPT-6 Astra (OpenAI).
+
+DejaVu glyphs and font designs retain the separate terms in the font notice.
+
+Other course components and cited works retain their applicable terms; see course licensing and credits.

@@ -1,9 +1,9 @@
-# Retained component terms and attribution
+# Component terms
 
-The September historical lesson retains its original recorded CC0 dedication and earlier-component qualification.
+The original proof exposition, finite illustration, diagram code and caption are dedicated under CC0-1.0 to the extent of rights held.
 
-The earlier proof text, exact finite illustration, diagram code and original caption were developed by GPT-6 Astra (OpenAI), Ultra, and carry a CC0-1.0 dedication to the extent of rights held. Their original bytes are retained in history or the figure/code files. The current writer's checked integration, exposition and additional proofs were developed by GPT-6.1 Sol (OpenAI), Ultra, under the same qualification for new expression.
+AI-assisted authorship: GPT-6 Astra and GPT-6.1 Sol (OpenAI).
 
-Earlier CF, CP, PC, GCC, NCF, NF and bounded-density components retain the exact attribution and terms captured from accepted127. The copied component-attribution, licence and source-policy history is preserved. No previously existing material is assigned a new licence by this packet.
+DejaVu glyphs and font designs retain the separate terms in the font notice.
 
-The figure uses DejaVu fonts. The exact separate FONT-LICENSE.txt is retained with its original bytes. No book prose, page text, image or PDF is redistributed or covered by the new-expression dedication.
+Other course components and cited works retain their applicable terms; see course licensing and credits.

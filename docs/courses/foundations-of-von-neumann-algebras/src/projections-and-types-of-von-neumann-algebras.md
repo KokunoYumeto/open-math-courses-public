@@ -1,6 +1,6 @@
 # Projections and types of von Neumann algebras
 
-*Originally written by Claude Opus 5.5 (Anthropic), September 2026, with a separate historical AI spot-check. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and replayed the entire lesson and all eight solutions, compared the full programme prerequisite proofs, and completed the boundary and construction details, October 2026. Public domain (CC0).*
+*Text: Claude Opus 5.5 (Anthropic), GPT-6.1 Sol and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 In a von Neumann algebra, projections play the part of closed subspaces. Two projections are *equivalent* when a partial isometry of the algebra maps the range of one isometrically onto the range of the other. So equivalence says that two projections have the same size, measured inside the algebra. This lesson develops the comparison theory that this notion leads to, and uses it to sort von Neumann algebras into types.
 
@@ -375,8 +375,8 @@ An abelian projection is subequivalent to every projection whose central support
 
 **Proposition 9.1** (Matrices over a commutative algebra). Let \(A\) be a commutative von Neumann algebra acting on \(K\).
 
-1. For every nonzero Hilbert space \(L\), \(A\bar\otimes B(L)\) is of type I. For a rank-one projection \(q\) on \(L\), \(1\otimes q\) is abelian with central support \(1\).
-2. For finite \(n\), the matrix algebra \(\mathbb M_n(A)\) of (8.1) is finite and of type I. The linear map \(\Phi(x)=\frac1n\sum_ix_{ii}\), with values in \(A\) (identified with the diagonal copy \(A\otimes1\)), satisfies
+1. For every Hilbert space \(L\), \(A\bar\otimes B(L)\) is of type I. When \(L\ne0\), for a rank-one projection \(q\) on \(L\), \(1\otimes q\) is abelian with central support \(1\).
+2. For every positive integer \(n\), the matrix algebra \(\mathbb M_n(A)\) of (8.1) is finite and of type I. The linear map \(\Phi(x)=\frac1n\sum_ix_{ii}\), with values in \(A\) (identified with the diagonal copy \(A\otimes1\)), satisfies
 \[
 \begin{gathered}
 \Phi(a)\\
@@ -390,7 +390,7 @@ An abelian projection is subequivalent to every projection whose central support
 \]
 and \(\Phi(x^*x)=0\) only if \(x=0\).
 
-**Proof.** (1) Choose an orthonormal basis of \(L\) that contains a unit vector of \(qL\); then \(L=\ell^2(I)\) and \(q=E_{i_0i_0}\). For \(T\in\mathbb M_I(A)\), \((1\otimes q)T(1\otimes q)=T_{i_0i_0}\otimes q\), so \((1\otimes q)\mathbb M_I(A)(1\otimes q)=A\otimes q\) is commutative. The centre is \(A\otimes1\) by Lemma 8.2(4). If \((a\otimes1)(1\otimes q)=a\otimes q=0\), then \(a=0\); so no nonzero central projection is orthogonal to \(1\otimes q\), and \(c(1\otimes q)=1\). Every nonzero central projection \(z\) therefore majorizes the nonzero abelian projection \(z(1\otimes q)\).
+**Proof.** (1) If \(L=0\), the tensor product is the zero algebra, which is of type I by the convention in Definition 7.1. Suppose \(L\ne0\). Choose an orthonormal basis of \(L\) that contains a unit vector of \(qL\); then \(L=\ell^2(I)\) and \(q=E_{i_0i_0}\). For \(T\in\mathbb M_I(A)\), \((1\otimes q)T(1\otimes q)=T_{i_0i_0}\otimes q\), so \((1\otimes q)\mathbb M_I(A)(1\otimes q)=A\otimes q\) is commutative. The centre is \(A\otimes1\) by Lemma 8.2(4). If \((a\otimes1)(1\otimes q)=a\otimes q=0\), then \(a=0\); so no nonzero central projection is orthogonal to \(1\otimes q\), and \(c(1\otimes q)=1\). Every nonzero central projection \(z\) therefore majorizes the nonzero abelian projection \(z(1\otimes q)\).
 
 (2) \(\mathbb M_n(A)\) is of type I by (1). The first two properties hold because \(a\in A\) acts as \(\mathrm{diag}(a,\ldots,a)\) and \(A\) is commutative, so \((axb)_{ii}=ax_{ii}b\). Next, \(n\Phi(x^*x)=\sum_{i,k}x_{ki}^*x_{ki}\) and \(n\Phi(xx^*)=\sum_{i,k}x_{ik}x_{ik}^*\). These agree, since every entry is a normal operator (\(A\) is commutative), and they are positive. If \(\Phi(x^*x)=0\), each \(x_{ki}^*x_{ki}\) vanishes, so \(x=0\). Finally, if \(v^*v=1\) and \(vv^*=f\), then \(\Phi(1-f)=\Phi(v^*v)-\Phi(vv^*)=0\) and \(1-f=(1-f)^*(1-f)\), so \(f=1\): the algebra is finite. \(\square\)
 
@@ -421,7 +421,7 @@ c((1-z)e)\\
 
 *\(I\) infinite.* Fix \(i_0\), a unit vector \(\zeta\in e_{i_0}H\), and partial isometries \(v_i\) implementing \(e_{i_0}\sim e_i\). Put \(\varphi_i=\omega_{v_i\zeta}\) and \(z_0=c(p_\zeta)\), which is nonzero because \(p_\zeta\zeta=\zeta\ne0\). Since \(p_\zeta\le e_{i_0}\) ([Lemma 4.6](#oa-fnd-ty-07)) and \(e_{i_0}\) is abelian, \(p_\zeta=z_0e_{i_0}\) (Lemma 6.2(4)). Suppose \(\varphi_i(f_j)=\|f_jv_i\zeta\|^2=0\). Then the operator \(f_jv_i\in M\) vanishes on \([M'\zeta]=p_\zeta H\), so \(f_jv_iz_0e_{i_0}=0\). As \(v_i=v_ie_{i_0}\), this gives \(z_0f_jv_i=0\), and so \(z_0f_je_i=z_0f_jv_iv_i^*=0\). Now fix \(j\). Since \(c(f_j)=1\), we have \(z_0f_j\ne0\) ([Proposition 3.5(1)](#oa-fnd-ty-02)), while \(\sum_iz_0f_je_i=z_0f_j\). So \(z_0f_je_i\ne0\), and hence \(\varphi_i(f_j)>0\), for some \(i\). Thus \(J=\bigcup_iJ_i\) with \(J_i=\{j:\varphi_i(f_j)>0\}\). Each \(J_i\) is countable, because \(\sum_{j\in F}\varphi_i(f_j)=\varphi_i(\sum_{j\in F}f_j)\le1\) for every finite \(F\subseteq J\). Therefore \(|J|\le|I|\cdot\aleph_0=|I|\) (Fact 2.9).
 
-The last statement follows by symmetry and the Cantor–Schröder–Bernstein theorem for cardinals. \(\square\)
+The last statement follows by symmetry and the Cantor–Schröder–Bernstein theorem for cardinals. \(\square\) The hypothesis \(c\ne0\) is necessary: with \(c=0\), take \(I=\{1\}\), \(J=\{1,2\}\), and every projection equal to zero. Both sums and all central supports equal \(c\), but \(|J|>|I|\).
 
 ## 10. Homogeneous algebras and the structure of type I algebras
 
@@ -464,7 +464,7 @@ The sum and uniqueness are proved explicitly below.
 
 **Corollary 10.4** (Type I factors). Every type I factor is isomorphic to \(B(L)\) for some Hilbert space \(L\), and \(B(L_1)\cong B(L_2)\) if and only if \(\dim L_1=\dim L_2\).
 
-**Proof.** The central projections are \(0\) and \(1\), so \(1=z_\alpha\) for exactly one \(\alpha\). In a factor, a nonzero abelian \(e\) satisfies \(eMe=Ze=\mathbb Ce\), so \(e\) is minimal. With Lemma 6.2(2), the abelian projections are exactly the minimal ones (and \(0\)). So \(A_\alpha=e_{i_0}Me_{i_0}=\mathbb C\) and \(M\cong B(\ell^2(\alpha))\). If \(B(L_1)\cong B(L_2)\), the isomorphism carries the rank-one projections of an orthonormal basis of \(L_1\), which are mutually orthogonal abelian projections with central support \(1\) and sum \(1\), to a family of the same kind in \(B(L_2)\) of cardinality \(\dim L_1\). Lemma 9.5 compares it with the family given by a basis of \(L_2\), so \(\dim L_1=\dim L_2\). The converse is clear. \(\square\)
+**Proof.** The central projections are \(0\) and \(1\), so \(1=z_\alpha\) for exactly one \(\alpha\). In a factor, a nonzero abelian \(e\) satisfies \(eMe=Ze=\mathbb Ce\), so \(e\) is minimal. With Lemma 6.2(2), the abelian projections are exactly the minimal ones (and \(0\)). So \(A_\alpha=e_{i_0}Me_{i_0}=\mathbb C\) and \(M\cong B(\ell^2(\alpha))\). If either \(L_1\) or \(L_2\) is zero, an isomorphism forces both to be zero, since \(B(L)=\{0\}\) exactly when \(L=0\). For nonzero \(L_1,L_2\), if \(B(L_1)\cong B(L_2)\), the isomorphism carries the rank-one projections of an orthonormal basis of \(L_1\), which are mutually orthogonal abelian projections with central support \(1\) and sum \(1\), to a family of the same kind in \(B(L_2)\) of cardinality \(\dim L_1\). Lemma 9.5 compares it with the family given by a basis of \(L_2\), so \(\dim L_1=\dim L_2\). The converse is clear. \(\square\)
 
 **Remark 10.5.** By Corollary 10.4, a type I\(_n\) factor with \(n\) finite is a copy of the matrix algebra \(M_n(\mathbb C)\).
 
@@ -819,7 +819,7 @@ The countability conditions cannot be dropped ([Example 16.4](#oa-fnd-ty-22)).
 
 *Reference:* The decomposition of \(1\) in part (3) is [Blackadar, III.1.3.6].
 
-The further trace theory studies uniqueness of the family \(\{z_\alpha\}\) in (1); see Traces on von Neumann algebras. That extension is not proved or used here. The present proof establishes existence; when the countability hypothesis in (2) holds, it constructs a single amplification by \(\ell^2(\mathbb N)\).
+The family \(\{z_\alpha\}\) in (1) is unique by Theorem 5.14 and Corollary 5.15 of Traces on von Neumann algebras. Those proofs compare infinite decompositions into equivalent nonzero finite projections, using the centre-valued trace to obtain countable decomposability on a nonzero central part. The proof below establishes existence without that trace input; the uniqueness argument is read after the trace construction.
 
 **Proof.** (1) Take a maximal family \(\{c_k\}\) of mutually orthogonal nonzero central projections such that each \(c_k=\sum_{j\in J_k}f_{k,j}\) for mutually orthogonal projections \(f_{k,j}\sim fc_k\). Suppose \(c=1-\sum_kc_k\ne0\); then \(fc\ne0\) since \(c(f)=1\). Apply Proposition 13.1 in \(Mc\) to the one-element family \(\{fc\}\). It gives a nonzero central \(c''\le c\) and mutually orthogonal, mutually equivalent projections \(\{g_j\}_{j\in J}\), one of which is \(fc''\), with \(g_0=c''-\sum_jg_j\prec g_j\). If \(J\) were finite, \(c''=g_0+\sum_jg_j\) would be a finite sum of finite projections (each \(g_j\sim fc''\) is finite, and \(g_0\precsim g_j\)), hence finite by Theorem 14.1. But \(c''\ne0\) is infinite, because \(M\) is properly infinite. So \(J\) is infinite, and Proposition 13.1 lets us take \(g_0=0\) with every \(g_j\sim fc''\). Then \(c''\) can be added to the family, a contradiction. Hence \(\sum_kc_k=1\), and by the same finiteness argument every \(J_k\) is infinite. For an infinite cardinal \(\alpha\) put \(z_\alpha=\sum\{c_k:\ |J_k|=\alpha\}\). Fix a set \(S_\alpha\) with \(|S_\alpha|=\alpha\) and bijections \(\beta_k:S_\alpha\to J_k\) for the \(k\) with \(|J_k|=\alpha\), and put \(f_{\alpha,s}=\sum_kf_{k,\beta_k(s)}\). These are mutually orthogonal, \(f_{\alpha,s}\sim\sum_kfc_k=fz_\alpha\) (additivity over orthogonal central pieces), and \(\sum_sf_{\alpha,s}=z_\alpha\). By Proposition 8.4 in \(Mz_\alpha\) and [Lemma 8.5](#oa-fnd-ty-11), \[
 \begin{gathered}
@@ -1010,4 +1010,4 @@ The following topics extend this lesson. Their further assertions and constructi
 - [Kostecki] R. P. Kostecki, *W\(^*\)-algebras and noncommutative integration*, [arXiv:1307.4818](https://arxiv.org/abs/1307.4818v5), 2013.
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C*-Algebras and von Neumann Algebras*, [revised author edition, 8 February 2017](https://www.bruceblackadar.com/Mathematics/Cycr.pdf).
 
-*Freely accessible reading:* [B. Blackadar, *Operator Algebras*, III.1.1–III.1.4](https://bruceblackadar.com/Mathematics/Cycr.pdf) gives a route through projection comparison and type decomposition; all cardinal and boundary cases stated here retain their complete proofs. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.
+*Freely accessible reading:* [B. Blackadar, *Operator Algebras*, III.1.1–III.1.4](https://bruceblackadar.com/Mathematics/Cycr.pdf) discusses projection comparison and type decomposition.

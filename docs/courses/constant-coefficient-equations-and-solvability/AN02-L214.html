@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quadratic boundary kernels and signature phases</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L213.html">Previous lesson</a> · <a href="#4-real-kernels-supported-on-either-sign-cone">Cone source coefficients</a> · <a href="src/quadratic-boundary-kernels-and-signature-phases.md">Editable source</a></nav><h1 id="quadratic-boundary-kernels-and-signature-phases">Quadratic boundary kernels and signature phases</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A nondegenerate real quadratic form can change sign. Its inverse kernel then remembers which side of the real axis was used to approach its characteristic cone. The number of negative squares determines a complex phase; the determinant determines its size. Some real distributions supported on the cone have zero source even though the two complex boundary kernels still give fundamental solutions.</p>
+<p>We compute the point source through a Gaussian integral over one positive parameter. Its endpoint at infinity detects the origin. This proves the normalization at the cone's vertex as well as the equation away from it. We then obtain real one-sided kernels, treat the logarithmic two-dimensional case, and reduce degenerate quadratic operators to their active variables.</p>
+<p>Basic references are <a href="prerequisites/stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a>, Lemma 3.1 and Appendix A.2, for the full Fresnel calculation; <span class="unlinked">Cauchy kernels and distributional boundary limits</span>, Theorems 3.1 and 4.1 and Corollary 4.2, for uniform boundary values and pole jumps; and <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, Theorem 3.1, for real orthogonal diagonalization. The gamma normalization, its reciprocal and its poles are proved in <a href="prerequisites/wave-hadamard-kernels.html">Causal kernels, initial data, and short-time geometry</a>, Section 2, equations W4a–W4e. The uniqueness of a homogeneous extension of degree greater than minus the dimension follows from the finite-jet argument in <a href="AN02-L213.html">Homogeneous elliptic kernels and logarithmic scaling</a>, the proof of Theorem 3.1. Lars Hörmander's quadratic fundamental solutions are a mathematical reference for the formulas.</p>
+<h2 id="1-the-matrix-the-operator-and-the-two-boundary-sides">1. The matrix, the operator and the two boundary sides</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(A\)">\(A\)</span> be a real symmetric invertible <span class="math" data-index="1" data-tex="\(n\)">\(n\)</span>-square matrix, <span class="math" data-index="2" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Write</p>
+<span class="math math-display" id="learner-eq-1.1" data-index="3" data-tex="\[
+ Q(x)=x^TAx,\qquad
+ L_A=\sum_{j,k}(A^{-1})_{jk}\partial_{x_j}\partial_{x_k},\qquad
+ d_A=|\det A|^{-1/2}.
+ \tag{1.1}
+\]">\[
+ Q(x)=x^TAx,\qquad
+ L_A=\sum_{j,k}(A^{-1})_{jk}\partial_{x_j}\partial_{x_k},\qquad
+ d_A=|\det A|^{-1/2}.
+ \tag{1.1}
+\]</span>
+<p>Its signature is <span class="math" data-index="4" data-tex="\((p,q)\)">\((p,q)\)</span>: <span class="math" data-index="5" data-tex="\(p\)">\(p\)</span> positive and <span class="math" data-index="6" data-tex="\(q\)">\(q\)</span> negative eigenvalues, counted with multiplicity, with <span class="math" data-index="7" data-tex="\(p+q=n\)">\(p+q=n\)</span>. The gradient <span class="math" data-index="8" data-tex="\(2Ax\)">\(2Ax\)</span> is nonzero off the origin.</p>
+<p>We use ordinary derivatives in <span class="math" data-index="9" data-tex="\(L_A\)">\(L_A\)</span>. For the course convention <span class="math" data-index="10" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, the polynomial <span class="math" data-index="11" data-tex="\(P(\xi)=\xi^TA^{-1}\xi\)">\(P(\xi)=\xi^TA^{-1}\xi\)</span> satisfies</p>
+<span class="math math-display" id="learner-eq-1.2" data-index="12" data-tex="\[
+                              P(D)=-L_A .
+ \tag{1.2}
+\]">\[
+                              P(D)=-L_A .
+ \tag{1.2}
+\]</span>
+<p>Thus changing from a fundamental solution of <span class="math" data-index="13" data-tex="\(L_A\)">\(L_A\)</span> to one of <span class="math" data-index="14" data-tex="\(P(D)\)">\(P(D)\)</span> introduces a minus sign.</p>
+<p>For <span class="math" data-index="15" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, put <span class="math" data-index="16" data-tex="\(a=(n-2)/2\)">\(a=(n-2)/2\)</span>. The homogeneous upper and lower boundary kernels will be</p>
+<span class="math math-display" id="learner-eq-1.3" data-index="17" data-tex="\[
+ U_\pm=\lim_{\varepsilon\downarrow0}
+                  \bigl(Q(x)\pm i\varepsilon|x|^2\bigr)^{-a}
+                   \quad\hbox{in }\mathcal S&#x27;(\mathbb R^n).
+ \tag{1.3}
+\]">\[
+ U_\pm=\lim_{\varepsilon\downarrow0}
+                  \bigl(Q(x)\pm i\varepsilon|x|^2\bigr)^{-a}
+                   \quad\hbox{in }\mathcal S&#x27;(\mathbb R^n).
+ \tag{1.3}
+\]</span>
+<p>The power uses the logarithm whose argument is between zero and <span class="math" data-index="18" data-tex="\(\pi\)">\(\pi\)</span> for the upper side, and between <span class="math" data-index="19" data-tex="\(-\pi\)">\(-\pi\)</span> and zero for the lower side. We prove the global limits below. In particular the notation includes the vertex; it is not a pointwise prescription only on the punctured space.</p>
+<p>Let</p>
+<span class="math math-display" id="learner-eq-1.4" data-index="20" data-tex="\[
+                      \sigma_{n-1}=|S^{n-1}|
+                              =\frac{2\pi^{n/2}}{\Gamma(n/2)}.
+ \tag{1.4}
+\]">\[
+                      \sigma_{n-1}=|S^{n-1}|
+                              =\frac{2\pi^{n/2}}{\Gamma(n/2)}.
+ \tag{1.4}
+\]</span>
+<p>The equality follows by evaluating the Gaussian mass in polar coordinates; the radial integral is <span class="math" data-index="21" data-tex="\(\Gamma(n/2)/2\)">\(\Gamma(n/2)/2\)</span>.</p>
+<p><strong>Theorem 1.1 (the full boundary normalization).</strong> For every <span class="math" data-index="22" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, both limits (1.3) exist as tempered distributions. They are homogeneous of degree <span class="math" data-index="23" data-tex="\(2-n\)">\(2-n\)</span>, smooth off <span class="math" data-index="24" data-tex="\(Q=0\)">\(Q=0\)</span>, and</p>
+<span class="math math-display" id="learner-eq-1.5" data-index="25" data-tex="\[
+                  L_AU_\pm
+                    =(2-n)\sigma_{n-1}d_A
+                              e^{\mp i\pi q/2}\delta_0 .
+ \tag{1.5}
+\]">\[
+                  L_AU_\pm
+                    =(2-n)\sigma_{n-1}d_A
+                              e^{\mp i\pi q/2}\delta_0 .
+ \tag{1.5}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="learner-eq-1.6" data-index="26" data-tex="\[
+ F_\pm=\frac{e^{\pm i\pi q/2}}
+                    {(2-n)\sigma_{n-1}d_A}\,U_\pm
+                   \quad\hbox{satisfy}\quad L_AF_\pm=\delta_0.
+ \tag{1.6}
+\]">\[
+ F_\pm=\frac{e^{\pm i\pi q/2}}
+                    {(2-n)\sigma_{n-1}d_A}\,U_\pm
+                   \quad\hbox{satisfy}\quad L_AF_\pm=\delta_0.
+ \tag{1.6}
+\]</span>
+<p>The coefficient in (1.5) never vanishes. It depends on the full number of negative squares, not just the sign of the determinant.</p>
+<h2 id="2-one-gaussian-formula-controls-the-vertex">2. One Gaussian formula controls the vertex</h2>
+<p>For <span class="math" data-index="27" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> and <span class="math" data-index="28" data-tex="\(\varepsilon\ge0\)">\(\varepsilon\ge0\)</span>, set</p>
+<span class="math math-display" id="learner-eq-2.1" data-index="29" data-tex="\[
+ G_{s,\varepsilon}(x)
+                    =e^{\,isQ(x)-\varepsilon s|x|^2},
+              \qquad G_s=G_{s,0}.
+ \tag{2.1}
+\]">\[
+ G_{s,\varepsilon}(x)
+                    =e^{\,isQ(x)-\varepsilon s|x|^2},
+              \qquad G_s=G_{s,0}.
+ \tag{2.1}
+\]</span>
+<p>Orthogonally diagonalize <span class="math" data-index="30" data-tex="\(A\)">\(A\)</span>, with eigenvalues <span class="math" data-index="31" data-tex="\(\lambda_1,\ldots,\lambda_n\)">\(\lambda_1,\ldots,\lambda_n\)</span>. For positive <span class="math" data-index="32" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the damped Gaussian formula in the stationary-phase reading, equation (3.2), gives, for every Schwartz test <span class="math" data-index="33" data-tex="\(\varphi\)">\(\varphi\)</span>,</p>
+<span class="math math-display" id="learner-eq-2.2" data-index="34" data-tex="\[
+ \begin{split}
+ \langle G_{s,\varepsilon},\varphi\rangle
+  ={}&amp;\pi^{n/2}s^{-n/2}
+         \prod_{j=1}^n(\varepsilon-i\lambda_j)^{-1/2}\\
+   &amp;{}\cdot(2\pi)^{-n}
+       \int_{\mathbb R^n}
+        e^{-\xi^T(\varepsilon I-iA)^{-1}\xi/(4s)}
+                              \widehat\varphi(\xi)\,d\xi .
+ \end{split}
+ \tag{2.2}
+\]">\[
+ \begin{split}
+ \langle G_{s,\varepsilon},\varphi\rangle
+  ={}&amp;\pi^{n/2}s^{-n/2}
+         \prod_{j=1}^n(\varepsilon-i\lambda_j)^{-1/2}\\
+   &amp;{}\cdot(2\pi)^{-n}
+       \int_{\mathbb R^n}
+        e^{-\xi^T(\varepsilon I-iA)^{-1}\xi/(4s)}
+                              \widehat\varphi(\xi)\,d\xi .
+ \end{split}
+ \tag{2.2}
+\]</span>
+<p>Each square root is the branch with positive real part. The formula follows by inserting Fourier inversion for the test and multiplying the scalar Gaussian identities; positive damping makes Fubini an ordinary absolutely convergent interchange.</p>
+<p>In the diagonal coordinates the real part of <span class="math" data-index="35" data-tex="\((\varepsilon-i\lambda_j)^{-1}\)">\((\varepsilon-i\lambda_j)^{-1}\)</span> is <span class="math" data-index="36" data-tex="\(\varepsilon/(\varepsilon^2+\lambda_j^2)\ge0\)">\(\varepsilon/(\varepsilon^2+\lambda_j^2)\ge0\)</span>. Also <span class="math" data-index="37" data-tex="\(|\varepsilon-i\lambda_j|\ge|\lambda_j|\)">\(|\varepsilon-i\lambda_j|\ge|\lambda_j|\)</span>. Thus</p>
+<span class="math math-display" id="learner-eq-2.3" data-index="38" data-tex="\[
+ |\langle G_{s,\varepsilon},\varphi\rangle|
+       \le\pi^{n/2}d_A s^{-n/2}(2\pi)^{-n}
+                                      \|\widehat\varphi\|_1
+                    \quad(\varepsilon&gt;0).
+ \tag{2.3}
+\]">\[
+ |\langle G_{s,\varepsilon},\varphi\rangle|
+       \le\pi^{n/2}d_A s^{-n/2}(2\pi)^{-n}
+                                      \|\widehat\varphi\|_1
+                    \quad(\varepsilon&gt;0).
+ \tag{2.3}
+\]</span>
+<p>There is the complementary bound <span class="math" data-index="39" data-tex="\(|\langle G_{s,\varepsilon},\varphi\rangle|\le\|\varphi\|_1\)">\(|\langle G_{s,\varepsilon},\varphi\rangle|\le\|\varphi\|_1\)</span>. Both norms are controlled by finitely many Schwartz seminorms.</p>
+<p>Let <span class="math" data-index="40" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero in (2.2). The original pairing converges by <span class="math" data-index="41" data-tex="\(|G_{s,\varepsilon}|\le1\)">\(|G_{s,\varepsilon}|\le1\)</span>. On the Fourier side the exponential has modulus at most one, so dominated convergence applies. We obtain</p>
+<span class="math math-display" id="learner-eq-2.4" data-index="42" data-tex="\[
+ \langle G_s,\varphi\rangle
+   =c_A s^{-n/2}(2\pi)^{-n}
+       \int e^{-i\xi^TA^{-1}\xi/(4s)}\widehat\varphi(\xi)\,d\xi,
+ \qquad
+ c_A=\pi^{n/2}d_A e^{i\pi(p-q)/4}.
+ \tag{2.4}
+\]">\[
+ \langle G_s,\varphi\rangle
+   =c_A s^{-n/2}(2\pi)^{-n}
+       \int e^{-i\xi^TA^{-1}\xi/(4s)}\widehat\varphi(\xi)\,d\xi,
+ \qquad
+ c_A=\pi^{n/2}d_A e^{i\pi(p-q)/4}.
+ \tag{2.4}
+\]</span>
+<p>Indeed each inverse square root tends to
+<span class="math" data-index="43" data-tex="\(|\lambda_j|^{-1/2}e^{i\pi\operatorname{sign}(\lambda_j)/4}\)">\(|\lambda_j|^{-1/2}e^{i\pi\operatorname{sign}(\lambda_j)/4}\)</span>. This retains every eigenvalue's phase.</p>
+<p>The estimate (2.3) remains valid at zero damping.</p>
+<p>Finally let <span class="math" data-index="44" data-tex="\(s\)">\(s\)</span> increase to infinity in (2.4). Another dominated convergence and Fourier inversion give</p>
+<span class="math math-display" id="learner-eq-2.5" data-index="45" data-tex="\[
+                         s^{n/2}G_s\longrightarrow c_A\delta_0
+                                  \quad\hbox{in }\mathcal S&#x27;.
+ \tag{2.5}
+\]">\[
+                         s^{n/2}G_s\longrightarrow c_A\delta_0
+                                  \quad\hbox{in }\mathcal S&#x27;.
+ \tag{2.5}
+\]</span>
+<p>This is the endpoint that supplies the source. No stationary-phase remainder or unproved asymptotic expansion is needed.</p>
+<h2 id="3-integrating-the-gaussian-to-a-fundamental-solution">3. Integrating the Gaussian to a fundamental solution</h2>
+<p>For <span class="math" data-index="46" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, <span class="math" data-index="47" data-tex="\(a=(n-2)/2&gt;0\)">\(a=(n-2)/2&gt;0\)</span>, define</p>
+<span class="math math-display" id="learner-eq-3.1" data-index="48" data-tex="\[
+                  U_+=\frac{e^{-i\pi a/2}}{\Gamma(a)}
+                         \int_0^\infty s^{a-1}G_s\,ds .
+ \tag{3.1}
+\]">\[
+                  U_+=\frac{e^{-i\pi a/2}}{\Gamma(a)}
+                         \int_0^\infty s^{a-1}G_s\,ds .
+ \tag{3.1}
+\]</span>
+<p>The integral is defined by pairing with a Schwartz test. It converges absolutely in that pairing. Near <span class="math" data-index="49" data-tex="\(s=0\)">\(s=0\)</span>, use <span class="math" data-index="50" data-tex="\(\|\varphi\|_1s^{a-1}\)">\(\|\varphi\|_1s^{a-1}\)</span>, which is integrable because <span class="math" data-index="51" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. For <span class="math" data-index="52" data-tex="\(s\ge1\)">\(s\ge1\)</span>, (2.3) gives a multiple of</p>
+<span class="math math-display" id="learner-eq-3.2" data-index="53" data-tex="\[
+                    s^{a-1-n/2}=s^{-2}.
+ \tag{3.2}
+\]">\[
+                    s^{a-1-n/2}=s^{-2}.
+ \tag{3.2}
+\]</span>
+<p>The resulting bound by finitely many Schwartz seminorms proves that (3.1) is a tempered distribution.</p>
+<p>It is the boundary limit in (1.3). For <span class="math" data-index="54" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the gamma integral gives, pointwise for <span class="math" data-index="55" data-tex="\(x\ne0\)">\(x\ne0\)</span>,</p>
+<span class="math math-display" id="learner-eq-3.3" data-index="56" data-tex="\[
+ \bigl(Q(x)+i\varepsilon|x|^2\bigr)^{-a}
+    =\frac{e^{-i\pi a/2}}{\Gamma(a)}
+          \int_0^\infty s^{a-1}G_{s,\varepsilon}(x)\,ds .
+ \tag{3.3}
+\]">\[
+ \bigl(Q(x)+i\varepsilon|x|^2\bigr)^{-a}
+    =\frac{e^{-i\pi a/2}}{\Gamma(a)}
+          \int_0^\infty s^{a-1}G_{s,\varepsilon}(x)\,ds .
+ \tag{3.3}
+\]</span>
+<p>For completeness, the complex Laplace identity used here follows first for positive real <span class="math" data-index="57" data-tex="\(w\)">\(w\)</span> by <span class="math" data-index="58" data-tex="\(u=ws\)">\(u=ws\)</span> in the gamma integral. Both <span class="math" data-index="59" data-tex="\(\int_0^\infty e^{-ws}s^{a-1}ds\)">\(\int_0^\infty e^{-ws}s^{a-1}ds\)</span> and <span class="math" data-index="60" data-tex="\(\Gamma(a)w^{-a}\)">\(\Gamma(a)w^{-a}\)</span> are holomorphic for <span class="math" data-index="61" data-tex="\(\operatorname{Re}w&gt;0\)">\(\operatorname{Re}w&gt;0\)</span>, with differentiation justified by exponential domination on compact parameter sets. The one-variable identity theorem proves it on that half-plane. Take <span class="math" data-index="62" data-tex="\(w=\varepsilon|x|^2-iQ(x)\)">\(w=\varepsilon|x|^2-iQ(x)\)</span>.</p>
+<p>For each fixed <span class="math" data-index="63" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the function on the left of (3.3) is locally integrable at zero: its absolute value is at most <span class="math" data-index="64" data-tex="\(\varepsilon^{-a}|x|^{2-n}\)">\(\varepsilon^{-a}|x|^{2-n}\)</span>. Absolute Fubini against a Schwartz test follows by first integrating <span class="math" data-index="65" data-tex="\(s\)">\(s\)</span> with the positive damping and <span class="math" data-index="66" data-tex="\(|\varphi|\)">\(|\varphi|\)</span>. On the pairing side, the bounds near zero and infinity just used are uniform for <span class="math" data-index="67" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Dominated convergence in <span class="math" data-index="68" data-tex="\(s\)">\(s\)</span>, using (2.2) at every positive <span class="math" data-index="69" data-tex="\(s\)">\(s\)</span>, proves the global <span class="math" data-index="70" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> limit (1.3). The lower boundary is its complex conjugate.</p>
+<p>At every positive <span class="math" data-index="71" data-tex="\(s\)">\(s\)</span>, direct differentiation gives the exact identity</p>
+<span class="math math-display" id="learner-eq-3.4" data-index="72" data-tex="\[
+            L_AG_s=2insG_s+4is^2\partial_sG_s.
+ \tag{3.4}
+\]">\[
+            L_AG_s=2insG_s+4is^2\partial_sG_s.
+ \tag{3.4}
+\]</span>
+<p>Indeed the first derivatives of <span class="math" data-index="73" data-tex="\(Q\)">\(Q\)</span> are <span class="math" data-index="74" data-tex="\(2Ax\)">\(2Ax\)</span>, <span class="math" data-index="75" data-tex="\(L_AQ=2n\)">\(L_AQ=2n\)</span>, and the corresponding squared gradient is <span class="math" data-index="76" data-tex="\(4Q\)">\(4Q\)</span>. Since <span class="math" data-index="77" data-tex="\(a=n/2-1\)">\(a=n/2-1\)</span>,</p>
+<span class="math math-display" id="learner-eq-3.5" data-index="78" data-tex="\[
+               s^{a-1}L_AG_s
+                        =4i\,\partial_s\bigl(s^{n/2}G_s\bigr).
+ \tag{3.5}
+\]">\[
+               s^{a-1}L_AG_s
+                        =4i\,\partial_s\bigl(s^{n/2}G_s\bigr).
+ \tag{3.5}
+\]</span>
+<p>Pair (3.5) with a Schwartz test and integrate over <span class="math" data-index="79" data-tex="\([\eta,T]\)">\([\eta,T]\)</span>. Differentiation in <span class="math" data-index="80" data-tex="\(s\)">\(s\)</span> is legitimate on this finite interval, since it only inserts a quadratic polynomial in <span class="math" data-index="81" data-tex="\(x\)">\(x\)</span>. The full improper integral is convergent by the same estimates applied to <span class="math" data-index="82" data-tex="\(L_A\varphi\)">\(L_A\varphi\)</span>. As <span class="math" data-index="83" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, the lower boundary is zero by <span class="math" data-index="84" data-tex="\(|\langle G_\eta,\varphi\rangle|\le\|\varphi\|_1\)">\(|\langle G_\eta,\varphi\rangle|\le\|\varphi\|_1\)</span>. As <span class="math" data-index="85" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>, (2.5) gives</p>
+<span class="math math-display" id="learner-eq-3.6" data-index="86" data-tex="\[
+ L_AU_+=\frac{4ie^{-i\pi a/2}}{\Gamma(a)}c_A\delta_0
+       =-\frac{4\pi^{n/2}}{\Gamma(a)}
+                       d_A e^{-i\pi q/2}\delta_0.
+ \tag{3.6}
+\]">\[
+ L_AU_+=\frac{4ie^{-i\pi a/2}}{\Gamma(a)}c_A\delta_0
+       =-\frac{4\pi^{n/2}}{\Gamma(a)}
+                       d_A e^{-i\pi q/2}\delta_0.
+ \tag{3.6}
+\]</span>
+<p>In the phase calculation, <span class="math" data-index="87" data-tex="\(p+q=n\)">\(p+q=n\)</span> gives
+<span class="math" data-index="88" data-tex="\(i e^{-i\pi(n-2)/4}e^{i\pi(n-2q)/4}=-e^{-i\pi q/2}\)">\(i e^{-i\pi(n-2)/4}e^{i\pi(n-2q)/4}=-e^{-i\pi q/2}\)</span>.
+The gamma recurrence and (1.4) identify the final coefficient with <span class="math" data-index="89" data-tex="\((2-n)\sigma_{n-1}\)">\((2-n)\sigma_{n-1}\)</span>. Conjugation proves the lower sign.</p>
+<p>Each approximating function in (1.3) is homogeneous of degree <span class="math" data-index="90" data-tex="\(2-n\)">\(2-n\)</span>, so the distributional limit is as well. On a compact set disjoint from <span class="math" data-index="91" data-tex="\(Q=0\)">\(Q=0\)</span>, all ordinary derivatives converge to the smooth boundary branch. This completes the proof of Theorem 1.1. <span class="math" data-index="92" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-real-kernels-supported-on-either-sign-cone">4. Real kernels supported on either sign cone</h2>
+<p>Set <span class="math" data-index="93" data-tex="\(\alpha=(2-n)/2\)">\(\alpha=(2-n)/2\)</span>. We need the normalized one-sided powers at these integer or half-integer exponents. They have an elementary derivative definition. Choose a nonnegative integer <span class="math" data-index="94" data-tex="\(N\)">\(N\)</span> with <span class="math" data-index="95" data-tex="\(\alpha+N&gt;-1\)">\(\alpha+N&gt;-1\)</span>, and put</p>
+<span class="math math-display" id="learner-eq-4.1" data-index="96" data-tex="\[
+ \chi_+^\alpha
+    =\partial_t^N\frac{t_+^{\alpha+N}}{\Gamma(\alpha+N+1)},\qquad
+ \chi_-^\alpha
+    =(-1)^N\partial_t^N
+                       \frac{(-t)_+^{\alpha+N}}{\Gamma(\alpha+N+1)}.
+ \tag{4.1}
+\]">\[
+ \chi_+^\alpha
+    =\partial_t^N\frac{t_+^{\alpha+N}}{\Gamma(\alpha+N+1)},\qquad
+ \chi_-^\alpha
+    =(-1)^N\partial_t^N
+                       \frac{(-t)_+^{\alpha+N}}{\Gamma(\alpha+N+1)}.
+ \tag{4.1}
+\]</span>
+<p>The expressions being differentiated are locally integrable. Adjacent choices of <span class="math" data-index="97" data-tex="\(N\)">\(N\)</span> agree by integration by parts and the gamma recurrence: the next primitive has exponent greater than zero and therefore has zero boundary value. This proves independence of <span class="math" data-index="98" data-tex="\(N\)">\(N\)</span>. The distributions are homogeneous of degree <span class="math" data-index="99" data-tex="\(\alpha\)">\(\alpha\)</span>, with supports in the respective closed half-lines. In particular</p>
+<span class="math math-display" id="learner-eq-4.2" data-index="100" data-tex="\[
+ \chi_+^0=H(t),\quad \chi_-^0=H(-t),\qquad
+ \chi_+^{-k}=\delta_0^{(k-1)},\quad
+ \chi_-^{-k}=(-1)^{k-1}\delta_0^{(k-1)}\quad(k\ge1).
+ \tag{4.2}
+\]">\[
+ \chi_+^0=H(t),\quad \chi_-^0=H(-t),\qquad
+ \chi_+^{-k}=\delta_0^{(k-1)},\quad
+ \chi_-^{-k}=(-1)^{k-1}\delta_0^{(k-1)}\quad(k\ge1).
+ \tag{4.2}
+\]</span>
+<p>On the punctured space, <span class="math" data-index="101" data-tex="\(Q\)">\(Q\)</span> is a submersion. The distribution <span class="math" data-index="102" data-tex="\(\chi_\pm^\alpha(Q)\)">\(\chi_\pm^\alpha(Q)\)</span> has its literal local meaning: in coordinates <span class="math" data-index="103" data-tex="\((t,y)\)">\((t,y)\)</span> with <span class="math" data-index="104" data-tex="\(t=Q(x)\)">\(t=Q(x)\)</span>, pair <span class="math" data-index="105" data-tex="\(\chi_\pm^\alpha(t)\)">\(\chi_\pm^\alpha(t)\)</span> with the smooth test obtained by integrating the transformed test times its volume Jacobian over <span class="math" data-index="106" data-tex="\(y\)">\(y\)</span>. A change of the other coordinates gives the same integrated test, by substitution; equivalently approximate the one-dimensional distribution smoothly first and then take the limit.</p>
+<p>There is a unique homogeneous extension <span class="math" data-index="107" data-tex="\(V_\pm\)">\(V_\pm\)</span> of degree <span class="math" data-index="108" data-tex="\(2-n\)">\(2-n\)</span> across zero. Here is its existence, including the vertex. On the unit sphere pull back <span class="math" data-index="109" data-tex="\(\chi_\pm^\alpha\)">\(\chi_\pm^\alpha\)</span> by <span class="math" data-index="110" data-tex="\(Q\)">\(Q\)</span>. At a zero of <span class="math" data-index="111" data-tex="\(Q\)">\(Q\)</span> on that sphere, its tangent gradient is <span class="math" data-index="112" data-tex="\(2A\omega\ne0\)">\(2A\omega\ne0\)</span>, since <span class="math" data-index="113" data-tex="\(\omega\cdot A\omega=0\)">\(\omega\cdot A\omega=0\)</span>. Thus the same local submersion definition applies; if there is no zero, it is simply a smooth function there. Denote this angular distribution by <span class="math" data-index="114" data-tex="\(v_\pm\)">\(v_\pm\)</span>. Define</p>
+<span class="math math-display" id="learner-eq-4.3" data-index="115" data-tex="\[
+          \langle V_\pm,\varphi\rangle
+                 =\int_0^\infty r
+                              \langle v_\pm,\varphi(r\,\cdot)\rangle\,dr.
+ \tag{4.3}
+\]">\[
+          \langle V_\pm,\varphi\rangle
+                 =\int_0^\infty r
+                              \langle v_\pm,\varphi(r\,\cdot)\rangle\,dr.
+ \tag{4.3}
+\]</span>
+<p>The angular distribution has finite order on the compact sphere, using finitely many coordinate charts and a smooth partition. Every angular derivative of <span class="math" data-index="116" data-tex="\(\varphi(r\omega)\)">\(\varphi(r\omega)\)</span> is bounded near <span class="math" data-index="117" data-tex="\(r=0\)">\(r=0\)</span> by finitely many derivatives of <span class="math" data-index="118" data-tex="\(\varphi\)">\(\varphi\)</span> times nonnegative powers of <span class="math" data-index="119" data-tex="\(r\)">\(r\)</span>. Hence the factor <span class="math" data-index="120" data-tex="\(r\,dr\)">\(r\,dr\)</span> is integrable there. At infinity arbitrarily high Schwartz weights absorb those powers. This proves temperedness and homogeneity of (4.3). Uniqueness follows from the available point-supported-distribution lemma: a difference supported at zero cannot have degree <span class="math" data-index="121" data-tex="\(2-n&gt;-n\)">\(2-n&gt;-n\)</span>.</p>
+<p>The resulting supports satisfy</p>
+<span class="math math-display" id="learner-eq-4.4" data-index="122" data-tex="\[
+                   \operatorname{supp}V_+\subset\{Q\ge0\},
+             \qquad \operatorname{supp}V_-\subset\{Q\le0\}.
+ \tag{4.4}
+\]">\[
+                   \operatorname{supp}V_+\subset\{Q\ge0\},
+             \qquad \operatorname{supp}V_-\subset\{Q\le0\}.
+ \tag{4.4}
+\]</span>
+<p><strong>Theorem 4.1 (one-sided source coefficients).</strong> For every <span class="math" data-index="123" data-tex="\(n\ge1\)">\(n\ge1\)</span>,</p>
+<span class="math math-display" id="learner-eq-4.5" data-index="124" data-tex="\[
+ \begin{split}
+ L_AV_+&amp;=4\pi^{(n-2)/2}d_A\sin(\pi p/2)\,\delta_0,\\
+ L_AV_-&amp;=-4\pi^{(n-2)/2}d_A\sin(\pi q/2)\,\delta_0.
+ \end{split}
+ \tag{4.5}
+\]">\[
+ \begin{split}
+ L_AV_+&amp;=4\pi^{(n-2)/2}d_A\sin(\pi p/2)\,\delta_0,\\
+ L_AV_-&amp;=-4\pi^{(n-2)/2}d_A\sin(\pi q/2)\,\delta_0.
+ \end{split}
+ \tag{4.5}
+\]</span>
+<p>A branch with nonzero coefficient, divided by that coefficient, is a fundamental solution. A zero coefficient gives a homogeneous solution, not a normalized inverse.</p>
+<p><strong>Proof for <span class="math" data-index="125" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>.</strong> The one-dimensional boundary identities at <span class="math" data-index="126" data-tex="\(\alpha=1-n/2&lt;0\)">\(\alpha=1-n/2&lt;0\)</span> give</p>
+<span class="math math-display" id="learner-eq-4.6" data-index="127" data-tex="\[
+ \begin{split}
+ V_+&amp;=\frac{i\Gamma(-\alpha)}{2\pi}
+          \bigl(e^{i\pi\alpha}U_-
+                           -e^{-i\pi\alpha}U_+\bigr),\\
+ V_-&amp;=\frac{i\Gamma(-\alpha)}{2\pi}(U_+-U_-).
+ \end{split}
+ \tag{4.6}
+\]">\[
+ \begin{split}
+ V_+&amp;=\frac{i\Gamma(-\alpha)}{2\pi}
+          \bigl(e^{i\pi\alpha}U_-
+                           -e^{-i\pi\alpha}U_+\bigr),\\
+ V_-&amp;=\frac{i\Gamma(-\alpha)}{2\pi}(U_+-U_-).
+ \end{split}
+ \tag{4.6}
+\]</span>
+<p>We justify these identities also at the integer poles. For a noninteger half-integer exponent with real part greater than <span class="math" data-index="128" data-tex="\(-1\)">\(-1\)</span>, write the ordinary boundary functions as</p>
+<span class="math math-display" id="learner-eq-4.7" data-index="129" data-tex="\[
+        (t\pm i0)^\alpha=t_+^\alpha+e^{\pm i\pi\alpha}(-t)_+^\alpha .
+ \tag{4.7}
+\]">\[
+        (t\pm i0)^\alpha=t_+^\alpha+e^{\pm i\pi\alpha}(-t)_+^\alpha .
+ \tag{4.7}
+\]</span>
+<p>Solve this two-by-two system and use
+<span class="math" data-index="130" data-tex="\(\Gamma(-\alpha)\Gamma(\alpha+1)=-\pi/\sin(\pi\alpha)\)">\(\Gamma(-\alpha)\Gamma(\alpha+1)=-\pi/\sin(\pi\alpha)\)</span>.
+Only half-integer values are needed here. This gamma identity follows from <span class="math" data-index="131" data-tex="\(\Gamma(1/2)^2=\pi\)">\(\Gamma(1/2)^2=\pi\)</span> and the recurrence; increasing <span class="math" data-index="132" data-tex="\(\alpha\)">\(\alpha\)</span> by one changes both sides' signs. Repeated differentiation, with the same recurrence, proves (4.6) for every negative half-integer.</p>
+<p>For <span class="math" data-index="133" data-tex="\(\alpha=-k\)">\(\alpha=-k\)</span>, <span class="math" data-index="134" data-tex="\(k\ge1\)">\(k\ge1\)</span>, the higher-pole boundary formula in the Cauchy reading gives</p>
+<span class="math math-display" id="learner-eq-4.8" data-index="135" data-tex="\[
+ (t+i0)^{-k}-(t-i0)^{-k}
+        =-\frac{2\pi i(-1)^{k-1}}{(k-1)!}\delta_0^{(k-1)}.
+ \tag{4.8}
+\]">\[
+ (t+i0)^{-k}-(t-i0)^{-k}
+        =-\frac{2\pi i(-1)^{k-1}}{(k-1)!}\delta_0^{(k-1)}.
+ \tag{4.8}
+\]</span>
+<p>Insert this into (4.6) and use <span class="math" data-index="136" data-tex="\(e^{\pm i\pi\alpha}=(-1)^k\)">\(e^{\pm i\pi\alpha}=(-1)^k\)</span>, <span class="math" data-index="137" data-tex="\(\Gamma(k)=(k-1)!\)">\(\Gamma(k)=(k-1)!\)</span>, and (4.2). Both identities follow, without division by a vanishing sine.</p>
+<p>The identities first pull back on the punctured space. To identify <span class="math" data-index="138" data-tex="\(U_\pm\)">\(U_\pm\)</span> there, use polar coordinates on any fixed annulus: its approximants are <span class="math" data-index="139" data-tex="\(r^{2\alpha}(Q(\omega)\pm i\varepsilon)^\alpha\)">\(r^{2\alpha}(Q(\omega)\pm i\varepsilon)^\alpha\)</span>. The Cauchy boundary theorem provides a common finite-order estimate in every normal coordinate <span class="math" data-index="140" data-tex="\(t=Q(\omega)\)">\(t=Q(\omega)\)</span>; integration against the remaining compact parameters therefore commutes with the limit. Homogeneity of the one-dimensional boundary distributions identifies this with the stated pullback by <span class="math" data-index="141" data-tex="\(Q=r^2Q(\omega)\)">\(Q=r^2Q(\omega)\)</span>. Uniqueness of the homogeneous extension of degree <span class="math" data-index="142" data-tex="\(2-n\)">\(2-n\)</span> then proves (4.6) on the whole space.</p>
+<p>Apply (1.5) to (4.6). Since</p>
+<span class="math math-display" id="learner-eq-4.9" data-index="143" data-tex="\[
+ (2-n)\sigma_{n-1}
+                    =-\frac{4\pi^{n/2}}{\Gamma(-\alpha)},\qquad
+ \sin(\pi\alpha+\pi q/2)=\sin(\pi p/2),
+ \tag{4.9}
+\]">\[
+ (2-n)\sigma_{n-1}
+                    =-\frac{4\pi^{n/2}}{\Gamma(-\alpha)},\qquad
+ \sin(\pi\alpha+\pi q/2)=\sin(\pi p/2),
+ \tag{4.9}
+\]</span>
+<p>the first coefficient is <span class="math" data-index="144" data-tex="\(4\pi^{(n-2)/2}d_A\sin(\pi p/2)\)">\(4\pi^{(n-2)/2}d_A\sin(\pi p/2)\)</span>. The difference in the second identity gives the negative coefficient in (4.5). The low dimensions are proved next. <span class="math" data-index="145" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img class="course-figure" loading="lazy" width="2000" height="992" src="reproduce/L214/figures/signature-and-cone-source-coefficients.png" alt="Normalized point-source coefficients of the positive and negative sign-cone kernels for all signatures in dimensions three through eight." /><figcaption class="native"><a href="reproduce/L214/figures/signature-and-cone-source-coefficients.png">Open full-size PNG</a> · <a href="reproduce/L214/figures/signature-and-cone-source-coefficients.svg">Open SVG</a></figcaption></figure>
+<p><em>The source coefficient depends on the signature.</em> Each cell has <span class="math" data-index="146" data-tex="\(p\)">\(p\)</span> positive and <span class="math" data-index="147" data-tex="\(q\)">\(q\)</span> negative squares, with <span class="math" data-index="148" data-tex="\(3\le p+q\le8\)">\(3\le p+q\le8\)</span>. Multiply its entry by the positive factor <span class="math" data-index="149" data-tex="\(4\pi^{(n-2)/2}d_A\)">\(4\pi^{(n-2)/2}d_A\)</span>. The left panel gives <span class="math" data-index="150" data-tex="\(\sin(\pi p/2)\)">\(\sin(\pi p/2)\)</span>, and the right gives <span class="math" data-index="151" data-tex="\(-\sin(\pi q/2)\)">\(-\sin(\pi q/2)\)</span>, exactly as in (4.5). Blank cells lie outside the displayed dimensions. The outlined cells at <span class="math" data-index="152" data-tex="\((p,q)=(2,2)\)">\((p,q)=(2,2)\)</span> have zero source on both sign cones; Example 7.2 gives the nonzero boundary-value inverse for that signature. These tables concern point-source coefficients, not pointwise values of the kernels. <a href="reproduce/L214/README.md">Exact coefficient data and reproduction source</a>.</p>
+<h2 id="5-the-logarithm-in-dimension-two-and-the-elementary-line">5. The logarithm in dimension two and the elementary line</h2>
+<p>For <span class="math" data-index="153" data-tex="\(n=2\)">\(n=2\)</span>, define</p>
+<span class="math math-display" id="learner-eq-5.1" data-index="154" data-tex="\[
+                  W_\pm=\lim_{\varepsilon\downarrow0}
+                           \log(Q(x)\pm i\varepsilon|x|^2).
+ \tag{5.1}
+\]">\[
+                  W_\pm=\lim_{\varepsilon\downarrow0}
+                           \log(Q(x)\pm i\varepsilon|x|^2).
+ \tag{5.1}
+\]</span>
+<p>The branch conventions are those of Section 1.</p>
+<p><strong>Theorem 5.1.</strong> These limits exist in <span class="math" data-index="155" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, and</p>
+<span class="math math-display" id="learner-eq-5.2" data-index="156" data-tex="\[
+                         L_AW_\pm
+                               =4\pi d_Ae^{\mp i\pi q/2}\delta_0.
+ \tag{5.2}
+\]">\[
+                         L_AW_\pm
+                               =4\pi d_Ae^{\mp i\pi q/2}\delta_0.
+ \tag{5.2}
+\]</span>
+<p>They obey <span class="math" data-index="157" data-tex="\(W_\pm(tx)=W_\pm(x)+2\log t\)">\(W_\pm(tx)=W_\pm(x)+2\log t\)</span>. Dividing by the nonzero coefficient in (5.2) gives a fundamental solution.</p>
+<p><strong>Proof.</strong> For <span class="math" data-index="158" data-tex="\(\operatorname{Im}z&gt;0\)">\(\operatorname{Im}z&gt;0\)</span>, the scalar identity</p>
+<span class="math math-display" id="learner-eq-5.3" data-index="159" data-tex="\[
+       \log z=\frac{i\pi}{2}
+                 +\int_0^\infty\frac{e^{-s}-e^{isz}}s\,ds
+ \tag{5.3}
+\]">\[
+       \log z=\frac{i\pi}{2}
+                 +\int_0^\infty\frac{e^{-s}-e^{isz}}s\,ds
+ \tag{5.3}
+\]</span>
+<p>follows from the complex Laplace integral. Indeed for <span class="math" data-index="160" data-tex="\(\operatorname{Re}w&gt;0\)">\(\operatorname{Re}w&gt;0\)</span>, differentiation in <span class="math" data-index="161" data-tex="\(w\)">\(w\)</span> gives <span class="math" data-index="162" data-tex="\(1/w\)">\(1/w\)</span> for the integral with <span class="math" data-index="163" data-tex="\(e^{-ws}\)">\(e^{-ws}\)</span>, and the integral is zero at <span class="math" data-index="164" data-tex="\(w=1\)">\(w=1\)</span>; hence it is the logarithm of <span class="math" data-index="165" data-tex="\(w\)">\(w\)</span> on that half-plane. Take <span class="math" data-index="166" data-tex="\(w=-iz\)">\(w=-iz\)</span>.</p>
+<p>Consequently the upper limit is</p>
+<span class="math math-display" id="learner-eq-5.4" data-index="167" data-tex="\[
+ W_+=\frac{i\pi}{2}
+               +\int_0^\infty \frac{e^{-s}\boldsymbol1-G_s}s\,ds ,
+ \tag{5.4}
+\]">\[
+ W_+=\frac{i\pi}{2}
+               +\int_0^\infty \frac{e^{-s}\boldsymbol1-G_s}s\,ds ,
+ \tag{5.4}
+\]</span>
+<p>where <span class="math" data-index="168" data-tex="\(\boldsymbol1\)">\(\boldsymbol1\)</span> is the constant distribution. Near <span class="math" data-index="169" data-tex="\(s=0\)">\(s=0\)</span>, pairing the numerator with <span class="math" data-index="170" data-tex="\(\varphi\)">\(\varphi\)</span> is bounded by <span class="math" data-index="171" data-tex="\(Cs\int(1+|x|^2)|\varphi(x)|\,dx\)">\(Cs\int(1+|x|^2)|\varphi(x)|\,dx\)</span>. For <span class="math" data-index="172" data-tex="\(s\ge1\)">\(s\ge1\)</span>, (2.3), now with <span class="math" data-index="173" data-tex="\(n=2\)">\(n=2\)</span>, bounds its pairing divided by <span class="math" data-index="174" data-tex="\(s\)">\(s\)</span> by <span class="math" data-index="175" data-tex="\(e^{-s}\|\varphi\|_1/s+C s^{-2}\|\widehat\varphi\|_1\)">\(e^{-s}\|\varphi\|_1/s+C s^{-2}\|\widehat\varphi\|_1\)</span>. Both are integrable. The same bounds hold uniformly for <span class="math" data-index="176" data-tex="\(G_{s,\varepsilon}\)">\(G_{s,\varepsilon}\)</span>, <span class="math" data-index="177" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>. For fixed positive <span class="math" data-index="178" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, absolute Fubini in (5.3) follows near zero from the preceding Taylor bound and at infinity from the damped Gaussian integral. Dominated convergence thus proves the full global limit (5.1).</p>
+<p>Since <span class="math" data-index="179" data-tex="\(L_A\boldsymbol1=0\)">\(L_A\boldsymbol1=0\)</span>, apply <span class="math" data-index="180" data-tex="\(L_A\)">\(L_A\)</span> to (5.4). Equation (3.4) in dimension two gives</p>
+<span class="math math-display" id="learner-eq-5.5" data-index="181" data-tex="\[
+                  L_AW_+
+                      =-4i\,[\,sG_s\,]_{s=0}^{s=\infty}
+                      =-4ic_A\delta_0
+                      =4\pi d_Ae^{-i\pi q/2}\delta_0.
+ \tag{5.5}
+\]">\[
+                  L_AW_+
+                      =-4i\,[\,sG_s\,]_{s=0}^{s=\infty}
+                      =-4ic_A\delta_0
+                      =4\pi d_Ae^{-i\pi q/2}\delta_0.
+ \tag{5.5}
+\]</span>
+<p>This integration is performed on finite intervals after testing, just as in Section 3; convergence follows with <span class="math" data-index="182" data-tex="\(L_A\varphi\)">\(L_A\varphi\)</span>, and (2.5) supplies the upper endpoint. Conjugation gives the lower branch. Scaling is exact for every approximating logarithm and passes to the limit. <span class="math" data-index="183" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The real functions <span class="math" data-index="184" data-tex="\(\log|Q|\)">\(\log|Q|\)</span> and <span class="math" data-index="185" data-tex="\(H(\pm Q)\)">\(H(\pm Q)\)</span> are locally integrable. To check the logarithm at the vertex, use
+<span class="math" data-index="186" data-tex="\(\log|Q(r\omega)|=2\log r+\log|Q(\omega)|\)">\(\log|Q(r\omega)|=2\log r+\log|Q(\omega)|\)</span>.
+On the sphere, a zero of <span class="math" data-index="187" data-tex="\(Q\)">\(Q\)</span> is a regular zero, so a normal coordinate reduces the angular logarithm to the integrable function <span class="math" data-index="188" data-tex="\(\log|t|\)">\(\log|t|\)</span>. Radial integration then proves local integrability. The same argument, with <span class="math" data-index="189" data-tex="\(|\log|t+i\varepsilon||\le C+|\log|t||\)">\(|\log|t+i\varepsilon||\le C+|\log|t||\)</span> on bounded normal intervals, proves</p>
+<span class="math math-display" id="learner-eq-5.6" data-index="190" data-tex="\[
+                  W_\pm=\log|Q|\pm i\pi H(-Q)
+                          \quad(n=2)
+ \tag{5.6}
+\]">\[
+                  W_\pm=\log|Q|\pm i\pi H(-Q)
+                          \quad(n=2)
+ \tag{5.6}
+\]</span>
+<p>as locally integrable distributions.</p>
+<p>If <span class="math" data-index="191" data-tex="\((p,q)=(1,1)\)">\((p,q)=(1,1)\)</span>, equation (5.2) and its conjugate show that <span class="math" data-index="192" data-tex="\(L_A\log|Q|=0\)">\(L_A\log|Q|=0\)</span> and</p>
+<span class="math math-display" id="learner-eq-5.7" data-index="193" data-tex="\[
+                      L_AH(Q)=4d_A\delta_0,\qquad
+                      L_AH(-Q)=-4d_A\delta_0.
+ \tag{5.7}
+\]">\[
+                      L_AH(Q)=4d_A\delta_0,\qquad
+                      L_AH(-Q)=-4d_A\delta_0.
+ \tag{5.7}
+\]</span>
+<p>If the form is definite, the Heaviside functions are constant or zero almost everywhere and both images vanish. These are exactly (4.5) in dimension two.</p>
+<p>For <span class="math" data-index="194" data-tex="\(n=1\)">\(n=1\)</span>, write <span class="math" data-index="195" data-tex="\(A=[b]\)">\(A=[b]\)</span>, <span class="math" data-index="196" data-tex="\(b\ne0\)">\(b\ne0\)</span>. If <span class="math" data-index="197" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, the two boundary powers are <span class="math" data-index="198" data-tex="\(\sqrt b\,|x|\)">\(\sqrt b\,|x|\)</span>; if <span class="math" data-index="199" data-tex="\(b&lt;0\)">\(b&lt;0\)</span>, they are <span class="math" data-index="200" data-tex="\(\pm i\sqrt{|b|}\,|x|\)">\(\pm i\sqrt{|b|}\,|x|\)</span>. The identity <span class="math" data-index="201" data-tex="\((|x|)&#x27;&#x27;=2\delta_0\)">\((|x|)&#x27;&#x27;=2\delta_0\)</span>, proved by integration by parts on the two half-lines, gives</p>
+<span class="math math-display" id="learner-eq-5.8" data-index="202" data-tex="\[
+                 L_A(Q\pm i0)^{1/2}
+                              =2d_Ae^{\mp i\pi q/2}\delta_0.
+ \tag{5.8}
+\]">\[
+                 L_A(Q\pm i0)^{1/2}
+                              =2d_Ae^{\mp i\pi q/2}\delta_0.
+ \tag{5.8}
+\]</span>
+<p>Moreover <span class="math" data-index="203" data-tex="\(\Gamma(3/2)=\sqrt\pi/2\)">\(\Gamma(3/2)=\sqrt\pi/2\)</span>, so direct substitution in (4.1) proves (4.5) in dimension one. This completes all low-dimensional cases.</p>
+<h2 id="6-degenerate-real-quadratic-operators">6. Degenerate real quadratic operators</h2>
+<p>Let <span class="math" data-index="204" data-tex="\(C\ne0\)">\(C\ne0\)</span> be any real symmetric matrix, possibly singular, and consider</p>
+<span class="math math-display" id="learner-eq-6.1" data-index="205" data-tex="\[
+                         P(D)=\sum_{j,k}C_{jk}D_jD_k .
+ \tag{6.1}
+\]">\[
+                         P(D)=\sum_{j,k}C_{jk}D_jD_k .
+ \tag{6.1}
+\]</span>
+<p>The spectral theorem gives orthonormal coordinates <span class="math" data-index="206" data-tex="\((x,y)\)">\((x,y)\)</span>, with <span class="math" data-index="207" data-tex="\(x\in\mathbb R^r\)">\(x\in\mathbb R^r\)</span>, <span class="math" data-index="208" data-tex="\(r=\operatorname{rank}C\ge1\)">\(r=\operatorname{rank}C\ge1\)</span>, in which the nonzero block is <span class="math" data-index="209" data-tex="\(C_r\)">\(C_r\)</span> and the operator has no <span class="math" data-index="210" data-tex="\(y\)">\(y\)</span>-derivatives. Put <span class="math" data-index="211" data-tex="\(A=C_r^{-1}\)">\(A=C_r^{-1}\)</span>. Choose any fundamental solution <span class="math" data-index="212" data-tex="\(F\)">\(F\)</span> of <span class="math" data-index="213" data-tex="\(L_A\)">\(L_A\)</span> supplied above, including the appropriate low-dimensional formula. Then</p>
+<span class="math math-display" id="learner-eq-6.2" data-index="214" data-tex="\[
+                              E=-F(x)\otimes\delta_0(y)
+                         \quad\hbox{satisfies}\quad P(D)E=\delta_0(x,y).
+ \tag{6.2}
+\]">\[
+                              E=-F(x)\otimes\delta_0(y)
+                         \quad\hbox{satisfies}\quad P(D)E=\delta_0(x,y).
+ \tag{6.2}
+\]</span>
+<p>Indeed <span class="math" data-index="215" data-tex="\(P(D)=-L_A\)">\(P(D)=-L_A\)</span> on the active variables, and tensor testing transfers that operator to <span class="math" data-index="216" data-tex="\(F\)">\(F\)</span> while retaining the inactive delta. The orthogonal substitution has absolute Jacobian one, so taking the result back to the original coordinates adds no density factor.</p>
+<p>With no inactive variables, omit that tensor factor.</p>
+<p>Thus every nonzero real homogeneous second-order scalar operator is included. A lower-order perturbation is a separate problem; no signature formula for such a perturbation is asserted here.</p>
+<h2 id="7-examples">7. Examples</h2>
+<p><strong>Example 7.1 (a cone layer that is a source).</strong> In four dimensions take <span class="math" data-index="217" data-tex="\(Q(t,x)=t^2-|x|^2\)">\(Q(t,x)=t^2-|x|^2\)</span>, <span class="math" data-index="218" data-tex="\(x\in\mathbb R^3\)">\(x\in\mathbb R^3\)</span>. Then <span class="math" data-index="219" data-tex="\(L_A=\partial_t^2-\Delta_x\)">\(L_A=\partial_t^2-\Delta_x\)</span>, <span class="math" data-index="220" data-tex="\((p,q)=(1,3)\)">\((p,q)=(1,3)\)</span>, <span class="math" data-index="221" data-tex="\(d_A=1\)">\(d_A=1\)</span>, and <span class="math" data-index="222" data-tex="\(\alpha=-1\)">\(\alpha=-1\)</span>. The normalized one-sided distributions in (4.2) both become the homogeneous cone layer <span class="math" data-index="223" data-tex="\(\delta(Q)\)">\(\delta(Q)\)</span>. Equation (4.5) gives</p>
+<span class="math math-display" id="learner-eq-7.1" data-index="224" data-tex="\[
+                      L_A\delta(Q)=4\pi\delta_0,\qquad
+                           F=\frac1{4\pi}\delta(Q).
+ \tag{7.1}
+\]">\[
+                      L_A\delta(Q)=4\pi\delta_0,\qquad
+                           F=\frac1{4\pi}\delta(Q).
+ \tag{7.1}
+\]</span>
+<p>The notation <span class="math" data-index="225" data-tex="\(\delta(Q)\)">\(\delta(Q)\)</span> at the vertex means the homogeneous extension constructed in (4.3); the ordinary submersion definition alone does not apply there.</p>
+<p>Away from <span class="math" data-index="226" data-tex="\(x=0\)">\(x=0\)</span>, writing <span class="math" data-index="227" data-tex="\(r=|x|\)">\(r=|x|\)</span> gives <span class="math" data-index="228" data-tex="\(\delta(t^2-r^2)=(\delta(t-r)+\delta(t+r))/(2r)\)">\(\delta(t^2-r^2)=(\delta(t-r)+\delta(t+r))/(2r)\)</span>. Thus <span class="math" data-index="229" data-tex="\(F\)">\(F\)</span> is the half-sum of the retarded and advanced wave kernels. The retarded kernel <span class="math" data-index="230" data-tex="\(\delta(t-r)/(4\pi r)\)">\(\delta(t-r)/(4\pi r)\)</span>, with its full vertex normalization, is proved independently in the linked wave-kernel reading. No undefined multiplication of a general distribution by <span class="math" data-index="231" data-tex="\(H(t)\)">\(H(t)\)</span> is needed to identify it.</p>
+<p><strong>Example 7.2 (a nonzero cone layer with zero source).</strong> In four dimensions take</p>
+<span class="math math-display" id="learner-eq-7.2" data-index="232" data-tex="\[
+               Q=x_1^2+x_2^2-x_3^2-x_4^2,\qquad (p,q)=(2,2).
+ \tag{7.2}
+\]">\[
+               Q=x_1^2+x_2^2-x_3^2-x_4^2,\qquad (p,q)=(2,2).
+ \tag{7.2}
+\]</span>
+<p>Now both sines in (4.5) vanish, so <span class="math" data-index="233" data-tex="\(L_A\delta(Q)=0\)">\(L_A\delta(Q)=0\)</span>. This distribution is nonzero on each regular piece of its cone. Yet (1.5) gives</p>
+<span class="math math-display" id="learner-eq-7.3" data-index="234" data-tex="\[
+                  L_A(Q\pm i0)^{-1}=4\pi^2\delta_0.
+ \tag{7.3}
+\]">\[
+                  L_A(Q\pm i0)^{-1}=4\pi^2\delta_0.
+ \tag{7.3}
+\]</span>
+<p>The average of the two boundary values is the canonical real finite part <span class="math" data-index="235" data-tex="\(\operatorname{pv}(1/Q)\)">\(\operatorname{pv}(1/Q)\)</span>, defined by the one-dimensional principal value on the punctured space and its unique homogeneous extension. Consequently <span class="math" data-index="236" data-tex="\(\operatorname{pv}(1/Q)/(4\pi^2)\)">\(\operatorname{pv}(1/Q)/(4\pi^2)\)</span> is a real fundamental solution. Replacing the signature phase by the positive square root of <span class="math" data-index="237" data-tex="\(\det A=1\)">\(\det A=1\)</span> would give the wrong sign in this example.</p>
+<p><strong>Example 7.3 (a logarithm becomes a step function).</strong> In two dimensions use</p>
+<span class="math math-display" id="learner-eq-7.4" data-index="238" data-tex="\[
+                   Q(t,x)=c^2t^2-x^2,\qquad c&gt;0,\qquad
+                   L_A=c^{-2}\partial_t^2-\partial_x^2 .
+ \tag{7.4}
+\]">\[
+                   Q(t,x)=c^2t^2-x^2,\qquad c&gt;0,\qquad
+                   L_A=c^{-2}\partial_t^2-\partial_x^2 .
+ \tag{7.4}
+\]</span>
+<p>Then <span class="math" data-index="239" data-tex="\(d_A=1/c\)">\(d_A=1/c\)</span>, and (5.7) says <span class="math" data-index="240" data-tex="\(L_AH(Q)=4\delta_0/c\)">\(L_AH(Q)=4\delta_0/c\)</span>. This can also be checked without any boundary-value notation. Put <span class="math" data-index="241" data-tex="\(u=ct-x\)">\(u=ct-x\)</span>, <span class="math" data-index="242" data-tex="\(v=ct+x\)">\(v=ct+x\)</span>. The operator is <span class="math" data-index="243" data-tex="\(4\partial_u\partial_v\)">\(4\partial_u\partial_v\)</span>, and</p>
+<span class="math math-display" id="learner-eq-7.5" data-index="244" data-tex="\[
+ H(Q)=H(u)H(v)+H(-u)H(-v),\qquad
+                 \delta_0(u,v)=\frac1{2c}\delta_0(t,x).
+ \tag{7.5}
+\]">\[
+ H(Q)=H(u)H(v)+H(-u)H(-v),\qquad
+                 \delta_0(u,v)=\frac1{2c}\delta_0(t,x).
+ \tag{7.5}
+\]</span>
+<p>Differentiation gives <span class="math" data-index="245" data-tex="\(L_AH(Q)=8\delta_0(u,v)=4\delta_0(t,x)/c\)">\(L_AH(Q)=8\delta_0(u,v)=4\delta_0(t,x)/c\)</span>. Hence <span class="math" data-index="246" data-tex="\(cH(Q)/4\)">\(cH(Q)/4\)</span> is a time-symmetric fundamental solution. The future-supported one is <span class="math" data-index="247" data-tex="\(cH(u)H(v)/2\)">\(cH(u)H(v)/2\)</span>, whose image is <span class="math" data-index="248" data-tex="\(2c\delta_0(u,v)=\delta_0(t,x)\)">\(2c\delta_0(u,v)=\delta_0(t,x)\)</span>.</p>
+<p><strong>Example 7.4 (an inactive variable retains its delta).</strong> For <span class="math" data-index="249" data-tex="\(P(D)=D_1^2-D_2^2\)">\(P(D)=D_1^2-D_2^2\)</span> in three variables, take the preceding mixed two-dimensional form with <span class="math" data-index="250" data-tex="\(c=1\)">\(c=1\)</span>. Formula (6.2) gives</p>
+<span class="math math-display" id="learner-eq-7.6" data-index="251" data-tex="\[
+                E=-\frac14 H(x_1^2-x_2^2)\otimes\delta_0(x_3).
+ \tag{7.6}
+\]">\[
+                E=-\frac14 H(x_1^2-x_2^2)\otimes\delta_0(x_3).
+ \tag{7.6}
+\]</span>
+<p>The minus sign converts ordinary second derivatives to <span class="math" data-index="252" data-tex="\(D\)">\(D\)</span>-derivatives. Its support lies in the two sign wedges inside the active coordinate plane. Its homogeneity degree is <span class="math" data-index="253" data-tex="\(0-1=-1=2-3\)">\(0-1=-1=2-3\)</span>, as expected for a second-order point-source kernel in three dimensions.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (20 points).</strong> Let <span class="math" data-index="254" data-tex="\(A=\operatorname{diag}(4,9,16,-25,-36)\)">\(A=\operatorname{diag}(4,9,16,-25,-36)\)</span>. Compute the source coefficients of <span class="math" data-index="255" data-tex="\(U_\pm\)">\(U_\pm\)</span>, <span class="math" data-index="256" data-tex="\(V_+\)">\(V_+\)</span> and <span class="math" data-index="257" data-tex="\(V_-\)">\(V_-\)</span>. Identify which one-sided branch can be divided by its coefficient.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-index="258" data-tex="\(n=5\)">\(n=5\)</span>, <span class="math" data-index="259" data-tex="\((p,q)=(3,2)\)">\((p,q)=(3,2)\)</span>, <span class="math" data-index="260" data-tex="\(|\det A|^{1/2}=720\)">\(|\det A|^{1/2}=720\)</span>, and <span class="math" data-index="261" data-tex="\(\sigma_4=8\pi^2/3\)">\(\sigma_4=8\pi^2/3\)</span>. Thus <span class="math" data-index="262" data-tex="\((2-n)\sigma_4d_A=-\pi^2/90\)">\((2-n)\sigma_4d_A=-\pi^2/90\)</span>. Both phases <span class="math" data-index="263" data-tex="\(e^{\mp i\pi q/2}\)">\(e^{\mp i\pi q/2}\)</span> equal <span class="math" data-index="264" data-tex="\(-1\)">\(-1\)</span>, giving</p>
+<span class="math math-display" id="learner-eq-8.1" data-index="265" data-tex="\[
+ L_AU_\pm=\frac{\pi^2}{90}\delta_0,\qquad
+ L_AV_+=-\frac{\pi^{3/2}}{180}\delta_0,\qquad L_AV_-=0.
+ \tag{8.1}
+\]">\[
+ L_AU_\pm=\frac{\pi^2}{90}\delta_0,\qquad
+ L_AV_+=-\frac{\pi^{3/2}}{180}\delta_0,\qquad L_AV_-=0.
+ \tag{8.1}
+\]</span>
+<p>Divide <span class="math" data-index="266" data-tex="\(V_+\)">\(V_+\)</span> by its negative coefficient for a cone-supported inverse; <span class="math" data-index="267" data-tex="\(V_-\)">\(V_-\)</span> must not be divided by zero. Assign 6 points to determinant and area, 8 to phases and sines, and 6 to the normalized branches.</p>
+<p><strong>Exercise 2 (25 points).</strong> Use (2.4) to bound the error in <span class="math" data-index="268" data-tex="\(s^{n/2}\langle G_s,\varphi\rangle-c_A\varphi(0)\)">\(s^{n/2}\langle G_s,\varphi\rangle-c_A\varphi(0)\)</span>. Deduce a uniform <span class="math" data-index="269" data-tex="\(T^{-1}\)">\(T^{-1}\)</span> bound for the tail of (3.1), and an <span class="math" data-index="270" data-tex="\(\eta^a\)">\(\eta^a\)</span> bound for its small-parameter part. Compute <span class="math" data-index="271" data-tex="\(c_A\)">\(c_A\)</span> for <span class="math" data-index="272" data-tex="\(A=\operatorname{diag}(1,-4,-9)\)">\(A=\operatorname{diag}(1,-4,-9)\)</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-index="273" data-tex="\(|e^{-iv}-1|\le|v|\)">\(|e^{-iv}-1|\le|v|\)</span> for real <span class="math" data-index="274" data-tex="\(v\)">\(v\)</span>,</p>
+<span class="math math-display" id="learner-eq-8.2" data-index="275" data-tex="\[
+ \left|s^{n/2}\langle G_s,\varphi\rangle-c_A\varphi(0)\right|
+       \le\frac{|c_A|}{4s}(2\pi)^{-n}
+                    \int|\xi^TA^{-1}\xi|\,|\widehat\varphi(\xi)|\,d\xi .
+ \tag{8.2}
+\]">\[
+ \left|s^{n/2}\langle G_s,\varphi\rangle-c_A\varphi(0)\right|
+       \le\frac{|c_A|}{4s}(2\pi)^{-n}
+                    \int|\xi^TA^{-1}\xi|\,|\widehat\varphi(\xi)|\,d\xi .
+ \tag{8.2}
+\]</span>
+<p>This gives a quantitative version of (2.5). For the unexpanded proper-time tail, (2.3) and <span class="math" data-index="276" data-tex="\(\int_T^\infty s^{-2}ds=T^{-1}\)">\(\int_T^\infty s^{-2}ds=T^{-1}\)</span> give a constant times <span class="math" data-index="277" data-tex="\(T^{-1}\|\widehat\varphi\|_1\)">\(T^{-1}\|\widehat\varphi\|_1\)</span>, also uniformly in positive damping. Near zero use <span class="math" data-index="278" data-tex="\(\int_0^\eta s^{a-1}ds=\eta^a/a\)">\(\int_0^\eta s^{a-1}ds=\eta^a/a\)</span>, times the prefactor in (3.1) and <span class="math" data-index="279" data-tex="\(\|\varphi\|_1\)">\(\|\varphi\|_1\)</span>. The stated matrix has <span class="math" data-index="280" data-tex="\(d_A=1/6\)">\(d_A=1/6\)</span>, <span class="math" data-index="281" data-tex="\(p-q=-1\)">\(p-q=-1\)</span>, hence <span class="math" data-index="282" data-tex="\(c_A=\pi^{3/2}e^{-i\pi/4}/6\)">\(c_A=\pi^{3/2}e^{-i\pi/4}/6\)</span>. Assign 10 points to the error, 10 to the two endpoint bounds and 5 to the phase.</p>
+<p><strong>Exercise 3 (25 points).</strong> Explain in signature <span class="math" data-index="283" data-tex="\((2,2)\)">\((2,2)\)</span> why the two one-sided kernels coincide, why their common source is zero, and why a nonzero fundamental solution still results from the boundary values. State precisely how the real finite part is defined at the origin.</p>
+<p><strong>Solution.</strong> In dimension four <span class="math" data-index="284" data-tex="\(\alpha=-1\)">\(\alpha=-1\)</span>, and <span class="math" data-index="285" data-tex="\(\chi_+^{-1}=\chi_-^{-1}=\delta_0\)">\(\chi_+^{-1}=\chi_-^{-1}=\delta_0\)</span> on the line. Their pullbacks agree off the vertex, and uniqueness of the degree <span class="math" data-index="286" data-tex="\(-2&gt;-4\)">\(-2&gt;-4\)</span> homogeneous extension makes <span class="math" data-index="287" data-tex="\(V_+=V_-=\delta(Q)\)">\(V_+=V_-=\delta(Q)\)</span> globally. Both sine factors are zero, giving <span class="math" data-index="288" data-tex="\(L_A\delta(Q)=0\)">\(L_A\delta(Q)=0\)</span>. In contrast the phase in (1.5) is <span class="math" data-index="289" data-tex="\(-1\)">\(-1\)</span> and the radial constant is <span class="math" data-index="290" data-tex="\(-4\pi^2\)">\(-4\pi^2\)</span>, so each <span class="math" data-index="291" data-tex="\(U_\pm\)">\(U_\pm\)</span> has source <span class="math" data-index="292" data-tex="\(4\pi^2\delta_0\)">\(4\pi^2\delta_0\)</span>. Their half-sum is the unique degree <span class="math" data-index="293" data-tex="\(-2\)">\(-2\)</span> extension of the ordinary normal principal value <span class="math" data-index="294" data-tex="\(1/Q\)">\(1/Q\)</span>; division by <span class="math" data-index="295" data-tex="\(4\pi^2\)">\(4\pi^2\)</span> gives a real inverse. Assign 8 points to the coincident cone layer, 8 to the two source computations and 9 to the finite-part definition and normalization.</p>
+<p><strong>Exercise 4 (30 points).</strong> In four variables let <span class="math" data-index="296" data-tex="\(P(D)=2D_1^2-3D_2^2\)">\(P(D)=2D_1^2-3D_2^2\)</span>. Construct a fundamental solution with no spread in the last two variables. Check its sign, Jacobian and degree.</p>
+<p><strong>Solution.</strong> The active matrix is <span class="math" data-index="297" data-tex="\(C_2=\operatorname{diag}(2,-3)\)">\(C_2=\operatorname{diag}(2,-3)\)</span>, so <span class="math" data-index="298" data-tex="\(A=C_2^{-1}=\operatorname{diag}(1/2,-1/3)\)">\(A=C_2^{-1}=\operatorname{diag}(1/2,-1/3)\)</span>, <span class="math" data-index="299" data-tex="\(d_A=\sqrt6\)">\(d_A=\sqrt6\)</span>, and <span class="math" data-index="300" data-tex="\(Q=x_1^2/2-x_2^2/3\)">\(Q=x_1^2/2-x_2^2/3\)</span>. The ordinary-derivative inverse is <span class="math" data-index="301" data-tex="\(H(Q)/(4\sqrt6)\)">\(H(Q)/(4\sqrt6)\)</span>. Thus</p>
+<span class="math math-display" id="learner-eq-8.3" data-index="302" data-tex="\[
+             E=-\frac1{4\sqrt6}
+                  H(x_1^2/2-x_2^2/3)\otimes\delta_0(x_3,x_4).
+ \tag{8.3}
+\]">\[
+             E=-\frac1{4\sqrt6}
+                  H(x_1^2/2-x_2^2/3)\otimes\delta_0(x_3,x_4).
+ \tag{8.3}
+\]</span>
+<p>To check the density directly, put <span class="math" data-index="303" data-tex="\(y_1=x_1/\sqrt2\)">\(y_1=x_1/\sqrt2\)</span>, <span class="math" data-index="304" data-tex="\(y_2=x_2/\sqrt3\)">\(y_2=x_2/\sqrt3\)</span>. Then <span class="math" data-index="305" data-tex="\(2\partial_1^2-3\partial_2^2=\partial_{y_1}^2-\partial_{y_2}^2\)">\(2\partial_1^2-3\partial_2^2=\partial_{y_1}^2-\partial_{y_2}^2\)</span>, and <span class="math" data-index="306" data-tex="\(\delta_0(y)=\sqrt6\,\delta_0(x_1,x_2)\)">\(\delta_0(y)=\sqrt6\,\delta_0(x_1,x_2)\)</span>. Division by <span class="math" data-index="307" data-tex="\(\sqrt6\)">\(\sqrt6\)</span> gives the displayed active normalization. The additional minus sign is (1.2). Tensor differentiation leaves the inactive delta unchanged. The Heaviside factor has degree zero and the two-dimensional delta has degree <span class="math" data-index="308" data-tex="\(-2\)">\(-2\)</span>, giving <span class="math" data-index="309" data-tex="\(2-4=-2\)">\(2-4=-2\)</span>. Assign 10 points to the active form, 10 to signs and density, and 10 to tensor testing and homogeneity.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="prerequisites/stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a>, Lemma 3.1, equation (3.2), and Appendix A.2: damped Gaussian transforms and their bilinear distributional pairings.</li>
+<li><a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, Theorem 3.1; <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz functions and Fourier inversion</a>, Sections F1–F5.</li>
+<li><span class="unlinked">Cauchy kernels and distributional boundary limits</span>, Theorem 3.1, Theorem 4.1 and Corollary 4.2.</li>
+<li><a href="prerequisites/wave-hadamard-kernels.html">Causal kernels, initial data, and short-time geometry</a>, Section 2, for the gamma normalization, and its flat wave examples for causal kernels.</li>
+<li><a href="AN02-L213.html">Homogeneous elliptic kernels and logarithmic scaling</a>, proof of Theorem 3.1: finite jets and uniqueness of homogeneous extension above degree <span class="math" data-index="310" data-tex="\(-n\)">\(-n\)</span>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, second edition, Springer, 1990: fundamental solutions associated with real quadratic forms.</li>
+</ul>
+<p>The original chapter, examples and exercise solutions use CC0 1.0. Cited works and separately linked components retain their own terms.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

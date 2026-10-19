@@ -20,6 +20,8 @@ Throughout, \(M\) is a strongly stable factor with separable predual. Thus \(M\c
 \]
 Asymptotic aperiodicity means \(p_a(\theta)=0\): no nonzero power acts trivially on the asymptotic centralizer.
 
+[TF5–TF6 of the tensor companion](../foundations/normal-tensor-and-tracial-product-foundations.md#tf5) supply normal tensor homomorphisms and completely positive maps in arbitrary faithful normal representations, including the tensor automorphisms and conjugating isomorphisms used here. TF5.2 gives their predual continuity and approximate-innerness limits. The stated summable-splitting hypotheses remain necessary to identify commuting subalgebras with an ambient spatial product.
+
 ## 1. The classification statement
 
 **Theorem 1.1.** Suppose \(\theta_1,\theta_2\in\overline{\operatorname{Inn}}M\) and

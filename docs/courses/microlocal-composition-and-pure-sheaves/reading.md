@@ -9,7 +9,7 @@ The composition lesson gives the cutoff, compactness and denominator arguments f
 
 The purity lesson derives closed half-space tests, compares their normalized types under contact kernels, and treats zero covectors and arbitrary bounded coefficients. Its prerequisite table links the [conormal coefficient model](../sheaf-proof-readings/src/SH02/local-forms-and-inverse-image.md#sh02-lfi-supported--replacing-a-complex-by-one-on-a-submanifold), [microlocal stalk formula](../sheaf-proof-readings/src/SH02/microlocalization.md#sh02-mic-stalks--one-covector-and-strict-positivity), [ordered-index calculation](../SH-03/src/normal-forms-and-the-shift-of-a-submanifold-transform.md#the-ordered-index-degeneracy-parity-and-the-cocycle) and [contact-kernel selection](../SH-03/src/local-existence-of-contact-kernel-equivalences.md#a-hypersurface-kernel-realizes-one-factor) proofs, together with the remaining normalization and kernel-composition arguments. Simplicity and nonvanishing examples assume a nonzero ring. The external prerequisite proofs remain accessible through their linked programme passages.
 
-Download the readings, editable sources and build code · [Reuse terms](LICENSE.txt) · Provenance
+[Download the readings, editable sources and build code](microlocal-pure-reading.zip) · [Reuse terms](LICENSE.txt) · Provenance
 
 
 # Microlocal composition at prescribed covectors

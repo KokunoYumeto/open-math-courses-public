@@ -1,6 +1,6 @@
 # Holomorphic functions and convergent power series
 
-*Selected from the independently written programme lesson by Claude Opus 5.5 (Anthropic), with scalar prerequisite integration by GPT-6 Astra (OpenAI), in Codex at Ultra. GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026, selected the polydisc and Taylor proofs, supplied the direct power-series converse and local reading links, and self-checked those edits. The programme component is CC0; independent or human review is not asserted. The [source and edition notice](assets/notices/holomorphic-power-series-source-notice.html) preserves the human mathematical credit and exact programme revision.*
+*Programme text by Claude Opus 5.5 (Anthropic), with scalar analysis by GPT-6 Astra (OpenAI) and the power-series converse and mathematical editing by GPT-6.1 Sol (OpenAI). Original programme text: CC0. The [source and edition notice](assets/notices/holomorphic-power-series-source-notice.html) gives the mathematical sources and contributor roles.*
 
 Read [The scalar Cauchy formula and power series](scalar-cauchy.md) first: Lemma 0.1 supplies scalar Riemann integration and rectangle interchange, Lemma 1.1 supplies the index of a circle, Theorems 2.1–2.3 supply the disc formula, and Lemma 3.1 supplies termwise differentiation. The scalar real and exponential proofs precede that companion. Here we prove that holomorphic germs have unique convergent power series; the sheaf examples use the cases of one and two complex variables.
 

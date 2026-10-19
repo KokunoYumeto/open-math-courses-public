@@ -2,9 +2,9 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
-An equation can keep its strength while its coefficients vary, then lose it at a particular parameter value. The coefficient space is finite-dimensional, but the strength comparison tests infinitely many frequencies. We show how a compact family of linear forms records all the possible losses. This also proves an exact perturbation criterion: adding every complex multiple of a polynomial preserves strength precisely when that polynomial is dominated by the original one.
+An equation can keep its strength while its coefficients vary, then lose it at a particular parameter value. The coefficient space is finite-dimensional, but the strength comparison tests infinitely many frequencies. We show how a compact family of linear forms records all the possible losses. This also proves an exact perturbation criterion: adding every complex multiple of a polynomial preserves strength precisely when that polynomial is dominated by the original one. Reciprocal linear forms also control holomorphic hulls and exhibit the equally strong coefficient domain as a Stein manifold.
 
-Read [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md) and [Operator strength and local inverses](operator-strength-and-local-inverses.md) first. We use compactness in finite-dimensional complex vector spaces and the frequency-window estimates already proved there. Hörmander [HII], Theorem 10.4.7 and Corollary 10.4.8, gives the coefficient-form description and the criterion for all complex multiples. Mantlik [Mantlik] and Malgrange [Malgrange] provide broader parameter-dependent and approximation context.
+Read [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md) and [Operator strength and local inverses](operator-strength-and-local-inverses.md) first. We use compactness in finite-dimensional complex vector spaces and the frequency-window estimates already proved there. Hörmander's treatment of constant-coefficient operators [HII] is a reference for the coefficient-form description and the criterion for all complex multiples. Mantlik [Mantlik] and Malgrange [Malgrange] provide broader parameter-dependent and approximation context.
 
 ## Evaluation probes in a finite-dimensional space
 
@@ -114,6 +114,152 @@ The forms in \(Y_0\) have uniformly bounded norms, so small coefficient changes 
 
 The forms act on polynomial coefficients. They do not assert that the same single real frequency witnesses every strength loss. Some are limits along frequencies that escape to infinity.
 
+## Holomorphic hulls stay inside the coefficient domain
+
+The linear forms in Theorem 2.1 also describe the global complex geometry of \(\mathscr E\). Their reciprocals are holomorphic on the entire coefficient domain. They keep holomorphic hulls away from every excluded hyperplane at once.
+
+For a nonempty compact set \(K\) in a complex manifold \(U\), its **holomorphic hull** in \(U\) is
+\[
+\widehat K_U=
+\{Q\in U:|f(Q)|\le\sup_K|f|
+                 \text{ for every }f\in\mathcal O(U)\}.
+\tag{G1}
+\]
+The manifold is **holomorphically convex** if every such hull is compact. We use the definition of a **Stein manifold** requiring second countability, holomorphic convexity, separation of distinct points by global holomorphic functions, and global holomorphic functions that supply local coordinates at each point. Disconnected manifolds are permitted. On an open subset of a finite-dimensional complex vector space, countability and the coordinate conditions hold directly.
+
+Choose complex coordinates \(q_1,\ldots,q_N\) on \(W\), and any Hermitian norm \(|\cdot|\). Define
+\[
+\delta(Q)=\min_{\ell\in Y_0}|\ell(Q)|,\qquad
+M=\max_{\ell\in Y_0}\|\ell\| .
+\tag{G2}
+\]
+Compactness, nonemptiness and exclusion of zero for \(Y_0\) were proved above. In particular \(0<M<\infty\), and
+\[
+|\delta(Q)-\delta(Q')|\le M|Q-Q'|,
+\qquad
+\mathscr E=\{Q\in W:\delta(Q)>0\}.
+\tag{G3}
+\]
+To prove the inequality, use
+\(\big||\ell(Q)|-|\ell(Q')|\big|\le M|Q-Q'|\)
+for every \(\ell\), then take minima in each direction.
+
+**Theorem 2.2 (the full coefficient domain is Stein).** Every compact \(K\subset\mathscr E\) has a compact holomorphic hull in \(\mathscr E\). More precisely, put
+\[
+d_K=\min_{Q\in K}\delta(Q)>0,\qquad
+R_K=\max_{\substack{Q\in K\\1\le j\le N}}|q_j(Q)|.
+\]
+Then
+\[
+\widehat K_{\mathscr E}
+\subset
+\{Q\in W: |q_j(Q)|\le R_K\ (1\le j\le N),
+                       \ \delta(Q)\ge d_K\}
+\Subset\mathscr E .
+\tag{G4}
+\]
+Consequently \(\mathscr E\), and each of its connected components, is Stein.
+
+**Proof.** Each \(q_j\) is globally holomorphic. For every \(\ell\in Y_0\), Theorem 2.1 says that
+\[
+f_\ell(Q)=\frac1{\ell(Q)}
+\tag{G5}
+\]
+is globally holomorphic on \(\mathscr E\). If \(Q\in\widehat K_{\mathscr E}\), testing the hull definition against the coordinate functions gives the coordinate bounds in (G4). Testing it against every \(f_\ell\) gives
+\[
+\frac1{|\ell(Q)|}
+\le\sup_{Q'\in K}\frac1{|\ell(Q')|}
+\le\frac1{d_K}.
+\tag{G6}
+\]
+Thus every \(|\ell(Q)|\) is at least \(d_K\), which gives the second bound in (G4).
+
+The set on the right of (G4) is closed and bounded in \(W\), by continuity of \(\delta\). It is therefore compact. Its positive lower bound for \(\delta\) puts it wholly in \(\mathscr E\). The hull is closed relative to \(\mathscr E\), since it is an intersection of closed modulus inequalities for continuous functions. Hence it is closed in that compact set and is itself compact.
+
+The coordinate functions separate distinct points and have independent differentials everywhere. Euclidean countability passes to the open set \(\mathscr E\). These facts and the compact hull property prove all the stated Stein conditions. For a connected component, the same hull bounds apply; the component is closed relative to \(\mathscr E\), so its intersection with the compact set in (G4) is compact as well. This proves the component assertion. \(\square\)
+
+The conclusion concerns all of \(\mathscr E\), rather than one small coefficient ball. It also lets the uniform strength comparisons of Proposition 5.1 apply on a holomorphic hull.
+
+**Proposition 2.3 (an exhaustion by holomorphically convex sets).** The function
+\[
+\Psi(Q)=|Q|^2+\frac1{\delta(Q)^2},
+\qquad Q\in\mathscr E,
+\tag{G7}
+\]
+is continuous and has compact sublevel sets. It is strictly plurisubharmonic in the precise sense that
+\(\Psi(Q)-|Q|^2\) is plurisubharmonic. Every nonempty closed sublevel is equal to its holomorphic hull in \(\mathscr E\). Every nonempty open sublevel \(U_A=\{\Psi<A\}\) is Stein, is relatively compact in \(\mathscr E\), and contains the \(\mathscr E\)-hull of each of its compact subsets. Smoothness of \(\Psi\) is not asserted.
+
+**Proof.** Continuity follows from (G3) and positivity of \(\delta\) on \(\mathscr E\). Also
+\[
+\delta(Q)^{-2}
+=\max_{\ell\in Y_0}|f_\ell(Q)|^2.
+\tag{G8}
+\]
+This maximum satisfies the plurisubharmonic mean inequality directly. Let \(h\) be holomorphic on a neighborhood of the closed unit disk, with that disk's image contained in \(\mathscr E\). For every fixed \(\ell\), Cauchy's mean formula and Cauchy–Schwarz give
+\[
+|f_\ell(h(0))|^2
+\le\frac1{2\pi}\int_0^{2\pi}
+                  |f_\ell(h(e^{it}))|^2\,dt.
+\]
+Taking a maximum on the left and a pointwise maximum inside the integral on the right proves
+\[
+\delta(h(0))^{-2}
+\le\frac1{2\pi}\int_0^{2\pi}
+                    \delta(h(e^{it}))^{-2}\,dt.
+\tag{G9}
+\]
+All terms are continuous and bounded on the closed disk because its image is compact in \(\mathscr E\). Thus there is no measurability or unbounded-supremum issue. This proves plurisubharmonicity, including on affine complex disks. Adding the positive quadratic norm gives the asserted strictness.
+
+For \(A>0\), a sublevel \(\Psi\le A\) has
+\[
+|Q|\le\sqrt A,\qquad
+\delta(Q)\ge A^{-1/2}.
+\tag{G10}
+\]
+The set defined by these two inequalities is compact in \(W\) and lies in \(\mathscr E\). The sublevel is closed there, so it is compact. Nonpositive sublevels are empty.
+
+Write \(K_A=\{\Psi\le A\}\), and suppose it is nonempty. If \(Q\in\mathscr E\setminus K_A\), choose \(\ell\in Y_0\) attaining the maximum in (G8) at \(Q\). In the Hermitian space \(W\oplus\mathbb C\), put
+\[
+G_\ell(Q')=(Q',f_\ell(Q')),\qquad
+F_Q(Q')=
+\frac{\langle G_\ell(Q'),G_\ell(Q)\rangle}
+     {|G_\ell(Q)|}.
+\tag{G11}
+\]
+The Hermitian product is complex linear in its first variable. Thus \(F_Q\) is a globally holomorphic scalar function on \(\mathscr E\). It satisfies \(F_Q(Q)=\sqrt{\Psi(Q)}>\sqrt A\). On \(K_A\), Cauchy–Schwarz gives
+\[
+|F_Q(Q')|\le |G_\ell(Q')|
+\le\sqrt{\Psi(Q')}\le\sqrt A.
+\]
+This excludes \(Q\) from the hull of \(K_A\). Since points of \(K_A\) always belong to their own hull, equality follows.
+
+Now let \(K\subset U_A\) be compact and nonempty, and put \(B=\max_K\Psi<A\). Monotonicity of hulls and the proved closed-sublevel equality give \(\widehat K_{\mathscr E}\subset K_B\Subset U_A\). Every holomorphic function on \(\mathscr E\) restricts to one on \(U_A\), so \(\widehat K_{U_A}\subset\widehat K_{\mathscr E}\). The former hull is closed relative to \(U_A\), hence is compact in \(K_B\). This proves holomorphic convexity of \(U_A\); the coordinate and countability conditions again follow from its being open in \(W\). Also \(\overline{U_A}\subset K_A\Subset\mathscr E\). Finally any strictly increasing sequence \(A_j\to\infty\), starting above \(\Psi(P)\), gives nonempty open sets with
+\(\overline{U_{A_j}}\subset U_{A_{j+1}}\) and union \(\mathscr E\). This proves all assertions. \(\square\)
+
+The one-variable mean and maximum principles used here and in the exercises are proved in [Cauchy bounds and root counts](cauchy-bounds-and-root-counts.md), Lemmas 1.1 and 2.1.
+
+**Example 2.4 (the transport coefficient domain).** For \(P(\xi_1,\xi_2)=\xi_1\), the weaker polynomials are \(Q=a\xi_1+b\), and equal strength means \(a\ne0\). Indeed boundedness along \(\xi_2\) removes that variable, and growth at most linear in \(\xi_1\) removes higher degrees. Conversely these linear polynomials are weaker, and their derivative norm is comparable to \((1+\xi_1^2)^{1/2}\) exactly when \(a\ne0\). The dominated polynomials are the constants. The forms in \(Y_0\) are \(Q\mapsto a\) and \(Q\mapsto-a\), obtained as \(\xi_1\) tends to positive and negative infinity. Use the Euclidean norm for these two coefficient coordinates. Then
+\[
+\mathscr E=\mathbb C^*\times\mathbb C,\qquad
+\delta(a,b)=|a|,\qquad
+\Psi(a,b)=|a|^2+|b|^2+|a|^{-2}.
+\tag{G12}
+\]
+This exhaustion diverges both as \(a\) approaches zero and as the coefficients escape to infinity. A sublevel \(\Psi\le A\) is empty for \(A<2\). For \(A\ge2\), its possible values of \(|a|^2\) lie in the exact interval
+\[
+\frac{A-\sqrt{A^2-4}}2
+\le |a|^2\le
+\frac{A+\sqrt{A^2-4}}2.
+\tag{G13}
+\]
+This follows by writing \(u=|a|^2>0\) and solving \(u+u^{-1}\le A\); the permissible \(|b|^2\) are then at most \(A-u-u^{-1}\).
+
+The Stein property identifies the global coefficient domain for analytic selection. Constructing a global family of PDE solutions requires an additional analytic argument. The local regular families are constructed in [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md), Theorem 3.2.
+
+Global analytic lifting and homogeneous approximation on this coefficient domain and its actual sublevels are proved in Reciprocal graphs and global analytic selection, Theorems 13.1–13.2.
+
+The corresponding universal PDE families, including all weaker-polynomial derivatives and constant-datum pullback to arbitrary complex parameter manifolds, are constructed in Holomorphic solutions on expanding contour scales, Theorem 4.1 and Corollary 5.1.
+
 ## Perturbations by every complex multiple
 
 **Theorem 3.1.** For a polynomial \(R\), the following are equivalent:
@@ -132,6 +278,67 @@ This theorem explains the role of dominated corrections in the formal transpose 
 **Example 3.2.** Let \(P(\xi)=\xi\) in one variable and \(R=i\xi\). For every real \(t\), \(P+tR=(1+it)\xi\) has the same strength as \(P\). Yet \(R\) is not dominated by \(P\), since they have the same degree. The complex value \(a=i\) makes \(P+aR=0\). Requiring only real multiples would therefore be a different condition.
 
 ## Two coefficient geometries
+
+### Reading the probes from the principal symbol
+
+The compact detecting family can often be written without lower-order coefficients. Suppose that \(P\) has degree \(m\geq1\) and is of principal type in the sense of [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md#ellipticity-and-a-weaker-principal-condition): its highest homogeneous part \(P_m\) has nonzero gradient at every nonzero real vector.
+
+**Proposition 4.1.** Put
+\[
+ \begin{aligned}
+ \Omega&=\{\theta\in\mathbb R^n:|\theta|=1,\ P_m(\theta)\ne0\},\\
+ \lambda_\theta(Q)&=\frac{Q_m(\theta)}{P_m(\theta)}
+                       \quad(Q\in W,\ \theta\in\Omega),\\
+ Z&=\overline{\{\lambda_\theta:\theta\in\Omega\}}\ \subset W^* .
+ \end{aligned}
+ \tag{PP1}
+\]
+Here \(Q_m=0\) if \(Q\) has smaller degree. The family \(Z\) is compact, every member takes the value one on \(P\), and
+\[
+ \begin{aligned}
+ Z&=\left\{\frac{\ell}{\ell(P)}:\ell\in Y_0\right\},\\
+ \mathscr E&=\{Q\in W:\lambda(Q)\ne0\text{ for every }\lambda\in Z\},\\
+ W_0&=\bigcap_{\lambda\in Z}\ker\lambda .
+ \end{aligned}
+ \tag{PP2}
+\]
+In this case \(W_0\) is exactly the space of polynomials of degree at most \(m-1\). Thus \(Z\) acts on the top homogeneous coefficient space.
+
+**Proof.** Theorem 4.2 and Proposition 3.1 of the rescaling lesson show, respectively, that every lower-degree polynomial is dominated by \(P\), and that every polynomial dominated by \(P\) has lower degree. This proves the assertion about \(W_0\). Corollary 4.3 of that lesson gives
+\[
+       |Q_m(\theta)|\leq C_Q|P_m(\theta)|\qquad(Q\in W).
+ \tag{PP3}
+\]
+Choose a basis of the finite-dimensional space \(W\). Applying (PP3) to its finitely many basis elements bounds all the coordinate values of \(\lambda_\theta\), so \(Z\) is compact. The set \(\Omega\) is nonempty: a nonzero real-variable polynomial cannot vanish on an open real set, as follows by successively treating each variable as a one-variable polynomial. Homogeneity would make vanishing on the whole sphere equivalent to vanishing everywhere. Each \(\lambda_\theta\) takes value one on \(P\), so the same holds throughout \(Z\), which therefore excludes zero.
+
+We prove the first equality in (PP2), including its normalization. Fix \(\theta\in\Omega\). Along its ray the original probes have the limit
+\[
+ \ell_{s\theta}(Q)=\frac{Q(s\theta)}{S_P(s\theta)}
+       \longrightarrow\frac{Q_m(\theta)}{|P_m(\theta)|}
+       =\frac{P_m(\theta)}{|P_m(\theta)|}\lambda_\theta(Q)
+                  \qquad(s\longrightarrow\infty).
+ \tag{PP4}
+\]
+Indeed, divide numerator and every term of the squared denominator by the appropriate powers of \(s^m\); only the undifferentiated top term of \(P\) remains in the denominator. The limiting form belongs to \(Y\) and annihilates \(W_0\), since all its polynomials have degree below \(m\). It therefore belongs to \(Y_0\). Dividing it by its value on \(P\) gives \(\lambda_\theta\).
+
+Theorem 2.1 says that \(\ell(P)\ne0\) for every \(\ell\in Y_0\). Compactness gives a positive minimum for its absolute value. Consequently the normalization map \(\ell\mapsto\ell/\ell(P)\) is continuous on \(Y_0\), and its image is compact. The preceding ray limits prove that this image contains \(Z\).
+
+For the reverse inclusion, take \(\ell\in Y_0\) and frequencies \(\xi_j\) for which \(\ell_{\xi_j}\to\ell\). For each \(Q\in W\), the difference \(Q-Q_m\) lies in \(W_0\). The same is true of \(P-P_m\). Since \(\ell\) annihilates those differences,
+\[
+ \frac{Q_m(\xi_j)}{S_P(\xi_j)}\longrightarrow\ell(Q),
+ \qquad
+ \frac{P_m(\xi_j)}{S_P(\xi_j)}\longrightarrow\ell(P)\ne0.
+ \tag{PP5}
+\]
+Thus \(P_m(\xi_j)\ne0\) eventually, and the corresponding normalized principal probes converge to \(\ell/\ell(P)\). Homogeneity allows \(\xi_j\) to be replaced by \(\xi_j/|\xi_j|\), which belongs to \(\Omega\). Convergence on a finite basis is convergence in \(W^*\). This proves that the normalized image is contained in \(Z\), and establishes the equality. The other two identities in (PP2) now follow from Theorem 2.1: division of a linear form by a nonzero scalar changes none of its zeros. \(\square\)
+
+**Example 4.2 (complex phase).** For \(P(\xi_1,\xi_2)=\xi_1+i\xi_2\) and \(Q=a\xi_1+b\xi_2+c\), write \(\theta=(\cos s,\sin s)\). Then
+\[
+       \lambda_\theta(Q)=
+          \frac{a\cos s+b\sin s}{\cos s+i\sin s}.
+ \tag{PP6}
+\]
+These forms all take value one on \(P\). The unnormalized ray limits in (PP4) instead take value \(e^{is}\) on \(P\). The two families give the same vanishing tests after normalization, while their individual linear forms differ. The constant coefficient disappears from both families, as required by the description of \(W_0\).
 
 For the elliptic linear polynomial \(P(\xi_1,\xi_2)=\xi_1+i\xi_2\), the weaker space consists of all affine linear polynomials
 \[
@@ -193,8 +400,45 @@ This is a compact-family estimate. A family approaching the complement of \(\mat
 
 **Solution.** Every form in \(Y_0\) annihilates \(W_0\). Therefore \(\ell(Q+R)=\ell(Q)\) for \(R\in W_0\), and (5) proves the equality. The quotient projection is open: choose a linear complement of \(W_0\), identify the quotient with that finite-dimensional complement, and observe that projections of open product neighborhoods are open. Since \(\mathscr E\) is open and is invariant under \(W_0\), its quotient image is open as well. The quotient discards precisely the dominated changes of the symbol, which preserve strength for arbitrary complex coefficients. It does not discard every lower-degree term for an arbitrary non-principal-type polynomial.
 
+**Exercise 5 (25 points).** In \(\mathbb C^*\times\mathbb C\), let \(K=\{(a,b):|a|=r,\ |b|=s\}\), where \(r,s>0\). Find its holomorphic hull in that coefficient domain.
+
+**Solution.** The functions \(a\) and \(1/a\) force every point of the hull to have both \(|a|\le r\) and \(|a|\ge r\). The coordinate \(b\) gives \(|b|\le s\). Conversely fix \(|a|=r\) and \(|b|\le s\). For any holomorphic \(f\) on \(\mathbb C^*\times\mathbb C\), the maximum principle in the second variable gives
+\[
+|f(a,b)|\le\max_{|w|=s}|f(a,w)|\le\sup_K|f|.
+\]
+Therefore the hull is exactly \(\{(a,b):|a|=r,\ |b|\le s\}\). The puncture in the first coefficient is preserved by the reciprocal test function. Assign 10 points to the upper containment and 15 to the reverse containment.
+
+**Exercise 6 (25 points).** Why is compactness of the family of linear forms important? On \(\mathbb C^2\), consider only \(\ell_n(a,b)=a+b/n\), \(n\ge1\). Show that the set where every \(\ell_n\) is nonzero need not be open.
+
+**Solution.** The point \((0,1)\) is in that set, since \(\ell_n(0,1)=1/n\ne0\) for every \(n\). Yet \((-1/n,1)\) lies in the excluded hyperplane \(\ker\ell_n\) and converges to \((0,1)\). Thus the set is not open at \((0,1)\). The bounded family of forms is missing its limit \(\ell_\infty(a,b)=a\); it is not compact. At the indicated point the infimum of their moduli is zero even though none vanishes. Assign 15 points to the convergent excluded sequence and 10 to the missing limit and zero infimum.
+
+**Exercise 7 (25 points).** For \(P(\xi_1,\xi_2)=\xi_1+i\xi_2\), let \(Q=a\xi_1+b\xi_2+c\). Compute \(\delta(Q)\) from the limiting forms in the principal-symbol description, and identify the connected components of the equal-strength coefficient domain.
+
+**Solution.** Here the limiting forms are \(Q\mapsto a\cos t+b\sin t\). The constant term is annihilated. The square of the minimum modulus is the smallest eigenvalue of the real symmetric matrix
+\[
+G=\begin{pmatrix}|a|^2&\operatorname{Re}(a\overline b)\\
+                 \operatorname{Re}(a\overline b)&|b|^2
+  \end{pmatrix}.
+\]
+Put \(S=|a|^2+|b|^2\) and \(J=\operatorname{Im}(\overline a b)\). Since \(\det G=J^2\),
+\[
+\delta(Q)^2=\frac{S-\sqrt{S^2-4J^2}}2.
+\]
+It is positive exactly when \(J\ne0\). In that case \(a\ne0\), and \(J=|a|^2\operatorname{Im}(b/a)\). The two components are therefore
+\[
+\{a\ne0,\ \operatorname{Im}(b/a)>0\},\qquad
+\{a\ne0,\ \operatorname{Im}(b/a)<0\},
+\]
+with unrestricted \(c\). The coordinate change \((a,b,c)\mapsto(a,b/a,c)\) identifies each with \(\mathbb C^*\) times one open half-plane times \(\mathbb C\), so each is connected. The sign of the continuous nonzero \(J\) prevents a path between them. Assign 10 points to the Gram matrix, 8 to its minimum eigenvalue, and 7 to the components.
+
+**Exercise 8 (25 points).** Suppose a holomorphic regular fundamental-solution family has been constructed on all of \(\mathscr E\). Show why pulling it back along a holomorphic map \(\lambda\mapsto P_\lambda\in\mathscr E\) supplies a family on an arbitrary complex parameter manifold. Must that parameter manifold itself be Stein?
+
+**Solution.** Composition of the holomorphic maps gives the family \(\lambda\mapsto F(P_\lambda)\). Its fundamental-solution identity is the identity at \(P_\lambda\), and its regularity is the regularity of that member. Any locally specified Banach holomorphy passes to the composition in local coordinates. This conclusion is conditional on having the family on all of \(\mathscr E\); the Stein property alone is not that construction.
+
+The parameter manifold need not be Stein. Take the Riemann sphere and the constant map \(P_\lambda=P\); any fixed regular fundamental solution gives a constant holomorphic family. Every holomorphic scalar function on the sphere attains a modulus maximum by compactness, and is constant by the local maximum principle and connectedness. Thus global holomorphic functions cannot separate its distinct points. Assign 12 points to composition and its hypotheses, and 13 to the sphere example and the separation argument.
+
 ## References
 
 - [Mantlik] Frank Mantlik, *Partial differential operators depending analytically on a parameter*, Annales de l'Institut Fourier **41** (1991), 577–599. [Original article](https://www.numdam.org/item/10.5802/aif.1266/).
 - [Malgrange] Bernard Malgrange, *Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution*, Annales de l'Institut Fourier **6** (1956), 271–355. [Original article](https://aif.centre-mersenne.org/articles/10.5802/aif.65/).
-- [HII] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 2005 (reprint of the 1983 edition), Section 10.4, Theorem 10.4.7 and Corollary 10.4.8, pp. 36–37. [Publisher record](https://link.springer.com/book/10.1007/b138375).
+- [HII] Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 2005 (reprint of the 1983 edition), Coefficient geometry and the comparison of constant-coefficient operators. [Publisher record](https://link.springer.com/book/10.1007/b138375).

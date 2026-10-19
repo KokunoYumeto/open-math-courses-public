@@ -1,6 +1,6 @@
 # Normal automorphism transport and Bernoulli fixed algebras
 
-*Original programme exposition: CC0-1.0 to the extent of rights held.*
+*Programme exposition: CC0-1.0 to the extent of rights held. Human-source terms remain separate.*
 
 The [centrally trivial automorphism lesson](../src/centrally-trivial-automorphisms-and-decreasing-afd-factors.md) uses general factors with separable predual, an arbitrary finite-factor displacement argument, and two different Bernoulli index groups. The finite group supplies noncommuting outer classes. The infinite group supplies decreasing fixed algebras with scalar intersection. We prove the needed constructions at those full scopes.
 

@@ -2,9 +2,18 @@
 
 Darboux coordinates can retain functions already known to be canonical. On a conic symplectic manifold they can also retain their degrees and specified values. This flexibility lets us straighten conic isotropic submanifolds even when their canonical one-form vanishes. We prove the coordinate extension as an actual function construction, then identify the resulting fiber model and the conormal geometry of regular base projections.
 
-We use the symplectic and Hamiltonian conventions of [Phase space and generating families](../20261005-restored-phase-space/phase-space-and-generating-families.md). The characteristic geometry and the zero-valued momentum construction in [Homogeneous submanifold normal forms](../20261005-restored-submanifolds/homogeneous-submanifold-normal-forms.md) provide context; its nonzero restricted one-form theorem does not supply the zero-one-form result proved here. The exact flow proofs are [F0–F1, tangent flows, commuting fields and dilation conjugation](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md), with the complete [finite-coordinate flow construction](../20261005-restored-phase-space/finite-coordinate-flows.md). The [stationary-phase foundation](../20261004-free-stationary-phase/prerequisite-completions.md) proves the inverse and implicit function theorems P2–P3 and the parameter fundamental theorem of calculus; the [proof map](proof-map.json) binds their exact locators and earlier inputs. Exterior differentiation, pullback and Cartan's formula are proved in the [differential-form foundation](../20261005-restored-phase-space/differential-forms-and-flow-pullbacks.md). The map constant-rank argument needed here is proved explicitly in Theorem 5.1 below.
+We use the symplectic and Hamiltonian conventions of [Phase space and generating families](../20261005-restored-phase-space/phase-space-and-generating-families.md). The characteristic geometry and the zero-valued momentum construction in [Homogeneous submanifold normal forms](../20261005-restored-submanifolds/homogeneous-submanifold-normal-forms.md) provide context; its nonzero restricted one-form theorem does not supply the zero-one-form result proved here. The exact flow proofs are [F0–F1, tangent flows, commuting fields and dilation conjugation](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md), with the complete [finite-coordinate flow construction](../20261005-restored-phase-space/finite-coordinate-flows.md). The [stationary-phase foundation](../20261004-free-stationary-phase/prerequisite-completions.md) proves the inverse and implicit function theorems P2–P3; the [fundamental theorem and integral Taylor remainder, P12.5–P12.6](../20261004-free-stationary-phase/integration-prerequisite-completions.md) supply the parameter line-segment identities; the [proof map](proof-map.json) binds their exact locators and earlier inputs. Exterior differentiation, pullback and Cartan's formula are proved in the [differential-form foundation](../20261005-restored-phase-space/differential-forms-and-flow-pullbacks.md). The map constant-rank argument needed here is proved explicitly in Theorem 5.1 below.
 
-The primary source is the reprint of Hörmander III, second edition (1994), Theorems 21.1.6, 21.1.9, 21.2.8 and 21.2.9 (printed 273–274, 279–281 and 287–288). We spell out the partial symplectic linear algebra, all flow equations, the exceptional final homogeneous coordinate, both isotropic induction steps, and an explicit homogeneous map from the intermediate model to a fiber. No pseudodifferential calculus is needed in this lesson.
+The primary mathematical source is Lars Hörmander,
+*The Analysis of Linear Partial Differential Operators III*,
+in the [2007 reprint of the 1994 edition](https://doi.org/10.1007/978-3-540-49938-1):
+Theorem 21.1.6, printed pp. 273–274; Theorem 21.1.9, printed pp. 279–281;
+and Theorems 21.2.8–21.2.9, printed pp. 287–288.
+The arguments below develop the partial symplectic linear algebra, flow
+equations, exceptional final homogeneous coordinate, both isotropic
+induction steps and an explicit map from the intermediate model to a
+fiber. These coordinate constructions use finite-dimensional geometry
+and calculus.
 
 ## 1. Extend an isometry of alternating subspaces
 
@@ -420,17 +429,21 @@ The last terms cancel. Solving gives \(q_2=-P_2/P_1\), \(p_2=Q_2P_1\), \(q_1=Q_1
 
 **Solution.** Take \(\Lambda=\{x_2=0,\xi_1=0,\xi_2>0\}\). Its parameters are \((x_1,\xi_2)\), it has dimension two, and its primitive is zero. It is an open conic subset of the nonzero conormal of \(Y\), whose negative \(\xi_2\) directions it omits. At every marked point of \(\Lambda\), Theorem 5.1 gives equality of the germ with \(N^*Y\), with base rank one. This is not global equality with both signs of that conormal. Its rank is constant; the cusp relation has rank zero at the caustic and rank one arbitrarily close, so no such smooth conormal germ exists at that caustic.
 
-## 7. Scope and author checks
+<span id="7-scope-and-author-checks"></span>
+
+## 7. Coordinate constructions and examples
 
 The proof completes ordinary prescribed canonical functions, their full homogeneous extension with arbitrary compatible marked values, the zero-primitive conic isotropic normal form, and constant-rank conormal recognition. It preserves actual functions, exact Poisson signs, degree zero and one, the exceptional nonzero momentum, all induction dimensions, and local conic-germ qualifications. Ten original graded exercises have complete solutions.
 
-The preserved proof and its exact current programme dependencies were reviewed for this restoration; independent human mathematical review remains pending. Bounded exact checks verify the alternating dual correction, an ordinary nonlinear canonical shear, semidirect radial flow signs and homogeneous equations, the final position correction, the primitive-preserving rotation in several dimensions, and the deformed cusp's ranks and primitive. The reproducible figure was inspected as two projections of a stated radial slice. These checks do not certify arbitrary smooth flows or substitute for the general proofs.
 
-Clean conic Lagrangian pair normal forms, stable phase equivalence, Maslov topology, broader symbol classes, propagation, hyperbolic and mixed problems, glancing and complex-phase mathematics, and every other unfinished assigned course strand remain active.
 
-## Sources and restoration
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the second edition (1994), Theorems 21.1.6, 21.1.9, 21.2.8 and 21.2.9; the normal-pair reduction is also used in the proof of Theorem 21.2.4. The complete arguments here retain marked values, degrees, full coordinate maps and germ qualifications.
-- The [source and restoration record](source-provenance.json) identifies the edition used. The reproducible numerical cusp illustration retains its DejaVu font notice.
 
-Original lesson, ten solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. No book file or text is included.
+<span id="sources-and-restoration"></span>
+
+## Mathematical sources and components
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, Classics in Mathematics, Springer, 2007, reprint of the 1994 edition, e-ISBN 978-3-540-49938-1, [DOI 10.1007/978-3-540-49938-1](https://doi.org/10.1007/978-3-540-49938-1). Theorems 21.1.6 and 21.1.9, printed pp. 273–274 and 279–281; Theorems 21.2.8–21.2.9, printed pp. 287–288; the normal-pair reduction in Theorem 21.2.4, printed pp. 284–285.
+- The [source and component account](source-provenance.json) gives the edition, editable lesson and reproducible model inputs. The cusp illustration includes its DejaVu font notice.
+
+*AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text, solved exercises and coordinate illustrations: CC0 to the extent rights exist. Cited human works and separately identified components retain their own terms.*

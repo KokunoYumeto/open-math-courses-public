@@ -8,7 +8,7 @@ An imbalance in full polynomial strength does not single out a direction. For ea
 
 The written construction in [Flat half-space solutions from real frequency rays](flat-half-space-solutions-from-real-frequency-rays.md), equations (1)–(36), supplies the complete smooth solution, exact support, flat jets and global upper tail. It uses [Real Laurent paths and the growth of normal windows](real-laurent-paths-and-growth-envelopes.md) and the algebraic and analytic prerequisites stated there; their open transitive dependencies are retained.
 
-**Planned prerequisite: [exact characteristic-halfspace smooth homogeneous solution](../prerequisites/planned-foundation-proofs.html#exact-characteristic-halfspace-smooth-homogeneous-solution).** For a nonzero polynomial B of degree d and a nonzero real normal M with B_d(M)=0, there is a smooth solution v of B(D)v=0 on all of R^n with support exactly `{x:x dot M<=0}`. The general proof remains planned. An elementary homogeneous flat profile does not supply this contract for arbitrary lower terms.
+**Full prerequisite proof: [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem).** For a nonzero polynomial B of degree d and a nonzero real normal M with B_d(M)=0, there is a smooth solution v of B(D)v=0 on all of R^n with support exactly `{x:x dot M<=0}`. The complete general proof is Theorem 1, CH1–CH31 and Appendix A of [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem). An elementary homogeneous flat profile does not supply this contract for arbitrary lower terms.
 
 Use D=-i times differentiation. For a polynomial R, let
 
@@ -78,7 +78,7 @@ Cauchy–Schwarz first bounds each directional derivative by the corresponding c
 \tag{NC6}
 \]
 
-All derivatives of a and u vanish on the boundary. The smallness and infinite flatness follow from the [real-frequency construction](flat-half-space-solutions-from-real-frequency-rays.md) in the noncharacteristic branch; they also hold for a=0 in the characteristic branch. Hörmander's numbered corollary requires only the equation and its two support conditions. Dependence on N and epsilon is permitted. The theorem is conditional on the planned characteristic contract in its characteristic branch.
+All derivatives of a and u vanish on the boundary. The smallness and infinite flatness follow from the [real-frequency construction](flat-half-space-solutions-from-real-frequency-rays.md) in the noncharacteristic branch; they also hold for a=0 in the characteristic branch. Hörmander's numbered corollary requires only the equation and its two support conditions. Dependence on N and epsilon is permitted. The characteristic branch uses the full written halfspace theorem; the linked algebraic and jet prerequisites retain their separate scope.
 
 If m=0, Q has degree zero and is weaker than the nonzero constant P. Thus the hypothesis forces m>=1 and Q nonzero.
 
@@ -152,7 +152,7 @@ To verify smoothness, each positive-side derivative of f is exp(-1/s^2) times a 
 
 **Exercise 1 (entry: why the lower term matters).** For the symbols in (NC10) and normal e_2, calculate P(D)f(x_2) and P(D)(e^{x_1}f(x_2)). Explain exactly which support statement follows without the planned general theorem.
 
-**Solution.** D_1^2 is minus the second x_1 derivative. The first function is independent of x_1, so P(D)f=f. For the second, partial_1^2(e^{x_1}f)=e^{x_1}f, hence P(D)v=0. The flatness calculation preceding Figure 1 proves that v is smooth, and v is strictly positive on x_2>0, so its support is exactly `{x_2>=0}`. This one symbol's characteristic conclusion is proved directly, using a=0. Arbitrary nonhomogeneous P with P_m(N)=0 still requires the planned contract; neither computation replaces it.
+**Solution.** D_1^2 is minus the second x_1 derivative. The first function is independent of x_1, so P(D)f=f. For the second, partial_1^2(e^{x_1}f)=e^{x_1}f, hence P(D)v=0. The flatness calculation preceding Figure 1 proves that v is smooth, and v is strictly positive on x_2>0, so its support is exactly `{x_2>=0}`. This one symbol's characteristic conclusion is proved directly, using a=0. Arbitrary nonhomogeneous P with P_m(N)=0 uses the full written halfspace contract; neither special computation replaces its proof.
 
 **Exercise 2 (intermediate: changing and rescaling the normal).** Keep (NC10). For N=c e_1 with real c nonzero, compute the directional quotient at (0,t). State which half-space the all-normal corollary supplies and why scaling causes no gap.
 
@@ -164,11 +164,11 @@ To verify smoothness, each positive-side derivative of f is exp(-1/s^2) times a 
 
 ## Current scope
 
-The all-normal theorem is proved relative to its declared prerequisites, with both original branches, the total degree restriction, exact support, nonunit normals and the planned characteristic orientation preserved. The finite-dimensional value-to-strength argument is proved directly. The example, figure and three solved exercises retain the same two-branch distinction. The general characteristic proof remains planned.
+The all-normal theorem includes both branches, the total degree restriction, exact support and nonunit normals. Its characteristic orientation is supplied by the full halfspace theorem. The finite-dimensional value-to-strength argument is proved directly, while the other linked prerequisites keep their explicit transitive scope.
 
 ## References
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983. Corollary 13.6.2, p.202.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, Springer, Theorem 8.6.7. The general characteristic-halfspace proof remains a planned prerequisite here.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, Springer, Theorem 8.6.7. The complete general proof is Theorem 1, CH1–CH31 and Appendix A of [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem).
 
 The linked course lessons provide the written proof ingredients. These human references identify the mathematical antecedents; the precise planned contract remains explicitly conditional.

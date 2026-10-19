@@ -264,6 +264,88 @@ More explicitly, on a faithful representation of \(M\), choose a faithful n.s.f.
  A_\varphi=d\varphi/d\kappa,\qquad
  A_\psi=d\psi/d\kappa,\qquad B=d\eta/d\kappa.
 \]
+**Why the spatial form transports with its whole domain.** We give the domain argument behind this comparison. For the fixed commutant weight \(\kappa\), let \(D_\kappa\) be the space of vectors \(\xi\in H\) for which
+\[
+ \|x\xi\|\le C_\xi\|\Lambda_\kappa(x)\|
+ \qquad(x\in\mathfrak n_\kappa).
+ \tag{SCW.4.k1}
+\]
+The bounded extension of \(\Lambda_\kappa(x)\mapsto x\xi\) is \(R_\kappa(\xi)\). The earlier [bounded-vector and closed-form construction](../../OA-MOD/OA-MOD-SC.html#completion-gives-the-exact-core-and-energy-formula), together with its [representing operator and domains](../../OA-MOD/OA-MOD-SC.html#the-representing-operator-and-its-domains), gives the following facts. The space \(D_\kappa\) is dense in \(H\), and, for every normal semifinite numerator \(\rho\),
+\[
+ \begin{split}
+ q_\rho^0[\xi]&=\rho(R_\kappa(\xi)R_\kappa(\xi)^*),
+       &&\xi\in D_\kappa,\\
+ E_\rho&=\{\xi\in D_\kappa:q_\rho^0[\xi]<\infty\}
+       =D_\kappa\cap D(A_\rho^{1/2})
+ \end{split}
+ \tag{SCW.4.k2}
+\]
+is a core for the closed form of \(A_\rho\). On this core its value is \(\|A_\rho^{1/2}\xi\|^2\); outside the square-root domain the original bounded-vector energy is infinite. These statements concern semifinite numerators, as assumed here.
+
+For \(a\in M\), commutation with \(x\in M'\) gives
+\(\|xa\xi\|\le\|a\|C_\xi\|\Lambda_\kappa(x)\|\). Thus \(aD_\kappa\subseteq D_\kappa\), and equality on the dense GNS domain proves
+\[
+ R_\kappa(a\xi)=aR_\kappa(\xi).
+ \tag{SCW.4.k3}
+\]
+In particular this applies to \(w,w^*,e,f\). The hypothesis (SCW.4.j) now gives the exact extended energy identity
+\[
+ \begin{aligned}
+ q_\varphi^0[\xi]
+ &=\psi\!\left(wR_\kappa(\xi)R_\kappa(\xi)^*w^*\right)\\
+ &=q_\psi^0[w\xi]\qquad(\xi\in D_\kappa).
+ \end{aligned}
+ \tag{SCW.4.k4}
+\]
+Both sides may be infinite.
+
+Define a form on the full Hilbert space by
+\[
+ \mathcal D=\{\xi\in H:w\xi\in D(A_\psi^{1/2})\},
+ \qquad Q[\xi]=\|A_\psi^{1/2}w\xi\|^2.
+ \tag{SCW.4.k5}
+\]
+It is closed: convergence of \(\xi_n\) in \(H\) and of \(A_\psi^{1/2}w\xi_n\) in \(H\) lets one apply closedness of \(A_\psi^{1/2}\) to \(w\xi_n\). Its domain is dense. Indeed \(f=s(A_\psi)\) reduces \(A_\psi\), its square-root domain is dense in \(fH\), and \(w:eH\to fH\) is unitary; the other summand \((1-e)H\) lies in \(\mathcal D\) with zero energy.
+
+We must also check a core, rather than use agreement on a merely Hilbert-dense set. Equation (SCW.4.k4) and (SCW.4.k2) imply
+\[
+ E_\varphi=D_\kappa\cap\mathcal D,\qquad
+ Q[\xi]=q_\varphi^0[\xi]\quad(\xi\in E_\varphi).
+ \tag{SCW.4.k6}
+\]
+Fix \(\xi\in\mathcal D\). Choose \(\zeta_n\in E_\psi\) converging to \(w\xi\) in the graph norm of \(A_\psi^{1/2}\), using (SCW.4.k2). Choose \(\chi_n\in D_\kappa\) converging in Hilbert norm to \((1-e)\xi\). Put
+\[
+ \xi_n=w^*f\zeta_n+(1-e)\chi_n.
+ \tag{SCW.4.k7}
+\]
+Each vector is in \(D_\kappa\), and \(w\xi_n=f\zeta_n\). Since \(f\) is the support of \(A_\psi\),
+\[
+ \xi_n\longrightarrow\xi,\qquad
+ A_\psi^{1/2}w\xi_n
+   =A_\psi^{1/2}\zeta_n
+   \longrightarrow A_\psi^{1/2}w\xi .
+ \tag{SCW.4.k8}
+\]
+In particular \(\xi_n\in E_\varphi\), and the convergence is in the \(Q\)-form norm. This proves that \(E_\varphi\) is a form core for \(Q\). The second summand in (SCW.4.k7) is essential: it recovers every zero-energy direction outside the support, even if that direction is not in the square-root domain of an auxiliary faithful completion.
+
+The two closed forms therefore have the same core and the same values there. Polarization and the uniqueness of their form-norm completions give
+\[
+ \begin{split}
+ D(A_\varphi^{1/2})&=\mathcal D,\\
+ A_\varphi^{1/2}\xi&=w^*A_\psi^{1/2}w\xi
+       \qquad(\xi\in\mathcal D).
+ \end{split}
+ \tag{SCW.4.k9}
+\]
+For the operator identity, the positive self-adjoint operator obtained by unitary transport of \(A_\psi|_{fH}\) to \(eH\), with zero on \((1-e)H\), has exactly this form. Uniqueness of the representing operator consequently gives
+\[
+ D(A_\varphi)=\{\xi\in H:w\xi\in D(A_\psi)\},
+ \qquad A_\varphi\xi=w^*A_\psi w\xi.
+ \tag{SCW.4.k10}
+\]
+Spectral transport on the two support spaces then yields
+\(A_\varphi^{it}=w^*A_\psi^{it}w\), with the supported-power convention giving \(e\) at \(t=0\). The sequences above approximate individual vectors in graph norms; they impose no separability assumption.
+
 The cited proof transports the whole coefficient form through \(w:eH\to fH\), giving \(A_\varphi=w^*A_\psi w\) on the support, with zero extension, and therefore \(A_\varphi^{it}=w^*A_\psi^{it}w\). It also identifies \(u_\rho(t)=A_\rho^{it}B^{-it}\). Since \(B^{it}wB^{-it}=\sigma_t^\eta(w)\), its bounded-operator calculation is
 \[
  \begin{aligned}

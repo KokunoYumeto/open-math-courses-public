@@ -160,6 +160,63 @@ In the second formula, \(r^{-1}ht_y^{-1}\) stays in the same sector and the two 
 \]
 The order of the displayed tensor factors uses the canonical direct-sum identification. Amplification is normal; compression to any one \(y\)-summand is its normal inverse. Its faithfulness is immediate from that compression. In particular we have proved the required regular topology of the corner, rather than inferring it from covariance alone.
 
+
+### Coordinates for every generator
+
+Put \(R_H=N\rtimes_\beta H\), represented regularly on
+\(\mathcal H_H=L^2(H;K)\), and denote its generators by
+\(\pi_\beta(a)\) and \(\lambda_H(h)\). Before exchanging tensor factors in
+(OS20), the normal isomorphism above is
+\(\Gamma:P\to B(\ell^2Y)\bar\otimes R_H\). It has the explicit formulas
+\[
+ \begin{aligned}
+ \Gamma(\pi(a))(\delta_y\otimes\eta)
+   &=\delta_y\otimes\pi_\beta(a_y)\eta,\\
+ \Gamma(u_g)(\delta_y\otimes\eta)
+   &=\delta_{gy}\otimes\lambda_H(c(g,y))\eta .
+ \end{aligned}
+ \tag{OG1}
+\]
+Indeed the matrix entry before removing the constant amplification is
+\(v_z^*\pi(a)v_y\) or \(v_z^*u_gv_y\). The first vanishes unless \(z=y\),
+when it is \(q(a_y)\): in (OS7), \(c(t_y,o)=e\).
+The second vanishes unless \(z=gy\), when it is
+\(p u_{t_{gy}^{-1}gt_y}p=w_{c(g,y)}\). Now apply (OS18)–(OS19).
+This proves (OG1) for the normal isomorphism already constructed, including
+its action on the entire von Neumann algebra.
+
+The second formula permutes the coordinates and applies a unitary on each.
+It is therefore isometric on finite-coordinate vectors and extends to a
+unitary; the formula for \(g^{-1}\) gives its inverse. The cocycle identity
+in (OS6) proves multiplication in the stated order. Moreover,
+\[
+ c(g,g^{-1}y)=c(g^{-1},y)^{-1},\qquad
+ \lambda_H(h)\pi_\beta(b)\lambda_H(h)^*=\pi_\beta(\beta_h(b)).
+ \tag{OG2}
+\]
+Thus conjugating the first operator in (OG1) by the second gives exactly
+the diagonal operator for \(\alpha_g(a)\) in (OS7).
+
+Strong continuity also follows directly from these coordinates. Fix \(y\)
+and \(g_0\). On a neighborhood of \(g_0\), the point \(gy\) is constant,
+because \(G/H\) is discrete. There
+\(c(g,y)=t_{g_0y}^{-1}gt_y\) varies continuously in \(H\).
+Strong continuity of the subgroup's regular representation makes
+\(\Gamma(u_g)(\delta_y\otimes\eta)\) continuous at \(g_0\).
+The same holds for finite sums. For a general vector \(\zeta\), choose a
+finite-coordinate vector \(\zeta_F\); the two unitaries give
+\[
+ \|(\Gamma(u_g)-\Gamma(u_{g_0}))\zeta\|
+ \leq 2\|\zeta-\zeta_F\|
+       +\|(\Gamma(u_g)-\Gamma(u_{g_0}))\zeta_F\|.
+ \tag{OG3}
+\]
+First make the first term small and then let \(g\) tend to \(g_0\).
+This proves strong continuity without countability assumptions.
+The Haar factor in (OS16) is already incorporated in the normal
+identification of the corner; it does not introduce an extra scalar
+into (OG1).
+
 <a id="open-theorem"></a>
 ## Stabilization and the meaning of the quotient factor
 
@@ -189,6 +246,83 @@ For \(G=\mathbb R\times\mathbb Z\), \(H=\mathbb R\times\{0\}\), every coset is a
 \]
 Here \(\Delta_G=1\). The corner keeps an entire \(L^2(\mathbb R;K)\) variable, while the matrix factor records the discrete cosets.
 
+
+### A nonunimodular example: dyadic affine transformations
+
+Let \(G=\mathbb R\rtimes_2\mathbb Z\) have multiplication and inverse
+\[
+ (b,n)(d,m)=(b+2^n d,n+m),\qquad
+ (b,n)^{-1}=(-2^{-n}b,-n).
+ \tag{OA1}
+\]
+It is a locally compact Hausdorff group in the product topology, and
+\(H=\mathbb R\times\{0\}\) is an open, closed, noncompact subgroup.
+Write \(db\) for Lebesgue measure. A left Haar measure and its modular
+function in convention (OS1) are
+\[
+ dm_G(b,n)=2^{-n}\,db,\qquad
+ \Delta_G(b,n)=2^{-n}.
+ \tag{OA2}
+\]
+Here integration means summing the indicated integrals over \(n\in\mathbb Z\).
+This measure is Radon: each level has a Radon measure and every compact
+set meets only finitely many levels. It is nonzero and positive on every
+nonempty open set. Left multiplication by \((b_0,n_0)\) changes
+\(b\) to \(b_0+2^{n_0}b\) and \(n\) to \(n_0+n\); the Jacobian
+\(2^{n_0}\) cancels the change in the density \(2^{-n}\).
+Right multiplication by \((d,m)\) translates \(b\) by \(2^n d\) on level
+\(n\) and changes that level to \(n+m\). The Jacobian is then one and the
+density changes by \(2^{-m}\). Applying these computations to each level,
+and summing nonnegative integrals, proves both assertions in (OA2).
+
+Identify \(Y=G/H\) with \(\mathbb Z\), choose \(t_k=(0,k)\), and regard
+the action of \(H\) on \(N\) as an action \(\beta\) of \(\mathbb R\).
+Direct multiplication in (OA1) gives
+\[
+ (b,n)k=n+k,\qquad
+ c((b,n),k)=(2^{-(n+k)}b,0),\qquad
+ (\alpha_{(b,n)}a)_k=\beta_{2^{-k}b}(a_{k-n}).
+ \tag{OA3}
+\]
+For example, composing the last formula for \((b,n)\) and \((d,m)\)
+adds the two action parameters
+\(2^{-k}b+2^{-(k-n)}d=2^{-k}(b+2^n d)\), exactly as required by (OA1).
+The generator coordinates therefore become
+\[
+ \Gamma(u_{(b,n)})(\delta_k\otimes\eta)
+   =\delta_{k+n}\otimes\lambda_H(2^{-(n+k)}b)\eta .
+ \tag{OA4}
+\]
+This retains the real translation variable in the subgroup factor.
+
+The corner sector \(Ht_k^{-1}\) is level \(-k\), with measure \(2^k\,dh\).
+Consequently (OS16), writing the original vector as \(\xi(b,n,y)\), is
+\[
+ (T\xi)_k(h)=2^{k/2}\xi(h,-k,k),\qquad
+ \int_{\mathbb R}\|2^{k/2}\xi(h,-k,k)\|^2\,dh
+   =2^k\int_{\mathbb R}\|\xi(h,-k,k)\|^2\,dh .
+ \tag{OA5}
+\]
+Its inverse on this sector multiplies by \(2^{-k/2}\).
+For a concrete norm computation, let \(v\in K\) be a unit vector and take
+\(\xi(b,-1,1)=1_{[0,1]}(b)v\), zero in every other sector. Then
+\[
+ \|\xi\|^2=2\int_0^1 1\,db=2,\qquad
+ (T\xi)_1(h)=\sqrt2\,1_{[0,1]}(h)v,\qquad
+ \|T\xi\|^2=\int_0^1 2\,dh=2.
+ \tag{OA6}
+\]
+Omitting the factor would give squared norm one on the target space.
+The completed normal isomorphism is
+\[
+ \bigl(\operatorname{Ind}_{\mathbb R}^{\mathbb R\rtimes_2\mathbb Z}N\bigr)
+       \rtimes(\mathbb R\rtimes_2\mathbb Z)
+ \cong (N\rtimes_\beta\mathbb R)\bar\otimes B(\ell^2\mathbb Z).
+ \tag{OA7}
+\]
+Unlike the direct-product example, its corner identification has a
+nonconstant modular factor across the sectors.
+
 <a id="open-figure"></a>
 ## The corner and the coset directions
 
@@ -197,6 +331,22 @@ Here \(\Delta_G=1\). The corner keeps an entire \(L^2(\mathbb R;K)\) variable, w
 The horizontal lines show a finite window of the cosets \(\mathbb R\times\{n\}\); each line continues in both horizontal directions, and there are cosets for all \(n\in\mathbb Z\). The highlighted line is \(H\). The arrows show translations by \(t_n=(0,n)\), which give the partial isometries \(v_n\) in (OS9). The displayed \(3\times3\) matrix is a finite compression of the full algebra \(B(\ell^2\mathbb Z)\bar\otimes(N\rtimes_\beta\mathbb R)\), not a finite-dimensional replacement. Each entry \(q_{mn}\) is an operator in the subgroup crossed product. The proof of the whole amplification is (OS10)–(OS12), and the subgroup corner is identified by (OS16)–(OS19).
 
 [Editable SVG](../assets/induction-alternatives/open/open-cosets.svg), [reproduction code](../assets/induction-alternatives/open/render.py), [coordinate data](../assets/induction-alternatives/open/data.json).
+
+
+![The indicator function of the unit interval in a source sector with measure twice Lebesgue measure, and its image with amplitude square root of two in the subgroup Haar space. Both squared norms are two.](../assets/induction-alternatives/open/haar-corner-normalization.png)
+
+For the dyadic affine group (OA1), the two panels display the exact
+calculation (OA6) in sector \(k=1\). The horizontal coordinate is unchanged;
+the vertical coordinate is the coefficient of the fixed unit vector \(v\).
+The left panel uses measure \(2\,db\), while the right uses \(dh\).
+The areas under the drawn functions are not their squared norms: the
+norm squares are the integrals of the squared heights against the
+respective displayed measures. Multiplication by \(\sqrt2\) makes them equal.
+
+[Editable SVG](../assets/induction-alternatives/open/haar-corner-normalization.svg),
+[reproduction code](../assets/induction-alternatives/open/haar-corner-normalization.py),
+[exact data](../assets/induction-alternatives/open/haar-corner-normalization.json),
+[component terms](../assets/induction-alternatives/open/haar-corner-normalization-LICENSE.txt).
 
 <a id="open-exercises"></a>
 ## Exercises with solutions

@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Polynomial reciprocals and tempered fundamental solutions</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L197.html">Previous lesson</a> · <a href="#complete-proof">Complete proof</a> · <a href="#6-exercises-with-complete-solutions">Exercises and solutions</a> · <a href="#reproduce">Sources and figure</a></nav>
+<h1 id="polynomial-reciprocals-and-tempered-fundamental-solutions">Polynomial reciprocals and tempered fundamental solutions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Fourier transform turns a constant-coefficient differential equation into multiplication by a polynomial. Away from the zeros, division is ordinary division. At a zero, a reciprocal may have to be a distribution. This lesson constructs a tempered reciprocal for every nonzero complex polynomial and hence a tempered fundamental solution for every constant-coefficient polynomial operator.</p>
+<p>Read <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz Fourier foundations</a>, <a href="AN02-L001.html">Fundamental solutions and the directions an equation uses</a>, and <a href="AN02-L020.html">Regularity and tempered growth</a>. The last lesson distinguishes local Fourier regularity from growth at infinity. Basic references are Bernstein [B] for the polynomial functional equation, Grubb [G] for tempered Fourier analysis, and Hörmander [H] for constant-coefficient equations. The <a href="#complete-proof">complete proof</a> includes the algebraic finiteness argument, the continuation of distributions, and every step of the construction.</p>
+<h2 id="1-a-reciprocal-of-the-constant-one">1. A reciprocal of the constant one</h2>
+<p><strong>Theorem 1.1.</strong> Let <span class="math" data-index="0" data-tex="\(P\)">\(P\)</span> be any nonzero polynomial with complex coefficients on <span class="math" data-index="1" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. There is <span class="math" data-index="2" data-tex="\(U\in\mathcal S&#x27;(\mathbb R^n)\)">\(U\in\mathcal S&#x27;(\mathbb R^n)\)</span> with</p>
+<span class="math math-display" id="learner-eq-1" data-index="3" data-tex="\[
+                              P U=1. \tag{1}
+\]">\[
+                              P U=1. \tag{1}
+\]</span>
+<p>Therefore <span class="math" data-index="4" data-tex="\(E=\mathcal F^{-1}U\)">\(E=\mathcal F^{-1}U\)</span> is tempered and</p>
+<span class="math math-display" id="learner-eq-2" data-index="5" data-tex="\[
+                              P(D)E=\delta_0. \tag{2}
+\]">\[
+                              P(D)E=\delta_0. \tag{2}
+\]</span>
+<p>The Fourier convention is <span class="math" data-index="6" data-tex="\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)">\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)</span>, with <span class="math" data-index="7" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>.</p>
+<p>The theorem includes repeated real zeros, nonreal coefficients, and polynomials independent of some variables. The polynomial <span class="math" data-index="8" data-tex="\(P=0\)">\(P=0\)</span> is excluded because its product with any distribution is zero. For a nonzero constant <span class="math" data-index="9" data-tex="\(a\)">\(a\)</span>, take <span class="math" data-index="10" data-tex="\(U=1/a\)">\(U=1/a\)</span> and <span class="math" data-index="11" data-tex="\(E=\delta_0/a\)">\(E=\delta_0/a\)</span>.</p>
+<p>The construction uses polynomial differential operators acting on a parameter family. It never requires multiplying two singular distributions. Its consequence for compact data is also useful: if <span class="math" data-index="12" data-tex="\(f\)">\(f\)</span> is a compactly supported distribution, <span class="math" data-index="13" data-tex="\(E*f\)">\(E*f\)</span> is tempered and solves <span class="math" data-index="14" data-tex="\(P(D)(E*f)=f\)">\(P(D)(E*f)=f\)</span>. The complete-proof Corollary 7.1 proves the required continuity on Schwartz tests.</p>
+<h2 id="2-continuing-a-polynomial-power">2. Continuing a polynomial power</h2>
+<p>Conjugate the coefficients of <span class="math" data-index="15" data-tex="\(P\)">\(P\)</span> to obtain <span class="math" data-index="16" data-tex="\(P^\#\)">\(P^\#\)</span>, and put</p>
+<span class="math math-display" data-index="17" data-tex="\[
+                             F=P P^\#.
+\]">\[
+                             F=P P^\#.
+\]</span>
+<p>On real space, <span class="math" data-index="18" data-tex="\(F=|P|^2\)">\(F=|P|^2\)</span>. For <span class="math" data-index="19" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, the function <span class="math" data-index="20" data-tex="\(F^s\)">\(F^s\)</span>, set to zero on its zero set, has polynomial growth and defines a tempered distribution <span class="math" data-index="21" data-tex="\(T(s)\)">\(T(s)\)</span>. It depends holomorphically on <span class="math" data-index="22" data-tex="\(s\)">\(s\)</span>. The complete-proof Lemmas 2.1 and 2.2 prove this with a common Schwartz seminorm on each compact parameter set.</p>
+<p>Bernstein's functional equation supplies a nonzero scalar polynomial <span class="math" data-index="23" data-tex="\(b(s)\)">\(b(s)\)</span> and a differential operator <span class="math" data-index="24" data-tex="\(B(s)\)">\(B(s)\)</span>, polynomial in <span class="math" data-index="25" data-tex="\(s\)">\(s\)</span> and in the real variables, such that</p>
+<span class="math math-display" id="learner-eq-3" data-index="26" data-tex="\[
+                         b(s)F^s=B(s)F^{s+1}. \tag{3}
+\]">\[
+                         b(s)F^s=B(s)F^{s+1}. \tag{3}
+\]</span>
+<p>Thus the family at <span class="math" data-index="27" data-tex="\(s\)">\(s\)</span> can be obtained from the family at <span class="math" data-index="28" data-tex="\(s+1\)">\(s+1\)</span>. Each step can introduce finite-order poles from zeros of <span class="math" data-index="29" data-tex="\(b\)">\(b\)</span>. Repeating the step continues <span class="math" data-index="30" data-tex="\(T(s)\)">\(T(s)\)</span> meromorphically to every finite complex parameter.</p>
+<p>At zero the continuation is holomorphic and equals one. Indeed <span class="math" data-index="31" data-tex="\(F^s\to1\)">\(F^s\to1\)</span> almost everywhere as real <span class="math" data-index="32" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span>, the zero set is null, and <span class="math" data-index="33" data-tex="\(F^s\leq1+F\)">\(F^s\leq1+F\)</span> for <span class="math" data-index="34" data-tex="\(0&lt;s\leq1\)">\(0&lt;s\leq1\)</span>. Dominated convergence gives a finite limit on every Schwartz test. A finite-order pole would contradict that limit.</p>
+<p>At <span class="math" data-index="35" data-tex="\(s=-1\)">\(s=-1\)</span>, take the constant Laurent coefficient:</p>
+<span class="math math-display" id="learner-eq-4" data-index="36" data-tex="\[
+                T(s)=\sum_{\ell=-L}^{\infty}A_\ell(s+1)^\ell.
+ \tag{4}
+\]">\[
+                T(s)=\sum_{\ell=-L}^{\infty}A_\ell(s+1)^\ell.
+ \tag{4}
+\]</span>
+<p>The identity <span class="math" data-index="37" data-tex="\(F T(s)=T(s+1)\)">\(F T(s)=T(s+1)\)</span> gives <span class="math" data-index="38" data-tex="\(F A_0=1\)">\(F A_0=1\)</span>, because the right side is holomorphic there with value one. Therefore</p>
+<span class="math math-display" id="learner-eq-5" data-index="39" data-tex="\[
+                             U=P^\# A_0 \tag{5}
+\]">\[
+                             U=P^\# A_0 \tag{5}
+\]</span>
+<p>proves (1). Every coefficient in (4) is tempered. This follows from the locally uniform Schwartz-seminorm bounds and the Cauchy formula for the parameter coefficients, as proved in the complete-proof Lemma 2.2.</p>
+<h2 id="3-why-the-functional-equation-exists">3. Why the functional equation exists</h2>
+<p>Here is the finite algebraic mechanism behind (3). The full argument is in complete-proof Sections 3–6.</p>
+<p>Work over the field <span class="math" data-index="40" data-tex="\(\mathbb C(s)\)">\(\mathbb C(s)\)</span>, where the parameter is an indeterminate. Polynomial multiplication and ordinary differentiation generate the Weyl algebra. Its operators of total degree at most <span class="math" data-index="41" data-tex="\(k\)">\(k\)</span> have dimension</p>
+<span class="math math-display" id="learner-eq-6" data-index="42" data-tex="\[
+                              \binom{k+2n}{2n}. \tag{6}
+\]">\[
+                              \binom{k+2n}{2n}. \tag{6}
+\]</span>
+<p>The noncommutativity has the simple rule <span class="math" data-index="43" data-tex="\([\partial_i,x_j]=\delta_{ij}\)">\([\partial_i,x_j]=\delta_{ij}\)</span>.</p>
+<p>A nonzero finitely generated module over this algebra cannot have growth degree below <span class="math" data-index="44" data-tex="\(n\)">\(n\)</span>. To see the key point, an operator of degree at most <span class="math" data-index="45" data-tex="\(k\)">\(k\)</span> which killed the degree-<span class="math" data-index="46" data-tex="\(k\)">\(k\)</span> part of a module would, after at most <span class="math" data-index="47" data-tex="\(k\)">\(k\)</span> commutators, give a nonzero scalar killing a nonzero generator. The complete-proof Theorem 5.2 expands those commutators and proves</p>
+<span class="math math-display" id="learner-eq-7" data-index="48" data-tex="\[
+              \binom{k+2n}{2n}\leq(\dim M_k)(\dim M_{2k}). \tag{7}
+\]">\[
+              \binom{k+2n}{2n}\leq(\dim M_k)(\dim M_{2k}). \tag{7}
+\]</span>
+<p>This forces growth degree at least <span class="math" data-index="49" data-tex="\(n\)">\(n\)</span>.</p>
+<p>For the cyclic module generated by the formal symbol <span class="math" data-index="50" data-tex="\(F^s\)">\(F^s\)</span>, the degree is at most <span class="math" data-index="51" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-index="52" data-tex="\(d=\deg F\)">\(d=\deg F\)</span>, putting the derivatives over a common denominator <span class="math" data-index="53" data-tex="\(F^k\)">\(F^k\)</span> bounds the numerator degree by <span class="math" data-index="54" data-tex="\((d+1)k\)">\((d+1)k\)</span>. Hence</p>
+<span class="math math-display" id="learner-eq-8" data-index="55" data-tex="\[
+                         \dim M_k\leq\binom{(d+1)k+n}{n}. \tag{8}
+\]">\[
+                         \dim M_k\leq\binom{(d+1)k+n}{n}. \tag{8}
+\]</span>
+<p>The degree is exactly <span class="math" data-index="56" data-tex="\(n\)">\(n\)</span>. Its leading coefficient, multiplied by <span class="math" data-index="57" data-tex="\(n!\)">\(n!\)</span>, is a positive integer called its multiplicity.</p>
+<p>Now the cyclic submodules generated by</p>
+<span class="math math-display" data-index="58" data-tex="\[
+                             F^s,\ F^{s+1},\ F^{s+2},\ldots
+\]">\[
+                             F^s,\ F^{s+1},\ F^{s+2},\ldots
+\]</span>
+<p>form a descending chain. Every strict inclusion consumes at least one unit of multiplicity, so the chain must have two consecutive equal terms. That equality expresses one power as a polynomial differential operator applied to the next power, with rational dependence on <span class="math" data-index="59" data-tex="\(s\)">\(s\)</span>. Change the parameter back and clear its scalar denominators. The result is (3).</p>
+<p>The complete proof supplies the monomial counting, finite-generation and exact-sequence arguments that justify these multiplicities. Thus the chain argument has no assumed finiteness theorem hidden inside it.</p>
+<h2 id="4-three-reciprocals-at-real-zeros">4. Three reciprocals at real zeros</h2>
+<h3 id="example-1-a-simple-real-zero">Example 1: a simple real zero</h3>
+<p>For <span class="math" data-index="60" data-tex="\(P(\xi)=\xi\)">\(P(\xi)=\xi\)</span> on the line, define</p>
+<span class="math math-display" id="learner-eq-9" data-index="61" data-tex="\[
+ \left\langle\operatorname{pv}\frac1\xi,\phi\right\rangle
+       =\int_0^\infty\frac{\phi(t)-\phi(-t)}t\,dt. \tag{9}
+\]">\[
+ \left\langle\operatorname{pv}\frac1\xi,\phi\right\rangle
+       =\int_0^\infty\frac{\phi(t)-\phi(-t)}t\,dt. \tag{9}
+\]</span>
+<p>The numerator is <span class="math" data-index="62" data-tex="\(O(t)\)">\(O(t)\)</span> near zero by the mean value theorem, and both tests decrease rapidly at infinity. These bounds also give continuity in a finite set of Schwartz seminorms. Substituting <span class="math" data-index="63" data-tex="\(\xi\phi\)">\(\xi\phi\)</span> gives</p>
+<span class="math math-display" data-index="64" data-tex="\[
+ \left\langle \xi\,\operatorname{pv}\frac1\xi,\phi\right\rangle
+       =\int_0^\infty(\phi(t)+\phi(-t))\,dt
+       =\int_{\mathbb R}\phi(t)\,dt.
+\]">\[
+ \left\langle \xi\,\operatorname{pv}\frac1\xi,\phi\right\rangle
+       =\int_0^\infty(\phi(t)+\phi(-t))\,dt
+       =\int_{\mathbb R}\phi(t)\,dt.
+\]</span>
+<p>Thus (9) is a tempered reciprocal. In physical space, <span class="math" data-index="65" data-tex="\(E(x)=\frac i2\operatorname{sgn}x\)">\(E(x)=\frac i2\operatorname{sgn}x\)</span> is a tempered fundamental solution of <span class="math" data-index="66" data-tex="\(D=-i\partial_x\)">\(D=-i\partial_x\)</span>, because <span class="math" data-index="67" data-tex="\(\partial_x\operatorname{sgn}x=2\delta_0\)">\(\partial_x\operatorname{sgn}x=2\delta_0\)</span>.</p>
+<h3 id="example-2-a-repeated-real-zero">Example 2: a repeated real zero</h3>
+<p>For <span class="math" data-index="68" data-tex="\(P(\xi)=\xi^2\)">\(P(\xi)=\xi^2\)</span>, define the finite part by</p>
+<span class="math math-display" id="learner-eq-10" data-index="69" data-tex="\[
+ \left\langle\operatorname{fp}\frac1{\xi^2},\phi\right\rangle
+    =\lim_{\epsilon\downarrow0}
+       \left(\int_{|\xi|&gt;\epsilon}\frac{\phi(\xi)}{\xi^2}\,d\xi
+                         -\frac{2\phi(0)}\epsilon\right). \tag{10}
+\]">\[
+ \left\langle\operatorname{fp}\frac1{\xi^2},\phi\right\rangle
+    =\lim_{\epsilon\downarrow0}
+       \left(\int_{|\xi|&gt;\epsilon}\frac{\phi(\xi)}{\xi^2}\,d\xi
+                         -\frac{2\phi(0)}\epsilon\right). \tag{10}
+\]</span>
+<p>Taylor subtraction shows that the limit exists. More precisely it equals</p>
+<span class="math math-display" id="learner-eq-11" data-index="70" data-tex="\[
+ \begin{aligned}
+ &amp;\int_{|\xi|&lt;1}
+       \frac{\phi(\xi)-\phi(0)-\xi\phi&#x27;(0)}{\xi^2}\,d\xi\\
+ &amp;\qquad+\int_{|\xi|\geq1}\frac{\phi(\xi)}{\xi^2}\,d\xi-2\phi(0).
+ \end{aligned}
+ \tag{11}
+\]">\[
+ \begin{aligned}
+ &amp;\int_{|\xi|&lt;1}
+       \frac{\phi(\xi)-\phi(0)-\xi\phi&#x27;(0)}{\xi^2}\,d\xi\\
+ &amp;\qquad+\int_{|\xi|\geq1}\frac{\phi(\xi)}{\xi^2}\,d\xi-2\phi(0).
+ \end{aligned}
+ \tag{11}
+\]</span>
+<p>The first integral is bounded by <span class="math" data-index="71" data-tex="\(\sup_{[-1,1]}|\phi&#x27;&#x27;|\)">\(\sup_{[-1,1]}|\phi&#x27;&#x27;|\)</span>, and the second by <span class="math" data-index="72" data-tex="\(2\sup|\phi|\)">\(2\sup|\phi|\)</span>. This proves tempered continuity. Replacing <span class="math" data-index="73" data-tex="\(\phi\)">\(\phi\)</span> by <span class="math" data-index="74" data-tex="\(\xi^2\phi\)">\(\xi^2\phi\)</span> in (10) gives exactly <span class="math" data-index="75" data-tex="\(\int\phi\)">\(\int\phi\)</span>, so the finite part is a reciprocal of <span class="math" data-index="76" data-tex="\(\xi^2\)">\(\xi^2\)</span>.</p>
+<figure><img class="course-figure" loading="lazy" width="2091" height="595" src="reproduce/L198/figures/finite-part-test-subtraction.png" alt="For the Gaussian test, subtracting its value at zero removes the quadratic reciprocal singularity; the quotient has limit minus one at zero." /><figcaption class="native"><a href="reproduce/L198/figures/finite-part-test-subtraction.png">Open full-size PNG</a> · <a href="reproduce/L198/figures/finite-part-test-subtraction.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1. The test is <span class="math" data-index="77" data-tex="\(\phi(\xi)=e^{-\xi^2}\)">\(\phi(\xi)=e^{-\xi^2}\)</span>. The three panels show <span class="math" data-index="78" data-tex="\(\phi\)">\(\phi\)</span>, the subtracted test <span class="math" data-index="79" data-tex="\(\phi-1\)">\(\phi-1\)</span>, and <span class="math" data-index="80" data-tex="\((\phi-1)/\xi^2\)">\((\phi-1)/\xi^2\)</span>, extended at zero by <span class="math" data-index="81" data-tex="\(-1\)">\(-1\)</span>. These are ordinary functions illustrating (11), not a graph of a distribution. Integration by parts gives the exact pairing <span class="math" data-index="82" data-tex="\(\langle\operatorname{fp}(1/\xi^2),e^{-\xi^2}\rangle=-2\sqrt\pi\)">\(\langle\operatorname{fp}(1/\xi^2),e^{-\xi^2}\rangle=-2\sqrt\pi\)</span>.</em></p>
+<p>To verify the last value, the odd linear Taylor term vanishes and (10) equals the integral of <span class="math" data-index="83" data-tex="\((e^{-\xi^2}-1)/\xi^2\)">\((e^{-\xi^2}-1)/\xi^2\)</span>. Its boundary terms in integration by parts vanish at both zero and infinity. Differentiating the numerator gives <span class="math" data-index="84" data-tex="\(-2\xi e^{-\xi^2}\)">\(-2\xi e^{-\xi^2}\)</span>, so the integral is <span class="math" data-index="85" data-tex="\(-2\int e^{-\xi^2}\,d\xi=-2\sqrt\pi\)">\(-2\int e^{-\xi^2}\,d\xi=-2\sqrt\pi\)</span>. The Gaussian integral follows by squaring the positive integral and using polar coordinates in the plane.</p>
+<h3 id="example-3-a-complex-linear-zero">Example 3: a complex linear zero</h3>
+<p>For <span class="math" data-index="86" data-tex="\(P(\xi_1,\xi_2)=\xi_1+i\xi_2\)">\(P(\xi_1,\xi_2)=\xi_1+i\xi_2\)</span>, the ordinary function</p>
+<span class="math math-display" id="learner-eq-12" data-index="87" data-tex="\[
+                     U(\xi)=\frac{\xi_1-i\xi_2}{\xi_1^2+\xi_2^2}
+ \tag{12}
+\]">\[
+                     U(\xi)=\frac{\xi_1-i\xi_2}{\xi_1^2+\xi_2^2}
+ \tag{12}
+\]</span>
+<p>is locally integrable: its modulus is <span class="math" data-index="88" data-tex="\(1/|\xi|\)">\(1/|\xi|\)</span>, and polar area measure cancels that singular power near zero. It decreases at infinity, so it is tempered. Its product with <span class="math" data-index="89" data-tex="\(P\)">\(P\)</span> is one almost everywhere, hence distributionally.</p>
+<p>Here <span class="math" data-index="90" data-tex="\(F=|\xi|^2\)">\(F=|\xi|^2\)</span>. Its power family has a pole at <span class="math" data-index="91" data-tex="\(s=-1\)">\(s=-1\)</span>, but multiplication by <span class="math" data-index="92" data-tex="\(P^\#\)">\(P^\#\)</span> removes that pole. Solution 8 computes the residue and verifies that (5) gives exactly (12).</p>
+<h2 id="5-what-existence-does-and-does-not-select">5. What existence does and does not select</h2>
+<p>If <span class="math" data-index="93" data-tex="\(U_1,U_2\)">\(U_1,U_2\)</span> solve (1), their difference <span class="math" data-index="94" data-tex="\(W\)">\(W\)</span> satisfies <span class="math" data-index="95" data-tex="\(P W=0\)">\(P W=0\)</span>, and it is supported on the real zero set of <span class="math" data-index="96" data-tex="\(P\)">\(P\)</span>. This follows by smooth division on every open set where <span class="math" data-index="97" data-tex="\(P\ne0\)">\(P\ne0\)</span>. Support on the zero set alone is insufficient: multiplication can detect normal delta derivatives.</p>
+<p>If <span class="math" data-index="98" data-tex="\(P\)">\(P\)</span> has no real zeros, the tempered reciprocal is unique. For example <span class="math" data-index="99" data-tex="\(P=1+|\xi|^2\)">\(P=1+|\xi|^2\)</span> has the smooth reciprocal <span class="math" data-index="100" data-tex="\((1+|\xi|^2)^{-1}\)">\((1+|\xi|^2)^{-1}\)</span>. When real zeros are present, choosing boundary conditions or support can select a particular inverse.</p>
+<p>The theorem supplies tempered growth. The regular inverse construction supplies the local weight <span class="math" data-index="101" data-tex="\(S_P\)">\(S_P\)</span>. These are distinct conclusions. The degenerate diffusion example in <a href="AN02-L020.html">Regularity and tempered growth</a> has no inverse with both properties, even though each existence theorem applies.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<h3 id="exercise-1-constants-and-the-fourier-normalization-5-points">Exercise 1: constants and the Fourier normalization — 5 points</h3>
+<p>For <span class="math" data-index="102" data-tex="\(P=a\ne0\)">\(P=a\ne0\)</span>, determine both inverses in (1) and (2). State the convention in zero dimensions.</p>
+<h3 id="solution-1">Solution 1</h3>
+<p>The frequency distribution is the constant <span class="math" data-index="103" data-tex="\(U=1/a\)">\(U=1/a\)</span>, so <span class="math" data-index="104" data-tex="\(\mathcal F^{-1}U=\delta_0/a\)">\(\mathcal F^{-1}U=\delta_0/a\)</span>. There is no factor of <span class="math" data-index="105" data-tex="\(2\pi\)">\(2\pi\)</span>, since the inverse transform already contains <span class="math" data-index="106" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span> and sends the constant one to delta. In zero dimensions integration and Fourier transformation are the identity on scalars, and the same answer is scalar division.</p>
+<h3 id="exercise-2-ambiguity-at-a-simple-zero-10-points">Exercise 2: ambiguity at a simple zero — 10 points</h3>
+<p>Show that every distribution <span class="math" data-index="107" data-tex="\(W\)">\(W\)</span> on the line with <span class="math" data-index="108" data-tex="\(\xi W=0\)">\(\xi W=0\)</span> equals <span class="math" data-index="109" data-tex="\(c\delta_0\)">\(c\delta_0\)</span>. Deduce all tempered reciprocals of <span class="math" data-index="110" data-tex="\(P(\xi)=\xi\)">\(P(\xi)=\xi\)</span>.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Choose <span class="math" data-index="111" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> equal to one near zero. For every compact test <span class="math" data-index="112" data-tex="\(\phi\)">\(\phi\)</span>, the function <span class="math" data-index="113" data-tex="\(\phi-\phi(0)\chi\)">\(\phi-\phi(0)\chi\)</span> vanishes at zero and equals <span class="math" data-index="114" data-tex="\(\xi\psi\)">\(\xi\psi\)</span> for a compact smooth <span class="math" data-index="115" data-tex="\(\psi\)">\(\psi\)</span>; smoothness at zero follows from the integral Taylor formula. Therefore</p>
+<span class="math math-display" data-index="116" data-tex="\[
+ \langle W,\phi\rangle=\phi(0)\langle W,\chi\rangle+\langle\xi W,\psi\rangle
+                        =c\phi(0).
+\]">\[
+ \langle W,\phi\rangle=\phi(0)\langle W,\chi\rangle+\langle\xi W,\psi\rangle
+                        =c\phi(0).
+\]</span>
+<p>Thus <span class="math" data-index="117" data-tex="\(W=c\delta_0\)">\(W=c\delta_0\)</span>. The difference of two tempered reciprocals has this form. Conversely <span class="math" data-index="118" data-tex="\(\xi\delta_0=0\)">\(\xi\delta_0=0\)</span>, so they are exactly <span class="math" data-index="119" data-tex="\(\operatorname{pv}(1/\xi)+c\delta_0\)">\(\operatorname{pv}(1/\xi)+c\delta_0\)</span>. The equality first established on compact tests is equality of tempered distributions because compact smooth functions are dense in the Schwartz topology, as proved in the Fourier foundation reading.</p>
+<h3 id="exercise-3-a-repeated-zero-in-physical-space-15-points">Exercise 3: a repeated zero in physical space — 15 points</h3>
+<p>Prove directly that <span class="math" data-index="120" data-tex="\(E(x)=-|x|/2\)">\(E(x)=-|x|/2\)</span> is a tempered fundamental solution of <span class="math" data-index="121" data-tex="\(D^2\)">\(D^2\)</span>. Also show that <span class="math" data-index="122" data-tex="\(\delta&#x27;_0\)">\(\delta&#x27;_0\)</span> is annihilated by <span class="math" data-index="123" data-tex="\(\xi^2\)">\(\xi^2\)</span>, whereas <span class="math" data-index="124" data-tex="\(\delta&#x27;&#x27;_0\)">\(\delta&#x27;&#x27;_0\)</span> is not.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The locally integrable function <span class="math" data-index="125" data-tex="\(|x|\)">\(|x|\)</span> has linear growth and is tempered. Integration by parts on the positive and negative half-lines gives <span class="math" data-index="126" data-tex="\(\partial_x|x|=\operatorname{sgn}x\)">\(\partial_x|x|=\operatorname{sgn}x\)</span>, and one more integration gives <span class="math" data-index="127" data-tex="\(\partial_x^2|x|=2\delta_0\)">\(\partial_x^2|x|=2\delta_0\)</span>. Since <span class="math" data-index="128" data-tex="\(D^2=-\partial_x^2\)">\(D^2=-\partial_x^2\)</span>, (2) follows. For compact tests,</p>
+<span class="math math-display" data-index="129" data-tex="\[
+ \langle \xi^2\delta&#x27;_0,\phi\rangle=-(\xi^2\phi)&#x27;(0)=0,\qquad
+ \langle \xi^2\delta&#x27;&#x27;_0,\phi\rangle=(\xi^2\phi)&#x27;&#x27;(0)=2\phi(0).
+\]">\[
+ \langle \xi^2\delta&#x27;_0,\phi\rangle=-(\xi^2\phi)&#x27;(0)=0,\qquad
+ \langle \xi^2\delta&#x27;&#x27;_0,\phi\rangle=(\xi^2\phi)&#x27;&#x27;(0)=2\phi(0).
+\]</span>
+<p>Thus <span class="math" data-index="130" data-tex="\(\xi^2\delta&#x27;&#x27;_0=2\delta_0\)">\(\xi^2\delta&#x27;&#x27;_0=2\delta_0\)</span>. All three delta derivatives are supported at the same point, which illustrates why support alone does not characterize the ambiguity.</p>
+<h3 id="exercise-4-finding-the-scalar-by-commutators-10-points">Exercise 4: finding the scalar by commutators — 10 points</h3>
+<p>In one variable put <span class="math" data-index="131" data-tex="\(Q=x^2\partial+3x\partial^2+5\)">\(Q=x^2\partial+3x\partial^2+5\)</span>. Compute <span class="math" data-index="132" data-tex="\((\operatorname{ad}\partial)^2(\operatorname{ad}x)Q\)">\((\operatorname{ad}\partial)^2(\operatorname{ad}x)Q\)</span>, and explain its role in the dimension inequality.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Using <span class="math" data-index="133" data-tex="\([x,\partial]=-1\)">\([x,\partial]=-1\)</span>,</p>
+<span class="math math-display" data-index="134" data-tex="\[
+ [x,Q]=-x^2-6x\partial,\quad
+ [\partial,[x,Q]]=-2x-6\partial,\quad
+ [\partial,[\partial,[x,Q]]]=-2.
+\]">\[
+ [x,Q]=-x^2-6x\partial,\quad
+ [\partial,[x,Q]]=-2x-6\partial,\quad
+ [\partial,[\partial,[x,Q]]]=-2.
+\]</span>
+<p>If this degree-three operator killed the degree-three part of a nonzero module with a generator <span class="math" data-index="135" data-tex="\(m\)">\(m\)</span>, expand the three commutators on <span class="math" data-index="136" data-tex="\(m\)">\(m\)</span>. Every term contains <span class="math" data-index="137" data-tex="\(Q\)">\(Q\)</span> applied to a word of length at most three acting on <span class="math" data-index="138" data-tex="\(m\)">\(m\)</span>, so every term is zero. But their sum is <span class="math" data-index="139" data-tex="\(-2m\ne0\)">\(-2m\ne0\)</span>, a contradiction. This is the scalar-detection step of complete-proof Theorem 5.2.</p>
+<h3 id="exercise-5-a-module-of-the-smallest-possible-growth-10-points">Exercise 5: a module of the smallest possible growth — 10 points</h3>
+<p>Let the one-variable Weyl algebra act on <span class="math" data-index="140" data-tex="\(K[x]\)">\(K[x]\)</span> by multiplication and differentiation. Use the generator <span class="math" data-index="141" data-tex="\(1\)">\(1\)</span> to compute the growth degree and multiplicity, and show that the module has no proper nonzero submodule.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>Its degree-<span class="math" data-index="142" data-tex="\(k\)">\(k\)</span> filtered part is the polynomials of degree at most <span class="math" data-index="143" data-tex="\(k\)">\(k\)</span>, with dimension <span class="math" data-index="144" data-tex="\(k+1\)">\(k+1\)</span>. Thus <span class="math" data-index="145" data-tex="\(d=1\)">\(d=1\)</span> and <span class="math" data-index="146" data-tex="\(e=1\)">\(e=1\)</span>. A nonzero submodule contains a nonzero polynomial. Differentiating as many times as its degree yields a nonzero constant, since the field has characteristic zero. Scalar division gives <span class="math" data-index="147" data-tex="\(1\)">\(1\)</span>, and multiplication by powers of <span class="math" data-index="148" data-tex="\(x\)">\(x\)</span> gives every polynomial. The chain therefore has length one, agreeing with the multiplicity bound.</p>
+<h3 id="exercise-6-a-functional-equation-with-repeated-factors-15-points">Exercise 6: a functional equation with repeated factors — 15 points</h3>
+<p>For <span class="math" data-index="149" data-tex="\(F(x)=x^d\)">\(F(x)=x^d\)</span>, <span class="math" data-index="150" data-tex="\(d\geq1\)">\(d\geq1\)</span>, find a scalar polynomial <span class="math" data-index="151" data-tex="\(b(s)\)">\(b(s)\)</span> for which <span class="math" data-index="152" data-tex="\(\partial_x^d F^{s+1}=b(s)F^s\)">\(\partial_x^d F^{s+1}=b(s)F^s\)</span> holds formally. For <span class="math" data-index="153" data-tex="\(d=2\)">\(d=2\)</span>, explain why a zero of <span class="math" data-index="154" data-tex="\(b\)">\(b\)</span> need not be an actual pole of <span class="math" data-index="155" data-tex="\(T(s)\)">\(T(s)\)</span>.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>Differentiating <span class="math" data-index="156" data-tex="\(x^{d(s+1)}\)">\(x^{d(s+1)}\)</span> <span class="math" data-index="157" data-tex="\(d\)">\(d\)</span> times gives</p>
+<span class="math math-display" id="learner-eq-13" data-index="158" data-tex="\[
+ b(s)=\prod_{j=1}^d(ds+j),\qquad
+                    \partial_x^d F^{s+1}=b(s)F^s. \tag{13}
+\]">\[
+ b(s)=\prod_{j=1}^d(ds+j),\qquad
+                    \partial_x^d F^{s+1}=b(s)F^s. \tag{13}
+\]</span>
+<p>This is a formal differential identity, or an ordinary identity after choosing a local logarithm off zero. For <span class="math" data-index="159" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-index="160" data-tex="\(b(s)=(2s+1)(2s+2)\)">\(b(s)=(2s+1)(2s+2)\)</span>. The apparent singularity at <span class="math" data-index="161" data-tex="\(s=-1\)">\(s=-1\)</span> is removable for <span class="math" data-index="162" data-tex="\(T(s)=|x|^{2s}\)">\(T(s)=|x|^{2s}\)</span>. To see this, subtract <span class="math" data-index="163" data-tex="\(\phi(0)+x\phi&#x27;(0)\)">\(\phi(0)+x\phi&#x27;(0)\)</span> on <span class="math" data-index="164" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>. The remaining integral is holomorphic for <span class="math" data-index="165" data-tex="\(\operatorname{Re}s&gt;-3/2\)">\(\operatorname{Re}s&gt;-3/2\)</span>, while the subtracted constant contributes <span class="math" data-index="166" data-tex="\(2\phi(0)/(2s+1)\)">\(2\phi(0)/(2s+1)\)</span>, and the odd term contributes zero. The outer integral is holomorphic on every bounded parameter set by Schwartz decay. Thus the only pole in this strip is at <span class="math" data-index="167" data-tex="\(-1/2\)">\(-1/2\)</span>; at <span class="math" data-index="168" data-tex="\(-1\)">\(-1\)</span> the expression equals (11). Scalar factors in the recurrence give possible poles, with cancellations permitted.</p>
+<h3 id="exercise-7-why-the-value-at-zero-is-enough-15-points">Exercise 7: why the value at zero is enough — 15 points</h3>
+<p>Suppose a meromorphic tempered family <span class="math" data-index="169" data-tex="\(T(s)\)">\(T(s)\)</span> continues <span class="math" data-index="170" data-tex="\(F^s\)">\(F^s\)</span>, for a nonzero nonnegative polynomial <span class="math" data-index="171" data-tex="\(F\)">\(F\)</span>, and satisfies <span class="math" data-index="172" data-tex="\(F T(s)=T(s+1)\)">\(F T(s)=T(s+1)\)</span>. Prove <span class="math" data-index="173" data-tex="\(T(0)=1\)">\(T(0)=1\)</span> and <span class="math" data-index="174" data-tex="\(F A_\ell=0\)">\(F A_\ell=0\)</span> for every negative Laurent coefficient at <span class="math" data-index="175" data-tex="\(-1\)">\(-1\)</span>.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>The zero set of <span class="math" data-index="176" data-tex="\(F\)">\(F\)</span> is null. For real <span class="math" data-index="177" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span>, dominated convergence with <span class="math" data-index="178" data-tex="\(|F^s|\leq1+F\)">\(|F^s|\leq1+F\)</span> gives the weak limit one on every Schwartz test. If a most negative Laurent coefficient at zero were nonzero, choose a test on which it is nonzero. Its scalar pairing would diverge on this real approach. There is therefore no pole at zero, and its value is one. The right side of <span class="math" data-index="179" data-tex="\(F T(s)=T(s+1)\)">\(F T(s)=T(s+1)\)</span> is now holomorphic near <span class="math" data-index="180" data-tex="\(-1\)">\(-1\)</span>, so every negative coefficient on the left is zero: <span class="math" data-index="181" data-tex="\(F A_\ell=0\)">\(F A_\ell=0\)</span> for <span class="math" data-index="182" data-tex="\(\ell&lt;0\)">\(\ell&lt;0\)</span>. The constant coefficient is <span class="math" data-index="183" data-tex="\(F A_0=1\)">\(F A_0=1\)</span>. No assertion that the individual negative coefficients vanish is required.</p>
+<h3 id="exercise-8-the-residue-at-a-complex-linear-zero-20-points">Exercise 8: the residue at a complex linear zero — 20 points</h3>
+<p>In two dimensions take <span class="math" data-index="184" data-tex="\(F(\xi)=|\xi|^2\)">\(F(\xi)=|\xi|^2\)</span>. Compute the residue of <span class="math" data-index="185" data-tex="\(T(s)=F^s\)">\(T(s)=F^s\)</span> at <span class="math" data-index="186" data-tex="\(s=-1\)">\(s=-1\)</span>. Show that multiplication by <span class="math" data-index="187" data-tex="\(\xi_1-i\xi_2\)">\(\xi_1-i\xi_2\)</span> removes the pole and gives (12).</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>For a Schwartz test put <span class="math" data-index="188" data-tex="\(g(r)=\int_0^{2\pi}\phi(r\cos\theta,r\sin\theta)\,d\theta\)">\(g(r)=\int_0^{2\pi}\phi(r\cos\theta,r\sin\theta)\,d\theta\)</span>. Taylor expansion and the vanishing angular integral of the linear term give <span class="math" data-index="189" data-tex="\(g(r)=2\pi\phi(0)+O(r^2)\)">\(g(r)=2\pi\phi(0)+O(r^2)\)</span>, with the remainder controlled by the second derivatives on the unit ball. The inner radial integral is</p>
+<span class="math math-display" id="learner-eq-14" data-index="190" data-tex="\[
+ \int_0^1 r^{2s+1}(g(r)-2\pi\phi(0))\,dr
+                         +\frac{\pi\phi(0)}{s+1}. \tag{14}
+\]">\[
+ \int_0^1 r^{2s+1}(g(r)-2\pi\phi(0))\,dr
+                         +\frac{\pi\phi(0)}{s+1}. \tag{14}
+\]</span>
+<p>Its first term is holomorphic for <span class="math" data-index="191" data-tex="\(\operatorname{Re}s&gt;-2\)">\(\operatorname{Re}s&gt;-2\)</span>. The radial integral over <span class="math" data-index="192" data-tex="\(r\geq1\)">\(r\geq1\)</span> is holomorphic on bounded parameter sets by Schwartz decay. Thus</p>
+<span class="math math-display" data-index="193" data-tex="\[
+                         \operatorname{Res}_{s=-1}T(s)=\pi\delta_0.
+\]">\[
+                         \operatorname{Res}_{s=-1}T(s)=\pi\delta_0.
+\]</span>
+<p>Multiplication by <span class="math" data-index="194" data-tex="\(\xi_1-i\xi_2\)">\(\xi_1-i\xi_2\)</span> kills this residue. More directly the function <span class="math" data-index="195" data-tex="\((\xi_1-i\xi_2)|\xi|^{2s}\)">\((\xi_1-i\xi_2)|\xi|^{2s}\)</span> has modulus <span class="math" data-index="196" data-tex="\(r^{2\operatorname{Re}s+1}\)">\(r^{2\operatorname{Re}s+1}\)</span>; with area measure it is locally integrable for <span class="math" data-index="197" data-tex="\(\operatorname{Re}s&gt;-3/2\)">\(\operatorname{Re}s&gt;-3/2\)</span>, including a neighborhood of <span class="math" data-index="198" data-tex="\(-1\)">\(-1\)</span>, and its parameter derivatives are dominated there. Hence this multiplied family is holomorphic at <span class="math" data-index="199" data-tex="\(-1\)">\(-1\)</span> and takes the value <span class="math" data-index="200" data-tex="\((\xi_1-i\xi_2)/|\xi|^2\)">\((\xi_1-i\xi_2)/|\xi|^2\)</span>. Its constant Laurent coefficient is exactly the <span class="math" data-index="201" data-tex="\(U\)">\(U\)</span> in (5), proving (12).</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[G]</strong> Gerd Grubb, <em>Distributions and Operators</em>, freely readable lecture chapters, especially Chapter 5 on Fourier transformation. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>. The Fourier proofs used here are also supplied in the linked foundation reading.</li>
+<li><strong>[B]</strong> I. N. Bernstein, “The analytic continuation of generalized functions with respect to a parameter,” <em>Functional Analysis and Its Applications</em> <strong>6</strong> (1972), 273–285. <a href="https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-a-cont-FAN.pdf">Author-hosted article</a>; <a href="https://www.mathnet.ru/php/archive.phtml?jrnid=faa&amp;option_lang=eng&amp;paperid=2532&amp;wshow=paper">bibliographic record</a>.</li>
+<li><strong>[H]</strong> Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; 2005 reprint.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>The construction has an analytic part and a finite algebraic part. A functional equation continues a polynomial power through its singular exponents. The constant Laurent coefficient then supplies a reciprocal. We prove the functional equation using commutators and finite-dimensional growth, including the commutative algebra required for that growth argument.</p>
+<p>The Fourier transform and its distributional extension are proved in <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz Fourier foundations</a>. The one-variable Cauchy integral formula and estimates used for parameter coefficients are in <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. The algebraic method is due to I. N. Bernstein [Bernstein].</p>
+<h2 id="1-the-statement-and-the-coefficient-we-need">1. The statement and the coefficient we need</h2>
+<p><strong>Theorem 1.1.</strong> For every nonzero polynomial <span class="math" data-index="202" data-tex="\(P\in\mathbb C[\xi_1,\ldots,\xi_n]\)">\(P\in\mathbb C[\xi_1,\ldots,\xi_n]\)</span>, there is <span class="math" data-index="203" data-tex="\(U\in\mathcal S&#x27;(\mathbb R^n)\)">\(U\in\mathcal S&#x27;(\mathbb R^n)\)</span> such that</p>
+<span class="math math-display" id="proof-eq-F1" data-index="204" data-tex="\[
+                         P U=1. \tag{F1}
+\]">\[
+                         P U=1. \tag{F1}
+\]</span>
+<p>Consequently there is <span class="math" data-index="205" data-tex="\(E\in\mathcal S&#x27;(\mathbb R^n)\)">\(E\in\mathcal S&#x27;(\mathbb R^n)\)</span> with <span class="math" data-index="206" data-tex="\(P(D)E=\delta_0\)">\(P(D)E=\delta_0\)</span>, where <span class="math" data-index="207" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. No assumption on the real zeros, degree, or ellipticity of <span class="math" data-index="208" data-tex="\(P\)">\(P\)</span> is required.</p>
+<p>Write <span class="math" data-index="209" data-tex="\(P^\#\)">\(P^\#\)</span> for the polynomial obtained by conjugating its coefficients, and put <span class="math" data-index="210" data-tex="\(F=P P^\#\)">\(F=P P^\#\)</span>. On real space, <span class="math" data-index="211" data-tex="\(F=|P|^2\geq0\)">\(F=|P|^2\geq0\)</span>, and <span class="math" data-index="212" data-tex="\(F\)">\(F\)</span> is not identically zero. We shall obtain a meromorphic tempered-distribution family <span class="math" data-index="213" data-tex="\(T(s)\)">\(T(s)\)</span> continuing <span class="math" data-index="214" data-tex="\(F^s\)">\(F^s\)</span>. It will satisfy</p>
+<span class="math math-display" id="proof-eq-F2" data-index="215" data-tex="\[
+                 F T(s)=T(s+1),\qquad T(0)=1. \tag{F2}
+\]">\[
+                 F T(s)=T(s+1),\qquad T(0)=1. \tag{F2}
+\]</span>
+<p>If <span class="math" data-index="216" data-tex="\(A_0\)">\(A_0\)</span> is the constant Laurent coefficient of <span class="math" data-index="217" data-tex="\(T(s)\)">\(T(s)\)</span> at <span class="math" data-index="218" data-tex="\(s=-1\)">\(s=-1\)</span>, multiplication in (F2) gives <span class="math" data-index="219" data-tex="\(F A_0=1\)">\(F A_0=1\)</span>. Thus</p>
+<span class="math math-display" id="proof-eq-F3" data-index="220" data-tex="\[
+                              U=P^\# A_0 \tag{F3}
+\]">\[
+                              U=P^\# A_0 \tag{F3}
+\]</span>
+<p>has the required property. Negative Laurent coefficients are allowed. We need the constant coefficient, not a pointwise limit at a pole.</p>
+<p>The following sections justify this construction and then supply its algebraic input.</p>
+<h2 id="2-polynomial-powers-as-tempered-families">2. Polynomial powers as tempered families</h2>
+<p><strong>Lemma 2.1.</strong> The real zero set of a nonzero real or complex polynomial has Lebesgue measure zero.</p>
+<p><strong>Proof.</strong> In one variable there are finitely many roots. For induction write a polynomial in the last variable as <span class="math" data-index="221" data-tex="\(\sum_j a_j(x&#x27;)t^j\)">\(\sum_j a_j(x&#x27;)t^j\)</span>, and choose a coefficient <span class="math" data-index="222" data-tex="\(a_j\)">\(a_j\)</span> which is not identically zero. Outside its measure-zero zero set, the polynomial in <span class="math" data-index="223" data-tex="\(t\)">\(t\)</span> is not zero and has finitely many real roots. Fubini on each bounded box proves the assertion there. A countable union of boxes proves it globally. For a complex polynomial one can use a nonzero real or imaginary part. Nonzero constants have no zeros. <span class="math" data-index="224" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a nonzero nonnegative real polynomial <span class="math" data-index="225" data-tex="\(F\)">\(F\)</span>, define <span class="math" data-index="226" data-tex="\(F^s(x)=\exp(s\log F(x))\)">\(F^s(x)=\exp(s\log F(x))\)</span> where <span class="math" data-index="227" data-tex="\(F(x)&gt;0\)">\(F(x)&gt;0\)</span>, and set it to zero on its zero set when <span class="math" data-index="228" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>.</p>
+<p><strong>Lemma 2.2.</strong> On <span class="math" data-index="229" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, these functions define a holomorphic family <span class="math" data-index="230" data-tex="\(T(s)\)">\(T(s)\)</span> of tempered distributions. Suppose there are a nonzero scalar polynomial <span class="math" data-index="231" data-tex="\(b(s)\)">\(b(s)\)</span> and a polynomial-coefficient differential operator <span class="math" data-index="232" data-tex="\(B(s)\)">\(B(s)\)</span>, depending polynomially on <span class="math" data-index="233" data-tex="\(s\)">\(s\)</span>, with the formal identity</p>
+<span class="math math-display" id="proof-eq-F4" data-index="234" data-tex="\[
+                        b(s)F^s=B(s)F^{s+1}. \tag{F4}
+\]">\[
+                        b(s)F^s=B(s)F^{s+1}. \tag{F4}
+\]</span>
+<p>Then <span class="math" data-index="235" data-tex="\(T\)">\(T\)</span> continues meromorphically to the whole parameter plane. Its Laurent coefficients are tempered distributions, (F2) holds, and <span class="math" data-index="236" data-tex="\(T\)">\(T\)</span> is holomorphic at zero with value one.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-index="237" data-tex="\(K\)">\(K\)</span> be a compact subset of the initial half-plane. Choose <span class="math" data-index="238" data-tex="\(0&lt;a\leq\operatorname{Re}s\leq A\)">\(0&lt;a\leq\operatorname{Re}s\leq A\)</span> on a neighborhood of <span class="math" data-index="239" data-tex="\(K\)">\(K\)</span>. For every fixed integer <span class="math" data-index="240" data-tex="\(j\geq0\)">\(j\geq0\)</span>,</p>
+<span class="math math-display" id="proof-eq-F5" data-index="241" data-tex="\[
+ \sup_{0&lt;t\leq1} t^a|\log t|^j&lt;\infty. \tag{F5}
+\]">\[
+ \sup_{0&lt;t\leq1} t^a|\log t|^j&lt;\infty. \tag{F5}
+\]</span>
+<p>On <span class="math" data-index="242" data-tex="\(F\geq1\)">\(F\geq1\)</span>, the functions <span class="math" data-index="243" data-tex="\(F^s(\log F)^j\)">\(F^s(\log F)^j\)</span> have polynomial growth in <span class="math" data-index="244" data-tex="\(x\)">\(x\)</span>, uniformly for <span class="math" data-index="245" data-tex="\(s\in K\)">\(s\in K\)</span>, because <span class="math" data-index="246" data-tex="\(F\)">\(F\)</span> is polynomial. On <span class="math" data-index="247" data-tex="\(0&lt;F&lt;1\)">\(0&lt;F&lt;1\)</span>, (F5) bounds them uniformly. A sufficiently large Schwartz weight therefore dominates all the integrals</p>
+<span class="math math-display" data-index="248" data-tex="\[
+           \int F(x)^s(\log F(x))^j\phi(x)\,dx,\qquad \phi\in\mathcal S.
+\]">\[
+           \int F(x)^s(\log F(x))^j\phi(x)\,dx,\qquad \phi\in\mathcal S.
+\]</span>
+<p>Differentiation in <span class="math" data-index="249" data-tex="\(s\)">\(s\)</span> follows from dominated convergence. The estimates hold uniformly when <span class="math" data-index="250" data-tex="\(\phi\)">\(\phi\)</span> ranges over a bounded set in <span class="math" data-index="251" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. In particular there is, for every parameter compact set, a fixed continuous Schwartz seminorm <span class="math" data-index="252" data-tex="\(p\)">\(p\)</span> such that</p>
+<span class="math math-display" id="proof-eq-F6" data-index="253" data-tex="\[
+                    |\langle T(s),\phi\rangle|\leq C_K p(\phi).
+                    \tag{F6}
+\]">\[
+                    |\langle T(s),\phi\rangle|\leq C_K p(\phi).
+                    \tag{F6}
+\]</span>
+<p>This proves the initial assertion, including the continuity required of its parameter coefficients.</p>
+<p>Let <span class="math" data-index="254" data-tex="\(r\)">\(r\)</span> be the largest differential order in <span class="math" data-index="255" data-tex="\(B\)">\(B\)</span>. Initially take <span class="math" data-index="256" data-tex="\(\operatorname{Re}s&gt;r+1\)">\(\operatorname{Re}s&gt;r+1\)</span>. The function <span class="math" data-index="257" data-tex="\(t\mapsto t_+^{s+1}\)">\(t\mapsto t_+^{s+1}\)</span>, extended by zero to <span class="math" data-index="258" data-tex="\(t\leq0\)">\(t\leq0\)</span>, is <span class="math" data-index="259" data-tex="\(C^r\)">\(C^r\)</span>. Its composition with <span class="math" data-index="260" data-tex="\(F\)">\(F\)</span> is consequently <span class="math" data-index="261" data-tex="\(C^r\)">\(C^r\)</span> across the zero set. Differentiating there gives the distributional identity (F4): on <span class="math" data-index="262" data-tex="\(F&gt;0\)">\(F&gt;0\)</span> it is the formal chain rule, and the zero set has measure zero. The classical derivatives through order <span class="math" data-index="263" data-tex="\(r\)">\(r\)</span> are the distributional derivatives, so no extra term supported on the zero set occurs. Their growth at infinity is polynomial. Integration by parts on Schwartz tests follows by inserting expanding compact cutoffs and using Schwartz decay.</p>
+<p>Both sides of (F4) are holomorphic distributions on <span class="math" data-index="264" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>. Testing against each <span class="math" data-index="265" data-tex="\(\phi\)">\(\phi\)</span> and using the scalar identity theorem extends the equality to that half-plane. The scalar identity theorem itself follows from uniqueness of Taylor coefficients on a disk and continuation through a chain of overlapping disks.</p>
+<p>Now use</p>
+<span class="math math-display" id="proof-eq-F7" data-index="266" data-tex="\[
+                       T(s)=b(s)^{-1}B(s)T(s+1). \tag{F7}
+\]">\[
+                       T(s)=b(s)^{-1}B(s)T(s+1). \tag{F7}
+\]</span>
+<p>The right side extends <span class="math" data-index="267" data-tex="\(T\)">\(T\)</span> meromorphically to <span class="math" data-index="268" data-tex="\(\operatorname{Re}s&gt;-1\)">\(\operatorname{Re}s&gt;-1\)</span>. Iterating gives an extension to <span class="math" data-index="269" data-tex="\(\operatorname{Re}s&gt;-N\)">\(\operatorname{Re}s&gt;-N\)</span> for every integer <span class="math" data-index="270" data-tex="\(N\)">\(N\)</span>. The expressions agree on overlaps: their difference is a scalar-meromorphic distribution which vanishes on the original open half-plane, and the preceding scalar uniqueness argument applies after testing. On a neighborhood of any fixed parameter only finitely many factors <span class="math" data-index="271" data-tex="\(b(s),\ldots,b(s+N-1)\)">\(b(s),\ldots,b(s+N-1)\)</span> occur. Each has a finite-order zero. Polynomial differential operators act continuously on <span class="math" data-index="272" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, uniformly on compact parameter sets: their transposes send each Schwartz seminorm into a finite sum of Schwartz seminorms. Thus multiplication by a sufficiently high power of <span class="math" data-index="273" data-tex="\(s-s_0\)">\(s-s_0\)</span> makes the family holomorphic with a bound of the form (F6).</p>
+<p>For completeness, its Laurent coefficients really belong to <span class="math" data-index="274" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. Apply the scalar Cauchy formula on a small parameter circle to the holomorphic numerator. Integrating its values against each <span class="math" data-index="275" data-tex="\(\phi\)">\(\phi\)</span> defines Taylor coefficients; (F6) bounds each by a fixed Schwartz seminorm times the circle radius to a negative integer power. They are continuous linear functionals on <span class="math" data-index="276" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Division by the finite scalar power gives the asserted finite principal part and tempered Laurent coefficients.</p>
+<p>The equality <span class="math" data-index="277" data-tex="\(F T(s)=T(s+1)\)">\(F T(s)=T(s+1)\)</span> holds on the initial half-plane by multiplication of ordinary functions. It holds everywhere meromorphically by the same uniqueness argument.</p>
+<p>Finally let real <span class="math" data-index="278" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span>. Away from the null zero set, <span class="math" data-index="279" data-tex="\(F^s\to1\)">\(F^s\to1\)</span>, and for <span class="math" data-index="280" data-tex="\(0&lt;s\leq1\)">\(0&lt;s\leq1\)</span>,</p>
+<span class="math math-display" data-index="281" data-tex="\[
+                         |F^s|\leq 1+F.
+\]">\[
+                         |F^s|\leq 1+F.
+\]</span>
+<p>Dominated convergence on every Schwartz test gives <span class="math" data-index="282" data-tex="\(T(s)\to1\)">\(T(s)\to1\)</span> weakly. If the finite principal part at zero were nonzero, take its most negative nonzero coefficient and a test on which that coefficient is nonzero. The scalar pairing would have a pole and could not have this finite real-axis limit. Thus every negative coefficient vanishes and <span class="math" data-index="283" data-tex="\(T(0)=1\)">\(T(0)=1\)</span>. <span class="math" data-index="284" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only finite-order poles and the value at zero were used. There is no assumption about the locations or rationality of the poles.</p>
+<h2 id="3-polynomial-differential-operators">3. Polynomial differential operators</h2>
+<p>Let <span class="math" data-index="285" data-tex="\(K\)">\(K\)</span> be any field of characteristic zero. Let <span class="math" data-index="286" data-tex="\(A_n(K)\)">\(A_n(K)\)</span> be the algebra generated by <span class="math" data-index="287" data-tex="\(x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\)">\(x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\)</span>, subject to</p>
+<span class="math math-display" id="proof-eq-F8" data-index="288" data-tex="\[
+ [\partial_i,x_j]=\delta_{ij},\qquad
+ [x_i,x_j]=[\partial_i,\partial_j]=0. \tag{F8}
+\]">\[
+ [\partial_i,x_j]=\delta_{ij},\qquad
+ [x_i,x_j]=[\partial_i,\partial_j]=0. \tag{F8}
+\]</span>
+<p>Here <span class="math" data-index="289" data-tex="\([R,S]=RS-SR\)">\([R,S]=RS-SR\)</span>. In this algebra <span class="math" data-index="290" data-tex="\(\partial_i\)">\(\partial_i\)</span> is the ordinary derivative; the Fourier convention <span class="math" data-index="291" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> is used only in the final application.</p>
+<p><strong>Lemma 3.1.</strong> The normal monomials <span class="math" data-index="292" data-tex="\(x^\alpha\partial^\beta\)">\(x^\alpha\partial^\beta\)</span> form a basis. If <span class="math" data-index="293" data-tex="\(A_k\)">\(A_k\)</span> is their span for <span class="math" data-index="294" data-tex="\(|\alpha|+|\beta|\leq k\)">\(|\alpha|+|\beta|\leq k\)</span>, then</p>
+<span class="math math-display" id="proof-eq-F9" data-index="295" data-tex="\[
+ \dim_K A_k=\binom{k+2n}{2n},\qquad
+ \operatorname{gr}A_n(K)=K[x_1,\ldots,x_n,\zeta_1,\ldots,\zeta_n].
+ \tag{F9}
+\]">\[
+ \dim_K A_k=\binom{k+2n}{2n},\qquad
+ \operatorname{gr}A_n(K)=K[x_1,\ldots,x_n,\zeta_1,\ldots,\zeta_n].
+ \tag{F9}
+\]</span>
+<p><strong>Proof.</strong> The commutation relations move every <span class="math" data-index="296" data-tex="\(x\)">\(x\)</span> to the left of every <span class="math" data-index="297" data-tex="\(\partial\)">\(\partial\)</span>, proving spanning. Represent these generators as multiplication and differentiation on <span class="math" data-index="298" data-tex="\(K[x]\)">\(K[x]\)</span>. If a normal linear combination acts as zero on every polynomial, apply it coefficientwise to the formal series <span class="math" data-index="299" data-tex="\(\exp(x\cdot t)\)">\(\exp(x\cdot t)\)</span>. It gives</p>
+<span class="math math-display" data-index="300" data-tex="\[
+       \left(\sum_{\alpha,\beta}c_{\alpha\beta}x^\alpha t^\beta\right)
+                       \exp(x\cdot t)=0.
+\]">\[
+       \left(\sum_{\alpha,\beta}c_{\alpha\beta}x^\alpha t^\beta\right)
+                       \exp(x\cdot t)=0.
+\]</span>
+<p>The exponential is an invertible formal series, so every coefficient is zero. This proves linear independence, also in the algebra defined by (F8). Counting monomials of total degree at most <span class="math" data-index="301" data-tex="\(k\)">\(k\)</span> in <span class="math" data-index="302" data-tex="\(2n\)">\(2n\)</span> variables gives the binomial coefficient. Every commutator in (F8) lowers total degree by two, so the leading symbols commute. The same monomial basis shows that they have no further relations. <span class="math" data-index="303" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-why-the-dimension-counts-become-polynomials">4. Why the dimension counts become polynomials</h2>
+<p>We give the algebraic counting argument needed for filtered modules. No finiteness theorem for differential equations is assumed here.</p>
+<p><strong>Lemma 4.1.</strong> A polynomial ring <span class="math" data-index="304" data-tex="\(R=K[z_1,\ldots,z_q]\)">\(R=K[z_1,\ldots,z_q]\)</span>, and every finite module over it, has the ascending-chain finiteness property: every submodule is finitely generated. If a graded <span class="math" data-index="305" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-index="306" data-tex="\(G\)">\(G\)</span> has finitely many homogeneous generators and is bounded below in degree, then</p>
+<span class="math math-display" id="proof-eq-F10" data-index="307" data-tex="\[
+                 H_G(k)=\sum_{\nu\leq k}\dim_K G_\nu \tag{F10}
+\]">\[
+                 H_G(k)=\sum_{\nu\leq k}\dim_K G_\nu \tag{F10}
+\]</span>
+<p>is a polynomial in <span class="math" data-index="308" data-tex="\(k\)">\(k\)</span> for all sufficiently large integers <span class="math" data-index="309" data-tex="\(k\)">\(k\)</span>. If <span class="math" data-index="310" data-tex="\(G\ne0\)">\(G\ne0\)</span>, this eventual polynomial has nonnegative degree <span class="math" data-index="311" data-tex="\(d\)">\(d\)</span>, positive leading coefficient, and leading coefficient <span class="math" data-index="312" data-tex="\(e/d!\)">\(e/d!\)</span> for some positive integer <span class="math" data-index="313" data-tex="\(e\)">\(e\)</span>.</p>
+<p><strong>Proof.</strong> First, an upward-closed subset of <span class="math" data-index="314" data-tex="\(\mathbb N^q\)">\(\mathbb N^q\)</span> has finitely many minimal elements. To prove this, every infinite sequence in <span class="math" data-index="315" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> has an infinite constant or strictly increasing subsequence: a value repeated infinitely often gives the first case; otherwise each finite initial interval is visited only finitely often, and successive larger values can be selected. Apply this successively to the <span class="math" data-index="316" data-tex="\(q\)">\(q\)</span> coordinates. An infinite sequence of distinct minimal vectors would then have two vectors ordered componentwise, a contradiction. Every vector in an upward-closed set dominates a minimal vector, since repeated strict descent lowers the sum of its coordinates.</p>
+<p>Order polynomial monomials first by total degree and then lexicographically. This is a well-order preserved by multiplication. For a submodule <span class="math" data-index="317" data-tex="\(L\)">\(L\)</span> of a finite free module <span class="math" data-index="318" data-tex="\(\bigoplus_{i=1}^a R e_i\)">\(\bigoplus_{i=1}^a R e_i\)</span>, also order the finite component indices to break ties. In each component the exponents of leading terms of nonzero members of <span class="math" data-index="319" data-tex="\(L\)">\(L\)</span> form an upward-closed set. Choose members of <span class="math" data-index="320" data-tex="\(L\)">\(L\)</span> for its finitely many minimal leading monomials, scaling the leading coefficients to one.</p>
+<p>These chosen members generate <span class="math" data-index="321" data-tex="\(L\)">\(L\)</span>. Given a nonzero member, subtract a monomial multiple of a chosen member to cancel its leading term. Each subtraction decreases the leading monomial. The well-order makes the process terminate. A nonzero remainder still in <span class="math" data-index="322" data-tex="\(L\)">\(L\)</span> would have a leading term divisible by one of the chosen leading monomials, which contradicts termination. This proves finite generation of submodules of finite free modules. For a submodule of any finite module, take its inverse image under a finite free presentation, and then take the images of its finite generators. This proves the first assertion.</p>
+<p>For the graded assertion choose homogeneous generators <span class="math" data-index="323" data-tex="\(g_i\)">\(g_i\)</span>, of degrees <span class="math" data-index="324" data-tex="\(d_i\)">\(d_i\)</span>, and a graded surjection</p>
+<span class="math math-display" id="proof-eq-F11" data-index="325" data-tex="\[
+                         \bigoplus_i R(-d_i)\longrightarrow G.
+ \tag{F11}
+\]">\[
+                         \bigoplus_i R(-d_i)\longrightarrow G.
+ \tag{F11}
+\]</span>
+<p>Its kernel is homogeneous. In its leading-term construction use the shifted degree <span class="math" data-index="326" data-tex="\(|\alpha|+d_i\)">\(|\alpha|+d_i\)</span>, followed by a lexicographic tie-break. It is bounded below and is again a well-order preserved by multiplication. The members chosen for its minimal leading terms can be chosen homogeneous.</p>
+<p>The monomials not belonging to this leading-term submodule give a graded basis of <span class="math" data-index="327" data-tex="\(G\)">\(G\)</span>. They span by the cancellation procedure. A nontrivial relation between their residue classes would lie in the kernel and have a leading monomial in that leading-term submodule, which is impossible. In a fixed component, the excluded exponents are a union of finitely many orthants</p>
+<span class="math math-display" data-index="328" data-tex="\[
+                  a^{(j)}+\mathbb N^q.
+\]">\[
+                  a^{(j)}+\mathbb N^q.
+\]</span>
+<p>An intersection of any specified orthants is the orthant beginning at their componentwise maximum <span class="math" data-index="329" data-tex="\(a\)">\(a\)</span>. The number of its monomials with shifted degree at most <span class="math" data-index="330" data-tex="\(k\)">\(k\)</span> is, for all sufficiently large <span class="math" data-index="331" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" id="proof-eq-F12" data-index="332" data-tex="\[
+                         \binom{k-d_i-|a|+q}{q}. \tag{F12}
+\]">\[
+                         \binom{k-d_i-|a|+q}{q}. \tag{F12}
+\]</span>
+<p>The elementary count is the number of nonnegative integer <span class="math" data-index="333" data-tex="\(q\)">\(q\)</span>-tuples with sum at most <span class="math" data-index="334" data-tex="\(k-d_i-|a|\)">\(k-d_i-|a|\)</span>: add one slack coordinate and distribute that sum among <span class="math" data-index="335" data-tex="\(q+1\)">\(q+1\)</span> coordinates. Inclusion-exclusion over the finitely many orthants proves that the count of allowed monomials, summed over components, is eventually a polynomial. If <span class="math" data-index="336" data-tex="\(q=0\)">\(q=0\)</span>, the same count is eventually either zero or one per surviving component.</p>
+<p>For a nonzero graded module the cumulative count is eventually positive and nondecreasing, so its leading coefficient is positive. Its degree-<span class="math" data-index="337" data-tex="\(d\)">\(d\)</span> finite difference is <span class="math" data-index="338" data-tex="\(d!\)">\(d!\)</span> times that coefficient. Finite differences of integer values are integers, so this number is a positive integer <span class="math" data-index="339" data-tex="\(e\)">\(e\)</span>. This includes <span class="math" data-index="340" data-tex="\(d=0\)">\(d=0\)</span>. <span class="math" data-index="341" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-a-commutator-bounds-the-length-of-a-chain">5. A commutator bounds the length of a chain</h2>
+<p>A filtration <span class="math" data-index="342" data-tex="\(M_k\)">\(M_k\)</span> of a left <span class="math" data-index="343" data-tex="\(A_n(K)\)">\(A_n(K)\)</span>-module is <strong>good</strong> if it is bounded below, each <span class="math" data-index="344" data-tex="\(M_k\)">\(M_k\)</span> is finite-dimensional, its union is <span class="math" data-index="345" data-tex="\(M\)">\(M\)</span>, and there are finitely many <span class="math" data-index="346" data-tex="\(m_i\)">\(m_i\)</span> and integers <span class="math" data-index="347" data-tex="\(d_i\)">\(d_i\)</span> with</p>
+<span class="math math-display" id="proof-eq-F13" data-index="348" data-tex="\[
+                         M_k=\sum_i A_{k-d_i}m_i. \tag{F13}
+\]">\[
+                         M_k=\sum_i A_{k-d_i}m_i. \tag{F13}
+\]</span>
+<p>We put <span class="math" data-index="349" data-tex="\(A_j=0\)">\(A_j=0\)</span> for <span class="math" data-index="350" data-tex="\(j&lt;0\)">\(j&lt;0\)</span>. For a nonzero finitely generated module the standard filtration takes all <span class="math" data-index="351" data-tex="\(d_i=0\)">\(d_i=0\)</span>.</p>
+<p><strong>Lemma 5.1.</strong> A good filtered module has an eventual dimension polynomial with positive leading coefficient <span class="math" data-index="352" data-tex="\(e(M)/d(M)!\)">\(e(M)/d(M)!\)</span>, where <span class="math" data-index="353" data-tex="\(d(M)\geq0\)">\(d(M)\geq0\)</span> and <span class="math" data-index="354" data-tex="\(e(M)\)">\(e(M)\)</span> is a positive integer. Its degree and leading coefficient do not depend on the good filtration. Submodules with the induced filtration and quotients with the quotient filtration are good. In an exact sequence of nonzero modules, degree is the maximum of the two end degrees; if those degrees agree, multiplicities add.</p>
+<p><strong>Proof.</strong> The leading symbols of the <span class="math" data-index="355" data-tex="\(m_i\)">\(m_i\)</span> generate <span class="math" data-index="356" data-tex="\(\operatorname{gr}M\)">\(\operatorname{gr}M\)</span> over the polynomial ring <span class="math" data-index="357" data-tex="\(\operatorname{gr}A\)">\(\operatorname{gr}A\)</span>. Apply Lemma 4.1, noting that its cumulative count is <span class="math" data-index="358" data-tex="\(\dim M_k\)">\(\dim M_k\)</span>. Write its eventual leading term as</p>
+<span class="math math-display" id="proof-eq-F14" data-index="359" data-tex="\[
+                       \frac{e(M)}{d(M)!}k^{d(M)}. \tag{F14}
+\]">\[
+                       \frac{e(M)}{d(M)!}k^{d(M)}. \tag{F14}
+\]</span>
+<p>For degree zero the polynomial is a positive constant.</p>
+<p>Let <span class="math" data-index="360" data-tex="\(N\subset M\)">\(N\subset M\)</span>, and filter it by <span class="math" data-index="361" data-tex="\(N\cap M_k\)">\(N\cap M_k\)</span>. Its associated graded module injects into <span class="math" data-index="362" data-tex="\(\operatorname{gr}M\)">\(\operatorname{gr}M\)</span>: a member of <span class="math" data-index="363" data-tex="\(N\cap M_k\)">\(N\cap M_k\)</span> whose symbol is zero in <span class="math" data-index="364" data-tex="\(\operatorname{gr}M\)">\(\operatorname{gr}M\)</span> lies in <span class="math" data-index="365" data-tex="\(N\cap M_{k-1}\)">\(N\cap M_{k-1}\)</span>. This is a graded submodule and is finitely generated by Lemma 4.1. Lift finitely many homogeneous generators to <span class="math" data-index="366" data-tex="\(n_i\in N\)">\(n_i\in N\)</span>, in degrees <span class="math" data-index="367" data-tex="\(c_i\)">\(c_i\)</span>. For <span class="math" data-index="368" data-tex="\(n\in N\cap M_k\)">\(n\in N\cap M_k\)</span>, express its leading symbol using them and lift the coefficient polynomials to operators of the same degrees. Subtraction leaves a member of <span class="math" data-index="369" data-tex="\(N\cap M_{k-1}\)">\(N\cap M_{k-1}\)</span>. Induction down to the filtration's lower bound gives</p>
+<span class="math math-display" id="proof-eq-F15" data-index="370" data-tex="\[
+                          N\cap M_k=\sum_i A_{k-c_i}n_i.
+ \tag{F15}
+\]">\[
+                          N\cap M_k=\sum_i A_{k-c_i}n_i.
+ \tag{F15}
+\]</span>
+<p>Thus <span class="math" data-index="371" data-tex="\(N\)">\(N\)</span> is finitely generated and its induced filtration is good. The images of the original good generators give a good quotient filtration on <span class="math" data-index="372" data-tex="\(M/N\)">\(M/N\)</span>. In every degree,</p>
+<span class="math math-display" id="proof-eq-F16" data-index="373" data-tex="\[
+            \dim M_k=\dim(N\cap M_k)+\dim((M_k+N)/N). \tag{F16}
+\]">\[
+            \dim M_k=\dim(N\cap M_k)+\dim((M_k+N)/N). \tag{F16}
+\]</span>
+<p>The eventual polynomials therefore add. Their positive leading coefficients give the asserted degree and multiplicity rules.</p>
+<p>Finally compare two good filtrations on the same module. Express the finitely many generators of each in terms of those of the other. The finitely many operator degrees give a constant <span class="math" data-index="374" data-tex="\(C\)">\(C\)</span> with</p>
+<span class="math math-display" id="proof-eq-F17" data-index="375" data-tex="\[
+                          M_{k-C}\subseteq M&#x27;_k\subseteq M_{k+C}.
+ \tag{F17}
+\]">\[
+                          M_{k-C}\subseteq M&#x27;_k\subseteq M_{k+C}.
+ \tag{F17}
+\]</span>
+<p>Shifting the variable in an eventual polynomial preserves its degree and leading coefficient. Squeezing the two dimension counts proves their invariance. <span class="math" data-index="376" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (Bernstein's dimension inequality).</strong> Every nonzero finitely generated <span class="math" data-index="377" data-tex="\(A_n(K)\)">\(A_n(K)\)</span>-module satisfies <span class="math" data-index="378" data-tex="\(d(M)\geq n\)">\(d(M)\geq n\)</span>.</p>
+<p><strong>Proof.</strong> Choose generators with a nonzero generator <span class="math" data-index="379" data-tex="\(m\)">\(m\)</span>, and use their standard filtration. Consider the action map</p>
+<span class="math math-display" id="proof-eq-F18" data-index="380" data-tex="\[
+                    A_k\longrightarrow\operatorname{Hom}_K(M_k,M_{2k}).
+ \tag{F18}
+\]">\[
+                    A_k\longrightarrow\operatorname{Hom}_K(M_k,M_{2k}).
+ \tag{F18}
+\]</span>
+<p>It is injective. Indeed, suppose a nonzero <span class="math" data-index="381" data-tex="\(Q\in A_k\)">\(Q\in A_k\)</span> kills all of <span class="math" data-index="382" data-tex="\(M_k\)">\(M_k\)</span>. Choose a nonzero coefficient <span class="math" data-index="383" data-tex="\(c\)">\(c\)</span> of a normal monomial <span class="math" data-index="384" data-tex="\(x^\alpha\partial^\beta\)">\(x^\alpha\partial^\beta\)</span> of maximal total degree in <span class="math" data-index="385" data-tex="\(Q\)">\(Q\)</span>, and apply the iterated commutators</p>
+<span class="math math-display" id="proof-eq-F19" data-index="386" data-tex="\[
+                    (\operatorname{ad}\partial)^\alpha
+                    (\operatorname{ad}x)^\beta Q.
+ \tag{F19}
+\]">\[
+                    (\operatorname{ad}\partial)^\alpha
+                    (\operatorname{ad}x)^\beta Q.
+ \tag{F19}
+\]</span>
+<p>On normal monomials, <span class="math" data-index="387" data-tex="\(\operatorname{ad}\partial_i\)">\(\operatorname{ad}\partial_i\)</span> differentiates the <span class="math" data-index="388" data-tex="\(x_i\)">\(x_i\)</span>-power, and <span class="math" data-index="389" data-tex="\(\operatorname{ad}x_i\)">\(\operatorname{ad}x_i\)</span> is minus differentiation of the <span class="math" data-index="390" data-tex="\(\partial_i\)">\(\partial_i\)</span>-power. Every other monomial of smaller degree, or of the same degree with a different exponent pair, vanishes under these differentiations. The result is the nonzero scalar</p>
+<span class="math math-display" id="proof-eq-F20" data-index="391" data-tex="\[
+                              (-1)^{|\beta|}\alpha!\beta!c.
+ \tag{F20}
+\]">\[
+                              (-1)^{|\beta|}\alpha!\beta!c.
+ \tag{F20}
+\]</span>
+<p>There are <span class="math" data-index="392" data-tex="\(|\alpha|+|\beta|\leq k\)">\(|\alpha|+|\beta|\leq k\)</span> commutators. Expanding them on <span class="math" data-index="393" data-tex="\(m\)">\(m\)</span>, every term has the form <span class="math" data-index="394" data-tex="\(\pm L Q Rm\)">\(\pm L Q Rm\)</span>, where <span class="math" data-index="395" data-tex="\(L,R\)">\(L,R\)</span> are words in the generators and the right word has length at most <span class="math" data-index="396" data-tex="\(k\)">\(k\)</span>. Thus <span class="math" data-index="397" data-tex="\(Rm\in M_k\)">\(Rm\in M_k\)</span>, and every such term is zero. The nonzero scalar (F20) would annihilate <span class="math" data-index="398" data-tex="\(m\)">\(m\)</span>, a contradiction. This proves injectivity without assuming in advance that the module action is faithful.</p>
+<p>By (F9) and (F18),</p>
+<span class="math math-display" id="proof-eq-F21" data-index="399" data-tex="\[
+               \binom{k+2n}{2n}\leq(\dim M_k)(\dim M_{2k}). \tag{F21}
+\]">\[
+               \binom{k+2n}{2n}\leq(\dim M_k)(\dim M_{2k}). \tag{F21}
+\]</span>
+<p>The left side has degree <span class="math" data-index="400" data-tex="\(2n\)">\(2n\)</span> in <span class="math" data-index="401" data-tex="\(k\)">\(k\)</span>, while (F14) makes the right side grow with degree <span class="math" data-index="402" data-tex="\(2d(M)\)">\(2d(M)\)</span>. Hence <span class="math" data-index="403" data-tex="\(d(M)\geq n\)">\(d(M)\geq n\)</span>. <span class="math" data-index="404" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.3.</strong> If a nonzero finitely generated module has <span class="math" data-index="405" data-tex="\(\dim M_k=O(k^n)\)">\(\dim M_k=O(k^n)\)</span> for one good filtration, every nonzero subquotient has degree <span class="math" data-index="406" data-tex="\(n\)">\(n\)</span>. There can be at most <span class="math" data-index="407" data-tex="\(e(M)-1\)">\(e(M)-1\)</span> strict inclusions in a descending chain of nonzero submodules.</p>
+<p><strong>Proof.</strong> Induced and quotient filtrations in Lemma 5.1 bound every subquotient's degree by <span class="math" data-index="408" data-tex="\(n\)">\(n\)</span>. Theorem 5.2 bounds it below by <span class="math" data-index="409" data-tex="\(n\)">\(n\)</span>. In a strict inclusion <span class="math" data-index="410" data-tex="\(N&#x27;\subsetneq N\)">\(N&#x27;\subsetneq N\)</span> of nonzero submodules the quotient is nonzero, so</p>
+<span class="math math-display" id="proof-eq-F22" data-index="411" data-tex="\[
+                         e(N)=e(N&#x27;)+e(N/N&#x27;)\geq e(N&#x27;)+1.
+ \tag{F22}
+\]">\[
+                         e(N)=e(N&#x27;)+e(N/N&#x27;)\geq e(N&#x27;)+1.
+ \tag{F22}
+\]</span>
+<p>All multiplicities are positive integers. Starting at <span class="math" data-index="412" data-tex="\(e(M)\)">\(e(M)\)</span>, at most <span class="math" data-index="413" data-tex="\(e(M)-1\)">\(e(M)-1\)</span> such drops can leave a nonzero submodule. This argument also applies to an infinite proposed chain and forces it to stop. <span class="math" data-index="414" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-producing-the-functional-equation">6. Producing the functional equation</h2>
+<p><strong>Theorem 6.1 (Bernstein's functional equation).</strong> For every nonzero polynomial <span class="math" data-index="415" data-tex="\(F\in\mathbb C[x_1,\ldots,x_n]\)">\(F\in\mathbb C[x_1,\ldots,x_n]\)</span>, there are a nonzero polynomial <span class="math" data-index="416" data-tex="\(b\in\mathbb C[s]\)">\(b\in\mathbb C[s]\)</span> and an operator <span class="math" data-index="417" data-tex="\(B(s)\in\mathbb C[s,x,\partial]\)">\(B(s)\in\mathbb C[s,x,\partial]\)</span> such that (F4) holds formally, and therefore as a differential identity for any local branch of <span class="math" data-index="418" data-tex="\(F^s\)">\(F^s\)</span> away from its zero set.</p>
+<p><strong>Proof.</strong> A nonzero constant <span class="math" data-index="419" data-tex="\(F\)">\(F\)</span> permits <span class="math" data-index="420" data-tex="\(b=1\)">\(b=1\)</span> and <span class="math" data-index="421" data-tex="\(B=F^{-1}\)">\(B=F^{-1}\)</span>. Suppose its degree is <span class="math" data-index="422" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Work over the characteristic-zero field <span class="math" data-index="423" data-tex="\(K=\mathbb C(s)\)">\(K=\mathbb C(s)\)</span>. In the rank-one space</p>
+<span class="math math-display" data-index="424" data-tex="\[
+                         V=K[x,F^{-1}]v_s
+\]">\[
+                         V=K[x,F^{-1}]v_s
+\]</span>
+<p>define multiplication by <span class="math" data-index="425" data-tex="\(x_i\)">\(x_i\)</span> as multiplication of its coefficient, and set</p>
+<span class="math math-display" id="proof-eq-F23" data-index="426" data-tex="\[
+ \partial_i(a v_s)=
+       \left(\partial_i a+s a\,\frac{\partial_iF}{F}\right)v_s.
+ \tag{F23}
+\]">\[
+ \partial_i(a v_s)=
+       \left(\partial_i a+s a\,\frac{\partial_iF}{F}\right)v_s.
+ \tag{F23}
+\]</span>
+<p>These actions satisfy (F8). The mixed derivatives of <span class="math" data-index="427" data-tex="\(\partial_iF/F\)">\(\partial_iF/F\)</span> are symmetric, so the <span class="math" data-index="428" data-tex="\(\partial_i\)">\(\partial_i\)</span>'s commute; their commutators with the <span class="math" data-index="429" data-tex="\(x_j\)">\(x_j\)</span>'s are immediate. Thus <span class="math" data-index="430" data-tex="\(V\)">\(V\)</span> is an <span class="math" data-index="431" data-tex="\(A_n(K)\)">\(A_n(K)\)</span>-module. The notation <span class="math" data-index="432" data-tex="\(v_s\)">\(v_s\)</span> represents the formal power <span class="math" data-index="433" data-tex="\(F^s\)">\(F^s\)</span>, with no analytic branch chosen.</p>
+<p>Let <span class="math" data-index="434" data-tex="\(N_0=A_n(K)v_s\)">\(N_0=A_n(K)v_s\)</span>, with its standard cyclic filtration. Repeated differentiation gives</p>
+<span class="math math-display" id="proof-eq-F24" data-index="435" data-tex="\[
+ \partial^\beta v_s=F^{-|\beta|}R_\beta(s,x)v_s,\qquad
+              \deg_x R_\beta\leq|\beta|(d-1). \tag{F24}
+\]">\[
+ \partial^\beta v_s=F^{-|\beta|}R_\beta(s,x)v_s,\qquad
+              \deg_x R_\beta\leq|\beta|(d-1). \tag{F24}
+\]</span>
+<p>For induction, differentiating <span class="math" data-index="436" data-tex="\(F^{-q}R v_s\)">\(F^{-q}R v_s\)</span> gives numerator</p>
+<span class="math math-display" data-index="437" data-tex="\[
+                   F\partial_iR+(s-q)R\partial_iF
+\]">\[
+                   F\partial_iR+(s-q)R\partial_iF
+\]</span>
+<p>over <span class="math" data-index="438" data-tex="\(F^{q+1}\)">\(F^{q+1}\)</span>. Its degree increases by at most <span class="math" data-index="439" data-tex="\(d-1\)">\(d-1\)</span>, proving (F24).</p>
+<p>Put every <span class="math" data-index="440" data-tex="\(x^\alpha\partial^\beta v_s\)">\(x^\alpha\partial^\beta v_s\)</span>, for <span class="math" data-index="441" data-tex="\(|\alpha|+|\beta|\leq k\)">\(|\alpha|+|\beta|\leq k\)</span>, over the common denominator <span class="math" data-index="442" data-tex="\(F^k\)">\(F^k\)</span>. Its numerator has degree at most</p>
+<span class="math math-display" id="proof-eq-F25" data-index="443" data-tex="\[
+ \begin{aligned}
+ d(k-|\beta|)+|\alpha|+|\beta|(d-1)
+       &amp;=dk+|\alpha|-|\beta|\\
+       &amp;\leq(d+1)k.
+ \end{aligned}
+ \tag{F25}
+\]">\[
+ \begin{aligned}
+ d(k-|\beta|)+|\alpha|+|\beta|(d-1)
+       &amp;=dk+|\alpha|-|\beta|\\
+       &amp;\leq(d+1)k.
+ \end{aligned}
+ \tag{F25}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" id="proof-eq-F26" data-index="444" data-tex="\[
+                 \dim_K (N_0)_k
+                    \leq\binom{(d+1)k+n}{n}. \tag{F26}
+\]">\[
+                 \dim_K (N_0)_k
+                    \leq\binom{(d+1)k+n}{n}. \tag{F26}
+\]</span>
+<p>The map sending a numerator to its coefficient times <span class="math" data-index="445" data-tex="\(F^{-k}v_s\)">\(F^{-k}v_s\)</span> is injective, since the localized polynomial ring is a domain; in particular this count bounds the span in question. By Theorem 5.2 the degree of <span class="math" data-index="446" data-tex="\(N_0\)">\(N_0\)</span> is exactly <span class="math" data-index="447" data-tex="\(n\)">\(n\)</span>, and comparison of leading coefficients gives <span class="math" data-index="448" data-tex="\(e(N_0)\leq(d+1)^n\)">\(e(N_0)\leq(d+1)^n\)</span>.</p>
+<p>Now consider the nonzero cyclic submodules</p>
+<span class="math math-display" id="proof-eq-F27" data-index="449" data-tex="\[
+                         N_j=A_n(K)F^jv_s,\qquad j=0,1,2,\ldots.
+ \tag{F27}
+\]">\[
+                         N_j=A_n(K)F^jv_s,\qquad j=0,1,2,\ldots.
+ \tag{F27}
+\]</span>
+<p>They form a descending chain, since multiplication by <span class="math" data-index="450" data-tex="\(F\)">\(F\)</span> is a polynomial differential operator of order zero. Corollary 5.3 gives an index <span class="math" data-index="451" data-tex="\(j&lt;e(N_0)\)">\(j&lt;e(N_0)\)</span> with <span class="math" data-index="452" data-tex="\(N_j=N_{j+1}\)">\(N_j=N_{j+1}\)</span>. Thus for some <span class="math" data-index="453" data-tex="\(R(s)\in A_n(\mathbb C(s))\)">\(R(s)\in A_n(\mathbb C(s))\)</span>,</p>
+<span class="math math-display" id="proof-eq-F28" data-index="454" data-tex="\[
+                            F^jv_s=R(s)F^{j+1}v_s. \tag{F28}
+\]">\[
+                            F^jv_s=R(s)F^{j+1}v_s. \tag{F28}
+\]</span>
+<p>We explain the parameter change in this equality precisely. The map</p>
+<span class="math math-display" id="proof-eq-F29" data-index="455" data-tex="\[
+ J_j(a(s,x)v_s)=a(s-j,x)F^{-j}v_s
+ \tag{F29}
+\]">\[
+ J_j(a(s,x)v_s)=a(s-j,x)F^{-j}v_s
+ \tag{F29}
+\]</span>
+<p>is semilinear for the field automorphism <span class="math" data-index="456" data-tex="\(s\mapsto s-j\)">\(s\mapsto s-j\)</span>. It commutes with <span class="math" data-index="457" data-tex="\(x_i\)">\(x_i\)</span> and <span class="math" data-index="458" data-tex="\(\partial_i\)">\(\partial_i\)</span> after this change of scalar coefficients. To check the latter, differentiating its right side by (F23) gives</p>
+<span class="math math-display" data-index="459" data-tex="\[
+ F^{-j}\left(\partial_i a(s-j,x)
+          +(s-j)a(s-j,x)\frac{\partial_iF}{F}\right)v_s,
+\]">\[
+ F^{-j}\left(\partial_i a(s-j,x)
+          +(s-j)a(s-j,x)\frac{\partial_iF}{F}\right)v_s,
+\]</span>
+<p>which is <span class="math" data-index="460" data-tex="\(J_j(\partial_i(a v_s))\)">\(J_j(\partial_i(a v_s))\)</span>. Applying <span class="math" data-index="461" data-tex="\(J_j\)">\(J_j\)</span> to (F28) therefore yields</p>
+<span class="math math-display" id="proof-eq-F30" data-index="462" data-tex="\[
+                           v_s=R(s-j)Fv_s. \tag{F30}
+\]">\[
+                           v_s=R(s-j)Fv_s. \tag{F30}
+\]</span>
+<p>Only finitely many rational functions of <span class="math" data-index="463" data-tex="\(s\)">\(s\)</span> occur among this operator's coefficients. Multiply by a common nonzero scalar polynomial denominator <span class="math" data-index="464" data-tex="\(b(s)\)">\(b(s)\)</span>; the resulting operator <span class="math" data-index="465" data-tex="\(B(s)=b(s)R(s-j)\)">\(B(s)=b(s)R(s-j)\)</span> has coefficients polynomial in <span class="math" data-index="466" data-tex="\(s,x\)">\(s,x\)</span>. This is (F4).</p>
+<p>On an open set where a branch of <span class="math" data-index="467" data-tex="\(\log F\)">\(\log F\)</span> exists, replacing <span class="math" data-index="468" data-tex="\(v_s\)">\(v_s\)</span> by <span class="math" data-index="469" data-tex="\(\exp(s\log F)\)">\(\exp(s\log F)\)</span> respects (F23). It turns the formal equality into the asserted analytic one. For the nonnegative real polynomial used in Section 2, the positive real logarithm is sufficient. <span class="math" data-index="470" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof supplies the needed finite chain inside the cyclic module <span class="math" data-index="471" data-tex="\(N_0\)">\(N_0\)</span>. It does not assume that the whole localization <span class="math" data-index="472" data-tex="\(V\)">\(V\)</span> is finitely generated.</p>
+<h2 id="7-completing-the-tempered-construction">7. Completing the tempered construction</h2>
+<p><strong>Proof of Theorem 1.1.</strong> If <span class="math" data-index="473" data-tex="\(P=a\ne0\)">\(P=a\ne0\)</span> is constant, take the constant frequency distribution <span class="math" data-index="474" data-tex="\(U=a^{-1}\)">\(U=a^{-1}\)</span>. In zero dimensions this is scalar division and is the whole assertion. Otherwise apply Theorem 6.1 to <span class="math" data-index="475" data-tex="\(F=P P^\#\)">\(F=P P^\#\)</span>, then Lemma 2.2. It gives the meromorphic family and both identities (F2).</p>
+<p>Expand near <span class="math" data-index="476" data-tex="\(s=-1\)">\(s=-1\)</span>:</p>
+<span class="math math-display" id="proof-eq-F31" data-index="477" data-tex="\[
+                    T(s)=\sum_{\ell=-L}^{\infty}A_\ell(s+1)^\ell,
+                       \qquad A_\ell\in\mathcal S&#x27;. \tag{F31}
+\]">\[
+                    T(s)=\sum_{\ell=-L}^{\infty}A_\ell(s+1)^\ell,
+                       \qquad A_\ell\in\mathcal S&#x27;. \tag{F31}
+\]</span>
+<p>Polynomial multiplication is continuous on <span class="math" data-index="478" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. Comparing constant coefficients in <span class="math" data-index="479" data-tex="\(F T(s)=T(s+1)\)">\(F T(s)=T(s+1)\)</span>, whose right side is holomorphic there, gives</p>
+<span class="math math-display" id="proof-eq-F32" data-index="480" data-tex="\[
+                              F A_0=T(0)=1. \tag{F32}
+\]">\[
+                              F A_0=T(0)=1. \tag{F32}
+\]</span>
+<p>Hence <span class="math" data-index="481" data-tex="\(U=P^\#A_0\)">\(U=P^\#A_0\)</span> is tempered and satisfies (F1).</p>
+<p>Let <span class="math" data-index="482" data-tex="\(E=\mathcal F^{-1}U\)">\(E=\mathcal F^{-1}U\)</span>, using the continuous Fourier isomorphism on <span class="math" data-index="483" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. Its differentiation rule and inverse normalization give</p>
+<span class="math math-display" id="proof-eq-F33" data-index="484" data-tex="\[
+ \mathcal F(P(D)E)=P U=1,\qquad
+                 P(D)E=\mathcal F^{-1}1=\delta_0. \tag{F33}
+\]">\[
+ \mathcal F(P(D)E)=P U=1,\qquad
+                 P(D)E=\mathcal F^{-1}1=\delta_0. \tag{F33}
+\]</span>
+<p>This proves the theorem for every nonzero complex polynomial. <span class="math" data-index="485" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The division just proved is division of the constant distribution one. Multiplying an arbitrary distribution by a singular reciprocal would be a different operation and has not been used.</p>
+<p>There is no general uniqueness. Two solutions of <span class="math" data-index="486" data-tex="\(P U=1\)">\(P U=1\)</span> differ by a tempered distribution <span class="math" data-index="487" data-tex="\(W\)">\(W\)</span> with <span class="math" data-index="488" data-tex="\(P W=0\)">\(P W=0\)</span>. On every open set where <span class="math" data-index="489" data-tex="\(P\ne0\)">\(P\ne0\)</span>, multiplication by its smooth reciprocal shows <span class="math" data-index="490" data-tex="\(W=0\)">\(W=0\)</span>; thus</p>
+<span class="math math-display" id="proof-eq-F34" data-index="491" data-tex="\[
+                           \operatorname{supp}W\subseteq\{P=0\}. \tag{F34}
+\]">\[
+                           \operatorname{supp}W\subseteq\{P=0\}. \tag{F34}
+\]</span>
+<p>This does not mean that every distribution supported on that set is annihilated by <span class="math" data-index="492" data-tex="\(P\)">\(P\)</span>: its normal derivatives may survive multiplication. If <span class="math" data-index="493" data-tex="\(P\)">\(P\)</span> has no real zeros, uniqueness does hold. In that case the constructed <span class="math" data-index="494" data-tex="\(U\)">\(U\)</span>, restricted to compact tests, is the ordinary smooth reciprocal <span class="math" data-index="495" data-tex="\(1/P\)">\(1/P\)</span>; its ordinary distribution on compact tests therefore has a tempered extension.</p>
+<p><strong>Corollary 7.1.</strong> For every <span class="math" data-index="496" data-tex="\(f\in\mathcal E&#x27;(\mathbb R^n)\)">\(f\in\mathcal E&#x27;(\mathbb R^n)\)</span>, there is a tempered solution of <span class="math" data-index="497" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-index="498" data-tex="\(u=E*f\)">\(u=E*f\)</span>. Convolution with a compactly supported distribution preserves temperedness. Explicitly, if <span class="math" data-index="499" data-tex="\(f\)">\(f\)</span> has order <span class="math" data-index="500" data-tex="\(r\)">\(r\)</span> and support in a compact <span class="math" data-index="501" data-tex="\(K\)">\(K\)</span>, its action in</p>
+<span class="math math-display" data-index="502" data-tex="\[
+              x\longmapsto\langle f(y),\phi(x+y)\rangle
+\]">\[
+              x\longmapsto\langle f(y),\phi(x+y)\rangle
+\]</span>
+<p>maps <span class="math" data-index="503" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> continuously to <span class="math" data-index="504" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>: differentiating in <span class="math" data-index="505" data-tex="\(x\)">\(x\)</span>, using the order-<span class="math" data-index="506" data-tex="\(r\)">\(r\)</span> bound in <span class="math" data-index="507" data-tex="\(y\)">\(y\)</span>, and comparing <span class="math" data-index="508" data-tex="\(1+|x|\)">\(1+|x|\)</span> with <span class="math" data-index="509" data-tex="\(1+|x+y|\)">\(1+|x+y|\)</span> for <span class="math" data-index="510" data-tex="\(y\in K\)">\(y\in K\)</span> bounds each Schwartz seminorm by a finite one. Pairing this function with <span class="math" data-index="511" data-tex="\(E\)">\(E\)</span> defines a tempered convolution. The compact-factor differentiation identity gives <span class="math" data-index="512" data-tex="\(P(D)(E*f)=\delta_0*f=f\)">\(P(D)(E*f)=\delta_0*f=f\)</span>, with exactly the Fourier and complex-linear conventions of the <a href="prerequisites/proper-convolution-and-compact-support.html">convolution reading</a>. <span class="math" data-index="513" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem does not require a regular fundamental solution to be tempered. <a href="AN02-L020.html">Regularity and tempered growth</a> proves that those two properties can be incompatible for the same polynomial.</p>
+<h2 id="references-for-the-complete-proof">References for the complete proof</h2>
+<ul>
+<li><strong>[Bernstein]</strong> I. N. Bernstein, “The analytic continuation of generalized functions with respect to a parameter,” <em>Functional Analysis and Its Applications</em> <strong>6</strong> (1972), 273–285. <a href="https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/Bern-a-cont-FAN.pdf">Author-hosted article</a>; <a href="https://www.mathnet.ru/php/archive.phtml?jrnid=faa&amp;option_lang=eng&amp;paperid=2532&amp;wshow=paper">bibliographic record</a>. The functional equation and dimension method are due to Bernstein. All arguments needed here are supplied above.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; 2005 reprint. Background on fundamental solutions and the distinction between regularity and tempered growth.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figure</h2><p><a href="src/polynomial-reciprocals-and-tempered-fundamental-solutions.md" download>Download the complete lesson source</a>. Original exposition,proofs,examples,solutions,code and illustration use CC0 1.0. Linked readings and fonts retain their terms.</p><ul><li><span class="unlinked">DejaVu-font-license.txt</span></li><li><a href="reproduce/L198/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L198/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L198/check-and-figures.py" download>check-and-figures.py</a></li><li><a href="reproduce/L198/figures/finite-part-test-subtraction.png" download>figures/finite-part-test-subtraction.png</a></li><li><a href="reproduce/L198/figures/finite-part-test-subtraction.svg" download>figures/finite-part-test-subtraction.svg</a></li><li><a href="reproduce/L198/figures/figure-data.json" download>figures/figure-data.json</a></li><li><a href="reproduce/L198/polynomial-reciprocals-and-tempered-fundamental-solutions-formal.md" download>polynomial-reciprocals-and-tempered-fundamental-solutions-formal.md</a></li><li><a href="reproduce/L198/polynomial-reciprocals-and-tempered-fundamental-solutions-learner.md" download>polynomial-reciprocals-and-tempered-fundamental-solutions-learner.md</a></li></ul><p><span class="unlinked">MathJax license</span> · <span class="unlinked">Course sources and terms</span></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

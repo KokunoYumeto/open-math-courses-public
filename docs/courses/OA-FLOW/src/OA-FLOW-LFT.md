@@ -1082,6 +1082,218 @@ For the finite model, an actual positive element has field \(A(\mu_x\lambda)\). 
 \]
 This finite multiplicity factor differs from both the canonical factor \(1/(2\pi)\) and the infinite-orbit behavior (LFT7.n). In the circle model, every nonzero positive element of \(N\) has infinite \(\mathcal W\), so no finite-rank field can evade the orbit-constancy requirement to produce a semifinite trace.
 
+
+<a id="lft-measure-change"></a>
+## 9. Changing the base measure without changing the flow
+
+The positive coordinate compensates for a derivative of the base measure. It must therefore change when that measure is changed. We now give the complete conjugacy, including its action on the represented algebras and their traces.
+
+Let \(\mu'\) be any sigma-finite Borel measure equivalent to \(\mu\) on the same \(X\). The sigma-finite Radon–Nikodym construction in [REL1](OA-FLOW-REL.md#rel-1) gives
+\[
+ d\mu'(x)=w(x)\,d\mu(x),\qquad 0<w(x)<\infty
+ \quad\text{almost everywhere}.
+ \tag{LFT9.a}
+\]
+Choose a Borel version and remove the invariant saturation of its exceptional null set. Countability of \(G\) makes the removed set null for both measures. Intersect also the invariant conull sets used for the two relation cocycles. We work on this common invariant space. Neither \(w\) nor \(w^{-1}\) is required to be bounded or integrable on \(X\). A prime will distinguish constructions using \(\mu'\).
+
+**Theorem.** The map
+\[
+ C_w:X\times(0,\infty)\longrightarrow X\times(0,\infty),
+ \qquad C_w(x,\lambda')=(x,w(x)\lambda')
+ \tag{LFT9.b}
+\]
+is an invertible measure-preserving map from the \(\mu'\)-lift to the \(\mu\)-lift. It intertwines both the lifted \(G\)-actions and the dilations. It induces a normal isomorphism
+\[
+ \Xi_w:N_{\mu'}\longrightarrow N_\mu,\qquad
+ \Xi_w(A')(x,\lambda)=A'(x,\lambda/w(x)),
+ \tag{LFT9.c}
+\]
+preserving the entire basepoint and normalized core traces and intertwining the dual flows. In particular it conjugates their restrictions to the centers. The construction applies to nonergodic actions, arbitrary stabilizers and infinite base measures.
+
+### The two counting measures and the original algebra
+
+For every nonnegative measurable function on \(E\), right counting multiplies its base measure by \(w(x)\), whereas left counting multiplies by \(w(y)\). Consequently
+\[
+ d\nu'_r(y,x)=w(x)\,d\nu_r(y,x),\qquad
+ d\nu'_l(y,x)=w(y)\,d\nu_l(y,x),\qquad
+ \delta'(y,x)=\frac{w(y)}{w(x)}\delta(y,x).
+ \tag{LFT9.d}
+\]
+The last identity follows by substituting the first two into the defining integral identity for the Radon–Nikodym density. It is thus valid for all nonnegative tests, including those with infinite integral. On the common invariant conull space it holds for every related pair: the exceptional relation set is null on each of the countably many group graphs, and one removes the saturation of those exceptional base sets as in REL1.
+
+The onto unitary between the original relation Hilbert spaces is
+\[
+ U_w:H_{\mu'}\longrightarrow H_\mu,\qquad
+ (U_w\xi')(y,x)=w(x)^{1/2}\xi'(y,x),\qquad
+ (U_w^{-1}\xi)(y,x)=w(x)^{-1/2}\xi(y,x).
+ \tag{LFT9.e}
+\]
+The first identity in (LFT9.d) proves equality of squared norms and verifies the inverse on the full spaces. This is a unitary between two different measured Hilbert spaces; it does not assert that multiplication by \(w^{1/2}\) is bounded on a fixed one.
+
+The generators \(\pi(f)\) and \(u_g\) act only on the target coordinate \(y\). They commute with the source-coordinate factor in (LFT9.e). Therefore
+\[
+ \beta_w=\operatorname{Ad}U_w:M_{\mu'}\longrightarrow M_\mu,\qquad
+ \beta_w(\pi'(f))=\pi(f),\quad \beta_w(u'_g)=u_g
+ \tag{LFT9.f}
+\]
+is onto, normal and has a normal inverse. Its fiber formula is simply
+\(\beta_w(B')(x)=B'(x)\). Equivalence of the base measures preserves essential bounds and null fields, so the whole field criterion in [REL3](OA-FLOW-REL.md#rel-3) also gives this formula directly.
+
+The diagonal expectations correspond under \(\beta_w\), since both read the same basepoint entry. Transporting the diagonal weight for \(\mu'\) gives, on every \(B\in(M_\mu)_+\),
+\[
+ \psi(B):=\varphi_{\mu'}(\beta_w^{-1}(B))
+       =\int_X w(x)\langle B(x)e_x,e_x\rangle\,d\mu(x).
+ \tag{LFT9.g}
+\]
+This specifies a faithful normal semifinite weight, because it is the transport of the weight constructed in [REL5](OA-FLOW-REL.md#rel-5). It may differ from \(\varphi_\mu\) even though the underlying algebra and its expectation have been identified.
+
+The full modular matrix formula in REL5 and (LFT9.d) yield
+\[
+ \sigma_t^\psi
+    =\operatorname{Ad}\pi(w^{it})\circ\sigma_t^{\varphi_\mu}.
+ \tag{LFT9.h}
+\]
+Indeed the \(y,z\) entry on either side is multiplied by
+\(w(y)^{it}w(z)^{-it}\delta(y,z)^{it}=\delta'(y,z)^{it}\).
+The equality holds for every bounded operator by the whole matrix formula, not merely for finite graph kernels. Here \(w^{it}\) is a bounded modulus-one Borel function. The unitaries \(v_t=\pi(w^{it})\) are strongly continuous: their pointwise continuity and the bound
+\(|w(y)^{it}-w(y)^{is}|^2\leq4\) give dominated convergence on each vector in \(H_\mu\). Since the modular group fixes the diagonal,
+\[
+ v_{s+t}=v_s\,\sigma_s^{\varphi_\mu}(v_t).
+ \tag{LFT9.i}
+\]
+Thus this is an explicit continuous modular cocycle. No boundedness assumption on the positive density is hidden in its imaginary powers.
+
+### The height substitution and its full unitary
+
+For the primed lift, (LFT9.d) gives
+\[
+ \widetilde g'(x,\lambda')
+   =\left(gx,\delta(x,gx)\frac{w(x)}{w(gx)}\lambda'\right).
+ \tag{LFT9.j}
+\]
+Applying \(C_w\) cancels the denominator \(w(gx)\). The result is
+\((gx,\delta(x,gx)w(x)\lambda')=\widetilde g\,C_w(x,\lambda')\).
+The inverse of \(C_w\) is \((x,\lambda)\mapsto(x,\lambda/w(x))\); both maps are Borel. Multiplication of the positive coordinate by \(e^{-s}\) commutes with \(C_w\), so it also intertwines the point dilations corresponding to \(\theta_s\).
+
+For any nonnegative Borel \(F\), scalar substitution at each \(x\) proves
+\[
+ \begin{aligned}
+ \int_X\int_0^\infty F(C_w(x,\lambda'))\,d\lambda'\,d\mu'(x)
+ &=\int_X w(x)\int_0^\infty F(x,w(x)\lambda')\,d\lambda'\,d\mu(x)\\
+ &=\int_X\int_0^\infty F(x,\lambda)\,d\lambda\,d\mu(x).
+ \end{aligned}
+ \tag{LFT9.k}
+\]
+The nonnegative product integration justified in Section 1 applies throughout, so no finiteness assumption on these integrals is needed.
+
+The induced onto unitary on the full lifted relation spaces is
+\[
+ \begin{aligned}
+ V_w:\widetilde H_{\mu'}&\longrightarrow\widetilde H_\mu,\\
+ (V_w\eta')(y,x;\lambda)&=\eta'(y,x;\lambda/w(x)),\\
+ (V_w^{-1}\eta)(y,x;\lambda')&=\eta(y,x;w(x)\lambda').
+ \end{aligned}
+ \tag{LFT9.l}
+\]
+To verify it, sum the squared absolute values over the distinct \(y\in Gx\), then use \(d\lambda=w(x)\,d\lambda'\). The resulting integral is precisely the squared norm with base measure \(w(x)d\mu(x)\). The displayed inverse proves surjectivity. There is no extra square-root factor: the height substitution already accounts for the change in base measure.
+
+The target heights satisfy
+\[
+ \lambda_y=\delta(x,y)\lambda,\qquad
+ \lambda'_y=\delta'(x,y)\frac{\lambda}{w(x)}
+            =\frac{\lambda_y}{w(y)}.
+ \tag{LFT9.m}
+\]
+It follows on the full Hilbert spaces that
+\[
+ \begin{aligned}
+ V_w\widetilde\pi'(F')V_w^*&=\widetilde\pi(F'_w),
+       &F'_w(y,u)&=F'(y,u/w(y)),\\
+ V_w\widetilde u'_gV_w^*&=\widetilde u_g,
+       &V_wD'_sV_w^*&=D_s.
+ \end{aligned}
+ \tag{LFT9.n}
+\]
+The first identity is substitution using (LFT9.m). In the second, the permutation changes \(y\) but leaves the source \(x\) fixed. In the third, multiplication of \(\lambda\) by \(e^s\) commutes with division by \(w(x)\), and both dilation unitaries have the same factor \(e^{s/2}\). Composition with the Borel measure isomorphism takes all bounded measurable diagonal functions onto all such functions. The generator definitions of the two algebras therefore prove that \(\operatorname{Ad}V_w\) restricts to the normal onto isomorphism \(\Xi_w\) in (LFT9.c), with normal inverse. In particular
+\[
+ \Xi_w\theta'_s=\theta_s\Xi_w,\qquad
+ \Xi_w j_{\mu'}=j_\mu\beta_w.
+ \tag{LFT9.o}
+\]
+The second equality follows also by observing that a coefficient field is independent of height.
+
+### Entire traces, centers and core generators
+
+For every \(A'\in(N_{\mu'})_+\), the basepoint entry in (LFT9.c), followed by the same substitution, gives
+\[
+ \begin{aligned}
+ \tau_{\mathrm{bp},\mu}(\Xi_w(A'))
+ &=\int_X\int_0^\infty
+       \langle A'(x,\lambda/w(x))e_x,e_x\rangle\,d\lambda\,d\mu(x)\\
+ &=\int_X\int_0^\infty
+       \langle A'(x,\lambda')e_x,e_x\rangle\,d\lambda'\,d\mu'(x)\\
+ &=\tau_{\mathrm{bp},\mu'}(A'),\\
+ \tau_{\mathrm{core},\mu}(\Xi_w(A'))
+ &=\tau_{\mathrm{core},\mu'}(A').
+ \end{aligned}
+ \tag{LFT9.p}
+\]
+These are equalities on the entire positive cone, including infinite values. The final line uses the common factor \(1/(2\pi)\) proved in Section 5; no comparison of arbitrary weights from their diagonal restrictions is involved.
+
+By Section 2 the center is the invariant diagonal. The explicit center map is
+\[
+ F'(x,\lambda')\longmapsto F'(x,\lambda/w(x)).
+ \tag{LFT9.q}
+\]
+Conjugacy of the lifted actions proves that this sends invariant functions to invariant functions, and its inverse has the same property. Formula (LFT9.o) intertwines the restrictions of the dual action. Hence the associated flow, as an action on the full abelian center, is unchanged up to this specified normal isomorphism by replacing the base measure within its measure class. This conclusion does not require a pointwise quotient space for the lifted orbits.
+
+There is also a direct check on the crossed-product generators of Section 4. Denote the positive reciprocal-height generators by \(h_\mu\) and \(h_{\mu'}\). Their represented unitary groups are multiplication by \(\lambda_y^{-it}\) and \((\lambda'_y)^{-it}\). Thus
+\[
+ \Xi_w(h_{\mu'}^{it})
+   =j_\mu(\pi(w^{it}))h_\mu^{it}.
+ \tag{LFT9.r}
+\]
+For the unbounded positive generator, unitary transport has the precise meaning
+\[
+ V_wh_{\mu'}V_w^*=M_{\,w(y)/\lambda_y},\qquad
+ \mathcal D\!\left((V_wh_{\mu'}V_w^*)^z\right)
+ =\left\{\eta\in\widetilde H_\mu:
+   \int_{E\times\Lambda}
+     \left(\frac{w(y)}{\lambda_y}\right)^{2\operatorname{Re}z}
+     |\eta(y,x;\lambda)|^2\,d\nu_r(y,x)\,d\lambda<\infty\right\}.
+ \tag{LFT9.s}
+\]
+Here \(z\in\mathbb C\), and \(M\) denotes the maximal multiplication operator on the stated domain. This follows from Section 4's full multiplication domains under the onto unitary \(V_w\). It defines the product of the two positive commuting multiplication functions without assuming either factor bounded. At \(z=it\) the domain is the whole Hilbert space, giving (LFT9.r). The coordinate calculation therefore also records exactly how changing the diagonal weight changes the core generator while keeping the normalized core trace and dual action fixed.
+
+### Successive changes and an unbounded example
+
+If \(d\mu''=v\,d\mu'\), with \(0<v<\infty\) almost everywhere, then \(d\mu''=vw\,d\mu\). On a common invariant conull set,
+\[
+ C_wC_v=C_{wv},\qquad V_wV_v=V_{wv},\qquad
+ \Xi_w\Xi_v=\Xi_{wv}.
+ \tag{LFT9.t}
+\]
+The maps on the left have the successive source and target measures indicated by their definitions. For example the two height substitutions in the unitary give
+\(\lambda/(w(x)v(x))\). The inverse change is obtained using \(1/w\), and changing a Borel version of \(w\) on a null set changes none of the represented maps. Thus the identification is consistent under repeated reweighting.
+
+For a concrete case with neither \(w\) nor \(w^{-1}\) bounded, let \(G=\mathbb Z\) act on \(X=\mathbb Z\) by translations, let \(\mu\) be counting measure, and let \(w(n)=2^n\). Both \(\mu\) and \(\mu'\) are sigma-finite and equivalent. Their cocycles and lifted actions are
+\[
+ \delta(m,n)=1,\qquad \delta'(m,n)=2^{m-n},\qquad
+ \widetilde k(n,\lambda)=(n+k,\lambda),\qquad
+ \widetilde k'(n,\lambda')=(n+k,2^{-k}\lambda').
+ \tag{LFT9.u}
+\]
+The map \(C_w(n,\lambda')=(n,2^n\lambda')\) sends the last point to
+\((n+k,2^n\lambda')\), exactly the old lifted translate. If \(a'_{nn}(\lambda')\) is the nonnegative basepoint entry of any \(A'\in(N_{\mu'})_+\), trace preservation reads
+\[
+ \sum_{n\in\mathbb Z}\int_0^\infty
+       a'_{nn}(2^{-n}\lambda)\,d\lambda
+   =\sum_{n\in\mathbb Z}2^n
+       \int_0^\infty a'_{nn}(\lambda')\,d\lambda'.
+ \tag{LFT9.v}
+\]
+Each substitution is valid separately, and the nonnegative sum preserves equality even when it diverges. This example displays why the height must be multiplied by the density when passing from the new lift to the old one, and why no uniform bound on the density is needed.
+
 <a id="lft-reading"></a>
 ## Further reading and the two trace constructions
 
@@ -1089,4 +1301,4 @@ M. Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §2, Theorem 2.23 
 
 Two distinctions matter when comparing formulas. The basepoint trace integrates the diagonal coefficient at the chosen base point; integrating the ordinary trace of the whole countable fiber instead can give infinity on every nonzero positive element, as Section 7 proves. Also the countable orbit construction of REL applies to the lifted action of \(G\). For the additional continuous action, Section 6 specifies its continuous orbit coordinate, its Haar measure and its complete represented algebra. This supplies the precise continuous model and its double-crossing comparison rather than applying the countable-fiber definition to an uncountable orbit.
 
-The earlier programme lessons on [diagonal expectations and invariant measures](../../OA-ERGODIC/reader/diagonal-expectations-and-invariant-measures.html#2-when-diagonal-integration-is-a-trace) and relation kernels and modular coordinates give complementary proofs of the underlying trace and modular constructions. Their source-counting measure \(\nu_s\) is our \(\nu_r\). The [abstract normalized core](OA-FLOW-CORE.md#core-2) and [normal biduality](OA-FLOW-ND.md#nd-construction) explain how the measured model fits the general operator-algebraic theory.
+The earlier programme lessons on [diagonal expectations and invariant measures](../../OA-ERGODIC/reader/diagonal-expectations-and-invariant-measures.html#2-when-diagonal-integration-is-a-trace) and [relation kernels and modular coordinates](../../OA-ERGODIC/reader/relation-kernels-and-modular-coordinates.html#6-sigma-finite-bases-and-reduced-relations) give complementary proofs of the underlying trace and modular constructions. Their source-counting measure \(\nu_s\) is our \(\nu_r\). The [abstract normalized core](OA-FLOW-CORE.md#core-2) and [normal biduality](OA-FLOW-ND.md#nd-construction) explain how the measured model fits the general operator-algebraic theory.

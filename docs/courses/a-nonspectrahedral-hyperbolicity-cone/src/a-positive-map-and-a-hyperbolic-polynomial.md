@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-This lesson proves the first half of Theorem A of Hyperbolic polynomials and spectrahedral cones: the polynomial \(p\) defined there is hyperbolic with respect to \(e=(I_4,I_4,0)\). It also describes two slices of its closed hyperbolicity cone \(K\), which are what the last lesson uses, and proves Corollary B. The key is that \(\Phi_y\) is a *positive map*: it sends positive semidefinite matrices to positive semidefinite matrices, because the Choi–Lam form of [The Choi–Lam form](the-choi-lam-form.md) is nonnegative. The proofs follow OpenAI [OpenAI-NS, Sections 3 and 7].
+This lesson proves the first half of Theorem A of [Hyperbolic polynomials and spectrahedral cones](hyperbolic-polynomials-and-spectrahedral-cones.md): the polynomial \(p\) defined there is hyperbolic with respect to \(e=(I_4,I_4,0)\). It also describes two slices of its closed hyperbolicity cone \(K\), which are what the last lesson uses, and proves Corollary B. The key is that \(\Phi_y\) is a *positive map*: it sends positive semidefinite matrices to positive semidefinite matrices, because the Choi–Lam form of [The Choi–Lam form](the-choi-lam-form.md) is nonnegative. The proofs follow OpenAI [OpenAI-NS, Sections 3 and 7].
 
 ## 1. The positive map
 

@@ -27,7 +27,7 @@ $$
 and $\sigma\in\operatorname{Aut}(M)$ commutes with every member of
 $\mathscr A$ and fixes $M^\alpha$ pointwise.  Second countability follows from the original compact Hausdorff, faithful, separable-predual setting by the countable-coordinate argument in that lesson. The faithful normal state there makes every orthogonal family of nonzero range projections countable, so every full internal Hilbert space has a finite or countable basis.
 
-*Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
+*Original AI-written exposition and illustration sources: CC0-1.0 to the extent of rights held; existing component and font terms apply.*
 
 **Theorem.** Under these hypotheses there is a unique \(g\in G\) with \(\sigma=\alpha_g\). Equivalently, for the original homogeneous action, the automorphisms commuting with its full centralizer and fixing \(M^\alpha\) pointwise are exactly \(\alpha(G)\). Every \(\alpha_g\) has the two required properties by the definitions. The proof of the converse follows below. The intermediate arguments allow the smaller homogeneous symmetry group \(\mathscr A\) displayed above, which is the group needed after stabilization.
 

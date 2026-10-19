@@ -1,6 +1,6 @@
 # Derivative ideals under blowing up
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Programme text by Claude Opus 5.5 (Anthropic), with mathematical editing and reader preparation by GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 Differentiating a function lowers its order by one, so the derivative ideals of a marked ideal \((\mathcal I,m)\) come with markings \(m-1,m-2,\ldots\). This lesson computes how the transform of a derivative compares with the derivative of the transform under a blow-up of order \(\ge m\). The answer is an inclusion: transforming first and then differentiating gives at least as much as differentiating first. It is the basic estimate behind maximal contact, the going-up theorem and the tuning of ideals in the next lessons.
 

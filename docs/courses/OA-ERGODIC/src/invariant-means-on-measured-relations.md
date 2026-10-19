@@ -6,9 +6,9 @@
 
 An invariant mean on a relation averages a function over the class containing a point. Moving the point within its class should leave this averaging rule compatible with the move. The averaging operation need not be normal.
 
-This lesson proves that a countable measured relation admits such an operation exactly when it is an increasing union of finite measured relations. The difficult direction has three steps: approximate a mean by densities, cut a density into finite sets, and pack those sets into disjoint classes.
+This lesson proves that a countable measured relation admits such an operation exactly when it is an increasing union of finite measured relations. The finite-patch method is due to Connes–Feldman–Weiss, Sections 5–6, and is also presented in Takesaki XIII.4, pages 70–78. We prove it here with the two graph-counting measures explicit. Finite-class averages first give an exact error formula; the density, level-set and disjoint-packing arguments then produce the finite approximations. Quantitative finite tests and a nonsingular two-point model connect the construction to the averaging operators.
 
-Read [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md), [Groupoids and measured orbit relations](groupoids-and-measured-orbit-relations.md), [Finite orbit classes and matrix blocks](finite-orbit-classes-and-matrix-blocks.md), and [Means, Følner sets, and regular representations](means-folner-sets-and-regular-representations.md) first. The groupoid prerequisite proves the counting-measure and null-saturation equivalence and explains the different finite-stage conventions. We also use Radon–Nikodym theory, Hahn–Banach separation, and weak-star compactness. The one-to-one image theorem for standard Borel spaces is explained in [Polish spaces and standard Borel spaces](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/polish-spaces-and-standard-borel-spaces.html).
+Read [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md), [Groupoids and measured orbit relations](groupoids-and-measured-orbit-relations.md), [Finite orbit classes and matrix blocks](finite-orbit-classes-and-matrix-blocks.md), and [Means, Følner sets, and regular representations](means-folner-sets-and-regular-representations.md) first. The groupoid prerequisite proves the counting-measure and null-saturation equivalence and explains the different finite-stage conventions. We also use Radon–Nikodym theory, Hahn–Banach separation, and weak-star compactness. The one-to-one image theorem for standard Borel spaces is explained in Polish spaces and standard Borel spaces.
 
 Let \(R\subset X\times X\) be a nonsingular Borel relation with countable classes on a standard probability space \((X,\mu)\). Theorem 1.3 and Corollary 1.4 of the orbit prerequisite present it by a countable nonsingular Borel action. Thus the proof applies to every orbitally countable standard Borel measured principal groupoid. Ergodicity is unnecessary here. Sigma-finite spaces are reduced to this setting by replacing the measure with an equivalent probability. We count distinct points, rather than group elements.
 
@@ -49,18 +49,22 @@ almost everywhere on composable pairs. Enumerate the presenting group and discar
 Let \(\mathcal B=L^\infty(R,\nu_r)\) and \(\mathcal A=L^\infty(X,\mu)\). For a partial map \(\theta\), define
 
 \[
-(L_\theta f)(y,x)=
-\begin{cases}f(\theta^{-1}y,x),&y\in E,\\0,&y\notin E,\end{cases}
-\qquad
-(L_\theta a)(y)=\mathbf1_E(y)a(\theta^{-1}y).
+\begin{aligned}
+(L_\theta f)(y,x)&=
+\begin{cases}f(\theta^{-1}y,x),&y\in E,\\0,&y\notin E,\end{cases}\\
+(L_\theta a)(y)&=\mathbf1_E(y)a(\theta^{-1}y).
+\end{aligned}
 \tag{1.5}
 \]
 
 An **invariant mean on \(R\)** is a positive linear map \(P:\mathcal B\to\mathcal A\) satisfying
 
 \[
-P1=1,\qquad P((a\circ r)f)=a\,Pf,\qquad
-P L_\theta=L_\theta P.
+\begin{aligned}
+P1&=1,\\
+P((a\circ r)f)&=a\,Pf,\\
+P L_\theta&=L_\theta P.
+\end{aligned}
 \tag{1.6}
 \]
 
@@ -70,9 +74,11 @@ It has norm one and is onto, since \(P(a\circ r)=a\). Neither its definition nor
 
 *Proof.* If \(d\mu'=w\,d\mu\), where \(0<w<\infty\) almost everywhere, then
 \[
-d\nu_s'=(w\circ s)d\nu_s,\qquad
-d\nu_r'=(w\circ r)d\nu_r,\qquad
-\delta'(y,x)=\frac{w(y)}{w(x)}\delta(y,x).
+\begin{aligned}
+d\nu_s'&=(w\circ s)d\nu_s,\\
+d\nu_r'&=(w\circ r)d\nu_r,\\
+\delta'(y,x)&=\frac{w(y)}{w(x)}\delta(y,x).
+\end{aligned}
 \tag{1.7}
 \]
 The two \(L^\infty\) spaces, their order, the range-module action and the partial translations therefore have the same equivalence classes. Exactly the same map \(P\) satisfies (1.6). A conull invariant hyperfinite exhaustion is also unchanged.
@@ -103,8 +109,10 @@ Each graph evaluation is well-defined on \(\mathcal B\): a \(\nu_r\)-null functi
 
 For the full map \(y\mapsto sy\), reindexing gives
 \[
-\|Q_nL_sf-L_sQ_nf\|_\infty
-\leq \|f\|_\infty\sum_h|q_n(hs)-q_n(h)|.
+\begin{aligned}
+&\|Q_nL_sf-L_sQ_nf\|_\infty\\
+&\quad\leq \|f\|_\infty\sum_h|q_n(hs)-q_n(h)|.
+\end{aligned}
 \tag{2.2}
 \]
 
@@ -128,6 +136,49 @@ The exceptional indicators decrease to zero almost everywhere. Integration again
 
 The mean in (2.3) can be formed even when the class sizes are unbounded. No finite-dimensionality of \(L^\infty(X)\) is being asserted.
 
+**Proposition 2.3 (the exact error of a finite average).** Let \(S\subset R\) be a Borel equivalence relation on all of \(X\), with finite classes, and define \(Q_S\) by (2.3). For a nonsingular partial orbit map \(\theta:D\to E\), put
+
+\[
+\begin{aligned}
+B_\theta(S)&=\{x\in D:(\theta x,x)\notin S\},\\
+p_\theta(S)&=\mu(B_\theta(S)),\\
+q_\theta(S)&=\mu(\theta B_\theta(S)),\\
+\mathcal D_{\theta,S}&=Q_SL_\theta-L_\theta Q_S.
+\end{aligned}
+\tag{2.4}
+\]
+
+View the last operator as a map from \(L^\infty(R,\nu_r)\) to \(L^1(X,\mu)\). Its norm, and that of the inverse-map defect, are exactly
+
+\[
+\begin{aligned}
+\|\mathcal D_{\theta,S}\|_{\infty\to1}&=2q_\theta(S),\\
+\|\mathcal D_{\theta^{-1},S}\|_{\infty\to1}&=2p_\theta(S).
+\end{aligned}
+\tag{2.5}
+\]
+
+The same real-valued function attains these two norms:
+
+\[
+f_S(z,x)=2\mathbf1_S(z,x)-1,\qquad (z,x)\in R.
+\tag{2.6}
+\]
+
+*Proof.* Finite class selectors make \(Q_S\) measurable, and range counting makes it well-defined on null classes. Both terms of \(\mathcal D_{\theta,S}f\) vanish outside \(E\). At \(y\in E\), write \(z=\theta^{-1}y\). If \(y\;S\;z\), the two averages sum \(f(z,x)\) over the same finite class with the same denominator. Their difference is zero. Otherwise its absolute value is at most \(2\|f\|_\infty\). The exceptional range set is exactly \(\theta B_\theta(S)\), so integration proves the first upper bound in (2.5).
+
+For (2.6), \(Q_Sf_S(z)=1\) at every \(z\). When \(y\) and \(z\) lie in different \(S\)-classes, every \(x\;S\;y\) lies outside the class of \(z\); hence \(f_S(z,x)=-1\) throughout the first average. On the good set both averages equal one. Thus
+
+\[
+\mathcal D_{\theta,S}f_S
+=-2\mathbf1_{\theta B_\theta(S)}.
+\tag{2.7}
+\]
+
+The function \(f_S\) has essential supremum one, proving equality. Finally, the bad source set for \(\theta^{-1}\) is \(\theta B_\theta(S)\), and its image under \(\theta^{-1}\) is \(B_\theta(S)\). Apply the first identity to \(\theta^{-1}\); the same \(f_S\) gives equality. \(\square\)
+
+This formula needs no ergodicity or bound on the Radon–Nikodym derivative. Its two masses need not agree. Equation (1.3) identifies them as the two graph-counting measures, while (2.5) identifies which mass the chosen direction of translation tests.
+
 ## 3. Bounded sets and a packing lemma
 
 We call \(K\subset R\) **bounded** if both coordinate fibres have a uniform finite cardinality bound and, for some \(c<\infty\),
@@ -147,9 +198,10 @@ Each resulting map \(x\mapsto y_j(x)\) is at most \(M\)-to-one, where \(M\) boun
 
 **Lemma 3.2 (disjoint columns).** Suppose a Borel set \(L\subset R\) has uniformly bounded source and range fibres. Every positive-measure \(A\subset X\) contains a positive-measure Borel set \(B\) such that
 \[
-L_x\cap L_{x'}=\varnothing\quad
-(x,x'\in B,\;x\ne x'),\qquad
+\begin{gathered}
+L_x\cap L_{x'}=\varnothing\quad(x,x'\in B,\;x\ne x'),\\
 L_x=\{y:(y,x)\in L\}.
+\end{gathered}
 \tag{3.2}
 \]
 
@@ -199,14 +251,14 @@ Normal states are weak-star dense in the state space of \(\mathcal B\). Here is 
 \]
 has zero in its weak closure in the finite direct sum of preduals. Hahn–Banach makes its weak and norm closures agree.
 
-Identify a normal state with a probability density \(h\geq0\) in \(L^1(R,\nu_r)\). For any \(f\in\mathcal B\), change of variables gives
+Identify a normal state with a probability density \(h\geq0\) in \(L^1(R,\nu_r)\). For any \(f\in\mathcal B\), write \(F_i(y,x)=f(y,x)h(\theta_i y,x)\) for \(y\in D_i\). Its use at \(\theta_i^{-1}y\) is therefore defined for \(y\in E_i\). Change of variables gives
+
 \[
 \begin{aligned}
-\int_R(B_if)h\,d\nu_r
-&=\int_{E_i}j_{\theta_i}(y)
-  \sum_{x\sim y}f(\theta_i^{-1}y,x)h(y,x)\,d\mu(y)\\
-&=\int_{D_i}\sum_{x\sim y}
-  f(y,x)h(\theta_i y,x)\,d\mu(y).
+&\int_R(B_if)h\,d\nu_r\\
+&\quad=\int_{E_i}j_{\theta_i}(y)
+\sum_{x\sim y}F_i(\theta_i^{-1}y,x)\,d\mu(y)\\
+&\quad=\int_{D_i}\sum_{x\sim y}F_i(y,x)\,d\mu(y).
 \end{aligned}
 \tag{4.3a}
 \]
@@ -230,9 +282,10 @@ where
 \[
 \begin{aligned}
 w_a(x)&=\sum_{y\in F_x(a)}\delta(y,x),\\
+d_{i,a}(y,x)&=
+|\mathbf1_{F_x(a)}(\theta_i y)-\mathbf1_{F_x(a)}(y)|,\\
 \beta_a(x)&=\sum_i\sum_{y\in D_i,\;y\sim x}
-\delta(y,x)
-|\mathbf1_{F_x(a)}(\theta_i y)-\mathbf1_{F_x(a)}(y)|.
+\delta(y,x)d_{i,a}(y,x).
 \end{aligned}
 \tag{4.6}
 \]
@@ -301,9 +354,11 @@ The supremum is positive whenever \(A_n\) has positive measure, even if \(K|_{A_
 
 We claim \(A_\infty=\bigcap_nA_n\) is null. If it had positive measure, apply Lemma 4.1 inside \(A_\infty\) with error \(\eta/2\), obtaining a patch \(S_*\) on \(Y_*\) of positive measure. For this fixed patch,
 \[
-\nu_s\bigl((K|_{A_n}\cap\operatorname{Inc}(Y_*))\setminus S_*\bigr)
-\downarrow
+\begin{gathered}
+\nu_s\bigl((K|_{A_n}\cap\operatorname{Inc}(Y_*))\setminus S_*\bigr)\\
+\downarrow\\
 \nu_s\bigl((K|_{A_\infty}\cap\operatorname{Inc}(Y_*))\setminus S_*\bigr).
+\end{gathered}
 \]
 Continuity from above applies because \(K\) has finite \(\nu_s\)-measure. Thus \(Y_*,S_*\) is admissible in \(A_n\) with error \(\eta\) for all sufficiently large \(n\). Then \(a_n\geq\mu(Y_*)\), forcing infinitely many disjoint \(Y_n\)'s to have measure greater than \(\mu(Y_*)/2\). This is impossible in a probability space.
 
@@ -333,9 +388,11 @@ R_n=\bigcap_{k\geq n}S_k.
 \]
 Each \(R_n\) is a Borel equivalence relation with a class-size bound inherited from \(S_n\), and \(R_n\subset R_{n+1}\). For \(n\geq m\),
 \[
+\begin{aligned}
 \nu_s(K_m\setminus R_n)
-\leq\sum_{k\geq n}\nu_s(K_m\setminus S_k)
-\leq\sum_{k\geq n}2^{-k}\longrightarrow0.
+&\leq\sum_{k\geq n}\nu_s(K_m\setminus S_k)\\
+&\leq\sum_{k\geq n}2^{-k}\longrightarrow0.
+\end{aligned}
 \tag{6.2}
 \]
 Thus \(R\setminus\bigcup_nR_n\) is \(\nu_s\)-null.
@@ -375,12 +432,14 @@ The converse does not require a single generating transformation: the finite-cla
 
 **Example 6.4 (one relation, different arrow spaces).** Let \(X=\{0,1\}^{\mathbb N}\), with fair product probability \(\mu\), and put the least significant digit first. Define \(T\) by binary addition of one. A finite carry changes the initial ones to zeros and the first zero to one. At the all-one sequence define \(T(1,1,\ldots)=(0,0,\ldots)\); the inverse uses finite borrowing and sends the all-zero sequence to the all-one sequence.
 
-For each \(k\geq1\), the prefix integer
+For each \(k\geq1\), the prefix integer and its translation law are
 
 \[
- q_k(x)=\sum_{j=1}^k2^{j-1}x_j\pmod {2^k}
- \quad\text{satisfies}\quad q_k(T^nx)=q_k(x)+n\pmod {2^k}.
- \tag{6.4}
+\begin{aligned}
+q_k(x)&=\sum_{j=1}^k2^{j-1}x_j\pmod {2^k},\\
+q_k(T^nx)&=q_k(x)+n\pmod {2^k}.
+\end{aligned}
+\tag{6.4}
 \]
 
 These congruences prove that \(T\) and its inverse are continuous: each output prefix is determined by the input prefix of the same length. They also prove freeness of the integer action. If \(T^nx=x\), then \(2^k\) divides \(n\) for every \(k\), forcing \(n=0\). Every finite-prefix cylinder has mass \(2^{-k}\), and \(T\) permutes the length-\(k\) cylinders cyclically. Their generating algebra therefore shows that \(T\) preserves \(\mu\). The probability is atomless and has full support on this compact metrizable space.
@@ -390,9 +449,12 @@ Here is a direct ergodicity check. If \(A\) is invariant modulo null sets, the \
 Let \(X_*\) omit the eventually-zero and eventually-one sequences. This is an invariant conull Borel set: the omitted set is countable, each point is null, and addition and borrowing preserve its complement. On \(X_*\), [the odometer calculation](towers-and-odometer-orbits.md#4-binary-addition-and-its-domain) proves that the orbit relation \(R\) is exactly binary tail equivalence. In particular,
 
 \[
- R_k=\{(y,x)\in X_*^2:y_j=x_j\text{ for all }j>k\},
- \qquad |[x]_{R_k}|=2^k,\qquad R=\bigcup_kR_k.
- \tag{6.5}
+\begin{gathered}
+R_k=\{(y,x)\in X_*^2:\\
+y_j=x_j\text{ for all }j>k\},\\
+|[x]_{R_k}|=2^k,\qquad R=\bigcup_kR_k.
+\end{gathered}
+\tag{6.5}
 \]
 
 For completeness, if \(x,y\) agree after \(k\), their prefix difference \(n=\sum_{j=1}^k2^{j-1}(y_j-x_j)\) gives \(T^nx=y\): the longer-prefix congruences in (6.4) verify equality in every coordinate. Each iterate on \(X_*\) changes only finitely many digits, proving the converse. Thus the displayed exhaustion has the exact constant-size convention. Proposition 2.2 constructs its invariant mean by uniform finite-class averaging; this construction does not assume amenability of any larger presenting group.
@@ -427,9 +489,12 @@ This would be a left invariant group mean on \(F_2\), contradicting [the reduced
 *Proof.* Necessity is (6.6)–(6.7) with \(H\) in place of \(F_2\). For sufficiency, choose finitely supported Reiter probabilities \(p_i\) on \(H\). Let \(a_i\) be uniform on \(\{-i,\ldots,i\}\subset\mathbb Z\), and put \(q_i(n,h)=a_i(n)p_i(h)\). For fixed \(s=(m,b)\),
 
 \[
- \sum_{g\in\mathbb Z\times H}|q_i(sg)-q_i(g)|
- \leq\frac{2|m|}{2i+1}+\sum_{h\in H}|p_i(bh)-p_i(h)|\longrightarrow0.
- \tag{6.8}
+\begin{aligned}
+&\sum_{g\in\mathbb Z\times H}|q_i(sg)-q_i(g)|\\
+&\quad\leq\frac{2|m|}{2i+1}
++\sum_{h\in H}|p_i(bh)-p_i(h)|\longrightarrow0.
+\end{aligned}
+\tag{6.8}
 \]
 
 Here the discrete Reiter theorem is used only for the amenable group \(H\). Write an arrow as \((g,x)\), with range \(gx\), and define the measurable finite averages
@@ -442,9 +507,12 @@ Here the discrete Reiter theorem is used only for the amenable group \(H\). Writ
 Each evaluation is well-defined on null classes: a range-counting null function vanishes at every arrow of almost every range fibre. Each \(Q_i\) is positive, unital, and a range-module map. For the global bisection with label \(s\), reindexing \(g=st\) gives
 
 \[
- \|Q_i\Lambda_sF-L_sQ_iF\|_\infty
- \leq\|F\|_\infty\sum_g|q_i(sg)-q_i(g)|\longrightarrow0.
- \tag{6.10}
+\begin{aligned}
+&\|Q_i\Lambda_sF-L_sQ_iF\|_\infty\\
+&\quad\leq\|F\|_\infty\sum_g|q_i(sg)-q_i(g)|
+\longrightarrow0.
+\end{aligned}
+\tag{6.10}
 \]
 
 Take a pointwise weak-star cluster point in the product of the appropriate \(L^\infty(X)\) balls. Positivity, linearity, normalization and the range-module identity pass to this limit. Every \(L_s\) is weak-star continuous, so (6.10) gives global equivariance. A Borel bisection has a countable domain partition on which its group label is constant; its range pieces are disjoint. On each piece, the module identity localizes the already proved global equivariance. This proves equivariance for the entire bisection without exchanging the limit with an infinite sum. The resulting map is the required groupoid mean. \(\square\)
@@ -454,6 +522,50 @@ The finite averages in (6.9) ensure measurability before taking a weak-star limi
 ![Binary quotient, unchanged principal relation and product-kernel mean test](figures/odometer-isotropy-mean.svg)
 
 *Figure 2.* The upper eight vertices are the finite quotient \(q_3:X\to\mathbb Z/8\mathbb Z\), labelled with least significant digit first; its cyclic arrows describe prefix residues. Formula (6.4) proves that the actual integer action has no finite orbit. The middle panel compares the principal endpoint arrow with the distinct labels \((n,h,x)\) above it. The lower panel displays the complete positive-unital mean obstruction (6.6)–(6.7) and the exact replacement criterion of Proposition 6.5. All unit-space probabilities, class sizes, source/range domains and mean-map codomains are stated in Example 6.4 and Proposition 6.5. The source definition being illustrated is Takesaki XIII.4.8, including its nonprincipal interpretation; the free-group obstruction is proved in the discrete mean lesson.
+
+### Finite tests for an invariant mean
+
+**Theorem 6.6 (finite averaging tests).** Under the standing standard countable nonsingular hypotheses, the following are equivalent:
+
+1. The relation \(R\) has an invariant mean.
+2. For every finite family \(\mathcal F\) of nonsingular Borel partial orbit maps and every \(\varepsilon>0\), there is a full-unit Borel equivalence relation \(S\subset R\), with a uniform finite bound on its class sizes, such that
+
+\[
+\sum_{\theta\in\mathcal F}
+\bigl(p_\theta(S)+q_\theta(S)\bigr)<\varepsilon.
+\tag{6.11}
+\]
+
+3. For each such \(\mathcal F,\varepsilon\), a relation \(S\) with the same properties satisfies
+
+\[
+\sum_{\theta\in\mathcal F}\left(
+\|\mathcal D_{\theta,S}\|_{\infty\to1}
++\|\mathcal D_{\theta^{-1},S}\|_{\infty\to1}
+\right)<2\varepsilon.
+\tag{6.12}
+\]
+
+*Proof.* By Theorem 6.1, an invariant mean gives increasing uniformly finite relations \(R_n\) exhausting \(R\) on a conull invariant Borel set. Extend each stage by singleton classes on its complement. For any fixed \(\theta\), both its bad source sets and its bad range sets decrease to null sets. Their measures tend to zero by continuity from above. A common sufficiently large stage works for every member of a finite family, proving (6.11). Proposition 2.3 proves the equivalence of (6.11) and (6.12), with exactly the displayed constants.
+
+Here is a direct converse that also constructs the exhaustion. Enumerate the presenting group maps as \(g_1,g_2,\ldots\). Apply (6.11) to the first \(n\) maps and \(\varepsilon=2^{-n}\), obtaining \(S_n\). These choices need not be nested. Define \(R_n=\bigcap_{k\geq n}S_k\). They are increasing Borel equivalence relations, each with the finite class-size bound of \(S_n\). For \(n\geq j\),
+
+\[
+\begin{aligned}
+&\mu\{x:(g_jx,x)\notin R_n\}\\
+&\qquad\leq\sum_{k\geq n}p_{g_j}(S_k)
+\leq\sum_{k\geq n}2^{-k}=2^{1-n}.
+\end{aligned}
+\tag{6.13}
+\]
+
+The exceptional source set for \(g_j\) in \(R\setminus\bigcup_nR_n\) is therefore null. Take the union of these sets over all \(j\), then remove its countable group saturation. The remaining Borel set is invariant and conull by nonsingularity. On it, every orbit pair belongs to some \(R_n\). This is hyperfiniteness, so Proposition 2.2 supplies the invariant mean. \(\square\)
+
+The finite-test conclusion is a quantitative form of the measured amenability theorem of Connes–Feldman–Weiss. Its forward implication uses the finite-patch theorem proved above. The converse uses their summable-error and tail-intersection method. The exact norm computation in Proposition 2.3 makes the two boundary masses visible; it does not require the finite averages themselves to converge in operator norm with values in \(L^\infty(X)\).
+
+![Exact averaging defects for a nonsingular two-point partial map](figures/finite-mean-defects.svg)
+
+*Figure 3.* The full relation on two points has masses \(1/4,3/4\), and \(S\) is its diagonal. Rows of the witness matrix are range coordinates, columns are source coordinates. For the partial map \(0\mapsto1\), the range error has mass \(3/4\) and the source error mass \(1/4\). The two defect vectors are attained by the same function \(f_S\); integration with the stated point masses gives \(3/2\) and \(1/2\). These are exact \(L^\infty(R,\nu_r)\to L^1(X,\mu)\) norms. Proof locators: Proposition 2.3, Theorem 6.6 and Exercise 7.11. The underlying measured amenability theorem and finite-relation method are due to Connes–Feldman–Weiss.
 
 ## 7. Exercises with solutions
 
@@ -523,8 +635,44 @@ For \(C_4\), take \(p_i(h)=1/4\) and \(q_i(n,h)=\mathbf1_{\{|n|\leq i\}}/(4(2i+1
 
 For \(F_2\), any groupoid invariant mean would make (6.7) a positive unital left invariant functional on \(\ell^\infty(F_2)\): the isotropy bisections fix the units and act by left translation on the retained label. The reduced-word proof excludes this functional. The transformation groupoid is therefore nonamenable even though its principal relation is hyperfinite. Infinite label multiplicity by itself does not decide the answer: Proposition 6.5 applies, for example, to the amenable infinite kernel \(\mathbb Z\) as well.
 
+**Exercise 7.11 (one witness, two errors).** *Level 1.* Take the full relation on \(X=\{0,1\}\), masses \(\mu(0)=1/4\), \(\mu(1)=3/4\), the diagonal relation \(S\), and the partial map \(\theta:\{0\}\to\{1\}\). Compute the two norms in (2.5), and exhibit a single norm-one arrow function attaining both. Explain the role of the density.
+
+*Solution.* The only \(\theta\)-arrow lies outside \(S\). Thus \(B_\theta(S)=\{0\}\), \(p_\theta(S)=1/4\), and \(q_\theta(S)=3/4\). In range-row, source-column order the witness is
+
+\[
+\bigl(f_S(z,x)\bigr)_{z,x=0,1}
+=\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.
+\tag{7.3}
+\]
+
+The operator \(Q_S\) reads the diagonal. In the coordinate order \((0,1)\), formula (2.7) and its inverse give
+
+\[
+\begin{aligned}
+\mathcal D_{\theta,S}f_S&=(0,-2),\\
+\mathcal D_{\theta^{-1},S}f_S&=(-2,0).
+\end{aligned}
+\tag{7.4}
+\]
+
+Their \(L^1(\mu)\) norms are \(2(3/4)=3/2\) and \(2(1/4)=1/2\). Proposition 2.3 bounds the outputs of every norm-one input by those same numbers, proving that they are the operator norms. The pushforward density at the range point is \(j_\theta(1)=1/3\), and the graph modulus is \(\delta(1,0)=3\). This is consistent with the graph's range mass being three times its source mass. Nonsingularity alone gives no equality of the two errors.
+
+**Exercise 7.12 (small integral error, full supremum error).** *Level 2.* For the fair odometer on \(X_*\) in Example 6.4, use its finite relations \(R_k\) and the global map \(T\). Compute the norms of \(\mathcal D_{T,R_k}\) as maps into \(L^1(X_*,\mu)\) and into \(L^\infty(X_*,\mu)\). Does the second norm tend to zero?
+
+*Solution.* The bad source cylinder consists of sequences whose first \(k\) digits are all one. Its image is the cylinder whose first \(k\) digits are all zero. Both have fair mass \(2^{-k}\); deleting the countable exceptional orbits changes neither mass. Proposition 2.3 therefore gives
+
+\[
+\begin{aligned}
+\|\mathcal D_{T,R_k}\|_{\infty\to1}&=2^{1-k},\\
+\|\mathcal D_{T,R_k}\|_{\infty\to\infty}&=2.
+\end{aligned}
+\tag{7.5}
+\]
+
+For the second equality, both averages are contractions, giving an upper bound of two. The norm-one function \(f_{R_k}=2\mathbf1_{R_k}-1\) has defect \(-2\) throughout the bad range cylinder, which has positive measure at every finite stage. Its essential supremum is two, proving equality. Thus the integral operator errors tend to zero while the supremum operator errors remain two. This does not obstruct the weak-star limiting mean: the bounded defects are supported on decreasing sets of measure tending to zero, so integration against any fixed \(L^1\) test tends to zero, as in Proposition 2.2.
+
 ## References
 
 [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
 
-[Connes–Feldman–Weiss] A. Connes, J. Feldman, and B. Weiss, “An amenable equivalence relation is generated by a single transformation,” *Ergodic Theory and Dynamical Systems* 1 (1981), 431–450. [Publisher record](https://doi.org/10.1017/S014338570000136X). The measured amenability and finite-relation theorem is due to these authors.
+[Connes–Feldman–Weiss] A. Connes, J. Feldman, and B. Weiss, “An amenable equivalence relation is generated by a single transformation,” *Ergodic Theory and Dynamical Systems* 1 (1981), 431–450. [Publisher record](https://doi.org/10.1017/S014338570000136X). [Free publisher PDF](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B3AB853E37B8B8C77565C2AABC7E47F1/S014338570000136Xa.pdf/an-amenable-equivalence-relation-is-generated-by-a-single-transformation.pdf). Sections 3 and 5–6 contain the disjoint-column, finite-patch and tail-intersection method used here; Theorem 10 proves the measured amenability and hyperfiniteness equivalence. The theorem and this proof method are due to these authors.

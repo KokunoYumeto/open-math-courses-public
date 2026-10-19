@@ -1,6 +1,6 @@
 # Analytic inputs for the free-group projection argument
 
-*New original exposition: CC0-1.0 to the extent of rights held.*
+*Programme exposition: CC0-1.0 to the extent of rights held. Human-source terms remain separate.*
 
 This module proves the compact spectral, trace-class and holomorphic-calculus inputs of [Projections in the reduced free group algebra](../src/projections-in-the-reduced-free-group-algebra.md). Hilbert spaces may have arbitrary dimension. Inner products are linear in the second variable.
 

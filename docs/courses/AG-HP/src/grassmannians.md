@@ -155,8 +155,10 @@ On \(p_{12}=1\), write the quotient matrix as
 Its other coordinates are
 
 \[
-p_{13}=c,\quad p_{14}=d,\quad p_{23}=-a,
+\begin{gathered}
+p_{13}=c,\quad p_{14}=d,\quad p_{23}=-a,\\
 \quad p_{24}=-b,\quad p_{34}=ad-bc.
+\end{gathered}
 \]
 
 The quadratic equation eliminates \(p_{34}\), leaving the four free entries. Permuting indices gives the same verification on every chart, so this single quadric defines \(\operatorname{Gr}_2(k^4)\) over any field, including characteristic two. Its partial derivatives cannot all vanish at a projective point: they are the six coordinates, paired up with signs. Thus it is smooth.
@@ -262,7 +264,11 @@ The four coefficient polynomials \(F_i(A)\) must vanish. A change of quotient ba
 
 ## What this lesson does not prove
 
-We use smoothness of affine space and locality of smoothness, as in [Stacks, Tags 01V4–01V5], and properness of projective morphisms, as in [Stacks, Tag 01W7 and the projective-morphism section]. The valuation computation supplies its own extension argument. We do not compute the degree of the scheme of lines on a cubic or its reducedness here. We also do not claim that the quadratic relations generate the unsaturated homogeneous ideal as a graded ideal; Proposition 4.1 proves the equality of the projective closed subschemes, which is the assertion needed for the closed immersion.
+The affine-space charts are smooth over any base: a polynomial algebra is finitely presented, and a homomorphism into a quotient by a square-zero ideal lifts by choosing a lift of each of its finitely many variable images. Smoothness is local on source and target in the chart definition; Smooth morphisms, Proposition 1.2 proves the corresponding locality and permanence properties. Thus Theorem 1.1 uses no field or Noetherian restriction on the base.
+
+For finite locally free \(E\), the Plücker closed immersion makes the Grassmannian projective, hence proper. The exact programme proofs are Projective morphisms and Chow's lemma, Theorem 1.1 and Proper morphisms and valuative criteria, Theorems 3.1 and 4.1. The latter proves projective-space properness over every base using a coordinate of least valuation, including nondiscrete valuations. Section 2 above supplies its own Grassmannian extension and uniqueness argument. Proposition 5.1 separately represents quotients of arbitrary quasi-coherent modules; it does not assert smoothness or properness for them.
+
+These are the foundations corresponding to [Stacks, Tags 01V4–01V5 and 01W7]. We do not compute the degree of the scheme of lines on a cubic or its reducedness here. We also do not claim that the quadratic relations generate the unsaturated homogeneous ideal as a graded ideal; Proposition 4.1 proves the equality of the projective closed subschemes, which is the assertion needed for the closed immersion.
 
 ## References
 

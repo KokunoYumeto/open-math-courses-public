@@ -13,7 +13,7 @@ source=here/'real-and-complex-symplectic-function-normal-forms.md'
 text=source.read_text(encoding='utf-8')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 checks=[]
-prepared=subprocess.run([sys.executable,'-X','utf8',str(here/'check_algebra.py'),'--check-only'],capture_output=True,text=True,check=True)
+prepared=subprocess.run([sys.executable,'-B','-X','utf8',str(here/'check_algebra.py'),'--check-only'],capture_output=True,text=True,check=True)
 models=json.loads(prepared.stdout)
 assert models=={'bounded_checks':8,'all_passed':True,'source_documents_needed':False,'state_mutated':False}
 checks.append({'name':'eight complete finite preparation model families','passed':True,
@@ -152,6 +152,21 @@ for radius in [1,0.5,0.125,0.015625]:
     assert abs(contour-(1+2*radius*radius))<1e-12
 checks.append({'name':'Cauchy boundary normalization','passed':True,
     'scope':'Exact sampled degree-two trigonometric boundary flux tends to test value1 with error2r squared; distributional polar integral identity and Fourier bounds are proved in the lesson.'})
+
+
+# A purely imaginary principal-type symbol uses the new constant-unit branch.
+rotated_symbol=s.I*xi
+assert s.re(rotated_symbol)==0 and s.im(rotated_symbol)==xi
+real_field=s.zeros(6,1)
+imaginary_field=s.Matrix([1,0,0,0,0,0])
+radial_at_mark=s.Matrix([0,0,0,0,0,1])
+assert real_field==s.zeros(6,1)
+assert s.Matrix.hstack(imaginary_field,radial_at_mark).rank()==2
+unit=-s.I
+assert s.simplify(unit*rotated_symbol-xi)==0
+assert 'complex Hamilton field' in text and 'constant unit' in text
+checks.append({'name':'nonradial imaginary component and exact constant-unit selection','passed':True,
+ 'scope':'The symbol i xi1 has zero real field and a nonradial imaginary field at the positive last-momentum mark; multiplication by -i gives the exact real model with identity canonical coordinates.'})
 
 report={'schema':'bounded-function-normal-form-computational-check/v1','passed':all(r['passed'] for r in checks),
     'checks':checks,'lesson':source.name,'lesson_sha256':sha(source),'script_sha256':sha(Path(__file__)),

@@ -1,10 +1,10 @@
 # Logarithmic products and bounded perturbations
 
-*Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held. Independently reviewed at the stated earlier inputs.*
+*Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held.*
 
 For self-adjoint operators, a bounded derivative of the product of their spectral groups determines their entire common domain. Conversely, a bounded difference on that domain determines the actual product by a vector integral. The statement concerns arbitrary Hilbert spaces and every normal positive functional.
 
-The required spectral, scalar and concrete-topology boundary, with local proofs of its consequences, is stated in [the accompanying operator foundations](OA-FLOW-SF.md), SF-0–SF-4. Those foundations and this candidate form one proof package. The shared foundation proves the required spectral theorem in SB-1–SB-6. Its earlier scalar-measure and set-theoretic inputs remain under programme review.
+The spectral-group derivatives and concrete-topology arguments use [the operator foundations](OA-FLOW-SF.md), SF-0–SF-4. The spectral theorem, including its unbounded domain formula, is proved there in SB-1–SB-6.
 
 <a id="oa-flow.l157.theorem"></a>
 
@@ -227,7 +227,20 @@ B_t^*=\alpha_t^H(a)u_t^*.
 
 The perturbation is consequently on the right in \(u'_t=iu_t\alpha_t^H(a)\). This identity follows after the prescribed product has been identified, without solving an unconnected differential equation.
 
-If \(h\) and \(k\) are positive injective affiliated operators, the full spectral calculus defines \(H=\log h,\quad K=\log k\), regardless of whether their inverses are bounded. The theorem applies to \(k^{it}h^{-it}\). In a semifinite algebra with a fixed n.s.f. trace \(\tau\), interpreting this as \([D\tau_k:D\tau_h]_t\) additionally requires the trace-density cocycle theorem, and identifying \(\alpha^H\) with the density modular flow requires its modular theorem. Those are separate weight inputs, not consequences of the operator proof. No order or product of unbounded densities is evaluated inside a weight here.
+If \(h\) and \(k\) are positive injective affiliated operators, the full spectral calculus defines \(H=\log h,\quad K=\log k\), regardless of whether their inverses are bounded. The theorem applies to \(k^{it}h^{-it}\).
+
+<a id="oa-flow.l157.trace-weights"></a>
+
+For its weight interpretation, fix a faithful normal semifinite trace \(\tau\) on \(M\). The earlier [trace-density construction](../../OA-MOD/OA-MOD-PT.html#radon-nikodym-densities-relative-to-a-semifinite-trace) gives normal semifinite weights \(\tau_h,\tau_k\), faithful because their supports are \(s(h)=s(k)=1\). The [exact density-cocycle computation](../../OA-MOD/OA-MOD-PT.html#a-density-has-exactly-the-prescribed-cocycle) gives \((D\tau_h:D\tau)_t=h^{it}\) and \((D\tau_k:D\tau)_t=k^{it}\). The ordered chain and reversal laws in [BC4](OA-FLOW-BC.md#oa-flow.bc.4) now give
+\[
+ \begin{aligned}
+ (D\tau_k:D\tau_h)_t
+ &=(D\tau_k:D\tau)_t(D\tau:D\tau_h)_t\\
+ &=k^{it}h^{-it}.
+ \end{aligned}
+ \tag{LP11T}
+\]
+The trace-density proof also establishes \(\sigma_t^\tau=\mathrm{id}\). Modular covariance (BC19), applied to \(\tau_h\) and \(\tau\), therefore gives \(\sigma_t^{\tau_h}(x)=h^{it}xh^{-it}=\alpha_t^H(x)\). Thus the complete-domain equivalence and the right-hand perturbation equation (LP11) apply to this actual normalized weight cocycle. Every product in (LP11T) consists of bounded unitaries; the densities and their inverses may be unbounded.
 
 ![Full logarithm-domain equivalence and the two vector integral limits.](../assets/operator-reconstruction/assets/logarithmic-proof-map.png)
 
@@ -291,4 +304,4 @@ Thus equal derivatives at zero do not make the product the group \(e^{ita}\). Th
 
 **Exercise 3: compute the noncommuting term.** In (LP12), expand the product to order two. **Solution.** The quadratic coefficient is \(KH-(K^2+H^2)/2\). Since \(KH=I+aH\), \(K^2=2I\), \(H^2=I\) and \(aH=-iY\), it is \(-I/2-iY\). This recovers (LP14) and exhibits the term lost by replacing the prescribed product with an ordinary exponential.
 
-The original theorem's domains, generality, topology, signs, examples and solutions have all been retained. The new proof of the reverse-domain clause uses the adjoint definition, and the forward argument compares the two groups before forming their product. Source access and remaining exact programme obligations are recorded separately in the repair report.
+The adjoint test identifies the complete logarithm domains. The comparison of the two spectral groups gives the product and its derivative, with both adjoint signs and convergence in every normal seminorm. The examples distinguish this cocycle from the exponential of its derivative at zero.

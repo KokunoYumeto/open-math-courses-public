@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-Two pairs of moduli with the same displacement-to-traction map, as in The displacement-to-traction map, cannot differ to any finite order at the boundary. This lesson uses that fact, quoted from the literature, to extend both pairs to all of \(\mathbb R^3\) so that they coincide outside \(\Omega\). Then every elastic displacement for the first pair near \(\overline\Omega\) has a displacement for the second pair that agrees with it outside \(\Omega\): the two are glued along \(\partial\Omega\), where their boundary values and their tractions agree [OpenAI-EL, Section 2]. The difference of the two is supported in \(\overline\Omega\), and this is the only way in which equality of the boundary maps enters the rest of the proof.
+Two pairs of moduli with the same displacement-to-traction map, as in [The displacement-to-traction map](the-displacement-to-traction-map.md), cannot differ to any finite order at the boundary. This lesson uses that fact, quoted from the literature, to extend both pairs to all of \(\mathbb R^3\) so that they coincide outside \(\Omega\). Then every elastic displacement for the first pair near \(\overline\Omega\) has a displacement for the second pair that agrees with it outside \(\Omega\): the two are glued along \(\partial\Omega\), where their boundary values and their tractions agree [OpenAI-EL, Section 2]. The difference of the two is supported in \(\overline\Omega\), and this is the only way in which equality of the boundary maps enters the rest of the proof.
 
 - Boundary determination (Section 1).
 - Gluing functions with equal jets (Section 2).

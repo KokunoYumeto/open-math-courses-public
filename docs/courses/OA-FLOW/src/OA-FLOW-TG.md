@@ -438,7 +438,7 @@ The map \(D_r\to X\), \((c,u)\mapsto c+u\), is Borel and injective, since its ha
  (s_1,s_2,s_3,s_4)=(1/10,-2/25,3/50,-1/25).
  \tag{TG34}
 \]
-Take tile lengths \(y=(3a+2b,4a+b,2a+3b,5a+b)\) and define \(d_i=y_i-(s_i-s_{i-1})\), \(s_0=0\). Each chosen length is positive and tileable, and every prefix stays within \(1/5\). The last error is \(-1/25\). This verifies a concrete witness, not the two-frequency hypotheses for arbitrary allowed sets.
+For this numerical example take \(a=1,b=\sqrt2\), set \(y=(3a+2b,4a+b,2a+3b,5a+b)\), and define \(d_i=y_i-(s_i-s_{i-1})\), \(s_0=0\). Here \(y_i>5\) and \(|s_i-s_{i-1}|\le9/50\), so \(d_i>0\). Each chosen length is positive and tileable, and every prefix stays within \(1/5\). The last error is \(-1/25\). This verifies a concrete witness, not the two-frequency hypotheses for arbitrary allowed sets.
 
 **3. How can terminal errors remain stuck on a lattice?** At \(a=1,b=\sqrt2\), set \(d=100a+100b\), \(h=10a-7b>0\), and allow only \(d-h,d,d+h\). These are positive tileable lengths, but every terminal error for constant centers is an integer multiple of \(h\). It cannot have mesh smaller than \(h\) throughout a wide corridor. The frequency parts in this example do not each have the required mesh on both sides of the center. The abundance and second-lattice argument in Section 6 use exactly that missing hypothesis.
 

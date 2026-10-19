@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Power series and analytic lifting in Banach spaces</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L204.html">Previous lesson</a> · <a href="#3-local-analytic-lifting">Local analytic lifting</a> · <a href="src/power-series-and-analytic-lifting-in-banach-spaces.md">Editable source</a></nav><h1 id="power-series-and-analytic-lifting-in-banach-spaces">Power series and analytic lifting in Banach spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A differential equation can be solvable at every parameter without a
+preferred pointwise choice of solution depending holomorphically on that
+parameter. The first step toward an analytic family is local: expand the
+equation in a power series, lift one coefficient at a time, and prove that
+the lifted series converges. This works for an onto operator between
+Banach spaces even when no bounded linear right inverse has been given.</p>
+<p>We first prove the Cauchy estimates needed to control that construction.
+We also develop the free Banach spaces that let us lift whole operators,
+rather than one vector at a time. These spaces will later provide local
+presentations of kernels.</p>
+<p>Read <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>,
+Lemmas 1.1 and 1.2, for scalar Cauchy estimates and limits, and
+<a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>,
+Sections 5 and 8, for complex Hahn–Banach and the open-mapping theorem.
+Basic references are these internal foundations, Lempert and Patyi [LP],
+and Mantlik [M]. All lifting and convergence arguments used here are
+proved below.</p>
+<h2 id="1-cauchy-formulas-with-a-banach-target">1. Cauchy formulas with a Banach target</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(E\)">\(E\)</span> be a complex Banach space. A function from an open set in
+<span class="math" data-index="1" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> to <span class="math" data-index="2" data-tex="\(E\)">\(E\)</span> is holomorphic if it is complex Fréchet
+differentiable locally. Operator-valued holomorphy always uses the
+operator norm.</p>
+<p>A continuous <span class="math" data-index="3" data-tex="\(E\)">\(E\)</span>-valued function on a compact rectangle has a
+norm-convergent Riemann integral. Uniform continuity makes its Riemann
+sums Cauchy, and completeness supplies their limit. The triangle
+inequality passes to the limit, giving</p>
+<span class="math math-display" id="learner-eq-1.1" data-index="4" data-tex="\[
+                         \left\|\int h\right\|\le\int\|h\|.
+ \tag{1.1}
+\]">\[
+                         \left\|\int h\right\|\le\int\|h\|.
+ \tag{1.1}
+\]</span>
+<p>Every bounded linear map commutes with this integral, first on the
+finite sums and then on their limit. Parametrizing circles gives the
+same construction on a product of boundary circles.</p>
+<p><strong>Theorem 1.1 (Cauchy estimates and limits).</strong> Suppose that <span class="math" data-index="5" data-tex="\(h\)">\(h\)</span> is
+holomorphic on a neighborhood of the closed polydisc
+<span class="math" data-index="6" data-tex="\(\overline{D_R(a)}\)">\(\overline{D_R(a)}\)</span>, where all <span class="math" data-index="7" data-tex="\(R_j&gt;0\)">\(R_j&gt;0\)</span>. Then</p>
+<span class="math math-display" id="learner-eq-1.2" data-index="8" data-tex="\[
+ h(z)=\frac1{(2\pi i)^d}
+       \int_{|\zeta_j-a_j|=R_j}
+          \frac{h(\zeta)}{\prod_{j=1}^d(\zeta_j-z_j)}
+                          \,d\zeta_1\cdots d\zeta_d
+ \tag{1.2}
+\]">\[
+ h(z)=\frac1{(2\pi i)^d}
+       \int_{|\zeta_j-a_j|=R_j}
+          \frac{h(\zeta)}{\prod_{j=1}^d(\zeta_j-z_j)}
+                          \,d\zeta_1\cdots d\zeta_d
+ \tag{1.2}
+\]</span>
+<p>inside that polydisc. In particular it has a norm-convergent expansion</p>
+<span class="math math-display" id="learner-eq-1.3" data-index="9" data-tex="\[
+ h(z)=\sum_{\alpha\in\mathbb N^d}c_\alpha(z-a)^\alpha,\qquad
+ \|c_\alpha\|\le M R^{-\alpha},\qquad
+ M=\sup_{|\zeta_j-a_j|=R_j}\|h(\zeta)\|.
+ \tag{1.3}
+\]">\[
+ h(z)=\sum_{\alpha\in\mathbb N^d}c_\alpha(z-a)^\alpha,\qquad
+ \|c_\alpha\|\le M R^{-\alpha},\qquad
+ M=\sup_{|\zeta_j-a_j|=R_j}\|h(\zeta)\|.
+ \tag{1.3}
+\]</span>
+<p>If a sequence of holomorphic functions into <span class="math" data-index="10" data-tex="\(E\)">\(E\)</span> converges uniformly
+on compact subsets in norm, its limit is holomorphic and every fixed
+derivative converges uniformly on compact subsets.</p>
+<p><strong>Proof.</strong> A bounded complex-linear functional on <span class="math" data-index="11" data-tex="\(E\)">\(E\)</span>, composed with
+<span class="math" data-index="12" data-tex="\(h\)">\(h\)</span>, gives a scalar holomorphic function. Apply the scalar Cauchy
+formula in each variable successively. The functional commutes with
+the circle integrals. Complex Hahn–Banach separates vectors, so the
+scalar identities for all such functionals imply the vector identity
+(1.2).</p>
+<p>On a smaller closed polydisc, with radii <span class="math" data-index="13" data-tex="\(r_j&lt;R_j\)">\(r_j&lt;R_j\)</span>, expand each
+Cauchy denominator geometrically. These expansions converge uniformly
+on the circles of integration. Termwise integration is justified by
+(1.1). It gives (1.3), with</p>
+<span class="math math-display" id="learner-eq-1.4" data-index="14" data-tex="\[
+           \sum_\alpha\|c_\alpha\|r^\alpha
+                       \le M\prod_{j=1}^d(1-r_j/R_j)^{-1}&lt;\infty.
+ \tag{1.4}
+\]">\[
+           \sum_\alpha\|c_\alpha\|r^\alpha
+                       \le M\prod_{j=1}^d(1-r_j/R_j)^{-1}&lt;\infty.
+ \tag{1.4}
+\]</span>
+<p>Every differentiated series is uniformly norm-convergent on a
+further smaller polydisc, since the corresponding differentiated
+geometric series converges there. It follows by difference quotients
+that the represented function is holomorphic and that these are its
+derivatives.</p>
+<p>Now suppose <span class="math" data-index="15" data-tex="\(h_n\)">\(h_n\)</span> converges locally uniformly to <span class="math" data-index="16" data-tex="\(h\)">\(h\)</span>. Completeness
+and local uniform convergence make <span class="math" data-index="17" data-tex="\(h\)">\(h\)</span> continuous. Pass the uniform
+limit on the boundary circles through (1.2). The resulting formula
+for <span class="math" data-index="18" data-tex="\(h\)">\(h\)</span>, expanded as above, proves holomorphy. Differentiating its
+Cauchy kernel and applying (1.1) to <span class="math" data-index="19" data-tex="\(h_n-h\)">\(h_n-h\)</span> proves uniform
+convergence of every fixed derivative on a smaller polydisc.
+A compact set has a finite covering by such smaller polydiscs,
+which proves the final assertion. <span class="math" data-index="20" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Neither compactness of bounded sets in <span class="math" data-index="21" data-tex="\(E\)">\(E\)</span> nor a vector-valued
+Montel theorem was used. The completeness needed here is norm
+completeness.</p>
+<h2 id="2-free-banach-spaces-and-bounded-columns">2. Free Banach spaces and bounded columns</h2>
+<p>For an arbitrary set <span class="math" data-index="22" data-tex="\(I\)">\(I\)</span>, define</p>
+<span class="math math-display" id="learner-eq-2.1" data-index="23" data-tex="\[
+ \ell^1(I)=\left\{u=(u_i):
+    \|u\|_1:=\sup_{J\subset I,\ J\text{ finite}}
+                         \sum_{i\in J}|u_i|&lt;\infty\right\}.
+ \tag{2.1}
+\]">\[
+ \ell^1(I)=\left\{u=(u_i):
+    \|u\|_1:=\sup_{J\subset I,\ J\text{ finite}}
+                         \sum_{i\in J}|u_i|&lt;\infty\right\}.
+ \tag{2.1}
+\]</span>
+<p>Every such family has countable support. Indeed
+<span class="math" data-index="24" data-tex="\(\{i:|u_i|\ge1/m\}\)">\(\{i:|u_i|\ge1/m\}\)</span> is finite for every positive integer <span class="math" data-index="25" data-tex="\(m\)">\(m\)</span>;
+otherwise its finite sums would be unbounded. Every nonzero
+coordinate belongs to one of these sets. The norm is therefore
+the usual absolutely convergent sum over this countable support.</p>
+<p>The space is Banach. To see this, let <span class="math" data-index="26" data-tex="\(u^{(n)}\)">\(u^{(n)}\)</span> be norm-Cauchy.
+Each coordinate has a limit <span class="math" data-index="27" data-tex="\(u_i\)">\(u_i\)</span>. Each finite sum of <span class="math" data-index="28" data-tex="\(|u_i|\)">\(|u_i|\)</span>
+is bounded by the common bound on <span class="math" data-index="29" data-tex="\(\|u^{(n)}\|_1\)">\(\|u^{(n)}\|_1\)</span>, so <span class="math" data-index="30" data-tex="\(u\)">\(u\)</span>
+belongs to the space. Given a Cauchy bound
+<span class="math" data-index="31" data-tex="\(\|u^{(n)}-u^{(m)}\|_1\le\varepsilon\)">\(\|u^{(n)}-u^{(m)}\|_1\le\varepsilon\)</span> for <span class="math" data-index="32" data-tex="\(m,n\ge N\)">\(m,n\ge N\)</span>,
+pass <span class="math" data-index="33" data-tex="\(m\)">\(m\)</span> to infinity on each finite set of coordinates and
+then take the supremum. This gives
+<span class="math" data-index="34" data-tex="\(\|u^{(n)}-u\|_1\le\varepsilon\)">\(\|u^{(n)}-u\|_1\le\varepsilon\)</span>.
+Finite-support families are dense by the tails of their absolutely
+convergent sums.</p>
+<p><strong>Lemma 2.1 (bounded columns).</strong> A family <span class="math" data-index="35" data-tex="\(v_i\in E\)">\(v_i\in E\)</span> with
+<span class="math" data-index="36" data-tex="\(\sup_i\|v_i\|&lt;\infty\)">\(\sup_i\|v_i\|&lt;\infty\)</span> defines a unique bounded operator</p>
+<span class="math math-display" id="learner-eq-2.2" data-index="37" data-tex="\[
+ V:\ell^1(I)\longrightarrow E,\qquad
+ Vu=\sum_i u_i v_i,\qquad
+                      \|V\|=\sup_i\|v_i\|.
+ \tag{2.2}
+\]">\[
+ V:\ell^1(I)\longrightarrow E,\qquad
+ Vu=\sum_i u_i v_i,\qquad
+                      \|V\|=\sup_i\|v_i\|.
+ \tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Countable support and completeness give the absolutely
+convergent sum. The triangle inequality gives the upper norm
+bound. Evaluation on each coordinate vector <span class="math" data-index="38" data-tex="\(e_i\)">\(e_i\)</span> gives the
+reverse bound. Density of finite-support families proves
+uniqueness. <span class="math" data-index="39" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An onto bounded operator <span class="math" data-index="40" data-tex="\(A:Z\to W\)">\(A:Z\to W\)</span> between Banach spaces has
+a finite preimage constant <span class="math" data-index="41" data-tex="\(C_A\)">\(C_A\)</span>: every <span class="math" data-index="42" data-tex="\(w\in W\)">\(w\in W\)</span> has some
+<span class="math" data-index="43" data-tex="\(z\in Z\)">\(z\in Z\)</span> with</p>
+<span class="math math-display" id="learner-eq-2.3" data-index="44" data-tex="\[
+                          Az=w,\qquad \|z\|\le C_A\|w\|.
+ \tag{2.3}
+\]">\[
+                          Az=w,\qquad \|z\|\le C_A\|w\|.
+ \tag{2.3}
+\]</span>
+<p>This is the open-mapping theorem. Its unit-ball image contains
+a ball of some positive radius; rescale a slightly smaller
+ball to get the displayed non-strict inequality. Choose
+zero when <span class="math" data-index="45" data-tex="\(w=0\)">\(w=0\)</span>. No linearity of these individual choices
+is asserted.</p>
+<p><strong>Theorem 2.2 (lifting an operator from a free space).</strong>
+For an onto <span class="math" data-index="46" data-tex="\(A:Z\to W\)">\(A:Z\to W\)</span> as above and a bounded
+<span class="math" data-index="47" data-tex="\(R:\ell^1(I)\to W\)">\(R:\ell^1(I)\to W\)</span>, there is a bounded
+<span class="math" data-index="48" data-tex="\(S:\ell^1(I)\to Z\)">\(S:\ell^1(I)\to Z\)</span> satisfying</p>
+<span class="math math-display" id="learner-eq-2.4" data-index="49" data-tex="\[
+                           AS=R,\qquad \|S\|\le C_A\|R\|.
+ \tag{2.4}
+\]">\[
+                           AS=R,\qquad \|S\|\le C_A\|R\|.
+ \tag{2.4}
+\]</span>
+<p><strong>Proof.</strong> Lift each column <span class="math" data-index="50" data-tex="\(Re_i\)">\(Re_i\)</span> by (2.3), choosing a column
+<span class="math" data-index="51" data-tex="\(s_i\)">\(s_i\)</span> with norm at most <span class="math" data-index="52" data-tex="\(C_A\|R\|\)">\(C_A\|R\|\)</span>. Lemma 2.1 gives a
+bounded operator <span class="math" data-index="53" data-tex="\(S\)">\(S\)</span> with these columns. The equation holds
+on coordinate vectors, then on finite sums, and then everywhere
+by density and continuity. <span class="math" data-index="54" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This constructs a linear lift of this particular operator <span class="math" data-index="55" data-tex="\(R\)">\(R\)</span>
+whose domain is free. It does not construct a linear right
+inverse <span class="math" data-index="56" data-tex="\(W\to Z\)">\(W\to Z\)</span>.</p>
+<p>Every Banach space <span class="math" data-index="57" data-tex="\(K\)">\(K\)</span> has a canonical quotient from a free
+space. For <span class="math" data-index="58" data-tex="\(K\ne0\)">\(K\ne0\)</span>, let <span class="math" data-index="59" data-tex="\(S_K=\{s\in K:\|s\|=1\}\)">\(S_K=\{s\in K:\|s\|=1\}\)</span> and set</p>
+<span class="math math-display" id="learner-eq-2.5" data-index="60" data-tex="\[
+                   Q_K:\ell^1(S_K)\longrightarrow K,\qquad
+                         Q_K e_s=s.
+ \tag{2.5}
+\]">\[
+                   Q_K:\ell^1(S_K)\longrightarrow K,\qquad
+                         Q_K e_s=s.
+ \tag{2.5}
+\]</span>
+<p>Lemma 2.1 makes its norm one. A nonzero <span class="math" data-index="61" data-tex="\(k\in K\)">\(k\in K\)</span> has the
+preimage <span class="math" data-index="62" data-tex="\(\|k\|e_{k/\|k\|}\)">\(\|k\|e_{k/\|k\|}\)</span>, of exactly its norm.
+For <span class="math" data-index="63" data-tex="\(K=0\)">\(K=0\)</span>, use the empty index set and the zero map;
+the same preimage estimate holds.</p>
+<p>Free spaces are also preserved by <span class="math" data-index="64" data-tex="\(\ell^1\)">\(\ell^1\)</span>-sums:</p>
+<span class="math math-display" id="learner-eq-2.6" data-index="65" data-tex="\[
+             \bigoplus_j^{\ell^1}\ell^1(I_j)
+                       \cong \ell^1\!\left(\coprod_j I_j\right).
+ \tag{2.6}
+\]">\[
+             \bigoplus_j^{\ell^1}\ell^1(I_j)
+                       \cong \ell^1\!\left(\coprod_j I_j\right).
+ \tag{2.6}
+\]</span>
+<p>Regrouping the coordinates preserves the same nonnegative
+absolute sum in both directions, giving the isometry.
+This includes finite sums and countable sums.</p>
+<h2 id="3-local-analytic-lifting">3. Local analytic lifting</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-index="66" data-tex="\(X,Y\)">\(X,Y\)</span> be complex Banach spaces,
+<span class="math" data-index="67" data-tex="\(T:U\to\mathcal L(X,Y)\)">\(T:U\to\mathcal L(X,Y)\)</span> norm-holomorphic and
+<span class="math" data-index="68" data-tex="\(g:U\to Y\)">\(g:U\to Y\)</span> holomorphic near <span class="math" data-index="69" data-tex="\(0\in\mathbb C^d\)">\(0\in\mathbb C^d\)</span>.
+If <span class="math" data-index="70" data-tex="\(T(0)\)">\(T(0)\)</span> is onto, then on a neighborhood of zero there is
+a holomorphic <span class="math" data-index="71" data-tex="\(f\)">\(f\)</span> such that</p>
+<span class="math math-display" id="learner-eq-3.1" data-index="72" data-tex="\[
+                                  T(z)f(z)=g(z).
+ \tag{3.1}
+\]">\[
+                                  T(z)f(z)=g(z).
+ \tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-index="73" data-tex="\(C\)">\(C\)</span> be a preimage constant for <span class="math" data-index="74" data-tex="\(T(0)\)">\(T(0)\)</span>.
+Theorem 1.1 gives norm-convergent expansions</p>
+<span class="math math-display" id="learner-eq-3.2" data-index="75" data-tex="\[
+             T(z)=\sum_\alpha T_\alpha z^\alpha,\qquad
+             g(z)=\sum_\alpha g_\alpha z^\alpha,\qquad
+                             T_0=T(0).
+ \tag{3.2}
+\]">\[
+             T(z)=\sum_\alpha T_\alpha z^\alpha,\qquad
+             g(z)=\sum_\alpha g_\alpha z^\alpha,\qquad
+                             T_0=T(0).
+ \tag{3.2}
+\]</span>
+<p>Choose a positive polyradius <span class="math" data-index="76" data-tex="\(r\)">\(r\)</span> so small that</p>
+<span class="math math-display" id="learner-eq-3.3" data-index="77" data-tex="\[
+ G(r):=\sum_\alpha\|g_\alpha\|r^\alpha&lt;\infty,\qquad
+             \theta:=C\sum_{\beta\ne0}\|T_\beta\|r^\beta&lt;1.
+ \tag{3.3}
+\]">\[
+ G(r):=\sum_\alpha\|g_\alpha\|r^\alpha&lt;\infty,\qquad
+             \theta:=C\sum_{\beta\ne0}\|T_\beta\|r^\beta&lt;1.
+ \tag{3.3}
+\]</span>
+<p>The Cauchy estimate (1.3) bounds these coefficient series on
+every strictly smaller polydisc than their original disc of
+expansion. The nonconstant coefficient sum tends to zero
+as all radii tend to zero, so (3.3) is possible.</p>
+<p>In increasing total degree choose <span class="math" data-index="78" data-tex="\(f_\alpha\)">\(f_\alpha\)</span> by solving</p>
+<span class="math math-display" id="learner-eq-3.4" data-index="79" data-tex="\[
+ T_0f_\alpha=
+      g_\alpha-\sum_{0&lt;\beta\le\alpha}T_\beta f_{\alpha-\beta},
+ \qquad
+ \|f_\alpha\|\le C\left(\|g_\alpha\|
+        +\sum_{0&lt;\beta\le\alpha}\|T_\beta\|\|f_{\alpha-\beta}\|\right).
+ \tag{3.4}
+\]">\[
+ T_0f_\alpha=
+      g_\alpha-\sum_{0&lt;\beta\le\alpha}T_\beta f_{\alpha-\beta},
+ \qquad
+ \|f_\alpha\|\le C\left(\|g_\alpha\|
+        +\sum_{0&lt;\beta\le\alpha}\|T_\beta\|\|f_{\alpha-\beta}\|\right).
+ \tag{3.4}
+\]</span>
+<p>The degree-zero sum is empty. Every term in each higher-degree
+sum was already chosen. There are finitely many multi-indices
+in each degree, so this recursion is well-defined using
+only the individual preimages (2.3).</p>
+<p>Set <span class="math" data-index="80" data-tex="\(F_N=\sum_{|\alpha|\le N}\|f_\alpha\|r^\alpha\)">\(F_N=\sum_{|\alpha|\le N}\|f_\alpha\|r^\alpha\)</span>
+and <span class="math" data-index="81" data-tex="\(F_{-1}=0\)">\(F_{-1}=0\)</span>. Summing (3.4), and enlarging the
+nonnegative convolution sum, gives</p>
+<span class="math math-display" id="learner-eq-3.5" data-index="82" data-tex="\[
+                 F_N\le CG(r)+\theta F_{N-1}
+                            \le \frac{CG(r)}{1-\theta}.
+ \tag{3.5}
+\]">\[
+                 F_N\le CG(r)+\theta F_{N-1}
+                            \le \frac{CG(r)}{1-\theta}.
+ \tag{3.5}
+\]</span>
+<p>The last inequality follows inductively from the geometric
+sum. Hence <span class="math" data-index="83" data-tex="\(\sum f_\alpha z^\alpha\)">\(\sum f_\alpha z^\alpha\)</span> converges absolutely
+and uniformly in norm on the closed polydisc of radius <span class="math" data-index="84" data-tex="\(r\)">\(r\)</span>.
+Its partial sums are holomorphic polynomials, so
+Theorem 1.1 proves holomorphy in the interior.
+Absolute convergence justifies its Cauchy product with
+the series for <span class="math" data-index="85" data-tex="\(T\)">\(T\)</span>. Equation (3.4) makes each coefficient
+of that product equal <span class="math" data-index="86" data-tex="\(g_\alpha\)">\(g_\alpha\)</span>. This proves (3.1).
+<span class="math" data-index="87" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction does not require a complemented kernel.
+It chooses coefficients separately and obtains holomorphy
+from the convergence estimate.</p>
+<p><strong>Corollary 3.2 (uniform neighborhood for onto operators).</strong>
+After shrinking <span class="math" data-index="88" data-tex="\(U\)">\(U\)</span>, every <span class="math" data-index="89" data-tex="\(T(z)\)">\(T(z)\)</span> is onto and has
+a common finite preimage constant.</p>
+<p><strong>Proof.</strong> Shrink until <span class="math" data-index="90" data-tex="\(C\|T(z)-T_0\|\le\eta&lt;1\)">\(C\|T(z)-T_0\|\le\eta&lt;1\)</span>.
+Given <span class="math" data-index="91" data-tex="\(y\)">\(y\)</span>, lift it through <span class="math" data-index="92" data-tex="\(T_0\)">\(T_0\)</span> to <span class="math" data-index="93" data-tex="\(x_0\)">\(x_0\)</span> with
+<span class="math" data-index="94" data-tex="\(\|x_0\|\le C\|y\|\)">\(\|x_0\|\le C\|y\|\)</span>. Its residual is
+<span class="math" data-index="95" data-tex="\(y-T(z)x_0=(T_0-T(z))x_0\)">\(y-T(z)x_0=(T_0-T(z))x_0\)</span>, of norm at most
+<span class="math" data-index="96" data-tex="\(\eta\|y\|\)">\(\eta\|y\|\)</span>. Lift that residual through <span class="math" data-index="97" data-tex="\(T_0\)">\(T_0\)</span>,
+and continue. At the <span class="math" data-index="98" data-tex="\(j\)">\(j\)</span>-th step the chosen vector
+has norm at most <span class="math" data-index="99" data-tex="\(C\eta^j\|y\|\)">\(C\eta^j\|y\|\)</span>.
+Their norm-convergent sum <span class="math" data-index="100" data-tex="\(x\)">\(x\)</span> satisfies</p>
+<span class="math math-display" id="learner-eq-3.6" data-index="101" data-tex="\[
+                   T(z)x=y,\qquad
+                   \|x\|\le \frac{C}{1-\eta}\|y\|.
+ \tag{3.6}
+\]">\[
+                   T(z)x=y,\qquad
+                   \|x\|\le \frac{C}{1-\eta}\|y\|.
+ \tag{3.6}
+\]</span>
+<p>Indeed the residuals tend to zero and the bounded
+operator <span class="math" data-index="102" data-tex="\(T(z)\)">\(T(z)\)</span> commutes with the convergent sum.
+This is a uniform existence estimate, without a
+claim that the choices in this argument are analytic.
+<span class="math" data-index="103" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The analytic homogeneous spaces also have a local description by free generators and relations. <span class="unlinked">Free resolutions for analytic operator kernels</span> constructs arbitrary finite free presentations of the varying kernel in Theorems 3.1 and 4.1, with operator-norm holomorphic lifting for every free parameter space.</p>
+<h2 id="4-examples">4. Examples</h2>
+<p><strong>Example 4.1 (a sharp scalar majorant).</strong>
+For <span class="math" data-index="104" data-tex="\(T(z)=1-z\)">\(T(z)=1-z\)</span> and <span class="math" data-index="105" data-tex="\(g(z)=1\)">\(g(z)=1\)</span>, the recursion has
+<span class="math" data-index="106" data-tex="\(f_n=1\)">\(f_n=1\)</span>. Thus <span class="math" data-index="107" data-tex="\(f(z)=\sum_{n\ge0}z^n=(1-z)^{-1}\)">\(f(z)=\sum_{n\ge0}z^n=(1-z)^{-1}\)</span>
+on <span class="math" data-index="108" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>. Here <span class="math" data-index="109" data-tex="\(C=1,\theta=r,G(r)=1\)">\(C=1,\theta=r,G(r)=1\)</span>, and
+(3.5) is the exact coefficient-norm sum
+<span class="math" data-index="110" data-tex="\(\sum r^n=(1-r)^{-1}\)">\(\sum r^n=(1-r)^{-1}\)</span>.
+The pole at <span class="math" data-index="111" data-tex="\(1\)">\(1\)</span> prevents extending this solution
+holomorphically through that point. Onto solvability
+at the original parameter is a local hypothesis.</p>
+<p><strong>Example 4.2 (an infinite-dimensional analytic solution).</strong>
+On <span class="math" data-index="112" data-tex="\(\ell^1(\mathbb N_0)\)">\(\ell^1(\mathbb N_0)\)</span>, let</p>
+<span class="math math-display" id="learner-eq-4.1" data-index="113" data-tex="\[
+          Lx=(x_1,x_2,\ldots),\qquad
+          Rx=(0,x_0,x_1,\ldots).
+ \tag{4.1}
+\]">\[
+          Lx=(x_1,x_2,\ldots),\qquad
+          Rx=(0,x_0,x_1,\ldots).
+ \tag{4.1}
+\]</span>
+<p>Both have norm one and <span class="math" data-index="114" data-tex="\(LR=I\)">\(LR=I\)</span>.
+For <span class="math" data-index="115" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, the equation
+<span class="math" data-index="116" data-tex="\((L-zI)f=e_0\)">\((L-zI)f=e_0\)</span> has the solution</p>
+<span class="math math-display" id="learner-eq-4.2" data-index="117" data-tex="\[
+                f(z)=(0,1,z,z^2,\ldots)
+                     =\sum_{n\ge0}z^n R^{n+1}e_0.
+ \tag{4.2}
+\]">\[
+                f(z)=(0,1,z,z^2,\ldots)
+                     =\sum_{n\ge0}z^n R^{n+1}e_0.
+ \tag{4.2}
+\]</span>
+<p>Its series converges in <span class="math" data-index="118" data-tex="\(\ell^1\)">\(\ell^1\)</span>, locally uniformly
+for <span class="math" data-index="119" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, and
+<span class="math" data-index="120" data-tex="\(\|f(z)\|_1=(1-|z|)^{-1}\)">\(\|f(z)\|_1=(1-|z|)^{-1}\)</span>.
+Subtracting <span class="math" data-index="121" data-tex="\(zf\)">\(zf\)</span> from <span class="math" data-index="122" data-tex="\(Lf\)">\(Lf\)</span> cancels every
+coordinate except the first, which is one.</p>
+<figure><img class="course-figure" loading="lazy" width="1870" height="951" src="reproduce/L205/figures/shift-and-geometric-lift.png" alt="Coordinate rows of the left-shift equation. The vector f starts with zero, one, z and z squared. Subtracting z times f from its left shift cancels every positive coordinate and leaves the zeroth coordinate one." /><figcaption class="native"><a href="reproduce/L205/figures/shift-and-geometric-lift.png">Open full-size PNG</a> · <a href="reproduce/L205/figures/shift-and-geometric-lift.svg">Open SVG</a></figcaption></figure>
+<p><em>The cancellation in the shift example.</em> The dots stand for
+the entire remaining geometric sequence. It belongs to
+<span class="math" data-index="123" data-tex="\(\ell^1\)">\(\ell^1\)</span> exactly when <span class="math" data-index="124" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>. The norm estimate,
+rather than a finite truncation of the diagram, justifies
+the infinite-dimensional solution.</p>
+<p><strong>Example 4.3 (an uncountable free domain).</strong>
+Let <span class="math" data-index="125" data-tex="\(I\)">\(I\)</span> be the unit circle and define
+<span class="math" data-index="126" data-tex="\(V:\ell^1(I)\to\mathbb C\)">\(V:\ell^1(I)\to\mathbb C\)</span> by <span class="math" data-index="127" data-tex="\(Ve_\zeta=\zeta\)">\(Ve_\zeta=\zeta\)</span>.
+The norm is one. Although its domain has an
+uncountable index set, each input uses at most
+countably many coordinates, and its image is
+an absolutely convergent scalar sum.
+Every nonzero <span class="math" data-index="128" data-tex="\(w\)">\(w\)</span> has the norm-preserving lift
+<span class="math" data-index="129" data-tex="\(|w|e_{w/|w|}\)">\(|w|e_{w/|w|}\)</span>. This is the quotient (2.5)
+for <span class="math" data-index="130" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>.</p>
+<h2 id="5-exercises-with-complete-solutions">5. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (20 points).</strong> Suppose <span class="math" data-index="131" data-tex="\(h\)">\(h\)</span> is holomorphic
+near the closed bidisc with radii <span class="math" data-index="132" data-tex="\(R_1,R_2\)">\(R_1,R_2\)</span>, and
+its boundary norm is at most <span class="math" data-index="133" data-tex="\(M\)">\(M\)</span>. For smaller
+radii <span class="math" data-index="134" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span>, bound the sum of the norms
+of all Taylor terms whose first exponent exceeds
+<span class="math" data-index="135" data-tex="\(m\)">\(m\)</span> or whose second exponent exceeds <span class="math" data-index="136" data-tex="\(n\)">\(n\)</span>.
+Explain why the rectangular Taylor truncations
+converge in the Banach norm.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-index="137" data-tex="\(q_j=r_j/R_j&lt;1\)">\(q_j=r_j/R_j&lt;1\)</span>.
+The Cauchy estimate bounds each term by
+<span class="math" data-index="138" data-tex="\(M q_1^{\alpha_1}q_2^{\alpha_2}\)">\(M q_1^{\alpha_1}q_2^{\alpha_2}\)</span>.
+The union of the two tail conditions is bounded
+by the sum of their nonnegative geometric tails:</p>
+<span class="math math-display" id="learner-eq-5.1" data-index="139" data-tex="\[
+  \sum_{\alpha_1&gt;m\ {\rm or}\ \alpha_2&gt;n}
+             \|c_\alpha\|r^\alpha
+   \le
+   \frac{M(q_1^{m+1}+q_2^{n+1})}{(1-q_1)(1-q_2)}.
+ \tag{5.1}
+\]">\[
+  \sum_{\alpha_1&gt;m\ {\rm or}\ \alpha_2&gt;n}
+             \|c_\alpha\|r^\alpha
+   \le
+   \frac{M(q_1^{m+1}+q_2^{n+1})}{(1-q_1)(1-q_2)}.
+ \tag{5.1}
+\]</span>
+<p>Double-counting their intersection only enlarges
+the bound. The right side tends to zero as
+both truncation levels grow. It bounds the
+uniform Banach-norm error on the smaller
+closed bidisc. Assign 8 points to the
+coefficient estimate, 8 to the tail sum,
+and 4 to the norm-convergence conclusion.</p>
+<p><strong>Exercise 2 (25 points).</strong> Let <span class="math" data-index="140" data-tex="\(A:Z\to W\)">\(A:Z\to W\)</span>
+have preimage constant <span class="math" data-index="141" data-tex="\(C_A\)">\(C_A\)</span>, and let
+<span class="math" data-index="142" data-tex="\(R:\ell^1(I)\to W\)">\(R:\ell^1(I)\to W\)</span> have norm at most <span class="math" data-index="143" data-tex="\(B\)">\(B\)</span>.
+Construct its lift explicitly from columns.
+Then prove that if <span class="math" data-index="144" data-tex="\(\|R_n-R\|\to0\)">\(\|R_n-R\|\to0\)</span>, each
+error <span class="math" data-index="145" data-tex="\(R_n-R\)">\(R_n-R\)</span> has a lift of norm at most
+<span class="math" data-index="146" data-tex="\(C_A\|R_n-R\|\)">\(C_A\|R_n-R\|\)</span>. Does this require the
+original column choices for the <span class="math" data-index="147" data-tex="\(R_n\)">\(R_n\)</span>
+to converge?</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-index="148" data-tex="\(s_i\)">\(s_i\)</span> with
+<span class="math" data-index="149" data-tex="\(As_i=Re_i\)">\(As_i=Re_i\)</span> and <span class="math" data-index="150" data-tex="\(\|s_i\|\le C_AB\)">\(\|s_i\|\le C_AB\)</span>.
+The operator <span class="math" data-index="151" data-tex="\(Su=\sum u_i s_i\)">\(Su=\sum u_i s_i\)</span> exists
+by Lemma 2.1 and satisfies <span class="math" data-index="152" data-tex="\(AS=R\)">\(AS=R\)</span>.
+For each error choose fresh columns
+<span class="math" data-index="153" data-tex="\(v_{n,i}\)">\(v_{n,i}\)</span> lifting <span class="math" data-index="154" data-tex="\((R_n-R)e_i\)">\((R_n-R)e_i\)</span>
+with norm at most <span class="math" data-index="155" data-tex="\(C_A\|R_n-R\|\)">\(C_A\|R_n-R\|\)</span>.
+They define <span class="math" data-index="156" data-tex="\(V_n\)">\(V_n\)</span> with that operator-norm
+bound and <span class="math" data-index="157" data-tex="\(AV_n=R_n-R\)">\(AV_n=R_n-R\)</span>.
+Thus <span class="math" data-index="158" data-tex="\(S+V_n\)">\(S+V_n\)</span> is a lift of <span class="math" data-index="159" data-tex="\(R_n\)">\(R_n\)</span>
+converging in operator norm to <span class="math" data-index="160" data-tex="\(S\)">\(S\)</span>.
+Unrelated earlier choices of lifts of
+<span class="math" data-index="161" data-tex="\(R_n\)">\(R_n\)</span> need not converge: arbitrary
+kernel-valued columns could have been
+added to them. Assign 10 points to
+the column construction, 10 to the
+error lift, and 5 to this distinction.</p>
+<p><strong>Exercise 3 (25 points).</strong> Let</p>
+<span class="math math-display" id="learner-eq-5.2" data-index="162" data-tex="\[
+                 T(z)=I-zA-z^2B
+ \tag{5.2}
+\]">\[
+                 T(z)=I-zA-z^2B
+ \tag{5.2}
+\]</span>
+<p>on a Banach space, with bounded operators
+<span class="math" data-index="163" data-tex="\(A,B\)">\(A,B\)</span>, and let the datum be <span class="math" data-index="164" data-tex="\(y\)">\(y\)</span>.
+Give the coefficient recursion for its
+analytic solution near zero. State an
+explicit condition on <span class="math" data-index="165" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> that
+guarantees convergence and a coefficient
+norm bound. Do not assume <span class="math" data-index="166" data-tex="\(A\)">\(A\)</span> and <span class="math" data-index="167" data-tex="\(B\)">\(B\)</span>
+commute.</p>
+<p><strong>Solution.</strong> The constant coefficient is
+<span class="math" data-index="168" data-tex="\(f_0=y\)">\(f_0=y\)</span>, the first is <span class="math" data-index="169" data-tex="\(f_1=Ay\)">\(f_1=Ay\)</span>, and</p>
+<span class="math math-display" id="learner-eq-5.3" data-index="170" data-tex="\[
+                  f_n=Af_{n-1}+Bf_{n-2}\quad(n\ge2).
+ \tag{5.3}
+\]">\[
+                  f_n=Af_{n-1}+Bf_{n-2}\quad(n\ge2).
+ \tag{5.3}
+\]</span>
+<p>For example
+<span class="math" data-index="171" data-tex="\(f_2=(A^2+B)y\)">\(f_2=(A^2+B)y\)</span> and
+<span class="math" data-index="172" data-tex="\(f_3=(A^3+AB+BA)y\)">\(f_3=(A^3+AB+BA)y\)</span>;
+the order of the mixed products is fixed
+by the recursion. Since <span class="math" data-index="173" data-tex="\(T_0=I\)">\(T_0=I\)</span>, take
+<span class="math" data-index="174" data-tex="\(C=1\)">\(C=1\)</span>. Any <span class="math" data-index="175" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with
+<span class="math" data-index="176" data-tex="\(\theta=r\|A\|+r^2\|B\|&lt;1\)">\(\theta=r\|A\|+r^2\|B\|&lt;1\)</span>
+gives, by (3.5),</p>
+<span class="math math-display" id="learner-eq-5.4" data-index="177" data-tex="\[
+                         \sum_n\|f_n\|r^n
+                              \le\frac{\|y\|}{1-\theta}.
+ \tag{5.4}
+\]">\[
+                         \sum_n\|f_n\|r^n
+                              \le\frac{\|y\|}{1-\theta}.
+ \tag{5.4}
+\]</span>
+<p>The resulting series is holomorphic and
+solves the equation by its absolutely
+convergent product. Assign 10 points
+to the recursion and ordered example,
+10 to the radius and bound, and 5
+to the product justification.</p>
+<p><strong>Exercise 4 (30 points).</strong> For the shifts
+in Example 4.2 and arbitrary
+<span class="math" data-index="178" data-tex="\(y\in\ell^1(\mathbb N_0)\)">\(y\in\ell^1(\mathbb N_0)\)</span>, prove that</p>
+<span class="math math-display" id="learner-eq-5.5" data-index="179" data-tex="\[
+                   x(z)=R\sum_{n\ge0}z^nR^n y
+ \tag{5.5}
+\]">\[
+                   x(z)=R\sum_{n\ge0}z^nR^n y
+ \tag{5.5}
+\]</span>
+<p>solves <span class="math" data-index="180" data-tex="\((L-zI)x=y\)">\((L-zI)x=y\)</span> for <span class="math" data-index="181" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>.
+Give a norm bound and prove holomorphy.
+Find a nonzero homogeneous vector for
+the same operator, and explain why the
+particular solution is not unique.</p>
+<p><strong>Solution.</strong> The series converges in
+operator norm, locally uniformly for
+<span class="math" data-index="182" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, because <span class="math" data-index="183" data-tex="\(\|R\|=1\)">\(\|R\|=1\)</span>.
+Theorem 1.1 or its differentiated
+geometric series proves norm holomorphy.
+Using <span class="math" data-index="184" data-tex="\(LR=I\)">\(LR=I\)</span>,</p>
+<span class="math math-display" id="learner-eq-5.6" data-index="185" data-tex="\[
+ (L-zI)R\sum_{n\ge0}z^nR^ny
+       =(I-zR)\sum_{n\ge0}z^nR^ny=y.
+ \tag{5.6}
+\]">\[
+ (L-zI)R\sum_{n\ge0}z^nR^ny
+       =(I-zR)\sum_{n\ge0}z^nR^ny=y.
+ \tag{5.6}
+\]</span>
+<p>Absolute convergence justifies the
+telescoping, and
+<span class="math" data-index="186" data-tex="\(\|x(z)\|_1\le\|y\|_1/(1-|z|)\)">\(\|x(z)\|_1\le\|y\|_1/(1-|z|)\)</span>.
+The vector <span class="math" data-index="187" data-tex="\(v(z)=(1,z,z^2,\ldots)\)">\(v(z)=(1,z,z^2,\ldots)\)</span>
+belongs to <span class="math" data-index="188" data-tex="\(\ell^1\)">\(\ell^1\)</span> on that disc
+and satisfies <span class="math" data-index="189" data-tex="\(Lv=zv\)">\(Lv=zv\)</span>.
+Thus any scalar multiple of <span class="math" data-index="190" data-tex="\(v(z)\)">\(v(z)\)</span>
+can be added to a particular solution;
+if the scalar depends holomorphically
+on <span class="math" data-index="191" data-tex="\(z\)">\(z\)</span>, the resulting family is
+also holomorphic. Assign 10 points
+to the product identity, 8 to the
+norm and holomorphy, 8 to the
+homogeneous vector, and 4 to
+nonuniqueness.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Internal foundations: <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>,
+Lemmas 1.1 and 1.2; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>,
+Sections 5 and 8.</li>
+<li>[LP] László Lempert and Imre Patyi, “Analytic sheaves in Banach spaces,”
+<em>Annales scientifiques de l’École Normale Supérieure</em> 40 (2007), 453–486.
+<a href="https://www.numdam.org/item/10.1016/j.ansens.2006.12.006.pdf">Primary article</a>.</li>
+<li>[M] Frank Mantlik, “Partial differential operators depending analytically
+on a parameter,” <em>Annales de l’Institut Fourier</em> 41 (1991), 577–599.
+<a href="https://aif.centre-mersenne.org/item/10.5802/aif.1266.pdf">Primary article</a>.</li>
+</ul>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

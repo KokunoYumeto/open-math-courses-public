@@ -91,6 +91,210 @@ The density also governs every Borel partial bijection \(T:A\to B\) whose graph 
 \]
 Partition \(A\) into the Borel sets where \(T(x)=g_nx\) for the first possible \(n\). On each piece (REL1.e) applies; their images are disjoint because \(T\) is injective. Add the identities. Thus such a partial bijection is nonsingular, and its density is determined by its graph, independently of how it was described by group elements.
 
+<a id="rel-counting-predual"></a>
+### Integral states and finite families of defects
+
+We will also need the scalar predual of either counting space. We prove the statement for an arbitrary sigma-finite measure space \((Y,m)\). [SC-07](OA-FLOW-SC.md#sc-07) supplies the complete \(L^1\) and \(L^2\) spaces and their simple-function density; [CF Section 8](OA-FLOW-CF.md#oa-flow.cf.8) supplies Hilbert representation. Pairings below are complex bilinear:
+\[
+ \langle f,h\rangle=\int_Y f h\,dm,\qquad
+ f\in L^\infty(m),\ h\in L^1(m).
+\tag{REL1.j}
+\]
+
+**The dual of \(L^1\).** Let \(\Lambda\in L^1(m)^*\), with norm \(C\), and partition \(Y\) into disjoint measurable sets \(Y_n\) of finite measure. On \(L^2(Y_n)\), extended by zero outside \(Y_n\),
+\[
+ |\Lambda(u)|\leq C\|u\|_1\leq C\,m(Y_n)^{1/2}\|u\|_2.
+\tag{REL1.k}
+\]
+Hilbert representation therefore gives \(g_n\in L^2(Y_n)\) with \(\Lambda(u)=\int_{Y_n}u g_n\,dm\); the representing Hilbert vector is conjugated because the inner product is linear first. On a null piece take \(g_n=0\). If \(A=\{|g_n|>C+\epsilon\}\) had positive measure, the bounded function \(u=\mathbf1_A\overline{g_n}/|g_n|\) would belong to \(L^2(Y_n)\), and
+\(\Lambda(u)=\int_A|g_n|\,dm>Cm(A)=C\|u\|_1\), a contradiction. Thus \(|g_n|\leq C\) almost everywhere. Paste the \(g_n\)'s to a measurable \(g\), discarding their countable union of null exceptions.
+
+The identity \(\Lambda(u)=\int u g\,dm\) holds for every simple function supported in a finite union of the \(Y_n\)'s. These functions are \(L^1\)-dense: first cut an \(L^1\) function down to those finite unions by monotone convergence of its absolute value, then use SC-07 there. Both functionals are \(L^1\)-continuous, so the identity holds on all of \(L^1\). Conversely every bounded \(g\) defines such a functional. Its norm is exactly \(\|g\|_\infty\): for \(0\leq a<\|g\|_\infty\), sigma-finiteness supplies a finite positive-measure set \(A\subset\{|g|>a\}\), and the norm-one test \(\mathbf1_A\overline g/(m(A)|g|)\) has functional value greater than \(a\). The zero case is immediate. This proves the isometric identification
+\[
+ (L^1(m))^*=L^\infty(m).
+\tag{REL1.l}
+\]
+In the other direction the functional \(\phi_h(f)=\int f h\,dm\) on \(L^\infty\) has norm \(\|h\|_1\): the upper bound is the integral inequality, and \(f=\overline h/|h|\), zero where \(h=0\), gives equality. Thus the integral functionals form a closed isometric copy of \(L^1\) in \((L^\infty)^*\).
+
+**Normal positive functionals.** For \(h\geq0\) in \(L^1\), the functional \(\phi_h\) preserves bounded increasing suprema, including nets. Here are the countability details that justify this assertion. If \(m\ne0\), the finite partition above gives a strictly positive integrable function
+\[
+ q_0=\sum_{n\geq1}\frac{2^{-n}}{1+m(Y_n)}\mathbf1_{Y_n}.
+\]
+Normalize it to have integral one and call the result \(q\). Let \((f_\alpha)\) be an increasing net in \(L^\infty\), with \(0\leq f_\alpha\leq M\), and let \(s=\sup_\alpha\int q f_\alpha\,dm\). Choose an increasing sequence of indices \(\alpha_n\) whose integrals tend to \(s\), using directedness to dominate the preceding index at each choice. Set \(f_0=\sup_n f_{\alpha_n}\), choosing representatives simultaneously outside a countable null set. For any fixed \(\alpha\), directedness and monotone convergence imply
+\[
+ \int q\max(f_\alpha,f_0)\,dm
+ =\lim_n\int q\max(f_\alpha,f_{\alpha_n})\,dm
+ \leq s=\int q f_0\,dm.
+\tag{REL1.m}
+\]
+Strict positivity of \(q\) gives \(f_\alpha\leq f_0\) almost everywhere. Every upper bound of the original net dominates the chosen sequence, hence dominates \(f_0\). Thus \(f_0\) is its supremum in \(L^\infty\). Monotone convergence against \(h\) now gives
+\(\sup_\alpha\phi_h(f_\alpha)=\lim_n\phi_h(f_{\alpha_n})=\phi_h(f_0)\).
+For \(m=0\) the assertion concerns only the zero space. This proves normality without applying a sequential convergence theorem directly to an arbitrary net.
+
+Conversely, let \(\phi\) be a normal positive functional on \(L^\infty(m)\). The formula \(\lambda(A)=\phi(\mathbf1_A)\) defines a finite measure: for a disjoint sequence of sets, normality applied to the increasing finite unions gives countable additivity. It vanishes on \(m\)-null sets. On each finite-measure \(Y_n\), the finite Radon–Nikodym proof cited above gives a density \(h_n\geq0\). Paste them. Their total integral is
+\(\sum_n\lambda(Y_n)=\lambda(Y)=\phi(1)<\infty\).
+Testing indicators and then uniform simple approximations to bounded measurable functions proves \(\phi=\phi_h\). Consequently, when \(m\ne0\), the normal states are exactly
+\[
+ \mathcal S_{\rm int}
+ =\{\phi_h:h\in L^1(m),\ h\geq0,\ \int h\,dm=1\}.
+\tag{REL1.n}
+\]
+
+**Density of integral states.** The set \(\mathcal S_{\rm int}\) is weak-star dense in the full state space of \(L^\infty(m)\), where weak-star here means pointwise convergence on \(L^\infty\) in its Banach dual. To prove this, let \(f=f^*\in L^\infty\). For any \(a<\operatorname{ess\,sup}f\), choose a finite positive-measure subset \(A\subset\{f>a\}\). The density \(\mathbf1_A/m(A)\) shows
+\[
+ \sup_{\psi\in\mathcal S_{\rm int}}\psi(f)
+ =\operatorname{ess\,sup}f.
+\tag{REL1.o}
+\]
+Every state \(\Phi\) has \(\Phi(f)\leq\operatorname{ess\,sup}f\), by positivity and \(\Phi(1)=1\). If \(\Phi\) lay outside the weak-star closed convex hull of \(\mathcal S_{\rm int}\), [CV-1](OA-FLOW-CV.md#cv-1) would strictly separate it by a weak-star continuous real linear functional. Such a functional is a finite real combination of real and imaginary evaluations, hence has the form \(\psi\mapsto\operatorname{Re}\psi(g)\). On states this equals \(\psi((g+\overline g)/2)\). This contradicts (REL1.o), after changing the sign if necessary. Since \(\mathcal S_{\rm int}\) is already convex, the required density follows. In particular a net of integral states converges pointwise to any prescribed state; no countable list of tests or sequential compactness is assumed.
+
+**Small defects for finitely many maps.** Suppose \(T_1,\ldots,T_s:L^\infty(m)\to L^\infty(m)\) have bounded preadjoints \(t_i:L^1(m)\to L^1(m)\), meaning
+\[
+ \int (T_i f)h\,dm=\int f(t_i h)\,dm.
+\]
+Let a state \(\Phi\) satisfy \(\Phi(T_i f)=0\) for every \(f\) and \(i\). Take integral states converging pointwise to \(\Phi\). For any \(f_1,\ldots,f_s\in L^\infty\), their defect vectors satisfy
+\[
+ \sum_i\int f_i(t_i h)\,dm
+ =\phi_h\!\left(\sum_iT_i f_i\right)\longrightarrow0.
+\tag{REL1.p}
+\]
+By (REL1.l), the continuous dual of the finite sum \(\bigoplus_{i=1}^s L^1(m)\), with norm \(\sum_i\|u_i\|_1\), consists exactly of these finite families of bounded functions. Thus zero lies in the weak closure of the convex set of defect vectors. Its norm closure is also convex; CV-1 would separate zero from it by an element of this same dual if zero were outside. Therefore for every \(\epsilon>0\) there is a probability density \(h\) with
+\[
+ \sum_{i=1}^s\|t_i h\|_1<\epsilon.
+\tag{REL1.q}
+\]
+This argument uses only finitely many maps at a time and does not claim convergence in the norm of the maps themselves.
+
+For the relation counting space take \(m=\nu_l\), the range-counting measure in (REL1.b). Let \(\theta:D\to B\) be a Borel partial orbit bijection, and suppose its pushforward density
+\(j_\theta(y)=\delta(y,\theta^{-1}y)^{-1}\) is essentially bounded on \(B\). Define
+\[
+ \begin{aligned}
+ (T_\theta f)(y,x)
+ &=\mathbf1_B(y)j_\theta(y)f(\theta^{-1}y,x)
+       -\mathbf1_D(y)f(y,x),\\
+ (t_\theta h)(y,x)
+ &=\mathbf1_D(y)\bigl(h(\theta y,x)-h(y,x)\bigr).
+ \end{aligned}
+\tag{REL1.r}
+\]
+The formulas respect null classes by nonsingularity. To check the preadjoint identity, apply (REL1.f) and (REL1.i) to the first coordinate: the factor \(j_\theta\) cancels its change-of-variable density, while the set of second coordinates is the same orbit before and after \(\theta\). Nonnegative sums pass through the base integral by SC-04. This gives
+\(\int (T_\theta f)h\,d\nu_l=\int f(t_\theta h)\,d\nu_l\).
+The same substitution for \(|h|\) gives
+\[
+ \int_D\sum_{x\sim y}|h(\theta y,x)|\,d\mu(y)
+ =\int_B j_\theta(y)\sum_{x\sim y}|h(y,x)|\,d\mu(y)
+ \leq\|j_\theta\|_\infty\|h\|_1.
+\]
+Hence \(\|t_\theta\|\leq1+\|j_\theta\|_\infty\). Its exact defect norm for a given \(h\) is
+\(\int_D\sum_{x\sim y}|h(\theta y,x)-h(y,x)|\,d\mu(y)\).
+Thus (REL1.q) supplies precisely the simultaneous integral error estimate for any finite family of these partial maps whenever the given state annihilates their \(T_\theta\)'s.
+
+Finally, density truncation retains strict finite-error bounds. If measurable \(K_n\uparrow Y\), set \(a_n=\int_{K_n}h\,dm\). For \(a_n>0\), put \(h_n=\mathbf1_{K_n}h/a_n\). Then
+\(\|h_n-h\|_1=2(1-a_n)\to0\), by splitting the integral over \(K_n\) and its complement. Consequently
+\(\sum_i\|t_i h_n\|_1\leq\sum_i\|t_i h\|_1+2(1-a_n)\sum_i\|t_i\|\).
+Starting with a bound strictly below the requested error therefore allows a late truncation and renormalization. This is the finite-density approximation used in the measured-relation construction.
+
+<a id="rel-weighted-cuts"></a>
+### Weighted level sets and measurable finite patches
+
+The preceding density estimate can be converted into a finite-set estimate while retaining its measure factors. We use the sigma-finite product construction and Tonelli theorem proved in [PI2](../../OA-MOD/notes/analytic-programme/scalar-product-integration.html#pi2-construction-of-the-sigma-finite-product) and [PI3](../../OA-MOD/notes/analytic-programme/scalar-product-integration.html#pi3-tonelli-fubini-and-exceptional-sections). The second factor below is Lebesgue measure on \((0,\infty)\), with the interval normalization of [SC-02](OA-FLOW-SC.md#sc-02).
+
+Fix finitely many partial maps \(\theta_i:D_i\to B_i\) as in (REL1.r), each with bounded pushforward density. Let \(h\geq0\) be a probability density for the range-counting measure \(\nu_l\), and suppose
+\(\sum_{i=1}^s\|t_{\theta_i}h\|_1<\epsilon\).
+We may take an everywhere finite Borel representative supported on a Borel \(K\subset E\) with uniformly bounded source and range fibre sizes. Indeed, enumerate the group and let \(K_n\) be the union of its first \(n\) graphs intersected with \(\{1/n\leq\delta\leq n\}\). Each coordinate fibre of \(K_n\) has at most \(n\) points, and \(K_n\uparrow E\) on the common domain of (REL1.h). The preceding truncation estimate supplies the asserted support while preserving a strict error bound. A completed-measurable density has a Borel representative by the simple-approximation argument following (REL1.d); set it to zero on its Borel null set of infinite or negative values and off \(K\).
+
+The elementary scalar identities, for \(u,v\geq0\), are
+\[
+ u=\int_0^\infty\mathbf1_{\{u>a\}}\,da,\qquad
+ |u-v|=\int_0^\infty
+       |\mathbf1_{\{u>a\}}-\mathbf1_{\{v>a\}}|\,da.
+\tag{REL1.s}
+\]
+The first integrand is the indicator of an interval of length \(u\). For the second, the two indicators differ precisely on the interval between \(u\) and \(v\), up to its endpoints.
+
+For \(a>0\) and \(x\in X\), define
+\[
+ \begin{aligned}
+ F_x(a)&=\{y\in Gx:h(y,x)>a\},\\
+ w_a(x)&=\sum_{y\in F_x(a)}\delta(y,x),\\
+ b_a(x)&=\sum_{i=1}^s\ \sum_{y\in D_i\cap Gx}
+ \delta(y,x)\,
+ |\mathbf1_{F_x(a)}(\theta_i y)-\mathbf1_{F_x(a)}(y)|.
+ \end{aligned}
+\tag{REL1.t}
+\]
+Each \(F_x(a)\) is finite, with the same uniform bound as the source fibres of \(K\). The sums are jointly Borel in \((x,a)\): use the disjoint first-label graphs (REL1.a) to sum over distinct orbit points, and take increasing finite partial sums. For \(b_a(x)\), only points in
+\(F_x(a)\cup\bigcup_i\theta_i^{-1}(F_x(a)\cap B_i)\)
+can contribute. This set is finite because every \(\theta_i\) is injective. Since \(\delta\) is finite on the common domain, both \(w_a(x)\) and \(b_a(x)\) are finite.
+
+Put \(W(a)=\int_Xw_a\,d\mu\) and \(B(a)=\int_Xb_a\,d\mu\). Tonelli, (REL1.s), and \(d\nu_l=\delta\,d\nu_r\) give
+\[
+ \begin{aligned}
+ \int_0^\infty W(a)\,da
+ &=\int_E h\delta\,d\nu_r=\int_E h\,d\nu_l=1,\\
+ \int_0^\infty B(a)\,da
+ &=\sum_i\int_E\mathbf1_{D_i}(y)
+       |h(\theta_i y,x)-h(y,x)|\,d\nu_l(y,x)
+ =\sum_i\|t_{\theta_i}h\|_1<\epsilon .
+ \end{aligned}
+\tag{REL1.u}
+\]
+All interchanges have nonnegative integrands and sigma-finite factors. In particular \(W\) and \(B\) are measurable, and finite for almost every \(a\).
+
+There is therefore a level \(a>0\) such that
+\[
+ 0<W(a)<\infty,\qquad B(a)<\epsilon W(a).
+\tag{REL1.v}
+\]
+Otherwise \(B(a)\geq\epsilon W(a)\) for almost every level with \(W(a)>0\); levels with \(W(a)=0\) contribute no mass, and infinite values occur only on a null set. Integration would contradict (REL1.u). For this fixed level, the Borel set
+\(A=\{x:w_a(x)>0,\ b_a(x)<\epsilon w_a(x)\}\)
+has positive measure. If it were null, integrating the reverse inequality on its complement would contradict (REL1.v).
+
+Here is the precise consequence once columns have been separated. Write \(F_x=F_x(a)\) and \(L_x=F_x\cup\bigcup_i\theta_i^{-1}(F_x\cap B_i)\). We first construct a positive-measure Borel \(B_0\subset A\) for which the \(L_x\), \(x\in B_0\), are pairwise disjoint. This is the [disjoint-column step](../../OA-ERGODIC/reader/invariant-means-on-measured-relations.html#3-bounded-sets-and-a-packing-lemma), with a proof using the finite family already present here.
+
+Because \(K\) is contained in finitely many group graphs, \(L\) is the union of finitely many graphs of injective Borel partial maps \(\alpha_j\): restrict those group maps to the level set, and also compose their restrictions with each \(\theta_i^{-1}\) where defined. Their domains, images and inverses are Borel, since group maps and the specified partial bijections have this property. Form the finitely many partial bijections \(T=\alpha_j^{-1}\alpha_i\). Starting with the positive-measure Borel set \(A\), consider each \(T\) in turn. The current set has a positive-measure part either outside its domain, inside its fixed-point set, or inside its nonfixed domain. These three sets are Borel; the last assertion about fixed points follows from the countable point-separating family used in (REL1.a).
+
+In the nonfixed case, that same family contains a set separating each pair \(x,Tx\). The countably many pieces prescribing one direction of separation cover the nonfixed domain; hence one piece has positive measure. On that piece \(C\), either every \(x\) belongs to the separating set and every \(Tx\) does not, or the reverse, so \(TC\cap C=\varnothing\). Retain the chosen positive-measure subset and continue through the finite list. Each previously obtained property persists under restriction. Call the final set \(B_0\). If \(\alpha_i x=\alpha_jx'\) for \(x,x'\in B_0\), the relevant composition is defined at \(x\) and sends it to \(x'\). The outside-domain alternative is impossible, the disjoint-image alternative excludes this pair, and the fixed-point alternative forces \(x=x'\). Thus distinct selected columns are disjoint. The following formulas also apply to any other positive-measure Borel choice with this property.
+
+We can prove measurability and compute the masses using only group maps. For the first-label sets \(D_n\) of (REL1.a), put
+\[
+ A_n=\{x\in B_0\cap D_n:h(g_nx,x)>a\},\qquad
+ Y=\bigsqcup_n g_nA_n,\qquad
+ S=\bigcup_{n,m}\{(g_nx,g_mx):x\in A_n\cap A_m\}.
+\tag{REL1.w}
+\]
+The union defining \(Y\) is disjoint: equal image points belong to equal columns by disjointness of the \(L_x\)'s, and then the first-label convention gives the same \(n\). Its terms are Borel because the group maps have Borel inverses. Each term defining \(S\) is the graph of \(g_ng_m^{-1}\) over the Borel domain \(g_m(A_n\cap A_m)\); hence \(S\) is Borel as well. Its equivalence classes on \(Y\) are exactly the disjoint nonempty sets \(F_x\), \(x\in B_0\), so they have a uniform finite size bound. No arbitrary projection of a Borel set is asserted to be Borel here.
+
+Equation (REL1.e), disjointness and nonnegative summation now give the exact identity
+\[
+ 0<\mu(Y)=\sum_n\int_{A_n}\delta(g_nx,x)\,d\mu(x)
+         =\int_{B_0}w_a(x)\,d\mu(x)\leq W(a)<\infty.
+\tag{REL1.x}
+\]
+More generally this same identity holds for the union of any Borel family of subsets of the disjoint columns \(L_x\): partition into first-label graphs, and apply the same computation.
+
+Apply it to the boundary columns
+\[
+ C_i=\bigcup_{x\in B_0}
+ \{y\in D_i\cap Gx:
+   \mathbf1_{F_x}(\theta_i y)\ne\mathbf1_{F_x}(y)\}.
+\tag{REL1.y}
+\]
+They lie in \(L_x\), so their unions are Borel by the preceding group-piece description, and
+\(\sum_i\mu(C_i)=\int_{B_0}b_a\,d\mu<\epsilon\mu(Y)\).
+The inequality is strict: the integrable function
+\(\epsilon w_a-b_a\) is positive at every point of the positive-measure set \(B_0\).
+
+Let \(\operatorname{Inc}(Y)\) denote the pairs with at least one endpoint in \(Y\). An edge \((\theta_i y,y)\) touching \(Y\) but outside \(S\) has \(y\in C_i\). Indeed, its endpoints cannot lie in distinct \(F_x,F_{x'}\): then its source would belong to both \(L_x\) and \(L_{x'}\). If both endpoints lie in the same column, the edge belongs to \(S\); otherwise exactly one belongs to that column, giving the indicator difference in (REL1.y). Since source-counting measure assigns \(\mu(C_i)\) to a graph over \(C_i\),
+\[
+ \nu_r\!\left(
+ \left(\bigcup_i\operatorname{graph}\theta_i\right)
+       \cap\operatorname{Inc}(Y)\setminus S\right)
+ \leq\sum_i\mu(C_i)<\epsilon\mu(Y).
+\tag{REL1.z}
+\]
+The convention is the one fixed in (REL1.b): \(\nu_r\) is source counting and \(\nu_l\) is range counting. The weights \(\delta(y,x)\) in (REL1.t) convert column counts into actual unit-space measure; they disappear only when the action preserves that measure.
+
 <a id="rel-2"></a>
 ## 2. Point-labeled Hilbert spaces and the two coordinate actions
 
@@ -974,4 +1178,4 @@ The limiting kernel even comes from a bounded operator: let \(v=\sum_{n\ge1}2^{-
 
 M. Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §2, printed pp. 14–21, develops the orbit-point construction: Definition 2.1, the two counting measures and their modulus in Lemmas 2.2–2.4 and Corollary 2.5, and the modular realization and orbit-field criterion in Theorem 2.7 and Corollary 2.8. Here the field criterion precedes the diagonal expectation and its weight; the graph-norm truncations then identify the entire Tomita operator directly.
 
-The programme's relation kernels and modular coordinates give a complementary kernel-algebra proof for sigma-finite bases. Its counting measure denoted by \(\nu_s\) is our \(\nu_r\); its \(\nu_r\) is our \(\nu_l\). The derivative, the point-labeled Hilbert fibers and the modular signs agree under that translation. The [diagonal expectation and invariant-measure trace](../../OA-ERGODIC/reader/diagonal-expectations-and-invariant-measures.html#1-compressing-to-the-diagonal) explain how invariant base measures produce traces. The present lesson keeps nonsingular base measures throughout.
+The programme's [relation kernels and modular coordinates](../../OA-ERGODIC/reader/relation-kernels-and-modular-coordinates.html#6-sigma-finite-bases-and-reduced-relations) give a complementary kernel-algebra proof for sigma-finite bases. Its counting measure denoted by \(\nu_s\) is our \(\nu_r\); its \(\nu_r\) is our \(\nu_l\). The derivative, the point-labeled Hilbert fibers and the modular signs agree under that translation. The [diagonal expectation and invariant-measure trace](../../OA-ERGODIC/reader/diagonal-expectations-and-invariant-measures.html#1-compressing-to-the-diagonal) explain how invariant base measures produce traces. The present lesson keeps nonsingular base measures throughout.

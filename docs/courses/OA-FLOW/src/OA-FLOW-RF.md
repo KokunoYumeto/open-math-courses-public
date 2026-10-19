@@ -193,6 +193,27 @@ Commutation with \(U_s\) transports through the spectral calculus, so \(U_s\) pr
  U_s=e^{isA}\quad(s\in\mathbb R).
  \tag{RF13}
 \]
+**The generator domain is exactly the norm-differentiability domain.** The preceding calculation proves that every \(\eta\in D(A)\) has
+\[
+ \lim_{s\to0}\frac{U_s\eta-\eta}{s}=iA\eta
+ \quad\text{in Hilbert-space norm}.
+\]
+Conversely, suppose this norm limit exists for a vector \(\eta\), and denote it by \(\zeta\). The group identity gives
+\[
+ \frac{U_{t+s}\eta-U_t\eta}{s}
+     =U_t\frac{U_s\eta-\eta}{s}\longrightarrow U_t\zeta .
+\]
+Thus \(t\mapsto U_t\eta\) is continuously norm differentiable on the real line. On every finite interval the norm fundamental theorem, applied to \(e^{-t}U_t\eta\), gives
+\[
+ \int_0^T e^{-t}U_t\zeta\,dt
+ =e^{-T}U_T\eta-\eta+\int_0^T e^{-t}U_t\eta\,dt.
+\]
+The boundary term tends to zero, since its norm is \(e^{-T}\|\eta\|\); both integrals converge in norm. Consequently \(R\zeta=-\eta+R\eta\), or
+\[
+ \eta=R(\eta-\zeta)\in\operatorname{ran}R=D(A).
+\]
+Injectivity of \(R\) now gives \(R^{-1}\eta=\eta-\zeta\), so ([RF12](OA-FLOW-RF.md#equation-rf12)) yields \(iA\eta=\zeta\). This proves both the full domain characterization and the value of the generator on every differentiable vector.
+
 Every domain in this construction is explicitly supplied by SF. Uniqueness also follows: any self-adjoint generator of the same group has the same Laplace resolvent ([RF9](OA-FLOW-RF.md#equation-rf9)), hence the same domain and value by ([RF12](OA-FLOW-RF.md#equation-rf12)).
 
 For \(h\in L^1\), scalar interchange against spectral matrix coefficients now proves

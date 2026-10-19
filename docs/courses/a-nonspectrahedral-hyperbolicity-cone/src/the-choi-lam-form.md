@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-The polynomial of Theorem A in Hyperbolic polynomials and spectrahedral cones is built from the biquadratic form
+The polynomial of Theorem A in [Hyperbolic polynomials and spectrahedral cones](hyperbolic-polynomials-and-spectrahedral-cones.md) is built from the biquadratic form
 \[
 \begin{aligned}
 b(z,y)={}&\sum_{i=1}^3z_i^2y_i^2-2\sum_{i<j}z_iy_iz_jy_j\\

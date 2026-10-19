@@ -1,6 +1,6 @@
 # Expected maximal abelian algebras and factor types
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 A normal expectation onto a maximal abelian algebra preserves every semifinite normal trace. This is stronger than saying that the expectation preserves one chosen trace. We prove it by averaging over the abelian algebra's unitaries, then use it to decide the type of a free ergodic crossed product from invariant traces on its coefficient algebra.
 
@@ -13,7 +13,7 @@ Our crossed-product prerequisites are Proposition 1.1, Proposition 3.1 and Theor
 - Proposition 7.1, Theorem 7.2 and Theorem 9.1 of [Traces, part B](../reader/supplements/trace-duality-and-expectations.html) give ultraweak lower semicontinuity of normal traces, the bounded central density comparing two semifinite normal traces, and the trace-preserving normal expectation when the restricted trace is semifinite.
 - Type decomposition and the classification of type-I factors are Theorems 7.2 and 10.3 of [Projections and types](../../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html). Banach–Alaoglu and the elementary operator topologies are in [Operator spaces, trace class and preduals](../../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html).
 
-The linked programme lessons contain the complete prerequisite proofs at the stated locators. The elementary examples also use Lebesgue integration, density of interval step functions in \(L^1\), Fubini’s theorem and the usual multiplication representation on \(L^2\). Anantharaman and Popa’s freely readable draft treats finite trace-preserving expectations and normalizers; Takesaki’s book provides further context. The arguments below establish the arbitrary semifinite MASA trace-restriction theorem and the type-II-infinity/type-III alternatives.
+The linked programme lessons contain the complete prerequisite proofs at the stated locators. The elementary examples also use Lebesgue integration, density of interval step functions in \(L^1\), Fubini’s theorem and the usual multiplication representation on \(L^2\). Anantharaman and Popa’s freely readable draft treats finite trace-preserving expectations and normalizers. The arguments below establish the arbitrary semifinite MASA trace-restriction theorem and the type-II-infinity/type-III alternatives.
 
 ## 1. Averaging onto an expected maximal abelian algebra
 
@@ -253,6 +253,45 @@ The same two lemmas give freeness and ergodicity. Lebesgue integration
 \]
 is faithful, invariant and normal, with \(\nu(1)=\infty\). It is semifinite because the projections \(1_{[-n,n]}\uparrow1\) have finite trace. The coefficient algebra is nonatomic. Theorem 3.2 gives type II\(_\infty\).
 
+**Proposition 4.5 (dense subgroups and Haar measure).** Let \(\Gamma\) be an infinite locally compact Hausdorff group with a countable dense subgroup \(G\), and let \(\mu\) be a right Haar measure. On \(A=L^\infty(\Gamma,\mu)\), let \(\alpha_g(f)(x)=f(xg)\). The action of the discrete group \(G\) is free and ergodic. Its crossed product has the following types:
+\[
+A\rtimes_\alpha G\text{ has type }
+\begin{cases}
+\mathrm I_\infty,&\Gamma\text{ is discrete},\\
+\mathrm {II}_1,&\Gamma\text{ is nondiscrete and compact},\\
+\mathrm {II}_\infty,&\Gamma\text{ is nondiscrete and noncompact}.
+\end{cases}
+\]
+No second-countability assumption on \(\Gamma\) is required.
+
+**Proof.** We use the programme proofs in [Haar measure on locally compact groups](../../harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html): Proposition 2.3 for regularity on sigma-finite sets, Theorem 2.2 for representation of positive functionals on \(C_c\), Proposition 3.1(4) for density in \(L^1\), Proposition 7.3 for uniform continuity of compactly supported functions, and Theorem 9.2 for uniqueness of Haar integration. These results apply to right Haar measure by passing to the opposite group, whose product reverses the original product and whose topology is unchanged.
+
+Choose a relatively compact open identity neighborhood \(U\). Density gives \(\Gamma=\bigcup_{g\in G}gU\): the open set \(xU^{-1}\) meets \(G\) for every \(x\). Thus \(\Gamma\) is sigma-compact and \(\mu\) is sigma-finite. Integration against \(\mu\) defines a faithful normal semifinite trace \(\nu\) on \(A\); compact sets from a countable cover give an increasing sequence of finite-measure projections with supremum \(1\). Right invariance gives \(\nu\alpha_g=\nu\).
+
+Right translation is norm continuous on \(L^1(\mu)\). To see this directly, for \(k\in C_c(\Gamma)\) and \(y\) in a compact identity neighborhood, the supports of \(k(\,\cdot y)\) lie in one compact set. Uniform continuity from Proposition 7.3 therefore gives \(L^1\) continuity. Density of \(C_c\) and the isometry of right translations extend it to every \(L^1\) function. The dual action on \(L^\infty\) is consequently ultraweakly continuous: the pairing with \(h\in L^1\) satisfies
+\[
+\int f(xy)h(x)\,d\mu(x)=\int f(x)h(xy^{-1})\,d\mu(x).
+\]
+A function fixed by \(G\) is therefore fixed by every \(y\in\Gamma\), by density. If \(0\leq f\in L^\infty\) is such a function, then
+\[
+I_f(k)=\int f(x)k(x)\,d\mu(x)\qquad(k\in C_c(\Gamma))
+\]
+is a positive right-invariant functional. Riesz representation and uniqueness of Haar integration make it \(c\int k\,d\mu\) for some \(c\geq0\), including the zero functional. Density of \(C_c\) in \(L^1\) then gives \(f=c\) almost everywhere. Apply this to the positive and negative parts of the real and imaginary parts of a general invariant function. The fixed algebra is scalar, proving ergodicity.
+
+For freeness, fix \(g\ne e\). For each \(x\in\Gamma\), the distinct points \(x\) and \(xg\) have disjoint open neighborhoods; continuity of right translation gives an open neighborhood \(V_x\) of \(x\) with \(V_x\cap V_xg^{-1}=\varnothing\). If \(p=1_E\) were a nonzero identity-part projection for \(\alpha_g\), applying its defining equality to \(1_{V_x}\) would give
+\[
+1_E1_{V_x}=1_E1_{V_xg^{-1}}=0.
+\]
+Take a Borel representative for \(E\). Sigma-finiteness and inner regularity give a compact \(K\subset E\) of positive measure. Finitely many \(V_x\) cover \(K\), contradicting the displayed null intersections. Thus there is no nonzero identity part.
+
+Haar measure has an atom exactly when \(\Gamma\) is discrete. For the nontrivial direction, an atom has a finite positive-measure representative \(E\), by sigma-finiteness. If every singleton were null, outer regularity would give, for every \(x\), an open \(V_x\ni x\) with \(\mu(V_x)<\mu(E)\). Atomicity makes \(\mu(E\cap V_x)=0\). A positive-measure compact subset of \(E\) and a finite subcover give a contradiction. Hence some singleton has positive measure. Right invariance gives the same positive mass to every point. A compact neighborhood of the identity has finite measure and therefore contains only finitely many points; the Hausdorff property then gives an open singleton. Translations show that \(\Gamma\) is discrete. Conversely, in a discrete group every singleton is an open set of positive Haar measure and is an atom.
+
+Also \(\mu(\Gamma)<\infty\) exactly when \(\Gamma\) is compact. The compact case follows from finiteness on compact sets. Otherwise choose nonempty relatively compact open \(U\). Recursively select \(g_n\) outside the finite union \(\bigcup_{i<n}\overline{U^{-1}U}g_i\), possible because that union is compact and \(\Gamma\) is not. The sets \(Ug_n\) are pairwise disjoint and have the same positive measure. Thus \(\mu(\Gamma)=\infty\).
+
+If \(\Gamma\) is discrete, density implies \(G=\Gamma\), and its right action is transitive on the atoms. The atomic case of Theorem 3.2 identifies the crossed product with \(B(\ell^2(G))\), of type \(\mathrm I_\infty\). In the nondiscrete cases the coefficient algebra is nonatomic, and the finite or infinite total Haar mass gives the two type-II alternatives by that same theorem. \(\square\)
+
+Countable density in a locally compact group does not by itself assert that its \(L^2\) space is separable. The separably represented examples of Corollary 5.2 use the explicit groups \(\mathbb T\) and \(\mathbb R\).
+
 ## 5. A dilation produces type III
 
 **Example 5.1.** Let \(G\) be the countable group of affine transformations
@@ -298,6 +337,25 @@ The uniqueness lemma applies to the translation subgroup before the dilation is 
 **Corollary 5.2.** Factors of types I, II\(_1\), II\(_\infty\) and III exist in faithful representations on separable Hilbert spaces.
 
 **Proof.** The atomic shift example in Exercise 6.3 of the preceding lesson gives \(B(\ell^2(\mathbb Z))\), type I\(_\infty\); finite matrix factors give the finite type-I cases. Examples 4.3, 4.4 and 5.1 supply the other three types. In each new example the multiplication space \(H=L^2(\mathbb T)\) or \(L^2(\mathbb R)\) is separable, and \(G\) is countable. The regular representation is therefore on the separable Hilbert space \(H\otimes\ell^2(G)\). \(\square\)
+
+**Corollary 5.3 (all rational dilation parameters).** For every \(q\in\mathbb Q\setminus\{0\}\) with \(|q|\ne1\), let \(G_q\) be the group of transformations
+\[
+T_{n,b}(x)=q^n x+b\qquad(n\in\mathbb Z,\ b\in\mathbb Q).
+\]
+Its nonsingular action on \((\mathbb R,dx)\), with \(\alpha_Tf=f\circ T^{-1}\), gives a type-III crossed-product factor in a faithful representation on a separable Hilbert space.
+
+**Proof.** Composition and inversion satisfy
+\[
+T_{n,b}T_{m,c}=T_{n+m,b+q^n c},\qquad
+T_{n,b}^{-1}=T_{-n,-q^{-n}b}.
+\]
+All translations in these formulas are rational, so this is a countable group. Since \(|q|\ne1\), \(q^n=1\) only for \(n=0\). A nonidentity transformation is therefore either a nonzero translation, with no fixed point, or has slope different from one, with exactly one fixed point. All transformations preserve the Lebesgue measure class. Lemma 4.2 gives freeness, and the rational-translation subgroup gives ergodicity by Lemma 4.1.
+
+Suppose there were a faithful invariant normal semifinite trace on \(L^\infty(\mathbb R)\). Its invariance under rational translations and Lemma 3.1 make it a positive scalar multiple \(c\,dx\) of Lebesgue integration. But for any interval \(I\) of finite positive length and the dilation \(T(x)=qx\),
+\[
+\nu(\alpha_T(1_I))=c\,|qI|=|q|\,c\,|I|\ne c\,|I|=\nu(1_I).
+\]
+This contradicts invariance. Theorem 3.2 gives type III. The regular representation acts on \(L^2(\mathbb R)\otimes\ell^2(G_q)\), which is separable. \(\square\)
 
 ## 6. Graded exercises with complete solutions
 
@@ -368,7 +426,7 @@ Finally \(\pi(\sin(2\pi x))\) commutes with \(\pi(A)\) by commutativity and with
 
 ## References
 
-[Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer-Verlag, 1979.
+
 
 [Anantharaman–Popa] Claire Anantharaman and Sorin Popa, [An introduction to II1 factors](https://www.math.ucla.edu/~popa/Books/IIunV15.pdf), author-hosted draft IIunV15.
 

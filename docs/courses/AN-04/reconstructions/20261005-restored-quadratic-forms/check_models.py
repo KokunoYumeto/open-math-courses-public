@@ -15,10 +15,10 @@ def omega(n):return s.zeros(n).row_join(-s.eye(n)).col_join(s.eye(n).row_join(s.
 def ham(B):return -omega(B.rows//2)*B
 def zero(M):return s.simplify(M)==s.zeros(*M.shape)
 checks=[]
-p=subprocess.run([sys.executable,'-X','utf8',str(here/'check_algebra.py'),'--check-only'],check=True,capture_output=True,text=True,encoding='utf-8')
+p=subprocess.run([sys.executable,'-B','-X','utf8',str(here/'check_algebra.py'),'--check-only'],check=True,capture_output=True,text=True,encoding='utf-8')
 historical=json.loads(p.stdout.strip())
 assert historical['passed'] and historical['checks']==8 and not historical['writes']
-checks.append({'name':'Retained eight preparation model families','passed':True,
+checks.append({'name':'Eight finite algebra model families','passed':True,
  'preparation_script_sha256':sha(here/'check_algebra.py'),
  'scope':'All eight finite matrix, spectral, graph and hypothesis model families run without state writes or book inputs.'})
 
@@ -142,6 +142,24 @@ assert text.count('**Exercise ')==text.count('**Solution.**')==14
 assert not any(ord(ch)<32 and ch not in '\n\r' for ch in text)
 assert not re.search(r'(?<![\\A-Za-z])(?:qquad|quad)\b',text)
 assert '=left(' not in text
+
+# A real positive oscillator must still have only its upper spectral plane at C=0.
+zero_width_F=ham(s.eye(2))
+upper=s.Matrix([1,s.I]);lower=s.Matrix([1,-s.I])
+assert zero_width_F*upper==s.I*upper
+assert zero_width_F*lower==-s.I*lower
+assert s.im(s.Integer(-1))==0 # the unqualified old zero-width inequality admitted -1
+def pointed_zero_sector(w):return bool(s.re(w)>=0) and s.im(w)==0
+assert pointed_zero_sector(s.I/s.I) and not pointed_zero_sector((-s.I)/s.I)
+zero_width_projection=s.eye(2)/2-s.I*zero_width_F/2
+assert zero_width_projection.rank()==1 and zero_width_projection**2==zero_width_projection
+assert zero_width_projection*upper==upper and zero_width_projection*lower==s.zeros(2,1)
+assert (s.I*s.conjugate(upper).T*J1*upper)[0]==2
+assert (s.I*s.conjugate(lower).T*J1*lower)[0]==-2
+assert r'\operatorname{Re}w\ge0' in text
+checks.append({'name':'Pointed zero-width sector selects precisely the positive oscillator plane','passed':True,
+ 'scope':'Exact eigenvalues and both eigenspaces, exclusion of the negative imaginary eigenvalue, full rank-one projector and opposite Hermitian signs. The old whole-axis selection would have rank two and include a negative vector.'})
+
 report={'schema':'author-quadratic-form-computational-check/v1','passed':True,
  'lesson':lesson.name,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
  'checks':checks,'exercise_solution_count':14,'general_mathematical_certification':False,

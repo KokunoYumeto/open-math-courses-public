@@ -239,7 +239,7 @@ For \(a=F\), use the particular extension \(\widetilde F\) which constructed \(T
 \]
 The remainder depends only on \(z\). For \(z\ne0\) there is no real root in \(t\); the proof uses the smooth complex root instead.
 
-**Theorem 4.1 (one-momentum reduction).** Suppose \(p\) is smooth and homogeneous, \(p(c)=0\), and \(H_{\operatorname{Re}p}(c)\) is independent of \(R(c)\). There are a nonzero homogeneous multiplier \(a\) and homogeneous canonical coordinates at \((0,e_n)\) such that
+**Theorem 4.1 (one-momentum reduction).** Suppose \(p\) is smooth and homogeneous, \(p(c)=0\), and the complex Hamilton field \(H_p(c)\) is not a complex multiple of \(R(c)\). Equivalently at least one of its real and imaginary parts is independent of \(R(c)\). There are a nonzero homogeneous multiplier \(a\) and homogeneous canonical coordinates at \((0,e_n)\) such that
 \[
  ap=\eta_1+i f(y,\eta'),\qquad
  \eta'=(\eta_2,\ldots,\eta_n).
@@ -247,7 +247,9 @@ The remainder depends only on \(z\). For \(z\ne0\) there is no real root in \(t\
 \]
 The smooth real \(f\) has degree one and is independent of \(\eta_1\).
 
-**Proof.** Make \(p\) degree one by a positive multiplier. Theorem 1.1 then makes \(\operatorname{Re}p=\xi_1\) at the mark \((0,e_n)\). In particular \(\partial_{\xi_1}p\ne0\).
+**Proof.** If both real Hamilton components were real multiples of \(R(c)\), then \(H_p(c)\) would be a complex multiple of \(R(c)\). Thus a constant unit \(\varepsilon\in\{1,-i\}\) makes \(H_{\operatorname{Re}(\varepsilon p)}(c)\) independent of \(R(c)\). Choose \(\varepsilon=1\) whenever the real component is already nonradial; otherwise \(-ip\) has real part \(\operatorname{Im}p\). The unit is nowhere zero, homogeneous of degree zero and commutes with every canonical pullback. Work with \(\varepsilon p\) and temporarily denote it by \(p\).
+
+Make this \(p\) degree one by a positive multiplier. Theorem 1.1 then makes \(\operatorname{Re}p=\xi_1\) at the mark \((0,e_n)\). In particular \(\partial_{\xi_1}p\ne0\).
 
 Apply (4.1) to divide the real function \(\xi_1\) by \(p\):
 \[
@@ -264,7 +266,7 @@ Prescribe
 \]
 These functions have degrees zero and one and bracket \(\{\eta_1,y_1\}=1\). At the mark \(R\) has its nonzero last-momentum component, \(H_{y_1}=-\partial_{\xi_1}\), and \(H_{\eta_1}\) has \(x_1\) component one. Thus their fields and \(R\) are independent. The homogeneous coordinate theorem completes them with mark \((0,e_n)\).
 
-Equation (4.3) becomes \(qp=\eta_1-i r_2\). The identity \(H_{y_1}r_2=-\partial_{\xi_1}r_2=0\) is invariant under the coordinate change. In the new coordinates \(H_{y_1}=-\partial_{\eta_1}\), so \(f=-r_2\) is independent of \(\eta_1\), as asserted. The product of \(q\) and the initial positive multiplier is \(a\). \(\square\)
+Equation (4.3) becomes \(qp=\eta_1-i r_2\). The identity \(H_{y_1}r_2=-\partial_{\xi_1}r_2=0\) is invariant under the coordinate change. In the new coordinates \(H_{y_1}=-\partial_{\eta_1}\), so \(f=-r_2\) is independent of \(\eta_1\), as asserted. The product of \(q\), the initial positive multiplier and the constant unit \(\varepsilon\) is the multiplier \(a\) for the original symbol. \(\square\)
 
 The function \(f\) may depend on \(y_1\). That dependence carries the contact information in the next section.
 
@@ -759,13 +761,13 @@ Then \(\eta_1dy_1+\eta_2dy_2+\eta_3dy_3=\sum_j\xi_jdx_j\); the \(x_1h\,dx_1\) te
 \]
 It vanishes on \(V\), while it is nonzero at nearby points with \(\xi_2\ne0\). The nonzero homogeneous degree-zero multiplier \(e^{-x_1-i x_2}\) gives \(\xi_1+i\xi_2\) exactly, with identity coordinates and the positive third-momentum mark. This example satisfies the source's on-zero-set bracket condition in its full intended scope.
 
-The restored proof and its exact current programme dependencies have been reviewed for this lesson.
+Independent programme exposition: CC0-1.0 to the extent rights exist. [Source credit and component terms](source-provenance.json) accompany the [exact proof map](proof-map.json).
 
-## Sources and restoration
+## Mathematical sources
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the second edition (1994), Section 21.3, printed 296–303 / PDF 311–318. The full real, simple complex, fixed-contact and involutive models are retained, including both marked signs.
-- Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Theorems 7.5.5–7.5.6, printed 200–201 / PDF 215–216. Section 4 proves the precise one-variable complex division used here, including its common domain and lack of uniqueness.
-- Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, reprint of the 1983 edition, Theorem 13.3.3 and Corollary 13.3.5, printed 187–189 / PDF 200–202. Section 7 proves the needed two-variable elliptic specialization with its common parameter domain and every derivative estimate.
-- The [source and restoration record](source-provenance.json) identifies the exact sources and proof dependencies. The numerical illustration retains its DejaVu font notice.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, 2007 edition, Section21.3, printed296–303. The source results include the real, simple complex, fixed-contact and involutive models with both marked signs.
+- Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, 2003 edition, Theorems7.5.5–7.5.6, printed200–201. Section4 proves the needed one-variable complex division, with its common domain and lack of uniqueness.
+- Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, 2005 edition, Theorem13.3.3 and Corollary13.3.5, printed187–189. Section7 proves the two-variable elliptic specialization with a common parameter domain and every derivative estimate.
+- [Source credit and component terms](source-provenance.json) accompany the exact proof dependencies. The numerical illustration carries its DejaVu font notice.
 
-Original lesson, fourteen solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Restoration and prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. No book file or text is included.
+Programme text, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra. Additional proof arguments: GPT-6 Astra (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their individual terms.

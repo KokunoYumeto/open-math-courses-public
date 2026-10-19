@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Modular returns and comparison through the discrete core · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/modular-cyclic-returns.md">Editable Markdown</a></nav><article class="lesson"><h1 id="modular-returns-and-comparison-through-the-discrete-core">Modular returns and comparison through the discrete core</h1>
+<p><em>Written by GPT-6 Astra (OpenAI), Ultra. Original text and editable diagram: CC0.</em></p>
+<p>The modular return of an automorphism records when a power first becomes inner times modular. Its implementing phase must be untwisted before it becomes a root of unity. We compare automorphisms by retaining two commuting maps on the semifinite coefficient algebra: the restricted automorphism and the generator of the discrete decomposition. Their characteristic data are explicit, and the group-action comparison theorem then gives an actual normal outer conjugacy.</p>
+<p>This lesson uses the <a href="OA-MOD-UNI.html#oa-mod-uni-02">Powers-factor identification, UNI02–04</a>, <a href="OA-MOD-AC.html#oa-mod-ac-07">normal crossed-product transport, AC07</a>, and <a href="OA-MOD-NCA.html#oa-mod-nca-07">characteristic-class comparison, NCA07</a>. The exact additional inputs are the discrete-decomposition and generalized-trace theorems <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-DDP.md">DDP, Sections 2–7</a>, the semifinite automorphism results <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md">TS, Theorem 4.2 and Proposition 5.1</a>, the module coordinate <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-sequences-and-the-module-circle.md">CSM, Sections 4–6</a>, and the central-triviality and return-time results <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-triviality-and-modular-powers.md">CTP, Sections 1–4</a>. We verify all the hypotheses needed to apply NCA07 at the semifinite factor; its scope is not enlarged to an unspecified factor class.</p>
+<h2 id="the-classification-statement-and-its-labels"><span id="OA-MOD-MRC-01"></span><span id="oa-mod-mrc-01"></span>The classification statement and its labels</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>. Let <span class="math" data-tex="\(P=R_\lambda\)">\(P=R_\lambda\)</span> be the AFD factor with separable predual, and put</p>
+<span class="math math-display" data-tex="\[
+L=-\log\lambda,\qquad T=\frac{2\pi}{L}.
+\tag{1.1}
+\]">\[
+L=-\log\lambda,\qquad T=\frac{2\pi}{L}.
+\tag{1.1}
+\]</span>
+<p>The flow of weights has period <span class="math" data-tex="\(L\)">\(L\)</span>; the modular group of a generalized trace has period <span class="math" data-tex="\(T\)">\(T\)</span>. We use the additive module coordinate in <span class="math" data-tex="\(\mathbb R/L\mathbb Z\)">\(\mathbb R/L\mathbb Z\)</span> for which a normalization <span class="math" data-tex="\(\varphi\alpha=e^{-s}\varphi\)">\(\varphi\alpha=e^{-s}\varphi\)</span> has module <span class="math" data-tex="\([s]\)">\([s]\)</span>.</p>
+<p>Let <span class="math" data-tex="\(p_a(\alpha)\)">\(p_a(\alpha)\)</span> be the least positive centrally trivial power, or zero when there is none. CTP Theorem 2.1 gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ct}(P)
+=\operatorname{Int}(P)\{\sigma_t^\varphi:t\in\mathbb R\},
+\qquad
+\operatorname{Ct}(P)/\operatorname{Int}(P)\cong\mathbb R/T\mathbb Z
+\tag{1.2}
+\]">\[
+\operatorname{Ct}(P)
+=\operatorname{Int}(P)\{\sigma_t^\varphi:t\in\mathbb R\},
+\qquad
+\operatorname{Ct}(P)/\operatorname{Int}(P)\cong\mathbb R/T\mathbb Z
+\tag{1.2}
+\]</span>
+<p>as groups. This is the algebraic parametrization; we make no assertion that its inherited quotient topology is the ordinary circle topology. Modular automorphisms preserve the generalized trace and have zero module; inner automorphisms also have zero module. Consequently a centrally trivial power gives <span class="math" data-tex="\(p\operatorname{mod}(\alpha)=0\)">\(p\operatorname{mod}(\alpha)=0\)</span>.</p>
+<p>When <span class="math" data-tex="\(p=p_a(\alpha)&gt;0\)">\(p=p_a(\alpha)&gt;0\)</span>, let <span class="math" data-tex="\([t]\)">\([t]\)</span> be the unique modular outer time of <span class="math" data-tex="\(\alpha^p\)">\(\alpha^p\)</span>, and choose <span class="math" data-tex="\(0\le t&lt;T\)">\(0\le t&lt;T\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+q(\alpha)^p=q(\sigma_t^\varphi),\qquad
+q(\alpha_0)=q(\alpha)q(\sigma_{-t/p}^\varphi),\qquad
+\delta(\alpha)=\operatorname{Ob}(\alpha_0),
+\tag{1.3}
+\]">\[
+q(\alpha)^p=q(\sigma_t^\varphi),\qquad
+q(\alpha_0)=q(\alpha)q(\sigma_{-t/p}^\varphi),\qquad
+\delta(\alpha)=\operatorname{Ob}(\alpha_0),
+\tag{1.3}
+\]</span>
+<p>where <span class="math" data-tex="\(q\)">\(q\)</span> denotes the outer quotient. The modular outer class is independent of the weight and central in that quotient, by modular naturality and the Connes cocycle identity. Consequently <span class="math" data-tex="\(\alpha_0\)">\(\alpha_0\)</span> has outer period exactly <span class="math" data-tex="\(p\)">\(p\)</span>. Its asymptotic period is also <span class="math" data-tex="\(p\)">\(p\)</span>: multiplying by a modular class does not change membership in the normal subgroup of centrally trivial classes. Thus <span class="math" data-tex="\(\delta^p=1\)">\(\delta^p=1\)</span>.</p>
+<p><strong>Theorem.</strong> Automorphisms of <span class="math" data-tex="\(P\)">\(P\)</span> with positive asymptotic period are classified up to outer conjugacy by</p>
+<span class="math math-display" data-tex="\[
+\bigl(p,[t],\delta,[s]\bigr),\qquad
+p\ge1,\quad 0\le t&lt;T,\quad \delta^p=1,\quad p[s]=0.
+\tag{1.4}
+\]">\[
+\bigl(p,[t],\delta,[s]\bigr),\qquad
+p\ge1,\quad 0\le t&lt;T,\quad \delta^p=1,\quad p[s]=0.
+\tag{1.4}
+\]</span>
+<p>Every such tuple is realized. Automorphisms with asymptotic period zero are classified by their module <span class="math" data-tex="\([s]\)">\([s]\)</span>, and every module occurs. There is no return time or finite obstruction assigned in the zero-period case.</p>
+<p>All comparisons below are normal isomorphisms followed by inner perturbations. Sections 2–7 prove these assertions using the explicitly linked programme theorems.</p>
+<h2 id="one-discrete-decomposition-and-its-semifinite-tests"><span id="OA-MOD-MRC-02"></span><span id="oa-mod-mrc-02"></span>One discrete decomposition and its semifinite tests</h2>
+<p>Fix a generalized trace <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and the same normal discrete decomposition for both automorphisms:</p>
+<span class="math math-display" data-tex="\[
+P=Q\rtimes_\theta\mathbb Z,\qquad
+Q=P_\varphi\cong R_\infty,\qquad
+\varphi=\tau E,\qquad
+\tau\theta=\lambda\tau,\qquad
+UxU^*=\theta(x).
+\tag{2.1}
+\]">\[
+P=Q\rtimes_\theta\mathbb Z,\qquad
+Q=P_\varphi\cong R_\infty,\qquad
+\varphi=\tau E,\qquad
+\tau\theta=\lambda\tau,\qquad
+UxU^*=\theta(x).
+\tag{2.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\sigma_r^\varphi(U)=e^{-iLr}U\)">\(\sigma_r^\varphi(U)=e^{-iLr}U\)</span>. The full DDP theorem supplies the decomposition, while TIC02–03 and UNI04 identify its coefficient algebra and the factor. All traces and weights are faithful, normal and semifinite.</p>
+<p><strong>Normalization.</strong> Every automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> can be perturbed by an inner automorphism so that</p>
+<span class="math math-display" data-tex="\[
+\varphi\alpha=a\varphi,\qquad a=e^{-s},\quad 0\le s&lt;L,
+\qquad \alpha(U)=U.
+\tag{2.2}
+\]">\[
+\varphi\alpha=a\varphi,\qquad a=e^{-s},\quad 0\le s&lt;L,
+\qquad \alpha(U)=U.
+\tag{2.2}
+\]</span>
+<p>The scalar <span class="math" data-tex="\(a\in(\lambda,1]\)">\(a\in(\lambda,1]\)</span> is determined by the module.</p>
+<p>Indeed, generalized-trace comparison first gives a scalar multiple after an inner perturbation. Inner powers of <span class="math" data-tex="\(U\)">\(U\)</span> change that scalar by powers of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, so the representative can be chosen in the stated interval. Naturality and invariance of the modular group under scalar multiplication of a weight imply that the resulting automorphism commutes with <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>. It therefore preserves <span class="math" data-tex="\(Q\)">\(Q\)</span> and has <span class="math" data-tex="\(\alpha(U)=cU\)">\(\alpha(U)=cU\)</span> with <span class="math" data-tex="\(c\in\mathcal U(Q)\)">\(c\in\mathcal U(Q)\)</span>. The discrete trace-scaling coboundary theorem gives <span class="math" data-tex="\(c=w^*\theta(w)\)">\(c=w^*\theta(w)\)</span>. Replacing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by <span class="math" data-tex="\(\operatorname{Ad}w\alpha\)">\(\operatorname{Ad}w\alpha\)</span> fixes <span class="math" data-tex="\(U\)">\(U\)</span>; because <span class="math" data-tex="\(w\in Q=P_\varphi\)">\(w\in Q=P_\varphi\)</span>, its scalar in (2.2) is unchanged.</p>
+<p>Writing <span class="math" data-tex="\(\beta=\alpha|_Q\)">\(\beta=\alpha|_Q\)</span>, we obtain</p>
+<span class="math math-display" data-tex="\[
+\beta\theta=\theta\beta,\qquad \tau\beta=a\tau.
+\tag{2.3}
+\]">\[
+\beta\theta=\theta\beta,\qquad \tau\beta=a\tau.
+\tag{2.3}
+\]</span>
+<p>Commutation follows by applying <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to <span class="math" data-tex="\(UxU^*=\theta(x)\)">\(UxU^*=\theta(x)\)</span>. The trace identity follows by restricting (2.2) to <span class="math" data-tex="\(Q_+\)">\(Q_+\)</span>. Conversely the extension of such a <span class="math" data-tex="\(\beta\)">\(\beta\)</span> fixing <span class="math" data-tex="\(U\)">\(U\)</span> is normal by the regular crossed-product construction.</p>
+<p>We will need two tests.</p>
+<p><strong>Irreducibility test.</strong> <span class="math" data-tex="\(Q&#x27;\cap P=\mathbb C1\)">\(Q&#x27;\cap P=\mathbb C1\)</span>. To prove it, take Fourier coefficients of an element commuting with <span class="math" data-tex="\(Q\)">\(Q\)</span>. A nonzero coefficient of degree <span class="math" data-tex="\(n\)">\(n\)</span> intertwines <span class="math" data-tex="\(\theta^n\)">\(\theta^n\)</span> with the identity. Writing that coefficient as <span class="math" data-tex="\(bU^n\)">\(bU^n\)</span>, commutation gives <span class="math" data-tex="\(b\theta^n(x)=xb\)">\(b\theta^n(x)=xb\)</span>. Thus <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> and <span class="math" data-tex="\(bb^*\)">\(bb^*\)</span> are scalar, because they commute with <span class="math" data-tex="\(\theta^n(Q)\)">\(\theta^n(Q)\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>, respectively. If <span class="math" data-tex="\(w\)">\(w\)</span> is the polar part of <span class="math" data-tex="\(b\)">\(b\)</span>, it is unitary and <span class="math" data-tex="\(\theta^n(x)=w^*xw\)">\(\theta^n(x)=w^*xw\)</span>. An inner automorphism preserves <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, whereas <span class="math" data-tex="\(\tau\theta^n=\lambda^n\tau\)">\(\tau\theta^n=\lambda^n\tau\)</span>; hence <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. The degree-zero coefficient is scalar. Fourier uniqueness, or the normal Fejér sums, proves the assertion.</p>
+<p>It follows that an automorphism of <span class="math" data-tex="\(P\)">\(P\)</span> fixing <span class="math" data-tex="\(Q\)">\(Q\)</span> pointwise sends <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(zU\)">\(zU\)</span>, <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>: <span class="math" data-tex="\(U^*\kappa(U)\)">\(U^*\kappa(U)\)</span> commutes with <span class="math" data-tex="\(Q\)">\(Q\)</span>. Every such phase is <span class="math" data-tex="\(e^{-iLr}\)">\(e^{-iLr}\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\kappa|_Q=\mathrm{id}\quad\Longrightarrow\quad
+\kappa=\sigma_r^\varphi\ \text{for some }r.
+\tag{2.4}
+\]">\[
+\kappa|_Q=\mathrm{id}\quad\Longrightarrow\quad
+\kappa=\sigma_r^\varphi\ \text{for some }r.
+\tag{2.4}
+\]</span>
+<p><strong>Semifinite core test.</strong> The core-inner automorphisms of <span class="math" data-tex="\(Q\)">\(Q\)</span> are exactly its inner automorphisms. Since <span class="math" data-tex="\(\sigma^\tau=\mathrm{id}\)">\(\sigma^\tau=\mathrm{id}\)</span>, the regular representation MCC01 has constant coefficient operators and translations on its real coordinate. Thus</p>
+<span class="math math-display" data-tex="\[
+C(Q)=Q\overline\otimes\mathcal A,\qquad
+\mathcal A=\{\ell(r):r\in\mathbb R\}&#x27;&#x27;,
+\quad(\ell(r)f)(x)=f(x-r).
+\tag{2.5}
+\]">\[
+C(Q)=Q\overline\otimes\mathcal A,\qquad
+\mathcal A=\{\ell(r):r\in\mathbb R\}&#x27;&#x27;,
+\quad(\ell(r)f)(x)=f(x-r).
+\tag{2.5}
+\]</span>
+<p>The Hilbert-space interchange identifies the two generating algebras normally. The translations commute, so <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is abelian. Moreover <span class="math" data-tex="\(Z(C(Q))=1\otimes\mathcal A\)">\(Z(C(Q))=1\otimes\mathcal A\)</span>. Indeed, normal slices on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> of an element commuting with <span class="math" data-tex="\(Q\otimes1\)">\(Q\otimes1\)</span> are scalar. If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is any normal state on <span class="math" data-tex="\(Q\)">\(Q\)</span>, all these slices agree with those of <span class="math" data-tex="\(1\otimes(\rho\otimes\mathrm{id})(X)\)">\(1\otimes(\rho\otimes\mathrm{id})(X)\)</span>; separation by product normal functionals proves equality. Conversely <span class="math" data-tex="\(1\otimes\mathcal A\)">\(1\otimes\mathcal A\)</span> is central.
+If the canonical extension of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is implemented by a unitary <span class="math" data-tex="\(W\)">\(W\)</span> in (2.5), then
+<span class="math" data-tex="\(W(x\otimes1)=(\gamma(x)\otimes1)W\)">\(W(x\otimes1)=(\gamma(x)\otimes1)W\)</span>. Some normal slice
+<span class="math" data-tex="\(b=(\mathrm{id}\otimes f)(W)\)">\(b=(\mathrm{id}\otimes f)(W)\)</span> is nonzero, since product normal functionals separate points. It satisfies <span class="math" data-tex="\(bx=\gamma(x)b\)">\(bx=\gamma(x)b\)</span>. Thus <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> and <span class="math" data-tex="\(bb^*\)">\(bb^*\)</span> are scalar; the polar part of <span class="math" data-tex="\(b\)">\(b\)</span> is a unitary implementing <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Conversely an inner automorphism extends by its same implementing unitary, by the inner-change cocycle formula. This proves the test without a measurable choice of fibre implementers.</p>
+<p>If <span class="math" data-tex="\(\tau\gamma=c\tau\)">\(\tau\gamma=c\tau\)</span>, the canonical extension formula MCC01 sends the core generator to</p>
+<span class="math math-display" data-tex="\[
+\widetilde\gamma(\lambda_\tau(r))=c^{-ir}\lambda_\tau(r).
+\tag{2.6}
+\]">\[
+\widetilde\gamma(\lambda_\tau(r))=c^{-ir}\lambda_\tau(r).
+\tag{2.6}
+\]</span>
+<p>Thus its action on the core centre depends only on <span class="math" data-tex="\(c\)">\(c\)</span>. In particular equal trace multipliers give equal core-centre actions.</p>
+<p>Finally the earlier semifinite results give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ct}(Q)=\operatorname{Int}(Q),\qquad
+\tau\gamma=\tau\ \Longrightarrow\
+\gamma\in\overline{\operatorname{Int}(Q)}.
+\tag{2.7}
+\]">\[
+\operatorname{Ct}(Q)=\operatorname{Int}(Q),\qquad
+\tau\gamma=\tau\ \Longrightarrow\
+\gamma\in\overline{\operatorname{Int}(Q)}.
+\tag{2.7}
+\]</span>
+<p>The factor <span class="math" data-tex="\(Q\)">\(Q\)</span> has separable predual and is strongly stable. The type-II relative-centralizer theorem CFR06, applied to the empty relative constraint, makes <span class="math" data-tex="\(Q_\omega\)">\(Q_\omega\)</span> type II. These are precisely the semifinite analytic facts we will use, not assertions about every factor.</p>
+<h2 id="the-finite-return-becomes-an-integer-relation"><span id="OA-MOD-MRC-03"></span><span id="oa-mod-mrc-03"></span>The finite return becomes an integer relation</h2>
+<p>Suppose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has <span class="math" data-tex="\(p_a(\alpha)=p&gt;0\)">\(p_a(\alpha)=p&gt;0\)</span> and labels <span class="math" data-tex="\([t],\delta,[s]\)">\([t],\delta,[s]\)</span>. First replace it by
+<span class="math" data-tex="\(\alpha_0=\alpha\sigma_{-t/p}^\varphi\)">\(\alpha_0=\alpha\sigma_{-t/p}^\varphi\)</span>. Equation (1.3) shows that</p>
+<span class="math math-display" data-tex="\[
+p_o(\alpha_0)=p_a(\alpha_0)=p,\qquad
+\operatorname{Ob}(\alpha_0)=\delta,\qquad
+\operatorname{mod}(\alpha_0)=[s].
+\tag{3.1}
+\]">\[
+p_o(\alpha_0)=p_a(\alpha_0)=p,\qquad
+\operatorname{Ob}(\alpha_0)=\delta,\qquad
+\operatorname{mod}(\alpha_0)=[s].
+\tag{3.1}
+\]</span>
+<p>This uses centrality of modular outer classes; it does not require the original representatives to commute. Apply the normalization of Section 2 to <span class="math" data-tex="\(\alpha_0\)">\(\alpha_0\)</span>, and continue to call its normalized lift <span class="math" data-tex="\(\alpha_0\)">\(\alpha_0\)</span>. Inner perturbations preserve (3.1).</p>
+<p>Because <span class="math" data-tex="\(p[s]=0\)">\(p[s]=0\)</span>, there is an integer <span class="math" data-tex="\(q\)">\(q\)</span> with</p>
+<span class="math math-display" data-tex="\[
+ps=qL,\qquad a^p=\lambda^q.
+\tag{3.2}
+\]">\[
+ps=qL,\qquad a^p=\lambda^q.
+\tag{3.2}
+\]</span>
+<p>Choose <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(\alpha_0^p=\operatorname{Ad}u\)">\(\alpha_0^p=\operatorname{Ad}u\)</span>. The ordinary obstruction gives <span class="math" data-tex="\(\alpha_0(u)=\delta u\)">\(\alpha_0(u)=\delta u\)</span>. Weight scaling and the inner-change cocycle identity give</p>
+<span class="math math-display" data-tex="\[
+\sigma_r^\varphi(u)=a^{ipr}u=\lambda^{iqr}u.
+\tag{3.3}
+\]">\[
+\sigma_r^\varphi(u)=a^{ipr}u=\lambda^{iqr}u.
+\tag{3.3}
+\]</span>
+<p>Hence <span class="math" data-tex="\(v=uU^{-q}\)">\(v=uU^{-q}\)</span> is in <span class="math" data-tex="\(\mathcal U(Q)\)">\(\mathcal U(Q)\)</span>. Since <span class="math" data-tex="\(\alpha_0\)">\(\alpha_0\)</span> fixes <span class="math" data-tex="\(U\)">\(U\)</span>, its <span class="math" data-tex="\(p\)">\(p\)</span>-th power fixes <span class="math" data-tex="\(U\)">\(U\)</span>, so <span class="math" data-tex="\(uU=Uu\)">\(uU=Uu\)</span>. Restricting the power equation to <span class="math" data-tex="\(Q\)">\(Q\)</span> now gives all three identities</p>
+<span class="math math-display" data-tex="\[
+\beta^p=\operatorname{Ad}v\,\theta^q,\qquad
+\theta(v)=v,\qquad \beta(v)=\delta v.
+\tag{3.4}
+\]">\[
+\beta^p=\operatorname{Ad}v\,\theta^q,\qquad
+\theta(v)=v,\qquad \beta(v)=\delta v.
+\tag{3.4}
+\]</span>
+<p>Define a genuine action of <span class="math" data-tex="\(G=\mathbb Z^2\)">\(G=\mathbb Z^2\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span> by</p>
+<span class="math math-display" data-tex="\[
+A_{(m,n)}=\beta^m\theta^n.
+\tag{3.5}
+\]">\[
+A_{(m,n)}=\beta^m\theta^n.
+\tag{3.5}
+\]</span>
+<p>Its inner kernel is exactly</p>
+<span class="math math-display" data-tex="\[
+H=\mathbb Z(p,-q).
+\tag{3.6}
+\]">\[
+H=\mathbb Z(p,-q).
+\tag{3.6}
+\]</span>
+<p>The inclusion from right to left follows from (3.4): the element <span class="math" data-tex="\(\ell(p,-q)\)">\(\ell(p,-q)\)</span> acts by <span class="math" data-tex="\(\operatorname{Ad}v^\ell\)">\(\operatorname{Ad}v^\ell\)</span>.</p>
+<p>For the converse suppose <span class="math" data-tex="\(\beta^m\theta^n=\operatorname{Ad}w\)">\(\beta^m\theta^n=\operatorname{Ad}w\)</span> on <span class="math" data-tex="\(Q\)">\(Q\)</span>. The automorphism
+<span class="math" data-tex="\(\kappa=\operatorname{Ad}w^*\,\alpha_0^m\operatorname{Ad}U^n\)">\(\kappa=\operatorname{Ad}w^*\,\alpha_0^m\operatorname{Ad}U^n\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> fixes <span class="math" data-tex="\(Q\)">\(Q\)</span>. By (2.4) it is modular. Thus <span class="math" data-tex="\(\alpha_0^m\)">\(\alpha_0^m\)</span> is inner times modular and is centrally trivial. Since its first such positive power is <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(m=p\ell\)">\(m=p\ell\)</span> for an integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. An inner automorphism of <span class="math" data-tex="\(Q\)">\(Q\)</span> preserves <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+1=a^m\lambda^n=\lambda^{q\ell+n}.
+\]">\[
+1=a^m\lambda^n=\lambda^{q\ell+n}.
+\]</span>
+<p>As <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, <span class="math" data-tex="\(n=-q\ell\)">\(n=-q\ell\)</span>. This proves (3.6), including negative indices.</p>
+<p>The semifinite core test and (2.7) show that this is also the core-inner kernel and the centrally trivial kernel. We have therefore identified all the kernels required by NCA07.</p>
+<h2 id="the-characteristic-data-and-every-comparison-hypothesis"><span id="OA-MOD-MRC-04"></span><span id="oa-mod-mrc-04"></span>The characteristic data and every comparison hypothesis</h2>
+<p>Take two automorphisms with equal positive-period labels, and apply Sections 2–3 to both. They yield commuting pairs <span class="math" data-tex="\((\beta_1,\theta)\)">\((\beta_1,\theta)\)</span>, <span class="math" data-tex="\((\beta_2,\theta)\)">\((\beta_2,\theta)\)</span> on the same <span class="math" data-tex="\(Q\)">\(Q\)</span>, with the same <span class="math" data-tex="\(a,p,q,\delta\)">\(a,p,q,\delta\)</span>, and implementing unitaries <span class="math" data-tex="\(v_1,v_2\)">\(v_1,v_2\)</span>. Let <span class="math" data-tex="\(A^i\)">\(A^i\)</span> be their actions (3.5).</p>
+<p>For <span class="math" data-tex="\(h_\ell=\ell(p,-q)\)">\(h_\ell=\ell(p,-q)\)</span>, choose core implementers</p>
+<span class="math math-display" data-tex="\[
+T^i_{h_\ell}=v_i^\ell\in Q.
+\tag{4.1}
+\]">\[
+T^i_{h_\ell}=v_i^\ell\in Q.
+\tag{4.1}
+\]</span>
+<p>The actions are genuine, so all their cocycle coefficients are 1. In the exact convention of NCA01 their extended characteristic data are</p>
+<span class="math math-display" data-tex="\[
+\mu_i(h_\ell,h_k)=1,\qquad
+d^i_r(h_\ell)=1,\qquad
+\lambda_i(((m,n),r),h_\ell)=\delta^{m\ell}.
+\tag{4.2}
+\]">\[
+\mu_i(h_\ell,h_k)=1,\qquad
+d^i_r(h_\ell)=1,\qquad
+\lambda_i(((m,n),r),h_\ell)=\delta^{m\ell}.
+\tag{4.2}
+\]</span>
+<p>The first equation follows from multiplication of powers of one unitary. The second holds because the dual flow fixes <span class="math" data-tex="\(Q\)">\(Q\)</span>. For the third, <span class="math" data-tex="\(\theta(v_i)=v_i\)">\(\theta(v_i)=v_i\)</span> and <span class="math" data-tex="\(\beta_i(v_i)=\delta v_i\)">\(\beta_i(v_i)=\delta v_i\)</span>, including inverse powers, give
+<span class="math" data-tex="\(\beta_i^m\theta^n(v_i^\ell)=\delta^{m\ell}v_i^\ell\)">\(\beta_i^m\theta^n(v_i^\ell)=\delta^{m\ell}v_i^\ell\)</span>. The group is abelian, so no conjugated subgroup index occurs. Thus the two characteristic pairs agree exactly.</p>
+<p>Here are the remaining analytic hypotheses of NCA07.</p>
+<ul>
+<li><span class="math" data-tex="\(Q\)">\(Q\)</span> has separable predual, and <span class="math" data-tex="\(Q_\omega\)">\(Q_\omega\)</span> is type II, by Section 2.</li>
+<li>Section 3 identifies the same core-inner and centrally trivial kernel <span class="math" data-tex="\(H\)">\(H\)</span> for both actions.</li>
+<li><span class="math" data-tex="\(G/H\)">\(G/H\)</span> is countable amenable. For <span class="math" data-tex="\(d=\gcd(p,q)\)">\(d=\gcd(p,q)\)</span>, the Euclidean algorithm gives <span class="math" data-tex="\(G/H\cong\mathbb Z\oplus\mathbb Z/d\mathbb Z\)">\(G/H\cong\mathbb Z\oplus\mathbb Z/d\mathbb Z\)</span>. Products of long integer intervals with the finite group are a Følner sequence.</li>
+<li>On every <span class="math" data-tex="\(g=(m,n)\)">\(g=(m,n)\)</span>, both actions scale the trace by <span class="math" data-tex="\(a^m\lambda^n\)">\(a^m\lambda^n\)</span>, hence have the same core-centre action by (2.6).</li>
+<li><span class="math" data-tex="\(A^1_g(A^2_g)^{-1}\)">\(A^1_g(A^2_g)^{-1}\)</span> preserves the trace, because its two multipliers cancel. It is approximately inner by (2.7).</li>
+</ul>
+<p>NCA07 therefore supplies an approximately inner normal automorphism <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span> and unitaries <span class="math" data-tex="\(W_g\in Q\)">\(W_g\in Q\)</span>, <span class="math" data-tex="\(W_0=1\)">\(W_0=1\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+A^2_g=\operatorname{Ad}W_g\,B_g,\qquad
+B_g=\Theta A^1_g\Theta^{-1},\qquad
+W_{g+h}=W_gB_g(W_h).
+\tag{4.3}
+\]">\[
+A^2_g=\operatorname{Ad}W_g\,B_g,\qquad
+B_g=\Theta A^1_g\Theta^{-1},\qquad
+W_{g+h}=W_gB_g(W_h).
+\tag{4.3}
+\]</span>
+<p>The last equation is genuine cocycle compatibility. It follows from the full coefficient conclusion of that theorem, because both original cocycle coefficients are 1. Merely comparing individual generators would not supply it.</p>
+<p><img src="assets/modular-cyclic-returns.svg" alt="The two-generator comparison and its normal crossed-product reconstruction" /></p>
+<p>Sections 2–6 identify the kernels and characteristic coefficients in the diagram. The last arrow uses the genuine cocycle equation, and the return-time twist is restored only after the normal crossed-product isomorphism is constructed.</p>
+<h2 id="reconstructing-the-normal-outer-conjugacy"><span id="OA-MOD-MRC-05"></span><span id="oa-mod-mrc-05"></span>Reconstructing the normal outer conjugacy</h2>
+<p>Write <span class="math" data-tex="\(b=(1,0)\)">\(b=(1,0)\)</span>, <span class="math" data-tex="\(e=(0,1)\)">\(e=(0,1)\)</span>. Equation (4.3) gives</p>
+<span class="math math-display" data-tex="\[
+\beta_2=\operatorname{Ad}W_b\,\Theta\beta_1\Theta^{-1},
+\qquad
+\theta=\operatorname{Ad}W_e\,\Theta\theta\Theta^{-1}.
+\tag{5.1}
+\]">\[
+\beta_2=\operatorname{Ad}W_b\,\Theta\beta_1\Theta^{-1},
+\qquad
+\theta=\operatorname{Ad}W_e\,\Theta\theta\Theta^{-1}.
+\tag{5.1}
+\]</span>
+<p>By the explicit normal crossed-product transport AC07, the second equation gives a normal isomorphism, with normal inverse,</p>
+<span class="math math-display" data-tex="\[
+F:P\longrightarrow P,\qquad
+F(x)=\Theta(x)\ (x\in Q),\qquad F(U)=W_e^*U.
+\tag{5.2}
+\]">\[
+F:P\longrightarrow P,\qquad
+F(x)=\Theta(x)\ (x\in Q),\qquad F(U)=W_e^*U.
+\tag{5.2}
+\]</span>
+<p>The regular-coordinate proof of AC07 applies to arbitrary normal automorphisms and supplies onto-ness; covariance alone is not used as a normality argument.</p>
+<p>The extensions <span class="math" data-tex="\(\alpha_{0,i}\)">\(\alpha_{0,i}\)</span> fix <span class="math" data-tex="\(U\)">\(U\)</span>. We claim</p>
+<span class="math math-display" data-tex="\[
+\alpha_{0,2}=\operatorname{Ad}W_b\,F\alpha_{0,1}F^{-1}.
+\tag{5.3}
+\]">\[
+\alpha_{0,2}=\operatorname{Ad}W_b\,F\alpha_{0,1}F^{-1}.
+\tag{5.3}
+\]</span>
+<p>On <span class="math" data-tex="\(Q\)">\(Q\)</span> this is (5.1). For the crossing unitary, commutativity of <span class="math" data-tex="\(b,e\)">\(b,e\)</span> and the two cocycle equations in (4.3) give</p>
+<span class="math math-display" data-tex="\[
+W_bB_b(W_e)=W_eB_e(W_b).
+\tag{5.4}
+\]">\[
+W_bB_b(W_e)=W_eB_e(W_b).
+\tag{5.4}
+\]</span>
+<p>Using <span class="math" data-tex="\(\beta_2=\operatorname{Ad}W_bB_b\)">\(\beta_2=\operatorname{Ad}W_bB_b\)</span> and
+<span class="math" data-tex="\(\theta=\operatorname{Ad}W_eB_e\)">\(\theta=\operatorname{Ad}W_eB_e\)</span>, calculate</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_b^*\alpha_{0,2}(W_e^*U)W_b
+&amp;=W_b^*\beta_2(W_e^*)\theta(W_b)U\\
+&amp;=B_b(W_e^*)W_b^*W_eB_e(W_b)W_e^*U\\
+&amp;=W_e^*U=F(U).
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+W_b^*\alpha_{0,2}(W_e^*U)W_b
+&amp;=W_b^*\beta_2(W_e^*)\theta(W_b)U\\
+&amp;=B_b(W_e^*)W_b^*W_eB_e(W_b)W_e^*U\\
+&amp;=W_e^*U=F(U).
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>The third line is exactly (5.4). This proves the intertwining on <span class="math" data-tex="\(Q,U\)">\(Q,U\)</span>, hence on all of <span class="math" data-tex="\(P\)">\(P\)</span> by normality.</p>
+<p>Undoing the inner normalizations only changes the correcting unitary. Thus there is a unitary <span class="math" data-tex="\(w\)">\(w\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\alpha_{0,2}=\operatorname{Ad}w\,F\alpha_{0,1}F^{-1}
+\tag{5.6}
+\]">\[
+\alpha_{0,2}=\operatorname{Ad}w\,F\alpha_{0,1}F^{-1}
+\tag{5.6}
+\]</span>
+<p>for the original untwisted representatives. Put <span class="math" data-tex="\(r=t/p\)">\(r=t/p\)</span>. Modular naturality and the Connes cocycle relation give a unitary <span class="math" data-tex="\(c\)">\(c\)</span> with</p>
+<span class="math math-display" data-tex="\[
+F\sigma_r^\varphi F^{-1}=\operatorname{Ad}c\,\sigma_r^\varphi.
+\tag{5.7}
+\]">\[
+F\sigma_r^\varphi F^{-1}=\operatorname{Ad}c\,\sigma_r^\varphi.
+\tag{5.7}
+\]</span>
+<p>For example <span class="math" data-tex="\(c=(D(\varphi\circ F^{-1}):D\varphi)_r\)">\(c=(D(\varphi\circ F^{-1}):D\varphi)_r\)</span>. Since
+<span class="math" data-tex="\(\alpha_i=\alpha_{0,i}\sigma_r^\varphi\)">\(\alpha_i=\alpha_{0,i}\sigma_r^\varphi\)</span>, substitution into (5.6) yields</p>
+<span class="math math-display" data-tex="\[
+F\alpha_1F^{-1}
+=\operatorname{Ad}\!\bigl(w^*\alpha_{0,2}(c)\bigr)\alpha_2.
+\tag{5.8}
+\]">\[
+F\alpha_1F^{-1}
+=\operatorname{Ad}\!\bigl(w^*\alpha_{0,2}(c)\bigr)\alpha_2.
+\tag{5.8}
+\]</span>
+<p>This is the required normal outer conjugacy after retwisting. It keeps the same selected representative <span class="math" data-tex="\(t\)">\(t\)</span> for both automorphisms.</p>
+<p>Necessity follows as well. Outer conjugacy preserves the centrally trivial subgroup and hence <span class="math" data-tex="\(p\)">\(p\)</span>. Modular outer classes are central and natural, so it preserves <span class="math" data-tex="\([t]\)">\([t]\)</span>. Their fixed representatives agree, and untwisting preserves outer conjugacy; ordinary obstruction invariance gives equality of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The module takes values in the abelian translation group of the periodic core centre, so conjugation leaves <span class="math" data-tex="\([s]\)">\([s]\)</span> unchanged. This completes both directions for positive period.</p>
+<h2 id="the-case-without-a-centrally-trivial-return"><span id="OA-MOD-MRC-06"></span><span id="oa-mod-mrc-06"></span>The case without a centrally trivial return</h2>
+<p>Suppose <span class="math" data-tex="\(p_a(\alpha_1)=p_a(\alpha_2)=0\)">\(p_a(\alpha_1)=p_a(\alpha_2)=0\)</span> and their modules agree. There is no untwisting. Normalize both using Section 2 to obtain the same <span class="math" data-tex="\(a\)">\(a\)</span> and commuting pairs <span class="math" data-tex="\((\beta_i,\theta)\)">\((\beta_i,\theta)\)</span>. Define <span class="math" data-tex="\(A^i\)">\(A^i\)</span> on <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> as before.</p>
+<p>Their inner kernel is trivial. Indeed, if <span class="math" data-tex="\(\beta_i^m\theta^n\)">\(\beta_i^m\theta^n\)</span> is inner, the argument using (2.4) makes <span class="math" data-tex="\(\alpha_i^m\)">\(\alpha_i^m\)</span> centrally trivial. The zero asymptotic period forces <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. The trace multiplier then gives <span class="math" data-tex="\(\lambda^n=1\)">\(\lambda^n=1\)</span>, hence <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. The core-inner and centrally trivial kernels are the same by Section 2.</p>
+<p>The quotient is now <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>, whose square boxes are Følner sets. Characteristic data on the zero subgroup are trivial. Trace multipliers still agree, and their pointwise differences are trace preserving and approximately inner. All the other NCA07 hypotheses were established in Section 2.</p>
+<p>Its conclusion is again (4.3). The same calculation (5.1)–(5.5) reconstructs a normal outer conjugacy of the normalized automorphisms. Undo the inner perturbations. There is no modular-time division, finite obstruction or retwisting in this case. Necessity of equal module follows as in Section 5.</p>
+<h2 id="realizing-the-labels-on-the-specified-factor"><span id="OA-MOD-MRC-07"></span><span id="oa-mod-mrc-07"></span>Realizing the labels on the specified factor</h2>
+<p>For finite <span class="math" data-tex="\(p\)">\(p\)</span>, choose <span class="math" data-tex="\(0\le s&lt;L\)">\(0\le s&lt;L\)</span>, <span class="math" data-tex="\(ps=qL\)">\(ps=qL\)</span>, <span class="math" data-tex="\(0\le t&lt;T\)">\(0\le t&lt;T\)</span>, and <span class="math" data-tex="\(\delta^p=1\)">\(\delta^p=1\)</span>. The exact finite-model construction in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/finite-outer-period-and-obstruction.md">Finite outer period and obstruction, Theorem 4.2</a> gives <span class="math" data-tex="\(a_\delta\in\operatorname{Aut}R\)">\(a_\delta\in\operatorname{Aut}R\)</span> and <span class="math" data-tex="\(v\in R\)">\(v\in R\)</span> with</p>
+<span class="math math-display" data-tex="\[
+p_o(a_\delta)=p,\qquad
+a_\delta^p=\operatorname{Ad}v,\qquad a_\delta(v)=\delta v.
+\tag{7.1}
+\]">\[
+p_o(a_\delta)=p,\qquad
+a_\delta^p=\operatorname{Ad}v,\qquad a_\delta(v)=\delta v.
+\tag{7.1}
+\]</span>
+<p>The finite-factor central-triviality theorem, also used in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-triviality-and-modular-powers.md#6-realizing-every-compatible-finite-set-of-data">CTP, Theorem 6.1</a>, makes its asymptotic period <span class="math" data-tex="\(p\)">\(p\)</span>. Let <span class="math" data-tex="\(b_r\)">\(b_r\)</span> be the coherent trace-scaling flow on <span class="math" data-tex="\(R_\infty\)">\(R_\infty\)</span>, with <span class="math" data-tex="\(\tau b_r=e^{-r}\tau\)">\(\tau b_r=e^{-r}\tau\)</span>, supplied by CSM Lemma 5.1. On <span class="math" data-tex="\(Q&#x27;=R\overline\otimes R_\infty\)">\(Q&#x27;=R\overline\otimes R_\infty\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\theta&#x27;=\mathrm{id}_R\otimes b_L,\qquad
+\beta&#x27;=a_\delta\otimes b_s.
+\tag{7.2}
+\]">\[
+\theta&#x27;=\mathrm{id}_R\otimes b_L,\qquad
+\beta&#x27;=a_\delta\otimes b_s.
+\tag{7.2}
+\]</span>
+<p>They commute. On <span class="math" data-tex="\(P&#x27;=Q&#x27;\rtimes_{\theta&#x27;}\mathbb Z\)">\(P&#x27;=Q&#x27;\rtimes_{\theta&#x27;}\mathbb Z\)</span>, let <span class="math" data-tex="\(\widehat\beta&#x27;\)">\(\widehat\beta&#x27;\)</span> be the normal extension fixing the crossing unitary <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+(\widehat\beta&#x27;)^p=\operatorname{Ad}(vU&#x27;^q),\qquad
+\widehat\beta&#x27;(vU&#x27;^q)=\delta(vU&#x27;^q).
+\tag{7.3}
+\]">\[
+(\widehat\beta&#x27;)^p=\operatorname{Ad}(vU&#x27;^q),\qquad
+\widehat\beta&#x27;(vU&#x27;^q)=\delta(vU&#x27;^q).
+\tag{7.3}
+\]</span>
+<p>Both equations hold on every coefficient and on <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span>, so normality extends them to the entire algebra.</p>
+<p>The regular-coordinate shuffle identifies</p>
+<span class="math math-display" data-tex="\[
+P&#x27;\cong R\overline\otimes
+(R_\infty\rtimes_{b_L}\mathbb Z)
+\cong R\overline\otimes R_\lambda
+\cong R_\lambda.
+\tag{7.4}
+\]">\[
+P&#x27;\cong R\overline\otimes
+(R_\infty\rtimes_{b_L}\mathbb Z)
+\cong R\overline\otimes R_\lambda
+\cong R_\lambda.
+\tag{7.4}
+\]</span>
+<p>The first is the explicit normal shuffle of CTP Section 6; the second is discrete-decomposition recognition. Tracial absorption CTA04–07 supplies the last normal identification, with the Powers recognition in UNI04. Thus (7.4) is an actual factor isomorphism, not formal cancellation of tensor factors.</p>
+<p>Put <span class="math" data-tex="\(\alpha=\widehat\beta&#x27;\sigma_{t/p}^{\varphi&#x27;}\)">\(\alpha=\widehat\beta&#x27;\sigma_{t/p}^{\varphi&#x27;}\)</span>. The maps commute because <span class="math" data-tex="\(\widehat\beta&#x27;\)">\(\widehat\beta&#x27;\)</span> scales the generalized trace. Its <span class="math" data-tex="\(p\)">\(p\)</span>-th power is <span class="math" data-tex="\(\operatorname{Ad}(vU&#x27;^q)\sigma_t^{\varphi&#x27;}\)">\(\operatorname{Ad}(vU&#x27;^q)\sigma_t^{\varphi&#x27;}\)</span>. A smaller positive power cannot be centrally trivial: a bounded central sequence witnessing noncentral triviality of <span class="math" data-tex="\(a_\delta^k\)">\(a_\delta^k\)</span> embeds in the <span class="math" data-tex="\(R\)">\(R\)</span> leg in (7.4), where the modular group acts trivially. For product normal functionals its commutator norm is bounded by the original commutator norm times the second functional's norm. Finite sums are norm total, so the sequence is centralizing in the product. A faithful product-state sharp seminorm on <span class="math" data-tex="\(x\otimes1\)">\(x\otimes1\)</span> equals the original sharp seminorm; the nonzero displacement survives.</p>
+<p>Hence <span class="math" data-tex="\(p_a(\alpha)=p\)">\(p_a(\alpha)=p\)</span>, its return time is <span class="math" data-tex="\([t]\)">\([t]\)</span>, its module is <span class="math" data-tex="\([s]\)">\([s]\)</span>, and untwisting recovers the ordinary phase <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in (7.3). Transport along (7.4) realizes the tuple on the specified <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>For period zero use the aperiodic tracial product <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span> in place of <span class="math" data-tex="\(a_\delta\)">\(a_\delta\)</span>, and take any <span class="math" data-tex="\(s\in[0,L)\)">\(s\in[0,L)\)</span>. The extension of <span class="math" data-tex="\(\sigma_0\otimes b_s\)">\(\sigma_0\otimes b_s\)</span> has module <span class="math" data-tex="\([s]\)">\([s]\)</span>. For every nonzero power, the fixed-size tail witnesses of IMT06 embed in its tracial leg and retain their nonzero sharp norm. Therefore its asymptotic period is zero. The same (7.4) transports it to <span class="math" data-tex="\(P\)">\(P\)</span>, proving the zero-period realization.</p>
+<h2 id="four-exact-checks"><span id="OA-MOD-MRC-08"></span><span id="oa-mod-mrc-08"></span>Four exact checks</h2>
+<p><strong>Problem 1.</strong> Why does an inverse automorphism not remove its implementing phase?</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(\rho^p=\operatorname{Ad}u\)">\(\rho^p=\operatorname{Ad}u\)</span> and <span class="math" data-tex="\(\rho(u)=\delta u\)">\(\rho(u)=\delta u\)</span>, then <span class="math" data-tex="\((\rho^{-1})^p=\operatorname{Ad}u^*\)">\((\rho^{-1})^p=\operatorname{Ad}u^*\)</span> and
+<span class="math" data-tex="\(\rho^{-1}(u^*)=\delta u^*\)">\(\rho^{-1}(u^*)=\delta u^*\)</span>. Thus its ordinary obstruction is <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, not <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>. This follows for arbitrary factors and needs no classification theorem.</p>
+<p><strong>Problem 2.</strong> Take <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(s=L/2\)">\(s=L/2\)</span>, <span class="math" data-tex="\(t=T/2\)">\(t=T/2\)</span>, and corrected phase <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span>. What is the raw implementing phase?</p>
+<p><strong>Solution.</strong> In the weight-scaling normalization <span class="math" data-tex="\(a=e^{-s}\)">\(a=e^{-s}\)</span>, the raw phase is
+<span class="math" data-tex="\(\gamma=\delta a^{it}=e^{-i(L/2)(T/2)}=-i\)">\(\gamma=\delta a^{it}=e^{-i(L/2)(T/2)}=-i\)</span>, because <span class="math" data-tex="\(LT=2\pi\)">\(LT=2\pi\)</span>. Thus <span class="math" data-tex="\(\gamma^2=-1=a^{2it}\)">\(\gamma^2=-1=a^{2it}\)</span>, while <span class="math" data-tex="\(\delta^2=1\)">\(\delta^2=1\)</span>. The raw phase is not a root of unity of order dividing <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Problem 3.</strong> For <span class="math" data-tex="\(p=4\)">\(p=4\)</span>, <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, determine the quotient group and the characteristic coefficient.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="\(H=\mathbb Z(4,-2)\)">\(H=\mathbb Z(4,-2)\)</span>, and the Euclidean algorithm gives
+<span class="math" data-tex="\(\mathbb Z^2/H\cong\mathbb Z\oplus\mathbb Z/2\mathbb Z\)">\(\mathbb Z^2/H\cong\mathbb Z\oplus\mathbb Z/2\mathbb Z\)</span>. If <span class="math" data-tex="\(h_\ell=(4\ell,-2\ell)\)">\(h_\ell=(4\ell,-2\ell)\)</span>, its implementer is <span class="math" data-tex="\(v^\ell\)">\(v^\ell\)</span>, and the coefficient under <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span> is <span class="math" data-tex="\(\delta^{m\ell}\)">\(\delta^{m\ell}\)</span>. It is independent of <span class="math" data-tex="\(n\)">\(n\)</span> because <span class="math" data-tex="\(\theta(v)=v\)">\(\theta(v)=v\)</span>, and independent of real core-flow time because <span class="math" data-tex="\(v\in Q\)">\(v\in Q\)</span>.</p>
+<p><strong>Problem 4.</strong> Why is the adjoint in <span class="math" data-tex="\(F(U)=W_e^*U\)">\(F(U)=W_e^*U\)</span> necessary?</p>
+<p><strong>Solution.</strong> Equation (5.1) gives</p>
+<span class="math math-display" data-tex="\[
+(W_e^*U)\Theta(x)(W_e^*U)^*
+=W_e^*\theta(\Theta(x))W_e
+=\Theta(\theta(x)).
+\]">\[
+(W_e^*U)\Theta(x)(W_e^*U)^*
+=W_e^*\theta(\Theta(x))W_e
+=\Theta(\theta(x)).
+\]</span>
+<p>This is the required covariance. The compatibility with the other generator then uses (5.4); two unrelated implementing unitaries would not justify (5.5).</p>
+<p>Mathematical reference: M. Takesaki, <em>Theory of Operator Algebras III</em>, Theorem XVIII.1.13, printed pp.311–313. The root-of-unity label here is the fixed-representative untwisted obstruction of (1.3). The comparison proceeds through an explicitly checked action of <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> on the semifinite discrete core. Its original group-action proof inputs are NCA07 and TSI02–11, with the earlier modular, centralizer and approximation proofs identified above.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

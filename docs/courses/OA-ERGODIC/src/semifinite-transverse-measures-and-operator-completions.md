@@ -12,7 +12,7 @@ The examples originate in [Claude-MGT, Example 6.13] and [Claude-RO, Example 7.6
 
 Prerequisites are standard Borel spaces, kernels, countable product probability measures, Tonelli's theorem for σ-finite measures, and elementary Hilbert space operator theory. We use the definitions of transverse functions and random variables in [Claude-MGT]. General direct-integral and square-integrable representation theorems are needed only for the explicitly cited σ-finite results in Section 6.
 
-The supplied 63-page transcription and the author-hosted 83-page typeset version of [Connes] have now been compared at the full transverse-definition and random-operator passages relevant here. The latter retains semifiniteness in those statements. Its original Springer facsimile has not been compared. The counterexamples below concern the unrestricted semifinite assertions. For a nonzero random-operator factor, [Commuting copies in principal groupoid factors](commuting-copies-in-principal-groupoid-factors.md), Corollary 1.5, separately proves a sigma-finite reduction on its saturated conull support.
+The [author-hosted typeset version of Connes’s text](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf) states the transverse definitions in Section 3, the random-variable decomposition in Section 4 and the random-operator theorem in Section 6. These statements assume semifiniteness. The page references below use that freely readable edition. The counterexamples below concern the unrestricted semifinite assertions. For a nonzero random-operator factor, [Commuting copies in principal groupoid factors](commuting-copies-in-principal-groupoid-factors.md), Corollary 1.5, separately proves a sigma-finite reduction on its saturated conull support.
 
 ## 1. Sequential normality and finite pieces
 
@@ -30,14 +30,14 @@ For module \(1\), a transverse measure is an additive, positively homogeneous ma
 \Lambda(\nu)=\sup_n\Lambda(\nu_n).
 \tag{1.2}
 \]
-Second, \(\Lambda(\nu*\rho)=\Lambda(\nu)\) whenever \(\rho\) is a kernel on the range fibres of total mass one and \(\nu*\rho\) is proper. Here convolution composes an arrow in \(\nu\) with an arrow in \(\rho\) starting at its source. The supplied source's normality condition uses increasing sequences.
+Second, \(\Lambda(\nu*\rho)=\Lambda(\nu)\) whenever \(\rho\) is a kernel on the range fibres of total mass one and \(\nu*\rho\) is proper. Here convolution composes an arrow in \(\nu\) with an arrow in \(\rho\) starting at its source. The normality clause in Connes’s Section 3, Definition 1, uses increasing sequences.
 
 Semifiniteness means that \(\Lambda(\nu)\) is the supremum of the finite values \(\Lambda(\eta)\) with \(\eta\le\nu\). Sigma-finiteness means that some faithful transverse function is the increasing supremum of a sequence of proper functions of finite \(\Lambda\)-value. Faithful means that its support is the whole unit space. The unit measure associated with \(\nu\) is
 \[
 \Lambda_\nu(f)=\Lambda((f\circ s)\nu),\qquad f\ge0.
 \tag{1.3}
 \]
-These are [Connes, PDF 12, Definition 1] and [Claude-MGT, Definition 3.1].
+These are [Connes, Section 3, Definition 1, author PDF 15](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=15) and [Claude-MGT, Definition 3.1].
 
 We will repeatedly use extended sums over an arbitrary index set \(J\):
 \[
@@ -103,7 +103,7 @@ Every von Neumann algebra has a supremum for a bounded increasing positive net. 
 \]
 Hence \(A_i\to A\) strongly and \(A\in M\). A *-isomorphism preserves positivity and least upper bounds. Consequently \(\mathcal B_b(Z)\) cannot be isomorphic to a von Neumann algebra. \(\square\)
 
-This establishes the failure of [Connes, PDF 31, Section 6, Theorem 2] at its stated semifinite scope. The failure uses a net indexed by finite subsets, as required by von Neumann monotone completeness. Sequential normality of \(\Lambda\) is compatible with it.
+This establishes the failure of [Connes, Section 6, Theorem 2, author PDF 40](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=40) at its stated semifinite scope. The failure uses a net indexed by finite subsets, as required by von Neumann monotone completeness. Sequential normality of \(\Lambda\) is compatible with it.
 
 ## 3. The canonical representation and its full commutant
 
@@ -142,7 +142,7 @@ W(\nu)=\lambda(\mathcal A_\nu)''
 =D,\qquad W(\nu)'=D.
 \tag{3.5}
 \]
-This calculates the algebra defined in [Connes, PDF 32, Notation 3], without a general direct-integral theorem.
+This calculates the algebra defined in [Connes, Section 6, Notation 3, author PDF 41](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=41), without a general direct-integral theorem.
 
 **Theorem 3.2.** The canonical random-operator map is the faithful isometry
 \[
@@ -164,9 +164,64 @@ For an arbitrary \(h\in\ell^\infty(Z)\), let \(F\) run over all finite subsets o
 \]
 The last limit follows from the definition of the finite total sum: choose a finite set capturing all but an arbitrarily small tail of \(\sum_Z|\xi(z)|^2\). This single net converges strongly on every vector, although the particular finite set needed for a tolerance depends on that vector. Since \(D\) is strongly closed, the closure is exactly \(D\). \(\square\)
 
-The faithful-ν surjectivity assertion in [Connes, PDF 32, Theorem 4(3)] therefore fails under these semifinite assumptions. The canonical representation of \(W(\nu)\) itself still exists here. The lost conclusion is the recovery of every commutant operator by a measurable random field.
+The faithful-ν surjectivity assertion in [Connes, Section 6, Theorem 4(3), author PDF 41–42](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=41) therefore fails under these semifinite assumptions. The canonical representation of \(W(\nu)\) itself still exists here. The lost conclusion is the recovery of every commutant operator by a measurable random field.
 
 One can regard the enlargement as replacing the original Borel σ-algebra by the full power set with counting measure. That replacement changes measurability. It is not the completion by subsets of null sets, which adds nothing in this example.
+
+**Proposition 3.3 (sequences preserve the original measurability).** The image of (3.6) is closed under strong operator limits of sequences and under weak operator limits of sequences. More precisely, if \((b_n)\) is a uniformly bounded sequence in \(\mathcal B_b(Z)\), then
+
+\[
+\begin{gathered}
+b_n(z)\longrightarrow b(z)\quad(z\in Z)\\
+\Longleftrightarrow\quad
+M_{b_n}\longrightarrow M_b\text{ strongly}.
+\end{gathered}
+\tag{3.8}
+\]
+
+*Proof.* Suppose first that \(M_{b_n}\) converges weakly as operators to a bounded operator \(T\). For every \(z\), the vector \(Te_z\) has zero coordinate at every \(w\ne z\), by the corresponding matrix coefficients of \(M_{b_n}\). Thus \(Te_z=b(z)e_z\), with
+
+\[
+b(z)=\lim_n b_n(z),\qquad |b(z)|\le\|T\|.
+\]
+
+The pointwise limit of a sequence of Borel functions is Borel. Density of the finite-support vectors gives \(T=M_b\), with \(b\in\mathcal B_b(Z)\). A strong operator limit is also a weak operator limit, so both sequential-closure assertions follow.
+
+Conversely, suppose \(|b_n(z)|\le C\) for all \(n,z\) and \(b_n(z)\to b(z)\). The limit is Borel and has the same bound. For a finite \(F\subset Z\) and \(\xi\in\ell^2(Z)\),
+
+\[
+\begin{gathered}
+\|(M_{b_n}-M_b)\xi\|^2
+\\\le\sum_{z\in F}|b_n(z)-b(z)|^2|\xi(z)|^2\\
+\quad+4C^2\sum_{z\notin F}|\xi(z)|^2.
+\end{gathered}
+\tag{3.9}
+\]
+
+Choose \(F\) with an arbitrarily small squared tail, then let \(n\) tend to infinity in the finite sum. This proves strong convergence. The reverse implication of (3.8) follows by testing \(e_z\). \(\square\)
+
+**Corollary 3.4 (a sharp norm gap).** For any non-Borel \(S\subset Z\),
+
+\[
+\inf_{b\in\mathcal B_b(Z)}
+\|M_{1_S}-M_b\|=\frac12.
+\tag{3.10}
+\]
+
+*Proof.* If the norm were smaller than one half for some \(b\), equation (3.2) would give
+
+\[
+S=\{z\in Z:\operatorname{Re}b(z)>1/2\},
+\]
+
+a Borel set, which is impossible. The constant Borel function \(b=1/2\) attains the bound. \(\square\)
+
+Consequently the strong completion in Theorem 3.2 adds operators at positive norm distance from the represented random fields. None of those non-Borel diagonal operators is a weak operator limit of a sequence of Borel fields. The finite-subset net remains essential; sequential closure alone does not give a von Neumann algebra.
+
+![The Borel diagonal operators contain every weak or strong sequential limit of their elements. A finite-subset net reaches a non-Borel diagonal projection in the full diagonal algebra, although its exact norm distance from every Borel diagonal operator is at least one half.](figures/semifinite-sequences-and-nets.svg)
+
+*Figure 3.1.* The same Hilbert space is used in all three panels: \(K=\ell^2(Z)\), with \(Z=[0,1]\) Borel. The sequence panel is Proposition 3.3, including the uniform bound in the pointwise-to-strong direction. The net panel is Theorem 3.2, indexed by finite subsets of \(Z\). The norm panel is Corollary 3.4, with the exact threshold and best approximation \(M_{1/2}\). The boxes show algebras and convergence relations, not a drawn non-Borel set or a metric embedding. The original example is [Claude-RO, Example 7.6]; the full completion and the sequence/norm comparisons are proved here.
+
 
 ## 4. A semifinite transverse measure on the tail relation
 
@@ -248,9 +303,9 @@ The first equality with the group sum uses freeness. For an invariant Borel \(W\
 \sup\{\kappa(f):f\ge0\text{ Borel, supported in }W,\ \nu*f\le1\}.
 \tag{5.3}
 \]
-All three formulas are direct instances of [Connes, PDF 16, Section 3, Definition 1].
+All three formulas are direct instances of [Connes, Section 4, the random-variable definition and Lemma 1(1), author PDF 20–21](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=20).
 
-A proper part in the asserted decomposition has an averaging function \(g\ge0\) Borel with \(\nu*g=1\) there. Extending it by zero gives \(\nu*g=1_W\) on \(X\); invariance of \(W\) ensures the extension preserves the equation. This is the criterion in [Connes, PDF 17–18, Lemma 2] and [Claude-MGT, Lemma 6.7].
+A proper part in the asserted decomposition has an averaging function \(g\ge0\) Borel with \(\nu*g=1\) there. Extending it by zero gives \(\nu*g=1_W\) on \(X\); invariance of \(W\) ensures the extension preserves the equation. This is the criterion in [Connes, Section 4, Lemma 2, author PDF 22–23](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=22) and [Claude-MGT, Lemma 6.7].
 
 **Theorem 5.1.** There are no invariant Borel \(W_0,W_2\) such that
 \[
@@ -259,7 +314,7 @@ X=W_0\sqcup W_2,\qquad
 \nu*g_2=1_{W_2}
 \tag{5.4}
 \]
-for a nonnegative Borel \(g_2\). Consequently the zero-integral and proper decomposition asserted in [Connes, PDF 17, Lemma 1(2)] fails for this semifinite transverse measure.
+for a nonnegative Borel \(g_2\). Consequently the zero-integral and proper decomposition asserted in [Connes, Section 4, Lemma 1(2), author PDF 21–22](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=21) fails for this semifinite transverse measure.
 
 *Proof.* Fix \(x_0\in C\), and write \(U_{x_0}=\{u:(x_0,u)\in W_0\}\), a Borel set. The test function
 \[
@@ -306,7 +361,7 @@ The proof uses an auxiliary finite probability measure to obtain a slice and int
 
 ## 6. The valid σ-finite statements
 
-The two counterexamples identify failures of the supplied semifinite claims. The σ-finite replacements are available in the existing lessons, whose general proofs we use by reference.
+The two counterexamples distinguish the semifinite assertions from the following sigma-finite results. The σ-finite replacements are available in the existing lessons, whose general proofs we use by reference.
 
 For [Claude-RO, Theorems 7.1–7.2], assume its standing hypotheses (S) and (F): the arrow σ-algebra is countably generated, unit singletons and the diagonal are measurable, and a faithful proper transverse function exists. Let \(\Lambda\) be a σ-finite transverse measure of modulus \(\delta\). Hilbert fields have separable fibres and a countable measurable fundamental family. If \(H\) is square-integrable and \(\nu\) proper, the integrated coefficients give a unique normal representation
 \[
@@ -333,7 +388,7 @@ X=X_1\sqcup X_2,\qquad
 \]
 The random variable retains its source hypotheses: standard measurable fibres and total space, covariance with modulus \(\delta\), and a countable cover of uniformly bounded fibre measure. The decisive measure is \(\kappa=\Lambda_\nu\circ\alpha\). It is σ-finite under these assumptions, so an equivalent finite measure can be used to select a countable union of invariant sets admitting normalized averaging functions. The full proof of all five parts is [Claude-MGT, Theorem 6.6].
 
-The supplied source's PDF 17 proof calls this \(\kappa\) σ-finite after assuming only semifiniteness of \(\Lambda\). In (5.1) the measure \(\kappa\) is explicitly not σ-finite, and Theorem 5.1 shows that its decomposition conclusion really fails. Thus adding σ-finiteness is a sufficient correction supported by a general proof. We do not infer that it is necessary in every individual groupoid.
+[Connes’s Section 4, Lemma 1(2), author PDF 22](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=22) calls this \(\kappa\) σ-finite after assuming only semifiniteness of \(\Lambda\). In (5.1) the measure \(\kappa\) is explicitly not σ-finite, and Theorem 5.1 shows that its decomposition conclusion really fails. Thus adding σ-finiteness is a sufficient correction supported by a general proof. We do not infer that it is necessary in every individual groupoid.
 
 ## 7. Exercises with solutions
 
@@ -371,8 +426,25 @@ Level 1 asks for a computation or a direct application. Level 2 asks for a proof
 
 *Solution.* If \(\kappa(B_n)<\infty\), the positive vertical masses \(du((B_n)_x)\) occur at only countably many \(x\). A countable proposed cover therefore leaves some \(x\) for which all these sections are null; their union cannot cover the unit interval. For a set in the completion, choose a Borel superset differing from it by a subset of a Borel \(\kappa\)-null set. This superset has the same measure. A finite-measure cover in the completion would thus give a Borel finite-measure cover, already disproved. In contrast, \(\beta\) and \(du\) are both probability measures, and \(W_0,W_2\) are Borel. Their finite product satisfies Tonelli, so its vertical and horizontal section integrals used in Theorem 5.1 are justified.
 
+**Exercise 7.9 (matrix fields have the same norm gap).** *Level 2.* In Exercise 7.2 let \(S\subset Z\) be non-Borel and let \(P_S\) have fibre \(1_S(z)I_d\). Prove that its distance from the represented bounded Borel matrix fields is exactly one half. Can it be their weak operator sequential limit?
+
+*Solution.* For a bounded Borel matrix field \(A\), the scalar function \(b(z)=d^{-1}\operatorname{Tr}(A(z))\) is bounded and Borel. The elementary bound \(|\operatorname{Tr}(C)|\le d\|C\|\), obtained by summing its diagonal vector coefficients, gives
+\[
+|1_S(z)-b(z)|\le\|1_S(z)I_d-A(z)\|.
+\]
+Taking suprema and using Corollary 3.4 gives a lower bound of one half. The field \(A(z)=I_d/2\) attains it. If a sequence of Borel matrix fields converged weakly as operators to \(P_S\), testing \(e_z\otimes v\) for a fixed unit vector \(v\in\mathbb C^d\) would make \(1_S(z)\) a pointwise limit of the Borel scalar functions \(\langle A_n(z)v,v\rangle\). This is impossible. Award 1 point for the sharp norm calculation and 1 for the sequential obstruction.
+
+**Exercise 7.10 (why the uniform bound matters).** *Level 2.* Choose distinct \(z_n\in Z\) and put \(b_n=n1_{\{z_n\}}\). Prove that \(b_n\to0\) pointwise, while \(M_{b_n}\) does not converge strongly to any bounded operator. Identify the failed hypothesis in the converse part of Proposition 3.3.
+
+*Solution.* A point of \(Z\) belongs to at most one of the singletons, so its values are eventually zero. The vector
+\[
+\xi=\sum_{n\ge1}\frac1n e_{z_n}
+\]
+belongs to \(\ell^2(Z)\), and \(M_{b_n}\xi=e_{z_n}\), of norm one. Thus the sequence does not converge strongly to zero. Any strong limit \(T\) would satisfy \(Te_z=0\) for every coordinate vector, by the pointwise convergence, and hence \(T=0\) by density, a contradiction. The operator norms are \(\|M_{b_n}\|=n\), so the required uniform bound fails. Award 1 point for the pointwise and vector calculations and 1 for the exclusion of every strong limit and the precise hypothesis.
+
+
 ## References
 
-- [Connes] A. Connes, “Sur la théorie non commutative de l'intégration,” in *Algèbres d'opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979. Supplied transcription locators remain PDF 12, 16–18 and 31–33. The full corresponding transverse definition and random-operator statements/proof were also compared in the [author-hosted 83-page typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), PDF 15–17 and 40–42. The original printed facsimile has not been compared.
-- [Claude-MGT] Claude (Anthropic), [Measured groupoids and transverse measures](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/measured-groupoids-and-transverse-measures.html), September 2026, Definitions 3.1 and 6.2, Theorem 6.6, Lemma 6.7, Example 6.13. Exact selected statements and full proofs were compared for the uses above.
-- [Claude-RO] Claude (Anthropic), [Square-integrable representations and random operators](https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-FOLIATIONS/companions/square-integrable-representations-and-random-operators.html), September 2026, standing hypotheses (S), (F), Definition 6.1, Theorems 7.1–7.2, Corollary 7.3, Example 7.6. The σ-finite general theorems are used by reference.
+- [Connes] A. Connes, *Sur la théorie non commutative de l’intégration*, in *Algèbres d’opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, 19–143. The [freely readable author-hosted typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf) supplies the pagination used here: transverse functions and measures, Sections 2–3, PDF 11–17; random variables, Section 4, PDF 20–23; random operators and the commutant representation, Section 6, PDF 40–42. Theorems 2.2, 3.2 and 5.1 address its stated semifinite scope.
+- [Claude-MGT] Claude (Anthropic), Measured groupoids and transverse measures, Definitions 3.1 and 6.2, Theorem 6.6, Lemma 6.7 and Example 6.13. Its sigma-finite decomposition theorem is the general positive result used in Section 6; its tail-relation example is a mathematical antecedent of Section 5. The programme exposition is CC0.
+- [Claude-RO] Claude (Anthropic), Square-integrable representations and random operators, standing hypotheses (S), (F), Definition 6.1, Theorems 7.1–7.2, Corollary 7.3 and Example 7.6. Its sigma-finite representation and commutant theorems are used in Section 6; its unit-groupoid example is the mathematical antecedent of Sections 2–3. The programme exposition is CC0.

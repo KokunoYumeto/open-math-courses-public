@@ -184,6 +184,206 @@ Hence, for each fixed \(s\),
 \]
 If the continuous difference were nonzero somewhere, one complex rotation would have positive real part on a smaller interval. A nonnegative smooth bump in that interval would contradict (RCC1.m). This proves (RCC1.b).
 
+<a id="rcc-schwartz"></a>
+### The Schwartz topology and the two directions of iteration
+
+The functional in (RCC1.f) also has a precise Schwartz-space interpretation. Define \(\mathcal S(\mathbb R^2)\) to be the smooth functions for which every seminorm
+\[
+ p_{N,m}(h)=
+ \max_{a+b\le m}\ \sup_{r,q\in\mathbb R}
+ (1+|r|+|q|)^N|\partial_r^a\partial_q^b h(r,q)|
+ \qquad(N,m\in\mathbb N_0)
+ \tag{RCC1.n}
+\]
+is finite. Convergence in the Schwartz topology means convergence in each of these seminorms.
+
+For \(h\in\mathcal S(\mathbb R^2)\), keep the inner Fourier integral first in (RCC1.f). Twice integrating by parts in \(r\) has no boundary terms, because \(h\) and its first derivative vanish at infinity. The same split at \(|s|=1\) therefore proves (RCC1.g). Since
+\[
+ \int_{\mathbb R^2}(1+|r|+|q|)^{-4}\,dr\,dq=\frac23,
+\]
+we obtain
+\[
+ |\mathscr K(h)|
+ \le\frac83\|H\|_\infty p_{4,2}(h).
+ \tag{RCC1.o}
+\]
+In particular the two outer integrals are absolutely convergent after the inner Fourier integral. This defines a continuous linear functional on \(\mathcal S(\mathbb R^2)\), which is the meaning of a tempered distribution here.
+
+For completeness, compact smooth tests are dense in this topology. Choose a smooth cutoff \(\chi\) equal to one on \([-1,1]\) and supported in \([-2,2]\), and set
+\[
+ h_R(r,q)=\chi(r/R)\chi(q/R)h(r,q),\qquad R\ge1.
+\]
+In the product rule for \(h_R-h\), every nonzero term is supported where \(\max(|r|,|q|)\ge R\). A differentiated cutoff contributes a bounded constant times \(R^{-j}\), and one additional power of decay in \(h\) gives
+\[
+ p_{N,m}(h_R-h)
+ \le C_{\chi,m}(1+R)^{-1}p_{N+1,m}(h).
+ \tag{RCC1.p}
+\]
+Thus \(h_R\to h\) in every seminorm, and the continuous extension of \(\mathscr K\) from compact tests is unique. The finite sum of product-rule constants is independent of \(R\) and \(h\).
+
+We next retain all derivatives and polynomial weights in the iteration estimate. For \(h\in C_c^\infty(\mathbb R^2)\), \(a,b\in\mathbb N_0\), and any integer \(k\), direct differentiation gives
+\[
+ \partial_r^a\partial_q^b(T^k h)(r,q)
+ =e^{kr}\bigl(k+\partial_r-k\partial_q\bigr)^a
+            \partial_q^b h(r,q-kr).
+ \tag{RCC1.q}
+\]
+The three operators inside the parentheses commute. On expanding the \(a\)-th power, each coefficient is bounded by a constant times \((1+|k|)^a\), and only derivatives of \(h\) through order \(a+b\) occur.
+
+Take \(R\ge1\) with \(\operatorname{supp}h\subset[-R,R]^2\). Wherever a derivative on the right of (RCC1.q) is nonzero, \(|r|\le R\) and \(|q-kr|\le R\), so
+\[
+ 1+|r|+|q|\le (1+2R)(1+|k|).
+\]
+If \(\operatorname{supp}h\subset\{r\le-\varepsilon\}\), use \(k=n\ge1\). If it is contained in \(\{r\ge\varepsilon\}\), use \(k=-n\). In the respective cases this proves, for every \(N,m\),
+\[
+ \begin{aligned}
+ p_{N,m}(T^nh)&\le C_{h,N,m}(1+n)^{N+m}e^{-\varepsilon n},
+       &&\operatorname{supp}h\subset\{r\le-\varepsilon\},\\
+ p_{N,m}(T^{-n}h)&\le C_{h,N,m}(1+n)^{N+m}e^{-\varepsilon n},
+       &&\operatorname{supp}h\subset\{r\ge\varepsilon\}.
+ \end{aligned}
+ \tag{RCC1.r}
+\]
+Both bounds tend to zero. This is convergence in the full Schwartz topology, including the polynomial weights in the sheared variable \(q\).
+
+For a compact test \(h\) whose support avoids \(\{r=0\}\), choose \(\varepsilon>0\) so that \(h\) vanishes on \(|r|<\varepsilon\), and write \(h=h_-+h_+\), using its restrictions to the negative and positive half-planes, extended by zero. They are smooth because of the intervening zero strip. Put
+\[
+ g_n=\sum_{k=0}^{n-1}T^k h_-
+           -\sum_{k=1}^{n}T^{-k}h_+ .
+ \tag{RCC1.s}
+\]
+Each \(g_n\) is a compact smooth test, although its support may depend on \(n\). The two finite telescoping sums give the exact identity
+\[
+ (1-T)g_n=h-T^n h_- -T^{-n}h_+
+       \longrightarrow h\quad\text{in }\mathcal S(\mathbb R^2).
+ \tag{RCC1.t}
+\]
+Applying the continuous functional \(\mathscr K\), together with (RCC1.h) on each \(g_n\), recovers (RCC1.k). The identity with \(T\) is used on compact tests: multiplication by \(e^r\) need not preserve the entire Schwartz space. Neither remainder in (RCC1.t) is assumed to become zero at a finite stage.
+
+<a id="rcc-point-support"></a>
+### Point-supported distributions and the polynomial conclusion
+
+Here is a direct distribution proof of the scalar conclusion, including the finite-order statement. In one variable write
+\[
+ q_{N,m}(f)=\max_{0\le j\le m}\sup_{r\in\mathbb R}
+                   (1+|r|)^N|f^{(j)}(r)|.
+ \tag{RCC1.u}
+\]
+The Schwartz space consists of the smooth functions with every \(q_{N,m}\) finite. A tempered distribution here is a continuous complex-linear functional \(\mathscr T\) on this space. Say that it is supported at zero if \(\mathscr T(f)=0\) for every compact smooth \(f\) whose support avoids zero.
+
+**Finite jets determine the distribution.** We prove that there are an integer \(m\ge0\) and constants \(c_0,\ldots,c_m\) with
+\[
+ \mathscr T(f)=\sum_{j=0}^{m}c_j f^{(j)}(0)
+                  \qquad(f\in\mathcal S(\mathbb R)).
+ \tag{RCC1.v}
+\]
+Continuity at zero first supplies \(C>0\), \(N,m\ge0\) such that
+\[
+ |\mathscr T(f)|\le Cq_{N,m}(f).
+ \tag{RCC1.w}
+\]
+Indeed a finite collection of the defining seminorm conditions gives a neighborhood on which \(|\mathscr T|<1\). Taking the largest two indices dominates that collection by one seminorm; rescaling each nonzero \(f\) into the neighborhood gives (RCC1.w).
+
+Choose a smooth compact \(\chi\) equal to one on \([-1,1]\) and supported in \([-2,2]\), using [RF1's cutoff construction](OA-FLOW-RF.md#oa-flow.rf.1). The one-variable product-rule estimate corresponding to (RCC1.p) is
+\[
+ q_{N,m}\bigl(\chi(\,\cdot\,/R)f-f\bigr)
+       \le C_{\chi,m}(1+R)^{-1}q_{N+1,m}(f),
+       \qquad R\ge1.
+ \tag{RCC1.x}
+\]
+Every nonzero product-rule term lies where \(|r|\ge R\); derivatives of the cutoff contribute \(R^{-k}\), and one additional decay power gives the stated bound. Thus compact tests are dense in \(\mathcal S(\mathbb R)\).
+
+If \(f\in\mathcal S(\mathbb R)\) vanishes near zero, all \(\chi(\,\cdot\,/R)f\) are compact tests with support away from zero. Their convergence and continuity give \(\mathscr T(f)=0\). In particular, for every \(\varepsilon>0\),
+\[
+ \mathscr T(f)=\mathscr T(\chi_\varepsilon f),
+ \qquad \chi_\varepsilon(r)=\chi(r/\varepsilon).
+ \tag{RCC1.y}
+\]
+The difference is a Schwartz function vanishing near zero.
+
+Suppose now that \(f^{(j)}(0)=0\) for \(0\le j\le m\), and let
+\[
+ \omega_f(t)=\sup_{|r|\le t}|f^{(m)}(r)|.
+\]
+Continuity gives \(\omega_f(t)\to0\) as \(t\downarrow0\). Repeated integration of the derivative, starting at zero, gives for \(0\le j\le m\) and \(|r|\le2\varepsilon\)
+\[
+ |f^{(j)}(r)|
+       \le \frac{|r|^{m-j}}{(m-j)!}\omega_f(2\varepsilon).
+ \tag{RCC1.z}
+\]
+For \(j=m\) this is the defining bound; for smaller \(j\), integrate the bound for \(j+1\) along the interval from zero to \(r\). This also covers negative \(r\) by absolute values.
+
+In the \(j\)-th derivative of \(\chi_\varepsilon f\), a term with \(k\) derivatives on the cutoff is bounded by a constant times
+\[
+ \varepsilon^{-k}\varepsilon^{m-(j-k)}
+                 \omega_f(2\varepsilon)
+       =\varepsilon^{m-j}\omega_f(2\varepsilon).
+\]
+Every term is supported in \([-2\varepsilon,2\varepsilon]\). For \(0<\varepsilon\le1\), all weights \((1+|r|)^N\) there are at most \(3^N\), and \(m-j\ge0\). Hence
+\[
+ q_{N,m}(\chi_\varepsilon f)
+       \le C_{\chi,N,m}\omega_f(2\varepsilon)\longrightarrow0.
+ \tag{RCC1.aa}
+\]
+Equations (RCC1.w) and (RCC1.y) imply \(\mathscr T(f)=0\). The argument includes \(m=0\).
+
+Put \(b_j(r)=\chi(r)r^j/j!\), \(0\le j\le m\). Because \(\chi=1\) near zero, \(b_j^{(k)}(0)=\delta_{jk}\) for \(0\le k\le m\). The function \(f-\sum_{j=0}^m f^{(j)}(0)b_j\) has all these derivatives zero, so the preceding conclusion proves (RCC1.v) with \(c_j=\mathscr T(b_j)\). Equivalently, with the convention \(\delta_0^{(j)}(f)=(-1)^jf^{(j)}(0)\),
+\[
+ \mathscr T=\sum_{j=0}^{m}(-1)^jc_j\delta_0^{(j)}.
+ \tag{RCC1.ab}
+\]
+Each functional on the right is continuous and supported at zero, so this is an exact characterization. Translation gives the same statement at any other specified point, with derivatives evaluated there.
+
+**The Fourier transform of a bounded continuous function.** Let \(b:\mathbb R\to\mathbb C\) be bounded and continuous, and define
+\[
+ \mathscr T_b(f)=\int_{\mathbb R}b(s)
+                   \left(\int_{\mathbb R}e^{isr}f(r)\,dr\right)ds.
+ \tag{RCC1.ac}
+\]
+For Schwartz \(f\), two integrations by parts and the split at \(|s|=1\) give
+\[
+ |\mathscr T_b(f)|
+ \le2\|b\|_\infty\bigl(\|f\|_1+\|f''\|_1\bigr)
+ \le8\|b\|_\infty q_{2,2}(f).
+ \tag{RCC1.ad}
+\]
+The last inequality uses \(\int_{\mathbb R}(1+|r|)^{-2}\,dr=2\). The outer integral is absolutely convergent after evaluating the inner Fourier integral. Thus \(\mathscr T_b\) is a tempered distribution.
+
+If it is supported at zero, take the coefficients in (RCC1.v). For any \(g\in C_c^\infty(\mathbb R)\), set
+\[
+ f(r)=\frac1{2\pi}\int_{\mathbb R}e^{-isr}g(s)\,ds.
+ \tag{RCC1.ae}
+\]
+The repeated differentiation and integration-by-parts bounds in [RF1](OA-FLOW-RF.md#oa-flow.rf.1) give \(f\in\mathcal S(\mathbb R)\); its Fourier inversion, proved from [FF2](OA-FLOW-FF.md#oa-flow.ff.3), gives \(\int e^{isr}f(r)\,dr=g(s)\) everywhere. Differentiating the compact integral in (RCC1.ae) therefore yields
+\[
+ \begin{aligned}
+ \int b(s)g(s)\,ds
+   &=\mathscr T_b(f)
+     =\sum_{j=0}^{m}\frac{c_j}{2\pi}
+                         \int(-is)^j g(s)\,ds,\\
+ b(s)&=\frac1{2\pi}\sum_{j=0}^{m}c_j(-is)^j
+                   \qquad(s\in\mathbb R).
+ \end{aligned}
+ \tag{RCC1.af}
+\]
+The second equality follows from the first by continuity: a nonzero difference, rotated by a fixed complex phase, would have positive real part on an interval and could be tested against a nonnegative smooth bump there. It is an everywhere equality, not merely an almost-everywhere representative statement. A polynomial bounded on \(\mathbb R\) is constant: for a nonzero leading coefficient of positive degree, its leading power dominates the finitely many lower powers for large \(|s|\). Consequently \(b\) is constant.
+
+**Recovering every parameter in \(H\).** Return to the bounded continuous \(H\) of (RCC1.a), and let \(v\in C_c^\infty(\mathbb R\setminus\{0\})\). The function
+\[
+ F_v(q)=\int_{\mathbb R}H(q,s)
+               \left(\int_{\mathbb R}e^{isr}v(r)\,dr\right)ds
+ \tag{RCC1.ag}
+\]
+is continuous by dominated convergence: the inner transform is integrable by RF1 and bounds the integrand uniformly in \(q\), up to \(\|H\|_\infty\). For every compact smooth \(\eta(q)\), scalar Fubini gives
+\[
+ \int_{\mathbb R}\eta(q)F_v(q)\,dq
+       =\mathscr K(v\otimes\eta)=0
+ \tag{RCC1.ah}
+\]
+by (RCC1.k), or by the full Schwartz limit (RCC1.t). Its absolute bound is \(\|H\|_\infty\|\eta\|_1\|\widehat v_+\|_1\), where \(\widehat v_+(s)=\int e^{isr}v(r)\,dr\). The continuous bump test makes \(F_v(q)=0\) for every \(q\).
+
+For each fixed \(q\), this says that the tempered distribution (RCC1.ac) associated with \(b(s)=H(q,s)\) is supported at zero. The theorem and (RCC1.af) make it a polynomial, and boundedness makes it constant. Thus \(H(q,s)=H(q,0)\) for every \(q,s\), with no selection of common null sets. This supplies the point-support proof independently of the spectral-singleton argument above.
+
 <a id="rcc-2"></a>
 ## 2. A KMS test for a continuous multiplier
 
@@ -418,6 +618,66 @@ For the converse inclusion, every regular coefficient field \(\pi_\omega(x)\) co
 \]
 Hence \(C\) is contained in this tensor algebra, and every element of \(Z(C)\) belongs to its intersection with \(C'\). This proves (RCC3.a), with both inclusions on the full Hilbert space.
 
+<a id="rcc-strong-smoothing"></a>
+### Bounded sigma-strong-star smoothing
+
+The same approximate identity gives a stronger form of density. We prove it on the whole Hilbert space \(K=H\otimes L^2(\mathbb R)\), with no dimension or separability restriction. Write \(W_r=1\otimes L_r\). For \(Y\in B(K)\) and \(\zeta\in K\),
+\[
+ \begin{aligned}
+ \|(\beta_r(Y)-Y)\zeta\|
+ &\le \|Y\|\,\|(W_r^*-1)\zeta\|
+       +\|(W_r-1)Y\zeta\|
+ \longrightarrow0\qquad(r\to0).
+ \end{aligned}
+ \tag{RCC3.n}
+\]
+The same estimate for \(Y^*\) proves pointwise strong-star continuity. Strong continuity of the unitaries \(W_r\) was established above.
+
+Use the nonnegative \(k_n\) of integral one supported in \([-1/n,1/n]\), and put \(Y_n=\int k_n(r)\beta_r(Y)\,dr\). For each \(\zeta\), the continuous compactly supported Hilbert-valued function \(r\mapsto k_n(r)(\beta_r(Y)-Y)\zeta\) has a norm integral: uniform continuity makes its Riemann sums Cauchy. Pairing that integral with every vector identifies it with the weak-star operator integral applied to \(\zeta\). Hence
+\[
+ \begin{gathered}
+ (Y_n-Y)\zeta=\int k_n(r)(\beta_r(Y)-Y)\zeta\,dr,\\
+ \|(Y_n-Y)\zeta\|
+ \le\sup_{|r|\le1/n}\|(\beta_r(Y)-Y)\zeta\|
+ \longrightarrow0,\qquad \|Y_n\|\le\|Y\|.
+ \end{gathered}
+ \tag{RCC3.o}
+\]
+Since \(k_n\) is real, adjointing the weak-star integral gives \(Y_n^*=\int k_n(r)\beta_r(Y^*)\,dr\). The same argument therefore proves strong convergence of the adjoints as well.
+
+We also check every normal-functional seminorm. The sigma-strong-star topology on bounded operators is generated by
+\[
+ p_\varphi(A)=\varphi(A^*A)^{1/2},\qquad
+ p_\varphi(A^*)=\varphi(AA^*)^{1/2},
+ \qquad \varphi\in B(K)_*^+.
+ \tag{RCC3.p}
+\]
+By the [positive vector-series theorem EP1](OA-FLOW-EP.md#oa-flow.ep.1), write
+\[
+ \varphi(Z)=\sum_{j=1}^{\infty}\langle Z\zeta_j,\zeta_j\rangle,
+ \qquad \sum_j\|\zeta_j\|^2=\varphi(1)<\infty.
+ \tag{RCC3.q}
+\]
+For \(A_n=Y_n-Y\), we have \(\|A_n\|\le2\|Y\|\). Consequently, for every \(J\),
+\[
+ \varphi(A_n^*A_n)
+ \le\sum_{j=1}^{J}\|A_n\zeta_j\|^2
+           +4\|Y\|^2\sum_{j>J}\|\zeta_j\|^2 .
+ \tag{RCC3.r}
+\]
+The finite sum tends to zero by (RCC3.o); the tail can be made arbitrarily small independently of \(n\). Thus \(p_\varphi(A_n)\to0\). Apply the same estimate to \(A_n^*\) to obtain \(p_\varphi(A_n^*)\to0\). This holds for every \(\varphi\), using the single sequence \(k_n\); no countable family of seminorms or Hilbert-space basis has been selected.
+
+Taking \(Y=S\), and conjugating by \(\mathscr F\), now gives
+\[
+ \begin{gathered}
+ X_{k_n}\longrightarrow X\quad\text{sigma-strong-star},\qquad
+ \|X_{k_n}\|\le\|X\|,\\
+ X_{k_n}\in C'\cap\bigl(Q\overline\otimes B(L^2(\mathbb R))\bigr).
+ \end{gathered}
+ \tag{RCC3.s}
+\]
+Unitary conjugation preserves these seminorms by pulling a normal positive functional back along that conjugation. Each \(X_{k_n}\) is the Fourier conjugate of the norm-continuous multiplier \(a_{k_n}\) already constructed in (RCC3.f)–(RCC3.i). Thus these continuous multipliers give sigma-strong-star density within the original norm ball of the ambient relative commutant. In particular they give the sigma-strong density used in the relative-commutant argument.
+
 <a id="rcc-4"></a>
 ## 4. The modular conjugation identifies the other commutant
 
@@ -572,6 +832,340 @@ Use [ND's full double-duality map](OA-FLOW-ND.md#nd-statement) on the left. Its 
  \tag{RCC5.i}
 \]
 Transport this equality through (RCC5.h) and the double-duality map. The first core is precisely the distinguished \(N\), so we obtain (RCC0.d). The paired measures \(dt,ds/(2\pi)\) agree with ND. If the second regular model uses \(ds\), the scalar \(L^2\) rescaling in [L30, Section 7](OA-FLOW-L30.md#l30-7) carries the same named algebras and generators to it. This changes neither relative commutant.
+
+<a id="rcc-factor-amplification"></a>
+### A state corner and a compatible tensor decomposition
+
+We now give a tensor reduction for **every nonzero factor**, including the identifications that carry relative commutants. Here sigma-finite means admitting a faithful normal state; by [PC7](OA-FLOW-PC.md#oa-flow.pc.7), this is equivalent to countable decomposability of the unit. It does not mean that the predual or a faithful representation is separable.
+
+**A properly infinite state corner.** Let \(A\ne0\) be a factor on \(H\). If \(A\) is finite, [FCT8](OA-FLOW-FCT.md#oa-flow.fct.8) supplies a faithful normal tracial state \(\omega\). Then the required decomposition is \(A=A\bar\otimes\mathbb C\), and we take \(p=1\), \(A_0=A\), \(E=\mathbb C\) and \(\Phi(a\otimes\lambda)=\lambda a\). For the rest of the construction suppose that \(1_A\) is infinite. Since its only nonzero central compression is itself, it is properly infinite.
+
+Choose a unit vector \(\xi\in H\), and let \(s\) be the projection onto \(\overline{A'\xi}\). The support argument in [FR1](OA-FLOW-FR.md#oa-flow.fr.1) proves that \(s\in A\), \(s\xi=\xi\), and the vector state \(\omega_s\) is faithful on \(sAs\). The filling construction in [PC5](OA-FLOW-PC.md#oa-flow.pc.5) provides isometries \(w_n\in A\), \(n\ge0\), with pairwise orthogonal ranges. Put \(u_n=w_ns\), \(p_n=u_nu_n^*\), and \(p=\sum_{n\ge0}p_n\). Then \(u_n^*u_n=s\), the nonzero \(p_n\) are orthogonal, and
+\[
+ \omega(a)=\sum_{n=0}^{\infty}2^{-n-1}
+                      \omega_s(u_n^*au_n)
+       \qquad(a\in A_0:=pAp)
+ \tag{RCC5.j}
+\]
+is a faithful normal state. Each summand before its scalar coefficient is a positive normal functional of norm one on \(pAp\); their norm-convergent sum is normal and has value one at \(p\). If \(a\ge0\) has zero value, faithfulness of \(\omega_s\) gives \(u_n^*au_n=0\), hence \(a^{1/2}p_n=0\) for every \(n\). Their strong sum is \(p\), so \(a=0\).
+
+The strong-star sum \(\sum_{n\ge0}u_{n+1}u_n^*\) has initial projection \(p\) and final projection \(p-p_0<p\), by the [orthogonal-sum theorem PC1](OA-FLOW-PC.md#oa-flow.pc.1). Thus \(p\) is infinite. Its central support is \(1\), because \(A\) is a factor, and the [corner-center theorem PC4](OA-FLOW-PC.md#oa-flow.pc.4) gives \(Z(A_0)=\mathbb Cp\). Consequently \(p\) is properly infinite. If \(A\) is type III, finiteness of a projection is intrinsic to its corner by [CDEC2](OA-FLOW-CDEC.md#cdec-2), so \(A_0\) is type III as well.
+
+**Filling the factor with copies of that corner.** Take a maximal orthogonal family \((q_i)_{i\in I}\) of projections in \(A\) equivalent to \(p\), initially with \(q_0=p\). Chain unions and the maximal principle give such a family. Put
+\[
+ r=1-\sum_{i\in I}q_i .
+ \tag{RCC5.k}
+\]
+The sum is the strong limit over finite subsets. If \(r\ne0\), [factor comparison PC2](OA-FLOW-PC.md#oa-flow.pc.2) gives either \(r\precsim p\) or \(p\precsim r\). The second possibility would provide another copy of \(p\) orthogonal to the whole family. Maximality excludes it, so \(r\precsim p\).
+
+The residual can be absorbed into \(q_0\). Indeed \(p\) is properly infinite by the preceding construction, and [PC5](OA-FLOW-PC.md#oa-flow.pc.5) gives
+\[
+ p=h_1+h_2,\qquad h_1\perp h_2,\qquad h_1\sim h_2\sim p.
+ \tag{RCC5.l}
+\]
+Map \(p\) onto \(h_1\) and \(r\) into \(h_2\). Their initial projections \(p,r\) are orthogonal, as are their final projections, so their implementing partial isometries add to a subequivalence \(p+r\precsim p\). Inclusion gives \(p\precsim p+r\). [Mutual subequivalence PC3](OA-FLOW-PC.md#oa-flow.pc.3) therefore gives \(p+r\sim p\). Replacing \(q_0\) by \(p+r\) leaves an orthogonal family, every member equivalent to \(p\), whose sum is \(1\). When \(r=0\), no replacement is needed.
+
+Choose \(v_i\in A\) with \(v_i^*v_i=p\) and \(v_iv_i^*=q_i\), using the family after this replacement. Then
+\[
+ v_i^*v_j=\delta_{ij}p,\qquad
+ \sum_{i\in I}v_iv_i^*=1.
+ \tag{RCC5.m}
+\]
+There is no restriction on the cardinality of \(I\).
+
+**The whole tensor algebra and its normal inverse.** Let \(E=\ell^2(I)\), with basis \((e_i)\). On finite-coordinate vectors define
+\[
+ U:pH\otimes E\longrightarrow H,\qquad
+ U\left(\sum_{i\in F}\eta_i\otimes e_i\right)
+       =\sum_{i\in F}v_i\eta_i.
+ \tag{RCC5.n}
+\]
+The squared norm of the right side is \(\sum_{i\in F}\|\eta_i\|^2\), by (RCC5.m). Thus \(U\) extends to an isometry. Its range contains every \(q_iH\), and these ranges span \(H\); the isometry is onto. Its inverse has the norm-convergent vector expansion
+\[
+ U^*\eta=\sum_{i\in I}v_i^*\eta\otimes e_i,\qquad
+ \sum_{i\in I}\|v_i^*\eta\|^2=\|\eta\|^2.
+ \tag{RCC5.o}
+\]
+These sums are limits over finite subsets. Each individual vector has countable coordinate support, but a common countable subset of \(I\) is not required.
+
+Write \(E_{ij}=|e_i\rangle\langle e_j|\). Unitary conjugation gives
+\[
+ \begin{aligned}
+ \Phi:A_0\bar\otimes B(E)&\longrightarrow A,
+ &\Phi(a\otimes E_{ij})&=v_iav_j^*,\\
+ \Phi^{-1}(x)&=U^*xU,
+ &(\Phi^{-1}(x))_{ij}&=v_i^*xv_j.
+ \end{aligned}
+ \tag{RCC5.p}
+\]
+To check both full ranges, let \(P_F=p\otimes\sum_{i\in F}E_{ii}\) on \(pH\otimes E\). [NCF1](OA-FLOW-NCF.md#ncf-1) proves that \(P_FXP_F\to X\) strongly-star and that membership in \(A_0\bar\otimes B(E)\) is equivalent to having all entries in \(A_0\). Finite tensor matrices have images \(\sum_{i,j\in F}v_iX_{ij}v_j^*\in A\); their bounded strong limits put every \(\Phi(X)\) in \(A\). Conversely \(v_i^*xv_j\in pAp\) for every \(x\in A\), so the matrix criterion puts \(U^*xU\) in the tensor algebra. This proves surjectivity as well as injectivity. Both maps are normal: vector-series functionals pull back by the unitary \(U\) or \(U^*\), preserving their square-summable bounds. We have constructed
+\[
+ A\cong A_0\bar\otimes B(E),
+ \qquad A_0\text{ a sigma-finite factor}.
+ \tag{RCC5.q}
+\]
+The factor \(A_0\) is type III when \(A\) is type III. The finite case above and this infinite construction together prove the statement for every nonzero factor.
+
+**Relative commutants and regular crossed products.** First let \(B\subseteq D\subseteq B(K)\) be unital von Neumann algebras and let \(E\ne0\) be any Hilbert space. Matrix entries give
+\[
+ \begin{aligned}
+ (B\bar\otimes B(E))'\cap(D\bar\otimes B(E))
+       &=(B'\cap D)\otimes\mathbb C1_E,\\
+ Z(B\bar\otimes B(E))&=Z(B)\otimes\mathbb C1_E.
+ \end{aligned}
+ \tag{RCC5.r}
+\]
+Indeed commutation with \(1\otimes E_{ii}\) makes every off-diagonal entry zero. Commutation with \(1\otimes E_{ij}\) makes all diagonal entries equal to one \(d\in D\). The operator is then \(d\otimes1_E\), because all its entries agree with that operator; commutation with \(b\otimes1_E\) is exactly \(d\in B'\). The converse follows by direct multiplication. Taking \(D=B\) gives the center formula. Thus the relative-commutant equality \(B'\cap D=Z(B)\) holds if and only if it holds for the amplified inclusion. Compression to any one diagonal coordinate proves the reverse implication.
+
+Let \(\alpha:\mathbb R\to\operatorname{Aut}(B)\) now be a pointwise strongly continuous normal action. NCF1 defines the normal action \(\beta_t=\alpha_t\bar\otimes\mathrm{id}\) on the tensor algebra. It is point-ultraweakly continuous: on finite-coordinate vectors its pairings are finite sums of continuous matrix-entry pairings, and finite-coordinate approximation followed by the vector-series tail bound treats every normal functional. The common bound \(\|\beta_t(X)\|=\|X\|\) controls both approximations. It is also pointwise strongly-star continuous. Indeed \(\|(\beta_t(X)-X)\zeta\|^2=\langle\beta_t(X^*X)\zeta,\zeta\rangle-2\operatorname{Re}\langle\beta_t(X)\zeta,X\zeta\rangle+\|X\zeta\|^2\to0\); apply the same formula to \(X^*\) and translate the parameter for continuity at every time. The [Hilbert tensor identification](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) gives an onto unitary
+\[
+ L^2(\mathbb R,K\otimes E)
+       \longrightarrow L^2(\mathbb R,K)\otimes E,\qquad
+ [r\mapsto f(r)\eta\otimes e]\longmapsto(f\eta)\otimes e.
+ \tag{RCC5.s}
+\]
+The norm identity holds on finite tensors; their density proves the full assertion, including nonseparable \(K,E\). In the regular convention this unitary sends
+\[
+ \pi_{\alpha\otimes\mathrm{id}}(b\otimes d)
+       \longmapsto\pi_\alpha(b)\otimes d,\qquad
+ \lambda_{\alpha\otimes\mathrm{id}}(t)
+       \longmapsto\lambda_\alpha(t)\otimes1_E.
+ \tag{RCC5.t}
+\]
+Normal tensor extension from NCF1 makes the coefficient formula valid on the entire coefficient algebra. These images generate exactly
+\[
+ (B\bar\otimes B(E))\rtimes_{\alpha\otimes\mathrm{id}}\mathbb R
+       \cong (B\rtimes_\alpha\mathbb R)\bar\otimes B(E).
+ \tag{RCC5.u}
+\]
+For the range assertion, the images contain \(1\otimes B(E)\) and the generators of \((B\rtimes_\alpha\mathbb R)\otimes1\), and each image is in their generated tensor algebra. Conjugation by the displayed unitary gives normal inverse maps; [NR4](OA-FLOW-NR.md#oa-flow.nr.4) transfers them to any named faithful regular models. The isomorphism intertwines the negative-character dual actions: coefficients are fixed and both copies of the translation at \(t\) acquire \(e^{-ist}\). Agreement on the generating algebras extends everywhere by normality.
+
+**Applying the reduction to modular cores.** For (RCC5.q), let
+\[
+ \Omega(X)=\sum_{i\in I}\omega(X_{ii})
+          \quad(X\in(A_0\bar\otimes B(E))_+),\qquad
+ \psi=\Omega\circ\Phi^{-1}.
+ \tag{RCC5.v}
+\]
+[TW2](OA-FLOW-TW.md#tw-2) proves that this is the faithful normal semifinite tensor weight on the whole positive cone. The full Tomita-domain calculation in [TW5](OA-FLOW-TW.md#tw-5) gives \(\sigma_t^\Omega=\sigma_t^\omega\otimes\mathrm{id}\). Transport through \(\Phi\) gives \(\sigma_t^\psi=\Phi\sigma_t^\Omega\Phi^{-1}\): the map \(\Lambda_\psi(x)\mapsto\Lambda_\Omega(\Phi^{-1}(x))\) preserves the GNS inner product, is onto on a dense finite ideal, and intertwines the initial involutions and their closures. It therefore intertwines their polar data and modular implementations.
+
+Equations (RCC5.t)–(RCC5.u) consequently identify the entire core inclusion and its dual action:
+\[
+ \begin{gathered}
+ \bigl(\pi_\psi(A)\subseteq C_\psi(A)\bigr)
+ \cong
+ \bigl(\pi_\omega(A_0)\bar\otimes B(E)
+                  \subseteq C_\omega(A_0)\bar\otimes B(E)\bigr),\\
+ \widehat{\sigma^\psi}
+       \longleftrightarrow \widehat{\sigma^\omega}\otimes\mathrm{id}.
+ \end{gathered}
+ \tag{RCC5.w}
+\]
+Section 4 proves the coefficient relative-commutant theorem for the state \(\omega\). Equation (RCC5.r) transfers it to \(\psi\). For any other faithful normal semifinite \(\varphi\) on \(A\), the coefficient-preserving, dual-equivariant normal transition in [CORE5](OA-FLOW-CORE.md#core-5) transfers it to \(\varphi\). This is a tensor reduction of the whole inclusion, with a faithful state required only on \(A_0\).
+
+Finally return to a specified trace-scaling system \((N,\theta,\tau)\), and suppose \(M=N\rtimes_\theta\mathbb R\) is a type III factor. Put \(P=N^\theta\). [L30.7](OA-FLOW-L30.md#l30-7) identifies \(M\) normally with \(P\bar\otimes B(L^2(\mathbb R))\). Equation (RCC5.r) for centers and [CDEC2](OA-FLOW-CDEC.md#cdec-2) show that \(P\) is a type III factor. Apply (RCC5.q) to \(P\), writing
+\[
+ P\cong P_0\bar\otimes B(E)
+ \tag{RCC5.x}
+\]
+with a faithful normal state \(\omega_0\) on \(P_0\). Use the transported weight \(\psi\) from (RCC5.v). The equivariant core-recognition map in [L30.3](OA-FLOW-L30.md#l30-3), followed by (RCC5.w), gives
+\[
+ \begin{gathered}
+ (N,\theta)\cong(N_0\bar\otimes B(E),\theta^0\otimes\mathrm{id}),\\
+ N_0=C_{\omega_0}(P_0),\qquad
+ \theta^0=\widehat{\sigma^{\omega_0}}.
+ \end{gathered}
+ \tag{RCC5.y}
+\]
+In particular these are identifications of the named coefficient algebras and actions. The core has a faithful normal semifinite scaling trace by [CORE2](OA-FLOW-CORE.md#core-2) and [CORE4](OA-FLOW-CORE.md#core-4).
+
+A second application of (RCC5.u) identifies the full inclusion
+\[
+ (N\subseteq M)\cong
+       (N_0\bar\otimes B(E)\subseteq M_0\bar\otimes B(E)),
+ \qquad M_0=N_0\rtimes_{\theta^0}\mathbb R.
+ \tag{RCC5.z}
+\]
+The Haar normalization in the second crossing is the one in L30.7; its explicit scalar unitary covers either \(ds/(2\pi)\) or \(ds\). Double duality identifies \(M_0\) with \(P_0\bar\otimes B(L^2(\mathbb R))\). It is a type III factor by the same center and corner arguments. It is also sigma-finite. With the countable orthonormal basis \((k_n)_{n\ge0}\) constructed in [CDEC1](OA-FLOW-CDEC.md#cdec-1), the formula
+\[
+ \rho(X)=\sum_{n=0}^{\infty}2^{-n-1}\omega_0(X_{nn})
+       \qquad(X\ge0)
+ \tag{RCC5.aa}
+\]
+defines a normal state: the positive normal summands have summable norms and total value one at the identity. If its value on \(X\ge0\) is zero, all \(X_{nn}\) vanish by faithfulness of \(\omega_0\); then \(X^{1/2}\) vanishes on every coordinate vector, so \(X=0\). Thus \(\rho\) is faithful.
+
+Equation (RCC5.r) now proves that \(N'\cap M=Z(N)\) is equivalent to \(N_0'\cap M_0=Z(N_0)\). This establishes both descent and ascent through the sigma-finite factor reduction. The argument preserves the system's action and inclusion; it does not require the originally specified trace \(\tau\) to have a chosen product normalization.
+
+<a id="rcc-tensor-density"></a>
+### The specified dual weight in tensor coordinates
+
+We determine the weight as well as the algebra in (RCC5.h). In this subsection write \(M=N\rtimes_\theta\mathbb R\), \(Q=N^\theta\), \(j_N:N\to M\), and \(u_s\) for the outer implementing group. The trace \(\tau\) is the specified trace in (RCC0.c). The modular crossing uses \(dt\), the outer crossing uses \(ds/(2\pi)\), and \(\widetilde\tau\) denotes the actual dual weight of \(\tau\) with these conventions. Let \(\omega\) be any faithful normal semifinite weight on \(Q\). No state or factor hypothesis is needed until the last paragraph.
+
+Put \(K=L^2(\mathbb R,dr)\). Write
+\[
+ [L_t f](r)=f(r-t),\qquad [R_t f](r)=f(r+t),\qquad
+ [Q_s f](r)=e^{-isr}f(r).
+ \tag{RCC5.ab}
+\]
+The \(Q_s\) in this notation are scalar character operators, whereas \(Q\) is the fixed algebra. The Fourier transform (RCC0.e) is unitary by [FF3](OA-FLOW-FF.md#oa-flow.ff.3). Substitution in its integral on compact smooth functions gives
+\(\mathcal F R_t\mathcal F^*=M_{e^{itq}}\); density extends this equality to every vector. Define
+\[
+ \begin{gathered}
+ h=\mathcal F^*M_{e^q}\mathcal F,\qquad
+ D(h)=\{f\in K:e^q\mathcal Ff(q)\in L^2(dq)\},\\
+ D(h^{-1})=\{f\in K:e^{-q}\mathcal Ff(q)\in L^2(dq)\},
+ \qquad h^{it}=R_t=L_{-t}.
+ \end{gathered}
+ \tag{RCC5.ac}
+\]
+Multiplication by \(e^q\), on this maximal domain, is positive and self-adjoint: its adjoint domain is obtained by testing against functions supported in bounded intervals, where the multiplier is bounded, and then increasing those intervals. The same argument applies to \(e^{-q}\). Functions with bounded frequency support give dense domains; \(e^q>0\) almost everywhere gives a zero kernel. Thus \(h\) is nonsingular. The multiplication spectral projections \(M_{1_{\{e^q\in B\}}}\), transported by \(\mathcal F\), give its spectral calculus and the imaginary-power formula in (RCC5.ac). In particular \(D(h^{1/2})=\{f:e^{q/2}\mathcal Ff\in L^2\}\). All these operators are affiliated with \(B(K)\).
+
+**The whole positive-cone tensor weight.** Let \(\Omega_\omega=\omega\otimes\operatorname{Tr}_K\), with the usual trace assigning value one to a rank-one projection. [TW2](OA-FLOW-TW.md#tw-2) constructs this weight on the entire positive cone, and [TW5](OA-FLOW-TW.md#tw-5) proves
+\(\sigma_t^{\Omega_\omega}=\sigma_t^\omega\otimes\mathrm{id}\).
+Every spectral projection of \(1\otimes h\) therefore belongs to its centralizer. The spectral construction in [CZ2](OA-FLOW-CZ.md#oa-flow.cz.2) defines the faithful normal semifinite weight
+\[
+ \begin{aligned}
+ \Psi_\omega&=(\Omega_\omega)_{1\otimes h},\\
+ \Psi_\omega(X)
+   &=\sup_{n\ge1}\Omega_\omega\bigl(
+       (1\otimes k_n^{1/2})X(1\otimes k_n^{1/2})\bigr),
+       &&X\in(Q\bar\otimes B(K))_+,\\
+ k_n&=h\,1_{[1/n,n]}(h).
+ \end{aligned}
+ \tag{RCC5.ad}
+\]
+The centralizer perturbation theorem proves that the scalar values in this supremum increase, including when the limit is infinite; it does not require the sandwiched operators themselves to increase. This formula specifies every positive value. On elementary positives it gives
+\[
+ \Psi_\omega(a\otimes b)
+       =\omega(a)\operatorname{Tr}_h(b),\qquad
+ \operatorname{Tr}_h(b)
+       :=\sup_n\operatorname{Tr}(k_n^{1/2}bk_n^{1/2}),
+       \quad a,b\ge0.
+ \tag{RCC5.ae}
+\]
+Indeed TW's diagonal-sum formula gives this product for each cutoff. Increasing \(n\) gives the displayed equality, with the convention \(0\cdot\infty=0\). The functional \(\operatorname{Tr}_h\) is itself the centralizer perturbation of the usual trace and is faithful normal semifinite. We use
+\(\omega\otimes\operatorname{Tr}(h\,\cdot)\) for the full weight (RCC5.ad), not merely for its values on elementary tensors. [CZ5–6](OA-FLOW-CZ.md#oa-flow.cz.5) give its modular group and its normalized derivative:
+\[
+ \begin{gathered}
+ \sigma_t^{\Psi_\omega}
+       =\sigma_t^\omega\otimes\operatorname{Ad}R_t,\qquad
+ (D\Psi_\omega:D\Omega_\omega)_t=1\otimes R_t.
+ \end{gathered}
+ \tag{RCC5.af}
+\]
+
+**Identification with the specified dual weight.** The map in [L30.7](OA-FLOW-L30.md#l30-7) is a normal isomorphism with normal inverse
+\[
+ \mathscr S_\omega:M\longrightarrow Q\bar\otimes B(K).
+ \tag{RCC5.ag}
+\]
+If \(H_\omega\) is the density in the trace-preserving core recognition theorem, its generator values are
+\[
+ \begin{aligned}
+ [\mathscr S_\omega(j_N(x))\xi](r)
+      &=\sigma_{-r}^\omega(x)\xi(r)=:[A_x^\omega\xi](r),
+          &&x\in Q,\\
+ \mathscr S_\omega(j_N(H_\omega^{it}))&=1\otimes L_t,\\
+ \mathscr S_\omega(u_s)&=1\otimes Q_s.
+ \end{aligned}
+ \tag{RCC5.ah}
+\]
+These formulas identify the entire map by generation. In particular,
+\(\mathscr S_\omega(j_N(N))=\{A_x^\omega,1\otimes L_t:x\in Q,t\in\mathbb R\}''\).
+Its coefficient algebra is represented by the modular orbit fields.
+
+We prove the exact weight identity
+\[
+ \boxed{\quad
+ \widetilde\tau\circ\mathscr S_\omega^{-1}
+       =(\omega\otimes\operatorname{Tr})_{1\otimes h}
+       =\omega\otimes\operatorname{Tr}(h\,\cdot)
+       \quad}
+ \tag{RCC5.ai}
+\]
+on the entire positive cone. Write \(C=C_\omega(Q)\), with canonical trace \(\tau_\omega\), first dual weight \(\widetilde\omega\), and core density \(d_\omega^{it}=\lambda_\omega(t)\). These are distinct from the scalar density \(h\). [CORE2](OA-FLOW-CORE.md#core-2) proves
+\[
+ \widetilde\omega=(\tau_\omega)_{d_\omega},\qquad
+ (D\widetilde\omega:D\tau_\omega)_t=\lambda_\omega(t).
+ \tag{RCC5.aj}
+\]
+By [L30.3–4](OA-FLOW-L30.md#l30-4), \(\kappa_\omega:C\to N\) is dual-equivariant and
+\(\tau\circ\kappa_\omega=\tau_\omega\) on every positive element. Its outer-crossing extension \(\kappa_\omega^{(2)}\) is the normal map constructed in L30.7.
+
+Here is the needed whole-cone naturality of the outer dual weight. Let \(T_C\) and \(T_N\) be the canonical operator-valued weights of the outer crossings, with values in their coefficient algebras, identified with \(C\) and \(N\). [DA's full average theorem](OA-FLOW-DA.md#da-equality) realizes both as the extended average of the remaining dual action, using its Haar measure \(dt\). The map \(\kappa_\omega^{(2)}\) intertwines those remaining actions: it sends each outer \(u_s\) to the same \(u_s\), on which both actions multiply by \(e^{-its}\), and relabels their fixed coefficients through \(\kappa_\omega\). It therefore intertwines every bounded interval average. Normal positive functional tests, followed by the increasing extended-positive limit of those intervals, give
+\[
+ T_N\kappa_\omega^{(2)}=\widehat\kappa_\omega T_C,\qquad
+ \widetilde\tau\circ\kappa_\omega^{(2)}
+       =\widetilde{\tau_\omega}.
+ \tag{RCC5.ak}
+\]
+The hat denotes the extension to the extended positive cone. The second equality follows by composing the first with \(\widehat\tau\) and using the exact trace identity. This includes infinite values.
+
+Apply [GDA9](OA-FLOW-GDA.md#gda-9) to the two weights \(\widetilde\omega,\tau_\omega\) on \(C\), for the same outer dual action. If \(j_C\) denotes its coefficient embedding, (RCC5.aj) gives
+\[
+ (D\widetilde{\widetilde\omega}:D\widetilde{\tau_\omega})_t
+       =j_C(\lambda_\omega(t)).
+ \tag{RCC5.al}
+\]
+This is the normalized cocycle, including its scalar phase. Now \(\omega\) is invariant under its own modular group. The invariant-input case of [L33.6](OA-FLOW-L33.md#l33-6), for the same named double-duality map \(\mathcal D_\omega\) and paired measures \(dt,ds/(2\pi)\), consequently gives
+\[
+ \widetilde{\widetilde\omega}\circ\mathcal D_\omega^{-1}
+       =\Omega_\omega.
+ \tag{RCC5.am}
+\]
+Its usual trace has rank-one value one; there is no unspecified scalar factor.
+
+Set \(\Phi_\omega=\widetilde\tau\circ\mathscr S_\omega^{-1}\). Since
+\(\mathscr S_\omega=\mathcal D_\omega(\kappa_\omega^{(2)})^{-1}\),
+equations (RCC5.ak)–(RCC5.am), the generator formula for \(\mathcal D_\omega\), and [BC5's normal covariance](OA-FLOW-BC.md#oa-flow.bc.5) yield
+\[
+ (D\Omega_\omega:D\Phi_\omega)_t=1\otimes L_t.
+\]
+The [BC4 adjoint identity](OA-FLOW-BC.md#oa-flow.bc.4) gives
+\((D\Phi_\omega:D\Omega_\omega)_t=1\otimes R_t\).
+This is the same normalized derivative as in (RCC5.af). [Fixed-reference injectivity in GDA7](OA-FLOW-GDA.md#gda-7) therefore gives \(\Phi_\omega=\Psi_\omega\) on every positive element, proving (RCC5.ai). This step determines the actual weight, beyond the modular automorphism group.
+
+The inverse-perturbation identity proved in [CORE2](OA-FLOW-CORE.md#core-2) also gives
+\[
+ (\Phi_\omega)_{1\otimes h^{-1}}=\Omega_\omega.
+ \tag{RCC5.an}
+\]
+Its hypotheses hold: the spectral projections of \(1\otimes h^{-1}\) are fixed by the group in (RCC5.af). The same complete spectral-sandwich construction includes every infinite value in (RCC5.an).
+
+**The two scalar groups and the fixed core.** Formula (RCC5.af) fixes the orbit fields, since
+\[
+ \sigma_t^\omega\bigl(\sigma_{-(r+t)}^\omega(x)\bigr)
+       =\sigma_{-r}^\omega(x).
+ \tag{RCC5.ao}
+\]
+It fixes \(1\otimes L_a\), since translations commute, and sends the outer character operator to
+\[
+ (1\otimes R_t)(1\otimes Q_s)(1\otimes R_t)^*
+       =e^{-its}(1\otimes Q_s).
+ \tag{RCC5.ap}
+\]
+Thus its restriction to the distinguished \(N\) is trivial and its action on the outer implementer has exactly the trace-scaling phase. Equivalently, it is the transported remaining dual action of L30.7. The positive density satisfies \(h^{it}=R_t\); the canonical outer implementer \(u_s\) has image \(1\otimes Q_s\). These are the two explicitly different groups in this model.
+
+**Choosing a faithful state.** If \(Q\) is sigma-finite, choose a faithful normal state \(\rho\) on \(Q\). Repeating the construction with \(\rho\) gives
+\(\widetilde\tau\circ\mathscr S_\rho^{-1}
+=(\rho\otimes\operatorname{Tr})_{1\otimes h}\),
+with the same specified \(\tau\), the same scalar \(h\), and the same rank-one normalization. The change of coordinates is explicit. Put
+\(c_{\omega,\rho}(t)=(D\omega:D\rho)_t\).
+[L30.5](OA-FLOW-L30.md#l30-5) proves
+\(H_\omega^{it}=c_{\omega,\rho}(t)H_\rho^{it}\) and
+\(\kappa_\omega=\kappa_\rho J_{\omega,\rho}\), with a coefficient-preserving, dual-equivariant, trace-preserving normal chart transition \(J_{\omega,\rho}\). Hence the normal isomorphism
+\(K_{\omega,\rho}=\mathscr S_\rho\mathscr S_\omega^{-1}\) has values
+\[
+ \begin{aligned}
+ K_{\omega,\rho}(A_x^\omega)&=A_x^\rho,\\
+ K_{\omega,\rho}(1\otimes L_t)
+      &=A_{c_{\omega,\rho}(t)}^\rho(1\otimes L_t),\\
+ K_{\omega,\rho}(1\otimes Q_s)&=1\otimes Q_s .
+ \end{aligned}
+ \tag{RCC5.aq}
+\]
+Both sides of its weight identity are the same \(\widetilde\tau\) in the corresponding coordinates, so
+\(\Psi_\rho=\Psi_\omega\circ K_{\omega,\rho}^{-1}\) on the entire positive cone. The replacement by a state includes this change of coordinates. The factor reduction (RCC5.x)–(RCC5.aa) supplies the required sigma-finite fixed algebra when that reduction is needed; if \(M\) itself has a faithful normal state, its transport to \(Q\bar\otimes B(K)\) restricts to one on \(Q\otimes1\). Thus the state choice is available in the sigma-finite factor case without a separable-predual assumption.
 
 <a id="rcc-6"></a>
 ## 6. Recovering coefficient-fixing automorphisms

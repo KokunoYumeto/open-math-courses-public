@@ -1,6 +1,6 @@
 # Finite type II algebras and separable representations
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI). Public domain (CC0).*
 
 A representation need not preserve strong limits of projections. Nevertheless, a sigma-finite von Neumann algebra with no finite type I summand has no such failure on a separable Hilbert space: every representation there is normal. The properly infinite case was proved in [Proper infiniteness and automatic normality](../reader/proper-infiniteness-and-automatic-normality.html). Here we prove the finite type II case. The argument uses small projections twice: first to construct balanced signs, then to construct disjoint copies.
 
@@ -9,9 +9,9 @@ We use the normal–singular representation decomposition and singular-functiona
 p\precsim q\quad\Longleftrightarrow\quad T(p)\leq T(q).
 \tag{0.1}
 \]
-Corollary 3.2 of [Central averaging and maximal ideals](../reader/central-averaging-and-maximal-ideals.html#3-finite-algebras-and-uniqueness) supplies \(T(I)=I\cap Z(M)\) for a norm-closed two-sided ideal \(I\) in a finite algebra. For commutative algebras we use their complete [Gelfand representation](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-04) and the full [finite Radon representation](../../harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html#oa-fnd-hm-01), Theorem 2.2 and Proposition 2.3. Ordinary finite-measure Radon–Nikodym, Egoroff and countable-additivity facts are measure-theory prerequisites. The full [normal-vector decomposition](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#oa-fnd-bi-14), Theorem 10.1, supplies the final separable GNS embedding.
+Corollary 3.2 of [Central averaging and maximal ideals](../reader/central-averaging-and-maximal-ideals.html#3-finite-algebras-and-uniqueness) supplies \(T(I)=I\cap Z(M)\) for a norm-closed two-sided ideal \(I\) in a finite algebra. For commutative algebras we use their complete [Gelfand representation](../../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-04) and the full [finite Radon representation](../../harmonic-analysis-on-locally-compact-groups/reader/haar-measure-on-locally-compact-groups.html#oa-fnd-hm-01), Theorem 2.2 and Proposition 2.3. The finite-measure Radon–Nikodym theorem is proved in [Measure and Hilbert space tools](../../harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html#4-densities-and-bounded-functionals), Theorem 4.1; its Sections 1–3 give countable additivity, integration and the complete function spaces. The almost-uniform estimate needed here is proved directly in Lemma 4.1 below. The full [normal-vector decomposition](../../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#oa-fnd-bi-14), Theorem 10.1, supplies the final separable GNS embedding.
 
-Blackadar’s freely readable *Operator Algebras* treats the factor specialization and the abelian boundary example; Takesaki’s book provides further context. The proof here handles an arbitrary centre explicitly, including a singular central state, clopen cutoffs, the absolutely continuous measure case and the disjoint-copy construction, using the complete programme prerequisites linked above.
+Blackadar’s freely readable *Operator Algebras*, Sections III.2.2.16–17, treats the factor specialization and the abelian boundary example. The proof below handles an arbitrary centre, a singular central state, clopen cutoffs, both measure cases and the disjoint-copy construction.
 
 Throughout, \(M\) is finite of type II, \(Z=Z(M)\), and
 \[
@@ -125,7 +125,7 @@ Let \(\nu_\psi\) be the Radon probability measure on \(Y\) representing \(\psi|_
 \[
 a\longmapsto\pi_\psi(a)\xi_\psi
 \]
-identifies the closure of this subspace of the GNS Hilbert space \(H_\psi\) with \(L^2(Y,\nu_\psi)\). Continuous functions are dense in this \(L^2\) space by regularity of the measure.
+identifies the closure of this subspace of the GNS Hilbert space \(H_\psi\) with \(L^2(Y,\nu_\psi)\). Here is the density argument. For a measurable set \(E\subseteq Y\) and \(\delta>0\), regularity gives a compact \(C\subseteq E\) and an open \(U\supseteq E\) with \(\nu_\psi(U\setminus C)<\delta^2\). A finite union of clopen neighborhoods gives a clopen \(V\) with \(C\subseteq V\subseteq U\). Thus \(1_V\) is continuous and \(\|1_E-1_V\|_2^2\leq\nu_\psi(U\setminus C)<\delta^2\). The same statement holds for completed measurable sets by replacing them by Borel sets modulo null sets. Simple functions are dense in \(L^2\): truncate an integrable square, then divide the bounded real and imaginary ranges into finitely many intervals of arbitrarily small length. Approximating the finitely many indicator functions as above proves density of \(C(Y)\). The isometric GNS map therefore has the stated closed range.
 
 Suppose first that \(\nu_\psi\ll\nu_\tau\). Write \(d\nu_\psi=f\,d\nu_\tau\). Since \(\int f\,d\nu_\tau=1\), one of the sets
 \[
@@ -159,7 +159,7 @@ Write \(Q\) for the spectrum of \(Z\) and also \(\kappa\) for the Radon measure 
 \[
 \int_Q T(e_n)\,d\kappa=\tau(e_n)=\nu_\tau(E_n)\longrightarrow0.
 \]
-Their pointwise limit is zero \(\kappa\)-almost everywhere. Fix \(0<\varepsilon<a/2\). Egoroff's theorem followed by inner regularity gives a compact \(F\subseteq Q\) with \(\kappa(F)>1-\varepsilon\) on which the convergence is uniform. Pass to a subsequence so that \(T(e_n)<4^{-n-2}\) on \(F\).
+Their pointwise limit is zero \(\kappa\)-almost everywhere. Fix \(0<\varepsilon<a/2\), and write \(t_n=T(e_n)\). For each integer \(m\geq1\), the sets \(\{t_n>1/m\}\) decrease to a null set as \(n\) increases. Since \(\kappa\) is finite, countable additivity gives continuity from above, so choose \(n_m\) with \(\kappa(\{t_{n_m}>1/m\})<\varepsilon2^{-m-1}\). Outside their union, \(t_n\leq1/m\) for every \(n\geq n_m\); hence \(t_n\to0\) uniformly there. That complement has measure greater than \(1-\varepsilon/2\). Inner regularity gives a compact subset \(F\) with \(\kappa(F)>1-\varepsilon\), still with uniform convergence. Pass to a subsequence so that \(T(e_n)<4^{-n-2}\) on \(F\).
 
 Let \(G_n=\{q:T(e_n)(q)<4^{-n-2}\}\). Its closure is clopen and still satisfies \(T(e_n)\leq4^{-n-2}\), by continuity. Let \(g_n\in Z\) correspond to \(\bigcap_{i=1}^n\overline{G_i}\). Then \(g_n\) decreases, \(\kappa(g_n)>1-\varepsilon\), and \(T(e_n)g_n\leq4^{-n-2}1\). Put \(f_n=e_ng_n\). Central bimodularity gives the trace bound. Since \(e_n\geq1_K\) as functions on \(Y\), and \(\psi(g_n)=\kappa(g_n)\),
 \[
@@ -288,6 +288,6 @@ The strong sums are taken in \(M\); the representation is used only after these 
 
 ## References
 
-[Takesaki] M. Takesaki, *Theory of Operator Algebras I*, Springer.
 
-[Blackadar] B. Blackadar, *Operator Algebras*, [free author-hosted PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf).
+
+[Blackadar] B. Blackadar, *Operator Algebras*, Sections III.2.2.16–17, [free author-hosted PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf).

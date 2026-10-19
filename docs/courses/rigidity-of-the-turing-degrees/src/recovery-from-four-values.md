@@ -11,7 +11,7 @@ The proof builds a walk on the line. Each step adds \(\delta t\) or \(\delta(t-1
 - The bounded walk (Lemma 3.1).
 - The walk is computable from the four values, and \(t\) from the walk (Section 4).
 
-The lesson follows [OpenAI-R, Section 4]. It uses the reductions, the iteration lemma and the cuts of Relative computability and the Turing degrees, and the category lemmas of [Category and computability](category-and-computability.md).
+The lesson follows [OpenAI-R, Section 4]. It uses the reductions, the iteration lemma and the cuts of [Relative computability and the Turing degrees](relative-computability-and-the-turing-degrees.md), and the category lemmas of [Category and computability](category-and-computability.md).
 
 ## 1. The statement
 

@@ -12,7 +12,7 @@ The starting data are a nonzero von Neumann factor \(M\) with separable predual,
       =\{0\}\cup\lambda^{\mathbb Z}.
  \tag{DD1}
 \]
-Thus “type \(\mathrm{III}_\lambda\)” has the explicit meaning in [DD1](OA-FLOW-DD.md#oa-flow.dd.1). Put \(a=-\log\lambda>0\) and \(P=2\pi/a\). No weight, period or implementing unitary is additional starting data.
+Thus “type \(\mathrm{III}_\lambda\)” has the explicit meaning in [DD1](OA-FLOW-DD.md#equation-dd1). Put \(a=-\log\lambda>0\) and \(P=2\pi/a\). No weight, period or implementing unitary is additional starting data.
 
 The earlier complete proofs are [CP4 and CP6](OA-FLOW-CP.md#oa-flow.cp.4) for the concrete norm-closed predual; [CF1](OA-FLOW-CF.md#oa-flow.cf.1) for choice, convergent Banach series and elementary limits; [the inner-period construction, IP0–6](OA-FLOW-IP.md#oa-flow.ip.0); [PW1–6](OA-FLOW-PW.md#oa-flow.pw.1) for phase cancellation and full-cone compact averaging; [CA0–7](OA-FLOW-CA.md#oa-flow.ca.0) for the full amplified weight and graph transport; [PF1–7](OA-FLOW-PF.md#oa-flow.pf.1) for the centralizer, infinite-trace comparison and least period; and [GT1–6](OA-FLOW-GT.md#oa-flow.gt.1) for the actual regular decomposition and compact double dual. The spectral identification below uses [MW4](OA-FLOW-MW.md#oa-flow.mw.4), [RF5](OA-FLOW-RF.md#oa-flow.rf.5) and [SF's full Borel domains](OA-FLOW-SF.md#oa-flow.sf.sb4). [GW1–4](OA-FLOW-GW.md#oa-flow.gw.1) supply the finite ideals, and [PC5's filling family](OA-FLOW-PC.md#oa-flow.projection.pc5) applies to the type III unit. These inputs have written proofs; their precise source ranges and order are recorded in the accompanying ledger.
 
@@ -89,7 +89,7 @@ In these coordinates the entire modular operator is
  \tag{DD6}
 \end{aligned}
 \]
-[DD6](OA-FLOW-DD.md#oa-flow.dd.6) concerns the full closed operator; every Borel power and logarithmic domain is given in [DD-6](OA-FLOW-DD.md#oa-flow.dd.6). The compact action \(\kappa_{e^{iat}}=\sigma_t^\phi\) has the double-dual identification and trace specified in [DD-8](OA-FLOW-DD.md#oa-flow.dd.8).
+[DD6](OA-FLOW-DD.md#equation-dd6) concerns the full closed operator; every Borel power and logarithmic domain is given in [DD-6](OA-FLOW-DD.md#oa-flow.dd.6). The compact action \(\kappa_{e^{iat}}=\sigma_t^\phi\) has the double-dual identification and trace specified in [DD-8](OA-FLOW-DD.md#oa-flow.dd.8).
 
 <a id="oa-flow.dd.1"></a>
 ## DD-1. An explicit faithful normal state
@@ -108,14 +108,14 @@ Each state has norm one. The series is absolutely norm convergent; [CP6](OA-FLOW
 
 If \(x\in M_+\setminus\{0\}\), its positive square root is nonzero. Choose a unit vector \(\xi\) with \(x^{1/2}\xi\ne0\); then \(\omega_\xi(x)>0\). Choose \(j\) with
 \(\|\omega_j-\omega_\xi\|<\omega_\xi(x)/(2\|x\|)\).
-It follows that \(\omega_j(x)>\omega_\xi(x)/2>0\), and [DD7](OA-FLOW-DD.md#oa-flow.dd.7) gives \(\psi(x)>0\). Thus \(\psi\) is faithful. Its whole positive cone is finite, since \(\psi(x)\le\|x\|\). Therefore it is semifinite, with
+It follows that \(\omega_j(x)>\omega_\xi(x)/2>0\), and [DD7](OA-FLOW-DD.md#equation-dd7) gives \(\psi(x)>0\). Thus \(\psi\) is faithful. Its whole positive cone is finite, since \(\psi(x)\le\|x\|\). Therefore it is semifinite, with
 \(\mathfrak n_\psi=A_\psi=\mathfrak m_\psi=M\).
-The state in [DD7](OA-FLOW-DD.md#oa-flow.dd.7) is now legitimate input to the full n.s.f. modular construction, without supposing that a faithful state was supplied.
+The state in [DD7](OA-FLOW-DD.md#equation-dd7) is now legitimate input to the full n.s.f. modular construction, without supposing that a faithful state was supplied.
 
 <a id="oa-flow.dd.2"></a>
 ## DD-2. The inner period becomes an actual weight period
 
-Apply [IP0](OA-FLOW-IP.md#oa-flow.ip.0)–6 to this \(\psi\), using precisely [DD1](OA-FLOW-DD.md#oa-flow.dd.1) and the separable-predual type III hypotheses. It produces an actual unitary \(b\in M\) with
+Apply [IP0](OA-FLOW-IP.md#oa-flow.ip.0)–6 to this \(\psi\), using precisely [DD1](OA-FLOW-DD.md#equation-dd1) and the separable-predual type III hypotheses. It produces an actual unitary \(b\in M\) with
 
 <a id="equation-dd8"></a>
 
@@ -158,7 +158,7 @@ Set on the entire positive cone
  \tag{DD11}
 \end{gathered}
 \]
-The order is order of weights, proved in PW/CZ; it does not compare \(k^{1/2}xk^{1/2}\) and \(x\) when they fail to commute. At \(P\), \(k^{iP}=b^*\), so the middle modular formula cancels [DD8](OA-FLOW-DD.md#oa-flow.dd.8) on every element of \(M\). We retain the finite positive weight \(\eta\); normalizing it is unnecessary for amplification.
+The order is order of weights, proved in PW/CZ; it does not compare \(k^{1/2}xk^{1/2}\) and \(x\) when they fail to commute. At \(P\), \(k^{iP}=b^*\), so the middle modular formula cancels [DD8](OA-FLOW-DD.md#equation-dd8) on every element of \(M\). We retain the finite positive weight \(\eta\); normalizing it is unnecessary for amplification.
 
 <a id="oa-flow.dd.3"></a>
 ## DD-3. An infinite periodic weight on the original factor
@@ -243,7 +243,7 @@ In particular \(\sigma_P^\phi=\mathrm{id}\). No prior assertion that this is the
 <a id="oa-flow.dd.4"></a>
 ## DD-4. The centralizer and the least period
 
-[PF1](OA-FLOW-PF.md#oa-flow.pf.1)–7 now apply with exactly [DD1](OA-FLOW-DD.md#oa-flow.dd.1) and the actual period obtained in [DD17](OA-FLOW-DD.md#equation-dd17). The weight is faithful normal semifinite on the original factor, and [DD15](OA-FLOW-DD.md#equation-dd15) has proved its infinite total value. PF proves \(N=M_\phi\) is a factor without minimal projections. [PW4](OA-FLOW-PW.md#oa-flow.pw.4)–5 prove the normal faithful expectation [DD3](OA-FLOW-DD.md#oa-flow.dd.3), the whole-cone identity \(\phi=\tau E\), and that \(\tau=\phi|_{N_+}\) is a faithful normal semifinite trace.
+[PF1](OA-FLOW-PF.md#oa-flow.pf.1)–7 now apply with exactly [DD1](OA-FLOW-DD.md#equation-dd1) and the actual period obtained in [DD17](OA-FLOW-DD.md#equation-dd17). The weight is faithful normal semifinite on the original factor, and [DD15](OA-FLOW-DD.md#equation-dd15) has proved its infinite total value. PF proves \(N=M_\phi\) is a factor without minimal projections. [PW4](OA-FLOW-PW.md#oa-flow.pw.4)–5 prove the normal faithful expectation [DD3](OA-FLOW-DD.md#equation-dd3), the whole-cone identity \(\phi=\tau E\), and that \(\tau=\phi|_{N_+}\) is a faithful normal semifinite trace.
 
 [PF5](OA-FLOW-PF.md#oa-flow.pf.5) proves in a semifinite factor that a projection is Murray–von Neumann finite exactly when it has finite trace. Hence \(\tau(1)=\phi(1)=\infty\) makes \(N\) of type \(\mathrm{II}_\infty\). This conclusion uses the proved comparison/shift criterion, not the bare infinite value of a chosen trace. [PF6](OA-FLOW-PF.md#oa-flow.pf.6) proves separability of \(N_*\) by restriction and the normal right inverse \(f\mapsto fE\), and countable decomposability by separated normal states. It supplies equivalence of the infinite-trace projections used in GT.
 
@@ -263,12 +263,12 @@ The exact restriction and expectation domains are, by [PW5](OA-FLOW-PW.md#oa-flo
  \tag{DD18}
 \end{gathered}
 \]
-[PF2](OA-FLOW-PF.md#oa-flow.pf.2) supplies a nonzero element of every integer degree in every nonzero fixed corner. In particular there is \(0\ne y\in M\) with \(\sigma_t^\phi(y)=e^{-iat}y\). If \(\sigma_s^\phi=\mathrm{id}\), then \(e^{-ias}=1\), so \(s\in P\mathbb Z\). Conversely [DD17](OA-FLOW-DD.md#equation-dd17) and the group law give every period \(mP\). This proves the exact least-period assertion in [DD2](OA-FLOW-DD.md#oa-flow.dd.2).
+[PF2](OA-FLOW-PF.md#oa-flow.pf.2) supplies a nonzero element of every integer degree in every nonzero fixed corner. In particular there is \(0\ne y\in M\) with \(\sigma_t^\phi(y)=e^{-iat}y\). If \(\sigma_s^\phi=\mathrm{id}\), then \(e^{-ias}=1\), so \(s\in P\mathbb Z\). Conversely [DD17](OA-FLOW-DD.md#equation-dd17) and the group law give every period \(mP\). This proves the exact least-period assertion in [DD2](OA-FLOW-DD.md#equation-dd2).
 
 <a id="oa-flow.dd.5"></a>
 ## DD-5. A scaling unitary and the onto regular representation
 
-[GT1](OA-FLOW-GT.md#oa-flow.gt.1) applies its balanced weight \(\Psi(X)=\phi(x_{11})+\lambda\phi(x_{22})\) to \(M_2(M)\). Its two diagonal projections have infinite trace in the countably decomposable type \(\mathrm{II}_\infty\) centralizer, so [PF6](OA-FLOW-PF.md#oa-flow.pf.6) supplies an actual fixed partial isometry between them. [GT1](OA-FLOW-GT.md#oa-flow.gt.1)'s entry calculation gives the unitary \(U\) and its character in [DD2](OA-FLOW-DD.md#oa-flow.dd.2). [GT2](OA-FLOW-GT.md#oa-flow.gt.2) applies whole-weight unitary invariance to the fixed balanced swap, obtaining
+[GT1](OA-FLOW-GT.md#oa-flow.gt.1) applies its balanced weight \(\Psi(X)=\phi(x_{11})+\lambda\phi(x_{22})\) to \(M_2(M)\). Its two diagonal projections have infinite trace in the countably decomposable type \(\mathrm{II}_\infty\) centralizer, so [PF6](OA-FLOW-PF.md#oa-flow.pf.6) supplies an actual fixed partial isometry between them. [GT1](OA-FLOW-GT.md#oa-flow.gt.1)'s entry calculation gives the unitary \(U\) and its character in [DD2](OA-FLOW-DD.md#equation-dd2). [GT2](OA-FLOW-GT.md#oa-flow.gt.2) applies whole-weight unitary invariance to the fixed balanced swap, obtaining
 
 <a id="equation-dd19"></a>
 
@@ -290,10 +290,10 @@ The automorphism \(\theta=\operatorname{Ad}U|_N\) is normal with normal inverse 
  \|\Lambda_\phi(xU^m)\|=\lambda^{-m/2}\|\Lambda_\phi(x)\|.
  \tag{DD20}
 \]
-Thus the elementary vectors in [DD5](OA-FLOW-DD.md#oa-flow.dd.5) are defined even though \(U\) itself has infinite squared weight norm.
+Thus the elementary vectors in [DD5](OA-FLOW-DD.md#equation-dd5) are defined even though \(U\) itself has infinite squared weight norm.
 
 [GT3](OA-FLOW-GT.md#oa-flow.gt.3) proves \(M_n=U^nN=NU^n\), where
-\(M_n=\{x:\sigma_t^\phi(x)=\lambda^{int}x\}\), and proves bounded strong-star Fejér convergence from these degrees. [GT4](OA-FLOW-GT.md#oa-flow.gt.4) constructs [DD5](OA-FLOW-DD.md#oa-flow.dd.5) and proves that \(W\) is onto. Its surjectivity is essential: for \(x\in\mathfrak n_\phi\) choose finite trace positive contractions \(c_i\in N\), increasing to \(1\). At fixed \(i\), the finite Fourier sums satisfy
+\(M_n=\{x:\sigma_t^\phi(x)=\lambda^{int}x\}\), and proves bounded strong-star Fejér convergence from these degrees. [GT4](OA-FLOW-GT.md#oa-flow.gt.4) constructs [DD5](OA-FLOW-DD.md#equation-dd5) and proves that \(W\) is onto. Its surjectivity is essential: for \(x\in\mathfrak n_\phi\) choose finite trace positive contractions \(c_i\in N\), increasing to \(1\). At fixed \(i\), the finite Fourier sums satisfy
 
 <a id="equation-dd21"></a>
 
@@ -304,7 +304,7 @@ Thus the elementary vectors in [DD5](OA-FLOW-DD.md#oa-flow.dd.5) are defined eve
 \]
 The first limit evaluates the bounded strong convergence at \(\Lambda_\phi(c_i)\); each left-hand vector lies in \(\operatorname{Ran}W\). The second uses [CZ0](OA-FLOW-CZ.md#oa-flow.cz.0)'s exact right-centralizer multiplier. The two successive limits and closedness of the isometric range prove onto-ness. Generation alone is not used to infer a crossed-product isomorphism.
 
-[GT5](OA-FLOW-GT.md#oa-flow.gt.5) computes \(W^*\pi_\phi(d)W=\pi(d)\) and \(W^*\pi_\phi(U)W=s\) on the dense elementary vectors, then everywhere by boundedness, and proves [DD5](OA-FLOW-DD.md#oa-flow.dd.5) on the full von Neumann algebras with both normalities. Its compact action is
+[GT5](OA-FLOW-GT.md#oa-flow.gt.5) computes \(W^*\pi_\phi(d)W=\pi(d)\) and \(W^*\pi_\phi(U)W=s\) on the dense elementary vectors, then everywhere by boundedness, and proves [DD5](OA-FLOW-DD.md#equation-dd5) on the full von Neumann algebras with both normalities. Its compact action is
 
 <a id="equation-dd22"></a>
 
@@ -353,7 +353,7 @@ Let \(Q_n\) be the coordinate projection of \(\mathcal K\) onto its \(n\)-th cop
 Orthogonality proves norm convergence on each vector. Complement and product identities hold on every coordinate. For disjoint Borel sets, countable additivity is strong: it holds on any finite coordinate truncation, while the omitted vector has arbitrarily small norm and every partial projection is contractive. The total projection is \(I\), and \(Q(\{0\})=0\). The scalar measure of a vector is exactly
 \(\sum_n\|\xi_n\|^2\delta_{\lambda^n}\), a finite positive measure.
 
-SF's proved calculus for an arbitrary projection measure gives the positive self-adjoint multiplication operator \(T\) of [DD6](OA-FLOW-DD.md#oa-flow.dd.6), with that entire domain, and its logarithm
+SF's proved calculus for an arbitrary projection measure gives the positive self-adjoint multiplication operator \(T\) of [DD6](OA-FLOW-DD.md#equation-dd6), with that entire domain, and its logarithm
 
 <a id="equation-dd26"></a>
 
@@ -431,7 +431,7 @@ It maps every vector into \(D(T)\), since
 \(\lambda^n/(\lambda^n-z)=1+z/(\lambda^n-z)\) is uniformly bounded. Coordinate multiplication therefore gives
 \((T-z)R_z=I\) on all of \(\mathcal K\) and
 \(R_z(T-z)=I\) on \(D(T)\).
-It is the full bounded resolvent. The norm equality in [DD31](OA-FLOW-DD.md#equation-dd31) follows by testing each coordinate unit vector, and the upper bound follows from the squared norm. Together with [DD30](OA-FLOW-DD.md#equation-dd30) and the zero-point argument this proves all of [DD6](OA-FLOW-DD.md#oa-flow.dd.6), without a spectral-mapping or periodic-eigenvalue shortcut.
+It is the full bounded resolvent. The norm equality in [DD31](OA-FLOW-DD.md#equation-dd31) follows by testing each coordinate unit vector, and the upper bound follows from the squared norm. Together with [DD30](OA-FLOW-DD.md#equation-dd30) and the zero-point argument this proves all of [DD6](OA-FLOW-DD.md#equation-dd6), without a spectral-mapping or periodic-eigenvalue shortcut.
 
 The logarithm has every \(n\log\lambda=-an\) as an eigenvalue and no other spectral points: the same resolvent argument applies to this closed arithmetic lattice. Its imaginary-power group has period \(P\), and its least positive period is \(P\), by the \(n=1\) eigenvector.
 
@@ -519,7 +519,7 @@ These are conditions on bounded operators, not on formal arrays. The second nega
  \tag{DD37}
 \end{gathered}
 \]
-The scaling preserves each finite ideal and scales its finite linear extension. [GT6](OA-FLOW-GT.md#oa-flow.gt.6)/[VD6](OA-FLOW-VD.md#oa-flow.vd.6) prove \(D\) is a type \(\mathrm{II}_\infty\) factor. This completes the existence theorem from [DD1](OA-FLOW-DD.md#oa-flow.dd.1) alone.
+The scaling preserves each finite ideal and scales its finite linear extension. [GT6](OA-FLOW-GT.md#oa-flow.gt.6)/[VD6](OA-FLOW-VD.md#oa-flow.vd.6) prove \(D\) is a type \(\mathrm{II}_\infty\) factor. This completes the existence theorem from [DD1](OA-FLOW-DD.md#equation-dd1) alone.
 
 <a id="oa-flow.dd.9"></a>
 ## DD-9. A full-domain example and exercises with solutions

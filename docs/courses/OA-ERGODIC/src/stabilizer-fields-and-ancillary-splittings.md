@@ -263,7 +263,7 @@ Level 1 asks for a computation or direct application. Level 2 asks for a proof u
 
 ## Bibliography and source comparison
 
-Masamichi Takesaki, *Theory of Operator Algebras III*, Definition XIII.3.7, PDF page 54; Corollary XIII.3.25 and its complete proof PDF pages 67–68; Proposition XIII.3.32 PDF pages 73–74; and Remark XIII.3.33 PDF page 74. These exact passages distinguish the standard Borel target, measurable lifting, principal AF hypothesis, variable isotropy field and global group kernel.
+Masamichi Takesaki, *Theory of Operator Algebras III*, Definition XIII.3.7, printed p. 34; Corollary XIII.3.25 and its proof, pp. 47–48; Proposition XIII.3.32 and its proof, pp. 53–54; Remark XIII.3.33, p. 54. These passages distinguish the standard Borel target, measurable lifting, principal AF hypothesis, variable isotropy field and global group kernel.
 
 The local compatible-lift and orbit-presentation proofs supply the full Corollary XIII.3.25 assertion, with exactly bound descriptive-set prerequisites and explicit invariant-null repair. Theorem 2.1 proves the entire Proposition XIII.3.32 ancillary-groupoid split and its semidirect multiplication; Corollary 2.2 and the five-cycle example give the amenability and nonsplit-group phenomena of Remark XIII.3.33. The source's generator-product proof implicitly needs a well-defined unique orbit coordinate, or compatible finite lifts when finite orbits occur. The latter are used here, covering finite classes and properly ergodic relations in one argument.
 

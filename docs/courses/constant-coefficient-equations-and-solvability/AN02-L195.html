@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Holomorphic reciprocals and convolution regularity</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L194.html">Previous lesson</a> · <a href="#1-a-reciprocal-in-the-required-frequency-neighborhood">The theorem</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="holomorphic-reciprocals-and-convolution-regularity">Holomorphic reciprocals and convolution regularity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original exposition, examples and solutions: CC0.</em></p>
+<p>Convolution can erase singularities. A Gaussian turns a point mass into an analytic function. A primitive behaves differently: differentiating it recovers its input. A general microlocal version of this recovery is possible when the kernel's Fourier transform admits a holomorphic reciprocal with polynomial growth in a complex cone at infinity.</p>
+<p>Read <span class="unlinked">Pulling back and combining analytic singularities</span>, Section 2, for analytic-wavefront localization; <span class="unlinked">Analytic directions of holomorphic boundary values</span>, Lemma 1.1, for controlled cutoffs; and <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz functions and Fourier inversion</a>, Sections F1-F5, for the Fourier conventions. The <a href="AN02-L195.html#complete-proof">complete proof</a> supplies the analytic multiplier estimate and the convolution theorem.</p>
+<h2 id="1-a-reciprocal-in-the-required-frequency-neighborhood">1. A reciprocal in the required frequency neighborhood</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(\mu\in\mathcal S&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal S&#x27;(\mathbb R^n)\)</span>. A nonzero real direction <span class="math" data-index="1" data-tex="\(\xi_0\)">\(\xi_0\)</span> is outside its convolution characteristic set if a holomorphic function <span class="math" data-index="2" data-tex="\(\Phi\)">\(\Phi\)</span> exists on a complex conic neighborhood of that direction above some radius, with</p>
+<span class="math math-display" id="learner-eq-CL1" data-index="3" data-tex="\[
+ |\Phi(\zeta)|\le C(1+|\zeta|)^m,\qquad
+              \Phi\,\widehat\mu=1
+              \quad\hbox{on the real high-frequency cone}.
+ \tag{CL1}
+\]">\[
+ |\Phi(\zeta)|\le C(1+|\zeta|)^m,\qquad
+              \Phi\,\widehat\mu=1
+              \quad\hbox{on the real high-frequency cone}.
+ \tag{CL1}
+\]</span>
+<p>The product identity is distributional. The Fourier transform <span class="math" data-index="4" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span> need not be a function, and <span class="math" data-index="5" data-tex="\(\Phi\)">\(\Phi\)</span> may vanish on real frequencies. What matters is the stated identity and the bound on a complex neighborhood. Denote the remaining nonzero directions by <span class="math" data-index="6" data-tex="\(\operatorname{Char}\mu\)">\(\operatorname{Char}\mu\)</span>.</p>
+<p>For every compactly supported distribution <span class="math" data-index="7" data-tex="\(v\)">\(v\)</span>, Theorem 4.1 of the full proof gives</p>
+<span class="math math-display" id="learner-eq-CL2" data-index="8" data-tex="\[
+ \operatorname{WF}_A(v)
+ \subset\operatorname{WF}_A(\mu*v)
+       \cup(\mathbb R^n\times\operatorname{Char}\mu).
+ \tag{CL2}
+\]">\[
+ \operatorname{WF}_A(v)
+ \subset\operatorname{WF}_A(\mu*v)
+       \cup(\mathbb R^n\times\operatorname{Char}\mu).
+ \tag{CL2}
+\]</span>
+<p>Thus analyticity of the output at a point and an allowed direction forces analyticity of the input there in that direction. Theorem 2.1 establishes the analytic multiplier estimate used to prove this assertion.</p>
+<p>The same inclusion holds for an arbitrary distribution <span class="math" data-index="9" data-tex="\(v\)">\(v\)</span> if addition is proper on the two supports. Properness means that the input pairs contributing to a compact output set form a compact set. The full proof, Corollary 4.2, then uses a compact input cutoff separately near each output neighborhood. It imposes no growth bound on <span class="math" data-index="10" data-tex="\(v\)">\(v\)</span>.</p>
+<h2 id="2-the-derivative-budget-behind-analytic-regularity">2. The derivative budget behind analytic regularity</h2>
+<p>The reciprocal's holomorphic polynomial bound gives Cauchy estimates</p>
+<span class="math math-display" id="learner-eq-CL3" data-index="11" data-tex="\[
+ \frac{|\partial^\alpha\Phi(\xi)|}{\alpha!}
+     \le C^{|\alpha|+1}|\xi|^{m-|\alpha|}.
+ \tag{CL3}
+\]">\[
+ \frac{|\partial^\alpha\Phi(\xi)|}{\alpha!}
+     \le C^{|\alpha|+1}|\xi|^{m-|\alpha|}.
+ \tag{CL3}
+\]</span>
+<p>A finite Taylor expansion separates the multiplier into local products with cutoff derivatives and a remainder. The local products use the analytic regularity of the output. The remainder is bounded in the fixed tempered seminorm of that output.</p>
+<p>Choose the expansion index <span class="math" data-index="12" data-tex="\(K=N+B\)">\(K=N+B\)</span>, where <span class="math" data-index="13" data-tex="\(B\)">\(B\)</span> is a fixed loss depending on the distributional order, symbol order and dimension. A cutoff with controlled derivatives through <span class="math" data-index="14" data-tex="\(4K\)">\(4K\)</span> covers every derivative in the expansion and remainder. Its fixed low derivatives remain uniformly bounded, so the localized output distributions have a common order.</p>
+<p>An apparently extra factor <span class="math" data-index="15" data-tex="\(K^{|\alpha|}\)">\(K^{|\alpha|}\)</span> from a cutoff derivative is accompanied by <span class="math" data-index="16" data-tex="\(|\xi|^{-|\alpha|}\)">\(|\xi|^{-|\alpha|}\)</span> from the Taylor coefficient. In the region <span class="math" data-index="17" data-tex="\(|\xi|\ge K\)">\(|\xi|\ge K\)</span> this quotient is harmless. The remaining fixed shift satisfies</p>
+<span class="math math-display" id="learner-eq-CL4" data-index="18" data-tex="\[
+ (N+B)^{N+B+c}\le C_{B,c}^{N+1}N^N.
+ \tag{CL4}
+\]">\[
+ (N+B)^{N+B+c}\le C_{B,c}^{N+1}N^N.
+ \tag{CL4}
+\]</span>
+<p>It therefore retains the single analytic factorial scale. Bounded frequencies use the common compact distributional estimate.</p>
+<p>After multiplying the convolution equation by this localized reciprocal, the error has no Fourier transform in a smaller cone at infinity. Lemma 3.1 proves that such a Fourier gap is analytically regular in its interior directions, at every base point. This completes the recovery of the input's analytic regularity.</p>
+<h2 id="3-four-examples">3. Four examples</h2>
+<h3 id="example-1-a-primitive-with-a-noncompact-kernel">Example 1: a primitive with a noncompact kernel</h3>
+<p>Let <span class="math" data-index="19" data-tex="\(\mu=H\)">\(\mu=H\)</span>, the Heaviside function on the line. With <span class="math" data-index="20" data-tex="\(\widehat f(\xi)=\int e^{-ix\xi}f(x)\,dx\)">\(\widehat f(\xi)=\int e^{-ix\xi}f(x)\,dx\)</span>, its transform is</p>
+<span class="math math-display" id="learner-eq-CL5" data-index="21" data-tex="\[
+ \widehat H=\pi\delta_0-i\,\operatorname{pv}(1/\xi),
+ \qquad i\xi\,\widehat H=1.
+ \tag{CL5}
+\]">\[
+ \widehat H=\pi\delta_0-i\,\operatorname{pv}(1/\xi),
+ \qquad i\xi\,\widehat H=1.
+ \tag{CL5}
+\]</span>
+<p>For a direct derivation, damp <span class="math" data-index="22" data-tex="\(H\)">\(H\)</span> by <span class="math" data-index="23" data-tex="\(e^{-\epsilon x}\)">\(e^{-\epsilon x}\)</span>. Its transform is
+<span class="math" data-index="24" data-tex="\((\epsilon+i\xi)^{-1}=-i(\xi-i\epsilon)^{-1}\)">\((\epsilon+i\xi)^{-1}=-i(\xi-i\epsilon)^{-1}\)</span>.
+The lower boundary formula of <span class="unlinked">Cauchy kernels and distributional boundary limits</span>, Theorem 4.1, gives (CL5) as <span class="math" data-index="25" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. The damping converges in tempered distributions by dominated convergence on Schwartz tests. Multiplication by <span class="math" data-index="26" data-tex="\(\xi\)">\(\xi\)</span> kills the point term and changes the principal value into one.</p>
+<p>The reciprocal <span class="math" data-index="27" data-tex="\(\Phi(\zeta)=i\zeta\)">\(\Phi(\zeta)=i\zeta\)</span> is entire and polynomially bounded. Both real rays are allowed, so <span class="math" data-index="28" data-tex="\(\operatorname{Char}H=\varnothing\)">\(\operatorname{Char}H=\varnothing\)</span>. For example, if</p>
+<span class="math math-display" id="learner-eq-CL6" data-index="29" data-tex="\[
+ v=\delta_0-2\delta_1+\delta_3,
+ \qquad g=H*v=H(x)-2H(x-1)+H(x-3),
+ \tag{CL6}
+\]">\[
+ v=\delta_0-2\delta_1+\delta_3,
+ \qquad g=H*v=H(x)-2H(x-1)+H(x-3),
+ \tag{CL6}
+\]</span>
+<p>then <span class="math" data-index="30" data-tex="\(g\)">\(g\)</span> has values <span class="math" data-index="31" data-tex="\(0,1,-1,0\)">\(0,1,-1,0\)</span> on the four intervals cut out by <span class="math" data-index="32" data-tex="\(0,1,3\)">\(0,1,3\)</span>, and <span class="math" data-index="33" data-tex="\(\partial_xg=v\)">\(\partial_xg=v\)</span>. Both analytic covector signs occur at every jump. At the interior jump one may subtract its analytic constant value on the adjacent interval and apply the support-normal theorem locally. The kernel is noncompact, although this particular output is compactly supported.</p>
+<h3 id="example-2-a-reciprocal-that-vanishes-on-an-allowed-direction">Example 2: a reciprocal that vanishes on an allowed direction</h3>
+<p>On the plane put</p>
+<span class="math math-display" id="learner-eq-CL7" data-index="34" data-tex="\[
+ \mu(x_1,x_2)=H(x_1)\delta_0(x_2),\qquad
+                   \Phi(\zeta)=i\zeta_1.
+ \tag{CL7}
+\]">\[
+ \mu(x_1,x_2)=H(x_1)\delta_0(x_2),\qquad
+                   \Phi(\zeta)=i\zeta_1.
+ \tag{CL7}
+\]</span>
+<p>Its transform is <span class="math" data-index="35" data-tex="\((\pi\delta_0(\xi_1)-i\operatorname{pv}(1/\xi_1))\otimes1\)">\((\pi\delta_0(\xi_1)-i\operatorname{pv}(1/\xi_1))\otimes1\)</span>. Multiplication gives <span class="math" data-index="36" data-tex="\(\Phi\widehat\mu=1\)">\(\Phi\widehat\mu=1\)</span> on the whole real frequency plane. Hence <span class="math" data-index="37" data-tex="\(\operatorname{Char}\mu=\varnothing\)">\(\operatorname{Char}\mu=\varnothing\)</span>, even in the directions <span class="math" data-index="38" data-tex="\((0,\pm1)\)">\((0,\pm1)\)</span>, where <span class="math" data-index="39" data-tex="\(\Phi\)">\(\Phi\)</span> itself is zero.</p>
+<p>For <span class="math" data-index="40" data-tex="\(v=\delta_{(0,0)}\)">\(v=\delta_{(0,0)}\)</span>, the output is <span class="math" data-index="41" data-tex="\(\mu\)">\(\mu\)</span>. At the origin every nonzero covector belongs to <span class="math" data-index="42" data-tex="\(\operatorname{WF}_A(v)\)">\(\operatorname{WF}_A(v)\)</span>, by the support-normal theorem for an isolated support point. The convolution theorem therefore puts every one of them in <span class="math" data-index="43" data-tex="\(\operatorname{WF}_A(\mu)\)">\(\operatorname{WF}_A(\mu)\)</span>. At an interior point <span class="math" data-index="44" data-tex="\((a,0)\)">\((a,0)\)</span>, <span class="math" data-index="45" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the distribution is locally <span class="math" data-index="46" data-tex="\(1\otimes\delta_0\)">\(1\otimes\delta_0\)</span>, so the tensor rule and signed support normals give exactly</p>
+<span class="math math-display" id="learner-eq-CL8" data-index="47" data-tex="\[
+ \operatorname{WF}_A(\mu)=
+ \{(0,0;\xi_1,\xi_2):(\xi_1,\xi_2)\ne0\}
+ \ \cup\
+ \{(a,0;0,\xi_2):a&gt;0,\ \xi_2\ne0\}.
+ \tag{CL8}
+\]">\[
+ \operatorname{WF}_A(\mu)=
+ \{(0,0;\xi_1,\xi_2):(\xi_1,\xi_2)\ne0\}
+ \ \cup\
+ \{(a,0;0,\xi_2):a&gt;0,\ \xi_2\ne0\}.
+ \tag{CL8}
+\]</span>
+<p>Outside this half-line support the kernel vanishes. This example requires the distributional product interpretation in (CL1).</p>
+<figure><img class="course-figure" loading="lazy" width="1952" height="784" src="reproduce/L195/figures/primitive-kernel-and-covector-fibers.png" alt="The half-line kernel and its complete unit covector directions at the endpoint and at an interior support point." /><figcaption class="native"><a href="reproduce/L195/figures/primitive-kernel-and-covector-fibers.png">Open full-size PNG</a> · <a href="reproduce/L195/figures/primitive-kernel-and-covector-fibers.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> Left: the exact spatial support <span class="math" data-index="48" data-tex="\(\{x_1\ge0,x_2=0\}\)">\(\{x_1\ge0,x_2=0\}\)</span> of <span class="math" data-index="49" data-tex="\(H(x_1)\delta_0(x_2)\)">\(H(x_1)\delta_0(x_2)\)</span>; the marked interior point is <span class="math" data-index="50" data-tex="\((1,0)\)">\((1,0)\)</span>. Middle: the full unit covector circle at the origin. Right: the two unit directions of the vertical covector line at <span class="math" data-index="51" data-tex="\((1,0)\)">\((1,0)\)</span>. The last two panels are cotangent fibers, with axes <span class="math" data-index="52" data-tex="\((\xi_1,\xi_2)\)">\((\xi_1,\xi_2)\)</span>, rather than spatial regions. The reciprocal <span class="math" data-index="53" data-tex="\(i\zeta_1\)">\(i\zeta_1\)</span> vanishes on both vertical directions, yet its distributional product with the kernel transform is one. Equation (CL8), the tensor rule and Theorem 4.1 prove the stated fibers.</p>
+<h3 id="example-3-a-square-root-reciprocal">Example 3: a square-root reciprocal</h3>
+<p>Define a tempered kernel by</p>
+<span class="math math-display" id="learner-eq-CL9" data-index="54" data-tex="\[
+ \widehat\mu(\xi)=(1+\xi^2)^{-1/2}.
+ \tag{CL9}
+\]">\[
+ \widehat\mu(\xi)=(1+\xi^2)^{-1/2}.
+ \tag{CL9}
+\]</span>
+<p>The bounded smooth function on the right defines a tempered distribution, so Fourier inversion defines <span class="math" data-index="55" data-tex="\(\mu\)">\(\mu\)</span>. For <span class="math" data-index="56" data-tex="\(|\zeta|&gt;2\)">\(|\zeta|&gt;2\)</span>, set</p>
+<span class="math math-display" id="learner-eq-CL10" data-index="57" data-tex="\[
+ S(\zeta)=\exp\!\left(\frac12\log(1+\zeta^{-2})\right),
+ \qquad
+ \Phi_+(\zeta)=\zeta S(\zeta),\quad
+ \Phi_-(\zeta)=-\zeta S(\zeta).
+ \tag{CL10}
+\]">\[
+ S(\zeta)=\exp\!\left(\frac12\log(1+\zeta^{-2})\right),
+ \qquad
+ \Phi_+(\zeta)=\zeta S(\zeta),\quad
+ \Phi_-(\zeta)=-\zeta S(\zeta).
+ \tag{CL10}
+\]</span>
+<p>Here <span class="math" data-index="58" data-tex="\(\log(1+w)=\sum_{k\ge1}(-1)^{k+1}w^k/k\)">\(\log(1+w)=\sum_{k\ge1}(-1)^{k+1}w^k/k\)</span> for <span class="math" data-index="59" data-tex="\(|w|&lt;1\)">\(|w|&lt;1\)</span>. The convergent series gives <span class="math" data-index="60" data-tex="\(S^2=1+\zeta^{-2}\)">\(S^2=1+\zeta^{-2}\)</span>. Choose the plus branch in the cone about the positive real ray and the minus branch about the negative ray. On each real ray the resulting value is the positive square root of <span class="math" data-index="61" data-tex="\(1+\xi^2\)">\(1+\xi^2\)</span>, so (CL1) holds.</p>
+<p>Since <span class="math" data-index="62" data-tex="\(|\zeta^{-2}|&lt;1/4\)">\(|\zeta^{-2}|&lt;1/4\)</span>,</p>
+<span class="math math-display" id="learner-eq-CL11" data-index="63" data-tex="\[
+ \frac{\sqrt3}{2}|\zeta|
+       \le|\Phi_\pm(\zeta)|
+       \le\frac{\sqrt5}{2}|\zeta|.
+ \tag{CL11}
+\]">\[
+ \frac{\sqrt3}{2}|\zeta|
+       \le|\Phi_\pm(\zeta)|
+       \le\frac{\sqrt5}{2}|\zeta|.
+ \tag{CL11}
+\]</span>
+<p>Both rays are therefore outside <span class="math" data-index="64" data-tex="\(\operatorname{Char}\mu\)">\(\operatorname{Char}\mu\)</span>. These reciprocals are not polynomials: a polynomial whose square is <span class="math" data-index="65" data-tex="\(1+\zeta^2\)">\(1+\zeta^2\)</span> would have degree one, but its leading, cross and constant coefficients cannot satisfy all three required identities.</p>
+<p>The direct multiplier <span class="math" data-index="66" data-tex="\((1+\xi^2)^{-1/2}\)">\((1+\xi^2)^{-1/2}\)</span> also has a holomorphic polynomial bound in those cones. Its <span class="math" data-index="67" data-tex="\(k\)">\(k\)</span>-th real derivative has the form <span class="math" data-index="68" data-tex="\(P_k(\xi)(1+\xi^2)^{-k-1/2}\)">\(P_k(\xi)(1+\xi^2)^{-k-1/2}\)</span>, with <span class="math" data-index="69" data-tex="\(\deg P_k\le k\)">\(\deg P_k\le k\)</span>: differentiation gives
+<span class="math" data-index="70" data-tex="\(P_{k+1}=(1+\xi^2)P_k&#x27;-(2k+1)\xi P_k\)">\(P_{k+1}=(1+\xi^2)P_k&#x27;-(2k+1)\xi P_k\)</span>, starting from <span class="math" data-index="71" data-tex="\(P_0=1\)">\(P_0=1\)</span>. Thus its fixed-order symbol estimates also hold. Theorem 2.1 applied to <span class="math" data-index="72" data-tex="\(\delta_0\)">\(\delta_0\)</span> gives <span class="math" data-index="73" data-tex="\(\operatorname{WF}_A(\mu)\subset\operatorname{WF}_A(\delta_0)\)">\(\operatorname{WF}_A(\mu)\subset\operatorname{WF}_A(\delta_0)\)</span>. The reciprocal theorem with <span class="math" data-index="74" data-tex="\(v=\delta_0\)">\(v=\delta_0\)</span> gives the reverse inclusion. Thus its analytic wavefront is exactly both nonzero rays over the origin.</p>
+<h3 id="example-4-the-gaussian-does-erase-the-point-singularity">Example 4: the Gaussian does erase the point singularity</h3>
+<p>Take</p>
+<span class="math math-display" id="learner-eq-CL12" data-index="75" data-tex="\[
+ \mu(x)=(4\pi)^{-1/2}e^{-x^2/4},
+ \qquad \widehat\mu(\xi)=e^{-\xi^2}.
+ \tag{CL12}
+\]">\[
+ \mu(x)=(4\pi)^{-1/2}e^{-x^2/4},
+ \qquad \widehat\mu(\xi)=e^{-\xi^2}.
+ \tag{CL12}
+\]</span>
+<p>The Gaussian Fourier constant is proved in the linked Fourier foundation. Any holomorphic reciprocal near a real high-frequency ray must equal <span class="math" data-index="76" data-tex="\(e^{\zeta^2}\)">\(e^{\zeta^2}\)</span> there: the product identity holds between functions, and the holomorphic identity theorem extends it locally. Already on the real ray its magnitude <span class="math" data-index="77" data-tex="\(e^{\xi^2}\)">\(e^{\xi^2}\)</span> exceeds every polynomial. Consequently every nonzero direction lies in <span class="math" data-index="78" data-tex="\(\operatorname{Char}\mu\)">\(\operatorname{Char}\mu\)</span>.</p>
+<p>With <span class="math" data-index="79" data-tex="\(v=\delta_0\)">\(v=\delta_0\)</span>, the output <span class="math" data-index="80" data-tex="\(\mu*v=\mu\)">\(\mu*v=\mu\)</span> is analytic everywhere while the input has both analytic singular directions at zero. The polynomial bound in (CL1) excludes precisely this attempted recovery.</p>
+<figure><img class="course-figure" loading="lazy" width="1856" height="928" src="reproduce/L195/figures/complex-cones-and-reciprocal-growth.png" alt="Complex frequency cones for the square-root reciprocal and real growth of that reciprocal compared with the Gaussian inverse." /><figcaption class="native"><a href="reproduce/L195/figures/complex-cones-and-reciprocal-growth.png">Open full-size PNG</a> · <a href="reproduce/L195/figures/complex-cones-and-reciprocal-growth.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> Left: the complex cones <span class="math" data-index="81" data-tex="\(|\operatorname{Im}\zeta|&lt;|\operatorname{Re}\zeta|/2\)">\(|\operatorname{Im}\zeta|&lt;|\operatorname{Re}\zeta|/2\)</span>, outside the dashed circle <span class="math" data-index="82" data-tex="\(|\zeta|=2\)">\(|\zeta|=2\)</span>. The points <span class="math" data-index="83" data-tex="\(\pm i\)">\(\pm i\)</span>, marked by crosses, are the square-root branch points. The displayed Cauchy disks have centers <span class="math" data-index="84" data-tex="\(\pm3,\pm6\)">\(\pm3,\pm6\)</span> and radii <span class="math" data-index="85" data-tex="\(3/4,3/2\)">\(3/4,3/2\)</span>, respectively; each lies inside the corresponding cone and outside the circle. Different signs in (CL10) give the positive real reciprocal on the two rays. Right: the exact logarithmic magnitudes <span class="math" data-index="86" data-tex="\(\tfrac12\log(1+\xi^2)\)">\(\tfrac12\log(1+\xi^2)\)</span> and <span class="math" data-index="87" data-tex="\(\xi^2\)">\(\xi^2\)</span> on the positive real axis. The dashed bound for <span class="math" data-index="88" data-tex="\(\xi\ge2\)">\(\xi\ge2\)</span> is <span class="math" data-index="89" data-tex="\(\log(\sqrt5/2)+\log\xi\)">\(\log(\sqrt5/2)+\log\xi\)</span>. Equations (CL10)–(CL12) prove the bounds and the failure for the Gaussian; the plotted interval illustrates those statements.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<ol>
+<li><strong>A causal primitive, 10 points.</strong> Derive (CL5) with its signs and point term. Compute all four interval values and every jump of the output in (CL6).</li>
+<li><strong>A distribution-valued transform, 12 points.</strong> Prove that the kernel in (CL7) has empty convolution characteristic set, including the vertical frequency directions. Prove the exact analytic wavefront formula (CL8).</li>
+<li><strong>Two square-root branches, 12 points.</strong> Justify holomorphy, real-ray agreement and both bounds in (CL11). Prove that neither reciprocal is polynomial.</li>
+<li><strong>The Gaussian obstruction, 12 points.</strong> Prove <span class="math" data-index="90" data-tex="\(\operatorname{Char}\mu=\mathbb R\setminus\{0\}\)">\(\operatorname{Char}\mu=\mathbb R\setminus\{0\}\)</span> for (CL12), and explain the convolution theorem at <span class="math" data-index="91" data-tex="\(v=\delta_0\)">\(v=\delta_0\)</span>.</li>
+<li><strong>Real-axis bounds are insufficient, 14 points.</strong> Let <span class="math" data-index="92" data-tex="\(\mu=\delta_h\)">\(\mu=\delta_h\)</span> on the line, <span class="math" data-index="93" data-tex="\(h\ne0\)">\(h\ne0\)</span>. Its real-axis reciprocal has magnitude one. Determine its convolution characteristic set under (CL1), and compare <span class="math" data-index="94" data-tex="\(v=\delta_0\)">\(v=\delta_0\)</span> with <span class="math" data-index="95" data-tex="\(\mu*v\)">\(\mu*v\)</span>.</li>
+<li><strong>The Taylor factor of <span class="math" data-index="96" data-tex="\(i\)">\(i\)</span>, 12 points.</strong> Verify (CE12) in one dimension. For <span class="math" data-index="97" data-tex="\(a(\xi)=\xi^3\)">\(a(\xi)=\xi^3\)</span>, express <span class="math" data-index="98" data-tex="\(\widehat{\chi D^3f}\)">\(\widehat{\chi D^3f}\)</span> in terms of the Fourier transforms of <span class="math" data-index="99" data-tex="\(\chi f,\chi&#x27;f,\chi&#x27;&#x27;f,\chi&#x27;&#x27;&#x27;f\)">\(\chi f,\chi&#x27;f,\chi&#x27;&#x27;f,\chi&#x27;&#x27;&#x27;f\)</span>, with <span class="math" data-index="100" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>.</li>
+<li><strong>One analytic scale, 14 points.</strong> Track the largest cutoff derivative orders in the local products and the far Taylor polynomial terms when <span class="math" data-index="101" data-tex="\(|\alpha|&lt;K\)">\(|\alpha|&lt;K\)</span>. Explain why one fixed shift and <span class="math" data-index="102" data-tex="\(J=4K\)">\(J=4K\)</span> suffice. Prove (CL4) for arbitrary fixed nonnegative integers <span class="math" data-index="103" data-tex="\(B,c\)">\(B,c\)</span>.</li>
+<li><strong>An input with arbitrary growth, 14 points.</strong> Let <span class="math" data-index="104" data-tex="\(\mu=H\)">\(\mu=H\)</span> and <span class="math" data-index="105" data-tex="\(v=H(x)e^{x^3}\)">\(v=H(x)e^{x^3}\)</span>. Prove properness, compute their convolution, and apply Corollary 4.2. Give the compact localization needed for outputs in <span class="math" data-index="106" data-tex="\((-1,2)\)">\((-1,2)\)</span>, and prove that <span class="math" data-index="107" data-tex="\(v\)">\(v\)</span> is not tempered.</li>
+</ol>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>For <span class="math" data-index="108" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, direct integration gives</p>
+<span class="math math-display" id="learner-eq-CF1" data-index="109" data-tex="\[
+ \mathcal F(H e^{-\epsilon x})(\xi)
+        =\int_0^\infty e^{-(\epsilon+i\xi)x}\,dx
+        =-i(\xi-i\epsilon)^{-1}.
+ \tag{CF1}
+\]">\[
+ \mathcal F(H e^{-\epsilon x})(\xi)
+        =\int_0^\infty e^{-(\epsilon+i\xi)x}\,dx
+        =-i(\xi-i\epsilon)^{-1}.
+ \tag{CF1}
+\]</span>
+<p>The lower boundary formula is
+<span class="math" data-index="110" data-tex="\((\xi-i0)^{-1}=\operatorname{pv}(1/\xi)+i\pi\delta_0\)">\((\xi-i0)^{-1}=\operatorname{pv}(1/\xi)+i\pi\delta_0\)</span>.
+Multiplication by <span class="math" data-index="111" data-tex="\(-i\)">\(-i\)</span> gives (CL5). The convergence of <span class="math" data-index="112" data-tex="\(H e^{-\epsilon x}\)">\(H e^{-\epsilon x}\)</span> to <span class="math" data-index="113" data-tex="\(H\)">\(H\)</span> on Schwartz tests follows from domination by the integrable absolute value of the test on the positive half-line. Fourier continuity passes this limit to the transforms. The identities <span class="math" data-index="114" data-tex="\(\xi\delta_0=0\)">\(\xi\delta_0=0\)</span> and <span class="math" data-index="115" data-tex="\(\xi\operatorname{pv}(1/\xi)=1\)">\(\xi\operatorname{pv}(1/\xi)=1\)</span> give <span class="math" data-index="116" data-tex="\(i\xi\widehat H=1\)">\(i\xi\widehat H=1\)</span>.</p>
+<p>The intervals in (CL6) have values <span class="math" data-index="117" data-tex="\(0\)">\(0\)</span> for <span class="math" data-index="118" data-tex="\(x&lt;0\)">\(x&lt;0\)</span>, <span class="math" data-index="119" data-tex="\(1\)">\(1\)</span> for <span class="math" data-index="120" data-tex="\(0&lt;x&lt;1\)">\(0&lt;x&lt;1\)</span>, <span class="math" data-index="121" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-index="122" data-tex="\(1&lt;x&lt;3\)">\(1&lt;x&lt;3\)</span>, and <span class="math" data-index="123" data-tex="\(0\)">\(0\)</span> for <span class="math" data-index="124" data-tex="\(x&gt;3\)">\(x&gt;3\)</span>. The jumps at <span class="math" data-index="125" data-tex="\(0,1,3\)">\(0,1,3\)</span> are <span class="math" data-index="126" data-tex="\(1,-2,1\)">\(1,-2,1\)</span>. The distributional derivative is therefore <span class="math" data-index="127" data-tex="\(\delta_0-2\delta_1+\delta_3\)">\(\delta_0-2\delta_1+\delta_3\)</span>. Values chosen exactly at the three endpoints do not change the associated distribution.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>The Fourier tensor identity gives</p>
+<span class="math math-display" id="learner-eq-CF2" data-index="128" data-tex="\[
+ \widehat\mu=
+  \bigl(\pi\delta_0(\xi_1)-i\operatorname{pv}(1/\xi_1)\bigr)
+       \otimes1.
+ \tag{CF2}
+\]">\[
+ \widehat\mu=
+  \bigl(\pi\delta_0(\xi_1)-i\operatorname{pv}(1/\xi_1)\bigr)
+       \otimes1.
+ \tag{CF2}
+\]</span>
+<p>Multiplication by <span class="math" data-index="129" data-tex="\(i\xi_1\)">\(i\xi_1\)</span> gives <span class="math" data-index="130" data-tex="\(1\otimes1\)">\(1\otimes1\)</span>. The entire function <span class="math" data-index="131" data-tex="\(i\zeta_1\)">\(i\zeta_1\)</span> obeys <span class="math" data-index="132" data-tex="\(|i\zeta_1|\le|\zeta|\)">\(|i\zeta_1|\le|\zeta|\)</span> on every complex cone. The reciprocal criterion thus holds near every nonzero real frequency, including <span class="math" data-index="133" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>. A zero value of the multiplier on that hyperplane does not invalidate its product with the distributional principal value.</p>
+<p>The point-mass input has every nonzero covector at the origin; Theorem 4.1 gives their presence in the output. For <span class="math" data-index="134" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the kernel is locally <span class="math" data-index="135" data-tex="\(1\otimes\delta_0\)">\(1\otimes\delta_0\)</span>. Analytic tensor estimates give only covectors <span class="math" data-index="136" data-tex="\((0,\xi_2)\)">\((0,\xi_2)\)</span>, and the supporting function <span class="math" data-index="137" data-tex="\(x_2\)">\(x_2\)</span>, zero on its support, supplies both vertical signs. Off the half-line the kernel is zero. These three cases give (CL8).</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The logarithm series converges normally for <span class="math" data-index="138" data-tex="\(|w|&lt;1\)">\(|w|&lt;1\)</span>, so its composition with <span class="math" data-index="139" data-tex="\(\zeta^{-2}\)">\(\zeta^{-2}\)</span>, followed by the exponential, is holomorphic for <span class="math" data-index="140" data-tex="\(|\zeta|&gt;2\)">\(|\zeta|&gt;2\)</span>. Differentiating the logarithm series gives <span class="math" data-index="141" data-tex="\((1+w)^{-1}\)">\((1+w)^{-1}\)</span>; hence <span class="math" data-index="142" data-tex="\(\exp(\log(1+w))=1+w\)">\(\exp(\log(1+w))=1+w\)</span>, by differentiating their quotient and evaluating at zero. Thus <span class="math" data-index="143" data-tex="\(S^2=1+\zeta^{-2}\)">\(S^2=1+\zeta^{-2}\)</span>. On the real rays the series is real and <span class="math" data-index="144" data-tex="\(S\)">\(S\)</span> is positive, giving the branch signs in (CL10).</p>
+<p>For <span class="math" data-index="145" data-tex="\(|\zeta|&gt;2\)">\(|\zeta|&gt;2\)</span>, <span class="math" data-index="146" data-tex="\(3/4&lt;|1+\zeta^{-2}|&lt;5/4\)">\(3/4&lt;|1+\zeta^{-2}|&lt;5/4\)</span>. Since <span class="math" data-index="147" data-tex="\(|S|^2=|S^2|\)">\(|S|^2=|S^2|\)</span>, multiplication by <span class="math" data-index="148" data-tex="\(|\zeta|\)">\(|\zeta|\)</span> gives (CL11). If a polynomial <span class="math" data-index="149" data-tex="\(p=a\zeta+b\)">\(p=a\zeta+b\)</span> had square <span class="math" data-index="150" data-tex="\(1+\zeta^2\)">\(1+\zeta^2\)</span>, coefficient comparison would require <span class="math" data-index="151" data-tex="\(a^2=1\)">\(a^2=1\)</span>, <span class="math" data-index="152" data-tex="\(2ab=0\)">\(2ab=0\)</span>, <span class="math" data-index="153" data-tex="\(b^2=1\)">\(b^2=1\)</span>. The first and third make <span class="math" data-index="154" data-tex="\(a,b\ne0\)">\(a,b\ne0\)</span>, contradicting the middle condition. Higher or lower polynomial degrees cannot have the required square degree. Agreement of a polynomial with either branch on an open set would force this same identity.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>On either real ray a reciprocal must satisfy <span class="math" data-index="155" data-tex="\(\Phi(\xi)e^{-\xi^2}=1\)">\(\Phi(\xi)e^{-\xi^2}=1\)</span>. Both factors are analytic functions there, so <span class="math" data-index="156" data-tex="\(\Phi(\xi)=e^{\xi^2}\)">\(\Phi(\xi)=e^{\xi^2}\)</span>. For every fixed <span class="math" data-index="157" data-tex="\(m\)">\(m\)</span>, the positive exponential series gives <span class="math" data-index="158" data-tex="\(e^{\xi^2}\ge|\xi|^{2k}/k!\)">\(e^{\xi^2}\ge|\xi|^{2k}/k!\)</span> for any integer <span class="math" data-index="159" data-tex="\(k\)">\(k\)</span>. Choose <span class="math" data-index="160" data-tex="\(2k&gt;m\)">\(2k&gt;m\)</span>; its ratio to <span class="math" data-index="161" data-tex="\((1+|\xi|)^m\)">\((1+|\xi|)^m\)</span> is unbounded. No polynomial bound is possible on either ray, even before considering complex frequencies.</p>
+<p>Therefore every nonzero direction is characteristic for this kernel. The output for a point mass is the analytic Gaussian, so its analytic wavefront is empty. Formula (CL2) places the point mass's singularities in the characteristic term, exactly as required.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>The transform of <span class="math" data-index="162" data-tex="\(\delta_h\)">\(\delta_h\)</span> is <span class="math" data-index="163" data-tex="\(e^{-ih\xi}\)">\(e^{-ih\xi}\)</span>. A reciprocal agreeing on a real interval must be <span class="math" data-index="164" data-tex="\(e^{ih\zeta}\)">\(e^{ih\zeta}\)</span> on its local complex neighborhood, by the identity theorem. Every complex conic neighborhood of a real ray contains, for all sufficiently large real <span class="math" data-index="165" data-tex="\(\xi\)">\(\xi\)</span> in that ray, points</p>
+<span class="math math-display" id="learner-eq-CF3" data-index="166" data-tex="\[
+ \zeta=\xi-i\,\operatorname{sgn}(h)d|\xi|
+ \tag{CF3}
+\]">\[
+ \zeta=\xi-i\,\operatorname{sgn}(h)d|\xi|
+ \tag{CF3}
+\]</span>
+<p>with one fixed small <span class="math" data-index="167" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. At these points <span class="math" data-index="168" data-tex="\(|e^{ih\zeta}|=e^{|h|d|\xi|}\)">\(|e^{ih\zeta}|=e^{|h|d|\xi|}\)</span>, which exceeds every polynomial. The real-axis bound of one therefore does not satisfy (CL1). Both rays are characteristic.</p>
+<p>The point-mass input at zero is sent to the point mass at <span class="math" data-index="169" data-tex="\(h\)">\(h\)</span>. The output is zero and hence analytic near zero, while the input is singular there. A rule using only a bounded real reciprocal would wrongly infer regularity at the unchanged base point. The complex polynomial condition correctly excludes this translation multiplier.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>The Fourier derivative rule gives
+<span class="math" data-index="170" data-tex="\(\widehat{\chi^{(\alpha)}}(\xi-\eta)
+=i^\alpha(\xi-\eta)^\alpha\widehat\chi(\xi-\eta)\)">\(\widehat{\chi^{(\alpha)}}(\xi-\eta)
+=i^\alpha(\xi-\eta)^\alpha\widehat\chi(\xi-\eta)\)</span>.
+Since <span class="math" data-index="171" data-tex="\((\eta-\xi)^\alpha=(-1)^\alpha(\xi-\eta)^\alpha\)">\((\eta-\xi)^\alpha=(-1)^\alpha(\xi-\eta)^\alpha\)</span> and <span class="math" data-index="172" data-tex="\((-1)/i=i\)">\((-1)/i=i\)</span>, the convolution pairing in (CE12) equals <span class="math" data-index="173" data-tex="\(i^\alpha\widehat{\chi^{(\alpha)}f}(\xi)\)">\(i^\alpha\widehat{\chi^{(\alpha)}f}(\xi)\)</span>.</p>
+<p>The exact cubic Taylor formula now yields</p>
+<span class="math math-display" id="learner-eq-CF4" data-index="174" data-tex="\[
+ \widehat{\chi D^3f}(\xi)
+  =\xi^3\widehat{\chi f}(\xi)
+    +3i\xi^2\widehat{\chi&#x27;f}(\xi)
+    -3\xi\widehat{\chi&#x27;&#x27;f}(\xi)
+    -i\widehat{\chi&#x27;&#x27;&#x27;f}(\xi).
+ \tag{CF4}
+\]">\[
+ \widehat{\chi D^3f}(\xi)
+  =\xi^3\widehat{\chi f}(\xi)
+    +3i\xi^2\widehat{\chi&#x27;f}(\xi)
+    -3\xi\widehat{\chi&#x27;&#x27;f}(\xi)
+    -i\widehat{\chi&#x27;&#x27;&#x27;f}(\xi).
+ \tag{CF4}
+\]</span>
+<p>The coefficients are <span class="math" data-index="175" data-tex="\(1,3,3,1\)">\(1,3,3,1\)</span> before the successive powers <span class="math" data-index="176" data-tex="\(1,i,-1,-i\)">\(1,i,-1,-i\)</span>. This identity can also be checked by the distributional product rule for <span class="math" data-index="177" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>For a local product with <span class="math" data-index="178" data-tex="\(|\alpha|&lt;K\)">\(|\alpha|&lt;K\)</span>, its Fourier integration-by-parts order is <span class="math" data-index="179" data-tex="\(s=K+q+n+1\)">\(s=K+q+n+1\)</span>, up to a fixed loss. The cutoff derivative order is <span class="math" data-index="180" data-tex="\(|\alpha|+s\le2K+q+n\)">\(|\alpha|+s\le2K+q+n\)</span>, up to that same fixed loss. In a far Taylor term the cutoff itself is undifferentiated before the Fourier moment estimate; its moment order is <span class="math" data-index="181" data-tex="\(K+|\alpha|+q_1+c\le2K+q_1+c-1\)">\(K+|\alpha|+q_1+c\le2K+q_1+c-1\)</span>. Derivatives from the fixed tempered seminorm add only fixed losses. A fixed shift makes <span class="math" data-index="182" data-tex="\(K=N+B\)">\(K=N+B\)</span> exceed all these losses, and <span class="math" data-index="183" data-tex="\(4K\)">\(4K\)</span> then covers every required order. The high cutoff derivative contributes <span class="math" data-index="184" data-tex="\(K^{|\alpha|}\)">\(K^{|\alpha|}\)</span>, accompanied by <span class="math" data-index="185" data-tex="\(|\xi|^{-|\alpha|}\)">\(|\xi|^{-|\alpha|}\)</span>; for <span class="math" data-index="186" data-tex="\(|\xi|\ge K\)">\(|\xi|\ge K\)</span> this creates no second analytic factorial scale.</p>
+<p>For (CL4), divide the left side by <span class="math" data-index="187" data-tex="\(N^N\)">\(N^N\)</span>:</p>
+<span class="math math-display" id="learner-eq-CF5" data-index="188" data-tex="\[
+ \frac{(N+B)^{N+B+c}}{N^N}
+   =(1+B/N)^N(N+B)^{B+c}
+   \le e^B(N+B)^{B+c}.
+ \tag{CF5}
+\]">\[
+ \frac{(N+B)^{N+B+c}}{N^N}
+   =(1+B/N)^N(N+B)^{B+c}
+   \le e^B(N+B)^{B+c}.
+ \tag{CF5}
+\]</span>
+<p>For <span class="math" data-index="189" data-tex="\(N\ge1\)">\(N\ge1\)</span>, <span class="math" data-index="190" data-tex="\(N+B\le(B+1)N\)">\(N+B\le(B+1)N\)</span> and <span class="math" data-index="191" data-tex="\(N\le2^N\)">\(N\le2^N\)</span>. The last expression is at most
+<span class="math" data-index="192" data-tex="\(e^B(B+1)^{B+c}2^{(B+c)N}\)">\(e^B(B+1)^{B+c}2^{(B+c)N}\)</span>, which is bounded by a fixed constant to the <span class="math" data-index="193" data-tex="\(N+1\)">\(N+1\)</span> power. This proves the estimate for all <span class="math" data-index="194" data-tex="\(N\ge1\)">\(N\ge1\)</span>.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>Both supports are <span class="math" data-index="195" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Pairs with sum in a compact output set satisfy <span class="math" data-index="196" data-tex="\(0\le s,t\le\max(0,\sup O)\)">\(0\le s,t\le\max(0,\sup O)\)</span>; the relevant closed subset of this bounded square is compact. Addition is proper.</p>
+<p>For <span class="math" data-index="197" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, the convolution is the ordinary finite integral, while for <span class="math" data-index="198" data-tex="\(x&lt;0\)">\(x&lt;0\)</span> it vanishes:</p>
+<span class="math math-display" id="learner-eq-CF6" data-index="199" data-tex="\[
+ g(x)=H(x)\int_0^x e^{t^3}\,dt,\qquad
+                 \partial_xg=H(x)e^{x^3}=v.
+ \tag{CF6}
+\]">\[
+ g(x)=H(x)\int_0^x e^{t^3}\,dt,\qquad
+                 \partial_xg=H(x)e^{x^3}=v.
+ \tag{CF6}
+\]</span>
+<p>There is no extra point mass in the derivative because the integral is zero at the origin. Both <span class="math" data-index="200" data-tex="\(v\)">\(v\)</span> and <span class="math" data-index="201" data-tex="\(g\)">\(g\)</span> are analytic off zero. They have support <span class="math" data-index="202" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>; the signed support-normal theorem supplies both analytic rays at zero. Since <span class="math" data-index="203" data-tex="\(\operatorname{Char}H=\varnothing\)">\(\operatorname{Char}H=\varnothing\)</span>, Corollary 4.2 gives the asserted inclusion and, here, equality.</p>
+<p>For outputs in <span class="math" data-index="204" data-tex="\((-1,2)\)">\((-1,2)\)</span>, all contributing input times lie in <span class="math" data-index="205" data-tex="\([0,2]\)">\([0,2]\)</span>. Choose a smooth compact cutoff equal to one on a neighborhood of <span class="math" data-index="206" data-tex="\([-1,2]\)">\([-1,2]\)</span>. Then <span class="math" data-index="207" data-tex="\(v_c=\chi v\)">\(v_c=\chi v\)</span> agrees with <span class="math" data-index="208" data-tex="\(v\)">\(v\)</span> in that output interval and <span class="math" data-index="209" data-tex="\(H*v_c=g\)">\(H*v_c=g\)</span> there. This is the actual compact-input reduction.</p>
+<p>To disprove temperedness of <span class="math" data-index="210" data-tex="\(v\)">\(v\)</span>, take a fixed nonnegative compact bump <span class="math" data-index="211" data-tex="\(\phi\)">\(\phi\)</span> supported in <span class="math" data-index="212" data-tex="\([0,1]\)">\([0,1]\)</span> with positive integral and translate it to <span class="math" data-index="213" data-tex="\([R,R+1]\)">\([R,R+1]\)</span>. Its pairing with <span class="math" data-index="214" data-tex="\(v\)">\(v\)</span> is at least <span class="math" data-index="215" data-tex="\(e^{R^3}\int\phi\)">\(e^{R^3}\int\phi\)</span>, while every fixed Schwartz seminorm of the translated bump grows at most polynomially in <span class="math" data-index="216" data-tex="\(R\)">\(R\)</span>. No tempered distribution estimate can hold. The proper-support theorem nevertheless applies because it is local in the contributing input pairs.</p>
+<h2 id="references">References</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Theorem 8.6.15 and the proper-convolution remark, gives the classical context. The complete proof supplies the analytic multiplier estimate by finite Taylor expansion, Cauchy bounds and controlled cutoff moments. Its exact Fourier, cutoff and convolution dependencies are stated there; the examples and solutions above retain the same transform and derivative conventions.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<p>A convolution equation can be inverted microlocally when its Fourier transform has a holomorphic reciprocal with polynomial growth on a complex cone at infinity. The Fourier transform of the kernel may itself be a distribution. The reciprocal identity below is consequently an identity of distributions on the real cone; no pointwise reciprocal of a globally defined function is assumed.</p>
+<p>The analytic sequence criterion and localization rules are the available proofs in <span class="unlinked">Pulling back and combining analytic singularities</span>, Section 2. The mixed derivative cutoff bounds are Lemma 1.1 of <span class="unlinked">Analytic directions of holomorphic boundary values</span>. <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz functions and Fourier inversion</a>, Sections F1-F5, supplies the Fourier seminorms, inversion and distributional transpose. The local holomorphic coefficient bounds are the Cauchy estimates in <a href="AN02-L045.html">Cauchy bounds and root counts</a>. <a href="prerequisites/proper-convolution-and-compact-support.html">Proper convolution and compact support</a> supplies the tensor pairing and proper support integral. We prove the required microlocal multiplier estimate here rather than assume an analytic pseudodifferential calculus.</p>
+<h2 id="1-cutoff-estimates-with-a-growing-derivative">1. Cutoff estimates with a growing derivative</h2>
+<p>Fix relatively compact neighborhoods <span class="math" data-index="217" data-tex="\(U_0\Subset U_1\)">\(U_0\Subset U_1\)</span>. The controlled cutoff construction supplies <span class="math" data-index="218" data-tex="\(\chi_J\in C_c^\infty(U_1)\)">\(\chi_J\in C_c^\infty(U_1)\)</span>, equal to one near <span class="math" data-index="219" data-tex="\(\overline U_0\)">\(\overline U_0\)</span>, whose fixed-order derivative seminorms are bounded independently of <span class="math" data-index="220" data-tex="\(J\)">\(J\)</span>. For each fixed multi-index <span class="math" data-index="221" data-tex="\(\beta\)">\(\beta\)</span>,</p>
+<span class="math math-display" id="proof-eq-CE1" data-index="222" data-tex="\[
+ |D^{\alpha+\beta}\chi_J|
+       \le C_\beta^{|\alpha|+1}J^{|\alpha|},
+ \qquad |\alpha|\le J.
+ \tag{CE1}
+\]">\[
+ |D^{\alpha+\beta}\chi_J|
+       \le C_\beta^{|\alpha|+1}J^{|\alpha|},
+ \qquad |\alpha|\le J.
+ \tag{CE1}
+\]</span>
+<p>All cutoffs have support in the same compact set. Constants may change after the neighborhoods are fixed. They never depend on <span class="math" data-index="223" data-tex="\(J\)">\(J\)</span> or the growing index.</p>
+<p>For every fixed <span class="math" data-index="224" data-tex="\(\beta\)">\(\beta\)</span>, compact support and integration by parts give</p>
+<span class="math math-display" id="proof-eq-CE2" data-index="225" data-tex="\[
+ |\partial_\zeta^\beta\widehat{\partial^\alpha\chi_J}(\zeta)|
+ \le C_\beta^{|\alpha|+s+1}J^{|\alpha|+s}
+             (1+|\zeta|)^{-s},
+ \qquad |\alpha|+s+c_\beta\le J.
+ \tag{CE2}
+\]">\[
+ |\partial_\zeta^\beta\widehat{\partial^\alpha\chi_J}(\zeta)|
+ \le C_\beta^{|\alpha|+s+1}J^{|\alpha|+s}
+             (1+|\zeta|)^{-s},
+ \qquad |\alpha|+s+c_\beta\le J.
+ \tag{CE2}
+\]</span>
+<p>Here <span class="math" data-index="226" data-tex="\(c_\beta\)">\(c_\beta\)</span> is a fixed integer. To check the index, differentiation in <span class="math" data-index="227" data-tex="\(\zeta\)">\(\zeta\)</span> inserts <span class="math" data-index="228" data-tex="\(x^\beta\)">\(x^\beta\)</span>; multiplication by a monomial <span class="math" data-index="229" data-tex="\(\zeta^\gamma\)">\(\zeta^\gamma\)</span>, <span class="math" data-index="230" data-tex="\(|\gamma|\le s\)">\(|\gamma|\le s\)</span>, differentiates <span class="math" data-index="231" data-tex="\(x^\beta\partial^\alpha\chi_J\)">\(x^\beta\partial^\alpha\chi_J\)</span> at most <span class="math" data-index="232" data-tex="\(s\)">\(s\)</span> times. The finite product rule uses cutoff derivatives through <span class="math" data-index="233" data-tex="\(|\alpha|+s\)">\(|\alpha|+s\)</span>, with only a fixed additional order if a low derivative is kept separate. For <span class="math" data-index="234" data-tex="\(|\zeta|\ge1\)">\(|\zeta|\ge1\)</span>, choose a coordinate with <span class="math" data-index="235" data-tex="\(|\zeta_j|\ge|\zeta|/\sqrt n\)">\(|\zeta_j|\ge|\zeta|/\sqrt n\)</span> and integrate by parts <span class="math" data-index="236" data-tex="\(s\)">\(s\)</span> times in it. On <span class="math" data-index="237" data-tex="\(|\zeta|\le1\)">\(|\zeta|\le1\)</span>, use the compact <span class="math" data-index="238" data-tex="\(L^1\)">\(L^1\)</span> bound. Powers and the finitely many product coefficients are absorbed into the exponential constant in (CE2). This proves the estimate without a second growing factorial.</p>
+<p><strong>Lemma 1.1.</strong> Suppose <span class="math" data-index="239" data-tex="\(f_K\)">\(f_K\)</span> have common compact support and distributional order, and for an open real cone <span class="math" data-index="240" data-tex="\(\Omega\)">\(\Omega\)</span>,</p>
+<span class="math math-display" id="proof-eq-CE3" data-index="241" data-tex="\[
+ |\widehat f_K(\eta)|\le B(1+|\eta|)^q,\qquad
+ |\widehat f_K(\eta)|\le A^{K+1}K^K(1+|\eta|)^{-K}
+       \quad(\eta\in\Omega).
+ \tag{CE3}
+\]">\[
+ |\widehat f_K(\eta)|\le B(1+|\eta|)^q,\qquad
+ |\widehat f_K(\eta)|\le A^{K+1}K^K(1+|\eta|)^{-K}
+       \quad(\eta\in\Omega).
+ \tag{CE3}
+\]</span>
+<p>On a fixed smaller cone <span class="math" data-index="242" data-tex="\(\Omega_0\)">\(\Omega_0\)</span>, for <span class="math" data-index="243" data-tex="\(J=4K\)">\(J=4K\)</span>, <span class="math" data-index="244" data-tex="\(|\alpha|&lt;K\)">\(|\alpha|&lt;K\)</span>, and sufficiently large <span class="math" data-index="245" data-tex="\(K\)">\(K\)</span>,</p>
+<span class="math math-display" id="proof-eq-CE4" data-index="246" data-tex="\[
+ \left|\widehat{(\partial^\alpha\chi_J)f_K}(\xi)\right|
+  \le C^{K+|\alpha|+1}K^{K+|\alpha|+c}
+                   (1+|\xi|)^{-K}.
+ \tag{CE4}
+\]">\[
+ \left|\widehat{(\partial^\alpha\chi_J)f_K}(\xi)\right|
+  \le C^{K+|\alpha|+1}K^{K+|\alpha|+c}
+                   (1+|\xi|)^{-K}.
+ \tag{CE4}
+\]</span>
+<p>The fixed integer <span class="math" data-index="247" data-tex="\(c\)">\(c\)</span> depends on the common polynomial order and dimension.</p>
+<p><strong>Proof.</strong> Use the Fourier convolution formula. In the region
+<span class="math" data-index="248" data-tex="\(|\eta-\xi|\le d|\xi|\)">\(|\eta-\xi|\le d|\xi|\)</span>, choose <span class="math" data-index="249" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> so small that <span class="math" data-index="250" data-tex="\(\eta\in\Omega\)">\(\eta\in\Omega\)</span> and <span class="math" data-index="251" data-tex="\(1+|\eta|\)">\(1+|\eta|\)</span> is comparable to <span class="math" data-index="252" data-tex="\(1+|\xi|\)">\(1+|\xi|\)</span>. The analytic bound in (CE3) applies. The <span class="math" data-index="253" data-tex="\(L^1\)">\(L^1\)</span> norm of the cutoff transform in (CE2), with a fixed exponent larger than <span class="math" data-index="254" data-tex="\(n\)">\(n\)</span>, is at most <span class="math" data-index="255" data-tex="\(C^{|\alpha|+1}K^{|\alpha|+c}\)">\(C^{|\alpha|+1}K^{|\alpha|+c}\)</span>. This proves the contribution claimed in (CE4).</p>
+<p>In the remaining region, <span class="math" data-index="256" data-tex="\(|\xi-\eta|\)">\(|\xi-\eta|\)</span> is bounded below by a fixed positive multiple of both <span class="math" data-index="257" data-tex="\(|\xi|\)">\(|\xi|\)</span> and <span class="math" data-index="258" data-tex="\(|\eta|\)">\(|\eta|\)</span>, with an inessential adjustment for bounded frequencies. More precisely their sum is at most a fixed multiple of <span class="math" data-index="259" data-tex="\(|\xi-\eta|\)">\(|\xi-\eta|\)</span>, since <span class="math" data-index="260" data-tex="\(|\xi-\eta|&gt;d|\xi|\)">\(|\xi-\eta|&gt;d|\xi|\)</span> and <span class="math" data-index="261" data-tex="\(|\eta|\le|\xi-\eta|+|\xi|\)">\(|\eta|\le|\xi-\eta|+|\xi|\)</span>. Use the global polynomial bound in (CE3) and (CE2) with <span class="math" data-index="262" data-tex="\(s=K+q+n+1\)">\(s=K+q+n+1\)</span>. The integral is bounded by a constant to the <span class="math" data-index="263" data-tex="\(K+|\alpha|+1\)">\(K+|\alpha|+1\)</span> power times
+<span class="math" data-index="264" data-tex="\(K^{K+|\alpha|+q+n+1}(1+|\xi|)^{-K}\)">\(K^{K+|\alpha|+q+n+1}(1+|\xi|)^{-K}\)</span>.
+All derivative orders are below <span class="math" data-index="265" data-tex="\(2K+q+n+1\)">\(2K+q+n+1\)</span>, hence below <span class="math" data-index="266" data-tex="\(4K\)">\(4K\)</span> for sufficiently large <span class="math" data-index="267" data-tex="\(K\)">\(K\)</span>. A fixed shift handles the finitely many smaller <span class="math" data-index="268" data-tex="\(K\)">\(K\)</span>. This proves the lemma. <span class="math" data-index="269" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-an-analytic-symbol-is-microlocally-local">2. An analytic symbol is microlocally local</h2>
+<p>Let <span class="math" data-index="270" data-tex="\(a\in C^\infty(\mathbb R^n)\)">\(a\in C^\infty(\mathbb R^n)\)</span> satisfy the symbol estimates</p>
+<span class="math math-display" id="proof-eq-CE5" data-index="271" data-tex="\[
+ |\partial^\beta a(\eta)|
+       \le C_\beta(1+|\eta|)^{m-|\beta|}
+       \quad\hbox{for every fixed }\beta,
+ \tag{CE5}
+\]">\[
+ |\partial^\beta a(\eta)|
+       \le C_\beta(1+|\eta|)^{m-|\beta|}
+       \quad\hbox{for every fixed }\beta,
+ \tag{CE5}
+\]</span>
+<p>where <span class="math" data-index="272" data-tex="\(m\ge0\)">\(m\ge0\)</span> is an integer. Assume that for <span class="math" data-index="273" data-tex="\(\xi\)">\(\xi\)</span> in an open cone <span class="math" data-index="274" data-tex="\(\Gamma\)">\(\Gamma\)</span>, at sufficiently large radius, <span class="math" data-index="275" data-tex="\(a\)">\(a\)</span> extends holomorphically to balls of radius <span class="math" data-index="276" data-tex="\(d|\xi|\)">\(d|\xi|\)</span> and is bounded there by <span class="math" data-index="277" data-tex="\(C(1+|\xi|)^m\)">\(C(1+|\xi|)^m\)</span>, with one <span class="math" data-index="278" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. The Cauchy formula on smaller polydisks gives</p>
+<span class="math math-display" id="proof-eq-CE6" data-index="279" data-tex="\[
+ \frac{|\partial^\alpha a(\xi)|}{\alpha!}
+       \le C^{|\alpha|+1}|\xi|^{m-|\alpha|}.
+ \tag{CE6}
+\]">\[
+ \frac{|\partial^\alpha a(\xi)|}{\alpha!}
+       \le C^{|\alpha|+1}|\xi|^{m-|\alpha|}.
+ \tag{CE6}
+\]</span>
+<p>The smooth extension elsewhere has no analyticity requirement.</p>
+<p>Define <span class="math" data-index="280" data-tex="\(T_af=\mathcal F^{-1}(a\widehat f)\)">\(T_af=\mathcal F^{-1}(a\widehat f)\)</span> on tempered distributions. Estimates (CE5) make multiplication by <span class="math" data-index="281" data-tex="\(a\)">\(a\)</span> a continuous map on Schwartz tests, so this definition is meaningful.</p>
+<p><strong>Theorem 2.1.</strong> For every <span class="math" data-index="282" data-tex="\(f\in\mathcal S&#x27;\)">\(f\in\mathcal S&#x27;\)</span>,</p>
+<span class="math math-display" id="proof-eq-CE7" data-index="283" data-tex="\[
+ \operatorname{WF}_A(T_af)\cap(\mathbb R^n\times\Gamma)
+       \subset\operatorname{WF}_A(f).
+ \tag{CE7}
+\]">\[
+ \operatorname{WF}_A(T_af)\cap(\mathbb R^n\times\Gamma)
+       \subset\operatorname{WF}_A(f).
+ \tag{CE7}
+\]</span>
+<p>Only directions with the stipulated uniform holomorphic neighborhoods are included.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-index="284" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}_A(f)\)">\((x_0,\xi_0)\notin\operatorname{WF}_A(f)\)</span> with <span class="math" data-index="285" data-tex="\(\xi_0\in\Gamma\)">\(\xi_0\in\Gamma\)</span>. Take a smaller cone about <span class="math" data-index="286" data-tex="\(\xi_0\)">\(\xi_0\)</span> whose closure stays in both the analytic absence cone and the symbol's holomorphic cone. Choose neighborhoods <span class="math" data-index="287" data-tex="\(U_0\Subset U_1\)">\(U_0\Subset U_1\)</span> on which a bounded analytic witness sequence <span class="math" data-index="288" data-tex="\(f_K\)">\(f_K\)</span> equals <span class="math" data-index="289" data-tex="\(f\)">\(f\)</span>. The witnesses satisfy (CE3) on a larger cone than the one of output directions. Choose the cutoff supports inside <span class="math" data-index="290" data-tex="\(U_1\)">\(U_1\)</span>.</p>
+<p>There are fixed <span class="math" data-index="291" data-tex="\(M,q_1\)">\(M,q_1\)</span> such that the tempered transform of <span class="math" data-index="292" data-tex="\(f\)">\(f\)</span> satisfies</p>
+<span class="math math-display" id="proof-eq-CE8" data-index="293" data-tex="\[
+ |\widehat f(\psi)|
+   \le C\max_{|\beta|\le M}\sup_\eta
+                    (1+|\eta|)^{q_1}|\partial^\beta\psi(\eta)|.
+ \tag{CE8}
+\]">\[
+ |\widehat f(\psi)|
+   \le C\max_{|\beta|\le M}\sup_\eta
+                    (1+|\eta|)^{q_1}|\partial^\beta\psi(\eta)|.
+ \tag{CE8}
+\]</span>
+<p>Choose a fixed large integer <span class="math" data-index="294" data-tex="\(B&gt;m+q_1\)">\(B&gt;m+q_1\)</span>, also exceeding all the fixed derivative-order losses in (CE2)–(CE4) and the estimates below, and put</p>
+<span class="math math-display" id="proof-eq-CE9" data-index="295" data-tex="\[
+ K=N+B,\qquad J=4K,\qquad v_N=\chi_JT_af.
+ \tag{CE9}
+\]">\[
+ K=N+B,\qquad J=4K,\qquad v_N=\chi_JT_af.
+ \tag{CE9}
+\]</span>
+<p>All those losses depend only on <span class="math" data-index="296" data-tex="\(m,M,q,q_1,n\)">\(m,M,q,q_1,n\)</span> and the fixed cutoff family, not on <span class="math" data-index="297" data-tex="\(B\)">\(B\)</span> or <span class="math" data-index="298" data-tex="\(N\)">\(N\)</span>, so this is one finite choice. These <span class="math" data-index="299" data-tex="\(v_N\)">\(v_N\)</span> have common compact support, common finite distributional order and equal <span class="math" data-index="300" data-tex="\(T_af\)">\(T_af\)</span> near <span class="math" data-index="301" data-tex="\(x_0\)">\(x_0\)</span>. The uniform low derivative bounds on the cutoffs justify that assertion. We will prove their analytic Fourier estimate.</p>
+<p>First consider <span class="math" data-index="302" data-tex="\(|\xi|\ge K\)">\(|\xi|\ge K\)</span> in the smaller output cone. Set</p>
+<span class="math math-display" id="proof-eq-CE10" data-index="303" data-tex="\[
+ P_\xi(\eta)=
+       \sum_{|\alpha|&lt;K}
+          \frac{\partial^\alpha a(\xi)}{\alpha!}(\eta-\xi)^\alpha,
+ \qquad R_\xi(\eta)=a(\eta)-P_\xi(\eta).
+ \tag{CE10}
+\]">\[
+ P_\xi(\eta)=
+       \sum_{|\alpha|&lt;K}
+          \frac{\partial^\alpha a(\xi)}{\alpha!}(\eta-\xi)^\alpha,
+ \qquad R_\xi(\eta)=a(\eta)-P_\xi(\eta).
+ \tag{CE10}
+\]</span>
+<p>The Fourier pairing for <span class="math" data-index="304" data-tex="\(v_N\)">\(v_N\)</span> is</p>
+<span class="math math-display" id="proof-eq-CE11" data-index="305" data-tex="\[
+ \widehat v_N(\xi)
+   =(2\pi)^{-n}\widehat f_\eta
+          \bigl(a(\eta)\widehat\chi_J(\xi-\eta)\bigr).
+ \tag{CE11}
+\]">\[
+ \widehat v_N(\xi)
+   =(2\pi)^{-n}\widehat f_\eta
+          \bigl(a(\eta)\widehat\chi_J(\xi-\eta)\bigr).
+ \tag{CE11}
+\]</span>
+<p>All tests here are Schwartz functions, since <span class="math" data-index="306" data-tex="\(a\)">\(a\)</span> has polynomial symbol bounds.</p>
+<p><strong>The polynomial part.</strong> Each Taylor monomial has the exact pairing identity</p>
+<span class="math math-display" id="proof-eq-CE12" data-index="307" data-tex="\[
+ (2\pi)^{-n}\widehat f_\eta
+       \bigl((\eta-\xi)^\alpha\widehat\chi_J(\xi-\eta)\bigr)
+       =i^{|\alpha|}\widehat{(\partial^\alpha\chi_J)f}(\xi).
+ \tag{CE12}
+\]">\[
+ (2\pi)^{-n}\widehat f_\eta
+       \bigl((\eta-\xi)^\alpha\widehat\chi_J(\xi-\eta)\bigr)
+       =i^{|\alpha|}\widehat{(\partial^\alpha\chi_J)f}(\xi).
+ \tag{CE12}
+\]</span>
+<p>This follows from <span class="math" data-index="308" data-tex="\(\widehat{\partial^\alpha\chi_J}(\xi-\eta)
+=i^{|\alpha|}(\xi-\eta)^\alpha\widehat\chi_J(\xi-\eta)\)">\(\widehat{\partial^\alpha\chi_J}(\xi-\eta)
+=i^{|\alpha|}(\xi-\eta)^\alpha\widehat\chi_J(\xi-\eta)\)</span> and the Fourier convolution formula. The factor <span class="math" data-index="309" data-tex="\(i^{|\alpha|}\)">\(i^{|\alpha|}\)</span> on the right of (CE12) includes the sign from <span class="math" data-index="310" data-tex="\(\eta-\xi\)">\(\eta-\xi\)</span>.</p>
+<p>The local product in (CE12) equals the one with <span class="math" data-index="311" data-tex="\(f_K\)">\(f_K\)</span>. Equations (CE4) and (CE6) therefore bound the sum by</p>
+<span class="math math-display" id="proof-eq-CE13" data-index="312" data-tex="\[
+ C^{K+1}K^{K+c}|\xi|^{m-K}
+       \sum_{|\alpha|&lt;K}
+                 C^{|\alpha|}(K/|\xi|)^{|\alpha|}
+ \le C_1^{K+1}K^{K+c}|\xi|^{m-K}.
+ \tag{CE13}
+\]">\[
+ C^{K+1}K^{K+c}|\xi|^{m-K}
+       \sum_{|\alpha|&lt;K}
+                 C^{|\alpha|}(K/|\xi|)^{|\alpha|}
+ \le C_1^{K+1}K^{K+c}|\xi|^{m-K}.
+ \tag{CE13}
+\]</span>
+<p>For the last bound, <span class="math" data-index="313" data-tex="\(K/|\xi|\le1\)">\(K/|\xi|\le1\)</span>, the number of multi-indices of each degree is polynomial in <span class="math" data-index="314" data-tex="\(K\)">\(K\)</span>, and a fixed polynomial is absorbed into <span class="math" data-index="315" data-tex="\(C_1^{K+1}\)">\(C_1^{K+1}\)</span>. No factorial remains from the Taylor coefficients.</p>
+<p><strong>The remainder near the diagonal.</strong> Choose a smooth cutoff in <span class="math" data-index="316" data-tex="\(h/|\xi|\)">\(h/|\xi|\)</span>, where <span class="math" data-index="317" data-tex="\(h=\eta-\xi\)">\(h=\eta-\xi\)</span>, supported on <span class="math" data-index="318" data-tex="\(|h|\le2d_0|\xi|\)">\(|h|\le2d_0|\xi|\)</span> and one on <span class="math" data-index="319" data-tex="\(|h|\le d_0|\xi|\)">\(|h|\le d_0|\xi|\)</span>. Here <span class="math" data-index="320" data-tex="\(d_0\)">\(d_0\)</span> is fixed small enough that the entire larger ball lies in a uniform holomorphic neighborhood and inside its smaller Cauchy radius. The Taylor series and (CE6), differentiated only through the fixed order <span class="math" data-index="321" data-tex="\(M\)">\(M\)</span>, give</p>
+<span class="math math-display" id="proof-eq-CE14" data-index="322" data-tex="\[
+ |\partial_\eta^\beta R_\xi(\eta)|
+       \le C^{K+1}K^M|\xi|^{m-K}
+                         |h|^{K-|\beta|},
+ \quad |\beta|\le M,\quad |h|\le2d_0|\xi|.
+ \tag{CE14}
+\]">\[
+ |\partial_\eta^\beta R_\xi(\eta)|
+       \le C^{K+1}K^M|\xi|^{m-K}
+                         |h|^{K-|\beta|},
+ \quad |\beta|\le M,\quad |h|\le2d_0|\xi|.
+ \tag{CE14}
+\]</span>
+<p>To see the uniform tail explicitly, differentiation replaces the coefficients of degree <span class="math" data-index="323" data-tex="\(\ell\ge K\)">\(\ell\ge K\)</span> by fixed-degree polynomials in <span class="math" data-index="324" data-tex="\(\ell\)">\(\ell\)</span>, while <span class="math" data-index="325" data-tex="\(|h|/(d|\xi|)\)">\(|h|/(d|\xi|)\)</span> stays below a fixed number less than one. The remaining geometric tail is at most <span class="math" data-index="326" data-tex="\(C^{K+1}K^M\)">\(C^{K+1}K^M\)</span> times its first power. Since <span class="math" data-index="327" data-tex="\(K&gt;M\)">\(K&gt;M\)</span>, the indicated exponents are nonnegative.</p>
+<p>Apply (CE8) after differentiating the product of this near cutoff, <span class="math" data-index="328" data-tex="\(R_\xi\)">\(R_\xi\)</span>, and <span class="math" data-index="329" data-tex="\(\widehat\chi_J(\xi-\eta)\)">\(\widehat\chi_J(\xi-\eta)\)</span>. On this region <span class="math" data-index="330" data-tex="\(1+|\eta|\le C|\xi|\)">\(1+|\eta|\le C|\xi|\)</span>. Derivatives of the near cutoff cost only fixed powers of <span class="math" data-index="331" data-tex="\(|\xi|^{-1}\)">\(|\xi|^{-1}\)</span>. Estimate (CE2), with moment order at most <span class="math" data-index="332" data-tex="\(K+c\)">\(K+c\)</span> and a fixed Fourier derivative, bounds each remaining product of <span class="math" data-index="333" data-tex="\(|h|^{K-|\beta|}\)">\(|h|^{K-|\beta|}\)</span> and a cutoff-transform derivative by <span class="math" data-index="334" data-tex="\(C^{K+1}K^{K+c}\)">\(C^{K+1}K^{K+c}\)</span>. Thus this part of the remainder pairing is at most</p>
+<span class="math math-display" id="proof-eq-CE15" data-index="335" data-tex="\[
+ C^{K+1}K^{K+c}|\xi|^{m+q_1-K}.
+ \tag{CE15}
+\]">\[
+ C^{K+1}K^{K+c}|\xi|^{m+q_1-K}.
+ \tag{CE15}
+\]</span>
+<p>Here and below the fixed integer <span class="math" data-index="336" data-tex="\(c\)">\(c\)</span> may increase; it depends only on the fixed seminorm orders and dimension. Our choice of <span class="math" data-index="337" data-tex="\(B\)">\(B\)</span> covers all such orders.</p>
+<p><strong>The remainder away from the diagonal.</strong> On the far region,</p>
+<span class="math math-display" id="proof-eq-CE16" data-index="338" data-tex="\[
+ |\eta-\xi|\ge d_0|\xi|,
+ \qquad 1+|\eta|\le C(1+|\eta-\xi|).
+ \tag{CE16}
+\]">\[
+ |\eta-\xi|\ge d_0|\xi|,
+ \qquad 1+|\eta|\le C(1+|\eta-\xi|).
+ \tag{CE16}
+\]</span>
+<p>For the <span class="math" data-index="339" data-tex="\(a(\eta)\)">\(a(\eta)\)</span> part use (CE5) through order <span class="math" data-index="340" data-tex="\(M\)">\(M\)</span>, the weight in (CE8), and (CE2) with <span class="math" data-index="341" data-tex="\(s=K+m+q_1+c\)">\(s=K+m+q_1+c\)</span>. This gives <span class="math" data-index="342" data-tex="\(C^{K+1}K^{K+c}|\xi|^{-K}\)">\(C^{K+1}K^{K+c}|\xi|^{-K}\)</span>, after a fixed increase of <span class="math" data-index="343" data-tex="\(c\)">\(c\)</span>.</p>
+<p>For each Taylor polynomial term of degree <span class="math" data-index="344" data-tex="\(|\alpha|&lt;K\)">\(|\alpha|&lt;K\)</span>, use (CE2) with <span class="math" data-index="345" data-tex="\(s=K+|\alpha|+q_1+c\)">\(s=K+|\alpha|+q_1+c\)</span>. Differentiating that polynomial through order <span class="math" data-index="346" data-tex="\(M\)">\(M\)</span> costs at most a fixed-degree polynomial in <span class="math" data-index="347" data-tex="\(K\)">\(K\)</span>. Equation (CE6) then gives, with (CE16), a bound by</p>
+<span class="math math-display" id="proof-eq-CE17" data-index="348" data-tex="\[
+ C^{K+|\alpha|+1}K^{K+c}|\xi|^{m-K}
+                      (K/|\xi|)^{|\alpha|}.
+ \tag{CE17}
+\]">\[
+ C^{K+|\alpha|+1}K^{K+c}|\xi|^{m-K}
+                      (K/|\xi|)^{|\alpha|}.
+ \tag{CE17}
+\]</span>
+<p>All cutoff derivative orders used are below <span class="math" data-index="349" data-tex="\(2K+c\)">\(2K+c\)</span>, hence below <span class="math" data-index="350" data-tex="\(J=4K\)">\(J=4K\)</span>. Summing the finitely many terms as in (CE13) proves the same bound, up to increasing the exponential constant. Equations (CE15)–(CE17) bound the entire remainder by the right side of (CE15), since <span class="math" data-index="351" data-tex="\(m,q_1\ge0\)">\(m,q_1\ge0\)</span>.</p>
+<p>Combine the polynomial and remainder estimates. Since <span class="math" data-index="352" data-tex="\(K=N+B\)">\(K=N+B\)</span>, <span class="math" data-index="353" data-tex="\(B&gt;m+q_1\)">\(B&gt;m+q_1\)</span>, and</p>
+<span class="math math-display" id="proof-eq-CE18" data-index="354" data-tex="\[
+ (N+B)^{N+B+c}\le C_B^{N+1}N^N,
+ \tag{CE18}
+\]">\[
+ (N+B)^{N+B+c}\le C_B^{N+1}N^N,
+ \tag{CE18}
+\]</span>
+<p>we obtain</p>
+<span class="math math-display" id="proof-eq-CE19" data-index="355" data-tex="\[
+ |\widehat v_N(\xi)|
+       \le C^{N+1}N^N(1+|\xi|)^{-N}
+       \quad(|\xi|\ge K).
+ \tag{CE19}
+\]">\[
+ |\widehat v_N(\xi)|
+       \le C^{N+1}N^N(1+|\xi|)^{-N}
+       \quad(|\xi|\ge K).
+ \tag{CE19}
+\]</span>
+<p>To justify (CE18), divide by <span class="math" data-index="356" data-tex="\(N^N\)">\(N^N\)</span>, use
+<span class="math" data-index="357" data-tex="\((1+B/N)^N\le e^B\)">\((1+B/N)^N\le e^B\)</span>, and absorb the fixed power
+<span class="math" data-index="358" data-tex="\((N+B)^{B+c}\)">\((N+B)^{B+c}\)</span> into a fixed exponential. Replacing <span class="math" data-index="359" data-tex="\(|\xi|^{-N}\)">\(|\xi|^{-N}\)</span> by <span class="math" data-index="360" data-tex="\((1+|\xi|)^{-N}\)">\((1+|\xi|)^{-N}\)</span> costs at most <span class="math" data-index="361" data-tex="\(2^N\)">\(2^N\)</span>.</p>
+<p>For <span class="math" data-index="362" data-tex="\(|\xi|&lt;K\)">\(|\xi|&lt;K\)</span>, the common compact distributional bound gives a fixed polynomial bound for <span class="math" data-index="363" data-tex="\(\widehat v_N\)">\(\widehat v_N\)</span>. Increasing <span class="math" data-index="364" data-tex="\(C\)">\(C\)</span> makes (CE19) hold there too, because <span class="math" data-index="365" data-tex="\(K=N+B\)">\(K=N+B\)</span>, <span class="math" data-index="366" data-tex="\(N/(N+B)\)">\(N/(N+B)\)</span> has its <span class="math" data-index="367" data-tex="\(N\)">\(N\)</span>-th power bounded below by a positive constant depending only on <span class="math" data-index="368" data-tex="\(B\)">\(B\)</span>, and a fixed polynomial in <span class="math" data-index="369" data-tex="\(N+B\)">\(N+B\)</span> is bounded by a fixed exponential. Thus <span class="math" data-index="370" data-tex="\(v_N\)">\(v_N\)</span> is an analytic absence sequence at the chosen point and direction. This proves (CE7). <span class="math" data-index="371" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-fourier-gap-is-analytically-regular-in-its-interior-cone">3. A Fourier gap is analytically regular in its interior cone</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-index="372" data-tex="\(r\in\mathcal S&#x27;\)">\(r\in\mathcal S&#x27;\)</span>. If <span class="math" data-index="373" data-tex="\(\widehat r\)">\(\widehat r\)</span> vanishes on an open real cone above some radius, then <span class="math" data-index="374" data-tex="\(r\)">\(r\)</span> has no analytic wavefront in any strictly smaller cone, at any base point.</p>
+<p><strong>Proof.</strong> Choose a smooth frequency cutoff <span class="math" data-index="375" data-tex="\(b\)">\(b\)</span> equal to one on a neighborhood of <span class="math" data-index="376" data-tex="\(\operatorname{supp}\widehat r\)">\(\operatorname{supp}\widehat r\)</span>, zero on a smaller high-frequency cone, and with symbol bounds of order zero. This is possible by angular cutoffs and a cutoff equal to one in a large ball. Then <span class="math" data-index="377" data-tex="\(\widehat r=b\widehat r\)">\(\widehat r=b\widehat r\)</span>. For <span class="math" data-index="378" data-tex="\(\xi\)">\(\xi\)</span> in the still smaller output cone and sufficiently large, every <span class="math" data-index="379" data-tex="\(\eta\)">\(\eta\)</span> in the support of <span class="math" data-index="380" data-tex="\(b\)">\(b\)</span> satisfies</p>
+<span class="math math-display" id="proof-eq-CE20" data-index="381" data-tex="\[
+ 1+|\xi-\eta|\ge c(1+|\xi|+|\eta|).
+ \tag{CE20}
+\]">\[
+ 1+|\xi-\eta|\ge c(1+|\xi|+|\eta|).
+ \tag{CE20}
+\]</span>
+<p>Apply a fixed tempered seminorm estimate for <span class="math" data-index="382" data-tex="\(\widehat r\)">\(\widehat r\)</span> to
+<span class="math" data-index="383" data-tex="\(b(\eta)\widehat\chi_J(\xi-\eta)\)">\(b(\eta)\widehat\chi_J(\xi-\eta)\)</span>. Equation (CE2), with <span class="math" data-index="384" data-tex="\(s=N+c\)">\(s=N+c\)</span>, absorbs its fixed weight and derivatives and gives <span class="math" data-index="385" data-tex="\(C^{N+1}N^N(1+|\xi|)^{-N}\)">\(C^{N+1}N^N(1+|\xi|)^{-N}\)</span>. Use a fixed sufficiently large multiple of <span class="math" data-index="386" data-tex="\(N+c\)">\(N+c\)</span> for <span class="math" data-index="387" data-tex="\(J\)">\(J\)</span>, so every required derivative is allowed and the low cutoff derivatives remain uniform. Bounded <span class="math" data-index="388" data-tex="\(\xi\)">\(\xi\)</span> are handled by the common compact distributional bound as at the end of Theorem 2.1. The localizations <span class="math" data-index="389" data-tex="\(\chi_Jr\)">\(\chi_Jr\)</span> are the required sequence. The base neighborhood was arbitrary. <span class="math" data-index="390" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-reciprocal-criterion-for-a-convolution-kernel">4. The reciprocal criterion for a convolution kernel</h2>
+<p>Let <span class="math" data-index="391" data-tex="\(\mu\in\mathcal S&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal S&#x27;(\mathbb R^n)\)</span>. Call a real nonzero direction <span class="math" data-index="392" data-tex="\(\xi_0\)">\(\xi_0\)</span> noncharacteristic for <span class="math" data-index="393" data-tex="\(\mu\)">\(\mu\)</span> if there are a complex open conic neighborhood <span class="math" data-index="394" data-tex="\(V\)">\(V\)</span> of <span class="math" data-index="395" data-tex="\(\xi_0\)">\(\xi_0\)</span>, a radius <span class="math" data-index="396" data-tex="\(R\)">\(R\)</span>, and a holomorphic <span class="math" data-index="397" data-tex="\(\Phi\)">\(\Phi\)</span> on <span class="math" data-index="398" data-tex="\(V\cap\{|\zeta|&gt;R\}\)">\(V\cap\{|\zeta|&gt;R\}\)</span> such that</p>
+<span class="math math-display" id="proof-eq-CE21" data-index="399" data-tex="\[
+ |\Phi(\zeta)|\le C(1+|\zeta|)^m,\qquad
+ \Phi\,\widehat\mu=1
+       \quad\hbox{on }V\cap\mathbb R^n\cap\{|\xi|&gt;R\}.
+ \tag{CE21}
+\]">\[
+ |\Phi(\zeta)|\le C(1+|\zeta|)^m,\qquad
+ \Phi\,\widehat\mu=1
+       \quad\hbox{on }V\cap\mathbb R^n\cap\{|\xi|&gt;R\}.
+ \tag{CE21}
+\]</span>
+<p>Here <span class="math" data-index="400" data-tex="\(m\)">\(m\)</span> may be enlarged to a nonnegative integer. The second identity means multiplication of a distribution by the smooth real restriction of <span class="math" data-index="401" data-tex="\(\Phi\)">\(\Phi\)</span>. Let <span class="math" data-index="402" data-tex="\(\operatorname{Char}\mu\)">\(\operatorname{Char}\mu\)</span> be the complement of these directions in the nonzero real frequency space.</p>
+<p><strong>Theorem 4.1.</strong> For every <span class="math" data-index="403" data-tex="\(v\in\mathcal E&#x27;(\mathbb R^n)\)">\(v\in\mathcal E&#x27;(\mathbb R^n)\)</span>,</p>
+<span class="math math-display" id="proof-eq-CE22" data-index="404" data-tex="\[
+ \operatorname{WF}_A(v)
+   \subset\operatorname{WF}_A(\mu*v)
+                \cup(\mathbb R^n\times\operatorname{Char}\mu).
+ \tag{CE22}
+\]">\[
+ \operatorname{WF}_A(v)
+   \subset\operatorname{WF}_A(\mu*v)
+                \cup(\mathbb R^n\times\operatorname{Char}\mu).
+ \tag{CE22}
+\]</span>
+<p><strong>Proof.</strong> Compact support of <span class="math" data-index="405" data-tex="\(v\)">\(v\)</span> and temperedness of <span class="math" data-index="406" data-tex="\(\mu\)">\(\mu\)</span> give <span class="math" data-index="407" data-tex="\(g=\mu*v\in\mathcal S&#x27;\)">\(g=\mu*v\in\mathcal S&#x27;\)</span> and
+<span class="math" data-index="408" data-tex="\(\widehat g=\widehat\mu\,\widehat v\)">\(\widehat g=\widehat\mu\,\widehat v\)</span>. Here is the required test argument. For <span class="math" data-index="409" data-tex="\(\phi\in\mathcal S\)">\(\phi\in\mathcal S\)</span>, the function
+<span class="math" data-index="410" data-tex="\(x\mapsto v_y(\phi(x+y))\)">\(x\mapsto v_y(\phi(x+y))\)</span> is Schwartz. Insert a fixed compact cutoff in <span class="math" data-index="411" data-tex="\(y\)">\(y\)</span>; the finite order of <span class="math" data-index="412" data-tex="\(v\)">\(v\)</span> bounds its derivatives by finitely many derivatives of <span class="math" data-index="413" data-tex="\(\phi\)">\(\phi\)</span>. Its weights are controlled by <span class="math" data-index="414" data-tex="\(1+|x|\le C(1+|x+y|)\)">\(1+|x|\le C(1+|x+y|)\)</span> for <span class="math" data-index="415" data-tex="\(y\)">\(y\)</span> in that compact set. These are continuous Schwartz seminorm bounds, and pairing the result with <span class="math" data-index="416" data-tex="\(\mu\)">\(\mu\)</span> defines <span class="math" data-index="417" data-tex="\(g\in\mathcal S&#x27;\)">\(g\in\mathcal S&#x27;\)</span>, agreeing with the proper convolution integral.</p>
+<p>Every fixed derivative of <span class="math" data-index="418" data-tex="\(\widehat v\)">\(\widehat v\)</span> has at most the same polynomial order on real frequencies, with a constant depending on that derivative. Indeed it inserts a power of <span class="math" data-index="419" data-tex="\(y\)">\(y\)</span> on a fixed compact set before the same finite-order estimate. Thus multiplication by <span class="math" data-index="420" data-tex="\(\widehat v\)">\(\widehat v\)</span> preserves Schwartz tests. Applying Fourier inversion to a test, and passing the compact <span class="math" data-index="421" data-tex="\(v\)">\(v\)</span>-pairing through its rapidly decreasing integral in each required seminorm, gives</p>
+<span class="math math-display" id="proof-eq-CE25" data-index="422" data-tex="\[
+ \begin{aligned}
+ (\widehat\mu\,\widehat v)(\psi)
+ &amp;=\mu_x\!\left(v_y\!\left(
+        \int e^{-i(x+y)\cdot\xi}\psi(\xi)\,d\xi\right)\right)\\
+ &amp;=(\mu*v)(\mathcal F\psi)=\widehat g(\psi).
+ \end{aligned}
+ \tag{CE25}
+\]">\[
+ \begin{aligned}
+ (\widehat\mu\,\widehat v)(\psi)
+ &amp;=\mu_x\!\left(v_y\!\left(
+        \int e^{-i(x+y)\cdot\xi}\psi(\xi)\,d\xi\right)\right)\\
+ &amp;=(\mu*v)(\mathcal F\psi)=\widehat g(\psi).
+ \end{aligned}
+ \tag{CE25}
+\]</span>
+<p>This establishes the identity even when <span class="math" data-index="423" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span> is a distribution.</p>
+<p>Fix a direction satisfying (CE21). Inside a smaller real cone choose a smooth angular cutoff, cut off also at bounded radius, and extend</p>
+<span class="math math-display" id="proof-eq-CE23" data-index="424" data-tex="\[
+ a(\xi)=\rho(\xi)\Phi(\xi)
+ \tag{CE23}
+\]">\[
+ a(\xi)=\rho(\xi)\Phi(\xi)
+ \tag{CE23}
+\]</span>
+<p>by zero off its real domain. Arrange <span class="math" data-index="425" data-tex="\(\rho=1\)">\(\rho=1\)</span> on a still smaller cone at large radius. The supports of its transitions stay inside the domain of <span class="math" data-index="426" data-tex="\(\Phi\)">\(\Phi\)</span>. Cauchy estimates and homogeneous angular cutoff derivatives prove (CE5). On the smaller cone <span class="math" data-index="427" data-tex="\(a=\Phi\)">\(a=\Phi\)</span>, and uniform complex balls of radius <span class="math" data-index="428" data-tex="\(d|\xi|\)">\(d|\xi|\)</span> stay in <span class="math" data-index="429" data-tex="\(V\)">\(V\)</span> above a larger radius, by compactness of the smaller unit section. Thus <span class="math" data-index="430" data-tex="\(a\)">\(a\)</span> satisfies Theorem 2.1 there.</p>
+<p>Set <span class="math" data-index="431" data-tex="\(r=v-T_ag\)">\(r=v-T_ag\)</span>. On that cone at large frequency,</p>
+<span class="math math-display" id="proof-eq-CE24" data-index="432" data-tex="\[
+ \widehat r=\widehat v-a\,\widehat\mu\,\widehat v=0
+ \tag{CE24}
+\]">\[
+ \widehat r=\widehat v-a\,\widehat\mu\,\widehat v=0
+ \tag{CE24}
+\]</span>
+<p>by the distributional identity (CE21). Lemma 3.1 excludes analytic wavefront of <span class="math" data-index="433" data-tex="\(r\)">\(r\)</span> in a smaller cone at every point. If <span class="math" data-index="434" data-tex="\(g\)">\(g\)</span> is analytically regular at a base point in the chosen direction, Theorem 2.1 makes <span class="math" data-index="435" data-tex="\(T_ag\)">\(T_ag\)</span> regular there too. Since <span class="math" data-index="436" data-tex="\(v=T_ag+r\)">\(v=T_ag+r\)</span>, the analytic absence estimates for the two terms, on common neighborhoods and cones, add to give absence for <span class="math" data-index="437" data-tex="\(v\)">\(v\)</span>. This proves (CE22).</p>
+<p>No nonvanishing assumption on the real restriction of <span class="math" data-index="438" data-tex="\(\Phi\)">\(\Phi\)</span> is needed in this argument. What is used is exactly its holomorphic polynomial bound and the distributional product identity. <span class="math" data-index="439" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> The same inclusion holds for <span class="math" data-index="440" data-tex="\(v\in\mathcal D&#x27;\)">\(v\in\mathcal D&#x27;\)</span>, without a growth assumption on <span class="math" data-index="441" data-tex="\(v\)">\(v\)</span>, if addition is proper on <span class="math" data-index="442" data-tex="\(\operatorname{supp}\mu\times\operatorname{supp}v\)">\(\operatorname{supp}\mu\times\operatorname{supp}v\)</span>.</p>
+<p><strong>Proof.</strong> At a relatively compact output neighborhood <span class="math" data-index="443" data-tex="\(O\)">\(O\)</span>, properness makes the pairs contributing over <span class="math" data-index="444" data-tex="\(\overline O\)">\(\overline O\)</span> compact. Their input projection, together with <span class="math" data-index="445" data-tex="\(\overline O\)">\(\overline O\)</span>, lies in one compact set. Choose <span class="math" data-index="446" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span>, equal to one near that set, and put <span class="math" data-index="447" data-tex="\(v_c=\chi v\)">\(v_c=\chi v\)</span>. Then <span class="math" data-index="448" data-tex="\(v_c=v\)">\(v_c=v\)</span> near <span class="math" data-index="449" data-tex="\(O\)">\(O\)</span> and <span class="math" data-index="450" data-tex="\(\mu*v_c=\mu*v\)">\(\mu*v_c=\mu*v\)</span> on <span class="math" data-index="451" data-tex="\(O\)">\(O\)</span>. The latter assertion follows directly by the compact support integral defining proper convolution: the removed input factor vanishes near every contributing pair. Apply Theorem 4.1 to <span class="math" data-index="452" data-tex="\(v_c\)">\(v_c\)</span>; equality on <span class="math" data-index="453" data-tex="\(O\)">\(O\)</span> identifies both local wavefront sets with the asserted ones. Cover the output space. <span class="math" data-index="454" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references-2">References</h2>
+<p>The analytic convolution inclusion and its holomorphic reciprocal criterion are classical; Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Theorem 8.6.15 and its following proper-convolution remark give the general context. The argument here proves the needed analytic multiplier estimate by Cauchy bounds, finite Taylor expansion and controlled cutoff moments. Its polynomial-growth condition on the complex neighborhood is part of the theorem. A merely smooth real reciprocal, or a reciprocal with unrestricted exponential growth, does not supply the estimates used above.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/holomorphic-reciprocals-and-convolution-regularity.md" download>Download the complete lesson source</a>. Original exposition,proofs,examples,solutions and diagrams use CC0 1.0. Linked providers and fonts retain their terms.</p><ul><li><a href="reproduce/L195/holomorphic-reciprocals-and-convolution-regularity-formal.md" download>holomorphic-reciprocals-and-convolution-regularity-formal.md</a></li><li><a href="reproduce/L195/holomorphic-reciprocals-and-convolution-regularity-learner.md" download>holomorphic-reciprocals-and-convolution-regularity-learner.md</a></li><li><span class="unlinked">check-and-figures.py</span></li><li><a href="reproduce/L195/LICENSE.txt" download>LICENSE.txt</a></li><li><span class="unlinked">README-reproduce.md</span></li><li><span class="unlinked">DejaVu-font-license.txt</span></li><li><a href="reproduce/L195/figures/complex-cones-and-reciprocal-growth.png" download>figures/complex-cones-and-reciprocal-growth.png</a></li><li><a href="reproduce/L195/figures/complex-cones-and-reciprocal-growth.svg" download>figures/complex-cones-and-reciprocal-growth.svg</a></li><li><a href="reproduce/L195/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L195/figures/primitive-kernel-and-covector-fibers.png" download>figures/primitive-kernel-and-covector-fibers.png</a></li><li><a href="reproduce/L195/figures/primitive-kernel-and-covector-fibers.svg" download>figures/primitive-kernel-and-covector-fibers.svg</a></li></ul><p><span class="unlinked">MathJax license</span> · <span class="unlinked">Course sources and terms</span></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

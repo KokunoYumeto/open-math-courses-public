@@ -831,6 +831,91 @@ The normal maps \(\beta_{g,y}\) and \(\alpha_{g,y}\) agree on continuous multipl
 \]
 The point action is therefore the full recovered normal multiplication action. Nonsingularity was established before point composition on arbitrary equivalence classes was used.
 
+
+### The recovered operators are the conditional Koopman operators
+
+The covariance formula determines conjugation on the multiplication algebra, but does not by itself rule out a unitary phase multiplier. Positivity of the original operators (Q2) determines that remaining part. We prove this on one common conull base.
+
+Let
+\[
+ P_y=\{\xi\in L^2(m_y):\xi\text{ is real and nonnegative almost everywhere}\}.
+ \tag{Q14a}
+\]
+This cone is closed. Indeed, the pointwise map \(z\mapsto\max\{\operatorname{Re}z,0\}\) is \(1\)-Lipschitz and is the identity on the nonnegative real numbers. Applying it to an \(L^2\) limit of nonnegative functions leaves that limit unchanged.
+
+Use the countable uniformly dense algebra \((f_n)\) from (H4)–(H5), and put \(c_n=\max\{\operatorname{Re}f_n,0\}\). These continuous nonnegative functions are uniformly dense in \(C(\Omega)_+\). Their classes are norm dense in \(P_y\) for every \(y\): the indicator approximations in (H6), positive simple functions and truncation first give density of continuous nonnegative functions in \(P_y\), and uniform approximation gives the countable family. The same family is available on every fibre.
+
+Fix \(q\) in the countable dense subgroup \(Q\). The global vector \(U_qc_n\) is nonnegative by (Q2). Its image under \(W\) has nonnegative conditional classes almost everywhere by (H10)–(H13). On the other hand, (Q4) identifies that image with the section \(y\mapsto V_y(q)[c_n]_{m_y}\). Thus
+\[
+ V_y(q)[c_n]_{m_y}\in P_y
+ \quad\text{for almost every }y,\text{ for each }q\in Q,\ n\geq1.
+ \tag{Q14b}
+\]
+These conditions have Borel full-measure loci. Explicitly, membership in \(P_y\) is the vanishing of
+\[
+ \inf_{j\geq1}\bigl\|V_y(q)[c_n]_{m_y}-[c_j]_{m_y}\bigr\|,
+\]
+a measurable function of \(y\), because both sections in each norm are measurable. Delete the countable union of the exceptional sets in (Q14b), and keep the notation \(Y_1\) for this smaller Borel conull base. Density and boundedness give \(V_y(q)P_y\subseteq P_y\) there for every \(q\). Applying this to \(q^{-1}\) gives equality.
+
+For a fixed retained \(y\) and \(\xi\in P_y\), the set
+\(\{g:V_y(g)\xi\in P_y\}\) is closed by strong continuity and closedness of the cone. It contains \(Q\), so it is all of \(G\). Applying the same conclusion to \(g^{-1}\) proves
+\[
+ V_y(g)P_y=P_y
+ \qquad(y\in Y_1,\ g\in G).
+ \tag{Q14c}
+\]
+No further base set is discarded when passing from \(Q\) to \(G\).
+
+Consequently \(V_y(g)1_y\) is the nonnegative square root of the derivative in (Q11). For each \(y\in Y_1\) and \(g\in G\), write
+\(r_{g,y}=d(T_g)_*m_y/dm_y\), as an \(L^1(m_y)\) class. Formula (Q14) applied to a bounded Borel \(f\) now gives
+\[
+ \begin{aligned}
+ V_y(g)[f]_{m_y}
+ &=V_y(g)M_f^{(y)}1_y\\
+ &=M_{f\circ T_{g^{-1}}}^{(y)}V_y(g)1_y\\
+ &=\bigl[r_{g,y}^{1/2}(f\circ T_{g^{-1}})\bigr]_{m_y}.
+ \end{aligned}
+ \tag{Q14d}
+\]
+This formula extends to every \(f\in L^2(m_y)\). Nonsingularity makes it independent of the chosen Borel version, and the pushforward identity gives the exact norm calculation
+\[
+ \int_\Omega r_{g,y}(\omega)
+          |f(T_{g^{-1}}\omega)|^2\,dm_y(\omega)
+ =\int_\Omega |f(\omega)|^2\,dm_y(\omega).
+ \tag{Q14e}
+\]
+Bounded truncations are dense in \(L^2(m_y)\), so the isometric formula and \(V_y(g)\) agree on the whole space. In particular these conditional Koopman representations are strongly continuous, by the already established continuity of \(V_y\); no separate choice of continuous pointwise density representatives is needed.
+
+The group law, applied to \(1_y\) and then to (Q14d), also gives the derivative identities
+\[
+ r_{e,y}=1,\qquad
+ r_{gh,y}(\omega)
+   =r_{g,y}(\omega)\,r_{h,y}(T_{g^{-1}}\omega)
+ \quad m_y\text{-almost everywhere}
+ \qquad(y\in Y_1,\ g,h\in G).
+ \tag{Q14f}
+\]
+Here (Q14d) applies to \(r_{h,y}^{1/2}\in L^2(m_y)\). Both sides before squaring are nonnegative, so squaring yields the displayed identity. Its null set inside \(\Omega\) may depend on \(y,g,h\); the base \(Y_1\) is common to all parameters.
+
+There is also a precise relation to a density chosen before disintegration. Fix \(g\), and let \(r_g\) be a nonnegative finite Borel version of the global density in (Q2), modified on an \(m\)-null set if necessary. Its square root belongs to \(L^2(m)\), and
+\[
+ W[r_g^{1/2}]_m=WU_g1
+       =\bigl(V_y(g)1_y\bigr)_y.
+ \tag{Q14g}
+\]
+The definition of \(W\) and equality of direct-integral sections therefore give, on a Borel conull set of base points for this fixed \(g\),
+\[
+ [r_g^{1/2}]_{m_y}=V_y(g)1_y=[r_{g,y}^{1/2}]_{m_y},
+ \qquad
+ \int_\Omega r_g\,dm_y=1,
+ \qquad
+ (T_g)_*m_y=r_g\,m_y.
+ \tag{Q14h}
+\]
+The last equality is equality of whole Borel measures on each retained fibre. In particular the conditional integral of the global derivative over the invariant factor is one. This is why the invariant base carries no additional density factor.
+
+The base set in (Q14h) may depend on the specified \(g\) and global representative \(r_g\). By contrast, (Q14c)–(Q14f) hold on the single base \(Y_1\) for every group element as identities of fibre classes and operators. Restricting an arbitrary global representative to every fibre does not replace that distinction.
+
 <a id="oa-flow.ergdec.ergodic"></a>
 ## Scalar fixed algebras mean ergodic conditional measures
 

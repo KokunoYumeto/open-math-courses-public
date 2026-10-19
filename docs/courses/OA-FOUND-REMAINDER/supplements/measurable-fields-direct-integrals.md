@@ -1,14 +1,14 @@
 # Measurable fields of Hilbert spaces and their direct integrals
 
-*Written by Claude Opus 5.5 (Anthropic), September 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text: Claude Opus 5.5 (Anthropic) and GPT-6 Astra (OpenAI). CC0 1.0.*
 
 A direct integral of Hilbert spaces is a continuous version of a direct sum. One attaches a Hilbert space \(H(\gamma)\) to each point \(\gamma\) of a measure space and forms the space of square-integrable sections \(\gamma\mapsto\xi(\gamma)\in H(\gamma)\). When all fibres equal one separable space \(\mathcal K\), this is \(L^2(\Gamma,\mu;\mathcal K)\). When the base is countable, it is a weighted direct sum. Direct integrals are the standard tool for decomposing representations and von Neumann algebras into simpler pieces. The spectral theorem, for instance, can be stated this way: a self-adjoint operator on a separable Hilbert space is unitarily equivalent to multiplication by the variable on a direct integral of Hilbert spaces over its spectrum.
 
 The difficulty is measurability. The fibres are different spaces, their dimension may vary from point to point, and some of them may be zero. So there is no single space in which to measure a section. The remedy is to fix a space of sections that count as measurable, subject to three axioms. This lesson develops that framework over an arbitrary \(\sigma\)-finite measure space. Sections 2 to 5 treat fields of Hilbert spaces: the axioms, measurable orthonormal bases and the dimension function, a criterion that generates a field from a sequence of sections, fields of subspaces, and the identification of a field with a constant field on each set where the dimension is constant. Sections 6 and 7 treat measurable fields of bounded operators, conjugate fields and direct sums. Sections 8 to 10 construct the direct integral Hilbert space and study the diagonal and the decomposable operators on it. Section 11 works out four examples, among them the field of GNS spaces over the quasi-state space of a separable C\*-algebra, and Section 12 has exercises with solutions.
 
-We assume measure and integration theory and the elementary theory of Hilbert spaces. Example 11.2 uses the Hilbert tensor product from [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html), and Example 11.4 uses the GNS construction. The facts we use without proof are stated in full near the end, in the section *Background used without proof*.
+We assume measure and integration theory and the elementary theory of Hilbert spaces. Example 11.2 uses the Hilbert tensor product from [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html), and Example 11.4 uses the GNS construction. Prerequisite statements and programme proof locations are collected near the end.
 
-Direct integrals go back to von Neumann's reduction theory (1949; see [Blackadar, Section III.1.6]), and the axioms for measurable fields used here are Dixmier's. Other basic references are [Takesaki I] and [Blackadar].
+Direct integrals go back to von Neumann's reduction theory, and the axioms for measurable fields used here are Dixmier's. A free account of direct-integral decompositions is [Blackadar, Section III.1.6].
 
 ## 1. Conventions
 
@@ -26,7 +26,7 @@ Let \((H(\gamma))_{\gamma\in\Gamma}\) be a family of Hilbert spaces. A *section*
 - **(F2)** (*saturation*) a section \(\eta\) belongs to \(\mathfrak M\) whenever \(\langle\eta,\xi\rangle\) is measurable for every \(\xi\in\mathfrak M\);
 - **(F3)** there is a sequence \((\xi_n)_{n\geq1}\) in \(\mathfrak M\) such that, for every \(\gamma\), the vectors \(\xi_n(\gamma)\) have dense linear span in \(H(\gamma)\). Such a sequence is called *fundamental*.
 
-*Reference:* [Takesaki I, Definition IV.8.9] works with \(\mu\)-measurable sections over a Borel space with a \(\sigma\)-finite measure, that is, with the completion of the Borel \(\sigma\)-algebra; Definition 2.1 allows any \(\sigma\)-algebra.
+Definition 2.1 uses the given sigma-algebra \(\Sigma\). Taking its completion gives the usual formulation in terms of completed-measure sections. All subsequent null-set modifications are made on measurable null sets, so completeness of the measure is unnecessary.
 
 By (F3) every fibre \(H(\gamma)\) is separable: the finite combinations of the \(\xi_n(\gamma)\) with Gaussian-rational coefficients are dense. Exercise 12.1 shows that (F2) does not follow from (F1) and (F3).
 
@@ -132,7 +132,25 @@ Each \(U(\gamma)\) is unitary. A section \(\xi\) is measurable if and only if, f
 
 **Proof.** The partition is measurable because the dimension function is measurable (Theorem 3.1(1)). \(U(\gamma)\) maps an orthonormal basis onto an orthonormal basis, so it is unitary. On \(\Gamma_d\), the coordinates of \(U\xi\) are the functions \(\langle\xi,e_k\rangle\), \(k\leq d\). If \(\xi\) is measurable, they are measurable by Lemma 2.2(1). Conversely, suppose they are measurable on every \(\Gamma_d\), and fix \(k\). On \(\Gamma_d\) with \(d\geq k\), the function \(\langle\xi,e_k\rangle\) is one of these coordinates. On \(\Gamma_d\) with \(d<k\) it vanishes, because \(e_k(\gamma)=0\) there. So \(\langle\xi,e_k\rangle=\sum_d1_{\Gamma_d}\langle\xi,e_k\rangle\) is measurable on \(\Gamma\). The Parseval argument in the proof of Theorem 3.1(3) then shows that \(\langle\xi,\zeta\rangle\) is measurable for every \(\zeta\in\mathfrak M\), and (F2) gives \(\xi\in\mathfrak M\). For the constant field, the constant sections \(\varepsilon_k\) form a fundamental sequence with constant Gram functions, and Theorem 3.1(4) identifies its measurable sections with the maps that have measurable coordinates. \(\square\)
 
-**Remark 5.2.** A map into the separable space \(\ell^2_d\) with measurable coordinates is weakly measurable, by Parseval's identity. By Pettis's theorem (see *Background used without proof*), it is then Borel measurable and a pointwise limit of measurable maps with finitely many values. So in the constant case the usual notions of measurability agree. One can also embed all fibres at once into one fixed infinite-dimensional Hilbert space by a measurable field of isometries. That form uses a Borel structure on the set of closed subspaces, and it is treated in [The Effros Borel structure](../reader/supplements/effros-borel-structure.html). The form above, on the sets of constant dimension, needs no Borel structure on spaces of subspaces, and it is the form used in later lessons.
+**Remark 5.2.** A map into the separable space \(\ell^2_d\) with measurable coordinates is weakly measurable, by Parseval's identity. By Proposition 5.3 below, it is then Borel measurable and a pointwise limit of measurable maps with finitely many values. So in the constant case the usual notions of measurability agree. One can also embed all fibres at once into one fixed infinite-dimensional Hilbert space by a measurable field of isometries. That form uses a Borel structure on the set of closed subspaces, and it is treated in [The Effros Borel structure](../reader/supplements/effros-borel-structure.html). The form above, on the sets of constant dimension, needs no Borel structure on spaces of subspaces, and it is the form used in later lessons.
+
+**Proposition 5.3** (Separable measurability). For a separable Hilbert space \(\mathcal K\) and a map \(f:\Gamma\to\mathcal K\), the following are equivalent: all scalar products \(\langle f,v\rangle\) are measurable; \(f\) is measurable for the norm Borel sets; and \(f\) is a pointwise norm limit of measurable maps with finitely many values. No measure on \(\Gamma\) is needed.
+
+**Proof.** If \(\mathcal K=0\), every assertion is immediate. Otherwise choose a finite or countable orthonormal basis \((u_k)\). Measurable scalar products give, for every fixed \(z\in\mathcal K\),
+\[
+\|f(\gamma)-z\|^2
+=\sum_k|\langle f(\gamma),u_k\rangle-\langle z,u_k\rangle|^2.
+\]
+Thus every distance to a fixed point is measurable. Choose a countable dense sequence \((z_j)\) in \(\mathcal K\). Balls centred at these points with positive rational radii form a countable base: if \(x\in U\) and \(U\) is open, choose a ball about \(x\) contained in \(U\), then a sufficiently close \(z_j\) and a rational radius giving a ball that contains \(x\) and is still contained in \(U\). Every open set is a union of a subfamily of this countable base. Its inverse image is therefore measurable.
+
+For a norm-Borel measurable \(f\), let \(j_n(\gamma)\) be the least index attaining the minimum of \(\|f(\gamma)-z_j\|\) over \(1\leq j\leq n\), and put \(f_n(\gamma)=z_{j_n(\gamma)}\). Each set where \(j_n=j\) is defined by finitely many strict or non-strict comparisons of measurable distances, so \(f_n\) is measurable and has finite range. Density gives
+\[
+\begin{aligned}
+&\|f_n(\gamma)-f(\gamma)\|\\
+&\quad=\min_{1\leq j\leq n}\|z_j-f(\gamma)\|\longrightarrow0.
+\end{aligned}
+\]
+Finally, the scalar product of a finite-valued measurable map with any fixed vector is measurable. Pointwise norm convergence implies convergence of these scalar products, so the last condition implies the first. \(\square\)
 
 ## 6. Measurable fields of bounded operators
 
@@ -268,15 +286,49 @@ Fields that agree almost everywhere clearly define the same operator. Conversely
 
 **Remark 10.2** (The converse). The converse of Theorem 10.1(3) also holds: every bounded operator on the direct integral that commutes with all diagonal operators is decomposable. It is proved in [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html#oa-fnd-dg-04).
 
+**Theorem 10.3** (A common fibrewise strong subsequence). Let \(X_n=\int^\oplus x_n\) and \(X=\int^\oplus x\) be decomposable operators on the direct integral. If \(X_n\to X\) strongly, there is a subsequence \((n_j)\) and one measurable null set \(N\) such that
+\[
+\begin{gathered}
+x_{n_j}(\gamma)v\longrightarrow x(\gamma)v\\
+\text{for every }v\in H(\gamma),\quad\gamma\notin N.
+\end{gathered}
+\]
+This holds on every sigma-finite base, whether or not the whole direct-integral Hilbert space is separable.
+
+**Proof.** The uniform boundedness principle, [Theorem 4.2 and Corollary 4.3(3) of *Hahn–Banach, Baire and the basic theorems on Banach spaces*](../../foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#OA-FND-HB-04), gives a finite bound \(C\) for the norms of all \(X_n\) and \(X\). Theorem 10.1 gives a measurable null set \(N_0\) outside which \(\|x_n(\gamma)\|\leq C\) for every \(n\) and \(\|x(\gamma)\|\leq C\). Here we take the union of the countably many exceptional sets.
+
+Let \((F_m)\) be an increasing measurable cover of \(\Gamma\) by sets of finite measure, and let \((e_k)\) be the orthonormal fundamental sequence of Theorem 3.1. The countable family \(\eta_{m,k}=1_{F_m}e_k\) lies in the direct integral, since its squared norms are at most \(\mu(F_m)\). Enumerate it as \((\eta_l)\). Strong convergence permits a strictly increasing sequence \((n_j)\) such that
+\[
+\|(X_{n_j}-X)\eta_l\|^2\leq2^{-j}
+\qquad(1\leq l\leq j).
+\]
+For fixed \(l\), monotone convergence gives
+\[
+\begin{aligned}
+&\int_\Gamma\sum_{j\geq l}
+\|(x_{n_j}(\gamma)-x(\gamma))\eta_l(\gamma)\|^2\,d\mu(\gamma)\\
+&\hspace{2em}\leq\sum_{j\geq l}2^{-j}<\infty.
+\end{aligned}
+\]
+Hence the summands tend to zero outside a measurable null set \(N_l\). Put \(N=N_0\cup\bigcup_lN_l\). For \(\gamma\notin N\), choose \(m\) with \(\gamma\in F_m\). The conclusion for every \(\eta_{m,k}\) gives \((x_{n_j}(\gamma)-x(\gamma))e_k(\gamma)\to0\) for every \(k\), hence for every finite linear combination of these vectors. Given \(v\in H(\gamma)\) and such a combination \(u\),
+\[
+\begin{aligned}
+\|(x_{n_j}(\gamma)-x(\gamma))v\|
+&\leq 2C\|v-u\|\\
+&\quad+\|(x_{n_j}(\gamma)-x(\gamma))u\|.
+\end{aligned}
+\]
+Take the limit superior in \(j\) and then approximate \(v\) by finite combinations using Theorem 3.1. The limit is zero, including when the fibre is the zero space. The argument never requires the countable family \((\eta_l)\) to be dense in the whole direct integral. \(\square\)
+
 ## 11. Examples
 
 **Example 11.1** (Countable base). Let \(\Gamma\) be countable, \(\Sigma\) all subsets, and \(\mu\) a measure with \(0<\mu(\{\gamma\})<\infty\) for every \(\gamma\). Let \(H(\gamma)\) be arbitrary separable Hilbert spaces. With \(\mathfrak M\) all sections, (F1) and (F2) hold trivially, since every function on \(\Gamma\) is measurable. For (F3), choose a dense sequence \((d_{\gamma,n})_n\) in each \(H(\gamma)\), with \(d_{\gamma,n}=0\) if \(H(\gamma)=0\), and let \(\xi_n(\gamma)=d_{\gamma,n}\). The direct integral is the Hilbert direct sum \(\bigoplus_\gamma H(\gamma)\), with inner product weighted by \(\mu(\{\gamma\})\). The map \(\xi\mapsto(\mu(\{\gamma\})^{1/2}\xi(\gamma))_\gamma\) is a unitary onto the unweighted sum. The diagonal operators are the bounded scalar sequences, acting on each summand by multiplication.
 
-**Example 11.2** (Constant field). Let \(H(\gamma)=\mathcal K\) for a fixed separable \(\mathcal K\) with orthonormal basis \((\varepsilon_k)\), and let \(\mathfrak M\) be generated by the constant sections \(\varepsilon_k\) as in Theorem 3.1(4). The measurable sections are the maps with measurable coordinates, equivalently, by Pettis's theorem, the Borel (or weakly measurable) maps \(\Gamma\to\mathcal K\). The direct integral is the space \(L^2(\Gamma,\mu;\mathcal K)\) of classes of such maps \(\xi\) with \(\int\|\xi(\gamma)\|^2\,d\mu<\infty\). The map \(f\otimes v\mapsto(\gamma\mapsto f(\gamma)v)\) extends to a unitary \(L^2(\Gamma,\mu)\otimes\mathcal K\cong L^2(\Gamma,\mu;\mathcal K)\). Indeed, it preserves the inner products of elementary tensors, so it extends to an isometry. For any orthonormal basis \((g_i)\) of \(L^2(\Gamma,\mu)\), it carries the orthonormal basis \((g_i\otimes\varepsilon_k)\) onto the orthonormal family \((g_i\varepsilon_k)\), which is complete: if \(\xi\) is orthogonal to every \(g_i\varepsilon_k\), then each coordinate \(\langle\xi,\varepsilon_k\rangle\in L^2(\Gamma,\mu)\) is orthogonal to every \(g_i\), so \(\xi=0\) almost everywhere. So the isometry is onto.
+**Example 11.2** (Constant field). Let \(H(\gamma)=\mathcal K\) for a fixed separable \(\mathcal K\) with orthonormal basis \((\varepsilon_k)\), and let \(\mathfrak M\) be generated by the constant sections \(\varepsilon_k\) as in Theorem 3.1(4). The measurable sections are the maps with measurable coordinates, equivalently, by Proposition 5.3, the Borel (or weakly measurable) maps \(\Gamma\to\mathcal K\). The direct integral is the space \(L^2(\Gamma,\mu;\mathcal K)\) of classes of such maps \(\xi\) with \(\int\|\xi(\gamma)\|^2\,d\mu<\infty\). The map \(f\otimes v\mapsto(\gamma\mapsto f(\gamma)v)\) extends to a unitary \(L^2(\Gamma,\mu)\otimes\mathcal K\cong L^2(\Gamma,\mu;\mathcal K)\). Indeed, it preserves the inner products of elementary tensors, so it extends to an isometry. For any orthonormal basis \((g_i)\) of \(L^2(\Gamma,\mu)\), it carries the orthonormal basis \((g_i\otimes\varepsilon_k)\) onto the orthonormal family \((g_i\varepsilon_k)\), which is complete: if \(\xi\) is orthogonal to every \(g_i\varepsilon_k\), then each coordinate \(\langle\xi,\varepsilon_k\rangle\in L^2(\Gamma,\mu)\) is orthogonal to every \(g_i\), so \(\xi=0\) almost everywhere. So the isometry is onto.
 
 **Example 11.3** (Varying dimension). Let \(\Gamma=(0,1]\) with Lebesgue measure, and \(d(\gamma)=k\) for \(\gamma\in(\tfrac1{k+1},\tfrac1k]\). Let \(H(\gamma)=\mathbb C^{d(\gamma)}\), and let \(\xi_n(\gamma)\) be the \(n\)-th standard basis vector if \(n\leq d(\gamma)\), else \(0\). The Gram functions \(\langle\xi_n,\xi_m\rangle=\delta_{nm}1_{\{d\geq n\}}\) are measurable, so Theorem 3.1(4) produces a measurable field. The sets of constant dimension in Theorem 5.1 are the intervals \(\Gamma_k=(\tfrac1{k+1},\tfrac1k]\), and the direct integral is \(\bigoplus_kL^2(\Gamma_k)\otimes\mathbb C^k\). The field \(x(\gamma)=\operatorname{diag}(1,\tfrac12,\ldots,\tfrac1{d(\gamma)})\) is measurable by Theorem 6.2(1), since \(x\xi_n=\tfrac1n\xi_n\). Its norm function is identically \(1\), so the decomposable operator \(\int^\oplus x\) has norm \(1\) by Theorem 10.1(1). The inverse field \(x(\gamma)^{-1}\) has norm \(d(\gamma)\), which is unbounded. So a measurable field of invertible operators need not define a bounded decomposable inverse.
 
-**Example 11.4** (GNS spaces of a separable C\*-algebra). Let \(A\) be a separable C\*-algebra with a dense sequence \((x_n)\), and let \(Q(A)=\{\varphi\in A^*_+:\|\varphi\|\leq1\}\) be its quasi-state space. It is a weak\*-closed subset of the closed unit ball of \(A^*\), so it is compact and metrizable in the weak\* topology (see *Background used without proof*). Give it a finite positive Borel measure \(\mu\). For \(\varphi\in Q(A)\), let \(H(\varphi)\) be the GNS space of \(\varphi\) and \(\eta_\varphi:A\to H(\varphi)\) the canonical map, so that \(\langle\eta_\varphi(x),\eta_\varphi(y)\rangle=\varphi(y^*x)\). The sections \(\xi_n(\varphi)=\eta_\varphi(x_n)\) have Gram functions \(\varphi\mapsto\varphi(x_m^*x_n)\), which are weak\*-continuous, hence Borel. They are total in every fibre: \(\eta_\varphi(A)\) is dense in \(H(\varphi)\), and \(\|\eta_\varphi(x)\|^2=\varphi(x^*x)\leq\|x\|^2\) since \(\|\varphi\|\leq1\), so the \(\eta_\varphi(x_n)\) are dense in \(\eta_\varphi(A)\). By Theorem 3.1(4), there is exactly one measurable field of Hilbert spaces over \(Q(A)\) containing these sections. Its fibre at \(\varphi=0\) is the zero space.
+**Example 11.4** (GNS spaces of a separable C\*-algebra). Let \(A\) be a separable C\*-algebra with a dense sequence \((x_n)\), and let \(Q(A)=\{\varphi\in A^*_+:\|\varphi\|\leq1\}\) be its quasi-state space. It is a weak\*-closed subset of the closed unit ball of \(A^*\), so it is compact and metrizable in the weak\* topology (see *Prerequisite proofs*). Give it a finite positive Borel measure \(\mu\). For \(\varphi\in Q(A)\), let \(H(\varphi)\) be the GNS space of \(\varphi\) and \(\eta_\varphi:A\to H(\varphi)\) the canonical map, so that \(\langle\eta_\varphi(x),\eta_\varphi(y)\rangle=\varphi(y^*x)\). The sections \(\xi_n(\varphi)=\eta_\varphi(x_n)\) have Gram functions \(\varphi\mapsto\varphi(x_m^*x_n)\), which are weak\*-continuous, hence Borel. They are total in every fibre: \(\eta_\varphi(A)\) is dense in \(H(\varphi)\), and \(\|\eta_\varphi(x)\|^2=\varphi(x^*x)\leq\|x\|^2\) since \(\|\varphi\|\leq1\), so the \(\eta_\varphi(x_n)\) are dense in \(\eta_\varphi(A)\). By Theorem 3.1(4), there is exactly one measurable field of Hilbert spaces over \(Q(A)\) containing these sections. Its fibre at \(\varphi=0\) is the zero space.
 
 ## 12. Exercises
 
@@ -296,11 +348,11 @@ Fields that agree almost everywhere clearly define the same operator. Conversely
 
 *Solution.* Enumerate the dyadic intervals \([j2^{-m},(j+1)2^{-m}]\), \(m\geq0\), \(0\leq j<2^m\), in order, and let \(\xi_k\) be the indicator of the \(k\)-th one. Then \(\|\xi_k\|^2=2^{-m}\to0\), while every point lies in infinitely many of these intervals and outside infinitely many others, so \(\xi_k(\gamma)\) takes both values \(0\) and \(1\) infinitely often.
 
-## Background used without proof
+## Prerequisite proofs
 
 - **Measure theory.** Sums, products, pointwise limits and countable suprema of measurable functions are measurable. The monotone convergence theorem and Fatou's lemma hold for nonnegative measurable functions. In \(L^2(\Gamma,\mu)\), the Cauchy–Schwarz inequality \(\int|fg|\,d\mu\leq\|f\|_2\|g\|_2\) and Minkowski's inequality \(\|f+g\|_2\leq\|f\|_2+\|g\|_2\) hold. See Section 2 and Theorems 2.1, 2.2 and 3.1 of [*Measure and Hilbert space tools for Haar integration*](../../harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html#2-integration-and-convergence-without-countability-assumptions).
 - **Hilbert spaces.** Every Hilbert space has an orthonormal basis, that is, an orthonormal family with dense linear span. If \((e_k)\) is an orthonormal basis of \(H\), then every \(v\in H\) satisfies \(v=\sum_k\langle v,e_k\rangle e_k\), with convergence in norm, and Parseval's identity \(\langle v,w\rangle=\sum_k\langle v,e_k\rangle\langle e_k,w\rangle\) holds for all \(v,w\in H\), with absolute convergence; in particular \(\|v\|^2=\sum_k|\langle v,e_k\rangle|^2\). If \((f_k)\) is an orthonormal family with closed linear span \(K\), the orthogonal projection onto \(K\) is \(v\mapsto\sum_k\langle v,f_k\rangle f_k\), and for finitely many \(f_1,\ldots,f_k\) Pythagoras' theorem gives \(\|v-\sum_{i\leq k}\langle v,f_i\rangle f_i\|^2=\|v\|^2-\sum_{i\leq k}|\langle v,f_i\rangle|^2\). A bounded linear map between Hilbert spaces that carries an orthonormal basis onto an orthonormal basis is unitary. See Theorems 2.2 and 4.1 of [*Hilbert spaces and compact operators*](../../foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html#oa-fnd-hs-04).
-- **Pettis's measurability theorem, separable case.** Let \(\mathcal K\) be a separable Hilbert space and \(f:\Gamma\to\mathcal K\) a map. The following are equivalent: (a) \(\gamma\mapsto\langle f(\gamma),v\rangle\) is measurable for every \(v\in\mathcal K\); (b) \(f^{-1}(U)\in\Sigma\) for every open set \(U\subseteq\mathcal K\); (c) \(f\) is a pointwise limit of measurable maps with finitely many values. [Pettis 1938]
+- **Pettis's measurability theorem, separable case.** Let \(\mathcal K\) be a separable Hilbert space and \(f:\Gamma\to\mathcal K\) a map. The following are equivalent: (a) \(\gamma\mapsto\langle f(\gamma),v\rangle\) is measurable for every \(v\in\mathcal K\); (b) \(f^{-1}(U)\in\Sigma\) for every open set \(U\subseteq\mathcal K\); (c) \(f\) is a pointwise limit of measurable maps with finitely many values. Proposition 5.3 proves all three implications over the given measurable space.
 - **Weak\* compactness.** The closed unit ball of the dual of a Banach space \(X\) is compact in the weak\* topology (Alaoglu's theorem). If \(X\) is separable, the weak\* topology on this ball is metrizable. See Theorem 3.1 and Proposition 3.2 of [*Weak topologies: Tychonoff, Banach–Alaoglu, Mazur, bipolars, Krein–Milman and Eberlein–Šmulian*](../../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#oa-fnd-wt-03).
 - **The GNS construction.** Let \(\varphi\) be a bounded positive linear functional on a C\*-algebra \(A\). There are a Hilbert space \(H(\varphi)\) and a linear map \(\eta_\varphi:A\to H(\varphi)\) with dense range such that \(\langle\eta_\varphi(x),\eta_\varphi(y)\rangle=\varphi(y^*x)\) for all \(x,y\in A\). One takes for \(H(\varphi)\) the completion of \(A\) modulo the null space \(\{x:\varphi(x^*x)=0\}\), with the inner product \(\varphi(y^*x)\). See Theorem 5.4 and Definition 5.6 of [*Building representations from positive functionals*](../../foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#oa-fnd-gn-05).
 - **Hilbert tensor products.** For Hilbert spaces \(H\) and \(K\), the Hilbert tensor product \(H\otimes K\) is a Hilbert space in which the elementary tensors span a dense subspace and \(\langle f\otimes v,g\otimes w\rangle=\langle f,g\rangle\langle v,w\rangle\). If \((g_i)\) and \((\varepsilon_k)\) are orthonormal bases of \(H\) and \(K\), then \((g_i\otimes\varepsilon_k)\) is an orthonormal basis of \(H\otimes K\). This is proved in [Spatial tensor products of von Neumann algebras](../reader/supplements/spatial-tensor-products.html).
@@ -310,12 +362,10 @@ Fields that agree almost everywhere clearly define the same operator. Conversely
 
 - [Decomposable operators and the diagonal algebra](../reader/supplements/decomposable-operators-diagonal-algebra.html) proves the converse of Theorem 10.1(3). It follows that the diagonal and the decomposable operators form von Neumann algebras, each the commutant of the other.
 - [The Effros Borel structure](../reader/supplements/effros-borel-structure.html) embeds all fibres into one fixed Hilbert space by a measurable field of isometries, and treats measurable families of von Neumann algebras.
-- [Vector-valued functions, tensor products with \(L^p\), and preduals](../reader/supplements/measurable-fields-direct-integrals.html#11-examples) works with a Radon measure on a locally compact space. When that measure is \(\sigma\)-finite and \(\Sigma\) is the \(\mu\)-completion of the Borel sets, it shows that the direct integral of the constant field of Example 11.2 is the space of square-integrable \(\mathcal K\)-valued functions studied there, with the same vectors and the same inner product.
+- [Vector-valued functions, tensor products with \(L^p\), and preduals](../../measurable-fields-and-direct-integrals/vector-valued-functions-tensor-products-with-lp-and-preduals.html) works with a Radon measure on a locally compact space. When that measure is \(\sigma\)-finite and \(\Sigma\) is the \(\mu\)-completion of the Borel sets, it shows that the direct integral of the constant field of Example 11.2 is the space of square-integrable \(\mathcal K\)-valued functions studied there, with the same vectors and the same inner product.
 - Fields of closed unbounded operators, handled through their graph projections with Proposition 4.1 and Remark 4.2, are the subject of the lesson *Measurable graphs and left multipliers in direct-integral fields* in the course on modular theory and weights.
 - Beyond these lessons, the theory continues with direct integrals of von Neumann algebras and the decomposition of a von Neumann algebra over its centre; see [*Direct integrals of von Neumann algebras*](../reader/supplements/direct-integrals-of-von-neumann-algebras-commutants-and-centres-takesa.html).
 
 ## References
 
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*, [revised author edition, 8 February 2017](https://bruceblackadar.com/Mathematics/Cycr.pdf).
-- [Pettis 1938] B. J. Pettis, On integration in vector spaces, *Transactions of the American Mathematical Society* 44 (1938), 277–304. https://doi.org/10.1090/S0002-9947-1938-1501970-8
-- [Takesaki I] M. Takesaki, *Theory of Operator Algebras I*, Springer, New York, 1979; reprinted as Encyclopaedia of Mathematical Sciences 124, Springer, Berlin, 2002.

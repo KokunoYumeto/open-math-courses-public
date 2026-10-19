@@ -200,7 +200,7 @@ Indeed \(f_s=2(s-y^2)\), \(f_{ss}=2\), so the critical graph is the stated parab
 
 ![The curved critical graph and the nonnegative residual](figures/scalar_splitting.png)
 
-The left panel shows the exact graph \(s=y^2\). The right panel uses the normal displacement \(r=s-y^2\) at three fixed values of \(y\): \(f=r^2+y^4\). Each marked minimum equals the residual \(v(y)\); the horizontal lines show that residual. This plot depicts the function decomposition, not a symplectic change of variables or a quantized inequality. Its [editable plotting source](figures/scalar_splitting.py) accompanies it.
+The upper panel shows the exact graph \(s=y^2\). The lower panel uses the normal displacement \(r=s-y^2\) at three fixed values of \(y\): \(f=r^2+y^4\). Each marked minimum equals the residual \(v(y)\); the horizontal lines show that residual. This plot depicts the function decomposition, not a symplectic change of variables or a quantized inequality. Its [editable plotting source](figures/scalar_splitting.py) accompanies it.
 
 The selected proofs retain the mathematical content of AN03-U019 Sections 3–4 and 6, with the gradient proof and an explicit squared-partition adapter. SP4 supplies the polarization identity used in the norm comparison, and SP7 proves the reverse weight ratio with the same distance base. The approved mathematical antecedents are Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, Lemma 18.6.9 and the adaptive construction in Lemma 18.6.10, printed 171–174 (PDF pages 186–189). The course exposition is independently written; book text and files are not included.
 

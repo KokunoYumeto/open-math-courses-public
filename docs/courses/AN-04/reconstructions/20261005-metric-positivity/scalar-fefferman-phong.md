@@ -199,7 +199,7 @@ Gaussian integration gives \(\|v_L\|=1\) and \(\|v_L'\|^2=1/(2L^2)\). Each deriv
 
 ![An exact Weyl square defect and its normalized test family](figures/weyl-square-defect.svg)
 
-The left panel shows the probability density \(|v_2(t)|^2\) in the actual logarithmic coordinate \(t=\log x\), with Lebesgue measure \(dt\). The right panel plots the proved expectation \(1/(2L^2)-1/4\), with its zero at \(\sqrt2\), its value \(-1/8\) at \(L=2\), and its limiting lower value \(-1/4\). These are exact formulas sampled for drawing, not a numerical proof of the theorem. [Editable figure source](figures/weyl_square_defect.py).
+The upper panel shows the probability density \(|v_2(t)|^2\) in the actual logarithmic coordinate \(t=\log x\), with Lebesgue measure \(dt\). The lower panel plots the proved expectation \(1/(2L^2)-1/4\), with its zero at \(\sqrt2\), its value \(-1/8\) at \(L=2\), and its limiting lower value \(-1/4\). These are exact formulas sampled for drawing, not a numerical proof of the theorem. [Editable figure source](figures/weyl_square_defect.py).
 
 ## F11. Sources and receiving scope
 

@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-We continue in the standing setting (S1)–(S6) of Gaussian first moments of partitions, Section 4. [Rearrangement bounds for one cell](rearrangement-bounds-for-one-cell.md) gave \(P_i>Ar_i^2\), a bound that is weak for short moments. This lesson proves a bound that is linear in \(r_i\) (Proposition 5.2):
+We continue in the standing setting (S1)–(S6) of [Gaussian first moments of partitions](gaussian-first-moments-of-partitions.md), Section 4. [Rearrangement bounds for one cell](rearrangement-bounds-for-one-cell.md) gave \(P_i>Ar_i^2\), a bound that is weak for short moments. This lesson proves a bound that is linear in \(r_i\) (Proposition 5.2):
 \[
 P_i>0.415\,r_i+0.15\,r_i^2 .
 \]
@@ -35,7 +35,7 @@ which is nonnegative, so \(\alpha r_i^2\le1\). The scores \(\langle w_j,g\rangle
 
 ## 2. Gap probabilities
 
-By (S3) the vectors \(z_i-z_j\), \(j\ne i\), form a basis of \(V\), so there is \(h\in V\) with \(\langle h,z_i-z_j\rangle=1\) for every \(j\ne i\); then \(\langle h,z_i\rangle=1/\alpha\) (Gaussian first moments of partitions, Exercise 5.5). For \(u\in\mathbb R\), the translate \(K_i+uh\) is the set of \(x\in V\) with \(\langle z_i-z_j,x\rangle\ge u\) for all \(j\ne i\). So the *gap probability* \(p_i(u)\), the probability that \(X_i-X_j\ge u\) for all \(j\ne i\), is
+By (S3) the vectors \(z_i-z_j\), \(j\ne i\), form a basis of \(V\), so there is \(h\in V\) with \(\langle h,z_i-z_j\rangle=1\) for every \(j\ne i\); then \(\langle h,z_i\rangle=1/\alpha\) ([Gaussian first moments of partitions](gaussian-first-moments-of-partitions.md), Exercise 5.5). For \(u\in\mathbb R\), the translate \(K_i+uh\) is the set of \(x\in V\) with \(\langle z_i-z_j,x\rangle\ge u\) for all \(j\ne i\). So the *gap probability* \(p_i(u)\), the probability that \(X_i-X_j\ge u\) for all \(j\ne i\), is
 \[
 p_i(u)=\gamma_{m-1}(K_i+uh).
 \]
@@ -217,7 +217,7 @@ r_i<\frac23,\qquad P_i>Ar_i^2,\\
 P_i>0.415\,r_i+0.15\,r_i^2 .
 \end{gathered}
 \]
-These three bounds, the identities \(\sum P_i=\sum r_i^2=1\), and the geometric constraints of [Two competing scores](two-competing-scores.md) are all that Five or more cells and the propeller bound uses.
+These three bounds, the identities \(\sum P_i=\sum r_i^2=1\), and the geometric constraints of [Two competing scores](two-competing-scores.md) are all that [Five or more cells and the propeller bound](five-or-more-cells-and-the-propeller-bound.md) uses.
 
 ## 6. Exercises
 
@@ -233,7 +233,7 @@ These three bounds, the identities \(\sum P_i=\sum r_i^2=1\), and the geometric 
 
 **6.1.** \(K+uh=\{x:\langle e,x\rangle\ge cu\}\), whose measure is \(\Phi(-cu)\). Here \(\gamma_d(K)=\frac12\), \(q=0\), and \(\int_Kx\,d\gamma_d=\phi(0)e\) gives \(p'(0)=-\langle h,\phi(0)e\rangle=-c\phi(0)\); the tangent bound is \(\Phi(0-c\phi(0)u/\phi(0))=\Phi(-cu)\), the exact value.
 
-**6.2.** The tangent line of \(\log p_i\) at \(0\) has slope \(p_i'(0)/P_i=-1/(\alpha P_i)\), so \(p_i(u)\le P_ie^{-u/(\alpha P_i)}\) and \(\int_0^\infty p_i\le\alpha P_i^2\). With Lemma 1.1, \(\alpha P_i^2\ge C\alpha r_i^2/(1+\sqrt{1-\alpha r_i^2})\), so \(P_i^2>B^2r_i^2/(1+\sqrt{1-r_i^2})\). At \(r=0.42\) this gives only \(P>0.18197\), whereas \(P_0(0.42)=0.20076\). The difference matters: Five or more cells and the propeller bound uses the excess of \(P_0(0.42)\) over \(Ar^2\) with a margin of less than \(0.003\).
+**6.2.** The tangent line of \(\log p_i\) at \(0\) has slope \(p_i'(0)/P_i=-1/(\alpha P_i)\), so \(p_i(u)\le P_ie^{-u/(\alpha P_i)}\) and \(\int_0^\infty p_i\le\alpha P_i^2\). With Lemma 1.1, \(\alpha P_i^2\ge C\alpha r_i^2/(1+\sqrt{1-\alpha r_i^2})\), so \(P_i^2>B^2r_i^2/(1+\sqrt{1-r_i^2})\). At \(r=0.42\) this gives only \(P>0.18197\), whereas \(P_0(0.42)=0.20076\). The difference matters: [Five or more cells and the propeller bound](five-or-more-cells-and-the-propeller-bound.md) uses the excess of \(P_0(0.42)\) over \(Ar^2\) with a margin of less than \(0.003\).
 
 **6.3.** \(G=\lambda(q+\lambda)\). With \(\lambda=-q+1/(-q)+O(|q|^{-3})\), \(q+\lambda=1/(-q)+O(|q|^{-3})\), and \(\lambda(q+\lambda)=1+O(q^{-2})\). (The expansion of \(\lambda\) follows from the asymptotic series of \(\Phi(q)/\phi(q)\) as \(q\to-\infty\), obtained by integrating by parts twice.)
 

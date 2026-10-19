@@ -30,8 +30,11 @@ T_{[q]}\operatorname{Quot}_{E/X/k}
 **Proof.** Identify \(E_D=E\oplus\epsilon E\). For \(\phi:K\to G\), define the subsheaf
 
 \[
-K_\phi=
-\{\,k+\epsilon e:k\in K,\ e\in E,\ q(e)=\phi(k)\,\}.
+\begin{gathered}
+K_\phi=\\
+\left\{\begin{gathered}\,k+\epsilon e:k\in K,\ e\in E,\ \\
+q(e)=\phi(k)\,\end{gathered}\right\}.
+\end{gathered}
 \tag{1.3}
 \]
 
@@ -60,9 +63,11 @@ For a closed subscheme \(Z\subset X\), apply the proposition to \(E=\mathcal O_X
 We obtain
 
 \[
-T_{[Z]}\operatorname{Hilb}_{X/k}
-=\operatorname{Hom}_X(\mathcal I_Z,\mathcal O_Z)
+\begin{gathered}
+T_{[Z]}\operatorname{Hilb}_{X/k}\\
+=\operatorname{Hom}_X(\mathcal I_Z,\mathcal O_Z)\\
 =H^0(Z,\mathcal N_{Z/X}).
+\end{gathered}
 \tag{1.4}
 \]
 
@@ -71,8 +76,10 @@ The last formula holds for every closed subscheme. For a **regular embedding**, 
 Here is the relative tangent formula once, in a form that fixes its scope. If a \(T\)-point \(g\) of a represented relative Quot functor has kernel \(K\) and quotient \(G\), and \(M\) is quasi-coherent on \(T\), split thickenings \(T[M]\) give
 
 \[
-\operatorname{Hom}_T(g^*\Omega_{\operatorname{Quot}/S},M)
+\begin{gathered}
+\operatorname{Hom}_T(g^*\Omega_{\operatorname{Quot}/S},M)\\
 =\operatorname{Hom}_{X_T}(K,G\otimes_T M).
+\end{gathered}
 \tag{1.5}
 \]
 
@@ -113,9 +120,12 @@ Multiplication by \(J\) kills \(C\): for a section reducing to \(k_A\in K_A\), i
 **Theorem 2.1.** The class of (2.3) is a canonical obstruction
 
 \[
-o(G_A,A')\in
-\operatorname{Ext}^1_{X_A}(K_A,G\otimes_k J)
+\begin{gathered}
+o(G_A,A')\in\\
+
+\operatorname{Ext}^1_{X_A}(K_A,G\otimes_k J)\\
 =\operatorname{Ext}^1_X(K,G)\otimes_k J.
+\end{gathered}
 \tag{2.4}
 \]
 
@@ -131,8 +141,11 @@ The construction commutes with homomorphisms of small extensions and with linear
 **Proof.** Suppose (2.3) has a splitting \(s:K_A\to C\). Let \(K'\subset\widetilde K\subset E_{A'}\) be the inverse image of \(s(K_A)\). It is an \(\mathcal O_{X_{A'}}\)-submodule, since \(C\) is an \(\mathcal O_{X_A}\)-module. It satisfies
 
 \[
-K'\cap(E\otimes_k J)=K\otimes_k J,\qquad
+\begin{gathered}
+K'\cap(E\otimes_k J)=K\otimes_k J,\\
+\qquad
 K'\longrightarrow K_A\text{ is surjective}.
+\end{gathered}
 \tag{2.6}
 \]
 
@@ -186,17 +199,53 @@ c(Z_A,A')\in H^1(Z,N)\otimes_k J.
 
 Intersections of the affine opens are affine since \(X\) is separated. Their intersections with \(Z\) are affine as well. Consequently Čech cohomology here is sheaf cohomology [Stacks, Tag 01XD]. Refinement does not change the class.
 
+### Detecting smoothness by local Artinian tests
+
+**Lemma 3.A (the pointwise lifting criterion).** Let \(X\to S\) be locally of finite type, with \(S\) locally Noetherian, and let \(x\in X\). It is smooth at \(x\) if and only if every diagram centred at \(x\), with test rings local Artinian \(S\)-algebras and a small surjection between them, admits a lift. The residue field in the tests may be \(\kappa(x)\); no separability assumption on \(\kappa(x)/\kappa(s)\) is needed.
+
+**Proof.** Work over an affine neighbourhood \(\operatorname{Spec}R\) of \(s\), and present a neighbourhood of \(x\) as
+\[
+\operatorname{Spec}(R[t_1,\ldots,t_N]/I).
+\]
+Let \(\mathfrak q\) be the prime of the polynomial ring corresponding to \(x\), and put \(P=R[t_1,\ldots,t_N]_{\mathfrak q}\), with maximal ideal \(\mathfrak n\) and residue field \(K=\kappa(x)\). Write \(I\) also for its extension to \(P\). Both \(P\) and \(I\) are Noetherian. Artin–Rees gives, for sufficiently large \(n\),
+\[
+I\cap\mathfrak n^n\subset\mathfrak n I.
+\]
+Consequently the local Artinian surjection
+\[
+\begin{gathered}
+A'=P/(\mathfrak n I+\mathfrak n^n)
+\longrightarrow A=P/(I+\mathfrak n^n)
+\end{gathered}
+\]
+has kernel canonically \(J=I/\mathfrak n I\), annihilated by the maximal ideal of \(A'\). The natural map \(P/I\to A\) is a test centred at \(x\).
+
+Assume the lifting property and lift that map to \(P/I\to A'\). Compare its composite \(v:P\to A'\) with the natural map \(u:P\to A'\). They agree modulo \(J\); their difference \(v-u\) is an \(R\)-derivation with values in \(J\), because \(J^2=0\). Since \(\mathfrak n J=0\), it factors through
+\[
+\Omega_{P/R}\otimes_P K\longrightarrow I/\mathfrak n I.
+\]
+On an element \(f\in I\), its value is \(-[f]\). Hence the differential map
+\[
+I/\mathfrak n I
+\longrightarrow\Omega_{P/R}\otimes_P K
+\]
+has a left inverse, up to this harmless minus sign. In particular it is injective.
+
+Choose \(f_1,\ldots,f_c\in I\) lifting a basis of \(I/\mathfrak n I\). Nakayama says that they generate \(I\), and their differentials are linearly independent in the free \(K\)-module on \(dt_1,\ldots,dt_N\). Some \(c\)-row Jacobian minor is therefore invertible at \(\mathfrak q\). Clearing the finitely many denominators and shrinking the original affine neighbourhood makes these \(f_i\) generate its ideal and keeps that minor invertible. This is a standard-smooth presentation, so the morphism is smooth there by Formally smooth, unramified and étale ring maps, Theorem 4.1.
+
+Conversely, on a standard-smooth neighbourhood the invertible Jacobian solves every square-zero lifting problem, by the same theorem. A morphism from a local Artinian scheme centred at \(x\) factors through that neighbourhood, since its underlying space has one point. It therefore lifts. Nilpotent extensions can also be treated in successive square-zero steps. This proves the criterion. The argument uses the actual residue field \(K\), and does not replace it by a separable extension. \(\square\)
+
 **Theorem 3.2.** The class (3.1) vanishes if and only if a global embedded lift exists. When it vanishes, the global lifts form a torsor under \(H^0(Z,N)\otimes_k J\). In particular, if \(H^1(Z,N)=0\), the Hilbert scheme is smooth at \([Z]\), of dimension \(h^0(Z,N)\).
 
 **Proof.** A zero class allows sections \(\beta_i\) whose changes make every \(\alpha_{ij}\) zero. The adjusted quotient kernels then agree on all intersections, and glue to a coherent ideal in \(\mathcal O_{X_{A'}}\). Its quotient is flat because flatness is local, and is proper by preservation of properness through a nilpotent thickening [Stacks, Tag 0BPG]. It gives a Hilbert point. Conversely a global lift, restricted to the cover, makes the cocycle zero, and comparing with it shows that any original cocycle is a coboundary.
 
 Two global lifts differ by a compatible collection of local difference sections, hence by one section of \(N\otimes_k J\); every section changes a lift. This proves the torsor assertion. It also proves naturality of (3.1) under linear maps of \(J\).
 
-If \(H^1(Z,N)=0\), every small-extension diagram centred at \([Z]\) lifts. The Hilbert scheme is locally of finite type, and the pointwise Artinian lifting criterion [Stacks, Tag 02HX] proves smoothness. For its dimension, a smooth local scheme at a \(k\)-point has dimension equal to its tangent-space dimension. Equation (1.4) gives that dimension as \(h^0(Z,N)\). \(\square\)
+If \(H^1(Z,N)=0\), every small-extension diagram centred at \([Z]\) lifts. The Hilbert scheme is locally of finite type, and the pointwise Artinian lifting criterion of Lemma 3.A [Stacks, Tag 02HX] proves smoothness. For its dimension, a smooth local scheme at a \(k\)-point has dimension equal to its tangent-space dimension. Equation (1.4) gives that dimension as \(h^0(Z,N)\). \(\square\)
 
 The class (3.1) maps to (2.4). To see the comparison without replacing global Ext by sheaf Ext, take local splittings of (2.3). Their differences are exactly the sections \(\alpha_{ij}\). Gluing the locally split extensions with these differences reconstructs (2.3). Thus its extension class is the image of the Čech class under the map \(H^1(\mathcal Hom(K,G))\to\operatorname{Ext}^1(K,G)\). For regular embeddings local lifts exist, so this is the whole obstruction that is needed.
 
-The relative smoothness assertion holds with a flat quasi-projective \(X/S\) over a Noetherian base and a proper regular embedding \(Z\subset X_K\), where \(K\) is the residue field of the Hilbert point. The preceding equation-lifting proof uses flatness and finite presentation of the ambient algebra, rather than smoothness itself: for each Artinian diagram over \(S\), apply Tag 0CEQ to that diagram's flat ambient algebra and its regular special-fibre equations. The normal sheaf is still locally free. Properness of a family persists through the nilpotent extension [Stacks, Tag 0BPG], and the relative criterion in Tag 02HX applies. Thus \(H^1(Z,N)=0\) gives smoothness over \(S\) at that point.
+The relative smoothness assertion holds with a flat quasi-projective \(X/S\) over a Noetherian base and a proper regular embedding \(Z\subset X_K\), where \(K\) is the residue field of the Hilbert point. The preceding equation-lifting proof uses flatness and finite presentation of the ambient algebra, rather than smoothness itself: for each Artinian diagram over \(S\), apply Tag 0CEQ to that diagram's flat ambient algebra and its regular special-fibre equations. The normal sheaf is still locally free. Properness of a family persists through the nilpotent extension [Stacks, Tag 0BPG], and the relative criterion of Lemma 3.A [Stacks, Tag 02HX] applies. Thus \(H^1(Z,N)=0\) gives smoothness over \(S\) at that point.
 
 ## 4 Why an obstruction space bounds dimension
 
@@ -212,8 +261,12 @@ t-\dim_k O\leq\dim_h H\leq t.
 **Proof.** Let \(R=\widehat{\mathcal O}_{H,h}\), with residue field \(k\). Choose lifts of a basis of its cotangent space. Successive approximation in its maximal-ideal powers gives a surjection
 
 \[
-S=k[[x_1,\ldots,x_t]]\longrightarrow R=S/L,
+\begin{gathered}
+S=k[[x_1,\ldots,x_t]]\\
+\longrightarrow R=S/L,
+\\
 \qquad L\subset\mathfrak n^2.
+\end{gathered}
 \tag{4.2}
 \]
 
@@ -222,8 +275,11 @@ For clarity, the approximation works because the chosen elements generate the ma
 For all sufficiently large \(n\), Artin–Rees [Stacks, Tag 00IN] gives \(L\cap\mathfrak n^n\subset\mathfrak n L\). Thus
 
 \[
+\begin{gathered}
 A'=S/(\mathfrak n L+\mathfrak n^n)
+\\
 \longrightarrow A=S/(L+\mathfrak n^n)
+\end{gathered}
 \tag{4.3}
 \]
 
@@ -248,9 +304,13 @@ For the upper bound, the maximal ideal of the local ring is generated by \(t\) l
 Apply this proposition with \(O=H^1(Z,N)\), using the natural complete obstruction class (3.1). Properness makes both this space and \(H^0(Z,N)\) finite-dimensional. We obtain the assigned estimate
 
 \[
+\begin{gathered}
 h^0(Z,N)-h^1(Z,N)
+\\
 \leq\dim_{[Z]}\operatorname{Hilb}_{X/k}
+\\
 \leq h^0(Z,N).
+\end{gathered}
 \tag{4.5}
 \]
 
@@ -272,10 +332,14 @@ N_{L/S_d}\simeq\mathcal O_{\mathbb P^1}(2-d).
 **Proof.** The line is cut in projective space by two independent linear equations, so \(N_{L/\mathbb P^3}=\mathcal O_L(1)^{\oplus2}\). The hypersurface normal bundle restricts as \(N_{S_d/\mathbb P^3}|_L=\mathcal O_L(d)\). The normal sequence is
 
 \[
+\begin{gathered}
 0\longrightarrow N_{L/S_d}
+\\
 \longrightarrow\mathcal O_L(1)^{\oplus2}
+\\
 \xrightarrow{\partial f}\mathcal O_L(d)
 \longrightarrow0.
+\end{gathered}
 \tag{5.2}
 \]
 
@@ -305,9 +369,102 @@ The same zero tangent-space argument still gives a reduced isolated point. This 
 
 ## 6 Why the number is 27
 
+### The intersection calculation through Euler characteristics
+
+**Lemma 6.A (the numerical splitting calculation).** Let \(V=k^4\), let \(B=\operatorname{Gr}(2,V)\), and let \(U\) be its tautological rank-two subbundle. Put \(W=\operatorname{Sym}^3U^\vee\). If a section of \(W\) has a zero scheme \(F\) that is empty or is cut out by a regular sequence of length four, then
+\[
+\deg F=27.
+\]
+The assertion holds over every field. The calculation also gives the numerical Chern identities used in (6.1)–(6.4), without requiring a construction of the general Chow ring.
+
+**Proof.** We will use the Grothendieck group of vector bundles: an exact sequence \(0\to E'\to E\to E''\to0\) gives the relation \([E]=[E']+[E'']\), and tensor product defines multiplication. Euler characteristic defines an additive function on this group. The filtration of \(\bigwedge^j E\) by the number of factors in \(E'\) has quotients
+\(\bigwedge^a E'\otimes\bigwedge^{j-a}E''\). Thus, with
+\[
+\lambda_t(E)=\sum_j[\bigwedge^jE]t^j,
+\qquad
+\lambda_t(E)=\lambda_t(E')\lambda_t(E'').
+\]
+This proves the exterior-power identity for nonsplit sequences as well as split ones. It involves vector bundles and integer coefficients, so it is valid in every characteristic.
+
+Let \(p:Y=\mathbf P_B(U)\to B\) parametrize lines in the fibres of \(U\). On \(Y\) there is an exact sequence
+\[
+0\longrightarrow L\longrightarrow p^*U\longrightarrow M\longrightarrow0
+\]
+of line bundles. Write
+\[
+l=1-[L],\qquad m=1-[M].
+\]
+The same flag variety has a projection \(q:Y\to\mathbf P(V)=\mathbf P^3\) remembering \(L\). It is the projective bundle of lines in \(V/L\), with fibre \(\mathbf P^2\); hence \(Y\) is smooth projective of dimension five, and \(L=q^*\mathcal O_{\mathbf P^3}(-1)\).
+
+For later use, if a monomial in \(l,m\) has total degree greater than five, its Euler characteristic is zero. Indeed, expanding its factors \(1-[L]\) and \(1-[M]\) expresses that Euler characteristic as a finite difference of the polynomial
+\(\chi(Y,L^a\otimes M^b)\), of total degree at most five. This polynomial property, its difference formula for intersection numbers, and restriction to a Cartier divisor are proved in Intersection numbers of line bundles, Theorem 1.2, Lemma 2.2 and Proposition 2.4.
+
+The Koszul complex of the section of \(W\) is a locally free resolution of \(\mathcal O_F\). For one regular equation its two-term complex is exact off the quotient in degree zero. On adjoining the next equation the Koszul complex is the cone of multiplication by that equation on the preceding complex. The homology exact sequence and its injectivity on the preceding quotient leave only the next quotient in degree zero. This proves exactness by induction; for an empty zero scheme a unit among the local equations contracts the complex. Therefore
+\[
+\deg F=\chi(B,\mathcal O_F)
+       =\chi\bigl(B,\lambda_{-1}(W^\vee)\bigr).
+\]
+For the projective-line bundle \(p\), one has \(Rp_*\mathcal O_Y=\mathcal O_B\) and \(Rp_*L=0\): on a trivializing open these are the cohomology calculations for \(\mathcal O\) and \(\mathcal O(-1)\) on \(\mathbf P^1\), and the identifications glue. These calculations, including arbitrary base change, are Cohomology of projective space, Theorem 5.2. The projection formula for a vector bundle and the Euler-characteristic Leray formula consequently give
+\[
+\deg F=\chi\bigl(Y,l\,p^*\lambda_{-1}(W^\vee)\bigr).
+\tag{6.A.1}
+\]
+
+The filtration of \(\operatorname{Sym}^3p^*U^\vee\) has line factors
+\(L^{-3},L^{-2}M^{-1},L^{-1}M^{-2},M^{-3}\). Dualizing that filtration and applying the exterior-power identity gives
+\[
+\begin{gathered}
+p^*\lambda_{-1}(W^\vee)\\
+=(1-[L]^3)(1-[L]^2[M])\\
+{}\cdot(1-[L][M]^2)(1-[M]^3).
+\end{gathered}
+\]
+This uses the dual filtration; it does not identify the dual of a symmetric power with a symmetric power in positive characteristic. Substituting \([L]=1-l,\ [M]=1-m\), the homogeneous term of degree four is
+\[
+\begin{gathered}
+9lm(2l+m)(l+2m)\\
+=18(l^3m+lm^3)+45l^2m^2.
+\end{gathered}
+\]
+All other terms have degree at least five. After multiplication by \(l\), those other terms have zero Euler characteristic by the finite-difference vanishing. Thus (6.A.1) becomes
+\[
+\begin{gathered}
+\deg F=\\
+18\chi(Y,l^4m+l^2m^3)\\
++45\chi(Y,l^3m^2).
+\end{gathered}
+\tag{6.A.2}
+\]
+
+It remains to obtain the relation and the normalization of this number. Let \(Q\) be the rank-two quotient \(V/U\). Exterior powers of \(p^*Q\) in degrees three and four are zero. On writing \(h_j(l,m)=\sum_{a=0}^j l^am^{j-a}\), the identity for the exact sequence \(0\to p^*U\to\mathcal O_Y^4\to p^*Q\to0\) reads
+\[
+\begin{gathered}
+\lambda_t(p^*Q)
+=\frac{(1+t)^4}{(1+t[L])(1+t[M])}\\
+=\sum_{j\geq0}h_j(l,m)t^j(1+t)^{2-j}.
+\end{gathered}
+\]
+Its coefficient of \(t^3\) is \(h_3\), and its coefficient of \(t^4\) is \(h_4-h_3\). Both vanish. Subtracting \(h_4\) from \((l+m)h_3\) therefore gives the exact identity in the Grothendieck group
+\[
+l^3m+l^2m^2+lm^3=0.
+\]
+Multiplying by \(l\) and taking Euler characteristics in (6.A.2) gives
+\[
+\deg F=27\chi(Y,l^3m^2).
+\]
+
+Finally, the finite-difference formula identifies
+\(\chi(Y,l^3m^2)\) with the intersection number of three copies of \(L^\vee\) and two copies of \(M^\vee\). Choose three hyperplanes on \(\mathbf P^3\) meeting in a rational point. Their inverse images under the flat projective bundle \(q\) form successive Cartier divisors and leave the fibre \(\mathbf P^2\). On that fibre, \(M^\vee\) is \(\mathcal O_{\mathbf P^2}(1)\); two hyperplane sections then leave one reduced rational point. Repeated restriction to these divisors proves
+\[
+\chi(Y,l^3m^2)=1.
+\]
+This proves the assertion.
+
+To compare with the Chern notation below, \(l,m\) in the top finite difference represent \(x=c_1(L^\vee),y=c_1(M^\vee)\), and the extra factor \(l\) integrates along the projective-line bundle. The degree-four product, the relation obtained from \(h_3,h_4\), and the last normalization are exactly the numerical identities in (6.2), (6.3) and (6.4); the Koszul resolution gives their zero-scheme interpretation (6.1). Every numerical equality used in the line count has thus been proved over the original field. \(\square\)
+
 **Theorem 6.1.** Over an algebraically closed field of any characteristic, a smooth cubic surface has exactly 27 lines. Over any field, its Fano scheme is finite étale of degree 27.
 
-**Proof.** Let \(B=\operatorname{Gr}(2,k^4)\), which is smooth projective of dimension four. Put \(W=\operatorname{Sym}^3 U^\vee\), of rank four. The cubic's Fano scheme \(F\) is \(Z(s_f)\). Section 5 shows that at every geometric zero the derivative \(T_B\to W\) is injective, hence is an isomorphism between two four-dimensional spaces. Its four local equations are therefore a regular sequence and the zero is reduced. Since all zeros are isolated, the top-Chern-class formula [Stacks, Tag 0FA9] gives
+**Proof.** Let \(B=\operatorname{Gr}(2,k^4)\), which is smooth projective of dimension four. Put \(W=\operatorname{Sym}^3 U^\vee\), of rank four. The cubic's Fano scheme \(F\) is \(Z(s_f)\). Section 5 shows that at every geometric zero the derivative \(T_B\to W\) is injective, hence is an isomorphism between two four-dimensional spaces. Its four local equations are therefore a regular sequence and the zero is reduced. Since all zeros are isolated, Lemma 6.A gives the zero-scheme degree formula, written in top-Chern notation as [Stacks, Tag 0FA9]
 
 \[
 \deg F=\int_B c_4(W).
@@ -316,7 +473,7 @@ The same zero tangent-space argument still gives a reduced isolated point. This 
 
 The formula includes the possibility of an empty zero scheme; the following nonzero calculation will rule it out.
 
-We compute this integral using only Chern-class additivity, the splitting principle, and the geometric zero loci of two sections. These foundational intersection identities are in [Stacks, Tags 02UI, 02UL and 0FA9]. Pull back to the flag bundle on which \(U^\vee\) has line-bundle quotients of first Chern classes \(x,y\). Pullback on Chow groups is injective, so symmetric identities established there hold on \(B\).
+We express the numerical calculation of Lemma 6.A in Chern notation. On its flag bundle, the duals of \(L,M\) have first Chern classes \(x,y\). The exterior-power identities and finite differences proved there give all the degree identities used below. In the general language of intersection theory, these are the relevant instances of Chern-class additivity, splitting and the regular-section formula [Stacks, Tags 02UI, 02UL and 0FA9].
 
 The induced filtration on \(\operatorname{Sym}^3 U^\vee\) has line-bundle factors with first Chern classes
 
@@ -327,9 +484,11 @@ The induced filtration on \(\operatorname{Sym}^3 U^\vee\) has line-bundle factor
 The filtration comes from sorting the monomials in a local basis adapted to the line subbundle; changing the adapted basis preserves the resulting filtration. It is valid in every characteristic. Hence
 
 \[
-c_4(W)
-=9xy(2x+y)(x+2y)
+\begin{gathered}
+c_4(W)\\
+=9xy(2x+y)(x+2y)\\
 =18(x^3y+xy^3)+45x^2y^2.
+\end{gathered}
 \tag{6.2}
 \]
 
@@ -541,7 +700,7 @@ We now turn from a smooth parameter space to a component with nilpotents at its 
 
 at general members of a component \(W\). Establishing both dimensions is essential: an isolated tangent calculation would not show that \(W\) is a component, or that it is generically nonreduced.
 
-We use cohomology of line bundles on projective space, the Serre duality and adjunction proved in Dualizing sheaves and Serre duality for projective schemes, Sections 2–5, and the Hilbert tangent formula already proved in Section 1. The family arguments use Base change and the Grothendieck complex, Theorem 3.2 and Corollary 4.1 and Semicontinuity and Grauert's theorem, Theorem 3.1. In particular a fibrewise trivial line bundle on a projective-line bundle is pulled back from its base: its first fibre cohomology is zero, its direct image is a line bundle compatible with base change, and evaluation is an isomorphism on fibres and hence everywhere. For a line bundle \(M\) on a smooth connected curve, we will also use
+We use cohomology of line bundles on projective space, the Serre duality and adjunction proved in Dualizing sheaves and Serre duality for projective schemes, Sections 2–5, and the Hilbert tangent formula already proved in Section 1. The curve Riemann–Roch and canonical-bundle calculations also have the preceding proof Formal moduli and Schlessinger’s theorem, Lemma 8.A. The family arguments use Base change and the Grothendieck complex, Theorem 3.2 and Corollary 4.1 and Semicontinuity and Grauert's theorem, Theorem 3.1. In particular a fibrewise trivial line bundle on a projective-line bundle is pulled back from its base: its first fibre cohomology is zero, its direct image is a line bundle compatible with base change, and evaluation is an isomorphism on fibres and hence everywhere. For a line bundle \(M\) on a smooth connected curve, we will also use
 
 \[
 \chi(M)=\deg M+1-g.
@@ -808,12 +967,12 @@ The tangent formula, the complete Ext obstruction and its lifting torsor, the re
 
 We use these foundational results with their indicated hypotheses:
 
-- The flatness criterion for a module over a square-zero extension: when its reduction is flat, multiplication from the extension ideal tensor the reduction must be injective onto the ideal multiple [Stacks, Tag 08MQ]. The preceding deformation lesson proves its dual-number case.
-- A flat finitely presented algebra cut by lifts of a quasi-regular sequence over a nilpotent reduction has flat quotient if the reduced quotient is flat [Stacks, Tag 0CEQ]. This supplies the local equation lifts; no global unobstructedness is imported.
-- Affine-cover Čech cohomology for quasi-coherent sheaves [Stacks, Tag 01XD], the pointwise Artinian criterion for smoothness of a locally finite-type morphism over a locally Noetherian base [Stacks, Tag 02HX], preservation of properness across nilpotent thickenings [Stacks, Tag 0BPG], and finiteness of proper morphisms with finite fibres [Stacks, Tag 02LS].
-- Artin–Rees for finite modules over a Noetherian ring [Stacks, Tag 00IN], the one-equation dimension inequality [Stacks, Tag 00KW], the bound by generators of an ideal of definition [Stacks, Tag 00KQ], and preservation of dimension by completion [Stacks, Tag 07NV].
-- Line-bundle cohomology on projective space [Stacks, Tag 01XT], \(\operatorname{Pic}(\mathbb P^1)=\mathbb Z\) [Stacks, Tag 0BXJ], and finite-dimensional coherent cohomology on a proper scheme over a field [Stacks, Tag 02O6]. Section 2 explains how the last fact implies the needed Hom and Ext finiteness.
-- Chern-class additivity and the splitting principle [Stacks, Tags 02UI and 02UL], and the formula identifying the top Chern class with the cycle of a regular section's zero scheme of the expected codimension [Stacks, Tag 0FA9]. Section 6 proves the Grassmannian integral it needs rather than importing the number 27.
+- Faithful flatness and the local criterion for flatness, Lemma 4.3 proves the flatness criterion used here over an arbitrary square-zero base \(A'\to A\) with ideal \(J\) [Stacks, Tag 08MQ]. If \(N/JN\) is \(A\)-flat, the Tor sequence identifies \(\operatorname{Tor}_1^{A'}(A,N)\) with the kernel of \(J\otimes_A(N/JN)\to N\). When that multiplication map is injective, Lemma 4.3 kills \(\operatorname{Tor}_1^{A'}(P,N)\) for every \(P\), since \(J^2P=0\); hence \(N\) is flat. The converse follows by tensoring the ideal sequence. This covers arbitrary modules and the arbitrary-base split calculation (1.5). The Yoneda and quasi-coherence arguments are in Deformations of rings and schemes and the naive cotangent complex, Section 5.
+- Every local equation lift in Lemma 3.1 and its relative version is over a local Artinian ring, with a Noetherian ambient algebra. Faithful flatness and the local criterion for flatness, Corollary 5.3 proves that lifts of a regular sequence in the closed fibre remain regular and give a flat quotient [Stacks, Tag 0CEQ]. Lemma 3.A proves the pointwise Artinian smoothness criterion, using the Jacobian lifting argument of Formally smooth, unramified and étale ring maps, Theorem 4.1 [Stacks, Tag 02HX].
+- Čech cohomology, Theorem 3.2 proves the affine-cover comparison [Stacks, Tag 01XD]; Deformations of rings and schemes and the naive cotangent complex, Theorem 7.1 proves the affine diagonal criterion. The theorem on formal functions, Lemma 5.4 supplies affineness and properness through the nilpotent thickenings used here [Stacks, Tags 06AD and 0BPG]. Zariski's Main Theorem, Theorem 5.1 proves proper quasi-finite morphisms finite [Stacks, Tag 02LS].
+- Noetherian and Artinian rings, Theorem 5.1 and Solution 7.3 supplies Artin–Rees and Noetherianity of finite-variable power-series rings [Stacks, Tag 00IN]. Dimension theory of Noetherian local rings, Theorems 2.1 and 3.2 and Proposition 4.2 proves the parameter-count, one-equation and embedding-dimension inequalities [Stacks, Tags 00KW and 00KQ]. Completion, Theorem 4.1 proves invariance of dimension and regularity [Stacks, Tag 07NV]. Regular local rings, Theorem 1.1 and Proposition 1.4 gives the regular-parameter and regular-quotient facts used in Sections 5–6.
+- Cohomology of projective space, Theorems 2.2 and 5.2 proves the twist and projective-bundle calculations [Stacks, Tag 01XT]. Weil divisors and the class group, Theorem 4.2 proves \(\operatorname{Pic}(\mathbf P^1)=\mathbf Z\) [Stacks, Tag 0BXJ]. Proper morphisms and coherent direct images, Theorem 5.1 gives finite-dimensional proper cohomology [Stacks, Tag 02O6]. Serre's theorems on projective schemes, Lemma 1.1 and the ample-generation argument in Section 1 supplies the negative-twist resolutions on quasi-projective schemes used to compute global Ext in Section 2.
+- Lemma 6.A proves the Koszul zero-scheme degree, splitting calculation and integral relations actually used in (6.1)–(6.4), including every characteristic. Its finite-difference and divisor-restriction inputs are Intersection numbers of line bundles, Sections 1–2, and the two projective-bundle vanishings are Cohomology of projective space, Theorem 5.2. The Chern notation retains the standard source references [Stacks, Tags 02UI, 02UL and 0FA9]; the line count needs no external intersection-theory proof.
 
 Theorem 7.4 proves the full smooth-surface assertion, including its component argument and arbitrary characteristic. Theorem 7.7 proves Mumford's generically nonreduced component in characteristic zero: its residual-conic argument and flag dimensions are part of the proof. The cohomology, closed-immersion duality and adjunction it uses have exact earlier programme proofs linked at the start of that construction.
 

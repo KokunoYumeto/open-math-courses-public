@@ -1,10 +1,10 @@
 # Central sequences, fullness and free group factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Human comparison sources retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Human comparison sources retain their own terms.*
 
 How much can two commutators reveal about an operator? In a free-group factor they bound its entire distance from the scalars. In the dyadic tensor factor \(R\), a unitary can instead escape into a later tensor position, commute asymptotically with every fixed operator, and stay a definite distance from every scalar.
 
-We compute these examples first. We then relate their behavior to the topology of automorphism groups, retaining the whole center for algebras that are not factors. The original result and problem numbers are stable labels for those connections.
+We compute these examples first, then relate their behavior to the topology of automorphism groups, retaining the whole center for algebras that are not factors.
 
 <a id="7-exercises-with-complete-solutions"></a>
 
@@ -38,57 +38,59 @@ has initial run of length \(k+r\) and final negative run of length \(k-s\). Dist
 \tag{22}
 \]
 
-**Proof.** We turn the coefficients into a finite measure
+**Proof.** We prove the stronger bound \(10\delta\), where
+\(\delta=\max(\|[x,\lambda_a]\|_2,\|[x,\lambda_b]\|_2)\).
+Let \(\eta\) be the coefficient vector of \(x-\tau(x)1\) on \(\Gamma\setminus\{e\}\), and put \(r=\|\eta\|_2\). For a set \(A\) of nonidentity words, let \(P_A\) be the coordinate projection onto \(\ell^2(A)\).
+Conjugation by \(h\) permutes this Hilbert basis; write the resulting unitary as \(C_h\). FG1's coefficient identity gives
 \[
-\mu(A)=\sum_{g\in A}|\widehat x(g)|^2
-\quad(A\subseteq\Gamma\setminus\{e\}),\qquad
-k=\mu(\Gamma\setminus\{e\}).
+\|C_h\eta-\eta\|_2=\|[x,\lambda_h]\|_2.
 \]
-Write \(\delta=\max(\|[x,\lambda_a]\|_2,\|[x,\lambda_b]\|_2)\).
-Conjugation permutes the coefficient vector. The vector of
-\(\lambda_hx\lambda_h^*-x\) is its difference from that permutation, and traciality identifies its norm with \(\|[x,\lambda_h]\|_2\). For \(h=b^{-1}\) the same norm equals that for \(b\), by conjugating the commutator. Restricting the two vectors to any set and using the reverse triangle inequality gives
-\[
-|\sqrt{\mu(hAh^{-1})}-\sqrt{\mu(A)}|\leq\delta
-\quad(h=a,b,b^{-1}).
-\]
-Both restricted norms are at most \(\sqrt k\). Factoring the difference of their squares yields
-\[
-|\mu(hAh^{-1})-\mu(A)|\leq2\sqrt k\,\delta.
-\tag{25}
-\]
+The values for \(h=b\) and \(h=b^{-1}\) agree, by applying the unitary \(C_b\) to their difference.
 
-Choose \(S\) to consist of the nonidentity words ending in \(a\) or \(a^{-1}\). A word outside \(S\) ends in a different letter; conjugating it by \(a^{-1}\) leaves an \(a\) at the right endpoint. Thus
+Let \(S\) consist of words ending in \(a\) or \(a^{-1}\). A word outside \(S\) ends in a different letter; conjugating it by \(a^{-1}\) leaves an \(a\) at the right endpoint. Hence
 \[
 S\cup aSa^{-1}=\Gamma\setminus\{e\}.
 \tag{23}
 \]
-There can be overlap, so the useful assertion is subadditivity:
-\[
-k\leq\mu(S)+\mu(aSa^{-1})
-\leq2\mu(S)+2\sqrt k\,\delta.
-\]
-It follows that \(\mu(S)\geq k/2-\sqrt k\,\delta\).
-By contrast the three sets
+In contrast, the sets
 \[
 S,\qquad bSb^{-1},\qquad b^{-1}Sb
 \tag{24}
 \]
-are disjoint. In the last two sets the terminal \(a\)-letter prevents right cancellation, leaving respectively a final \(b^{-1}\)-run and a final \(b\)-run of length one. Left cancellation cannot pass that \(a\)-letter. Their measures are each at least \(\mu(S)-2\sqrt k\,\delta\). Consequently
+are disjoint. The last two have respectively a final \(b^{-1}\)-run and a final \(b\)-run of length one. The terminal \(a\)-letter prevents right cancellation, and left cancellation cannot pass that letter. These are the free-word geometric inputs.
+
+Put \(t=\|P_S\eta\|_2\) and \(t_h=\|P_{hSh^{-1}}\eta\|_2\). Since
+\(P_{hSh^{-1}}C_h\eta=C_hP_S\eta\), the reverse triangle inequality on that coordinate subspace gives
+\( |t_h-t|\leq\delta\) for \(h=a,b,b^{-1}\).
+The cover in (23) controls the entire vector by two coordinate pieces, even if they overlap:
 \[
-k\geq\mu(S)+\mu(bSb^{-1})+\mu(b^{-1}Sb)
-\geq\frac32k-7\sqrt k\,\delta.
+r^2\leq t^2+t_a^2\leq t^2+(t+\delta)^2.
+\tag{25}
+\]
+The three projections in (24) have mutually orthogonal ranges. Pythagoras therefore gives the estimate in the other direction,
+\[
+r^2\geq t^2+t_b^2+t_{b^{-1}}^2
+\geq t^2+2\max\{t-\delta,0\}^2.
 \tag{27}
 \]
-For \(k>0\), rearrange and divide by \(\sqrt k/2\) to obtain
-\(\sqrt k\leq14\delta\). For \(k=0\) the desired distance is already zero. Equation (21) proves the assertion. \(\square\)
+
+If \(\delta=0\), these inequalities give \(3t^2\leq r^2\leq2t^2\), so \(r=0\). Suppose \(\delta>0\). For \(t<\delta\), (25) gives \(r^2<5\delta^2\). For \(t\geq\delta\), combine (25) and (27) and expand to obtain
+\[
+t^2-6t\delta+\delta^2\leq0.
+\]
+In particular \(t\leq6\delta\), and (25) gives
+\(r^2\leq(36+49)\delta^2=85\delta^2<100\delta^2\).
+Thus \(r\leq10\delta\leq14\delta\) in every case. Equation (21) identifies \(r\) with the distance in (22). \(\square\)
 
 **Exercise 7.** Decide whether the cover (23) needs disjoint sets. State and justify the direction of the measure inequality it supplies; compare it with the three-set estimate.
 
-*Solution.* The word \(a\) lies in \(S\) and also in \(aSa^{-1}\), because conjugating \(a\) by \(a\) leaves it unchanged. This overlap is allowed. The cover gives
+*Solution.* For comparison with measures, set
+\(\mu(A)=\|P_A\eta\|_2^2=\sum_{g\in A}|\widehat x(g)|^2\) and \(k=\mu(\Gamma\setminus\{e\})=r^2\).
+The word \(a\) lies in \(S\) and in \(aSa^{-1}\), because conjugating \(a\) by \(a\) leaves it unchanged. This overlap is allowed. The cover gives
 \[
 k=\mu(S\cup aSa^{-1})\leq\mu(S)+\mu(aSa^{-1}),
 \]
-so it bounds \(\mu(S)\) from below after applying (25). The three sets in (24) are pairwise disjoint subsets of the total space. Their measures therefore add without overlap, and their sum is at most \(k\). These are the two distinct inequality directions used in the proof.
+which is exactly the first inequality in (25). The three sets in (24) are pairwise disjoint subsets of the total space. Their measures therefore add without overlap, and their sum is at most \(k\), as in (27). The cover supplies a lower bound on the sum of two squared coordinate norms; disjointness supplies an upper bound on the sum of three. Neither inequality may be reversed. Their combination, with the coordinate norm error at most \(\delta\), yields the scalar-distance bound.
 
 **Exercise 8.** Suppose the \(a\)-commutator has \(2\)-norm at most \(10^{-3}\), and the \(b\)-commutator has \(2\)-norm at most \(2\cdot10^{-3}\). Find the certified scalar approximation, including its error, and prove that its scalar minimizes the \(2\)-norm distance.
 
@@ -289,7 +291,7 @@ is a Polish group with the complete quotient metric
 Right multiplication by a central unitary preserves both terms of \(D\): for a difference \(x\), it leaves \(x^*x\) and \(xx^*\) unchanged. Consequently (14) does not depend on representatives. Aligning representatives for two consecutive distances proves its triangle inequality; reversing the alignment proves symmetry. If \(\rho=0\), choose \(z_n\) with \(vz_n\to u\) strong*. Then \(z_n\to v^*u\), and the strong* closed central unitary group contains this limit. Thus the cosets are equal.
 The image of a \(D\)-ball is exactly the corresponding \(\rho\)-ball; the quotient map is open because its full preimage is the union of central translates of that ball. Hence this is the quotient topology. From a \(\rho\)-Cauchy sequence choose a subsequence whose consecutive distances are less than \(2^{-j-2}\). Successive central adjustments give representatives with \(D\)-increments less than \(2^{-j-1}\). Completeness gives a representative limit, then a coset limit. The entire Cauchy sequence converges by the triangle inequality. The quotient is separable, and its group operations are continuous: products and inversion descend through the open quotient map and the subgroup is normal. \(\square\)
 
-The same argument applies to a complete metric invariant under right multiplication by any closed subgroup, with left cosets as its orbits. Completeness of an arbitrary compatible metric does not itself specify a left, right or two-sided group uniformity.
+The quotient-metric argument applies to a complete metric invariant under right multiplication by any closed subgroup, with left cosets as its orbits. Complete metrizability of a Polish group also implies completeness for its two-sided group uniformity. Exercise 4 proves that implication and distinguishes it from one-sided completeness.
 
 **Exercise 3.** Construct unitaries converging strongly to a nonunitary on \(\ell^2(\mathbb N_0)\). Show that they are strong Cauchy and that their adjoints fail the metric (11) for a faithful diagonal state.
 
@@ -303,7 +305,58 @@ Thus the sequence fails to be \(D\)-Cauchy. Both convergence tests are necessary
 
 *Solution.* If \(z\) is central unitary and \(x=u-v\), then
 \((xz)^*(xz)=x^*x\) and \((xz)(xz)^*=xx^*\).
-For a noncentral right multiplier, the first expression becomes \(z^*x^*xz\); a general faithful state changes under this conjugation. For a left multiplier the other square instead changes. Thus central multipliers give the simultaneous invariance used to align representatives. Metric completeness alone proves convergence of metric-Cauchy sequences; it does not assert completeness for either invariant group uniformity or for their two-sided combination. The proof below uses actual summable increments in both state seminorms.
+For a noncentral right multiplier, the first expression becomes \(z^*x^*xz\); a general faithful state changes under this conjugation. For a left multiplier the other square instead changes. Central multipliers therefore give the simultaneous invariance used to align representatives in (14).
+
+A Polish group is complete for its **two-sided group uniformity**: a sequence \((g_j)\) is Cauchy for that uniformity when both \(g_j^{-1}g_k\) and \(g_jg_k^{-1}\) tend to one uniformly over pairs of sufficiently large indices. This is called Raikov completeness. A compatible complete metric need not be invariant, so we prove the implication rather than identify its Cauchy sequences with the group-uniformity Cauchy sequences.
+
+First construct a bounded compatible left-invariant metric. Choose symmetric identity neighborhoods \(V_0=G,V_1,V_2,\ldots\), forming a neighborhood base and satisfying \(V_{n+1}^3\subset V_n\). Such a sequence is obtained successively from a countable base and continuity of multiplication and inversion. Define
+\[
+d_L(g,h)=\inf\left\{\sum_{i=1}^m2^{-n_i}:
+g^{-1}h=v_1\cdots v_m,\quad v_i\in V_{n_i}\right\}.
+\]
+The empty product has cost zero. Every other group element has a factorization of cost at most one, using \(V_0\). Reversing a factorization and taking inverses proves symmetry; concatenating factorizations proves the triangle inequality. Left invariance follows from the occurrence of \(g^{-1}h\).
+
+Here is the bound that prevents this infimum from collapsing. If an ordered product has total cost less than \(2^{-n}\), its product lies in \(V_n\). Prove this by induction on the number of factors, simultaneously for every \(n\). For one factor the assertion follows from nesting. For more factors, choose a factor at a weighted median: the total costs strictly before and strictly after it are each at most half the total. By induction both surrounding products belong to \(V_{n+1}\). The middle factor also belongs to \(V_{n+1}\), since its own cost is less than \(2^{-n}\). The three-factor inclusion gives the assertion. Empty surrounding products cause no exception. Consequently
+\[
+V_{n+1}\subset B_{d_L}(1,2^{-n})\subset V_n.
+\]
+Their intersection is \(\{1\}\), so \(d_L\) separates points and induces the group topology.
+
+Let \(X\) be the metric completion of \((G,d_L)\). Explicitly, identify two Cauchy sequences when their pointwise distances tend to zero and define distance between classes by the limit of those distances. The triangle inequality makes the limit and equivalence well defined; constant sequences embed \(G\) densely. A Cauchy sequence of classes has a subsequence with successive distances below \(2^{-j}\). Choose representatives from \(G\) within \(2^{-j}\) of those classes. They are Cauchy and define the required limit class; the original Cauchy sequence then has the same limit. This proves completeness. A countable dense subset of \(G\) remains dense in \(X\), so \(X\) is separable.
+
+The surjective isometry group of any complete separable metric space \((X,d_X)\) is Polish. To verify this without a completeness assumption about a group uniformity, choose a dense sequence \((\xi_j)\) and use
+\[
+d_I(S,T)=\sum_{j\geq1}2^{-j}
+\left(\min\{1,d_X(S\xi_j,T\xi_j)\}
++\min\{1,d_X(S^{-1}\xi_j,T^{-1}\xi_j)\}\right).
+\]
+The common isometry bound extends coordinate convergence and coordinate Cauchy convergence to every point of \(X\). For a Cauchy sequence, completeness of \(X\) gives pointwise isometric limits \(S,R\) for the maps and inverses. The equality
+\[
+d_X(S_nR\xi,\xi)=d_X(R\xi,S_n^{-1}\xi)
+\]
+gives \(SR=1\); exchanging maps and inverses gives \(RS=1\). Thus the limit is a surjective isometry. Uniformly bounded tails of the displayed sum prove convergence in \(d_I\). Its coordinate embedding in \(X^{\mathbb N}\times X^{\mathbb N}\) gives second countability and separability by TS1. Inversion swaps the two coordinate families; the triangle inequality and the isometry bound prove continuity of composition. This proves the assertion about the isometry group.
+
+Left translation by \(g\) is a surjective isometry of \((G,d_L)\), and hence extends uniquely to a surjective isometry \(L_g\) of \(X\). These maps give a faithful homomorphism. For \(x\in G\),
+\[
+d_L(gx,hx)=d_L(1,x^{-1}g^{-1}hx).
+\]
+Continuity of conjugation, also for the inverse-coordinate maps, proves continuity into the isometry group on this dense subset. The common isometry bound extends it to all of \(X\). Evaluation at \(1\in G\) recovers the metric \(d_L(g,h)\), so this embedding induces exactly the original topology on \(G\).
+
+We need its image to be closed. Let \(H\) be the closure of the image in the complete isometry group; this is a Polish group. Identify \(G\) with its image and let \(d_0\) be a compatible complete metric on \(G\). For every \(n\), let \(O_n\) be the union of the open subsets \(U\) of \(H\) for which the \(d_0\)-diameter of \(U\cap G\) is less than \(2^{-n}\). Compatibility of the topologies gives \(G\subset O_n\). In fact
+\[
+G=\bigcap_n O_n.
+\]
+For a point \(h\) in the intersection, choose such a neighborhood \(U_n\) containing \(h\), and choose \(g_j\in G\) in \(U_1\cap\cdots\cap U_j\) and within \(1/j\) of \(h\) in a metric of \(H\). Density permits every choice. For \(j,k\geq n\), both points lie in \(U_n\), so \((g_j)\) is \(d_0\)-Cauchy. It converges to a point of \(G\); compatibility and uniqueness of its limit in \(H\) identify that point with \(h\). This proves the equality. Each \(O_n\) is open and dense in \(H\), so \(G\) is comeager there. Every translate \(hG\) is also comeager. The Baire theorem TS5 gives a point in \(G\cap hG\), whence \(h\in GG^{-1}=G\). Thus \(G=H\), proving closedness.
+
+Now let \((g_j)\) be two-sided Cauchy. For every \(x\in G\), the preceding conjugation formula makes \((L_{g_j}x)\) Cauchy in \(X\). Applying it to \(g_j^{-1},g_k^{-1}\) uses \(g_jg_k^{-1}\) and makes the inverse-coordinate sequence Cauchy as well. Density and the common isometry bound extend both assertions to every \(x\in X\). Thus \((L_{g_j})\) is \(d_I\)-Cauchy. It converges in the isometry group, and the closed-image result puts the limit in \(G\). The embedding then gives convergence in the original group topology.
+
+This also proves completeness for Cauchy filters, the uniform-space formulation. The identity has a countable neighborhood base. From a Cauchy filter choose nested filter members whose pairs lie in the first \(n\) basic two-sided entourages, and choose a point in each member. The resulting sequence is two-sided Cauchy and converges by the argument just given. For any entourage choose a smaller one whose square lies in it; one sufficiently small filter member and a sufficiently late chosen point then put that entire member in the prescribed neighborhood of the limit. Hence the filter converges.
+
+One-sided completeness is different. In Exercise 3, the unitary cycles satisfy
+\[
+\|(u_j^*u_k-1)\xi\|=\|(u_k-u_j)\xi\|\longrightarrow0
+\]
+uniformly over late pairs for every fixed vector. For a unitary \(w\), \(\|(w^*-1)\xi\|=\|(w-1)\xi\|\), so these relative unitaries tend to one in the group topology. The sequence is left Cauchy. The opposite relative differences test the adjoints, which fail to be Cauchy on \(e_0\). Its strong limit is the unilateral shift, outside the unitary group; it therefore has no group limit. This gives a Polish group whose left uniformity is incomplete. Inversion gives the corresponding right-uniformity example. The direct lifting proof below uses summable increments in both faithful-state seminorms.
 
 For implementers, the module convention gives
 \[
@@ -471,8 +524,10 @@ So \(\lambda_t\), central in the \(S_2\) stage, is not central after the \(S_3\)
 
 ## Free comparisons and prerequisite proofs
 
-Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, Theorem 15.3.2, printed 266–267 (PDF 272–273), proves the finite-factor fullness route. Section 15.4 on those and the following page gives the free-word cover and disjoint conjugates, and the trace-zero tensor-tail example. Those methods are credited here. The coefficient calculation proves the particular constant 14; the state estimates prove the greater general-center criterion.
+Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), author draft, Theorem 15.3.2, printed 266–267 (PDF 272–273), proves the finite-factor fullness route. Section 15.4 on those and the following page gives the free-word cover and disjoint conjugates, and the trace-zero tensor-tail example. Those methods are credited here. The orthogonal coordinate projections give the bound 10 and therefore the stated bound 14; the faithful-state estimates prove the criterion with the whole center.
 
 Christian Rosendal's [author version of *Automatic continuity of group homomorphisms*](https://homepages.math.uic.edu/~rosendal/PapersWebsite/AutomaticContinuity06.pdf), November 2008, Section 2.1, Lemma 2.1 and Theorem 2.2, p.4, gives the category argument. Anush Tserunyan's [author-hosted descriptive-set-theory notes](https://www.math.mcgill.ca/atserunyan/Teaching_notes/dst_lectures.pdf), 26 November 2025, Theorem 12.6 p.48 and Theorem 13.3 pp.51–52, provide complete separation and Borel-image comparisons. TS1–6 proves their metric, refinement and category inputs locally on all Polish domains.
+
+Julien Melleray, [*Some aspects of Topological dynamics of Polish groups, with an introduction to descriptive set theory*](https://math.univ-lyon1.fr/~melleray/Topological_dynamics_of_Polish_groups.pdf), author-hosted notes, Definition 4.1 and Theorem 4.3, printed 39–40 (PDF 45–46), distinguish the group uniformities and the compatible invariant metric. Exercise 48, printed 41 (PDF 47), states Raikov completeness for Polish groups. Exercise 4 here supplies the complete metric, isometric embedding, closed-image and Cauchy-filter arguments. The author’s text retains its own rights.
 
 NT1–4 and FG1–2 provide the functional decomposition, faithful-state topology, bounded phase construction, support localization and the two factor constructions. Their exact earlier CF, CP, GNS, bounded-density and normal-range proofs are linked in the foundations. The complete retained PC0–7/FCT0–7 arguments supply Corollary 1.2's general finite center-valued trace. Their method comparison is Jesse Peterson's [author-hosted *Notes on operator algebras*](https://math.vanderbilt.edu/peters10/teaching/spring2020/OperatorAlgebras.pdf), 27 April 2020, Section 6.4, printed/PDF 102–106. AF1–5 proves the whole finite AFD uniqueness input for Proposition 6.1. Its freely accessible method comparison is Anantharaman–Popa, Lemma 11.2.1 and Theorem 11.2.2, printed 185–188 (PDF 191–194); its local exact-containment argument supplies the nesting step directly.

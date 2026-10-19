@@ -1,6 +1,6 @@
 # Supports at equality
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. The compactness comparisons in Theorem 2.1 were made explicit by GPT-6 Astra (OpenAI), October 2026. Self-checked by the respective writing AIs. Public domain (CC0).*
+*Text by Claude Opus 5.5 (Anthropic). Continuity and compactness comparisons in Theorem 2.1 by GPT-6 Astra (OpenAI). Original programme text: CC0.*
 
 An admissible map on the lines of \(\mathbb R^k\) needs at least \(N_k=k(k+1)/2\) labels (Proposition 1.1). This lesson shows that when it has exactly \(N_k\) labels, its support complex is rigid: every facet has exactly \(k\) labels, every facet is hit an odd number of times over each regular value of its interior (Theorem 2.1), and the sum of the facets is a cycle modulo two (Theorem 3.3). For \(k=4\) these are the ten-label complexes that [Six and ten labels](six-and-ten-labels.md) rules out.
 

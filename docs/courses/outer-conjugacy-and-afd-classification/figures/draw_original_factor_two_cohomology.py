@@ -1,0 +1,38 @@
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+out=Path(__file__).resolve().parent
+plt.rcParams.update({'font.family':'DejaVu Sans','svg.fonttype':'none','svg.hashsalt':'original-factor-two-cohomology-v1'})
+fig,ax=plt.subplots(figsize=(6.4,18.5));fig.patch.set_facecolor('white');ax.set_xlim(0,10);ax.set_ylim(0,29);ax.axis('off')
+def box(y,h,color):ax.add_patch(FancyBboxPatch((.28,y),9.44,h,boxstyle='round,pad=.10',facecolor=color,edgecolor='#24526d',linewidth=1.5))
+def txt(y,s,size=21,weight='normal'):ax.text(5,y,s,ha='center',va='center',fontsize=size,color='#162e40',fontweight=weight)
+def arrow(x1,y1,x2,y2):ax.annotate('',xy=(x2,y2),xytext=(x1,y1),arrowprops={'arrowstyle':'->','lw':2,'color':'#24526d'})
+txt(28.3,'Correct on the original factor',23,'bold')
+box(20.4,6.75,'#eaf5ff');txt(26.4,'1. Preserve the first finite class',21,'bold')
+for x,label in [(1.5,r'$r$'),(5,r'$T_{g^{-1}}x$'),(8.5,r'$x$')]:
+ ax.scatter([x],[24.2],s=100,color='#24526d');ax.text(x,23.45,label,ha='center',va='center',fontsize=23)
+arrow(1.7,24.2,4.8,24.2);arrow(5.2,24.2,8.3,24.2)
+ax.text(3.2,24.8,r'$t$',ha='center',fontsize=23);ax.text(6.8,24.8,r'$g$',ha='center',fontsize=23)
+txt(22.4,r'$U_g(x)=c(g,t)^*$',25)
+txt(21.25,'Later extensions leave this arrow unchanged.',17)
+box(12.45,7.0,'#e8f7ef');txt(18.7,'2. Embed using the product state',21,'bold')
+txt(17.55,r'$\psi^\omega(xa)=\psi(x)\tau(a)$',24)
+txt(16.25,r'$\|U_g-1\|_{\psi\otimes\nu}^{\sharp\,2}$',25)
+txt(15.1,r'$< a^2/4+8\zeta < a^2/2$',25)
+txt(13.95,'The input labels depend on S and a.',18)
+txt(13.0,'Coordinate defects can be arbitrarily small.',17)
+arrow(5,20.1,5,19.7);arrow(5,12.2,5,11.7)
+box(2.6,8.75,'#fff1e9');txt(10.55,'3. Control both increment states',21,'bold')
+txt(9.3,r'$\psi,\quad\psi\circ\operatorname{Ad}D_{n,g}^*$',23)
+txt(7.85,r'$D_{n+1,g}=d_{n,g}D_{n,g}$',24)
+txt(6.5,r'$\|D_{n+1,g}-D_{n,g}\|_\psi^\sharp<\sqrt{2}a_n$',22)
+txt(5.3,r'$\sum_n\sqrt{2}a_n<\varepsilon$',24)
+txt(4.15,'The unitary limit satisfies the exact law:',18)
+txt(3.2,r'$D_g\rho_g(D_h)c(g,h)=D_{gh}$',22)
+txt(1.6,'Proof: (2.2), (3.1)–(3.4), (4.4), (5.3), (6.7)–(6.9)',14)
+txt(.7,'Orbit and convergence scheme; no numerical action is asserted.',13)
+fig.subplots_adjust(left=.025,right=.975,bottom=.01,top=.995)
+fig.savefig(out/'original-factor-two-cohomology.svg',metadata={'Date':None,'Creator':'OA-CLASSIFY Writing AI'})
+fig.savefig(out/'original-factor-two-cohomology.png',dpi=160,metadata={'Software':'OA-CLASSIFY Writing AI'});plt.close(fig)

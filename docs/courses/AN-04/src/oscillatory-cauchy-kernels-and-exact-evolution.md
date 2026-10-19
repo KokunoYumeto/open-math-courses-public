@@ -2,7 +2,9 @@
 
 An oscillatory kernel describes the exact Cauchy evolution of a scalar homogeneous principal direction, including arbitrary complex finite-matrix lower terms. We construct its short-time phase and full ordinary amplitude, normalize the initial kernel, and correct every smooth residual with the ordered evolution. Finite-time composition retains the canonical graph, Maslov data and every wavefront direction, even when one mixed phase no longer covers the graph.
 
-The analytic provider is First-order systems and ordered evolution, Sections 1–4, especially (SY13) and (SY18)–(SY29). The exact stationary remainder is Sections 5–6 of Stationary phase and critical manifolds. We use Sections 2–3 and 5–7 of Graph operators, continuity and Egorov, Sections 2–3 of One canonical tube along a compact characteristic, Sections 1–9 of Clean composition of Fourier-integral operators, and Sections 6–7 of Gaussian lines and invariant symbols. All are written programme proofs; the parameter, support and ordinary lower-term receiving arguments are supplied here. Hörmander III, §23.1, and IV, §§25.2–25.3, provide the Cauchy and graph-calculus mathematical context.
+The analytic provider is [First-order systems and ordered evolution](../reconstructions/20261007-restored-first-order-systems/first-order-systems-and-ordered-evolution.md), Sections 1–4, especially (SY13) and (SY18)–(SY29). The exact stationary remainder is Sections 5–6 of [Stationary phase and critical manifolds](../reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md). We use Sections 2–3 and 5–7 of [Graph operators, continuity and Egorov](../reconstructions/20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md), Sections 2–3 of One canonical tube along a compact characteristic, Sections 1–9 of [Clean composition of Fourier-integral operators](../reconstructions/20261005-restored-analytic-composition/clean-composition-of-fourier-integral-operators.md), and Sections 6–7 of [Gaussian lines and invariant symbols](../reconstructions/20261005-restored-gaussian-symbols/gaussian-lines-and-invariant-symbols.md). All are written programme proofs; the parameter, support and ordinary lower-term receiving arguments are supplied here. Hörmander III, §23.1, and IV, §§25.2–25.3, provide the Cauchy and graph-calculus mathematical context.
+
+The systems lesson includes the complete [Hilbert coefficient calculus and positivity proof](../reconstructions/20261007-restored-first-order-systems/hilbert-coefficient-calculus-and-positivity.md). Its ordered products, adjoints and global Sobolev bounds apply in particular to the finite matrices here. The [integration and duality companion](../reconstructions/20261005-cauchy-foundations/integration-and-duality.md) proves the Banach integrals, differentiation and density statements used in the correction. The [exact proof map](../reconstructions/20261007-restored-oscillatory-cauchy/proof-map.json) records the earlier locators and the complete receiving arguments below; every linked component retains its own notice.
 
 ## 1. The equation and derivatives in both evolution parameters
 
@@ -59,6 +61,17 @@ These formulas imply smooth dependence with a finite spatial-order loss for ever
 
 For smooth vectors this statement holds at every order. It also holds for a smooth \(\mathcal H^\infty\)-valued parameter family: apply the product rule at any chosen finite Sobolev order, after choosing enough higher spatial orders. No assertion about differentiating \(U\) in operator norm on one fixed \(\mathcal H^s\) is needed.
 
+**Extra spatial orders give norm control.** The coefficient hypothesis implies that \(A(t)\) and every time derivative vary continuously in the norm \(\mathcal H^{q+1}\to\mathcal H^q\). To see this, apply the mean value formula to each of the finitely many symbol seminorms in the proved Sobolev bound; the next time derivative has a uniform bound in those seminorms. The integrated equation, the uniform evolution bound and (CE6) give
+\[
+ \|U(t+h,t)-I\|_{\mathcal H^{q+1}\to\mathcal H^q}
+       \le C_q|h|,\qquad
+ \|U(t+h,t)-I+hA(t)\|_{\mathcal H^{q+2}\to\mathcal H^q}
+       \le C_q h^2. \tag{CEA1}
+\]
+Both integrals are oriented when \(h<0\). For the second estimate, subtract \(A(t)\) from \(A(v)U(v,t)\) in the integrated equation. The part \(A(v)-A(t)\) is \(O(|v-t|)\) with one spatial loss; the part \(A(v)(U(v,t)-I)\) has the same bound with two losses by the first estimate at order \(q+1\). Integrating proves the claim.
+
+The composition law moves these estimates to either endpoint of \(U(t,r)\); at the initial endpoint the sign and right factor are those of (CE5)–(CE6). They prove norm differentiability after allowing the additional spatial order, including continuity of each differentiated product. Repeated difference quotients and the coefficient mean value formula prove the corresponding statement for any fixed number of endpoint derivatives, using a sufficiently high finite input Sobolev order. More explicitly, at each step subtract a product by changing one factor at a time; a coefficient difference costs one spatial order, and a difference of an evolution factor is controlled by the first bound in (CEA1). Its derivative remainder is controlled by the second. Finitely many such products occur at each step, so finitely many extra orders suffice. Composing on the right with a family having every output Sobolev order gives norm-smooth parameter families in any prescribed target order. This is the estimate needed for the smoothing correction.
+
 ## 2. A homogeneous phase on one short time interval
 
 Make the principal-symbol hypothesis precise. The function \(b_1(t,x,\xi)\) is real, smooth for \(\xi\ne0\), positively homogeneous of degree one, and has uniform ordinary symbol bounds for \(|\xi|\geq1\), including all time derivatives on \(J\). Let \(\chi_0(\xi)\) be zero near zero and one for \(|\xi|\geq2\). Assume \(b-\chi_0b_1\in S^0\), and set \(C=c+i(b-\chi_0b_1)I_N\). The exact full operator is \(i\operatorname{Op}(\chi_0b_1)+\operatorname{Op}(C)\), with \(C\in S^0\). No homogeneous expansion of \(C\) is imposed. Choose the eventual amplitude's bounded-frequency cutoff sufficiently large that all stationary covectors in (CE8) lie where \(\chi_0=1\); its initial low-frequency difference is smoothing.
@@ -75,6 +88,8 @@ The smooth flow and parameter theorem is the one received in Sections 2–3 of O
  e^{-C|q-r|}|\eta|\leq|\Xi(q)|\leq e^{C|q-r|}|\eta|. \tag{CE8}
 \]
 The trajectory stays in a bounded spatial ball and a compact annulus away from zero on every finite interval. Local existence can therefore be continued through the interval; a finite endpoint could not leave every compact subset of the coefficient domain. Homogeneity and uniqueness show that \(X\) has degree zero and \(\Xi\) degree one in \(\eta\).
+
+The time-dependent flow is canonical as well. Its variational matrix \(F(q)\) satisfies \(\dot F=J_0\,b_1''(q)\,F\), where \(J_0=\begin{pmatrix}0&I\\-I&0\end{pmatrix}\) in position-frequency coordinates and the symplectic matrix for \(d\xi\wedge dx\) is \(-J_0\). Since \(b_1''\) is symmetric, differentiation gives \(\frac d{dq}(F^T(-J_0)F)=0\). At the initial time \(F=I\), so the whole flow preserves this form. Uniqueness gives its inverse by reversing the endpoints. Positive dilation commutes with it because \(b_1\) has degree one; contracting the form identity with the radial field also preserves the tautological one-form at fixed endpoints. Thus the graph used below is a homogeneous canonical graph, including for a time-dependent Hamiltonian.
 
 For clarity, the uniform derivative bounds needed next are also part of this receiving application. Set \(\lambda=|\eta|\), \(\theta=\eta/\lambda\), and \(\zeta=\Xi/\lambda\). The equations for \((X,\zeta)\) are independent of \(\lambda\); (CE8) confines \(\zeta\) to a fixed compact annulus. Their coefficients and all derivatives are uniformly bounded there, even as \(y\) varies in \(\mathbb R^n\). Differentiating their integral equations gives a linear variational equation for the highest derivative and finite products of already bounded lower derivatives. Gronwall proves every \(y,\theta,t,r\) derivative by induction. Passing from finitely many sphere charts to \(\eta\) derivatives costs \(\lambda^{-1}\) each time. Hence all derivatives of \(X-y\) have degree-zero symbol bounds, and those of \(\Xi\) have degree-one bounds. This argument also proves uniform bounds for the inverse flow.
 
@@ -145,7 +160,7 @@ Put \(\eta=\lambda\theta\), \(\xi=\lambda\zeta\). The unique critical point is \
 \[
  \begin{pmatrix}S_{zz}&-I\\-I&0\end{pmatrix};
 \]
-it has determinant of absolute value one and signature zero, as is seen by replacing \(\zeta\) by \(\zeta-\tfrac12S_{zz}z\) in its quadratic form. The critical value is zero. Bounds (CE8) keep the stationary \(\zeta\) uniformly away from zero. Use a fixed compact neighborhood of that critical point in the normalized variables; all parameters then meet Sections 5–6 of Stationary phase and critical manifolds.
+it has determinant of absolute value one and signature zero, as is seen by replacing \(\zeta\) by \(\zeta-\tfrac12S_{zz}z\) in its quadratic form. The critical value is zero. Bounds (CE8) keep the stationary \(\zeta\) uniformly away from zero. Use a fixed compact neighborhood of that critical point in the normalized variables; all parameters then meet Sections 5–6 of [Stationary phase and critical manifolds](../reconstructions/20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md).
 
 The symbol-parameter remainder there applies to \(q(t,x,\lambda\zeta)v(t,r,z,\lambda\theta)\) directly. It does not require this amplitude to be classical. Each stationary coefficient loses one \(\lambda\) order. Its full remainder, after any fixed \(\lambda,\theta,x,t,r\) derivatives, loses the prescribed number of orders. Changing back from radial/angular derivatives gives the corresponding ordinary \(\eta\)-symbol estimates.
 
@@ -156,11 +171,31 @@ The first two coefficients can also be read directly by Taylor expansion at \(z=
       \frac12\sum_{j,k}b_{1,\xi_j\xi_k}(t,x,S_x)
                               S_{x_jx_k}v. \tag{CE16}
 \]
-The full \(C\) contributes \(C(t,x,S_x)v\) through order zero; each of its other coefficients loses at least one order. The time derivative contributes \(iS_tv+\partial_tv\). This proves (CE14) with its sign. The half-density identification agrees with the supporting calculation in Sections 6–7 of Hamilton fields and subprincipal transport; here the full ordinary matrix coefficient remains in its displayed left-multiplication order.
+The full \(C\) contributes \(C(t,x,S_x)v\) through order zero; each of its other coefficients loses at least one order. The time derivative contributes \(iS_tv+\partial_tv\). This proves (CE14) with its sign. The half-density identification agrees with the supporting calculation in Sections 6–7 of [Hamilton fields and subprincipal transport](../reconstructions/20261005-restored-subprincipal-transport/hamilton-fields-and-subprincipal-transport.md); here the full ordinary matrix coefficient remains in its displayed left-multiplication order.
+
+For the coefficient signs in (CE16), put \(z=x+h\), \(\xi=S_x(x,\eta)+\omega\) and \(R(h)=S(x+h,\eta)-S(x,\eta)-S_x(x,\eta)\cdot h\). The Fourier pairing for the bilinear phase \(-h\cdot\omega\), followed by Taylor's formula, gives the finite coefficients
+\[
+ \sum_\alpha\frac{\partial_\xi^\alpha q(t,x,S_x)}{\alpha!}
+   \left.D_h^\alpha\!\left(e^{iR(h)}v(t,r,x+h,\eta)\right)\right|_{h=0}.
+ \tag{CEA2}
+\]
+This formula is read to a finite order with the stationary remainder just proved, not as a convergent infinite series. Since \(R(0)=R_h(0)=0\), the first derivative hits only \(v\). In the second derivative the phase contribution is \(-iS_{x_jx_k}v\). Substituting \(q=i b_1\) therefore gives the positive first-derivative term and positive half-Hessian term in (CE16). Each derivative of \(R\) of order at least two has frequency order one. In a term with \(|\alpha|\ge3\), at most \(\lfloor|\alpha|/2\rfloor\) such factors occur; together with \(\partial_\xi^\alpha b_1\) its order is at most \(1-|\alpha|+\lfloor|\alpha|/2\rfloor\le-1\). The second derivative terms falling only on \(v\) have the same lower order. For \(q=C\), every nonleading term is of order at most minus one relative to \(v\). This proves the stated transport part while keeping all factors of the matrix symbol on the left.
 
 The normalized tails in (CE15) require an estimate as well. On bounded \(\zeta\) away from the critical point, at least one of the \(z,\zeta\) phase gradients has a uniform positive lower bound. The nonstationary integration operator of the stationary-phase lesson gains an arbitrary power of \(\lambda^{-1}\); any fixed parameter derivatives consume only finitely many such powers. For \(|\zeta|\) large, the \(z\) gradient is \(-\zeta+S_z(z,\theta)\), comparable to \(|\zeta|\). Repeated \(z\) integration first makes the \(\zeta\) integral absolutely convergent, including all symbol and parameter derivatives, and gives any required \(\lambda^{-1}\) power. Near \(\zeta=0\), the critical covector is excluded by (CE8); use the same nonstationary argument, separating bounded physical \(\xi\) where necessary. Each such contribution has every prescribed lower symbol order. These estimates justify the compact stationary calculation and its full remainder.
 
+Here are uniform bounds at the two noncompact ends of that calculation. On the compact \(z\) support put \(\psi=(x-z)\cdot\zeta+S(z,\theta)-S(x,\theta)\). There are constants \(0<c<C\) with \(c\le |S_z(z,\theta)|\le C\). Choose a cutoff for \(|\zeta|<c/2\), another for \(|\zeta|>2C+1\), and a remaining compact annular part. On the first part integrate only in \(z\), using
+\[
+ L_z=\frac{\psi_z\cdot\partial_z}{i\lambda|\psi_z|^2},
+ \qquad L_ze^{i\lambda\psi}=e^{i\lambda\psi}.
+ \tag{CEA3}
+\]
+Every differentiated coefficient of its transpose is \(O(\lambda^{-1})\) there. In particular these integrations do not differentiate \(q(t,x,\lambda\zeta)\) in \(\zeta\). All of its required derivatives have at worst a fixed polynomial growth in \(\lambda\), even when the physical frequency \(\lambda\zeta\) is bounded. The compact \(\zeta,z\) integrations and the prefactor \(\lambda^n\) therefore give a bound \(C\lambda^{n+\max(m,0)+a-K+\ell}\) after \(K\) integrations, for \(q\in S^m\), \(m=0\) or \(1\), and \(v\in S^a\). Here \(\ell\) is a fixed nonnegative integer covering the already prescribed parameter derivatives. Increasing \(K\) gives every required negative power.
+
+On \(|\zeta|>2C+1\), the same field and all its \(z\) derivatives have size \(O(\lambda^{-1}\langle\zeta\rangle^{-1})\). The differentiated integrand is bounded by \(C\lambda^{n+m+a-K+\ell}\langle\zeta\rangle^{m-K+\ell}\); choose \(K>n+m+\ell\) for integrability, and increase it further for any desired decay in \(\lambda\). On the remaining compact annulus, outside the fixed critical neighborhood, the full normalized phase gradient is bounded away from zero and the complete nonstationary estimate applies. There \(q(t,x,\lambda\zeta)\) has the usual uniform radial and angular symbol bounds because \(\zeta\) stays away from zero. Each fixed \(\lambda,\theta,x,t,r\) differentiation has only a finite cost in the preceding estimates. Choose \(K\) after those derivative counts; converting radial and angular derivatives to \(\eta\) derivatives proves rapid decrease in every ordinary symbol seminorm. Compact smooth cutoffs justify the integrations first, and the integrable bounds justify removing them. This closes the small-physical-frequency and large-normalized-frequency tails separately.
+
 Every finite stationary coefficient is a differential expression in \(v\) at the same \((x,\eta)\). Its support is therefore inside the closed support of \(v\). Support-preserving symbol sums provide full residual representatives with that same support, modulo \(S^{-\infty}\). All corrections below consequently remain over the fixed transported support of \(\beta\). Separated physical kernel pieces are smooth with the global output bounds proved at the end of this section.
+
+In using such representatives, keep the actual amplitude transform and the summation choice distinct. At a point outside the closed support of \(v\), all of its jets vanish, so every stationary coefficient is zero. Summing these local differential coefficients with frequency cutoffs leaves that same closed support; the complete stationary remainder shows that its difference from the actual transform is \(S^{-\infty}\), with every parameter derivative. At the next correction step this difference remains a smoothing error. A characteristic with initial \((y,\eta)\) outside the support of \(\beta\) stays outside this transported closed support at every intermediate time, so the integral (CE21) vanishes there. Finally the remainder estimate for the actual transform, which is a continuous finite-seminorm estimate, applies to \(v-v^{[j]}\). No continuity of an arbitrary choice of asymptotic summation is required.
 
 **The leading matrix and density.** The characteristic curves of \(w\), with fixed initial \(\eta\), are \(x=X(t,r,y,\eta)\). Put
 \[
@@ -176,12 +211,14 @@ The chain rule gives
   =\operatorname{tr}b_{1,x\xi}
      +\sum_{j,k}b_{1,\xi_j\xi_k}S_{x_jx_k}.
 \]
+The determinant identity here has a direct finite-dimensional proof. Let \(D=\partial_yX(t,r,y,\eta)\); then \(\dot D=w_xD\). Differentiating the determinant by multilinearity in its rows gives \(\partial_t\det D=(\operatorname{tr}w_x)\det D\): off-diagonal row substitutions have two identical rows and vanish. The determinant is positive on this short interval and \(Y_x=D^{-1}\) along the curve. Differentiating \(\rho=(\det D)^{-1/2}\) gives precisely the displayed negative half-divergence. The inverse and positive square root are legitimate throughout by (CE9).
+
 Thus \(\mathcal L(\rho M)=\rho(\dot M+HM)\). Let
 \[
  \dot M=-HM,\qquad M(r,r,y,\eta)=I_N,\qquad
  \dot M^{-1}=M^{-1}H. \tag{CE18}
 \]
-The ordered finite-matrix existence, inverse and parameter proofs used in GT3–GT8 of Section 7 of Graph operators, continuity and Egorov apply to this coefficient along each characteristic. It is uniformly order zero: an \(x\) derivative of the flow frequency costs one \(|\eta|\), canceled by a frequency derivative of \(C\); each \(\eta\) derivative loses one order. The homogeneous scalar correction in \(H\) has the same bounds. The coefficient and every time derivative are uniform on the fixed interval.
+The ordered finite-matrix existence, inverse and parameter proofs used in GT3–GT8 of Section 7 of [Graph operators, continuity and Egorov](../reconstructions/20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md) apply to this coefficient along each characteristic. It is uniformly order zero: an \(x\) derivative of the flow frequency costs one \(|\eta|\), canceled by a frequency derivative of \(C\); each \(\eta\) derivative loses one order. The homogeneous scalar correction in \(H\) has the same bounds. The coefficient and every time derivative are uniform on the fixed interval.
 
 For completeness, differentiating the ordered equation gives the highest parameter derivative its same left coefficient \(H\), with forcing equal to finite products of a differentiated \(H\) and lower derivatives of \(M\). Their frequency weights add to the required total negative derivative count. Variation of constants and induction prove every \(S^0\) bound for \(M\). Differentiating \(MM^{-1}=I_N\) gives every inverse bound with the products in their actual order. The undifferentiated estimates are
 \[
@@ -234,6 +271,7 @@ The reduced graph symbol in the natural symplectic half-volume frame is
                                                         \tag{CE24}
 \]
 since \(|\det S_{x\eta}|^{1/2}=\rho\). This is the density conversion proved in Section 2 of the graph lesson. Where \(\beta\) has an order-zero inverse, (CE19) and the derivative estimates give every inverse bound for this symbol. It is elliptic in the ordinary symbol sense; pointwise invertibility alone has not been substituted for ellipticity.
+
 
 ## 4. Exact correction of a smoothing residual
 
@@ -296,6 +334,8 @@ The kernel is smooth in \(t,r\) as well. For the first term of (CE29), all param
 \]
 A \(t\) derivative differentiates the upper endpoint and \(U(t,q)\); (CE6) applies to its smoothing output. Repetition gives only finite sums of smoothing endpoint terms and Bochner integrals with arbitrarily high output order. The uniform bounds allow every differentiation by difference quotients and dominated convergence. The preceding \(\delta_y\) argument then proves smoothness of the kernel jointly in all four variables, up to one-sided derivatives at endpoints of \(J\).
 
+All the differentiations in this last paragraph also hold in the smoothing operator norms required by (CE26). Fix the input order and any finite number of parameter derivatives first. Estimate (CEA1) and its repeated-product consequence control the evolution difference quotients between sufficiently separated Sobolev orders. The factors \(S\) and \(R\), with their parameter derivatives, map the one fixed input order to those arbitrarily high intermediate orders. Their norm-smoothness then bounds the product remainders uniformly in the input unit ball. For the integral, the same bounds give one norm-integrable majorant on its finite interval; difference quotients split into the common interval and its two endpoint pieces, yielding (CE31) and its iterates. Thus no fixed-space operator-norm continuity of \(U\), and no exchange of an uncontrolled strong limit with an input supremum, is being assumed.
+
 ## 5. The exact local graph and its symbol
 
 The family \(V(t,r)\) constructed in Sections 2–3 is an ordinary order-zero Fourier-integral family on the canonical graph of the Hamilton flow of \(b_1\), localized by \(B\). Formula (CE30) therefore identifies the exact localized evolution with this kernel modulo a jointly smooth kernel. Its reduced symbol is (CE24), with all ordinary inverse bounds wherever the initial symbol is elliptic. This is an actual construction with the initial and global-output estimates required for correction.
@@ -349,6 +389,8 @@ If the kernel of \(F_j\) lacked that graph wavefront direction, shrink its input
    =\{(x,\xi;y,-\eta):(x,\xi)=\kappa_{t,r}(y,\eta),
                                   \ \eta\ne0\}. \tag{CE35}
 \]
+For completeness, the identity-kernel statement also holds for arbitrary cutoffs, not just product cutoffs. In coordinates \(v=x-y\), \(w=y\), multiplying \(\delta(v)\) by a cutoff \(a(v,w)\) nonzero at \((0,w_0)\) gives \(\delta(v)a(0,w)\). Its Fourier transform is \(\widehat{a(0,\cdot)}(\omega)\), independent of the normal frequency \(\nu\). Fourier inversion supplies some fixed \(\omega\) where this is nonzero, because \(a(0,w)\) is not identically zero. Along \((\nu,\omega)=(R\nu_0,\omega)\), \(R\to\infty\), the transform cannot decrease rapidly; this sequence lies in every sufficiently large part of a cone about \((\nu_0,0)\). Conversely, the Schwartz decay in \(\omega\) proves rapid decrease in cones avoiding that normal bundle. The linear coordinate change sends \((\nu_0,0)\) to \((\nu_0,-\nu_0)\). This proves every nonzero diagonal direction for every such cutoff, as required in the inverse contradiction.
+
 The wavefront set of a matrix kernel is the union of its entries' wavefront sets; it is not asserted that every entry has every direction.
 
 For compactly supported vector data this also gives exact spatial propagation. Containment follows from the graph mapping theorem after (CE34). For the converse, use the reversed evolution \(U(r,t)\). The forward construction writes the solution as a compact-output graph action plus a global \(H^\infty\) correction. The reversed evolution preserves the latter smooth term by its bounds at every Sobolev order. It acts on the compact-output graph term by its reversed graph construction. Applying its wavefront containment to the identity \(U(r,t)U(t,r)\phi=\phi\) proves the reverse inclusion. Hence
@@ -356,6 +398,7 @@ For compactly supported vector data this also gives exact spatial propagation. C
 for compactly supported distributional data. This argument uses the global regularity of the correction; merely knowing its kernel is locally smooth would not justify the reversal on its possibly noncompact spatial tail.
 
 The result proved here has a scalar homogeneous principal direction and arbitrary ordinary finite-matrix order-zero lower terms. General Hermitian matrix principal symbols with separated branches or crossings still require their own diagonalization/projector and polarization constructions. Those remain part of the unfinished full course; the present analytic and oscillatory construction is not substituted for them.
+
 
 ## 7. Examples and exercises with complete solutions
 
@@ -426,10 +469,13 @@ For \(\phi=e\,\delta_{y_0}\), where \(e\in\mathbb C^N\) is nonzero, the one-dime
 \]
 The Jacobian factor is required: \(\delta(Y(x)-y_0)=J_X\,\delta(x-X(y_0))\). Its derivative agrees with the amplitude equation for a moving delta, since \(\dot J_X=\operatorname{sech}^2(X)J_X\). Invertibility of \(W_C\) prevents the vector coefficient from vanishing. Thus both nonzero spatial covector directions occur at the front, and the exact one-dimensional Sobolev threshold is \(s<-1/2\). When \(C=0\), the delta weight is \(J_X\), not one. ∎
 
-![Exact variable-speed fronts and their transported positive covectors](figures/fio-cauchy-variable-speed.svg)
+![Exact variable-speed fronts and their transported positive covectors](../reconstructions/20261007-restored-oscillatory-cauchy/figures/fio-cauchy-variable-speed.svg)
 
 The two panels show (CE39) for \(r=0\), \(0\leq t\leq2\) and \(y=-1,0,1\). The upper panel uses the exact base positions; the lower uses the exact cotangent section \(\eta=1,\ \xi=1/J_X\). They are positive covectors throughout, while the kernel input covector is \(-1\). For delta data the weight is \(J_X W_Ce\), as proved above; the plotted curve describes its position, not a unit delta weight. The center front remains at \(x=0\), although its cotangent length decreases as \(e^{-t}\).
 
-References: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer, §23.1; *The Analysis of Linear Partial Differential Operators IV*, Springer, §§25.2–25.3, particularly the graph half-volume and continuity discussion on. These references give mathematical context and attribution. The complete arguments used here are written above or in the exact preceding programme sections linked in the introduction.
 
-Author: GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. Original teaching text and figure: CC0-1.0.
+The elementary functions in the last example can be fixed without an additional inverse-function assumption. Define \(\sinh x=(e^x-e^{-x})/2\) and \(\cosh x=(e^x+e^{-x})/2\). The exponential laws give \(\cosh^2x-\sinh^2x=1\) and \(\cosh x>0\); hence \(\sinh\) is strictly increasing, with limits of opposite sign and unbounded magnitude at the two ends. It has a smooth real inverse \(\operatorname{arsinh}\), with derivative \(1/\sqrt{1+z^2}\), by the earlier inverse theorem. These facts justify both inverse identities in (CE39). Since \(0<\operatorname{sech}^2X\le1\), integration of \(\dot J_X=\operatorname{sech}^2(X)J_X\) gives \(1\le J_X\le e^t\) for the plotted case \(r=0,t\ge0\), hence \(e^{-t}\le\xi=1/J_X\le1\). At \(y=0\), \(X=0\) and \(\xi=e^{-t}\); the two outer covector curves agree because \(\cosh\) is even. The numerical samples illustrate these exact proved inequalities.
+
+References: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer, §23.1; *The Analysis of Linear Partial Differential Operators IV*, Springer, §§25.2–25.3, including the natural graph half-density and Theorem 25.3.1. These references give mathematical context and attribution. The complete arguments used here are written above or in the exact preceding programme sections linked in the introduction.
+
+*Written by GPT-6.1 Sol (OpenAI), Ultra; restoration and additional receiving proofs by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text and figure: CC0-1.0; linked components retain their own terms.*

@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Resolving singular directions at a holomorphic boundary</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L200.html">Previous lesson</a> · <a href="#complete-proof">Complete proof</a> · <a href="src/resolving-singular-directions-at-a-holomorphic-boundary.md">Editable source</a></nav><h1 id="resolving-singular-directions-at-a-holomorphic-boundary">Resolving singular directions at a holomorphic boundary</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An ordinary smooth cutoff can introduce analytic singularities. This is why the smooth propagation proof cannot simply be reused with an analytic wavefront set. We instead represent a distribution by one holomorphic function in a tube. Its behavior at a particular boundary point records one particular frequency direction. Averaging over a small boundary patch then separates that direction without losing the required derivative estimates.</p>
+<p>We prove the representation and its converse for every tempered distribution. We prove the exact boundary criterion for every admissible derivative class, finite conic splittings and their compatibility terms. We then prove propagation for all these classes for constant-coefficient operators of real principal type, with arbitrary complex lower-order terms. The analytic theorem is one included case.</p>
+<p>Read <a href="AN02-L190.html">Derivative sequences and microlocal regularity</a> for the classes and their wavefront operations, <span class="unlinked">Analytic directions of holomorphic boundary values</span> for the positive-polar sign, and <a href="AN02-L200.html">Characteristic rays and directional kernels</a> for the directional kernels. We use <a href="AN02-L199.html">Noncharacteristic directions and microlocal regularity</a> for full class ellipticity. Basic references are Grubb [G], the NIST radial-function references [N], and Hörmander [H]. The complete proof supplies the spherical representation itself and every estimate used in its propagation argument.</p>
+<h2 id="1-one-boundary-point-records-one-covector-direction">1. One boundary point records one covector direction</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(d\sigma\)">\(d\sigma\)</span> be surface measure on <span class="math" data-index="1" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>, without division by its area. In dimension one it counts the two points <span class="math" data-index="2" data-tex="\(-1,1\)">\(-1,1\)</span>. Define</p>
+<span class="math math-display" id="learner-eq-HW1" data-index="3" data-tex="\[
+ \begin{gathered}
+ I(\xi)=\int_{S^{n-1}}e^{-\omega\cdot\xi}\,d\sigma(\omega),\\
+ K(z)=(2\pi)^{-n}\int_{\mathbb R^n}
+                    \frac{e^{iz\cdot\xi}}{I(\xi)}\,d\xi,
+ \qquad Q=\{z:|\operatorname{Im}z|&lt;1\}.
+ \end{gathered}
+ \tag{HW1}
+\]">\[
+ \begin{gathered}
+ I(\xi)=\int_{S^{n-1}}e^{-\omega\cdot\xi}\,d\sigma(\omega),\\
+ K(z)=(2\pi)^{-n}\int_{\mathbb R^n}
+                    \frac{e^{iz\cdot\xi}}{I(\xi)}\,d\xi,
+ \qquad Q=\{z:|\operatorname{Im}z|&lt;1\}.
+ \end{gathered}
+ \tag{HW1}
+\]</span>
+<p>The weight <span class="math" data-index="4" data-tex="\(I\)">\(I\)</span> is positive on real frequency space and grows exponentially. Its reciprocal makes <span class="math" data-index="5" data-tex="\(K\)">\(K\)</span> holomorphic in <span class="math" data-index="6" data-tex="\(Q\)">\(Q\)</span>. The kernel also extends off its complex diagonal; the proof establishes the extension and the decrease needed for tempered inputs.</p>
+<p><strong>Theorem A (representation).</strong> For every <span class="math" data-index="7" data-tex="\(u\in\mathcal S&#x27;(\mathbb R^n)\)">\(u\in\mathcal S&#x27;(\mathbb R^n)\)</span>, the function <span class="math" data-index="8" data-tex="\(U=K*u\)">\(U=K*u\)</span> is holomorphic in <span class="math" data-index="9" data-tex="\(Q\)">\(Q\)</span>, has polynomial growth in the real variables and in the reciprocal distance to its boundary, and has continuous tempered boundary values
+<span class="math" data-index="10" data-tex="\(U_\omega=U(\cdot+i\omega)\)">\(U_\omega=U(\cdot+i\omega)\)</span>, <span class="math" data-index="11" data-tex="\(|\omega|=1\)">\(|\omega|=1\)</span>. They reconstruct the distribution exactly:</p>
+<span class="math math-display" id="learner-eq-HW2" data-index="12" data-tex="\[
+ u=\int_{S^{n-1}}U_\omega\,d\sigma(\omega).
+ \tag{HW2}
+\]">\[
+ u=\int_{S^{n-1}}U_\omega\,d\sigma(\omega).
+ \tag{HW2}
+\]</span>
+<p>Conversely every holomorphic <span class="math" data-index="13" data-tex="\(U\)">\(U\)</span> with that growth is obtained this way from its averaged boundary, and that <span class="math" data-index="14" data-tex="\(u\)">\(u\)</span> determines <span class="math" data-index="15" data-tex="\(U\)">\(U\)</span> uniquely. Complete-proof Proposition 3.1 includes the converse and all boundary-limit details.</p>
+<p>The Fourier transform of an interior slice is</p>
+<span class="math math-display" id="learner-eq-HW3" data-index="16" data-tex="\[
+ \widehat U_y(\xi)=\frac{e^{-y\cdot\xi}}{I(\xi)}\widehat u(\xi).
+ \tag{HW3}
+\]">\[
+ \widehat U_y(\xi)=\frac{e^{-y\cdot\xi}}{I(\xi)}\widehat u(\xi).
+ \tag{HW3}
+\]</span>
+<p>Near <span class="math" data-index="17" data-tex="\(|y|=1\)">\(|y|=1\)</span>, the exponential is least decreasing when <span class="math" data-index="18" data-tex="\(\xi\)">\(\xi\)</span> points opposite to <span class="math" data-index="19" data-tex="\(y\)">\(y\)</span>. Thus frequency <span class="math" data-index="20" data-tex="\(\theta\)">\(\theta\)</span>, <span class="math" data-index="21" data-tex="\(|\theta|=1\)">\(|\theta|=1\)</span>, is recorded at the boundary point <span class="math" data-index="22" data-tex="\(x-i\theta\)">\(x-i\theta\)</span>, with this minus sign.</p>
+<p>Let <span class="math" data-index="23" data-tex="\(L\)">\(L\)</span> be any admissible sequence:</p>
+<span class="math math-display" id="learner-eq-HW4" data-index="24" data-tex="\[
+ L_0=1,\quad L_k\text{ increasing},\quad
+ k\leq L_k,\quad L_{k+1}\leq C_LL_k,\quad M_k=L_k^k\ (k\geq1).
+ \tag{HW4}
+\]">\[
+ L_0=1,\quad L_k\text{ increasing},\quad
+ k\leq L_k,\quad L_{k+1}\leq C_LL_k,\quad M_k=L_k^k\ (k\geq1).
+ \tag{HW4}
+\]</span>
+<p>At order zero use <span class="math" data-index="25" data-tex="\(M_0=1\)">\(M_0=1\)</span>. To say that <span class="math" data-index="26" data-tex="\(U\)">\(U\)</span> is in <span class="math" data-index="27" data-tex="\(C^L\)">\(C^L\)</span> at a boundary point means that on the interior side of one neighborhood its derivatives satisfy one common bound</p>
+<span class="math math-display" id="learner-eq-HW5" data-index="28" data-tex="\[
+ |\partial^\alpha U(z)|\leq B^{|\alpha|+1}M_{|\alpha|}.
+ \tag{HW5}
+\]">\[
+ |\partial^\alpha U(z)|\leq B^{|\alpha|+1}M_{|\alpha|}.
+ \tag{HW5}
+\]</span>
+<p><strong>Theorem B (exact boundary criterion).</strong> For <span class="math" data-index="29" data-tex="\(|\theta|=1\)">\(|\theta|=1\)</span>,</p>
+<span class="math math-display" id="learner-eq-HW6" data-index="30" data-tex="\[
+ (x,\theta)\notin\operatorname{WF}_L(u)
+ \quad\Longleftrightarrow\quad
+ U\text{ satisfies (HW5) near }x-i\theta.
+ \tag{HW6}
+\]">\[
+ (x,\theta)\notin\operatorname{WF}_L(u)
+ \quad\Longleftrightarrow\quad
+ U\text{ satisfies (HW5) near }x-i\theta.
+ \tag{HW6}
+\]</span>
+<p>Ordinary wavefront absence is equivalent to a separate uniform bound for each fixed derivative. In the analytic class <span class="math" data-index="31" data-tex="\(L_k=k\)">\(L_k=k\)</span>, condition (HW5) is equivalent to holomorphic extension through that boundary point. Complete-proof Sections 4–5 prove both directions for the entire sequence class, including sequences growing faster than every power.</p>
+<figure><img class="course-figure" loading="lazy" width="1500" height="780" src="reproduce/L201/figures/boundary-patch-and-frequency-direction.png" alt="The left panel shows a patch of the imaginary unit circle centered at minus the first coordinate vector. The right panel shows its opposite cone of possible positive frequency directions centered at the first coordinate vector." /><figcaption class="native"><a href="reproduce/L201/figures/boundary-patch-and-frequency-direction.png">Open full-size PNG</a> · <a href="reproduce/L201/figures/boundary-patch-and-frequency-direction.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> For <span class="math" data-index="32" data-tex="\(\theta_0=(1,0)\)">\(\theta_0=(1,0)\)</span>, the selected boundary patch is centered at <span class="math" data-index="33" data-tex="\(-\theta_0=(-1,0)\)">\(-\theta_0=(-1,0)\)</span>. The displayed patch has angular half-width <span class="math" data-index="34" data-tex="\(\pi/6\)">\(\pi/6\)</span>; its opposite frequency cone has the same half-width. This is a direction bound for a boundary average, not an assertion that a particular distribution has every displayed wavefront point.</p>
+<h2 id="2-boundary-averages-separate-singular-directions">2. Boundary averages separate singular directions</h2>
+<p>Let <span class="math" data-index="35" data-tex="\(W\)">\(W\)</span> be a small open patch of the unit sphere around <span class="math" data-index="36" data-tex="\(-\theta_0\)">\(-\theta_0\)</span>. The part</p>
+<span class="math math-display" id="learner-eq-HW7" data-index="37" data-tex="\[
+ u_W=\int_W U_\omega\,d\sigma(\omega)
+ \tag{HW7}
+\]">\[
+ u_W=\int_W U_\omega\,d\sigma(\omega)
+ \tag{HW7}
+\]</span>
+<p>can have wavefront only in directions opposite to <span class="math" data-index="38" data-tex="\(\overline W\)">\(\overline W\)</span>. More precisely, a class singularity of <span class="math" data-index="39" data-tex="\(u_W\)">\(u_W\)</span> at <span class="math" data-index="40" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> requires both <span class="math" data-index="41" data-tex="\(-\xi/|\xi|\in\overline W\)">\(-\xi/|\xi|\in\overline W\)</span> and failure of the boundary derivative bounds for <span class="math" data-index="42" data-tex="\(U\)">\(U\)</span> at <span class="math" data-index="43" data-tex="\(x-i\xi/|\xi|\)">\(x-i\xi/|\xi|\)</span>. The complementary average is analytically regular at <span class="math" data-index="44" data-tex="\(\theta_0\)">\(\theta_0\)</span>, since its boundary support avoids <span class="math" data-index="45" data-tex="\(-\theta_0\)">\(-\theta_0\)</span>.</p>
+<p>Consequently every class-regular pair admits a local decomposition</p>
+<span class="math math-display" id="learner-eq-HW8" data-index="46" data-tex="\[
+ u=v+w,\qquad v\in C^L,\qquad
+ (x_0,\xi_0)\notin\operatorname{WF}_A(w).
+ \tag{HW8}
+\]">\[
+ u=v+w,\qquad v\in C^L,\qquad
+ (x_0,\xi_0)\notin\operatorname{WF}_A(w).
+ \tag{HW8}
+\]</span>
+<p>The converse holds too. This separates a class-regular part from a remainder that is analytically regular in the selected direction; it does not require <span class="math" data-index="47" data-tex="\(u\)">\(u\)</span> itself to be analytic.</p>
+<p>More generally, closed cones <span class="math" data-index="48" data-tex="\(\Gamma_1,\ldots,\Gamma_q\)">\(\Gamma_1,\ldots,\Gamma_q\)</span> covering all nonzero frequencies give one finite decomposition <span class="math" data-index="49" data-tex="\(u=\sum u_j\)">\(u=\sum u_j\)</span> with</p>
+<span class="math math-display" id="learner-eq-HW9" data-index="50" data-tex="\[
+ \operatorname{WF}_L(u_j)\subseteq
+      \operatorname{WF}_L(u)\cap(\mathbb R^n\times\Gamma_j).
+ \tag{HW9}
+\]">\[
+ \operatorname{WF}_L(u_j)\subseteq
+      \operatorname{WF}_L(u)\cap(\mathbb R^n\times\Gamma_j).
+ \tag{HW9}
+\]</span>
+<p>The same chosen decomposition works for every admissible class and for ordinary wavefront. Two decompositions differ by antisymmetric terms whose wavefront lies in the pairwise cone overlaps. Complete-proof Corollaries 5.2–5.3 give the precise construction and compatibility formula.</p>
+<h2 id="3-propagation-retains-the-full-derivative-class">3. Propagation retains the full derivative class</h2>
+<p>Let <span class="math" data-index="51" data-tex="\(P(D)\)">\(P(D)\)</span> be a scalar constant-coefficient operator of positive order, with real principal part <span class="math" data-index="52" data-tex="\(p_m\)">\(p_m\)</span>, and</p>
+<span class="math math-display" id="learner-eq-HW10" data-index="53" data-tex="\[
+ p_m(\xi)=0,\quad\xi\ne0
+       \quad\Longrightarrow\quad a(\xi)=\nabla p_m(\xi)\ne0.
+ \tag{HW10}
+\]">\[
+ p_m(\xi)=0,\quad\xi\ne0
+       \quad\Longrightarrow\quad a(\xi)=\nabla p_m(\xi)\ne0.
+ \tag{HW10}
+\]</span>
+<p>Its lower coefficients may be complex.</p>
+<p><strong>Theorem C (class propagation).</strong> Suppose <span class="math" data-index="54" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span> on an open set <span class="math" data-index="55" data-tex="\(X\)">\(X\)</span>. If
+<span class="math" data-index="56" data-tex="\((x_0,\xi_0)\in\operatorname{WF}_L(u)\setminus\operatorname{WF}_L(f)\)">\((x_0,\xi_0)\in\operatorname{WF}_L(u)\setminus\operatorname{WF}_L(f)\)</span>, then <span class="math" data-index="57" data-tex="\(p_m(\xi_0)=0\)">\(p_m(\xi_0)=0\)</span>. On any segment <span class="math" data-index="58" data-tex="\(I\subset X\)">\(I\subset X\)</span> through <span class="math" data-index="59" data-tex="\(x_0\)">\(x_0\)</span>, parallel to <span class="math" data-index="60" data-tex="\(a(\xi_0)\)">\(a(\xi_0)\)</span>, for which the same covector is absent from the image class wavefront,</p>
+<span class="math math-display" id="learner-eq-HW11" data-index="61" data-tex="\[
+ (I\times\{\xi_0\})\cap\operatorname{WF}_L(f)=\varnothing
+ \quad\Longrightarrow\quad
+ I\times\{\xi_0\}\subseteq\operatorname{WF}_L(u).
+ \tag{HW11}
+\]">\[
+ (I\times\{\xi_0\})\cap\operatorname{WF}_L(f)=\varnothing
+ \quad\Longrightarrow\quad
+ I\times\{\xi_0\}\subseteq\operatorname{WF}_L(u).
+ \tag{HW11}
+\]</span>
+<p>All admissible sequences (HW4) are included. Taking <span class="math" data-index="62" data-tex="\(L_k=k\)">\(L_k=k\)</span> gives analytic propagation. The covector stays fixed while the base point moves. The full proof, including endpoints and arbitrary complex lower terms, is complete-proof Theorem 6.1.</p>
+<p>Here is why the boundary representation matters. If some point <span class="math" data-index="63" data-tex="\(y\in I\)">\(y\in I\)</span> were class-regular at <span class="math" data-index="64" data-tex="\(\xi_0\)">\(\xi_0\)</span>, choose one patch <span class="math" data-index="65" data-tex="\(W\)">\(W\)</span> so small that the corresponding <span class="math" data-index="66" data-tex="\(u_W\)">\(u_W\)</span> is in <span class="math" data-index="67" data-tex="\(C^L\)">\(C^L\)</span> near <span class="math" data-index="68" data-tex="\(y\)">\(y\)</span>, while its image is in <span class="math" data-index="69" data-tex="\(C^L\)">\(C^L\)</span> near the entire segment. The complementary average has no analytic singularity at the selected covector.</p>
+<p>Now introduce a compact smooth cutoff around the segment. Arrange its backward transition near <span class="math" data-index="70" data-tex="\(y\)">\(y\)</span>, and make it depend there only on an axial coordinate with covector <span class="math" data-index="71" data-tex="\(\eta\)">\(\eta\)</span>. Euler's identity gives <span class="math" data-index="72" data-tex="\(\xi_0\cdot a(\xi_0)=0\)">\(\xi_0\cdot a(\xi_0)=0\)</span>, so an <span class="math" data-index="73" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-index="74" data-tex="\(\eta\cdot a(\xi_0)=1\)">\(\eta\cdot a(\xi_0)=1\)</span> cannot be parallel to <span class="math" data-index="75" data-tex="\(\xi_0\)">\(\xi_0\)</span>. The cutoff may have analytic singularities, but at the transition they lie in <span class="math" data-index="76" data-tex="\(\mathbb R\eta\)">\(\mathbb R\eta\)</span>. The class-regular factor <span class="math" data-index="77" data-tex="\(u_W\)">\(u_W\)</span> does not enlarge those directions. The image therefore has no <span class="math" data-index="78" data-tex="\(\xi_0\)">\(\xi_0\)</span>-singularity on the entire backward half-line.</p>
+<p>The positive directional kernel and the full class convolution theorem then exclude <span class="math" data-index="79" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span> from the cutoff solution, a contradiction. The negative kernel treats the other orientation. The proof controls the cutoff's actual class singularities instead of treating a smooth cutoff as analytic.</p>
+<p>A further consequence concerns support. A nonzero supporting normal of a homogeneous solution is an analytic wavefront covector, by <a href="AN02-L194.html">Support normals and analytic singularities</a>. Analytic ellipticity makes it characteristic; Theorem C propagates it along its characteristic line. Every such interval inside <span class="math" data-index="80" data-tex="\(X\)">\(X\)</span> is therefore contained in the support. This is complete-proof Corollary 6.3.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-a-strip-kernel-gives-two-complementary-frequency-selectors">Example 1: a strip kernel gives two complementary frequency selectors</h3>
+<p>For <span class="math" data-index="81" data-tex="\(n=1\)">\(n=1\)</span>, the sphere has two points, so</p>
+<span class="math math-display" id="learner-eq-HW12" data-index="82" data-tex="\[
+ I(\xi)=2\cosh\xi,\qquad
+ K(z)=\frac1{4\cosh(\pi z/2)},\qquad |\operatorname{Im}z|&lt;1.
+ \tag{HW12}
+\]">\[
+ I(\xi)=2\cosh\xi,\qquad
+ K(z)=\frac1{4\cosh(\pi z/2)},\qquad |\operatorname{Im}z|&lt;1.
+ \tag{HW12}
+\]</span>
+<p>Here is a direct calculation of the second formula. Integrate <span class="math" data-index="83" data-tex="\(e^{ix\zeta}/\cosh\zeta\)">\(e^{ix\zeta}/\cosh\zeta\)</span> around a rectangle of height <span class="math" data-index="84" data-tex="\(i\pi\)">\(i\pi\)</span>. Its vertical sides vanish as their real parts tend to infinity. The top is <span class="math" data-index="85" data-tex="\(-e^{-\pi x}\)">\(-e^{-\pi x}\)</span> times the bottom, and its reversed orientation makes the total <span class="math" data-index="86" data-tex="\((1+e^{-\pi x})\int_{\mathbb R}e^{ix\xi}/\cosh\xi\,d\xi\)">\((1+e^{-\pi x})\int_{\mathbb R}e^{ix\xi}/\cosh\xi\,d\xi\)</span>. The single pole at <span class="math" data-index="87" data-tex="\(i\pi/2\)">\(i\pi/2\)</span> has residue <span class="math" data-index="88" data-tex="\(e^{-\pi x/2}/i\)">\(e^{-\pi x/2}/i\)</span>. Thus the real integral is <span class="math" data-index="89" data-tex="\(\pi/\cosh(\pi x/2)\)">\(\pi/\cosh(\pi x/2)\)</span>. Dividing by <span class="math" data-index="90" data-tex="\(4\pi\)">\(4\pi\)</span> gives (HW12), first on the real axis and then throughout the strip by holomorphic uniqueness.</p>
+<p>The upper and lower boundary distributions have Fourier multipliers</p>
+<span class="math math-display" id="learner-eq-HW13" data-index="91" data-tex="\[
+ m_{\rm upper}(\xi)=\frac1{1+e^{2\xi}},\qquad
+ m_{\rm lower}(\xi)=\frac1{1+e^{-2\xi}},\qquad
+ m_{\rm upper}+m_{\rm lower}=1.
+ \tag{HW13}
+\]">\[
+ m_{\rm upper}(\xi)=\frac1{1+e^{2\xi}},\qquad
+ m_{\rm lower}(\xi)=\frac1{1+e^{-2\xi}},\qquad
+ m_{\rm upper}+m_{\rm lower}=1.
+ \tag{HW13}
+\]</span>
+<p>The upper boundary keeps possible negative singular directions; the lower keeps possible positive ones. These smooth complementary multipliers are not sharp characteristic functions. Their sum reconstructs every tempered distribution exactly.</p>
+<figure><img class="course-figure" loading="lazy" width="1500" height="720" src="reproduce/L201/figures/complementary-boundary-multipliers.png" alt="Two complementary logistic multipliers are plotted against real frequency. The upper-boundary multiplier decreases from one to zero, the lower-boundary multiplier increases from zero to one, and each has value one half at zero." /><figcaption class="native"><a href="reproduce/L201/figures/complementary-boundary-multipliers.png">Open full-size PNG</a> · <a href="reproduce/L201/figures/complementary-boundary-multipliers.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The exact multipliers in (HW13). Their limits distinguish the two nonzero frequency directions; their values at zero sum to one as well. Zero frequency itself is excluded from a wavefront set.</p>
+<h3 id="example-2-a-boundary-peak-is-not-by-itself-a-singularity">Example 2: a boundary peak is not by itself a singularity</h3>
+<p>For a fixed real frequency <span class="math" data-index="92" data-tex="\(q\)">\(q\)</span>, let <span class="math" data-index="93" data-tex="\(u(x)=e^{iq\cdot x}\)">\(u(x)=e^{iq\cdot x}\)</span>. Then</p>
+<span class="math math-display" id="learner-eq-HW14" data-index="94" data-tex="\[
+ U(z)=\frac{e^{iq\cdot z}}{I(q)},\qquad
+ \int_{S^{n-1}}U(x+i\omega)\,d\sigma=e^{iq\cdot x}.
+ \tag{HW14}
+\]">\[
+ U(z)=\frac{e^{iq\cdot z}}{I(q)},\qquad
+ \int_{S^{n-1}}U(x+i\omega)\,d\sigma=e^{iq\cdot x}.
+ \tag{HW14}
+\]</span>
+<p>The reconstruction is the definition of <span class="math" data-index="95" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-index="96" data-tex="\(q=\lambda\theta_0\)">\(q=\lambda\theta_0\)</span>, <span class="math" data-index="97" data-tex="\(\lambda\to\infty\)">\(\lambda\to\infty\)</span>, the spherical weight is largest at <span class="math" data-index="98" data-tex="\(\omega=-\theta_0\)">\(\omega=-\theta_0\)</span>. Complete-proof Lemma 1.1 gives</p>
+<span class="math math-display" id="learner-eq-HW15" data-index="99" data-tex="\[
+ |U(x+i\omega)|\leq C(1+\lambda)^{(n-1)/2}
+                e^{-\lambda(1+\omega\cdot\theta_0)}.
+ \tag{HW15}
+\]">\[
+ |U(x+i\omega)|\leq C(1+\lambda)^{(n-1)/2}
+                e^{-\lambda(1+\omega\cdot\theta_0)}.
+ \tag{HW15}
+\]</span>
+<p>Away from any fixed angular neighborhood of <span class="math" data-index="100" data-tex="\(-\theta_0\)">\(-\theta_0\)</span>, it decreases exponentially in <span class="math" data-index="101" data-tex="\(\lambda\)">\(\lambda\)</span>. Nevertheless each fixed plane wave is entire, with empty analytic wavefront. The criterion concerns derivative control of one representative near its boundary, not a peak in one finite-frequency example.</p>
+<h3 id="example-3-a-smooth-class-can-be-larger-than-every-finite-gevrey-class">Example 3: a smooth class can be larger than every finite Gevrey class</h3>
+<p>Take <span class="math" data-index="102" data-tex="\(L_k=e^k\)">\(L_k=e^k\)</span>, so <span class="math" data-index="103" data-tex="\(M_k=e^{k^2}\)">\(M_k=e^{k^2}\)</span>, and define</p>
+<span class="math math-display" id="learner-eq-HW16" data-index="104" data-tex="\[
+ v(t)=\sum_{j=1}^\infty e^{-j^2}\cos(e^j t).
+ \tag{HW16}
+\]">\[
+ v(t)=\sum_{j=1}^\infty e^{-j^2}\cos(e^j t).
+ \tag{HW16}
+\]</span>
+<p>Every fixed derivative series converges uniformly. Completing the square gives</p>
+<span class="math math-display" id="learner-eq-HW17" data-index="105" data-tex="\[
+ \sup_t|v^{(k)}(t)|
+ \leq\sum_{j\geq1}e^{-j^2+kj}
+ =e^{k^2/4}\sum_{j\geq1}e^{-(j-k/2)^2}
+ \leq C e^{k^2/4}.
+ \tag{HW17}
+\]">\[
+ \sup_t|v^{(k)}(t)|
+ \leq\sum_{j\geq1}e^{-j^2+kj}
+ =e^{k^2/4}\sum_{j\geq1}e^{-(j-k/2)^2}
+ \leq C e^{k^2/4}.
+ \tag{HW17}
+\]</span>
+<p>The discrete Gaussian sum is uniformly bounded: in each pair of unit intervals at a fixed distance from its center there are at most a fixed number of integers, and <span class="math" data-index="106" data-tex="\(\sum_{a\geq0}e^{-a^2}&lt;\infty\)">\(\sum_{a\geq0}e^{-a^2}&lt;\infty\)</span>. Thus <span class="math" data-index="107" data-tex="\(v\in C^L\)">\(v\in C^L\)</span> on the whole real line.</p>
+<p>At even order <span class="math" data-index="108" data-tex="\(2k\)">\(2k\)</span>, all terms at zero have the same sign. The term <span class="math" data-index="109" data-tex="\(j=k\)">\(j=k\)</span> gives</p>
+<span class="math math-display" id="learner-eq-HW18" data-index="110" data-tex="\[
+ |v^{(2k)}(0)|=\sum_{j\geq1}e^{-j^2+2kj}\geq e^{k^2}.
+ \tag{HW18}
+\]">\[
+ |v^{(2k)}(0)|=\sum_{j\geq1}e^{-j^2+2kj}\geq e^{k^2}.
+ \tag{HW18}
+\]</span>
+<p>This exceeds <span class="math" data-index="111" data-tex="\(A^{2k+1}((2k)!)^s\)">\(A^{2k+1}((2k)!)^s\)</span> for every fixed <span class="math" data-index="112" data-tex="\(A,s\)">\(A,s\)</span>, since its logarithm is quadratic rather than <span class="math" data-index="113" data-tex="\(O(k\log k)\)">\(O(k\log k)\)</span>. In particular <span class="math" data-index="114" data-tex="\(v\)">\(v\)</span> is not analytic at zero and is in no finite Gevrey class there. Its ordinary and <span class="math" data-index="115" data-tex="\(L\)">\(L\)</span>-class wavefronts are empty, but its analytic wavefront over zero is nonempty. The representative has the class boundary bounds at every boundary point, while it does not extend holomorphically through every boundary point over zero. The full sequence statement of Theorem B is needed for this example.</p>
+<h3 id="example-4-an-analytic-singularity-can-travel-through-an-everywhere-smooth-solution">Example 4: an analytic singularity can travel through an everywhere smooth solution</h3>
+<p>On the <span class="math" data-index="116" data-tex="\((t,s)\)">\((t,s)\)</span>-plane take <span class="math" data-index="117" data-tex="\(P(D)=D_s+i\)">\(P(D)=D_s+i\)</span> and</p>
+<span class="math math-display" id="learner-eq-HW19" data-index="118" data-tex="\[
+ u(t,s)=e^s v(t),
+ \tag{HW19}
+\]">\[
+ u(t,s)=e^s v(t),
+ \tag{HW19}
+\]</span>
+<p>with <span class="math" data-index="119" data-tex="\(v\)">\(v\)</span> from Example 3. Then <span class="math" data-index="120" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span>, and <span class="math" data-index="121" data-tex="\(u\)">\(u\)</span> is smooth and in that <span class="math" data-index="122" data-tex="\(C^L\)">\(C^L\)</span> class on every compact set. It is not analytic at any <span class="math" data-index="123" data-tex="\((0,s)\)">\((0,s)\)</span>: restriction to a fixed <span class="math" data-index="124" data-tex="\(s\)">\(s\)</span>, followed by division by <span class="math" data-index="125" data-tex="\(e^s\)">\(e^s\)</span>, would otherwise make <span class="math" data-index="126" data-tex="\(v\)">\(v\)</span> analytic at zero.</p>
+<p>The principal symbol is <span class="math" data-index="127" data-tex="\(\sigma\)">\(\sigma\)</span>, with characteristic gradient <span class="math" data-index="128" data-tex="\((0,1)\)">\((0,1)\)</span>. Analytic ellipticity permits only horizontal singular covectors. The analytic base theorem supplies at least one such covector over <span class="math" data-index="129" data-tex="\((0,0)\)">\((0,0)\)</span>, and Theorem C carries it along the entire vertical line. In fact both signs occur, since <span class="math" data-index="130" data-tex="\(u\)">\(u\)</span> is real and the analytic wavefront is symmetric under conjugation. Ordinary propagation alone has no singular point to propagate: <span class="math" data-index="131" data-tex="\(\operatorname{WF}(u)=\varnothing\)">\(\operatorname{WF}(u)=\varnothing\)</span>.</p>
+<h2 id="5-exercises-100-points">5. Exercises, 100 points</h2>
+<ol>
+<li><strong>The radial energy identity in three dimensions; 10 points.</strong> Compute <span class="math" data-index="132" data-tex="\(J(\rho)\)">\(J(\rho)\)</span> for <span class="math" data-index="133" data-tex="\(n=3\)">\(n=3\)</span>, including its value at zero and all its zeros. At <span class="math" data-index="134" data-tex="\(\rho_0=i\pi\)">\(\rho_0=i\pi\)</span>, compute <span class="math" data-index="135" data-tex="\(\int_0^1s^2|J(s\rho_0)|^2\,ds\)">\(\int_0^1s^2|J(s\rho_0)|^2\,ds\)</span>, and use the energy identity to compute the corresponding derivative integral.</li>
+<li><strong>Splitting a delta at the two strip boundaries; 12 points.</strong> Prove
+<span class="math" data-index="136" data-tex="\(K_{\rm upper}=\tfrac12\delta_0-\tfrac i4\operatorname{pv}\operatorname{csch}(\pi x/2)\)">\(K_{\rm upper}=\tfrac12\delta_0-\tfrac i4\operatorname{pv}\operatorname{csch}(\pi x/2)\)</span> and the conjugate formula for <span class="math" data-index="137" data-tex="\(K_{\rm lower}\)">\(K_{\rm lower}\)</span>. Determine their ordinary and analytic wavefront sets. Evaluate the two multipliers at <span class="math" data-index="138" data-tex="\(\xi=\tfrac12\log3\)">\(\xi=\tfrac12\log3\)</span>.</li>
+<li><strong>Uniform decrease off the selected patch; 12 points.</strong> Derive (HW15). If the angle between <span class="math" data-index="139" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-index="140" data-tex="\(-\theta_0\)">\(-\theta_0\)</span> is at least <span class="math" data-index="141" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, obtain a uniform exponential bound. Explain why this does not give a nonempty wavefront for one fixed plane wave.</li>
+<li><strong>A fixed shift for a very large sequence; 12 points.</strong> In the proof of Theorem B, let <span class="math" data-index="142" data-tex="\(\mu=2,n=3\)">\(\mu=2,n=3\)</span>. Compute the chosen <span class="math" data-index="143" data-tex="\(c\)">\(c\)</span>, the good-cone tail denominator, and a valid integer <span class="math" data-index="144" data-tex="\(d\)">\(d\)</span> for the bad-cone factorial estimate. For <span class="math" data-index="145" data-tex="\(L_k=e^k\)">\(L_k=e^k\)</span>, compute <span class="math" data-index="146" data-tex="\(M_{k+c}/M_k\)">\(M_{k+c}/M_k\)</span> and show why replacing a fixed shift by <span class="math" data-index="147" data-tex="\(2k\)">\(2k\)</span> would not be justified.</li>
+<li><strong>No finite Gevrey bound; 12 points.</strong> Prove every convergence and growth assertion for (HW16). Show that no estimate <span class="math" data-index="148" data-tex="\(|v^{(2k)}(0)|\leq A^{2k+1}((2k)!)^s\)">\(|v^{(2k)}(0)|\leq A^{2k+1}((2k)!)^s\)</span> can hold with fixed finite <span class="math" data-index="149" data-tex="\(s\)">\(s\)</span>. Interpret this using ordinary, <span class="math" data-index="150" data-tex="\(L\)">\(L\)</span>-class and analytic wavefronts.</li>
+<li><strong>Three cone overlaps and antisymmetric compatibility; 14 points.</strong> In the frequency plane take closed cones centered at angles <span class="math" data-index="151" data-tex="\(0,2\pi/3,4\pi/3\)">\(0,2\pi/3,4\pi/3\)</span>, each with half-width <span class="math" data-index="152" data-tex="\(7\pi/18\)">\(7\pi/18\)</span>. Show they cover the circle, compute all pairwise overlap arcs, and check the compatibility construction <span class="math" data-index="153" data-tex="\(h_{jk}=T_kd_j-T_jd_k\)">\(h_{jk}=T_kd_j-T_jd_k\)</span>, <span class="math" data-index="154" data-tex="\(\sum d_j=0\)">\(\sum d_j=0\)</span>. State exactly where the wavefront of each <span class="math" data-index="155" data-tex="\(h_{jk}\)">\(h_{jk}\)</span> may lie.</li>
+<li><strong>The cutoff covector and the propagated covector; 14 points.</strong> For <span class="math" data-index="156" data-tex="\(P(D)=D_s+i\)">\(P(D)=D_s+i\)</span>, selected covector <span class="math" data-index="157" data-tex="\(\xi_0=(1,0)\)">\(\xi_0=(1,0)\)</span>, and <span class="math" data-index="158" data-tex="\(\chi(t,s)=q(s)\)">\(\chi(t,s)=q(s)\)</span> near the axis, compute <span class="math" data-index="159" data-tex="\(P(D)(\chi u_1)\)">\(P(D)(\chi u_1)\)</span>. If <span class="math" data-index="160" data-tex="\(u_1\in C^L\)">\(u_1\in C^L\)</span> on the backward transition, show why it creates no horizontal class covector there. Include the origin fiber when using the positive directional kernel to exclude a solution covector at the endpoint.</li>
+<li><strong>A normal cannot end in a compact homogeneous support; 14 points.</strong> Use Corollary 6.3 to show that a compactly supported global homogeneous solution of a real principal type operator is zero. Establish the existence of a nonzero supporting normal for a nonempty compact support. Compare this with <span class="math" data-index="161" data-tex="\(e^sH(t)\)">\(e^sH(t)\)</span>, a noncompact homogeneous solution of <span class="math" data-index="162" data-tex="\(D_s+i\)">\(D_s+i\)</span>.</li>
+</ol>
+<h2 id="6-complete-solutions">6. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>Here <span class="math" data-index="163" data-tex="\(|S^1|=2\pi\)">\(|S^1|=2\pi\)</span>, and the latitude density is one. Thus</p>
+<span class="math math-display" id="learner-eq-HW20" data-index="164" data-tex="\[
+ J(\rho)=2\pi\int_{-1}^1e^{\rho t}\,dt
+       =4\pi\frac{\sinh\rho}{\rho},\qquad J(0)=4\pi.
+ \tag{HW20}
+\]">\[
+ J(\rho)=2\pi\int_{-1}^1e^{\rho t}\,dt
+       =4\pi\frac{\sinh\rho}{\rho},\qquad J(0)=4\pi.
+ \tag{HW20}
+\]</span>
+<p>Its zeros are exactly <span class="math" data-index="165" data-tex="\(i\pi k\)">\(i\pi k\)</span>, <span class="math" data-index="166" data-tex="\(k\in\mathbb Z\setminus\{0\}\)">\(k\in\mathbb Z\setminus\{0\}\)</span>. At <span class="math" data-index="167" data-tex="\(\rho_0=i\pi\)">\(\rho_0=i\pi\)</span>, <span class="math" data-index="168" data-tex="\(g(s)=4\sin(\pi s)/s\)">\(g(s)=4\sin(\pi s)/s\)</span>, with its continuous value <span class="math" data-index="169" data-tex="\(4\pi\)">\(4\pi\)</span> at zero. Consequently
+<span class="math" data-index="170" data-tex="\(\int_0^1s^2|g(s)|^2ds=16\int_0^1\sin^2(\pi s)ds=8\)">\(\int_0^1s^2|g(s)|^2ds=16\int_0^1\sin^2(\pi s)ds=8\)</span>. Formula (HB10) gives <span class="math" data-index="171" data-tex="\(\int_0^1s^2|g&#x27;(s)|^2ds=8\pi^2\)">\(\int_0^1s^2|g&#x27;(s)|^2ds=8\pi^2\)</span>. The conjugate in this energy integral is essential: its positivity is what forces a zero's square to be negative real.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>At height <span class="math" data-index="172" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>, write <span class="math" data-index="173" data-tex="\(\epsilon=1-r\)">\(\epsilon=1-r\)</span>. Formula (HW12) gives</p>
+<span class="math math-display" id="learner-eq-HW21" data-index="174" data-tex="\[
+ K(x+ir)=-\frac i4\operatorname{csch}\!\left(\frac\pi2(x-i\epsilon)\right).
+ \tag{HW21}
+\]">\[
+ K(x+ir)=-\frac i4\operatorname{csch}\!\left(\frac\pi2(x-i\epsilon)\right).
+ \tag{HW21}
+\]</span>
+<p>Near zero the csch function is <span class="math" data-index="175" data-tex="\(2/(\pi(x-i\epsilon))\)">\(2/(\pi(x-i\epsilon))\)</span> plus a holomorphic remainder. The lower-pole boundary identity <span class="math" data-index="176" data-tex="\((x-i0)^{-1}=\operatorname{pv}(1/x)+i\pi\delta_0\)">\((x-i0)^{-1}=\operatorname{pv}(1/x)+i\pi\delta_0\)</span>, proved in the linked holomorphic-boundary lesson, yields</p>
+<span class="math math-display" id="learner-eq-HW22" data-index="177" data-tex="\[
+ \begin{aligned}
+ K_{\rm upper}&amp;=\tfrac12\delta_0-\tfrac i4\operatorname{pv}\operatorname{csch}(\pi x/2),\\
+ K_{\rm lower}&amp;=\tfrac12\delta_0+\tfrac i4\operatorname{pv}\operatorname{csch}(\pi x/2).
+ \end{aligned}
+ \tag{HW22}
+\]">\[
+ \begin{aligned}
+ K_{\rm upper}&amp;=\tfrac12\delta_0-\tfrac i4\operatorname{pv}\operatorname{csch}(\pi x/2),\\
+ K_{\rm lower}&amp;=\tfrac12\delta_0+\tfrac i4\operatorname{pv}\operatorname{csch}(\pi x/2).
+ \end{aligned}
+ \tag{HW22}
+\]</span>
+<p>Away from zero the limit is locally analytic, and at infinity csch decreases exponentially, so the local calculation gives the asserted tempered distributions globally. The upper boundary has only negative analytic covectors by the boundary-patch bound; it is not smooth at zero, because its real part is <span class="math" data-index="178" data-tex="\(\delta_0/2\)">\(\delta_0/2\)</span>. Thus its ordinary wavefront contains a covector there, and negative conicity gives the whole negative fiber. Analytic inclusion gives the same exact analytic fiber. The lower formula has exactly the positive fiber. They sum to <span class="math" data-index="179" data-tex="\(\delta_0\)">\(\delta_0\)</span>. At <span class="math" data-index="180" data-tex="\(\xi=\tfrac12\log3\)">\(\xi=\tfrac12\log3\)</span>, the upper multiplier is <span class="math" data-index="181" data-tex="\(1/4\)">\(1/4\)</span> and the lower one is <span class="math" data-index="182" data-tex="\(3/4\)">\(3/4\)</span>.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>For <span class="math" data-index="183" data-tex="\(q=\lambda\theta_0\)">\(q=\lambda\theta_0\)</span>, the boundary modulus is <span class="math" data-index="184" data-tex="\(e^{-\lambda\omega\cdot\theta_0}/J(\lambda)\)">\(e^{-\lambda\omega\cdot\theta_0}/J(\lambda)\)</span>. The lower bound (HB7) gives (HW15). If the angle from <span class="math" data-index="185" data-tex="\(-\theta_0\)">\(-\theta_0\)</span> is at least <span class="math" data-index="186" data-tex="\(\alpha\)">\(\alpha\)</span>, then <span class="math" data-index="187" data-tex="\(\omega\cdot\theta_0\geq-\cos\alpha\)">\(\omega\cdot\theta_0\geq-\cos\alpha\)</span>; hence</p>
+<span class="math math-display" id="learner-eq-HW23" data-index="188" data-tex="\[
+ |U(x+i\omega)|\leq C(1+\lambda)^{(n-1)/2}
+                         e^{-\lambda(1-\cos\alpha)}.
+ \tag{HW23}
+\]">\[
+ |U(x+i\omega)|\leq C(1+\lambda)^{(n-1)/2}
+                         e^{-\lambda(1-\cos\alpha)}.
+ \tag{HW23}
+\]</span>
+<p>The exponent is strictly negative uniformly on that complementary region. Each fixed plane wave, however, is an entire function; its representative also extends through every finite boundary point. A high-frequency family can have concentrating boundary mass while every individual member has empty wavefront. Singularity requires the failure of the local all-order criterion for one distribution.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The proof chooses <span class="math" data-index="189" data-tex="\(c=\mu+2n+3=11\)">\(c=\mu+2n+3=11\)</span>, so <span class="math" data-index="190" data-tex="\(N=k+11\)">\(N=k+11\)</span> and <span class="math" data-index="191" data-tex="\(\nu=1\)">\(\nu=1\)</span>. The tail denominator is <span class="math" data-index="192" data-tex="\(N-k-\nu-n=7\)">\(N-k-\nu-n=7\)</span>, and its power of <span class="math" data-index="193" data-tex="\(L_N\)">\(L_N\)</span> is <span class="math" data-index="194" data-tex="\(-7\)">\(-7\)</span>. On the low-frequency region the exponent is <span class="math" data-index="195" data-tex="\(k+\mu+\nu+n=k+6\leq N\)">\(k+\mu+\nu+n=k+6\leq N\)</span>. One may take <span class="math" data-index="196" data-tex="\(d=6&lt;c\)">\(d=6&lt;c\)</span> for (HB33), producing <span class="math" data-index="197" data-tex="\((k+5)!\leq N!\)">\((k+5)!\leq N!\)</span>.</p>
+<p>For the exponential sequence,</p>
+<span class="math math-display" id="learner-eq-HW24" data-index="198" data-tex="\[
+ \frac{M_{k+11}}{M_k}=e^{22k+121}\leq(e^{121})^{k+1}.
+ \tag{HW24}
+\]">\[
+ \frac{M_{k+11}}{M_k}=e^{22k+121}\leq(e^{121})^{k+1}.
+ \tag{HW24}
+\]</span>
+<p>By contrast <span class="math" data-index="199" data-tex="\(M_{2k}/M_k=e^{3k^2}\)">\(M_{2k}/M_k=e^{3k^2}\)</span> exceeds <span class="math" data-index="200" data-tex="\(D^{k+1}\)">\(D^{k+1}\)</span> for every fixed <span class="math" data-index="201" data-tex="\(D\)">\(D\)</span> as <span class="math" data-index="202" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>. The proof uses only the fixed shift and never needs the latter false comparison.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>At derivative order <span class="math" data-index="203" data-tex="\(k\)">\(k\)</span>, each trigonometric factor has modulus at most one and contributes a frequency factor <span class="math" data-index="204" data-tex="\(e^{kj}\)">\(e^{kj}\)</span>. The dominating Gaussian sum in (HW17) is finite, uniformly in the real variable, so repeated uniform termwise differentiation is valid at every fixed order. Grouping integers by their unit distance from <span class="math" data-index="205" data-tex="\(k/2\)">\(k/2\)</span> bounds the translated Gaussian sum by a constant independent of <span class="math" data-index="206" data-tex="\(k\)">\(k\)</span>. This proves (HW17) and the <span class="math" data-index="207" data-tex="\(C^L\)">\(C^L\)</span> bound.</p>
+<p>At order <span class="math" data-index="208" data-tex="\(2k\)">\(2k\)</span> all terms at zero are <span class="math" data-index="209" data-tex="\((-1)^k\)">\((-1)^k\)</span> times positive numbers, so (HW18) follows without cancellation. If a finite Gevrey estimate held, it would imply</p>
+<span class="math math-display" id="learner-eq-HW25" data-index="210" data-tex="\[
+ k^2\leq(2k+1)\log A+2sk\log(2k).
+ \tag{HW25}
+\]">\[
+ k^2\leq(2k+1)\log A+2sk\log(2k).
+ \tag{HW25}
+\]</span>
+<p>Division by <span class="math" data-index="211" data-tex="\(k^2\)">\(k^2\)</span> makes its right side tend to zero, a contradiction. Ordinary wavefront is empty because <span class="math" data-index="212" data-tex="\(v\)">\(v\)</span> is smooth. Its <span class="math" data-index="213" data-tex="\(L\)">\(L\)</span>-class wavefront is empty because it is in that class everywhere. Its analytic fiber over zero is nonempty by failure of analyticity and the analytic base theorem. It has both signs: real controlled cutoffs have reflected-conjugate Fourier transforms, so the normalized analytic-wavefront estimates are symmetric for a real distribution. In one dimension a nonempty symmetric conic fiber contains both nonzero half-lines.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>In degrees the centers are <span class="math" data-index="214" data-tex="\(0,120,240\)">\(0,120,240\)</span> and the half-width is <span class="math" data-index="215" data-tex="\(70\)">\(70\)</span>. Adjacent centers are only <span class="math" data-index="216" data-tex="\(120\)">\(120\)</span> apart, less than the total width <span class="math" data-index="217" data-tex="\(140\)">\(140\)</span>, so the cones cover every direction. Their pairwise overlaps are</p>
+<span class="math math-display" id="learner-eq-HW26" data-index="218" data-tex="\[
+ \begin{array}{c|c}
+ (1,2)&amp;[50^\circ,70^\circ]\\
+ (2,3)&amp;[170^\circ,190^\circ]\\
+ (3,1)&amp;[290^\circ,310^\circ].
+ \end{array}
+ \tag{HW26}
+\]">\[
+ \begin{array}{c|c}
+ (1,2)&amp;[50^\circ,70^\circ]\\
+ (2,3)&amp;[170^\circ,190^\circ]\\
+ (3,1)&amp;[290^\circ,310^\circ].
+ \end{array}
+ \tag{HW26}
+\]</span>
+<p>Each has width <span class="math" data-index="219" data-tex="\(20\)">\(20\)</span> degrees, and no direction lies in all three. The splitting operators satisfy <span class="math" data-index="220" data-tex="\(\sum T_j=I\)">\(\sum T_j=I\)</span> and keep only the corresponding cone's class wavefront. Therefore <span class="math" data-index="221" data-tex="\(h_{kj}=-h_{jk}\)">\(h_{kj}=-h_{jk}\)</span>, <span class="math" data-index="222" data-tex="\(h_{jj}=0\)">\(h_{jj}=0\)</span>, and</p>
+<span class="math math-display" id="learner-eq-HW27" data-index="223" data-tex="\[
+ \sum_kh_{jk}=\sum_kT_kd_j-T_j\sum_kd_k=d_j.
+ \tag{HW27}
+\]">\[
+ \sum_kh_{jk}=\sum_kT_kd_j-T_j\sum_kd_k=d_j.
+ \tag{HW27}
+\]</span>
+<p>Both terms defining <span class="math" data-index="224" data-tex="\(h_{jk}\)">\(h_{jk}\)</span> have class wavefront in <span class="math" data-index="225" data-tex="\(\operatorname{WF}_L(u)\cap(\mathbb R^n\times\Gamma_j\cap\Gamma_k)\)">\(\operatorname{WF}_L(u)\cap(\mathbb R^n\times\Gamma_j\cap\Gamma_k)\)</span>. The sum has the same bound. Thus <span class="math" data-index="226" data-tex="\(h_{12},h_{23},h_{31}\)">\(h_{12},h_{23},h_{31}\)</span> can have singular covectors only in their respective displayed overlap arcs, over base points already represented in the original class wavefront. The formula gives no triple-overlap term.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>Since <span class="math" data-index="227" data-tex="\(D_s=-i\partial_s\)">\(D_s=-i\partial_s\)</span>,</p>
+<span class="math math-display" id="learner-eq-HW28" data-index="228" data-tex="\[
+ (D_s+i)(q u_1)=q f_1-iq&#x27; u_1.
+ \tag{HW28}
+\]">\[
+ (D_s+i)(q u_1)=q f_1-iq&#x27; u_1.
+ \tag{HW28}
+\]</span>
+<p>Near a line point the cutoff is the pullback of the one-variable <span class="math" data-index="229" data-tex="\(q\)">\(q\)</span> by the analytic projection <span class="math" data-index="230" data-tex="\((t,s)\mapsto s\)">\((t,s)\mapsto s\)</span>. Its analytic wavefront is contained in vertical covectors <span class="math" data-index="231" data-tex="\((0,\tau)\)">\((0,\tau)\)</span>. On the backward transition, multiplying by the class function <span class="math" data-index="232" data-tex="\(u_1\)">\(u_1\)</span> preserves this bound; differentiating the cutoff or solution does not enlarge the class wavefront. Hence it cannot create <span class="math" data-index="233" data-tex="\(\xi_0=(1,0)\)">\(\xi_0=(1,0)\)</span>. Elsewhere on the backward half-line the image is either zero or the class function <span class="math" data-index="234" data-tex="\(f_1\)">\(f_1\)</span>.</p>
+<p>The positive kernel has, at the selected covector, base points <span class="math" data-index="235" data-tex="\(ta\)">\(ta\)</span>, <span class="math" data-index="236" data-tex="\(t\geq0\)">\(t\geq0\)</span>, with <span class="math" data-index="237" data-tex="\(a=(0,1)\)">\(a=(0,1)\)</span>. An output at <span class="math" data-index="238" data-tex="\(x_0\)">\(x_0\)</span> would therefore require an image covector at <span class="math" data-index="239" data-tex="\(x_0-ta\)">\(x_0-ta\)</span>, <span class="math" data-index="240" data-tex="\(t\geq0\)">\(t\geq0\)</span>. All these are absent, including <span class="math" data-index="241" data-tex="\(t=0\)">\(t=0\)</span>, where the image agrees with <span class="math" data-index="242" data-tex="\(f_1\)">\(f_1\)</span> near <span class="math" data-index="243" data-tex="\(x_0\)">\(x_0\)</span>. The entire correction contributes none. The class convolution bound excludes the output covector. A cutoff error in a different covector direction cannot supply the missing horizontal one.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>Suppose the support <span class="math" data-index="244" data-tex="\(C\)">\(C\)</span> is nonempty and compact. Choose a real point <span class="math" data-index="245" data-tex="\(y\notin C\)">\(y\notin C\)</span> and a nearest <span class="math" data-index="246" data-tex="\(x\in C\)">\(x\in C\)</span>. The real analytic function <span class="math" data-index="247" data-tex="\(\phi(t)=-|t-y|^2\)">\(\phi(t)=-|t-y|^2\)</span>, <span class="math" data-index="248" data-tex="\(t\in\mathbb R^n\)">\(t\in\mathbb R^n\)</span>, attains its maximum on <span class="math" data-index="249" data-tex="\(C\)">\(C\)</span> at <span class="math" data-index="250" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-index="251" data-tex="\(\nabla\phi(x)=2(y-x)\ne0\)">\(\nabla\phi(x)=2(y-x)\ne0\)</span>. The support-normal theorem supplies this nonzero analytic wavefront normal. Ellipticity makes it characteristic. Real principal type makes its principal gradient nonzero, and Corollary 6.3 fills the entire line through <span class="math" data-index="252" data-tex="\(x\)">\(x\)</span> in that gradient direction, since the equation is homogeneous on all of <span class="math" data-index="253" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. That line is unbounded, contradicting compactness. Thus the original solution is zero.</p>
+<p>For <span class="math" data-index="254" data-tex="\(u=e^sH(t)\)">\(u=e^sH(t)\)</span>, <span class="math" data-index="255" data-tex="\((D_s+i)u=0\)">\((D_s+i)u=0\)</span>, while <span class="math" data-index="256" data-tex="\(\operatorname{supp}u=\{t\geq0\}\)">\(\operatorname{supp}u=\{t\geq0\}\)</span> is unbounded. At its boundary the horizontal normals are characteristic for <span class="math" data-index="257" data-tex="\(p_1(\tau,\sigma)=\sigma\)">\(p_1(\tau,\sigma)=\sigma\)</span>, and the principal gradient is vertical. Every resulting vertical line is indeed contained in the support. This satisfies the propagation conclusion and shows exactly where the compactness contradiction fails.</p>
+<h2 id="references">References</h2>
+<p>[G] Gerd Grubb, <em>Distributions and Operators</em>, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation of distributions</a>, University of Copenhagen lecture notes. The Fourier and tempered-distribution inputs used here have their complete written course proofs.</p>
+<p>[N] NIST, <em>Digital Library of Mathematical Functions</em>, <a href="https://dlmf.nist.gov/10.21">zeros of Bessel functions</a> and <a href="https://dlmf.nist.gov/10.40">large-argument expansions of modified Bessel functions</a>. The complete proof gives its own energy, Laplace and contour arguments for the spherical weight and kernel.</p>
+<p>[H] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990, Sections 8.4 and 8.6. This lesson supplies the full tempered representation, conic localization and admissible-class propagation arguments.</p>
+<h2 id="complete-proof">Complete proof</h2>
+<p>We use the Fourier phase <span class="math" data-index="258" data-tex="\(e^{-ix\cdot\xi}\)">\(e^{-ix\cdot\xi}\)</span>, <span class="math" data-index="259" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, and complex-bilinear distribution pairings. Surface measure on <span class="math" data-index="260" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span> is not normalized; for <span class="math" data-index="261" data-tex="\(n=1\)">\(n=1\)</span>, it is counting measure on <span class="math" data-index="262" data-tex="\(\{-1,1\}\)">\(\{-1,1\}\)</span>. Assume <span class="math" data-index="263" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Complex squares below mean the bilinear polynomial <span class="math" data-index="264" data-tex="\(z\cdot z=\sum z_j^2\)">\(z\cdot z=\sum z_j^2\)</span>, never <span class="math" data-index="265" data-tex="\(\sum|z_j|^2\)">\(\sum|z_j|^2\)</span>.</p>
+<p>The admissible sequences and wavefront definitions are those of <a href="AN02-L190.html">Derivative sequences and microlocal regularity</a>, complete-proof Sections 1–2:</p>
+<span class="math math-display" id="proof-eq-HB1" data-index="266" data-tex="\[
+ \begin{gathered}
+ L_0=1,\qquad L_k&gt;0,\qquad L_k\leq L_{k+1},\qquad
+ k\leq L_k,\qquad L_{k+1}\leq C_LL_k,\\
+ M_0=1,\qquad M_k=L_k^k\quad(k\geq1).
+ \end{gathered}
+ \tag{HB1}
+\]">\[
+ \begin{gathered}
+ L_0=1,\qquad L_k&gt;0,\qquad L_k\leq L_{k+1},\qquad
+ k\leq L_k,\qquad L_{k+1}\leq C_LL_k,\\
+ M_0=1,\qquad M_k=L_k^k\quad(k\geq1).
+ \end{gathered}
+ \tag{HB1}
+\]</span>
+<p>A smooth function belongs locally to <span class="math" data-index="267" data-tex="\(C^L\)">\(C^L\)</span> if its order-<span class="math" data-index="268" data-tex="\(k\)">\(k\)</span> derivatives on each compact set are bounded by <span class="math" data-index="269" data-tex="\(A^{k+1}M_k\)">\(A^{k+1}M_k\)</span>. We use the proved fixed-shift bounds</p>
+<span class="math math-display" id="proof-eq-HB2" data-index="270" data-tex="\[
+ M_{k+c}\leq D_c^{k+1}M_k,\qquad k^k\leq M_k,
+ \tag{HB2}
+\]">\[
+ M_{k+c}\leq D_c^{k+1}M_k,\qquad k^k\leq M_k,
+ \tag{HB2}
+\]</span>
+<p>for each fixed integer <span class="math" data-index="271" data-tex="\(c\geq0\)">\(c\geq0\)</span>. Absence from <span class="math" data-index="272" data-tex="\(\operatorname{WF}_L(u)\)">\(\operatorname{WF}_L(u)\)</span> means that compact extensions <span class="math" data-index="273" data-tex="\(u_N\)">\(u_N\)</span>, equal to <span class="math" data-index="274" data-tex="\(u\)">\(u\)</span> on one neighborhood, have common support and finite order and, on a cone <span class="math" data-index="275" data-tex="\(\Gamma\)">\(\Gamma\)</span> about the covector,</p>
+<span class="math math-display" id="proof-eq-HB3" data-index="276" data-tex="\[
+ \begin{gathered}
+ |\widehat u_N(\xi)|\leq C(1+|\xi|)^\mu\quad\text{for all real }\xi,\\
+ |\widehat u_N(\xi)|\leq A^{N+1}M_N(1+|\xi|)^{-N}
+             \quad(\xi\in\Gamma).
+ \end{gathered}
+ \tag{HB3}
+\]">\[
+ \begin{gathered}
+ |\widehat u_N(\xi)|\leq C(1+|\xi|)^\mu\quad\text{for all real }\xi,\\
+ |\widehat u_N(\xi)|\leq A^{N+1}M_N(1+|\xi|)^{-N}
+             \quad(\xi\in\Gamma).
+ \end{gathered}
+ \tag{HB3}
+\]</span>
+<p>Here <span class="math" data-index="277" data-tex="\(\mu\)">\(\mu\)</span> is a fixed nonnegative integer. Ordinary wavefront uses a fixed compact cutoff with arbitrary inverse Fourier powers instead. The same linked proof establishes
+<span class="math" data-index="278" data-tex="\(\operatorname{WF}(u)\subseteq\operatorname{WF}_L(u)\subseteq\operatorname{WF}_A(u)\)">\(\operatorname{WF}(u)\subseteq\operatorname{WF}_L(u)\subseteq\operatorname{WF}_A(u)\)</span>, the class base projection theorem, class multipliers, analytic pullback, tensor products and proper projection.</p>
+<p>We also use the proved Cauchy, maximum-modulus and contour results in <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>; the tube-boundary sign in <span class="unlinked">Analytic directions of holomorphic boundary values</span>, Theorem 4.1; and the full analytic directional kernels in <a href="AN02-L200.html">Characteristic rays and directional kernels</a>, complete-proof Theorem 1.1. No spherical kernel or class-preserving decomposition is assumed: both are proved below.</p>
+<h3 id="1-the-spherical-fourier-weight-has-no-zeros-off-the-imaginary-radial-axis">1. The spherical Fourier weight has no zeros off the imaginary radial axis</h3>
+<p>Define the entire function</p>
+<span class="math math-display" id="proof-eq-HB4" data-index="279" data-tex="\[
+ I(\zeta)=\int_{S^{n-1}}e^{-\omega\cdot\zeta}\,d\sigma(\omega),
+ \qquad J(\rho)=I(\rho e_1),\qquad \nu=\frac{n-1}{2}.
+ \tag{HB4}
+\]">\[
+ I(\zeta)=\int_{S^{n-1}}e^{-\omega\cdot\zeta}\,d\sigma(\omega),
+ \qquad J(\rho)=I(\rho e_1),\qquad \nu=\frac{n-1}{2}.
+ \tag{HB4}
+\]</span>
+<p>Reflection makes <span class="math" data-index="280" data-tex="\(J\)">\(J\)</span> even. Real rotation invariance gives <span class="math" data-index="281" data-tex="\(I(\xi)=J(|\xi|)\)">\(I(\xi)=J(|\xi|)\)</span>; by holomorphic uniqueness, <span class="math" data-index="282" data-tex="\(I(\zeta)=j(\zeta\cdot\zeta)\)">\(I(\zeta)=j(\zeta\cdot\zeta)\)</span>, where the entire function <span class="math" data-index="283" data-tex="\(j\)">\(j\)</span> is defined by the even series <span class="math" data-index="284" data-tex="\(J(\rho)=j(\rho^2)\)">\(J(\rho)=j(\rho^2)\)</span>. Equality first on real space implies equality on complex space by applying the one-variable identity theorem successively in a polydisk. In particular notation <span class="math" data-index="285" data-tex="\(J(\sqrt{\zeta\cdot\zeta})\)">\(J(\sqrt{\zeta\cdot\zeta})\)</span> is independent of the square-root choice.</p>
+<p>For <span class="math" data-index="286" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="287" data-tex="\(J(\rho)=2\cosh\rho\)">\(J(\rho)=2\cosh\rho\)</span>. For <span class="math" data-index="288" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the sphere parametrization <span class="math" data-index="289" data-tex="\(\omega=(t,\sqrt{1-t^2}\theta)\)">\(\omega=(t,\sqrt{1-t^2}\theta)\)</span> has surface factor <span class="math" data-index="290" data-tex="\((1-t^2)^{(n-3)/2}\)">\((1-t^2)^{(n-3)/2}\)</span>: the <span class="math" data-index="291" data-tex="\(t\)">\(t\)</span>-tangent has length <span class="math" data-index="292" data-tex="\((1-t^2)^{-1/2}\)">\((1-t^2)^{-1/2}\)</span> and the other <span class="math" data-index="293" data-tex="\(n-2\)">\(n-2\)</span> tangents scale by <span class="math" data-index="294" data-tex="\(\sqrt{1-t^2}\)">\(\sqrt{1-t^2}\)</span>. Thus</p>
+<span class="math math-display" id="proof-eq-HB5" data-index="295" data-tex="\[
+ J(\rho)=|S^{n-2}|\int_{-1}^1(1-t^2)^{\nu-1}e^{\rho t}\,dt.
+ \tag{HB5}
+\]">\[
+ J(\rho)=|S^{n-2}|\int_{-1}^1(1-t^2)^{\nu-1}e^{\rho t}\,dt.
+ \tag{HB5}
+\]</span>
+<p>At <span class="math" data-index="296" data-tex="\(n=2\)">\(n=2\)</span> the integrable endpoint power is <span class="math" data-index="297" data-tex="\(-1/2\)">\(-1/2\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For every <span class="math" data-index="298" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, uniformly as <span class="math" data-index="299" data-tex="\(|\rho|\to\infty\)">\(|\rho|\to\infty\)</span> in <span class="math" data-index="300" data-tex="\(|\arg\rho|\leq\pi/2-\varepsilon\)">\(|\arg\rho|\leq\pi/2-\varepsilon\)</span>,</p>
+<span class="math math-display" id="proof-eq-HB6" data-index="301" data-tex="\[
+ J(\rho)=(2\pi)^\nu e^\rho\rho^{-\nu}
+                       \bigl(1+O_\varepsilon(|\rho|^{-1})\bigr).
+ \tag{HB6}
+\]">\[
+ J(\rho)=(2\pi)^\nu e^\rho\rho^{-\nu}
+                       \bigl(1+O_\varepsilon(|\rho|^{-1})\bigr).
+ \tag{HB6}
+\]</span>
+<p>Every zero of <span class="math" data-index="302" data-tex="\(J\)">\(J\)</span> is nonzero and purely imaginary. On the positive real axis,</p>
+<span class="math math-display" id="proof-eq-HB7" data-index="303" data-tex="\[
+ c(1+r)^{-\nu}e^r\leq J(r)\leq C(1+r)^{-\nu}e^r
+                  \qquad(r\geq0).
+ \tag{HB7}
+\]">\[
+ c(1+r)^{-\nu}e^r\leq J(r)\leq C(1+r)^{-\nu}e^r
+                  \qquad(r\geq0).
+ \tag{HB7}
+\]</span>
+<p><strong>Proof.</strong> The one-dimensional formula proves (HB6) directly when <span class="math" data-index="304" data-tex="\(\nu=0\)">\(\nu=0\)</span>. Otherwise put <span class="math" data-index="305" data-tex="\(s=1-t\)">\(s=1-t\)</span> in (HB5). After removing <span class="math" data-index="306" data-tex="\(e^\rho\)">\(e^\rho\)</span>, its integral is
+<span class="math" data-index="307" data-tex="\(\int_0^2s^{\nu-1}(2-s)^{\nu-1}e^{-\rho s}\,ds\)">\(\int_0^2s^{\nu-1}(2-s)^{\nu-1}e^{-\rho s}\,ds\)</span>. On <span class="math" data-index="308" data-tex="\([0,1]\)">\([0,1]\)</span>, replace <span class="math" data-index="309" data-tex="\((2-s)^{\nu-1}\)">\((2-s)^{\nu-1}\)</span> by <span class="math" data-index="310" data-tex="\(2^{\nu-1}\)">\(2^{\nu-1}\)</span>, with error bounded by <span class="math" data-index="311" data-tex="\(Cs\)">\(Cs\)</span>. The error integral is <span class="math" data-index="312" data-tex="\(O((\operatorname{Re}\rho)^{-\nu-1})\)">\(O((\operatorname{Re}\rho)^{-\nu-1})\)</span>; the portion <span class="math" data-index="313" data-tex="\([1,2]\)">\([1,2]\)</span> and the tail of the replacement integral are exponentially small in <span class="math" data-index="314" data-tex="\(\operatorname{Re}\rho\)">\(\operatorname{Re}\rho\)</span>. The identity</p>
+<span class="math math-display" id="proof-eq-HB8" data-index="315" data-tex="\[
+ \int_0^\infty s^{\nu-1}e^{-\rho s}\,ds
+        =\Gamma(\nu)\rho^{-\nu}\qquad(\operatorname{Re}\rho&gt;0)
+ \tag{HB8}
+\]">\[
+ \int_0^\infty s^{\nu-1}e^{-\rho s}\,ds
+        =\Gamma(\nu)\rho^{-\nu}\qquad(\operatorname{Re}\rho&gt;0)
+ \tag{HB8}
+\]</span>
+<p>follows by substitution for positive real <span class="math" data-index="316" data-tex="\(\rho\)">\(\rho\)</span>, then holomorphic uniqueness in the right half-plane. Here <span class="math" data-index="317" data-tex="\(\Gamma(\nu)\)">\(\Gamma(\nu)\)</span> is the defining integral at <span class="math" data-index="318" data-tex="\(\rho=1\)">\(\rho=1\)</span>. The elementary polar Gaussian integral gives <span class="math" data-index="319" data-tex="\(|S^{n-2}|\Gamma(\nu)=2\pi^\nu\)">\(|S^{n-2}|\Gamma(\nu)=2\pi^\nu\)</span>; multiplying by <span class="math" data-index="320" data-tex="\(2^{\nu-1}\)">\(2^{\nu-1}\)</span> yields <span class="math" data-index="321" data-tex="\((2\pi)^\nu\)">\((2\pi)^\nu\)</span>. Since <span class="math" data-index="322" data-tex="\(\operatorname{Re}\rho\geq|\rho|\sin\varepsilon\)">\(\operatorname{Re}\rho\geq|\rho|\sin\varepsilon\)</span>, these estimates prove (HB6). Positivity and continuity of the real integral on bounded intervals then give (HB7).</p>
+<p>For zero avoidance, differentiation under the spherical integral gives <span class="math" data-index="323" data-tex="\(\Delta_\xi I=I\)">\(\Delta_\xi I=I\)</span>. Its radial form, first on the real axis and then by analyticity, is</p>
+<span class="math math-display" id="proof-eq-HB9" data-index="324" data-tex="\[
+ J&#x27;&#x27;(\rho)+(n-1)\rho^{-1}J&#x27;(\rho)=J(\rho),
+ \quad J&#x27;(0)=0,\quad J(0)=|S^{n-1}|&gt;0.
+ \tag{HB9}
+\]">\[
+ J&#x27;&#x27;(\rho)+(n-1)\rho^{-1}J&#x27;(\rho)=J(\rho),
+ \quad J&#x27;(0)=0,\quad J(0)=|S^{n-1}|&gt;0.
+ \tag{HB9}
+\]</span>
+<p>If <span class="math" data-index="325" data-tex="\(J(\rho_0)=0\)">\(J(\rho_0)=0\)</span>, let <span class="math" data-index="326" data-tex="\(g(s)=J(s\rho_0)\)">\(g(s)=J(s\rho_0)\)</span>, <span class="math" data-index="327" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>. Multiply
+<span class="math" data-index="328" data-tex="\((s^{n-1}g&#x27;)&#x27;=\rho_0^2s^{n-1}g\)">\((s^{n-1}g&#x27;)&#x27;=\rho_0^2s^{n-1}g\)</span> by <span class="math" data-index="329" data-tex="\(\overline g\)">\(\overline g\)</span> and integrate. The boundary at one vanishes because <span class="math" data-index="330" data-tex="\(g(1)=0\)">\(g(1)=0\)</span>; at zero it vanishes because <span class="math" data-index="331" data-tex="\(g&#x27;(s)=O(s)\)">\(g&#x27;(s)=O(s)\)</span>, including <span class="math" data-index="332" data-tex="\(n=1\)">\(n=1\)</span>. Hence</p>
+<span class="math math-display" id="proof-eq-HB10" data-index="333" data-tex="\[
+ -\int_0^1s^{n-1}|g&#x27;(s)|^2\,ds
+       =\rho_0^2\int_0^1s^{n-1}|g(s)|^2\,ds.
+ \tag{HB10}
+\]">\[
+ -\int_0^1s^{n-1}|g&#x27;(s)|^2\,ds
+       =\rho_0^2\int_0^1s^{n-1}|g(s)|^2\,ds.
+ \tag{HB10}
+\]</span>
+<p>The second integral is positive. The first is strictly negative: a constant <span class="math" data-index="334" data-tex="\(g\)">\(g\)</span> could not have its nonzero value at zero and vanish at one. Therefore <span class="math" data-index="335" data-tex="\(\rho_0^2\)">\(\rho_0^2\)</span> is negative real, as required. This energy argument proves the precise zero fact needed for the contours. <span class="math" data-index="336" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We record two consequences. For some <span class="math" data-index="337" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, <span class="math" data-index="338" data-tex="\(I(\xi+i\eta)\ne0\)">\(I(\xi+i\eta)\ne0\)</span> whenever <span class="math" data-index="339" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> are real and <span class="math" data-index="340" data-tex="\(|\eta|\leq\delta\)">\(|\eta|\leq\delta\)</span>. Indeed choose <span class="math" data-index="341" data-tex="\(2\delta\)">\(2\delta\)</span> inside a zero-free disk of <span class="math" data-index="342" data-tex="\(J\)">\(J\)</span>. If <span class="math" data-index="343" data-tex="\(I(\xi+i\eta)=0\)">\(I(\xi+i\eta)=0\)</span>, (HB10) would force
+<span class="math" data-index="344" data-tex="\((\xi+i\eta)^2=-b^2\)">\((\xi+i\eta)^2=-b^2\)</span> for a real <span class="math" data-index="345" data-tex="\(|b|&gt;2\delta\)">\(|b|&gt;2\delta\)</span>, whereas its real part is <span class="math" data-index="346" data-tex="\(|\xi|^2-|\eta|^2\geq-\delta^2\)">\(|\xi|^2-|\eta|^2\geq-\delta^2\)</span>. This is impossible. For large <span class="math" data-index="347" data-tex="\(|\xi|=r\)">\(|\xi|=r\)</span>, the square root with positive real part is <span class="math" data-index="348" data-tex="\(r+O(1)\)">\(r+O(1)\)</span>, with real part <span class="math" data-index="349" data-tex="\(r+O(r^{-1})\)">\(r+O(r^{-1})\)</span>, uniformly for <span class="math" data-index="350" data-tex="\(|\eta|\leq\delta\)">\(|\eta|\leq\delta\)</span>. Formula (HB6), and compactness for bounded <span class="math" data-index="351" data-tex="\(\xi\)">\(\xi\)</span>, therefore give</p>
+<span class="math math-display" id="proof-eq-HB11" data-index="352" data-tex="\[
+ |I(\xi+i\eta)^{-1}|\leq C(1+|\xi|)^\nu e^{-|\xi|},
+                         \qquad |\eta|\leq\delta.
+ \tag{HB11}
+\]">\[
+ |I(\xi+i\eta)^{-1}|\leq C(1+|\xi|)^\nu e^{-|\xi|},
+                         \qquad |\eta|\leq\delta.
+ \tag{HB11}
+\]</span>
+<p>Shrinking the strip, Cauchy's polydisk formula gives for each fixed multi-index <span class="math" data-index="353" data-tex="\(\alpha\)">\(\alpha\)</span></p>
+<span class="math math-display" id="proof-eq-HB12" data-index="354" data-tex="\[
+ |\partial_\xi^\alpha(I^{-1})(\xi)|
+       \leq C_\alpha(1+|\xi|)^\nu e^{-|\xi|}.
+ \tag{HB12}
+\]">\[
+ |\partial_\xi^\alpha(I^{-1})(\xi)|
+       \leq C_\alpha(1+|\xi|)^\nu e^{-|\xi|}.
+ \tag{HB12}
+\]</span>
+<h3 id="2-the-kernel-extends-past-the-real-diagonal-and-decreases-at-infinity">2. The kernel extends past the real diagonal and decreases at infinity</h3>
+<p>Put</p>
+<span class="math math-display" id="proof-eq-HB13" data-index="355" data-tex="\[
+ Q=\{z\in\mathbb C^n:|\operatorname{Im}z|&lt;1\},\qquad
+ K(z)=(2\pi)^{-n}\int_{\mathbb R^n}\frac{e^{iz\cdot\xi}}{I(\xi)}\,d\xi.
+ \tag{HB13}
+\]">\[
+ Q=\{z\in\mathbb C^n:|\operatorname{Im}z|&lt;1\},\qquad
+ K(z)=(2\pi)^{-n}\int_{\mathbb R^n}\frac{e^{iz\cdot\xi}}{I(\xi)}\,d\xi.
+ \tag{HB13}
+\]</span>
+<p>Equation (HB7) proves absolute locally uniform convergence in <span class="math" data-index="356" data-tex="\(Q\)">\(Q\)</span>, with all complex derivatives. Thus <span class="math" data-index="357" data-tex="\(K\)">\(K\)</span> is holomorphic. Radial integration gives <span class="math" data-index="358" data-tex="\(K(z)=k(\sqrt{z\cdot z})\)">\(K(z)=k(\sqrt{z\cdot z})\)</span>, initially in <span class="math" data-index="359" data-tex="\(Q\)">\(Q\)</span>, where</p>
+<span class="math math-display" id="proof-eq-HB14" data-index="360" data-tex="\[
+ k(w)=(2\pi)^{-n}\int_0^\infty\frac{J(i\rho w)}{J(\rho)}\rho^{n-1}\,d\rho,
+                        \qquad |\operatorname{Im}w|&lt;1.
+ \tag{HB14}
+\]">\[
+ k(w)=(2\pi)^{-n}\int_0^\infty\frac{J(i\rho w)}{J(\rho)}\rho^{n-1}\,d\rho,
+                        \qquad |\operatorname{Im}w|&lt;1.
+ \tag{HB14}
+\]</span>
+<p>The equality first for real <span class="math" data-index="361" data-tex="\(z\)">\(z\)</span> follows by polar coordinates, and then follows throughout the tube by holomorphic uniqueness. The function <span class="math" data-index="362" data-tex="\(k\)">\(k\)</span> is even.</p>
+<p><strong>Lemma 2.1.</strong> The kernel extends holomorphically to the connected open set</p>
+<span class="math math-display" id="proof-eq-HB15" data-index="363" data-tex="\[
+ \Omega=\{z\in\mathbb C^n:z\cdot z\notin(-\infty,-1]\}.
+ \tag{HB15}
+\]">\[
+ \Omega=\{z\in\mathbb C^n:z\cdot z\notin(-\infty,-1]\}.
+ \tag{HB15}
+\]</span>
+<p>On every closed real-dilation cone whose nonzero points satisfy <span class="math" data-index="364" data-tex="\(z\cdot z\notin(-\infty,0]\)">\(z\cdot z\notin(-\infty,0]\)</span>, it obeys <span class="math" data-index="365" data-tex="\(|K(z)|\leq Ce^{-c|z|}\)">\(|K(z)|\leq Ce^{-c|z|}\)</span> for large <span class="math" data-index="366" data-tex="\(|z|\)">\(|z|\)</span>. For real <span class="math" data-index="367" data-tex="\(x,y\)">\(x,y\)</span> with <span class="math" data-index="368" data-tex="\(|y|&lt;1\)">\(|y|&lt;1\)</span>,</p>
+<span class="math math-display" id="proof-eq-HB16" data-index="369" data-tex="\[
+ \begin{gathered}
+ |K(x+iy)|\leq K(iy),\\
+ K(iy)=\frac{(n-1)!}{(2\pi)^n}(1-|y|)^{-n}
+                          \bigl(1+O(1-|y|)\bigr)
+                 \quad\text{as }|y|\uparrow1.
+ \end{gathered}
+ \tag{HB16}
+\]">\[
+ \begin{gathered}
+ |K(x+iy)|\leq K(iy),\\
+ K(iy)=\frac{(n-1)!}{(2\pi)^n}(1-|y|)^{-n}
+                          \bigl(1+O(1-|y|)\bigr)
+                 \quad\text{as }|y|\uparrow1.
+ \end{gathered}
+ \tag{HB16}
+\]</span>
+<p><strong>Proof.</strong> Rotate the integration ray in (HB14) to <span class="math" data-index="370" data-tex="\(\rho=e^{i\alpha}r\)">\(\rho=e^{i\alpha}r\)</span>, <span class="math" data-index="371" data-tex="\(r\geq0\)">\(r\geq0\)</span>, <span class="math" data-index="372" data-tex="\(|\alpha|&lt;\pi/2\)">\(|\alpha|&lt;\pi/2\)</span>. The denominator is zero-free in that sector by Lemma 1.1. For <span class="math" data-index="373" data-tex="\(w=it\)">\(w=it\)</span>, <span class="math" data-index="374" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, the bounds
+<span class="math" data-index="375" data-tex="\(|J(i\rho w)|\leq |S^{n-1}|e^{|t|\operatorname{Re}\rho}\)">\(|J(i\rho w)|\leq |S^{n-1}|e^{|t|\operatorname{Re}\rho}\)</span> and (HB6) make the outer rotation arc tend to zero. The inner arc tends to zero since <span class="math" data-index="376" data-tex="\(J(0)&gt;0\)">\(J(0)&gt;0\)</span> and the radial power is <span class="math" data-index="377" data-tex="\(n-1\geq0\)">\(n-1\geq0\)</span>. Cauchy's theorem proves equality on that imaginary interval. The rotated integral is holomorphic in the strip</p>
+<span class="math math-display" id="proof-eq-HB17" data-index="378" data-tex="\[
+ |\operatorname{Im}(e^{i\alpha}w)|&lt;\cos\alpha,
+ \quad\text{equivalently}\quad
+ |(\tan\alpha)\operatorname{Re}w+\operatorname{Im}w|&lt;1.
+ \tag{HB17}
+\]">\[
+ |\operatorname{Im}(e^{i\alpha}w)|&lt;\cos\alpha,
+ \quad\text{equivalently}\quad
+ |(\tan\alpha)\operatorname{Re}w+\operatorname{Im}w|&lt;1.
+ \tag{HB17}
+\]</span>
+<p>The bound <span class="math" data-index="379" data-tex="\(|J(z)|\leq|S^{n-1}|e^{|\operatorname{Re}z|}\)">\(|J(z)|\leq|S^{n-1}|e^{|\operatorname{Re}z|}\)</span> proves locally uniform convergence there. Intersections of two such strips are convex and contain the imaginary interval <span class="math" data-index="380" data-tex="\((-i,i)\)">\((-i,i)\)</span>, so their definitions agree. Their union is the plane minus the imaginary rays <span class="math" data-index="381" data-tex="\(\{it:|t|\geq1\}\)">\(\{it:|t|\geq1\}\)</span>: when <span class="math" data-index="382" data-tex="\(\operatorname{Re}w\ne0\)">\(\operatorname{Re}w\ne0\)</span>, choose <span class="math" data-index="383" data-tex="\(\tan\alpha=-\operatorname{Im}w/\operatorname{Re}w\)">\(\tan\alpha=-\operatorname{Im}w/\operatorname{Re}w\)</span>. Evenness now defines a holomorphic function of <span class="math" data-index="384" data-tex="\(w^2\)">\(w^2\)</span> off <span class="math" data-index="385" data-tex="\((-\infty,-1]\)">\((-\infty,-1]\)</span>, including at zero by its even power series. This proves (HB15). For <span class="math" data-index="386" data-tex="\(z=x+iy\in\Omega\)">\(z=x+iy\in\Omega\)</span>, the path <span class="math" data-index="387" data-tex="\(x+ity\)">\(x+ity\)</span>, <span class="math" data-index="388" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, stays there: if <span class="math" data-index="389" data-tex="\(x\cdot y\ne0\)">\(x\cdot y\ne0\)</span>, its square is nonreal for <span class="math" data-index="390" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>; otherwise <span class="math" data-index="391" data-tex="\(|x|^2-t^2|y|^2&gt;-1\)">\(|x|^2-t^2|y|^2&gt;-1\)</span>. Hence <span class="math" data-index="392" data-tex="\(\Omega\)">\(\Omega\)</span> is connected.</p>
+<p>Here are the decay details. Shifting the Cartesian integral by <span class="math" data-index="393" data-tex="\(i\eta\)">\(i\eta\)</span>, using (HB11) on bounded imaginary strips, gives</p>
+<span class="math math-display" id="proof-eq-HB18" data-index="394" data-tex="\[
+ K(x)e^{x\cdot\eta}=(2\pi)^{-n}
+              \int_{\mathbb R^n}\frac{e^{ix\cdot\xi}}{I(\xi+i\eta)}\,d\xi.
+ \tag{HB18}
+\]">\[
+ K(x)e^{x\cdot\eta}=(2\pi)^{-n}
+              \int_{\mathbb R^n}\frac{e^{ix\cdot\xi}}{I(\xi+i\eta)}\,d\xi.
+ \tag{HB18}
+\]</span>
+<p>The outer contour sides vanish by exponential decay in <span class="math" data-index="395" data-tex="\(|\xi|\)">\(|\xi|\)</span>. Set <span class="math" data-index="396" data-tex="\(\eta=(\delta/2)x/|x|\)">\(\eta=(\delta/2)x/|x|\)</span> to get <span class="math" data-index="397" data-tex="\(|k(t)|\leq Ce^{-d|t|}\)">\(|k(t)|\leq Ce^{-d|t|}\)</span> on the real axis for some <span class="math" data-index="398" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>.</p>
+<p>On each closed sector <span class="math" data-index="399" data-tex="\(|\arg w|\leq\beta&lt;\pi/2\)">\(|\arg w|\leq\beta&lt;\pi/2\)</span>, the rotated formula with <span class="math" data-index="400" data-tex="\(\alpha=-\arg w\)">\(\alpha=-\arg w\)</span> is uniformly bounded: its numerator is <span class="math" data-index="401" data-tex="\(J(ir|w|)\)">\(J(ir|w|)\)</span>, of modulus at most <span class="math" data-index="402" data-tex="\(|S^{n-1}|\)">\(|S^{n-1}|\)</span>; the reciprocal denominator is bounded by <span class="math" data-index="403" data-tex="\(C(1+r)^\nu e^{-r\cos\beta}\)">\(C(1+r)^\nu e^{-r\cos\beta}\)</span>. Thus <span class="math" data-index="404" data-tex="\(|k(w)|\leq C_\beta\)">\(|k(w)|\leq C_\beta\)</span>. To turn this into exponential decrease in a smaller sector, fix <span class="math" data-index="405" data-tex="\(0&lt;\gamma&lt;\beta&lt;\pi/2\)">\(0&lt;\gamma&lt;\beta&lt;\pi/2\)</span>. In the upper wedge use</p>
+<span class="math math-display" id="proof-eq-HB19" data-index="406" data-tex="\[
+ H(w)=k(w)\exp\!\left(\frac{d}{2\sin\beta}
+                            e^{i(\pi/2-\beta)}w\right).
+ \tag{HB19}
+\]">\[
+ H(w)=k(w)\exp\!\left(\frac{d}{2\sin\beta}
+                            e^{i(\pi/2-\beta)}w\right).
+ \tag{HB19}
+\]</span>
+<p>It is bounded on both boundary rays: the real-axis factor grows only as <span class="math" data-index="407" data-tex="\(e^{dt/2}\)">\(e^{dt/2}\)</span>, while the other factor has modulus one. Inside it grows at most exponentially. Choose <span class="math" data-index="408" data-tex="\(1&lt;p&lt;\pi/(2\beta)\)">\(1&lt;p&lt;\pi/(2\beta)\)</span> and apply maximum modulus on truncated wedges to <span class="math" data-index="409" data-tex="\(H(w)e^{-\epsilon w^p}\)">\(H(w)e^{-\epsilon w^p}\)</span>, using the branch with <span class="math" data-index="410" data-tex="\(0\leq\arg w\leq\beta\)">\(0\leq\arg w\leq\beta\)</span>. On the outer arc its modulus tends to zero because <span class="math" data-index="411" data-tex="\(\operatorname{Re}w^p\geq\cos(p\beta)|w|^p\)">\(\operatorname{Re}w^p\geq\cos(p\beta)|w|^p\)</span>; on the rays the extra factor has modulus at most one. The origin is handled by continuity, or by an inner arc tending to zero. Letting the outer radius tend to infinity and then <span class="math" data-index="412" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> proves that <span class="math" data-index="413" data-tex="\(H\)">\(H\)</span> is bounded. Therefore
+<span class="math" data-index="414" data-tex="\(|k(w)|\leq C\exp(-c|w|)\)">\(|k(w)|\leq C\exp(-c|w|)\)</span> for <span class="math" data-index="415" data-tex="\(0\leq\arg w\leq\gamma\)">\(0\leq\arg w\leq\gamma\)</span>, since <span class="math" data-index="416" data-tex="\(\operatorname{Re}(e^{i(\pi/2-\beta)}w)=|w|\sin(\beta-\arg w)\)">\(\operatorname{Re}(e^{i(\pi/2-\beta)}w)=|w|\sin(\beta-\arg w)\)</span>. The lower wedge has the conjugate argument. For the stated complex cone, compactness of its unit section gives <span class="math" data-index="417" data-tex="\(|\sqrt{z\cdot z}|\geq c_1|z|\)">\(|\sqrt{z\cdot z}|\geq c_1|z|\)</span> and a square-root argument bounded away from <span class="math" data-index="418" data-tex="\(\pm\pi/2\)">\(\pm\pi/2\)</span>. This proves the full cone estimate. Fixed complex derivatives have the same exponential decrease on a slightly smaller cone, by Cauchy.</p>
+<p>The first inequality of (HB16) is the triangle inequality in (HB13), since <span class="math" data-index="419" data-tex="\(I(\xi)&gt;0\)">\(I(\xi)&gt;0\)</span> on real space. For <span class="math" data-index="420" data-tex="\(t=|y|\)">\(t=|y|\)</span> near one, polar integration gives</p>
+<span class="math math-display" id="proof-eq-HB20" data-index="421" data-tex="\[
+ K(iy)=(2\pi)^{-n}\int_0^\infty
+                     \frac{J(t\rho)}{J(\rho)}\rho^{n-1}\,d\rho.
+ \tag{HB20}
+\]">\[
+ K(iy)=(2\pi)^{-n}\int_0^\infty
+                     \frac{J(t\rho)}{J(\rho)}\rho^{n-1}\,d\rho.
+ \tag{HB20}
+\]</span>
+<p>For <span class="math" data-index="422" data-tex="\(n\geq2\)">\(n\geq2\)</span>, (HB6) gives the ratio <span class="math" data-index="423" data-tex="\(t^{-\nu}e^{-(1-t)\rho}(1+O(\rho^{-1}))\)">\(t^{-\nu}e^{-(1-t)\rho}(1+O(\rho^{-1}))\)</span>, uniformly for <span class="math" data-index="424" data-tex="\(t\in[1/2,1]\)">\(t\in[1/2,1]\)</span> and large <span class="math" data-index="425" data-tex="\(\rho\)">\(\rho\)</span>. The leading integral is <span class="math" data-index="426" data-tex="\((n-1)!(1-t)^{-n}\)">\((n-1)!(1-t)^{-n}\)</span>. The error is <span class="math" data-index="427" data-tex="\(O((1-t)^{1-n})\)">\(O((1-t)^{1-n})\)</span>; the bounded initial interval contributes <span class="math" data-index="428" data-tex="\(O(1)\)">\(O(1)\)</span>. Also <span class="math" data-index="429" data-tex="\(t^{-\nu}=1+O(1-t)\)">\(t^{-\nu}=1+O(1-t)\)</span>. For <span class="math" data-index="430" data-tex="\(n=1\)">\(n=1\)</span>, the exact cosh formula gives an exponentially small ratio error and an <span class="math" data-index="431" data-tex="\(O(1)\)">\(O(1)\)</span> integrated error. These prove the second assertion of (HB16), in every dimension. <span class="math" data-index="432" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two estimates will be used repeatedly. Cauchy's formula with a radius proportional to <span class="math" data-index="433" data-tex="\(1-|y|\)">\(1-|y|\)</span>, (HB16), and the cone decay at large real part give, for each fixed <span class="math" data-index="434" data-tex="\(\beta\)">\(\beta\)</span>,</p>
+<span class="math math-display" id="proof-eq-HB21" data-index="435" data-tex="\[
+ |\partial^\beta K(x+iy)|
+ \leq C_\beta(1-|y|)^{-n-|\beta|}e^{-c|x|},
+ \qquad |y|&lt;1.
+ \tag{HB21}
+\]">\[
+ |\partial^\beta K(x+iy)|
+ \leq C_\beta(1-|y|)^{-n-|\beta|}e^{-c|x|},
+ \qquad |y|&lt;1.
+ \tag{HB21}
+\]</span>
+<p>The constant <span class="math" data-index="436" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> can be chosen independent of this fixed derivative order. If a real compact set <span class="math" data-index="437" data-tex="\(B\)">\(B\)</span> stays a positive distance from <span class="math" data-index="438" data-tex="\(x_0\)">\(x_0\)</span>, then <span class="math" data-index="439" data-tex="\(K(z-t)\)">\(K(z-t)\)</span>, <span class="math" data-index="440" data-tex="\(t\in B\)">\(t\in B\)</span>, is holomorphic across <span class="math" data-index="441" data-tex="\(z=x_0-i\theta\)">\(z=x_0-i\theta\)</span>, <span class="math" data-index="442" data-tex="\(|\theta|=1\)">\(|\theta|=1\)</span>, on a common neighborhood. Indeed the sufficient condition</p>
+<span class="math math-display" id="proof-eq-HB22" data-index="443" data-tex="\[
+ |\operatorname{Im}z|^2&lt;1+|\operatorname{Re}z-t|^2
+ \tag{HB22}
+\]">\[
+ |\operatorname{Im}z|^2&lt;1+|\operatorname{Re}z-t|^2
+ \tag{HB22}
+\]</span>
+<p>keeps its bilinear square off the excluded cut. The same statement, with Schwartz decrease and all fixed derivatives in <span class="math" data-index="444" data-tex="\(t\)">\(t\)</span>, holds for unbounded real <span class="math" data-index="445" data-tex="\(t\)">\(t\)</span> outside a fixed neighborhood of <span class="math" data-index="446" data-tex="\(x_0\)">\(x_0\)</span>; the cone estimate gives the tail.</p>
+<h3 id="3-every-tempered-distribution-has-one-holomorphic-representative">3. Every tempered distribution has one holomorphic representative</h3>
+<p>For <span class="math" data-index="447" data-tex="\(u\in\mathcal S&#x27;(\mathbb R^n)\)">\(u\in\mathcal S&#x27;(\mathbb R^n)\)</span>, define <span class="math" data-index="448" data-tex="\(U(z)=\langle u(t),K(z-t)\rangle\)">\(U(z)=\langle u(t),K(z-t)\rangle\)</span>. Formula (HB21) makes this well-defined and holomorphic in <span class="math" data-index="449" data-tex="\(Q\)">\(Q\)</span>. A tempered seminorm bound for <span class="math" data-index="450" data-tex="\(u\)">\(u\)</span>, followed by <span class="math" data-index="451" data-tex="\((1+|t|)^a\leq(1+|x|)^a(1+|x-t|)^a\)">\((1+|t|)^a\leq(1+|x|)^a(1+|x-t|)^a\)</span>, gives integers <span class="math" data-index="452" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> and <span class="math" data-index="453" data-tex="\(C\)">\(C\)</span> with</p>
+<span class="math math-display" id="proof-eq-HB23" data-index="454" data-tex="\[
+ |U(x+iy)|\leq C(1+|x|)^a(1-|y|)^{-b}.
+ \tag{HB23}
+\]">\[
+ |U(x+iy)|\leq C(1+|x|)^a(1-|y|)^{-b}.
+ \tag{HB23}
+\]</span>
+<p>For <span class="math" data-index="455" data-tex="\(|y|&lt;1\)">\(|y|&lt;1\)</span>, its Fourier transform in <span class="math" data-index="456" data-tex="\(x\)">\(x\)</span> is</p>
+<span class="math math-display" id="proof-eq-HB24" data-index="457" data-tex="\[
+ \widehat U_y(\xi)=m_y(\xi)\widehat u(\xi),\qquad
+ m_y(\xi)=\frac{e^{-y\cdot\xi}}{I(\xi)}.
+ \tag{HB24}
+\]">\[
+ \widehat U_y(\xi)=m_y(\xi)\widehat u(\xi),\qquad
+ m_y(\xi)=\frac{e^{-y\cdot\xi}}{I(\xi)}.
+ \tag{HB24}
+\]</span>
+<p>For <span class="math" data-index="458" data-tex="\(|y|\leq1\)">\(|y|\leq1\)</span>, (HB12) and differentiation show that every fixed <span class="math" data-index="459" data-tex="\(\xi\)">\(\xi\)</span>-derivative of <span class="math" data-index="460" data-tex="\(m_y\)">\(m_y\)</span> has a common polynomial bound. Derivatives in <span class="math" data-index="461" data-tex="\(y\)">\(y\)</span> add only fixed polynomial powers. Thus <span class="math" data-index="462" data-tex="\(m_y\)">\(m_y\)</span> acts continuously on Schwartz space, depends continuously on <span class="math" data-index="463" data-tex="\(y\)">\(y\)</span> there uniformly on bounded test families, and defines a strongly continuous family <span class="math" data-index="464" data-tex="\(U_y\in\mathcal S&#x27;\)">\(U_y\in\mathcal S&#x27;\)</span> on the closed unit ball. To check the asserted continuity, apply the mean-value formula in <span class="math" data-index="465" data-tex="\(y\)">\(y\)</span> and use the common polynomial bounds times the Schwartz test seminorms; the line between two points stays in that closed ball.</p>
+<p>The boundary distributions <span class="math" data-index="466" data-tex="\(U_\omega=U(\cdot+i\omega)\)">\(U_\omega=U(\cdot+i\omega)\)</span>, <span class="math" data-index="467" data-tex="\(|\omega|=1\)">\(|\omega|=1\)</span>, therefore exist in <span class="math" data-index="468" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, are continuous in <span class="math" data-index="469" data-tex="\(\omega\)">\(\omega\)</span>, and satisfy</p>
+<span class="math math-display" id="proof-eq-HB25" data-index="470" data-tex="\[
+ u=\int_{S^{n-1}}U_\omega\,d\sigma(\omega).
+ \tag{HB25}
+\]">\[
+ u=\int_{S^{n-1}}U_\omega\,d\sigma(\omega).
+ \tag{HB25}
+\]</span>
+<p>Indeed the integral of their Fourier multiplier is <span class="math" data-index="471" data-tex="\(I(\xi)/I(\xi)=1\)">\(I(\xi)/I(\xi)=1\)</span>. Uniform polynomial bounds justify this equality on every Schwartz test and on bounded test families.</p>
+<p><strong>Proposition 3.1 (converse and uniqueness).</strong> Every holomorphic <span class="math" data-index="472" data-tex="\(U\)">\(U\)</span> in <span class="math" data-index="473" data-tex="\(Q\)">\(Q\)</span> satisfying (HB23) is the representative <span class="math" data-index="474" data-tex="\(K*u\)">\(K*u\)</span> of the tempered distribution defined by (HB25).</p>
+<p><strong>Proof.</strong> Take <span class="math" data-index="475" data-tex="\(b\)">\(b\)</span> to be a nonnegative integer. For <span class="math" data-index="476" data-tex="\(\phi\in\mathcal S\)">\(\phi\in\mathcal S\)</span>, set <span class="math" data-index="477" data-tex="\(F_\omega(t)=\int U(x+it\omega)\phi(x)\,dx\)">\(F_\omega(t)=\int U(x+it\omega)\phi(x)\,dx\)</span>, <span class="math" data-index="478" data-tex="\(0\leq t&lt;1\)">\(0\leq t&lt;1\)</span>. Cauchy–Riemann and compactly justified integration by parts give
+<span class="math" data-index="479" data-tex="\(F_\omega^{(j)}(t)=\int U(x+it\omega)(-i\omega\cdot\partial_x)^j\phi(x)\,dx\)">\(F_\omega^{(j)}(t)=\int U(x+it\omega)(-i\omega\cdot\partial_x)^j\phi(x)\,dx\)</span>. The assertion for Schwartz tests follows by a real cutoff tending to one, since all fixed interior derivatives of <span class="math" data-index="480" data-tex="\(U\)">\(U\)</span> have polynomial growth. Taylor's formula at zero, through degree <span class="math" data-index="481" data-tex="\(b\)">\(b\)</span>, is</p>
+<span class="math math-display" id="proof-eq-HB26" data-index="482" data-tex="\[
+ F_\omega(r)=\sum_{j=0}^b\frac{r^j}{j!}F_\omega^{(j)}(0)
+       +\frac1{b!}\int_0^r(r-t)^bF_\omega^{(b+1)}(t)\,dt.
+ \tag{HB26}
+\]">\[
+ F_\omega(r)=\sum_{j=0}^b\frac{r^j}{j!}F_\omega^{(j)}(0)
+       +\frac1{b!}\int_0^r(r-t)^bF_\omega^{(b+1)}(t)\,dt.
+ \tag{HB26}
+\]</span>
+<p>Its integrand is bounded by a fixed weighted <span class="math" data-index="483" data-tex="\(L^1\)">\(L^1\)</span> seminorm of derivatives of <span class="math" data-index="484" data-tex="\(\phi\)">\(\phi\)</span>: <span class="math" data-index="485" data-tex="\((r-t)^b(1-t)^{-b}\leq1\)">\((r-t)^b(1-t)^{-b}\leq1\)</span>. Dominated convergence as <span class="math" data-index="486" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span> gives a boundary functional, with a common finite Schwartz seminorm bound and continuity in <span class="math" data-index="487" data-tex="\(\omega\)">\(\omega\)</span>. The same argument is uniform on bounded test families, giving strong convergence and strong continuity. Thus (HB25) defines <span class="math" data-index="488" data-tex="\(u\in\mathcal S&#x27;\)">\(u\in\mathcal S&#x27;\)</span>.</p>
+<p>For interior <span class="math" data-index="489" data-tex="\(y\)">\(y\)</span>, the Cauchy–Riemann equations give <span class="math" data-index="490" data-tex="\(\partial_{y_j}\widehat U_y=-\xi_j\widehat U_y\)">\(\partial_{y_j}\widehat U_y=-\xi_j\widehat U_y\)</span>. Work first with compactly supported frequency tests, where multiplication by <span class="math" data-index="491" data-tex="\(e^{y\cdot\xi}\)">\(e^{y\cdot\xi}\)</span> is harmless. It follows that <span class="math" data-index="492" data-tex="\(e^{y\cdot\xi}\widehat U_y=A\)">\(e^{y\cdot\xi}\widehat U_y=A\)</span>, independent of <span class="math" data-index="493" data-tex="\(y\)">\(y\)</span> in the connected unit ball. Passing radially to <span class="math" data-index="494" data-tex="\(\omega\)">\(\omega\)</span> and integrating gives <span class="math" data-index="495" data-tex="\(\widehat u=I A\)">\(\widehat u=I A\)</span> as local frequency distributions. Since <span class="math" data-index="496" data-tex="\(I\)">\(I\)</span> is nonzero on real space, <span class="math" data-index="497" data-tex="\(A=I^{-1}\widehat u\)">\(A=I^{-1}\widehat u\)</span>. Formula (HB24) follows in <span class="math" data-index="498" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> because its right side is a tempered multiplier; equality of local distributions identifies it with <span class="math" data-index="499" data-tex="\(\widehat U_y\)">\(\widehat U_y\)</span>. Fourier inversion now gives <span class="math" data-index="500" data-tex="\(U=K*u\)">\(U=K*u\)</span>. In particular an averaged boundary equal to zero forces <span class="math" data-index="501" data-tex="\(U=0\)">\(U=0\)</span>, proving uniqueness. No exponentially growing function has been multiplied into an arbitrary tempered distribution in this argument. <span class="math" data-index="502" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="4-one-regular-covector-gives-derivative-bounds-at-one-boundary-point">4. One regular covector gives derivative bounds at one boundary point</h3>
+<p>Say that a holomorphic <span class="math" data-index="503" data-tex="\(U\)">\(U\)</span> is <strong>in <span class="math" data-index="504" data-tex="\(C^L\)">\(C^L\)</span> at a boundary point</strong> <span class="math" data-index="505" data-tex="\(z_0\in\partial Q\)">\(z_0\in\partial Q\)</span> if there is a neighborhood <span class="math" data-index="506" data-tex="\(V\)">\(V\)</span> of <span class="math" data-index="507" data-tex="\(z_0\)">\(z_0\)</span> and one <span class="math" data-index="508" data-tex="\(B\geq1\)">\(B\geq1\)</span> such that</p>
+<span class="math math-display" id="proof-eq-HB27" data-index="509" data-tex="\[
+ |\partial_z^\alpha U(z)|\leq B^{|\alpha|+1}M_{|\alpha|}
+                    \qquad(z\in V\cap Q).
+ \tag{HB27}
+\]">\[
+ |\partial_z^\alpha U(z)|\leq B^{|\alpha|+1}M_{|\alpha|}
+                    \qquad(z\in V\cap Q).
+ \tag{HB27}
+\]</span>
+<p>Being in <span class="math" data-index="510" data-tex="\(C^\infty\)">\(C^\infty\)</span> there means a uniform bound for each fixed derivative, without one common exponential constant. These definitions include all complex directions on the interior side of the boundary.</p>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-index="511" data-tex="\(U=K*u\)">\(U=K*u\)</span>, <span class="math" data-index="512" data-tex="\(u\in\mathcal S&#x27;\)">\(u\in\mathcal S&#x27;\)</span>, and <span class="math" data-index="513" data-tex="\(|\theta_0|=1\)">\(|\theta_0|=1\)</span>. If <span class="math" data-index="514" data-tex="\((x_0,\theta_0)\notin\operatorname{WF}_L(u)\)">\((x_0,\theta_0)\notin\operatorname{WF}_L(u)\)</span>, then <span class="math" data-index="515" data-tex="\(U\)">\(U\)</span> is in <span class="math" data-index="516" data-tex="\(C^L\)">\(C^L\)</span> at <span class="math" data-index="517" data-tex="\(x_0-i\theta_0\)">\(x_0-i\theta_0\)</span>. Ordinary wavefront absence gives the corresponding <span class="math" data-index="518" data-tex="\(C^\infty\)">\(C^\infty\)</span> assertion.</p>
+<p><strong>Proof.</strong> Choose the extensions in (HB3), equal to <span class="math" data-index="519" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="520" data-tex="\(B(x_0,r)\)">\(B(x_0,r)\)</span>, and write <span class="math" data-index="521" data-tex="\(u=u_N+v_N\)">\(u=u_N+v_N\)</span>. The family <span class="math" data-index="522" data-tex="\(v_N\)">\(v_N\)</span> is bounded in <span class="math" data-index="523" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> and vanishes on that ball. Its convolution with <span class="math" data-index="524" data-tex="\(K\)">\(K\)</span> is holomorphic on a fixed full neighborhood of <span class="math" data-index="525" data-tex="\(x_0-i\theta_0\)">\(x_0-i\theta_0\)</span>, uniformly in <span class="math" data-index="526" data-tex="\(N\)">\(N\)</span>. Here is the required off-diagonal justification. Choose a real cutoff <span class="math" data-index="527" data-tex="\(\psi=1\)">\(\psi=1\)</span> on <span class="math" data-index="528" data-tex="\(B(x_0,r/2)\)">\(B(x_0,r/2)\)</span>, supported in <span class="math" data-index="529" data-tex="\(B(x_0,3r/4)\)">\(B(x_0,3r/4)\)</span>. For</p>
+<span class="math math-display" id="proof-eq-HB28" data-index="530" data-tex="\[
+ |\operatorname{Re}z-x_0|&lt;r/4,\qquad
+ |\operatorname{Im}z|^2&lt;1+r^2/32,
+ \tag{HB28}
+\]">\[
+ |\operatorname{Re}z-x_0|&lt;r/4,\qquad
+ |\operatorname{Im}z|^2&lt;1+r^2/32,
+ \tag{HB28}
+\]</span>
+<p>the Schwartz-valued function <span class="math" data-index="531" data-tex="\((1-\psi(t))K(z-t)\)">\((1-\psi(t))K(z-t)\)</span> is holomorphic in <span class="math" data-index="532" data-tex="\(z\)">\(z\)</span>. Where its cutoff is nonzero, <span class="math" data-index="533" data-tex="\(|t-x_0|\geq r/2\)">\(|t-x_0|\geq r/2\)</span>, so <span class="math" data-index="534" data-tex="\(|\operatorname{Re}z-t|&gt;r/4\)">\(|\operatorname{Re}z-t|&gt;r/4\)</span> and (HB22) applies. At infinity Lemma 2.1 gives exponential decrease with all fixed derivatives and weights. Pair this function with <span class="math" data-index="535" data-tex="\(v_N=(1-\psi)v_N\)">\(v_N=(1-\psi)v_N\)</span>. Common tempered seminorm bounds give locally uniform bounds, and Cauchy on a smaller complex neighborhood gives derivative bounds <span class="math" data-index="536" data-tex="\(C^{k+1}k!\)">\(C^{k+1}k!\)</span>, uniform in <span class="math" data-index="537" data-tex="\(N\)">\(N\)</span>. These satisfy (HB27) by <span class="math" data-index="538" data-tex="\(k!\leq k^k\leq M_k\)">\(k!\leq k^k\leq M_k\)</span>.</p>
+<p>It remains to bound <span class="math" data-index="539" data-tex="\(K*u_N\)">\(K*u_N\)</span> uniformly up to the boundary on the interior side. Write <span class="math" data-index="540" data-tex="\(k=|\alpha|\)">\(k=|\alpha|\)</span>, choose the fixed integer</p>
+<span class="math math-display" id="proof-eq-HB29" data-index="541" data-tex="\[
+ c=\mu+2n+3,\qquad N=k+c,
+ \tag{HB29}
+\]">\[
+ c=\mu+2n+3,\qquad N=k+c,
+ \tag{HB29}
+\]</span>
+<p>and use the Fourier derivative formula and (HB7):</p>
+<span class="math math-display" id="proof-eq-HB30" data-index="542" data-tex="\[
+ |\partial^\alpha(K*u_N)(x+iy)|
+ \leq C\int e^{-y\cdot\xi-|\xi|}(1+|\xi|)^\nu
+                         |\xi|^k|\widehat u_N(\xi)|\,d\xi.
+ \tag{HB30}
+\]">\[
+ |\partial^\alpha(K*u_N)(x+iy)|
+ \leq C\int e^{-y\cdot\xi-|\xi|}(1+|\xi|)^\nu
+                         |\xi|^k|\widehat u_N(\xi)|\,d\xi.
+ \tag{HB30}
+\]</span>
+<p>For <span class="math" data-index="543" data-tex="\(|y|&lt;1\)">\(|y|&lt;1\)</span> the exponential is at most one. On the good cone <span class="math" data-index="544" data-tex="\(\Gamma\)">\(\Gamma\)</span>, first consider <span class="math" data-index="545" data-tex="\(|\xi|\leq L_N\)">\(|\xi|\leq L_N\)</span>. The common polynomial bound in (HB3) gives</p>
+<span class="math math-display" id="proof-eq-HB31" data-index="546" data-tex="\[
+ C^{k+1}L_N^{k+\mu+\nu+n}\leq C^{N+1}M_N.
+ \tag{HB31}
+\]">\[
+ C^{k+1}L_N^{k+\mu+\nu+n}\leq C^{N+1}M_N.
+ \tag{HB31}
+\]</span>
+<p>Here <span class="math" data-index="547" data-tex="\(L_N\geq N\geq1\)">\(L_N\geq N\geq1\)</span> and <span class="math" data-index="548" data-tex="\(k+\mu+\nu+n\leq N\)">\(k+\mu+\nu+n\leq N\)</span>. On <span class="math" data-index="549" data-tex="\(\Gamma\cap\{|\xi|&gt;L_N\}\)">\(\Gamma\cap\{|\xi|&gt;L_N\}\)</span>, the regular bound gives at most</p>
+<span class="math math-display" id="proof-eq-HB32" data-index="550" data-tex="\[
+ C A^{N+1}M_N
+       \int_{L_N}^\infty r^{k+\nu+n-1-N}\,dr
+ =\frac{C A^{N+1}M_N L_N^{k+\nu+n-N}}{N-k-\nu-n}
+ \leq C_1^{N+1}M_N.
+ \tag{HB32}
+\]">\[
+ C A^{N+1}M_N
+       \int_{L_N}^\infty r^{k+\nu+n-1-N}\,dr
+ =\frac{C A^{N+1}M_N L_N^{k+\nu+n-N}}{N-k-\nu-n}
+ \leq C_1^{N+1}M_N.
+ \tag{HB32}
+\]</span>
+<p>The denominator is a fixed positive number because of (HB29).</p>
+<p>Outside <span class="math" data-index="551" data-tex="\(\Gamma\)">\(\Gamma\)</span>, shrink the neighborhood of <span class="math" data-index="552" data-tex="\(-\theta_0\)">\(-\theta_0\)</span> so that
+<span class="math" data-index="553" data-tex="\(-y\cdot\xi-|\xi|\leq-b|\xi|\)">\(-y\cdot\xi-|\xi|\leq-b|\xi|\)</span> there for some <span class="math" data-index="554" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. This is the fixed angular separation from <span class="math" data-index="555" data-tex="\(\theta_0\)">\(\theta_0\)</span>. The common polynomial bound then gives a radial integral bounded by</p>
+<span class="math math-display" id="proof-eq-HB33" data-index="556" data-tex="\[
+ C\int_0^\infty e^{-br}(1+r)^{k+\mu+\nu+n-1}\,dr
+       \leq C_2^{N+1}N!\leq C_2^{N+1}M_N.
+ \tag{HB33}
+\]">\[
+ C\int_0^\infty e^{-br}(1+r)^{k+\mu+\nu+n-1}\,dr
+       \leq C_2^{N+1}N!\leq C_2^{N+1}M_N.
+ \tag{HB33}
+\]</span>
+<p>For completeness, choose a fixed integer <span class="math" data-index="557" data-tex="\(d\geq\mu+\nu+n\)">\(d\geq\mu+\nu+n\)</span>, still smaller than <span class="math" data-index="558" data-tex="\(c\)">\(c\)</span>. Split at <span class="math" data-index="559" data-tex="\(r=1\)">\(r=1\)</span>, bound <span class="math" data-index="560" data-tex="\((1+r)^{k+d-1}\)">\((1+r)^{k+d-1}\)</span> by <span class="math" data-index="561" data-tex="\(2^{k+d-1}r^{k+d-1}\)">\(2^{k+d-1}r^{k+d-1}\)</span> on the tail, and use <span class="math" data-index="562" data-tex="\(\int_0^\infty e^{-br}r^{k+d-1}\,dr=(k+d-1)!b^{-k-d}\)">\(\int_0^\infty e^{-br}r^{k+d-1}\,dr=(k+d-1)!b^{-k-d}\)</span>. Since <span class="math" data-index="563" data-tex="\(k+d-1\leq N\)">\(k+d-1\leq N\)</span>, (HB33) follows.</p>
+<p>Sum (HB31)–(HB33) and apply the fixed-shift estimate <span class="math" data-index="564" data-tex="\(M_{k+c}\leq D_c^{k+1}M_k\)">\(M_{k+c}\leq D_c^{k+1}M_k\)</span>. The resulting bound is <span class="math" data-index="565" data-tex="\(B^{k+1}M_k\)">\(B^{k+1}M_k\)</span>, uniformly in <span class="math" data-index="566" data-tex="\(x\)">\(x\)</span> near <span class="math" data-index="567" data-tex="\(x_0\)">\(x_0\)</span> and <span class="math" data-index="568" data-tex="\(y\)">\(y\)</span> near <span class="math" data-index="569" data-tex="\(-\theta_0\)">\(-\theta_0\)</span>, <span class="math" data-index="570" data-tex="\(|y|&lt;1\)">\(|y|&lt;1\)</span>. Combine it with the analytic error term already estimated. This proves (HB27). The witness remains at <span class="math" data-index="571" data-tex="\(N=k+c\)">\(N=k+c\)</span>; no comparison with a multiplied index is used.</p>
+<p>For ordinary wavefront, use one fixed compact cutoff <span class="math" data-index="572" data-tex="\(u_0\)">\(u_0\)</span> agreeing with <span class="math" data-index="573" data-tex="\(u\)">\(u\)</span> near <span class="math" data-index="574" data-tex="\(x_0\)">\(x_0\)</span>. Its good-cone transform decreases faster than every power. For each fixed <span class="math" data-index="575" data-tex="\(k\)">\(k\)</span>, use a sufficiently large power in (HB30); the complementary cone still has exponential decrease. The off-diagonal remainder is analytic as before. This gives every fixed derivative bound and proves the ordinary assertion. <span class="math" data-index="576" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="5-a-spherical-patch-isolates-exactly-its-frequency-directions">5. A spherical patch isolates exactly its frequency directions</h3>
+<p>Let <span class="math" data-index="577" data-tex="\(\lambda\)">\(\lambda\)</span> be a finite complex Borel measure on the unit sphere and write</p>
+<span class="math math-display" id="proof-eq-HB34" data-index="578" data-tex="\[
+ T_\lambda u=\int_{S^{n-1}}U_\omega\,d\lambda(\omega).
+ \tag{HB34}
+\]">\[
+ T_\lambda u=\int_{S^{n-1}}U_\omega\,d\lambda(\omega).
+ \tag{HB34}
+\]</span>
+<p>The integral exists in <span class="math" data-index="579" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> by the strong continuity and common seminorm bounds of Section 3.</p>
+<p><strong>Lemma 5.1 (boundary-patch bound).</strong> For every admissible <span class="math" data-index="580" data-tex="\(L\)">\(L\)</span>,</p>
+<span class="math math-display" id="proof-eq-HB35" data-index="581" data-tex="\[
+ \operatorname{WF}_L(T_\lambda u)
+ \subseteq\left\{(x,\xi):
+   -\xi/|\xi|\in\operatorname{supp}\lambda,\quad
+   U\text{ is not in }C^L\text{ at }x-i\xi/|\xi|\right\}.
+ \tag{HB35}
+\]">\[
+ \operatorname{WF}_L(T_\lambda u)
+ \subseteq\left\{(x,\xi):
+   -\xi/|\xi|\in\operatorname{supp}\lambda,\quad
+   U\text{ is not in }C^L\text{ at }x-i\xi/|\xi|\right\}.
+ \tag{HB35}
+\]</span>
+<p>The analogous statement holds for ordinary wavefront, with <span class="math" data-index="582" data-tex="\(C^\infty\)">\(C^\infty\)</span> in place of <span class="math" data-index="583" data-tex="\(C^L\)">\(C^L\)</span>.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-index="584" data-tex="\(\lambda\)">\(\lambda\)</span> is supported in a sufficiently small closed spherical cap contained in a closed pointed convex cone <span class="math" data-index="585" data-tex="\(G\)">\(G\)</span>. Put <span class="math" data-index="586" data-tex="\(Y=\operatorname{int}(-G^*)\)">\(Y=\operatorname{int}(-G^*)\)</span>. If <span class="math" data-index="587" data-tex="\(y\)">\(y\)</span> has direction in a compact subset of <span class="math" data-index="588" data-tex="\(Y\)">\(Y\)</span>, there is a common <span class="math" data-index="589" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> for which <span class="math" data-index="590" data-tex="\(y\cdot\omega\leq-b|y|\)">\(y\cdot\omega\leq-b|y|\)</span> on the support of <span class="math" data-index="591" data-tex="\(\lambda\)">\(\lambda\)</span>. Consequently</p>
+<span class="math math-display" id="proof-eq-HB36" data-index="592" data-tex="\[
+ |y+\omega|^2\leq1-2b|y|+|y|^2&lt;1-b|y|
+ \tag{HB36}
+\]">\[
+ |y+\omega|^2\leq1-2b|y|+|y|^2&lt;1-b|y|
+ \tag{HB36}
+\]</span>
+<p>for small <span class="math" data-index="593" data-tex="\(|y|\)">\(|y|\)</span>. The function
+<span class="math" data-index="594" data-tex="\(F(x+iy)=\int U(x+i(y+\omega))\,d\lambda(\omega)\)">\(F(x+iy)=\int U(x+i(y+\omega))\,d\lambda(\omega)\)</span> is holomorphic on this smaller tube and has a bound <span class="math" data-index="595" data-tex="\(C(1+|x|)^a|y|^{-b_0}\)">\(C(1+|x|)^a|y|^{-b_0}\)</span> for some fixed integer <span class="math" data-index="596" data-tex="\(b_0\)">\(b_0\)</span>, by (HB23). Its boundary is (HB34): the closed-ball strong continuity from Section 3 gives the limit uniformly in <span class="math" data-index="597" data-tex="\(\omega\)">\(\omega\)</span> and on bounded tests. The tube-boundary theorem gives</p>
+<span class="math math-display" id="proof-eq-HB37" data-index="598" data-tex="\[
+ \operatorname{WF}_A(T_\lambda u)\subseteq\mathbb R^n\times(-G).
+ \tag{HB37}
+\]">\[
+ \operatorname{WF}_A(T_\lambda u)\subseteq\mathbb R^n\times(-G).
+ \tag{HB37}
+\]</span>
+<p>One applies it on all smaller directional cones in <span class="math" data-index="599" data-tex="\(Y\)">\(Y\)</span>; their polars intersect to <span class="math" data-index="600" data-tex="\(-G\)">\(-G\)</span>, by finite-dimensional separation. This also bounds every <span class="math" data-index="601" data-tex="\(\operatorname{WF}_L\)">\(\operatorname{WF}_L\)</span> and ordinary wavefront.</p>
+<p>If <span class="math" data-index="602" data-tex="\(-\xi_0/|\xi_0|\notin\operatorname{supp}\lambda\)">\(-\xi_0/|\xi_0|\notin\operatorname{supp}\lambda\)</span>, cover that compact support by finitely many caps with closed cones <span class="math" data-index="603" data-tex="\(G_j\)">\(G_j\)</span> avoiding this direction. A Borel partition of the measure and (HB37) exclude <span class="math" data-index="604" data-tex="\(\xi_0\)">\(\xi_0\)</span> from every piece, proving absence everywhere at that covector.</p>
+<p>Suppose next that <span class="math" data-index="605" data-tex="\(U\)">\(U\)</span> satisfies (HB27) near <span class="math" data-index="606" data-tex="\(x_0-i\xi_0/|\xi_0|\)">\(x_0-i\xi_0/|\xi_0|\)</span>. Restrict <span class="math" data-index="607" data-tex="\(\lambda\)">\(\lambda\)</span> to a small closed cap around <span class="math" data-index="608" data-tex="\(-\xi_0/|\xi_0|\)">\(-\xi_0/|\xi_0|\)</span>, within that neighborhood. The restricted average is a <span class="math" data-index="609" data-tex="\(C^L\)">\(C^L\)</span> function near <span class="math" data-index="610" data-tex="\(x_0\)">\(x_0\)</span>. Indeed bounds through order <span class="math" data-index="611" data-tex="\(k+1\)">\(k+1\)</span> make the order-<span class="math" data-index="612" data-tex="\(k\)">\(k\)</span> holomorphic derivatives uniformly Lipschitz on a smaller convex intersection with <span class="math" data-index="613" data-tex="\(Q\)">\(Q\)</span>; hence they extend continuously to its closure, agree with the distributional boundary, and can be differentiated in the real variables. Integrating their bounds against <span class="math" data-index="614" data-tex="\(|\lambda|\)">\(|\lambda|\)</span> gives <span class="math" data-index="615" data-tex="\(B^{k+1}M_k\)">\(B^{k+1}M_k\)</span> after increasing <span class="math" data-index="616" data-tex="\(B\)">\(B\)</span>. The remaining measure has support away from the distinguished direction, so the preceding paragraph excludes <span class="math" data-index="617" data-tex="\(\xi_0\)">\(\xi_0\)</span> from its wavefront. The class base theorem excludes it from the first piece. The same reasoning with separate bounds for each derivative proves the ordinary version. <span class="math" data-index="618" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The boundary-patch bound completes the converse of Lemma 4.1, since the full spherical measure reconstructs <span class="math" data-index="619" data-tex="\(u\)">\(u\)</span>. We have proved the exact criterion</p>
+<span class="math math-display" id="proof-eq-HB38" data-index="620" data-tex="\[
+ \begin{aligned}
+ (x,\theta)\notin\operatorname{WF}_L(u)
+ &amp;\;\Longleftrightarrow\;
+ U\text{ is in }C^L\text{ at }x-i\theta,\\
+ (x,\theta)\notin\operatorname{WF}(u)
+ &amp;\;\Longleftrightarrow\;
+ U\text{ is in }C^\infty\text{ at }x-i\theta,
+ \qquad |\theta|=1.
+ \end{aligned}
+ \tag{HB38}
+\]">\[
+ \begin{aligned}
+ (x,\theta)\notin\operatorname{WF}_L(u)
+ &amp;\;\Longleftrightarrow\;
+ U\text{ is in }C^L\text{ at }x-i\theta,\\
+ (x,\theta)\notin\operatorname{WF}(u)
+ &amp;\;\Longleftrightarrow\;
+ U\text{ is in }C^\infty\text{ at }x-i\theta,
+ \qquad |\theta|=1.
+ \end{aligned}
+ \tag{HB38}
+\]</span>
+<p>For the analytic sequence <span class="math" data-index="621" data-tex="\(L_k=k\)">\(L_k=k\)</span>, <span class="math" data-index="622" data-tex="\(k\geq1\)">\(k\geq1\)</span>, (HB27) is equivalent to holomorphic extension through that boundary point. To see the nontrivial implication, the bounded derivatives give limiting jets there as in Lemma 5.1. Since <span class="math" data-index="623" data-tex="\(k^k\leq e^k k!\)">\(k^k\leq e^k k!\)</span>, their Taylor series converges in a fixed polydisk. The total degree-<span class="math" data-index="624" data-tex="\(k\)">\(k\)</span> bound is <span class="math" data-index="625" data-tex="\(B(Be|z-z_0|_1)^k\)">\(B(Be|z-z_0|_1)^k\)</span>, using <span class="math" data-index="626" data-tex="\(\sum_{|\alpha|=k}|z-z_0|^\alpha/\alpha!=|z-z_0|_1^k/k!\)">\(\sum_{|\alpha|=k}|z-z_0|^\alpha/\alpha!=|z-z_0|_1^k/k!\)</span>. The same estimate bounds Taylor remainders along segments in a smaller convex interior neighborhood, so the series agrees with <span class="math" data-index="627" data-tex="\(U\)">\(U\)</span> there and gives the extension. The reverse implication is Cauchy's estimate.</p>
+<p><strong>Corollary 5.2 (finite conic splitting and compatibility).</strong> Let closed cones <span class="math" data-index="628" data-tex="\(\Gamma_1,\ldots,\Gamma_q\)">\(\Gamma_1,\ldots,\Gamma_q\)</span> cover all nonzero real covectors. Every <span class="math" data-index="629" data-tex="\(u\in\mathcal S&#x27;\)">\(u\in\mathcal S&#x27;\)</span> has a decomposition <span class="math" data-index="630" data-tex="\(u=\sum u_j\)">\(u=\sum u_j\)</span>, with</p>
+<span class="math math-display" id="proof-eq-HB39" data-index="631" data-tex="\[
+ \operatorname{WF}_L(u_j)\subseteq
+              \operatorname{WF}_L(u)\cap(\mathbb R^n\times\Gamma_j).
+ \tag{HB39}
+\]">\[
+ \operatorname{WF}_L(u_j)\subseteq
+              \operatorname{WF}_L(u)\cap(\mathbb R^n\times\Gamma_j).
+ \tag{HB39}
+\]</span>
+<p>The same chosen decomposition works for every admissible <span class="math" data-index="632" data-tex="\(L\)">\(L\)</span> and for ordinary wavefront. Two such decompositions, for a fixed class, differ by antisymmetric terms <span class="math" data-index="633" data-tex="\(h_{jk}=-h_{kj}\)">\(h_{jk}=-h_{kj}\)</span> satisfying</p>
+<span class="math math-display" id="proof-eq-HB40" data-index="634" data-tex="\[
+ \widetilde u_j-u_j=\sum_k h_{jk},\qquad
+ \operatorname{WF}_L(h_{jk})\subseteq
+       \operatorname{WF}_L(u)\cap
+                    (\mathbb R^n\times\Gamma_j\cap\Gamma_k).
+ \tag{HB40}
+\]">\[
+ \widetilde u_j-u_j=\sum_k h_{jk},\qquad
+ \operatorname{WF}_L(h_{jk})\subseteq
+       \operatorname{WF}_L(u)\cap
+                    (\mathbb R^n\times\Gamma_j\cap\Gamma_k).
+ \tag{HB40}
+\]</span>
+<p><strong>Proof.</strong> On the unit sphere choose the Borel partition <span class="math" data-index="635" data-tex="\(a_j\)">\(a_j\)</span> obtained by assigning each direction to the first cone containing it. Define
+<span class="math" data-index="636" data-tex="\(T_j u=\int U(x-i\theta)a_j(\theta)\,d\sigma(\theta)\)">\(T_j u=\int U(x-i\theta)a_j(\theta)\,d\sigma(\theta)\)</span>. Its measure, in the sign convention of (HB34), is supported in <span class="math" data-index="637" data-tex="\(-\Gamma_j\)">\(-\Gamma_j\)</span>. Lemma 5.1 and (HB38) prove (HB39), and (HB25) gives <span class="math" data-index="638" data-tex="\(\sum T_j=I\)">\(\sum T_j=I\)</span>. No part of this definition depends on <span class="math" data-index="639" data-tex="\(L\)">\(L\)</span>. For <span class="math" data-index="640" data-tex="\(d_j=\widetilde u_j-u_j\)">\(d_j=\widetilde u_j-u_j\)</span>, put <span class="math" data-index="641" data-tex="\(h_{jk}=T_kd_j-T_jd_k\)">\(h_{jk}=T_kd_j-T_jd_k\)</span>. Then <span class="math" data-index="642" data-tex="\(\sum d_k=0\)">\(\sum d_k=0\)</span> gives <span class="math" data-index="643" data-tex="\(\sum_kh_{jk}=d_j\)">\(\sum_kh_{jk}=d_j\)</span>; antisymmetry is immediate. Applying (HB39) to each term proves (HB40). <span class="math" data-index="644" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.3 (a class part and an analytically regular remainder).</strong> A pair <span class="math" data-index="645" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span> is absent from <span class="math" data-index="646" data-tex="\(\operatorname{WF}_L(u)\)">\(\operatorname{WF}_L(u)\)</span> precisely when, on some neighborhood of <span class="math" data-index="647" data-tex="\(x_0\)">\(x_0\)</span>, one can write <span class="math" data-index="648" data-tex="\(u=v+w\)">\(u=v+w\)</span> with <span class="math" data-index="649" data-tex="\(v\in C^L\)">\(v\in C^L\)</span> and <span class="math" data-index="650" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}_A(w)\)">\((x_0,\xi_0)\notin\operatorname{WF}_A(w)\)</span>.</p>
+<p><strong>Proof.</strong> Work first with a compact extension equal to the given distribution near <span class="math" data-index="651" data-tex="\(x_0\)">\(x_0\)</span>; this does not change the pair. Choose an open spherical cap <span class="math" data-index="652" data-tex="\(W\)">\(W\)</span> about <span class="math" data-index="653" data-tex="\(-\xi_0/|\xi_0|\)">\(-\xi_0/|\xi_0|\)</span> whose closure lies in the regular boundary neighborhood supplied by (HB38). Put <span class="math" data-index="654" data-tex="\(v=\int_WU_\omega\,d\sigma\)">\(v=\int_WU_\omega\,d\sigma\)</span>. The derivative argument in Lemma 5.1 makes <span class="math" data-index="655" data-tex="\(v\in C^L\)">\(v\in C^L\)</span> near <span class="math" data-index="656" data-tex="\(x_0\)">\(x_0\)</span>. Its remainder uses the complementary measure, whose support excludes the distinguished direction; (HB37) on a finite cap cover gives analytic absence for <span class="math" data-index="657" data-tex="\(w\)">\(w\)</span>. Conversely the class base theorem gives no <span class="math" data-index="658" data-tex="\(\operatorname{WF}_L\)">\(\operatorname{WF}_L\)</span> for <span class="math" data-index="659" data-tex="\(v\)">\(v\)</span> there, and <span class="math" data-index="660" data-tex="\(\operatorname{WF}_L(w)\subseteq\operatorname{WF}_A(w)\)">\(\operatorname{WF}_L(w)\subseteq\operatorname{WF}_A(w)\)</span>. The sum bound gives absence for <span class="math" data-index="661" data-tex="\(u\)">\(u\)</span>. <span class="math" data-index="662" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="6-propagation-preserves-every-admissible-derivative-class">6. Propagation preserves every admissible derivative class</h3>
+<p>Let <span class="math" data-index="663" data-tex="\(P(D)\)">\(P(D)\)</span> have positive order <span class="math" data-index="664" data-tex="\(m\)">\(m\)</span>, constant complex coefficients, real principal part <span class="math" data-index="665" data-tex="\(p_m\)">\(p_m\)</span>, and nonzero gradient at every nonzero characteristic covector. These are the full real principal type hypotheses; lower terms need not be real.</p>
+<p><strong>Theorem 6.1.</strong> If <span class="math" data-index="666" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span> on an open <span class="math" data-index="667" data-tex="\(X\)">\(X\)</span> and
+<span class="math" data-index="668" data-tex="\((x_0,\xi_0)\in\operatorname{WF}_L(u)\setminus\operatorname{WF}_L(f)\)">\((x_0,\xi_0)\in\operatorname{WF}_L(u)\setminus\operatorname{WF}_L(f)\)</span>, then <span class="math" data-index="669" data-tex="\(p_m(\xi_0)=0\)">\(p_m(\xi_0)=0\)</span>. For any segment <span class="math" data-index="670" data-tex="\(I\subset X\)">\(I\subset X\)</span> containing <span class="math" data-index="671" data-tex="\(x_0\)">\(x_0\)</span>, parallel to <span class="math" data-index="672" data-tex="\(a=\nabla p_m(\xi_0)\)">\(a=\nabla p_m(\xi_0)\)</span>, with <span class="math" data-index="673" data-tex="\((z,\xi_0)\notin\operatorname{WF}_L(f)\)">\((z,\xi_0)\notin\operatorname{WF}_L(f)\)</span> for every <span class="math" data-index="674" data-tex="\(z\in I\)">\(z\in I\)</span>,</p>
+<span class="math math-display" id="proof-eq-HB41" data-index="675" data-tex="\[
+ I\times\{\xi_0\}\subseteq\operatorname{WF}_L(u).
+ \tag{HB41}
+\]">\[
+ I\times\{\xi_0\}\subseteq\operatorname{WF}_L(u).
+ \tag{HB41}
+\]</span>
+<p>This holds for every admissible sequence (HB1), including the analytic class.</p>
+<p><strong>Proof.</strong> Full class microlocal ellipticity in <a href="AN02-L199.html">Noncharacteristic directions and microlocal regularity</a>, Theorem 1.1, first gives <span class="math" data-index="676" data-tex="\(p_m(\xi_0)=0\)">\(p_m(\xi_0)=0\)</span>. Suppose there is a point <span class="math" data-index="677" data-tex="\(y\in I\)">\(y\in I\)</span> with <span class="math" data-index="678" data-tex="\((y,\xi_0)\notin\operatorname{WF}_L(u)\)">\((y,\xi_0)\notin\operatorname{WF}_L(u)\)</span>. Replace <span class="math" data-index="679" data-tex="\(u\)">\(u\)</span> by a compactly supported extension equal to it on a neighborhood of the compact interval <span class="math" data-index="680" data-tex="\([y,x_0]\)">\([y,x_0]\)</span>, chosen inside <span class="math" data-index="681" data-tex="\(X\)">\(X\)</span>; replace <span class="math" data-index="682" data-tex="\(f\)">\(f\)</span> by the image of this extension. They agree with the originals near that interval, so none of the hypotheses there changes. We can now use the global tempered representation. Write <span class="math" data-index="683" data-tex="\(U=K*u\)">\(U=K*u\)</span>, <span class="math" data-index="684" data-tex="\(F=K*f\)">\(F=K*f\)</span>. Constant-coefficient differentiation commutes with this Schwartz convolution, so <span class="math" data-index="685" data-tex="\(P(D)U=F\)">\(P(D)U=F\)</span>.</p>
+<p>By (HB38), <span class="math" data-index="686" data-tex="\(F\)">\(F\)</span> has the class derivative bounds near each <span class="math" data-index="687" data-tex="\(z-i\xi_0/|\xi_0|\)">\(z-i\xi_0/|\xi_0|\)</span>, <span class="math" data-index="688" data-tex="\(z\in[y,x_0]\)">\(z\in[y,x_0]\)</span>, and <span class="math" data-index="689" data-tex="\(U\)">\(U\)</span> has them near <span class="math" data-index="690" data-tex="\(y-i\xi_0/|\xi_0|\)">\(y-i\xi_0/|\xi_0|\)</span>. Compactness supplies one sufficiently small open spherical cap <span class="math" data-index="691" data-tex="\(W\)">\(W\)</span> about <span class="math" data-index="692" data-tex="\(-\xi_0/|\xi_0|\)">\(-\xi_0/|\xi_0|\)</span>, with closure in these boundary neighborhoods, and common constants on a finite cover. Define</p>
+<span class="math math-display" id="proof-eq-HB42" data-index="693" data-tex="\[
+ u_1=\int_W U_\omega\,d\sigma(\omega),\qquad
+ f_1=\int_W F_\omega\,d\sigma(\omega).
+ \tag{HB42}
+\]">\[
+ u_1=\int_W U_\omega\,d\sigma(\omega),\qquad
+ f_1=\int_W F_\omega\,d\sigma(\omega).
+ \tag{HB42}
+\]</span>
+<p>The functions satisfy <span class="math" data-index="694" data-tex="\(P(D)u_1=f_1\)">\(P(D)u_1=f_1\)</span>, <span class="math" data-index="695" data-tex="\(u_1\in C^L(V)\)">\(u_1\in C^L(V)\)</span> near <span class="math" data-index="696" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-index="697" data-tex="\(f_1\in C^L(V_1)\)">\(f_1\in C^L(V_1)\)</span> near the whole interval. The complementary measure excludes the distinguished frequency, hence</p>
+<span class="math math-display" id="proof-eq-HB43" data-index="698" data-tex="\[
+ (x_0,\xi_0)\notin\operatorname{WF}_A(u-u_1),\qquad
+ (x_0,\xi_0)\in\operatorname{WF}_L(u_1).
+ \tag{HB43}
+\]">\[
+ (x_0,\xi_0)\notin\operatorname{WF}_A(u-u_1),\qquad
+ (x_0,\xi_0)\in\operatorname{WF}_L(u_1).
+ \tag{HB43}
+\]</span>
+<p>The second assertion follows from the first and the class sum bound.</p>
+<p>Assume first <span class="math" data-index="699" data-tex="\(x_0-y=t_0a\)">\(x_0-y=t_0a\)</span> with <span class="math" data-index="700" data-tex="\(t_0&gt;0\)">\(t_0&gt;0\)</span>. Put <span class="math" data-index="701" data-tex="\(\eta=a/|a|^2\)">\(\eta=a/|a|^2\)</span>, so <span class="math" data-index="702" data-tex="\(\eta\cdot a=1\)">\(\eta\cdot a=1\)</span>, whereas <span class="math" data-index="703" data-tex="\(\xi_0\cdot a=0\)">\(\xi_0\cdot a=0\)</span> by Euler's identity. Thus <span class="math" data-index="704" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-index="705" data-tex="\(\xi_0\)">\(\xi_0\)</span> are linearly independent. Use coordinates <span class="math" data-index="706" data-tex="\(z=y+sa+v\)">\(z=y+sa+v\)</span>, <span class="math" data-index="707" data-tex="\(v\perp a\)">\(v\perp a\)</span>. Take a compact product cutoff <span class="math" data-index="708" data-tex="\(\chi(z)=q(s)r(v)\)">\(\chi(z)=q(s)r(v)\)</span>, with <span class="math" data-index="709" data-tex="\(r=1\)">\(r=1\)</span> near zero and <span class="math" data-index="710" data-tex="\(q=1\)">\(q=1\)</span> on a neighborhood of <span class="math" data-index="711" data-tex="\([0,t_0]\)">\([0,t_0]\)</span>. Its backward transition is in a small interval just before zero, inside <span class="math" data-index="712" data-tex="\(V\)">\(V\)</span>; its forward transition is after <span class="math" data-index="713" data-tex="\(t_0\)">\(t_0\)</span>. Make both intervals small enough that <span class="math" data-index="714" data-tex="\(f_1\)">\(f_1\)</span> remains in <span class="math" data-index="715" data-tex="\(C^L\)">\(C^L\)</span> wherever <span class="math" data-index="716" data-tex="\(q=1\)">\(q=1\)</span> on the backward half-line through <span class="math" data-index="717" data-tex="\(x_0\)">\(x_0\)</span>. Such choices are possible because <span class="math" data-index="718" data-tex="\(V,V_1\)">\(V,V_1\)</span> are open neighborhoods.</p>
+<p>On a neighborhood of each point of that line the transverse cutoff is one, so <span class="math" data-index="719" data-tex="\(\chi=q(\eta\cdot(z-y))\)">\(\chi=q(\eta\cdot(z-y))\)</span>. Analytic pullback of a one-dimensional smooth distribution gives</p>
+<span class="math math-display" id="proof-eq-HB44" data-index="720" data-tex="\[
+ \operatorname{WF}_A(\chi)\big|_{\text{line}}
+        \subseteq\{(z,s\eta):s\ne0\}.
+ \tag{HB44}
+\]">\[
+ \operatorname{WF}_A(\chi)\big|_{\text{line}}
+        \subseteq\{(z,s\eta):s\ne0\}.
+ \tag{HB44}
+\]</span>
+<p>The linear pullback has no zero transpose covectors; hence its operation hypothesis is satisfied. On the backward transition, the class multiplier <span class="math" data-index="721" data-tex="\(u_1\in C^L(V)\)">\(u_1\in C^L(V)\)</span> gives <span class="math" data-index="722" data-tex="\(\operatorname{WF}_L(\chi u_1)\subseteq\operatorname{WF}_L(\chi)\subseteq\operatorname{WF}_A(\chi)\)">\(\operatorname{WF}_L(\chi u_1)\subseteq\operatorname{WF}_L(\chi)\subseteq\operatorname{WF}_A(\chi)\)</span>. Constant-coefficient differentiation does not enlarge the class wavefront. To verify this directly from (HB3), an order-<span class="math" data-index="723" data-tex="\(m\)">\(m\)</span> derivative uses the witness at <span class="math" data-index="724" data-tex="\(N+m\)">\(N+m\)</span>, whose polynomial factor is absorbed by <span class="math" data-index="725" data-tex="\((1+|\xi|)^m\)">\((1+|\xi|)^m\)</span>, and whose weight is reduced to <span class="math" data-index="726" data-tex="\(M_N\)">\(M_N\)</span> by the fixed-shift bound (HB2). Common compact support and order remain bounded.</p>
+<p>Set <span class="math" data-index="727" data-tex="\(v=\chi u_1\)">\(v=\chi u_1\)</span> and <span class="math" data-index="728" data-tex="\(g=P(D)v\)">\(g=P(D)v\)</span>. On the backward half-line, outside the transition, either <span class="math" data-index="729" data-tex="\(v=0\)">\(v=0\)</span> or <span class="math" data-index="730" data-tex="\(g=f_1\)">\(g=f_1\)</span> locally. On the transition, (HB44) and the preceding differential bound put all class covectors of <span class="math" data-index="731" data-tex="\(g\)">\(g\)</span> in <span class="math" data-index="732" data-tex="\(\mathbb R\eta\)">\(\mathbb R\eta\)</span>. Since <span class="math" data-index="733" data-tex="\(\xi_0\notin\mathbb R\eta\)">\(\xi_0\notin\mathbb R\eta\)</span>, we have</p>
+<span class="math math-display" id="proof-eq-HB45" data-index="734" data-tex="\[
+ (z,\xi_0)\notin\operatorname{WF}_L(g)
+             \qquad(z=x_0-ta,\ t\geq0).
+ \tag{HB45}
+\]">\[
+ (z,\xi_0)\notin\operatorname{WF}_L(g)
+             \qquad(z=x_0-ta,\ t\geq0).
+ \tag{HB45}
+\]</span>
+<p>This also holds at <span class="math" data-index="735" data-tex="\(z=x_0\)">\(z=x_0\)</span>, since <span class="math" data-index="736" data-tex="\(f_1\)">\(f_1\)</span> is in the class near that endpoint.</p>
+<p>Use the positive directional kernel from <a href="AN02-L200.html">Characteristic rays and directional kernels</a>, Theorem 1.1. It gives</p>
+<span class="math math-display" id="proof-eq-HB46" data-index="737" data-tex="\[
+ v=E_+*g-w_+*v,
+ \qquad
+ \operatorname{WF}_L(E_+)\subseteq\operatorname{WF}_A(E_+).
+ \tag{HB46}
+\]">\[
+ v=E_+*g-w_+*v,
+ \qquad
+ \operatorname{WF}_L(E_+)\subseteq\operatorname{WF}_A(E_+).
+ \tag{HB46}
+\]</span>
+<p>The correction <span class="math" data-index="738" data-tex="\(w_+*v\)">\(w_+*v\)</span> is entire, since <span class="math" data-index="739" data-tex="\(v\)">\(v\)</span> is compact and <span class="math" data-index="740" data-tex="\(w_+\)">\(w_+\)</span> is entire. The class convolution bound is</p>
+<span class="math math-display" id="proof-eq-HB47" data-index="741" data-tex="\[
+ \begin{gathered}
+ \operatorname{WF}_L(A*B)\subseteq\\
+ \{(z+y,\xi):(z,\xi)\in\operatorname{WF}_L(A),
+                              \ (y,\xi)\in\operatorname{WF}_L(B)\},\\
+ B\in\mathcal E&#x27;.
+ \end{gathered}
+ \tag{HB47}
+\]">\[
+ \begin{gathered}
+ \operatorname{WF}_L(A*B)\subseteq\\
+ \{(z+y,\xi):(z,\xi)\in\operatorname{WF}_L(A),
+                              \ (y,\xi)\in\operatorname{WF}_L(B)\},\\
+ B\in\mathcal E&#x27;.
+ \end{gathered}
+ \tag{HB47}
+\]</span>
+<p>For clarity, this follows from the full class tensor, analytic-coordinate and proper-projection theorems in the linked derivative-sequence lesson. Addition is proper over compact output sets on <span class="math" data-index="742" data-tex="\(\operatorname{supp}(A\otimes B)\)">\(\operatorname{supp}(A\otimes B)\)</span> because <span class="math" data-index="743" data-tex="\(B\)">\(B\)</span> is compact. The transpose of its output covector <span class="math" data-index="744" data-tex="\(\xi\)">\(\xi\)</span> is <span class="math" data-index="745" data-tex="\((\xi,\xi)\)">\((\xi,\xi)\)</span>; both components are nonzero. Thus the tensor bound has no extra zero-component alternative at this pair, and proper projection gives exactly (HB47).</p>
+<p>At output <span class="math" data-index="746" data-tex="\((x_0,\xi_0)\)">\((x_0,\xi_0)\)</span>, the ray bound for <span class="math" data-index="747" data-tex="\(E_+\)">\(E_+\)</span> requires the input point of <span class="math" data-index="748" data-tex="\(g\)">\(g\)</span> to lie in <span class="math" data-index="749" data-tex="\(x_0-\mathbb R_+a\)">\(x_0-\mathbb R_+a\)</span>, including its endpoint for the origin fiber. Equation (HB45) excludes every such point. Equations (HB46)–(HB47) therefore give <span class="math" data-index="750" data-tex="\((x_0,\xi_0)\notin\operatorname{WF}_L(v)\)">\((x_0,\xi_0)\notin\operatorname{WF}_L(v)\)</span>, contradicting (HB43), since <span class="math" data-index="751" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-index="752" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p>If <span class="math" data-index="753" data-tex="\(t_0&lt;0\)">\(t_0&lt;0\)</span>, reverse the axial construction and use <span class="math" data-index="754" data-tex="\(E_-\)">\(E_-\)</span>. If one endpoint is approached through an open segment, closedness of the class wavefront supplies it. These arguments rule out every regular point <span class="math" data-index="755" data-tex="\(y\)">\(y\)</span> in the given segment and prove (HB41), with its full stated endpoint quantifiers. <span class="math" data-index="756" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.2 (analytic propagation).</strong> Theorem 6.1 with <span class="math" data-index="757" data-tex="\(L_k=k\)">\(L_k=k\)</span>, <span class="math" data-index="758" data-tex="\(k\geq1\)">\(k\geq1\)</span>, is the corresponding analytic wavefront propagation theorem. For a fixed characteristic covector, either every point or no point of a connected line interval avoiding the image analytic wavefront belongs to the solution's analytic wavefront.</p>
+<p><strong>Corollary 6.3 (a supporting normal follows its characteristic line).</strong> Let <span class="math" data-index="759" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> on <span class="math" data-index="760" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-index="761" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> is a nonzero supporting normal to <span class="math" data-index="762" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>, in the sense proved in <a href="AN02-L194.html">Support normals and analytic singularities</a>, then <span class="math" data-index="763" data-tex="\(p_m(\xi)=0\)">\(p_m(\xi)=0\)</span> and every line interval in <span class="math" data-index="764" data-tex="\(X\)">\(X\)</span> through <span class="math" data-index="765" data-tex="\(x\)">\(x\)</span>, parallel to <span class="math" data-index="766" data-tex="\(\nabla p_m(\xi)\)">\(\nabla p_m(\xi)\)</span>, is contained in <span class="math" data-index="767" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>.</p>
+<p><strong>Proof.</strong> The support-normal theorem places <span class="math" data-index="768" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> in <span class="math" data-index="769" data-tex="\(\operatorname{WF}_A(u)\)">\(\operatorname{WF}_A(u)\)</span>; it also supplies the opposite sign when needed. Analytic microlocal ellipticity makes the normal characteristic, because the image is zero. Corollary 6.2 fills that fixed-covector line interval in <span class="math" data-index="770" data-tex="\(\operatorname{WF}_A(u)\)">\(\operatorname{WF}_A(u)\)</span>. Its base projection lies in <span class="math" data-index="771" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>, proving the assertion. <span class="math" data-index="772" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="references-2">References</h3>
+<p>[H] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990, the holomorphic spherical representation and conic splitting in Section 8.4 and derivative-class propagation in Section 8.6. The complete kernel, boundary, class and propagation arguments are given here with their written inputs.</p>
+<p>[N] NIST, <em>Digital Library of Mathematical Functions</em>, <a href="https://dlmf.nist.gov/10.21">zeros of Bessel functions</a> and <a href="https://dlmf.nist.gov/10.40">large-argument expansions of modified Bessel functions</a>. These provide background for radial averages; Lemmas 1.1 and 2.1 above prove the required zero and decay facts without a special-function prerequisite.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

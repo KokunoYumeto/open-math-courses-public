@@ -1,6 +1,6 @@
 # Sites and sheaves
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Constant-presheaf argument by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
 
 A function can be specified on overlapping open sets and then glued. A covering need not consist of open subsets, however. A surjection of sets, a finite separable field extension, and an étale map of schemes all provide useful ways to see an object locally. A site records which families count as coverings. A sheaf is a rule for assigning data that can be reconstructed from any such family.
 
@@ -104,7 +104,13 @@ Thus sheafification is left adjoint to the inclusion of sheaves into presheaves.
 
 Apply this fact to the directed refinement diagram. It proves \((\lim_{a\in A}F_a)^+\simeq\lim_{a\in A}F_a^+\) for a finite diagram. Apply plus once more. A limit of sheaves is a sheaf: a matching family in the limit glues in every component, and uniqueness makes those glued sections compatible with every arrow of the diagram. Therefore the resulting presheaf limit is also the sheaf limit, proving the assertion. \(\square\)
 
-**Example 3.4.** For a set \(A\), sheafifying the constant presheaf on a space gives the sheaf \(\underline A\) of locally constant functions to the discrete set \(A\). Matching constant values glue to locally constant functions; conversely each such function is constant on a covering. These two operations identify the plus construction with \(\underline A\). In particular the empty open has one section, even when the constant presheaf has \(A\) there.
+<a id="constant-presheaf-double-plus"></a>
+
+**Example 3.4.** For a set \(A\), let \(F\) be the constant presheaf on the open subsets of a space, including \(F(\varnothing)=A\). On a nonempty open \(U\), every covering is nonempty and its matching sections of \(F\) have one common value: even the restrictions to an empty overlap are identity maps of \(A\). Thus \(F^+(U)=A\). On the empty open, however, the empty covering gives \(F^+(\varnothing)=\{*\}\).
+
+A matching family in \(F^+\) may now assign different values on disjoint opens, since their common restriction lies in a singleton. Gluing these values gives a locally constant function to the discrete set \(A\). Conversely, every such function is constant on an open covering; two representatives give the same function precisely when their values agree on a common refinement. Therefore the second plus construction gives the sheaf \(F^{++}=\underline A\) of locally constant functions. This includes empty and singleton coefficient sets.
+
+For example, on a discrete two-point space with \(A=\{0,1\}\), the first plus has two global sections, while \(F^{++}\) has four. One plus need not already be the sheafification. The empty open has one section after the first plus, even when the original constant presheaf has \(A\) there.
 
 If \(X\) is connected and nonempty, the constant functions identify \(A\) with \(\underline A(X)\). The converse requires \(A\) to have at least two elements: a disconnection then gives a nonconstant locally constant function. With a singleton coefficient set, every space has just one such function; with empty coefficients, a nonempty space has none. Connectedness describes this map on global sections, not equality of the constant presheaf with its sheafification on all opens.
 
@@ -308,7 +314,7 @@ Every element of \(S\) has an open stabilizer, which contains an open normal sub
 
 ## What this lesson does not prove
 
-We use the Yoneda lemma, in the form \(\operatorname{Hom}(h_U,F)\simeq F(U)\) for every presheaf \(F\), and elementary categorical universal properties as prerequisites; the precise Yoneda statement is [Stacks, Tag 001P]. No scheme-theoretic or cohomological theorem is assumed. The identification of the finite continuous group-set site with the étale site of a field will require the equivalence between finite separable field extensions and finite Galois sets, and is proved in the lesson on Galois cohomology.
+We use the Yoneda lemma, in the form \(\operatorname{Hom}(h_U,F)\simeq F(U)\) for every presheaf \(F\), and elementary categorical universal properties as prerequisites; the precise Yoneda statement is [Stacks, Tag 001P], with its proof in [the pinned native categorical prerequisite](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L540-L566). No scheme-theoretic or cohomological theorem is assumed. The identification of the finite continuous group-set site with the étale site of a field will require the equivalence between finite separable field extensions and finite Galois sets, and is proved in the lesson on Galois cohomology.
 
 ## References
 

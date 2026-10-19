@@ -1,12 +1,12 @@
 # Logarithmic Fourier graphs construct a cone-supported inverse
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition and proof details: CC0.*
+*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition and proof details: CC0 1.0.*
 
 We construct a distributional inverse of a compact convolution kernel from bounds on the reciprocal of its entire transform. A logarithmic graph keeps the reciprocal away from its poles while allowing the transform of every compactly supported test to make the integral converge. An explicit compact cutoff then proves that changing the graph does not change the distribution. Raising the graph makes tests beyond a supporting plane disappear.
 
-The classical completeness target is Hörmander's compact-kernel converse, *The Analysis of Linear Partial Differential Operators II*, Theorem 16.7.4. No paid proof is needed to read or check the argument below. Its open-cone convention is recorded separately in Section 10. Here the cone excludes zero explicitly.
+The classical reference is Hörmander's compact-kernel converse, *The Analysis of Linear Partial Differential Operators II*, Theorem 16.7.4. The cone here is nonempty and excludes zero explicitly. Section 10 proves the complete cone trichotomy and the compact-unit classification for the all-directions case.
 
-We assume the definition of a distribution as a complex-linear functional on compact smooth tests with a finite derivative bound on every fixed compact support, and the definition of its support. We use ordinary multivariable differentiation, compact integration by parts, Fubini's theorem for absolutely integrable functions, and dominated convergence. Compact-factor convolution is defined and checked below in Section 7. The required Fourier inversion identity and the cutoff form of Stokes' argument are also proved here. No convolution support equality, Paley–Wiener converse, or transform of an unrestricted distribution is a premise.
+We assume the definition of a distribution as a complex-linear functional on compact smooth tests with a finite derivative bound on every fixed compact support, and the definition of its support. We use ordinary multivariable differentiation, compact integration by parts, Fubini's theorem for absolutely integrable functions, and dominated convergence. Compact-factor convolution is defined and checked below in Section 7. The required Fourier inversion identity and the cutoff form of Stokes' argument are also proved here. The analytic construction needs no convolution support equality or Paley–Wiener converse and does not Fourier transform the unrestricted inverse. The compact-unit classification in Section 10 additionally uses the included compact convolution support theorem.
 
 Freely readable human sources for the elementary background are Semyon Dyatlov's [distribution notes](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), Definition 2.1 and Section 2.2, Sections 4.1–4.2, Sections 8.1–8.2, and Proposition 11.14/Theorem 11.15; and Gerd Grubb's [Fourier chapter](https://web.math.ku.dk/~grubb/dist5.pdf), the paragraph after Remark 5.18 and equation (5.38). These are credit and comparison references. All analytic statements actually needed for the construction are proved below.
 
@@ -642,13 +642,87 @@ J=1+i\frac{8\xi_1+4\xi_2}{2+\xi_1^2+\xi_2^2}.
 
 [Open Figure 3 at full size](figures/support-plane-and-uniform-decay.png) · [Vector version](figures/support-plane-and-uniform-decay.svg).
 
-## 10. The original source convention remains a separate audit
+## 10. The complete cone scope
 
-The private H2 source statement on PDF page 365 says “open convex cone” without giving a definition on that page. The preceding Section 16.7 context on PDF pages 362–364 discusses support contained in a proper convex cone and hyperbolicity relative to a nonzero direction, but does not supply an explicit all-space exclusion for this converse. A different H1 use, Theorem 3.1.15, PDF page 74/printed page 66, explicitly allows the proof to assume that zero is outside the cone because that theorem is trivial otherwise. The latter is evidence that one must not infer a universal punctured convention from terminology alone. It does not determine the H2 converse's intended scope.
+The cone in Theorem 1.1 is nonempty and excludes zero. Both conditions have mathematical content. We now describe every open convex cone, including the two exceptional cases, and prove the exact all-directions alternative.
 
-The unresolved abbreviated interface cannot be claimed literally with \(\Gamma=\mathbb R\). For \(\mu=\delta'_0\), the reciprocal \(1/(i\zeta)\) satisfies bounds of form (1.6) beyond logarithmic height in either direction. But an inverse with finite support function at both \(+1\) and \(-1\) would have bounded support, hence compact support. Such an inverse is impossible: choose a compact smooth cutoff \(\chi\) equal to one near its support and at zero. Then \(\langle E',\chi\rangle=-\langle E,\chi'\rangle=0\), whereas \(\delta_0(\chi)=1\).
+**Proposition 10.1 (three possible cone cases).** Let \(\Gamma\subset\mathbb R^n\) be open, ordinarily convex and invariant under positive dilations. Exactly one of the following holds: \(\Gamma\) is empty; \(\Gamma=\mathbb R^n\); or \(\Gamma\) is nonempty and excludes zero, as in (1.1).
 
-The two one-sided inverses in Example 9.1 differ by one. A direction homotopy connecting them must cross zero, where the logarithmic region is unavailable, so Section 5 correctly proves no such equality. This calculation identifies an actual convention-sensitive boundary of our result; it is not a claim of an error in the source under its intended convention. The precise qualified Theorem 1.1 is fully written here. The broader original convention remains unresolved, and this candidate does not certify a full unqualified equivalence or recursive prerequisite closure.
+**Proof.** If \(0\in\Gamma\), openness gives a ball \(B(0,r)\subset\Gamma\). For every \(y\in\mathbb R^n\), a sufficiently small positive multiple \(ty\) belongs to that ball, and dilation by \(1/t\) gives \(y\in\Gamma\). Thus \(\Gamma=\mathbb R^n\). If the cone is neither empty nor all of space, it therefore excludes zero. Its other hypotheses are exactly those in (1.1). The three cases are disjoint. \(\square\)
+
+In the third case, Sections 2–8 prove the full common-inverse construction, with every closed angular subcone and all constants quantified in Theorem 1.1. For the first case the estimates are vacuous: \(\mu=0\) satisfies every condition restricted to an empty direction set, but \(0*E=0\ne\delta_0\). Nonemptiness cannot be dropped.
+
+The second case would require an inverse with finite supporting function in every direction. That is much more restrictive than reciprocal bounds beyond logarithmic height.
+
+**Theorem 10.2 (compact convolution units and all directions).** For \(\mu\in\mathcal E'(\mathbb R^n)\), the following are equivalent:
+
+1. There is \(E\in\mathcal D'(\mathbb R^n)\) such that \(\mu*E=\delta_0\), and the support function of its closed convex support hull is finite on all of \(\mathbb R^n\).
+2. There is a compactly supported distribution \(E\) with \(\mu*E=\delta_0\).
+3. For some \(a\in\mathbb R^n\) and \(c\in\mathbb C\setminus\{0\}\), one has
+\[
+\mu=c\delta_a,\qquad E=c^{-1}\delta_{-a}.
+\tag{10.1}
+\]
+
+In the third assertion \(E\) is the unique inverse even among all distributions. In particular the only units of the compact convolution algebra are nonzero multiples of point masses.
+
+**Proof.** Let \(K\) be the closed convex hull of the inverse support in assertion 1. The equation makes both factors nonzero. For each coordinate vector \(e_j\), the two finite supporting values give
+\[
+-H_K(-e_j)\le x_j\le H_K(e_j)\qquad(x\in K).
+\tag{10.2}
+\]
+Thus \(K\) is bounded. It is closed by definition, so it is compact. The inverse has closed support inside \(K\), proving assertion 2.
+
+Suppose assertion 2 holds. Apply the complete compact convolution support theorem, Theorem 3.1, to these two compact complex distributions. Writing \(A=\operatorname{ch}\operatorname{supp}\mu\) and \(B=\operatorname{ch}\operatorname{supp}E\), it gives
+\[
+A+B=\operatorname{ch}\operatorname{supp}(\mu*E)=\{0\}.
+\tag{10.3}
+\]
+Both sets are nonempty. Fix \(a\in A\), \(b\in B\). Then \(a+b=0\); every \(a'\in A\) satisfies \(a'+b=0\), hence \(a'=a\). The same argument makes \(B=\{-a\}\). Consequently the two supports are singletons at opposite points.
+
+We recall the finite-jet argument to determine the distributions themselves. A distribution \(T\) supported at zero has finite order \(m\) on a fixed compact neighborhood. If a compact smooth test \(\phi\) has all derivatives through order \(m\) zero at zero, insert a cutoff \(\chi(x/\varepsilon)\), equal to one near zero. The support property gives \(T(\phi)=T(\chi(x/\varepsilon)\phi)\). Taylor's integral remainder and the product rule bound every derivative of this product through order \(m\) by \(C\varepsilon\): a term of total derivative order \(k\le m\) is bounded by \(C\varepsilon^{-j}\varepsilon^{m+1-k+j}=C\varepsilon^{m+1-k}\). The finite-order estimate therefore makes this pairing tend to zero. Thus \(T\) depends only on finitely many Taylor coefficients, and
+\[
+T=\sum_{|\alpha|\le m}t_\alpha\partial^\alpha\delta_0.
+\tag{10.4}
+\]
+The jets are linearly independent, as is seen by testing on \(x^\beta/\beta!\) times a cutoff equal to one near zero: its \(\alpha\)-jet at zero is \(\delta_{\alpha\beta}\). Translation gives the same representation at any point.
+
+It follows that \(\mu=P(\partial)\delta_a\) and \(E=Q(\partial)\delta_{-a}\) for nonzero complex polynomials \(P,Q\). Differentiating the addition pairing for compact convolution gives
+\[
+\mu*E=(PQ)(\partial)\delta_0,\qquad PQ=1.
+\tag{10.5}
+\]
+The second identity follows from the first and the jet independence just proved. Nonzero polynomials satisfy \(\deg(PQ)=\deg P+\deg Q\): their highest homogeneous parts have nonzero product, since the lexicographically leading monomials in those parts multiply to a monomial with nonzero coefficient. Hence both degrees are zero. Write \(P=c\), \(Q=c^{-1}\), proving assertion 3.
+
+Conversely the addition formula for point masses gives \(c\delta_a*c^{-1}\delta_{-a}=\delta_0\). The inverse hull is \(\{-a\}\), whose support function is \(-a\cdot\eta\), finite everywhere. This proves assertion 1. Finally, if \(c\delta_a*T=\delta_0\) for any distribution \(T\), the left side is \(c\tau_aT\). Translation is invertible on distributions, so \(T=c^{-1}\delta_{-a}\). \(\square\)
+
+For these units the reciprocal condition is indeed valid in all directions:
+\[
+\widehat\mu(\zeta)=ce^{-ia\cdot\zeta},\qquad
+|\widehat\mu(\zeta)^{-1}|
+=|c|^{-1}e^{-a\cdot\operatorname{Im}\zeta}
+\le |c|^{-1}e^{|a||\operatorname{Im}\zeta|}.
+\tag{10.6}
+\]
+One may take \(p=0\), \(A=|a|\), and \(C\ge\max\{1,|c|^{-1}\}\). No height restriction is needed for this estimate.
+
+**Example 10.3 (reciprocal bounds in both directions do not imply a compact inverse).** On the real line let \(\mu=\delta'_0\), so \(\widehat\mu(\zeta)=i\zeta\), and allow \(\Gamma=\mathbb R\). Put \(r=|\zeta|\). If
+\[
+|\operatorname{Im}\zeta|>\log(r+2),
+\tag{10.7}
+\]
+then \(r>1\). Indeed, on \(0\le r\le1\) the function \(\log(r+2)-r\) decreases and is at least \(\log3-1>0\), whereas \(|\operatorname{Im}\zeta|\le r\). Thus (10.7) implies \(\zeta\ne0\) and \(|1/(i\zeta)|<1\). The reciprocal hypotheses hold on every closed subcone with the same \(C=1\), \(p=A=0\).
+
+There is nevertheless no inverse with finite support function in both directions. One direct proof is the compact-cutoff argument from solved Exercise 7: a compact solution of \(E'=\delta_0\) would give \(E'(\chi)=0\) for a cutoff equal to one near its support and at zero, while \(\delta_0(\chi)=1\). Theorem 10.2 gives the stronger classification in every dimension.
+
+The two one-sided inverses in Example 9.1 remain valid:
+\[
+E_+=-H(-x),\qquad E_-=H(x),\qquad E_--E_+=1.
+\tag{10.8}
+\]
+Their different supports explain why the direction homotopy in Section 5 cannot cross zero. Each proper direction cone selects one inverse; reciprocal estimates on two separate sides do not identify their distributions.
+
+Hörmander's Theorem 16.7.4, printed page 359 of volume II, is the classical cone-converse reference. Here its usable cone hypothesis is stated explicitly in (1.1). Theorem 1.1 proves that full nonempty proper-cone assertion. Proposition 10.1, Theorem 10.2 and Example 10.3 provide the complete account if the phrase “open convex cone” is allowed to include the empty set or all of space: the empty hypothesis yields no general existence assertion, and the all-space conclusion holds exactly for the point-mass units, rather than following from the reciprocal estimate alone. This necessary distinction does not depend on assigning an unstated convention to the reference.
 
 ## Exercises with complete solutions
 
@@ -811,13 +885,14 @@ Choosing \(C\ge\max\{1,1/(\varepsilon\log2)\}\), the logarithmic region has \(|y
 
 Use that cone's constants to choose one common scale \(L\) large enough for (3.8); also make it at least the two individual ray thresholds. The original ray graph at \(\theta_0\) can first be raised to \(L\) using its own ray estimate; Section 5 proves equality on that finite safe scale interval. Do the same for \(\theta_1\). The segment deformation at the common scale is uniformly zero-free by the generated cone's estimate, and its cutoff side term vanishes by (5.10). Thus the original constructions agree. Repeating with arbitrary pairs gives one \(E\), so each directional half-space bound applies to its same support. Different constants are allowed; different unidentified inverses would not prove simultaneous support control.
 
-The background credit and exact proof dependencies remain those of the main manuscript. The solved examples use only its proved graph construction, compact-factor convolution, finite test continuity, and the stated support definition. They do not require the unresolved unrestricted source convention or a paid proof.
+The solved examples use the graph construction, compact-factor convolution, finite test continuity and support definition proved in the manuscript. Section 10 treats the empty and all-directions cases and proves the compact convolution-unit classification.
 
 ## References and proof dependencies
 
 - Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*, October 2, 2026, [author-hosted notes](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf). Definition 2.1/Section 2.2: fixed-compact distribution bounds; Sections 4.1–4.2: support and compact cutoffs; Sections 8.1–8.2, especially Proposition 8.6 and Definition 8.9, printed pages 90–91: compact-factor convolution; Proposition 11.14 and Theorem 11.15, printed pages 123–124: Gaussian normalization and Fourier inversion.
 - Gerd Grubb, *Distributions and Operators*, Chapter 5, [author-hosted Fourier chapter](https://web.math.ku.dk/~grubb/dist5.pdf). Paragraph after Remark 5.18.14–5.15, especially equation (5.38): compact distribution transform and its entire extension. The finite estimate (2.4) and all graph arguments are proved in this chapter.
-- *Convolution as addition of supports*, Theorem 1.1, equations (1.4)–(1.8), exact complete local provider bound in the dependency ledger. Section 7 reproduces the reflected-test construction and continuity actually used. Its broader support theorem and its transitive prerequisites are not newly invoked or recursively recertified here.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, Theorem 16.7.4, printed page 359: statement/completeness target only. Neither its prose nor its scan is included in the learner payload. Section 10 discusses its cone convention, which remains unresolved.
+- *Convolution as addition of supports*, Theorem 1.1, equations (1.4)–(1.8), the included reflected-test construction. Section 7 reproduces the reflected-test construction and continuity actually used. The distinct compact convex-support theorem used in Section 10 is identified in the following reference.
+- Convex supports and convolution cancellation, Theorem 3.1: the full compact convolution support theorem for complex distributions, used in Theorem 10.2.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, Theorem 16.7.4, printed page 359: classical cone-converse reference. Theorem 1.1 makes the nonempty proper-cone hypothesis explicit; Section 10 proves the exceptional-case classification.
 
 This manuscript contains the complete analytic construction for the stated punctured-cone theorem.

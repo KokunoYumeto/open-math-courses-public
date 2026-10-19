@@ -572,7 +572,68 @@ The trivial one-dimensional representation sends \(x\) to \(4\). The \(L^1\) bou
 
 **Exercise 14.1 (the modular factor).** Show that if a left Haar group is unimodular, (5.1) reduces to \(f^*(s)=\overline{f(s^{-1})}\). Show on the group \((u,v)(u',v')=(uu',v+uv')\), \(u,u'>0\), that the left Haar density is \(u^{-2}\,du\,dv\), \(\Delta(u,v)=u^{-1}\), and omitting the factor in \(f^*\) is not an isometric operation on \(L^1\).
 
-**Solution.** The first assertion is substitution of \(\Delta=1\). Left translation by \((c,d)\) has Jacobian \(c^2\) and sends the first coordinate to \(cu\); the factor \((cu)^{-2}\) cancels this Jacobian. Right translation by \((c,d)\) sends \((u,v)\) to \((uc,v+ud)\), with Jacobian \(c\); thus the image-set measure is \(c^{-1}\) times the original measure, proving \(\Delta(c,d)=c^{-1}\). Inversion sends \((u,v)\) to \((u^{-1},-v/u)\), with absolute Jacobian \(u^{-3}\). Thus the norm of the unweighted inverse-conjugate of \(f\) is \(\int |f(u,v)|u\,u^{-2}\,du\,dv\), whereas \(\|f\|_1=\int |f(u,v)|u^{-2}\,du\,dv\). Taking a nonzero nonnegative compact function supported in \(u>2\) makes these norms different. The correct involution includes \(\Delta((u,v)^{-1})=u\), with inversion evaluated in its argument as in (5.1), and (3.2) proves its isometry. The Jacobian calculations are ordinary two-variable substitutions on compact supports; exhaustion extends them to the stated measures.
+**Solution.** The unimodular assertion follows by setting \(\Delta=1\) in (5.1). For the affine group, write \(s=(u,v)\), \(t=(c,d)\), where \(u,c>0\). We compute the measures using the one-variable substitution theorem [SC-08](OA-FLOW-SC.md#sc-08) and the product integral [HR-05](OA-FLOW-HR.md#hr-05).
+
+For a continuous compactly supported function \(F\) on \((0,\infty)\times\mathbb R\), put
+\[
+ I(F)=\int_0^\infty\frac{du}{u^2}\int_{\mathbb R}F(u,v)\,dv,
+ \qquad H(r)=\int_{\mathbb R}F(r,w)\,dw.
+ \tag{14.1a}
+\]
+Every compact support lies in a rectangle \([a,b]\times[-M,M]\) with \(a>0\). The function \(H\) is continuous and compactly supported: integrate on the fixed interval \([-M,M]\) and use uniform continuity of \(F\). All the integrals below can therefore be performed on compact intervals; the reciprocal substitutions stay away from zero. The positive functional \(I\) defines the Radon measure \(m\) by [HR-02](OA-FLOW-HR.md#hr-02), and HR-05 identifies it with \(u^{-2}\,du\,dv\). It is nonzero, finite on compact sets, and positive on nonempty open sets, since such an open set contains a rectangle on which a nonzero nonnegative compactly supported function can be chosen.
+
+Write \(\ell_t(s)=ts=(cu,d+cv)\) for the map on group elements. First use the affine substitution \(w=d+cv\) in the inner integral, and then \(r=cu\) in the outer one:
+\[
+ \begin{aligned}
+ I(F\circ\ell_t)
+ &=\int_0^\infty\frac{du}{u^2}
+      \int_{\mathbb R}F(cu,d+cv)\,dv\\
+ &=\frac1c\int_0^\infty H(cu)\frac{du}{u^2}
+ =\int_0^\infty H(r)\frac{dr}{r^2}
+ =I(F).
+ \end{aligned}
+ \tag{14.1b}
+\]
+The map \(\ell_t\) is a homeomorphism. Its pushforward of a Radon measure is Radon, by transporting compact approximants and open covers through that homeomorphism. Uniqueness in HR-02 now extends (14.1b) from \(C_c(G)\) to equality of the Borel measures. Thus \(m\) is a left Haar measure.
+
+Right translation of group elements is \(r_t(s)=st=(uc,v+ud)\). For each fixed \(u\), the inner change \(w=v+ud\) is a translation; it introduces no scale:
+\[
+ \begin{aligned}
+ I(F\circ r_t)
+ &=\int_0^\infty\frac{du}{u^2}
+      \int_{\mathbb R}F(uc,v+ud)\,dv\\
+ &=\int_0^\infty H(cu)\frac{du}{u^2}
+ =cI(F).
+ \end{aligned}
+ \tag{14.1c}
+\]
+Again uniqueness gives \(m(r_t^{-1}E)=c\,m(E)\) for every Borel set \(E\). Apply this to \(E=At\): \(m(At)=c^{-1}m(A)\). With the convention in Section 3 this proves \(\Delta(c,d)=c^{-1}\).
+
+Finally \(s^{-1}=(u^{-1},-v/u)\). For fixed \(u>0\), the substitution \(w=-v/u\), with its reversed endpoints, gives a factor \(u\). The outer substitution \(r=1/u\) gives
+\[
+ \begin{aligned}
+ I(F\circ\mathrm{inv})
+ &=\int_0^\infty\frac{du}{u^2}
+       \int_{\mathbb R}F(u^{-1},-v/u)\,dv\\
+ &=\int_0^\infty H(u^{-1})\frac{du}{u}
+ =\int_0^\infty H(r)\frac{dr}{r}
+ =I\bigl((u,v)\mapsto uF(u,v)\bigr).
+ \end{aligned}
+ \tag{14.1d}
+\]
+Both sides define Radon measures on test functions: inversion is a homeomorphism, and multiplication of the density by the positive continuous coordinate \(u\) is locally bounded on compact sets. HR-02 uniqueness extends the identity to Borel measures, hence to every nonnegative Borel function by simple approximation and [SC-04](OA-FLOW-SC.md#sc-04). The two measures have exactly the same null sets, because \(0<u<\infty\); the identity therefore also holds for completed-measurable representatives.
+
+Taking \(F=|f|\) gives
+\[
+ \int_G|f(s^{-1})|\,dm(s)
+ =\int_G u|f(u,v)|\,dm(u,v).
+ \tag{14.1e}
+\]
+A nonzero nonnegative \(f\in C_c(G)\) supported in \(u>2\) makes the right side strictly larger than \(2\|f\|_1\). Thus unweighted inverse-conjugation is not an \(L^1\) isometry. For the actual involution,
+\[
+ f^*(u,v)=u\,\overline{f(u^{-1},-v/u)}.
+\]
+Apply (14.1d) to the nonnegative measurable function \(K(u,v)=u^{-1}|f(u,v)|\). Since \(K(s^{-1})=u|f(s^{-1})|\), it gives \(\|f^*\|_1=I(uK)=I(|f|)=\|f\|_1\), including the assertion that \(f^*\) is integrable whenever \(f\) is.
 
 **Exercise 14.2 (degenerate representations).** Let \(U\) be a continuous unitary action on \(K_0\), and define \(\pi(f)=\pi_U(f)\oplus0\) on \(K_0\oplus K_1\). Determine its essential space. Explain why integration does not recover a prescribed action on \(K_1\).
 

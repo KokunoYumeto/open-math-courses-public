@@ -1,0 +1,52 @@
+# Mixed boundary problems: geometry, energy and further reading
+
+The central problem is a scalar second-order equation with a prescribed Dirichlet value at a smooth noncharacteristic boundary and Cauchy data on a time slice. The lessons below separate energy estimates, the geometry of boundary rays, propagation of smooth singularities and estimates uniform in the coefficients. Each linked theorem gives its own operator, data, sign and regularity hypotheses.
+
+## A route through the proofs
+
+| Theme | Read | Keep in view |
+|---|---|---|
+| Energy and existence | [Dirichlet energy and existence](../../reconstructions/20261007-restored-mixed-dirichlet/mixed-dirichlet-cauchy-energy-preparation.html); strict oblique energy | The time covector is timelike, the physical boundary is timelike, and compact time slabs come from the stated proper clock or support restriction. The oblique theorem has additional strict boundary inequalities. |
+| Elliptic and transverse boundary regions | elliptic boundary regularity; [transverse reflection](../../reconstructions/20261007-restored-boundary-reflection/boundary-reflection-preparation.html) | Elliptic regularity and reflected characteristic roots are different mechanisms. The intrinsic value trace and all lower-order terms stay in the argument. |
+| Glancing geometry | [generalized glancing lesson](../../reconstructions/20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html); [convex infinite-contact construction](../../reconstructions/20261016-convex-infinite-contact/convex-billiards-at-infinite-contact.html) | Finite-contact uniqueness, existence of a generalized continuation and approximation by transverse rays have distinct quantifiers. |
+| Smooth glancing propagation | [Dirichlet diffraction argument](../../reconstructions/20261009-dirichlet-diffraction-bootstrap/dirichlet-diffraction-on-one-open-region.html); [general scalar boundary propagation](../../reconstructions/20261009-general-scalar-boundary/scalar-boundary-propagation-through-general-glancing.html) | Energy estimates must apply to the same boundary front and source-free region as the geometric theorem. |
+| Prescribed singularities | positive complex beams and reflected pairs | Positive complex phases require their full jet, amplitude, residual and reflected-trace calculations; their finite-leg hypotheses remain explicit. |
+| Limiting and Tricomi configurations | [limiting broken rays](../../reconstructions/20261009-limiting-broken-rays/distributions-on-limiting-broken-rays.html); diffractive Tricomi realization | The limiting geometry, characteristic sign and boundary support determine what can actually be realized. |
+| Varying the coefficients | global observation; [scalar family assembly](../../reconstructions/20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html); [generalized-ray stability](../../reconstructions/20261009-parameter-ray-stability/stable-observation-for-boundary-rays.html); coefficient-uniform wave smoothing | Fix the geometric parameter neighborhood before choosing target order. Retain complete kernels, the original Banach norm and all stated ordinary normal derivatives. |
+
+## Infinite contact and analytic hypotheses
+
+At infinite contact, one compressed initial state can have several generalized continuations. The [generalized glancing lesson](../../reconstructions/20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) gives two exact trajectories for a smooth quadratic symbol on a flat boundary. The [convex infinite-contact construction](../../reconstructions/20261016-convex-infinite-contact/convex-billiards-at-infinite-contact.html) gives a constant-coefficient wave example with a smooth convex boundary and proves approximation of its two specified curves. These examples have different coefficient and boundary geometry.
+
+For uniqueness, use the finite-contact theorem with its actual hypotheses. In the analytic setting, the introduction to the [Melrose–Sjöstrand seminar paper](https://www.numdam.org/item/SEDP_1977-1978____A16_0/) assumes both the principal symbol and the boundary are analytic. A boundary that happens to be analytic does not remove the smooth, nonanalytic coefficient freedom in the flat-boundary example. The analytic-wavefront results mentioned in the historical literature concern a different regularity class from the smooth wavefront used in the linked propagation proofs.
+
+## Two complementary glancing methods
+
+The glancing-pair theorem gives a precise homogeneous symplectic normal form, including the vanishing first bracket, nonvanishing second brackets and independence hypotheses. It supports the model and parametrix approach to glancing. The [general scalar boundary propagation](../../reconstructions/20261009-general-scalar-boundary/scalar-boundary-propagation-through-general-glancing.html) follows the energy and compressed-geometry route, with its quantitative windows and exceptional stationary or radial states treated explicitly. Read the corresponding proof for each conclusion; geometric equivalence and a propagation estimate serve different purposes.
+
+The chapter's warning about infinite contact remains relevant: existence of a singular generalized continuation does not specify a unique future at a nonunique state. The exact maximal-continuation and finite-contact qualifications belong to the mathematical statements.
+
+## Historical orientation
+
+Hörmander's *The Analysis of Linear Partial Differential Operators III* (2007 edition), Chapter 24 Summary and Notes, printed pages 416 and 469–470, provides the following account of the subject. These credits describe the history reported there.
+
+| Subject | Credits and scope in the Notes |
+|---|---|
+| Mixed-problem energy estimates | Krzyżański and Schauder for the early second-order method; Gårding for first-order boundary conditions and weak estimates; Agmon for higher-order estimates under a root-multiplicity restriction; Sakamoto for removing that restriction; Kreiss for related system results. Chazarain and Piriou are suggested for a broader treatment. |
+| Elliptic, transverse and glancing analysis | Chazarain for the hyperbolic parametrix setting; Melrose and Taylor for diffractive parametrices; Eskin for alternative constructions. Friedlander's layered-medium solution and Ludwig's geometrical-optics expansions provide model and asymptotic motivation. |
+| Gliding and generalized rays | Andersson and Melrose for the gliding case and Melrose's hypersurface equivalence; Melrose and Sjöstrand for generalized boundary geometry and the energy argument away from diffraction; Ivrii for the diffractive energy method. Taylor supplies the nonuniqueness phenomenon discussed in the chapter. |
+| Analytic singularities | Friedlander and Melrose for a model case, and Sjöstrand for broader analytic-wavefront results. These retain their analytic hypotheses. |
+| Concentrated solutions | Ralston's interior localized-energy construction and later boundary beam work, together with the positive-Lagrangian methods discussed by Hörmander, motivate the prescribed-singularity arguments. |
+| Uniform wave estimates and spectral questions | Melrose's simplification of Ivrii's spectral work is the source of the chapter's parameter argument. Further system and spectral applications retain their own statements. |
+
+## Freely readable primary routes
+
+These readings complement the programme proofs in different ways. A link to a reading is not a substitute for a proof required by a lesson.
+
+1. [Melrose and Sjöstrand, *Propagation de singularités pour des problèmes aux limites d'ordre 2*](https://www.numdam.org/item/SEDP_1977-1978____A16_0/), seminar XV, 1977–1978. The introduction states the compressed geometric setting, distinguishes uniqueness hypotheses and identifies the main propagation result. The exposition concentrates on geometry and refers to other work for parts of the analysis.
+2. [Andersson and Melrose, *Propagation of singularities along gliding rays*](https://www.numdam.org/item/SEDP_1976-1977____A1_0/), seminar I, 1976–1977. Read its noncharacteristic and pseudoconvex gliding assumptions with the theorem and proof sketch.
+3. [Eskin, *Propagation of singularities for interior mixed hyperbolic problem*](https://www.numdam.org/item/SEDP_1976-1977____A11_0/), seminar XII, 1976–1977. This is a parametrix route with a strict convexity condition. Its discussion of higher order adds boundary-symbol assumptions.
+4. [Melrose, MIT introduction to microlocal analysis](https://math.mit.edu/~rbm/18.157-F09/18.157-F09.html), especially the linked [elliptic boundary chapter](https://math.mit.edu/~rbm/iml/Chapter8.pdf). This supplies background on boundary distributions and elliptic boundary methods. The chapter explicitly marks parts of its exposition as missing; use its actual available scope.
+5. [Melrose, *The inverse spectral problem for planar domains*](https://math.mit.edu/~rbm/papers/anulec/anulec.pdf), sections 17–18. The wave-group and time-averaged trace discussion explains the spectral motivation. These lectures are a separate text from the 1984 article cited in Hörmander's Notes.
+
+The source text and figures of these human works retain their own terms. This guide is independent programme exposition, CC0 to the extent rights exist. AI-assisted exposition and source comparison: GPT-6.1 Sol (OpenAI), Ultra. The [reading map](reading-map.json) identifies the exact programme arguments used for navigation; external human proof dependencies retain their stated status.

@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Factorization, hereditary corners and quotient lifts · Modular theory and weights</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/factorization-hereditary-corners-and-quotient-lifts.md">Editable Markdown</a></nav><article class="lesson"><h1 id="factorization-hereditary-corners-and-quotient-lifts">Factorization, hereditary corners and quotient lifts</h1>
+<p><em>Mathematical exposition by GPT-6 Astra (OpenAI), October 2026. Original course contributions: CC0.</em></p>
+<p>Passing to a quotient can turn a nonzero product into zero. The main construction in this lesson changes the two original factors by elements of the ideal so that their product becomes exactly zero upstairs. Positive parts provide the orthogonality; a balanced factorization puts the polar factors back inside the C*-algebra. Along the way, the same tools identify hereditary corners and explain how a primitive algebra detects compact operators.</p>
+<p>All algebras are complex C*-algebras, with no separability or identity assumption. An ideal is a norm-closed two-sided ideal unless another meaning is specified. Write <span class="math" data-tex="\(q:A\to A/I\)">\(q:A\to A/I\)</span> for the quotient map and <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span> for the forced unitization. Functions vanishing at zero are evaluated inside <span class="math" data-tex="\(A\)">\(A\)</span>; other continuous functions are evaluated in <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span>. The zero algebra is allowed, but an irreducible representation is required to be nonzero. A primitive algebra therefore has a faithful irreducible representation on a nonzero Hilbert space.</p>
+<p>The earlier programme proofs used here are the <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-07">continuous functional calculus, Theorems 5.1 and 5.3 and Corollary 5.4</a>, <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-20">positive approximate identities, Theorem 11.4 and Corollary 11.5</a>, and <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-25">C*-quotients, Theorem 15.1</a>. Faithful representations and the scalar-commutant criterion are proved in <a href="../foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html">the GNS lesson, Theorem 7.2 and Theorem 2.2</a>. We also use <a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#oa-fnd-bi-06">the double commutant theorem, Theorem 4.4</a>. The proofs below give the additional corner, factorization and lifting arguments explicitly.</p>
+<h2 id="multiplication-domains-and-balanced-factors"><span id="OA-MOD-QHL-01"></span><span id="oa-mod-qhl-01"></span>Multiplication domains and balanced factors</h2>
+<p><strong>Lemma 1.1.</strong> Suppose that <span class="math" data-tex="\(A\)">\(A\)</span> is contained isometrically as a C*-subalgebra of a C*-algebra <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+M_a=\{x\in A:ax\in A\}
+\]">\[
+M_a=\{x\in A:ax\in A\}
+\]</span>
+<p>is a closed right ideal of <span class="math" data-tex="\(A\)">\(A\)</span>. More generally, for <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R_{a,I}=\{x\in A:ax\in I\},\qquad
+L_{a,I}=\{x\in A:xa\in I\}
+\]">\[
+R_{a,I}=\{x\in A:ax\in I\},\qquad
+L_{a,I}=\{x\in A:xa\in I\}
+\]</span>
+<p>are respectively closed right and left ideals.</p>
+<p><strong>Proof.</strong> Multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> is bounded and linear. The inverse image of the closed linear space <span class="math" data-tex="\(A\)">\(A\)</span>, or <span class="math" data-tex="\(I\)">\(I\)</span>, is a closed linear space. If <span class="math" data-tex="\(ax\in A\)">\(ax\in A\)</span> and <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, then <span class="math" data-tex="\(a(xb)=(ax)b\in A\)">\(a(xb)=(ax)b\in A\)</span>. If <span class="math" data-tex="\(ax\in I\)">\(ax\in I\)</span>, the same product belongs to <span class="math" data-tex="\(I\)">\(I\)</span>. The identity <span class="math" data-tex="\((bx)a=b(xa)\)">\((bx)a=b(xa)\)</span> proves the left-ideal assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (polar factors and norm approximation).</strong> In a faithful concrete representation of <span class="math" data-tex="\(A\)">\(A\)</span>, each <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> has a polar decomposition <span class="math" data-tex="\(x=u h\)">\(x=u h\)</span>, where <span class="math" data-tex="\(h=|x|=(x^*x)^{1/2}\)">\(h=|x|=(x^*x)^{1/2}\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is a partial isometry, and <span class="math" data-tex="\(u^*u\)">\(u^*u\)</span> is the projection onto <span class="math" data-tex="\(\overline{hH}\)">\(\overline{hH}\)</span>. Although <span class="math" data-tex="\(u\)">\(u\)</span> need not belong to <span class="math" data-tex="\(A\)">\(A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+u h^{1/2}\in A,\qquad
+\left\|u h^{1/2}-x(h+\varepsilon)^{-1/2}\right\|
+\leq\sqrt{\varepsilon}.
+\]">\[
+u h^{1/2}\in A,\qquad
+\left\|u h^{1/2}-x(h+\varepsilon)^{-1/2}\right\|
+\leq\sqrt{\varepsilon}.
+\]</span>
+<p><strong>Proof.</strong> The rule <span class="math" data-tex="\(h\xi\mapsto x\xi\)">\(h\xi\mapsto x\xi\)</span> is well defined and isometric, since <span class="math" data-tex="\(\|h\xi\|^2=\langle x^*x\xi,\xi\rangle=\|x\xi\|^2\)">\(\|h\xi\|^2=\langle x^*x\xi,\xi\rangle=\|x\xi\|^2\)</span>. Extend it to <span class="math" data-tex="\(\overline{hH}\)">\(\overline{hH}\)</span> and set it equal to zero on its orthogonal complement. This constructs <span class="math" data-tex="\(u\)">\(u\)</span>, gives <span class="math" data-tex="\(x=uh\)">\(x=uh\)</span>, and identifies its initial projection. For <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\leq\sqrt t-\frac{t}{\sqrt{t+\varepsilon}}
+=\frac{\varepsilon\sqrt t}
+{\sqrt{t+\varepsilon}(\sqrt{t+\varepsilon}+\sqrt t)}
+\leq\sqrt{\varepsilon}.
+\]">\[
+0\leq\sqrt t-\frac{t}{\sqrt{t+\varepsilon}}
+=\frac{\varepsilon\sqrt t}
+{\sqrt{t+\varepsilon}(\sqrt{t+\varepsilon}+\sqrt t)}
+\leq\sqrt{\varepsilon}.
+\]</span>
+<p>The functional calculus and <span class="math" data-tex="\(\|u\|\leq1\)">\(\|u\|\leq1\)</span> give the asserted estimate. Each approximant <span class="math" data-tex="\(x(h+\varepsilon)^{-1/2}\)">\(x(h+\varepsilon)^{-1/2}\)</span> lies in <span class="math" data-tex="\(A\)">\(A\)</span>, because <span class="math" data-tex="\(A\)">\(A\)</span> is an ideal in its unitization. Norm closure gives <span class="math" data-tex="\(uh^{1/2}\in A\)">\(uh^{1/2}\in A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.3 (balanced factorization).</strong> Every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> can be written <span class="math" data-tex="\(x=yz\)">\(x=yz\)</span>, with <span class="math" data-tex="\(y,z\in A\)">\(y,z\in A\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\|y\|=\|z\|=\|x\|^{1/2}.
+\]">\[
+\|y\|=\|z\|=\|x\|^{1/2}.
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, take both factors zero. Otherwise use Lemma 1.2 and set <span class="math" data-tex="\(y=uh^{1/2}\)">\(y=uh^{1/2}\)</span>, <span class="math" data-tex="\(z=h^{1/2}\)">\(z=h^{1/2}\)</span>. Then <span class="math" data-tex="\(yz=uh=x\)">\(yz=uh=x\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+y^*y=h^{1/2}u^*uh^{1/2}=h.
+\]">\[
+y^*y=h^{1/2}u^*uh^{1/2}=h.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\|y\|^2=\|h\|=\|x\|\)">\(\|y\|^2=\|h\|=\|x\|\)</span>, while <span class="math" data-tex="\(\|z\|^2=\|h\|\)">\(\|z\|^2=\|h\|\)</span> by the functional calculus. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The application <span class="math" data-tex="\(N=A^{**}\)">\(N=A^{**}\)</span> in Lemma 1.1 is legitimate. The lemma itself needs only an isometric inclusion and bounded multiplication, so no dual-space result is needed for that application.</p>
+<h2 id="lifts-with-exactly-the-quotient-norm"><span id="OA-MOD-QHL-02"></span><span id="oa-mod-qhl-02"></span>Lifts with exactly the quotient norm</h2>
+<p>The two lifting statements below also appear, with full proofs, as <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#oa-fnd-cf-28">Proposition 17.1 in the C*-algebra lesson</a>. We give the constructions here because the distinction between functions in <span class="math" data-tex="\(A\)">\(A\)</span> and in <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span> will matter in the zero-product argument.</p>
+<p><strong>Theorem 2.1.</strong> Every self-adjoint <span class="math" data-tex="\(b\in A/I\)">\(b\in A/I\)</span> has a self-adjoint lift <span class="math" data-tex="\(B\in A\)">\(B\in A\)</span> with <span class="math" data-tex="\(\|B\|=\|b\|\)">\(\|B\|=\|b\|\)</span>. A positive <span class="math" data-tex="\(b\)">\(b\)</span> has such a lift that is positive.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, choose <span class="math" data-tex="\(B=0\)">\(B=0\)</span>. Otherwise put <span class="math" data-tex="\(r=\|b\|\)">\(r=\|b\|\)</span>, choose any lift <span class="math" data-tex="\(a\)">\(a\)</span>, and replace it by <span class="math" data-tex="\(k=(a+a^*)/2\)">\(k=(a+a^*)/2\)</span>. For the continuous clipping function</p>
+<span class="math math-display" data-tex="\[
+g(t)=\max(-r,\min(t,r)),
+\]">\[
+g(t)=\max(-r,\min(t,r)),
+\]</span>
+<p>we have <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, so <span class="math" data-tex="\(B=g(k)\in A\)">\(B=g(k)\in A\)</span>. It is self-adjoint and <span class="math" data-tex="\(\|B\|\leq r\)">\(\|B\|\leq r\)</span>. Functional calculus commutes with the quotient homomorphism, and <span class="math" data-tex="\(g\)">\(g\)</span> is the identity on the spectrum of <span class="math" data-tex="\(b\)">\(b\)</span>. Thus <span class="math" data-tex="\(q(B)=g(b)=b\)">\(q(B)=g(b)=b\)</span>. Contractivity of <span class="math" data-tex="\(q\)">\(q\)</span> forces <span class="math" data-tex="\(r\leq\|B\|\)">\(r\leq\|B\|\)</span>, hence equality. For positive <span class="math" data-tex="\(b\)">\(b\)</span>, use <span class="math" data-tex="\(g_+(t)=\min(r,\max(0,t))\)">\(g_+(t)=\min(r,\max(0,t))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> Every <span class="math" data-tex="\(b\in A/I\)">\(b\in A/I\)</span> has a lift <span class="math" data-tex="\(B\in A\)">\(B\in A\)</span> with <span class="math" data-tex="\(\|B\|=\|b\|\)">\(\|B\|=\|b\|\)</span>.</p>
+<p><strong>Proof.</strong> Again the zero case is immediate. For <span class="math" data-tex="\(r=\|b\|&gt;0\)">\(r=\|b\|&gt;0\)</span>, choose <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> with <span class="math" data-tex="\(q(a)=b\)">\(q(a)=b\)</span>, set <span class="math" data-tex="\(h=|a|\)">\(h=|a|\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+f(0)=1,\qquad f(t)=\min(1,r/t)\quad(t&gt;0).
+\]">\[
+f(0)=1,\qquad f(t)=\min(1,r/t)\quad(t&gt;0).
+\]</span>
+<p>This function is continuous on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Form <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> in the unitization and put <span class="math" data-tex="\(B=af(h)\in A\)">\(B=af(h)\in A\)</span>. Since <span class="math" data-tex="\(h\)">\(h\)</span> commutes with <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+B^*B=h^2f(h)^2,\qquad
+\|B\|^2=\max_{t\in\sigma_{\widetilde A}(h)}t^2f(t)^2
+\leq r^2.
+\]">\[
+B^*B=h^2f(h)^2,\qquad
+\|B\|^2=\max_{t\in\sigma_{\widetilde A}(h)}t^2f(t)^2
+\leq r^2.
+\]</span>
+<p>The quotient map extends to the unital map <span class="math" data-tex="\(\widetilde q:\widetilde A\to\widetilde{A/I}\)">\(\widetilde q:\widetilde A\to\widetilde{A/I}\)</span>. It sends <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(|b|\)">\(|b|\)</span>. On the spectrum of <span class="math" data-tex="\(|b|\)">\(|b|\)</span>, the function <span class="math" data-tex="\(f\)">\(f\)</span> is identically one, so</p>
+<span class="math math-display" data-tex="\[
+q(B)=b f(|b|)=b.
+\]">\[
+q(B)=b f(|b|)=b.
+\]</span>
+<p>Contractivity again gives the opposite norm inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These proofs use no compactness of a minimizing sequence. They explicitly turn any lift into a lift attaining the quotient norm.</p>
+<h2 id="transport-between-hereditary-corners"><span id="OA-MOD-QHL-03"></span><span id="oa-mod-qhl-03"></span>Transport between hereditary corners</h2>
+<p>A C*-subalgebra <span class="math" data-tex="\(D\subseteq A\)">\(D\subseteq A\)</span> is <em>hereditary</em> if <span class="math" data-tex="\(0\leq x\leq d\)">\(0\leq x\leq d\)</span>, with <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> and <span class="math" data-tex="\(d\in D_+\)">\(d\in D_+\)</span>, implies <span class="math" data-tex="\(x\in D\)">\(x\in D\)</span>. For <span class="math" data-tex="\(h\in A_+\)">\(h\in A_+\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+D_h=\overline{hAh}^{\|\cdot\|}.
+\]">\[
+D_h=\overline{hAh}^{\|\cdot\|}.
+\]</span>
+<p><strong>Lemma 3.1.</strong> The algebra <span class="math" data-tex="\(D_h\)">\(D_h\)</span> is hereditary. For <span class="math" data-tex="\(e_\varepsilon=h(h+\varepsilon)^{-1}\)">\(e_\varepsilon=h(h+\varepsilon)^{-1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+x\in D_h\quad\Longleftrightarrow\quad
+e_\varepsilon x\longrightarrow x\quad\hbox{and}\quad
+xe_\varepsilon\longrightarrow x
+\quad\hbox{in norm}.
+\]">\[
+x\in D_h\quad\Longleftrightarrow\quad
+e_\varepsilon x\longrightarrow x\quad\hbox{and}\quad
+xe_\varepsilon\longrightarrow x
+\quad\hbox{in norm}.
+\]</span>
+<p><strong>Proof.</strong> The space <span class="math" data-tex="\(hAh\)">\(hAh\)</span> is closed under adjoints and products: <span class="math" data-tex="\((hah)(hbh)=h(ah^2b)h\)">\((hah)(hbh)=h(ah^2b)h\)</span>. Thus its closure is a C*-subalgebra. If <span class="math" data-tex="\((v_i)\)">\((v_i)\)</span> is a positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>, then <span class="math" data-tex="\(hv_i h\to h^2\)">\(hv_i h\to h^2\)</span>, so <span class="math" data-tex="\(h^2\in D_h\)">\(h^2\in D_h\)</span>. Functional calculus in <span class="math" data-tex="\(D_h\)">\(D_h\)</span> gives <span class="math" data-tex="\(h\in D_h\)">\(h\in D_h\)</span> and <span class="math" data-tex="\(e_\varepsilon\in D_h\)">\(e_\varepsilon\in D_h\)</span>.</p>
+<p>The estimate <span class="math" data-tex="\(\|(1-e_\varepsilon)h\|\leq\varepsilon\)">\(\|(1-e_\varepsilon)h\|\leq\varepsilon\)</span> shows that <span class="math" data-tex="\(e_\varepsilon x\to x\)">\(e_\varepsilon x\to x\)</span> and <span class="math" data-tex="\(xe_\varepsilon\to x\)">\(xe_\varepsilon\to x\)</span> for <span class="math" data-tex="\(x\in hAh\)">\(x\in hAh\)</span>. Contractivity extends both statements to its closure. Conversely, both convergences imply <span class="math" data-tex="\(e_\varepsilon x e_\varepsilon\to x\)">\(e_\varepsilon x e_\varepsilon\to x\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+e_\varepsilon x e_\varepsilon
+=h\big((h+\varepsilon)^{-1}x(h+\varepsilon)^{-1}\big)h
+\in hAh.
+\]">\[
+e_\varepsilon x e_\varepsilon
+=h\big((h+\varepsilon)^{-1}x(h+\varepsilon)^{-1}\big)h
+\in hAh.
+\]</span>
+<p>The expression in parentheses belongs to <span class="math" data-tex="\(A\)">\(A\)</span>, even when the inverses only belong to the unitization.</p>
+<p>For heredity, let <span class="math" data-tex="\(0\leq x\leq d\in D_h\)">\(0\leq x\leq d\in D_h\)</span>. Positivity under conjugation and the C*-identity give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|(1-e_\varepsilon)x^{1/2}\|^2
+&amp;=\|(1-e_\varepsilon)x(1-e_\varepsilon)\|\\
+&amp;\leq\|(1-e_\varepsilon)d(1-e_\varepsilon)\|
+\longrightarrow0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|(1-e_\varepsilon)x^{1/2}\|^2
+&amp;=\|(1-e_\varepsilon)x(1-e_\varepsilon)\|\\
+&amp;\leq\|(1-e_\varepsilon)d(1-e_\varepsilon)\|
+\longrightarrow0.
+\end{aligned}
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\(x^{1/2}\)">\(x^{1/2}\)</span> proves <span class="math" data-tex="\((1-e_\varepsilon)x\to0\)">\((1-e_\varepsilon)x\to0\)</span>; taking adjoints proves <span class="math" data-tex="\(x(1-e_\varepsilon)\to0\)">\(x(1-e_\varepsilon)\to0\)</span>. The characterization just proved yields <span class="math" data-tex="\(x\in D_h\)">\(x\in D_h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (polar transport).</strong> For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the C*-algebras</p>
+<span class="math math-display" data-tex="\[
+\overline{a^*Aa}\quad\hbox{and}\quad\overline{aAa^*}
+\]">\[
+\overline{a^*Aa}\quad\hbox{and}\quad\overline{aAa^*}
+\]</span>
+<p>are isometrically *-isomorphic. If <span class="math" data-tex="\(a=uh\)">\(a=uh\)</span> is its polar decomposition, the isomorphism is <span class="math" data-tex="\(b\mapsto ubu^*\)">\(b\mapsto ubu^*\)</span>.</p>
+<p><strong>Proof.</strong> First prove <span class="math" data-tex="\(\overline{a^*Aa}=D_h\)">\(\overline{a^*Aa}=D_h\)</span>, where <span class="math" data-tex="\(h=|a|\)">\(h=|a|\)</span>. Denote the left side by <span class="math" data-tex="\(B\)">\(B\)</span>. Products of generators are again of that form, so <span class="math" data-tex="\(B\)">\(B\)</span> is a C*-subalgebra. Approximate identities give <span class="math" data-tex="\(a^*v_i a\to a^*a=h^2\)">\(a^*v_i a\to a^*a=h^2\)</span>; hence <span class="math" data-tex="\(h\in B\)">\(h\in B\)</span>. Also <span class="math" data-tex="\(BAB\subseteq B\)">\(BAB\subseteq B\)</span>: on generators,</p>
+<span class="math math-display" data-tex="\[
+(a^*ba)c(a^*da)=a^*(bac a^*d)a,
+\]">\[
+(a^*ba)c(a^*da)=a^*(bac a^*d)a,
+\]</span>
+<p>and norm limits preserve membership. Therefore <span class="math" data-tex="\(hAh\subseteq B\)">\(hAh\subseteq B\)</span>, giving <span class="math" data-tex="\(D_h\subseteq B\)">\(D_h\subseteq B\)</span>. For <span class="math" data-tex="\(b\in A_+\)">\(b\in A_+\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\leq a^*ba\leq\|b\|h^2.
+\]">\[
+0\leq a^*ba\leq\|b\|h^2.
+\]</span>
+<p>Lemma 3.1 puts <span class="math" data-tex="\(a^*ba\)">\(a^*ba\)</span> in <span class="math" data-tex="\(D_h\)">\(D_h\)</span>. Every element of <span class="math" data-tex="\(A\)">\(A\)</span> is a linear combination of positive elements: split its real and imaginary parts into positive and negative parts. This proves the reverse inclusion. Applying the same argument to <span class="math" data-tex="\(a^*\)">\(a^*\)</span> gives <span class="math" data-tex="\(\overline{aAa^*}=D_k\)">\(\overline{aAa^*}=D_k\)</span>, with <span class="math" data-tex="\(k=|a^*|\)">\(k=|a^*|\)</span>.</p>
+<p>Let <span class="math" data-tex="\(p=u^*u\)">\(p=u^*u\)</span>. Since <span class="math" data-tex="\(ph=h=hp\)">\(ph=h=hp\)</span>, every element of <span class="math" data-tex="\(D_h\)">\(D_h\)</span> is supported on <span class="math" data-tex="\(p\)">\(p\)</span>. Thus conjugation by <span class="math" data-tex="\(u\)">\(u\)</span> is a *-homomorphism on <span class="math" data-tex="\(D_h\)">\(D_h\)</span>, and conjugation by <span class="math" data-tex="\(u^*\)">\(u^*\)</span> is its inverse on its image. In particular it is isometric. On the dense generators,</p>
+<span class="math math-display" data-tex="\[
+u(hbh)u^*=aba^*\qquad(b\in A).
+\]">\[
+u(hbh)u^*=aba^*\qquad(b\in A).
+\]</span>
+<p>Its closed image is exactly <span class="math" data-tex="\(\overline{aAa^*}=D_k\)">\(\overline{aAa^*}=D_k\)</span>. The formula therefore defines a map between subalgebras of <span class="math" data-tex="\(A\)">\(A\)</span>, even though <span class="math" data-tex="\(u\)">\(u\)</span> may lie outside <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="primitive-algebras-and-hereditary-subalgebras"><span id="OA-MOD-QHL-04"></span><span id="oa-mod-qhl-04"></span>Primitive algebras and hereditary subalgebras</h2>
+<p><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is primitive and <span class="math" data-tex="\(x,y\in A\)">\(x,y\in A\)</span> are nonzero, then <span class="math" data-tex="\(xAy\neq\{0\}\)">\(xAy\neq\{0\}\)</span>.</p>
+<p><strong>Proof.</strong> Realize <span class="math" data-tex="\(A\)">\(A\)</span> faithfully and irreducibly on <span class="math" data-tex="\(H\)">\(H\)</span>. Choose <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with <span class="math" data-tex="\(\eta=y\xi\neq0\)">\(\eta=y\xi\neq0\)</span>. Every nonzero vector is cyclic: <span class="math" data-tex="\(\overline{A\eta}\)">\(\overline{A\eta}\)</span> is an invariant subspace, is nonzero by nondegeneracy, and thus equals <span class="math" data-tex="\(H\)">\(H\)</span>. If <span class="math" data-tex="\(xay=0\)">\(xay=0\)</span> for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the operator <span class="math" data-tex="\(x\)">\(x\)</span> vanishes on the dense space <span class="math" data-tex="\(A\eta\)">\(A\eta\)</span>, and hence vanishes on <span class="math" data-tex="\(H\)">\(H\)</span>. Faithfulness contradicts <span class="math" data-tex="\(x\neq0\)">\(x\neq0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> Every nonzero hereditary C*-subalgebra of a primitive C*-algebra is primitive.</p>
+<p><strong>Proof.</strong> Continue with a faithful irreducible realization <span class="math" data-tex="\(A\subseteq B(H)\)">\(A\subseteq B(H)\)</span>. Let <span class="math" data-tex="\(B\subseteq A\)">\(B\subseteq A\)</span> be nonzero and hereditary, and let <span class="math" data-tex="\(q\)">\(q\)</span> be the projection onto <span class="math" data-tex="\(\overline{BH}\)">\(\overline{BH}\)</span>. A positive contractive approximate identity <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> converges strongly to <span class="math" data-tex="\(q\)">\(q\)</span>: convergence holds on vectors <span class="math" data-tex="\(b\xi\)">\(b\xi\)</span>, follows on their closed span by the uniform contraction bound, and every <span class="math" data-tex="\(e_i\)">\(e_i\)</span> vanishes on <span class="math" data-tex="\(q^\perp H\)">\(q^\perp H\)</span>. Also <span class="math" data-tex="\(b=qbq\)">\(b=qbq\)</span> for <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, so restriction to <span class="math" data-tex="\(qH\)">\(qH\)</span> is faithful and nondegenerate.</p>
+<p>For <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\leq e_i a e_i\leq\|a\|e_i^2.
+\]">\[
+0\leq e_i a e_i\leq\|a\|e_i^2.
+\]</span>
+<p>Heredity gives <span class="math" data-tex="\(e_i a e_i\in B\)">\(e_i a e_i\in B\)</span>. Decomposing an arbitrary <span class="math" data-tex="\(a\)">\(a\)</span> into four positive terms shows <span class="math" data-tex="\(e_i A e_i\subseteq B\)">\(e_i A e_i\subseteq B\)</span>. Schur's lemma and the double commutant theorem give the strong closure <span class="math" data-tex="\(\overline A^{\mathrm s}=B(H)\)">\(\overline A^{\mathrm s}=B(H)\)</span>. For each fixed <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(T\in B(H)\)">\(T\in B(H)\)</span>, approximate <span class="math" data-tex="\(T\)">\(T\)</span> strongly by elements of <span class="math" data-tex="\(A\)">\(A\)</span>; multiplication on either side by the fixed <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is strongly continuous. Hence <span class="math" data-tex="\(e_iTe_i\)">\(e_iTe_i\)</span> lies in the strong closure of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(e_iTe_i\to qTq\)">\(e_iTe_i\to qTq\)</span> strongly, using <span class="math" data-tex="\(\|e_i\|\leq1\)">\(\|e_i\|\leq1\)</span>. All operators on <span class="math" data-tex="\(qH\)">\(qH\)</span> occur as compressions <span class="math" data-tex="\(qTq\)">\(qTq\)</span>. The strong closure of the compressed <span class="math" data-tex="\(B\)">\(B\)</span> is therefore <span class="math" data-tex="\(B(qH)\)">\(B(qH)\)</span>, whose commutant consists of scalars. The representation on <span class="math" data-tex="\(qH\neq0\)">\(qH\neq0\)</span> is irreducible and faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The nonzero condition is required by our convention for irreducible representations: the zero algebra has no nonzero representation. No countability condition occurs in the proof.</p>
+<h2 id="detecting-the-compact-operators"><span id="OA-MOD-QHL-05"></span><span id="oa-mod-qhl-05"></span>Detecting the compact operators</h2>
+<p>Write <span class="math" data-tex="\(K(H)\)">\(K(H)\)</span> for the norm closure of the finite-rank operators. For vectors <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, use <span class="math" data-tex="\(\theta_{\xi,\eta}(\zeta)=\langle\zeta,\eta\rangle\xi\)">\(\theta_{\xi,\eta}(\zeta)=\langle\zeta,\eta\rangle\xi\)</span>, with the inner product linear in its first argument.</p>
+<p><strong>Theorem 5.1.</strong> For a primitive algebra <span class="math" data-tex="\(A\)">\(A\)</span>, the following conditions are equivalent:</p>
+<ol>
+<li>Some faithful irreducible representation <span class="math" data-tex="\(\pi:A\to B(H)\)">\(\pi:A\to B(H)\)</span> satisfies <span class="math" data-tex="\(K(H)\subseteq\pi(A)\)">\(K(H)\subseteq\pi(A)\)</span>.</li>
+<li>There is <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> for which the complex vector space <span class="math" data-tex="\(aAa^*\)">\(aAa^*\)</span> has dimension one.</li>
+</ol>
+<p>If condition 2 holds, every faithful irreducible realization of <span class="math" data-tex="\(A\)">\(A\)</span> contains the compact operators on its representation space.</p>
+<p><strong>Proof.</strong> Suppose first that <span class="math" data-tex="\(A\subseteq B(H)\)">\(A\subseteq B(H)\)</span> faithfully and <span class="math" data-tex="\(K(H)\subseteq A\)">\(K(H)\subseteq A\)</span>. A rank-one projection <span class="math" data-tex="\(p\)">\(p\)</span> belongs to <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(pAp=\mathbb Cp\)">\(pAp=\mathbb Cp\)</span>, since <span class="math" data-tex="\(pB(H)p=\mathbb Cp\)">\(pB(H)p=\mathbb Cp\)</span> and <span class="math" data-tex="\(p\in pAp\)">\(p\in pAp\)</span>. Take <span class="math" data-tex="\(a=p\)">\(a=p\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(\dim aAa^*=1\)">\(\dim aAa^*=1\)</span>. This finite-dimensional space is closed and nonzero, and Theorem 3.2 identifies it as a hereditary C*-subalgebra <span class="math" data-tex="\(D\)">\(D\)</span>. Approximate identities put the nonzero element <span class="math" data-tex="\(d=aa^*\)">\(d=aa^*\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span>. Since <span class="math" data-tex="\(D=\mathbb Cd\)">\(D=\mathbb Cd\)</span>, we have <span class="math" data-tex="\(d^2=\lambda d\)">\(d^2=\lambda d\)</span>. Positivity and the C*-identity give <span class="math" data-tex="\(\lambda=\|d\|&gt;0\)">\(\lambda=\|d\|&gt;0\)</span>, so <span class="math" data-tex="\(p=d/\lambda\)">\(p=d/\lambda\)</span> is a nonzero projection and <span class="math" data-tex="\(D=\mathbb Cp\)">\(D=\mathbb Cp\)</span>. Heredity, applied first to positive <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, gives <span class="math" data-tex="\(pAp\subseteq D\)">\(pAp\subseteq D\)</span>, and <span class="math" data-tex="\(p\in pAp\)">\(p\in pAp\)</span> gives equality.</p>
+<p>Choose any faithful irreducible representation and identify <span class="math" data-tex="\(A\)">\(A\)</span> with its image. Strong density of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> implies that <span class="math" data-tex="\(pAp\)">\(pAp\)</span> is strongly dense in <span class="math" data-tex="\(pB(H)p\)">\(pB(H)p\)</span>. The space <span class="math" data-tex="\(\mathbb Cp\)">\(\mathbb Cp\)</span> is strongly closed: convergence can be tested on any nonzero vector in <span class="math" data-tex="\(pH\)">\(pH\)</span>, which forces convergence of the scalar coefficients. Hence <span class="math" data-tex="\(pB(H)p=\mathbb Cp\)">\(pB(H)p=\mathbb Cp\)</span>, forcing <span class="math" data-tex="\(\dim pH=1\)">\(\dim pH=1\)</span>. Write <span class="math" data-tex="\(p=\theta_{\xi,\xi}\)">\(p=\theta_{\xi,\xi}\)</span> with <span class="math" data-tex="\(\|\xi\|=1\)">\(\|\xi\|=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(b,c\in A\)">\(b,c\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+bpc=\theta_{b\xi,c^*\xi}\in A.
+\]">\[
+bpc=\theta_{b\xi,c^*\xi}\in A.
+\]</span>
+<p>Cyclicity gives density of both <span class="math" data-tex="\(A\xi\)">\(A\xi\)</span> and <span class="math" data-tex="\(A^*\xi\)">\(A^*\xi\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. The estimate</p>
+<span class="math math-display" data-tex="\[
+\|\theta_{\eta,\zeta}-\theta_{\eta&#x27;,\zeta&#x27;}\|
+\leq\|\eta-\eta&#x27;\|\,\|\zeta\|
++\|\eta&#x27;\|\,\|\zeta-\zeta&#x27;\|
+\]">\[
+\|\theta_{\eta,\zeta}-\theta_{\eta&#x27;,\zeta&#x27;}\|
+\leq\|\eta-\eta&#x27;\|\,\|\zeta\|
++\|\eta&#x27;\|\,\|\zeta-\zeta&#x27;\|
+\]</span>
+<p>then shows that every rank-one operator is a norm limit of elements <span class="math" data-tex="\(bpc\)">\(bpc\)</span>. Finite sums and norm closure give <span class="math" data-tex="\(K(H)\subseteq A\)">\(K(H)\subseteq A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-irreducible-representation-that-sees-the-compact-ideal"><span id="OA-MOD-QHL-06"></span><span id="oa-mod-qhl-06"></span>The irreducible representation that sees the compact ideal</h2>
+<p><strong>Theorem 6.1.</strong> Let <span class="math" data-tex="\(H\neq0\)">\(H\neq0\)</span> and <span class="math" data-tex="\(K(H)\subseteq A\subseteq B(H)\)">\(K(H)\subseteq A\subseteq B(H)\)</span>. If <span class="math" data-tex="\(\rho:A\to B(K)\)">\(\rho:A\to B(K)\)</span> is irreducible and <span class="math" data-tex="\(\rho(K(H))\neq0\)">\(\rho(K(H))\neq0\)</span>, then <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is unitarily equivalent to the given action on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> Products of a bounded operator with a finite-rank operator are finite rank. Taking norm limits shows that <span class="math" data-tex="\(K(H)\)">\(K(H)\)</span> is an ideal of <span class="math" data-tex="\(A\)">\(A\)</span>. Consequently <span class="math" data-tex="\(\overline{\rho(K(H))K}\)">\(\overline{\rho(K(H))K}\)</span> is a nonzero invariant subspace for <span class="math" data-tex="\(\rho(A)\)">\(\rho(A)\)</span>; irreducibility makes it all of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Choose an orthonormal basis <span class="math" data-tex="\((\xi_j)_{j\in J}\)">\((\xi_j)_{j\in J}\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>, a distinguished index <span class="math" data-tex="\(0\in J\)">\(0\in J\)</span>, and matrix units <span class="math" data-tex="\(e_{ij}=\theta_{\xi_i,\xi_j}\)">\(e_{ij}=\theta_{\xi_i,\xi_j}\)</span>. The finite sums <span class="math" data-tex="\(p_F=\sum_{j\in F}e_{jj}\)">\(p_F=\sum_{j\in F}e_{jj}\)</span>, directed by finite subsets of <span class="math" data-tex="\(J\)">\(J\)</span>, form an approximate identity of <span class="math" data-tex="\(K(H)\)">\(K(H)\)</span>. Indeed <span class="math" data-tex="\(p_F\xi\to\xi\)">\(p_F\xi\to\xi\)</span> for each vector; the rank-one formula gives norm convergence on rank-one operators, then on finite sums and finally on their norm closure. The essential-subspace assertion above therefore implies <span class="math" data-tex="\(\rho(p_F)\to1_K\)">\(\rho(p_F)\to1_K\)</span> strongly.</p>
+<p>The projection <span class="math" data-tex="\(\rho(e_{00})\)">\(\rho(e_{00})\)</span> is nonzero. Otherwise the factorization <span class="math" data-tex="\(e_{ij}=e_{i0}e_{00}e_{0j}\)">\(e_{ij}=e_{i0}e_{00}e_{0j}\)</span> would kill every matrix unit under <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and density would give <span class="math" data-tex="\(\rho(K(H))=0\)">\(\rho(K(H))=0\)</span>. Put <span class="math" data-tex="\(L=\rho(e_{00})K\)">\(L=\rho(e_{00})K\)</span>. On finite sums define</p>
+<span class="math math-display" data-tex="\[
+U:H\otimes L\longrightarrow K,\qquad
+U(\xi_j\otimes\eta)=\rho(e_{j0})\eta.
+\]">\[
+U:H\otimes L\longrightarrow K,\qquad
+U(\xi_j\otimes\eta)=\rho(e_{j0})\eta.
+\]</span>
+<p>The matrix-unit relations give</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_j\rho(e_{j0})\eta_j\right\|^2
+=\sum_j\|\eta_j\|^2.
+\]">\[
+\left\|\sum_j\rho(e_{j0})\eta_j\right\|^2
+=\sum_j\|\eta_j\|^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(U\)">\(U\)</span> extends to an isometry. Its range contains <span class="math" data-tex="\(\rho(p_F)K\)">\(\rho(p_F)K\)</span> for every finite <span class="math" data-tex="\(F\)">\(F\)</span>, because
+<span class="math" data-tex="\(\rho(e_{jj})\zeta=\rho(e_{j0})\rho(e_{0j})\zeta\)">\(\rho(e_{jj})\zeta=\rho(e_{j0})\rho(e_{0j})\zeta\)</span>
+and <span class="math" data-tex="\(\rho(e_{0j})\zeta\in L\)">\(\rho(e_{0j})\zeta\in L\)</span>. These ranges are dense in <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(U\)">\(U\)</span> is onto.</p>
+<p>For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, write <span class="math" data-tex="\(a_{ij}=\langle a\xi_j,\xi_i\rangle\)">\(a_{ij}=\langle a\xi_j,\xi_i\rangle\)</span>. The identity</p>
+<span class="math math-display" data-tex="\[
+e_{0i}ae_{j0}=a_{ij}e_{00}
+\]">\[
+e_{0i}ae_{j0}=a_{ij}e_{00}
+\]</span>
+<p>shows that the <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> matrix entry of <span class="math" data-tex="\(U^*\rho(a)U\)">\(U^*\rho(a)U\)</span>, acting between copies of <span class="math" data-tex="\(L\)">\(L\)</span>, is <span class="math" data-tex="\(a_{ij}1_L\)">\(a_{ij}1_L\)</span>. Equality of all matrix entries on the dense finite sums gives</p>
+<span class="math math-display" data-tex="\[
+U^*\rho(a)U=a\otimes1_L.
+\]">\[
+U^*\rho(a)U=a\otimes1_L.
+\]</span>
+<p>If <span class="math" data-tex="\(\dim L&gt;1\)">\(\dim L&gt;1\)</span>, any nonzero proper closed subspace <span class="math" data-tex="\(L_0\subset L\)">\(L_0\subset L\)</span> gives the nonzero proper invariant subspace <span class="math" data-tex="\(H\otimes L_0\)">\(H\otimes L_0\)</span>. Irreducibility rules this out. Thus <span class="math" data-tex="\(\dim L=1\)">\(\dim L=1\)</span>, and the displayed unitary identifies <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with the original action on <span class="math" data-tex="\(H\)">\(H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses a net of finite subsets of a basis, so it covers Hilbert spaces of arbitrary dimension.</p>
+<h2 id="lifting-zero-products"><span id="OA-MOD-QHL-07"></span><span id="oa-mod-qhl-07"></span>Lifting zero products</h2>
+<p>For self-adjoint <span class="math" data-tex="\(s\)">\(s\)</span>, define <span class="math" data-tex="\(s_+=(|s|+s)/2\)">\(s_+=(|s|+s)/2\)</span> and <span class="math" data-tex="\(s_-=(|s|-s)/2\)">\(s_-=(|s|-s)/2\)</span>. Continuous functional calculus gives <span class="math" data-tex="\(s_+s_-=0\)">\(s_+s_-=0\)</span>.</p>
+<p><strong>Lemma 7.1 (orthogonal positive lifts).</strong> Suppose <span class="math" data-tex="\(x,y\in A_+\)">\(x,y\in A_+\)</span> and <span class="math" data-tex="\(xy\in I\)">\(xy\in I\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+C=(x-y)_+,\qquad D=(x-y)_-
+\]">\[
+C=(x-y)_+,\qquad D=(x-y)_-
+\]</span>
+<p>satisfy <span class="math" data-tex="\(C,D\in A_+\)">\(C,D\in A_+\)</span>, <span class="math" data-tex="\(CD=0\)">\(CD=0\)</span>, <span class="math" data-tex="\(q(C)=q(x)\)">\(q(C)=q(x)\)</span>, and <span class="math" data-tex="\(q(D)=q(y)\)">\(q(D)=q(y)\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(s=q(x)\)">\(s=q(x)\)</span>, <span class="math" data-tex="\(t=q(y)\)">\(t=q(y)\)</span>. Positivity and <span class="math" data-tex="\(st=0\)">\(st=0\)</span> imply <span class="math" data-tex="\(ts=(st)^*=0\)">\(ts=(st)^*=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+(s-t)^2=s^2+t^2=(s+t)^2.
+\]">\[
+(s-t)^2=s^2+t^2=(s+t)^2.
+\]</span>
+<p>Since <span class="math" data-tex="\(s+t\geq0\)">\(s+t\geq0\)</span>, uniqueness of the positive square root gives <span class="math" data-tex="\(|s-t|=s+t\)">\(|s-t|=s+t\)</span>. Therefore <span class="math" data-tex="\((s-t)_+=s\)">\((s-t)_+=s\)</span> and <span class="math" data-tex="\((s-t)_-=t\)">\((s-t)_-=t\)</span>. Quotient compatibility of the functional calculus proves the required images. The same calculus gives <span class="math" data-tex="\(CD=0\)">\(CD=0\)</span> inside <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.2.</strong> If <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> belong to a C*-algebra and <span class="math" data-tex="\(XY=0\)">\(XY=0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|X|^{1/2}|Y^*|^{1/2}=0.
+\]">\[
+|X|^{1/2}|Y^*|^{1/2}=0.
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(H=|X|\)">\(H=|X|\)</span>, <span class="math" data-tex="\(K=|Y^*|\)">\(K=|Y^*|\)</span>. Since <span class="math" data-tex="\(X^*XY=0\)">\(X^*XY=0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(HY)^*(HY)=Y^*X^*XY=0,
+\]">\[
+(HY)^*(HY)=Y^*X^*XY=0,
+\]</span>
+<p>so <span class="math" data-tex="\(HY=0\)">\(HY=0\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+(KH)^*(KH)=HK^2H=HYY^*H=0.
+\]">\[
+(KH)^*(KH)=HK^2H=HYY^*H=0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(KH=0\)">\(KH=0\)</span>, and taking adjoints gives <span class="math" data-tex="\(HK=0\)">\(HK=0\)</span>. For a positive element, the square-root function can be uniformly approximated on its spectrum by polynomials having zero constant term: start with polynomial approximants to <span class="math" data-tex="\(\sqrt t\)">\(\sqrt t\)</span> on an interval containing zero and subtract their values at zero. Every product of such a polynomial in <span class="math" data-tex="\(H\)">\(H\)</span> with one in <span class="math" data-tex="\(K\)">\(K\)</span> vanishes, since <span class="math" data-tex="\(HK=KH=0\)">\(HK=KH=0\)</span>. Passing to norm limits gives <span class="math" data-tex="\(H^{1/2}K^{1/2}=0\)">\(H^{1/2}K^{1/2}=0\)</span>. The polynomial approximation is the same continuous-calculus construction used in Section 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.3 (zero products lift exactly).</strong> If <span class="math" data-tex="\(x,y\in A\)">\(x,y\in A\)</span> satisfy <span class="math" data-tex="\(xy\in I\)">\(xy\in I\)</span>, there are <span class="math" data-tex="\(a,b\in I\)">\(a,b\in I\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+(x-a)(y-b)=0.
+\]">\[
+(x-a)(y-b)=0.
+\]</span>
+<p><strong>Proof.</strong> Work in a faithful concrete representation and write</p>
+<span class="math math-display" data-tex="\[
+x=u|x|=uc^2,\qquad y=|y^*|v=d^2v,
+\qquad c=|x|^{1/2},\quad d=|y^*|^{1/2}.
+\]">\[
+x=u|x|=uc^2,\qquad y=|y^*|v=d^2v,
+\qquad c=|x|^{1/2},\quad d=|y^*|^{1/2}.
+\]</span>
+<p>The right polar expression for <span class="math" data-tex="\(y\)">\(y\)</span> follows by applying Lemma 1.2 to <span class="math" data-tex="\(y^*\)">\(y^*\)</span> and taking adjoints. Balanced factorization gives <span class="math" data-tex="\(uc\in A\)">\(uc\in A\)</span> and <span class="math" data-tex="\(dv\in A\)">\(dv\in A\)</span>. Applying Lemma 7.2 in the quotient gives <span class="math" data-tex="\(q(c)q(d)=0\)">\(q(c)q(d)=0\)</span>, so <span class="math" data-tex="\(cd\in I\)">\(cd\in I\)</span>. Lemma 7.1 applied to <span class="math" data-tex="\(c,d\)">\(c,d\)</span> supplies</p>
+<span class="math math-display" data-tex="\[
+C=(c-d)_+,\quad D=(c-d)_-,\quad CD=0,
+\quad q(C)=q(c),\quad q(D)=q(d).
+\]">\[
+C=(c-d)_+,\quad D=(c-d)_-,\quad CD=0,
+\quad q(C)=q(c),\quad q(D)=q(d).
+\]</span>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+X=(uc)C,\qquad Y=D(dv).
+\]">\[
+X=(uc)C,\qquad Y=D(dv).
+\]</span>
+<p>These are elements of <span class="math" data-tex="\(A\)">\(A\)</span>, and associativity gives <span class="math" data-tex="\(XY=(uc)(CD)(dv)=0\)">\(XY=(uc)(CD)(dv)=0\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+q(X)=q(uc)q(c)=q(x),\qquad
+q(Y)=q(d)q(dv)=q(y).
+\]">\[
+q(X)=q(uc)q(c)=q(x),\qquad
+q(Y)=q(d)q(dv)=q(y).
+\]</span>
+<p>Thus <span class="math" data-tex="\(a=x-X\)">\(a=x-X\)</span> and <span class="math" data-tex="\(b=y-Y\)">\(b=y-Y\)</span> belong to <span class="math" data-tex="\(I\)">\(I\)</span>, and they have the required property. All uses of <span class="math" data-tex="\(q\)">\(q\)</span> are on elements of <span class="math" data-tex="\(A\)">\(A\)</span>; no quotient map has been applied to the possibly external polar factors <span class="math" data-tex="\(u\)">\(u\)</span> or <span class="math" data-tex="\(v\)">\(v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The closed one-sided ideals in Lemma 1.1 describe the same zero-product constraint before choosing lifts. The explicit construction above also supplies positive orthogonal lifts when the original factors are positive.</p>
+<h2 id="worked-examples-and-proof-checks"><span id="OA-MOD-QHL-08"></span><span id="oa-mod-qhl-08"></span>Worked examples and proof checks</h2>
+<p><strong>Example 8.1 (balanced factors and clipping).</strong> Let <span class="math" data-tex="\(A=C([0,1],M_2(\mathbb C))\)">\(A=C([0,1],M_2(\mathbb C))\)</span>, let <span class="math" data-tex="\(q\)">\(q\)</span> be evaluation at zero, and put <span class="math" data-tex="\(x(t)=(1+t)e_{12}\)">\(x(t)=(1+t)e_{12}\)</span>. Find balanced factors and a lift of <span class="math" data-tex="\(q(x)\)">\(q(x)\)</span> with its exact norm.</p>
+<p><strong>Solution.</strong> We have <span class="math" data-tex="\(|x|(t)=(1+t)e_{22}\)">\(|x|(t)=(1+t)e_{22}\)</span>. The factors</p>
+<span class="math math-display" data-tex="\[
+y(t)=\sqrt{1+t}\,e_{12},\qquad
+z(t)=\sqrt{1+t}\,e_{22}
+\]">\[
+y(t)=\sqrt{1+t}\,e_{12},\qquad
+z(t)=\sqrt{1+t}\,e_{22}
+\]</span>
+<p>satisfy <span class="math" data-tex="\(yz=x\)">\(yz=x\)</span>, with <span class="math" data-tex="\(\|y\|=\|z\|=\sqrt2=\sqrt{\|x\|}\)">\(\|y\|=\|z\|=\sqrt2=\sqrt{\|x\|}\)</span>. The quotient element is <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span>, of norm one. In Theorem 2.2, the clipping factor acts as <span class="math" data-tex="\((1+t)^{-1}\)">\((1+t)^{-1}\)</span> on the second coordinate and as one on the first. Consequently <span class="math" data-tex="\(B(t)=e_{12}\)">\(B(t)=e_{12}\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(\|B\|=\|q(x)\|=1\)">\(\|B\|=\|q(x)\|=1\)</span>.</p>
+<p><strong>Example 8.2 (the two corners act on different subspaces).</strong> Take <span class="math" data-tex="\(a=e_{12}\in M_2(\mathbb C)\)">\(a=e_{12}\in M_2(\mathbb C)\)</span>. Determine both hereditary corners and the polar transport.</p>
+<p><strong>Solution.</strong> Direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+a^*M_2a=\mathbb Ce_{22},\qquad
+aM_2a^*=\mathbb Ce_{11}.
+\]">\[
+a^*M_2a=\mathbb Ce_{22},\qquad
+aM_2a^*=\mathbb Ce_{11}.
+\]</span>
+<p>The partial isometry is <span class="math" data-tex="\(u=e_{12}\)">\(u=e_{12}\)</span>, and <span class="math" data-tex="\(u(\lambda e_{22})u^*=\lambda e_{11}\)">\(u(\lambda e_{22})u^*=\lambda e_{11}\)</span>. Each corner acts faithfully and irreducibly on its one-dimensional support. Its action on all of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> is degenerate; Theorem 4.2 explicitly passes to the support space.</p>
+<p><strong>Example 8.3 (a product vanishes only in the quotient).</strong> In the algebra of Example 8.1, put <span class="math" data-tex="\(x(t)=e_{11}+te_{12}\)">\(x(t)=e_{11}+te_{12}\)</span>, <span class="math" data-tex="\(y(t)=e_{22}\)">\(y(t)=e_{22}\)</span>, and <span class="math" data-tex="\(I=\ker q\)">\(I=\ker q\)</span>. Find ideal corrections with zero product.</p>
+<p><strong>Solution.</strong> The product is <span class="math" data-tex="\(x(t)y(t)=te_{12}\)">\(x(t)y(t)=te_{12}\)</span>, which is nonzero for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> but lies in <span class="math" data-tex="\(I\)">\(I\)</span>. Taking <span class="math" data-tex="\(a(t)=te_{12}\)">\(a(t)=te_{12}\)</span>, <span class="math" data-tex="\(b(t)=0\)">\(b(t)=0\)</span> gives <span class="math" data-tex="\(x-a=e_{11}\)">\(x-a=e_{11}\)</span>, <span class="math" data-tex="\(y-b=e_{22}\)">\(y-b=e_{22}\)</span>, and <span class="math" data-tex="\((x-a)(y-b)=0\)">\((x-a)(y-b)=0\)</span>. The element <span class="math" data-tex="\(x-y\)">\(x-y\)</span> is not self-adjoint for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, so positive and negative parts cannot be applied to it as in Lemma 7.1. Theorem 7.3 instead applies them to the self-adjoint difference <span class="math" data-tex="\(|x|^{1/2}-|y^*|^{1/2}\)">\(|x|^{1/2}-|y^*|^{1/2}\)</span>, which works without any special matrix formula.</p>
+<p><strong>Example 8.4 (why the compact ideal must be seen).</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be infinite-dimensional and <span class="math" data-tex="\(A=K(H)+\mathbb C1\)">\(A=K(H)+\mathbb C1\)</span>. Show that the hypothesis <span class="math" data-tex="\(\rho(K(H))\neq0\)">\(\rho(K(H))\neq0\)</span> in Theorem 6.1 cannot be omitted.</p>
+<p><strong>Solution.</strong> The identity is not compact: for every finite-rank <span class="math" data-tex="\(F\)">\(F\)</span>, choose a unit vector in its kernel to get <span class="math" data-tex="\(\|1-F\|\geq1\)">\(\|1-F\|\geq1\)</span>. Thus <span class="math" data-tex="\(k+\lambda1\mapsto\lambda\)">\(k+\lambda1\mapsto\lambda\)</span> is a well-defined nonzero *-homomorphism <span class="math" data-tex="\(A\to\mathbb C\)">\(A\to\mathbb C\)</span>, and so is a one-dimensional irreducible representation. It kills <span class="math" data-tex="\(K(H)\)">\(K(H)\)</span>. The given representation on the infinite-dimensional space <span class="math" data-tex="\(H\)">\(H\)</span> is irreducible because rank-one operators carry any nonzero vector to any prescribed vector. The two representation spaces have different dimensions, so these representations are not unitarily equivalent.</p>
+</article><footer>Draft. Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

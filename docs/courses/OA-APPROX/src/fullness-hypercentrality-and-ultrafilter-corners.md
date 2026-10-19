@@ -1,6 +1,6 @@
 # Fullness, hypercentrality and ultrafilter corners
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 A noncommuting pair does not tell us what happens in every corner of an algebra. Nor does type \(\mathrm{II}_1\) imply a scalar center. We begin by separating those questions, then use the dyadic tensor factor to show how a tail unitary detects distance from the scalars. The final argument carries a commutator into any chosen nonzero corner of a general central sequence algebra.
 
@@ -82,45 +82,51 @@ If \(x\ne y\), trace faithfulness makes the last subtracted term strictly positi
 
 **Theorem 5.2.** Every ordinary hypercentral sequence in \(R\) is scalar-trivial. For every free ultrafilter, \(R_\omega\) is a factor of type \(\mathrm{II}_1\).
 
-**Proof.** Scalar-trivial sequences are hypercentral by FH5. For the reverse ordinary assertion, take a bounded ordinary centralizing \(a_n\) that is not scalar-trivial. NT2's finite trace topology shows that its scalar-normalized trace distance has positive limsup. Choose \(\delta>0\) and increasing \(k(r)\) satisfying
+**Proof.** FH3 gives finite matrix witnesses for scalar distance. In its notation, \(\Gamma_r\) is the family of finite Pauli words in the tensor legs after \(r\). For every \(a\in R\), one can choose \(u\in\Gamma_r\) such that
 \[
-\|a_{k(r)}-\tau(a_{k(r)})1\|_2\geq\delta,\qquad
-\|E_r(a_{k(r)})-a_{k(r)}\|_2\leq2^{-r}.
+\|[a,u]\|_2\geq\tfrac12\Delta(a)-\tfrac52\varepsilon_r(a),\qquad
+\Delta(a)=\|a-\tau(a)1\|_2,\quad
+\varepsilon_r(a)=\|a-E_r(a)\|_2.
 \tag{15}
 \]
-The first constraint holds on infinitely many indices; the second holds eventually for each fixed \(r\) by (13). Their intersection permits the next increasing index.
+The proof is the four-matrix trace average, the exact mean squared displacement and finite-tail trace density in (FH3.5)–(FH3.7). The witnesses have operator norm one and commute exactly with the initial matrix stage \(D_r\).
 
-Put \(b_r=E_r(a_{k(r)})-\tau(a_{k(r)})1\in N_r\). It has trace zero by trace preservation. Lemma 5.1 gives \(u_r\in\mathcal U(N_r)\) moving \(b_r\) by at least half its norm. The triangle inequality, twice for the approximation error, yields
+First consider an ordinary bounded hypercentral sequence \(a_n\). It is centralizing, so (13) makes \(\varepsilon_r(a_n)\to0\) for each fixed \(r\). Choose strictly increasing integers \(K_r\geq r\) such that
+\(n\geq K_r\) implies \(\varepsilon_r(a_n)\leq1/r\). Each choice follows from that ordinary convergence, after enlarging the threshold to exceed the previous one. Define on every original coordinate
 \[
-\|a_{k(r)}-u_ra_{k(r)}u_r^*\|_2
-\geq\tfrac12(\delta-2^{-r})-2^{1-r}.
+r(n)=\max\bigl(\{r:1\leq r\leq n,\ K_r\leq n\}\cup\{0\}\bigr).
+\]
+For fixed \(s\), every \(n\geq K_s\) has \(r(n)\geq s\); hence \(r(n)\to\infty\) ordinarily. For \(r(n)>0\), choose \(u_n\in\Gamma_{r(n)}\) by (15); at the remaining coordinates use \(u_n=1\).
+
+This entire unitary sequence is ordinary centralizing. Indeed it eventually commutes exactly with each fixed \(D_s\). If \(x\in R\) and \(x_0\) is a finite-stage approximation in trace \(2\)-norm, then
+\(\|[u_n,x-x_0]\|_2\leq2\|x-x_0\|_2\).
+Choosing the approximation first proves trace \(2\)-centrality. NT2 gives bounded strong* centrality, and the complete finite-algebra criterion gives predual centralizing. Hypercentrality of \(a_n\) therefore forces \([a_n,u_n]\to0\) strongly*, hence in trace \(2\)-norm. But (15) gives, for \(r(n)>0\),
+\[
+\Delta(a_n)\leq2\|[a_n,u_n]\|_2+\frac5{r(n)}\longrightarrow0.
 \tag{16}
 \]
-Define a sequence on all original indices by \(v_{k(r)}=u_r\) and \(v_n=1\) elsewhere. It is ordinary centralizing: it eventually commutes with each \(D_s\), and finite-stage trace \(2\)-density, followed by the preceding finite-algebra centrality criterion, gives the full claim. Exercise 9 checks this passage on the whole original index set. Its commutator with \(a_n\) has positive limsup by (16), since right multiplication by \(v_n^*\) preserves the trace norm. Thus \(a_n\) is not hypercentral.
+Thus \(a_n-\tau(a_n)1\) is strongly*-zero by NT2. The scalar coefficients are bounded by the common operator-norm bound on \(a_n\), so the sequence is scalar-trivial. Conversely every scalar-trivial sequence is hypercentral by FH5.
 
-For the ultrafilter assertion, suppose a central class \(A=\pi_\omega(a_n)\in Z(R_\omega)\) is not scalar. Subtract the bounded scalar sequence \(\tau(a_n)1\), and retain \(A,a_n\) for the centered class and representatives. This makes \(\tau(a_n)=0\) at every coordinate; its nonscalar centered class has
-\(\delta=\|A\|_{2,\omega}>0\).
-For each \(r\), intersect the large sets for
+For the ultrafilter assertion, suppose \(A=\pi_\omega(a_n)\in Z(R_\omega)\) is nonscalar. Subtract \(\tau(a_n)1\) at every coordinate. These bounded scalar sequences are centralizing, and their quotient is their scalar ultralimit. The resulting class is still central and is nonzero after centering. Keep \(A,a_n\) for this centered class and representative. Then \(\tau(a_n)=0\), and faithfulness of the quotient trace gives \(\delta=\|A\|_{2,\omega}>0\).
+
+For each \(r\), the two conditions
 \[
 \|a_n\|_2\geq\delta/2,\qquad
-\|E_r(a_n)-a_n\|_2\leq1/r
+\varepsilon_r(a_n)\leq1/r
 \tag{17}
 \]
-with the previously chosen set and \(\{n:n\geq r\}\), obtaining nested \(B_r\in\omega\). The distance limit follows from the quotient trace; the approximation limit follows from (13).
+hold on an ultrafilter-large set: the first follows from the quotient trace-square limit, the second from (13). Intersect their sets with the previously chosen set and \(\{n:n\geq r\}\), giving nested \(B_r\in\omega\). Let \(r(n)\) be the largest \(r\leq n\) with \(n\in B_r\), or zero. Since \(B_s\subseteq\{n:r(n)\geq s\}\), one has \(r(n)\to_\omega\infty\). This uses only individual finite-threshold sets, with no countable intersection assertion.
 
-Let \(r(n)\) be the largest \(r\leq n\) with \(n\in B_r\), or zero. For each fixed \(s\), \(B_s\subseteq\{n:r(n)\geq s\}\), so \(r(n)\to_\omega\infty\), without a countable intersection assumption. If \(r(n)>0\), set \(b_n=E_{r(n)}(a_n)\) and choose \(u_n\in\mathcal U(N_{r(n)})\) by Lemma 5.1; otherwise set \(u_n=1\). The first choice has trace zero.
-
-For each fixed \(s\), \(u_n\) commutes with \(D_s\) on the large set where \(r(n)\geq s\). Uniform boundedness and finite-stage trace \(2\)-density prove centrality along \(\omega\), and the full finite-algebra criterion gives predual centralizing. On \(B_1\), the displacement bound and the two approximation errors give
+Choose the finite Pauli witness \(u_n\in\Gamma_{r(n)}\) from (15) when \(r(n)>0\), and use the identity otherwise. On the large set where \(r(n)\geq s\), it commutes with \(D_s\). The same uniform-bound and finite-stage density argument therefore makes \(u_n\) centralizing along \(\omega\). On \(B_1\), (15) and (17) give
 \[
-\|a_n-u_na_nu_n^*\|_2
-\geq\delta/4-\frac{5}{2r(n)}.
+\|[a_n,u_n]\|_2\geq\delta/4-\frac5{2r(n)}.
 \tag{18}
 \]
-Exercise 10 derives the coefficient. Its ultralimit is positive, at least \(\delta/4\). But \(u_n\) represents a quotient element, which a central \(A\) must commute with. The quotient zero-ideal criterion and unitary invariance of the trace norm make that same ultralimit zero. This contradiction proves \(Z(R_\omega)=\mathbb C1\).
+The ultralimit is at least \(\delta/4>0\). Since \(u_n\) represents a quotient element, centrality of \(A\) requires its quotient commutator to be zero. The trace-square ideal criterion would make that same ultralimit zero, a contradiction. Therefore \(Z(R_\omega)=\mathbb C1\).
 
 The matrix units in tensor leg \(n\), regarded as sequences in \(n\), eventually commute with every fixed finite initial stage. The same trace density and finite criterion make them ordinary centralizing. Their exact coordinate relations and diagonal sum \(1\) survive every quotient; their diagonal quotient traces are \(1/2\), so the resulting unital \(M_2\) is nonzero and noncommutative. Theorem 4.1 below, whose proof uses only the general selection argument, gives type \(\mathrm{II}_1\). Together with the center just proved, this gives the whole factor conclusion for every free ultrafilter. \(\square\)
 
-**Exercise 9.** Check that \(v_n\), inserted at the selected indices in (16) and equal to \(1\) elsewhere, is central on its whole original index set and hence centralizing.
+**Exercise 9.** Let \(k(r)\) be strictly increasing and let \(u_r\in\mathcal U(N_r)\). Define \(v_{k(r)}=u_r\) and \(v_n=1\) at every other original index. Check that \(v_n\) is ordinary central on its whole index set and hence centralizing.
 
 *Solution.* Fix \(s\). If \(n=k(r)\) with \(r\geq s\), then \(v_n\in N_r\subseteq D_s'\cap R\). At all other indices it is the identity, except possibly the finitely many selected indices with \(r<s\). Thus it eventually commutes with every \(x_0\in D_s\). For \(x\in R\), approximate it in trace \(2\)-norm by a bounded element \(x_0\) of a finite stage, using FG2's complete density model. Since every \(v_n\) is unitary,
 \[
@@ -323,6 +329,8 @@ The [tensor-absorption lesson](strong-stability-and-tensor-absorption.md) can no
 
 ## Freely accessible proofs and the corner comparison
 
-The whole mathematical route is the completed quotient and ordinary-central-sequence construction together with [FH0–5](../components/fullness-hypercentrality-and-tail-inputs.md). These inputs include the entire Lebesgue/Lp construction for the nonfactor example, canonical finite-factor trace normality, full-center comparison and halving, compact-orbit displacement, the normal finite matrix tail map, and the two-square perturbation estimate. The proofs do not use an unspecified type decomposition, Haar average, direct integral, or omitted similar-argument step.
+The whole mathematical route is the completed quotient and ordinary-central-sequence construction together with [FH0–5](../components/fullness-hypercentrality-and-tail-inputs.md). These inputs include the entire Lebesgue/Lp construction for the nonfactor example, canonical finite-factor trace normality, full-center comparison and halving, compact-orbit displacement, the normal finite matrix tail map and explicit finite Pauli displacement identities, and the two-square perturbation estimate. The proofs do not use an unspecified type decomposition, Haar average, direct integral, or omitted similar-argument step.
+
+Dusa McDuff, [*On the structure of II₁-factors*](https://www.mathnet.ru/php/getFT.phtml?jrnid=rm&option_lang=eng&paperid=5426&what=fullteng), Theorem 1.1(iii) and Lemmas 1.3–1.4, printed pp.33–35 (PDF pp.5–7), compares hypercentrality with the center of the tracial central-sequence algebra and proves a compact-orbit approximation result. Theorem 1.1 leaves the first two similar proofs unstated. The finite Pauli identities, all-coordinate trace-distance test and both complete selection modes used here are supplied in FH3 and the present proofs. The human paper retains its own rights; no expression-reuse licence is inferred from access.
 
 Alain Connes, [*Outer conjugacy classes of automorphisms of factors*](https://www.numdam.org/articles/10.24033/asens.1295/), Theorem 2.2.1, implication (d) \(\Rightarrow\) (e), printed pp.400–401 (PDF pp.19–20), is the freely accessible historical corner-method comparison. Its hypothesis is a factor with separable predual. The argument chooses a new pair for each fixed lifted corner; our proof writes both faithful-state square tests, the fixed-coordinate versus reindexed limits, and the \(\kappa\beta/4\) bound explicitly. Its subsequent implication (e) \(\Rightarrow\) (a) refers to Araki's absorption theorem and is not a premise here.

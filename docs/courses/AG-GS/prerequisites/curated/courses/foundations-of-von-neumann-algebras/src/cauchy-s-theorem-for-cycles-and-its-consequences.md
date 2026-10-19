@@ -1,6 +1,6 @@
 # Cauchy's theorem for cycles and its consequences
 
-*Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all four solutions, supplied the elementary integration proofs and corrected the edge cases, October 2026. Public domain (CC0).*
+*Mathematical exposition and worked exercises prepared with Claude Opus 5.5 (Anthropic) and GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 This lesson proves the complex analysis that the operator-algebra lessons use. It covers:
 - the index of a cycle;
@@ -37,6 +37,8 @@ taken piece by piece. The integral over a cycle is the sum over its paths, and \
 The following tools apply to functions with values in any real or complex Banach space \(X\). They supply the integration facts used throughout this lesson and in the Banach-algebra lesson.
 
 **Lemma 0.1** (Intervals, rectangles and parameters).
+
+Derivative statements use parameter intervals of positive length. Integrals over degenerate intervals are zero.
 
 1. A continuous \(F:[a,b]\to X\) has a Riemann integral. It is linear, commutes with bounded linear maps, satisfies \(\|\int_a^b F\|\leq\int_a^b\|F\|\), and respects uniform limits.
 2. The function \(P(t)=\int_a^t F(s)\,ds\) has derivative \(P'(t)=F(t)\) in the interior, with one-sided derivatives at the endpoints. If \(G\) is continuously differentiable, then \(\int_a^bG'(t)\,dt=G(b)-G(a)\). The chain rule and substitution hold for continuously differentiable real paths; a holomorphic primitive with continuous derivative satisfies the same chain rule along a piecewise continuously differentiable complex path.
@@ -108,7 +110,7 @@ For a cycle \(\Gamma\) and \(z\notin\Gamma^*\), the *index* is
 2. For the circle \(\partial D(c,r)\), the index is \(1\) on \(D(c,r)\) and \(0\) outside \(\bar D(c,r)\).
 3. For the positively oriented boundary \(\partial Q\) of a closed square \(Q\), the index is \(1\) on the interior of \(Q\) and \(0\) outside \(Q\).
 
-**Proof.** (1) *Integer values.* Let \(\gamma:[a,b]\to\mathbb C\) be a closed path and \(z\notin\gamma^*\). Put
+**Proof.** For the empty cycle, the index is zero by definition and part (1) follows. Assume the cycle is nonempty for the estimates in part (1). (1) *Integer values.* Let \(\gamma:[a,b]\to\mathbb C\) be a closed path and \(z\notin\gamma^*\). Put
 \[
 \begin{gathered}
 h(t)\\
@@ -313,7 +315,9 @@ f(z)\operatorname{Ind}_\Gamma(z)\\
 
 *Reference:* the proof is J. D. Dixon's [Dixon 1971].
 
-**Proof.** *Step 1: a continuous difference quotient.* Define \(\varphi\) on \(U\times U\) by
+**Proof.** If the cycle is empty, its index and every integral over it are zero, so both conclusions hold. Assume henceforth that the cycle is nonempty. 
+
+*Step 1: a continuous difference quotient.* Define \(\varphi\) on \(U\times U\) by
 \[
 \begin{gathered}
 \varphi(z,w)\\

@@ -293,4 +293,4 @@ For the Sobolev duality, apply this result after the isometry \(E_{-s}:H^{-s}\to
 
 ## Source and receiving status
 
-The unchanged extracts retain their AN-03 labels. H4–H6 are connecting programme proofs, including the actual primitive, trace and norm derivative, and the complete finite-interval Hilbert duality. These are standard results; no original research claim is made. Together with the sharp-lower-bound companion they close the functional-analytic inputs of U030. Its full restoration still requires the spacetime symbol and pullback dependencies and a review of the receiving proof.
+The AN03-P004 selections give complex Hahn–Banach, all-exponent integral inequalities and Bochner integration. H4–H6 prove time approximation, the absolutely continuous primitive, its norm derivative and trace, and finite-interval Hilbert-valued duality. These arguments apply to the Sobolev pairing and integrable forcing in the first-order Cauchy problem.

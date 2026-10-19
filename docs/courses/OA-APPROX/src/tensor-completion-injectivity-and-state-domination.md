@@ -1,10 +1,10 @@
 # Tensor completion, injectivity and state domination
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 A completed tensor has two descriptions here: a Cauchy sequence for the projective norm \(\pi\), and a Cauchy sequence for the symmetric norm \(\sigma\). Because \(\sigma\le\pi\), the algebraic identity gives a map from the first completion to the second. The [random lift construction](symmetric-tensor-norms-and-rademacher-truncation.md#5-surjectivity-at-the-completion-level) supplies a projective preimage of every self-adjoint target vector, with cost at most \((81/16)\|v\|_\sigma+\varepsilon\). Different choices of \(\varepsilon\) could still give different preimages. Their difference lies in the kernel of the completion map.
 
-We prove that this kernel is zero. A normalized functional detects a kernel vector only through its real part; the bilinear exponential test makes that real part \(\sigma\)-continuous. A Gaussian then turns the resulting two numerical-reality conditions into a norm bound tending to zero. Once the lift is unique, its approximate costs become an exact norm comparison. That comparison makes every bounded real bilinear form eligible for the final compact affine argument, which chooses one pair of states for all inputs.
+We prove that this kernel is zero. A normalized functional detects a kernel vector through its real part; the bilinear exponential test makes that real part symmetric-norm continuous. Finite cosine averages and an exact binomial variation bound then turn two numerical-reality conditions into a norm bound tending to zero. A second proof supplies the full Gaussian heat estimate. Once the lift is unique, its approximate costs become an exact norm comparison. That comparison makes every bounded real bilinear form eligible for the compact affine argument, which chooses one pair of states for all inputs.
 
 Write
 \[
@@ -76,7 +76,7 @@ The phase does not change \(q(x)\). Summing (3) and applying scalar Cauchy–Sch
 
 <a id="8-an-elementary-gaussian-proof"></a>
 
-## A Gaussian test for an invisible element
+## Two tests for an invisible element
 
 For a unital complex Banach algebra \(C\), assume \(\|1\|=1\). Its normalized functionals are
 \[
@@ -86,7 +86,99 @@ They need not be positive on any involution. Call \(h\) numerical-real if every 
 
 **Lemma 2.1.** If \(h\) and \(ih^2\) are numerical-real, then \(h=0\).
 
-**Proof.** We build the norm derivative, the isometric exponential group and the integral estimate in turn. The norm derivative only needs restrictions to \(\operatorname{span}_{\mathbb C}\{1,a\}\). Section 8 proves the functional extension used in that step.
+**Proof by finite cosine averages.**
+
+<a id="finite-cosine-kernel-test"></a>
+
+The directional norm derivative and Euler argument proved below have the following consequence: if \(k\) is numerical-real, then \(e^{isk}\) and \(e^{-isk}\) are inverse contractions for every real \(s\). Multiplication by either is an isometry. These two preliminary arguments use only norming functionals on \(\operatorname{span}_{\mathbb C}\{1,k\}\), scalar series and completeness; neither uses the Gaussian argument. We apply them first to \(k=h\).
+
+Define
+\[
+ C_s=\frac{e^{ish}+e^{-ish}}2,\qquad
+ S_s=\frac{e^{ish}-e^{-ish}}{2i}.
+\]
+Both have norm at most one. Products of the exponentials add their parameters, by the absolutely convergent Cauchy product. For \(m\ge0\), put
+\[
+ p_j=4^{-m}\binom{2m}{j}\quad(0\le j\le2m),
+ \qquad p_{-1}=p_{2m+1}=0.
+\]
+The binomial expansion, followed by multiplication by \(S_s\), gives the exact finite identity
+\[
+ S_s C_s^{\,2m}
+ =\frac1{2i}\sum_{j=0}^{2m+1}
+       (p_{j-1}-p_j)e^{\,is(2j-2m-1)h}.
+\tag{BK1}
+\]
+Indeed the positive exponential in \(S_s\) shifts the index by one, while its negative exponential leaves the index fixed. Every exponential on the right has norm one.
+
+The sequence \(p_j\) increases up to \(p_m\) and decreases thereafter. This follows directly from
+\(p_{j+1}/p_j=(2m-j)/(j+1)\).
+Including its zero endpoints, its total variation is therefore \(2p_m\). Taking norms in (BK1) proves
+\[
+ \|S_s C_s^{\,2m}\|\le c_m,\qquad
+ c_m=4^{-m}\binom{2m}{m}.
+\tag{BK2}
+\]
+Here the variation is a finite sum of scalar absolute differences, not a measure-theoretic assertion.
+
+There is an elementary bound sufficient for the limit:
+\[
+ c_m\le\frac1{\sqrt{m+1}}\qquad(m\ge0).
+\tag{BK3}
+\]
+For \(m=0\) equality holds. Factorials give
+\(c_{m+1}/c_m=(2m+1)/(2m+2)\).
+The induction step follows upon squaring from the exact identity
+\[
+ 4(m+1)^3-(2m+1)^2(m+2)=3m+2\ge0.
+\]
+Thus (BK3) uses no asymptotic formula or Gaussian integral.
+
+Fix \(t>0\), and for \(m\ge1\) set \(s_m=\sqrt{t/m}\) and \(H=\|h\|\). Absolute scalar series give
+\[
+ \|C_{s_m}-(1-t h^2/(2m))\|
+ \le\frac{t^2H^4 e^{\sqrt t H}}{24m^2}.
+\]
+To justify the bound, the constant and quadratic terms of the cosine series are the two displayed terms, while its remaining terms are bounded by the exponential-series tail of degree at least four. For \(r\ge0\), that tail is at most \(r^4e^r/24\), since \(n!\ge24(n-4)!\) for \(n\ge4\).
+
+Let \(X=C_{s_m}\) and \(Y=1-t h^2/(2m)\). The finite power-telescoping identity bounds their \(2m\)-th powers by
+\[
+\begin{aligned}
+ \|X^{2m}-Y^{2m}\|
+ &\le 2m\|X-Y\|
+             \max(\|X\|,\|Y\|)^{2m-1}\\
+ &\le\frac{t^2H^4 e^{\sqrt t H+tH^2}}{12m}
+ \longrightarrow0 .
+\end{aligned}
+\tag{BK4}
+\]
+We used \(\|X\|\le1\), \(\|Y\|\le1+tH^2/(2m)\), and \(1+r\le e^r\). The telescoping identity and this norm estimate are valid without a commutation assumption. The Euler formula already proved for Banach-algebra series gives
+\(Y^{2m}\to e^{-t h^2}\).
+Also,
+\[
+ \|S_{s_m}/s_m-h\|
+ \le s_m^2H^3e^{s_mH}/6\longrightarrow0,
+\]
+by the same exponential-tail estimate starting at degree three. Consequently
+\[
+ (S_{s_m}/s_m)C_{s_m}^{\,2m}
+       \longrightarrow h e^{-t h^2}
+\]
+in norm. Dividing (BK2) by \(s_m\) and using (BK3) now gives
+\[
+ \|h e^{-t h^2}\|
+ \le\limsup_m\frac{\sqrt m}{\sqrt t\sqrt{m+1}}
+ =\frac1{\sqrt t}.
+\tag{BK5}
+\]
+
+Finally apply the isometric exponential argument to \(k=ih^2\), which is numerical-real by the second hypothesis. The two real parameters \(t,-t\) give inverse contractions \(e^{-t h^2}\) and \(e^{t h^2}\). Hence
+\[
+ \|h\|=\|h e^{-t h^2}\|\le1/\sqrt t\qquad(t>0).
+\]
+Letting \(t\) increase without bound proves \(h=0\). This proof uses only finite averages and norm limits. The Gaussian proof below also gives the more precise intermediate estimate \(1/\sqrt{\pi t}\), which is used in the exercises. \(\square\)
+
+**Second proof, by Gaussian averaging.** We build the norm derivative, the isometric exponential group and the integral estimate in turn. The norm derivative only needs restrictions to \(\operatorname{span}_{\mathbb C}\{1,a\}\). Section 8 proves the functional extension used in that step.
 
 <a id="8-2-directional-norm-derivative-using-only-two-dimensional-compactness"></a>
 
@@ -891,6 +983,8 @@ The limiting functional argument and the two-dimensional restriction argument pr
 ## References
 
 Gilles Pisier, [*Grothendieck's Theorem, past and present*, expanded UNCUT author version, 21 August 2013](https://webusers.imj-prg.fr/~gilles.pisier/grothendieck.UNCUT.pdf), Appendix 23, Lemma 23.1 and Proposition 23.2, printed pp.78–80 (PDF pp.80–82): compact affine separation, common-state selection and reciprocal rescaling. The corresponding appendix is in [arXiv:1101.4195v3](https://arxiv.org/pdf/1101.4195v3), printed pp.73–75 (PDF pp.75–77). Section 9 of the UNCUT version, printed pp.29–31 (PDF pp.31–33), treats the real truncation method of the preceding lesson.
+
+The numerical-reality test has two complete proofs here. The finite cosine proof uses binomial coefficients, finite total variation, the directional norm derivative and norm-convergent exponential series. The Gaussian proof includes its scalar normalization, all improper norm integrals and its sharper intermediate constant. The common-state argument uses a finite orthant minimum and arbitrary compactness; it does not assume a Radon-measure or bipolar representation theorem.
 
 Jacob Shapiro, [*Functional Analysis, Princeton University MAT520 Lecture Notes*, last typeset 10 December 2025](https://web.math.princeton.edu/~shapiro/PDFs/teaching/MAT520_fall_2025/MAT520_Lecture_Notes.pdf#page=36), Theorems 4.4–4.5, printed/PDF pp.36–37: norm-preserving functional extension. Theorem 5.18, printed/PDF pp.44–45: weak-* compactness of the dual ball.
 

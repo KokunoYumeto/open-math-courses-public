@@ -1,0 +1,337 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Internal Hom in Ind categories and flat module obstructions</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="internal-hom-in-ind-categories-and-flat-module-obstructions">Internal Hom in Ind categories and flat module obstructions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Public domain (CC0).</em></p>
+<p>A tensor product on a filtered completion need not have an internal Hom. For an original tensor factor the original adjunction extends directly. For an arbitrary filtered union of factors, the right adjoint requires an inverse limit. We construct it when the original small category has finite colimits, keep the order of the tensor factors explicit, and characterize when the resulting internal Hom preserves filtered colimits. A square-zero ring gives a concrete obstruction when the needed limits are absent.</p>
+<p>Fix universes and choice. All original categories and indexing categories are small. Filtered categories are nonempty and every finite diagram in them admits a cocone. Write <span class="math" data-tex="\(D=\operatorname{Ind}(C)\)">\(D=\operatorname{Ind}(C)\)</span>, with constant embedding <span class="math" data-tex="\(y\)">\(y\)</span>, and write <span class="math" data-tex="\(\widehat\otimes\)">\(\widehat\otimes\)</span> for its tensor. Compact means preservation of small filtered colimits by the ordinary set-valued functor <span class="math" data-tex="\(\operatorname{Hom}(X,-)\)">\(\operatorname{Hom}(X,-)\)</span>.</p>
+<p>Use <a href="ind-tensor-products-and-compact-duals.html#1-natural-transformations-between-filtered-extensions">Ind tensor products and compact duals, Sections 1–5</a> for the tensor on all Ind morphisms, separate filtered continuity, all monoidal coherence maps, compact constants and the compact-dual theorem. <a href="ind-objects-through-their-elements.html#3-extend-a-functor-by-its-values-on-pieces">Ind-objects through their elements, Sections 1–3</a> supplies the full Hom formula and filtered extensions. <a href="limits-and-colimits-of-formal-objects.html#1-finite-colimits-are-tested-contravariantly">Limits and colimits of formal objects, Proposition 1.1</a> supplies the recognition of Ind presheaves by finite-colimit tests. <a href="retracts-and-stabilization-of-formal-objects.html#3-the-compact-part-is-the-idempotent-completion">Retracts and stabilization of formal objects, Section 3</a> proves the compact-retract criterion. All of these are complete course proofs.</p>
+<p>The module arguments use <span class="unlinked">Hom, tensor and the exactness of module limits</span> for the balanced tensor universal property and filtered module colimits, and <span class="unlinked">Flat modules as an Ind completion of finite free modules</span> for the full flat-module realization. <a href="formal-colimits-and-compact-presentations.html#1-retain-the-diagram-before-realizing-it">Formal colimits and compact presentations, Sections 1–2</a> gives the realization criterion used in the exercises. Basic references are [Schapira] and [EGNO], listed at the end; the proofs below use the stated course interfaces.</p>
+<h2 id="1-right-adjoints-for-original-tensor-factors">1. Right adjoints for original tensor factors</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be small and monoidal. Assume that it is <strong>right closed</strong> in the following specified sense: for every <span class="math" data-tex="\(c\)">\(c\)</span>, the functor <span class="math" data-tex="\(a\mapsto a\otimes c\)">\(a\mapsto a\otimes c\)</span> has a right adjoint <span class="math" data-tex="\([c,-]_C\)">\([c,-]_C\)</span>. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+C(a\otimes c,d)\simeq C(a,[c,d]_C)
+\tag{1.1}
+\]">\[
+C(a\otimes c,d)\simeq C(a,[c,d]_C)
+\tag{1.1}
+\]</span>
+<p>naturally in all three entries. The contravariant action in <span class="math" data-tex="\(c\)">\(c\)</span> is the unique map obtained by transposing precomposition with <span class="math" data-tex="\(a\otimes f\)">\(a\otimes f\)</span>. The adjunction therefore supplies the indicated bifunctor, not just objects representing separate Hom sets. No braiding or additive structure is assumed.</p>
+<p><strong>Lemma 1.1.</strong> Tensoring by <span class="math" data-tex="\(yc\)">\(yc\)</span> on the right in <span class="math" data-tex="\(D\)">\(D\)</span> has right adjoint</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+G_c(Y)=\operatorname{Ind}([c,-]_C)(Y).
+\tag{1.2}
+\]">\[
+G_c(Y)=\operatorname{Ind}([c,-]_C)(Y).
+\tag{1.2}
+\]</span>
+<p>This right adjoint preserves filtered colimits, and for <span class="math" data-tex="\(Y=\operatorname{colim}_j yd_j\)">\(Y=\operatorname{colim}_j yd_j\)</span> its value is <span class="math" data-tex="\(\operatorname{colim}_j y[c,d_j]_C\)">\(\operatorname{colim}_j y[c,d_j]_C\)</span>.</p>
+<p><strong>Proof.</strong> The unary extension theorem constructs <span class="math" data-tex="\(G_c\)">\(G_c\)</span>, with the displayed value, on all objects and maps, and proves its filtered continuity. For <span class="math" data-tex="\(A=\operatorname{colim}_a ya_a\)">\(A=\operatorname{colim}_a ya_a\)</span>, the tensor and full Hom formulas give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+D(A\widehat\otimes yc,Y)
+\simeq \lim_a\operatorname{colim}_j C(a_a\otimes c,d_j)\\
+\simeq \lim_a\operatorname{colim}_j C(a_a,[c,d_j]_C)
+\simeq D(A,G_c(Y)).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+D(A\widehat\otimes yc,Y)
+\simeq \lim_a\operatorname{colim}_j C(a_a\otimes c,d_j)\\
+\simeq \lim_a\operatorname{colim}_j C(a_a,[c,d_j]_C)
+\simeq D(A,G_c(Y)).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>Every comparison uses the actual structure maps of the presentations and the original adjunction. It is therefore natural on original stage maps. A map from a constant into a filtered presentation factors through a stage; equality of two factors is witnessed at a later stage. Testing each source structure map gives naturality for every Ind morphism. Equivalently this is the all-transformation extension property proved in the tensor prerequisite. Consequently (1.3) is an adjunction on the actual functors. Its construction is independent of the presentations by the full Hom formula.</p>
+<p>For <span class="math" data-tex="\(f:c\to c&#x27;\)">\(f:c\to c&#x27;\)</span>, transposition in (1.1) gives <span class="math" data-tex="\([c&#x27;,-]_C\to[c,-]_C\)">\([c&#x27;,-]_C\to[c,-]_C\)</span>, hence <span class="math" data-tex="\(G_{c&#x27;}\to G_c\)">\(G_{c&#x27;}\to G_c\)</span>. Under (1.3) this is precisely precomposition with <span class="math" data-tex="\(1_A\widehat\otimes yf\)">\(1_A\widehat\otimes yf\)</span>. This also proves its naturality in <span class="math" data-tex="\(Y\)">\(Y\)</span> and the contravariant identity and composition laws. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This lemma does not require finite colimits in <span class="math" data-tex="\(C\)">\(C\)</span>. It constructs right adjoints for constant tensor factors; it does not yet construct one for every <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span>.</p>
+<h2 id="2-completeness-and-the-internal-hom-formula">2. Completeness and the internal-Hom formula</h2>
+<p>From now through Section 4 assume also that <span class="math" data-tex="\(C\)">\(C\)</span> has finite colimits.</p>
+<p><strong>Lemma 2.1.</strong> The category <span class="math" data-tex="\(D\)">\(D\)</span> has all small limits, computed in its presheaf category.</p>
+<p><strong>Proof.</strong> Its presheaves are on the small category <span class="math" data-tex="\(C\)">\(C\)</span>, so the category of elements of each is small. The recognition theorem cited above says that a presheaf belongs to <span class="math" data-tex="\(D\)">\(D\)</span> exactly when it sends finite colimits in <span class="math" data-tex="\(C\)">\(C\)</span> to limits of sets. A pointwise limit of such presheaves still does so: both orders of taking limits describe the same families of compatible entries. This includes the empty limit. Hence the presheaf limit belongs to <span class="math" data-tex="\(D\)">\(D\)</span>. Since <span class="math" data-tex="\(D\)">\(D\)</span> is a full subcategory, the presheaf limiting cone has the same universal property against its objects, and is its limit there. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For every <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span>, the functor <span class="math" data-tex="\(A\mapsto A\widehat\otimes X\)">\(A\mapsto A\widehat\otimes X\)</span> has a right adjoint <span class="math" data-tex="\([X,-]_D\)">\([X,-]_D\)</span>. For independent presentations <span class="math" data-tex="\(X=\operatorname{colim}_{i\in I}yc_i\)">\(X=\operatorname{colim}_{i\in I}yc_i\)</span> and <span class="math" data-tex="\(Y=\operatorname{colim}_{j\in J}yd_j\)">\(Y=\operatorname{colim}_{j\in J}yd_j\)</span>,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+[X,Y]_D\simeq
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{colim}_{j\in J}y[c_i,d_j]_C.
+\tag{2.1}
+\]">\[
+[X,Y]_D\simeq
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{colim}_{j\in J}y[c_i,d_j]_C.
+\tag{2.1}
+\]</span>
+<p>The formula is independent of the presentations and defines the internal-Hom bifunctor on arbitrary Ind morphisms.</p>
+<p><strong>Proof: representation.</strong> For a chosen presentation of <span class="math" data-tex="\(X\)">\(X\)</span>, let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+H_X(Y)=\lim_{i\in I^{\mathrm{op}}}G_{c_i}(Y).
+\tag{2.2}
+\]">\[
+H_X(Y)=\lim_{i\in I^{\mathrm{op}}}G_{c_i}(Y).
+\tag{2.2}
+\]</span>
+<p>For an arrow <span class="math" data-tex="\(i\to i&#x27;\)">\(i\to i&#x27;\)</span>, Lemma 1.1 gives the transition <span class="math" data-tex="\(G_{c_{i&#x27;}}(Y)\to G_{c_i}(Y)\)">\(G_{c_{i&#x27;}}(Y)\to G_{c_i}(Y)\)</span>. These are the correct inverse-limit arrows. The limit exists by Lemma 2.1. For every <span class="math" data-tex="\(A\)">\(A\)</span>, separate tensor continuity, the ordinary colimit universal property, and (1.3) give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+D(A\widehat\otimes X,Y)
+\simeq \lim_{i\in I^{\mathrm{op}}}D(A\widehat\otimes yc_i,Y)\\
+\simeq \lim_{i\in I^{\mathrm{op}}}D(A,G_{c_i}(Y))
+\simeq D(A,H_X(Y)).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+D(A\widehat\otimes X,Y)
+\simeq \lim_{i\in I^{\mathrm{op}}}D(A\widehat\otimes yc_i,Y)\\
+\simeq \lim_{i\in I^{\mathrm{op}}}D(A,G_{c_i}(Y))
+\simeq D(A,H_X(Y)).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>These are natural in <span class="math" data-tex="\(A,Y\)">\(A,Y\)</span>, with the indicated transition maps, so they are the required adjunction. Uniqueness of representing objects gives a unique isomorphism between different presentation formulas respecting (2.3). Applying Lemma 1.1 to <span class="math" data-tex="\(Y\)">\(Y\)</span> gives (2.1).</p>
+<p><strong>Proof: evaluation and all maps.</strong> Each projection <span class="math" data-tex="\(H_X(Y)\to G_{c_i}(Y)\)">\(H_X(Y)\to G_{c_i}(Y)\)</span> transposes to a map <span class="math" data-tex="\(H_X(Y)\widehat\otimes yc_i\to Y\)">\(H_X(Y)\widehat\otimes yc_i\to Y\)</span>. The inverse-limit compatibility says that these maps form a cocone over <span class="math" data-tex="\(I\)">\(I\)</span>. Tensor continuity therefore gives one map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\epsilon_{X,Y}:[X,Y]_D\widehat\otimes X\longrightarrow Y.
+\tag{2.4}
+\]">\[
+\epsilon_{X,Y}:[X,Y]_D\widehat\otimes X\longrightarrow Y.
+\tag{2.4}
+\]</span>
+<p>Under (2.3), the transpose of <span class="math" data-tex="\(h:A\to[X,Y]_D\)">\(h:A\to[X,Y]_D\)</span> is exactly <span class="math" data-tex="\(\epsilon_{X,Y}(h\widehat\otimes1_X)\)">\(\epsilon_{X,Y}(h\widehat\otimes1_X)\)</span>. This description characterizes evaluation without a presentation.</p>
+<p>Given <span class="math" data-tex="\(f:X&#x27;\to X\)">\(f:X&#x27;\to X\)</span> and <span class="math" data-tex="\(g:Y\to Y&#x27;\)">\(g:Y\to Y&#x27;\)</span>, define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+[f,g]:[X,Y]_D\longrightarrow[X&#x27;,Y&#x27;]_D
+\tag{2.5}
+\]">\[
+[f,g]:[X,Y]_D\longrightarrow[X&#x27;,Y&#x27;]_D
+\tag{2.5}
+\]</span>
+<p>by transposing <span class="math" data-tex="\(g\epsilon_{X,Y}(1\widehat\otimes f)\)">\(g\epsilon_{X,Y}(1\widehat\otimes f)\)</span>. Evaluating both sides proves the identity and composition laws, since ordinary composition and tensor satisfy them and transposition is a bijection. It also proves naturality of evaluation and agreement with every map in the original presentation formulas. Thus no choice of a reindexing functor for an arbitrary Ind morphism is required.</p>
+<p>For fixed <span class="math" data-tex="\(X\)">\(X\)</span>, the unit at <span class="math" data-tex="\(A\)">\(A\)</span> is the transpose of <span class="math" data-tex="\(1_{A\widehat\otimes X}\)">\(1_{A\widehat\otimes X}\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+\eta_A:A\longrightarrow[X,A\widehat\otimes X]_D.
+\tag{2.6}
+\]">\[
+\eta_A:A\longrightarrow[X,A\widehat\otimes X]_D.
+\tag{2.6}
+\]</span>
+<p>By its definition,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.7); horizontal scroll when needed" data-tex="\[
+\epsilon_{X,A\widehat\otimes X}
+(\eta_A\widehat\otimes1_X)=1_{A\widehat\otimes X}.
+\tag{2.7}
+\]">\[
+\epsilon_{X,A\widehat\otimes X}
+(\eta_A\widehat\otimes1_X)=1_{A\widehat\otimes X}.
+\tag{2.7}
+\]</span>
+<p>For the other triangle, transpose <span class="math" data-tex="\([X,\epsilon_{X,Y}]\eta_{[X,Y]}\)">\([X,\epsilon_{X,Y}]\eta_{[X,Y]}\)</span>. Naturality of evaluation, followed by (2.7) at <span class="math" data-tex="\(A=[X,Y]\)">\(A=[X,Y]\)</span>, makes its transpose <span class="math" data-tex="\(\epsilon_{X,Y}\)">\(\epsilon_{X,Y}\)</span>. This is also the transpose of <span class="math" data-tex="\(1_{[X,Y]}\)">\(1_{[X,Y]}\)</span>, so the two maps are equal. Both adjunction triangles are proved for the actual maps (2.4) and (2.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Each <span class="math" data-tex="\([X,-]_D\)">\([X,-]_D\)</span> preserves limits. Indeed, for a diagram <span class="math" data-tex="\(Y_s\)">\(Y_s\)</span>, maps from any <span class="math" data-tex="\(A\)">\(A\)</span> into its two proposed limiting values identify by (2.3) with the same compatible family of maps <span class="math" data-tex="\(A\widehat\otimes X\to Y_s\)">\(A\widehat\otimes X\to Y_s\)</span>. Yoneda identifies their canonical comparison with an isomorphism. Filtered colimits behave differently.</p>
+<h2 id="3-which-internal-homs-preserve-filtered-colimits">3. Which internal Homs preserve filtered colimits?</h2>
+<p><strong>Theorem 3.1.</strong> Under the hypotheses of Section 2, the following conditions on <span class="math" data-tex="\(X\in D\)">\(X\in D\)</span> are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(X\)">\(X\)</span> is compact.</li>
+<li><span class="math" data-tex="\(X\)">\(X\)</span> is a retract of a constant <span class="math" data-tex="\(yc\)">\(yc\)</span>.</li>
+<li>The functor <span class="math" data-tex="\([X,-]_D\)">\([X,-]_D\)</span> preserves filtered colimits.</li>
+</ol>
+<p><strong>Proof.</strong> The compact-retract theorem in the prerequisites gives the first equivalence. For a constant <span class="math" data-tex="\(yc\)">\(yc\)</span>, Lemma 1.1 identifies its internal-Hom functor with <span class="math" data-tex="\(G_c\)">\(G_c\)</span>, which preserves filtered colimits.</p>
+<p>If <span class="math" data-tex="\(i:X\to yc\)">\(i:X\to yc\)</span>, <span class="math" data-tex="\(p:yc\to X\)">\(p:yc\to X\)</span> split a retract, contravariance gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+[X,-]_D\xrightarrow{[p,-]}[yc,-]_D
+\xrightarrow{[i,-]}[X,-]_D,
+\tag{3.1}
+\]">\[
+[X,-]_D\xrightarrow{[p,-]}[yc,-]_D
+\xrightarrow{[i,-]}[X,-]_D,
+\tag{3.1}
+\]</span>
+<p>with composite identity. The filtered-colimit comparison for the first functor is therefore a retract of that for the middle one, by naturality. A retract of an isomorphism is an isomorphism: if <span class="math" data-tex="\(f\)">\(f\)</span> is a retract of an invertible <span class="math" data-tex="\(g\)">\(g\)</span>, with source inclusion/retraction <span class="math" data-tex="\(u,v\)">\(u,v\)</span> and target inclusion/retraction <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, its inverse is <span class="math" data-tex="\(vg^{-1}s\)">\(vg^{-1}s\)</span>, as the two commuting squares and <span class="math" data-tex="\(vu=1,\ ts=1\)">\(vu=1,\ ts=1\)</span> show. Hence the third condition follows.</p>
+<p>Conversely the tensor unit <span class="math" data-tex="\(y\mathbf1\)">\(y\mathbf1\)</span> is compact. The adjunction gives the natural comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+D(X,Y)\simeq D(y\mathbf1,[X,Y]_D).
+\tag{3.2}
+\]">\[
+D(X,Y)\simeq D(y\mathbf1,[X,Y]_D).
+\tag{3.2}
+\]</span>
+<p>If <span class="math" data-tex="\([X,-]_D\)">\([X,-]_D\)</span> preserves filtered colimits, compactness of <span class="math" data-tex="\(y\mathbf1\)">\(y\mathbf1\)</span> and (3.2) show that <span class="math" data-tex="\(D(X,-)\)">\(D(X,-)\)</span> does too, with its canonical structure maps. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is compact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Right closedness does not say that every object has a dual. For an object with a left dual <span class="math" data-tex="\(X^\vee\)">\(X^\vee\)</span>, with evaluation <span class="math" data-tex="\(X^\vee\widehat\otimes X\to\mathbf1\)">\(X^\vee\widehat\otimes X\to\mathbf1\)</span>, duality identifies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+[X,Y]_D\simeq Y\widehat\otimes X^\vee.
+\tag{3.3}
+\]">\[
+[X,Y]_D\simeq Y\widehat\otimes X^\vee.
+\tag{3.3}
+\]</span>
+<p>The tensor-duality adjunction proves this on all <span class="math" data-tex="\(A\)">\(A\)</span>-valued Hom sets; its evaluation is <span class="math" data-tex="\(1_Y\widehat\otimes\operatorname{ev}\)">\(1_Y\widehat\otimes\operatorname{ev}\)</span>. If the original category is rigid in both directions, the compact-dual theorem from the preceding lesson adds dualizability to the three equivalent conditions. Without that hypothesis, the finite-set example below has compact objects without duals.</p>
+<h2 id="4-currying-composition-and-endomorphism-objects">4. Currying, composition and endomorphism objects</h2>
+<p>The order in an iterated internal Hom is forced by the tensor adjunction. There is a natural isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+[X\widehat\otimes Y,Z]_D
+\simeq[X,[Y,Z]_D]_D.
+\tag{4.1}
+\]">\[
+[X\widehat\otimes Y,Z]_D
+\simeq[X,[Y,Z]_D]_D.
+\tag{4.1}
+\]</span>
+<p>To prove it, test against any <span class="math" data-tex="\(A\)">\(A\)</span>. Both sides represent, in order,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+D(A\widehat\otimes(X\widehat\otimes Y),Z)
+\simeq D((A\widehat\otimes X)\widehat\otimes Y,Z).
+\tag{4.2}
+\]">\[
+D(A\widehat\otimes(X\widehat\otimes Y),Z)
+\simeq D((A\widehat\otimes X)\widehat\otimes Y,Z).
+\tag{4.2}
+\]</span>
+<p>Apply the two adjunctions and the given associator. These natural bijections give (4.1), its inverse, and naturality in every variable by Yoneda. No interchange of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> occurs.</p>
+<p>Define the composition morphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+[Y,Z]_D\widehat\otimes[X,Y]_D\longrightarrow[X,Z]_D
+\tag{4.3}
+\]">\[
+[Y,Z]_D\widehat\otimes[X,Y]_D\longrightarrow[X,Z]_D
+\tag{4.3}
+\]</span>
+<p>by transposing the ordered composite</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+{}[Y,Z]_D\widehat\otimes[X,Y]_D\widehat\otimes X\\
+\xrightarrow{1\widehat\otimes\epsilon_{X,Y}}
+[Y,Z]_D\widehat\otimes Y
+\xrightarrow{\epsilon_{Y,Z}}Z.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+{}[Y,Z]_D\widehat\otimes[X,Y]_D\widehat\otimes X\\
+\xrightarrow{1\widehat\otimes\epsilon_{X,Y}}
+[Y,Z]_D\widehat\otimes Y
+\xrightarrow{\epsilon_{Y,Z}}Z.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>The identity <span class="math" data-tex="\(y\mathbf1\to[X,X]_D\)">\(y\mathbf1\to[X,X]_D\)</span> is the transpose of the left unitor at <span class="math" data-tex="\(X\)">\(X\)</span>. Associativity follows by tensoring a triple of internal-Hom factors with the last input and transposing. Both resulting maps are the same ordered sequence of three evaluations; the associators agree by monoidal coherence. Since transposition is injective, the two composition morphisms agree. The unit laws follow in the same way by evaluating and using the unitor identities and the definition of the transposed identity.</p>
+<p>Consequently <span class="math" data-tex="\([X,X]_D\)">\([X,X]_D\)</span> is a monoid object. The maps (4.3) also give the left action of <span class="math" data-tex="\([Y,Y]_D\)">\([Y,Y]_D\)</span> and the right action of <span class="math" data-tex="\([X,X]_D\)">\([X,X]_D\)</span> on <span class="math" data-tex="\([X,Y]_D\)">\([X,Y]_D\)</span>. Their associativity, units and commuting-action equation are precisely the composition equations just proved. These are statements in a monoidal category, with no additive or symmetry assumption.</p>
+<h2 id="5-a-flat-module-obstruction-when-the-limits-are-absent">5. A flat-module obstruction when the limits are absent</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, let <span class="math" data-tex="\(V\)">\(V\)</span> have basis <span class="math" data-tex="\(v_0,v_1,\ldots\)">\(v_0,v_1,\ldots\)</span>, and form the commutative square-zero algebra</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+R=k\oplus V,\qquad
+(\lambda,v)(\mu,w)=(\lambda\mu,\lambda w+\mu v).
+\tag{5.1}
+\]">\[
+R=k\oplus V,\qquad
+(\lambda,v)(\mu,w)=(\lambda\mu,\lambda w+\mu v).
+\tag{5.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(V^2=0\)">\(V^2=0\)</span>, and <span class="math" data-tex="\(\operatorname{ann}_R(v_0)=V\)">\(\operatorname{ann}_R(v_0)=V\)</span>: multiplication by <span class="math" data-tex="\(v_0\)">\(v_0\)</span> sends <span class="math" data-tex="\((\lambda,v)\)">\((\lambda,v)\)</span> to <span class="math" data-tex="\(\lambda v_0\)">\(\lambda v_0\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> The module <span class="math" data-tex="\(M=\prod_{n\ge1}R\)">\(M=\prod_{n\ge1}R\)</span> is not flat.</p>
+<p><strong>Proof.</strong> The principal ideal <span class="math" data-tex="\((v_0)\)">\((v_0)\)</span> is isomorphic to <span class="math" data-tex="\(R/V\)">\(R/V\)</span>, by <span class="math" data-tex="\(\bar r\mapsto rv_0\)">\(\bar r\mapsto rv_0\)</span>. For any module <span class="math" data-tex="\(N\)">\(N\)</span>, the tensor universal property gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+(v_0)\otimes_R N\simeq N/VN.
+\tag{5.2}
+\]">\[
+(v_0)\otimes_R N\simeq N/VN.
+\tag{5.2}
+\]</span>
+<p>The maps are <span class="math" data-tex="\(\bar1\otimes n\mapsto\bar n\)">\(\bar1\otimes n\mapsto\bar n\)</span> and <span class="math" data-tex="\(\bar n\mapsto\bar1\otimes n\)">\(\bar n\mapsto\bar1\otimes n\)</span>; the relation by <span class="math" data-tex="\(V\)">\(V\)</span> is exactly what makes both well defined. Under this isomorphism, tensoring the inclusion <span class="math" data-tex="\((v_0)\subset R\)">\((v_0)\subset R\)</span> with <span class="math" data-tex="\(N\)">\(N\)</span> is the map <span class="math" data-tex="\(\bar n\mapsto v_0n\)">\(\bar n\mapsto v_0n\)</span>. If <span class="math" data-tex="\(N\)">\(N\)</span> is flat, this map is injective. Therefore flatness requires</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+\ker(v_0:N\to N)=VN.
+\tag{5.3}
+\]">\[
+\ker(v_0:N\to N)=VN.
+\tag{5.3}
+\]</span>
+<p>Take <span class="math" data-tex="\(m=(v_1,v_2,\ldots)\in M\)">\(m=(v_1,v_2,\ldots)\in M\)</span>. It is killed by <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. But it is not in <span class="math" data-tex="\(VM\)">\(VM\)</span>. A member of <span class="math" data-tex="\(VM\)">\(VM\)</span> is a finite sum <span class="math" data-tex="\(\sum_{\ell=1}^s w_\ell m_\ell\)">\(\sum_{\ell=1}^s w_\ell m_\ell\)</span>, with <span class="math" data-tex="\(w_\ell\in V\)">\(w_\ell\in V\)</span> and <span class="math" data-tex="\(m_\ell\in M\)">\(m_\ell\in M\)</span>. Since <span class="math" data-tex="\(V^2=0\)">\(V^2=0\)</span>, every coordinate of that sum lies in the same finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-span of <span class="math" data-tex="\(w_1,\ldots,w_s\)">\(w_1,\ldots,w_s\)</span>. The coordinates <span class="math" data-tex="\(v_n\)">\(v_n\)</span> of <span class="math" data-tex="\(m\)">\(m\)</span> cannot all lie in such a span, by linear independence. Thus <span class="math" data-tex="\(m\notin VM\)">\(m\notin VM\)</span>, contradicting (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(C_R\)">\(C_R\)</span> be a small skeleton of finite rank free <span class="math" data-tex="\(R\)">\(R\)</span>-modules, with the usual tensor. It is rigid and right closed: the coordinate duals and the matrices of maps identify <span class="math" data-tex="\([R^a,R^b]\)">\([R^a,R^b]\)</span> with <span class="math" data-tex="\(R^{ab}\)">\(R^{ab}\)</span>, with the ordinary tensor–Hom adjunction on matrices. The flat-module prerequisite gives its full monoidal Ind realization as flat <span class="math" data-tex="\(R\)">\(R\)</span>-modules.</p>
+<p><strong>Corollary 5.2.</strong> This monoidal Ind category is not right closed. In particular smallness, original rigidity and original right closedness do not alone give the conclusion of Theorem 2.2.</p>
+<p><strong>Proof.</strong> The countably generated free module <span class="math" data-tex="\(X=R^{(\mathbb N)}\)">\(X=R^{(\mathbb N)}\)</span> is flat. Suppose an internal Hom <span class="math" data-tex="\(H=[X,R]\)">\(H=[X,R]\)</span> existed in the category of flat modules. Its adjunction, tested at the free rank-one module, would give a natural bijection</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+H\simeq\operatorname{Hom}_R(X,R)\simeq\prod_{n\ge1}R.
+\tag{5.4}
+\]">\[
+H\simeq\operatorname{Hom}_R(X,R)\simeq\prod_{n\ge1}R.
+\tag{5.4}
+\]</span>
+<p>This is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear bijection. Naturality at scalar endomorphisms of <span class="math" data-tex="\(R\)">\(R\)</span> gives scalar compatibility. Naturality at the two inclusions into <span class="math" data-tex="\(R^2\)">\(R^2\)</span> identifies pairs of elements, and at the diagonal <span class="math" data-tex="\(R\to R^2\)">\(R\to R^2\)</span> gives addition; the zero map gives zero. On the tensor side these same maps act on <span class="math" data-tex="\(X\oplus X\)">\(X\oplus X\)</span> and its diagonal. Thus the ordinary set-valued adjunction really yields the claimed module isomorphism. Proposition 5.1 says its target is not flat, whereas <span class="math" data-tex="\(H\)">\(H\)</span> would have to be flat. This contradiction proves the corollary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finite-colimit hypothesis in Section 2 is a sufficient way of ensuring the required inverse limits. No necessity assertion about finite colimits in every original presentation is made.</p>
+<h2 id="6-four-graded-exercises-with-complete-solutions">6. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-introductory-sets-powers-and-finite-inputs">Exercise 1 (introductory) — sets, powers and finite inputs</h3>
+<p>Apply the theorem to finite sets with cartesian product. Identify <span class="math" data-tex="\([X,Y]_D\)">\([X,Y]_D\)</span> for arbitrary sets. Determine exactly when it preserves filtered colimits in <span class="math" data-tex="\(Y\)">\(Y\)</span>, and compare that condition with dualizability.</p>
+<p><strong>Solution.</strong> Finite sets have finite colimits and are right closed, with <span class="math" data-tex="\([S,T]_C=T^S\)">\([S,T]_C=T^S\)</span>. The preceding Ind tensor lesson identifies their monoidal Ind category with all sets and cartesian product. Currying a function <span class="math" data-tex="\(A\times X\to Y\)">\(A\times X\to Y\)</span> gives its unique function <span class="math" data-tex="\(A\to Y^X\)">\(A\to Y^X\)</span>, with inverse evaluation. These formulas are natural in all three sets, so uniqueness of right adjoints identifies <span class="math" data-tex="\([X,Y]_D\)">\([X,Y]_D\)</span> with the ordinary function set <span class="math" data-tex="\(Y^X\)">\(Y^X\)</span>, including its evaluation.</p>
+<p>If <span class="math" data-tex="\(X\)">\(X\)</span> is finite, each function into a filtered colimit is represented at a common stage by choosing finitely many values. Equality of two functions is witnessed at a common later stage by imposing finitely many equality witnesses. Thus <span class="math" data-tex="\((-)^X\)">\((-)^X\)</span> preserves filtered colimits. If <span class="math" data-tex="\(X\)">\(X\)</span> is infinite, use the filtered system of its finite subsets. Their colimit is <span class="math" data-tex="\(X\)">\(X\)</span>, but the identity function <span class="math" data-tex="\(X\to X\)">\(X\to X\)</span> factors through no finite member. Hence the power comparison is not onto. This also agrees with Theorem 3.1 because the compact sets are precisely the finite sets. The tensor prerequisite proves that the only dualizable sets are singletons. Therefore a two-element set gives a filtered-continuous internal-Hom functor without being dualizable; finite sets are right closed but not rigid.</p>
+<h3 id="exercise-2-intermediate-all-linear-maps-and-finite-rank-maps">Exercise 2 (intermediate) — all linear maps and finite-rank maps</h3>
+<p>Take finite-dimensional vector spaces over a field. Identify the internal Hom on its Ind category. For arbitrary vector spaces <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, compute the image of the canonical map <span class="math" data-tex="\(Y\otimes X^*\to[X,Y]\)">\(Y\otimes X^*\to[X,Y]\)</span>, and show why it need not be onto.</p>
+<p><strong>Solution.</strong> Every vector space is the directed union of its finite-dimensional subspaces. Finite-dimensional source maps factor through a common stage by a finite basis, and equality is witnessed by finitely many basis equations. The full compact realization criterion therefore identifies the Ind category with all vector spaces. Ordinary bilinear currying gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+[X,Y]_D=\operatorname{Hom}_k(X,Y),\qquad
+y\otimes\lambda\longmapsto(x\mapsto\lambda(x)y).
+\tag{6.1}
+\]">\[
+[X,Y]_D=\operatorname{Hom}_k(X,Y),\qquad
+y\otimes\lambda\longmapsto(x\mapsto\lambda(x)y).
+\tag{6.1}
+\]</span>
+<p>The natural map in (6.1) has exactly the finite-rank maps as image. Each finite tensor has image in the span of its finitely many <span class="math" data-tex="\(Y\)">\(Y\)</span>-coefficients. Conversely, for a finite-rank map choose a basis <span class="math" data-tex="\(y_1,\ldots,y_s\)">\(y_1,\ldots,y_s\)</span> of its image; its coordinate functions <span class="math" data-tex="\(\lambda_\ell:X\to k\)">\(\lambda_\ell:X\to k\)</span> give the tensor <span class="math" data-tex="\(\sum_\ell y_\ell\otimes\lambda_\ell\)">\(\sum_\ell y_\ell\otimes\lambda_\ell\)</span>. The map is injective too: rewrite a tensor using linearly independent <span class="math" data-tex="\(Y\)">\(Y\)</span>-coefficients. If its associated function is zero, every corresponding coordinate functional is zero.</p>
+<p>For <span class="math" data-tex="\(X=Y=k^{(\mathbb N)}\)">\(X=Y=k^{(\mathbb N)}\)</span>, the identity has infinite rank, so it is not in that image. It also does not come from any <span class="math" data-tex="\(\operatorname{Hom}_k(X,Y_j)\)">\(\operatorname{Hom}_k(X,Y_j)\)</span> in the directed system of finite-dimensional subspaces <span class="math" data-tex="\(Y_j\subseteq Y\)">\(Y_j\subseteq Y\)</span>. Thus <span class="math" data-tex="\([X,-]\)">\([X,-]\)</span> fails filtered continuity for this <span class="math" data-tex="\(X\)">\(X\)</span>. For finite-dimensional <span class="math" data-tex="\(X\)">\(X\)</span>, the coordinate basis and its dual make the map (6.1) an isomorphism for every <span class="math" data-tex="\(Y\)">\(Y\)</span>. Compactness, dualizability and filtered continuity agree here because the original finite-dimensional category is rigid.</p>
+<h3 id="exercise-3-advanced-the-missing-finite-colimit">Exercise 3 (advanced) — the missing finite colimit</h3>
+<p>For the square-zero ring of Section 5, show directly that <span class="math" data-tex="\(v_0,0:R\rightrightarrows R\)">\(v_0,0:R\rightrightarrows R\)</span> have no coequalizer in <span class="math" data-tex="\(C_R\)">\(C_R\)</span>, even as an internal coequalizer there. Explain why merely observing that the ambient quotient is not free would not be a proof.</p>
+<p><strong>Solution.</strong> If a coequalizer <span class="math" data-tex="\(Q\)">\(Q\)</span> existed in <span class="math" data-tex="\(C_R\)">\(C_R\)</span>, it would be a finite rank free module <span class="math" data-tex="\(R^r\)">\(R^r\)</span>. Its universal property with target <span class="math" data-tex="\(R\)">\(R\)</span> would identify</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_R(Q,R)\simeq
+\{a\in R:av_0=0\}=V.
+\tag{6.2}
+\]">\[
+\operatorname{Hom}_R(Q,R)\simeq
+\{a\in R:av_0=0\}=V.
+\tag{6.2}
+\]</span>
+<p>This identification is <span class="math" data-tex="\(R\)">\(R\)</span>-linear: it sends a map to its composite with the specified quotient arrow, and therefore preserves addition and scalar multiplication. The left side is <span class="math" data-tex="\(R^r\)">\(R^r\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> it is zero, whereas <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span>. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, multiplication by <span class="math" data-tex="\(v_0\)">\(v_0\)</span> on <span class="math" data-tex="\(R^r\)">\(R^r\)</span> is nonzero, for example on its first basis vector. Multiplication by <span class="math" data-tex="\(v_0\)">\(v_0\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> is zero because <span class="math" data-tex="\(V^2=0\)">\(V^2=0\)</span>. No module isomorphism (6.2) is possible. Thus there is no such internal coequalizer.</p>
+<p>The ambient cokernel <span class="math" data-tex="\(R/(v_0)\)">\(R/(v_0)\)</span> not belonging to <span class="math" data-tex="\(C_R\)">\(C_R\)</span> would only show failure of closure under that ambient operation. A full subcategory can have a different internal universal object. The Hom test above rules out every possible internal finite free object, so it proves the required absence of a finite colimit. This supplies a concrete failure of the hypothesis that ensured completeness in Lemma 2.1.</p>
+<h3 id="exercise-4-advanced-the-order-of-bimodule-evaluation">Exercise 4 (advanced) — the order of bimodule evaluation</h3>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a finite-dimensional algebra over a field <span class="math" data-tex="\(k\)">\(k\)</span>, and let <span class="math" data-tex="\(C\)">\(C\)</span> be a small monoidal model of finite-dimensional <span class="math" data-tex="\(R\)">\(R\)</span>-bimodules with equal left and right scalar action of <span class="math" data-tex="\(k\)">\(k\)</span>. Identify its Ind category and its internal Hom. Give evaluation and composition explicitly. For <span class="math" data-tex="\(R=M_2(k)\)">\(R=M_2(k)\)</span>, compare the internal endomorphism object of the tensor unit with its ordinary bimodule endomorphisms.</p>
+<p><strong>Solution.</strong> These bimodules are left modules over the finite-dimensional algebra <span class="math" data-tex="\(R^e=R\otimes_kR^{\mathrm{op}}\)">\(R^e=R\otimes_kR^{\mathrm{op}}\)</span>. Finite direct sums and cokernels stay finite-dimensional, and the ordinary finite-colimit construction by sums and a coequalizer proves that <span class="math" data-tex="\(C\)">\(C\)</span> has finite colimits. Its tensor product over <span class="math" data-tex="\(R\)">\(R\)</span> stays finite-dimensional.</p>
+<p>Every <span class="math" data-tex="\(R^e\)">\(R^e\)</span>-module is the filtered union of its finitely generated submodules, which are finite-dimensional because <span class="math" data-tex="\(R^e\)">\(R^e\)</span> is. A finite-dimensional module has a finite generating surjection from <span class="math" data-tex="\((R^e)^n\)">\((R^e)^n\)</span>. Its kernel is finite-dimensional and hence finitely generated, so this is a finite presentation. Generator and relation witnesses at a common filtered stage prove compactness; equality of maps is witnessed on finitely many generators. The compact realization criterion identifies <span class="math" data-tex="\(\operatorname{Ind}(C)\)">\(\operatorname{Ind}(C)\)</span> with all these <span class="math" data-tex="\(R\)">\(R\)</span>-bimodules, on every map.</p>
+<p>For bimodules <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, put <span class="math" data-tex="\(H=\operatorname{Hom}_{-R}(X,Y)\)">\(H=\operatorname{Hom}_{-R}(X,Y)\)</span>, the right <span class="math" data-tex="\(R\)">\(R\)</span>-linear maps, with actions</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+(a f b)(x)=a f(bx).
+\tag{6.3}
+\]">\[
+(a f b)(x)=a f(bx).
+\tag{6.3}
+\]</span>
+<p>The two actions commute, satisfy their unit and associativity laws, and preserve right linearity. In the finite-dimensional case <span class="math" data-tex="\(H\)">\(H\)</span> is a subspace of <span class="math" data-tex="\(\operatorname{Hom}_k(X,Y)\)">\(\operatorname{Hom}_k(X,Y)\)</span>, so it belongs to <span class="math" data-tex="\(C\)">\(C\)</span>. The inverse currying formulas are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+\phi:A\otimes_R X\to Y
+\quad\longleftrightarrow\quad
+\bigl(a\mapsto(x\mapsto\phi(a\otimes x))\bigr).
+\tag{6.4}
+\]">\[
+\phi:A\otimes_R X\to Y
+\quad\longleftrightarrow\quad
+\bigl(a\mapsto(x\mapsto\phi(a\otimes x))\bigr).
+\tag{6.4}
+\]</span>
+<p>Balancing says that the image of <span class="math" data-tex="\(ab\)">\(ab\)</span> is the image of <span class="math" data-tex="\(a\)">\(a\)</span> with its right action by <span class="math" data-tex="\(b\)">\(b\)</span> from (6.3). The outer left action is respected because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is left linear; the image of <span class="math" data-tex="\(a\)">\(a\)</span> is right linear because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is right linear in <span class="math" data-tex="\(x\)">\(x\)</span>. Conversely these three properties make <span class="math" data-tex="\(a\otimes x\mapsto f(a)(x)\)">\(a\otimes x\mapsto f(a)(x)\)</span> a well-defined bimodule map. The formulas are inverse and natural. They prove right closedness of <span class="math" data-tex="\(C\)">\(C\)</span>, and identify its Ind internal Hom with this same <span class="math" data-tex="\(H\)">\(H\)</span> on arbitrary bimodules.</p>
+<p>Evaluation is <span class="math" data-tex="\(f\otimes x\mapsto f(x)\)">\(f\otimes x\mapsto f(x)\)</span>. Composition is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{-R}(Y,Z)\otimes_R\operatorname{Hom}_{-R}(X,Y)\\
+\longrightarrow\operatorname{Hom}_{-R}(X,Z),
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{-R}(Y,Z)\otimes_R\operatorname{Hom}_{-R}(X,Y)\\
+\longrightarrow\operatorname{Hom}_{-R}(X,Z),
+\end{gathered}
+\tag{6.5}
+\]</span>
+<p>sending <span class="math" data-tex="\(g\otimes f\)">\(g\otimes f\)</span> to <span class="math" data-tex="\(g\circ f\)">\(g\circ f\)</span>. It is balanced because <span class="math" data-tex="\((g b)(f(x))=g(bf(x))=g((bf)(x))\)">\((g b)(f(x))=g(bf(x))=g((bf)(x))\)</span>. This is the order in (4.4), with no swap of factors.</p>
+<p>For <span class="math" data-tex="\(X=Y=R\)">\(X=Y=R\)</span>, every right linear map is left multiplication <span class="math" data-tex="\(L_a\)">\(L_a\)</span>, so the internal endomorphism object is the regular bimodule <span class="math" data-tex="\(R\)">\(R\)</span>, with multiplication <span class="math" data-tex="\(L_aL_b=L_{ab}\)">\(L_aL_b=L_{ab}\)</span>. Its identity morphism from the tensor unit sends <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(L_b\)">\(L_b\)</span>. Ordinary bimodule maps <span class="math" data-tex="\(R\to R\)">\(R\to R\)</span>, however, are determined by a central element: <span class="math" data-tex="\(h(r)=rh(1)=h(1)r\)">\(h(r)=rh(1)=h(1)r\)</span>. Their ring is <span class="math" data-tex="\(Z(R)\)">\(Z(R)\)</span>. For <span class="math" data-tex="\(R=M_2(k)\)">\(R=M_2(k)\)</span>, commuting with <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> forces a central matrix to be diagonal, and commuting with <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> forces its two diagonal entries to agree. Thus the ordinary endomorphism ring is <span class="math" data-tex="\(k\)">\(k\)</span>, while the internal object is <span class="math" data-tex="\(M_2(k)\)">\(M_2(k)\)</span>. Its ordered multiplication distinguishes <span class="math" data-tex="\(E_{12}E_{21}=E_{11}\)">\(E_{12}E_{21}=E_{11}\)</span> from <span class="math" data-tex="\(E_{21}E_{12}=E_{22}\)">\(E_{21}E_{12}=E_{22}\)</span>. Internal Hom is not the set of global morphisms.</p>
+<h2 id="7-references">7. References</h2>
+<ul>
+<li><strong>[Schapira]</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf">An Introduction to Categories and Homological Algebra</a>, Section 2.7, for the general Ind construction.</li>
+<li><strong>[EGNO]</strong> Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych and Victor Ostrik, <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">Tensor Categories, author-hosted final version</a>, Chapter 2, for tensor adjunctions and duality.</li>
+</ul>
+</main></body></html>

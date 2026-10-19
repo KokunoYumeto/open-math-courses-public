@@ -2,7 +2,7 @@
 
 Mathematical source route: Guillemin and Sternberg, author draft 2010-01-13,
 https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf, sections 14.1–14.5.
-Original plot and exact-model calculation for this private reconstruction.
+Original plot and exact-model calculation for this reading.
 The curves are numerical samples; the dashed constants are proved in E1.
 """
 from pathlib import Path

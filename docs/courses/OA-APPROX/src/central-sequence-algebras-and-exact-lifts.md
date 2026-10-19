@@ -1,10 +1,10 @@
 # Central sequence algebras and exact lifts
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra. New original exposition: CC0-1.0 to the extent of rights held. Comparison sources retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Comparison sources retain their own terms.*
 
 Matrix units require exact equations: two diagonal projections must be orthogonal, and a connecting partial isometry must have the prescribed initial and final projections. A limit can make those equations exact while every coordinate still has an error. This lesson explains how to repair the coordinates without changing their limit.
 
-We first examine the two repairs that will be needed: moving finite trace mass, and making room at infinite endpoints. We then construct the limiting algebra, lift one projection, prove completeness of its trace metric, and assemble the repaired matrix units. Original result and problem numbers remain stable labels throughout this order.
+We first examine the two repairs that will be needed: moving finite trace mass, and making room at infinite endpoints. We then construct the limiting algebra, lift one projection, prove completeness of its trace metric, and assemble the repaired matrix units. Every repair retains the prescribed quotient class, including systems whose support is smaller than the identity.
 
 Our setting is a nonzero factor \(M\) with separable predual, a faithful normal state \(\varphi\), and a free ultrafilter \(\omega\) on \(\mathbb N\). The complete [quotient and lifting inputs](../components/central-sequence-quotient-and-lifting-inputs.md) prove CQ1–7. The [preceding central-sequence lesson](central-sequences-and-free-group-factors.md) proves the passage from predual commutators to bounded strong* centrality; [NT1–2](../components/central-sequence-foundations.md#nt1-normal-functional-decomposition) proves the normal-functional and faithful-state topology facts used below.
 
@@ -317,7 +317,7 @@ At coordinates with finite \(p_n\), CQ4 gives
 \(e_n-p_n\sim f_n-q_n\),
 using the assumed \(e_n\sim f_n\). That argument works for finite or infinite endpoints and includes \(p_n=0\).
 
-At coordinates with infinite \(p_n\), use CQ5 with \(\varphi\) and the normal positive functional \(a\mapsto\varphi(w_naw_n^*)\) to obtain \(r_n\leq p_n\) such that
+At coordinates with infinite \(p_n\), use CQ5 with \(\varphi\) and the normal positive functional \(a\mapsto\varphi(w_naw_n^*)\) to obtain an infinite projection \(r_n\leq p_n\) such that
 \[
 p_n-r_n\text{ is infinite},\qquad
 \varphi(r_n)+\varphi(w_nr_nw_n^*)<1/n^2.

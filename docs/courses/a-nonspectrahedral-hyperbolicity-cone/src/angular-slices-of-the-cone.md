@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-By Theorem A of Hyperbolic polynomials and spectrahedral cones, no linear matrix inequality in the \(23\) coordinates of \((X,Z,y)\) describes the cone \(K\). With auxiliary variables the situation changes: \(K\) is the image under a linear projection of a spectrahedron. This and the next lesson prove this theorem of OpenAI [OpenAI-LIFT].
+By Theorem A of [Hyperbolic polynomials and spectrahedral cones](hyperbolic-polynomials-and-spectrahedral-cones.md), no linear matrix inequality in the \(23\) coordinates of \((X,Z,y)\) describes the cone \(K\). With auxiliary variables the situation changes: \(K\) is the image under a linear projection of a spectrahedron. This and the next lesson prove this theorem of OpenAI [OpenAI-LIFT].
 
 ## The theorem
 

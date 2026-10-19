@@ -18,6 +18,8 @@ C=Z(A)\cong Z(S).
 
 The finite measure \(\nu\) on this center is \(\nu(z)=\operatorname{Tr}(ez)\); thus \(\nu(1)=1\). Center functions and their smaller-core labels are identified through the full corner, as in 52.2. No assumption that \(C\) commutes with \(M\) is made.
 
+The distinction between variable and constant multiplicity is substantive. IRG.1–IRG.3 proves an actual index-ten affine obstruction to constant central multiplicity, even approximate one-level profiles, after every matrix deletion of one fixed core. The variable integer rounding proved here retains the whole projection and remains valid. The obstruction does not settle the different BF quantifier that allows a new ordinary tunnel after the physical targets are specified.
+
 ## Global rounding does not require selecting a spectral bin
 
 **Theorem 73.1 — bounded variable integer rounding.** Fix a nonzero finite projection \(p\in A\), put \(c=\operatorname{Tr}(p)>0\), and let \(\zeta=C_A(p)\). For every integer \(K\geq1\) and every \(0<r<1\), some deletion of a finite matrix factor from the core gives canonical algebras \(\widetilde A\subset\widetilde B\), with the old algebras embedded as in 52.3, and a projection \(q\leq p\) in \(\widetilde A\), such that the following hold. Write \(c'=\widetilde{\operatorname{Tr}}(p)\). The function \(k\) takes values in \(\{0,K,K+1,\ldots,L\}\).

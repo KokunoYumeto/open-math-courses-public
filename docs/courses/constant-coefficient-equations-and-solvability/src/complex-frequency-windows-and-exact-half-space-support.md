@@ -2,9 +2,9 @@
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original expression and original illustrations: CC0.*
 
-The theorem permits a characteristic normal and a frequency centre on the real boundary of its complex half-space. The proof therefore begins with those cases, before using the physical transport construction. A characteristic normal is handled by the planned general characteristic-halfspace theorem. For a noncharacteristic normal, either the real directional-strength ratio is unbounded, in which case the full real-frequency construction applies, or a uniform strength comparison supplies the additional imaginary-height escape needed to move and shrink a complex window. The latter branch then passes through the rational, transport, and assembly modules with their hypotheses checked explicitly.
+The theorem permits a characteristic normal and a frequency centre on the real boundary of its complex half-space. The proof therefore begins with those cases, before using the physical transport construction. A characteristic normal is handled by the general characteristic-halfspace theorem proved in [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem). For a noncharacteristic normal, either the real directional-strength ratio is unbounded, in which case the full real-frequency construction applies, or a uniform strength comparison supplies the additional imaginary-height escape needed to move and shrink a complex window. The latter branch then passes through the rational, transport, and assembly modules with their hypotheses checked explicitly.
 
-## Proof ingredients and the planned characteristic case
+## Proof ingredients and the characteristic case
 
 The theorem permits a nonnegative imaginary-height parameter, total degree of P at least that of Q, pointwise window limits for every complex z, and a strict negative imaginary derivative at some complex point. Its characteristic case uses the negative-halfspace contract stated below, with the normal reversed.
 
@@ -20,7 +20,7 @@ These written lessons supply the other proof ingredients. Their equation labels 
 | [Physical transport scales and curved phases](physical-transport-scales-and-curved-phases.md) | Equations (1)–(20): finite choice of parameter power, highest coefficient conditions on both curves, correct limiting phase primitive, exact ordered nonzero Q-image, physical derivative bounds and joint residual flatness. |
 | [Joining modes through a vanishing operator image](joining-modes-through-a-vanishing-operator-image.md) | Theorem 1, equations (1)–(26): prescribed matching graph, positive matching constants, carrier and difference estimates, decay, nodal division, all cutoff commutators, zero extension and a nonzero global upper tail. |
 
-**Planned prerequisite: [exact characteristic-halfspace smooth homogeneous solution](../prerequisites/planned-foundation-proofs.html#exact-characteristic-halfspace-smooth-homogeneous-solution).** If B is a nonzero constant-coefficient polynomial with highest homogeneous part B_d and M is a nonzero real vector satisfying B_d(M)=0, there exists v in C-infinity(R^n) such that B(D)v=0 and its support is exactly `{x:x dot M <= 0}`. Replacing M by -M supplies either prescribed closed characteristic half-space. The general proof of this prerequisite remains planned. The characteristic branch below is conditional on this exact contract. The algebraic and smooth-jet prerequisites of the linked lessons also retain their stated open transitive dependencies.
+**Full prerequisite proof: [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem).** If B is a nonzero constant-coefficient polynomial with highest homogeneous part B_d and M is a nonzero real vector satisfying B_d(M)=0, there exists v in C-infinity(R^n) such that B(D)v=0 and its support is exactly `{x:x dot M <= 0}`. Replacing M by -M supplies either prescribed closed characteristic half-space. The complete general proof is Theorem 1, CH1–CH31 and Appendix A of [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem). The characteristic branch below uses this exact written contract. The algebraic and smooth-jet prerequisites of the linked lessons also retain their stated open transitive dependencies.
 
 ## Full theorem and conventions
 
@@ -63,13 +63,13 @@ The limiting polynomial r is consequently of degree at most m and has r(0)=0. Th
 \tag{CT3}
 \]
 
-The functions may depend on J; the quantifier is for every J there exist a,u. The theorem does not assert that the bounded-strength complex construction produces one coefficient flat to every order. It does produce u flat to every order at the boundary. The characteristic and unbounded-strength branches produce a flat to every order too. This is an implication from the planned characteristic contract and the written proof ingredients above; recursive prerequisite closure remains incomplete.
+The functions may depend on J; the quantifier is for every J there exist a,u. The theorem does not assert that the bounded-strength complex construction produces one coefficient flat to every order. It does produce u flat to every order at the boundary. The characteristic and unbounded-strength branches produce a flat to every order too. This is an implication from the written characteristic contract and the written proof ingredients above; recursive prerequisite closure remains incomplete.
 
 ## Polynomial convergence and the first branch split
 
 Every p_nu,q_nu,r_nu has degree at most m. Choose m+1 distinct fixed complex nodes z_j. Lagrange interpolation writes each polynomial as the sum of its values at these nodes times fixed polynomial basis functions. Their pointwise limits therefore imply convergence of all coefficients in the norm `sum_j |coefficient_j|`; in particular the three pointwise limits in (CT2) are coefficient limits. The limiting polynomial for r_nu is the prescribed r, since interpolation and convergence at an arbitrary additional point give equality there. The identities p_nu(0)=q_nu(0)=1 give r_nu(0)=r(0)=0. If m=0, both windows equal 1 identically, so r=0 and the derivative sign in (CT2) is impossible. Thus every admissible input has m>=1.
 
-Fix J>=0. If P_m(N)=0, homogeneity gives P_m(-N)=(-1)^m P_m(N)=0. Apply the planned characteristic contract with B=P and M=-N. It supplies a smooth homogeneous solution with
+Fix J>=0. If P_m(N)=0, homogeneity gives P_m(-N)=(-1)^m P_m(N)=0. Apply the written characteristic contract with B=P and M=-N. It supplies a smooth homogeneous solution with
 
 \[
 P(D)u=0,
@@ -77,7 +77,7 @@ P(D)u=0,
 \tag{CT4}
 \]
 
-Taking a=0 gives (CT3) for this J and in fact for all J at once. This uses the general characteristic theorem for the entire symbol P, including its lower order terms. A first-order special family is not a replacement for this contract. The general proof of the linked characteristic prerequisite remains planned.
+Taking a=0 gives (CT3) for this J and in fact for all J at once. This uses the general characteristic theorem for the entire symbol P, including its lower order terms. A first-order special family is not a replacement for this contract. The complete general proof is Theorem 1, CH1–CH31 and Appendix A of [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem).
 
 It remains to consider P_m(N) nonzero. For R=P,Q define
 
@@ -555,9 +555,9 @@ The displayed p=2 gives the inclusive finite-jet range 0 ≤ J ≤ 27. For an ar
 
 ## Exercises with complete solutions
 
-**Exercise 1 (the characteristic orientation and the dependency).** The planned characteristic theorem gives support `{x:x dot M<=0}`. Which normal is required to obtain H_N? Explain why this branch does not impose P_m(N) nonzero on the theorem, and what remains conditional.
+**Exercise 1 (the characteristic orientation and the dependency).** The written characteristic theorem gives support `{x:x dot M<=0}`. Which normal is required to obtain H_N? Explain why this branch does not impose P_m(N) nonzero on the theorem, and identify the separate transitive prerequisites.
 
-**Solution.** Take M=-N. Homogeneity gives P_m(M)=(-1)^mP_m(N)=0, and the prescribed support is `{x:-x dot N<=0}=H_N`. Set a=0; every derivative of a vanishes and the homogeneous equation is exactly the required perturbed equation. This solves the characteristic branch using the full general characteristic contract. The theorem consequently keeps characteristic normals in its scope. Its use remains conditional on the planned AN-01 theorem; this reduction neither proves that theorem nor closes its prerequisites.
+**Solution.** Take M=-N. Homogeneity gives P_m(M)=(-1)^mP_m(N)=0, and the prescribed support is `{x:-x dot N<=0}=H_N`. Set a=0; every derivative of a vanishes and the homogeneous equation is exactly the required perturbed equation. This solves the characteristic branch using the full general characteristic contract. The theorem consequently keeps characteristic normals in its scope. The full general theorem is proved in the linked halfspace lesson. This reduction uses that proof and does not by itself close its transitive prerequisites.
 
 **Exercise 2 (why the scalar inequalities do not imply escape).** For epsilon tending to zero through positive values, take T=epsilon^{-3}, K=epsilon^{-2}, lambda=epsilon^{-1}. Check the two scalar limits in (CT2) and compare T/lambda. Identify the additional fact that proves escape for an admissible bounded-strength input.
 
@@ -587,11 +587,11 @@ The displayed p=2 gives the inclusive finite-jet range 0 ≤ J ≤ 27. For an ar
 
 The relative proof now covers all the stated quantifiers, the characteristic-normal branch, the full unbounded real-strength branch, the bounded-strength escape with height zero included, the exact complex normalization and linear shrink, rational O(epsilon) paths and all four integer exponent inequalities, the simultaneous finite p choice, both prescribed flat switching graphs, nodal quotient extension, every cutoff error and a nonzero global upper tail. The fifth-degree family and the seven solutions provide explicit bounded checks of the signs, scales, boundary order and support arguments.
 
-The general characteristic prerequisite remains planned. The linked algebraic and smooth-jet lessons retain their stated open transitive dependencies.
+The complete general proof is Theorem 1, CH1–CH31 and Appendix A of [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem). The linked algebraic and smooth-jet lessons retain their stated open transitive dependencies.
 
 ## References
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983. Theorem 13.6.9, pp.210–211.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, Springer, Theorem 8.6.7. The general characteristic-halfspace proof remains a planned prerequisite here.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, Springer, Theorem 8.6.7. The complete general proof is Theorem 1, CH1–CH31 and Appendix A of [Smooth solutions with an exact characteristic halfspace as support](../AN02-L111.html#exact-characteristic-halfspace-theorem).
 
-The linked course lessons provide the written proof ingredients. These human references identify the mathematical antecedents; the precise planned contract remains explicitly conditional.
+The linked course lessons provide the written proof ingredients. These human references identify the mathematical antecedents; the exact full halfspace proof is linked above and the remaining algebraic and jet dependencies are explicit.

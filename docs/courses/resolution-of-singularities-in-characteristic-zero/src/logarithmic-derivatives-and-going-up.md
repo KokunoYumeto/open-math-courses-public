@@ -1,6 +1,6 @@
 # Logarithmic derivatives and going up
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Programme text by Claude Opus 5.5 (Anthropic), with mathematical editing and reader preparation by GPT-6.1 Sol (OpenAI). Original programme text: public domain (CC0).*
 
 The previous lesson showed that every blow-up sequence of order \(m\) for an ideal restricts to a hypersurface of maximal contact, but that the restriction may demand extra blow-ups. This lesson proves the converse for a class of ideals, the D-balanced ones, whose derivatives are controlled by the ideal itself: for such an ideal, every blow-up sequence of the restriction to *any* smooth hypersurface, pushed forward, is a blow-up sequence for the ideal. The proof separates derivatives into those tangent to the hypersurface, which commute with restriction and with blowing up, and the remaining normal direction. The tangent ones are the logarithmic derivations.
 

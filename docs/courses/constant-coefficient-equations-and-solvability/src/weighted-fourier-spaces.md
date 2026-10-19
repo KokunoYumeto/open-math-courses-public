@@ -79,6 +79,56 @@ Keeping \(y\) fixed in the supremum proves that the original polynomial shift bo
 \(k_\varepsilon(\xi)=\sup_z e^{-\varepsilon|\xi-z|}k(z)\).
 The triangle inequality shows \(k_\varepsilon(\xi+h)\leq e^{\varepsilon|h|}k_\varepsilon(\xi)\). Apply Lemma 1.1 for the lower bound and let \(\varepsilon\downarrow0\). No differentiability of \(k_\varepsilon\) is asserted. \(\square\)
 
+**Proposition 2.2 (a weaker shift estimate gives equivalent norms).** Suppose a positive function \(q\) satisfies
+\[
+ q(\xi+h)\leq A(1+B|h|)^Nq(\xi),
+ \qquad A\geq1,\ B,N\geq0.
+ \tag{W1}
+\]
+It need not have the stronger small-shift behavior in our definition. For each \(\varepsilon>0\), its envelope
+\[
+ q_\varepsilon(\xi)=\sup_y e^{-\varepsilon|y|}q(\xi-y)
+ \tag{W2}
+\]
+is a moderate weight in that definition, and
+\[
+ q\leq q_\varepsilon\leq
+ A\sup_{r\geq0}e^{-\varepsilon r}(1+Br)^Nq.
+ \tag{W3}
+\]
+Thus a measurable weight with (W1) defines the same weighted Fourier spaces, with equivalent norms, as a moderate weight. Continuity of the original weight is sufficient for this measurability requirement, but continuity is not needed to construct the envelope.
+
+**Proof.** The choice of zero shift and (W1) give (W3); the supremum is finite because an exponential dominates a fixed polynomial. As in Theorem 2.1, changing the source variable gives
+\[
+ q_\varepsilon(\xi+h)\leq e^{\varepsilon|h|}q_\varepsilon(\xi),
+ \qquad
+ q_\varepsilon(\xi+h)\leq A(1+B|h|)^Nq_\varepsilon(\xi).
+ \tag{W4}
+\]
+The first estimate and its reversed shift prove continuity of the finite positive envelope. To obtain the precise polynomial bound with factor one at zero, choose
+\[
+ C\geq\max\{B,A,e^\varepsilon-1\}.
+ \tag{W5}
+\]
+For \(0\leq r\leq1\), convexity gives \(e^{\varepsilon r}\leq1+(e^\varepsilon-1)r\leq1+Cr\). For \(r\geq1\),
+\(A(1+Br)^N\leq(1+Cr)^{N+1}\).
+Combining the two bounds in (W4) gives
+\[
+ q_\varepsilon(\xi+h)\leq(1+C|h|)^{N+1}q_\varepsilon(\xi).
+ \tag{W6}
+\]
+This is the required moderation. The two pointwise comparisons in (W3) give both norm comparisons, including the essential-supremum endpoint. \(\square\)
+
+**Example 2.3 (continuity alone does not control all small shifts uniformly).** On the line, take \(q(\xi)=2+\sin(\xi^2)\). It lies between one and three and satisfies (W1) with \(A=3,N=0\). Set
+\[
+ \xi_j=\sqrt{2\pi j+3\pi/2},\qquad
+ \eta_j=\sqrt{2\pi j+5\pi/2},\qquad h_j=\eta_j-\xi_j.
+ \tag{W7}
+\]
+Then \(q(\xi_j)=1\), \(q(\eta_j)=3\), and
+\(h_j=\pi/(\eta_j+\xi_j)\to0\).
+Consequently \(M_q(h_j)\geq3\), although \(M_q(0)=1\). No constants in the stronger moderate inequality can allow that ratio as the shift tends to zero. Proposition 2.2 still provides equivalent moderate weights, and the Fourier spaces for this particular \(q\) already have norms equivalent to the weight-one spaces.
+
 ## A Banach space on each Fourier scale
 
 Use
@@ -109,6 +159,16 @@ For finite \(p\), first truncate a weighted \(L^p\) function to compact frequenc
 
 For \(p=2\), Plancherel makes \(B_{2,1}=L^2\) with the same norm. For \(k=\langle\xi\rangle^s\), \(B_{2,k}\) is the Fourier definition of \(H^s\). These familiar spaces are special cases; no evenness or radial symmetry is required of a general weight.
 
+Here is the extension of Plancherel needed in this assertion. [Fourier transforms, finite spectra and convex separation](../prerequisites/prerequisite-bridges.html#2-plancherel-and-integer-sobolev-weights), Theorem 2.1, proves the identity on Schwartz functions. Their density in \(L^2\) is the finite-exponent density theorem linked above. Thus \((2\pi)^{-n/2}\mathcal F\) extends isometrically to \(L^2\); the normalized inverse extends as well, and their inverse identities extend by density. Hölder's inequality makes \(L^2\) convergence imply convergence in \(\mathcal S'\), so this extension is the distributional Fourier transform. This proves the asserted identification with \(L^2\), including its norm.
+
+For a nonzero polynomial, the derivative weight also gives the exact graph norm
+\[
+ \|u\|_{2,S_P}^2=\sum_{|\alpha|\leq\deg P}
+                       \|P^{(\alpha)}(D)u\|_{L^2}^2.
+ \tag{W8}
+\]
+Use an infinite value for a failed weighted or ordinary \(L^2\) membership. If the right side is finite, a highest-order polynomial derivative is a nonzero constant, so \(u\) itself is in \(L^2\) and has a Fourier function. The squared weight is the sum of the squared polynomial derivatives; multiply by the squared Fourier modulus, integrate the finite sum, and apply Plancherel to each term. The same calculation proves finiteness of the right side when the left side is finite. Thus the identity holds with these conventions and measures all those differential expressions at once.
+
 ## Cutoffs, differential operators, and convolution
 
 **Theorem 4.1.** For \(\chi\in\mathcal S\), multiplication by \(\chi\) is bounded on \(B_{p,k}\), and
@@ -138,6 +198,8 @@ u*v\in B_{p,k_1k_2},\qquad
 \]
 
 **Proof.** The first statement follows from \(\widehat{Q(D)u}=Q\widehat u\) and \(|Q|\leq S_Q\). The quotient weight is moderate by Lemma 1.1. For the second, compact support makes convolution defined and its transform is \(\widehat u\widehat v\). Apply the \(L^p\) bound for multiplication by a bounded function to \(k_1\widehat u\) and \(k_2\widehat v\). \(\square\)
+
+The compact-factor convolution pairing and its Fourier product identity are proved on Schwartz tests in [Holomorphic reciprocals and convolution regularity](../AN02-L195.html#proof-eq-CE25), equation (CE25). That argument permits a distribution-valued Fourier transform of the noncompact factor; the weighted estimate here uses its additional function hypothesis.
 
 **Theorem 4.3.** Let \(p<\infty\), \(u\in B_{p,k}\), \(\chi\in C_c^\infty\) with \(\chi(0)=1\), and \(\rho\in C_c^\infty\) with \(\int\rho=1\). Then
 \[
@@ -173,6 +235,15 @@ The map \(v\mapsto L_v\) is conjugate-linear. If instead a linear functional is 
 \]
 Thus \(\widehat w(-\xi)=\overline{\widehat v(\xi)}\), and reflection changes \(1/k\) into \(1/k^\vee\). This proves the second statement. \(\square\)
 
+Every continuous anti-linear functional is similarly and uniquely
+\[
+ A_v(u)=(2\pi)^{-n}\int\overline{\widehat u(\xi)}
+                    \widehat v(\xi)\,d\xi,
+ \qquad v\in B_{p',1/k},\quad p<\infty,
+ \tag{W9}
+\]
+with the same exact norm. To prove this, apply Theorem 5.1 to the linear functional \(u\mapsto\overline{A_v(u)}\), or to the conjugate of the given anti-linear functional, and then take complex conjugates. On Schwartz tests this is the bilinear distribution expression \(v(\overline u)\): conjugating the test and reflecting its Fourier frequency cancel the reflection in the bilinear pairing. This keeps the linear, anti-linear and distributional conventions consistent even for an asymmetric weight.
+
 ## Exercises with solutions
 
 **Exercise 1 (entry).** Compute \(S_P\) for \(P(\xi_1,\xi_2)=\xi_1^2+i\xi_2\). Give the weight of the target space in Proposition 4.2 when the initial weight is one.
@@ -201,3 +272,4 @@ The target weight is \(1/S_P\). It allows loss measured by this anisotropic poly
 - Internal completeness and density: [the same foundation](../prerequisites/banach-foundation-bridges.html#section-15-3), Section 15.3, proves completeness for every displayed exponent and compact smooth density for finite exponents.
 - Internal duality: [Lebesgue duality and the functionals on Fourier spaces](lebesgue-duality-and-fourier-functionals.md), Lemmas 1.1 and 2.1–2.2 and Theorem 3.1, proves finite-exponent duality before its weighted Fourier adapter.
 - Internal cutoff construction: [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html#section-13-10), Section 13.10.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Background on weighted Fourier spaces and localization.

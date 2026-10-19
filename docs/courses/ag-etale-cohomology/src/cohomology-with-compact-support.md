@@ -114,7 +114,7 @@ X\xrightarrow{j}\overline X\xrightarrow{p}Y,
 \tag{3.1}
 \]
 
-This is Nagata's compactification theorem. Its complete proof in this generality is [AI Integrated Stacks Project, Tag 0F41](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/flat.html#flat-theorem-nagata): it reduces to a Noetherian base by limits, compactifies the members of a finite affine cover inside projective spaces, and glues these compactifications with Lemma 0F40 and the preceding results of the same section. Finite presentation of \(f\) is not required. Taking the schematic closure of \(X\) in \(\overline X\) gives a compactification with \(X\) dense and schematically dense; call such a compactification dense. The open is quasi-compact, so its schematic closure exists and restricts to \(X\) on that open.
+This is Nagata's compactification theorem. Its complete proof in this generality is [AI Integrated Stacks Project, Tag 0F41](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/flat.html#flat-theorem-nagata) ([native LaTeX, exact edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/flat.tex#L9949-L9995)): it reduces to a Noetherian base by limits, compactifies the members of a finite affine cover inside projective spaces, and glues these compactifications with Lemma 0F40 and the preceding results of the same section. Finite presentation of \(f\) is not required. Taking the schematic closure of \(X\) in \(\overline X\) gives a compactification with \(X\) dense and schematically dense; call such a compactification dense. The open is quasi-compact, so its schematic closure exists and restricts to \(X\) on that open.
 
 A morphism of compactifications is a \(Y\)-map \(h:\overline X_1\to\overline X_2\) restricting to the identity on \(X\). It is proper: its graph is closed in \(\overline X_1\times_Y\overline X_2\), and projection from that product to \(\overline X_2\) is proper.
 
@@ -135,7 +135,7 @@ Nagata's theorem is used only for existence. The refinement and equalizer argume
 
 ## 4. The proper dimension bound
 
-We need a bound before passing to unbounded complexes. The geometric foundations used in this section are these: normalization of a reduced finite-type scheme over a field is finite; an integral normal scheme is regular at codimension-one points; a rational map from such a scheme to a proper curve extends at those points; and a dominant morphism from an integral \(n\)-dimensional scheme to a curve has fibres of dimension at most \(n-1\). In the last assertion, on an affine piece the special fibre is cut out by a nonzero parameter, while the generic fibre has dimension \(n-1\). These are geometric facts about finite-type schemes, without a cohomological premise.
+We need a bound before passing to unbounded complexes. The geometric foundations used in this section are these: [normalization of a reduced finite-type scheme over a field is finite](../../AG-MO/normalization.html#5-finiteness-over-fields-including-inseparability) (Theorem 5.1); [an integral normal scheme is regular at codimension-one points](../../AG-CA/discrete-valuation-rings-normal-rings-and-serres-criterion.html#1-a-single-parameter-and-a-discrete-valuation) (Theorem 1.2, applied to its one-dimensional Noetherian local rings); [a rational map from such a scheme to a proper curve extends at those points](../../AG-MO/rational-maps-and-birational-morphisms.html#codimension-one-extension); and a dominant morphism from an integral \(n\)-dimensional scheme to a curve has fibres of dimension at most \(n-1\). For closed points, the [curve-fibre bound, Corollary 4.2](../../AG-MO/dimension-of-fibres.html#fibres-over-an-integral-curve) uses the proper closed subset of the integral source, while the generic fibre has dimension \(n-1\). These are geometric facts about finite-type schemes, without a cohomological premise.
 
 **Theorem 4.1.** If \(p:T\to S\) is proper and every geometric fibre has dimension at most \(d\), then
 
@@ -146,7 +146,7 @@ R^qp_*\mathcal F=0\quad(q>2d)
 
 for every torsion abelian sheaf \(\mathcal F\).
 
-**Proof.** Induct on \(d\), proving the assertion for all proper morphisms at once. If \(d=0\), the morphism is proper and quasi-finite, hence finite; lesson 7 proves exactness of its direct image. For \(d=1\), proper base change reduces the assertion to the proper curve theorem of lesson 12 over an algebraically closed field.
+**Proof.** Induct on \(d\), proving the assertion for all proper morphisms at once. If \(d=0\), the morphism is proper and quasi-finite, hence [finite](../../AG-MO/zariskis-main-theorem.html#5-properness-and-normality) by Theorem 5.1; lesson 7 proves exactness of its direct image. For \(d=1\), proper base change reduces the assertion to the proper curve theorem of lesson 12 over an algebraically closed field.
 
 For the induction step, proper base change again reduces to \(H^q(T,\mathcal F)=0\) for \(T\) proper over an algebraically closed field, \(\dim T\leq d\). Replace \(T\) by its reduction using topological invariance. Let \(\nu:T^\nu\to T\) be its finite normalization, a disjoint union of normal integral components. The adjunction map
 
@@ -166,7 +166,7 @@ T\xleftarrow{b}T'\xrightarrow{r}\mathbf P^1.
 \tag{4.3}
 \]
 
-Both arrows are proper. The first is an isomorphism where the rational map is defined. The complementary closed subset \(Z\subset T\) has codimension at least two: at a codimension-one point, the local ring is a discrete valuation ring and the rational map extends to the proper \(\mathbf P^1\) by its valuative criterion. Every fibre of \(b\) is a closed subscheme of \(\mathbf P^1\), hence has dimension at most one. Thus \(Rb_*b^{-1}\mathcal F\) has cohomology only in degrees \(0,1,2\). For the triangle
+Both arrows are proper. The first is an isomorphism where the rational map is defined. The complementary closed subset \(Z\subset T\) has [codimension at least two](../../AG-MO/rational-maps-and-birational-morphisms.html#codimension-one-extension): at a codimension-one point, the local ring is a discrete valuation ring and the rational map extends to the proper \(\mathbf P^1\) by its valuative criterion. Every fibre of \(b\) is a closed subscheme of \(\mathbf P^1\), hence has dimension at most one. Thus \(Rb_*b^{-1}\mathcal F\) has cohomology only in degrees \(0,1,2\). For the triangle
 
 \[
 \mathcal F\longrightarrow Rb_*b^{-1}\mathcal F
@@ -182,7 +182,7 @@ H^m(T,Q)=0\quad(m>2\dim Z+2),
 \tag{4.5}
 \]
 
-Consequently it suffices to bound \(H^q(T',b^{-1}\mathcal F)\). The graph closure is integral and \(r\) is dominant, so its fibres have dimension at most \(d-1\). Induction gives \(R^jr_*b^{-1}\mathcal F=0\) for \(j>2d-2\). Each of the remaining sheaves is torsion, and the proper curve theorem gives zero cohomology on \(\mathbf P^1\) above degree two. The Leray spectral sequence
+Consequently it suffices to bound \(H^q(T',b^{-1}\mathcal F)\). The graph closure is integral and \(r\) is dominant, so [the curve-fibre bound](../../AG-MO/dimension-of-fibres.html#fibres-over-an-integral-curve) puts their dimensions at most \(d-1\). Induction gives \(R^jr_*b^{-1}\mathcal F=0\) for \(j>2d-2\). Each of the remaining sheaves is torsion, and the proper curve theorem gives zero cohomology on \(\mathbf P^1\) above degree two. The Leray spectral sequence
 
 \[
 H^i(\mathbf P^1,R^jr_*b^{-1}\mathcal F)
@@ -196,7 +196,7 @@ For a proper finite-type morphism over a quasi-compact base a finite fibre-dimen
 
 ## 5. Finite amplitude and unbounded proper base change
 
-We use the foundational existence of K-injective resolutions in a Grothendieck category of sheaves: a complex admits a quasi-isomorphism into a K-injective complex whose terms are injective. Derived direct image is computed on such a resolution. The following argument explains why bounded cohomological dimension allows *any* termwise acyclic resolution, including unbounded ones.
+The [unbounded K-injective construction, Theorem 4.1](../../derived-categories-and-sheaf-operations/k-injective-resolutions-in-grothendieck-categories.html#4-constructing-the-unbounded-resolution) applies to every Grothendieck abelian category: each complex admits a termwise monic quasi-isomorphism into a termwise injective K-injective complex. Derived direct image is computed on such a resolution. The following argument explains why bounded cohomological dimension allows *any* termwise acyclic resolution, including unbounded ones.
 
 **Lemma 5.1.** Let \(F\) be left exact, with enough injectives and \(R^qF=0\) for \(q>N\). A complex of \(F\)-acyclic objects computes \(RF\). Moreover
 
@@ -308,7 +308,7 @@ Applying \(Rp_{2,*}\), and using proper composition, gives a comparison from the
 
 For arbitrary choices choose a common refinement \(C\) and compare both functors to the functor for \(C\). If another common refinement is chosen, cofilteredness gives a further refinement of both. Composition compatibility shows that both comparisons become equal there, hence were equal already, since refinement comparisons are isomorphisms. Parallel refining maps are equalized by a further refinement; their functor maps likewise become equal and hence agree. This proves independence of all choices. Taking a common refinement of three choices proves the cocycle condition by cancellation of their maps to that common object. □
 
-If \(f\) is proper, choose \(j=\mathrm{id}_X\); thus \(Rf_!=Rf_*\). If \(f\) is quasi-finite, separated and finite type, Zariski's main theorem gives \(X\hookrightarrow\overline X\) with \(\overline X/Y\) finite. Then
+If \(f\) is proper, choose \(j=\mathrm{id}_X\); thus \(Rf_!=Rf_*\). If \(f\) is quasi-finite, separated and finite type, [Zariski's main theorem, Theorem 4.2](../../AG-MO/zariskis-main-theorem.html#4-the-separated-scheme-theorem) gives \(X\hookrightarrow\overline X\) with \(\overline X/Y\) finite. Then
 
 \[
 Rf_!=\overline f_*j_!=f_!
@@ -593,6 +593,12 @@ The next two results use the affine-line constructibility proof in AI Integrated
 
 The input's proof descends the finitely presented coefficient data to a finitely generated \(\mathbf Z\)-subalgebra of the base ring and uses compact base change. Its geometric ingredients are the [constant-coefficient curve argument](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-constant-shriek-rel-dim-1) and the [locally constant coefficient argument](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-loc-constant-shriek-rel-dim-1). The former uses [proper smooth curve constructibility](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-proper-smooth-family-curves-modules), whose [prime-coefficient proof](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-proper-smooth-family-curves) treats the residue-characteristic case by Artin–Schreier, not by assuming invertibility. These are specific prerequisite proofs, not consequences of Poincaré duality in the later lesson.
 
+Here is the generic spreading step in the locally constant argument, including its hypothesis on monodromy. In the Noetherian dimension induction, it suffices to prove constructibility over a dense open of the base and then treat its smaller-dimensional closed complement. For a generic point \(\eta\) of an irreducible component of the reduced base, a nonempty open \(U_\eta\subset\mathbf A^1_{\kappa(\eta)}\) is normal and integral. The normal-scheme argument in [Torsion sheaves on curves, Section 10](torsion-sheaves-on-curves.md#10-finitely-generated-noetherian-coefficients) gives finite monodromy for a locally constant finitely generated \(\Lambda\)-module on this curve, even when its underlying abelian group is infinite. For a primary component killed by \(\ell^a\), a Sylow cover of degree prime to \(\ell\) gives a finite filtration with constant finitely generated \(\Lambda\)-module quotients. The trace and pullback compose to multiplication by that degree, which is a unit on the primary component; thus the original coefficient sheaf is a retract of the finite pushforward of this filtered sheaf.
+
+Spread this finite étale cover and its finite filtration from \(U_\eta\) to \(U\) after restricting the base to a sufficiently small open neighbourhood of \(\eta\). The finite-data descent used in [Lesson 7](pushforward-pullback-and-finite-morphisms.md#proof-of-continuity-for-arbitrary-compatible-sheaves) and the [constructible presentations of Lesson 11, Section 4](constructible-sheaves-and-extension-by-zero.md#4-finite-data-the-generators) applies here to the limit over principal neighbourhoods of \(\eta\). There are finitely many generators, relations, maps, and inverse identities for the coefficient sheaves and their constant quotients. Descend them to a common stage. Kernels and cokernels remain constructible because \(\Lambda\) is Noetherian. If one is zero on the generic fibre, its identity map equals zero there; the finite-data equality assertion makes it zero at a later stage. Consequently exactness of the filtration and the quotient identifications hold after shrinking, as do the degree and trace-retraction identities. This is also the module case of the [constructible-category limit lemma](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-category-is-colimit).
+
+Take a finite principal-open cover of \(U\). Each member and each intersection is affine over the affine base; its finite étale covering is again affine and smooth of relative dimension one. The constant-coefficient result therefore applies to the filtration quotients on these covering schemes. Composition of compact direct images, the trace retract and the Serre property give constructibility on each member, and relative Mayer–Vietoris gives it on \(U\). There are finitely many generic points, so these arguments supply a dense open base; the induction handles its closed complement. Nonreduced structure is removed by the topological invariance from Lesson 7 before this induction. Thus finite monodromy is used on normal generic fibres, with its finite witnesses spread to the base. No classification of arbitrary locally constant infinite modules on a nonnormal connected scheme is needed.
+
 First explain passage from sheaves to complexes. Let \(g:Z\to T\) be one of the separated finite-presentation morphisms under consideration, and suppose \(R^ag_!\mathcal G\) is constructible for every constructible torsion sheaf \(\mathcal G\) and every \(a\). The finite cohomological-amplitude result of this lesson supplies \(N\geq0\) such that \(Rg_!\) sends degrees \([u,v]\) into \([u,v+N]\). For a fixed integer \(n\), put
 
 \[
@@ -745,7 +751,7 @@ All other groups are zero as in Solution 1. The map
 
 **Solution 3.** For proper \(f\), the factorization \(X\xrightarrow{\mathrm{id}}X\xrightarrow fY\) is a compactification. Formula (7.1) gives \(Rf_!=Rf_*\). Theorem 7.1 identifies this with any other choice, including its canonical maps.
 
-For separated finite-type étale \(f\), quasi-finiteness and Zariski's main theorem give \(X\xrightarrow j\overline X\xrightarrow pY\), with \(p\) finite. Lesson 7 gives \(Rp_*=p_*\) and its exactness. Open \(j_!\) is exact. Therefore \(Rf_!=p_*j_!\) is exact and, by Lemma 2.1, equals \(f_!\) of (2.1) on sheaves, hence termwise on all complexes of the two domains of Section 1. Lemma 2.2 identifies it with the étale extension-by-zero functor, whose stalk is the sum over geometric lifts.
+For separated finite-type étale \(f\), quasi-finiteness and [Zariski's main theorem, Theorem 4.2](../../AG-MO/zariskis-main-theorem.html#4-the-separated-scheme-theorem) give \(X\xrightarrow j\overline X\xrightarrow pY\), with \(p\) finite. Lesson 7 gives \(Rp_*=p_*\) and its exactness. Open \(j_!\) is exact. Therefore \(Rf_!=p_*j_!\) is exact and, by Lemma 2.1, equals \(f_!\) of (2.1) on sheaves, hence termwise on all complexes of the two domains of Section 1. Lemma 2.2 identifies it with the étale extension-by-zero functor, whose stalk is the sum over geometric lifts.
 
 For separated étale \(f\) without global finite type, the ordinary functor is still given by (2.1). A properly supported section near an affine target has support contained in some quasi-compact open of the source. Such opens are finite type over that target and exhaust the section functor by extension of supports, as in Lemma 2.2. Its stalks remain the same direct sums, and so it is exact. This local statement does not require extending the global finite-type definition (7.1) to other morphisms. □
 

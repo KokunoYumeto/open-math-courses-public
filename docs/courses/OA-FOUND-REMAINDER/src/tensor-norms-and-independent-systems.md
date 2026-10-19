@@ -1,6 +1,6 @@
 # Tensor norms and independent systems
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+*Text by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026; projective Banach-algebra and tensor-dual module arguments by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the respective writing AI. Original text: CC0 1.0.*
 
 Two algebras of observables can act on separate Hilbert spaces, or they can act on one Hilbert space with commuting ranges. These constructions answer different questions. The spatial tensor product records separate actions. The maximal tensor product allows every commuting action. Their comparison is a useful way to measure independence.
 
@@ -17,7 +17,7 @@ No separability assumption is made. Hilbert-space inner products are linear in t
 
 For unital algebras, a unital representation \(r:A\odot B\to B(L)\) determines commuting representations by \(r_A(a)=r(a\otimes1)\) and \(r_B(b)=r(1\otimes b)\). Approximate identities supply the same construction when units are absent.
 
-**Theorem 1.1.** Every nondegenerate algebraic *-representation \(r\) of \(A\odot B\) on a Hilbert space \(L\) has unique commuting nondegenerate *-representations \(r_A,r_B\) such that
+**Theorem 1.1.** Every nondegenerate algebraic \*-representation \(r\) of \(A\odot B\) on a Hilbert space \(L\) has unique commuting nondegenerate \*-representations \(r_A,r_B\) such that
 \[
 r(a\otimes b)=r_A(a)r_B(b).
 \]
@@ -43,7 +43,7 @@ Every factor \(xc_k\) belongs to \(A\). Multiplication and the adjoint identity 
 \[
 F(x^*x)=\Big\|\sum_k r(xc_k\otimes d_k)\xi_k\Big\|^2\ge0.
 \]
-Thus \(F\) is a positive functional on the unital C*-algebra \(\widetilde A\). Positivity gives \(F(a^*a)\le\|a\|^2F(1)\), so \(\|T_av\|\le\|a\|\|v\|\). In particular, a zero presentation of \(v\) produces zero. Extend \(T_a\) to \(L\).
+Thus \(F\) is a positive functional on the unital C\*-algebra \(\widetilde A\). Positivity gives \(F(a^*a)\le\|a\|^2F(1)\), so \(\|T_av\|\le\|a\|\|v\|\). In particular, a zero presentation of \(v\) produces zero. Extend \(T_a\) to \(L\).
 
 The identities \(T_aT_c=T_{ac}\) and \(T_a^*=T_{a^*}\) follow on \(D\) and then on \(L\). The construction in the other factor gives bounded operators \(S_b\). On \(D\), \(T_aS_b=S_bT_a=r(a\otimes b)\). If every \(T_a\) annihilates \(\xi\), then every \(r(a\otimes b)\) annihilates \(\xi\); nondegeneracy of \(r\) implies \(\xi=0\). Hence \(a\mapsto T_a\) is nondegenerate, as is \(b\mapsto S_b\). Their approximate identities converge strongly to \(1\), proving the limit formulas. Those formulas also prove uniqueness. \(\square\)
 
@@ -67,7 +67,7 @@ For now, define
 \]
 The second supremum runs over commuting representations on one Hilbert space; degenerate representations are allowed. The first runs over representations on separate spaces.
 
-**Proposition 2.1.** Both expressions in (2.1) are C*-norms. For every finite tensor sum,
+**Proposition 2.1.** Both expressions in (2.1) are C\*-norms. For every finite tensor sum,
 \[
 \|x\|_{\min}\le\|x\|_{\max}
 \le\inf_{x=\sum_i a_i\otimes b_i}\sum_i\|a_i\|\|b_i\|.
@@ -78,20 +78,29 @@ Both norms have the cross-norm property
 \|a\otimes b\|=\|a\|\|b\|.
 \]
 
-**Proof.** Theorem 1.1 bounds every commuting action by the right side of (2.2). A spatial representation is a commuting action via \(\pi(a)\otimes1\) and \(1\otimes\sigma(b)\), giving the first inequality. Faithful spatial representations separate algebraic tensors, so both seminorms are norms. Each is the supremum of operator norms of *-representations; therefore it is submultiplicative and
+**Proof.** Theorem 1.1 bounds every commuting action by the right side of (2.2). A spatial representation is a commuting action via \(\pi(a)\otimes1\) and \(1\otimes\sigma(b)\), giving the first inequality. Faithful spatial representations separate algebraic tensors, so both seminorms are norms. Each is the supremum of operator norms of \*-representations; therefore it is submultiplicative and
 \[
 \|x^*x\|=\sup_r\|r(x)^*r(x)\|=\sup_r\|r(x)\|^2=\|x\|^2.
 \]
 For an elementary tensor, the upper estimate is \(\|a\|\|b\|\), while faithful spatial representations give this value by the operator tensor norm formula. \(\square\)
 
-Their completions are denoted \(A\otimes_{\min}B\) and \(A\otimes_{\max}B\). The identity on algebraic tensors extends to a surjective *-homomorphism from the maximal completion onto the minimal completion. Surjectivity follows because the range of a *-homomorphism between C*-algebras is closed, and this range contains the dense algebraic tensors.
+The rightmost norm in (2.2), denoted by \(\|\cdot\|_\gamma\), also makes the algebraic tensor product an involutive normed algebra. Indeed, if \(x=\sum_i a_i\otimes b_i\) and \(y=\sum_j c_j\otimes d_j\), then
+\[
+\|xy\|_\gamma\le
+\sum_{i,j}\|a_ic_j\|\|b_id_j\|
+\le\Big(\sum_i\|a_i\|\|b_i\|\Big)
+\Big(\sum_j\|c_j\|\|d_j\|\Big).
+\]
+Taking the infimum over the two presentations gives submultiplicativity. Applying the isometric involutions of the factors to a presentation gives \(\|x^*\|_\gamma\le\|x\|_\gamma\), and applying this twice gives equality. The lower bound by \(\|x\|_{\min}\) makes \(\gamma\) a norm. Both operations therefore extend continuously to its completion, an involutive Banach algebra.
 
-**Proposition 2.2.** Let \(\alpha:A\to C\) and \(\beta:B\to C\) be *-homomorphisms with commuting ranges. There is a unique *-homomorphism
+The minimal and maximal completions are denoted \(A\otimes_{\min}B\) and \(A\otimes_{\max}B\). The identity on algebraic tensors extends to a surjective \*-homomorphism from the maximal completion onto the minimal completion. Surjectivity follows because the range of a \*-homomorphism between C\*-algebras is closed, and this range contains the dense algebraic tensors.
+
+**Proposition 2.2.** Let \(\alpha:A\to C\) and \(\beta:B\to C\) be \*-homomorphisms with commuting ranges. There is a unique \*-homomorphism
 \[
 \alpha\cdot\beta:A\otimes_{\max}B\longrightarrow C,
 \qquad a\otimes b\longmapsto\alpha(a)\beta(b).
 \]
-Its range is the norm closure of the span of these products. If both algebras and maps are unital, this is the C*-algebra generated by the two ranges.
+Its range is the norm closure of the span of these products. If both algebras and maps are unital, this is the C\*-algebra generated by the two ranges.
 
 **Proof.** Represent \(C\) faithfully on a Hilbert space. Formula (2.1) bounds the algebraic product map, so it extends to the completion. Multiplication and involution extend by continuity. The range is closed and contains the algebraic product span; density proves the range description and uniqueness. In the unital case each range is already among those products. \(\square\)
 
@@ -128,7 +137,7 @@ Let \(c=\|(\pi\odot\sigma)(x)\|\) for algebraic \(x\). For product vector states
 \]
 Finite convex combinations preserve this inequality. Weak-* approximation in both factors preserves it too, since its two sides involve only finitely many evaluations in each factor. Thus it holds for all states \(\varphi,\psi\). Equation (3.2) gives \(\|x\|_{\min}\le c\); the reverse inequality is built into (2.1). Extend by density to the completion. A faithful degenerate representation has an active nondegenerate summand with the same operator norms, so it gives the same conclusion. \(\square\)
 
-**Corollary 3.2.** *-Homomorphisms \(u:A\to A_1\) and \(v:B\to B_1\) induce *-homomorphisms on both minimal and maximal tensor products. On the minimal tensor product the induced map is injective when both maps are injective.
+**Corollary 3.2.** \*-Homomorphisms \(u:A\to A_1\) and \(v:B\to B_1\) induce \*-homomorphisms on both minimal and maximal tensor products. On the minimal tensor product the induced map is injective when both maps are injective.
 
 **Proof.** For the minimal norm, compose faithful representations of the target algebras with \(u,v\) and apply (2.1). If both maps are injective, the composed representations are faithful, so Theorem 3.1 gives equality of norms. For the maximal norm, compose every commuting representation of the target pair with \(u,v\), and use (2.1). \(\square\)
 
@@ -153,11 +162,11 @@ x\longmapsto(V\otimes W)^*(\pi\otimes\sigma)(x)(V\otimes W)
 \]
 is completely positive and has the required bound. On algebraic tensors its values lie in \(C\odot D\); continuity puts all values in \(C\otimes_{\min}D\). Testing elementary tensors shows that its norm is at least \(\sup_{\|a\|,\|b\|\le1}\|\Phi(a)\|\|\Psi(b)\|=\|\Phi\|\|\Psi\|\).
 
-For the second assertion represent \(C\) faithfully on \(H\). Use the [commutant form of Stinespring's theorem](../../foundations-of-von-neumann-algebras/completely-positive-maps.html#OA-FND-CM-05), Theorem 6.1(2): there is a *-representation
+For the second assertion represent \(C\) faithfully on \(H\). Use the [commutant form of Stinespring's theorem](../../foundations-of-von-neumann-algebras/completely-positive-maps.html#OA-FND-CM-05), Theorem 6.1(2): there is a \*-representation
 \[
 \rho:\Phi(A)'\to\pi(A)',\qquad \rho(c)V=Vc,
 \]
-where \(\Phi(a)=V^*\pi(a)V\). The map \(b\mapsto\rho(\Psi(b))\) is completely positive on the dilation space. Apply the same theorem to it. This gives a representation \(\tau\) of \(B\), an operator \(W\), and a *-representation of its commutant that lifts \(\pi(A)\). Denote the lifted representation of \(A\) by \(\widehat\pi\). Then
+where \(\Phi(a)=V^*\pi(a)V\). The map \(b\mapsto\rho(\Psi(b))\) is completely positive on the dilation space. Apply the same theorem to it. This gives a representation \(\tau\) of \(B\), an operator \(W\), and a \*-representation of its commutant that lifts \(\pi(A)\). Denote the lifted representation of \(A\) by \(\widehat\pi\). Then
 \[
 \widehat\pi(A)\subseteq\tau(B)',
 \quad \widehat\pi(a)W=W\pi(a),
@@ -194,9 +203,21 @@ Here is the vector realization with its exact norm. Put \(\omega=|f|\) and take 
 
 **Proposition 4.3.** A finite sum \(w\in A^*\odot B^*\) has the same functional norm on the minimal and maximal tensor products.
 
-**Proof.** Each product functional is bounded on the minimal product by (4.1), hence so is \(w\). Let \(q:A\otimes_{\max}B\to A\otimes_{\min}B\) be the quotient. On algebraic tensors, the maximal extension of \(w\) is \(w\circ q\). A C*-quotient is an isometric identification of its target with the quotient by its kernel, so its Banach adjoint is an isometry. Therefore \(\|w\circ q\|=\|w\|\). \(\square\)
+**Proof.** Each product functional is bounded on the minimal product by (4.1), hence so is \(w\). Let \(q:A\otimes_{\max}B\to A\otimes_{\min}B\) be the quotient. On algebraic tensors, the maximal extension of \(w\) is \(w\circ q\). A C\*-quotient is an isometric identification of its target with the quotient by its kernel, so its Banach adjoint is an isometry. Therefore \(\|w\circ q\|=\|w\|\). \(\square\)
 
 The statement concerns finite sums of product functionals and their norm closure. It does not assert equality of the full dual spaces.
+
+The common norm closure of \(A^*\odot B^*\) is invariant under both left and right multiplication by the corresponding tensor-product completion. To check this, write \(E=A\otimes_{\min}B\) or \(E=A\otimes_{\max}B\), and define
+\[
+(x\cdot w\cdot y)(z)=w(yzx),
+\qquad x,y,z\in E,\quad w\in E^*.
+\]
+These actions satisfy \(\|x\cdot w\cdot y\|\le\|x\|\|w\|\|y\|\). For \(w=f\otimes g\), \(x=a_0\otimes b_0\) and \(y=a_1\otimes b_1\), the resulting functional is \(f_{a_0,a_1}\otimes g_{b_0,b_1}\), where
+\[
+f_{a_0,a_1}(a)=f(a_1aa_0),
+\qquad g_{b_0,b_1}(b)=g(b_1bb_0).
+\]
+Linearity proves invariance for finite sums. Approximate first \(w\) in functional norm and then \(x,y\) in the tensor norm; the displayed bound preserves membership in the closed subspace. The separate left and right actions have the same proof, with one multiplier omitted, so no unit is needed. This subspace is also closed under \(w^*(z)=\overline{w(z^*)}\), since \((f\otimes g)^*=f^*\otimes g^*\) and involution preserves the functional norm. The quotient map in Proposition 4.3 intertwines these actions through \(q(x),q(y)\), so the two realizations are compatible.
 
 ## 5. Algebraic positivity and dual matrix order
 
@@ -249,9 +270,9 @@ Every positive matrix over \(A\) is also a sum of Gram matrices, so this proves 
 
 ## 6. Matrix operations behind positivity
 
-**Lemma 6.1.** Let \([a_{ij}]\) and \([b_{ij}]\) be positive matrices over a C*-algebra, and assume every entry of the first commutes with every entry of the second. Then their entrywise product \([a_{ij}b_{ij}]\) is positive. Also, if \(X=[x_{ik;jl}]\) is a positive matrix indexed by pairs \((i,k)\), then \([\sum_{k,l}x_{ik;jl}]\) is positive.
+**Lemma 6.1.** Let \([a_{ij}]\) and \([b_{ij}]\) be positive matrices over a C\*-algebra, and assume every entry of the first commutes with every entry of the second. Then their entrywise product \([a_{ij}b_{ij}]\) is positive. Also, if \(X=[x_{ik;jl}]\) is a positive matrix indexed by pairs \((i,k)\), then \([\sum_{k,l}x_{ik;jl}]\) is positive.
 
-**Proof.** Write \([a_{ij}]=C^*C\) and \([b_{ij}]=D^*D\). The entries of the two square roots lie in the respective C*-algebras generated by the entries of the original matrices; these algebras commute. Hence
+**Proof.** Write \([a_{ij}]=C^*C\) and \([b_{ij}]=D^*D\). The entries of the two square roots lie in the respective C\*-algebras generated by the entries of the original matrices; these algebras commute. Hence
 \[
 a_{ij}b_{ij}=\sum_{r,s}(c_{ri}d_{si})^*(c_{rj}d_{sj}),
 \]
@@ -276,12 +297,12 @@ Thus \(\|P\|=\|\Omega\|^2=n\), proving the lower bound. Conversely
 \]
 Factor this map as a row operator, the diagonal repetition of \(X\), and a column operator. Their norms are \(\sqrt n,\|X\|,\sqrt n\), because both relevant sums of matrix-unit squares are \(n1\). Hence the norm is at most \(n\). In infinite dimension each \(n\)-dimensional corner supplies a swap of norm one whose image has norm \(n\). A bounded extension would bound these values uniformly, which is impossible.
 
-**Exercise 7.3 (further step).** Take \(\Phi(\lambda)=\lambda p\) and \(\Psi(\mu)=\mu q\), where \(p,q\) are commuting positive contractions in a unital C*-algebra. Find the norm of their maximal product map. Explain why the bound in Theorem 4.1 need not be equality for commuting ranges.
+**Exercise 7.3 (further step).** Take \(\Phi(\lambda)=\lambda p\) and \(\Psi(\mu)=\mu q\), where \(p,q\) are commuting positive contractions in a unital C\*-algebra. Find the norm of their maximal product map. Explain why the bound in Theorem 4.1 need not be equality for commuting ranges.
 
 **Solution.** Since \(\mathbb C\otimes\mathbb C=\mathbb C\), the product map is \(z\mapsto zpq\), of norm \(\|pq\|\). Its bound is \(\|p\|\|q\|\). Orthogonal nonzero projections give product norm zero and bound one. The separate-space tensor map instead has value \(z\mapsto z(p\otimes q)\), whose norm is one for such projections. The two target constructions therefore have different norm behavior even in this elementary case.
 
 ## References
 
 - [Courtney–Gillaspy–Ismert] K. Courtney, E. Gillaspy and L. Ismert, *Notes on C\*-algebras*, GOALS lecture notes, available from [IPAM, UCLA](https://www.ipam.ucla.edu/wp-content/uploads/2024/07/Notes_and_Exercises_for_GOALS.pdf).
-- [Stinespring] W. F. Stinespring, [“Positive functions on C*-algebras,”](https://www.ams.org/journals/proc/1955-006-02/S0002-9939-1955-0069403-4/S0002-9939-1955-0069403-4.pdf) *Proceedings of the American Mathematical Society* **6** (1955), 211–216.
+- [Stinespring] W. F. Stinespring, [“Positive functions on C\*-algebras,”](https://www.ams.org/journals/proc/1955-006-02/S0002-9939-1955-0069403-4/S0002-9939-1955-0069403-4.pdf) *Proceedings of the American Mathematical Society* **6** (1955), 211–216.
 - [Blackadar] B. Blackadar, *Operator Algebras: Theory of C\*-Algebras and von Neumann Algebras*, freely accessible corrected manuscript, [author's PDF](https://bruceblackadar.com/Mathematics/Cycr.pdf). The entangled vector tests in Sections 3 and 7 distinguish arbitrary spatial states from limits of product-state mixtures; compare the assertion in II.9.3.6.

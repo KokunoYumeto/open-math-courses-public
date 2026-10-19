@@ -1,7 +1,0 @@
-# Weak local solvability, uniform estimates and finite obstructions
-
-Read [the lesson](local-solvability-equivalences-and-adjoint-estimates.html) or edit [its source](local-solvability-equivalences-and-adjoint-estimates.md). Five equivalent conditions connect individual distributional solutions, uniform Sobolev bounds, a smooth residual, one derivative of residual gain and exact finite-codimension solvability. The full proofs include proper localization, weak compactness, Baire uniformity, a compact linear correction, graph invariance and the necessary adjoint estimate.
-
-The proof map connects 22 entries to 621 earlier entries in 28 maps. Its 102 human foundations remain external, so internal P514 closure is unclaimed. Three complete solutions and an exact illustration accompany source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [33 exact checks](model-check.json). Run python -B model_check.py for the finite identities; the analytic proofs are in the lesson.
-
-This supplies H4 26.4.1–26.4.5 and the consequences following the equivalence theorem. Condition Psi, its general necessity proof, later sections and all other course obligations remain active. Original expression is CC0-1.0; linked components retain their terms. All nine approved books remain valid sources.

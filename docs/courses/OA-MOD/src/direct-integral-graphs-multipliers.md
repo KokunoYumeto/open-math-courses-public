@@ -148,6 +148,73 @@ For closedness, suppose \((u_n,Tu_n)\to(u,v)\) in \(H\oplus H\). Extract a subse
 
 A useful strengthening follows from the graph geometry: \(T^*=\int^\oplus T_\gamma^*\,d\mu\). Indeed the graph projection in DI-01 is decomposable, so its orthogonal complement is the integral of \(G_\gamma^\perp\). The fixed unitary \(K(x,y)=(y,-x)\) sends \(G(T)^\perp\) to \(G(T^*)\), and the same fibrewise identity gives the asserted graph equality. The two-coordinate graph identity records the exact \(L^2\) domain condition. The graph/domain/density/closedness argument also applies, with the same two-coordinate proof, to operators \(C_\gamma:\overline H_\gamma\to H_\gamma\) between different measurable fields; after composition with the canonical conjugations, it supplies the closed antilinear integral of \(S_\gamma\) used in DI-05. No uniform bound on \(\|T_\gamma\|\) is asserted.
 
+### Borel functions of measurable normal operators
+
+**Theorem.** Let \(T_\gamma\) be a measurable field of densely defined closed normal operators. For every finite-valued Borel function \(f:\mathbb C\to\mathbb C\), the field \(f(T_\gamma)\) is measurable as a field of closed operators. If \(f\) is bounded, it is a measurable bounded-operator field with norm at most \(\|f\|_\infty\). No bound on the original \(T_\gamma\) is required.
+
+We first prove the bounded-normal case. If \(B_\gamma\) is a measurable normal contraction field, its real and imaginary parts are measurable self-adjoint contraction fields. For a Borel rectangle \(I+iJ\), the bounded normal spectral calculus in SK-04 gives
+
+\[
+  \begin{gathered}
+  1_{I+iJ}(B_\gamma)\\
+  =1_I(\operatorname{Re}B_\gamma)
+   1_J(\operatorname{Im}B_\gamma).
+  \end{gathered}
+  \tag{DI.N1}
+\]
+
+This follows first for the coordinate continuous calculi and then for their Borel extensions by the uniqueness proved there. Both factors are measurable by the self-adjoint field calculus at the start of this lesson. The Borel sets whose spectral projections are measurable form a Dynkin class: complements subtract from the identity, and countable disjoint unions are strong limits of finite sums. Rectangles form an intersection-closed generating family containing the plane. The Dynkin-class argument proved in SK-04 therefore gives every Borel spectral projection. Uniform simple approximation then gives every bounded Borel function of \(B_\gamma\).
+
+To handle an unbounded normal field, write \(T_\gamma=U_\gamma|T_\gamma|\), and put
+
+\[
+ \begin{aligned}
+  R_\gamma&=(1+T_\gamma^*T_\gamma)^{-1},\\
+  B_\gamma&=U_\gamma(1-R_\gamma)^{1/2}.
+ \end{aligned}
+ \tag{DI.N2}
+\]
+
+DI-01 makes these bounded fields measurable. On each fibre, the graph-projection identities and spectral product rules give
+\(B^*B=1-R\) and \(BB^*=1-(1+TT^*)^{-1}\). For the second identity, polar transport gives
+
+\[
+ \begin{gathered}
+ U |T|^2(1+|T|^2)^{-1}U^*\\
+ =TT^*(1+TT^*)^{-1}.
+ \end{gathered}
+\]
+
+The scalar function vanishes at zero, so the kernel contributes zero on both sides. Normality makes the two products equal. Thus \(B\) is normal and contractive. Also \(R\) is injective, so its spectral projection at zero is zero. The spectral measure \(E_B\) consequently gives no mass to \(\{|w|=1\}\), because \(R=1-B^*B\).
+
+For \(|w|<1\), define
+
+\[
+  \psi(w)=\frac{w}{\sqrt{1-|w|^2}}.
+  \tag{DI.N3}
+\]
+
+Put \(\psi(w)=0\) for \(|w|\geq1\). The values on the boundary do not affect the operator. Indeed \(\operatorname{ran}R^{1/2}=D(T)\): spectral calculus for \(|T|\) identifies this range with the vectors for which \(\int(1+\lambda^2)\,d\mu_\xi(\lambda)<\infty\). On that range, \(BR^{-1/2}=T\). In the bounded normal spectral representation of \(B\), the same product is multiplication by \(\psi\), with the same domain, since \((1-|w|^2)^{-1}=1+|\psi(w)|^2\) on the open disk. Thus \(T=\psi(B)\), including its domain. The unbounded multiplication construction in SK-05 now defines
+\(f(T)=(f\circ\psi)(B)\). Write \(g=f\circ\psi\) and \(\mu_\xi^B(E)=\langle E_B(E)\xi,\xi\rangle\). Its domain is given by
+
+\[
+ \begin{gathered}
+ \xi\in D(f(T))\quad\Longleftrightarrow\\
+ \int |g|^2\,d\mu_\xi^B<\infty.
+ \end{gathered}
+ \tag{DI.N4}
+\]
+
+The functions \(c=(1+|g|)^{-1}\) and \(u=g/|g|\), with \(u=0\) where \(g=0\), are bounded Borel functions. The bounded-normal field result makes \(c(B_\gamma)\) and \(u(B_\gamma)\) measurable. SK-05's multiplication model identifies them as \((1+|f(T_\gamma)|)^{-1}\) and the polar partial isometry of \(f(T_\gamma)\). DI-01 proves the asserted closed-field measurability. When \(f\) is bounded, the first bounded-normal result gives its measurable operator field and uniform bound directly.
+
+Finally DI-02 assembles this field. Its domain consists precisely of the vectors \(\xi\in H\) with \(\xi(\gamma)\in D(f(T_\gamma))\) almost everywhere and
+
+\[
+ \int\|f(T_\gamma)\xi(\gamma)\|^2\,d\mu<\infty.
+\]
+
+Thus neither pointwise Borel calculus nor field measurability removes the global square-integrability condition. \(\square\)
+
 ## Recover the involution and modular operators from the graph
 
 For the algebra involution the graph is real linear, with a conjugate-linear first-coordinate map. Passing through the conjugate Hilbert field keeps the polar factors correctly typed.
@@ -356,7 +423,7 @@ Full fibres always give a full integral. Recovering fullness of original fibres 
 
 If the fibres are full almost everywhere, their integral algebra is full. The converse holds with the additional hypothesis that the proper-original-algebra defect relation is analytic in the standard Borel fibre coordinates. Borel membership of the original algebra is sufficient for this hypothesis.
 
-**The source statement.** Takesaki II, VI.3 Corollary 3.9, printed p. 33 / PDF p. 53, states the equivalence without this additional hypothesis. The countable-family definition VI.3.1 does not give analytic original algebra membership. Test the hypothesis with constant graph data gives an unconditional obstruction to defect coding. Investigate the stronger failure under CH gives a counterexample to the literal converse under the explicitly stated Continuum Hypothesis: every fibre is proper, while the integral is full. The latter is a conditional counterexample; CH is used nowhere in the corrected theorem below.
+**The source statement.** Takesaki II, VI.3 Corollary 3.9, printed p. 33 / PDF p. 54, states the equivalence without this additional hypothesis. The countable-family definition VI.3.1 does not give analytic original algebra membership. Test the hypothesis with constant graph data gives an unconditional obstruction to defect coding. Investigate the stronger failure under CH gives a counterexample to the literal converse under the explicitly stated Continuum Hypothesis: every fibre is proper, while the integral is full. The latter is a conditional counterexample; CH is used nowhere in the corrected theorem below.
 
 **Proof of the unconditional implication.** Apply DI-05 and DI-07 twice:
 
@@ -607,3 +674,5 @@ Those algebra tests matter. A Hilbert-space unitary carrying \(I/\sqrt2\) to \(E
 ### Mathematical sources
 
 Masamichi Takesaki, *Theory of Operator Algebras II*, VI.3, is the mathematical antecedent for the graph, Hilbert-algebra, Tomita-algebra and disintegration results. Volume I, IV.8 and Appendix A, supplies the direct-integral and selection antecedents. The countable-core, multiplier-domain and selection arguments linked here fill the exact interfaces used by this exposition. The unrestricted fullness converse is replaced by the explicitly qualified theorem above; the separate CH construction states its additional assumption. The new scalar and finite examples, explanatory route and implementation check are CC0-1.0 contributions by OpenAI Codex, Ultra, October 2026. Existing proof and component licences remain.
+
+The measurable normal-operator calculus proof is by GPT-6 Astra (OpenAI), Ultra.

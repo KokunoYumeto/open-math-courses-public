@@ -1,0 +1,11 @@
+# Rational function fields and equations with prescribed group
+
+Three graduate lessons cover subfields and polynomial subrings; rational invariants and prescribed Galois groups; and absolute irreducibility, Noether forms and effective bounds. The course includes seventeen worked exercise solutions. The original modern exposition and diagrams are by GPT-6.1 Sol (OpenAI), using Codex at Ultra, and are dedicated under CC0 1.0. Bibliographic references retain credit to the human mathematical authors. No independent whole-course review is claimed.
+
+The reader has three HTML lessons, editable Markdown, individual LaTeX sources and a combined LaTeX source, three lesson PDFs and a combined PDF. The supplied LaTeX contains the full modern lesson text. Compile from the downloads directory with a current LaTeX installation and pdflatex until cross-references stabilize. Required diagram files are supplied in ../assets/ and ../figures/. The reproducible diagram source is figure_sources/create_figures.py; its Python and matplotlib dependencies are not bundled.
+
+The four historical readings are Emmy Noether's works 5, 6, 11 and 20. historical-readings.html and historical-readings.json identify the complete German facsimile PDFs, English translated readers and exact locations in the complete English LaTeX corpus. These linked readings are not bundled in this download. German historical text and its facsimiles are not relabelled CC0 or called editable transcription. The English translation layer has its own CC0 dedication. The course does not claim a new source-fidelity audit of that edition.
+
+The lessons use exact earlier programme proofs and credited external reading. Those further programme sources are linked, not bundled; some require repository access. The portable edition is not the entire programme's prerequisite closure. Citation and reading access do not grant permission to reproduce a cited work.
+
+MathJax is Apache-2.0 software. Its licence and font notices are supplied with the rendering assets. Figure font outlines retain the notices in assets/notices/. These software and font terms are separate from the CC0 modern mathematical text. Component identities and boundaries are listed in course.json and the portable package-components.json.

@@ -20,10 +20,13 @@ P=A[x_1,\ldots,x_n]\twoheadrightarrow B,
 The **naive cotangent complex** associated to it is
 
 \[
+\begin{gathered}
 \operatorname{NL}_{B/A}=
 \left[ I/I^2\xrightarrow{d}
 \Omega_{P/A}\otimes_P B\right],
+\\
 \qquad d(\overline f)=df\otimes1.
+\end{gathered}
 \tag{1.1}
 \]
 
@@ -37,8 +40,10 @@ H^0(\operatorname{NL}_{B/A})=\Omega_{B/A}.
 Indeed a linear map from the cokernel in (1.1) to a \(B\)-module \(M\) is a derivation \(P\to M\) vanishing on \(I\), which is exactly an \(A\)-derivation \(B\to M\). This also proves
 
 \[
-\operatorname{Der}_A(B,M)
+\begin{gathered}
+\operatorname{Der}_A(B,M)\\
 =\operatorname{Hom}_B(H^0(\operatorname{NL}_{B/A}),M).
+\end{gathered}
 \tag{1.3}
 \]
 
@@ -51,13 +56,20 @@ The same definition works with any set of polynomial variables; each polynomial 
 Suppose \(v\) is another lift. The map
 
 \[
-D:P\longrightarrow J/J^2,\qquad D(p)=u(p)-v(p)\pmod{J^2}
+\begin{gathered}
+D:P\longrightarrow J/J^2,\\
+\qquad D(p)=u(p)-v(p)\pmod{J^2}
+\end{gathered}
 \]
 
 is a derivation for the common \(P\)-action through \(B\). To check multiplication, expand
 
 \[
-u(pq)-v(pq)=u(p)(u(q)-v(q))+(u(p)-v(p))v(q).
+\begin{gathered}
+u(pq)-v(pq)\\
+=u(p)(u(q)-v(q))\\
++(u(p)-v(p))v(q).
+\end{gathered}
 \]
 
 Modulo \(J^2\), both coefficients act by their images in \(B\). Also \(D(I^2)=0\). The universal property of differentials supplies a linear map
@@ -77,34 +89,62 @@ A canonical representative can be obtained by taking a variable for every elemen
 For \(A\to B\to C\), choose presentations \(P=A[x]\twoheadrightarrow B\) and \(R=B[y]\twoheadrightarrow C\). Put \(Q=A[x,y]\), and denote the three relation ideals by
 
 \[
-I=\ker(P\to B),\quad K=\ker(Q\to C),\quad J=\ker(R\to C).
+\begin{gathered}
+I=\ker(P\to B),\\
+\quad K=\ker(Q\to C),\\
+\quad J=\ker(R\to C).
+\end{gathered}
 \]
 
 There is a commutative diagram of modules with exact rows
 
 \[
-\begin{array}{ccccccccc}
-0&\longrightarrow&\Omega_{P/A}\otimes C&\longrightarrow&
-\Omega_{Q/A}\otimes C&\longrightarrow&\Omega_{R/B}\otimes C&\longrightarrow&0\\
-&&\uparrow&&\uparrow&&\uparrow\\
-&&I/I^2\otimes_B C&\longrightarrow&K/K^2&\longrightarrow&J/J^2&\longrightarrow&0.
+\begin{gathered}
+\begin{array}{ccc}
+0&\longrightarrow&\Omega_{P/A}\otimes C\\
+&&\uparrow\\
+&&I/I^2\otimes_B C
+\end{array}\\[6pt]
+\begin{array}{ccc}
+\Omega_{P/A}\otimes C&\longrightarrow&\Omega_{Q/A}\otimes C\\
+\uparrow&&\uparrow\\
+I/I^2\otimes_B C&\longrightarrow&K/K^2
+\end{array}\\[6pt]
+\begin{array}{ccc}
+\Omega_{Q/A}\otimes C&\longrightarrow&\Omega_{R/B}\otimes C\\
+\uparrow&&\uparrow\\
+K/K^2&\longrightarrow&J/J^2
+\end{array}\\[6pt]
+\begin{array}{ccc}
+\Omega_{R/B}\otimes C&\longrightarrow&0\\
+\uparrow&&\\
+J/J^2&\longrightarrow&0.
 \end{array}
+\end{gathered}
 \tag{2.1}
 \]
+
+Consecutive panels share their boundary column. Concatenating their upper and lower rows gives the two exact rows; each repeated vertical arrow denotes the same map.
 
 The first arrow in the bottom row need not be injective.
 
 **Proposition 2.1 (Jacobi–Zariski sequence).** The diagram gives the natural exact sequence
 
 \[
-\begin{split}
-H^{-1}(\operatorname{NL}_{B/A}\otimes_B C)&\longrightarrow
-H^{-1}(\operatorname{NL}_{C/A})\longrightarrow
-H^{-1}(\operatorname{NL}_{C/B})\\
-&\longrightarrow \Omega_{B/A}\otimes_B C
+\begin{gathered}
+
+H^{-1}(\operatorname{NL}_{B/A}\otimes_B C)\\
+\longrightarrow
+H^{-1}(\operatorname{NL}_{C/A})\\
+\longrightarrow
+H^{-1}(\operatorname{NL}_{C/B})
+\\
+\longrightarrow \Omega_{B/A}\otimes_B C
+\\
 \longrightarrow\Omega_{C/A}\longrightarrow\Omega_{C/B}
 \longrightarrow0.
-\end{split}
+
+\end{gathered}
 \tag{2.2}
 \]
 
@@ -129,9 +169,13 @@ The hypotheses on that identification matter. Termwise tensoring a complex does 
 For example take \(A=k\), \(B=k[x]/(x^2)\), \(C=k\). Then
 
 \[
-\operatorname{NL}_{B/k}\otimes_B k=[k\xrightarrow{0}k],\qquad
-\operatorname{NL}_{k/k}\simeq0,\qquad
+\begin{gathered}
+\operatorname{NL}_{B/k}\otimes_B k=[k\xrightarrow{0}k],\\
+\qquad
+\operatorname{NL}_{k/k}\simeq0,\\
+\qquad
 \operatorname{NL}_{k/B}\simeq k[1].
+\end{gathered}
 \tag{2.3}
 \]
 
@@ -178,10 +222,13 @@ It is an ideal: multiplication by \((p,m)\) sends its element to \((pi,-p\phi(\o
 If \(\psi=\phi+\delta d\), the map \((p,m)\mapsto(p,m-D(p))\), where \(D:P\to M\) is the derivation defined by \(\delta\), carries \(G_\phi\) to \(G_\psi\), and induces an isomorphism of extensions. Conversely an isomorphism of extensions compares their polynomial lifts; their difference is a derivation and gives exactly this relation between \(\phi,\psi\). We have therefore obtained
 
 \[
-\operatorname{Exal}_A(B,M)=
+\begin{gathered}
+\operatorname{Exal}_A(B,M)=\\
 \operatorname{coker}\left(
-\operatorname{Hom}_B(\Omega_{P/A}\otimes B,M)
-\longrightarrow\operatorname{Hom}_B(I/I^2,M)\right).
+\begin{gathered}
+\operatorname{Hom}_B(\Omega_{P/A}\otimes B,M)\\
+\longrightarrow\operatorname{Hom}_B(I/I^2,M)\end{gathered}\right).
+\end{gathered}
 \tag{3.4}
 \]
 
@@ -196,8 +243,11 @@ F[0]\longrightarrow K\longrightarrow N[1]\longrightarrow F[1]
 gives, on applying \(\operatorname{Hom}_{D(B)}(-,M[1])\),
 
 \[
+\begin{gathered}
 \operatorname{Hom}_B(F,M)\longrightarrow\operatorname{Hom}_B(N,M)
+\\
 \longrightarrow\operatorname{Ext}^1_B(K,M)\longrightarrow0.
+\end{gathered}
 \]
 
 The first map is precomposition with the differential. Apply this to (1.1). This proves (3.2) even when \(I/I^2\) is not projective. Theorem 1.1 gives presentation independence.
@@ -251,25 +301,48 @@ There is a related module calculation, with the underlying algebra held fixed. F
 
 Give an extension the \(\epsilon\)-action \(ip\). Its square is zero and its kernel and image are both \(iM\), so (5.1) proves flatness. Conversely a flat deformation supplies exactly this extension. Thus their classes are \(\operatorname{Ext}^1_B(M,M)\), by the Yoneda description of Ext, and their infinitesimal automorphisms are \(\operatorname{Hom}_B(M,M)\). The same argument works for quasi-coherent sheaves on a fixed \(k\)-scheme, interpreting Ext in the category of modules and imposing the indicated quasi-coherence. It is a different deformation problem from changing the structure sheaf itself.
 
+### Module extension classes and quasi-coherence
+
+Here is the Yoneda identification used in this module assertion, including for sheaves of modules. For objects \(N,M\) of a module category, choose a monomorphism \(M\to J\) with \(J\) injective, and put \(Q=J/M\). Such embeddings, for modules and module sheaves, are constructed in [Injective modules, flasque sheaves and bounded-below derived functors, Lemma 2.2 and Theorem 2.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#2-functorial-injective-embeddings). Extending this first term to an injective resolution shows directly that
+\[
+\begin{gathered}
+\operatorname{Ext}^1(N,M)=\\
+\operatorname{coker}\bigl(\begin{gathered}\operatorname{Hom}(N,J)\\
+\longrightarrow\operatorname{Hom}(N,Q)\end{gathered}\bigr).
+\end{gathered}
+\]
+Indeed the degree-one cocycles are precisely the maps into the copy of \(Q\) inside the next injective, while the boundaries come from maps into \(J\).
+
+A map \(u:N\to Q\) gives the extension \(J\times_Q N\) of \(N\) by \(M\). Conversely, for an extension \(0\to M\to E\to N\to0\), injectivity extends \(M\to J\) to a map \(E\to J\); its composite into \(Q\) factors through a map \(u:N\to Q\). The resulting map \(E\to J\times_Q N\) is an isomorphism because it is the identity on kernel and quotient. Two choices differ by a map \(N\to J\), giving exactly the displayed cokernel. Conversely, adding the image of such a map changes the pullback by the explicit isomorphism \((j,n)\mapsto(j+\gamma(n),n)\). Addition of the maps \(u\) gives fibre product followed by addition on the two kernels, hence the Baer sum. This proves the identification with extension classes, its group law and naturality, rather than only assigning an obstruction group. For equal ends \(M\), extension automorphisms are \(1+i\alpha p\), with \(\alpha\in\operatorname{Hom}(M,M)\); their inverses are \(1-i\alpha p\), since \(pi=0\).
+
+If both end sheaves on a scheme are quasi-coherent, every module-sheaf extension is quasi-coherent. On an affine \(U\), vanishing of \(H^1(U,M)\) makes its section sequence exact. For a principal open \(D(f)\subset U\), compare the localization of this exact module sequence with the section sequence on \(D(f)\). The end maps are isomorphisms by quasi-coherence, so the middle map is an isomorphism too. These identifications on the principal-open basis show that the middle sheaf on \(U\) is the module sheaf of its sections. The argument is local on the scheme and imposes no Noetherian or finiteness assumption. The extra \(\epsilon\)-action above is an action on these same local modules, so it also gives a quasi-coherent module on the fixed square-zero base extension.
+
 ## 6 Complete intersections and the Jacobian map
 
 **Proposition 6.1.** Let \(P=k[x_1,\ldots,x_n]\) and let \(f_1,\ldots,f_c\) be a regular sequence. Put \(B=P/(f_1,\ldots,f_c)\). Then
 
 \[
+\begin{gathered}
 \operatorname{NL}_{B/k}=
 \left[B^c\xrightarrow{J}B^n\right],
+\\
 \qquad J(e_j)=\sum_i\frac{\partial f_j}{\partial x_i}\,dx_i,
+\end{gathered}
 \tag{6.1}
 \]
 
 and
 
 \[
-T^1_{B/k}=\operatorname{coker}\left(
-B^n\longrightarrow B^c,\quad
+\begin{gathered}
+T^1_{B/k}=\\
+\operatorname{coker}\left(\begin{gathered}
+B^n\longrightarrow B^c,\\
+\quad
 (v_i)_i\longmapsto
 \left(\sum_i v_i\frac{\partial f_j}{\partial x_i}\right)_j
-\right).
+\end{gathered}\right).
+\end{gathered}
 \tag{6.2}
 \]
 
@@ -324,9 +397,12 @@ T_X=\mathcal Hom_{\mathcal O_X}(\Omega_{X/k},\mathcal O_X).
 A first-order thickening with identified ideal \(M\) has the same underlying topological space as \(X\), and a sequence of sheaves of \(k\)-algebras
 
 \[
+\begin{gathered}
 0\longrightarrow M\longrightarrow\mathcal O_{X'}
 \longrightarrow\mathcal O_X\longrightarrow0,
+\\
 \qquad M^2=0.
+\end{gathered}
 \tag{7.1}
 \]
 
@@ -347,7 +423,14 @@ H^1(X,T_X\otimes M).
 
 Their automorphisms preserving the two ends of (7.1) form \(H^0(X,T_X\otimes M)\). In particular marked flat deformations over \(k[\epsilon]\) are classified by \(H^1(X,T_X)\), and their infinitesimal automorphisms form \(H^0(X,T_X)\).
 
-**Proof.** Choose an affine cover \(\{U_i\}\). Its finite intersections are affine because \(X\) is separated. Split (7.1) on each \(U_i\). On an overlap the two splittings differ by an automorphism of the split algebra preserving \(\mathcal O_X\) and \(M\). By the final calculation in Theorem 3.1 it is \(1+D_{ij}\), for a derivation \(D_{ij}:\mathcal O_X\to M\).
+**Proof.** Choose an affine cover \(\{U_i\}\). Its finite intersections are affine because \(X\) is separated.
+
+Here is the affine diagonal test being used. Over an affine base \(\operatorname{Spec}A\), the inverse image of \(U\times_A V\) under the diagonal is \(U\cap V\). A closed diagonal therefore makes that intersection affine, with a surjection
+\[
+\Gamma(U,\mathcal O)\otimes_A\Gamma(V,\mathcal O)
+\twoheadrightarrow\Gamma(U\cap V,\mathcal O).
+\]
+Conversely, if the intersections are affine and these maps are surjective for every pair in an affine cover, the diagonal is a closed immersion on the corresponding affine-product cover of its target. Thus the scheme is separated. This proves both the affine-intersection assertion and the tensor-product separation criterion [Stacks, Tag 01KP]. Repeated pair intersections give the finite-intersection assertion above. Split (7.1) on each \(U_i\). On an overlap the two splittings differ by an automorphism of the split algebra preserving \(\mathcal O_X\) and \(M\). By the final calculation in Theorem 3.1 it is \(1+D_{ij}\), for a derivation \(D_{ij}:\mathcal O_X\to M\).
 
 Composition adds these derivations: their cross term is zero because a derivation correction vanishes on \(M\). Thus compatibility on triples is
 
@@ -359,7 +442,7 @@ Changing the splitting on \(U_i\) by \(1+D_i\) changes the overlap collection by
 
 An automorphism is a compatible family of local derivations; these are the global sections of \(T_X\otimes M\). For \(M=\mathcal O_X\), send \(\epsilon\) to the kernel section corresponding to one. The stalkwise version of (5.1) gives flatness, and every marked flat deformation supplies this same sequence. This proves the final assertions. \(\square\)
 
-One can also express (7.2) as \(\operatorname{Ext}^1_X(\Omega_{X/k},M)\): since \(\Omega\) is locally free, sheaf Hom from it is exact, and derived global Hom is the cohomology of \(T_X\otimes M\). The argument above exhibits the extension and its gluing maps directly.
+One can also express (7.2) as \(\operatorname{Ext}^1_X(\Omega_{X/k},M)\): since \(\Omega\) is locally free, sheaf Hom from it is exact, and derived global Hom is the cohomology of \(T_X\otimes M\). The argument above exhibits the extension and its gluing maps directly. The module version follows from the Yoneda construction in Section 5: extensions of a locally free sheaf split locally, and differences of splittings are sections of its Hom sheaf. Their cocycles and changes of splitting give the same first cohomology group.
 
 ## 8 The obstruction is a triple-overlap error
 
@@ -456,7 +539,8 @@ There is no initial zero in the conormal row or at the beginning of (2.2). The d
 **Solution.** Formula (6.3) gives
 
 \[
-T^1=k[x,y]/\bigl(y^2-x^{n+1},\,2y,\,(n+1)x^n\bigr).
+T^1=\frac{k[x,y]}
+{\bigl(y^2-x^{n+1},\,2y,\,(n+1)x^n\bigr)}.
 \tag{10.1}
 \]
 
@@ -480,11 +564,12 @@ Its vanishing gives a one-cochain correcting the comparisons to a cocycle, which
 
 The presentation comparison, Jacobi–Zariski sequence, Exal classification, Jacobian tangent calculation and smooth-scheme gluing obstruction were proved here. The prerequisites used in their proofs are:
 
-- The universal property and conormal exact sequence of Kähler differentials, together with the basic derived-category long exact Hom sequence and the Yoneda description of \(\operatorname{Ext}^1\). The particular low-degree derived Ext calculation is supplied in Theorem 3.1.
-- Finite presentation plus formal smoothness is equivalent to smoothness [Stacks, Tag 00TN]. Smooth schemes locally have standard-smooth presentations [Stacks, Tag 01V7], and an invertible Jacobian minor gives a smooth algebra [Stacks, Tag 00T7]. The derivation and extension computations establishing Proposition 4.1 were given here.
-- Affineness survives a nilpotent thickening [Stacks, Tag 06AD]. A separated scheme has affine intersections of affine opens, and separation is tested by the surjectivity of the tensor-product maps to their coordinate rings [Stacks, Tag 01KP]. These allow the local algebra lifts to be glued as separated schemes.
-- Quasi-coherent sheaves have no higher cohomology on affine schemes, and an affine cover with affine finite intersections computes their cohomology [Stacks, Tag 01XD]. No cohomology finiteness theorem was needed for Theorems 7.1 and 8.1.
-- Properness extends across the nilpotent base thickenings under consideration [Stacks, Tag 0BPG], when one restricts the deformation problem to proper schemes.
+- [Kähler differentials, Theorem 1.1, Theorem 3.3 and Theorem 5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/kahler-differentials.html#1-a-module-representing-differentiation) proves the universal differential, its conormal sequence and the polynomial calculation, allowing arbitrary sets of variables. The presentation and regular-sequence comparison arguments used here are given in Sections 1 and 6.
+- The derived-category construction, cone triangles, representable long exact Hom sequences and their localization are proved in [Complexes, cones and localization, Lemma 2.4 and Theorems 4.2–5.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/complexes-cones-and-localization.html#2-cones-and-triangles-from-split-sequences). [Injective modules, flasque sheaves and bounded-below derived functors, Sections 2–4](https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/injective-modules-and-bounded-below-derived-functors.html#2-functorial-injective-embeddings) proves enough injectives, the comparison of resolutions, and the bounded-below derived functor. Theorem 3.1 here computes the required low-degree derived Ext without assuming a projective relation module. Section 5 supplies the Yoneda pullback construction, including its group law, and proves extension closure of quasi-coherent sheaves.
+- Finite presentation plus formal smoothness is equivalent to smoothness by [Infinitesimal lifting and invariance under thickenings, Theorem 4.1](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-FSE/infinitesimal-lifting-and-invariance-under-thickenings.html#section-4) [Stacks, Tag 00TN]. [Smooth morphisms, Section 1](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-FSE/smooth-morphisms.html#1-smooth-charts-and-their-relative-dimension) proves the standard-smooth charts and the invertible-Jacobian criterion [Stacks, Tags 01V7 and 00T7]. The derivation and extension computations establishing Proposition 4.1 are given here.
+- Affineness survives a nilpotent thickening by [The theorem on formal functions, Lemma 5.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/the-theorem-on-formal-functions.html#5-dimension-and-finiteness-consequences) [Stacks, Tag 06AD]. Its proof filters a quasi-coherent sheaf by the nilpotent ideal and uses [Serre’s affine criterion, Theorem 5.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/affine-cohomology-and-serres-criterion.html#5-serre-s-cohomological-criterion). Theorem 7.1 above derives the affine-intersection and tensor-product separation criteria from the diagonal [Stacks, Tag 01KP]. These allow the local algebra lifts to be glued as separated schemes.
+- [Affine cohomology and Serre’s criterion, Theorem 2.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/affine-cohomology-and-serres-criterion.html#2-the-affine-contraction) proves vanishing for every quasi-coherent sheaf on an affine scheme. Čech cohomology, Theorem 3.2 proves affine-cover comparison, including infinite covers with acyclic finite intersections [Stacks, Tag 01XD]. No cohomology finiteness theorem is needed for Theorems 7.1 and 8.1.
+- Properness across a cartesian nilpotent base thickening is also [The theorem on formal functions, Lemma 5.4](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/the-theorem-on-formal-functions.html#5-dimension-and-finiteness-consequences) [Stacks, Tag 0BPG]. Its proof detects finite type and closed immersions on affine charts, applies the latter to the diagonal, and tests universal closedness on the unchanged underlying spaces. This gives the precise properness condition when restricting the deformation problem to proper schemes.
 
 We have not constructed the full cotangent complex or claimed that its lower cohomology vanishes for an arbitrary algebra. Nor have we identified all singular-scheme obstruction groups with a tangent-sheaf cohomology group: local equation deformations contribute there. The final lesson constructs the full complex, proves its transitivity triangle, and develops its degree-two obstruction theory.
 

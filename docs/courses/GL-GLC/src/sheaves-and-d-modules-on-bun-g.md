@@ -1336,7 +1336,7 @@ The denominator is a constant line; its pullback to every parameter scheme is re
 \]
 Every map used to obtain this identity has been constructed on coefficient rings and checked on arrows. Descent along the bundle-stack atlas from the previous lesson therefore produces the line on the whole \(\operatorname{Bun}_G\). For the ordinary root gerbe (2.2), forget the parity grading after forming the ratio and its square map; the resulting ordinary line has the same square identification. No simply connectedness or semisimplicity hypothesis is needed. The central adjoint summand is a constant orthogonal bundle; orthogonal multiplicativity (PF.7) cancels its Pfaffian in the ratio (PF.28). For a torus this ratio is the trivial line. For the trivial group it is the empty determinant, also trivial.
 
-A theta characteristic exists over our algebraically closed field. Choose any line \(A\) of degree \(g-1\), for example \(\mathcal O((g-1)x)\). The line \(\omega_X\otimes A^{-2}\) has degree zero. The connected smooth Picard group \(J\), constructed in [*The Picard functor and the Picard scheme of a curve*](../../AG-HP/src/the-picard-functor-and-the-picard-scheme-of-a-curve.md), §§4–7, has an étale multiplication-by-two map: its differential is \(2\) times the identity at zero and everywhere by translation. Its image is an open subgroup. The complement is the union of its other open cosets, so this subgroup is closed as well; connectedness makes it all of \(J\). Hence the specified degree-zero line has a square root \(N\), and \(\kappa=A\otimes N\) is a theta characteristic. An isomorphism \(\kappa^2\simeq\omega_X\) is part of its choice.
+A theta characteristic exists over our algebraically closed field. Choose any line \(A\) of degree \(g-1\), for example \(\mathcal O((g-1)x)\). The line \(\omega_X\otimes A^{-2}\) has degree zero. The connected smooth Picard group \(J\), constructed in *The Picard functor and the Picard scheme of a curve*, §§4–7, has an étale multiplication-by-two map: its differential is \(2\) times the identity at zero and everywhere by translation. Its image is an open subgroup. The complement is the union of its other open cosets, so this subgroup is closed as well; connectedness makes it all of \(J\). Hence the specified degree-zero line has a square root \(N\), and \(\kappa=A\otimes N\) is a theta characteristic. An isomorphism \(\kappa^2\simeq\omega_X\) is part of its choice.
 
 The parity \(p(P)=h^0(\operatorname{ad}(P)\otimes\kappa)\bmod2\) is locally constant by (PF.6) and (PF.21). The square maps for \(i\) and \(-i\) differ in (PF.29) by
 \[
@@ -7317,7 +7317,7 @@ Continue over \(\mathbf C\), with the actual spectral prestack and frame atlas o
 \]
 The group in this presentation is the frame group; the dual bundle group remains the arbitrary connected reductive \(H=\widehat G\).
 
-Choose an effective very ample curve divisor \(D_h\), of positive degree \(h\). Choose a positive \(\ell\) at least as large as the uniform Quot twist, and with \(\ell h\geq B_n+2g\). The precise construction in [*Hilbert and Quot schemes*](../../AG-HP/src/hilbert-and-quot-schemes.md), Lemma 3.1 and the representability part of Theorem 4.1, embeds the fixed-polynomial quotient locus locally closed in a Grassmannian, whose Plücker line is the determinant of the quotient of sections. Restrict to the framed open \(V_{n,0,m}\). Its line is therefore the determinant of the sections of the universal bundle twisted by \(\ell D_h\).
+Choose an effective very ample curve divisor \(D_h\), of positive degree \(h\). Choose a positive \(\ell\) at least as large as the uniform Quot twist, and with \(\ell h\geq B_n+2g\). The precise construction in *Hilbert and Quot schemes*, Lemma 3.1 and the representability part of Theorem 4.1, embeds the fixed-polynomial quotient locus locally closed in a Grassmannian, whose Plücker line is the determinant of the quotient of sections. Restrict to the framed open \(V_{n,0,m}\). Its line is therefore the determinant of the sections of the universal bundle twisted by \(\ell D_h\).
 
 Only the locally closed immersion is needed for ampleness here. To verify this directly, intersect that immersion with a standard affine projective chart. In the closed affine scheme containing the resulting locally closed locus, choose a principal open lying inside any specified neighbourhood of a point. Lift its defining function to the affine projective-chart algebra and homogenize it. Multiply by a positive power of the chart coordinate. Its nonvanishing open in the locally closed locus is that same affine principal open. These opens form an affine basis. Thus the restricted Plücker line is ample; no valuative properness criterion is used in this argument.
 
@@ -7739,6 +7739,602 @@ Restriction preserves colimits but is not fully faithful, because the target map
 It is not an equivalence. Its kernel is therefore not the diagonal unit. Degree-zero cohomology alone would give the same scalar \(\mathbf C\) and hide the failed counit. This verifies why (GSL.17)–(GSL.18) require the full actual derived kernel map.
 
 Free further reading is Ben-Zvi, Francis and Nadler, [*Integral Transforms and Drinfeld Centers in Derived Algebraic Geometry*](https://arxiv.org/abs/0805.0157v5), §§3–4, for the perfect-stack and integral-transform framework, and the free AGKRRV preprint already cited in §3.78 for spectral localization. The complete applicable global proof here is (GSL.1)–(GSL.30), with the full negative-degree and weight solutions (GSL.31)–(GSL.38). The restricted-variation coefficient construction and its nilpotent Beilinson projector, singular-support image and regularity, derived tempered and microlocal comparisons, and arbitrary geometric ground-field spectral extension remain separate proof obligations.
+
+### 3.96. The actual completed lisse coefficient category
+
+Throughout §§3.96–3.103, \(X\) is a connected smooth projective complex curve and a point \(x\) is fixed. Normalize a right operator module by the density side change and \([-1]\), as in (CSD.1); the tensor unit then becomes the trivial left connection in degree zero. Let \(\mathscr L_X\) be the small, idempotent-complete **full DG category** of bounded operator complexes whose cohomology consists of finite-rank flat connections. Its morphisms are the entire operator-derived morphism complexes. Define
+\[
+ \mathscr I_X=\operatorname{Ind}(\mathscr L_X),\qquad
+ \mathscr Q_X=\lim_{n\geq0}\mathscr I_X^{\geq-n},\qquad
+ M_n=\tau^{\geq-n}M_{n+1}.
+ \tag{RSC.1}
+\]
+The limit is the limit of categories and their truncation functors, including the compatible paths. Thus it prescribes the full left completion, rather than selecting a lower bound for each object. Its mapping spaces are the limits of the compatible level mapping spaces. Taking target shifts supplies all the derived mapping degrees.
+
+The connection heart is abelian and is closed under subobjects, quotients and extensions among coherent operator modules. The completed-local-ring Taylor proof of Proposition 3.1 proves local freeness; the induced good filtration and connection calculation prove these closure assertions. Each heart object has finite length, since a strictly increasing connection subobject chain increases its rank. The bounded category is stable under truncation. Its ind-category has heart the ind-completion of that heart, with filtered colimits exact. The induced truncations commute with filtered colimits: present an ind-object by bounded objects, apply the finite cohomology and truncation diagrams, and use exactness of filtered colimits in the heart.
+
+For finite connections \(E,F\), the actual finite Spencer Hom is
+\[
+ \operatorname{RHom}_{\mathcal D_X}(E,F)
+ =R\Gamma\bigl(X,[E^\vee\otimes F
+          \xrightarrow{\nabla}E^\vee\otimes F\otimes\Omega_X^1]\bigr).
+ \tag{RSC.2}
+\]
+Its differential is the connection differential, not a structure-sheaf-linear map. The Koszul and order-lowering proof is [*The Riemann–Hilbert correspondence*](../../GL-DMOD/src/the-riemann-hilbert-correspondence.md), Lemma 1.5. The same resolution computes Hom into an arbitrary unbounded operator complex: the source resolution has two locally finite free terms, and the two-affine curve Čech computation of (DCA.1) has two columns. Taking those finite totalizations proves
+\[
+ E\text{ is compact in }\operatorname{Dmod}(X),\qquad
+ \operatorname{Hom}(E,F[j])=0\quad(j<0\text{ or }j>2).
+ \tag{RSC.3}
+\]
+For compactness, each local coefficient Hom is a finite bundle dual tensored with the target, and the finite affine Čech functor preserves colimits. For the degree bound use a target in the connection heart, so the only total degrees are \(0,1,2\). Bounded connection complexes are finite extensions of these compact objects and are compact as well. The restricted Yoneda/free-bar proof of (GSL.9) therefore embeds \(\mathscr I_X\) fully faithfully and continuously into the entire operator category. This also identifies its heart with actual ind-connections.
+
+Every finite connection on the proper curve is regular: there is no missing compactification point on \(X\), and a curve test extends to its smooth compactification. Projective coordinates divided by their minimum valuation give that extension at each missing point; the pulled-back connection is then nonsingular there. The complete earlier regular-connection comparison, Theorems 1.6–1.7 in the same lesson, identifies the finite connection heart with finite-rank local systems. Such local systems are finite-dimensional representations of \(\Gamma=\pi_1(X^{\mathrm{an}},x)\): continuation along paths gives the action; conversely take the path-class covering with its disc neighbourhoods and form locally equivariant sections with values in the given representation. Continuation on a disc and the endpoint path composition prove these constructions inverse. The same earlier theorem identifies the whole bounded DG category with bounded complexes having finite-rank locally constant cohomology. This is the full derived sheaf category in that statement. We will prove, rather than assume, when it can instead be derived from its heart.
+
+### 3.97. Cofree connection coefficients in positive genus
+
+Write \(C_\Gamma\) for the complex coalgebra of matrix coefficients of finite-dimensional \(\Gamma\)-representations. A coefficient is the function \(g\mapsto\ell(\rho(g)v)\). Its coproduct, counit and antipode are respectively \(f(g,h)=f(gh)\), \(f(1)\) and \(f(g^{-1})\). In a finite basis the coproduct is the finite sum of the two corresponding coefficient matrices. Products are coefficients of tensor products. Thus this is a commutative Hopf algebra, with a finite-dimensional coefficient subcoalgebra containing any specified finite collection of coefficients. Use its regular left action \(T_gf(h)=f(g^{-1}h)\).
+
+The ind-heart consists exactly of the locally finite \(\Gamma\)-representations: every vector lies in a finite-dimensional invariant subspace. The sum of two such subspaces is finite-dimensional, so their union is a filtered presentation. Conversely such a presentation is locally finite. Matrix coefficients give the same category as \(C_\Gamma\)-comodules. To check this assertion on maps, the coefficient coaction of a finite-dimensional source involves only finitely many functions. Linearly independent functions on \(\Gamma\) can be distinguished by finitely many evaluations: successively choose evaluations increasing the rank of their value matrix until it has full rank. Equality of their finite coefficients is consequently exactly equivariance. It follows also that maps from a finite comodule commute with filtered colimits, since a coaction equality is a finite collection of coefficient equalities in a tensor product. This proves the ind-heart identification without an assumption that the group algebra is Noetherian.
+
+For every vector space \(W\), regular coefficients give
+\[
+ \operatorname{Hom}_\Gamma(V,C_\Gamma\otimes W)
+     =\operatorname{Hom}_{\mathbf C}(V_x,W).
+ \tag{RSC.4}
+\]
+The forward map evaluates at \(1\). The inverse sends \(a:V_x\to W\) to the function \(h\mapsto a(h^{-1}v)\) for each \(v\). Its finite orbit makes this a finite matrix-coefficient expression. Both compositions are identities and commute with all maps. Therefore \(C_\Gamma\otimes W\) is injective in the ind-heart: the underlying vector-space functor is exact and vector spaces are injective. The coaction supplies the monomorphism
+\[
+ V\longrightarrow C_\Gamma\otimes V_x,\qquad
+ v\longmapsto(h\longmapsto h^{-1}v).
+ \tag{RSC.5}
+\]
+It is injective by evaluation at \(1\). This proves enough injectives and provides an explicit cofree coresolution by taking successive cokernels.
+
+For a finite connection \(V\), proper duality, including its connection-dual side change and trace, gives
+\[
+ H^2_{\mathrm{dR}}(X,V)^\vee
+     =H^0_{\mathrm{dR}}(X,V^\vee)
+     =\operatorname{Hom}_\Gamma(V_x,\mathbf C).
+ \tag{RSC.6}
+\]
+Here dual means finite-dimensional dual. To check the shift, (GD.1) identifies the normalized proper image with the unshifted forms complex shifted by \([1]\). The connection-dual computation and the perfect proper-duality pairing (GD.4) shift its unshifted dual by \([2]\). The degree-two dual is consequently degree zero of the dual connection. The trace is exactly (GD.5). Locally its adjoint differential is fixed by \(d\langle s,t\rangle=\langle\nabla s,t\rangle+\langle s,\nabla^\vee t\rangle\); the residue trace kills derivatives. Thus this is the actual proper pairing, not a dimension equality.
+
+Suppose now \(g(X)>0\). Choose a nonzero holomorphic differential \(\omega\), whose existence is the genus formula in the earlier curve-cohomology proof. The connection \(d+N\omega\) on the trivial rank-two bundle, with \(N^2=0\) and \(N\ne0\), is flat. It is a nonsplit extension of the trivial connection by itself: a splitting would be a global function with derivative a nonzero multiple of \(\omega\), while every global function on the connected proper curve is constant. Its monodromy is a nonzero additive character \(\chi:\Gamma\to\mathbf C\), by the faithful finite connection/local-system comparison already proved above. Choose \(\gamma\) with \(\chi(\gamma)\ne0\), put \(\ell=\chi\in C_\Gamma\), \(T=T_\gamma\), and \(c=-\chi(\gamma)\). Then
+\[
+ T\ell=\ell+c,\qquad c\ne0.
+ \tag{RSC.7}
+\]
+
+We prove directly that \(T-1\) is surjective on \(C_\Gamma\). Each vector belongs to a finite-dimensional \(T\)-stable space. Decompose it into generalized eigenspaces. On an eigenvalue different from \(1\), the finite geometric series in the nilpotent part inverts \(T-1\). On the generalized eigenvalue-one algebra, put \(D=\log T\). This series is finite on each vector. It is a derivation: the finite polynomial \(\sum_r\binom{s}{r}(T-1)^r\) is multiplicative for every nonnegative integer \(s\), since it is \(T^s\); equality of those polynomial expressions proves multiplicativity for every complex \(s\), and differentiation at zero gives the derivation identity. The derivation is locally nilpotent and \(D\ell=c\).
+
+For \(f\) in this algebra, the following sum is finite:
+\[
+ S(f)=\sum_{j\geq0}
+       \frac{(-1)^j\ell^{j+1}}{c^{j+1}(j+1)!}\,D^j f,
+ \qquad D S(f)=f.
+ \tag{RSC.8}
+\]
+The derivative of \(\ell^{j+1}\) gives the \(j\)-term and the derivative of \(D^jf\) cancels the next term; the remaining \(j=0\) term is \(f\). Since \(T-1=DQ(D)\), where \(Q(z)=(e^z-1)/z\) has constant term \(1\), its inverse is another finite series on each locally nilpotent vector. Thus \(Q(D)^{-1}S(f)\) is a preimage for \(T-1\). Together with the other generalized eigenspaces this proves surjectivity on all coefficients.
+
+An invariant linear functional on \(C_\Gamma\) annihilates \(T-1\), and hence is zero. Apply (RSC.6) to its filtered finite coefficient subrepresentations. Global de Rham cohomology commutes with their colimit by the finite Spencer–Čech calculation. Dual of a vector-space colimit is the limit of the duals, so
+\[
+ H^2_{\mathrm{dR}}(X,C_\Gamma)^\vee
+       =\operatorname{Hom}_\Gamma(C_\Gamma,\mathbf C)=0,
+ \qquad H^2_{\mathrm{dR}}(X,C_\Gamma)=0.
+ \tag{RSC.9}
+\]
+The last implication uses faithfulness of the algebraic vector-space dual, by extending a nonzero vector to a basis.
+
+For a finite \(F\), tensoring \(C_\Gamma\) by \(F_x^\vee\) does not change its cofree nature. The explicit untwisting sends a coefficient-valued vector \(f(h)v\) to \(f(h)h^{-1}v\); multiplication by \(h\) is its inverse. These use finite matrix coefficients and intertwine the regular action. Hence (RSC.9) gives degree-two acyclicity for \(F^\vee\otimes(C_\Gamma\otimes W)\), for any \(W\). Degree one is zero because this cofree object is injective in the heart and degree-one derived maps classify heart extensions. Degrees greater than two vanish by (RSC.3), extended to the ind-heart by compactness. We have proved
+\[
+ \operatorname{Hom}_{\mathscr I_X}
+       (F,C_\Gamma\otimes W[j])=0\qquad(j>0).
+ \tag{RSC.10}
+\]
+This is an actual acyclic injective coefficient, with an explicit reason for its top-degree acyclicity.
+
+### 3.98. The derived-heart comparison and full effectivity in positive genus
+
+For a finite \(V\), its embedding (RSC.5) lands in a filtered union of finite coefficient representations. A fixed class \(\alpha:F\to V[2]\) becomes zero in that union by (RSC.10). Compactness of \(F\) says that its vanishing already occurs in one finite member containing the image of \(V\). Thus
+\[
+ \text{every }\alpha\in\operatorname{Hom}(F,V[2])
+ \text{ is killed by a monomorphism }V\hookrightarrow V'
+ \text{ of finite connections}.
+ \tag{RSC.11}
+\]
+Degree-one classes are effaced by their own finite extension, and all higher classes are zero by (RSC.3). This proves effaceability in every positive degree.
+
+Here is the derived-heart argument. The natural maps from Yoneda extensions in the finite heart to derived maps agree in degrees zero and one. For surjectivity in degree \(j\), embed a target to kill a given derived class. The connecting map of its quotient sequence expresses that class as a degree-\((j-1)\) class followed by a short exact sequence; induction realizes it as a Yoneda extension. For injectivity, write an extension as such a splice. If its connecting image vanishes, exactness says that its preceding degree-\((j-1)\) class lifts to the middle term. By the induction isomorphism it lifts there as a Yoneda class, whose splice is zero. The exactness here can be checked by the actual pushout and pullback of the last short exact sequence: a lift splits that splice, and a zero splice supplies precisely this lift. This proves the comparison for every \(j\). Applying it to heart shifts and then both finite truncation filtrations proves full faithfulness on bounded complexes. Every object of \(\mathscr L_X\) has such a finite filtration; full faithfulness lifts its attaching maps. Consequently
+\[
+ D^b(\operatorname{Conn}_{\mathrm f}(X))
+          \xrightarrow{\sim}\mathscr L_X
+          \qquad(g>0).
+ \tag{RSC.12}
+\]
+The functor is the actual inclusion of complexes of connections into operator complexes. The Hom comparisons are comparisons of whole DG complexes, by all their shifts. They preserve composition and the original attaching maps.
+
+The ind-heart has injective dimension at most two. First use its explicit cofree injective coresolution. It is a resolution in the operator heart as well, since the embedding is exact. For a bounded-below resolution the finite Spencer–Čech calculation and (RSC.10) identify Hom from a finite connection with the ordinary Hom complex of that injective resolution. This proves, for arbitrary ind-targets, equality of heart Ext with those operator-derived groups; in particular Ext above degree two is zero.
+
+We include the required injectivity criterion. In a heart whose objects are unions of finite-length subobjects, an object \(I\) is injective if \(\operatorname{Ext}^1(F,I)=0\) for every finite object \(F\). To extend a map from a subobject, choose a maximal partial extension by unions along chains. If its domain is not the whole object, choose a finite subobject not contained in it. Its quotient by the intersection is finite. Pushing out the intersection map gives its extension by \(I\), which splits by the assumed Ext vanishing. This enlarges the partial extension, a contradiction. Apply this criterion to the second successive cokernel of a cofree coresolution: dimension shifting identifies its Ext in degree one with the original Ext in degree three. Therefore
+\[
+ \begin{gathered}
+ 0\longrightarrow V\longrightarrow I^0
+           \longrightarrow I^1\longrightarrow I^2
+           \longrightarrow0
+ \\
+ \text{An injective coresolution for every ind-connection }V.
+ \end{gathered}
+ \tag{RSC.13}
+\]
+
+These bounds apply to the entire unbounded derived category. A precise construction is useful. For each degree of an arbitrary complex, choose length-two injective resolutions of its boundaries and cohomology. The injective horseshoe constructions for
+\[
+ 0\to B^i\to Z^i\to H^i\to0,\qquad
+ 0\to Z^i\to M^i\to B^{i+1}\to0
+\]
+give a Cartan–Eilenberg double resolution with only three resolution columns. In each column, cycles, boundaries and cohomology are injective, and these sequences split. Thus that column is the sum of its zero-differential graded injectives and a contractible complex. It is K-injective: Hom from an acyclic complex to a single injective in any degree is acyclic, the full Hom is the product of these complexes, and vector-space products are exact. The finite totalization is K-injective as well. The augmentation is a quasi-isomorphism by the exact resolution rows and their finite horizontal length. This proves the unbounded construction without an infinite resolution-direction convergence claim.
+
+The same construction bounds the derived product of a family in degrees \(\leq a\) by degrees \(\leq a+2\). Choose zero resolutions for its vanishing cohomology degrees; the split-column product has cohomology only through \(a\), and the three resolution columns add at most two. An inverse sequence has derived limit the fibre of \(1-\mathrm{shift}\) on its derived product, so this bound becomes \(a+3\). For a compatible Postnikov tower, the fibre of a later term over its \(N\)-th truncation has degrees \(\leq-N-1\). Therefore the fibre of its limit over that term has degrees \(\leq-N+2\). Given a desired truncation degree, take \(N\) three places farther to the left. This proves recovery of that truncation from the limit, for every desired degree, and proves effectivity of every compatible tower.
+
+Finite connections are compact generators of this unbounded derived-heart category. Their Ext on heart targets commutes with filtered colimits, as it is the already continuous finite Spencer–Čech mapping complex. The three-column resolution bounds their derived Hom by a finite cohomology window in any fixed mapping degree; finite truncations and that heart comparison prove the same colimit assertion on all complexes. For detection, a nonzero cohomology class of an arbitrary heart complex is represented in a cycle object. That cycle object is a union of finite subobjects, so a finite subobject has nonzero image in that cohomology. Its chain map to the complex is nonzero on cohomology and hence is nonzero in the derived category. The free compact-module bar now proves
+\[
+ D(\operatorname{Ind}\operatorname{Conn}_{\mathrm f}(X))
+       \simeq\mathscr I_X,\qquad
+ \mathscr Q_X=\mathscr I_X\qquad(g>0).
+ \tag{RSC.14}
+\]
+For the first equivalence use (RSC.12) on compact objects and the just-proved generation. For the second use the complete product and tower argument above. Every unbounded object and every compatible higher map is retained.
+
+This category has its actual symmetric tensor. In the representation heart, tensor is tensor of the underlying complex vector spaces with diagonal group action. A tensor of locally finite representations is locally finite, by the finite-dimensional orbit spans of each vector. Tensor of complexes uses direct-sum totalization. Over a field the cycle-to-cohomology tensor map is the unbounded Künneth isomorphism: split each vector-space complex into its cohomology and contractible two-term pieces; tensoring a contraction gives a contraction with the tensor differential signs. This calculation proves the isomorphism, while its canonical cohomology map makes it independent of the chosen splittings and equivariant. On bounded finite connection complexes it is the original flat connection tensor. Equation (RSC.14) extends precisely that tensor and its symmetries to all objects by the full module bars. Thus the positive-genus completed target is constructed as a symmetric monoidal DG category, with no substitution of only its ordinary finite heart.
+
+### 3.99. The projective-line unit and a full Koszul model
+
+The chosen point identifies the genus-zero case with the projective line. Indeed Riemann–Roch gives two sections of its degree-one line bundle and one section after subtracting any point. Their evaluation is consequently surjective everywhere, defining a basepoint-free degree-one map to the projective line. A nonconstant map between proper smooth curves is finite, by the finite curve-map construction used in (TBF.7). Degree one identifies the function fields; the integrally closed local rings of the smooth target then make this finite birational map an isomorphism. Thus the following case and the positive-genus proof cover every curve in the stated scope.
+
+For \(X=\mathbf P^1\), the uniform bound (TBF.13)–(TBF.16) has \(m=0\) and \(b=n\). Evaluation of the \(n\) global sections of a rank-\(n\) flat bundle is surjective everywhere; its rank-zero kernel is zero. The bundle is therefore trivial. Its connection matrix is a global matrix of one-forms, and \(H^0(\mathbf P^1,\Omega^1)=0\), by the two-chart polynomial form calculation. All finite connections are sums of the trivial one. Nevertheless the bounded **DG** category retains the degree-two maps calculated in (SDG.21)–(SDG.22):
+\[
+ \operatorname{Conn}_{\mathrm f}(\mathbf P^1)\simeq
+       \operatorname{Vect}^{\mathrm{fd}}_{\mathbf C},\qquad
+ \mathscr L_{\mathbf P^1}
+       =\operatorname{thick}(\mathbf1).
+ \tag{RSC.15}
+\]
+The second equality uses the finite truncation filtration, not a claim that higher maps vanish.
+
+We give a commutative model as well as the earlier associative one. On the two charts \(U,V\) and overlap \(W\), take the DG algebra of triples
+\[
+ A_{\mathrm{path}}=
+ \{(\alpha_U,\alpha_V,\beta):
+       \beta(0)=\alpha_U|_W,\quad\beta(1)=\alpha_V|_W\},
+ \quad
+ \beta\in\Omega^\bullet(W)\otimes\mathbf C[s,ds].
+ \tag{RSC.16}
+\]
+Products are form products, with their graded signs. Projection to the two chart complexes is surjective degree by degree. Its kernel is the relative polynomial interval complex on \(W\). Integration in \(s\), with \(ds\) written first, identifies that kernel with \(\Omega^\bullet(W)[-1]\): a polynomial derivative has zero integral at the two endpoints, and subtracting its integral times \(ds\) gives the derivative of a polynomial vanishing at both endpoints. This supplies an explicit relative contraction and the shift's differential sign. The connecting map is restriction difference, so the resulting cohomology is the full Čech–de Rham cohomology already calculated.
+
+The triple with chart components zero and path component \(ds\wedge dt/t\) is a closed degree-two representative of the residue generator. Its square is zero. Constants and this representative give the commutative quasi-isomorphism
+\[
+ E=\mathbf C[\eta]/(\eta^2)
+      \xrightarrow{\sim} A_{\mathrm{path}},
+ \qquad|\eta|=2,\quad d\eta=0.
+ \tag{RSC.17}
+\]
+The endpoint contraction compares this algebra model with the actual finite Spencer and Čech calculation; its products are the same local form products and restriction maps. Thus it retains the endomorphism algebra and its coherent commutative structure. The compact-unit module bar and the finite-cell argument give
+\[
+ \mathscr L_{\mathbf P^1}\simeq\operatorname{Perf}(E),
+ \qquad\mathscr I_{\mathbf P^1}\simeq\operatorname{Mod}_E.
+ \tag{RSC.18}
+\]
+The bounded tensor is relative tensor over \(E\): the unit goes to \(E\), and the two endomorphism actions on a tensor of units are multiplication of that endomorphism algebra. Exactness in each variable extends this identification through every finite cone and retract. Its ind-extension retains all module bars.
+
+Define instead the free **associative** algebra and its Hopf structure
+\[
+ B=T_{\mathbf C}(\mathbf C[1]),\quad |u|=-1,\quad du=0,\qquad
+ \Delta u=u\otimes1+1\otimes u,\quad\epsilon u=0,\quad S(u)=-u.
+ \tag{RSC.19}
+\]
+There is one basis word \(u^j\) in each degree \(-j\), \(j\geq0\). In particular \(u^2\ne0\). The coproduct extends as an algebra map with the graded tensor multiplication. It is coassociative and cocommutative on the generator and hence on every word. The antipode extends with graded reversal, giving both Hopf identities. Modules have the symmetric tensor over \(\mathbf C\) with this diagonal action and unit \(\mathbf C\).
+
+Its unit has the finite semifree resolution
+\[
+ Q=B\oplus B\tau,\qquad|\tau|=-2,\quad d\tau=u,
+ \qquad Q\longrightarrow\mathbf C.
+ \tag{RSC.20}
+\]
+On \(b\tau\), the differential is \((-1)^{|b|}bu\). It injects that summand onto the positive-word ideal; the remaining cohomology is the constant word. Define the closed degree-two endomorphism \(e(\tau)=1\), \(e(1)=0\), extended \(B\)-linearly. It has square zero. Applying Hom to the augmentation shows
+\[
+ E\longrightarrow\operatorname{End}_B(Q),\quad\eta\longmapsto e,
+ \qquad
+ \operatorname{RHom}_B(\mathbf C,\mathbf C)\simeq E.
+ \tag{RSC.21}
+\]
+Indeed Hom from the finite semifree \(Q\) carries its augmentation to a quasi-isomorphism, and its target has just the two basis maps \(1\mapsto1\) and \(\tau\mapsto1\), in degrees zero and two.
+
+The primitive diagonal \(\tau\mapsto\tau\otimes1+1\otimes\tau\) on this resolution commutes with its differential by (RSC.19). It is coassociative and cocommutative; its cup product on the two Hom basis vectors is exactly \(\eta^2=0\). Tensor powers of the resolution are resolutions with their diagonal Hopf action. Comparison lifts over the augmentation have contractible fibres: Hom from a cofibrant resolution carries an augmentation equivalence to an equivalence. Thus these primitive diagonals give the actual higher unit-cup coherences as well. The finite-unit tensor comparison of (RSC.18), followed by the complete module bar, proves
+\[
+ \mathscr I_{\mathbf P^1}
+       \simeq\operatorname{Loc}_{\operatorname{Mod}_B}(\mathbf C).
+ \tag{RSC.22}
+\]
+Here \(\operatorname{Loc}\) means stable colimit closure. The functor carries the normalized fibre to the underlying \(B\)-module complex: on the unit both fibres are \(\mathbf C\) and \(\eta\) acts by zero, and the finite-cell and full ind-bars extend exactly that comparison.
+
+### 3.100. Every object added by the projective-line completion
+
+Put \(v=u^2\), of degree \(-2\). It is graded central and even. All \(B\)-modules here are left modules; the localized algebra is a \(B\)-bimodule. Localization has no sign ambiguity. We claim
+\[
+ \operatorname{Loc}_{\operatorname{Mod}_B}(\mathbf C)
+       =\{M:B[v^{-1}]\otimes_B^{\mathbf L}M=0\}.
+ \tag{RSC.23}
+\]
+The right side is stable and colimit closed and contains \(\mathbf C\). For the converse, multiplication by \(v^r\) has cofiber \(B/(u^{2r})\), whose finite word filtration has \(\mathbf C\)-layers in the word degrees. The fibre of \(B\to B[v^{-1}]\) is the colimit of these cofibres, with the localization shifts and transition maps. Tensor its triangle with \(M\). Each cofiber tensor is built by its finite filtration from \(\mathbf C\otimes_B^{\mathbf L}M\); this is an entire complex of vector spaces and hence is built from copies and shifts of \(\mathbf C\). If the localized term vanishes, its fibre is \(M\), proving the other inclusion. This is a full unbounded localization argument.
+
+Localization is the graded telescope of \(v\); its cohomology is localization of the graded cohomology. A bounded-below module is killed by it, since repeated multiplication by \(v\) moves any fixed cohomology class below its lower bound. Thus every bounded-below \(B\)-module belongs to (RSC.23). Truncation restricts to that subcategory and is the standard underlying-complex truncation. To identify the ind t-structure, both structures agree on the finite-cell category by the normalized fibre comparison, and both commute with filtered colimits. Every ind-object is such a filtered presentation; applying truncation to it proves agreement. Since the entire ordinary module category is left-complete, taking the limit of these identical bounded-below categories gives
+\[
+ \mathscr Q_{\mathbf P^1}\simeq\operatorname{Mod}_B.
+ \tag{RSC.24}
+\]
+For completeness, a module's Postnikov limit is calculated degreewise by the fibre of \(1-\mathrm{shift}\) on products. Products of vector spaces are exact; its cohomology in a fixed degree is eventually constant along this tower. Solve a constant-tail difference equation successively to see that its degree-one inverse-limit correction is zero. Every compatible tower therefore recovers the module with those cohomologies and action maps. This also proves the full mapping-space comparison, since maps into a limit are compatible families of maps.
+
+The additional objects are essential. For example
+\[
+ L=B[v^{-1}]\ne0,\qquad
+ \operatorname{RHom}_B(\mathbf C,L)=0,\qquad
+ L\notin\mathscr I_{\mathbf P^1}.
+ \tag{RSC.25}
+\]
+The resolution (RSC.20) computes that Hom as the shifted cone of multiplication by \(u\). That operator is invertible on \(L\), with inverse \(uv^{-1}\), so the Hom is contractible in every degree. The first inequality follows from the nonzero constant word in the Laurent word algebra. The last assertion also follows from (RSC.23). Thus the unit is compact by its two-cell resolution, but it does not generate the completed target. Its actual compact generator is
+\[
+ B\in\mathscr Q_{\mathbf P^1},\qquad
+ H^{-j}(B)=\mathbf C u^j\quad(j\geq0).
+ \tag{RSC.26}
+\]
+Hom from that free module is the whole underlying complex. It preserves colimits and detects zero. This generator is unbounded below; replacing the completed target by the finite-lisse ind-category discards it.
+
+The Hopf tensor is also the actual completed tensor. For two cohomologically bounded-above objects, a fixed tensor-cohomology degree uses only a finite interval of their lower degrees: if their upper bounds are \(a,b\), a contributing degree \(i\) in the first factor satisfies \(i\geq k-b\), and the second satisfies the analogous bound. Finite lower cuts therefore compute each such degree, using the already identified tensor in \(\mathscr I_{\mathbf P^1}\). Their compatible limits give precisely the Hopf diagonal tensor over the field. All association and symmetry comparisons are those same finite-cut maps; for any fixed collection and degree, choose a common cut and their coherence diagrams agree. For arbitrary objects take the colimit of their intelligent upper truncations and extend in both variables. Module cohomology commutes with these colimits, and every object is recovered. The unbounded field tensor has the same direct-sum Künneth computation used above. This constructs the entire completed symmetric tensor and its higher comparisons, including on the new generator and \(L\).
+
+### 3.101. Full DG coefficients and the projective-line restricted functor
+
+For any connective commutative DG coefficient algebra \(A\), the actual coefficient category is
+\[
+ \mathscr Q_{X,A}=\operatorname{Mod}_A(\mathscr Q_X)
+       \simeq\operatorname{Mod}_A\otimes_{\mathbf C}\mathscr Q_X,\qquad
+ \mathscr Q_{\mathbf P^1,A}\simeq\operatorname{Mod}_{A\otimes_{\mathbf C}B}.
+ \tag{RSC.27}
+\]
+The first comparison is the full free-action bar: a module action, its relations and higher homotopies are precisely an internal \(A\)-action; the unit insertion contracts its augmented free resolution. Continuous bilinear functors extend that same bar, giving the tensor-category universal property. In the projective-line model the two commuting scalar and \(B\)-actions are exactly a module over their tensor DG algebra. No negative coefficient group is discarded. The coefficient tensor uses the primitive Hopf action over \(A\); the positive-genus model uses the corresponding diagonal representation action.
+
+Let \(H\) be any connected reductive complex group, with Lie algebra \(\mathfrak h\). Consider a restricted tensor functor from \(\operatorname{Rep}(H)\) to this completed projective-line category, whose underlying fibre is framed. Right t-exactness, including the dual and all tensor powers, forces its fibre values to be the degree-zero projective \(A\)-modules of the ordinary framed fibre functor, by the complete projective criterion (CSD.4). Its extra \(B\)-action is a closed degree-minus-one operator natural in every representation and satisfying the tensor derivation rule, because \(u\) is primitive.
+
+We give the complete tensor-derivation comparison. Extend that operator to the regular coefficient algebra by its filtered finite representations. The tensor rule is exactly its graded Leibniz rule. The commuting regular right coaction is a representation intertwiner and hence is preserved. The resulting derivation is the invariant derivation determined by its value at the identity. If \(\mathfrak m\) is the augmentation ideal, that value is a map \(\mathfrak m/\mathfrak m^2\to A\); its negative gives \(\alpha\in\mathfrak h\otimes A\). On a finite representation the operator is \(d\rho(\alpha)\): use its coefficient embedding \(v\mapsto(g\mapsto\rho(g^{-1})v)\) and evaluate at the identity. Conversely this formula has the tensor Leibniz rule, preserves every intertwiner, and reconstructs precisely that regular derivation. The differential commutes exactly when \(\alpha\) is closed.
+
+This comparison is between the whole derivation complexes and their paths. One can check the coherent tensor conditions by the square-zero algebra \(A[\varepsilon]/(\varepsilon^2)\): \(1+\varepsilon D\) is a tensor automorphism exactly when \(D\) is the corresponding derivation. The full regular Hopf reconstruction of (TBF.3)–(TBF.5) identifies these automorphisms and all their higher maps with the group-valued automorphisms of the framed fibre functor. Its smooth augmentation cotangent space is \(\mathfrak h^\vee\), so the square-zero mapping comparison is precisely the complex just computed. It works with shifted square-zero coefficient modules too; it is not a calculation only on ordinary points.
+
+The algebra \(B\) is free on its one closed associative generator. Once this tensor derivation is specified, all its powers and every bar action are forced. More explicitly, the free graded Lie algebra on an odd generator \(p\) has \(p\) and \(q=[p,p]/2\), with \(q\) even and central: graded Jacobi gives \(3[p,[p,p]]=0\), and an even element brackets with itself to zero. All longer Lie words are therefore zero. Its enveloping algebra has \(p^2=q\) and is exactly \(T(p)=B\), with the primitive coproduct already used. An odd tensor derivation \(D\) has \(D^2\) again a tensor derivation, because its two cross terms cancel; \([D,D^2]=0\) by associativity. A map from the free DG Lie generator to the full tensor-derivation complex thus imposes no extra independent relation. This is a free-generator mapping universal property in every DG degree, including its bar paths. The full framed mapping space is
+\[
+ \operatorname{Map}_{\operatorname{Mod}_{\mathbf C}}
+        (\mathfrak h^\vee[1],A)
+    =\operatorname{Map}_{\operatorname{CAlg}_{\mathbf C}}
+        (\operatorname{Sym}(\mathfrak h^\vee[1]),A).
+ \tag{RSC.28}
+\]
+Its vertices are the closed \(\alpha\)'s, but the equality includes all the nullhomotopies and higher coefficient maps of the free-generator bar. Changing the frame conjugates by \(H\). The resulting full restricted spectral functor on the projective line is therefore
+\[
+ \mathcal Z^{\mathrm{restr}}_H(\mathbf P^1)
+   \simeq
+   [\,\operatorname{Spec}\operatorname{Sym}
+                    (\mathfrak h^\vee[1])/H\,].
+ \tag{RSC.29}
+\]
+This agrees with the actual full connection fibre and frame construction of (DCA.18)–(DCA.24) on this curve: the trivial underlying bundle has connection coefficient \(R\Gamma(\operatorname{ad}P\otimes\Omega^1)=\operatorname{ad}P[-1]\), so its affine nullhomotopy algebra is exactly the displayed free algebra. Faithfully flat frame descent includes every unframed fibre functor and every nonflat base change. It does not identify the full and restricted targets on curves of positive genus.
+
+In particular,
+\[
+ \mathcal Z^{\mathrm{restr}}_{\mathbf G_m}(\mathbf P^1)
+       =B\mathbf G_m\times\operatorname{Spec}\mathbf C[\xi],
+       \qquad|\xi|=-1,\quad d\xi=0.
+ \tag{RSC.30}
+\]
+Here the algebra on \(\xi\) is graded commutative and \(\xi^2=0\). It is different from the associative algebra \(B\) of (RSC.19), in which \(u^2\ne0\). Their different roles are fixed by the two mapping universal properties.
+
+![The true lisse coefficient target is left-completed; positive genus has a complete derived-heart model, while the projective line requires a free associative negative generator and retains objects invisible to the compact unit. Full DG coefficient actions give the entire restricted projective-line spectral functor.](figures/quasilisse-completion.svg)
+
+**Figure 3.26.** The positive-genus cofree acyclicity and three-column effectivity proofs are (RSC.4)–(RSC.14). The actual projective-line unit, resolution and full completion are (RSC.15)–(RSC.26). The associative generator \(u\) is drawn with its nonzero square; the separate commutative coordinate \(\xi\) has square zero. The full coefficient and tensor-derivation comparisons are (RSC.27)–(RSC.30). General-curve restricted spectral geometry and the nilpotent projector remain additional arguments.
+
+### 3.102. Ordinary rank-one restricted variation is an actual condition
+
+Let \(A\) now be an ordinary complex algebra and let \(L\) be a projective \(A\)-module of rank one with an \(A\)-linear \(\Gamma\)-action. Its endomorphism algebra is canonically \(A\), by local line trivializations and descent. Write \(a_\gamma\in A^\times\) for its monodromy. In positive genus the preceding actual derived-heart model makes the restricted condition precisely original-field local finiteness of this representation. We prove
+\[
+ L\text{ is }\mathbf C\text{-locally finite}
+ \quad\Longleftrightarrow\quad
+ A_0=\mathbf C[a_\gamma:\gamma\in\Gamma]\subset A
+                  \text{ is finite-dimensional}.
+ \tag{RSC.31}
+\]
+Choose finitely many \(A\)-generators of \(L\). Under the left condition their finite orbit spans have a finite sum \(V\), invariant under all \(\gamma\), and \(V\) still generates \(L\) over \(A\). The monodromy algebra acts on \(V\). This action is faithful: an element killing \(V\) kills \(L\), and a rank-one projective module is faithful, as checked after its local trivializations. Thus \(A_0\) embeds in the finite-dimensional \(\operatorname{End}_{\mathbf C}(V)\). Conversely \(A_0\ell\) is a finite invariant span for every \(\ell\in L\). The inverses are already present because \(\gamma^{-1}\) also belongs to the group.
+
+If \(\operatorname{Spec}A\) is nonempty and connected, this finite algebra has no nontrivial idempotent. Here is the finite-algebra decomposition needed. Each maximal-ideal residue field is \(\mathbf C\), by the algebraically closed finite-field-extension argument. The Chinese-remainder quotient for \(r\) distinct maximal ideals has dimension \(r\), so there are only finitely many such ideals. Their intersection \(J\) is the Jacobson radical. Its powers stabilize by finite dimension; Nakayama applied to the stabilized ideal gives \(J^N=0\). Distinct maximal ideals are comaximal, so their \(N\)-th powers are comaximal and their intersection is \(J^N\). Chinese remainder now expresses the algebra as the product of these Artinian local quotients. Without nontrivial idempotents only one factor remains. Its radical is nilpotent. Hence
+\[
+ a_\gamma=\chi(\gamma)(1+n_\gamma),\qquad
+ \chi:\Gamma\to\mathbf C^\times,\qquad
+ n_\gamma\in\mathfrak m,\quad \mathfrak m^N=0.
+ \tag{RSC.32}
+\]
+For radical nilpotence, the descending power filtration of a finite-dimensional algebra stabilizes; Nakayama applied at its unique maximal ideal makes that stabilized ideal zero. Equivalently finitely many nilpotent generators give an explicit exponent bound. Reduction preserves the monodromy product, so \(\chi\) is a character independent of the point in this connected base.
+
+There is a precise ordinary formal-point description whenever \(\Gamma\) is finitely generated. Put \(S=\operatorname{Spec}\mathbf C[\Gamma_{\mathrm{ab}}]\); its group algebra is finite type, since the finitely many group generators and inverses generate it. A framed ordinary family as above gives its coefficient-algebra map. Equation (RSC.32) says it factors through the quotient by a power of the character maximal ideal. Conversely that quotient is finite-dimensional: its maximal ideal has finitely many generators, and their monomials of total degree below the chosen power span the quotient over its residue field. Its coefficient image therefore satisfies (RSC.31). For a disconnected affine base the finite algebra \(A_0\) supplies the finite idempotent partition and the characters of its factors. This proves the ordinary framed functor equality
+\[
+ (\mathcal Z^{\mathrm{restr}}_{\mathbf G_m})_{\mathrm{fr}}(A)
+       =\left(\coprod_{\chi\in S(\mathbf C)}
+                         \widehat S_\chi\right)(A)
+       \quad\text{on ordinary coefficient algebras}.
+ \tag{RSC.33}
+\]
+The completion here means maps factoring through a finite infinitesimal character neighbourhood, with the finite partition just described. This formula does not discard negative DG directions to assert a derived atlas: it is explicitly its ordinary coefficient statement. On all DG coefficients the definition remains (RSC.1) and (RSC.27), and the projective-line calculation (RSC.29) is already the full derived one.
+
+### 3.103. Translation, missing completed objects and higher coefficient loops
+
+**Exercise 3.BX.** For the polynomial translation \(Tf(z)=f(z+1)\), find a preimage of \(z^2\) under \(T-1\). Verify that no nonzero translation-invariant linear functional exists on \(\mathbf C[z]\).
+
+**Solution 3.BX.** Direct subtraction gives
+\[
+ (T-1)\left(\frac{z^3}{3}-\frac{z^2}{2}+\frac z6\right)=z^2.
+ \tag{RSC.34}
+\]
+For any degree-\(d\) polynomial, subtract a multiple of \((T-1)z^{d+1}\), whose leading term is \((d+1)z^d\), and induct on degree. Constants are \((T-1)z\). Thus \(T-1\) is onto, and an invariant functional annihilates its whole image, so is zero. This is the polynomial part of the full generalized-eigenvalue argument in (RSC.8).
+
+**Exercise 3.BY.** Check the resolution (RSC.20), its endomorphism and its Hopf diagonal. Why is replacing \(B\) by a graded-commutative odd algebra invalid?
+
+**Solution 3.BY.** For each \(j\geq0\),
+\[
+ d(u^j\tau)=(-1)^j u^{j+1},\qquad
+ e(u^j\tau)=u^j,\quad e(u^j)=0,\quad e^2=0.
+ \tag{RSC.35}
+\]
+Every positive word is exactly such a differential, with a unique preimage, and the constant word survives. The displayed endomorphism has degree two and commutes with \(d\) on both summands. Its augmentation Hom has basis in degrees zero and two. The diagonal of \(d\tau\) is \(u\otimes1+1\otimes u\), the differential of the primitive diagonal of \(\tau\). In particular
+\[
+ \Delta(u^2)
+  =(u\otimes1+1\otimes u)^2=u^2\otimes1+1\otimes u^2.
+ \tag{RSC.36}
+\]
+The cross terms cancel because \(u\) is odd; neither square vanishes in the free associative algebra. In a graded-commutative algebra they would vanish, destroying the word resolution, its even localization and the completed module model.
+
+**Exercise 3.BZ.** Exhibit a compatible tower in the finite-lisse ind-category of the projective line which is not effective there, and identify its actual completed limit.
+
+**Solution 3.BZ.** Let \(L=B[u^{-2}]\), and set \(L_n=\tau^{\geq-n}L\). It has basis \(u^j\) for all integers \(j\leq n\), with \(u^{n+1}\) killed; its differential is zero. Each vector is killed by a power of \(u^2\), so each \(L_n\) belongs to (RSC.23). The quotient maps form the compatible Postnikov tower. The full completed limit is the Laurent word module \(L\): every degree eventually stabilizes, and the difference-operator computation of (RSC.24) proves effectivity.
+
+Hom from the compact unit into \(L_n\) has only the kernel of its \(u\)-operator, represented by \(u^n\). Its degree is \(-n\), and the next quotient kills that class. Thus
+\[
+ \operatorname{RHom}_B(\mathbf C,L_n)
+       \simeq\mathbf C[n],\qquad
+ \lim_n\operatorname{RHom}_B(\mathbf C,L_n)=0.
+ \tag{RSC.37}
+\]
+If the tower were effective in \(\mathscr I_{\mathbf P^1}\), mapping out of its generator would give zero on its effective limit. That limit would be zero, whose truncations cannot be the nonzero \(L_n\). It is therefore not effective there. This uses the mapping-space and action tower, rather than just the list of ordinary cohomology dimensions.
+
+**Exercise 3.CA.** In (RSC.29), take the square-zero coefficient algebra \(A=\mathbf C[\delta]/(\delta^2)\), \(|\delta|=-2\), \(d\delta=0\), and a trivial frame. Compute the components and the first higher homotopy group of the framed restricted functor, for any \(H\).
+
+**Solution 3.CA.** The free algebra mapping space is the mapping space of \(\mathfrak h^\vee[1]\) into \(A\). Hence
+\[
+ \pi_i=\mathfrak h\otimes_{\mathbf C}H^{-i-1}(A)\quad(i\geq0).
+ \tag{RSC.38}
+\]
+There is one component, the zero derivation, because \(H^{-1}(A)=0\). Its first loop group is \(\mathfrak h\delta\); the higher positive groups vanish. On a generator \(\lambda\in\mathfrak h^\vee[1]\), the loop represented by \(a\in\mathfrak h\) is the actual closed coefficient \(\lambda(a)\delta\,dt\) in \(A\otimes\mathbf C[t,dt]\). Its degree is minus one and it vanishes at both endpoints. The polynomial interval contraction identifies its class with \(\lambda(a)\delta\), so these are all the loops. This is the full coefficient homotopy missing from an ordinary-heart point calculation.
+
+Free further reading is the AGKRRV preprint [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §1.5 and the projective-line example in “Ind-constructible sheaves on schemes,” under “Categorical \(K(\pi,1)\)'s,” for the definition and the completion phenomenon. The full applicable arguments here are (RSC.1)–(RSC.33), with the complete checked solutions (RSC.34)–(RSC.38). The general-curve restricted spectral prestack, its localization and Hecke action, the genuine nilpotent Beilinson projector, its singular-support image and chartwise ind-regularity, and the geometric ground-field, tempered and microlocal arguments still require their own complete proofs.
+
+### 3.104. The general-curve restricted tensor functor
+
+Keep the smooth projective complex curve \(X\), its chosen point \(x\), and the complete symmetric monoidal coefficient category \(\mathscr Q_X\) of (RSC.1)–(RSC.30). Let \(H\) be any connected reductive complex group. For a connective commutative DG algebra \(A\), define the entire space
+\[
+ \mathcal Z_H^{\mathrm{restr}}(X)(A)
+  =\operatorname{Fun}^{\mathrm L,\otimes,\mathrm{rt}}
+       \bigl(\operatorname{Rep}(H),\operatorname{Mod}_A(\mathscr Q_X)\bigr)^\simeq .
+ \tag{RSP.1}
+\]
+The functors are \(\mathbf C\)-linear. The superscript retains the space of functors and invertible coherent transformations, with every higher path. “rt” means right t-exact. The target has the internal \(A\)-actions and their full free-action bars from (RSC.27). Scalar change is the actual derived extension of those actions. This defines a functor on all connective coefficient algebras; composition and its higher comparisons are the multiplication and unit maps of the same scalar bars.
+
+There is an actual fibre functor
+\[
+ \varepsilon_x:\mathscr Q_X\longrightarrow\operatorname{Vect}_{\mathbf C},
+ \qquad
+ \varepsilon_{x,A}:\operatorname{Mod}_A(\mathscr Q_X)
+                                  \longrightarrow\operatorname{Mod}_A.
+ \tag{RSP.2}
+\]
+For positive genus, (RSC.14) describes it by the exact underlying-vector-space functor on the ind-connection heart and its unbounded derived extension. It is conservative, because its cohomology is the underlying vector space of each cohomology representation. For genus zero it is the underlying complex of a module over the actual Hopf algebra \(B\), by (RSC.22)–(RSC.27). It is again conservative and t-exact. The diagonal representation action, or the primitive Hopf action, proves that both are symmetric monoidal. The free-action bar proves these assertions after any DG scalar extension as well. Thus the t-structure and zero objects in the internal coefficient category are detected by \(\varepsilon_{x,A}\).
+
+The finite-dimensional representations generate \(\operatorname{Rep}(H)\) under shifts and colimits. The coaction argument and exact Reynolds projection (HN.18) express its heart as filtered unions of finite representations and split every finite representation into simples. Its entire derived category is consequently generated by these degree-zero objects, with all their morphisms retained. A continuous tensor functor is specified by its restriction to that small tensor DG category and its full free-module bar. Right t-exactness is equivalent to requiring all its finite degree-zero representation values to be connective. The tensor, representation-map and unit diagrams must still be supplied; this is not a prescription only on their isomorphism classes.
+
+### 3.105. Finite coefficient windows and convergence on DG algebras
+
+We prove convergence of (RSP.1) without replacing an unbounded coefficient algebra by its ordinary ring. Write \(A_n=\tau^{\geq-n}A\). The category \(\mathscr Q_X\) is left-complete, by the full positive-genus argument (RSC.14) and the projective-line module argument (RSC.24). Limits of internal \(A\)-modules are computed in \(\mathscr Q_X\): all action maps on that limit are induced by the projections, and the limit of their relation diagrams supplies every coherence. The forgetful functor to \(\mathscr Q_X\) is conservative and t-exact. In particular the internal module category is left-complete.
+
+The following finite-window calculation fixes the transition functors. For \(r\geq0\), a module whose underlying cohomology lies in \([-r,0]\) has its entire action determined by \(A_r\):
+\[
+ \operatorname{Mod}_A(\mathscr Q_X)^{[-r,0]}
+       \simeq
+ \operatorname{Mod}_{A_r}(\mathscr Q_X)^{[-r,0]}.
+ \tag{RSP.3}
+\]
+This is an equivalence of window categories, not of the whole module categories. The transition from an \(A\)-module to this window means intelligent truncation after scalar extension. To prove it, let \(J\) be the fibre of \(A\to A_r\); it is in degrees at most \(-r-1\). For a connective \(M\), the tensor \(J\otimes_A M\) lies in those same degrees. Compute it by the relative free scalar bar: all coefficient and module factors are connective, and realization only lowers their cohomological upper bounds. Its augmentation triangle proves that \(M\to A_r\otimes_A M\) is an equivalence after truncation to this window.
+
+For the action itself, use a nonpositive coefficient model. A coefficient of degree below \(-r\), multiplied with a connective module input, has output below \(-r\). Any map from those discarded degrees to a target in \([-r,0]\) has contractible mapping space by t-structure orthogonality; the same holds after every nonnegative path shift. The full free-action diagram consists of maps out of tensors of coefficient factors with that module input. A term containing a discarded factor has this same upper bound. It therefore supplies no action or higher-relation choices in the window. The remaining diagrams are exactly the \(A_r\)-action diagrams, and their mapping spaces are the same limits. This proves (RSP.3), including all higher maps. It also shows directly that the two inverse window functors are restriction and intelligent truncation of extension.
+
+Now take a compatible family of connective \(A_n\)-modules \(M_n\), where compatibility means \(A_n\otimes_{A_{n+1}}M_{n+1}\simeq M_n\), with its higher data. Restrict its actions to \(A\). The preceding triangle shows that its window \([-r,0]\) is constant as soon as \(n\geq r\). Those stabilized windows form an actual compatible Postnikov tower. Left completeness reconstructs its module \(M\), and the compatible maps to the \(M_n\)'s identify it with their limit: maps from any test object are precisely the limits of the same compatible window maps.
+
+We check the scalar recovery rather than assume tensor commutes this limit. Fix \(n\), and then choose \(r\geq n\). The lower discarded part of \(M\) cannot affect the window \([-r,0]\) of \(A_n\otimes_A M\), because relative tensor with the connective \(A_n\) preserves that upper bound. Replacing \(A\) by \(A_r\) in this window also changes only terms below \(-r\), by the same scalar-bar calculation. Thus this window is the window of \(A_n\otimes_{A_r}M_r=M_n\). Since \(r\) can be arbitrarily large, left completeness proves the actual scalar recovery equivalence. Conversely this construction recovers a connective \(M\) from its scalar changes. Maps are recovered by the same limits of window mapping spaces. We have proved
+\[
+ \operatorname{Mod}_A(\mathscr Q_X)^{\leq0}
+    \simeq
+ \lim_n\operatorname{Mod}_{A_n}(\mathscr Q_X)^{\leq0}.
+ \tag{RSP.4}
+\]
+
+The tensor comparisons also converge. A tensor of connective inputs is connective, and a discarded lower-degree input cannot affect a fixed window of that tensor. Define the tensor in a window by truncating the actual relative tensor; association and symmetry descend because the discarded terms remain below the window. Every fixed finite tensor diagram is therefore recovered from these compatible windows. Its full coherent diagram is a limit of such operation and relation diagrams, so it is recovered as well. Applying this calculation to all finite representation values and all their tensor and morphism diagrams gives
+\[
+ \mathcal Z_H^{\mathrm{restr}}(X)(A)
+       \xrightarrow{\sim}
+ \lim_n \mathcal Z_H^{\mathrm{restr}}(X)(A_n).
+ \tag{RSP.5}
+\]
+The map is the actual scalar-change map. No exchange of an infinite colimit of representation windows with a Postnikov limit is used: each finite representation and each operation is handled first, and then limits of these functor diagrams commute with limits. In particular all negative coefficient degrees and every higher functor transformation survive.
+
+### 3.106. Faithfully flat descent of the complete target
+
+Call \(A\to A'\) derived faithfully flat when \(H^0(A')\) is faithfully flat over \(H^0(A)\) and
+\[
+ H^j(A')=H^j(A)\otimes_{H^0(A)}H^0(A')
+             \quad(j\leq0).
+ \tag{RSP.6}
+\]
+The whole unbounded scalar-module descent proof in (TBF.3)–(TBF.6) applies to this condition. We recall the steps relevant here. Flat scalar extension computes cohomology by the degree-zero flat extension and is conservative. Its augmented Amitsur complex on an ordinary module becomes split after this faithfully flat extension, by inserting the first unit. Its exactness descends. A bounded-below complex has only finitely many cosimplicial degrees contributing to any fixed total degree, so the same argument gives its full derived descent and all derived Hom comparisons. For an arbitrary complex take the inverse limit of its intelligent lower truncations. Flat extension commutes these particular Postnikov limits: both sides have the same eventually constant cohomology in each fixed degree. The difference-operator computation for ordinary modules proves effectivity, and limits of the two tower directions commute. This proves unbounded scalar descent without asserting that tensor commutes an arbitrary infinite product totalization.
+
+To transport it to \(\mathscr Q_X\), use its actual compact-module model. In positive genus the small DG category \(\mathscr L_X\) compactly generates by (RSC.14). In genus zero the free module \(B\) compactly generates by (RSC.26). For a small full DG category \(\mathcal D\) of compact generators and their finite cones and retracts, the representable free bar gives
+\[
+ \mathscr Q_X\simeq\operatorname{Mod}_{\mathcal D},\qquad
+ \operatorname{Mod}_A(\mathscr Q_X)
+       \simeq\operatorname{Mod}_{A\otimes_{\mathbf C}\mathcal D}.
+ \tag{RSP.7}
+\]
+The first statement is the full Hom/coend comparison already proved in (GSL.9); its detection argument uses the just-listed actual generators. The second identifies the commuting \(A\)-action and \(\mathcal D\)-action, and its entire free bar. Test descent on each object of \(\mathcal D\). It is exactly the unbounded \(A\)-module descent just proved. Each \(\mathcal D\)-action map then descends by the full Hom comparison; the equations and higher paths descend by their limits of mapping spaces. Thus, with \(A'^p\) denoting the \((p+1)\)-fold derived tensor over \(A\),
+\[
+ \operatorname{Mod}_A(\mathscr Q_X)
+    \xrightarrow{\sim}
+ \operatorname{Tot}_{p\geq0}
+      \operatorname{Mod}_{A'^p}(\mathscr Q_X).
+ \tag{RSP.8}
+\]
+This descent calculation is objectwise on a full DG generator model. It does not assume that the underlying-vector-space functor on the ind-connection heart preserves arbitrary products.
+
+These comparisons preserve the tensor, unit and braiding, since they are the original scalar-change functors and the fully faithful mapping comparisons preserve their defining diagrams. The connective condition is local: the fibre functor (RSP.2) detects it, and the ordinary faithfully flat coefficient extension detects every cohomology degree of that fibre. Finally, functors with specified tensor structure are limits of their object, map, tensor-operation and relation diagrams. Taking these limits in (RSP.8), and imposing the local connective condition on finite representation values, proves actual faithfully flat descent for (RSP.1).
+
+### 3.107. The genuine framed quotient, without a representability shortcut
+
+Compose \(z\in\mathcal Z_H^{\mathrm{restr}}(X)(A)\) with (RSP.2). Its finite representation values are dualizable connective \(A\)-modules, with duals and all tensor powers connective. The full projective criterion (CSD.4) makes each a finite projective derived \(A\)-module. Its rank is the original representation dimension: symmetric tensor functors preserve the coevaluation–symmetry–evaluation trace, which is that dimension over \(\mathbf C\). At any residue field the trace of the identity of a projective module is its ordinary rank. Characteristic zero makes equality of these integer scalars equality of their ranks.
+
+Apply the regular Hopf reconstruction (TBF.2)–(TBF.5), now on \(\operatorname{Spec}A\). It constructs the actual affine derived \(H\)-torsor \(\mathcal P_{z,x}\) from the regular representation algebra. Its scalar algebra is faithfully flat with every negative cohomology group retained; its two-fold tensor identity is the right torsor identity; its associated representation bundles are precisely these fibre values.
+
+Let \(\mathcal Y_H^{\mathrm{restr}}(X)\) be the fibre of the point evaluation over the neutral fibre functor, with the frame isomorphism included. For every actual derived affine \(z\), Hopf reconstruction and its complete naturality give the Cartesian comparison
+\[
+ \mathcal Y_H^{\mathrm{restr}}(X)
+       \times_{\mathcal Z_H^{\mathrm{restr}}(X)}\operatorname{Spec}A
+      \simeq\operatorname{Isom}_A^H
+                    (H_A,\mathcal P_{z,x}).
+ \tag{RSP.9}
+\]
+The right side is the actual frame torsor. The equivariant matrix comparisons in (TBF.5) prove the equality on all representation maps, tensor maps and higher transformations; it is not a statement just about ordinary isomorphism classes. It is representable affine, smooth, faithfully flat and of finite presentation over \(A\). Indeed after the same faithfully flat trivialization it is \(H_A\); the full torsor-descent proof used in (TBF.4) descends precisely those properties. The group acts by changing the frame.
+
+The two-fold fibre product of this cover is therefore \(\mathcal Y_H^{\mathrm{restr}}(X)\times H\), with the action-nerve maps. The entire higher fibre products are its corresponding iterated products, by the same torsor identity and its associativity. Apply the faithfully flat descent of §3.106 to the functor and its frame. The augmentation of this full action nerve gives
+\[
+ \mathcal Z_H^{\mathrm{restr}}(X)
+       \simeq
+ [\,\mathcal Y_H^{\mathrm{restr}}(X)/H\,]_{\mathrm{fpqc}}.
+ \tag{RSP.10}
+\]
+It identifies every object, arrow and higher path, and commutes with arbitrary scalar changes because all its bars and Cartesian frames do. This proves a genuine general-curve framed quotient of prestacks. It does **not** prove that the framed prestack is an affine scheme, an ind-affine ind-scheme, or a finite connection atlas. The finite full de Rham atlas of (DCA.23) is not a substitute for those missing restricted representability arguments.
+
+### 3.108. Exactly what bounded coefficients permit
+
+Let \(A\) have cohomology in \([-N,0]\), for some finite \(N\). Any point in (RSP.1) takes a finite representation to an object whose fibre is projective over \(A\), by the preceding criterion. Its fibre therefore has cohomology in that same interval, and t-exact conservativity of (RSP.2) gives that bound in \(\mathscr Q_X\).
+
+For positive genus the completed and ind targets are already equal by (RSC.14). For genus zero their full inclusion identifies all bounded-below objects, by the torsion proof (RSC.23)–(RSC.24). Hence every finite representation value lies in \(\mathscr I_X\). Its entire internal \(A\)-action lifts through that fully faithful continuous inclusion: all action maps, relations and higher homotopies lift uniquely, using their original mapping spaces. The tensor and representation maps lift in the same way. Extending from finite representations by the full continuous bar gives
+\[
+ \operatorname{Fun}^{\mathrm L,\otimes,\mathrm{rt}}
+   (\operatorname{Rep}(H),\operatorname{Mod}_A(\mathscr I_X))^\simeq
+       \xrightarrow{\sim}\mathcal Z_H^{\mathrm{restr}}(X)(A)
+       \quad(H^j(A)=0\text{ for }j<-N).
+ \tag{RSP.11}
+\]
+This comparison includes all functor transformations. It is explicitly the bounded-coefficient comparison. Convergence on arbitrary connective DG coefficients is (RSP.5), using the completed target. The non-effective tower in Solution 3.BZ prevents replacing that completed target by its ind-category for arbitrary objects.
+
+### 3.109. Original-field local finiteness in a faithful representation
+
+For an ordinary coefficient algebra \(A\) and positive genus, the heart of the actual internal category is the category of \(A\)-module objects in the ind-connection heart. An internal module in the heart is exactly a locally finite complex \(\Gamma\)-representation with commuting \(A\)-action: in the cohomological model all degree-zero action maps and their associativity are the ordinary heart maps, whose positive path spaces vanish. This identifies the actual ordinary meaning of the restricted point condition.
+
+Let \(P\) be a finite projective \(A\)-module, with a commuting \(A\)-linear \(\Gamma\)-action. If it is locally finite over \(\mathbf C\), choose finitely many \(A\)-generators and take the sum \(V\) of their finite \(\Gamma\)-orbit spans. The image algebra \(\mathcal A_\Gamma\) of \(\mathbf C[\Gamma]\) in \(\operatorname{End}_A(P)\) preserves \(V\). Restriction to \(V\) is injective: an \(A\)-linear operator killing those generators kills all of \(P\). Conversely if \(\mathcal A_\Gamma\) is finite-dimensional, \(\mathcal A_\Gamma p\) is a finite invariant span for every \(p\). We have therefore proved the exact ordinary criterion
+\[
+ P\text{ is locally finite over }\mathbf C
+    \quad\Longleftrightarrow\quad
+ \dim_{\mathbf C}\operatorname{im}
+      \bigl(\mathbf C[\Gamma]\to\operatorname{End}_A(P)\bigr)<\infty.
+ \tag{RSP.12}
+\]
+It does not require \(P\) to be a line or the image algebra to be commutative.
+
+For an \(H\)-torsor, it suffices to check this condition on one faithful representation and its dual. A faithful closed representation presents every finite \(H\)-representation as a subquotient of finite sums of tensor products of that representation and its dual: its matrix entries and inverse determinant generate the regular coefficient algebra, and a finite comodule embeds in finite copies of its finite coefficient span. This is the same concrete coefficient argument used in (GSL.10). Local finiteness is closed under finite tensors, sums, subobjects and quotients. It is also preserved by dualizing a finite projective \(A\)-module with locally finite action: the finite-dimensional image algebra is generated by finitely many invertible monodromy operators; their inverses lie in it, and their transposes act through its finite-dimensional opposite algebra. The transpose action on \(P^\vee\) consequently has finite-dimensional image. The coefficient subquotient argument therefore gives the criterion for every finite representation. This tests original-field local finiteness, not only finite rank over \(A\).
+
+### 3.110. A coefficient extension which fails the restricted test
+
+Take \(A=\mathbf C[t,t^{-1}]\), \(\Gamma=\mathbf Z\), and \(P=A\), with its generator acting by multiplication by \(t\). This is a free rank-one \(A\)-representation, but
+\[
+ \operatorname{im}\bigl(\mathbf C[\mathbf Z]\to\operatorname{End}_A(A)\bigr)
+       =\mathbf C[t,t^{-1}]
+ \tag{RSP.13}
+\]
+is infinite-dimensional over \(\mathbf C\). The orbit of \(1\) consists of the linearly independent Laurent monomials. Every closed complex specialization \(t=c\ne0\) is a finite-dimensional complex representation, so ordinary closed coefficient points do not detect the original-field local-finiteness failure of this family.
+
+The same argument holds over \(K=\overline{\mathbf C(t)}\): the powers of the distinguished transcendental element are still linearly independent over \(\mathbf C\). The resulting rank-one \(K\)-representation is finite over \(K\) and fails the restricted coefficient condition relative to \(\mathbf C\). This is the coefficient-level distinction also visible in the explicit operator submodule calculation (KF.14). It explains why generic field points of the full de Rham stack cannot be inserted into a restricted projector proof without their original-field condition.
+
+![Finite derived coefficient windows recover the genuine restricted tensor functor; full module descent and actual Hopf frames give the quotient of prestacks, while ind-affine representability and the nilpotent projector remain separate geometric arguments.](figures/restricted-prestack-foundations.svg)
+
+**Figure 3.27.** The full finite-window and scalar-recovery comparisons are (RSP.3)–(RSP.5); the unbounded coefficient descent is (RSP.6)–(RSP.8). The Cartesian torsor and the full quotient are (RSP.9)–(RSP.10), with bounded-coefficient replacement in (RSP.11). The bottom examples preserve the degree-minus-three tensor class, the original-field monodromy condition and the degree-two frame path of Solutions 3.CB–3.CD. The framed prestack has not here been proved affine or ind-affine.
+
+### 3.111. Derived windows, a flat cover and a higher frame path
+
+**Exercise 3.CB.** Put \(A=\mathbf C[z]\), \(|z|=-2\), \(dz=0\), so that \(A_1=\mathbf C\). Compute the actual derived scalar change of the augmentation module \(\mathbf C\). Explain the precise window equivalence of (RSP.3) and why it does not assert full DG equivalence of unrestricted module categories.
+
+**Solution 3.CB.** The finite semifree resolution is
+\[
+ Q=A\oplus A\theta,\qquad|\theta|=-3,\quad d\theta=z,
+ \qquad Q\xrightarrow{\sim}\mathbf C.
+ \tag{RSP.14}
+\]
+Multiplication by \(z\) injects the second summand, with the differential sign of its homogeneous coefficient. Its image is the positive-\(z\) ideal, leaving exactly the constant class. Thus
+\[
+ \mathbf C\otimes_A^{\mathbf L}\mathbf C
+       =\mathbf C\oplus\mathbf C\theta,\qquad
+ H^{-3}=\mathbf C\theta,\quad d\theta=0.
+ \tag{RSP.15}
+\]
+Truncating this module to \([-1,0]\) gives just \(\mathbf C\), exactly the window comparison. For \(\mathbf C\oplus\mathbf C[1]\), the extra scalar-change classes have degrees \(-3,-4\), still outside that window. On the other hand the same resolution gives
+\[
+ \operatorname{RHom}_A(\mathbf C,\mathbf C)
+       =\mathbf C\oplus\mathbf C[-3],\qquad
+ \operatorname{Hom}_A(\mathbf C,\mathbf C[3])=\mathbf C.
+ \tag{RSP.16}
+\]
+The target shift in the second assertion is outside \([-1,0]\). It detects the missing higher morphism of the whole module category, and so does not contradict the equivalence of window infinity-categories. This calculation tests both the derived tensor and the mapping-degree direction.
+
+**Exercise 3.CC.** For the family (RSP.13), make the faithfully flat coefficient change
+\[
+ \mathbf C[s,s^{-1}]\longrightarrow\mathbf C[t,t^{-1}],
+             \qquad s\longmapsto t^2 .
+ \tag{RSP.17}
+\]
+Can it make the rank-one family, with monodromy \(s\), locally finite over the original field?
+
+**Solution 3.CC.** The target is free of rank two with basis \(1,t\): every Laurent monomial has a unique even or odd exponent, giving this decomposition over the source. Projection onto the even part is a source-linear retraction of the unit, so flatness is faithful. The changed monodromy acts on \(1\) by the distinct powers \(t^{2j}\), \(j\in\mathbf Z\). Their Laurent linear independence proves that its image algebra is still infinite-dimensional over \(\mathbf C\). Thus this genuinely faithfully flat cover does not repair the restricted-condition failure. Every further closed complex specialization has finite-dimensional monodromy; those pointwise specializations are not a faithfully flat cover of the original family.
+
+**Exercise 3.CD.** Take the neutral restricted \(GL_2\) fibre functor and \(A=\mathbf C[\delta]/(\delta^2)\), \(|\delta|=-2\), \(d\delta=0\). Compute the whole frame space in (RSP.9), including its positive homotopy groups at the identity.
+
+**Solution 3.CD.** A frame is an invertible endomorphism of \(A^2\). Its full mapping complex is
+\[
+ \begin{gathered}
+ \operatorname{RHom}_A(A^2,A^2)=\operatorname{Mat}_2(A),\\
+ \pi_0\operatorname{GL}_2(A)=GL_2(\mathbf C),\\
+ \pi_i\operatorname{GL}_2(A)_{\mathrm{id}}
+       =\operatorname{Mat}_2H^{-i}(A)\quad(i>0).
+ \end{gathered}
+ \tag{RSP.18}
+\]
+Indeed an endomorphism is invertible exactly when its degree-zero cohomology matrix is invertible: multiplying by a lift of that inverse leaves a nullhomotopic difference, so the underlying derived endomorphism is an equivalence. Invertibility selects those components of the full endomorphism mapping space; it changes none of their higher homotopy groups. Hence the first loop group is zero, the second is \(\operatorname{Mat}_2(\mathbf C)\delta\), and all higher groups vanish. For \(C\in\operatorname{Mat}_2(\mathbf C)\), a representative of this second loop, with both parameter directions constant on their boundary, is
+\[
+ I_2+C\delta\,du\wedge dv .
+ \tag{RSP.19}
+\]
+It is a closed degree-zero matrix in the polynomial two-parameter de Rham path algebra, with inverse \(I_2-C\delta\,du\wedge dv\). Restriction to every boundary edge kills one of the displayed differentials and gives the identity. The two successive relative interval integrations identify its class with \(C\delta\); their one-variable contraction is the one used in Solution 3.CA. These are all its second loops. They are the actual frame homotopies, distinct from the first-loop coefficient-point homotopies in (RSC.38).
+
+The construction and comparisons proved here are (RSP.1)–(RSP.12), with the full coefficient example (RSP.13) and complete solutions (RSP.14)–(RSP.19). Framed restricted ind-affine representability, its concrete geometric charts, the actual restricted diagonal and localization, the restricted Hecke action and the genuine nilpotent Beilinson projector remain to be proved. Its singular-support image and chartwise original-field ind-regularity, all requested geometric ground fields and the remaining tempered and microlocal interfaces retain their full original scope. The free AGKRRV preprint, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), in “The prestack” and “Convergence,” gives the defining convergence and deformation framework; the finite-window, complete-module descent and full frame arguments above supply the claims used here.
 
 ## 4. Betti, constructible, and tempered categories
 

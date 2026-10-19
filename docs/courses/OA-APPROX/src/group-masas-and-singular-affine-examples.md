@@ -1,12 +1,12 @@
 # Group MASAs and singular affine examples
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
-Fourier coefficients turn commutation with a subgroup into a condition on conjugacy orbits. A second coefficient calculation detects unitary normalizers: a finite support can be moved so that a chosen coefficient contributes its squared absolute value without cancellation. For affine groups over infinite fields, this proves singularity of a MASA.
+A subgroup determines a Fourier-support projection in its group von Neumann algebra. Infinite conjugacy orbits characterize maximal abelianness. For affine groups, malnormality gives finite exceptional sets, and trace-norm estimates turn that group geometry into a proof of singularity for every unitary normalizer. Double cosets and independent coefficient tests describe further features of the same examples.
 
 The [regular-group operator foundations](regular-group-operator-foundations.md) prove the regular commutant, faithful normal trace, Fourier-support test and subgroup expectation directly. Its H03 proves separable predual for a countable group, and H04 proves that an infinite-dimensional tracial factor has type \(\mathrm{II}_1\). The group trace and expectation require no ICC hypothesis; ICC enters only in the factor conclusion.
 
-The freely readable comparison is [Sinclair–Smith, *The Pukánszky invariant for masas in group von Neumann factors*](https://people.tamu.edu/~rrsmith/papers/pukanszky.pdf), Example 5.1, manuscript pp. 15–17: it treats rational affine groups and particular infinite dilation subgroups. Sections 3–6 below prove the extension to every countably infinite field and every infinite dilation subgroup. The finite-support coefficient argument in Sections 4–5 is given in full. For the group trace, regular commutation and trace expectation used in Section 1, see [Anantharaman–Popa, *An introduction to II1 factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), §1.3.1, Lemma 1.3.4 through Proposition 1.3.9, and Theorem 9.1.2 with Remark 9.1.3.
+The freely readable comparison is [Sinclair–Smith, *The Pukánszky invariant for masas in group von Neumann factors*](https://people.tamu.edu/~rrsmith/papers/pukanszky.pdf), Example 5.1, manuscript pp.15–17. Its rational affine groups satisfy a finite-set condition used there to invoke a stronger singularity criterion. The complete mixing and normalizer argument below proves ordinary singularity for every countably infinite field and every infinite dilation subgroup. For the group trace, regular commutation and trace expectation, see [Anantharaman–Popa, *An introduction to II₁ factors*](https://idpoisson.fr/anantharaman/publications/IIun.pdf), §1.3.1, Lemma 1.3.4 through Proposition 1.3.9, and Theorem 9.1.2 with Remark 9.1.3. Their exact local constructions are linked in the foundations paragraph above.
 
 ## 1. Fourier coefficients and subgroup expectations
 
@@ -93,7 +93,98 @@ Finally, write \(h=(s,0)\), \(k=(t,0)\). The left side of (8) is \((sa/t,sb)\). 
 
 The full affine group is the case \(H=K^\times\). Keeping an arbitrary infinite dilation subgroup will also give all the finite multiplicities constructed in the [field-tower lesson](finite-field-towers-and-masa-multiplicities.md).
 
-## 4. A collision-free coefficient estimate
+## Singularity from malnormal mixing
+
+A MASA \(A\subset M\) is **singular** if every unitary \(u\) satisfying \(uAu^*=A\) belongs to \(A\).
+
+**Theorem 5.1.** The affine dilation MASA of Proposition 3.1 is singular for every infinite \(H\subset K^\times\).
+
+**Proof.** We use the infinite abelian subgroup \(H\) and its malnormality from Proposition 3.1. The subgroup expectation \(E_A\) is the bounded normal trace expectation of (4). It deletes the Fourier coefficients outside \(H\) and is an orthogonal projection in trace \(2\)-norm.
+
+First fix \(s,t\in G\setminus H\). There is at most one \(h\in H\) with \(sht\in H\). Indeed, if \(sh_1t\) and \(sh_2t\) both belong to \(H\), then
+\[
+ s h_1h_2^{-1}s^{-1}
+       =(sh_1t)(sh_2t)^{-1}\in H.
+\]
+Thus \(h_1h_2^{-1}\in H\cap s^{-1}Hs=\{e\}\), and \(h_1=h_2\). For finite sets \(S,T\subset G\setminus H\), at most \(|S||T|\) elements of \(H\) can satisfy any of the conditions \(sht\in H\). Consequently, for Fourier polynomials \(x_0,y_0\) supported respectively in \(S,T\),
+\[
+ E_A(x_0\lambda_h y_0)=0
+       \quad\text{outside a finite subset of }H.
+\tag{GM1}
+\]
+This is a statement about the whole expected operator, not just one of its coefficients.
+
+We extend it to arbitrary bounded \(x,y\in M\) with \(E_A(x)=E_A(y)=0\). Given \(\eta>0\), choose a finite Fourier polynomial \(y_0\), supported outside \(H\), with
+\[
+ \|y-y_0\|_2<\frac{\eta}{2(1+\|x\|)}.
+\]
+Such polynomials exist by (3); the coefficients on \(H\) vanish. The chosen polynomial is bounded, since its operator norm is at most the finite sum of the absolute values of its coefficients. After choosing it, choose another finite Fourier polynomial \(x_0\), also supported outside \(H\), with
+\[
+ \|x-x_0\|_2<\frac{\eta}{2(1+\|y_0\|)}.
+\]
+The order of these choices matters: no common operator-norm bound on the Fourier polynomials is needed.
+
+The trace gives \(\|ab\|_2\le\|a\|\|b\|_2\) and \(\|ab\|_2\le\|a\|_2\|b\|\). The first follows from \(a^*a\le\|a\|^2 1\) inside \(\tau(b^*a^*ab)\); the second follows by traciality from \(bb^*\le\|b\|^2 1\). Using these estimates, unitary invariance of the \(2\)-norm and contractivity of \(E_A\) in that norm gives, for every \(h\in H\),
+\[
+\begin{aligned}
+ \|E_A(x\lambda_h y-x_0\lambda_h y_0)\|_2
+ &\le \|x\|\|y-y_0\|_2
+          +\|x-x_0\|_2\|y_0\|\\
+ &<\eta.
+\end{aligned}
+\tag{GM2}
+\]
+Combining (GM1) and (GM2) proves
+\[
+ \|E_A(x\lambda_h y)\|_2\longrightarrow0
+       \qquad(h\in H,\ h\longrightarrow\infty),
+\tag{GM3}
+\]
+where the limit means that every positive error bound holds outside a finite subset of \(H\). Infinitude of \(H\) ensures that those complements are nonempty.
+
+Now let \(u\in M\) be a unitary with \(uAu^*=A\). Put
+\[
+ b=E_A(u),\qquad a=u-b.
+\]
+Then \(E_A(a)=0\), \(E_A(a^*)=0\), and \(\|b\|\le1\). For \(h\in H\), the normalizer identity puts \(u\lambda_hu^*\) in \(A\). Expanding \(u=b+a\), bimodularity kills the two mixed terms:
+\[
+\begin{aligned}
+ u\lambda_hu^*
+ &=E_A(u\lambda_hu^*)\\
+ &=b\lambda_hb^*+E_A(a\lambda_h a^*)\\
+ &=|b|^2\lambda_h+E_A(a\lambda_h a^*).
+\end{aligned}
+\tag{GM4}
+\]
+The last equality uses the abelianness of \(A\). Equation (GM3) makes the last term tend to zero in \(2\)-norm. The left side is unitary and has \(2\)-norm one, whereas
+\[
+ \||b|^2\lambda_h\|_2
+       =\|b^*b\|_2
+       \le\|b\|\|b\|_2
+       \le\|b\|_2.
+\]
+It follows that \(1\le\|b\|_2\). Orthogonal projection contractivity gives the reverse inequality. The Pythagorean identity now yields
+\[
+ \|u-b\|_2^2=\|u\|_2^2-\|b\|_2^2=0.
+\]
+Faithfulness of the trace gives \(u=b\in A\), proving singularity. \(\square\)
+
+The argument controls every unitary of \(L(G)\) that normalizes \(A\). The group calculation supplies the finite exceptional sets; the two successive Fourier approximations supply the bounded-operator limit. No classification, amenability, hyperfiniteness or stronger singularity criterion is used.
+
+## Double cosets of the affine action
+
+**Proposition 6.1.** If \([K^\times:H]=n\), the double-coset set \(H\backslash G/H\) has \(n+1\) elements: one is \(H\), and the others are indexed by \(K^\times/H\).
+
+**Proof.** Left and right dilation multiplication sends
+\[
+(a,b)\longmapsto(sa/t,sb),\qquad s,t\in H.
+\tag{20}
+\]
+If \(b=0\), the element belongs to \(H\). If \(b\ne0\), the multiplicative coset \(bH\) is unchanged. Conversely, for \(b'=sb\) with \(s\in H\), choose \(t=sa/a'\in H\) to carry \((a,b)\) to \((a',b')\). Thus \(bH\) completely identifies the double coset. \(\square\)
+
+The number \(n\) will become the homogeneous type I multiplicity of the left/right MASA commutant on the orthogonal complement of \(L^2(A)\). The [next lesson](double-cosets-and-intrinsic-masa-multiplicity.md) proves this and its invariance under isomorphisms of the ambient factors.
+
+## Independent finite-support coefficient tests
 
 For finite-support functions, convolution and involution are
 \[
@@ -146,52 +237,6 @@ It lies outside \(H\) whenever \(t\ne1\). The infinite subgroup \(H\) contains a
 
 To use Lemma 4.1, apply Lemma 4.2 to \(Bg_0^{-1}\). This translated support, rather than \(B\) itself, is exactly the support required in (11).
 
-## 5. Singularity without an operator-norm truncation assumption
-
-A MASA \(A\subset M\) is **singular** if every unitary \(u\) satisfying \(uAu^*=A\) belongs to \(A\).
-
-**Theorem 5.1.** The affine dilation MASA of Proposition 3.1 is singular for every infinite \(H\subset K^\times\).
-
-**Proof.** Let \(u\) be a unitary normalizer and fix \(g_0\notin H\). Choose finite sets \(B\) containing \(g_0\) and exhausting \(G\), and define the Fourier truncations
-\[
-x_B=\sum_{s\in B}\widehat u(s)\lambda_s.
-\tag{17}
-\]
-Equation (3) gives \(\delta_B=\|u-x_B\|_2\to0\) and \(\|x_B\|_2\le1\). No uniform bound on \(\|x_B\|\) is asserted or needed.
-
-Choose \(g_1\) from Lemma 4.2 for \(Bg_0^{-1}\), and let \(r_0=g_0^{-1}g_1g_0\notin H\). Since \(u^*\lambda_{g_1}u\in A\), its coefficient at \(r_0\) is zero. For arbitrary group unitaries \(v,w\), trace Cauchy–Schwarz gives
-\[
-\left|\tau\bigl(v^*(u^*wu-x_B^*wx_B)\bigr)\right|
-\le \|u-x_B\|_2\bigl(\|u\|_2+\|x_B\|_2\bigr)
-\le2\delta_B.
-\tag{18}
-\]
-Indeed, expand the difference as \((u-x_B)^*wu+x_B^*w(u-x_B)\); cyclicity and multiplication by the unitaries put both terms into the ordinary \(L^2\) pairing. This estimate is uniform in \(v,w\), even though \(g_1\) depends on \(B\).
-
-Apply (18) with \(v=\lambda_{r_0}\), \(w=\lambda_{g_1}\). Lemma 4.1 yields
-\[
-|\widehat u(g_0)|^2
-\le\widehat{x_B^*\lambda_{g_1}x_B}(r_0)
-\le2\delta_B.
-\tag{19}
-\]
-The coefficient is real and nonnegative by that lemma. Letting \(B\) increase proves \(\widehat u(g_0)=0\). Every coefficient outside \(H\) vanishes, so (4) gives \(u\in A\). \(\square\)
-
-Group-theoretic malnormality alone would control normalizers that are single group unitaries. The finite-support argument is what controls all unitaries of the von Neumann algebra.
-
-## 6. Counting the affine double cosets
-
-**Proposition 6.1.** If \([K^\times:H]=n\), the double-coset set \(H\backslash G/H\) has \(n+1\) elements: one is \(H\), and the others are indexed by \(K^\times/H\).
-
-**Proof.** Left and right dilation multiplication sends
-\[
-(a,b)\longmapsto(sa/t,sb),\qquad s,t\in H.
-\tag{20}
-\]
-If \(b=0\), the element belongs to \(H\). If \(b\ne0\), the multiplicative coset \(bH\) is unchanged. Conversely, for \(b'=sb\) with \(s\in H\), choose \(t=sa/a'\in H\) to carry \((a,b)\) to \((a',b')\). Thus \(bH\) completely identifies the double coset. \(\square\)
-
-The number \(n\) will become the homogeneous type I multiplicity of the left/right MASA commutant on the orthogonal complement of \(L^2(A)\). The [next lesson](double-cosets-and-intrinsic-masa-multiplicity.md) proves this and its invariance under isomorphisms of the ambient factors.
-
 ## 7. Exercises with complete solutions
 
 **Exercise 1.** Why does (4) characterize membership in \(L(H)\) for bounded operators, rather than merely describe a subspace of \(\ell^2(G)\)?
@@ -224,9 +269,16 @@ Here the stated parameter \(3\) is available in the full rational affine group, 
 
 *Solution.* Write the term as \(\tau((x_Bv)^*w(u-x_B))\). Cauchy–Schwarz bounds it by \(\|x_Bv\|_2\|w(u-x_B)\|_2=\|x_B\|_2\delta_B\). For the other term, cyclicity gives \(\tau((u-x_B)^*wu v^*)\), bounded by \(\delta_B\|u\|_2\). Both equalities use unitary invariance of the trace norm.
 
-**Exercise 8.** Why is it legitimate for the element \(g_1\) in the singularity proof to change with every Fourier truncation?
+**Exercise 8.** Fix a unitary normalizer \(u\) and \(g_0\notin H\). For each finite Fourier truncation \(x_B\) from (17), choose \(g_1\) by Lemma 4.2 for \(Bg_0^{-1}\). Prove that these choices may vary with \(B\), while their coefficient estimates still force \(\widehat u(g_0)=0\).
 
-*Solution.* The normalizer condition makes the relevant coefficient of \(u^*\lambda_{g_1}u\) zero for every choice in \(H\). The collision lemma gives nonnegativity for each finite support separately, and (18) is uniform over both group unitaries. Thus the fixed number \(|\widehat u(g_0)|^2\) is bounded by \(2\delta_B\to0\), regardless of which admissible \(g_1\) is chosen.
+*Solution.* Put \(r_0=g_0^{-1}g_1g_0\notin H\). The inverse normalizer relation gives \(u^*\lambda_{g_1}u\in A\), so its \(r_0\)-coefficient is zero. Lemma 4.1 and the uniform estimate (18), with \(v=\lambda_{r_0}\) and \(w=\lambda_{g_1}\), give
+\[
+ |\widehat u(g_0)|^2
+ \le\widehat{x_B^*\lambda_{g_1}x_B}(r_0)
+ \le 2\|u-x_B\|_2.
+\tag{19}
+\]
+The middle coefficient is real and nonnegative. The first inequality retains the fixed \(g_0\)-coefficient because \(g_0\in B\); the second is uniform in both group unitaries, even when they change with the truncation. Fourier square summability makes the final bound tend to zero. This proves the claimed vanishing without choosing one parameter that works for every support.
 
 **Exercise 9.** For the full affine group over a countably infinite field, compute the double-coset count and the normalizer algebra of its dilation MASA.
 
@@ -240,7 +292,7 @@ Here the stated parameter \(3\) is available in the full rational affine group, 
 
 Lajos Pukánszky, [*On Maximal Abelian Subrings of Factors of Type II₁*](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/9B7B38999C7306E6047079CB68C937B6/S0008414X00009949a.pdf/on-maximal-abelian-subrings-of-factors-of-type-ii.pdf), *Canadian Journal of Mathematics* 12 (1960), 289–296. Lemma 3, p. 293, uses the affine conjugation and finite excluded-parameter mechanism; Lemmas 4–5, pp. 293–296, connect regular product representations and multiplicative index to double cosets.
 
-Allan M. Sinclair and Roger R. Smith, [*The Pukánszky invariant for masas in group von Neumann factors*](https://people.tamu.edu/~rrsmith/papers/pukanszky.pdf), author-hosted manuscript of the 2005 *Illinois Journal of Mathematics* article, 49, 325–343. Example 5.1, manuscript pp. 15–17, gives the rational affine construction, trivial off-subgroup stabilizers and double-coset count. Its singularity route invokes a stronger externally cited criterion; Sections 4–5 above supply a complete direct proof of ordinary singularity at the stated general field hypotheses.
+Allan M. Sinclair and Roger R. Smith, [*The Pukánszky invariant for masas in group von Neumann factors*](https://people.tamu.edu/~rrsmith/papers/pukanszky.pdf), author-hosted manuscript of the 2005 *Illinois Journal of Mathematics* article, 49, 325–343. Example 5.1, manuscript pp. 15–17, gives the rational affine construction, trivial off-subgroup stabilizers and double-coset count. Its singularity route invokes a stronger externally cited criterion. The malnormal-mixing proof above writes out finite exceptional sets, two successive bounded Fourier approximations and the subgroup-expectation normalizer calculation, proving ordinary singularity at the stated general field hypotheses.
 
 Sorin Popa, [*Orthogonal pairs of subalgebras in finite factors*](https://imar.ro/~increst/1981/89_1981.pdf), INCREST preprint 89/1981, October 1981. Lemma 1.3 and the opening of §2, printed pp. 2–3 (PDF pp. 6–7), prove normalizer confinement using orthogonality for malnormal subgroups. Theorem 2.1, printed pp. 3–4, is a subfactor construction that uses the rational full affine group as an auxiliary group.
 
@@ -259,11 +311,26 @@ For an abelian subgroup, \(A\) really is abelian under the double-commutant defi
 
 The finite exclusions in Lemma 4.2 work in every characteristic. For an ordered distinct pair \((a,b),(a',b')\), different first coordinates give no collision. With equal first coordinates, \(b'=0\) permits a collision only if \(b=0\), which would make the pair equal; if \(b'\ne0\), the only possible parameter is \(t=b/b'\). There are at most \(|B|(|B|-1)\) parameters from distinct ordered pairs. Removing those and \(1\) from the infinite set \(H\) leaves an admissible parameter. The same argument applies to the finite translated set \(Bg_0^{-1}\). It uses no ordering of the field, no assumption of characteristic zero and no finite-index hypothesis.
 
-Each truncation in (17) is a bounded operator, since its norm is at most the finite number \(\sum_{s\in B}|\widehat u(s)|\). Those numbers need not have a common bound. For the second term of (18), the precise Hilbert-space pairing is
+<a id="uniform-fourier-coefficient-control"></a>
+
+The independent coefficient tests use the following uniform trace estimate. For a unitary \(u\), choose finite sets \(B\) exhausting \(G\), and put
 \[
-\tau\bigl(v^*x_B^*w(u-x_B)\bigr)
-=\tau\bigl((x_Bv)^*w(u-x_B)\bigr).
+ x_B=\sum_{s\in B}\widehat u(s)\lambda_s,\qquad
+ \delta_B=\|u-x_B\|_2\longrightarrow0,\qquad
+ \|x_B\|_2\le1.
+\tag{17}
 \]
-Its absolute value is at most \(\|x_B\|_2\|u-x_B\|_2\). Cyclicity puts the other term in the pairing of \(u-x_B\) with \(wuv^*\), whose trace-square norm is \(\|u\|_2\). This proves the uniform bound even when the two group unitaries vary with \(B\). The inverse normalizer relation is available too: multiplying \(uAu^*=A\) by \(u^*\) and \(u\) gives \(u^*Au=A\).
+Each \(x_B\) is bounded because \(\|x_B\|\le\sum_{s\in B}|\widehat u(s)|<\infty\). No common bound on these operator norms is used. For arbitrary group unitaries \(v,w\),
+\[
+ \left|\tau\bigl(v^*(u^*wu-x_B^*wx_B)\bigr)\right|
+ \le\delta_B(\|u\|_2+\|x_B\|_2)
+ \le2\delta_B.
+\tag{18}
+\]
+To prove it, expand the difference as \((u-x_B)^*wu+x_B^*w(u-x_B)\). Cyclicity turns the first trace term into the Hilbert pairing of \(u-x_B\) with \(wuv^*\), whose \(2\)-norm is \(\|u\|_2\). The second trace term is exactly
+\[
+ \tau\bigl((x_Bv)^*w(u-x_B)\bigr),
+\]
+whose absolute value is at most \(\|x_B\|_2\delta_B\). Trace Cauchy–Schwarz and unitary invariance give both estimates independently of \(v,w\). The inverse normalizer relation used in Exercise 8 follows by multiplying \(uAu^*=A\) by \(u^*\) and \(u\), giving \(u^*Au=A\). Thus this coefficient argument has all its bounded-operator and norm inputs even when the selected group elements vary.
 
 Finally the unitaries of \(A\) generate \(A\). If \(h=h^*\in A\) is a contraction, continuous functional calculus gives \(v=h+i(1-h^2)^{1/2}\in A\). Its two factors commute, so \(vv^*=v^*v=1\), and \(h=(v+v^*)/2\). Scaling and taking real and imaginary parts expresses every element as a linear combination of unitaries. Theorem 5.1 therefore makes the entire normalizer algebra equal to \(A\), as used in Exercise 9. The double-coset calculation has no hidden finiteness requirement: \((a,b)\), with \(a\in H\), is carried to \((1,b)\) by taking \(s=1,t=a\) in (20). Nonzero representatives are consequently classified exactly by \(bH\), for finite or infinite multiplicative index.

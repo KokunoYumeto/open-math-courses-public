@@ -561,6 +561,10 @@ Original exposition, examples and solutions are CC0. Linked prerequisite proofs 
 [G]: ../AN02-L189.html#complete-proof
 [F]: https://github.com/KokunoYumeto/open-math-courses-public/blob/5949a0e862f3d87dbc078ae57149cf10c2b37dd2/docs/courses/AN-01/prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md
 
+The elliptic counterpart for these same derivative classes is proved in [Noncharacteristic directions and microlocal regularity](../AN02-L199.html#complete-proof), Theorem 1.1. Its finite adjoint inverse keeps the forcing witness at its original index and does not assume that weights at multiplied indices are comparable.
+
+Propagation for all these admissible derivative classes is proved in [Resolving singular directions at a holomorphic boundary](../AN02-L201.html#complete-proof), Theorem 6.1. Its holomorphic spherical representation and fixed-shift estimates retain the same sequences without assuming polynomial growth.
+
 ## Complete proof
 
 Ordinary wavefront detects failure of smoothness. Analytic wavefront detects failure of analytic regularity. Between them, a derivative sequence can prescribe the growth allowed for each derivative order. Its wavefront set needs estimates at every order with a common constant. Smooth convergence alone does not preserve this stronger information.

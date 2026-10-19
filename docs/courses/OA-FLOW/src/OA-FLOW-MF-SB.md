@@ -1,6 +1,6 @@
 # MF-06: narrow scalar and vector integration bridge
 
-Original proof with independently reconstructed earlier inputs, 2026-10-04. This bridge proves the scalar kernel, continuous-function Fourier uniqueness and vectorwise integrals used in the modular fundamental theorem. Its mathematical inputs are actual earlier local proof bodies. New exposition and the original illustration are CC0-1.0 to the extent of rights held.
+The scalar kernel, continuous-function Fourier uniqueness and vectorwise integrals proved here are the analytic inputs to the modular fundamental theorem. The exposition and original illustration are dedicated under CC0-1.0 to the extent of rights held.
 
 <a id="oa-flow.mf-sb.1"></a>
 
@@ -161,4 +161,4 @@ The exact contour source is retained in [render_kernel_contour.py](../assets/mf-
 
 ## Exact scope
 
-SB-1–SB-4 and all six numbered identities are retained. Every scalar input now has a written earlier CF, SC, SF or FF proof; no historical contour, compact-trace or product-measure provider is a premise. This closes the bounded analytic input route for the general Hilbert-algebra argument. It does not prove the separate arbitrary-weight GNS and Hilbert-algebra correspondence.
+SB-1–SB-4 establish the scalar integral, contour and Fourier identities used in the general Hilbert-algebra argument, from the earlier CF, SC, SF and FF proofs. The arbitrary-weight GNS representation and its Hilbert-algebra correspondence are separate results.

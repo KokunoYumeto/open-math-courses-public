@@ -119,6 +119,16 @@ Call a cutoff-stable space local if membership of all its localized products imp
 
 For the pointwise assertion, fix a compactly supported cutoff \(\psi\). Choose finitely many of the \(\chi_x\) such that \(S=\sum_l|\chi_l|^2>0\) on a neighborhood of \(\operatorname{supp}\psi\). The smooth compactly supported multipliers \(a_l=\psi\overline{\chi_l}/S\), extended by zero off that neighborhood, satisfy \(\psi u=\sum_l a_l(\chi_lu)\in G\). Locality gives \(u\in G\). \(\square\)
 
+**Compact parts and familiar examples.** Write \(F^c\) for the elements of \(F\) with compact support in \(X\). Besides the equality of compact parts in Lemma 5.0, one has
+\[
+ F^c=F_{\mathrm{loc}}\cap\mathcal E'(X),
+ \qquad (F^c)_{\mathrm{loc}}=F_{\mathrm{loc}}.
+ \tag{L1}
+\]
+Indeed every cutoff product has compact support. Requiring that product to belong to \(F\) is therefore exactly the same as requiring it to belong to \(F^c\). This proves the second identity, and the first is the compact-support assertion of the lemma. In particular localizing the restrictions of a global weighted space or localizing its compactly supported elements gives the same local weighted space.
+
+The distribution space, \(C^j(X)\) for each nonnegative integer \(j\), and \(L^p_{\mathrm{loc}}(X)\) are local. A cutoff equal to one near each point identifies a distribution there with the corresponding function; the local functions agree on overlaps because they give the same distribution. Their regularity or local integrability therefore holds throughout \(X\). Compactly supported smooth functions and compactly supported distributions are cutoff-stable but are not local on a nonempty open set: every cutoff of the constant one belongs to those spaces, while one itself has support all of \(X\), not compactly contained in it. On \(\mathbb R^n\), the same constant proves that global \(L^p\) is not local for finite \(p\); the function \(x_1\) proves it for \(p=\infty\). These examples explain the need for the localization operation rather than a compact-support restriction alone.
+
 For an open \(X\subset\mathbb R^n\), define
 \[
 B_{p,k}^{\mathrm{loc}}(X)=
@@ -145,6 +155,8 @@ Condition (3) is necessary and sufficient for every bounded subset of \(B_{p,k_2
 
 **Proof.** The first two sufficiencies follow after applying the global results to a cutoff equal to one near each point. Their necessities follow by considering compactly supported distributions in a ball contained in \(X\). For the compactness sufficiency, apply Theorem 4.1 to \(\chi_lu_j\) on its fixed compact support and choose subsequences successively for \(l=1,2,\ldots\). A diagonal subsequence is Cauchy in every target seminorm, so Theorem 5.1 gives its limit. Both local spaces are metrizable; this sequential argument characterizes relative compactness. Conversely, the global unit ball with support in a fixed ball is bounded locally, and local convergence on that fixed support is global convergence. Theorem 4.1 then gives (3). \(\square\)
 
+On the empty open set all these local spaces contain only zero,so embeddings and compactness are automatic. The necessity statements for the weight conditions apply to nonempty open sets.
+
 **Proposition 5.3.** For nonzero \(Q\),
 \(Q(D):B_{p,k}^{\mathrm{loc}}(X)\to B_{p,k/S_Q}^{\mathrm{loc}}(X)\)
 is continuous. If \(u\in B_{p,k_1}^{\mathrm{loc}}(\mathbb R^n)\) has compact support and \(v\in B_{\infty,k_2}^{\mathrm{loc}}(\mathbb R^n)\), then
@@ -157,6 +169,76 @@ Countable intersections of these local spaces, with all their seminorms, are aga
 C^\infty(X)=\bigcap_{r=0}^\infty B_{\infty,\langle\xi\rangle^r}^{\mathrm{loc}}(X).
 \]
 Smooth localized functions have rapidly decreasing transforms, giving one inclusion. The derivative criterion with arbitrarily large \(r\) gives the other.
+
+The exponents need not be fixed in this characterization. For any sequence \(1\leq p_r\leq\infty\), one has
+\[
+ C^\infty(X)=\bigcap_{r=0}^\infty
+                   B_{p_r,\langle\xi\rangle^r}^{\mathrm{loc}}(X).
+ \tag{L2}
+\]
+The right side has its countable intersection topology. A compactly localized smooth function has a Schwartz transform and therefore belongs to every member. Conversely, to obtain \(j\) continuous derivatives, choose an integer \(r>j+n\). Then
+\((1+|\xi|)^j/\langle\xi\rangle^r\) is both bounded and integrable, hence belongs to every \(L^{p_r'}\), including both endpoints. The local derivative criterion in Proposition 5.2 makes the distribution \(C^j\). Since \(j\) is arbitrary, it is smooth. The same topology agrees with the usual smooth topology: each weighted seminorm is bounded by a finite smooth seminorm as in Theorem 5.1, and each compact smooth derivative seminorm is bounded by one of these weighted cutoff seminorms using the just chosen \(r\) and the continuous estimate of Theorem 3.1. Replacing \(\langle\xi\rangle^r\) by \((1+|\xi|)^r\) preserves the assertion, since their ratio lies between one and \(2^{r/2}\).
+
+## Intersections and the role of countability
+
+For any nonempty family of local weighted spaces, its intersection carries the topology generated by all the corresponding cutoff norms. This is a Hausdorff locally convex topology. For a countable family it is Fréchet: use a countable cutoff exhaustion for each member. A Cauchy sequence converges in each member; all the resulting limits coincide as distributions, so the common limit belongs to the intersection and convergence holds in every defining seminorm. Countability also supplies a countable family of seminorms. For an uncountable family that last conclusion can fail.
+
+**Proposition 6.1 (an uncountable intersection need not be metrizable).** Even in one spatial dimension, there is an uncountable family of moderate weights for which the intersection of the local spaces, with all its cutoff norms, is not metrizable and hence is not Fréchet.
+
+**Proof.** Let \(\mathscr A\) consist of all nonnegative, nondecreasing, one-Lipschitz functions \(a\) on \([0,\infty)\) such that \(a(0)=0\) and \(a(t)/t\to0\). For each such function set
+\[
+ k_a(\xi)=\exp\bigl(a(\log\langle\xi\rangle)\bigr),
+ \qquad
+ E=\bigcap_{a\in\mathscr A}B_{\infty,k_a}^{\mathrm{loc}}(\mathbb R).
+ \tag{I1}
+\]
+Both directions of \(\langle\xi+h\rangle\leq(1+|h|)\langle\xi\rangle\) give
+\[
+ |\log\langle\xi+h\rangle-\log\langle\xi\rangle|
+       \leq\log(1+|h|),\qquad
+ k_a(\xi+h)\leq(1+|h|)k_a(\xi).
+ \tag{I2}
+\]
+Thus every weight is moderate with the same constants, and
+\(1\leq k_a(\xi)\leq\langle\xi\rangle\).
+Every compact smooth function belongs to \(E\).
+
+If this topology were metrizable, a countable subfamily of its defining seminorms would generate it. To justify this, take a countable neighborhood base at zero. Inside each base neighborhood choose a finite intersection of balls for the original defining seminorms. The union of these finite collections is countable and still gives a neighborhood base. Enumerate its members as
+\[
+ q_j(u)=\|\chi_j u\|_{\infty,k_{a_j}}.
+ \tag{I3}
+\]
+A finite collection may be repeated to make such an enumeration.
+
+Set \(t_0=0\). Choose increasing numbers \(t_m\), with \(t_m\geq4t_{m-1}\) and \(t_m\geq m^3\), so large that
+\[
+ \max_{j\leq m}a_j(t_m)\leq\frac{t_m}{8m}.
+ \tag{I4}
+\]
+This is possible since each finite collection is sublinear. Put \(b_m=t_m/(4m)\), and let \(a_*\) interpolate linearly between \((0,0)\) and the successive points \((t_m,b_m)\). The values increase. The first slope is \(1/4\); each later slope is positive and at most \(1/(3m)\), because \(t_{m-1}\leq t_m/4\). The interpolation is therefore nondecreasing and one-Lipschitz. On each interval, its ratio to \(t\) lies between the ratios at the endpoints, which tend to zero. Hence \(a_*\in\mathscr A\), while
+\[
+ a_*(t_m)-\max_{j\leq m}a_j(t_m)
+                       \geq\frac{t_m}{8m}\longrightarrow\infty.
+ \tag{I5}
+\]
+
+Fix nonzero \(\phi\in C_c^\infty(\mathbb R)\), choose \(\psi=1\) near its support, and use the target seminorm
+\(q_*(u)=\|\psi u\|_{\infty,k_{a_*}}\).
+For \(u_\eta=e^{i\eta x}\phi(x)\), the modulation estimate (1), with the common bound (I2), gives
+\[
+ q_*(u_\eta)\geq c_\phi k_{a_*}(\eta),
+ \qquad q_j(u_\eta)\leq C_j k_{a_j}(\eta).
+ \tag{I6}
+\]
+Here \(c_\phi=\|\widehat\phi/(1+|\cdot|)\|_\infty>0\) is independent of the weight, and
+\(C_j=\|(1+|\cdot|)\widehat{\chi_j\phi}\|_\infty<\infty\).
+Choose \(\eta_m=\sqrt{e^{2t_m}-1}\), so \(\log\langle\eta_m\rangle=t_m\). Equation (I5) shows that \(q_*(u_{\eta_m})\) divided by the maximum of any fixed finite collection of the \(q_j(u_{\eta_m})\) tends to infinity. If that maximum is zero the proposed seminorm domination already fails, since the target is positive. Otherwise the fixed constants in (I6) do not affect the divergence.
+
+Continuity of a seminorm for a topology generated by other seminorms would bound it by a constant times the maximum of finitely many of them: take a basic neighborhood in its unit ball and rescale using homogeneity. We have contradicted this for \(q_*\). Thus the intersection topology is not metrizable. \(\square\)
+
+**Exercise 5 (advanced).** The functions \(a_j(t)=j\log(1+t/j)\), \(j\geq1\), all belong to \(\mathscr A\). Show that the additional function \(a_*(t)=\sqrt{1+t}-1\) belongs too and grows faster than every fixed finite collection of them. Deduce that the corresponding target cutoff seminorm cannot be controlled by finitely many of the seminorms using just these \(a_j\)'s and arbitrary fixed cutoffs.
+
+**Solution.** Each logarithmic function starts at zero, has derivative \(1/(1+t/j)\) between zero and one, and is sublinear. The square-root function has derivative \(1/(2\sqrt{1+t})\), so is nonnegative, increasing and one-Lipschitz, and it is sublinear. For each fixed \(j\), \(\log(1+t/j)/\sqrt t\to0\). For example the integral estimate \(\log s\leq4(s^{1/4}-1)\), \(s\geq1\), proves this without a differentiation-of-limits rule. Thus \(a_*(t)-\max_{j\leq r}a_j(t)\to\infty\) for every fixed \(r\). Use (I6) with frequencies having \(\log\langle\eta\rangle=t\); no finite seminorm domination is possible. This explicit countable family illustrates the domination issue. Proposition 6.1's diagonal construction is needed to defeat every possible countable selection from the full uncountable family.
 
 ## Exercises with solutions
 
@@ -183,3 +265,4 @@ Smooth localized functions have rapidly decreasing transforms, giving one inclus
 - Internal closed graph theorem: [Banach estimates, quotient spaces and compact parameter arguments](../prerequisites/banach-foundation-bridges.html#section-14-5), Section 14.5, with the target-seminorm estimate.
 - Internal compact-limit argument: [Continuous functionals, test families and compact limits](continuous-functionals-and-test-families.md), Proposition 3.1 and its following compact-frequency-ball adapter.
 - Internal cutoff construction: [Metric and topological foundations](../prerequisites/metric-foundation-bridges.html#section-13-10), Section 13.10.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Background on weighted Fourier spaces and localization.

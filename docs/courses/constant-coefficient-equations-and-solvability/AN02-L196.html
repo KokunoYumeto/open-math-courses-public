@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Harmonic potentials and real carriers</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L195.html">Previous lesson</a> · <a href="#4-recover-the-functional-from-an-arbitrary-odd-harmonic-potential">Harmonic reconstruction</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="harmonic-potentials-and-real-carriers">Harmonic potentials and real carriers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. CC0.</em></p>
+<p>An analytic functional is tested on holomorphic functions. It can use infinitely many derivatives, so it need not be a distribution. Its carrier says where those tests must be known. When a carrier lies in real space, one extra real coordinate makes its smallest possible location visible: it is exactly where an associated odd harmonic function fails to continue across the middle plane.</p>
+<p>We prove the correspondence for every compact real set, including disconnected sets. Read <a href="AN02-L167.html#4-gaussian-smoothing-in-a-complex-neighborhood">Gaussian analytic localization</a> for the approximation of a local analytic function by entire functions, and <a href="AN02-L132.html">Poisson extension and subharmonic comparison</a> for harmonic functions on balls. Basic references are Martineau's <em>Supports d'une fonctionnelle analytique et croissance de sa transformée de Fourier-Borel</em>, Sato's <em>Theory of Hyperfunctions, I</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>. The complete proof follows the solutions.</p>
+<h2 id="1-a-carrier-controls-local-analytic-tests">1. A carrier controls local analytic tests</h2>
+<p>An analytic functional carried by a compact real set <span class="math" data-index="0" data-tex="\(K\)">\(K\)</span> acts linearly on entire functions and satisfies</p>
+<span class="math math-display" id="learner-eq-RL1" data-index="1" data-tex="\[
+ |u(g)|\leq C_W\sup_W|g|
+ \tag{RL1}
+\]">\[
+ |u(g)|\leq C_W\sup_W|g|
+ \tag{RL1}
+\]</span>
+<p>for every complex neighborhood <span class="math" data-index="2" data-tex="\(W\)">\(W\)</span> of <span class="math" data-index="3" data-tex="\(K\)">\(K\)</span>. Each neighborhood has its own constant. There is no single finite derivative order in this definition.</p>
+<p>Lemma 1.1 in the complete proof shows that this also gives a unique action on every holomorphic germ near <span class="math" data-index="4" data-tex="\(K\)">\(K\)</span>. Here is the mechanism. Cut off the real restriction of the local analytic function, then convolve it with an entire Gaussian. The contour argument in <a href="AN02-L167.html#4-gaussian-smoothing-in-a-complex-neighborhood">Gaussian analytic localization</a>, Lemma 4.1, proves convergence on a fixed complex neighborhood of the whole compact real set. Equation (RL1) then passes the functional to the limit. The set may have gaps or infinitely many components; it need not be convex.</p>
+<p>The adjective real matters. A complex carrier can surround regions in which entire tests are constrained by holomorphy. Example 4 will show why intersection of two complex carriers can fail.</p>
+<h2 id="2-let-the-functional-act-on-a-poisson-kernel">2. Let the functional act on a Poisson kernel</h2>
+<p>Put <span class="math" data-index="5" data-tex="\(d=n+1\)">\(d=n+1\)</span>, and let <span class="math" data-index="6" data-tex="\(\sigma_d\)">\(\sigma_d\)</span> be the area of the unit sphere in <span class="math" data-index="7" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. We use</p>
+<span class="math math-display" id="learner-eq-RL2" data-index="8" data-tex="\[
+ P(x,t)=\frac{t}{\sigma_d(|x|^2+t^2)^{d/2}},
+ \qquad U_u(x,t)=u_y(P(x-y,t)).
+ \tag{RL2}
+\]">\[
+ P(x,t)=\frac{t}{\sigma_d(|x|^2+t^2)^{d/2}},
+ \qquad U_u(x,t)=u_y(P(x-y,t)).
+ \tag{RL2}
+\]</span>
+<p>The potential is defined away from <span class="math" data-index="9" data-tex="\(K\times\{0\}\)">\(K\times\{0\}\)</span>, because the kernel there is holomorphic near the source set. It is odd in <span class="math" data-index="10" data-tex="\(t\)">\(t\)</span>, harmonic off that carrier, and decays at infinity. Its upper half-space mass is one half. Thus for a compact distribution the two traces are</p>
+<span class="math math-display" id="learner-eq-RL3" data-index="11" data-tex="\[
+ U_u(\cdot,0+)=\tfrac12u,\qquad
+ U_u(\cdot,0-)=-\tfrac12u.
+ \tag{RL3}
+\]">\[
+ U_u(\cdot,0+)=\tfrac12u,\qquad
+ U_u(\cdot,0-)=-\tfrac12u.
+ \tag{RL3}
+\]</span>
+<p>The difference is the original distribution. For a general analytic functional, the reconstruction uses analytic moments rather than distributional traces.</p>
+<p>To test a moment <span class="math" data-index="12" data-tex="\(g\)">\(g\)</span>, lift it to the odd harmonic function</p>
+<span class="math math-display" id="learner-eq-RL4" data-index="13" data-tex="\[
+ H_g(z,t)=tg(z)-\frac{t^3}{3!}\Delta_zg(z)
+                  +\frac{t^5}{5!}\Delta_z^2g(z)-\cdots.
+ \tag{RL4}
+\]">\[
+ H_g(z,t)=tg(z)-\frac{t^3}{3!}\Delta_zg(z)
+                  +\frac{t^5}{5!}\Delta_z^2g(z)-\cdots.
+ \tag{RL4}
+\]</span>
+<p>For entire <span class="math" data-index="14" data-tex="\(g\)">\(g\)</span>, this series converges on every compact complex set. It has normal derivative <span class="math" data-index="15" data-tex="\(g\)">\(g\)</span> on the middle plane. If <span class="math" data-index="16" data-tex="\(\chi\)">\(\chi\)</span> is any smooth compact cutoff equal to one near the carrier, then</p>
+<span class="math math-display" id="learner-eq-RL5" data-index="17" data-tex="\[
+ u(g)=-\int U_u\Delta(\chi H_g).
+ \tag{RL5}
+\]">\[
+ u(g)=-\int U_u\Delta(\chi H_g).
+ \tag{RL5}
+\]</span>
+<p>Only a compact shell away from the carrier contributes. The minus sign follows from the distributional identity for the derivative of the positive-Laplacian fundamental solution. Section 3 of the proof checks it directly.</p>
+<p>Every odd harmonic function outside <span class="math" data-index="18" data-tex="\(K\times\{0\}\)">\(K\times\{0\}\)</span> produces a functional by (RL5). Two such functions produce the same functional exactly when their difference extends harmonically across the whole plane. Their equivalence class has one representative decaying at infinity. These assertions, including the extension step, are proved in Theorem 4.2.</p>
+<h2 id="3-four-examples">3. Four examples</h2>
+<h3 id="example-1-a-derivative-changes-the-potential-s-shape">Example 1: a derivative changes the potential's shape</h3>
+<p>In one original dimension,</p>
+<span class="math math-display" id="learner-eq-RL6" data-index="19" data-tex="\[
+ P(x,t)=\frac{t}{2\pi(x^2+t^2)},\qquad
+ u=\partial_x\delta_0+(1+i)\delta_0.
+ \tag{RL6}
+\]">\[
+ P(x,t)=\frac{t}{2\pi(x^2+t^2)},\qquad
+ u=\partial_x\delta_0+(1+i)\delta_0.
+ \tag{RL6}
+\]</span>
+<p>Its action and potential are</p>
+<span class="math math-display" id="learner-eq-RL7" data-index="20" data-tex="\[
+ u(g)=-g&#x27;(0)+(1+i)g(0),\qquad
+ U_u(x,t)=-\frac{xt}{\pi(x^2+t^2)^2}
+                         +(1+i)\frac{t}{2\pi(x^2+t^2)}.
+ \tag{RL7}
+\]">\[
+ u(g)=-g&#x27;(0)+(1+i)g(0),\qquad
+ U_u(x,t)=-\frac{xt}{\pi(x^2+t^2)^2}
+                         +(1+i)\frac{t}{2\pi(x^2+t^2)}.
+ \tag{RL7}
+\]</span>
+<p>The derivative term has the displayed negative sign. Both terms are odd in <span class="math" data-index="21" data-tex="\(t\)">\(t\)</span>. The functional is nonzero, supported at zero, and its potential cannot extend harmonically through the origin.</p>
+<p>For a concrete analytic test take <span class="math" data-index="22" data-tex="\(g(z)=z^3\)">\(g(z)=z^3\)</span>. Its lift is</p>
+<span class="math math-display" id="learner-eq-RL8" data-index="23" data-tex="\[
+ H_g(z,t)=z^3t-zt^3.
+ \tag{RL8}
+\]">\[
+ H_g(z,t)=z^3t-zt^3.
+ \tag{RL8}
+\]</span>
+<p>The two second derivatives cancel, its normal derivative at zero is <span class="math" data-index="24" data-tex="\(z^3\)">\(z^3\)</span>, and the moment is zero. For <span class="math" data-index="25" data-tex="\(g(z)=z\)">\(g(z)=z\)</span> the lift is <span class="math" data-index="26" data-tex="\(zt\)">\(zt\)</span> and the moment is <span class="math" data-index="27" data-tex="\(-1\)">\(-1\)</span>. Formula (RL5) recovers each value from a shell surrounding the origin.</p>
+<h3 id="example-2-two-real-points-do-not-fill-the-interval-between-them">Example 2: two real points do not fill the interval between them</h3>
+<p>Take</p>
+<span class="math math-display" id="learner-eq-RL9" data-index="28" data-tex="\[
+ v=2\delta_{-1}-3\delta_2,
+ \qquad U_v(x,t)=2P(x+1,t)-3P(x-2,t).
+ \tag{RL9}
+\]">\[
+ v=2\delta_{-1}-3\delta_2,
+ \qquad U_v(x,t)=2P(x+1,t)-3P(x-2,t).
+ \tag{RL9}
+\]</span>
+<p>The smallest real carrier is <span class="math" data-index="29" data-tex="\(\{-1,2\}\)">\(\{-1,2\}\)</span>, although its convex hull is the interval <span class="math" data-index="30" data-tex="\([-1,2]\)">\([-1,2]\)</span>. The potential is harmonic across the middle plane at every other real point, including every point strictly between the atoms. Its total mass is <span class="math" data-index="31" data-tex="\(-1\)">\(-1\)</span>, and its first moment is <span class="math" data-index="32" data-tex="\(-8\)">\(-8\)</span>. A holomorphic function defined on disjoint neighborhoods of the two points is a legitimate local test, with action twice its left value minus three times its right value.</p>
+<figure><img class="course-figure" loading="lazy" width="1749" height="957" src="reproduce/L196/figures/two-atoms-and-harmonic-continuation.png" alt="The odd harmonic potential of two unequal signed atoms has singularities at two separate points of the middle plane. It continues across the interval between them." /><figcaption class="native"><a href="reproduce/L196/figures/two-atoms-and-harmonic-continuation.png">Open full-size PNG</a> · <a href="reproduce/L196/figures/two-atoms-and-harmonic-continuation.svg">Open SVG</a></figcaption></figure>
+<p>The color field shows <span class="math" data-index="33" data-tex="\(U_v\)">\(U_v\)</span> itself away from the two marked singularities. The horizontal coordinate is the original real coordinate; the vertical coordinate is the added real coordinate. The displayed holes have radius <span class="math" data-index="34" data-tex="\(3/25\)">\(3/25\)</span> and keep the divergent values out of the color scale. The carrier consists of the two marked points. Odd reflection reverses the potential's sign.</p>
+<h3 id="example-3-infinitely-many-derivatives-at-one-real-point">Example 3: infinitely many derivatives at one real point</h3>
+<p>The series</p>
+<span class="math math-display" id="learner-eq-RL10" data-index="35" data-tex="\[
+ w(g)=\sum_{k=0}^\infty\frac{g^{(k)}(0)}{(k!)^2}
+ \tag{RL10}
+\]">\[
+ w(g)=\sum_{k=0}^\infty\frac{g^{(k)}(0)}{(k!)^2}
+ \tag{RL10}
+\]</span>
+<p>defines an analytic functional carried by zero. If <span class="math" data-index="36" data-tex="\(g\)">\(g\)</span> is holomorphic past a radius-<span class="math" data-index="37" data-tex="\(r\)">\(r\)</span> disk and bounded there by <span class="math" data-index="38" data-tex="\(M\)">\(M\)</span>, Cauchy's estimate gives</p>
+<span class="math math-display" id="learner-eq-RL11" data-index="39" data-tex="\[
+ |w(g)|\leq M\sum_{k=0}^\infty\frac{r^{-k}}{k!}
+                         =Me^{1/r}.
+ \tag{RL11}
+\]">\[
+ |w(g)|\leq M\sum_{k=0}^\infty\frac{r^{-k}}{k!}
+                         =Me^{1/r}.
+ \tag{RL11}
+\]</span>
+<p>The functional has nonzero value <span class="math" data-index="40" data-tex="\(1/m!\)">\(1/m!\)</span> on every monomial <span class="math" data-index="41" data-tex="\(z^m\)">\(z^m\)</span>. It is not a distribution. Indeed a distribution of order at most <span class="math" data-index="42" data-tex="\(N\)">\(N\)</span>, supported at zero, kills every smooth test whose derivatives through order <span class="math" data-index="43" data-tex="\(N\)">\(N\)</span> vanish there. To see this, multiply such a test by a cutoff supported in a radius-<span class="math" data-index="44" data-tex="\(r\)">\(r\)</span> ball and equal to one near zero. Taylor's formula and the product rule bound every derivative through order <span class="math" data-index="45" data-tex="\(N\)">\(N\)</span> of that product by a quantity tending to zero as <span class="math" data-index="46" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>. Finite-order continuity and the support condition then give zero. Applying this to a cutoff times <span class="math" data-index="47" data-tex="\(x^{N+1}\)">\(x^{N+1}\)</span> contradicts the displayed nonzero monomial value.</p>
+<p>Its potential is the locally uniformly convergent series</p>
+<span class="math math-display" id="learner-eq-RL12" data-index="48" data-tex="\[
+ U_w(x,t)=\sum_{k=0}^\infty
+      \frac{\partial_y^kP(x-y,t)|_{y=0}}{(k!)^2}
+                     \quad ((x,t)\ne(0,0)).
+ \tag{RL12}
+\]">\[
+ U_w(x,t)=\sum_{k=0}^\infty
+      \frac{\partial_y^kP(x-y,t)|_{y=0}}{(k!)^2}
+                     \quad ((x,t)\ne(0,0)).
+ \tag{RL12}
+\]</span>
+<p>Cauchy bounds for the kernel on a complex disk about the source point prove this convergence, with every fixed observation derivative on compact sets away from the origin. Its smallest real carrier is still the single point. Theorem 4.2 therefore includes objects beyond distributions.</p>
+<h3 id="example-4-intersecting-complex-arcs-is-a-different-problem">Example 4: intersecting complex arcs is a different problem</h3>
+<p>Let <span class="math" data-index="49" data-tex="\(\gamma_\pm(s)=s\pm i s(1-s)\)">\(\gamma_\pm(s)=s\pm i s(1-s)\)</span>, for <span class="math" data-index="50" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>. Each curve joins zero to one. Every entire <span class="math" data-index="51" data-tex="\(g\)">\(g\)</span> has an entire primitive, so</p>
+<span class="math math-display" id="learner-eq-RL13" data-index="52" data-tex="\[
+ a(g)=\int_0^1g(s)\,ds
+     =\int_{\gamma_+}g(z)\,dz
+     =\int_{\gamma_-}g(z)\,dz.
+ \tag{RL13}
+\]">\[
+ a(g)=\int_0^1g(s)\,ds
+     =\int_{\gamma_+}g(z)\,dz
+     =\int_{\gamma_-}g(z)\,dz.
+ \tag{RL13}
+\]</span>
+<p>The arc-length bound makes either complex arc a carrier. Their intersection is <span class="math" data-index="53" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>. It is not a carrier: the first integral is the ordinary distribution given by Lebesgue measure on <span class="math" data-index="54" data-tex="\([0,1]\)">\([0,1]\)</span>, whose support is the full interval. The distribution-support part of Theorem 5.1 identifies this with its smallest real carrier. Thus the real-carrier intersection theorem does not extend to arbitrary complex sets.</p>
+<figure><img class="course-figure" loading="lazy" width="1815" height="775" src="reproduce/L196/figures/real-carriers-and-complex-arcs.png" alt="Two complex parabolic arcs join zero to one and carry the same analytic functional, while the smallest real carrier is the full interval between the endpoints." /><figcaption class="native"><a href="reproduce/L196/figures/real-carriers-and-complex-arcs.png">Open full-size PNG</a> · <a href="reproduce/L196/figures/real-carriers-and-complex-arcs.svg">Open SVG</a></figcaption></figure>
+<p>The axes here are the real and imaginary coordinates of the complex source variable. They are different from the two real coordinates in the preceding harmonic-potential figure. The highest imaginary coordinate of the upper arc is <span class="math" data-index="55" data-tex="\(1/4\)">\(1/4\)</span>, attained at <span class="math" data-index="56" data-tex="\(s=1/2\)">\(s=1/2\)</span>; the lower arc is its reflection. The full real segment is separately marked as the smallest real carrier.</p>
+<h2 id="4-eight-exercises">4. Eight exercises</h2>
+<ol>
+<li><strong>Basic, 10 points.</strong> For <span class="math" data-index="57" data-tex="\(b=3\delta_{-2}+i\partial_x\delta_1\)">\(b=3\delta_{-2}+i\partial_x\delta_1\)</span>, calculate its action on <span class="math" data-index="58" data-tex="\(1,z,z^2\)">\(1,z,z^2\)</span> and write its normalized harmonic potential. State its smallest real carrier.</li>
+<li><strong>Basic, 10 points.</strong> In two original variables, compute the harmonic lift of <span class="math" data-index="59" data-tex="\(g=z_1^2+2z_1z_2+3z_2^2\)">\(g=z_1^2+2z_1z_2+3z_2^2\)</span>, and verify its equation and normal data.</li>
+<li><strong>Intermediate, 12 points.</strong> Explain why the constant one cannot be used in place of the cutoff in (RL5). Then prove that adding <span class="math" data-index="60" data-tex="\(t\)">\(t\)</span>, an entire odd harmonic function, to a potential does not change the functional.</li>
+<li><strong>Intermediate, 12 points.</strong> Let <span class="math" data-index="61" data-tex="\(K_1=[-3,-1]\cup[1,3]\)">\(K_1=[-3,-1]\cup[1,3]\)</span> and <span class="math" data-index="62" data-tex="\(K_2=[-2,2]\)">\(K_2=[-2,2]\)</span>. If the same functional is carried by both, give a carrier containing neither of the gaps <span class="math" data-index="63" data-tex="\((-1,1)\)">\((-1,1)\)</span> and <span class="math" data-index="64" data-tex="\((2,3)\)">\((2,3)\)</span>. Does the conclusion require a finite-order bound?</li>
+<li><strong>Intermediate, 14 points.</strong> For the infinite-order functional in Example 3, compute its value on <span class="math" data-index="65" data-tex="\(e^{\lambda z}\)">\(e^{\lambda z}\)</span>, prove entire dependence on <span class="math" data-index="66" data-tex="\(\lambda\)">\(\lambda\)</span>, and evaluate its first four monomial moments.</li>
+<li><strong>Advanced, 14 points.</strong> Work in three total real dimensions. For <span class="math" data-index="67" data-tex="\(|X|&gt;2|Y|\)">\(|X|&gt;2|Y|\)</span>, write the first three homogeneous terms of <span class="math" data-index="68" data-tex="\(1/|X-Y|\)">\(1/|X-Y|\)</span> as polynomials in <span class="math" data-index="69" data-tex="\(Y\)">\(Y\)</span>, and verify that each is harmonic in <span class="math" data-index="70" data-tex="\(Y\)">\(Y\)</span>. Explain their role in the zero-residue proof.</li>
+<li><strong>Advanced, 14 points.</strong> A compact distribution <span class="math" data-index="71" data-tex="\(q\)">\(q\)</span> has a potential extending harmonically across a real open set <span class="math" data-index="72" data-tex="\(O\)">\(O\)</span> in the middle plane. Prove <span class="math" data-index="73" data-tex="\(q|_O=0\)">\(q|_O=0\)</span> using both one-sided limits, and identify where the half normalization enters.</li>
+<li><strong>Advanced, 14 points.</strong> Verify the endpoint intersection and carrier bounds in Example 4. Prove directly that its functional cannot be carried by <span class="math" data-index="74" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>, using a local holomorphic test and Lemma 1.1.</li>
+</ol>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The action is <span class="math" data-index="75" data-tex="\(b(g)=3g(-2)-ig&#x27;(1)\)">\(b(g)=3g(-2)-ig&#x27;(1)\)</span>. Thus</p>
+<span class="math math-display" id="learner-eq-RL14" data-index="76" data-tex="\[
+ b(1)=3,\qquad b(z)=-6-i,\qquad b(z^2)=12-2i.
+ \tag{RL14}
+\]">\[
+ b(1)=3,\qquad b(z)=-6-i,\qquad b(z^2)=12-2i.
+ \tag{RL14}
+\]</span>
+<p>Its potential is <span class="math" data-index="77" data-tex="\(3P(x+2,t)+i\partial_xP(x-1,t)\)">\(3P(x+2,t)+i\partial_xP(x-1,t)\)</span>, with the positive coefficient of the observation derivative supplied by (RC24). Each of the two isolated points has a nonzero supported component, so the ordinary distributional support, and hence the smallest real carrier, is <span class="math" data-index="78" data-tex="\(\{-2,1\}\)">\(\{-2,1\}\)</span>.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>The spatial Laplacian of <span class="math" data-index="79" data-tex="\(g\)">\(g\)</span> is <span class="math" data-index="80" data-tex="\(8\)">\(8\)</span>, and its second Laplacian is zero. Hence</p>
+<span class="math math-display" id="learner-eq-RL15" data-index="81" data-tex="\[
+ H_g=t(z_1^2+2z_1z_2+3z_2^2)-\frac43t^3.
+ \tag{RL15}
+\]">\[
+ H_g=t(z_1^2+2z_1z_2+3z_2^2)-\frac43t^3.
+ \tag{RL15}
+\]</span>
+<p>Its spatial Laplacian is <span class="math" data-index="82" data-tex="\(8t\)">\(8t\)</span>; its second normal derivative is <span class="math" data-index="83" data-tex="\(-8t\)">\(-8t\)</span>. Its value at <span class="math" data-index="84" data-tex="\(t=0\)">\(t=0\)</span> is zero and its first normal derivative there is <span class="math" data-index="85" data-tex="\(g\)">\(g\)</span>. These verify all the required data.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The cutoff makes the Laplacian of its product with the lift compactly supported away from the singular carrier. Replacing it by one removes that shell: the lift itself is harmonic, so a formal integral would give zero for every moment. Distributional integration by parts at the singular carrier would no longer be justified by an ordinary integral.</p>
+<p>For the added function <span class="math" data-index="86" data-tex="\(t\)">\(t\)</span>, ordinary integration by parts over the compact support of <span class="math" data-index="87" data-tex="\(\chi H_g\)">\(\chi H_g\)</span> gives <span class="math" data-index="88" data-tex="\(\int t\Delta(\chi H_g)=\int(\Delta t)\chi H_g=0\)">\(\int t\Delta(\chi H_g)=\int(\Delta t)\chi H_g=0\)</span>. Thus it changes no moment. It fails the decay normalization at infinity, which explains why normalization removes this ambiguity.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The intersection theorem gives <span class="math" data-index="89" data-tex="\([-2,-1]\cup[1,2]\)">\([-2,-1]\cup[1,2]\)</span> as a carrier. It excludes both displayed open gaps. It may still contain points where the functional is zero; only the intersection of all real carriers is asserted to be the smallest one. The theorem applies to analytic functionals without any distributional-order assumption.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>Since the <span class="math" data-index="90" data-tex="\(k\)">\(k\)</span>-th derivative of the exponential at zero is <span class="math" data-index="91" data-tex="\(\lambda^k\)">\(\lambda^k\)</span>,</p>
+<span class="math math-display" id="learner-eq-RL16" data-index="92" data-tex="\[
+ w(e^{\lambda z})=\sum_{k=0}^\infty\frac{\lambda^k}{(k!)^2}.
+ \tag{RL16}
+\]">\[
+ w(e^{\lambda z})=\sum_{k=0}^\infty\frac{\lambda^k}{(k!)^2}.
+ \tag{RL16}
+\]</span>
+<p>On <span class="math" data-index="93" data-tex="\(|\lambda|\leq R\)">\(|\lambda|\leq R\)</span> the terms are bounded by <span class="math" data-index="94" data-tex="\(R^k/(k!)^2\)">\(R^k/(k!)^2\)</span>, whose successive ratio tends to zero. The same argument on a larger disk controls every fixed derivative, proving entire dependence. The moments of <span class="math" data-index="95" data-tex="\(1,z,z^2,z^3\)">\(1,z,z^2,z^3\)</span> are <span class="math" data-index="96" data-tex="\(1,1,1/2,1/6\)">\(1,1,1/2,1/6\)</span>. No common finite-order real test estimate follows from this holomorphic convergence.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>Set <span class="math" data-index="97" data-tex="\(r=|X|\)">\(r=|X|\)</span>. The first three terms are</p>
+<span class="math math-display" id="learner-eq-RL17" data-index="98" data-tex="\[
+ \frac1r,\qquad \frac{X\cdot Y}{r^3},\qquad
+ \frac{3(X\cdot Y)^2-r^2|Y|^2}{2r^5}.
+ \tag{RL17}
+\]">\[
+ \frac1r,\qquad \frac{X\cdot Y}{r^3},\qquad
+ \frac{3(X\cdot Y)^2-r^2|Y|^2}{2r^5}.
+ \tag{RL17}
+\]</span>
+<p>The first two are harmonic because they are constant and linear. In three dimensions, <span class="math" data-index="99" data-tex="\(\Delta_Y(X\cdot Y)^2=2r^2\)">\(\Delta_Y(X\cdot Y)^2=2r^2\)</span> and <span class="math" data-index="100" data-tex="\(\Delta_Y|Y|^2=6\)">\(\Delta_Y|Y|^2=6\)</span>, so the numerator of the quadratic term has Laplacian zero. The complete uniformly convergent multipole series consists of harmonic homogeneous polynomials. A compact smooth source with every harmonic polynomial moment zero therefore has Newton potential zero outside a large ball. Analytic continuation on the connected complement of the real carrier completes the zero-residue argument; checking only these first three moments would not suffice.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>The extended potential agrees with an odd harmonic function, so its value on that part of the middle plane is zero. Smoothness makes both one-sided distributional limits zero there. The half-normalized approximate identity gives the limits <span class="math" data-index="101" data-tex="\(q/2\)">\(q/2\)</span> and <span class="math" data-index="102" data-tex="\(-q/2\)">\(-q/2\)</span>. Either already forces the restricted distribution to vanish; their difference is exactly <span class="math" data-index="103" data-tex="\(q\)">\(q\)</span>. A full-mass Poisson kernel would double this jump and would require dividing the residue normalization accordingly.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>For <span class="math" data-index="104" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, <span class="math" data-index="105" data-tex="\(s(1-s)&gt;0\)">\(s(1-s)&gt;0\)</span>, so the two arcs meet only at their common endpoints. Their derivatives are <span class="math" data-index="106" data-tex="\(1\pm i(1-2s)\)">\(1\pm i(1-2s)\)</span>, with modulus at most <span class="math" data-index="107" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>; each arc's length is at most <span class="math" data-index="108" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. Thus its contour integral is bounded by <span class="math" data-index="109" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> times the supremum on every neighborhood of that arc, which is a carrier bound. Entire primitives prove the common functional identity.</p>
+<p>Suppose the functional were carried by the endpoints. Choose a real compact smooth cutoff <span class="math" data-index="110" data-tex="\(\chi\)">\(\chi\)</span> supported in <span class="math" data-index="111" data-tex="\((0,1)\)">\((0,1)\)</span> with positive integral. The compact smooth function <span class="math" data-index="112" data-tex="\(\chi\)">\(\chi\)</span> is identically zero and hence analytic near both endpoints. Lemma 4.1 of <a href="AN02-L167.html#4-gaussian-smoothing-in-a-complex-neighborhood">Gaussian analytic localization</a> gives entire Gaussian approximants <span class="math" data-index="113" data-tex="\(\chi_j\)">\(\chi_j\)</span> tending to zero on a fixed complex neighborhood of those endpoints and uniformly to <span class="math" data-index="114" data-tex="\(\chi\)">\(\chi\)</span> on the real interval. The alleged endpoint carrier bound makes <span class="math" data-index="115" data-tex="\(a(\chi_j)\to0\)">\(a(\chi_j)\to0\)</span>, whereas <span class="math" data-index="116" data-tex="\(a(\chi_j)=\int_0^1\chi_j\to\int_0^1\chi&gt;0\)">\(a(\chi_j)=\int_0^1\chi_j\to\int_0^1\chi&gt;0\)</span>. This contradiction proves the assertion using a zero local germ. A germ alone would not determine the value of the original interval integral; the common entire approximating tests make the conflict precise.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>André Martineau, <em>Supports d'une fonctionnelle analytique et croissance de sa transformée de Fourier-Borel</em>, Séminaire Schwartz, 4 (1959-1960), exposé 20. <a href="https://www.numdam.org/item/SLS_1959-1960__4__A20_0/">Original article</a>.</li>
+<li>Mikio Sato, <em>Theory of Hyperfunctions, I</em>, Journal of the Faculty of Science, University of Tokyo, Section I, 8 (1959). <a href="https://repository.dl.itc.u-tokyo.ac.jp/records/39927">Original article</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990; 2003 reprint.</li>
+<li>The linked Gaussian and Poisson lessons supply the preceding approximation and harmonic-ball proofs.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>An analytic functional can have infinite order at a point. Its action on entire functions nevertheless determines its action on every holomorphic germ near a compact real carrier. An odd harmonic function in one additional real variable records that action. We construct this correspondence, prove its inverse, and identify the smallest real carrier. No convexity assumption is made on the carrier.</p>
+<p>Basic references are André Martineau's <em>Supports d'une fonctionnelle analytique et croissance de sa transformée de Fourier-Borel</em>, Mikio Sato's <em>Theory of Hyperfunctions, I</em>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>. The proofs here use <a href="AN02-L167.html#4-gaussian-smoothing-in-a-complex-neighborhood">Gaussian analytic localization</a>, Lemma 4.1, <a href="AN02-L132.html">Poisson extension and subharmonic comparison</a>, Theorems P3-P4, and the <a href="AN02-L045.html">Cauchy coefficient bounds</a>. All pairings are complex linear. The additional real coordinate is called <span class="math" data-index="117" data-tex="\(t\)">\(t\)</span>; the original dimension is <span class="math" data-index="118" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<h2 id="1-local-tests-at-an-arbitrary-compact-real-set">1. Local tests at an arbitrary compact real set</h2>
+<p>Let <span class="math" data-index="119" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> be compact. An analytic functional carried by <span class="math" data-index="120" data-tex="\(K\)">\(K\)</span> is a linear functional on the entire holomorphic functions satisfying, for each bounded open complex neighborhood <span class="math" data-index="121" data-tex="\(W\supset K\)">\(W\supset K\)</span>,</p>
+<span class="math math-display" id="proof-eq-RC1" data-index="122" data-tex="\[
+ |u(g)|\leq C_W\sup_W|g|.
+ \tag{RC1}
+\]">\[
+ |u(g)|\leq C_W\sup_W|g|.
+ \tag{RC1}
+\]</span>
+<p>Write <span class="math" data-index="123" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span> for this space. An unbounded supremum imposes no restriction. Every neighborhood contains a bounded smaller neighborhood, so these are the requisite every-neighborhood bounds. Set <span class="math" data-index="124" data-tex="\(\mathcal A&#x27;(\varnothing)=\{0\}\)">\(\mathcal A&#x27;(\varnothing)=\{0\}\)</span>.</p>
+<p><strong>Lemma 1.1 (local germ action).</strong> Every <span class="math" data-index="125" data-tex="\(u\in\mathcal A&#x27;(K)\)">\(u\in\mathcal A&#x27;(K)\)</span> has a unique linear action on holomorphic germs near <span class="math" data-index="126" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-index="127" data-tex="\(g\)">\(g\)</span> is holomorphic on <span class="math" data-index="128" data-tex="\(W\supset K\)">\(W\supset K\)</span>, there are a compact complex neighborhood <span class="math" data-index="129" data-tex="\(L\)">\(L\)</span> of <span class="math" data-index="130" data-tex="\(K\)">\(K\)</span> contained in <span class="math" data-index="131" data-tex="\(W\)">\(W\)</span> and a constant <span class="math" data-index="132" data-tex="\(C\)">\(C\)</span> such that</p>
+<span class="math math-display" id="proof-eq-RC2" data-index="133" data-tex="\[
+ |u(g)|\leq C\sup_L|g|.
+ \tag{RC2}
+\]">\[
+ |u(g)|\leq C\sup_L|g|.
+ \tag{RC2}
+\]</span>
+<p>The choice can be made for each prescribed <span class="math" data-index="134" data-tex="\(W\)">\(W\)</span>. Derivatives and compact parameter integration commute with this germ action whenever the functions are holomorphic on a common neighborhood and the relevant convergence is locally uniform there.</p>
+<p><em>Proof.</em> Choose a real smooth compact cutoff <span class="math" data-index="135" data-tex="\(\chi\)">\(\chi\)</span>, supported in <span class="math" data-index="136" data-tex="\(W\cap\mathbb R^n\)">\(W\cap\mathbb R^n\)</span>, equal to one near <span class="math" data-index="137" data-tex="\(K\)">\(K\)</span>. Extend <span class="math" data-index="138" data-tex="\(\chi g\)">\(\chi g\)</span> by zero on the real space. The Gaussian functions</p>
+<span class="math math-display" id="proof-eq-RC3" data-index="139" data-tex="\[
+ g_j(z)=\left(\frac j\pi\right)^{n/2}
+      \int_{\mathbb R^n}e^{-j\sum(z_k-x_k)^2}\chi(x)g(x)\,dx
+ \tag{RC3}
+\]">\[
+ g_j(z)=\left(\frac j\pi\right)^{n/2}
+      \int_{\mathbb R^n}e^{-j\sum(z_k-x_k)^2}\chi(x)g(x)\,dx
+ \tag{RC3}
+\]</span>
+<p>are entire. Lemma 4.1 of <a href="AN02-L167.html#4-gaussian-smoothing-in-a-complex-neighborhood">Gaussian analytic localization</a> proves uniform convergence to <span class="math" data-index="140" data-tex="\(g\)">\(g\)</span> on a fixed complex neighborhood of <span class="math" data-index="141" data-tex="\(K\)">\(K\)</span>. Its full contour proof applies to every compact real set and to nonzero local germs. Choose a bounded smaller neighborhood there. Equation (RC1) makes <span class="math" data-index="142" data-tex="\(u(g_j)\)">\(u(g_j)\)</span> Cauchy.</p>
+<p>The limit does not depend on the sequence: any two entire approximating sequences converge to the same germ on a common smaller neighborhood, where (RC1) bounds their difference. This also proves linearity, independence of the representative germ, and agreement with the original action on entire tests. For any given <span class="math" data-index="143" data-tex="\(W\)">\(W\)</span>, choose a smaller relatively compact neighborhood on which the approximation converges; (RC1) and passage to the limit give (RC2). Two continuous extensions agreeing on entire tests agree on these approximants, proving uniqueness. Uniform Cauchy estimates on a smaller neighborhood prove the derivative assertion; uniform approximation by Riemann sums proves the integration assertion. <span class="math" data-index="144" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the germ action does not require a real distribution representative.</p>
+<h2 id="2-the-extra-coordinate-and-its-normalization">2. The extra coordinate and its normalization</h2>
+<p>Put <span class="math" data-index="145" data-tex="\(d=n+1\)">\(d=n+1\)</span>, and let <span class="math" data-index="146" data-tex="\(\sigma_d\)">\(\sigma_d\)</span> be the area of the unit sphere in <span class="math" data-index="147" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. The following radial distribution is a fundamental solution for the positive Laplacian:</p>
+<span class="math math-display" id="proof-eq-RC4" data-index="148" data-tex="\[
+ E_d(X)=
+ \begin{cases}
+ (2\pi)^{-1}\log|X|,&amp;d=2,\\
+ ((2-d)\sigma_d)^{-1}|X|^{2-d},&amp;d\geq3.
+ \end{cases}
+ \qquad \Delta E_d=\delta_0.
+ \tag{RC4}
+\]">\[
+ E_d(X)=
+ \begin{cases}
+ (2\pi)^{-1}\log|X|,&amp;d=2,\\
+ ((2-d)\sigma_d)^{-1}|X|^{2-d},&amp;d\geq3.
+ \end{cases}
+ \qquad \Delta E_d=\delta_0.
+ \tag{RC4}
+\]</span>
+<p>Indeed these functions are locally integrable and harmonic off zero. On the radius-<span class="math" data-index="149" data-tex="\(r\)">\(r\)</span> sphere their outward radial derivative is <span class="math" data-index="150" data-tex="\(1/(\sigma_dr^{d-1})\)">\(1/(\sigma_dr^{d-1})\)</span>. Apply Green's identity outside a radius-<span class="math" data-index="151" data-tex="\(r\)">\(r\)</span> ball to a compact smooth test. The inner boundary term containing <span class="math" data-index="152" data-tex="\(E_d\partial_r\phi\)">\(E_d\partial_r\phi\)</span> tends to zero, and the term containing <span class="math" data-index="153" data-tex="\(\phi\partial_rE_d\)">\(\phi\partial_rE_d\)</span> tends to <span class="math" data-index="154" data-tex="\(\phi(0)\)">\(\phi(0)\)</span>. This proves (RC4), including its sign. The needed divergence identity is Theorem 2.1 of <span class="unlinked">Boundary flux and weak identities</span>.</p>
+<p>Differentiate in the last coordinate:</p>
+<span class="math math-display" id="proof-eq-RC5" data-index="155" data-tex="\[
+ P(x,t)=\partial_tE_d(x,t)
+       =\frac{t}{\sigma_d(|x|^2+t^2)^{d/2}}.
+ \qquad \Delta P=\partial_t\delta_0.
+ \tag{RC5}
+\]">\[
+ P(x,t)=\partial_tE_d(x,t)
+       =\frac{t}{\sigma_d(|x|^2+t^2)^{d/2}}.
+ \qquad \Delta P=\partial_t\delta_0.
+ \tag{RC5}
+\]</span>
+<p>This is the half-normalized Poisson kernel: for <span class="math" data-index="156" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,</p>
+<span class="math math-display" id="proof-eq-RC6" data-index="157" data-tex="\[
+ \int_{\mathbb R^n}P(x,t)\,dx=\frac12,
+ \qquad 2P(\cdot,t)*\phi\longrightarrow\phi
+                         \quad\hbox{in }C^\infty(\mathbb R^n)
+ \tag{RC6}
+\]">\[
+ \int_{\mathbb R^n}P(x,t)\,dx=\frac12,
+ \qquad 2P(\cdot,t)*\phi\longrightarrow\phi
+                         \quad\hbox{in }C^\infty(\mathbb R^n)
+ \tag{RC6}
+\]</span>
+<p>for every compact smooth <span class="math" data-index="158" data-tex="\(\phi\)">\(\phi\)</span>. To check the mass, project the plane at height <span class="math" data-index="159" data-tex="\(t\)">\(t\)</span> radially onto the upper unit hemisphere. Its surface Jacobian is <span class="math" data-index="160" data-tex="\(t/(|x|^2+t^2)^{d/2}\)">\(t/(|x|^2+t^2)^{d/2}\)</span>, so the integral is half the sphere's area divided by <span class="math" data-index="161" data-tex="\(\sigma_d\)">\(\sigma_d\)</span>. Alternatively polar coordinates give this same hemisphere integral. For convergence, split each derivative's integral at <span class="math" data-index="162" data-tex="\(|x|=r\)">\(|x|=r\)</span>. The near part is bounded by its modulus of continuity. On the far part, polar coordinates bound the kernel mass by <span class="math" data-index="163" data-tex="\(C_nt/r\)">\(C_nt/r\)</span>. This proves uniform convergence for every fixed derivative. For negative <span class="math" data-index="164" data-tex="\(t\)">\(t\)</span>, oddness gives the negative of the corresponding limit.</p>
+<p><strong>Lemma 2.1 (the odd harmonic lift).</strong> Every entire <span class="math" data-index="165" data-tex="\(g\)">\(g\)</span> on <span class="math" data-index="166" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> has a unique entire function <span class="math" data-index="167" data-tex="\(H_g\)">\(H_g\)</span> on <span class="math" data-index="168" data-tex="\(\mathbb C^{n+1}\)">\(\mathbb C^{n+1}\)</span> satisfying</p>
+<span class="math math-display" id="proof-eq-RC7" data-index="169" data-tex="\[
+ (\Delta_z+\partial_t^2)H_g=0,\qquad
+ H_g(z,0)=0,\qquad \partial_tH_g(z,0)=g(z).
+ \tag{RC7}
+\]">\[
+ (\Delta_z+\partial_t^2)H_g=0,\qquad
+ H_g(z,0)=0,\qquad \partial_tH_g(z,0)=g(z).
+ \tag{RC7}
+\]</span>
+<p>It is odd in <span class="math" data-index="170" data-tex="\(t\)">\(t\)</span>, and is given by</p>
+<span class="math math-display" id="proof-eq-RC8" data-index="171" data-tex="\[
+ H_g(z,t)=\sum_{k=0}^\infty
+          \frac{(-1)^k t^{2k+1}}{(2k+1)!}\Delta_z^k g(z).
+ \tag{RC8}
+\]">\[
+ H_g(z,t)=\sum_{k=0}^\infty
+          \frac{(-1)^k t^{2k+1}}{(2k+1)!}\Delta_z^k g(z).
+ \tag{RC8}
+\]</span>
+<p>If <span class="math" data-index="172" data-tex="\(g\)">\(g\)</span> is holomorphic near the closed coordinate polydisk of radius <span class="math" data-index="173" data-tex="\(r\)">\(r\)</span> about <span class="math" data-index="174" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-index="175" data-tex="\(\sqrt n|t|&lt;r\)">\(\sqrt n|t|&lt;r\)</span>, then</p>
+<span class="math math-display" id="proof-eq-RC9" data-index="176" data-tex="\[
+ |H_g(z,t)|\leq
+ \frac{|t|}{1-n|t|^2/r^2}\sup_{|w_j-z_j|\leq r}|g(w)|.
+ \tag{RC9}
+\]">\[
+ |H_g(z,t)|\leq
+ \frac{|t|}{1-n|t|^2/r^2}\sup_{|w_j-z_j|\leq r}|g(w)|.
+ \tag{RC9}
+\]</span>
+<p>For local <span class="math" data-index="177" data-tex="\(g\)">\(g\)</span>, this assertion defines a local lift on the indicated smaller region.</p>
+<p><em>Proof.</em> Expand the <span class="math" data-index="178" data-tex="\(k\)">\(k\)</span>-th Laplacian using the multinomial theorem. Cauchy's estimate gives</p>
+<span class="math math-display" id="proof-eq-RC10" data-index="179" data-tex="\[
+ |\Delta_z^kg(z)|\leq
+ \sum_{|\alpha|=k}\frac{k!}{\alpha!}(2\alpha)!r^{-2k}M
+ \leq n^k(2k)!r^{-2k}M,
+ \tag{RC10}
+\]">\[
+ |\Delta_z^kg(z)|\leq
+ \sum_{|\alpha|=k}\frac{k!}{\alpha!}(2\alpha)!r^{-2k}M
+ \leq n^k(2k)!r^{-2k}M,
+ \tag{RC10}
+\]</span>
+<p>where <span class="math" data-index="180" data-tex="\(M\)">\(M\)</span> is the displayed supremum and <span class="math" data-index="181" data-tex="\((2\alpha)!\leq(2k)!\)">\((2\alpha)!\leq(2k)!\)</span>. The series in (RC8) is therefore bounded by
+<span class="math" data-index="182" data-tex="\(|t|M\sum_{k\geq0}(n|t|^2/r^2)^k/(2k+1)\)">\(|t|M\sum_{k\geq0}(n|t|^2/r^2)^k/(2k+1)\)</span>, which gives (RC9). On each compact set for entire <span class="math" data-index="183" data-tex="\(g\)">\(g\)</span>, choose one sufficiently large <span class="math" data-index="184" data-tex="\(r\)">\(r\)</span> and a larger common compact set of test values. Uniform convergence follows. Uniform convergence on slightly larger complex compact sets and the Cauchy formula permit all termwise derivatives. Adjacent terms cancel under the Laplacian, and the initial data follow directly. Expanding any putative solution in <span class="math" data-index="185" data-tex="\(t\)">\(t\)</span>, the equation determines each coefficient from the preceding two and the specified initial data. This proves uniqueness and the local statement. <span class="math" data-index="186" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also record the harmonic analyticity fact used below. The ball Poisson representation in <a href="AN02-L132.html">Poisson extension and subharmonic comparison</a>, Theorem P3, applies to a harmonic function on a slightly larger ball by uniqueness. On a smaller ball its kernel has a convergent power series in the spatial coordinates, uniformly on the boundary sphere; the same denominator expansion used in Theorem P4 proves this. Thus harmonic functions are real analytic. A harmonic function zero on a nonempty open subset of a connected domain is zero everywhere there: propagate its zero power series along a finite chain of overlapping balls on each path in the domain.</p>
+<h2 id="3-a-potential-determines-every-analytic-moment">3. A potential determines every analytic moment</h2>
+<p>For <span class="math" data-index="187" data-tex="\(u\in\mathcal A&#x27;(K)\)">\(u\in\mathcal A&#x27;(K)\)</span>, use Lemma 1.1 to define</p>
+<span class="math math-display" id="proof-eq-RC11" data-index="188" data-tex="\[
+ U_u(x,t)=u_y\bigl(P(x-y,t)\bigr),
+          \qquad (x,t)\notin K\times\{0\}.
+ \tag{RC11}
+\]">\[
+ U_u(x,t)=u_y\bigl(P(x-y,t)\bigr),
+          \qquad (x,t)\notin K\times\{0\}.
+ \tag{RC11}
+\]</span>
+<p>The kernel is a holomorphic germ in <span class="math" data-index="189" data-tex="\(y\)">\(y\)</span> near <span class="math" data-index="190" data-tex="\(K\)">\(K\)</span>. For example, for fixed real <span class="math" data-index="191" data-tex="\((x,t)\)">\((x,t)\)</span> off the carrier, the real positive quantity <span class="math" data-index="192" data-tex="\(|x-y|^2+t^2\)">\(|x-y|^2+t^2\)</span> stays bounded away from zero for real <span class="math" data-index="193" data-tex="\(y\in K\)">\(y\in K\)</span>; a small complex neighborhood permits the uniquely normalized power in (RC5). The branch is chosen by its positive real value. The choices agree as germs. The same construction works for all real <span class="math" data-index="194" data-tex="\((x,t)\)">\((x,t)\)</span> in a sufficiently small neighborhood of the chosen point.</p>
+<p><strong>Theorem 3.1 (potential and residue).</strong> The function <span class="math" data-index="195" data-tex="\(U_u\)">\(U_u\)</span> is smooth, harmonic, odd in <span class="math" data-index="196" data-tex="\(t\)">\(t\)</span>, and tends to zero at infinity. If <span class="math" data-index="197" data-tex="\(\chi\in C_c^\infty(\mathbb R^{n+1})\)">\(\chi\in C_c^\infty(\mathbb R^{n+1})\)</span> is equal to one near <span class="math" data-index="198" data-tex="\(K\times\{0\}\)">\(K\times\{0\}\)</span>, then, for every entire holomorphic <span class="math" data-index="199" data-tex="\(g\)">\(g\)</span>,</p>
+<span class="math math-display" id="proof-eq-RC12" data-index="200" data-tex="\[
+ u(g)=-\int_{\mathbb R^{n+1}}U_u(X)\,
+                         \Delta\bigl(\chi H_g\bigr)(X)\,dX.
+ \tag{RC12}
+\]">\[
+ u(g)=-\int_{\mathbb R^{n+1}}U_u(X)\,
+                         \Delta\bigl(\chi H_g\bigr)(X)\,dX.
+ \tag{RC12}
+\]</span>
+<p>The integrand is supported away from the carrier. In particular the potential map is injective.</p>
+<p><em>Proof.</em> Fixed-order derivatives in <span class="math" data-index="201" data-tex="\((x,t)\)">\((x,t)\)</span> may pass through the germ action on a common smaller complex neighborhood. Harmonicity and oddness follow from (RC5). For large <span class="math" data-index="202" data-tex="\(|X|\)">\(|X|\)</span>, on one fixed bounded complex neighborhood of <span class="math" data-index="203" data-tex="\(K\)">\(K\)</span>, the kernel is bounded by <span class="math" data-index="204" data-tex="\(C|X|^{-n}\)">\(C|X|^{-n}\)</span>: expand its denominator about <span class="math" data-index="205" data-tex="\(|X|^2\)">\(|X|^2\)</span>, with the complex source variable bounded. The fixed germ bound proves the stated decay.</p>
+<p>For real <span class="math" data-index="206" data-tex="\(y\)">\(y\)</span> sufficiently near <span class="math" data-index="207" data-tex="\(K\)">\(K\)</span>, distributional integration by parts and (RC5) give</p>
+<span class="math math-display" id="proof-eq-RC13" data-index="208" data-tex="\[
+ \int P\bigl(X-(y,0)\bigr)\Delta(\chi H_g)(X)\,dX
+     =-\partial_tH_g(y,0)=-g(y).
+ \tag{RC13}
+\]">\[
+ \int P\bigl(X-(y,0)\bigr)\Delta(\chi H_g)(X)\,dX
+     =-\partial_tH_g(y,0)=-g(y).
+ \tag{RC13}
+\]</span>
+<p>The derivative of <span class="math" data-index="209" data-tex="\(\chi\)">\(\chi\)</span> vanishes there. Both sides extend holomorphically to a complex neighborhood of <span class="math" data-index="210" data-tex="\(K\)">\(K\)</span>; the integral is over a fixed compact shell separated from it. The identity principle, coordinate by coordinate from a real open box, gives equality on that neighborhood. Lemma 1.1 permits applying <span class="math" data-index="211" data-tex="\(u\)">\(u\)</span> and exchanging its action with the integral. This proves (RC12). A zero potential has every entire test value zero, proving injectivity. <span class="math" data-index="212" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-recover-the-functional-from-an-arbitrary-odd-harmonic-potential">4. Recover the functional from an arbitrary odd harmonic potential</h2>
+<p>Write <span class="math" data-index="213" data-tex="\(\mathcal H_K^-\)">\(\mathcal H_K^-\)</span> for the odd harmonic functions on
+<span class="math" data-index="214" data-tex="\(\mathbb R^{n+1}\setminus(K\times\{0\})\)">\(\mathbb R^{n+1}\setminus(K\times\{0\})\)</span>, and <span class="math" data-index="215" data-tex="\(\mathcal H^-\)">\(\mathcal H^-\)</span> for the odd harmonic functions on all of <span class="math" data-index="216" data-tex="\(\mathbb R^{n+1}\)">\(\mathbb R^{n+1}\)</span>.</p>
+<p><strong>Lemma 4.1 (zero residue means an entire harmonic extension).</strong> Suppose <span class="math" data-index="217" data-tex="\(W\in\mathcal H_K^-\)">\(W\in\mathcal H_K^-\)</span> and</p>
+<span class="math math-display" id="proof-eq-RC14" data-index="218" data-tex="\[
+ \int W\Delta(\chi H_g)=0
+                 \quad\hbox{for every entire }g,
+ \tag{RC14}
+\]">\[
+ \int W\Delta(\chi H_g)=0
+                 \quad\hbox{for every entire }g,
+ \tag{RC14}
+\]</span>
+<p>where <span class="math" data-index="219" data-tex="\(\chi\)">\(\chi\)</span> is a compact smooth cutoff equal to one near the carrier. Then <span class="math" data-index="220" data-tex="\(W\)">\(W\)</span> extends to a member of <span class="math" data-index="221" data-tex="\(\mathcal H^-\)">\(\mathcal H^-\)</span>.</p>
+<p><em>Proof.</em> We may take <span class="math" data-index="222" data-tex="\(\chi\)">\(\chi\)</span> even in <span class="math" data-index="223" data-tex="\(t\)">\(t\)</span>, since the integral is independent of the cutoff: for their difference <span class="math" data-index="224" data-tex="\(\eta\)">\(\eta\)</span>, the compact smooth function <span class="math" data-index="225" data-tex="\(\eta H_g\)">\(\eta H_g\)</span> is supported off the carrier, and integration by parts gives <span class="math" data-index="226" data-tex="\(\int W\Delta(\eta H_g)=0\)">\(\int W\Delta(\eta H_g)=0\)</span>. Extend</p>
+<span class="math math-display" id="proof-eq-RC15" data-index="227" data-tex="\[
+ F=(1-\chi)W
+ \quad\hbox{smoothly by zero near }K\times\{0\},
+ \qquad f=\Delta F.
+ \tag{RC15}
+\]">\[
+ F=(1-\chi)W
+ \quad\hbox{smoothly by zero near }K\times\{0\},
+ \qquad f=\Delta F.
+ \tag{RC15}
+\]</span>
+<p>The function <span class="math" data-index="228" data-tex="\(f\)">\(f\)</span> is smooth, compactly supported, and odd. The convolution <span class="math" data-index="229" data-tex="\(E_d*f\)">\(E_d*f\)</span> is smooth on the full space: all derivatives can be transferred to the compact smooth factor, since <span class="math" data-index="230" data-tex="\(E_d\)">\(E_d\)</span> is locally integrable. Equation (RC4) shows that</p>
+<span class="math math-display" id="proof-eq-RC16" data-index="231" data-tex="\[
+ A=F-E_d*f
+ \tag{RC16}
+\]">\[
+ A=F-E_d*f
+ \tag{RC16}
+\]</span>
+<p>is an entire real harmonic odd function. We will prove that <span class="math" data-index="232" data-tex="\(A=W\)">\(A=W\)</span> off the carrier.</p>
+<p>For an entire harmonic <span class="math" data-index="233" data-tex="\(H_g\)">\(H_g\)</span>, integration by parts on the compact shell yields</p>
+<span class="math math-display" id="proof-eq-RC17" data-index="234" data-tex="\[
+ \int fH_g
+ =\int(-W\Delta\chi-2\nabla\chi\cdot\nabla W)H_g
+ =\int W\Delta(\chi H_g)=0.
+ \tag{RC17}
+\]">\[
+ \int fH_g
+ =\int(-W\Delta\chi-2\nabla\chi\cdot\nabla W)H_g
+ =\int W\Delta(\chi H_g)=0.
+ \tag{RC17}
+\]</span>
+<p>Every harmonic polynomial in the <span class="math" data-index="235" data-tex="\(n+1\)">\(n+1\)</span> variables is a sum of its even and odd parts in <span class="math" data-index="236" data-tex="\(t\)">\(t\)</span>. The even part pairs to zero with the odd <span class="math" data-index="237" data-tex="\(f\)">\(f\)</span>. By uniqueness in Lemma 2.1, its odd part is <span class="math" data-index="238" data-tex="\(H_g\)">\(H_g\)</span> for the polynomial <span class="math" data-index="239" data-tex="\(g=\partial_tH(\cdot,0)\)">\(g=\partial_tH(\cdot,0)\)</span>. Consequently <span class="math" data-index="240" data-tex="\(f\)">\(f\)</span> has zero pairing with every harmonic polynomial.</p>
+<p>Choose <span class="math" data-index="241" data-tex="\(R\)">\(R\)</span> with <span class="math" data-index="242" data-tex="\(\operatorname{supp}f\subset B(0,R)\)">\(\operatorname{supp}f\subset B(0,R)\)</span>. For <span class="math" data-index="243" data-tex="\(|X|&gt;2R\)">\(|X|&gt;2R\)</span>, the Taylor expansion in <span class="math" data-index="244" data-tex="\(Y\)">\(Y\)</span> of <span class="math" data-index="245" data-tex="\(E_d(X-Y)\)">\(E_d(X-Y)\)</span> converges uniformly for <span class="math" data-index="246" data-tex="\(|Y|\leq R\)">\(|Y|\leq R\)</span> and consists of homogeneous harmonic polynomials in <span class="math" data-index="247" data-tex="\(Y\)">\(Y\)</span>. Here is a direct verification, also in dimension two. Expand</p>
+<span class="math math-display" id="proof-eq-RC18" data-index="248" data-tex="\[
+ |X-\lambda Y|^2=|X|^2-2\lambda X\cdot Y+\lambda^2|Y|^2
+ \tag{RC18}
+\]">\[
+ |X-\lambda Y|^2=|X|^2-2\lambda X\cdot Y+\lambda^2|Y|^2
+ \tag{RC18}
+\]</span>
+<p>inside the power, or the logarithm, in (RC4). For real <span class="math" data-index="249" data-tex="\(X,Y\)">\(X,Y\)</span>, its complex <span class="math" data-index="250" data-tex="\(\lambda\)">\(\lambda\)</span>-zeros have modulus <span class="math" data-index="251" data-tex="\(|X|/|Y|\)">\(|X|/|Y|\)</span>; when they coincide the same radius bound holds. There is therefore a holomorphic normalized logarithm on <span class="math" data-index="252" data-tex="\(|\lambda|&lt;|X|/R\)">\(|\lambda|&lt;|X|/R\)</span>, uniformly on the compact real <span class="math" data-index="253" data-tex="\(Y\)">\(Y\)</span>-ball. Its Taylor coefficients are polynomials homogeneous of the indicated degree in <span class="math" data-index="254" data-tex="\(Y\)">\(Y\)</span>. Differentiating the harmonic kernel on a smaller ball shows each coefficient is harmonic. The constant term in dimension two is harmless, and all remaining terms follow from the logarithm expansion. Pairing this uniformly convergent expansion with <span class="math" data-index="255" data-tex="\(f\)">\(f\)</span> gives</p>
+<span class="math math-display" id="proof-eq-RC19" data-index="256" data-tex="\[
+ (E_d*f)(X)=0\qquad (|X|&gt;2R).
+ \tag{RC19}
+\]">\[
+ (E_d*f)(X)=0\qquad (|X|&gt;2R).
+ \tag{RC19}
+\]</span>
+<p>On the complement of the carrier, <span class="math" data-index="257" data-tex="\(W-A=W-F+E_d*f\)">\(W-A=W-F+E_d*f\)</span> is harmonic. It vanishes outside a sufficiently large ball, by (RC19) and the compact support of <span class="math" data-index="258" data-tex="\(\chi\)">\(\chi\)</span>. This complement is connected: its upper and lower half-spaces are connected, every permitted point of the middle plane has a small ball avoiding the compact carrier, and the two half-spaces join outside a large ball containing it. Harmonic analyticity from Section 2 proves <span class="math" data-index="259" data-tex="\(W=A\)">\(W=A\)</span> throughout. <span class="math" data-index="260" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (the harmonic representation).</strong> For every compact real <span class="math" data-index="261" data-tex="\(K\)">\(K\)</span>, the potential map gives an isomorphism</p>
+<span class="math math-display" id="proof-eq-RC20" data-index="262" data-tex="\[
+ \mathcal A&#x27;(K)\ \simeq\ \mathcal H_K^-/\mathcal H^-.
+ \tag{RC20}
+\]">\[
+ \mathcal A&#x27;(K)\ \simeq\ \mathcal H_K^-/\mathcal H^-.
+ \tag{RC20}
+\]</span>
+<p>Every class has a unique representative tending to zero at infinity. For arbitrary <span class="math" data-index="263" data-tex="\(U\in\mathcal H_K^-\)">\(U\in\mathcal H_K^-\)</span>, the corresponding functional is</p>
+<span class="math math-display" id="proof-eq-RC21" data-index="264" data-tex="\[
+ u_U(g)=-\int U\Delta(\chi H_g).
+ \tag{RC21}
+\]">\[
+ u_U(g)=-\int U\Delta(\chi H_g).
+ \tag{RC21}
+\]</span>
+<p>It is carried by <span class="math" data-index="265" data-tex="\(K\)">\(K\)</span>, without a convexity or distributional-order assumption.</p>
+<p><em>Proof.</em> The integral is independent of the cutoff by the calculation in Lemma 4.1. Fix a bounded complex neighborhood <span class="math" data-index="266" data-tex="\(W\supset K\)">\(W\supset K\)</span>. Choose <span class="math" data-index="267" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> such that the complex <span class="math" data-index="268" data-tex="\(\eta\)">\(\eta\)</span>-neighborhood of <span class="math" data-index="269" data-tex="\(K\)">\(K\)</span> lies in <span class="math" data-index="270" data-tex="\(W\)">\(W\)</span>, and choose a sufficiently small real <span class="math" data-index="271" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, for instance <span class="math" data-index="272" data-tex="\((4n+3)\delta&lt;\eta\)">\((4n+3)\delta&lt;\eta\)</span>. Choose <span class="math" data-index="273" data-tex="\(\chi\)">\(\chi\)</span> supported within real distance <span class="math" data-index="274" data-tex="\(\delta\)">\(\delta\)</span> of <span class="math" data-index="275" data-tex="\(K\times\{0\}\)">\(K\times\{0\}\)</span>, equal to one on a smaller neighborhood.</p>
+<p>The series estimate (RC9) on slightly larger complex boxes, followed by the Cauchy estimates, bounds <span class="math" data-index="276" data-tex="\(H_g\)">\(H_g\)</span> and its first real derivatives on <span class="math" data-index="277" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span> by a constant depending on <span class="math" data-index="278" data-tex="\(n,\delta\)">\(n,\delta\)</span> times <span class="math" data-index="279" data-tex="\(\sup_W|g|\)">\(\sup_W|g|\)</span>. More explicitly use a source polydisk of radius <span class="math" data-index="280" data-tex="\(4\sqrt n\delta\)">\(4\sqrt n\delta\)</span>, and <span class="math" data-index="281" data-tex="\(|t|\leq2\delta\)">\(|t|\leq2\delta\)</span>. The ratio in (RC9) is at most <span class="math" data-index="282" data-tex="\(1/4\)">\(1/4\)</span>, and all its source values have distance at most <span class="math" data-index="283" data-tex="\((4n+2)\delta\)">\((4n+2)\delta\)</span> from <span class="math" data-index="284" data-tex="\(K\)">\(K\)</span>. A smaller parameter box around each real point supplies the derivative bound by Cauchy's formula. Only first derivatives are needed, because</p>
+<span class="math math-display" id="proof-eq-RC22" data-index="285" data-tex="\[
+ \Delta(\chi H_g)=(\Delta\chi)H_g+
+                                 2\nabla\chi\cdot\nabla H_g.
+ \tag{RC22}
+\]">\[
+ \Delta(\chi H_g)=(\Delta\chi)H_g+
+                                 2\nabla\chi\cdot\nabla H_g.
+ \tag{RC22}
+\]</span>
+<p>On the compact support of these cutoff derivatives, <span class="math" data-index="286" data-tex="\(U\)">\(U\)</span> is bounded. Equation (RC21) consequently satisfies (RC1), and defines an element of <span class="math" data-index="287" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span>.</p>
+<p>Theorem 3.1 recovers this functional from its own potential. The difference <span class="math" data-index="288" data-tex="\(U-U_{u_U}\)">\(U-U_{u_U}\)</span> has zero residue, so Lemma 4.1 extends it harmonically and oddly across the carrier. An entire odd harmonic addition contributes zero to (RC21) by integration by parts, so the map is well-defined on the quotient. Theorem 3.1 gives injectivity and the inverse identities. Its potential tends to zero at infinity. An entire harmonic function tending to zero at infinity is zero: apply the ball maximum principle from <a href="AN02-L132.html">Poisson extension and subharmonic comparison</a>, Lemma P2, to its real and imaginary parts on arbitrarily large balls. This proves uniqueness of the normalized representative. <span class="math" data-index="289" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-least-real-carriers-and-differentiation">5. Least real carriers and differentiation</h2>
+<p><strong>Theorem 5.1 (the smallest real carrier).</strong> If an analytic functional has any compact real carrier, it has a smallest one. It consists exactly of the real points <span class="math" data-index="290" data-tex="\(x\)">\(x\)</span> at which its normalized odd harmonic potential does not extend harmonically to a neighborhood of <span class="math" data-index="291" data-tex="\((x,0)\)">\((x,0)\)</span>. In particular, for compact real sets,</p>
+<span class="math math-display" id="proof-eq-RC23" data-index="292" data-tex="\[
+ \mathcal A&#x27;(K_1)\cap\mathcal A&#x27;(K_2)
+                       =\mathcal A&#x27;(K_1\cap K_2).
+ \tag{RC23}
+\]">\[
+ \mathcal A&#x27;(K_1)\cap\mathcal A&#x27;(K_2)
+                       =\mathcal A&#x27;(K_1\cap K_2).
+ \tag{RC23}
+\]</span>
+<p>The assertion is about real carriers.</p>
+<p><em>Proof.</em> Potentials computed using different carriers agree for <span class="math" data-index="293" data-tex="\(t\ne0\)">\(t\ne0\)</span>, where they act on the same holomorphic kernel germs, or by Theorem 3.1 and uniqueness after restriction to their union carrier. Harmonic continuation makes them agree wherever both are defined. Let <span class="math" data-index="294" data-tex="\(S\)">\(S\)</span> be the intersection of all compact real carriers. Their potentials patch to an odd harmonic function off <span class="math" data-index="295" data-tex="\(S\times\{0\}\)">\(S\times\{0\}\)</span>. It tends to zero at infinity, because one original carrier already supplies that decay there. Theorem 4.2 gives a functional carried by <span class="math" data-index="296" data-tex="\(S\)">\(S\)</span> whose normalized potential is the patched function. Injectivity on the original carrier, or on its union with <span class="math" data-index="297" data-tex="\(S\)">\(S\)</span>, identifies it with <span class="math" data-index="298" data-tex="\(u\)">\(u\)</span>. This proves existence of the smallest carrier, including <span class="math" data-index="299" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, when the functional is zero.</p>
+<p>A point outside <span class="math" data-index="300" data-tex="\(S\)">\(S\)</span> is outside some carrier and admits a harmonic extension. Conversely, if the normalized potential extends harmonically around <span class="math" data-index="301" data-tex="\((x,0)\)">\((x,0)\)</span>, reflect its extension oddly and use uniqueness on the two half-balls; it is the odd extension there. Remove a smaller real ball about <span class="math" data-index="302" data-tex="\(x\)">\(x\)</span> from an original carrier, and patch this extension with the old potential. Theorem 4.2 makes the remaining compact set a carrier, so <span class="math" data-index="303" data-tex="\(x\notin S\)">\(x\notin S\)</span>. This gives the stated description. Finite intersections follow at once. <span class="math" data-index="304" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Call this smallest carrier <span class="math" data-index="305" data-tex="\(\operatorname{supp}_{\mathcal A}u\)">\(\operatorname{supp}_{\mathcal A}u\)</span>. If <span class="math" data-index="306" data-tex="\(\partial_j u\)">\(\partial_j u\)</span> is defined by</p>
+<span class="math math-display" id="proof-eq-RC24" data-index="307" data-tex="\[
+ (\partial_j u)(g)=-u(\partial_jg),
+ \qquad U_{\partial_ju}=\partial_{x_j}U_u,
+ \tag{RC24}
+\]">\[
+ (\partial_j u)(g)=-u(\partial_jg),
+ \qquad U_{\partial_ju}=\partial_{x_j}U_u,
+ \tag{RC24}
+\]</span>
+<p>then Cauchy's estimate on nested neighborhoods shows it is carried by every carrier of <span class="math" data-index="308" data-tex="\(u\)">\(u\)</span>. The identity follows by differentiating the kernel and using <span class="math" data-index="309" data-tex="\(\partial_{y_j}P(x-y,t)=-\partial_{x_j}P(x-y,t)\)">\(\partial_{y_j}P(x-y,t)=-\partial_{x_j}P(x-y,t)\)</span>. Thus differentiation does not enlarge this support, and all constant-coefficient differential operators act with their bilinear transpose signs. Multiplication by a function analytic near a carrier is defined by the germ action <span class="math" data-index="310" data-tex="\((au)(g)=u(ag)\)">\((au)(g)=u(ag)\)</span>; the local product bound shows it also preserves carriers.</p>
+<p>Finally every compact distribution defines an analytic functional with exactly the same support. Its finite-order estimate and the Cauchy bounds give (RC1). Equation (RC6), passed through the distribution pairing using convergence of all the finitely many required derivatives, gives</p>
+<span class="math math-display" id="proof-eq-RC25" data-index="311" data-tex="\[
+ U_u(\cdot,t)\longrightarrow \tfrac12u\ (t\downarrow0),
+ \qquad U_u(\cdot,t)\longrightarrow-\tfrac12u\ (t\uparrow0)
+ \tag{RC25}
+\]">\[
+ U_u(\cdot,t)\longrightarrow \tfrac12u\ (t\downarrow0),
+ \qquad U_u(\cdot,t)\longrightarrow-\tfrac12u\ (t\uparrow0)
+ \tag{RC25}
+\]</span>
+<p>in distributions. A harmonic odd extension across an open portion of the middle plane has zero trace there, so these two limits force <span class="math" data-index="312" data-tex="\(u=0\)">\(u=0\)</span> on that portion. Conversely the kernel definition extends off the ordinary distributional support. Theorem 5.1 proves support equality and hence injectivity. In particular <span class="math" data-index="313" data-tex="\(\delta_a(g)=g(a)\)">\(\delta_a(g)=g(a)\)</span> has potential <span class="math" data-index="314" data-tex="\(P(x-a,t)\)">\(P(x-a,t)\)</span> and support <span class="math" data-index="315" data-tex="\(\{a\}\)">\(\{a\}\)</span>.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>André Martineau, <em>Supports d'une fonctionnelle analytique et croissance de sa transformée de Fourier-Borel</em>, Séminaire Schwartz, 4 (1959-1960), exposé 20. <a href="https://www.numdam.org/item/SLS_1959-1960__4__A20_0/">Original article</a>.</li>
+<li>Mikio Sato, <em>Theory of Hyperfunctions, I</em>, Journal of the Faculty of Science, University of Tokyo, Section I, 8 (1959). <a href="https://repository.dl.itc.u-tokyo.ac.jp/records/39927">Original article</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990; 2003 reprint. Background on analytic functionals, harmonic potentials and real supports.</li>
+<li>The linked Gaussian, Poisson, flux and Cauchy lessons contain the complete preceding estimates used in the proof. The harmonic-moment argument in Lemma 4.1 supplies the extension step directly.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/harmonic-potentials-and-real-carriers.md" download>Download the complete lesson source</a>. Original exposition,proofs,examples,solutions and diagrams use CC0 1.0. Linked providers and fonts retain their terms.</p><ul><li><a href="reproduce/L196/harmonic-potentials-and-real-carriers-formal.md" download>harmonic-potentials-and-real-carriers-formal.md</a></li><li><a href="reproduce/L196/harmonic-potentials-and-real-carriers-learner.md" download>harmonic-potentials-and-real-carriers-learner.md</a></li><li><span class="unlinked">check-and-figures.py</span></li><li><a href="reproduce/L196/LICENSE.txt" download>LICENSE.txt</a></li><li><span class="unlinked">README-reproduce.md</span></li><li><span class="unlinked">DejaVu-font-license.txt</span></li><li><a href="reproduce/L196/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L196/figures/real-carriers-and-complex-arcs.png" download>figures/real-carriers-and-complex-arcs.png</a></li><li><a href="reproduce/L196/figures/real-carriers-and-complex-arcs.svg" download>figures/real-carriers-and-complex-arcs.svg</a></li><li><a href="reproduce/L196/figures/two-atoms-and-harmonic-continuation.png" download>figures/two-atoms-and-harmonic-continuation.png</a></li><li><a href="reproduce/L196/figures/two-atoms-and-harmonic-continuation.svg" download>figures/two-atoms-and-harmonic-continuation.svg</a></li></ul><p><span class="unlinked">MathJax license</span> · <span class="unlinked">Course sources and terms</span></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

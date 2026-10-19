@@ -2,7 +2,7 @@
 
 *Complete solved exercises accompanying [Logarithmic Fourier graphs construct a cone-supported inverse](manuscript.md). Original exposition: CC0. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.*
 
-The exercises use the exact conventions of Theorem 1.1: pairings are complex-linear, \(\widehat\mu(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle\), and the test factor is \(F_\phi(\zeta)=\widehat\phi(-\zeta)\). Their cone is nonempty, ordinarily convex, open, dilation-invariant, and excludes zero. The original source's broader convention remains unresolved. No exercise silently upgrades that statement.
+The exercises use the exact conventions of Theorem 1.1: pairings are complex-linear, \(\widehat\mu(\zeta)=\langle\mu,e^{-ix\cdot\zeta}\rangle\), and the test factor is \(F_\phi(\zeta)=\widehat\phi(-\zeta)\). Their cone is nonempty, ordinarily convex, open, dilation-invariant, and excludes zero. Section 10 of the manuscript treats the empty and all-directions cases and proves the compact convolution-unit classification.
 
 ## 1. A complex determinant is not a surface-area factor
 
@@ -163,4 +163,4 @@ Choosing \(C\ge\max\{1,1/(\varepsilon\log2)\}\), the logarithmic region has \(|y
 
 Use that cone's constants to choose one common scale \(L\) large enough for (3.8); also make it at least the two individual ray thresholds. The original ray graph at \(\theta_0\) can first be raised to \(L\) using its own ray estimate; Section 5 proves equality on that finite safe scale interval. Do the same for \(\theta_1\). The segment deformation at the common scale is uniformly zero-free by the generated cone's estimate, and its cutoff side term vanishes by (5.10). Thus the original constructions agree. Repeating with arbitrary pairs gives one \(E\), so each directional half-space bound applies to its same support. Different constants are allowed; different unidentified inverses would not prove simultaneous support control.
 
-The background credit and exact proof dependencies remain those of the main manuscript. The solved examples use only its proved graph construction, compact-factor convolution, finite test continuity, and the stated support definition. They do not require the unresolved unrestricted source convention or a paid proof.
+The solved examples use the graph construction, compact-factor convolution, finite test continuity and support definition proved in the manuscript. Section 10 treats the empty and all-directions cases and proves the compact convolution-unit classification.

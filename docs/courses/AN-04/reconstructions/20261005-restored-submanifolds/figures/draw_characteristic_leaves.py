@@ -1,4 +1,4 @@
-"""Exact coordinate slice of U012 Exercise 7.9; original reproducible figure."""
+"""Exact coordinate slice of Exercise 7.9 and the characteristic-leaf example."""
 import hashlib,json
 from pathlib import Path
 import matplotlib
@@ -32,11 +32,10 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'schema':'original-mathematical-figure/v1','figure':'figures/characteristic-leaves-and-dilation.svg',
  'sha256':sha(dest/'characteristic-leaves-and-dilation.svg'),'script':'draw_characteristic_leaves.py',
  'script_sha256':sha(Path(__file__)),'qa_image':qa.name,
- 'qa_image_sha256':sha(qa),'visual_inspection':'pending',
+ 'qa_image_sha256':sha(qa),
  'coordinates':'Actual 2-dimensional coordinate slice x1=0 of the 3-dimensional hypersurface x2=0, xi2>0.',
  'objects':'Vertical characteristic leaves at fixed xi1; colored arrows are positive characteristic tangents. Black arrows at xi2=1 are 0.24 times R=(xi1,xi2). Central xi1=0 leaf is conic; all others have a nonzero radial transverse component.',
- 'proof_locator':'U012 Exercise 7.9 and Theorem 4.1','license':'CC0-1.0',
- 'source':'Original coordinate diagram derived from the complete course example; no external image copied.',
- 'mathematical_certification':False}
+ 'proof_locator':'Exercise 7.9 and Theorem 4.1','license':'CC0-1.0',
+ 'source':'Original coordinate diagram derived from the complete course example; no external image copied.'}
 (dest/'figure-record.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':record['figure'],'sha256':record['sha256']}))

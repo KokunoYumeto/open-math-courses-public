@@ -502,4 +502,4 @@ separating vector, a finite weight, an unproved adjoint core, or an
 unbounded globally defined sandwich. This finishes the bounded route at
 the declared earlier foundations.
 
-[Continue with fixed modular corners](fixed-modular-corners-from-whole-graphs.md) · Return to constant CAR states.
+[Continue with fixed modular corners](fixed-modular-corners-from-whole-graphs.md) · [Return to constant CAR states](../src/constant-car-states-and-the-periodic-core.md).

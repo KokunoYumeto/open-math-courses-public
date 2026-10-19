@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Singular supports and arbitrary distribution data</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><span class="unlinked">Constant-coefficient equations and solvability</span></nav><h1 id="singular-supports-and-arbitrary-distribution-data">Singular supports and arbitrary distribution data</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Singular supports and arbitrary distribution data</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="singular-supports-and-arbitrary-distribution-data">Singular supports and arbitrary distribution data</h1>
 <p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
 <p>Support geometry permits global solutions for smooth data and for distributions of finite order. An arbitrary distribution may have orders that grow without bound along an exhaustion. To solve for all such data, one must also control where singularities of compact distributions can occur when their images are smooth away from a fixed compact set.</p>
 <p>We prove the precise additional condition, first as a boundary-distance test, then as an equivalence with solving the equation modulo smooth functions. Combining it with support convexity gives the criterion for all distribution data. The arguments use <a href="AN02-L003.html">Local regularity, sharp embeddings, and compactness</a> and <a href="AN02-L010.html">Approximation and global solvability from support geometry</a>.</p>
@@ -395,12 +395,240 @@ The sum <span class="math" data-tex="\(h=\sum_\ell c_\ell\psi_\ell\)">\(h=\sum_\
 <p><strong>Proof.</strong> Surjectivity for all distributions implies solvability for all smooth data; Theorem 5.1 of the support geometry lesson then gives support convexity. It also implies (8), so Theorem 3.2 gives singular support convexity.</p>
 <p>Conversely, singular support convexity and Theorem 5.2 give <span class="math" data-tex="\(P(D)u=f+g\)">\(P(D)u=f+g\)</span> with smooth <span class="math" data-tex="\(g\)">\(g\)</span>. Support convexity and Corollary 6.3 of that lesson give a smooth <span class="math" data-tex="\(w\)">\(w\)</span> satisfying <span class="math" data-tex="\(P(D)w=g\)">\(P(D)w=g\)</span>. Then <span class="math" data-tex="\(P(D)(u-w)=f\)">\(P(D)(u-w)=f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p>Every open convex set satisfies both conditions, by the compact support and singular-support hull identities. Thus it admits solutions for all distribution data, regardless of how their orders grow near its boundary or at infinity.</p>
-<p>Translation invariance was used in Theorems 2.1 and 3.2. For a variable coefficient operator, those necessity arguments require separate justification. The closed graph and exhaustion estimate also use the precise compact regularity bounds and the empty-image implication specified here. They do not by themselves establish an unrestricted statement for every smooth variable coefficient operator on every manifold.</p>
+<p>Translation invariance was used in Theorems 2.1 and 3.2. For a variable coefficient operator, those necessity arguments require separate justification. The following section isolates the compact regularity input in sufficiency and proves the smooth-coefficient examples explicitly.</p>
+<h2 id="what-changes-with-smooth-coefficients">What changes with smooth coefficients?</h2>
+<p>Translation invariance has two separate roles. It supplies the empty-image regularity in Lemma 1.1, and it supports the necessity argument in Theorem 3.2. The following sufficient criterion identifies exactly the extra input used by the functional-analytic construction when the coefficients vary.</p>
+<p>Let <span class="math" data-index="addition289-0-0" data-tex="\(M\)">\(M\)</span> be a second-countable smooth manifold without boundary, equipped with a positive smooth density <span class="math" data-index="addition289-0-1" data-tex="\(dV\)">\(dV\)</span>. Distributions pair complex-linearly with smooth compact tests using this density. Let <span class="math" data-index="addition289-0-2" data-tex="\(P\)">\(P\)</span> be a finite-order differential operator with smooth complex coefficients, and let <span class="math" data-index="addition289-0-3" data-tex="\(Q=P^t\)">\(Q=P^t\)</span> be its formal transpose, including the coefficient and density derivatives.</p>
+<p><strong>Theorem 7.1.</strong> Suppose that the following two conditions hold.</p>
+<ol>
+<li>For every compact <span class="math" data-index="addition289-0-4" data-tex="\(K\subset M\)">\(K\subset M\)</span> there is a compact <span class="math" data-index="addition289-0-5" data-tex="\(K&#x27;\subset M\)">\(K&#x27;\subset M\)</span> such that</li>
+</ol>
+<span class="math math-display" id="proof-eq-VC1" data-index="addition289-0-6" data-tex="\[
+   v\in\mathcal E&#x27;(M),\quad
+   \operatorname{singsupp}Qv\subset K
+       \quad\Longrightarrow\quad \operatorname{singsupp}v\subset K&#x27;.
+   \tag{VC1}
+   \]">\[
+   v\in\mathcal E&#x27;(M),\quad
+   \operatorname{singsupp}Qv\subset K
+       \quad\Longrightarrow\quad \operatorname{singsupp}v\subset K&#x27;.
+   \tag{VC1}
+   \]</span>
+<ol start="2">
+<li>Compact distributions with smooth image are smooth:</li>
+</ol>
+<span class="math math-display" id="proof-eq-VC2" data-index="addition289-0-7" data-tex="\[
+   v\in\mathcal E&#x27;(M),\quad Qv\in C^\infty(M)
+                       \quad\Longrightarrow\quad v\in C^\infty(M).
+   \tag{VC2}
+   \]">\[
+   v\in\mathcal E&#x27;(M),\quad Qv\in C^\infty(M)
+                       \quad\Longrightarrow\quad v\in C^\infty(M).
+   \tag{VC2}
+   \]</span>
+<p>Then every <span class="math" data-index="addition289-0-8" data-tex="\(f\in\mathcal D&#x27;(M)\)">\(f\in\mathcal D&#x27;(M)\)</span> has a solution modulo a smooth function:</p>
+<span class="math math-display" id="proof-eq-VC3" data-index="addition289-0-9" data-tex="\[
+       Pu=f+g,\qquad u\in\mathcal D&#x27;(M),\quad g\in C^\infty(M).
+ \tag{VC3}
+\]">\[
+       Pu=f+g,\qquad u\in\mathcal D&#x27;(M),\quad g\in C^\infty(M).
+ \tag{VC3}
+\]</span>
+<p>Condition (VC2) is sufficient, rather than asserted necessary.</p>
+<p><strong>Proof.</strong> The test spaces and smooth seminorms are defined chart by chart. A countable relatively compact coordinate cover gives a countable compact exhaustion; compact annuli and coordinate bump functions give the cutoffs used below. Each compact meets only finitely many members of a suitably chosen locally finite refinement. On a fixed compact support space, finitely many coordinate charts define the usual Fréchet derivative topology. Their union defines the test-function LF topology. In particular a seminorm on tests is continuous if its restriction to every fixed compact support space is continuous. These are the same test-space and closed-graph facts used in Lemmas 4.1 and 5.1.</p>
+<p>Choose compact exhaustions <span class="math" data-index="addition289-0-10" data-tex="\(K_j,K_j&#x27;\)">\(K_j,K_j&#x27;\)</span>, <span class="math" data-index="addition289-0-11" data-tex="\(j\ge1\)">\(j\ge1\)</span>, with</p>
+<span class="math math-display" id="proof-eq-VC4" data-index="addition289-0-12" data-tex="\[
+ K_j\subset\operatorname{int}K_j&#x27;,\qquad
+ K_j&#x27;\subset\operatorname{int}K_{j+1},
+ \tag{VC4}
+\]">\[
+ K_j\subset\operatorname{int}K_j&#x27;,\qquad
+ K_j&#x27;\subset\operatorname{int}K_{j+1},
+ \tag{VC4}
+\]</span>
+<p>and with <span class="math" data-index="addition289-0-13" data-tex="\(K_j&#x27;\)">\(K_j&#x27;\)</span> a bound in (VC1) for <span class="math" data-index="addition289-0-14" data-tex="\(K_j\)">\(K_j\)</span>. This is possible successively: include a fixed exhaustion and the preceding sets in <span class="math" data-index="addition289-0-15" data-tex="\(K_j\)">\(K_j\)</span>, take a bound from (VC1), and enlarge that bound to a compact neighborhood. Put</p>
+<span class="math math-display" data-index="addition289-0-16" data-tex="\[
+                  K_{-1}=K_0=K_{-1}&#x27;=K_0&#x27;=\varnothing.
+\]">\[
+                  K_{-1}=K_0=K_{-1}&#x27;=K_0&#x27;=\varnothing.
+\]</span>
+<p>Condition (VC2), rather than (VC1) with an unspecified bound, permits the empty bound here.</p>
+<p>For <span class="math" data-index="addition289-0-17" data-tex="\(j\ge0\)">\(j\ge0\)</span>, let <span class="math" data-index="addition289-0-18" data-tex="\(V_j\)">\(V_j\)</span> be the space of continuous functions supported in <span class="math" data-index="addition289-0-19" data-tex="\(K_{j+1}&#x27;\)">\(K_{j+1}&#x27;\)</span> whose image under <span class="math" data-index="addition289-0-20" data-tex="\(Q\)">\(Q\)</span> is smooth on <span class="math" data-index="addition289-0-21" data-tex="\(M\setminus K_{j-1}\)">\(M\setminus K_{j-1}\)</span>. Give it the supremum norm and all compact chart-derivative seminorms of that image. It is Fréchet. Indeed a Cauchy sequence has a uniform continuous supported limit and a smooth image limit on the indicated open set; continuity of differential operators on distributions identifies that limit with <span class="math" data-index="addition289-0-22" data-tex="\(Qv\)">\(Qv\)</span>.</p>
+<p>Conditions (VC1) and (VC2) make restriction a map</p>
+<span class="math math-display" id="proof-eq-VC5" data-index="addition289-0-23" data-tex="\[
+                V_j\longrightarrow C^\infty(M\setminus K_{j-1}&#x27;).
+ \tag{VC5}
+\]">\[
+                V_j\longrightarrow C^\infty(M\setminus K_{j-1}&#x27;).
+ \tag{VC5}
+\]</span>
+<p>For the empty initial sets use (VC2); otherwise apply (VC1). Its graph is closed, since uniform convergence identifies any possible smooth restriction limit. The Fréchet closed graph theorem makes (VC5) continuous. A bounded sequence therefore bounds every derivative on compact subsets of its target. Arzelà–Ascoli in finitely many charts, followed by a diagonal choice over compact sets and derivative orders, gives a smoothly convergent subsequence there.</p>
+<p>We now construct the estimate needed for Hahn–Banach. For tests write</p>
+<span class="math math-display" data-index="addition289-0-24" data-tex="\[
+                       A(v)=|f(v)|+\sup_M|v|.
+\]">\[
+                       A(v)=|f(v)|+\sup_M|v|.
+\]</span>
+<p>Suppose that on <span class="math" data-index="addition289-0-25" data-tex="\(\mathcal D_{K_j}(M)\)">\(\mathcal D_{K_j}(M)\)</span> we already have</p>
+<span class="math math-display" id="proof-eq-VC6" data-index="addition289-0-26" data-tex="\[
+ A(v)\le C\left(q(Qv)+\sum_{\ell\le b}
+                         \left|\int_M v\psi_\ell\,dV\right|\right),
+ \tag{VC6}
+\]">\[
+ A(v)\le C\left(q(Qv)+\sum_{\ell\le b}
+                         \left|\int_M v\psi_\ell\,dV\right|\right),
+ \tag{VC6}
+\]</span>
+<p>where <span class="math" data-index="addition289-0-27" data-tex="\(q\)">\(q\)</span> is a continuous test seminorm and the list is finite. At <span class="math" data-index="addition289-0-28" data-tex="\(j=0\)">\(j=0\)</span> take <span class="math" data-index="addition289-0-29" data-tex="\(C=1,q=0,b=0\)">\(C=1,q=0,b=0\)</span>; the assertion is vacuous.</p>
+<p>Fix <span class="math" data-index="addition289-0-30" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. We claim that (VC6) extends to <span class="math" data-index="addition289-0-31" data-tex="\(\mathcal D_{K_{j+1}}(M)\)">\(\mathcal D_{K_{j+1}}(M)\)</span> with constant <span class="math" data-index="addition289-0-32" data-tex="\(C(1+\varepsilon)\)">\(C(1+\varepsilon)\)</span>, after adding finitely many compact derivative seminorms supported outside <span class="math" data-index="addition289-0-33" data-tex="\(K_{j-1}\)">\(K_{j-1}\)</span> to <span class="math" data-index="addition289-0-34" data-tex="\(q\)">\(q\)</span>, and finitely many smooth tests supported there to the list. Choose a countable defining family <span class="math" data-index="addition289-0-35" data-tex="\(p_a\)">\(p_a\)</span> for smooth functions on <span class="math" data-index="addition289-0-36" data-tex="\(M\setminus K_{j-1}\)">\(M\setminus K_{j-1}\)</span>, and a countable dense collection <span class="math" data-index="addition289-0-37" data-tex="\(\eta_a\)">\(\eta_a\)</span> of tests on that open set. Such a collection comes from a countable compact exhaustion and countable dense families in its Fréchet support spaces.</p>
+<p>If the claim failed, for each positive integer <span class="math" data-index="addition289-0-38" data-tex="\(N\)">\(N\)</span> rescaling a counterexample would give <span class="math" data-index="addition289-0-39" data-tex="\(v_N\in\mathcal D_{K_{j+1}}(M)\)">\(v_N\in\mathcal D_{K_{j+1}}(M)\)</span> with</p>
+<span class="math math-display" id="proof-eq-VC7" data-index="addition289-0-40" data-tex="\[
+ \begin{aligned}
+ A(v_N)&amp;=C(1+\varepsilon),\\
+ q(Qv_N)+\sum_{\ell\le b}\left|\int_M v_N\psi_\ell\,dV\right|
+ &amp;+N\sum_{a\le N}p_a(Qv_N)
+   +N\sum_{a\le N}\left|\int_M v_N\eta_a\,dV\right|&lt;1.
+ \end{aligned}
+ \tag{VC7}
+\]">\[
+ \begin{aligned}
+ A(v_N)&amp;=C(1+\varepsilon),\\
+ q(Qv_N)+\sum_{\ell\le b}\left|\int_M v_N\psi_\ell\,dV\right|
+ &amp;+N\sum_{a\le N}p_a(Qv_N)
+   +N\sum_{a\le N}\left|\int_M v_N\eta_a\,dV\right|&lt;1.
+ \end{aligned}
+ \tag{VC7}
+\]</span>
+<p>These functions are uniformly bounded in supremum norm, and their images tend to zero smoothly on <span class="math" data-index="addition289-0-41" data-tex="\(M\setminus K_{j-1}\)">\(M\setminus K_{j-1}\)</span>. They are bounded in <span class="math" data-index="addition289-0-42" data-tex="\(V_j\)">\(V_j\)</span>. By (VC5) their restrictions are precompact on <span class="math" data-index="addition289-0-43" data-tex="\(M\setminus K_{j-1}&#x27;\)">\(M\setminus K_{j-1}&#x27;\)</span>. Every restriction limit is zero: the pairings with every <span class="math" data-index="addition289-0-44" data-tex="\(\eta_a\)">\(\eta_a\)</span> tend to zero, and the uniform supremum bound extends this convergence to all tests by approximation in <span class="math" data-index="addition289-0-45" data-tex="\(L^1(dV)\)">\(L^1(dV)\)</span>. Thus the whole sequence tends to zero smoothly on that smaller open set; otherwise a subsequence bounded away from zero in one smooth seminorm would have a further subsequence converging to zero.</p>
+<p>Choose <span class="math" data-index="addition289-0-46" data-tex="\(\chi\in C_c^\infty(\operatorname{int}K_j)\)">\(\chi\in C_c^\infty(\operatorname{int}K_j)\)</span> equal to one near <span class="math" data-index="addition289-0-47" data-tex="\(K_{j-1}&#x27;\)">\(K_{j-1}&#x27;\)</span>, with <span class="math" data-index="addition289-0-48" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span>. For <span class="math" data-index="addition289-0-49" data-tex="\(j=0\)">\(j=0\)</span> take <span class="math" data-index="addition289-0-50" data-tex="\(\chi=0\)">\(\chi=0\)</span>. Since the supports stay in <span class="math" data-index="addition289-0-51" data-tex="\(K_{j+1}\)">\(K_{j+1}\)</span>,</p>
+<span class="math math-display" id="proof-eq-VC8" data-index="addition289-0-52" data-tex="\[
+                  (1-\chi)v_N\longrightarrow0
+                              \quad\hbox{in }\mathcal D(M).
+ \tag{VC8}
+\]">\[
+                  (1-\chi)v_N\longrightarrow0
+                              \quad\hbox{in }\mathcal D(M).
+ \tag{VC8}
+\]</span>
+<p>Continuity of <span class="math" data-index="addition289-0-53" data-tex="\(f,q,Q\)">\(f,q,Q\)</span>, and the finitely many old integral pairings now gives</p>
+<span class="math math-display" data-index="addition289-0-54" data-tex="\[
+ \begin{aligned}
+ A(\chi v_N)&amp;\ge C(1+\varepsilon)-o(1),\\
+ q(Q(\chi v_N))+
+ \sum_{\ell\le b}\left|\int_M\chi v_N\psi_\ell\,dV\right|
+                          &amp;\le1+o(1).
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ A(\chi v_N)&amp;\ge C(1+\varepsilon)-o(1),\\
+ q(Q(\chi v_N))+
+ \sum_{\ell\le b}\left|\int_M\chi v_N\psi_\ell\,dV\right|
+                          &amp;\le1+o(1).
+ \end{aligned}
+\]</span>
+<p>But <span class="math" data-index="addition289-0-55" data-tex="\(\chi v_N\in\mathcal D_{K_j}(M)\)">\(\chi v_N\in\mathcal D_{K_j}(M)\)</span>, so this contradicts (VC6). No commutation of <span class="math" data-index="addition289-0-56" data-tex="\(Q\)">\(Q\)</span> with translations or cutoffs was used: the difference in (VC8) tends to zero in the full test topology, and a smooth-coefficient differential operator is continuous in that topology.</p>
+<p>Iterate with positive <span class="math" data-index="addition289-0-57" data-tex="\(\varepsilon_j\)">\(\varepsilon_j\)</span> of finite sum. The products of <span class="math" data-index="addition289-0-58" data-tex="\(1+\varepsilon_j\)">\(1+\varepsilon_j\)</span> stay bounded. Every new seminorm and every new test at stage <span class="math" data-index="addition289-0-59" data-tex="\(j\)">\(j\)</span> is supported outside <span class="math" data-index="addition289-0-60" data-tex="\(K_{j-1}\)">\(K_{j-1}\)</span>. Consequently their sum restricts to a finite continuous seminorm on each fixed support space, and the new tests form a locally finite family. The limit of (VC6) gives</p>
+<span class="math math-display" id="proof-eq-VC9" data-index="addition289-0-61" data-tex="\[
+ |f(v)|+\sup|v|\le C\left(q(Qv)+
+                 \sum_\ell\left|\int_Mv\psi_\ell\,dV\right|\right)
+                    \qquad(v\in\mathcal D(M)).
+ \tag{VC9}
+\]">\[
+ |f(v)|+\sup|v|\le C\left(q(Qv)+
+                 \sum_\ell\left|\int_Mv\psi_\ell\,dV\right|\right)
+                    \qquad(v\in\mathcal D(M)).
+ \tag{VC9}
+\]</span>
+<p>Define <span class="math" data-index="addition289-0-62" data-tex="\(Tv=(Qv,(\int_Mv\psi_\ell\,dV)_\ell)\)">\(Tv=(Qv,(\int_Mv\psi_\ell\,dV)_\ell)\)</span>. Its second component has finite support for each compact test and belongs to <span class="math" data-index="addition289-0-63" data-tex="\(\ell^1\)">\(\ell^1\)</span>. Estimate (VC9) makes <span class="math" data-index="addition289-0-64" data-tex="\(Tv\mapsto f(v)\)">\(Tv\mapsto f(v)\)</span> well defined and bounded by <span class="math" data-index="addition289-0-65" data-tex="\(C(q(w)+\|a\|_{\ell^1})\)">\(C(q(w)+\|a\|_{\ell^1})\)</span>. Complex Hahn–Banach extends it to <span class="math" data-index="addition289-0-66" data-tex="\(\mathcal D(M)\oplus\ell^1\)">\(\mathcal D(M)\oplus\ell^1\)</span> with this bound. The first restriction is a distribution <span class="math" data-index="addition289-0-67" data-tex="\(u\)">\(u\)</span>; the second is represented by a bounded scalar sequence <span class="math" data-index="addition289-0-68" data-tex="\(c_\ell\)">\(c_\ell\)</span>. Therefore</p>
+<span class="math math-display" data-index="addition289-0-69" data-tex="\[
+ f(v)=u(Qv)+\sum_\ell c_\ell\int_Mv\psi_\ell\,dV.
+\]">\[
+ f(v)=u(Qv)+\sum_\ell c_\ell\int_Mv\psi_\ell\,dV.
+\]</span>
+<p>The locally finite sum <span class="math" data-index="addition289-0-70" data-tex="\(h=\sum_\ell c_\ell\psi_\ell\)">\(h=\sum_\ell c_\ell\psi_\ell\)</span> is smooth, so <span class="math" data-index="addition289-0-71" data-tex="\(Pu=f-h\)">\(Pu=f-h\)</span>. Taking <span class="math" data-index="addition289-0-72" data-tex="\(g=-h\)">\(g=-h\)</span> proves (VC3). <span class="math" data-index="addition289-0-73" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For constant coefficients, singular-support convexity supplies (VC2) by Lemma 1.1. Theorem 7.1 therefore preserves the full constant-coefficient sufficient theorem already proved above.</p>
+<h3 id="a-compact-zero-region-defeats-the-bound-alone">A compact zero region defeats the bound alone</h3>
+<p><strong>Example 7.2.</strong> On the line define</p>
+<span class="math math-display" id="proof-eq-VC10" data-index="addition289-0-74" data-tex="\[
+ a_0(x)=
+ \begin{cases}
+  0,&amp; |x|\le1,\\
+  \exp\!\bigl(-1/(x^2-1)\bigr),&amp; |x|&gt;1,
+ \end{cases}
+ \qquad P_0u=a_0u.
+ \tag{VC10}
+\]">\[
+ a_0(x)=
+ \begin{cases}
+  0,&amp; |x|\le1,\\
+  \exp\!\bigl(-1/(x^2-1)\bigr),&amp; |x|&gt;1,
+ \end{cases}
+ \qquad P_0u=a_0u.
+ \tag{VC10}
+\]</span>
+<p>This is a nonzero smooth differential operator of order zero. To check smoothness at the two endpoints, put <span class="math" data-index="addition289-0-75" data-tex="\(b(t)=e^{-1/t}\)">\(b(t)=e^{-1/t}\)</span> for <span class="math" data-index="addition289-0-76" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-index="addition289-0-77" data-tex="\(b(t)=0\)">\(b(t)=0\)</span> otherwise. Each positive-side derivative is a polynomial in <span class="math" data-index="addition289-0-78" data-tex="\(1/t\)">\(1/t\)</span> times <span class="math" data-index="addition289-0-79" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span>. Every such product tends to zero at zero: an exponential dominates every fixed power, as its power series shows. All one-sided derivatives therefore join with zero. Now <span class="math" data-index="addition289-0-80" data-tex="\(a_0(x)=b(x^2-1)\)">\(a_0(x)=b(x^2-1)\)</span>.</p>
+<p>Here <span class="math" data-index="addition289-0-81" data-tex="\(P_0^t=P_0\)">\(P_0^t=P_0\)</span>. Off the compact zero set <span class="math" data-index="addition289-0-82" data-tex="\([-1,1]\)">\([-1,1]\)</span>, multiplication by <span class="math" data-index="addition289-0-83" data-tex="\(1/a_0\)">\(1/a_0\)</span> is smooth, so</p>
+<span class="math math-display" id="proof-eq-VC11" data-index="addition289-0-84" data-tex="\[
+ \operatorname{singsupp}v
+       \subset\operatorname{singsupp}(a_0v)\cup[-1,1].
+ \tag{VC11}
+\]">\[
+ \operatorname{singsupp}v
+       \subset\operatorname{singsupp}(a_0v)\cup[-1,1].
+ \tag{VC11}
+\]</span>
+<p>For every compact <span class="math" data-index="addition289-0-85" data-tex="\(K\)">\(K\)</span>, the choice <span class="math" data-index="addition289-0-86" data-tex="\(K&#x27;=K\cup[-1,1]\)">\(K&#x27;=K\cup[-1,1]\)</span> proves (VC1). Nevertheless <span class="math" data-index="addition289-0-87" data-tex="\(P_0u=\delta_0+g\)">\(P_0u=\delta_0+g\)</span> is impossible for smooth <span class="math" data-index="addition289-0-88" data-tex="\(g\)">\(g\)</span>: its left side vanishes on <span class="math" data-index="addition289-0-89" data-tex="\((-1,1)\)">\((-1,1)\)</span>, which would make <span class="math" data-index="addition289-0-90" data-tex="\(\delta_0\)">\(\delta_0\)</span> smooth there. A smooth function supported at one point is zero, whereas delta is not. Condition (VC2) fails as well, because <span class="math" data-index="addition289-0-91" data-tex="\(a_0\delta_0=0\)">\(a_0\delta_0=0\)</span>.</p>
+<p><em>Reference:</em> [HII, remark after Theorem 10.7.8] extends the sufficient assertion to smooth coefficients; (VC10)–(VC11) show why the singularity bound, with the literal definition (VC1), needs an additional regularity input.</p>
+<h3 id="isolated-zero-points-defeat-necessity">Isolated zero points defeat necessity</h3>
+<p><strong>Example 7.3.</strong> The operator</p>
+<span class="math math-display" id="proof-eq-VC12" data-index="addition289-0-92" data-tex="\[
+                   P_1u=\sin(\pi x)\,u&#x27;
+ \tag{VC12}
+\]">\[
+                   P_1u=\sin(\pi x)\,u&#x27;
+ \tag{VC12}
+\]</span>
+<p>is surjective on <span class="math" data-index="addition289-0-93" data-tex="\(\mathcal D&#x27;(\mathbb R)\)">\(\mathcal D&#x27;(\mathbb R)\)</span>, although the analogue of singular-support convexity fails.</p>
+<p>We first prove the required division statement. Near a simple zero <span class="math" data-index="addition289-0-94" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>, write <span class="math" data-index="addition289-0-95" data-tex="\(\sin(\pi x)=(x-j)b_j(x)\)">\(\sin(\pi x)=(x-j)b_j(x)\)</span>, where <span class="math" data-index="addition289-0-96" data-tex="\(b_j\)">\(b_j\)</span> is smooth and nonzero on a sufficiently small interval <span class="math" data-index="addition289-0-97" data-tex="\(I_j\)">\(I_j\)</span>. Choose <span class="math" data-index="addition289-0-98" data-tex="\(\rho_j\in C_c^\infty(I_j)\)">\(\rho_j\in C_c^\infty(I_j)\)</span> with <span class="math" data-index="addition289-0-99" data-tex="\(\rho_j(j)=1\)">\(\rho_j(j)=1\)</span>. The map</p>
+<span class="math math-display" id="proof-eq-VC13" data-index="addition289-0-100" data-tex="\[
+ R_j\phi(x)=\frac{\phi(x)-\phi(j)\rho_j(x)}{x-j}
+ \tag{VC13}
+\]">\[
+ R_j\phi(x)=\frac{\phi(x)-\phi(j)\rho_j(x)}{x-j}
+ \tag{VC13}
+\]</span>
+<p>has a smooth value at <span class="math" data-index="addition289-0-101" data-tex="\(j\)">\(j\)</span> and compact support. It is continuous on test functions: near <span class="math" data-index="addition289-0-102" data-tex="\(j\)">\(j\)</span>, the zero numerator divided by <span class="math" data-index="addition289-0-103" data-tex="\(x-j\)">\(x-j\)</span> equals the integral of its first derivative along the segment from <span class="math" data-index="addition289-0-104" data-tex="\(j\)">\(j\)</span> to <span class="math" data-index="addition289-0-105" data-tex="\(x\)">\(x\)</span>; away from <span class="math" data-index="addition289-0-106" data-tex="\(j\)">\(j\)</span>, ordinary division has bounded derivatives on each relevant compact set. For tests in one fixed support space, the output support lies in its union with <span class="math" data-index="addition289-0-107" data-tex="\(\operatorname{supp}\rho_j\)">\(\operatorname{supp}\rho_j\)</span>.</p>
+<p>For any distribution <span class="math" data-index="addition289-0-108" data-tex="\(T\)">\(T\)</span> on <span class="math" data-index="addition289-0-109" data-tex="\(I_j\)">\(I_j\)</span>, define <span class="math" data-index="addition289-0-110" data-tex="\(W(\phi)=T(R_j\phi)\)">\(W(\phi)=T(R_j\phi)\)</span>. Since <span class="math" data-index="addition289-0-111" data-tex="\(R_j((x-j)\phi)=\phi\)">\(R_j((x-j)\phi)=\phi\)</span>, one has <span class="math" data-index="addition289-0-112" data-tex="\((x-j)W=T\)">\((x-j)W=T\)</span>. Multiplying <span class="math" data-index="addition289-0-113" data-tex="\(W\)">\(W\)</span> by <span class="math" data-index="addition289-0-114" data-tex="\(1/b_j\)">\(1/b_j\)</span> solves <span class="math" data-index="addition289-0-115" data-tex="\(\sin(\pi x)V=T\)">\(\sin(\pi x)V=T\)</span> there. Away from the integers division is ordinary smooth multiplication. Choose a locally finite interval cover of these two types and a subordinate smooth partition of unity. Multiply the local solutions by the partition functions and sum. Multiplication by the coefficient commutes with these cutoffs, so for every global <span class="math" data-index="addition289-0-116" data-tex="\(f\)">\(f\)</span> this gives <span class="math" data-index="addition289-0-117" data-tex="\(V\in\mathcal D&#x27;(\mathbb R)\)">\(V\in\mathcal D&#x27;(\mathbb R)\)</span> with <span class="math" data-index="addition289-0-118" data-tex="\(\sin(\pi x)V=f\)">\(\sin(\pi x)V=f\)</span>.</p>
+<p>Every distribution on the line has a primitive. Explicitly choose <span class="math" data-index="addition289-0-119" data-tex="\(\rho\in C_c^\infty(\mathbb R)\)">\(\rho\in C_c^\infty(\mathbb R)\)</span> with integral one, and put</p>
+<span class="math math-display" id="proof-eq-VC14" data-index="addition289-0-120" data-tex="\[
+ J\phi(x)=\int_{-\infty}^{x}
+       \left(\phi(t)-\rho(t)\int_{\mathbb R}\phi(s)\,ds\right)dt .
+ \tag{VC14}
+\]">\[
+ J\phi(x)=\int_{-\infty}^{x}
+       \left(\phi(t)-\rho(t)\int_{\mathbb R}\phi(s)\,ds\right)dt .
+ \tag{VC14}
+\]</span>
+<p>The integrand has total integral zero, so <span class="math" data-index="addition289-0-121" data-tex="\(J\phi\)">\(J\phi\)</span> is smooth and compactly supported. On a fixed support space its support stays in one compact interval and every derivative is bounded by finitely many derivatives of <span class="math" data-index="addition289-0-122" data-tex="\(\phi\)">\(\phi\)</span>. Thus <span class="math" data-index="addition289-0-123" data-tex="\(u(\phi)=-V(J\phi)\)">\(u(\phi)=-V(J\phi)\)</span> is a distribution. Since <span class="math" data-index="addition289-0-124" data-tex="\(J(\phi&#x27;)=\phi\)">\(J(\phi&#x27;)=\phi\)</span>, distributional differentiation gives <span class="math" data-index="addition289-0-125" data-tex="\(u&#x27;=V\)">\(u&#x27;=V\)</span>, hence <span class="math" data-index="addition289-0-126" data-tex="\(P_1u=f\)">\(P_1u=f\)</span>.</p>
+<p>For the transpose,</p>
+<span class="math math-display" id="proof-eq-VC15" data-index="addition289-0-127" data-tex="\[
+ P_1^tv=-\partial_x(\sin(\pi x)v),\qquad
+                           P_1^t\delta_j=0\quad(j\in\mathbb Z).
+ \tag{VC15}
+\]">\[
+ P_1^tv=-\partial_x(\sin(\pi x)v),\qquad
+                           P_1^t\delta_j=0\quad(j\in\mathbb Z).
+ \tag{VC15}
+\]</span>
+<p>The last equality uses <span class="math" data-index="addition289-0-128" data-tex="\(\sin(\pi j)=0\)">\(\sin(\pi j)=0\)</span>. Each <span class="math" data-index="addition289-0-129" data-tex="\(\delta_j\)">\(\delta_j\)</span> has singular support <span class="math" data-index="addition289-0-130" data-tex="\(\{j\}\)">\(\{j\}\)</span>, while every image has empty singular support. No fixed compact <span class="math" data-index="addition289-0-131" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> can contain all these integers. Thus (VC1) fails, even though <span class="math" data-index="addition289-0-132" data-tex="\(P_1\)">\(P_1\)</span> is surjective. This proves the necessity distinction directly, without assigning an unproved inverse to the ordinary differential operator.</p>
+<figure><img class="course-figure" loading="lazy" width="1650" height="1230" src="reproduce/L012-variable-coefficients/figures/variable-coefficient-singularities.png" alt="A compact zero interval blocks a delta datum, while isolated integer zeros give transpose point kernels for a surjective differential operator" /><figcaption class="native"><a href="reproduce/L012-variable-coefficients/figures/variable-coefficient-singularities.png">Open full-size PNG</a> · <a href="reproduce/L012-variable-coefficients/figures/variable-coefficient-singularities.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 7.1.</strong> The top graph is the exact coefficient in (VC10), with its zero interval shaded. Its point marker locates the obstructed datum <span class="math" data-index="addition289-0-133" data-tex="\(\delta_0\)">\(\delta_0\)</span>; the compact set <span class="math" data-index="addition289-0-134" data-tex="\(K\cup[-1,1]\)">\(K\cup[-1,1]\)</span> bounds hidden singularities but does not give solvability. The bottom graph is the coefficient in (VC12), with transpose-kernel supports at integers. The displayed interval is <span class="math" data-index="addition289-0-135" data-tex="\([-3,3]\)">\([-3,3]\)</span>; those supports continue over the whole line. Marks locate Dirac supports and do not represent distribution values. Examples 7.2–7.3 give the complete obstruction and surjectivity proofs. <a href="reproduce/L012-variable-coefficients/figures/variable-coefficient-singularities.svg">Editable SVG</a> and <a href="reproduce/L012-variable-coefficients/README.md">reproduction source and mathematical data</a> accompany the diagram.</p>
 <h2 id="exercises">Exercises</h2>
 <p><strong>Exercise 1 (introductory: singularities on a plateau).</strong> In <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let <span class="math" data-tex="\(P(D)=D_1\)">\(P(D)=D_1\)</span> and <span class="math" data-tex="\(v(x_1,x_2)=a(x_1)\delta_0(x_2)\)">\(v(x_1,x_2)=a(x_1)\delta_0(x_2)\)</span>, with nonzero <span class="math" data-tex="\(a\in C_c^\infty(\mathbb R)\)">\(a\in C_c^\infty(\mathbb R)\)</span>. Compute the supports and singular supports of <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(P^tv\)">\(P^tv\)</span>. Check (2), although those singular sets need not be equal.</p>
 <p><strong>Exercise 2 (intermediate: the extended definition).</strong> Let <span class="math" data-tex="\(v\)">\(v\)</span> be a global compact distribution with <span class="math" data-tex="\(\operatorname{singsupp}v\subset X\)">\(\operatorname{singsupp}v\subset X\)</span>, and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> as in (3). Prove the two equalities there by considering separately points near and away from the singular support. Explain why requiring <span class="math" data-tex="\(\operatorname{supp}v\subset X\)">\(\operatorname{supp}v\subset X\)</span> would obstruct the translation proof.</p>
 <p><strong>Exercise 3 (intermediate: increasing orders).</strong> On <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, show that <span class="math" data-tex="\(f=\sum_{j\ge1}\partial_x^j\delta_j\)">\(f=\sum_{j\ge1}\partial_x^j\delta_j\)</span> is a distribution but has no globally bounded order. Prove that it is valid data for Theorem 6.1 and explain why a fixed-order theorem would not cover it.</p>
 <p><strong>Exercise 4 (advanced: the Hahn–Banach range).</strong> Suppose a differential operator <span class="math" data-tex="\(A\)">\(A\)</span> and a distribution <span class="math" data-tex="\(f\)">\(f\)</span> satisfy <span class="math" data-tex="\(|f(v)|\le C(q(A^tv)+\sum|v(\psi_\ell)|)\)">\(|f(v)|\le C(q(A^tv)+\sum|v(\psi_\ell)|)\)</span>, with continuous LF <span class="math" data-tex="\(q\)">\(q\)</span> and locally finite compact smooth <span class="math" data-tex="\(\psi_\ell\)">\(\psi_\ell\)</span>. Prove directly that <span class="math" data-tex="\(f=Au+h\)">\(f=Au+h\)</span> for a distribution <span class="math" data-tex="\(u\)">\(u\)</span> and a smooth locally finite sum <span class="math" data-tex="\(h\)">\(h\)</span>. Specify why the range functional is well defined even if the displayed map has a kernel.</p>
+<p><strong>Exercise 5 (advanced: a sufficient hypothesis need not be necessary).</strong> On the real line let <span class="math" data-index="addition289-1-0" data-tex="\(Pu=xu\)">\(Pu=xu\)</span>. Prove that (VC1) holds and (VC2) fails, but <span class="math" data-index="addition289-1-1" data-tex="\(P\)">\(P\)</span> is nevertheless surjective on all distributions. Give the inverse construction on test functions. Explain what this says about Theorem 7.1.</p>
 <h2 id="complete-solutions">Complete solutions</h2>
 <p><strong>Solution 1.</strong> The transpose is <span class="math" data-tex="\(-D_1=i\partial_1\)">\(-D_1=i\partial_1\)</span>, so <span class="math" data-tex="\(P^tv=i a&#x27;(x_1)\delta_0(x_2)\)">\(P^tv=i a&#x27;(x_1)\delta_0(x_2)\)</span>. The support and singular support of <span class="math" data-tex="\(v\)">\(v\)</span> both equal <span class="math" data-tex="\(\operatorname{supp}a\times\{0\}\)">\(\operatorname{supp}a\times\{0\}\)</span>; the corresponding sets for its image equal <span class="math" data-tex="\(\operatorname{supp}a&#x27;\times\{0\}\)">\(\operatorname{supp}a&#x27;\times\{0\}\)</span>. For the singular-support assertion, wherever <span class="math" data-tex="\(a\)">\(a\)</span> is nonzero the normal Dirac mass is nonsmooth; the closure of those points is the full support. The same reasoning applies to <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>.</p>
 <p>The convex hulls agree because a nonzero compact smooth function and its derivative have the same extreme support endpoints. If, for example, <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> vanished on an interval containing the right endpoint of <span class="math" data-tex="\(\operatorname{supp}a&#x27;\)">\(\operatorname{supp}a&#x27;\)</span> and extending toward the endpoint of <span class="math" data-tex="\(\operatorname{supp}a\)">\(\operatorname{supp}a\)</span>, <span class="math" data-tex="\(a\)">\(a\)</span> would be constant there; compact vanishing at the outer end makes that constant zero, forcing the endpoints to agree. The left end is identical. A plateau in <span class="math" data-tex="\(a\)">\(a\)</span> creates singular points of <span class="math" data-tex="\(v\)">\(v\)</span> where its image is smooth, so equality of the singular sets themselves is not required.</p>
@@ -417,6 +645,37 @@ The sum <span class="math" data-tex="\(h=\sum_\ell c_\ell\psi_\ell\)">\(h=\sum_\
 \]</span>
 Even the order estimate on this fixed compact fails, contradicting the proposed global bound <span class="math" data-tex="\(N\)">\(N\)</span>. The real line is convex, so Theorem 6.1 covers this datum for every nonzero constant polynomial operator. Its locally finite definition does not reduce it to a globally finite-order datum.</p>
 <p><strong>Solution 4.</strong> Set <span class="math" data-tex="\(Tv=(A^tv,(v(\psi_\ell))_\ell)\)">\(Tv=(A^tv,(v(\psi_\ell))_\ell)\)</span>. The second component has finite support, so belongs to <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span>. If <span class="math" data-tex="\(Tv=0\)">\(Tv=0\)</span>, the estimate gives <span class="math" data-tex="\(f(v)=0\)">\(f(v)=0\)</span>; hence <span class="math" data-tex="\(Tv\mapsto f(v)\)">\(Tv\mapsto f(v)\)</span> is well defined on the range, even without injectivity. Extend it by complex Hahn–Banach with bound <span class="math" data-tex="\(C(q(w)+\|a\|_1)\)">\(C(q(w)+\|a\|_1)\)</span>. Its first restriction is LF continuous and therefore a distribution <span class="math" data-tex="\(u\)">\(u\)</span>. Its second restriction is represented by bounded scalars <span class="math" data-tex="\(c_\ell\)">\(c_\ell\)</span>, since the dual of <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> is <span class="math" data-tex="\(\ell^\infty\)">\(\ell^\infty\)</span>. Thus <span class="math" data-tex="\(f(v)=u(A^tv)+\sum c_\ell v(\psi_\ell)\)">\(f(v)=u(A^tv)+\sum c_\ell v(\psi_\ell)\)</span>. The sum <span class="math" data-tex="\(h=\sum c_\ell\psi_\ell\)">\(h=\sum c_\ell\psi_\ell\)</span> is smooth on each compact set, where only finitely many terms occur, and the equality says <span class="math" data-tex="\(f=Au+h\)">\(f=Au+h\)</span>.</p>
+<p><strong>Solution 5.</strong> Off zero, smooth division by <span class="math" data-index="addition289-2-0" data-tex="\(x\)">\(x\)</span> shows</p>
+<span class="math math-display" data-index="addition289-2-1" data-tex="\[
+       \operatorname{singsupp}v
+          \subset\operatorname{singsupp}(xv)\cup\{0\}.
+\]">\[
+       \operatorname{singsupp}v
+          \subset\operatorname{singsupp}(xv)\cup\{0\}.
+\]</span>
+<p>Thus <span class="math" data-index="addition289-2-2" data-tex="\(K&#x27;=K\cup\{0\}\)">\(K&#x27;=K\cup\{0\}\)</span> proves (VC1). Condition (VC2) fails for <span class="math" data-index="addition289-2-3" data-tex="\(v=\delta_0\)">\(v=\delta_0\)</span>, since <span class="math" data-index="addition289-2-4" data-tex="\(x\delta_0=0\)">\(x\delta_0=0\)</span>.</p>
+<p>Choose <span class="math" data-index="addition289-2-5" data-tex="\(\rho\in C_c^\infty(\mathbb R)\)">\(\rho\in C_c^\infty(\mathbb R)\)</span> with <span class="math" data-index="addition289-2-6" data-tex="\(\rho(0)=1\)">\(\rho(0)=1\)</span>, and set</p>
+<span class="math math-display" id="proof-eq-VC16" data-index="addition289-2-7" data-tex="\[
+                R\phi(x)=\frac{\phi(x)-\phi(0)\rho(x)}x .
+ \tag{VC16}
+\]">\[
+                R\phi(x)=\frac{\phi(x)-\phi(0)\rho(x)}x .
+ \tag{VC16}
+\]</span>
+<p>The smooth extension and test-space continuity were proved for (VC13). For any <span class="math" data-index="addition289-2-8" data-tex="\(f\in\mathcal D&#x27;(\mathbb R)\)">\(f\in\mathcal D&#x27;(\mathbb R)\)</span>, define the distribution</p>
+<span class="math math-display" data-index="addition289-2-9" data-tex="\[
+                         u(\phi)=f(R\phi).
+\]">\[
+                         u(\phi)=f(R\phi).
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-index="addition289-2-10" data-tex="\[
+              (xu)(\phi)=u(x\phi)=f(R(x\phi))=f(\phi).
+\]">\[
+              (xu)(\phi)=u(x\phi)=f(R(x\phi))=f(\phi).
+\]</span>
+<p>So every datum has a solution. Theorem 7.1 supplies a sufficient pair of hypotheses. It does not classify all smooth-coefficient operators for which surjectivity holds, and its compact regularity condition is not asserted necessary.</p>
 <h2 id="references">References</h2>
 <p>For the distribution and Sobolev conventions, see G. Grubb, <em>Distributions and Operators</em>, open lecture chapters <a href="https://web.math.ku.dk/~grubb/dist3.pdf">Distributions</a>, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier transformation</a>, and <a href="https://web.math.ku.dk/~grubb/dist6.pdf">Sobolev spaces</a>. For the classical support and approximation setting, see B. Malgrange, <a href="https://aif.centre-mersenne.org/articles/10.5802/aif.65/"><em>Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution</em></a>, Annales de l'Institut Fourier 6 (1956), 271–355.</p>
-</main></body></html>
+<p>[HII] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983; 2005 reprint. Constant-coefficient solvability, singular supports and comparison with smooth-coefficient operators.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

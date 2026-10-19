@@ -16,6 +16,8 @@ The general cyclic extraction and period/phase classification are treated in [Ta
 
 All algebras below are von Neumann algebras, and all automorphisms and isomorphisms are normal. A factor \(M\) is strongly stable when \(M\cong M\overline\otimes R\). Approximate innerness means closure of the inner automorphisms for pointwise norm convergence on the predual: \(\alpha_n\to\alpha\) when \(\|\psi\circ\alpha_n-\psi\circ\alpha\|\to0\) for every \(\psi\in M_*\). The outer period \(p_o(\theta)\) is the least positive \(q\) for which \(\theta^q\) is inner, or \(0\) if none exists. The asymptotic period \(p_a(\theta)\) is defined in the same way using central triviality: every bounded sequence \((x_n)\) satisfying \(\|[x_n,\psi]\|\to0\) for all normal \(\psi\) must have \(\theta^q(x_n)-x_n\to0\) strongly-star. Thus \(0\) denotes an infinite period, not the identity action. If \(p_o(\theta)=p>0\) and \(\theta^p=\operatorname{Ad}U\), its obstruction is the scalar \(\gamma\) in \(\theta(U)=\gamma U\); Proposition 1.1 of the obstruction lesson proves that it is well defined and \(\gamma^p=1\).
 
+[TF5–TF6 of the tensor companion](../foundations/normal-tensor-and-tracial-product-foundations.md#tf5) supply normal tensor homomorphisms and completely positive maps in arbitrary faithful normal representations, including the tensor automorphisms and conjugating isomorphisms used here. TF5.2 gives their predual continuity and approximate-innerness limits. The stated summable-splitting hypotheses remain necessary to identify commuting subalgebras with an ambient spatial product.
+
 ## 1. Extracting a genuine cyclic action
 
 Let \(R\) be the hyperfinite \(\mathrm{II}_1\) factor. For \(p\geq2\), write

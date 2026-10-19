@@ -1,12 +1,12 @@
 # The faithful-state core: finite trace vectors, averaging and scaling
 
-*New local reconstruction by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. Any rights in this new exposition and its new figure source are dedicated under CC0-1.0. Self-checked by the writing AI.*
+*Any rights in this new exposition and its new figure source are dedicated under CC0-1.0.*
 
 Let $M$ be a von Neumann algebra with separable predual and let $\varphi$ be a faithful normal state. We construct the regular crossed product of its modular action, a normal faithful semifinite trace, and a normal faithful semifinite operator-valued average on its entire positive cone. The trace is built first from a compatible family of finite vector traces. The subsequent averaging calculation identifies its density and gives the coefficient-square and bounded-resolvent formulas. No factor, type III or injectivity assumption is made.
 
 The local supporting manuscript [Fourier and closed-form foundations for the state core, FF-1–5](OA-FLOW-FF.md), proves every Fourier, vector integration, closed-form and extended-cone assertion used below, at its exact earlier scalar and spectral inputs. The modular theorem is the existing [MF-06 proof, §§1–6](OA-FLOW-MF06.md), with the full-completion input proved by [WH-04, §§2–4](OA-FLOW-WH04.md). The faithful-state GNS normality proof is [ST-3](OA-FLOW-ST.md#oa-flow.st.3); its faithful image and normal inverse are proved in [ST-2](OA-FLOW-ST12.md#oa-flow.st.2). These are exact programme proof inputs, not references to a theorem statement in a free paper. The actual earlier CI/BD/HA-R, scalar bridge and SF proofs supply those general Hilbert-algebra inputs. The arbitrary-weight case is not treated here.
 
-For accessible human context, see [Hiai's author notes, §2.1 and §8.1](https://arxiv.org/pdf/2004.02383v1) and [Jerison's MIT Fourier handout](https://math.mit.edu/~jerison/103/handouts/fourierint1.13.pdf). The calculations below and FF-1–5 supply the proofs actually used; their bibliographic presence is not a certificate of an older draft's development.
+For further reading, [Hiai's freely available notes](https://arxiv.org/pdf/2004.02383v1) discuss modular state coordinates in §2.1, extended positive elements in §8.1, dual averaging in Theorem 10.13, and the core trace in Theorem 10.15. [Jerison's Fourier handout](https://math.mit.edu/~jerison/103/handouts/fourierint1.13.pdf) discusses scalar Fourier inversion.
 
 <a id="OA-FLOW.FSCORE.INPUT"></a><a id="oa-flow.fscore.input"></a>
 

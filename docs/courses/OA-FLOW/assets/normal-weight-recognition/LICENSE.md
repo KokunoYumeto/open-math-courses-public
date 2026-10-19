@@ -1,5 +1,7 @@
-# New expression
+# Component terms
 
-The independently written NWR proof candidate, gap map, original mathematical caption, rendering code and new diagram/data are dedicated under CC0-1.0 to the extent of rights held by their creator. Attribution: GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026.
+The original NWR proof exposition, mathematical caption, rendering code, diagram and data are dedicated under CC0-1.0 to the extent of rights held.
 
-Cached human-source page images and copies of existing programme providers are private audit evidence only. Their original rights, source credits and existing licence exceptions remain intact. This notice neither licenses those third-party works nor changes any historical course licence.
+AI-assisted authorship: GPT-6.1 Sol (OpenAI).
+
+Other course components and cited works retain their applicable terms; see course licensing and credits.

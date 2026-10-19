@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Splitting real carriers and gluing hyperfunctions</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L196.html">Previous lesson</a> · <a href="#6-gluing-and-the-local-differential-equation">Harmonic reconstruction</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="splitting-real-carriers-and-gluing-hyperfunctions">Splitting real carriers and gluing hyperfunctions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. CC0.</em></p>
+<p>An analytic functional can differentiate an analytic test infinitely many times. Multiplying that test by a smooth partition function would destroy its analyticity. To localize the functional, we first localize an associated harmonic function, then solve away the Laplace error. This lesson carries out that construction and proves that compatible local hyperfunctions glue on every open cover.</p>
+<p>Read <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a> for local holomorphic tests, least real carriers and harmonic reconstruction. We also use the <a href="AN02-L132.html#the-unit-ball-poisson-operator">ball Poisson formula</a> and <a href="AN02-L042.html#from-normed-extension-to-seminorm-bounds">Hahn–Banach separation</a>. Basic references are Sato's <em>Theory of Hyperfunctions, I</em> and <em>II</em>, Martineau's <em>Supports des fonctionnelles analytiques</em>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>. All required approximation and Laplace correction arguments are proved below, after the solutions.</p>
+<h2 id="1-what-restriction-must-do">1. What restriction must do</h2>
+<p>For a compact real set <span class="math" data-index="0" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-index="1" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span> be its analytic functionals, with a separate holomorphic supremum bound on every complex neighborhood. For bounded open <span class="math" data-index="2" data-tex="\(X\)">\(X\)</span>, define</p>
+<span class="math math-display" id="learner-eq-HL1" data-index="3" data-tex="\[
+ \mathcal B(X)=\mathcal A&#x27;(\overline X)/\mathcal A&#x27;(\partial X).
+ \tag{HL1}
+\]">\[
+ \mathcal B(X)=\mathcal A&#x27;(\overline X)/\mathcal A&#x27;(\partial X).
+ \tag{HL1}
+\]</span>
+<p>Representatives differing only by a boundary-carried functional describe the same hyperfunction inside <span class="math" data-index="4" data-tex="\(X\)">\(X\)</span>. A smaller open set must discard every component outside it, including its own boundary components.</p>
+<p>We prove three facts that make this a local theory. First, a functional carried by a finite union of real compact sets splits into functionals on those sets. Second, a sequence whose differences retreat into decreasing compact sets has a compatible limit modulo their intersection. Third, the resulting quotient restrictions glue, first for two domains, then for a countable cover, and finally for every cover.</p>
+<p>The statements apply to general analytic functionals. Neither a finite real derivative order nor a convex carrier is required.</p>
+<h2 id="2-the-harmonic-correction">2. The harmonic correction</h2>
+<p>Write <span class="math" data-index="5" data-tex="\(X=(x,t)\in\mathbb R^{n+1}\)">\(X=(x,t)\in\mathbb R^{n+1}\)</span>. A compact-real-carrier functional is represented by an odd harmonic function off its carrier in the middle plane. An entire odd harmonic addition does not change it. The normalization and inverse residue formula are proved in <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>.</p>
+<p>Suppose its carrier is <span class="math" data-index="6" data-tex="\(K_1\cup K_2\)">\(K_1\cup K_2\)</span>. Choose a smooth even function <span class="math" data-index="7" data-tex="\(\theta\)">\(\theta\)</span>, equal to one near the first carrier away from their intersection and zero near the second. The products <span class="math" data-index="8" data-tex="\(\theta U\)">\(\theta U\)</span> and <span class="math" data-index="9" data-tex="\((1-\theta)U\)">\((1-\theta)U\)</span> have the desired separated singular sets but are not harmonic. Solve</p>
+<span class="math math-display" id="learner-eq-HL2" data-index="10" data-tex="\[
+ \Delta v=\Delta(\theta U)
+       \quad\hbox{off }(K_1\cap K_2)\times\{0\}.
+ \tag{HL2}
+\]">\[
+ \Delta v=\Delta(\theta U)
+       \quad\hbox{off }(K_1\cap K_2)\times\{0\}.
+ \tag{HL2}
+\]</span>
+<p>Then <span class="math" data-index="11" data-tex="\(\theta U-v\)">\(\theta U-v\)</span> and <span class="math" data-index="12" data-tex="\((1-\theta)U+v\)">\((1-\theta)U+v\)</span> are the required harmonic representatives. Theorem 2.2 proves that this smooth Laplace equation is solvable with no boundary or infinity growth assumption.</p>
+<p>The construction of that solution uses a summable correction series. Split the smooth source into compact pieces, solve each by the fundamental kernel, then subtract harmonic functions making the tails smaller than <span class="math" data-index="13" data-tex="\(2^{-j}\)">\(2^{-j}\)</span> together with the first <span class="math" data-index="14" data-tex="\(j\)">\(j\)</span> derivatives on an exhaustion. The harmonic approximants exist by Theorem 1.1. Its proof explains exactly which holes an approximation domain may contain.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="example-1-an-excluded-point-changes-harmonic-approximation">Example 1: an excluded point changes harmonic approximation</h3>
+<p>In two total real dimensions, let <span class="math" data-index="15" data-tex="\(L\)">\(L\)</span> be the closed annulus <span class="math" data-index="16" data-tex="\(1\leq|X|\leq2\)">\(1\leq|X|\leq2\)</span>, and let <span class="math" data-index="17" data-tex="\(h(X)=\log|X|\)">\(h(X)=\log|X|\)</span> near it. An everywhere harmonic function has the same circular mean on both boundary circles. The means of <span class="math" data-index="18" data-tex="\(h\)">\(h\)</span> are zero and <span class="math" data-index="19" data-tex="\(\log2\)">\(\log2\)</span>. Thus every everywhere harmonic <span class="math" data-index="20" data-tex="\(v\)">\(v\)</span> satisfies</p>
+<span class="math math-display" id="learner-eq-HL3" data-index="21" data-tex="\[
+ \sup_L|h-v|\geq\frac{\log2}{2}.
+ \tag{HL3}
+\]">\[
+ \sup_L|h-v|\geq\frac{\log2}{2}.
+ \tag{HL3}
+\]</span>
+<p>Indeed if the error is <span class="math" data-index="22" data-tex="\(e\)">\(e\)</span>, its center value is within <span class="math" data-index="23" data-tex="\(e\)">\(e\)</span> of both zero and <span class="math" data-index="24" data-tex="\(\log2\)">\(\log2\)</span>; the triangle inequality gives <span class="math" data-index="25" data-tex="\(\log2\leq2e\)">\(\log2\leq2e\)</span>. The constant <span class="math" data-index="26" data-tex="\((\log2)/2\)">\((\log2)/2\)</span> attains this error, so the bound is exact.</p>
+<p>If the global domain is instead <span class="math" data-index="27" data-tex="\(\mathbb R^2\setminus\{0\}\)">\(\mathbb R^2\setminus\{0\}\)</span>, then <span class="math" data-index="28" data-tex="\(h\)">\(h\)</span> itself is a global harmonic function on that domain, giving zero error. The bounded hole inside <span class="math" data-index="29" data-tex="\(L\)">\(L\)</span> now meets the domain's complement, exactly as required by Theorem 1.1.</p>
+<figure><img class="course-figure" loading="lazy" width="1782" height="891" src="reproduce/L197/figures/annulus-and-allowed-harmonic-singularity.png" alt="The same annulus has an approximation obstruction for everywhere harmonic functions, but admits the logarithmic harmonic function when the origin is removed from the domain." /><figcaption class="native"><a href="reproduce/L197/figures/annulus-and-allowed-harmonic-singularity.png">Open full-size PNG</a> · <a href="reproduce/L197/figures/annulus-and-allowed-harmonic-singularity.svg">Open SVG</a></figcaption></figure>
+<p>Both panels show the annulus with radii one and two. The left center belongs to the approximation domain; the right center is excluded. The annulus is the approximation set in both panels. The exact lower bound is established by circular means, independently of the plotted color field.</p>
+<h3 id="example-2-overlap-is-the-precise-splitting-ambiguity">Example 2: overlap is the precise splitting ambiguity</h3>
+<p>Let <span class="math" data-index="30" data-tex="\(K_1=[-2,0]\)">\(K_1=[-2,0]\)</span>, <span class="math" data-index="31" data-tex="\(K_2=[0,3]\)">\(K_2=[0,3]\)</span>, and</p>
+<span class="math math-display" id="learner-eq-HL4" data-index="32" data-tex="\[
+ a=2\delta_{-1}+(1+i)\delta_0-\delta_2.
+ \tag{HL4}
+\]">\[
+ a=2\delta_{-1}+(1+i)\delta_0-\delta_2.
+ \tag{HL4}
+\]</span>
+<p>For any analytic functional <span class="math" data-index="33" data-tex="\(w\)">\(w\)</span> carried by zero, a split is</p>
+<span class="math math-display" id="learner-eq-HL5" data-index="34" data-tex="\[
+ a_1=2\delta_{-1}+w,\qquad
+ a_2=(1+i)\delta_0-\delta_2-w.
+ \tag{HL5}
+\]">\[
+ a_1=2\delta_{-1}+w,\qquad
+ a_2=(1+i)\delta_0-\delta_2-w.
+ \tag{HL5}
+\]</span>
+<p>The first term is carried by <span class="math" data-index="35" data-tex="\(K_1\)">\(K_1\)</span>, the second by <span class="math" data-index="36" data-tex="\(K_2\)">\(K_2\)</span>, and their sum is <span class="math" data-index="37" data-tex="\(a\)">\(a\)</span>. The choice may include infinitely many derivatives at zero. Conversely every other split differs by just such a point-carried functional, by the real intersection theorem.</p>
+<p>To see how boundary ambiguity disappears under restriction, take <span class="math" data-index="38" data-tex="\(X=(-3,3)\)">\(X=(-3,3)\)</span>, <span class="math" data-index="39" data-tex="\(Y=(-1,2)\)">\(Y=(-1,2)\)</span>, and</p>
+<span class="math math-display" id="learner-eq-HL6" data-index="40" data-tex="\[
+ b=\delta_{-3}+2\delta_{-1}+3\delta_0
+                              +4\delta_1+5\delta_2+6\delta_3.
+ \tag{HL6}
+\]">\[
+ b=\delta_{-3}+2\delta_{-1}+3\delta_0
+                              +4\delta_1+5\delta_2+6\delta_3.
+ \tag{HL6}
+\]</span>
+<p>Its class on <span class="math" data-index="41" data-tex="\(X\)">\(X\)</span> ignores the two outer boundary atoms. Restriction to <span class="math" data-index="42" data-tex="\(Y\)">\(Y\)</span> also discards the atoms at <span class="math" data-index="43" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-index="44" data-tex="\(2\)">\(2\)</span>, leaving <span class="math" data-index="45" data-tex="\(3\delta_0+4\delta_1\)">\(3\delta_0+4\delta_1\)</span>. Restrict once more to <span class="math" data-index="46" data-tex="\((0,1)\)">\((0,1)\)</span>: both remaining atoms are on its boundary, so the resulting class is zero. Direct restriction gives the same answer.</p>
+<h3 id="example-3-masses-can-grow-arbitrarily-fast-toward-a-boundary">Example 3: masses can grow arbitrarily fast toward a boundary</h3>
+<p>Let <span class="math" data-index="47" data-tex="\(X=(-1,1)\)">\(X=(-1,1)\)</span>, and put</p>
+<span class="math math-display" id="learner-eq-HL7" data-index="48" data-tex="\[
+ x_j=1-\frac1{j+2},\qquad c_j=2^{j^2},\qquad j\geq0.
+ \tag{HL7}
+\]">\[
+ x_j=1-\frac1{j+2},\qquad c_j=2^{j^2},\qquad j\geq0.
+ \tag{HL7}
+\]</span>
+<p>The locally finite sum <span class="math" data-index="49" data-tex="\(q=\sum_{j\geq0}c_j\delta_{x_j}\)">\(q=\sum_{j\geq0}c_j\delta_{x_j}\)</span> is an ordinary distribution on <span class="math" data-index="50" data-tex="\(X\)">\(X\)</span>: every compact test support meets only finitely many atoms. For <span class="math" data-index="51" data-tex="\(m\geq1\)">\(m\geq1\)</span>, put</p>
+<span class="math math-display" id="learner-eq-HL8" data-index="52" data-tex="\[
+ Y_m=(-1,x_m),\qquad a_m=\sum_{j&lt;m}c_j\delta_{x_j},\qquad
+ K_m=\{-1\}\cup[x_m,1].
+ \tag{HL8}
+\]">\[
+ Y_m=(-1,x_m),\qquad a_m=\sum_{j&lt;m}c_j\delta_{x_j},\qquad
+ K_m=\{-1\}\cup[x_m,1].
+ \tag{HL8}
+\]</span>
+<p>For <span class="math" data-index="53" data-tex="\(k\geq m\)">\(k\geq m\)</span>, <span class="math" data-index="54" data-tex="\(a_k-a_m\)">\(a_k-a_m\)</span> is carried by <span class="math" data-index="55" data-tex="\(K_m\)">\(K_m\)</span>. These compact sets decrease to <span class="math" data-index="56" data-tex="\(\{-1,1\}=\partial X\)">\(\{-1,1\}=\partial X\)</span>. Theorem 4.1 gives one analytic functional on <span class="math" data-index="57" data-tex="\([-1,1]\)">\([-1,1]\)</span> whose hyperfunction restrictions are all these local sums.</p>
+<p>There is no compact distribution on the whole real line representing the same class on <span class="math" data-index="58" data-tex="\(X\)">\(X\)</span>. If it had order <span class="math" data-index="59" data-tex="\(N\)">\(N\)</span>, tests supported near each isolated <span class="math" data-index="60" data-tex="\(x_j\)">\(x_j\)</span> would bound <span class="math" data-index="61" data-tex="\(2^{j^2}\)">\(2^{j^2}\)</span> by <span class="math" data-index="62" data-tex="\(C(j+3)^{2N}\)">\(C(j+3)^{2N}\)</span>, as detailed in Solution 6. This is impossible. Thus a compact analytic-functional representative can exist even when no compact distributional representative does.</p>
+<p>The representative is not obtained by applying the raw infinite sum to an entire test: that sum already diverges on the constant one. The convergent harmonic corrections in Theorem 4.1 are essential. They preserve every interior restriction while adjusting what is carried at the boundary.</p>
+<figure><img class="course-figure" loading="lazy" width="1815" height="808" src="reproduce/L197/figures/retreating-carriers-and-growing-atom-weights.png" alt="Finite interior domains expand toward one while the unassigned carrier retreats to the boundary; the atom weights have logarithms growing quadratically." /><figcaption class="native"><a href="reproduce/L197/figures/retreating-carriers-and-growing-atom-weights.png">Open full-size PNG</a> · <a href="reproduce/L197/figures/retreating-carriers-and-growing-atom-weights.svg">Open SVG</a></figcaption></figure>
+<p>The domain panel is a zoom near the accumulating endpoint. Each green interval extends leftward to <span class="math" data-index="63" data-tex="\(-1\)">\(-1\)</span>, outside the displayed window, and has an open right endpoint <span class="math" data-index="64" data-tex="\(x_m\)">\(x_m\)</span>. The gray portion is <span class="math" data-index="65" data-tex="\([x_m,1]\)">\([x_m,1]\)</span>; the additional point <span class="math" data-index="66" data-tex="\(-1\)">\(-1\)</span> of <span class="math" data-index="67" data-tex="\(K_m\)">\(K_m\)</span> is outside the zoom. Only the locations with <span class="math" data-index="68" data-tex="\(0\leq j\leq11\)">\(0\leq j\leq11\)</span> are shown. The other panel plots the exact values <span class="math" data-index="69" data-tex="\(\log_2c_j=j^2\)">\(\log_2c_j=j^2\)</span> for these indices. The formula and compact-test argument apply to every index.</p>
+<h3 id="example-4-local-representatives-retain-a-fundamental-equation">Example 4: local representatives retain a fundamental equation</h3>
+<p>Let <span class="math" data-index="70" data-tex="\(q(x)=H(x)e^x\)">\(q(x)=H(x)e^x\)</span>, so <span class="math" data-index="71" data-tex="\((\partial_x-1)q=\delta_0\)">\((\partial_x-1)q=\delta_0\)</span>. Choose a smooth compact <span class="math" data-index="72" data-tex="\(\chi_R=1\)">\(\chi_R=1\)</span> near <span class="math" data-index="73" data-tex="\([-R,R]\)">\([-R,R]\)</span>, and define</p>
+<span class="math math-display" id="learner-eq-HL9" data-index="74" data-tex="\[
+ a_R(g)=\int_0^\infty\chi_R(x)e^xg(x)\,dx.
+ \tag{HL9}
+\]">\[
+ a_R(g)=\int_0^\infty\chi_R(x)e^xg(x)\,dx.
+ \tag{HL9}
+\]</span>
+<p>These compact distributions are analytic functionals. Integration by parts gives</p>
+<span class="math math-display" id="learner-eq-HL10" data-index="75" data-tex="\[
+ ((\partial_x-1)a_R)(g)=g(0)+
+                            \int_0^\infty\chi_R&#x27;(x)e^xg(x)\,dx.
+ \tag{HL10}
+\]">\[
+ ((\partial_x-1)a_R)(g)=g(0)+
+                            \int_0^\infty\chi_R&#x27;(x)e^xg(x)\,dx.
+ \tag{HL10}
+\]</span>
+<p>The last term is carried outside <span class="math" data-index="76" data-tex="\((-R,R)\)">\((-R,R)\)</span>. Two choices equal to one on that interval also differ only outside it. Restriction therefore removes the error, and the local classes glue to <span class="math" data-index="77" data-tex="\(q\)">\(q\)</span>. The support is the closed positive half-line and the global equation holds. Corollary 6.3 uses exactly this mechanism for arbitrary compact-real-carrier analytic functionals, including functionals beyond distributions.</p>
+<h2 id="4-eight-exercises">4. Eight exercises</h2>
+<ol>
+<li><strong>Basic, 10 points.</strong> On the annulus <span class="math" data-index="78" data-tex="\(2\leq|X|\leq5\)">\(2\leq|X|\leq5\)</span>, find the exact best uniform approximation error to <span class="math" data-index="79" data-tex="\(\log|X|\)">\(\log|X|\)</span> among everywhere harmonic functions, and exhibit an attaining function.</li>
+<li><strong>Basic, 10 points.</strong> With the domains and functional in Example 2, restrict the class instead to <span class="math" data-index="80" data-tex="\((-1/2,3/2)\)">\((-1/2,3/2)\)</span>. Check that restricting first to <span class="math" data-index="81" data-tex="\((-1,2)\)">\((-1,2)\)</span> gives the same result.</li>
+<li><strong>Intermediate, 12 points.</strong> If two carrier splits use compact real sets <span class="math" data-index="82" data-tex="\(K_1,K_2\)">\(K_1,K_2\)</span>, prove that their ambiguity is exactly <span class="math" data-index="83" data-tex="\(\mathcal A&#x27;(K_1\cap K_2)\)">\(\mathcal A&#x27;(K_1\cap K_2)\)</span>. What happens when the sets are disjoint?</li>
+<li><strong>Intermediate, 12 points.</strong> In the exhaustion (HG6), prove that any point of the open tubular neighborhood joins a nearest carrier point without leaving that neighborhood. Explain why every other complementary component is unbounded.</li>
+<li><strong>Intermediate, 14 points.</strong> Prove that the correction series in (HG9) converges with all derivatives on an arbitrary compact set, and that its Laplacian is the specified source. Include the role of the two initial terms.</li>
+<li><strong>Advanced, 14 points.</strong> Prove the claim in Example 3 that no compact distribution on the real line represents the same hyperfunction on <span class="math" data-index="84" data-tex="\((-1,1)\)">\((-1,1)\)</span>. Give an explicit isolation radius and the required finite-order estimate.</li>
+<li><strong>Advanced, 14 points.</strong> Suppose a countable compatible family has bounded union <span class="math" data-index="85" data-tex="\(X\)">\(X\)</span>. Explain why the compact sets in (HG23) intersect in precisely <span class="math" data-index="86" data-tex="\(\partial X\)">\(\partial X\)</span>, and prove that changing the glued analytic-functional representative by a boundary-carried functional changes no local class.</li>
+<li><strong>Advanced, 14 points.</strong> Suppose local analytic functionals <span class="math" data-index="87" data-tex="\(a_V\)">\(a_V\)</span> satisfy the support and differential hypotheses of Corollary 6.3. Prove the global support and equation assertions, including the case of a neighborhood not containing zero. Explain why no real finite-order estimate is needed.</li>
+</ol>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The circular means of an everywhere harmonic approximant equal its center value on both circles. They must approximate <span class="math" data-index="88" data-tex="\(\log2\)">\(\log2\)</span> and <span class="math" data-index="89" data-tex="\(\log5\)">\(\log5\)</span>, so the error is at least <span class="math" data-index="90" data-tex="\((\log5-\log2)/2=\tfrac12\log(5/2)\)">\((\log5-\log2)/2=\tfrac12\log(5/2)\)</span>. The constant <span class="math" data-index="91" data-tex="\((\log2+\log5)/2=\tfrac12\log10\)">\((\log2+\log5)/2=\tfrac12\log10\)</span> attains that error throughout the annulus, because the logarithm is monotone between its endpoint values. This proves the exact optimum.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>The interval contains zero and one but none of the other atoms. Its restriction is therefore <span class="math" data-index="92" data-tex="\(3\delta_0+4\delta_1\)">\(3\delta_0+4\delta_1\)</span>. First restricting to <span class="math" data-index="93" data-tex="\((-1,2)\)">\((-1,2)\)</span> gives that same representative; neither point is on the new boundary, so the second restriction retains both. The discarded atoms are carried outside the smaller interval, which verifies the restriction characterization directly.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>If <span class="math" data-index="94" data-tex="\(a_1+a_2=b_1+b_2\)">\(a_1+a_2=b_1+b_2\)</span>, then <span class="math" data-index="95" data-tex="\(a_1-b_1=b_2-a_2\)">\(a_1-b_1=b_2-a_2\)</span> is carried by both compact sets. Their real intersection theorem places it in <span class="math" data-index="96" data-tex="\(\mathcal A&#x27;(K_1\cap K_2)\)">\(\mathcal A&#x27;(K_1\cap K_2)\)</span>. Conversely adding any such <span class="math" data-index="97" data-tex="\(w\)">\(w\)</span> to the first part and subtracting it from the second preserves their carriers and sum. If the sets are disjoint, the ambiguity space is zero and the split is unique. These arguments also apply to infinite-order point functionals on an overlap.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Let <span class="math" data-index="98" data-tex="\(Z\in S^\flat\)">\(Z\in S^\flat\)</span> minimize distance from <span class="math" data-index="99" data-tex="\(X\)">\(X\)</span>, which exists because the carrier is compact. On the segment <span class="math" data-index="100" data-tex="\(X_s=(1-s)X+sZ\)">\(X_s=(1-s)X+sZ\)</span>, its distance to the carrier is at most <span class="math" data-index="101" data-tex="\(|X_s-Z|=(1-s)|X-Z|&lt;1/j\)">\(|X_s-Z|=(1-s)|X-Z|&lt;1/j\)</span>. The whole segment stays in the tube and ends on the carrier. The exterior of the closed radius-<span class="math" data-index="102" data-tex="\(j\)">\(j\)</span> ball is connected and unbounded in total dimension at least two. Any complementary component meeting it is unbounded. A component not meeting it consists of points in the tube and therefore meets the carrier by the segment argument.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>Choose <span class="math" data-index="103" data-tex="\(N\)">\(N\)</span> with the compact set inside <span class="math" data-index="104" data-tex="\(L_N\)">\(L_N\)</span>, and fix a derivative order <span class="math" data-index="105" data-tex="\(m\)">\(m\)</span>. For <span class="math" data-index="106" data-tex="\(j\geq\max(N+2,m,3)\)">\(j\geq\max(N+2,m,3)\)</span>, the <span class="math" data-index="107" data-tex="\(C^m\)">\(C^m\)</span> norm of the <span class="math" data-index="108" data-tex="\(j\)">\(j\)</span>-th corrected term on that compact set is bounded by <span class="math" data-index="109" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. The finitely many earlier terms are smooth there. Uniform convergence of all derivatives follows; the coordinate integral identity for derivatives identifies these limits as the derivatives of the sum. In particular the second derivatives converge locally uniformly, so the Laplacian passes through the sum. Harmonic corrections contribute zero. The compact sources telescope to <span class="math" data-index="110" data-tex="\(f\)">\(f\)</span> because both cutoff values are eventually one near every fixed compact set. The first two terms supply <span class="math" data-index="111" data-tex="\(f_1+f_2\)">\(f_1+f_2\)</span>; omitting them would remove those source pieces.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>The adjacent spacing is</p>
+<span class="math math-display" id="learner-eq-HL11" data-index="112" data-tex="\[
+ x_{j+1}-x_j=\frac1{(j+2)(j+3)}.
+ \tag{HL11}
+\]">\[
+ x_{j+1}-x_j=\frac1{(j+2)(j+3)}.
+ \tag{HL11}
+\]</span>
+<p>Choose <span class="math" data-index="113" data-tex="\(r_j=1/[4(j+2)(j+3)]\)">\(r_j=1/[4(j+2)(j+3)]\)</span>, and a fixed smooth bump <span class="math" data-index="114" data-tex="\(\rho\)">\(\rho\)</span> supported in <span class="math" data-index="115" data-tex="\((-1,1)\)">\((-1,1)\)</span> with <span class="math" data-index="116" data-tex="\(\rho(0)=1\)">\(\rho(0)=1\)</span>. Then <span class="math" data-index="117" data-tex="\(\rho_j(x)=\rho((x-x_j)/r_j)\)">\(\rho_j(x)=\rho((x-x_j)/r_j)\)</span> is supported inside <span class="math" data-index="118" data-tex="\((-1,1)\)">\((-1,1)\)</span>, detects only that atom, and satisfies <span class="math" data-index="119" data-tex="\(\|\rho_j^{(k)}\|_\infty\leq C_kr_j^{-k}\)">\(\|\rho_j^{(k)}\|_\infty\leq C_kr_j^{-k}\)</span>. If a compact distribution <span class="math" data-index="120" data-tex="\(T\)">\(T\)</span> represented the class, injectivity of the local distribution embedding would give <span class="math" data-index="121" data-tex="\(T(\rho_j)=2^{j^2}\)">\(T(\rho_j)=2^{j^2}\)</span>. Its finite-order bound on one fixed compact interval containing all these supports would imply</p>
+<span class="math math-display" id="learner-eq-HL12" data-index="122" data-tex="\[
+ 2^{j^2}\leq C r_j^{-N}\leq C&#x27; (j+3)^{2N}.
+ \tag{HL12}
+\]">\[
+ 2^{j^2}\leq C r_j^{-N}\leq C&#x27; (j+3)^{2N}.
+ \tag{HL12}
+\]</span>
+<p>Taking logarithms contradicts quadratic growth against logarithmic growth. The support could include boundary terms at <span class="math" data-index="123" data-tex="\(-1\)">\(-1\)</span> or <span class="math" data-index="124" data-tex="\(1\)">\(1\)</span>; they pair to zero with these interior tests and do not affect the contradiction.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>For bounded <span class="math" data-index="125" data-tex="\(X\)">\(X\)</span>, its closure is compact. Since <span class="math" data-index="126" data-tex="\(Y_j\)">\(Y_j\)</span> increases to <span class="math" data-index="127" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" id="learner-eq-HL13" data-index="128" data-tex="\[
+ \bigcap_j(\overline X\setminus Y_j)
+                    =\overline X\setminus X=\partial X.
+ \tag{HL13}
+\]">\[
+ \bigcap_j(\overline X\setminus Y_j)
+                    =\overline X\setminus X=\partial X.
+ \tag{HL13}
+\]</span>
+<p>A boundary-carried addition is supported outside every <span class="math" data-index="129" data-tex="\(X_i\)">\(X_i\)</span>, so its restriction to each is zero by (HG20). The glued class therefore remains the same. Conversely two global classes with the same local restrictions have difference supported nowhere inside <span class="math" data-index="130" data-tex="\(X\)">\(X\)</span>; their analytic-functional representatives differ by a boundary-carried functional. This is exactly the quotient ambiguity.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>The support condition on differences makes their restrictions agree on each overlap, by (HG20). Theorem 6.1 gives a unique global class. On an open neighborhood disjoint from <span class="math" data-index="131" data-tex="\(F\)">\(F\)</span>, every local representative restricts to zero; hence so does the global class. Its support is therefore contained in <span class="math" data-index="132" data-tex="\(F\)">\(F\)</span>. Theorem 6.2 commutes <span class="math" data-index="133" data-tex="\(P(D)\)">\(P(D)\)</span> with restriction. The residual <span class="math" data-index="134" data-tex="\(P(D)a_V-\delta_0\)">\(P(D)a_V-\delta_0\)</span> has zero restriction on <span class="math" data-index="135" data-tex="\(V\)">\(V\)</span>, so the local equation holds. If zero is outside <span class="math" data-index="136" data-tex="\(V\)">\(V\)</span>, the restricted Dirac functional is itself zero. The global difference vanishes on the relatively compact cover and therefore vanishes everywhere. Only analytic carrier bounds, the proved quotient restriction and gluing were used, so a finite real distributional order is unnecessary.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Mikio Sato, <em>Theory of Hyperfunctions, I</em> and <em>II</em>, Journal of the Faculty of Science, University of Tokyo, Section I, 8 (1959-1960). <a href="https://repository.dl.itc.u-tokyo.ac.jp/records/39927">Part I</a>, <a href="https://repository.dl.itc.u-tokyo.ac.jp/record/39925/file_preview/jfs080207.pdf">Part II</a>.</li>
+<li>André Martineau, <em>Supports des fonctionnelles analytiques</em>, Séminaire d'analyse, 5 (1962-1963), exposé 4. <a href="https://www.numdam.org/item/SL_1962-1963__5__A4_0/">Original article</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990; 2003 reprint.</li>
+<li>The linked preceding lessons supply the harmonic representation, least real carriers, Poisson formula and separation used here.</li>
+</ul>
+<h2 id="complete-proof">Complete proof</h2>
+<p>An analytic functional cannot be multiplied by an arbitrary smooth cutoff. We instead cut off its harmonic potential and correct the resulting Laplace error. This gives decomposition among real carriers, genuine restriction of hyperfunctions and gluing on every open cover. A separate convergent correction series handles infinitely many compatible pieces.</p>
+<p>Basic references are Mikio Sato's <em>Theory of Hyperfunctions, I</em> and <em>II</em>, André Martineau's <em>Supports des fonctionnelles analytiques</em>, and Lars Hörmander's <em>The Analysis of Linear Partial Differential Operators I</em>. The available proofs used here are <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>, especially Theorems 4.2 and 5.1, the <a href="AN02-L132.html#the-unit-ball-poisson-operator">Poisson ball formula</a>, and <a href="AN02-L042.html#from-normed-extension-to-seminorm-bounds">seminorm Hahn–Banach and separation</a>, Propositions 1.1-1.2. The smooth partition construction is the partition lemma in <span class="unlinked">Boundary flux and weak identities</span>. All pairings are complex linear.</p>
+<p>Write <span class="math" data-index="137" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span> for the analytic functionals carried by a compact real set <span class="math" data-index="138" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span>, with the every-complex-neighborhood bounds proved in <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>. They have unique local holomorphic germ action and smallest real carriers, called their supports. No finite distributional order or convexity is assumed. Put <span class="math" data-index="139" data-tex="\(d=n+1\geq2\)">\(d=n+1\geq2\)</span>, write <span class="math" data-index="140" data-tex="\(X=(x,t)\)">\(X=(x,t)\)</span>, and set <span class="math" data-index="141" data-tex="\(K^\flat=K\times\{0\}\)">\(K^\flat=K\times\{0\}\)</span>. The harmonic representation identifies these functionals with odd harmonic functions off <span class="math" data-index="142" data-tex="\(K^\flat\)">\(K^\flat\)</span>, modulo odd harmonic functions on the full real space. We use its naturality: enlarging a real carrier simply restricts the same potential to a smaller complement. This follows either from the kernel definition or from its injective residue formula.</p>
+<h2 id="1-harmonic-approximation-with-every-finite-derivative">1. Harmonic approximation with every finite derivative</h2>
+<p>Let <span class="math" data-index="143" data-tex="\(E_d\)">\(E_d\)</span> be the positive-Laplacian fundamental solution proved in Section 2 of <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>:</p>
+<span class="math math-display" id="proof-eq-HG1" data-index="144" data-tex="\[
+ E_2(X)=\frac{\log|X|}{2\pi},\qquad
+ E_d(X)=\frac{|X|^{2-d}}{(2-d)\sigma_d}\quad(d\geq3),
+ \qquad \Delta E_d=\delta_0.
+ \tag{HG1}
+\]">\[
+ E_2(X)=\frac{\log|X|}{2\pi},\qquad
+ E_d(X)=\frac{|X|^{2-d}}{(2-d)\sigma_d}\quad(d\geq3),
+ \qquad \Delta E_d=\delta_0.
+ \tag{HG1}
+\]</span>
+<p>Here <span class="math" data-index="145" data-tex="\(\sigma_d\)">\(\sigma_d\)</span> is the unit sphere's area. Let <span class="math" data-index="146" data-tex="\(\mathcal H(\Omega)\)">\(\mathcal H(\Omega)\)</span> denote the complex-valued smooth harmonic functions on an open set <span class="math" data-index="147" data-tex="\(\Omega\subset\mathbb R^d\)">\(\Omega\subset\mathbb R^d\)</span>.</p>
+<p><strong>Theorem 1.1 (harmonic Runge approximation).</strong> Let <span class="math" data-index="148" data-tex="\(L\subset\Omega\)">\(L\subset\Omega\)</span> be compact. Suppose every bounded connected component of <span class="math" data-index="149" data-tex="\(\mathbb R^d\setminus L\)">\(\mathbb R^d\setminus L\)</span> meets <span class="math" data-index="150" data-tex="\(\mathbb R^d\setminus\Omega\)">\(\mathbb R^d\setminus\Omega\)</span>. If <span class="math" data-index="151" data-tex="\(h\)">\(h\)</span> is harmonic near <span class="math" data-index="152" data-tex="\(L\)">\(L\)</span>, then for every nonnegative integer <span class="math" data-index="153" data-tex="\(m\)">\(m\)</span> and every <span class="math" data-index="154" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-index="155" data-tex="\(v\in\mathcal H(\Omega)\)">\(v\in\mathcal H(\Omega)\)</span> with</p>
+<span class="math math-display" id="proof-eq-HG2" data-index="156" data-tex="\[
+ \max_{|\alpha|\leq m}\sup_L|\partial^\alpha(h-v)|&lt;\varepsilon.
+ \tag{HG2}
+\]">\[
+ \max_{|\alpha|\leq m}\sup_L|\partial^\alpha(h-v)|&lt;\varepsilon.
+ \tag{HG2}
+\]</span>
+<p><em>Proof.</em> First recall an interior estimate that follows directly from the ball Poisson formula. On concentric balls of radii <span class="math" data-index="157" data-tex="\(r\)">\(r\)</span> and <span class="math" data-index="158" data-tex="\(2r\)">\(2r\)</span>, differentiating the kernel after scaling gives</p>
+<span class="math math-display" id="proof-eq-HG3" data-index="159" data-tex="\[
+ \sup_{B(a,r)}|\partial^\alpha q|
+       \leq C_{d,\alpha}r^{-|\alpha|}
+                           \sup_{B(a,2r)}|q|
+ \tag{HG3}
+\]">\[
+ \sup_{B(a,r)}|\partial^\alpha q|
+       \leq C_{d,\alpha}r^{-|\alpha|}
+                           \sup_{B(a,2r)}|q|
+ \tag{HG3}
+\]</span>
+<p>for every harmonic <span class="math" data-index="160" data-tex="\(q\)">\(q\)</span> near the larger closed ball. The denominators are separated from zero on the smaller ball times the boundary sphere, so every fixed derivative is uniformly bounded. The representation and its uniqueness are <a href="AN02-L132.html#the-unit-ball-poisson-operator">Poisson extension and subharmonic comparison</a>, Theorem P3. The same argument proves smooth convergence of locally uniformly convergent harmonic functions and real analyticity, as recorded in Section 2 of <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>.</p>
+<p>If approximation failed, apply Hahn–Banach separation to the finite jet vectors on <span class="math" data-index="161" data-tex="\(L\)">\(L\)</span>, with the maximum norm on the finite product of spaces <span class="math" data-index="162" data-tex="\(C(L)\)">\(C(L)\)</span>. This gives a compact distribution <span class="math" data-index="163" data-tex="\(T\)">\(T\)</span> of order at most <span class="math" data-index="164" data-tex="\(m\)">\(m\)</span>, supported in <span class="math" data-index="165" data-tex="\(L\)">\(L\)</span>, which kills every member of <span class="math" data-index="166" data-tex="\(\mathcal H(\Omega)\)">\(\mathcal H(\Omega)\)</span> but not <span class="math" data-index="167" data-tex="\(h\)">\(h\)</span>. Explicitly the separating functional on the product acts on <span class="math" data-index="168" data-tex="\((\partial^\alpha\phi|_L)_{|\alpha|\leq m}\)">\((\partial^\alpha\phi|_L)_{|\alpha|\leq m}\)</span>. It obeys the displayed finite derivative bound, so is a distribution supported in <span class="math" data-index="169" data-tex="\(L\)">\(L\)</span>. No measure representation theorem is needed. A smooth cutoff equal to one near <span class="math" data-index="170" data-tex="\(L\)">\(L\)</span> makes its action on local smooth functions unambiguous. The normed and seminorm extension steps are proved in <a href="AN02-L042.html#from-normed-extension-to-seminorm-bounds">Continuous functionals, test families and compact limits</a>, Propositions 1.1-1.2.</p>
+<p>Consider <span class="math" data-index="171" data-tex="\(W=E_d*T\)">\(W=E_d*T\)</span>. It is harmonic off <span class="math" data-index="172" data-tex="\(L\)">\(L\)</span>, is a distribution on the full space, and satisfies <span class="math" data-index="173" data-tex="\(\Delta W=T\)">\(\Delta W=T\)</span>. The construction in <a href="prerequisites/proper-convolution-and-compact-support.html">Proper convolution and compact support</a> applies because the second factor is compact. Transferring test derivatives through that factor and using (HG1) gives the asserted equation; off <span class="math" data-index="174" data-tex="\(L\)">\(L\)</span>, the formula is simply</p>
+<span class="math math-display" id="proof-eq-HG4" data-index="175" data-tex="\[
+ W(Y)=T_X(E_d(Y-X)).
+ \tag{HG4}
+\]">\[
+ W(Y)=T_X(E_d(Y-X)).
+ \tag{HG4}
+\]</span>
+<p>For <span class="math" data-index="176" data-tex="\(Y\notin\Omega\)">\(Y\notin\Omega\)</span>, every source derivative <span class="math" data-index="177" data-tex="\(\partial_Y^\beta E_d(Y-\cdot)\)">\(\partial_Y^\beta E_d(Y-\cdot)\)</span> is harmonic on <span class="math" data-index="178" data-tex="\(\Omega\)">\(\Omega\)</span>. Thus all derivatives of <span class="math" data-index="179" data-tex="\(W\)">\(W\)</span> vanish at <span class="math" data-index="180" data-tex="\(Y\)">\(Y\)</span>. Harmonic analyticity makes <span class="math" data-index="181" data-tex="\(W\)">\(W\)</span> zero throughout every component of <span class="math" data-index="182" data-tex="\(\mathbb R^d\setminus L\)">\(\mathbb R^d\setminus L\)</span> meeting the complement of <span class="math" data-index="183" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>It is zero in the unbounded component too. Indeed <span class="math" data-index="184" data-tex="\(T\)">\(T\)</span> kills every entire harmonic polynomial. For <span class="math" data-index="185" data-tex="\(|Y|\)">\(|Y|\)</span> larger than twice a ball containing <span class="math" data-index="186" data-tex="\(L\)">\(L\)</span>, the homogeneous expansion of <span class="math" data-index="187" data-tex="\(E_d(Y-X)\)">\(E_d(Y-X)\)</span> in <span class="math" data-index="188" data-tex="\(X\)">\(X\)</span> consists of harmonic polynomials and converges with every derivative required by <span class="math" data-index="189" data-tex="\(T\)">\(T\)</span>. The expansion, including the logarithmic case, is proved in Lemma 4.1 of <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>. Its uniform convergence on a slightly larger real ball implies convergence of all finite derivatives on the smaller ball by (HG3), since its partial sums are harmonic. Therefore (HG4) is zero there. Analytic continuation gives zero in the whole unbounded component.</p>
+<p>The hypothesis accounts for every other component, so <span class="math" data-index="190" data-tex="\(\operatorname{supp}W\subset L\)">\(\operatorname{supp}W\subset L\)</span>. Choose a compact smooth <span class="math" data-index="191" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-index="192" data-tex="\(L\)">\(L\)</span>, supported where <span class="math" data-index="193" data-tex="\(h\)">\(h\)</span> is harmonic. Distributional integration by parts gives</p>
+<span class="math math-display" id="proof-eq-HG5" data-index="194" data-tex="\[
+ T(h)=\langle\Delta W,\chi h\rangle
+      =\langle W,\Delta(\chi h)\rangle=0,
+ \tag{HG5}
+\]">\[
+ T(h)=\langle\Delta W,\chi h\rangle
+      =\langle W,\Delta(\chi h)\rangle=0,
+ \tag{HG5}
+\]</span>
+<p>since the last test vanishes near <span class="math" data-index="195" data-tex="\(L\)">\(L\)</span>. This contradicts separation and proves the theorem. <span class="math" data-index="196" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-index="197" data-tex="\(\Omega,L,h\)">\(\Omega,L,h\)</span> are invariant under reflection <span class="math" data-index="198" data-tex="\(R(x,t)=(x,-t)\)">\(R(x,t)=(x,-t)\)</span>, with <span class="math" data-index="199" data-tex="\(h\)">\(h\)</span> odd, replace an approximant by <span class="math" data-index="200" data-tex="\((v-v\circ R)/2\)">\((v-v\circ R)/2\)</span>. Reflection permutes the relevant derivative bounds with signs, so the same error estimate holds and the approximant is odd.</p>
+<h2 id="2-solve-the-laplace-error-off-a-real-compact-set">2. Solve the Laplace error off a real compact set</h2>
+<p><strong>Lemma 2.1 (a suitable exhaustion).</strong> For compact real <span class="math" data-index="201" data-tex="\(S\)">\(S\)</span>, including the empty set, put</p>
+<span class="math math-display" id="proof-eq-HG6" data-index="202" data-tex="\[
+ \Omega_S=\mathbb R^d\setminus S^\flat,\qquad
+ L_j=\{X:|X|\leq j,\ \operatorname{dist}(X,S^\flat)\geq1/j\}.
+ \tag{HG6}
+\]">\[
+ \Omega_S=\mathbb R^d\setminus S^\flat,\qquad
+ L_j=\{X:|X|\leq j,\ \operatorname{dist}(X,S^\flat)\geq1/j\}.
+ \tag{HG6}
+\]</span>
+<p>Use infinite distance when <span class="math" data-index="203" data-tex="\(S\)">\(S\)</span> is empty. These are reflection-invariant compact sets, <span class="math" data-index="204" data-tex="\(L_j\subset\operatorname{int}L_{j+1}\)">\(L_j\subset\operatorname{int}L_{j+1}\)</span>, exhausting <span class="math" data-index="205" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>. Every bounded component of <span class="math" data-index="206" data-tex="\(\mathbb R^d\setminus L_j\)">\(\mathbb R^d\setminus L_j\)</span> meets <span class="math" data-index="207" data-tex="\(S^\flat\)">\(S^\flat\)</span>.</p>
+<p><em>Proof.</em> The strict radius and distance inequalities prove the compactness, nesting and exhaustion statements. The complement is the union of the exterior of the radius-<span class="math" data-index="208" data-tex="\(j\)">\(j\)</span> ball and the open radius-<span class="math" data-index="209" data-tex="\(1/j\)">\(1/j\)</span> neighborhood of <span class="math" data-index="210" data-tex="\(S^\flat\)">\(S^\flat\)</span>. A point in that neighborhood joins a nearest point of <span class="math" data-index="211" data-tex="\(S^\flat\)">\(S^\flat\)</span> by a segment within the same neighborhood. A component meeting the exterior is unbounded; any other component therefore contains such a nearest point. This also proves the assertion for an empty <span class="math" data-index="212" data-tex="\(S\)">\(S\)</span>, when only the unbounded exterior remains. <span class="math" data-index="213" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (global smooth Laplace solvability on this complement).</strong> For every <span class="math" data-index="214" data-tex="\(f\in C^\infty(\Omega_S)\)">\(f\in C^\infty(\Omega_S)\)</span> there is <span class="math" data-index="215" data-tex="\(v\in C^\infty(\Omega_S)\)">\(v\in C^\infty(\Omega_S)\)</span> with <span class="math" data-index="216" data-tex="\(\Delta v=f\)">\(\Delta v=f\)</span>. If <span class="math" data-index="217" data-tex="\(f\)">\(f\)</span> is odd, <span class="math" data-index="218" data-tex="\(v\)">\(v\)</span> can be chosen odd. No bound near <span class="math" data-index="219" data-tex="\(S^\flat\)">\(S^\flat\)</span> or at infinity is imposed on <span class="math" data-index="220" data-tex="\(f\)">\(f\)</span>.</p>
+<p><em>Proof.</em> Choose <span class="math" data-index="221" data-tex="\(\chi_j\in C_c^\infty(\Omega_S)\)">\(\chi_j\in C_c^\infty(\Omega_S)\)</span>, equal to one near <span class="math" data-index="222" data-tex="\(L_j\)">\(L_j\)</span>, with support in <span class="math" data-index="223" data-tex="\(\operatorname{int}L_{j+1}\)">\(\operatorname{int}L_{j+1}\)</span>, and put <span class="math" data-index="224" data-tex="\(\chi_0=0\)">\(\chi_0=0\)</span>. The smooth cutoff construction is the one linked in <span class="unlinked">Boundary flux and weak identities</span>. Set</p>
+<span class="math math-display" id="proof-eq-HG7" data-index="225" data-tex="\[
+ f_j=(\chi_j-\chi_{j-1})f,\qquad v_j=E_d*f_j.
+ \tag{HG7}
+\]">\[
+ f_j=(\chi_j-\chi_{j-1})f,\qquad v_j=E_d*f_j.
+ \tag{HG7}
+\]</span>
+<p>Each <span class="math" data-index="226" data-tex="\(f_j\)">\(f_j\)</span>, extended by zero, is compact smooth on the full space. Thus <span class="math" data-index="227" data-tex="\(v_j\)">\(v_j\)</span> is globally smooth and <span class="math" data-index="228" data-tex="\(\Delta v_j=f_j\)">\(\Delta v_j=f_j\)</span>. The sources sum locally finitely to <span class="math" data-index="229" data-tex="\(f\)">\(f\)</span>. For <span class="math" data-index="230" data-tex="\(j\geq3\)">\(j\geq3\)</span>, <span class="math" data-index="231" data-tex="\(f_j\)">\(f_j\)</span> vanishes near <span class="math" data-index="232" data-tex="\(L_{j-1}\)">\(L_{j-1}\)</span>, so <span class="math" data-index="233" data-tex="\(v_j\)">\(v_j\)</span> is harmonic near <span class="math" data-index="234" data-tex="\(L_{j-2}\)">\(L_{j-2}\)</span>. By Theorem 1.1 and Lemma 2.1 choose <span class="math" data-index="235" data-tex="\(h_j\in\mathcal H(\Omega_S)\)">\(h_j\in\mathcal H(\Omega_S)\)</span> such that</p>
+<span class="math math-display" id="proof-eq-HG8" data-index="236" data-tex="\[
+ \|v_j-h_j\|_{C^j(L_{j-2})}&lt;2^{-j}.
+ \tag{HG8}
+\]">\[
+ \|v_j-h_j\|_{C^j(L_{j-2})}&lt;2^{-j}.
+ \tag{HG8}
+\]</span>
+<p>Empty compact sets require no condition. The series</p>
+<span class="math math-display" id="proof-eq-HG9" data-index="237" data-tex="\[
+ v=v_1+v_2+\sum_{j=3}^\infty(v_j-h_j)
+ \tag{HG9}
+\]">\[
+ v=v_1+v_2+\sum_{j=3}^\infty(v_j-h_j)
+ \tag{HG9}
+\]</span>
+<p>converges with every derivative on every compact subset of <span class="math" data-index="238" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>. For fixed <span class="math" data-index="239" data-tex="\(L_N\)">\(L_N\)</span> and derivative order <span class="math" data-index="240" data-tex="\(m\)">\(m\)</span>, all terms with <span class="math" data-index="241" data-tex="\(j\geq\max(N+2,m,3)\)">\(j\geq\max(N+2,m,3)\)</span> satisfy the summable bound (HG8). Hence termwise Laplacians are legitimate and give <span class="math" data-index="242" data-tex="\(\Delta v=f\)">\(\Delta v=f\)</span>. If <span class="math" data-index="243" data-tex="\(f\)">\(f\)</span> is odd, the odd part of <span class="math" data-index="244" data-tex="\(v\)">\(v\)</span> solves the same equation. <span class="math" data-index="245" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-decompose-among-compact-real-carriers">3. Decompose among compact real carriers</h2>
+<p><strong>Theorem 3.1 (finite carrier decomposition).</strong> If <span class="math" data-index="246" data-tex="\(K_1,\ldots,K_r\subset\mathbb R^n\)">\(K_1,\ldots,K_r\subset\mathbb R^n\)</span> are compact and <span class="math" data-index="247" data-tex="\(u\in\mathcal A&#x27;(K_1\cup\cdots\cup K_r)\)">\(u\in\mathcal A&#x27;(K_1\cup\cdots\cup K_r)\)</span>, then</p>
+<span class="math math-display" id="proof-eq-HG10" data-index="248" data-tex="\[
+ u=u_1+\cdots+u_r,\qquad u_i\in\mathcal A&#x27;(K_i).
+ \tag{HG10}
+\]">\[
+ u=u_1+\cdots+u_r,\qquad u_i\in\mathcal A&#x27;(K_i).
+ \tag{HG10}
+\]</span>
+<p><em>Proof.</em> It suffices to prove the two-set case and iterate. Put <span class="math" data-index="249" data-tex="\(S=K_1\cap K_2\)">\(S=K_1\cap K_2\)</span> and take an odd harmonic representative <span class="math" data-index="250" data-tex="\(U\)">\(U\)</span> of <span class="math" data-index="251" data-tex="\(u\)">\(u\)</span> off <span class="math" data-index="252" data-tex="\((K_1\cup K_2)^\flat\)">\((K_1\cup K_2)^\flat\)</span>. In <span class="math" data-index="253" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>, the sets <span class="math" data-index="254" data-tex="\(K_1^\flat\setminus S^\flat\)">\(K_1^\flat\setminus S^\flat\)</span> and <span class="math" data-index="255" data-tex="\(K_2^\flat\setminus S^\flat\)">\(K_2^\flat\setminus S^\flat\)</span> are disjoint relatively closed sets. Choose a smooth <span class="math" data-index="256" data-tex="\(\theta\)">\(\theta\)</span>, equal to one near the first and zero near the second, on this open space. Here is the precise separation construction. Apply the smooth partition lemma to the two open complements of these closed sets. The partition factors subordinate to the complement of the second set sum to one near the first and zero near the second, by local finiteness and the support containment. Their sum is a smooth separating function. Reflect and average it to make it even in <span class="math" data-index="257" data-tex="\(t\)">\(t\)</span>.</p>
+<p>The function <span class="math" data-index="258" data-tex="\(\Delta(\theta U)\)">\(\Delta(\theta U)\)</span>, initially off both carriers, extends smoothly by zero across their portions outside <span class="math" data-index="259" data-tex="\(S^\flat\)">\(S^\flat\)</span>: there <span class="math" data-index="260" data-tex="\(\theta\)">\(\theta\)</span> is constant and <span class="math" data-index="261" data-tex="\(U\)">\(U\)</span> is harmonic off the carrier. It is an odd smooth function on <span class="math" data-index="262" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>. By Theorem 2.2 choose odd smooth <span class="math" data-index="263" data-tex="\(v\)">\(v\)</span> on this space with</p>
+<span class="math math-display" id="proof-eq-HG11" data-index="264" data-tex="\[
+ \Delta v=\Delta(\theta U).
+ \tag{HG11}
+\]">\[
+ \Delta v=\Delta(\theta U).
+ \tag{HG11}
+\]</span>
+<p>Then</p>
+<span class="math math-display" id="proof-eq-HG12" data-index="265" data-tex="\[
+ U_1=\theta U-v,\qquad U_2=(1-\theta)U+v
+ \tag{HG12}
+\]">\[
+ U_1=\theta U-v,\qquad U_2=(1-\theta)U+v
+ \tag{HG12}
+\]</span>
+<p>extend as odd harmonic functions off <span class="math" data-index="266" data-tex="\(K_1^\flat\)">\(K_1^\flat\)</span> and <span class="math" data-index="267" data-tex="\(K_2^\flat\)">\(K_2^\flat\)</span>, respectively. For instance the first product is zero near the second carrier's portion outside the first, while its Laplacian is canceled everywhere it is defined; the other extension is identical with the roles exchanged. The harmonic representation theorem gives <span class="math" data-index="268" data-tex="\(u_i\in\mathcal A&#x27;(K_i)\)">\(u_i\in\mathcal A&#x27;(K_i)\)</span>. The sum of the representatives is <span class="math" data-index="269" data-tex="\(U\)">\(U\)</span>, so naturality and injectivity give <span class="math" data-index="270" data-tex="\(u_1+u_2=u\)">\(u_1+u_2=u\)</span>. Empty carriers and empty intersections are covered by the same proof, with <span class="math" data-index="271" data-tex="\(\Omega_\varnothing=\mathbb R^d\)">\(\Omega_\varnothing=\mathbb R^d\)</span>. <span class="math" data-index="272" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The split need not be unique when the carriers overlap. If two two-set splits have the same sum, the difference of their first terms is carried by both <span class="math" data-index="273" data-tex="\(K_1\)">\(K_1\)</span> and <span class="math" data-index="274" data-tex="\(K_2\)">\(K_2\)</span>, hence by <span class="math" data-index="275" data-tex="\(K_1\cap K_2\)">\(K_1\cap K_2\)</span>. This follows from Theorem 5.1 of <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>. It is the exact ambiguity.</p>
+<h2 id="4-a-compatible-sequence-modulo-decreasing-real-carriers">4. A compatible sequence modulo decreasing real carriers</h2>
+<p><strong>Theorem 4.1 (completeness for decreasing real carriers).</strong> Let <span class="math" data-index="276" data-tex="\(K\)">\(K\)</span> be compact real and <span class="math" data-index="277" data-tex="\(K_j\subset K\)">\(K_j\subset K\)</span> compact decreasing, with intersection <span class="math" data-index="278" data-tex="\(S\)">\(S\)</span>. Suppose <span class="math" data-index="279" data-tex="\(u_j\in\mathcal A&#x27;(K)\)">\(u_j\in\mathcal A&#x27;(K)\)</span> and</p>
+<span class="math math-display" id="proof-eq-HG13" data-index="280" data-tex="\[
+ u_k-u_j\in\mathcal A&#x27;(K_j)\quad(k\geq j).
+ \tag{HG13}
+\]">\[
+ u_k-u_j\in\mathcal A&#x27;(K_j)\quad(k\geq j).
+ \tag{HG13}
+\]</span>
+<p>There is <span class="math" data-index="281" data-tex="\(u\in\mathcal A&#x27;(K)\)">\(u\in\mathcal A&#x27;(K)\)</span> with</p>
+<span class="math math-display" id="proof-eq-HG14" data-index="282" data-tex="\[
+ u-u_j\in\mathcal A&#x27;(K_j)\quad\hbox{for every }j.
+ \tag{HG14}
+\]">\[
+ u-u_j\in\mathcal A&#x27;(K_j)\quad\hbox{for every }j.
+ \tag{HG14}
+\]</span>
+<p>It is unique modulo <span class="math" data-index="283" data-tex="\(\mathcal A&#x27;(S)\)">\(\mathcal A&#x27;(S)\)</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-index="284" data-tex="\(S\)">\(S\)</span> is empty, compactness and decreasingness imply some <span class="math" data-index="285" data-tex="\(K_j\)">\(K_j\)</span> is empty. The sequence is then constant from that index and the assertion follows. Assume <span class="math" data-index="286" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>. Let <span class="math" data-index="287" data-tex="\(U_j\)">\(U_j\)</span> be the normalized odd harmonic potential of <span class="math" data-index="288" data-tex="\(u_j\)">\(u_j\)</span>. Its differences extend harmonically off <span class="math" data-index="289" data-tex="\(K_j^\flat\)">\(K_j^\flat\)</span>, by (HG13) and the harmonic representation.</p>
+<p>Choose strictly increasing indices <span class="math" data-index="290" data-tex="\(a_j\)">\(a_j\)</span> such that <span class="math" data-index="291" data-tex="\(K_{a_j}^\flat\)">\(K_{a_j}^\flat\)</span> lies in the open radius-<span class="math" data-index="292" data-tex="\(1/(2j)\)">\(1/(2j)\)</span> neighborhood of <span class="math" data-index="293" data-tex="\(S^\flat\)">\(S^\flat\)</span>. Such indices exist: otherwise a subsequence of points in the nested compact sets, outside that fixed neighborhood, would have a limit in their intersection. In the exhaustion (HG6), the odd harmonic extension of <span class="math" data-index="294" data-tex="\(U_{a_{j+1}}-U_{a_j}\)">\(U_{a_{j+1}}-U_{a_j}\)</span> is defined near <span class="math" data-index="295" data-tex="\(L_j\)">\(L_j\)</span>. Choose odd <span class="math" data-index="296" data-tex="\(h_j\in\mathcal H(\Omega_S)\)">\(h_j\in\mathcal H(\Omega_S)\)</span> with</p>
+<span class="math math-display" id="proof-eq-HG15" data-index="297" data-tex="\[
+ \|U_{a_{j+1}}-U_{a_j}-h_j\|_{C^j(L_j)}&lt;2^{-j}.
+ \tag{HG15}
+\]">\[
+ \|U_{a_{j+1}}-U_{a_j}-h_j\|_{C^j(L_j)}&lt;2^{-j}.
+ \tag{HG15}
+\]</span>
+<p>The series</p>
+<span class="math math-display" id="proof-eq-HG16" data-index="298" data-tex="\[
+ V=U_{a_1}+\sum_{j=1}^\infty
+                       (U_{a_{j+1}}-U_{a_j}-h_j)
+ \tag{HG16}
+\]">\[
+ V=U_{a_1}+\sum_{j=1}^\infty
+                       (U_{a_{j+1}}-U_{a_j}-h_j)
+ \tag{HG16}
+\]</span>
+<p>defines an odd harmonic function off <span class="math" data-index="299" data-tex="\(K^\flat\)">\(K^\flat\)</span>. All derivatives converge on every compact there, by the same summable-tail argument as in Theorem 2.2. Let <span class="math" data-index="300" data-tex="\(u\in\mathcal A&#x27;(K)\)">\(u\in\mathcal A&#x27;(K)\)</span> be its harmonic class.</p>
+<p>For fixed <span class="math" data-index="301" data-tex="\(p\)">\(p\)</span>, telescoping rewrites</p>
+<span class="math math-display" id="proof-eq-HG17" data-index="302" data-tex="\[
+ V-U_{a_p}=-\sum_{j&lt;p}h_j+
+                   \sum_{j\geq p}(U_{a_{j+1}}-U_{a_j}-h_j).
+ \tag{HG17}
+\]">\[
+ V-U_{a_p}=-\sum_{j&lt;p}h_j+
+                   \sum_{j\geq p}(U_{a_{j+1}}-U_{a_j}-h_j).
+ \tag{HG17}
+\]</span>
+<p>Every term on the right is harmonic off <span class="math" data-index="303" data-tex="\(K_{a_p}^\flat\)">\(K_{a_p}^\flat\)</span>, and the series converges with every derivative on compact subsets there. It therefore extends the left side to that whole complement. Naturality of harmonic reconstruction proves <span class="math" data-index="304" data-tex="\(u-u_{a_p}\in\mathcal A&#x27;(K_{a_p})\)">\(u-u_{a_p}\in\mathcal A&#x27;(K_{a_p})\)</span>. For arbitrary <span class="math" data-index="305" data-tex="\(j\)">\(j\)</span>, choose <span class="math" data-index="306" data-tex="\(a_p\geq j\)">\(a_p\geq j\)</span>; adding (HG13) and using <span class="math" data-index="307" data-tex="\(K_{a_p}\subset K_j\)">\(K_{a_p}\subset K_j\)</span> proves (HG14). Two answers differ by a functional carried by every <span class="math" data-index="308" data-tex="\(K_j\)">\(K_j\)</span>, and the least-real-carrier theorem places the difference in <span class="math" data-index="309" data-tex="\(\mathcal A&#x27;(S)\)">\(\mathcal A&#x27;(S)\)</span>. Conversely adding such a functional preserves (HG14). <span class="math" data-index="310" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This theorem concerns real carriers and has exact membership for every index. It is the completeness statement needed for countable localization below.</p>
+<h2 id="5-quotient-classes-and-restriction">5. Quotient classes and restriction</h2>
+<p>For bounded open <span class="math" data-index="311" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span>, including disconnected or empty sets, define</p>
+<span class="math math-display" id="proof-eq-HG18" data-index="312" data-tex="\[
+ \mathcal B(X)=\mathcal A&#x27;(\overline X)/\mathcal A&#x27;(\partial X).
+ \tag{HG18}
+\]">\[
+ \mathcal B(X)=\mathcal A&#x27;(\overline X)/\mathcal A&#x27;(\partial X).
+ \tag{HG18}
+\]</span>
+<p>These are hyperfunctions in the analytic-functional model. For a representative <span class="math" data-index="313" data-tex="\(a\)">\(a\)</span>, define its class support in <span class="math" data-index="314" data-tex="\(X\)">\(X\)</span> by <span class="math" data-index="315" data-tex="\(X\cap\operatorname{supp}_{\mathcal A}a\)">\(X\cap\operatorname{supp}_{\mathcal A}a\)</span>. This is independent of the representative: adding a functional supported on <span class="math" data-index="316" data-tex="\(\partial X\)">\(\partial X\)</span> adds a potential harmonic across every point of <span class="math" data-index="317" data-tex="\(X\)">\(X\)</span>, so changes none of the singular extension points there.</p>
+<p><strong>Theorem 5.1 (restriction and its zero criterion).</strong> If <span class="math" data-index="318" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> are bounded open sets, there is a canonical linear restriction <span class="math" data-index="319" data-tex="\(r_{XY}:\mathcal B(X)\to\mathcal B(Y)\)">\(r_{XY}:\mathcal B(X)\to\mathcal B(Y)\)</span>. Choose, using Theorem 3.1,</p>
+<span class="math math-display" id="proof-eq-HG19" data-index="320" data-tex="\[
+ a=b+c,\qquad b\in\mathcal A&#x27;(\overline Y),\quad
+             c\in\mathcal A&#x27;(\overline X\setminus Y),
+ \qquad r_{XY}[a]=[b].
+ \tag{HG19}
+\]">\[
+ a=b+c,\qquad b\in\mathcal A&#x27;(\overline Y),\quad
+             c\in\mathcal A&#x27;(\overline X\setminus Y),
+ \qquad r_{XY}[a]=[b].
+ \tag{HG19}
+\]</span>
+<p>It is independent of all choices, composes under nested restriction, and satisfies</p>
+<span class="math math-display" id="proof-eq-HG20" data-index="321" data-tex="\[
+ r_{XY}[a]=0\quad\Longleftrightarrow\quad
+                 Y\cap\operatorname{supp}_{\mathcal A}a=\varnothing.
+ \tag{HG20}
+\]">\[
+ r_{XY}[a]=0\quad\Longleftrightarrow\quad
+                 Y\cap\operatorname{supp}_{\mathcal A}a=\varnothing.
+ \tag{HG20}
+\]</span>
+<p><em>Proof.</em> The two compact sets in (HG19) cover <span class="math" data-index="322" data-tex="\(\overline X\)">\(\overline X\)</span>. If a representative or split changes, the two resulting <span class="math" data-index="323" data-tex="\(b\)">\(b\)</span>'s differ by a functional carried by <span class="math" data-index="324" data-tex="\(\overline Y\)">\(\overline Y\)</span> and by <span class="math" data-index="325" data-tex="\(\overline X\setminus Y\)">\(\overline X\setminus Y\)</span>: the original representative difference is on <span class="math" data-index="326" data-tex="\(\partial X\)">\(\partial X\)</span>, which lies in the latter set. The real intersection theorem places that difference in <span class="math" data-index="327" data-tex="\(\mathcal A&#x27;(\partial Y)\)">\(\mathcal A&#x27;(\partial Y)\)</span>. Thus the class is well-defined.</p>
+<p>The same argument gives a useful characterization: any <span class="math" data-index="328" data-tex="\(b\in\mathcal A&#x27;(\overline Y)\)">\(b\in\mathcal A&#x27;(\overline Y)\)</span> for which <span class="math" data-index="329" data-tex="\(a-b\)">\(a-b\)</span> has compact real support disjoint from <span class="math" data-index="330" data-tex="\(Y\)">\(Y\)</span> represents the restriction. For <span class="math" data-index="331" data-tex="\(Z\subset Y\subset X\)">\(Z\subset Y\subset X\)</span>, the two successive discarded pieces are both supported outside <span class="math" data-index="332" data-tex="\(Z\)">\(Z\)</span>. This characterization proves <span class="math" data-index="333" data-tex="\(r_{YZ}r_{XY}=r_{XZ}\)">\(r_{YZ}r_{XY}=r_{XZ}\)</span> and also <span class="math" data-index="334" data-tex="\(r_{XX}=1\)">\(r_{XX}=1\)</span>. If the class of <span class="math" data-index="335" data-tex="\(b\)">\(b\)</span> is zero, it is carried by <span class="math" data-index="336" data-tex="\(\partial Y\)">\(\partial Y\)</span>, so both terms of (HG19) are supported outside <span class="math" data-index="337" data-tex="\(Y\)">\(Y\)</span>. Conversely, if <span class="math" data-index="338" data-tex="\(a\)">\(a\)</span>'s support misses <span class="math" data-index="339" data-tex="\(Y\)">\(Y\)</span>, the choice <span class="math" data-index="340" data-tex="\(b=0,c=a\)">\(b=0,c=a\)</span> is valid. This proves (HG20). <span class="math" data-index="341" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently a hyperfunction's support is exactly the complement of the largest open set on which its restriction vanishes. In particular, vanishing on every member of a cover implies vanishing on the union, with no finiteness requirement.</p>
+<h2 id="6-gluing-and-the-local-differential-equation">6. Gluing and the local differential equation</h2>
+<p><strong>Theorem 6.1 (gluing on every open cover).</strong> If <span class="math" data-index="342" data-tex="\(X=\bigcup_{i\in I}X_i\)">\(X=\bigcup_{i\in I}X_i\)</span> is any open cover in <span class="math" data-index="343" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> and <span class="math" data-index="344" data-tex="\(q_i\in\mathcal B(X_i)\)">\(q_i\in\mathcal B(X_i)\)</span> agree on all overlaps, there is a unique <span class="math" data-index="345" data-tex="\(q\in\mathcal B(X)\)">\(q\in\mathcal B(X)\)</span> with these restrictions. For unbounded open sets, <span class="math" data-index="346" data-tex="\(\mathcal B(X)\)">\(\mathcal B(X)\)</span> means compatible classes on all bounded open subsets of <span class="math" data-index="347" data-tex="\(X\)">\(X\)</span>; this agrees with (HG18) when <span class="math" data-index="348" data-tex="\(X\)">\(X\)</span> is bounded.</p>
+<p><em>Proof.</em> First assume a bounded union and two sets. Choose representatives <span class="math" data-index="349" data-tex="\(a_i\in\mathcal A&#x27;(\overline X_i)\)">\(a_i\in\mathcal A&#x27;(\overline X_i)\)</span>, and put <span class="math" data-index="350" data-tex="\(K=\overline X_1\cup\overline X_2\)">\(K=\overline X_1\cup\overline X_2\)</span>. By (HG20), the difference <span class="math" data-index="351" data-tex="\(a_1-a_2\)">\(a_1-a_2\)</span> is supported in</p>
+<span class="math math-display" id="proof-eq-HG21" data-index="352" data-tex="\[
+ K\setminus(X_1\cap X_2)=(K\setminus X_1)\cup(K\setminus X_2).
+ \tag{HG21}
+\]">\[
+ K\setminus(X_1\cap X_2)=(K\setminus X_1)\cup(K\setminus X_2).
+ \tag{HG21}
+\]</span>
+<p>Theorem 3.1 writes it as <span class="math" data-index="353" data-tex="\(c_1+c_2\)">\(c_1+c_2\)</span>, with <span class="math" data-index="354" data-tex="\(c_i\)">\(c_i\)</span> carried by <span class="math" data-index="355" data-tex="\(K\setminus X_i\)">\(K\setminus X_i\)</span>. Then</p>
+<span class="math math-display" id="proof-eq-HG22" data-index="356" data-tex="\[
+ a=a_1-c_1=a_2+c_2
+ \tag{HG22}
+\]">\[
+ a=a_1-c_1=a_2+c_2
+ \tag{HG22}
+\]</span>
+<p>has the required restrictions, by the characterization after (HG19). It is carried by <span class="math" data-index="357" data-tex="\(K=\overline{X_1\cup X_2}\)">\(K=\overline{X_1\cup X_2}\)</span>. Uniqueness for any cover already follows from the support zero criterion: a difference zero on every member has empty support in the union. Iterating the two-set construction handles every finite cover.</p>
+<p>For a countable cover of bounded <span class="math" data-index="358" data-tex="\(X\)">\(X\)</span>, let <span class="math" data-index="359" data-tex="\(Y_j=X_1\cup\cdots\cup X_j\)">\(Y_j=X_1\cup\cdots\cup X_j\)</span>. Finite gluing gives compatible classes on the <span class="math" data-index="360" data-tex="\(Y_j\)">\(Y_j\)</span>; choose representatives <span class="math" data-index="361" data-tex="\(a_j\in\mathcal A&#x27;(\overline Y_j)\subset\mathcal A&#x27;(\overline X)\)">\(a_j\in\mathcal A&#x27;(\overline Y_j)\subset\mathcal A&#x27;(\overline X)\)</span>. For <span class="math" data-index="362" data-tex="\(k\geq j\)">\(k\geq j\)</span>, their difference restricts to zero on <span class="math" data-index="363" data-tex="\(Y_j\)">\(Y_j\)</span>, so it is carried by</p>
+<span class="math math-display" id="proof-eq-HG23" data-index="364" data-tex="\[
+ K_j=\overline X\setminus Y_j,\qquad
+                 \bigcap_jK_j=\partial X.
+ \tag{HG23}
+\]">\[
+ K_j=\overline X\setminus Y_j,\qquad
+                 \bigcap_jK_j=\partial X.
+ \tag{HG23}
+\]</span>
+<p>Theorem 4.1 gives <span class="math" data-index="365" data-tex="\(a\in\mathcal A&#x27;(\overline X)\)">\(a\in\mathcal A&#x27;(\overline X)\)</span> with <span class="math" data-index="366" data-tex="\(a-a_j\)">\(a-a_j\)</span> carried by <span class="math" data-index="367" data-tex="\(K_j\)">\(K_j\)</span>. Its class in <span class="math" data-index="368" data-tex="\(\mathcal B(X)\)">\(\mathcal B(X)\)</span> restricts to the prescribed class on every <span class="math" data-index="369" data-tex="\(Y_j\)">\(Y_j\)</span>, and hence on each original member.</p>
+<p>Every open cover in Euclidean space has a countable subcover. To see this, use the countable basis of balls with rational centers and radii, selecting for each basis ball contained in some cover member one such member. These selected members cover every point. Glue on this countable subcover. On any unselected member, the resulting class and the prescribed one agree on its intersections with the selected members; uniqueness by the support criterion gives agreement on that whole member. This proves arbitrary gluing for a bounded union.</p>
+<p>For general open <span class="math" data-index="370" data-tex="\(X\)">\(X\)</span>, define a class as a compatible family over all its bounded open subsets, using Theorem 5.1's restriction maps. A bounded <span class="math" data-index="371" data-tex="\(X\)">\(X\)</span> itself is one of those subsets, so this definition agrees exactly with (HG18). Given data on a cover of any <span class="math" data-index="372" data-tex="\(X\)">\(X\)</span>, glue on each bounded open <span class="math" data-index="373" data-tex="\(V\subset X\)">\(V\subset X\)</span> using the cover <span class="math" data-index="374" data-tex="\(V\cap X_i\)">\(V\cap X_i\)</span> and the bounded-union case. Uniqueness makes these glued classes compatible as <span class="math" data-index="375" data-tex="\(V\)">\(V\)</span> varies. They therefore give the desired class on <span class="math" data-index="376" data-tex="\(X\)">\(X\)</span>. The same argument proves uniqueness and restriction to arbitrary open subsets. <span class="math" data-index="377" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (compact carriers, distributions and operations).</strong> Every compact-real-carrier analytic functional defines a hyperfunction with exactly the same support. For compact <span class="math" data-index="378" data-tex="\(K\subset X\)">\(K\subset X\)</span>, the hyperfunctions supported in <span class="math" data-index="379" data-tex="\(K\)">\(K\)</span> are canonically <span class="math" data-index="380" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span>. Ordinary distributions embed injectively into hyperfunctions with the same supports. Constant-coefficient derivatives commute with every restriction and with gluing, and the Dirac functional is the ordinary point evaluation functional.</p>
+<p><em>Proof.</em> For an analytic functional <span class="math" data-index="381" data-tex="\(a\)">\(a\)</span> with compact carrier, and bounded open <span class="math" data-index="382" data-tex="\(V\)">\(V\)</span>, choose bounded <span class="math" data-index="383" data-tex="\(Z\)">\(Z\)</span> containing both that carrier and <span class="math" data-index="384" data-tex="\(\overline V\)">\(\overline V\)</span>. Restrict its class from <span class="math" data-index="385" data-tex="\(Z\)">\(Z\)</span> to <span class="math" data-index="386" data-tex="\(V\)">\(V\)</span>. Two choices agree after restriction from a larger such set, by Theorem 5.1. These classes form a hyperfunction. Its support is exactly the least real carrier, by (HG20), so the map is injective.</p>
+<p>If a class on bounded <span class="math" data-index="387" data-tex="\(X\)">\(X\)</span> has compact support <span class="math" data-index="388" data-tex="\(K\subset X\)">\(K\subset X\)</span>, any representative has support contained in <span class="math" data-index="389" data-tex="\(K\cup\partial X\)">\(K\cup\partial X\)</span>. Theorem 3.1 splits it into a functional carried by <span class="math" data-index="390" data-tex="\(K\)">\(K\)</span> and one carried by <span class="math" data-index="391" data-tex="\(\partial X\)">\(\partial X\)</span>. The first is unique, since a difference carried by the disjoint sets <span class="math" data-index="392" data-tex="\(K\)">\(K\)</span> and <span class="math" data-index="393" data-tex="\(\partial X\)">\(\partial X\)</span> is zero. For unbounded <span class="math" data-index="394" data-tex="\(X\)">\(X\)</span>, choose a bounded relatively compact neighborhood of <span class="math" data-index="395" data-tex="\(K\)">\(K\)</span> inside <span class="math" data-index="396" data-tex="\(X\)">\(X\)</span>, apply that argument there, and compare with zero outside <span class="math" data-index="397" data-tex="\(K\)">\(K\)</span> using gluing uniqueness.</p>
+<p>Derivatives preserve analytic carriers by Cauchy's inequalities, as proved in Section 5 of <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>. They therefore descend to (HG18). If <span class="math" data-index="398" data-tex="\(a-b\)">\(a-b\)</span> is supported outside <span class="math" data-index="399" data-tex="\(Y\)">\(Y\)</span>, the same holds of its derivative. The restriction characterization proves commutation. This also proves commutation with gluing by uniqueness. With <span class="math" data-index="400" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span>, the bilinear transpose convention is</p>
+<span class="math math-display" id="proof-eq-HG24" data-index="401" data-tex="\[
+ (P(D)a)(g)=a(P(-D)g).
+ \tag{HG24}
+\]">\[
+ (P(D)a)(g)=a(P(-D)g).
+ \tag{HG24}
+\]</span>
+<p>For an ordinary distribution on arbitrary open <span class="math" data-index="402" data-tex="\(X\)">\(X\)</span>, choose relatively compact neighborhoods covering <span class="math" data-index="403" data-tex="\(X\)">\(X\)</span> and ordinary smooth cutoffs equal to one on their closures. Each cutoff distribution is compact, so gives an analytic functional with the same support by Theorem 5.1 of <a href="AN02-L196.html#complete-proof">Harmonic potentials and real carriers</a>. Different cutoffs have differences supported outside the smaller neighborhood; hence their hyperfunction restrictions agree. Gluing gives the embedding. The same local support statement proves its injectivity and exact support. On these compact pieces, differentiation differs from differentiation before cutoff only by terms supported off the smaller neighborhood. Therefore this embedding respects derivatives too. In particular <span class="math" data-index="404" data-tex="\(\delta_a(g)=g(a)\)">\(\delta_a(g)=g(a)\)</span>, with support <span class="math" data-index="405" data-tex="\(\{a\}\)">\(\{a\}\)</span>, has its ordinary meaning. <span class="math" data-index="406" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.3 (realizing compatible local equations).</strong> Suppose for every relatively compact open <span class="math" data-index="407" data-tex="\(V\)">\(V\)</span> there is a compact-real-carrier analytic functional <span class="math" data-index="408" data-tex="\(a_V\)">\(a_V\)</span>, and the support of <span class="math" data-index="409" data-tex="\(a_V-a_W\)">\(a_V-a_W\)</span> misses <span class="math" data-index="410" data-tex="\(V\cap W\)">\(V\cap W\)</span>. Their restrictions define a unique global hyperfunction. If their supports lie in a fixed closed set <span class="math" data-index="411" data-tex="\(F\)">\(F\)</span>, so does that hyperfunction. If, for a constant-coefficient polynomial, <span class="math" data-index="412" data-tex="\(P(D)a_V-\delta_0\)">\(P(D)a_V-\delta_0\)</span> has support disjoint from <span class="math" data-index="413" data-tex="\(V\)">\(V\)</span>, then its global realization solves <span class="math" data-index="414" data-tex="\(P(D)q=\delta_0\)">\(P(D)q=\delta_0\)</span>.</p>
+<p><em>Proof.</em> The zero criterion gives compatibility. Theorem 6.1 glues, and Theorem 6.2 commutes the differential operator with the restrictions. Both the support conclusion and the equation hold on the whole relatively compact open cover, hence globally. The same proof works with any already defined compatible right side in place of the Dirac functional. <span class="math" data-index="415" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The analytic functional estimates and cutoff commutators in <a href="AN02-L052.html#from-the-functional-to-a-hyperfunction">Small Gevrey fundamental solutions in the principal polar cone</a> verify precisely these hypotheses. The result applies to those functionals even when they are not distributions.</p>
+<h2 id="references-2">References</h2>
+<ul>
+<li>Mikio Sato, <em>Theory of Hyperfunctions, I</em> and <em>II</em>, Journal of the Faculty of Science, University of Tokyo, Section I, 8 (1959-1960). <a href="https://repository.dl.itc.u-tokyo.ac.jp/records/39927">Part I</a>, <a href="https://repository.dl.itc.u-tokyo.ac.jp/record/39925/file_preview/jfs080207.pdf">Part II</a>.</li>
+<li>André Martineau, <em>Supports des fonctionnelles analytiques</em>, Séminaire d'analyse, 5 (1962-1963), exposé 4. <a href="https://www.numdam.org/item/SL_1962-1963__5__A4_0/">Original article</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 1990; 2003 reprint. Reference for analytic-functional carrier decomposition and the quotient model of hyperfunctions.</li>
+<li>The linked preceding lessons contain the harmonic representation, real support theorem, Poisson formula, smooth partitions and Hahn–Banach extension used here. The harmonic approximation and global smooth Laplace correction are proved in Sections 1-2 above.</li>
+</ul>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/splitting-real-carriers-and-gluing-hyperfunctions.md" download>Download the complete lesson source</a>. Original exposition,proofs,examples,solutions and diagrams use CC0 1.0. Linked providers and fonts retain their terms.</p><ul><li><a href="reproduce/L197/splitting-real-carriers-and-gluing-hyperfunctions-formal.md" download>splitting-real-carriers-and-gluing-hyperfunctions-formal.md</a></li><li><a href="reproduce/L197/splitting-real-carriers-and-gluing-hyperfunctions-learner.md" download>splitting-real-carriers-and-gluing-hyperfunctions-learner.md</a></li><li><span class="unlinked">check-and-figures.py</span></li><li><a href="reproduce/L197/LICENSE.txt" download>LICENSE.txt</a></li><li><span class="unlinked">README-reproduce.md</span></li><li><span class="unlinked">DejaVu-font-license.txt</span></li><li><a href="reproduce/L197/figures/annulus-and-allowed-harmonic-singularity.png" download>figures/annulus-and-allowed-harmonic-singularity.png</a></li><li><a href="reproduce/L197/figures/annulus-and-allowed-harmonic-singularity.svg" download>figures/annulus-and-allowed-harmonic-singularity.svg</a></li><li><a href="reproduce/L197/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L197/figures/retreating-carriers-and-growing-atom-weights.png" download>figures/retreating-carriers-and-growing-atom-weights.png</a></li><li><a href="reproduce/L197/figures/retreating-carriers-and-growing-atom-weights.svg" download>figures/retreating-carriers-and-growing-atom-weights.svg</a></li></ul><p><span class="unlinked">MathJax license</span> · <span class="unlinked">Course sources and terms</span></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

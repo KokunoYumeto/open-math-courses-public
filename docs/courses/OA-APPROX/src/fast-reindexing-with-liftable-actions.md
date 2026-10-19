@@ -1,6 +1,6 @@
 # Fast reindexing with liftable actions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra. Course exposition: CC0-1.0 to the extent of rights held. Earlier programme and human-source notices retain their own terms.*
 
 Reindexing lets a separable part of an ultraproduct move farther out along its representatives. The finite tests must preserve multiplication, the multiplier condition and the desired action. This lesson proves the fast construction with hypotheses that survive the [semi-lift counterexample](ultraproduct-expectations-and-semilift-ambiguity.md#proposition-5-1).
 
@@ -228,6 +228,6 @@ Applying the same identity to \(xx^*\) gives the adjoint square. Averaging the t
 
 ## References
 
-The freely accessible construction source is Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Section 5.3, Fast Reindexation Trick, printed pp.53–54 (PDF pp.67–68). Its hypothesis is a countable family of liftable automorphisms. Its product formula uses the canonical expectation, with the input in the map's domain and the prescribed coefficient in the other algebra. The full source argument was read, including its uniform multiplier tests and normal extension.
+Adrian Ocneanu, [*Actions of discrete amenable groups on factors*](https://wrap.warwick.ac.uk/id/eprint/110062/1/WRAP_Theses_Ocneanu_1982.pdf), thesis, Chapter 5, Section 5.3, Fast Reindexation Trick, printed pp.53–54 (PDF pp.67–68), gives the classical finite-test selection with a countable family of constant lifts. Its ordered product formula uses the canonical expectation, with the input in the map's domain and the prescribed coefficient in the other algebra. Its normal-extension step is brief.
 
-The lesson supplies the finite intersections, two-sided multiplier estimates, rational-algebra relations, faithful-state normal extension and separately normal passage to every expectation identity in full. It retains arbitrary separable-predual algebras, without a factor or tracial restriction. The preceding explicit tensor-tail obstruction explains why general semi-lifts cannot replace constant lifts in this theorem. The exact local prerequisite bindings and remaining free foundation dependencies are recorded separately.
+The complete construction here supplies countability of the joined algebras and their intersections, norm-controlled lifts, every rational algebraic relation, fixed multiplier moduli and both ideal-preservation estimates. A faithful-state isometry gives the full bounded-net extension; positive suprema and normal coefficients prove whole-domain normality. The expectation identities extend separately in their two variables. The theorem retains general separable-predual algebras, while the preceding tensor-tail obstruction explains the restriction to constant lifts. Human-source rights remain separate from the course dedication.

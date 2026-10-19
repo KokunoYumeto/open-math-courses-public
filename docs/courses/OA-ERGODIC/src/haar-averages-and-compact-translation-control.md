@@ -10,9 +10,11 @@ Read [Means, Følner sets, and regular representations](means-folner-sets-and-re
 
 Throughout \(G\) is a locally compact Hausdorff group with a fixed left Haar measure \(dt\). No countability or unimodularity assumption is made. Put
 \[
-L_sf(t)=f(s^{-1}t),\qquad R_sf(t)=f(ts),\qquad
+\begin{gathered}
+L_sf(t)=f(s^{-1}t),\qquad R_sf(t)=f(ts),\\
 (k*f)(t)=\int_G k(u)f(u^{-1}t)\,du.
 \tag{0.1}
+\end{gathered}
 \]
 Let \(\mathrm{LUC}(G)\), \(\mathrm{RUC}(G)\) denote the bounded continuous functions for which respectively \(L_sf\to f\), \(R_sf\to f\) in supremum norm as \(s\to e\). Their intersection is \(\mathrm{UC}(G)\).
 
@@ -33,9 +35,9 @@ In particular the closed-subgroup proof depends on Theorem 1.2 here, while Propo
 
 The maps used at the two interfaces matter. Smoothing converts a mean on uniformly continuous functions into a mean on locally completed Haar classes. Continuous subgroup averaging then maps bounded continuous functions on the subgroup to bounded continuous functions on the ambient group; composing with the ambient mean and applying Theorem 1.2 on the subgroup finishes heredity. Restricting arbitrary ambient Haar classes to the subgroup would not define this map: a closed subgroup can have ambient Haar measure zero. The horizontal subgroup of the plane in the subgroup lesson illustrates this obstruction.
 
-The foundational inputs are explicit: Haar existence and uniqueness, Radon approximation and Riesz representation, Hahn–Banach and weak-star compactness, continuous compactly supported partitions and bumps, Stone–Weierstrass, and the integrated representation and group C-star framework. Section 0 supplies the local Haar convention and translation estimates needed when there is no countable base. Its free-lifting and ping-pong arguments are proved there. Reading the application does not supply a proof of those external structure theorems.
+The foundational inputs are explicit: Haar existence and uniqueness, Radon approximation and Riesz representation, Hahn–Banach and weak-star compactness, continuous compactly supported partitions and bumps, Stone–Weierstrass, and the integrated representation and group C-star framework. Section 0 supplies the local Haar convention and translation estimates needed when there is no countable base. The radical lesson proves its free-lifting and ping-pong arguments, as well as the locally compact structure assertions S1–S4 at the precise Haar, compact-representation, root, Lie and geometry prerequisites stated there.
 
-All four lessons include complete solutions: five in the discrete lesson, five here, six in the subgroup lesson, and eight in the radical lesson. Their hypotheses remain attached to each argument. The locally compact statements assume neither second countability nor unimodularity; the radical criterion also requires almost-connectedness. This reading order concerns these four group-amenability lessons. The measured-relation lesson has its own additional dependencies.
+All four lessons include complete solutions: five in the discrete lesson, five here, six in the subgroup lesson, and twenty-six in the radical lesson. Their hypotheses remain attached to each argument. The locally compact statements assume neither second countability nor unimodularity; the radical criterion also requires almost-connectedness. This reading order concerns these four group-amenability lessons. The measured-relation lesson has its own additional dependencies.
 
 ## 0. Haar integration without a countable base
 
@@ -58,10 +60,12 @@ For a probability density \(h\in L^1(G)\), define the right smoothing operator
 \]
 Left Haar measure gives
 \[
-R_sS_hf=S_{L_sh}f,\qquad
-\|R_sS_hf-S_hf\|_\infty
+\begin{gathered}
+R_sS_hf=S_{L_sh}f,\\
+\|R_sS_hf-S_hf\|_\infty\\
 \leq\|L_sh-h\|_1\|f\|_\infty.
 \tag{1.2}
+\end{gathered}
 \]
 Thus \(S_hf\in\mathrm{RUC}(G)\). Similarly,
 \[
@@ -76,9 +80,11 @@ shows \(k*f\in\mathrm{LUC}(G)\). If \(f\) is already right uniformly continuous,
 
 **Theorem 1.2.** A left invariant mean on \(\mathrm{UC}(G)\) produces a left invariant mean \(M\) on \(L^\infty(G)\) with the stronger property
 \[
-M(k*f)=M(f)\int k,\qquad
+\begin{gathered}
+M(k*f)=M(f)\int k,\\
 k\in L^1(G),\ f\in L^\infty(G).
 \tag{1.4}
+\end{gathered}
 \]
 
 *Proof.* Let \(m\) be the given mean. For \(f\in\mathrm{RUC}(G)\), the functional \(k\mapsto m(k*f)\) on \(L^1\) is left invariant by (1.3). For positive \(f\) it is positive. Lemma 1.1, followed by decomposition into real and imaginary positive parts, gives a scalar \(\widetilde m(f)\) with
@@ -143,11 +149,15 @@ Let \(\mathcal P(G)=\{p\in L^1(G):p\geq0,\int p=1\}\).
 
 The weak convolution condition is the existence of a net \(p_i\in\mathcal P(G)\) such that
 \[
-\int f(k*p_i-p_i)\,dt\longrightarrow0
-\quad\bigl(f\in L^\infty(G),\ k\in\mathcal P(G)\bigr).
+\begin{gathered}
+\int f(k*p_i-p_i)\,dt\longrightarrow0\\
+\bigl(f\in L^\infty(G),\ k\in\mathcal P(G)\bigr).
 \tag{3.0}
+\end{gathered}
 \]
 The strong convolution condition replaces these scalar limits by \(\|k*p_i-p_i\|_1\to0\) for every fixed \(k\). Both are equivalent to the following three formulations of amenability.
+
+The convolution and finite-cover argument is the standard Reiter proof; see [Takesaki], Proposition XIII.4.5, pp. 65–66. The formulation here keeps the finite-family, net and compact-uniform conditions explicit.
 
 **Theorem 3.1 (Reiter approximation).** Amenability is equivalent to each of the following conditions:
 
@@ -179,13 +189,13 @@ If (3.0) is assumed instead, its scalar limits place zero in the weak closure of
 
 To obtain (3.2), fix \(h\in\mathcal P(G)\). The set \(\{L_sh:s\in C\}\) is norm compact in \(L^1\). Choose finitely many \(s_i\) such that every \(L_sh\) is within \(\varepsilon/3\) of some \(L_{s_i}h\). Use (3.1) for \(h\) and these translates, obtaining \(p\) with all their convolution errors below \(\varepsilon/3\). Then \(g=h*p\) is a probability density and
 \[
-\begin{aligned}
-\|L_sg-g\|_1
-&\leq\|(L_sh-L_{s_i}h)*p\|_1\\
-&\quad+\|(L_{s_i}h)*p-p\|_1+\|p-h*p\|_1
-<\varepsilon.
-\end{aligned}
+\begin{gathered}
+\|L_sg-g\|_1\\
+\leq\|(L_sh-L_{s_i}h)*p\|_1\\
++\|(L_{s_i}h)*p-p\|_1\\
++\|p-h*p\|_1<\varepsilon.
 \tag{3.3}
+\end{gathered}
 \]
 
 Positive compactly supported continuous probability densities are dense in \(\mathcal P(G)\), by Radon regularity and approximation in \(L^1\), followed by normalization. Replacing \(g\) by such a density changes every translation error by at most twice the \(L^1\) approximation error. Thus condition 3 follows.
@@ -197,6 +207,8 @@ The compactness used in (3.3) belongs to the translated smoothing density \(h\).
 ## 4. Compact Følner sets
 
 Write \(|A|\) for left Haar measure.
+
+The layer-set and positive-overlap method is the proof of [Takesaki], Theorem XIII.4.7, pp. 68–70. Lemma 0.1 supplies the product-measurability convention used in its Haar integrations.
 
 **Theorem 4.1.** Amenability is equivalent to the following condition: for every compact \(C\subset G\) and \(\varepsilon>0\), there is a compact set \(F\) with \(0<|F|<\infty\) and
 \[
@@ -213,9 +225,12 @@ Consequently, any Borel \(B\subset Q\) with \(|Q\setminus B|<|D|/2\) satisfies \
 
 Choose a continuous compactly supported probability density \(p\) with translation error less than \(\delta\) on \(Q\), where \(2\delta|Q|/\varepsilon<|D|/2\). For \(a>0\), set \(F_a=\{t:p(t)\geq a\}\). These sets are compact. The layer identity gives
 \[
-\int_0^\infty|F_a|\,da=1,\qquad
-\int_0^\infty|sF_a\triangle F_a|\,da<\delta\quad(s\in Q).
+\begin{gathered}
+\int_0^\infty|F_a|\,da=1,\\
+\int_0^\infty|sF_a\triangle F_a|\,da<\delta\\
+(s\in Q).
 \tag{4.3}
+\end{gathered}
 \]
 For levels with positive measure, let
 \[
@@ -224,20 +239,24 @@ B_a=\{s\in Q:|sF_a\triangle F_a|<(\varepsilon/2)|F_a|\}.
 At levels with zero measure put \(B_a=Q\); their contribution to the following weighted integral is zero.
 Fubini and (4.3) imply
 \[
-\int_0^\infty |Q\setminus B_a|\,|F_a|\,da
+\begin{gathered}
+\int_0^\infty |Q\setminus B_a|\,|F_a|\,da\\
 \leq\frac{2}{\varepsilon}\int_Q\int_0^\infty
-|sF_a\triangle F_a|\,da\,ds
+|sF_a\triangle F_a|\,da\,ds\\
 <\frac{2\delta|Q|}{\varepsilon}<\frac{|D|}{2}.
 \tag{4.4}
+\end{gathered}
 \]
 Thus some level has \(0<|F_a|<\infty\) and \(|Q\setminus B_a|<|D|/2\). The product measurability in this calculation also holds without metrizability. For \(s\in Q\), all the relevant \(t\)'s lie in the fixed compact set \(\operatorname{supp}p\cup Q\operatorname{supp}p\). On this compact product the continuous scalar functions \(p(t)\) and \(p(s^{-1}t)\) are product measurable by the approximation in Lemma 0.1. Comparing them with the real parameter \(a\) gives product measurable indicators. The restricted Haar measures are finite, so Fubini applies. Integrating in \(t\) also proves measurability of \((s,a)\mapsto|sF_a\triangle F_a|\) and of the sets \(B_a\).
 
 By (4.2), every \(s\in C\subset D\) can be written \(s=uv^{-1}\) with \(u,v\in B_a\). Left Haar invariance gives
 \[
-|uv^{-1}F_a\triangle F_a|
-\leq|v^{-1}F_a\triangle F_a|+|uF_a\triangle F_a|
-=|vF_a\triangle F_a|+|uF_a\triangle F_a|
+\begin{gathered}
+|uv^{-1}F_a\triangle F_a|\\
+\leq|v^{-1}F_a\triangle F_a|+|uF_a\triangle F_a|\\
+=|vF_a\triangle F_a|+|uF_a\triangle F_a|\\
 <\varepsilon|F_a|.
+\end{gathered}
 \]
 This is (4.1). \(\square\)
 
@@ -273,8 +292,11 @@ Conversely, faithfulness makes the trivial representation a state \(\epsilon\) o
 
 Take a positive contractive approximate identity \(e_j\) of \(C_r^*(G)\). We have \(\psi(e_j)=\epsilon(e_j)\to1\). For every \(s\), \(\lambda_se_j\in C_r^*(G)\) and \(\epsilon(\lambda_se_j)=\epsilon(e_j)\). Moreover, Cauchy–Schwarz gives
 \[
-|\psi(\lambda_s(1-e_j))|^2
-\leq\psi((1-e_j)^2)\leq1-\psi(e_j)\longrightarrow0.
+\begin{gathered}
+|\psi(\lambda_s(1-e_j))|^2\\
+\leq\psi((1-e_j)^2)\\
+\leq1-\psi(e_j)\longrightarrow0.
+\end{gathered}
 \]
 Hence \(\psi(\lambda_s)=1\). The same zero-variance argument as in the discrete theorem yields
 \(\psi(\lambda_sB\lambda_s^*)=\psi(B)\) for every \(B\).
@@ -283,10 +305,13 @@ Restrict \(\psi\) to the multiplication algebra \(L^\infty(G)\). Since \(\lambda
 
 **Corollary 5.2 (the unit-ball coefficient formulation).** Amenability is also equivalent to a net \(\xi_i\) in the unit ball of \(L^2(G)\) such that
 \[
-c_{\xi_i}(s)=\int_G\xi_i(t)\overline{\xi_i(s^{-1}t)}\,dt
-\longrightarrow1
-\quad\text{uniformly on each compact subset of }G.
+\begin{gathered}
+c_{\xi_i}(s)=\int_G\xi_i(t)\overline{\xi_i(s^{-1}t)}\,dt\\
+\longrightarrow1\\
+\text{uniformly on each compact}\\
+\text{subset of }G.
 \tag{5.3}
+\end{gathered}
 \]
 With \(\xi^\vee(t)=\overline{\xi(t^{-1})}\), this integral is the coefficient customarily denoted \(\xi*\xi^\vee(s)\). It is well defined by Cauchy–Schwarz even when inversion does not preserve the Haar \(L^2\)-norm.
 
@@ -346,4 +371,4 @@ Integration gives the inequality. Taking \(q=L_sp\) proves the first estimate in
 
 ## References
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. Chapter XIII, Proposition 4.1 and Definition 4.2, pp. 60–63 (means and fixed points); Proposition 4.3 and Example 4.4, pp. 62–64 (two-sided means and permanence); Proposition 4.5, pp. 65–66 (Reiter approximation); Theorem 4.6, pp. 66–68 (regular coefficients and group norms); Theorem 4.7, pp. 68–70 (compact Følner sets). The group-norm proof above uses tensor absorption and a state extension on the regular Hilbert space. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).

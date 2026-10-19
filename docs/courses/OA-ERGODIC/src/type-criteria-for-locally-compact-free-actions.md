@@ -10,7 +10,7 @@ Semifiniteness has a different test. The modular action of the dual weight recor
 
 We use the regular representation, the full maximal-diagonal criterion, the separable-group scope argument, and the finite criterion in [Free actions and the crossed-product diagonal](free-actions-and-the-crossed-product-diagonal.md), Theorems 3.3, 5.3 and Corollary 5.4. The base is a nonzero standard Borel space with a sigma-finite measure, completed when necessary. The group is separable locally compact Hausdorff, as in the source, and its action is jointly Borel and nonsingular. Freeness means trivial stabilizers outside a measurable null set. At this scope freeness forces second countability by the cited Theorem 3.3, so Haar measure and the regular Hilbert space are sigma-finite and separable. We assume ergodicity throughout the type classification.
 
-The general prerequisites are the injective Borel image theorem, type I factor structure and the exhaustive factor types, and existence of a faithful normal semifinite trace on a semifinite algebra. For the semifinite test we also use the general affiliated-density and modular-perturbation theorems, and the dual-weight construction and modular generator formula. We state their precise uses below; their general proofs remain in the modular-theory and crossed-product courses.
+The general prerequisites are Borel images and measurable inversion, Theorems 4.3(5) and 5.2; Projections and types of von Neumann algebras, Theorems 7.2 and 10.3 and Corollary 10.4; and Traces on von Neumann algebras, Theorem 6.7. These supply the type I matrix units, exhaustive factor types and faithful normal semifinite trace used below. For the semifinite test we also use the general affiliated-density and modular-perturbation theorems, and the dual-weight construction and modular generator formula. We state their precise uses below; their general proofs remain in the modular-theory and crossed-product courses.
 
 ## Reading from a measurable action to its factor type
 
@@ -27,7 +27,7 @@ The action lessons follow one system through several representations. Start with
 
 Three distinctions organize the proofs. First, a null fixed-point set for every separate nonidentity element does not imply the full compact wandering condition: the reflection example in the compact-model lesson exhibits a compact family whose fixed sets cover the space. Second, an orbitwise C*-representation need not extend to a normal point evaluation of the entire measured algebra. The free null-orbit example explains why a statement at every original point is stronger than the conull statement needed by the direct integral. Third, an equivalent finite invariant base measure does not by itself make a nondiscrete crossed product finite. The twisted-density test and the finite-algebra test answer different questions.
 
-For the source exercises, begin with the Weyl lesson's eight complete solutions, then work through the compact-model lesson's nine solutions and the eight in each of the orbit and Fourier lessons. The first exercise has a completed correction of its printed parameter and recovery claim; the seventh has a completed correction of its Haar powers and every-point irreducibility claim. The intended commutant, dimension and maximal-diagonal conclusions have their complete proofs at the stated hypotheses.
+For the source exercises, begin with the Weyl lesson's eight complete solutions, then work through the compact-model lesson's nine solutions and the eight in each of the orbit and Fourier lessons. The Weyl parameter is a product, and coupling dimension retains its absolute value; the orbit and Fourier arguments distinguish almost-everywhere irreducibility from a claim at every original point and retain the Haar modular powers. Those distinctions are part of the commutant, dimension and maximal-diagonal arguments.
 
 The [Borel-carrier lesson](borel-carriers-and-uniform-wandering-neighborhoods.md#3-the-full-measurable-compact-wandering-conclusion) proves the fifth exercise's measurable compact wandering conclusion without Radon regularity. Its carrier is a countable union of compact sets; the extracted positive wandering subset is Borel and need not be compact. The source's positive compact extraction is proved for Radon measures and for the full atomic standard-measure branch. Its remaining atomless standard-measure case, in the original locally compact topology with the full free, ergodic, quasi-invariant and full-support hypotheses, remains open. The regularity dichotomy identifies precisely what still needs a proof or a counterexample.
 
@@ -159,7 +159,7 @@ r_s(s^{-1}x)=j_s(x)^{-1}.
 \]
 Indeed \(s_*((s^{-1})_*\mu)=\mu\), whose density is \(j_s(x)r_s(s^{-1}x)\).
 
-We reuse the following exact general results. An abelian trace has trivial modular group. Perturbing it by a positive injective affiliated multiplier \(r\) gives the normalized cocycle \([D\varphi_r:D\varphi]_t=r^{it}\). These are the trace and faithful-density cases of *Recognizing a weight by its fixed density*, Sections 4–5 and 8, with the unbounded perturbation formula in *Fixed elements and changes of density*, Section 11. The dual construction supplies a faithful normal semifinite weight \(\omega_\mu\) on the crossed product. Its modular formula, from *How the dual weight moves crossed-product generators*, is
+We reuse the following exact general results. An abelian trace has trivial modular group. Perturbing it by a positive injective affiliated multiplier \(r\) gives the normalized cocycle \([D\varphi_r:D\varphi]_t=r^{it}\). These are the trace and faithful-density cases of Recognizing a weight by its fixed density, “A density has exactly the prescribed cocycle,” “The faithful invariant-weight equivalence” and “Radon–Nikodym densities relative to a semifinite trace”, with the unbounded perturbation formula in Fixed observations, density weights and modular time, “Recover modular time on the support”. The dual construction supplies a faithful normal semifinite weight \(\omega_\mu\) on the crossed product. Its modular formula, from How the dual weight moves crossed-product generators, is
 \[
 \begin{aligned}
 \sigma_t^{\omega_\mu}(\pi(f))&=\pi(f),\\
@@ -193,7 +193,7 @@ where \((\nu\circ T_s)(E)=\nu(sE)\). The last expression is Takesaki III, Chapte
 
 ## 4. Semifiniteness is exactly cancellation of the densities
 
-We will use two modular-theory prerequisites in their full weight form. For a faithful normal semifinite trace \(\tau\) and a faithful normal semifinite weight \(\omega\), there is a positive injective self-adjoint operator \(h\), affiliated with the algebra, such that
+We will use two modular-theory prerequisites in their full weight form: the faithful invariant-weight equivalence in the density lesson, and the unbounded supported formula in the perturbation lesson. For a faithful normal semifinite trace \(\tau\) and a faithful normal semifinite weight \(\omega\), there is a positive injective self-adjoint operator \(h\), affiliated with the algebra, such that
 \[
 \omega=\tau_h,\qquad
 \sigma_t^\omega=\operatorname{Ad}(h^{it}).
@@ -290,6 +290,44 @@ The rational-translation subgroup is ergodic for \(\ell\). Indeed, translations 
 
 If an equivalent sigma-finite \(\Gamma\)-invariant measure \(\eta\) existed, its finite positive density relative to \(\ell\) would be invariant under rational translations, and their ergodicity would force \(\eta=c\ell\). Dilation by two gives \(\eta(2E)=2\eta(E)\), contradicting invariance on a set of finite positive Lebesgue measure. Since the group is discrete, (3.5) is invariance, and Theorem 5.1 gives type III. Determining its modular subtype requires the separate corner-spectrum theorem.
 
+**Example 5.5 (nonunimodularity without a conull orbit).** Let \(P\) be the positive affine group and fix \(\theta\in\mathbb R\setminus\mathbb Q\). Let \(G=P\times\mathbb R\) act on \(X=P\times\mathbb T^2\) by
+\[
+ \begin{aligned}
+ &(c,d,t)(a,b,z_1,z_2)\\
+ &\quad=(ca,cb+d,\\
+ &\qquad e^{2\pi it}z_1,e^{2\pi i\theta t}z_2).
+ \end{aligned}
+ \tag{5.3}
+\]
+Use \(d\mu=a^{-2}\,da\,db\,dm_{\mathbb T^2}\). This sigma-finite measure is invariant: the first action is left translation for affine left Haar measure, and the second is a torus translation. The group is second countable and nonunimodular, with \(\Delta_G(c,d,t)=c^{-1}\).
+
+The action is free at every point. A stabilizer must have \(c=1,d=0\); its last coordinate is an integer \(t\) with \(\theta t\) integral, hence zero. It is ergodic as well. For a bounded invariant function, invariance under the affine factor and Fubini give invariance for almost every triple consisting of a translating group element, an affine base point and a torus point. For almost every torus point, varying the translating element makes the affine section constant almost everywhere, by the Haar argument in Theorem 1.2. Integrating that section against a fixed probability density chooses the constant measurably. The remaining torus function is invariant under the irrational flow; the Fourier calculation in Example 5.3 makes it constant.
+
+Every orbit is the whole affine group times one irrational torus orbit. The latter is Borel and Haar-null by Example 5.3. Sigma-finiteness of affine Haar measure therefore makes every orbit a null Borel subset of \(X\).
+
+The invariant base measure does not itself satisfy the twist, since its pushforward derivative is one. Instead take
+\[
+ \begin{aligned}
+ h(a,b,z_1,z_2)&=a^{-1},\\
+ d\nu=h^{-1}d\mu&=a^{-1}\,da\,db\,dm_{\mathbb T^2}.
+ \end{aligned}
+ \tag{5.4}
+\]
+These densities and their reciprocals are finite and positive, with no uniform bound required. The measures are equivalent and sigma-finite, using bounded coordinate boxes with the positive affine coordinate bounded away from zero. The inverse point map replaces \(a\) by \(a/c\), so
+\[
+ \begin{aligned}
+ \frac{h(x)}{h(s^{-1}x)}&=c^{-1}=\Delta_G(s),\\
+ j_s^\nu&=c^{-1}.
+ \end{aligned}
+ \tag{5.5}
+\]
+Equivalently, the affine Jacobian gives \(\nu(sE)=c\nu(E)\). Thus \(\nu\) satisfies (3.5). There is no conull orbit and the group is nondiscrete; Theorem 5.1 makes this crossed product type \(II_\infty\). The example tests the nonunimodular, nontransitive branch without using a tensor-product decomposition of crossed products.
+
+![A nonunimodular product action: free ergodic null orbits and cancellation of the Haar density.](figures/nonunimodular-product-type.svg)
+
+*Figure 3. Example 5.5 and Exercise 6.8. The affine and torus coordinates have the exact action (5.3); the boxes show identities of measures and derivatives, not a geometric drawing of the orbit space. The torus factor supplies null orbits, while the reciprocal affine density cancels the Haar modular factor. The type criterion is Takesaki III, Theorem XIII.1.7; the product application is proved above.* [Open the full-size diagram](figures/nonunimodular-product-type.svg).
+
+
 ## 6. Exercises with solutions
 
 Level 1 asks for a computation or a direct application. Level 2 asks for a proof using the lesson’s framework. Level 3 combines results or examines a hypothesis whose failure changes the conclusion.
@@ -332,10 +370,19 @@ Dividing by the density \(q(y)\) of \(\nu\) gives
 
 *Solution.* The two invariant orbits each have mass \(1/2\). Their indicator projections \(p_0,p_1\) are central and split the regular representation into two orbit representations. On each orbit Theorem 1.2 gives \(M_3(\mathbb C)\) with a three-dimensional multiplicity. Hence \(\mathcal M=M_3(\mathbb C)\oplus M_3(\mathbb C)\), with two-dimensional centre. The orbit relation is \((O_0\times O_0)\cup(O_1\times O_1)\), whose product probability is \((1/2)^2+(1/2)^2=1/2\). Both \(p_0\) and \(p_1\) are nonzero, so \(p_0\otimes p_1\) is nonzero in the spatial tensor product. Since central projections belong to the commutant as well, it is in the stated domain, but its multiplication image is \(p_0p_1=0\). The multiplication map exists normally here and fails faithfulness. This differs from Exercise 6.2, where the product-measure representation fails normality. Ergodicity excludes this two-orbit example from Theorem 2.2.
 
+**Exercise 6.8 (the rational-slope control).** *Level 2.* In Example 5.5 replace the irrational slope by \(\theta=p/q\), with coprime integers \(p,q\) and \(q>0\). Determine the stabilizers and a nonconstant invariant bounded function. Does the same twisted measure still exist, and why does it no longer give the factor conclusion of that example?
+
+*Solution.* Fixing the affine coordinate forces \(c=1,d=0\). Fixing the first circle forces \(t\in\mathbb Z\); fixing the second then says \(pt/q\in\mathbb Z\), equivalently \(t\in q\mathbb Z\). Every stabilizer is therefore \(\{(1,0,qk):k\in\mathbb Z\}\). The bounded function \(z_2^qz_1^{-p}\) is unchanged by the flow, since its time multiplier is \(e^{2\pi i(q\theta-p)t}=1\). It is nonconstant for torus Haar measure: its nonzero integer character has integral zero, while its absolute value is one. It is also independent of the affine coordinate, so the whole action is not ergodic.
+
+The density and affine Jacobian in (5.4)–(5.5) do not depend on the slope, so the same equivalent sigma-finite twisted measure exists. Its dual modular action is trivial by (3.4), and Lemma 4.1's centralizer/finite-cutoff argument makes the dual weight a trace. That argument needs a faithful normal state on the regular algebra, available here from the separable regular Hilbert space; it does not use freeness or ergodicity. Nevertheless the invariant character defines a nonconstant coefficient multiplier commuting with every coefficient and group generator. Faithfulness of the coefficient representation makes it nonscalar. It is central, so this crossed product is not a factor. Theorem 5.1 cannot be applied: both freeness and ergodicity have failed, even though cancellation of the modular densities persists.
+
+
 ## References
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Chapter XIII, Theorem 1.7 and equation (8). [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Theorem XIII.1.7 and equation (8), printed pp. 7–11. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). The tensor-product support argument for type I and the cancellation criterion for semifiniteness are mathematical sources for Sections 2–4. The irrational torus flow and rational affine action in Examples 5.3–5.4 are the source's examples following that theorem, with their orbit-nullity and measure-class arguments written out here. Example 5.5 combines the affine and torus coordinates to test the nonunimodular, nontransitive branch.
+- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Encyclopaedia of Mathematical Sciences 125, Springer, 2003, Definition X.1.16 and Theorem X.1.17(i)–(ii), printed pp. 249–250, for the general dual weight and its modular generator formulas. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4). Equation (3.3) retains the side on which the cocycle occurs; (3.2) converts it to the pushforward convention in (3.4).
+- [Programme types] Projections and types of von Neumann algebras, Theorems 7.2 and 10.3 and Corollary 10.4, and Traces on von Neumann algebras, Theorem 6.7, for the type and trace inputs. Borel models, measurable inversion and Polish group quotients, Theorems 4.3(5) and 5.2, for the orbit image and inverse.
+- [Programme PT] Recognizing a weight by its fixed density, the faithful invariant-weight equivalence, prescribed normalized cocycle and trace-density sections. These concern arbitrary affiliated positive densities, without a finite-trace measurability condition.
+- [Programme CZ] Fixed observations, density weights and modular time, “Recognize exactly the fixed observations,” “Compute the new clock from a closed GNS graph,” “Justify spectral restriction before using it” and “Recover modular time on the support.”
+- [Programme dual weight] Extending the dual weight beyond the common involution domain, the construction and full quadratic-domain theorem, and How the dual weight moves crossed-product generators, the complete graph transport and modular generator theorem. These retained programme proofs allow arbitrary locally compact groups and faithful normal semifinite base weights.
 
-The general type and trace prerequisites are [Projections and types of von Neumann algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html), Theorems 7.2, 10.3 and Corollary 10.4, and [Traces on von Neumann algebras](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html), Theorem 6.7. The descriptive-set input is the injective Borel image and inverse theorem, as stated in the prerequisite discussion of [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md).
-
-The modular prerequisites are the faithful invariant-weight density theorem in *Recognizing a weight by its fixed density*, Sections 1–5, its trace modular-group calculation in Section 8, and the centralizer and unbounded-density formulas in *Fixed elements and changes of density*, Sections 5 and 11. The dual prerequisites are *Extending the dual weight beyond the common involution domain*, the construction and quadratic-domain theorem, and *How the dual weight moves crossed-product generators*, its modular generator theorem. These general results belong to the modular-theory and crossed-product lessons named above. They correspond to the weight and crossed-product machinery used in Takesaki, *Theory of Operator Algebras II*, Chapter X, Theorem 1.17. Only their present free-action applications are proved here.

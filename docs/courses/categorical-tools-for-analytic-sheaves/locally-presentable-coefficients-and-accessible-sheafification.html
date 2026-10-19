@@ -1,0 +1,271 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Locally presentable coefficients and accessible sheafification</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}.math mjx-assistive-mml{width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(1px,1px,1px,1px)!important}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="locally-presentable-coefficients-and-accessible-sheafification">Locally presentable coefficients and accessible sheafification</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra. Original exposition: CC0.</em></p>
+<p>Sheafification exists for every locally presentable coefficient category on a small site. The coefficient category need not have conservative tests preserving ordinary directed colimits. We encode both coefficient objects and covering conditions by a set of unique-extension tests, construct the associated reflection, and identify its actual maps. Limits of sheaves are computed pointwise; sufficiently filtered colimits are too. Finite-limit preservation of the reflection needs an additional hypothesis, as an explicit example with reduced abelian groups shows.</p>
+<p>Use <a href="presentable-probes-and-accessible-adjoint-functors.html#1-the-set-comparison-and-small-colimits-of-probes">Presentable probes and accessible adjoints, Sections 1–4</a> for presentable objects, the restricted Yoneda image, completeness and raising regular bounds. <a href="small-orthogonality-and-accessible-reflective-localizations.html#1-add-all-extensions-with-one-pushout">Small orthogonality and accessible reflective localizations, Sections 1–5</a> proves the unique-extension reflector and local presentability of a small orthogonality class. <a href="coefficient-sheafification-on-arbitrary-sieve-sites.html#1-matching-cones-without-intersections">Coefficient sheafification on arbitrary sieve sites, Section 1</a> gives the matching-limit convention. Its directed-test theorem has stronger hypotheses and also proves finite-limit preservation. <a href="finitely-presented-generators-and-coherent-ind-reconstruction.html#1-finite-colimits-preserve-finite-presentation">Finitely presented generators and coherent Ind reconstruction, Sections 1–4</a> supplies the ordinary module finite-presentation facts used in Exercise 3.</p>
+<h2 id="1-coefficients-and-the-precise-sheaf-condition">1. Coefficients and the precise sheaf condition</h2>
+<p>Work in a fixed universe, with choice. Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a small category with a Grothendieck topology <span class="math" data-tex="\(J\)">\(J\)</span> specified by covering sieves. Fiber products, a terminal object and subcanonicality are not assumed. Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be locally <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable for an infinite regular cardinal <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Thus it is locally small and cocomplete, and every object is a small <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered colimit of objects in a small family of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable objects. An object <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable when its represented Hom preserves those colimits.</p>
+<p>Choose a small full skeleton <span class="math" data-tex="\(B\)">\(B\)</span> of the <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable objects. It admits the <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimits, with chosen colimit cones transported to its representatives. The prerequisite proves essential smallness and closure: Hom out of such a colimit is a limit of fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> Hom sets, which commutes with <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-filtered colimits. It also proves that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has all small limits and that
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+Y:\mathcal A\longrightarrow \mathsf{Set}^{B^{op}},
+\qquad Y(a)(b)=\operatorname{Hom}_{\mathcal A}(b,a)
+\tag{1.1}
+\]">\[
+Y:\mathcal A\longrightarrow \mathsf{Set}^{B^{op}},
+\qquad Y(a)(b)=\operatorname{Hom}_{\mathcal A}(b,a)
+\tag{1.1}
+\]</span>
+is fully faithful. Its image consists precisely of presheaves sending every <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimit cone in <span class="math" data-tex="\(B\)">\(B\)</span> to a limit cone of sets. All these identifications include maps.</p>
+<p>For a sieve <span class="math" data-tex="\(S\subseteq h_U=\mathcal C(-,U)\)">\(S\subseteq h_U=\mathcal C(-,U)\)</span>, write <span class="math" data-tex="\(\mathcal E_S\)">\(\mathcal E_S\)</span> for its category of arrows to <span class="math" data-tex="\(U\)">\(U\)</span>. An object is <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>; an arrow from <span class="math" data-tex="\(ft:W\to U\)">\(ft:W\to U\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span> is the specified <span class="math" data-tex="\(t:W\to V\)">\(t:W\to V\)</span>. For <span class="math" data-tex="\(F:\mathcal C^{op}\to\mathcal A\)">\(F:\mathcal C^{op}\to\mathcal A\)</span>, set
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+M_S(F)=\lim_{(f:V\to U)\in\mathcal E_S^{op}}F(V).
+\tag{1.2}
+\]">\[
+M_S(F)=\lim_{(f:V\to U)\in\mathcal E_S^{op}}F(V).
+\tag{1.2}
+\]</span>
+The restriction cone gives <span class="math" data-tex="\(\rho_{S,F}:F(U)\to M_S(F)\)">\(\rho_{S,F}:F(U)\to M_S(F)\)</span>. The category <span class="math" data-tex="\(\operatorname{Sh}_J(\mathcal C,\mathcal A)\)">\(\operatorname{Sh}_J(\mathcal C,\mathcal A)\)</span> is the full subcategory where all these maps, for covering <span class="math" data-tex="\(S\)">\(S\)</span>, are invertible.</p>
+<p>Applying <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal A}(b,-)\)">\(\operatorname{Hom}_{\mathcal A}(b,-)\)</span> to (1.2) gives the matching limit of the tested set presheaf, with the same projections. The tests for <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> therefore detect the sheaf condition, since the fully faithful <span class="math" data-tex="\(Y\)">\(Y\)</span> reflects isomorphisms. This agrees with testing by every object of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>: represented Hom preserves limits, and every invertible matching map passes every represented test. Empty covering sieves are included. Their matching object is terminal, so they require <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span> to be terminal.</p>
+<h2 id="2-the-ambient-presheaf-category-is-locally-presentable">2. The ambient presheaf category is locally presentable</h2>
+<p>We will use <span class="math" data-tex="\(\mathcal P=\mathsf{Set}^{E^{op}}\)">\(\mathcal P=\mathsf{Set}^{E^{op}}\)</span> for a small category <span class="math" data-tex="\(E\)">\(E\)</span>. Here is the needed local-presentability proof, including finite relations.</p>
+<p><strong>Lemma 2.1.</strong> The category <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is locally finitely presentable.</p>
+<p><strong>Proof.</strong> Limits and colimits of set presheaves are computed pointwise: take the limits or colimits of sets and define restrictions using their universal properties. Identities, composition and the universal maps hold after each evaluation. Thus all small colimits exist. A representable <span class="math" data-tex="\(h_e\)">\(h_e\)</span> is finitely presentable, because
+<span class="math" data-tex="\(\operatorname{Hom}(h_e,X)=X(e)\)">\(\operatorname{Hom}(h_e,X)=X(e)\)</span> naturally and evaluation preserves filtered colimits.</p>
+<p>For <span class="math" data-tex="\(X\in\mathcal P\)">\(X\in\mathcal P\)</span>, introduce a generator <span class="math" data-tex="\(g=(e,x)\)">\(g=(e,x)\)</span> for every <span class="math" data-tex="\(x\in X(e)\)">\(x\in X(e)\)</span>, with its evaluation <span class="math" data-tex="\(h_e\to X\)">\(h_e\to X\)</span>. Their coproduct is pointwise surjective: <span class="math" data-tex="\(x\in X(e)\)">\(x\in X(e)\)</span> is the image of <span class="math" data-tex="\(1_e\)">\(1_e\)</span> in its own summand. For each <span class="math" data-tex="\(v:d\to e\)">\(v:d\to e\)</span> and <span class="math" data-tex="\(x\in X(e)\)">\(x\in X(e)\)</span>, impose the relation between
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+h_d\xrightarrow{\ 1\ }h_d
+ \xrightarrow{\ j_{(d,X(v)x)}\ }\coprod_g h_{\operatorname{ob}g}
+\quad\text{and}\quad
+h_d\xrightarrow{\ h_v\ }h_e
+ \xrightarrow{\ j_{(e,x)}\ }\coprod_g h_{\operatorname{ob}g}.
+\tag{2.1}
+\]">\[
+h_d\xrightarrow{\ 1\ }h_d
+ \xrightarrow{\ j_{(d,X(v)x)}\ }\coprod_g h_{\operatorname{ob}g}
+\quad\text{and}\quad
+h_d\xrightarrow{\ h_v\ }h_e
+ \xrightarrow{\ j_{(e,x)}\ }\coprod_g h_{\operatorname{ob}g}.
+\tag{2.1}
+\]</span>
+These are a small set of relations. A map from their coequalizer to <span class="math" data-tex="\(Z\)">\(Z\)</span> is a family of elements <span class="math" data-tex="\(z_{e,x}\in Z(e)\)">\(z_{e,x}\in Z(e)\)</span> satisfying
+<span class="math" data-tex="\(Z(v)z_{e,x}=z_{d,X(v)x}\)">\(Z(v)z_{e,x}=z_{d,X(v)x}\)</span>. Such families are exactly the natural transformations <span class="math" data-tex="\(X\to Z\)">\(X\to Z\)</span>, with inverse evaluation at each <span class="math" data-tex="\(x\)">\(x\)</span>. The coequalizer is therefore <span class="math" data-tex="\(X\)">\(X\)</span>, with the displayed evaluation maps.</p>
+<p>Let <span class="math" data-tex="\((G,T)\)">\((G,T)\)</span> range over finite sets of generators and relations such that both endpoint generators of every relation in <span class="math" data-tex="\(T\)">\(T\)</span> belong to <span class="math" data-tex="\(G\)">\(G\)</span>. The corresponding finite coequalizer is
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+Q_{G,T}=
+\operatorname{Coeq}\left(
+\coprod_{r\in T}h_{\operatorname{dom}r}
+\rightrightarrows
+\coprod_{g\in G}h_{\operatorname{ob}g}\right).
+\tag{2.2}
+\]">\[
+Q_{G,T}=
+\operatorname{Coeq}\left(
+\coprod_{r\in T}h_{\operatorname{dom}r}
+\rightrightarrows
+\coprod_{g\in G}h_{\operatorname{ob}g}\right).
+\tag{2.2}
+\]</span>
+The empty pair is allowed; finite unions give common upper bounds. Inclusions induce the unique coequalizer maps and obey both functor laws. Each <span class="math" data-tex="\(Q_{G,T}\)">\(Q_{G,T}\)</span> is finitely presentable: Hom out of (2.2) is the equalizer of two maps between finite products of evaluation sets, and filtered colimits of sets commute with these finite limits.</p>
+<p>The canonical maps give <span class="math" data-tex="\(\pi:\operatorname{colim}_{G,T}Q_{G,T}\to X\)">\(\pi:\operatorname{colim}_{G,T}Q_{G,T}\to X\)</span>. Conversely the singleton generator pairs give a map from the full generator coproduct to this colimit. Each relation holds at a finite pair containing its two endpoints and that relation. Hence this map factors through <span class="math" data-tex="\(X\)">\(X\)</span>. Both composites are identities on every generator; the coproduct and colimit universal properties make them identities. This proves the filtered presentation of <span class="math" data-tex="\(X\)">\(X\)</span>, including its actual structural maps. Up to isomorphism there is a small set of objects (2.2): finite lists of objects and arrows of the small <span class="math" data-tex="\(E\)">\(E\)</span> specify them. This is the required small family of finitely presentable objects. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-encode-coefficient-continuity-and-covering-sieves">3. Encode coefficient continuity and covering sieves</h2>
+<p>Put <span class="math" data-tex="\(E=\mathcal C\times B\)">\(E=\mathcal C\times B\)</span>, so
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+\mathcal P=\mathsf{Set}^{(\mathcal C\times B)^{op}},
+\qquad
+\widetilde F(U,b)=\operatorname{Hom}_{\mathcal A}(b,F(U)).
+\tag{3.1}
+\]">\[
+\mathcal P=\mathsf{Set}^{(\mathcal C\times B)^{op}},
+\qquad
+\widetilde F(U,b)=\operatorname{Hom}_{\mathcal A}(b,F(U)).
+\tag{3.1}
+\]</span>
+Currying (1.1) gives a fully faithful functor
+<span class="math" data-tex="\(\widetilde{(-)}:\operatorname{Fun}(\mathcal C^{op},\mathcal A)\to\mathcal P\)">\(\widetilde{(-)}:\operatorname{Fun}(\mathcal C^{op},\mathcal A)\to\mathcal P\)</span>.
+We specify its image by actual maps in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>.</p>
+<p>For <span class="math" data-tex="\(U\in\mathcal C\)">\(U\in\mathcal C\)</span> and a chosen <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small colimit cone
+<span class="math" data-tex="\((b_i\to b)_{i\in I}\)">\((b_i\to b)_{i\in I}\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span>, form
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+t_{U,(b_i)}:
+\operatorname{colim}_{i\in I}h_{(U,b_i)}
+\longrightarrow h_{(U,b)}.
+\tag{3.2}
+\]">\[
+t_{U,(b_i)}:
+\operatorname{colim}_{i\in I}h_{(U,b_i)}
+\longrightarrow h_{(U,b)}.
+\tag{3.2}
+\]</span>
+Let <span class="math" data-tex="\(T_0\)">\(T_0\)</span> be the set of these maps. It is a set: choose <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-small category structures on ordinals below <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, then all their diagrams in the small <span class="math" data-tex="\(B\)">\(B\)</span>, their chosen cones, and all <span class="math" data-tex="\(U\)">\(U\)</span>. Relabelling index categories changes none of the required conditions.</p>
+<p>Recall that <span class="math" data-tex="\(X\perp s:A\to D\)">\(X\perp s:A\to D\)</span> means restriction
+<span class="math" data-tex="\(\operatorname{Hom}(D,X)\to\operatorname{Hom}(A,X)\)">\(\operatorname{Hom}(D,X)\to\operatorname{Hom}(A,X)\)</span> is bijective.
+Yoneda and the colimit universal property identify orthogonality to (3.2) with the specified comparison
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+X(U,b)\longrightarrow\lim_{i\in I^{op}}X(U,b_i).
+\tag{3.3}
+\]">\[
+X(U,b)\longrightarrow\lim_{i\in I^{op}}X(U,b_i).
+\tag{3.3}
+\]</span>
+It follows from (1.1) that
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+\operatorname{Fun}(\mathcal C^{op},\mathcal A)
+\simeq T_0^\perp\subseteq\mathcal P.
+\tag{3.4}
+\]">\[
+\operatorname{Fun}(\mathcal C^{op},\mathcal A)
+\simeq T_0^\perp\subseteq\mathcal P.
+\tag{3.4}
+\]</span>
+To check the functorial assertion, recover <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span> from each continuous row <span class="math" data-tex="\(X(U,-)\)">\(X(U,-)\)</span>. A restriction between rows lifts uniquely through the full <span class="math" data-tex="\(Y\)">\(Y\)</span>. Uniqueness proves the identity and composition laws. A transformation of such <span class="math" data-tex="\(X\)">\(X\)</span>'s lifts uniquely at each <span class="math" data-tex="\(U\)">\(U\)</span>, and its naturality follows by the same fullness test. Thus (3.4) recovers all arrows, not just objects.</p>
+<p>For a covering sieve <span class="math" data-tex="\(S\)">\(S\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, the arrows <span class="math" data-tex="\(f:V\to U\)">\(f:V\to U\)</span> give the map
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+t_{S,b}:
+\operatorname{colim}_{(f:V\to U)\in\mathcal E_S}h_{(V,b)}
+\longrightarrow h_{(U,b)}.
+\tag{3.5}
+\]">\[
+t_{S,b}:
+\operatorname{colim}_{(f:V\to U)\in\mathcal E_S}h_{(V,b)}
+\longrightarrow h_{(U,b)}.
+\tag{3.5}
+\]</span>
+The diagram sends an arrow specified by <span class="math" data-tex="\(t:W\to V\)">\(t:W\to V\)</span> to <span class="math" data-tex="\(h_{(W,b)}\to h_{(V,b)}\)">\(h_{(W,b)}\to h_{(V,b)}\)</span>; its map to <span class="math" data-tex="\(h_{(U,b)}\)">\(h_{(U,b)}\)</span> is induced by <span class="math" data-tex="\(f\)">\(f\)</span>. This fixes the direction of the indexing category. There is a set <span class="math" data-tex="\(T_1\)">\(T_1\)</span> of all maps (3.5): covering sieves are subsets of the arrow sets of the small site.</p>
+<p>For <span class="math" data-tex="\(X=\widetilde F\)">\(X=\widetilde F\)</span>, restriction along (3.5) is exactly
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+\operatorname{Hom}_{\mathcal A}(b,F(U))
+\longrightarrow
+\lim_{\mathcal E_S^{op}}\operatorname{Hom}_{\mathcal A}(b,F(V)).
+\tag{3.6}
+\]">\[
+\operatorname{Hom}_{\mathcal A}(b,F(U))
+\longrightarrow
+\lim_{\mathcal E_S^{op}}\operatorname{Hom}_{\mathcal A}(b,F(V)).
+\tag{3.6}
+\]</span>
+The limit on the right is <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal A}(b,M_S(F))\)">\(\operatorname{Hom}_{\mathcal A}(b,M_S(F))\)</span>, with its original projections. Section 1 shows that all maps (3.6) are bijective precisely when <span class="math" data-tex="\(F\)">\(F\)</span> is a sheaf. Consequently
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+\operatorname{Sh}_J(\mathcal C,\mathcal A)
+\simeq (T_0\cup T_1)^\perp\subseteq\mathcal P.
+\tag{3.7}
+\]">\[
+\operatorname{Sh}_J(\mathcal C,\mathcal A)
+\simeq (T_0\cup T_1)^\perp\subseteq\mathcal P.
+\tag{3.7}
+\]</span>
+For an empty covering sieve, (3.5) has initial domain, so its test requires <span class="math" data-tex="\(X(U,b)\)">\(X(U,b)\)</span> to be a singleton. This is exactly the terminal-value condition already identified; no nonempty-cover assumption has entered.</p>
+<h2 id="4-the-reflector-its-maps-and-its-colimits">4. The reflector, its maps and its colimits</h2>
+<p><strong>Theorem 4.1.</strong> The inclusion
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+j:\operatorname{Sh}_J(\mathcal C,\mathcal A)
+\longrightarrow\operatorname{Fun}(\mathcal C^{op},\mathcal A)
+\tag{4.1}
+\]">\[
+j:\operatorname{Sh}_J(\mathcal C,\mathcal A)
+\longrightarrow\operatorname{Fun}(\mathcal C^{op},\mathcal A)
+\tag{4.1}
+\]</span>
+has an accessible left adjoint <span class="math" data-tex="\(a\)">\(a\)</span>. The sheaf category is locally presentable. Its small limits are computed pointwise. For a sufficiently large regular <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, its <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered colimits are computed pointwise as well.</p>
+<p><strong>Proof of the adjunction.</strong> Lemma 2.1 and the small orthogonality theorem give a reflector
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+L:\mathcal P\longrightarrow (T_0\cup T_1)^\perp.
+\tag{4.2}
+\]">\[
+L:\mathcal P\longrightarrow (T_0\cup T_1)^\perp.
+\tag{4.2}
+\]</span>
+The cited theorem constructs it by simultaneous pushouts, coequalizers imposing uniqueness and a regular transfinite chain. Every endpoint in (3.2) and (3.5) has a common presentability bound, as checked below. Thus it supplies the reflector, not merely a weak reflection.</p>
+<p>Apply (4.2) to <span class="math" data-tex="\(\widetilde F\)">\(\widetilde F\)</span>, then use (3.7) to recover <span class="math" data-tex="\(aF\)">\(aF\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> is a sheaf, the actual restriction maps give
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\mathrm{Sh}}(aF,G)
+&amp;\simeq\operatorname{Hom}_{\mathcal P}(L\widetilde F,\widetilde G)\\
+&amp;\simeq\operatorname{Hom}_{\mathcal P}(\widetilde F,\widetilde G)\\
+&amp;\simeq\operatorname{Nat}(F,jG).
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\mathrm{Sh}}(aF,G)
+&amp;\simeq\operatorname{Hom}_{\mathcal P}(L\widetilde F,\widetilde G)\\
+&amp;\simeq\operatorname{Hom}_{\mathcal P}(\widetilde F,\widetilde G)\\
+&amp;\simeq\operatorname{Nat}(F,jG).
+\end{aligned}
+\tag{4.3}
+\]</span>
+The middle bijection restricts along the orthogonality unit; the other two are the fully faithful coefficient identifications. Their inverses respectively lift rows and extend uniquely from that unit. Both inverse identities and both-variable naturality follow from those same identities for the three bijections.</p>
+<p>In particular the unit <span class="math" data-tex="\(\eta_F:F\to jaF\)">\(\eta_F:F\to jaF\)</span> is the unique coefficient transformation whose image is the unit <span class="math" data-tex="\(\widetilde F\to L\widetilde F\)">\(\widetilde F\to L\widetilde F\)</span>. This determines its components and their naturality. For a sheaf <span class="math" data-tex="\(G\)">\(G\)</span>, the identity on <span class="math" data-tex="\(jG\)">\(jG\)</span> extends uniquely to an invertible counit <span class="math" data-tex="\(\varepsilon_G:ajG\to G\)">\(\varepsilon_G:ajG\to G\)</span>. The two composites in the triangle identities restrict to the identity on the corresponding unit, so uniqueness makes them identities. Thus <span class="math" data-tex="\(ja\)">\(ja\)</span> is an idempotent monad with multiplication <span class="math" data-tex="\(j\varepsilon_a\)">\(j\varepsilon_a\)</span>. These statements concern the specified maps, and do not assume pointwise choices of unrelated reflections.</p>
+<p><strong>Limits and colimits.</strong> Orthogonality classes are closed under all small limits: represented Hom turns a limit of their tests into a limit of bijections. Moreover (3.1) preserves pointwise coefficient limits, since each represented Hom preserves limits. Therefore a pointwise limit of coefficient sheaves is a sheaf with its original projections. All small limits exist in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, so these are the desired limits.</p>
+<p>For a small diagram <span class="math" data-tex="\((G_i)\)">\((G_i)\)</span> of sheaves, put <span class="math" data-tex="\(H=\operatorname{colim}_i jG_i\)">\(H=\operatorname{colim}_i jG_i\)</span>, computed pointwise in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Its sheaf colimit is <span class="math" data-tex="\(aH\)">\(aH\)</span>, with legs
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+G_i\xrightarrow{\ \varepsilon_{G_i}^{-1}\ }ajG_i
+\xrightarrow{\ a(c_i)\ }aH.
+\tag{4.4}
+\]">\[
+G_i\xrightarrow{\ \varepsilon_{G_i}^{-1}\ }ajG_i
+\xrightarrow{\ a(c_i)\ }aH.
+\tag{4.4}
+\]</span>
+Indeed (4.3) turns a map from <span class="math" data-tex="\(aH\)">\(aH\)</span> to a sheaf into precisely a compatible family from the <span class="math" data-tex="\(G_i\)">\(G_i\)</span>. The stated legs give that family, which proves existence and uniqueness with the actual maps.</p>
+<p><strong>The cardinal bound.</strong> Choose an infinite regular <span class="math" data-tex="\(\mu\ge\kappa\)">\(\mu\ge\kappa\)</span> with
+<span class="math" data-tex="\(|\operatorname{Mor}\mathcal C|&lt;\mu\)">\(|\operatorname{Mor}\mathcal C|&lt;\mu\)</span>. A representable in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable. Each domain of (3.2) is a colimit of fewer than <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> representables. Each category <span class="math" data-tex="\(\mathcal E_S\)">\(\mathcal E_S\)</span> has fewer than <span class="math" data-tex="\(\mu\)">\(\mu\)</span> objects and arrows: its objects are site arrows, and its arrows are specified by composable pairs of site arrows. The domain of (3.5) is consequently a colimit of a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-small diagram of representables. Hom out of either domain is a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-small limit of evaluation functors, so the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered Set comparison proves its <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentability. The codomains are representables too.</p>
+<p>Lemma 2.1 and the cardinal-raising theorem make <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> locally <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable. Applying the orthogonality theorem at this common endpoint bound proves that the class in (3.7) is locally <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable and that its inclusion in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> creates <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered colimits. Applying it to <span class="math" data-tex="\(T_0\)">\(T_0\)</span> alone also proves local <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentability of coefficient presheaves. The coefficient embedding (3.1) preserves such pointwise colimits: every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> is <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-presentable, hence <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-presentable. Full faithfulness therefore identifies the created colimit with the pointwise coefficient one. This proves the assertion for (4.1).</p>
+<p>Equivalently, apply <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal A}(b,-)\)">\(\operatorname{Hom}_{\mathcal A}(b,-)\)</span> to the pointwise colimit of a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered sheaf diagram. Its sheaf comparison is the Set exchange between that colimit and the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-small matching limit. This comparison is bijective on every <span class="math" data-tex="\(b\)">\(b\)</span>, hence invertible in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and respects the original projections.</p>
+<p>Finally <span class="math" data-tex="\(a\)">\(a\)</span> preserves all colimits as a left adjoint. On a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-filtered diagram, <span class="math" data-tex="\(j\)">\(j\)</span> creates the resulting sheaf colimit, so the endofunctor <span class="math" data-tex="\(ja\)">\(ja\)</span> preserves that pointwise colimit. This is accessibility of the actual reflection as a functor on coefficient presheaves. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an empty site category, <span class="math" data-tex="\(E\)">\(E\)</span> and both test families are empty and all three presheaf/sheaf categories in (3.4) and (3.7) are terminal categories; the reflection is the identity on that category. For a terminal coefficient category, every coefficient presheaf and matching cone is unique. The theorem includes these cases.</p>
+<h2 id="5-what-the-stronger-test-hypothesis-adds">5. What the stronger test hypothesis adds</h2>
+<p>If <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has the conservative tests preserving small limits and ordinary directed colimits assumed in the earlier coefficient theorem, its two-plus construction is another left adjoint to the same inclusion. The unique adjunction comparison is therefore a natural isomorphism between that construction and <span class="math" data-tex="\(a\)">\(a\)</span>, compatible with both units. In that setting the earlier proof also gives finite-limit preservation.</p>
+<p>Local presentability alone supplies represented tests preserving a sufficiently large filtered class. It does not supply the directed-colimit comparison needed for the two-plus proof. Theorem 4.1 consequently asserts neither that two plus steps always suffice nor that <span class="math" data-tex="\(a\)">\(a\)</span> preserves finite limits. Exercise 4 proves that the latter assertion would be false.</p>
+<p>As an example of iterating coefficient categories, let <span class="math" data-tex="\(X\)">\(X\)</span> be a topological space in the working universe. Set sheaves on its small category of opens are locally presentable by Theorem 4.1 with <span class="math" data-tex="\(\mathcal A=\mathsf{Set}\)">\(\mathcal A=\mathsf{Set}\)</span>. That sheaf category can itself be used as <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> in Theorem 4.1 on a different small site. The construction then treats sheaves whose values are sheaves on <span class="math" data-tex="\(X\)">\(X\)</span>, with actual coefficient morphisms; it does not require section evaluation on every open of <span class="math" data-tex="\(X\)">\(X\)</span> to preserve ordinary directed colimits.</p>
+<h2 id="6-four-graded-exercises-with-complete-solutions">6. Four graded exercises with complete solutions</h2>
+<h3 id="exercise-1-foundation-one-covering-arrow">Exercise 1 (foundation: one covering arrow)</h3>
+<p>Let the site have objects <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, the sole nonidentity arrow <span class="math" data-tex="\(v\to u\)">\(v\to u\)</span>, and the topology generated by that singleton covering of <span class="math" data-tex="\(u\)">\(u\)</span>; at <span class="math" data-tex="\(v\)">\(v\)</span> only the maximal sieve covers. For a locally presentable <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, describe every coefficient sheaf and its reflection. Give the unit and both inverse adjunction factors.</p>
+<p><strong>Solution.</strong> A coefficient presheaf is an arrow <span class="math" data-tex="\(r:F(u)\to F(v)\)">\(r:F(u)\to F(v)\)</span>. The nonmaximal covering sieve at <span class="math" data-tex="\(u\)">\(u\)</span> has one object <span class="math" data-tex="\(v\to u\)">\(v\to u\)</span> and identity arrow. Its matching value is <span class="math" data-tex="\(F(v)\)">\(F(v)\)</span>, so the sheaf condition is exactly invertibility of <span class="math" data-tex="\(r\)">\(r\)</span>. A sheaf is thus canonically isomorphic to the constant arrow on its value at <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Set <span class="math" data-tex="\(aF=(F(v)\xrightarrow{1}F(v))\)">\(aF=(F(v)\xrightarrow{1}F(v))\)</span>, and let its unit have components <span class="math" data-tex="\(r\)">\(r\)</span> at <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(v\)">\(v\)</span>. For a sheaf <span class="math" data-tex="\(G=(G(u)\xrightarrow{s}G(v))\)">\(G=(G(u)\xrightarrow{s}G(v))\)</span>, a map <span class="math" data-tex="\(f:F\to G\)">\(f:F\to G\)</span> has components satisfying <span class="math" data-tex="\(sf_u=f_vr\)">\(sf_u=f_vr\)</span>. It extends to the unique map <span class="math" data-tex="\(g:aF\to G\)">\(g:aF\to G\)</span> with <span class="math" data-tex="\(g_v=f_v\)">\(g_v=f_v\)</span>, <span class="math" data-tex="\(g_u=s^{-1}f_v\)">\(g_u=s^{-1}f_v\)</span>. Conversely <span class="math" data-tex="\(g\)">\(g\)</span> restricts along the stated unit to <span class="math" data-tex="\(f_u=g_ur\)">\(f_u=g_ur\)</span>, <span class="math" data-tex="\(f_v=g_v\)">\(f_v=g_v\)</span>. The displayed equation and invertibility of <span class="math" data-tex="\(s\)">\(s\)</span> verify both inverse identities. Composing a map of source arrows or target sheaf arrows commutes with these component formulas, proving both naturalities. The counit has components <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, so the triangle identities follow componentwise. All indexing and matching conditions, including the pullback of the covering sieve to <span class="math" data-tex="\(v\)">\(v\)</span>, have been included. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-2-standard-a-disjoint-cover-and-an-empty-cover">Exercise 2 (standard: a disjoint cover and an empty cover)</h3>
+<p>Take the category of opens of a discrete two-point space: <span class="math" data-tex="\(\varnothing,u,v,x=u\cup v\)">\(\varnothing,u,v,x=u\cup v\)</span>. With its ordinary covers and coefficients in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, compute <span class="math" data-tex="\(aF\)">\(aF\)</span>, all its restriction maps, the unit and the corresponding adjunction.</p>
+<p><strong>Solution.</strong> The empty cover forces a sheaf value at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> to be <span class="math" data-tex="\(1_{\mathcal A}\)">\(1_{\mathcal A}\)</span>. The cover <span class="math" data-tex="\(x=u\cup v\)">\(x=u\cup v\)</span>, with intersection <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, then requires the value at <span class="math" data-tex="\(x\)">\(x\)</span> to be the product of its two values. Thus a sheaf is determined by an arbitrary pair <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>, with values <span class="math" data-tex="\(A,B,A\times B,1_{\mathcal A}\)">\(A,B,A\times B,1_{\mathcal A}\)</span> at <span class="math" data-tex="\(u,v,x,\varnothing\)">\(u,v,x,\varnothing\)</span>, respectively. Its restrictions are the two projections and the unique arrows to the terminal object. They satisfy every functor law and all cover matching conditions.</p>
+<p>For a presheaf <span class="math" data-tex="\(F\)">\(F\)</span>, choose <span class="math" data-tex="\(A=F(u)\)">\(A=F(u)\)</span>, <span class="math" data-tex="\(B=F(v)\)">\(B=F(v)\)</span>. Use these four values for <span class="math" data-tex="\(aF\)">\(aF\)</span>. The unit is the identity at <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, the unique map at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, and the pair of original restrictions <span class="math" data-tex="\(F(x)\to F(u)\times F(v)\)">\(F(x)\to F(u)\times F(v)\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>. Its naturality at the arrows to <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> follows from terminal uniqueness; at the two other generating restrictions it is the product equation.</p>
+<p>A transformation to the sheaf determined by <span class="math" data-tex="\((A&#x27;,B&#x27;)\)">\((A&#x27;,B&#x27;)\)</span> is uniquely determined by maps <span class="math" data-tex="\(F(u)\to A&#x27;\)">\(F(u)\to A&#x27;\)</span>, <span class="math" data-tex="\(F(v)\to B&#x27;\)">\(F(v)\to B&#x27;\)</span>: at <span class="math" data-tex="\(x\)">\(x\)</span> use their pair after the restrictions, and at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> use the unique map. These same two maps determine a unique sheaf transformation <span class="math" data-tex="\(aF\to(A&#x27;,B&#x27;)\)">\(aF\to(A&#x27;,B&#x27;)\)</span>. Restricting along the unit leaves both component maps unchanged, giving inverse natural Hom bijections. This also verifies the unit and counit triangles. Arbitrary presheaf colimits need not already be sheaves: for <span class="math" data-tex="\(\mathcal A=\mathsf{Set}\)">\(\mathcal A=\mathsf{Set}\)</span>, the pointwise initial presheaf has empty value at <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, whereas the initial sheaf has singleton value there. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-3-advanced-a-locally-presentable-category-without-finitary-tests">Exercise 3 (advanced: a locally presentable category without finitary tests)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> be the full subcategory of abelian groups satisfying
+<span class="math" data-tex="\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,M)=0\)">\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,M)=0\)</span>.
+Prove that it is locally presentable, that its limits are the ordinary group limits, and that ordinary directed colimits in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> do not preserve kernels. Conclude that the earlier conservative directed-test hypothesis cannot hold in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.</p>
+<p><strong>Solution.</strong> The ordinary module finite-presentation theorem makes <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span> locally finitely presentable: it is cocomplete and is generated under filtered colimits by its small category of finitely presented groups. Apply the small orthogonality theorem to the single map <span class="math" data-tex="\(\mathbb Q\to0\)">\(\mathbb Q\to0\)</span> in <span class="math" data-tex="\(\mathsf{Ab}\)">\(\mathsf{Ab}\)</span>. Orthogonality means that the singleton <span class="math" data-tex="\(\operatorname{Hom}(0,M)\)">\(\operatorname{Hom}(0,M)\)</span> maps bijectively to <span class="math" data-tex="\(\operatorname{Hom}(\mathbb Q,M)\)">\(\operatorname{Hom}(\mathbb Q,M)\)</span>, exactly the defining condition. Hence <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> is a reflective locally presentable category. Write <span class="math" data-tex="\(r:\mathsf{Ab}\to\mathcal R\)">\(r:\mathsf{Ab}\to\mathcal R\)</span> for its reflector. Its limits are inherited, because both represented Hom tests preserve limits. Its colimits are the reflections of ordinary group colimits, by the reflection adjunction.</p>
+<p>The group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> belongs to <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. A homomorphism <span class="math" data-tex="\(f:\mathbb Q\to\mathbb Z\)">\(f:\mathbb Q\to\mathbb Z\)</span> has <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span> divisible by every positive integer, so <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>; torsion-freeness then makes <span class="math" data-tex="\(f(a/b)=0\)">\(f(a/b)=0\)</span>. Every group killed by a positive integer <span class="math" data-tex="\(m\)">\(m\)</span> is also in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>: <span class="math" data-tex="\(f(q)=mf(q/m)=0\)">\(f(q)=mf(q/m)=0\)</span>. Moreover
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+r\mathbb Q=0,\qquad r(\mathbb Q/\mathbb Z)=0.
+\tag{6.1}
+\]">\[
+r\mathbb Q=0,\qquad r(\mathbb Q/\mathbb Z)=0.
+\tag{6.1}
+\]</span>
+For the first assertion, all maps from <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> to an object of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> are zero by definition, which is the universal property of the zero reflection. A map from <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> to such an object is zero after the surjection from <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, hence zero; this proves the second assertion by the same universal property.</p>
+<p>For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, use the group map <span class="math" data-tex="\(q_n:\mathbb Z\to\mathbb Z/n!\mathbb Z\)">\(q_n:\mathbb Z\to\mathbb Z/n!\mathbb Z\)</span>. Its kernel is <span class="math" data-tex="\(n!\mathbb Z\)">\(n!\mathbb Z\)</span>, identified with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by multiplication by <span class="math" data-tex="\(n!\)">\(n!\)</span>. Make a directed diagram of these kernel sequences by using the identity on the identified left <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, multiplication by <span class="math" data-tex="\(n+1\)">\(n+1\)</span> on the middle <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and multiplication by <span class="math" data-tex="\(n+1\)">\(n+1\)</span> on the quotient. The squares commute because <span class="math" data-tex="\((n+1)n!=(n+1)!\)">\((n+1)n!=(n+1)!\)</span>. Every term belongs to <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.</p>
+<p>The middle ordinary group colimit is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, with maps <span class="math" data-tex="\(a\mapsto a/n!\)">\(a\mapsto a/n!\)</span>. These maps are compatible, every rational appears, and equality of two representatives is witnessed after a common factorial denominator. The quotient colimit is <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>, with maps <span class="math" data-tex="\(\bar a\mapsto a/n!+\mathbb Z\)">\(\bar a\mapsto a/n!+\mathbb Z\)</span>, by the same representative and equality tests. The kernel colimit is the constant group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Reflecting these colimits and using (6.1) gives the kernel comparison in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_n\ker q_n=\mathbb Z
+\longrightarrow
+\ker\!\left(\operatorname{colim}_n\mathbb Z
+ \longrightarrow\operatorname{colim}_n\mathbb Z/n!\mathbb Z\right)
+=\ker(0\to0)=0.
+\tag{6.2}
+\]">\[
+\operatorname{colim}_n\ker q_n=\mathbb Z
+\longrightarrow
+\ker\!\left(\operatorname{colim}_n\mathbb Z
+ \longrightarrow\operatorname{colim}_n\mathbb Z/n!\mathbb Z\right)
+=\ker(0\to0)=0.
+\tag{6.2}
+\]</span>
+It is not invertible.</p>
+<p>If a jointly conservative family to sets preserved small limits and ordinary directed colimits, applying it to this comparison would give the bijective filtered Set kernel comparison. Conservativity would make (6.2) invertible, a contradiction. Thus no such family exists in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. This example satisfies Theorem 4.1 but not the earlier directed-test assumptions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="exercise-4-synthesis-sheafification-need-not-preserve-finite-limits">Exercise 4 (synthesis: sheafification need not preserve finite limits)</h3>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> have objects <span class="math" data-tex="\(n\in\mathbb N\)">\(n\in\mathbb N\)</span> and one arrow <span class="math" data-tex="\(m\to n\)">\(m\to n\)</span> exactly when <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>. Declare every nonempty sieve covering. With coefficients in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> from Exercise 3, compute the sheaf reflector and exhibit its failure to preserve a kernel.</p>
+<p><strong>Solution.</strong> A nonempty sieve on <span class="math" data-tex="\(n\)">\(n\)</span> is precisely the set of arrows from <span class="math" data-tex="\(k\ge m\)">\(k\ge m\)</span> for some <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>: upward closure gives this tail, and the least member supplies <span class="math" data-tex="\(m\)">\(m\)</span>. Pullback to <span class="math" data-tex="\(l\ge n\)">\(l\ge n\)</span> gives the tail starting at <span class="math" data-tex="\(\max(l,m)\)">\(\max(l,m)\)</span>, so it is nonempty. The maximal sieve is a tail, and local character holds: if a sieve pulls back to nonempty sieves on every member of one nonempty tail, then it contains an arrow and is therefore itself covering. This is a Grothendieck topology on the small category, with no empty covering sieve.</p>
+<p>A presheaf is a direct sequence <span class="math" data-tex="\(F(0)\to F(1)\to\cdots\)">\(F(0)\to F(1)\to\cdots\)</span>. The arrow category of the tail starting at <span class="math" data-tex="\(m\)">\(m\)</span> has terminal object <span class="math" data-tex="\(m\to n\)">\(m\to n\)</span>. Its opposite has initial object <span class="math" data-tex="\(m\)">\(m\)</span>, and the matching limit is <span class="math" data-tex="\(F(m)\)">\(F(m)\)</span>: a cone is determined by its component there, with all later components obtained by the sequence maps. Thus the sheaf condition is precisely that every transition <span class="math" data-tex="\(F(n)\to F(m)\)">\(F(n)\to F(m)\)</span> be invertible.</p>
+<p>The sheaf category is equivalent to <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> by constant sequences. For a sheaf <span class="math" data-tex="\(G\)">\(G\)</span>, the transition maps <span class="math" data-tex="\(G(0)\to G(n)\)">\(G(0)\to G(n)\)</span> form a natural isomorphism from its constant sequence; its inverse uses their inverses. The same equations recover every sheaf transformation from its component at zero.</p>
+<p>For an arbitrary sequence, its reflection is the constant sequence on <span class="math" data-tex="\(\operatorname{colim}_{\mathcal R}F(n)\)">\(\operatorname{colim}_{\mathcal R}F(n)\)</span>, with the original colimit legs as unit. Indeed a map to a constant sequence is exactly a colimit cocone, with inverse given by its unique factor through that colimit. Composing with the preceding sheaf isomorphism gives the full sheaf adjunction, with both naturalities and its actual unit.</p>
+<p>Now use the two sequences and the natural transformation <span class="math" data-tex="\(q_n\)">\(q_n\)</span> from Exercise 3, with an initial index shift if necessary. Their kernel sequence is constant <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The reflected middle and quotient sequences are both constant zero, while the reflected kernel is constant <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Their canonical kernel comparison is therefore the noninvertible map (6.2), at every site object. Since a kernel is the equalizer of <span class="math" data-tex="\(q\)">\(q\)</span> and zero, this is a failure to preserve a finite limit. It does not conflict with pointwise sheaf limits or sufficiently filtered pointwise colimits in Theorem 4.1: the ordinary sequence colimit here need not be in that larger filtered class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<p>The <a href="https://stacks.math.columbia.edu/tag/00VR">Stacks Project, Definition 7.7.6</a>, defines coefficient-valued sheaves by all represented set-valued tests. Jiří Adámek, Michel Hébert and Lurdes Sousa, <a href="https://www.mat.uc.pt/preprints/ps/p0740.pdf"><em>The Orthogonal Subcategory Problem and the Small Object Argument</em></a>, introduction, discusses orthogonality and reflection. The small-set reflector and presentability theorems used here have complete proofs in the linked course prerequisites. The two explicit test families, coefficient adjunction maps and counterexamples are proved above.</p>
+</main></body></html>

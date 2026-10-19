@@ -6,7 +6,7 @@ Localization at infinity controls where a fundamental solution can be singular a
 
 Read [Symbols at infinity](symbols-at-infinity.md) and [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md). We use the compactness theorem in [Local regularity, sharp embeddings, and compactness](local-regularity-and-compactness.md), Theorem 4.1. Basic distribution references are Grubb [Grubb] and Melrose [Melrose]; Hörmander's survey [Hormander] discusses the fundamental-solution method.
 
-Our Fourier transform is \(\widehat u(\xi)=\int e^{-ix\cdot\xi}u(x)\,dx\), and \(D=-i\partial\). The wavefront set has its Fourier definition: \((x_0,\theta_0)\notin\operatorname{WF}(u)\) if some smooth compact cutoff equal to one near \(x_0\) has a Fourier transform decreasing faster than every power in an open cone about \(\theta_0\ne0\). We use the usual cutoff stability of this definition and the fact that its projection onto \(x\)-space is the singular support.
+Our Fourier transform is \(\widehat u(\xi)=\int e^{-ix\cdot\xi}u(x)\,dx\), and \(D=-i\partial\). The wavefront set has its Fourier definition: \((x_0,\theta_0)\notin\operatorname{WF}(u)\) if some smooth compact cutoff equal to one near \(x_0\) has a Fourier transform decreasing faster than every power in an open cone about \(\theta_0\ne0\). The cutoff lemma below proves stability under localization and identifies the projection onto \(x\)-space with the singular support.
 
 For a nonzero polynomial \(P\), let \(S_P\), \(\mathcal L_\theta(P)\), \(N_Q\), and \(V_Q=N_Q^\perp\) have the meanings of the preceding lesson. Let \(\mathcal Z_P\) consist of all pairs \((x,\theta)\), \(\theta\ne0\), for which some \(Q\in\mathcal L_\theta(P)\) satisfies \(x\in V_Q\). Define
 \[
@@ -22,7 +22,54 @@ x\cdot\theta=0\quad\text{on }\mathcal F_P.
 \]
 The same equation holds on the closure by continuity.
 
+The dimension of this closed carrier is proved in [Why the singular carrier leaves an open set](../AN02-L202.html#complete-proof), Theorem 5.1. That lesson bounds the entire union of active spaces and explains why the canonical inverse has a dense open smooth region.
+
 The holomorphic polynomial averaging used to construct the inverse is proved in [Averaging an entire function while avoiding polynomial zeros](averaging-an-entire-function-while-avoiding-polynomial-zeros.md) and stated at its exact receiving interface in [Regular kernels and changes in the equation](regular-kernels-and-parameter-changes.md). The PA1–PA16 construction uses the stated scalar Taylor, finite-polynomial, compactness, cutoff and integration inputs. The other Fourier and wavefront prerequisites remain explicit. [Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md) proves the disk estimates and compact-contour calculus.
+
+## Cutoffs and the projection onto singular support
+
+We first prove the Fourier facts used in both arguments below.
+
+**Lemma (cutoffs and projection).** Suppose a compactly supported distribution \(v\) has a rapidly decreasing Fourier transform on an open cone \(\Gamma_0\). For \(\psi\in C_c^\infty\), the transform of \(\psi v\) decreases rapidly on every cone \(\Gamma\) whose unit-sphere closure lies in \(\Gamma_0\). The Fourier definition of the wavefront set therefore gives a closed conic set, and its projection onto the base is exactly the singular support. For every constant-coefficient differential operator \(R(D)\),
+\[
+ \operatorname{WF}(R(D)u)\subseteq\operatorname{WF}(u).
+ \tag{C1}
+\]
+
+**Proof.** A compact distribution has a smooth Fourier transform of polynomial growth: its finite-order bound applied to a compactly cut off exponential gives
+\[
+ |\widehat v(\eta)|\leq C(1+|\eta|)^M
+ \tag{C2}
+\]
+for some \(M\geq0\). The compact-factor Fourier product identity gives
+\[
+ \widehat{\psi v}(\xi)
+   =(2\pi)^{-n}\int\widehat\psi(\xi-\eta)\widehat v(\eta)\,d\eta.
+ \tag{C3}
+\]
+For precision, write the Fourier inverse of \(\psi\) inside the pairing with \(v\). The inverse integral converges with every derivative on the fixed compact support of \(v\); (C2) and Schwartz decrease justify interchanging the pairing and the integral. This proves (C3), including its normalization.
+
+Choose an intermediate cone whose unit-sphere closure is inside \(\Gamma_0\) and which contains the unit-sphere closure of \(\Gamma\). On the part where \(\eta\) lies in that intermediate cone, \(\widehat v(\eta)\) has arbitrary power decay. Combining it with the arbitrary power decay of \(\widehat\psi(\xi-\eta)\) gives arbitrary power decay in \(\xi\). One explicit estimate uses
+\[
+ 1+|\xi|\leq(1+|\eta|)(1+|\xi-\eta|):
+\]
+after multiplication by \((1+|\xi|)^N\), use \(N+n+1\) powers on each factor and integrate. On the complementary part, angular separation gives
+\[
+ |\xi-\eta|\geq c(|\xi|+|\eta|),
+ \qquad \xi\in\Gamma.
+ \tag{C4}
+\]
+The constant follows by minimizing on the compact set \(|\xi|+|\eta|=1\); a zero distance there would give a common unit direction. Use \(N+M+n+1\) powers of Schwartz decrease in (C3), together with (C2). The resulting integral is bounded by a constant times \((1+|\xi|)^{-N}\). Bounded frequencies are harmless. This proves the first assertion.
+
+If a cutoff \(\chi\) equal to one near a point gives rapid decrease on a cone, every cutoff supported sufficiently near that point multiplies \(\chi u\), so the preceding argument gives rapid decrease on smaller cones. The same witness works on an open set of base points and directions. The complement of the wavefront set is consequently open; positive rescaling of a covector does not change its membership.
+
+If \(u\) is smooth near \(x\), a smaller cutoff makes it a compact smooth function, whose transform is Schwartz by repeated integration by parts. No covector over \(x\) is then singular. Conversely suppose no nonzero covector over \(x\) is singular. Choose finitely many witness cones covering the unit sphere, and shrink them so that their closures still lie in the respective witness cones. Choose one compact smooth cutoff \(\psi\), equal to one near \(x\), supported in the common plateau of their finitely many spatial cutoffs. The first assertion makes \(\widehat{\psi u}\) rapidly decreasing on every smaller cone, hence on all real frequency space. For each multi-index \(\alpha\), the function \(\xi^\alpha\widehat{\psi u}(\xi)\) is integrable. Fourier inversion and differentiation under its absolutely convergent integral show that \(\psi u\) is smooth. This proves the projection assertion, using the complete Schwartz inversion and distributional compatibility in [Schwartz Fourier foundations](../prerequisites/schwartz-fourier-foundations.html).
+
+Finally suppose \((x,\theta)\) is regular for \(u\). Choose its witness cutoff \(\chi\), and another cutoff \(\psi\) equal to one near \(x\), with support inside the plateau of \(\chi\). On that support,
+\[
+ \psi R(D)u=\psi R(D)(\chi u).
+\]
+The transform of \(R(D)(\chi u)\) is \(R(\xi)\widehat{\chi u}(\xi)\), which has polynomial growth everywhere and rapid decrease on the witness cone. Apply the first assertion to multiplication by \(\psi\). This proves (C1). \(\square\)
 
 ## Extracting an inverse from a high-frequency limit
 
@@ -306,6 +353,28 @@ E=iH(x_1)\otimes\delta_0(x_2)
 \]
 is a regular fundamental solution. After any compact cutoff, its transform is independent of \(\xi_2\) and is \(O((1+|\xi_1|)^{-1})\), by one integration by parts on the half-line. This is exactly the regular weight \(S_P(\xi)=\sqrt{1+\xi_1^2}\).
 
+For the same symbol, the upper bound can be strictly larger than the wavefront of a regular inverse. Write \(e_1=(1,0)\), \(e_2=(0,1)\), and \(\mathbb R^*=\mathbb R\setminus\{0\}\). The precise sets are
+\[
+\begin{aligned}
+ \mathcal F_P
+  &=(\{0\}\times(\mathbb R^2\setminus\{0\}))
+       \cup((\mathbb R e_1)\times(\mathbb R^*e_2)),\\
+ \operatorname{WF}(E)
+  &=(\{0\}\times(\mathbb R^2\setminus\{0\}))
+       \cup(\{se_1:s>0\}\times(\mathbb R^*e_2)).
+\end{aligned}
+\tag{W1}
+\]
+Here \(E\) is exactly (32). To compute the first set, a normalized localization in a direction with nonzero first component is a nonzero constant. In either vertical direction, the nonconstant limits are
+\[
+ \frac{a+\xi_1}{\sqrt{1+a^2}},\qquad a\in\mathbb R;
+\]
+the constant limits \(1\) and \(-1\) also occur. Indeed, at a center \((u,v)\) the derivative norm is \(\sqrt{1+u^2}\). If \(u\) has a finite subsequential limit, divide \(u+\xi_1\) by that norm; if \(|u|\) tends to infinity, only its sign remains. The active spaces are therefore the horizontal line and the zero space, giving the first equality in (W1).
+
+For the second equality, \(E\) vanishes near every point outside the closed positive horizontal ray. At a positive point of the ray it equals \(i\,1\otimes\delta_0\). A product cutoff has transform independent of the second frequency and rapidly decreasing in the first. It therefore excludes every nonvertical covector. Conversely, for any cutoff equal to one near that point, its restriction to the horizontal line is a nonzero compact smooth function. Its one-dimensional Fourier transform is nonzero at some fixed real frequency. Holding that frequency fixed and letting the second frequency tend to either infinity gives points in every corresponding vertical cone on which the transform does not decrease. Both vertical covectors are present.
+
+At the origin the localized transform of \(\delta_0\) is the constant one, so every nonzero covector is singular for \(\delta_0\). Since \(D_1E=\delta_0\), (C1) forces all those covectors into \(\operatorname{WF}(E)\). This completes the second equality and proves strict inclusion in the canonical upper bound. Regularity alone therefore does not select an inverse with the smallest wavefront set.
+
 The distribution
 \[
 w(x_1,x_2)=1\otimes\delta_1(x_2)
@@ -351,3 +420,4 @@ Thus the canonical kernel is smooth off the two axes; away from their intersecti
 - **[Grubb]** Gerd Grubb, *Distributions and Operators*, open lectures on distributions and Fourier analysis. [Author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm).
 - **[Melrose]** Richard Melrose, *Introduction to Microlocal Analysis*, distribution and wavefront-set chapters. [MIT notes](https://math.mit.edu/~rbm/iml/).
 - **[Hormander]** Lars Hörmander, “On the existence and the regularity of solutions of linear pseudo-differential equations,” *L'Enseignement Mathématique* 17 (1971), 99–163. [e-periodica scan](https://www.e-periodica.ch/digbib/view?pid=ens-001:1971:17::213).
+- **[Hörmander II]** Lars Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, Springer, 1983; 2005 reprint. Fundamental solutions, localization of polynomials and regularity.

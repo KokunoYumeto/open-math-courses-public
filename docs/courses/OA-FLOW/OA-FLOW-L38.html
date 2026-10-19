@@ -8,7 +8,7 @@ table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;paddin
 .math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
 @media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
 table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L39.html">Previous lesson</a><a href="OA-FLOW-L37.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L38.md">Lesson source</a></nav><h1 id="OA-FLOW.SUSPENSION.SETTING">A suspension from separated crossings</h1>
-<p>A return section turns a real flow into upward motion between successive visits. There are three separate tasks: find visits separated by a fixed positive time, retain visits in both time directions, and identify the measure class in the resulting coordinates. We first prove the measure-class mechanism, then construct the section directly from coded orbit paths.</p>
+<p>A return section turns a real flow into upward motion between successive visits. There are three separate tasks: find visits separated by a fixed positive time, retain visits in both time directions, and identify the measure class in the resulting coordinates. The measure on the section will come from averaging within these intervals. We prove that local measure-class principle first, construct the return coordinates, and obtain the suspension theorem. The integer cover then describes the two commuting coordinate actions.</p>
 <p><a id="oa-flow.suspension.setting"></a></p>
 <h2 id="what-the-suspension-theorem-assumes">What the suspension theorem assumes</h2>
 <p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a standard Borel space with a nonzero sigma-finite Borel measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and let
@@ -101,6 +101,71 @@ For each fixed <span class="math" data-tex="\((s,z)\)">\((s,z)\)</span>, the inn
  \tag{S7}
 \]</span>
 Together with equivalence to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, this proves (S4). Both measures are sigma finite, and completing them gives the same completed null sets. In particular, no measure obtained by restricting an ambient measure to a generally null section is needed.</p>
+<h3 id="partial-translations-inside-finite-intervals">Partial translations inside finite intervals</h3>
+<p>The same idea works before a measure on the base is known. Let <span class="math" data-tex="\(r:Z\to(0,\infty)\)">\(r:Z\to(0,\infty)\)</span> be finite and Borel, put
+<span class="math math-display" data-tex="\[
+ E_r=\{(z,u):0\leq u&lt;r(z)\},\qquad
+ A_t=\{(z,u)\in E_r:0\leq u+t&lt;r(z)\},
+ \qquad T_t(z,u)=(z,u+t).
+ \tag{PT1}
+\]">\[
+ E_r=\{(z,u):0\leq u&lt;r(z)\},\qquad
+ A_t=\{(z,u)\in E_r:0\leq u+t&lt;r(z)\},
+ \qquad T_t(z,u)=(z,u+t).
+ \tag{PT1}
+\]</span>
+Thus <span class="math" data-tex="\(T_t:A_t\to A_{-t}\)">\(T_t:A_t\to A_{-t}\)</span> is a Borel bijection. Suppose a nonzero sigma-finite Borel measure <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(E_r\)">\(E_r\)</span> has the following <strong>partial-translation property</strong>: for every fixed <span class="math" data-tex="\(t\)">\(t\)</span>, this bijection preserves null sets in both directions. Choose an equivalent probability <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span> by (S2), and let <span class="math" data-tex="\(\eta\)">\(\eta\)</span> be its marginal on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Then
+<span class="math math-display" data-tex="\[
+ [\lambda]=[\eta(dz)\,du|_{E_r}].
+ \tag{PT2}
+\]">\[
+ [\lambda]=[\eta(dz)\,du|_{E_r}].
+ \tag{PT2}
+\]</span>
+Neither integrability nor a uniform lower bound for <span class="math" data-tex="\(r\)">\(r\)</span> is required for this assertion.</p>
+<p>To prove it, use the positive density <span class="math" data-tex="\(w(t)=e^{-|t|}/2\)">\(w(t)=e^{-|t|}/2\)</span> and define, for Borel <span class="math" data-tex="\(E\subseteq E_r\)">\(E\subseteq E_r\)</span>,
+<span class="math math-display" data-tex="\[
+ \lambda^\circ(E)
+   =\int_{\mathbb R}w(t)\lambda_0\bigl(T_t^{-1}(E\cap A_{-t})\bigr)\,dt
+   =\int_{E_r}\int_0^{r(z)}
+           w(v-u)1_E(z,v)\,dv\,d\lambda_0(z,u).
+ \tag{PT3}
+\]">\[
+ \lambda^\circ(E)
+   =\int_{\mathbb R}w(t)\lambda_0\bigl(T_t^{-1}(E\cap A_{-t})\bigr)\,dt
+   =\int_{E_r}\int_0^{r(z)}
+           w(v-u)1_E(z,v)\,dv\,d\lambda_0(z,u).
+ \tag{PT3}
+\]</span>
+The first integrand is Borel by parameter integration. The second equality is Tonelli and the substitution <span class="math" data-tex="\(v=u+t\)">\(v=u+t\)</span>. Monotone convergence proves countable additivity, and <span class="math" data-tex="\(\lambda^\circ(E_r)\leq1\)">\(\lambda^\circ(E_r)\leq1\)</span>.</p>
+<p>If <span class="math" data-tex="\(\lambda_0(E)=0\)">\(\lambda_0(E)=0\)</span>, the partial-translation property makes every term in the first integral zero. For the converse, suppose <span class="math" data-tex="\(\lambda_0(E)&gt;0\)">\(\lambda_0(E)&gt;0\)</span>. The sets
+<span class="math math-display" data-tex="\[
+ E_n=E\cap\{(z,v):r(z)-v&gt;1/n\},\qquad n\geq1,
+ \tag{PT4}
+\]">\[
+ E_n=E\cap\{(z,v):r(z)-v&gt;1/n\},\qquad n\geq1,
+ \tag{PT4}
+\]</span>
+increase to <span class="math" data-tex="\(E\)">\(E\)</span>, since the upper endpoint is excluded. Some <span class="math" data-tex="\(E_n\)">\(E_n\)</span> therefore has positive <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>-measure. For every <span class="math" data-tex="\(t\in(-1/n,0)\)">\(t\in(-1/n,0)\)</span>, every point <span class="math" data-tex="\((z,v)\in E_n\)">\((z,v)\in E_n\)</span> lies in <span class="math" data-tex="\(A_{-t}\)">\(A_{-t}\)</span>: indeed <span class="math" data-tex="\(0\leq v-t&lt;r(z)\)">\(0\leq v-t&lt;r(z)\)</span>. Nonsingularity of the partial bijection gives
+<span class="math" data-tex="\(\lambda_0(T_t^{-1}E_n)&gt;0\)">\(\lambda_0(T_t^{-1}E_n)&gt;0\)</span>.
+The first integrand in (PT3) is consequently strictly positive on this whole time interval. A nonnegative measurable function positive on a set of positive Lebesgue measure has positive integral, as follows by taking its level sets above <span class="math" data-tex="\(1/k\)">\(1/k\)</span>. Thus <span class="math" data-tex="\(\lambda^\circ(E)&gt;0\)">\(\lambda^\circ(E)&gt;0\)</span>. This proves <span class="math" data-tex="\([\lambda^\circ]=[\lambda_0]=[\lambda]\)">\([\lambda^\circ]=[\lambda_0]=[\lambda]\)</span>, including possible mass at the bottom endpoints; no endpoint-null assertion was used.</p>
+<p>For fixed <span class="math" data-tex="\((z,u)\)">\((z,u)\)</span>, positivity of <span class="math" data-tex="\(w(v-u)\)">\(w(v-u)\)</span> says that the inner integral in the second part of (PT3) is zero exactly when the vertical section <span class="math" data-tex="\(E_z\subseteq[0,r(z))\)">\(E_z\subseteq[0,r(z))\)</span> is Lebesgue null. This condition depends only on <span class="math" data-tex="\(z\)">\(z\)</span>. The marginal definition and Tonelli therefore give
+<span class="math math-display" data-tex="\[
+ \lambda^\circ(E)=0
+ \ \Longleftrightarrow\
+ |E_z|=0\ \text{for }\eta\text{-almost every }z
+ \ \Longleftrightarrow\
+ (\eta(dz)\,du|_{E_r})(E)=0.
+ \tag{PT5}
+\]">\[
+ \lambda^\circ(E)=0
+ \ \Longleftrightarrow\
+ |E_z|=0\ \text{for }\eta\text{-almost every }z
+ \ \Longleftrightarrow\
+ (\eta(dz)\,du|_{E_r})(E)=0.
+ \tag{PT5}
+\]</span>
+This proves (PT2). The bottom section <span class="math" data-tex="\(\{u=0\}\)">\(\{u=0\}\)</span> is now seen to be null as a consequence. The base measure is a marginal of an equivalent probability on the whole interval bundle, not a restriction to that null section.</p>
 <p><span id="OA-FLOW.SUSPENSION.PATHS"></span><a id="oa-flow.suspension.paths"></a></p>
 <h2 id="an-exact-continuous-model-of-the-borel-flow">An exact continuous model of the Borel flow</h2>
 <p>Choose the injective Borel code <span class="math" data-tex="\(\chi:X\to[0,1]\)">\(\chi:X\to[0,1]\)</span> just described. Let <span class="math" data-tex="\(P\)">\(P\)</span> be the space of Lebesgue-measurable paths <span class="math" data-tex="\(p:\mathbb R\to[0,1]\)">\(p:\mathbb R\to[0,1]\)</span>, modulo almost-everywhere equality, with
@@ -234,6 +299,130 @@ Each <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> is Borel. For in
  \tag{S18}
 \]</span>
 The predecessor and successor are inverse by their order among the hits. Hence <span class="math" data-tex="\(S\)">\(S\)</span> is a Borel automorphism and <span class="math" data-tex="\(r\)">\(r\)</span> is Borel, finite, and at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p><span id="OA-FLOW.SUSPENSION.CHART"></span><a id="oa-flow.suspension.chart"></a></p>
+<h2 id="the-fundamental-domain-ergodicity-and-aperiodicity">The fundamental domain, ergodicity and aperiodicity</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+ D_r=\{(z,u)\in Z\times\mathbb R:0\leq u&lt;r(z)\},
+ \qquad
+ \Psi(z,u)=F_uz.
+ \tag{S27}
+\]">\[
+ D_r=\{(z,u)\in Z\times\mathbb R:0\leq u&lt;r(z)\},
+ \qquad
+ \Psi(z,u)=F_uz.
+ \tag{S27}
+\]</span>
+The preceding-hit formula supplies the inverse directly:
+<span class="math math-display" data-tex="\[
+ \Psi^{-1}(y)=\bigl(F_{\tau_0(y)}y,\,-\tau_0(y)\bigr).
+ \tag{S28}
+\]">\[
+ \Psi^{-1}(y)=\bigl(F_{\tau_0(y)}y,\,-\tau_0(y)\bigr).
+ \tag{S28}
+\]</span>
+Indeed, if <span class="math" data-tex="\(z=F_{\tau_0(y)}y\)">\(z=F_{\tau_0(y)}y\)</span>, then its next return occurs after
+<span class="math" data-tex="\(r(z)=\tau_1(y)-\tau_0(y)&gt;-\tau_0(y)\)">\(r(z)=\tau_1(y)-\tau_0(y)&gt;-\tau_0(y)\)</span>. The proposed inverse therefore lies in <span class="math" data-tex="\(D_r\)">\(D_r\)</span> and maps to <span class="math" data-tex="\(y\)">\(y\)</span>. Conversely, when <span class="math" data-tex="\(0\leq u&lt;r(z)\)">\(0\leq u&lt;r(z)\)</span>, the last hit at or before time zero for <span class="math" data-tex="\(F_uz\)">\(F_uz\)</span> is <span class="math" data-tex="\(-u\)">\(-u\)</span>: translating a hit list subtracts <span class="math" data-tex="\(u\)">\(u\)</span>, and there is no hit strictly between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(r(z)\)">\(r(z)\)</span> at <span class="math" data-tex="\(z\)">\(z\)</span>. Formula (S28) recovers <span class="math" data-tex="\((z,u)\)">\((z,u)\)</span>. Both maps are Borel by parameter evaluation and the Borel hitting times, so <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is a Borel isomorphism onto <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>.</p>
+<p>Define the signed roof sums
+<span class="math math-display" data-tex="\[
+ R_0(z)=0,\qquad
+ R_k(z)=\sum_{j=0}^{k-1}r(S^jz)\ (k&gt;0),\qquad
+ R_k(z)=-\sum_{j=k}^{-1}r(S^jz)\ (k&lt;0).
+ \tag{S29}
+\]">\[
+ R_0(z)=0,\qquad
+ R_k(z)=\sum_{j=0}^{k-1}r(S^jz)\ (k&gt;0),\qquad
+ R_k(z)=-\sum_{j=k}^{-1}r(S^jz)\ (k&lt;0).
+ \tag{S29}
+\]</span>
+They are exactly <span class="math" data-tex="\(\tau_k(z)\)">\(\tau_k(z)\)</span>. Since <span class="math" data-tex="\(r\geq\delta\)">\(r\geq\delta\)</span>, they tend to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> and <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> in the two directions. For each <span class="math" data-tex="\((t,z,u)\)">\((t,z,u)\)</span>, there is a unique integer <span class="math" data-tex="\(k\)">\(k\)</span> with
+<span class="math" data-tex="\(R_k(z)\leq u+t&lt;R_{k+1}(z)\)">\(R_k(z)\leq u+t&lt;R_{k+1}(z)\)</span>, and the suspension action is
+<span class="math math-display" data-tex="\[
+ F_t^{\,r}(z,u)
+       =\bigl(S^kz,\ u+t-R_k(z)\bigr).
+ \tag{S30}
+\]">\[
+ F_t^{\,r}(z,u)
+       =\bigl(S^kz,\ u+t-R_k(z)\bigr).
+ \tag{S30}
+\]</span>
+The integer <span class="math" data-tex="\(k\)">\(k\)</span> is Borel by these countably many inequalities. The second coordinate lies in <span class="math" data-tex="\([0,r(S^kz))\)">\([0,r(S^kz))\)</span>. Only finitely many roofs are crossed in any bounded time interval, by the lower bound <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. For the integer <span class="math" data-tex="\(k\)">\(k\)</span> in (S30), the point <span class="math" data-tex="\(F_{u+t}z\)">\(F_{u+t}z\)</span> lies between its <span class="math" data-tex="\(k\)">\(k\)</span>-th and <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-st hits. Its preceding hit is <span class="math" data-tex="\(S^kz\)">\(S^kz\)</span>, and its elapsed time since that hit is <span class="math" data-tex="\(u+t-R_k(z)\)">\(u+t-R_k(z)\)</span>. Formula (S28) consequently gives
+<span class="math" data-tex="\(\Psi F_t^{\,r}=F_t\Psi\)">\(\Psi F_t^{\,r}=F_t\Psi\)</span> for every <span class="math" data-tex="\(t,z,u\)">\(t,z,u\)</span>.
+Conjugating the original action by this Borel isomorphism proves the group law, including negative times and exact roof hits. Thus (S30) is a strict jointly Borel flow.</p>
+<p>Pull back the probability <span class="math" data-tex="\(v|_{\Gamma_1}\)">\(v|_{\Gamma_1}\)</span> by <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, obtaining a probability <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(D_r\)">\(D_r\)</span>, and let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be its marginal on <span class="math" data-tex="\(Z\)">\(Z\)</span>. On the domain where no roof is crossed, <span class="math" data-tex="\(F_t^{\,r}\)">\(F_t^{\,r}\)</span> is exactly the partial translation <span class="math" data-tex="\(T_t\)">\(T_t\)</span> in (PT1). Nonsingularity of the original <span class="math" data-tex="\(F_t\)">\(F_t\)</span> therefore supplies the partial-translation property for <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Applying (PT2) gives
+<span class="math math-display" data-tex="\[
+ [\lambda]=[\nu(dz)\,du|_{D_r}],
+ \qquad
+ [\Psi_*(\nu(dz)\,du|_{D_r})]=[v|_{\Gamma_1}].
+ \tag{PT6}
+\]">\[
+ [\lambda]=[\nu(dz)\,du|_{D_r}],
+ \qquad
+ [\Psi_*(\nu(dz)\,du|_{D_r})]=[v|_{\Gamma_1}].
+ \tag{PT6}
+\]</span>
+The product restriction is sigma finite: its parts <span class="math" data-tex="\(0\leq u\leq n\)">\(0\leq u\leq n\)</span> have measure at most <span class="math" data-tex="\(n\)">\(n\)</span>. Thus unbounded roofs cause no difficulty, and every <span class="math" data-tex="\(F_t^{\,r}\)">\(F_t^{\,r}\)</span> is nonsingular for this product class.</p>
+<p>We also obtain nonsingularity of the return map without using a variable-time map on an ambient measure. Fix <span class="math" data-tex="\(h=\delta/2\)">\(h=\delta/2\)</span>. For a Borel set <span class="math" data-tex="\(A\subseteq Z\)">\(A\subseteq Z\)</span>, the fixed-time map <span class="math" data-tex="\(F_h^{\,r}\)">\(F_h^{\,r}\)</span> carries the top strip onto the bottom strip:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ U_A&amp;=\{(z,u):z\in A,\ r(z)-h\leq u&lt;r(z)\},\\
+ V_{SA}&amp;=\{(z,v):z\in SA,\ 0\leq v&lt;h\},\\
+ F_h^{\,r}(z,u)&amp;=(Sz,u+h-r(z)),\qquad
+ F_h^{\,r}(U_A)=V_{SA}.
+ \end{aligned}
+ \tag{PT7}
+\]">\[
+ \begin{aligned}
+ U_A&amp;=\{(z,u):z\in A,\ r(z)-h\leq u&lt;r(z)\},\\
+ V_{SA}&amp;=\{(z,v):z\in SA,\ 0\leq v&lt;h\},\\
+ F_h^{\,r}(z,u)&amp;=(Sz,u+h-r(z)),\qquad
+ F_h^{\,r}(U_A)=V_{SA}.
+ \end{aligned}
+ \tag{PT7}
+\]</span>
+There is exactly one crossing, since <span class="math" data-tex="\(r(z)\geq\delta&gt;h\)">\(r(z)\geq\delta&gt;h\)</span> both before and after the return. The inverse uses <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> and <span class="math" data-tex="\(u=r(S^{-1}z)+v-h\)">\(u=r(S^{-1}z)+v-h\)</span>, so this is equality of Borel sets, including their half-open edges. Their product measures are <span class="math" data-tex="\(h\nu(A)\)">\(h\nu(A)\)</span> and <span class="math" data-tex="\(h\nu(SA)\)">\(h\nu(SA)\)</span>. Nonsingularity of this one fixed-time flow map yields
+<span class="math math-display" data-tex="\[
+ \nu(A)=0\quad\Longleftrightarrow\quad\nu(SA)=0.
+ \tag{PT8}
+\]">\[
+ \nu(A)=0\quad\Longleftrightarrow\quad\nu(SA)=0.
+ \tag{PT8}
+\]</span>
+Replacing <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(S^{-1}A\)">\(S^{-1}A\)</span> gives the usual inverse-image formulation as well. Hence <span class="math" data-tex="\(S\)">\(S\)</span> is nonsingular for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>If a Borel set <span class="math" data-tex="\(A\subseteq Z\)">\(A\subseteq Z\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant, the part of <span class="math" data-tex="\(D_r\)">\(D_r\)</span> above <span class="math" data-tex="\(A\)">\(A\)</span> is flow invariant. Its product measure is zero exactly when <span class="math" data-tex="\(\nu(A)=0\)">\(\nu(A)=0\)</span>, because every roof is positive; the same statement applies to its complement. Flow ergodicity therefore implies that <span class="math" data-tex="\(S\)">\(S\)</span> is ergodic. For an <span class="math" data-tex="\(S\)">\(S\)</span>-invariant set modulo null sets, remove the <span class="math" data-tex="\(S\)">\(S\)</span>-saturation of its invariance failure set. This is a countable union of null sets by nonsingularity, and outside it the set is exactly invariant. Thus the equivalent measured formulation of ergodicity holds as well.</p>
+<p>We can now make <span class="math" data-tex="\(S\)">\(S\)</span> aperiodic on an invariant conull Borel set. The sets of points of exact finite period <span class="math" data-tex="\(n\)">\(n\)</span> are Borel and invariant. If their union had positive measure, one of them would be conull by ergodicity. On that set, choose in each finite orbit the point with smallest value of a fixed injective Borel real code. This is a Borel orbit-constant map: its finitely many comparisons are Borel and its minimum is unique. The zero-or-one probability argument then concentrates <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on a single finite <span class="math" data-tex="\(S\)">\(S\)</span>-orbit. The whole tube above that finite orbit is one flow orbit, by (S29)–(S30). The product-class identification would concentrate <span class="math" data-tex="\(v\)">\(v\)</span>, and hence the original measure, on that flow orbit, a contradiction.</p>
+<p>Remove the periodic points from <span class="math" data-tex="\(Z\)">\(Z\)</span> and their corresponding tube from <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>. These are invariant Borel null sets in their respective spaces. Keep the same notation for the restrictions. Now
+<span class="math math-display" data-tex="\[
+ S^nz\ne z\quad(z\in Z,\ n\in\mathbb Z\setminus\{0\}).
+ \tag{S31}
+\]">\[
+ S^nz\ne z\quad(z\in Z,\ n\in\mathbb Z\setminus\{0\}).
+ \tag{S31}
+\]</span>
+The retained flow is free as well. If a point <span class="math" data-tex="\(F_uz\)">\(F_uz\)</span> has period <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, then <span class="math" data-tex="\(F_tz=z\)">\(F_tz=z\)</span>. Thus <span class="math" data-tex="\(t\)">\(t\)</span> is a positive hit time at <span class="math" data-tex="\(z\)">\(z\)</span>, and (S29) gives <span class="math" data-tex="\(S^kz=z\)">\(S^kz=z\)</span> for its positive hit index <span class="math" data-tex="\(k\)">\(k\)</span>, contradicting (S31).</p>
+<p><span id="OA-FLOW.SUSPENSION.THEOREM"></span><a id="oa-flow.suspension.theorem"></a></p>
+<h2 id="the-complete-suspension-theorem">The complete suspension theorem</h2>
+<p><strong>Theorem.</strong> Every nonzero standard sigma-finite nonsingular properly ergodic Borel real flow has an invariant conull Borel subset <span class="math" data-tex="\(X_*\)">\(X_*\)</span> with the following description. There are a standard Borel probability space <span class="math" data-tex="\((Z,\nu)\)">\((Z,\nu)\)</span>, an aperiodic ergodic nonsingular Borel automorphism <span class="math" data-tex="\(S:Z\to Z\)">\(S:Z\to Z\)</span>, a finite Borel function <span class="math" data-tex="\(r:Z\to(0,\infty)\)">\(r:Z\to(0,\infty)\)</span>, and a constant <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that <span class="math" data-tex="\(r(z)\geq\delta\)">\(r(z)\geq\delta\)</span> everywhere. There is a Borel isomorphism
+<span class="math math-display" data-tex="\[
+ \Xi:D_r\longrightarrow X_*,
+ \qquad
+ [\Xi_*(\nu(dz)\,du|_{D_r})]=[\mu|_{X_*}],
+ \qquad
+ \Xi F_t^{\,r}=F_t\Xi
+       \quad(t\in\mathbb R).
+ \tag{S32}
+\]">\[
+ \Xi:D_r\longrightarrow X_*,
+ \qquad
+ [\Xi_*(\nu(dz)\,du|_{D_r})]=[\mu|_{X_*}],
+ \qquad
+ \Xi F_t^{\,r}=F_t\Xi
+       \quad(t\in\mathbb R).
+ \tag{S32}
+\]</span>
+The last equality holds at every point, with <span class="math" data-tex="\(F^r\)">\(F^r\)</span> given by (S29)–(S30). In particular the invariant conull original flow is free.</p>
+<p><strong>Proof.</strong> Combine <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> with the Borel inverse <span class="math" data-tex="\(J^{-1}\)">\(J^{-1}\)</span> on the retained part of <span class="math" data-tex="\(Y\cap\Gamma\)">\(Y\cap\Gamma\)</span>. Every deletion made above was Borel, invariant and null. Equations (S10), (S27)–(S31) and (PT6)–(PT8) supply exact equivariance, the Borel chart, all-time vertical motion, the product measure class, nonsingularity of the base, and aperiodicity. The initial replacement (S2) was equivalent to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, which proves exactly the measure-class identity in (S32). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also a useful uniformly bounded-roof construction. The <a href="../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#3a4-uniform-gaps-and-the-full-suspension-chart">bounded-section theorem for every free Borel flow</a> constructs successive gaps in <span class="math" data-tex="\([a,3a)\)">\([a,3a)\)</span> for any prescribed <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, using smoothing, sparse levels and Borel finite-degree selection. Its <a href="../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#suspension-coordinates-and-the-base-measure">measure-class passage</a> applies positive-density averaging to that chart. The direct proof here obtains the required finite roof and fixed positive lower bound from separated crossings. Its measure-class identification uses only partial translations inside the return intervals. We next construct the integer cover to describe the associated commuting actions.</p>
 <p><span id="OA-FLOW.SUSPENSION.COVER"></span><a id="oa-flow.suspension.cover"></a></p>
 <h2 id="the-integer-hitting-cover-and-the-deck-map">The integer hitting cover and the deck map</h2>
 <p>For <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span> and <span class="math" data-tex="\(y\in\Gamma_1\)">\(y\in\Gamma_1\)</span>, define
@@ -317,15 +506,15 @@ The first intertwining identity is (S20). For the second, <span class="math" dat
  \tag{S24}
 \]</span>
 The equality simply reindexes <span class="math" data-tex="\(k=m+n(t,y)\)">\(k=m+n(t,y)\)</span> for each <span class="math" data-tex="\(y\)">\(y\)</span>. Nonsingularity of <span class="math" data-tex="\(F_t\)">\(F_t\)</span> shows that this integral is zero exactly when <span class="math" data-tex="\(\int f\,dM=0\)">\(\int f\,dM=0\)</span>. Thus each <span class="math" data-tex="\(\widehat F_t\)">\(\widehat F_t\)</span> preserves the measure class of <span class="math" data-tex="\(M\)">\(M\)</span>. By (S23), every <span class="math" data-tex="\(R_t\)">\(R_t\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> preserves the class of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
-<p>There is an explicit equivalent probability on the cover: replace counting measure by <span class="math" data-tex="\(p_m=2^{-|m|}/3\)">\(p_m=2^{-|m|}/3\)</span>, whose sum is one, and pull back <span class="math" data-tex="\(p\otimes v\)">\(p\otimes v\)</span> through <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be its marginal on <span class="math" data-tex="\(Z\)">\(Z\)</span>. The product-class lemma now gives
+<p>There is an explicit equivalent probability on the cover: replace counting measure by <span class="math" data-tex="\(p_m=2^{-|m|}/3\)">\(p_m=2^{-|m|}/3\)</span>, whose sum is one, and pull back <span class="math" data-tex="\(p\otimes v\)">\(p\otimes v\)</span> through <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Let <span class="math" data-tex="\(\widehat\nu\)">\(\widehat\nu\)</span> be its marginal on <span class="math" data-tex="\(Z\)">\(Z\)</span>. The product-class lemma now gives
 <span class="math math-display" data-tex="\[
- [\kappa]=[ds\,\nu(dz)].
+ [\kappa]=[ds\,\widehat\nu(dz)].
  \tag{S25}
 \]">\[
- [\kappa]=[ds\,\nu(dz)].
+ [\kappa]=[ds\,\widehat\nu(dz)].
  \tag{S25}
 \]</span>
-Moreover <span class="math" data-tex="\(S\)">\(S\)</span> is nonsingular for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. For every Borel <span class="math" data-tex="\(A\subseteq Z\)">\(A\subseteq Z\)</span>,
+Moreover <span class="math" data-tex="\(S\)">\(S\)</span> is nonsingular for <span class="math" data-tex="\(\widehat\nu\)">\(\widehat\nu\)</span>. For every Borel <span class="math" data-tex="\(A\subseteq Z\)">\(A\subseteq Z\)</span>,
 <span class="math math-display" data-tex="\[
  B^{-1}(\mathbb R\times A)=\mathbb R\times S^{-1}A.
  \tag{S26}
@@ -333,95 +522,11 @@ Moreover <span class="math" data-tex="\(S\)">\(S\)</span> is nonsingular for <sp
  B^{-1}(\mathbb R\times A)=\mathbb R\times S^{-1}A.
  \tag{S26}
 \]</span>
-A full vertical cylinder is product-null exactly when its base is <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null. Equations (S25)–(S26) and nonsingularity of <span class="math" data-tex="\(B\)">\(B\)</span> therefore give
-<span class="math" data-tex="\(\nu(A)=0\)">\(\nu(A)=0\)</span> if and only if <span class="math" data-tex="\(\nu(S^{-1}A)=0\)">\(\nu(S^{-1}A)=0\)</span>.</p>
-<p><span id="OA-FLOW.SUSPENSION.CHART"></span><a id="oa-flow.suspension.chart"></a></p>
-<h2 id="the-fundamental-domain-ergodicity-and-aperiodicity">The fundamental domain, ergodicity and aperiodicity</h2>
-<p>Let
-<span class="math math-display" data-tex="\[
- D_r=\{(z,u)\in Z\times\mathbb R:0\leq u&lt;r(z)\},
- \qquad
- \Psi(z,u)=F_uz.
- \tag{S27}
-\]">\[
- D_r=\{(z,u)\in Z\times\mathbb R:0\leq u&lt;r(z)\},
- \qquad
- \Psi(z,u)=F_uz.
- \tag{S27}
-\]</span>
-For these points <span class="math" data-tex="\(n(u,z)=0\)">\(n(u,z)=0\)</span>. Thus
-<span class="math" data-tex="\(\Phi(u,z)=(0,\Psi(z,u))\)">\(\Phi(u,z)=(0,\Psi(z,u))\)</span>; note the order of coordinates in <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.
-The zero-integer slice in (S22) proves that <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is a Borel isomorphism onto <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>, with inverse
-<span class="math math-display" data-tex="\[
- \Psi^{-1}(y)=\bigl(F_{\tau_0(y)}y,\,-\tau_0(y)\bigr).
- \tag{S28}
-\]">\[
- \Psi^{-1}(y)=\bigl(F_{\tau_0(y)}y,\,-\tau_0(y)\bigr).
- \tag{S28}
-\]</span>
-The restriction of <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(\{0\}\times\Gamma_1\)">\(\{0\}\times\Gamma_1\)</span> is <span class="math" data-tex="\(v\)">\(v\)</span>. Consequently (S25), with the two product coordinates interchanged, proves that
-<span class="math" data-tex="\(\Psi_*(\nu(dz)\,du|_{D_r})\)">\(\Psi_*(\nu(dz)\,du|_{D_r})\)</span> is equivalent to <span class="math" data-tex="\(v\)">\(v\)</span>.
-The product restriction is sigma finite, by the vertical slabs <span class="math" data-tex="\(0\leq u\leq n\)">\(0\leq u\leq n\)</span>, even when <span class="math" data-tex="\(r\)">\(r\)</span> is unbounded.</p>
-<p>Define the signed roof sums
-<span class="math math-display" data-tex="\[
- R_0(z)=0,\qquad
- R_k(z)=\sum_{j=0}^{k-1}r(S^jz)\ (k&gt;0),\qquad
- R_k(z)=-\sum_{j=k}^{-1}r(S^jz)\ (k&lt;0).
- \tag{S29}
-\]">\[
- R_0(z)=0,\qquad
- R_k(z)=\sum_{j=0}^{k-1}r(S^jz)\ (k&gt;0),\qquad
- R_k(z)=-\sum_{j=k}^{-1}r(S^jz)\ (k&lt;0).
- \tag{S29}
-\]</span>
-They are exactly <span class="math" data-tex="\(\tau_k(z)\)">\(\tau_k(z)\)</span>. Since <span class="math" data-tex="\(r\geq\delta\)">\(r\geq\delta\)</span>, they tend to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> and <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> in the two directions. For each <span class="math" data-tex="\((t,z,u)\)">\((t,z,u)\)</span>, there is a unique integer <span class="math" data-tex="\(k\)">\(k\)</span> with
-<span class="math" data-tex="\(R_k(z)\leq u+t&lt;R_{k+1}(z)\)">\(R_k(z)\leq u+t&lt;R_{k+1}(z)\)</span>, and the suspension action is
-<span class="math math-display" data-tex="\[
- F_t^{\,r}(z,u)
-       =\bigl(S^kz,\ u+t-R_k(z)\bigr).
- \tag{S30}
-\]">\[
- F_t^{\,r}(z,u)
-       =\bigl(S^kz,\ u+t-R_k(z)\bigr).
- \tag{S30}
-\]</span>
-The integer <span class="math" data-tex="\(k\)">\(k\)</span> is Borel by these countably many inequalities. The second coordinate lies in <span class="math" data-tex="\([0,r(S^kz))\)">\([0,r(S^kz))\)</span>. Only finitely many roofs are crossed in any bounded time interval, by the lower bound <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Equation (S20), or direct concatenation of consecutive roof intervals, proves
-<span class="math" data-tex="\(\Psi F_t^{\,r}=F_t\Psi\)">\(\Psi F_t^{\,r}=F_t\Psi\)</span> for every <span class="math" data-tex="\(t,z,u\)">\(t,z,u\)</span>.
-Thus (S30) is a strict jointly Borel nonsingular flow on the product measure class.</p>
-<p>If a Borel set <span class="math" data-tex="\(A\subseteq Z\)">\(A\subseteq Z\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant, the part of <span class="math" data-tex="\(D_r\)">\(D_r\)</span> above <span class="math" data-tex="\(A\)">\(A\)</span> is flow invariant. Its product measure is zero exactly when <span class="math" data-tex="\(\nu(A)=0\)">\(\nu(A)=0\)</span>, because every roof is positive; the same statement applies to its complement. Flow ergodicity therefore implies that <span class="math" data-tex="\(S\)">\(S\)</span> is ergodic. For an <span class="math" data-tex="\(S\)">\(S\)</span>-invariant set modulo null sets, remove the <span class="math" data-tex="\(S\)">\(S\)</span>-saturation of its invariance failure set. This is a countable union of null sets by nonsingularity, and outside it the set is exactly invariant. Thus the equivalent measured formulation of ergodicity holds as well.</p>
-<p>We can now make <span class="math" data-tex="\(S\)">\(S\)</span> aperiodic on an invariant conull Borel set. The sets of points of exact finite period <span class="math" data-tex="\(n\)">\(n\)</span> are Borel and invariant. If their union had positive measure, one of them would be conull by ergodicity. On that set, choose in each finite orbit the point with smallest value of a fixed injective Borel real code. This is a Borel orbit-constant map: its finitely many comparisons are Borel and its minimum is unique. The zero-or-one probability argument then concentrates <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on a single finite <span class="math" data-tex="\(S\)">\(S\)</span>-orbit. The whole tube above that finite orbit is one flow orbit, by (S29)–(S30). The product-class identification would concentrate <span class="math" data-tex="\(v\)">\(v\)</span>, and hence the original measure, on that flow orbit, a contradiction.</p>
-<p>Remove the periodic points from <span class="math" data-tex="\(Z\)">\(Z\)</span> and their corresponding tube from <span class="math" data-tex="\(\Gamma_1\)">\(\Gamma_1\)</span>. These are invariant Borel null sets in their respective spaces. Keep the same notation for the restrictions. Now
-<span class="math math-display" data-tex="\[
- S^nz\ne z\quad(z\in Z,\ n\in\mathbb Z\setminus\{0\}).
- \tag{S31}
-\]">\[
- S^nz\ne z\quad(z\in Z,\ n\in\mathbb Z\setminus\{0\}).
- \tag{S31}
-\]</span>
-The retained flow is free as well. If a point <span class="math" data-tex="\(F_uz\)">\(F_uz\)</span> has period <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, then <span class="math" data-tex="\(F_tz=z\)">\(F_tz=z\)</span>. Thus <span class="math" data-tex="\(t\)">\(t\)</span> is a positive hit time at <span class="math" data-tex="\(z\)">\(z\)</span>, and (S29) gives <span class="math" data-tex="\(S^kz=z\)">\(S^kz=z\)</span> for its positive hit index <span class="math" data-tex="\(k\)">\(k\)</span>, contradicting (S31).</p>
-<p><span id="OA-FLOW.SUSPENSION.THEOREM"></span><a id="oa-flow.suspension.theorem"></a></p>
-<h2 id="the-complete-suspension-theorem">The complete suspension theorem</h2>
-<p><strong>Theorem.</strong> Every nonzero standard sigma-finite nonsingular properly ergodic Borel real flow has an invariant conull Borel subset <span class="math" data-tex="\(X_*\)">\(X_*\)</span> with the following description. There are a standard Borel probability space <span class="math" data-tex="\((Z,\nu)\)">\((Z,\nu)\)</span>, an aperiodic ergodic nonsingular Borel automorphism <span class="math" data-tex="\(S:Z\to Z\)">\(S:Z\to Z\)</span>, a finite Borel function <span class="math" data-tex="\(r:Z\to(0,\infty)\)">\(r:Z\to(0,\infty)\)</span>, and a constant <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that <span class="math" data-tex="\(r(z)\geq\delta\)">\(r(z)\geq\delta\)</span> everywhere. There is a Borel isomorphism
-<span class="math math-display" data-tex="\[
- \Xi:D_r\longrightarrow X_*,
- \qquad
- [\Xi_*(\nu(dz)\,du|_{D_r})]=[\mu|_{X_*}],
- \qquad
- \Xi F_t^{\,r}=F_t\Xi
-       \quad(t\in\mathbb R).
- \tag{S32}
-\]">\[
- \Xi:D_r\longrightarrow X_*,
- \qquad
- [\Xi_*(\nu(dz)\,du|_{D_r})]=[\mu|_{X_*}],
- \qquad
- \Xi F_t^{\,r}=F_t\Xi
-       \quad(t\in\mathbb R).
- \tag{S32}
-\]</span>
-The last equality holds at every point, with <span class="math" data-tex="\(F^r\)">\(F^r\)</span> given by (S29)–(S30). In particular the invariant conull original flow is free.</p>
-<p><strong>Proof.</strong> Combine <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> with the Borel inverse <span class="math" data-tex="\(J^{-1}\)">\(J^{-1}\)</span> on the retained part of <span class="math" data-tex="\(Y\cap\Gamma\)">\(Y\cap\Gamma\)</span>. Every deletion made above was Borel, invariant and null. Equations (S10), (S25), (S27)–(S31) supply respectively exact equivariance, the measure class, the Borel chart, all-time vertical motion and aperiodicity. The initial replacement (S2) was equivalent to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, which proves exactly the measure-class identity in (S32). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
-<p>There is also a useful uniformly bounded-roof construction. The <a href="../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#3a4-uniform-gaps-and-the-full-suspension-chart">bounded-section theorem for every free Borel flow</a> constructs successive gaps in <span class="math" data-tex="\([a,3a)\)">\([a,3a)\)</span> for any prescribed <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, using smoothing, sparse levels and Borel finite-degree selection. Its <a href="../OA-ERGODIC/reader/dense-roof-groups-periods-and-eigenfunctions.html#suspension-coordinates-and-the-base-measure">measure-class passage</a> applies positive-density averaging to that chart. The direct proof here obtains the required finite roof and fixed positive lower bound from separated crossings and the explicit hitting cover.</p>
+A full vertical cylinder is product-null exactly when its base is <span class="math" data-tex="\(\widehat\nu\)">\(\widehat\nu\)</span>-null. Equations (S25)–(S26) and nonsingularity of <span class="math" data-tex="\(B\)">\(B\)</span> therefore give
+<span class="math" data-tex="\(\widehat\nu(A)=0\)">\(\widehat\nu(A)=0\)</span> if and only if <span class="math" data-tex="\(\widehat\nu(S^{-1}A)=0\)">\(\widehat\nu(S^{-1}A)=0\)</span>.</p>
+<p>This cover marginal has the same null sets as the probability <span class="math" data-tex="\(\nu\)">\(\nu\)</span> obtained directly in (PT6). For <span class="math" data-tex="\(0\leq u&lt;r(z)\)">\(0\leq u&lt;r(z)\)</span>, one has <span class="math" data-tex="\(n(u,z)=0\)">\(n(u,z)=0\)</span>, hence
+<span class="math" data-tex="\(\Phi(u,z)=(0,\Psi(z,u))\)">\(\Phi(u,z)=(0,\Psi(z,u))\)</span>.
+The restriction of <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(\{0\}\times\Gamma_1\)">\(\{0\}\times\Gamma_1\)</span> is <span class="math" data-tex="\(v|_{\Gamma_1}\)">\(v|_{\Gamma_1}\)</span>. Thus (S25), with product coordinates interchanged, identifies the class of <span class="math" data-tex="\(\widehat\nu(dz)\,du|_{D_r}\)">\(\widehat\nu(dz)\,du|_{D_r}\)</span> with the pullback <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> used in (PT6). A tube over <span class="math" data-tex="\(A\subseteq Z\)">\(A\subseteq Z\)</span> has zero product measure exactly when its base is null, since <span class="math" data-tex="\(0&lt;r(z)&lt;\infty\)">\(0&lt;r(z)&lt;\infty\)</span>. Comparing the two product descriptions on these tubes gives <span class="math" data-tex="\([\widehat\nu]=[\nu]\)">\([\widehat\nu]=[\nu]\)</span>. We may consequently use <span class="math" data-tex="\(ds\,\nu(dz)\)">\(ds\,\nu(dz)\)</span> for the cover class as well. The cover recovers the same transverse null sets.</p>
 <p><span id="OA-FLOW.SUSPENSION.COVER-COROLLARY"></span><a id="oa-flow.suspension.cover-corollary"></a></p>
 <h2 id="two-free-integrable-coordinate-actions-on-one-cover">Two free integrable coordinate actions on one cover</h2>
 <p>The cover also gives a useful operator-algebra conclusion. Equip
@@ -490,6 +595,177 @@ For completeness, if a bounded Borel <span class="math" data-tex="\(f\)">\(f\)</
 It is invariant under every <span class="math" data-tex="\(F_t\)">\(F_t\)</span>, since translations preserve Lebesgue null sets. On that set the integral
 <span class="math" data-tex="\(\int h(F_ty)e^{-|t|}dt/2\)">\(\int h(F_ty)e^{-|t|}dt/2\)</span>
 is its unique constant path value, is Borel, is exactly invariant, and equals <span class="math" data-tex="\(h(y)\)">\(h(y)\)</span> almost everywhere. Set it to zero on the invariant null complement. Ergodicity makes this invariant representative constant: its real and imaginary level sets are invariant. Thus the joint fixed algebra is scalar. Statements (S33)–(S35) concern the two coordinate actions individually; no integrability assertion about their joint action is needed.</p>
+<p><span id="OA-FLOW.SUSPENSION.NONUNIQUE-BASE"></span><a id="oa-flow.suspension.nonunique-base"></a></p>
+<h2 id="one-flow-with-different-return-transformations">One flow with different return transformations</h2>
+<p>The return transformation depends on the section. We give one properly ergodic probability-preserving flow with infinitely many return transformations that are pairwise nonconjugate, even if a conjugacy is only required to preserve measure classes. The roof functions and the time parameter are part of the construction: the resulting suspensions are conjugate at the same time, without a time rescaling.</p>
+<p>Write <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be normalized Lebesgue measure, and fix an irrational <span class="math" data-tex="\(\alpha\in(0,1)\)">\(\alpha\in(0,1)\)</span>. The <a href="OA-FLOW-CC.html#oa-flow.cc.0">complete circle Fourier proof</a>, with period one, gives translation invariance of <span class="math" data-tex="\(m\)">\(m\)</span> and completeness of <span class="math" data-tex="\(e_n(x)=e^{2\pi inx}\)">\(e_n(x)=e^{2\pi inx}\)</span> in <span class="math" data-tex="\(L^2(\mathbb T,m)\)">\(L^2(\mathbb T,m)\)</span>. The only further analytic inputs are the <a href="OA-FLOW-L38.html#oa-flow.suspension.setting">parameter integration and Tonelli argument</a> and the half-open suspension coordinates in <a href="OA-FLOW-L38.html#oa-flow.suspension.chart">the fundamental-domain construction</a>.</p>
+<h3 id="the-common-properly-ergodic-flow">The common properly ergodic flow</h3>
+<p>Put <span class="math" data-tex="\(Ax=x+\alpha\)">\(Ax=x+\alpha\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. It preserves <span class="math" data-tex="\(m\)">\(m\)</span>, is invertible and has no periodic point. It is ergodic. Indeed, if <span class="math" data-tex="\(f\in L^2(m)\)">\(f\in L^2(m)\)</span> satisfies <span class="math" data-tex="\(f\circ A=f\)">\(f\circ A=f\)</span>, translation invariance gives
+<span class="math math-display" data-tex="\[
+ \widehat{f\circ A}(n)=e^{2\pi in\alpha}\widehat f(n).
+ \tag{NU1}
+\]">\[
+ \widehat{f\circ A}(n)=e^{2\pi in\alpha}\widehat f(n).
+ \tag{NU1}
+\]</span>
+For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, irrationality makes the displayed phase different from one, so all nonconstant Fourier coefficients vanish. Completeness makes <span class="math" data-tex="\(f\)">\(f\)</span> constant. Applying this to invariant-set indicators proves ergodicity, including invariance modulo null sets.</p>
+<p>We will also need the following exact distinction. If <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is a root of unity and a nonzero bounded measurable <span class="math" data-tex="\(f\)">\(f\)</span> satisfies <span class="math" data-tex="\(f\circ A=\zeta f\)">\(f\circ A=\zeta f\)</span> almost everywhere, then <span class="math" data-tex="\(\zeta=1\)">\(\zeta=1\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> is constant almost everywhere. Such an <span class="math" data-tex="\(f\)">\(f\)</span> belongs to <span class="math" data-tex="\(L^2(m)\)">\(L^2(m)\)</span> and has a nonzero Fourier coefficient. Equation (NU1) gives <span class="math" data-tex="\(\zeta=e^{2\pi in\alpha}\)">\(\zeta=e^{2\pi in\alpha}\)</span> for its index <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(\zeta^k=1\)">\(\zeta^k=1\)</span> for some positive integer <span class="math" data-tex="\(k\)">\(k\)</span>, then <span class="math" data-tex="\(kn\alpha\in\mathbb Z\)">\(kn\alpha\in\mathbb Z\)</span>, forcing <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Ergodicity supplies the final assertion.</p>
+<p>On the standard Borel probability space
+<span class="math math-display" data-tex="\[
+ X=\mathbb T\times[0,1),\qquad \mu=m(dx)\,dv,
+\]">\[
+ X=\mathbb T\times[0,1),\qquad \mu=m(dx)\,dv,
+\]</span>
+define, for every real <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+ n=\lfloor v+t\rfloor,\qquad
+ F_t(x,v)=(A^n x,\,v+t-n).
+ \tag{NU2}
+\]">\[
+ n=\lfloor v+t\rfloor,\qquad
+ F_t(x,v)=(A^n x,\,v+t-n).
+ \tag{NU2}
+\]</span>
+The floor function makes this jointly Borel. Its half-open convention applies at negative times and at every seam. The identity
+<span class="math math-display" data-tex="\[
+ \lfloor v+t+s\rfloor
+ =\lfloor v+t\rfloor+
+   \lfloor v+t-\lfloor v+t\rfloor+s\rfloor
+\]">\[
+ \lfloor v+t+s\rfloor
+ =\lfloor v+t\rfloor+
+   \lfloor v+t-\lfloor v+t\rfloor+s\rfloor
+\]</span>
+proves the action law and the inverse <span class="math" data-tex="\(F_{-t}\)">\(F_{-t}\)</span>. Each <span class="math" data-tex="\(F_t\)">\(F_t\)</span> preserves <span class="math" data-tex="\(\mu\)">\(\mu\)</span>: partition <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> according to the integer <span class="math" data-tex="\(\lfloor v+t\rfloor\)">\(\lfloor v+t\rfloor\)</span>, apply translation in the vertical coordinate and the measure-preserving map <span class="math" data-tex="\(A^n\)">\(A^n\)</span> in the circle coordinate, and note that the resulting vertical intervals partition <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. This proves the integral identity for nonnegative Borel functions, hence for the whole measure.</p>
+<p>The flow is ergodic in the exact Borel sense used in the theorem. If a Borel indicator <span class="math" data-tex="\(g\)">\(g\)</span> is invariant under every <span class="math" data-tex="\(F_t\)">\(F_t\)</span>, then <span class="math" data-tex="\(F_{-v}(x,v)=(x,0)\)">\(F_{-v}(x,v)=(x,0)\)</span> gives <span class="math" data-tex="\(g(x,v)=g(x,0)\)">\(g(x,v)=g(x,0)\)</span>. Invariance under <span class="math" data-tex="\(F_1\)">\(F_1\)</span> makes the Borel function <span class="math" data-tex="\(x\mapsto g(x,0)\)">\(x\mapsto g(x,0)\)</span> invariant under <span class="math" data-tex="\(A\)">\(A\)</span>, so it is constant almost everywhere. Integration in <span class="math" data-tex="\(v\)">\(v\)</span> proves that the original invariant set is null or conull. The passage from invariant measurable classes to invariant Borel representatives is also supplied by the orbit-averaging argument (S36).</p>
+<p>Every orbit is the Borel null set
+<span class="math math-display" data-tex="\[
+ \bigcup_{n\in\mathbb Z}\{A^n x\}\times[0,1).
+ \tag{NU3}
+\]">\[
+ \bigcup_{n\in\mathbb Z}\{A^n x\}\times[0,1).
+ \tag{NU3}
+\]</span>
+Each singleton in the circle has measure zero, and the union is countable. Thus the flow is properly ergodic. It is free at every point: if (NU2) equals <span class="math" data-tex="\((x,v)\)">\((x,v)\)</span>, then <span class="math" data-tex="\(A^n x=x\)">\(A^n x=x\)</span> forces <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, and the vertical equality forces <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<h3 id="subdividing-a-roof-without-changing-the-flow">Subdividing a roof without changing the flow</h3>
+<p>For each integer <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, set
+<span class="math math-display" data-tex="\[
+ Z_q=\mathbb T\times\{0,\ldots,q-1\},\qquad
+ \nu_q=m\otimes\frac1q\sum_{j=0}^{q-1}\delta_j,
+ \qquad r_q=\frac1q,
+\]">\[
+ Z_q=\mathbb T\times\{0,\ldots,q-1\},\qquad
+ \nu_q=m\otimes\frac1q\sum_{j=0}^{q-1}\delta_j,
+ \qquad r_q=\frac1q,
+\]</span>
+and define
+<span class="math math-display" data-tex="\[
+ B_q(x,j)=
+ \begin{cases}
+ (x,j+1),&amp;0\leq j&lt;q-1,\\
+ (Ax,0),&amp;j=q-1.
+ \end{cases}
+ \tag{NU4}
+\]">\[
+ B_q(x,j)=
+ \begin{cases}
+ (x,j+1),&amp;0\leq j&lt;q-1,\\
+ (Ax,0),&amp;j=q-1.
+ \end{cases}
+ \tag{NU4}
+\]</span>
+Its inverse sends <span class="math" data-tex="\((x,j)\)">\((x,j)\)</span> to <span class="math" data-tex="\((x,j-1)\)">\((x,j-1)\)</span> for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, and <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span> to <span class="math" data-tex="\((A^{-1}x,q-1)\)">\((A^{-1}x,q-1)\)</span>. Hence it is an invertible Borel probability-preserving transformation. For every integer <span class="math" data-tex="\(k\)">\(k\)</span>, write the Euclidean division
+<span class="math math-display" data-tex="\[
+ j+k=qm+\ell,\qquad 0\leq\ell&lt;q.
+ \quad\text{Then}\quad
+ B_q^k(x,j)=(A^m x,\ell).
+ \tag{NU5}
+\]">\[
+ j+k=qm+\ell,\qquad 0\leq\ell&lt;q.
+ \quad\text{Then}\quad
+ B_q^k(x,j)=(A^m x,\ell).
+ \tag{NU5}
+\]</span>
+For positive and negative powers this follows by iterating (NU4) and its displayed inverse; crossing the last or first level changes the circle coordinate by <span class="math" data-tex="\(A\)">\(A\)</span> or <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span>, respectively.</p>
+<p>The transformation <span class="math" data-tex="\(B_q\)">\(B_q\)</span> is aperiodic: a fixed point of <span class="math" data-tex="\(B_q^k\)">\(B_q^k\)</span> would require <span class="math" data-tex="\(q\mid k\)">\(q\mid k\)</span> and <span class="math" data-tex="\(A^{k/q}x=x\)">\(A^{k/q}x=x\)</span>, hence <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. It is ergodic as well. Invariance of a measurable function under <span class="math" data-tex="\(B_q\)">\(B_q\)</span> identifies its <span class="math" data-tex="\(q\)">\(q\)</span> level functions almost everywhere and makes their common value <span class="math" data-tex="\(A\)">\(A\)</span>-invariant. The finite collection of exceptional sets causes no difficulty, and the preceding Fourier proof makes the common value constant. In particular this argument applies to indicators.</p>
+<p>Let <span class="math" data-tex="\(G^{(q)}\)">\(G^{(q)}\)</span> be the suspension over <span class="math" data-tex="\(B_q\)">\(B_q\)</span> with constant roof <span class="math" data-tex="\(1/q\)">\(1/q\)</span>. Normalize its finite product measure to a probability:
+<span class="math math-display" data-tex="\[
+ D_q=Z_q\times[0,1/q),\qquad
+ d\eta_q=q\,d\nu_q\,du.
+ \tag{NU6}
+\]">\[
+ D_q=Z_q\times[0,1/q),\qquad
+ d\eta_q=q\,d\nu_q\,du.
+ \tag{NU6}
+\]</span>
+The factor <span class="math" data-tex="\(q\)">\(q\)</span> is necessary because <span class="math" data-tex="\(\nu_q\,du\)">\(\nu_q\,du\)</span> has total mass <span class="math" data-tex="\(1/q\)">\(1/q\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \Xi_q((x,j),u)=(x,\,u+j/q),
+ \qquad
+ \Xi_q^{-1}(x,v)=((x,\lfloor qv\rfloor),\,v-\lfloor qv\rfloor/q).
+ \tag{NU7}
+\]">\[
+ \Xi_q((x,j),u)=(x,\,u+j/q),
+ \qquad
+ \Xi_q^{-1}(x,v)=((x,\lfloor qv\rfloor),\,v-\lfloor qv\rfloor/q).
+ \tag{NU7}
+\]</span>
+These are inverse Borel maps, including the subdivision boundaries. They preserve the specified probabilities: for every nonnegative Borel <span class="math" data-tex="\(H\)">\(H\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_{D_q}H(\Xi_q(z,u))\,d\eta_q
+ =\sum_{j=0}^{q-1}\int_{\mathbb T}\int_0^{1/q}
+       H(x,u+j/q)\,du\,dm(x)
+ =\int_X H\,d\mu.
+ \tag{NU8}
+\]">\[
+ \int_{D_q}H(\Xi_q(z,u))\,d\eta_q
+ =\sum_{j=0}^{q-1}\int_{\mathbb T}\int_0^{1/q}
+       H(x,u+j/q)\,du\,dm(x)
+ =\int_X H\,d\mu.
+ \tag{NU8}
+\]</span></p>
+<p>The conjugacy preserves every real time. To verify this without omitting negative times, put <span class="math" data-tex="\(k=\lfloor q(u+t)\rfloor\)">\(k=\lfloor q(u+t)\rfloor\)</span>, <span class="math" data-tex="\(u'=u+t-k/q\in[0,1/q)\)">\(u'=u+t-k/q\in[0,1/q)\)</span>, and divide <span class="math" data-tex="\(j+k=qm+\ell\)">\(j+k=qm+\ell\)</span> as in (NU5). The suspension rule gives
+<span class="math math-display" data-tex="\[
+ G_t^{(q)}((x,j),u)=((A^m x,\ell),u'),\qquad
+ u+j/q+t=m+\ell/q+u'.
+\]">\[
+ G_t^{(q)}((x,j),u)=((A^m x,\ell),u'),\qquad
+ u+j/q+t=m+\ell/q+u'.
+\]</span>
+Since <span class="math" data-tex="\(0\leq\ell/q+u'&lt;1\)">\(0\leq\ell/q+u'&lt;1\)</span>, the integer in (NU2) is precisely <span class="math" data-tex="\(m\)">\(m\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \Xi_q G_t^{(q)}=F_t\Xi_q
+ \qquad(t\in\mathbb R)
+ \tag{NU9}
+\]">\[
+ \Xi_q G_t^{(q)}=F_t\Xi_q
+ \qquad(t\in\mathbb R)
+ \tag{NU9}
+\]</span>
+holds at every point. In the common flow, the corresponding section is
+<span class="math" data-tex="\(\Sigma_q=\bigcup_{j=0}^{q-1}\mathbb T\times\{j/q\}\)">\(\Sigma_q=\bigcup_{j=0}^{q-1}\mathbb T\times\{j/q\}\)</span>.
+Every first positive return has time <span class="math" data-tex="\(1/q\)">\(1/q\)</span>, and its return map is exactly (NU4). The base measure <span class="math" data-tex="\(\nu_q\)">\(\nu_q\)</span> is specified by (NU6)–(NU8); it is not a restriction of the ambient measure to the null set <span class="math" data-tex="\(\Sigma_q\)">\(\Sigma_q\)</span>.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="A unit roof and its two half-roof return levels describe the same flow" src="assets/suspension-sections/nonunique-return-bases.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>For <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, the lower half is <span class="math" data-tex="\((x,0,u)\)">\((x,0,u)\)</span> and the upper half is <span class="math" data-tex="\((x,1,u)\)">\((x,1,u)\)</span>, both with <span class="math" data-tex="\(0\leq u&lt;1/2\)">\(0\leq u&lt;1/2\)</span>. The middle return changes only the level. The top return changes <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(Ax\)">\(Ax\)</span> and returns to level zero. The horizontal identification is (NU7); the two heights in the picture are the exact return heights, while the width is a schematic circle coordinate. The proof is (NU5)–(NU9).</p>
+<h3 id="the-return-transformations-are-not-conjugate">The return transformations are not conjugate</h3>
+<p>A finite-order measurable eigenvalue means a root of unity <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> for which a nonzero bounded measurable <span class="math" data-tex="\(h\)">\(h\)</span> satisfies <span class="math" data-tex="\(h\circ B_q=\zeta h\)">\(h\circ B_q=\zeta h\)</span> almost everywhere. Write <span class="math" data-tex="\(h_j(x)=h(x,j)\)">\(h_j(x)=h(x,j)\)</span>. The successive levels and the last return in (NU4) give
+<span class="math math-display" data-tex="\[
+ h_j=\zeta^j h_0,\qquad h_0\circ A=\zeta^q h_0.
+ \tag{NU10}
+\]">\[
+ h_j=\zeta^j h_0,\qquad h_0\circ A=\zeta^q h_0.
+ \tag{NU10}
+\]</span>
+Here <span class="math" data-tex="\(h_0\ne0\)">\(h_0\ne0\)</span>, since otherwise all the level functions vanish. The finite-order eigenvalue calculation following (NU1) forces <span class="math" data-tex="\(\zeta^q=1\)">\(\zeta^q=1\)</span>. Conversely, whenever <span class="math" data-tex="\(\zeta^q=1\)">\(\zeta^q=1\)</span>, the bounded function <span class="math" data-tex="\(h(x,j)=\zeta^j\)">\(h(x,j)=\zeta^j\)</span> satisfies the eigenvalue equation, including at the top return. Thus the set is exactly
+<span class="math math-display" data-tex="\[
+ E_{\mathrm{fin}}(B_q)=\{\zeta\in\mathbb C:\zeta^q=1\}.
+ \tag{NU11}
+\]">\[
+ E_{\mathrm{fin}}(B_q)=\{\zeta\in\mathbb C:\zeta^q=1\}.
+ \tag{NU11}
+\]</span>
+These sets have different cardinalities for different <span class="math" data-tex="\(q\)">\(q\)</span>. A measure-class-preserving conjugacy would preserve them: composition carries a bounded eigenfunction to a bounded eigenfunction with the same eigenvalue, and nonsingularity in both directions preserves its nonzero almost-everywhere class. Applying the inverse conjugacy gives equality of the two sets, a contradiction. This argument does not assume that such a conjugacy would preserve the particular probability measures.</p>
+<p>Consequently the <span class="math" data-tex="\(B_q\)">\(B_q\)</span> are pairwise nonconjugate in the nonsingular category, while (NU7)–(NU9) identify all their suspensions with the single properly ergodic flow <span class="math" data-tex="\(F\)">\(F\)</span>. In particular <span class="math" data-tex="\(B_1=A\)">\(B_1=A\)</span> has no eigenvalue <span class="math" data-tex="\(-1\)">\(-1\)</span>, whereas <span class="math" data-tex="\(h(x,j)=(-1)^j\)">\(h(x,j)=(-1)^j\)</span> is a <span class="math" data-tex="\(-1\)">\(-1\)</span> eigenfunction for <span class="math" data-tex="\(B_2\)">\(B_2\)</span>. The suspension theorem therefore gives no uniqueness of its return base. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <p><span id="OA-FLOW.SUSPENSION.EXERCISES"></span><a id="oa-flow.suspension.exercises"></a></p>
 <h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
 <p><strong>1. Check one return and the deck sign.</strong> For <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span>, verify the hitting cocycle at the first return and determine the integer change under <span class="math" data-tex="\(B\)">\(B\)</span>.</p>

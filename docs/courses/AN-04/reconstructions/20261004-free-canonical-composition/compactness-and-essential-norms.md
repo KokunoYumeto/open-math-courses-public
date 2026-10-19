@@ -79,7 +79,7 @@ general Hilbert duality theorem or positivity inequality is assumed.
 ![Finite-rank removal, high-frequency packets and the surviving symbol](figures/fio-compactness.svg)
 
 The diagram records T1–T6. The two scalar curves are actual ordinary
-symbols from Example T1; their different high-frequency limits distinguish
+symbols from Exercises T1–T2; their different high-frequency limits distinguish
 compactness from boundedness.
 
 ## T1. The Hilbert-space facts, with proofs

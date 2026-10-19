@@ -55,7 +55,8 @@ def render_unit(unit,files,aliases,links):
     if aliases[unit['id']]['source_sha256'].lower()!=sha(raw):
         raise ValueError('Heading aliases are not bound to this source')
     body=render_markdown_math(projected,local_links=links,
-        heading_anchors=[{'line':lines[r['line']],'ids':r['ids']} for r in rows])
+        heading_anchors=[{'line':lines[r['line']],'ids':r['ids']} for r in rows],
+        footnote_bindings=unit.get('footnote_bindings',[]))
     layout=files['reader-source/'+unit['layout']].decode('utf-8')
     if sha(layout.encode())!=unit['layout_sha256']:
         raise ValueError('Layout does not match its declared identity')

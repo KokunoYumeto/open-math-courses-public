@@ -2,7 +2,7 @@
 
 A complex cutoff carries a phase. The favorable imaginary part of the differential operator absorbs that phase, but pointwise absorption alone does not prove an operator inequality. We construct a square root on each frequency band, control its full operator square and both commutators, and then sum the bands. The resulting estimate uses exactly the measured forcing and incoming data of the real-cutoff theorem.
 
-The mathematical antecedent is Hörmander IV, Proposition 26.6.1′, printed page 120 of the admitted 2009 edition. The [real-cutoff proof](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) and [local phase analysis](../20261011-complex-cutoff-absorption/local-sign-geometry-and-complex-cutoff-phase.html) remain useful. The latter's operator inequality CA13 is the obligation addressed here. Our metric extension and the proof organization below are independent exposition. Original text, exercises and figure are CC0-1.0; earlier components retain their recorded terms. Human foundations remain external, so this export does not claim internal P514 closure.
+The mathematical antecedent is Hörmander IV, Proposition 26.6.1′, printed page 120 of the admitted 2009 edition. The [real-cutoff proof](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) and [local phase analysis](../20261011-complex-cutoff-absorption/local-sign-geometry-and-complex-cutoff-phase.html) remain useful. The joint operator inequality CA13 is proved here with the full operator form. Our metric extension and the proof organization below are independent exposition. Original text, exercises and figure are CC0-1.0; earlier components retain their recorded terms. Human foundations remain external, so this export does not claim internal P514 closure.
 
 ## 1. The statement and the operator form to estimate
 
@@ -306,7 +306,7 @@ The proof of SCE:A0, including the two-order outgoing-square error SCE:O0, never
 
 The left ordering of \(R_\nu\) makes the first two bounds exact contractions of the given data, as proved in SCE:R0. SCE:U0 proves convergence of \(R_\nu\) on the relevant Sobolev distribution and extraction of a weak \(L^2\) subsequence. Their limits agree, so \(e^{-\Lambda t}\chi Cu\in L^2\). Multiplication by the bounded inverse weight on the compact time support proves (CE2). This completes the unrestricted complex-cutoff version, including \(e=1/4\), with exactly the original weak input and measured data.
 
-The proof does not complete the later necessity-of-concavity theorem or the rest of Sections 26.7–26.11. It also does not internalize the external human foundations. Those full-course obligations remain active.
+For the invariant geometric direction, read [intrinsic directed propagation](../20261011-intrinsic-directed-propagation/intrinsic-orientation-and-entering-regularity.html). For exact solutions with a prescribed finite concave index, read the positive-packet construction. The linked human foundations are external readings.
 
 ## 6. Three solved checks and the actual scales
 
@@ -326,4 +326,4 @@ The proof does not complete the later necessity-of-concavity theorem or the rest
 
 ![Adaptive metric exponents and the precise complex-cutoff commutator bound at the quarter endpoint.](figures/adaptive-root-scales.svg)
 
-[Figure source](figures/build_figure.py), [finite checks](model-check.json), proof map, source credit, proof review and [reader checks](reader-check.json) accompany this lesson.
+[Figure source](figures/build_figure.py), [finite checks](model-check.json), proof map, source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany this lesson.
