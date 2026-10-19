@@ -26,3 +26,11 @@ Each result used by a lesson has its proof locally or in an exact supplied earli
 - [Contour identity for holomorphic approximation](prerequisites/U011-free-foundations/contour-homotopy-U095.html): exact AN-04 Section A2 identity, determinant proof and cutoff discussion. CC0.
 
 - [Smooth parameter slices from the normal condition](reader/AN01-U101-prerequisite.html): complete AN-03 Section18.6, identifying the actual strong smooth distribution family and its normal restrictions, with all preceding proofs supplied. CC0.
+
+- [Disk comparison and Poisson integrals](prerequisites/U011-free-foundations/AN04-disk-comparison-U129.html): AN-04 P1, harmonic comparison, circle means and the Poisson formula.
+
+- [A matrix estimate with a semipositive imaginary part](prerequisites/U011-free-foundations/AN04-positive-matrix-U130.html): complete selected AN-04 mathematical arguments and their earlier proof links.
+
+- [Contour calculus and the Gaussian branch](prerequisites/U011-free-foundations/AN04-contour-calculus-U130.html): complete selected AN-04 mathematical arguments and their earlier proof links.
+
+- [Gaussian reduction near a complex critical graph](prerequisites/U011-free-foundations/AN04-complex-contours-U130.html): complete selected AN-04 mathematical arguments and their earlier proof links.

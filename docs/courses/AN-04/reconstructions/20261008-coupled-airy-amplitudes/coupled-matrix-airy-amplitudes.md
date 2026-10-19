@@ -4,7 +4,7 @@ The cubic phase and boundary parity theorem now let us construct amplitudes for 
 
 The scalar source for the transport construction is Melrose–Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), Sections 4.1–4.4, especially Propositions 4.4.11 and 4.4.14. We use our already proved [boundary-normalized phase](../20261008-boundary-cubic-phase/boundary-normalized-cubic-phases.md), [ordered matrix parity theorem](../20261008-matrix-parity-transport/matrix-parity-and-folded-transport.md), and [zero-free Airy estimates](../20261008-airy-boundary-inverse/zero-free-airy-quotients-and-robin-matching.md). The displayed calculations specify our conventions independently. The proof map records exact prerequisites, including the explicitly external Lebl proofs. 
 
-Independent text, proofs, exercises and figure: **CC0-1.0**. No human source text or PDF is bundled. This lesson proves a local kernel construction and its traces. Sobolev mapping into the original weak energy domain, the natural-dual source transfer, incoming estimates and strict propagation remain to be proved.
+Independent text, proofs, exercises and figure: **CC0-1.0**. This lesson proves a local kernel construction and its traces. Mapping into the original weak energy domain, natural-dual source transfer, incoming estimates and strict propagation have additional analytic hypotheses.
 
 ## 1. Operator, phase and amplitude degrees
 

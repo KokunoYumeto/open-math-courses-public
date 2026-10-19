@@ -1,6 +1,6 @@
 # The unramified correspondence for GL_n: Drinfeld, Laumon, Frenkel–Gaitsgory–Vilonen
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under mathematical proof repair; full proof closure pending. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Draft. Public domain (CC0).*
 
 The passage from a local system on a curve to an automorphic sheaf uses modifications of bundles, a sheaf on torsion quotients, and a Whittaker construction. Vanishing removes unwanted lower-rank contributions. Descent then removes the auxiliary section used by the construction, and a separate compatibility argument supplies the Hecke eigenstructure.
 

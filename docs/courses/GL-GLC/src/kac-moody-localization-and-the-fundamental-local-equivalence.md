@@ -1,6 +1,6 @@
 # Kac-Moody localization and the fundamental local equivalence (GLC II)
 
-Draft. Self-checked by the writing AI.
+Draft.
 
 Fix a smooth projective connected curve \(X\) over an algebraically closed field \(k\) of characteristic zero, a connected reductive group \(G\), its Langlands dual \(\check G\), a Borel \(B\subset G\) with unipotent radical \(N\), and a theta characteristic \(\kappa_X^{\otimes2}\simeq\omega_X\). Write
 \[

@@ -1,8 +1,8 @@
 # Hecke functors and Hecke eigensheaves
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under mathematical proof repair; full proof closure pending. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Draft. Public domain (CC0).*
 
-This lesson remains under proof repair. Every cited theorem used as a mathematical input needs a complete proof here or an exact matching earlier programme proof. The historical self-check did not certify that full dependency closure.
+The general geometric Satake equivalence, fusion and Hecke descent statements used below are mathematical inputs; their proofs are not supplied in this lesson.
 
 A Hecke correspondence has an input bundle, an output bundle, and an isomorphism away from the point of modification. Its kernel carries the representation of the dual group. Composing two correspondences composes the kernels; geometric Satake identifies that composition with tensor product. The eigencondition must respect these identifications, rather than supply unrelated isomorphisms one representation at a time.
 

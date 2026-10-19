@@ -4,7 +4,7 @@
 
 A local system on a curve and a vector space at one point can belong to the same abelian category, although their nonzero ordinary cohomology occurs in different degrees. This lesson constructs that category by cutting a complex on a smooth open set and then correcting the cut on its boundary. Explicit curve and surface calculations show what the boundary correction detects. We subsequently construct descent and prove finite length.
 
-Our coefficients are a field \(\Lambda\). We retain both the classical complex-algebraic setting and the finite or rational-adic étale settings of [Constructible complexes on algebraic varieties](constructible-complexes-on-algebraic-varieties.md). In the étale setting the torsion characteristic is invertible on the varieties. The adic statements require the normalized operations and comparison maps listed in that lesson; the statements here are conditional on those operations and comparisons at the indicated scope. Dimension means complex dimension classically and algebraic dimension étale-locally. A shift has \(\mathcal H^q(K[m])=\mathcal H^{q+m}K\).
+Our coefficients are a field \(\Lambda\). We retain both the classical complex-algebraic setting and the finite or rational-adic étale settings of [Constructible complexes on algebraic varieties](constructible-complexes-on-algebraic-varieties.md). In the étale setting the torsion characteristic is invertible on the varieties. For rational-adic coefficients we use the constructible rational sheaf category of that lesson's BX.7 and the finite-extension coefficient convention of [Lesson 2, Appendix C](gluing-t-structures.md#appendix-c-recollement-for-constructible-coefficient-categories). That appendix proves its scheme recollement with the actual adjunction maps. Dimension means complex dimension classically and algebraic dimension étale-locally. A shift has \(\mathcal H^q(K[m])=\mathcal H^{q+m}K\).
 
 The mathematical source for the dimension conditions is the freely readable author-hosted edition of BBD, especially §§2.1–2.2 and 4.0. We use the adjunction, localization and heart arguments of [Gluing t-structures](gluing-t-structures.md). The coefficient and geometric hypotheses of those arguments apply throughout.
 
@@ -56,7 +56,7 @@ Here \(D_X\) is structural Verdier duality. This is a definition by support dime
 
 ### The local tests and the input they require
 
-Choose finitely many smooth pure-dimensional locally closed pieces on which the needed restrictions and exceptional restrictions have lisse cohomology. Classically the first lesson's Appendices I–K construct suitable algebraic Whitney refinements and their operation properties. Our étale base fields, a finite field or its algebraic closure, are perfect, so a reduced variety has a dense smooth open; bounded constructibility of the finitely many complexes and their images permits successive refinement of the lower-dimensional boundary. We use only the finite list of objects in the argument: no arbitrary smooth partition is asserted to be stable under all boundary operations. The needed smooth-open algebraic argument is included in the first lesson, M.1. The normalized adic operation and duality comparisons remain among the stated foundations.
+Choose finitely many smooth pure-dimensional locally closed pieces on which the needed restrictions and exceptional restrictions have lisse cohomology. Classically the first lesson's Appendices I–K construct suitable algebraic Whitney refinements and their operation properties. Our étale base fields, a finite field or its algebraic closure, are perfect, so a reduced variety has a dense smooth open; bounded constructibility of the finitely many complexes and their images permits successive refinement of the lower-dimensional boundary. We use only the finite list of objects in the argument: no arbitrary smooth partition is asserted to be stable under all boundary operations. The needed smooth-open algebraic argument is included in the first lesson, M.1. The complete and rational duality exchanges are proved in Lesson 1, BV.6–BV.7 and BX.7.
 
 Write \(a:S\hookrightarrow X\) and \(s=\dim S\). Then
 
@@ -161,7 +161,7 @@ For finite étale coefficients, make the assertion locally at a boundary point. 
 
 For an adic lattice and its finite quotients, the same degrees occur at every finite level. In each fixed finite cohomology group, the images from later levels form a descending chain and eventually stabilize. For a countable inverse system with this property, the map
 \(1-\mathrm{shift}:\prod A_n\to\prod A_n\)
-is onto: first solve recursively in the stable images, whose transition maps are onto; in the quotient system each fixed coordinate eventually receives only zero, so the finite-coordinate sums solve the same equation there. Lifting a quotient solution leaves an error in the stable images, removed by the first solution. Its kernel is \(\varprojlim A_n\), so the product-cone model of derived limit adds no cohomology group. Thus the bound passes to the lattice and then, by exact localization, to rational coefficients, **provided** the actual normalized stalk/image and derived-limit comparison maps have the properties required in the first lesson. Those adic comparisons are still an identified proof obligation. No tame-monodromy description is assumed for a wild étale local system.
+is onto: first solve recursively in the stable images, whose transition maps are onto; in the quotient system each fixed coordinate eventually receives only zero, so the finite-coordinate sums solve the same equation there. Lifting a quotient solution leaves an error in the stable images, removed by the first solution. Its kernel is \(\varprojlim A_n\), so the product-cone model of derived limit adds no cohomology group. [Appendix A.1](#a-1-the-rational-curve-bound-on-the-actual-complexes) supplies the complete-object argument and the actual restriction and rationalization maps. It proves the bound for every constructible rational sheaf, using a torsion-free constructible integral model; no interchange of a geometric stalk and an infinite limit is assumed. No tame-monodromy description is assumed for a wild étale local system.
 
 **Proposition 3.1 (curve criterion).** At these coefficient settings, with their stated operation prerequisites, a bounded constructible \(K\) is perverse precisely when
 
@@ -205,7 +205,7 @@ For the two coordinate planes in \(\mathbf C^4\), namely
 \(\{z_3=z_4=0\}\cup\{z_1=z_2=0\}\),
 the link is \(S^3\sqcup S^3\). Reduced cohomology is \(\Lambda\) in degree zero and \(\Lambda^2\) in degree three. Equation (3.3) gives costalk degrees \(-1\) and \(2\), respectively, so the shifted constant complex is not perverse.
 
-For a normal analytic surface germ, connectedness has a short proof using the analytic definition of normality: locally bounded holomorphic functions on the regular locus extend holomorphically over the germ. If its conical puncture were disconnected, assign values zero and one to a nontrivial partition of its components. This gives a bounded holomorphic function on the puncture. Its normal extension is continuous at the vertex, whereas both values approach the vertex along radial cone lines. This is impossible. Hence the link is connected and the shifted constant complex is perverse. This uses the definition and equivalent local-ring formulation in Demailly, Chapter II, §7. The equivalence with the algebraic normality hypothesis for an algebraic surface is a required analytic-comparison foundation; it is not proved merely by citing that definition, and is retained as an open prerequisite below.
+For a normal analytic surface germ, connectedness has a short proof using bounded holomorphic extension: locally bounded holomorphic functions on the regular locus extend holomorphically over the germ. If its conical puncture were disconnected, assign values zero and one to a nontrivial partition of its components. This gives a bounded holomorphic function on the puncture. Its normal extension is continuous at the vertex, whereas both values approach the vertex along radial cone lines. This is impossible. Hence the link is connected and the shifted constant complex is perverse. [Appendix B](#appendix-b-normal-complex-surfaces-and-holomorphic-extension) proves both the passage from algebraic normality to a normal analytic local ring and the bounded extension theorem. Thus this conclusion applies to every normal complex algebraic surface.
 
 For a normal isolated surface singularity, rational smoothness is the stronger requirement that its link have the rational cohomology of \(S^3\). The link is a connected closed oriented three-manifold: away from the vertex the surface is a complex manifold, and a transverse radial level inherits the boundary orientation. The compact oriented duality constructed in the first lesson identifies its degree-one and degree-two cohomology dually, while degrees zero and three are \(\mathbf Q\). Thus rational smoothness here is equivalent to \(H^1(M;\mathbf Q)=0\). For a cone over a smooth plane cubic, the first lesson's Thom–Gysin and plane-curve calculations give Betti numbers \(1,2,2,1\). Its constant complex shifted by two is perverse but the vertex is not rationally smooth. We use rational coefficients for this particular Betti-number assertion.
 
@@ -268,7 +268,7 @@ In the chosen trivialization of \(L\), the image of each fibre of \(M_U\) is a s
 
 These extensions agree on overlaps. Around any point of an overlap choose a connected ball \(D\) inside it. The two ambient trivializations differ on \(D\) by a constant invertible matrix. Since \(U\) is dense, \(D\cap U\) is nonempty; there both subspaces describe the given \(M_U\). Their constant descriptions consequently agree on all of \(D\). They therefore glue to a sub-local system \(L'\subset L\), with \(L'|_U=M_U\). The quotient \(L/L'\) is locally the constant quotient \(V/W_B\), so it too is a local system. The same argument proves uniqueness: any extension agrees on the dense open part of every sufficiently small trivializing ball, hence on the whole ball. This constructs the actual subsystem without importing a classification of local systems on an arbitrary variety.
 
-**Étale extension.** In this setting we use the finite-cover correspondence and regular-local-ring normality among the stated algebraic foundations. Every connected finite étale cover of smooth connected \(X\) is regular, hence normal and integral; distinct irreducible components of a normal noetherian scheme are disjoint. Its nonempty dense open preimage of \(U\) remains integral and connected. This implies surjectivity of \(\pi_1(U)\to\pi_1(X)\), as follows. The image \(H\) is closed, since a continuous image of a compact profinite group is compact in a Hausdorff group. If \(H\) were proper, choose \(g\notin H\) and an open normal subgroup \(N\) with \(gN\cap H=\varnothing\). Then \(HN\) is a proper open subgroup. The finite connected cover corresponding to the transitive coset set \(\pi_1(X)/HN\) would become disconnected over \(U\): \(H\) fixes the identity coset and cannot act transitively on this set of more than one element. This contradicts the connectedness just proved. A fibre subspace invariant under \(\pi_1(U)\) is therefore invariant under \(\pi_1(X)\). The lisse representation correspondence supplies \(L'\subset L\) and its lisse quotient. For adic coefficients the correspondence and normalized passage remain the separately identified prerequisites; the finite-cover argument does not prove them.
+**Étale extension.** The finite-cover correspondence is proved in Lesson 1, N.1–N.3. Every connected finite étale cover of smooth connected \(X\) is smooth with domain local rings, hence integral: its finitely many irreducible components are disjoint and therefore open and closed. Appendix A.2 gives the exact regular-local proofs used in this implication. Its nonempty dense open preimage of \(U\) remains integral and connected. This implies surjectivity of \(\pi_1(U)\to\pi_1(X)\), as follows. The image \(H\) is closed, since a continuous image of a compact profinite group is compact in a Hausdorff group. If \(H\) were proper, choose \(g\notin H\) and an open normal subgroup \(N\) with \(gN\cap H=\varnothing\). Then \(HN\) is a proper open subgroup. The finite connected cover corresponding to the transitive coset set \(\pi_1(X)/HN\) would become disconnected over \(U\): \(H\) fixes the identity coset and cannot act transitively on this set of more than one element. This contradicts the connectedness just proved. A fibre subspace invariant under \(\pi_1(U)\) is therefore invariant under \(\pi_1(X)\). The lisse representation correspondence supplies \(L'\subset L\) and its lisse quotient. For integral lisse systems, the actual correspondence on objects and maps is proved in Lesson 1, N.4 and BP.5. [Appendix A.2](#a-2-extending-a-rational-subsystem-without-a-global-lattice) extends the argument to the full lisse rational sheaf category by local lattice intersections and uniqueness on overlaps; it does not assume a global lattice.
 
 Now map \({}^pH^0j_!(L'|_U[s])\) into \(Q\). Its image has no boundary quotient, by the left heart adjunction, and no boundary subobject, since it embeds in \(L[s]\). The uniqueness of intermediate extension identifies that image with \(L'[s]\), which satisfies the same two strict tests. The quotient \(Q/L'[s]\) embeds in \((L/L')[s]\) and is supported on \(F\); the strict test makes it zero. This proves the subobject statement. Taking its quotient proves the quotient statement. \(\square\)
 
@@ -367,17 +367,174 @@ m_{S_W}&=\dim W-\operatorname{rank}u-\operatorname{rank}v.
 
 The actual splitting proves these integers nonnegative; their intrinsic expressions also prove uniqueness of the multiplicities. The simple sheaves are \(S_V=\Lambda_{\mathbf P^1}[1]\) and \(S_W=i_*\Lambda\). Every simple diagram has total dimension one, and exact sequences are componentwise, so every diagram has length \(\dim V+\dim W\). This classification is classical: the entire étale category of the affine line in positive characteristic also contains wild nonconstant local systems, and is not the constant-open category (6.1).
 
+## Appendix A. Coefficients in the curve and subsystem arguments
+
+### A.1. The rational curve bound on the actual complexes
+
+Let \(O\) be a complete DVR with finite residue field \(\kappa\), uniformizer \(\pi\), and fraction field \(E\). Its residue characteristic is invertible in the ground field. We use the complete constructible category \(\mathcal C_X\) of Lesson 1 and its completed-ring version. Their equivalence in BW.3 preserves the underlying complexes, reductions and standard cohomology. Rationalization means the actual constructible \(E_X=\widehat O_X[1/\pi]\)-sheaf category of BX.7.
+
+**Proposition A.1.** Let \(X\) be a separated reduced pure curve of finite type over the ground field, let \(F\) be a finite closed subset, and write \(j:U=X\setminus F\hookrightarrow X\), \(i:F\hookrightarrow X\). For every constructible rational sheaf \(L\) on \(U\), both \(Rj_*L\) and \(i^*Rj_*L\) have cohomology only in degrees \(0,1\). In particular the boundary of \(L[1]\) has degrees \(-1,0\). The assertion allows wild ramification and does not require a global lisse integral lattice.
+
+**Proof.** By [Lesson 1, BX.6](constructible-complexes-on-algebraic-varieties.md#bx-6-constructible-integral-models), choose a constructible integral heart object \(M\) with \(M[1/\pi]\simeq L\). [BP.1–BP.4](constructible-complexes-on-algebraic-varieties.md#bp-1-one-stratification-and-a-uniform-torsion-exponent) supplies a single exponent \(c\) killing every torsion kernel \(M[\pi^n]\). Consequently the entire torsion subsheaf is
+
+\[
+T=\bigcup_{n\geq1}M[\pi^n]=M[\pi^c].
+\tag{A.1}
+\]
+
+The equality follows because an element killed by any power is, by that uniform bound, killed by \(\pi^c\). Kernels and cokernels belong to the complete constructible heart by [BQ.4](constructible-complexes-on-algebraic-varieties.md#bq-4-truncations-the-heart-and-its-kernels). Hence \(N=M/T\) belongs to that heart. Multiplication by \(\pi\) on \(N\) is injective: locally lift an element of its kernel to \(m\in M\); then \(\pi m\in T\), so \(\pi^{c+1}m=0\), whence \(m\in T\). Exact localization kills \(T\), giving \(N[1/\pi]\simeq L\). Thus
+
+\[
+N\otimes_O^L O_n=N/\pi^nN,
+\qquad O_n=O/\pi^n,
+\tag{A.2}
+\]
+
+in degree zero, with the ordinary quotient transitions. Each quotient is a classical constructible finite-coefficient sheaf by BP.4.
+
+We may compute near each point of \(F\). The principal-puncture construction in §3 makes \(j\) affine there. The finite affine-support bound gives \(Rj_*(N/\pi^nN)\) degrees \(0,1\) for every \(n\); its lower bound follows from the right derived functor of a left exact functor. On \(U\) the same assertion is immediate. By [BK.5](constructible-complexes-on-algebraic-varieties.md#bk-5-direct-image-preserves-this-completion), \(B=Rj_*N\) is complete and its actual reduction maps identify
+
+\[
+B\otimes_O^L O_n=Rj_*(N/\pi^nN).
+\tag{A.3}
+\]
+
+The finite direct-image theorem gives constructibility of these reductions. In particular \(B\in\mathcal C_X\). [BM.6](constructible-complexes-on-algebraic-varieties.md#bm-6-constructibility-and-bounds-from-the-first-reduction) proves that the first-reduction interval \([0,1]\) is also the interval of \(B\) itself. Concretely, the coefficient triangle \(B_1\to B_{n+1}\to B_n\) makes the transitions on \(H^1(B_n)\) surjective, since \(H^2(B_1)=0\). The exact-product limit sequence and repleteness then eliminate the only possible extra group, in degree two. Completeness identifies that limit with \(B\). This is a statement about the complex on the pro-étale site; it does not interchange a geometric stalk with an infinite limit.
+
+The ordinary/complete closed restriction comparison in [BX.2](constructible-complexes-on-algebraic-varieties.md#bx-2-the-ordinary-localization-sequence-on-the-pro-étale-site) and its standard t-exactness in [BQ.5](constructible-complexes-on-algebraic-varieties.md#bq-5-exactness-of-the-completed-inverse-image-and-open-extension) give the same interval for \(i^*B\). Finally [BX.7](constructible-complexes-on-algebraic-varieties.md#bx-7-equivalence-and-the-geometric-operations) identifies
+
+\[
+B[1/\pi]\simeq Rj_*L,
+\qquad (i^*B)[1/\pi]\simeq i^*Rj_*L
+\tag{A.4}
+\]
+
+by their actual scalar-extension and restriction maps. Localization is exact, so the bounds persist. Shifting by one gives \([-1,0]\). For the course's finite-extension-model \(\overline{\mathbf Q}_\ell\)-coefficients, the finite scalar comparisons and filtered-diagram argument of [Lesson 2, Appendix C](gluing-t-structures.md#appendix-c-recollement-for-constructible-coefficient-categories) give the same result. \(\square\)
+
+This proves the coefficient passage used in Proposition 3.1 and Exercise 3. The sheaf \(N\) need not be lisse; the finite affine bound applies to every constructible quotient in (A.2). Thus the integral-model construction does not require changing \(U\) or adding boundary points.
+
+### A.2. Extending a rational subsystem without a global lattice
+
+**Proposition A.2.** Let \(X\) be smooth and connected, let \(U\subset X\) be a dense open, and let \(L\) be a lisse rational \(E_X\)-sheaf. Every lisse subsheaf \(M_U\subset L|_U\) with lisse quotient extends uniquely to a lisse subsheaf \(M\subset L\) with lisse quotient.
+
+**Proof.** First record the finite and integral assertions precisely. The finite-cover and finite-module correspondences, including maps and pullback, are proved in [Lesson 1, N.1–N.3](constructible-complexes-on-algebraic-varieties.md#n-1-descend-a-finite-algebra-before-naming-its-monodromy). Every connected finite étale cover \(Y\) of \(X\) is smooth. Its local rings are regular by [Smooth algebras over a field, Theorem 2.1](course:AG-CA/smooth-algebras-over-a-field-and-the-jacobian-criterion#2-the-criterion-and-its-open-locus), and are domains by [Regular local rings, Theorem 1.1](course:AG-CA/regular-local-rings#1-coordinates-graded-rings-and-regular-quotients). Two distinct irreducible components cannot meet: a local ring at an intersection would have at least two minimal primes. There are finitely many components, so each is open and closed. Connectedness therefore makes \(Y\) integral. Its inverse image of \(U\) is nonempty, open and integral, hence connected. The finite-coset argument in §5 proves that \(\pi_1(U)\to\pi_1(X)\) is surjective.
+
+For a strict lisse integral lattice \(P\) on \(X\), [N.4](constructible-complexes-on-algebraic-varieties.md#n-4-recover-the-integral-module-from-every-finite-level) identifies it with a finite free \(O\)-module carrying continuous \(\pi_1(X)\)-action. A strict lisse sublattice on \(U\), whose quotient is also a lattice, gives a saturated submodule of that module. Surjectivity makes it invariant under \(\pi_1(X)\). The same correspondence extends it, with its inclusion and finite free quotient, uniquely to \(X\). This proves the integral assertion on the actual sheaves by [BP.5](constructible-complexes-on-algebraic-varieties.md#bp-5-lisse-objects-torsion-and-the-next-categorical-distinction).
+
+Here is the local linear algebra needed to use it for rational sheaves. Suppose \(P\) is a lisse integral lattice and \(Q\subset P[1/\pi]\) is a lisse rational subsheaf with lisse quotient. Then
+
+\[
+Q^\circ=Q\cap P
+\tag{A.5}
+\]
+
+is a lisse integral lattice in \(Q\), and \(P/Q^\circ\) is lisse integral. This may be checked on a common affine pro-étale trivialization. The exact sequence of rational locally free sheaves splits locally, by lifting a basis of its locally free quotient. Its inclusion is thus a matrix of constant rank \(r\). As in BX.6, its entries are continuous \(E\)-valued functions on the profinite component space. Near each component, choose a nonzero \(r\)-row minor of largest absolute value. Nonvanishing and the finitely many comparisons of valuations hold on a clopen neighborhood. Make the chosen rows the identity by changing the basis of \(Q\). The other rows form a matrix \(A\) with entries in \(O\): each is a signed ratio of another minor to the chosen one. Accordingly the subspace is the graph of \(A\), and its intersection with \(O^n\) is the graph on \(O^r\). Subtracting \(A\) times the first coordinates identifies the quotient with \(O^{n-r}\). These are continuous integral matrices. This proves both lisse assertions, including the ranks zero and \(n\). BP.5 identifies the resulting sheaves with strict lisse systems.
+
+By BX.6, \(L\) has a lisse integral lattice on an étale cover of \(X\). Refine into connected smooth charts \(Y\to X\), and denote such a lattice by \(P_Y\). On the dense open \(Y_U\), formula (A.5) makes \(M_U|_{Y_U}\cap P_Y\) a strict lisse sublattice with lisse integral quotient. The preceding integral argument extends it over \(Y\). Rationalizing gives a lisse rational subsystem \(M_Y\subset L|_Y\), with lisse quotient, restricting to the prescribed subsystem on \(Y_U\).
+
+These subsystems agree on overlaps. Étale locally on an overlap, choose an integral lattice in the common ambient \(L\). Intersect each of the two proposed subsystems with this lattice using (A.5). Their restrictions to the dense open are the same integral subsheaf. The uniqueness of the integral extension on each connected smooth chart makes them equal everywhere on that chart. Rationalization gives equality of the proposed subsystems. They therefore glue as actual subsheaves of \(L\). Lisseness of the subsystem and quotient is local, so it holds after gluing. The identical comparison proves uniqueness of any extension. This argument establishes the assertion for the full lisse rational sheaf category; it has not assumed a global lattice for \(L\) or \(M_U\). \(\square\)
+
+For finite-extension-model \(\overline{\mathbf Q}_\ell\)-coefficients, the given finite diagram descends to one finite coefficient extension. Kernel and cokernel comparisons descend after a further finite extension, by the finite-dimensional coefficient argument in Lesson 2, Appendix C. The construction and uniqueness above therefore give the same subsystem extension. Applied to the subsystem in Lemma 5.1, Proposition A.2 supplies its rational étale extension; the strict-boundary argument then proves the asserted subobject and quotient classification and the two chain conditions of Theorem 5.2.
+
+## Appendix B. Normal complex surfaces and holomorphic extension
+
+### B.1. From the algebraic local ring to the analytic local ring
+
+**Proposition B.1.** Let \(X\) be a normal complex algebraic variety of pure dimension two, and let \(x\) be a closed point. The local ring \(\mathcal O_{X^{\mathrm{an}},x}\) is a normal domain. After shrinking an algebraic neighbourhood of \(x\), its complement of \(x\) is smooth.
+
+**Proof.** Set \(A=\mathcal O_{X,x}\), with maximal ideal \(\mathfrak m\). Normality makes \(A\) a domain. Its dimension is two, since \(x\) is closed on a pure surface. By [the DVR characterization and the normal-domain depth argument, Theorem 1.2 and Proposition 3.4](course:AG-CA/discrete-valuation-rings-normal-rings-and-serres-criterion#3-normal-domains-and-codimension-one-detection), the localizations at height-one primes are regular and there are \(a,b\in\mathfrak m\) forming an \(A\)-regular sequence. The height-zero localization is its fraction field and is regular as well. The [separable-residue-field criterion, Theorem 3.2](course:AG-CA/smooth-algebras-over-a-field-and-the-jacobian-criterion#3-cotangent-spaces-and-separable-residue-fields), over the perfect field \(\mathbf C\), identifies the regular and smooth loci. The rank description in Corollary 2.2 makes the nonsmooth locus closed. All its points have codimension two, so it is a zero-dimensional closed subset of a variety of finite type and has finitely many points. Remove the points other than \(x\). Thus the punctured neighbourhood is smooth; isolated singularity is a consequence here, not an extra hypothesis.
+
+Choose an affine embedding about \(x\), translated so that \(x\) is the origin, and write
+
+\[
+A=\bigl(\mathbf C[z_1,\ldots,z_n]/I\bigr)_{(z)},
+\qquad H=\mathbf C\{z_1,\ldots,z_n\},
+\qquad B=H/IH.
+\tag{B.1}
+\]
+
+The [analytic comparison theorem, Theorem 4.1](course:AG-QC/complex-analytic-spaces-and-analytification#4-the-comparison-at-a-point), proves that \(B=\mathcal O_{X^{\mathrm{an}},x}\) is Noetherian, \(A\to B\) is faithfully flat, \(\mathfrak mB=\mathfrak n\) is its maximal ideal, and \(\dim B=\dim A=2\). Tensor the injections given successively by multiplication by \(a\) on \(A\) and by \(b\) on \(A/aA\). Flatness gives the corresponding injections on \(B\) and \(B/aB\). The elements belong to \(\mathfrak n\), so their quotient is proper. Consequently \(\operatorname{depth}B\geq2\).
+
+We also need regularity at the nonmaximal primes of \(B\), including primes which do not represent closed analytic points. The proof of [the embedded Jacobian criterion, Lemma 1.1](course:AG-CA/smooth-algebras-over-a-field-and-the-jacobian-criterion#1-the-dimension-that-derivatives-measure), gives finitely many principal sets \(D(s_\alpha)\) covering \(\operatorname{Spec}A\setminus\{\mathfrak m\}\), such that on each set the embedded ideal is generated by \(c=n-2\) of its polynomial equations and a \(c\)-row Jacobian minor is invertible. The denominator in that proof can include the selected minor. We may further multiply it by an element of \(\mathfrak m\) outside the prime under consideration, so every \(s_\alpha\) belongs to \(\mathfrak m\). The finite subcover exists because a Noetherian space has quasi-compact open subsets. It follows that
+
+\[
+\sqrt{(s_\alpha)_\alpha}=\mathfrak m,
+\qquad \mathfrak m^e\subset(s_\alpha)_\alpha
+\quad\text{for some }e\geq1,
+\qquad \mathfrak n^e\subset(s_\alpha)_\alpha B.
+\tag{B.2}
+\]
+
+The middle inclusion follows by taking a power of each of finitely many generators of \(\mathfrak m\) and then expanding a sufficiently high power of that ideal. Hence every prime \(\mathfrak q\subsetneq\mathfrak n\) misses some \(s_\alpha\). Let \(Q\) be its inverse image in \(H\). The ring \(H\) is regular local by [Proposition 1.1 on holomorphic germs](course:complex-analytic-spaces-and-coherent-sheaves/the-local-ring-of-holomorphic-germs#1-the-ring-of-germs); [regularity under localization, Theorem 3.2](course:AG-CA/regular-local-rings#3-regularity-at-more-general-points), makes \(H_Q\) regular. At this localization \(IH_Q=(f_1,\ldots,f_c)\), where the chosen derivative minor is a unit.
+
+The classes of these \(f_i\) in \(QH_Q/(QH_Q)^2\) are linearly independent over \(\kappa(Q)\). Indeed, differentiate a relation \(\sum_i u_if_i\in(QH_Q)^2\) with respect to each selected coordinate. Derivations of convergent power series extend to the localization by the quotient rule. Modulo \(QH_Q\), differentiation gives \(\sum_i\bar u_i\partial f_i/\partial z_j=0\): derivatives of products of two elements of \(QH_Q\) lie in \(QH_Q\), and the terms \(f_i\partial u_i/\partial z_j\) vanish there. The invertible minor forces every \(\bar u_i\) to be zero. By [the regular parameter and quotient theorem, Theorem 1.1 and Corollary 1.2](course:AG-CA/regular-local-rings#1-coordinates-graded-rings-and-regular-quotients), these equations extend to a regular system of parameters, and
+
+\[
+B_{\mathfrak q}=H_Q/(f_1,\ldots,f_c)H_Q
+\tag{B.3}
+\]
+
+is regular. This includes \(c=0\), with an empty parameter list and minor equal to one.
+
+Every proper localization of \(B\) is therefore regular and Cohen–Macaulay, whereas \(B\) itself has depth and dimension two. Thus \(B\) satisfies \(S_2\). Every prime of height at most one is nonmaximal, so it also satisfies \(R_1\). [Serre's normality criterion, Theorem 4.4](course:AG-CA/discrete-valuation-rings-normal-rings-and-serres-criterion#4-serre-conditions-and-the-normality-criterion), now gives normality, including reducedness. Since \(B\) is local, it is a normal domain. \(\square\)
+
+### B.2. Bounded holomorphic functions and the link
+
+**Proposition B.2.** Let \((Y,x)\) be a complex analytic surface germ whose local ring is a normal domain. A holomorphic function on its regular locus which is bounded near \(x\) extends uniquely to a holomorphic germ at \(x\).
+
+**Proof.** We use the [local parametrization theorem, Theorem 4.1, and its finite-extension construction in §3](course:complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz#4-the-local-parametrization-theorem). The analytic Nullstellensatz in §5 identifies the prime defining ideal with the functions vanishing on the germ. It gives an irreducible representative and an injection
+
+\[
+D=\mathbf C\{w_1,w_2\}\ \longrightarrow\ B=\mathcal O_{Y,x}
+\tag{B.4}
+\]
+
+over which \(B\) is finite. The corresponding projection to a small polydisc is proper. There is a primitive linear coordinate \(u\in B\) for the fraction-field extension, of degree \(r\), with nonzero discriminant \(\delta\in D\). Over the complement of \(S=\{\delta=0\}\) the projection has \(r\) holomorphic sheets in the regular locus; their union is dense in the representative. Write \(u_i\) and \(h_i\) for the values of \(u\) and the given function \(h\) on these sheets. Shrinking the representative makes all these values bounded.
+
+We will extend bounded holomorphic functions across \(S\) in the smooth base. The precise several-variable argument is [the Riemann extension theorem, Theorem 4.2](course:complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables#4-the-riemann-extension-theorem): choose a coordinate circle on which the defining function of \(S\) is nonzero, extend on each one-variable fibre, and use its Cauchy integral to obtain a jointly holomorphic extension. Its one-variable removable-singularity step follows directly as follows. For bounded holomorphic \(f\) on a punctured disc about zero, put \(g(z)=z^2f(z)\) for \(z\neq0\) and \(g(0)=0\). Then \(g\) is continuous and \(g'(0)=\lim_{z\to0}zf(z)=0\), so it is holomorphic on the disc. Its Taylor expansion has zero constant and linear coefficients, hence \(g=z^2F\) for a holomorphic \(F\), and \(F=f\) off zero. The Taylor and Cauchy formulas used here are proved in [Holomorphic functions of several variables, Theorems 1.2–2.1](course:complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables#1-polydiscs-and-the-definition-of-holomorphy), with their exact scalar prerequisites.
+
+First consider the elementary symmetric functions of the \(h_i\). Permuting sheets leaves them fixed, so they define single-valued holomorphic functions off \(S\). They are bounded and therefore extend to elements \(d_1,\ldots,d_r\in D\). Thus the sheet values satisfy
+
+\[
+P(T)=\prod_{i=1}^r(T-h_i)
+     =T^r+d_1T^{r-1}+\cdots+d_r\in D[T].
+\tag{B.5}
+\]
+
+To use normality we must also realize \(h\) as a fraction of germs in \(B\). On the distinct sheets solve the Vandermonde system
+
+\[
+h_i=\sum_{j=0}^{r-1}c_ju_i^j,
+\qquad V=(u_i^j)_{1\leq i\leq r,\ 0\leq j<r},
+\qquad (\det V)^2=\delta.
+\tag{B.6}
+\]
+
+With this choice of discriminant sign, Cramer's rule gives \(\delta c_j=(\det V)(\det V_j)\), where \(V_j\) replaces column \(j\) by the \(h_i\). This product is unchanged by simultaneous permutation of the rows. It is a polynomial in the bounded \(u_i,h_i\), hence is bounded and holomorphic off \(S\). The same base extension theorem gives \(\alpha_j=\delta c_j\in D\). Consequently
+
+\[
+v=\frac{\sum_{j=0}^{r-1}\alpha_j u^j}{\delta}
+\in\operatorname{Frac}(B)
+\tag{B.7}
+\]
+
+agrees with \(h\) on all sheets over the complement of \(S\). It satisfies \(P(v)=0\) in \(\operatorname{Frac}(B)\): after clearing the denominator, the resulting element of \(B\) vanishes on the dense sheet locus, hence on the representative by continuity, and is zero by the analytic Nullstellensatz and the reducedness of \(B\). Equation (B.5) is monic with coefficients in \(D\subset B\), so \(v\) is integral over \(B\). Normality implies \(v\in B\). A holomorphic representative of \(v\) agrees with \(h\) throughout the regular locus by density and continuity and is the desired extension. The same argument proves uniqueness. For \(r=1\), the discriminant and the one-by-one Vandermonde determinant are one, so the argument includes that case. \(\square\)
+
+**Corollary B.3.** If \(X\) is a normal complex algebraic surface, then the link of each singular point is connected. In the classical coefficient setting of §3, \(\Lambda_X[2]\) is perverse.
+
+**Proof.** Proposition B.1 makes the singular point isolated on a sufficiently small neighbourhood and gives a normal analytic local ring. The conical-neighbourhood construction of Lesson 1, I.6, identifies its puncture with \(M\times(0,\varepsilon)\), where \(M\) is the compact link. If \(M\) were disconnected, a separation into two nonempty open-and-closed subsets would define a locally constant holomorphic function on the smooth puncture, equal to zero on one part and one on the other. It is bounded, so Proposition B.2 extends it holomorphically, and therefore continuously, to the vertex. Radial paths in both parts approach the vertex with different constant values, a contradiction. Thus \(\widetilde H^0(M;\Lambda)=0\). Formula (3.3) gives the negative costalk vanishing; the smooth-stratum and closed-stalk tests were established in §3. The same tests on all strata prove the assertion. No vanishing of \(H^1(M;\Lambda)\) is required. \(\square\)
+
 ## Geometric and coefficient hypotheses
 
-The classical and étale constructions use different geometric and coefficient foundations. Lesson 1 contains classical resolutions, localization, normal-cone geometry, constructible duality and operations in Appendices A–K, and branch geometry in Appendix L; its finite-coefficient image and duality construction is in Appendix M. Lesson 2 supplies the categorical heart, gluing, strict-boundary and attaching-complex proofs. Not all of the results on which those proofs depend are proved in these lessons.
+The classical and étale constructions use different geometric and coefficient foundations. Lesson 1 contains classical resolutions, localization, normal-cone geometry, constructible duality and operations in Appendices A–K, and branch geometry in Appendix L; its finite-coefficient image and duality construction is in Appendix M. Lesson 2 supplies the categorical heart, gluing, strict-boundary and attaching-complex proofs. The scheme coefficient recollements are proved in Lesson 2, Appendix C. Appendix B supplies the algebraic-to-analytic normality comparison and bounded holomorphic extension for the normal-surface example.
 
-The finite étale curve bound uses the exact earlier affine-support theorem named in §3, including its strict-local, continuity, algebraic-dimension and curve-cohomology prerequisites. The finite-coefficient operation and exceptional-adjoint foundations used by Lesson 1 are not all proved in its Appendix M. The normalized adic operations, boundedness, biduality and stalk/derived-limit comparisons are required inputs at the stated coefficient scope. The étale local-system argument also requires the finite-cover correspondence and the algebraic normality facts used explicitly in Lemma 5.1.
+The finite étale curve bound uses the earlier affine-support theorem named in §3, with its strict-local, continuity, algebraic-dimension and curve-cohomology proofs. Appendix A.1 derives its rational form on the actual completed complexes, using the finite coefficient comparisons of Lesson 1, BK.5, the bound of BM.6, the heart of BP–BQ, and the rational operations of BX.7. Appendix A.2 supplies the étale subsystem extension needed for Lemma 5.1, including rational sheaves which have lattices only locally. The finite-cover correspondence is the constructed equivalence of Lesson 1, N.1–N.4.
 
-The normal-surface argument is written for a normal analytic germ via bounded holomorphic extension. The equivalence of that formulation with algebraic normality for the algebraic examples requires an analytic comparison. The compact oriented duality and cubic-link calculations use the earlier orientation and link comparisons. The equalizer argument in §4 removes a separate appeal to general descent of complexes; it still uses the specified operation adjunctions and étale base-change maps. The deductions in this lesson are conditional on the geometric and coefficient inputs just specified; their general proofs are not all contained here.
+Propositions B.1–B.2 prove analytic normality and bounded holomorphic extension from algebraic normality for a complex surface; Corollary B.3 gives the connected-link conclusion. The compact oriented duality and cubic-link calculations use the earlier orientation and link comparisons. The equalizer argument in §4 removes a separate appeal to general descent of complexes; it still uses the specified operation adjunctions and étale base-change maps.
 
 ## References
 
 - A. Beilinson, J. Bernstein and P. Deligne, with contributions by O. Gabber, [*Faisceaux pervers*, freely readable author-hosted edition](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), Astérisque 100 (1982), §§2.1–2.2 and 4.0. Used for the dimension conditions, gluing framework, locality and coefficient distinctions.
 - Y. Laszlo and M. Olsson, [*Perverse t-structure on Artin stacks*, free author copy](https://www.cmls.polytechnique.fr/perso/laszlo/articleweb/faisceaux-pervers.pdf), §2. Comparison for the recollement construction and its precise categorical hypotheses.
 - M. A. A. de Cataldo and L. Migliorini, [*The decomposition theorem, perverse sheaves and the topology of algebraic maps*](https://arxiv.org/abs/0712.0349), §2.3 and Example 2.5.1. Comparison for finite length, the normal-surface conclusion and the degree of the link contribution.
-- J.-P. Demailly, [*Complex Analytic and Differential Geometry*, free author text](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf), 2012 version, Chapter II, §7, especially Theorem 7.3 and Definition 7.4. Used for the analytic normality formulation; its algebraic comparison is not treated as a proof supplied by the citation.
+- J.-P. Demailly, [*Complex Analytic and Differential Geometry*, free author text](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf), 2012 version, Chapter II, §7, especially Theorem 7.3 and Definition 7.4. Analytic normality and bounded holomorphic extension. Appendix B contains the algebraic comparison and extension arguments used here.

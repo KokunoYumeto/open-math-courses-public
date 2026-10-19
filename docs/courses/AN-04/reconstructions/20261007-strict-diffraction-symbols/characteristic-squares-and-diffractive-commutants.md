@@ -6,7 +6,7 @@ At strict diffraction the normal characteristic equation has two roots which mer
 
 The mathematical antecedent is Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, Section 24.4, printed 443–454 (PDF 458–469), particularly Lemmas 24.4.3–24.4.5, 24.4.8–24.4.9 and the symbol construction concluding Theorem 24.4.1. The proofs below use the current programme's explicit [even/odd descent and extension](../20261005-restored-smooth-descent/folds-reflections-and-uniform-descent.md), Sections 3–5, rather than an external preparation theorem. The proof map gives exact earlier proofs.
 
-These are complete symbol statements. The analytic strict-diffraction estimate for the full weak form, both boundary domains and natural-dual forcing remains to be proved. None of the symbol inequalities below tests the weak equation or establishes a solution wavefront theorem.
+These are complete symbol statements. The analytic strict-diffraction estimate for the full weak form, both boundary domains and natural-dual forcing uses the weak equation in addition to these symbol inequalities. None of the symbol inequalities below tests the weak equation or establishes a solution wavefront theorem.
 
 ## 1. Smooth powers at a flat zero
 

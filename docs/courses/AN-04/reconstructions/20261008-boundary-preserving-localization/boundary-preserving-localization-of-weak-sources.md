@@ -208,7 +208,7 @@ Indeed \(u-SU=w+S(v-Bv)\); the two terms have respectively the extra energy inde
 
 For a local equation, use WSL:L8's lift before cutting off the residual solution. Its homogeneous boundary condition permits a compact multiplier \(\chi\) with \(\partial_q\chi=0\) on the face. The complete commutator \([P,\chi]v\in L^2\) is supported away from a smaller base plateau; it must be included in \(F_0\). Extend coefficients smoothly on that plateau and retain every localization term. Choose \(B\)'s input and output supports inside the original equation patch, with the multiplier equal to one on a larger neighborhood of both. Thus the globalized BL3 agrees with the original equation wherever it is used; the commutator is neither discarded nor misidentified as a source regularity failure at the chosen covector. The exact NW coordinate, density and test normalization returns BL25 to the original weak problem.
 
-## 5. The incoming construction is now available
+## 5. The incoming construction
 
 **L8. Consequence for a time-dependent wave principal part.** When the principal symbol has the normalized Lorentz signature and physical time of MBE and IC, the representative \(U\) from L7 meets IC:C5's actual hypotheses. Select its genuine good energy slice, extend position by zero for Dirichlet or evenly for Neumann, and extend velocity and \(G\in L^2\) by zero. IC:C3 supplies the full matrix Cauchy solution \(V_{\rm in}\); IC:C6–C7 then give
 \[
@@ -218,7 +218,7 @@ For a local equation, use WSL:L8's lift before cutting off the residual solution
 \]
 with actual boundary graph traces and no time-interface delta. The new L2 source in this construction is the entire \(G\) in BL20. It is not just the original source inside a chosen frequency cone. Full Robin and coordinate transforms return the same local energy front by BL25.
 
-This proves a source reduction for the original natural-dual problem followed by an actual causal split. It does not prove that the boundary trace of \(W\) is confined to one Fourier–Airy cone. That trace can still have complementary singularities. IC:C8's complete-data comparison requires those contributions to be excluded or controlled on the entire dependence region. Localized incoming regularity, that complementary boundary response, sharp Airy mapping and the full strict-diffractive propagation theorem therefore remain to be proved. No smoothness of the whole L2 source is assumed from its microlocal b-indices.
+This proves a source reduction for the original natural-dual problem followed by an actual causal split. It does not prove that the boundary trace of \(W\) is confined to one Fourier–Airy cone. That trace can still have complementary singularities. IC:C8's complete-data comparison requires those contributions to be excluded or controlled on the entire dependence region. Localized incoming regularity, the complementary boundary response, sharp Airy mapping and strict-diffractive propagation require estimates beyond this source reduction. No smoothness of the whole L2 source is assumed from its microlocal b-indices.
 
 ## 6. Three complete exercises
 

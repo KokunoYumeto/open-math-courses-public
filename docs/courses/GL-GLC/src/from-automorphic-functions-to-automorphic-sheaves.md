@@ -1,8 +1,8 @@
 # From automorphic functions to automorphic sheaves
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under mathematical proof repair; full proof closure pending. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Draft. Public domain (CC0).*
 
-This lesson remains under proof repair. Every cited theorem used as a mathematical input needs a complete proof here or an exact matching earlier programme proof. The historical self-check did not certify that full dependency closure.
+The general-curve arithmetic correspondence, trace formula and geometric Satake statements used below are mathematical inputs; their proofs are not supplied in this lesson.
 
 An unramified Hecke operator changes a bundle at one point and adds the values of a function over the possible changes. This description makes sense algebraically. It also suggests how to replace the function by a sheaf: pull it to the space of changes, then push it to the space of bundles. The purpose of this lesson is to establish that connection precisely.
 

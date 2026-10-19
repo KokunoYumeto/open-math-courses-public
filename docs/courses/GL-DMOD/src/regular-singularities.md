@@ -26896,6 +26896,1609 @@ OI.A or OI.B.
 Free primary context: [Benchoufi, *Action of micro-differential operators on quantized contact transformations*, arXiv:2102.08861v2](https://arxiv.org/abs/2102.08861v2), Section 3. All arguments used above are proved here or in the exact earlier programme sections linked above.
 
 
+### 5.64. The diagonal unit and finite hyperplane descent
+
+The exact earlier programme proof dependencies are §§5.34, 5.35, 5.36, 5.43, 5.57, 5.59, 5.60, 5.63.
+
+#### A full relative form for the diagonal unit
+
+Use the actual full smooth/current complexes of §5.34, the relative
+differential and normal calibration of §5.35, and the diagonal
+unit of §5.36. Let the base dimension be \(N\ge1\).
+In pair coordinates put \(w=v-u\), with indices \(0,\ldots,N-1\).
+The ordered relative input frame is
+\(\eta=dv_0\wedge\cdots\wedge dv_{N-1}\).
+At fixed \(u\) it is \(dw_0\wedge\cdots\wedge dw_{N-1}\).
+The full complex still contains every output antiholomorphic
+differential; no relative-only Dolbeault resolution is used.
+Throughout the coefficient proof, \(\bar\partial\) denotes
+that full antiholomorphic differential. On functions depending
+only on \(w\), it agrees with the normal differential.
+
+An ordered differential block, such as \(dw\), denotes the wedge of its coordinate differentials in increasing index. The block \(da_{\widehat j}\) omits index \(j\). The same convention applies to antiholomorphic and spatial blocks; the empty block is one.
+
+Put
+\[
+ \begin{gathered}
+ r_N=(-1)^{N(N-1)/2},\\
+ c_N=\frac{r_N(N-1)!}{(2\pi i)^N},\\
+ \omega'(a)=\sum_{j=0}^{N-1}(-1)^j a_j\,da_{\widehat j}.
+ \end{gathered}
+ \tag{UC.1}
+\]
+The hat means that the indicated factor is omitted. This notation
+for \(\omega'\) uses the differential appropriate to its argument;
+that differential is specified in each application below.
+
+##### UC.0. The current identity, with its exact scalar
+
+On the punctured normal product set
+\[
+ \begin{gathered}
+ s_j(w)=\frac{\overline w_j}{|w|^2},\\
+ \beta_N=c_N\frac{\omega'(\overline w)}{|w|^{2N}}.
+ \end{gathered}
+ \tag{UC.2}
+\]
+The antiholomorphic degree of \(\beta_N\) is \(N-1\).
+Its coefficients have norm at most \(C|w|^{1-2N}\), so they
+are locally integrable in the \(2N\) real normal variables:
+the radial absolute integral is bounded by a constant times
+\(\int_0^\epsilon dr\).
+Thus \(\beta_N\) has its literal locally integrable current
+extension. No assertion about extending arbitrary growing
+holomorphic functions is needed here.
+
+First \(\bar\partial\beta_N=0\) off zero. More generally, if
+smooth functions \(a_j\) satisfy \(\sum_jw_ja_j=1\), then
+\(\sum_jw_j\bar\partial a_j=0\). Since \(w\ne0\), these
+\(N\) one-forms have a nontrivial scalar relation; their
+full exterior product is zero. Differentiating the
+alternating form in UC.1 gives \(N\) copies of that exterior
+product. Consequently
+\[
+ \begin{gathered}
+ \bar\partial\bigl(c_N\omega'_{\bar\partial}(a)\bigr)=0,\\
+ \beta_N=c_N\omega'_{\bar\partial}(s).
+ \end{gathered}
+ \tag{UC.3}
+\]
+The second identity follows by expanding the derivatives of
+\(\overline w_j/|w|^2\). Terms containing a derivative of
+\(|w|^{-2}\) cancel in pairs, because they contain two copies
+of the same column \((\overline w_j)_j\) in an alternating
+determinant. The remaining denominator is \(|w|^{2N}\).
+
+Here is the full real orientation calculation. Write
+\[
+ \begin{gathered}
+ V_N=d\overline w\wedge dw,\\
+ V_N=r_N(2i)^N\,d\operatorname{vol}_{\mathbf R^{2N}},\\
+ E_{\bar w}=\sum_j\overline w_j\partial_{\overline w_j},\\
+ R=\sum_j(x_j\partial_{x_j}+y_j\partial_{y_j}).
+ \end{gathered}
+ \tag{UC.4}
+\]
+There are \(N(N-1)/2\) crossings to group each
+\(d\overline w_j,dw_j\) block, and
+\(d\overline w_j\wedge dw_j=2i\,dx_j\wedge dy_j\).
+The numerator of \(\beta_N\wedge dw\) is
+\(\iota_{E_{\bar w}}V_N\).
+On an oriented sphere, the normal component of \(E_{\bar w}\)
+is \(R/2\). Their difference is tangent; contraction of a
+top form by a tangent vector restricts to zero on the
+sphere, since all its arguments then lie in a real
+\((2N-1)\)-dimensional tangent space.
+
+The area of the unit sphere is
+\(2\pi^N/(N-1)!\). One may check this scalar without a
+higher-dimensional integration formula: the one-plane
+Gaussian integral is \(\pi\), by polar coordinates, and
+its \(N\)-fold product is \(\pi^N\) by nonnegative Fubini.
+In radial coordinates its radial factor is
+\((N-1)!/2\), by \(N-1\) integrations by parts in
+\(\int_0^\infty e^{-r^2}r^{2N-1}dr\).
+Dividing gives the displayed area. UC.4 therefore gives,
+on every positively oriented normal sphere,
+\[
+ \int_{|w|=\epsilon}^{+}\beta_N\wedge dw=1.
+ \tag{UC.5}
+\]
+Indeed the unnormalized integral is
+\(r_N(2\pi i)^N/(N-1)!\), exactly the reciprocal of \(c_N\).
+
+Distributional differentiation now gives
+\[
+ \begin{gathered}
+ \bar\partial\beta_N\wedge dw\\
+ =\delta_{\mathbf C^N}(w)\,
+ d\operatorname{vol}_{\mathbf R^{2N}}.
+ \end{gathered}
+ \tag{UC.6}
+\]
+For completeness test on any compactly supported smooth
+function, without a holomorphy hypothesis. Apply Stokes
+after deleting the radius-\(\epsilon\) ball. The outward
+orientation of that deleted boundary and the sign in
+distributional differentiation leave the positive sphere
+integral in UC.5. Replacing the test function by its value
+at zero changes this integral by \(O(\epsilon)\), because
+its first derivatives are bounded and the absolute
+sphere integral of the homogeneous form is uniformly
+bounded. The contribution outside the deleted ball
+uses UC.3 and is zero. Letting \(\epsilon\) tend to zero
+proves UC.6. In particular no derivative of a point mass
+is left undetermined. With output parameters \(u\),
+apply the same argument uniformly on the compact
+projection of a test function's support and integrate
+in \(u\); this is the full diagonal current identity.
+
+The one-normal formula U.6 and the calibration V.17
+identify the right side with the programme's ordered
+diagonal unit current. The coefficient line in UC.6 is
+the relative line \(\eta\). Choosing \(dw\) or \(dv\)
+as a full-form lift changes only terms containing base
+holomorphic differentials; V.4 proves that these terms
+have zero intermediate trace.
+
+Let \(Z\) be any admissible closed normal support
+containing the diagonal, and use
+\(d(a,b)=(\bar\partial a,ra-\bar\partial b)\).
+The closed full relative cochain
+\[
+ k_{\rm unit}=(0,-\beta_N|_{D\setminus Z})
+ \tag{UC.7}
+\]
+has degree \(N\). The explicit current cochain
+\((\beta_N,0)\) gives
+\[
+ k_{\rm unit}+d(\beta_N,0)
+                  =(\bar\partial\beta_N,0).
+ \tag{UC.8}
+\]
+Thus this is equality with the actual diagonal unit
+in the full relative complex, followed by the exact
+smooth/current comparison R.6–R.7. It is not an inference
+from equality of operators on a selected family of
+functions. All output and complement components are
+retained.
+
+##### UC.1. Generating choices and finite coherent homotopies
+
+On the punctured domain call a smooth vector \(a\)
+generating if \(\sum_jw_ja_j=1\). Define
+\(\beta(a)=c_N\omega'_{\bar\partial}(a)\).
+Given two choices \(a^0,a^1\), put
+\(a(t)=(1-t)a^0+ta^1\).
+It is generating for the entire closed interval.
+On its product with the punctured domain use
+\(D=d_t+\bar\partial\).
+The same exterior relation as in UC.3 proves
+\(D(c_N\omega'_D(a(t)))=0\).
+Decompose the latter form into its parameter-free
+part plus \(dt\wedge B(t)\). Its closedness gives
+\(\partial_t\beta(a(t))=\bar\partial B(t)\).
+Consequently
+\[
+ \begin{gathered}
+ H(a^0,a^1)=\\
+ c_N\int_0^1\iota_{\partial_t}\omega'_D(a(t))\,dt,\\
+ \beta(a^1)-\beta(a^0)\\
+ =\bar\partial H(a^0,a^1).
+ \end{gathered}
+ \tag{UC.9}
+\]
+For \(N=1\) the generating choice is uniquely \(1/w_0\);
+the contraction is zero and the same equality holds.
+For higher \(N\), \(H\) has antiholomorphic degree \(N-2\).
+It is smooth on each actual punctured domain on which
+the two vectors are given. No extension through zero
+of this general homotopy is assumed.
+
+The full relative unit witnesses differ by the literal
+boundary
+\[
+ \begin{gathered}
+ (0,-\beta(a^1))-(0,-\beta(a^0))\\
+ =d(0,H(a^0,a^1)).
+ \end{gathered}
+ \tag{UC.10}
+\]
+In particular every such choice has the same relative
+class as UC.7, by taking \(a^0=s\) from UC.2.
+
+All higher finite compatibility witnesses are also
+explicit. For choices \(a^0,\ldots,a^k\), use
+\(a(u)=\sum_{j=0}^ku_ja^j\) on the oriented standard
+simplex, with \(u_0=1-\sum_{j=1}^ku_j\), and put
+\[
+ \begin{gathered}
+ H_{0\ldots k}=c_N\int_{\Delta^k}\omega'_D(a(u)),\\
+ \bar\partial H_{0\ldots k}=\\
+ \sum_{j=0}^k(-1)^{k+j+1}
+ H_{0\ldots\widehat j\ldots k}.
+ \end{gathered}
+ \tag{UC.11}
+\]
+Fibre integration selects parameter degree \(k\);
+the remaining antiholomorphic degree is \(N-1-k\).
+The formula follows directly by writing every
+parameter differential before the coefficient
+antiholomorphic differentials. In parameter degree
+\(k\), the closedness equation is the parameter
+boundary plus \((-1)^k\bar\partial\) of the integral.
+Ordinary simplex Stokes gives exactly UC.11.
+For \(k>N-1\) that integral is zero, and the same
+equation gives the corresponding alternating
+compatibility. One may rescale by
+\((-1)^{k(k-1)/2}\) to make the right-hand coefficient
+of each alternating face \(+1\).
+
+For any finite list of cochains and homotopies all
+parameter simplices are compact and all actual domains
+can be chosen before these finite constructions.
+Restriction, multiplication by a holomorphic
+coefficient and further finite refinement commute
+with these explicit identities.
+
+##### UC.2. The entire complement cube and its top holomorphic entry
+
+Cover the punctured normal product by
+\(U_j=\{w_j\ne0\}\), and set
+\[
+ \begin{gathered}
+ \rho_j=\frac{|w_j|^2}{|w|^2},\quad a^j=\frac{e_j}{w_j},\\
+ s=\sum_j\rho_ja^j,\\
+ \varphi=\frac1{(2\pi i)^Nw_0\cdots w_{N-1}}.
+ \end{gathered}
+ \tag{UC.12}
+\]
+Products \(\rho_ja^j\) extend smoothly across \(w_j=0\)
+on the punctured product, and equal
+\(\overline w_j/|w|^2\). The top holomorphic Čech
+cocycle \(c_{0\ldots N-1}=\varphi\) is alternating
+in its indices. For an ordered tuple \(I\) of length \(N-1\),
+\((\bar\partial\rho)_I\) denotes the corresponding ordered wedge;
+\(i_0I\) denotes concatenation of the index lists. Its Dolbeault representative, in
+the Čech differential convention of V.6, is
+\[
+ \begin{gathered}
+ F(c)=\sum_{i_0,I}
+ \rho_{i_0}(\bar\partial\rho)_I\,c_{i_0I},\\
+ F(c)=(N-1)!\varphi\,
+               \omega'_{\bar\partial}(\rho),\\
+ \beta_N=r_NF(c).
+ \end{gathered}
+ \tag{UC.13}
+\]
+Each remaining index has \((N-1)!\) permutations;
+the alternating cocycle and exterior permutation
+have the same sign. This proves the second line.
+Expanding \(\omega'_{\bar\partial}(s)\) and using
+\(\bar\partial(1/w_j)=0\) on each intersection gives
+the third line, with the scalar UC.1.
+
+Here is a finite cochain witness for the augmentation,
+so that a holomorphic expression alone is not being
+substituted for the complement complex. In Čech
+degree \(q=N-1\), start with \(c^{(0)}=c\).
+Use V.6's partition contraction
+\((hb)_{i_0\ldots i_{r-1}}=\sum_j\rho_jb_{j i_0\ldots i_{r-1}}\).
+For \(0\le l<q\) define
+\[
+ \begin{gathered}
+ b^{(l)}=h c^{(l)},\\
+ c^{(l+1)}=(-1)^{q-l}\bar\partial b^{(l)},\\
+ d_{\rm tot}b^{(l)}=c^{(l)}-c^{(l+1)}.
+ \end{gathered}
+ \tag{UC.14}
+\]
+At each stage \(c^{(l)}\) is Čech closed and
+Dolbeault closed, with bidegree \((q-l,l)\).
+The contraction identity gives its Čech component;
+the total differential in Čech degree \(q-l-1\)
+has Dolbeault sign \((-1)^{q-l-1}\), which gives
+the last line. The last \(c^{(q)}\) is a global
+degree-\(q\) Dolbeault form. Expansion of the
+successive contractions shows it is \(F(c)\):
+the total sign \((-1)^{q(q+1)/2}\) is canceled
+by reversing the \(q\) differentiated partition
+factors and moving the last Čech index to the
+front. Summing the \(b^{(l)}\)'s gives an explicit
+boundary from \(c\) to its augmentation \(F(c)\).
+For \(q=0\), the sum is empty and the identity
+is literal. All lower intersections occur in
+this finite witness. For the rational cocycle
+displayed here the extensions across a missing
+coordinate are literal smooth extensions:
+\(\rho_j/w_j=\overline w_j/|w|^2\), and
+\((\bar\partial\rho_j)/w_j
+=\bar\partial(\overline w_j/|w|^2)\).
+For arbitrary complement cochains the contraction
+instead uses a genuinely subordinate smooth
+partition as in V.6. No finite-order vanishing
+of a partition factor is presumed to regularize
+an arbitrary singular cochain. The generating
+vector for such a partition is smooth on the
+punctured domain, and UC.9–UC.11 compares it
+with the displayed vector \(s\).
+
+It follows that UC.7 has ordinary top complement
+Čech entry \(-r_N\varphi\). The cone-to-cube map
+of V.6 multiplies that entry by \((-1)^{N-1}\).
+Its top cube entry is therefore
+\[
+                       r_N(-1)^N\varphi,
+ \tag{UC.15}
+\]
+exactly the ordered \(N\)-normal Cauchy calibration
+of V.17 and U.6–U.8. This also checks the parity
+when \(N=2\). UC.8 supplies the supported-current
+endpoint, and UC.14 supplies every intermediate
+complement entry.
+
+##### UC.3. The universal hyperplane form and the two incidence orders
+
+For \(\xi\in\mathbf C^N\setminus0\) with
+\(\langle\xi,w\rangle\ne0\), define the full form
+\[
+ \mathcal W_N
+ =c_N\frac{\omega'(\xi)\wedge dw}{\langle\xi,w\rangle^N}.
+ \tag{UC.16}
+\]
+Its differential is zero. Indeed
+\(d_\xi\omega'(\xi)=N\,d\xi_0\wedge\cdots\wedge d\xi_{N-1}\)
+and
+\[
+ \begin{gathered}
+ \left(\sum_jw_jd\xi_j\right)\wedge\omega'(\xi)\\
+ =\langle\xi,w\rangle\,d\xi.
+ \end{gathered}
+ \tag{UC.17}
+\]
+These cancel the derivative of the denominator.
+Every remaining \(w\)-differential wedges to zero
+against the full \(dw\) block. Rescaling \(\xi\)
+by a nowhere-zero function leaves UC.16 unchanged:
+the numerator and denominator both scale by its
+\(N\)-th power; terms containing its differential
+have two identical columns in the alternating
+numerator and are zero. Thus this is a form on
+the projective parameter space off the incidence.
+
+The pullback along a smooth generating choice
+\(\xi=a(w)\), \(\langle a,w\rangle=1\), is
+\(\beta(a)\wedge dw\). Holomorphic \(w\)-components
+of \(da\) vanish against \(dw\), leaving precisely
+the antiholomorphic differentials used above.
+In the chart \(\xi_0=1\), \(\xi_i=y_i\), put
+\(w_{\rm sp}=(w_1,\ldots,w_d)\), \(d=N-1\).
+The form is
+\[
+ \begin{gathered}
+ \mathcal W_N=\\
+ c_N\frac{dy\wedge dw}{(w_0+y^{\mathsf T}w_{\rm sp})^{d+1}},\\
+ d=N-1.
+ \end{gathered}
+ \tag{UC.18}
+\]
+The zeroth term of \(\omega'\) is the only surviving
+term, since \(d\xi_0=0\).
+
+For the first incidence order OI.17–OI.18, take
+\(w=(t'-t,x'-x)\) and \(\xi=(1,y)\).
+Its ordinary normal residue, with the endpoint
+input frame attached, is the coefficient of
+UC.18 multiplied by \(c_N^{-1}\).
+For the second order OI.19–OI.20, retain the
+ordinary endpoint normal coordinates
+\(w'=(s'-s,y'-y)\). Then the parameter is
+\(\xi'=(1,-x)\), not \((1,x)\), and
+\[
+ \begin{gathered}
+ \langle\xi',w'\rangle=\\
+ s'-s+(y-y')^{\mathsf T}x,\\
+ d(-x)=(-1)^d dx.
+ \end{gathered}
+ \tag{UC.19}
+\]
+Here \(d(-x)\) is the ordered wedge of the
+component differentials \(d(-x_i)\).
+Accordingly the second chart expression of the
+universal unit form is \((-1)^dc_N\) times the
+ordinary spatial form in that order.
+Both normal circle residues in OI.18 and OI.20
+are positive; UC.19 is a separate spatial
+parameter Jacobian. Its matching in a normalized
+kernel convolution requires the actual oriented
+source comparison and trace, rather than dropping
+it from the hyperplane coordinates.
+
+The identities UC.7–UC.15 prove a full relative
+representative of the diagonal unit, and UC.16–UC.19
+identify its universal hyperplane expression and
+both spatial coordinate conventions. They do not
+by themselves identify the microlocal-Hom
+composition roof of the two incidence classes
+with this universal form. That further identity
+has to include the shifted topological source
+counits, their spatial boundary homotopies,
+the actual middle-variable proper support,
+and the all-degree trace normalization.
+
+
+![Ordered unit signs, exact generating weights and the two spatial parameters](assets/relative-unit-form-and-parameters.png)
+
+*Figure UC.1. Panel A separates the normal, top-cube and reverse-parameter signs. Panel B plots only the exact generating weights on the real section \(w=(1,q)\), \(N=2\). Panel C is the parameter simplex of UC.11. Panel D retains the distinct spatial parameters in the two incidence orders. The complete current and complement identities are UC.6–UC.15.*
+
+#### The source kernels and the diagonal shift
+
+Let \(P,P^*\) be the two complex projective bases, each of
+complex dimension \(N\ge1\). Use ordinary kernel convolution
+over the compact middle projective space, as in LI.32.
+Write \(S\) for the closed incidence and \(\Omega\) for its
+open complement. With \(j:\Omega\hookrightarrow P\times P^*\)
+and its transposed embedding, put
+\[
+ \begin{gathered}
+ L=\mathbf C_S[-1],\\
+ A=j_!\mathbf C_\Omega,\\
+ L^{\rm op}=\mathbf C_{S^{\rm op}}[-1],\\
+ B=Rj^{\rm op}_*\mathbf C_{\Omega^{\rm op}}.
+ \end{gathered}
+ \tag{SN.1}
+\]
+The unit-normalized topological inverse of LI.D is
+\(B[2N]\), so its two oriented convolution identifications
+are \(A*B[2N]\simeq\mathbf C_{\Delta_P}\) and
+\(B*A[2N]\simeq\mathbf C_{\Delta_{P^*}}\).
+These are the complete compact-fibre and boundary
+identifications LI.34–LI.41, with positive complex
+orientation, not a fibre Euler-characteristic equality.
+
+##### SN.0. Both open/closed arrows
+
+The ordinary open/closed exact sequence gives the triangle
+\[
+ L\xrightarrow{u}A\longrightarrow
+             \mathbf C_{P\times P^*}\xrightarrow{+1}.
+ \tag{SN.2}
+\]
+Here \(u\) is the shifted connecting arrow. OCM.3–OCM.5
+constructs its actual cone map, using the lifted
+restriction and its differential homotopy. Thus it has
+the signs of that full relative model.
+
+For the transposed open, the closed-support triangle is
+\[
+ \begin{gathered}
+ \mathbf C_{S^{\rm op}}[-2]\longrightarrow
+ \mathbf C_{P^*\times P}\longrightarrow B\\
+ \xrightarrow{v}L^{\rm op}\xrightarrow{+1}.
+ \end{gathered}
+ \tag{SN.3}
+\]
+To identify the first term, straighten the hypersurface
+to a complex normal disc and use its positively oriented
+real codimension-two Thom class, with arbitrary tangential
+coefficients. HI.A proves this full supported comparison
+including the collapsed fibre. The normal orientations
+glue, since a holomorphic change of normal frame has
+positive real Jacobian. The source of the first map is
+therefore precisely the displayed shifted constant sheaf.
+The triangle itself is the actual closed-support/open
+restriction triangle from the relative cone.
+It also specifies the boundary map \(v\).
+
+The one-normal circle in \(B\) is sent by \(v\) to its
+positive generator. A representative for its compact
+boundary is
+\(-d\chi\wedge d\theta/(2\pi)\), with \(\chi\) equal to
+one near zero and zero outside an inner disc. Its integral
+is one, as proved in LI.38–LI.39. This checks the
+normal orientation in SN.3, rather than inferring it
+from the shift alone.
+
+For any bounded holomorphic coefficient complex \(F\),
+application of the actual microlocal Hom gives
+isomorphisms on every nonzero incidence conormal:
+\[
+ \begin{gathered}
+ u^*:\mu\operatorname{hom}(A,F)\\
+          \xrightarrow{\sim}\mu\operatorname{hom}(L,F),\\
+ v^*:\mu\operatorname{hom}(L^{\rm op},F)\\
+          \xrightarrow{\sim}\mu\operatorname{hom}(B,F).
+ \end{gathered}
+ \tag{SN.4}
+\]
+Indeed the cone of either map is a shift of microlocal
+Hom from the ambient constant sheaf. OCM.A proves its
+off-zero vanishing by the actual pulled-coefficient
+homotopy, not by an assumed symbol realization. All
+operations in the definition of microlocal Hom are
+derived additive operations and preserve the displayed
+triangles. The source arrows and their comparisons are
+therefore the same derived arrows as in SN.2–SN.3.
+
+##### SN.1. The two convolution comparisons
+
+There is a useful common source for the first order:
+\[
+ \begin{gathered}
+ L*L^{\rm op}[2N]\ \xleftarrow{\ 1*v\ }\ 
+ L*B[2N]\\
+ \xrightarrow{\ u*1\ }A*B[2N]
+                    \xrightarrow{\sim}\mathbf C_{\Delta_P}.
+ \end{gathered}
+ \tag{SN.5}
+\]
+After applying microlocal Hom with any fixed bounded coefficient
+complex, both left comparison arrows become isomorphisms
+off the zero cotangent section. We verify their cones
+on actual coefficient sheaves.
+
+The cone contributed by \(u\) is
+\(\mathbf C_{P\times P^*}*B[2N]\).
+For a fixed endpoint \(p'\), ordinary global sections
+of \(Rj_*\mathbf C_\Omega\) on the middle compact
+projective space are the ordinary cohomology of its
+affine nonincidence fibre \(\mathbf C^N\).
+The contraction by real dilation, including the
+degree-zero constant section, gives just \(\mathbf C\).
+These complexes are locally constant in the endpoint:
+the determinant-one matrix used in LI.8.3 sends a
+fixed endpoint vector to the current one and
+trivializes the entire incidence pair. On such a
+product the actual de Rham parameter homotopy
+identifies the pushforward with the constant fibre
+complex. The compact-fibre comparison LI.34–LI.35
+justifies every restriction. The unused first endpoint
+is already constant. Hence this convolution cone is
+locally a finite complex of constant sheaves on the
+full endpoint pair.
+
+The cone contributed by \(v\) is
+\(L*\mathbf C_{P^*\times P}[2N+1]\).
+Here the incidence fibre over the first endpoint is
+\(\mathbf P^{N-1}\); the same explicit matrix
+trivializes that whole family, and the second endpoint
+is unused. Its compact-fibre cohomology is a bounded
+finite-dimensional complex, locally constant in the
+endpoints. Finiteness may be checked directly with
+the finite standard affine cover of \(\mathbf P^{N-1}\).
+An intersection is a product of an affine space with
+finitely many punctured planes. Dilation contracts
+each affine factor; radial contraction and the
+normalized angular form give the two-term circle
+complex for each punctured factor, as in LI.8.2.
+Finite tensor products and the finite Čech filtration
+then give bounded finite-dimensional cohomology.
+This computes through an acyclic de Rham resolution;
+it does not assert that the cover is acyclic for the
+constant sheaf. Over \(\mathbf C\), a bounded vector
+complex with finite-dimensional cohomology is
+quasi-isomorphic to a finite-dimensional complex:
+choose complements to its cycles and boundaries.
+This last observation is used only to apply the
+finite constant-coefficient vanishing, not to choose
+any convolution map.
+
+For a finite constant coefficient complex \(V\),
+\(\mu\operatorname{hom}(V\otimes\mathbf C_M,F)\)
+is the corresponding finite Hom complex of
+\(\mu\operatorname{hom}(\mathbf C_M,F)\).
+One checks this first on a finite vector space by
+a basis, then by finite totalization; finite Hom
+commutes with the actual resolutions and filtered
+germs. It is zero off zero by OCM.A. Thus both
+convolution cones in SN.5 vanish under the indicated
+microlocal Hom. This proves the assertion about the
+comparison arrows with their exact source maps.
+
+The second order is the same complete construction
+with \(P,P^*\) interchanged. Equivalently use the roof
+from \(B*L[2N]\), with one arrow to \(B*A[2N]\)
+and one to \(L^{\rm op}*L[2N]\). Its two cones have
+the same affine and projective compact-fibre
+descriptions. It gives
+\[
+ \begin{gathered}
+ \mu\operatorname{hom}(L*L^{\rm op}[2N],F)\\
+        \simeq\mu\operatorname{hom}(\mathbf C_{\Delta_P},F),\\
+ \mu\operatorname{hom}(L^{\rm op}*L[2N],F')\\
+        \simeq\mu\operatorname{hom}(\mathbf C_{\Delta_{P^*}},F')
+ \end{gathered}
+ \tag{SN.6}
+\]
+at nonzero endpoint covectors. The isomorphisms are
+the just constructed roofs, including the oriented
+topological counits.
+
+##### SN.2. The two different dimension shifts
+
+The coefficient trace in complex middle dimension \(N\)
+lowers the Dolbeault degree by \(N\), with
+\(\operatorname{Tr}_q=(-1)^{N(q-N)}I_q\), as in V.4.
+In a coefficient-composition roof using this trace, its target
+coefficient line is consequently shifted by \([-N]\).
+The contravariance of the first argument gives
+\[
+ \begin{gathered}
+ \mu\operatorname{hom}(L*L^{\rm op},F[-N])\\
+ =\mu\operatorname{hom}(L*L^{\rm op}[N],F).
+ \end{gathered}
+ \tag{SN.7}
+\]
+SN.6 uses a different shift: the real compact-fibre
+orientation contributes \([2N]\). Combining these
+two facts gives, under microlocal Hom off zero, the source
+roof with \(\mathbf C_\Delta[-N]\). Thus the corresponding
+coefficient-composition target is identified with
+\[
+ \begin{gathered}
+ \mu\operatorname{hom}(\mathbf C_\Delta[-N],F)\\
+ =\mu\operatorname{hom}(\mathbf C_\Delta,F)[N].
+ \end{gathered}
+ \tag{SN.8}
+\]
+For the ordered input top-form coefficient, degree zero
+of SN.8 is exactly the degree-\(N\) real diagonal
+operator group. The spatial number \(d=N-1\) in the
+opposite pole of OI.6 is a third count; it cannot
+replace either shift above.
+
+This identification is through the source roofs of SN.5–SN.6.
+It is not an isomorphism of the two underlying source sheaves
+before applying microlocal Hom. Their locally constant
+convolution cones are discarded only by OCM.A off zero.
+Nor does counting these shifts construct the comparison of
+coefficient-composition roofs.
+
+##### SN.3. Actual finite equality witnesses on the roofs
+
+The comparison isomorphisms above have finite representatives,
+not only abstract inverses of cohomology maps. We spell this
+out for a comparison chain map \(f:C^\bullet\to D^\bullet\).
+Use the ordinary cone convention
+\[
+ \begin{gathered}
+ \operatorname{Cone}(f)^q=D^q\oplus C^{q+1},\\
+ d(b,a)=(db+fa,-da).
+ \end{gathered}
+ \tag{SN.9}
+\]
+Each of the two comparison cones is, locally in the endpoint
+pair and through the coefficient comparisons already proved,
+a finite constant-coefficient complex in its source argument.
+The finite-Hom construction after SN.5, followed by OCM.11,
+contracts its microlocal relative complex on a later round
+support domain. For finite complexes the contraction is
+extended by the ordinary total-degree sign; the two terms
+containing the coefficient differential cancel because the
+contraction lowers form degree by one. A local chain
+quasi-isomorphism used to pass to this model is compared by
+R.6–R.7. In the finitely many degrees used by a given finite
+list of cochains, their elimination gives actual lifts and
+primitives on one common restriction. Thus the statement
+needed below is that each displayed cone cycle has a
+primitive on that actual restriction. A simultaneous
+contraction on an unspecified infinite collection of
+germs is not being asserted.
+
+For a closed \(b\in D^q\), the cone element \((b,0)\)
+is closed. Choose its just constructed primitive \((x,a)\).
+SN.9 says
+\[
+ \begin{gathered}
+ da=0,\qquad b-fa=dx.
+ \end{gathered}
+ \tag{SN.10}
+\]
+This supplies a preimage cycle and the complete boundary
+witness for its image. Conversely suppose \(da=0\) and
+\(fa=db\). The element \((-b,a)\) is a closed cone
+cochain of degree \(q-1\). If \((x,y)\) is its primitive,
+the second entry in SN.9 gives
+\[
+                         a=d(-y).
+ \tag{SN.11}
+\]
+This is the equality witness for injectivity. Both
+arguments retain the two entries of each relative
+support cone; their cone cochains themselves are
+finite lists of whole-domain and complement cochains.
+R.6–R.7 is applied to that full list.
+
+For a finite diagram of the source comparisons, include
+all its cycles, chosen lifts, primitives and restrictions
+in this construction. The finite common-domain argument
+of OCM.3 and HI.A then supplies one actual later support
+domain with one strict nonzero covector margin. Applying
+SN.10 along one arrow and SN.11 to the difference between
+two lifted cycles shows that the corresponding source-roof
+identities hold on that domain, with the equality primitive
+included. Their shifted versions use the displayed
+differentials, so introduce no additional orientation
+choice. The scalar of the topological counit is still
+the positive compact-fibre integral of LI.D and the
+normal-circle map of SN.3.
+
+SN.5–SN.8 identify the source roofs and their degrees.
+An equality of the two holomorphic incidence products
+with the unit form UC.7 still requires the actual
+coefficient composition on these roofs. In particular
+the spatial parameter sign UC.19 and the normal-circle
+orientation in SN.3 must both be retained in that
+calculation.
+
+
+#### Finite hyperplane descent of the diagonal form
+
+Keep the normal coordinates, scalar \(c_N\), full coefficient
+line and total differentials of UC.1–UC.19. Put \(d=N-1\).
+The construction below gives every cochain in a spatial
+hyperplane descent. Its parameter space is the full
+projective hyperplane space.
+
+##### HP.0. The normalized affine parameter bundle
+
+Over the punctured normal domain let \(\mathcal A\)
+be the total space of the following affine fibres:
+\[
+ \begin{gathered}
+ \mathcal A_w=\{a:\langle a,w\rangle=1\},\\
+ w\ne0,\\
+ \pi:\mathcal A\longrightarrow\{w\ne0\}.
+ \end{gathered}
+ \tag{HP.1}
+\]
+The fibre is an affine space of complex dimension \(d\).
+The vector \(s(w)=\overline w/|w|^2\) is a smooth
+section. The formula
+\[
+ \begin{gathered}
+ h_\lambda(w,a)\\
+ =\bigl(w,(1-\lambda)a+\lambda s(w)\bigr),\\
+ 0\le\lambda\le1
+ \end{gathered}
+ \tag{HP.2}
+\]
+is a fibre-preserving strong deformation onto that section:
+the scalar pairing remains one, and a point already on the
+section is fixed. On a compact subset of \(\mathcal A\)
+its image is compact. All of its derivatives in any fixed
+finite list of coordinate directions are bounded there,
+since the normal projection stays away from zero.
+
+The projective parameter space with
+\(\langle\xi,w\rangle\ne0\) is isomorphic to HP.1:
+\[
+                a=\frac{\xi}{\langle\xi,w\rangle}.
+ \tag{HP.3}
+\]
+This is independent of the representative for \([\xi]\).
+Conversely \(a\) determines \([a]\), and these maps are
+inverse. Thus HP.2 is also an explicit contraction in the
+full nonincident projective fibre. The full form
+\(\mathcal W_N\) of UC.16 pulls back along the section to
+\(\beta_N\wedge dw\). UC.9–UC.11 gives the associated
+form homotopies, with their exact simplex signs.
+
+##### HP.1. The top simplex determinant
+
+On an intersection \(U_{i_0\ldots i_k}\) of the coordinate
+puncture cover use the holomorphic generating vertices
+\(a^i=e_i/w_i\). For an ordered tuple \(I=(i_0,\ldots,i_k)\)
+of distinct indices put \(D=d_u+\bar\partial\) and define
+\[
+ \begin{gathered}
+ a_I(u)=\sum_{\nu=0}^k u_\nu a^{i_\nu},\\
+ T_I=c_N\int_{\Delta^k}\omega'_D(a_I(u)).
+ \end{gathered}
+ \tag{HP.4}
+\]
+Parameter differentials precede the antiholomorphic
+coefficient differentials, as in UC.11. Its remaining
+antiholomorphic degree is \(d-k\). Because all the vertices
+are holomorphic, \(T_I=0\) for \(k<d\): after selecting
+parameter degree \(k\), a positive antiholomorphic
+degree remains and has no nonzero factor.
+
+For \(k=d\), the exact determinant identity is
+\[
+ \begin{gathered}
+ \omega'_{d_u}(a_I(u))\\
+ =\det(a^{i_0},\ldots,a^{i_d})\,du.
+ \end{gathered}
+ \tag{HP.5}
+\]
+Here \(du=du_1\wedge\cdots\wedge du_d\), as in the
+ordered-block convention of UC.1. To prove it, evaluate the alternating form on the ordered
+parameter vectors. The resulting determinant has columns
+\(a(u),a^{i_1}-a^{i_0},\ldots,a^{i_d}-a^{i_0}\).
+Replace its first column by \(a^{i_0}\); every discarded
+column is a linear combination of the remaining columns,
+so contributes zero. Add the first column to each remaining
+one. This gives exactly HP.5, without a factorial.
+The oriented standard simplex has volume \(1/d!\).
+Indeed repeated integration over
+\(0\le u_j\) and \(\sum u_j\le1\) proves inductively
+that its volume is \(1/d!\): the last slice at \(u_d=t\)
+has volume \((1-t)^{d-1}/(d-1)!\), whose integral is
+\(1/d!\). The point simplex for \(d=0\) has volume one.
+Consequently
+\[
+ \begin{gathered}
+ T_{0\ldots d}
+   =\frac{c_N}{d!\,w_0\cdots w_d}
+   =r_N\varphi .
+ \end{gathered}
+ \tag{HP.6}
+\]
+A permutation of the ordered vertices multiplies this
+cochain by its permutation sign, exactly as required for
+the alternating Čech convention. The factorial in \(c_N\)
+has therefore canceled the simplex volume.
+
+##### HP.2. Every lower cochain and its differential
+
+Insert the smooth section as the first vertex and put
+\[
+ \begin{gathered}
+ G_I=H_{s,a^{i_0},\ldots,a^{i_k}},\\
+ \deg_{\bar\partial}G_I=d-k-1.
+ \end{gathered}
+ \tag{HP.7}
+\]
+Here \(H\) is precisely the simplex integral UC.11, with
+\(k+1\) parameter directions. All its arguments pair
+with \(w\) to one, so the entire simplex stays in
+HP.1. The cochain is defined on the whole actual
+intersection \(U_I\). Its degree makes it zero for \(k\ge d\).
+Set \(G^{(-1)}=\beta_N\); its augmented Čech
+differential means the restrictions of that one global
+form.
+
+Use the alternating Čech differential \(\Delta\).
+UC.11 on the ordered vertices in HP.7 gives
+\[
+ \begin{gathered}
+ \bar\partial G^{(k)}\\
+     =(-1)^k\bigl(T^{(k)}-\Delta G^{(k-1)}\bigr).
+ \end{gathered}
+ \tag{HP.8}
+\]
+In detail, deleting the first vertex \(s\) has coefficient
+\((-1)^k\) and gives \(T_I\). Deleting vertex
+\(a^{i_\nu}\) has coefficient
+\((-1)^{k+\nu+1}\), exactly
+\((-1)^{k+1}\) times its Čech-face coefficient.
+For \(k=0\) this says
+\(\bar\partial G_i=T_i-\beta_N|_{U_i}\).
+For \(k=d\), its left side is zero, and it gives
+\(\Delta G^{(d-1)}=T^{(d)}\).
+
+Let \(D_{\mathrm{tot}}=\Delta+(-1)^k\bar\partial\)
+in Čech degree \(k\), the convention of V.6.
+The finite sum \(G=\sum_{k=0}^{d-1}G^{(k)}\)
+has total degree \(d-1\), and HP.8 gives the literal
+full-cochain identity
+\[
+ \begin{gathered}
+ D_{\mathrm{tot}}G
+       =T^{(d)}-\operatorname{aug}(\beta_N).
+ \end{gathered}
+ \tag{HP.9}
+\]
+Its Čech-degree-zero component is \(-\beta_N\);
+the intermediate components cancel term by term by HP.8;
+the top component is HP.6. When \(d=0\), the sum is
+empty and the two endpoints coincide. Thus this identity
+includes all lower intersections and not just the top
+rational expression. None of its general cochains is
+extended across an omitted coordinate hyperplane.
+The relative-cone connecting map and the cone-to-cube
+map of UC.15 turn HP.9 into the same unit with literal
+top cube entry \(r_N(-1)^N\varphi\).
+
+For any finite list of such cochains, their restrictions
+and homotopies, choose actual domains before integration.
+On a compact subset of an intersection, all its displayed
+nonzero \(w_i\)'s have a positive lower bound, as does
+\(|w|\). The simplices are compact. Differentiation in
+any fixed finite list of variables therefore commutes
+with their integrals and with restriction. This verifies
+the full-parameter and finite-witness assertions without
+a boundary growth assumption or a passage to a quotient
+limit.
+
+##### HP.3. Arbitrary independent hyperplane vertices
+
+The construction is covariant under an invertible linear
+normal frame. Let \(\ell_0,\ldots,\ell_d\) be independent
+constant vectors, let \(M\) have those columns, and put
+\(\alpha_j=\langle\ell_j,w\rangle\).
+Use \(a^j=\ell_j/\alpha_j\) on \(\{\alpha_j\ne0\}\).
+HP.5 and the ordered change of variables give
+\[
+ \begin{gathered}
+ T_{0\ldots d}\wedge dw\\
+   =\frac{r_N\det M}{(2\pi i)^N\prod_j\alpha_j}\,dw\\
+   =\frac{r_N}{(2\pi i)^N\prod_j\alpha_j}\,d\alpha .
+ \end{gathered}
+ \tag{HP.10}
+\]
+Here \(d\alpha=\det(M^{\mathsf T})\,dw=\det M\,dw\).
+Thus the simplex determinant and the endpoint input
+frame transform together. HP.7–HP.9 applies with the
+same section \(s\) and these new generating vertices;
+only the open intersections change.
+
+In particular one may take
+\(\ell_0=e_0\) and
+\(\ell_j=e_0+\varepsilon e_j\) for \(1\le j\le d\),
+with \(\varepsilon\ne0\). Their determinant is
+\(\varepsilon^d\), and all their projective classes
+are near \([e_0]\) as \(\varepsilon\) tends to zero.
+This does not put the interpolating simplices into
+that same projective chart: a convex combination of
+the normalized vectors can have zeroth coordinate zero
+even though it remains generating. HP.2 and HP.7
+are assertions in the full nonincident projective
+fibre. An application confined to one actual middle
+coordinate domain must supply its own containment and
+proper-collar comparison.
+
+There is an exact two-dimensional example. Let
+\(N=2\), \(\varepsilon r\ne0\), and take
+\[
+ \begin{gathered}
+ w=(r,-2r/\varepsilon),\\
+ \ell_0=(1,0),\quad \ell_1=(1,\varepsilon),\\
+ \alpha_0=r,\qquad \alpha_1=-r,\\
+ a^0=(1,0)/r,\\
+ a^1=(-1,-\varepsilon)/r.
+ \end{gathered}
+ \tag{HP.11}
+\]
+The midpoint is \((0,-\varepsilon/(2r))\).
+It pairs with \(w\) to one, but its projective class
+is outside the chart \(\xi_0\ne0\). The two original
+projective vertices both lie in that chart and tend
+to \([e_0]\) as \(\varepsilon\) tends to zero.
+For each fixed \(\varepsilon\), choosing \(r\) small
+puts \(w\) in any prescribed normal neighbourhood.
+Thus neither a small normal domain nor nearby
+projective vertices proves chart containment of
+the affine simplex.
+
+For these two vertices there is nevertheless a
+chart-contained curved path:
+\[
+ \begin{gathered}
+ y(t)=\frac{\varepsilon}{2}(1-e^{i\pi t}),\\
+ \xi(t)=(1,y(t)),\\
+ \langle\xi(t),w\rangle=r e^{i\pi t},\\
+ a(t)=\frac{\xi(t)}{r e^{i\pi t}},\\
+ 0\le t\le1 .
+ \end{gathered}
+ \tag{HP.12}
+\]
+Its endpoints are \(a^0,a^1\), its denominator has
+modulus \(|r|\), and \(|y(t)|\le|\varepsilon|\).
+Every fixed parameter derivative is bounded for
+fixed nonzero \(r,\varepsilon\). UC.9 applies to
+this smooth generating path, with \(d_t\) in
+place of the straight-path differential: its proof
+uses only the generating relation and the two
+endpoints. This example gives an actual compact
+path in that one parameter chart. It supplies
+neither the higher compatible parameter faces nor
+a proper-support comparison for a general
+incidence convolution.
+
+The reverse spatial frame in UC.19 still contributes
+\((-1)^d\) to its holomorphic differential block.
+Neither HP.9 nor HP.10 removes that factor. The
+topological source counit and the actual coefficient
+composition have to be compared with this full descent
+before either normalized incidence inverse product
+is identified with the unit.
+
+
+![All lower Čech cochains, a projective chart crossing, a bounded curved path and the source shifts](assets/hyperplane-descent-and-chart.png)
+
+*Figure HP.1. Panel A gives all lower bidegrees for \(N=4\); HP.8–HP.9 proves their total-differential identity. Panels B and C use the exact rational choices of HP.11: \(\varepsilon=1/4\), \(r=1/32\), \(w=(1/32,-1/4)\). The generating affine segment crosses the boundary of the projective chart, whereas HP.12 stays within \(|y|\le1/4\) and has denominator of constant modulus \(1/32\). Panel D gives the two different source and coefficient shifts of SN.5–SN.8. The source equivalence is under microlocal Hom off zero. These constructions leave the general actual coefficient-composition comparison to be proved.*
+
+Unit form: Full PNG · SVG · Exact data · Drawing source
+
+Hyperplane descent: Full PNG · SVG · Exact data · Drawing source
+
+Free primary context: [Harold P. Boas, *Math 685 Notes: Topics in Several Complex Variables*, 2005, revised 2010](https://haroldpboas.gitlab.io/courses/685-2005c/notes.pdf), Sections1.3 and1.5, for the classical normal and hyperplane forms. The proofs of the current identity, ordered signs, source comparisons and complete finite descent are given here and in the exact earlier programme proofs linked above.
+
+
+### 5.65. Bounded generating hyperplanes and proper contour support
+
+The exact earlier programme dependencies are §§5.34, 5.35, 5.53, 5.63, 5.64. Specifically, R.6–R.7 and V.1/V.4 give the full supported comparison and trace; RM.3–RM.9 gives actual real-stalk supports and finite common witnesses; OI.18 and OI.20 gives the two ordinary residues; UC.1, UC.3, UC.9–UC.11 and UC.16–UC.19 gives the ordered scalar, generating homotopies and universal form.
+
+Let \(N=d+1\ge1\), and write the endpoint normal variable as
+\(w=(w_0,z)\in\mathbf C\times\mathbf C^d\).
+Put \(\rho=|w|=(|w_0|^2+|z|^2)^{1/2}\).
+Pair covectors and vectors bilinearly, without a conjugate in
+that pairing. All norms below are Euclidean norms.
+Use the ordered differential blocks, the scalar \(c_N\),
+the universal form and the full relative differential of
+UC.1, UC.16 and V.1. In particular \(\bar\partial\)
+includes the output antiholomorphic directions of the pair.
+
+Fix a spatial middle-coordinate ball of radius \(R_y>0\).
+Let \(\mathcal K_{\mu,\nu}\) be the Hermitian matrices
+satisfying the following bounds:
+\[
+ \begin{gathered}
+ 0<\mu\le\nu<R_y/2,\\
+ H=H^*,\qquad \mu I\le H\le\nu I.
+ \end{gathered}
+ \tag{RC.1}
+\]
+The inequalities mean inequalities of Hermitian quadratic
+forms on \(\mathbf C^d\). For \(d=0\) the matrix is empty
+and this parameter set is a singleton.
+
+The family constructed below stays in this one actual
+spatial chart. The supports and margins are part of the
+construction, rather than a consequence of nearby
+projective vertices.
+
+#### RC.0. The support and every zero of the denominator
+
+Choose \(\epsilon>0\) and
+\(K>\sqrt{1+\mu^{-2}}\). Define the closed cone
+\[
+ \begin{gathered}
+ G=G_{K,\epsilon},\\
+ w_0=-\ell+ib,\quad \ell\ge0,\\
+ |b|\le\epsilon\ell,\qquad |z|\le K\ell .
+ \end{gathered}
+ \tag{RC.2}
+\]
+It is convex: the time and imaginary inequalities are
+convex linear/norm inequalities, and the spatial
+inequality is preserved by the triangle inequality.
+It contains the zero normal vector.
+
+For \(H\in\mathcal K_{\mu,\nu}\), on \(w\ne0\), put
+\[
+ \begin{gathered}
+ y_H(w)=H\overline z/\rho,\\
+ \xi_H=(1,y_H),\\
+ F_H(w)=\langle\xi_H,w\rangle,\\
+ a_H(w)=\xi_H/F_H(w),\\
+ F_H(w)\ne0.
+ \end{gathered}
+ \tag{RC.3}
+\]
+Although the pairing is bilinear, the extra term in
+the denominator is a real positive Hermitian form:
+\[
+ \begin{gathered}
+ Q_H=z^{\mathsf T}H\overline z,\\
+ F_H=w_0+Q_H/\rho,\\
+ \mu|z|^2\le Q_H\le\nu|z|^2 .
+ \end{gathered}
+ \tag{RC.4}
+\]
+Indeed take the vector \(v=\overline z\); then
+\(v^*Hv=z^{\mathsf T}H\overline z\).
+
+We also have \(\|Hv\|\le\nu\|v\|\). Here is a proof
+that does not require diagonalizing \(H\). Positivity
+of the form on \(u+\lambda v\), for every complex
+\(\lambda\), gives
+\(|u^*Hv|^2\le(u^*Hu)(v^*Hv)\): minimize the resulting
+quadratic expression in \(\lambda\), with the zero
+quadratic-coefficient case following by a linear
+variation. Thus \(|u^*Hv|\le\nu\|u\|\|v\|\).
+Taking \(u=Hv/\|Hv\|\) when \(Hv\ne0\) gives the
+asserted norm bound; the zero case is immediate.
+Consequently \(|y_H|\le\nu\), strictly inside the
+chosen middle ball.
+
+Every zero of \(F_H\) with \(w\ne0\) lies in the
+strict interior of \(G\). To prove this, a zero
+forces \(w_0\) to be real and negative. It cannot
+have \(z=0\), since then \(F_H=w_0\ne0\).
+Write \(w_0=-\ell\), \(\ell>0\), and set
+\(q=|z|/\ell\). RC.4 gives
+\[
+ \begin{gathered}
+ \ell=Q_H/\rho
+       \ge\mu |z|^2/\rho,\\
+ \mu q^2\le\sqrt{1+q^2}.
+ \end{gathered}
+ \tag{RC.5}
+\]
+Both sides are nonnegative. Squaring and solving the
+quadratic inequality in \(q^2\) gives
+\[
+ \begin{gathered}
+ q^2\le
+ \frac{1+\sqrt{1+4\mu^2}}{2\mu^2}\\
+ \le1+\mu^{-2}<K^2 .
+ \end{gathered}
+ \tag{RC.6}
+\]
+For the second inequality, square the positive
+inequality \(\sqrt{1+4\mu^2}\le1+2\mu^2\).
+The imaginary coordinate is zero and hence has
+strict inequality in RC.2 as well. This proves the
+strict-interior assertion. In dimension \(d=0\)
+there are no such zeros.
+
+In particular \(a_H\) is a smooth generating vector
+on the entire actual complement of \(G\):
+\(\langle a_H,w\rangle=1\). Its projective class is
+always \([1:y_H]\); its zeroth homogeneous
+coordinate never vanishes there.
+
+The cone is admissible at the nonzero normal
+covector \(e_0\), with a uniform nearby-covector
+margin. Every nonzero vector in \(G\) satisfies
+\[
+ \begin{gathered}
+ -\Re w_0=\ell\\
+   \ge\frac{|w|}{\sqrt{1+\epsilon^2+K^2}}>0.
+ \end{gathered}
+ \tag{RC.7}
+\]
+Perturbing the covector by norm less than half the
+reciprocal square root preserves half this positive
+margin, by the ordinary complex Cauchy inequality
+\(|\langle p,w\rangle|\le|p||w|\).
+Thus RC.2 has exactly the negative displacement
+polar sign of RM.3–RM.6.
+
+It can contain any finite list of the earlier
+admissible supports after an actual restriction.
+First use RM.4–RM.6 to obtain finitely many finite
+time/aperture and componentwise spatial constants.
+Take a common larger \(\epsilon\) and take \(K\)
+larger than the Euclidean norm of those spatial
+constants, as well as the bound in RC.2.
+This gives actual containment in \(G\).
+RC.7 then supplies one smaller actual covector
+neighbourhood. No aperture is asserted uniform
+over an infinite list of real germs.
+
+#### RC.1. Uniform denominator and derivative bounds
+
+There is a constant \(c>0\), depending only on the
+displayed dimensions and constants, such that
+\[
+ \begin{gathered}
+ c\rho\le|F_H(w)|\le(1+\nu)\rho,\\
+ w\notin\operatorname{int}G,\quad w\ne0,\\
+ H\in\mathcal K_{\mu,\nu}.
+ \end{gathered}
+ \tag{RC.8}
+\]
+The upper bound follows from RC.4 and
+\(|z|^2/\rho\le\rho\).
+For the lower bound restrict to \(|w|=1\) outside
+\(\operatorname{int}G\). This is compact.
+The matrix set in RC.1 is compact as a subset of
+the finite-dimensional real space of Hermitian
+matrices: its quadratic inequalities define a
+closed set, and the norm bound proved above
+bounds every entry by \(\nu\).
+The continuous function \(|F_H(w)|\) has no zero
+on the product of these compact sets, by RC.5–RC.6.
+Its minimum is therefore positive. Positive real
+homogeneity \(F_H(rw)=rF_H(w)\) proves RC.8
+for every \(\rho>0\).
+
+For every fixed real normal-coordinate multiindex
+\(\alpha\), the following bounds hold uniformly
+in the same directions and matrices:
+\[
+ \begin{gathered}
+ |\partial^\alpha y_H|\le C_\alpha\rho^{-|\alpha|},\\
+ |\partial^\alpha F_H|
+          \le C_\alpha\rho^{1-|\alpha|},\\
+ |\partial^\alpha a_H|
+          \le C_\alpha\rho^{-1-|\alpha|}.
+ \end{gathered}
+ \tag{RC.9}
+\]
+Here and below the constants need not be the same
+in different lines. For completeness the functions
+are smooth on a neighbourhood of the compact
+unit-direction/matrix product used above. RC.8
+keeps the reciprocal denominator smooth there;
+a smaller neighbourhood retains half its lower
+bound. Each fixed derivative is continuous and
+bounded on that compact product. Differentiating
+the positive-real homogeneities of degrees
+\(0,1,-1\), respectively, scales those derivatives
+by the displayed powers of \(\rho\). This proves
+all of RC.9, without a bound for a varying
+derivative order.
+
+#### RC.2. All finite parameter faces stay in the chart
+
+For any finite list \(H_0,\ldots,H_k\) in RC.1,
+use the oriented standard simplex and put
+\[
+ \begin{gathered}
+ H(\sigma)=\sum_{j=0}^k\sigma_jH_j,\\
+ \sigma_j\ge0,\qquad\sum_j\sigma_j=1 .
+ \end{gathered}
+ \tag{RC.10}
+\]
+The quadratic-form inequalities are convex, so
+every point remains in RC.1. RC.3 and RC.8
+therefore hold on the entire simplex, on every
+face and on the same endpoint complement.
+In particular \(|y_{H(\sigma)}|\le\nu\)
+and the entire family is in one fixed inner
+middle chart. This is interpolation of the
+Hermitian matrices followed by normalization;
+it is not affine interpolation of arbitrary
+normalized projective vectors.
+
+Set \(D=d_\sigma+\bar\partial\), with parameter
+differentials first, and define
+\[
+ \begin{gathered}
+ J_{0\ldots k}
+   =c_N\int_{\Delta^k}
+      \omega'_D(a_{H(\sigma)}),\\
+ \deg_{\bar\partial}J_{0\ldots k}=N-1-k .
+ \end{gathered}
+ \tag{RC.11}
+\]
+The argument of UC.3 applies because the scalar
+pairing is one throughout this simplex. It makes
+\(D\omega'_D(a_{H(\sigma)})=0\).
+For \(k=0\) this gives
+\(\bar\partial J_H=0\).
+For \(k\ge1\), parameter Stokes in the
+explicit ordering of UC.11 gives
+\[
+ \begin{gathered}
+ \bar\partial J_{0\ldots k}\\
+ =\sum_{j=0}^k(-1)^{k+j+1}
+       J_{0\ldots\widehat j\ldots k}.
+ \end{gathered}
+ \tag{RC.12}
+\]
+For \(k>N-1\) the integral is zero and this
+identity is its alternating face relation.
+All faces are restrictions of the same
+matrix-simplex construction, with the same
+denominator and chart margins. Thus these are
+actual compatible finite faces, including the
+higher face homotopies.
+
+Write \(\beta_H=J_H\). In the full relative
+complex for \(Z=\{w\in G\}\) on any small
+endpoint pair domain, the cochain
+\[
+                         k_H=(0,-\beta_H)
+ \tag{RC.13}
+\]
+has degree \(N\) and is closed. It represents
+the diagonal unit. Indeed let
+\(s_0(w)=\overline w/\rho^2\), and interpolate
+the normalized vectors
+\((1-t)s_0+t a_H\) on the endpoint complement.
+Their scalar pairing is one. UC.9 gives an
+explicit coefficient homotopy \(H(s_0,a_H)\),
+and UC.10 gives the literal boundary
+\[
+ \begin{gathered}
+ k_H-k_{\mathrm{unit}}\\
+        =d(0,H(s_0,a_H)).
+ \end{gathered}
+ \tag{RC.14}
+\]
+This last homotopy is in the endpoint coefficient
+complex. It is not used as a middle-coordinate
+path, and its projective coordinates are not
+asserted to stay in the middle chart.
+The actual middle parameter faces are RC.10.
+This distinguishes RC.14 from the chart crossing
+of HP.11 while retaining its full relative
+equality witness.
+
+The fixed-derivative bounds also hold after
+any finite number of simplex derivatives:
+the parameter domains are compact, their
+matrix derivatives are bounded, and RC.8
+holds uniformly on them. In particular the
+coefficients of RC.11 satisfy
+\[
+ |J_{0\ldots k}(w)|
+       \le C_k\rho^{-2N+1+k}.
+ \tag{RC.15}
+\]
+There are one undifferentiated \(a_H\), \(k\)
+parameter derivatives of degree \(-1\), and
+\(N-1-k\) antiholomorphic derivatives of degree
+\(-2\). This gives exactly the exponent in
+RC.15. These coefficients are integrable
+near the normal origin: their radial absolute
+bound is a constant times
+\(\int_0^\eta r^k\,dr\).
+Extension by zero from the cone complement
+thus gives locally integrable coefficients
+if an extension is wanted. Its differential
+can have cone-boundary terms; it is not
+silently identified with just the diagonal
+current. RC.14 is the full relative unit
+comparison and keeps those boundary effects.
+
+#### RC.3. The first normal-circle family and a common proper collar
+
+Let the endpoints in the first incidence order be
+\((t,x)\), \((t',x')\), so
+\(w=(t'-t,x'-x)\). Write the middle coordinates
+as \((s,y)\). The two actual incidence functions
+are
+\[
+ \begin{gathered}
+ f=s-t-x^{\mathsf T}y,\\
+ g=t'-s+(x')^{\mathsf T}y,\\
+ f+g=w_0+z^{\mathsf T}y .
+ \end{gathered}
+ \tag{RC.16}
+\]
+On the endpoint complement use the middle family
+\[
+ \begin{gathered}
+ y=y_{H(\sigma)}(w),\\
+ f=\tfrac12 F_{H(\sigma)}(w)e^{i\theta},\\
+ s=t+x^{\mathsf T}y+f,\\
+ 0\le\theta\le2\pi .
+ \end{gathered}
+ \tag{RC.17}
+\]
+It is periodic in \(\theta\). Its positive
+normal circle surrounds \(f=0\) and excludes
+\(g=0\), since
+\[
+ \begin{gathered}
+ |f|=\tfrac12|F_H|,\\
+ |g|=|F_H-f|\ge\tfrac12|F_H|,\\
+ |F_H|\ge c\rho>0.
+ \end{gathered}
+ \tag{RC.18}
+\]
+The finite simplices, their faces and this
+circle have the same bounds.
+
+The ordinary normal residue is an equality
+of parameter forms:
+\[
+ \begin{gathered}
+ \frac1{2\pi i}
+ \int_{S^1}^{+}
+ \frac{df\wedge dy\wedge dw}{f(F_H-f)^N}\\
+ =\frac{dy\wedge dw}{F_H^N}.
+ \end{gathered}
+ \tag{RC.19}
+\]
+To verify it directly, on \(|f|=|F_H|/2\)
+expand \((F_H-f)^{-N}\) by its convergent
+power series in \(f/F_H\). The sum is uniformly
+convergent there, with all fixed derivatives
+on compact parameter subsets of the endpoint
+complement. Only its constant term survives
+the circle integral of \(df/f\), giving
+\(F_H^{-N}\), as in OI.18.
+There is no derivative-of-radius correction:
+after pullback, \(df\) has \(\theta\)-component
+\(if\,d\theta\); every other component contains
+no \(d\theta\). The factors \(dy\) and \(dw\)
+also contain no \(d\theta\). Fibre integration
+therefore selects exactly that displayed
+normal component. At fixed endpoints
+\(ds\wedge dy=df\wedge dy\), since
+the extra \(x^{\mathsf T}dy\) has a repeated
+spatial differential. The same
+\(\theta\)-selection proves the full-family
+identity when the endpoints vary.
+
+Multiplying RC.19 by \(c_N\), then selecting
+parameter degree \(k\) and integrating its
+matrix simplex, gives
+\[
+ \begin{gathered}
+ c_N\int_{\Delta^k}
+       \frac{dy_H\wedge dw}{F_H^N}\\
+                 =J_{0\ldots k}\wedge dw .
+ \end{gathered}
+ \tag{RC.20}
+\]
+This is the pullback of the projectively
+invariant universal form UC.16.
+Its holomorphic \(w\)-differentials vanish
+against \(dw\); its remaining differential
+is \(d_\sigma+\bar\partial\), exactly
+RC.11. Thus RC.12 accounts for every
+parameter boundary in these ordinary
+periods.
+
+There is a common actual proper middle-variable
+collar for this entire family, including its
+closure at \(w=0\). Fix outer middle radii
+\(R_s,R_y\), and small endpoint bounds
+\(|t|\le r_t\), \(|x|\le r_x\),
+\(\rho\le r_w\), chosen so that
+\[
+ \begin{gathered}
+ |y_H|\le\nu<R_y/2,\\
+ |s|\\
+ \le r_t+\nu r_x+\tfrac12(1+\nu)r_w\\
+                         <R_s/2 .
+ \end{gathered}
+ \tag{RC.21}
+\]
+These follow from RC.8 and RC.17 and hold
+for every matrix and parameter face.
+The endpoint bounds can be made this small
+after the constants and the actual outer
+domain are fixed.
+
+Take the closure of the family's image
+in the endpoint-domain times middle-domain
+product. It is closed by definition.
+Over a compact endpoint set it is contained
+in that compact set times the closed middle
+balls in RC.21. Those balls are compact
+and strictly inside the actual middle domain.
+The closed intersection is compact.
+This proves properness of that closure
+over the actual endpoint domain, including
+the collapsed normal circle at \(w=0\).
+A unique limit of \(y_H\) at \(w=0\) is
+neither needed nor asserted.
+
+A single smooth collar can be chosen
+independently of the endpoint, the matrix,
+the parameter face and the circle.
+For explicitness put \(b(t)=e^{-1/t}\)
+for \(t>0\) and zero otherwise. For \(r<R\)
+in an ordinary Euclidean ball write
+\(q_v=|v|^2\), and set
+\[
+ \begin{gathered}
+ b_+=b(R^2-q_v),\\
+ b_-=b(q_v-r^2),\\
+ \chi_{r,R}(v)=\frac{b_+}{b_++b_-}.
+ \end{gathered}
+ \tag{RC.22}
+\]
+The denominator never vanishes; the two
+arguments cannot both be nonpositive.
+The function is smooth, equals one on
+\(|v|\le r\), and equals zero on
+\(|v|\ge R\). At the joining value \(t=0\),
+every derivative of \(b\) tends to zero:
+for \(t>0\) it is a polynomial in \(1/t\)
+times \(e^{-1/t}\), whose limit is zero.
+Choose inner radii strictly larger than
+the bounds in RC.21 and outer radii
+strictly smaller than \(R_s,R_y\).
+The product of the corresponding two
+functions is one near the closed family
+and compactly supported in the middle
+domain. The same function works for
+every finite diagram constructed here.
+In dimension \(d=0\) the spatial factor
+is one.
+
+For smooth cochains or currents defined
+on the chosen actual endpoint-times-middle
+domain and supported in that closed family,
+this collar permits controlled zero
+extension in the middle variable, by
+R.7 and V.4. A different source
+neighbourhood must satisfy R.7's own
+neighbourhood and support hypotheses.
+It does not extend arbitrary complement
+cochains through \(G\), nor show that an
+arbitrary microlocal-Hom composition
+already has that support.
+
+#### RC.4. The opposite order and its separate spatial sign
+
+Let the endpoints now be \((s,y)\),
+\((s',y')\), and put
+\(w'=(s'-s,y'-y)\).
+Use middle coordinates \((t,x)\) and
+the conventional functions
+\[
+ \begin{gathered}
+ g=t-s+y^{\mathsf T}x,\\
+ f'=s'-t-(y')^{\mathsf T}x,\\
+ g+f'=w'_0-(z')^{\mathsf T}x .
+ \end{gathered}
+ \tag{RC.23}
+\]
+Choose \(x=-y_{H(\sigma)}(w')\), and set
+\(g=F_H(w')e^{i\theta}/2\),
+\(t=s-y^{\mathsf T}x+g\).
+All denominator, derivative, chart and
+proper-collar bounds above apply after
+interchanging the endpoint spaces.
+In particular the ordered ordinary
+normal integral is
+\[
+ \begin{gathered}
+ \frac1{2\pi i}\int_{S^1}^{+}
+       \frac{dg}{g^N(F_H-g)}\\
+                          =F_H^{-N}.
+ \end{gathered}
+ \tag{RC.24}
+\]
+Expand \((F_H-g)^{-1}\) in \(g/F_H\);
+its coefficient of \(g^{N-1}\) is
+\(F_H^{-N}\). RC.18 gives uniform
+convergence on the same compact circle,
+so termwise integration proves RC.24
+including \(N=1\).
+
+The conventional ordered input block
+in this middle space is \(dt\wedge dx\).
+The normal-circle selection replaces it
+by \(dg\wedge dx\) with positive normal
+orientation. Since \(x=-y_H\),
+the spatial block satisfies
+\(dy_H=(-1)^d dx\). Consequently the
+reverse normalized ordinary family is
+\[
+ \begin{gathered}
+ (-1)^d c_N\int_{\Delta^k}
+           \frac{dx\wedge dw'}{F_H(w')^N}\\
+                       =J_{0\ldots k}\wedge dw' .
+ \end{gathered}
+ \tag{RC.25}
+\]
+This retains exactly the spatial factor
+UC.19. Its normal circle residue is
+positive; the spatial factor is a
+different calculation.
+
+The two ordinary period families
+RC.20 and RC.25 give the full relative
+unit representatives RC.13–RC.14.
+They have compatible finite parameter
+faces in one actual middle chart and
+a common proper collar for their
+explicit contour supports.
+Identifying either family with the
+actual microlocal-Hom coefficient
+composition on the source roofs of
+SN.5–SN.8 is a separate equality of
+derived morphisms. In particular the
+scalar \(c_N\) in these unit-normalized
+ordinary periods does not determine
+the scalar of that composition map.
+No general incidence inverse product
+or whole-real contact isomorphism
+is asserted by the contour calculation.
+
+
+![The excluded cone contains every denominator zero, the two normal circles avoid the other pole, and one inner collar contains the contour family](assets/bounded-generating-parameters-and-collar.png)
+
+*Figure RC.1. Panels A and B use the exact choices \(\mu=1/4\), \(\nu=1/2\), \(K=5\), \(\epsilon=1/2\). Panel A is the unit normal section \(b=0\), \(z\) real, \(H=\delta I\); its zero arc has \(1/4\le\delta\le1/2\) and lies strictly inside the cone by RC.5–RC.6. Panel B plots a real section with \(q\ge5\); it does not plot the general constant \(c\) of RC.8. Panel C is the positive normalized normal circle \(f/F=e^{i\theta}/2\), or \(g/F=e^{i\theta}/2\) in the other order. The other pole at one is excluded in both cases. Panel D is a projection to the norms \(|y|,|s|\), with endpoint bounds \(r_t=r_x=r_w=1/16\), contour bounds \(|y|\le1/2\), \(|s|\le9/64\), and the explicit collar of RC.21–RC.22. It is not a drawing of the full middle fibre. The ordinary period identities are RC.19–RC.20 and RC.24–RC.25.*
+
+Full PNG · SVG · Exact data · Drawing source
+
+Free primary context for the classical hyperplane form: [Harold P. Boas, *Math 685 Notes: Topics in Several Complex Variables*, 2005, revised 2010](https://haroldpboas.gitlab.io/courses/685-2005c/notes.pdf), Sections1.3 and1.5. The matrix family, support margins, bounds, finite faces and collar used here are proved above and in the exact earlier programme proofs linked above.
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,

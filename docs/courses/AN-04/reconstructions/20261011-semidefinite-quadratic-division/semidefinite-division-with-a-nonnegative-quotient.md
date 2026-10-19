@@ -220,3 +220,71 @@ Replace the imaginary part by its negative to obtain \(p_-=\tau-i\kappa F\). It 
 [Computational material](figures/build_figure.py) accompanies the text. Together with [indefinite division](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html), this gives both alternatives of Proposition 26.5.7. The affine construction retains its indefinite scope. For the sign-based operator estimate, read [one-direction propagation](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.html).
 
 Original expression: CC0-1.0. Linked components retain their terms. 
+
+## 6. One normalized transverse variable
+
+### D1. Exact division in one transverse variable
+
+**D1. Exact division in one transverse variable.** Let \(I\) be a compact interval contained in an open interval \(J\), let \(t_0\in I\), and let \(a(t,x)\) be a real smooth function on a neighborhood of \(J\times\{0\}\). Suppose throughout that neighborhood
+
+\[
+ a(t,0)=\partial_xa(t,0)=0,\qquad
+ a(t,x)a(t_0,x)\ge0,\qquad
+ \partial_x^2a(t_0,0)\ne0. \tag{SD24}
+\]
+
+There is one neighborhood of \(I\times\{0\}\) on which
+
+\[
+ a(t,x)=a(t_0,x)h(t,x),\qquad h\in C^\infty,\quad h\ge0.
+ \tag{SD25}
+\]
+
+This holds for either sign of the nonzero second derivative; no remainder is needed.
+
+**Proof.** The [compact-parameter Taylor formula](../20261004-free-stationary-phase/integration-prerequisite-completions.md), U001:P12.6, gives, for both signs of \(x\),
+
+\[
+ a(t,x)=x^2A(t,x),\qquad
+ A(t,x)=\int_0^1(1-s)\,\partial_x^2a(t,sx)\,ds. \tag{SD26}
+\]
+
+The compact-parameter integration theorem in the same companion makes \(A\) smooth with every time and space derivative. Put \(K(x)=A(t_0,x)\). Its value \(K(0)=\partial_x^2a(t_0,0)/2\) is nonzero, so \(K\) has no zero on one smaller interval. Compactness of \(I\) permits a single product neighborhood on which all segments in SD26 lie in the domain. Define \(h=A/K\) there. Smooth reciprocal and product rules prove its smoothness and the exact identity SD25. For \(x\ne0\), SD24 gives \(A(t,x)K(x)\ge0\), hence \(A/K\ge0\). Continuity gives the same inequality at \(x=0\), including at times when \(A(t,0)=0\). The denominator is fixed at \(t_0\); it is not necessary that every time slice have a nonzero Hessian. All derivatives of \(h\) are bounded on each smaller compact time-space rectangle by the integral derivative bounds and the positive lower bound for \(|K|\). This proves the common-neighborhood assertion.
+
+### D2. The degree-one homogeneous two-dimensional normal form
+
+**D2. The degree-one homogeneous two-dimensional normal form.** In canonical coordinates \((t,x;\tau,\xi)\), work on the cone \(\xi>0\) with
+
+\[
+ p(t,x;\tau,\xi)=\tau+i f(t,x,\xi),\qquad
+ f(t,x,\lambda\xi)=\lambda f(t,x,\xi)\quad(\lambda>0). \tag{SD27}
+\]
+
+The function \(f\) is real and independent of \(\tau\). Assume condition (P), \(f(t,0,1)=\partial_xf(t,0,1)=0\) on an open time margin about \(I\), and \(\partial_x^2f(t_0,0,1)\ne0\). Then near the compact characteristic segment \((t,0;0,1)\),
+
+\[
+ f(t,x,\xi)=g(x,\xi)h(t,x),\qquad
+ g(x,\xi)=f(t_0,x,\xi),\qquad h\ge0. \tag{SD28}
+\]
+
+Here \(g\) has degree one and \(h\) has degree zero in the covariables. The conclusion concerns this normalized symbol and its prescribed divisor.
+
+**Proof.** Homogeneity with \(\xi>0\) gives \(f(t,x,\xi)=\xi a(t,x)\), where \(a(t,x)=f(t,x,1)\). The real Hamilton field of \(p\) is \(\partial_t\). On each of its null bicharacteristics, \((x,\xi)\) is fixed and \(\tau=0\). Condition (P) therefore forbids opposite nonzero signs of \(a\) at any two times in the working interval. In particular it gives the sign inequality in SD24. The other assumptions give exactly D1. Multiplying SD25 by \(\xi\) proves SD28 on the whole smaller cone. Along the central segment \(df=0\), so \(dp=d\tau\). Restricted to \(dp=0\), the imaginary Hessian is \(\xi\,\partial_x^2a(t,0)\,dx^2\); the \(t\)-derivatives and mixed \(\xi\)-derivatives vanish there by the assumed zero jets. Thus the stated second derivative is precisely the transverse nondegeneracy used in this normal form.
+
+### D3. Failure for a prescribed degenerate divisor
+
+**D3. Failure for a prescribed degenerate divisor.** On the same cone let
+
+\[
+ p=\tau+i\xi(x^4+t^2x^2),\qquad t_0=0,\qquad g=\xi x^4. \tag{SD29}
+\]
+
+This is a smooth degree-one principal-type symbol satisfying (P), and \(\gamma(t)=(t,0;0,1)\) is a one-dimensional characteristic. Nevertheless no continuous \(h\) on a neighborhood of a nontrivial compact interval containing \(0\) can satisfy \(\operatorname{Im}p=gh\). The nonzero Hessian assumption at the prescribed time cannot be dropped from D2.
+
+**Proof.** The derivative \(\partial_\tau p=1\) proves principal type. The imaginary part is nonnegative everywhere on the cone; the conjugate symbol has a nonpositive imaginary part. The [local sign-test equivalence](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.md), PSG:E1, applied to \(p\) and its conjugate with the multiplier \(1\), gives both sign directions and hence (P) for every permitted nonvanishing multiplier. Indeed, for each multiplier \(q\), \(\operatorname{Re}(\bar q\bar p)=\operatorname{Re}(qp)\) and \(\operatorname{Im}(\bar q\bar p)=-\operatorname{Im}(qp)\), so the two conditions \(\Psi\) exclude both transitions along the same real Hamilton curves. Along \(\gamma\), the imaginary part and its full differential vanish, so \(dp=d\tau\) and \(H_p=\partial_t\). Its transverse second derivative is \(2\xi t^2\), which vanishes at the prescribed time \(0\). At any fixed nearby \(t\ne0\) and any \(x\ne0\), the proposed quotient is forced to equal \(1+t^2/x^2\), which is unbounded as \(x\to0\). This rules out even a continuous quotient on the stated neighborhood. There is a different exact factorization, \(\operatorname{Im}p=(\xi x^2)(x^2+t^2)\), with nonnegative second factor. Thus SD29 disproves division by the prescribed \(g\), not the existence of every possible time-independent divisor.
+
+The smooth family in X2 has two independent transverse variables \((x,v)\). In its homogeneous realization X3, normalizing \(\kappa=1\) leaves both active variables \((x,\eta)\), so both variables remain available in base dimension three. In D2, normalizing the sole positive transverse covariable leaves only \(x\). A smooth family written with a free covariable is not automatically a degree-one homogeneous symbol on a nonzero ray. These are different hypotheses, and SD25 does not assert divisibility for the two-variable family in X2. The general semidefinite theorem H1 and its one-sided remainder retain their full higher-dimensional scope.
+
+![Normalized transverse variables and the prescribed divisor](figures/one-transverse-variable.svg)
+
+The diagram gives the exact coordinate slices in D2 and X3. Its lower row compares the prescribed divisor in D3 with the distinct divisor that does permit a smooth quotient; no curve is a numerical test of (P). The [figure source](figures/draw_one_transverse_variable.py) contains the coordinates and labels.

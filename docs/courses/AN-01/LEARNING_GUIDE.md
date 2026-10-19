@@ -155,6 +155,14 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **Which finite jets determine a stationary integral?** [*Finite stationary jets and quadratic exchange*](src/finite-stationary-jets-and-quadratic-exchange.md) derives the complex quadratic remainder, the full finite-derivative stationary expansion and the exact algebra of nilpotent quadratic exchange, with its sharp order loss.
 
+- **What does a Fourier pairing do to a nonlinear phase?** [*Paired variables and stationary parameters*](src/paired-variables-and-stationary-parameters.md) follows real critical points through parameters and proves the paired-phase expansion with its exact derivative count, factorials and sharp half-order mechanism.
+
+- **How does a small boundary value control the interior?** [*Boundary smallness and harmonic weights*](src/boundary-smallness-and-harmonic-weights.md) constructs a positive harmonic weight from disk comparison, proves quantitative boundary propagation on general upper domains, and recovers full decay orders.
+
+- **What replaces a missing real critical point?** [*Virtual critical points and explicit coefficients*](src/virtual-critical-points-and-explicit-coefficients.md) derives the explicit Gaussian coefficients from a smooth complex critical graph, with its positive critical value, oriented Jacobian and independence of representatives.
+
+- **How does curvature control lattice counts?** [*Curvature, two boundary points and lattice counts*](src/curvature-two-boundary-points-and-lattice-counts.md) computes the two normal phases of a convex body, proves a smooth Fourier summation identity and balances the two smoothing errors.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions

@@ -77,7 +77,7 @@ Suppose every fibre of \(f:X\to Y\) has dimension at most \(d\). For a construct
 
 Indeed, partition \(T\) into locally closed pieces and take an irreducible component \(W\) of their inverse images. If \(Z\) is its image closure, the dimension formula for finite-type integral varieties gives
 \(\dim W=\dim Z+\operatorname{trdeg}_{k(Z)}k(W)\).
-The second summand is the dimension of the generic fibre of \(W\to Z\), at most \(d\). Taking maxima proves (2.1). The dimension formula itself is one of the algebraic prerequisites still to be checked recursively.
+The second summand is the dimension of the generic fibre of \(W\to Z\), at most \(d\). Taking maxima proves (2.1). This argument requires the algebraic dimension formula stated above.
 
 **Proposition 2.1.** Under this fibre hypothesis the following four bounds hold:
 
@@ -195,7 +195,7 @@ These conclusions concern geometric cohomology in the arithmetic setting. Includ
 
 ### Torsion support and the integral cut
 
-For torsion coefficients with torsion prime to the characteristic, the earlier lesson [Cohomological dimension and the Künneth formula](course:ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula#6-affine-direct-images-lower-support-dimension), Theorem 6.2, writes the relative Artin proof. Its bound applies to every torsion sheaf, using the transcendence degrees of points with nonzero stalks. The proof uses strict-local finite models and affine cohomological-dimension induction; it does not replace a nonproper direct-image stalk by the cohomology of the geometric fibre. On constructible supports the transcendence-degree bound is (4.1). Its own prerequisites remain subject to recursive verification.
+For torsion coefficients with torsion prime to the characteristic, the earlier lesson [Cohomological dimension and the Künneth formula](course:ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula#6-affine-direct-images-lower-support-dimension), Theorem 6.2, writes the relative Artin proof. Its bound applies to every torsion sheaf, using the transcendence degrees of points with nonzero stalks. The proof uses strict-local finite models and affine cohomological-dimension induction; it does not replace a nonproper direct-image stalk by the cohomology of the geometric fibre. On constructible supports the transcendence-degree bound is (4.1). The strict-local finite-model and affine cohomological-dimension arguments are prerequisites of this bound.
 
 For rational adic coefficients we need a separate argument. Let \(E/\mathbb Q_\ell\) be finite, \(\mathcal O\) its valuation ring, \(\pi\) a uniformizer, and \(k=\mathcal O/(\pi)\). Use the bounded complete constructible category of the first lesson, identified with its completed-ring presentation in BW. The operation inputs below are supplied for separated finite-type schemes and morphisms over a field, with \(\ell\) invertible in that field. The base field is distinct from the coefficient residue field \(k\).
 
@@ -207,7 +207,7 @@ For rational adic coefficients we need a separate argument. Let \(E/\mathbb Q_\e
 | Recollement and exceptional restriction | BV.4 gives the exceptional adjoint, closed-support triangle and smooth orientation. BX.2 supplies the ordinary open–closed triangle. The categorical cut is Gluing t-structures, Theorem 2.1. |
 | Integral models and rational operations | BX.6–BX.7 give constructible integral models and the equivalence (BX.20). Equations (BX.21)–(BX.22) identify ordinary restriction and image after rationalization; the exceptional adjunction and its closed-support comparison identify exceptional restriction as well. |
 
-These are the specified maps, not just equalities of cohomology dimensions. Nonproper image finiteness and exceptional rationalization are therefore supplied inputs at this field-level scope, rather than unwritten premises. The stratified truncation below still uses the compatible smooth-stratum tests and refinement hypotheses stated in its proof. The earlier providers' recursive foundations remain separate checks; nothing here extends their field-level constructibility theorem to an arbitrary trait or strict-local limit.
+These are the specified maps, not just equalities of cohomology dimensions. Nonproper image finiteness and exceptional rationalization are therefore supplied inputs at this field-level scope, rather than unwritten premises. The stratified truncation below still uses the compatible smooth-stratum tests and refinement hypotheses stated in its proof. The field-level constructibility theorem requires its stated algebraic and cohomological prerequisites; it does not extend to an arbitrary trait or strict-local limit.
 
 **Lemma 4.2 (integral upper model).** Under these integral hypotheses, every rational \(K\in{}^pD^{\le0}(X,E)\) has a model \(L\in{}^pD^{\le0}(X,\mathcal O)\) whose derived reduction \(L\otimes^L_{\mathcal O}k\) is also upper perverse.
 

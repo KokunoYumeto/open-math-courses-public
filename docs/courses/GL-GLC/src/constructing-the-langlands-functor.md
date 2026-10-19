@@ -1,6 +1,6 @@
 # Constructing the Langlands functor (GLC I)
 
-Draft. Self-checked by the writing AI.
+Draft.
 
 Let \(X\) be a smooth projective connected curve over an algebraically closed field \(k\) of characteristic zero. Let \(G\) be a connected reductive group, and let \(\check G\) be its Langlands dual. Fix a Borel subgroup \(B\), its unipotent radical \(N\), and a theta characteristic \(\kappa\) with \(\kappa^{\otimes2}\simeq\omega_X\). Put
 \[

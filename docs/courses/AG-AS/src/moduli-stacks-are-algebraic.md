@@ -392,7 +392,7 @@ A compatible family of isomorphisms gives a unique homomorphism of the algebraiz
 
 ## 10. Precisely imported inputs and scope
 
-The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
+The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. Every nonzero obstruction in this quadratic class already occurs in a finite-type quasi-coherent subsheaf, so the universal module test is equivalent to its finite-generation test. For every raw bound, the universal vanishing question is equivalent to its structure-sheaf test over the same entire class of spaces, using split square-zero thickenings that preserve the atlas fibres. On a principal quadratic overlap, tensor powers of one invertible sheaf give an exhaustive test for all quasi-coherent first cohomology; field overlaps are automatically principal and have the exact invariant-field density test. Every field-overlap target has equivalent affineness to a quotient with a completely integrally closed Goldman chart. Its rank-one valuation representation gives an exact density test over a pointwise compact normalized family. In the principal quadratic normal form, a reciprocal cofinal parameter in the Jacobson radical forces affineness in every characteristic. For proper field-overlap charts this parameter condition is also necessary. The whole normalized rank-one valuation family can fail Zariski quasi-compactness even for an eligible completely integrally closed chart with affine target. Any counterexample in the whole quadratic field-overlap class would yield one with a countable completely integrally closed Goldman chart and overlap field finitely generated over its prime field, preserving a nonzero scalar witness and the closed mixed graph. Its whole normalized rank-one family is compact metrizable for pointwise convergence. The graph gives a finite norm-one positivity cover; a single uniformly positive parameter is not constructed in general. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
 
 - **Limits and modules.** On quasi-compact quasi-separated algebraic spaces, finite-presentation data descend along affine limits, quasi-coherent modules are filtered colimits of finitely presented ones, and relative flatness and proper support eventually descend. The particular support statement is [Stacks, Tag 08K2]. These results permit Noetherian models over finitely generated $\mathbf Z$-algebras.
 - **Perfect approximation and proper-support comparison.** For bounded-above coherent $E$ on a Noetherian space and any $m$, a perfect $P\to E$ is an isomorphism above $m$ and a surjection at $m$ [Stacks, Tags 08HI, 08HJ, 08HP]. For a quasi-separated locally finite type map to a Noetherian base, a perfect $P$ and bounded coherent $G$ that is base-flat and properly supported give perfect $Rf_*R\mathcal Hom(P,G)$, with arbitrary derived base change [Stacks, Tags 0DKK, 08JQ]. Section 5.1 gives the low-Ext application [Tag 08JR].
@@ -15131,6 +15131,937 @@ the separated affine atlas already present in the normal-form proof.
 ![The normalized quadratic-atlas complex has an exact periodic tail and a single explicit first-cohomology obstruction](../figures/raw-fibre-equivariant-cech.png)
 
 *For a quasi-coherent sheaf on the original target $X$, the normalized atlas cochains are the alternating complex (QE1). Faithfully flat descent for the finite torsor over $\operatorname{Spec}C$ proves the kernel-image identities (QE2), including characteristic two. Formula (QE3) then expresses $H^1(X,F)$ as the quotient of $P$ by the chart sections and invariant sections. The equality (QE5) for all such data is the remaining vanishing question within this quadratic class. The editable diagram is [raw-fibre-equivariant-cech.svg](../figures/raw-fibre-equivariant-cech.svg).*
+
+**Finite witnesses for the equivariant cohomology obstruction**
+
+**An open-restriction lemma.**
+Let $\rho:A\to B$ be the ring map of an affine open immersion
+$\operatorname{Spec}B\hookrightarrow\operatorname{Spec}A$.
+Thus $B$ is flat over $A$ and multiplication gives
+$B\otimes_A B\simeq B$. For any $A$-module $M$ put
+$P=B\otimes_A M$, with natural map $\iota:M\to P$.
+If $P_0\subset P$ is a $B$-submodule, let
+$$
+                M'=\{m\in M:\ \iota(m)\in P_0\}.
+                                                               \tag{FW1}
+$$
+Then restriction induces an isomorphism
+$$
+                       B\otimes_A M'\simeq P_0.             \tag{FW2}
+$$
+Indeed $M'$ is the kernel of $M\to P/P_0$. Tensor with the flat
+$A$-module $B$. For every $B$-module $Q$, the epimorphism identity
+$B\otimes_A B\simeq B$ gives $B\otimes_A Q\simeq Q$.
+Consequently the tensored kernel is the kernel of
+$P\to P/P_0$, namely $P_0$. No injectivity of $\iota$ is needed.
+
+**A finite invariant piece containing any prescribed sections.**
+Assume now the complete quadratic normal-form hypotheses
+(QN1)--(QN9) and use the notation of (QE1)--(QE5). In particular
+$P$ has a $\sigma$-semilinear involution $T$ and
+$C=B^\sigma$. Choose finitely many elements $S\subset M$ and
+$p_1,\ldots,p_r\in P$. The $B$-submodule
+$$
+ P_0=\sum_{m\in S}\bigl(B\iota(m)+BT\iota(m)\bigr)
+                   +\sum_{j=1}^r\bigl(Bp_j+BTp_j\bigr)
+                                                               \tag{FW3}
+$$
+is finitely generated and $T$-stable. Stability follows directly
+from semilinearity and $T^2=1$: $T(bp)=\sigma(b)T(p)$ and
+$T(bT(p))=\sigma(b)p$.
+
+Apply (FW1)--(FW2) to this $P_0$. Each of its finitely many
+$B$-generators is a finite sum of $B$-multiples of images of elements
+of $M'$, by (FW2). Collect the finitely many such elements of $M'$
+appearing in these expressions, together with $S$. Their $A$-span
+$M_0\subset M'$ is finitely generated, contains $S$, and satisfies
+$$
+                     B\otimes_A M_0\simeq P_0.             \tag{FW4}
+$$
+The map on the left is injective into $P$, since $B$ is flat and
+$M_0\subset M$; its image is exactly $P_0$ by the choice of
+generators. Thus the restriction $T|_{P_0}$ defines a valid
+descent datum on $M_0$. Descent gives a quasi-coherent subsheaf
+$F_0\subset F$ on $X$. It is of finite type, since this can be
+checked after the faithfully flat etale atlas, where it is the
+finitely generated module $M_0$.
+
+The invariant module $N_0=P_0^T$ is finitely generated over $C$ as
+well. Faithfully flat torsor descent gives
+$B\otimes_C N_0\simeq P_0$. Express a finite set of $B$-generators
+of $P_0$ using finitely many elements of $N_0$ and let $N_0'$ be
+their finite $C$-span. Then $B\otimes_C(N_0/N_0')=0$.
+Faithful flatness implies $N_0=N_0'$, proving the assertion.
+
+**Filtered unions and the exact cohomology test.**
+Every finite set of elements of $M$ is contained in some $M_0$
+as above. The family of finitely generated $A$-submodules
+$M_\lambda\subset M$ for which $B\otimes_A M_\lambda$
+is $T$-stable is directed under sums: the sum of two such finite
+modules is again finite, and its localized image is the sum of
+their stable submodules. Therefore
+$$
+        M=\mathop{\mathrm{colim}}_\lambda M_\lambda,
+ \qquad P=\mathop{\mathrm{colim}}_\lambda P_\lambda,
+ \qquad F=\mathop{\mathrm{colim}}_\lambda F_\lambda,
+                                                               \tag{FW5}
+$$
+where every $F_\lambda$ is a finite-type quasi-coherent subsheaf.
+The same invariants calculation applies to any filtered system of
+these descent data, not just a system of submodules. Filtered
+colimits of $C$-modules are exact, so they commute with the kernel
+of the single $C$-linear endomorphism $T-1$:
+$$
+        P^T=\mathop{\mathrm{colim}}_\lambda P_\lambda^{T_\lambda}.
+                                                               \tag{FW6}
+$$
+Apply (QE3), together with the exactness of filtered colimits of
+abelian groups, to the cokernels of
+$M_\lambda\oplus P_\lambda^{T_\lambda}\to P_\lambda$.
+This gives the explicit cohomology comparison
+$$
+ H^1(X,F)=\mathop{\mathrm{colim}}_\lambda
+        \frac{P_\lambda}
+        {\iota_\lambda(M_\lambda)+P_\lambda^{T_\lambda}}
+       =\mathop{\mathrm{colim}}_\lambda H^1(X,F_\lambda).
+                                                               \tag{FW7}
+$$
+The formula also proves commutation with filtered colimits in
+degree zero, by taking the kernel of $(T-1)\iota$, and in higher
+degrees, where (QE3) gives zero.
+
+In particular, let a nonzero class of $H^1(X,F)$ be represented by
+$p\in P$. Use (FW3) with $r=1$ and $p_1=p$. Its finite-type
+subsheaf $F_0$ has $p\in P_0$, and the class of $p$ in
+$$
+                   P_0/(\iota(M_0)+P_0^T)                 \tag{FW8}
+$$
+maps to the original nonzero class. It is consequently nonzero.
+This is an explicit finite-witness reduction for each proposed
+nonzero class; it is not a dimension count or a finite sample.
+
+Thus the universal equality in (QE5), for the entire quadratic
+normal-form class, holds for all descent data if and only if it
+holds whenever $M$ is finitely generated over $A$. In seeking a
+counterexample one may require both the chart module $M_0$ and
+its invariant module $P_0^T$ to be finitely generated over their
+respective rings $A,C$, while retaining the same nonzero class.
+
+**Scope.**
+Finite generation here is not a claim of finite presentation,
+projectivity, freeness, a Noetherian coefficient ring, or finite
+generation of the cohomology group over the global ring.
+The invariant submodule need not be an $A$-submodule, so the
+construction uses the preimage (FW1) before choosing finite
+generators. The equality (QE5) itself remains unproved. The original
+raw-fibre obligation also includes larger geometric degrees and
+arbitrary raw bounds, and is not settled by the finite-witness
+equivalence. The mathematical inputs are the affine-open flat
+epimorphism identity, the exact torsor descent and cohomology
+formulas proved in (QE1)--(QE4), and exactness of filtered colimits
+of modules. Faithfully flat module descent is The Stacks Project,
+Section 59.16, Tag 03O6;
+[Primary source](https://stacks.math.columbia.edu/tag/03O6).
+
+![A nonzero equivariant first-cohomology class has a finite witness in a finite-type quasi-coherent subsheaf](../figures/raw-fibre-finite-equivariant-witness.png)
+
+*Starting with a representative $p\in P$, form its finite $T$-stable $B$-span, take the preimage in $M$, and choose finitely many chart sections whose restrictions generate that span. Equations (FW1)–(FW4) give the resulting finite-type subsheaf. Its invariant module is finite over $C$, and the quotient in (FW8) retains the original nonzero class. This equivalence supplies no nonzero class and no proof of the equality (QE5). The editable diagram is [raw-fibre-finite-equivariant-witness.svg](../figures/raw-fibre-finite-equivariant-witness.svg).*
+
+**Structure-sheaf witnesses on split square-zero thickenings**
+
+**The construction for the full raw-fibre question.**
+Let $X$ be a quasi-compact separated algebraic space, let
+$f:U=\operatorname{Spec}A\to X$ be a surjective etale morphism,
+and let $F$ be any quasi-coherent $\mathcal O_X$-module. Define
+the quasi-coherent algebra
+$$
+ \mathcal E=\mathcal O_X\ltimes F,\qquad
+ (a,m)(a',m')=(aa',am'+a'm),\qquad F^2=0,
+ \qquad X^\sharp=\underline{\operatorname{Spec}}_X\mathcal E.
+                                                               \tag{SZ1}
+$$
+The notation $\ltimes$ denotes this split square-zero extension,
+not a tensor algebra or a noncommutative product. The construction
+of the relative spectrum for algebraic spaces gives an affine
+morphism $\pi:X^\sharp\to X$, compatible with arbitrary base
+change. Projection $\mathcal E\to\mathcal O_X$ gives a closed
+immersion $i:X\hookrightarrow X^\sharp$ with square-zero ideal,
+and $\pi i=1_X$. On every affine chart it is the inclusion
+$\operatorname{Spec}R\hookrightarrow\operatorname{Spec}(R\ltimes M)$.
+Every prime of $R\ltimes M$ contains $0\ltimes M$, so these two
+spectra are canonically homeomorphic and have identical residue fields.
+Consequently $|i|$ and $|\pi|$ are inverse homeomorphisms.
+
+Put $M=\Gamma(U,f^*F)$. The cartesian base change of the atlas is
+$$
+ U^\sharp=U\times_X X^\sharp
+             =\operatorname{Spec}(A\ltimes M)
+                    \longrightarrow X^\sharp.              \tag{SZ2}
+$$
+It is again a surjective etale morphism from an affine scheme.
+Moreover $X^\sharp$ is quasi-compact and separated: it is affine
+over the quasi-compact separated space $X$. Under the canonical
+homeomorphisms $|U^\sharp|=|U|$ and $|X^\sharp|=|X|$, the raw
+atlas maps agree. Thus every raw fibre has exactly its original
+size. Their geometric fibre sizes agree as well: nilpotent ideals
+do not alter residue fields, and (SZ2) is a base change of $f$.
+There is no finiteness or flatness assumption on $F$ in this argument.
+
+**The cohomology splitting.**
+For every $q\geq0$ there is a canonical splitting of abelian groups
+$$
+ H^q(X^\sharp,\mathcal O_{X^\sharp})
+       =H^q(X,\mathcal O_X)\oplus H^q(X,F).                 \tag{SZ3}
+$$
+Here is a direct Cech proof. The $n$th term $U_n$ of the atlas
+nerve of $X$ is affine, since it is closed in the corresponding
+product of copies of the affine scheme $U$. The corresponding
+term for $X^\sharp$ is
+$U_n^\sharp=U_n\times_X X^\sharp$, also affine, and its ring of
+functions is
+$$
+ \Gamma(U_n^\sharp,\mathcal O_{U_n^\sharp})
+   =\Gamma(U_n,\mathcal O_{U_n})\ltimes\Gamma(U_n,F|_{U_n}).
+                                                               \tag{SZ4}
+$$
+All face and degeneracy maps preserve the two additive summands.
+Hence the entire Cech cochain complex splits into the complexes
+for $\mathcal O_X$ and $F$. Affine quasi-coherent acyclicity makes
+these complexes compute the displayed cohomology groups, proving
+(SZ3) in every degree. This does not apply an arbitrary nonflat
+base-change formula to cohomology.
+
+In particular any nonzero $\xi\in H^q(X,F)$ gives the nonzero
+structure-sheaf class $(0,\xi)$ on $X^\sharp$, with the same raw
+atlas bound. For each integer $d$, the following universal
+assertions are therefore equivalent:
+$$
+ \begin{split}
+ &H^q(Z,G)=0\text{ for every quasi-coherent }G,\ q\geq d,\\
+ &H^q(Z,\mathcal O_Z)=0\text{ for }q\geq d,
+ \end{split}                                                \tag{SZ5}
+$$
+where in both lines $Z$ ranges over all quasi-compact separated
+algebraic spaces with an affine surjective etale atlas whose raw
+fibres have size at most $d$. The first assertion implies the
+second by taking $G=\mathcal O_Z$. Conversely apply the second
+to $Z^\sharp$ and use (SZ3). The quantification over all such
+spaces, including their split square-zero thickenings, is essential.
+Testing $\mathcal O_X$ only on one fixed $X$ is not this universal
+test. If $d=0$, the atlas and target are empty and both assertions
+hold trivially.
+
+**The explicit quadratic ring form.**
+Under the full normal-form hypotheses (QN1)--(QN9), use the
+notation $\rho:A\to B$, $\sigma$, $C=B^\sigma$, and
+$P=B\otimes_A M$ of (QE1)--(QE5). Let $T$ be the given
+$\sigma$-semilinear involution on $P$, let $\iota:M\to P$ be
+restriction, and put $N=P^T$. The same thickening has the ring data
+$$
+ \begin{gathered}
+ A^\sharp=A\ltimes M,\qquad B^\sharp=B\ltimes P,
+ \qquad \rho^\sharp(a,m)=(\rho(a),\iota(m)),\\
+ \sigma^\sharp(b,p)=(\sigma(b),T(p)),\qquad
+ (B^\sharp)^{\sigma^\sharp}=C\ltimes N.
+ \end{gathered}                                             \tag{SZ6}
+$$
+Semilinearity gives multiplicativity of $\sigma^\sharp$:
+$T(bp'+b'p)=\sigma(b)T(p')+\sigma(b')T(p)$.
+It squares to the identity because $\sigma^2=T^2=1$.
+The invariant formula follows by equating the two coordinates.
+Also $B^\sharp=B\otimes_A A^\sharp$ as rings, so its spectrum
+is the base change of the same affine open overlap.
+
+All other normal-form conditions persist. The canonical
+homeomorphism $|\operatorname{Spec}B^\sharp|=|\operatorname{Spec}B|$
+identifies the involutions on raw points; geometric freeness also
+persists under the nilpotent thickening. For closedness of the mixed
+graph, the map $A^\sharp\otimes_{\mathbf Z}A^\sharp\to B^\sharp$
+contains $B\ltimes0$ in its image by (QN5), and contains
+$0\ltimes\iota(M)$ from the first factor. Multiplication by
+$B\ltimes0$ then gives all of $0\ltimes P$, since
+$P=B\iota(M)$. The map is therefore surjective. This also verifies
+closedness directly, without imposing a principal-open assumption
+or injectivity of $\rho$.
+
+Apply (QE4) to (SZ6). The additive quotient splits as
+$$
+ \frac{B^\sharp}
+ {\rho^\sharp(A^\sharp)+(B^\sharp)^{\sigma^\sharp}}
+   =\frac{B}{\rho(A)+C}\oplus\frac{P}{\iota(M)+N}.
+                                                               \tag{SZ7}
+$$
+Indeed both the numerator and each summand of the denominator
+split into their base-ring and module coordinates. The denominator
+is an additive subgroup; no quotient-ring structure is asserted.
+A nonzero class represented by $p$ in the second quotient is thus
+retained by the representative $(0,p)$ in the structure-sheaf
+quotient on the left.
+
+It follows that the universal equality (QE5) over the entire
+quadratic normal-form class is equivalent to the scalar equality
+$$
+                 B=\rho(A)+B^\sigma                       \tag{SZ8}
+$$
+over the same entire class of rings, allowing the split square-zero
+extensions (SZ6). One direction is its specialization $M=A$.
+For the other, apply the universal scalar equality to (SZ6) and
+use (SZ7). This does not replace the arbitrary-module test on one
+fixed ring datum by its structure-sheaf test on that datum.
+
+If there is a nonzero quadratic obstruction, (FW1)--(FW8) first
+retain it in a finite-type subsheaf with chart module $M_0$ finite
+over $A$ and invariant module $N_0$ finite over $C$. The resulting
+$A\ltimes M_0$ and $C\ltimes N_0$ are finite modules over their
+respective original rings. Finite presentation, flatness and
+projectivity of these extensions are not claimed.
+
+**Scope and sources.**
+Equivalence (SZ5) preserves every raw bound in the original
+vanishing question, and (SZ8) gives its scalar form within the
+quadratic class. Neither equivalence proves the scalar equalities
+or constructs a nonzero class. Restricting the scalar test to
+reduced rings would discard the very thickenings used in the
+proof. The full original vanishing assertion remains unproved.
+The relative-spectrum construction and its arbitrary-base-change
+compatibility are The Stacks Project, Lemma 67.20.7, Tag 081V;
+[Primary source](https://stacks.math.columbia.edu/tag/081V).
+The remaining inputs are the affine-atlas Cech calculation and
+the proved formulas (QE1)--(QE4) and (FW1)--(FW8).
+
+![Split square-zero thickening preserves the raw atlas fibres and carries every module cohomology class into structure-sheaf cohomology](../figures/raw-fibre-square-zero-scalar-reduction.png)
+
+*The cartesian atlas in (SZ2) has the same raw and geometric fibre sizes as the original atlas. The additive splitting in (SZ3) retains every nonzero module class in structure-sheaf cohomology. In the quadratic normal form, (SZ6)–(SZ7) express this as an explicit direct sum of scalar and module quotients. The universal scalar test must include all valid spaces and their thickenings; its vanishing remains unproved. The editable diagram is [raw-fibre-square-zero-scalar-reduction.svg](../figures/raw-fibre-square-zero-scalar-reduction.svg).*
+
+**Invertible-sheaf witnesses on a principal overlap**
+
+Assume the entire quadratic normal form (QN1)--(QN9), with the
+additional hypothesis that its affine overlap is principal:
+$B=A_a$. Write $r=\rho(a)\in B^\times$, $s=\sigma(r)$ and
+$C=B^\sigma$. Neither $A\to B$ nor multiplication by $a$ on an
+$A$-module is assumed injective. The element $s$ is also a unit.
+
+**One invertible sheaf and its powers.**
+For each integer $n\geq0$, let $L_n$ be the sheaf with chart module
+$A$ and the semilinear involution on $B$ given by
+$$
+ T_n(t)=(s/r)^n\sigma(t),\qquad
+ L_n=L_1^{\otimes n},\qquad L_0=\mathcal O_X.
+                                                               \tag{PW1}
+$$
+These are valid descent data, since
+$(s/r)^n\sigma((s/r)^n)=1$. The descended sheaf is invertible:
+this is checked on the surjective etale atlas, where its module is
+free of rank one. Its invariant module is $r^{-n}C$, because
+$T_n(t)=t$ is equivalent to $\sigma(r^nt)=r^nt$.
+The cohomology formula (QE3), followed by multiplication by $r^n$,
+therefore gives
+$$
+ H^1(X,L_n)\simeq
+       B/(r^n\rho(A)+C)=:Q_n,\qquad
+ H^q(X,L_n)=0\quad(q\geq2).                              \tag{PW2}
+$$
+The quotients are additive groups, not quotient rings or
+necessarily $C$-module quotients.
+
+**The exhaustive witness argument.**
+Let $F$ be any quasi-coherent sheaf on $X$, represented by an
+$A$-module $M$ and a semilinear involution $T$ on
+$P=B\otimes_A M$. Write $\iota:M\to P$ and $N=P^T$.
+Faithfully flat descent gives $B\otimes_C N\simeq P$. Thus every
+element $p\in P$ admits a finite expression
+$$
+                  p=\sum_{j=1}^k b_j v_j,
+                  \qquad b_j\in B,\quad v_j\in N.        \tag{PW3}
+$$
+The localization identity $P=M_a$ supplies an integer $n\geq0$
+and elements $m_j\in M$ with $\iota(m_j)=r^n v_j$ for every
+$j$. Indeed each $v_j$ has a denominator that is a power of $a$;
+take one exponent at least all the finitely many exponents.
+This does not require uniqueness of a lift or absence of
+$a$-torsion in $M$.
+
+The chart map $A\to M$, $1\mapsto m_j$, descends to a morphism
+$\phi_j:L_n\to F$. Its restriction to the overlap sends
+$t\in B$ to $r^n t v_j$. It respects the involutions, since
+$$
+ T(r^n t v_j)=s^n\sigma(t)v_j
+             =r^nT_n(t)v_j.                              \tag{PW4}
+$$
+After the identification (PW2), its map on first cohomology is
+$$
+ Q_n\longrightarrow P/(\iota(M)+N),\qquad
+                       [b]\longmapsto[bv_j].              \tag{PW5}
+$$
+This is also directly well-defined: the term $r^n\rho(c)v_j$
+equals $\iota(cm_j)$ for $c\in A$, and $cv_j$ is invariant
+for $c\in C$. The representative $b/r^n$ in the unscaled
+version of (QE3) maps to $bv_j$, as required.
+
+It follows from (PW3)--(PW5) that each class of $H^1(X,F)$ is
+a finite sum of images of classes from one $H^1(X,L_n)$, under
+possibly different morphisms $L_n\to F$. If the original class
+is nonzero, at least one of these images is nonzero. Hence some
+$Q_n$ is nonzero. A single line-bundle image need not equal the
+entire original class; the finite sum does equal that class.
+No freeness, projectivity or finite presentation of $M$ is used,
+and the maps $\phi_j$ are not asserted to be injective.
+
+Consequently the following are equivalent for this fixed principal
+normal-form datum:
+$$
+ \begin{gathered}
+ X\text{ is affine};\qquad
+ H^1(X,F)=0\text{ for every quasi-coherent }F;\\
+ H^1(X,L_n)=0\text{ for every }n\geq0;\qquad
+                    B=r^n\rho(A)+C\text{ for every }n\geq0.
+ \end{gathered}                                             \tag{PW6}
+$$
+The witness argument proves the implication from the third
+condition to the second; the reverse implication is specialization.
+For the affineness implication, use the finite double cover
+$\pi:Y\to X$ of (QN3). Apply the second condition to $\pi_*E$
+for every quasi-coherent $E$ on $Y$. Formula (QN8) gives
+$H^1(Y,E)=0$, and (QN7) gives all higher vanishing. Serre's
+affineness criterion for the scheme $Y$ makes $Y$ affine, and
+(QN4) then makes $X$ affine. The converse is affine
+quasi-coherent acyclicity. Formula (PW2) gives the last equivalence.
+Since $r^{n+1}\rho(A)\subset r^n\rho(A)$, the scalar quotients
+have natural surjections $Q_{n+1}\to Q_n$. It is enough to test
+any unbounded set of nonnegative exponents. Testing $n=0$ alone
+is not asserted to be exhaustive.
+
+**The exact density interpretation and field overlaps.**
+The additive subgroups $r^n\rho(A)$, $n\geq0$, form a decreasing
+neighborhood basis at zero for a translation-invariant additive
+topology on $B$. There is no Hausdorff assumption. The last
+condition of (PW6) says precisely that $C$ is dense for this
+topology: every coset $b+r^n\rho(A)$ meets $C$.
+
+If the original overlap $V=\operatorname{Spec}B$ is the spectrum
+of a field $K$, principality is automatic. Its unique point has
+a distinguished open neighborhood $D(a)$ contained in the given
+open $V\subset\operatorname{Spec}A$. That neighborhood is
+nonempty, so $D(a)=V$ and $A_a=K$. Thus (PW1)--(PW6) test the
+entire field-overlap case, including non-injective $A\to K$.
+The test in that case is density of the invariant field $K^\sigma$
+in $K$ for the stated chart topology, or explicitly
+$$
+                 K=\rho(a)^n\rho(A)+K^\sigma
+                         \quad\text{for every }n\geq0.   \tag{PW7}
+$$
+
+These are exhaustive tests within their stated classes, not
+proofs that the tests pass. No equality in (PW6) or (PW7) is
+asserted for every valid datum, and no actual nonzero quotient
+is constructed here. General affine overlaps need not be
+principal; the denominator-clearing step above does not supply
+a single unit denominator there. Larger geometric degrees and
+all raw bounds remain in the original vanishing question.
+The mathematical inputs are the normal form (QN1)--(QN9),
+the full cohomology formula (QE3), effective faithfully flat
+module descent (The Stacks Project, Tag 03O6), localization of
+modules, and Serre's affineness criterion already used in (QN7).
+[Primary source](https://stacks.math.columbia.edu/tag/03O6).
+
+![Tensor powers of one invertible sheaf detect every nonzero first-cohomology obstruction on a principal quadratic overlap](../figures/raw-fibre-principal-invertible-witness.png)
+
+*For $B=A_a$, the sheaves $L_n$ have the semilinear descent action in (PW1) and first-cohomology quotients in (PW2). Invariant vectors span every localized module; one common power of $a$ clears a finite set of them into the chart module. The resulting maps (PW4)–(PW5) express each class as a finite sum of line-bundle images. Thus (PW6) is exhaustive on the same principal datum. For field overlaps, principality is automatic and (PW7) is the invariant-field density test. None of these scalar equalities is asserted to hold universally. The editable diagram is [raw-fibre-principal-invertible-witness.svg](../figures/raw-fibre-principal-invertible-witness.svg).*
+
+**Complete integral closure of a field-overlap chart**
+
+Assume the full quadratic normal form (QN1)--(QN9), and suppose
+its overlap is $\operatorname{Spec}K$ for a field $K$. Put
+$C=K^\sigma$ and $D=\rho(A)\subset K$. By (PW7), a principal
+open defining this overlap supplies $a\in D\setminus\{0\}$
+with $D[1/a]=K$. The chart map $A\to K$ may have a kernel.
+For a subring $E\subset K$ with $E[1/a]=K$ and
+$E\sigma(E)=K$, denote its two-chart scheme and quotient by
+$$
+ Y_E=\operatorname{Spec}E\mathop{\cup}_{\operatorname{Spec}K,\sigma}
+                   \operatorname{Spec}E,
+ \qquad X_E=Y_E/(\mathbf Z/2).                              \tag{CI1}
+$$
+The original space is denoted $X_A$. All these quotients are
+separated under the displayed ring-generation condition.
+
+**Removing the kernel and normalizing.**
+The schematic-overlap criterion (SO1)--(SO6) gives
+$Y_A$ affine if and only if $Y_D$ is affine. Indeed the
+scheme-theoretic closure of the common generic open has the
+two image rings $D$. The finite closed cover in (SO4) retains
+every other part of $Y_A$. The finite double-cover criterion
+(QN4) gives the corresponding equivalence for $X_A,X_D$.
+
+Let $N$ be the integral closure of $D$ in $K$. Then
+$N[1/a]=K$ and $N\sigma(N)=K$, since the latter generated ring
+already contains $D\sigma(D)=K$. Gluing the two integral
+extensions gives an integral surjection $Y_N\to Y_D$.
+Its inverse image over each original chart is precisely the
+corresponding normalized chart, because the preimage of the
+common open remains $\operatorname{Spec}K$. Lying over gives
+surjectivity. An integral morphism is affine, so $Y_D$ affine
+implies $Y_N$ affine. The reverse implication is integral
+surjective affineness descent, Tag 07VT. Consequently
+$$
+       X_A\text{ affine}\ \Longleftrightarrow\ X_D\text{ affine}
+                \ \Longleftrightarrow\ X_N\text{ affine}.  \tag{CI2}
+$$
+If $D=K$, these spaces are affine by the same schematic-overlap
+argument. Otherwise $N\ne K$: if $K$ were integral over $D$,
+the integral equation for $d^{-1}$, for any nonzero $d\in D$,
+would imply $d^{-1}\in D$, making $D$ a field. Thus $a$ is a
+nonunit in the proper normal Goldman domain $N$.
+
+**A uniform bound on the complete integral closure.**
+For the remainder assume $N\ne K$. Its complete integral closure
+inside $K$ is
+$$
+ R=\{x\in K:\ \text{some }0\ne c\in N\text{ satisfies }
+                         cx^j\in N\text{ for all }j\geq0\}.
+$$
+This is a subring: denominators bounding the powers of two
+elements also bound every term in the binomial expansion of
+powers of their sum, and their product, using the product of
+the two denominators. One has the uniform inclusions
+$$
+                         aR\subset N\subset R.             \tag{CI3}
+$$
+To prove the first, choose $c$ for $x\in R$, and choose $m\geq1$
+with $a^m/c\in N$, using $N[1/a]=K$. Then
+$(ax)^m=(a^m/c)(cx^m)\in N$. Hence $ax$ is integral over the
+normal ring $N$ and belongs to $N$. The multiplier $a$ in
+(CI3) is independent of $x$, although the exponent $m$ need not
+be uniform.
+
+The ring $R$ is itself completely integrally closed. Suppose
+$0\ne c\in R$ and $cx^j\in R$ for every $j$. Choose $m$ with
+$a^m/c\in N$. By (CI3), $acx^j\in N$, and therefore
+$a^{m+1}x^j\in N$ for every $j$. This is one nonzero multiplier
+in $N$, so $x\in R$. Also $R[1/a]=K$, $R\sigma(R)=K$, and
+$R\ne K$: equality with $K$ would make $aK=K\subset N$ in
+(CI3), contrary to $N\ne K$.
+
+**Preserving the exact density question.**
+The chart topologies from $N$ and $R$ agree, since for $n\geq0$
+$$
+                   a^{n+1}R\subset a^nN\subset a^nR.        \tag{CI4}
+$$
+Density of $C$ is therefore equivalent for the two topologies.
+Applying the exhaustive criterion (PW6)--(PW7) to each gives
+$$
+                   X_A\text{ affine}
+                  \ \Longleftrightarrow\ X_R\text{ affine}.
+                                                               \tag{CI5}
+$$
+Thus a counterexample anywhere in this field-overlap class would
+yield one with an injective, completely integrally closed Goldman
+chart. Conversely such a chart is part of the original class.
+These equivalences concern affineness and universal first-cohomology
+vanishing. They do not identify the cohomology groups of individual
+sheaves before and after normalization, or preserve a fixed exponent
+of a line-bundle witness.
+
+**A rank-one valuation representation.**
+There is also a direct description
+$$
+ R=\bigcap\{V:\ V\text{ is a rank-one valuation ring of }K,
+                                      \ N\subset V\}.       \tag{CI6}
+$$
+Here rank one allows arbitrary Archimedean value groups, not only
+the discrete group $\mathbf Z$. If $x\in R$ and $V$ is such a
+valuation ring, a bound $cx^j\in N$ gives
+$v(c)+jv(x)\geq0$ for every $j$. The Archimedean property
+forces $v(x)\geq0$, so $x\in V$.
+
+For the other containment, take $x\notin R$. Some $m\geq1$
+has $ax^m\notin N$, since otherwise $a$ would bound all powers
+of $x$. The valuative characterization of normal domains gives
+a valuation $w$ with $N\subset V_w$ and
+$w(a)+mw(x)<0$. For completeness, that characterization follows
+by adjoining the inverse of an element $z\notin N$. Its inverse
+is a nonunit in $N[z^{-1}]$, since an expression for $z$ in that
+ring would be a monic integral equation. A valuation dominating
+a localization at a prime containing $z^{-1}$ excludes $z$;
+such a valuation exists by the maximal-domination argument with
+Zorn's lemma, as in Tag 00IA.
+
+Write $h=w(a)$. The element $h$ is positive. Indeed $w(a)=0$
+would give $K=N[1/a]\subset V_w$, contradicting the excluded
+element. It is also an order unit of the value group: for each
+$y\in K^\times$, powers of $a$ bring both $y$ and $y^{-1}$
+into $N$, bounding $|w(y)|$ by a multiple of $h$. In that
+ordered group put
+$$
+ H=\{\gamma:\ n|\gamma|<h\text{ for every integer }n\geq1\}.
+$$
+This is a convex subgroup. For addition, the inequalities for
+$2n|\gamma|$ and $2n|\delta|$ imply
+$n|\gamma+\delta|<h$; inverse and convexity properties follow
+from the definition. Its quotient is Archimedean: a positive
+class represented by $\gamma\notin H$ has some multiple at
+least $h$, and $h$ bounds every element up to an integer
+multiple. Thus the quotient valuation $v$ has rank one and
+still contains $N$. The inequality $h+mw(x)<0$ implies
+$mv(x)\leq-v(a)<0$, so it still excludes $x$. This proves
+(CI6) without assuming that every valuation of $N$ has rank one.
+
+**A compact normalized family and the exact test.**
+Normalize the real-valued representatives of the valuations in
+(CI6) by $v(a)=1$, and let $S$ be the resulting set of functions
+$K^\times\to\mathbf R$. This normalization is possible and
+unique for each rank-one valuation ring. For every $y\ne0$,
+choose an integer $b_y$ with $a^{b_y}y,a^{b_y}y^{-1}\in N$.
+Then $-b_y\leq v(y)\leq b_y$ for every $v\in S$.
+
+The defining valuation inequalities, the multiplicative
+identities, nonnegativity on $N\setminus\{0\}$, and $v(a)=1$
+are closed conditions in
+$\prod_{y\in K^\times}[-b_y,b_y]$. Conversely any function
+satisfying them defines a nontrivial valuation with real value
+group. Hence $S$ is compact Hausdorff for pointwise convergence.
+With $v(0)=+\infty$, (CI6) and (PW7) give the exact criterion
+$$
+ X_A\text{ affine}\ \Longleftrightarrow\
+ \left(\ \forall b\in K\ \forall n\geq0\ \exists c\in C\
+                     \forall v\in S:\ v(b-c)\geq n\ \right).
+                                                               \tag{CI7}
+$$
+Indeed the inequalities say exactly that $(b-c)/a^n\in R$.
+
+Finally, no valuation ring containing $R$ can also contain
+$\sigma(R)$, since these rings generate $K$. Thus the rank-one
+families for $R$ and $\sigma(R)$ share no valuation ring, even
+up to equivalence. This is an algebraic consequence of the closed
+mixed graph. Compactness in (CI7) is for the stated pointwise
+topology; no Zariski-compactness claim, common discrete
+uniformizer, or simultaneous-approximation conclusion follows
+from this argument. The equality in (CI7) for all eligible charts
+remains an additional obligation. Non-field overlaps and larger
+geometric fibres are outside this reduction.
+
+The foundational inputs are the schematic-overlap and double-cover
+criteria (SO1)--(SO6), (QN1)--(QN9), the exhaustive principal test
+(PW1)--(PW7), and integral surjective affineness descent, The
+Stacks Project, Tag 07VT,
+[Primary source](https://stacks.math.columbia.edu/tag/07VT).
+Valuation domination is Tag 00IA,
+[Primary source](https://stacks.math.columbia.edu/tag/00IA).
+For related complete-integral-closure results see H. Gebru and
+R. Matsuda, *Note on Krull's conjecture*, Mathematical
+Journal of Ibaraki University 31 (1999), 37--42, Proposition 3
+and Theorem 7,
+[Primary source](https://www.jstage.jst.go.jp/article/mjiu1997/31/0/31_0_37/_pdf).
+
+![Field-overlap affineness reduces to a completely integrally closed Goldman chart with a rank-one valuation test](../figures/raw-fibre-complete-integral-chart-reduction.png)
+
+*The schematic closure removes the localization kernel, and integral normalization preserves affineness by (CI2). Complete integral closure has the uniform bound $aR\subset N\subset R$, giving the same chart topology in (CI4). The exhaustive density criterion then proves (CI5). Formula (CI6) represents $R$ by its rank-one valuation overrings; after normalization by $v(a)=1$, pointwise compactness yields the exact test (CI7). The test does not assert simultaneous approximation for every chart. The editable diagram is [raw-fibre-complete-integral-chart-reduction.svg](../figures/raw-fibre-complete-integral-chart-reduction.svg).*
+
+**A Jacobson reciprocal gauge in every characteristic**
+
+Assume the full principal quadratic normal form, with $B=A_a\ne0$,
+$D=\rho(A)\subset B$, $r=\rho(a)$, and $C=B^\sigma$.
+Suppose additionally that
+$$
+                    r\in\operatorname{Jac}(D),\qquad
+                    \sigma(r)=r^{-1}.                      \tag{JR1}
+$$
+Then $X$ is affine. No invertibility of $2$, square root of $-1$,
+normality of $D$, or absence of nilpotents is assumed.
+
+Set $t=r+r^{-1}\in C$, $c_0=0$, and recursively
+$c_{k+1}=(t-c_k)^{-1}$. These inverses exist. Indeed, write
+$e_k=c_k-r$. We claim
+$$
+      c_k\in C,\quad e_k\in r^{2k+1}D,\quad
+      e_{k+1}=\frac{r^2 e_k}{1-r e_k}.                       \tag{JR2}
+$$
+For $k=0$, the first two statements hold. If they hold for $k$,
+then $1-r e_k\in1+r^{2k+2}D$ is a unit of $D$ by (JR1), and
+$t-c_k=r^{-1}(1-r e_k)$ is a unit of $B$. It is invariant, so
+its inverse is invariant. Direct subtraction of $r$ gives the
+last equality in (JR2), and then $e_{k+1}\in r^{2k+3}D$.
+This proves the induction, with the signs valid also in
+characteristic two.
+
+There is an exact invariant basis
+$$
+                           B=C\oplus Cr.                   \tag{JR3}
+$$
+The element $r-r^{-1}=-r^{-1}(1-r^2)$ is a unit, since
+$1-r^2$ is a unit of $D$. For any $x\in B$, put
+$v=(x-\sigma(x))/(r-r^{-1})$. Both numerator and denominator
+change sign under $\sigma$, so $v\in C$. Then $u=x-vr$ is
+invariant, proving existence of the expression $x=u+vr$.
+If $u+vr=0$ with $u,v\in C$, subtraction of its conjugate
+and invertibility of $r-r^{-1}$ give $v=0$, then $u=0$.
+
+For $x=u+vr$ and any integer $n\geq0$, choose $m\geq0$ with
+$r^m v\in D$, using $B=D[1/r]$. For any $k$ with
+$2k+1-m\geq n$, (JR2) gives
+$$
+               x-(u+vc_k)=-ve_k\in r^nD,
+                       \qquad u+vc_k\in C.                 \tag{JR4}
+$$
+Thus $B=r^nD+C$ for every $n$. The exhaustive criterion (PW6)
+proves affineness of $X$ and universal positive quasi-coherent
+cohomology vanishing. This proves the assertion under (JR1).
+
+A useful sufficient variant is
+$r\in\operatorname{Jac}(D)$ and $\sigma(r)^{-1}\in D$.
+Then $q=r\sigma(r)^{-1}\in rD\subset\operatorname{Jac}(D)$,
+$\sigma(q)=q^{-1}$, and $D[1/q]=B$: the equality follows from
+$r^{-1}=\sigma(r)^{-1}/q$ and the fact that $q$ is already a
+unit in $B$. Apply (JR1)--(JR4) with parameter $q$.
+In the field-overlap case every proper Goldman chart has its
+cofinal parameter in its Jacobson radical, so this variant
+removes the characteristic and constant-generator restrictions
+from the earlier inverse-extension field case.
+
+**Necessity of a reciprocal gauge for field-overlap affineness.**
+Suppose now $B=K$ is a field and $D\ne K$. If $X_D$ is
+affine, so is the two-chart scheme $Y_D$ by (QN4). The two
+closed subschemes $Z_1,Z_2$ defined by $(r)$ on their own chart
+and by the unit ideal on the other chart are disjoint. The
+Chinese remainder theorem on the affine $Y_D$ supplies a
+global function $h$ that is zero on $Z_1$ and one on $Z_2$.
+Under $\Gamma(Y_D,\mathcal O)=D\cap\sigma(D)\subset K$, its
+conjugate is the chart-exchanged function. Consequently
+$h\in rD$ and $\sigma(h)$ is a unit in $D$: it is one on
+$Z_1$, whose support contains every maximal ideal of the
+proper Goldman domain $D$. The function $h$ is nonzero,
+since it is one on the nonempty $Z_2$.
+
+Therefore $q=h/\sigma(h)$ is nonzero, belongs to $rD$, and
+satisfies $\sigma(q)=q^{-1}$. Every nonzero prime of $D$
+contains $r$, hence $q$, so $D[1/q]=K$ and $q\in\operatorname{Jac}(D)$.
+Together with the sufficiency above this proves, within the
+entire separated quadratic field-overlap class,
+$$
+ X_D\text{ affine}\ \Longleftrightarrow\
+ \exists q\in\operatorname{Jac}(D)\setminus\{0\}:
+             D[1/q]=K,\quad\sigma(q)=q^{-1}.               \tag{JR5}
+$$
+This criterion does not prove that an eligible chart always
+admits such a gauge.
+
+**Pointwise compactness need not give Zariski compactness**
+
+Let $K=\mathbf Q(u)$ and let $v_2$ be the additive $2$-adic
+valuation. For $1\leq\lambda\leq2$, define the weighted Gauss
+valuation on nonzero polynomials by
+$$
+ v_\lambda\left(\sum_j c_j u^j\right)
+                      =\min_j(v_2(c_j)+j\lambda),
+$$
+and extend by differences to $K^\times$. Multiplicativity holds:
+in each polynomial take the least index attaining the minimum;
+their sum is the unique least index of a product of minimum
+terms, so its leading initial coefficient cannot cancel.
+Thus each $v_\lambda$ is a rank-one valuation, with
+$v_\lambda(2)=1$ and $v_\lambda(u)=\lambda$.
+
+Put $D=\bigcap_{1\leq\lambda\leq2}V_\lambda$. This is a
+proper completely integrally closed domain. For every
+$x\in K^\times$, $\lambda\mapsto v_\lambda(x)$ is a finite
+continuous piecewise affine function on $[1,2]$, hence bounded.
+Powers of $2$, or powers of $u$, therefore bring $x$ into $D$.
+Consequently $D[1/2]=D[1/u]=K$. Properness follows from
+$2^{-1}\notin D$. The domain is completely integrally closed
+because each rank-one valuation ring is, and the intersection
+preserves the defining power-bounding condition.
+
+Let $\sigma(u)=u^{-1}$ and fix $\mathbf Q$. This is a nontrivial
+involution, with fixed field $C=\mathbf Q(u+u^{-1})$. The ring
+$D$ contains $u/2$; $\sigma(D)$ contains $1/(2u)$.
+Their product is $1/4$, so the ring they generate contains
+$1/2$, and is therefore $K$. The mixed graph is closed and all
+the field-overlap normal-form hypotheses hold. Moreover $u$
+is a reciprocal Jacobson gauge, so (JR1)--(JR4) prove that
+$X_D$ is affine. In particular this is not a cohomology
+counterexample.
+
+Let $S$ be the whole normalized rank-one valuation family of
+$D$, with $v(2)=1$. It is pointwise compact by (CI7), and
+contains every $v_\lambda$. Since $u/2,4/u\in D$, all its
+members satisfy $1\leq v(u)\leq2$.
+In the Zariski topology of valuation rings the following sets
+are open:
+$$
+ U_0=\{V\in S:2/u\in V\},\qquad
+ U_n=\{V\in S:u^n/2^{n+1}\in V\}\quad(n\geq1).
+$$
+They cover $S$: the first condition is $v(u)\leq1$, and the
+others are $v(u)\geq1+1/n$. No finite subfamily covers $S$.
+For a finite collection of positive indices with maximum $M$,
+choose $\lambda=1+1/(2M)$; its Gauss valuation belongs to
+neither $U_0$ nor any of the selected $U_n$. If no positive
+index is selected, any $1<\lambda\leq2$ suffices.
+Thus the entire normalized family in an actual eligible
+separated datum can fail Zariski compactness, even with a
+completely integrally closed chart and an affine target.
+
+The affineness and cohomology inputs are the finite double-cover
+criterion (QN4) and the exhaustive invertible-sheaf criterion
+(PW1)--(PW7). The compactness statement used for the normalized
+valuation family is (CI6)--(CI7). These criteria concern the
+quadratic raw-size-one class. No assertion for all non-field
+overlaps or all geometric degrees follows from (JR1)--(JR5).
+
+![Finite invariant approximation from a reciprocal Jacobson parameter, and a weighted Gauss open cover with no finite subcover](../figures/raw-fibre-jacobson-reciprocal-gauge.png)
+
+*For (JR1)--(JR4), the invariant iterates approach $r$ to the explicit finite orders $2k+1$. After clearing the coefficient $v$, they give the scalar equalities required by (PW6). In the lower panel the horizontal coordinate is the value $v(u)$; different valuations may have the same coordinate. The displayed intervals represent $U_0,\ldots,U_4$, and the line at $1+1/8$ gives a Gauss valuation outside those five opens. For any finite subfamily, $1+1/(2M)$ works with its largest positive index $M$. The whole family is pointwise compact by (CI7) and has no finite subcover for the stated Zariski cover. The editable figure is [raw-fibre-jacobson-reciprocal-gauge.svg](../figures/raw-fibre-jacobson-reciprocal-gauge.svg).*
+
+**A finitely generated field suffices to test field-overlap counterexamples**
+
+Consider the entire separated quadratic field-overlap class of
+(QN1)--(QN9), including charts whose map to their overlap field
+has kernel. Every nonaffine target in this class gives a nonaffine
+target with an injective completely integrally closed proper
+Goldman chart, by (CI1)--(CI7). Write that chart as
+$$
+ R\subset K=R[1/a],\qquad R\sigma(R)=K,\qquad C=K^\sigma.
+                                                               \tag{FG1}
+$$
+The product denotes the generated subring. By (PW6)--(PW7),
+nonaffineness supplies $b\in K$ and an integer $n\geq0$ with
+$$
+                         b\notin a^nR+C.                     \tag{FG2}
+$$
+The following reduction preserves this particular scalar witness.
+It does not assert that an original cohomology class of an
+arbitrary sheaf is unchanged by complete integral closure.
+
+Because $a^{-1}\in R\sigma(R)$, choose a finite identity
+$$
+                  a^{-1}=\sum_{i=1}^s d_i\sigma(e_i),
+                         \qquad d_i,e_i\in R.                \tag{FG3}
+$$
+Each polynomial expression in the two rings has this form: products
+of conjugate elements are again conjugates of elements of $R$.
+Zero summands may be omitted. Choose also $\theta\in K$ with
+$\sigma(\theta)\ne\theta$. Let $k$ be the prime subfield and let
+$K_0$ be the subfield generated over $k$ by
+$a,b,\theta,d_i,e_i$ and the conjugates of all these elements.
+Then $K_0$ is finitely generated over $k$, is stable under $\sigma$,
+and its restricted involution $\sigma_0$ is nontrivial. Put
+$$
+              R_0=R\cap K_0,\qquad C_0=K_0^{\sigma_0}.
+                                                               \tag{FG4}
+$$
+
+For every $x\in K_0$, some power $a^m x$ belongs to $R$,
+since $R[1/a]=K$. That product is also in $K_0$, so
+$R_0[1/a]=K_0$. The domain $R_0$ is proper: otherwise it
+would contain $a^{-1}$, contrary to properness of $R$ and
+$R[1/a]=K$. It is completely integrally closed. Indeed, if
+$x\in K_0$ and $0\ne c\in R_0$ satisfy $cx^j\in R_0$
+for every $j\geq0$, then the same bounds hold in $R$.
+Complete integral closure of $R$ gives $x\in R$, hence
+$x\in R_0$.
+
+All coefficients of (FG3) belong to $R_0$. Consequently the
+ring $R_0\sigma_0(R_0)$ contains $a^{-1}$ and $R_0$, and
+is therefore all of $K_0$. The nontrivial involution of the
+field $K_0$ is geometrically free, and the mixed graph is closed
+by this generated-ring equality. The converse in (QN1)--(QN5)
+therefore constructs an actual quasi-compact separated target
+$X_0$ with affine etale atlas $\operatorname{Spec}R_0$,
+one raw point in every atlas fibre and geometric fibres of
+size at most two.
+
+Finally $C_0\subset C$, and (FG2) implies
+$$
+ b\notin a^nR_0+C_0,\qquad
+ 0\ne[b]\in K_0/(a^nR_0+C_0)
+                  =H^1(X_0,\mathcal L_{0,n}).                \tag{FG5}
+$$
+Here $\mathcal L_{0,n}$ is the invertible sheaf of (PW1) for
+the parameter $a$ and the new datum. Thus the same scalar
+$b$ and exponent $n$ give a nonzero cohomology class on the
+new eligible target. No surjection or equality between the
+two entire cohomology groups is claimed.
+
+It follows that universal affineness in the whole quadratic
+field-overlap class is equivalent to universal affineness for
+its completely integrally closed proper Goldman charts with
+overlap field finitely generated over its prime field. Both
+implications retain the exact raw and geometric atlas bounds.
+The restricted class is still allowed to be non-Noetherian.
+Neither a counterexample nor universal affineness is supplied
+by this equivalence.
+
+**Countability and the topology of the valuation test.**
+The field $K_0$ and its subring $R_0$ are countable, since every
+prime field is countable. Apply (CI6)--(CI7) to $R_0$ and
+normalize the whole rank-one family $S_0$ by $v(a)=1$.
+For an enumeration $K_0^\times=\{x_1,x_2,\ldots\}$,
+the product of the bounded coordinate intervals is metrizable,
+for example by
+$$
+ d(v,w)=\sum_{j\geq1}2^{-j}
+                         \min\{1,|v(x_j)-w(x_j)|\}.
+                                                               \tag{FG6}
+$$
+Each term is bounded by $2^{-j}$, and coordinatewise
+convergence is equivalent to convergence for this metric:
+control finitely many coordinates and then the uniformly small
+tail; the converse follows from the single-coordinate terms.
+The closed valuation conditions in (CI7) therefore make $S_0$
+compact metrizable for pointwise convergence. This gives no
+Zariski quasi-compactness. The weighted Gauss interval example
+following (JR5) already has countable field $\mathbf Q(u)$
+and fails Zariski quasi-compactness for its whole normalized
+family.
+
+**The finite positivity cover supplied by the graph.**
+The identity (FG3) has a second consequence for any completely
+integrally closed chart (FG1). Set
+$q_i=e_i/\sigma(e_i)$, omitting zero summands. Each $q_i$ is
+nonzero with $\sigma(q_i)=q_i^{-1}$. For any $v\in S$,
+the valuation inequality gives
+$$
+ -1=v(a^{-1})\geq
+             \min_i\bigl(v(d_i)+v(\sigma(e_i))\bigr).
+$$
+Since $v(d_i),v(e_i)\geq0$, at least one index has
+$v(\sigma(e_i))\leq-1$ and $v(q_i)\geq1$. Thus
+$$
+             S=\bigcup_{i=1}^s\{v:v(q_i)\geq1\}.             \tag{FG7}
+$$
+These are pointwise closed sets; the enlarged sets
+$\{v:v(q_i)>1/2\}$ are pointwise open and also cover $S$.
+An individual $q_i$ need not belong to $R$, since it may have
+negative value at other members of $S$.
+
+A single norm-one $q\in K^\times$ with $v(q)>0$ for every
+$v\in S$ would suffice for affineness. Compactness supplies
+$\epsilon=\min_S v(q)>0$. The valuation representation gives
+$q\in R$. For every $x\in K^\times$, its values on $S$ are
+bounded below; a large $m$ then has $q^m x\in R$. Hence
+$R[1/q]=K$. Also choose $l$ with $l\epsilon\geq1$. Then
+$q^l/a\in R$, so every nonzero prime of $R$ contains $q$.
+Thus $q\in\operatorname{Jac}(R)$, and (JR1)--(JR4) apply.
+Conversely, a reciprocal cofinal Jacobson parameter has
+$v(q)>0$ at every member: $q\in R$ excludes negative value;
+value zero would put $q^{-1}$ in that valuation ring and
+force it to contain $R[1/q]=K$.
+
+The finite cover (FG7) does not itself construct such a single
+parameter. In particular, taking positive powers and multiplying
+the $q_i$ is not justified by the cover condition alone: the
+two real vectors $(1,-1)$ and $(-1,1)$ satisfy that condition
+but no positive weighted sum is positive at both vectors.
+Those vectors are only a counterexample to this numerical
+inference; they are not a field datum or a cohomology
+counterexample. Combining the finite cover using the actual
+field hypotheses remains the additional implication required.
+Non-field overlaps, larger geometric degrees and the full
+arbitrary raw bound also remain outside this reduction.
+
+![A nonzero quadratic field-overlap witness is retained over a finitely generated field, with the exact graph identity and a compact metrizable valuation test](../figures/raw-fibre-finitely-generated-field-reduction.png)
+
+*The diagram assumes a nonaffine datum and follows its scalar witness through (FG1)--(FG5). All coefficients of the finite graph identity and their conjugates enter $K_0$, so $R_0\sigma(R_0)=K_0$ remains exact. The inclusions $R_0\subset R$ and $C_0\subset C$ preserve the same nonzero class representative $b$ and exponent $n$. The normalized family for the countable field is compact metrizable for pointwise convergence by (FG6). Formula (FG7) supplies a finite positivity cover, while a single uniformly positive norm-one parameter is still required for the affineness criterion. The editable figure is [raw-fibre-finitely-generated-field-reduction.svg](../figures/raw-fibre-finitely-generated-field-reduction.svg).*
 
 #### Lemma. Finite cohomological dimension from an étale atlas
 

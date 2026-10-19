@@ -1,6 +1,6 @@
 # The proof as a map
 
-Draft. Self-checked by the writing AI.
+Draft.
 
 The proof has two decisive reductions. First, the Langlands functor is an equivalence once its specified algebra unit is invertible. Second, the unit can be checked on the irreducible spectral open and on objects supported on its complement. Eisenstein series control the supported part by induction. Ambidexterity and generic opers turn the open part into a finite-monodromy vector bundle. The multiplicity argument then removes nontrivial character lines and counts every remaining component.
 
@@ -600,9 +600,9 @@ The proof first rewrites these functor categories as factorization modules for t
 
 The derived application in Theorem 10.1.8 identifies integrable loop-group representations at the integral level determined by a factorization line bundle with factorization modules for the integrable vacuum algebra. The level is required to be nonnegative definite on every simple factor. The comparison respects the forgetful functors to complexes of vector spaces; its assertion is derived, rather than merely an equivalence of abelian hearts.
 
-There is a specific foundational repair relevant to Part II. Warning C.9.13 explains that a previously used Ran simplicial diagram is not an étale hypercover: its connecting maps fail the required schematic property, and the first matching map is not surjective even on field-valued points. The same defect affects the argument of Part II, §B.11.14. The replacement is the descent statement for crystals of categories in Lemmas C.9.14–C.9.15, used in the external-fusion theorem C.9.9.
+The Ran simplicial diagram in Warning C.9.13 is not an étale hypercover: its connecting maps fail the required schematic property, and the first matching map is not surjective even on field-valued points. Consequently Part II, §B.11.14 cannot use étale-hypercover descent for this diagram. The applicable descent statement for crystals of categories is Lemmas C.9.14–C.9.15, used in the external-fusion theorem C.9.9.
 
-The replacement has a different mechanism. After the appropriate Zariski reduction, the fibre combinatorics decomposes into one binary choice for each free graph-intersection class. The resulting simplicial set is a finite product of copies of \(\Delta^1\), hence is contractible: contract each interval to its initial vertex, and take the product contraction. At the additional geometric descent premises, this gives the required descent of crystals. It does not turn the original diagram into an étale hypercover. The categorical descent theorem and the homotopy-coherent external-fusion construction remain unproved inputs here.
+For crystal descent, after the appropriate Zariski reduction, the fibre combinatorics decomposes into one binary choice for each free graph-intersection class. The resulting simplicial set is a finite product of copies of \(\Delta^1\), hence is contractible: contract each interval to its initial vertex, and take the product contraction. At the additional geometric descent premises, this gives the required descent of crystals. It does not turn the original diagram into an étale hypercover. The categorical descent theorem and the homotopy-coherent external-fusion construction remain unproved inputs here.
 
 ## Tempered and generic automorphic functions
 

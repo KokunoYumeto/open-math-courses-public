@@ -1,7 +1,7 @@
 # The categorical conjecture and its variants
 
 
-**Draft. Self-checked by the writing AI.** The formal localization, support, normalization, base-change and reconstruction theorems below have explicit hypotheses. The global geometric statements needed to apply them to a connected reductive group are stated separately in C8 and are not proved here.
+**Draft.** The formal localization, support, normalization, base-change and reconstruction theorems below have explicit hypotheses. The global geometric statements needed to apply them to a connected reductive group are stated separately in C8 and are not proved here.
 
 The preceding lessons describe the automorphic category, the Hecke action and the spectral nilpotent category. We now ask what structure a correspondence between them must preserve. An equivalence of abstract categories, an equivalence compatible with Hecke operators, and the assertion that one specified normalized functor is an equivalence are different statements. The distinction controls the proof of every variant.
 

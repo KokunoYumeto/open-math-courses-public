@@ -2,7 +2,7 @@
 
 The [weak-source lift](../20261008-weak-source-lift/weak-source-lifting-and-normal-flux.html) removes the natural-dual forcing without discarding its boundary action. The next operation removes the first normal derivative from the interior equation. With matrix coefficients these two operations leave a complex Robin condition. We construct the matrix gauge, regularize that condition exactly, and prove the full normal-commutator identity, including its boundary form and its matrix lower-order terms.
 
-The identity first holds on actual twice weakly differentiable approximants. We then prove its weak graph extension using complementary Sobolev dual pairings, including the normal trace. Uniform estimates at the higher microlocal orders, incoming errors and the full strict-diffraction theorem remain to be proved.
+The identity first holds on actual twice weakly differentiable approximants. We then prove its weak graph extension using complementary Sobolev dual pairings, including the normal trace. The weak graph identity alone does not supply higher microlocal estimates, incoming-error bounds or strict-diffractive propagation.
 
 ## 1. The problem and the exact earlier proofs
 

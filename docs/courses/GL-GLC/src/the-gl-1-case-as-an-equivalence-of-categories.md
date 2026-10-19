@@ -1,6 +1,6 @@
 # The GL_1 case as an equivalence of categories
 
-*Draft. Self-checked by the writing AI. Public domain (CC0).*
+*Draft. Public domain (CC0).*
 
 The rank-one categorical correspondence matches three different phenomena. Connections on the Jacobian match the smooth moduli of rigidified flat lines. Automorphisms of a bundle contribute a derived spectral direction. The disconnected bundle degrees match the character weights of the spectral automorphism group. Keeping only the Jacobian and the set of local systems loses two of these factors.
 

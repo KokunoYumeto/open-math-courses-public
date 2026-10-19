@@ -1,6 +1,6 @@
 # Ambidexterity, opers and multiplicity one (GLC IV and V)
 
-Draft. Self-checked by the writing AI.
+Draft.
 
 The remaining problem after Eisenstein reduction is an algebra unit on the irreducible spectral locus. Ambidexterity makes its underlying object self-dual. Generic opers identify its fibres with homology and give a flat connection with finite monodromy. The last argument removes nontrivial central line bundles and counts the remaining trivial summands. Rank one then forces the specified algebra unit to be invertible.
 

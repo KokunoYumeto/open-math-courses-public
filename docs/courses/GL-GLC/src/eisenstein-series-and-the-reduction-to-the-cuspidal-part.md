@@ -1,6 +1,6 @@
 # Eisenstein series and the reduction to the cuspidal part (GLC III)
 
-Draft. Self-checked by the writing AI.
+Draft.
 
 Fix a smooth projective connected curve \(X\) over an algebraically closed field \(k\) of characteristic zero, a connected reductive group \(G\), its Langlands dual \(\check G\), and a theta characteristic \(\kappa_X^{\otimes2}\simeq\omega_X\). Put
 \[

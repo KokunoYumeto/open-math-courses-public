@@ -1,6 +1,6 @@
 # The spectral side: local systems, singular support and IndCoh_Nilp
 
-*Draft. Self-checked by the writing AI. Original mathematical exposition: CC0 1.0.*
+*Draft. Original mathematical exposition: CC0 1.0.*
 
 The automorphic side attaches differential equations to bundles. The spectral side organizes local systems into a moduli stack and asks which category of sheaves on that stack should correspond to the automorphic category. Derived directions matter: a coherent object can have support in an obstruction direction even when its ordinary support is a single point.
 

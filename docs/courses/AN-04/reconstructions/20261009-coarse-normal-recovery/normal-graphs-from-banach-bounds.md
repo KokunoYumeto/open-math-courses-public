@@ -229,9 +229,9 @@ If \(\tau\) is given, its continuity and smooth restriction identity now prove \
 
 **B9. Starting order and normal-graph bounds.** The result supplies a fixed finite starting order, uniform actual normal-graph bounds and trace continuity. It does not claim that an arbitrary family bounded only in \(B\) has a convergent subsequence in \(B\). It does not replace the source norm in (NG2) by a citation or by individual membership in the intrinsic class.
 
-For the full compressed observation theorem, the required next conversion is from admissible source and observation tests in the specified cones to the local graph bounds, retaining all residual normal contributions. The other propagation regimes must also be made uniform and combined with the completed compact-access geometry. The final finite-test argument, including the exact operator domains, remains to be proved.
+The full compressed observation theorem also uses admissible source and observation tests in the specified cones, control of residual normal contributions, uniform estimates in every propagation regime, compact-access geometry and the exact operator domains. These are additional ingredients beyond the normal-graph bounds proved here.
 
-The source norm needed here has no normal derivatives. Full ordinary normal smoothness would require additional source-jet control, but that is not an extra prerequisite for an \(L^2\) observation estimate. The exact boundary-layer solution below demonstrates the distinction. The preceding plan to require all source normal jets merely to establish that observation estimate is therefore unnecessary; the remaining proof must control the norms actually used.
+The source norm needed here has no normal derivatives. Full ordinary normal smoothness would require additional source-jet control, but that is not an extra prerequisite for an \(L^2\) observation estimate. The exact boundary-layer solution below demonstrates the distinction. Controlling the norms in the observation estimate therefore requires no additional source normal jets.
 
 ## 7. Index transfer and a boundary layer
 

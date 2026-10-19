@@ -1,6 +1,6 @@
 # Opers, critical level and the Beilinson–Drinfeld construction
 
-*Draft. Self-checked by the writing AI. Original mathematical exposition: CC0 1.0.*
+*Draft. Original mathematical exposition: CC0 1.0.*
 
 An oper is a connection with a maximally transverse Borel reduction. The reduction produces scalar differential equations and gives concrete affine families of local systems. At critical level, an affine Lie algebra's center is described by functions on opers. Localization assigns to a global oper a system of differential equations on the bundle stack with a tensor-compatible Hecke eigenproperty.
 

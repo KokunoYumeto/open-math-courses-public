@@ -287,7 +287,7 @@ H^0(B\cap V,\mathcal H^iA|_{B\cap V})
 \quad\text{surjective}.
 \tag{5.5}
 \]
-The neighborhood input is simultaneous stabilization, on sufficiently small such balls, of the finitely many constructible section groups involved. One must also identify cohomology on the small ball with the stalk before inverting that comparison to define the displayed map. These are the constructible-neighborhood statements in BBD, 6.2.9; lesson 1's normal-neighborhood arguments address their geometry, but their exact small-ball scope and recursive prerequisites still need verification here.
+The neighborhood input is simultaneous stabilization, on sufficiently small such balls, of the finitely many constructible section groups involved. One must also identify cohomology on the small ball with the stalk before inverting that comparison to define the displayed map. These are the constructible-neighborhood statements in BBD, 6.2.9; lesson 1's normal-neighborhood arguments address their geometry. A proof of the full small-ball cohomology and stalk comparisons at these hypotheses is still required for this argument.
 
 Given this input, apply the preceding IC argument on \(B\). A contributing bottom sheaf is \(j_*L\). Its stalk at \(y\) is the colimit of \(H^0(B'\cap U,L)\) over shrinking neighborhoods. Stabilization identifies that stalk with the corresponding sections on the chosen \(B\). Since \(U\subset V\), the direct-image identity identifies those sections with the target for this summand in (5.5). All remaining summands have zero target. Their sum gives the surjection, and proper base change supplies its source. On a punctured disc the target is \(\ker(T-1)\); it need not be the entire nearby fibre group.
 

@@ -4,7 +4,7 @@
 
 Begin with a restriction map between two vector spaces. It already exhibits the distinction that matters for gluing: the value at a boundary and the sections supported at that boundary are different objects. After computing this example, we will construct a t-structure across an arbitrary recollement, select an extension without boundary subobjects or quotients, and calculate what that selection does to monodromy around a puncture.
 
-Our shifts satisfy \(H^q(K[m])=H^{q+m}(K)\). The categorical input consists of the triangulated-category and t-structure axioms. Appendix A derives the Hom sequences, truncation adjunctions and abelian-heart facts used in the arguments. Appendix B constructs the classical sheaf realization and its mapping complexes. These local constructions are distinct from the additional finiteness and coefficient requirements for general algebraic or étale applications in [the preceding lesson](constructible-complexes-on-algebraic-varieties.md).
+Our shifts satisfy \(H^q(K[m])=H^{q+m}(K)\). The categorical input consists of the triangulated-category and t-structure axioms. Appendix A derives the Hom sequences, truncation adjunctions and abelian-heart facts used in the arguments. Appendix B constructs the classical sheaf realization and its mapping complexes. Appendix C proves the scheme recollement for finite, complete and rational coefficients using the exact operation constructions in [the preceding lesson](constructible-complexes-on-algebraic-varieties.md).
 
 The mathematical references for the categorical results are the [author-hosted free BBD text, §§1.3–1.4](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf) and the [free Laszlo–Olsson preprint, §2](https://www.cmls.polytechnique.fr/perso/laszlo/articleweb/faisceaux-pervers.pdf). The proofs and the two geometric models are developed below; the references do not replace them.
 
@@ -515,7 +515,7 @@ For complexes, use
 \tag{B.1}
 \]
 
-Thus degree-zero cocycles are chain maps and boundaries are chain homotopies. The first lesson’s [Appendices A.1 and B.1–B.2](constructible-complexes-on-algebraic-varieties.md#appendix-b-classical-localization-and-the-local-curve-calculations) now contain the complete classical resolution and localization foundations before their uses. The following recalls their complex model. In particular they give the exact injective functor
+Thus degree-zero cocycles are chain maps and boundaries are chain homotopies. The first lesson’s [Appendices A.1 and B.1–B.2](constructible-complexes-on-algebraic-varieties.md#appendix-b-classical-localization-and-the-local-curve-calculations) give the classical resolution and localization foundations. The following recalls their complex model. In particular they give the exact injective functor
 \(G(F)=\prod_x(e_x)_*F_x\) and its natural monomorphism \(F\to G(F)\). Exactness of \(G\) can be tested even on sections: its maps are products of exact stalk sequences of vector spaces. Let \(C(F)\) be the cokernel of this monomorphism. The diagram of the two exact rows \(0\to F\to G(F)\to C(F)\to0\), applied to a short exact sequence of \(F\)'s, shows that \(C\) is exact: injectivity at the left follows by subtracting a lift from \(F\), surjectivity at the right by lifting in \(G(F)\), and the same subtraction proves equality of image and kernel in the middle. This is a stalkwise argument.
 
 The functors \(G C^q\), for \(q\ge0\), therefore give an additive functorial injective resolution of every sheaf. For a complex \(E\) zero below degree \(a\), apply these resolutions to every \(E^p\). Totalize with the differential \(d_E+(-1)^p d_{\mathrm{res}}\) on the component \(G C^q(E^p)\). In total degree \(n\), only \(a\le p\le n\) occur, so every term is a finite sum of injectives. Denote this complex by \(I(E)\).
@@ -674,15 +674,86 @@ V\xrightarrow{y\mapsto(uy,y)}W\oplus V
 
 Since \(S=vu\), degree-zero coordinates \((w-ux,x)\) split off the identity from degree \(-1\) to the second degree-zero summand. The remaining differential is exactly \(v:W\to V\). This proves (6.6) with the displayed sign. Thus the constructed sheaf is in the glued heart, and the normalization in (6.4) supplies every heart object. B.4 supplies precisely its morphisms. This completes the actual classical sheaf-model justification of the diagram equivalence in Exercise 5.
 
+## Appendix C. Recollement for constructible coefficient categories
+
+Let \(X\) be separated and of finite type over a field \(k\), let \(i:F\hookrightarrow X\) be closed, and let \(j:U\hookrightarrow X\) be its open complement. The same hypotheses hold for \(F\) and \(U\), and \(j\) is quasi-compact. The categories in the following statement allow arbitrary finite algebraic stratifications and their common refinements.
+
+**Proposition C.1.** Each of the following coefficient systems gives the recollement (2.1)–(2.4), with all functors preserving bounded constructibility:
+
+1. \(D^b_c(X_{\acute et},R)\), where \(R\) is a finite commutative ring killed by an integer invertible in \(k\).
+2. The category \(\mathcal C_X\) of derived-complete pro-étale \(O\)-complexes whose first derived reduction is a bounded constructible étale complex, where \(O\) is a complete DVR with finite residue field of characteristic \(\ell\ne\operatorname{char}k\).
+3. \(D_{\mathrm{cons}}(X_{\mathrm{pro\acute et}},E_X)\), where \(E=O[1/\pi]\) and \(E_X=\widehat O_X[1/\pi]\), with the constructibility convention of [Lesson 1, BX](constructible-complexes-on-algebraic-varieties.md#appendix-bx-strata-integral-models-and-the-rational-sheaf-category).
+
+In case 2 the inverse image and open extension agree with their completed versions. Consequently Theorem 2.1, intermediate extension and the simple-object classification apply to any specified t-structures on the two smaller categories. If these are bounded, the glued structure is bounded.
+
+**Proof.** First consider finite coefficients. The geometric-stalk descriptions of étale restriction, closed direct image and open extension by zero give exact functors \(i^*,i_*,j^*,j_!\), with
+
+\[
+i^*i_*=1,\qquad j^*j_!=1,\qquad j^*i_*=0,\qquad i^*j_!=0.
+\tag{C.1}
+\]
+
+Their section adjunctions are \(i^*\dashv i_*\) and \(j_!\dashv j^*\dashv j_*\). On each of the two kinds of geometric stalk, the appropriate restriction of the sequence
+
+\[
+0\longrightarrow j_!j^*A\longrightarrow A\longrightarrow i_*i^*A\longrightarrow0
+\tag{C.2}
+\]
+
+is the identity sequence. Thus (C.2) is exact and gives (2.2) for complexes. The étale sheaf constructions, exact closed-image formula and coefficient comparison are proved in [Lesson 1, AL.2](constructible-complexes-on-algebraic-varieties.md#al-2-exact-finite-pushforward-and-its-actual-base-change-map), [BK.2](constructible-complexes-on-algebraic-varieties.md#bk-2-classical-coefficients-on-the-enlarged-site) and [BX.2](constructible-complexes-on-algebraic-varieties.md#bx-2-the-ordinary-localization-sequence-on-the-pro-étale-site). The bounded-below injective construction of [BF](constructible-complexes-on-algebraic-varieties.md#appendix-bf-unbounded-derived-categories-and-sheaf-representability) derives the adjunctions. Since \(j_!\) is exact, \(j^*\) preserves injectives; restricting a complex that computes \(Rj_*\) therefore gives \(j^*Rj_*=1\).
+
+Here is the closed right adjoint, including its maps. Form the fibre of the open-adjunction unit and restrict it to \(F\):
+
+\[
+B_K=\operatorname{Fib}\bigl(K\longrightarrow Rj_*j^*K\bigr),\qquad
+i^!K=i^*B_K.
+\tag{C.3}
+\]
+
+On bounded-below injective representatives the unit is a natural chain map, so the signed fibre (B.5) defines this construction on complexes and on their morphisms. It preserves quasi-isomorphisms and descends to an exact functor on the derived categories. The triangle identity for the open adjunction gives \(j^*B_K=0\). Applying (C.2) to \(B_K\) consequently identifies \(B_K=i_*i^!K\). For every \(A\) on \(F\) and every integer \(r\), open adjunction gives
+
+\[
+\operatorname{Hom}(i_*A,Rj_*j^*K[r])
+=\operatorname{Hom}(j^*i_*A,j^*K[r])=0.
+\tag{C.4}
+\]
+
+The exact Hom sequence of (C.3) and the full faithfulness of \(i_*\) now give the natural bijection
+
+\[
+\operatorname{Hom}(A,i^!K)=\operatorname{Hom}(i_*A,K).
+\tag{C.5}
+\]
+
+Its counit is the fibre inclusion \(i_*i^!K\to K\). Hence (C.3) gives precisely (2.3), with its adjunction maps. Applying it to \(i_*A\) gives \(i^!i_*A=A\). Thus \(i_*,j_!,Rj_*\) are fully faithful, and all the recollement identities follow. Exact restriction and extension by zero preserve finite constructible stalks on a finite refinement. [Lesson 1, M.4](constructible-complexes-on-algebraic-varieties.md#m-4-the-ordinary-direct-image-theorem), with the finite-ring comparison in [BV.1](constructible-complexes-on-algebraic-varieties.md#bv-1-coefficient-change-for-ordinary-and-proper-images), proves bounded constructibility of \(Rj_*\). Formula (C.3) then proves it for \(i^!\). This proves case 1 without a finite-projective-dimension assumption on the coefficient sheaves.
+
+For complete coefficients, [Lesson 1, BX.1–BX.2](constructible-complexes-on-algebraic-varieties.md#bx-1-lifting-a-closed-stratum-neighbourhood) proves (C.1)–(C.2) on the pro-étale site. Its proof uses lifted weakly contractible closed-stratum neighborhoods and their covers; it applies to ordinary \(O\)-module sheaves as well as to the completed coefficient-ring sheaves. In particular it proves exactness, the closed counit and joint conservativity of the open and closed restrictions on that site.
+
+Those same passages prove that \(i^*,i_*,j^*,j_!\) preserve derived completeness and commute with the two-term coefficient cones. Their first reductions are the ordinary finite-coefficient functors just considered. They therefore preserve \(\mathcal C\), by its definition. For \(Rj_*\), [BK.5](constructible-complexes-on-algebraic-varieties.md#bk-5-direct-image-preserves-this-completion) proves completeness and the actual derived-reduction comparison, and BV.1 proves that its first reduction is bounded constructible. The restriction and extension adjunctions on complete objects are those of [BL.6](constructible-complexes-on-algebraic-varieties.md#bl-6-inverse-image-its-adjunction-and-composition) and [BM.1](constructible-complexes-on-algebraic-varieties.md#bm-1-complete-extension-by-zero). Thus they restrict to the full constructible subcategories with their original units and counits.
+
+Now (C.2) gives the first localization triangle inside \(\mathcal C_X\). Construction (C.3) stays inside \(\mathcal C_F\), since it uses a fibre and the already established restriction functors. The argument (C.4)–(C.5), performed in these full subcategories, gives the closed right adjoint and the second triangle there. This also identifies it with the exceptional right adjoint in Lesson 1 whenever the latter is used: both represent the same Hom functor, with counit the same fibre inclusion. [BM.6 and BQ.4](constructible-complexes-on-algebraic-varieties.md#bq-4-truncations-the-heart-and-its-kernels) prove that objects of \(\mathcal C\) are bounded and that standard truncations remain in the category. This proves case 2 on the whole complexes, including torsion; no equality of unreduced morphisms is inferred merely from equality after reduction.
+
+Finally [Lesson 1, BW.6–BW.7](constructible-complexes-on-algebraic-varieties.md#bw-6-inverting-the-uniformizer-as-a-triangulated-localization) constructs the exact central localization \(\mathcal C_X[1/\pi]\). All functors and maps above are \(O\)-linear. Localizing their Hom adjunctions gives the same adjunctions over \(E\); localizing their distinguished triangles and invertible units and counits gives (2.2)–(2.4). [BX.7](constructible-complexes-on-algebraic-varieties.md#bx-7-equivalence-and-the-geometric-operations) identifies this category with the actual rational sheaf category in case 3 and identifies restriction, direct image and open extension with their ordinary rational counterparts. Its closed-support formula (BX.8) is (C.3), so the identification also preserves \(i^!\) and its counit. Theorem 2.1 and Sections 3 and 5 now apply in each case. \(\square\)
+
+For the course's \(\overline{\mathbf Q}_\ell\)-coefficients, use finite-extension models: an object is defined over a finite extension \(E/\mathbf Q_\ell\), and morphisms are the filtered colimit after further finite coefficient extensions. The preceding construction is compatible with these extensions. Indeed, for finite \(E'/E\), scalar extension is a finite free coefficient functor. Choosing an \(E\)-basis proves that it commutes with the four exact restriction/extension functors and with \(Rj_*\), since all these functors preserve finite direct sums. Formula (C.3) proves the assertion for \(i^!\). The comparisons themselves are the natural scalar-extension maps, independent of that basis. Derived scalar adjunction similarly gives
+
+\[
+\operatorname{Hom}_{E'}(E'\otimes_E K,E'\otimes_E L)
+=\operatorname{Hom}_{E}(K,L)\otimes_E E',
+\tag{C.6}
+\]
+
+because the underlying target is a finite direct sum of copies of \(L\). This also holds in every shift. Every morphism and every finite diagram in the filtered coefficient category is defined at one finite extension; an equality holds at some further extension. Cone triangles, their identities and the adjunction comparisons therefore pass to that category. This gives the same recollement for the finite-extension-model convention, including its actual localization maps. It asserts nothing about representations over an infinite coefficient field which do not admit such a model.
+
 ## Proof dependencies
 
 Sections 1–6 give the two-point and punctured-plane models, the general gluing theorem, intermediate extension and the classification of simple objects, followed by the five worked exercises. Appendix A proves their categorical prerequisites from the triangle and t-structure axioms. Section 1 supplies the arrow injectives and homotopy argument. Appendix B supplies the actual classical sheaf category, localization, attaching complexes and morphism comparison used in Exercise 5.
 
-The precise earlier-lesson inputs for that classical puncture calculation are Proposition 1.1 and Appendices A–B of *Constructible complexes on algebraic varieties*: field-valued resolutions, convex acyclicity, transport and the full monodromy correspondence, natural puncture cochains and derived localization. Those passages contain proofs; no later cycle theorem is used to prove the diagram equivalence. The general algebraic, étale and adic applications require the first lesson's constructibility, duality and normalized coefficient operations at their stated hypotheses. The local puncture model does not prove those general foundations.
+The precise earlier-lesson inputs for that classical puncture calculation are Proposition 1.1 and Appendices A–B of *Constructible complexes on algebraic varieties*: field-valued resolutions, convex acyclicity, transport and the full monodromy correspondence, natural puncture cochains and derived localization. Those passages contain proofs; no later cycle theorem is used to prove the diagram equivalence. Appendix C proves the finite, complete and rational scheme recollements using the first lesson's exact closed/open operations, ordinary-image constructibility and coefficient comparisons. Its closed right adjoint is the localization fibre, with the actual adjunction counit.
 
 The construction begins with the two-point calculation, removes the nonpositive open and supported parts to form a truncation, and uses a boundary fibre for intermediate extension. The puncture calculation then identifies the heart with its two-arrow diagram category.
 
-BBD gives the categorical gluing, boundary and heart results of Sections 2, 3, 5 and Appendix A; Laszlo–Olsson states the recollement hypotheses. Section 1 constructs a finite arrow resolution. Appendix B constructs the classical category from injective sheaves and derives the puncture diagrams from the attaching fibre and its full mapping complex. The angular-cover calculation and monodromy correspondence are in the preceding lesson. These classical constructions do not establish the broader algebraic and normalized adic foundations.
+BBD gives the categorical gluing, boundary and heart results of Sections 2, 3, 5 and Appendix A; Laszlo–Olsson states the recollement hypotheses. Section 1 constructs a finite arrow resolution. Appendix B constructs the classical category from injective sheaves and derives the puncture diagrams from the attaching fibre and its full mapping complex. The angular-cover calculation and monodromy correspondence are in the preceding lesson. Appendix C gives the scheme coefficient applications at their stated geometric and coefficient hypotheses.
 
 ## References
 
