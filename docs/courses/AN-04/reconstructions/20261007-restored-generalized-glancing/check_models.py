@@ -38,6 +38,6 @@ ep=S.symbols('epsilon',positive=True);x=S.symbols('r',positive=True)
 assert S.integrate(2*ep,(x,0,ep**2))==2*ep**3
 assert S.integrate(2*x*ep,(x,0,ep**2))==ep**5
 checks.append({'name':'Liouville density under normal compression','passed':True,'locators':'GF29-GF31,GF48','correct_strip_volume':'2epsilon^3','compressed_Euclidean_area':'epsilon^5','scope':'Symplectic clock-map preservation and the complete measure-zero argument are proved in the lesson.'})
-record={'schema':'an04-generalized-glancing-model-checks/v1','source_sha256':sha(c/'generalized-glancing-flow-preparation.md'),'checks':checks,'passed':True,'general_theorem_certified':False,'script_sha256':sha(Path(__file__))}
+record={'schema':'an04-generalized-glancing-model-checks/v1','source_sha256':sha(c/'generalized-glancing-flow-preparation.md'),'checks':checks,'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','script_sha256':sha(Path(__file__))}
 (c/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'finite_algebra_groups':len(checks),'general_theorem_certified':False})
+print({'passed':True,'finite_algebra_groups':len(checks),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

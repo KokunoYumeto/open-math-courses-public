@@ -45,5 +45,5 @@ text(590,548,'G(0) = 0: a nonzero remainder is necessary.',19)
 text(35,635,'Proofs: SQD:X1–X3. All formulas and marked values are exact; curves are numerical samples.',19)
 parts.append('</svg>');p=root/'figures/semidefinite-division.svg';p.write_text('\n'.join(parts)+'\n','utf-8')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-r={'svg':'figures/'+p.name,'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'sample_counts':[401,501,501],'ranges':{'left_w':[0,1],'right_v':[-.03,.065]},'source_proof_locators':['SQD:X1','SQD:X2','SQD:X3','SQD:V0'],'actually_inspected':False,'exact_coordinate_review_complete':False}
+r={'svg':'figures/'+p.name,'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'sample_counts':[401,501,501],'ranges':{'left_w':[0,1],'right_v':[-.03,.065]},'source_proof_locators':['SQD:X1','SQD:X2','SQD:X3','SQD:V0'],'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (root/'figure-check.json').write_text(json.dumps(r,indent=2)+'\n','utf-8');print(json.dumps({'figure_sha256':r['svg_sha256']}))

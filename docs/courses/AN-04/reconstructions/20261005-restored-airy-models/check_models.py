@@ -113,6 +113,6 @@ rows.append({'name':'Exact coefficient and homogeneous orders, all differentiate
 
 report={'schema':'bounded-airy-model-self-check/v1','lesson':name,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
         'passed':all(r['passed'] for r in rows),'checks':rows,
-        'scope':'Six bounded checks complement author proofs; not arbitrary-symbol representation, global analytic or independent mathematical certification.'}
+        'scope':'Six bounded calculations for the stated models. Arbitrary-symbol representation and global analytic estimates require the written arguments.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 print(json.dumps({'passed':report['passed'],'checks':len(rows),'lesson_sha256':report['lesson_sha256'],'max_contour_error':max(r['error'] for r in contour)}))

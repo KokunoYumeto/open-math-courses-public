@@ -340,7 +340,7 @@ The local Sobolev estimate applied to each derivative of length \(k\), with an i
 
 **F0. Exact figure data.** The first panel plots the actual smooth bump \(\Phi(z)=\exp(1-1/(1-z^2))\) for \(|z|<1\), zero otherwise, as a function of \(z=(\xi-R)/R^\rho\). It marks the annular-distance scale \(R^\delta=16\) for \(\rho=3/4,R=65536\). This is the Fourier profile, normalized to unit height; its height multiplier \(R^a\) and width \(R^\rho\) are stated in the caption. The second panel plots the exact exponent gap \(\delta n/2\) for \(n=1,2\), so it displays an order difference, not a numerical proof. The third compares the exact exponents \(M\) and \(q+\rho n/2\) in X1. The marked difference is \(1/4\). The original script retains every scale and label.
 
-## 12. Source qualification and next course work
+## 12. Source qualification and packet regularity
 
 The phase-based \(I_\rho^m\) class, its invariant symbol quotient and its full calculus remain valid with the already proved orders and hypotheses. Every vanishing-symbol test in \(\mathcal J_\rho\) preserves that class, and the two printed cutoff families are legitimate. The compact packet construction proves that the literal fixed-endpoint converse (IP5) cannot serve as its exact definition when \(\rho<1\). The weighted-normal frequency-cell condition (IP30), with wavefront containment and the local choices in P2, is a complete, exact replacement.
 

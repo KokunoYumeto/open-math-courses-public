@@ -43,6 +43,6 @@ for J in [10,100]:
     assert partial>.999*J
 groups.append({'name':'exercise 3 summable fixed-r H1 tail and divergent limit partial sums','passed':True})
 source=p/'quadratic-normal-errors-and-regularization.md'
-out={'schema':'an04-quadratic-normal-regularizer-models/v1','checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'passed':True,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'groups':groups,'general_theorem_certificate':False}
+out={'schema':'an04-quadratic-normal-regularizer-models/v1','checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'passed':True,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'groups':groups,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (p/'model-check.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'groups':len(groups),'general_theorem_certificate':False})
+print({'passed':True,'groups':len(groups),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

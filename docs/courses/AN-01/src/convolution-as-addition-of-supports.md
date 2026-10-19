@@ -141,6 +141,70 @@ There is also a maximal local output region. Let \(\Omega\) be the union of open
 \]
 Any open region where all compact output sets have compact preimages is contained in \(\Omega\), by taking a small closed ball about each point. All preceding binary identities remain valid on this region.
 
+## Translating a distribution differentiates with a minus sign
+
+**Proposition 1.2 (strong translation derivatives).** For every \(u\in\mathcal D'(\mathbb R^n)\), the map \(p\mapsto\tau_pu\) is smooth in the strong distribution topology, and
+\[
+ \partial_p^\alpha(\tau_pu)=(-1)^{|\alpha|}\tau_p(\partial^\alpha u).
+ \tag{T3}
+\]
+Here smoothness means that all successive parameter difference quotients converge uniformly on each bounded test family, and that their limits are strongly continuous. In particular, for any fixed \(v\in\mathbb R^n\),
+\[
+ \frac{\delta_{hv}*u-u}{h}\longrightarrow-\partial_vu
+ \quad(h\to0,\ h\ne0),\qquad
+ \partial_v=\sum_{j=1}^nv_j\partial_j .
+ \tag{T4}
+\]
+The limit is two-sided and strong.
+
+More precisely, fix compact sets \(K\) of test supports and \(P\) of translation parameters, and restrict \(|h|\le1\). There are \(C,m\), independent of \(p\in P,h,\phi\), such that, for every \(\phi\in\mathcal D_K\) and integer \(N\ge0\),
+\[
+ \left|\left\langle
+ \tau_{p+hv}u-\sum_{j=0}^{N}\frac{(-h)^j}{j!}
+                  \tau_p\partial_v^ju,\phi\right\rangle\right|
+ \le \frac{C|h|^{N+1}|v|_1^{N+1}}{(N+1)!}\,
+                   p_{m+N+1}(\phi),
+ \qquad |v|_1=\sum_j|v_j|.
+ \tag{T5}
+\]
+The same \(C,m\) work for every \(N\).
+
+**Proof.** All tests \(x\mapsto\phi(x+p+thv)\), with \(p\in P\), \(0\le t\le1\), have supports in the fixed compact set
+\[
+ L=K-P+[-1,1]v .
+ \tag{T6}
+\]
+Choose a finite-order bound \(|u(\psi)|\le C p_m(\psi)\) for tests supported there. For \(g(t)=\phi(x+p+tv)\), repeated use of the fundamental theorem gives
+\[
+ g(h)=\sum_{j=0}^{N}\frac{h^j}{j!}g^{(j)}(0)
+       +\frac{h^{N+1}}{N!}
+             \int_0^1(1-t)^Ng^{(N+1)}(th)\,dt .
+ \tag{T7}
+\]
+For completeness, the case \(N=0\) is the fundamental theorem after the substitution \(s=th\). Integration by parts in \(t\) in the remainder, using
+\(\frac{d}{dt}g^{(N+1)}(th)=h g^{(N+2)}(th)\), expresses that remainder as
+\(h^{N+1}g^{(N+1)}(0)/(N+1)!\) plus the next remainder. This proves the formula inductively for both signs of \(h\); \(h=0\) is immediate.
+
+Apply (T7) also to every \(x\)-derivative of order at most \(m\). The multinomial expansion, or repeated distributivity of \(\partial_v=\sum v_j\partial_j\), bounds each derivative of the remainder by
+\[
+ \frac{|h|^{N+1}|v|_1^{N+1}}{(N+1)!}p_{m+N+1}(\phi).
+\]
+The integral is a smooth compactly supported test by the parameter argument B1. Distributional differentiation gives
+\[
+ u\bigl((\partial_v^j\phi)(\,\cdot+p)\bigr)
+       =(-1)^j(\tau_p\partial_v^ju)(\phi).
+\]
+Pairing the remainder with \(u\) proves (T5).
+
+For continuity under an arbitrary small displacement \(q\), the same fundamental-theorem argument on \(x+p+tq\) bounds the test difference in \(p_m\) by \(|q|_1p_{m+1}(\phi)\), with one common support set for \(|q|\le1\). On a bounded test family this tends uniformly to zero. Formula (T5) with \(N=1\), divided by \(h\), proves the first strong parameter derivative and its sign. Apply this argument successively to every distribution \(\partial^\alpha u\), and use the continuity just proved for those distributions, to obtain (T3). Finally (1.8) identifies \(\delta_{hv}*u=\tau_{hv}u\), proving (T4). No compact-support assumption on \(u\) is needed. \(\square\)
+
+For a moving point mass, \(\langle(\delta_h-\delta_0)/h,\phi\rangle=(\phi(h)-\phi(0))/h\) tends to \(\phi'(0)=\langle-\delta'_0,\phi\rangle\). For the step function, \((H(x-h)-H(x))/h\) tends to \(-\delta_0\) from either side: for \(h>0\) it is the negative interval density \(-1_{(0,h)}/h\), while for \(h<0\) it is \(1_{(h,0)}/h\), also of mass \(-1\).
+
+![Signed coefficients of the first and centered second differences of a moving point mass.](../figures/translation-difference-signs.png)
+
+*Figure.* For \(h>0\), the arrows show the coefficients after multiplication by \(h\) in the first panel and by \(h^2\) in the second; they are point masses, not function values. Proposition 1.2 proves the first limit, and Solution 11 proves the second with its quadratic error bound. The [Python figure source](../figures/translation-difference-signs.py) gives the exact coefficients and labels.
+
+
 ## Smoothing and the exact derivative count
 
 **Theorem 2.1 (a regular factor).** If \(u\in\mathcal D'(\mathbb R^n)\) and \(f\in\mathcal D(\mathbb R^n)\), their convolution is the smooth function
@@ -501,6 +565,8 @@ The geometry is that simultaneous translation fixes only the difference \(x-y\).
 \]
 including all translated derivatives.
 
+11. **Centered translation differences.** For arbitrary \(u\in\mathcal D^\prime(\mathbb R^n)\) and \(v\in\mathbb R^n\), find the strong limit of \((\tau_{hv}u-2u+\tau_{-hv}u)/h^2\), and give an error of order \(h^2\) on each bounded test family. Calculate both signs explicitly for \(u=\delta_0\) and \(u=H\) in one dimension with \(v=1\).
+
 ## Complete solutions
 
 **Solution 1.** Evaluation and (1.8) give
@@ -587,12 +653,26 @@ For a bounded family supported in \([-R,R]\), all three nonorigin terms vanish e
 \]
 All three nonorigin locations escape every compact set. On any one bounded output test family their point and derivative pairings therefore vanish exactly for large \(j\). The strong limit is \(\partial_{x_1}\delta_0\), pairing as \(-\partial_{x_1}\phi(0)\). Both this direct argument and Corollary 3.4 allow these noncompact fixed support envelopes.
 
-## Programme proof locations and freely accessible sources
+**Solution 11.** Use (T5) with \(N=3,p=0\) at the displacements \(hv\) and \(-hv\). The constant and odd terms cancel in the sum after subtracting \(2u\). The quadratic terms sum to \(h^2\partial_v^2u\). The sum of the two remainders is bounded, on a fixed test support, by \(C|h|^4|v|_1^4p_{m+4}(\phi)/12\). Thus
+\[
+ \left|\left\langle
+ \frac{\tau_{hv}u-2u+\tau_{-hv}u}{h^2}
+              -\partial_v^2u,\phi\right\rangle\right|
+ \le \frac{C|h|^2|v|_1^4}{12}p_{m+4}(\phi).
+ \tag{T8}
+\]
+Every bounded test family has a uniform bound for this seminorm, proving strong convergence and the asserted rate. In one dimension with \(u=\delta_0\), the pairing is
+\((\phi(h)-2\phi(0)+\phi(-h))/h^2\to\phi''(0)\), the pairing of \(+\delta_0''\). With \(u=H\), the limit is \(H''=\delta'_0\), whose pairing is \(-\phi'(0)\). These signs follow from differentiating the distribution; the displayed second-difference coefficients are \(+1,-2,+1\).
+
+
+## Programme proof locations and sources
 
 - [U008, Order, positivity and distributional limits](order-positivity-and-limits.md): the definition and bounded-family characterization (T1), Proposition 1.2 for finite differentiability, Proposition 1.1 for the sequential criterion, and the entire proof of Theorem 5.1 for uniform order and strong sequential convergence.
 - [Functional prerequisite](../prerequisites/U011-free-foundations/functional-foundations-U008.md), Sections 6 and 14.1–14.2: the complete Baire and test-space completeness proofs used in K1. [Scalar prerequisite](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), Sections 13.1–13.5 and 13.10, and [integration prerequisite](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), Sections 15.0–15.4: scalar differentiation, compact cutoffs, integration, translation changes and smooth approximation.
 - [Schwartz prerequisite](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F2–F4: the seminorm estimates, integration by parts and two inverse identities used in (K2)–(K4). [Angular prerequisite](../prerequisites/U011-free-foundations/angular-foundations-U018.md), A3: the full finite point-jet proof used in Solution 8.
 - Semyon Dyatlov, [*Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), freely accessible MIT notes, 2 October 2026 version. Propositions 6.3 and Lemma 6.8 provide the parameter and integral arguments; Theorems 6.4, 6.7, 6.10 and 7.1 provide smooth convolution, approximation and tensor construction. Chapter 8 gives the proper-support pairing and singular-support localization. The Fourier kernel sketch in Theorem 7.6 is expanded here into the complete compact-cutoff construction K1, with its norm bound, convergence and compatibility proofs.
 - Richard Melrose, [*18.155 Lecture 15: Schwartz's kernel theorem*](https://math.mit.edu/~rbm/18.155-F16/L15.pdf), freely accessible MIT lecture, 1 November 2016. Pages 2–4 explain separate continuity, the Baire estimate and localization by cutoffs. The kernel construction here uses the supplied Fourier inversion proof and the explicit integral (K2); it does not require the lecture's additional Sobolev-space machinery.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, §4.2, Exercise 4.2.5. ISBN 978-3-642-61497-2. Proposition 1.2 proves the translation limit and its bounded-test remainder estimate.
 
 Every distributional construction and operator identity used above has its proof here or at one of the exact programme locations listed. The freely accessible human texts support the construction of these proofs.

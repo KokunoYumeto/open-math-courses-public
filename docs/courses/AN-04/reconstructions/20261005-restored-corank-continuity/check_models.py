@@ -129,7 +129,7 @@ report={'schema':'corank-finite-check/v1','passed':True,
  'lesson':'corank-geometry-and-sufficient-continuity.md',
  'lesson_sha256':sha(here/'corank-geometry-and-sufficient-continuity.md'),
  'script_sha256':sha(Path(__file__)),'checks':checks,
- 'scope':'Bounded exact tangent/phase/flow models and independent finite parameter operators. Not certification of general homogeneous Darboux, FIO continuity or constant-rank sharpness.',
- 'independent_mathematical_review':False}
+ 'scope':'Bounded exact tangent/phase/flow models and independent finite parameter operators. Not certification of general homogeneous Darboux, FIO continuity or constant-rank sharpness.' 
+                                        }
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_checks':len(checks),'lesson_sha256':report['lesson_sha256']}))

@@ -392,7 +392,7 @@ A compatible family of isomorphisms gives a unique homomorphism of the algebraiz
 
 ## 10. Precisely imported inputs and scope
 
-The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for Noetherian separated algebraic spaces when $d\geq2$. For $d=1$ it holds when every one-dimensional reduced irreducible component has a nonempty normal open or is geometrically unibranch; in that case the space is affine. This includes separated Noetherian Nagata algebraic spaces. The full bound for arbitrary quasi-compact separated algebraic spaces and arbitrary rings remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
+The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
 
 - **Limits and modules.** On quasi-compact quasi-separated algebraic spaces, finite-presentation data descend along affine limits, quasi-coherent modules are filtered colimits of finitely presented ones, and relative flatness and proper support eventually descend. The particular support statement is [Stacks, Tag 08K2]. These results permit Noetherian models over finitely generated $\mathbf Z$-algebras.
 - **Perfect approximation and proper-support comparison.** For bounded-above coherent $E$ on a Noetherian space and any $m$, a perfect $P\to E$ is an isomorphism above $m$ and a surjection at $m$ [Stacks, Tags 08HI, 08HJ, 08HP]. For a quasi-separated locally finite type map to a Noetherian base, a perfect $P$ and bounded coherent $G$ that is base-flat and properly supported give perfect $Rf_*R\mathcal Hom(P,G)$, with arbitrary derived base change [Stacks, Tags 0DKK, 08JQ]. Section 5.1 gives the low-Ext application [Tag 08JR].
@@ -14154,7 +14154,983 @@ Tag 07VT.
 [Primary source](https://stacks.math.columbia.edu/tag/035E);
 [Primary source](https://stacks.math.columbia.edu/tag/07VT).
 
+**Raw-size-one affine atlases on arbitrary Noetherian curves**
 
+**Theorem.**
+Let $T$ be an integral separated Noetherian scheme of dimension one.
+If $f:U\to T$ is an etale surjection, $U$ is affine, and each
+raw point fibre has one point, then $T$ is affine. No normality,
+Nagata condition or normal-open hypothesis is imposed.
+
+**The generic field and the birational case.**
+Put $K=\kappa(\eta)$ for the generic point of $T$. The generic
+fibre is $\operatorname{Spec}L$ for one finite separable field
+extension $L/K$; set $n=[L:K]$. The morphism $f$ is affine:
+its graph is closed in $U\times_{\mathbf Z}T$, and the projection
+of this product to $T$ is affine. Its quasi-coherent algebra
+$f_*\mathcal O_U$ is flat over $\mathcal O_T$ and injects into
+the constant generic algebra $L$ on every affine base open.
+Indeed a flat module over a domain is torsion-free.
+
+If $n=1$, the multiplication map
+$$
+ f_*\mathcal O_U\otimes_{\mathcal O_T}f_*\mathcal O_U
+                    \longrightarrow f_*\mathcal O_U
+$$
+is an isomorphism. It is surjective, and on each affine base
+open its source is flat, hence torsion-free; its kernel has
+zero generic fibre and is therefore zero. Thus $f$ is a
+monomorphism. An etale monomorphism is an open immersion, and
+surjectivity makes it an isomorphism. The conclusion follows
+from the affineness of $U$. We may henceforth assume $n\geq2$.
+
+**A monogenic model on a large open.**
+Choose a primitive element $\gamma$ for $L/K$ and its monic
+minimal polynomial
+$$
+                P(Z)=Z^n+c_1Z^{n-1}+\cdots+c_n\in K[Z].
+$$
+After shrinking to a nonempty affine open $V\subset T$, the
+whole restriction $f^{-1}(V)\to V$ is finite etale and is
+$$
+               \operatorname{Spec}_V(\mathcal O_V[Z]/(P)).
+$$
+For detail, separated quasi-finiteness gives a finite
+compactification by Zariski's main theorem. Discard components
+not meeting $U$, then remove the image of its complement to
+make the map finite. The remaining generic polynomial
+isomorphism extends after clearing finitely many denominators
+in the finite algebra presentation. The coefficients $c_j$
+are regular on $V$. The complement $T\setminus V$ is finite.
+Every fibre algebra on $V$ is a field of dimension $n$ over
+its residue field: it is finite etale of rank $n$ and has one
+raw point. In particular $1,\gamma$ remain linearly independent
+over every residue field on $V$.
+
+**Two affine sections.**
+Choose an ample invertible sheaf $\mathcal H$ on $T$; such a
+sheaf exists for every separated Noetherian curve. There are
+$e>0$ and a nonzero section
+$b\in\Gamma(T,\mathcal H^{\otimes e})$ such that
+$T_b$ is affine, contains $\eta$, and is contained in $V$.
+Let $D=Z(b)$. This is an effective Cartier divisor with finite
+support, containing $T\setminus V$. If $D$ is empty, then
+$T=T_b$ is affine already. Otherwise there are $d>0$ and
+$a\in\Gamma(T,\mathcal H^{\otimes d})$ such that $T_a$
+is affine and contains the support of $D$.
+Consequently $T=T_a\cup T_b$. These choices use the affine
+section basis and finite-point avoidance for an ample sheaf;
+they require no infinite base field or surjectivity onto a
+curve point's residue field.
+
+**A global finite locally free order.**
+Choose an integer $r>0$ and put
+$$
+ N=rd-1,\qquad \mathcal M=\mathcal H^{\otimes eN},
+ \qquad s=b^N\in\Gamma(T,\mathcal M).                       \tag{NCN1}
+$$
+Take $r$ sufficiently large that $N>0$ and
+$$
+           p_j=c_j s^j\in\Gamma(T,\mathcal M^{\otimes j})
+                         \quad(1\leq j\leq n).             \tag{NCN2}
+$$
+To justify this without normality, at a point $x$ of $D$ write
+$b=\beta h$ in a local basis $h$ of $\mathcal H^{\otimes e}$.
+The element $\beta$ is nonzero and in the maximal ideal of
+the one-dimensional local domain $\mathcal O_{T,x}$, so
+$\mathcal O_{T,x}[1/\beta]=K$. Each $c_j\beta^{Nj}$ is
+therefore regular for all sufficiently large $N$. There are
+only finitely many such points and coefficients. Outside $D$
+the coefficients are regular already. This proves (NCN2),
+also along the progression $N=rd-1$.
+
+There is a finite locally free algebra of rank $n$
+$$
+        \mathcal B=\mathcal O_T\oplus\mathcal M^{-1}
+                     \oplus\cdots\oplus\mathcal M^{-(n-1)}.
+                                                                  \tag{NCN3}
+$$
+Here are its multiplication and gluing explicitly. If $m_i$
+is a local basis of $\mathcal M$ and $s=\lambda_i m_i$, use
+the local algebra with basis $1,z_i,\ldots,z_i^{n-1}$ and relation
+$$
+          z_i^n+(c_1\lambda_i)z_i^{n-1}+\cdots
+                              +c_n\lambda_i^n=0.
+$$
+On an overlap $m_j=g_{ij}m_i$, we have
+$\lambda_j=g_{ij}^{-1}\lambda_i$ and set
+$z_j=g_{ij}^{-1}z_i$. The relations transform consistently,
+and all their coefficients are regular by (NCN2). Equivalently,
+the algebra is the subalgebra of the constant field $L$ locally
+generated by $z_i=\lambda_i\gamma$. The elements $z_i\otimes m_i$
+glue to a section
+$$
+                         z\in\Gamma(T,\mathcal B\otimes\mathcal M).
+$$
+Over $T_b$ the section $s$ is invertible, and $\mathcal B$
+identifies with the monogenic finite etale algebra above.
+In particular its fibres there are fields, with $1,z_i$
+linearly independent.
+
+**A norm section that never vanishes.**
+The section
+$$
+      v=a^{er}\,1+bz\in
+         \Gamma(T,\mathcal B\otimes\mathcal H^{\otimes erd})
+                                                                  \tag{NCN4}
+$$
+is well typed because $e+eN=erd$. At a point of $D$, its
+second term is zero and $a$ is nonzero; hence $v$ is a scalar
+unit in the fibre algebra. At a point outside $D$, the algebra
+is a field, $b$ is nonzero and $1,z_i$ are independent, so $v$
+is nonzero and hence a unit there too. Its determinant norm is
+therefore a nowhere-vanishing section
+$$
+       t=\operatorname N_{\mathcal B/\mathcal O_T}(v)
+             \in\Gamma(T,\mathcal H^{\otimes nerd}).        \tag{NCN5}
+$$
+This uses the determinant of multiplication in the finite
+locally free algebra (NCN3); it does not require a trace
+splitting or division by $n$.
+
+**Why the whole nonvanishing locus is affine.**
+Let $S=\bigoplus_{q\geq0}\Gamma(T,\mathcal H^{\otimes q})$.
+The canonical map $T\to\operatorname{Proj}S$ is an open
+immersion. Moreover the affineness of $T_a$ and $T_b$ identifies
+them with the full standard affine opens $D_+(a)$ and $D_+(b)$:
+localization of sections gives the corresponding degree-zero
+localized section rings.
+
+In this graded ring, the determinant norm has the explicit form
+$$
+ t=(a^{er})^n-p_1(a^{er})^{n-1}b+
+                  p_2(a^{er})^{n-2}b^2-\cdots+(-1)^np_nb^n.
+                                                                  \tag{NCN6}
+$$
+Every summand has degree $nerd$, and $t\in(a,b)S$.
+Consequently
+$$
+       D_+(t)\subset D_+(a)\cup D_+(b)=T
+                              \subset\operatorname{Proj}S.
+$$
+Conversely $t$ vanishes nowhere on $T$ by (NCN5). Hence
+$T=D_+(t)$, which is affine. The argument uses the homogeneous
+ideal membership in (NCN6), not merely that a positive ample
+power has a nowhere-vanishing section. The latter fact alone
+would only imply quasi-affineness in general. The theorem
+follows.
+
+**Consequence for all Noetherian algebraic spaces.**
+Combine this curve theorem with the Noetherian-space argument
+already established by proper scheme models and rational
+configurations. For every separated Noetherian algebraic space
+$X$, every affine etale surjection $U\to X$, and every raw
+fibre bound $d\geq1$, one has
+$$
+                         H^q(X,F)=0\quad(q\geq d)
+$$
+for every quasi-coherent $F$. For $d\geq2$ the previous proof
+applies directly. For $d=1$, high-dimensional integral
+components are affine by that proof, zero-dimensional integral
+components are fields, and one-dimensional components are
+schemes by the schematic-locus theorem and are affine by the
+curve theorem above. Finite component and nilradical
+filtrations prove the bound for coherent sheaves. Coherent
+approximation and the affine etale Cech complex give it for
+every quasi-coherent sheaf. In particular every such raw-size-one
+Noetherian space $X$ is affine by the cohomological affineness
+criterion.
+The empty space has zero cohomology in every degree; for a
+nonempty space a surjective atlas necessarily has raw bound
+$d\geq1$.
+
+**Scope and references.**
+The arbitrary non-Noetherian assertion is not inferred. The
+curve proof used Noetherianity to obtain an ample sheaf, finite
+boundary, and the requisite affine section containing that
+boundary. It never transfers a raw fibre bound through an
+arbitrary residue extension or replaces it by a geometric bound.
+For the standard inputs see Stacks Tag 09ND (an ample sheaf on
+an integral separated Noetherian curve), Tag 09NV (an affine
+section through finitely many points), Tag 01Q1
+(the section-ring open immersion), and Zariski's main
+theorem, Tag 05K0. The component argument uses the previously
+stated proper-model proof and Tag 0ADD.
+[Primary source](https://stacks.math.columbia.edu/tag/09ND);
+[Primary source](https://stacks.math.columbia.edu/tag/09NV);
+[Primary source](https://stacks.math.columbia.edu/tag/01Q1);
+[Primary source](https://stacks.math.columbia.edu/tag/05K0);
+[Primary source](https://stacks.math.columbia.edu/tag/0ADD).
+
+![The norm section on the field-fibre open and the finite boundary, and its affine nonvanishing locus](../figures/raw-fibre-curve-norm.png)
+
+*The finite locally free order in (NCN3) has field fibres on $T_b$. The section $v=a^{er}+bz$ is a unit there by the independence of $1,z$, and on $D=Z(b)$ it is a scalar unit. Its determinant norm $t$ never vanishes and belongs to the homogeneous ideal $(a,b)$ in (NCN6). Since both section loci are affine, this identifies the whole curve with the standard affine open $D_+(t)$. The editable vector diagram is [raw-fibre-curve-norm.svg](../figures/raw-fibre-curve-norm.svg).*
+
+**An affine envelope for the raw-size-one locus of a curve model**
+
+**Envelope lemma.**
+Let $T$ be an integral separated Noetherian curve and let
+$f_0:U_0\to T$ be a surjective etale map with $U_0$ affine.
+Suppose the generic fibre has one raw point. There is an affine
+open $W\subset T$ containing every point $t$ for which
+$|(U_0)_t|$ has one point.
+
+If the generic field degree is one, the flat birational
+argument in the curve norm proof makes $f_0$ an isomorphism,
+so take $W=T$. Otherwise use precisely the choices and order
+in (NCN1)--(NCN6) of that proof. None of their construction
+requires the fibre to be a field at every point of the large
+monogenic open. At a point on $D=Z(b)$, the norm section is
+nonzero because its element is a scalar unit. At a point off
+$D$ where the original raw fibre has one point, the finite
+etale algebra is a field of the generic rank, so $1,z$ are
+independent and the norm section is nonzero there as well.
+The homogeneous membership $t_{\rm norm}\in(a,b)$ still
+identifies its nonvanishing locus with the full standard
+affine open $D_+(t_{\rm norm})$ in the section-ring Proj.
+Thus $W=T_{t_{\rm norm}}$ is affine and contains the indicated
+raw-size-one locus. No assertion that this locus is open or
+constructible is needed.
+
+**Non-Noetherian affine base change of a curve model.**
+Let $g:X\to T$ be any affine morphism, without a Noetherian
+hypothesis on $X$, and suppose the base-changed atlas
+$$
+                     U=U_0\times_T X\longrightarrow X
+$$
+has exactly one raw point in every fibre. Then $X$ is affine.
+
+Raw point counts in finite etale fibres cannot decrease on a
+field extension: each original factor in a product of finite
+separable fields remains a nonzero algebra and supplies at
+least one prime after tensoring with the extension field.
+Consequently $g(X)$ lies in the raw-size-one locus of $f_0$.
+
+If $g$ is dominant, its generic fibre is nonempty. To see this
+on an affine neighborhood $\operatorname{Spec}A$ of the generic
+point, its inverse image is $\operatorname{Spec}B$, and density
+of the image makes $A\to B$ injective. Hence
+$B\otimes_A\operatorname{Frac}A\ne0$. The raw count comparison
+then shows that $f_0$ has one generic raw point. Apply the
+envelope lemma: the map $g$ factors through its affine open
+$W$, and an affine morphism to an affine scheme has affine
+source.
+
+If $g$ is not dominant, its image has finite closed closure
+$Z\subset T$. Let $I$ define the reduced closed subscheme
+with that support. On the inverse images of a finite affine
+cover of $T$, the image of $I$ is a finitely generated nil
+ideal, so it is nilpotent. A single exponent works on the
+finite cover. Thus $I^N\mathcal O_X=0$ for some $N$, and $g$
+factors through the closed Noetherian zero-dimensional
+subscheme $V(I^N)$, which is affine. The factored map is affine
+as well (it is the base change of $g$), and $X$ is affine.
+The empty source is immediate. This proves the statement
+without imposing the generic-field condition on $f_0$ itself.
+
+**The cohomological bound in this relative class.**
+More generally, for an affine $g:X\to T$ as above and a
+base-changed affine atlas with any raw fibre bound $d$, the
+original cohomological conclusion holds. For $d=1$ this is
+the affineness just proved. For $d\geq2$, affine pushforward
+is exact on quasi-coherent sheaves, so
+$H^q(X,F)=H^q(T,g_*F)=0$ for $q\geq2$ by Noetherian
+one-dimensional vanishing. No Noetherianity of $X$ is used.
+
+**Scope of the curve-model theorem.**
+An arbitrary quasi-compact separated algebraic space need not
+come with an affine morphism to a Noetherian curve. General
+Noetherian approximation supplies affine projections, but
+their images can omit points of every sufficiently late model.
+The following example makes this failure explicit even for
+an affine source and two descended global functions.
+
+**A valuation ring with no surjective Noetherian coefficient model**
+
+**The valuation ring.**
+Put $k=\mathbf R$, $K=k((x))((y))$ and
+$$
+ V=k[[x]]+y\,k((x))[[y]]\subset K.                 \tag{SM1}
+$$
+For a nonzero Laurent series in $y$, let $n$ be its first $y$
+exponent and let $m$ be the first $x$ exponent of the corresponding
+coefficient. The assignment $v(f)=(n,m)$ is a valuation with value
+group $\mathbf Z^2$ in lexicographic order. Its valuation ring is
+exactly $V$: when $n>0$ the leading coefficient is arbitrary, and
+when $n=0$ that coefficient must lie in $k[[x]]$. Thus $V$ is a
+domain and $K$ is its fraction field.
+
+Its spectrum consists of exactly three points, with prime ideals
+$$
+ (0)\subsetneq P=y\,k((x))[[y]]
+       \subsetneq\mathfrak m=xV.                  \tag{SM2}
+$$
+Indeed, $V/P=k[[x]]$ and $V/\mathfrak m=k$. Every element of
+positive value is divisible by $x$, so $\mathfrak m=xV$ is the
+maximal ideal. If a nonzero prime $Q$ contains an element with
+value $(0,m)$, $m>0$, it contains $x$ and equals $\mathfrak m$.
+Otherwise, choose a nonzero $a\in Q$ with first value coordinate
+positive. For every $b\in P$ a sufficiently large power $b^N$
+is divisible by $a$ in $V$. Hence $b\in Q$, and $Q=P$. This
+also proves that no further primes occur. The elements $y$ and
+$x$ distinguish the two strict inclusions in (SM2).
+
+**A Noetherian domain with finite spectrum.**
+A Noetherian domain with finitely many prime ideals has dimension
+at most one. To prove this, suppose that a prime $M$ has height
+at least two and localize there. The resulting Noetherian local
+domain $B$ has only finitely many height-one primes
+$p_1,\ldots,p_s$. Its maximal ideal is contained in none of them.
+Finite prime avoidance supplies a nonzero element $b$ in the
+maximal ideal and outside all the $p_i$. A prime minimal over
+$(b)$ has height one by the principal ideal theorem, because
+the domain has no height-zero prime containing the nonzero
+element $b$. This contradicts the choice of $b$.
+
+**No surjective coefficient model.**
+There is no Noetherian subring $B\subset V$ containing both
+$x$ and $y$ for which
+$$
+                 \operatorname{Spec}V\longrightarrow
+                 \operatorname{Spec}B
+                 \quad\hbox{is surjective}.       \tag{SM3}
+$$
+Surjectivity would make $\operatorname{Spec}B$ a set of at most
+three points. But contraction of (SM2) gives the strict chain
+$$
+ (0)\subsetneq P\cap B\subsetneq\mathfrak m\cap B: \tag{SM4}
+$$
+the first strictness is witnessed by $y$, and the second by $x$.
+This contradicts the preceding Noetherian-domain lemma. The
+argument also excludes any Noetherian ring mapping to $V$ with
+both elements in its image and a surjective spectral map: pass
+to its image, which is a Noetherian domain.
+
+The same obstruction applies to Noetherian algebraic-space
+models with the two elements descended as global functions.
+More precisely, there is no surjective morphism
+$g:\operatorname{Spec}V\to T$ to a Noetherian algebraic space
+with $\xi,\upsilon\in\Gamma(T,\mathcal O_T)$ satisfying
+$g^*\xi=x$ and $g^*\upsilon=y$. Such a space would have at most
+three underlying points. The images of the three points in
+(SM2) form a strict specialization chain: the vanishing of
+$\upsilon$ distinguishes its first two points, and that of
+$\xi$ distinguishes its last two points. Choose an affine
+etale chart of $T$ through its last point. It is Noetherian
+and has only finitely many points, because it is quasi-finite
+over the finite set $|T|$. Flat going down lifts the two strict
+generalizations to this affine chart. Its coordinate ring
+therefore has a prime chain of length two. Quotienting by the
+first prime gives a Noetherian domain with finite spectrum
+and dimension at least two, again a contradiction.
+
+**Consequence for approximation.**
+In a Noetherian approximation of $\operatorname{Spec}V$, the
+finite pair of functions $x,y$ descends to a sufficiently late
+stage. The projection to that stage cannot be surjective, even
+if Noetherian models not of finite type over $\mathbf Z$ are
+allowed. Thus surjectivity of all sufficiently late model
+projections cannot be added to general Noetherian approximation.
+This does not refute the raw-fibre cohomology assertion:
+$\operatorname{Spec}V$ is affine and its positive
+quasi-coherent cohomology is zero.
+
+**References.**
+The Stacks Project, finite prime avoidance, Tag 00DS,
+[Primary source](https://stacks.math.columbia.edu/tag/00DS); and the
+principal ideal theorem, Tag 00KV,
+[Primary source](https://stacks.math.columbia.edu/tag/00KV); flat going
+down, Tag 00HS, [Primary source](https://stacks.math.columbia.edu/tag/00HS).
+
+![The three-prime valuation ring and the impossible surjective Noetherian model preserving x and y](../figures/raw-fibre-surjective-model.png)
+
+*The valuation ring in (SM1) has exactly the three prime ideals in (SM2). A surjective model projection could have at most three image points. The descended functions $y$ and $x$ distinguish the two strict specializations, forcing a length-two chain in an affine étale chart of the model. Finite prime avoidance and the principal ideal theorem rule this out for a Noetherian chart. The editable diagram is [raw-fibre-surjective-model.svg](../figures/raw-fibre-surjective-model.svg).*
+
+**Reciprocal parameters in the partial-involution construction**
+
+**Theorem.**
+Let $A\hookrightarrow B=A[1/a]$ be an injective localization with
+$2$ invertible in $A$. Let $\sigma$ be an involution of $B$ such that
+every prime ideal of $B$ is fixed by $\sigma$. Suppose that
+$i\in B$ satisfies $i^2=-1$ and $\sigma(i)=-i$, and that $A$
+and $\sigma(A)$ generate $B$ as a ring. Form the separated scheme
+$$
+ Y=\operatorname{Spec}A\ \cup_{\operatorname{Spec}B}\
+                  \operatorname{Spec}\sigma(A).
+$$
+If $\sigma(a)=a^{-1}$, then $Y$ and its finite etale quotient
+$X=Y/(\mathbf Z/2)$ are affine. Thus
+$$
+       B/(A+b\sigma(A))=0\qquad(b\in B^\times).       \tag{RP1}
+$$
+No Noetherian hypothesis, dimension bound or orderability of
+residue fields is required.
+
+If $B=0$, injectivity gives $A=0$ and both spaces are empty;
+the conclusion is immediate. Assume below that $B\ne0$.
+
+**Adjoining the quadratic element.**
+First replace $A$ by its subring $A'=A[i]\subset B$. This is
+an injective finite integral extension of $A$, and
+$A'[1/a]=B$. Glue the two corresponding affine charts along
+$\operatorname{Spec}B$ to obtain $Y'$. Their maps to the
+original charts give a finite surjective morphism $Y'\to Y$:
+the inverse image of each original chart is its corresponding
+finite integral affine chart. The overlap map is the identity.
+The involution exchanges these new charts as before. It is
+enough to prove that $Y'$ is affine; integral surjective
+affineness descent then applies to $Y'\to Y$, and to the
+finite surjection $Y\to X$. In the following calculations
+write $A$ for $A'$, so that $i\in A\cap\sigma(A)$.
+
+**Two units on both charts.**
+Set $c=1+i$, so that $c\sigma(c)=2$. In particular $c$ and
+$\sigma(c)$ are units of $A\cap\sigma(A)$, with inverse
+$\sigma(c)/2$ and $c/2$, respectively. The element
+$$
+                      g=a-c
+$$
+is a unit of $B$. Otherwise a prime $q$ containing $a-c$
+would also contain $\sigma(a)-\sigma(c)$, because $q$ is
+fixed by $\sigma$. Then the equality $a\sigma(a)=1$ would
+give $1=c\sigma(c)=2$ in $B/q$, which is impossible.
+
+Both $g$ and
+$$
+                    h=1-\sigma(c)a=a\sigma(g)
+$$
+are units of $A$. They are already units on $D(a)=\operatorname{Spec}B$.
+At any prime of $A$ outside $D(a)$, the images of $g,h$ are
+$-c,1$, respectively, and are nonzero. Thus neither element
+lies in a maximal ideal of $A$.
+
+Define
+$$
+ u=\frac1{a-c},\qquad
+ v=\frac1{\sigma(a)-\sigma(c)}
+    =\frac{a}{1-\sigma(c)a}.                       \tag{RP2}
+$$
+The preceding unit assertions give $u,v\in A$. As
+$\sigma(u)=v$ and $\sigma(v)=u$, both also belong to
+$\sigma(A)$. Put $R=A\cap\sigma(A)\subset B$, so $u,v\in R$.
+On the first chart $u$ is a unit and $v=a/h$ has nonvanishing
+locus exactly $D(a)$. On the second chart $v$ is a unit and
+$u=\sigma(a)/(1-c\sigma(a))$ has nonvanishing locus exactly
+$D(\sigma(a))$. Consequently
+$$
+                      Y'_u=\operatorname{Spec}A,
+       \qquad Y'_v=\operatorname{Spec}\sigma(A).    \tag{RP3}
+$$
+
+**The unit ideal and the affine gluing.**
+Since $a=c+u^{-1}$ and $\sigma(a)=\sigma(c)+v^{-1}$,
+their product is one. Multiplication by $uv$ gives
+$$
+               1=-cu-\sigma(c)v-uv\quad\hbox{in }R. \tag{RP4}
+$$
+Thus $(u,v)R=R$. The two-chart equalizer is
+$$
+ 0\longrightarrow R\longrightarrow A\oplus\sigma(A)
+                      \longrightarrow B.
+$$
+Localizing this exact sequence at $u$ identifies
+$R_u$ with $A$: here $A_u=A$, $\sigma(A)_u=B$ by the
+second-chart expression in (RP3), and $B_u=B$.
+Similarly $R_v=\sigma(A)$. Localizing at both gives
+$R_{uv}=B$. The standard opens $D(u),D(v)$ cover
+$\operatorname{Spec}R$ by (RP4); their rings and overlap
+are exactly the two rings and overlap defining $Y'$. Therefore
+$Y'=\operatorname{Spec}R$. Affineness descent proves the
+claims for $Y$ and $X$ with the original ring $A$ as well.
+
+Finally the transition multiplier $b$ defines an invertible
+sheaf $L_b$ on $Y$, and the two affine charts compute
+$H^1(Y,L_b)=B/(A+b\sigma(A))$. Affine acyclicity gives (RP1).
+
+**A weaker sufficient hypothesis on the original parameter.**
+It suffices that $\sigma(a)^{-1}\in A$. Indeed set
+$t=a/\sigma(a)\in aA$. It is a unit of $B$ and
+$\sigma(t)=t^{-1}$. The localization $A_t$ equals $B$:
+it embeds into $B$, and inverting $t=a\sigma(a)^{-1}$
+also inverts $a$, so it contains $A_a=B$. Apply the theorem
+with $t$ in place of $a$.
+
+**A norm-separation variant.**
+The calculation also works without the quadratic element
+whenever the reciprocal datum already has a common unit
+$c\in(A\cap\sigma(A))^\times$ with
+$c\sigma(c)-1\in B^\times$. The same prime-ideal argument
+makes $a-c$ a unit of $B$, and the same boundary argument
+makes $a-c$ and $1-\sigma(c)a$ units of $A$. With $u,v$ as
+in (RP2), the identity is now
+$$
+ 1=-cu-\sigma(c)v-(c\sigma(c)-1)uv.                 \tag{RP5}
+$$
+Its coefficients belong to $A\cap\sigma(A)$, so the same
+affine gluing proves $Y$ affine. If the action is free, its
+finite quotient is affine as well. For example, when $6$ is
+invertible in $A$, the scalar $c=2$ satisfies the criterion.
+The choice $c=1+i$ above works in every characteristic
+different from two after the finite integral adjunction.
+
+**Scope.**
+An arbitrary partial-involution datum need not satisfy
+$\sigma(a)^{-1}\in A$. No argument establishing such
+extension across the complement of $D(a)$ is assumed here.
+A nonzero quotient in (RP1) must therefore avoid this
+sufficient criterion. The original raw-fibre vanishing
+assertion for every quasi-compact separated algebraic space
+is not proved by this theorem.
+
+**References.**
+The Stacks Project, integral surjective affineness descent,
+Tags 05YU and 07VT,
+[Primary source](https://stacks.math.columbia.edu/tag/05YU),
+[Primary source](https://stacks.math.columbia.edu/tag/07VT); free
+finite-group quotients, Section 65.14, Tag 02Z0,
+[Primary source](https://stacks.math.columbia.edu/tag/02Z0).
+
+![The reciprocal parameter gives two global functions whose unit ideal and chart localizations identify the glued scheme as affine](../figures/raw-fibre-reciprocal-parameter.png)
+
+*After the finite integral adjunction of $i$, the norm separator $c=1+i$ gives the functions $u,v$ in (RP2). Each is a unit on one chart and vanishes outside the overlap on the other. The exact identity (RP4) makes their standard opens cover the whole spectrum of the intersection ring, and the localized equalizers recover the two chart rings. Finite surjective descent then proves affineness for the original glued scheme and its quotient. The editable diagram is [raw-fibre-reciprocal-parameter.svg](../figures/raw-fibre-reciprocal-parameter.svg).*
+
+**Schematic overlap and affineness of a finite affine gluing**
+
+**The finite closed-cover criterion.**
+Let $Y$ be a quasi-compact quasi-separated scheme with a finite affine
+open cover $U_1,\ldots,U_n$. Put
+$$
+ W=\bigcup_{i<j}(U_i\cap U_j),\qquad
+ j:W\longrightarrow Y,\qquad
+ Y_0=V\bigl(\ker(\mathcal O_Y\longrightarrow j_*\mathcal O_W)\bigr).
+                                                        \tag{SO1}
+$$
+Thus $Y_0$ is the scheme-theoretic closure of the locus lying in at
+least two charts. Then
+$$
+                         Y\text{ is affine}
+                \quad\Longleftrightarrow\quad
+                         Y_0\text{ is affine}.            \tag{SO2}
+$$
+No Noetherian, reducedness, or scheme-theoretic density hypothesis is
+imposed. In particular the assertion applies to a separated scheme
+covered by two affine opens with quasi-compact intersection.
+
+**Proof of the criterion.**
+The intersections in (SO1) are quasi-compact because $Y$ is
+quasi-separated. Their finite union $W$ is quasi-compact, and its open
+immersion into $Y$ is quasi-compact. Consequently $j_*\mathcal O_W$ is
+quasi-coherent, its displayed kernel is a quasi-coherent ideal, and
+the definition of $Y_0$ commutes with restriction to every open subset
+of $Y$. It also shows that $W\subset Y_0$ is an open subscheme.
+
+For each $i$, the closed subset
+$$
+                   D_i=Y\setminus\bigcup_{j\ne i}U_j
+                                                        \tag{SO3}
+$$
+lies in $U_i$. Inside the affine scheme $U_i$, its open complement is
+the finite union $\bigcup_{j\ne i}(U_i\cap U_j)$ and is therefore
+quasi-compact. Choose a finitely generated ideal $I_i$ in the ring
+of $U_i$ with this open complement $D(I_i)$. On each overlap
+$U_i\cap U_j$, $j\ne i$, the ideal sheaf $\widetilde I_i$ is the
+unit ideal. It therefore glues with the unit ideal on all other charts
+to a quasi-coherent ideal sheaf on $Y$. Let $Z_i$ be its closed
+subscheme. Its support is exactly $D_i$, and $Z_i$ is contained in
+$U_i$, where it is a closed subscheme. Hence $Z_i$ is affine.
+
+Every point lying in two or more charts belongs to $W$ and hence to
+$Y_0$. Every remaining point belongs to precisely one chart and thus
+to the corresponding $Z_i$. Therefore the morphism
+$$
+                     Y_0\amalg Z_1\amalg\cdots\amalg Z_n
+                              \longrightarrow Y           \tag{SO4}
+$$
+is finite and surjective. Finiteness follows because its restrictions
+are closed immersions and the disjoint union is finite. If $Y_0$ is
+affine, the source of (SO4) is affine. Integral surjective affineness
+descent, The Stacks Project, Proposition 32.11.2, Tag 05YU, gives that
+$Y$ is affine. Conversely, if $Y$ is affine, its closed subscheme
+$Y_0$ is affine. This proves (SO2). If $W$ is empty, $Y_0$ is empty
+and the same finite-cover argument applies without alteration.
+
+**The two principal charts, including localization torsion.**
+Suppose now that $Y$ is glued from $\operatorname{Spec}A_1$ and
+$\operatorname{Spec}A_2$ along $\operatorname{Spec}B$, with
+$B=(A_1)_{a_1}=(A_2)_{a_2}$ via specified localization maps. These maps
+need not be injective. Write
+$$
+ T_i=\ker(A_i\longrightarrow B)
+     =\{x\in A_i:\ a_i^N x=0\text{ for some }N\geq0\},\qquad
+ \overline A_i=A_i/T_i\ \subset B.                         \tag{SO5}
+$$
+On the $i$th chart the kernel in (SO1) is $\widetilde T_i$.
+The scheme $Y_0$ is consequently the gluing of
+$\operatorname{Spec}\overline A_1$ and
+$\operatorname{Spec}\overline A_2$ along the unchanged overlap
+$\operatorname{Spec}B$. Moreover
+$B=(\overline A_i)_{\overline a_i}$, and these new localization maps
+are injective. Thus
+$$
+ Y\text{ is affine}\quad\Longleftrightarrow\quad
+ \bigl(\operatorname{Spec}\overline A_1
+       \mathop{\cup}_{\operatorname{Spec}B}
+       \operatorname{Spec}\overline A_2\bigr)
+       \text{ is affine}.                                \tag{SO6}
+$$
+If $Y$ is separated, the map
+$A_1\otimes_{\mathbf Z}A_2\to B$ is surjective. Its image is unchanged
+on replacing both chart rings by their images in $B$; hence $Y_0$ is
+separated as well, also directly because it is closed in $Y$.
+
+**A reciprocal criterion without injective localization.**
+Let $A\to B=A[1/a]$ be an arbitrary localization with $2$ invertible
+in $A$. Suppose that $B$ has an involution $\sigma$ fixing every prime
+ideal, and an element $i$ satisfying $i^2=-1$ and $\sigma(i)=-i$.
+Use two copies of $\operatorname{Spec}A$ and identify their principal
+opens by $\sigma$ to form $Y$. Put $\overline A=\operatorname{im}(A\to B)$.
+Assume that $\overline A$ and $\sigma(\overline A)$ generate $B$.
+This is the separatedness condition for the mixed diagonal. Let
+$\overline a$ denote the image of $a$ in $B$. If $B\ne0$ and
+$$
+                       \sigma(\overline a)^{-1}
+                                   \in\overline A,         \tag{SO7}
+$$
+then $Y$ is affine. Indeed, (SO5) identifies $Y_0$ with the injective
+partial-involution gluing for $\overline A\hookrightarrow B$.
+Condition (SO7) is precisely the inverse-extension hypothesis of the
+reciprocal-parameter theorem (RP1)--(RP5). That theorem proves $Y_0$
+affine, and (SO2) proves $Y$ affine. If $B=0$, the two charts are
+disjoint and affine, so $Y$ is affine directly.
+
+The chart-exchanging involution on $Y$ is free on geometric points:
+outside the overlap it exchanges disjoint chart complements; on the
+overlap equality of $i$ and $-i$ would contradict invertibility of $2$.
+Consequently the quotient $X=Y/(\mathbf Z/2)$ is an algebraic space,
+and $Y\to X$ is a finite etale torsor. Its target is separated, since
+the two disjoint closed action graphs give the base change of its
+diagonal. The composite $\operatorname{Spec}A\to X$ is an etale
+surjection with exactly one raw point in every fibre: outside the
+overlap an orbit meets the first chart once, and on the overlap every
+raw point is fixed by $\sigma$. Since $Y$ is affine and finite
+surjective over $X$, Tag 07VT proves that $X$ is affine as well.
+In particular every quasi-coherent sheaf on either $Y$ or $X$ has
+zero cohomology in positive degrees under (SO7), even when the
+original map $A\to B$ has nonzero kernel.
+
+**Scope and sources.**
+The finite closed-cover criterion concerns affineness; it asserts no
+equality of positive cohomological dimensions for an arbitrary finite
+surjection. The condition (SO7) is sufficient and is not asserted for
+every partial-involution gluing. The original raw-fibre vanishing
+assertion for all quasi-compact separated non-Noetherian algebraic
+spaces remains outside these criteria. Scheme-theoretic closure and
+its affine localization formula are discussed in The Stacks Project,
+Section 29.7, especially Example 29.7.4, Tag 01RA;
+[Primary source](https://stacks.math.columbia.edu/tag/01RA).
+Integral surjective affineness descent is Proposition 32.11.2,
+Tag 05YU, and its algebraic-space form is Proposition 70.15.2,
+Tag 07VT;
+[Primary source](https://stacks.math.columbia.edu/tag/05YU),
+[Primary source](https://stacks.math.columbia.edu/tag/07VT).
+The free finite-group quotient is Section 65.14, Lemmas 65.14.3 and
+65.14.5, Tag 02Z0;
+[Primary source](https://stacks.math.columbia.edu/tag/02Z0).
+
+![The schematic overlap and the two affine chart complements give a finite surjective closed cover](../figures/raw-fibre-schematic-overlap.png)
+
+*For a two-chart gluing, the schematic closure $Y_0$ of the overlap and the two closed affine pieces $Z_1,Z_2$ cover every point of $Y$. The finite surjection (SO4) proves that $Y$ is affine exactly when $Y_0$ is affine. On each principal chart the closure is the image-ring quotient (SO5), so the reciprocal criterion applies without assuming injectivity of the original localisation. The editable diagram is [raw-fibre-schematic-overlap.svg](../figures/raw-fibre-schematic-overlap.svg).*
+
+**A normal form for raw-size-one atlases of geometric degree at most two**
+
+**The relation of a given atlas.**
+Let $X$ be a quasi-compact separated algebraic space and let
+$f:U=\operatorname{Spec}A\to X$ be a surjective etale morphism. Suppose
+each fibre of $|U|\to|X|$ has one point and each geometric fibre of
+$f$ has at most two points. Then there are an affine quasi-compact
+open $j:V=\operatorname{Spec}B\hookrightarrow U$ and an involution
+$\tau:V\to V$ such that
+$$
+ U\times_X U=\Delta_U\amalg\Gamma_\tau(V)
+                   \quad\text{inside }U\times_{\mathbf Z}U. \tag{QN1}
+$$
+The graph in (QN1) is closed in $U\times_{\mathbf Z}U$ and disjoint
+from the diagonal. The involution fixes every raw point of $V$ and
+has no fixed geometric point. These statements allow every
+characteristic and arbitrary, possibly non-Noetherian, rings.
+
+**Proof of the normal form.**
+Put $R=U\times_X U$. The separatedness of $X$ makes $R$ a closed
+subscheme of the affine scheme $U\times_{\mathbf Z}U$, so $R$ is
+affine. Its two projections $s,t:R\to U$ are etale. The diagonal
+section $\Delta_U\subset R$ is open and closed, since it is a section
+of a separated unramified morphism. Therefore
+$R'=R\setminus\Delta_U$ is an affine open and closed subscheme.
+
+Over a geometric point $u$ of $U$, the fibre of $s$ is the geometric
+fibre of $f$ over $f(u)$. The diagonal occupies one of its points.
+Hence every geometric fibre of $s|_{R'}$ has at most one point. The
+etale morphism $s|_{R'}$ is thus universally injective and is an open
+immersion, by Tag 025G. The same argument applies to $t|_{R'}$.
+Inversion in $R$ exchanges these two maps and preserves $R'$, so
+their images are the same open $V\subset U$. This open is affine,
+since $s$ identifies it with the affine scheme $R'$; in particular
+it is quasi-compact. Define
+$$
+              \tau=(t|_{R'})\circ(s|_{R'})^{-1}:V\to V.
+                                                               \tag{QN2}
+$$
+Under this identification, inversion in $R'$ is $\tau$; consequently
+$\tau^2=1$. The closed immersion $R'\hookrightarrow U\times U$
+is its graph. Disjointness from $\Delta_U$ means that $\tau$ has
+no fixed geometric point. The two images in $U$ of any raw point
+of $R'$ have the same image in $X$. The raw-size-one hypothesis
+therefore makes them the same point, proving that $\tau$ fixes
+every raw point of $V$. This proves (QN1).
+
+**The converse construction.**
+Conversely, let $U=\operatorname{Spec}A$ be affine, let
+$V=\operatorname{Spec}B$ be a quasi-compact affine open in $U$, and
+let $\tau$ be an involution of $V$. Assume $\tau$ fixes every raw
+point, has no fixed geometric point, and its graph is closed in
+$U\times_{\mathbf Z}U$. Then the disjoint union of the diagonal and
+this graph is a closed etale equivalence relation on $U$. Indeed its
+projections are the identity on the diagonal and open immersions on
+the graph; composing the nonidentity arrow twice gives the identity
+because $\tau^2=1$. On points valued in a general scheme these
+descriptions apply on the open and closed pieces specifying which
+component of the disjoint relation is used, so the same composition
+verifies the equivalence relation as a sheaf.
+
+Its quotient $X=U/R$ is an algebraic space and $U\to X$ is a
+surjective etale atlas. The relation is closed, so $X$ is separated;
+it is quasi-compact because $U$ is. If two raw points of $U$ have
+the same image in $X$, some point of $R$ has these as its two
+projections: take a common field over the two residue extensions
+in their fibre. On the diagonal they agree, and on the graph they
+agree because $\tau$ fixes raw points. Thus every raw fibre has
+one point. The relation over a geometric point of $U$ has one point
+off $V$ and two on $V$. These are exactly the geometric fibre sizes
+of the atlas. This gives the converse to the normal form.
+
+**A finite double cover by two affine charts.**
+Form the scheme $Y$ by gluing two copies $U_1,U_2$ of $U$ along
+$V$, with the identification $\tau$. The closed-graph assumption
+shows on its mixed affine charts that $Y$ is separated. It is
+quasi-compact. Exchanging the two charts by their identity maps
+defines an involution on $Y$: compatibility on the overlap is exactly
+$\tau^2=1$. Off the overlap the two chart complements are exchanged;
+on the overlap this action is $\tau$. The action is therefore free
+on geometric points. The quotient by the constant group
+$G=\mathbf Z/2$ exists as an algebraic space, and its relation on
+the first chart is exactly (QN1). Hence this quotient is the same
+$X$, and
+$$
+               Y=U_1\mathop{\cup}_{V,\tau}U_2,
+               \qquad \pi:Y\to X
+               \quad\text{is a finite etale }G\text{-torsor}.
+                                                               \tag{QN3}
+$$
+For the finiteness assertion, base change the quotient map by its
+surjective etale cover $Y\to Y/G$. The result is
+$G\times Y\to Y$, a finite etale morphism of rank two. Finiteness
+and etaleness descend under this faithfully flat base change. Thus
+$$
+                         X\text{ affine}
+                 \quad\Longleftrightarrow\quad
+                         Y\text{ affine}.                    \tag{QN4}
+$$
+The forward implication uses finiteness of $\pi$; the reverse
+implication is integral surjective affineness descent, Tag 07VT.
+The original atlas $f$ is not required to be finite.
+
+**An exact module form of the remaining obstruction.**
+Write $\rho:A\to B$ for restriction and
+$\sigma=\tau^*:B\to B$. The coordinate ring of the mixed graph is
+the surjective image
+$$
+ A\otimes_{\mathbf Z}A\longrightarrow B,
+             \qquad a\otimes a'\longmapsto
+                       \rho(a)\sigma(\rho(a')).             \tag{QN5}
+$$
+There is no assertion that $\rho$ is injective, that $V$ is a
+principal open, or that a constant quadratic generator exists.
+
+Take arbitrary $A$-modules $M,N$ and a $B$-module isomorphism
+$$
+ \alpha:B\otimes_{A,\sigma\rho}N
+                       \xrightarrow{\sim}B\otimes_{A,\rho}M.
+                                                               \tag{QN6}
+$$
+These are precisely the gluing data for a quasi-coherent sheaf $E$
+on the two affine charts of $Y$. Every quasi-coherent sheaf on $Y$
+arises in this way, with no finite-generation or local-freeness
+assumption on the modules. Put $C_M=B\otimes_{A,\rho}M$, and let
+$\iota_M:M\to C_M$ and
+$\iota_N:N\to B\otimes_{A,\sigma\rho}N$ be the natural maps.
+The affine two-open Cech calculation gives
+$$
+ H^1(Y,E)=
+ \frac{C_M}{\iota_M(M)+\alpha(\iota_N(N))},\qquad
+ H^q(Y,E)=0\quad(q\geq2).                                  \tag{QN7}
+$$
+Since $\pi$ is finite, $F=\pi_*E$ is quasi-coherent and its higher
+direct images vanish. Therefore
+$$
+                        H^q(X,F)=H^q(Y,E)\quad(q\geq0).    \tag{QN8}
+$$
+In particular an actual nonzero element of the quotient in (QN7),
+for data satisfying the stated hypotheses, would give a counterexample
+to the original assertion with $d=1$. Conversely if that quotient
+vanishes for every choice (QN6), then all positive quasi-coherent
+cohomology on $Y$ vanishes. Serre's affineness criterion makes $Y$
+affine, and (QN4) makes $X$ affine. Thus (QN7) is an exact obstruction
+for the entire geometric-degree-at-most-two raw-size-one case.
+
+For $M=N=A$ and $\alpha$ multiplication by a unit $b\in B^\times$,
+the quotient is
+$$
+                       B/(\rho(A)+b\sigma(\rho(A))).       \tag{QN9}
+$$
+This rank-one test is a sufficient way to produce a counterexample
+if it is nonzero; its vanishing alone is not asserted to settle
+the arbitrary-module test (QN7). The normal form is a reduction,
+not a vanishing proof or a constructed nonzero quotient. The original
+obligation also allows larger geometric fibres and arbitrary raw
+bounds, and remains unproved in that full generality here.
+
+**Sources.**
+The open-immersion criterion for etale universally injective morphisms
+is The Stacks Project, Theorem 41.14.1, Tag 025G;
+[Primary source](https://stacks.math.columbia.edu/tag/025G).
+Open and closed sections of separated unramified morphisms are
+Proposition 41.6.1, Tag 024S;
+[Primary source](https://stacks.math.columbia.edu/tag/024S).
+Free group quotients and their separatedness are Lemmas 65.14.3
+and 65.14.5, Tag 02Z0;
+[Primary source](https://stacks.math.columbia.edu/tag/02Z0).
+The affine-cover cohomology argument is Lemma 30.4.2, Tag 01XI;
+[Primary source](https://stacks.math.columbia.edu/tag/01XI).
+Affineness descent is Proposition 70.15.2, Tag 07VT;
+[Primary source](https://stacks.math.columbia.edu/tag/07VT).
+
+![The off-diagonal relation of a quadratic raw-one atlas is a closed partial involution, with a finite double cover and an exact module cohomology quotient](../figures/raw-fibre-quadratic-atlas.png)
+
+*Removing the diagonal from $U\times_XU$ gives the affine open $V$ and its involution in (QN1)–(QN2). The separated two-chart gluing $Y$ carries the free chart exchange, and its finite étale quotient is the original target $X$. The module quotient (QN7), transported by the finite pushforward in (QN8), describes every quasi-coherent cohomology obstruction on $Y$. This is a structural reduction; it supplies neither a vanishing assertion nor a nonzero class. The editable diagram is [raw-fibre-quadratic-atlas.svg](../figures/raw-fibre-quadratic-atlas.svg).*
+
+**The normalized equivariant Cech complex in the quadratic normal form**
+
+Use the complete hypotheses and notation of (QN1)--(QN9). Put
+$C=B^\sigma$. The free action on the affine scheme $V$ has affine
+quotient $W=\operatorname{Spec}C$, and $V\to W$ is a finite etale
+torsor of rank two. This follows from the affine finite-flat
+equivalence-relation theorem, The Stacks Project, Tag 03BM, applied
+to $G\times V\rightrightarrows V$. The raw-fixed condition makes
+$|V|\to|W|$ a bijection. The open image of $V$ in $X$ is exactly $W$,
+since its restricted etale relation is the same free action. Thus the
+open quotient is affine, even though affineness of $X$ remains at issue.
+
+A quasi-coherent sheaf $F$ on $X$ is equivalent to an $A$-module $M$
+together with a $\sigma$-semilinear involution $T$ of
+$P=B\otimes_{A,\rho}M$. This is etale descent for the relation (QN1):
+the diagonal action is the identity, and the off-diagonal action is
+$T$, with the cocycle condition $T^2=1$. No involution of $M$ itself
+is required. Write $\iota:M\to P$ for localization/restriction and
+$N=P^T=\ker(T-1)$ for the $C$-module of invariants. Faithfully flat
+descent along the torsor gives $B\otimes_C N\simeq P$.
+
+Every term of the atlas Cech nerve is affine, because $X$ is
+separated. Its Cech cohomology therefore computes $H^*(X,F)$.
+Normalize its cosimplicial module by discarding strings containing
+an identity arrow. In degree zero this leaves $M$. In every positive
+degree the only possible nondegenerate string consists of repeated
+nonidentity arrows, and is parametrized by $V$: after one such
+arrow the next one, if present, is forced to be its inverse. All
+normalized positive cochain groups are consequently $P$. With the
+usual inhomogeneous convention their differentials are
+$$
+ M\xrightarrow{(T-1)\iota}P
+  \xrightarrow{1+T}P\xrightarrow{T-1}P
+  \xrightarrow{1+T}P\xrightarrow{T-1}\cdots .             \tag{QE1}
+$$
+Indeed on a nonidentity string, every internal face in the
+normalized differential is zero, because composing its two adjacent
+nonidentity arrows gives an identity. The first and last faces give
+$T+(-1)^{n+1}$ in degree $n\geq1$. This yields $1+T$ for odd $n$
+and $T-1$ for even $n$, exactly as displayed. Degenerate cochains
+form the standard contractible summand, so normalization preserves
+cohomology. Changing the overall sign of a difference differential
+does not change the following kernels or quotients.
+This is the usual normalized subcomplex given by the kernels of the
+codegeneracies, equivalently the cochains vanishing on every
+degenerate simplex. Its cohomology comparison is the cosimplicial
+normalization theorem; see The Stacks Project, Section 14.25,
+Tag 019H, using this equivalent normalization convention.
+
+The analogous normalized group-cochain complex for $G$ on $P$ starts
+with $P$, rather than $M$, in degree zero. It is also the normalized
+Amitsur complex for the faithfully flat map $C\to B$ with coefficient
+module $N$, using $P\simeq B\otimes_C N$ and
+$B\otimes_C B\simeq B\times B$. The faithfully flat Amitsur complex
+is exact in positive degrees. Therefore, in every characteristic,
+$$
+ \ker(1+T)=\operatorname{im}(T-1),\qquad
+ \ker(T-1)=\operatorname{im}(1+T).                         \tag{QE2}
+$$
+This argument uses neither averaging by $1/2$ nor an asserted global
+normal basis for the torsor. In characteristic two the two displayed
+operators coincide, and Amitsur exactness still proves both identities.
+
+It follows that the entire cohomology of (QE1) is
+$$
+ \begin{split}
+ H^0(X,F)&=\{m\in M:\ \iota(m)\in N\},\\
+ H^1(X,F)&\simeq P/(\iota(M)+N),\\
+ H^q(X,F)&=0\quad(q\geq2).
+ \end{split}                                               \tag{QE3}
+$$
+For the middle formula, map $P$ onto $\ker(1+T)$ by $T-1$,
+using the first identity of (QE2). Its kernel is $N$; the image
+of $\iota(M)$ is the degree-zero coboundary group of (QE1).
+The claimed quotient follows. This is an isomorphism of abelian
+groups, or of modules over $\Gamma(X,\mathcal O_X)$; it is not
+asserted to be a $C$-module quotient, since $\iota(M)$ need not
+be a $C$-submodule of $P$.
+
+For $F=\mathcal O_X$, take $M=A$, $P=B$ and $T=\sigma$. Then
+$$
+ \Gamma(X,\mathcal O_X)=\{a\in A:\rho(a)\in C\}
+                         \simeq A\times_B C,
+ \qquad H^1(X,\mathcal O_X)=B/(\rho(A)+C).                 \tag{QE4}
+$$
+Restriction $A\to B$ need not be injective; its entire kernel is
+retained in the formula for global sections.
+
+Consequently the remaining raw-one vanishing question within this
+whole quadratic class is equivalent to
+$$
+                 P=\iota(M)+P^T                          \tag{QE5}
+$$
+for every descended-module datum just described, under the normal-form
+closed-graph and raw-fixed hypotheses. Formula (QE5) is not proved
+here. A nonzero class in (QE3) for actual such data would be a theorem
+counterexample; no such class is supplied. The case $M=A$ in (QE4)
+alone is not asserted to test all quasi-coherent sheaves. These
+formulas also do not settle the larger geometric degrees or other
+raw bounds in the original objective.
+
+Primary algebraic leaves: The Stacks Project, Proposition 39.23.9,
+Tag 03BM, [Primary source](https://stacks.math.columbia.edu/tag/03BM); and
+Section 59.16, Lemmas 59.16.3--59.16.4 and Theorem 59.16.7,
+Tag 03O6, [Primary source](https://stacks.math.columbia.edu/tag/03O6).
+Cosimplicial normalization is Section 14.25, Lemma 14.25.1,
+[Primary source](https://stacks.math.columbia.edu/tag/019H).
+The Cech computation also uses affine quasi-coherent acyclicity and
+the separated affine atlas already present in the normal-form proof.
+
+![The normalized quadratic-atlas complex has an exact periodic tail and a single explicit first-cohomology obstruction](../figures/raw-fibre-equivariant-cech.png)
+
+*For a quasi-coherent sheaf on the original target $X$, the normalized atlas cochains are the alternating complex (QE1). Faithfully flat descent for the finite torsor over $\operatorname{Spec}C$ proves the kernel-image identities (QE2), including characteristic two. Formula (QE3) then expresses $H^1(X,F)$ as the quotient of $P$ by the chart sections and invariant sections. The equality (QE5) for all such data is the remaining vanishing question within this quadratic class. The editable diagram is [raw-fibre-equivariant-cech.svg](../figures/raw-fibre-equivariant-cech.svg).*
 
 #### Lemma. Finite cohomological dimension from an étale atlas
 

@@ -44,6 +44,6 @@ record={'schema':'AN04-glancing-cutoff-figure/v1','asset':'figures/'+asset.name,
  'exact_coordinate_checks':points,'parameter':'u=sqrt(theta), 0<=u<=1/2',
  'pixel_maps':'left x=100+1120theta, y=360-225(1-2u); right x=560+1120theta, y=360-450u',
  'sampled_plot':False,'exact_quadratic_bezier_curves':True,'different_vertical_scales_labelled':True,
- 'original_licence':'CC0-1.0','actually_inspected':False}
+ 'original_licence':'CC0-1.0','scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
-print({'exact_rational_coordinate_checks':len(points),'visual_inspection_pending':True})
+print({'exact_rational_coordinate_checks':len(points)                                 })

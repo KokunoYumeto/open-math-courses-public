@@ -51,6 +51,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'left_formula':{'x':'s^2','rho':'s','t':'-s-2s^3/3','y1-y2':'-s+2s^3/3','mu':'0','lambda':'1'},
  'marked_cap':{'s':'-1/4','x':'1/16','t':'25/96'},
  'arrow_direction':'+H_p','right_meaning':'Actual value-trace subtraction and full conormal inverse, in the proved order.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':svg.name,'sha256':record['svg_sha256']}))

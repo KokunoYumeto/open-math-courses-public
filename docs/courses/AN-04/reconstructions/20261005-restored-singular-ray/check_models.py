@@ -59,7 +59,7 @@ checks.append('Original SVG uses exact segment endpoints and cone axes r=(x-210)
 out={'passed':True,'finite_groups':len(checks),'checks':checks,
  'largest_gaussian_quadrature_error':max(errs),'script_sha256':sha(Path(__file__)),
  'source_hashes':{p:sha(ROOT/p) for p in ['prescribed-finite-singular-rays.md','figures/prescribed-singular-ray.svg']},
- 'scope':'Finite formula and diagram checks only; complete proof review is separately required.',
- 'full_course_complete':False}
+ 'scope':'Finite formula and diagram calculations only; the general statements use the written proofs.' 
+                             }
 (ROOT/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(checks),'gaussian_error':max(errs)}))

@@ -224,7 +224,7 @@ For smooth inputs the complete boundary-kernel formula is
 \]
 It contains the full residual boundary operator. Consequently the completion of smooth zero-Dirichlet inputs retains zero value trace for every \(C_{\ell,a}u\). If \(B\) carries a continuous value map extending smooth restriction, that map also vanishes on this closure. Density in \(B\) alone has not been promoted to density in (NE22).
 
-**E9. What is now uniform, and what remains.** The elliptic neighborhood and the parameter set come from E0–E2 and do not shrink with the order \(m\). The finite coefficient seminorms, symbolic summation radii, source tester and constants may depend on the particular target family. Thus the result supplies an order-independent geometric region with uniform analytic estimates at each finite requested order.
+**E9. Uniform geometry and order-dependent constants.** The elliptic neighborhood and the parameter set come from E0–E2 and do not shrink with the order \(m\). The finite coefficient seminorms, symbolic summation radii, source tester and constants may depend on the particular target family. Thus the result supplies an order-independent geometric region with uniform analytic estimates at each finite requested order.
 
 For the L2 output alone the same proof can use a nonnegative integer \(M\ge m-2\): retain only \(j=|\alpha|=0\) in (NE16), bound the residual in L2 by (NE19), and apply scalar domination to a family of order at most \(m-2\). In particular the elliptic part of the desired observation estimate has the form
 \[

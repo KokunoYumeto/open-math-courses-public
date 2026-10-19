@@ -109,7 +109,7 @@ lesson=here/'simultaneous-reflections-and-flat-corrections.md'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'schema':'bounded-two-reflections-computational-check/v1','passed':True,
  'checks':checks,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
- 'finite_examples_only':True,'full_mathematical_review':False,
+ 'finite_examples_only':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'infinite_argument':'Parameter Borel convergence and all flat-iterate derivatives are proved in the lesson, not inferred from these finite checks.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'checks':len(checks),'lesson_sha256':sha(lesson)}))

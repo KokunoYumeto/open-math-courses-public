@@ -1,0 +1,314 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Character moments at two exceptional configurations</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The first moment of cubic Gauss sums)</a><a href="the-level-formula-and-type-i-sums.html">Previous lesson</a><a href="corrected-dispersion.html">Next lesson</a><a href="src/character-moments-at-two-exceptional-configurations.md">Editable source</a></nav><main><article><h1 id="character-moments-at-two-exceptional-configurations">Character moments at two exceptional configurations</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>In the dispersion argument of the next lesson, after Poisson summation, one has to bound sums of squares
+<span class="math math-display" data-tex="\[
+\sum_{p,q}\Bigl|\sum_b\beta(b)\,\chi_b(pq^2)\Bigr|^2
+\]">\[
+\sum_{p,q}\Bigl|\sum_b\beta(b)\,\chi_b(pq^2)\Bigr|^2
+\]</span>
+over coprime squarefree <span class="math" data-tex="\(p,q\)">\(p,q\)</span> of lengths <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>, with a coefficient <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of length <span class="math" data-tex="\(Y\)">\(Y\)</span>. The cubic large sieve and the ordinary character large sieve both give <span class="math" data-tex="\(Y^{7/3}\)">\(Y^{7/3}\)</span> at two configurations, <span class="math" data-tex="\((P,Q)=(Y,1)\)">\((P,Q)=(Y,1)\)</span> and <span class="math" data-tex="\(P=Q=Y^{1/3}\)">\(P=Q=Y^{1/3}\)</span>, and this bound is too weak by a power. This lesson shows that a fixed power can be saved near both configurations when <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is a convolution of a bounded number of smoothly weighted prime sequences. The decomposition of the prime sum in a later lesson produces coefficients of exactly this kind.</p>
+<p>The proof argues by contradiction with limiting exponents. A Heath-Brown type identity writes the prime sequences through truncated Möbius functions and full smooth sums. A full factor of maximal length is dualized by the functional equation. Otherwise the large values of the factors are compared at several lengths. One configuration is ruled out at once. In the other, the values are forced into a rigid pattern, which a Gram matrix estimate for the characters <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> contradicts.</p>
+<p><strong>Prerequisites.</strong> The lessons <a href="large-sieves-for-cubic-characters.html"><em>Large sieves for cubic characters</em></a> and <a href="the-level-formula-and-type-i-sums.html"><em>The level formula and Type I sums</em></a>. From <em>The Riemann zeta function</em>: <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>, Theorem 3.1.</p>
+<h2 id="1-admissible-prime-convolutions">1. Admissible prime convolutions</h2>
+<p>Fix <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, an integer <span class="math" data-tex="\(k_0\ge1\)">\(k_0\ge1\)</span>, an integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and bounds for supports and derivatives. An <em>admissible prime convolution</em> at length <span class="math" data-tex="\(Y\)">\(Y\)</span> is a function of the form
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\beta(b)=\Theta_\ell(b)\,\mu^2(b)\\
+&amp;\quad\cdot\sum_{b=\pi_1\cdots\pi_k}\ \prod_{j=1}^kw_j\Bigl(\frac{N(\pi_j)}{F_j}\Bigr),\\
+&amp;\quad 1\le k\le k_0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\beta(b)=\Theta_\ell(b)\,\mu^2(b)\\
+&amp;\quad\cdot\sum_{b=\pi_1\cdots\pi_k}\ \prod_{j=1}^kw_j\Bigl(\frac{N(\pi_j)}{F_j}\Bigr),\\
+&amp;\quad 1\le k\le k_0,
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\prod_jF_j\asymp Y\)">\(\prod_jF_j\asymp Y\)</span>. Here the sum runs over ordered tuples of primary primes, every prime in the support has norm at least <span class="math" data-tex="\(Y^c\)">\(Y^c\)</span>, and <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span> is the angular character of Lemma 6.1 of the lesson on large sieves. The weights <span class="math" data-tex="\(w_j\)">\(w_j\)</span> are supported in fixed compact subintervals of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and their derivatives of each fixed order are bounded by a fixed power of <span class="math" data-tex="\(\log Y\)">\(\log Y\)</span>. There is no condition coupling the prime factors, such as a sharp cutoff on their product. These coefficients are divisor-bounded.</p>
+<p>For coprime primary squarefree <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, the character <span class="math" data-tex="\(b\mapsto\chi_b(pq^2)=\chi_p(b)\overline{\chi_q(b)}\)">\(b\mapsto\chi_b(pq^2)=\chi_p(b)\overline{\chi_q(b)}\)</span> has conductor <span class="math" data-tex="\(pq\)">\(pq\)</span>.</p>
+<ul>
+<li>At <span class="math" data-tex="\((P,Q)=(Y,1)\)">\((P,Q)=(Y,1)\)</span>, Theorem 4.1 of the lesson on large sieves gives the second moment <span class="math" data-tex="\(Y(Y+Y+Y^{4/3})\asymp Y^{7/3}\)">\(Y(Y+Y+Y^{4/3})\asymp Y^{7/3}\)</span>, up to a small power.</li>
+<li>At <span class="math" data-tex="\(P=Q=Y^{1/3}\)">\(P=Q=Y^{1/3}\)</span>, the conductors have norm <span class="math" data-tex="\(O(Y^{2/3})\)">\(O(Y^{2/3})\)</span>, and Lemma 3.3 there gives <span class="math" data-tex="\(Y(Y+Y^{4/3})\asymp Y^{7/3}\)">\(Y(Y+Y^{4/3})\asymp Y^{7/3}\)</span>.</li>
+</ul>
+<p><strong>Proposition 1.1 (the exceptional character moments).</strong> There are <span class="math" data-tex="\(\delta,\eta&gt;0\)">\(\delta,\eta&gt;0\)</span>, depending only on the fixed data, with the following property. Let <span class="math" data-tex="\(v,e\in\mathcal O\setminus\{0\}\)">\(v,e\in\mathcal O\setminus\{0\}\)</span> with <span class="math" data-tex="\(N(v),N(e)\le Y^\delta\)">\(N(v),N(e)\le Y^\delta\)</span>, let <span class="math" data-tex="\(1+|u|\le Y^{0.36}\)">\(1+|u|\le Y^{0.36}\)</span>, and put
+<span class="math math-display" data-tex="\[
+A(p,q)=\sum_{(b,e)=1}\beta(b)\,N(b)^{iu}\,\chi_b(vpq^2).
+\]">\[
+A(p,q)=\sum_{(b,e)=1}\beta(b)\,N(b)^{iu}\,\chi_b(vpq^2).
+\]</span>
+Let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> run over coprime primary squarefree elements of lengths <span class="math" data-tex="\(P,Q\ge1\)">\(P,Q\ge1\)</span>, where either
+<span class="math math-display" data-tex="\[
+\Bigl|\frac{\log P}{\log Y}-1\Bigr|\le\delta\ \text{ and }\ 0\le\frac{\log Q}{\log Y}\le\delta,
+\]">\[
+\Bigl|\frac{\log P}{\log Y}-1\Bigr|\le\delta\ \text{ and }\ 0\le\frac{\log Q}{\log Y}\le\delta,
+\]</span>
+or
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\frac{\log P}{\log Y}-\frac13\Bigr|\le\delta\ \text{ and }\\
+\Bigl|\frac{\log Q}{\log Y}-\frac13\Bigr|\le\delta .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\frac{\log P}{\log Y}-\frac13\Bigr|\le\delta\ \text{ and }\\
+\Bigl|\frac{\log Q}{\log Y}-\frac13\Bigr|\le\delta .
+\end{gathered}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\sum_{p,q}|A(p,q)|^2\ll Y^{7/3-\eta},
+\]">\[
+\sum_{p,q}|A(p,q)|^2\ll Y^{7/3-\eta},
+\]</span>
+uniformly over the admissible prime convolutions with the given fixed data.</p>
+<h2 id="2-two-analytic-lemmas">2. Two analytic lemmas</h2>
+<p>A <em>full smooth sum</em> is a sum <span class="math" data-tex="\(\sum_{\mathfrak n}\Psi(\mathfrak n)N(\mathfrak n)^{it}W(N(\mathfrak n)/Z)\)">\(\sum_{\mathfrak n}\Psi(\mathfrak n)N(\mathfrak n)^{it}W(N(\mathfrak n)/Z)\)</span> over all nonzero ideals, against a primitive Hecke character <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>.</p>
+<p><strong>Lemma 2.1 (a full smooth sum and its dual).</strong> Let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be a primitive nonprincipal Hecke character of angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and conductor norm <span class="math" data-tex="\(D\)">\(D\)</span>, and let <span class="math" data-tex="\(W\)">\(W\)</span> be supported in a fixed compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, with derivatives of each fixed order bounded by a fixed power of <span class="math" data-tex="\(\log Y\)">\(\log Y\)</span>. Let <span class="math" data-tex="\(Z\)">\(Z\)</span>, <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(|t|\)">\(|t|\)</span> be at most fixed powers of <span class="math" data-tex="\(Y\)">\(Y\)</span>, and <span class="math" data-tex="\(\epsilon,A&gt;0\)">\(\epsilon,A&gt;0\)</span>. Then the full smooth sum equals, up to <span class="math" data-tex="\(O(Y^{-A})\)">\(O(Y^{-A})\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_J\frac1{2\pi}\int_{\mathbb R}\mathcal MW(\tfrac12+i\tau)\,Z^{1/2+i\tau}\\
+&amp;\quad\cdot u_\Psi(\tau,t)\sum_{\mathfrak n}\frac{\overline{\Psi(\mathfrak n)}\,N(\mathfrak n)^{i(\tau-t)}}{N(\mathfrak n)^{1/2}}\\
+&amp;\quad\cdot\phi\Bigl(\frac{N(\mathfrak n)}J\Bigr)d\tau .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_J\frac1{2\pi}\int_{\mathbb R}\mathcal MW(\tfrac12+i\tau)\,Z^{1/2+i\tau}\\
+&amp;\quad\cdot u_\Psi(\tau,t)\sum_{\mathfrak n}\frac{\overline{\Psi(\mathfrak n)}\,N(\mathfrak n)^{i(\tau-t)}}{N(\mathfrak n)^{1/2}}\\
+&amp;\quad\cdot\phi\Bigl(\frac{N(\mathfrak n)}J\Bigr)d\tau .
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(J\)">\(J\)</span> runs over the dyadic numbers with <span class="math" data-tex="\(J\le Y^\epsilon D(1+|t|)^2/Z\)">\(J\le Y^\epsilon D(1+|t|)^2/Z\)</span>, <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is a fixed smooth dyadic partition function, and <span class="math" data-tex="\(|u_\Psi(\tau,t)|=1\)">\(|u_\Psi(\tau,t)|=1\)</span>. The factor <span class="math" data-tex="\(u_\Psi\)">\(u_\Psi\)</span> depends on <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> only through its root number, conductor and angular order, and is a scalar for each character.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(k=|\ell|/2\)">\(k=|\ell|/2\)</span> and <span class="math" data-tex="\(C_D=\sqrt{3D}/(2\pi)\)">\(C_D=\sqrt{3D}/(2\pi)\)</span>. By Lemma 1.2 of the lesson on large sieves, the sum is
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\int_{(2)}\mathcal MW(s)\,Z^s\,L(s-it,\Psi)\,ds .
+\]">\[
+\frac1{2\pi i}\int_{(2)}\mathcal MW(s)\,Z^s\,L(s-it,\Psi)\,ds .
+\]</span>
+The function <span class="math" data-tex="\(L(s,\Psi)\)">\(L(s,\Psi)\)</span> is entire by Proposition 6.2 of that lesson, and its functional equation reads
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,\Psi)&amp;=\varepsilon_\Psi\,C_D^{1-2s}\,\frac{\Gamma(1-s+k)}{\Gamma(s+k)}\\
+&amp;\qquad\cdot L(1-s,\overline\Psi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+L(s,\Psi)&amp;=\varepsilon_\Psi\,C_D^{1-2s}\,\frac{\Gamma(1-s+k)}{\Gamma(s+k)}\\
+&amp;\qquad\cdot L(1-s,\overline\Psi).
+\end{aligned}
+\]</span>
+Move the line to <span class="math" data-tex="\(\operatorname{Re}s=-B\)">\(\operatorname{Re}s=-B\)</span>. There the dual series converges absolutely, and we insert the partition <span class="math" data-tex="\(\sum_J\phi(N(\mathfrak n)/J)=1\)">\(\sum_J\phi(N(\mathfrak n)/J)=1\)</span>. By Stirling's formula the gamma quotient has size <span class="math" data-tex="\((1+|\operatorname{Im}s-t|)^{1+2B}\)">\((1+|\operatorname{Im}s-t|)^{1+2B}\)</span>. With the rapid decay of <span class="math" data-tex="\(\mathcal MW\)">\(\mathcal MW\)</span>, the dyad <span class="math" data-tex="\(J\)">\(J\)</span> contributes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll D^{1/2}(1+|t|)\Bigl(\frac{D(1+|t|)^2}{ZJ}\Bigr)^{B}\\
+&amp;\qquad\cdot(\log Y)^{O(B)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll D^{1/2}(1+|t|)\Bigl(\frac{D(1+|t|)^2}{ZJ}\Bigr)^{B}\\
+&amp;\qquad\cdot(\log Y)^{O(B)} .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(J&gt;Y^\epsilon D(1+|t|)^2/Z\)">\(J&gt;Y^\epsilon D(1+|t|)^2/Z\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> large in terms of <span class="math" data-tex="\(\epsilon,A\)">\(\epsilon,A\)</span>, the total of these dyads is <span class="math" data-tex="\(O(Y^{-A})\)">\(O(Y^{-A})\)</span>. This truncation is made before any further step, with the same cutoff for every character that later shares the same <span class="math" data-tex="\(D\)">\(D\)</span> bound.</p>
+<p>Each retained dyad is a finite Dirichlet polynomial, so its integrand is entire, and the line can be moved back to <span class="math" data-tex="\(\operatorname{Re}s=\frac12\)">\(\operatorname{Re}s=\frac12\)</span>. No pole is crossed: the poles of <span class="math" data-tex="\(\Gamma(1-s+it+k)\)">\(\Gamma(1-s+it+k)\)</span> have real part <span class="math" data-tex="\(1+k\)">\(1+k\)</span>. With <span class="math" data-tex="\(s=\frac12+i\tau\)">\(s=\frac12+i\tau\)</span>, the factor in front of the dual polynomial is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_\Psi(\tau,t)&amp;=\varepsilon_\Psi\,C_D^{2i(t-\tau)}\\
+&amp;\qquad\cdot\frac{\Gamma(\frac12+k-i(\tau-t))}{\Gamma(\frac12+k+i(\tau-t))},
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_\Psi(\tau,t)&amp;=\varepsilon_\Psi\,C_D^{2i(t-\tau)}\\
+&amp;\qquad\cdot\frac{\Gamma(\frac12+k-i(\tau-t))}{\Gamma(\frac12+k+i(\tau-t))},
+\end{aligned}
+\]</span>
+which has absolute value one, and the polynomial is <span class="math" data-tex="\(\sum\overline{\Psi(\mathfrak n)}N(\mathfrak n)^{-1/2+i(\tau-t)}\phi(N(\mathfrak n)/J)\)">\(\sum\overline{\Psi(\mathfrak n)}N(\mathfrak n)^{-1/2+i(\tau-t)}\phi(N(\mathfrak n)/J)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So a full smooth sum of length <span class="math" data-tex="\(Z\)">\(Z\)</span> is, after an integral over <span class="math" data-tex="\(\tau\)">\(\tau\)</span> against the common majorant <span class="math" data-tex="\(|\mathcal MW(\frac12+i\tau)|\)">\(|\mathcal MW(\frac12+i\tau)|\)</span>, a combination of <span class="math" data-tex="\(O(\log Y)\)">\(O(\log Y)\)</span> polynomials of lengths <span class="math" data-tex="\(J\le Y^\epsilon D(1+|t|)^2/Z\)">\(J\le Y^\epsilon D(1+|t|)^2/Z\)</span> in <span class="math" data-tex="\(\overline\Psi\)">\(\overline\Psi\)</span>, with amplitude <span class="math" data-tex="\(\sqrt{Z/J}\)">\(\sqrt{Z/J}\)</span> after the factor <span class="math" data-tex="\(N(\mathfrak n)^{-1/2}\asymp J^{-1/2}\)">\(N(\mathfrak n)^{-1/2}\asymp J^{-1/2}\)</span> is extracted. In an average over a family of characters, the conductor-dependent factors stay outside the polynomials. Minkowski's inequality therefore applies with the same shifts <span class="math" data-tex="\(\tau\)">\(\tau\)</span> for every character.</p>
+<p><strong>Lemma 2.2 (an off-diagonal Gram estimate).</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be primary and squarefree with <span class="math" data-tex="\(N(p)\asymp P\)">\(N(p)\asymp P\)</span>, and let <span class="math" data-tex="\(W\)">\(W\)</span> be a fixed smooth function with compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. For primary squarefree <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> of the same length put
+<span class="math math-display" data-tex="\[
+T_{p,p&#x27;}=\sum_nW\Bigl(\frac{N(n)}Z\Bigr)\chi_p(n)\overline{\chi_{p&#x27;}(n)},
+\]">\[
+T_{p,p&#x27;}=\sum_nW\Bigl(\frac{N(n)}Z\Bigr)\chi_p(n)\overline{\chi_{p&#x27;}(n)},
+\]</span>
+the sum over primary <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(Z\ge1\)">\(Z\ge1\)</span> and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p&#x27;\ne p}|T_{p,p&#x27;}|^2\\
+&amp;\qquad\ll_\epsilon(PZ)^\epsilon\,Z\Bigl(P+\Bigl(\frac{P^3}Z\Bigr)^{2/3}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p&#x27;\ne p}|T_{p,p&#x27;}|^2\\
+&amp;\qquad\ll_\epsilon(PZ)^\epsilon\,Z\Bigl(P+\Bigl(\frac{P^3}Z\Bigr)^{2/3}\Bigr).
+\end{aligned}
+\]</span>
+The same bound holds for any subset of the <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(k=(p,p&#x27;)\)">\(k=(p,p&#x27;)\)</span>, put <span class="math" data-tex="\(K=N(k)\)">\(K=N(k)\)</span>, and write <span class="math" data-tex="\(p=ka\)">\(p=ka\)</span>, <span class="math" data-tex="\(p&#x27;=kb\)">\(p&#x27;=kb\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> coprime and squarefree. Then <span class="math" data-tex="\(\chi_p(n)\overline{\chi_{p&#x27;}(n)}=\mathbf 1_{(n,k)=1}\psi(n)\)">\(\chi_p(n)\overline{\chi_{p&#x27;}(n)}=\mathbf 1_{(n,k)=1}\psi(n)\)</span> with <span class="math" data-tex="\(\psi=\chi_a\overline{\chi_b}\)">\(\psi=\chi_a\overline{\chi_b}\)</span>. This character is primitive modulo <span class="math" data-tex="\(ab\)">\(ab\)</span>, and nonprincipal because <span class="math" data-tex="\(p&#x27;\ne p\)">\(p&#x27;\ne p\)</span>. Remove the condition <span class="math" data-tex="\((n,k)=1\)">\((n,k)=1\)</span> by <span class="math" data-tex="\(\sum_{m\mid(n,k)}\mu(m)\)">\(\sum_{m\mid(n,k)}\mu(m)\)</span>, put <span class="math" data-tex="\(M=N(m)\)">\(M=N(m)\)</span> and <span class="math" data-tex="\(n=mx\)">\(n=mx\)</span>. The factor <span class="math" data-tex="\(\psi(m)\)">\(\psi(m)\)</span> has absolute value one.</p>
+<p>Split <span class="math" data-tex="\(x\)">\(x\)</span> into its classes modulo <span class="math" data-tex="\(ab\)">\(ab\)</span> and apply Lemma 2.1 of the lesson on large sieves to the classes <span class="math" data-tex="\(x\equiv x_0\pmod{3ab}\)">\(x\equiv x_0\pmod{3ab}\)</span> of primary elements. The transform of <span class="math" data-tex="\(z\mapsto W(M|z|^2/Z)\)">\(z\mapsto W(M|z|^2/Z)\)</span> at <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is <span class="math" data-tex="\((Z/M)\widehat{W_0}(\eta\sqrt{Z/M})\)">\((Z/M)\widehat{W_0}(\eta\sqrt{Z/M})\)</span>, where <span class="math" data-tex="\(W_0(z)=W(|z|^2)\)">\(W_0(z)=W(|z|^2)\)</span> is a fixed radial Schwartz function. The frequency zero vanishes, since <span class="math" data-tex="\(\sum_\beta\psi(\beta)=0\)">\(\sum_\beta\psi(\beta)=0\)</span>. At a frequency <span class="math" data-tex="\(h\)">\(h\)</span>, the sum over the classes <span class="math" data-tex="\(\beta\)">\(\beta\)</span> modulo <span class="math" data-tex="\(ab\)">\(ab\)</span> is a complete Gauss sum. Writing the primary classes as <span class="math" data-tex="\(x=ab+3s\)">\(x=ab+3s\)</span>, with <span class="math" data-tex="\(s\)">\(s\)</span> modulo <span class="math" data-tex="\(ab\)">\(ab\)</span>, Lemma 3.2 of the same lesson evaluates it as
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)\psi(3\lambda)\,\overline{\psi(h)}\,g(\psi)\\
+&amp;\qquad=e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)\overline{\psi(h)}\,g(\psi),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)\psi(3\lambda)\,\overline{\psi(h)}\,g(\psi)\\
+&amp;\qquad=e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)\overline{\psi(h)}\,g(\psi),
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(3\lambda=(-\lambda)^3\)">\(3\lambda=(-\lambda)^3\)</span> is a cube. Thus the amplitude is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{Z\,|g(\psi)|}{M\,N(ab)}=\frac{Z}{M\sqrt{N(ab)}}\asymp\frac{ZK}{MP},\\
+\text{and}\quad J_0=\frac{N(ab)M}Z\asymp\frac{P^2M}{K^2Z}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{Z\,|g(\psi)|}{M\,N(ab)}=\frac{Z}{M\sqrt{N(ab)}}\asymp\frac{ZK}{MP},\\
+\text{and}\quad J_0=\frac{N(ab)M}Z\asymp\frac{P^2M}{K^2Z}
+\end{gathered}
+\]</span>
+is the natural dual length, beyond which <span class="math" data-tex="\(\widehat{W_0}\)">\(\widehat{W_0}\)</span> decays rapidly. The complete Gauss sums and the factors from the Chinese remainder theorem do not depend on the frequency, so they are scalars for each <span class="math" data-tex="\(b\)">\(b\)</span>. The frequency character is <span class="math" data-tex="\(\overline{\chi_a(h)}\chi_b(h)\)">\(\overline{\chi_a(h)}\chi_b(h)\)</span>, and the transform depends on <span class="math" data-tex="\(b\)">\(b\)</span> only through <span class="math" data-tex="\(N(b)\)">\(N(b)\)</span>.</p>
+<p>On a dyad <span class="math" data-tex="\(N(h)\asymp J\)">\(N(h)\asymp J\)</span>, Mellin separation in the variables <span class="math" data-tex="\(N(h)/J\)">\(N(h)/J\)</span> and <span class="math" data-tex="\(N(b)/(P/K)\)">\(N(b)/(P/K)\)</span> gives coefficients independent of <span class="math" data-tex="\(b\)">\(b\)</span>, integrated against a rapidly decreasing common majorant whose mass is <span class="math" data-tex="\(O_A((1+J/J_0)^{-A})\)">\(O_A((1+J/J_0)^{-A})\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span>. The unit and the exact power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in <span class="math" data-tex="\(h\)">\(h\)</span> are separated first. Their character values are scalars for each <span class="math" data-tex="\(b\)">\(b\)</span>, and there are <span class="math" data-tex="\(O(\log Z)\)">\(O(\log Z)\)</span> cases. Lemma 4.2(a) of the lesson on large sieves, with unrestricted inner variable <span class="math" data-tex="\(h\)">\(h\)</span> and squarefree outer variable <span class="math" data-tex="\(b\)">\(b\)</span>, bounds the square sum over <span class="math" data-tex="\(b\)">\(b\)</span> of this dyad by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(PZ)^\epsilon\Bigl(\frac{ZK}{MP}\Bigr)^2J\\
+&amp;\quad\cdot\Bigl(\frac PK+J+\Bigl(\frac{PJ}K\Bigr)^{2/3}\Bigr)\\
+&amp;\quad\cdot\Bigl(1+\frac J{J_0}\Bigr)^{-A}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(PZ)^\epsilon\Bigl(\frac{ZK}{MP}\Bigr)^2J\\
+&amp;\quad\cdot\Bigl(\frac PK+J+\Bigl(\frac{PJ}K\Bigr)^{2/3}\Bigr)\\
+&amp;\quad\cdot\Bigl(1+\frac J{J_0}\Bigr)^{-A}.
+\end{aligned}
+\]</span>
+Summing over the dyads, the three powers <span class="math" data-tex="\(J,J^2,J^{5/3}\)">\(J,J^2,J^{5/3}\)</span> are bounded by the same powers of <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, also when <span class="math" data-tex="\(J_0&lt;1\)">\(J_0&lt;1\)</span>. Substituting <span class="math" data-tex="\(J_0\)">\(J_0\)</span> gives the three terms
+<span class="math math-display" data-tex="\[
+\frac{ZP}{MK},\qquad\frac{P^2}{K^2},\qquad\frac{P^2Z^{1/3}}{K^2M^{1/3}} .
+\]">\[
+\frac{ZP}{MK},\qquad\frac{P^2}{K^2},\qquad\frac{P^2Z^{1/3}}{K^2M^{1/3}} .
+\]</span>
+Since <span class="math" data-tex="\(Z,K,M\ge1\)">\(Z,K,M\ge1\)</span>, their sum is <span class="math" data-tex="\(O(ZP+P^2Z^{1/3})\)">\(O(ZP+P^2Z^{1/3})\)</span><span class="math" data-tex="\(=O(Z(P+(P^3/Z)^{2/3}))\)">\(=O(Z(P+(P^3/Z)^{2/3}))\)</span>. There are only a divisor-bounded number of choices of <span class="math" data-tex="\(k\mid p\)">\(k\mid p\)</span> and <span class="math" data-tex="\(m\mid k\)">\(m\mid k\)</span>, and Cauchy's inequality over them finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-proof-of-proposition-1-1">3. Proof of Proposition 1.1</h2>
+<p>We argue by contradiction. Suppose that along a sequence <span class="math" data-tex="\(Y\to\infty\)">\(Y\to\infty\)</span> the norms of <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> are <span class="math" data-tex="\(Y^{o(1)}\)">\(Y^{o(1)}\)</span>, the pair of exponents <span class="math" data-tex="\((\log P/\log Y,\log Q/\log Y)\)">\((\log P/\log Y,\log Q/\log Y)\)</span> tends to <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> or to <span class="math" data-tex="\((\frac13,\frac13)\)">\((\frac13,\frac13)\)</span>, and the moment is at least <span class="math" data-tex="\(Y^{7/3-o(1)}\)">\(Y^{7/3-o(1)}\)</span>. The last step derives the proposition, with uniform <span class="math" data-tex="\(\delta,\eta\)">\(\delta,\eta\)</span>, from the contradiction. A <em>subpower loss</em> means a loss of <span class="math" data-tex="\(Y^{\epsilon}\)">\(Y^{\epsilon}\)</span> with an arbitrarily small fixed <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>; it is never used as a logarithmic saving.</p>
+<p><strong>Step 1: prime powers and repeated factors.</strong> Remove the squarefree restriction in the definition of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and replace each prime weight <span class="math" data-tex="\(w_j(N(\pi)/F_j)\)">\(w_j(N(\pi)/F_j)\)</span> by the smooth weight <span class="math" data-tex="\(w_j(N(\mathfrak n)/F_j)\Lambda(\mathfrak n)/\log N(\mathfrak n)\)">\(w_j(N(\mathfrak n)/F_j)\Lambda(\mathfrak n)/\log N(\mathfrak n)\)</span> on prime powers. The discrepancy has divisor-bounded coefficients supported on a set of size <span class="math" data-tex="\(O(Y^{1-\theta})\)">\(O(Y^{1-\theta})\)</span> for a fixed <span class="math" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span>. Indeed, each term of the discrepancy contains a repeated prime of norm at least <span class="math" data-tex="\(Y^c\)">\(Y^c\)</span>, or a prime power <span class="math" data-tex="\(\pi^j\)">\(\pi^j\)</span> with <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span> and norm at least <span class="math" data-tex="\(Y^c\)">\(Y^c\)</span>. In both cases <span class="math" data-tex="\(b\)">\(b\)</span> is divisible by the square of an element of norm at least <span class="math" data-tex="\(Y^{c/4}\)">\(Y^{c/4}\)</span>, and summing <span class="math" data-tex="\(O(Y/N(d)^2)\)">\(O(Y/N(d)^2)\)</span> over such square divisors <span class="math" data-tex="\(d^2\)">\(d^2\)</span> gives <span class="math" data-tex="\(O(Y^{1-c/4})\)">\(O(Y^{1-c/4})\)</span>. In the factorization <span class="math" data-tex="\(b=st^2d^3\)">\(b=st^2d^3\)</span> with <span class="math" data-tex="\(s,t\)">\(s,t\)</span> coprime squarefree, this also gives <span class="math" data-tex="\(N(s)\le Y^{1-\theta&#x27;}\)">\(N(s)\le Y^{1-\theta&#x27;}\)</span> for a fixed <span class="math" data-tex="\(\theta&#x27;&gt;0\)">\(\theta&#x27;&gt;0\)</span>.</p>
+<p>In the first configuration fix <span class="math" data-tex="\(q\)">\(q\)</span>, at a subpower cost, and write <span class="math" data-tex="\(\chi_b(vpq^2)=\chi_b(vq^2)\chi_p(b)\)">\(\chi_b(vpq^2)=\chi_b(vq^2)\chi_p(b)\)</span> with the first factor in the coefficients. With <span class="math" data-tex="\(S,V,C\)">\(S,V,C\)</span> the lengths of <span class="math" data-tex="\(s,t,d\)">\(s,t,d\)</span>, we have <span class="math" data-tex="\((VC)^2S\ll Y\)">\((VC)^2S\ll Y\)</span> and <span class="math" data-tex="\(S\ll Y^{1-\theta&#x27;}\)">\(S\ll Y^{1-\theta&#x27;}\)</span>. The bound (4.1) of the lesson on large sieves then gives the discrepancy moment
+<span class="math math-display" data-tex="\[
+Y^{1+o(1)}\bigl(Y+Y^{1-\theta&#x27;}+Y^{(4-2\theta&#x27;)/3}\bigr),
+\]">\[
+Y^{1+o(1)}\bigl(Y+Y^{1-\theta&#x27;}+Y^{(4-2\theta&#x27;)/3}\bigr),
+\]</span>
+a power saving. In the second configuration, square the discrepancy polynomial. Its support has size at most <span class="math" data-tex="\(Y^{2-2\theta}\)">\(Y^{2-2\theta}\)</span>, and its coefficients are divisor-bounded. Lemma 3.3 of the lesson on large sieves, at length <span class="math" data-tex="\(Y^2\)">\(Y^2\)</span> and conductor norm <span class="math" data-tex="\(Y^{2/3+o(1)}\)">\(Y^{2/3+o(1)}\)</span>, bounds the fourth moment by <span class="math" data-tex="\(Y^{4-2\theta+o(1)}\)">\(Y^{4-2\theta+o(1)}\)</span>. Cauchy's inequality over the <span class="math" data-tex="\(Y^{2/3+o(1)}\)">\(Y^{2/3+o(1)}\)</span> rows gives a second moment at most <span class="math" data-tex="\(Y^{7/3-\theta+o(1)}\)">\(Y^{7/3-\theta+o(1)}\)</span>. The fixed factor <span class="math" data-tex="\(\chi_b(v)\)">\(\chi_b(v)\)</span> and the exclusions are part of the coefficients. So both discrepancies may be discarded.</p>
+<p><strong>Step 2: a short convolution identity.</strong> Write <span class="math" data-tex="\(*\)">\(*\)</span> for Dirichlet convolution of functions on ideals, <span class="math" data-tex="\(\mathbf 1\)">\(\mathbf 1\)</span> for the constant function <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(\mathbf 1_*\)">\(\mathbf 1_*\)</span> for the identity of convolution. For a dyad of prime powers with upper endpoint <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>, put <span class="math" data-tex="\(m=\mu\cdot\mathbf 1_{N\le\sqrt{F&#x27;}}\)">\(m=\mu\cdot\mathbf 1_{N\le\sqrt{F&#x27;}}\)</span>. The function <span class="math" data-tex="\(\mathbf 1_*-m*\mathbf 1\)">\(\mathbf 1_*-m*\mathbf 1\)</span> vanishes on ideals of norm at most <span class="math" data-tex="\(\sqrt{F&#x27;}\)">\(\sqrt{F&#x27;}\)</span>, so its convolution square vanishes on ideals of norm at most <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>. Expanding the square, convolving with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and using <span class="math" data-tex="\(\mathbf 1*\Lambda=\log N\)">\(\mathbf 1*\Lambda=\log N\)</span> gives, on the dyad,
+<span class="math math-display" data-tex="\[
+\Lambda=(2m-m*m*\mathbf 1)*\log N.\quad(3.1)
+\]">\[
+\Lambda=(2m-m*m*\mathbf 1)*\log N.\quad(3.1)
+\]</span>
+Multiplication by <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span> respects Dirichlet convolution, because <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span> is completely multiplicative on ideals prime to <span class="math" data-tex="\(3\)">\(3\)</span>. So (3.1) holds with every factor twisted by <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span>. Apply it to every factor, insert smooth norm dyads, and separate the product weights by Mellin inversion. The number of pieces and the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> costs are subpower, and the Mellin shifts may be truncated at <span class="math" data-tex="\(Y^\epsilon\)">\(Y^\epsilon\)</span> with negligible tails. By Minkowski's inequality the same shifts may be fixed across each average over characters. It follows that some product of a bounded number of divisor-bounded character polynomials still has second moment <span class="math" data-tex="\(Y^{7/3-o(1)}\)">\(Y^{7/3-o(1)}\)</span>.</p>
+<p>Pass to a subsequence on which the length exponents of these polynomials converge, say to <span class="math" data-tex="\(a_i\ge0\)">\(a_i\ge0\)</span> with <span class="math" data-tex="\(\sum_ia_i=1\)">\(\sum_ia_i=1\)</span>. The common twists and fixed characters are distributed over the polynomials. Every truncated Möbius factor has length at most <span class="math" data-tex="\(Y^{1/2+o(1)}\)">\(Y^{1/2+o(1)}\)</span>. So if some <span class="math" data-tex="\(a_i\)">\(a_i\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span>, that factor is a full smooth sum, possibly with a logarithmic weight, with twist height at most <span class="math" data-tex="\(Y^{0.37}\)">\(Y^{0.37}\)</span>.</p>
+<p><strong>Step 3: a dominant full sum.</strong> Suppose <span class="math" data-tex="\(a_i=1\)">\(a_i=1\)</span>. The other factors have trivial size <span class="math" data-tex="\(Y^{o(1)}\)">\(Y^{o(1)}\)</span>. The character of the full sum, <span class="math" data-tex="\(\mathfrak n\mapsto\chi_n(vpq^2)\Theta_\ell(\mathfrak n)\)">\(\mathfrak n\mapsto\chi_n(vpq^2)\Theta_\ell(\mathfrak n)\)</span>, is nonprincipal. Away from the primes dividing <span class="math" data-tex="\(3ve\)">\(3ve\)</span>, its conductor agrees with <span class="math" data-tex="\(pq\)">\(pq\)</span>. Let <span class="math" data-tex="\(S\)">\(S\)</span> be the set of these primes, fix the parts of <span class="math" data-tex="\(p,q\)">\(p,q\)</span> at <span class="math" data-tex="\(S\)">\(S\)</span>, and fix the resulting local characters. There are <span class="math" data-tex="\(Y^{o(1)}\)">\(Y^{o(1)}\)</span> choices, since the product of the norms of the primes in <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(Y^{o(1)}\)">\(Y^{o(1)}\)</span>. The remaining primitive character has the form <span class="math" data-tex="\(\psi_S\,\chi_{p_0}\overline{\chi_{q_0}}\,\Theta_\ell\)">\(\psi_S\,\chi_{p_0}\overline{\chi_{q_0}}\,\Theta_\ell\)</span> up to inclusion–exclusion over the missing Euler factors at <span class="math" data-tex="\(S\)">\(S\)</span>, which rescales the length by a subpower divisor. It is nonprincipal: for <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span> by its infinity type, and for <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> because <span class="math" data-tex="\(p_0q_0\)">\(p_0q_0\)</span> has norm a positive power of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>Apply Lemma 2.1. In the second configuration the conductor is at most <span class="math" data-tex="\(Y^{2/3+o(1)}\)">\(Y^{2/3+o(1)}\)</span>, the dual length is at most <span class="math" data-tex="\(Y^{2/3+0.74-1+o(1)}\)">\(Y^{2/3+0.74-1+o(1)}\)</span>, and the trivial bound for the full sum is <span class="math" data-tex="\(\sqrt{ZJ}\le Y^{1/3+0.37+o(1)}\)">\(\sqrt{ZJ}\le Y^{1/3+0.37+o(1)}\)</span>. Summing the squares over the <span class="math" data-tex="\(Y^{2/3+o(1)}\)">\(Y^{2/3+o(1)}\)</span> rows gives the exponent
+<span class="math math-display" data-tex="\[
+\frac23+2\Bigl(\frac13+0.37\Bigr)=2.073\ldots&lt;\frac73 .
+\]">\[
+\frac23+2\Bigl(\frac13+0.37\Bigr)=2.073\ldots&lt;\frac73 .
+\]</span>
+In the first configuration fix <span class="math" data-tex="\(q\)">\(q\)</span> and the parts at <span class="math" data-tex="\(S\)">\(S\)</span>. The variable conductor <span class="math" data-tex="\(p_0\)">\(p_0\)</span> is squarefree of length <span class="math" data-tex="\(Y^{1+o(1)}\)">\(Y^{1+o(1)}\)</span>, and the dual polynomial has length <span class="math" data-tex="\(J\le Y^{0.74+o(1)}\)">\(J\le Y^{0.74+o(1)}\)</span>, with coefficients of size <span class="math" data-tex="\(J^{-1/2}\)">\(J^{-1/2}\)</span> and amplitude <span class="math" data-tex="\(\sqrt Z\)">\(\sqrt Z\)</span>, <span class="math" data-tex="\(Z=Y^{1+o(1)}\)">\(Z=Y^{1+o(1)}\)</span>. Lemma 4.2(a) of the lesson on large sieves gives
+<span class="math math-display" data-tex="\[
+Y^{1+o(1)}\bigl(Y+J+(YJ)^{2/3}\bigr)\le Y^{2.16+o(1)} .
+\]">\[
+Y^{1+o(1)}\bigl(Y+J+(YJ)^{2/3}\bigr)\le Y^{2.16+o(1)} .
+\]</span>
+Both bounds contradict the assumed moment. The averaging is legitimate because the factors <span class="math" data-tex="\(u_\Psi\)">\(u_\Psi\)</span> of Lemma 2.1 stand outside the polynomials.</p>
+<p><strong>Step 4: moments at several lengths.</strong> In the remaining case every <span class="math" data-tex="\(a_i&lt;1\)">\(a_i&lt;1\)</span>. Pigeonhole the absolute values of the individual polynomials into <span class="math" data-tex="\(O(\log Y)\)">\(O(\log Y)\)</span> classes. Values below a large fixed negative power of <span class="math" data-tex="\(Y\)">\(Y\)</span> can be discarded using the trivial bounds for the other factors and the number of rows. Passing to a further subsequence, there is a set of <span class="math" data-tex="\(Y^{r+o(1)}\)">\(Y^{r+o(1)}\)</span> rows on which the <span class="math" data-tex="\(i\)">\(i\)</span>-th polynomial has absolute value <span class="math" data-tex="\(Y^{v_i+o(1)}\)">\(Y^{v_i+o(1)}\)</span>, where <span class="math" data-tex="\(v_i\le a_i\)">\(v_i\le a_i\)</span>, and
+<span class="math math-display" data-tex="\[
+r\ge\frac73-2v,\quad v=\sum_iv_i .\qquad(3.2)
+\]">\[
+r\ge\frac73-2v,\quad v=\sum_iv_i .\qquad(3.2)
+\]</span></p>
+<p><em>The second configuration.</em> There are at most <span class="math" data-tex="\(Y^{2/3+o(1)}\)">\(Y^{2/3+o(1)}\)</span> rows, so <span class="math" data-tex="\(r\le\frac23\)">\(r\le\frac23\)</span>. The full product <span class="math" data-tex="\(F\)">\(F\)</span> has length <span class="math" data-tex="\(Y^{1+o(1)}\)">\(Y^{1+o(1)}\)</span>, and its square is a divisor-bounded polynomial of length <span class="math" data-tex="\(Y^{2+o(1)}\)">\(Y^{2+o(1)}\)</span>. Lemma 3.3 of the lesson on large sieves, applied to <span class="math" data-tex="\(F^2\)">\(F^2\)</span>, gives <span class="math" data-tex="\(r+4v\le4\)">\(r+4v\le4\)</span>. Together with (3.2) this forces <span class="math" data-tex="\(v=\frac56\)">\(v=\frac56\)</span> and <span class="math" data-tex="\(r=\frac23\)">\(r=\frac23\)</span>. Since <span class="math" data-tex="\(\sum v_i=\frac56\sum a_i\)">\(\sum v_i=\frac56\sum a_i\)</span>, there is an index with <span class="math" data-tex="\(0&lt;a_i&lt;1\)">\(0&lt;a_i&lt;1\)</span> and <span class="math" data-tex="\(v_i\ge\frac56a_i\)">\(v_i\ge\frac56a_i\)</span>. Multiply <span class="math" data-tex="\(F\)">\(F\)</span> by this factor once more, and put <span class="math" data-tex="\(z=1+a_i\in(1,2)\)">\(z=1+a_i\in(1,2)\)</span>. The product has length <span class="math" data-tex="\(Y^{z+o(1)}\)">\(Y^{z+o(1)}\)</span> and, on the chosen rows, values at least <span class="math" data-tex="\(Y^{5z/6+o(1)}\)">\(Y^{5z/6+o(1)}\)</span>. Lemma 3.3 gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r&amp;\le\max\Bigl(\frac43,z\Bigr)+z-\frac{5z}3\\
+&amp;=\max\Bigl(\frac43,z\Bigr)-\frac{2z}3&lt;\frac23,
+\end{aligned}
+\]">\[
+\begin{aligned}
+r&amp;\le\max\Bigl(\frac43,z\Bigr)+z-\frac{5z}3\\
+&amp;=\max\Bigl(\frac43,z\Bigr)-\frac{2z}3&lt;\frac23,
+\end{aligned}
+\]</span>
+a contradiction.</p>
+<p><em>The first configuration.</em> Fix <span class="math" data-tex="\(q\)">\(q\)</span> at a subpower cost; (3.2) is unchanged. The rows are distinct squarefree <span class="math" data-tex="\(p\)">\(p\)</span> of length <span class="math" data-tex="\(Y^{1+o(1)}\)">\(Y^{1+o(1)}\)</span>. Put <span class="math" data-tex="\(d_i=v_i-\frac56a_i\)">\(d_i=v_i-\frac56a_i\)</span>. For nonnegative integers <span class="math" data-tex="\(k_i\)">\(k_i\)</span> with <span class="math" data-tex="\(z=\sum_ik_ia_i\in[\frac12,2]\)">\(z=\sum_ik_ia_i\in[\frac12,2]\)</span>, the product <span class="math" data-tex="\(\prod_if_i^{k_i}\)">\(\prod_if_i^{k_i}\)</span> is a divisor-bounded polynomial of length <span class="math" data-tex="\(Y^{z+o(1)}\)">\(Y^{z+o(1)}\)</span>. Lemma 4.2(a) of the lesson on large sieves gives
+<span class="math math-display" data-tex="\[
+r\le\frac23-2\sum_ik_id_i ,
+\tag{3.3}
+\]">\[
+r\le\frac23-2\sum_ik_id_i ,
+\tag{3.3}
+\]</span>
+because <span class="math" data-tex="\(z+\max\{1,z,\frac23(1+z)\}=\frac23+\frac{5z}3\)">\(z+\max\{1,z,\frac23(1+z)\}=\frac23+\frac{5z}3\)</span> for <span class="math" data-tex="\(\frac12\le z\le2\)">\(\frac12\le z\le2\)</span>.</p>
+<ul>
+<li>The vector of ones makes the right side of (3.3) equal to the lower bound in (3.2), so equality holds in (3.2) and (3.3).</li>
+<li>Increasing one multiplicity from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(2\)">\(2\)</span> keeps <span class="math" data-tex="\(z&lt;2\)">\(z&lt;2\)</span>, and so proves <span class="math" data-tex="\(d_i\le0\)">\(d_i\le0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+<li>Decreasing it to <span class="math" data-tex="\(0\)">\(0\)</span> keeps <span class="math" data-tex="\(z\ge\frac12\)">\(z\ge\frac12\)</span> when <span class="math" data-tex="\(a_i\le\frac12\)">\(a_i\le\frac12\)</span>, and so proves <span class="math" data-tex="\(d_i\ge0\)">\(d_i\ge0\)</span> for these <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+</ul>
+<p>So every factor with <span class="math" data-tex="\(a_i\le\frac12\)">\(a_i\le\frac12\)</span> has <span class="math" data-tex="\(d_i=0\)">\(d_i=0\)</span>, including those with <span class="math" data-tex="\(a_i=0\)">\(a_i=0\)</span>. At most one index has <span class="math" data-tex="\(a_i&gt;\frac12\)">\(a_i&gt;\frac12\)</span>. If there is one, remove it, and add copies of a positive factor with <span class="math" data-tex="\(a\le\frac12\)">\(a\le\frac12\)</span> until the length exponent lies in <span class="math" data-tex="\([\frac12,2]\)">\([\frac12,2]\)</span>. Such a factor exists, since no <span class="math" data-tex="\(a_i\)">\(a_i\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span>. Then (3.3) gives <span class="math" data-tex="\(r\le\frac23\)">\(r\le\frac23\)</span>, and the vector of ones gives <span class="math" data-tex="\(r=\frac23-2d_{i_0}\ge\frac23\)">\(r=\frac23-2d_{i_0}\ge\frac23\)</span>. Hence all <span class="math" data-tex="\(d_i=0\)">\(d_i=0\)</span> and <span class="math" data-tex="\(r=\frac23\)">\(r=\frac23\)</span>.</p>
+<p>Choose a positive exponent <span class="math" data-tex="\(a\le\frac12\)">\(a\le\frac12\)</span> among the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Some fixed multiple of <span class="math" data-tex="\(a\)">\(a\)</span> lies strictly between <span class="math" data-tex="\(\frac43\)">\(\frac43\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, since that interval is longer than <span class="math" data-tex="\(a\)">\(a\)</span>. Taking that many copies of the factor gives a divisor-bounded polynomial <span class="math" data-tex="\(\sum_nc_n\chi_p(n)\)">\(\sum_nc_n\chi_p(n)\)</span> of length <span class="math" data-tex="\(Z=Y^{z+o(1)}\)">\(Z=Y^{z+o(1)}\)</span>, with <span class="math" data-tex="\(\frac43&lt;z&lt;2\)">\(\frac43&lt;z&lt;2\)</span>, whose absolute value is at least <span class="math" data-tex="\(Y^{5z/6+o(1)}\)">\(Y^{5z/6+o(1)}\)</span> on at least <span class="math" data-tex="\(Y^{2/3-o(1)}\)">\(Y^{2/3-o(1)}\)</span> distinct squarefree rows <span class="math" data-tex="\(p\)">\(p\)</span>. The multiplicity is fixed once the subsequence is chosen, even when <span class="math" data-tex="\(a\)">\(a\)</span> is small.</p>
+<p><strong>Step 5: near orthogonality.</strong> Let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be this set of rows, with <span class="math" data-tex="\(|\mathcal P|=R\)">\(|\mathcal P|=R\)</span>, and let <span class="math" data-tex="\(W\ge0\)">\(W\ge0\)</span> be a smooth radial weight that is at least <span class="math" data-tex="\(1\)">\(1\)</span> on the support of <span class="math" data-tex="\((c_n)\)">\((c_n)\)</span>. In the space of functions on primary elements with the inner product <span class="math" data-tex="\(\langle f,g\rangle=\sum_nf(n)\overline{g(n)}\)">\(\langle f,g\rangle=\sum_nf(n)\overline{g(n)}\)</span>, take
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\xi(n)=\frac{c_n}{\sqrt{W(N(n)/Z)}},\\
+\phi_p(n)=\sqrt{W(N(n)/Z)}\;\overline{\chi_p(n)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\xi(n)=\frac{c_n}{\sqrt{W(N(n)/Z)}},\\
+\phi_p(n)=\sqrt{W(N(n)/Z)}\;\overline{\chi_p(n)},
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\xi(n)=0\)">\(\xi(n)=0\)</span> off the support of <span class="math" data-tex="\(c\)">\(c\)</span>. Then <span class="math" data-tex="\(\langle\xi,\phi_p\rangle\)">\(\langle\xi,\phi_p\rangle\)</span> is the polynomial at <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(\langle\phi_p,\phi_{p&#x27;}\rangle=\overline{T_{p,p&#x27;}}\)">\(\langle\phi_p,\phi_{p&#x27;}\rangle=\overline{T_{p,p&#x27;}}\)</span>, and <span class="math" data-tex="\(\|\xi\|^2\le Z^{1+o(1)}\)">\(\|\xi\|^2\le Z^{1+o(1)}\)</span>. The Bombieri–Halász–Montgomery inequality (Lemma 5.2 of the lesson on large sieves) and Cauchy's inequality give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R\,Y^{5z/3+o(1)}\le Z^{1+o(1)}\Bigl(O(Z)\\
+&amp;\qquad+R^{1/2}\max_p\Bigl(\sum_{p&#x27;\ne p}|T_{p,p&#x27;}|^2\Bigr)^{1/2}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;R\,Y^{5z/3+o(1)}\le Z^{1+o(1)}\Bigl(O(Z)\\
+&amp;\qquad+R^{1/2}\max_p\Bigl(\sum_{p&#x27;\ne p}|T_{p,p&#x27;}|^2\Bigr)^{1/2}\Bigr).
+\end{aligned}
+\]</span>
+By Lemma 2.2 with <span class="math" data-tex="\(P=Y^{1+o(1)}\)">\(P=Y^{1+o(1)}\)</span>, the inner sum is at most <span class="math" data-tex="\(Y^{o(1)}Z(Y+(Y^3/Z)^{2/3})\)">\(Y^{o(1)}Z(Y+(Y^3/Z)^{2/3})\)</span>. Divide by <span class="math" data-tex="\(ZR\)">\(ZR\)</span>, with <span class="math" data-tex="\(R=Y^{2/3+o(1)}\)">\(R=Y^{2/3+o(1)}\)</span>. The left side has exponent <span class="math" data-tex="\(\frac{2z}3\)">\(\frac{2z}3\)</span>. The diagonal term has exponent at most <span class="math" data-tex="\(z-\frac23\)">\(z-\frac23\)</span>, and the off-diagonal term has exponent at most
+<span class="math math-display" data-tex="\[
+\frac{z+\max(1,2-\frac{2z}3)-\frac23}2 .
+\]">\[
+\frac{z+\max(1,2-\frac{2z}3)-\frac23}2 .
+\]</span>
+Both are strictly smaller than <span class="math" data-tex="\(\frac{2z}3\)">\(\frac{2z}3\)</span>. The gap for the diagonal is <span class="math" data-tex="\(\frac{2-z}3\)">\(\frac{2-z}3\)</span>. The gap for the off-diagonal term is <span class="math" data-tex="\(\frac{3z-4}6\)">\(\frac{3z-4}6\)</span> for <span class="math" data-tex="\(z\le\frac32\)">\(z\le\frac32\)</span> and <span class="math" data-tex="\(\frac{z-1}6\)">\(\frac{z-1}6\)</span> for <span class="math" data-tex="\(z\ge\frac32\)">\(z\ge\frac32\)</span>. These fixed gaps absorb every subpower loss, which gives the final contradiction.</p>
+<p><strong>Step 6: uniform neighborhoods.</strong> If the proposition failed for every choice of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, choose shrinking <span class="math" data-tex="\(\delta_n,\eta_n\to0\)">\(\delta_n,\eta_n\to0\)</span> and counterexamples with <span class="math" data-tex="\(Y_n\to\infty\)">\(Y_n\to\infty\)</span>. This diagonal sequence has <span class="math" data-tex="\(N(v),N(e)=Y^{o(1)}\)">\(N(v),N(e)=Y^{o(1)}\)</span>, length exponents tending to one of the two pairs, and moments at least <span class="math" data-tex="\(Y^{7/3-o(1)}\)">\(Y^{7/3-o(1)}\)</span>. There are boundedly many factors, their length exponents lie in a compact simplex, and the pigeonholing confines the value exponents to a compact interval. So Steps 1 to 5 apply to a subsequence. Every multiplicity and every small loss is fixed before the limit is taken. The contradiction proves the existence of <span class="math" data-tex="\(\delta,\eta&gt;0\)">\(\delta,\eta&gt;0\)</span> and the uniform bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 3.1.</strong> The angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span> enters only in two places. It enters Lemma 2.1, through the factor <span class="math" data-tex="\(\Gamma(s+|\ell|/2)\)">\(\Gamma(s+|\ell|/2)\)</span> of the functional equation and the nonprincipality of the dual character. It also enters Step 2, through the multiplicativity of <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span>. In every moment estimate <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span> belongs to the coefficients common to all rows, and in the Gram matrix of Step 5 it cancels against its conjugate. The constants <span class="math" data-tex="\(\delta,\eta\)">\(\delta,\eta\)</span> may depend on the fixed <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Verify the identity <span class="math" data-tex="\(z+\max\{1,z,\frac23(1+z)\}=\frac23+\frac{5z}3\)">\(z+\max\{1,z,\frac23(1+z)\}=\frac23+\frac{5z}3\)</span> for <span class="math" data-tex="\(\frac12\le z\le2\)">\(\frac12\le z\le2\)</span>, and show that it fails for <span class="math" data-tex="\(z&lt;\frac12\)">\(z&lt;\frac12\)</span>.</p>
+<p><strong>4.2.</strong> In Step 4, second configuration, derive <span class="math" data-tex="\(v=\frac56\)">\(v=\frac56\)</span> and <span class="math" data-tex="\(r=\frac23\)">\(r=\frac23\)</span> from <span class="math" data-tex="\(r\le\frac23\)">\(r\le\frac23\)</span>, <span class="math" data-tex="\(r+4v\le4\)">\(r+4v\le4\)</span> and (3.2).</p>
+<p><strong>4.3.</strong> Check the three terms in the proof of Lemma 2.2 by substituting <span class="math" data-tex="\(J=J_0\)">\(J=J_0\)</span> into <span class="math" data-tex="\(\bigl(\frac{ZK}{MP}\bigr)^2J\bigl(\frac PK+J+(\frac{PJ}K)^{2/3}\bigr)\)">\(\bigl(\frac{ZK}{MP}\bigr)^2J\bigl(\frac PK+J+(\frac{PJ}K)^{2/3}\bigr)\)</span>.</p>
+<p><strong>4.4.</strong> Show that (3.1) holds on the dyad: for every ideal <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> with <span class="math" data-tex="\(N(\mathfrak n)\le F&#x27;\)">\(N(\mathfrak n)\le F&#x27;\)</span>, <span class="math" data-tex="\(\Lambda(\mathfrak n)=((2m-m*m*\mathbf 1)*\log N)(\mathfrak n)\)">\(\Lambda(\mathfrak n)=((2m-m*m*\mathbf 1)*\log N)(\mathfrak n)\)</span>.</p>
+<p><strong>4.5.</strong> In Step 5, explain why the factor <span class="math" data-tex="\(N(b)^{iu}\)">\(N(b)^{iu}\)</span> in <span class="math" data-tex="\(A(p,q)\)">\(A(p,q)\)</span>, and more generally any factor depending only on the inner variable, causes no difficulty, whereas a factor depending on both the row and the inner variable would.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> For <span class="math" data-tex="\(z\ge\frac12\)">\(z\ge\frac12\)</span>, <span class="math" data-tex="\(\frac23(1+z)\ge1\)">\(\frac23(1+z)\ge1\)</span>, and <span class="math" data-tex="\(\frac23(1+z)\ge z\)">\(\frac23(1+z)\ge z\)</span> holds exactly for <span class="math" data-tex="\(z\le2\)">\(z\le2\)</span>. So the maximum is <span class="math" data-tex="\(\frac23(1+z)\)">\(\frac23(1+z)\)</span>, and <span class="math" data-tex="\(z+\frac23(1+z)=\frac23+\frac{5z}3\)">\(z+\frac23(1+z)=\frac23+\frac{5z}3\)</span>. For <span class="math" data-tex="\(z&lt;\frac12\)">\(z&lt;\frac12\)</span> the maximum is <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(z+1&gt;\frac23+\frac{5z}3\)">\(z+1&gt;\frac23+\frac{5z}3\)</span> since <span class="math" data-tex="\(z&lt;\frac12\)">\(z&lt;\frac12\)</span>.</p>
+<p><strong>4.2.</strong> From (3.2), <span class="math" data-tex="\(\frac73-2v\le r\le\frac23\)">\(\frac73-2v\le r\le\frac23\)</span> gives <span class="math" data-tex="\(v\ge\frac56\)">\(v\ge\frac56\)</span>. From <span class="math" data-tex="\(r+4v\le4\)">\(r+4v\le4\)</span> and (3.2), <span class="math" data-tex="\(\frac73+2v\le r+4v\le4\)">\(\frac73+2v\le r+4v\le4\)</span> gives <span class="math" data-tex="\(v\le\frac56\)">\(v\le\frac56\)</span>. So <span class="math" data-tex="\(v=\frac56\)">\(v=\frac56\)</span>, and then <span class="math" data-tex="\(r=\frac23\)">\(r=\frac23\)</span>.</p>
+<p><strong>4.3.</strong> With <span class="math" data-tex="\(J_0=P^2M/(K^2Z)\)">\(J_0=P^2M/(K^2Z)\)</span>, the factor <span class="math" data-tex="\(\bigl(\frac{ZK}{MP}\bigr)^2J_0=\frac ZM\)">\(\bigl(\frac{ZK}{MP}\bigr)^2J_0=\frac ZM\)</span>. Multiplying it by <span class="math" data-tex="\(\frac PK\)">\(\frac PK\)</span>, by <span class="math" data-tex="\(J_0\)">\(J_0\)</span> and by <span class="math" data-tex="\((PJ_0/K)^{2/3}\)">\((PJ_0/K)^{2/3}\)</span> gives <span class="math" data-tex="\(\frac{ZP}{MK}\)">\(\frac{ZP}{MK}\)</span>, <span class="math" data-tex="\(\frac{P^2}{K^2}\)">\(\frac{P^2}{K^2}\)</span> and <span class="math" data-tex="\(\frac ZM\bigl(\frac{P^3M}{K^3Z}\bigr)^{2/3}=\frac{P^2Z^{1/3}}{K^2M^{1/3}}\)">\(\frac ZM\bigl(\frac{P^3M}{K^3Z}\bigr)^{2/3}=\frac{P^2Z^{1/3}}{K^2M^{1/3}}\)</span>.</p>
+<p><strong>4.4.</strong> Let <span class="math" data-tex="\(h=\mathbf 1_*-m*\mathbf 1\)">\(h=\mathbf 1_*-m*\mathbf 1\)</span>. For <span class="math" data-tex="\(N(\mathfrak n)\le\sqrt{F&#x27;}\)">\(N(\mathfrak n)\le\sqrt{F&#x27;}\)</span>, <span class="math" data-tex="\((m*\mathbf 1)(\mathfrak n)=\sum_{\mathfrak d\mid\mathfrak n}\mu(\mathfrak d)=\mathbf 1_*(\mathfrak n)\)">\((m*\mathbf 1)(\mathfrak n)=\sum_{\mathfrak d\mid\mathfrak n}\mu(\mathfrak d)=\mathbf 1_*(\mathfrak n)\)</span>, so <span class="math" data-tex="\(h(\mathfrak n)=0\)">\(h(\mathfrak n)=0\)</span>. If <span class="math" data-tex="\(N(\mathfrak n)\le F&#x27;\)">\(N(\mathfrak n)\le F&#x27;\)</span> and <span class="math" data-tex="\(\mathfrak n=\mathfrak n_1\mathfrak n_2\)">\(\mathfrak n=\mathfrak n_1\mathfrak n_2\)</span>, one of the factors has norm at most <span class="math" data-tex="\(\sqrt{F&#x27;}\)">\(\sqrt{F&#x27;}\)</span>, so <span class="math" data-tex="\((h*h)(\mathfrak n)=0\)">\((h*h)(\mathfrak n)=0\)</span>. Expanding,
+<span class="math math-display" data-tex="\[
+h*h=\mathbf 1_*-2m*\mathbf 1+m*m*\mathbf 1*\mathbf 1 .
+\]">\[
+h*h=\mathbf 1_*-2m*\mathbf 1+m*m*\mathbf 1*\mathbf 1 .
+\]</span>
+Convolving with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and using <span class="math" data-tex="\(\mathbf 1*\Lambda=\log N\)">\(\mathbf 1*\Lambda=\log N\)</span>, the function <span class="math" data-tex="\(\Lambda-2m*\log N+m*m*\mathbf 1*\log N\)">\(\Lambda-2m*\log N+m*m*\mathbf 1*\log N\)</span> vanishes for <span class="math" data-tex="\(N(\mathfrak n)\le F&#x27;\)">\(N(\mathfrak n)\le F&#x27;\)</span>.</p>
+<p><strong>4.5.</strong> A factor depending only on the inner variable is part of the coefficient vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, which is the same for all rows, so the Gram matrix of the vectors <span class="math" data-tex="\(\phi_p\)">\(\phi_p\)</span> is unchanged. A factor depending on both the row and the inner variable would change the vectors <span class="math" data-tex="\(\phi_p\)">\(\phi_p\)</span> themselves, and their inner products would not be the sums <span class="math" data-tex="\(T_{p,p&#x27;}\)">\(T_{p,p&#x27;}\)</span> bounded in Lemma 2.2.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-023] OpenAI, <em>An unconditional first moment for cubic Gauss sums</em>, OpenAI Math Release preprint, 25 September 2026, Section 4 (the exceptional character moments) and Appendix A.3 (the angular version). https://github.com/openai/math/tree/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -50,6 +50,6 @@ check = {'svg':'figures/'+out.name,'svg_sha256':hashlib.sha256(out.read_bytes())
     'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     'proof_locators':['DS36','DS37'],'r':-0.25,'gap_minimum':'exp(-4)/5',
     'rows':[['1','528/31'],['1','2080/63']],'determinant':'31216/1953',
-    'actually_inspected':False,'depicts_PDE_solution':False}
+    'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','depicts_PDE_solution':False}
 (HERE.parent/'figure-check.json').write_text(json.dumps(check,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':out.name,'bytes':out.stat().st_size}))

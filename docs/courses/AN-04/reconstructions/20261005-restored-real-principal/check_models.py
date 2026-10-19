@@ -87,6 +87,6 @@ assert text.count('**Exercise ')==text.count('**Solution.**')==3
 report={'schema':'AN04-real-principal-finite-check/v1','passed':True,'checks':checks,
  'lesson_sha256':sha(src),'script_sha256':sha(Path(__file__)),'exercise_solutions':3,
  'generality_guard':'Finite and exact model checks support the written general distribution, wavefront, support and propagation proofs; they do not certify those theorems.',
- 'full_course_complete':False,'public_release_authorized':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                  }
 (MOD/'model-check.json').write_text(json.dumps(report,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'groups':len(checks),'source_sha256':sha(src)}))

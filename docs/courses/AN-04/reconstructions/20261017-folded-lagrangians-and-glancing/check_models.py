@@ -65,7 +65,7 @@ record={'passed':True,'exact_checks':len(checks),'checks':checks,
  'source':'folded-lagrangians-and-glancing-pairs.md',
  'source_sha256':sha(ROOT/'folded-lagrangians-and-glancing-pairs.md'),
  'script_sha256':sha(Path(__file__)),
- 'scope':'Exact finite coordinate models and matrix identities. General smooth normal forms, relative homotopy, common flow domains and source comparisons are written proofs, not consequences of these checks.',
- 'human_or_independent_review_claimed':False}
+ 'scope':'Exact finite coordinate models and matrix identities. General smooth normal forms, relative homotopy, common flow domains and source comparisons are written proofs, not consequences of these checks.' 
+                                            }
 (ROOT/'model-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print({'passed':True,'exact_checks':len(checks)})

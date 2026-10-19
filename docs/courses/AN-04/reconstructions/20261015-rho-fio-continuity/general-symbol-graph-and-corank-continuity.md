@@ -293,7 +293,7 @@ For a finite bundle, set \(T_{s,t}=(2\pi)^{1/2}UV\) with \(U=E_{12}\), \(V=E_{21
 
 **F0. Exact figure data.** The first panel draws the normalized metric box with side half-widths \(r^{-\delta}\) and \(r^\rho\) in the actual base and frequency offsets for \(\rho=3/4,r=16\). It labels these exact half-widths \(1/2\) and \(8\); this is a box of uniformly bounded metric size, not a canonical relation. The second panel plots \(m=-k/4\) at integer \(k=0,\ldots,6\); shaded space below it is the sufficient \(L^2\) range under the radial hypothesis, without an optimality claim for arbitrary varying rank. The third panel plots the exact finite-rank error in (GC28), without replacing it by an asymptotic rate. All data and plotting instructions are in the original figure script.
 
-## 15. What is proved and what remains
+## 15. Scope of the continuity estimates
 
 Graph continuity and localized compactness, every real Sobolev shift, the full left form, general-symbol graph inverses and ordered Egorov, and the sufficient quarter-corank estimate with changing rank have complete receiving proofs above. The exact thresholds use the same order convention as the source. They rely on the complete general-symbol metric PDO bound, not on assuming that a base derivative preserves ordinary order.
 

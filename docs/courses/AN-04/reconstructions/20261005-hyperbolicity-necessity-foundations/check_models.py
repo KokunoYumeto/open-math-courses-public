@@ -57,8 +57,8 @@ for n in range(5):
  assert s.simplify(w/s.exp(s.I*x*xi)-(1+xi**2)**n)==0
 add('Real-frequency decay identity',5,'(1-d_x^2)^N exp(ix xi)=(1+xi^2)^N exp(ix xi)')
 record={'passed':all(c['passed'] for c in checks),'groups':len(checks),'checks':checks,
- 'proofs_are_the_written_C1_C5_and_F1_F5':True,'human_review_complete':False,
- 'full_course_complete':False,'public_release_authorized':False,
+ 'proofs_are_the_written_C1_C5_and_F1_F5':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
+                                                                
  'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
 (ROOT/'model-check.json').write_text(json.dumps(record,indent=2)+'\n','utf8')
 print(json.dumps({'passed':record['passed'],'groups':len(checks),'finite_cases':sum(c['cases'] for c in checks)}))

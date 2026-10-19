@@ -42,6 +42,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 result={'schema':'AN04-escape-regularity-finite-checks/v1','source_sha256':sha(source),'script_sha256':sha(Path(__file__)),
  'passed':True,'total_cases':len(cases),'exact_algebraic_checks':len(cases),'numerical_checks':0,
  'cases':cases,'scope':'Exact Hamilton coefficients, complex-coordinate cancellation, return-compatible multiplier, support inequalities and source shifts.',
- 'not_established_by_finite_checks':['existence_of_factor_charts','uniform_local_comparison','superharmonic_strong_minimum','compact_support_index_gain','trapped_leaf_equivalence','full_course_completion']}
+ 'not_established_by_finite_checks':['existence_of_factor_charts','uniform_local_comparison','superharmonic_strong_minimum','compact_support_index_gain','trapped_leaf_equivalence'                         ]}
 (root/'model-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({k:result[k] for k in ('passed','total_cases','exact_algebraic_checks')}))

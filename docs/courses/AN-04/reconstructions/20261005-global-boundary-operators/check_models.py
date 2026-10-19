@@ -80,7 +80,7 @@ for ss in [-3.4,-.2,.6,3.2]:
 checks.append('Summable dyadic coordinate matrix at four positive and negative noninteger indices')
 result={'passed':True,'finite_groups':len(checks),'checks':checks,
  'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},'script_sha256':sha(Path(__file__)),
- 'scope':'Finite symbolic and numerical checks support exact identities; the complete analytic proofs are in the companions.',
- 'U031_restored':False}
+ 'scope':'Finite symbolic and numerical checks support exact identities; the complete analytic proofs are in the companions.' 
+                      }
 (ROOT/'model-check.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

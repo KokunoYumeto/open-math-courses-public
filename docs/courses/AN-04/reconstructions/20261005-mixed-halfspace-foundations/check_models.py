@@ -87,6 +87,6 @@ done('all-real recovery bookkeeping','300 finite nested-cutoff index sequences a
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 result={'recorded_utc':datetime.now(timezone.utc).isoformat(),'passed':True,'finite_groups':len(groups),'groups':groups,
  'script_sha256':sha(Path(__file__)),'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},
- 'finite_checks_are_not_general_proofs':True,'U031_restored':False,'public_release_authorized':False}
+ 'finite_checks_are_not_general_proofs':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                  }
 (ROOT/'model-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(groups)}))

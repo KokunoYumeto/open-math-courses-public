@@ -56,6 +56,6 @@ checks.append({'name':'Negative model kernel Fourier phase and factorial','passe
 
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'schema':'AN04-halfspace-layers-models/v1','source_sha256':sha(ROOT/'halfspace-layers.md'),
- 'script_sha256':sha(Path(__file__)),'passed':True,'general_theorem_certified':False,'checks':checks}
+ 'script_sha256':sha(Path(__file__)),'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','checks':checks}
 (ROOT/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_check_groups':len(checks)}))

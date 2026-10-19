@@ -406,5 +406,5 @@ The estimate extends to the actual smooth graph completion by the Cauchy argumen
 
 
 
-Independent exposition, proofs, solved examples and diagram: CC0-1.0. Mathematical context: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Sections 18.3 and 24.7.  Earlier programme proofs, component credits and external human foundations retain their recorded terms. This theorem has hypothesis (OR1); internal CC0-export closure and whole-course completion are not claimed.
+Independent exposition, proofs, solved examples and diagram: CC0-1.0. Mathematical context: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Sections 18.3 and 24.7.  Earlier programme proofs, component credits and external human foundations retain their recorded terms. The theorem requires hypothesis (OR1).
 

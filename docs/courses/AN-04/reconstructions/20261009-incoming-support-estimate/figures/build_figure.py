@@ -44,6 +44,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'slice':'x=1/16','slice_center':'1/96','open_slice_radius':'1/384','Hamilton_arrows':'decreasing x',
  'matrix_entries':['Re q11=1','Re q22=2','Im q12=x'],'matrix_parameter_interval':[0,1],
  'meaning':'Exact formulas. The slice regularity is assumed, and no numerical PDE propagation is inferred.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps(record))

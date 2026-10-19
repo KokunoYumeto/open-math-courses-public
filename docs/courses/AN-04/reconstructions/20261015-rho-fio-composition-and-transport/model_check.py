@@ -58,7 +58,7 @@ out={'schema':'AN04-rho-fio-composition-model-check/v1','passed':True,'total_cas
  'exact_algebraic_checks':len(checks),'numerical_checks':0,'checks':checks,
  'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
  'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
- 'scope':'Exact dimension, Gaussian, derivative-budget, nonlinear graph/divergence, matrix-adjoint, circle-fiber and order identities. Full analytic and distributional proofs are in the lesson.',
- 'proof_completeness_certified_by_these_checks':False}
+ 'scope':'Exact dimension, Gaussian, derivative-budget, nonlinear graph/divergence, matrix-adjoint, circle-fiber and order identities. Full analytic and distributional proofs are in the lesson.' 
+                                                     }
 (HERE/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'exact_checks':len(checks)}))

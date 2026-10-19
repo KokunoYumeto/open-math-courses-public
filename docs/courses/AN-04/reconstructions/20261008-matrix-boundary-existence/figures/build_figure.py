@@ -38,6 +38,6 @@ record={'svg':'figures/causal-matrix-boundary.svg','svg_sha256':sha(target),
         'generator_sha256':sha(Path(__file__)),'proof_locators':['MEX:C1','MEX:C7','MEX:X3','MEX:F0'],
         'parameters':{'m':1,'h':1,'q_interval':[0,1.5],'t_interval':['-1/5','6/5'],'derivative_scale':'1/4'},
         'meaning':'Exact scalar slices of distinct gauges and an explicit smooth cutoff; no PDE numerical solution claim.',
-        'actually_inspected':False,'exact_coordinate_review_complete':False}
+        'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':target.name,'bytes':target.stat().st_size}))

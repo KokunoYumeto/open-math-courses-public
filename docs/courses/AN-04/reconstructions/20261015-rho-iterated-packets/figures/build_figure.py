@@ -35,7 +35,7 @@ fig.suptitle('Annular size does not fix the height of a narrow packet',fontsize=
 p=ROOT/'figures/iterated-packet-scales.svg';fig.savefig(p,metadata={'Date':None});plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (ROOT/'figure-check.json').write_text(json.dumps({'svg':'figures/iterated-packet-scales.svg',
- 'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'data':'IP18–IP20 with rho=3/4,R=65536, exact bump profile; exact gap delta*n/2; X1 powers 1/2 and 1/4.',
  'qualification':'First panel uses normalized Fourier offsets and unit height; remaining panels plot exact exponents, not a numerical proof.',
  'embedded_fonts':False,'original_expression_licence':'CC0-1.0'},indent=2)+'\n','utf-8')

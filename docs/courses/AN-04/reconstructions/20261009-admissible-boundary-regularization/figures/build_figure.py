@@ -34,7 +34,7 @@ txt(28,580,'Arrows are analytic recovery steps, not geometric rays. Orders are u
 out.append('</svg>')
 dest=p.parent/'admissible-test-tree.svg';dest.write_text('\n'.join(out)+'\n','utf-8')
 check={'svg':'figures/'+dest.name,'svg_sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),
-       'generator_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'actually_inspected':False,
+       'generator_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
        'exact_tree_node_counts':[1,4,16],'maximal_source_orders':[-6,-4,-2],
        'ordinary_solution_exponents':[-1,0,1,2],'ordinary_source_exponents':[-2,-1,0],
        'meaning':'Exact analytic dependency tree and recovery indices for Exercise 1; not a ray diagram.'}

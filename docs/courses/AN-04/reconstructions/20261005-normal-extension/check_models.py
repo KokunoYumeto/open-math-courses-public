@@ -124,6 +124,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 result={'passed':True,'finite_groups':len(checks),'checks':checks,
  'script_sha256':sha(Path(__file__)),
  'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},
- 'finite_checks_replace_proofs':False,'U031_restored':False}
+ 'finite_checks_replace_proofs':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'model-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

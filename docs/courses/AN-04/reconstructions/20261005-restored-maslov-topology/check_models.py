@@ -182,7 +182,7 @@ checks.append({'name':'nonunitary common-complement shear with a horizontal spec
  'transformed_frequency_determinant_at_crossing':2,'sampled_windings':winds,
  'scope':'Exact shear symplecticity and complete crossing-form identity; five finite winding controls. The fixed-frame determinant changes pointwise, so it cannot be treated as symplectically invariant. Its winding is invariant by the written homotopy proof.'})
 report={'schema':'bounded-maslov-topology-check/v1','passed':True,'lesson_sha256':sha(lesson),
- 'script_sha256':sha(Path(__file__)),'checks':checks,'whole_course_complete':False,
- 'generality_guard':'Exact bounded examples and finite numerical samples do not establish arbitrary-loop topology, smoothing, lifting or generic perturbation. Those require the written proofs and independent review.'}
+ 'script_sha256':sha(Path(__file__)),'checks':checks,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
+ 'generality_guard':'Exact bounded examples and finite numerical samples concern the stated models. Arbitrary-loop topology, smoothing, lifting and generic perturbation require the written proofs.'}
 (module/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'checks':len(checks),'passed':True,'lesson_sha256':sha(lesson)}),flush=True)

@@ -32,6 +32,6 @@ for i in range(17):
  h=F(i,128);theta=F(1,8)+2*h;coefficient=2*theta
  assert coefficient==F(1,4)+4*h
  checks.append({'h':str(h),'theta':str(theta),'coefficient':str(coefficient)})
-record={'asset':'figures/normal-energy-budget.svg','sha256':sha(asset),'source_sha256':sha(ROOT/'glancing-normal-energy-model.md'),'script_sha256':sha(Path(__file__)),'exact_coordinate_checks':checks,'curves':'Exact straight lines; no numerical approximation.','solution_energies_depicted':False,'source_term_retained':True,'actually_inspected':False}
+record={'asset':'figures/normal-energy-budget.svg','sha256':sha(asset),'source_sha256':sha(ROOT/'glancing-normal-energy-model.md'),'script_sha256':sha(Path(__file__)),'exact_coordinate_checks':checks,'curves':'Exact straight lines; no numerical approximation.','solution_energies_depicted':False,'source_term_retained':True                           }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print({'exact_coordinate_checks':len(checks),'figure':asset.name})

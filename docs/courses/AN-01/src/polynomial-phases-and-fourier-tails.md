@@ -167,7 +167,7 @@ c_a|\xi|^{-a}\le |F_a(\xi)|\le C_a|\xi|^{-a},
 \\ |\xi|\ge R_a.
 \end{gathered} \tag{A10}
 \]
-Continuity bounds \(F_a\) on the remaining compact interval, proving global boundedness. For finite \(p\), (A10) reduces integrability at either infinity to \(\int_{R_a}^\infty t^{-ap}\,dt\), which is finite exactly when \(ap>1\); equality \(ap=1\) diverges logarithmically. The compact interval causes no obstruction. For \(p=\infty\), the continuous compact bound and the tail bound give membership for every \(a>0\). This proves the entire source question and every endpoint. \(\square\)
+Continuity bounds \(F_a\) on the remaining compact interval, proving global boundedness. For finite \(p\), (A10) reduces integrability at either infinity to \(\int_{R_a}^\infty t^{-ap}\,dt\), which is finite exactly when \(ap>1\); equality \(ap=1\) diverges logarithmically. The compact interval causes no obstruction. For \(p=\infty\), the continuous compact bound and the tail bound give membership for every \(a>0\). This proves every stated endpoint. \(\square\)
 
 ## B. Every real polynomial phase and its entire transform
 

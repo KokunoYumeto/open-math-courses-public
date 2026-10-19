@@ -4,7 +4,7 @@
 
 A derivative on the whole line loses an integration constant. Causal support—vanishing before time zero—makes that constant impossible. We construct the resulting integration group for every complex order and every causal distribution. A beta integral proves its composition law, and a logarithmic distribution describes its infinitesimal change of order.
 
-The scalar constructions were compared with Sergey Lototsky's freely accessible *Basics of Gamma and Beta functions*, both pages, and the reflection argument in Imperial College London's *M2PM3 Examination Solutions 2011*, Question 3. The complete proofs and precise programme prerequisites are supplied here and linked below. In particular, the contour calculation is proved from Green's formula, and the beta calculation uses iterated one-dimensional substitutions.
+Scalar background includes Sergey Lototsky's freely accessible *Basics of Gamma and Beta functions*, both pages, and the reflection argument in Imperial College London's *M2PM3 Examination Solutions 2011*, Question 3. The complete proofs and precise programme prerequisites are supplied here and linked below. In particular, the contour calculation is proved from Green's formula, and the beta calculation uses iterated one-dimensional substitutions.
 
 ## Normalization fixes the integer cases
 

@@ -122,7 +122,7 @@ report={'schema':'cubic-scaling-finite-check/v1','passed':True,
  'lesson':'cubic-scaling-and-necessary-continuity.md',
  'lesson_sha256':sha(here/'cubic-scaling-and-necessary-continuity.md'),
  'script_sha256':sha(Path(__file__)),'checks':checks,
- 'scope':'Six bounded exact weighted-phase/form/norm models and independent numerical integrals. They test the stated scaling, cancellation majorant and nonzero profile. They do not certify general FIO necessity, transitive prerequisites or fold/Airy estimates.',
- 'independent_mathematical_review':False}
+ 'scope':'Six bounded exact weighted-phase/form/norm models and independent numerical integrals. They test the stated scaling, cancellation majorant and nonzero profile. They do not certify general FIO necessity, transitive prerequisites or fold/Airy estimates.' 
+                                        }
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_checks':len(checks),'lesson_sha256':report['lesson_sha256']}))

@@ -278,7 +278,7 @@ For example \(\int_0^\infty x^2e^{-2nx}dx=1/(4n^3)\), by two integrations by par
 \]
 The boundary term vanishes because \(v_n(0)=0\). The exact mixed norm is
 \(\|v_n\|_{\mathcal X_1}^2=1/(4n^3)+1/(2n)\).
-The half-cylinder is an exact model computation; it is not an assertion that the chart scalar-assembly theorem has already been transferred to every compact boundary.
+The half-cylinder computation illustrates the energy identity under its stated boundary condition.
 
 ### Exercise 2. Ellipticity survives a complex normal coefficient
 

@@ -250,7 +250,7 @@ This final list is the actual union from the coarse graph, every half-step sourc
 \]
 The identity follows from exact right Fourier division of complete logarithmic left symbols, including their positive residual floor. No source residual is omitted or bounded by an assumed untested \(L^2\) norm of \(f\). Substitution proves (GI4).
 
-**A2. Actual completion and remaining scope.** For fixed \(a\), the completion of smooth zero-Dirichlet inputs in
+**A2. Completion of the tested graph.** For fixed \(a\), the completion of smooth zero-Dirichlet inputs in
 \[
                      \|u\|_{\mathcal B}
                         +\|AP_au\|_{L^2}+\|A_{\rm obs}u\|_{L^2}

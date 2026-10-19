@@ -27,7 +27,7 @@ fig.suptitle('Continuity follows the normalized scales',fontsize=15)
 p=ROOT/'figures/continuity-scales.svg';fig.savefig(p,metadata={'Date':None});plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (ROOT/'figure-check.json').write_text(json.dumps({'svg':'figures/continuity-scales.svg',
- 'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'data':'GC3 and GC14 at rho=3/4,r=16; GC25 at integer k=0..6; exact GC28 for N=0..128.',
  'schematic':'First panel is a normalized metric box, not a canonical relation; second is a sufficient range only.',
  'embedded_fonts':False,'original_expression_licence':'CC0-1.0'},indent=2)+'\n','utf-8')

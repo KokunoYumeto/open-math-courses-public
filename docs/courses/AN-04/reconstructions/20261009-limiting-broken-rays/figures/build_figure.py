@@ -37,6 +37,6 @@ report={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'exact_parameters':{'h':['0','1/8','1/32','1/128'],'time_interval':['0','3'],'tau':'1','normal_momenta':['-1','1','-1','1']},
  'uniform_bounds':{'normal_position':'h','compressed_normal_component':'2h'},
  'omitted_coordinates':'tau=1; rho=-dr/dt; Hamilton parameter s=-t/2',
- 'actually_inspected':False,'exact_coordinate_review_complete':False,'not_a_solution_intensity':True}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                         'not_a_solution_intensity':True}
 (P.parent/'figure-check.json').write_text(json.dumps(report,indent=2)+'\n','utf-8')
 print(json.dumps(report))

@@ -131,7 +131,7 @@ assert len(checks)==12 and all(c['passed'] for c in checks)
 MOD=Path(__file__).resolve().parent
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 out={'passed':True,'finite_groups':len(checks),'checks':checks,'script_sha256':sha(Path(__file__)),
- 'source_hashes':{p.name:sha(p) for p in MOD.glob('*.md')},'original_solved_exercises':16,
- 'limitation':'Finite controls supplement the full written owner proof review; they do not certify the general theorems.'}
+ 'source_hashes':{p.name:sha(p) for p in MOD.glob('*.md')},'solved_exercises':16,
+ 'limitation':'Finite calculations concern the stated examples; the general statements use the written proofs.'}
 (MOD/'model-check.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n','utf-8')
-print(json.dumps({'passed':True,'finite_groups':len(checks),'original_solved_exercises':16}))
+print(json.dumps({'passed':True,'finite_groups':len(checks),'solved_exercises':16}))

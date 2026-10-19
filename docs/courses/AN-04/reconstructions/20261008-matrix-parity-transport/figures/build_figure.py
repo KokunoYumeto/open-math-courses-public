@@ -39,5 +39,5 @@ parts.append('</svg>');out=root/'matrix-parity.svg';out.write_text('\n'.join(par
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (root.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/matrix-parity.svg','svg_sha256':sha(out),
  'generator_sha256':sha(Path(__file__)),'coordinate_scope':'MP1, MP10 and MP24, with the exact rational points in F0.',
- 'external_artwork':False,'licence':'CC0-1.0','actually_inspected':False},indent=2)+'\n','utf-8')
+ 'external_artwork':False,'licence':'CC0-1.0','scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'},indent=2)+'\n','utf-8')
 print('Built exact three-panel SVG.')

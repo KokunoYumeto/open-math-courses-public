@@ -44,6 +44,6 @@ done('CG28/CG30--CG36 signed clocks, parabolic constants and normal-form scale',
 out={'schema':'an04-smooth-glancing-models/v1','checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
     'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-    'passed':True,'groups':groups,'general_theorem_certificate':False}
+    'passed':True,'groups':groups,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (p/'model-check.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'groups':len(groups),'general_theorem_certificate':False})
+print({'passed':True,'groups':len(groups),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

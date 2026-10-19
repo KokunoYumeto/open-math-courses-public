@@ -64,7 +64,7 @@ d={'schema':'an04-mixed-dirichlet-finite-models/v1',
    'recorded_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
    'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
    'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-   'checks':checks,'finite_groups':len(checks),'passed':True,'general_theorem_certified':False,
+   'checks':checks,'finite_groups':len(checks),'passed':True,                                  
    'scope':'Exact finite symbolic checks of signs and original model formulas. The full general proof requires the author argument and exact programme prerequisites.'}
 (r/'model-check.json').write_text(json.dumps(d,indent=2)+'\n',encoding='utf8')
-print(json.dumps({'passed':True,'finite_groups':len(checks),'general_proof_certificate':False}))
+print(json.dumps({'passed':True,'finite_groups':len(checks),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}))

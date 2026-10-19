@@ -44,6 +44,6 @@ record={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(P
  'coordinates':{'terminal_time':2,'speed_bound':1,'source_q':[0,'2/5'],'source_t':['8/5','19/10'],
  'display_t':['-3/5',2],'envelope':'q <= 12/5 - t','cutoff_derivative_t':['-1/2','-1/4'],'zero_past':'t<0'},
  'depicts_support_bound_not_solution_values':True,'proof_locator':'**F0. Exact coordinates of the figure.**',
- 'actually_inspected':False,'exact_coordinate_review_complete':False,'licence':'CC0-1.0'}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                         'licence':'CC0-1.0'}
 (P.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'svg_bytes':out.stat().st_size,'svg_sha256':sha(out)}))

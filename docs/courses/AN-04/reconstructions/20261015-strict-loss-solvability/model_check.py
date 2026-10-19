@@ -31,6 +31,6 @@ result={'schema':'AN04-strict-loss-solvability-finite-checks/v1',
  'passed':True,'total_cases':len(cases),'exact_algebraic_checks':len(cases),
  'numerical_checks':0,'cases':cases,
  'scope':'Finite reciprocal-order identities, full lower graph order, selected exact derivative tails and Fourier coefficients.',
- 'not_established_by_finite_checks':['adjoint_gain_hypothesis','characteristic_escape_equivalence','geometric_regularity_theorem','uniform_operator_estimates','full_course_completion']}
+ 'not_established_by_finite_checks':['adjoint_gain_hypothesis','characteristic_escape_equivalence','geometric_regularity_theorem','uniform_operator_estimates'                         ]}
 (root/'model-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({k:result[k] for k in ('passed','total_cases','exact_algebraic_checks')}))

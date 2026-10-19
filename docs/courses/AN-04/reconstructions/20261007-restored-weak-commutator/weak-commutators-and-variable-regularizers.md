@@ -323,7 +323,7 @@ Subtracting \(\Lambda_rPe_n\) from \(P\Lambda_re_n\) gives
 \]
 For \(n=1\) the last coefficient is zero, and the first is \(\eta(m_r(1)-m_r(2))>0\), since the multiplier strictly decreases with positive \(|n|\). At each fixed mode both differences tend to zero as \(r\downarrow0\). This example has \(\chi=1\), so its limiting cutoff commutator is zero. The boundary construction has fixed compact cutoffs and generally has the nonzero limit (WC20). Positivity of \(1+\eta\cos t\) does not make the finite-\(r\) commutator vanish.
 
-## 7. What remains before the positive estimate
+## 7. Scope of the commutator estimate
 
 The exact weak principal commutator, source sign and complex lower form are established in (WC4)–(WC14). The complete lower-term defect is controlled at \(s-1=\nu-3/2\). The full variable-coefficient regularizer error is retained in (WC16)–(WC18), and its fixed-input natural-dual limit is proved in (WC19)–(WC21).
 

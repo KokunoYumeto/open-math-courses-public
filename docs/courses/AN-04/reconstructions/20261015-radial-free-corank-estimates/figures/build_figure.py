@@ -62,6 +62,6 @@ v={'schema':'AN04-radial-free-corank-figure/v1','svg':'figures/radial-free-coran
  'analytic_claims':'Exact exponent and threshold diagram; first panel explicitly a comparison-constant-two schematic.',
  'coordinates':{'corank_range':[0,8],'order_range':[-2.5,0],'sufficient_slope':-.25,'necessary_slope':-1/12,
                 'shared_weight':.5,'nongraph_weight':1/3},
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(v,indent=2)+'\n','utf-8')
 print(json.dumps({'svg':svg.name,'bytes':svg.stat().st_size}))

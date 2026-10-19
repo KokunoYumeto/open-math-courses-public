@@ -35,6 +35,6 @@ s,K,k=S.symbols('s K k',real=True);beta=(k+2)/4
 exponent=S.simplify(2*s+2*K-2*beta+k/2)
 assert exponent==2*s+2*K-1
 checks.append({'name':'Gaussian derivative Sobolev exponent','passed':True,'exponent':str(exponent),'convergence_condition':'s<-K; equality exponent=-1 diverges','fixed_order':'M>K','comparison':'BG44-BG45; full positive and negative real-weight comparison supplied in solution.'})
-record={'schema':'an04-prescribed-broken-rays-model-checks/v1','source_sha256':sha(c/'prescribed-broken-rays-preparation.md'),'checks':checks,'passed':True,'general_theorem_certified':False,'script_sha256':sha(Path(__file__))}
+record={'schema':'an04-prescribed-broken-rays-model-checks/v1','source_sha256':sha(c/'prescribed-broken-rays-preparation.md'),'checks':checks,'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','script_sha256':sha(Path(__file__))}
 (c/'model-check.json').write_text(json.dumps(record,indent=2,ensure_ascii=False)+'\n',encoding='utf8')
-print({'passed':True,'finite_model_groups':len(checks),'general_theorem_certified':False})
+print({'passed':True,'finite_model_groups':len(checks),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

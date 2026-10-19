@@ -28,12 +28,12 @@ boxes=[
  (102,'1. Actual weak Cauchy trace','Q₁(Dq − A₊)u(q₁) ∈ H⁻¹ᐟ²','ASM:C0'),
  (220,'2. Incoming coefficient','β₀ ∈ H¹ᐟ³ → α ∈ H⁵ᐟ⁶','ASM:C1–C2; α₀ = 2β₀'),
  (338,'3. Actual boundary match','v ∈ H_L;   γU − γu is regular','ASM:B0–B1'),
- (456,'4. Finite-order comparison','u − U ∈ Xₘ for every m on W₀','ASM:R0; source and cap verified')]
+ (456,'4. Finite-order comparison','u − U ∈ Xₘ for every m on W₀','ASM:R0; source and incoming-cap hypotheses')]
 for y,title,body,loc in boxes:
     parts.append(f'<rect x="555" y="{y}" width="490" height="94" rx="8" class="box"/>')
     text(573,y+26,title);text(573,y+53,body);text(573,y+78,loc,'small')
     if y<456:parts.append(f'<path d="M800 {y+95} V{y+114} m-5 -6 l5 6 5 -6" fill="none" stroke="#496477" stroke-width="2"/>')
-text(560,589,'H_w membership still requires the displaced input norm.','small')
+text(560,589,'H_w membership requires the displaced input norm.','small')
 text(560,614,'ASM:R1, X2. Tangential regularity ≠ normal smoothness.','small')
 parts.append('</svg>')
 out.write_text('\n'.join(parts)+'\n','utf-8')

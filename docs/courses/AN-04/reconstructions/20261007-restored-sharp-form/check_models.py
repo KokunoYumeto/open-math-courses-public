@@ -44,10 +44,10 @@ for N in [1,4,16,64,256,1024]:
     ratio=abs(defect)/(w+w**1.5)**2
     samples.append({'N':N,'defect':float(defect),'ratio':float(ratio)})
 assert all(b['ratio']>a['ratio'] for a,b in zip(samples,samples[1:]))
-record={'schema':'an04-sharp-form-models/v1','source_sha256':sha(p/'sharp-boundary-form-defect.md'),'script_sha256':sha(Path(__file__)), 'passed':True,'general_theorem_certificate':False,
+record={'schema':'an04-sharp-form-models/v1','source_sha256':sha(p/'sharp-boundary-form-defect.md'),'script_sha256':sha(Path(__file__)), 'passed':True,                                    
  'groups':[{'name':'Complete complex full-form defect algebra, all principal and lower terms','cases':40,'maximum_relative_error':max(errors)},
  {'name':'Negative right-parametrix correction and coefficient-only adjoint moves','cases':40,'maximum_relative_error':max(balances+adjoints)},
  {'name':'Noncommuting principal matrix one-mode obstruction','samples':samples}],
  'scope':'Finite algebra supports signs, multiplication order and the explicit exercise. It certifies no b-calculus, boundary estimate or limiting argument.'}
 (p/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'groups':3,'general_theorem_certificate':False})
+print({'passed':True,'groups':3,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

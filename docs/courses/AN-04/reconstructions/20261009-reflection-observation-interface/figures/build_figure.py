@@ -42,7 +42,7 @@ for i,(y,title,sub) in enumerate(boxes):
  text(567,y+28,title);text(567,y+56,sub,'small')
  if i<3:line(780,y+79,780,y+108,arrow=True)
 text(563,553,'Source norms and the Banach-domain conversion','small')
-text(563,577,'remain explicit in the global task.','small')
+text(563,577,'enter the global observation estimate.','small')
 parts.append('</svg>')
 svg=here/'reflection-observation-interface.svg';svg.write_text('\n'.join(parts)+'\n','utf-8')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
@@ -50,4 +50,4 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
  'svg_sha256':sha(svg),'generator_sha256':sha(Path(__file__)),
  'exact_model':'p=rho^2-eta^2, eta>0; roots rho=+eta,-eta; guide edges rho=3eta/4,5eta/4.',
  'projection':'Frequency plane; guide edges are not a discontinuous symbol.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False},indent=2)+'\n','utf-8')
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         },indent=2)+'\n','utf-8')

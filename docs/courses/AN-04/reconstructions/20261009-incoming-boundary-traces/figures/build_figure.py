@@ -38,6 +38,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'svg':'figures/incoming-traces.svg','svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),
  'exact_geometry':{'frequency_projection':['rho','absolute eta'],'unit_section':'rho^2+|eta|^2=1','cap_boundary':'|rho|=2|eta|','remainder_limit':'|rho|=4|eta|','model_ellipticity_constant':'3/5','pure_normal_points':[[-1,0],[1,0]],'glancing_point':[0,1]},
  'profiles':{'lambda':[1,4],'u_interval':[0,3],'value':'exp(-lambda*u)/(2*lambda)','normal_derivative':'-i*exp(-lambda*u)/2','squared_L2_norms':['1/(8*lambda^3)','1/(8*lambda)']},
- 'positive_resolvent_is_not_the_full_wave_inverse':True,'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'positive_resolvent_is_not_the_full_wave_inverse':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (MOD/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'svg':str(out),'sha256':sha(out)}))

@@ -4242,7 +4242,7 @@ when \(V\) also has the central character required in (6.136). The torus measure
 \]
 The polynomial \(T^r-\varpi_F\) is irreducible: every root has valuation \(1/r\), so a monic factor of degree \(s\) would have constant term of valuation \(s/r\); for \(0<s<r\) this is not an integer. Its derivative \(rT^{r-1}\) is nonzero at every root, so it is separable. Thus \(\gamma\) is elliptic regular. It cycles the displayed standard chamber. Its action adds one to vertex type modulo \(r\). Any stabilized simplex must consequently have all \(r\) types, so is a chamber, and its vertex permutation is an \(r\)-cycle. Every term's orientation and dimension factors multiply to \((-1)^{r-1}(-1)^{r-1}=1\).
 
-Apply (6.148) to the trivial representation. Its character is directly the constant function one, so the formula says that the number of stabilized chambers is one. Thus the standard chamber is the unique one. For a smooth determinant character, choose a generating level which fixes that character on every \(U_x\); the same chamber contributes \(\chi((-1)^{r-1}\varpi_F)\), as the direct one-dimensional character calculation requires. When the field characteristic divides \(r\), the displayed polynomial is inseparable; the elliptic regular theorem is not applied to it.
+Apply (6.148) to the trivial representation. Its character is directly the constant function one, so the formula says that the number of stabilized chambers is one. Thus the standard chamber is the unique one. For a smooth determinant character, choose a generating level which fixes that character on every \(U_x\); the same chamber contributes \(\chi((-1)^{r-1}\varpi_F)\), as the direct one-dimensional character calculation requires. When the field characteristic divides \(r\), the displayed polynomial is inseparable. Theorem 6.148 supplies the finite character formula on the whole \(D\)-irreducible open set, and Solution 7.15 computes the quartic case.
 
 The lattice-height criterion has a related formulation in Grosse-Klönne, Sections 1 and 3 of the free author preprint. The bound \(dm\ge2\) is used in the common-neighbour normalization in Lemma 6.62. Section 6.14 proves the ordinary regular-character assertion on compact nonelliptic classes and on the entire regular semisimple set. Discrete-series elliptic orthogonality and completeness, and the full representation transfer require their further arguments.
 
@@ -4821,7 +4821,7 @@ The Fourier transform of such a test is again compactly supported and locally co
 
 Every element of \(k\mathfrak p_\lambda k^{-1}\) preserves the corresponding flag. The union of these subspaces is closed: if \(k_jY_jk_j^{-1}\) converges, compactness of \(K\) gives a convergent subsequence of the \(k_j\), and then of the bounded \(Y_j\); the limit remains in \(\mathfrak p_\lambda\). If \(P_\lambda\) is proper, an elliptic regular element belongs to none of these subspaces. A test supported in that elliptic open set consequently has zero integral in (6.200). No local character expansion or regularity theorem for this Fourier distribution was used or is inferred. \(\square\)
 
-For the split group, Kivinen–Tsai, Definition 2.1 and equations (2.1)–(2.2) in their free author preprint, use the normalization (6.194)–(6.195). The kernel-flag and coordinate-density proof above supplies this formula for division matrix groups and in both field characteristics. It also proves the unipotent Schwartz estimates and coefficient vanishing directly. Section 6.18 proves the compact-support nilpotent and unipotent germ expansions and their scalar homogeneity. The corresponding higher-rank elliptic **semisimple** Schwartz orbital bound, singular-set character integration and elliptic completeness require further arguments.
+For the split group, Kivinen–Tsai, Definition 2.1 and equations (2.1)–(2.2) in their free author preprint, use the normalization (6.194)–(6.195). The kernel-flag and coordinate-density proof above supplies this formula for division matrix groups and in both field characteristics. It also proves the unipotent Schwartz estimates and coefficient vanishing directly. Section 6.18 proves the compact-support nilpotent and unipotent germ expansions and their scalar homogeneity. Sections 6.20–6.21 prove the every-rank regular Schwartz orbital bounds. Section 6.27 includes inseparable irreducible elements and one-chain primary orbits. General repeated closed-primary bounds, character integration outside the irreducible open set and elliptic completeness require further arguments.
 
 
 ### 6.18 Compact-support orbital germs and scalar homogeneity
@@ -5854,9 +5854,876 @@ Its ordinary nonelliptic regular and nonidentity unipotent orbital integrals van
 The universal projective trace can also be compared with Meyer, Definitions 33–34 and Sections 7.2–7.4 of the free preprint cited above. The arguments in this subsection give ordinary orbital values and explicit matching tests. Identification of the actual elliptic character integral with the Euler–Poincaré pairing, spectral completeness by discrete-series characters, and the full higher-degree local and global representation correspondences require further arguments.
 
 
+### 6.24. An explicit Iwahori sign discrete series and its degree
+
+Put \(N=rd\), \(q=q_D\), \(K=\mathrm{GL}_r(\mathcal O_D)\), and \(Q=G/Z\). In this subsection \(K\) and the central subgroup \(\mathcal O_F^\times\) have volume one. Thus the image in \(Q\) of a subgroup of \(K\) containing \(\mathcal O_F^\times\) has its ordinary compact-group volume. We first use trivial central character. The construction uses a square-integrable convolution projection, not a character integration formula across singular elements.
+
+Choose a division uniformizer \(\Pi\) with \(\Pi^d=\varpi_F\). Such a choice follows from the cyclic presentation in Lemma 6.1: if \(u^d=\varpi_F^a\), choose integers \(b,c\) with \(ab+dc=1\) and take \(\Pi=u^b\varpi_F^c\). For \(d=1\) take \(\Pi=\varpi_F\). Let \(I\subset K\) be the inverse image of the lower triangular subgroup of \(\mathrm{GL}_r(k_D)\). This is the stabilizer of the standard chain \(L_j=\Pi\mathcal O_D^{\,j}\oplus\mathcal O_D^{\,r-j}\), extended periodically. Write \(v_I=\operatorname{vol}(IZ/Z)\) and \([m]_z!=\prod_{j=1}^m(1+z+\cdots+z^{j-1})\). Counting complete residue flags, one line at a time, gives
+\[
+                  v_I=[r]_q!^{-1}.
+\tag{6.286}
+\]
+Indeed the number of lines in \(k_D^m\) is \((q^m-1)/(q-1)\); choose a line and then a complete flag in its quotient. This induction proves the stated count, including \(r=1\).
+
+**Lemma 6.126 — division-chain double cosets and their convolution.** For \(r\ge2\), let \(W_a\) be the affine permutation group of type \(\widetilde A_{r-1}\), with its \(r\) simple wall reflections and length \(\ell\). Let \(\tau\) send \(e_i\) to \(e_{i+1}\) for \(i<r\) and \(e_r\) to \(e_1\Pi\). Then \(\tau\) normalizes \(I\), \(\tau^r=\Pi I_r\), and \(\tau^N=\varpi_F I_r\). On \(Q\) the disjoint double cosets are
+\[
+ Q=\coprod_{0\le k<N,\,w\in W_a}\overline I\tau^k w\overline I,
+ \qquad
+ \operatorname{vol}(\overline I\tau^k w\overline I)=v_Iq^{\ell(w)}.
+\tag{6.287}
+\]
+Here and below \(\overline I=IZ/Z\); representatives of \(w\) are monomial matrices. Put \(T_x=v_I^{-1}1_{\overline I x\overline I}\). For every simple reflection \(s\),
+\[
+ T_s^2=(q-1)T_s+qT_1,\qquad
+ T_xT_y=T_{xy}\quad\hbox{if }\ell(xy)=\ell(x)+\ell(y).
+\tag{6.288}
+\]
+Also \(T_\tau T_xT_\tau^{-1}=T_{\tau x\tau^{-1}}\). The functions \(T_x\) span the compact \(I\)-corner. If \(r=1\), omit \(W_a\); the corner is the group algebra of the \(d\) valuation cosets.
+
+**Proof: the simultaneous chain basis.** A complete periodic lattice chain has successive quotients of dimension one over \(k_D\), and satisfies \(L_{i+r}=L_i\Pi\). The subgroup fixing every actual lattice in the standard chain is \(I\). Two chains have a common division basis. Here is a direct verification. For chains \(L_i,M_j\), filter the one-dimensional space \(L_i/L_{i+1}\) by the images of \(L_i\cap M_j\). The filtration is eventually the whole space in one direction and zero in the other. It has exactly one jump. Equivalently, the dimensions of
+\[
+ \frac{L_i\cap M_j}
+ {(L_{i+1}\cap M_j)+(L_i\cap M_{j+1})}
+\tag{6.289}
+\]
+are zero except for one entry one in each row. Interchanging the chains gives one entry one in each column. These entries repeat under \((i,j)\mapsto(i+r,j+r)\). Lift their nonzero residue vectors for one period. They form a basis adapted to both chains: their successive nonzero leading residues are the basis of every indicated flag quotient. Successive division by \(\Pi\) proves that they generate every lattice. More explicitly, subtract the prescribed leading residues and repeat; completeness makes the remainder tend to zero, and a finite free lattice generated by the lifted basis is closed. Linear independence follows from its first nonzero flag residue. This proves the assertion without a simultaneous-apartment assumption.
+
+The column-to-row assignment is a permutation of \(\mathbb Z\) satisfying \(w(i+r)=w(i)+r\). Its integer \(r^{-1}\sum_{i=1}^r(w(i)-i)\) records the total valuation shift. The permutations with shift zero form \(W_a\); shifting the chain index by one is \(\tau\). Thus every relative position is uniquely \(\tau^k w\) before reducing \(k\) modulo \(N\). Central multiplication by \(\varpi_F\) shifts the index by \(N\), proving precisely that reduction in (6.287). Simultaneous chain bases prove both exhaustiveness and disjointness.
+
+**Proof: volumes and products.** Relative positions can be reduced by successive adjacent exchanges in the ordered periodic basis. Their length is the number of inversions, counted modulo simultaneous shift by \(r\). At a single wall the remaining choice is a line in a two-dimensional residue quotient. There are \(q+1\) such lines; after excluding the original line there are exactly \(q\) choices. Gaussian elimination in successive leading residues shows that a reduced sequence of exchanges has one independent residue parameter for each inversion. Its ordered parameters are unique: compare the first differing leading residue and continue in the smaller flag quotient. Therefore \(IxI/I\) has exactly \(q^{\ell(x)}\) members, and concatenation of length-additive exchanges gives the second formula in (6.288).
+
+The index can also be read directly from entries, including arbitrarily large translations. Set \(a_{ij}=1\) for \(i<j\) and \(a_{ij}=0\) for \(i>j\). If \(xe_i=e_{\sigma(i)}\Pi^{m_i}\), the elementary entry \(c\) in position \((i,j)\) is conjugated to \(\Pi^{m_i}c\Pi^{-m_j}\) in position \((\sigma(i),\sigma(j))\). The intersection order therefore has off-diagonal thresholds
+\[
+ b_{\sigma(i),\sigma(j)}
+     =\max\{a_{\sigma(i),\sigma(j)},a_{ij}+m_i-m_j\},
+ \qquad
+ [I:I\cap xIx^{-1}]=q^{\sum_{i\ne j}(b_{ij}-a_{ij})}.
+\]
+For completeness, both threshold arrays satisfy \(b_{ij}+b_{jk}\ge b_{ik}\): each of the two original arrays does, and taking their maximum preserves that inequality. They contain the Iwahori thresholds. Unit-pivot elimination thus factors their unit groups into the ordered lower entries, diagonal units and upper entries; elimination preserves every threshold by that inequality. Diagonal pivots stay units because every upper-times-lower correction is in \(\Pi\mathcal O_D\). Unit multiplications and elementary additive shears preserve coordinate Haar measure, and the diagonal unit factor is unchanged. Each additional entry level contributes a factor \(q\), proving the index formula. Its sum counts exactly the periodic inversions, since the thresholds count the integer levels crossed by each ordered coordinate pair. In a length-additive product those inversion sets concatenate. The corresponding ordered residue parameters give the bijection of right cosets used above. The required elementary rearrangements use multiplication of division entries and \((1+ab)^{-1}\) with \(ab\in\Pi\mathcal O_D\); these exist in every residue characteristic.
+
+For the quadratic formula, return through the same panel. A two-step path either returns to its original chamber, in \(q\) ways, or ends at any prescribed different chamber, in \(q-1\) ways. With the normalization \(T_1=v_I^{-1}1_{\overline I}\), these are exactly its two coefficients. The argument includes \(r=2\), where the two affine wall generators have no finite braid relation. Exchanges in disjoint coordinates commute; the two orders for three adjacent coordinates give the three-step braid by the same elimination. Alternatively these relations follow by moving a segment between alcove interiors across one codimension-two intersection at a time. Thus a reduced expression gives the same double coset and product regardless of the exchanges chosen. Conjugating the chain by \(\tau\) rotates its walls and preserves their residue parameters. This proves all assertions over the division residue field in either characteristic. \(\square\)
+
+**Lemma 6.127 — the exact affine growth sum.** For \(0<t<1\),
+\[
+       P_a(t):=\sum_{w\in W_a}t^{\ell(w)}
+                      =\frac{1-t^r}{(1-t)^r}.
+\tag{6.290}
+\]
+For \(r=1\) the sum and the displayed quotient both equal one.
+
+**Proof.** For \(r\ge2\), let \(S\) be the cyclic set of affine walls. Every proper \(J\subset S\) generates a finite product \(W_J\) of symmetric groups. Write \(L_J\) for its longest length and \(P_J(t)=\sum_{w\in W_J}t^{\ell(w)}\). Sorting each of its consecutive coordinate blocks gives the unique minimal representative of a right \(W_J\)-coset and adds lengths. An element has every member of \(J\) as a right descent exactly when its factor in \(W_J\) is longest.
+
+No element has all the affine walls as descents. The affine simple functions are positive on the reference alcove and their sum is one; all of them cannot be negative on its inverse image. Every nonidentity element has a descent: remove the last exchange in a shortest gallery. Consequently inclusion and exclusion over its descent set gives
+\[
+ \frac1{P_a(t)}
+       =\sum_{J\subsetneq S}(-1)^{|J|}\frac{t^{L_J}}{P_J(t)}.
+\tag{6.291}
+\]
+To justify summation first note polynomial growth. A periodic permutation is an integral translation of total shift zero followed by one of finitely many residue permutations. Its inversion count controls the differences of its translation coordinates up to a constant depending on \(r\); since their sum is zero, it controls every coordinate. There are \(O((1+L)^{r-1})\) elements of length at most \(L\). All series just used therefore converge absolutely for \(t<1\). The preceding sorting also proves the coset generating series required in (6.291).
+
+We evaluate the finite sum rather than importing a growth formula. Put \(u=t^{-1}\). Inserting the largest letter of a permutation gives \(P_{S_m}(u)=[m]_u!\), and reversing a permutation gives \(t^{L_J}/P_J(t)=1/P_J(u)\). If the omitted walls divide the cycle into \(k\) nonempty blocks of sizes \(m_1,\ldots,m_k\), then \(|J|=r-k\) and \(P_J(u)=\prod_i[m_i]_u!\). Put \(E(z)=\sum_{m\ge0}z^m/[m]_u!\). Counting a marked omitted wall counts each cyclic division \(k\) times and each possible starting wall \(r\) times. The sum in (6.291) is thus
+\[
+ (-1)^{r+1}r[z^r]\log E(z)
+                  =\frac{(u-1)^r}{u^r-1}.
+\tag{6.292}
+\]
+For the equality on the right, the defining factorial gives
+\(E(uz)=(1+(u-1)z)E(z)\). Take formal logarithms and compare the coefficient of \(z^r\). This proves (6.292) using only finite coefficients of formal power series. Its reciprocal is (6.290). \(\square\)
+
+Let \(|\eta|=1\) and \(\eta^N=1\). Define an \(I\)-bi-invariant function on \(Q\) by
+\[
+       \Phi_\eta(\tau^kw)=\eta^{-k}(-q)^{-\ell(w)}.
+\tag{6.293}
+\]
+The periodicity and the wall rotation make this unambiguous. The inverse phase in this formula is relevant for nonreal \(\eta\).
+
+**Theorem 6.128 — a minimal square-integrable projection.** Put
+\[
+ C=Nv_I P_a(q^{-1}),\qquad p_\eta=C^{-1}\Phi_\eta.
+\tag{6.294}
+\]
+Then \(p_\eta\in\mathcal S_1\), \(p_\eta^*=p_\eta\), \(p_\eta*p_\eta=p_\eta\), and
+\(p_\eta*\mathcal S_1*p_\eta=\mathbb Cp_\eta\). The Hilbert closure of the left translates of \(p_\eta\) in \(L^2(Q)\) is an irreducible unitary representation \(\pi_\eta\). It is admissible and discrete series, has a one-dimensional \(I\)-fixed space, and satisfies
+\[
+ \pi_\eta(T_s)|_{\pi_\eta^I}=-1,\qquad
+ \pi_\eta(T_\tau)|_{\pi_\eta^I}=\eta,\qquad
+ d_{\pi_\eta}=\frac1C
+            =\frac1N\prod_{j=1}^{r-1}(q^j-1).
+\tag{6.295}
+\]
+It is the unique irreducible unitary representation with this specified \(I\)-fixed eigenline. The \(N\) choices of \(\eta\) are inequivalent.
+
+**Proof: convergence and the convolution identity.** Formula (6.287) gives
+\(\|\Phi_\eta\|_2^2=Nv_I P_a(q^{-1})=C\).
+It is also Schwartz. To see the stronger assertion, a monomial relative position is a translation followed by a finite permutation. Its affine length differs by at most the largest finite permutation length from \(\sum_{i<j}|\lambda_i-\lambda_j|\). The Cartan rearrangement changes this bound by only another constant depending on \(r,d\), since \(0\le k<N\). The same sum is the negative base-\(q\) logarithm of the positive Cartan modular character. The spherical lower bound of Lemma 6.73 and the Cartan height bounds therefore give
+\(|\Phi_\eta(g)|/\Xi(g)\le A(1+\sigma(g))^bq^{-\ell(w)/2}\)
+with fixed constants. Length controls height outside a bounded set. Multiplication by any power of \(1+\sigma\) remains bounded. The function is already bi-invariant at one compact open level, proving its Schwartz membership. In rank one the quotient is compact and the conclusion is immediate.
+
+The inverse phase gives \(\Phi_\eta^*=\Phi_\eta\). The wall multiplication in Lemma 6.126 gives, on either side,
+\(T_s*\Phi_\eta=-\Phi_\eta\) and \(T_\tau*\Phi_\eta=\eta\Phi_\eta\).
+For example at \(w\), a length-increasing wall gives \(q\Phi_\eta(sw)=-\Phi_\eta(w)\); a decreasing wall gives \(\Phi_\eta(sw)+(q-1)\Phi_\eta(w)=-\Phi_\eta(w)\). These recurrences, and the value at the identity, determine the common eigenfunction uniquely on every double coset. Associativity and Schwartz convolution imply that \(\Phi_\eta*\Phi_\eta\) is another such eigenfunction. Its value at one is \(\|\Phi_\eta\|_2^2=C\), so it equals \(C\Phi_\eta\). This proves the idempotent identity.
+
+For a compact \(I\)-corner test, multiplication with \(p_\eta\) is the scalar specified by these eigenrelations. General Schwartz corner tests are limits of compact corner tests by Theorem 6.81. Continuity of convolution and closedness of the one-dimensional space \(\mathbb Cp_\eta\) prove the asserted minimal corner. For an arbitrary Schwartz test insert \(T_1\) on both sides, using \(T_1*p_\eta=p_\eta=p_\eta*T_1\).
+
+**Proof: the actual Hilbert representation.** No boundedness of convolution by an arbitrary \(L^2\) function is assumed. For a compact smooth \(h\), the identity \(p_\eta^**p_\eta=p_\eta\) and Fubini give
+\[
+             \|h*p_\eta\|_2^2=\langle h*p_\eta,h\rangle,
+             \qquad \|h*p_\eta\|_2\le\|h\|_2.
+\tag{6.296}
+\]
+Here the absolute double integral is bounded by
+\(\|h\|_1^2\|p_\eta\|_2^2\): each inner product of translates of \(p_\eta\) is bounded by its squared norm. Thus every interchange is valid. Right convolution extends to a bounded self-adjoint operator on \(L^2(Q)\). Compact cutoffs in Schwartz space and continuity of its convolution show that its square agrees with itself on every compact smooth input, so it is an orthogonal projection. Its range is exactly the closed span of the left translates of \(p_\eta\), since compact smooth averages of those translates are finite sums and exhaust that span.
+
+Averaging by \(T_1\) on the dense compact averages gives a multiple of \(p_\eta\): insert \(T_1*h*T_1\) before the right factor and use its compact-corner eigenrelations. Since \(T_1*p_\eta=p_\eta\), the \(I\)-fixed space is exactly that line, with the indicated eigenvalues. Any closed invariant subspace is reducing, because translations are unitary. Its orthogonal projection commutes with this compact averaging projection, so sends \(p_\eta\) to either zero or itself. In the first case cyclicity makes it zero; in the second it makes it the identity. This proves irreducibility using a compact averaging operator.
+
+Write \(u=p_\eta/\|p_\eta\|_2\). Its coefficient, with inner product linear in the first argument, is
+\[
+       \langle\pi_\eta(g)u,u\rangle
+                 =p_\eta(g^{-1})/p_\eta(1)
+                 =\overline{\Phi_\eta(g)}.
+\tag{6.297}
+\]
+Indeed the translate inner product is \((p_\eta*p_\eta)(g^{-1})\), and \(\|p_\eta\|_2^2=p_\eta(1)=C^{-1}\). This nonzero smooth coefficient is square-integrable, of squared norm \(C\). The proofs of Lemma 6.14 and Theorem 6.15 apply before admissibility is asserted: their bounded Schur step only needs one finite-dimensional nonzero fixed space, which here is the \(I\)-line. Explicitly a commuting bounded operator preserves that line, and its eigenspace contains its dense cyclic translates, so it is scalar. The closed coefficient map and its graph resolvent (6.28) then give a bounded scalar norm on all vectors; inversion gives the same assertion in the other coefficient variable. Polarization gives (6.29), now with formal degree \(C^{-1}\). The Bessel argument of Theorem 6.35 also proves admissibility without assuming it: for any finite orthonormal set of \(J\)-fixed vectors, compare their orthogonal diagonal matrix units with \(v_J^{-1}1_{JZ/Z}\). It gives
+\(d_{\pi_\eta}\dim H_{\pi_\eta}^J\le v_J^{-1}\), first for each finite set, so the fixed space is finite. A dense invariant smooth subspace then contains every such fixed space, by averaging and finite-dimensionality. Thus the smooth representation is irreducible as well.
+
+If an irreducible unitary representation has the specified unit \(I\)-fixed eigenvector, double-coset averaging determines its coefficient there to be \(\eta^k(-q)^{-\ell(w)}\), exactly (6.297). These coefficients determine every Gram matrix of its translates. Sending their cyclic vectors to one another is therefore an isometry of dense spans and a unitary equivalence. Distinct \(\eta\)'s have different eigenvalues on the unique fixed line. Finally (6.286) and (6.290) simplify \(C^{-1}\) to (6.295). \(\square\)
+
+**Corollary 6.129 — the Euler test, its scalar value and this discrete family.** Put \(\epsilon=(-1)^{r-1}\), and write \(\mathrm{St}_G=\pi_\epsilon\) for the Iwahori sign discrete series just constructed. Then
+\[
+ \operatorname{tr}\pi_\eta(\mathfrak e_G)
+       =\begin{cases}(-1)^{r-1},&\eta=\epsilon,\\0,&\eta\ne\epsilon,
+         \end{cases}
+ \qquad
+ \mathfrak e_G(1)=(-1)^{r-1}d_{\mathrm{St}_G}.
+\tag{6.298}
+\]
+These are trace and scalar-value assertions, in addition to the regular orbital assertions of Theorem 6.122.
+
+**Proof: traces.** Choose every representative face in the standard chamber. Each summand of (6.279) is \(I\)-bi-invariant, since \(I\) fixes the chamber pointwise. For a face of smaller dimension choose a wall reflection fixing it pointwise. Its \(q\) panel cosets lie in the face stabilizer and have orientation value one. The normalized summand \(h_\sigma\) therefore satisfies \(T_s*h_\sigma=q h_\sigma\). Its operator has image in the one-dimensional \(I\)-fixed space, where \(T_s\) acts by \(-1\). Hence its operator is zero. The full chamber stabilizer is \(I\langle\tau\rangle Z\), with \(N\) cosets modulo \(IZ\), and its orientation is \(\epsilon^k\) on \(\tau^k\). Its normalized orientation test has eigenvalue
+\(N^{-1}\sum_{k=0}^{N-1}\epsilon^{-k}\eta^k\), equal to one for \(\eta=\epsilon\) and zero otherwise. Its alternating dimension sign is \((-1)^{r-1}\). This proves the trace formula, also in rank one.
+
+**Proof: the identity value.** A nonempty face corresponds to a proper subset \(J\) of affine walls and has dimension \(r-1-|J|\). Its stabilizer of zero reduced-norm valuation is the parahoric generated by \(I\) and \(W_J\); its quotient volume is \(v_I P_J(q)\), by (6.287). The full stabilizer also includes its length-zero rotations. Let \(\Omega_J\) be the stabilizer of \(J\) in the \(N\)-element rotation group. Its volume is \(|\Omega_J|v_I P_J(q)\). In particular the \(d\) rotations acting trivially on all chamber vertices are included. Group orbits of faces are the rotation orbits of these subsets. Orbit counting consequently gives
+\[
+ \mathfrak e_G(1)
+  =\frac{(-1)^{r-1}}{Nv_I}
+       \sum_{J\subsetneq S}\frac{(-1)^{|J|}}{P_J(q)}
+  =\frac{(-1)^{r-1}}{Nv_I P_a(q^{-1})}.
+\tag{6.299}
+\]
+The last equality is (6.291), using reversal of each finite parabolic permutation. For rank one the sole stabilizer has quotient volume \(d\), giving the same answer directly. This proves (6.298), retaining all full-stabilizer rotations rather than just the type-preserving subgroup. \(\square\)
+
+Every smooth unitary reduced-norm twist \(\chi\circ\operatorname{Nrd}\) of these representations is again discrete series, with the same degree. Its matrix projection is \(\chi(\operatorname{Nrd}g)^{-1}p_\eta(g)\), with central rule \(\chi(z^N)^{-1}\). This follows by multiplying (6.297); absolute coefficient norms are unchanged. For unramified \(\chi\), the fixed-line eigenvalue becomes \(\chi(\operatorname{Nrd}\tau)\eta\). Since \(v_F(\operatorname{Nrd}\tau)=1\), the \(N\) choices above are exactly these unramified twists with trivial central character.
+
+**Corollary 6.130 — an absolute elliptic moment bound.** For any finitely generated smooth admissible \(V\) with unitary central character, its actual elliptic character is in \(L^1(d\mu_{\mathrm{ell}})\). At any generating depth \(m\), with \(dm\ge2\),
+\[
+ \int_{\mathcal C_{\mathrm{ell}}}|\Theta_V(\gamma)|\,d\mu_{\mathrm{ell}}(\gamma)
+       \le\|f_{V,m}\|_{L^1(Q)}
+       \le\sum_{[\sigma]}\dim V^{U_\sigma}.
+\tag{6.300}
+\]
+In particular its integral against the conjugate of any division-character basis function in Corollary 6.124 exists absolutely, of absolute value at most \(\dim\rho\) times the final bound above.
+
+**Proof.** Theorem 6.65 identifies \(O_\gamma(f_{V,m})\) with \(\Theta_V(\gamma^{-1})\) on the elliptic regular set. Absolute values satisfy \(|O_\gamma f|\le O_\gamma|f|\). Nonnegative measurable Weyl integration from (6.14), restricted to elliptic tori and with their quotient volumes one, gives
+\(\int_{\mathrm{ell}}O_\gamma|f|\,d\mu_{\mathrm{ell}}=\int_{Q_{\mathrm{ell}}}|f(g)|d\bar g\le\|f\|_1\).
+Inversion preserves the elliptic measure, by the same torus change of variables or inversion on the group. Apply this to the compact-mod-centre test (6.136). Each of its summands has \(L^1\) norm at most \(\dim V^{U_\sigma}\), because its compact representation is unitary after averaging an inner product and its orientation has modulus one. A compact-mod-centre representation with unitary central character admits that averaging. The finite sum proves (6.300). A unitary division character is bounded by its dimension; apply that bound to the last assertion. \(\square\)
+
+For Iwahori convolution conventions one may compare Haines–Kottwitz–Prasad, Sections 1.1–1.3 of the free author preprint. The division-chain, projection and growth arguments above supply the statements used here. Formula (6.300) is an \(L^1\) assertion. It does not establish an \(L^2\) character norm, the character integral on arbitrary tests crossing the singular set, or an identification of the abstract division-character basis with actual discrete-series characters on \(G\). Those implications, the full higher-degree representation transfers and their global counterparts still require proof.
+
+
+### 6.25. The apartment complex, elliptic sign and zero-orbit germ
+
+Retain the measures, lower-flag Iwahori subgroup and notation of Section 6.24. Put \(n=r-1\), \(\epsilon=(-1)^n\), and \(\mathcal A=T_1*\mathcal S_1*T_1\). This is a unital algebra, with identity \(T_1\). The proof below takes place in this single corner. It does not require exactness of induction from the corner to the whole group.
+
+We need an elementary fact about chains on a Euclidean apartment. All cell chains in the next lemma are allowed to have infinite support, with precisely the stated bounds.
+
+**Lemma 6.131 — exponentially weighted apartment chains.** Let \(\mathcal T\) be a periodic locally finite triangulation of \(\mathbb R^n\) with finitely many cell shapes modulo translations, and orient its cells. Let \(L\) be a norm on \(\mathbb R^n\), let \(a>0\), and choose a point \(x_F\) in every cell. Complete its cellular chains in the seminorms
+\[
+ \nu_M(c)=\sup_F |c_F|e^{-aL(x_F)}(1+L(x_F))^M,
+                       \qquad M=0,1,2,\ldots.
+\tag{6.301}
+\]
+Their boundary complex has homology zero except in degree \(n\), where it is the one-dimensional space generated by the ambiently oriented fundamental chain \(u\). There are continuous linear maps \(H_j\) with
+\[
+             \partial H+H\partial=1-P,
+ \qquad P_j=0\ (j<n),\qquad P_n(c)=c_{F_0}u,
+\tag{6.302}
+\]
+where \(F_0\) is a fixed top cell and its coefficient uses the ambient orientation. In dimension zero the assertion means the one-point complex.
+
+**Proof: two local maps.** Arrays with all the displayed bounds are precisely this completion: truncation outside \(L\le R\) has \(\nu_M\)-tail at most \((1+R)^{-1}\nu_{M+1}\). Translate coordinates so the origin lies in the interior of \(F_0\); a bounded translation gives equivalent seminorms. Take the barycentric dual cells \(F^*\), with orientation complementary to that of \(F\). All their diameters, volumes and numbers of incident cells are uniformly bounded. The following incidence convention is useful: if \(E\) has dimension \(j\) and \(F\) is one of its facets, then
+\([F^*:E^*]=(-1)^j[E:F]\).
+This is checked in an oriented coordinate box: at its lower \(j\)-th face the primal incidence is \((-1)^j\), while the complementary dual face has incidence \(+1\). Upper faces give the same ratio. An oriented affine chart gives the assertion for every incident pair.
+
+Here are explicit maps between chains and smooth differential forms. A differential form is a sum of coefficient functions times increasing coordinate wedges; its differential differentiates those coefficients and wedges the new differential on the left. Integrals use the indicated orientations. Stokes' formula on a simplex follows by integrating each partial derivative, using the one-variable fundamental theorem of calculus; subdivision proves it for the dual cells, since internal faces cancel.
+
+Choose a smooth nonnegative function \(\rho\) of integral one, supported in a sufficiently small ball. For example normalize \(\exp(-1/(1-|x|^2))\) on the unit ball, put it zero outside, and then rescale. Its derivatives vanish at the boundary because the exponential beats every inverse power. Write \(\operatorname{PD}(E)\) for the distributional complementary form specified by
+\(\int\alpha\wedge\operatorname{PD}(E)=\int_E\alpha\)
+for compact smooth forms \(\alpha\) of degree \(j\). Equivalently it is integration along the affine cell, times the delta functions in its normal coordinates. It has no unspecified value on a boundary. Set \(s_j=(-1)^{j(j+1)/2}\) and define
+\[
+ W_jc=s_j\rho*\sum_{\dim E=j}c_E\operatorname{PD}(E),
+ \qquad
+ (R_j\alpha)_E=s_j^{-1}\int_{E^*}\alpha.
+\tag{6.303}
+\]
+Only uniformly finitely many cells contribute near any point to \(W_j\). Integration by parts and the incidence convention give
+\(dW_j=W_{j-1}\partial\) and \(R_{j-1}d=\partial R_j\).
+Indeed, before inserting \(s_j\), integration by parts gives \(d\operatorname{PD}(E)=(-1)^j\operatorname{PD}(\partial E)\); the displayed signs cancel that factor.
+
+The support of \(\rho\) can be chosen uniformly small so that \(R_jW_j=1\). To verify this assertion, integrate the convolution first over its translation parameter \(h\). Its \((F,E)\)-entry is the average of the oriented intersection number of \(F^*\) and \(E+h\). Distinct cells of equal dimension have no such intersection at \(h=0\), and their relevant boundaries remain disjoint for small \(h\). These separations are uniform, because there are finitely many shapes and only finitely many neighbouring cells of each shape. For \(F=E\), the dual crosses the cell at its interior barycentre with intersection number one. One can check this directly by projecting the coface barycentres to the normal space: their flags subdivide a full normal neighbourhood, with the complementary orientation. For generic small translations the intersections are transverse. Their signed number is unchanged as \(h\) varies: crossings inside a face occur in pairs with opposite signs, and none can escape through a boundary. Thus the average is one on the diagonal and zero elsewhere. In normal coordinates the delta integral at a transverse intersection is exactly its orientation sign, which also proves the asserted convolution calculation. This proves \(RW=1\) without a de Rham comparison theorem.
+
+**Proof: the radial homotopy and its bounds.** For a smooth \(k\)-form, \(k>0\), put
+\[
+ (K\alpha)_x(v_1,\ldots,v_{k-1})
+     =\int_0^1 t^{k-1}
+                  \alpha_{tx}(x,v_1,\ldots,v_{k-1})\,dt;
+ \qquad K=0\quad(k=0).
+\tag{6.304}
+\]
+Differentiate the pullback by \(x\mapsto tx\) and integrate in \(t\). The coordinate product rule gives \(dK+Kd=1\) in positive degree and \(Kd\alpha=\alpha-\alpha(0)\) in degree zero. All integrations here are over compact segments of smooth functions, so differentiation and integration commute.
+
+Define \(H_j=R_{j+1}KW_j\). The preceding identities and \(RW=1\) give (6.302). For top chains, the small convolution ball lies inside \(F_0\), so \(W_nc(0)=s_nc_{F_0}\). Also \(W_nu=s_n\) and \(R_n(s_n)=u\). This identifies \(P\) exactly as stated.
+
+We check the bounds, which distinguish this complex from compactly supported chains. At a point of norm \(R\), the coefficients of \(Wc\) are bounded by
+\(C\nu_M(c)e^{aR}(1+R)^{-M}\).
+Replacing the point by a bounded neighbouring point only changes the constants. The radial integral is bounded by a constant times
+\[
+ R\nu_M(c)\int_0^1
+                  t^{k-1}e^{atR}(1+tR)^{-M}\,dt.
+\tag{6.305}
+\]
+On \(t\le1/2\), multiplication by \(e^{-aR}(1+R)^N\) gives an exponentially decreasing bound. On \(t\ge1/2\), take out \(2^M(1+R)^{-M}\) and use
+\(\int_0^1e^{-a(1-t)R}dt\le\min(1,(aR)^{-1})\).
+The factor \(R\) cancels. Integration over a dual cell has uniformly bounded volume and changes the norm by a bounded amount. In particular
+\(\nu_N(Hc)\le C_N(\nu_{N+2}(c)+\nu_0(c))\).
+The same local observations bound \(W,R,\partial\) on the spaces in use. The constant fundamental chain satisfies every seminorm in (6.301). Thus the homotopy is continuous on the stated completions. If \(j<n\), every cycle is the boundary of its image under \(H\); a top cycle equals \(P_nc\). This proves the lemma. \(\square\)
+
+**Lemma 6.132 — the completed Iwahori cellular complex.** For a representative face \(F\) of the standard chamber, let
+\[
+ h_F(g)=\frac{1_{C_F}(g)\epsilon_F(g^{-1})}
+                         {\operatorname{vol}(C_F/Z)},
+ \qquad
+ \mathscr C_j=\bigoplus_{[F],\,\dim F=j}\mathcal A h_F.
+\tag{6.306}
+\]
+Take one representative for each group orbit of faces. These are finite projective \(\mathcal A\)-modules. The cellular boundary is continuous and \(\mathcal A\)-linear. Its completed complex has homology only in degree \(n\), where it is \(\mathbb Cp_\epsilon=\mathcal A p_\epsilon\). It admits a bounded linear splitting as a complex of vector spaces.
+
+**Proof.** Each \(h_F\) is an idempotent: it is the compact average for its one-dimensional orientation character. It is \(I\)-bi-invariant. Hence \(\mathcal A h_F\) is a principal projective summand of the unital regular module. Finite sums retain this property.
+
+Identify a compact function \(f\in\mathcal A h_F\) with the oriented chain
+\(\operatorname{vol}(C_F/Z)\sum_{gC_F}f(g)[gF]\).
+The orientation covariance makes the expression independent of representatives, and sends \(h_F\) to \([F]\). The chain and double-coset descriptions in Lemma 6.126 identify the \(I\)-orbits of cells with the cells of the standard affine apartment. This identification respects faces: a simultaneous chain basis retracts a chamber and all its faces onto that apartment, and the residue parameters change only its orbit, not its retracted faces.
+
+Let \(w\) be a minimal relative position for such a face. Its orbit has \(q^{\ell(w)}\) cells. The vector \(T_wh_F\) is their oriented sum, and \(q^{-\ell(w)}T_wh_F\) their average. Boundary of an average is the sum of the corresponding face averages with incidence signs. Indeed each face map on the finite orbit is onto its face orbit, and all its fibres have the same cardinality by transitivity of \(I\). Dividing by the orbit size cancels that cardinality. Thus in these average coordinates the boundary is precisely the ordinary apartment boundary, not a boundary with a missing factor of \(q\).
+
+Its topology is equally explicit. Let \(a_E\) be the coefficient of an ambiently oriented orbit average. The value of its function at a minimal representative is \(a_Eq^{-\ell(E)}/\operatorname{vol}(C_F/Z)\), up to its orientation sign. A finite parahoric or rotation changes length by a bounded amount. The two spherical bounds from Section 6.15 give \(\Xi(g)\) between a constant times \(q^{-\ell(E)/2}\) and that quantity times a fixed polynomial in length. Consequently its Schwartz topology is equivalently given by
+\[
+        \sup_E |a_E|q^{-\ell(E)/2}(1+\ell(E))^M,
+                         \qquad M=0,1,2,\ldots.
+\tag{6.307}
+\]
+This also proves that every chain with these bounds belongs to the indicated completed summands, by compact truncation of its functions.
+
+Realize the apartment in \(\mathbb R^r/\mathbb R(1,\ldots,1)\). With a fixed interior origin, the number of separating affine walls differs by a bounded amount from the norm
+\(L(x)=\sum_{i<j}|x_i-x_j|\): for each coordinate pair, counting the separating integer levels differs from its absolute coordinate difference by at most a fixed constant. The same holds for face representatives, since their cells have bounded diameters. Thus (6.307) is (6.301) with \(a=(\log q)/2\). Lemma 6.131 applies. It supplies the claimed bounded linear splitting and the single top fundamental cycle.
+
+We identify that cycle as a function, including the full rotation group. Choose the reference chamber's orientation to be the ambient one. Relative to group-transported chamber orientations, the ambient fundamental chain then has coefficient \((-1)^{\ell(w)}\). For the chamber itself,
+\(h_C=N^{-1}\sum_{k=0}^{N-1}\epsilon^{-k}T_{\tau^k}\).
+Its fundamental function is therefore
+\[
+ \sum_{w\in W_a}(-q)^{-\ell(w)}T_wh_C
+                    =P_a(q^{-1})p_\epsilon.
+\tag{6.308}
+\]
+This follows by expanding \(h_C\), using (6.293)–(6.294) and \(C=Nv_IP_a(q^{-1})\). Its span is \(\mathbb Cp_\epsilon\), and the corner eigenrelations give \(\mathcal A p_\epsilon=\mathbb Cp_\epsilon\). The boundary is \(\mathcal A\)-linear on compact chains, hence on the completion by continuity. In rank one the complex is its single module \(\mathcal A h_C=\mathbb Cp_1\); no Euclidean contraction is needed. \(\square\)
+
+<figure class="apartment-diagram" style="margin:1.5em 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="236" viewBox="0 0 744 236" role="img" aria-labelledby="apartment-title apartment-desc" style="display:block;max-width:none;font-family:Georgia,serif;font-size:18px">
+<title id="apartment-title">The weighted fundamental chain in the rank-two apartment</title>
+<desc id="apartment-desc">The apartment has vertices at all integers and edges E j from j to j plus one. Five displayed edges have ambient average coefficient one. The reference edge from zero to one has origin one half. The unscaled Hecke values on edges with indices minus two through two are q to minus two, minus q inverse, one, minus q inverse, and q to minus two.</desc>
+<defs><marker id="apartment-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#263746"/></marker></defs>
+<text x="20" y="25">Rank two: ambiently oriented orbit averages</text>
+<g text-anchor="middle" fill="#144d68"><text x="132" y="62">1</text><text x="252" y="62">1</text><text x="372" y="62">1</text><text x="492" y="62">1</text><text x="612" y="62">1</text></g>
+<path d="M 312 100 L 432 100" stroke="#d99a31" stroke-width="10" opacity="0.45"/>
+<path d="M 24 100 L 64 100 M 680 100 L 728 100" stroke="#647580" stroke-width="2" stroke-dasharray="4 5"/>
+<g stroke="#263746" stroke-width="2" marker-end="url(#apartment-arrow)"><path d="M 80 100 L 184 100"/><path d="M 200 100 L 304 100"/><path d="M 320 100 L 424 100"/><path d="M 440 100 L 544 100"/><path d="M 560 100 L 664 100"/></g>
+<g fill="#263746"><circle cx="72" cy="100" r="3"/><circle cx="192" cy="100" r="3"/><circle cx="312" cy="100" r="3"/><circle cx="432" cy="100" r="3"/><circle cx="552" cy="100" r="3"/><circle cx="672" cy="100" r="3"/></g>
+<g text-anchor="middle" fill="#263746"><text x="72" y="126">−2</text><text x="192" y="126">−1</text><text x="312" y="126">0</text><text x="432" y="126">1</text><text x="552" y="126">2</text><text x="672" y="126">3</text></g>
+<circle cx="372" cy="100" r="4" fill="#fff" stroke="#b07216" stroke-width="2"/><path d="M 372 108 L 372 139" stroke="#b07216" stroke-dasharray="3 3"/>
+<text x="372" y="158" text-anchor="middle" fill="#82510d">C₀, o = 1/2</text>
+<text x="20" y="186">Unscaled Hecke values Φε(wⱼ)</text>
+<g text-anchor="middle" fill="#144d68"><text x="132" y="219">q<tspan baseline-shift="super" font-size="13">−2</tspan></text><text x="252" y="219">−q<tspan baseline-shift="super" font-size="13">−1</tspan></text><text x="372" y="219">1</text><text x="492" y="219">−q<tspan baseline-shift="super" font-size="13">−1</tspan></text><text x="612" y="219">q<tspan baseline-shift="super" font-size="13">−2</tspan></text></g>
+</svg>
+</figure>
+
+*Figure 5.* In division rank two, let \(E_j=[j,j+1]\) and \(C_0=E_0\). The constant ambient coefficients give the fundamental cycle of Lemma 6.131: adjacent boundary contributions cancel. For \(w_jC_0=E_j\), \(\ell(w_j)=|j|\). Transported orientations contribute \((-1)^{\ell(w_j)}\) and conversion from an orbit average to a Hecke function contributes \(q^{-\ell(w_j)}\). Thus the lower row is \(\Phi_\epsilon(w_j)=(-q)^{-|j|}\), with \(\epsilon=-1\) and \(q=q_D>1\). Equation (6.308) gives the full normalized projection, including its rotation average. The dotted ends continue the infinite apartment.
+
+**Theorem 6.133 — the signed Euler class and the actual elliptic character.** There are finitely many \(a_i,b_i\in\mathcal A\) with
+\[
+             \mathfrak e_G-\epsilon p_\epsilon
+                              =\sum_i(a_i*b_i-b_i*a_i).
+\tag{6.309}
+\]
+In either field characteristic and every division rank,
+\[
+ \Theta_{\mathrm{St}_G}(\gamma)=(-1)^{r-1}
+                         \qquad(\gamma\text{ elliptic regular}).
+\tag{6.310}
+\]
+Every nonidentity unipotent orbital integral of \(\mathfrak e_G\) is zero, with the measures of Section 6.17.
+
+**Proof.** The finite projective complex in Lemma 6.132 can be split \(\mathcal A\)-linearly. Start in degree zero, where the boundary is onto if \(n>0\). Its bounded linear section makes it an admissible surjection. Projectivity gives a module section. Its kernel is a finite projective summand; continue upwards. The last kernel is the stated projective module \(\mathcal A p_\epsilon\). For clarity, the projective lifting used here is finite: a lift of an idempotent generator is multiplied by that idempotent; for a summand described by a finite matrix, do this for its finitely many columns. All resulting maps are bounded module maps. Thus no flatness statement or equivariance of the Euclidean radial homotopy is required.
+
+Apply the algebraic projective trace of Lemma 6.118 to this split complex. Its alternating trace is \([\sum_F(-1)^{\dim F}h_F]=[\mathfrak e_G]\); its top homology has trace \((-1)^n[p_\epsilon]\). These classes are equal in \(\mathcal A/[\mathcal A,\mathcal A]\). The commutator span is algebraic, so this is exactly the finite identity (6.309).
+
+Ordinary regular and unipotent orbital functionals annihilate each commutator by Lemma 6.119, with absolute convergence already proved there. On an elliptic regular class, Theorem 6.122 gives \(O_\gamma(\mathfrak e_G)=1\), while (6.297), its formal degree and Theorem 6.110 give
+\(O_\gamma(p_\epsilon)=\Theta_{\mathrm{St}_G}(\gamma^{-1})\).
+Equation (6.309) proves (6.310), also after inversion. The matrix projection \(p_\epsilon\) has zero nonidentity unipotent orbital integrals by Corollary 6.89. The same finite identity proves that assertion for \(\mathfrak e_G\). These conclusions do not assert vanishing of the Steinberg character on nonelliptic classes. \(\square\)
+
+**Corollary 6.134 — representation transfer for the norm-character family.** Let \(\mathcal D\) be a division algebra of degree \(N\). For every smooth unitary \(\chi:F^\times\to\mathbb C^\times\), the actual representations
+\(\chi\circ\operatorname{Nrd}_{\mathcal D}\) and
+\(\mathrm{St}_G\otimes(\chi\circ\operatorname{Nrd}_G)\)
+satisfy on all their matching regular classes
+\[
+ \Theta_{\mathrm{St}_G\otimes\chi\circ\operatorname{Nrd}}(\gamma)
+       =(-1)^{r-1}\chi(\operatorname{Nrd}\gamma)
+       =(-1)^{r-1}
+          \Theta_{\chi\circ\operatorname{Nrd}_{\mathcal D}}
+                                      (\gamma_{\mathcal D}).
+\tag{6.311}
+\]
+For any fixed common central character, the displayed representations on \(G\) have orthonormal elliptic characters as \(\chi\) varies. In particular each has elliptic norm one.
+
+**Proof.** Every regular class of \(\mathcal D^\times\) is elliptic. Its matches in \(G\) are exactly those with the same irreducible reduced polynomial, by Theorem 6.2. Reduced norms match, and (6.310) proves (6.311). The central characters on both sides are \(z\mapsto\chi(z^N)\). Compact division-group character orthogonality from Theorem 6.10, transported by Corollary 6.8, proves the last assertion.
+
+We check that distinct \(\chi\)'s give distinct norm characters. In an unramified maximal field, the residue norm is onto by the cyclic finite-field multiplicative group calculation. The cyclicity itself follows from the root bound for polynomials: the exponent of a finite subgroup of a field's multiplicative group is attained by combining its prime-power orders, and \(X^m-1\) has at most \(m\) roots. The residue trace is onto too: its polynomial \(X+X^{q_F}+\cdots+X^{q_F^{N-1}}\) is nonzero of degree less than \(q_F^N\), so its linear map onto the base field is nonzero. At every positive depth \(k\),
+\(\operatorname{Norm}(1+\varpi_F^k x)\equiv1+\varpi_F^k\operatorname{Tr}(x)\pmod{\varpi_F^{k+1}}\).
+Successive residue-trace corrections and completeness lift every principal unit, and the residue norm supplies every unit. A division uniformizer has reduced norm valuation one, since its \(N\)-th power is \(\varpi_F\). Thus reduced norm is onto \(F^\times\). A nontrivial quotient of two norm characters consequently has zero compact-group integral by translation. This proves orthonormality without using a general transfer or general discrete-character completeness theorem. \(\square\)
+
+**Theorem 6.135 — the zero-orbit germ in every division rank.** Normalize \(G\) and the centre as above. Keep the regular torus normalization of Section 6.18, in which its maximal compact subgroup has volume one. Write \(0\) for the nilpotent type \((1^r)\). For every regular semisimple \(X\), the homogeneous germ is
+\[
+ \begin{aligned}
+ \Gamma_0(X)&=
+ \begin{cases}
+ \displaystyle\frac{\epsilon}{e(E/F)d_{\mathrm{St}_G}},
+      &F[X]=E\text{ is a field},\\[4pt]
+ 0,&F[X]\text{ is not a field};
+ \end{cases}\\[5pt]
+ \frac{\epsilon}{e(E/F)d_{\mathrm{St}_G}}
+      &=\frac{\epsilon N}{e(E/F)\prod_{j=1}^{r-1}(q_D^j-1)}.
+ \end{aligned}
+\tag{6.312}
+\]
+For a volume-one elliptic torus quotient, the corresponding zero germ is instead \((-1)^{r-1}/d_{\mathrm{St}_G}\). In rank one the empty product is one.
+
+**Proof.** Take the actual compact test
+\(\mathfrak e_G^\circ=1_{\{|\operatorname{Nrd}g|_F=1\}}\mathfrak e_G\).
+Its support is compact by the fixed-norm annulus argument of Lemma 6.18. Its unipotent orbitals equal those of \(\mathfrak e_G\), since every unipotent has reduced norm one. Thus only its identity orbital is nonzero, and that value is \(\mathfrak e_G(1)=(-1)^{r-1}d_{\mathrm{St}_G}\).
+
+Apply Corollary 6.95 to this compact test. On its sufficiently small invariant neighbourhood of the unipotent fibre, the norm cutoff is identically one on every contributing regular class. Nonelliptic orbital values are zero by Theorem 6.122. For an elliptic torus \(E^\times\), its quotient by \(F^\times\) has volume \(e(E/F)\) under the maximal-compact normalization: valuations give \(\mathbb Z/e(E/F)\mathbb Z\), and its unit quotient has volume one. Hence its orbital integral is \(1/e(E/F)\), rather than one. The germ identity is therefore exactly (6.312) near that fibre. Finally \(m_0=0\), so Theorem 6.94 extends it to every regular \(X\) by scalar homogeneity. The field \(F[X]\), its ramification index and ellipticity do not change under a nonzero scalar. This also proves the volume-one version. \(\square\)
+
+**Corollary 6.136 — near-identity elliptic characters and integral degree ratios.** For every discrete series \(\pi\) with unitary central character,
+\[
+ m_\pi:=\frac{d_\pi}{d_{\mathrm{St}_G}}\in\mathbb Z_{>0},
+ \qquad
+ \Theta_\pi(\gamma)=(-1)^{r-1}m_\pi
+\tag{6.313}
+\]
+on a sufficiently small invariant neighbourhood of the unipotent fibre, restricted to elliptic regular \(\gamma\). One neighbourhood works for any fixed finite packet of discrete series. For any fixed unitary central character and any compact open \(J\), summing only over discrete series with that central character gives
+\[
+ \sum_\pi m_\pi\dim\pi^J
+        \le\frac1{d_{\mathrm{St}_G}\operatorname{vol}(JZ/Z)}.
+\tag{6.314}
+\]
+In particular \(d_{\mathrm{St}_G}\) is a positive formal-degree quantum for all discrete series, and the same right-hand side bounds their number at level \(J\).
+
+**Proof.** Use the compact discrete test \(f_{\pi,m}\) from Section 6.22, cut down to its reduced-norm-unit annulus. Its nonidentity unipotent orbitals are zero by Theorem 6.120, and its identity value is \(d_\pi\). The compact group germ formula and (6.312), followed by multiplication by the elliptic torus quotient volume \(e(E/F)\), give
+\(O_\gamma(f_{\pi,m})=(-1)^{r-1}d_\pi/d_{\mathrm{St}_G}\)
+there. Theorem 6.120 identifies this with \(\Theta_\pi(\gamma^{-1})\). Inversion, or unitarity and the reality of this constant, gives (6.313) as a value formula. The finite-packet neighbourhood follows by intersecting the finitely many compact germ neighbourhoods.
+
+We prove its integrality, not just rationality. The finite cellular formal-degree formula (6.268) is a sum of integer dimensions divided by rational stabilizer volumes for the present \(K\) and central measures. Intersecting each compact open stabilizer in \(Q\) with \(KZ/Z\) expresses its volume as a ratio of two finite indices. Thus \(m_\pi\) is a positive rational number. Choose an elliptic regular element sufficiently near one inside the compact unit group of an embedded separable field of degree \(N\); such fields exist by Theorem 6.2. Its character is the finite cellular trace (6.148). On each contributing finite-dimensional fixed space its action has finite order: its cyclic closure is compact, and a smooth finite-dimensional representation has an open kernel there. Every eigenvalue is therefore a root of unity. The finite alternating trace is an algebraic integer. Explicitly all the roots in that sum lie in one group \(\mu_M\); an integral polynomial representing their sum acts by an integer matrix on the free module \(\mathbb Z[T]/(T^M-1)\). Cayley–Hamilton gives a monic equation, and evaluation at \(\zeta_M\) gives the same equation for the trace. A rational algebraic integer is an integer: writing it as \(a/b\) in lowest terms in a monic equation shows that \(b\) divides \(a^k\), hence \(b=1\). This proves \(m_\pi\in\mathbb Z_{>0}\), even when the central character has nonalgebraic values on a noncompact uniformizer. Only a compact cyclic group was used in the trace argument.
+
+Finally substitute \(d_\pi=m_\pi d_{\mathrm{St}_G}\) into the Bessel mass bound (6.89). This gives (6.314); every nonzero fixed space contributes at least one. This argument does not identify the integers \(m_\pi\) with dimensions of transferred representations outside the proved norm-character family. \(\square\)
+
+The projective-trace passage is the finite algebraic one of Section 6.23; the apartment homotopy and its seminorm bounds have been supplied explicitly above. The full elliptic pairing and completeness for arbitrary discrete series, character integration across the singular set on arbitrary tests, and the full local and global representation correspondences remain separate obligations. The norm-character correspondence and the general zero-orbit germ proved here do not replace those obligations.
+
+
+### 6.26. Primary fibres, arbitrary orbital measures and compact germs
+
+Let \(G=\mathrm{GL}_r(D)\), \(A=\operatorname{End}_D(V)\), \(d^2=[D:F]\) and \(N=rd\). The field \(F\) may have either characteristic. In this subsection a primary polynomial is monic, irreducible in \(F[T]\), and different from \(T\). It need not be separable. We use compactly supported smooth tests first. A fixed reduced-norm annulus will then give the compact-mod-centre version.
+
+**Lemma 6.137 — primary modules and their kernel flags.** Fix a reduced characteristic polynomial
+\[
+             P(T)=\prod_i p_i(T)^{b_i},\qquad P(0)\ne0.
+\tag{6.315}
+\]
+Put \(E_i=F[T]/p_i\), \(e_i=\deg p_i\), and write
+\(D^{\mathrm{op}}\otimes_FE_i=M_{a_i}(\Delta_i)\), where \(\Delta_i\) is central division over \(E_i\), of degree \(\delta_i\); thus \(a_i\delta_i=d\). Set \(h_i=e_i/a_i\). This is an integer. The fibre with polynomial \(P\) is nonempty precisely when every \(b_i\) is divisible by \(\delta_i\). When it is nonempty, put \(m_i=b_i/\delta_i\). Its conjugacy classes are indexed by tuples of partitions \(\lambda_i\vdash m_i\). If \(c_{ij}\) are their column lengths, the primary subspaces \(V_i\) and centralizers satisfy
+\[
+\begin{aligned}
+ \dim_DV_i&=h_im_i,\\
+ \dim_D\ker(p_i(x)^j|V_i)&=h_i\sum_{k\le j}c_{ik},\\
+ \dim_FA_x&=\sum_i e_i\delta_i^2\sum_j c_{ij}^2.
+\end{aligned}
+\tag{6.316}
+\]
+Every orbit is locally closed and has analytic local conjugating sections. In each nonempty fibre there is a unique closed orbit, of type \(\lambda_i=(1^{m_i})\) for all \(i\).
+
+**Proof: the finite local algebra.** Give \(V\) the left \(D^{\mathrm{op}}[T]\)-action \(a^{\mathrm{op}}v=va\), \(Tv=xv\). The Chinese remainder identity for the coprime central polynomials gives the primary direct sum. The reduced Cayley–Hamilton identity gives \(P(x)=0\): after splitting \(D\) it is the ordinary matrix identity, so it descends to \(F\). It is therefore enough to use the finite rings
+\[
+ B_i=D^{\mathrm{op}}\otimes_F F[T]/(p_i^N).
+\]
+No coefficient field inside \(F[T]/p_i^N\) is assumed.
+
+Here are the needed algebra details. Base extension preserves central simplicity even for an inseparable field: the proved map
+\(D^{\mathrm{op}}\otimes_FD\longrightarrow\operatorname{End}_F(D)\)
+remains an isomorphism after extending scalars. A two-sided ideal after extension is consequently stable under every linear endomorphism, and is either zero or the whole algebra; the same map identifies its centre with the scalar field. The matrix-unit construction for a finite-dimensional simple algebra, proved in Central simple algebras and the Brauer group, Sections 1–4, gives the displayed \(M_{a_i}(\Delta_i)\).
+
+The matrix units lift through the nilpotent ideal \(p_iB_i\). For completeness, lift a diagonal idempotent \(e\) and repeatedly replace it by
+\[
+             e-(2e-1)^{-1}(e^2-e).
+\tag{6.317}
+\]
+The error is squared at each step. The inverse exists because
+\((2e-1)^2=1+4(e^2-e)\); the inverse of one plus a nilpotent is its finite geometric sum. This also works in characteristic two. Apply this successively in complementary corners to lift orthogonal diagonal idempotents \(e_1,\ldots,e_{a_i}\) summing to one. Choose lifts \(u_j\in e_jB_ie_1\), \(v_j\in e_1B_ie_j\) of the corresponding off-diagonal units. The element \(v_ju_j\) is a unit in \(e_1B_ie_1\); multiply \(v_j\) on the left by its inverse. Now \(v_ju_j=e_1\), and \(u_jv_j=e_j\): their difference is an idempotent in a nilpotent ideal and hence zero. With \(u_1=v_1=e_1\), the products \(u_jv_k\) are matrix units. Thus
+\[
+ B_i\simeq M_{a_i}(R_i),\quad
+ R_i=e_1B_ie_1,\quad R_i/p_iR_i=\Delta_i.
+\tag{6.318}
+\]
+
+The ring \(R_i\) is free over \(F[T]/p_i^N\). Indeed it is the image of the linear idempotent \(b\mapsto e_1be_1\), hence projective over that local ring. Lift a basis of its reduction, map a finite free module onto it, and split this surjection. Surjectivity follows by iterating the nilpotent ideal. The kernel is projective with zero reduction and is zero by the same iteration. This proves freeness, of rank \(\delta_i^2\). Every element of \(R_i\) outside \(p_iR_i\) is a unit, by lifting its inverse from \(\Delta_i\) and using a finite geometric sum. Every nonzero element is \(p_i^k\) times a unit, since \(R_i\) is free over the indicated truncated polynomial ring.
+
+A finite \(R_i\)-module has a finite presentation. In its presentation matrix choose an entry of least \(p_i\)-valuation, make its unit factor one, and clear its row and column. Every other entry is divisible on both sides by this central power of \(p_i\), so the clearing is valid without commutativity of \(R_i\). Repeat on the remaining matrix. This gives a direct sum of \(R_i/p_i^\ell R_i\), \(1\le\ell\le N\). Its multiset of lengths is unique, because the dimensions over \(\Delta_i\) of its successive \(p_i\)-quotients count the lengths at least \(j\). The lifted matrix units identify \(B_i\)-modules with \(R_i\)-modules by taking \(e_1V_i\), with inverse the column module construction. This proves the primary classification without a separable Jordan decomposition.
+
+The simple column module \(S_i\) has \(E_i\)-dimension \(a_i\delta_i^2\), and hence right \(D\)-dimension \(e_i/a_i=h_i\); this proves the integrality asserted above. Its ordinary \(F\)-characteristic polynomial is \(p_i^{a_i\delta_i^2}\). The ordinary polynomial of a right \(D\)-linear map is the \(d\)-th power of its reduced polynomial, as proved in Theorem 6.2. Thus its reduced polynomial is \(p_i^{\delta_i}\). A length-\(\ell\) column module has \(\ell\) such simple quotients, giving reduced polynomial \(p_i^{\delta_i\ell}\). This proves the condition on \(b_i\), its sufficiency, and the first two formulas in (6.316). An \(R_i\)-map between lengths \(\ell,k\) is determined by an element killed by \(p_i^\ell\), a space of \(F\)-dimension \(e_i\delta_i^2\min(\ell,k)\). Summing over pairs of lengths gives the last formula.
+
+**Proof: orbit topology.** On the fixed fibre the ranks of the finitely many polynomial maps \(p_i(x)^j\) determine the type; primary projectors are fixed polynomials in \(x\), obtained by Chinese remainders modulo \(p_i^N\). Rank lower bounds are open minor conditions, and rank upper bounds are closed ones. Thus each orbit is locally closed. The orbit and quotient topologies agree locally: the equation \(ya=ax\) is linear in \(a\), of constant rank as \(y\) varies on the orbit. Choose a nonzero maximal minor at \(y=x\), fix the free coordinates to their values at \(a=1\), and solve the pivot coordinates. The other equations follow from the unchanged rank. This gives an analytic intertwiner \(a(y)\), equal to one at \(x\) and invertible nearby. It is the required local conjugating section.
+
+The all-length-one orbit is exactly the set in the fibre satisfying \(\prod_i p_i(x)=0\), so is closed. For any other type, split the successive kernel flag over \(D\) and use its block basis. The diagonal blocks are sums of the \(S_i\)'s. If this flag has \(l\) blocks, conjugation by block scalars with successive weights \(t^{l-1},t^{l-2},\ldots,1\) sends every upper off-diagonal block to zero as \(t\to0\). The limit has all lengths one. Thus every orbit closure contains that orbit, and no other orbit is closed. \(\square\)
+
+**Lemma 6.138 — the generic primary flag.** For a fixed tuple \(\lambda=(\lambda_i)\), pad its column lists with zeros and put
+\[
+ b'_j=\sum_i h_ic_{ij},\qquad
+ P_\lambda=M_\lambda N_\lambda,\qquad
+ M_\lambda=\prod_j\mathrm{GL}_{b'_j}(D).
+\tag{6.319}
+\]
+Here \(P_\lambda\) is the upper block parabolic, stopping at the last nonzero column. In its \(j\)-th diagonal block choose \(s_j\) acting on
+\(\bigoplus_i S_i^{c_{ij}}\), and set \(s=(s_j)_j\). Write \(\mathcal O_s^{M_\lambda}\) for its closed Levi orbit. The elements of type \(\lambda\) in
+\(\mathcal O_s^{M_\lambda}N_\lambda\) are open and have full product measure. The map
+\[
+ G\times^{P_\lambda}
+       (\mathcal O_s^{M_\lambda}N_\lambda)^\circ
+                  \longrightarrow\mathcal O_\lambda,\qquad
+ [g,y]\longmapsto gyg^{-1}
+\tag{6.320}
+\]
+is an analytic isomorphism. The superscript means this open full-measure subset.
+
+**Proof.** An upper block matrix in this set preserves the standard flag and has the prescribed primary simple multiplicities on each quotient. Its primary projectors preserve that flag too. On the \(i\)-th primary part, \(p_i(x)\) lowers the induced flag by one step. Consequently
+\[
+ \dim_D\ker(p_i(x)^j|V_i)\ \ge\
+                          h_i\sum_{k\le j}c_{ik}.
+\tag{6.321}
+\]
+All equalities are attained: take the length modules of Lemma 6.137, use their \(p_i\)-kernel flags, choose \(D\)-splittings, and identify each quotient with the stated sums of simple modules. The resulting matrix has the desired diagonal blocks after a block change of basis. Attaining these bounds is an open minor condition. For fixed diagonal \(s\), each failed bound is contained in the zero set of a polynomial minor nonzero at this example. The polynomial zero-set argument of Lemma 6.85 gives additive measure zero in \(N_\lambda\). Conjugation by \(M_\lambda\) proves the same for every diagonal in its orbit. Fubini proves the full-measure assertion.
+
+For a matrix of type \(\lambda\), any flag with those quotient modules has, on \(V_i\), its \(j\)-th subspace contained in \(\ker p_i(x)^j\), with the same dimension. It is therefore that kernel. The entire flag is forced to be
+\[
+                 F_j=\bigoplus_i\ker(p_i(x)^j|V_i).
+\tag{6.322}
+\]
+This proves bijectivity in (6.320). On a constant-rank minor chart the primary projectors and kernel graphs are analytic functions of \(x\). These give its analytic inverse. \(\square\)
+
+**Theorem 6.139 — an orbital measure at every element.** Give \(K=\mathrm{GL}_r(\mathcal O_D)\) probability measure and \(N_\lambda\) its integral-coordinate Haar measure. Choose any nonzero invariant orbital measure \(d\mu_s^{M_\lambda}\) on the closed orbit above. Then
+\[
+ \nu_\lambda(f)=
+ \int_K\int_{\mathcal O_s^{M_\lambda}}\int_{N_\lambda}
+                     f(kxn k^{-1})\,dn\,d\mu_s^{M_\lambda}(x)\,dk
+\tag{6.323}
+\]
+is an invariant Radon measure on \(G\), concentrated on \(\mathcal O_\lambda\). It is nonzero there. In particular every centralizer \(G_x\) is unimodular and every ordinary orbital integral of a compact test converges absolutely, including at inseparable and nonsemisimple elements. Any chosen quotient Haar normalization is a positive multiple of (6.323).
+
+**Proof: the base and the density.** The centralizer of \(s\) in its Levi is a product of groups \(\mathrm{GL}_{c_{ij}}(\Delta_i^{\mathrm{op}})\), over the local fields \(E_i\): endomorphisms of a left simple column module are right multiplications, with opposite composition order. These groups are unimodular: on their matrix algebras left and right multiplication have the same determinant, so their quotient defines a bi-invariant Haar density on the unit group. Quotient integration gives the invariant orbit measure. The orbit is closed by Lemma 6.137, and its analytic local sections identify its topology with the quotient topology. Its measure is therefore finite on compact subsets of the ambient Levi.
+
+Use the associated bundle \(Y=G\times^{P_\lambda}
+(\mathcal O_s^{M_\lambda}N_\lambda)\). Its fibre measure is the product \(d\mu_s^{M_\lambda}\,dn\). Conjugation by \(m\in M_\lambda\) multiplies it by \(\delta_{P_\lambda}(m)\). Conjugation by an element of \(N_\lambda\), at fixed diagonal \(x\), is left and right translation in the radical and preserves its Haar measure. In flag coordinates the base Jacobian for a refactorization by \(p\in P_\lambda\) is \(\delta_{P_\lambda}(p)^{-1}\): its tangent space is the opposite block space, dual to \(\operatorname{Lie}N_\lambda\) under the reduced-trace pairing. Thus the base and fibre Jacobians cancel. This proves that the local product densities define a \(G\)-invariant density on \(Y\). In the \(K\)-description the base is \(K/(K\cap P_\lambda)\), with probability measure; its stabilizer has modulus one. The resulting integral is exactly (6.323), up to a single constant which is absorbed in the initial base-density choice. This is the same coordinate cancellation used for (6.194); no exponential map or division by a factorial occurs.
+
+The complement of \(Y^\circ\) has measure zero by Lemma 6.138. The isomorphism (6.320) consequently transports this invariant density onto the single orbit, with nonzero measure on each open orbit chart.
+
+**Proof: local finiteness and normalization.** If \(f\) has compact support, compactness of \(K\) puts every contributing upper block matrix \(xn\), and its inverse, in a bounded set. Its diagonal blocks \(x_j,x_j^{-1}\) are bounded too. Their intersection with the closed base orbit is compact, of finite orbital measure. The off-diagonal entries of \(n\) are bounded because \(n=x^{-1}(xn)\). Their Haar measure is bounded by one fixed compact coordinate box. The integral of \(|f|\) in (6.323) is finite. This proves local finiteness even near smaller orbits.
+
+An invariant nonzero density on the homogeneous space \(G/G_x\) forces \(G_x\) to be unimodular: disintegrating Haar measure in a local section shows that its right-translation modulus must equal that of \(G\), which is one. Conversely quotient Haar integration gives that density and is unique up to a positive scalar, by translation on local sections. The isomorphism on the open orbit therefore identifies (6.323) with a positive multiple of every quotient Haar orbital integral. This proves all the assertions. When \(p=T-1\), the base orbit is a point and (6.323) is precisely (6.195), if that point has mass one. \(\square\)
+
+**Corollary 6.140 — compact parabolic descent and cyclicity.** Define the unnormalized averaged constant term
+\[
+ f_{P}^{\,0}(m)=\int_K\int_{N_P}f(kmnk^{-1})\,dn\,dk.
+\tag{6.324}
+\]
+It is a compact smooth function on \(M_P\). With the measure (6.323),
+\(\nu_\lambda(f)=\mu_s^{M_\lambda}(f_{P_\lambda}^{\,0})\).
+For any other fixed orbital measures the identity has a fixed positive scalar factor. If \(x\) has at least two different primary polynomials, the same assertion holds with its primary-factor Levi and its orbital measure in that Levi.
+
+Every ordinary orbital functional at every element is a trace on the compact Hecke algebra:
+\[
+                  O_x(f*h)=O_x(h*f)\qquad(f,h\in C_c^\infty(G)).
+\tag{6.325}
+\]
+It also holds in the compact-mod-centre Hecke algebra with a fixed smooth unitary central character.
+
+**Proof.** Projection of a bounded upper block matrix and its inverse to the diagonal is bounded, so (6.324) has compact support. Its smoothness follows from a common compact-open constancy subgroup on the compact sets of integration. Formula (6.323) and absolute convergence give its first assertion.
+
+For the primary-factor Levi, the off-diagonal Sylvester operators are invertible even when a primary polynomial is inseparable. Indeed the spectra of different primary factors are disjoint after algebraic extension. Equivalently a kernel vector would be an intertwiner between modules killed by coprime central polynomials and would be zero by their Bezout identity. Successive upper block distances therefore solve the conjugation equations, with invertible constant diagonal derivative, for \(xn\) to be conjugate to \(x\) by a unique radical element. The associated flag is the prescribed ordered sum of primary subspaces and is intrinsic. The same bundle-density argument, now with no exceptional fibre set, gives the asserted descent. Its Levi orbital measure is locally finite by Theorem 6.139 applied in each block.
+
+For cyclicity, \(O_x(|f|*|h|)\) is finite by that theorem, since the convolution is compact. The absolute double integral in (6.274) is therefore finite for this orbit too. Its invariant measure and Fubini give exactly the proof of Lemma 6.119, hence (6.325).
+
+For a compact-mod-centre test, cut it to the annulus
+\(v_F(\operatorname{Nrd}g)=v_F(\operatorname{Nrd}x)\).
+That cut is compact: on a compact set modulo the centre the allowed central valuations form a finite set, and central units are compact. It agrees with the test on the whole orbit. This proves absolute orbital convergence. In the positive convolution argument work on \(G/Z\); the absolute convolution is again compact modulo the centre, and its fixed-norm cut is compact. The central phases cancel just as in (6.274), proving the last assertion. No Schwartz convergence at arbitrary singular elements is asserted here. \(\square\)
+
+**Theorem 6.141 — compact germs at every polynomial fibre.** For every nonempty fibre \(P\) in (6.315), choose the measures \(\nu_\lambda\) above. Let \(O_\gamma^{\mathrm{mc}}\) use the regular-torus maximal-compact normalization of Section 6.18. There are conjugation-invariant locally constant functions \(g_{P,\lambda}\) on the regular semisimple set such that for each \(f\in C_c^\infty(G)\) there is a neighborhood \(W_f\) of \(P\) in coefficient space with
+\[
+ O_\gamma^{\mathrm{mc}}(f)=
+          \sum_\lambda g_{P,\lambda}(\gamma)\nu_\lambda(f),
+                    \qquad \chi(\gamma)\in W_f.
+\tag{6.326}
+\]
+The germs are unique. One neighborhood works for any prescribed finite-dimensional space of tests. These statements include fibres whose irreducible polynomials are inseparable.
+
+**Proof.** The fibre \(X_P=\chi^{-1}(P)\) is closed and has the finitely many orbits of Lemma 6.137. Among any remaining types choose a maximal polynomial-rank vector. Minor conditions make its orbit open in the remainder; remove it and repeat. The measures of Theorem 6.139 extend as locally finite invariant measures to \(X_P\), each concentrated on its own orbit. The proof of Lemma 6.92 therefore applies: on one homogeneous orbit every invariant linear functional is its scalar Haar integral, by the surjective averaging map from compact group tests and finite coset partitions. Subtract that scalar orbital measure, pass to the closed remainder by compact-open extension, and repeat. This proves that the \(\nu_\lambda\)'s are a basis of all invariant linear functionals on \(C_c^\infty(X_P)\), and that they give coordinates on its coinvariant space.
+
+Choose compact group tests \(\phi_\lambda\) dual to these coordinates, using the extension assertion of Lemma 6.91. Define
+\(g_{P,\lambda}(\gamma)=O_\gamma^{\mathrm{mc}}(\phi_\lambda)\).
+These are finite and locally constant on the regular set by Lemma 6.18 and its fixed-torus conjugacy charts. For an arbitrary compact \(f\), the test
+\[
+                    f-\sum_\lambda\nu_\lambda(f)\phi_\lambda
+\]
+restricts to zero in the coinvariants of \(X_P\). Lemma 6.91, with \(q=\chi\) and \(y=P\), makes it a finite sum of conjugation differences on \(\chi^{-1}(W_f)\). Integrating on a regular orbit there kills those differences and proves (6.326). Applying the formula to the finitely many dual tests proves uniqueness of germs. Intersecting the neighborhoods for a basis proves the finite-dimensional assertion. This does not claim linear independence of the germs as functions of regular classes. \(\square\)
+
+**Corollary 6.142 — cuspidal compact tests and elliptic discrete characters.** Suppose a compact test satisfies
+\(\int_{N_Q}f(g_1ng_2)\,dn=0\) for every proper parabolic \(Q\) and every \(g_1,g_2\in G\).
+Then its orbital integral is zero on every orbit with a nontrivial primary length, and on every orbit with more than one primary polynomial. On a primary fibre \(P=p^{\delta m}\), (6.326) consequently has only its closed-orbit coefficient.
+
+For any discrete series \(\pi\), every nonempty polynomial fibre \(P\) has the following finite germ expression for its actual elliptic character. Cut its compact-mod-centre test \(f_{\pi,m}\) to the reduced-norm valuation of \(P\), and denote the resulting compact test by \(f^\circ_{\pi,m,P}\). Then on a sufficiently small coefficient neighborhood, restricted to elliptic regular \(\gamma\),
+\[
+ \Theta_\pi(\gamma^{-1})=
+     e(F[\gamma]/F)
+       \sum_\lambda g_{P,\lambda}(\gamma)
+                         \nu_\lambda(f^\circ_{\pi,m,P}).
+\tag{6.327}
+\]
+The first assertion's constant-term hypothesis is not assumed for this compact discrete test.
+
+**Proof.** If some primary length exceeds one, (6.319) is a proper parabolic, and the inner integral in (6.323) is a translated proper constant term and is zero. For two different primary factors use the second descent of Corollary 6.140. Every integral is absolute because the test is compact. The all-length-one type is the sole remaining orbit in a primary fibre, giving the stated one-coefficient formula.
+
+For the second assertion, the norm valuation is constant on the fibre and on a small coefficient neighborhood. The annulus cut is compact and agrees with \(f_{\pi,m}\) on all those orbits. Theorem 6.120 identifies its volume-one elliptic orbital integral with the actual character. Multiplication of (6.326) by \(e(F[\gamma]/F)\) converts the maximal-compact torus measure to that quotient-volume-one measure, as in Theorem 6.135. This proves (6.327), also uniformly for a finite packet of tests. Section 6.27 proves singular Schwartz convergence and the corresponding discrete-test vanishing for one-chain primary orbits. General noncentral repeated-primary cases, bounds on the remaining germs, the full elliptic pairing and the general representation transfers require further arguments. \(\square\)
+
+**Example 6.143 — an inseparable fibre in dimension four.** Let \(F=\mathbb F_2((t))\), \(D=F\), \(p(T)=T^2-t\), and
+\[
+ s=\begin{pmatrix}0&t\\1&0\end{pmatrix},\qquad
+ x_X=\begin{pmatrix}s&X\\0&s\end{pmatrix},
+ \qquad X=\begin{pmatrix}a&b\\c&d\end{pmatrix}.
+\]
+The polynomial \(p\) is irreducible because a square has even valuation. Every \(x_X\) has reduced polynomial \(p^2\), and
+\[
+ p(x_X)=
+ \begin{pmatrix}0&uI+vs\\0&0\end{pmatrix},
+ \quad u=b+tc,\quad v=a+d,\quad
+                  \det(uI+vs)=u^2+tv^2.
+\tag{6.328}
+\]
+The last determinant is nonzero unless \(u=v=0\), again by parity of valuations. Thus the generic type is \((2)\), with kernel dimensions \(2,4\), centralizer dimension \(4\), and orbit dimension \(12\). The exceptional linear subspace \(u=v=0\) has codimension two in the radical; there the type is \((1,1)\), with centralizer dimension \(8\) and closed orbit dimension \(8\). For \(X=E_{11}\) the off-diagonal block in (6.328) is \(s\); for \(X=I\) it is zero.
+
+This generic matrix is not obtained by multiplying \(s\oplus s\) by a commuting unipotent. The centralizer of \(s\oplus s\) is \(\mathrm{GL}_2(E)\), \(E=F[T]/p\); a unipotent \(w\) there has \(w^2=1\). Hence \(p((s\oplus s)w)=t(w^2-1)=0\), whereas \(p(x_{E_{11}})\ne0\). The polynomial kernel flag, rather than such a multiplicative decomposition, is the flag in (6.322).
+
+<figure class="primary-diagram" style="margin:1.5em 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="244" viewBox="0 0 744 244" role="img" aria-labelledby="primary-title primary-desc" style="display:block;max-width:none;font-family:Georgia,serif;font-size:18px">
+<title id="primary-title">Two primary types with the same inseparable characteristic polynomial</title>
+<desc id="primary-desc">Over F two Laurent series in t, p of T is T squared minus t. Both four dimensional matrices have characteristic polynomial p squared. For off diagonal block E eleven, p of x maps the quotient V over F one isomorphically onto F one by s, so the intrinsic kernel dimensions are two and four. For off diagonal block identity, p of x is zero and its kernel is all of V.</desc>
+<defs><marker id="primary-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#144d68"/></marker></defs>
+<text x="20" y="27">F = 𝔽₂((t)), p(T) = T² − t; both characteristic polynomials are p²</text>
+<rect x="16" y="46" width="460" height="178" rx="8" fill="#edf3f5" stroke="#9bb8c6"/>
+<rect x="492" y="46" width="236" height="178" rx="8" fill="#f7f0e3" stroke="#d2b77f"/>
+<text x="246" y="75" text-anchor="middle">X = E₁₁: primary type (2)</text>
+<rect x="42" y="96" width="150" height="42" rx="5" fill="white" stroke="#144d68"/>
+<rect x="294" y="96" width="150" height="42" rx="5" fill="white" stroke="#144d68"/>
+<text x="117" y="123" text-anchor="middle">V / F₁ ≅ F²</text>
+<text x="369" y="123" text-anchor="middle">F₁ ≅ F²</text>
+<path d="M 199 117 L 284 117" stroke="#144d68" stroke-width="2" marker-end="url(#primary-arrow)"/>
+<text x="242" y="104" text-anchor="middle">s</text>
+<text x="246" y="166" text-anchor="middle">p(x) induces an isomorphism</text>
+<text x="246" y="198" text-anchor="middle">ker p(x) = F₁,  ker p(x)² = V</text>
+<text x="610" y="75" text-anchor="middle">X = I: type (1,1)</text>
+<text x="610" y="120" text-anchor="middle">p(x) = 0</text>
+<text x="610" y="162" text-anchor="middle">ker p(x) = V</text>
+<text x="610" y="198" text-anchor="middle">closed orbit</text>
+</svg>
+</figure>
+
+*Figure 6.* The two blocks in the left panel are the quotient and subspace of the intrinsic flag \(F_1=\ker p(x_{E_{11}})\); the induced map is the invertible matrix \(s\). In the right panel \(p(x_I)=0\), so its intrinsic kernel is all of \(V\). Both matrices have polynomial \(p^2\), but their primary lengths, centralizers and orbit dimensions differ. All dimensions are over \(F\); see (6.328) and Solution 7.14.
+
+For the split-group orbital and germ results one may compare Lemaire, Sections 2.2–2.3, 2.8, 3.2–3.3 and 3.5 of the freely accessible memoir. The primary-module, flag, density and coinvariant arguments used for division matrix groups above are supplied in full here.
+
+
+### 6.27. Irreducible elements, singular Schwartz orbitals and character densities
+
+An element \(s\in G=\mathrm{GL}_r(D)\) will be called **\(D\)-irreducible** if it preserves no proper nonzero right \(D\)-subspace. This concerns its action on \(D^r\). An irreducible minimal polynomial alone does not suffice: a sum of two copies of the same simple module is excluded. By Lemma 6.137, the condition is exactly one primary factor, one simple module and primary length one. Separability is not required.
+
+We first give a quantitative statement for every closed orbit, including repeated simple modules. It identifies the quotient length needed when the centralizer is noncompact modulo \(F^\times\).
+
+**Lemma 6.144 — a quotient conjugator bound for closed orbits.** Let \(s\) have closed orbit, put \(H=G_s\), and define
+\[
+                \ell_H(x)=\min_{h\in H}\sigma(hx).
+\]
+This is an attained nonnegative integer and a proper locally constant function on \(H\backslash G\). There is \(C_s\ge1\) with
+\[
+ \sigma(x^{-1}sx)\le 2\ell_H(x)+\sigma(s),\qquad
+ \ell_H(x)\le C_s(1+\sigma(x^{-1}sx)).
+\tag{6.329}
+\]
+The assertion holds for inseparable closed primary factors too.
+
+**Proof: an order and its lattices.** Write \(E=F[s]=\prod_iE_i\). The algebra generated on \(V\) by \(E\) and the right \(D\)-action is
+\(\mathcal B=E\otimes_FD^{\mathrm{op}}=\prod_iM_{a_i}(\Delta_i)\).
+Let \(\mathcal O_E=\prod_i\mathcal O_{E_i}\), and let \(\Omega\) be the image of
+\(\mathcal O_E\otimes_{\mathcal O_F}\mathcal O_D^{\mathrm{op}}\).
+It is an order and a full \(\mathcal O_F\)-lattice in \(\mathcal B\).
+
+We construct a containing matrix order explicitly. In the column module \(\Delta_i^{a_i}\), form the right \(\mathcal O_{\Delta_i}\)-lattice
+\(\Gamma_i=\Omega_i\mathcal O_{\Delta_i}^{a_i}\).
+It is a lattice: finitely many integral generators of \(\Omega_i\) bound it above, and the identity bounds it below by \(\mathcal O_{\Delta_i}^{a_i}\). The division-valuation elimination of Theorem 6.4 gives a basis
+\(\Gamma_i=g_i\mathcal O_{\Delta_i}^{a_i}\). Hence
+\[
+ \Omega\subset\Sigma:=\prod_i
+       g_iM_{a_i}(\mathcal O_{\Delta_i})g_i^{-1},
+ \qquad \varpi_F^c\Sigma\subset\Omega
+\tag{6.330}
+\]
+for some integer \(c\ge0\), because both orders are full lattices in the same finite-dimensional \(F\)-space. No coefficient field in a truncated polynomial ring is being used.
+
+Take \(L_0=\bigoplus_i\Gamma_i^{m_i}\) in the column description of \(V\). It is a full right \(\mathcal O_D\)-lattice, since it is stable under \(\Omega\), which contains the right \(\mathcal O_D\)-action. The group \(H=\operatorname{Aut}_{\mathcal B}(V)\) is transitive on full \(\Sigma\)-stable lattices. To check this, use the matrix units of each factor of \(\Sigma\). Its diagonal pieces are identified by the off-diagonal units, and the first piece is a left \(\mathcal O_{\Delta_i}\)-lattice in a left \(\Delta_i\)-space of dimension \(m_i\). Choosing its valuation-ring basis gives an automorphism of that \(\Delta_i\)-space. The inverse matrix-unit construction gives an element of \(H\) carrying \(L_0\) to the original lattice. This also accounts for the opposite endomorphism ring in Lemma 6.139.
+
+**Proof: saturating an arbitrary lattice.** Put \(L=xL_0\), \(y=x^{-1}sx\), and \(\widetilde L=\Sigma L\). It is a full \(\Sigma\)-stable lattice. Since \(\mathcal O_E\) is a lattice in \(E=F[s]\), choose finitely many \(F\)-polynomials \(u_j\) with
+\(\mathcal O_E=\sum_j\mathcal O_Fu_j(s)\).
+The reduced norm of \(y\) is fixed. Its least Cartan valuation is at least its average valuation minus \(\sigma(y)\). Thus its matrix norm, measured in the fixed lattice \(L_0\), is bounded by \(q_F^{A_s+A_G\sigma(y)}\). Applying the finitely many polynomials gives an integer
+\(B\le A_s(1+\sigma(y))\) with
+\[
+ L\subset\widetilde L
+       \subset\varpi_F^{-c}\Omega L
+       =\varpi_F^{-c}\mathcal O_E L
+       \subset\varpi_F^{-B}L.
+\tag{6.331}
+\]
+Increasing \(A_s\) absorbs \(c\), denominators of the polynomials, and the fixed change from the standard lattice to \(L_0\).
+
+By transitivity \(\widetilde L=hL_0\) for some \(h\in H\). Hence
+\(h^{-1}L\subset L_0\subset\varpi_F^{-B}h^{-1}L\).
+Its elementary divisors relative to \(L_0\) lie between \(0\) and \(dB\). Their spread bounds \(\sigma(h^{-1}x)\), up to the fixed change-of-lattice constant. This proves the second inequality of (6.329). The first follows from subadditivity of \(\sigma\) and \(hs=sh\).
+
+The minimum is attained because it is the minimum of a nonempty set of nonnegative integers. It is right \(K\)-invariant and therefore locally constant on the quotient. Its sublevel set is the image of \(\{\sigma\le R\}\); this is compact modulo \(Z\), and \(Z\subset H\). Thus it is proper. \(\square\)
+
+**Lemma 6.145 — the exact flag-submersion condition.** The map
+\[
+ (k,\xi)\longmapsto(\xi,\xi k^{-1}gk)
+               \quad\text{from }K\times\mathcal X
+                        \text{ to }\mathcal X\times\mathcal X
+\tag{6.332}
+\]
+is a submersion at every point if and only if \(A_g\) contains no nonzero nilpotent. In the primary notation, this means that every component has length one and multiplicity \(m_i=1\). This set of \(g\)'s is open. On each compact subset \(C\) of it, the compact conjugation average in (6.238) has the nonnegative finite-rank locally constant kernel and uniform bound of (6.239). In particular
+\[
+       \int_K\Xi(x^{-1}k^{-1}gkx)\,dk
+                                  \le M_C\Xi(x)^2.
+\tag{6.333}
+\]
+
+**Proof.** The annihilator of the differential in the \(k\)-variable is exactly
+\(A_g\cap\mathfrak n_\eta\), by the trace-pairing calculation (6.241). Every member of \(\mathfrak n_\eta\) is nilpotent. Conversely a nonzero nilpotent in \(A_g\) is strictly triangular for a full right \(D\)-flag, by its division Jordan chains. Use this as \(\eta\) and put \(\xi=\eta g^{-1}\), \(k=1\). The differential then has that nonzero annihilator. This proves the equivalence.
+
+For a closed type, \(A_g=\prod_iM_{m_i}(\Delta_i^{\mathrm{op}})\). It has no nonzero nilpotent precisely when all \(m_i=1\). A nonclosed primary length supplies the nonzero nilpotent \(p_i(g)\) on that component, extended by zero on the others; it commutes with \(g\). This proves the primary criterion.
+
+Surjectivity is an open differential-minor condition. Compactness of \(K\times\mathcal X\) makes it persist on a neighborhood of any such \(g\), and uniformly near a compact set of them. The compact-chart pushforward proof in Lemma 6.107 therefore applies there without alteration: its only centralizer input was the absence of nilpotents. It gives a bounded locally constant kernel, finite rank and the uniform constant \(M_C\). The positive double integral (6.243) gives (6.333). Failure of the submersion at another element is not, by itself, a proof that its averaged kernel cannot have other regularity. \(\square\)
+
+**Lemma 6.146 — the open irreducible set and its fixed simplices.** The \(D\)-irreducible set \(\mathcal I_D\) is open. For compact \(C\subset\mathcal I_D\), there is \(L_C\ge1\) such that
+\[
+       1+\sigma(x)\le
+          L_C(1+\sigma(x^{-1}gx))\quad(g\in C,\ x\in G).
+\tag{6.334}
+\]
+Every such \(g\) has compact cyclic closure modulo \(Z\) and stabilizes a simplex. Only finitely many simplices are stabilized by any element of \(C\).
+
+**Proof.** The right \(D\)-Grassmannian of any fixed dimension is a compact quotient of \(K\), by the adapted lattice-basis argument. The pairs \((g,W)\) with \(gW\subset W\) form a closed set. Projection over this compact Grassmannian is closed. Taking the finite union over dimensions \(1,\ldots,r-1\) proves openness of \(\mathcal I_D\).
+
+The proof of Lemma 6.109 uses exactly this irreducibility: every top-right block of \(k^{-1}gk\) across a proper coordinate cut is nonzero. Its maximum entry norm has a positive minimum on \(C\times K\). Thus one integer \(c\) bounds the least entry valuation in each such block. In the Cartan decomposition of \(x\), a gap \(\lambda_j-\lambda_{j+1}\) gives an entry of \(x^{-1}gx\) of valuation at most \(c-(\lambda_j-\lambda_{j+1})\). The sum of the latter matrix's Cartan valuations is \(v_F(\operatorname{Nrd}g)\), bounded on \(C\). Summing the gap inequalities (6.246) proves (6.334). Rank one has \(\sigma=0\).
+
+Here \(G_g\) is the unit group of a division algebra over the finite field extension \(F[g]\). The quotient \(G_g/F[g]^\times\) is compact by the division valuation, and \(F[g]^\times/F^\times\) is compact by the finite valuation quotient and compact unit quotient. Thus \(G_g/Z\) is compact, with no separability assumption. Since \(g\) belongs to that group, its cyclic closure modulo \(Z\) is compact. The lattice-chain construction (6.124) gives a stabilized simplex.
+
+For uniform finiteness use representatives \(\eta\) of the finitely many simplex orbits. If \(g\in C\) stabilizes \(x\eta\), then \(x^{-1}gx\) belongs to its full stabilizer. Restricting that stabilizer to the reduced-norm annulus of \(C\) gives an actual compact set, as in Proposition 6.52. Inequality (6.334) bounds \(\sigma(x)\). There are only finitely many images in the discrete space \(G/C_\eta\) of this compact-mod-centre set, because \(Z\subset C_\eta\). This proves the assertion. \(\square\)
+
+**Theorem 6.147 — Schwartz convergence on the entire irreducible set.** Normalize \(G_g/Z\) to have volume one for \(g\in\mathcal I_D\). Choose \(s>2b+r-1\). For compact \(C\subset\mathcal I_D\), there is \(A_C<\infty\) such that
+\[
+\begin{aligned}
+ O_g(V_s)&\le A_C,\\
+ O_g(|f|)&\le A_Cp_s(f),\\
+ O_g(|f-f_R|)&\le
+       A_C(1+R)^{-a}p_{s+a}(f),\qquad
+       f_R=1_{\{\sigma\le R\}}f ,
+\end{aligned}
+\tag{6.335}
+\]
+for all \(g\in C\), integers \(a\ge0\), and \(f\in\mathcal S_\omega\). These are absolute integrals. They are continuous in \(g\), with uniform compact-cutoff convergence on \(C\).
+
+**Proof.** The centralizer is a division group, so Lemma 6.145 applies. With \(Q=G/Z\), its chosen quotient volume gives
+\[
+\begin{aligned}
+ O_g(V_s)
+ &\le L_C^s\int_Q
+        \Xi(x^{-1}gx)(1+\sigma(x))^{-s}\,d\bar x\\
+ &=L_C^s\int_Q(1+\sigma(x))^{-s}
+                 \int_K\Xi(x^{-1}k^{-1}gkx)\,dk\,d\bar x\\
+ &\le L_C^sM_C\int_Q
+                   \Xi(x)^2(1+\sigma(x))^{-s}\,d\bar x<\infty.
+\end{aligned}
+\tag{6.336}
+\]
+Tonelli justifies the equality before finiteness; Lemma 6.80 proves the last bound. This proves the first line of (6.335). The other lines follow by the indicated Schwartz seminorms and by taking \((1+R)^{-a}\) out of the tail.
+
+For a compact-mod-centre smooth test, (6.334) puts all contributing conjugators modulo \(Z\) in one compact set, uniformly on \(C\). The integral there is locally constant in \(g\), since the test is smooth. The uniform tail bound consequently proves continuity for every Schwartz test. It does not turn an arbitrary continuous Schwartz orbital function into a locally constant one. \(\square\)
+
+**Theorem 6.148 — actual character densities at inseparable irreducible elements.** Every finitely generated smooth admissible \(V\) has a locally constant trace density \(\widetilde\Theta_V\) on \(\mathcal I_D\), including its singular elements. At any generating level \(dm\ge2\),
+\[
+ \widetilde\Theta_V(g)=
+       \sum_{gF=F}(-1)^{\dim F}\epsilon_F(g)
+                 \operatorname{tr}(g|V^{U_F}).
+\tag{6.337}
+\]
+The sum is finite. For every actual compact test supported in \(\mathcal I_D\),
+\[
+                    \operatorname{tr}\pi_V(f)
+                         =\int_G f(g)\widetilde\Theta_V(g)\,dg.
+\tag{6.338}
+\]
+It agrees with \(\Theta_V\) on the elliptic regular set. For a unitary-central \(V\), the compact-mod-centre test of (6.136) satisfies
+\[
+          O_g(f_{V,m})=\widetilde\Theta_V(g^{-1})
+                                    \quad(g\in\mathcal I_D).
+\tag{6.339}
+\]
+For a discrete series \(\pi\) and smooth vectors \(v,w\),
+\[
+ O_g(\langle\pi(\,\cdot\,)v,w\rangle)=
+       \frac{\langle v,w\rangle}{d_\pi}
+                    \widetilde\Theta_\pi(g).
+\tag{6.340}
+\]
+In particular the Steinberg representation constructed in Section 6.24 has
+\[
+                \widetilde\Theta_{\mathrm{St}_G}(g)
+                                  =(-1)^{r-1}
+                                  \quad(g\in\mathcal I_D).
+\tag{6.341}
+\]
+
+**Proof: finite trace before a character assertion.** Lemma 6.146 gives the two geometric inputs of Theorem 6.65 on all of \(\mathcal I_D\): a stabilized simplex, and a uniformly finite set of fixed simplices near each point. Choose its open full stabilizer and a compact open neighborhood there. The finite convex resolution of Proposition 6.64, enlarged to contain this uniform finite set, gives (6.337)–(6.338) exactly as in (6.149). Local constancy follows by shrinking an open subgroup to fix every relevant vertex and a basis of each of the finitely many fixed spaces. Thus this is an actual density for all tests on that open set, not merely a function assigned on its regular subset. Uniqueness of locally constant densities proves independence of level and agreement with the earlier character.
+
+For (6.339), \(G_g/Z\) has volume one and is compact. Integrate the finite compact-stabilizer expression (6.136) on \(Q\). Each right coset of \(C_F/Z\) which contributes corresponds to a simplex stabilized by \(g\); its volume cancels \(\operatorname{vol}(C_F/Z)^{-1}\). The orientation and fixed-space trace are transported by its representative and give the summand at that simplex for \(g^{-1}\). The set is finite by Lemma 6.146. This is the computation of Proposition 6.59 with its now verified convergence and finite-fixed-set hypotheses.
+
+For (6.340), a discrete coefficient is Schwartz. Theorem 6.147 gives the absolute double-integral bound (6.250) for tests supported in any compact part of \(\mathcal I_D\). The ordered Schur identity therefore gives (6.251) there, with genuine Fubini. The two continuous densities are this orbital coefficient times \(d_\pi/\|u\|^2\) and the locally constant density (6.337); testing their difference on small compact open sets proves pointwise equality. Polarization gives every \(v,w\). Central averaging and the compact central lifts used in Theorem 6.110 identify actual group tests with the needed quotient tests.
+
+Finally the Euler orbital integral is one on \(\mathcal I_D\). Indeed the fixed-norm contraction of Lemma 6.121 applies to the bounded cyclic action, and its nonempty fixed realization is contractible. There are only finitely many stabilized simplices. Their fixed interiors have Euler signs \((-1)^{\dim F}\epsilon_F(g)\), as in Theorem 6.122, so their sum is one. The finite cocenter identity (6.309) can be evaluated here: Theorem 6.147 applied to the positive convolution proves orbital cyclicity by (6.274). Equations (6.297) and (6.340) give \(O_g(p_\epsilon)=\widetilde\Theta_{\mathrm{St}_G}(g^{-1})\): inversion has the same normalized compact centralizer, and unitarity conjugates the coefficient. Thus (6.309) proves (6.341). \(\square\)
+
+**Theorem 6.149 — Schwartz orbitals for one primary Jordan chain.** Suppose that every primary partition of \(x\) has one part,
+\(\lambda_i=(m_i)\). No separability is assumed. Its ordinary orbital functional extends continuously to every fixed Schwartz level. For some integer \(t\) and \(C_x<\infty\),
+\[
+ O_x(|f|)\le C_xp_t(f),\qquad
+ O_x(|f-f_R|)\le
+                C_x(1+R)^{-a}p_{t+a}(f)
+                       \quad(a\ge0).
+\tag{6.342}
+\]
+The measure may be the one in Section 6.26 or any other fixed quotient Haar normalization.
+
+**Proof: a flag with simple quotients.** Order the primary factors. In each primary part use successively
+\(\ker p_i(x),\ker p_i(x)^2,\ldots,V_i\), adjoining all earlier completed primary parts. Its successive quotient modules are
+\[
+ \underbrace{S_1,\ldots,S_1}_{m_1},
+ \underbrace{S_2,\ldots,S_2}_{m_2},\ldots.
+\tag{6.343}
+\]
+Let \(P=MN\) be this flag's parabolic; its \(k=\sum_i m_i\) Levi blocks are \(\mathrm{GL}_{h_i}(D)\), with the indicated repetitions. The diagonal \(s\) is a product of the corresponding \(D\)-irreducible simple actions.
+
+The argument of Lemma 6.138 applies to this flag too. On each primary part its quotient dimensions increase by \(h_i\); equality in the kernel bounds forces exactly its displayed kernel flag. A module of length \(m_i\) attains all bounds. Nonzero rank minors therefore give a full-measure generic set, with analytic inverse flag. The density argument of Theorem 6.139 gives, with an explicitly chosen measure,
+\[
+ \nu'_x(f)=\int_K\int_{\mathcal O_s^M}\int_N
+                              f(ky nk^{-1})\,dn\,d\mu_s^M(y)\,dk.
+\tag{6.344}
+\]
+The measures \(\mu_s^M\) are products of the block orbital measures of Theorem 6.147. The functional \(\nu'_x\) is a fixed positive multiple of the previously chosen \(O_x\); equality of arbitrary Haar normalizations is not assumed.
+
+**Proof: a positive bound before constant-term vanishing.** Choose \(b\) larger than the thresholds in Theorem 6.147 for all simple blocks. Proposition 6.98 with exponent \(kb\) gives, for a sufficiently large \(t\),
+\[
+\begin{aligned}
+ \nu'_x(V_t^G)
+ &\le C_x\int_{\mathcal O_s^M}
+                  \Xi_M(y)(1+\sigma_G(y))^{-kb}\,d\mu_s^M(y)\\
+ &\le C_x\prod_{\text{blocks }j}
+                       O_{s_j}^{G_j}(V_b^{G_j})<\infty .
+\end{aligned}
+\tag{6.345}
+\]
+The modulus \(\delta_P(y)\) is constant on this Levi orbit, since each block's reduced norm is fixed; its factor is absorbed in \(C_x\). The second inequality uses \(\sigma_{G_j}(y_j)\le\sigma_G(y)\) and the product identity for \(\Xi_M\), as in (6.225). All integrands are nonnegative, so Tonelli is valid before the bound. Theorem 6.147 gives the finite factors. Bounds by \(p_t(f)V_t\), followed by the usual higher-seminorm tail estimate, prove (6.342). Compact Schwartz cutoffs agree with the measures already defined, so this is their actual extension. \(\square\)
+
+**Corollary 6.150 — the maximal-primary coefficient of a discrete test.** On every orbit of Theorem 6.149, ordinary orbital functionals are traces on \(\mathcal S_\omega\). If \(\sum_i m_i>1\), every smooth discrete-series coefficient and every compact discrete test \(f_{\pi,m}\) have zero orbital integral there:
+\[
+                         O_x(c_\pi)=O_x(f_{\pi,m})=0.
+\tag{6.346}
+\]
+Thus the coefficient of the maximal primary type \(\lambda_i=(m_i)\) in (6.327) is zero whenever this flag is proper.
+
+**Proof.** The positive convolution \(|f|*|h|\) is Schwartz. Theorem 6.149 makes its orbital integral finite, so the absolute double integral (6.274) proves cyclicity. If \(k=\sum_i m_i>1\), \(P\) in (6.343) is proper. The now absolutely convergent inner radical integral in (6.344) vanishes for every discrete coefficient by Theorem 6.77. The finite Schwartz commutator identity (6.271) then gives the same zero for \(f_{\pi,m}\). Changing orbital normalization multiplies each zero by a fixed positive constant. This proves the asserted coefficient vanishing without assigning a pointwise constant-term hypothesis to the compact test itself. \(\square\)
+
+**Corollary 6.151 — a single coefficient near a double primary fibre.** In a nonempty primary fibre \(P=p^{2\delta}\), there are exactly the types \((2)\), \((1,1)\), where \(\delta\) is the division degree in Lemma 6.137. For every discrete series, (6.327) reduces to
+\[
+ \Theta_\pi(\gamma^{-1})
+    =e(F[\gamma]/F)\,
+       g_{P,(1,1)}(\gamma)
+          \nu_{(1,1)}(f^\circ_{\pi,m,P})
+       \quad(\gamma\text{ elliptic regular near }P).
+\tag{6.347}
+\]
+The left side is the actual character on this regular set.
+In particular the type \((2)\) coefficient in Example 6.143 is zero for the actual compact discrete test, including when \(p=T^2-t\) is inseparable.
+
+**Proof.** The two partitions are those of \(m=2\). The type \((2)\) has one primary chain and a proper two-block flag, so Corollary 6.150 makes its coefficient zero. Apply (6.327) to the norm-annulus cut. That cut agrees with \(f_{\pi,m}\) on the entire fixed fibre, hence has the same zero coefficient. This proves the formula. The remaining closed-orbit coefficient and its germ have not been evaluated here. Bounds for general noncentral repeated closed-primary Schwartz orbitals and nonmaximal primary partitions, general character integration and the full local/global correspondences remain necessary. \(\square\)
+
+
+<figure class="chamber-diagram" style="margin:1.5em 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="302" viewBox="0 0 744 302" role="img" aria-labelledby="chamber-title chamber-desc" style="display:block;max-width:none;font-family:Georgia,serif;font-size:18px">
+<title id="chamber-title">The inseparable quartic companion cycles one chamber</title>
+<desc id="chamber-desc">Schematic planar projection of the four vertices and six edges of a three dimensional chamber. Over F two Laurent series in t the companion gamma has gamma to the fourth equal t times identity. The four lattice classes L zero, L one, L two, L three are cyclically permuted. The vertex permutation and dimension signs are both minus one, so their Euler product is plus one. The actual Steinberg character on gamma is minus one.</desc>
+<defs><marker id="chamber-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#144d68"/></marker></defs>
+<text x="22" y="25">F = 𝔽₂((t)), γ⁴ = tI, characteristic polynomial T⁴ − t</text>
+<g stroke="#a1adb4" stroke-width="1.5" stroke-dasharray="5 5"><path d="M 100 113 L 630 113"/><path d="M 365 65 L 365 228"/></g>
+<g stroke="#144d68" stroke-width="2.5" fill="none" marker-end="url(#chamber-arrow)"><path d="M 110 111 L 352 65"/><path d="M 377 65 L 617 111"/><path d="M 624 121 L 376 225"/><path d="M 353 225 L 107 121"/></g>
+<g fill="#144d68"><circle cx="100" cy="113" r="5"/><circle cx="365" cy="63" r="5"/><circle cx="630" cy="113" r="5"/><circle cx="365" cy="230" r="5"/></g>
+<g text-anchor="middle" fill="#263746"><text x="74" y="96">[L₀]</text><text x="365" y="51">[L₁]</text><text x="670" y="103">[L₂]</text><text x="365" y="255">[L₃]</text></g>
+<rect x="209" y="119" width="312" height="68" rx="7" fill="#edf3f5" stroke="#9bb8c6"/>
+<text x="365" y="146" text-anchor="middle">chamber dim 3; vertex sign −1</text>
+<text x="365" y="173" text-anchor="middle">Euler factor: (−1)³(−1) = 1</text>
+<text x="22" y="286">Θ̃St(γ) = −1;  dSt = 21/4;  unit coefficient orbital integral = −4/21</text>
+</svg>
+</figure>
+
+*Figure 7.* Schematic planar projection of the four vertices and six edges of the unique chamber stabilized by the inseparable quartic companion. The arrows show \([L_0]\to[L_1]\to[L_2]\to[L_3]\to[L_0]\); the two dashed edges complete the chamber graph. The lattice identities and the character and orbital values are proved in Solution 7.15. This projection represents the combinatorics of the three-dimensional chamber without assigning lengths or angles.
+
 ## 7. Exercises with complete solutions
 
 **Exercise 7.1 — an unramified quadratic field.** Let \(K/\mathbb Q_p\) be the unramified quadratic extension. Choose \(\xi\in\mathcal O_K^\times\) whose residue generates \(\mathbb F_{p^2}/\mathbb F_p\). Write explicitly the matching matrix and quaternion class, and their centralizers.
+
+**Exercise 7.14 — inseparable primary flags and compact germs.** In Example 6.143 compute \(p(x_X)\) for \(X=E_{11}\) and \(X=I\). Determine the partitions, centralizer dimensions, orbit dimensions and the canonical kernel flags. For type \((2)\), check the dimension of the bundle in (6.320): its flag base, closed Levi orbit and radical. If a compact test has every proper translated constant term zero, which coefficient can remain in its germ expansion at \(P=p^2\)? Explain why this conclusion cannot be assigned to \(f_{\pi,m}\) merely from its known regular orbital values.
+
+
+**Exercise 7.15 — inseparable character values and a necessary quotient.** Let \(F=\mathbb F_2((t))\), \(G=\mathrm{GL}_4(F)\), and let \(\gamma e_i=e_{i+1}\) for \(i<4\), \(\gamma e_4=te_1\). Prove that \(\gamma\) is \(F\)-irreducible and inseparable, find its stabilized chamber and the signs in (6.337), and compute its Steinberg character and the orbital integral of a unit Steinberg coefficient under both centralizer normalizations. For the repeated quadratic action \(s_0=s\oplus s\) of Example 6.143, show why \(\sigma(x)\) cannot replace \(\ell_{G_{s_0}}(x)\) in (6.329). Finally determine the type \((2)\) compact discrete-test coefficient in that example using the proved Schwartz argument.
+
 
 **Solution 7.1.** Let \(\sigma\) be the nontrivial automorphism, \(t=\xi+\sigma\xi\), and \(n=\xi\sigma\xi\). The reduction of \(T^2-tT+n\) is irreducible and separable, so its lift is irreducible over \(\mathbb Q_p\). In the cyclic model
 \[
@@ -6032,9 +6899,83 @@ The rank-one building for \(\mathcal D^\times\) is a point. Its central quotient
 Nevertheless both ordinary orbital integrals are one on every matching elliptic regular class, with quotient-volume-one torus measures. The nonelliptic regular classes of \(G\) have no match in the division group and give zero by Theorem 6.122. Thus this is precisely the matching pair in Corollary 6.123. Its orbital class function is the constant one on the elliptic class space, so its squared elliptic norm is one by (6.284). These are orbital values of test functions. The scalar identity is outside the regular-class comparison, and the displayed family alone does not assign irreducible representations. \(\square\)
 
 
+**Exercise 7.12 — a rank-three projection over a quaternion division algebra.** Let \(q_F=2\), \(d=2\), \(r=3\), and give \(K\) and \(\mathcal O_F^\times\) volume one. Compute \(q_D,N,v_I,P_a(q_D^{-1}),C\) and the degree in (6.295). Compute the first four coefficients of \(P_a(t)\), the scalar Euler value, and its trace on every \(\pi_\eta\). If \(\eta\) is a primitive sixth root, distinguish \(\Phi_\eta(\tau)\) from the coefficient of its unit cyclic vector at \(\tau\). Compare the scalar Euler value with that on a division algebra of degree six. Do these calculations already identify their actual elliptic characters?
+
+
+**Solution 7.12.** Here \(q_D=2^2=4\) and \(N=6\). Counting complete flags gives \([3]_4!=(1+4)(1+4+16)=105\), so \(v_I=1/105\). Formula (6.290) gives
+\[
+ P_a(1/4)=\frac{1-4^{-3}}{(1-4^{-1})^3}=\frac73,
+ \qquad C=\frac6{105}\frac73=\frac2{15},
+ \qquad d_{\pi_\eta}=\frac{15}{2}.
+\tag{7.8}
+\]
+The independent product expression is \((4-1)(4^2-1)/6=15/2\). Also
+\(P_a(t)=(1+t+t^2)/(1-t)^2=1+3t+6t^2+9t^3+\cdots\).
+The full chamber stabilizer has quotient volume \(Nv_I=2/35\): its rotation group has six elements, although its permutation of three vertices has order three. Omitting the two rotations in the kernel would change the normalization.
+
+Since \((-1)^{r-1}=1\), Corollary 6.129 gives \(\mathfrak e_G(1)=15/2\). Its trace on \(\pi_1\) is one and its trace on each of the other five \(\pi_\eta\) is zero. The function in (6.293) has \(\Phi_\eta(\tau)=\eta^{-1}\), whereas the unit-vector coefficient in (6.297) has value \(\eta\). The inverse phase is required by left translation and the convention that the inner product is linear in its first variable.
+
+For a division algebra \(\mathcal D\) of degree six, its compact central quotient has six unit-valuation cosets, so \(\mathfrak e_{\mathcal D^\times}(1)=1/6\). The ratio of the two scalar Euler values is therefore \(45\). Their regular Euler orbital integrals still match by Corollary 6.123. The calculation constructs actual discrete series and determines their degrees and their traces of this test. It does not turn matching orbital values of Euler tests into an elliptic character identity, nor establish character orthogonality or the full representation transfer. \(\square\)
+
+
+**Exercise 7.13 — an apartment primitive and two torus measures.** In the rank-two apartment let \(E_j=[j,j+1]\), oriented to the right. Its chain boundary has vertex coefficient \((\partial a)_j=a_{j-1}-a_j\). Give an infinite chain whose boundary is the single vertex \([0]\), and check the bounds (6.307). Explain why the constant fundamental chain is also allowed. Then let \(q_F=2\), \(d=2\), \(r=2\). Compute the zero germ for an unramified quartic elliptic field and a totally ramified quartic elliptic field, both with maximal-compact torus measure and with volume-one torus quotient. Among proposed discrete-series degrees \(9/4\) and \(5/4\), which does Corollary 6.136 exclude? For the other candidate, state the forced elliptic character value near one, without claiming its existence.
+
+
+**Solution 7.13.** Take \(a_j=1\) for \(j<0\) and \(a_j=0\) for \(j\ge0\). Then \(a_{j-1}-a_j\) is one exactly at \(j=0\). The chamber distance from \(E_0\) is \(|j|\). Both this chain and the constant chain \(u_j=1\) satisfy every weighted bound, since
+\(q^{-|j|/2}(1+|j|)^M\) is bounded for every fixed \(M\). The first chain shows that the completed degree-zero class disappears; the second is a top cycle because its two coefficients cancel at every vertex. Its infinite support is essential. The ordinary compactly supported apartment complex instead has an augmentation in degree zero.
+
+For the division group data, \(q_D=4\), \(N=4\), \(\epsilon=-1\), and \(d_{\mathrm{St}_G}=(4-1)/4=3/4\). Formula (6.312) gives
+\[
+ \Gamma_0^{\mathrm{MC}}(E_{\mathrm{unr}})=-\frac43,
+ \qquad
+ \Gamma_0^{\mathrm{MC}}(E_{\mathrm{tr}})=-\frac13,
+ \qquad
+ \Gamma_0^{\operatorname{vol}(T/Z)=1}=-\frac43.
+\tag{7.9}
+\]
+The ramification indices are one and four. Dividing by the torus quotient volume gives the maximal-compact normalization, rather than multiplying by it.
+
+The proposed degrees give ratios \(3\) and \(5/3\) to \(d_{\mathrm{St}_G}\). The second ratio is not an integer, so degree \(5/4\) is impossible. If a discrete series of degree \(9/4\) exists, its actual elliptic character is \(-3\) sufficiently near one. Its compact test has maximal-compact orbital value \(-3\) in the unramified field and \(-3/4\) in the totally ramified field; multiplying by the respective quotient volumes gives \(-3\) in both cases. Integrality is a necessary condition, and this computation does not supply the representation of the remaining candidate degree. \(\square\)
+
+
+**Solution 7.14.** For \(X=E_{11}\), \(u=0,v=1\), so \(p(x_X)\) has off-diagonal block \(s\), which is invertible. Its square is zero, its rank is two, and its kernel is the first standard \(F^2\). Thus the partition is \((2)\), with columns \(1,1\) and centralizer dimension \(2(1^2+1^2)=4\). Its orbit dimension is \(16-4=12\). For \(X=I\), \(u=v=0\), so the partition is \((1,1)\), its sole column is \(2\), its centralizer dimension is \(2\cdot2^2=8\), and its orbit dimension is \(8\). Its kernel flag is just \(0\subset V\); the chosen two-block flag is not its canonical kernel flag.
+\[
+\begin{array}{c|ccc|c}
+ \text{type }(2)&\dim(G/P)&\dim\mathcal O_s^M&\dim N&\dim Y\\ \hline
+ &4&(4-2)+(4-2)&4&12
+\end{array}
+\tag{7.10}
+\]
+The bundle dimension agrees with the orbit dimension. The full-measure condition is the complement of the two independent linear equations \(b+tc=0\), \(a+d=0\).
+
+For a compact test under the exercise's constant-term hypothesis, Corollary 6.142 gives \(\nu_{(2)}(f)=0\). Only the closed-type coefficient \(\nu_{(1,1)}(f)\) can remain near \(p^2\). The compact discrete test \(f_{\pi,m}\) has prescribed regular and unipotent orbital values, but these are not the pointwise translated-constant-term hypothesis. Its type \((2)\) vanishing is proved by Theorem 6.149 and Corollary 6.150 through absolute Schwartz convergence and finite commutators. Equation (6.347) gives the resulting one-coefficient expression. General character orthogonality requires further proof. \(\square\)
+
+
+**Solution 7.15.** We have \(\gamma^4=tI\). Every root of \(T^4-t\) has valuation \(1/4\), so a monic factor of degree \(j\) would have constant term of valuation \(j/4\). A nontrivial proper factor would contradict its integral valuation. Thus the polynomial is irreducible. Its derivative is zero in characteristic two. The field \(E=F[\gamma]\) is the purely inseparable degree-four extension with uniformizer \(\gamma\).
+
+Put \(L_j=t\mathcal O_F^j\oplus\mathcal O_F^{4-j}\), \(0\le j<4\). Directly \(\gamma L_j=L_{j+1}\) for \(j<3\) and \(\gamma L_3=tL_0\). These are the vertices of a stabilized chamber. The type shift is one modulo four, so every stabilized simplex has all four types and is a chamber. By Theorem 6.148 applied to the trivial representation, their number is one: each contributes \((-1)^3(-1)=1\), and the character is one. Hence the displayed chamber is the unique one. Its permutation sign is \(-1\), and its Euler dimension sign is \(-1\). Equation (6.341), rather than a regular-semisimple assertion, gives the actual Steinberg character at this inseparable element. With \(K\)-volume one,
+\[
+\begin{aligned}
+ \widetilde\Theta_{\mathrm{St}}(\gamma)&=-1,&
+ d_{\mathrm{St}}&=\frac{(2-1)(2^2-1)(2^3-1)}4=\frac{21}4,\\
+ O_\gamma(c_u)&=-\frac4{21}
+        &&(\|u\|=1,\ \operatorname{vol}(E^\times/F^\times)=1),\\
+ O_\gamma^{\mathrm{mc}}(c_u)&=-\frac1{21}
+        &&(\operatorname{vol}(\mathcal O_E^\times)
+                   =\operatorname{vol}(\mathcal O_F^\times)=1).
+\end{aligned}
+\tag{7.11}
+\]
+The last line divides by \(e(E/F)=4\). This quotient-volume computation uses valuations and units and remains valid for this inseparable field.
+
+For \(s_0=s\oplus s\), choose \(x_a=\operatorname{diag}(t^aI_2,I_2)\). It centralizes \(s_0\), so \(x_a^{-1}s_0x_a=s_0\), while \(\sigma(x_a)=|a|\) and \(\sigma(s_0)=1\). No bound of \(\sigma(x_a)\) by a fixed multiple of \(1+\sigma(x_a^{-1}s_0x_a)\) is possible. In contrast \(\ell_{G_{s_0}}(x_a)=0\), using \(x_a^{-1}\) itself in the centralizer.
+
+The type \((2)\) element of Example 6.143 has the proper two-block flag with simple inseparable quadratic actions on its quotients. Theorem 6.147 proves convergence in those two blocks, Theorem 6.149 proves its full orbital Schwartz bound, and Corollary 6.150 gives \(\nu_{(2)}(f_{\pi,m})=0\). Formula (6.347) retains the closed type \((1,1)\) coefficient. This proves its stated reduction; it gives neither a value for that remaining coefficient nor the general local transfer. \(\square\)
+
+
 ## 8. Proofs and prerequisites
 
-The class matching is fully proved in Theorem 1.1, the trivial/Steinberg character calculation in Proposition 2.2, the complete real local correspondence in Lemmas 2.3–2.4 and Theorem 2.5, and the all-prime dimension equality in Theorem 4.2. Lemma 2.6, Theorem 2.7 and Proposition 2.8 prove the finite-place regular character theorem, including compact split elements, in all characteristics. They include the exact tree complex, uniform fixed-tube trace stabilization, principal/special character formulas and finite elliptic compact-type sum. Section 2.4 proves finite-place smooth transfer, including the inseparable support needed in characteristic two, by the signed Euler test and the exact orbital-coordinate lift. Lemma 2.11 proves the full two-term scalar orbital germ and the negative scalar-value identity for every matching pair. Proposition 2.12 proves the paired formal degree for special representations. Lemma 2.13, Theorem 2.14 and Corollary 2.15 prove the whole depth-zero local bijection, its negative character identity on every regular elliptic class, paired formal degrees, and every determinant/norm twist of that family. The finite-tree character argument includes deep scalar-residue classes and all residue characteristics. Theorem 2.16 proves the full Schur constant for every irreducible admissible compact induction, Corollary 2.17 computes the division degree and reduces equality to an explicit dimension-volume identity, and Proposition 2.18 calculates the unramified and ramified inducing volumes in every characteristic. Theorem 2.30 proves the all-level bijection, character identity and paired type dimensions by the quaternion construction and elliptic orthogonality. Lemmas 2.19–2.21 and Theorem 2.22 prove real character integration across the singular set, the scalar-value identity for every matching pair, and real smooth/spectral transfer with common-support polynomially bounded wave tests. The Gaussian orbital example computes the scalar sign directly. Sections 2.8–2.10 supply the full finite representation construction, arbitrary-test character integration, Fourier comparison, elliptic orthogonality, all-level bijection, full factor and formal-degree equality, and every-pair spectral transfer. Sections 3.3–3.6 prove the full global quaternion correspondence over \(\mathbb Q\): equal paired volumes, absolute discrete traces, the truncated-kernel comparison, cancellation of the split/unipotent/continuous terms, the residual characters, and positive outside trace separation. The real proof includes the principal/complementary square-integrability exclusions, a trace-class regularization of the disk character and explicit paired formal degrees (2.23)–(2.24). Both level examples, the order calculation, the Brandt matrices and all eleven exercise solutions include their computations. Sections 6.16–6.18 give the Schwartz trace calculus, explicit nilpotent and unipotent orbital measures, unipotent orbital continuity, compact-support germ expansions and scalar homogeneity. Exercises 7.6–7.7 compute division-matrix kernel flags and explain coincident homogeneity degrees. Section 6.19 gives the uniform Schwartz constant terms and polynomially weighted orbital reduction. Section 6.20 proves the exact elliptic radial sums, sharp Schwartz convergence and actual elliptic coefficient–character formula in division rank two. Exercise 7.8 computes a separable degree-four example in characteristic two with both torus normalizations. Section 6.21 proves the compact flag-kernel estimate, angular spherical bound, quantitative elliptic conjugator bound, every-rank elliptic convergence and coefficient formula, and polynomially weighted regular convergence. Exercise 7.9 distinguishes the angular estimate from a false pointwise bound. Section 6.22 proves a completed Schwartz resolution, higher-extension vanishing for tempered pairs with a discrete-series member, compact pseudo-coefficients, the cellular formal-degree formula and fixed-level finiteness of discrete series. Exercise 7.10 computes a lattice cut and a rank-two formal-degree quantum. Section 6.23 proves the finite-commutator identity for compact discrete tests, all their ordinary regular orbital values, a division-norm fixed-set contraction, explicit matching Euler tests in every degree, and the probability normalization of elliptic class measure. Exercise 7.11 computes fixed-interior signs and distinguishes regular orbital matching from scalar test values. Corollary 4.1 is deduced from the proved global theorem and earlier course results; the independent dimension calculation is not substituted for the theorem.
+The class matching is fully proved in Theorem 1.1, the trivial/Steinberg character calculation in Proposition 2.2, the complete real local correspondence in Lemmas 2.3–2.4 and Theorem 2.5, and the all-prime dimension equality in Theorem 4.2. Lemma 2.6, Theorem 2.7 and Proposition 2.8 prove the finite-place regular character theorem, including compact split elements, in all characteristics. They include the exact tree complex, uniform fixed-tube trace stabilization, principal/special character formulas and finite elliptic compact-type sum. Section 2.4 proves finite-place smooth transfer, including the inseparable support needed in characteristic two, by the signed Euler test and the exact orbital-coordinate lift. Lemma 2.11 proves the full two-term scalar orbital germ and the negative scalar-value identity for every matching pair. Proposition 2.12 proves the paired formal degree for special representations. Lemma 2.13, Theorem 2.14 and Corollary 2.15 prove the whole depth-zero local bijection, its negative character identity on every regular elliptic class, paired formal degrees, and every determinant/norm twist of that family. The finite-tree character argument includes deep scalar-residue classes and all residue characteristics. Theorem 2.16 proves the full Schur constant for every irreducible admissible compact induction, Corollary 2.17 computes the division degree and reduces equality to an explicit dimension-volume identity, and Proposition 2.18 calculates the unramified and ramified inducing volumes in every characteristic. Theorem 2.30 proves the all-level bijection, character identity and paired type dimensions by the quaternion construction and elliptic orthogonality. Lemmas 2.19–2.21 and Theorem 2.22 prove real character integration across the singular set, the scalar-value identity for every matching pair, and real smooth/spectral transfer with common-support polynomially bounded wave tests. The Gaussian orbital example computes the scalar sign directly. Sections 2.8–2.10 supply the full finite representation construction, arbitrary-test character integration, Fourier comparison, elliptic orthogonality, all-level bijection, full factor and formal-degree equality, and every-pair spectral transfer. Sections 3.3–3.6 prove the full global quaternion correspondence over \(\mathbb Q\): equal paired volumes, absolute discrete traces, the truncated-kernel comparison, cancellation of the split/unipotent/continuous terms, the residual characters, and positive outside trace separation. The real proof includes the principal/complementary square-integrability exclusions, a trace-class regularization of the disk character and explicit paired formal degrees (2.23)–(2.24). Both level examples, the order calculation, the Brandt matrices and all fifteen exercise solutions include their computations. Sections 6.16–6.18 give the Schwartz trace calculus, explicit nilpotent and unipotent orbital measures, unipotent orbital continuity, compact-support germ expansions and scalar homogeneity. Exercises 7.6–7.7 compute division-matrix kernel flags and explain coincident homogeneity degrees. Section 6.19 gives the uniform Schwartz constant terms and polynomially weighted orbital reduction. Section 6.20 proves the exact elliptic radial sums, sharp Schwartz convergence and actual elliptic coefficient–character formula in division rank two. Exercise 7.8 computes a separable degree-four example in characteristic two with both torus normalizations. Section 6.21 proves the compact flag-kernel estimate, angular spherical bound, quantitative elliptic conjugator bound, every-rank elliptic convergence and coefficient formula, and polynomially weighted regular convergence. Exercise 7.9 distinguishes the angular estimate from a false pointwise bound. Section 6.22 proves a completed Schwartz resolution, higher-extension vanishing for tempered pairs with a discrete-series member, compact pseudo-coefficients, the cellular formal-degree formula and fixed-level finiteness of discrete series. Exercise 7.10 computes a lattice cut and a rank-two formal-degree quantum. Section 6.23 proves the finite-commutator identity for compact discrete tests, all their ordinary regular orbital values, a division-norm fixed-set contraction, explicit matching Euler tests in every degree, and the probability normalization of elliptic class measure. Exercise 7.11 computes fixed-interior signs and distinguishes regular orbital matching from scalar test values. Section 6.24 constructs the Iwahori sign discrete series by an explicit Schwartz projection, proves its irreducibility, admissibility and formal degree, computes the Euler test on this family and gives an absolute elliptic character moment bound. Exercise 7.12 computes a rank-three division example and its cyclic phases. Section 6.25 proves a bounded apartment contraction, the signed Euler cocenter identity and actual norm-character-family transfer in every degree; it computes the general zero-orbit germ, near-identity elliptic discrete characters and integral formal-degree ratios. Figure 5 shows the rank-two apartment averages and their Hecke coefficients. Exercise 7.13 checks an infinite primitive, both torus measures and the degree integrality obstruction. Section 6.26 classifies every primary fibre, constructs locally finite orbital measures and compact-test germs including inseparable elements, proves compact parabolic descent and gives finite germ expressions for elliptic discrete characters. Figure 6 and Exercise 7.14 compute the two inseparable primary types in dimension four. Section 6.27 proves a quotient conjugator bound for every closed orbit, identifies the exact nilpotent obstruction to the flag submersion, constructs actual character densities on the whole D-irreducible open set including inseparable elements, and extends Schwartz convergence and discrete-test vanishing to one-chain primary orbits. Its double-primary germ formula has one remaining coefficient. Figure 7 and Exercise 7.15 compute the inseparable quartic chamber, both coefficient-orbital measures and the necessity of the centralizer quotient. Corollary 4.1 is deduced from the proved global theorem and earlier course results; the independent dimension calculation is not substituted for the theorem.
 
 The following references specify the prerequisites and related treatments:
 
@@ -6048,6 +6989,12 @@ The following references specify the prerequisites and related treatments:
 - Higher-degree local transfer: Arthur, Theorem 25.1; Badulescu 2002, Theorem 1.1. Function-field global transfer and multiplicity one: Badulescu–Roche, Theorems 2.5, 3.2–3.3, with the central quotient explained in §§3.2–3.3. Hodge/cohomological realizations are discussed, rather than proved or used, in Ichino–Prasanna's introduction.
 
 ## References
+
+- Bertrand Lemaire, *Intégrales orbitales sur GL(N,F) où F est un corps local non archimédien*, Mémoires de la Société Mathématique de France, no. 70 (1997), Sections 2.2–2.4, 2.8, 3.2–3.3 and 3.5. [Free full text](https://www.numdam.org/article/MSMF_1997_2_70__R1_0.pdf). The division-matrix primary modules, orbital densities and compact germs used here are proved in Section 6.26.
+
+- Guy Henniart and Marie-France Vignéras, *Representations of GL_n(D) near the identity*, arXiv:2305.06581v3 (10 October 2024), Remark 12.3(3), for a related rank-two near-identity character formula. [Free author preprint](https://arxiv.org/abs/2305.06581v3). The apartment, cocenter, zero-germ and degree-ratio arguments used here are proved in Section 6.25.
+
+- Thomas J. Haines, Robert E. Kottwitz and Amritanshu Prasad, *Iwahori-Hecke algebras*, arXiv:math/0309168v3 (16 April 2009), Sections 1.1–1.3. [Free author preprint](https://arxiv.org/abs/math/0309168v3). Section 6.24 gives the division-chain double cosets, convolution recurrences and projection construction used here.
 
 - Ralf Meyer, *Homological algebra for Schwartz algebras of reductive p-adic groups*, arXiv:math/0501548v2 (2 June 2005), Sections 4.2–6.1, Proposition 36, Theorems 39–41, Definitions 33–34 and Sections 7.2–7.4. [Free author preprint](https://arxiv.org/abs/math/0501548v2). Sections 6.22–6.23 give the division-lattice paths, bounded kernel contraction, homological comparison and finite projective-trace identities used here.
 

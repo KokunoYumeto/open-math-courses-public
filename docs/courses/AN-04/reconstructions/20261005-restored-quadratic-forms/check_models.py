@@ -162,7 +162,7 @@ checks.append({'name':'Pointed zero-width sector selects precisely the positive 
 
 report={'schema':'author-quadratic-form-computational-check/v1','passed':True,
  'lesson':lesson.name,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
- 'checks':checks,'exercise_solution_count':14,'general_mathematical_certification':False,
- 'limitations':'The unrestricted signature exhaustion, generalized spectral pairing, common-contour continuation, compatible-structure uniqueness and positive quotient arguments are written proofs; finite models do not certify them. Independent review remains open.'}
+ 'checks':checks,'exercise_solution_count':14,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
+ 'limitations':'The finite models concern the stated examples. Unrestricted signature exhaustion, generalized spectral pairing, common-contour continuation, compatible-structure uniqueness and positive quotients use the written proofs.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-print(json.dumps({'passed':True,'checks':len(checks),'lesson_sha256':sha(lesson),'independent_review':False}))
+print(json.dumps({'passed':True,'checks':len(checks),'lesson_sha256':sha(lesson),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}))

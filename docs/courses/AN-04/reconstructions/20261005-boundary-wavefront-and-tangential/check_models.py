@@ -64,7 +64,7 @@ for m in range(1,7):
 checks.append('All weighted boundary-defect jets through normal order six vanish with the exact factor t^m')
 result={'passed':True,'finite_groups':len(checks),'checks':checks,
  'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},'script_sha256':sha(Path(__file__)),
- 'scope':'Finite identities support the signs, matrix order, jet coefficients and explicit counterexample. Full analytic proofs are in the three companions.',
- 'U031_restored':False}
+ 'scope':'Finite identities support the signs, matrix order, jet coefficients and explicit counterexample. Full analytic proofs are in the three companions.' 
+                      }
 (ROOT/'model-check.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

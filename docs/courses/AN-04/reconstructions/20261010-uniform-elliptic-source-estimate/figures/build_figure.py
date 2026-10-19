@@ -47,12 +47,12 @@ for i,(y,title,sub) in enumerate(boxes):
  if i<3:line(775,y+89,775,y+109,arrow=True)
 text(548,551,'All coefficients and residual kernels are retained.','small')
 text(548,578,'The source test is fixed across the parameter family.','small')
-text(548,602,'The characteristic and global estimates remain open.','small')
+text(548,602,'The estimate applies to the stated elliptic cap.','small')
 parts.append('</svg>')
 svg=here/'elliptic-cap-and-source-graph.svg';svg.write_text('\n'.join(parts)+'\n','utf-8')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (here.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/'+svg.name,'svg_sha256':sha(svg),
  'generator_sha256':sha(Path(__file__)),'coordinates':{'characteristic_slopes':['2*x','-2*x'],'cap_edges':['1/sqrt(3)','-1/sqrt(3)'],'collar_edge':'1/(4*sqrt(3))','exact_lower_bound':'3*zeta**2/4'},
  'not_a_discontinuous_cutoff_symbol':True,'source_residual_decomposition_exact':True,
- 'actually_inspected':False,'exact_coordinate_review_complete':False},indent=2)+'\n','utf-8')
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         },indent=2)+'\n','utf-8')
 print(json.dumps({'figure':svg.name,'coordinate_model':'NE27; exact weighted-source identity NE13–NE16'}))

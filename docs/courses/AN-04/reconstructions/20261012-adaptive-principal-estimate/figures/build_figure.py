@@ -38,6 +38,6 @@ record={'svg':'figures/adaptive-trichotomy.svg','svg_sha256':sha(p),'generator_s
  'numerical_samples_of_exact_formula':True,'arbitrary_symbol_estimate_inferred_from_plot':False,
  'exact_formula':'s^2=max(64,100|sin z|,100cos^2 z); alpha=1/s; z=x/10',
  'exact_transition_levels':['3/5','16/25'],'source_locator':'**F0. Exact competing quantities and their scale.**',
- 'actually_inspected':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (MOD/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure_bytes':p.stat().st_size,'sha256':sha(p)}))

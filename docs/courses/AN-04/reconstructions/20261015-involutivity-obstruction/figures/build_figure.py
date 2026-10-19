@@ -32,7 +32,7 @@ fig.suptitle('A nonzero Poisson bracket excludes a wavefront point',fontsize=14)
 p=ROOT/'figures/poisson-obstruction.svg';fig.savefig(p,metadata={'Date':None});plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (ROOT/'figure-check.json').write_text(json.dumps({'svg':'figures/poisson-obstruction.svg',
- 'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'data':'PO15–PO18: H_g=(1,0), H_f=(0,-1) in the specified transverse/tangent sections; exact PO14 dimension bound.',
  'qualification':'First two panels are labeled two-dimensional linear sections of four-dimensional phase space; third plots a proved dimension bound.',
  'embedded_fonts':False,'original_expression_licence':'CC0-1.0'},indent=2)+'\n','utf-8')

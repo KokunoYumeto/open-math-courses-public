@@ -170,6 +170,6 @@ checks.append({'name':'nonradial imaginary component and exact constant-unit sel
 
 report={'schema':'bounded-function-normal-form-computational-check/v1','passed':all(r['passed'] for r in checks),
     'checks':checks,'lesson':source.name,'lesson_sha256':sha(source),'script_sha256':sha(Path(__file__)),
-    'independent_review':False,'scope':'Finite exact/algebraic and independent numerical checks of the written models. General theorem proofs, local solver, smooth jets and all-order estimates remain author mathematical arguments.'}
+                               'scope':'Finite exact/algebraic and independent numerical checks of the written models. General theorem proofs, local solver, smooth jets and all-order estimates remain author mathematical arguments.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 print(json.dumps({'checks':len(checks),'prepared_model_families':8,'all_passed':report['passed'],'lesson_sha256':report['lesson_sha256']}))

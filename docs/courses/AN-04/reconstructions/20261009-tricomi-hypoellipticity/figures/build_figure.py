@@ -55,6 +55,6 @@ record={'svg':OUT.relative_to(ROOT).as_posix(),'svg_sha256':sha(OUT),'generator_
  'exact_formula':'phi(t)=exp(4-1/((t-1)(2-t))) on 1<t<2, zero otherwise; phi(lambda^(2/3)*x)',
  'parameters':[{'lambda':l,'normal_scale':q,'support_endpoints':[f'1/{q}',f'2/{q}']} for l,q in vals],
  'axes':'First panel log2 normal distance x, second panel linear t=lambda^(2/3)*x; vertical normalized envelope.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False,'numerical_PDE_solution_claimed':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                         'numerical_PDE_solution_claimed':False}
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'svg_sha256':record['svg_sha256'],'profiles':len(vals)}))

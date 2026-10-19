@@ -53,7 +53,7 @@ plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (root.parent/'figure-check.json').write_text(json.dumps({
  'svg':'figures/trapped-limit-and-admissible-band.svg','svg_sha256':sha(out),
- 'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'generator_sha256':sha(Path(__file__)),                           
  'phase_formulas':['cos(t)','sin(t)','cos(t)^2+sin(t)^2=1'],
  'band_parameters':{'epsilon':'0.12','s0':'0.22','marked_s':'0.62','target_s':'1'},
  'turn_formula':'TC16; numerical quadrature samples only; endpoints fixed by the exact reflection proof',

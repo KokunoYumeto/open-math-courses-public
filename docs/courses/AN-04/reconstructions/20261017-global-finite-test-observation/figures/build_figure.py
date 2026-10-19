@@ -49,6 +49,6 @@ box(30,510,1040,105,[
 box(30,640,1040,100,[
  'Scalar consequences: noncompact boundary; dimension one; no boundary; mixed proved assemblies.',
  'The compact example uses full-cone source assembly and an unused-point observation assembly.',
- 'General restricted-cone compact scalar assembly remains active.'])
+ 'Restricted-cone scalar assembly uses the angular output-reserve theorem.'])
 text(30,777,'Proof locators: G0, C0, R0–R1, L0–L2, D0–D3, P0–P1, S0, T0, X2.','small')
 out.append('</svg>');(HERE/'global-finite-test-observation.svg').write_text('\n'.join(out)+'\n','utf-8');print(HERE/'global-finite-test-observation.svg')

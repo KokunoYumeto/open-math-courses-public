@@ -1,0 +1,533 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Corrected dispersion</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The first moment of cubic Gauss sums)</a><a href="character-moments-at-two-exceptional-configurations.html">Previous lesson</a><a href="an-exact-decomposition-of-the-prime-sum.html">Next lesson</a><a href="src/corrected-dispersion.md">Editable source</a></nav><main><article><h1 id="corrected-dispersion">Corrected dispersion</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A bilinear sum <span class="math" data-tex="\(\sum_{a,b}\alpha_a\beta_bG(ab)\)">\(\sum_{a,b}\alpha_a\beta_bG(ab)\)</span> is controlled through the second moment, over <span class="math" data-tex="\(a\)">\(a\)</span>, of
+<span class="math math-display" data-tex="\[
+F_u(a)=\sum_b\beta_b\,N(b)^{iu}\,G(b)\,\overline{\chi_b(a)},
+\]">\[
+F_u(a)=\sum_b\beta_b\,N(b)^{iu}\,G(b)\,\overline{\chi_b(a)},
+\]</span>
+because <span class="math" data-tex="\(G(ab)=G(a)G(b)\overline{\chi_b(a)}\)">\(G(ab)=G(a)G(b)\overline{\chi_b(a)}\)</span>. Opening the square and applying Poisson summation in <span class="math" data-tex="\(a\)">\(a\)</span> turns the off-diagonal terms into sums over frequencies. The cubic large sieve controls most frequencies. The frequencies that are cubes, however, do not cancel: they produce a main term, <span class="math" data-tex="\(c_*^2|S(u)|^2\sum_a\mu^2(a)W(a)N(a)^{-1/3}\)">\(c_*^2|S(u)|^2\sum_a\mu^2(a)W(a)N(a)^{-1/3}\)</span>, which is exactly the square of the model. This lesson proves that after subtracting the model, <span class="math" data-tex="\(F_u(a)-c_*\overline{G(a)}N(a)^{-1/6}S(u)\)">\(F_u(a)-c_*\overline{G(a)}N(a)^{-1/6}S(u)\)</span>, the second moment is small. Without subtraction it proves a bound that keeps the sparsity of the coefficients, and at large heights it proves an averaged bound with the exact diagonal. Dunn and Radziwiłł found this mechanism, with the main term from the cube frequencies, and proved it under the Generalized Riemann Hypothesis; here the remaining frequencies are bounded unconditionally by the results of the previous lessons.</p>
+<p><strong>Prerequisites.</strong> The lessons <a href="large-sieves-for-cubic-characters.html"><em>Large sieves for cubic characters</em></a>, <a href="the-level-formula-and-type-i-sums.html"><em>The level formula and Type I sums</em></a> and <a href="character-moments-at-two-exceptional-configurations.html"><em>Character moments at two exceptional configurations</em></a>.</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p>Throughout, <span class="math" data-tex="\(L=\log X\)">\(L=\log X\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+AB\asymp X,\quad X^{0.32}\le B\ll X^{1/2},\\
+H=\frac{B^2}A,\quad \mathcal Q=ABH^{1/3}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+AB\asymp X,\quad X^{0.32}\le B\ll X^{1/2},\\
+H=\frac{B^2}A,\quad \mathcal Q=ABH^{1/3}.
+\end{gathered}
+\]</span>
+Sums over the letters <span class="math" data-tex="\(a,b,d,f,l,m,n,p,q\)">\(a,b,d,f,l,m,n,p,q\)</span> run over primary elements. Let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be divisor-bounded and supported on squarefree <span class="math" data-tex="\(b\)">\(b\)</span> of length <span class="math" data-tex="\(B\)">\(B\)</span>. When <span class="math" data-tex="\(B&gt;X^{0.40}\)">\(B&gt;X^{0.40}\)</span>, suppose in addition that <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is an admissible prime convolution in the sense of the previous lesson, with all primes of norm at least <span class="math" data-tex="\(X^c\)">\(X^c\)</span> for a fixed <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and with a fixed angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta_b(u)=\beta_bN(b)^{iu},\\
+S(u)=\sum_b\beta_b(u)N(b)^{-1/6},\\
+F_u(a)=\sum_b\beta_b(u)G(b)\overline{\chi_b(a)}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\beta_b(u)=\beta_bN(b)^{iu},\\
+S(u)=\sum_b\beta_b(u)N(b)^{-1/6},\\
+F_u(a)=\sum_b\beta_b(u)G(b)\overline{\chi_b(a)}.
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(W\ge0\)">\(W\ge0\)</span> be a radial smooth function on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, supported in a fixed annulus, and <span class="math" data-tex="\(W_A(a)=W(a/\sqrt A)\)">\(W_A(a)=W(a/\sqrt A)\)</span>.</p>
+<p>The low-height estimate uses the following property of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p><strong>(SW)</strong> For every fixed conductor bound <span class="math" data-tex="\(L^{C_1}\)">\(L^{C_1}\)</span>, height bound <span class="math" data-tex="\(L^{C_2}\)">\(L^{C_2}\)</span> and <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>, and every nonprincipal cubic Hecke character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of conductor norm at most <span class="math" data-tex="\(L^{C_1}\)">\(L^{C_1}\)</span>, we have <span class="math" data-tex="\(\sum_b\beta_b\chi(b)N(b)^{it}=O_D(BL^{-D})\)">\(\sum_b\beta_b\chi(b)N(b)^{it}=O_D(BL^{-D})\)</span> for <span class="math" data-tex="\(|t|\le L^{C_2}\)">\(|t|\le L^{C_2}\)</span>, uniformly in <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>. The same holds with <span class="math" data-tex="\(b\)">\(b\)</span> restricted to be coprime to any given element of norm <span class="math" data-tex="\(X^{O(1)}\)">\(X^{O(1)}\)</span>.</p>
+<p>Here <span class="math" data-tex="\(\beta\)">\(\beta\)</span> includes its angular factor, so (SW) concerns the twisted sequence itself.</p>
+<p><strong>Proposition 1.1 (dispersion estimates).</strong> Under these hypotheses the following hold.</p>
+<p>(1) <em>(Coarse bound.)</em> If <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>, <span class="math" data-tex="\(|u|\le X^{0.17}\)">\(|u|\le X^{0.17}\)</span>, and the derivatives of <span class="math" data-tex="\(W\)">\(W\)</span> are bounded independently of <span class="math" data-tex="\(X\)">\(X\)</span>, then
+<span class="math math-display" data-tex="\[
+\sum_aW_A(a)|F_u(a)|^2\ll\mathcal QL^{O(1)} .
+\]">\[
+\sum_aW_A(a)|F_u(a)|^2\ll\mathcal QL^{O(1)} .
+\]</span></p>
+<p>(2) <em>(Low heights.)</em> Let <span class="math" data-tex="\(|u|\le L^{O(1)}\)">\(|u|\le L^{O(1)}\)</span> and <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>. Suppose <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has property (SW) and is supported on elements all of whose prime factors have norm greater than <span class="math" data-tex="\(L^{C_r}\)">\(L^{C_r}\)</span>. For every fixed <span class="math" data-tex="\(K&gt;0\)">\(K&gt;0\)</span>, if <span class="math" data-tex="\(C_r\)">\(C_r\)</span> and <span class="math" data-tex="\(C_g\)">\(C_g\)</span> are sufficiently large, then for <span class="math" data-tex="\(H\ge L^{C_g}\)">\(H\ge L^{C_g}\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_a\mu^2(a)W_A(a)\\
+&amp;\quad\cdot\Bigl|F_u(a)-c_*\overline{G(a)}N(a)^{-1/6}S(u)\Bigr|^2\\
+&amp;\ll\mathcal QL^{-K},\qquad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_a\mu^2(a)W_A(a)\\
+&amp;\quad\cdot\Bigl|F_u(a)-c_*\overline{G(a)}N(a)^{-1/6}S(u)\Bigr|^2\\
+&amp;\ll\mathcal QL^{-K},\qquad(1.1)
+\end{aligned}
+\]</span>
+and for <span class="math" data-tex="\(1\ll H&lt;L^{C_g}\)">\(1\ll H&lt;L^{C_g}\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_aW_A(a)|F_u(a)|^2\\
+&amp;\ll A\sum_b|\beta_b|^2+\mathcal Q\,L^{-K}\\
+&amp;\quad+\mathcal Q\Bigl(B^{-1}\sum_b|\beta_b|\Bigr)^2.\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_aW_A(a)|F_u(a)|^2\\
+&amp;\ll A\sum_b|\beta_b|^2+\mathcal Q\,L^{-K}\\
+&amp;\quad+\mathcal Q\Bigl(B^{-1}\sum_b|\beta_b|\Bigr)^2.\quad(1.2)
+\end{aligned}
+\]</span>
+In this part the derivatives of <span class="math" data-tex="\(W\)">\(W\)</span> are bounded independently of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>(3) <em>(Large heights.)</em> Let <span class="math" data-tex="\(u=\pm t+u_0\)">\(u=\pm t+u_0\)</span> with <span class="math" data-tex="\(T\le|t|\le2T\)">\(T\le|t|\le2T\)</span> and <span class="math" data-tex="\(2T+|u_0|\le X^{0.17}\)">\(2T+|u_0|\le X^{0.17}\)</span>, and let <span class="math" data-tex="\(|\partial^jW|\ll_jL^{Cj}\)">\(|\partial^jW|\ll_jL^{Cj}\)</span> for a fixed <span class="math" data-tex="\(C\)">\(C\)</span>. For every fixed <span class="math" data-tex="\(K\)">\(K\)</span>, if <span class="math" data-tex="\(T\ge L^{C_t}\)">\(T\ge L^{C_t}\)</span> with <span class="math" data-tex="\(C_t\)">\(C_t\)</span> large enough, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\sum_aW_A(a)\\
+&amp;\qquad\cdot|F_{\pm t+u_0}(a)|^2\frac{dt}T\\
+&amp;\le\int_{T\le|t|\le2T}\mathcal D_W\frac{dt}T\\
+&amp;\qquad+O(\mathcal QL^{-K}),\quad(1.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\sum_aW_A(a)\\
+&amp;\qquad\cdot|F_{\pm t+u_0}(a)|^2\frac{dt}T\\
+&amp;\le\int_{T\le|t|\le2T}\mathcal D_W\frac{dt}T\\
+&amp;\qquad+O(\mathcal QL^{-K}),\quad(1.3)
+\end{aligned}
+\]</span>
+with the exact diagonal <span class="math" data-tex="\(\mathcal D_W=\sum_b|\beta_b|^2\sum_{(a,b)=1}W_A(a)\)">\(\mathcal D_W=\sum_b|\beta_b|^2\sum_{(a,b)=1}W_A(a)\)</span>. No lower bound on <span class="math" data-tex="\(H\)">\(H\)</span> is needed, and when <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span> the restriction on <span class="math" data-tex="\(u_0\)">\(u_0\)</span> can be dropped. Moreover there is an absolute <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> such that, when <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span>, <span class="math" data-tex="\(T\gg X^{0.01}\)">\(T\gg X^{0.01}\)</span> and <span class="math" data-tex="\(|\partial^jW|\ll_jX^{j\gamma}\)">\(|\partial^jW|\ll_jX^{j\gamma}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\sum_aW_A(a)\\
+&amp;\qquad\cdot|F_{\pm t+u_0}(a)|^2\frac{dt}T\\
+&amp;\le\int_{T\le|t|\le2T}\mathcal D_W\frac{dt}T\\
+&amp;\qquad+O(\mathcal QX^{-10\gamma}).\quad(1.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\sum_aW_A(a)\\
+&amp;\qquad\cdot|F_{\pm t+u_0}(a)|^2\frac{dt}T\\
+&amp;\le\int_{T\le|t|\le2T}\mathcal D_W\frac{dt}T\\
+&amp;\qquad+O(\mathcal QX^{-10\gamma}).\quad(1.4)
+\end{aligned}
+\]</span>
+This <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> does not depend on the fixed exponents of the divisor bounds. In (1.3) and (1.4), if <span class="math" data-tex="\(W\)">\(W\)</span> is supported in an annulus of radial width <span class="math" data-tex="\(O(J^{-1})\)">\(O(J^{-1})\)</span> in the logarithm of the norm, then <span class="math" data-tex="\(\mathcal D_W\ll(A/J)\sum_b|\beta_b|^2\)">\(\mathcal D_W\ll(A/J)\sum_b|\beta_b|^2\)</span>, for <span class="math" data-tex="\(J\le L^{O(1)}\)">\(J\le L^{O(1)}\)</span> or <span class="math" data-tex="\(J\le X^\gamma\)">\(J\le X^\gamma\)</span> respectively. In particular, when <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span> the coefficients may be restricted sharply to any norm interval without changing these assertions.</p>
+<h2 id="2-opening-the-square">2. Opening the square</h2>
+<p><strong>Squarefree majorization.</strong> Only for (1.1), majorize the weight <span class="math" data-tex="\(\mu^2(a)\)">\(\mu^2(a)\)</span> in the term <span class="math" data-tex="\(|F_u(a)|^2\)">\(|F_u(a)|^2\)</span> by
+<span class="math math-display" data-tex="\[
+\mu^2(a)\le\Bigl(\sum_{\substack{c^2\mid a\\N(c)\le L^{D_0}}}\mu(c)\Bigr)^2=\sum_{d^2\mid a}\lambda_d .
+\]">\[
+\mu^2(a)\le\Bigl(\sum_{\substack{c^2\mid a\\N(c)\le L^{D_0}}}\mu(c)\Bigr)^2=\sum_{d^2\mid a}\lambda_d .
+\]</span>
+This is an equality for squarefree <span class="math" data-tex="\(a\)">\(a\)</span>. Here <span class="math" data-tex="\(\lambda_d=\sum\mu(c_1)\mu(c_2)\)">\(\lambda_d=\sum\mu(c_1)\mu(c_2)\)</span> over pairs with least common multiple <span class="math" data-tex="\(d\)">\(d\)</span>, so <span class="math" data-tex="\(d\)">\(d\)</span> is squarefree, <span class="math" data-tex="\(N(d)\le L^{2D_0}\)">\(N(d)\le L^{2D_0}\)</span>, <span class="math" data-tex="\(|\lambda_d|\le\tau(d)^2\)">\(|\lambda_d|\le\tau(d)^2\)</span>, and <span class="math" data-tex="\(\lambda_d=\mu(d)\)">\(\lambda_d=\mu(d)\)</span> when <span class="math" data-tex="\(N(d)\le L^{D_0}\)">\(N(d)\le L^{D_0}\)</span>. For the uncorrected estimates take only <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. The mixed and model terms of the corrected square keep their true weight <span class="math" data-tex="\(\mu^2(a)\)">\(\mu^2(a)\)</span>.</p>
+<p><strong>The diagonal.</strong> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span> the terms <span class="math" data-tex="\(b_1=b_2\)">\(b_1=b_2\)</span> give exactly <span class="math" data-tex="\(\mathcal D_W\)">\(\mathcal D_W\)</span>, because <span class="math" data-tex="\(|G(b)|=1\)">\(|G(b)|=1\)</span> on squarefree <span class="math" data-tex="\(b\)">\(b\)</span>. With the sieve weights they give <span class="math" data-tex="\(O\bigl(\sum_d|\lambda_d|A/N(d)^2\sum_b|\beta_b|^2\bigr)\)">\(O\bigl(\sum_d|\lambda_d|A/N(d)^2\sum_b|\beta_b|^2\bigr)\)</span><span class="math" data-tex="\(=O(ABL^{O(1)})\)">\(=O(ABL^{O(1)})\)</span>. This is <span class="math" data-tex="\(O(\mathcal QL^{-K})\)">\(O(\mathcal QL^{-K})\)</span> once <span class="math" data-tex="\(H\ge L^{C_g}\)">\(H\ge L^{C_g}\)</span> with <span class="math" data-tex="\(C_g\)">\(C_g\)</span> large.</p>
+<p><strong>Poisson summation.</strong> For an off-diagonal pair <span class="math" data-tex="\(b_1\ne b_2\)">\(b_1\ne b_2\)</span>, write <span class="math" data-tex="\(f=(b_1,b_2)\)">\(f=(b_1,b_2)\)</span>, <span class="math" data-tex="\(F=N(f)\)">\(F=N(f)\)</span>, and <span class="math" data-tex="\(b_i=fp_i\)">\(b_i=fp_i\)</span>. Then <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> are coprime, squarefree, prime to <span class="math" data-tex="\(f\)">\(f\)</span>, and of length <span class="math" data-tex="\(B/F\)">\(B/F\)</span>. The summand vanishes unless <span class="math" data-tex="\((b_1b_2,d)=1\)">\((b_1b_2,d)=1\)</span>. Since <span class="math" data-tex="\(\overline{\chi_{b_1}(a)}\chi_{b_2}(a)=\mathbf 1_{(a,f)=1}\overline{\chi_{p_1}(a)}\chi_{p_2}(a)\)">\(\overline{\chi_{b_1}(a)}\chi_{b_2}(a)=\mathbf 1_{(a,f)=1}\overline{\chi_{p_1}(a)}\chi_{p_2}(a)\)</span>, remove the condition <span class="math" data-tex="\((a,f)=1\)">\((a,f)=1\)</span> by Möbius inversion, and write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=d^2mx,\qquad m\mid f,\\
+M=N(m),\qquad D_d=N(d),
+\end{gathered}
+\]">\[
+\begin{gathered}
+a=d^2mx,\qquad m\mid f,\\
+M=N(m),\qquad D_d=N(d),
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(x\)">\(x\)</span> primary. The character <span class="math" data-tex="\(\psi=\overline{\chi_{p_1}}\chi_{p_2}\)">\(\psi=\overline{\chi_{p_1}}\chi_{p_2}\)</span> is primitive modulo <span class="math" data-tex="\(q=p_1p_2\)">\(q=p_1p_2\)</span>, and nonprincipal since <span class="math" data-tex="\(b_1\ne b_2\)">\(b_1\ne b_2\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For these <span class="math" data-tex="\(b_1,b_2,d,m\)">\(b_1,b_2,d,m\)</span>, the sum <span class="math" data-tex="\(\sum_xW_A(d^2mx)\overline{\chi_{b_1}(d^2mx)}\chi_{b_2}(d^2mx)\)">\(\sum_xW_A(d^2mx)\overline{\chi_{b_1}(d^2mx)}\chi_{b_2}(d^2mx)\)</span>, multiplied by <span class="math" data-tex="\(G(b_1)\overline{G(b_2)}\)">\(G(b_1)\overline{G(b_2)}\)</span>, equals
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{A}{9D_d^2M\,|p_1p_2|}\sum_{0\ne h\in\mathcal O}e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)\\
+&amp;\quad\cdot\widehat W\Bigl(\frac{h\sqrt A}{3\lambda D_d\sqrt M\,p_1p_2}\Bigr)\\
+&amp;\quad\cdot\chi_{p_1}\bigl(dh(fm)^{-1}\bigr)\overline{\chi_{p_2}\bigl(dh(fm)^{-1}\bigr)} ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{A}{9D_d^2M\,|p_1p_2|}\sum_{0\ne h\in\mathcal O}e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)\\
+&amp;\quad\cdot\widehat W\Bigl(\frac{h\sqrt A}{3\lambda D_d\sqrt M\,p_1p_2}\Bigr)\\
+&amp;\quad\cdot\chi_{p_1}\bigl(dh(fm)^{-1}\bigr)\overline{\chi_{p_2}\bigl(dh(fm)^{-1}\bigr)} ,
+\end{aligned}
+\]</span>
+where the inverse is a residue class modulo <span class="math" data-tex="\(p_1p_2\)">\(p_1p_2\)</span>.</p>
+<p><strong>Proof.</strong> The classes <span class="math" data-tex="\(x\equiv1\pmod3\)">\(x\equiv1\pmod3\)</span> are represented by <span class="math" data-tex="\(x=q+3s\)">\(x=q+3s\)</span>, with <span class="math" data-tex="\(s\)">\(s\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span>. Apply Lemma 2.1 of the lesson on large sieves with modulus <span class="math" data-tex="\(3q\)">\(3q\)</span> to the function <span class="math" data-tex="\(x\mapsto W(d^2mx/\sqrt A)\)">\(x\mapsto W(d^2mx/\sqrt A)\)</span>. Its transform at <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is <span class="math" data-tex="\((A/N(d^2m))\widehat W(\eta\sqrt A/(d^2m))\)">\((A/N(d^2m))\widehat W(\eta\sqrt A/(d^2m))\)</span>, and since <span class="math" data-tex="\(W\)">\(W\)</span> is radial the complex number <span class="math" data-tex="\(d^2m\)">\(d^2m\)</span> can be replaced by its absolute value <span class="math" data-tex="\(D_d\sqrt M\)">\(D_d\sqrt M\)</span>. Writing the frequencies as <span class="math" data-tex="\(y=h/\lambda\)">\(y=h/\lambda\)</span> with <span class="math" data-tex="\(h\in\mathcal O\)">\(h\in\mathcal O\)</span>, the phase is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e\Bigl(\operatorname{Tr}\frac{(q+3s)h}{3\lambda q}\Bigr)\\
+&amp;\qquad=e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)e\Bigl(\operatorname{Tr}\frac{sh}{\lambda q}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;e\Bigl(\operatorname{Tr}\frac{(q+3s)h}{3\lambda q}\Bigr)\\
+&amp;\qquad=e\Bigl(\operatorname{Tr}\frac h{3\lambda}\Bigr)e\Bigl(\operatorname{Tr}\frac{sh}{\lambda q}\Bigr).
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(\lambda\lambda&#x27;+q\kappa=1\)">\(\lambda\lambda&#x27;+q\kappa=1\)</span> with <span class="math" data-tex="\(\lambda&#x27;,\kappa\in\mathcal O\)">\(\lambda&#x27;,\kappa\in\mathcal O\)</span>, then <span class="math" data-tex="\(e(\operatorname{Tr}(sh/(\lambda q)))=e(\operatorname{Tr}(sh\lambda&#x27;/q))\)">\(e(\operatorname{Tr}(sh/(\lambda q)))=e(\operatorname{Tr}(sh\lambda&#x27;/q))\)</span>, since <span class="math" data-tex="\(\operatorname{Tr}(sh\kappa/\lambda)\in\mathbb Z\)">\(\operatorname{Tr}(sh\kappa/\lambda)\in\mathbb Z\)</span>. By Lemma 3.2 of the lesson on large sieves,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{s\bmod q}\psi(3s)\,e\Bigl(\operatorname{Tr}\frac{sh\lambda&#x27;}q\Bigr)\\
+&amp;=\psi(3)\overline{\psi(h\lambda&#x27;)}g(\psi)\\
+&amp;=\psi(3\lambda)\overline{\psi(h)}g(\psi),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{s\bmod q}\psi(3s)\,e\Bigl(\operatorname{Tr}\frac{sh\lambda&#x27;}q\Bigr)\\
+&amp;=\psi(3)\overline{\psi(h\lambda&#x27;)}g(\psi)\\
+&amp;=\psi(3\lambda)\overline{\psi(h)}g(\psi),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\psi(3\lambda)=1\)">\(\psi(3\lambda)=1\)</span> since <span class="math" data-tex="\(3\lambda=(-\lambda)^3\)">\(3\lambda=(-\lambda)^3\)</span>. At <span class="math" data-tex="\(h=0\)">\(h=0\)</span> the sum vanishes, <span class="math" data-tex="\(\psi\)">\(\psi\)</span> being nonprincipal.</p>
+<p>By the Chinese remainder theorem and reciprocity, <span class="math" data-tex="\(g(\psi)=\overline{g(p_1)}g(p_2)\)">\(g(\psi)=\overline{g(p_1)}g(p_2)\)</span>: the two factors <span class="math" data-tex="\(\overline{\chi_{p_1}(p_2)}\)">\(\overline{\chi_{p_1}(p_2)}\)</span> and <span class="math" data-tex="\(\chi_{p_2}(p_1)\)">\(\chi_{p_2}(p_1)\)</span> cancel. Proposition 3.1 of the first lesson gives
+<span class="math math-display" data-tex="\[
+G(fp_i)=\overline{\chi_{p_i}(f)}G(f)G(p_i),
+\]">\[
+G(fp_i)=\overline{\chi_{p_i}(f)}G(f)G(p_i),
+\]</span>
+so that <span class="math" data-tex="\(G(b_1)\overline{G(b_2)}g(\psi)=|p_1p_2|\,\overline{\chi_{p_1}(f)}\chi_{p_2}(f)\)">\(G(b_1)\overline{G(b_2)}g(\psi)=|p_1p_2|\,\overline{\chi_{p_1}(f)}\chi_{p_2}(f)\)</span>. The remaining character values are
+<span class="math math-display" data-tex="\[
+\overline{\chi_{p_1}(d^2m)}\chi_{p_2}(d^2m)\cdot\overline{\psi(h)}\cdot\overline{\chi_{p_1}(f)}\chi_{p_2}(f),
+\]">\[
+\overline{\chi_{p_1}(d^2m)}\chi_{p_2}(d^2m)\cdot\overline{\psi(h)}\cdot\overline{\chi_{p_1}(f)}\chi_{p_2}(f),
+\]</span>
+which combine to <span class="math" data-tex="\(\chi_{p_1}(dh(fm)^{-1})\overline{\chi_{p_2}(dh(fm)^{-1})}\)">\(\chi_{p_1}(dh(fm)^{-1})\overline{\chi_{p_2}(dh(fm)^{-1})}\)</span>, because <span class="math" data-tex="\(\overline{\chi(d^2)}=\chi(d)\)">\(\overline{\chi(d^2)}=\chi(d)\)</span>. The modulus <span class="math" data-tex="\(3q\)">\(3q\)</span> has index <span class="math" data-tex="\(9N(q)\)">\(9N(q)\)</span>, which gives the prefactor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The off-diagonal part of the opened square is the sum of these expressions, multiplied by <span class="math" data-tex="\(\lambda_d\mu(m)\beta_{b_1}(u)\overline{\beta_{b_2}(u)}\)">\(\lambda_d\mu(m)\beta_{b_1}(u)\overline{\beta_{b_2}(u)}\)</span>, over <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span> and the pairs. The natural dual norm scale of Lemma 2.1 is
+<span class="math math-display" data-tex="\[
+H&#x27;=\frac{H\,D_d^2M}{F^2} .
+\]">\[
+H&#x27;=\frac{H\,D_d^2M}{F^2} .
+\]</span>
+Indeed <span class="math" data-tex="\(\widehat W\)">\(\widehat W\)</span> decays rapidly once <span class="math" data-tex="\(N(h)\)">\(N(h)\)</span> exceeds <span class="math" data-tex="\(N(p_1p_2)D_d^2M/A\asymp H&#x27;\)">\(N(p_1p_2)D_d^2M/A\asymp H&#x27;\)</span>.</p>
+<h2 id="3-large-common-divisors-and-the-separation-of-the-pairs">3. Large common divisors and the separation of the pairs</h2>
+<p>Fix a small <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, to be chosen after the frequency estimates.</p>
+<p><strong>Large common divisors.</strong> First remove the pairs with <span class="math" data-tex="\(F\ge X^\delta\)">\(F\ge X^\delta\)</span>. If <span class="math" data-tex="\(H&lt;X^{\delta/2}\)">\(H&lt;X^{\delta/2}\)</span>, then <span class="math" data-tex="\(M\le F\)">\(M\le F\)</span> gives <span class="math" data-tex="\(H&#x27;\le X^{-\delta/2+o(1)}\)">\(H&#x27;\le X^{-\delta/2+o(1)}\)</span>, every nonzero frequency lies in the rapidly decreasing tail of <span class="math" data-tex="\(\widehat W\)">\(\widehat W\)</span>, and the contribution is negligible. If <span class="math" data-tex="\(H\ge X^{\delta/2}\)">\(H\ge X^{\delta/2}\)</span>, invert the function <span class="math" data-tex="\(\mathbf 1_{N((b_1,b_2))\ge X^\delta}\)">\(\mathbf 1_{N((b_1,b_2))\ge X^\delta}\)</span> on the divisor lattice. Its coefficients <span class="math" data-tex="\(c(e)\)">\(c(e)\)</span> are bounded by <span class="math" data-tex="\(\tau(e)\)">\(\tau(e)\)</span> and vanish for <span class="math" data-tex="\(N(e)&lt;X^\delta\)">\(N(e)&lt;X^\delta\)</span>. For fixed <span class="math" data-tex="\(e\)">\(e\)</span>, the resulting full form is a sum of squares with inner length <span class="math" data-tex="\(B/N(e)\)">\(B/N(e)\)</span>: the common factor <span class="math" data-tex="\(\chi_e(a)\)">\(\chi_e(a)\)</span> drops out in absolute value. By Lemma 4.2(b) of the lesson on large sieves, a dyad <span class="math" data-tex="\(N(e)\asymp E\)">\(N(e)\asymp E\)</span> costs
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;X^\epsilon E\Bigl(A+\Bigl(\frac{AB}E\Bigr)^{2/3}\Bigr)\frac BE\\
+&amp;\qquad=X^\epsilon\bigl(AB+\mathcal QE^{-2/3}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;X^\epsilon E\Bigl(A+\Bigl(\frac{AB}E\Bigr)^{2/3}\Bigr)\frac BE\\
+&amp;\qquad=X^\epsilon\bigl(AB+\mathcal QE^{-2/3}\bigr),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(A\gg B/E\)">\(A\gg B/E\)</span> absorbs the last term of that lemma. Relative to <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>, the first term saves <span class="math" data-tex="\(H^{-1/3}\le X^{-\delta/6}\)">\(H^{-1/3}\le X^{-\delta/6}\)</span> and the second saves <span class="math" data-tex="\(E^{-2/3}\le X^{-2\delta/3}\)">\(E^{-2/3}\le X^{-2\delta/3}\)</span>. Removing the diagonal costs at most <span class="math" data-tex="\(X^\epsilon AB\)">\(X^\epsilon AB\)</span>.</p>
+<p><strong>Separation.</strong> For <span class="math" data-tex="\(F&lt;X^\delta\)">\(F&lt;X^\delta\)</span> both <span class="math" data-tex="\(p_i\)">\(p_i\)</span> are nontrivial. Remove the coprimality of <span class="math" data-tex="\(p_1\)">\(p_1\)</span> and <span class="math" data-tex="\(p_2\)">\(p_2\)</span> by <span class="math" data-tex="\(\sum_{l\mid(p_1,p_2)}\mu(l)\)">\(\sum_{l\mid(p_1,p_2)}\mu(l)\)</span>, and put <span class="math" data-tex="\(p_i=ln_i\)">\(p_i=ln_i\)</span>, <span class="math" data-tex="\(V_l=N(l)\)">\(V_l=N(l)\)</span>, <span class="math" data-tex="\(B&#x27;=B/(FV_l)\)">\(B&#x27;=B/(FV_l)\)</span>. For this step, the expression of Lemma 2.1 is first extended to all pairs; the Möbius inversion then returns exactly the coprime pairs. Squarefree support forces <span class="math" data-tex="\((l,n_i)=1\)">\((l,n_i)=1\)</span>, and the common character factors give <span class="math" data-tex="\(|\chi_l(dh(fm)^{-1})|^2\)">\(|\chi_l(dh(fm)^{-1})|^2\)</span>, an exclusion on <span class="math" data-tex="\(h\)">\(h\)</span>. All other fixed coprimality conditions go into the coefficients.</p>
+<p>On a frequency dyad <span class="math" data-tex="\(N(h)\asymp J\)">\(N(h)\asymp J\)</span> put <span class="math" data-tex="\(k=J/H&#x27;\)">\(k=J/H&#x27;\)</span>. Mellin separation of the radial transform and of the norms of <span class="math" data-tex="\(n_1,n_2\)">\(n_1,n_2\)</span>, followed by Cauchy's inequality in <span class="math" data-tex="\(h\)">\(h\)</span>, reduces the estimate to the shifted squares
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{h\in\mathcal O\\ N(h)\asymp J}}\Bigl|\sum_n\beta_{fln}\,N(n)^{iu&#x27;}\\
+&amp;\qquad\cdot\chi_n\bigl(dh(fm)^{-1}\bigr)\Bigr|^2,\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{h\in\mathcal O\\ N(h)\asymp J}}\Bigl|\sum_n\beta_{fln}\,N(n)^{iu&#x27;}\\
+&amp;\qquad\cdot\chi_n\bigl(dh(fm)^{-1}\bigr)\Bigr|^2,\quad(3.1)
+\end{aligned}
+\]</span>
+with the exclusions understood and <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> equal to <span class="math" data-tex="\(u\)">\(u\)</span> plus a Mellin variable. A smooth cutoff equal to one on all possible scaled norms puts every further smooth factor into the separated kernel. So at <span class="math" data-tex="\(f=l=1\)">\(f=l=1\)</span> no cutoff on the prime products is introduced, and both the prime-convolution structure and (SW) are preserved.</p>
+<p>Integration by parts in the plane transform and in the two log-norm variables bounds the separated kernel by <span class="math" data-tex="\(C(W)(1+k)^{-R}(1+|v_1|+|v_2|)^{-M_0}\)">\(C(W)(1+k)^{-R}(1+|v_1|+|v_2|)^{-M_0}\)</span> for arbitrary fixed <span class="math" data-tex="\(R,M_0\)">\(R,M_0\)</span>. Here <span class="math" data-tex="\(C(W)\)">\(C(W)\)</span> is a finite sum of derivative norms of <span class="math" data-tex="\(W\)">\(W\)</span>: a power of <span class="math" data-tex="\(L\)">\(L\)</span> for log-scale weights, and <span class="math" data-tex="\(X^{O(\gamma)}\)">\(X^{O(\gamma)}\)</span> for the power-width weights of (1.4). So <span class="math" data-tex="\(k\)">\(k\)</span> and all shifts can be truncated at <span class="math" data-tex="\(X^{\delta&#x27;}\)">\(X^{\delta&#x27;}\)</span>, for any small fixed <span class="math" data-tex="\(\delta&#x27;&gt;0\)">\(\delta&#x27;&gt;0\)</span>, with negligible tails. All shifts are independent of <span class="math" data-tex="\(t\)">\(t\)</span>, and there are <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> frequency dyads.</p>
+<p><strong>The benchmark.</strong> Use <span class="math" data-tex="\(J^{1/3}B&#x27;^2\)">\(J^{1/3}B&#x27;^2\)</span> as a benchmark for (3.1). The prefactor of Lemma 2.1 is of size <span class="math" data-tex="\(AF/(D_d^2MB)\)">\(AF/(D_d^2MB)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{AF}{D_d^2MB}\cdot\frac{J^{1/3}B&#x27;^2}{\mathcal Q}\\
+&amp;\qquad=\frac{k^{1/3}}{D_d^{4/3}M^{2/3}F^{5/3}V_l^2}.\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{AF}{D_d^2MB}\cdot\frac{J^{1/3}B&#x27;^2}{\mathcal Q}\\
+&amp;\qquad=\frac{k^{1/3}}{D_d^{4/3}M^{2/3}F^{5/3}V_l^2}.\quad(3.2)
+\end{aligned}
+\]</span>
+The sums over <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(m\mid f\)">\(m\mid f\)</span>, and over <span class="math" data-tex="\(d\)">\(d\)</span> with its sieve coefficients, converge with these powers.</p>
+<p><strong>Large <span class="math" data-tex="\(l\)">\(l\)</span>.</strong> Discard <span class="math" data-tex="\(V_l\ge X^\delta\)">\(V_l\ge X^\delta\)</span>. Lemma 4.2(b) of the lesson on large sieves bounds (3.1) by
+<span class="math math-display" data-tex="\[
+X^\epsilon\bigl(J+(JB&#x27;)^{2/3}+J^{1/3}B&#x27;\bigr)B&#x27; .
+\]">\[
+X^\epsilon\bigl(J+(JB&#x27;)^{2/3}+J^{1/3}B&#x27;\bigr)B&#x27; .
+\]</span>
+Its ratios to the benchmark are <span class="math" data-tex="\(J^{2/3}/B&#x27;\)">\(J^{2/3}/B&#x27;\)</span>, <span class="math" data-tex="\((J/B&#x27;)^{1/3}\)">\((J/B&#x27;)^{1/3}\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. On the retained transforms <span class="math" data-tex="\(J\ll X^{2\delta&#x27;}B/F\)">\(J\ll X^{2\delta&#x27;}B/F\)</span>, since <span class="math" data-tex="\(H\ll B\)">\(H\ll B\)</span>, <span class="math" data-tex="\(M\le F\)">\(M\le F\)</span> and <span class="math" data-tex="\(D_d\)">\(D_d\)</span> is a power of <span class="math" data-tex="\(L\)">\(L\)</span>; also <span class="math" data-tex="\(B/F\gg X^{0.3}\)">\(B/F\gg X^{0.3}\)</span>. After summing the <span class="math" data-tex="\(l\)">\(l\)</span> in a dyad, the factor <span class="math" data-tex="\(V_l^{-2}\)">\(V_l^{-2}\)</span> in (3.2) bounds the costs by <span class="math" data-tex="\(X^{4\delta&#x27;/3}(B/F)^{-1/3}\)">\(X^{4\delta&#x27;/3}(B/F)^{-1/3}\)</span>, <span class="math" data-tex="\(X^{2\delta&#x27;/3}V_l^{-2/3}\)">\(X^{2\delta&#x27;/3}V_l^{-2/3}\)</span> and <span class="math" data-tex="\(V_l^{-1}\)">\(V_l^{-1}\)</span>. For <span class="math" data-tex="\(\delta&#x27;\)">\(\delta&#x27;\)</span> small compared with <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, each saves a fixed power.</p>
+<h2 id="4-the-frequencies-with-large-conductor">4. The frequencies with large conductor</h2>
+<p>For the remaining <span class="math" data-tex="\(l\)">\(l\)</span>, factor each nonzero frequency as
+<span class="math math-display" data-tex="\[
+h=\zeta\lambda^ipq^2j^3,\qquad i\in\{0,1,2\},
+\]">\[
+h=\zeta\lambda^ipq^2j^3,\qquad i\in\{0,1,2\},
+\]</span>
+with a unit <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, coprime squarefree primary <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, and <span class="math" data-tex="\(j\)">\(j\)</span> allowed to contain powers of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Put <span class="math" data-tex="\(N(p)\asymp P\)">\(N(p)\asymp P\)</span> and <span class="math" data-tex="\(N(q)\asymp Q\)">\(N(q)\asymp Q\)</span>. Then <span class="math" data-tex="\(PQ^2\ll J\)">\(PQ^2\ll J\)</span> and <span class="math" data-tex="\(N(j)\asymp(J/(PQ^2))^{1/3}\)">\(N(j)\asymp(J/(PQ^2))^{1/3}\)</span>. For fixed <span class="math" data-tex="\(j\)">\(j\)</span> the relevant benchmark is
+<span class="math math-display" data-tex="\[
+B&#x27;^2(PQ^2)^{1/3},
+\tag{4.1}
+\]">\[
+B&#x27;^2(PQ^2)^{1/3},
+\tag{4.1}
+\]</span>
+and the number of <span class="math" data-tex="\(j\)">\(j\)</span> restores <span class="math" data-tex="\(J^{1/3}B&#x27;^2\)">\(J^{1/3}B&#x27;^2\)</span>. The cube part only excludes <span class="math" data-tex="\((n,j)&gt;1\)">\((n,j)&gt;1\)</span>, and the other fixed symbols are twists of the coefficients.</p>
+<p><strong>Claim.</strong> There is a fixed power saving over (4.1) whenever <span class="math" data-tex="\(PQ^2\ge X^{0.003}\)">\(PQ^2\ge X^{0.003}\)</span>.</p>
+<p><em>Proof.</em> Consider a hypothetical sequence with <span class="math" data-tex="\(\delta,\delta&#x27;\to0\)">\(\delta,\delta&#x27;\to0\)</span> and no power saving. Then <span class="math" data-tex="\(B&#x27;=B^{1+o(1)}\)">\(B&#x27;=B^{1+o(1)}\)</span> and <span class="math" data-tex="\(PQ^2\le B^{1+o(1)}\)">\(PQ^2\le B^{1+o(1)}\)</span>. Write <span class="math" data-tex="\(P=B^x\)">\(P=B^x\)</span> and <span class="math" data-tex="\(Q=B^y\)">\(Q=B^y\)</span> in the limit, so <span class="math" data-tex="\(x+2y\le1\)">\(x+2y\le1\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(x&gt;y\)">\(x&gt;y\)</span>, fix <span class="math" data-tex="\(q\)">\(q\)</span> and apply Theorem 4.1 of the lesson on large sieves to <span class="math" data-tex="\(p\)">\(p\)</span>. The bound <span class="math" data-tex="\(QB(P+B+(PB)^{2/3})\)">\(QB(P+B+(PB)^{2/3})\)</span>, divided by <span class="math" data-tex="\(B^2(PQ^2)^{1/3}\)">\(B^2(PQ^2)^{1/3}\)</span>, has the three ratios
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{P^{2/3}Q^{1/3}}B,\qquad\Bigl(\frac QP\Bigr)^{1/3},\\
+\Bigl(\frac{PQ}B\Bigr)^{1/3}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{P^{2/3}Q^{1/3}}B,\qquad\Bigl(\frac QP\Bigr)^{1/3},\\
+\Bigl(\frac{PQ}B\Bigr)^{1/3}.
+\end{gathered}
+\]</span>
+All save a power unless <span class="math" data-tex="\(x=1\)">\(x=1\)</span> and <span class="math" data-tex="\(y=0\)">\(y=0\)</span>.</li>
+<li>If <span class="math" data-tex="\(y&gt;x\)">\(y&gt;x\)</span>, reverse the roles, conjugating the character. The ratios are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{P^{2/3}Q^{1/3}}B,\qquad\Bigl(\frac PQ\Bigr)^{2/3},\\
+\Bigl(\frac{P^2}B\Bigr)^{1/3},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{P^{2/3}Q^{1/3}}B,\qquad\Bigl(\frac PQ\Bigr)^{2/3},\\
+\Bigl(\frac{P^2}B\Bigr)^{1/3},
+\end{gathered}
+\]</span>
+and all save a power.</li>
+<li>If <span class="math" data-tex="\(x=y=v\)">\(x=y=v\)</span>, Lemma 3.3 of the lesson on large sieves gives <span class="math" data-tex="\((B+(PQ)^2)B\)">\((B+(PQ)^2)B\)</span>, with ratio <span class="math" data-tex="\(B^{-v+o(1)}+B^{3v-1+o(1)}\)">\(B^{-v+o(1)}+B^{3v-1+o(1)}\)</span>. Since <span class="math" data-tex="\(0\le v\le\frac13\)">\(0\le v\le\frac13\)</span>, this saves unless <span class="math" data-tex="\(v=\frac13\)">\(v=\frac13\)</span>; the endpoint <span class="math" data-tex="\(v=0\)">\(v=0\)</span> is excluded by <span class="math" data-tex="\(PQ^2\ge X^{0.003}\)">\(PQ^2\ge X^{0.003}\)</span>.</li>
+</ul>
+<p>The two exceptional configurations, <span class="math" data-tex="\((x,y)=(1,0)\)">\((x,y)=(1,0)\)</span> and <span class="math" data-tex="\((\frac13,\frac13)\)">\((\frac13,\frac13)\)</span>, are those of Proposition 1.1 of the previous lesson. Both force <span class="math" data-tex="\(PQ^2=B^{1+o(1)}\)">\(PQ^2=B^{1+o(1)}\)</span>, hence <span class="math" data-tex="\(J\ge B^{1-o(1)}\)">\(J\ge B^{1-o(1)}\)</span>, <span class="math" data-tex="\(H\ge B^{1-o(1)}\)">\(H\ge B^{1-o(1)}\)</span>, and so <span class="math" data-tex="\(B=X^{1/2+o(1)}\)">\(B=X^{1/2+o(1)}\)</span>, since <span class="math" data-tex="\(H=B^3/X\)">\(H=B^3/X\)</span>. In particular <span class="math" data-tex="\(B&gt;X^{0.40}\)">\(B&gt;X^{0.40}\)</span>, so <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is an admissible prime convolution. Its primes have norm at least <span class="math" data-tex="\(X^c\)">\(X^c\)</span>, so <span class="math" data-tex="\(\delta&lt;c\)">\(\delta&lt;c\)</span> forces <span class="math" data-tex="\(f=l=1\)">\(f=l=1\)</span>. The remaining <span class="math" data-tex="\(d\)">\(d\)</span>, the cube part <span class="math" data-tex="\(j\)">\(j\)</span> and the fixed twists and exclusions have norm <span class="math" data-tex="\(X^{o(1)}\)">\(X^{o(1)}\)</span>, and the height satisfies
+<span class="math math-display" data-tex="\[
+1+|u&#x27;|\le X^{0.17}+X^{\delta&#x27;}+1\le B^{0.36}
+\]">\[
+1+|u&#x27;|\le X^{0.17}+X^{\delta&#x27;}+1\le B^{0.36}
+\]</span>
+eventually. So the previous lesson supplies the missing saving. To check its normalization, let <span class="math" data-tex="\(\delta_D,\eta_D\)">\(\delta_D,\eta_D\)</span> be the constants of that proposition, and choose the radius <span class="math" data-tex="\(h_0\)">\(h_0\)</span> of the exceptional neighborhoods with <span class="math" data-tex="\(h_0&lt;\min(\delta_D,\eta_D)/4\)">\(h_0&lt;\min(\delta_D,\eta_D)/4\)</span>. In such a neighborhood <span class="math" data-tex="\(B^2(PQ^2)^{1/3}\ge B^{7/3-h_0}\)">\(B^2(PQ^2)^{1/3}\ge B^{7/3-h_0}\)</span>, so the bound <span class="math" data-tex="\(B^{7/3-\eta_D}\)">\(B^{7/3-\eta_D}\)</span> saves at least <span class="math" data-tex="\(B^{3\eta_D/4}\)">\(B^{3\eta_D/4}\)</span> against the benchmark. Compactness of the exponent region turns the limiting statement into one fixed saving for some fixed small <span class="math" data-tex="\(\delta,\delta&#x27;\)">\(\delta,\delta&#x27;\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span>, the exceptional configurations cannot occur: <span class="math" data-tex="\(H=B^3/X\le X^{0.20}\)">\(H=B^3/X\le X^{0.20}\)</span>, while <span class="math" data-tex="\(B\ge X^{0.32}\)">\(B\ge X^{0.32}\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> is not <span class="math" data-tex="\(B^{1-o(1)}\)">\(B^{1-o(1)}\)</span>. The gaps are then absolute. In this range <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, <span class="math" data-tex="\(\delta&#x27;\)">\(\delta&#x27;\)</span> and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> can be chosen independently of the prime-convolution structure and of the divisor exponents, and no restriction on the twist <span class="math" data-tex="\(u\)">\(u\)</span> is needed.</p>
+<h2 id="5-small-conductors-and-averages-over-the-height">5. Small conductors and averages over the height</h2>
+<p>Suppose <span class="math" data-tex="\(PQ^2&lt;X^{0.003}\)">\(PQ^2&lt;X^{0.003}\)</span>. The characters indexed by <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> have conductor <span class="math" data-tex="\(pq\)">\(pq\)</span> away from <span class="math" data-tex="\(3\)">\(3\)</span>, and the exponents <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> distinguish them. Since <span class="math" data-tex="\((PQ)^2\le X^{0.006}\ll B&#x27;\)">\((PQ)^2\le X^{0.006}\ll B&#x27;\)</span>, Lemma 3.3 of the lesson on large sieves bounds the ratio to (4.1) by
+<span class="math math-display" data-tex="\[
+L^{O(1)}\tau(fl)^{O(1)}(PQ^2)^{-1/3}.
+\tag{5.1}
+\]">\[
+L^{O(1)}\tau(fl)^{O(1)}(PQ^2)^{-1/3}.
+\tag{5.1}
+\]</span>
+The divisor factor is summable against (3.2). This gives any desired logarithmic saving once <span class="math" data-tex="\(PQ^2\)">\(PQ^2\)</span> exceeds a large fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>, and a bound <span class="math" data-tex="\(L^{O(1)}\)">\(L^{O(1)}\)</span> throughout. Together with the previous sections and the diagonal, this proves (1) when <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>.</p>
+<p>For the averages over the height, fix a row and collect equal norms in its inner polynomial. The squared coefficients sum to <span class="math" data-tex="\(B&#x27;L^{O(1)}\tau(fl)^{O(1)}\)">\(B&#x27;L^{O(1)}\tau(fl)^{O(1)}\)</span>, so the mean value inequality (Lemma 5.1 of the lesson on large sieves) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\bigl|\text{inner polynomial}\bigr|^2\frac{dt}T\\
+&amp;\qquad\ll\Bigl(B&#x27;+\frac{B&#x27;^2}T\Bigr)L^{O(1)}\tau(fl)^{O(1)}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\bigl|\text{inner polynomial}\bigr|^2\frac{dt}T\\
+&amp;\qquad\ll\Bigl(B&#x27;+\frac{B&#x27;^2}T\Bigr)L^{O(1)}\tau(fl)^{O(1)}.
+\end{aligned}
+\]</span>
+Summing over the <span class="math" data-tex="\(O(PQ)\)">\(O(PQ)\)</span> rows, the ratio to (4.1) is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;L^{O(1)}\tau(fl)^{O(1)}P^{2/3}Q^{1/3}\\
+&amp;\qquad\cdot\Bigl(\frac1T+\frac1{B&#x27;}\Bigr).\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;L^{O(1)}\tau(fl)^{O(1)}P^{2/3}Q^{1/3}\\
+&amp;\qquad\cdot\Bigl(\frac1T+\frac1{B&#x27;}\Bigr).\quad(5.2)
+\end{aligned}
+\]</span>
+Use (5.1) above a large power of <span class="math" data-tex="\(L\)">\(L\)</span> for <span class="math" data-tex="\(PQ^2\)">\(PQ^2\)</span>, and (5.2) below it. Taking <span class="math" data-tex="\(C_t\)">\(C_t\)</span> large absorbs all logarithmic costs and proves (1.3).</p>
+<p>For (1.4), in this range <span class="math" data-tex="\(P^{2/3}Q^{1/3}\le(PQ^2)^{2/3}&lt;X^{0.002}\)">\(P^{2/3}Q^{1/3}\le(PQ^2)^{2/3}&lt;X^{0.002}\)</span>, <span class="math" data-tex="\(T^{-1}\ll X^{-0.01}\)">\(T^{-1}\ll X^{-0.01}\)</span> and <span class="math" data-tex="\(B&#x27;^{-1}\ll X^{-0.3}\)">\(B&#x27;^{-1}\ll X^{-0.3}\)</span>. So (5.2) has an absolute power gap, at least <span class="math" data-tex="\(0.008\)">\(0.008\)</span> before small losses. The other frequency ranges already have absolute gaps when <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span>. Choose <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> so small that these gaps absorb the finitely many derivative norms and the factor <span class="math" data-tex="\(X^{10\gamma}\)">\(X^{10\gamma}\)</span>. Fixed divisor powers are harmless, since their losses can be taken arbitrarily small.</p>
+<p>Neither argument used <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>. If <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> is small, all nonzero frequency dyads have large <span class="math" data-tex="\(k\)">\(k\)</span> and lie in the tail of <span class="math" data-tex="\(\widehat W\)">\(\widehat W\)</span>. For <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span> only coefficient moments and large sieves were used, which proves the freedom of norm restrictions and of <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Finally, an annulus of radial width <span class="math" data-tex="\(O(J^{-1})\)">\(O(J^{-1})\)</span> in the logarithm of the norm contains <span class="math" data-tex="\(O(A/J+\sqrt A+1)\)">\(O(A/J+\sqrt A+1)\)</span> lattice points, which is <span class="math" data-tex="\(O(A/J)\)">\(O(A/J)\)</span> in the stated ranges since <span class="math" data-tex="\(A\gg X^{1/2}\)">\(A\gg X^{1/2}\)</span>. This proves the bound for <span class="math" data-tex="\(\mathcal D_W\)">\(\mathcal D_W\)</span>.</p>
+<h2 id="6-low-heights-the-frequencies-of-small-conductor">6. Low heights: the frequencies of small conductor</h2>
+<p>From here on assume roughness and (SW), as in (2). If <span class="math" data-tex="\(f\)">\(f\)</span> or <span class="math" data-tex="\(l\)">\(l\)</span> is not a unit, its norm exceeds <span class="math" data-tex="\(L^{C_r}\)">\(L^{C_r}\)</span>. The tails of (3.2), with the fixed divisor factors, then give <span class="math" data-tex="\(O(\mathcal QL^{-K&#x27;})\)">\(O(\mathcal QL^{-K&#x27;})\)</span> for every <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> when <span class="math" data-tex="\(C_r\)">\(C_r\)</span> is large: the sum over <span class="math" data-tex="\(f\)">\(f\)</span> decays like <span class="math" data-tex="\(F^{-2/3}\)">\(F^{-2/3}\)</span> and that over <span class="math" data-tex="\(l\)">\(l\)</span> like <span class="math" data-tex="\(V_l^{-1}\)">\(V_l^{-1}\)</span> on dyads. The transform and coefficient costs do not grow with <span class="math" data-tex="\(C_r\)">\(C_r\)</span>.</p>
+<p>So let <span class="math" data-tex="\(f=l=m=1\)">\(f=l=m=1\)</span>. Exclude exactly the frequencies for which <span class="math" data-tex="\(dh\)">\(dh\)</span> is a cube. If <span class="math" data-tex="\(PQ^2\)">\(PQ^2\)</span> is at most a fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>, the character <span class="math" data-tex="\(n\mapsto\chi_n(dh)\)">\(n\mapsto\chi_n(dh)\)</span> is nonprincipal by Lemma 6.3 of the lesson on large sieves, and its primitive conductor is at most a fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>. The cube part adds only the exclusion <span class="math" data-tex="\((n,j)=1\)">\((n,j)=1\)</span>, which (SW) allows. So (SW) gives any required logarithmic saving in (4.1), after absorbing the number of rows and the other logarithmic costs. Mellin shifts beyond a large power of <span class="math" data-tex="\(L\)">\(L\)</span> are handled by the decay of the transform and the coarse bounds already proved. Together with (5.1) and the large-conductor savings, only the cube frequencies remain, with an error <span class="math" data-tex="\(O(\mathcal QL^{-K&#x27;})\)">\(O(\mathcal QL^{-K&#x27;})\)</span>.</p>
+<h2 id="7-the-cube-frequencies-and-their-constant">7. The cube frequencies and their constant</h2>
+<p>Since <span class="math" data-tex="\(d\)">\(d\)</span> is squarefree, <span class="math" data-tex="\(dh\)">\(dh\)</span> is a cube exactly when
+<span class="math math-display" data-tex="\[
+h=d^2j^3,\qquad j\in\mathcal O\setminus\{0\},
+\]">\[
+h=d^2j^3,\qquad j\in\mathcal O\setminus\{0\},
+\]</span>
+and each such <span class="math" data-tex="\(h\)">\(h\)</span> arises from three values of <span class="math" data-tex="\(j\)">\(j\)</span>, which differ by cube roots of unity. The phase <span class="math" data-tex="\(e(\operatorname{Tr}(h/(3\lambda)))\)">\(e(\operatorname{Tr}(h/(3\lambda)))\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span>. Indeed, cubing is additive modulo <span class="math" data-tex="\(3\)">\(3\)</span>, so <span class="math" data-tex="\(j^3\equiv n\pmod3\)">\(j^3\equiv n\pmod3\)</span> for a rational integer <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(d\equiv1\pmod 3\)">\(d\equiv1\pmod 3\)</span>. Then <span class="math" data-tex="\(h=n+3t\)">\(h=n+3t\)</span> with <span class="math" data-tex="\(t\in\mathcal O\)">\(t\in\mathcal O\)</span>, and <span class="math" data-tex="\(\operatorname{Tr}(n/(3\lambda))=\frac n3\operatorname{Tr}(\lambda^{-1})=0\)">\(\operatorname{Tr}(n/(3\lambda))=\frac n3\operatorname{Tr}(\lambda^{-1})=0\)</span> while <span class="math" data-tex="\(\operatorname{Tr}(t/\lambda)\in\mathbb Z\)">\(\operatorname{Tr}(t/\lambda)\in\mathbb Z\)</span>. Choose <span class="math" data-tex="\(C_r&gt;2D_0\)">\(C_r&gt;2D_0\)</span>, so that <span class="math" data-tex="\(d\)">\(d\)</span> is coprime to every <span class="math" data-tex="\(b\)">\(b\)</span> in the support. The character factor is then <span class="math" data-tex="\(1\)">\(1\)</span> whenever <span class="math" data-tex="\((j,b_1b_2)=1\)">\((j,b_1b_2)=1\)</span>.</p>
+<p>Ignore the condition <span class="math" data-tex="\((j,b_1b_2)=1\)">\((j,b_1b_2)=1\)</span> for the moment. Substituting <span class="math" data-tex="\(h=d^2j^3\)">\(h=d^2j^3\)</span> into Lemma 2.1, the absolute value of <span class="math" data-tex="\(d^2\)">\(d^2\)</span> cancels <span class="math" data-tex="\(D_d\)">\(D_d\)</span> in the argument of <span class="math" data-tex="\(\widehat W\)">\(\widehat W\)</span>, and a rotation is immaterial since <span class="math" data-tex="\(\widehat W\)">\(\widehat W\)</span> is radial. With <span class="math" data-tex="\(\tau=\sqrt A/(3\lambda p_1p_2)\)">\(\tau=\sqrt A/(3\lambda p_1p_2)\)</span>, the frequency sum is <span class="math" data-tex="\(\frac13\sum_{j\ne0}\widehat W(\tau j^3)\)">\(\frac13\sum_{j\ne0}\widehat W(\tau j^3)\)</span>. The substitution <span class="math" data-tex="\(w=\tau^{1/3}z\)">\(w=\tau^{1/3}z\)</span> and a comparison with the integral give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac13\Bigl(\frac{27N(p_1p_2)}A\Bigr)^{1/3}\\
+&amp;\quad\cdot\int_{\mathbb C}\widehat W(z^3)\,d\mathfrak m(z)\\
+&amp;\quad+O\bigl(H^{1/6}+1\bigr).\quad(7.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac13\Bigl(\frac{27N(p_1p_2)}A\Bigr)^{1/3}\\
+&amp;\quad\cdot\int_{\mathbb C}\widehat W(z^3)\,d\mathfrak m(z)\\
+&amp;\quad+O\bigl(H^{1/6}+1\bigr).\quad(7.1)
+\end{aligned}
+\]</span>
+Indeed, the radius of the relevant lattice points is <span class="math" data-tex="\(|\tau|^{-1/3}\asymp H^{1/6}\)">\(|\tau|^{-1/3}\asymp H^{1/6}\)</span>, the function <span class="math" data-tex="\(z\mapsto\widehat W(z^3)\)">\(z\mapsto\widehat W(z^3)\)</span> is a Schwartz function, and deleting the origin costs <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. For <span class="math" data-tex="\(H\ge L^{C_g}\)">\(H\ge L^{C_g}\)</span> the error is a relative saving <span class="math" data-tex="\(O(H^{-1/6})\)">\(O(H^{-1/6})\)</span>. For a prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the nonzero multiples of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> contribute <span class="math" data-tex="\(O(H^{1/3}/N(\pi))\)">\(O(H^{1/3}/N(\pi))\)</span> to this sum, also when the spacing of <span class="math" data-tex="\(\pi\mathcal O\)">\(\pi\mathcal O\)</span> exceeds the radius. So restoring the condition <span class="math" data-tex="\((j,b_1b_2)=1\)">\((j,b_1b_2)=1\)</span> costs <span class="math" data-tex="\(O(H^{1/3}\sum_{\pi\mid b_1b_2}N(\pi)^{-1})\)">\(O(H^{1/3}\sum_{\pi\mid b_1b_2}N(\pi)^{-1})\)</span>, which saves any power of <span class="math" data-tex="\(L\)">\(L\)</span> by roughness. For (1.2), with <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the bound <span class="math" data-tex="\(O(H^{1/3})\)">\(O(H^{1/3})\)</span> for the cube sum suffices, and its contribution is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll\frac ABH^{1/3}\Bigl(\sum_b|\beta_b|\Bigr)^2\\
+&amp;\qquad=\mathcal Q\Bigl(B^{-1}\sum_b|\beta_b|\Bigr)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll\frac ABH^{1/3}\Bigl(\sum_b|\beta_b|\Bigr)^2\\
+&amp;\qquad=\mathcal Q\Bigl(B^{-1}\sum_b|\beta_b|\Bigr)^2 .
+\end{aligned}
+\]</span>
+With the diagonal and the noncube frequencies already bounded, this proves (1.2).</p>
+<p><strong>Lemma 7.1 (the constant).</strong> For a radial smooth <span class="math" data-tex="\(W\)">\(W\)</span> supported in an annulus,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{\mathbb C}\widehat W(z^3)\,d\mathfrak m(z)\\
+&amp;\qquad=c_*^2\int_{\mathbb C}W(y)\,|y|^{-2/3}\,d\mathfrak m(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{\mathbb C}\widehat W(z^3)\,d\mathfrak m(z)\\
+&amp;\qquad=c_*^2\int_{\mathbb C}W(y)\,|y|^{-2/3}\,d\mathfrak m(y).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(z\mapsto z^3\)">\(z\mapsto z^3\)</span> is three-to-one, with Jacobian <span class="math" data-tex="\(9|z|^4\)">\(9|z|^4\)</span>, so the left side is <span class="math" data-tex="\(\frac13\int\widehat W(y)|y|^{-4/3}d\mathfrak m(y)\)">\(\frac13\int\widehat W(y)|y|^{-4/3}d\mathfrak m(y)\)</span>. Write
+<span class="math math-display" data-tex="\[
+|y|^{-4/3}=\frac{\pi^{2/3}}{\Gamma(2/3)}\int_0^\infty e^{-\pi s|y|^2}s^{2/3}\frac{ds}s .
+\]">\[
+|y|^{-4/3}=\frac{\pi^{2/3}}{\Gamma(2/3)}\int_0^\infty e^{-\pi s|y|^2}s^{2/3}\frac{ds}s .
+\]</span>
+By Exercise 7.1 of the lesson on large sieves, rescaled, the transform of <span class="math" data-tex="\(y\mapsto e^{-\pi s|y|^2}\)">\(y\mapsto e^{-\pi s|y|^2}\)</span> is <span class="math" data-tex="\(x\mapsto\frac2{\sqrt3}s^{-1}e^{-4\pi|x|^2/s}\)">\(x\mapsto\frac2{\sqrt3}s^{-1}e^{-4\pi|x|^2/s}\)</span>. Parseval's identity for the trace pairing and Fubini's theorem therefore give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int\widehat W(y)|y|^{-4/3}d\mathfrak m(y)\\
+&amp;=\frac2{\sqrt3}\,\frac{\pi^{2/3}}{\Gamma(2/3)}\int W(x)\\
+&amp;\qquad\cdot\int_0^\infty s^{-4/3}e^{-4\pi|x|^2/s}\,ds\,d\mathfrak m(x).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int\widehat W(y)|y|^{-4/3}d\mathfrak m(y)\\
+&amp;=\frac2{\sqrt3}\,\frac{\pi^{2/3}}{\Gamma(2/3)}\int W(x)\\
+&amp;\qquad\cdot\int_0^\infty s^{-4/3}e^{-4\pi|x|^2/s}\,ds\,d\mathfrak m(x).
+\end{aligned}
+\]</span>
+The interchanges are justified because <span class="math" data-tex="\(\widehat W\)">\(\widehat W\)</span> is a Schwartz function, <span class="math" data-tex="\(|y|^{-4/3}\)">\(|y|^{-4/3}\)</span> is locally integrable in the plane, and <span class="math" data-tex="\(W\)">\(W\)</span> vanishes near <span class="math" data-tex="\(0\)">\(0\)</span>. The inner integral is <span class="math" data-tex="\((4\pi|x|^2)^{-1/3}\Gamma(\frac13)\)">\((4\pi|x|^2)^{-1/3}\Gamma(\frac13)\)</span>. Collecting the constants, the left side is <span class="math" data-tex="\(\kappa\int W(x)|x|^{-2/3}d\mathfrak m(x)\)">\(\kappa\int W(x)|x|^{-2/3}d\mathfrak m(x)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa&amp;=\frac13\cdot\frac2{\sqrt3}\cdot\frac{\pi^{1/3}\,\Gamma(\frac13)}{2^{2/3}\,\Gamma(\frac23)}\\
+&amp;=\frac{(2\pi)^{4/3}}{9\,\Gamma(\frac23)^2}=c_*^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\kappa&amp;=\frac13\cdot\frac2{\sqrt3}\cdot\frac{\pi^{1/3}\,\Gamma(\frac13)}{2^{2/3}\,\Gamma(\frac23)}\\
+&amp;=\frac{(2\pi)^{4/3}}{9\,\Gamma(\frac23)^2}=c_*^2,
+\end{aligned}
+\]</span>
+where the middle equality uses <span class="math" data-tex="\(\Gamma(\frac13)\Gamma(\frac23)=2\pi/\sqrt3\)">\(\Gamma(\frac13)\Gamma(\frac23)=2\pi/\sqrt3\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining (7.1) and Lemma 7.1 with the prefactor of Lemma 2.1 gives, for the pair <span class="math" data-tex="\(b_1,b_2\)">\(b_1,b_2\)</span>, the factor
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{A^{2/3}}{9D_d^2}\bigl(N(b_1)N(b_2)\bigr)^{-1/6}\\
+&amp;\qquad\cdot c_*^2\int W(y)|y|^{-2/3}d\mathfrak m(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{A^{2/3}}{9D_d^2}\bigl(N(b_1)N(b_2)\bigr)^{-1/6}\\
+&amp;\qquad\cdot c_*^2\int W(y)|y|^{-2/3}d\mathfrak m(y).
+\end{aligned}
+\]</span>
+Moreover <span class="math" data-tex="\(\sum_d\lambda_d/N(d)^2=\sum_d\mu(d)/N(d)^2\)">\(\sum_d\lambda_d/N(d)^2=\sum_d\mu(d)/N(d)^2\)</span><span class="math" data-tex="\(+O(L^{-D_0/2})\)">\(+O(L^{-D_0/2})\)</span>, because <span class="math" data-tex="\(\lambda_d=\mu(d)\)">\(\lambda_d=\mu(d)\)</span> up to <span class="math" data-tex="\(L^{D_0}\)">\(L^{D_0}\)</span> and the series converges absolutely with the divisor bound. The primary elements have density <span class="math" data-tex="\(\frac19\)">\(\frac19\)</span> for <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and squarefree counting by square-divisor inversion identifies the total cube term as
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_*^2|S(u)|^2\sum_a\mu^2(a)W_A(a)N(a)^{-1/3}\\
+&amp;\qquad+O(\mathcal QL^{-K&#x27;})\quad(7.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_*^2|S(u)|^2\sum_a\mu^2(a)W_A(a)N(a)^{-1/3}\\
+&amp;\qquad+O(\mathcal QL^{-K&#x27;})\quad(7.2)
+\end{aligned}
+\]</span>
+for <span class="math" data-tex="\(D_0,C_r,C_g\)">\(D_0,C_r,C_g\)</span> large. The counting error is a power saving: a smooth annular squarefree count has error <span class="math" data-tex="\(O_\epsilon(A^{1/2+\epsilon})\)">\(O_\epsilon(A^{1/2+\epsilon})\)</span>, and the weight <span class="math" data-tex="\(N(a)^{-1/3}\)">\(N(a)^{-1/3}\)</span> costs <span class="math" data-tex="\(A^{-1/3}\)">\(A^{-1/3}\)</span> against the main scale <span class="math" data-tex="\(A^{2/3}\)">\(A^{2/3}\)</span>.</p>
+<h2 id="8-cancellation-in-the-corrected-square">8. Cancellation in the corrected square</h2>
+<p>Open the square in (1.1). By the preceding sections, the term <span class="math" data-tex="\(\sum\mu^2(a)W_A(a)|F_u(a)|^2\)">\(\sum\mu^2(a)W_A(a)|F_u(a)|^2\)</span> is at most the main term of (7.2) plus <span class="math" data-tex="\(O(\mathcal QL^{-K&#x27;})\)">\(O(\mathcal QL^{-K&#x27;})\)</span>. The mixed term keeps the true weight <span class="math" data-tex="\(\mu^2(a)\)">\(\mu^2(a)\)</span>, and by Proposition 3.1(c) of the first lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_a\mu^2(a)W_A(a)N(a)^{-1/6}G(a)F_u(a)\\
+&amp;\qquad=\sum_{a,b}\beta_b(u)W_A(a)N(a)^{-1/6}G(ab).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_a\mu^2(a)W_A(a)N(a)^{-1/6}G(a)F_u(a)\\
+&amp;\qquad=\sum_{a,b}\beta_b(u)W_A(a)N(a)^{-1/6}G(ab).
+\end{aligned}
+\]</span>
+This is a Type I sum with outer variable <span class="math" data-tex="\(b\)">\(b\)</span> of length <span class="math" data-tex="\(B\ll X^{1/2}&lt;X^{0.51}\)">\(B\ll X^{1/2}&lt;X^{0.51}\)</span> and a radial inner weight. The angular factor, if any, is part of the outer coefficient. Proposition 4.1 of the lesson on the level formula, with angular order zero, replaces it by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_*\sum_{a,b}\beta_b(u)\,\mu^2(ab)\\
+&amp;\qquad\cdot W_A(a)\,N(a)^{-1/3}N(b)^{-1/6}
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_*\sum_{a,b}\beta_b(u)\,\mu^2(ab)\\
+&amp;\qquad\cdot W_A(a)\,N(a)^{-1/3}N(b)^{-1/6}
+\end{aligned}
+\]</span>
+with an error <span class="math" data-tex="\(O(A^{-1/6}X^{5/6-\eta})\)">\(O(A^{-1/6}X^{5/6-\eta})\)</span>. Since <span class="math" data-tex="\(|S(u)|\ll B^{5/6}L^{O(1)}\)">\(|S(u)|\ll B^{5/6}L^{O(1)}\)</span>, multiplication by <span class="math" data-tex="\(\overline{S(u)}\)">\(\overline{S(u)}\)</span> leaves the error
+<span class="math math-display" data-tex="\[
+A^{-1/6}B^{5/6}X^{5/6-\eta}L^{O(1)}=\mathcal QX^{-\eta}L^{O(1)} .
+\]">\[
+A^{-1/6}B^{5/6}X^{5/6-\eta}L^{O(1)}=\mathcal QX^{-\eta}L^{O(1)} .
+\]</span>
+In the model sum, remove the coprimality of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>: a common prime has norm greater than <span class="math" data-tex="\(L^{C_r}\)">\(L^{C_r}\)</span>, and the pairs sharing such a prime are fewer than all pairs by a factor <span class="math" data-tex="\(\sum_{N(\pi)&gt;L^{C_r}}N(\pi)^{-2}\)">\(\sum_{N(\pi)&gt;L^{C_r}}N(\pi)^{-2}\)</span>. With coefficient moments and Cauchy's inequality this keeps an arbitrarily large logarithmic saving. So the mixed term, times <span class="math" data-tex="\(c_*\overline{S(u)}\)">\(c_*\overline{S(u)}\)</span>, equals the main term of (7.2) up to the allowed error. The model square has the same main term, because <span class="math" data-tex="\(|G(a)|^2=1\)">\(|G(a)|^2=1\)</span> for squarefree <span class="math" data-tex="\(a\)">\(a\)</span>. The three terms of the opened square have coefficients <span class="math" data-tex="\(1,-2,1\)">\(1,-2,1\)</span>, so the main terms cancel.</p>
+<p>Choose <span class="math" data-tex="\(D_0\)">\(D_0\)</span> first, then <span class="math" data-tex="\(C_r\)">\(C_r\)</span> large enough for the roughness and the sieve coprimality, then <span class="math" data-tex="\(C_g\)">\(C_g\)</span> large enough for the diagonal and the lattice errors. Finally use (SW) with the finitely many conductor, height and saving powers required. This proves (1.1), the last assertion of Proposition 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 8.1 (the logarithmic transition).</strong> The uncorrected estimate (1.2) keeps the sparsity of prime coefficients. Suppose <span class="math" data-tex="\(b\)">\(b\)</span> is a single prime and <span class="math" data-tex="\(a\)">\(a\)</span> a product of two primes, each in its own dyad of length <span class="math" data-tex="\(X^{1/3}L^{O(1)}\)">\(X^{1/3}L^{O(1)}\)</span>, with bounded weights. Then <span class="math" data-tex="\(\sum|\beta_b|\ll B/L\)">\(\sum|\beta_b|\ll B/L\)</span>, and (1.2) gives a bilinear bound <span class="math" data-tex="\(O(X^{5/6}L^{-3/2})\)">\(O(X^{5/6}L^{-3/2})\)</span> when <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>; this is carried out in the lesson <em>Bilinear sums and the sharp cutoff</em>. This half power of <span class="math" data-tex="\(L\)">\(L\)</span> beyond <span class="math" data-tex="\(X^{5/6}/L\)">\(X^{5/6}/L\)</span> is what allows the transition through three primes of nearly equal norm to survive a power of <span class="math" data-tex="\(\log L\)">\(\log L\)</span> in the number of pieces. No power saving is needed there.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>9.1.</strong> Check the identity (3.2).</p>
+<p><strong>9.2.</strong> Verify that <span class="math" data-tex="\(\lambda_d=\mu(d)\)">\(\lambda_d=\mu(d)\)</span> when <span class="math" data-tex="\(N(d)\le L^{D_0}\)">\(N(d)\le L^{D_0}\)</span>, and that <span class="math" data-tex="\(|\lambda_d|\le\tau(d)^2\)">\(|\lambda_d|\le\tau(d)^2\)</span> in general.</p>
+<p><strong>9.3.</strong> Show that a cube in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is congruent modulo <span class="math" data-tex="\(3\)">\(3\)</span> to a rational integer, and that <span class="math" data-tex="\(e(\operatorname{Tr}(n/(3\lambda)))=1\)">\(e(\operatorname{Tr}(n/(3\lambda)))=1\)</span> for every rational integer <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>9.4.</strong> In the case <span class="math" data-tex="\(x&gt;y\)">\(x&gt;y\)</span> of Section 4, show directly that the ratio <span class="math" data-tex="\(P^{2/3}Q^{1/3}/B\)">\(P^{2/3}Q^{1/3}/B\)</span> is at most <span class="math" data-tex="\(B^{-1/3+o(1)}\)">\(B^{-1/3+o(1)}\)</span>.</p>
+<p><strong>9.5.</strong> Verify Lemma 7.1 for the Gaussian <span class="math" data-tex="\(W(y)=e^{-\pi a|y|^2}\)">\(W(y)=e^{-\pi a|y|^2}\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, by computing both sides in polar coordinates. (The lemma is stated for weights supported in an annulus, but its proof applies to this <span class="math" data-tex="\(W\)">\(W\)</span> as well.)</p>
+<h2 id="10-solutions">10. Solutions</h2>
+<p><strong>9.1.</strong> With <span class="math" data-tex="\(B&#x27;=B/(FV_l)\)">\(B&#x27;=B/(FV_l)\)</span> and <span class="math" data-tex="\(\mathcal Q=ABH^{1/3}=A^{2/3}B^{5/3}\)">\(\mathcal Q=ABH^{1/3}=A^{2/3}B^{5/3}\)</span>, and <span class="math" data-tex="\(J=kH&#x27;=kHD_d^2M/F^2\)">\(J=kH&#x27;=kHD_d^2M/F^2\)</span><span class="math" data-tex="\(=kB^2D_d^2M/(AF^2)\)">\(=kB^2D_d^2M/(AF^2)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{AF}{D_d^2MB}\cdot\frac{J^{1/3}B^2}{F^2V_l^2}\cdot\frac1{A^{2/3}B^{5/3}}\\
+&amp;=\frac{A^{1/3}J^{1/3}B^{-2/3}}{D_d^2MFV_l^2}\\
+&amp;=\frac{k^{1/3}}{D_d^{4/3}M^{2/3}F^{5/3}V_l^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{AF}{D_d^2MB}\cdot\frac{J^{1/3}B^2}{F^2V_l^2}\cdot\frac1{A^{2/3}B^{5/3}}\\
+&amp;=\frac{A^{1/3}J^{1/3}B^{-2/3}}{D_d^2MFV_l^2}\\
+&amp;=\frac{k^{1/3}}{D_d^{4/3}M^{2/3}F^{5/3}V_l^2}.
+\end{aligned}
+\]</span></p>
+<p><strong>9.2.</strong> The function <span class="math" data-tex="\(d\mapsto\sum_{[c_1,c_2]=d}\mu(c_1)\mu(c_2)\)">\(d\mapsto\sum_{[c_1,c_2]=d}\mu(c_1)\mu(c_2)\)</span> is multiplicative on squarefree <span class="math" data-tex="\(d\)">\(d\)</span>. At a prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span> the pairs are <span class="math" data-tex="\((1,\pi),(\pi,1),(\pi,\pi)\)">\((1,\pi),(\pi,1),(\pi,\pi)\)</span>, with sum <span class="math" data-tex="\(-1-1+1=-1=\mu(\pi)\)">\(-1-1+1=-1=\mu(\pi)\)</span>. If <span class="math" data-tex="\(N(d)\le L^{D_0}\)">\(N(d)\le L^{D_0}\)</span>, every divisor of <span class="math" data-tex="\(d\)">\(d\)</span> has norm at most <span class="math" data-tex="\(L^{D_0}\)">\(L^{D_0}\)</span>, so the truncation has no effect. In general the number of pairs with <span class="math" data-tex="\([c_1,c_2]=d\)">\([c_1,c_2]=d\)</span> is at most <span class="math" data-tex="\(\tau(d)^2\)">\(\tau(d)^2\)</span>.</p>
+<p><strong>9.3.</strong> Write <span class="math" data-tex="\(j=a+b\omega\)">\(j=a+b\omega\)</span>. Since cubing is additive modulo <span class="math" data-tex="\(3\)">\(3\)</span>, <span class="math" data-tex="\(j^3\equiv a^3+b^3\omega^3=a^3+b^3\pmod3\)">\(j^3\equiv a^3+b^3\omega^3=a^3+b^3\pmod3\)</span>. For a rational integer <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(\operatorname{Tr}(n/(3\lambda))=\frac n3\operatorname{Tr}(\lambda^{-1})=0\)">\(\operatorname{Tr}(n/(3\lambda))=\frac n3\operatorname{Tr}(\lambda^{-1})=0\)</span> by Lemma 1.3 of the first lesson.</p>
+<p><strong>9.4.</strong> In exponents the ratio is <span class="math" data-tex="\((2x+y)/3-1\)">\((2x+y)/3-1\)</span>. Since <span class="math" data-tex="\(x+2y\le1\)">\(x+2y\le1\)</span> and <span class="math" data-tex="\(x\le1\)">\(x\le1\)</span>, we have <span class="math" data-tex="\(2x+y\le2x+\frac{1-x}2=\frac{3x+1}2\le2\)">\(2x+y\le2x+\frac{1-x}2=\frac{3x+1}2\le2\)</span>, so the exponent is at most <span class="math" data-tex="\(-\frac13\)">\(-\frac13\)</span>.</p>
+<p><strong>9.5.</strong> By Exercise 7.1 of the lesson on large sieves, rescaled, <span class="math" data-tex="\(\widehat W(z)=\frac2{\sqrt3}a^{-1}e^{-4\pi|z|^2/a}\)">\(\widehat W(z)=\frac2{\sqrt3}a^{-1}e^{-4\pi|z|^2/a}\)</span>. In polar coordinates <span class="math" data-tex="\(d\mathfrak m=\frac2{\sqrt3}r\,dr\,d\phi\)">\(d\mathfrak m=\frac2{\sqrt3}r\,dr\,d\phi\)</span>, so the left side is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac43\cdot\frac{2\pi}a\int_0^\infty e^{-4\pi r^6/a}r\,dr\\
+&amp;\qquad=\frac{4\pi}9\,(4\pi)^{-1/3}\,\Gamma(\tfrac13)\,a^{-2/3},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac43\cdot\frac{2\pi}a\int_0^\infty e^{-4\pi r^6/a}r\,dr\\
+&amp;\qquad=\frac{4\pi}9\,(4\pi)^{-1/3}\,\Gamma(\tfrac13)\,a^{-2/3},
+\end{aligned}
+\]</span>
+by the substitution <span class="math" data-tex="\(s=4\pi r^6/a\)">\(s=4\pi r^6/a\)</span>. The right side is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_*^2\,\frac{4\pi}{\sqrt3}\int_0^\infty e^{-\pi ar^2}r^{1/3}dr\\
+&amp;\qquad=c_*^2\,\frac{2\pi}{\sqrt3}\,(\pi a)^{-2/3}\,\Gamma(\tfrac23).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_*^2\,\frac{4\pi}{\sqrt3}\int_0^\infty e^{-\pi ar^2}r^{1/3}dr\\
+&amp;\qquad=c_*^2\,\frac{2\pi}{\sqrt3}\,(\pi a)^{-2/3}\,\Gamma(\tfrac23).
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(c_*^2=(2\pi)^{4/3}/(9\Gamma(\frac23)^2)\)">\(c_*^2=(2\pi)^{4/3}/(9\Gamma(\frac23)^2)\)</span> and <span class="math" data-tex="\(\Gamma(\frac13)=2\pi/(\sqrt3\,\Gamma(\frac23))\)">\(\Gamma(\frac13)=2\pi/(\sqrt3\,\Gamma(\frac23))\)</span>, both sides equal <span class="math" data-tex="\(2^{7/3}\pi^{5/3}/(9\sqrt3\,\Gamma(\frac23))\cdot a^{-2/3}\)">\(2^{7/3}\pi^{5/3}/(9\sqrt3\,\Gamma(\frac23))\cdot a^{-2/3}\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-023] OpenAI, <em>An unconditional first moment for cubic Gauss sums</em>, OpenAI Math Release preprint, 25 September 2026, Section 5 (corrected dispersion) and Appendix A.4 (the angular version). https://github.com/openai/math/tree/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026</li>
+<li>[DR] A. Dunn and M. Radziwiłł, <em>Bias in cubic Gauss sums: Patterson's conjecture</em>, arXiv:2109.07463v3 (2024), Section 9 (the dispersion estimate with the correction from cube frequencies, proved there under the Generalized Riemann Hypothesis). https://arxiv.org/abs/2109.07463v3</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

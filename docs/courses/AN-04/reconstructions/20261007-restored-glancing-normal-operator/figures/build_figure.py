@@ -34,6 +34,6 @@ svg='''<svg xmlns="http://www.w3.org/2000/svg" width="780" height="440" viewBox=
 '''
 f.write_text(svg,encoding='utf8')
 sha=lambda x:hashlib.sha256(x.read_bytes()).hexdigest()
-record={'schema':'an04-glancing-normal-operator-diagram/v1','svg':f.relative_to(r).as_posix(),'svg_sha256':sha(f),'generator_sha256':sha(Path(__file__)),'width':780,'height':440,'proof_locators':'GN8–GN28','role':'Estimate schematic; no geometry or numerical solution claim','source_url':'https://math.stanford.edu/~andras/psmcrrb.pdf','source_locators':'Lemma7.1 PDF42–44 and correction PDF1–2; newly written diagram','actual_render_inspection_pending':True,'preserved_original_diagram':True}
+record={'schema':'an04-glancing-normal-operator-diagram/v1','svg':f.relative_to(r).as_posix(),'svg_sha256':sha(f),'generator_sha256':sha(Path(__file__)),'width':780,'height':440,'proof_locators':'GN8–GN28','role':'Estimate schematic; no geometry or numerical solution claim','source_url':'https://math.stanford.edu/~andras/psmcrrb.pdf','source_locators':'Lemma7.1 PDF42–44 and correction PDF1–2; newly written diagram','scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                  }
 (p/'figure-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print({'written':True,'width':780,'height':440})

@@ -57,7 +57,7 @@ rec={'schema':'exact-two-reflections-figure/v1','figure':'figures/two-reflection
  'qa_image':qa.name,'qa_image_sha256':sha(qa),
  'coordinates':{'P':P.tolist(),'gP':gP.tolist(),'fgP':fgP.tolist(),
                 'reflection_vectors':[[0,1],[-.5,1]]},
- 'scope':'Exact two-dimensional slice and minus-one eigenlines of the simultaneous model, not a flow or a symplectic normal-form proof.',
- 'visual_inspection':'Pending author visual inspection.'}
+ 'scope':'Exact two-dimensional slice and minus-one eigenlines of the simultaneous model, not a flow or a symplectic normal-form proof.' 
+                                                        }
 (dest/'figure-record.json').write_text(json.dumps(rec,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':str(svg),'qa':str(qa),'sha256':rec['sha256']}))

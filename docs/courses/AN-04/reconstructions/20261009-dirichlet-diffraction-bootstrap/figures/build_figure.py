@@ -45,6 +45,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'right_interval':['-1/64','1/64'],'right_formula':'-4*sqrt(1-mu)*(sqrt(1/16-mu)-sqrt(max(-mu,0)))',
  'reflection_segment':'Covector jump from -sqrt(-mu) to +sqrt(-mu) at x=0; not an ordinary Hamilton arc.',
  'meaning':'Exact coordinate projection and continuous broken cap map, not a numerical PDE solution.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps(record))

@@ -4,4 +4,4 @@ Read [the proof](global-scalar-tests-on-one-dimensional-manifolds.html) or edit 
 
 Run `python -B model_check.py` and `python -B figures/build_figure.py` for the finite checks and diagram. The analytic argument is in the lesson.
 Related proofs: proof map.
-This component treats one-dimensional manifolds and the original Banach remainder. For arbitrary-dimensional tests and observation, see [general scalar family and observation estimates](../20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html). External human foundations retain their recorded terms; internal CC0-export closure is not claimed. Independent programme expression is CC0-1.0.
+This component treats one-dimensional manifolds and the original Banach remainder. For arbitrary-dimensional tests and observation, see [general scalar family and observation estimates](../20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html). Some prerequisite proofs are external readings; their authorship and licence notices remain applicable. Independent programme expression is CC0-1.0.

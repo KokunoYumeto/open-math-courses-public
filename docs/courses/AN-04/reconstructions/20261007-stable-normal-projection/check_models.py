@@ -134,6 +134,6 @@ checks.append({'name': 'Correct projection, wrong factor order and weighted Lapl
 result = {'schema': 'AN04-stable-normal-projection-models/v1',
           'source_sha256': hashlib.sha256((ROOT/'stable-normal-projection.md').read_bytes()).hexdigest(),
           'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-          'passed': True, 'general_theorem_certified': False, 'checks': checks}
+          'passed': True, 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.', 'checks': checks}
 (ROOT/'model-check.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
 print(json.dumps({'passed': True, 'groups': len(checks), 'Fourier_integrals': cases}))

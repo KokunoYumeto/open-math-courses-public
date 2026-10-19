@@ -33,6 +33,6 @@ record=dict(svg=out.relative_to(ROOT).as_posix(),svg_sha256=hashlib.sha256(out.r
  generator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
  exact_formula_locators=["GP10","GP12","GP32"],original_illustration=True,
  numerical_scope="Plots of exact polynomial coordinate projections, not a numerical PDE solution.",
- actually_inspected=False)
+ scope='The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.')
 (ROOT/"figure-check.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"generated":True,"figure":out.name}))

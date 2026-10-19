@@ -39,6 +39,6 @@ result={'svg':out.relative_to(HERE.parent).as_posix(),
  'proof_locators':['WQ33','WQ37'],'exact_boundary_values':['-1/2','1','1/2'],
  'lower_term_magnitude':'sqrt(5)*gamma/2','upper_bound':'sqrt(5)*(1+gamma**2)/4',
  'gap':'sqrt(5)*(gamma-1)**2/4','gamma_range':[0,1],
- 'actually_inspected':False,'depicts_PDE_solution':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','depicts_PDE_solution':False}
 (HERE.parent/'figure-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'svg_bytes':out.stat().st_size,'proof_locators':result['proof_locators']}))

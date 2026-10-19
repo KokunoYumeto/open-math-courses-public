@@ -57,6 +57,6 @@ report={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'exact_parameters':{'delta':'1/64','epsilon':'1/8','normal_and_transverse_scale':'1/512','outer_a':'1','inner_a':'1/2'},
  'support':'X >= 0, T < 1 + a epsilon, X + V^2 < 1 + a + T',
  'omitted_coordinates':'eta=(1,0,1), z3=-2 delta T, z1=epsilon delta V+2 delta T, z2=0',
- 'not_a_solution_intensity':True,'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'not_a_solution_intensity':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (P.parent/'figure-check.json').write_text(json.dumps(report,indent=2)+'\n','utf-8')
 print(json.dumps(report))

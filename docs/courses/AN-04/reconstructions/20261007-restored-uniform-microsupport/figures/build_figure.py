@@ -49,6 +49,6 @@ record={'passed':True,'source_sha256':sha(source),'script_sha256':sha(Path(__fil
  'exact_coordinate_checks':['Every band has endpoints N/2 and 2N.','Open endpoints distinguish possible support from a filled multiplier profile.',
  'Every center is the integer mode N with exact multiplier one.','Every pairing value has fourth power 1+m squared.',
  'Both proposed weighted norms equal one for every sample.','The unit comparison line uses the same vertical scale as pairing samples.'],
- 'actually_inspected':False,'general_unboundedness_proved_in_lesson_not_by_samples':True}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','general_unboundedness_proved_in_lesson_not_by_samples':True}
 (root/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':record['asset'],'passed':True,'bands':len(rows),'samples':len(samples)}))

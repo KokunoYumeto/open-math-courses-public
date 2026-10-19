@@ -40,7 +40,7 @@ plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (root.parent/'figure-check.json').write_text(json.dumps({
  'svg':'figures/escape-cap-and-active-fiber.svg','svg_sha256':sha(out),
- 'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'generator_sha256':sha(Path(__file__)),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'exact_formulas':{'h':'E(t)','rho':'E(t+3)E(-7/4-t)','cap_positive_interval':['-3','-7/4'],'retained_zero_class':['-7/4','0'],'support_time_projection':['-3/2','3/2'],'rank_two_mark':'-2'},
  'plot_scope':'Samples of exact smooth formulas and exact interval endpoints within the retained work strip; no active-fiber assertion outside that strip.',
  'independent_expression_licence':'CC0-1.0'},indent=2)+'\n',encoding='utf-8')

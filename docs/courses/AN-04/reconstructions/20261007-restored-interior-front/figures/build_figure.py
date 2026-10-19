@@ -39,7 +39,7 @@ record=dict(schema='AN04-interior-front-figure/v1',svg=svg.relative_to(root).as_
  exact_orders={'solution_b':3,'solution_ordinary':4,'source_b':4,'source_ordinary':3},
  pulse_integrals=[1,1],states=[[0,1],[1,1],[1,2]],states_are_coefficients_of_h=True,
  arrows_are_exact_linear_maps=True,no_physical_trajectory_or_duration_claimed=True,
- source_credit='Vasy, Propagation of singularities, PDF3; graph-operator lesson GT3–GT17 and its approved Hörmander source route.',
- new_expression_licence='CC0-1.0',actual_render_visually_inspected=False)
+ source_credit='Vasy, Propagation of singularities, PDF3; graph-operator lesson GT3–GT17 and its Hörmander source route.',
+ new_expression_licence='CC0-1.0',scope='The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.')
 (root/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'exact_algebraic_figure':True,'states':3,'canvas':[780,460]}))

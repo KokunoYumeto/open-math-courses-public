@@ -46,7 +46,7 @@ text(575,440,'‖v‖²_Hw = π⁻¹‖ℓ^(5/6)Zεv‖² + ‖v‖²_HL','small
 text(575,464,'Full pair recovery, with coarse errors   [WR20–WR22]','small')
 arrow(790,335,790,375)
 text(555,515,'Scope: fields constructed from the localized stable pair.','small')
-text(555,540,'Representation of every energy solution still requires proof.','small')
+text(555,540,'The estimate concerns the stated stable-pair construction.','small')
 text(25,575,'Left: projected canonical input shift [WR23]. Right: the two estimates combine; neither replaces the other.','small')
 parts.append('</svg>')
 Path(__file__).with_name('airy-weighted-reverse.svg').write_text('\n'.join(parts),'utf-8')

@@ -278,7 +278,7 @@ The transverse scale is \(\epsilon\delta=4096\delta^2\), so it is parabolic. The
 
 ## 7. What this closes in the full propagation proof
 
-(GN17) proves the variable-coefficient normal-energy input for the stated smooth-boundary scalar wave principal form, retaining complex matrix lower terms and both weak form domains. (GN22) is the normalized derivative estimate used in the error; (GN27)–(GN28) establish the corrected linear b-error scale. Vasy's corner theorem and the entire assigned smooth principal-type, systems, crossings and complex-phase scope remain active; this lesson does not replace them by the collar hypothesis.
+(GN17) proves the variable-coefficient normal-energy input for the stated smooth-boundary scalar wave principal form, retaining complex matrix lower terms and both weak form domains. (GN22) is the normalized derivative estimate used in the error; (GN27)–(GN28) establish the corrected linear b-error scale. The collar hypothesis here does not supply the hypotheses of Vasy's corner theorem, general systems with crossings or complex phases.
 
 Next come the quadratic normal operator error, a complete boundary-compatible positive-commutator decomposition, justified regularization and the analytic criterion of the [parabolic-window lesson](../20261007-restored-parabolic-windows/parabolic-wavefront-windows-and-rays.md). The exact current provider chain is recorded in the proof map. 
 

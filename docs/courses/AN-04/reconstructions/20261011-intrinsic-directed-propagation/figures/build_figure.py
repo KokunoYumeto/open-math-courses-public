@@ -30,5 +30,5 @@ text(215,569,'A′(−t)',18,'#ad5720');text(798,569,'A′(t)',18,'#096b77');tex
 text(50,796,'A(t) = exp(−1/t²) for t &gt; 0, and 0 for t ≤ 0. Zero sets and arrows are exact.',17)
 p.append('</svg>');svg=root/'figures/intrinsic-directed-propagation.svg';svg.write_text('\n'.join(p),'utf-8')
 sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
-(root/'figure-check.json').write_text(json.dumps({'svg':'figures/intrinsic-directed-propagation.svg','svg_sha256':sha(svg),'generator_sha256':sha(Path(__file__)),'coordinate_formulas':['outgoing coefficient = 2t^(-3)exp(-1/t^2) for t>0, zero otherwise','incoming coefficient = outgoing(-t)','both orientation arrows point toward increasing t'],'actually_inspected':False,'exact_coordinate_review_complete':False},indent=2)+'\n','utf-8')
+(root/'figure-check.json').write_text(json.dumps({'svg':'figures/intrinsic-directed-propagation.svg','svg_sha256':sha(svg),'generator_sha256':sha(Path(__file__)),'coordinate_formulas':['outgoing coefficient = 2t^(-3)exp(-1/t^2) for t>0, zero otherwise','incoming coefficient = outgoing(-t)','both orientation arrows point toward increasing t'],'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         },indent=2)+'\n','utf-8')
 print(svg)

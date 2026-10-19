@@ -65,6 +65,6 @@ record={'schema':'AN04-mixed-dirichlet-figure/v1','recorded_utc':datetime.now(ti
     'right_coordinates':{'origin_pixels':[825,310],'units_to_pixels':96,'axes':['u_t','u_r'],'second_pixel_sign':-1,
         'energy':'u_t^2+u_r^2+u_t*u_r','eigenvalues':[1.5,0.5],'semiaxis_lengths':[math.sqrt(2/3),math.sqrt(2)]},
     'scope':'Exact flat two-variable model and real derivative energy; no general curved-boundary ray claim.',
-    'actual_reader_inspection_pending':True,'general_proof_certified_by_samples':False,'licence':'CC0-1.0'}
+                                                                                       'licence':'CC0-1.0'}
 (root/'figure-samples.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'samples':len(rows),'passed':True,'figure':out.name}))

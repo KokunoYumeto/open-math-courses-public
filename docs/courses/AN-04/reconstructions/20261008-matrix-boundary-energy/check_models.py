@@ -87,7 +87,7 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 result={'passed':True,'total_cases':len(checks),'exact_algebraic_checks':len(checks),
         'source_sha256':sha(ROOT/'matrix-robin-energy-and-weak-uniqueness.md'),
         'script_sha256':sha(Path(__file__)),'checks':checks,
-        'scope':'Finite identities only; weak approximation, domain of dependence and uniqueness are proved in the lesson.',
-        'public_release_authorized':False}
+        'scope':'Finite identities only; weak approximation, domain of dependence and uniqueness are proved in the lesson.' 
+                                         }
 (ROOT/'model-check.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'exact_cases':len(checks)}))

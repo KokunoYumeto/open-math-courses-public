@@ -45,6 +45,6 @@ record={'asset':'figures/tent-source.svg','sha256':sha(out),'script_sha256':sha(
  'exact_coordinate_checks':{'origin':list(origin),'x_scale':sx,'y_scale':sy,'graph_vertices':points,
  'derivative_jumps':derivative_jumps,'interior_source_weights':weights},
  'arrows_are_distribution_weights_not_a_density':True,'boundary_source_of_whole_line_extension_not_claimed':True,
- 'actually_inspected':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':out.name,'exact_coordinate_checks':len(record['exact_coordinate_checks']),'passed':True}))

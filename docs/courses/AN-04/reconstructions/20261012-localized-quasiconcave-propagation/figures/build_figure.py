@@ -32,7 +32,7 @@ for ax in [ax1,ax2,ax3]:ax.grid(alpha=.2)
 p=MOD/'figures/transported-weight-and-shell-powers.svg';fig.savefig(p);plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 v={'svg':'figures/transported-weight-and-shell-powers.svg','svg_sha256':sha(p),
- 'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'generator_sha256':sha(Path(__file__)),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'numerical_samples_of_exact_formula':True,'arbitrary_coefficient_transport_inferred_from_plot':False,
  'parameters':{'epsilon':'3/10','R':'1','t':'1/10','a':'1/100'},
  'exact_formula':'v=epsilon/2+(y-it)^2/R^2; |a^v|=a^(Re v)',

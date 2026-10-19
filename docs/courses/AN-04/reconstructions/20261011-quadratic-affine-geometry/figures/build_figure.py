@@ -55,5 +55,5 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 r={'svg':'figures/'+p.name,'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),
  'sample_counts':[601,601,401],'ranges':{'flat_time':[-3,3],'radial_time':[-2,2]},
  'primitive_evaluation':'B(s)=s exp(-1/s^2)-sqrt(pi) erfc(1/s) for s>0, zero otherwise; u=B(t-1)-B(-t-1). This evaluates the integral in X1. Differentiate B to obtain E; its limit at zero is zero.',
- 'source_proof_locators':['QAF:X1','QAF:X2','QAF:V0'],'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'source_proof_locators':['QAF:X1','QAF:X2','QAF:V0'],'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (root/'figure-check.json').write_text(json.dumps(r,indent=2)+'\n','utf-8');print(json.dumps({'figure_sha256':r['svg_sha256']}))

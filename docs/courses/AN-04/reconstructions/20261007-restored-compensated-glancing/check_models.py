@@ -56,6 +56,6 @@ groups.append({'name':'PC39 antidual action requires the left parametrix product
 
 record={'schema':'an04-compensated-glancing-models/v1','checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
  'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
- 'passed':True,'groups':groups,'general_theorem_certificate':False}
+ 'passed':True,'groups':groups,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (p/'model-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'groups':len(groups),'general_theorem_certificate':False})
+print({'passed':True,'groups':len(groups),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

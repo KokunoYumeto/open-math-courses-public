@@ -305,7 +305,7 @@ In the model of Exercise 1 choose \(\lambda=\eta>0\), \(M=2\) and \(\delta=1/64\
 The determinant of the two rows is
 \(\Psi_\delta\Psi_{\delta/2}(R_{\delta/2}-R_\delta)>0\). The flat-cutoff positivity condition is \(9M\delta=9/32\le1/2\). The incoming supports have \(r/\lambda^2\ge1/4096\) and \(1/16384\), respectively. These are positive gaps for these selected commutants; they are not uniform over all regularity orders, since the damping constant and \(\delta_s\) may change. The fixed region in B1 does not require such a uniform gap.
 
-## 8. Exact geometry and remaining scope
+## 8. Exact geometry and scope
 
 ![The exact tangent base curve and the continuous cap-travel time across interior turning, tangency and reflection](figures/strict-diffraction.svg)
 

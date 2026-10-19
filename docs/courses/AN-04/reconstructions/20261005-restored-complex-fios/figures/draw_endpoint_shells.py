@@ -50,6 +50,6 @@ report={'passed':True,'frozen_scale':R,'ellipse_equation':'16 dx^2 + deta^2/16 =
  'near_factor':1,'near_band':'abs(k-j)<=3','far_factor':'2^(-j-k)',
  'figure_sha256':sha(p),'script_sha256':sha(Path(__file__)),'png_sha256':sha(png),
  'proof':'endpoint-half-order-bound.md E0-E4','finite_grid_is_general_proof':False,
- 'visual_inspection':'pending'}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'endpoint-shells-data.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':p.name,'sha256':sha(p)}))

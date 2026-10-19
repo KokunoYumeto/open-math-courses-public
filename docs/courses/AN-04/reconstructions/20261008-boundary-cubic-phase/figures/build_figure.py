@@ -42,6 +42,6 @@ record=dict(svg=out.relative_to(ROOT).as_posix(),svg_sha256=hashlib.sha256(out.r
  generator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
  exact_formula_locators=["BC4","BC35","BC37","BC38"],original_illustration=True,
  numerical_scope="Coordinate plots of exact phase and covector formulas in the verified variable-base example.",
- actually_inspected=False)
+ scope='The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.')
 (ROOT/"figure-check.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"generated":True,"figure":out.name,"caustic_at_fixed_mu":float(qc)}))

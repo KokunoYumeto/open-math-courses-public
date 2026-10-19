@@ -47,6 +47,6 @@ check={'svg':'figures/'+out.name,'svg_sha256':hashlib.sha256(raw).hexdigest(),
  'scale_panel':{'rho':'3/4','delta':'1/4','epsilon':'1/2','lambda':4096,
  'amplitude_scale':'1/8','Fresnel_scale':'1/64','rescaled_parameter':64},
  'sampled_curves':curves,'endpoint':{'rho':'1/2','exact_error':'2 sin(1/4)'},
- 'samples_are_not_a_proof':True,'embedded_font_files':False,'actually_inspected':False}
+ 'samples_are_not_a_proof':True,'embedded_font_files':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (HERE.parent/'figure-check.json').write_text(json.dumps(check,indent=2)+'\n','utf-8')
 print(json.dumps({'svg':str(out),'samples':len(lam),'embedded_font_files':False}))

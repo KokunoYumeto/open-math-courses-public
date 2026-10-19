@@ -61,7 +61,7 @@ for _ in range(20):
 checks.append('Both Cotlar interaction matrices checked on a noncommuting finite family')
 out={'passed':True,'finite_groups':len(checks),'checks':checks,'script_sha256':sha(Path(__file__)),
  'source_hashes':{p.name:sha(p) for p in sorted(ROOT.glob('*.md'))},
- 'limitations':'Finite algebra and numerical model checks; analytic completeness is reviewed separately.',
- 'general_metric_L2_theorem_included':True,'Fefferman_Phong_operator_theorem_included':True,'U033_restored':False}
+ 'limitations':'Finite algebra and numerical model calculations; the general analytic statements use the written arguments.',
+ 'general_metric_L2_theorem_included':True,'Fefferman_Phong_operator_theorem_included':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

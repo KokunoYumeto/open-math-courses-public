@@ -47,7 +47,7 @@ result={'svg':'figures/'+target.name,'svg_sha256':hashlib.sha256(target.read_byt
  'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
  'coordinates':{'left_lambda':1000000,'left_b_interval':[-4,6],'equal_terms_b':root,
  'right_Q':1,'right_delta':.1,'right_b_over_k_interval':[-.1,.1],'samples_per_lambda':81,'eigenvalue_samples':records},
- 'exact_coordinate_review_complete':False,'actually_inspected':False,
+                                                                     
  'scope':'Numerical illustration of AE17/AE18 and the exact AE36 Gram matrix; uniform bounds are analytic.'}
 (ROOT/'figure-check.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
 print(json.dumps(result['coordinates']))

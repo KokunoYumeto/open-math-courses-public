@@ -390,7 +390,7 @@ Multiplication in either order gives the identity: the diagonal numerators are \
 
 *The first panel displays the three exact quantities in (WQ33): the interior pairing plus the retained boundary term equals the weak form. The second panel compares (WQ37)'s exact magnitude and upper bound for \(0\le\gamma\le1\), with their nonnegative difference shaded. The endpoint \(\gamma=0\) is the continuous limit. These are pairings and weight balances, not solution amplitudes or characteristic rays. Full proofs: W3–W5 and Exercises 1–2.*
 
-## 8. What remains for strict propagation
+## 8. Scope of the quadratic estimate
 
 The symbol inequality now has an actual weak-form realization, with the exact lower mixed norm, natural-antidual forcing and all complex lower coefficients. The two independent symbol rows also give the operator estimate (WQ28). The relevant source book's boundary-trace term has not been thrown away: the principal multiple is represented by \(q_0(u,Gu)\), tested in the original domain.
 

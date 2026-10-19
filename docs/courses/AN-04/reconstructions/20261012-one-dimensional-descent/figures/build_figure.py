@@ -51,7 +51,7 @@ record={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(P
   'beta':'sign(t)*exp(-1/(abs(t)-1)) outside [-1,1]; zero inside',
   'h':'exp(-1/(abs(t)-1))/(abs(t)-1)^2 outside [-1,1]; zero inside',
   'complex_coordinate':'w=beta(t)+i*y','comparison':'F(beta)=-beta^2'},
- 'sampled_for_illustration':True,'numerical_integral_used':False,'actually_inspected':False,
- 'exact_coordinate_review_complete':False,'licence':'CC0-1.0'}
+ 'sampled_for_illustration':True,'numerical_integral_used':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
+                                          'licence':'CC0-1.0'}
 (HERE.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure_bytes':out.stat().st_size,'sha256':sha(out)}))

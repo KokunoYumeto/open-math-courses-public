@@ -80,7 +80,7 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'passed':True,'total_cases':len(checks),'exact_algebraic_checks':len(checks),
         'source_sha256':sha(ROOT/'causal-matrix-robin-existence-and-regularity.md'),
         'script_sha256':sha(Path(__file__)),'checks':checks,
-        'scope':'Exact finite identities only. Supported existence, trace recovery and continuation are proved in the lesson.',
-        'public_release_authorized':False}
+        'scope':'Exact finite identities only. Supported existence, trace recovery and continuation are proved in the lesson.' 
+                                         }
 (ROOT/'model-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'exact_cases':len(checks)}))

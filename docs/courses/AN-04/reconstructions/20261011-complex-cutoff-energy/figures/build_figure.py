@@ -35,5 +35,5 @@ file=HERE/'adaptive-root-scales.svg'
 fig.savefig(file,metadata={'Date':None,'Creator':'AN-04 original reproducible figure'})
 plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-(HERE.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/adaptive-root-scales.svg','svg_sha256':sha(file),'generator_sha256':sha(Path(__file__)),'actual_formulas':['H=max(e,1/2-alpha)','h=2H-1','square=2alpha+4H-2','bracket=-1/2+e for alpha<=1/2-e; otherwise min(alpha-1+2e,e-alpha)'],'e':'1/4','scope':'Exact exponent bounds, not operator norm equalities.','actually_inspected':False},indent=2)+'\n','utf-8')
+(HERE.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/adaptive-root-scales.svg','svg_sha256':sha(file),'generator_sha256':sha(Path(__file__)),'actual_formulas':['H=max(e,1/2-alpha)','h=2H-1','square=2alpha+4H-2','bracket=-1/2+e for alpha<=1/2-e; otherwise min(alpha-1+2e,e-alpha)'],'e':'1/4','scope':'Exact exponent bounds, not operator norm equalities.'                           },indent=2)+'\n','utf-8')
 print(json.dumps({'figure':str(file),'sha256':sha(file)}))

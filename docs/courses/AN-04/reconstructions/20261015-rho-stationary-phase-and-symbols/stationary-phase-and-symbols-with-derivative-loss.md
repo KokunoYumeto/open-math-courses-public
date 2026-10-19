@@ -30,7 +30,7 @@ Uniformity means bounds on a finite specified collection of these seminorms. Ext
 
 Without \(z\), this is \(S_{\rho,1-\rho}^q\). The earlier homogeneous-map theorem proves its invariance under smooth conic changes: a degree-zero coordinate derivative costs at most \(\delta\), a physical frequency derivative gains \(\rho\), and ordinary homogeneous coefficients have their stronger degree-one derivative decrease. We use that theorem with supports strictly inside their charts. Jacobians of degree zero preserve the order.
 
-All amplitudes can be complex or have a fixed finite vector or matrix rank; the estimates apply to each component. All phases in this lesson are real. Complex-phase calculus, composition and continuity have their own receiving obligations.
+All amplitudes can be complex or have a fixed finite vector or matrix rank; the estimates apply to each component. All phases in this lesson are real. Complex-phase calculus, composition and continuity have their own hypotheses and proofs.
 
 ## 2. A quadratic estimate independent of the support radius
 
@@ -443,7 +443,7 @@ The other panels plot the exact model
 =2\sin(\lambda^{-\varepsilon}/4)\)
 and its proved upper bound \(\lambda^{-\varepsilon}/2\), for \(\lambda\ge1\). At \(\rho=1/2\) the value is the constant \(2\sin(1/4)\). Curves are numerical samples of these exact formulas; Q0–D1 and X1 prove the uniform estimates and sharp exponent. The [figure generator](figures/build_figure.py) preserves all parameters.
 
-## 15. What is complete and what comes next
+## 15. Scope of stationary phase and symbol estimates
 
 This lesson proves general-\(\rho\) real stationary phase with every symbol derivative, clean compact-fiber reduction, homogeneous phase invariance, both prescribed-phase constructions, the Lagrangian class and the invariant symbol isomorphism with exact \(2\rho-1\) drop. It retains the ordinary-symbol proofs as special cases and alternatives.
 

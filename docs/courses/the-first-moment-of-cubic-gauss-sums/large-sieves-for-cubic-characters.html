@@ -1,0 +1,406 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Large sieves for cubic characters</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The first moment of cubic Gauss sums)</a><a href="cubic-gauss-sums-and-pattersons-conjecture.html">Previous lesson</a><a href="the-level-formula-and-type-i-sums.html">Next lesson</a><a href="src/large-sieves-for-cubic-characters.md">Editable source</a></nav><main><article><h1 id="large-sieves-for-cubic-characters">Large sieves for cubic characters</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The proof of the first moment for cubic Gauss sums is an argument with exponents: every sum is bounded by an inequality whose shape depends on the lengths of its variables, and the theorem follows when the exponents leave a gap. This lesson collects the inequalities and the arithmetic inputs. Section 1 fixes conventions for the estimates. Section 2 proves Poisson summation over the Eisenstein integers, and Section 3 deduces the large sieve for characters of bounded conductor. Section 4 states Heath-Brown's cubic large sieve and extends it to the coefficient classes needed later. Section 5 records two Hilbert-space inequalities, and Section 6 treats the Hecke characters of <span class="math" data-tex="\(\mathbb Q(\omega)\)">\(\mathbb Q(\omega)\)</span>: their functional equation, the characters attached to elements, and the prime number theorems with uniform conductor dependence.</p>
+<p><strong>Prerequisites.</strong> The previous lesson, <a href="cubic-gauss-sums-and-pattersons-conjecture.html"><em>Cubic Gauss sums and Patterson's conjecture</em></a>, whose notation is kept. From <em>Harmonic analysis on locally compact abelian groups</em>: <a href="../HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html"><em>The Fourier inversion theorem and the dual Haar measure</em></a>, Theorem 2.1; <a href="../HA-LCA/src/the-poisson-summation-formula.html"><em>The Poisson summation formula</em></a>, Corollary 2.2. From <em>The Riemann zeta function</em>: <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means</em></a>, Theorem 3.1 (Mertens); <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>, Theorem 3.1; <a href="../NT-ZETA/NT-ZETA-16.html"><em>Mean values of Dirichlet polynomials and zeta</em></a>, Theorem 2.1. From <em>Adèles, idèles and Tate's thesis</em>: <a href="../NT-ADL/NT-ADL-06.html"><em>Quasi-characters and Hecke characters</em></a>, Theorem 6.3; <a href="../NT-ADL/NT-ADL-10.html"><em>Hecke L-functions and the Dedekind zeta function</em></a>, Theorem 10.1. From <em>Class field theory</em>: <a href="../NT-CFT/power-residue-symbols-and-reciprocity-laws.html"><em>Power residue symbols and reciprocity laws</em></a>, Proposition 23.2; <a href="../NT-CFT/ray-class-fields-conductors-and-ideal-reciprocity.html"><em>Ray class fields, conductors and ideal reciprocity</em></a>, Theorem 18.2 and Proposition 18.3.</p>
+<h2 id="1-conventions">1. Conventions</h2>
+<p>Throughout the course <span class="math" data-tex="\(X\)">\(X\)</span> is a large parameter and <span class="math" data-tex="\(L=\log X\)">\(L=\log X\)</span>. All lengths are norms: a variable <span class="math" data-tex="\(n\)">\(n\)</span> <em>of length <span class="math" data-tex="\(Y\)">\(Y\)</span></em> has <span class="math" data-tex="\(N(n)\)">\(N(n)\)</span> in a dyad <span class="math" data-tex="\([Y,2Y)\)">\([Y,2Y)\)</span>, or more generally in an interval <span class="math" data-tex="\([Y,c_0Y)\)">\([Y,c_0Y)\)</span> with a fixed <span class="math" data-tex="\(c_0&gt;1\)">\(c_0&gt;1\)</span>. All lengths and heights that occur are bounded by fixed powers of <span class="math" data-tex="\(X\)">\(X\)</span>. For the ideal divisor function <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, a sequence <span class="math" data-tex="\((v_n)\)">\((v_n)\)</span> is <em>divisor-bounded</em> if <span class="math" data-tex="\(|v_n|\le L^C\tau(n)^C\)">\(|v_n|\le L^C\tau(n)^C\)</span> for a fixed <span class="math" data-tex="\(C\)">\(C\)</span>. The notation <span class="math" data-tex="\(\ll_\epsilon X^\epsilon\)">\(\ll_\epsilon X^\epsilon\)</span> allows an arbitrarily small fixed exponent, chosen after all other fixed parameters.</p>
+<p><strong>Lemma 1.1 (counting ideals).</strong> (a) The number of ideals of norm <span class="math" data-tex="\(m\)">\(m\)</span> is at most the number <span class="math" data-tex="\(d(m)\)">\(d(m)\)</span> of divisors of <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>(b) <span class="math" data-tex="\(\tau(n)\le d(N(n))^2\)">\(\tau(n)\le d(N(n))^2\)</span> for every nonzero ideal <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>(c) For every fixed <span class="math" data-tex="\(B\ge1\)">\(B\ge1\)</span> and <span class="math" data-tex="\(Y\ge2\)">\(Y\ge2\)</span>, <span class="math" data-tex="\(\sum_{m\le Y}d(m)^B\ll_BY(\log Y)^{2^B}\)">\(\sum_{m\le Y}d(m)^B\ll_BY(\log Y)^{2^B}\)</span>. Consequently a divisor-bounded sequence has <span class="math" data-tex="\(\sum_{N(n)&lt;2Y}|v_n|^k\ll Y L^{O(1)}\)">\(\sum_{N(n)&lt;2Y}|v_n|^k\ll Y L^{O(1)}\)</span> for every fixed <span class="math" data-tex="\(k\)">\(k\)</span>, also after the coefficients with the same norm are added together.</p>
+<p><strong>Proof.</strong> (a) An ideal of norm <span class="math" data-tex="\(m\)">\(m\)</span> is a product of ideals of norm <span class="math" data-tex="\(p^e\)">\(p^e\)</span>, one for each <span class="math" data-tex="\(p^e\)">\(p^e\)</span> exactly dividing <span class="math" data-tex="\(m\)">\(m\)</span>. By Lemma 1.2 of the previous lesson there are <span class="math" data-tex="\(e+1\)">\(e+1\)</span> of them for split <span class="math" data-tex="\(p\)">\(p\)</span>, at most one for inert <span class="math" data-tex="\(p\)">\(p\)</span>, and one for <span class="math" data-tex="\(p=3\)">\(p=3\)</span>.</p>
+<p>(b) If <span class="math" data-tex="\(p\)">\(p\)</span> splits and <span class="math" data-tex="\(\mathfrak p^i\bar{\mathfrak p}^j\)">\(\mathfrak p^i\bar{\mathfrak p}^j\)</span> exactly divides <span class="math" data-tex="\(n\)">\(n\)</span>, the factor <span class="math" data-tex="\((i+1)(j+1)\)">\((i+1)(j+1)\)</span> of <span class="math" data-tex="\(\tau(n)\)">\(\tau(n)\)</span> is at most <span class="math" data-tex="\((i+j+1)^2\)">\((i+j+1)^2\)</span>, the square of the factor of <span class="math" data-tex="\(d(N(n))\)">\(d(N(n))\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span>. Inert and ramified primes are similar.</p>
+<p>(c) We have
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{m\le Y}d(m)^B&amp;\le Y\sum_{m\le Y}\frac{d(m)^B}m\\
+&amp;\le Y\prod_{p\le Y}\Bigl(1+\frac{2^B}p+\frac{c_B}{p^2}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{m\le Y}d(m)^B&amp;\le Y\sum_{m\le Y}\frac{d(m)^B}m\\
+&amp;\le Y\prod_{p\le Y}\Bigl(1+\frac{2^B}p+\frac{c_B}{p^2}\Bigr),
+\end{aligned}
+\]</span>
+and Mertens' theorem bounds the product by <span class="math" data-tex="\(O_B((\log Y)^{2^B})\)">\(O_B((\log Y)^{2^B})\)</span>. For the consequence use (a), (b) and <span class="math" data-tex="\(\tau(n)\le d(N(n))^2\)">\(\tau(n)\le d(N(n))^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Mellin transforms.</strong> For a smooth function <span class="math" data-tex="\(W\)">\(W\)</span> with compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> put
+<span class="math math-display" data-tex="\[
+\mathcal MW(s)=\int_0^\infty W(v)\,v^s\,\frac{dv}v .
+\]">\[
+\mathcal MW(s)=\int_0^\infty W(v)\,v^s\,\frac{dv}v .
+\]</span></p>
+<p><strong>Lemma 1.2.</strong> <span class="math" data-tex="\(\mathcal MW\)">\(\mathcal MW\)</span> is entire. For every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and <span class="math" data-tex="\(s=\sigma+it\ne0\)">\(s=\sigma+it\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+|\mathcal MW(s)|\le\frac{\int_0^\infty|(v\partial_v)^jW(v)|\,v^{\sigma}\,dv/v}{|s|^j},
+\]">\[
+|\mathcal MW(s)|\le\frac{\int_0^\infty|(v\partial_v)^jW(v)|\,v^{\sigma}\,dv/v}{|s|^j},
+\]</span>
+and for every <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+W(v)=\frac1{2\pi i}\int_{(\sigma)}\mathcal MW(s)\,v^{-s}\,ds .
+\]">\[
+W(v)=\frac1{2\pi i}\int_{(\sigma)}\mathcal MW(s)\,v^{-s}\,ds .
+\]</span></p>
+<p><strong>Proof.</strong> Entireness is differentiation under the integral sign over a compact set. Integrating by parts <span class="math" data-tex="\(j\)">\(j\)</span> times with <span class="math" data-tex="\(v\partial_v\)">\(v\partial_v\)</span> multiplies the transform by <span class="math" data-tex="\((-s)^{-j}\)">\((-s)^{-j}\)</span>. With <span class="math" data-tex="\(v=e^{-x}\)">\(v=e^{-x}\)</span>, the function <span class="math" data-tex="\(t\mapsto\mathcal MW(\sigma+it)\)">\(t\mapsto\mathcal MW(\sigma+it)\)</span> is the Fourier transform at <span class="math" data-tex="\(t/(2\pi)\)">\(t/(2\pi)\)</span> of the smooth compactly supported function <span class="math" data-tex="\(x\mapsto W(e^{-x})e^{-\sigma x}\)">\(x\mapsto W(e^{-x})e^{-\sigma x}\)</span>, and the inversion formula is Theorem 2.1 of the Fourier inversion lesson on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So a smooth weight in a product or quotient of variables separates into products of powers: <span class="math" data-tex="\(W(xy)=\frac1{2\pi i}\int_{(0)}\mathcal MW(s)x^{-s}y^{-s}\,ds\)">\(W(xy)=\frac1{2\pi i}\int_{(0)}\mathcal MW(s)x^{-s}y^{-s}\,ds\)</span>, with an integrable weight decreasing faster than every power of <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. When <span class="math" data-tex="\(W\)">\(W\)</span> depends on parameters, the decay constants are controlled by its derivative bounds. If the derivatives of order <span class="math" data-tex="\(j\)">\(j\)</span> are <span class="math" data-tex="\(O(L^{Cj})\)">\(O(L^{Cj})\)</span>, then for <span class="math" data-tex="\(|t|\ge L^{C+1}\)">\(|t|\ge L^{C+1}\)</span> the transform is smaller than every fixed negative power of <span class="math" data-tex="\(L\)">\(L\)</span>, and similarly for power scales.</p>
+<p><strong>The plane measure.</strong> Identify <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> with <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+d\mathfrak m(z)=\frac2{\sqrt3}\,d(\operatorname{Re}z)\,d(\operatorname{Im}z),\\
+\widehat W(y)=\int_{\mathbb C}W(z)\,e(-\operatorname{Tr}(zy))\,d\mathfrak m(z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+d\mathfrak m(z)=\frac2{\sqrt3}\,d(\operatorname{Re}z)\,d(\operatorname{Im}z),\\
+\widehat W(y)=\int_{\mathbb C}W(z)\,e(-\operatorname{Tr}(zy))\,d\mathfrak m(z).
+\end{gathered}
+\]</span>
+The parallelogram spanned by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has area <span class="math" data-tex="\(\sqrt3/2\)">\(\sqrt3/2\)</span>, so <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> has covolume one for <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>.</p>
+<h2 id="2-poisson-summation-over-mathcal-o">2. Poisson summation over <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span></h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(W\)">\(W\)</span> be a Schwartz function on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, <span class="math" data-tex="\(b\in\mathcal O\)">\(b\in\mathcal O\)</span> nonzero, and <span class="math" data-tex="\(c\in\mathcal O\)">\(c\in\mathcal O\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{\substack{x\in\mathcal O\\ x\equiv c\ (b)}}W(x)
+&amp;=\frac1{N(b)}\sum_{y\in\lambda^{-1}\mathcal O}e\Bigl(\operatorname{Tr}\frac{cy}b\Bigr)\\
+&amp;\qquad\cdot\widehat W\Bigl(\frac yb\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{\substack{x\in\mathcal O\\ x\equiv c\ (b)}}W(x)
+&amp;=\frac1{N(b)}\sum_{y\in\lambda^{-1}\mathcal O}e\Bigl(\operatorname{Tr}\frac{cy}b\Bigr)\\
+&amp;\qquad\cdot\widehat W\Bigl(\frac yb\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(z=s+it\)">\(z=s+it\)</span> and <span class="math" data-tex="\(y=u+iv\)">\(y=u+iv\)</span>. Then <span class="math" data-tex="\(\operatorname{Tr}(zy)=2(su-tv)\)">\(\operatorname{Tr}(zy)=2(su-tv)\)</span> is the Euclidean product of <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span> with <span class="math" data-tex="\(\xi(y)=(2u,-2v)\)">\(\xi(y)=(2u,-2v)\)</span>. If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> denotes <span class="math" data-tex="\(W\)">\(W\)</span> as a function on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> and <span class="math" data-tex="\(\hat\varphi\)">\(\hat\varphi\)</span> its Euclidean Fourier transform, then <span class="math" data-tex="\(\widehat W(y)=\frac2{\sqrt3}\hat\varphi(\xi(y))\)">\(\widehat W(y)=\frac2{\sqrt3}\hat\varphi(\xi(y))\)</span>. The lattice <span class="math" data-tex="\(\Lambda=b\mathcal O\)">\(\Lambda=b\mathcal O\)</span> has Euclidean covolume <span class="math" data-tex="\(\frac{\sqrt3}2N(b)\)">\(\frac{\sqrt3}2N(b)\)</span>. Its dual lattice consists of the vectors <span class="math" data-tex="\(\xi(y)\)">\(\xi(y)\)</span> with <span class="math" data-tex="\(\operatorname{Tr}(y\,b\mathcal O)\subseteq\mathbb Z\)">\(\operatorname{Tr}(y\,b\mathcal O)\subseteq\mathbb Z\)</span>, that is, by Lemma 1.3(a) of the previous lesson, with <span class="math" data-tex="\(y\in b^{-1}\lambda^{-1}\mathcal O\)">\(y\in b^{-1}\lambda^{-1}\mathcal O\)</span>. Corollary 2.2 of the Poisson summation lesson, applied at the point <span class="math" data-tex="\(c\)">\(c\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{x\in c+b\mathcal O}W(x)\\
+&amp;=\frac2{\sqrt3\,N(b)}\sum_{y\in b^{-1}\lambda^{-1}\mathcal O}\hat\varphi(\xi(y))\\
+&amp;\qquad\cdot e(\operatorname{Tr}(cy)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{x\in c+b\mathcal O}W(x)\\
+&amp;=\frac2{\sqrt3\,N(b)}\sum_{y\in b^{-1}\lambda^{-1}\mathcal O}\hat\varphi(\xi(y))\\
+&amp;\qquad\cdot e(\operatorname{Tr}(cy)).
+\end{aligned}
+\]</span>
+Replace <span class="math" data-tex="\(\hat\varphi(\xi(y))\)">\(\hat\varphi(\xi(y))\)</span> by <span class="math" data-tex="\(\frac{\sqrt3}2\widehat W(y)\)">\(\frac{\sqrt3}2\widehat W(y)\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(y/b\)">\(y/b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(W_Z(z)=W(z/\sqrt Z)\)">\(W_Z(z)=W(z/\sqrt Z)\)</span>, then <span class="math" data-tex="\(\widehat{W_Z}(y)=Z\,\widehat W(\sqrt Zy)\)">\(\widehat{W_Z}(y)=Z\,\widehat W(\sqrt Zy)\)</span>.</p>
+<h2 id="3-the-large-sieve-for-characters-of-bounded-conductor">3. The large sieve for characters of bounded conductor</h2>
+<p><strong>Lemma 3.1 (the planar large sieve).</strong> Let <span class="math" data-tex="\(Z\ge1\)">\(Z\ge1\)</span> and <span class="math" data-tex="\(0&lt;\delta\le\frac12\)">\(0&lt;\delta\le\frac12\)</span>. Let <span class="math" data-tex="\(y_1,\ldots,y_R\in\mathbb C\)">\(y_1,\ldots,y_R\in\mathbb C\)</span> satisfy <span class="math" data-tex="\(|y_r-y_s-\ell|\ge\delta\)">\(|y_r-y_s-\ell|\ge\delta\)</span> for all <span class="math" data-tex="\(r\ne s\)">\(r\ne s\)</span> and all <span class="math" data-tex="\(\ell\in\lambda^{-1}\mathcal O\)">\(\ell\in\lambda^{-1}\mathcal O\)</span>. Then for all complex <span class="math" data-tex="\(v_n\)">\(v_n\)</span> supported on <span class="math" data-tex="\(n\in\mathcal O\)">\(n\in\mathcal O\)</span> with <span class="math" data-tex="\(N(n)\le Z\)">\(N(n)\le Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{r=1}^R\Bigl|\sum_nv_n\,e(\operatorname{Tr}(ny_r))\Bigr|^2\\
+&amp;\qquad\ll\bigl(Z+\delta^{-2}\bigr)\sum_n|v_n|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{r=1}^R\Bigl|\sum_nv_n\,e(\operatorname{Tr}(ny_r))\Bigr|^2\\
+&amp;\qquad\ll\bigl(Z+\delta^{-2}\bigr)\sum_n|v_n|^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> By duality it suffices to prove the same bound for <span class="math" data-tex="\(\sum_n|\sum_rc_re(\operatorname{Tr}(ny_r))|^2\)">\(\sum_n|\sum_rc_re(\operatorname{Tr}(ny_r))|^2\)</span>, for all <span class="math" data-tex="\(c\in\mathbb C^R\)">\(c\in\mathbb C^R\)</span>. Let <span class="math" data-tex="\(\Phi(z)=e^{\pi(1-|z|^2)}\)">\(\Phi(z)=e^{\pi(1-|z|^2)}\)</span>, which is at least <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(|z|\le1\)">\(|z|\le1\)</span>, and <span class="math" data-tex="\(\phi(z)=\Phi(z/\sqrt Z)\)">\(\phi(z)=\Phi(z/\sqrt Z)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(n)\le Z}\Bigl|\sum_rc_re(\operatorname{Tr}(ny_r))\Bigr|^2\\
+&amp;\le\sum_{r,s}c_r\bar c_s\sum_{n\in\mathcal O}\phi(n)\\
+&amp;\qquad\cdot e(\operatorname{Tr}(n(y_r-y_s))).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(n)\le Z}\Bigl|\sum_rc_re(\operatorname{Tr}(ny_r))\Bigr|^2\\
+&amp;\le\sum_{r,s}c_r\bar c_s\sum_{n\in\mathcal O}\phi(n)\\
+&amp;\qquad\cdot e(\operatorname{Tr}(n(y_r-y_s))).
+\end{aligned}
+\]</span>
+By Lemma 2.1 with <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, applied to <span class="math" data-tex="\(z\mapsto\phi(z)e(\operatorname{Tr}(zw))\)">\(z\mapsto\phi(z)e(\operatorname{Tr}(zw))\)</span>, the inner sum is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K(w)=Z\sum_{\ell\in\lambda^{-1}\mathcal O}\widehat\Phi\bigl(\sqrt Z(\ell-w)\bigr),\\
+w=y_r-y_s .
+\end{gathered}
+\]">\[
+\begin{gathered}
+K(w)=Z\sum_{\ell\in\lambda^{-1}\mathcal O}\widehat\Phi\bigl(\sqrt Z(\ell-w)\bigr),\\
+w=y_r-y_s .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(|c_rc_s|\le\frac12(|c_r|^2+|c_s|^2)\)">\(|c_rc_s|\le\frac12(|c_r|^2+|c_s|^2)\)</span> and <span class="math" data-tex="\(|K(w)|=|K(-w)|\)">\(|K(w)|=|K(-w)|\)</span>, the double sum is at most <span class="math" data-tex="\(\max_r\sum_s|K(y_r-y_s)|\)">\(\max_r\sum_s|K(y_r-y_s)|\)</span> times <span class="math" data-tex="\(\sum|c_r|^2\)">\(\sum|c_r|^2\)</span>.</p>
+<p>The points <span class="math" data-tex="\(y_s+\ell\)">\(y_s+\ell\)</span>, with <span class="math" data-tex="\(s\le R\)">\(s\le R\)</span> and <span class="math" data-tex="\(\ell\in\lambda^{-1}\mathcal O\)">\(\ell\in\lambda^{-1}\mathcal O\)</span>, are pairwise at distance at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>: for different <span class="math" data-tex="\(s\)">\(s\)</span> by hypothesis, and for equal <span class="math" data-tex="\(s\)">\(s\)</span> because nonzero elements of <span class="math" data-tex="\(\lambda^{-1}\mathcal O\)">\(\lambda^{-1}\mathcal O\)</span> have length at least <span class="math" data-tex="\(1/\sqrt3&gt;\delta\)">\(1/\sqrt3&gt;\delta\)</span>. Disjoint discs of radius <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> around those within distance <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(y_r\)">\(y_r\)</span> lie in a disc of radius <span class="math" data-tex="\(\rho+\delta/2\)">\(\rho+\delta/2\)</span>, so there are at most <span class="math" data-tex="\((1+2\rho/\delta)^2\)">\((1+2\rho/\delta)^2\)</span> of them. With <span class="math" data-tex="\(|\widehat\Phi(y)|\ll(1+|y|)^{-4}\)">\(|\widehat\Phi(y)|\ll(1+|y|)^{-4}\)</span> we get
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_s|K(y_r-y_s)|\\
+&amp;\ll Z\sum_{k\ge0}(1+k)^{-4}\Bigl(1+\frac{2(k+1)}{\sqrt Z\,\delta}\Bigr)^2\\
+&amp;\ll Z+\delta^{-2}. \qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_s|K(y_r-y_s)|\\
+&amp;\ll Z\sum_{k\ge0}(1+k)^{-4}\Bigl(1+\frac{2(k+1)}{\sqrt Z\,\delta}\Bigr)^2\\
+&amp;\ll Z+\delta^{-2}. \qquad\square
+\end{aligned}
+\]</span></p>
+<p>For a primary squarefree <span class="math" data-tex="\(r\)">\(r\)</span>, a character <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\((\mathcal O/r\mathcal O)^\times\)">\((\mathcal O/r\mathcal O)^\times\)</span> is <em>primitive</em> if each of its local components, at the primes dividing <span class="math" data-tex="\(r\)">\(r\)</span>, is nontrivial. We extend it by zero to all of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>.</p>
+<p><strong>Lemma 3.2.</strong> Let <span class="math" data-tex="\(r\)">\(r\)</span> be primary and squarefree and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> primitive modulo <span class="math" data-tex="\(r\)">\(r\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{v\bmod r}\xi(v)\,e\Bigl(\operatorname{Tr}\frac{hv}r\Bigr)\\
+=\overline{\xi(h)}\,g(\xi)\quad(h\in\mathcal O),\\
+|g(\xi)|=\sqrt{N(r)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{v\bmod r}\xi(v)\,e\Bigl(\operatorname{Tr}\frac{hv}r\Bigr)\\
+=\overline{\xi(h)}\,g(\xi)\quad(h\in\mathcal O),\\
+|g(\xi)|=\sqrt{N(r)},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(g(\xi)\)">\(g(\xi)\)</span> denotes the sum at <span class="math" data-tex="\(h=1\)">\(h=1\)</span>.</p>
+<p><strong>Proof.</strong> For a prime <span class="math" data-tex="\(r=\pi\)">\(r=\pi\)</span> this is the computation of Proposition 3.1(b) and Exercise 6.4 of the previous lesson, which used only the nontriviality of the character. For a product of distinct primes the Chinese remainder theorem factors the sum as in Proposition 3.1(c), with a factor of absolute value one depending only on the primes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.3 (the ordinary character large sieve).</strong> Let <span class="math" data-tex="\(Q,Z\ge1\)">\(Q,Z\ge1\)</span>. For each primary squarefree <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(N(r)\le Q\)">\(N(r)\le Q\)</span>, let <span class="math" data-tex="\(\Xi_r\)">\(\Xi_r\)</span> be a set of primitive characters modulo <span class="math" data-tex="\(r\)">\(r\)</span>. Then for all complex <span class="math" data-tex="\(v_n\)">\(v_n\)</span> supported on primary <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(N(n)\le Z\)">\(N(n)\le Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(r)\le Q}\ \sum_{\xi\in\Xi_r}\Bigl|\sum_nv_n\,\xi(n)\Bigr|^2\\
+&amp;\qquad\ll(Z+Q^2)\sum_n|v_n|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(r)\le Q}\ \sum_{\xi\in\Xi_r}\Bigl|\sum_nv_n\,\xi(n)\Bigr|^2\\
+&amp;\qquad\ll(Z+Q^2)\sum_n|v_n|^2 .
+\end{aligned}
+\]</span>
+There is no loss of a power of <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(S(y)=\sum_nv_ne(\operatorname{Tr}(ny))\)">\(S(y)=\sum_nv_ne(\operatorname{Tr}(ny))\)</span>. Lemma 3.2 for <span class="math" data-tex="\(\bar\xi\)">\(\bar\xi\)</span> gives <span class="math" data-tex="\(\xi(n)g(\bar\xi)=\sum_{v\bmod r}\bar\xi(v)e(\operatorname{Tr}(nv/r))\)">\(\xi(n)g(\bar\xi)=\sum_{v\bmod r}\bar\xi(v)e(\operatorname{Tr}(nv/r))\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, so
+<span class="math math-display" data-tex="\[
+\sum_nv_n\xi(n)=\frac1{g(\bar\xi)}\sum_{v\bmod r}\bar\xi(v)\,S(v/r).
+\]">\[
+\sum_nv_n\xi(n)=\frac1{g(\bar\xi)}\sum_{v\bmod r}\bar\xi(v)\,S(v/r).
+\]</span>
+Orthogonality of the characters of the group <span class="math" data-tex="\((\mathcal O/r\mathcal O)^\times\)">\((\mathcal O/r\mathcal O)^\times\)</span>, of order <span class="math" data-tex="\(\varphi(r)\)">\(\varphi(r)\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\xi\in\Xi_r}\Bigl|\sum_nv_n\xi(n)\Bigr|^2\\
+&amp;\qquad\le\frac{\varphi(r)}{N(r)}\sum_{\substack{v\bmod r\\ (v,r)=1}}|S(v/r)|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\xi\in\Xi_r}\Bigl|\sum_nv_n\xi(n)\Bigr|^2\\
+&amp;\qquad\le\frac{\varphi(r)}{N(r)}\sum_{\substack{v\bmod r\\ (v,r)=1}}|S(v/r)|^2 .
+\end{aligned}
+\]</span>
+The points <span class="math" data-tex="\(v/r\)">\(v/r\)</span>, for primary squarefree <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(N(r)\le Q\)">\(N(r)\le Q\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> prime to <span class="math" data-tex="\(r\)">\(r\)</span>, are distinct modulo <span class="math" data-tex="\(\lambda^{-1}\mathcal O\)">\(\lambda^{-1}\mathcal O\)</span> and separated by <span class="math" data-tex="\(1/(\sqrt3Q)\)">\(1/(\sqrt3Q)\)</span>. Indeed, for <span class="math" data-tex="\(\ell\in\lambda^{-1}\mathcal O\)">\(\ell\in\lambda^{-1}\mathcal O\)</span>,
+<span class="math math-display" data-tex="\[
+\frac vr-\frac{v&#x27;}{r&#x27;}-\ell=\frac{\lambda(vr&#x27;-v&#x27;r)-\lambda\ell\,rr&#x27;}{\lambda rr&#x27;},
+\]">\[
+\frac vr-\frac{v&#x27;}{r&#x27;}-\ell=\frac{\lambda(vr&#x27;-v&#x27;r)-\lambda\ell\,rr&#x27;}{\lambda rr&#x27;},
+\]</span>
+and the numerator lies in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. If it vanished, then <span class="math" data-tex="\(rr&#x27;\)">\(rr&#x27;\)</span> would divide <span class="math" data-tex="\(vr&#x27;-v&#x27;r\)">\(vr&#x27;-v&#x27;r\)</span>, as <span class="math" data-tex="\(rr&#x27;\)">\(rr&#x27;\)</span> is prime to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Hence <span class="math" data-tex="\(r\mid r&#x27;\)">\(r\mid r&#x27;\)</span> and <span class="math" data-tex="\(r&#x27;\mid r\)">\(r&#x27;\mid r\)</span>, so <span class="math" data-tex="\(r=r&#x27;\)">\(r=r&#x27;\)</span> and <span class="math" data-tex="\(v\equiv v&#x27;\pmod r\)">\(v\equiv v&#x27;\pmod r\)</span>. Otherwise the numerator has absolute value at least <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(Q\ge2\)">\(Q\ge2\)</span>, Lemma 3.1 with <span class="math" data-tex="\(\delta=1/(\sqrt3Q)\)">\(\delta=1/(\sqrt3Q)\)</span> finishes the proof. For <span class="math" data-tex="\(Q&lt;2\)">\(Q&lt;2\)</span> only <span class="math" data-tex="\(r=1\)">\(r=1\)</span> occurs, and Lemma 3.1 with the single point <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(\delta=\frac12\)">\(\delta=\frac12\)</span> applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The main application is to the cubic characters <span class="math" data-tex="\(n\mapsto\chi_n(pq^2)\)">\(n\mapsto\chi_n(pq^2)\)</span>, indexed by coprime primary squarefree <span class="math" data-tex="\(p,q\)">\(p,q\)</span>. By cubic reciprocity, <span class="math" data-tex="\(\chi_n(pq^2)=\chi_p(n)\overline{\chi_q(n)}\)">\(\chi_n(pq^2)=\chi_p(n)\overline{\chi_q(n)}\)</span> for primary <span class="math" data-tex="\(n\)">\(n\)</span>, and this character is primitive modulo <span class="math" data-tex="\(pq\)">\(pq\)</span>. Different pairs <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> give different characters, because the local component at a prime <span class="math" data-tex="\(\pi\mid pq\)">\(\pi\mid pq\)</span> is <span class="math" data-tex="\(\chi_\pi\)">\(\chi_\pi\)</span> or <span class="math" data-tex="\(\overline{\chi_\pi}\)">\(\overline{\chi_\pi}\)</span> according as <span class="math" data-tex="\(\pi\)">\(\pi\)</span> divides <span class="math" data-tex="\(p\)">\(p\)</span> or <span class="math" data-tex="\(q\)">\(q\)</span>. A fixed additional factor of absolute value at most one, such as <span class="math" data-tex="\(\chi_n(\zeta\lambda^j)\)">\(\chi_n(\zeta\lambda^j)\)</span> with a unit <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, is absorbed into the coefficients.</p>
+<h2 id="4-heath-brown-s-cubic-large-sieve">4. Heath-Brown's cubic large sieve</h2>
+<p>For cubic characters whose conductor is as long as the sums themselves, Lemma 3.3 gives <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span>, whereas the following theorem gives <span class="math" data-tex="\(Q^{4/3}\)">\(Q^{4/3}\)</span>.</p>
+<p><strong>Theorem 4.1 (Heath-Brown's cubic large sieve, N1).</strong> Let <span class="math" data-tex="\(A,B\ge1\)">\(A,B\ge1\)</span>, <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, and let <span class="math" data-tex="\((\beta_b)\)">\((\beta_b)\)</span> be complex numbers supported on primary squarefree <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(N(b)\le B\)">\(N(b)\le B\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(a)\le A}\mu^2(a)\Bigl|\sum_b\beta_b\,\chi_a(b)\Bigr|^2\\
+&amp;\ll_\epsilon\bigl(A+B+(AB)^{2/3}\bigr)\\
+&amp;\qquad\cdot(AB)^\epsilon\sum_b|\beta_b|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(a)\le A}\mu^2(a)\Bigl|\sum_b\beta_b\,\chi_a(b)\Bigr|^2\\
+&amp;\ll_\epsilon\bigl(A+B+(AB)^{2/3}\bigr)\\
+&amp;\qquad\cdot(AB)^\epsilon\sum_b|\beta_b|^2 ,
+\end{aligned}
+\]</span>
+the outer sum running over primary <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>This is Heath-Brown's Theorem 2 in <em>Kummer's conjecture for cubic Gauss sums</em> (2000), stated in this form as Theorem 9.1 of [DR]. It is used without proof in the programme. By reciprocity the same bound holds with <span class="math" data-tex="\(\chi_b(a)\)">\(\chi_b(a)\)</span> in place of <span class="math" data-tex="\(\chi_a(b)\)">\(\chi_a(b)\)</span>, since both vanish unless <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are coprime.</p>
+<p>The squarefree hypotheses on both variables are essential in Theorem 4.1. The next lemma removes them at the cost of an arbitrarily small power of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Lemma 4.2 (extensions of the cubic large sieve).</strong> Let <span class="math" data-tex="\(P,Z,J\ge1\)">\(P,Z,J\ge1\)</span> be bounded by fixed powers of <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>.</p>
+<p>(a) Let <span class="math" data-tex="\((v_n)\)">\((v_n)\)</span> be divisor-bounded and supported on primary <span class="math" data-tex="\(n\)">\(n\)</span> of length <span class="math" data-tex="\(Z\)">\(Z\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{N(a)&lt;2P}}\mu^2(a)\Bigl|\sum_nv_n\chi_a(n)\Bigr|^2\\
+&amp;\qquad\ll_\epsilon X^\epsilon Z\bigl(P+Z+(PZ)^{2/3}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{N(a)&lt;2P}}\mu^2(a)\Bigl|\sum_nv_n\chi_a(n)\Bigr|^2\\
+&amp;\qquad\ll_\epsilon X^\epsilon Z\bigl(P+Z+(PZ)^{2/3}\bigr).
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(v\)">\(v\)</span> is supported on <span class="math" data-tex="\(n=st^2c^3\)">\(n=st^2c^3\)</span>, with <span class="math" data-tex="\(s,t\)">\(s,t\)</span> coprime and squarefree and with <span class="math" data-tex="\(N(s),N(t),N(c)\)">\(N(s),N(t),N(c)\)</span> of lengths <span class="math" data-tex="\(S,V,C\)">\(S,V,C\)</span>, then the bound can be replaced by
+<span class="math math-display" data-tex="\[
+X^\epsilon(VC)^2S\bigl(P+S+(PS)^{2/3}\bigr).\quad(4.1)
+\]">\[
+X^\epsilon(VC)^2S\bigl(P+S+(PS)^{2/3}\bigr).\quad(4.1)
+\]</span></p>
+<p>(b) Let <span class="math" data-tex="\((u_b)\)">\((u_b)\)</span> be supported on primary squarefree <span class="math" data-tex="\(b\)">\(b\)</span> of length <span class="math" data-tex="\(P\)">\(P\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{J\le N(a)&lt;2J}\Bigl|\sum_bu_b\chi_b(a)\Bigr|^2\\
+&amp;\ll_\epsilon X^\epsilon\bigl(J+(JP)^{2/3}+J^{1/3}P\bigr)\\
+&amp;\qquad\cdot\sum_b|u_b|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{J\le N(a)&lt;2J}\Bigl|\sum_bu_b\chi_b(a)\Bigr|^2\\
+&amp;\ll_\epsilon X^\epsilon\bigl(J+(JP)^{2/3}+J^{1/3}P\bigr)\\
+&amp;\qquad\cdot\sum_b|u_b|^2 ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(a\)">\(a\)</span> runs over primary elements, or over all nonzero elements of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. If <span class="math" data-tex="\(J\ge P\)">\(J\ge P\)</span>, the last term is at most <span class="math" data-tex="\((JP)^{2/3}\)">\((JP)^{2/3}\)</span>.</p>
+<p><strong>Proof.</strong> Every primary <span class="math" data-tex="\(n\)">\(n\)</span> is uniquely <span class="math" data-tex="\(n=st^2c^3\)">\(n=st^2c^3\)</span> with <span class="math" data-tex="\(s,t\)">\(s,t\)</span> coprime squarefree primary and <span class="math" data-tex="\(c\)">\(c\)</span> primary: take the exponents of the primes in <span class="math" data-tex="\(n\)">\(n\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p>(a) Split <span class="math" data-tex="\(n=st^2c^3\)">\(n=st^2c^3\)</span> into dyads <span class="math" data-tex="\(S,V,C\)">\(S,V,C\)</span> with <span class="math" data-tex="\(SV^2C^3\asymp Z\)">\(SV^2C^3\asymp Z\)</span>, at a cost of <span class="math" data-tex="\(O(L^3)\)">\(O(L^3)\)</span>. For squarefree <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+\chi_a(st^2c^3)=\chi_a(s)\,\overline{\chi_a(t)}\,\mathbf 1_{(a,c)=1}.
+\]">\[
+\chi_a(st^2c^3)=\chi_a(s)\,\overline{\chi_a(t)}\,\mathbf 1_{(a,c)=1}.
+\]</span>
+The last two factors have absolute value at most one and do not depend on <span class="math" data-tex="\(s\)">\(s\)</span>. By Cauchy's inequality over the <span class="math" data-tex="\(O(VC)\)">\(O(VC)\)</span> pairs <span class="math" data-tex="\((t,c)\)">\((t,c)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl|\sum_nv_n\chi_a(n)\Bigr|^2&amp;\le O(VC)\\
+&amp;\quad\cdot\sum_{t,c}\Bigl|\sum_sv_{st^2c^3}\chi_a(s)\Bigr|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl|\sum_nv_n\chi_a(n)\Bigr|^2&amp;\le O(VC)\\
+&amp;\quad\cdot\sum_{t,c}\Bigl|\sum_sv_{st^2c^3}\chi_a(s)\Bigr|^2 .
+\end{aligned}
+\]</span>
+Theorem 4.1, applied for each <span class="math" data-tex="\((t,c)\)">\((t,c)\)</span> to the squarefree variable <span class="math" data-tex="\(s\)">\(s\)</span>, gives the bound (4.1), since <span class="math" data-tex="\(\sum_s|v_{st^2c^3}|^2\ll X^\epsilon S\)">\(\sum_s|v_{st^2c^3}|^2\ll X^\epsilon S\)</span> by Lemma 1.1. As <span class="math" data-tex="\((VC)^2S\le SV^2C^3\ll Z\)">\((VC)^2S\le SV^2C^3\ll Z\)</span> and <span class="math" data-tex="\(S\ll Z\)">\(S\ll Z\)</span>, summing over the dyads gives the first bound.</p>
+<p>(b) Write <span class="math" data-tex="\(a=st^2c^3\)">\(a=st^2c^3\)</span> in the same way, with dyads satisfying <span class="math" data-tex="\(SV^2C^3\asymp J\)">\(SV^2C^3\asymp J\)</span>. For squarefree <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(\chi_b(a)=\chi_b(s)\overline{\chi_b(t)}\mathbf 1_{(b,c)=1}\)">\(\chi_b(a)=\chi_b(s)\overline{\chi_b(t)}\mathbf 1_{(b,c)=1}\)</span>. If <span class="math" data-tex="\(S\ge V\)">\(S\ge V\)</span>, fix <span class="math" data-tex="\(t,c\)">\(t,c\)</span>, put the factors <span class="math" data-tex="\(\overline{\chi_b(t)}\mathbf 1_{(b,c)=1}\)">\(\overline{\chi_b(t)}\mathbf 1_{(b,c)=1}\)</span> into the coefficients, and apply Theorem 4.1 to the outer variable <span class="math" data-tex="\(s\)">\(s\)</span>. This costs
+<span class="math math-display" data-tex="\[
+X^\epsilon\,VC\,\bigl(S+P+(SP)^{2/3}\bigr)\sum_b|u_b|^2 .
+\]">\[
+X^\epsilon\,VC\,\bigl(S+P+(SP)^{2/3}\bigr)\sum_b|u_b|^2 .
+\]</span>
+If <span class="math" data-tex="\(S&lt;V\)">\(S&lt;V\)</span>, fix <span class="math" data-tex="\(s,c\)">\(s,c\)</span> and apply the theorem to <span class="math" data-tex="\(t\)">\(t\)</span>, after conjugating the coefficients. This costs <span class="math" data-tex="\(X^\epsilon SC(V+P+(VP)^{2/3})\sum_b|u_b|^2\)">\(X^\epsilon SC(V+P+(VP)^{2/3})\sum_b|u_b|^2\)</span>. Both are at most the asserted bound:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+VCS\le J,\qquad VC\,P\le J^{1/3}P,\\
+VC(SP)^{2/3}\le(JP)^{2/3}
+\end{gathered}
+\]">\[
+\begin{gathered}
+VCS\le J,\qquad VC\,P\le J^{1/3}P,\\
+VC(SP)^{2/3}\le(JP)^{2/3}
+\end{gathered}
+\]</span>
+when <span class="math" data-tex="\(S\ge V\)">\(S\ge V\)</span>, and <span class="math" data-tex="\(SCV\le J\)">\(SCV\le J\)</span>, <span class="math" data-tex="\(SCP\le J^{1/3}P\)">\(SCP\le J^{1/3}P\)</span>, <span class="math" data-tex="\(SC(VP)^{2/3}\le(JP)^{2/3}\)">\(SC(VP)^{2/3}\le(JP)^{2/3}\)</span> when <span class="math" data-tex="\(S&lt;V\)">\(S&lt;V\)</span>. Each inequality follows from <span class="math" data-tex="\(J\asymp SV^2C^3\)">\(J\asymp SV^2C^3\)</span>, <span class="math" data-tex="\(V,C\ge1\)">\(V,C\ge1\)</span>, and the order of <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>. For the full lattice write <span class="math" data-tex="\(a=\zeta\lambda^ia&#x27;\)">\(a=\zeta\lambda^ia&#x27;\)</span> with a unit <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, <span class="math" data-tex="\(i\ge0\)">\(i\ge0\)</span> and <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> primary. Then <span class="math" data-tex="\(\chi_b(\zeta\lambda^i)\)">\(\chi_b(\zeta\lambda^i)\)</span> is a coefficient twist, there are <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> values of <span class="math" data-tex="\(i\)">\(i\)</span>, and <span class="math" data-tex="\(\chi_b(\lambda^3)=1\)">\(\chi_b(\lambda^3)=1\)</span>. Finally <span class="math" data-tex="\(J^{1/3}P\le(JP)^{2/3}\)">\(J^{1/3}P\le(JP)^{2/3}\)</span> exactly when <span class="math" data-tex="\(P\le J\)">\(P\le J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-mean-values-and-near-orthogonality">5. Mean values and near-orthogonality</h2>
+<p><strong>Lemma 5.1 (mean values of Dirichlet polynomials).</strong> For complex numbers <span class="math" data-tex="\(w_1,\ldots,w_Z\)">\(w_1,\ldots,w_Z\)</span> and an interval <span class="math" data-tex="\(I\subset\mathbb R\)">\(I\subset\mathbb R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_I\Bigl|\sum_{m\le Z}w_m\,m^{it}\Bigr|^2dt\\
+&amp;\qquad\le\bigl(|I|+6\pi Z\bigr)\sum_{m\le Z}|w_m|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_I\Bigl|\sum_{m\le Z}w_m\,m^{it}\Bigr|^2dt\\
+&amp;\qquad\le\bigl(|I|+6\pi Z\bigr)\sum_{m\le Z}|w_m|^2 .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> This is Theorem 2.1 of the lesson on mean values, with <span class="math" data-tex="\(t\)">\(t\)</span> replaced by <span class="math" data-tex="\(-t\)">\(-t\)</span>; its error term is at most <span class="math" data-tex="\(6\pi\sum m|w_m|^2\)">\(6\pi\sum m|w_m|^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A sum over ideals <span class="math" data-tex="\(\sum_nv_nN(n)^{it}\)">\(\sum_nv_nN(n)^{it}\)</span> is a Dirichlet polynomial in the integers <span class="math" data-tex="\(m=N(n)\)">\(m=N(n)\)</span>, with coefficients <span class="math" data-tex="\(w_m=\sum_{N(n)=m}v_n\)">\(w_m=\sum_{N(n)=m}v_n\)</span>. For divisor-bounded <span class="math" data-tex="\(v\)">\(v\)</span>, Lemma 1.1 gives <span class="math" data-tex="\(\sum|w_m|^2\ll ZL^{O(1)}\)">\(\sum|w_m|^2\ll ZL^{O(1)}\)</span> on a dyad of length <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Lemma 5.2 (the Bombieri–Halász–Montgomery inequality).</strong> In an inner product space, for vectors <span class="math" data-tex="\(\xi,\phi_1,\ldots,\phi_R\)">\(\xi,\phi_1,\ldots,\phi_R\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{r=1}^R|\langle\xi,\phi_r\rangle|^2\le\|\xi\|^2\max_r\sum_{s=1}^R|\langle\phi_r,\phi_s\rangle| .
+\]">\[
+\sum_{r=1}^R|\langle\xi,\phi_r\rangle|^2\le\|\xi\|^2\max_r\sum_{s=1}^R|\langle\phi_r,\phi_s\rangle| .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(c_r=\langle\xi,\phi_r\rangle\)">\(c_r=\langle\xi,\phi_r\rangle\)</span>, <span class="math" data-tex="\(\Sigma=\sum|c_r|^2\)">\(\Sigma=\sum|c_r|^2\)</span>, and let <span class="math" data-tex="\(M\)">\(M\)</span> be the maximum on the right. Then <span class="math" data-tex="\(\Sigma=\langle\xi,\sum_rc_r\phi_r\rangle\le\|\xi\|\,\|\sum_rc_r\phi_r\|\)">\(\Sigma=\langle\xi,\sum_rc_r\phi_r\rangle\le\|\xi\|\,\|\sum_rc_r\phi_r\|\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl\|\sum_rc_r\phi_r\Bigr\|^2&amp;\le\sum_{r,s}|c_r||c_s||\langle\phi_r,\phi_s\rangle|\\
+&amp;\le M\Sigma ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl\|\sum_rc_r\phi_r\Bigr\|^2&amp;\le\sum_{r,s}|c_r||c_s||\langle\phi_r,\phi_s\rangle|\\
+&amp;\le M\Sigma ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(|c_rc_s|\le\frac12(|c_r|^2+|c_s|^2)\)">\(|c_rc_s|\le\frac12(|c_r|^2+|c_s|^2)\)</span>. Hence <span class="math" data-tex="\(\Sigma^2\le\|\xi\|^2M\Sigma\)">\(\Sigma^2\le\|\xi\|^2M\Sigma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-hecke-characters-of-mathbb-q-omega">6. Hecke characters of <span class="math" data-tex="\(\mathbb Q(\omega)\)">\(\mathbb Q(\omega)\)</span></h2>
+<p>A <em>Hecke character</em> of <span class="math" data-tex="\(K\)">\(K\)</span> is a unitary Größencharakter. By Theorem 6.3 of the lesson on Hecke characters, it corresponds to a unitary idèle class character, and it has a conductor <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> and an infinity type. We use only characters without an imaginary norm parameter. Their infinity type is <span class="math" data-tex="\(z\mapsto(z/|z|)^\ell\)">\(z\mapsto(z/|z|)^\ell\)</span> with an integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, the <em>angular order</em>. The characters of angular order zero are the characters of finite order, that is, the characters of ray class groups.</p>
+<p><strong>Lemma 6.1 (angular characters).</strong> For <span class="math" data-tex="\(\ell\in\mathbb Z\)">\(\ell\in\mathbb Z\)</span> and an ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> prime to <span class="math" data-tex="\(3\)">\(3\)</span> with primary generator <span class="math" data-tex="\(a\)">\(a\)</span>, put <span class="math" data-tex="\(\Theta_\ell(\mathfrak a)=(a/|a|)^\ell\)">\(\Theta_\ell(\mathfrak a)=(a/|a|)^\ell\)</span>. Then <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span> is a Hecke character of angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with conductor dividing <span class="math" data-tex="\((3)\)">\((3)\)</span>.</p>
+<p><strong>Proof.</strong> Products of primary elements are primary, so <span class="math" data-tex="\(\Theta_\ell\)">\(\Theta_\ell\)</span> is multiplicative. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is any generator of <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> and <span class="math" data-tex="\(u(\alpha)\)">\(u(\alpha)\)</span> the unit with <span class="math" data-tex="\(u(\alpha)\alpha\)">\(u(\alpha)\alpha\)</span> primary, then <span class="math" data-tex="\(\Theta_\ell((\alpha))=u(\alpha)^\ell(\alpha/|\alpha|)^\ell\)">\(\Theta_\ell((\alpha))=u(\alpha)^\ell(\alpha/|\alpha|)^\ell\)</span>. By Lemma 1.1 of the previous lesson, <span class="math" data-tex="\(u(\alpha)\)">\(u(\alpha)\)</span> depends only on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>. For a unit <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the element <span class="math" data-tex="\(u(\varepsilon)\varepsilon\)">\(u(\varepsilon)\varepsilon\)</span> is a primary unit, hence equal to <span class="math" data-tex="\(1\)">\(1\)</span>, so the finite part <span class="math" data-tex="\(\alpha\mapsto u(\alpha)^\ell\)">\(\alpha\mapsto u(\alpha)^\ell\)</span> and the infinite part agree on units. This is the definition of a Größencharakter modulo <span class="math" data-tex="\(3\)">\(3\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a Hecke character <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> with conductor <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>, put <span class="math" data-tex="\(L(s,\Psi)=\sum\Psi(\mathfrak n)N(\mathfrak n)^{-s}\)">\(L(s,\Psi)=\sum\Psi(\mathfrak n)N(\mathfrak n)^{-s}\)</span> over the nonzero ideals prime to <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>.</p>
+<p><strong>Proposition 6.2 (the functional equation).</strong> Let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be a primitive Hecke character of angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with <span class="math" data-tex="\(D=N(\mathfrak f)\)">\(D=N(\mathfrak f)\)</span> and <span class="math" data-tex="\(k=|\ell|/2\)">\(k=|\ell|/2\)</span>. Put
+<span class="math math-display" data-tex="\[
+\Lambda(s,\Psi)=\Bigl(\frac{\sqrt{3D}}{2\pi}\Bigr)^s\Gamma(s+k)\,L(s,\Psi).
+\]">\[
+\Lambda(s,\Psi)=\Bigl(\frac{\sqrt{3D}}{2\pi}\Bigr)^s\Gamma(s+k)\,L(s,\Psi).
+\]</span>
+Then <span class="math" data-tex="\(\Lambda(s,\Psi)\)">\(\Lambda(s,\Psi)\)</span> continues meromorphically to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, is entire unless <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is principal, and
+<span class="math math-display" data-tex="\[
+\Lambda(s,\Psi)=\varepsilon_\Psi\,\Lambda(1-s,\overline\Psi),\qquad|\varepsilon_\Psi|=1 .
+\]">\[
+\Lambda(s,\Psi)=\varepsilon_\Psi\,\Lambda(1-s,\overline\Psi),\qquad|\varepsilon_\Psi|=1 .
+\]</span></p>
+<p><strong>Proof.</strong> Apply Theorem 10.1 of the lesson on Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-functions. The field has discriminant <span class="math" data-tex="\(-3\)">\(-3\)</span> and one complex place, so its analytic scale is <span class="math" data-tex="\(3D\)">\(3D\)</span> and its gamma factor is <span class="math" data-tex="\(\Gamma_{\mathbb C}(s+k)=2(2\pi)^{-s-k}\Gamma(s+k)\)">\(\Gamma_{\mathbb C}(s+k)=2(2\pi)^{-s-k}\Gamma(s+k)\)</span>. The resulting completion is <span class="math" data-tex="\(2(2\pi)^{-k}\Lambda(s,\Psi)\)">\(2(2\pi)^{-k}\Lambda(s,\Psi)\)</span>, and the same constant appears for <span class="math" data-tex="\(\overline\Psi\)">\(\overline\Psi\)</span>, which has angular order <span class="math" data-tex="\(-\ell\)">\(-\ell\)</span>. The completion is entire unless <span class="math" data-tex="\(\Psi=|\cdot|^{i\tau}\)">\(\Psi=|\cdot|^{i\tau}\)</span>, and without an imaginary norm parameter this means that <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is principal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The characters to which these facts are applied arise from cubic residue symbols with a fixed upper entry.</p>
+<p><strong>Lemma 6.3 (characters attached to elements).</strong> Let <span class="math" data-tex="\(h\in\mathcal O\)">\(h\in\mathcal O\)</span> be nonzero.</p>
+<p>(a) There is a modulus <span class="math" data-tex="\(\mathfrak m_h\)">\(\mathfrak m_h\)</span>, divisible only by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and the primes dividing <span class="math" data-tex="\(h\)">\(h\)</span>, such that <span class="math" data-tex="\(\chi_n(h)\)">\(\chi_n(h)\)</span> depends only on <span class="math" data-tex="\(n\)">\(n\)</span> modulo <span class="math" data-tex="\(\mathfrak m_h\)">\(\mathfrak m_h\)</span>, for primary <span class="math" data-tex="\(n\)">\(n\)</span> prime to <span class="math" data-tex="\(h\)">\(h\)</span>. So <span class="math" data-tex="\(\mathfrak n\mapsto\chi_n(h)\)">\(\mathfrak n\mapsto\chi_n(h)\)</span> is a character of finite order of the ray class group modulo <span class="math" data-tex="\(\mathfrak m_h\)">\(\mathfrak m_h\)</span>. If <span class="math" data-tex="\(h=\zeta\lambda^j\)">\(h=\zeta\lambda^j\)</span> with a unit <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, then <span class="math" data-tex="\(\mathfrak m_h\)">\(\mathfrak m_h\)</span> can be taken to be one fixed power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>(b) If <span class="math" data-tex="\(h\)">\(h\)</span> is not a cube in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, this character is nontrivial. An element of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> that is a cube in <span class="math" data-tex="\(K\)">\(K\)</span> is a cube in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>.</p>
+<p>(c) If <span class="math" data-tex="\(h\)">\(h\)</span> is primary, then <span class="math" data-tex="\(\chi_n(h)=\chi_h(n)\)">\(\chi_n(h)=\chi_h(n)\)</span> for primary <span class="math" data-tex="\(n\)">\(n\)</span> prime to <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>Proof.</strong> (a) Let <span class="math" data-tex="\(\beta^3=h\)">\(\beta^3=h\)</span> and <span class="math" data-tex="\(L=K(\beta)\)">\(L=K(\beta)\)</span>, an abelian extension of <span class="math" data-tex="\(K\)">\(K\)</span> of degree <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(3\)">\(3\)</span> that is unramified outside <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and the primes dividing <span class="math" data-tex="\(h\)">\(h\)</span>. By Proposition 23.2 of the reciprocity lesson, for a primary prime <span class="math" data-tex="\(\pi\nmid 3h\)">\(\pi\nmid 3h\)</span>, the Frobenius of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in <span class="math" data-tex="\(L/K\)">\(L/K\)</span> maps <span class="math" data-tex="\(\beta\)">\(\beta\)</span> to <span class="math" data-tex="\(\chi_\pi(h)\beta\)">\(\chi_\pi(h)\beta\)</span>. Let <span class="math" data-tex="\(\mathfrak m_h\)">\(\mathfrak m_h\)</span> be a multiple of the conductor of <span class="math" data-tex="\(L/K\)">\(L/K\)</span> supported on the primes of <span class="math" data-tex="\(3h\)">\(3h\)</span> (Proposition 18.3 of the ray class lesson). By Theorem 18.2 there, the Frobenius depends only on the class of the ideal in the ray class group modulo <span class="math" data-tex="\(\mathfrak m_h\)">\(\mathfrak m_h\)</span>. If <span class="math" data-tex="\(n\equiv n&#x27;\pmod{\mathfrak m_h}\)">\(n\equiv n&#x27;\pmod{\mathfrak m_h}\)</span> with <span class="math" data-tex="\(n,n&#x27;\)">\(n,n&#x27;\)</span> primary, then <span class="math" data-tex="\((n)\)">\((n)\)</span> and <span class="math" data-tex="\((n&#x27;)\)">\((n&#x27;)\)</span> lie in the same ray class. The claim follows by multiplicativity. For <span class="math" data-tex="\(h=\zeta\lambda^j\)">\(h=\zeta\lambda^j\)</span> there are finitely many fields <span class="math" data-tex="\(L\)">\(L\)</span>, all unramified outside <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>(b) If <span class="math" data-tex="\(h\)">\(h\)</span> is not a cube in <span class="math" data-tex="\(K\)">\(K\)</span>, then <span class="math" data-tex="\(L/K\)">\(L/K\)</span> has degree <span class="math" data-tex="\(3\)">\(3\)</span>, and Theorem 18.2 shows that the Frobenius map onto its Galois group is surjective. So some prime has <span class="math" data-tex="\(\chi_\pi(h)\ne1\)">\(\chi_\pi(h)\ne1\)</span>. If <span class="math" data-tex="\(h=\gamma^3\)">\(h=\gamma^3\)</span> with <span class="math" data-tex="\(\gamma\in K\)">\(\gamma\in K\)</span>, then <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is integral over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is integrally closed.</p>
+<p>(c) This is the reciprocity law, Lemma 2.1(c) of the previous lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Lemma 2.1(b) of the previous lesson, <span class="math" data-tex="\(\chi_n(-1)=1\)">\(\chi_n(-1)=1\)</span> and <span class="math" data-tex="\(\chi_n(\omega)=\omega^{(N(n)-1)/3}\)">\(\chi_n(\omega)=\omega^{(N(n)-1)/3}\)</span> explicitly. The values <span class="math" data-tex="\(\chi_n(\lambda)\)">\(\chi_n(\lambda)\)</span> depend on <span class="math" data-tex="\(n\)">\(n\)</span> modulo <span class="math" data-tex="\(9\)">\(9\)</span>; see equation (1.5) of [DR]. Only the qualitative statement (a) is used in this course.</p>
+<p><strong>Theorem 6.4 (uniform prime sums for Hecke characters, N3).</strong> Fix <span class="math" data-tex="\(A,M&gt;0\)">\(A,M&gt;0\)</span> and an integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be a primitive Hecke character of <span class="math" data-tex="\(K\)">\(K\)</span> of angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and conductor norm <span class="math" data-tex="\(D\le(\log x)^A\)">\(D\le(\log x)^A\)</span>. Suppose that either <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span>, or <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is a nonprincipal character with <span class="math" data-tex="\(\Psi^3=1\)">\(\Psi^3=1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{N(\mathfrak p)\le x}\Psi(\mathfrak p)\log N(\mathfrak p)\ll_{\ell,A,M}\frac x{(\log x)^M},
+\]">\[
+\sum_{N(\mathfrak p)\le x}\Psi(\mathfrak p)\log N(\mathfrak p)\ll_{\ell,A,M}\frac x{(\log x)^M},
+\]</span>
+the sum running over the prime ideals of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Theorem 6.4 is used without proof in the programme. For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> it follows from Theorem 1.4 of [TZ], applied to the cyclic cubic extension of <span class="math" data-tex="\(K\)">\(K\)</span> attached to <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> by class field theory. There the field degree is <span class="math" data-tex="\(2\)">\(2\)</span>, the discriminant is <span class="math" data-tex="\(3\)">\(3\)</span>, and the conductor bound is <span class="math" data-tex="\(D\)">\(D\)</span>. Weighting the counts of the three Frobenius classes by <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> cancels their main terms. The possible exceptional zero belongs to a real character of the group of order three, which is trivial, so its term cancels too, and the error term is <span class="math" data-tex="\(O_M(x(\log x)^{-M})\)">\(O_M(x(\log x)^{-M})\)</span> for <span class="math" data-tex="\(D\le(\log x)^A\)">\(D\le(\log x)^A\)</span>. For <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span> the estimate follows from Theorem 1.2 of [KT], a prime number theorem for <span class="math" data-tex="\(L\)">\(L\)</span>-functions with a standard zero-free region. Viewed over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, <span class="math" data-tex="\(L(s,\Psi)\)">\(L(s,\Psi)\)</span> has degree <span class="math" data-tex="\(2\)">\(2\)</span>, conductor <span class="math" data-tex="\(3D\)">\(3D\)</span> and Langlands parameters <span class="math" data-tex="\(k,k+1\)">\(k,k+1\)</span>, by the duplication formula. The zero-free region is Lemma 2.1 of [CPS], and there is no exceptional zero, since <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is not real. Higher prime powers contribute <span class="math" data-tex="\(O(\sqrt x\log^2x)\)">\(O(\sqrt x\log^2x)\)</span>.</p>
+<p><strong>Corollary 6.5.</strong> In the situation of Theorem 6.4, for <span class="math" data-tex="\(|t|\le(\log x)^A\)">\(|t|\le(\log x)^A\)</span>, a smooth weight <span class="math" data-tex="\(W\)">\(W\)</span> supported in <span class="math" data-tex="\([\frac12,2]\)">\([\frac12,2]\)</span> with bounded derivatives, and <span class="math" data-tex="\(y\in[x/2,x]\)">\(y\in[x/2,x]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{N(\mathfrak p)\le y}\Psi(\mathfrak p)N(\mathfrak p)^{it}&amp;\ll_{\ell,A,M}\frac x{(\log x)^M},\\
+\sum_{\mathfrak p}\Psi(\mathfrak p)W\Bigl(\frac{N(\mathfrak p)}x\Bigr)&amp;\ll_{\ell,A,M}\frac x{(\log x)^M}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{N(\mathfrak p)\le y}\Psi(\mathfrak p)N(\mathfrak p)^{it}&amp;\ll_{\ell,A,M}\frac x{(\log x)^M},\\
+\sum_{\mathfrak p}\Psi(\mathfrak p)W\Bigl(\frac{N(\mathfrak p)}x\Bigr)&amp;\ll_{\ell,A,M}\frac x{(\log x)^M}.
+\end{aligned}
+\]</span>
+The same bounds hold after deleting the primes dividing a given element of norm <span class="math" data-tex="\(x^{O(1)}\)">\(x^{O(1)}\)</span>.</p>
+<p><strong>Proof.</strong> Partial summation removes the weight <span class="math" data-tex="\(\log N(\mathfrak p)\)">\(\log N(\mathfrak p)\)</span> and inserts <span class="math" data-tex="\(N(\mathfrak p)^{it}\)">\(N(\mathfrak p)^{it}\)</span> or <span class="math" data-tex="\(W\)">\(W\)</span>, at a cost of a factor <span class="math" data-tex="\(O(1+|t|)\)">\(O(1+|t|)\)</span>, which is absorbed by enlarging <span class="math" data-tex="\(M\)">\(M\)</span>. An element of norm <span class="math" data-tex="\(x^{O(1)}\)">\(x^{O(1)}\)</span> has <span class="math" data-tex="\(O(\log x)\)">\(O(\log x)\)</span> prime factors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(W(z)=e^{-\pi|z|^2}\)">\(W(z)=e^{-\pi|z|^2}\)</span>. Show that <span class="math" data-tex="\(\widehat W(y)=\frac2{\sqrt3}e^{-4\pi|y|^2}\)">\(\widehat W(y)=\frac2{\sqrt3}e^{-4\pi|y|^2}\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(\pi=1+3\omega\)">\(\pi=1+3\omega\)</span>. Show that <span class="math" data-tex="\(\chi_\pi(\lambda)=\omega^2\)">\(\chi_\pi(\lambda)=\omega^2\)</span>, so that the character <span class="math" data-tex="\(n\mapsto\chi_n(\lambda)\)">\(n\mapsto\chi_n(\lambda)\)</span> of Lemma 6.3 is nontrivial.</p>
+<p><strong>7.3.</strong> Show that the term <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span> in Lemma 3.3 cannot be replaced by <span class="math" data-tex="\(Q^{2-\delta}\)">\(Q^{2-\delta}\)</span> for any fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. Take <span class="math" data-tex="\(v\)">\(v\)</span> supported on <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and count the primitive characters modulo primary primes of norm between <span class="math" data-tex="\(Q/2\)">\(Q/2\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(A=B=N\)">\(A=B=N\)</span>. Compare the bound of Theorem 4.1 with the bound that Lemma 3.3 gives for the same sum, after the characters <span class="math" data-tex="\(b\mapsto\chi_a(b)\)">\(b\mapsto\chi_a(b)\)</span> are written as characters of conductor <span class="math" data-tex="\(a\)">\(a\)</span>. Which exponent of <span class="math" data-tex="\(N\)">\(N\)</span> does each give?</p>
+<p><strong>7.5.</strong> Let <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> be a nonprincipal Hecke character of finite order with <span class="math" data-tex="\(\Psi^3=1\)">\(\Psi^3=1\)</span>. Deduce from Theorem 6.4 that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{\mathfrak p:N(\mathfrak p)\le x,\ \Psi(\mathfrak p)=1\}\\
+&amp;\qquad=\frac13\pi_K(x)+O\bigl(x(\log x)^{-M}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{\mathfrak p:N(\mathfrak p)\le x,\ \Psi(\mathfrak p)=1\}\\
+&amp;\qquad=\frac13\pi_K(x)+O\bigl(x(\log x)^{-M}\bigr),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\pi_K(x)\)">\(\pi_K(x)\)</span> counts prime ideals of norm at most <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> With <span class="math" data-tex="\(z=s+it\)">\(z=s+it\)</span> and <span class="math" data-tex="\(y=u+iv\)">\(y=u+iv\)</span>, <span class="math" data-tex="\(\operatorname{Tr}(zy)=2(su-tv)\)">\(\operatorname{Tr}(zy)=2(su-tv)\)</span>. The Euclidean Fourier transform of <span class="math" data-tex="\(e^{-\pi(s^2+t^2)}\)">\(e^{-\pi(s^2+t^2)}\)</span> at <span class="math" data-tex="\((2u,-2v)\)">\((2u,-2v)\)</span> is <span class="math" data-tex="\(e^{-4\pi(u^2+v^2)}\)">\(e^{-4\pi(u^2+v^2)}\)</span>, and the factor <span class="math" data-tex="\(\frac2{\sqrt3}\)">\(\frac2{\sqrt3}\)</span> comes from <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>.</p>
+<p><strong>7.2.</strong> From <span class="math" data-tex="\(1+3\omega\equiv0\)">\(1+3\omega\equiv0\)</span> we get <span class="math" data-tex="\(\omega\equiv2\pmod\pi\)">\(\omega\equiv2\pmod\pi\)</span>, as in Exercise 6.2 of the previous lesson, so <span class="math" data-tex="\(\lambda=1+2\omega\equiv5\pmod\pi\)">\(\lambda=1+2\omega\equiv5\pmod\pi\)</span>. Then <span class="math" data-tex="\(\chi_\pi(\lambda)\equiv5^2\equiv4\pmod 7\)">\(\chi_\pi(\lambda)\equiv5^2\equiv4\pmod 7\)</span>, and <span class="math" data-tex="\(4\equiv\omega^2\)">\(4\equiv\omega^2\)</span> since <span class="math" data-tex="\(\omega\equiv2\)">\(\omega\equiv2\)</span>.</p>
+<p><strong>7.3.</strong> With <span class="math" data-tex="\(v_1=1\)">\(v_1=1\)</span> and <span class="math" data-tex="\(v_n=0\)">\(v_n=0\)</span> otherwise, the right side is <span class="math" data-tex="\(O(1+Q^2)\)">\(O(1+Q^2)\)</span> and the left side is <span class="math" data-tex="\(\sum_r|\Xi_r|\)">\(\sum_r|\Xi_r|\)</span>. Modulo a primary prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, every nontrivial character of the cyclic group <span class="math" data-tex="\((\mathcal O/\pi\mathcal O)^\times\)">\((\mathcal O/\pi\mathcal O)^\times\)</span> is primitive, and there are <span class="math" data-tex="\(N(\pi)-2\)">\(N(\pi)-2\)</span> of them. By Lemma 4.2 of the previous lesson there are <span class="math" data-tex="\(\gg Q/\log Q\)">\(\gg Q/\log Q\)</span> primary primes with <span class="math" data-tex="\(Q/2&lt;N(\pi)\le Q\)">\(Q/2&lt;N(\pi)\le Q\)</span>. Taking all their nontrivial characters gives a left side <span class="math" data-tex="\(\gg Q^2/\log Q\)">\(\gg Q^2/\log Q\)</span>, which is larger than <span class="math" data-tex="\(Q^{2-\delta}\)">\(Q^{2-\delta}\)</span> for large <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>7.4.</strong> Theorem 4.1 gives <span class="math" data-tex="\(N^{4/3+\epsilon}\sum|\beta_b|^2\)">\(N^{4/3+\epsilon}\sum|\beta_b|^2\)</span>, because <span class="math" data-tex="\((AB)^{2/3}=N^{4/3}\)">\((AB)^{2/3}=N^{4/3}\)</span> dominates. For squarefree <span class="math" data-tex="\(a\)">\(a\)</span>, the character <span class="math" data-tex="\(b\mapsto\chi_a(b)=\chi_b(a)\)">\(b\mapsto\chi_a(b)=\chi_b(a)\)</span> is primitive modulo <span class="math" data-tex="\(a\)">\(a\)</span>, so Lemma 3.3 with <span class="math" data-tex="\(Q=Z=N\)">\(Q=Z=N\)</span> gives <span class="math" data-tex="\((N+N^2)\sum|\beta_b|^2\)">\((N+N^2)\sum|\beta_b|^2\)</span>. The cubic large sieve saves <span class="math" data-tex="\(N^{2/3}\)">\(N^{2/3}\)</span> by exploiting that the family consists of cubic characters only.</p>
+<p><strong>7.5.</strong> For a prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> not dividing <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>, <span class="math" data-tex="\(\frac13(1+\Psi(\mathfrak p)+\overline{\Psi(\mathfrak p)})\)">\(\frac13(1+\Psi(\mathfrak p)+\overline{\Psi(\mathfrak p)})\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(\Psi(\mathfrak p)=1\)">\(\Psi(\mathfrak p)=1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. Sum over <span class="math" data-tex="\(N(\mathfrak p)\le x\)">\(N(\mathfrak p)\le x\)</span>, and use Theorem 6.4 by partial summation for <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> and <span class="math" data-tex="\(\overline\Psi\)">\(\overline\Psi\)</span>. The primes dividing <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> number <span class="math" data-tex="\(O(\log x)\)">\(O(\log x)\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-023] OpenAI, <em>An unconditional first moment for cubic Gauss sums</em>, OpenAI Math Release preprint, 25 September 2026, Section 2.1 (conventions and classical inputs) and Section 2.2 (the two large sieves). https://github.com/openai/math/tree/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026</li>
+<li>[DR] A. Dunn and M. Radziwiłł, <em>Bias in cubic Gauss sums: Patterson's conjecture</em>, arXiv:2109.07463v3 (2024), Theorem 9.1 (Heath-Brown's cubic large sieve) and equation (1.5) (the supplementary laws). https://arxiv.org/abs/2109.07463v3</li>
+<li>[TZ] J. Thorner and A. Zaman, <em>A unified and improved Chebotarev density theorem</em>, arXiv:1803.02823v3, published in Algebra Number Theory 13 (2019), Theorem 1.4. https://arxiv.org/abs/1803.02823v3</li>
+<li>[KT] I. Kaneko and J. Thorner, <em>Highly uniform prime number theorems</em>, arXiv:2203.09515v2, published in Ann. Inst. Fourier 75 (2025), Theorem 1.2. https://arxiv.org/abs/2203.09515v2</li>
+<li>[CPS] E. Chen, P. S. Park and A. A. Swaminathan, <em>Linnik's theorem for Sato–Tate laws on elliptic curves with complex multiplication</em>, arXiv:1506.09170v3, published in Res. Number Theory 1 (2015), Lemma 2.1. https://arxiv.org/abs/1506.09170v3</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -295,7 +295,7 @@ Reflection reverses \(\xi\) and retains \(\tau,\eta\). A tangent ray at the flat
 \]
 Throughout this arc \(|t|\le5/8\). Both normal and tangential speeds have magnitude at most \(2\), so \(0\le x\le R+7/8\) and \(|y|\le R+7/8\). Take \(K\) to be the normalized characteristic set with \(|t|\le5/8\), \(0\le x\le R+1\), \(|y|\le R+1\), and \(K_2=K\cap\{|t|=5/8\}\). Their normalized fibers are compact, \(K\Subset\{|t|<2\}\), and \(K_2\) lies in the observation region. The bound \(T=7/16\) works even for gliding rays. This example verifies the geometric hypothesis, rather than assuming a unique ordinary ray through a boundary tangent point.
 
-## 8. The series mechanism and remaining scope
+## 8. The series mechanism and its scope
 
 ![A finite triangular exception region for the diagonal estimate, and exact partial sums showing the limitation of dense tests](figures/compact-ray-observation.svg)
 

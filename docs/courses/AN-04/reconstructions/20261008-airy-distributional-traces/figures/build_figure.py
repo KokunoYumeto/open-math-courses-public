@@ -31,5 +31,5 @@ ax[1].set(xlabel=r'Physical normal coordinate $q$',ylabel=r'$|A_\lambda(q)|$',yl
 ax[1].legend();ax[1].grid(alpha=.2)
 fig.suptitle('Normalized Airy transition layers',fontsize=16);fig.tight_layout()
 out=P/'airy-distributional-layer.svg';fig.savefig(out,bbox_inches='tight',metadata={'Date':None});plt.close(fig)
-record={'svg':'figures/'+out.name,'svg_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'coordinates':'Left: smooth step chi0, zero a<=-2 and one a>=-1. Right: |chi0(-q*lambda^(2/3)) F(-q*lambda^(2/3))/F(0)|, mu=0, lambda=8,64,512, q in [0,0.55].','actually_inspected':False,'exact_coordinate_review_complete':False}
+record={'svg':'figures/'+out.name,'svg_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'coordinates':'Left: smooth step chi0, zero a<=-2 and one a>=-1. Right: |chi0(-q*lambda^(2/3)) F(-q*lambda^(2/3))/F(0)|, mu=0, lambda=8,64,512, q in [0,0.55].','scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (P.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8');print(json.dumps(record))

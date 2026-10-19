@@ -31,6 +31,6 @@ assert absorbed==Fraction(65,512)<Fraction(1,2)
 groups=[{'name':'Actual-adjoint norm factorization algebra with complex matrices','cases':40,'max_absolute_error':max(errors)},
  {'name':'Variable spatial positivity and exact exercise symbol bound','samples':samples,'finite_sampling_only':True},
  {'name':'Exact fixed-ratio absorption arithmetic','leading_sum':str(absorbed),'epsilon_upper_bound':'1/4'}]
-record={'schema':'an04-glancing-normal-operator-models/v1','source_sha256':sha(p/'glancing-normal-energy-and-operator-errors.md'),'script_sha256':sha(Path(__file__)),'passed':True,'groups':groups,'general_theorem_certificate':False,'scope':'Finite algebra, exercise samples and exact rational arithmetic; the complete written proof supplies all analytic statements.'}
+record={'schema':'an04-glancing-normal-operator-models/v1','source_sha256':sha(p/'glancing-normal-energy-and-operator-errors.md'),'script_sha256':sha(Path(__file__)),'passed':True,'groups':groups,                                    'scope':'Finite algebra, exercise samples and exact rational arithmetic; the complete written proof supplies all analytic statements.'}
 (p/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'groups':3,'general_theorem_certificate':False})
+print({'passed':True,'groups':3,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

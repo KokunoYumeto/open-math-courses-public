@@ -40,7 +40,7 @@ text(28,563,'Only residual kernels are relocated. The normal coordinate and inpu
 parts.append('</svg>')
 dest=p.parent/'fixed-residual-packing.svg';dest.write_text('\n'.join(parts)+'\n','utf-8')
 result={'svg':'figures/'+dest.name,'svg_sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),
- 'generator_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'actually_inspected':False,
+ 'generator_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'exact_intervals':intervals,'horizontal_coordinate_map':'pixel = 95 + 1400*z1',
  'two_mode_weights':[2,3],'squared_norm_weights':[4,9],
  'meaning':'Actual first six tangential intervals and exact two-mode orthogonal norm identity; the omitted infinite tail accumulates at zero.'}

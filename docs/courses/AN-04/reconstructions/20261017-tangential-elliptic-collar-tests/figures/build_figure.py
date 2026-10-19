@@ -51,5 +51,5 @@ box(395,505,305,['Aκ = Qκ + iSκ','‖Qκf‖ + ‖Sκf‖ ≤ C‖Aκf‖','E
 box(760,505,310,['A = U⁻¹ β A₀ Uχ','Separated output → ‖u‖ℬ','One scalar collar-input test'])
 line(339,560,390,560,'arrow');line(704,560,755,560,'arrow')
 text(30,670,'β = 1 below 3a; input χ supported below 2a; omitted output has h ≥ log(3/2).','small')
-text(30,708,'Proof locators: Q0–Q1, F0, G0–G2, E0–E1, A0–A1, T0.  Global interior gluing remains open.','small')
+text(30,708,'Proof locators: Q0–Q1, F0, G0–G2, E0–E1, A0–A1, T0.  Whole-manifold gluing uses the tangential-equator construction.','small')
 out.append('</svg>');(HERE/'tangential-elliptic-collar.svg').write_text('\n'.join(out)+'\n','utf-8');print(HERE/'tangential-elliptic-collar.svg')

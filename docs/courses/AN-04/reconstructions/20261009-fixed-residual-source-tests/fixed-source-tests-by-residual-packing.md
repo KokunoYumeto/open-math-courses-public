@@ -206,7 +206,7 @@ where the two source tests are fixed, \(\operatorname{ord}Q=-2\),
 
 For a fixed parameter the norm on the right defines the corresponding smooth source graph. Its completion embeds into \(B\) with actual tested source components: the earlier flat-transpose proof applies to the fixed \(Q,S\) exactly as it did to the finite tree. Equation (FT2) sends a Cauchy sequence for this fixed graph norm to a Cauchy sequence for the earlier tree norm. Consequently the \(\overline H^2\) regularized vector, its actual equation and both traces have the same limits as in that theorem. Smooth zero-Dirichlet inputs retain zero value trace. No density in a graph norm is inferred merely from density in \(B\).
 
-**S9. Remaining scope.** The packing uses a tangential direction to separate output regions, so it proves the fixed-test reduction on boundary charts with \(d\geq1\). It makes no assertion of this construction in dimension \(d=0\). It also produces two fixed tests, whose norms are both written in (FT21); they have not been replaced without proof by a single scalar tester.
+**S9. Remaining scope.** The packing uses a tangential direction to separate output regions, so it proves the fixed-test reduction on boundary charts with \(d\geq1\). It makes no assertion of this construction in dimension \(d=0\). It also produces two fixed tests, whose norms are both written in (FT21); the estimate here retains both norms.
 
 [Global scalar assembly](../20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html) gives fixed tests for complete finite families. The packing construction here concerns a positive-dimensional boundary and retains its residual-source norm; dropping that norm would make the bound false.
 

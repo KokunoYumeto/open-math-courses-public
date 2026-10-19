@@ -39,4 +39,4 @@ import json,hashlib
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 checks={'origin':[x0,y0],'center':list(center),'witness':list(witness),'equal_axis_scale':scale,'window_radius':110,'witness_gap':55}
 assert 110/scale==1/2 and 55/scale==1/4
-(r/'figure-check.json').write_text(json.dumps({'asset':'figures/parabolic-window-direction.svg','sha256':sha(f),'script_sha256':sha(Path(__file__)),'source_sha256':sha(r/'parabolic-wavefront-windows-and-rays.md'),'exact_coordinate_checks':checks,'original_geometry_preserved':True,'layout_only_change':'Fit long legend lines within the original canvas.','actually_inspected':False},indent=2)+'\n',encoding='utf-8')
+(r/'figure-check.json').write_text(json.dumps({'asset':'figures/parabolic-window-direction.svg','sha256':sha(f),'script_sha256':sha(Path(__file__)),'source_sha256':sha(r/'parabolic-wavefront-windows-and-rays.md'),'exact_coordinate_checks':checks,                                   'layout_only_change':'Fit long legend lines within the original canvas.'                           },indent=2)+'\n',encoding='utf-8')

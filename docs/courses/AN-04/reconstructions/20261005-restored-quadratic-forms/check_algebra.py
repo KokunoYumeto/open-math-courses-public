@@ -1,4 +1,4 @@
-"""Original eight preparation model families, without historical source/state operations."""
+'Eight finite algebraic model families.'
 import json
 import numpy as np
 import sympy as s

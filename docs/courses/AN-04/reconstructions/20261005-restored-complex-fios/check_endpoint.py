@@ -1,4 +1,4 @@
-"""Finite controls for the new complete endpoint proof; not a theorem certificate."""
+'Finite controls for endpoint formulas; the general statement uses the written proof.'
 from pathlib import Path
 import hashlib,json
 import numpy as np
@@ -50,6 +50,6 @@ checks.append({'name':'Actual finite shell operator matrices and failure without
  'models':norms,'scope':'Banded matrix norm and summable far matrix; twelve coincident identity pieces have norm twelve despite each having norm one.'})
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'passed':True,'checks':checks,'source_sha256':sha(ROOT/'endpoint-half-order-bound.md'),
- 'script_sha256':sha(Path(__file__)),'general_proof_certified_by_finite_checks':False}
+ 'script_sha256':sha(Path(__file__)),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'endpoint-checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_controls':len(checks),'geometric_trials':trials}))

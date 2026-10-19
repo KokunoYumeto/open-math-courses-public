@@ -48,6 +48,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'coordinate_range':{'t':[-3,3],'x':[-1,1]},'sample_count_per_curve':601,
  'exact_sets':'Plateau [-1,1], saturation x=0, rank-two pieces |t|>1; all drawn from exact coordinates.',
  'sampled_curves':'h(t), 2, 2t^2; samples illustrate exact lesson formulas, not proofs.',
- 'source_proof_locators':['CPG:X1','CPG:X3','CPG:V0'],'actually_inspected':False}
+ 'source_proof_locators':['CPG:X1','CPG:X3','CPG:V0'],'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure_sha256':record['svg_sha256']}))

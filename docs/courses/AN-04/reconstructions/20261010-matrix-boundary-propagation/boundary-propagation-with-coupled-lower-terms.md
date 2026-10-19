@@ -328,7 +328,7 @@ For \(\lambda>0\) the phase \(t+x\) has positive normal root and is incoming whe
 
 The right panel uses the complex orthonormal eigenvectors in (MP28) and the unit vector \(a(\theta)=\cos\theta\,v_++\sin\theta\,v_-\). Its exact damping energy is \(a(\theta)^*ha(\theta)=11\cos^2\theta+5\sin^2\theta=8+3\cos2\theta\), for \(0\le\theta\le\pi/2\). The graph and endpoints show the positive lower bound five from D0 and X2. It illustrates the finite-dimensional symbol inequality; the full operator remainders and rough-domain limit are proved in C0 and E0–E1.
 
-## Source credit and remaining scope
+## Source credit and scope
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected Springer 2007 printing, ISBN 978-3-540-49938-1, §24.5, Proposition 24.5.1, Lemma 24.5.2 and Theorem 24.5.3, printed pp. 455–459, supplies the scalar propagation antecedent.  The ordered matrix extension, receiving-domain checks, coupled damping calculation, comparison corollary, examples and figure here are independently written; the matrix conclusion is not attributed to the scalar statement in that source.
 

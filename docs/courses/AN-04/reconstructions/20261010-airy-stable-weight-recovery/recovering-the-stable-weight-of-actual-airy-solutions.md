@@ -233,7 +233,7 @@ The actual value and first normal traces of \(e_{\rm new}\) are smooth there. SA
 \]
 For the last assertion, apply any proper ordinary order-zero test supported in a smaller input patch. SAL:C2 proves \(w|A(b)|^2\le C\ell^{5/3}\), so the first coefficient is in \(\mathcal H_w\). The second is in that space by SW14. SAL:M1 bounds the input test, and the full graph remainder maps finite-order compact data into every Sobolev space. This proves the stated microlocal membership for the actual value trace. It does not claim invariance of the scalar weight under an arbitrary canonical change.
 
-SW20 and SW21 finish the local strict diffractive stable-weight representation and enhanced value-trace membership for the stated source class. They do not provide a global decomposition in all complementary regimes, the general-manifold scalar observation assembly, or completion of the entire course. Nor does a merely tangentially regular source make the residual smooth in every normal derivative; ASM:X3 remains applicable. A quantitative uniform norm theorem must keep its exact source norms and support constants.
+SW20 and SW21 finish the local strict diffractive stable-weight representation and enhanced value-trace membership for the stated source class. The representation is local to the stated strict diffractive regime; it asserts no global decomposition in complementary regimes. Nor does a merely tangentially regular source make the residual smooth in every normal derivative; ASM:X3 remains applicable. A quantitative uniform norm theorem must keep its exact source norms and support constants.
 
 ## 6. Three solved exercises
 

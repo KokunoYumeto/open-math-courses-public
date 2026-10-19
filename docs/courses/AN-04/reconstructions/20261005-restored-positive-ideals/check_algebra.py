@@ -1,4 +1,4 @@
-"""All eight original finite model families; historical state operations omitted."""
+'Eight finite model families.'
 import json,math
 import numpy as np
 import sympy as s

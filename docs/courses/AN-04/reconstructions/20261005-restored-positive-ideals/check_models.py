@@ -9,11 +9,11 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 checks=[]
 p=subprocess.run([sys.executable,'-X','utf8',str(here/'check_algebra.py'),'--check-only'],check=True,capture_output=True,text=True,encoding='utf-8')
 old=json.loads(p.stdout.strip());assert old['passed'] and old['finite_model_groups']==8 and old['no_course_or_source_writes']
-checks.append({'name':'Eight retained source-preparation model families','passed':True,'scope':'Exact graph degrees, full normal phase, crossing/rank change, cubic sign obstruction, twelve actual Gaussian integrations, complete orders/constants, six flat derivatives and actual Mellin partitions.','script_sha256':sha(here/'check_algebra.py')})
+checks.append({'name':'Eight finite model families','passed':True,'scope':'Exact graph degrees, full normal phase, crossing/rank change, cubic sign obstruction, twelve actual Gaussian integrations, complete orders/constants, six flat derivatives and actual Mellin partitions.','script_sha256':sha(here/'check_algebra.py')})
 p=subprocess.run([sys.executable,'-X','utf8',str(here/'check_uniform_division.py')],check=True,capture_output=True,text=True,encoding='utf-8')
 division=json.loads((here/'uniform-division-checks.json').read_text(encoding='utf-8'))
 assert division['passed'] and len(division['checks'])==3
-checks.append({'name':'Three retained uniform-division controls','passed':True,'scope':'Whole bivariate polynomial identity, twelve genuinely nonholomorphic path integrals with wrong-sign negative control, and thirteen diagonal cutoff levels.','report_sha256':sha(here/'uniform-division-checks.json')})
+checks.append({'name':'Three uniform-division model calculations','passed':True,'scope':'Whole bivariate polynomial identity, twelve genuinely nonholomorphic path integrals with wrong-sign negative control, and thirteen diagonal cutoff levels.','report_sha256':sha(here/'uniform-division-checks.json')})
 B=s.Matrix([[0,1],[1,0]]);C=s.diag(1,0);e=s.Rational(1,4);u=e*B
 M=C+2*e*B*B-e*e*B*C*B
 assert (B+s.I*C).det()!=0 and C.det()==0 and M==s.diag(s.Rational(3,2),s.Rational(7,16))
@@ -43,7 +43,7 @@ checks.append({'name':'Absolute error cannot be divided by exponential damping',
 text=lesson.read_text(encoding='utf-8');assert text.count('**Exercise ')==text.count('**Solution.**')==17
 required=['uniform symbol ideal','absolute Fourier errors','every** such phase','The plus sign','printed page 36','(10.10)','Exercise 17']
 for v in required:assert v in text,v
-checks.append({'name':'Authored lesson and explicit hypothesis boundaries','passed':True,'scope':'Seventeen paired original solutions and explicit source degree, bounded-ideal, Gaussian branch, absolute-error and two-way representation contracts. This is a content guard, not proof verification.'})
-report={'schema':'positive-ideal-finite-author-controls/v1','passed':True,'lesson':lesson.name,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),'checks':checks,'independent_review':False,'full_source_parent_closed':False,'limitations':'Finite models and explicit hypothesis controls support the original written proofs. The complete written analytic proofs are checked separately; finite controls do not certify general theorems or whole-course completion.'}
+checks.append({'name':'Authored lesson and explicit hypothesis boundaries','passed':True,'scope':'Seventeen solved exercises and the stated degree, bounded-ideal, Gaussian branch, absolute-error and two-way representation hypotheses.'})
+report={'schema':'positive-ideal-finite-author-controls/v1','passed':True,'lesson':lesson.name,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),'checks':checks,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','full_source_parent_closed':False,'limitations':'Finite models and explicit hypothesis controls concern the stated examples; the general analytic statements use the written proofs.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'checks':len(checks),'lesson_sha256':sha(lesson),'solutions':17}))

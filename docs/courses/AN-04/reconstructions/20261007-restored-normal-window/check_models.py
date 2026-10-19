@@ -79,8 +79,8 @@ sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
 record={'schema':'an04-normal-window-models/v1','passed':True,'groups':groups,
     'source_sha256':sha(p/'boundary-normal-coordinates-and-window-transfer.md'),
     'script_sha256':sha(Path(__file__)),'figure_svg_sha256':figure['svg_sha256'],
-    'sympy_version':s.__version__,'general_theorem_certificate':False,
+    'sympy_version':s.__version__,                                    
     'scope':'Exact finite diagnostic models; the variable-coefficient proof is the complete receiving chapter.'}
 (p/'model-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print({'passed':True,'groups':len(groups),'cases':sum(a['cases'] for a in groups),
-    'general_theorem_certificate':False})
+    'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

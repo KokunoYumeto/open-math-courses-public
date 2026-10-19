@@ -79,5 +79,5 @@ for p0 in [0.,1.,10.,100.]:
   metric_samples+=1
 Gm=s.diag(R,1/R);Jo=s.Matrix([[0,-1],[1,0]])
 assert s.simplify(Jo.T*Gm.inv()*Jo-Gm)==s.zeros(2)
-checks.append({'name':'Exact endpoint self-duality and actual temperateness controls','passed':True,'scope':'Whole symplectic dual matrix equals original metric; sixteen distinct-center frequency comparisons satisfy the written exact constant4 and exponent1. General structural proof is supplied in the private preparation, not certified by sampling.','samples':metric_samples})
+checks.append({'name':'Exact endpoint self-duality and actual temperateness controls','passed':True,'scope':'The whole symplectic dual matrix equals the original metric; sixteen distinct-center frequency comparisons satisfy the stated constant4 and exponent1. The general structural statement uses the written proof.','samples':metric_samples})
 print(json.dumps({'passed':True,'finite_model_groups':len(checks),'checks':checks}))

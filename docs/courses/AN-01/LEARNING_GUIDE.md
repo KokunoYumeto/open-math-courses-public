@@ -149,6 +149,12 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **When do singular families converge to points or curves?** [*Concentration and logarithmic boundaries*](src/concentration-and-logarithmic-boundaries.md) proves the full Hessian criterion for planar concentration, a logarithmic condition for cut boundary values, and convergence of moving logarithmic sources to circular arclength.
 
+- **How do boundaries determine derivatives and division?** [*Boundary derivatives, division and moving jumps*](src/boundary-derivatives-division-and-moving-jumps.md) proves exact graph derivative orders, the complete criterion for division by a quadratic smooth multiplier, all interfaces in a weak-solution family, and logarithmic branch jumps.
+
+- **How do cancellation and damping combine?** [*Weighted cancellation for complex phases*](src/weighted-cancellation-for-complex-phases.md) proves a finite-regularity integral bound with precise gradient and imaginary-part weights, a nonnegative derivative estimate, and the uniform passage through degenerate points.
+
+- **Which finite jets determine a stationary integral?** [*Finite stationary jets and quadratic exchange*](src/finite-stationary-jets-and-quadratic-exchange.md) derives the complex quadratic remainder, the full finite-derivative stationary expansion and the exact algebra of nilpotent quadratic exchange, with its sharp order loss.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions

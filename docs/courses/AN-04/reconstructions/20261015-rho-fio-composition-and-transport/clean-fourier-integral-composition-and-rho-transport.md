@@ -527,10 +527,10 @@ Panel A displays the base projection of X3's matching fiber at \(x=s=z=0\), with
 
 Panel B samples the exact coefficient ratio \(\sqrt{1+\delta^2R^{2\delta}}\) from X1. It grows for every displayed \(\rho<1\), explaining the actual transport order \(m+s-\rho\). Panel C samples \(2\sin(\Delta(R)/2)\) from X2 and its proved upper bound \(\delta R^{-\epsilon}\). The nonzero first coefficient proves the sharp \(\epsilon=2\rho-1\) drop; the sampled curves do not prove an asymptotic theorem. The [generator](figures/build_figure.py) records all coordinates and formulas.
 
-## 17. Scope and continuing work
+## 17. Scope of composition and transport
 
 The general-\(\rho\) kernel maps, adjoint, clean composition, leading density product, full phase remainders and scalar subprincipal transport are proved here with actual supports, all symbol derivatives and exact order qualifications. The ordinary results remain special cases and retained alternatives.
 
-The general-\(\rho\) continuity ranges and the iterated characterization with order-\(2\rho-1\) test operators remain receiving obligations.
+The general-\(\rho\) continuity ranges and the iterated characterization with order-\(2\rho-1\) test operators have separate proofs.
 
 Original expression is CC0-1.0.  

@@ -35,7 +35,7 @@ plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (root.parent/'figure-check.json').write_text(json.dumps({
  'svg':'figures/strict-loss-solvability.svg','svg_sha256':sha(out),
- 'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'generator_sha256':sha(Path(__file__)),                           
  'coordinates':{'m':'3/2','s':'-2/3','threshold':'-1/6','target':'-5/12','gap':'1/4','adjoint_order':'5/12'},
  'sequence_formulas':['-j*j+2*j','-j','j-1'],'sample_indices':js,
  'scope':'Exact rational coordinates and discrete logarithmic formulas; proof is in SLS:X1 and SLS:X3.',

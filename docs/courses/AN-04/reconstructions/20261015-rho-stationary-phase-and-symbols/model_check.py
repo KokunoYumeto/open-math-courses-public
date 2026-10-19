@@ -46,7 +46,7 @@ raw=(ROOT/'stationary-phase-and-symbols-with-derivative-loss.md').read_bytes()
 out={'schema':'AN04-rho-stationary-model-check/v1','passed':True,'total_cases':len(checks),
  'exact_algebraic_checks':len(checks),'numerical_checks':0,'checks':checks,
  'source_sha256':hashlib.sha256(raw).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
- 'scope':'Finite scale, density, Gaussian, Euler-connection and clean-average identities. Uniform estimates and every complete proof are in the lesson.',
- 'proof_completeness_certified_by_these_checks':False}
+ 'scope':'Finite scale, density, Gaussian, Euler-connection and clean-average identities. Uniform estimates and every complete proof are in the lesson.' 
+                                                     }
 (ROOT/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'exact_checks':len(checks)}))

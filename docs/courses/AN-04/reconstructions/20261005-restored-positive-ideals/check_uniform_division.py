@@ -59,6 +59,6 @@ report={'schema':'private-uniform-complex-graph-division-check/v1',
  'proof':'positive-lagrangian-ideals-and-distributions.md, Section 2','proof_sha256':sha(proof),
  'script_sha256':sha(Path(__file__)),
  'written_argument':'Author derivation includes uniform cutoff Taylor extension, almost-analytic flatness, full path-chain identity, exact flat-error division and all derivative bounds on a fixed patch.',
- 'limitations':'Finite algebra and sign controls support the author-written supporting proof; they do not certify the general argument, complete the public teaching lesson or imply independent review.'}
+ 'limitations':'Finite algebra and sign controls concern the stated examples; the general division argument uses the written proof.'}
 dump(here/'uniform-division-checks.json',report)
 print(json.dumps({'passed':True,'finite_control_groups':3,'nonholomorphic_paths':12,'wrong_sign_control_fails':True,'private_proof_sha256':report['proof_sha256']}))

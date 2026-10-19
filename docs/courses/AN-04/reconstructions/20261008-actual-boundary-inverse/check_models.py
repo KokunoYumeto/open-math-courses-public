@@ -32,5 +32,5 @@ ph=s.symbols('ph',nonzero=True);dhdmu=s.simplify((-1/I)*lam**(-s.Rational(2,3))*
 group('Frequency reflection and nonlinear cotangent derivative',[dhdmu==I/lam,s.simplify(dhdmu*(-eps*lam))==-I*eps,s.det(s.Matrix([[1,0],[eps*y,1]]))==1,s.simplify((xi-eps*y*lam)+eps*y*lam)==xi])
 ss=s.symbols('ss',real=True)
 group('Disjoint-packet Sobolev powers',[s.simplify(2*ss+2*(-ss-s.Rational(1,3)))==-s.Rational(2,3),s.simplify(2*(ss-s.Rational(2,3))+2+2*(-ss-s.Rational(1,3)))==0,s.Rational(4)**(-s.Rational(2,3))<1])
-out={'passed':True,'groups':groups,'total_cases':sum(x['cases'] for x in groups),'scope':'Finite exact algebra, signs and exponents only; analytic proofs are reviewed separately.','source_sha256':hashlib.sha256((P/'actual-conormal-inverse-and-reflection.md').read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+out={'passed':True,'groups':groups,'total_cases':sum(x['cases'] for x in groups),'scope':'Finite exact algebra, signs and exponents for the stated examples; the general analytic statements use the written proofs.','source_sha256':hashlib.sha256((P/'actual-conormal-inverse-and-reflection.md').read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
 (P/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf-8');print(json.dumps(out,indent=2))

@@ -27,6 +27,6 @@ record={"svg":out.relative_to(ROOT).as_posix(),"svg_sha256":hashlib.sha256(out.r
     "generator_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     "exact_formula_locators":["AI37","AI38","AI39"],"original_illustration":True,
     "numerical_scope":"First panel: Airy samples of the exact normalized Fourier-kernel factor at lambda=16. Other panels: exact powers and proven residual orders.",
-    "numerical_pde_solution_claimed":False,"actually_inspected":False}
+    "numerical_pde_solution_claimed":False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/"figure-check.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"figure":str(out),"generated":True}))

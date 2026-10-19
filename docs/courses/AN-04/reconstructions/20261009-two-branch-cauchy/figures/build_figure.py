@@ -33,6 +33,6 @@ record={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(P
  'right':{'times':[0,'1/2'],'positive_time_height':'1/2','positive_time_jumps':['-1/2','1/2']}},
  'base_projections_not_full_phase_space':True,'endpoint_values_distributionally_immaterial':True,
  'proof_locator':'**F0. Exact coordinates of the figure.**','exact_functions':True,
- 'actually_inspected':False,'exact_coordinate_review_complete':False,'licence':'CC0-1.0'}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                         'licence':'CC0-1.0'}
 (P.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'svg_bytes':out.stat().st_size,'svg_sha256':sha(out)}))

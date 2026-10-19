@@ -61,6 +61,6 @@ record={'schema':'an04-normal-window-figure/v1','svg':f.relative_to(r).as_posix(
     'proof_locators':['NC2--NC10','NC19','NC23','NC27--NC29'],'exact_model_curves':curves,
     'not_characteristic_rays':True,'unpictured_covectors_fully_labeled':True,
     'human_source_credit':'Melrose and Sjöstrand boundary normal-form route, printed XV.1; Vasy compressed projection framework',
-    'new_expression_licence':'CC0-1.0','original_research_claim':False,'actual_render_visually_inspected':False}
+    'new_expression_licence':'CC0-1.0','scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (p/'figure-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print({'exact_model_figure':True,'curves':2,'canvas':[780,440]})

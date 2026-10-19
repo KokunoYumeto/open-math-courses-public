@@ -35,6 +35,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'left_domain':[0,128],'left_formulae':['1/16-q/8192','1/32'],
  'right_domain':[16,160],'right_formulae':['1/4-4/q','3/16'],
  'overlap':[64,128],'meaning':'Proved phase and profile-separation lower bounds under the exact symbol-support conditions; no PDE simulation.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps(record))

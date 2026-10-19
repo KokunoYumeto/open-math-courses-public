@@ -1,4 +1,4 @@
-"""Original eight finite algebra families; no source access or state mutation."""
+'Eight finite algebra families.'
 import json,math
 import sympy as s
 x,y,z,xi,eta,h=s.symbols('x y z xi eta h',real=True)

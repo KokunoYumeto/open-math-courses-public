@@ -73,6 +73,6 @@ result={'passed':True,'finite_groups':len(checks),'checks':checks,
  'scope':'Exact finite algebra diagnostics; complete general proofs and hypotheses are in the text and exact proof map.',
  'script_sha256':sha(Path(__file__)),'source_hashes':{p.name:sha(p) for p in P.glob('*.md')},
  'figure_source_sha256':sha(P/'figures/symplectic_metric_shear.py'),
- 'general_metric_L2_theorem_included':False,'Fefferman_Phong_operator_theorem_included':False,'U033_restored':False}
+ 'general_metric_L2_theorem_included':False,'Fefferman_Phong_operator_theorem_included':False                      }
 (P/'model-check.json').write_text(json.dumps(result,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

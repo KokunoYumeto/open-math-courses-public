@@ -44,6 +44,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  {'kappa':-1,'eta':1,'x':'t^2/4','rho':'-t/2','y':'-t+t^3/12'},
  {'kappa':1,'eta':1,'x':0,'rho':0,'y':'-t','boundary_field':'Gliding, not the interior normal equation.'}],
  'meaning':'Exact normal-position projections for three distinct symbols, not numerical PDE solutions.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':svg.name,'sha256':record['svg_sha256']}))

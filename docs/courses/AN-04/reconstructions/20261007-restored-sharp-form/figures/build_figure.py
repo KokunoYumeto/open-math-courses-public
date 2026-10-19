@@ -29,7 +29,7 @@ source=r/'sharp-boundary-form-defect.md'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'schema':'AN04-restored-sharp-form-figure/v1','asset':'figures/sharp-form-half-order.svg',
  'sha256':sha(f),'source_sha256':sha(source),'script_sha256':sha(Path(__file__)),
- 'width':780,'height':430,'proof_locators':'SF4–SF10','passed':True,'actually_inspected':False,
+ 'width':780,'height':430,'proof_locators':'SF4–SF10','passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
  'original_svg_sha256':'a7b61c9f5f4ce654683e7b3da203268231ee719ebb8cee7c2cbf51b8d90b841d',
  'exact_coordinate_checks':['F has coefficient order s−1 and is raised by L+ of order one half.',
  'H has coefficient order s and is lowered by the actual L adjoint of order minus one half.',
@@ -37,7 +37,7 @@ record={'schema':'AN04-restored-sharp-form-figure/v1','asset':'figures/sharp-for
  'The complex pairing bound has explicit absolute-value bars.',
  'SF9 retains its exact negative residual correction.',
  'The residual term has a bare energy bound and no ordinary normal derivative is transposed.'],
- 'change':'Only the complex pairing bound gains explicit absolute-value bars; the original order diagram is retained.',
+ 'change':'The complex pairing bound uses absolute values; the diagram shows the stated Sobolev orders.',
  'diagram_is_schematic_not_a_hamilton_trajectory':True}
 (r/'figure-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'asset':record['asset'],'preserved_order_diagram':True}))

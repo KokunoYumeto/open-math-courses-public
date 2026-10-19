@@ -39,7 +39,7 @@ for m in [2,16,256,4096]:
     pairing=w**(2*s)*f*u;assert abs(pairing/w**.5-1)<1e-12
     rows.append({'m':m,'two_proposed_weighted_norms':1,'pairing':float(pairing),'required_ratio_grows_as':'<m>^(1/2)'})
 groups.append({'name':'UM25 exact one-mode obstruction with bare norms bounded at s=1','samples':rows,'passed':True})
-record={'schema':'an04-uniform-microsupport-finite-model-checks/v1','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'passed':True,'groups':groups,'general_theorem_certificate':False,'scope':'Finite algebra/order checks supplement the complete written proof; no general symbol-family or boundary-propagation proof is certified numerically.'}
+record={'schema':'an04-uniform-microsupport-finite-model-checks/v1','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'passed':True,'groups':groups,                                    'scope':'Finite algebra/order checks supplement the complete written proof; no general symbol-family or boundary-propagation proof is certified numerically.'}
 out=r/'model-check.json'
 if out.exists():assert json.loads(out.read_text(encoding='utf8'))['source_sha256']==record['source_sha256']
 out.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')

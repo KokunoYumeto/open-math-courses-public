@@ -60,6 +60,6 @@ source=HERE/'paired-normal-composition.md'
 result={'schema':'AN04-paired-normal-composition-models/v1',
         'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
         'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        'checks':checks,'passed':True,'general_theorem_certified':False}
+        'checks':checks,'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (HERE/'model-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'finite_groups':len(checks),'passed':True}))

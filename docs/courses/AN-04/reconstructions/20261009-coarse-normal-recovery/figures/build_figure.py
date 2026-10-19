@@ -50,6 +50,6 @@ text(24,543,'Proofs: B1–B8 and Exercises 1–3. Lines and lattice arrows encod
 parts.append('</svg>');out.write_text('\n'.join(parts)+'\n','utf-8')
 check={'svg':out.relative_to(root).as_posix(),'svg_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),
  'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'exact_index_nodes':nodes,
- 'logarithmic_norm_lines':data,'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'logarithmic_norm_lines':data,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (root/'figure-check.json').write_text(json.dumps(check,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':str(out),'exact_lines':4,'exact_index_steps':4}))

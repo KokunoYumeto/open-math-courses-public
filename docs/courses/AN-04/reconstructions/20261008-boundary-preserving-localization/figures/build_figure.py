@@ -32,6 +32,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),
  'coordinates':{'support':'q_out/2 <= q_in <= 2 q_out','q_out_range':[0,'1/3'],'profiles':['(1+q^2) exp(-q^2)','(1+q) exp(-q^2)'],'q_range':[0,'1/2'],'boundary_slopes':[0,1]},
  'support_region_not_kernel_values':True,'exact_functions':True,'proof_locator':'**F0. Exact figure coordinates.**',
- 'actually_inspected':False,'exact_coordinate_review_complete':False,'licence':'CC0-1.0'}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                         'licence':'CC0-1.0'}
 (P.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'svg_bytes':out.stat().st_size,'svg_sha256':sha(out)}))

@@ -45,8 +45,8 @@ record={'schema':'exact-folded-form-figure/v1','figure':'figures/folded-form-and
  'negative_s':['-1','-1/2'],'target_r':['1/8','1/2'],'map':'r=s^2/2',
  'source_orientation':'ds wedge dx','target_orientation':'dr wedge dx',
  'signed_integrals':['3/16','-3/16','3/16']},
- 'scope':'Exact normal slice with spectator coordinates held fixed; signed differential-form integrals, not Euclidean source areas.',
- 'visual_inspection':'Pending author visual inspection.'}
+ 'scope':'Exact normal slice with spectator coordinates held fixed; signed differential-form integrals, not Euclidean source areas.' 
+                                                        }
 (dest/'figure-record.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':str(svg),'qa':str(qa),'sha256':record['sha256']}))
 

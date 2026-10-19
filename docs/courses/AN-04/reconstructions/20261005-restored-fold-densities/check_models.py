@@ -98,7 +98,7 @@ record('bounded first-frequency integration-by-parts model',
 lesson=here/'fold-amplitudes-and-critical-densities.md'
 report={'schema':'bounded-fold-density-check/v1','passed':True,'checks':checks,
         'lesson':lesson.name,'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
-        'independent_review':False,'full_course_complete':False,
+        'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                             
         'guard':'Exact finite dimensions, selected amplitude identities and one Fourier numerical example support the written proof; no arbitrary-symbol representation or Airy continuity theorem is computationally certified.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'checks':len(checks),'lesson_sha256':sha(lesson),'fourier_errors':errors}))

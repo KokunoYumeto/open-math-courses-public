@@ -37,6 +37,6 @@ record={'svg':'figures/matrix-boundary-energy.svg','svg_sha256':sha(target),
         'generator_sha256':sha(Path(__file__)),'proof_locators':['MBE:B3','MBE:X2','MBE:F0'],
         'parameters':{'beta':'1/2','c':'6/5','q_interval':[0,1],'matrix_time':0},
         'meaning':'Exact energy ellipse and exact matrix-gauge profiles; neither panel asserts a PDE solution or ray.',
-        'actually_inspected':False,'exact_coordinate_review_complete':False}
+        'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':target.name,'bytes':target.stat().st_size}))

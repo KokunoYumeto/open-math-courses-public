@@ -50,6 +50,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':hashlib.sha256(svg.read_bytes()).
  'exact_vertices':[[str(y),str(x)] for y,x in vertices],
  'ratio_bounds':['1/2','2'],'input_normal_bound':'1','output_normal_bound':'2',
  'map_order':['input cutoff','unitary logarithmic density','positive Fourier multiplier','bounded quotient operator'],
- 'kernel_value_plot':False,'schematic_factorization':True,'actually_inspected':False}
+ 'kernel_value_plot':False,'schematic_factorization':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure':svg.name,'support_vertices':record['exact_vertices']}))

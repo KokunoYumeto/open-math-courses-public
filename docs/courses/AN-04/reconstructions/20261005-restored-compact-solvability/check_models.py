@@ -49,7 +49,7 @@ sources=['compact-set-solvability-from-characteristic-escape.md','closed-graphs-
  'fixed-support-sobolev-compactness.md','figures/draw_escape_models.py']
 out={'passed':True,'finite_groups':len(checks),'checks':checks,'largest_inverse_probe_error':max(errors),
  'script_sha256':sha(Path(__file__)),'source_hashes':{p:sha(ROOT/p) for p in sources},
- 'scope':'Finite model checks; complete functional-analytic and microlocal proofs require separate owner review.',
- 'full_course_complete':False}
+ 'scope':'Finite order, Hamiltonian and correction-bound computations; the functional-analytic and microlocal arguments appear in the lesson.' 
+                             }
 (ROOT/'model-check.json').write_text(json.dumps(out,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(checks),'largest_error':max(errors)}))

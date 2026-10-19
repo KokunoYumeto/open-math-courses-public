@@ -236,4 +236,4 @@ Solution. One obtains \(P=\left(\begin{smallmatrix}1/2&1/4\\1/4&1/8\end{smallmat
 
 ![A missing tangential direction supplies a scalar residual output reserve](figures/angular-output-reserve.svg)
 
-Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 edition, Sections18.3 and24.7, supplies the full boundary-calculus and observation context. This is independent programme exposition, with exact earlier proofs and source versions recorded in the proof map. Independent text, solved examples and the original reproducible figure are CC0-1.0. External human foundations retain their recorded terms and are not bundled or claimed internally closed in this export.
+Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 edition, Sections18.3 and24.7, supplies the full boundary-calculus and observation context. This is independent programme exposition, with exact earlier proofs and source versions recorded in the proof map. Independent text, solved examples and the original reproducible figure are CC0-1.0. Some prerequisite proofs are external readings; their authorship and licence notices remain applicable.

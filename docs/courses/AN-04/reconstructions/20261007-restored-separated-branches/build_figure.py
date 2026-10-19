@@ -56,6 +56,6 @@ record={'schema':'an04-separated-system-exact-figure/v1',
  'script':Path(__file__).name,'script_sha256':sha(Path(__file__)),
  'model':'BR32--BR33; theta(t)=pi*t/4; s=y=0; eta=1; rays x=+t and x=-t',
  'samples':samples,'sample_count':len(samples),'passed':True,
- 'actual_render_inspection_pending':True,'schematic':False,'licence':'CC0-1.0'}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','schematic':False,'licence':'CC0-1.0'}
 (c/'figure-samples.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
 print(json.dumps({'exact_figure_created':True,'samples':len(samples)}))

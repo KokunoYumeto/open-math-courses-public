@@ -4,7 +4,7 @@ A solution can have exactly one singular covector direction at each point of a l
 
 The antecedent is Hörmander IV, Example 26.6.5, printed 121–123 in the 2009 edition. We retain its logarithmically shifted packets, derive their full Fourier and Sobolev bounds, and give a direct positive-series realization of the concave envelope. The earlier [prescribed superharmonic lesson](../20261011-prescribed-superharmonic-regularity/prescribed-superharmonic-regularity.html) supplies a related complete-space construction; positivity here permits a simpler explicit selection of coefficients. The [ordinary propagation proof](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.html) explains the sign restriction when the quadratic form is nonnegative. Exact Fourier, distribution, localization and calculus providers appear in the proof map.
 
-Original expression, solutions and figure are CC0-1.0.  The human foundations recorded in the current export remain external.
+Original expression, solutions and figure are CC0-1.0.  Some prerequisite proofs are external readings identified by the proof index.
 
 ## 1. Statement and the affine envelope
 

@@ -27,5 +27,5 @@ tx(717,410,'z = λ q √u','small');tx(717,437,'Curve: z⁴ exp(−2z/3).','smal
 p.append('</svg>');out=root/'airy-amplitude-errors.svg';out.write_text('\n'.join(p),'utf-8');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (root.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/airy-amplitude-errors.svg','svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),
  'coordinate_scope':'A13, the exact affine unattained wedge, CA14 determinant, and the CA23 bound with L=4, K=2, c=2/3.',
- 'peak_coordinate':[6,peak],'licence':'CC0-1.0','external_artwork':False,'actually_inspected':False},indent=2)+'\n','utf-8')
+ 'peak_coordinate':[6,peak],'licence':'CC0-1.0','external_artwork':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'},indent=2)+'\n','utf-8')
 print('Built three exact coordinate/bound panels.')

@@ -30,5 +30,5 @@ for i,(title,h,limit,label,formula) in enumerate(specs):
 parts += ['<text x="28" y="419" class="label" style="fill:#007c91">τ &lt; 0: incoming leg</text><text x="288" y="419" class="label" style="fill:#ba4b24">τ &gt; 0: outgoing leg</text>',
 '<text x="28" y="448" class="label">At τ = 0: base velocity = 0, but ordinary phase velocity has dξ/dτ = 1. The Hamilton flow continues.</text></svg>']
 out=ROOT/'figures/tricomi-ray-projections.svg';out.write_text('\n'.join(parts)+'\n','utf-8')
-(ROOT/'figure-check.json').write_text(json.dumps({'svg':out.relative_to(ROOT).as_posix(),'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),'coordinates':{'x':'tau**2','y':'-2*tau**3/3','xi':'tau','zeta':'tau**3','eta':1},'parameter_interval':[-1,1],'wave_amplitude_plotted':False,'actually_inspected':False},indent=2)+'\n','utf-8')
+(ROOT/'figure-check.json').write_text(json.dumps({'svg':out.relative_to(ROOT).as_posix(),'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),'coordinates':{'x':'tau**2','y':'-2*tau**3/3','xi':'tau','zeta':'tau**3','eta':1},'parameter_interval':[-1,1],'wave_amplitude_plotted':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'},indent=2)+'\n','utf-8')
 print('Wrote exact three-projection figure.')

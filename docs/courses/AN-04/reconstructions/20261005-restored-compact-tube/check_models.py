@@ -34,6 +34,6 @@ assert s.expand((tau**2+eta**2)-((tau*c)**2+eta**2)-tau**2*(1-c**2))==0
 passed('Both full covector norm bounds for 0<c<=1')
 result={'passed':True,'finite_groups':len(checks),'checks':checks,
  'script_sha256':sha(Path(__file__)),'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},
- 'analytic_proof_certification_by_these_checks':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'model-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

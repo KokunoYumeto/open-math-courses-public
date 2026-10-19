@@ -51,6 +51,6 @@ out.write_text('\n'.join(parts)+'\n',encoding='utf-8')
 (ROOT/'figure-check.json').write_text(json.dumps({'figure':'figures/'+out.name,
  'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'source':'figures/build_figure.py',
  'left':'Exact ordinary branch graphs p=0 and p=h(q), -1<=q<=2; input multiplicity retained.',
- 'right':'Exact mixed projection u=t^3, -1<=t<=1; cube-root inverse and singular Jacobian distinguished.',
- 'actually_inspected':False},indent=2)+'\n',encoding='utf-8')
+ 'right':'Exact mixed projection u=t^3, -1<=t<=1; cube-root inverse and singular Jacobian distinguished.' 
+                           },indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':out.name,'bytes':out.stat().st_size}))

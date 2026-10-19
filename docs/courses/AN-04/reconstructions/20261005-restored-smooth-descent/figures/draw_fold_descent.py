@@ -38,10 +38,10 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'schema':'original-mathematical-figure/v1','figure':'figures/'+figure.name,
  'sha256':sha(figure),'script':'draw_fold_descent.py','script_sha256':sha(Path(__file__)),
  'qa_image':qa.name,'qa_image_sha256':sha(qa),
- 'visual_inspection':'pending','coordinates':'Exact graph r=s^2 with the other normal-form variables z fixed.',
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','coordinates':'Exact graph r=s^2 with the other normal-form variables z fixed.',
  'objects':'Two graph points at s=-1 and s=1 have the same output r=1; the double arrow represents sheet exchange, not a trajectory. The origin is the fold point. Shading marks r<0, which has no source preimage.',
  'proof_locator':'U014 Theorem 1.2, Proposition 2.1 and Theorem 5.1',
- 'license':'CC0-1.0','source':'Original exact normal-form diagram; no source illustration copied.',
- 'mathematical_certification':False}
+ 'license':'CC0-1.0','source':'Original exact normal-form diagram; no source illustration copied.' 
+                                   }
 (dest/'figure-record.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'figure':report['figure'],'sha256':report['sha256']}))

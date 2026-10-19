@@ -28,5 +28,5 @@ fig.suptitle('A zero coefficient interval and the resolvents used for smooth sol
 f=HERE/'degenerate-coordinate-and-products.svg'
 fig.savefig(f,metadata={'Date':None,'Creator':'AN-04 original reproducible figure'});plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-(HERE.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/degenerate-coordinate-and-products.svg','svg_sha256':sha(f),'generator_sha256':sha(Path(__file__)),'actual_formulas':['a(t)=max(|t|-1/3,0) on [-1,1]','Im u=-primitive(a)','E_N=product_(j=1)^N (1+(2^(-j-2) xi)^2)^(-1)'],'scope':'The coordinate is exact. The displayed resolvent sequence illustrates the construction and is not asserted to work uniformly for an arbitrary coefficient family.','actually_inspected':False},indent=2)+'\n','utf-8')
+(HERE.parent/'figure-check.json').write_text(json.dumps({'svg':'figures/degenerate-coordinate-and-products.svg','svg_sha256':sha(f),'generator_sha256':sha(Path(__file__)),'actual_formulas':['a(t)=max(|t|-1/3,0) on [-1,1]','Im u=-primitive(a)','E_N=product_(j=1)^N (1+(2^(-j-2) xi)^2)^(-1)'],'scope':'The coordinate is exact. The displayed resolvent sequence illustrates the construction and is not asserted to work uniformly for an arbitrary coefficient family.'                           },indent=2)+'\n','utf-8')
 print(json.dumps({'figure':str(f),'sha256':sha(f)}))

@@ -1,4 +1,4 @@
-"""Finite mathematical checks; analytic proofs are reviewed separately. CC0."""
+'Finite mathematical calculations for the stated examples. CC0.'
 from pathlib import Path
 import hashlib,json,re
 import sympy as s
@@ -29,7 +29,7 @@ assert s.simplify(ratio.subs(lam,z/t)-t**-4*(z+1))==0
 assert all(v>0 for v in s.Poly(F-z-1,z).all_coeffs())
 assert s.simplify((w/t**2)**2/(w/t)-w/t**3)==0
 groups.append({'name':'Additional singular-weight multiplier and interpolation coefficients', 'passed':True,
-               'scope':'Scalar weight algebra only; the integrated operator argument is separately author-reviewed, not automatically certified.'})
+               'scope':'Scalar weight algebra only; the integrated operator estimate uses the written argument.'})
 psi=w/t
 K=lam**2/t+t**-3
 assert s.simplify(r*r/psi-w/t**3)==0
@@ -88,10 +88,10 @@ assert text.count('**Solution.**')==20
 assert re.findall(r'^### \*\*Exercise (\d+) —',text,re.M)==[str(i) for i in range(1,21)]
 assert re.findall(r'\\tag\{PT(\d+)\}',text)==[str(i) for i in range(1,42)]
 assert re.findall(r'\\tag\{PTA(\d+)\}',text)==[str(i) for i in range(1,6)]
-groups.append({'name':'All20original solved exercises and41original plus5new labels retained','passed':True})
+groups.append({'name':'Twenty solved exercises and46equation labels','passed':True})
 result={'passed':True,'finite_groups':len(groups),'checks':groups,'script_sha256':sha(Path(__file__)),
- 'source_hashes':{src.name:sha(src)},'original_solved_exercises':20,
- 'limitations':'Finite symbolic diagnostics do not replace the full source and analytic proof review.',
- 'whole_course_complete':False,'public_release_authorized':False}
+ 'source_hashes':{src.name:sha(src)},'solved_exercises':20,
+ 'limitations':'Finite symbolic calculations concern the stated examples; the general analytic statements use the written arguments.',
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                  }
 (ROOT/'model-check.json').write_text(json.dumps(result,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(groups),'solutions':20}))

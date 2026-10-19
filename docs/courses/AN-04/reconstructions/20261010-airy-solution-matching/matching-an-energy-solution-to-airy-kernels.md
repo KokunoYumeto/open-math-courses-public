@@ -162,7 +162,7 @@ These are exactly RDC:R0's hypotheses, for the same real quadratic \(r\), comple
 
 RDC:R1 also gives \(\chi D_q^2e\in L^2H^{m-2}\) for every \(m\), with the full source. Further normal derivatives require the corresponding normal derivatives of \(f\). With a source smooth in all variables on a fixed larger microlocal patch, differentiate the equation inductively, keep nested tests and their derivatives, and use the already controlled lower normal derivatives. This yields all normal mixed orders and then smoothness on a fixed smaller patch. For the original weaker source hypothesis, AM4 is the stated conclusion.
 
-**R1. What remains for the full energy coefficient theorem.** The exact nonnegative integral identity is
+**R1. Scope of the energy coefficient identity.** The exact nonnegative integral identity is
 \[
  \|v\|_{\mathcal H_w}^2
    =\pi^{-1}\|\ell(D)^{5/6}Z_+v\|_2^2+\|v\|_{\mathcal H_L}^2 .

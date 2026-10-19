@@ -40,6 +40,6 @@ assert s.integrate(s.exp(-p*lam*t/2),(t,0,s.oo))==2/(p*lam)
 checks.append({'name':'Weighted convolution normalization','passed':True,'scope':'Exact finite-p kernel integral; endpoints and complete Young proof are in the integration companion.'})
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'passed':True,'finite_groups':len(checks),'checks':checks,'script_sha256':sha(Path(__file__)),
- 'source_hashes':{p.name:sha(p) for p in MOD.glob('*.md')},'finite_checks_are_not_general_proofs':True,'U030_restored':False}
+ 'source_hashes':{p.name:sha(p) for p in MOD.glob('*.md')},'finite_checks_are_not_general_proofs':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (MOD/'model-check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

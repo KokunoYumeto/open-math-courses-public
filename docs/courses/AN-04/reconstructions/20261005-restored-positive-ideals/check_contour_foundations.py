@@ -84,6 +84,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'schema':'AN04-contour-foundation-checks/v1','passed':True,'checks':checks,
  'script_sha256':sha(Path(__file__)),'foundations_sha256':sha(HERE/'contour-and-gaussian-foundations.md'),
  'companion_sha256':sha(HERE/'complex-stationary-contract.md'),
- 'general_theorems_certified_by_finite_checks':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (HERE/'contour-foundation-checks.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'checks':len(checks),'gaussian_quadrature_error':float(abs(actual-expected))}))

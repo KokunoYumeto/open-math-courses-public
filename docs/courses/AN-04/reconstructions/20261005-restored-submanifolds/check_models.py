@@ -108,7 +108,7 @@ report={'schema':'submanifold-finite-check/v1','passed':True,
  'lesson':'homogeneous-submanifold-normal-forms.md',
  'lesson_sha256':sha(here/'homogeneous-submanifold-normal-forms.md'),
  'script_sha256':sha(Path(__file__)),'checks':checks,
- 'scope':'Six bounded exact linear/coordinate models and an independently assembled finite translation/averaging operator. They test dimensions, signs, example geometry and norms; they do not certify the general submanifold theorem or FIO sharpness proof.',
- 'independent_mathematical_review':False}
+ 'scope':'Six bounded exact linear/coordinate models and an independently assembled finite translation/averaging operator. They test dimensions, signs, example geometry and norms; they do not certify the general submanifold theorem or FIO sharpness proof.' 
+                                        }
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_checks':len(checks),'lesson_sha256':report['lesson_sha256']}))

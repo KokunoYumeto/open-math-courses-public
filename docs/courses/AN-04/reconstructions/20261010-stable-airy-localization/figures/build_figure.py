@@ -43,7 +43,7 @@ parts+=['<text x="73" y="488" class="small">Negative b: oscillatory coefficient 
  '<text x="590" y="451" class="small">Raw growing coefficients are recovered after localization.</text>',
  '<text x="590" y="480" class="small">No arbitrary canonical invariance of w is asserted.</text>',
  '<text x="28" y="553" class="small">SL3: exact plotted weight. SL17–SL20: weighted coefficient isomorphism. SL11–SL15: localization proof.</text>',
- '<text x="28" y="577" class="small">The plot is a finite numerical illustration; it does not prove the all-frequency bounds or the remaining representation theorem.</text>',
+ '<text x="28" y="577" class="small">The plot is a finite numerical illustration; it does not prove the all-frequency bounds or a general solution representation.</text>',
  '</svg>']
 Path(__file__).with_name('stable-airy-localization.svg').write_text('\n'.join(parts),'utf-8')
 print('Wrote exact-weight illustration at 361 sample arguments.')

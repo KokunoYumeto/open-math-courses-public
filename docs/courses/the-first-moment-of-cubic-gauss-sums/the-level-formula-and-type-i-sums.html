@@ -1,0 +1,500 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The level formula and Type I sums</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The first moment of cubic Gauss sums)</a><a href="large-sieves-for-cubic-characters.html">Previous lesson</a><a href="character-moments-at-two-exceptional-configurations.html">Next lesson</a><a href="src/the-level-formula-and-type-i-sums.md">Editable source</a></nav><main><article><h1 id="the-level-formula-and-type-i-sums">The level formula and Type I sums</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Type I sum has a short outer variable <span class="math" data-tex="\(r\)">\(r\)</span> with arbitrary coefficients and a long, smoothly weighted inner variable <span class="math" data-tex="\(u\)">\(u\)</span>:
+<span class="math math-display" data-tex="\[
+\sum_ra_r\sum_uG(ru)\,W_r\Bigl(\frac{N(u)}U\Bigr).
+\]">\[
+\sum_ra_r\sum_uG(ru)\,W_r\Bigl(\frac{N(u)}U\Bigr).
+\]</span>
+For a single <span class="math" data-tex="\(r\)">\(r\)</span> the inner sum is a smoothed partial sum of the Dirichlet series <span class="math" data-tex="\(\sum_uG(ru)N(u)^{-s}\)">\(\sum_uG(ru)N(u)^{-s}\)</span>, which has a pole at <span class="math" data-tex="\(s=5/6\)">\(s=5/6\)</span>. Dunn and Radziwiłł proved a summation formula for it, a Voronoi formula in the level <span class="math" data-tex="\(r\)">\(r\)</span>, whose main term is that pole. This lesson shows that the main term is exactly the contribution of the model <span class="math" data-tex="\(c_*\mu^2(ru)N(ru)^{-1/6}\)">\(c_*\mu^2(ru)N(ru)^{-1/6}\)</span>. It then bounds the Type I sums with the model subtracted, and also after twisting by <span class="math" data-tex="\(N(u)^{it}\)">\(N(u)^{it}\)</span> at large heights <span class="math" data-tex="\(t\)">\(t\)</span>. Everything is done for every fixed angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, as the last lesson needs the twisted sums.</p>
+<p><strong>Prerequisites.</strong> The previous lessons, <a href="cubic-gauss-sums-and-pattersons-conjecture.html"><em>Cubic Gauss sums and Patterson's conjecture</em></a> and <a href="large-sieves-for-cubic-characters.html"><em>Large sieves for cubic characters</em></a>, with their notation. From <em>The Riemann zeta function</em>: <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>, Theorem 2.2 (reflection) and Theorem 3.1 (Stirling).</p>
+<h2 id="1-notation">1. Notation</h2>
+<p>For <span class="math" data-tex="\(\ell\in\mathbb Z\)">\(\ell\in\mathbb Z\)</span> and <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> put <span class="math" data-tex="\(\theta_\ell(z)=(z/|z|)^\ell\)">\(\theta_\ell(z)=(z/|z|)^\ell\)</span>, and for primary <span class="math" data-tex="\(n\)">\(n\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_\ell(n)=\theta_\ell(n)G(n),\\
+\mathcal D_\ell(n)=G_\ell(n)-\frac{c_*\,\theta_\ell(n)\,\mu^2(n)}{N(n)^{1/6}}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+G_\ell(n)=\theta_\ell(n)G(n),\\
+\mathcal D_\ell(n)=G_\ell(n)-\frac{c_*\,\theta_\ell(n)\,\mu^2(n)}{N(n)^{1/6}}.
+\end{gathered}
+\]</span>
+The function <span class="math" data-tex="\(\theta_\ell\)">\(\theta_\ell\)</span> is multiplicative, and <span class="math" data-tex="\(\mathcal D_\ell(n)=0\)">\(\mathcal D_\ell(n)=0\)</span> unless <span class="math" data-tex="\(n\)">\(n\)</span> is squarefree. Put
+<span class="math math-display" data-tex="\[
+A_0=\frac{(2\pi)^{5/3}}{3^{7/2}\,\Gamma(2/3)} .
+\]">\[
+A_0=\frac{(2\pi)^{5/3}}{3^{7/2}\,\Gamma(2/3)} .
+\]</span>
+The primary elements form the coset <span class="math" data-tex="\(1+3\mathcal O\)">\(1+3\mathcal O\)</span>, of index <span class="math" data-tex="\(9\)">\(9\)</span> in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, so they have density <span class="math" data-tex="\(\frac2{9\sqrt3}\)">\(\frac2{9\sqrt3}\)</span> per unit of Euclidean area. In the variable <span class="math" data-tex="\(N(z)=|z|^2\)">\(N(z)=|z|^2\)</span> this becomes <span class="math" data-tex="\(\frac{2\pi}{9\sqrt3}\)">\(\frac{2\pi}{9\sqrt3}\)</span> per unit length. One checks directly that
+<span class="math math-display" data-tex="\[
+c_*\cdot\frac{2\pi}{9\sqrt3}=A_0 .
+\tag{1.1}
+\]">\[
+c_*\cdot\frac{2\pi}{9\sqrt3}=A_0 .
+\tag{1.1}
+\]</span>
+Indeed both sides equal <span class="math" data-tex="\((2\pi)^{5/3}/(3^{3}\sqrt3\,\Gamma(2/3))\)">\((2\pi)^{5/3}/(3^{3}\sqrt3\,\Gamma(2/3))\)</span>.</p>
+<h2 id="2-the-level-voronoi-formula">2. The level Voronoi formula</h2>
+<p>For primary squarefree <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(R=N(r)\)">\(R=N(r)\)</span>, a smooth function <span class="math" data-tex="\(W\)">\(W\)</span> with compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, <span class="math" data-tex="\(V&gt;0\)">\(V&gt;0\)</span> and <span class="math" data-tex="\(\ell\in\mathbb Z\)">\(\ell\in\mathbb Z\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell}(V;W)\\
+&amp;=\sum_{\substack{d,u\\ (d,r)=1}}|d|\,G(ru)\,\theta_\ell(rud^3)\\
+&amp;\qquad\cdot W\Bigl(\frac{N(ud^3)}V\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell}(V;W)\\
+&amp;=\sum_{\substack{d,u\\ (d,r)=1}}|d|\,G(ru)\,\theta_\ell(rud^3)\\
+&amp;\qquad\cdot W\Bigl(\frac{N(ud^3)}V\Bigr).
+\end{aligned}
+\]</span>
+The variable <span class="math" data-tex="\(d\)">\(d\)</span> completes the sum over <span class="math" data-tex="\(u\)">\(u\)</span> by cubes; the completion is removed in Section 4.</p>
+<p><strong>Theorem 2.1 (the level Voronoi formula, N2).</strong> For <span class="math" data-tex="\(0&lt;\sigma&lt;10^{-4}\)">\(0&lt;\sigma&lt;10^{-4}\)</span> and <span class="math" data-tex="\(k=|\ell|/2\)">\(k=|\ell|/2\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_\ell(z)=\frac{\Gamma(\frac56+k-z)\Gamma(\frac76+k-z)}{\Gamma(z+k-\frac16)\Gamma(z+k+\frac16)},\\
+\check W_\ell(v)=\frac1{2\pi i}\int_{(-\sigma)}v^zQ_\ell(z)\,\mathcal MW(z)\,dz .
+\end{gathered}
+\]">\[
+\begin{gathered}
+Q_\ell(z)=\frac{\Gamma(\frac56+k-z)\Gamma(\frac76+k-z)}{\Gamma(z+k-\frac16)\Gamma(z+k+\frac16)},\\
+\check W_\ell(v)=\frac1{2\pi i}\int_{(-\sigma)}v^zQ_\ell(z)\,\mathcal MW(z)\,dz .
+\end{gathered}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell}(V;W)\\
+&amp;=\mathbf 1_{\ell=0}\,A_0\,\mathcal MW(\tfrac56)\,V^{5/6}\frac{\varphi(r)}{R^{7/6}}\\
+&amp;\quad+\frac{R^{1/2}\,\theta_{3\ell}(r)}{3^{7/2}(2\pi)^2}\,\Sigma_{r,\ell}(V;W),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell}(V;W)\\
+&amp;=\mathbf 1_{\ell=0}\,A_0\,\mathcal MW(\tfrac56)\,V^{5/6}\frac{\varphi(r)}{R^{7/6}}\\
+&amp;\quad+\frac{R^{1/2}\,\theta_{3\ell}(r)}{3^{7/2}(2\pi)^2}\,\Sigma_{r,\ell}(V;W),
+\end{aligned}
+\]</span>
+with the dual sum
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Sigma_{r,\ell}&amp;=\sum_{\substack{\nu,\,d\\ (d,r)=1}}\frac{a_r(\nu)\,b_r(\nu)\,\theta_{-\ell}(d^3\nu)}{N(\nu)\,N(d)^{5/2}}\\
+&amp;\qquad\cdot\check W_\ell\Bigl(\frac{(2\pi)^4N(d^3\nu)V}{R^2}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Sigma_{r,\ell}&amp;=\sum_{\substack{\nu,\,d\\ (d,r)=1}}\frac{a_r(\nu)\,b_r(\nu)\,\theta_{-\ell}(d^3\nu)}{N(\nu)\,N(d)^{5/2}}\\
+&amp;\qquad\cdot\check W_\ell\Bigl(\frac{(2\pi)^4N(d^3\nu)V}{R^2}\Bigr),
+\end{aligned}
+\]</span>
+over <span class="math" data-tex="\(0\ne\nu\in\lambda^{-1}\mathcal O\)">\(0\ne\nu\in\lambda^{-1}\mathcal O\)</span> and primary <span class="math" data-tex="\(d\)">\(d\)</span>. The coefficients <span class="math" data-tex="\(a_r(\nu),b_r(\nu)\)">\(a_r(\nu),b_r(\nu)\)</span> depend only on <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. They vanish unless
+<span class="math math-display" data-tex="\[
+\nu=\lambda^j\zeta\,h\,w\,h&#x27;^3,\qquad j\ge-1,
+\]">\[
+\nu=\lambda^j\zeta\,h\,w\,h&#x27;^3,\qquad j\ge-1,
+\]</span>
+with a unit <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, primary <span class="math" data-tex="\(h,h&#x27;,w\)">\(h,h&#x27;,w\)</span>, <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> composed of primes dividing <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> prime to <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(hw\)">\(hw\)</span> squarefree. On this support,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|a_r(\nu)|\ll3^{\max(j,0)/3}\,|h&#x27;|,\\
+|b_r(\nu)|\le N\bigl((\lambda\nu,r)\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+|a_r(\nu)|\ll3^{\max(j,0)/3}\,|h&#x27;|,\\
+|b_r(\nu)|\le N\bigl((\lambda\nu,r)\bigr).
+\end{gathered}
+\]</span></p>
+<p>Theorem 2.1 is Proposition 5.3 of [DR], multiplied by <span class="math" data-tex="\(G(r)\theta_\ell(r)\)">\(G(r)\theta_\ell(r)\)</span>, and it is used without proof in the programme. Its left side becomes <span class="math" data-tex="\(\mathcal C_{r,\ell}\)">\(\mathcal C_{r,\ell}\)</span> because <span class="math" data-tex="\(G(ru)=\overline{\chi_r(u)}G(r)G(u)\)">\(G(ru)=\overline{\chi_r(u)}G(r)G(u)\)</span> for <span class="math" data-tex="\(u\)">\(u\)</span> prime to <span class="math" data-tex="\(r\)">\(r\)</span>, and both sides vanish otherwise. In the main term and the dual factor, <span class="math" data-tex="\(G(r)\overline{g(r)}=R^{1/2}\)">\(G(r)\overline{g(r)}=R^{1/2}\)</span> and <span class="math" data-tex="\(\theta_\ell(r)(\bar r/r)^{-\ell}=\theta_{3\ell}(r)\)">\(\theta_\ell(r)(\bar r/r)^{-\ell}=\theta_{3\ell}(r)\)</span>. The coefficients are <span class="math" data-tex="\(a_r=a^\dagger\)">\(a_r=a^\dagger\)</span> and <span class="math" data-tex="\(b_r=b_r^\dagger\)">\(b_r=b_r^\dagger\)</span> of Proposition 5.2 of [DR], with the support stated there. The bound for <span class="math" data-tex="\(b_r\)">\(b_r\)</span> is immediate from its formula <span class="math" data-tex="\(b_r(\nu)=\mu(r/(\lambda\nu,r))\varphi(r)/\varphi(r/(\lambda\nu,r))\)">\(b_r(\nu)=\mu(r/(\lambda\nu,r))\varphi(r)/\varphi(r/(\lambda\nu,r))\)</span>. For <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, <span class="math" data-tex="\(a_r(\nu)\)">\(a_r(\nu)\)</span> is the conjugate of a Fourier coefficient <span class="math" data-tex="\(\tau(\mu)\)">\(\tau(\mu)\)</span> of Patterson's cubic theta function, whose formula is recorded in Section 5.1 of [DR]. These coefficients are Gauss sums of absolute value <span class="math" data-tex="\(|c|\)">\(|c|\)</span> times <span class="math" data-tex="\(|d/c|\,3^{n/2+O(1)}\)">\(|d/c|\,3^{n/2+O(1)}\)</span> at arguments <span class="math" data-tex="\(\lambda^{3n-3}cd^3\)">\(\lambda^{3n-3}cd^3\)</span> or <span class="math" data-tex="\(\lambda^{3n-4}cd^3\)">\(\lambda^{3n-4}cd^3\)</span>, up to units. At <span class="math" data-tex="\(\nu\)">\(\nu\)</span> as above the argument has <span class="math" data-tex="\(d=h&#x27;\)">\(d=h&#x27;\)</span> and <span class="math" data-tex="\(n\le\frac23j+O(1)\)">\(n\le\frac23j+O(1)\)</span>, which gives the bound. For <span class="math" data-tex="\(j=-1\)">\(j=-1\)</span> the two other cusp coefficients <span class="math" data-tex="\(\tau_1,\tau_2\)">\(\tau_1,\tau_2\)</span> are bounded by <span class="math" data-tex="\(9|d|\)">\(9|d|\)</span>.</p>
+<p><strong>Lemma 2.2 (the truncated formula).</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be fixed, and suppose that <span class="math" data-tex="\(V,V^{-1},R\le X^{C_0}\)">\(V,V^{-1},R\le X^{C_0}\)</span>, that <span class="math" data-tex="\(W\)">\(W\)</span> is supported in a fixed compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and that its derivatives of each fixed order are bounded by a fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell}(V;W)\\
+&amp;=\mathbf 1_{\ell=0}A_0\,\mathcal MW(\tfrac56)\,V^{5/6}\frac{\varphi(r)}{R^{7/6}}\\
+&amp;\quad+O_{\ell,\epsilon}\bigl(X^\epsilon R^{1/2}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell}(V;W)\\
+&amp;=\mathbf 1_{\ell=0}A_0\,\mathcal MW(\tfrac56)\,V^{5/6}\frac{\varphi(r)}{R^{7/6}}\\
+&amp;\quad+O_{\ell,\epsilon}\bigl(X^\epsilon R^{1/2}\bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> On the line <span class="math" data-tex="\(\operatorname{Re}z=-\sigma\)">\(\operatorname{Re}z=-\sigma\)</span>, Stirling's formula gives <span class="math" data-tex="\(|Q_\ell(z)|\ll_{\ell,\sigma}(1+|\operatorname{Im}z|)^{2+4\sigma}\)">\(|Q_\ell(z)|\ll_{\ell,\sigma}(1+|\operatorname{Im}z|)^{2+4\sigma}\)</span>. Indeed each of the two quotients <span class="math" data-tex="\(\Gamma(a-z)/\Gamma(z+b)\)">\(\Gamma(a-z)/\Gamma(z+b)\)</span> has size <span class="math" data-tex="\(|\operatorname{Im}z|^{1+2\sigma}\)">\(|\operatorname{Im}z|^{1+2\sigma}\)</span>. With the decay of <span class="math" data-tex="\(\mathcal MW\)">\(\mathcal MW\)</span> from Lemma 1.2 of the previous lesson,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\check W_\ell\Bigl(\frac{(2\pi)^4N(d^3\nu)V}{R^2}\Bigr)\Bigr|\\
+&amp;\qquad\ll X^{O(\sigma)}L^{O(1)}N(d^3\nu)^{-\sigma}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\check W_\ell\Bigl(\frac{(2\pi)^4N(d^3\nu)V}{R^2}\Bigr)\Bigr|\\
+&amp;\qquad\ll X^{O(\sigma)}L^{O(1)}N(d^3\nu)^{-\sigma}.
+\end{aligned}
+\]</span>
+It remains to bound <span class="math" data-tex="\(\sum|a_rb_r|N(\nu)^{-1-\sigma}N(d)^{-5/2-3\sigma}\)">\(\sum|a_rb_r|N(\nu)^{-1-\sigma}N(d)^{-5/2-3\sigma}\)</span>. It factors over the parts of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<ul>
+<li>At a prime <span class="math" data-tex="\(\pi\mid r\)">\(\pi\mid r\)</span> of norm <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(e\in\{0,1\}\)">\(e\in\{0,1\}\)</span> and <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> be its exponents in <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span>. The local factor is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{e=0}^1\sum_{k\ge0}p^{\mathbf 1_{e+k&gt;0}}\,p^{k/2}\,p^{-(e+3k)(1+\sigma)}\\
+&amp;\qquad=1+p^{-\sigma}+O\bigl(p^{-3/2-3\sigma}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{e=0}^1\sum_{k\ge0}p^{\mathbf 1_{e+k&gt;0}}\,p^{k/2}\,p^{-(e+3k)(1+\sigma)}\\
+&amp;\qquad=1+p^{-\sigma}+O\bigl(p^{-3/2-3\sigma}\bigr).
+\end{aligned}
+\]</span></li>
+<li>For fixed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, the product of these factors over <span class="math" data-tex="\(\pi\mid r\)">\(\pi\mid r\)</span> is <span class="math" data-tex="\(O_{\sigma,\eta}(R^\eta)\)">\(O_{\sigma,\eta}(R^\eta)\)</span>: finitely many small primes give a bounded factor, and each other factor is at most <span class="math" data-tex="\(p^\eta\)">\(p^\eta\)</span>.</li>
+<li>The sum over <span class="math" data-tex="\(w\)">\(w\)</span> converges at the exponent <span class="math" data-tex="\(1+\sigma\)">\(1+\sigma\)</span>.</li>
+<li>The powers of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> give at most <span class="math" data-tex="\(\sum_{j\ge-1}3^{j/3}3^{-j(1+\sigma)}&lt;\infty\)">\(\sum_{j\ge-1}3^{j/3}3^{-j(1+\sigma)}&lt;\infty\)</span>.</li>
+<li>The sum over <span class="math" data-tex="\(d\)">\(d\)</span> converges at the exponent <span class="math" data-tex="\(\frac52+3\sigma\)">\(\frac52+3\sigma\)</span>.</li>
+</ul>
+<p>Choosing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> small in terms of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> gives the bound <span class="math" data-tex="\(X^\epsilon R^{1/2}\)">\(X^\epsilon R^{1/2}\)</span> for the dual term. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-lattice-sums-over-squarefree-elements">3. Lattice sums over squarefree elements</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(r\)">\(r\)</span> be primary and squarefree, <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span> bounded by a power of <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> smooth with fixed compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, with derivatives of fixed order bounded by fixed powers of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>(a)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{(u,r)=1}\mu^2(u)\,W\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;=\frac{2\pi U}{9\sqrt3}\,\mathcal MW(1)\,\frac{\varphi(r)}{N(r)}\sum_{(c,r)=1}\frac{\mu(c)}{N(c)^2}\\
+&amp;\quad+O_\epsilon(X^\epsilon\sqrt U).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{(u,r)=1}\mu^2(u)\,W\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;=\frac{2\pi U}{9\sqrt3}\,\mathcal MW(1)\,\frac{\varphi(r)}{N(r)}\sum_{(c,r)=1}\frac{\mu(c)}{N(c)^2}\\
+&amp;\quad+O_\epsilon(X^\epsilon\sqrt U).
+\end{aligned}
+\]</span></p>
+<p>(b) For every fixed integer <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{(u,r)=1}\mu^2(u)\,\theta_\ell(u)\,W\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;\qquad\ll_{\ell,\epsilon}X^\epsilon\sqrt U.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{(u,r)=1}\mu^2(u)\,\theta_\ell(u)\,W\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;\qquad\ll_{\ell,\epsilon}X^\epsilon\sqrt U.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> For primary <span class="math" data-tex="\(u\)">\(u\)</span>, the indicator that <span class="math" data-tex="\(u\)">\(u\)</span> is squarefree and prime to <span class="math" data-tex="\(r\)">\(r\)</span> equals
+<span class="math math-display" data-tex="\[
+\sum_{\substack{d\mid r\\d\mid u}}\mu(d)\sum_{\substack{c^2\mid u\\ (c,r)=1}}\mu(c),
+\]">\[
+\sum_{\substack{d\mid r\\d\mid u}}\mu(d)\sum_{\substack{c^2\mid u\\ (c,r)=1}}\mu(c),
+\]</span>
+and the conditions say <span class="math" data-tex="\(u=c^2dv\)">\(u=c^2dv\)</span> with primary <span class="math" data-tex="\(v\)">\(v\)</span>. For a smooth function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> supported in an annulus of radii comparable to <span class="math" data-tex="\(\sqrt Y\)">\(\sqrt Y\)</span>, with <span class="math" data-tex="\(|\nabla f|\ll L^C/\sqrt Y\)">\(|\nabla f|\ll L^C/\sqrt Y\)</span>, comparing each fundamental cell of <span class="math" data-tex="\(1+3\mathcal O\)">\(1+3\mathcal O\)</span> with its integral gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{v\in1+3\mathcal O}f(v)&amp;=\frac2{9\sqrt3}\int_{\mathbb C}f\,dA\\
+&amp;\quad+O\bigl(L^C(1+\sqrt Y)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{v\in1+3\mathcal O}f(v)&amp;=\frac2{9\sqrt3}\int_{\mathbb C}f\,dA\\
+&amp;\quad+O\bigl(L^C(1+\sqrt Y)\bigr).
+\end{aligned}
+\]</span>
+(a) For <span class="math" data-tex="\(f(z)=W(|z|^2/Y)\)">\(f(z)=W(|z|^2/Y)\)</span> the integral is <span class="math" data-tex="\(\pi Y\mathcal MW(1)\)">\(\pi Y\mathcal MW(1)\)</span>. With <span class="math" data-tex="\(Y=U/N(c^2d)\)">\(Y=U/N(c^2d)\)</span>, and <span class="math" data-tex="\(N(c)\ll\sqrt U\)">\(N(c)\ll\sqrt U\)</span> for nonempty sums,
+<span class="math math-display" data-tex="\[
+\sum_{d\mid r}\frac{\mu(d)}{N(d)}=\frac{\varphi(r)}{N(r)} ,
+\]">\[
+\sum_{d\mid r}\frac{\mu(d)}{N(d)}=\frac{\varphi(r)}{N(r)} ,
+\]</span>
+and completing the sum over <span class="math" data-tex="\(c\)">\(c\)</span> costs <span class="math" data-tex="\(O(\sqrt U)\)">\(O(\sqrt U)\)</span>. The errors add up to <span class="math" data-tex="\(O(\tau(r)L^C\sqrt U\log U)\)">\(O(\tau(r)L^C\sqrt U\log U)\)</span>.</p>
+<p>(b) Here <span class="math" data-tex="\(\theta_\ell(u)=\theta_\ell(c^2d)\theta_\ell(v)\)">\(\theta_\ell(u)=\theta_\ell(c^2d)\theta_\ell(v)\)</span>, and <span class="math" data-tex="\(f(z)=\theta_\ell(z)W(|z|^2/Y)\)">\(f(z)=\theta_\ell(z)W(|z|^2/Y)\)</span> has integral zero, because <span class="math" data-tex="\(\int_0^{2\pi}e^{i\ell\phi}d\phi=0\)">\(\int_0^{2\pi}e^{i\ell\phi}d\phi=0\)</span>. Its gradient is <span class="math" data-tex="\(O_\ell(L^C/\sqrt Y)\)">\(O_\ell(L^C/\sqrt Y)\)</span> on its support, so only the error terms remain. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-type-i-sums-at-bounded-heights">4. Type I sums at bounded heights</h2>
+<p><strong>Proposition 4.1 (Type I comparison).</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be fixed, <span class="math" data-tex="\(RU\asymp X\)">\(RU\asymp X\)</span> and <span class="math" data-tex="\(1\le R\ll X^{0.51}\)">\(1\le R\ll X^{0.51}\)</span>. Let <span class="math" data-tex="\((a_r)\)">\((a_r)\)</span> be divisor-bounded and supported on <span class="math" data-tex="\(r\)">\(r\)</span> of length <span class="math" data-tex="\(R\)">\(R\)</span>. Let <span class="math" data-tex="\(W_r\)">\(W_r\)</span> be smooth functions supported in a common fixed compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, whose derivatives of each fixed order are bounded by a fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>, uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_ra_r\sum_u\mathcal D_\ell(ru)\,W_r\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;\qquad\ll_\ell X^{5/6-1/100}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_ra_r\sum_u\mathcal D_\ell(ru)\,W_r\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;\qquad\ll_\ell X^{5/6-1/100}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Only squarefree <span class="math" data-tex="\(r\)">\(r\)</span> contribute. For such <span class="math" data-tex="\(r\)">\(r\)</span> we have the exact identity
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_uG_\ell(ru)\,W_r\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;=\sum_{(c,r)=1}\mu(c)\,|c|\,\theta_{3\ell}(c)\\
+&amp;\qquad\cdot\mathcal C_{r,\ell}\Bigl(\frac U{N(c)^3};W_r\Bigr).\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_uG_\ell(ru)\,W_r\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;=\sum_{(c,r)=1}\mu(c)\,|c|\,\theta_{3\ell}(c)\\
+&amp;\qquad\cdot\mathcal C_{r,\ell}\Bigl(\frac U{N(c)^3};W_r\Bigr).\quad(4.1)
+\end{aligned}
+\]</span>
+Indeed, expanding the right side and putting <span class="math" data-tex="\(e=cd\)">\(e=cd\)</span>, the term with <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> carries <span class="math" data-tex="\(|e|\,\theta_\ell(rue^3)\sum_{c\mid e}\mu(c)\)">\(|e|\,\theta_\ell(rue^3)\sum_{c\mid e}\mu(c)\)</span>, which vanishes unless <span class="math" data-tex="\(e=1\)">\(e=1\)</span>. All sums are finite. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_*=X^{0.13}\ \text{ if }R\le X^{0.40},\\
+C_*=X^{0.02}\ \text{ if }R&gt;X^{0.40}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+C_*=X^{0.13}\ \text{ if }R\le X^{0.40},\\
+C_*=X^{0.02}\ \text{ if }R&gt;X^{0.40}.
+\end{gathered}
+\]</span></p>
+<p><em>Short completions.</em> For <span class="math" data-tex="\(N(c)\le C_*\)">\(N(c)\le C_*\)</span> apply Lemma 2.2. Its error terms, summed over <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(|c|=N(c)^{1/2}\)">\(|c|=N(c)^{1/2}\)</span> and over <span class="math" data-tex="\(r\)">\(r\)</span>, give
+<span class="math math-display" data-tex="\[
+X^\epsilon R^{3/2}C_*^{3/2}\ll X^{0.795+\epsilon}
+\]">\[
+X^\epsilon R^{3/2}C_*^{3/2}\ll X^{0.795+\epsilon}
+\]</span>
+in both ranges of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><em>Main terms and the model, <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>.</em> The main terms of Lemma 2.2, completed to all <span class="math" data-tex="\(c\)">\(c\)</span>, give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A_0\,\mathcal MW_r(\tfrac56)\,U^{5/6}\frac{\varphi(r)}{R^{7/6}}\\
+&amp;\qquad\cdot\sum_{(c,r)=1}\frac{\mu(c)}{N(c)^2},\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A_0\,\mathcal MW_r(\tfrac56)\,U^{5/6}\frac{\varphi(r)}{R^{7/6}}\\
+&amp;\qquad\cdot\sum_{(c,r)=1}\frac{\mu(c)}{N(c)^2},\quad(4.2)
+\end{aligned}
+\]</span>
+with a completion error <span class="math" data-tex="\(O(X^{5/6+\epsilon}C_*^{-1})\)">\(O(X^{5/6+\epsilon}C_*^{-1})\)</span> after summing over <span class="math" data-tex="\(r\)">\(r\)</span>. On the other side, the model is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_uc_*\frac{\mu^2(ru)}{N(ru)^{1/6}}W_r\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;=\frac{c_*}{(RU)^{1/6}}\sum_{(u,r)=1}\mu^2(u)\,\widetilde W_r\Bigl(\frac{N(u)}U\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_uc_*\frac{\mu^2(ru)}{N(ru)^{1/6}}W_r\Bigl(\frac{N(u)}U\Bigr)\\
+&amp;=\frac{c_*}{(RU)^{1/6}}\sum_{(u,r)=1}\mu^2(u)\,\widetilde W_r\Bigl(\frac{N(u)}U\Bigr),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\widetilde W_r(x)=x^{-1/6}W_r(x)\)">\(\widetilde W_r(x)=x^{-1/6}W_r(x)\)</span>, up to the factor <span class="math" data-tex="\((N(r)/R)^{-1/6}\)">\((N(r)/R)^{-1/6}\)</span>, which is put into <span class="math" data-tex="\(\widetilde W_r\)">\(\widetilde W_r\)</span>. Lemma 3.1(a), with <span class="math" data-tex="\(\mathcal M\widetilde W_r(1)=\mathcal MW_r(\frac56)\)">\(\mathcal M\widetilde W_r(1)=\mathcal MW_r(\frac56)\)</span>, and the identity (1.1) show that the model equals (4.2) up to <span class="math" data-tex="\(O(X^\epsilon R^{-1/6}U^{1/3})\)">\(O(X^\epsilon R^{-1/6}U^{1/3})\)</span>. Summed over <span class="math" data-tex="\(r\)">\(r\)</span>, this is
+<span class="math math-display" data-tex="\[
+X^\epsilon R^{5/6}U^{1/3}\asymp X^{1/3+\epsilon}R^{1/2}\ll X^{0.589+\epsilon}.
+\]">\[
+X^\epsilon R^{5/6}U^{1/3}\asymp X^{1/3+\epsilon}R^{1/2}\ll X^{0.589+\epsilon}.
+\]</span></p>
+<p><em>Main terms and the model, <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span>.</em> Lemma 2.2 has no main term, and Lemma 3.1(b) bounds the model by the same <span class="math" data-tex="\(X^{0.589+\epsilon}\)">\(X^{0.589+\epsilon}\)</span>.</p>
+<p><em>Long completions.</em> It remains to bound the terms of (4.1) with <span class="math" data-tex="\(N(c)&gt;C_*\)">\(N(c)&gt;C_*\)</span>. Combine <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span> into <span class="math" data-tex="\(e=cd\)">\(e=cd\)</span> and restrict <span class="math" data-tex="\(N(e)\)">\(N(e)\)</span> to a dyad of length <span class="math" data-tex="\(E\gg C_*\)">\(E\gg C_*\)</span>. The coefficient of <span class="math" data-tex="\(e\)">\(e\)</span> is
+<span class="math math-display" data-tex="\[
+|e|\,\theta_{3\ell}(e)\sum_{\substack{c\mid e\\N(c)&gt;C_*}}\mu(c),
+\]">\[
+|e|\,\theta_{3\ell}(e)\sum_{\substack{c\mid e\\N(c)&gt;C_*}}\mu(c),
+\]</span>
+divisor-bounded times <span class="math" data-tex="\(E^{1/2}\)">\(E^{1/2}\)</span>. The inner variable <span class="math" data-tex="\(u\)">\(u\)</span> then has length <span class="math" data-tex="\(U/E^3\)">\(U/E^3\)</span>. Bounding <span class="math" data-tex="\(|G|\le1\)">\(|G|\le1\)</span> gives
+<span class="math math-display" data-tex="\[
+\ll X^{1+\epsilon}E^{-3/2},
+\]">\[
+\ll X^{1+\epsilon}E^{-3/2},
+\]</span>
+which is <span class="math" data-tex="\(O(X^{0.805+\epsilon})\)">\(O(X^{0.805+\epsilon})\)</span> when <span class="math" data-tex="\(R\le X^{0.40}\)">\(R\le X^{0.40}\)</span>. When <span class="math" data-tex="\(R&gt;X^{0.40}\)">\(R&gt;X^{0.40}\)</span>, fix <span class="math" data-tex="\(e\)">\(e\)</span> and write <span class="math" data-tex="\(G(ru)=\overline{\chi_u(r)}G(r)G(u)\)">\(G(ru)=\overline{\chi_u(r)}G(r)G(u)\)</span>. Separate the weights <span class="math" data-tex="\(W_r\)">\(W_r\)</span> by Mellin inversion: the dependence on <span class="math" data-tex="\(r\)">\(r\)</span> passes into the outer coefficients, with a common integrable majorant. By Cauchy's inequality in <span class="math" data-tex="\(r\)">\(r\)</span> and Theorem 4.1 of the previous lesson, both variables being squarefree, the sum over <span class="math" data-tex="\(r,u\)">\(r,u\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ll X^\epsilon\sqrt{RU_e}\,\bigl(R+U_e+(RU_e)^{2/3}\bigr)^{1/2},\\
+U_e=U/E^3 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\ll X^\epsilon\sqrt{RU_e}\,\bigl(R+U_e+(RU_e)^{2/3}\bigr)^{1/2},\\
+U_e=U/E^3 .
+\end{gathered}
+\]</span>
+Summing the coefficients of the <span class="math" data-tex="\(e\)">\(e\)</span> in the dyad costs <span class="math" data-tex="\(X^\epsilon E^{3/2}\)">\(X^\epsilon E^{3/2}\)</span>, so the dyad contributes
+<span class="math math-display" data-tex="\[
+\ll X^{1/2+\epsilon}\Bigl(R+\frac U{E^3}+\Bigl(\frac X{E^3}\Bigr)^{2/3}\Bigr)^{1/2}.
+\]">\[
+\ll X^{1/2+\epsilon}\Bigl(R+\frac U{E^3}+\Bigl(\frac X{E^3}\Bigr)^{2/3}\Bigr)^{1/2}.
+\]</span>
+For <span class="math" data-tex="\(X^{0.40}&lt;R\ll X^{0.51}\)">\(X^{0.40}&lt;R\ll X^{0.51}\)</span> and <span class="math" data-tex="\(E\gg X^{0.02}\)">\(E\gg X^{0.02}\)</span>, the three terms have exponents at most
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0.755,\qquad 0.77,\\
+\frac12+\frac{1-0.06}3=\frac56-\frac1{50}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+0.755,\qquad 0.77,\\
+\frac12+\frac{1-0.06}3=\frac56-\frac1{50}.
+\end{gathered}
+\]</span>
+The completion error of the main term, <span class="math" data-tex="\(X^{5/6+\epsilon}C_*^{-1}\)">\(X^{5/6+\epsilon}C_*^{-1}\)</span>, has the same last exponent in this range. All the exponents are below <span class="math" data-tex="\(\frac56-\frac1{100}\)">\(\frac56-\frac1{100}\)</span> after the small losses, and there are <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> dyads. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-type-i-sums-at-large-heights">5. Type I sums at large heights</h2>
+<p>At heights <span class="math" data-tex="\(T\)">\(T\)</span> up to <span class="math" data-tex="\(X^{1/6+\rho}\)">\(X^{1/6+\rho}\)</span>, the model term is treated separately (in the lesson <em>Bilinear sums and the sharp cutoff</em>), and the Gauss sums are bounded alone. The tool is a mean value over <span class="math" data-tex="\(t\)">\(t\)</span> of the completed sums twisted by <span class="math" data-tex="\(N(\cdot)^{it}\)">\(N(\cdot)^{it}\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell,t}(V;W)\\
+&amp;=\sum_{\substack{d,u\\ (d,r)=1}}|d|\,G(ru)\,\theta_\ell(rud^3)\\
+&amp;\qquad\cdot N(ud^3)^{it}\,W\Bigl(\frac{N(ud^3)}V\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal C_{r,\ell,t}(V;W)\\
+&amp;=\sum_{\substack{d,u\\ (d,r)=1}}|d|\,G(ru)\,\theta_\ell(rud^3)\\
+&amp;\qquad\cdot N(ud^3)^{it}\,W\Bigl(\frac{N(ud^3)}V\Bigr),
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;M_{r,\ell,t}(V;W)\\
+&amp;=\mathbf 1_{\ell=0}\,A_0\,\mathcal MW(\tfrac56+it)\\
+&amp;\qquad\cdot V^{5/6+it}\,\frac{\varphi(r)}{R^{7/6}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;M_{r,\ell,t}(V;W)\\
+&amp;=\mathbf 1_{\ell=0}\,A_0\,\mathcal MW(\tfrac56+it)\\
+&amp;\qquad\cdot V^{5/6+it}\,\frac{\varphi(r)}{R^{7/6}} .
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 5.1 (completed sums at large heights).</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be fixed, <span class="math" data-tex="\(r\)">\(r\)</span> primary and squarefree, <span class="math" data-tex="\(R=N(r)\)">\(R=N(r)\)</span>, and let <span class="math" data-tex="\(W\)">\(W\)</span> be supported in a fixed compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, with derivatives bounded independently of <span class="math" data-tex="\(X\)">\(X\)</span>. For <span class="math" data-tex="\(T\ge2\)">\(T\ge2\)</span>, <span class="math" data-tex="\(V\gg1\)">\(V\gg1\)</span> and <span class="math" data-tex="\(R,V,T\le X^{O(1)}\)">\(R,V,T\le X^{O(1)}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\bigl|\mathcal C_{r,\ell,t}(V;W)\\
+&amp;\qquad-M_{r,\ell,t}(V;W)\bigr|\,\frac{dt}T\\
+&amp;\ll_{\ell,\epsilon}X^\epsilon\sqrt V\,R^{1/4}\sqrt T .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\bigl|\mathcal C_{r,\ell,t}(V;W)\\
+&amp;\qquad-M_{r,\ell,t}(V;W)\bigr|\,\frac{dt}T\\
+&amp;\ll_{\ell,\epsilon}X^\epsilon\sqrt V\,R^{1/4}\sqrt T .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> <em>Short sums: <span class="math" data-tex="\(V\le\sqrt R\,T^2\)">\(V\le\sqrt R\,T^2\)</span>.</em> Collect the terms with equal <span class="math" data-tex="\(m=N(ud^3)\)">\(m=N(ud^3)\)</span>. By Lemma 1.1 of the previous lesson the squared coefficients sum to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll X^\epsilon\sum_dN(d)\,\#\{u:N(ud^3)\asymp V\}\\
+&amp;\ll X^\epsilon V\sum_dN(d)^{-2}\ll X^\epsilon V .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll X^\epsilon\sum_dN(d)\,\#\{u:N(ud^3)\asymp V\}\\
+&amp;\ll X^\epsilon V\sum_dN(d)^{-2}\ll X^\epsilon V .
+\end{aligned}
+\]</span>
+The mean value inequality (Lemma 5.1 of the previous lesson) and Cauchy's inequality bound the mean of <span class="math" data-tex="\(|\mathcal C_{r,\ell,t}|\)">\(|\mathcal C_{r,\ell,t}|\)</span> by <span class="math" data-tex="\(X^\epsilon\sqrt V(1+V/T)^{1/2}\le X^\epsilon\sqrt VR^{1/4}\sqrt T\)">\(X^\epsilon\sqrt V(1+V/T)^{1/2}\le X^\epsilon\sqrt VR^{1/4}\sqrt T\)</span>. For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, the subtracted term is <span class="math" data-tex="\(O_D(V^{5/6}R^{-1/6}T^{-D})\)">\(O_D(V^{5/6}R^{-1/6}T^{-D})\)</span> by the decay of <span class="math" data-tex="\(\mathcal MW\)">\(\mathcal MW\)</span>. Its ratio to the claimed bound is at most <span class="math" data-tex="\(V^{1/3}R^{-5/12}T^{-D-1/2}\le R^{-1/4}T^{1/6-D}\le1\)">\(V^{1/3}R^{-5/12}T^{-D-1/2}\le R^{-1/4}T^{1/6-D}\le1\)</span> for <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span>.</p>
+<p><em>Long sums: <span class="math" data-tex="\(V&gt;\sqrt R\,T^2\)">\(V&gt;\sqrt R\,T^2\)</span>.</em> Apply Theorem 2.1 to <span class="math" data-tex="\(W_t(x)=W(x)x^{it}\)">\(W_t(x)=W(x)x^{it}\)</span>, whose Mellin transform is <span class="math" data-tex="\(\mathcal MW(z+it)\)">\(\mathcal MW(z+it)\)</span>, and multiply by <span class="math" data-tex="\(V^{it}\)">\(V^{it}\)</span>. The main term is <span class="math" data-tex="\(M_{r,\ell,t}\)">\(M_{r,\ell,t}\)</span>. In <span class="math" data-tex="\(\check W_\ell\)">\(\check W_\ell\)</span>, move the line of integration to <span class="math" data-tex="\(\operatorname{Re}z=-A\)">\(\operatorname{Re}z=-A\)</span>. There <span class="math" data-tex="\(|Q_\ell(z)|\ll(1+|\operatorname{Im}z|)^{2+4A}\)">\(|Q_\ell(z)|\ll(1+|\operatorname{Im}z|)^{2+4A}\)</span>, and the decay of <span class="math" data-tex="\(\mathcal MW(z+it)\)">\(\mathcal MW(z+it)\)</span> in <span class="math" data-tex="\(\operatorname{Im}z+t\)">\(\operatorname{Im}z+t\)</span> bounds the transform at <span class="math" data-tex="\(v=(2\pi)^4N(d^3\nu)V/R^2\)">\(v=(2\pi)^4N(d^3\nu)V/R^2\)</span> by
+<span class="math math-display" data-tex="\[
+\ll v^{-A}T^{2+4A}=T^2\Bigl(\frac{R^2T^4}{(2\pi)^4N(d^3\nu)V}\Bigr)^{A}.
+\]">\[
+\ll v^{-A}T^{2+4A}=T^2\Bigl(\frac{R^2T^4}{(2\pi)^4N(d^3\nu)V}\Bigr)^{A}.
+\]</span>
+For a fixed small <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and large <span class="math" data-tex="\(A\)">\(A\)</span>, the terms with <span class="math" data-tex="\(N(d^3\nu)&gt;I_{\max}=X^\delta R^2T^4/V\)">\(N(d^3\nu)&gt;I_{\max}=X^\delta R^2T^4/V\)</span> are therefore smaller than every fixed power of <span class="math" data-tex="\(X^{-1}\)">\(X^{-1}\)</span>. This holds after summing the absolutely convergent coefficients of Lemma 2.2. The cutoff does not depend on <span class="math" data-tex="\(t\)">\(t\)</span>. The retained frequencies satisfy <span class="math" data-tex="\(N(d^3\nu)\le I_{\max}\le X^\delta R^{3/2}T^2\)">\(N(d^3\nu)\le I_{\max}\le X^\delta R^{3/2}T^2\)</span>.</p>
+<p>For the retained terms, move the line back to <span class="math" data-tex="\(\operatorname{Re}z=\frac12\)">\(\operatorname{Re}z=\frac12\)</span>. No pole is crossed, since the poles of <span class="math" data-tex="\(\Gamma(\frac56+\frac{|\ell|}2-z)\)">\(\Gamma(\frac56+\frac{|\ell|}2-z)\)</span> lie at <span class="math" data-tex="\(\operatorname{Re}z\ge\frac56\)">\(\operatorname{Re}z\ge\frac56\)</span>. On this line <span class="math" data-tex="\(|Q_\ell(\frac12+iy)|=1\)">\(|Q_\ell(\frac12+iy)|=1\)</span>, because each quotient <span class="math" data-tex="\(\Gamma(a-iy)/\Gamma(a+iy)\)">\(\Gamma(a-iy)/\Gamma(a+iy)\)</span> with real <span class="math" data-tex="\(a\)">\(a\)</span> has absolute value one. After the substitution <span class="math" data-tex="\(y\mapsto y-t\)">\(y\mapsto y-t\)</span>, the transform is an integral of <span class="math" data-tex="\(\mathcal MW(\frac12+iy)\)">\(\mathcal MW(\frac12+iy)\)</span> against <span class="math" data-tex="\(N(d^3\nu)^{i(y-t)}\)">\(N(d^3\nu)^{i(y-t)}\)</span> times factors of absolute value one. Minkowski's inequality in <span class="math" data-tex="\(y\)">\(y\)</span> reduces the claim to the mean over <span class="math" data-tex="\(t\)">\(t\)</span> of Dirichlet polynomials in <span class="math" data-tex="\(N(d^3\nu)\)">\(N(d^3\nu)\)</span>. Their coefficients have absolute value a constant times
+<span class="math math-display" data-tex="\[
+\sqrt V\,R^{-1/2}\,\frac{|a_r(\nu)b_r(\nu)|}{N(d)\sqrt{N(\nu)}} .
+\]">\[
+\sqrt V\,R^{-1/2}\,\frac{|a_r(\nu)b_r(\nu)|}{N(d)\sqrt{N(\nu)}} .
+\]</span></p>
+<p>Fix <span class="math" data-tex="\(d,j,\zeta,h,h&#x27;\)">\(d,j,\zeta,h,h&#x27;\)</span> in <span class="math" data-tex="\(\nu=\lambda^j\zeta hwh&#x27;^3\)">\(\nu=\lambda^j\zeta hwh&#x27;^3\)</span>, and put <span class="math" data-tex="\(D_d=N(d)\)">\(D_d=N(d)\)</span>, <span class="math" data-tex="\(E=N(h)\)">\(E=N(h)\)</span>, <span class="math" data-tex="\(P&#x27;=N(h&#x27;)\)">\(P&#x27;=N(h&#x27;)\)</span> and <span class="math" data-tex="\(g=N((\lambda\nu,r))\le\min(R,EP&#x27;)\)">\(g=N((\lambda\nu,r))\le\min(R,EP&#x27;)\)</span>. The free squarefree variable <span class="math" data-tex="\(w\)">\(w\)</span> has length at most <span class="math" data-tex="\(Y&#x27;=I_{\max}/(D_d^3\,3^jEP&#x27;^3)\)">\(Y&#x27;=I_{\max}/(D_d^3\,3^jEP&#x27;^3)\)</span>. By the bounds of Theorem 2.1 its coefficients are <span class="math" data-tex="\(N(w)^{-1/2}\)">\(N(w)^{-1/2}\)</span> times
+<span class="math math-display" data-tex="\[
+\sqrt V\,R^{-1/2}\,\frac{3^{-j/6}\,g}{D_d\,P&#x27;\sqrt E}.
+\]">\[
+\sqrt V\,R^{-1/2}\,\frac{3^{-j/6}\,g}{D_d\,P&#x27;\sqrt E}.
+\]</span>
+By the mean value inequality on dyads of <span class="math" data-tex="\(N(w)\)">\(N(w)\)</span>, the mean over <span class="math" data-tex="\(t\)">\(t\)</span> is at most <span class="math" data-tex="\(X^\epsilon\)">\(X^\epsilon\)</span> times this factor times <span class="math" data-tex="\(1+\sqrt{Y&#x27;/T}\)">\(1+\sqrt{Y&#x27;/T}\)</span>.</p>
+<p>For the term <span class="math" data-tex="\(1\)">\(1\)</span>, use <span class="math" data-tex="\(g\le\sqrt{REP&#x27;}\)">\(g\le\sqrt{REP&#x27;}\)</span>. The sum over <span class="math" data-tex="\(j\)">\(j\)</span> is geometric and the sum over <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span>. There are at most <span class="math" data-tex="\(\tau(r)\)">\(\tau(r)\)</span> choices of <span class="math" data-tex="\(h\)">\(h\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> is squarefree and divides <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(\sum_{h&#x27;}P&#x27;^{-1/2}\ll R^\epsilon\)">\(\sum_{h&#x27;}P&#x27;^{-1/2}\ll R^\epsilon\)</span>. The total is <span class="math" data-tex="\(O(X^\epsilon\sqrt V)\)">\(O(X^\epsilon\sqrt V)\)</span>.</p>
+<p>For the term <span class="math" data-tex="\(\sqrt{Y&#x27;/T}\)">\(\sqrt{Y&#x27;/T}\)</span>, use <span class="math" data-tex="\(g\le EP&#x27;\)">\(g\le EP&#x27;\)</span>. The total is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;X^\epsilon\sqrt V\sqrt{\frac{I_{\max}}{RT}}\sum_{d,j,h,h&#x27;}\frac{3^{-2j/3}}{D_d^{5/2}P&#x27;^{3/2}}\\
+&amp;\qquad\ll X^{\epsilon+\delta}\sqrt V\,R^{1/4}\sqrt T .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;X^\epsilon\sqrt V\sqrt{\frac{I_{\max}}{RT}}\sum_{d,j,h,h&#x27;}\frac{3^{-2j/3}}{D_d^{5/2}P&#x27;^{3/2}}\\
+&amp;\qquad\ll X^{\epsilon+\delta}\sqrt V\,R^{1/4}\sqrt T .
+\end{aligned}
+\]</span>
+Choosing <span class="math" data-tex="\(\delta\)">\(\delta\)</span> small proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2 (Type I at large heights).</strong> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be fixed, <span class="math" data-tex="\(RU\asymp X\)">\(RU\asymp X\)</span>, <span class="math" data-tex="\((a_r)\)">\((a_r)\)</span> divisor-bounded on <span class="math" data-tex="\(r\)">\(r\)</span> of length <span class="math" data-tex="\(R\)">\(R\)</span>, and let <span class="math" data-tex="\(W_r\)">\(W_r\)</span> be smooth with a common fixed compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> and derivatives bounded independently of <span class="math" data-tex="\(X\)">\(X\)</span>. For <span class="math" data-tex="\(2\le T\le X^{O(1)}\)">\(2\le T\le X^{O(1)}\)</span> and every fixed <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\sum_r|a_r|\\
+&amp;\quad\cdot\Bigl|\sum_uG_\ell(ru)N(u)^{it}W_r\Bigl(\frac{N(u)}U\Bigr)\Bigr|\frac{dt}T\\
+&amp;\ll_{\ell,\epsilon}X^{1/2+\epsilon}R^{3/4}T^{1/2}\\
+&amp;\quad+\mathbf 1_{\ell=0}O_D\bigl(X^{5/6}L^CT^{-D}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}\sum_r|a_r|\\
+&amp;\quad\cdot\Bigl|\sum_uG_\ell(ru)N(u)^{it}W_r\Bigl(\frac{N(u)}U\Bigr)\Bigr|\frac{dt}T\\
+&amp;\ll_{\ell,\epsilon}X^{1/2+\epsilon}R^{3/4}T^{1/2}\\
+&amp;\quad+\mathbf 1_{\ell=0}O_D\bigl(X^{5/6}L^CT^{-D}\bigr),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> depends only on the coefficient bounds.</p>
+<p><strong>Proof.</strong> Only squarefree <span class="math" data-tex="\(r\)">\(r\)</span> contribute. Twisting (4.1) by <span class="math" data-tex="\(N(u)^{it}\)">\(N(u)^{it}\)</span> gives the same identity with <span class="math" data-tex="\(\mathcal C_{r,\ell,t}\)">\(\mathcal C_{r,\ell,t}\)</span> and the extra factor <span class="math" data-tex="\(N(c)^{3it}\)">\(N(c)^{3it}\)</span>. If <span class="math" data-tex="\(b_0\)">\(b_0\)</span> bounds the supports of the <span class="math" data-tex="\(W_r\)">\(W_r\)</span>, only <span class="math" data-tex="\(N(c)\le(b_0U)^{1/3}\)">\(N(c)\le(b_0U)^{1/3}\)</span> contribute, and then <span class="math" data-tex="\(V=U/N(c)^3\ge1/b_0\)">\(V=U/N(c)^3\ge1/b_0\)</span>. By Lemma 5.1 the error terms contribute
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_r|a_r|\sum_{N(c)\ll U^{1/3}}|c|\,X^\epsilon\sqrt{\frac U{N(c)^3}}\\
+&amp;\qquad\cdot R^{1/4}\sqrt T\ll X^\epsilon RL^C\sqrt UR^{1/4}\sqrt T,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_r|a_r|\sum_{N(c)\ll U^{1/3}}|c|\,X^\epsilon\sqrt{\frac U{N(c)^3}}\\
+&amp;\qquad\cdot R^{1/4}\sqrt T\ll X^\epsilon RL^C\sqrt UR^{1/4}\sqrt T,
+\end{aligned}
+\]</span>
+which is <span class="math" data-tex="\(X^{1/2+\epsilon}R^{3/4}T^{1/2}\)">\(X^{1/2+\epsilon}R^{3/4}T^{1/2}\)</span>. For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, the terms <span class="math" data-tex="\(M_{r,0,t}\)">\(M_{r,0,t}\)</span> are <span class="math" data-tex="\(O_D(U^{5/6}N(c)^{-5/2}R^{-1/6}T^{-D})\)">\(O_D(U^{5/6}N(c)^{-5/2}R^{-1/6}T^{-D})\)</span>. The sum over <span class="math" data-tex="\(c\)">\(c\)</span> converges, and summing over <span class="math" data-tex="\(r\)">\(r\)</span> gives <span class="math" data-tex="\(X^{5/6}L^CT^{-D}\)">\(X^{5/6}L^CT^{-D}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 5.3.</strong> For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> the same bound can be obtained from Heath-Brown's mean-square estimate for the Dirichlet series <span class="math" data-tex="\(\sum_uG(ru)N(u)^{-s}\)">\(\sum_uG(ru)N(u)^{-s}\)</span> on the line <span class="math" data-tex="\(\operatorname{Re}s=\frac12+\epsilon\)">\(\operatorname{Re}s=\frac12+\epsilon\)</span>; this is the route of [OpenAI-023], Proposition 3.2. The proof above uses only the level formula.</p>
+<p>Two ranges of Proposition 5.2 are used later. With <span class="math" data-tex="\(R\le X^{0.40}\)">\(R\le X^{0.40}\)</span> and <span class="math" data-tex="\(T\ll X^{0.01}\)">\(T\ll X^{0.01}\)</span>, the exponent of the first term is at most <span class="math" data-tex="\(\frac12+\frac34(0.40)+\frac12(0.01)=0.805\)">\(\frac12+\frac34(0.40)+\frac12(0.01)=0.805\)</span>. With <span class="math" data-tex="\(R\le X^{1/3-\kappa/2}\)">\(R\le X^{1/3-\kappa/2}\)</span> and <span class="math" data-tex="\(T\ll X^{1/6+\rho}\)">\(T\ll X^{1/6+\rho}\)</span>, it is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac12+\frac34\Bigl(\frac13-\frac\kappa2\Bigr)+\frac12\Bigl(\frac16+\rho\Bigr)\\
+&amp;\qquad=\frac56-\frac{3\kappa}8+\frac\rho2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac12+\frac34\Bigl(\frac13-\frac\kappa2\Bigr)+\frac12\Bigl(\frac16+\rho\Bigr)\\
+&amp;\qquad=\frac56-\frac{3\kappa}8+\frac\rho2 ,
+\end{aligned}
+\]</span>
+which is below <span class="math" data-tex="\(\frac56\)">\(\frac56\)</span> when <span class="math" data-tex="\(\rho&lt;\frac34\kappa\)">\(\rho&lt;\frac34\kappa\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Verify the identity (1.1).</p>
+<p><strong>6.2.</strong> Show that <span class="math" data-tex="\(|Q_\ell(\frac12+iy)|=1\)">\(|Q_\ell(\frac12+iy)|=1\)</span> for all real <span class="math" data-tex="\(y\)">\(y\)</span>, and that on the line <span class="math" data-tex="\(\operatorname{Re}z=-\sigma\)">\(\operatorname{Re}z=-\sigma\)</span> the function <span class="math" data-tex="\(Q_\ell\)">\(Q_\ell\)</span> grows like <span class="math" data-tex="\(|\operatorname{Im}z|^{2+4\sigma}\)">\(|\operatorname{Im}z|^{2+4\sigma}\)</span>.</p>
+<p><strong>6.3.</strong> In the proof of Proposition 4.1, check the claim that the short-completion error <span class="math" data-tex="\(X^\epsilon R^{3/2}C_*^{3/2}\)">\(X^\epsilon R^{3/2}C_*^{3/2}\)</span> is <span class="math" data-tex="\(O(X^{0.795+\epsilon})\)">\(O(X^{0.795+\epsilon})\)</span> in both ranges of <span class="math" data-tex="\(R\)">\(R\)</span>. Check also that the trivial bound for the long completions is <span class="math" data-tex="\(O(X^{0.805+\epsilon})\)">\(O(X^{0.805+\epsilon})\)</span> when <span class="math" data-tex="\(R\le X^{0.40}\)">\(R\le X^{0.40}\)</span>.</p>
+<p><strong>6.4.</strong> Explain why the identity (4.1) would fail if the coefficient <span class="math" data-tex="\(\theta_{3\ell}(c)\)">\(\theta_{3\ell}(c)\)</span> were replaced by <span class="math" data-tex="\(\theta_{\ell}(c)\)">\(\theta_{\ell}(c)\)</span>.</p>
+<p><strong>6.5.</strong> Let <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span> and let <span class="math" data-tex="\(W\)">\(W\)</span> be a fixed smooth function with compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Use Poisson summation (Lemma 2.1 of the previous lesson) to show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{v\in1+3\mathcal O}\theta_\ell(v)W(N(v)/Y)\\
+&amp;\qquad=O_{\ell,W,A}(Y^{-A})
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{v\in1+3\mathcal O}\theta_\ell(v)W(N(v)/Y)\\
+&amp;\qquad=O_{\ell,W,A}(Y^{-A})
+\end{aligned}
+\]</span>
+for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>. Why does the proof of Lemma 3.1 use only the weaker bound <span class="math" data-tex="\(O(1+\sqrt Y)\)">\(O(1+\sqrt Y)\)</span>?</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(c_*\frac{2\pi}{9\sqrt3}=\frac{(2\pi)^{2/3}}{3\Gamma(2/3)}\cdot\frac{2\pi}{9\sqrt3}=\frac{(2\pi)^{5/3}}{27\sqrt3\,\Gamma(2/3)}\)">\(c_*\frac{2\pi}{9\sqrt3}=\frac{(2\pi)^{2/3}}{3\Gamma(2/3)}\cdot\frac{2\pi}{9\sqrt3}=\frac{(2\pi)^{5/3}}{27\sqrt3\,\Gamma(2/3)}\)</span>, and <span class="math" data-tex="\(27\sqrt3=3^{7/2}\)">\(27\sqrt3=3^{7/2}\)</span>.</p>
+<p><strong>6.2.</strong> At <span class="math" data-tex="\(z=\frac12+iy\)">\(z=\frac12+iy\)</span> the two quotients are <span class="math" data-tex="\(\Gamma(\frac13+k-iy)/\Gamma(\frac13+k+iy)\)">\(\Gamma(\frac13+k-iy)/\Gamma(\frac13+k+iy)\)</span> and <span class="math" data-tex="\(\Gamma(\frac23+k-iy)/\Gamma(\frac23+k+iy)\)">\(\Gamma(\frac23+k-iy)/\Gamma(\frac23+k+iy)\)</span>, with <span class="math" data-tex="\(k=|\ell|/2\)">\(k=|\ell|/2\)</span>. Since <span class="math" data-tex="\(\Gamma(\bar w)=\overline{\Gamma(w)}\)">\(\Gamma(\bar w)=\overline{\Gamma(w)}\)</span>, each has absolute value one. On <span class="math" data-tex="\(\operatorname{Re}z=-\sigma\)">\(\operatorname{Re}z=-\sigma\)</span>, Stirling's formula gives <span class="math" data-tex="\(|\Gamma(a+iy)|\asymp|y|^{a-1/2}e^{-\pi|y|/2}\)">\(|\Gamma(a+iy)|\asymp|y|^{a-1/2}e^{-\pi|y|/2}\)</span> for fixed real <span class="math" data-tex="\(a\)">\(a\)</span> and large <span class="math" data-tex="\(|y|\)">\(|y|\)</span>. The first quotient therefore has size <span class="math" data-tex="\(|y|^{(\frac56+k+\sigma-\frac12)-(k-\sigma-\frac16-\frac12)}=|y|^{1+2\sigma}\)">\(|y|^{(\frac56+k+\sigma-\frac12)-(k-\sigma-\frac16-\frac12)}=|y|^{1+2\sigma}\)</span>, and the second has the same size.</p>
+<p><strong>6.3.</strong> For <span class="math" data-tex="\(R\le X^{0.40}\)">\(R\le X^{0.40}\)</span>: <span class="math" data-tex="\(\frac32(0.40)+\frac32(0.13)=0.795\)">\(\frac32(0.40)+\frac32(0.13)=0.795\)</span>. For <span class="math" data-tex="\(X^{0.40}&lt;R\ll X^{0.51}\)">\(X^{0.40}&lt;R\ll X^{0.51}\)</span>: <span class="math" data-tex="\(\frac32(0.51)+\frac32(0.02)=0.795\)">\(\frac32(0.51)+\frac32(0.02)=0.795\)</span>. The trivial bound is <span class="math" data-tex="\(X^{1+\epsilon}E^{-3/2}\)">\(X^{1+\epsilon}E^{-3/2}\)</span> with <span class="math" data-tex="\(E\gg X^{0.13}\)">\(E\gg X^{0.13}\)</span>, and <span class="math" data-tex="\(1-\frac32(0.13)=0.805\)">\(1-\frac32(0.13)=0.805\)</span>.</p>
+<p><strong>6.4.</strong> After <span class="math" data-tex="\(e=cd\)">\(e=cd\)</span> the angular factor of a term is <span class="math" data-tex="\(\theta_{3\ell}(c)\theta_\ell(rud^3)=\theta_\ell(ru)\theta_{3\ell}(cd)\)">\(\theta_{3\ell}(c)\theta_\ell(rud^3)=\theta_\ell(ru)\theta_{3\ell}(cd)\)</span><span class="math" data-tex="\(=\theta_\ell(rue^3)\)">\(=\theta_\ell(rue^3)\)</span>. Only this combination depends on <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span> through <span class="math" data-tex="\(e\)">\(e\)</span> alone, which is what makes <span class="math" data-tex="\(\sum_{c\mid e}\mu(c)\)">\(\sum_{c\mid e}\mu(c)\)</span> appear. With <span class="math" data-tex="\(\theta_\ell(c)\)">\(\theta_\ell(c)\)</span> the coefficient of a fixed <span class="math" data-tex="\(e\)">\(e\)</span> would be <span class="math" data-tex="\(\sum_{c\mid e}\mu(c)\theta_{-2\ell}(c)\)">\(\sum_{c\mid e}\mu(c)\theta_{-2\ell}(c)\)</span>, which does not vanish for <span class="math" data-tex="\(e\ne1\)">\(e\ne1\)</span> in general.</p>
+<p><strong>6.5.</strong> Put <span class="math" data-tex="\(f(z)=\theta_\ell(z)W(|z|^2/Y)\)">\(f(z)=\theta_\ell(z)W(|z|^2/Y)\)</span>. Lemma 2.1 of the previous lesson with <span class="math" data-tex="\(b=3\)">\(b=3\)</span>, <span class="math" data-tex="\(c=1\)">\(c=1\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{v\in1+3\mathcal O}f(v)=\frac19\sum_{y\in\lambda^{-1}\mathcal O}e\Bigl(\operatorname{Tr}\frac y3\Bigr)\widehat f\Bigl(\frac y3\Bigr).
+\]">\[
+\sum_{v\in1+3\mathcal O}f(v)=\frac19\sum_{y\in\lambda^{-1}\mathcal O}e\Bigl(\operatorname{Tr}\frac y3\Bigr)\widehat f\Bigl(\frac y3\Bigr).
+\]</span>
+The term <span class="math" data-tex="\(y=0\)">\(y=0\)</span> is <span class="math" data-tex="\(\frac19\int f\,d\mathfrak m=0\)">\(\frac19\int f\,d\mathfrak m=0\)</span>, since the angular integral of <span class="math" data-tex="\(e^{i\ell\phi}\)">\(e^{i\ell\phi}\)</span> vanishes. The function <span class="math" data-tex="\(f\)">\(f\)</span> is supported where <span class="math" data-tex="\(|z|\asymp\sqrt Y\)">\(|z|\asymp\sqrt Y\)</span>, and each derivative of order <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(O_{\ell,W,k}(Y^{-k/2})\)">\(O_{\ell,W,k}(Y^{-k/2})\)</span>, since both <span class="math" data-tex="\(\theta_\ell\)">\(\theta_\ell\)</span> and <span class="math" data-tex="\(W(|z|^2/Y)\)">\(W(|z|^2/Y)\)</span> vary on the scale <span class="math" data-tex="\(\sqrt Y\)">\(\sqrt Y\)</span>. Integrating by parts <span class="math" data-tex="\(k\)">\(k\)</span> times gives <span class="math" data-tex="\(|\widehat f(\eta)|\ll Y\,(\sqrt Y|\eta|)^{-k}\)">\(|\widehat f(\eta)|\ll Y\,(\sqrt Y|\eta|)^{-k}\)</span>. For <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> we have <span class="math" data-tex="\(|y/3|\ge1/(3\sqrt3)\)">\(|y/3|\ge1/(3\sqrt3)\)</span>, and summing over <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(k\ge3\)">\(k\ge3\)</span> gives <span class="math" data-tex="\(O(Y^{1-k/2})\)">\(O(Y^{1-k/2})\)</span>. In Lemma 3.1 the weights have derivatives bounded only by powers of <span class="math" data-tex="\(L\)">\(L\)</span>, and the sums occur with <span class="math" data-tex="\(Y=U/N(c^2d)\)">\(Y=U/N(c^2d)\)</span> ranging down to <span class="math" data-tex="\(1\)">\(1\)</span>. The cell comparison gives one bound valid uniformly in all these cases, and it is sufficient.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-023] OpenAI, <em>An unconditional first moment for cubic Gauss sums</em>, OpenAI Math Release preprint, 25 September 2026, Section 2.3 (the level input in its required form), Section 3 (Type I estimates) and Appendix A.2 (the angular Voronoi formula and the completed sums at large heights). https://github.com/openai/math/tree/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026</li>
+<li>[DR] A. Dunn and M. Radziwiłł, <em>Bias in cubic Gauss sums: Patterson's conjecture</em>, arXiv:2109.07463v3 (2024), Proposition 5.2 (the dual coefficients), Proposition 5.3 (the level Voronoi formula) and the formulas for the coefficients of the cubic theta function in its Section 5.1. https://arxiv.org/abs/2109.07463v3</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

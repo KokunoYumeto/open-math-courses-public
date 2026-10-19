@@ -30,6 +30,6 @@ svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="580" viewBo
 </g></svg>'''
 out.write_text(svg,'utf-8')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-check={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),'geometry':{'disk_radius':1,'illustrative_collar_radii':[.9,1.1],'barrier_inner_radius':.25,'barrier_outer_radius':1,'midpoint':[.5,.5],'samples':401},'proof_locators':['M1','P2','X3'],'actually_inspected':False,'exact_coordinate_review_complete':False}
+check={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),'geometry':{'disk_radius':1,'illustrative_collar_radii':[.9,1.1],'barrier_inner_radius':.25,'barrier_outer_radius':1,'midpoint':[.5,.5],'samples':401},'proof_locators':['M1','P2','X3'],'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (r/'figure-check.json').write_text(json.dumps(check,indent=2)+'\n','utf-8')
 print(json.dumps(check))

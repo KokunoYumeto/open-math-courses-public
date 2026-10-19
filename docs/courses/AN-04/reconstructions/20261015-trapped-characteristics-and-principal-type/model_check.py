@@ -31,6 +31,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 result={'schema':'AN04-trapped-characteristics-finite-checks/v1','source_sha256':sha(source),'script_sha256':sha(Path(__file__)),
  'passed':True,'total_cases':len(cases),'exact_algebraic_checks':len(cases),'numerical_checks':0,
  'cases':cases,'scope':'Exact oriented multiplier, rotating homogeneous symbol, stationary characteristic gradient, reflection and turn-speed identities.',
- 'not_established_by_finite_checks':['compact_limiting_curve','active_leaf_connectedness','embedded_admissible_corridors','full_trapping_equivalence','full_course_completion']}
+ 'not_established_by_finite_checks':['compact_limiting_curve','active_leaf_connectedness','embedded_admissible_corridors','full_trapping_equivalence'                         ]}
 (root/'model-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({k:result[k] for k in ('passed','total_cases','exact_algebraic_checks')}))

@@ -59,7 +59,7 @@ f.parent.mkdir(parents=True,exist_ok=True);ET.indent(svg);ET.ElementTree(svg).wr
 record={'schema':'an04-compensated-glancing-figure/v1','svg':f.relative_to(r).as_posix(),'svg_sha256':hashlib.sha256(f.read_bytes()).hexdigest(),
  'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'width':780,'height':440,
  'proof_locators':'PC16--PC28,PC33--PC44','normalized_plot':{'beta':1,'epsilon':.25,'T_min':-1.25,'T_max':2,'X_min':0,'envelope':'T+X^2<=2','incoming_strip':[-1.25,-1],'curve_samples':samples,'curve_rendering':'Exact quadratic Bezier in the coordinate X; samples are supplementary exact-coordinate points.'},
- 'source_credit':'András Vasy freely readable paper complete PDF35--42/44--48 and two-page correction; new receiving proof and figure by GPT-6.1 Sol (OpenAI), Ultra',
- 'new_expression_licence':'CC0-1.0','pedagogical_estimate_diagram':True,'original_research_claim':False,'actual_render_visually_inspected':False,'preserved_original_diagram':True}
+ 'source_credit':'András Vasy, Propagation of singularities, PDF35--42/44--48 and the two-page correction. Figure and exposition: GPT-6.1 Sol (OpenAI), Ultra.',
+ 'new_expression_licence':'CC0-1.0','pedagogical_estimate_diagram':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                                                          }
 (p/'figure-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print({'figure_created':True,'exact_envelope_samples':len(samples),'canvas':[780,440]})

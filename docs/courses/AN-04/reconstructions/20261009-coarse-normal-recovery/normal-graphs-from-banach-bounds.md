@@ -227,7 +227,7 @@ The finitely many coefficient derivatives in the corresponding mixed mapping bou
 
 If \(\tau\) is given, its continuity and smooth restriction identity now prove \(\gamma_0(\chi u)=\chi(0)\tau u\). In particular a sequence with actual zero Dirichlet values has an actual zero limiting value. No derivative of \(u_\nu\) with respect to \(a_\nu\) was used. For an unnormalized highest coefficient, first use the uniform inverse in B3; smooth multiplication by that convergent inverse also preserves (NG24).
 
-**B9. What remains for observation estimates.** The result supplies a fixed finite starting order, uniform actual normal-graph bounds and trace continuity. It does not claim that an arbitrary family bounded only in \(B\) has a convergent subsequence in \(B\). It does not replace the source norm in (NG2) by a citation or by individual membership in the intrinsic class.
+**B9. Starting order and normal-graph bounds.** The result supplies a fixed finite starting order, uniform actual normal-graph bounds and trace continuity. It does not claim that an arbitrary family bounded only in \(B\) has a convergent subsequence in \(B\). It does not replace the source norm in (NG2) by a citation or by individual membership in the intrinsic class.
 
 For the full compressed observation theorem, the required next conversion is from admissible source and observation tests in the specified cones to the local graph bounds, retaining all residual normal contributions. The other propagation regimes must also be made uniform and combined with the completed compact-access geometry. The final finite-test argument, including the exact operator domains, remains to be proved.
 

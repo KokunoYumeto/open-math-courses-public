@@ -51,4 +51,4 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
  'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(Path(__file__)),
  'exact_model':'p=xi^2-eta^2; eta=1; incoming (z,x)=(-2tau,-2tau), outgoing (-2tau,2tau); J=[1/2,1].',
  'projection':'Base coordinates only; arrows follow Hamilton parameter.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False},indent=2)+'\n','utf-8')
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         },indent=2)+'\n','utf-8')

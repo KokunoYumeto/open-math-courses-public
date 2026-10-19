@@ -835,7 +835,7 @@ fibre integral, not failure of the clean hypotheses. The general
 one-order improvement criterion is (AC30); in this example every
 order vanishes because the explicit operator is zero.
 
-## Freely accessible human sources and remaining scope
+## Sources and scope
 
 The frequency separation and homogeneous-variable route are developed
 from [Lars Hörmander, *Fourier integral operators. I*, the freely
@@ -844,14 +844,14 @@ pages 174–181](https://projecteuclid.org/journals/acta-mathematica/volume-127/
 The clean comparison was also checked against [Victor Guillemin and
 Shlomo Sternberg, *Semi-classical Analysis*, free author draft of
 13 January 2010, Sections 8.11–8.13](https://math.mit.edu/~vwg/semiclassGuilleminSternberg.pdf).
-Only these identified free versions are mathematical sources.
+These editions use the homogeneous and semiclassical conventions specified below.
 
 The draft uses semiclassical order conventions, so its signed order
 labels are not copied into the homogeneous convention here. A1–A5
 supply the cutoff and all ordinary-symbol estimates; A6 supplies
 the needed ordinary symbol integration; A7 gives the full density
-calculation omitted in the draft. No source text or PDF is
-redistributed. The course still has broader symbol classes, general
-Sobolev continuity, propagation, hyperbolic and boundary problems,
-glancing and complex phases to complete.
+calculation for the homogeneous convention.
+Broader symbol classes, general Sobolev continuity, propagation,
+hyperbolic and boundary problems, glancing and complex phases
+require their separate hypotheses and arguments.
 

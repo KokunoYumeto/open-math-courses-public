@@ -42,4 +42,4 @@ record={'schema':'an04-boundary-form-finite-models/v1','checked_utc':datetime.da
         'groups':['Full complex noncommuting principal/lower-term matrix defect','Exact real multiplication defect','Positive Neumann boundary contribution','Tent-source signs against three smooth tests'],
         'passed':True,'general_form_or_propagation_proof_by_finite_tests_claimed':False,'full_boundary_propagation_proved':False}
 (r/'model-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'finite_groups':4,'general_proof_certificate':False})
+print({'passed':True,'finite_groups':4,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

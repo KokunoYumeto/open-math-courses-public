@@ -49,7 +49,7 @@ source=c/'variable-positive-symmetrizers-preparation.md'
 record={'schema':'an04-variable-symmetrizer-finite-model-checks/v1',
     'recorded_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'checks':checks,'finite_groups':len(checks),'passed':True,
-    'finite_models_only':True,'general_proof_certified':False,
+    'finite_models_only':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
     'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
 (c/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
 print(json.dumps({'passed':True,'finite_model_groups':len(checks)}))

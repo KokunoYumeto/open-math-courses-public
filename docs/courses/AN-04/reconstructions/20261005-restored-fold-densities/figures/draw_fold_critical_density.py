@@ -30,7 +30,7 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'figure':'figures/fold-critical-density.svg','sha256':sha(dest),
  'script':Path(__file__).name,'script_sha256':sha(Path(__file__)),
  'qa_image':qa.name,'qa_image_sha256':sha(qa),
- 'visual_inspection':'pending','proof_locators':'U019 Propositions 1.1 and 2.1',
+                               'proof_locators':'U019 Propositions 1.1 and 2.1',
  'exact_objects':'ambient radial Jacobian rho, constraint determinant rho^-1, critical density rho^2 and amplitude/half-density cancellation',
  'source':'Original diagram; mathematical convention contextualized by H4 (25.3.7)–(25.3.8).'}
 (here/'figure-record.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')

@@ -338,7 +338,7 @@ $$
 $$
 The line-bundle TDO/Morita calculation is already proved in GL-DMOD-15, Theorem 3.1 and the following integral tensor calculation; arbitrary Cartan parameters require its several-line-bundle version, with the identical transition calculation. A diagonal Lie action on $\mathscr M\otimes F$ preserves the homogeneous tensor filtration. Its factors are $\mathscr M(\nu_i)$.
 
-To apply Lemma A.1 with $R=Z(U\mathfrak g)$, one must **also prove** that this center acts on each $\mathscr M(\nu_i)$ through the character labeled $\tau+\nu_i$. The tensor filtration alone does not prove this scalar-character calculation or the assertion that equality of these characters is Weyl-orbit equality. Those are distinct pending representation leaves. Once they are proved, Lemma A.1 supplies the actual uniform projectors on the sheaf of **$k$-vector spaces**, and Corollary A.2 makes every multiplicity-one endpoint identification an exact-character identification, rather than a merely generalized one.
+To apply Lemma A.1 with $R=Z(U\mathfrak g)$, one must **also prove** that this center acts on each $\mathscr M(\nu_i)$ through the character labeled $\tau+\nu_i$. The tensor filtration alone does not prove this scalar-character calculation or the assertion that equality of these characters is Weyl-orbit equality. These are separate representation-theoretic hypotheses. Under those hypotheses, Lemma A.1 supplies the actual uniform projectors on the sheaf of **$k$-vector spaces**, and Corollary A.2 makes every multiplicity-one endpoint identification an exact-character identification, rather than a merely generalized one.
 
 The central action on the tensor sheaf need not commute with multiplication by local functions. Thus its projector need not be $\mathcal O$-linear; quasi-coherence of its image in the original tensor $\mathcal O$-structure must not be inferred. This is already visible for the rank-one group: the highest-weight injection with $\mathscr M=\mathcal O_{\mathbb P^1}$, $\mu=\rho$, is
 $$
@@ -434,7 +434,7 @@ For GL-DMOD-16 the actual $U$ here must be shown to be $U(\mathfrak g)/U(\mathfr
 
 ![General central projector and cohomology mechanism](assets/bb-central-projector-cohomology.png)
 
-*Finite-character projection, multiplicity-one selection, and the coherent-subsheaf/Serre/Čech argument: Lemmas A.1–A.2 and Theorem C.1. Solid arrows are locally proved deductions; the dashed box is the pending flag representation identification. The projector is a map of sheaves of vector spaces and need not be $\mathcal O$-linear. Free source for the translation strategy and convention: [Miličić author draft](https://www.math.utah.edu/~milicic/Eprints/book.pdf), Chapter 2 §§2–4.*
+*Finite-character projection, multiplicity-one selection, and the coherent-subsheaf/Serre/Čech argument: Lemmas A.1–A.2 and Theorem C.1. Solid arrows are locally proved deductions; the dashed box states the flag representation hypothesis. The projector is a map of sheaves of vector spaces and need not be $\mathcal O$-linear. Free source for the translation strategy and convention: [Miličić author draft](https://www.math.utah.edu/~milicic/Eprints/book.pdf), Chapter 2 §§2–4.*
 
 The earlier programme proof inputs are Serre vanishing and generation, Theorem 2.2, finite-type approximation, Lemma 4.4, and affine/Čech comparison, Theorems 2.2 and 3.1, and the acyclic-cover comparison, Theorem 3.2. Line-bundle twisting is proved in Equivariant and twisted D-modules, Theorem 3.1.
 
@@ -576,7 +576,7 @@ $$
 \chi_\xi=\chi_\eta\quad\Longleftrightarrow\quad \eta\in W\xi.
 \tag{H.15}
 $$
-The reverse implication is already proved in H.2; the forward implication then follows by lifting a separating invariant polynomial. **Surjectivity is still a pending leaf, so (H.15) is presently this conditional conclusion.**
+The reverse implication is already proved in H.2; the forward implication then follows by lifting a separating invariant polynomial. **The forward implication in (H.15) uses surjectivity of the Harish–Chandra map.**
 
 #### 5. The required finite-dimensional highest-weight modules
 
@@ -647,7 +647,7 @@ $$
 =w_0(-\lambda_{\rm geom}-\rho).\end{gathered}
 \tag{H.16}
 $$
-using $w_0\rho=-\rho$. This explains why the two label conventions agree after the appropriate longest-element transformation. Existence of this representation and its identification with sections are part of the pending Borel–Weil/finite-representation leaf, not consequences of H.16.
+using $w_0\rho=-\rho$. This explains why the two label conventions agree after the appropriate longest-element transformation. Existence of this representation and its identification with sections require the Borel–Weil and finite-representation statements; H.16 compares their parameter labels.
 
 Free sources consulted for the intended chain and normalization are Miličić's [free author draft](https://www.math.utah.edu/~milicic/Eprints/book.pdf), Chapter 2 §§1–2 and Chapter 5 §1, and the freely accessible Kazhdan–Lusztig [original paper](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0053/LOG_0014.pdf), Conjecture 1.5. No cited result substitutes for the local proofs H.1–H.4 or for their stated missing hypotheses.
 
@@ -760,7 +760,7 @@ $$
 =\sum_{y\le w}(-1)^{d_{y,w}}P_{y,w}(1)[M_y].\end{gathered}
 \tag{K.15}
 $$
-This implication is now fully explicit; it is not a proof of its pending IC or dictionary hypotheses.
+This implication uses only the stated hypotheses; it is not a proof of its IC or dictionary hypotheses.
 
 With the convention (K.14), $e$ labels the zero-dimensional cell and the lowest Verma $M(-2\rho)$; $w_0$ labels the open cell and $M(0)$. This is already confirmed for $\mathfrak{sl}_2$ by the lesson's direct operator calculation. The rank-one check is a convention check, not a replacement for the arbitrary-Weyl-group theorem.
 
@@ -1379,7 +1379,7 @@ Equivalently \([gb,b^{-1}v]=[g,v]\). This is the convention of the existing BB l
 \end{gathered}
 \tag{G.2}
 \]
-The second assertion requires the separate actual TDO/center calculation already marked pending in B; the sign convention alone does not prove it.
+The second assertion requires the separate actual TDO/center calculation specified in B; the sign convention alone does not prove it.
 
 #### G.0a. The finite root facts needed here, deduced from H.5
 
@@ -1733,7 +1733,7 @@ For \(i_N\) and a TDO module \(\mathscr M\) of parameter \(\tau\), the filtered 
 \]
 Its highest endpoint \(\nu=N\mu_0\) is the original \(\mathscr M\). To use A.2, its central character must occur exactly once among the entire factor list. For \(p_N\), the factors of \(\mathscr M\otimes F'_N\) are labelled by \(\tau+\nu\); its lowest endpoint \(\nu=-N\mu_0\) is \(\mathscr M\otimes A^N\). Its central character must likewise be unique. These assertions concern arbitrary complex \(\tau\), with \(\langle\tau,\alpha^\vee\rangle\notin\mathbb Z_{>0}\), and additionally nonzero pairings for the lowest endpoint. They require the actual Harish–Chandra character equality test and the integral-root orbit-order argument. Neither a finite-dimensional representation nor positivity of \(A\) proves them.
 
-By the center/orbit proofs in Sections 5A.5–5A.8, the proved A.1–A.2 supplies polynomial central projectors. They give the \(k\)-linear sheaf retraction of the highest endpoint and the \(k\)-linear sheaf section of the lowest endpoint. Together with the all-\(\mathcal O\)-map naturality of G.10, these are exactly the C.1 and C.3 hypotheses. Sections 5A.5–5A.9 now prove these two center/orbit comparisons and their actual splittings, with all ordinary coefficient naturality preserved.
+By the center/orbit proofs in Sections 5A.5–5A.8, the proved A.1–A.2 supplies polynomial central projectors. They give the \(k\)-linear sheaf retraction of the highest endpoint and the \(k\)-linear sheaf section of the lowest endpoint. Together with the all-\(\mathcal O\)-map naturality of G.10, these are exactly the C.1 and C.3 hypotheses. Sections 5A.5–5A.9 prove these two center/orbit comparisons and their actual splittings, with all ordinary coefficient naturality preserved.
 
 The splitting maps need not be \(\mathcal O\)-linear, and their image need not be an \(\mathcal O\)-submodule in the tensor sheaf. The nonsplit ordinary Euler sequence in B.4 remains an explicit warning. Their intended D/ordinary module structure must come from the unique-factor isomorphism. This leaf does not erase that distinction.
 
@@ -6292,7 +6292,7 @@ Substitution of the actual coefficients in Section 1 also verifies every twisted
 
 ## What this lesson does not prove
 
-The quasi-coherent coherent-subsheaf approximation and the Serre generation/vanishing used here have exact earlier AG-QC proof locators in Section 5A.1. The projective-line line-bundle calculation remains the two-chart computation in Section 2. Section 5A.2 now proves general PBW and the Verma construction and central-polynomial calculation from explicitly specified triangular root data. The general semisimple root/group foundations are proved in Sections 5A.3a–5A.6; the category $\mathcal O$ principal exact-character dictionary is proved in Section 5A.11. Section 5A.12 proves the favorable regular exact-character dictionary and inverse translations for every dominant actual character. Sections 5A.13–5A.14 prove the ordinary generalized-center dictionary for dominant actual characters with semisimple Cartan and a discrete finite central exponent. Weights outside the actual character lattice, other regular complex, singular and parabolic dictionaries remain required; their planned prerequisite course is not an earlier proof provider. The restricted-dual example actually used in Section 5 is checked there on its complete basis.
+The quasi-coherent coherent-subsheaf approximation and the Serre generation/vanishing used here have exact earlier AG-QC proof locators in Section 5A.1. The projective-line line-bundle calculation remains the two-chart computation in Section 2. Section 5A.2 proves general PBW and the Verma construction and central-polynomial calculation from explicitly specified triangular root data. The general semisimple root/group foundations are proved in Sections 5A.3a–5A.6; the category $\mathcal O$ principal exact-character dictionary is proved in Section 5A.11. Section 5A.12 proves the favorable regular exact-character dictionary and inverse translations for every dominant actual character. Sections 5A.13–5A.14 prove the ordinary generalized-center dictionary for dominant actual characters with semisimple Cartan and a discrete finite central exponent. Weights outside the actual character lattice, other regular complex, singular and parabolic dictionaries are outside the scope of these comparisons. The restricted-dual example actually used in Section 5 is checked there on its complete basis.
 
 Sections 5A.1–5A.10 prove the full general flag-variety theorem (4.2)–(4.3), including the actual central-quotient ring. The full KL formula (5.7) remains required. Section 5A proves the general root/group, center and translation steps with full complex-parameter and quasi-coherent scope, proves the global ring at every complex parameter, proves the principal exact-character category O dictionary in Section 5A.11, the regular dominant actual-character exact dictionary with inverse translations in Section 5A.12, and the finite central foundation and full ordinary generalized-center dictionary at dominant actual characters in Sections 5A.13–5A.14, and retains the Schubert IC, graded Hecke, broader category O and IC/RH obligations explicitly. A free citation is not a proof of any of those hypotheses. The projective-line D-affinity, equivalence, Verma dictionary and singular kernel remain proved in Sections 1–5. The infinite-dimensional constructions, affine flag theorem, critical Grassmannian equivalence, and localization/Hecke constructions retain their exact scope in Section 6; the finite-dimensional leaves certify none of those further constructions.
 

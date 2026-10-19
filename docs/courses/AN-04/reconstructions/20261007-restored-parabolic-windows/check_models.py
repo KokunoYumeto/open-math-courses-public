@@ -25,4 +25,4 @@ record={'schema':'an04-parabolic-window-finite-models/v1','checked_utc':datetime
         'groups':['Full Hamilton sign, frozen momenta, principal type and clock','Exact squared-distance lower bound and witness error','Every rational threshold in Exercise 1','Correct quadratic width and fixed absorption ratio'],
         'passed':True,'general_proof_by_finite_tests_claimed':False,'full_boundary_propagation_proved':False}
 (r/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'finite_groups':4,'general_proof_certificate':False})
+print({'passed':True,'finite_groups':4,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

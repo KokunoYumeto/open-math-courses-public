@@ -54,6 +54,6 @@ source=HERE/'mixed-boundary-calculus.md'
 result={'schema':'AN04-mixed-boundary-calculus-models/v1',
         'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
         'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        'checks':checks,'passed':True,'general_theorem_certified':False}
+        'checks':checks,'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (HERE/'model-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(checks),'ellipse_samples':722}))

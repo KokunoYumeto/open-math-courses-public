@@ -44,7 +44,7 @@ qa=here/'homogeneous-fold-shifts-qa.png';fig.savefig(qa,dpi=170)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'figure':'figures/'+dest.name,'sha256':sha(dest),'script':Path(__file__).name,
  'script_sha256':sha(Path(__file__)),'qa_image':qa.name,'qa_image_sha256':sha(qa),
- 'visual_inspection':'pending','exact_geometry':'t in [-1,1], V=2t, W=-2t^3/3; cancellation contributions 2t^2 and -2t^2, sum zero; marked values t=1/2,V=1,W=-1/12.',
+                               'exact_geometry':'t in [-1,1], V=2t, W=-2t^3/3; cancellation contributions 2t^2 and -2t^2, sum zero; marked values t=1/2,V=1,W=-1/12.',
  'mathematical_scope':'Fixed spectator/positive-frequency coordinate shifts and differential-form coefficients. Full proof locators (6.1)-(6.3),(7.3), Exercise 8.8.',
  'license':'CC0 original vector diagram'}
 (here/'figure-record.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')

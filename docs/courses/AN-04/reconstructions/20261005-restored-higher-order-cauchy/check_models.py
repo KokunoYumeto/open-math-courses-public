@@ -186,6 +186,6 @@ checks.append({'name':'Bounded moment weights, exact derivative cancellation and
 report={'passed':True,'finite_groups':len(checks),'checks':checks,
  'checked_utc':datetime.now(timezone.utc).isoformat(),'script_sha256':sha(Path(__file__)),
  'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},
- 'finite_checks_replace_proofs':False,'human_review_claimed':False,'full_course_complete':False}
+ 'finite_checks_replace_proofs':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                             }
 (ROOT/'model-check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

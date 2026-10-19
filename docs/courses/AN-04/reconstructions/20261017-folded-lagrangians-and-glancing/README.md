@@ -4,4 +4,4 @@ Read [the companion](folded-lagrangians-and-glancing-pairs.html) or edit [its so
 
 The prerequisite proof index gives the earlier results used here. Reproducible sources are check_models.py and figures/draw_folded_lagrangian.py.
 
-Independent programme expression and illustration are CC0-1.0 to the extent rights exist. External human foundation routes retain their recorded terms; internal export closure is not claimed.
+Independent programme expression and illustration are CC0-1.0 to the extent rights exist. Some prerequisite proofs are external readings; their authorship and licence notices remain applicable.

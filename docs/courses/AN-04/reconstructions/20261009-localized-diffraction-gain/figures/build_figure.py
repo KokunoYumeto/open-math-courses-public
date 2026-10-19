@@ -28,6 +28,6 @@ record={'svg':'figures/'+svg.name,'svg_sha256':sha(svg),'generator_sha256':sha(P
  'left_domain':[.01,1],'left_formulae':['sqrt(floor(1/epsilon))/2','sqrt(2)'],
  'right_domain':[1,64],'right_formulae':['1','lambda**(1/4)'],
  'meaning':'Analytic bounds and exact norm scaling for the solved sequences; no numerical PDE or propagation claim.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (ROOT/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps(record))

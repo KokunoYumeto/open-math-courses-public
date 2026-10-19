@@ -34,5 +34,5 @@ text(Z(0),827,'0',18,anchor='middle');text(Z(1),827,'1',18,anchor='middle');text
 text(40,869,'In the original conic coordinate ζ/λ, both windows tend to zero; only the positive λ ray remains.',17)
 p.append('</svg>');svg=root/'figures/prescribed-concave-packets.svg';svg.write_text('\n'.join(p),'utf-8')
 sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
-(root/'figure-check.json').write_text(json.dumps(dict(svg='figures/prescribed-concave-packets.svg',svg_sha256=sha(svg),generator_sha256=sha(Path(__file__)),coordinate_formulas=['h(t)=min(0,-t)','rescaled center=theta','support half width=1/log(lambda)','plateau half width=1/(2log(lambda))'],actually_inspected=False,exact_coordinate_review_complete=False),indent=2)+'\n','utf-8')
+(root/'figure-check.json').write_text(json.dumps(dict(svg='figures/prescribed-concave-packets.svg',svg_sha256=sha(svg),generator_sha256=sha(Path(__file__)),coordinate_formulas=['h(t)=min(0,-t)','rescaled center=theta','support half width=1/log(lambda)','plateau half width=1/(2log(lambda))'],scope='The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                       ),indent=2)+'\n','utf-8')
 print(svg)

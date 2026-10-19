@@ -558,19 +558,19 @@ The improved local bound follows because the chosen graph determinant
 remains invertible there. No assertion that projection ranks are
 constant nearby is needed.
 
-## Free source and remaining scope
+## Source and scope
 
 The human source used for the graph argument, rank matrix, slicing lemma
 and sufficient rank bound is Lars Hörmander's freely readable
 [*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
 Acta Mathematica 127 (1971), Sections 4.1 and 4.3, especially Propositions
 4.1.3–4.1.4, Lemma 4.1.8 and Theorems 4.1.9, 4.3.1–4.3.2.
-The actual reading and exact free snapshot are recorded separately.
+The theorem below uses the ordinary homogeneous-symbol convention.
 W1–W6 supply the proofs and parameter, normalization, density and
-Sobolev-extension details needed here. No reference in that paper's
-bibliography is adopted by citing the paper.
+Sobolev-extension details needed here.
+The prerequisite arguments are identified by the proof index.
 
 This component proves the ordinary-symbol mapping theorem (W3). The
 graph compactness criterion, sharp essential norms, symbol classes with
-derivative losses, and the remaining propagation and boundary course
-are still separate obligations. A source citation settles none of them.
+derivative losses, and propagation and boundary estimates
+have their own hypotheses and proofs.

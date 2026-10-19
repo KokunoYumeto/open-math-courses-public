@@ -4,4 +4,4 @@ Read [the companion](local-images-compact-fibers-and-phase-coordinates.html) or 
 
 Four complete solutions give the exact discontinuous linear reduction and semicubical conic lift, a bijective mixed projection with nonsmooth inverse and an explicit full homogeneous phase, and proper transverse canonical matching whose unresolved image has changing fiber multiplicities. The prerequisite proof index gives the earlier results used here. Reproducible Python sources are model_check.py and figures/build_figure.py.
 
-Independent programme expression and illustration are CC0-1.0 to the extent rights exist. External human foundations retain their recorded terms; internal CC0-export proof closure is not claimed.
+Independent programme expression and illustration are CC0-1.0 to the extent rights exist. Some prerequisite proofs are external readings; their authorship and licence notices remain applicable.

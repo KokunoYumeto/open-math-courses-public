@@ -753,7 +753,7 @@ For the degenerate phase \(\psi=i\eta z^4\), the corresponding left side of (8.6
 
 The underlying definitions and theorems are Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, the reprint of the 1994 edition, Section 25.5, printed pages 43–52: Definition 25.5.1, adjoint Theorem 25.5.2, ideal Propositions 25.5.3–25.5.4, composition Theorem 25.5.5 and universal continuity Theorem 25.5.6, through estimates (25.5.12)–(25.5.13). This lesson supplies expanded original proofs, a direct arbitrary-phase rank argument, explicit endpoint-amplitude handling and original examples and exercises. Its prerequisites are the exact earlier course lessons on positive planes, positive ideals and distributions, Fourier localization, Gaussian normalization and composition geometry, together with the complete endpoint companion and the exact earlier AN-03 packet estimate it uses.
 
-The transverse theorem does not close nontransverse complex composition, general complex principal-symbol bundles, arbitrary symbol types, propagation, hyperbolic or mixed problems, or global uniform bounds without support assumptions. The whole course remains in development.
+The transverse theorem does not close nontransverse complex composition, general complex principal-symbol bundles, arbitrary symbol types, propagation, hyperbolic or mixed problems, or global uniform bounds without support assumptions. The additional conclusions require their own hypotheses.
 
 
 

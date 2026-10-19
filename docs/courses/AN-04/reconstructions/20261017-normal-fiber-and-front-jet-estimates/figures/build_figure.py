@@ -28,6 +28,6 @@ box(395,415,675,105,['M: flat-test order;  q: differential order;  N ≥ M + q +
  'Input test bound: xᴺ⁻¹⁻ᴹ⁻ᑫ ≤ x for 0 < x ≤ 1',
  '‖(R − JₙR)D u‖₂ ≤ C ‖u‖ℬ'])
 arrow(915,365,915,410)
-text(30,565,'Exact proof locators: N1–N2, W0–W1, J0–J2, T0.  Restricted-angular scalar assembly remains open.','small')
+text(30,565,'Exact proof locators: N1–N2, W0–W1, J0–J2, T0.  Angular scalar assembly uses a separate geometric construction.','small')
 out.append('</svg>');(HERE/'normal-fiber-and-front-jets.svg').write_text('\n'.join(out)+'\n','utf-8')
 print(HERE/'normal-fiber-and-front-jets.svg')

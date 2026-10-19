@@ -234,7 +234,7 @@ The same inequalities apply to differences of two such pairs, by linearity. If a
 \(C\|U+e\|_{H^1}+C\|e\|_{H^1}+C_NQ_N\).
 This retains the quantitative cost of an error instead of discarding it because it happens to be smooth.
 
-**R1. What remains before a general energy representation.** WR22 proves a bounded inverse estimate, modulo the stated coarse term, for the localized stable coefficient construction. It does not construct coefficients for an arbitrary \(H^1\) solution of \(Pu=0\), nor identify a residual solution from its extracted coefficients. That further argument must match the actual boundary data, remove the equation error with controlled norms, and account for all complementary microlocal components. A closed-range or surjectivity assertion also requires its own proof. The full AN-04 goal keeps those obligations and all other outstanding course components active.
+**R1. Scope of the inverse estimate.** WR22 proves a bounded inverse estimate, modulo the stated coarse term, for the localized stable coefficient construction. It does not construct coefficients for an arbitrary \(H^1\) solution of \(Pu=0\), nor identify a residual solution from its extracted coefficients. That further argument must match the actual boundary data, remove the equation error with controlled norms, and account for all complementary microlocal components. A closed-range or surjectivity assertion also requires its own proof. These additional conclusions do not follow from the inverse estimate alone.
 
 ## 6. Three solved exercises
 

@@ -31,6 +31,6 @@ record={"svg":"figures/"+out.name,"svg_sha256":hashlib.sha256(out.read_bytes()).
     "generator_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     "exact_formula_locators":["AB13","AB15","AB36"],"original_illustration":True,
     "numerical_scope":"First two panels: SciPy Airy samples using the Bi normalization proved after AB14. Third panel: exact normalized power law.",
-    "numerical_pde_solution_claimed":False,"actually_inspected":False}
+    "numerical_pde_solution_claimed":False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/"figure-check.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"figure":out.name,"panels":3}))

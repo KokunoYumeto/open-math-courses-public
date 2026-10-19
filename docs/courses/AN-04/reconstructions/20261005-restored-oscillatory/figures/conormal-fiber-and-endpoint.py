@@ -119,6 +119,6 @@ record = {'schema': 'an04-u003-conormal-endpoint-figure/v1',
              'finite_plot_meaning': 'Exact initial values of proved sequences; the proof establishes all j and divergence.'},
           'proof_locators': ['AN04-U002 §5, Theorem 5.1; §8 conormal model',
                              'AN04-U003 §6, (6.1)–(6.4); Exercises 7.1 and 7.2'],
-          'actual_visual_inspection_pending': True}
+          'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (DEST / 'conormal-fiber-and-endpoint-record.json').write_text(json.dumps(record, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
 print(json.dumps({k:record[k] for k in ['svg_sha256','png_sha256','labels_sha256']}))

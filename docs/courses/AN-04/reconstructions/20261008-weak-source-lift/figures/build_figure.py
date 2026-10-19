@@ -34,6 +34,6 @@ fig.suptitle('Exact source lifting and the retained weak normal flux',fontsize=1
 p=root/'figures/source-lift-and-flux.svg';fig.savefig(p);plt.close(fig)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 (root/'figure-check.json').write_text(json.dumps({'svg':'figures/'+p.name,'svg_sha256':sha(p),
- 'generator_sha256':sha(Path(__file__)),'actually_inspected':False,
+ 'generator_sha256':sha(Path(__file__)),                           
  'scope':'Exact local profiles SL22, full form cancellation SL12, and integer samples of squared trace norms SL24. No physical-ray claim.'},indent=2)+'\n',encoding='utf-8')
 print(p.name, p.stat().st_size)

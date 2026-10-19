@@ -47,5 +47,5 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
  'left_parameters':[-.25,0,.25],'left_coordinates':'z1/delta versus N_a/delta on the boundary-symbol orbit; not a full p_a trajectory',
  'right_damping':[1,4,16],'right_coordinates':'log10 q versus X=x/(epsilon*delta)',
  'right_sample_interval':[0,1.35],'right_samples_per_curve':151,'common_positivity_interval':[0,1.5],
- 'wave_amplitude_plotted':False,'actually_inspected':False},indent=2)+'\n','utf-8')
+ 'wave_amplitude_plotted':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'},indent=2)+'\n','utf-8')
 print('Wrote uniform clock and damping-support figure.')

@@ -32,6 +32,6 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'svg':'figures/normal-commutator-boundary.svg','svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),
  'boundary_form_panel':{'omega':1,'k_interval':[0,2],'lambda':'sqrt(2+k^2)','Dirichlet':'-1/lambda','Neumann':'(k^2-1)/lambda','glancing_k':1,'continuous_frequency_extension':'Integer points are torus modes; curves display the exact symbol expressions.'},
  'gauge_panel':{'q_interval':[0,1.25],'C':'2i','S':'exp(q)','U':'1','w':'exp(-q)','tangent':'1-q','normal_derivatives_at_zero':[0,-1]},
- 'actually_inspected':False,'exact_coordinate_review_complete':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (MOD/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'svg':str(out),'sha256':sha(out)}))

@@ -1,4 +1,4 @@
-"""Check finite algebraic identities in the new private system-branch preparation."""
+'Check finite algebraic identities for the stated system-branch models.'
 from pathlib import Path
 import datetime,hashlib,json
 import sympy as s
@@ -51,4 +51,4 @@ checks.append('Specified lower coefficient cancels the eigenframe time connectio
 sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
 d={'schema':'an04-separated-system-branch-models/v1','recorded_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'passed':True,'checks':checks,'finite_groups':len(checks),'source_sha256':sha(f),'script_sha256':sha(Path(__file__)),'scope':'Finite algebraic model identities only; no general symbol, global evolution or topology theorem certified by these checks.','whole_receiving_proof_checked':False,'public_coverage_registered':False}
 (c/'model-check.json').write_text(json.dumps(d,indent=2)+'\n',encoding='utf8')
-print(json.dumps({'model_groups':len(checks),'passed':True,'general_proof_certified':False}))
+print(json.dumps({'model_groups':len(checks),'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}))

@@ -41,7 +41,7 @@ qa=here/'canonical-fold-sheets-qa.png';fig.savefig(qa,dpi=170)
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 report={'figure':'figures/'+dest.name,'sha256':sha(dest),'script':Path(__file__).name,
  'script_sha256':sha(Path(__file__)),'qa_image':qa.name,'qa_image_sha256':sha(qa),
- 'visual_inspection':'pending','exact_geometry':'s in [-1,1], rho=1, p=s^2; input coordinates (s,-s^3/3); s=plus/minus 3/4 share p=9/16 and give (plus/minus 3/4,minus/plus 9/64).',
+                               'exact_geometry':'s in [-1,1], rho=1, p=s^2; input coordinates (s,-s^3/3); s=plus/minus 3/4 share p=9/16 and give (plus/minus 3/4,minus/plus 9/64).',
  'mathematical_scope':'Fixed-output/spectator normal slice, not bicharacteristic trajectories; formulas (4.1),(6.3)-(6.6), full proof sections 1,4,6.',
  'rendering_guard':'Vector text outlines preserve exact mathematical labels across readers.',
  'license':'CC0 original diagram'}

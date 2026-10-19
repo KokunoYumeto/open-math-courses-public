@@ -65,8 +65,8 @@ record={'schema':'an04-smooth-glancing-figure/v1','svg':f.relative_to(r).as_posi
     'normalized_plot':{'epsilon':.25,'h_star':.25,'envelopes':records,
         'common_rectangle':{'T':[-.25,.25],'X':[0,.25]},
         'limiting_beta_is_not_finite_iteration_step':True},
-    'source_credit':'András Vasy freely readable elliptic and nested-cutoff route; new receiving proof/diagram by GPT-6.1 Sol (OpenAI), Ultra',
+    'source_credit':'András Vasy, Propagation of singularities, elliptic and nested-cutoff arguments. Figure and exposition: GPT-6.1 Sol (OpenAI), Ultra.',
     'new_expression_licence':'CC0-1.0','pedagogical_estimate_diagram':True,
-    'original_research_claim':False,'actual_render_visually_inspected':False}
+    'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (p/'figure-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 print({'figure_created':True,'exact_quadratic_envelopes':3,'canvas':[780,440]})

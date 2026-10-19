@@ -66,6 +66,6 @@ checks.append({'name':'Ordered difference with both error sides','passed':True,'
 
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'schema':'AN04-one-sided-trace-symbols-models/v1','source_sha256':sha(ROOT/'one-sided-trace-symbols.md'),
- 'script_sha256':sha(Path(__file__)),'passed':True,'general_theorem_certified':False,'checks':checks}
+ 'script_sha256':sha(Path(__file__)),'passed':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','checks':checks}
 (ROOT/'model-check.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_check_groups':len(checks),'quadrature_digits':mp.mp.dps}))

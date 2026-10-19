@@ -7,7 +7,7 @@ from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT
 OUT.mkdir(parents=True,exist_ok=True)
-plt.rcParams.update({'font.family':'DejaVu Sans', 'mathtext.fontset':'dejavusans'})
+plt.rcParams.update({'font.family':'DejaVu Sans', 'mathtext.fontset':'dejavusans', 'svg.hashsalt':'GL-DMOD-BB-figures'})
 fig, ax = plt.subplots(figsize=(15,12), dpi=150)
 ax.set(xlim=(0,15),ylim=(0,12))
 ax.axis('off')
@@ -65,9 +65,9 @@ ax.text(.35,1.31,'Locally free quotients make these maps exact even for nonflat 
         fontsize=12,color=ink)
 ax.text(.35,.91,'Naturality holds for every O-linear coefficient map; global O-linear splitting is not claimed.',
         fontsize=12,color=ink)
-ax.text(7.4,.41,'For TDO coefficients: central-character uniqueness + scalar action are still pending (§G.11).',
+ax.text(7.4,.41,'TDO coefficients require central-character uniqueness and scalar action (§G.11).',
         ha='center',fontsize=12,color=orange,weight='bold')
 fig.savefig(OUT/'bb-integration-and-two-bundle-maps.png',bbox_inches='tight',facecolor='white')
-fig.savefig(OUT/'bb-integration-and-two-bundle-maps.svg',bbox_inches='tight',facecolor='white')
+fig.savefig(OUT/'bb-integration-and-two-bundle-maps.svg',bbox_inches='tight',facecolor='white',metadata={'Date':None})
 plt.close(fig)
 print(str(OUT/'bb-integration-and-two-bundle-maps.png'))

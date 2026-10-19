@@ -24,6 +24,6 @@ for eta in [.1,.7]:
 groups.append({'name':'WC24–WC25 full coefficient derivative and nonzero regularizer commutator','cases':12,'passed':True})
 # The strong dual-limit proof uses Hilbert density; this finite test does not certify it.
 source=p/'weak-commutators-and-variable-regularizers.md'
-out={'schema':'an04-weak-commutator-models/v1','checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'passed':True,'groups':groups,'general_theorem_certificate':False}
+out={'schema':'an04-weak-commutator-models/v1','checked_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'passed':True,'groups':groups,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (p/'model-check.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf8')
-print({'passed':True,'groups':len(groups),'general_theorem_certificate':False})
+print({'passed':True,'groups':len(groups),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'})

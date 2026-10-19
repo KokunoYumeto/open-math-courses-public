@@ -54,6 +54,6 @@ checks.append({'name':'Bezout splitting and oriented circle projection with uneq
 result={'schema':'AN04-spectral-algebra-finite-checks/v1','passed':True,
         'script_sha256':sha(Path(__file__)),
         'source_sha256':sha(HERE/'spectral-algebra-and-contour-projections.md'),
-        'checks':checks,'general_theorems_certified_by_finite_checks':False}
+        'checks':checks,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (HERE/'spectral-algebra-checks.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
 print(json.dumps({'checks':len(checks),'passed':True,'projection_residual':error}))

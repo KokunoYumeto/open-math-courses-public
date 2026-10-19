@@ -42,5 +42,5 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
  'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),
  'exact_coordinates':'Left: sigma/(epsilon|theta|)=(q/epsilon)(rho/|theta|), epsilon=1/10000, C=2, delta=1/2. Right: q=s^2, t=-2s-2s^3/3, |s|<=1/2; arrows increase t.',
  'source_proof_locators':['Z2 / ZE8','Z3 / ZE11','Exercise 3 / ZE26-ZE27','F0'],
- 'actually_inspected':False,'exact_coordinate_review_complete':False},indent=2)+'\n','utf-8')
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         },indent=2)+'\n','utf-8')
 print(out.name)

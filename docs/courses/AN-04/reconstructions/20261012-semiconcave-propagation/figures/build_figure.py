@@ -51,6 +51,6 @@ j={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(Path(_
   'clocks':['t','t+t^3/3']},
  'sampled_for_illustration':True,'actual_phase_space_distance_computed':False,
  'profile_scope':'Exact scalar profiles before convolution; the full mollified distance construction and overlap proof are in A1.',
- 'actually_inspected':False,'exact_coordinate_review_complete':False,'licence':'CC0-1.0'}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',                                         'licence':'CC0-1.0'}
 (HERE.parent/'figure-check.json').write_text(json.dumps(j,indent=2)+'\n','utf-8')
 print(json.dumps({'figure_bytes':out.stat().st_size,'sha256':sha(out)}))

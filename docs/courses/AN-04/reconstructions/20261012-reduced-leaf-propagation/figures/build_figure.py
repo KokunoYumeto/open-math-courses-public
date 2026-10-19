@@ -34,7 +34,7 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'svg':'figures/'+out.name,'svg_sha256':sha(out),'generator_sha256':sha(Path(__file__)),
  'coordinate_source':'RLP:X3 and F0','exact_formulae':{'beta':'sign(t)*exp(-1/(abs(t)-1)) for abs(t)>1; zero otherwise',
  'coordinate':'w=y-i*beta(t)','barrier_at_y_zero':'zeta^2*cos(beta(t))'},
- 'sampled_for_illustration':True,'numerical_integral_used':False,'actually_inspected':False,
- 'exact_coordinate_review_complete':False,'licence':'CC0-1.0'}
+ 'sampled_for_illustration':True,'numerical_integral_used':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
+                                          'licence':'CC0-1.0'}
 (HERE.parent/'figure-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
 print(json.dumps({'figure_bytes':out.stat().st_size,'sha256':sha(out)}))

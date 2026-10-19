@@ -35,5 +35,5 @@ text(760,456,'Qₜ = −2t² dx²',21,blue);text(950,499,'t',19);text(200,708,'Q
 text(35,758,'Proofs: ODP:X2–X3. Boundaries and formulas are exact; smooth curves are numerical samples.',18)
 parts.append('</svg>');p=root/'figures/one-direction-propagation.svg';p.write_text('\n'.join(parts)+'\n','utf-8')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-d={'svg':'figures/'+p.name,'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'sample_counts':[601,501],'ranges':{'damping_time':[-1,2],'hessian_time':[-2,2]},'source_proof_locators':['ODP:X2','ODP:X3','ODP:V0'],'actually_inspected':False,'exact_coordinate_review_complete':False}
+d={'svg':'figures/'+p.name,'svg_sha256':sha(p),'generator_sha256':sha(Path(__file__)),'sample_counts':[601,501],'ranges':{'damping_time':[-1,2],'hessian_time':[-2,2]},'source_proof_locators':['ODP:X2','ODP:X3','ODP:V0'],'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                                         }
 (root/'figure-check.json').write_text(json.dumps(d,indent=2)+'\n','utf-8');print(json.dumps({'figure_sha256':d['svg_sha256']}))

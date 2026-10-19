@@ -63,7 +63,7 @@ for N in [2,4,8]:
                              'coefficients':[str(a) for a in coeff],
                              'whole_polynomial_extension_identity':True})
 checks.append({'name':'Lagrange extension coefficients and finite all-jet identities',
- 'models':interpolations,'infinite_extension_certified':False,'passed':True})
+ 'models':interpolations,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','passed':True})
 
 # Compare two independent ways to compute the limiting coefficients: their
 # infinite-product expression and the finite Lagrange evaluation coefficients.
@@ -137,7 +137,7 @@ report={'schema':'smooth-descent-finite-check/v1','passed':True,
  'lesson':'folds-reflections-and-uniform-descent.md',
  'lesson_sha256':sha(here/'folds-reflections-and-uniform-descent.md'),
  'script_sha256':sha(Path(__file__)),'checks':checks,
- 'scope':'Six bounded exact fold/jet/interpolation/order models and independent high-precision/numerical comparisons. They test coordinates, signs, coefficient moments and selected frequency estimates; they do not certify the general smooth extension, simultaneous fold geometry or Airy continuity.',
- 'independent_mathematical_review':False}
+ 'scope':'Six bounded exact fold/jet/interpolation/order models and independent high-precision/numerical comparisons. They test coordinates, signs, coefficient moments and selected frequency estimates; they do not certify the general smooth extension, simultaneous fold geometry or Airy continuity.' 
+                                        }
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_checks':len(checks),'lesson_sha256':report['lesson_sha256']}))

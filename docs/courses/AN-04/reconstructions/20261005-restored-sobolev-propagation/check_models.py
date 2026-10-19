@@ -1,4 +1,4 @@
-"""Finite algebra and model checks; analytic proofs are reviewed separately."""
+'Finite algebra and model calculations; the general analytic statements use the written arguments.'
 from pathlib import Path
 import hashlib,json
 import sympy as s
@@ -33,6 +33,6 @@ passed('Characteristic has dt/ds=1 and fixed transverse covector')
 out={'passed':True,'finite_groups':len(checks),'checks':checks,
  'script_sha256':sha(Path(__file__)),
  'source_hashes':{p.name:sha(p) for p in ROOT.glob('*.md')},
- 'analytic_proof_certification_by_these_checks':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (ROOT/'model-check.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n','utf8')
 print(json.dumps({'passed':True,'finite_groups':len(checks)}))

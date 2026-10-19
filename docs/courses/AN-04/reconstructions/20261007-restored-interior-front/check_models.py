@@ -37,7 +37,7 @@ for length in [s.Rational(1,2),s.Integer(1),s.Integer(3)]:
 groups.append(dict(name='actual vector primitive centered inside the interval and squared L2 bound',cases=3,passed=True))
 record=dict(schema='AN04-interior-front-models/v1',passed=True,groups=groups,
  source_sha256=sha(root/'interior-energy-fronts-and-matrix-propagation.md'),script_sha256=sha(Path(__file__)),
- figure_svg_sha256=fig['svg_sha256'],sympy_version=s.__version__,general_theorem_certificate=False,
+ figure_svg_sha256=fig['svg_sha256'],sympy_version=s.__version__,                                  
  scope='Exact finite order and matrix diagnostics. Complete variable-coefficient, distributional and all-order proofs are in the lesson and linked programme providers.')
 (root/'model-check.json').write_text(json.dumps(record,indent=2)+'\n','utf-8')
-print(json.dumps({'passed':True,'groups':len(groups),'cases':sum(x['cases'] for x in groups),'general_theorem_certificate':False}))
+print(json.dumps({'passed':True,'groups':len(groups),'cases':sum(x['cases'] for x in groups),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}))

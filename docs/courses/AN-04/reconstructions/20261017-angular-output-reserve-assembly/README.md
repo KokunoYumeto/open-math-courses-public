@@ -4,4 +4,4 @@ Read [the proof](scalar-tests-from-a-missing-tangential-direction.html) or edit 
 
 The tangential-equator dichotomy gives scalar tests for arbitrary global finite families. Applied to both channels of the global finite-test estimate, it proves the uniform source/observation estimate and its actual tested graph on arbitrary manifolds, with one geometric parameter range before every target order. The prerequisite proof index gives the earlier results used here. Run `python -B model_check.py` and `python -B figures/build_figure.py` for the supporting identities and diagram.
 
-This component treats scalar family assembly, the uniform observation estimate and its actual tested graph. External human foundations retain their terms; internal CC0-export closure is not claimed. Independent programme expression is CC0-1.0.
+This component treats scalar family assembly, the uniform observation estimate and its actual tested graph. Some prerequisite proofs are external readings; their authorship and licence notices remain applicable. Independent programme expression is CC0-1.0.

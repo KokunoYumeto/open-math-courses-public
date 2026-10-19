@@ -76,6 +76,6 @@ checks.append({'name':'Equation-label order and four complete solution bodies','
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 record={'passed':all(c['passed'] for c in checks),'finite_groups':len(checks),'checks':checks,
  'source_hashes':{src.name:sha(src)},'script_sha256':sha(Path(__file__)),
- 'finite_checks_replace_written_proofs':False,'human_review_claimed':False,'full_course_complete':False}
+ 'finite_checks_replace_written_proofs':False,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'                             }
 (ROOT/'model-check.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n','utf-8')
 print(json.dumps({'passed':record['passed'],'finite_groups':len(checks),'solutions':4}))

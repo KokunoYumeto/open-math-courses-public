@@ -350,6 +350,6 @@ For each fixed \(N\), \(p_N(\theta_A)\le C_N(1+A)^N\), since all derivatives of 
 
 ## References
 
-- Semyon Dyatlov, [*Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), author-hosted edition dated 2 October 2026, §11.2.3, Proposition 11.26. Its complete compact-distribution Fourier proof was read and compared; Proposition 1.2 above supplies the finite-order bounds, parameter derivatives and the full integral-pairing argument locally.
+- Semyon Dyatlov, [*Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), author-hosted edition dated 2 October 2026, §11.2.3, Proposition 11.26. Proposition 1.2 above supplies the finite-order bounds, parameter derivatives and the full integral-pairing argument locally.
 - [NIST Digital Library of Mathematical Functions, §6.2(ii)](https://dlmf.nist.gov/6.2#ii), real sine and cosine integral definitions and normalization. Lemma 3.1 proves all convergence, endpoint constants and distributional identification used here directly; no complex branch formula or identification of \(c_*\) with another constant is required.
-- U021 B0–B1, U046 §§1–3 and the supplied foundations are linked at their points of use. The scalar and integration foundations retain their CC0 1.0 notices. The reconstructed exposition, local proofs and solutions are CC0.
+- U021 B0–B1, U046 §§1–3 and the supplied foundations are linked at their points of use. The scalar and integration foundations retain their CC0 1.0 notices. Original exposition, local proofs and solutions are CC0.

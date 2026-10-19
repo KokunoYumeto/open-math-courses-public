@@ -102,7 +102,7 @@ checks.append({'name':'common radial contraction and individual radial exclusion
 name='invariant-fold-continuity-and-sobolev-transfer.md'
 report={'schema':'invariant-fold-finite-check/v1','passed':True,'lesson':name,
  'lesson_sha256':sha(here/name),'script_sha256':sha(Path(__file__)),
- 'checks':checks,'independent_mathematical_review':False,
+ 'checks':checks,                                        
  'scope':'Six bounded symbolic, matrix and independent quadrature checks. General support, microlocal inversion, composition, all-real continuity and universal sharpness are proved in the lesson, not certified by samples.'}
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'passed':True,'finite_checks':len(checks),'lesson_sha256':report['lesson_sha256']}))

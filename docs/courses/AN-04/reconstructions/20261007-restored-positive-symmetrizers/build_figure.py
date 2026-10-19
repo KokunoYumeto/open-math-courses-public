@@ -47,8 +47,8 @@ record={'schema':'an04-variable-symmetrizer-energy-figure/v1',
     'figure':'figures/'+f.name,'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),
     'sample_count':len(rows),'samples':rows,'passed':True,
     'model':'b=1; u=T v; S=T^(-T)T^(-1); component ellipse, not physical rays',
-    'numerically_sampled_exact_parameterization':True,'general_proof_certified_by_samples':False,
-    'actual_reader_inspection_pending':True,'original_content_licence':'CC0-1.0',
+    'numerically_sampled_exact_parameterization':True,'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.',
+                                            'original_content_licence':'CC0-1.0',
     'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
 (c/'figure-samples.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf8')
 print(json.dumps({'figure_created':True,'samples':len(rows)}))

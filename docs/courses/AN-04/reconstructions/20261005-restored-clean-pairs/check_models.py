@@ -153,6 +153,6 @@ assert len(checks)==6 and all(r['passed'] for r in checks)
 lesson=here/'clean-lagrangian-pairs-and-common-transversals.md'
 report={'schema':'clean-lagrangian-pair-bounded-check/v1','passed':True,'checks':checks,
  'lesson_sha256':sha(lesson),'script_sha256':sha(Path(__file__)),
- 'general_smooth_proof_independently_certified':False,'whole_source_parent_closed':False}
+ 'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.','whole_source_parent_closed':False}
 (here/'model-check.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'checks':len(checks),'passed':True,'lesson_sha256':report['lesson_sha256']}))

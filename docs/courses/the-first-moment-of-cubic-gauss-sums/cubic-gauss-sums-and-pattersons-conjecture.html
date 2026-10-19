@@ -1,0 +1,517 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cubic Gauss sums and Patterson&#x27;s conjecture</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The first moment of cubic Gauss sums)</a><a href="large-sieves-for-cubic-characters.html">Next lesson</a><a href="src/cubic-gauss-sums-and-pattersons-conjecture.md">Editable source</a></nav><main><article><h1 id="cubic-gauss-sums-and-patterson-s-conjecture">Cubic Gauss sums and Patterson's conjecture</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For a prime <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span> the cubic exponential sum
+<span class="math math-display" data-tex="\[
+S_p=\sum_{x\bmod p}e\Bigl(\frac{x^3}{p}\Bigr)
+\]">\[
+S_p=\sum_{x\bmod p}e\Bigl(\frac{x^3}{p}\Bigr)
+\]</span>
+is a real number of absolute value at most <span class="math" data-tex="\(2\sqrt p\)">\(2\sqrt p\)</span>. In 1846 Kummer tabulated <span class="math" data-tex="\(S_p/(2\sqrt p)\)">\(S_p/(2\sqrt p)\)</span> for <span class="math" data-tex="\(p&lt;500\)">\(p&lt;500\)</span> and found values in <span class="math" data-tex="\([\frac12,1]\)">\([\frac12,1]\)</span> about three times as often as values in <span class="math" data-tex="\([-1,-\frac12]\)">\([-1,-\frac12]\)</span>. Heath-Brown and Patterson proved in 1979 that the angles of these sums are equidistributed, so that the normalized sums have mean zero at the scale of the number of primes. Patterson predicted in 1978 that a bias survives as a secondary term: summed over the primes up to <span class="math" data-tex="\(X\)">\(X\)</span>, the normalized sums grow like <span class="math" data-tex="\(X^{5/6}/\log X\)">\(X^{5/6}/\log X\)</span>. This course proves that prediction without any unproved hypothesis, following the proof found by OpenAI in 2026 [OpenAI-023].</p>
+<p>Sections 1 and 2 set up the arithmetic of the Eisenstein integers and the cubic residue symbols. Section 3 introduces the cubic Gauss sums and proves their basic identities, including the evaluation of their cubes. Section 4 states the theorem with its equivalent forms, and Section 5 describes the route through the course.</p>
+<p><strong>Prerequisites.</strong> From <em>Class field theory</em>: <a href="../NT-CFT/power-residue-symbols-and-reciprocity-laws.html"><em>Power residue symbols and reciprocity laws</em></a>, Proposition 23.1 and the cubic reciprocity law (12). From <em>Dirichlet L-functions and primes in progressions</em>: <a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em></a>, Theorem 2.1; <a href="../NT-DIRL/NT-DIRL-09.html"><em>The prime number theorem for arithmetic progressions</em></a>, Theorem 3.1.</p>
+<p><strong>Conventions.</strong> <span class="math" data-tex="\(e(x)=e^{2\pi ix}\)">\(e(x)=e^{2\pi ix}\)</span>, <span class="math" data-tex="\(\omega=e^{2\pi i/3}\)">\(\omega=e^{2\pi i/3}\)</span>, <span class="math" data-tex="\(K=\mathbb Q(\omega)\)">\(K=\mathbb Q(\omega)\)</span> and <span class="math" data-tex="\(\mathcal O=\mathbb Z[\omega]\)">\(\mathcal O=\mathbb Z[\omega]\)</span>. For <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>, <span class="math" data-tex="\(N(z)=z\bar z=|z|^2\)">\(N(z)=z\bar z=|z|^2\)</span> and <span class="math" data-tex="\(\operatorname{Tr}(z)=z+\bar z\)">\(\operatorname{Tr}(z)=z+\bar z\)</span>. We put <span class="math" data-tex="\(\lambda=\sqrt{-3}=1+2\omega\)">\(\lambda=\sqrt{-3}=1+2\omega\)</span>. The letter <span class="math" data-tex="\(\pi\)">\(\pi\)</span> always denotes a prime, <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> denote rational primes, and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the Möbius function on the nonzero ideals of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>.</p>
+<h2 id="1-the-eisenstein-integers">1. The Eisenstein integers</h2>
+<p>The ring <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is the ring of integers of <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(z=a+b\omega\)">\(z=a+b\omega\)</span> with <span class="math" data-tex="\(a,b\in\mathbb Q\)">\(a,b\in\mathbb Q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N(z)=a^2-ab+b^2,\\
+\operatorname{Tr}(z)=2a-b .
+\end{gathered}
+\]">\[
+\begin{gathered}
+N(z)=a^2-ab+b^2,\\
+\operatorname{Tr}(z)=2a-b .
+\end{gathered}
+\]</span>
+The points of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> form a lattice of equilateral triangles with side <span class="math" data-tex="\(1\)">\(1\)</span>, so every point of the plane lies at distance at most <span class="math" data-tex="\(1/\sqrt3\)">\(1/\sqrt3\)</span> from <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Hence for <span class="math" data-tex="\(x,y\in\mathcal O\)">\(x,y\in\mathcal O\)</span> with <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> there is <span class="math" data-tex="\(q\in\mathcal O\)">\(q\in\mathcal O\)</span> with <span class="math" data-tex="\(N(x/y-q)\le1/3\)">\(N(x/y-q)\le1/3\)</span>, and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is Euclidean for the norm: it is a principal ideal domain with unique factorization. Its units are the six elements of norm one, <span class="math" data-tex="\(\pm1,\pm\omega,\pm\omega^2\)">\(\pm1,\pm\omega,\pm\omega^2\)</span>. The element <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> satisfies <span class="math" data-tex="\(\lambda^2=-3\)">\(\lambda^2=-3\)</span> and <span class="math" data-tex="\(\lambda=\omega(1-\omega)\)">\(\lambda=\omega(1-\omega)\)</span>; it is prime, since <span class="math" data-tex="\(N(\lambda)=3\)">\(N(\lambda)=3\)</span>.</p>
+<p>An element of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is <em>prime to <span class="math" data-tex="\(3\)">\(3\)</span></em> if <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> does not divide it, and <em>primary</em> if it is congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> The six units are pairwise incongruent modulo <span class="math" data-tex="\(3\)">\(3\)</span>. Every element prime to <span class="math" data-tex="\(3\)">\(3\)</span> has exactly one primary associate, and products and complex conjugates of primary elements are primary.</p>
+<p><strong>Proof.</strong> A nonzero element of <span class="math" data-tex="\(3\mathcal O\)">\(3\mathcal O\)</span> has norm at least <span class="math" data-tex="\(9\)">\(9\)</span>, while two distinct units differ by an element of norm at most <span class="math" data-tex="\(4\)">\(4\)</span>. The quotient <span class="math" data-tex="\(\mathcal O/3\mathcal O\)">\(\mathcal O/3\mathcal O\)</span> has nine elements, three of which are multiples of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; the six units are prime to <span class="math" data-tex="\(3\)">\(3\)</span>, so they represent the six remaining classes. If <span class="math" data-tex="\(x\)">\(x\)</span> is prime to <span class="math" data-tex="\(3\)">\(3\)</span>, its class is the class of a unique unit <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(u^{-1}x\equiv1\pmod 3\)">\(u^{-1}x\equiv1\pmod 3\)</span>. If <span class="math" data-tex="\(ux\equiv u&#x27;x\equiv1\)">\(ux\equiv u&#x27;x\equiv1\)</span>, then <span class="math" data-tex="\(3\)">\(3\)</span> divides <span class="math" data-tex="\((u-u&#x27;)x\)">\((u-u&#x27;)x\)</span>, hence <span class="math" data-tex="\(u-u&#x27;\)">\(u-u&#x27;\)</span>, and <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span>. The set <span class="math" data-tex="\(1+3\mathcal O\)">\(1+3\mathcal O\)</span> is closed under multiplication and under complex conjugation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Lemma 1.1 and unique factorization, every nonzero ideal prime to <span class="math" data-tex="\(3\)">\(3\)</span> has exactly one primary generator. In all sums of this course, a variable denoted by one of the letters <span class="math" data-tex="\(a,b,c,d,r,u\)">\(a,b,c,d,r,u\)</span>, or by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, runs over primary elements, that is, over the ideals prime to <span class="math" data-tex="\(3\)">\(3\)</span>, unless a different range is stated.</p>
+<p><strong>Lemma 1.2 (the primary primes).</strong> Up to units, the primes of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> are <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and the following primary primes:</p>
+<ul>
+<li>for each rational prime <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>, two primary primes <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span>, not associate, with <span class="math" data-tex="\(\pi\bar\pi=p\)">\(\pi\bar\pi=p\)</span>;</li>
+<li>for each rational prime <span class="math" data-tex="\(q\equiv2\pmod3\)">\(q\equiv2\pmod3\)</span>, the prime <span class="math" data-tex="\(-q\)">\(-q\)</span>, of norm <span class="math" data-tex="\(q^2\)">\(q^2\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> A prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span> divides <span class="math" data-tex="\(\pi\bar\pi=N(\pi)\)">\(\pi\bar\pi=N(\pi)\)</span>, hence a rational prime. Since <span class="math" data-tex="\(\mathcal O\simeq\mathbb Z[x]/(x^2+x+1)\)">\(\mathcal O\simeq\mathbb Z[x]/(x^2+x+1)\)</span>, for a rational prime <span class="math" data-tex="\(p\)">\(p\)</span> we have <span class="math" data-tex="\(\mathcal O/p\mathcal O\simeq\mathbb F_p[x]/(x^2+x+1)\)">\(\mathcal O/p\mathcal O\simeq\mathbb F_p[x]/(x^2+x+1)\)</span>. If <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>, the cyclic group <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> contains an element of order <span class="math" data-tex="\(3\)">\(3\)</span>; it is a root of <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span>, whose other root is its square and differs from it. Then <span class="math" data-tex="\(\mathcal O/p\mathcal O\simeq\mathbb F_p\times\mathbb F_p\)">\(\mathcal O/p\mathcal O\simeq\mathbb F_p\times\mathbb F_p\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> is the product of two different prime ideals of norm <span class="math" data-tex="\(p\)">\(p\)</span>. For a prime <span class="math" data-tex="\(\rho\)">\(\rho\)</span> above <span class="math" data-tex="\(p\)">\(p\)</span>, the equation <span class="math" data-tex="\(\rho\bar\rho=p\)">\(\rho\bar\rho=p\)</span> shows that <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span> generates the other prime ideal, so <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span> are not associate. Taking the primary associate <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, its conjugate <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span> is primary by Lemma 1.1. If <span class="math" data-tex="\(q\equiv2\pmod3\)">\(q\equiv2\pmod3\)</span>, a root of <span class="math" data-tex="\(x^2+x+1\)">\(x^2+x+1\)</span> in <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> would have order <span class="math" data-tex="\(3\)">\(3\)</span> in <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span>, whose order <span class="math" data-tex="\(q-1\)">\(q-1\)</span> is prime to <span class="math" data-tex="\(3\)">\(3\)</span>; so <span class="math" data-tex="\(\mathcal O/q\mathcal O\)">\(\mathcal O/q\mathcal O\)</span> is a field, <span class="math" data-tex="\(q\)">\(q\)</span> is prime in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, and its primary associate is <span class="math" data-tex="\(-q\)">\(-q\)</span>. Finally <span class="math" data-tex="\(3=-\lambda^2\)">\(3=-\lambda^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3 (the trace form).</strong> (a) <span class="math" data-tex="\(\operatorname{Tr}(\mathcal O)\subseteq\mathbb Z\)">\(\operatorname{Tr}(\mathcal O)\subseteq\mathbb Z\)</span>, and the set of <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> with <span class="math" data-tex="\(\operatorname{Tr}(z\mathcal O)\subseteq\mathbb Z\)">\(\operatorname{Tr}(z\mathcal O)\subseteq\mathbb Z\)</span> is <span class="math" data-tex="\(\lambda^{-1}\mathcal O\)">\(\lambda^{-1}\mathcal O\)</span>.</p>
+<p>(b) Let <span class="math" data-tex="\(b\in\mathcal O\)">\(b\in\mathcal O\)</span> be nonzero and prime to <span class="math" data-tex="\(3\)">\(3\)</span>, and let <span class="math" data-tex="\(h\in\mathcal O\)">\(h\in\mathcal O\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{v\bmod b}e\Bigl(\operatorname{Tr}\frac{hv}{b}\Bigr)
+=\begin{cases}N(b),&amp; b\mid h,\\ 0,&amp; b\nmid h.\end{cases}
+\]">\[
+\sum_{v\bmod b}e\Bigl(\operatorname{Tr}\frac{hv}{b}\Bigr)
+=\begin{cases}N(b),&amp; b\mid h,\\ 0,&amp; b\nmid h.\end{cases}
+\]</span></p>
+<p><strong>Proof.</strong> (a) The first assertion is the formula for the trace. Since <span class="math" data-tex="\(\lambda^{-1}=-(1+2\omega)/3\)">\(\lambda^{-1}=-(1+2\omega)/3\)</span>, a direct computation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tr}(\lambda^{-1})=0,\quad
+\operatorname{Tr}(\lambda^{-1}\omega)=1,\\
+\operatorname{Tr}(\lambda^{-1}\omega^2)=-1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Tr}(\lambda^{-1})=0,\quad
+\operatorname{Tr}(\lambda^{-1}\omega)=1,\\
+\operatorname{Tr}(\lambda^{-1}\omega^2)=-1 .
+\end{gathered}
+\]</span>
+Every <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> can be written <span class="math" data-tex="\(z=\lambda^{-1}(u+v\omega)\)">\(z=\lambda^{-1}(u+v\omega)\)</span> with <span class="math" data-tex="\(u,v\in\mathbb Q\)">\(u,v\in\mathbb Q\)</span>, and then <span class="math" data-tex="\(\operatorname{Tr}(z)=v\)">\(\operatorname{Tr}(z)=v\)</span> and <span class="math" data-tex="\(\operatorname{Tr}(z\omega)=u-v\)">\(\operatorname{Tr}(z\omega)=u-v\)</span>. Since <span class="math" data-tex="\(\mathcal O=\mathbb Z+\mathbb Z\omega\)">\(\mathcal O=\mathbb Z+\mathbb Z\omega\)</span>, the condition <span class="math" data-tex="\(\operatorname{Tr}(z\mathcal O)\subseteq\mathbb Z\)">\(\operatorname{Tr}(z\mathcal O)\subseteq\mathbb Z\)</span> holds exactly when <span class="math" data-tex="\(u,v\in\mathbb Z\)">\(u,v\in\mathbb Z\)</span>.</p>
+<p>(b) The group <span class="math" data-tex="\(\mathcal O/b\mathcal O\)">\(\mathcal O/b\mathcal O\)</span> has <span class="math" data-tex="\(N(b)\)">\(N(b)\)</span> elements, the absolute value of the determinant of multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>. By (a) the map <span class="math" data-tex="\(v\mapsto e(\operatorname{Tr}(hv/b))\)">\(v\mapsto e(\operatorname{Tr}(hv/b))\)</span> is a well-defined character of this group, so the sum is <span class="math" data-tex="\(N(b)\)">\(N(b)\)</span> if the character is trivial and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. It is trivial exactly when <span class="math" data-tex="\(h/b\in\lambda^{-1}\mathcal O\)">\(h/b\in\lambda^{-1}\mathcal O\)</span>, that is, when <span class="math" data-tex="\(b\)">\(b\)</span> divides <span class="math" data-tex="\(\lambda h\)">\(\lambda h\)</span>. As <span class="math" data-tex="\(b\)">\(b\)</span> is prime to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, this means <span class="math" data-tex="\(b\mid h\)">\(b\mid h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-cubic-residue-symbols">2. Cubic residue symbols</h2>
+<p>Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be a primary prime. The residue field <span class="math" data-tex="\(\mathcal O/\pi\mathcal O\)">\(\mathcal O/\pi\mathcal O\)</span> has <span class="math" data-tex="\(N(\pi)\)">\(N(\pi)\)</span> elements, and <span class="math" data-tex="\(N(\pi)\equiv1\pmod3\)">\(N(\pi)\equiv1\pmod3\)</span> by Lemma 1.2. The cube roots of unity <span class="math" data-tex="\(1,\omega,\omega^2\)">\(1,\omega,\omega^2\)</span> are pairwise incongruent modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, because their differences are associates of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. For <span class="math" data-tex="\(v\)">\(v\)</span> prime to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the power <span class="math" data-tex="\(v^{(N(\pi)-1)/3}\)">\(v^{(N(\pi)-1)/3}\)</span> is a root of <span class="math" data-tex="\(X^3-1\)">\(X^3-1\)</span> in the residue field, hence congruent to exactly one of <span class="math" data-tex="\(1,\omega,\omega^2\)">\(1,\omega,\omega^2\)</span>. This cube root of unity is <span class="math" data-tex="\(\chi_\pi(v)\)">\(\chi_\pi(v)\)</span>, and <span class="math" data-tex="\(\chi_\pi(v)=0\)">\(\chi_\pi(v)=0\)</span> when <span class="math" data-tex="\(\pi\mid v\)">\(\pi\mid v\)</span>.</p>
+<p>By Proposition 23.1 of the reciprocity lesson, <span class="math" data-tex="\(\chi_\pi(v)\)">\(\chi_\pi(v)\)</span> depends only on <span class="math" data-tex="\(v\)">\(v\)</span> modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, is multiplicative in <span class="math" data-tex="\(v\)">\(v\)</span>, and equals <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(v\)">\(v\)</span> is a nonzero cube modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The group <span class="math" data-tex="\((\mathcal O/\pi\mathcal O)^\times\)">\((\mathcal O/\pi\mathcal O)^\times\)</span> is cyclic of order divisible by <span class="math" data-tex="\(3\)">\(3\)</span>, so it contains noncubes, and <span class="math" data-tex="\(\chi_\pi\)">\(\chi_\pi\)</span> is a character of order exactly <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p>For a primary element <span class="math" data-tex="\(b=\prod\pi^{e_\pi}\)">\(b=\prod\pi^{e_\pi}\)</span> put
+<span class="math math-display" data-tex="\[
+\chi_b(v)=\prod_\pi\chi_\pi(v)^{e_\pi},\qquad \chi_1(v)=1 .
+\]">\[
+\chi_b(v)=\prod_\pi\chi_\pi(v)^{e_\pi},\qquad \chi_1(v)=1 .
+\]</span>
+Then <span class="math" data-tex="\(\chi_b(v)\)">\(\chi_b(v)\)</span> depends only on the residue of <span class="math" data-tex="\(v\)">\(v\)</span> modulo the product of the distinct primes dividing <span class="math" data-tex="\(b\)">\(b\)</span>. It vanishes exactly when <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> have a common prime factor, and <span class="math" data-tex="\(\chi_{bb&#x27;}=\chi_b\chi_{b&#x27;}\)">\(\chi_{bb&#x27;}=\chi_b\chi_{b&#x27;}\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(a,b\)">\(a,b\)</span> be primary and <span class="math" data-tex="\(v\in\mathcal O\)">\(v\in\mathcal O\)</span>.</p>
+<ul>
+<li>(a) <span class="math" data-tex="\(\chi_{\bar b}(\bar v)=\overline{\chi_b(v)}\)">\(\chi_{\bar b}(\bar v)=\overline{\chi_b(v)}\)</span>.</li>
+<li>(b) <span class="math" data-tex="\(\chi_b(-1)=1\)">\(\chi_b(-1)=1\)</span> and <span class="math" data-tex="\(\chi_b(\omega)=\omega^{(N(b)-1)/3}\)">\(\chi_b(\omega)=\omega^{(N(b)-1)/3}\)</span>.</li>
+<li>(c) If <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are coprime, then <span class="math" data-tex="\(\chi_a(b)=\chi_b(a)\)">\(\chi_a(b)=\chi_b(a)\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> (a) Complex conjugation is a ring automorphism of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Applied to the congruence <span class="math" data-tex="\(v^{(N(\pi)-1)/3}\equiv\chi_\pi(v)\pmod\pi\)">\(v^{(N(\pi)-1)/3}\equiv\chi_\pi(v)\pmod\pi\)</span>, it gives <span class="math" data-tex="\(\bar v^{(N(\pi)-1)/3}\equiv\overline{\chi_\pi(v)}\pmod{\bar\pi}\)">\(\bar v^{(N(\pi)-1)/3}\equiv\overline{\chi_\pi(v)}\pmod{\bar\pi}\)</span>, and <span class="math" data-tex="\(N(\bar\pi)=N(\pi)\)">\(N(\bar\pi)=N(\pi)\)</span>. Multiply over the primes dividing <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>(b) The element <span class="math" data-tex="\(-1=(-1)^3\)">\(-1=(-1)^3\)</span> is a cube. For a primary prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the power <span class="math" data-tex="\(\omega^{(N(\pi)-1)/3}\)">\(\omega^{(N(\pi)-1)/3}\)</span> is itself a cube root of unity, so <span class="math" data-tex="\(\chi_\pi(\omega)=\omega^{(N(\pi)-1)/3}\)">\(\chi_\pi(\omega)=\omega^{(N(\pi)-1)/3}\)</span>. If <span class="math" data-tex="\(N(\pi_i)=1+3k_i\)">\(N(\pi_i)=1+3k_i\)</span>, then <span class="math" data-tex="\(\prod_i(1+3k_i)\equiv1+3\sum_ik_i\pmod9\)">\(\prod_i(1+3k_i)\equiv1+3\sum_ik_i\pmod9\)</span>, so <span class="math" data-tex="\(\sum_ik_i\equiv(N(b)-1)/3\pmod3\)">\(\sum_ik_i\equiv(N(b)-1)/3\pmod3\)</span>, and the formula for <span class="math" data-tex="\(b\)">\(b\)</span> follows by multiplicativity.</p>
+<p>(c) The reciprocity law (12) of the reciprocity lesson concerns coprime elements congruent to <span class="math" data-tex="\(-1\)">\(-1\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(-a,-b\)">\(-a,-b\)</span> are such elements. The symbols depend on their lower entries only through the ideals <span class="math" data-tex="\((-a)=(a)\)">\((-a)=(a)\)</span> and <span class="math" data-tex="\((-b)=(b)\)">\((-b)=(b)\)</span>, and <span class="math" data-tex="\(\chi_b(-a)=\chi_b(a)\)">\(\chi_b(-a)=\chi_b(a)\)</span>, <span class="math" data-tex="\(\chi_a(-b)=\chi_a(b)\)">\(\chi_a(-b)=\chi_a(b)\)</span> by (b). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-cubic-gauss-sums">3. Cubic Gauss sums</h2>
+<p>For a primary element <span class="math" data-tex="\(b\)">\(b\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(b)=\sum_{v\bmod b}\chi_b(v)\,e\Bigl(\operatorname{Tr}\frac vb\Bigr),\\
+G(b)=\frac{g(b)}{\sqrt{N(b)}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+g(b)=\sum_{v\bmod b}\chi_b(v)\,e\Bigl(\operatorname{Tr}\frac vb\Bigr),\\
+G(b)=\frac{g(b)}{\sqrt{N(b)}} .
+\end{gathered}
+\]</span>
+Both factors of the summand depend only on <span class="math" data-tex="\(v\)">\(v\)</span> modulo <span class="math" data-tex="\(b\)">\(b\)</span>, by Lemma 1.3(a).</p>
+<p><strong>Proposition 3.1.</strong> (a) <span class="math" data-tex="\(G(1)=1\)">\(G(1)=1\)</span>, and <span class="math" data-tex="\(G(a)=0\)">\(G(a)=0\)</span> when <span class="math" data-tex="\(a\)">\(a\)</span> is divisible by the square of a prime.</p>
+<p>(b) <span class="math" data-tex="\(|G(\pi)|=1\)">\(|G(\pi)|=1\)</span> for every primary prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>(c) If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are coprime and primary, then
+<span class="math math-display" data-tex="\[
+G(ab)=\overline{\chi_b(a)}\,G(a)\,G(b).
+\]">\[
+G(ab)=\overline{\chi_b(a)}\,G(a)\,G(b).
+\]</span></p>
+<p>(d) For every primary <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(|G(a)|=\mu^2(a)\)">\(|G(a)|=\mu^2(a)\)</span> and <span class="math" data-tex="\(G(\bar a)=\overline{G(a)}\)">\(G(\bar a)=\overline{G(a)}\)</span>.</p>
+<p><strong>Proof.</strong> (a) For <span class="math" data-tex="\(a=1\)">\(a=1\)</span> the sum has the single term <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, with <span class="math" data-tex="\(\chi_1(0)=1\)">\(\chi_1(0)=1\)</span>. Suppose <span class="math" data-tex="\(\pi^2\mid a\)">\(\pi^2\mid a\)</span> and put <span class="math" data-tex="\(a&#x27;=a/\pi\)">\(a&#x27;=a/\pi\)</span>. Every prime dividing <span class="math" data-tex="\(a\)">\(a\)</span> divides <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, so <span class="math" data-tex="\(\chi_a(v+a&#x27;t)=\chi_a(v)\)">\(\chi_a(v+a&#x27;t)=\chi_a(v)\)</span> for all <span class="math" data-tex="\(v,t\in\mathcal O\)">\(v,t\in\mathcal O\)</span>. If <span class="math" data-tex="\(v\)">\(v\)</span> runs over representatives of <span class="math" data-tex="\(\mathcal O/a&#x27;\mathcal O\)">\(\mathcal O/a&#x27;\mathcal O\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> over <span class="math" data-tex="\(\mathcal O/\pi\mathcal O\)">\(\mathcal O/\pi\mathcal O\)</span>, then <span class="math" data-tex="\(v+a&#x27;t\)">\(v+a&#x27;t\)</span> runs over <span class="math" data-tex="\(\mathcal O/a\mathcal O\)">\(\mathcal O/a\mathcal O\)</span>, each class once, and
+<span class="math math-display" data-tex="\[
+e\Bigl(\operatorname{Tr}\frac{v+a&#x27;t}a\Bigr)
+=e\Bigl(\operatorname{Tr}\frac va\Bigr)e\Bigl(\operatorname{Tr}\frac t\pi\Bigr).
+\]">\[
+e\Bigl(\operatorname{Tr}\frac{v+a&#x27;t}a\Bigr)
+=e\Bigl(\operatorname{Tr}\frac va\Bigr)e\Bigl(\operatorname{Tr}\frac t\pi\Bigr).
+\]</span>
+The sum over <span class="math" data-tex="\(t\)">\(t\)</span> of the last factor vanishes by Lemma 1.3(b) with <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, so <span class="math" data-tex="\(g(a)=0\)">\(g(a)=0\)</span>.</p>
+<p>(b) Expanding the square,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|g(\pi)|^2&amp;=\sum_{v,w\bmod\pi}\chi_\pi(v)\overline{\chi_\pi(w)}\\
+&amp;\qquad\cdot e\Bigl(\operatorname{Tr}\frac{v-w}\pi\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+|g(\pi)|^2&amp;=\sum_{v,w\bmod\pi}\chi_\pi(v)\overline{\chi_\pi(w)}\\
+&amp;\qquad\cdot e\Bigl(\operatorname{Tr}\frac{v-w}\pi\Bigr).
+\end{aligned}
+\]</span>
+Only <span class="math" data-tex="\(w\)">\(w\)</span> prime to <span class="math" data-tex="\(\pi\)">\(\pi\)</span> contribute. Substituting <span class="math" data-tex="\(v=wx\)">\(v=wx\)</span>, the sum becomes
+<span class="math math-display" data-tex="\[
+\sum_{x\bmod\pi}\chi_\pi(x)\sum_{w\not\equiv0}
+e\Bigl(\operatorname{Tr}\frac{w(x-1)}\pi\Bigr).
+\]">\[
+\sum_{x\bmod\pi}\chi_\pi(x)\sum_{w\not\equiv0}
+e\Bigl(\operatorname{Tr}\frac{w(x-1)}\pi\Bigr).
+\]</span>
+By Lemma 1.3(b) the inner sum is <span class="math" data-tex="\(N(\pi)-1\)">\(N(\pi)-1\)</span> for <span class="math" data-tex="\(x\equiv1\)">\(x\equiv1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. Since <span class="math" data-tex="\(\chi_\pi\)">\(\chi_\pi\)</span> is a nontrivial character, <span class="math" data-tex="\(\sum_x\chi_\pi(x)=0\)">\(\sum_x\chi_\pi(x)=0\)</span>, and <span class="math" data-tex="\(|g(\pi)|^2=N(\pi)\)">\(|g(\pi)|^2=N(\pi)\)</span>.</p>
+<p>(c) By the Chinese remainder theorem, <span class="math" data-tex="\((x,y)\mapsto bx+ay\)">\((x,y)\mapsto bx+ay\)</span> is a bijection from <span class="math" data-tex="\(\mathcal O/a\mathcal O\times\mathcal O/b\mathcal O\)">\(\mathcal O/a\mathcal O\times\mathcal O/b\mathcal O\)</span> onto <span class="math" data-tex="\(\mathcal O/ab\mathcal O\)">\(\mathcal O/ab\mathcal O\)</span>, and <span class="math" data-tex="\((bx+ay)/(ab)=x/a+y/b\)">\((bx+ay)/(ab)=x/a+y/b\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi_a(bx+ay)=\chi_a(b)\chi_a(x),\\
+\chi_b(bx+ay)=\chi_b(a)\chi_b(y),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\chi_a(bx+ay)=\chi_a(b)\chi_a(x),\\
+\chi_b(bx+ay)=\chi_b(a)\chi_b(y),
+\end{gathered}
+\]</span>
+so <span class="math" data-tex="\(g(ab)=\chi_a(b)\chi_b(a)g(a)g(b)\)">\(g(ab)=\chi_a(b)\chi_b(a)g(a)g(b)\)</span>. By Lemma 2.1(c), <span class="math" data-tex="\(\chi_a(b)\chi_b(a)=\chi_b(a)^2\)">\(\chi_a(b)\chi_b(a)=\chi_b(a)^2\)</span>, and <span class="math" data-tex="\(\zeta^2=\bar\zeta\)">\(\zeta^2=\bar\zeta\)</span> for a cube root of unity <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Divide by <span class="math" data-tex="\(\sqrt{N(ab)}=\sqrt{N(a)}\sqrt{N(b)}\)">\(\sqrt{N(ab)}=\sqrt{N(a)}\sqrt{N(b)}\)</span>.</p>
+<p>(d) For squarefree <span class="math" data-tex="\(a\)">\(a\)</span>, apply (c) to its prime factorization and use (b); for the other <span class="math" data-tex="\(a\)">\(a\)</span>, use (a). For the conjugate, Lemma 2.1(a) and <span class="math" data-tex="\(\operatorname{Tr}(\bar w/\bar a)=\operatorname{Tr}(w/a)\)">\(\operatorname{Tr}(\bar w/\bar a)=\operatorname{Tr}(w/a)\)</span> give
+<span class="math math-display" data-tex="\[
+g(\bar a)=\sum_{w\bmod a}\overline{\chi_a(w)}\,e\Bigl(\operatorname{Tr}\frac wa\Bigr).
+\]">\[
+g(\bar a)=\sum_{w\bmod a}\overline{\chi_a(w)}\,e\Bigl(\operatorname{Tr}\frac wa\Bigr).
+\]</span>
+Replacing <span class="math" data-tex="\(w\)">\(w\)</span> by <span class="math" data-tex="\(-w\)">\(-w\)</span> in <span class="math" data-tex="\(\overline{g(a)}\)">\(\overline{g(a)}\)</span> and using <span class="math" data-tex="\(\chi_a(-1)=1\)">\(\chi_a(-1)=1\)</span> gives the same sum, so <span class="math" data-tex="\(g(\bar a)=\overline{g(a)}\)">\(g(\bar a)=\overline{g(a)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (Kummer's sums).</strong> Let <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span> be prime and let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be a primary prime with <span class="math" data-tex="\(\pi\bar\pi=p\)">\(\pi\bar\pi=p\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(\pi)+G(\bar\pi)=\frac{S_p}{\sqrt p},\\
+\text{so}\quad\frac{S_p}{2\sqrt p}=\operatorname{Re}G(\pi).
+\end{gathered}
+\]">\[
+\begin{gathered}
+G(\pi)+G(\bar\pi)=\frac{S_p}{\sqrt p},\\
+\text{so}\quad\frac{S_p}{2\sqrt p}=\operatorname{Re}G(\pi).
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> The residue field <span class="math" data-tex="\(\mathcal O/\pi\mathcal O\)">\(\mathcal O/\pi\mathcal O\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span> elements, so the rational integers <span class="math" data-tex="\(0,1,\ldots,p-1\)">\(0,1,\ldots,p-1\)</span> represent it. For such <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tr}\frac v\pi=v\operatorname{Tr}\frac{\bar\pi}p=\frac{vt}p,\\
+t=\pi+\bar\pi\in\mathbb Z .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Tr}\frac v\pi=v\operatorname{Tr}\frac{\bar\pi}p=\frac{vt}p,\\
+t=\pi+\bar\pi\in\mathbb Z .
+\end{gathered}
+\]</span>
+The prime <span class="math" data-tex="\(p\)">\(p\)</span> does not divide <span class="math" data-tex="\(t\)">\(t\)</span>, since otherwise <span class="math" data-tex="\(\pi\)">\(\pi\)</span> would divide <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span>. On rational integers <span class="math" data-tex="\(\chi_\pi\)">\(\chi_\pi\)</span> restricts to a character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> of order <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(\chi_{\bar\pi}(v)=\overline{\psi(v)}\)">\(\chi_{\bar\pi}(v)=\overline{\psi(v)}\)</span> for <span class="math" data-tex="\(v\in\mathbb Z\)">\(v\in\mathbb Z\)</span> by Lemma 2.1(a). With <span class="math" data-tex="\(\tau(\psi)=\sum_{v\bmod p}\psi(v)e(v/p)\)">\(\tau(\psi)=\sum_{v\bmod p}\psi(v)e(v/p)\)</span>, the substitution <span class="math" data-tex="\(v\mapsto t^{-1}v\)">\(v\mapsto t^{-1}v\)</span> gives
+<span class="math math-display" data-tex="\[
+g(\pi)=\overline{\psi(t)}\,\tau(\psi),\qquad
+g(\bar\pi)=\psi(t)\,\tau(\bar\psi).
+\]">\[
+g(\pi)=\overline{\psi(t)}\,\tau(\psi),\qquad
+g(\bar\pi)=\psi(t)\,\tau(\bar\psi).
+\]</span>
+Since <span class="math" data-tex="\(t\equiv\bar\pi\pmod\pi\)">\(t\equiv\bar\pi\pmod\pi\)</span>, we have <span class="math" data-tex="\(\psi(t)=\chi_\pi(\bar\pi)\)">\(\psi(t)=\chi_\pi(\bar\pi)\)</span>. By Lemma 2.1(c) and (a), <span class="math" data-tex="\(\chi_\pi(\bar\pi)=\chi_{\bar\pi}(\pi)=\overline{\chi_\pi(\bar\pi)}\)">\(\chi_\pi(\bar\pi)=\chi_{\bar\pi}(\pi)=\overline{\chi_\pi(\bar\pi)}\)</span>, so this cube root of unity is real, and <span class="math" data-tex="\(\psi(t)=1\)">\(\psi(t)=1\)</span>. Finally,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tau(\psi)+\tau(\bar\psi)\\
+&amp;=\sum_{v\bmod p}\bigl(1+\psi(v)+\bar\psi(v)\bigr)e\Bigl(\frac vp\Bigr)\\
+&amp;=S_p ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\tau(\psi)+\tau(\bar\psi)\\
+&amp;=\sum_{v\bmod p}\bigl(1+\psi(v)+\bar\psi(v)\bigr)e\Bigl(\frac vp\Bigr)\\
+&amp;=S_p ,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\sum_ve(v/p)=0\)">\(\sum_ve(v/p)=0\)</span>, and <span class="math" data-tex="\(1+\psi(v)+\bar\psi(v)\)">\(1+\psi(v)+\bar\psi(v)\)</span> is the number of solutions of <span class="math" data-tex="\(y^3\equiv v\pmod p\)">\(y^3\equiv v\pmod p\)</span>: three for a nonzero cube, none for a nonzero noncube, and one for <span class="math" data-tex="\(v\equiv0\)">\(v\equiv0\)</span>. The second formula follows from Proposition 3.1(d). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (the cube of a Gauss sum).</strong> For every primary prime <span class="math" data-tex="\(\pi\)">\(\pi\)</span>,
+<span class="math math-display" data-tex="\[
+G(\pi)^3=-\frac{\pi}{|\pi|} .
+\]">\[
+G(\pi)^3=-\frac{\pi}{|\pi|} .
+\]</span>
+If <span class="math" data-tex="\(\pi=-q\)">\(\pi=-q\)</span> with a rational prime <span class="math" data-tex="\(q\equiv2\pmod3\)">\(q\equiv2\pmod3\)</span>, then <span class="math" data-tex="\(G(\pi)=\chi_\pi(\lambda)\)">\(G(\pi)=\chi_\pi(\lambda)\)</span>.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(N(\pi)=p\equiv1\pmod3\)">\(N(\pi)=p\equiv1\pmod3\)</span>, with <span class="math" data-tex="\(\psi\)">\(\psi\)</span> as in the proof of Proposition 3.2, so that <span class="math" data-tex="\(g(\pi)=\tau(\psi)\)">\(g(\pi)=\tau(\psi)\)</span>. Let
+<span class="math math-display" data-tex="\[
+J=\sum_{x\bmod p}\psi(x)\psi(1-x)
+\]">\[
+J=\sum_{x\bmod p}\psi(x)\psi(1-x)
+\]</span>
+be the Jacobi sum.</p>
+<ol>
+<li><em><span class="math" data-tex="\(\tau(\psi)^2=J\,\tau(\psi^2)\)">\(\tau(\psi)^2=J\,\tau(\psi^2)\)</span>.</em> Grouping the pairs <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> by <span class="math" data-tex="\(s=x+y\)">\(s=x+y\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau(\psi)^2&amp;=\sum_{s\bmod p}e\Bigl(\frac sp\Bigr)\\
+&amp;\qquad\cdot\sum_{x+y=s}\psi(x)\psi(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau(\psi)^2&amp;=\sum_{s\bmod p}e\Bigl(\frac sp\Bigr)\\
+&amp;\qquad\cdot\sum_{x+y=s}\psi(x)\psi(y).
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(s\not\equiv0\)">\(s\not\equiv0\)</span>, the substitution <span class="math" data-tex="\(x=sx&#x27;\)">\(x=sx&#x27;\)</span> shows that the inner sum is <span class="math" data-tex="\(\psi^2(s)J\)">\(\psi^2(s)J\)</span>. For <span class="math" data-tex="\(s\equiv0\)">\(s\equiv0\)</span> it is <span class="math" data-tex="\(\psi(-1)\sum_x\psi^2(x)=0\)">\(\psi(-1)\sum_x\psi^2(x)=0\)</span>, as <span class="math" data-tex="\(\psi^2\)">\(\psi^2\)</span> is nontrivial.</li>
+<li><em><span class="math" data-tex="\(\tau(\psi)^3=pJ\)">\(\tau(\psi)^3=pJ\)</span>.</em> We have <span class="math" data-tex="\(\psi^2=\bar\psi\)">\(\psi^2=\bar\psi\)</span>. The value <span class="math" data-tex="\(\psi(-1)\)">\(\psi(-1)\)</span> is a cube root of unity with square <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(\psi(-1)=1\)">\(\psi(-1)=1\)</span>, and Theorem 2.1 of the lesson on Gauss sums gives <span class="math" data-tex="\(\tau(\psi)\tau(\bar\psi)=p\)">\(\tau(\psi)\tau(\bar\psi)=p\)</span>. Multiply step 1 by <span class="math" data-tex="\(\tau(\psi)\)">\(\tau(\psi)\)</span>.</li>
+<li><em><span class="math" data-tex="\(|J|^2=p\)">\(|J|^2=p\)</span>,</em> because <span class="math" data-tex="\(|\tau(\psi)|^2=p\)">\(|\tau(\psi)|^2=p\)</span> by the same theorem.</li>
+<li><em><span class="math" data-tex="\(\pi\)">\(\pi\)</span> divides <span class="math" data-tex="\(J\)">\(J\)</span>.</em> Put <span class="math" data-tex="\(m=(p-1)/3\)">\(m=(p-1)/3\)</span>. Since <span class="math" data-tex="\(\psi(x)\equiv x^m\pmod\pi\)">\(\psi(x)\equiv x^m\pmod\pi\)</span>,
+<span class="math math-display" data-tex="\[
+J\equiv\sum_{x=0}^{p-1}x^m(1-x)^m\pmod\pi .
+\]">\[
+J\equiv\sum_{x=0}^{p-1}x^m(1-x)^m\pmod\pi .
+\]</span>
+Expanding <span class="math" data-tex="\((1-x)^m\)">\((1-x)^m\)</span> expresses the right side through power sums <span class="math" data-tex="\(\sum_xx^k\)">\(\sum_xx^k\)</span> with <span class="math" data-tex="\(m\le k\le2m&lt;p-1\)">\(m\le k\le2m&lt;p-1\)</span>. Each is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>: for <span class="math" data-tex="\(1\le k\le p-2\)">\(1\le k\le p-2\)</span> there is <span class="math" data-tex="\(y\in\mathbb F_p^\times\)">\(y\in\mathbb F_p^\times\)</span> with <span class="math" data-tex="\(y^k\ne1\)">\(y^k\ne1\)</span>, and <span class="math" data-tex="\(x\mapsto yx\)">\(x\mapsto yx\)</span> permutes <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> while multiplying the sum by <span class="math" data-tex="\(y^k\)">\(y^k\)</span>. Since <span class="math" data-tex="\(p\in\pi\mathcal O\)">\(p\in\pi\mathcal O\)</span>, <span class="math" data-tex="\(J\equiv0\pmod\pi\)">\(J\equiv0\pmod\pi\)</span>.</li>
+<li><em><span class="math" data-tex="\(J\equiv-1\pmod3\)">\(J\equiv-1\pmod3\)</span>.</em> Cubing is additive modulo <span class="math" data-tex="\(3\)">\(3\)</span> in any commutative ring. In <span class="math" data-tex="\(\mathbb Z[\omega,e(1/p)]\)">\(\mathbb Z[\omega,e(1/p)]\)</span> this gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau(\psi)^3&amp;\equiv\sum_x\psi(x)^3e\Bigl(\frac{3x}p\Bigr)\\
+&amp;=\sum_{x\not\equiv0}e\Bigl(\frac{3x}p\Bigr)\\
+&amp;=-1\pmod 3 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau(\psi)^3&amp;\equiv\sum_x\psi(x)^3e\Bigl(\frac{3x}p\Bigr)\\
+&amp;=\sum_{x\not\equiv0}e\Bigl(\frac{3x}p\Bigr)\\
+&amp;=-1\pmod 3 .
+\end{aligned}
+\]</span>
+The ring <span class="math" data-tex="\(\mathbb Z[\omega,e(1/p)]\)">\(\mathbb Z[\omega,e(1/p)]\)</span> is a free <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span>-module with basis <span class="math" data-tex="\(1,e(1/p),\ldots,e((p-2)/p)\)">\(1,e(1/p),\ldots,e((p-2)/p)\)</span>, because the cyclotomic polynomial of degree <span class="math" data-tex="\(p-1\)">\(p-1\)</span> remains irreducible over <span class="math" data-tex="\(K\)">\(K\)</span> (the field <span class="math" data-tex="\(\mathbb Q(\omega,e(1/p))\)">\(\mathbb Q(\omega,e(1/p))\)</span> has degree <span class="math" data-tex="\(2(p-1)\)">\(2(p-1)\)</span>). Comparing coordinates, an element of <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span> that lies in <span class="math" data-tex="\(3\mathbb Z[\omega,e(1/p)]\)">\(3\mathbb Z[\omega,e(1/p)]\)</span> lies in <span class="math" data-tex="\(3\mathbb Z[\omega]\)">\(3\mathbb Z[\omega]\)</span>. So <span class="math" data-tex="\(pJ\equiv-1\pmod 3\)">\(pJ\equiv-1\pmod 3\)</span> in <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span>, and <span class="math" data-tex="\(J\equiv-1\pmod3\)">\(J\equiv-1\pmod3\)</span> as <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>.</li>
+</ol>
+<p>By steps 3 and 4, <span class="math" data-tex="\(J=u\pi\)">\(J=u\pi\)</span> for a unit <span class="math" data-tex="\(u\)">\(u\)</span>. By step 5 and <span class="math" data-tex="\(\pi\equiv1\pmod 3\)">\(\pi\equiv1\pmod 3\)</span>, <span class="math" data-tex="\(u\equiv-1\pmod3\)">\(u\equiv-1\pmod3\)</span>, so <span class="math" data-tex="\(u=-1\)">\(u=-1\)</span> by Lemma 1.1. Hence <span class="math" data-tex="\(g(\pi)^3=\tau(\psi)^3=-p\pi\)">\(g(\pi)^3=\tau(\psi)^3=-p\pi\)</span>, and <span class="math" data-tex="\(G(\pi)^3=-p\pi/p^{3/2}=-\pi/|\pi|\)">\(G(\pi)^3=-p\pi/p^{3/2}=-\pi/|\pi|\)</span>.</p>
+<p>In the remaining case <span class="math" data-tex="\(\pi=-q\)">\(\pi=-q\)</span> with <span class="math" data-tex="\(q\equiv2\pmod3\)">\(q\equiv2\pmod3\)</span>, so that <span class="math" data-tex="\(\mathcal O/q\mathcal O=\mathbb F_{q^2}\)">\(\mathcal O/q\mathcal O=\mathbb F_{q^2}\)</span> and <span class="math" data-tex="\(N(\pi)=q^2\)">\(N(\pi)=q^2\)</span>. For <span class="math" data-tex="\(v\in\mathbb F_q^\times\)">\(v\in\mathbb F_q^\times\)</span>,
+<span class="math math-display" data-tex="\[
+v^{(q^2-1)/3}=\bigl(v^{q-1}\bigr)^{(q+1)/3}=1,
+\]">\[
+v^{(q^2-1)/3}=\bigl(v^{q-1}\bigr)^{(q+1)/3}=1,
+\]</span>
+so <span class="math" data-tex="\(\chi_\pi\)">\(\chi_\pi\)</span> is a nontrivial character of <span class="math" data-tex="\(\mathbb F_{q^2}^\times/\mathbb F_q^\times\)">\(\mathbb F_{q^2}^\times/\mathbb F_q^\times\)</span>. Complex conjugation induces the nontrivial automorphism of <span class="math" data-tex="\(\mathbb F_{q^2}\)">\(\mathbb F_{q^2}\)</span>, so <span class="math" data-tex="\(\operatorname{Tr}(v)\)">\(\operatorname{Tr}(v)\)</span> reduces modulo <span class="math" data-tex="\(q\)">\(q\)</span> to the trace from <span class="math" data-tex="\(\mathbb F_{q^2}\)">\(\mathbb F_{q^2}\)</span> to <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, and <span class="math" data-tex="\(\operatorname{Tr}(v/\pi)=-\operatorname{Tr}(v)/q\)">\(\operatorname{Tr}(v/\pi)=-\operatorname{Tr}(v)/q\)</span>. Decompose <span class="math" data-tex="\(\mathbb F_{q^2}^\times\)">\(\mathbb F_{q^2}^\times\)</span> into cosets <span class="math" data-tex="\(c\,\mathbb F_q^\times\)">\(c\,\mathbb F_q^\times\)</span>:
+<span class="math math-display" data-tex="\[
+g(\pi)=\sum_c\chi_\pi(c)\sum_{x\in\mathbb F_q^\times}e\Bigl(-\frac{x\operatorname{Tr}(c)}q\Bigr).
+\]">\[
+g(\pi)=\sum_c\chi_\pi(c)\sum_{x\in\mathbb F_q^\times}e\Bigl(-\frac{x\operatorname{Tr}(c)}q\Bigr).
+\]</span>
+The inner sum is <span class="math" data-tex="\(q-1\)">\(q-1\)</span> if <span class="math" data-tex="\(\operatorname{Tr}(c)\equiv0\)">\(\operatorname{Tr}(c)\equiv0\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. The trace is a nonzero <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>-linear form, as <span class="math" data-tex="\(\operatorname{Tr}(1)=2\)">\(\operatorname{Tr}(1)=2\)</span> and <span class="math" data-tex="\(\operatorname{Tr}(\omega)=-1\)">\(\operatorname{Tr}(\omega)=-1\)</span> are not both divisible by <span class="math" data-tex="\(q\)">\(q\)</span>. Its kernel is therefore a line, spanned by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, since <span class="math" data-tex="\(\operatorname{Tr}(\lambda)=0\)">\(\operatorname{Tr}(\lambda)=0\)</span> and <span class="math" data-tex="\(\lambda\not\equiv0\pmod q\)">\(\lambda\not\equiv0\pmod q\)</span>. So exactly one coset, <span class="math" data-tex="\(\lambda\mathbb F_q^\times\)">\(\lambda\mathbb F_q^\times\)</span>, has trace zero, and
+<span class="math math-display" data-tex="\[
+g(\pi)=q\,\chi_\pi(\lambda)-\sum_c\chi_\pi(c)=q\,\chi_\pi(\lambda).
+\]">\[
+g(\pi)=q\,\chi_\pi(\lambda)-\sum_c\chi_\pi(c)=q\,\chi_\pi(\lambda).
+\]</span>
+Thus <span class="math" data-tex="\(G(\pi)=\chi_\pi(\lambda)\)">\(G(\pi)=\chi_\pi(\lambda)\)</span> and <span class="math" data-tex="\(G(\pi)^3=1=-\pi/|\pi|\)">\(G(\pi)^3=1=-\pi/|\pi|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 3.4.</strong> For a split prime, Proposition 3.1(d) and Theorem 3.3 determine <span class="math" data-tex="\(G(\pi)\)">\(G(\pi)\)</span> up to the choice of one of the three cube roots of <span class="math" data-tex="\(-\pi/|\pi|\)">\(-\pi/|\pi|\)</span>. Writing <span class="math" data-tex="\(G(\pi)=e(\theta_\pi)\)">\(G(\pi)=e(\theta_\pi)\)</span>, we get <span class="math" data-tex="\(S_p/(2\sqrt p)=\cos2\pi\theta_\pi\)">\(S_p/(2\sqrt p)=\cos2\pi\theta_\pi\)</span>. Heath-Brown and Patterson proved that the angles <span class="math" data-tex="\(\theta_\pi\)">\(\theta_\pi\)</span> are equidistributed modulo <span class="math" data-tex="\(1\)">\(1\)</span>. Consequently <span class="math" data-tex="\(\sum_{N(\pi)\le X}G(\pi)=o(X/\log X)\)">\(\sum_{N(\pi)\le X}G(\pi)=o(X/\log X)\)</span>, and the first moment of this course is a term of lower order.</p>
+<h2 id="4-the-theorem">4. The theorem</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+c_*=\frac{(2\pi)^{2/3}}{3\,\Gamma(2/3)}=0.83818\ldots
+\]">\[
+c_*=\frac{(2\pi)^{2/3}}{3\,\Gamma(2/3)}=0.83818\ldots
+\]</span></p>
+<p><strong>Theorem 4.1.</strong> As <span class="math" data-tex="\(X\to\infty\)">\(X\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{N(\pi)\le X}G(\pi)&amp;=\frac65\,c_*\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+o\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{N(\pi)\le X}G(\pi)&amp;=\frac65\,c_*\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+o\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\end{aligned}
+\]</span>
+the sum running over all primary primes, including both conjugates above every split rational prime.</p>
+<p><strong>Lemma 4.2 (the prime ideal theorem for <span class="math" data-tex="\(K\)">\(K\)</span>).</strong> The number <span class="math" data-tex="\(P(y)\)">\(P(y)\)</span> of primary primes <span class="math" data-tex="\(\pi\)">\(\pi\)</span> with <span class="math" data-tex="\(N(\pi)\le y\)">\(N(\pi)\le y\)</span> satisfies <span class="math" data-tex="\(P(y)=y/\log y+o(y/\log y)\)">\(P(y)=y/\log y+o(y/\log y)\)</span>, and <span class="math" data-tex="\(P(y)\ll y/\log y\)">\(P(y)\ll y/\log y\)</span> for <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 1.2, <span class="math" data-tex="\(P(y)=2\pi(y;3,1)+\pi(\sqrt y;3,2)\)">\(P(y)=2\pi(y;3,1)+\pi(\sqrt y;3,2)\)</span>. Theorem 3.1 of the lesson on primes in progressions, for the fixed modulus <span class="math" data-tex="\(3\)">\(3\)</span>, gives <span class="math" data-tex="\(\theta(y;3,1)=y/2+o(y)\)">\(\theta(y;3,1)=y/2+o(y)\)</span>: its possible exceptional term involves <span class="math" data-tex="\(y^{\beta_1}\)">\(y^{\beta_1}\)</span> with a fixed <span class="math" data-tex="\(\beta_1&lt;1\)">\(\beta_1&lt;1\)</span>. Partial summation gives <span class="math" data-tex="\(\pi(y;3,1)=y/(2\log y)+o(y/\log y)\)">\(\pi(y;3,1)=y/(2\log y)+o(y/\log y)\)</span>, and <span class="math" data-tex="\(\pi(\sqrt y;3,2)\le\sqrt y\)">\(\pi(\sqrt y;3,2)\le\sqrt y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.3 (the model).</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{N(\pi)\le X}N(\pi)^{-1/6}&amp;=\frac65\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+o\Bigl(\frac{X^{5/6}}{\log X}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{N(\pi)\le X}N(\pi)^{-1/6}&amp;=\frac65\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+o\Bigl(\frac{X^{5/6}}{\log X}\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> By partial summation,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}N(\pi)^{-1/6}\\
+&amp;=\frac{P(X)}{X^{1/6}}+\frac16\int_2^XP(y)\,y^{-7/6}\,dy .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}N(\pi)^{-1/6}\\
+&amp;=\frac{P(X)}{X^{1/6}}+\frac16\int_2^XP(y)\,y^{-7/6}\,dy .
+\end{aligned}
+\]</span>
+The first term is <span class="math" data-tex="\(X^{5/6}/\log X+o(X^{5/6}/\log X)\)">\(X^{5/6}/\log X+o(X^{5/6}/\log X)\)</span> by Lemma 4.2. In the integral, Lemma 4.2 replaces <span class="math" data-tex="\(P(y)\)">\(P(y)\)</span> by <span class="math" data-tex="\(y/\log y\)">\(y/\log y\)</span> with an error <span class="math" data-tex="\(o(X^{5/6}/\log X)\)">\(o(X^{5/6}/\log X)\)</span> in total, and integration by parts gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_2^X\frac{y^{-1/6}}{\log y}\,dy&amp;=\frac65\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+O\Bigl(\frac{X^{5/6}}{\log^2X}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_2^X\frac{y^{-1/6}}{\log y}\,dy&amp;=\frac65\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+O\Bigl(\frac{X^{5/6}}{\log^2X}\Bigr).
+\end{aligned}
+\]</span>
+The two contributions add up to <span class="math" data-tex="\((1+\tfrac15)X^{5/6}/\log X\)">\((1+\tfrac15)X^{5/6}/\log X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So Theorem 4.1 is equivalent to the comparison
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}\Bigl(G(\pi)-\frac{c_*}{N(\pi)^{1/6}}\Bigr)\\
+&amp;\qquad=o\Bigl(\frac{X^{5/6}}{\log X}\Bigr).\qquad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}\Bigl(G(\pi)-\frac{c_*}{N(\pi)^{1/6}}\Bigr)\\
+&amp;\qquad=o\Bigl(\frac{X^{5/6}}{\log X}\Bigr).\qquad(4.1)
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(c_*N(\pi)^{-1/6}\)">\(c_*N(\pi)^{-1/6}\)</span> is the <em>model</em> for <span class="math" data-tex="\(G(\pi)\)">\(G(\pi)\)</span>. The course proves (4.1), on dyadic ranges <span class="math" data-tex="\(X&lt;N(\pi)\le2X\)">\(X&lt;N(\pi)\le2X\)</span>.</p>
+<p><strong>Corollary 4.4.</strong> (a)
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}G(\pi)\log N(\pi)\\
+&amp;\qquad=\frac65\,c_*X^{5/6}+o(X^{5/6}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}G(\pi)\log N(\pi)\\
+&amp;\qquad=\frac65\,c_*X^{5/6}+o(X^{5/6}).
+\end{aligned}
+\]</span></p>
+<p>(b) Summing over all rational primes,
+<span class="math math-display" data-tex="\[
+\sum_{p\le X}\frac{S_p}{2\sqrt p}=\frac35\,c_*\,\frac{X^{5/6}}{\log X}
++o\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\]">\[
+\sum_{p\le X}\frac{S_p}{2\sqrt p}=\frac35\,c_*\,\frac{X^{5/6}}{\log X}
++o\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\]</span>
+where <span class="math" data-tex="\(\frac35c_*=(2\pi)^{2/3}/(5\,\Gamma(2/3))\)">\(\frac35c_*=(2\pi)^{2/3}/(5\,\Gamma(2/3))\)</span>.</p>
+<p><strong>Proof.</strong> (a) Let <span class="math" data-tex="\(A(y)\)">\(A(y)\)</span> be the sum in Theorem 4.1. Partial summation gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}G(\pi)\log N(\pi)\\
+&amp;\qquad=A(X)\log X-\int_2^XA(y)\,\frac{dy}y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}G(\pi)\log N(\pi)\\
+&amp;\qquad=A(X)\log X-\int_2^XA(y)\,\frac{dy}y .
+\end{aligned}
+\]</span>
+By Theorem 4.1, <span class="math" data-tex="\(A(X)\log X=\frac65c_*X^{5/6}+o(X^{5/6})\)">\(A(X)\log X=\frac65c_*X^{5/6}+o(X^{5/6})\)</span> and <span class="math" data-tex="\(|A(y)|\ll y^{5/6}/\log y\)">\(|A(y)|\ll y^{5/6}/\log y\)</span> for <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>, so the integral is <span class="math" data-tex="\(O(X^{5/6}/\log X)\)">\(O(X^{5/6}/\log X)\)</span>.</p>
+<p>(b) If <span class="math" data-tex="\(p\not\equiv1\pmod3\)">\(p\not\equiv1\pmod3\)</span>, cubing permutes <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> and <span class="math" data-tex="\(S_p=\sum_xe(x/p)=0\)">\(S_p=\sum_xe(x/p)=0\)</span>. For <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>, Proposition 3.2 gives <span class="math" data-tex="\(S_p/(2\sqrt p)=(G(\pi)+G(\bar\pi))/2\)">\(S_p/(2\sqrt p)=(G(\pi)+G(\bar\pi))/2\)</span>. The primes <span class="math" data-tex="\(-q\)">\(-q\)</span> with <span class="math" data-tex="\(q^2\le X\)">\(q^2\le X\)</span> number at most <span class="math" data-tex="\(\sqrt X\)">\(\sqrt X\)</span>, and <span class="math" data-tex="\(|G|=1\)">\(|G|=1\)</span> at each of them. Hence the left side equals <span class="math" data-tex="\(\frac12A(X)+O(\sqrt X)\)">\(\frac12A(X)+O(\sqrt X)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 4.5 (normalizations).</strong> The factor <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> between the coefficients in Theorem 4.1 and Corollary 4.4(b) comes from the two primary primes above each split rational prime. In the paper of Dunn and Radziwiłł [DR], the asymptotic for the sum over primary primes, displayed after their equation (1.8), carries the coefficient <span class="math" data-tex="\(\frac65c_*\)">\(\frac65c_*\)</span>, in agreement with Theorem 4.1. Their statement of Patterson's conjecture in Section 1.1 and their Theorem 1.1 attach that same coefficient to the rational sums of <span class="math" data-tex="\(S_p/(2\sqrt p)\)">\(S_p/(2\sqrt p)\)</span>. For those sums the coefficient is half as large: the constant <span class="math" data-tex="\(2(2\pi)^{2/3}/(5\Gamma(2/3))\)">\(2(2\pi)^{2/3}/(5\Gamma(2/3))\)</span> of their conjecture should be <span class="math" data-tex="\((2\pi)^{2/3}/(5\Gamma(2/3))\)">\((2\pi)^{2/3}/(5\Gamma(2/3))\)</span>, and the factor <span class="math" data-tex="\(c_*\int W(x)x^{-1/6}dx\)">\(c_*\int W(x)x^{-1/6}dx\)</span> in their Theorem 1.1 should be <span class="math" data-tex="\(\frac12c_*\int W(x)x^{-1/6}dx\)">\(\frac12c_*\int W(x)x^{-1/6}dx\)</span>. Direct computation agrees with Corollary 4.4(b). Let <span class="math" data-tex="\(R(X)\)">\(R(X)\)</span> be the sum of <span class="math" data-tex="\(S_p/(2\sqrt p)\)">\(S_p/(2\sqrt p)\)</span> over <span class="math" data-tex="\(p\le X\)">\(p\le X\)</span>, and let <span class="math" data-tex="\(M(X)=c_*\sum p^{-1/6}\)">\(M(X)=c_*\sum p^{-1/6}\)</span> over the primes <span class="math" data-tex="\(p\le X\)">\(p\le X\)</span> with <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span>, the model behind Corollary 4.4(b). Computing <span class="math" data-tex="\(S_p\)">\(S_p\)</span> directly from its definition gives</p>
+<ul>
+<li><span class="math" data-tex="\(X=10^4\)">\(X=10^4\)</span>: <span class="math" data-tex="\(R=122.9\)">\(R=122.9\)</span>, <span class="math" data-tex="\(M=135.9\)">\(M=135.9\)</span>;</li>
+<li><span class="math" data-tex="\(X=10^5\)">\(X=10^5\)</span>: <span class="math" data-tex="\(R=718.1\)">\(R=718.1\)</span>, <span class="math" data-tex="\(M=722.9\)">\(M=722.9\)</span>;</li>
+<li><span class="math" data-tex="\(X=2\cdot10^5\)">\(X=2\cdot10^5\)</span>: <span class="math" data-tex="\(R=1160.2\)">\(R=1160.2\)</span>, <span class="math" data-tex="\(M=1208.2\)">\(M=1208.2\)</span>.</li>
+</ul>
+<p>At <span class="math" data-tex="\(X=2\cdot10^5\)">\(X=2\cdot10^5\)</span> the square root of the number of primes <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span> below <span class="math" data-tex="\(X\)">\(X\)</span>, the size of a random fluctuation, is about <span class="math" data-tex="\(95\)">\(95\)</span>. The doubled coefficient would predict <span class="math" data-tex="\(R\approx2M\)">\(R\approx2M\)</span>, about <span class="math" data-tex="\(2416\)">\(2416\)</span> there.</p>
+<p><strong>Theorem 4.6 (angular modes).</strong> For every fixed integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}\Bigl(\frac\pi{|\pi|}\Bigr)^{\ell}\Bigl(G(\pi)-\frac{c_*}{N(\pi)^{1/6}}\Bigr)\\
+&amp;\qquad=o_\ell\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{N(\pi)\le X}\Bigl(\frac\pi{|\pi|}\Bigr)^{\ell}\Bigl(G(\pi)-\frac{c_*}{N(\pi)^{1/6}}\Bigr)\\
+&amp;\qquad=o_\ell\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\end{aligned}
+\]</span>
+and for <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span> the sum of <span class="math" data-tex="\((\pi/|\pi|)^\ell G(\pi)\)">\((\pi/|\pi|)^\ell G(\pi)\)</span> over <span class="math" data-tex="\(N(\pi)\le X\)">\(N(\pi)\le X\)</span> is <span class="math" data-tex="\(o_\ell(X^{5/6}/\log X)\)">\(o_\ell(X^{5/6}/\log X)\)</span>.</p>
+<p><strong>Corollary 4.7 (powers).</strong> For every fixed integer <span class="math" data-tex="\(k\)">\(k\)</span> not divisible by <span class="math" data-tex="\(3\)">\(3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{N(\pi)\le X}G(\pi)^k
+&amp;=\mathbf 1_{k=\pm1}\,\frac65\,c_*\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+o_k\Bigl(\frac{X^{5/6}}{\log X}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{N(\pi)\le X}G(\pi)^k
+&amp;=\mathbf 1_{k=\pm1}\,\frac65\,c_*\,\frac{X^{5/6}}{\log X}\\
+&amp;\quad+o_k\Bigl(\frac{X^{5/6}}{\log X}\Bigr).
+\end{aligned}
+\]</span></p>
+<p>Theorem 4.6 and Corollary 4.7 are proved in the last lesson, <a href="angular-modes-and-powers-of-gauss-sums.html"><em>Angular modes and powers of Gauss sums</em></a>. Patterson also conjectured the bound <span class="math" data-tex="\(o(X^{5/6}/\log X)\)">\(o(X^{5/6}/\log X)\)</span> for every fixed power <span class="math" data-tex="\(k\notin\{0,\pm1\}\)">\(k\notin\{0,\pm1\}\)</span>. Corollary 4.7 proves the cases <span class="math" data-tex="\(3\nmid k\)">\(3\nmid k\)</span>. For <span class="math" data-tex="\(k=3m\)">\(k=3m\)</span> with <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, Theorem 3.3 gives <span class="math" data-tex="\(G(\pi)^k=(-1)^m(\pi/|\pi|)^m\)">\(G(\pi)^k=(-1)^m(\pi/|\pi|)^m\)</span>. The conjecture then concerns the angles of the primes themselves at the scale <span class="math" data-tex="\(X^{5/6}/\log X\)">\(X^{5/6}/\log X\)</span>, which is beyond the methods of this course.</p>
+<h2 id="5-the-route-through-the-course">5. The route through the course</h2>
+<p>The comparison (4.1) is proved on the dyadic ranges <span class="math" data-tex="\(X&lt;N(\pi)\le2X\)">\(X&lt;N(\pi)\le2X\)</span>.</p>
+<ul>
+<li><em>Large sieves for cubic characters</em> (lesson 2) collects the tools: lattice Poisson summation, the ordinary character large sieve, Heath-Brown's cubic large sieve, and Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-functions of <span class="math" data-tex="\(K\)">\(K\)</span>.</li>
+<li><em>The level formula and Type I sums</em> (lesson 3) evaluates sums <span class="math" data-tex="\(\sum_ra_r\sum_uG(ru)W(N(u)/U)\)">\(\sum_ra_r\sum_uG(ru)W(N(u)/U)\)</span> with short <span class="math" data-tex="\(r\)">\(r\)</span> by the level Voronoi formula of Dunn and Radziwiłł. Its main term is exactly that of the model.</li>
+<li><em>Character moments at two exceptional configurations</em> (lesson 4) and <em>Corrected dispersion</em> (lesson 5) bound bilinear sums <span class="math" data-tex="\(\sum\alpha_a\beta_bG(ab)\)">\(\sum\alpha_a\beta_bG(ab)\)</span>. The square is opened and Poisson summation is applied; the frequencies that are cubes reproduce the square of the model and cancel against it.</li>
+<li><em>An exact decomposition of the prime sum</em> (lesson 6) writes the prime sum as a combination of Type I and bilinear sums with independent coefficients. One configuration, a product of three primes of norm close to <span class="math" data-tex="\(X^{1/3}\)">\(X^{1/3}\)</span>, admits no power saving and is controlled by the sparsity of the primes.</li>
+<li><em>Bilinear sums and the sharp cutoff</em> (lesson 7) assembles the estimates, at Mellin heights up to <span class="math" data-tex="\(X^{1/6+\rho}\)">\(X^{1/6+\rho}\)</span>, and proves Theorem 4.1.</li>
+<li><em>Angular modes and powers of Gauss sums</em> (lesson 8) proves Theorem 4.6 and Corollary 4.7.</li>
+</ul>
+<p>Three published theorems are used without proof in the programme. Each is stated in full where it is used:</p>
+<ul>
+<li>(N1) Heath-Brown's cubic large sieve, in the form of [DR], Theorem 9.1;</li>
+<li>(N2) the level Voronoi formula of Dunn and Radziwiłł, [DR], Proposition 5.3;</li>
+<li>(N3) prime number theorems for Hecke characters of <span class="math" data-tex="\(K\)">\(K\)</span> whose conductor is at most a power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>, from the work of Thorner and Zaman and of Kaneko and Thorner.</li>
+</ul>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Compute <span class="math" data-tex="\(G(-2)\)">\(G(-2)\)</span> from the definition, and compare with Theorem 3.3.</p>
+<p><strong>6.2.</strong> Show that <span class="math" data-tex="\(1+3\omega\)">\(1+3\omega\)</span> and <span class="math" data-tex="\(-2-3\omega\)">\(-2-3\omega\)</span> are the primary primes of norm <span class="math" data-tex="\(7\)">\(7\)</span>. For <span class="math" data-tex="\(\pi=1+3\omega\)">\(\pi=1+3\omega\)</span>, find the residue of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in <span class="math" data-tex="\(\{0,\ldots,6\}\)">\(\{0,\ldots,6\}\)</span>, the values of the character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of Proposition 3.2 on <span class="math" data-tex="\(\mathbb F_7^\times\)">\(\mathbb F_7^\times\)</span>, and the Jacobi sum <span class="math" data-tex="\(J\)">\(J\)</span>. Check that <span class="math" data-tex="\(J=-\pi\)">\(J=-\pi\)</span>.</p>
+<p><strong>6.3.</strong> For <span class="math" data-tex="\(p=7\)">\(p=7\)</span> and <span class="math" data-tex="\(\pi=1+3\omega\)">\(\pi=1+3\omega\)</span>, compute <span class="math" data-tex="\(S_7\)">\(S_7\)</span>, and determine which of the three cube roots of <span class="math" data-tex="\(-\pi/|\pi|\)">\(-\pi/|\pi|\)</span> is <span class="math" data-tex="\(G(\pi)\)">\(G(\pi)\)</span>.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(b\)">\(b\)</span> be primary and squarefree, and <span class="math" data-tex="\(h\in\mathcal O\)">\(h\in\mathcal O\)</span>. Prove that
+<span class="math math-display" data-tex="\[
+\sum_{v\bmod b}\chi_b(v)\,e\Bigl(\operatorname{Tr}\frac{hv}b\Bigr)=\overline{\chi_b(h)}\,g(b).
+\]">\[
+\sum_{v\bmod b}\chi_b(v)\,e\Bigl(\operatorname{Tr}\frac{hv}b\Bigr)=\overline{\chi_b(h)}\,g(b).
+\]</span></p>
+<p><strong>6.5.</strong> Prove the identity <span class="math" data-tex="\(P(y)=2\pi(y;3,1)+\pi(\sqrt y;3,2)\)">\(P(y)=2\pi(y;3,1)+\pi(\sqrt y;3,2)\)</span> used in Lemma 4.2, including the treatment of the prime above <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Here <span class="math" data-tex="\(\mathcal O/2\mathcal O=\mathbb F_4=\{0,1,\omega,\omega^2\}\)">\(\mathcal O/2\mathcal O=\mathbb F_4=\{0,1,\omega,\omega^2\}\)</span> and <span class="math" data-tex="\(N(-2)=4\)">\(N(-2)=4\)</span>, so <span class="math" data-tex="\(\chi_{-2}(v)\equiv v\pmod2\)">\(\chi_{-2}(v)\equiv v\pmod2\)</span>: the character sends <span class="math" data-tex="\(1,\omega,\omega^2\)">\(1,\omega,\omega^2\)</span> to themselves. Since <span class="math" data-tex="\(\operatorname{Tr}(v/(-2))=-\operatorname{Tr}(v)/2\)">\(\operatorname{Tr}(v/(-2))=-\operatorname{Tr}(v)/2\)</span> with <span class="math" data-tex="\(\operatorname{Tr}(1)=2\)">\(\operatorname{Tr}(1)=2\)</span> and <span class="math" data-tex="\(\operatorname{Tr}(\omega)=\operatorname{Tr}(\omega^2)=-1\)">\(\operatorname{Tr}(\omega)=\operatorname{Tr}(\omega^2)=-1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(-2)&amp;=1\cdot e(-1)+\omega\, e\bigl(\tfrac12\bigr)\\
+&amp;\quad+\omega^2e\bigl(\tfrac12\bigr)\\
+&amp;=1-\omega-\omega^2=2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+g(-2)&amp;=1\cdot e(-1)+\omega\, e\bigl(\tfrac12\bigr)\\
+&amp;\quad+\omega^2e\bigl(\tfrac12\bigr)\\
+&amp;=1-\omega-\omega^2=2,
+\end{aligned}
+\]</span>
+so <span class="math" data-tex="\(G(-2)=1\)">\(G(-2)=1\)</span>. Theorem 3.3 gives <span class="math" data-tex="\(G(-2)=\chi_{-2}(\lambda)\)">\(G(-2)=\chi_{-2}(\lambda)\)</span>, and <span class="math" data-tex="\(\lambda=1+2\omega\equiv1\pmod2\)">\(\lambda=1+2\omega\equiv1\pmod2\)</span>, so again <span class="math" data-tex="\(G(-2)=1\)">\(G(-2)=1\)</span>; also <span class="math" data-tex="\(-(-2)/|-2|=1=G(-2)^3\)">\(-(-2)/|-2|=1=G(-2)^3\)</span>.</p>
+<p><strong>6.2.</strong> An element <span class="math" data-tex="\(a+b\omega\)">\(a+b\omega\)</span> is primary when <span class="math" data-tex="\(a\equiv1\)">\(a\equiv1\)</span> and <span class="math" data-tex="\(b\equiv0\pmod3\)">\(b\equiv0\pmod3\)</span>. Then <span class="math" data-tex="\(a^2-ab+b^2=7\)">\(a^2-ab+b^2=7\)</span> forces <span class="math" data-tex="\(|b|\le3\)">\(|b|\le3\)</span>, and the solutions are <span class="math" data-tex="\(1+3\omega\)">\(1+3\omega\)</span> and <span class="math" data-tex="\(-2-3\omega=\overline{1+3\omega}\)">\(-2-3\omega=\overline{1+3\omega}\)</span>. From <span class="math" data-tex="\(1+3\omega\equiv0\)">\(1+3\omega\equiv0\)</span> we get <span class="math" data-tex="\(\omega\equiv-3^{-1}\equiv-5\equiv2\pmod\pi\)">\(\omega\equiv-3^{-1}\equiv-5\equiv2\pmod\pi\)</span>; indeed <span class="math" data-tex="\(2^2+2+1=7\)">\(2^2+2+1=7\)</span>. The character is <span class="math" data-tex="\(\psi(x)\equiv x^2\pmod 7\)">\(\psi(x)\equiv x^2\pmod 7\)</span>, read as a cube root of unity through <span class="math" data-tex="\(1\mapsto1\)">\(1\mapsto1\)</span>, <span class="math" data-tex="\(2\mapsto\omega\)">\(2\mapsto\omega\)</span>, <span class="math" data-tex="\(4\mapsto\omega^2\)">\(4\mapsto\omega^2\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi(1)=\psi(6)=1,\\
+\psi(3)=\psi(4)=\omega,\\
+\psi(2)=\psi(5)=\omega^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\psi(1)=\psi(6)=1,\\
+\psi(3)=\psi(4)=\omega,\\
+\psi(2)=\psi(5)=\omega^2 .
+\end{gathered}
+\]</span>
+The terms <span class="math" data-tex="\(\psi(x)\psi(1-x)\)">\(\psi(x)\psi(1-x)\)</span> for <span class="math" data-tex="\(x=2,3,4,5,6\)">\(x=2,3,4,5,6\)</span> are <span class="math" data-tex="\(\omega^2,1,\omega^2,1,\omega^2\)">\(\omega^2,1,\omega^2,1,\omega^2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J&amp;=2+3\omega^2=2-3-3\omega\\
+&amp;=-(1+3\omega).
+\end{aligned}
+\]">\[
+\begin{aligned}
+J&amp;=2+3\omega^2=2-3-3\omega\\
+&amp;=-(1+3\omega).
+\end{aligned}
+\]</span></p>
+<p><strong>6.3.</strong> The cubes modulo <span class="math" data-tex="\(7\)">\(7\)</span> of <span class="math" data-tex="\(1,\ldots,6\)">\(1,\ldots,6\)</span> are <span class="math" data-tex="\(1,1,6,1,6,6\)">\(1,1,6,1,6,6\)</span>, so <span class="math" data-tex="\(S_7=1+6\cos(2\pi/7)=4.74094\ldots\)">\(S_7=1+6\cos(2\pi/7)=4.74094\ldots\)</span> and <span class="math" data-tex="\(\operatorname{Re}G(\pi)=S_7/(2\sqrt7)=0.89595\ldots\)">\(\operatorname{Re}G(\pi)=S_7/(2\sqrt7)=0.89595\ldots\)</span>. The number <span class="math" data-tex="\(-\pi/|\pi|=(\frac12-\frac{3\sqrt3}2i)/\sqrt7\)">\(-\pi/|\pi|=(\frac12-\frac{3\sqrt3}2i)/\sqrt7\)</span> has argument <span class="math" data-tex="\(-1.38067\ldots\)">\(-1.38067\ldots\)</span>. Its cube roots have arguments <span class="math" data-tex="\(-0.46022\ldots\)">\(-0.46022\ldots\)</span> and <span class="math" data-tex="\(-0.46022\ldots\pm2\pi/3\)">\(-0.46022\ldots\pm2\pi/3\)</span>, with cosines <span class="math" data-tex="\(0.89595\ldots\)">\(0.89595\ldots\)</span>, <span class="math" data-tex="\(-0.06333\ldots\)">\(-0.06333\ldots\)</span> and <span class="math" data-tex="\(-0.83262\ldots\)">\(-0.83262\ldots\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;G(1+3\omega)=e^{-0.46022\ldots i}\\
+&amp;\qquad=0.89595\ldots-0.44414\ldots i .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;G(1+3\omega)=e^{-0.46022\ldots i}\\
+&amp;\qquad=0.89595\ldots-0.44414\ldots i .
+\end{aligned}
+\]</span></p>
+<p><strong>6.4.</strong> First let <span class="math" data-tex="\(b=\pi\)">\(b=\pi\)</span> be prime. If <span class="math" data-tex="\(\pi\mid h\)">\(\pi\mid h\)</span>, the left side is <span class="math" data-tex="\(\sum_v\chi_\pi(v)=0\)">\(\sum_v\chi_\pi(v)=0\)</span>, as is the right side. Otherwise the substitution <span class="math" data-tex="\(v\mapsto h^{-1}v\)">\(v\mapsto h^{-1}v\)</span> multiplies the sum by <span class="math" data-tex="\(\chi_\pi(h^{-1})=\overline{\chi_\pi(h)}\)">\(\chi_\pi(h^{-1})=\overline{\chi_\pi(h)}\)</span> and turns it into <span class="math" data-tex="\(g(\pi)\)">\(g(\pi)\)</span>. For <span class="math" data-tex="\(b=ac\)">\(b=ac\)</span> with coprime <span class="math" data-tex="\(a,c\)">\(a,c\)</span>, write <span class="math" data-tex="\(v=cx+ay\)">\(v=cx+ay\)</span> as in Proposition 3.1(c). The left side becomes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\chi_a(c)\chi_c(a)\sum_x\chi_a(x)e\Bigl(\operatorname{Tr}\frac{hx}a\Bigr)\\
+&amp;\qquad\cdot\sum_y\chi_c(y)e\Bigl(\operatorname{Tr}\frac{hy}c\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\chi_a(c)\chi_c(a)\sum_x\chi_a(x)e\Bigl(\operatorname{Tr}\frac{hx}a\Bigr)\\
+&amp;\qquad\cdot\sum_y\chi_c(y)e\Bigl(\operatorname{Tr}\frac{hy}c\Bigr).
+\end{aligned}
+\]</span>
+By induction this is <span class="math" data-tex="\(\chi_a(c)\chi_c(a)\overline{\chi_a(h)\chi_c(h)}g(a)g(c)\)">\(\chi_a(c)\chi_c(a)\overline{\chi_a(h)\chi_c(h)}g(a)g(c)\)</span>, which equals <span class="math" data-tex="\(\overline{\chi_b(h)}g(b)\)">\(\overline{\chi_b(h)}g(b)\)</span> by the identity <span class="math" data-tex="\(g(ac)=\chi_a(c)\chi_c(a)g(a)g(c)\)">\(g(ac)=\chi_a(c)\chi_c(a)g(a)g(c)\)</span> from the proof of Proposition 3.1(c).</p>
+<p><strong>6.5.</strong> Primary primes correspond to the prime ideals prime to <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(N(\pi)\le y\)">\(N(\pi)\le y\)</span> is a condition on the ideal. By Lemma 1.2, each prime <span class="math" data-tex="\(p\equiv1\pmod3\)">\(p\equiv1\pmod3\)</span> with <span class="math" data-tex="\(p\le y\)">\(p\le y\)</span> gives two ideals of norm <span class="math" data-tex="\(p\)">\(p\)</span>, and each prime <span class="math" data-tex="\(q\equiv2\pmod3\)">\(q\equiv2\pmod3\)</span> with <span class="math" data-tex="\(q^2\le y\)">\(q^2\le y\)</span> gives one ideal of norm <span class="math" data-tex="\(q^2\)">\(q^2\)</span>. The ideal <span class="math" data-tex="\((\lambda)\)">\((\lambda)\)</span> is not prime to <span class="math" data-tex="\(3\)">\(3\)</span> and is not counted, and there are no other prime ideals.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-023] OpenAI, <em>An unconditional first moment for cubic Gauss sums</em>, OpenAI Math Release preprint, 25 September 2026, Section 1 (the theorem, the conversion to rational primes, the history and the plan of proof), Section 2 (the Gauss-sum identities at its beginning) and Appendix A (the angular theorem and the powers). https://github.com/openai/math/tree/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026</li>
+<li>[DR] A. Dunn and M. Radziwiłł, <em>Bias in cubic Gauss sums: Patterson's conjecture</em>, arXiv:2109.07463v3 (2024), published in Ann. of Math. 200 (2024). Section 1 surveys the history from Kummer to Heath-Brown, and equation (1.8) is the cube identity of Theorem 3.3. https://arxiv.org/abs/2109.07463v3</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

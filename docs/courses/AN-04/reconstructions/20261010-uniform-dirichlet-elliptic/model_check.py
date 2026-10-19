@@ -40,6 +40,6 @@ for av in [-s.Rational(1,4),0,s.Rational(1,4)]:
   check(f'Exact figure level a={av},theta={tv}',ss**2+(1+av)*xx**2-1)
 root=Path(__file__).resolve().parent
 out={'recorded_utc':datetime.now(timezone.utc).isoformat(),'passed':True,'source_sha256':hashlib.sha256((root/'uniform-dirichlet-estimates-in-the-boundary-elliptic-region.md').read_bytes()).hexdigest(),'total_cases':len(rows),'exact_algebraic_checks':len(rows),'numerical_checks':0,
-'cases':rows,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'proof_completeness_inferred_from_checks':False}
+'cases':rows,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'scope':'The recorded calculations and diagrams concern the stated examples. The general analytic assertions use the written arguments.'}
 (root/'model-check.json').write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'exact_checks':len(rows)}))

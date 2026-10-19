@@ -1,0 +1,401 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bilinear sums and the sharp cutoff</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (The first moment of cubic Gauss sums)</a><a href="an-exact-decomposition-of-the-prime-sum.html">Previous lesson</a><a href="angular-modes-and-powers-of-gauss-sums.html">Next lesson</a><a href="src/bilinear-sums-and-the-sharp-cutoff.md">Editable source</a></nav><main><article><h1 id="bilinear-sums-and-the-sharp-cutoff">Bilinear sums and the sharp cutoff</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson assembles the proof of the first moment. The sharp condition <span class="math" data-tex="\(X&lt;N(\pi)\le2X\)">\(X&lt;N(\pi)\le2X\)</span> is replaced by a smooth envelope times a Fourier integral over heights <span class="math" data-tex="\(|t|\le X^{1/6+\rho}\)">\(|t|\le X^{1/6+\rho}\)</span>, at a cost of <span class="math" data-tex="\(X^{5/6-\rho+\epsilon}\)">\(X^{5/6-\rho+\epsilon}\)</span>. At low heights, <span class="math" data-tex="\(|t|\le L^{C_t}\)">\(|t|\le L^{C_t}\)</span>, the difference between the Gauss sums and the model is decomposed and estimated piece by piece. The bilinear pieces are bounded with the corrected dispersion of the lesson on corrected dispersion, and the three-prime transition with its uncorrected form. At large heights the model is removed before decomposition by a mean value estimate. The Gauss sums alone are then decomposed, and the bilinear pieces are bounded by localizing both norm variables in cells. Near the product boundary the localized diagonal is small. Away from it, integration by parts in the height gives the saving.</p>
+<p>Everything is done for a fixed angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with <span class="math" data-tex="\(\mathcal D_\ell\)">\(\mathcal D_\ell\)</span> and <span class="math" data-tex="\(G_\ell\)">\(G_\ell\)</span> as in the lesson on the level formula; <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> gives Theorem 4.1 of the first lesson.</p>
+<p><strong>Prerequisites.</strong> The lessons <a href="large-sieves-for-cubic-characters.html"><em>Large sieves for cubic characters</em></a>, <a href="the-level-formula-and-type-i-sums.html"><em>The level formula and Type I sums</em></a>, <a href="corrected-dispersion.html"><em>Corrected dispersion</em></a> and <a href="an-exact-decomposition-of-the-prime-sum.html"><em>An exact decomposition of the prime sum</em></a>.</p>
+<h2 id="1-ranges">1. Ranges</h2>
+<p>Throughout, <span class="math" data-tex="\(L=\log X\)">\(L=\log X\)</span>, <span class="math" data-tex="\(AB\asymp X\)">\(AB\asymp X\)</span>, <span class="math" data-tex="\(H=B^2/A\)">\(H=B^2/A\)</span> and <span class="math" data-tex="\(\mathcal Q=ABH^{1/3}\)">\(\mathcal Q=ABH^{1/3}\)</span>, so that <span class="math" data-tex="\(A\mathcal Q=(AB)^{5/3}\asymp X^{5/3}\)">\(A\mathcal Q=(AB)^{5/3}\asymp X^{5/3}\)</span>. Coefficients are divisor-bounded, and their moment bounds contribute fixed powers of <span class="math" data-tex="\(L\)">\(L\)</span>. Both terms of <span class="math" data-tex="\(\mathcal D_\ell(n)\)">\(\mathcal D_\ell(n)\)</span> vanish unless <span class="math" data-tex="\(n\)">\(n\)</span> is squarefree, so separate squarefree restrictions may be imposed on <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> in a sum of <span class="math" data-tex="\(\mathcal D_\ell(ab)\)">\(\mathcal D_\ell(ab)\)</span>. Let <span class="math" data-tex="\(V\)">\(V\)</span> be a fixed smooth function with compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. The decomposition of the previous lesson supplies the following ranges:</p>
+<ul>
+<li><span class="math" data-tex="\(|t|\le L^{C_t}\)">\(|t|\le L^{C_t}\)</span>: Type I with <span class="math" data-tex="\(R\le X^{0.40}\)">\(R\le X^{0.40}\)</span>; bilinear with <span class="math" data-tex="\(c_0X^{1/3}\le B\ll X^{1/2}\)">\(c_0X^{1/3}\le B\ll X^{1/2}\)</span>.</li>
+<li><span class="math" data-tex="\(L^{C_t}\le T\ll X^{0.01}\)">\(L^{C_t}\le T\ll X^{0.01}\)</span>: the same ranges.</li>
+<li><span class="math" data-tex="\(X^{0.01}\ll T\ll X^{1/6+\rho}\)">\(X^{0.01}\ll T\ll X^{1/6+\rho}\)</span>: Type I with <span class="math" data-tex="\(R\le X^{1/3-\kappa/2}\)">\(R\le X^{1/3-\kappa/2}\)</span>; bilinear with <span class="math" data-tex="\(X^{1/3-3\kappa}\le B\ll X^{1/2}\)">\(X^{1/3-3\kappa}\le B\ll X^{1/2}\)</span>.</li>
+</ul>
+<h2 id="2-bilinear-sums-at-low-heights">2. Bilinear sums at low heights</h2>
+<p><strong>Proposition 2.1 (low-height bilinear comparison).</strong> Let <span class="math" data-tex="\(X^{0.32}\le B\ll\sqrt X\)">\(X^{0.32}\le B\ll\sqrt X\)</span> and <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>. Suppose <span class="math" data-tex="\(\beta\)">\(\beta\)</span> satisfies the structural hypotheses of Proposition 1.1 of the lesson on corrected dispersion, is rough, and has property (SW). For every fixed <span class="math" data-tex="\(D,U&gt;0\)">\(D,U&gt;0\)</span>, the parameters of that proposition can be chosen so that, uniformly for <span class="math" data-tex="\(|t|\le L^U\)">\(|t|\le L^U\)</span> and <span class="math" data-tex="\(H\ge L^{C_g}\)">\(H\ge L^{C_g}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{a,b}\alpha_a\beta_b\,\mathcal D_\ell(ab)\,N(ab)^{it}\\
+&amp;\qquad\cdot V\Bigl(\frac{N(ab)}X\Bigr)\ll X^{5/6}L^{-D}.\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{a,b}\alpha_a\beta_b\,\mathcal D_\ell(ab)\,N(ab)^{it}\\
+&amp;\qquad\cdot V\Bigl(\frac{N(ab)}X\Bigr)\ll X^{5/6}L^{-D}.\quad(2.1)
+\end{aligned}
+\]</span>
+Moreover, suppose <span class="math" data-tex="\(b\)">\(b\)</span> is a single prime, <span class="math" data-tex="\(a\)">\(a\)</span> a product of two primes, each of the three primes in its own smooth dyad of length <span class="math" data-tex="\(X^{1/3}L^{O(1)}\)">\(X^{1/3}L^{O(1)}\)</span>, with bounded weights. If <span class="math" data-tex="\(1\ll H&lt;L^{C_g}\)">\(1\ll H&lt;L^{C_g}\)</span>, then the left side of (2.1) is
+<span class="math math-display" data-tex="\[
+O\bigl(X^{5/6}L^{-3/2}\bigr),
+\tag{2.2}
+\]">\[
+O\bigl(X^{5/6}L^{-3/2}\bigr),
+\tag{2.2}
+\]</span>
+uniformly for the families of dyads produced by the decomposition.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\theta_\ell\)">\(\theta_\ell\)</span> into the coefficients: <span class="math" data-tex="\(\mathcal D_\ell(ab)\)">\(\mathcal D_\ell(ab)\)</span> is <span class="math" data-tex="\(\mathcal D_0(ab)\)">\(\mathcal D_0(ab)\)</span> with <span class="math" data-tex="\(\alpha_a,\beta_b\)">\(\alpha_a,\beta_b\)</span> replaced by <span class="math" data-tex="\(\theta_\ell(a)\alpha_a,\theta_\ell(b)\beta_b\)">\(\theta_\ell(a)\alpha_a,\theta_\ell(b)\beta_b\)</span>, and the second is an admissible prime convolution with angular order <span class="math" data-tex="\(\ell\)">\(\ell\)</span> when <span class="math" data-tex="\(B&gt;X^{0.40}\)">\(B&gt;X^{0.40}\)</span>. Omit the envelope first. Proposition 3.1(c) of the first lesson gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{a,b}\alpha_a\beta_bG(ab)N(ab)^{it}\\
+&amp;\qquad=\sum_a\alpha_aG(a)N(a)^{it}F_t(a)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{a,b}\alpha_a\beta_bG(ab)N(ab)^{it}\\
+&amp;\qquad=\sum_a\alpha_aG(a)N(a)^{it}F_t(a)
+\end{aligned}
+\]</span>
+in the notation of the lesson on corrected dispersion. Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;F_t(a)=c_*\overline{G(a)}N(a)^{-1/6}S(t)\\
+&amp;\quad+\bigl(F_t(a)-c_*\overline{G(a)}N(a)^{-1/6}S(t)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;F_t(a)=c_*\overline{G(a)}N(a)^{-1/6}S(t)\\
+&amp;\quad+\bigl(F_t(a)-c_*\overline{G(a)}N(a)^{-1/6}S(t)\bigr).
+\end{aligned}
+\]</span>
+By Cauchy's inequality, with a smooth radial <span class="math" data-tex="\(W\)">\(W\)</span> that is at least <span class="math" data-tex="\(1\)">\(1\)</span> on the support of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and the corrected estimate (1.1) of that lesson, the second part contributes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll\Bigl(\sum_a|\alpha_a|^2\Bigr)^{1/2}\bigl(\mathcal QL^{-K}\bigr)^{1/2}\\
+&amp;\ll(A\mathcal Q)^{1/2}L^{-K/2+O(1)}\\
+&amp;\ll X^{5/6}L^{-K/2+O(1)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll\Bigl(\sum_a|\alpha_a|^2\Bigr)^{1/2}\bigl(\mathcal QL^{-K}\bigr)^{1/2}\\
+&amp;\ll(A\mathcal Q)^{1/2}L^{-K/2+O(1)}\\
+&amp;\ll X^{5/6}L^{-K/2+O(1)} .
+\end{aligned}
+\]</span>
+The first part, since <span class="math" data-tex="\(|G(a)|^2=\mu^2(a)\)">\(|G(a)|^2=\mu^2(a)\)</span>, is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;c_*\sum_a\alpha_a\mu^2(a)N(a)^{it-1/6}\\
+&amp;\qquad\cdot\sum_b\beta_bN(b)^{it-1/6}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;c_*\sum_a\alpha_a\mu^2(a)N(a)^{it-1/6}\\
+&amp;\qquad\cdot\sum_b\beta_bN(b)^{it-1/6}.
+\end{aligned}
+\]</span>
+The model part of <span class="math" data-tex="\(\mathcal D_0(ab)\)">\(\mathcal D_0(ab)\)</span> is the same double sum with <span class="math" data-tex="\(\mu^2(ab)\)">\(\mu^2(ab)\)</span>, that is, with the additional condition <span class="math" data-tex="\((a,b)=1\)">\((a,b)=1\)</span>. A common prime of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> has norm greater than <span class="math" data-tex="\(L^{C_r}\)">\(L^{C_r}\)</span>, and the number of pairs sharing such a prime is
+<span class="math math-display" data-tex="\[
+\ll AB\sum_{N(\mathfrak p)&gt;L^{C_r}}N(\mathfrak p)^{-2}\ll ABL^{-C_r},
+\]">\[
+\ll AB\sum_{N(\mathfrak p)&gt;L^{C_r}}N(\mathfrak p)^{-2}\ll ABL^{-C_r},
+\]</span>
+since there are <span class="math" data-tex="\(O(Y)\)">\(O(Y)\)</span> ideals of norm at most <span class="math" data-tex="\(Y\)">\(Y\)</span>. By Cauchy's inequality and the coefficient moments, their weighted number is <span class="math" data-tex="\(O(ABL^{-C_r/2+O(1)})\)">\(O(ABL^{-C_r/2+O(1)})\)</span>, and with the factor <span class="math" data-tex="\(N(ab)^{-1/6}\asymp X^{-1/6}\)">\(N(ab)^{-1/6}\asymp X^{-1/6}\)</span> their contribution is <span class="math" data-tex="\(O(X^{5/6}L^{-C_r/2+O(1)})\)">\(O(X^{5/6}L^{-C_r/2+O(1)})\)</span>. Taking <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(C_r\)">\(C_r\)</span> large proves (2.1) without the envelope.</p>
+<p>For the transition, the specified prime dyads and the bounded weights give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_a|\alpha_a|^2\ll\frac A{L^2},\\
+\sum_b|\beta_b|^2\ll\frac BL,\qquad\sum_b|\beta_b|\ll\frac BL .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_a|\alpha_a|^2\ll\frac A{L^2},\\
+\sum_b|\beta_b|^2\ll\frac BL,\qquad\sum_b|\beta_b|\ll\frac BL .
+\end{gathered}
+\]</span>
+Apply Cauchy's inequality and the uncorrected estimate (1.2) of the lesson on corrected dispersion. The diagonal part contributes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\frac A{L^2}\cdot\frac{AB}L\Bigr)^{1/2}=A\sqrt B\,L^{-3/2}\\
+&amp;\qquad=X^{5/6}H^{-1/6}L^{-3/2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\frac A{L^2}\cdot\frac{AB}L\Bigr)^{1/2}=A\sqrt B\,L^{-3/2}\\
+&amp;\qquad=X^{5/6}H^{-1/6}L^{-3/2},
+\end{aligned}
+\]</span>
+the next part <span class="math" data-tex="\(\bigl(\frac A{L^2}\cdot\frac{\mathcal Q}{L^2}\bigr)^{1/2}=X^{5/6}L^{-2}\)">\(\bigl(\frac A{L^2}\cdot\frac{\mathcal Q}{L^2}\bigr)^{1/2}=X^{5/6}L^{-2}\)</span>, and the remainder <span class="math" data-tex="\(L^{-K}\)">\(L^{-K}\)</span> is smaller. Since <span class="math" data-tex="\(H\gg1\)">\(H\gg1\)</span>, this bounds the Gauss-sum term by (2.2). The model term is <span class="math" data-tex="\(O(X^{5/6}L^{-3})\)">\(O(X^{5/6}L^{-3})\)</span> by counting the three prime dyads directly.</p>
+<p>The envelope costs no logarithm. Mellin inversion writes <span class="math" data-tex="\(V(N(ab)/X)\)">\(V(N(ab)/X)\)</span> through norm twists <span class="math" data-tex="\(N(ab)^{-iv}\)">\(N(ab)^{-iv}\)</span> with a rapidly decreasing integrable weight. Keep <span class="math" data-tex="\(|v|\le L^E\)">\(|v|\le L^E\)</span> for a large fixed <span class="math" data-tex="\(E\)">\(E\)</span>, and choose the permitted height exponent <span class="math" data-tex="\(U\)">\(U\)</span> after <span class="math" data-tex="\(E\)">\(E\)</span>. For <span class="math" data-tex="\(L^E\le|v|\le X^{c}\)">\(L^E\le|v|\le X^{c}\)</span>, with a small fixed <span class="math" data-tex="\(c\)">\(c\)</span>, the coarse bound of the lesson on corrected dispersion and Cauchy's inequality give <span class="math" data-tex="\(X^{5/6}L^{O(1)}\)">\(X^{5/6}L^{O(1)}\)</span> for the uncorrected sum, and the model trivially has the same bound. The rapid decay of the weight makes this range smaller than any fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>. Beyond <span class="math" data-tex="\(X^c\)">\(X^c\)</span>, the decay and the trivial bound <span class="math" data-tex="\(XL^{O(1)}\)">\(XL^{O(1)}\)</span> give a power saving. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-bilinear-sums-at-large-heights">3. Bilinear sums at large heights</h2>
+<p>Fix the absolute constant <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of the estimate (1.4) of the lesson on corrected dispersion so small that <span class="math" data-tex="\(0&lt;\gamma&lt;10^{-3}\)">\(0&lt;\gamma&lt;10^{-3}\)</span>, and choose
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;\kappa&lt;\frac\gamma{100},\qquad 0&lt;\rho&lt;\frac\kappa{100},\\
+0&lt;\xi&lt;\frac\kappa{10}.\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+0&lt;\kappa&lt;\frac\gamma{100},\qquad 0&lt;\rho&lt;\frac\kappa{100},\\
+0&lt;\xi&lt;\frac\kappa{10}.\quad(3.1)
+\end{gathered}
+\]</span>
+These choices precede, and do not depend on, the number of prime factors allowed in the decomposition.</p>
+<p><strong>Proposition 3.1 (integrated bilinear estimate).</strong> Let <span class="math" data-tex="\(X_0\asymp X\)">\(X_0\asymp X\)</span> and let <span class="math" data-tex="\(h_T\)">\(h_T\)</span> be smooth, supported in <span class="math" data-tex="\(T\le|t|\le2T\)">\(T\le|t|\le2T\)</span>, with <span class="math" data-tex="\(h_T^{(j)}(t)\ll_jT^{-j}\)">\(h_T^{(j)}(t)\ll_jT^{-j}\)</span>. Suppose <span class="math" data-tex="\(L^{C_t}\le T\ll X^{1/6+\rho}\)">\(L^{C_t}\le T\ll X^{1/6+\rho}\)</span>, <span class="math" data-tex="\(B\ll\sqrt X\)">\(B\ll\sqrt X\)</span>, and either</p>
+<ul>
+<li>(a) <span class="math" data-tex="\(T\ll X^{0.01}\)">\(T\ll X^{0.01}\)</span> and <span class="math" data-tex="\(B\ge c_0X^{1/3}\)">\(B\ge c_0X^{1/3}\)</span>, or</li>
+<li>(b) <span class="math" data-tex="\(T\gg X^{0.01}\)">\(T\gg X^{0.01}\)</span> and <span class="math" data-tex="\(B\ge X^{1/3-3\kappa}\)">\(B\ge X^{1/3-3\kappa}\)</span>.</li>
+</ul>
+<p>Assume the structural hypotheses of the lesson on corrected dispersion, but neither roughness nor (SW). For every fixed <span class="math" data-tex="\(D\)">\(D\)</span>, if <span class="math" data-tex="\(C_t\)">\(C_t\)</span> is large enough,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{a,b}\alpha_a\beta_bG_\ell(ab)V\Bigl(\frac{N(ab)}X\Bigr)\\
+&amp;\quad\cdot\int h_T(t)\Bigl(\frac{N(ab)}{X_0}\Bigr)^{it}\frac{dt}T\ll X^{5/6}L^{-D}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{a,b}\alpha_a\beta_bG_\ell(ab)V\Bigl(\frac{N(ab)}X\Bigr)\\
+&amp;\quad\cdot\int h_T(t)\Bigl(\frac{N(ab)}{X_0}\Bigr)^{it}\frac{dt}T\ll X^{5/6}L^{-D}.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> As before, <span class="math" data-tex="\(\theta_\ell\)">\(\theta_\ell\)</span> goes into the coefficients.</p>
+<p><em>The case <span class="math" data-tex="\(B&gt;X^{0.40}\)">\(B&gt;X^{0.40}\)</span>.</em> Apply Cauchy's inequality in <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>, and then the averaged estimate (1.3) of the lesson on corrected dispersion. The diagonal costs
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll\bigl(A\cdot AB\bigr)^{1/2}L^{O(1)}\asymp\frac X{\sqrt B}L^{O(1)}\\
+&amp;\ll X^{0.80}L^{O(1)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll\bigl(A\cdot AB\bigr)^{1/2}L^{O(1)}\asymp\frac X{\sqrt B}L^{O(1)}\\
+&amp;\ll X^{0.80}L^{O(1)},
+\end{aligned}
+\]</span>
+and the error costs <span class="math" data-tex="\(X^{5/6}L^{-K/2+O(1)}\)">\(X^{5/6}L^{-K/2+O(1)}\)</span>. The envelope separates by Mellin inversion, with shifts truncated at a small fixed power of <span class="math" data-tex="\(X\)">\(X\)</span>; the retained shifts satisfy <span class="math" data-tex="\(2T+|u_0|\le X^{0.17}\)">\(2T+|u_0|\le X^{0.17}\)</span>, since <span class="math" data-tex="\(\rho&lt;0.001\)">\(\rho&lt;0.001\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span>.</em> Partition the two fixed intervals of <span class="math" data-tex="\(\log N(a)\)">\(\log N(a)\)</span> and <span class="math" data-tex="\(\log N(b)\)">\(\log N(b)\)</span> into disjoint cells of width <span class="math" data-tex="\(1/J\)">\(1/J\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J=L^{D&#x27;}\ \text{ in case (a)},\\
+J=X^\gamma\ \text{ in case (b)}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+J=L^{D&#x27;}\ \text{ in case (a)},\\
+J=X^\gamma\ \text{ in case (b)}.
+\end{gathered}
+\]</span>
+There are <span class="math" data-tex="\(O(J)\)">\(O(J)\)</span> cells on each side. Put <span class="math" data-tex="\(a_i=\|\alpha\mathbf 1_{\text{cell }i}\|_2\)">\(a_i=\|\alpha\mathbf 1_{\text{cell }i}\|_2\)</span> and <span class="math" data-tex="\(b_j=\|\beta\mathbf 1_{\text{cell }j}\|_2\)">\(b_j=\|\beta\mathbf 1_{\text{cell }j}\|_2\)</span>. A smooth majorant of an <span class="math" data-tex="\(a\)">\(a\)</span>-cell has derivatives of order <span class="math" data-tex="\(s\)">\(s\)</span> bounded by <span class="math" data-tex="\(O_s(J^s)\)">\(O_s(J^s)\)</span>, and its lattice-point count is <span class="math" data-tex="\(O(A/J+\sqrt A+1)=O(A/J)\)">\(O(A/J+\sqrt A+1)=O(A/J)\)</span>, because <span class="math" data-tex="\(A\gg X^{0.60}\)">\(A\gg X^{0.60}\)</span> and <span class="math" data-tex="\(\gamma&lt;0.30\)">\(\gamma&lt;0.30\)</span>. Restricting <span class="math" data-tex="\(\beta\)">\(\beta\)</span> sharply to a cell keeps its divisor bounds and squarefree support, and no prime-convolution hypothesis is needed in this range of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>For a fixed pair of cells, Cauchy's inequality and the averaged dispersion estimate give the bound
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C\,a_i\Bigl(\frac AJb_j^2+\mathcal Q\varepsilon_J\Bigr)^{1/2},\quad(3.2)\\
+\varepsilon_J=L^{-K}\ \text{in (a)},\\
+\varepsilon_J=X^{-10\gamma}\ \text{in (b)}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+C\,a_i\Bigl(\frac AJb_j^2+\mathcal Q\varepsilon_J\Bigr)^{1/2},\quad(3.2)\\
+\varepsilon_J=L^{-K}\ \text{in (a)},\\
+\varepsilon_J=X^{-10\gamma}\ \text{in (b)}.
+\end{gathered}
+\]</span>
+This holds after any common Mellin shift, because for <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span> the dispersion estimate puts no restriction on <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. In particular it applies with the envelope, whose Mellin transform has bounded <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm.</p>
+<p>A pair of cells is <em>near</em> if its rectangle meets <span class="math" data-tex="\(|\log(N(ab)/X_0)|\le c_1/J\)">\(|\log(N(ab)/X_0)|\le c_1/J\)</span>, for a fixed <span class="math" data-tex="\(c_1&gt;0\)">\(c_1&gt;0\)</span>. Each cell has <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> near partners, so the diagonal parts of (3.2) over the near pairs add up to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll\sqrt{\frac AJ}\,\|\alpha\|_2\|\beta\|_2\\
+&amp;\ll X^{5/6}L^{O(1)}H^{-1/6}J^{-1/2}.\quad(3.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll\sqrt{\frac AJ}\,\|\alpha\|_2\|\beta\|_2\\
+&amp;\ll X^{5/6}L^{O(1)}H^{-1/6}J^{-1/2}.\quad(3.3)
+\end{aligned}
+\]</span>
+In case (a) this is the required saving once <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> is large. In case (b), <span class="math" data-tex="\(H\gg X^{-9\kappa}\)">\(H\gg X^{-9\kappa}\)</span>, so the extra power of <span class="math" data-tex="\(X\)">\(X\)</span> is at most <span class="math" data-tex="\(\frac32\kappa-\frac\gamma2&lt;0\)">\(\frac32\kappa-\frac\gamma2&lt;0\)</span>.</p>
+<p>The errors in (3.2) are absolute; even summed over all <span class="math" data-tex="\(O(J^2)\)">\(O(J^2)\)</span> pairs they give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sqrt{\mathcal Q\varepsilon_J}\,J\sum_ia_i\\
+&amp;\ll\sqrt{\mathcal Q\varepsilon_J}\,J^{3/2}\|\alpha\|_2\\
+&amp;\ll X^{5/6}L^{O(1)}J^{3/2}\varepsilon_J^{1/2}.\quad(3.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sqrt{\mathcal Q\varepsilon_J}\,J\sum_ia_i\\
+&amp;\ll\sqrt{\mathcal Q\varepsilon_J}\,J^{3/2}\|\alpha\|_2\\
+&amp;\ll X^{5/6}L^{O(1)}J^{3/2}\varepsilon_J^{1/2}.\quad(3.4)
+\end{aligned}
+\]</span>
+In case (a) take <span class="math" data-tex="\(K\)">\(K\)</span> large after <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span>; in case (b) the extra factor is <span class="math" data-tex="\(X^{3\gamma/2-5\gamma}=X^{-7\gamma/2}\)">\(X^{3\gamma/2-5\gamma}=X^{-7\gamma/2}\)</span>.</p>
+<p><em>Far pairs.</em> Put <span class="math" data-tex="\(\ell_1=\log(N(ab)/X_0)\)">\(\ell_1=\log(N(ab)/X_0)\)</span>, so that <span class="math" data-tex="\(|\ell_1|&gt;c_1/J\)">\(|\ell_1|&gt;c_1/J\)</span> on a far pair. Integrating by parts <span class="math" data-tex="\(q\)">\(q\)</span> times in the integral over <span class="math" data-tex="\(t\)">\(t\)</span> differentiates only <span class="math" data-tex="\(h_T\)">\(h_T\)</span>. It produces the factor <span class="math" data-tex="\((J/T)^q\)">\((J/T)^q\)</span>, a new height function proportional to <span class="math" data-tex="\(T^qh_T^{(q)}\)">\(T^qh_T^{(q)}\)</span>, and the weight <span class="math" data-tex="\((J\ell_1)^{-q}\)">\((J\ell_1)^{-q}\)</span>. The new height function has the same normalized derivative bounds. The weight costs no power of <span class="math" data-tex="\(J\)">\(J\)</span>: for a fixed integer <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span>, let <span class="math" data-tex="\(F_q\)">\(F_q\)</span> be a smooth function on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, equal to <span class="math" data-tex="\(s^{-q}\)">\(s^{-q}\)</span> for <span class="math" data-tex="\(|s|\ge c_1\)">\(|s|\ge c_1\)</span> and to <span class="math" data-tex="\(0\)">\(0\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span>. Then <span class="math" data-tex="\(F_q\)">\(F_q\)</span> and <span class="math" data-tex="\(F_q&#x27;&#x27;\)">\(F_q&#x27;&#x27;\)</span> are integrable, so its Fourier transform is integrable, and <span class="math" data-tex="\(\|\widehat{F_q(J\,\cdot)}\|_1=\|\widehat F_q\|_1\)">\(\|\widehat{F_q(J\,\cdot)}\|_1=\|\widehat F_q\|_1\)</span>. So <span class="math" data-tex="\(F_q(J\ell_1)\)">\(F_q(J\ell_1)\)</span> is a superposition of norm twists with <span class="math" data-tex="\(L^1\)">\(L^1\)</span> mass <span class="math" data-tex="\(O_q(1)\)">\(O_q(1)\)</span>, uniformly in <span class="math" data-tex="\(J\)">\(J\)</span>. These shifts do not depend on <span class="math" data-tex="\(t\)">\(t\)</span>, and shifts larger than <span class="math" data-tex="\(T\)">\(T\)</span> are allowed, since for <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span> the dispersion estimate permits any <span class="math" data-tex="\(u_0\)">\(u_0\)</span>.</p>
+<p>Applying (3.2) again with this separated weight, the diagonal parts over all pairs add up to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll\sqrt{\frac AJ}\Bigl(\sum_ia_i\Bigr)\Bigl(\sum_jb_j\Bigr)\\
+&amp;\ll X^{5/6}L^{O(1)}H^{-1/6}J^{1/2},\quad(3.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll\sqrt{\frac AJ}\Bigl(\sum_ia_i\Bigr)\Bigl(\sum_jb_j\Bigr)\\
+&amp;\ll X^{5/6}L^{O(1)}H^{-1/6}J^{1/2},\quad(3.5)
+\end{aligned}
+\]</span>
+before the factor <span class="math" data-tex="\((J/T)^q\)">\((J/T)^q\)</span>. In case (a), <span class="math" data-tex="\((J/T)^q\le L^{-q(C_t-D&#x27;)}\)">\((J/T)^q\le L^{-q(C_t-D&#x27;)}\)</span>, which pays for the loss when <span class="math" data-tex="\(C_t\)">\(C_t\)</span> is large. In case (b) it is at most a constant times <span class="math" data-tex="\(X^{-q(0.01-\gamma)}\)">\(X^{-q(0.01-\gamma)}\)</span>, which pays for <span class="math" data-tex="\(H^{-1/6}J^{1/2}\ll X^{3\kappa/2+\gamma/2}\)">\(H^{-1/6}J^{1/2}\ll X^{3\kappa/2+\gamma/2}\)</span>. The errors are already controlled by (3.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-order-of-the-parameters">4. The order of the parameters</h2>
+<p>The uniformity of the final assembly rests on the order in which the constants are chosen.</p>
+<ol>
+<li>Choose <span class="math" data-tex="\(\gamma,\kappa,\rho\)">\(\gamma,\kappa,\rho\)</span> as in (3.1), then <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and the bin ratio of the decomposition. The decomposition then has at most <span class="math" data-tex="\(L^{C_{\mathrm{dec}}}\)">\(L^{C_{\mathrm{dec}}}\)</span> pieces. Fix <span class="math" data-tex="\(M\)">\(M\)</span> larger than all coefficient moment exponents needed; these exponents do not depend on <span class="math" data-tex="\(C_r\)">\(C_r\)</span>.</li>
+<li>Choose
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D&gt;C_{\mathrm{dec}}+10,\\
+D&#x27;&gt;2(D+M+2),\\
+K&gt;3D&#x27;+2(D+M+2).
+\end{gathered}
+\]">\[
+\begin{gathered}
+D&gt;C_{\mathrm{dec}}+10,\\
+D&#x27;&gt;2(D+M+2),\\
+K&gt;3D&#x27;+2(D+M+2).
+\end{gathered}
+\]</span>
+The near-cell and error bounds in case (a) are then <span class="math" data-tex="\(X^{5/6}L^{M-D&#x27;/2}\)">\(X^{5/6}L^{M-D&#x27;/2}\)</span> and <span class="math" data-tex="\(X^{5/6}L^{M+3D&#x27;/2-K/2}\)">\(X^{5/6}L^{M+3D&#x27;/2-K/2}\)</span>.</li>
+<li>Choose <span class="math" data-tex="\(C_t\)">\(C_t\)</span> large enough for the averaged dispersion estimate at derivative scale <span class="math" data-tex="\(L^{D&#x27;}\)">\(L^{D&#x27;}\)</span> with output power <span class="math" data-tex="\(K\)">\(K\)</span>, for the far cells with a fixed <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span>, and for the model estimate of Section 6.</li>
+<li>For the low heights, take the corrected-variance power larger than <span class="math" data-tex="\(2(D+M+2)\)">\(2(D+M+2)\)</span>, choose the sieve depth <span class="math" data-tex="\(D_0\)">\(D_0\)</span> and the transform cutoffs of the dispersion proof, and fix a height exponent covering <span class="math" data-tex="\(L^{C_t}\)">\(L^{C_t}\)</span> and all retained shifts.</li>
+<li>Choose <span class="math" data-tex="\(C_r\)">\(C_r\)</span> and <span class="math" data-tex="\(C_g\)">\(C_g\)</span> large enough for the roughness, the diagonal and the cube approximation, and request the finitely many (SW) saving powers needed. Inserting <span class="math" data-tex="\(L^{C_r}\)">\(L^{C_r}\)</span> as a bin endpoint does not change <span class="math" data-tex="\(C_{\mathrm{dec}}\)">\(C_{\mathrm{dec}}\)</span>, and enlarging <span class="math" data-tex="\(C_g\)">\(C_g\)</span> changes only constants in the number of transition configurations.</li>
+<li>Finally choose all small power losses below the fixed power gaps obtained, including the gap of the sparse terms, which may depend on <span class="math" data-tex="\(C_r\)">\(C_r\)</span>.</li>
+</ol>
+<p>There is no circular dependence: the absolute power-width constant <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is used only for <span class="math" data-tex="\(B\le X^{0.40}\)">\(B\le X^{0.40}\)</span>, where it does not depend on the prime-convolution complexity.</p>
+<h2 id="5-a-smooth-truncation-of-the-interval">5. A smooth truncation of the interval</h2>
+<p><strong>Lemma 5.1 (Fourier truncation).</strong> Let <span class="math" data-tex="\(1\le T\le X\)">\(1\le T\le X\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be a fixed smooth function supported in <span class="math" data-tex="\((\frac12,4)\)">\((\frac12,4)\)</span>, equal to <span class="math" data-tex="\(1\)">\(1\)</span> on a neighborhood of <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>. Let <span class="math" data-tex="\(\eta\)">\(\eta\)</span> be a fixed smooth function supported in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, equal to <span class="math" data-tex="\(1\)">\(1\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span>, and put
+<span class="math math-display" data-tex="\[
+I_T(s)=\frac1{2\pi}\int_{\mathbb R}\eta\Bigl(\frac tT\Bigr)\frac{1-2^{-it}}{it}\,e^{its}\,dt .
+\]">\[
+I_T(s)=\frac1{2\pi}\int_{\mathbb R}\eta\Bigl(\frac tT\Bigr)\frac{1-2^{-it}}{it}\,e^{its}\,dt .
+\]</span>
+Then for every <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, on the support of <span class="math" data-tex="\(V\)">\(V\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl|\mathbf 1_{[1,2]}(v)-V(v)I_T(\log v)\bigr|\\
+&amp;\qquad\ll_m\sum_{b\in\{0,\log2\}}\bigl(1+T|\log v-b|\bigr)^{-m},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl|\mathbf 1_{[1,2]}(v)-V(v)I_T(\log v)\bigr|\\
+&amp;\qquad\ll_m\sum_{b\in\{0,\log2\}}\bigl(1+T|\log v-b|\bigr)^{-m},
+\end{aligned}
+\]</span>
+and the difference vanishes outside it. If coefficients collected at each integer norm satisfy <span class="math" data-tex="\(|c_n|\ll_\epsilon X^\epsilon\)">\(|c_n|\ll_\epsilon X^\epsilon\)</span> for <span class="math" data-tex="\(X/2&lt;n&lt;4X\)">\(X/2&lt;n&lt;4X\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_n|c_n|\Bigl|\mathbf 1_{[X,2X]}(n)\\
+&amp;\qquad-V\Bigl(\frac nX\Bigr)I_T\Bigl(\log\frac nX\Bigr)\Bigr|\\
+&amp;\ll_\epsilon X^\epsilon\Bigl(1+\frac XT\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_n|c_n|\Bigl|\mathbf 1_{[X,2X]}(n)\\
+&amp;\qquad-V\Bigl(\frac nX\Bigr)I_T\Bigl(\log\frac nX\Bigr)\Bigr|\\
+&amp;\ll_\epsilon X^\epsilon\Bigl(1+\frac XT\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> The Fourier transform of <span class="math" data-tex="\(\mathbf 1_{[0,\log2]}\)">\(\mathbf 1_{[0,\log2]}\)</span>, in the convention of the formula, is <span class="math" data-tex="\((1-2^{-it})/(it)\)">\((1-2^{-it})/(it)\)</span>, read as <span class="math" data-tex="\(\log2\)">\(\log2\)</span> at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The inverse transform of <span class="math" data-tex="\(\eta(t/T)\)">\(\eta(t/T)\)</span> is <span class="math" data-tex="\(Tk(Ts)\)">\(Tk(Ts)\)</span> for a Schwartz function <span class="math" data-tex="\(k\)">\(k\)</span> with integral <span class="math" data-tex="\(\eta(0)=1\)">\(\eta(0)=1\)</span>. So <span class="math" data-tex="\(I_T\)">\(I_T\)</span> is the convolution of the indicator of <span class="math" data-tex="\([0,\log2]\)">\([0,\log2]\)</span> with this approximate identity. At distance <span class="math" data-tex="\(\delta\)">\(\delta\)</span> from both endpoints, the difference from the indicator is at most the mass of the kernel beyond <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, which is <span class="math" data-tex="\(O_m((1+T\delta)^{-m})\)">\(O_m((1+T\delta)^{-m})\)</span>. Where <span class="math" data-tex="\(V\ne1\)">\(V\ne1\)</span>, the distance to <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span> is bounded below, so the same estimate holds there. On <span class="math" data-tex="\(\frac12\le v\le4\)">\(\frac12\le v\le4\)</span>, distances in <span class="math" data-tex="\(\log v\)">\(\log v\)</span> and in <span class="math" data-tex="\(v\)">\(v\)</span> are comparable. Summing <span class="math" data-tex="\((1+T|n-X_0|/X)^{-2}\)">\((1+T|n-X_0|/X)^{-2}\)</span> over integers <span class="math" data-tex="\(n\)">\(n\)</span>, for <span class="math" data-tex="\(X_0=X,2X\)">\(X_0=X,2X\)</span>, gives <span class="math" data-tex="\(O(1+X/T)\)">\(O(1+X/T)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-dyadic-comparison">6. The dyadic comparison</h2>
+<p><strong>Theorem 6.1.</strong> For every fixed integer <span class="math" data-tex="\(\ell\)">\(\ell\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{X&lt;N(\pi)\le2X}\theta_\ell(\pi)\Bigl(G(\pi)-\frac{c_*}{N(\pi)^{1/6}}\Bigr)\\
+&amp;\qquad=o_\ell\Bigl(\frac{X^{5/6}}{\log X}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{X&lt;N(\pi)\le2X}\theta_\ell(\pi)\Bigl(G(\pi)-\frac{c_*}{N(\pi)^{1/6}}\Bigr)\\
+&amp;\qquad=o_\ell\Bigl(\frac{X^{5/6}}{\log X}\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Apply Lemma 5.1 with <span class="math" data-tex="\(T_{\max}=X^{1/6+\rho}\)">\(T_{\max}=X^{1/6+\rho}\)</span>. At each norm the number of primary primes is at most two, and <span class="math" data-tex="\(|G(\pi)|=1\)">\(|G(\pi)|=1\)</span>, so the lemma applies separately to the Gauss sums and to the model. Taking <span class="math" data-tex="\(\epsilon&lt;\rho\)">\(\epsilon&lt;\rho\)</span>, the total truncation error is
+<span class="math math-display" data-tex="\[
+\ll X^\epsilon\Bigl(1+\frac X{T_{\max}}\Bigr)=o\Bigl(\frac{X^{5/6}}L\Bigr).
+\]">\[
+\ll X^\epsilon\Bigl(1+\frac X{T_{\max}}\Bigr)=o\Bigl(\frac{X^{5/6}}L\Bigr).
+\]</span>
+Split the integral defining <span class="math" data-tex="\(I_T\)">\(I_T\)</span> into bounded frequencies and smooth dyadic blocks of heights. Away from bounded frequencies, the two endpoint terms have the form
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int h_T(t)\Bigl(\frac{N(n)}{X_0}\Bigr)^{it}\frac{dt}T,\\
+X_0=X\text{ or }2X,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int h_T(t)\Bigl(\frac{N(n)}{X_0}\Bigr)^{it}\frac{dt}T,\\
+X_0=X\text{ or }2X,
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(h_T^{(j)}\ll_jT^{-j}\)">\(h_T^{(j)}\ll_jT^{-j}\)</span>: the factor <span class="math" data-tex="\(1/(it)\)">\(1/(it)\)</span> is <span class="math" data-tex="\(1/T\)">\(1/T\)</span> times a smooth bounded function on a block, and the cutoff at <span class="math" data-tex="\(T_{\max}\)">\(T_{\max}\)</span> keeps these derivative bounds. At bounded frequencies the difference of the endpoint terms is bounded, also at <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><em>Low heights, <span class="math" data-tex="\(|t|\le L^{C_t}\)">\(|t|\le L^{C_t}\)</span>.</em> Apply the decomposition for ordinary blocks to the difference <span class="math" data-tex="\(\mathcal D_\ell\)">\(\mathcal D_\ell\)</span>, which is legitimate because the two kernels have the same coefficients. The Type I terms are bounded by Proposition 4.1 of the lesson on the level formula: a norm twist of logarithmic height only introduces logarithmic derivative bounds. The regular bilinear terms are bounded by (2.1), with the output power <span class="math" data-tex="\(D\)">\(D\)</span> fixed in Section 4, and the sparse terms have a power saving. The remaining terms are the three-prime transition, with bounded weights, <span class="math" data-tex="\(1\ll H&lt;L^{C_g}\)">\(1\ll H&lt;L^{C_g}\)</span>, and <span class="math" data-tex="\(O((1+\log L)^C)\)">\(O((1+\log L)^C)\)</span> configurations. By (2.2), and since there are <span class="math" data-tex="\(O(1+\log L)\)">\(O(1+\log L)\)</span> low-height blocks, they contribute
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll X^{5/6}L^{-3/2}(1+\log L)^{C+1}\\
+&amp;\qquad=o\Bigl(\frac{X^{5/6}}L\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll X^{5/6}L^{-3/2}(1+\log L)^{C+1}\\
+&amp;\qquad=o\Bigl(\frac{X^{5/6}}L\Bigr).
+\end{aligned}
+\]</span>
+All other low-height terms are smaller after summing their <span class="math" data-tex="\(L^{C_{\mathrm{dec}}}\)">\(L^{C_{\mathrm{dec}}}\)</span> pieces.</p>
+<p><em>Large heights, <span class="math" data-tex="\(T\ge L^{C_t}\)">\(T\ge L^{C_t}\)</span>: the model.</em> On the envelope, collect the model at equal norms into <span class="math" data-tex="\(P_0(t)=\sum_{n\asymp X}d_nn^{it}\)">\(P_0(t)=\sum_{n\asymp X}d_nn^{it}\)</span>. There are at most two primes of each norm, so <span class="math" data-tex="\(\sum_n|d_n|^2\ll X^{2/3}L^{O(1)}\)">\(\sum_n|d_n|^2\ll X^{2/3}L^{O(1)}\)</span>. The mean value inequality (Lemma 5.1 of the lesson on large sieves) and Cauchy's inequality give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}|P_0(t)|\frac{dt}T\\
+&amp;\ll X^{1/3}L^{O(1)}\Bigl(1+\frac XT\Bigr)^{1/2}\\
+&amp;\ll X^{5/6}L^{O(1)}T^{-1/2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{T\le|t|\le2T}|P_0(t)|\frac{dt}T\\
+&amp;\ll X^{1/3}L^{O(1)}\Bigl(1+\frac XT\Bigr)^{1/2}\\
+&amp;\ll X^{5/6}L^{O(1)}T^{-1/2},
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(T&lt;X\)">\(T&lt;X\)</span>. Taking <span class="math" data-tex="\(C_t\)">\(C_t\)</span> large makes this negligible even after the <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> height blocks. No decomposition of the model, and no cancellation between its pieces, is needed.</p>
+<p><em>Large heights: the Gauss sums.</em> Decompose the Gauss-sum term alone. On ordinary blocks, <span class="math" data-tex="\(T\ll X^{0.01}\)">\(T\ll X^{0.01}\)</span>, the Type I terms without a stop have <span class="math" data-tex="\(R\le X^{0.40}\)">\(R\le X^{0.40}\)</span>. By Proposition 5.2 of the lesson on the level formula, the first term of their bound has exponent at most
+<span class="math math-display" data-tex="\[
+\frac12+\frac34(0.40)+\frac12(0.01)=0.805&lt;\frac56 .
+\]">\[
+\frac12+\frac34(0.40)+\frac12(0.01)=0.805&lt;\frac56 .
+\]</span>
+On upper blocks, <span class="math" data-tex="\(T\gg X^{0.01}\)">\(T\gg X^{0.01}\)</span>, they have <span class="math" data-tex="\(R\le X^{1/3-\kappa/2}\)">\(R\le X^{1/3-\kappa/2}\)</span>, and the exponent is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac12+\frac34\Bigl(\frac13-\frac\kappa2\Bigr)+\frac12\Bigl(\frac16+\rho\Bigr)\\
+&amp;\qquad=\frac56-\frac{3\kappa}8+\frac\rho2&lt;\frac56 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac12+\frac34\Bigl(\frac13-\frac\kappa2\Bigr)+\frac12\Bigl(\frac16+\rho\Bigr)\\
+&amp;\qquad=\frac56-\frac{3\kappa}8+\frac\rho2&lt;\frac56 .
+\end{aligned}
+\]</span>
+The pole term in Proposition 5.2, present only for <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, is <span class="math" data-tex="\(X^{5/6}L^CT^{-q}\)">\(X^{5/6}L^CT^{-q}\)</span> for every fixed <span class="math" data-tex="\(q\)">\(q\)</span>, negligible above <span class="math" data-tex="\(L^{C_t}\)">\(L^{C_t}\)</span>. These estimates allow a smooth envelope at scale <span class="math" data-tex="\(X/N(r)\)">\(X/N(r)\)</span> depending on <span class="math" data-tex="\(r\)">\(r\)</span>, and twists of the outer coefficients of absolute value one. Every nonsparse bilinear term falls under case (a) or (b) of Proposition 3.1, with the output power <span class="math" data-tex="\(D\)">\(D\)</span>. The sparse ordinary terms keep their power saving uniformly in the twist. Summing over the <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> height blocks and the at most <span class="math" data-tex="\(L^{C_{\mathrm{dec}}}\)">\(L^{C_{\mathrm{dec}}}\)</span> pieces costs less than the chosen saving. Different blocks may use different decompositions, since each is an exact identity on squarefree arguments.</p>
+<p>Combining the low and large heights with the truncation error gives the theorem; changing whether the endpoints are included has a cost bounded by the divisor bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 4.1 of the first lesson.</strong> Sum Theorem 6.1 with <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> over the dyadic ranges <span class="math" data-tex="\((X/2^{k+1},X/2^k]\)">\((X/2^{k+1},X/2^k]\)</span> above <span class="math" data-tex="\(X^{1/2}\)">\(X^{1/2}\)</span>. On these ranges the factor <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> is uniform, the logarithms are comparable to <span class="math" data-tex="\(\log X\)">\(\log X\)</span>, and the powers <span class="math" data-tex="\(X^{5/6}2^{-5k/6}\)">\(X^{5/6}2^{-5k/6}\)</span> form a geometric series. The primes of norm below <span class="math" data-tex="\(X^{1/2}\)">\(X^{1/2}\)</span> contribute <span class="math" data-tex="\(O(X^{1/2})\)">\(O(X^{1/2})\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{N(\pi)\le X}G(\pi)&amp;=c_*\sum_{N(\pi)\le X}N(\pi)^{-1/6}\\
+&amp;\quad+o\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{N(\pi)\le X}G(\pi)&amp;=c_*\sum_{N(\pi)\le X}N(\pi)^{-1/6}\\
+&amp;\quad+o\Bigl(\frac{X^{5/6}}{\log X}\Bigr),
+\end{aligned}
+\]</span>
+and Proposition 4.3 of the first lesson evaluates the sum on the right as <span class="math" data-tex="\(\frac65X^{5/6}/\log X+o(X^{5/6}/\log X)\)">\(\frac65X^{5/6}/\log X+o(X^{5/6}/\log X)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Verify the identities <span class="math" data-tex="\(A\sqrt B=X^{5/6}H^{-1/6}\)">\(A\sqrt B=X^{5/6}H^{-1/6}\)</span> and <span class="math" data-tex="\(A\mathcal Q=(AB)^{5/3}\)">\(A\mathcal Q=(AB)^{5/3}\)</span>, used in Proposition 2.1.</p>
+<p><strong>7.2.</strong> In case (b) of Proposition 3.1, show that <span class="math" data-tex="\(H\gg X^{-9\kappa}\)">\(H\gg X^{-9\kappa}\)</span>, and that the near-cell bound (3.3) saves the power <span class="math" data-tex="\(X^{\gamma/2-3\kappa/2}\)">\(X^{\gamma/2-3\kappa/2}\)</span>.</p>
+<p><strong>7.3.</strong> Show that the Fourier transform of <span class="math" data-tex="\(\mathbf 1_{[0,\log2]}\)">\(\mathbf 1_{[0,\log2]}\)</span>, with the convention <span class="math" data-tex="\(\widehat f(t)=\int f(s)e^{-its}ds\)">\(\widehat f(t)=\int f(s)e^{-its}ds\)</span>, is <span class="math" data-tex="\((1-2^{-it})/(it)\)">\((1-2^{-it})/(it)\)</span>.</p>
+<p><strong>7.4.</strong> Explain why the model term at large heights can be estimated without decomposition, while the Gauss-sum term cannot.</p>
+<p><strong>7.5.</strong> Check that the truncation at <span class="math" data-tex="\(T_{\max}=X^{1/6+\rho}\)">\(T_{\max}=X^{1/6+\rho}\)</span> costs <span class="math" data-tex="\(o(X^{5/6}/\log X)\)">\(o(X^{5/6}/\log X)\)</span>, and that a smaller <span class="math" data-tex="\(T_{\max}\)">\(T_{\max}\)</span>, such as <span class="math" data-tex="\(X^{1/6-\rho}\)">\(X^{1/6-\rho}\)</span>, would not suffice.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(X^{5/6}H^{-1/6}=(AB)^{5/6}(B^2/A)^{-1/6}\)">\(X^{5/6}H^{-1/6}=(AB)^{5/6}(B^2/A)^{-1/6}\)</span><span class="math" data-tex="\(=A^{5/6+1/6}B^{5/6-1/3}=AB^{1/2}\)">\(=A^{5/6+1/6}B^{5/6-1/3}=AB^{1/2}\)</span>. And <span class="math" data-tex="\(\mathcal Q=AB(B^2/A)^{1/3}=A^{2/3}B^{5/3}\)">\(\mathcal Q=AB(B^2/A)^{1/3}=A^{2/3}B^{5/3}\)</span>, so <span class="math" data-tex="\(A\mathcal Q=A^{5/3}B^{5/3}\)">\(A\mathcal Q=A^{5/3}B^{5/3}\)</span>.</p>
+<p><strong>7.2.</strong> With <span class="math" data-tex="\(B\ge X^{1/3-3\kappa}\)">\(B\ge X^{1/3-3\kappa}\)</span> and <span class="math" data-tex="\(A\asymp X/B\)">\(A\asymp X/B\)</span>, <span class="math" data-tex="\(H=B^2/A\asymp B^3/X\ge X^{-9\kappa}\)">\(H=B^2/A\asymp B^3/X\ge X^{-9\kappa}\)</span>. So <span class="math" data-tex="\(H^{-1/6}\le X^{3\kappa/2}\)">\(H^{-1/6}\le X^{3\kappa/2}\)</span>, and with <span class="math" data-tex="\(J=X^\gamma\)">\(J=X^\gamma\)</span> the bound (3.3) is <span class="math" data-tex="\(X^{5/6}L^{O(1)}X^{3\kappa/2-\gamma/2}\)">\(X^{5/6}L^{O(1)}X^{3\kappa/2-\gamma/2}\)</span>. Since <span class="math" data-tex="\(\kappa&lt;\gamma/100\)">\(\kappa&lt;\gamma/100\)</span>, the exponent <span class="math" data-tex="\(\frac32\kappa-\frac\gamma2\)">\(\frac32\kappa-\frac\gamma2\)</span> is negative.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(\int_0^{\log2}e^{-its}ds=\frac{1-e^{-it\log2}}{it}=\frac{1-2^{-it}}{it}\)">\(\int_0^{\log2}e^{-its}ds=\frac{1-e^{-it\log2}}{it}=\frac{1-2^{-it}}{it}\)</span>.</p>
+<p><strong>7.4.</strong> The model coefficients are <span class="math" data-tex="\(c_*\theta_\ell(\pi)N(\pi)^{-1/6}\)">\(c_*\theta_\ell(\pi)N(\pi)^{-1/6}\)</span>, of size <span class="math" data-tex="\(X^{-1/6}\)">\(X^{-1/6}\)</span> on the envelope, so their Dirichlet polynomial has mean square about <span class="math" data-tex="\(X^{2/3}\cdot X/T\)">\(X^{2/3}\cdot X/T\)</span>, and its mean absolute value <span class="math" data-tex="\(X^{5/6}T^{-1/2}\)">\(X^{5/6}T^{-1/2}\)</span> is already small for <span class="math" data-tex="\(T\ge L^{C_t}\)">\(T\ge L^{C_t}\)</span>. The Gauss sums have size <span class="math" data-tex="\(1\)">\(1\)</span>, so the same estimate gives <span class="math" data-tex="\(X\,T^{-1/2}\)">\(X\,T^{-1/2}\)</span>, which is too large for <span class="math" data-tex="\(T\le X^{1/3}\)">\(T\le X^{1/3}\)</span>; only the decomposition and the arithmetic of <span class="math" data-tex="\(G\)">\(G\)</span> give the saving.</p>
+<p><strong>7.5.</strong> The cost is <span class="math" data-tex="\(X^{\epsilon}(1+X/T_{\max})=X^{5/6-\rho+\epsilon}\)">\(X^{\epsilon}(1+X/T_{\max})=X^{5/6-\rho+\epsilon}\)</span>, which is <span class="math" data-tex="\(o(X^{5/6}/\log X)\)">\(o(X^{5/6}/\log X)\)</span> for <span class="math" data-tex="\(\epsilon&lt;\rho\)">\(\epsilon&lt;\rho\)</span>. With <span class="math" data-tex="\(T_{\max}=X^{1/6-\rho}\)">\(T_{\max}=X^{1/6-\rho}\)</span> it would be <span class="math" data-tex="\(X^{5/6+\rho+\epsilon}\)">\(X^{5/6+\rho+\epsilon}\)</span>, larger than the main term. This is why the upper blocks must reach heights slightly beyond <span class="math" data-tex="\(X^{1/6}\)">\(X^{1/6}\)</span>, and why the parameters <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are needed.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-023] OpenAI, <em>An unconditional first moment for cubic Gauss sums</em>, OpenAI Math Release preprint, 25 September 2026, Section 7 (bilinear sums and the sharp prime cutoff) and Appendix A.5. https://github.com/openai/math/tree/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
