@@ -1,6 +1,6 @@
 # Comparing weights through their finite-energy vectors
 
-**Self-checked by the writing AI.**
+
 
 This unit constructs the bounded comparison operator for weights. Its setting is an arbitrary von Neumann algebra, including algebras with no faithful normal state. The construction also works for weights which are not faithful, normal, or semifinite. These extra freedoms concern this bounded comparison theorem; they do not change the hypotheses of later modular theorems.
 

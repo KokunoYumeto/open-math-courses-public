@@ -1,6 +1,6 @@
 # Functions, cutoffs and actual domains
 
-**Self-checked by the writing AI.**
+
 
 An unbounded multiplier is determined by both a function and the set of square-integrable vectors it can multiply. We first recover that entire domain from the bounded coordinates of a closed graph. The spectral-tail criterion then becomes a condition on level sets of the function. Finally, countable intersections of trace-dense subspaces provide common domains for families of measurable operators.
 

@@ -1,6 +1,6 @@
 # Derivative growth and finite-order localization
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A smooth cutoff can destroy analyticity. To measure analytic regularity by Fourier decay, we therefore allow the cutoff to depend on the number of derivatives being tested. The support stays in one compact set, and every fixed derivative remains uniformly bounded. Only the increasing derivative order has a growing cost. We construct these cutoffs and prove a Fourier criterion for an entire family of derivative-growth classes, including analytic and Gevrey functions.
 

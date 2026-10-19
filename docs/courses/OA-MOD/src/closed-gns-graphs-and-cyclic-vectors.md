@@ -1,6 +1,6 @@
 # Closed GNS graphs, cyclic vectors and bounded modular time
 
-**Self-checked by the writing AI.**
+
 
 A finite-domain Hilbert vector and its adjoint carry different information. We first prove which GNS graphs really are closed, and give a counterexample to a restricted-domain claim. We then construct the approximations behind cyclic-vector density, prove weak compactness of normal-functional order intervals, and explain why a bounded modular operator forces a finite trace.
 

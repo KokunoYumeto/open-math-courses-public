@@ -1,6 +1,6 @@
 # Weights and the Hilbert spaces of multiplication
 
-**Self-checked by the writing AI.**
+
 
 A faithful normal semifinite weight determines a Hilbert space, but the finite elements must also remember multiplication and adjoints. Conversely, a Hilbert algebra already contains enough information to measure positive operators: a positive operator has finite weight precisely when its square root is multiplication by a vector. We prove both directions, including the exact domains and the completion required on the algebra side.
 

@@ -1,12 +1,12 @@
 # Hilbert spaces and unitary representations
 
-**Programme reading HA-LCA-PRE-HILBERT.** This reading supplies the Hilbert-space foundations used by the positive-type lesson. Self-checked by the writing AI. Hilbert spaces may have arbitrary dimension, measure spaces need not be sigma-finite, and topological groups need not be abelian.
+**Programme reading HA-LCA-PRE-HILBERT.** This reading supplies the Hilbert-space foundations used by the positive-type lesson.  Hilbert spaces may have arbitrary dimension, measure spaces need not be sigma-finite, and topological groups need not be abelian.
 
 Inner products are linear in the first variable and conjugate-linear in the second. The foundations are set theory with choice, the complete real and complex fields, and the definitions of topology and measure. Every additional result used below is proved here or linked to an exact earlier programme proof.
 
 The freely accessible mathematical sources are Jean Gallier and Jocelyn Quaintance, [*A Glimpse at Hilbert Spaces*, author notes dated 10 March 2017](https://www.cis.upenn.edu/~jean/hilbert-spaces.pdf), §§1.1–1.3 through Theorem 1.16; Michael Taylor, [*Lectures on Banach Algebras*, author-hosted notes](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/banalg.pdf), §§4–5 and Proposition 6.1; D. H. Fremlin, [*Measure Theory*, §244, version of 6 March 2009](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex), 244D–G, 244N(a) and 244P(a)–(b),(e); and B. Bekka, P. de la Harpe and A. Valette, [*Kazhdan's Property (T)*, free author draft dated 23 February 2007](https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf), Appendix A.1–A.2 at the specific results discussed in Section 7. All source citations identify reading material; all proof obligations are discharged below.
 
-Original text: public domain (CC0). Fremlin's §244 (copyright 1995) is cited, and his unchanged volume 2 source package accompanies the reading under its own terms. The exposition is newly written; the other sources' prose and figures are not reproduced.
+Original text: public domain (CC0). Fremlin's §244 (copyright 1995) is cited, and his unchanged volume 2 source package accompanies the reading under its own terms.
 
 ## 1. Positive forms and completion
 

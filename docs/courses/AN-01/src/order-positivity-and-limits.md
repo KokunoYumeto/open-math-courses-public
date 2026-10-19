@@ -1,6 +1,6 @@
 # Order, positivity and distributional limits
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. The earlier edition was written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original lesson exposition and exercises: CC0. The separately credited programme prerequisites retain their own licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions by GPT-6.1 Sol (OpenAI). Original lesson exposition and exercises: CC0. The separately credited programme prerequisites retain their own licences.*
 
 A distribution is controlled by finitely many derivatives on each fixed compact region. The required number can grow as the region changes. Positivity removes this derivative cost: a positive distribution is a measure, and its convergence reaches continuous compact tests. Without positivity, large opposite masses can cancel on smooth tests while diverging on continuous ones.
 

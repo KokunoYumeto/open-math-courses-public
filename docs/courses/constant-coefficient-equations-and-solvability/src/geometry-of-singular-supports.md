@@ -139,6 +139,8 @@ The singular set inside \(L_1\) is compact. It misses \(L_0\) and contains \(x_*
 
 The one-barrier case of [Logarithmic inverses and smooth barriers](logarithmic-inverses-and-smooth-barriers.md) applies to a local defining function of this boundary, since its normal has positive invariant. It makes \(u\) smooth near \(y\), contradicting its selection as a singular point. This proves the continuation and its smooth-data extension. \(\square\)
 
+The empty-set cases complete the statement for arbitrary convex open sets. If \(X_2=\varnothing\), both conditions hold vacuously. If \(X_1=\varnothing\) and \(X_2\ne\varnothing\), both conditions hold exactly when \(P\) is hypoelliptic. In that case every homogeneous solution is smooth, and the derivative criterion gives \(A_P(\xi,t)/|P(\xi)|\to1\) at each fixed radius. Since \(|P(\xi)|\leq A_{P,W}(\xi,t)\leq A_P(\xi,t)\), every subspace invariant is one, so there are no bad hyperplanes. If \(P\) is not hypoelliptic, the localization argument in Corollary 1.2 supplies a nonzero inactive subspace \(\Lambda(Q)\) with zero invariant. A nonzero \(\nu\in\Lambda(Q)\) then satisfies \(\sigma_P(\mathbb R\nu)=0\), by monotonicity of the restricted maxima. Translate a hyperplane with this normal to meet \(X_2\). It misses \(X_1\), and its homogeneous carrier solution is singular on \(X_2\), so both conditions fail.
+
 ## A minimal linear carrier
 
 **Theorem 3.1.** Suppose

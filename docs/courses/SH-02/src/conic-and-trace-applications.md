@@ -49,7 +49,7 @@ Finally, cellular cochains with a local system follow from the same finite simpl
 
 ### The differential-form inputs
 
-The smooth partition construction in OF2 applies to the standing Hausdorff, countable-at-infinity manifolds. Its locally finite bump functions, divided by their positive locally finite sum, give a smooth partition subordinate to any open cover after refinement. The referenced partition component retains its attribution and licence as stated there.
+The smooth partition construction in [OF2](../ordinary-involutivity-floor.html#OF2) applies to the standing Hausdorff, countable-at-infinity manifolds. Its locally finite bump functions, divided by their positive locally finite sum, give a smooth partition subordinate to any open cover after refinement. The referenced partition component retains its attribution and licence as stated there.
 
 For completeness, the local de Rham calculation is explicit. On a ball centered at zero, a smooth form of positive degree has the following radial homotopy, denoted CTA-DR1. Write \(v=(v_1,\ldots,v_{p-1})\) for the tuple of tangent vectors.
 

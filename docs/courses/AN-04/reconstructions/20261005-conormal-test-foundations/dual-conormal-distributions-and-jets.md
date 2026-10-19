@@ -6,7 +6,7 @@ All pairings here are the complex-linear distribution pairing against dual densi
 
 For clarity, an ambient distribution supported in a closed half-space annihilates a smooth function which is zero on that half-space. On a fixed compact set the distribution has some finite order \(L\), by the complete [test-function argument T0](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md). Such a function and all its derivatives vanish at the boundary. Multiply it by a cutoff supported within normal distance \(2\epsilon\) of the half-space and equal to one within distance \(\epsilon\); the pairing does not change by support. Taylor's formula to degree greater than \(2L+1\) bounds its first \(L\) derivatives, including all derivatives on that cutoff, by \(C\epsilon\). The distributional finite-order bound makes its pairing tend to zero. Compact localization proves the stated annihilation and the independence of smooth extensions used below.
 
-The mathematical antecedent is the approved Hörmander III, 2007 eBook, Section 18.3. The complete test and trace proofs follow. The further compressed operator calculus and the noncharacteristic \(\mathcal N\) extension are separate subsequent obligations.
+The mathematical antecedent is the Hörmander III, 2007 eBook, Section 18.3. The complete test and trace proofs follow. The further compressed operator calculus and the noncharacteristic \(\mathcal N\) extension are separate subsequent obligations.
 
 ## 1. The supported conormal test class
 

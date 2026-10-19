@@ -1,10 +1,10 @@
 # Scalar calculus and Euclidean topology — selected programme proofs
 
-These are selected foundation sections from **Metric and topological foundations**, programme lesson AN03-P003. They retain the section and equation numbers of that earlier lesson. The selection and introductory note were prepared by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026.
+These are selected foundation sections from **Metric and topological foundations**, programme lesson AN03-P003. They retain the section and equation numbers of that earlier lesson. The selection and introductory note were prepared by GPT-6 Astra (OpenAI), October 2026.
 
-The original course-writing task and OpenAI Codex credits, dedication and history are retained in [the original title page](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md). This independently written programme selection carries **CC0 1.0 Universal**, to the extent rights are held. The [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) identifies the terms.
+The original course-writing task and OpenAI Codex credits and dedication appear in [the original title page](notices/TITLE_PAGE.md) and [rights notice](notices/RIGHTS.md). This independently written programme selection carries **CC0 1.0 Universal**, to the extent rights are held. The [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) identifies the terms.
 
-The original notice files describe the original course edition. [Selection history](SELECTION_HISTORY.md) describes these excerpts.
+[Programme credits](notices/TITLE_PAGE.md) and [component rights](notices/RIGHTS.md) accompany these readings.
 
 The mathematical entry is natural-number arithmetic with induction, ordinary set theory and countable choice. The real-field construction is in [the scalar foundations](metric-foundation-bridges.md#12-real-numbers-and-finite-dimensional-topology); complex arithmetic and finite algebra are in [the algebra foundations](stable-prerequisite-bridges.md#10-full-finite-linear-algebra-foundations); integration is in [the measure foundations](banach-foundation-bridges.md#15-0-constructing-the-measure-without-importing-a-convergence-theorem).
 

@@ -1,6 +1,6 @@
 # Reciprocal tails and zero-frequency jumps
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 The Fourier transform records a reciprocal tail as a jump. If the two tail coefficients differ, a logarithm appears as well. We calculate the complete distributions, then recover every derivative jump associated with a finite signed-power expansion. Compact corrections change smooth terms, while a constant in physical space contributes a separate point mass.
 

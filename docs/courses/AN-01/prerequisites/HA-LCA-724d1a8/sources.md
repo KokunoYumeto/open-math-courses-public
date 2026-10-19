@@ -1,0 +1,53 @@
+# Exact free-source registry
+
+Every reading gives its human-source citations. This registry binds the exact 49 free versions to the readings that use them; it does not replace the course proofs.
+
+- [fremlin-mt4-2013-445-20080320](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex) — HA-LCA-02, HA-LCA-03, HA-LCA-06, HA-LCA-07, HA-LCA-08, HA-LCA-09
+- [fremlin-mt4-2013-436](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt436.tex) — HA-LCA-PRE-RADON
+- [fremlin-mt4-2013-4a2](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a2.tex) — HA-LCA-PRE-RADON
+- [taylor-banach](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/banalg.pdf) — HA-LCA-PRE-BANACH, HA-LCA-PRE-HILBERT
+- [lurie-261y-lecture2](https://people.math.harvard.edu/~lurie/261ynotes/lecture2.pdf) — HA-LCA-PRE-BANACH
+- [fremlin-mt4-2013-417](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt417.tex) — HA-LCA-PRE-PRODUCT, HA-LCA-PRE-INTEGRAL
+- [freire-stone-weierstrass](https://web.math.utk.edu/~freire/teaching/m561f22/Stone_Weierstrass_proof.pdf) — HA-LCA-PRE-APPROX
+- [fremlin-mt4-2013-4a6](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a6.tex) — HA-LCA-PRE-APPROX
+- [fremlin-mt1-2011-123](https://www1.essex.ac.uk/maths/people/fremlin/mt1.2011/mt123.tex) — HA-LCA-PRE-INTEGRAL
+- [fremlin-mt2-2016-242](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt242.tex) — HA-LCA-PRE-INTEGRAL
+- [fremlin-mt4-2013-443](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex) — HA-LCA-10, HA-LCA-11, HA-LCA-PRE-HAAR, HA-LCA-PRE-NONABELIAN-HAAR
+- [tao-254a-notes3-20110927](https://terrytao.wordpress.com/2011/09/27/254a-notes-3-haar-measure-and-the-peter-weyl-theorem/) — HA-LCA-PRE-HAAR, HA-LCA-PRE-NONABELIAN-HAAR
+- [fremlin-mt4-2013-444](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt444.tex) — HA-LCA-PRE-HAAR, HA-LCA-PRE-NONABELIAN-HAAR
+- [fremlin-mt4-2013-441](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt441.tex) — HA-LCA-PRE-HAAR
+- [tao-245c-notes2-20090406](https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/) — HA-LCA-02
+- [fremlin-mt2-2016-283](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt283.tex) — HA-LCA-PRE-REAL
+- [lebl-basic-analysis-ftc](https://www.jirka.org/ra/html/sec_ftc.html) — HA-LCA-PRE-REAL
+- [conrad-finite-characters-short](https://kconrad.math.uconn.edu/blurbs/grouptheory/charthyshort.pdf) — HA-LCA-01
+- [conrad-gauss-jacobi](https://kconrad.math.uconn.edu/blurbs/gradnumthy/Gauss-Jacobi-sums.pdf) — HA-LCA-01
+- [tao-prime-uncertainty-v6](https://arxiv.org/pdf/math/0308286v6) — HA-LCA-01
+- [gallier-quaintance-hilbert-20170310](https://www.cis.upenn.edu/~jean/hilbert-spaces.pdf) — HA-LCA-PRE-HILBERT
+- [fremlin-mt2-2016-244](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex) — HA-LCA-05, HA-LCA-08, HA-LCA-PRE-HILBERT
+- [bekka-de-la-harpe-valette-author-KazhdanTotal](https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf) — HA-LCA-04, HA-LCA-05, HA-LCA-PRE-HILBERT, HA-LCA-PRE-NONABELIAN-HAAR
+- [fremlin-mt4-2013-442](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt442.tex) — HA-LCA-PRE-NONABELIAN-HAAR
+- [vienna-afa-2023](https://www.mat.univie.ac.at/~gue/lehre/23AFA/AFA.pdf) — HA-LCA-PRE-DUAL-CONVEX
+- [fremlin-mt2-2016-243](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt243.tex) — HA-LCA-PRE-DUAL-CONVEX
+- [nelson-eth-representation-notes-2019](https://metaphor.ethz.ch/x/2019/fs/401-3226-01L/ex/notes-repn.pdf) — HA-LCA-05
+- [tao-245c-interpolation-20090330](https://terrytao.wordpress.com/2009/03/30/245c-notes-1-interpolation-of-lp-spaces/) — HA-LCA-08
+- [fremlin-mt4-2013-4a5](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a5.tex) — HA-LCA-09
+- [candel-csun-topology-262](https://www.csun.edu/~ac53971/research/topology_262.pdf) — HA-LCA-09
+- [dikranjan-itg](https://users.dimi.uniud.it/~dikran.dikranjan/ITG.pdf) — HA-LCA-10, HA-LCA-12, HA-LCA-17
+- [conrad-characterQ](https://kconrad.math.uconn.edu/blurbs/gradnumthy/characterQ.pdf) — HA-LCA-10, HA-LCA-11
+- [salmi-idempotent-1209.0314v1](https://arxiv.org/pdf/1209.0314v1) — HA-LCA-10
+- [applebaum-poisson-1602.01252v2](https://arxiv.org/pdf/1602.01252v2) — HA-LCA-11
+- [applebaum-poisson-corrigendum](https://eprints.whiterose.ac.uk/id/eprint/106772/12/ProbTracecorrigendum1.pdf) — HA-LCA-11
+- [vienna-sip-2012](https://csc.univie.ac.at/files/SIP_lecture_notes_SS2012.pdf) — HA-LCA-11
+- [neeb-unitary-representations-20100602](https://www.math.fau.de/wp-content/uploads/2024/01/rep.pdf) — HA-LCA-13
+- [lurie-261y-lecture5](https://people.math.harvard.edu/~lurie/261ynotes/lecture5.pdf) — HA-LCA-13
+- [teschl-schroe2-author-online](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf) — HA-LCA-13
+- [shu-wiener-1974](https://digital.library.unt.edu/ark:/67531/metadc663188/m2/1/high_res_d/1002773742-Shu.pdf) — HA-LCA-14, HA-LCA-15
+- [fulsche-luef-werner-2405.08678v2](https://arxiv.org/pdf/2405.08678v2) — HA-LCA-15
+- [malliavin-1959-numdam](https://www.numdam.org/item/10.1007/BF02684707.pdf) — HA-LCA-15
+- [schwartz-1951-synthesis-free-journal](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/61696D1072603F9C186EFF0C4CD074BB/S0008414X00031217a.pdf/analyse-et-synthese-harmoniques-dans-les-espaces-de-distributions.pdf) — HA-LCA-15
+- [melrose-18102-sp16-ch1](https://math.mit.edu/~rbm/18-102-Sp16/Chapter1.pdf) — HA-LCA-15
+- [davalo-flechelles-20180706](https://www.math.ens.psl.eu/shared-files/9497/?DAVALO_FLECHELLES.pdf=) — HA-LCA-16
+- [spitters-cs0512009v3](https://arxiv.org/pdf/cs/0512009v3) — HA-LCA-16
+- [igusa-tifr59](https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr59.pdf) — HA-LCA-17
+- [bell-profinite-2017](https://jordanbell.info/LaTeX/mathematics/profinite/profinite.pdf) — HA-LCA-17
+- [burgos-verjovsky-1603.05676v1](https://arxiv.org/pdf/1603.05676v1) — HA-LCA-17

@@ -1,6 +1,6 @@
 # Periodic Green functions and boundary spectra
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
 
 Sampling and solving a periodic differential equation use the same operation: recover a periodic object from all of its Fourier coefficients. We first establish sampling for integrable densities and finite complex measures, including the continuous representative forced by a measure second derivative. We then use coefficient uniqueness and derivative jumps to construct Green functions, remove their constant pole, and analyze resonances. Finally, tangent boundary values show how the same reconstruction works for a distribution whose spectrum occupies only one side. The exercises develop the full resolvent family, every polyharmonic order, shifted cusps and complex atomic examples.
 

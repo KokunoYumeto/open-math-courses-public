@@ -1,11 +1,11 @@
 # Harmonic analysis on locally compact abelian groups
 
-Edition of 4 October 2026. Self-checked by the writing AI. This course contains 17 lessons, ten prerequisite readings, 454 proof blocks and 78 solved exercises.
+This course contains 17 lessons, ten prerequisite readings, 454 proof blocks and 78 solved exercises.
 
-[Course contents](index.md) · [Reader](index.html) · [Results](results.md) · Exact free sources · Licences · Course metadata
+[Course contents](index.md) · [Reader](index.html) · [Results](results.md) · [Exact free sources](sources.md) · Licences · Course metadata
 
-The mathematical sources are verified freely accessible versions. Every used result has a complete proof in this edition or an exact earlier reading within it.
+Lesson bibliographies identify the source works. Links at each point of use lead to prerequisite proofs.
 
 Download the offline reader and editable sources. The package contains this course directory, including its metadata and required original source packages. Research PDFs are not redistributed.
 
-Earlier lesson addresses provide links from previous result labels to the corrected proofs. Superseded copied prerequisites are marked explicitly and are not current proof providers.
+The result index links to the statements and their proofs, including the general hypotheses on measures and topological groups.

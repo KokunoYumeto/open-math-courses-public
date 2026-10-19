@@ -1,6 +1,6 @@
 # Central decompositions and disjoint equilibrium representations
 
-**Self-checked by the writing AI.** The proofs are complete relative to their declared inputs.
+The proofs are complete relative to their declared inputs.
 
 Two mechanisms control the geometry of equilibrium states. Central densities refine their convex decompositions; modular time detects when two states can share a von Neumann algebra summand. We develop those mechanisms separately and then apply them to a common dynamics.
 

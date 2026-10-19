@@ -47,7 +47,7 @@ def render(out):
     footer(fig,'Proofs: WD01–03, equations WD.1–WD.7. Samples illustrate the proved sequence.\nAntecedent: Takesaki, Theory of Operator Algebras II, VIII.4.9 (p.137). Original figure.')
     fig.savefig(out/'gns-closed-graphs.png');plt.close(fig)
 
-    fig=canvas('Two density arguments in disintegration','Separable A; a faithful lower-semicontinuous C*-semifinite modular weight.')
+    fig=canvas('Two density arguments in disintegration','Separable A; a faithful lower-semicontinuous modular weight\nwith a norm-dense finite domain.')
     box(fig,(.07,.685,.86,.18),'WD06–07 · First construct the compatible fibres',
         r'$\psi_y(a)=\Phi_y(\pi_y(a)),\qquad\varphi(a)=\int_Y\psi_y(a)\,d\mu(y)$'+'\n'
         'Use the actual fibre GNS spaces of the normal weights.\n'
@@ -65,7 +65,7 @@ def render(out):
         r'Uniqueness gives $P_y=I$ almost everywhere.'+'\n'
         r'The isometry $V_y\Lambda_{\psi_y}(a)=\Lambda_{\Phi_y}(\pi_y(a))$ is onto.',ORANGE)
     fig.text(.09,.105,'On A, the GNS kernel of '+r'$\psi_y$ is exactly $\ker\pi_y$.',size=15,color=INK)
-    footer(fig,'Proofs: WD06–09, equations WD.19–WD.30; projection and uniqueness: DF04, DF08.\nAntecedents: Takesaki, Theory of Operator Algebras II, VIII.4.11–13 (pp.138–140). Original diagram.')
+    footer(fig,'Proofs: WD06–09, equations WD.19–WD.30; projection and uniqueness: DF04, DF08.\nAntecedents: Takesaki, Theory of Operator Algebras II,\nVIII.4.11–13 (pp.138–140). Original diagram.')
     fig.savefig(out/'cstar-disintegration-fibres.png');plt.close(fig)
 
     fig=canvas('Finite positive weight ≠ finite GNS energy',r'$A=C_0((0,1]),\quad\varphi(f)=\int_0^1 y^{-2}f(y)\,dy,\quad f_\beta(y)=y^\beta$')

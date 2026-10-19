@@ -1,6 +1,6 @@
 # Constructing spatial energy from finite observations
 
-**Self-checked by the writing AI.**
+
 
 A spatial energy starts with bounded vectors for a weight on the commutant. Its coefficient is a positive operator in the original algebra, so a second weight can measure that coefficient. Three issues remain: whether sufficiently many vectors have finite energy, whether completion preserves their Hilbert-space identity, and which directions have zero energy. We prove these assertions directly from normal positive functionals and their vector implementations.
 

@@ -1,6 +1,6 @@
 # Causal point sources and characteristic cones
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition by GPT-6.1 Sol (OpenAI). Original exposition: CC0. Self-checked by the writing AI.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions by GPT-6.1 Sol (OpenAI). Original exposition: CC0. *
 
 An inverse with prescribed support can turn a point source into an ordinary function, a measure on a cone, or a locally finite train of differentiated pulses. In each case we must check the equation at the corner or cone vertex. Calculations on its complement would leave the source undetermined.
 
@@ -402,7 +402,7 @@ u=8\pi\mathcal R_2,\qquad
 
 We identify the first derivative by direct integration for arbitrary tests, which also provides a separate check of the vertex.
 
-Set \(M(t,r)=\int_{S^2}\phi(t,r\omega)\,d\omega\) for \(r\ge0\). Compact sphere measure permits differentiation under this integral of every order, including right derivatives at zero; \(M(t,0)=4\pi\phi(t,0)\). For \(r>0\), the flux theorem in Boundary flux and weak identities, Theorem 2.1, and polar integration give
+Set \(M(t,r)=\int_{S^2}\phi(t,r\omega)\,d\omega\) for \(r\ge0\). Compact sphere measure permits differentiation under this integral of every order, including right derivatives at zero; \(M(t,0)=4\pi\phi(t,0)\). For \(r>0\), the flux theorem in [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Theorem 2.1, and polar integration give
 \[
 \int_{|x|\le r}\Delta_x\phi(t,x)\,dx=r^2M_r(t,r).
 \]

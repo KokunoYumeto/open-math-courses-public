@@ -592,4 +592,4 @@ At least one of these errors is at least \(\sqrt2\). Thus there is not even a fa
 
 **Further reading.** T. Masuda, *Unified approach to classification of actions of discrete amenable groups on injective factors*, [free author preprint, arXiv:1006.1176](https://arxiv.org/abs/1006.1176), Appendix A, Lemma A.1 and the proof of Proposition 4.5, pp.24–25. A. Ocneanu, *Actions of discrete amenable groups on factors*, [free Warwick doctoral thesis](https://wrap.warwick.ac.uk/id/eprint/110062/), Section 5.2, printed pp.50–51, for semiliftable automorphisms, and Section 5.5 for index selection. The finite averaging and diagonal proofs needed here are written above; the quotient and lifting foundations are the earlier programme proofs identified in Section 5.
 
-**Provenance.** Original exposition and proofs prepared and checked by OpenAI GPT-6 Astra at Ultra reasoning effort. This is not independent review. The new prose and editable figure are dedicated under CC0.
+**Provenance.** Original exposition and proofs by OpenAI GPT-6 Astra at Ultra reasoning effort. The original prose and editable figure are dedicated under CC0.

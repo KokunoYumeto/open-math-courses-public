@@ -1,6 +1,6 @@
 # Convolution equations and logarithmic tails
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 Fourier multiplication gives a precise criterion for solving a Schwartz convolution equation. Gaussian convolution powers make the solution and its critical peak explicit, but their series has a smaller parameter domain than the equation itself. A separate support estimate permits convolution of two tempered distributions on the positive half-line. Finally, an endpoint with logarithmic decay gives a Fourier tail whose leading coefficient is exactly \(-i\).
 

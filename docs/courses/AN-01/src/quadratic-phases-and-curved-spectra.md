@@ -1,6 +1,6 @@
 # Quadratic phases and curved spectra
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); supplied prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); supplied prerequisites retain their stated licences.*
 
 A Gaussian probability placed on a parabola has a frequency profile whose center, width and phase can all be measured. Its horizontal energy stays constant as the profile spreads. Removing the Gaussian weight produces a singular spectrum with delta limits in its slices. A quadratic phase that is constant in one input direction instead produces an actual delta factor in the full transform. We calculate these phenomena, prove the full signed Fresnel and parabolic identities, and then work out every rank and every polynomial curved moment.
 

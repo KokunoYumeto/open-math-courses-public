@@ -1,6 +1,6 @@
 # Spatial energy as a corner of a modular operator
 
-**Self-checked by the writing AI.**
+
 
 The coefficient construction gives a closed energy form on the original representation space. A relative Tomita construction gives a closed antilinear map between two Hilbert spaces. To identify them, we construct an isometry between their initial domains, prove that it respects the whole graph core, and compare the resulting closed forms. A diagonal weight on an algebra of two-by-two operator blocks supplies the common setting. This also explains why the two modular actions have opposite time directions.
 

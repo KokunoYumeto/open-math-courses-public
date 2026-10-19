@@ -1,6 +1,6 @@
 # Transformation groups and their parameters
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 A transformation can have many formulas without having many degrees of freedom. The map $x\mapsto x+a+b$, for example, depends on two displayed numbers but only on their sum. Before differentiating a family of transformations, we need to identify its actual parameters. We also need to distinguish a group from a family closed under composition. The latter need not contain an identity or inverses.
 

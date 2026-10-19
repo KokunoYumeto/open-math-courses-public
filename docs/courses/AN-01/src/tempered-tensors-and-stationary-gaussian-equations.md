@@ -1,6 +1,6 @@
 # Tempered tensors and stationary Gaussian equations
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 A coordinate product can have both point-supported and principal-value frequency terms. We first construct its tensor as a continuous functional on the whole Schwartz space. We then classify the stationary equation \(\Delta u+x\cdot\nabla u+nu=0\). Its tempered solutions are parametrized by distributions on the sphere, and all of them are smooth in physical space. Requiring Schwartz decay reduces that entire family to scalar multiples of a Gaussian.
 

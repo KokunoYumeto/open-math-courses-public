@@ -1,6 +1,6 @@
 # Continuing analytic Cauchy solutions through convex domains
 
-*Original exposition and proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI; no independent review. CC0.*
+*Original exposition and proofs: GPT-6 Astra (OpenAI), October 2026. CC0.*
 
 Local analytic existence gives a solution near its initial surface. To reach a larger domain, we need to control the surfaces across which that solution continues, and to ensure that extensions constructed in different places agree. Convexity will serve both purposes: it keeps certain complex normal covectors away from the characteristic set and makes local extensions compatible.
 

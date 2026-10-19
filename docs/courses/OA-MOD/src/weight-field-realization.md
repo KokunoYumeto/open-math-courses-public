@@ -1,10 +1,10 @@
 # The realization boundary in measurable weight fields
 
-**Self-checked by the writing AI.**
 
-The general field comparison in Takesaki II, VIII.4.5 relates the measurable weight definition of VIII.4.4 to the full associated left Hilbert-algebra fields of VI.3.1. There are two realizations involved: the prescribed concrete operator field and the GNS Hilbert field. A fibrewise normal isomorphism does not itself identify their measurable sections. This unit proves that the distinction is substantive, gives the exact compatible reverse implication, and records the remaining obligations. It neither declares the intended source lemma false nor replaces the full course objective by a weaker theorem.
 
-The mathematical antecedents are M. Takesaki, *Theory of Operator Algebras II*, VI.3.1, printed 28/PDF 48, and VIII.4.4–4.5, printed 134–135/PDF 154–155. Those pages have been consulted. The formulas, constructions and proofs below are original. The existing single-fibre weight/GNS and full Hilbert-algebra results WH-09–11 and WG-004,006,007,009,010 retain their current review states. The compatible reverse implication uses DI-04 at its existing measurable-field provider boundary. This unit itself supplies neither the forward construction nor transitive closure. The compatible construction and both operator transports are proved in Exact data, conclusion and prerequisite boundary through The reverse comparison and the realization obstruction; independent review remains separate.
+The general field comparison in Takesaki II, VIII.4.5 relates the measurable weight definition of VIII.4.4 to the full associated left Hilbert-algebra fields of VI.3.1. There are two realizations involved: the prescribed concrete operator field and the GNS Hilbert field. A fibrewise normal isomorphism does not itself identify their measurable sections. This lesson proves that the distinction is substantive and gives the compatible reverse implication under the stated hypotheses.
+
+The mathematical antecedents are M. Takesaki, *Theory of Operator Algebras II*, VI.3.1, printed 28/PDF 49 (one-based), and VIII.4.4–4.5, printed 134–135/PDF 155–156 (one-based). The single-fibre weight/GNS and full Hilbert-algebra inputs are WH-09–11 and WG-004,006,007,009,010. The compatible reverse implication uses the measurable-field theorem DI-04. The forward construction is outside this lesson. The compatible construction and both operator transports are proved in Exact data, conclusion and prerequisite boundary through The reverse comparison and the realization obstruction.
 
 ## Two different fields that must not be identified without a map
 

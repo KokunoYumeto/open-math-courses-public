@@ -296,4 +296,4 @@ In dimension zero the punctured cotangent space is empty, every trajectory is co
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, 2003 reprint, §8.5, Theorem 8.5.9, Corollary 8.5.10 and its dimension discussion, Theorem 8.5.11 and Lemma 8.5.12 ([edition](https://doi.org/10.1007/978-3-642-61497-2)). The supporting-function and closed-set problems guide this independently organized exposition. Every argument used here is supplied in the lesson or the exact programme prerequisites linked above.
 
-*AI-assisted exposition and reproducible illustration: GPT-6 Astra (OpenAI), Ultra. Original programme text and figures: CC0 1.0 to the extent rights exist. Earlier programme proofs retain their stated authorship and licences. Self-checked by the writing AI; no independent review.*
+*AI-assisted exposition and reproducible illustration: GPT-6 Astra (OpenAI). Original programme text and figures: CC0 1.0 to the extent rights exist. Earlier programme proofs retain their stated authorship and licences. *

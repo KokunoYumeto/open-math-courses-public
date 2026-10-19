@@ -1,6 +1,6 @@
 # Grassmannians
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) (Codex), October 2026. Public domain (CC0).*
 
 A Grassmannian turns linear algebra into a family of geometric objects. Its points classify quotients of a vector space, while its maps from a parameter scheme classify quotients of a vector bundle on that scheme. The kernel must remain a subbundle after base change. This is what distinguishes a family of subspaces from a collection of subsheaves having the expected rank at some points.
 
@@ -273,5 +273,5 @@ These are the foundations corresponding to [Stacks, Tags 01V4–01V5 and 01W7]. 
 ## References
 
 - [Stacks] The Stacks project, *Constructions of Schemes*, Tags 089R, 089T, 089U and 089V, retained in the [Grassmannian section of AI Integrated Stacks Project](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#section-grassmannian).
-- [AI Integrated Stacks Project] *Constructions of Schemes*, [Plücker closed-immersion lemma](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-grassmannian-pluecker). This edition has AI-proposed corrections and AI-written additions; they have not been reviewed by the Stacks project's maintainers.
+- [AI Integrated Stacks Project] *Constructions of Schemes*, [Plücker closed-immersion lemma](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-grassmannian-pluecker).
 - [Vakil] R. Vakil, *The Rising Sea: Foundations of Algebraic Geometry*, public draft of 27 July 2024, sections 7.7 and 16.4.

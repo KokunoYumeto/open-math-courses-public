@@ -1,6 +1,6 @@
 # Odd powers and collapsing hyperbolas
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition by GPT-6.1 Sol (OpenAI). Original exposition: CC0. Self-checked by the writing AI.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions by GPT-6.1 Sol (OpenAI). Original exposition: CC0. *
 
 The two endpoints \(t=\pm|\epsilon|\) approach the same point as \(\epsilon\to0\). With opposite weights, their singular powers have a limit at every complex order. The reason is visible on tests: an odd difference cancels the denominator produced by the square-root substitution. We prove the required smoothness, construct the entire family by ordinary integrals, and calculate the point derivatives and finite asymptotic expansions.
 

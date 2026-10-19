@@ -1,6 +1,6 @@
 # Cones and derivative-growth wavefronts
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Fourier decay can distinguish singular directions even when a distribution is singular at the same base point in every neighborhood. Here we measure that decay with a specified derivative-growth scale. The analytic case requires a sequence of compact extensions, because a fixed smooth cutoff need not preserve analytic regularity. We prove that these directional tests recover exactly the corresponding singular support, and that differentiation and multiplication by coefficients of the same regularity cannot create new singular directions.
 

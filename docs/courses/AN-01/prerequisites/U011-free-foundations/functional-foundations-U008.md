@@ -1,6 +1,6 @@
 # Functional extension and complete test spaces
 
-*Selected from the earlier programme lesson **Banach estimates, quotient spaces and compact parameter arguments**, AN03-P004. The programme credits and CC0 1.0 dedication are retained in the accompanying notices. Selection by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026.*
+*Selected from the earlier programme lesson **Banach estimates, quotient spaces and compact parameter arguments**, AN03-P004. The programme credits and CC0 1.0 dedication are retained in the accompanying notices. Selection by GPT-6 Astra (OpenAI), October 2026.*
 
 These complete proof selections supply exactly the complex norm-preserving extension theorem, the Baire theorem and completeness of fixed-support smooth test spaces. Section numbers are retained. Here a norm is a positive definite, absolutely homogeneous function satisfying the triangle inequality; no completeness of a normed space is assumed unless stated. The scalar arithmetic, finite-dimensional norm rules, Euclidean compactness and fundamental theorem used in these proofs are proved in the accompanying [scalar calculus](metric-foundation-bridges.md) and [finite algebra](stable-prerequisite-bridges.md) selections.
 
@@ -133,6 +133,6 @@ All later centers lie in \(\overline B(z_j,r_j)\), so their mutual distances are
 
 ## Source and licence
 
-The selections above retain their original mathematical text and numbering. Original licence and attribution: [RIGHTS](notices/RIGHTS.md), [title page](notices/TITLE_PAGE.md), [history](notices/HISTORY.md), and [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). This selection is licensed under CC0 1.0, with no Invariant Sections, Front-Cover Texts or Back-Cover Texts. Its [selection history](notices/U008_SELECTION_HISTORY.md) records the changes and retained source credit.
+These readings contain the functional extension, completeness and test-space arguments from AN-03. [Credits](notices/TITLE_PAGE.md), [rights](notices/RIGHTS.md) and the [CC0 1.0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) accompany the text.
 
 Free human sources for the compared arguments are Paul Garrett's [*Banach Spaces*](https://www-users.cse.umn.edu/~garrett/m/fun/notes_2016-17/02_banach.pdf), Section 9, and [*Review of metric spaces*](https://www-users.cse.umn.edu/~garrett/m/fun/notes_2012-13/01_metric_spaces.pdf), Theorem 4.0.1. Their external citations do not replace any of the included proofs.

@@ -1,6 +1,6 @@
 # Transitivity and primitivity
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 The same Lie algebra can act on spaces of different dimensions. The missing information is the stabilizer of a point. For a transitive action, a Lie algebra together with that stabilizer determines the entire local geometry. Subalgebras between the stabilizer and the whole algebra describe every invariant foliation. This turns the question of primitivity into a question about maximal subalgebras.
 

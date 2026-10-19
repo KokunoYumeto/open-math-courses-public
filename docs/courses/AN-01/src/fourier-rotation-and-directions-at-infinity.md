@@ -1,6 +1,6 @@
 # Fourier rotation and directions at infinity
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 The directions in which a Fourier support escapes to infinity bound every analytic singular direction. Homogeneity gives a stronger conclusion: Fourier transformation exchanges a nonzero base point and a nonzero covector, reversing the sign of the former. At a zero base point, physical support replaces the missing covector information. We prove these assertions for smooth wavefront and every admissible derivative-growth class, including distributions whose scaling law holds only away from the origin.
 

@@ -1,6 +1,6 @@
 # Characteristic planes and convex-domain uniqueness
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0). No independent review is claimed.*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0). *
 
 Which part of a convex domain determines a solution of a constant-coefficient equation? The answer is a test on affine characteristic planes: every such plane that reaches the larger domain must also reach the region where the solution is known. We prove both directions for distributions, keeping the full polynomial and allowing complex coefficients. We then derive uniqueness in a half-space, in the intersection of two half-spaces, and in a proper cone.
 

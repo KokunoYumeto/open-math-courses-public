@@ -136,6 +136,47 @@ This is the complete assertion of Takesaki III, XIII §3, Exercise 8(b), after a
 
 *Proof.* The first-label choice and compatible finite lifts do not use commutativity. Formula (2.6) lies in the stabilizer of \(y\), hence in \(H\). Centrality lets \(h\) pass through \(c(z,y)\) in (2.9), which is the remaining use of commutativity. All other steps are unchanged. In the absence of centrality that product instead contains \(c(z,y)h c(z,y)^{-1}\); this computation alone makes no claim that another coordinate choice cannot trivialize that conjugation. \(\square\)
 
+**Example 2.3 (noncentral fibres can still have product coordinates).** Let \(G=S_3\), let \(H=A_3=\langle r\rangle\) with \(r=(1\,2\,3)\), and let \(G\) act on the two cosets \(X=G/H=\{a,b\}\). Give the objects equal positive mass. The action is transitive and ergodic, its kernel and every point stabilizer are \(H\), and \(H\) is normal but not central. Put \(t=(1\,2)\). Then \(trt^{-1}=r^{-1}\).
+
+Choose \(s_a=e\), \(s_b=t\), and set
+\[
+c(y,x)=s_y s_x^{-1}.
+\tag{2.10}
+\]
+It carries \(x\) to \(y\) and satisfies \(c(z,y)c(y,x)=c(z,x)\). In the first coordinates of the preceding proof an arrow has label \(g=h c(y,x)\), with \(h\in H\) at its range. Their product is
+\[
+\begin{gathered}
+(k,z,y)(h,y,x)\\
+ =\bigl(k\,c(z,y)h c(z,y)^{-1},z,x\bigr).
+\end{gathered}
+\tag{2.11}
+\]
+For a crossing arrow, the conjugation in (2.11) inverts \(H\); it cannot be dropped from these coordinates.
+
+Nevertheless the groupoid is a direct product after identifying each isotropy fibre with the one at \(a\). Define
+\[
+\begin{gathered}
+D(g,x)=\bigl(s_y^{-1}g s_x,y,x\bigr),\\
+y=gx.
+\end{gathered}
+\tag{2.12}
+\]
+Its first coordinate lies in \(H\), since it fixes \(a\). Its inverse sends \((h,y,x)\) to \((s_y h s_x^{-1},x)\). These are inverse Borel maps on finite discrete spaces and fix units. If \(g:x\to y\) and \(l:y\to z\), their first coordinates multiply as
+\[
+\begin{aligned}
+(s_z^{-1}l s_y)(s_y^{-1}g s_x)
+ &=s_z^{-1}lg s_x.
+\end{aligned}
+\tag{2.13}
+\]
+Thus \(D\) is a groupoid isomorphism to \(H\times(X\times X)\), with ordinary multiplication on \(H\). Fibrewise arrow bijections and the unchanged unit measure preserve both counting measures.
+
+For comparison with (2.7), write \(g=h c(y,x)\). Formula (2.12) replaces its first coordinate \(h\) by \(s_y^{-1}h s_y\): it does nothing at range \(a\) and inverts the coordinate at range \(b\). That change cancels the conjugation in (2.11). Centrality in Proposition 2.2 is a sufficient hypothesis for its displayed coordinate formula, not a necessary hypothesis for every possible product isomorphism. This finite calculation uses a Borel choice \(s_x:a\to x\) over its one orbit. It does not assert that such full-orbit roots exist for arbitrary measured relations.
+
+![Two isotropy identifications for the noncentral kernel of the two-coset action of S3](figures/noncentral-kernel-product-coordinates.svg)
+
+*Figure 1. Example 2.3. Conjugation by the crossing transport \(t\) inverts the three-element kernel. The first coordinate of (2.7) uses the literal copy of \(H\) at each range; (2.12) transports both copies back to \(a\). The diagram displays two coordinate descriptions of the same arrows. Exercise 5.7 checks a product whose label changes if the conjugation is omitted. [Open the editable diagram at full size](figures/noncentral-kernel-product-coordinates.svg).*
+
 ## 3. A five-point rotation with a kernel carry
 
 Use additive group notation. Let \(G=\mathbb Z\) act on \(X=\{0,1,2,3,4\}\) by
@@ -154,7 +195,7 @@ The first coordinate is in \(5\mathbb Z\). For \(m=1\), the arrows \(0\to1\to2\t
 
 ![Coherent endpoint lifts and the kernel carry for a five-point rotation](figures/kernel-carry-and-groupoid-split.svg)
 
-*Figure 1. The exact coordinates in (3.1), with source traversed first. Four generator arrows have kernel label 0; the wrap from 4 to 0 has label 5. Coherent endpoint lifts telescope, while kernel labels add, so the whole cycle is the isotropy loop 5 at 0. The diagram represents the finite example, not a choice of orbit roots for arbitrary measured relations. Proof locators: Theorem 2.1, (2.5)–(2.9), and (3.1). Human source: Takesaki III, XIII §3, Exercise 8.*
+*Figure 2. The exact coordinates in (3.1), with source traversed first. Four generator arrows have kernel label 0; the wrap from 4 to 0 has label 5. Coherent endpoint lifts telescope, while kernel labels add, so the whole cycle is the isotropy loop 5 at 0. The diagram represents the finite example, not a choice of orbit roots for arbitrary measured relations. Proof locators: Theorem 2.1, (2.5)–(2.9), and (3.1). Human source: Takesaki III, XIII §3, Exercise 8.*
 
 The group cannot be \(5\mathbb Z\times\mathbb Z/5\mathbb Z\): the latter has an element of order five, while \(\mathbb Z\) has none. Nevertheless (3.1) is an explicit groupoid product isomorphism. A label attached to an endpoint pair can depend on both endpoints. A group section would have to depend only on its residue, which is a different condition.
 
@@ -216,8 +257,30 @@ where centrality of \(H\) gives the second equality. Cancel the last factor to o
 
 *Solution.* Faithfulness makes \(H=\{e\}\). Theorem 1.2 then makes the action free on its conull reduction, and (2.3) identifies its transformation groupoid with its principal orbit relation. For a one-point trivial action, \(H=G\), \(K\) is trivial and \(R\) has only the identity pair. The product \(H\times R\) is the one-unit group \(G\), including every original loop. These groupoids agree only in the corresponding trivial case; taking the endpoint relation alone in the second example would discard its nonidentity loops.
 
+**Exercise 5.7 (a conjugation cannot be omitted).** *Level 3.* In Example 2.3, traverse the loop \(g=r\) at \(a\), followed by the crossing arrow \(l=t:a\to b\). Compute the product in the literal range-fibre coordinates (2.7), and then in the fixed-root coordinates (2.12).
+
+*Solution.* The first arrow has literal coordinates \((r,a,a)\); the second has \((e,b,a)\), because its coherent endpoint lift is \(c(b,a)=t\). Their original product has label \(tr\). In the literal range-fibre coordinates its kernel coordinate is
+\[
+(tr)c(b,a)^{-1}=trt^{-1}=r^{-1}.
+\tag{5.1}
+\]
+This is (2.11): the later arrow contributes \(e\), and its crossing transport conjugates the earlier \(r\) to \(r^{-1}\). Replacing that formula by ordinary multiplication would give \(r\), a different element of the order-three group.
+
+In the fixed-root coordinates, \(D(r,a)=(r,a,a)\) and \(D(t,a)=(e,b,a)\). Their product is \((r,b,a)\). Directly,
+\(s_b^{-1}(tr)s_a=t^{-1}tr=r\),
+in agreement with (2.13). The old coordinate \(r^{-1}\) at range \(b\) becomes \(t^{-1}r^{-1}t=r\). No arrow or group operation has changed; the identification of its range isotropy with the reference copy has changed.
+
+**Exercise 5.8 (finite classes need not have dyadic size).** *Level 2.* For the five-point pair relation in Section 3, show that no full-unit subrelation can have every class of size two. Explain why compatible lifting still applies to that example, and why an exhaustion whose successive constant class sizes are \(2^k\) is a stronger requirement than an exhaustion by finite classes.
+
+*Solution.* A subrelation partitions the five objects. If every class had size two, the total number of objects would be twice the number of classes and hence even, which contradicts five. Since all five points have positive measure, passing to a conull set cannot discard a point. In particular no full-unit stage of class size two exists, and an increasing sequence with all the prescribed class sizes \(2^k\) cannot exist on this space.
+
+The full five-point relation itself is a finite-class Borel relation; the constant sequence equal to that relation is already a finite exhaustion. Theorem 1.1 of the lifting lesson therefore applies directly. Indeed its least-root construction gives exactly \(c(j,i)=j-i\) in (3.1). No dyadic-size hypothesis occurs in that proof. Properly ergodic dyadic models and their atomless splitting arguments address another branch; the elementary finite-orbit case must be retained separately when using those source results.
+
 ## Bibliography and scope
 
-Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §3, Exercise 8(a)–(b), printed p. 59. The amenability and lifting mechanisms are Theorem XIII.4.10 and Theorem XIII.3.17. Their applications are proved in the linked prerequisite lessons.
+- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §3, Exercise 8(a)–(b), printed p. 59. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). It asks for the almost-everywhere stabilizer identification and the product of the kernel with the quotient action's principal groupoid, while warning that the group extension need not split. Its indicated inputs are Theorems XIII.4.10 and XIII.3.17.
+- [Programme amenability] [Haar averages and compact translation control](haar-averages-and-compact-translation-control.md#6-permanence-with-topology), Proposition 6.1, proves amenability of abelian locally compact groups. [Invariant means on measured relations](invariant-means-on-measured-relations.md), Proposition 2.1, Lemmas 4.1 and 5.1 and Theorem 6.1/Corollary 6.2, supplies the nonsingular finite-class exhaustion, including sigma-finite measure classes. Proposition 6.3 there separates constant-size AF conventions from this finite-class conclusion.
+- [Programme lifting] [Compatible lifts and cohomology reduction](compatible-lifts-and-cohomology-reduction.md#1-lifting-a-choice-of-arrows), Theorem 1.1, proves exact agreement of finite lifts. It works with arbitrary finite classes. Full-unit dyadic stages are not assumed; Exercise 5.8 checks the finite five-point obstruction to that stronger condition. The source's dyadic-array argument and the elementary finite-orbit branch must be distinguished.
 
-This lesson solves both parts at the source's countable discrete abelian, ergodic, possibly nonfaithful scope. Its product is an isomorphism on a common invariant conull Borel reduction, preserving source and range counting classes. It also proves the explicitly narrower central-kernel generalization in Proposition 2.2. It does not supply the arbitrary locally compact factor-action localization or the uniform-source cocycle strictification requested in the preceding source Exercise 7.
+Theorems 1.2 and 2.1 treat the source's countable discrete abelian, ergodic, possibly nonfaithful scope on a common invariant conull Borel reduction. They preserve the two counting measures. Proposition 2.2 gives a sufficient central-kernel hypothesis for its stated coordinates. Example 2.3 and Exercise 5.7 compute a noncentral finite kernel whose isotropy fibres admit another product identification. The five-point and rational-rotation examples distinguish a groupoid splitting from a group splitting and a compatible arrow lift from a full-orbit transversal. It does not supply the arbitrary locally compact factor-action localization or the uniform-source cocycle strictification requested in the preceding source Exercise 7.
+

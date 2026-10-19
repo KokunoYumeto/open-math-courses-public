@@ -1,6 +1,6 @@
 # Weights and semicyclic representations: the exact opening package
 
-**Self-checked by the writing AI.**
+
 
 This lesson gives the exact opening package for weights on an arbitrary von Neumann algebra: the three defining regularity conditions, the hereditary-cone algebra, the finite definition domain, the semicyclic quotient representation, and the factorization lemma controlling support projections. No separability, sigma-finiteness, faithful state, or countability assumption is made.
 
@@ -8,7 +8,7 @@ A freely accessible comparison is Brent Nelson, [*Tomita–Takesaki Theory*, Def
 
 The foundational statements already have exact course owners: the regularity definitions, hereditary-cone algebra, finite complex extension, Cauchy–Schwarz and null quotient, GNS semicyclic construction, normality, finite cutoffs and faithfulness. The support-normalized factorization lemma owns the single-factor statement below. These owners retain their statements; the local arguments are alternative proofs and a direct reconstruction from these free inputs. The coefficient check, the convention counterexample and the full strong-family and increasing-net conclusions remain explicit local material. No duplicate foundational completion is claimed.
 
-The earlier bridges to the foundation statements, semifiniteness correction and solved comparison are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. The current free-source reconstruction and added proof details are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0. Earlier exposition and provider credits retain their existing licences.
+The exposition includes contributions by GPT-6.1 Sol and GPT-6 Astra (OpenAI), under CC0. Other component licences and credits are stated in their notices.
 
 The bounded inputs have exact written proofs: BK01 for Hilbert completion, bounded extensions, square roots and continuous calculus; BK02 for the bicommutant theorem; BK04 for arbitrary bounded increasing positive nets; BK06 for supports; and BK08 for testing commutation on unitaries. Inner products are linear in the first variable.
 

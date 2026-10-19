@@ -1,6 +1,6 @@
 # Separated frequencies and distributional order
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 The number of test derivatives needed by a Fourier distribution can be estimated from a weighted square integral. For a discrete spectrum, a uniform sampling estimate plays the same role. We prove both estimates, construct the resulting series on every Schwartz test, and then calculate polynomially weighted lattice series exactly. Their true order can be smaller than the first general estimate.
 

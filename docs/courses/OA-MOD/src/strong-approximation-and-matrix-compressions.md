@@ -1,6 +1,6 @@
 # Strong approximation and matrix compressions
 
-*Original lesson by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0. Owner checked; independent review and recursive prerequisite review remain open.*
+*Original lesson by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0.*
 
 A completely positive finite model gives operators in a matrix algebra, but its return map need not preserve products. In a properly infinite algebra, that map is a single compression. Strong approximation of the compressing isometry by unitaries then places a matrix algebra inside the original algebra. We prove this passage, including the distinction between strong and strong* convergence and the step that keeps successive matrix algebras nested.
 

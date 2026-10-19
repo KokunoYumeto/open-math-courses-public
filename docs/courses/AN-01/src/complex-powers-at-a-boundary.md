@@ -1,6 +1,6 @@
 # Complex powers at a boundary
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), 4 October 2026. Public domain (CC0).*
 
 The upper and lower traces of a complex power differ because the logarithm approaches the negative axis with arguments \(+\pi\) and \(-\pi\). At a negative integer that difference is concentrated at zero. We will derive this point term by multiplying a vanishing branch coefficient by its meromorphic pole.
 
@@ -338,4 +338,4 @@ Here the translated principal value is defined by translating the test in the al
 - [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Corollary 2.2, and [Gluing holomorphic sides](gluing-holomorphic-sides.md), Lemma 3.2: power series and identity propagation. Their scalar and integration prerequisites are included with those lessons.
 - [Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), Sections 11.1–11.2.2: freely accessible Fourier proofs compared with the supplied foundation. The complete Fourier–Laplace boundary argument is H0–H2 above.
 
-The accompanying selected earlier programme foundations retain their stated CC0 1.0 licences and notices. This lesson and the newly written Schwartz Fourier companion are CC0.
+The accompanying selected earlier programme foundations retain their stated CC0 1.0 licences and notices. This lesson and the Schwartz Fourier companion are CC0.

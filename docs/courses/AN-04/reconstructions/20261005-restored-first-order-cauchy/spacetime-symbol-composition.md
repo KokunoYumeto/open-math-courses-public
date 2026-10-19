@@ -1,6 +1,6 @@
 # Spatial operators inside spacetime microlocal tests
 
-This independently written companion proves the mixed composition used in U030. Its mathematical antecedent is Hörmander III, Theorem 18.1.35 in the approved 2007 eBook. This exposition is CC0.
+This independently written companion proves the mixed composition used in U030. Its mathematical antecedent is Hörmander III, Theorem 18.1.35 in the 2007 eBook. This exposition is CC0.
 
 ## M1. Classes, operator domains and the ordinary prerequisites
 

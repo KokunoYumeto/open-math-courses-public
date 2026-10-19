@@ -1,6 +1,6 @@
 # Detecting normal weights by finite observations
 
-**Self-checked by the writing AI.**
+
 
 An infinite weight cannot be tested by applying a bounded-functional continuity theorem to it. This unit proves the equivalence between preservation of increasing suprema, arbitrary positive summation, lower semicontinuity, and recovery from dominated normal positive functionals. The algebra and the weight are arbitrary: faithfulness, semifiniteness, separability, and the existence of a faithful normal state on the whole algebra are not hypotheses.
 

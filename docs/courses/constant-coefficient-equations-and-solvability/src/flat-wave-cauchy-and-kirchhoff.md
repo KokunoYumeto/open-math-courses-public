@@ -49,6 +49,40 @@ W_cE_c=c\,\delta(ct)\delta_x=\delta_{(0,0)}.
 Its support is \(C_c^+\), its homogeneity degree is \(1-n\), and
 \(\partial_tE_c(0+)=c^2\delta_x\). Thus \(E_c\) is normalized for \(W_c\). The kernel for a unit initial velocity is \(c^{-2}E_c\).
 
+### The gamma normalization in the flat kernel
+
+The Laplace construction of (2)–(3) in [flat, WHK-002](../prerequisites/wave-hadamard-kernels.html#AN03-WHK-002) uses the duplication identity. Its constant can be obtained directly from convergent integrals. For \(\operatorname{Re}a,\operatorname{Re}b>0\), set
+\[
+\begin{aligned}
+\Gamma(a)&=\int_0^\infty e^{-r}r^{a-1}\,dr,\\
+B(a,b)&=\int_0^1 v^{a-1}(1-v)^{b-1}\,dv.
+\end{aligned}
+\tag{5a}
+\]
+All powers of positive real numbers use the real logarithm. Absolute convergence justifies multiplying the two gamma integrals. In their positive quadrant put \(r=s+t\), \(v=s/(s+t)\); the Jacobian is \(r\). The resulting product integral factors as
+\[
+\Gamma(a)\Gamma(b)=\Gamma(a+b)B(a,b).
+\tag{5b}
+\]
+This proves the beta identity with its constant. The substitutions are valid also for complex \(a,b\) in the stated half-planes, by the same absolute bounds.
+
+For real \(z>0\), first put \(v=(1+u)/2\) in \(B(z,z)\), then use symmetry and \(w=u^2\). The endpoint singularities remain integrable, and these substitutions give
+\[
+\begin{aligned}
+B(z,z)
+&=2^{1-2z}\int_{-1}^1(1-u^2)^{z-1}\,du\\
+&=2^{1-2z}B(1/2,z).
+\end{aligned}
+\tag{5c}
+\]
+Finally, \(\Gamma(1/2)=2\int_0^\infty e^{-x^2}\,dx\). Squaring this positive integral and using polar coordinates in the positive quadrant gives its square as \(4(\pi/2)\int_0^\infty e^{-r^2}r\,dr=\pi\). Thus \(\Gamma(1/2)=\sqrt\pi\). Substitute (5b) in (5c) and cancel the positive real factor \(\Gamma(z)\). We obtain
+\[
+\Gamma(2z)=\frac{2^{2z-1}}{\sqrt\pi}
+\Gamma(z)\Gamma(z+1/2).
+\tag{5d}
+\]
+Both sides are holomorphic for \(\operatorname{Re}z>0\): on every compact subset, the gamma integrals and their differentiated integrands have integrable bounds by a fixed finite sum of powers times \(e^{-r}\) and powers of \(|\log r|\). The identity theorem therefore extends (5d) from positive real \(z\) to that half-plane. This is precisely the range used before the flat-kernel family is continued by differentiation. In particular, the factor in (3) is fixed by convergent integrals, including the cone vertex through the Laplace construction.
+
 ## The boundary jump and uniqueness
 
 Addition is proper on \(C_c^+\times H\): the inverse image of every compact set under addition is compact. Indeed, if \((a,b)+(s,y)\) lies in a fixed compact set, then \(a,s\geq0\) and their sum is bounded. Consequently both times are bounded, \(|b|\leq ca\) is bounded, and the bounded spatial sum bounds \(y\). Closedness completes the proof. This argument allows arbitrary spatial support in \(H\).

@@ -1,6 +1,6 @@
 # Convolution as addition of supports
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), 4 October 2026. Public domain (CC0).*
 
 Adding two source locations explains both the power and the limitation of convolution. Two compact sources always give a distribution at their sums. Two unbounded sources do so when a bounded output can receive contributions only from a compact set of input pairs. This geometric condition will also control limits, associativity and local regularity.
 

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Inductive limits and quasi-free factors · Modular theory and weights</title><link href="../../assets/site.css" rel="stylesheet"/><link href="reader.css" rel="stylesheet"/><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/inductive-limits-and-quasifree-factors.md">Editable Markdown</a></nav><article class="lesson"><h1 id="inductive-limits-and-quasi-free-factors">Inductive limits and quasi-free factors</h1>
+<p>Finite matrix algebras fit together in two useful ways: by norm completion and by passage to the von Neumann algebra in a state representation. The CAR algebra makes both constructions explicit. We prove its representation independence and simplicity, construct every gauge-invariant quasi-free state, identify its completed GNS space and prove factoriality, including the nonfaithful endpoints. The final comparison retains the full type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span> conclusion for a constant covariance.</p>
+<p>The source scope is Takesaki, <em>Theory of Operator Algebras III</em>, XIV.1, Definitions 1.1, 1.3 and 1.4, Example 1.2 and all six exercises, printed pages 82–84 and 91–94. The earlier programme proofs are <span class="unlinked">Infinite tensor products, Section 1 and F05, F07, F10</span>, <span class="unlinked">Fermions, Fock space and quasi-free factors, Sections 1–6, 11 and 13</span>, and the all-weight comparison in <a href="../OA-APPROX/constant-car-states-and-the-periodic-core.html">Constant CAR states and the periodic core, Section 6</a>. Their named foundational inputs remain in force.</p>
+<p>Inner products here are linear in the first variable. Creation <span class="math" data-tex="\(c(f)\)">\(c(f)\)</span> is linear in <span class="math" data-tex="\(f\)">\(f\)</span>, and annihilation <span class="math" data-tex="\(a(f)=c(f)^*\)">\(a(f)=c(f)^*\)</span> is conjugate-linear:</p>
+<span class="math math-display" data-tex="\[
+\{a(f),a(g)\}=0,\qquad
+\{a(f),a(g)^*\}=\langle g,f\rangle1 .
+\tag{CAR.1}
+\]">\[
+\{a(f),a(g)\}=0,\qquad
+\{a(f),a(g)^*\}=\langle g,f\rangle1 .
+\tag{CAR.1}
+\]</span>
+<p>We use the occupation covariance <span class="math" data-tex="\(S\)">\(S\)</span>, specified by
+<span class="math" data-tex="\(\omega_S(a(f)^*a(g))=\langle Sf,g\rangle\)">\(\omega_S(a(f)^*a(g))=\langle Sf,g\rangle\)</span>.
+The source instead calls the linear creation generator <span class="math" data-tex="\(a(f)\)">\(a(f)\)</span> and uses a covariance <span class="math" data-tex="\(T\)">\(T\)</span> for the opposite order. The precise dictionary is</p>
+<span class="math math-display" data-tex="\[
+q(f)=a(f)^*,\qquad
+\gamma_T=\omega_{1-T},\qquad
+\gamma_T(q(g)^*q(f))=\langle Tf,g\rangle .
+\tag{CAR.2}
+\]">\[
+q(f)=a(f)^*,\qquad
+\gamma_T=\omega_{1-T},\qquad
+\gamma_T(q(g)^*q(f))=\langle Tf,g\rangle .
+\tag{CAR.2}
+\]</span>
+<p>We return to the resulting correction to its vacuum assertion in Section 8.</p>
+<h2 id="norms-and-kernels-in-an-inductive-sequence"><span id="OA-MOD-CAR-01"></span><span id="oa-mod-car-01"></span>Norms and kernels in an inductive sequence</h2>
+<p>Let <span class="math" data-tex="\(A_n\)">\(A_n\)</span> be <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebras and <span class="math" data-tex="\(\phi_n:A_n\to A_{n+1}\)">\(\phi_n:A_n\to A_{n+1}\)</span> star homomorphisms, without injectivity or unit assumptions. The sequence is unital when every algebra has a unit and every map preserves it; the compatible unit classes then give a unit in the completed limit. Write <span class="math" data-tex="\(\phi_{m,n}\)">\(\phi_{m,n}\)</span> for the composite from stage <span class="math" data-tex="\(n\)">\(n\)</span> to stage <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(\phi_{n,n}=\mathrm{id}\)">\(\phi_{n,n}=\mathrm{id}\)</span>. In the algebraic direct limit, <span class="math" data-tex="\(a\in A_n\)">\(a\in A_n\)</span> and <span class="math" data-tex="\(b\in A_k\)">\(b\in A_k\)</span> represent the same element when their images agree at some common later stage. Transitivity follows by moving two such equalities to one further stage. Addition, multiplication, scalar multiplication and adjoint are computed at a common stage; moving further preserves them, so they are independent of representatives.</p>
+<p>The precise <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-norm facts needed here are proved in the earlier F05, F07 and F10: star homomorphisms are contractive, injective ones are isometric, and</p>
+<span class="math math-display" data-tex="\[
+\|\phi(a)\|=\operatorname{dist}(a,\ker\phi).
+\tag{CAR.3}
+\]">\[
+\|\phi(a)\|=\operatorname{dist}(a,\ker\phi).
+\tag{CAR.3}
+\]</span>
+<p>The last identity uses the <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-quotient norm and injective isometry, not merely contractivity.</p>
+<p>Contractivity makes <span class="math" data-tex="\(\|\phi_{m,n}(a)\|\)">\(\|\phi_{m,n}(a)\|\)</span> decrease. Define on the algebraic limit</p>
+<span class="math math-display" data-tex="\[
+p([a])=\inf_{m\geq n}\|\phi_{m,n}(a)\|.
+\tag{CAR.4}
+\]">\[
+p([a])=\inf_{m\geq n}\|\phi_{m,n}(a)\|.
+\tag{CAR.4}
+\]</span>
+<p>Equivalent representatives have equal late images and hence equal infima. Computing two elements at a common stage and passing to the decreasing limits gives the triangle inequality, scalar homogeneity, submultiplicativity,
+<span class="math" data-tex="\(p(x^*)=p(x)\)">\(p(x^*)=p(x)\)</span>, and <span class="math" data-tex="\(p(x^*x)=p(x)^2\)">\(p(x^*x)=p(x)^2\)</span>.
+Thus <span class="math" data-tex="\(N=\{x:p(x)=0\}\)">\(N=\{x:p(x)=0\}\)</span> is a two-sided star ideal. Quotient by <span class="math" data-tex="\(N\)">\(N\)</span> and complete. Multiplication and adjoint extend continuously and preserve the <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-identity, so the result <span class="math" data-tex="\(A\)">\(A\)</span> is a <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra, with compatible maps <span class="math" data-tex="\(\iota_n\)">\(\iota_n\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\|\iota_n(a)\|=p([a]),\qquad
+A=\overline{\bigcup_n\iota_n(A_n)}^{\|\cdot\|}.
+\tag{CAR.5}
+\]">\[
+\|\iota_n(a)\|=p([a]),\qquad
+A=\overline{\bigcup_n\iota_n(A_n)}^{\|\cdot\|}.
+\tag{CAR.5}
+\]</span>
+<p>If <span class="math" data-tex="\(\psi_n:A_n\to B\)">\(\psi_n:A_n\to B\)</span> are compatible star homomorphisms, their common-stage map on the algebraic limit satisfies
+<span class="math" data-tex="\(\|\psi_n(a)\|\leq\|\phi_{m,n}(a)\|\)">\(\|\psi_n(a)\|\leq\|\phi_{m,n}(a)\|\)</span> for every <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>.
+It therefore kills <span class="math" data-tex="\(N\)">\(N\)</span>, is contractive for (CAR.4), and extends uniquely to <span class="math" data-tex="\(A\)">\(A\)</span>. This proves the universal property, including the zero limit.</p>
+<p>Put <span class="math" data-tex="\(K_n=\bigcup_{m\geq n}\ker\phi_{m,n}\)">\(K_n=\bigcup_{m\geq n}\ker\phi_{m,n}\)</span>. The kernels increase, and (CAR.3) gives</p>
+<span class="math math-display" data-tex="\[
+p([a])=\inf_{m\geq n}\operatorname{dist}(a,\ker\phi_{m,n})
+=\operatorname{dist}(a,K_n).
+\tag{CAR.6}
+\]">\[
+p([a])=\inf_{m\geq n}\operatorname{dist}(a,\ker\phi_{m,n})
+=\operatorname{dist}(a,K_n).
+\tag{CAR.6}
+\]</span>
+<p>The algebraic stage kernel is <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, whereas the kernel of <span class="math" data-tex="\(\iota_n\)">\(\iota_n\)</span> is its norm closure. If <span class="math" data-tex="\(K_n\)">\(K_n\)</span> is closed for every sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, every algebraic class can be represented at such a stage, where zero limiting norm means eventual zero. Thus <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. This is exactly the source's properness condition. It permits direct completion of the algebraic limit; it is not needed for existence of the completed <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-limit. If all connecting maps are injective, their isometry makes all <span class="math" data-tex="\(\iota_n\)">\(\iota_n\)</span> isometric.</p>
+<p>For the source example <span class="math" data-tex="\(A_n=C_0([n,\infty))\)">\(A_n=C_0([n,\infty))\)</span>, let the maps be restrictions. The eventual kernel is <span class="math" data-tex="\(C_c([n,\infty))\)">\(C_c([n,\infty))\)</span>: eventual vanishing is precisely compact support. Continuous cutoffs show this is dense, but the function <span class="math" data-tex="\(e^{-t}\)">\(e^{-t}\)</span> is not in it. Its algebraic germ is nonzero, while every germ has limiting norm zero, since every function vanishes at infinity. Thus the completed <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-limit is zero. Any star representation of the algebraic germ algebra on a Hilbert space restricts to a contractive star homomorphism on every <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, so its norm on a germ is bounded by every tail supremum and is zero. This proves the source's representation assertion as well.</p>
+<p>A morphism of sequences is a family <span class="math" data-tex="\(\theta_n:A_n\to B_n\)">\(\theta_n:A_n\to B_n\)</span> intertwining the connecting maps. Composing with the <span class="math" data-tex="\(B\)">\(B\)</span>-limit maps and using the universal property gives a homomorphism of limits. If all <span class="math" data-tex="\(\theta_n\)">\(\theta_n\)</span> are isomorphisms, their inverses also intertwine, and the induced maps are inverse on the dense stage unions and hence everywhere. This proves the conjugacy assertion.</p>
+<p>Finally, a sequential AF <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra is exactly a norm closure of an increasing sequence of finite-dimensional star subalgebras. One direction uses the finite-dimensional stage images in (CAR.5), which are closed; the other uses the inclusion sequence and its universal property. A finite-dimensional subspace is closed because its coordinate unit sphere is compact and its norm has a positive minimum there. Rational complex coordinates then give a countable dense subset at each stage, so every sequential AF algebra is separable. A directed finite-dimensional approximation without a countable cofinal sequence is a different assertion.</p>
+<h2 id="matrix-units-parity-strings-and-simplicity"><span id="OA-MOD-CAR-02"></span><span id="oa-mod-car-02"></span>Matrix units, parity strings and simplicity</h2>
+<p>Consider any family satisfying (CAR.1) on a nonzero representation Hilbert space. For a unit vector <span class="math" data-tex="\(f\)">\(f\)</span>, put <span class="math" data-tex="\(b=a(f)\)">\(b=a(f)\)</span>, <span class="math" data-tex="\(n=b^*b\)">\(n=b^*b\)</span>. The CAR give</p>
+<span class="math math-display" data-tex="\[
+b^2=0,\quad bb^*=1-n,\quad n^2=n,\quad bn=b,\quad nb=0 .
+\tag{CAR.7}
+\]">\[
+b^2=0,\quad bb^*=1-n,\quad n^2=n,\quad bn=b,\quad nb=0 .
+\tag{CAR.7}
+\]</span>
+<p>Neither <span class="math" data-tex="\(n\)">\(n\)</span> nor <span class="math" data-tex="\(1-n\)">\(1-n\)</span> is zero: either case, together with these identities, would force <span class="math" data-tex="\(b=0\)">\(b=0\)</span> and then <span class="math" data-tex="\(1=0\)">\(1=0\)</span>. Hence <span class="math" data-tex="\(\|b\|^2=\|n\|=1\)">\(\|b\|^2=\|n\|=1\)</span>, and scaling gives <span class="math" data-tex="\(\|a(f)\|=\|f\|\)">\(\|a(f)\|=\|f\|\)</span>. The four operators</p>
+<span class="math math-display" data-tex="\[
+e_{11}=1-n,\quad e_{12}=b,\quad e_{21}=b^*,\quad e_{22}=n
+\tag{CAR.8}
+\]">\[
+e_{11}=1-n,\quad e_{12}=b,\quad e_{21}=b^*,\quad e_{22}=n
+\tag{CAR.8}
+\]</span>
+<p>are matrix units: (CAR.7) and its adjoint verify <span class="math" data-tex="\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)">\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)</span>, and their diagonal sum is one.</p>
+<p>For orthonormal <span class="math" data-tex="\(f_1,\ldots,f_d\)">\(f_1,\ldots,f_d\)</span>, write <span class="math" data-tex="\(a_j=a(f_j)\)">\(a_j=a(f_j)\)</span>,
+<span class="math" data-tex="\(n_j=a_j^*a_j\)">\(n_j=a_j^*a_j\)</span>, and <span class="math" data-tex="\(Z_j=1-2n_j\)">\(Z_j=1-2n_j\)</span>. Two CAR interchanges show that <span class="math" data-tex="\(n_i\)">\(n_i\)</span> commutes with <span class="math" data-tex="\(a_j,a_j^*\)">\(a_j,a_j^*\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Each <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span> is a selfadjoint unitary, anticommutes with its own <span class="math" data-tex="\(a_j,a_j^*\)">\(a_j,a_j^*\)</span>, and commutes with the other modes. Thus the <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span> commute. Define</p>
+<span class="math math-display" data-tex="\[
+b_j=Z_1\cdots Z_{j-1}a_j .
+\tag{CAR.9}
+\]">\[
+b_j=Z_1\cdots Z_{j-1}a_j .
+\tag{CAR.9}
+\]</span>
+<p>Each <span class="math" data-tex="\(b_j\)">\(b_j\)</span> gives (CAR.8). These matrix systems commute for distinct <span class="math" data-tex="\(j\)">\(j\)</span>: moving an earlier field past a later one gives a CAR minus sign and a second minus sign from its own parity factor in the later string. The signs cancel. The diagonal projections commute as already shown.</p>
+<p>Products of one matrix unit from each system give <span class="math" data-tex="\(2^d\)">\(2^d\)</span>-by-<span class="math" data-tex="\(2^d\)">\(2^d\)</span> matrix units <span class="math" data-tex="\(E_{\alpha\beta}\)">\(E_{\alpha\beta}\)</span> whose diagonals sum to one. For a fixed index <span class="math" data-tex="\(o\)">\(o\)</span>, <span class="math" data-tex="\(Q=E_{oo}H\ne0\)">\(Q=E_{oo}H\ne0\)</span>; otherwise the matrix-unit relations would make all diagonal units zero. The map</p>
+<span class="math math-display" data-tex="\[
+\delta_\alpha\otimes\eta\longmapsto E_{\alpha o}\eta
+\quad(\eta\in Q)
+\tag{CAR.10}
+\]">\[
+\delta_\alpha\otimes\eta\longmapsto E_{\alpha o}\eta
+\quad(\eta\in Q)
+\tag{CAR.10}
+\]</span>
+<p>is unitary from <span class="math" data-tex="\(\mathbb C^{2^d}\otimes Q\)">\(\mathbb C^{2^d}\otimes Q\)</span> onto the representation space. Its isometry and surjectivity follow from the matrix-unit products and the diagonal sum. It identifies each <span class="math" data-tex="\(E_{\alpha\beta}\)">\(E_{\alpha\beta}\)</span> with the usual matrix unit tensored with <span class="math" data-tex="\(1_Q\)">\(1_Q\)</span>. The norm of a scalar matrix is therefore unchanged, by testing on <span class="math" data-tex="\(v\otimes\eta\)">\(v\otimes\eta\)</span> and expanding along a basis of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Since (CAR.9) also recovers every original mode, the algebra of a <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional one-particle subspace is exactly <span class="math" data-tex="\(M_{2^d}\)">\(M_{2^d}\)</span>.</p>
+<p>Any two nonzero CAR families consequently have compatible isometric maps on every finite-dimensional one-particle subspace, matching the generators. The maps agree on overlaps because they agree on polynomials in the same generators. They extend isometrically to the norm closures, which proves representation independence and the concrete universal property. Section 3 constructs one such family and hence the unital algebra <span class="math" data-tex="\(\operatorname{CAR}(K)\)">\(\operatorname{CAR}(K)\)</span>. For <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, this means <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>.</p>
+<p>Here is simplicity without a classification theorem. If a closed two-sided ideal <span class="math" data-tex="\(J\)">\(J\)</span> contains <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, put <span class="math" data-tex="\(r=\|x\|\)">\(r=\|x\|\)</span> and choose a local matrix element <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(\|x-y\|&lt;r/16\)">\(\|x-y\|&lt;r/16\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|x^*x-y^*y\|&lt;r^2/4,\qquad
+t=\|y\|^2&gt;3r^2/4.
+\]">\[
+\|x^*x-y^*y\|&lt;r^2/4,\qquad
+t=\|y\|^2&gt;3r^2/4.
+\]</span>
+<p>Choose a rank-one maximal-eigenvalue projection <span class="math" data-tex="\(e\)">\(e\)</span> of <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span> in that local matrix algebra. Then <span class="math" data-tex="\(h=ex^*xe\in J\cap e\operatorname{CAR}(K)e\)">\(h=ex^*xe\in J\cap e\operatorname{CAR}(K)e\)</span> and
+<span class="math" data-tex="\(\|h-te\|&lt;t\)">\(\|h-te\|&lt;t\)</span>.
+The series <span class="math" data-tex="\(t^{-1}\sum_{k\geq0}(e-h/t)^k\)">\(t^{-1}\sum_{k\geq0}(e-h/t)^k\)</span> is its inverse in the corner. Hence <span class="math" data-tex="\(e\in J\)">\(e\in J\)</span>. Conjugating <span class="math" data-tex="\(e\)">\(e\)</span> by local matrix partial isometries and summing gives <span class="math" data-tex="\(1\in J\)">\(1\in J\)</span>, so <span class="math" data-tex="\(J\)">\(J\)</span> is the whole algebra.</p>
+<p>For a countable infinite orthonormal basis, (CAR.9) identifies the first <span class="math" data-tex="\(d\)">\(d\)</span> modes with <span class="math" data-tex="\(M_2^{\otimes d}\)">\(M_2^{\otimes d}\)</span>, compatibly under <span class="math" data-tex="\(x\mapsto x\otimes1\)">\(x\mapsto x\otimes1\)</span>. Their union is dense: generator norm continuity and telescoping finite products reduce each polynomial to finite-support vectors. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CAR}(K)\cong\bigotimes_{j=1}^{\infty}M_2
+\quad\text{if }\dim K=\infty\text{ and }K\text{ is separable}.
+\tag{CAR.11}
+\]">\[
+\operatorname{CAR}(K)\cong\bigotimes_{j=1}^{\infty}M_2
+\quad\text{if }\dim K=\infty\text{ and }K\text{ is separable}.
+\tag{CAR.11}
+\]</span>
+<p>For <span class="math" data-tex="\(\dim K=d&lt;\infty\)">\(\dim K=d&lt;\infty\)</span>, the algebra is <span class="math" data-tex="\(M_{2^d}\)">\(M_{2^d}\)</span>. Infinite representation multiplicity does not change this distinction: one mode on <span class="math" data-tex="\(\mathbb C^2\otimes\ell^2\)">\(\mathbb C^2\otimes\ell^2\)</span> still generates only <span class="math" data-tex="\(M_2\otimes1\)">\(M_2\otimes1\)</span>. Thus the infinite-dimensional hypothesis in the source's Exercise 1(f) must concern the one-particle space, not merely its representation space.</p>
+<h2 id="exterior-completion-and-the-fock-vacuum"><span id="OA-MOD-CAR-03"></span><span id="oa-mod-car-03"></span>Exterior completion and the Fock vacuum</h2>
+<p>On <span class="math" data-tex="\(K^{\otimes n}\)">\(K^{\otimes n}\)</span>, use the left permutation representation</p>
+<span class="math math-display" data-tex="\[
+U_\sigma(f_1\otimes\cdots\otimes f_n)
+=f_{\sigma^{-1}(1)}\otimes\cdots\otimes f_{\sigma^{-1}(n)},\qquad
+A_n=\frac1{n!}\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)U_\sigma .
+\tag{CAR.12}
+\]">\[
+U_\sigma(f_1\otimes\cdots\otimes f_n)
+=f_{\sigma^{-1}(1)}\otimes\cdots\otimes f_{\sigma^{-1}(n)},\qquad
+A_n=\frac1{n!}\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)U_\sigma .
+\tag{CAR.12}
+\]</span>
+<p>The inverse indices make <span class="math" data-tex="\(U_\sigma U_\tau=U_{\sigma\tau}\)">\(U_\sigma U_\tau=U_{\sigma\tau}\)</span> under the usual composition convention. Replacing every permutation by its inverse leaves the sum <span class="math" data-tex="\(A_n\)">\(A_n\)</span> unchanged, so this also resolves the convention in the source's permutation formula. Since <span class="math" data-tex="\(U_\sigma^*=U_{\sigma^{-1}}\)">\(U_\sigma^*=U_{\sigma^{-1}}\)</span>, the average is selfadjoint. In its square each resulting permutation occurs <span class="math" data-tex="\(n!\)">\(n!\)</span> times with its sign; hence <span class="math" data-tex="\(A_n^2=A_n\)">\(A_n^2=A_n\)</span>.</p>
+<p>Put <span class="math" data-tex="\(\Lambda^nK=A_nK^{\otimes n}\)">\(\Lambda^nK=A_nK^{\otimes n}\)</span>, <span class="math" data-tex="\(\Lambda^0K=\mathbb C\)">\(\Lambda^0K=\mathbb C\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+[f_1,\ldots,f_n]=\sqrt{n!}\,A_n(f_1\otimes\cdots\otimes f_n).
+\]">\[
+[f_1,\ldots,f_n]=\sqrt{n!}\,A_n(f_1\otimes\cdots\otimes f_n).
+\]</span>
+<p>For an ordered orthonormal basis, the increasing occupation wedges form an orthonormal basis of <span class="math" data-tex="\(\Lambda^nK\)">\(\Lambda^nK\)</span>. Different increasing tuples have disjoint permutation orbits, and repeated entries antisymmetrize to zero. Applying <span class="math" data-tex="\(A_n\)">\(A_n\)</span> to the tensor basis proves completeness. Expansion of the same average gives</p>
+<span class="math math-display" data-tex="\[
+\langle[f_1,\ldots,f_n],[g_1,\ldots,g_n]\rangle
+=\det[\langle f_i,g_j\rangle].
+\tag{CAR.13}
+\]">\[
+\langle[f_1,\ldots,f_n],[g_1,\ldots,g_n]\rangle
+=\det[\langle f_i,g_j\rangle].
+\tag{CAR.13}
+\]</span>
+<p>Thus in dimension <span class="math" data-tex="\(d\)">\(d\)</span>, the <span class="math" data-tex="\(n\)">\(n\)</span>-particle dimension is <span class="math" data-tex="\(\binom dn\)">\(\binom dn\)</span>, with value zero for <span class="math" data-tex="\(n&gt;d\)">\(n&gt;d\)</span>, and the full exterior dimension is <span class="math" data-tex="\(2^d\)">\(2^d\)</span>.</p>
+<p>The Hilbert direct sum <span class="math" data-tex="\(\mathcal F(K)=\bigoplus_{n\geq0}\Lambda^nK\)">\(\mathcal F(K)=\bigoplus_{n\geq0}\Lambda^nK\)</span> is Fock space, with vacuum <span class="math" data-tex="\(\Omega=1\)">\(\Omega=1\)</span>. On its algebraic finite-degree sum, the unscaled product
+<span class="math" data-tex="\(\eta\wedge\zeta=A_{p+q}(\eta\otimes\zeta)\)">\(\eta\wedge\zeta=A_{p+q}(\eta\otimes\zeta)\)</span> for homogeneous degrees <span class="math" data-tex="\(p,q\)">\(p,q\)</span> is associative. Full antisymmetrization absorbs a preceding antisymmetrization on any consecutive block, so both parenthesizations of a triple product equal its full antisymmetrization. This is an algebraic product; no bounded multiplication on the entire Hilbert direct sum is asserted.</p>
+<p>Define creation on a vector of degree <span class="math" data-tex="\(n\)">\(n\)</span> by</p>
+<span class="math math-display" data-tex="\[
+c(f)\eta=\sqrt{n+1}\,A_{n+1}(f\otimes\eta).
+\tag{CAR.14}
+\]">\[
+c(f)\eta=\sqrt{n+1}\,A_{n+1}(f\otimes\eta).
+\tag{CAR.14}
+\]</span>
+<p>It sends <span class="math" data-tex="\([g_1,\ldots,g_n]\)">\([g_1,\ldots,g_n]\)</span> to <span class="math" data-tex="\([f,g_1,\ldots,g_n]\)">\([f,g_1,\ldots,g_n]\)</span>. For unit <span class="math" data-tex="\(f\)">\(f\)</span>, choose an orthonormal basis beginning with <span class="math" data-tex="\(f\)">\(f\)</span>. Creation carries occupation vectors not containing <span class="math" data-tex="\(f\)">\(f\)</span> isometrically, up to sign, to those containing <span class="math" data-tex="\(f\)">\(f\)</span>, and annihilates the other basis vectors. It therefore extends boundedly to Fock space with norm one. Scaling gives <span class="math" data-tex="\(\|c(f)\|=\|f\|\)">\(\|c(f)\|=\|f\|\)</span>, including <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p>Expanding (CAR.13) along the first row verifies its adjoint:</p>
+<span class="math math-display" data-tex="\[
+a(f)[g_1,\ldots,g_n]
+=\sum_{j=1}^n(-1)^{j-1}\langle g_j,f\rangle
+[g_1,\ldots,\widehat{g_j},\ldots,g_n],
+\qquad a(f)\Omega=0 .
+\tag{CAR.15}
+\]">\[
+a(f)[g_1,\ldots,g_n]
+=\sum_{j=1}^n(-1)^{j-1}\langle g_j,f\rangle
+[g_1,\ldots,\widehat{g_j},\ldots,g_n],
+\qquad a(f)\Omega=0 .
+\tag{CAR.15}
+\]</span>
+<p>Alternation gives two-creation anticommutation. The displayed contraction gives
+<span class="math" data-tex="\(a(f)c(g)+c(g)a(f)=\langle g,f\rangle1\)">\(a(f)c(g)+c(g)a(f)=\langle g,f\rangle1\)</span>.
+Adjoints give the other CAR; boundedness extends them from the occupation span to the whole space. This constructs the nonzero family needed in Section 2.</p>
+<p>The Fock family is irreducible. A vector killed by every <span class="math" data-tex="\(a(f)\)">\(a(f)\)</span> is a multiple of the vacuum: any nonzero coefficient at a nonempty occupation set survives a suitable contraction. If an operator <span class="math" data-tex="\(x\)">\(x\)</span> commutes with all creators and annihilators, then <span class="math" data-tex="\(x\Omega\)">\(x\Omega\)</span> is such a vector, hence equals <span class="math" data-tex="\(\lambda\Omega\)">\(\lambda\Omega\)</span>. Products of creators applied to <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> span a dense subspace, so commutation makes <span class="math" data-tex="\(x=\lambda1\)">\(x=\lambda1\)</span> everywhere.</p>
+<h2 id="bogoliubov-actions-and-the-even-tensor-legs"><span id="OA-MOD-CAR-04"></span><span id="oa-mod-car-04"></span>Bogoliubov actions and the even tensor legs</h2>
+<p>For a unitary <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, the family <span class="math" data-tex="\(a(uf)\)">\(a(uf)\)</span> satisfies (CAR.1). Representation independence gives an automorphism</p>
+<span class="math math-display" data-tex="\[
+\alpha_u(a(f))=a(uf),\qquad
+\alpha_u\alpha_v=\alpha_{uv},\qquad
+\alpha_u^{-1}=\alpha_{u^{-1}} .
+\tag{CAR.16}
+\]">\[
+\alpha_u(a(f))=a(uf),\qquad
+\alpha_u\alpha_v=\alpha_{uv},\qquad
+\alpha_u^{-1}=\alpha_{u^{-1}} .
+\tag{CAR.16}
+\]</span>
+<p>If <span class="math" data-tex="\(u_i\to u\)">\(u_i\to u\)</span> strongly, then generator norms give
+<span class="math" data-tex="\(\|\alpha_{u_i}(a(f))-\alpha_u(a(f))\|=\|(u_i-u)f\|\to0\)">\(\|\alpha_{u_i}(a(f))-\alpha_u(a(f))\|=\|(u_i-u)f\|\to0\)</span>.
+Telescoping proves convergence on polynomials, and density together with the automorphisms' unit norm proves point-norm convergence everywhere. In particular the source's strong* continuity holds.</p>
+<p>Let <span class="math" data-tex="\(\gamma=\alpha_{-1}\)">\(\gamma=\alpha_{-1}\)</span>. The bounded maps <span class="math" data-tex="\((\mathrm{id}\pm\gamma)/2\)">\((\mathrm{id}\pm\gamma)/2\)</span> split the algebra into even and odd parts. Polynomials of the corresponding total degree parity are dense there. If <span class="math" data-tex="\(L\perp N\)">\(L\perp N\)</span>, every field from one subspace anticommutes with every field or adjoint field from the other. Moving homogeneous words past each other gives</p>
+<span class="math math-display" data-tex="\[
+xy=(-1)^{rs}yx,\qquad
+x\in\operatorname{CAR}(L)_r,\quad y\in\operatorname{CAR}(N)_s .
+\tag{CAR.17}
+\]">\[
+xy=(-1)^{rs}yx,\qquad
+x\in\operatorname{CAR}(L)_r,\quad y\in\operatorname{CAR}(N)_s .
+\tag{CAR.17}
+\]</span>
+<p>Norm approximation extends the identity to the closed parity subspaces.</p>
+<p>Commutation alone does not prove the desired tensor identification; injectivity matters. Take finite-dimensional <span class="math" data-tex="\(E\subset L,F\subset N\)">\(E\subset L,F\subset N\)</span>, and order the <span class="math" data-tex="\(E\)">\(E\)</span>-modes first in (CAR.9). A second-leg generator becomes <span class="math" data-tex="\(P_E\otimes a_F(f)\)">\(P_E\otimes a_F(f)\)</span>, with <span class="math" data-tex="\(P_E\)">\(P_E\)</span> the first-leg parity product. Every even second-leg word loses its parity strings and is <span class="math" data-tex="\(1\otimes y\)">\(1\otimes y\)</span>; first-leg words are <span class="math" data-tex="\(x\otimes1\)">\(x\otimes1\)</span>. If <span class="math" data-tex="\(f=\dim F&gt;0\)">\(f=\dim F&gt;0\)</span>, even and odd occupation spaces each have dimension <span class="math" data-tex="\(2^{f-1}\)">\(2^{f-1}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CAR}(F)_{\mathrm{ev}}
+=M_{2^{f-1}}\oplus M_{2^{f-1}}.
+\tag{CAR.18}
+\]">\[
+\operatorname{CAR}(F)_{\mathrm{ev}}
+=M_{2^{f-1}}\oplus M_{2^{f-1}}.
+\tag{CAR.18}
+\]</span>
+<p>The equality follows because the full finite CAR algebra is every matrix, while commuting with parity means preserving its two eigenspaces. Any faithful representation contains both nonzero central blocks. The matrix-unit unitary (CAR.10) shows that multiplicities do not change their matrix norms. Thus the spatial norm of a finite sum <span class="math" data-tex="\(z=\sum x_j\otimes y_j\)">\(z=\sum x_j\otimes y_j\)</span> is exactly the maximum of its two finite matrix block norms, which is also the norm of <span class="math" data-tex="\(\sum x_jy_j\)">\(\sum x_jy_j\)</span> in the parity-string model. If <span class="math" data-tex="\(F=0\)">\(F=0\)</span>, the second leg is scalar and the same conclusion holds.</p>
+<p>Local even elements are dense in the even algebra by applying <span class="math" data-tex="\((\mathrm{id}+\gamma)/2\)">\((\mathrm{id}+\gamma)/2\)</span> to polynomial approximants. Approximating both factors of finite tensor sums proves that the preceding compatible isometries extend to</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+C^*(\operatorname{CAR}(L),\operatorname{CAR}(N)_{\mathrm{ev}})
+&amp;\cong\operatorname{CAR}(L)\otimes_{\min}\operatorname{CAR}(N)_{\mathrm{ev}},\\
+C^*(\operatorname{CAR}(L)_{\mathrm{ev}},\operatorname{CAR}(N))
+&amp;\cong\operatorname{CAR}(L)_{\mathrm{ev}}\otimes_{\min}\operatorname{CAR}(N).
+\end{split}
+\tag{CAR.19}
+\]">\[
+\begin{split}
+C^*(\operatorname{CAR}(L),\operatorname{CAR}(N)_{\mathrm{ev}})
+&amp;\cong\operatorname{CAR}(L)\otimes_{\min}\operatorname{CAR}(N)_{\mathrm{ev}},\\
+C^*(\operatorname{CAR}(L)_{\mathrm{ev}},\operatorname{CAR}(N))
+&amp;\cong\operatorname{CAR}(L)_{\mathrm{ev}}\otimes_{\min}\operatorname{CAR}(N).
+\end{split}
+\tag{CAR.19}
+\]</span>
+<p>The ranges contain the two legs and their polynomial products, so the maps are onto. Reversing the ordering of the legs proves the second formula.</p>
+<p>Normal ordering uses
+<span class="math" data-tex="\(a(g)a(f)^*=\langle f,g\rangle1-a(f)^*a(g)\)">\(a(g)a(f)^*=\langle f,g\rangle1-a(f)^*a(g)\)</span>.
+Each replacement either removes two letters or reduces the number of annihilator-before-creator inversions. Induction on these two nonnegative integers gives a span by</p>
+<span class="math math-display" data-tex="\[
+a(f_1)^*\cdots a(f_n)^*a(g_m)\cdots a(g_1),\qquad n,m\geq0 .
+\tag{CAR.20}
+\]">\[
+a(f_1)^*\cdots a(f_n)^*a(g_m)\cdots a(g_1),\qquad n,m\geq0 .
+\tag{CAR.20}
+\]</span>
+<p>This is a dense star subalgebra, with the identity as its empty word. Both zero lengths are necessary; positive lengths alone would omit even the identity and the odd generators in the one-mode algebra. In particular a bounded functional is determined by its normal moments.</p>
+<h2 id="every-covariance-and-its-completed-gns-model"><span id="OA-MOD-CAR-05"></span><span id="oa-mod-car-05"></span>Every covariance and its completed GNS model</h2>
+<p>Let <span class="math" data-tex="\(0\leq S\leq1\)">\(0\leq S\leq1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. For every finite-dimensional subspace <span class="math" data-tex="\(E\)">\(E\)</span>, the compression <span class="math" data-tex="\(S_E=P_ES|_E\)">\(S_E=P_ES|_E\)</span> is a positive contraction. Diagonalize it in an orthonormal basis, with eigenvalues <span class="math" data-tex="\(p_1,\ldots,p_d\)">\(p_1,\ldots,p_d\)</span>, and use the matrix units of Section 2. On the corresponding occupation matrix algebra put</p>
+<span class="math math-display" data-tex="\[
+\rho_E=\bigotimes_{j=1}^d
+\begin{pmatrix}1-p_j&amp;0\\0&amp;p_j\end{pmatrix}.
+\tag{CAR.21}
+\]">\[
+\rho_E=\bigotimes_{j=1}^d
+\begin{pmatrix}1-p_j&amp;0\\0&amp;p_j\end{pmatrix}.
+\tag{CAR.21}
+\]</span>
+<p>This is a positive trace-one matrix, also when some <span class="math" data-tex="\(p_j\)">\(p_j\)</span> equals zero or one.</p>
+<p>A normal word with repeated creation or annihilation basis indices vanishes. A word with different creation and annihilation index sets changes the occupation set and has zero diagonal expectation. With equal index sets, ordering both lists contributes their two permutation signs; the resulting word is the product of the corresponding number projections, with expectation <span class="math" data-tex="\(\prod p_j\)">\(\prod p_j\)</span>. These are precisely the signs and products of the determinant. Sesquilinear expansion gives</p>
+<span class="math math-display" data-tex="\[
+\omega_S\!\left(a(f_1)^*\cdots a(f_n)^*
+a(g_m)\cdots a(g_1)\right)
+=\begin{cases}
+\det[\langle Sf_j,g_i\rangle]_{i,j=1}^n,&amp;m=n,\\
+0,&amp;m\ne n.
+\end{cases}
+\tag{CAR.22}
+\]">\[
+\omega_S\!\left(a(f_1)^*\cdots a(f_n)^*
+a(g_m)\cdots a(g_1)\right)
+=\begin{cases}
+\det[\langle Sf_j,g_i\rangle]_{i,j=1}^n,&amp;m=n,\\
+0,&amp;m\ne n.
+\end{cases}
+\tag{CAR.22}
+\]</span>
+<p>The empty determinant is one. Since the entries are <span class="math" data-tex="\(\langle S_Ef_j,g_i\rangle=\langle Sf_j,g_i\rangle\)">\(\langle S_Ef_j,g_i\rangle=\langle Sf_j,g_i\rangle\)</span>, (CAR.20) makes the finite state independent of its diagonalizing basis and compatible under <span class="math" data-tex="\(E\subset F\)">\(E\subset F\)</span>. Any finite list of subspaces lies in their finite sum. These finite states therefore define a positive norm-one functional on the local union and extend by norm continuity to the full CAR algebra. Positivity passes to limits of local <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span>. Equation (CAR.20) proves uniqueness. This constructs the state without assuming a global eigenbasis of <span class="math" data-tex="\(S\)">\(S\)</span>, or that <span class="math" data-tex="\(E\)">\(E\)</span> reduces it.</p>
+<p>We next construct its whole cyclic representation. Set</p>
+<span class="math math-display" data-tex="\[
+A=(1-S)^{1/2},\quad B=S^{1/2},\quad
+K_0=\overline{AK},\quad K_1=\overline{BK},\quad
+\mathcal L=K_0\oplus\overline{K_1}.
+\]">\[
+A=(1-S)^{1/2},\quad B=S^{1/2},\quad
+K_0=\overline{AK},\quad K_1=\overline{BK},\quad
+\mathcal L=K_0\oplus\overline{K_1}.
+\]</span>
+<p>The bounded positive functional calculus gives commuting roots, with <span class="math" data-tex="\(A^2+B^2=1\)">\(A^2+B^2=1\)</span>. The earlier arbitrary-covariance proof, Section 11.1, also constructs these roots by norm-convergent series. On the Fock space of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+d(f)=a_{\mathcal L}(Af\oplus0)
++c_{\mathcal L}(0\oplus\overline{Bf}).
+\tag{CAR.23}
+\]">\[
+d(f)=a_{\mathcal L}(Af\oplus0)
++c_{\mathcal L}(0\oplus\overline{Bf}).
+\tag{CAR.23}
+\]</span>
+<p>The conjugate-space inner product is
+<span class="math" data-tex="\(\langle\bar v,\bar w\rangle=\langle w,v\rangle\)">\(\langle\bar v,\bar w\rangle=\langle w,v\rangle\)</span>.
+Orthogonality of the two legs and (CAR.1) give
+<span class="math" data-tex="\(\{d(f),d(g)\}=0\)">\(\{d(f),d(g)\}=0\)</span> and
+<span class="math" data-tex="\(\{d(f),d(g)^*\}=\langle g,(A^2+B^2)f\rangle1=\langle g,f\rangle1\)">\(\{d(f),d(g)^*\}=\langle g,(A^2+B^2)f\rangle1=\langle g,f\rangle1\)</span>.
+Thus Section 2 extends the field assignment to a representation <span class="math" data-tex="\(\pi_S\)">\(\pi_S\)</span>.</p>
+<p>Its vacuum state has (CAR.22). To verify the determinant directly, expand the leftmost adjoint <span class="math" data-tex="\(d(f_1)^*\)">\(d(f_1)^*\)</span>. Its creator term has zero expectation against the left vacuum. Move its remaining annihilator <span class="math" data-tex="\(a_{\mathcal L}(0\oplus\overline{Bf_1})\)">\(a_{\mathcal L}(0\oplus\overline{Bf_1})\)</span> to the right. It has zero scalar contractions with the other adjoints and scalar contraction <span class="math" data-tex="\(\langle Sf_1,g_i\rangle\)">\(\langle Sf_1,g_i\rangle\)</span> with <span class="math" data-tex="\(d(g_i)\)">\(d(g_i)\)</span>. At equal lengths <span class="math" data-tex="\(n\)">\(n\)</span>, its sign is
+<span class="math" data-tex="\((-1)^{n-1+n-i}=(-1)^{i+1}\)">\((-1)^{n-1+n-i}=(-1)^{i+1}\)</span>, the first-column cofactor sign. The term reaching the right vacuum vanishes. Induction proves the determinant. At unequal lengths the same recurrence reduces both lengths until a nonempty pure product remains, whose expectation is zero by the orthogonality of the two legs. Hence all moments agree with the positive state already constructed.</p>
+<p>The vacuum is cyclic on this reduced doubled space. The creation parts of <span class="math" data-tex="\(d(f)^*\Omega\)">\(d(f)^*\Omega\)</span> and <span class="math" data-tex="\(d(f)\Omega\)">\(d(f)\Omega\)</span> are <span class="math" data-tex="\(Af\oplus0\)">\(Af\oplus0\)</span> and <span class="math" data-tex="\(0\oplus\overline{Bf}\)">\(0\oplus\overline{Bf}\)</span>, whose span is dense in <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>. A product of chosen fields with those creation parts gives the desired wedge plus terms of smaller particle degree. Induction, subtraction of those lower-degree terms, and density of product wedges put every particle sector in the closed cyclic subspace. Finite-degree vectors are dense in Fock space. Thus the entire space is cyclic, without inverting either root.</p>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+[x]\longmapsto\pi_S(x)\Omega
+\tag{CAR.24}
+\]">\[
+[x]\longmapsto\pi_S(x)\Omega
+\tag{CAR.24}
+\]</span>
+<p>extends to an onto GNS unitary: its squared norm is <span class="math" data-tex="\(\omega_S(x^*x)\)">\(\omega_S(x^*x)\)</span>, it kills exactly the null ideal, preserves inner products and intertwines multiplication. At <span class="math" data-tex="\(S=0\)">\(S=0\)</span> the second active leg is absent; at <span class="math" data-tex="\(S=1\)">\(S=1\)</span> the first is absent. No assertion of endpoint cyclicity on the larger unreduced doubled space is being made.</p>
+<p>On <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, let <span class="math" data-tex="\(V_\theta=e^{i\theta}1_{K_0}\oplus e^{-i\theta}1_{\overline{K_1}}\)">\(V_\theta=e^{i\theta}1_{K_0}\oplus e^{-i\theta}1_{\overline{K_1}}\)</span>. Its exterior tensor powers give a unitary <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span> fixing the vacuum and satisfying</p>
+<span class="math math-display" data-tex="\[
+U_\theta d(f)U_\theta^*=e^{-i\theta}d(f).
+\tag{CAR.25}
+\]">\[
+U_\theta d(f)U_\theta^*=e^{-i\theta}d(f).
+\tag{CAR.25}
+\]</span>
+<p>The creator formula proves this first on wedges and then by boundedness. This implements the gauge automorphism on the whole represented algebra and proves that <span class="math" data-tex="\(\omega_S\)">\(\omega_S\)</span> is gauge invariant, hence even.</p>
+<h2 id="factoriality-without-diagonalizing-the-covariance"><span id="OA-MOD-CAR-06"></span><span id="oa-mod-car-06"></span>Factoriality without diagonalizing the covariance</h2>
+<p>We prove that <span class="math" data-tex="\(M_S=\pi_S(\operatorname{CAR}(K))''\)">\(M_S=\pi_S(\operatorname{CAR}(K))''\)</span> is a factor for every <span class="math" data-tex="\(S\)">\(S\)</span>, including all endpoints. Split</p>
+<span class="math math-display" data-tex="\[
+K=H_0\oplus H_m\oplus H_1,\qquad
+H_0=\ker S,\quad H_1=\ker(1-S),\quad
+H_m=(H_0\oplus H_1)^\perp .
+\]">\[
+K=H_0\oplus H_m\oplus H_1,\qquad
+H_0=\ker S,\quad H_1=\ker(1-S),\quad
+H_m=(H_0\oplus H_1)^\perp .
+\]</span>
+<p>The endpoint spaces are orthogonal and reduce <span class="math" data-tex="\(S,A,B\)">\(S,A,B\)</span>. On <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, <span class="math" data-tex="\(A=1,B=0\)">\(A=1,B=0\)</span>; on <span class="math" data-tex="\(H_1\)">\(H_1\)</span>, <span class="math" data-tex="\(A=0,B=1\)">\(A=0,B=1\)</span>.
+The range-kernel identity for selfadjoint operators gives
+<span class="math" data-tex="\(K_0=H_0\oplus H_m\)">\(K_0=H_0\oplus H_m\)</span>, <span class="math" data-tex="\(K_1=H_m\oplus H_1\)">\(K_1=H_m\oplus H_1\)</span>.</p>
+<p>For <span class="math" data-tex="\(f\in H_m\)">\(f\in H_m\)</span> the complementary field</p>
+<span class="math math-display" data-tex="\[
+b(f)=a_{\mathcal L}(Bf\oplus0)
+-c_{\mathcal L}(0\oplus\overline{Af})
+\tag{CAR.26}
+\]">\[
+b(f)=a_{\mathcal L}(Bf\oplus0)
+-c_{\mathcal L}(0\oplus\overline{Af})
+\tag{CAR.26}
+\]</span>
+<p>is defined on the same active legs. It anticommutes with every <span class="math" data-tex="\(d(g)\)">\(d(g)\)</span> and <span class="math" data-tex="\(d(g)^*\)">\(d(g)^*\)</span>. The same-type and cross-leg scalar contractions are zero; the two remaining terms cancel because <span class="math" data-tex="\(AB=BA\)">\(AB=BA\)</span>. Taking adjoints verifies all four anticommutators.</p>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be Fock parity, equal to <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span> on particle degree <span class="math" data-tex="\(n\)">\(n\)</span>. It anticommutes with every ordinary field and hence with <span class="math" data-tex="\(d,d^*,b,b^*\)">\(d,d^*,b,b^*\)</span>. Therefore <span class="math" data-tex="\(Pb(f)\)">\(Pb(f)\)</span> and its adjoint commute with every represented CAR generator and belong to <span class="math" data-tex="\(M_S'\)">\(M_S'\)</span>.</p>
+<p>The untwisted fields together generate an irreducible family. On <span class="math" data-tex="\(H_m\)">\(H_m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+d(Af)+b(Bf)&amp;=a_{\mathcal L}(f\oplus0),\\
+d(Bf)-b(Af)&amp;=c_{\mathcal L}(0\oplus\bar f).
+\end{split}
+\tag{CAR.27}
+\]">\[
+\begin{split}
+d(Af)+b(Bf)&amp;=a_{\mathcal L}(f\oplus0),\\
+d(Bf)-b(Af)&amp;=c_{\mathcal L}(0\oplus\bar f).
+\end{split}
+\tag{CAR.27}
+\]</span>
+<p>These follow by <span class="math" data-tex="\(A^2+B^2=1\)">\(A^2+B^2=1\)</span> and cancellation of <span class="math" data-tex="\(AB-BA\)">\(AB-BA\)</span>; no bounded inverses are involved. On <span class="math" data-tex="\(H_0\)">\(H_0\)</span> the first-leg field is already <span class="math" data-tex="\(d(f)\)">\(d(f)\)</span>, and on <span class="math" data-tex="\(H_1\)">\(H_1\)</span> the second-leg creator is already <span class="math" data-tex="\(d(f)\)">\(d(f)\)</span>. Adjoints and linear combinations give all ordinary Fock fields. Their irreducibility was proved in Section 3.</p>
+<p>Parity preserves <span class="math" data-tex="\(M_S\)">\(M_S\)</span> and its centre. If a central <span class="math" data-tex="\(x\)">\(x\)</span> is even, it commutes with <span class="math" data-tex="\(P\)">\(P\)</span>. Since <span class="math" data-tex="\(x\in M_S\)">\(x\in M_S\)</span>, it also commutes with every <span class="math" data-tex="\(Pb(f)\)">\(Pb(f)\)</span> and its adjoint. Therefore it commutes with <span class="math" data-tex="\(b,b^*\)">\(b,b^*\)</span>; centrality gives commutation with <span class="math" data-tex="\(d,d^*\)">\(d,d^*\)</span>. Equation (CAR.27) makes <span class="math" data-tex="\(x\)">\(x\)</span> scalar.</p>
+<p>If the odd centre were nonzero, its real or imaginary part would contain a nonzero selfadjoint odd <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. Its square is even central, hence <span class="math" data-tex="\(z_0^2=c1\)">\(z_0^2=c1\)</span>, with <span class="math" data-tex="\(c=\|z_0\|^2&gt;0\)">\(c=\|z_0\|^2&gt;0\)</span>. Normalize to <span class="math" data-tex="\(z=z^*\)">\(z=z^*\)</span>, <span class="math" data-tex="\(z^2=1\)">\(z^2=1\)</span>. For every odd central <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(zw\)">\(zw\)</span> is even central and scalar, so <span class="math" data-tex="\(w\in\mathbb Cz\)">\(w\in\mathbb Cz\)</span>. Thus the entire centre would be <span class="math" data-tex="\(\mathbb C1+\mathbb Cz\)">\(\mathbb C1+\mathbb Cz\)</span>.</p>
+<p>The group (CAR.25) is strongly continuous on the full Fock space. On a finite occupation vector with <span class="math" data-tex="\(r\)">\(r\)</span> first-leg and <span class="math" data-tex="\(s\)">\(s\)</span> second-leg entries it is multiplication by <span class="math" data-tex="\(e^{i(r-s)\theta}\)">\(e^{i(r-s)\theta}\)</span>. Continuity follows first on finite spans and then on the completion by unitary boundedness. The adjoint group is also strongly continuous, so conjugation of each bounded operator is strongly continuous. It preserves <span class="math" data-tex="\(M_S\)">\(M_S\)</span>, its centre and parity, and must send <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(\varepsilon(\theta)z\)">\(\varepsilon(\theta)z\)</span>, with <span class="math" data-tex="\(\varepsilon(\theta)\in\{1,-1\}\)">\(\varepsilon(\theta)\in\{1,-1\}\)</span>. Continuity at zero forces the sign to be <span class="math" data-tex="\(1\)">\(1\)</span> near zero: the other sign changes <span class="math" data-tex="\(z\xi\)">\(z\xi\)</span> by norm <span class="math" data-tex="\(2\|\xi\|\)">\(2\|\xi\|\)</span>. Subdivide any real parameter into sufficiently small pieces and use the group law to obtain sign <span class="math" data-tex="\(1\)">\(1\)</span> everywhere. But <span class="math" data-tex="\(U_\pi=P\)">\(U_\pi=P\)</span>, which sends the odd <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(-z\)">\(-z\)</span>. This contradiction eliminates the odd centre. Hence</p>
+<span class="math math-display" data-tex="\[
+Z(M_S)=\mathbb C1 .
+\tag{CAR.28}
+\]">\[
+Z(M_S)=\mathbb C1 .
+\tag{CAR.28}
+\]</span>
+<p>The proof uses only inclusion of the twisted fields in the commutant; it does not claim that they generate the whole commutant.</p>
+<h2 id="bounded-finite-mode-approximation-and-product-states"><span id="OA-MOD-CAR-07"></span><span id="oa-mod-car-07"></span>Bounded finite-mode approximation and product states</h2>
+<p>For any representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, possibly degenerate, put <span class="math" data-tex="\(e=\pi(1)\)">\(e=\pi(1)\)</span> and</p>
+<span class="math math-display" data-tex="\[
+D_E=\pi(\operatorname{CAR}(E))+\mathbb C(1-e)
+\quad(\dim E&lt;\infty).
+\]">\[
+D_E=\pi(\operatorname{CAR}(E))+\mathbb C(1-e)
+\quad(\dim E&lt;\infty).
+\]</span>
+<p>On the active subspace <span class="math" data-tex="\(eH\)">\(eH\)</span> the first summand is a full finite matrix algebra when <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>, by simplicity and Section 2; the inactive block is scalar. Thus each <span class="math" data-tex="\(D_E\)">\(D_E\)</span> is a finite-dimensional unital von Neumann algebra. They increase with <span class="math" data-tex="\(E\)">\(E\)</span>. Their union <span class="math" data-tex="\(D_0\)">\(D_0\)</span> has the same commutant as the represented CAR algebra: polynomials are locally contained and norm dense, and adjoining <span class="math" data-tex="\(1-e\)">\(1-e\)</span> adds no condition to a commutant already commuting with <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>For completeness we retain bounded strong* density, rather than just algebraic generation. The earlier <span class="unlinked">concrete bicommutant proof, Section 10.5</span>, makes <span class="math" data-tex="\(D_0\)">\(D_0\)</span> weak-operator dense in <span class="math" data-tex="\(D_0''\)">\(D_0''\)</span>. For a finite list of vectors, the tuples <span class="math" data-tex="\((x\xi_j,x^*\xi_j)_j\)">\((x\xi_j,x^*\xi_j)_j\)</span>, <span class="math" data-tex="\(x\in D_0\)">\(x\in D_0\)</span>, form a real linear subspace of a finite Hilbert sum. If a target tuple from <span class="math" data-tex="\(z\in D_0''\)">\(z\in D_0''\)</span> were outside its norm closure, orthogonal projection would give a separating real functional. This functional is a finite sum of weak-operator coefficients of <span class="math" data-tex="\(x,x^*\)">\(x,x^*\)</span>, contradicting weak density. Thus there is a local net tending strongly* to <span class="math" data-tex="\(z\)">\(z\)</span>, initially without a common norm bound.</p>
+<p>Use the bounded rational map</p>
+<span class="math math-display" data-tex="\[
+F(x)=2x(1+x^*x)^{-1}.
+\]">\[
+F(x)=2x(1+x^*x)^{-1}.
+\]</span>
+<p>The inverse stays in the same complete local algebra. Direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+1-F(x)^*F(x)
+=(1+x^*x)^{-1}(1-x^*x)^2(1+x^*x)^{-1}\geq0,
+\]">\[
+1-F(x)^*F(x)
+=(1+x^*x)^{-1}(1-x^*x)^2(1+x^*x)^{-1}\geq0,
+\]</span>
+<p>so <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> is a contraction. For <span class="math" data-tex="\(R_z=(1+z^*z)^{-1}\)">\(R_z=(1+z^*z)^{-1}\)</span>, the resolvent identity gives</p>
+<span class="math math-display" data-tex="\[
+\frac12(F(x)-F(z))
+=(1+xx^*)^{-1}(x-z)R_z
++x(1+x^*x)^{-1}(z^*-x^*)zR_z .
+\tag{CAR.29}
+\]">\[
+\frac12(F(x)-F(z))
+=(1+xx^*)^{-1}(x-z)R_z
++x(1+x^*x)^{-1}(z^*-x^*)zR_z .
+\tag{CAR.29}
+\]</span>
+<p>The two left coefficients have norms at most <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Consequently this expression tends strongly to zero if <span class="math" data-tex="\(x\to z\)">\(x\to z\)</span> strongly*, without requiring a norm bound on that net. The same holds for adjoints, using <span class="math" data-tex="\(F(x)^*=F(x^*)\)">\(F(x)^*=F(x^*)\)</span>.</p>
+<p>For a contraction <span class="math" data-tex="\(y\in D_0''\)">\(y\in D_0''\)</span>, put
+<span class="math" data-tex="\(G(y)=y(1+\sqrt{1-y^*y})^{-1}\)">\(G(y)=y(1+\sqrt{1-y^*y})^{-1}\)</span>.
+Commuting multiplication verifies <span class="math" data-tex="\(F(G(y))=y\)">\(F(G(y))=y\)</span>: if <span class="math" data-tex="\(s=\sqrt{1-y^*y}\)">\(s=\sqrt{1-y^*y}\)</span>, then <span class="math" data-tex="\(1+G(y)^*G(y)=2(1+s)^{-1}\)">\(1+G(y)^*G(y)=2(1+s)^{-1}\)</span>. Approximate <span class="math" data-tex="\(G(y)\)">\(G(y)\)</span> by the preceding local strong* net and apply <span class="math" data-tex="\(F\)">\(F\)</span>. This gives local contractions converging strongly* to <span class="math" data-tex="\(y\)">\(y\)</span>. Scaling proves density with each exact norm bound.</p>
+<p>If <span class="math" data-tex="\(K\)">\(K\)</span> is separable, take the first <span class="math" data-tex="\(n\)">\(n\)</span> vectors of an orthonormal basis, with the finite and zero-dimensional cases understood. Generator norm continuity makes their local union norm dense, so the resulting sequence <span class="math" data-tex="\(D_{E_n}\)">\(D_{E_n}\)</span> generates the full bicommutant and has the bounded approximation just proved. This is sequential AFD. The approximating elements may still require nets in a nonseparable representation space. For arbitrary <span class="math" data-tex="\(K\)">\(K\)</span>, all finite subspaces give the directed version. Combined with (CAR.28), every quasi-free GNS algebra is an AFD factor at the source's separable one-particle scope.</p>
+<p>Suppose <span class="math" data-tex="\(K=\bigoplus_jK_j\)">\(K=\bigoplus_jK_j\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> reduces each <span class="math" data-tex="\(K_j\)">\(K_j\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\omega_S(x_1\cdots x_r)=\prod_{\ell=1}^r\omega_S(x_\ell),
+\qquad
+x_\ell\in\operatorname{CAR}(K_{j_\ell}),\quad j_\ell\text{ distinct}.
+\tag{CAR.30}
+\]">\[
+\omega_S(x_1\cdots x_r)=\prod_{\ell=1}^r\omega_S(x_\ell),
+\qquad
+x_\ell\in\operatorname{CAR}(K_{j_\ell}),\quad j_\ell\text{ distinct}.
+\tag{CAR.30}
+\]</span>
+<p>For normal local words, all cross-block contractions in (CAR.22) are zero. A surviving term must be balanced in every block. Those blocks are even, so regrouping them introduces no sign, and the determinant splits into the block determinants. If some block is unbalanced, both sides vanish. Linearity and norm density prove (CAR.30) for all local elements. This proves joint finite-block factorization, which is stronger than the source's pairwise formulation.</p>
+<p>If <span class="math" data-tex="\(S\)">\(S\)</span> has a countable orthonormal eigenbasis with eigenvalues <span class="math" data-tex="\(p_j\)">\(p_j\)</span>, the compatible finite matrix identifications give</p>
+<span class="math math-display" data-tex="\[
+(M_S,\omega_S)\cong
+\bigotimes_j\left(M_2,\operatorname{Tr}(\rho_j\,\cdot)\right),
+\qquad \rho_j=\operatorname{diag}(1-p_j,p_j).
+\tag{CAR.31}
+\]">\[
+(M_S,\omega_S)\cong
+\bigotimes_j\left(M_2,\operatorname{Tr}(\rho_j\,\cdot)\right),
+\qquad \rho_j=\operatorname{diag}(1-p_j,p_j).
+\tag{CAR.31}
+\]</span>
+<p>To justify the completion, let <span class="math" data-tex="\(s_j=s(\rho_j)\)">\(s_j=s(\rho_j)\)</span>,
+<span class="math" data-tex="\(H_j=M_2s_j\)">\(H_j=M_2s_j\)</span> with <span class="math" data-tex="\(\langle X,Y\rangle=\operatorname{Tr}(Y^*X)\)">\(\langle X,Y\rangle=\operatorname{Tr}(Y^*X)\)</span>, and reference vector <span class="math" data-tex="\(\rho_j^{1/2}\)">\(\rho_j^{1/2}\)</span>. Left multiplication is cyclic, by inversion only on the positive diagonal entries; this includes rank-one endpoint densities. On finite products,
+<span class="math" data-tex="\(\langle x\Omega,y\Omega\rangle=\omega_S(y^*x)\)">\(\langle x\Omega,y\Omega\rangle=\omega_S(y^*x)\)</span>
+by (CAR.21). Therefore matching local GNS vectors is an isometry with dense range in the pointed completion and extends onto it. It intertwines the complete norm-closed CAR algebra, and unitary conjugation gives the claimed normal isomorphism of the generated von Neumann algebras, with normal inverse. A spectral decomposition into reducing blocks gives (CAR.30) even if the individual blocks are not one-dimensional; no global eigenbasis is assumed in the general state or factor proofs.</p>
+<h2 id="trace-subtype-and-the-source-conventions"><span id="OA-MOD-CAR-08"></span><span id="oa-mod-car-08"></span>Trace, subtype and the source conventions</h2>
+<p>If <span class="math" data-tex="\(S=\frac12 1\)">\(S=\frac12 1\)</span>, every finite restriction is normalized matrix trace. The matrix-unit identities show that this trace is unique: diagonal values agree, their sum is one, and off-diagonal values vanish. Norm density makes <span class="math" data-tex="\(\omega_{1/2}\)">\(\omega_{1/2}\)</span> the unique CAR tracial state. Equation (CAR.31), including its completed GNS unitary, identifies its von Neumann algebra with the normalized trace product. For separable infinite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>, <a href="OA-MOD-ITP.html#oa-mod-itp-05">State supports, full corners and traces</a> proves that this is a type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> factor.</p>
+<p>For <span class="math" data-tex="\(S=p1\)">\(S=p1\)</span>, <span class="math" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>, <span class="math" data-tex="\(p\ne1/2\)">\(p\ne1/2\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\lambda=\frac{\min(p,1-p)}{\max(p,1-p)}.
+\tag{CAR.32}
+\]">\[
+\lambda=\frac{\min(p,1-p)}{\max(p,1-p)}.
+\tag{CAR.32}
+\]</span>
+<p>The product density in (CAR.31) is <span class="math" data-tex="\(\operatorname{diag}(1-p,p)\)">\(\operatorname{diag}(1-p,p)\)</span>. If <span class="math" data-tex="\(p&gt;1/2\)">\(p&gt;1/2\)</span>, this equals
+<span class="math" data-tex="\(h_\lambda=(1+\lambda)^{-1}\operatorname{diag}(\lambda,1)\)">\(h_\lambda=(1+\lambda)^{-1}\operatorname{diag}(\lambda,1)\)</span>.
+If <span class="math" data-tex="\(p&lt;1/2\)">\(p&lt;1/2\)</span>, the fixed two-by-two flip conjugates it to <span class="math" data-tex="\(h_\lambda\)">\(h_\lambda\)</span>. In the latter case, conjugation of each Hilbert–Schmidt leg sends its reference square root to the new square root, so its pointed product is an onto unitary. Thus in both cases (CAR.31) gives the specific Powers product <span class="math" data-tex="\(R_\lambda\)">\(R_\lambda\)</span>, with its state and its complete representation.</p>
+<p>The earlier <a href="OA-MOD-UNI.html#oa-mod-uni-02">2. The specified Powers product proof</a>, through the all-weight proof in periodic CAR Section 6, establishes</p>
+<span class="math math-display" data-tex="\[
+S(R_\lambda)=
+\bigcap_{\psi\ {\rm faithful\ normal\ semifinite}}
+\operatorname{Sp}(\Delta_\psi)
+=\{0\}\cup\lambda^{\mathbb Z}.
+\tag{CAR.33}
+\]">\[
+S(R_\lambda)=
+\bigcap_{\psi\ {\rm faithful\ normal\ semifinite}}
+\operatorname{Sp}(\Delta_\psi)
+=\{0\}\cup\lambda^{\mathbb Z}.
+\tag{CAR.33}
+\]</span>
+<p>That proof gives the upper inclusion by the full coefficient-domain spectrum of the product modular operator. For the lower inclusion it proves that every integer modular degree survives in every nonzero fixed corner and compares those spectra with every faithful normal semifinite weight using balanced weights and closed GNS graphs. Its quantifier includes weights of infinite total mass. We use this proved result, not an inference from the period of one chosen state.</p>
+<p>Normal isomorphism preserves (CAR.33). Indeed weights correspond by composition with the isomorphism; the map matching their finite-ideal GNS vectors is an onto isometry, carries the initial Tomita maps and their adjoints to one another, and hence carries their closed modular operators with their full domains. Thus the spectra agree weight by weight and so do their intersections. It follows that the separable infinite product in (CAR.31) is type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span>.</p>
+<p>For an explicit domain check, in the constant faithful Hilbert–Schmidt product use in each leg the reference vector, its orthogonal diagonal vector, <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> and <span class="math" data-tex="\(e_{21}\)">\(e_{21}\)</span>. Their finite-excitation tensors form an orthonormal basis <span class="math" data-tex="\((\xi_\kappa)\)">\((\xi_\kappa)\)</span>. If <span class="math" data-tex="\(m_\kappa=\#e_{12}-\#e_{21}\)">\(m_\kappa=\#e_{12}-\#e_{21}\)</span> and <span class="math" data-tex="\(r=(1-p)/p\)">\(r=(1-p)/p\)</span>, the product modular operator has eigenvalues <span class="math" data-tex="\(r^{m_\kappa}\)">\(r^{m_\kappa}\)</span>, and <a href="OA-MOD-ITP.html#oa-mod-itp-04">Faithful states and maximal modular domains</a> gives</p>
+<span class="math math-display" data-tex="\[
+D(\Delta^z)=
+\left\{\sum_\kappa t_\kappa\xi_\kappa:
+\sum_\kappa r^{2\operatorname{Re}(z)m_\kappa}|t_\kappa|^2&lt;\infty\right\}.
+\tag{CAR.34}
+\]">\[
+D(\Delta^z)=
+\left\{\sum_\kappa t_\kappa\xi_\kappa:
+\sum_\kappa r^{2\operatorname{Re}(z)m_\kappa}|t_\kappa|^2&lt;\infty\right\}.
+\tag{CAR.34}
+\]</span>
+<p>Finite excitation vectors are graph cores, but usually are not the whole domain. The modular action period is <span class="math" data-tex="\(2\pi/|\log\lambda|\)">\(2\pi/|\log\lambda|\)</span>. The subtype in (CAR.33) uses the all-weight invariant; it is not obtained by exponentiating the negative of that action period.</p>
+<p>We finish the dictionary with the printed exercises. The source's linear generator is <span class="math" data-tex="\(q(f)=a(f)^*\)">\(q(f)=a(f)^*\)</span>, and its balanced moments are</p>
+<span class="math math-display" data-tex="\[
+\gamma_T\!\left(q(g_m)^*\cdots q(g_1)^*
+q(f_1)\cdots q(f_n)\right)
+=\delta_{mn}\det[\langle Tf_i,g_j\rangle]_{i,j=1}^n .
+\tag{CAR.35}
+\]">\[
+\gamma_T\!\left(q(g_m)^*\cdots q(g_1)^*
+q(f_1)\cdots q(f_n)\right)
+=\delta_{mn}\det[\langle Tf_i,g_j\rangle]_{i,j=1}^n .
+\tag{CAR.35}
+\]</span>
+<p>Moving annihilators past creators using (CAR.1), or repeating the cofactor recurrence of Section 5 in the opposite order, proves (CAR.35) for <span class="math" data-tex="\(\gamma_T=\omega_{1-T}\)">\(\gamma_T=\omega_{1-T}\)</span>. Unequal lengths vanish by gauge invariance. This also proves existence, positivity, uniqueness and evenness at the source's exact moment convention.</p>
+<p>In the Fock construction (CAR.14), <span class="math" data-tex="\(q(f)\Omega=f\)">\(q(f)\Omega=f\)</span>, so for every unit <span class="math" data-tex="\(f\)">\(f\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle q(f)^*q(f)\Omega,\Omega\rangle=1.
+\tag{CAR.36}
+\]">\[
+\langle q(f)^*q(f)\Omega,\Omega\rangle=1.
+\tag{CAR.36}
+\]</span>
+<p>Consequently its vacuum has source covariance <span class="math" data-tex="\(T=1\)">\(T=1\)</span>. The source's Exercise 4(c), which says <span class="math" data-tex="\(T=0\)">\(T=0\)</span> while retaining that creation formula and moment order, is false as printed. The familiar statement that the vacuum has covariance zero is correct for our annihilation occupation covariance <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, not for that <span class="math" data-tex="\(T\)">\(T\)</span>. At <span class="math" data-tex="\(S=1\)">\(S=1\)</span> one obtains the filled Fock model. Both endpoint models are irreducible by Section 3, after using the appropriate active leg.</p>
+<p>For source <span class="math" data-tex="\(T=\mu1\)">\(T=\mu1\)</span>, <span class="math" data-tex="\(0&lt;\mu&lt;1/2\)">\(0&lt;\mu&lt;1/2\)</span>, the dictionary gives <span class="math" data-tex="\(S=(1-\mu)1\)">\(S=(1-\mu)1\)</span>, so (CAR.32) yields exactly <span class="math" data-tex="\(\lambda=\mu/(1-\mu)\)">\(\lambda=\mu/(1-\mu)\)</span>. This proves Exercise 5(f) with its requested parameter. For finite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>, every state GNS algebra is instead the finite matrix factor <span class="math" data-tex="\(M_{2^{\dim K}}\)">\(M_{2^{\dim K}}\)</span>, by representation independence and simplicity; neither an infinite type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> conclusion nor a type <span class="math" data-tex="\(\mathrm{III}_\lambda\)">\(\mathrm{III}_\lambda\)</span> conclusion applies. For <span class="math" data-tex="\(K=0\)">\(K=0\)</span> it is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. All these cases remain AFD factors, as required by Exercise 6.</p>
+</article><footer>Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

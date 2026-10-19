@@ -1,6 +1,6 @@
 # Characteristic half-spaces and ramified roots
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0). No independent review is claimed.*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0). *
 
 A characteristic plane can bound the exact support of a smooth homogeneous solution. The lower terms of the operator matter: a function of the normal coordinate alone generally does not solve the equation. We construct a complex characteristic curve that accounts for every lower term, integrate its exponential solutions on an upper contour, and then move that contour to prove analyticity on the occupied side.
 
@@ -15,7 +15,7 @@ Throughout, \(D_j=-i\partial_{x_j}\), \(P\) is a nonzero complex polynomial on \
 \]
 The constructed solution extends holomorphically from the open negative half-space to \(\{z\in\mathbb C^n:\operatorname{Re}(z\cdot N)<0\}\). It is flat on the boundary and is not real analytic at any boundary point.
 
-The programme inputs are [scalar implicit graphs and persistent root counts](zero-hypersurfaces-as-curvature-measures.md), Lemma 2.1 and the root-count part of Lemma 4.1; the [circle Cauchy formula and convergent local series](cauchy-kernels-and-boundary-limits.md), Corollary 2.2; [polydisk Cauchy and the identity principle](holomorphic-boundaries-in-convex-cones.md), Section 3; complex Green integration, including finite corners, Corollaries 2.3–2.4; and [Schwartz Fourier inversion](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F4. The converse in (1) uses the full support-normal conclusion of [analytic differential uniqueness](analytic-equations-and-characteristic-directions.md), Corollary 4. All these readings are included in the course.
+The programme inputs are [scalar implicit graphs and persistent root counts](zero-hypersurfaces-as-curvature-measures.md), Lemma 2.1 and the root-count part of Lemma 4.1; the [circle Cauchy formula and convergent local series](cauchy-kernels-and-boundary-limits.md), Corollary 2.2; [polydisk Cauchy and the identity principle](holomorphic-boundaries-in-convex-cones.md), Section 3; [complex Green integration, including finite corners](boundary-flux-and-weak-identities.md), Corollaries 2.3–2.4; and [Schwartz Fourier inversion](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F4. The converse in (1) uses the full support-normal conclusion of [analytic differential uniqueness](analytic-equations-and-characteristic-directions.md), Corollary 4. All these readings are included in the course.
 
 ## 1. A bounded algebraic root becomes a convergent power series
 
@@ -320,6 +320,6 @@ If \(0<\rho<\alpha\), this is positive and tends to infinity for every \(B>0\); 
 ## Proof locations and mathematical sources
 
 - U025, [Zero hypersurfaces as curvature measures](zero-hypersurfaces-as-curvature-measures.md), Lemma 2.1 and the root-count part of Lemma 4.1: the full scalar holomorphic implicit construction and persistence of an isolated cluster. Lemma 1 above supplies finite algebra, continuation through the logarithmic parameter, removal of the puncture and the convergent ramified series.
-- U013, [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Corollary 2.2; U015, [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), Section 3; and U011, Boundary flux and weak identities, Corollaries 2.3–2.4: series, parameter holomorphy and the finite contour identities used above.
+- U013, [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Corollary 2.2; U015, [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), Section 3; and U011, [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollaries 2.3–2.4: series, parameter holomorphy and the finite contour identities used above.
 - [Schwartz functions and Fourier inversion](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F4: both inverse identities in (26). U087, [Analytic equations and characteristic directions](analytic-equations-and-characteristic-directions.md), Corollary 4: necessity of a characteristic support normal.
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, 2003 reprint, Theorem 8.6.7, pp. 310–311; and *The Analysis of Linear Partial Differential Operators II*, 2005 reprint, Appendix A.1, Lemma A.1.3, pp. 362–364. These are the mathematical sources for the characteristic-half-space construction and convergent ramification. The arguments, teaching organization, exercises and figure here are independently expressed; no book pages or figures are included.

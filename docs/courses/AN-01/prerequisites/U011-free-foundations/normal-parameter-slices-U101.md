@@ -1,6 +1,6 @@
 # Smooth parameter slices from the normal condition
 
-*Programme proof text: AN-03 course-writing task, OpenAI Codex. CC0 1.0. Prerequisite connections: GPT-6 Astra (OpenAI), Ultra.*
+*Programme proof text: AN-03 course-writing task, OpenAI Codex. CC0 1.0. Prerequisite connections: GPT-6 Astra (OpenAI).*
 
 This is the complete Section 18.6 of the programme reading *Detecting regularity without choosing coordinates*. It proves that the normal restrictions are the actual strong smooth distribution family and reconstruct the joint distribution. Its original section and formula labels are retained.
 

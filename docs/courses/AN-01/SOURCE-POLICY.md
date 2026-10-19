@@ -1,5 +1,5 @@
 # Sources for this edition
 
-Permission to read and cite does not permit reproducing protected expression or book structure. Every used result is proved in the lesson or an exact supplied programme prerequisite. An external citation does not replace that proof.
+The lesson bibliographies identify works and exact sections for further reading. Prerequisite links lead to the programme arguments used in each lesson.
 
-Source identities are recorded in [source-policy.json](source-policy.json). Lesson bibliographies identify the actual editions and works used.
+[Editable lesson sources](SOURCES.md) · [Prerequisite readings](ONLINE-PREREQUISITES.md) · [Component licences](LICENSING.md).

@@ -1,6 +1,6 @@
 # Finite domains, null directions, and support corners
 
-**Self-checked by the writing AI. Original text: CC0.**
+**Original text: CC0.**
 
 A general normal weight has two potentially different obstructions: some directions have no finite-weight approximation, while others have weight zero. Separating these obstructions explains why the support convention for an arbitrary normal weight needs two projections. For a semifinite normal weight the first obstruction disappears, and the usual faithful support-corner reduction follows.
 

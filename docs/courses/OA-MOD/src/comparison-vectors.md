@@ -1,6 +1,6 @@
 # The vector retained by a comparison map
 
-**Self-checked by the writing AI.**
+
 
 A bounded comparison map can lose part of the cyclic vector of a functional. Its polar factor still produces a useful vector, but the norm records a projection of the cyclic vector. This unit proves the general identity before imposing conditions that remove that loss.
 

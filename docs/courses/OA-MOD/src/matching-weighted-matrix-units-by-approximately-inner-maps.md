@@ -2,7 +2,7 @@
 
 Two asymptotically weighted matrix systems can be matched on a common subsequence by one approximately inner automorphism. The proof compares projections in a finite central sequence algebra, lifts the comparison, and cancels the two opposite weights in an exact unitary. We also explain why conjugacy of entire tensor factors requires information about their complements.
 
-The human source for comparison is M. Takesaki, *Theory of Operator Algebras III*, XVIII.4, Lemma 4.30 and Corollary 4.31, printed pages 400–402. The complementary hypothesis in XVII.2, Theorem 2.5, printed pages 264–265, is relevant to the correction below. The exposition and figure here are original; the source text is not reproduced. Every invoked mathematical input has a named earlier programme proof. Independent review and full recursive prerequisite certification remain open.
+The human source for comparison is M. Takesaki, *Theory of Operator Algebras III*, XVIII.4, Lemma 4.30 and Corollary 4.31, printed pages 400–402. The complementary hypothesis in XVII.2, Theorem 2.5, printed pages 264–265, is relevant to the correction below. The exposition and figure here are original; the source text is not reproduced. Every invoked mathematical input has a named earlier programme proof.
 
 ## 1. The weighted matching problem
 

@@ -1,6 +1,6 @@
 # Closing an involution and recovering its modular data
 
-**Self-checked by the writing AI.**
+
 
 An algebraic involution need not be continuous for a Hilbert norm. Its graph is the first object to understand. For a cyclic separating vector, the commutant supplies enough test vectors to close that graph. Once it is closed, a positive form determines the modulus, and the identity that the involution is its own inverse determines the polar symmetry.
 

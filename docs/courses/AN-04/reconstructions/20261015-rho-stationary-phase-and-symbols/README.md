@@ -1,0 +1,7 @@
+# Stationary phase and symbols with derivative loss
+
+Read [the lesson](stationary-phase-and-symbols-with-derivative-loss.html) or edit [its source](stationary-phase-and-symbols-with-derivative-loss.md). It proves the exact general-rho stationary remainder in every symbol derivative, clean reduction, phase invariance, the Lagrangian class and its invariant principal-symbol quotient. The drop is 2rho-1 and the density degree is m+n/4; the approved source's page-16 discrepancy is identified explicitly.
+
+The proof map binds 18 entries to 391 earlier entries across nine maps, retaining 92 human providers external to the CC0 export with verified earlier C10/C20 programme routes. Three complete solutions, a reproducible exact-scale figure, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [29 exact checks](model-check.json) support review. The finite checks do not certify the analytic proofs.
+
+The related proofs are [clean composition and transport](../20261015-rho-fio-composition-and-transport/clean-fourier-integral-composition-and-rho-transport.html), [graph and corank continuity](../20261015-rho-fio-continuity/general-symbol-graph-and-corank-continuity.html) and [iterated tests and frequency packets](../20261015-rho-iterated-packets/iterated-tests-and-frequency-packet-regularity.html), including the precise fixed-endpoint counterexample and frequency-cell replacement. Original expression is CC0-1.0; linked components keep their terms. 

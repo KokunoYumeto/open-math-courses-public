@@ -1,6 +1,6 @@
 # Representable functors and the functor of points
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) (Codex), October 2026. Public domain (CC0).*
 
 A parameter space should classify families as well as individual objects. For example, a morphism from a scheme \(T\) to projective space specifies an invertible sheaf on \(T\) together with generating sections. When \(T\) has nilpotents, this description also detects infinitesimal changes. Looking only at points over fields would discard that information.
 

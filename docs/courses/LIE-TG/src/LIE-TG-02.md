@@ -1,6 +1,6 @@
 # The fundamental differential equations
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 A small change in a group parameter moves every point by the same infinitesimal transformation, evaluated at that point's current position. This is stronger than merely saying that each transformation is differentiable. It separates the dependence on parameters from the dependence on position and is the first step from a transformation group to its Lie algebra.
 

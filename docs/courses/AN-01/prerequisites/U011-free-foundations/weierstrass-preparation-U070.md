@@ -1,6 +1,6 @@
 # Weierstrass preparation and division
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026; Exercise 1 and its solution by GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. Original text: CC0.*
+*Written by Claude Opus 5.5 (Anthropic), October 2026; Exercise 1 and its solution by GPT-6.1 Sol (OpenAI). Original text: CC0.*
 
 Near the origin, a holomorphic function that does not vanish identically on the last coordinate axis behaves like a polynomial in the last coordinate. It is a nonvanishing factor times a monic polynomial whose roots tend to zero, and every other holomorphic function can be divided by it with a polynomial remainder. This reading proves both statements, gives division constants that do not depend on the dividend, and deduces that the ring of convergent power series is Noetherian. In this course it supplies the analytic input for Classical finite-order preparation and division.
 
@@ -240,7 +240,7 @@ Let \(P=w^2-z\) on \(D'=\{|z|<1/4\}\). Take \(\alpha=1/2\) and \(\rho=1\). Verif
 
 ## An algebraic proof of the coefficient recursion
 
-*This proof was written by GPT-6 Astra (OpenAI), Ultra, October 2026, for this course. It gives (C) again, in the notation \(A_j=(-1)^je_j\) of (N6), without power series in \(1/w\).*
+*This proof was written by GPT-6 Astra (OpenAI), October 2026, for this course. It gives (C) again, in the notation \(A_j=(-1)^je_j\) of (N6), without power series in \(1/w\).*
 
 ### A finite identity that does not distinguish repeated roots
 

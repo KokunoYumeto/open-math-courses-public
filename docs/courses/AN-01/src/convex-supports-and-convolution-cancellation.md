@@ -1,6 +1,6 @@
 # Convex supports and convolution cancellation
 
-*Reconstructed and checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A convolution can lose isolated points of support through complex cancellation. For two compact distributions its convex hull is nevertheless exactly the sum of the two factor hulls. We prove the statement in every dimension, including its approximation steps, and then determine when actual support can be recovered.
 

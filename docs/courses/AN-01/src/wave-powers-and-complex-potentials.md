@@ -1,6 +1,6 @@
 # Wave powers and complex potentials
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 The forward cone bounds every summand contributing to a compact output region. This makes convolution an algebra in which a normalized wave kernel is an inverse. Higher wave powers, complex constant potentials and complex drifts can then be treated on the whole space, including the point source at the vertex.
 

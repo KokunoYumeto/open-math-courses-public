@@ -1,6 +1,6 @@
 # A contour identity for holomorphic approximation
 
-The following proof is the exact selection from AN-04, “Contour deformation and the complex Gaussian branch”, Section A2, through the cutoff discussion. Original supporting proof: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0.
+The following proof is the exact selection from AN-04, “Contour deformation and the complex Gaussian branch”, Section A2, through the cutoff discussion. Original supporting proof: GPT-6 Astra (OpenAI), 5 October 2026, CC0.
 
 Its finite determinant algebra uses the supplied [metric and calculus foundations](metric-foundation-bridges.md). Its integration step uses [Banach and integration foundations, Sections 15–16](banach-foundation-bridges.md). Both earlier programme proofs are included in this reader.
 

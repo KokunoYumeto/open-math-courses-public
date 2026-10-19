@@ -1,0 +1,451 @@
+# Formal geometry along a closed subscheme
+
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+A formal completion remembers every infinitesimal neighbourhood of a closed subscheme. Two questions arise. Does this information determine maps between vector bundles near the closed subscheme? Does every compatible system of vector bundles come from a bundle on an ordinary neighbourhood? The first is a comparison question; the second is an existence question. They require different depth bounds.
+
+We use Local cohomology for support sequences and Čech complexes, Local duality and finiteness for the annihilator and finiteness theorems, and Cohomological dimension, vanishing and connectedness for the geometric meaning of supported cohomology. The exact open inputs are [cohomology of projective space](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-section-cohomology-projective-space), [generation by sufficiently high ample twists](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/properties.html#properties-proposition-characterize-ample), [Serre vanishing on proper schemes](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-coherent-proper-ample), and the proper-over-complete-base [formal existence theorem](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-section-existence-proper). Ample generation provides the finite presentations used below; vanishing controls their positive cohomology. The projective comparison theorem proved below concerns completion along an ample zero scheme; the base field is not being completed.
+
+All schemes are Noetherian. A coherent sheaf with zero stalk has depth infinity. A formal module is finite locally free when it is locally free of finite rank at every finite level. Neighbourhoods are ordered by shrinking. In this lesson a hat at a local ring along an ideal means completion for that ideal, which need not be completion for the maximal ideal.
+
+## 1. Coherent formal modules and pro-objects
+
+Let \(\mathcal I\subset\mathcal O_X\) be a coherent ideal, let \(Y=V(\mathcal I)\), and let
+\[
+Y_n=(Y,\mathcal O_X/\mathcal I^n),\qquad n\ge1.
+\]
+An object of \(\operatorname{Coh}(X,\mathcal I)\) is an inverse system \((\mathcal F_n)\) of coherent \(\mathcal O_X\)-modules, killed by \(\mathcal I^n\), together with transition maps inducing isomorphisms
+\[
+\mathcal F_{n+1}/\mathcal I^n\mathcal F_{n+1}\simeq\mathcal F_n.
+\tag{1.1}
+\]
+Morphisms are compatible systems of maps at the same levels. The completion of a coherent \(\mathcal F\) is \(\mathcal F^\wedge=(\mathcal F/\mathcal I^n\mathcal F)\). Formal sections are \(\varprojlim_n\Gamma(Y_n,\mathcal F_n)\).
+
+**Lemma 1.1 (the affine description).** On \(X=\operatorname{Spec}A\), coherent formal modules are equivalent to finite modules over \(\widehat A=\varprojlim A/I^n\). A system \((M_n)\) corresponds to \(M=\varprojlim M_n\), and \(M/I^nM=M_n\).
+
+**Proof.** Choose generators of \(M_1\) and lift them compatibly to elements of the limit, using the surjective transitions. They define maps \((A/I^n)^r\to M_n\). These are surjective: their reductions modulo \(I\) are surjective, and \(I/I^n\) is nilpotent, so Nakayama applies. Write \(K_n\) for the kernels. A relation at level \(n\) lifts to a relation at level \(n+1\): lift it arbitrarily, then subtract an element of \(I^n(A/I^{n+1})^r\) whose image cancels the error in \(I^nM_{n+1}\). Thus \(K_{n+1}\to K_n\) is surjective. Taking limits yields
+\[
+0\to\varprojlim K_n\to\widehat A^r\to M\to0.
+\]
+The limit kernel maps onto each \(K_n\). Reducing this presentation modulo \(I^n\) gives \(M/I^nM=M_n\). This proves finiteness and recovers the system. Conversely a finite \(\widehat A\)-module is complete and gives the required quotients; compatible quotient maps uniquely determine maps of complete modules. ∎
+
+**Proposition 1.2.** The category \(\operatorname{Coh}(X,\mathcal I)\) is abelian, and completion of coherent modules is exact.
+
+**Proof.** Locally Lemma 1.1 identifies the category with finite modules over a Noetherian completed ring, an abelian category. Kernels and cokernels of morphisms of complete modules, reduced modulo \(I^n\), define the corresponding formal objects. Their universal properties make these local constructions agree on overlaps and glue. For a short exact sequence of coherent modules, affine completion is exact by Artin–Rees, or equivalently by flatness of Noetherian completion and its tensor formula. Therefore the formal completion functor is exact locally and hence globally. ∎
+
+The kernel is not generally the system of termwise kernels. For multiplication by \(t\) on the formal module over \(k[t]\) completed at \((t)\), the completed map \(k[[t]]\xrightarrow{t}k[[t]]\) is injective. Its kernel in the formal category is zero. The levelwise kernels in \(k[t]/t^n\) are nonzero, generated by \(t^{n-1}\), and their transitions are zero. This system is pro-zero and fails (1.1).
+
+**Proposition 1.3 (recognition inside a pro-category).** The functor
+\[
+\operatorname{Coh}(X,\mathcal I)\longrightarrow
+\operatorname{Pro}(\operatorname{QCoh}(X))
+\tag{1.2}
+\]
+is fully faithful.
+
+**Proof.** A pro-morphism can be represented, after increasing its source indices, by maps \(\alpha_n:\mathcal F_{m(n)}\to\mathcal G_n\), where \(m(n)\ge n\). Since \(\mathcal I^n\mathcal G_n=0\), each factors uniquely through
+\(\mathcal F_{m(n)}/\mathcal I^n\mathcal F_{m(n)}=\mathcal F_n\).
+The resulting maps \(\mathcal F_n\to\mathcal G_n\) are compatible: the pro-compatibilities hold after precomposition with a sufficiently high transition, and that transition is surjective. Their uniqueness also shows independence of the representative. Thus every pro-morphism comes from exactly one formal morphism. ∎
+
+This proposition concerns the passage from formal systems to pro-objects. It does not say that completion of ordinary coherent sheaves is always fully faithful. An ordinary sheaf supported away from \(Y\) has zero completion. Compare [Stacks, [Tag 087W](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-inverse-systems-affine), [Tag 0EIQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-recognize-formal-coherent-modules)].
+
+## 2. What comparison of sections proves
+
+Let \(\mathcal V\) be the directed set of opens containing \(Y\). In
+\(\varinjlim_{V\in\mathcal V}\operatorname{Coh}(V)\), an object is defined on one such neighbourhood; two maps agree when they agree after shrinking. For vector bundles \(E,F\), its morphisms are
+\[
+\operatorname*{colim}_{V'}\Gamma(V',E^\vee\otimes F).
+\tag{2.1}
+\]
+The completion functor is fully faithful on vector bundles exactly when these spaces equal their formal counterparts. Its essential surjectivity says every finite locally free formal module has an algebraization on some neighbourhood. SGA 2 calls the first condition *Lef* and the combination of both conditions *Leff*.
+
+**Proposition 2.1 (three comparison tests).** Each of the following section comparisons implies full faithfulness of completion on vector bundles on \(X\):
+
+1. \(X\) is quasi-affine and \(\Gamma(X,\mathcal O_X)\to\varprojlim\Gamma(Y_n,\mathcal O_{Y_n})\) is an isomorphism.
+2. \(X\) has an ample invertible sheaf \(L\), and the section comparison is an isomorphism for \(L^m\) for every sufficiently large \(m\).
+3. The section comparison is an isomorphism for every vector bundle.
+
+Condition 1 implies 2, and 2 implies 3. Condition 3 is equivalent to full faithfulness. The same assertions hold with sections on \(X\) replaced by their colimits over neighbourhoods of \(Y\), and with bundles allowed to be defined on one such neighbourhood.
+
+**Proof.** On a quasi-affine scheme \(\mathcal O_X\) is ample, so condition 1 is condition 2 for this ample sheaf. Under condition 2, let \(E\) be a vector bundle. Ample generation applied to \(E^\vee\otimes L^p\), with \(p\) sufficiently large, gives a surjection \((L^{-p})^r\to E^\vee\). Dualize it. The resulting injection \(E\to(L^p)^r\) has locally free cokernel \(C\), because the surjection splits locally. Repeat the construction with \(C\), choosing \(q\) sufficiently large. We obtain a sequence
+\[
+0\to E\to(L^p)^r\to(L^q)^s
+\tag{2.2}
+\]
+that remains exact after any base change. Sections of \(E\), both ordinarily and formally, are the kernels of the maps between the two displayed sums of ample powers. The comparisons for those powers identify the kernels, proving condition 3. Inverse limits preserve this kernel statement; surjectivity of section transitions is not required.
+
+For vector bundles, formal maps \(E^\wedge\to F^\wedge\) are the limit of sections of \(E^\vee\otimes F\) on \(Y_n\). Condition 3 therefore proves full faithfulness. Conversely use \(\operatorname{Hom}(\mathcal O_X,E)=\Gamma(X,E)\).
+
+For the neighbourhood version perform (2.2) where \(E\) is defined, since the restriction of an ample sheaf is ample. Filtered colimits of modules are exact, so taking the section kernels and then shrinking gives the identical proof. The internal-Hom argument uses a common neighbourhood for both bundles. ∎
+
+This gives the criteria of [Stacks, [Tag 0EKP](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-completion-fully-faithful), [Tag 0EK2](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-completion-fully-faithful-general)], including the converses needed to identify full faithfulness. Existence of objects is a further theorem, not a consequence of these tests.
+
+## 3. A principal formal-cohomology calculation
+
+We need an elementary calculation before passing to the projective cone. It also explains why a zero divisor section is allowed.
+
+**Lemma 3.1.** Let \(f\) act on a coherent sheaf \(F\) on a quasi-compact Noetherian scheme. Then
+\[
+0\to\widehat{H^i(F)}\to
+\varprojlim_n H^i(F/f^nF)\to
+T_f(H^{i+1}(F))\to0,
+\tag{3.1}
+\]
+where the hat denotes ordinary \(f\)-adic completion and
+\(T_f(N)=\varprojlim(N[f^n],f)\).
+
+**Proof.** Use the two-term complexes \(K_n=[F\xrightarrow{f^n}F]\) in degrees \(-1,0\); their transitions multiply the left term by \(f\) and are the identity on the right. The long exact sequence gives
+\[
+0\to H^i(F)/f^nH^i(F)\to H^i(K_n)
+\to H^{i+1}(F)[f^n]\to0.
+\]
+The left system has surjective transitions, so its first derived inverse limit is zero. Taking inverse limits gives (3.1) with \(K_n\) in place of the ordinary quotients.
+
+To justify that replacement, the ascending coherent kernels \(F[f^n]\) stabilize, say at a sheaf \(T\) killed by \(f^r\). The cone comparing \(K_n\) with \(F/f^nF\) is this kernel in degree \(-1\). Its transition over \(r\) consecutive steps is multiplication by \(f^r\), hence zero. It is therefore pro-zero, as are all its cohomology systems. The two systems of cohomology groups have the same inverse limits. This proves the formula without requiring \(f\) to be a nonzerodivisor. ∎
+
+**Lemma 3.2 (supported annihilators give formal comparison).** Let \(A\) be Noetherian and \(f\)-adically complete, let \(f\in\mathfrak a\), let \(M\) be finite, and put \(U=\operatorname{Spec}A\setminus V(\mathfrak a)\). If \(H^j_{\mathfrak a}(M)\) is killed by a power of \(f\) for \(1\le j\le\sigma+1\), then
+\[
+H^i(U,\widetilde M)\simeq
+\varprojlim H^i(U,\widetilde{M/f^nM}),\qquad 0\le i<\sigma.
+\tag{3.2}
+\]
+
+**Proof.** For \(i>0\), both \(H^i(U,\widetilde M)=H^{i+1}_{\mathfrak a}(M)\) and the next group are killed by a fixed power of \(f\). The first is already ordinarily complete and the second has zero Tate module: sufficiently long transition maps in its Tate system are zero. Lemma 3.1 proves the assertion.
+
+For degree zero the support sequence gives
+\[
+0\to L=M/H^0_{\mathfrak a}(M)\to\Gamma(U,\widetilde M)
+\to H^1_{\mathfrak a}(M)\to0.
+\]
+The finite module \(L\) is complete. The last module is killed by \(f^r\). If \(N=\Gamma(U,\widetilde M)\), then for \(n\ge r\)
+\(f^nL\subset f^nN\subset f^{n-r}L\).
+Thus the topology induced on \(L\) is equivalent to its complete \(f\)-adic topology, and \(N/L\) is discrete. These inclusions prove directly that \(N\) is separated and complete: a compatible sequence has a fixed class in \(N/L\), and after subtracting a representative its convergence is a convergence problem in \(L\). Finally \(H^1(U,\widetilde M)=H^2_{\mathfrak a}(M)\) has zero Tate module. Lemma 3.1 proves degree zero too. ∎
+
+This proves the principal comparison mechanism of [Stacks, [Tag 0BLD](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-formal-functions-principal), [Tag 0EII](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-alternative-H0), [Tag 0EKM](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-alternative-higher)]. Ordinary completeness of the degree-zero section module was checked separately; it was not inferred merely from vanishing of a Tate module.
+
+## 4. Projective Lefschetz comparison
+
+Let \(P\) be proper over a field \(k\), let \(L\) be ample invertible, let \(s\in\Gamma(P,L)\), and let \(Q=Z(s)\). Write \(Q_n=Z(s^n)\), and \(F_n=F|_{Q_n}\) for a coherent \(F\). The section is allowed to be a zero divisor.
+
+**Theorem 4.1.** Suppose an integer \(\sigma\) satisfies
+\[
+\operatorname{depth}(F_p)+\dim\overline{\{p\}}>\sigma
+\quad\text{for every }p\in P\setminus Q.
+\tag{4.1}
+\]
+Then
+\[
+H^i(P,F)\longrightarrow\varprojlim_n H^i(Q_n,F_n)
+\tag{4.2}
+\]
+is an isomorphism for \(0\le i<\sigma\).
+
+We spell out the cone and the grading step in its proof. Form the section ring
+\(A=\bigoplus_{m\ge0}\Gamma(P,L^m)\).
+It is a finite-type \(k\)-algebra, \(P=\operatorname{Proj}A\), and the complement \(U\) of the vertex \(Z=V(A_+)\) in \(X=\operatorname{Spec}A\) is the multiplicative-group bundle
+\[
+\pi:U=\operatorname{Spec}_P\bigl(\bigoplus_{m\in\mathbb Z}L^m\bigr)\longrightarrow P.
+\tag{4.3}
+\]
+Locally where \(L\) is trivial, this is \(\operatorname{Spec}\mathcal O_P[t,t^{-1}]\). The section \(s\) becomes \(f\in A_1\), and \(V(f)\cap U=\pi^{-1}(Q)\), with the same statement for all powers. These are the standard section-ring/Proj identifications [Stacks, [Tag 0EKI](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-morphisms.html#more-morphisms-lemma-apply-proj-spec)]; they hold for an ample sheaf even if its first power is not very ample. Since \(A_0\) is finite over \(k\), the vertex is a finite set of closed points.
+
+**Proof of Theorem 4.1.** Extend \(\pi^*F\) from the quasi-compact open \(U\) to a finite \(A\)-module \(M\). For \(u\in U\setminus V(f)\), put \(p=\pi(u)\). A fibre of \(\pi\) is a regular curve. At its generic point the depth of the pulled-back sheaf is unchanged and its closure dimension increases by one. At a closed point of that fibre the depth increases by one and its closure dimension is unchanged. This follows locally from flatness of \(\mathcal O_{P,p}\to\mathcal O_{P,p}[t,t^{-1}]_u\), the regular fibre and the dimension formula. In either case, for a closed vertex point \(z\in\overline{\{u\}}\),
+\[
+\operatorname{depth}(M_u)+\dim\mathcal O_{\overline{\{u\}},z}
+=\operatorname{depth}(F_p)+\dim\overline{\{p\}}+1
+>\sigma+1.
+\tag{4.4}
+\]
+The interval dimension equals the closure dimension because \(z\) is closed in a scheme of finite type over a field. Such an \(A\) has a dualizing complex, obtained from a polynomial ring by the quotient construction. The annihilator theorem of Local duality and finiteness, applied to support at \(Z\) and the closed set \(V(f)\) containing it, now gives a power of \(f\) killing every \(H^j_Z(M)\) for \(j\le\sigma+1\).
+
+Complete \(A\) at \((f)\), obtaining \(A'\), and put \(M'=M\otimes_AA'\), \(U'=U\times_X\operatorname{Spec}A'\). Flat base change preserves the annihilators. Lemma 3.2 and flat Čech base change give
+\[
+H^i(U,\pi^*F)\otimes_AA'\simeq
+\varprojlim_n H^i(U,\pi^*F/f^n\pi^*F),\qquad i<\sigma.
+\tag{4.5}
+\]
+Indeed completion induces an isomorphism on every quotient by \(f^n\); the finite affine Čech cover of \(U\) also proves the asserted cohomology base change. The affine morphism (4.3) decomposes these groups by weight:
+\[
+H^i(U,\pi^*F)=\bigoplus_{m\in\mathbb Z}H^i(P,F\otimes L^m),
+\]
+and its \(n\)-th quotient has the analogous decomposition with \(Q_n,F_n\).
+
+For completeness, the grading argument used to extract weight zero from (4.5) is as follows. Let \(B\) be Noetherian and nonnegatively graded, let \(J\subset B_+\) be homogeneous, and suppose a graded module \(T\) maps compatibly to graded modules \(G_n\) killed by \(J^n\), inducing \(T\otimes_B\widehat B\simeq\varprojlim G_n\). Then
+\[
+T_d\simeq\varprojlim G_{n,d}.
+\tag{4.6}
+\]
+For injectivity, put a putative kernel element in a finite homogeneous submodule with generators of degrees at least \(b\). Flatness of Noetherian completion embeds the completed tensor of this submodule in that of \(T\). Reduction modulo \(J^n\) changes no degrees below \(b+n\). Choosing \(b+n>d\) shows that a degree-\(d\) element zero after completed tensor was zero already. For surjectivity, express an element of the limit of degree \(d\) as a finite sum \(\sum x_j\otimes a_j'\), with homogeneous \(x_j\) of degrees \(d_j\). Completed coefficients have well-defined components in each nonnegative degree, since \(B/J^n\) stabilizes in every fixed degree. The degree-\(d\) projection of the sum is therefore the image of \(\sum (a_j')_{d-d_j}x_j\in T_d\); all other components disappear under that projection. This proves (4.6). It avoids interchanging an inverse limit with an infinite direct sum.
+
+Apply (4.6) to (4.5) and take \(d=0\). The result is exactly (4.2). No regularity of \(f\) was used in Lemma 3.2, so the proof retains the stated generality. ∎
+
+**Corollary 4.2 (all open neighbourhoods).** If (4.1) holds with \(\sigma=1\), then for every open \(V\supset Q\),
+\[
+\Gamma(V,F)\simeq\varprojlim\Gamma(Q_n,F_n).
+\tag{4.7}
+\]
+
+**Proof.** Theorem 4.1 proves surjectivity using sections on \(P\). To prove injectivity, suppose a section on \(V\) vanishes on every \(Q_n\). At each point of \(Q\), Krull intersection in its finite stalk makes the section zero. Coherence then makes its support in \(V\) disjoint from a neighbourhood of \(Q\). The closure \(T\) of this support in \(P\) is disjoint from \(Q\), because \(Q\subset V\) and support is closed in \(V\).
+
+The complement of the zero scheme of an ample section in a proper scheme is affine: in (4.3) it is the degree-zero quotient of the affine principal open \(D(f)\), or equivalently the standard Proj open. Thus \(T\) is both proper and affine over \(k\), and is finite over \(k\). Its points are closed. At such a point outside \(Q\), (4.1) gives depth at least two. A nonzero section supported at that point would give maximal-ideal torsion in the stalk, contradicting even positive depth. Hence the section is zero. ∎
+
+**Corollary 4.3 (surfaces and threefolds).** On a Cohen–Macaulay proper equidimensional \(k\)-scheme of dimension \(n\), a vector bundle satisfies
+\(\operatorname{depth}(E_p)+\dim\overline{\{p\}}=n\)
+where it has nonzero rank. Therefore comparison holds for \(i<n-1\). In particular it computes sections on a Cohen–Macaulay surface, and both \(H^0\) and \(H^1\) on a Cohen–Macaulay threefold.
+
+**Proof.** Local Cohen–Macaulay depth is local dimension; a nonzero free module has the same depth as its ring. The dimension formula for an equidimensional finite-type scheme adds the local dimension and the closure dimension to \(n\). Use \(\sigma=n-1\) in Theorem 4.1. ∎
+
+These are [Stacks, [Tag 0EL1](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-lefschetz), [Tag 0EL2](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-lefschetz-addendum), [Tag 0EL3](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-example-lefschetz)]. The inequality is imposed off \(Q\); the section need not define an effective Cartier divisor.
+
+Positive depth also matters for injectivity. On \(\mathbb P^2\), choose a closed point \(p\) off the hyperplane and take its skyscraper sheaf \(k(p)\). It has nonzero global sections, but every formal restriction along the hyperplane is zero. Its depth at \(p\) is zero and its closure has dimension zero, so the hypothesis correctly fails.
+
+## 5. From formal systems to finite graded modules
+
+The following lifting argument is the principal-ideal part of the existence proof. A system is **regular for \(f\)** if locally it is the quotient system of a module on which \(f\) is injective. Equivalently its multiplication maps give exact sequences
+\[
+0\to E_m\xrightarrow{f^n}E_{m+n}\to E_n\to0.
+\tag{5.1}
+\]
+Regularity here concerns the formal module, not necessarily the ambient ring.
+
+**Lemma 5.1 (canonical extension of a regular principal system).** Let \(A\) be Noetherian, \(f\in\mathfrak a\), and \(U=\operatorname{Spec}A\setminus V(\mathfrak a)\). Let \((E_n)\) be a regular coherent formal system for \(f\) on \(U\). Suppose each of the systems \((H^0(U,E_n))\) and \((H^1(U,E_n))\) is pro-isomorphic to a system of finite \(A\)-modules. Then the section system is pro-isomorphic to \((N/f^nN)\) for a finite module \(N\) over the \(f\)-adic completion of \(A\). Its associated formal sheaves restrict to \((E_n)\) on \(U\).
+
+**Proof.** Put \(M=\varprojlim H^0(U,E_n)\) and \(B=\varprojlim H^1(U,E_n)\). For \(p=0,1\), (5.1) gives
+\[
+\ker\bigl(\varprojlim H^p(U,E_n)\to H^p(U,E_c)\bigr)
+=f^c\varprojlim H^p(U,E_n).
+\tag{5.2}
+\]
+For \(p=0\) this is left exactness of inverse limits. For \(p=1\), choose preimages under multiplication by \(f^c\) in the long exact sequences. Consecutive choices differ by boundary classes from the single, constant module \(H^0(U,E_c)\). If these differences are the boundaries of \(b_n\), replace the choices by boundaries of \(c_n\), chosen recursively with \(c_{n+1}-c_n=b_n\). The adjusted preimages are compatible. This proves (5.2).
+
+Thus both limit topologies are their \(f\)-adic topologies; they are separated and complete. The pro-finiteness hypothesis implies that the image of either limit at any fixed level is finite: a sufficiently late transition factors through a finite module in the pro-isomorphic system, so the image is a submodule of a finite image. In particular \(M/fM\) and \(B/fB\) are finite. Lift generators of these quotients and approximate successively modulo \(f,f^2,\ldots\). The coefficients converge in \(\widehat A\), and (5.2) gives surjections from finite free \(\widehat A\)-modules. Consequently \(M\) and \(B\) are finite over \(\widehat A\).
+
+It remains to prove that sections lift uniformly, rather than merely to have a finite limit. For every \(n\), the boundary maps of (5.1) give a map
+\[
+\delta_n:H^0(U,E_n)\longrightarrow B,
+\]
+where the limits of \(H^1(U,f^nE_N)\) are identified with \(B\) by (5.1). Its value is zero exactly when the section lifts to every sufficiently high finite level. Multiplication by \(f\), viewed as \(E_n\to E_{n+1}\), gives
+\(\delta_{n+1}(fs)=\delta_n(s)\).
+Hence the images \(V_n=\operatorname{im}\delta_n\) form an ascending chain of \(\widehat A\)-submodules of the finite module \(B\). They stabilize, say at \(c\). For \(n\ge c\) and a section \(s\) at level \(n\), choose \(z\) at level \(c\) with \(\delta_c(z)=\delta_n(s)\). Then
+\(s-f^{n-c}z\) lifts to every higher level, while \(f^{n-c}z\) is zero at level \(n-c\). Therefore the image at level \(n-c\) of sections at level \(n\) is already the stable image of every later level. This is the Mittag–Leffler property, with a uniform shift.
+
+A countable Mittag–Leffler system has its limit surjecting onto each stable image, by choosing successive compatible lifts in those images. Together with (5.2), this says \((M/f^nM)\) and \((H^0(U,E_n))\) are pro-isomorphic. Take \(N=M\). Finally, on the quasi-affine open \(U\), sheafifying the global sections of a quasi-coherent sheaf recovers that sheaf: it is restriction of its quasi-coherent pushforward to the ambient affine scheme. The pro-isomorphism therefore restricts to \((E_n)\). Proposition 1.3 recognizes the resulting isomorphism of formal objects. ∎
+
+The case in which \(H^0(U,E_1)\) and \(H^1(U,E_1)\) are finite follows immediately: (5.1) and induction make both groups finite at every level. The uniform obstruction argument also explains why the pro-finite version, rather than only this easy case, is useful. Compare [Stacks, [Tag 0BLC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-ML), [Tag 0EHA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-topology-I-adic-f), [Tag 0EHH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-when-done), [Tag 0EJI](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-cd-1-canonical)].
+
+**Lemma 5.2 (algebraization of a graded formal extension).** Let \(A\) be a Noetherian nonnegatively graded ring and \(I\subset A_+\) homogeneous. A compatible system of finite graded modules \(N_n\), with \(N_{n+1}/I^nN_{n+1}=N_n\), is \((N/I^nN)\) for a finite graded \(A\)-module \(N\).
+
+**Proof.** Lift homogeneous generators of \(N_1\) compatibly through the system. They generate every \(N_n\), by Nakayama for the nilpotent ideal \(I/I^n\). Let \(b\) be their least degree. Since \(I^nN_m\) has no components below \(b+n\), the degree-\(d\) parts stabilize once \(n>d-b\). Define \(N_d\) to be this stable part, and \(N=\bigoplus_dN_d\). The lifted generators generate \(N\): this can be checked in a sufficiently high stable finite level for each degree. For a fixed \(d\), only finitely many degrees between \(b\) and \(d\) can contribute to \((I^nN)_d\). At a level where all of them have stabilized, the quotient identity for \(N_m\to N_n\) proves \((N/I^nN)_d=(N_n)_d\). Thus the quotients agree in all degrees. ∎
+
+When a graded formal system on the punctured cone has a canonical extension as in Lemma 5.1, the extension has a canonical grading. To see this without assuming a grading on the completed ring, the grading defines a \(\mathbb G_m\)-action on the cone and an equivariant structure on the original system. Canonical extension commutes with flat base change: finite affine Čech descent gives \(H^0(U',E_n')=H^0(U,E_n)\otimes_AA'\), and preserves its pro-isomorphism with a coherent formal system. The action and projection \(\mathbb G_m\times X\rightrightarrows X\) are flat. Full faithfulness in Proposition 1.3 extends the original equivariant isomorphism uniquely to the extension; uniqueness also extends its cocycle identity. Equivariant modules for \(\mathbb G_m\) are graded modules, by decomposing the coaction into Laurent weights. Lemma 5.2 now gives a finite graded module on the uncompleted cone. This is the descent mechanism of [Stacks, [Tag 0EKC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finiteness-graded), [Tag 0EL4](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-Gm-equivariant-extend-canonically)].
+
+## 6. Existence along an ample zero scheme
+
+We retain the proper \(P\), ample \(L\), section \(s\), zero scheme \(Q\) and ideal \(\mathcal I\) of Section 4. For a formal module \((F_n)\), write
+\(F_q^\wedge=\varprojlim(F_n)_q\), a finite module over the \(\mathcal I_q\)-adic completion \(\widehat{\mathcal O}_{P,q}\).
+
+**Theorem 6.1 (coherent existence).** Suppose that for every \(q\in Q\) and every prime \(\mathfrak p\) of this completed local ring outside \(V(\mathcal I_q\widehat{\mathcal O}_{P,q})\),
+\[
+\operatorname{depth}((F_q^\wedge)_{\mathfrak p})
++\dim(\widehat{\mathcal O}_{P,q}/\mathfrak p)
++\dim\overline{\{q\}}>2.
+\tag{6.1}
+\]
+Then \((F_n)\) is the completion of a coherent module on \(P\).
+
+We prove the depth improvement and the harmlessness of supported corrections needed for this theorem. These steps retain arbitrary sections.
+
+**Lemma 6.2 (bounded formal torsion can be restored).** Suppose a formal module maps to the completion of a coherent module, and its kernel and cokernel are killed by \(\mathcal I^r\). Then it algebraizes coherently. The corresponding assertion holds for a map in the opposite direction.
+
+**Proof.** Work first on an affine chart with ideal \(I\). For a map \(M'\to\widehat G\), its image contains \(I^r\widehat G\). Thus its image is the completion of the preimage \(G'\subset G\) of its image modulo \(I^r\), using \(G/I^rG=\widehat G/I^r\widehat G\). Its kernel \(T\), killed by \(I^r\), is an ordinary finite module on the same infinitesimal thickening. The extension of \(\widehat{G'}\) by \(T\) descends uniquely as an extension of \(G'\) by \(T\). Indeed a finite free resolution of \(G'\) gives
+\[
+\operatorname{Ext}^j_{\widehat A}(\widehat{G'},T)
+=\operatorname{Ext}^j_A(G',T),\qquad j\ge0:
+\]
+the complexes computing the two sides are the same after identifying \(T\) as an \(\widehat A\)-module, and completion is flat. The descended extension is finite and its exact completion recovers \(M'\). The degree-zero equality gives uniqueness of maps respecting the fixed formal identification and the map to \(G\), so the construction glues on overlaps. For a map \(\widehat G\to M'\), descend its supported kernel to obtain the ordinary image. If its supported cokernel is \(T\), the extension class descends because \(\operatorname{Ext}^1_A(T,G')\) is finite, killed by a power of \(I\), and unchanged by flat completion. Thus the opposite direction also descends. ∎
+
+**Lemma 6.3 (depth improvement for a principal completion).** Under (6.1), \((F_n)\) can be changed by a map with kernel and cokernel killed by a power of \(\mathcal I\) to a regular principal system \((H_n)\). The latter is pro-isomorphic to coherent sheaves \((H_n'')\) on \(P\) such that
+\[
+\operatorname{depth}((H_n'')_q)+\dim\overline{\{q\}}\ge2
+\quad(q\in Q).
+\tag{6.2}
+\]
+
+**Proof.** First divide the formal module by its \(\mathcal I\)-power torsion. This is coherent and killed by a fixed power locally; a finite cover of \(Q\) supplies one global power. On completed affine charts the resulting finite module \(M\) is regular for a local generator \(f\) of \(\mathcal I\). Condition (6.1) is unchanged outside \(V(f)\).
+
+Let \(T\subset Q\) consist of points whose closures in \(P\) have dimension at most one, and let \(T'\subset T\) consist of closed points. On each completed affine chart take their corresponding specialization-closed subsets of \(V(f)\). The annihilator theorem of the previous lesson gives
+\[
+f^aH^1_T(M)=0,\qquad
+f^bH^1_{T'}(M)=f^bH^2_{T'}(M)=0
+\tag{6.3}
+\]
+for suitable powers. Here is the depth check: an off-\(V(f)\) prime specializing to a curve point has depth plus interval dimension greater than one by (6.1), and one specializing to a closed point has that sum greater than two. These are exactly the initial-degree tests for (6.3). Passing between a completed affine chart and the completed local ring at that point preserves depth plus interval dimension. This follows from flatness, Cohen–Macaulay formal fibres and the catenary dimension formula: the fibre dimension added to depth is subtracted from the remaining prime interval. These completion properties hold for rings of finite type over \(k\), and give the equality recorded in [Stacks, [Tag 0EHW](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-change-completion)].
+
+In addition \(H^1_{T'}(M)\) is finite. Apply the full finiteness theorem: outside \(V(f)\) the same bound is greater than two; at a nonclosed point of \(V(f)\), regularity of \(f\) gives depth at least one and its interval to a closed point has dimension at least one. Thus the degree-one finiteness test is satisfied. This finite module is supported in \(V(f)\), so a power of \(f\) kills it.
+
+Put \(M_n=M/f^nM\) and \(B_n=M_n/H^0_T(M_n)\). Since \(H^0_T(M)=0\), the long exact sequences identify \(H^0_T(M_n)\) with \(H^1_T(M)[f^n]\), whose transitions multiply by \(f\). By (6.3) this is pro-zero. Thus \((B_n)\) is pro-isomorphic to \((M_n)\), and \(B_n\) has depth at least one at every point of \(T\).
+
+Extend \(B_n\) across its closed-point depth defects by
+\[
+D_{T'}(B_n)=\operatorname*{colim}_{X\setminus V\subset T'}
+\Gamma(V,\widetilde{B_n}).
+\tag{6.4}
+\]
+There is an exact sequence
+\(0\to B_n\to D_{T'}(B_n)\to H^1_{T'}(B_n)\to0\).
+The last term is finite by the finiteness theorem: at curve points the depth is at least one, and at all other nonclosed points of its support the interval to a closed point has dimension at least two. Hence (6.4) is finite. Once it is finite, the filtered union in (6.4) stabilizes. The resulting coherent extension has zero first two supported groups at its removed closed points, by the support sequence, and therefore has depth at least two there. At curve points it is unchanged and has depth at least one. This is the elementary depth-two hull construction [Stacks, [Tag 0EI3](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-make-S2-along-T-simple), [Tag 0EI4](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-make-S2-along-T)].
+
+Let \(H=D_{T'}(M)\). The same construction is finite, and
+\(0\to M\to H\to H^1_{T'}(M)\to0\).
+The system \((H^1_{T'}(M_n))\) is pro-constant with value \(H^1_{T'}(M)\): its exact sequence has left term \(H^1_{T'}(M)/f^n\), eventually constant, and right term \(H^2_{T'}(M)[f^n]\), pro-zero by (6.3). Removing the pro-zero \(T\)-torsion does not change this conclusion for \(B_n\). Artin–Rees applied to \(0\to M\to H\to H^1_{T'}(M)\to0\) now identifies
+\((H/f^nH)\) with \((D_{T'}(B_n))\) as pro-systems: the natural maps give the same outer systems in these exact sequences, and hence the same middle system. This supplies \(H_n''\).
+
+The module \(H\) is still regular for \(f\). Its \(f\)-torsion would inject into the finite cokernel, supported on \(T'\), but \(H\) has no \(T'\)-supported torsion by (6.4). Thus it is zero. The map \(M\to H\) has bounded \(f\)-torsion cokernel. The construction by support removal and (6.4) is canonical, commutes with localization and with the completed-chart changes, which are flat with Cohen–Macaulay fibres, and glues on \(P\). The initial torsion quotient and these maps give the asserted global supported correction. The depths just established imply (6.2), including points of closure dimension at least two where the bound is automatic. ∎
+
+**Proof of Theorem 6.1.** Apply Lemma 6.3. By Lemma 6.2 it suffices to algebraize the resulting \((H_n)\). Pull it back to the punctured cone (4.3). Under this smooth curve bundle, depth plus closure dimension increases by one, exactly as in (4.4). Thus the pro-isomorphic systems \(\pi^*H_n''\) satisfy depth plus interval to every closed vertex point at least three. The finiteness theorem, in the pushforward form obtained from the support sequence, makes both \(H^0(U,\pi^*H_n'')\) and \(H^1(U,\pi^*H_n'')\) finite over the section ring. Consequently the corresponding systems for \(\pi^*H_n\) are pro-finite.
+
+They are regular for the homogeneous element \(f\). Lemma 5.1 canonically extends them over the cone. The equivariance argument after Lemma 5.2 and that lemma itself produce a finite graded \(A\)-module \(N\) before completion. Its associated coherent sheaf on \(\operatorname{Proj}A=P\) has quotient system pro-isomorphic to \((H_n)\): taking the associated Proj sheaf removes exactly the modules supported at the vertex. Proposition 1.3 turns the pro-isomorphism of these formal objects into an isomorphism. Finally restore both supported corrections with Lemma 6.2. This gives the required coherent algebraization of \((F_n)\). ∎
+
+This proves coherent existence at the completed-local-ring generality of [Stacks, [Tag 0EL5](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-lefschetz-existence)]. The principal depth improvement above gives the part of [Stacks, [Tag 0EJF](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-improvement-formal-coherent-module-better)] needed here; no assumption that \(s\) is regular was introduced.
+
+**Theorem 6.4 (vector bundles on a neighbourhood).** Suppose
+\[
+\operatorname{depth}(\mathcal O_{P,p})+\dim\overline{\{p\}}>2
+\quad(p\in P\setminus Q).
+\tag{6.5}
+\]
+Then completion is an equivalence between vector bundles on neighbourhoods of \(Q\), with morphisms identified after shrinking, and finite locally free formal modules along \(Q\).
+
+**Proof.** Corollary 4.2 applies to every \(L^m\), whose stalk depth is that of its ring. Proposition 2.1 therefore proves full faithfulness, including for bundles initially defined on a smaller neighbourhood.
+
+Let \((E_n)\) be finite locally free formally. At \(q\in Q\) its completed stalk \(E_q^\wedge\) is free over \(\widehat{\mathcal O}_{P,q}\): lift a basis at the first level, use Nakayama to obtain a surjection at each level, and note that a surjection between free modules of the same rank over a local ring is an isomorphism. Take the compatible limit. For a prime \(\mathfrak p\) of this completed ring off \(V(\mathcal I_q)\), its contraction corresponds to \(p\leadsto q\) in \(P\setminus Q\). Flat depth and the catenary dimension formula give
+\[
+\operatorname{depth}((\widehat{\mathcal O}_{P,q})_{\mathfrak p})
++\dim(\widehat{\mathcal O}_{P,q}/\mathfrak p)
++\dim\overline{\{q\}}
+=\operatorname{depth}(\mathcal O_{P,p})+\dim\overline{\{p\}}.
+\tag{6.6}
+\]
+This is the completion equality explained in Lemma 6.3, followed by the dimension formula for \(p\leadsto q\). Thus (6.5) verifies every completed-prime inequality in Theorem 6.1. It supplies a coherent algebraization \(E\) on \(P\).
+
+Its stalk \(E_q\) is free for every \(q\in Q\). Indeed ideal completion of this local ring is faithfully flat; a finite presentation whose completed module is free descends flatness, and finite flat modules over a local ring are free. Equivalently lift a residue-field basis and detect the kernel and cokernel of the resulting free presentation after faithful completion. The locally free locus of \(E\) is open and contains \(Q\). Restrict to that neighbourhood. This proves essential surjectivity and the equivalence. ∎
+
+This is [Stacks, [Tag 0EL7](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-lefschetz-equivalence)]. It produces an ordinary bundle on a neighbourhood, even though the coherent algebraization was constructed on all of \(P\).
+
+**Corollary 6.5.** If \(P\) is a Cohen–Macaulay proper threefold over \(k\), the equivalence in Theorem 6.4 holds. More generally it holds for an \((S_3)\) proper variety of dimension \(n\ge3\).
+
+**Proof.** In the Cohen–Macaulay case the sum in (6.5) is three. For the second assertion write \(h=\dim\mathcal O_{P,p}\). Catenarity and equidimensionality give \(\dim\overline{\{p\}}=n-h\). The \((S_3)\) condition bounds the sum below by \(\min(3,h)+n-h\), which is at least three, whether \(h\le3\) or \(h>3\). Apply Theorem 6.4. ∎
+
+These are the existence cases of [Stacks, [Tag 0EL6](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-example-lefschetz-existence)]. For a non-equidimensional scheme, the displayed pointwise inequality remains the statement to check; one cannot use only its largest component dimension. If \(Q=P\), the ideal is zero and a formal system is simply a coherent module. If \(Q\) is empty, its formal category and the category of neighbourhood germs are both zero. These cases also agree with the theorem.
+
+## 7. Two dimension thresholds in examples
+
+**Example 7.1 (a hyperplane).** Let \(P=\mathbb P^n_k\), \(n\ge1\), let \(Q=(x_0=0)\), and let \(F=\mathcal O(m)\). The depth-plus-closure-dimension sum is \(n\). Hence Theorem 4.1 applies for every integer \(\sigma\le n-1\). Comparison holds for \(i<n-1\).
+
+One can see this directly, using
+\[
+0\to\mathcal O(m-r)\xrightarrow{x_0^r}\mathcal O(m)
+\to\mathcal O_{Q_r}(m)\to0.
+\tag{7.1}
+\]
+For \(n\ge2\), the middle cohomology of all twists on \(\mathbb P^n\) vanishes. Thus \(H^0(Q_r,\mathcal O(m))\) stabilizes to \(H^0(\mathbb P^n,\mathcal O(m))\) once \(r>\max(m,0)\), and all groups in positive degrees below \(n-1\) are zero. In particular for a line in \(\mathbb P^2\), the limit of sections of its infinitesimal neighbourhoods is \(k\).
+
+For \(n\ge2\), the next degree can fail. Choose positive integers \(a_1,\ldots,a_n\) with \(m+\sum a_j\ge0\). For large \(r\), the inverse monomial
+\[
+x_0^{-(r-m-\sum a_j)}x_1^{-a_1}\cdots x_n^{-a_n}
+\in H^n(\mathbb P^n,\mathcal O(m-r))
+\tag{7.2}
+\]
+is nonzero. Multiplication by \(x_0^r\) kills it in \(H^n(\mathcal O(m))\), since its \(x_0\)-exponent becomes nonnegative. It therefore gives a class in \(H^{n-1}(Q_r,\mathcal O(m))\) by (7.1). The transitions are multiplication by \(x_0\), so these classes form a nonzero compatible family; put zero at the earlier levels where the first exponent in (7.2) is not negative. For \(n\ge2\), \(H^{n-1}(\mathbb P^n,\mathcal O(m))=0\), so comparison in this degree is not surjective. For \(n=1\), the same exact sequence explains the additional formal sections in the next example. The range of the theorem is sharp.
+
+**Example 7.2 (a curve and a point).** On \(\mathbb P^1_k\), take the rational point \(t=0\). Sections on successively smaller neighbourhoods have colimit \(k[t]_{(t)}\), whereas formal sections are \(k[[t]]\). The map is injective and not surjective. For example \(\sum_{j\ge3}t^{j!}\) is not a rational function: coefficients of a rational power series satisfy a fixed finite recurrence, but this sequence has arbitrarily long strings of zeros followed by a nonzero coefficient. A zero string longer than the recurrence order would force every subsequent coefficient to be zero. Thus the section-comparison condition fails in dimension one.
+
+**Example 7.3 (existence can fail on a surface).** Let \(Q\) be a line in \(\mathbb P^2_k\), and let \(Q_r\) be its \(r\)-th thickening. The square-zero successive ideals give exact sequences of abelian sheaves
+\[
+1\to\mathcal O_Q(-r)\xrightarrow{a\mapsto1+a}
+\mathcal O_{Q_{r+1}}^*\to\mathcal O_{Q_r}^*\to1.
+\tag{7.3}
+\]
+The first sheaf is written additively. Since \(H^2(Q,\mathcal O_Q(-r))=0\), every line bundle lifts from one level to the next. Also \(H^0(Q_r,\mathcal O_{Q_r})=k\) by Example 7.1. Its units are constants and lift, so \(H^1(Q,\mathcal O_Q(-r))\) injects into the kernel of \(\operatorname{Pic}(Q_{r+1})\to\operatorname{Pic}(Q_r)\). For \(r=2\) this group is \(k\). Choose a nonzero kernel class on \(Q_3\), trivial on \(Q_2\), and lift it compatibly through all subsequent levels. This gives a formal line bundle trivial on \(Q\) but nontrivial on \(Q_3\).
+
+It cannot come from a line bundle on any neighbourhood \(V\) of \(Q\). The complement of \(V\) is proper and contained in the affine plane \(\mathbb P^2\setminus Q\), hence finite. Every line bundle on \(V\) is \(\mathcal O(d)|_V\): choose a rational section and its divisor; the closures of its prime divisors in \(\mathbb P^2\) are curves defined by homogeneous irreducible polynomials, whose divisor classes are their degrees times a line. No prime divisor was removed. The equality of these Weil and Cartier divisor calculations is elementary on the affine charts, whose coordinate rings are localizations of the factorial ring \(k[u,v]\). Restriction to \(Q\simeq\mathbb P^1\) shows that triviality there forces \(d=0\). Its formal completion would then be trivial at every level, contradicting the choice on \(Q_3\).
+
+Thus sections are recovered on this surface, while existence of formal bundles can fail. The two assertions have the distinct thresholds \(>1\) and \(>2\).
+
+## 8. The local algebraization statements
+
+For later local applications we record the precise general statements about formal sections and bundles. Their exact linked open proofs are part of the input to this course. Formal-section algebraization uses the local-duality depth estimates to find a neighbourhood where ordinary and formal sections agree. Principal formal-bundle algebraization uses the two finite local-cohomology modules to extend the quotient system coherently; affine formal equivalence then produces a module, and the free locus contains the closed formal support. The general Hom theorem applies the associated-point section theorem to the coherent Hom sheaf. The statements below specify the precise hypotheses of those proofs. Sections 3–6 prove the projective theorems independently of these local statements.
+
+**Formal sections on a punctured local spectrum [Stacks, [Tag 0DXQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-theorem-algebraization-formal-sections)].** Let \((A,\mathfrak m)\) be Noetherian local with a dualizing complex and complete for an ideal \(I\). Put \(X=\operatorname{Spec}A\), \(Y=V(I)\), \(U=X\setminus\{\mathfrak m\}\), and let \(F\) be coherent on \(U\). Let \(d\ge\operatorname{cd}(A,I)\) and \(s\ge0\). For every \(x\in X\setminus Y\) whose closure meets \(U\cap Y\), assume
+\[
+\operatorname{depth}(F_x)\ge s
+\quad\text{or}\quad
+\operatorname{depth}(F_x)+\dim\overline{\{x\}}>d+s.
+\tag{8.1}
+\]
+There is an open \(V_0\subset U\) containing \(U\cap Y\) such that for every \(U\cap Y\subset V\subset V_0\) open,
+\[
+H^i(V,F)\simeq\varprojlim H^i(U,F/I^nF),\qquad i<s.
+\tag{8.2}
+\]
+If in addition \(\operatorname{depth}(F_x)+\dim\overline{\{x\}}>s\) for every \(x\in U\cap Y\), these groups are finite \(A\)-modules. The neighbourhood \(V_0\), the disjunction in (8.1), and the closure-meeting qualification are part of the assertion.
+
+**Formal bundles for a principal ideal [Stacks, [Tag 0EHC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-situation-algebraize), [Tag 0DXW](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-algebraization-principal-variant)].** Let \(A\) be Noetherian, \(f\in\mathfrak a\subset A\) a nonzerodivisor, and \(U=\operatorname{Spec}A\setminus V(\mathfrak a)\). A finite locally free formal system for \((f)\) on \(U\) canonically extends as a coherent formal system on \(\operatorname{Spec}A\) if
+\[
+H^1_{\mathfrak a}(A/fA)\quad\text{and}\quad
+H^2_{\mathfrak a}(A/fA)
+\quad\text{are finite}.
+\tag{8.3}
+\]
+If \(A\) is \(f\)-adically complete, it is consequently the completion of a coherent module on \(U\), which is locally free on a neighbourhood of \(U\cap V(f)\). Canonical extension means that the system of global section modules is pro-isomorphic to a coherent quotient system on the ambient affine scheme.
+
+If \(A\) is universally catenary with Cohen–Macaulay formal fibres, condition (8.3) is equivalent to
+\[
+\operatorname{depth}((A/fA)_{\mathfrak p})+
+\dim((A/\mathfrak p)_{\mathfrak q})>2
+\tag{8.4}
+\]
+for every \(\mathfrak p\in V(f)\setminus V(\mathfrak a)\) and every \(\mathfrak q\in V(\mathfrak p)\cap V(\mathfrak a)\). This is exactly the closed-support finiteness criterion of the previous lesson [Stacks, [Tag 0EHI](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-remark-interesting-case-variant)]. For a local puncture take \(\mathfrak a=\mathfrak m\).
+
+**A general Hom criterion [Stacks, [Tag 0EIV](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-fully-faithful-very-general)].** Let \(I\subset\mathfrak a\subset A\), where \(A\) is Noetherian, \(I\)-adically complete and has a dualizing complex. Put \(U=\operatorname{Spec}A\setminus V(\mathfrak a)\). Let \(F,G\) be coherent on one neighbourhood \(V\subset U\) of \(U\cap V(I)\). Assume that if \(x\in\operatorname{Ass}(F)\), \(x\notin V(I)\), and \(\overline{\{x\}}\cap V(I)\not\subset V(\mathfrak a)\), then
+\[
+\dim\mathcal O_{\overline{\{x\}},z}>\operatorname{cd}(A,I)+1
+\quad\text{for every }z\in\overline{\{x\}}\cap V(\mathfrak a).
+\tag{8.5}
+\]
+Then the colimit of \(\operatorname{Hom}(G,F)\) over smaller such neighbourhoods equals \(\operatorname{Hom}(G^\wedge,F^\wedge)\). This is the local full-faithfulness criterion corresponding to Proposition 2.1. Its reduction to section comparison uses the coherent sheaf \(\mathcal H=\mathcal Hom(G,F)\) and \(\operatorname{Ass}(\mathcal H)\subset\operatorname{Ass}(F)\); the associated-point section comparison is [Stacks, [Tag 0EG2](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-proposition-application-H0)]. No locally free hypothesis on these two coherent modules is needed.
+
+## 9. Exercises and solutions
+
+**Exercise 9.1 (a thickened line; intermediate).** For a line \(Q\subset\mathbb P^2_k\), compute \(\varprojlim\Gamma(Q_r,\mathcal O_{Q_r})\).
+
+**Solution.** In (7.1) take \(m=0\). There are no sections of \(\mathcal O(-r)\), and \(H^1(\mathbb P^2,\mathcal O(-r))=0\). Therefore every restriction \(k=\Gamma(\mathbb P^2,\mathcal O)\to\Gamma(Q_r,\mathcal O_{Q_r})\) is an isomorphism. The compatible limit is \(k\).
+
+**Exercise 9.2 (a curve; intermediate).** Show that comparison of neighbourhood sections with formal sections fails at a closed point of a smooth projective curve.
+
+**Solution.** Work on the component containing the closed point \(y\). The colimit of neighbourhood sections is its discrete valuation ring \(R=\mathcal O_{C,y}\), and the formal sections form \(\widehat R\). Choose a uniformizer \(t\in R\). It is transcendental over \(k\): a nonzero element algebraic over the subfield \(k\) is a unit in every local \(k\)-algebra containing it, whereas \(t\) is not. The function field \(K=k(C)\) is finite over \(k(t)\), since it is finitely generated of transcendence degree one. The completion contains the convergent series \(h=\sum_{j\ge3}t^{j!}\). This series is transcendental over \(k(t)\) in every characteristic. Indeed, if \(P(t,h)=0\) for a nonzero polynomial of degree \(d\) in its second variable and coefficient degrees at most \(D\), its truncation \(h_N\) would give a polynomial \(P(t,h_N)\) of degree at most \(D+dN!\) vanishing to order at least \((N+1)!\). For all large \(N\) it must be zero. The infinitely many distinct polynomials \(h_N\in k(t)\) would then be roots of the same nonzero polynomial, impossible. Thus \(h\notin K\), and in particular \(h\notin R\). This proves failure of surjectivity for every such curve and closed point, without a rational-residue-field assumption. The strict section depth bound also fails: its sum on a smooth curve is one.
+
+**Exercise 9.3 (a threefold; intermediate).** Let \(P\) be a Cohen–Macaulay projective threefold and let \(Q\) be the zero scheme of an ample section. Show that \(H^1(P,E)\) for a vector bundle is computed on its formal completion.
+
+**Solution.** At every nonzero-rank stalk, local Cohen–Macaulay depth plus closure dimension equals three. At zero stalks the inequality is automatic. Thus (4.1) holds for \(\sigma=2\), including when the ample section is a zero divisor. Theorem 4.1 gives \(H^1(P,E)=\varprojlim H^1(Q_r,E|_{Q_r})\). It simultaneously gives the degree-zero comparison.
+
+**Exercise 9.4 (exactness; intermediate).** Prove that coherent formal modules form an abelian category and that coherent completion is exact. Explain the kernel caveat.
+
+**Solution.** On an affine chart use Lemma 1.1 and the abelian category of finite modules over the Noetherian completed ring. Compute a kernel there, then take its quotients to obtain the formal kernel; do the same for cokernels. Universal properties glue these constructions. Artin–Rees proves exactness of completed finite-module sequences, so completion of coherent sheaves is exact. Multiplication by \(t\) on \(k[[t]]\) has zero kernel, although its reductions have kernels \((t^{r-1})/(t^r)\). Their transition maps are zero. They are pro-zero rather than a nonzero formal object, showing why termwise kernels are insufficient.
+
+**Exercise 9.5 (the exact projective-space range; advanced).** Determine the integers \(\sigma\) for which Theorem 4.1 applies to \(\mathcal O(m)\) on \(\mathbb P^n\) with a hyperplane, and check the asserted comparisons directly.
+
+**Solution.** The depth sum is identically \(n\) off the hyperplane, so the strict inequality is \(\sigma<n\), or \(\sigma\le n-1\). For \(n\ge2\), sequence (7.1) and the vanishing of middle projective-space cohomology show that the limit of sections is \(H^0(\mathcal O(m))\), and that all positive degrees below \(n-1\) vanish at every level. This verifies every nonempty asserted range. The compatible inverse-monomial family (7.2) shows that the next degree \(n-1\) can have extra formal classes, whereas the corresponding ordinary group is zero. For \(n=1\) the asserted nonnegative range is empty, and Example 7.2 demonstrates failure already in degree zero. Thus increasing \(\sigma\) to \(n\) would give a false conclusion.
+
+## Proof inputs
+
+The quasi-coherent prerequisites supply projective-space cohomology, Serre generation by ample twists, the section-ring/Proj identification (4.3), and Noetherian affine completion with Artin–Rees. Proper-over-complete-base Grothendieck existence has its exact open proof at [Stacks, Tag 088E](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-theorem-grothendieck-existence); its complete Noetherian base and proper morphism hypotheses are the ones used here. The written Completion lesson linked in Local cohomology supplies the affine completion arguments. The flat depth formula, catenary dimension formula and regular formal fibres for rings of finite type over a field are commutative-algebra prerequisites; the completed depth-plus-interval equality used above is [Stacks, [Tag 0EHW](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-change-completion)].
+
+The local algebraization assertions (8.1)–(8.3) and the general associated-point section/Hom criterion (8.5) are stated with their full hypotheses and tags. They have more general deleted closed sets or ideals than the principal projective arguments proved here. Their full accessible open proofs are the linked Tags 0DXQ, 0DXW, 0EG2 and 0EIV, with the preceding finiteness theorem supplying the criterion (8.4). All formal-category assertions, the ample-power full-faithfulness tests, projective comparison for arbitrary sections, the coherent existence theorem, its neighbourhood vector-bundle equivalence, the examples and the five solutions are proved in this lesson.
+
+## References
+
+Linked Stacks proofs retain their [GNU Free Documentation License](https://github.com/stacks/stacks-project/blob/master/COPYING). The CC0 dedication covers the exposition here.
+
+- [Stacks] The Stacks Project authors, *The Stacks Project*, [official project](https://stacks.math.columbia.edu/). The tag links use AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks Project's maintainers. Its [English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/) retains the upstream tags. Relevant sections are Cohomology of Schemes, “Coherent formal modules”; Algebraic and Formal Geometry, “Completion functors,” “Algebraization of formal sections,” “Algebraization of coherent formal modules,” and “Application to Lefschetz theorems”; and More on Morphisms, “Proj and Spec.”
+- [Grothendieck–Laszlo] A. Grothendieck, *Cohomologie locale des faisceaux cohérents et théorèmes de Lefschetz locaux et globaux (SGA 2)*, revised edition edited by Y. Laszlo, [arXiv:math/0511279](https://arxiv.org/abs/math/0511279), Exposés IX and XII, for formal algebraization and projective Lefschetz comparison and existence.

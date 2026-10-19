@@ -1,6 +1,6 @@
 # Functions of positive type
 
-**Lesson HA-LCA-04.** Self-checked by the writing AI.
+**Lesson HA-LCA-04.**
 
 A positive-type function records all the inner products among translates of one vector. Conversely, positivity of those inner products constructs the vector and its representation. We will prove this both for continuous functions and for bounded measurable classes, then identify which normalized functions cannot be decomposed into two others.
 

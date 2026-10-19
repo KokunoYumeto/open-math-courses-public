@@ -1,6 +1,6 @@
 # Sharp bounds for compact spectra
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
 
 A compact Fourier band controls derivatives with sharp norm constants. We construct the finite signed measures with explicitly summable atoms that realize a derivative and every sine-cosine combination, including the closed band endpoints. In several dimensions, a compact spectrum also gives an entire extension whose complex-translation norm is controlled by its actual support function. That support function can be negative in a direction, and no polynomial loss is needed.
 

@@ -1,6 +1,6 @@
 # The second fundamental theorem and the group of parameters
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 The generators of a transformation group close under brackets with constant coefficients. Conversely, a finite-dimensional bracket-closed space of analytic vector fields determines a local transformation group. The converse includes fields that are dependent at every individual point. To handle them, we first evaluate the fields at finitely many points, then construct multiplication from a frame with constant brackets.
 

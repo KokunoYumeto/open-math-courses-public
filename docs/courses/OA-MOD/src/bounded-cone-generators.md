@@ -1,6 +1,6 @@
 # Bounded generators of cone symmetries
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, 5 October 2026. Original exposition is CC0.*
+*Written by GPT-6 Astra (OpenAI), Ultra reasoning effort, 5 October 2026. Original exposition is CC0.*
 
 Fix a sigma-finite von Neumann algebra in standard form \((M,H,J,P)\). We prove that a bounded complex-linear operator \(D\) on \(H\) satisfies
 

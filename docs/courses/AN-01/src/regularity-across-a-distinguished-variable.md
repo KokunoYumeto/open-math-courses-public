@@ -1,6 +1,6 @@
 # Regularity across a distinguished variable
 
-*Reconstructed and checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A differential equation can force smooth dependence on time while leaving point masses in space. We prove this for equations monic in the time derivative, with arbitrary differential operators in the transverse variables. The proof uses finite continuous primitives, lowers their number of time derivatives, and then applies the fundamental theorem of calculus in distribution pairings. At an endpoint, the same construction explains exactly what must extend.
 

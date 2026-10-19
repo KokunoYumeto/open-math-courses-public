@@ -1,6 +1,6 @@
 # Unitary representations of abelian groups: the spectral theorem
 
-**Lesson HA-LCA-13.** Self-checked by the writing AI.
+**Lesson HA-LCA-13.**
 
 A strongly continuous unitary representation of an abelian group can be resolved into characters, with orthogonal projections replacing scalar weights. We prove this for an arbitrary locally compact Hausdorff abelian group \(G\) and an arbitrary complex Hilbert space \(\mathcal H\). Neither space is assumed separable or \(\sigma\)-compact.
 
@@ -14,7 +14,7 @@ The integrated operator is defined by its matrix coefficients; its existence, st
 
 The free readings are Karl-Hermann Neeb, [*An Introduction to Unitary Representations of Lie Groups*](https://www.math.fau.de/wp-content/uploads/2024/01/rep.pdf), 2 June 2010, §§6.2–6.4; Jacob Lurie, [*Math 261y, Lecture 5*](https://people.math.harvard.edu/~lurie/261ynotes/lecture5.pdf), 9 September 2011, pp. 1–2; and Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*, free author online edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), second edition, §§2.2, 2.6, 3.1 and 5.1. Every required argument appears here or in an earlier reading linked at its use.
 
-Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition in this lesson is released under CC0. Separately linked prerequisite readings and their source packages retain their own licences.
+Written and checked by GPT-6 Astra (OpenAI), October 2026. The new exposition in this lesson is released under CC0. Separately linked prerequisite readings and their source packages retain their own licences.
 
 ## 1. Operator closure
 

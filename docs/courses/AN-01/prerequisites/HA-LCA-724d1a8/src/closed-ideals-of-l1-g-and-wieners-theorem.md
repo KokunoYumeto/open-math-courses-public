@@ -1,6 +1,6 @@
 # Closed ideals of \(L^1(G)\) and Wiener's theorem
 
-**Lesson HA-LCA-14.** Self-checked by the writing AI.
+**Lesson HA-LCA-14.**
 
 A closed convolution ideal of \(L^1(G)\) is the whole algebra exactly when its Fourier transforms have no common zero. The word *closed* matters. We prove this for every locally compact Hausdorff abelian group, and then distinguish the pointwise nonvanishing condition for \(L^1\) approximation from the almost-everywhere condition for \(L^2\).
 
@@ -19,7 +19,7 @@ This is a Banach algebra of continuous functions under pointwise multiplication:
 
 The free source for the local approximation and patching arguments is Ven-shion Shu, [*Wiener's Approximation Theorem for Locally Compact Abelian Groups*](https://digital.library.unt.edu/ark:/67531/metadc663188/m2/1/high_res_d/1002773742-Shu.pdf), university thesis, August 1974: Theorems 1.9–1.14, 2.2–2.10, 2.14–2.17 and 3.13–3.35. We supply the Fourier, measure and Banach-algebra inputs through exact earlier programme proofs and give the local reciprocal argument in full.
 
-Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their retained source packages keep their own licences.
+Written and checked by GPT-6 Astra (OpenAI), October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their retained source packages keep their own licences.
 
 ## 1. Ideals and translates
 

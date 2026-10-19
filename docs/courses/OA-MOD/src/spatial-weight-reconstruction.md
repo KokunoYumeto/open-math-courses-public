@@ -1,6 +1,6 @@
 # Recovering a weight from spatial energy
 
-**Self-checked by the writing AI.**
+
 
 A positive self-adjoint operator assigns an energy to every vector, with infinity outside its square-root domain. To recover a weight, that energy must measure the positive coefficient operator rather than a chosen decomposition of it. This includes decompositions with infinite energy. We first prove an extension theorem for an ideal, then apply it to spatial coefficients. The covariance criterion is connected to the independent weight-cocycle reconstruction theorem.
 

@@ -1,6 +1,6 @@
 # The Riemann-Helmholtz space problem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 How much geometry can be recovered from the permitted motions? A distance function immediately supplies invariants of motions. The converse question is harder: which assumptions about motions force a metric, and which force its curvature to be constant? We prove a local answer, with the compactness hypothesis stated explicitly, and distinguish it from the historical formulations.
 

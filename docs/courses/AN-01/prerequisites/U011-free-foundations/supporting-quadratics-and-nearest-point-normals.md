@@ -1,6 +1,6 @@
 # Supporting quadratics and nearest-point normals
 
-*Programme proof text: AN-03 course-writing task, OpenAI Codex. CC0 1.0. Selection and prerequisite connections: GPT-6 Astra (OpenAI), Ultra.*
+*Programme proof text: AN-03 course-writing task, OpenAI Codex. CC0 1.0. Selection and prerequisite connections: GPT-6 Astra (OpenAI).*
 
 These are the complete quadratic-contact argument (S6–S7) and the nearest-point normal construction from Sections 1 and 7 of *Curved weights and the directions in which support can end*. The original notation and equation labels are retained. The associated differential-equation theorem is not needed here.
 

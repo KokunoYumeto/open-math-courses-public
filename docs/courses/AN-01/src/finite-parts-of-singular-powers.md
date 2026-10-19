@@ -1,6 +1,6 @@
 # Finite parts of singular powers
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. The earlier edition was written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original lesson exposition and exercises: CC0. Separately credited programme prerequisites retain their own licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions by GPT-6.1 Sol (OpenAI). Original lesson exposition and exercises: CC0. Separately credited programme prerequisites retain their own licences.*
 
 A divergent power integral can have a well-defined constant after its divergent terms are removed. That constant is a distribution. Its derivative and dilation remember the singular endpoint through explicit point terms. We construct the whole complex-parameter family, prove both cutoff formulas, and determine exactly when the one-sided scaling obstruction cancels.
 

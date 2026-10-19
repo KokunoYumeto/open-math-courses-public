@@ -1,6 +1,6 @@
 # Measures on a compact convex space
 
-**Self-checked by the writing AI.** The proofs are complete relative to their declared inputs.
+The proofs are complete relative to their declared inputs.
 
 The state space of a nonseparable algebra need not be metrizable. We therefore construct measures on compact Hausdorff spaces before discussing convex decompositions. The distinction between Borel sets and Baire sets is retained throughout.
 

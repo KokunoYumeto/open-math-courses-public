@@ -360,7 +360,7 @@ is a unitary: the squared coordinate norms sum to \(\|\xi\|^2\), and every finit
 
 Corner permanence of injectivity now makes \(eMe\) injective, and it is a \(\mathrm{II}_1\) factor with separable predual. Theorem 5.1 identifies it with \(R\). The matrix decomposition uses countable projection comparison, independently of the finite injective-to-AFD result. \(\square\)
 
-This also supplies the finite-corner input for the AFD \(\mathrm{II}_\infty\) MASA regularity branch: AFD implies injective, an injective finite corner is AFD by Theorem 5.1, and the finite regularity construction applies. The nonfactor construction is treated in [Central disintegration and measurable matrix assembly](central-disintegration-and-measurable-matrix-assembly.md) and [Injective algebras and separable tracial envelopes](injective-algebras-and-separable-tracial-envelopes.md). The separate [second finite proof](small-corners-and-the-second-injective-proof.md) develops the finite-rank model approach, using Repairing small matrix corners.
+This also supplies the finite-corner input for the AFD \(\mathrm{II}_\infty\) MASA regularity branch: AFD implies injective, an injective finite corner is AFD by Theorem 5.1, and the finite regularity construction applies. The nonfactor construction is treated in [Central disintegration and measurable matrix assembly](central-disintegration-and-measurable-matrix-assembly.md) and [Injective algebras and separable tracial envelopes](injective-algebras-and-separable-tracial-envelopes.md). The separate [second finite proof](small-corners-and-the-second-injective-proof.md) develops the finite-rank model approach, using [Repairing small matrix corners](repairing-small-matrix-corners.md).
 
 ## 6. Problems with complete solutions
 

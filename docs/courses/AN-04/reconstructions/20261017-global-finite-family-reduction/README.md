@@ -1,6 +1,6 @@
 # Global finite-order families and residual tests
 
-Read the proof or edit its source. On an arbitrary smooth manifold with boundary, complete finite-order families with compact projections and uniform conic tails reduce to a positive elliptic scalar test and a full residual scalar test, together with the original Banach remainder. Compactness of the whole boundary is unnecessary. A compact cutoff frame, its kernel, a partial isometry and a second reconstruction frame are treated explicitly.
+Read [the proof](global-finite-order-families-and-residual-tests.html) or edit [its source](global-finite-order-families-and-residual-tests.md). On an arbitrary smooth manifold with boundary, complete finite-order families with compact projections and uniform conic tails reduce to a positive elliptic scalar test and a full residual scalar test, together with the original Banach remainder. Compactness of the whole boundary is unnecessary. A compact cutoff frame, its kernel, a partial isometry and a second reconstruction frame are treated explicitly.
 
 Three solved examples and a map diagram accompany the 14-argument proof map, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [finite exact checks](model-check.json). Run `python -B model_check.py` and `python -B figures/build_figure.py` for the supporting algebra and diagram. The analytic proofs are in the lesson.
 

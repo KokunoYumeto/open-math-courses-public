@@ -1,12 +1,12 @@
 # The dual group as the spectrum of \(L^1(G)\)
 
-**Lesson HA-LCA-03.** This lesson identifies frequencies with all multiplicative functionals on the convolution algebra, proves the transform laws, and computes explicit examples. Self-checked by the writing AI.
+**Lesson HA-LCA-03.** This lesson identifies frequencies with all multiplicative functionals on the convolution algebra, proves the transform laws, and computes explicit examples.
 
 Let \(G\) be a locally compact Hausdorff abelian group. Fix the Haar measure \(dx\) on the complete locally determined domain constructed in [the Haar reading, Theorem 5.1](../prerequisites/src/haar-measure.md#ha-lca-pre-haar-theorem-5-1). Write \(\Gamma=\widehat G\), with the compact-convergence topology from [Characters and the dual group](characters-and-the-dual-group.md). We impose no countability assumption.
 
 The source for the spectrum and transform arguments is D. H. Fremlin, [*Measure Theory*, §§445F–K, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex), in the freely accessible 2013 source collection. We supply a finite-approximation proof of the integral step instead of importing a dual-space representation theorem. All compactness, integration, representation and Banach-algebra results invoked below have exact earlier programme proofs.
 
-Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
+Written by GPT-6 Astra (OpenAI), October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
 
 ## 1. Translations and multiplicative functionals
 

@@ -1,12 +1,12 @@
 # Finite Radon representation on locally compact spaces
 
-**Private prerequisite reconstruction.** This reading precedes the HA-LCA lessons. Self-checked by the writing AI.
+**Prerequisite reading.** This reading precedes the HA-LCA lessons.
 
 We prove the finite-measure representation needed in Bochner's theorem on an arbitrary locally compact Hausdorff space. No countability assumption is made. This is the finite version: the statements about regularity below must not be applied without qualification to an infinite Haar measure.
 
 The freely accessible sources are D. H. Fremlin, [*Measure Theory*, Volume 4, §§436I–436K](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt436.tex), for the representation theorem and its function spaces, and [§§4A2F–4A2G](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a2.tex), for compact separation and cutoffs. These files in the 2013 source collection are dated 9 May 2011 and 21 April 2013 respectively, both with copyright 2002. Some source statements refer elsewhere for their proofs; the arguments needed here are supplied below. We use an open-set construction for the finite measure, in place of the source's general smooth-functional construction.
 
-Written by GPT-6 Astra (OpenAI), Ultra, 4 October 2026. Fremlin's original source and its copyright notices are preserved in the source package. Original text: public domain (CC0). The starting foundations are ordinary set theory with choice, the complete real and complex fields, and the definitions of topology, continuity and countable additivity; the auxiliary topological and measure-construction results used below are proved here.
+Written by GPT-6 Astra (OpenAI), 4 October 2026. Fremlin's original source and its copyright notices are preserved in the source package. Original text: public domain (CC0). The starting foundations are ordinary set theory with choice, the complete real and complex fields, and the definitions of topology, continuity and countable additivity; the auxiliary topological and measure-construction results used below are proved here.
 
 ## 1. Compact separation and continuous cutoffs
 

@@ -1,8 +1,8 @@
 # Central decomposition from countable operator equations
 
-**Self-checked by the writing AI.**
 
-An abelian central algebra determines the diagonal coordinates of a decomposition. The remaining issue is substantial: fibre commutants need measurable generating families, and the algebra of all bounded fibre sections must equal the original von Neumann algebra. The shared integral, centre, generator and intertwiner statements have the foundation owners identified below. Our retained route codes the unit operator ball as a compact metric space and constructs selectors for explicit countable closed equations. Together with the precise imports, it supplies the existing CENTRAL contract. The five separate SELECTION constructions for Hilbert-algebra graph cores and associated GNS fields remain distinct.
+
+An abelian central algebra determines the diagonal coordinates of a decomposition. The remaining issue is substantial: fibre commutants need measurable generating families, and the algebra of all bounded fibre sections must equal the original von Neumann algebra. The integral, centre, generator and intertwiner statements are proved in the lessons linked below. The construction codes the unit operator ball as a compact metric space and constructs selectors for explicit countable closed equations. Together with the precise imports, it supplies the existing CENTRAL contract. The five separate SELECTION constructions for Hilbert-algebra graph cores and associated GNS fields remain distinct.
 
 Human antecedents are M. Takesaki, *Theory of Operator Algebras I*, IV.8.18–8.23, printed 273–278 / one-based PDF 280–285. The centre/existence and uniqueness pages 277 and 278, were inspected again for this revision. The proof of existence in Theorem 8.21 is postponed there to representation disintegration. DC06–07 retain a direct realization at the explicit inputs below. DC10–11 separate same-diagonal uniqueness from change of base and its density factor. The exposition is independently written course prose; classical shared statements retain their existing owners.
 

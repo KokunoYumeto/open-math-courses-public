@@ -1,6 +1,6 @@
 # Averaging, central traces and normality
 
-**Self-checked by the writing AI.** The arguments rely on the stated results of earlier lessons.
+The arguments rely on the stated results of earlier lessons.
 
 A finite algebra has a canonical way to replace an operator by an element of its center. There are two useful averaging topologies. Ultraweak compactness constructs this replacement from faithful finite traces. Norm approximation then makes it visible to every bounded trace, even a trace whose normality is not known. Keeping these two steps separate prevents a circular proof of normality.
 

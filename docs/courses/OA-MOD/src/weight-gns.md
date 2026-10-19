@@ -1,6 +1,6 @@
 # General weights: finite domains, GNS spaces, and normal representations
 
-Course: OA-MOD. Self-checked by the writing AI. The proofs below do not assert completion of the weight-to-Hilbert-algebra correspondence or of modular theory.
+Course: OA-MOD. The proofs below do not assert completion of the weight-to-Hilbert-algebra correspondence or of modular theory.
 
 This unit constructs the Hilbert space on which relative weight theory will act. Its organizing question is which conclusions use algebraic positivity, which use normality, and which use semifiniteness. Keeping these hypotheses separate prevents an argument for a state from being applied to an infinite weight without its missing domain justification.
 

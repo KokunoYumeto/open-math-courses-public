@@ -1,6 +1,6 @@
 # Curved Cauchy kernels and complex pole cutoffs
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A singular reciprocal can have a distributional limit even when its absolute integral diverges. The region removed around the singularity is part of the definition. We examine three such regions: a strip around a curve, a circular hole around a pole, and a sublevel set of a holomorphic function. Each limit comes with a finite test-function estimate and its complete differential source.
 

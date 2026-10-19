@@ -5,7 +5,7 @@ not invoke glancing normal smallness or establish a positive commutator.
 All assumptions about uniform families include their full off-microsupport
 rapid-decay and residual topology.
 
-All norms and equation tests use the fixed compact-patch convention in U067, Section 1. This is only a domain convention; the analytic bound below uses the earlier providers stated here.
+All norms and equation tests use the fixed compact-patch convention in [U067, Section 1](weak-hyperbolic-normal-criterion-and-reflection.md). This is only a domain convention; the analytic bound below uses the earlier providers stated here.
 
 Keep the full weak wave form (GN1)–(GN3), with either \(V=H^1_0\) or \(H^1\)
 and its actual antidual. Let \(B_r\) have uniform target b-order \(s+1\),
@@ -89,9 +89,9 @@ establish the sharp source trade separately.
 
 Exact unchanged providers are:
 [U059, Sections 3–5, SF5/SF17](../20261007-restored-sharp-form/sharp-boundary-form-defect.md),
-U060, Section 3, GN13,
+[U060, Section 3, GN13](../20261007-restored-glancing-normal-operator/glancing-normal-energy-and-operator-errors.md),
 [U058 uniform microsupport](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md),
 and the actual normal-commutator calculus cited by
-U062, WC6.
+[U062, WC6](../20261007-restored-weak-commutator/weak-commutators-and-variable-regularizers.md).
 These complete proofs are used directly. Original eligible receiving
 expression is CC0-1.0; approved source routes remain valid.

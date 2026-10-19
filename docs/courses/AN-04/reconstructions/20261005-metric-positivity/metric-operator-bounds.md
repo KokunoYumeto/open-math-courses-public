@@ -4,7 +4,7 @@ This companion proves the metric \(L^2\) estimate with constants independent of 
 
 This is a modified selection of AN03-U018, *When a moving symbol scale controls an operator*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Original text: CC0. See the rights notice.
+Original text: CC0. See the [rights notice](notices/RIGHTS.md).
 
 ## B0. Complete current prerequisites
 
@@ -230,4 +230,4 @@ Put \(R=\operatorname{diag}(D^{-1/2},D^{-1/2})\), \(T=G^{-1/2}OR\). Direct multi
 
 ## B9. Sources and selected scope
 
-The retained AN03-U018 selection contains B1–B6, B9–B13 and B17–B28, with the actual coefficient norm, derivative orders, metric bases and uniform constants unchanged. B0 and MP2 provide explicit current receivers for the functional-analytic steps. The approved mathematical antecedents are Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, §18.6: the sufficient direction of Theorem 18.6.3, Lemmas 18.6.4–5 and the Hilbert-valued extension (printed 164–169; PDF 179–184). The full proof of the neighborhood count and norm-valued construction is included above. The converse boundedness and compactness theorems are not claimed in this selection.
+The retained AN03-U018 selection contains B1–B6, B9–B13 and B17–B28, with the actual coefficient norm, derivative orders, metric bases and uniform constants unchanged. B0 and MP2 provide explicit current receivers for the functional-analytic steps. The mathematical antecedents are Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, §18.6: the sufficient direction of Theorem 18.6.3, Lemmas 18.6.4–5 and the Hilbert-valued extension (printed 164–169; PDF 179–184). The full proof of the neighborhood count and norm-valued construction is included above. The converse boundedness and compactness theorems are not claimed in this selection.

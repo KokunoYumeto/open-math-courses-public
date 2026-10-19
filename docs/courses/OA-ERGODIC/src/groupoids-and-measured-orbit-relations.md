@@ -8,7 +8,7 @@ A relation remembers which points can be connected. A groupoid also remembers th
 
 Sections 1–4 develop the algebraic definitions and their consequences for arbitrary sets. Section 5 adds reductions and standard Borel structures. Sections 6–8 construct counting measures, identify the factor types, and distinguish the finite-stage conventions needed for approximation. Read [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md) first. The measured sections also use [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md), Lemma 1.1, and the complete classification in [Diagonal expectations and invariant measures](diagonal-expectations-and-invariant-measures.md), Sections 4–5.
 
-The descriptive-set prerequisite is the written Lusin–Novikov theorem in *Transverse measures of foliations*, in *Foliations and their operator algebras*, Theorem 5.4 and Corollary 5.5, with their preceding Lemmas 5.2–5.3. A countable-fibre Borel map between standard Borel spaces has a Borel image and a countable partition into Borel sets on which it is injective; the inverse maps enumerate the fibres. This is the exact programme proof used by the orbit lesson's presentation theorem and by Section 6 here. The positive sigma-finite Radon–Nikodym theorem is proved in Measurable actions and compact models, Theorem 0.1.
+The descriptive-set prerequisite is the written Lusin–Novikov theorem in Transverse measures of foliations, in *Foliations and their operator algebras*, Theorem 5.4 and Corollary 5.5, with their preceding Lemmas 5.2–5.3. A countable-fibre Borel map between standard Borel spaces has a Borel image and a countable partition into Borel sets on which it is injective; the inverse maps enumerate the fibres. This is the exact programme proof used by the orbit lesson's presentation theorem and by Section 6 here. The positive sigma-finite Radon–Nikodym theorem is proved in [Measurable actions and compact models](measurable-actions-and-compact-models.md), Theorem 0.1.
 
 ## 1. Arrows, units, and inverses
 
@@ -176,6 +176,54 @@ Changing to \(\mu'=q\mu\), with \(0<q<\infty\) almost everywhere, gives directly
 \]
 Thus quasi-invariance and ergodicity depend only on the unit measure class. An invariant measure has \(\nu_s=\nu_r\), or equivalently modulus \(1\) almost everywhere.
 
+**Proposition 6.2 (The counting modulus depends only on endpoints).** Let \(\mathcal G\) be an orbitally countable standard Borel groupoid with a nonzero sigma-finite quasi-invariant unit measure \(\mu\). Let \(p(\gamma)=(r\gamma,s\gamma)\), and give its derived relation \(R\) the same unit measure. Write \(\bar\nu_s,\bar\nu_r\) for the counting measures on \(R\), counting each ordered pair once. There is an invariant conull Borel set \(X_0\) and a positive finite Borel representative \(d_R\) of the relation modulus such that
+\[
+\begin{gathered}
+\delta_{\mathcal G}(\gamma)=d_R(r\gamma,s\gamma)\\
+(\gamma\in\mathcal G|_{X_0})
+\end{gathered}
+\tag{6.6}
+\]
+is a representative of \(d\nu_r/d\nu_s\). It satisfies the cocycle identity on every composable pair in this reduction. In particular its value is one on every isotropy arrow there, and its value on an inverse arrow is the reciprocal. The endpoint pushforwards \(p_*\nu_s,p_*\nu_r\) need not be sigma-finite and are not the measures \(\bar\nu_s,\bar\nu_r\) in this statement.
+
+*Proof.* The derived relation is Borel and has countable classes by Section 3. It has the same saturated object sets as \(\mathcal G\), so Proposition 6.1 makes its two counting measures equivalent and sigma-finite. Its countable action presentation and the kernel lemma therefore give \(d_R\) on one invariant conull Borel set \(X_0\), with the cocycle identity at every triple in the restricted relation. The arrows outside \(\mathcal G|_{X_0}\) have zero measure for both \(\nu_s\) and \(\nu_r\): invariance puts both endpoints of such an arrow outside \(X_0\), and (6.1) integrates its fibre count over a null object set.
+
+It remains to verify the density on arrows, including infinite isotropy. For a nonnegative Borel function \(F\) on \(\mathcal G\), set
+\[
+K_F(y,x)=\sum_{\gamma:p(\gamma)=(y,x)}F(\gamma).
+\tag{6.7}
+\]
+This is Borel on \(R\). Indeed, Lusin–Novikov partitions \(\mathcal G\) into countably many disjoint Borel sets \(C_j\) on which \(p\) is injective. Their images \(D_j\subset R\) are Borel and their inverse maps \(h_j:D_j\to C_j\) are Borel. The summand indexed by \(j\) is \(F(h_j(y,x))\) on \(D_j\) and zero elsewhere. These measurable nonnegative summands enumerate every arrow exactly once.
+
+Counting first by endpoints or directly by arrows gives, by monotone convergence,
+\[
+\begin{aligned}
+\int_{\mathcal G}F\,d\nu_s&=\int_R K_F\,d\bar\nu_s,\\
+\int_{\mathcal G}F\,d\nu_r&=\int_R K_F\,d\bar\nu_r.
+\end{aligned}
+\tag{6.8}
+\]
+For example, at a fixed source \(x\), the sum over \(y\in[x]\) and then over arrows from \(x\) to \(y\) is exactly the sum over the source fibre \(\mathcal G_x\). All sums are nonnegative; no finite total mass is assumed for an endpoint fibre.
+
+Apply these identities on \(X_0\). Since \(d\bar\nu_r=d_R\,d\bar\nu_s\), and \(d_R\) is constant on each endpoint fibre,
+\[
+\begin{aligned}
+\int F\,d\nu_r
+ &=\int_R K_F d_R\,d\bar\nu_s\\
+ &=\int_{\mathcal G}F(\gamma)d_R(p(\gamma))\,d\nu_s(\gamma).
+\end{aligned}
+\tag{6.9}
+\]
+This identifies the Radon–Nikodym representative in (6.6). Composable arrows have endpoints \((z,y)\) and \((y,x)\), so the relation cocycle identity gives the groupoid identity. Positivity and the unit identity give \(d_R(x,x)=1\); applying the identity to an arrow and its inverse gives the reciprocal formula.
+
+Finally, if \(m(y,x)=\#p^{-1}(y,x)\), applying (6.8) to \(F=1_{p^{-1}(E)}\) gives \((p_*\nu_s)(E)=\int_E m\,d\bar\nu_s\), and the analogous range formula. An infinite multiplicity can destroy sigma-finiteness of these pushforwards. Formula (6.9) instead uses the common counting kernel over the two sigma-finite relation measures. Exercise 9.8 exhibits the distinction with positive finite mass on every individual arrow. \(\square\)
+
+This assertion concerns counting on countable arrow fibres. The continuous Haar-coordinate measures in [Borel group measures and isotropy topologies](borel-group-measures-and-isotropy-topologies.md), Theorems 5.2–5.6, have their own modular and section-change factors.
+
+![Infinite isotropy preserves endpoint density but destroys sigma-finiteness of an unweighted endpoint pushforward](figures/counting-modulus-and-infinite-isotropy.svg)
+
+*Figure 1. In Exercise 9.8, \(\gamma_n=(n,b,a)\) has source \(a\), range \(b\), source-counting mass \(2\) and range-counting mass \(7\), for every integer \(n\). The ratio \(7/2\) survives on arrows and in the principal relation's counting measures. Summing the infinitely many labels makes both endpoint pushforwards infinite on the single pair \((b,a)\). The arrows shown are three representatives of an infinite family. [Open the editable diagram at full size](figures/counting-modulus-and-infinite-isotropy.svg).*
+
 ## 7. The type of an ergodic principal groupoid
 
 For an ergodic orbitally countable measured principal groupoid, use the following definitions. Type \(I\) means that the measure is concentrated on one orbit. Type \(II_1\) means there is no conull single orbit and the measure class contains a finite invariant measure. Type \(II_\infty\) means there is no conull single orbit and it contains an infinite sigma-finite invariant measure. Type \(III\) means it contains no sigma-finite invariant measure.
@@ -241,8 +289,28 @@ If a full-unit subrelation had one constant class size \(n\) almost everywhere, 
 
 *Solution.* Its object space has one point and hence one finite orbit, but its source and range fibres are both all of \(\mathbb Z\). It is orbitally countable, not orbitally finite. Both arrow-counting measures are counting measure on \(\mathbb Z\); they are equivalent, so the unit measure is quasi-invariant. Its isotropy group is \(\mathbb Z\), whereas its derived groupoid has just the identity arrow. Any composite of homomorphisms through that trivial groupoid is the trivial homomorphism on \(\mathbb Z\). By (4.1), a homomorphism equivalent to the identity on this one-object group must be conjugate to the identity, and conjugation in \(\mathbb Z\) changes nothing. The trivial composite cannot be equivalent to the identity. Thus the groupoid is not similar to its derived relation.
 
+**Exercise 9.8.** *Level 3.* Let the object set be \(X=\{a,b\}\) with masses \(\mu(a)=2\), \(\mu(b)=7\). Give the arrows \((n,y,x):x\to y\), where \(n\in\mathbb Z\), the operations
+\[
+\begin{gathered}
+(m,z,y)(n,y,x)=(m+n,z,x),\\
+(n,y,x)^{-1}=(-n,x,y).
+\end{gathered}
+\tag{9.1}
+\]
+Verify the groupoid axioms and compute its two counting measures and modulus. Explain why both endpoint pushforwards lose the density information. Find an equivalent invariant unit measure, and identify the scope of the principal type criterion of Section 7 in this example.
+
+*Solution.* Associativity is addition of the three integer labels, with the same outer endpoints in either parenthesization. The units are \((0,x,x)\), and multiplication by \((-n,x,y)\) in either permitted order cancels the label and gives the correct unit. The object and arrow spaces are countable discrete standard Borel spaces and every operation is Borel. Every range fibre is countable; the isotropy group at each object is \(\mathbb Z\), so this groupoid is not principal.
+
+For a singleton arrow \(\gamma=(n,y,x)\), formula (6.1) gives \(\nu_s(\{\gamma\})=\mu(x)\) and \(\nu_r(\{\gamma\})=\mu(y)\). All these masses are positive and finite, so the measures are equivalent and sigma-finite on the countable arrow space. The modulus is \(\mu(y)/\mu(x)\): it is \(7/2\) from \(a\) to \(b\), \(2/7\) from \(b\) to \(a\), and one on every isotropy arrow. For composable arrows the two endpoint ratios multiply to the outer endpoint ratio; the integer labels do not affect it.
+
+The derived relation is the four-point pair relation. Above each of its ordered pairs there are infinitely many arrows, each with the same positive source mass and the same positive range mass. Thus both endpoint pushforwards give infinity to every nonempty subset of the relation and zero to the empty set. Neither is sigma-finite, and these two identical measures retain no record of the ratio \(7/2\). In particular every positive finite function on the four-point relation satisfies the formal density identity between those pushforwards, so it cannot identify the actual arrow modulus. The principal counting measures instead assign the pair \((y,x)\) the finite masses \(\mu(x)\) and \(\mu(y)\); those are the measures used in Proposition 6.2.
+
+Put \(q(a)=1/2\), \(q(b)=1/7\). Then \(q\mu\) is counting measure on the two objects. Formula (6.5) makes the new arrow modulus one, and both new arrow-counting measures give every arrow mass one. The groupoid is ergodic because its object action is transitive. Section 7 classifies the principal derived relation, whose factor is \(M_2\) by Exercise 9.5. That theorem does not classify the algebra of the nonprincipal groupoid merely from its finite invariant unit measure.
+
 ## References
 
-M. Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Chapter XIII, Section 3, printed pp. 31–36: Definitions 3.1, 3.3–3.5, 3.7 and 3.9–3.11, Examples 3.2, and the finite-sheet Lemma 3.12. The latter is stated here on the invariant conull set supplied by its almost-everywhere class-size hypothesis.
+- [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Chapter XIII, Section 3, printed pp. 31–36. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Definitions 3.1, 3.3–3.5, 3.7 and 3.9–3.11, Examples 3.2 and the finite-sheet Lemma 3.12 give the groupoid, counting-measure and approximation context. The finite-sheet statement here uses the invariant conull set supplied by its almost-everywhere class-size hypothesis.
+- [Programme enumeration] Transverse measures of foliations, Lemmas 5.2–5.3, Theorem 5.4 and Corollary 5.5, gives the complete standard Borel countable-section enumeration and injective-piece construction used in Sections 3, 5 and 6.
+- [Programme densities] [Measurable actions and compact models](measurable-actions-and-compact-models.md), Theorem 0.1, proves the sigma-finite Radon–Nikodym theorem. [Relation kernels and modular coordinates](relation-kernels-and-modular-coordinates.md), Lemma 1.1, supplies the strict cocycle on one invariant conull set of a countable principal relation. Proposition 6.2 transports that density through a countable arrow kernel; Exercise 9.8 distinguishes it from an endpoint pushforward.
+- [Programme type criterion] [Diagonal expectations and invariant measures](diagonal-expectations-and-invariant-measures.md), Sections 4–5, proves the classification invoked for principal groupoids in Section 7. The criterion has that principal scope; isotropy retains additional algebraic information.
 
-*Foliations and their operator algebras*, “Transverse measures of foliations”, Lemmas 5.2–5.3, Theorem 5.4 and Corollary 5.5: the complete written programme proof of countable-section enumeration and Borel images. Its exact standard Borel hypotheses are used in Section 6; no external theorem link substitutes for that proof.

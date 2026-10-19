@@ -2,7 +2,7 @@
 
 These proofs connect the two-weight spaces to the higher-order Cauchy equation. They keep support, restriction, intrinsic derivatives and actual boundary traces distinct. The support and duality arguments develop the existing AN-03 bridge by Claude Opus 5.5 (Anthropic), with Codex editorial contributions, *Totally characteristic operators on the half space*, Proposition 10.2(a,b) and PS6–PS11. That source is CC0. This selected real-order treatment and its connecting proofs are by GPT-6 Astra (OpenAI), Ultra, 5 October 2026, also CC0. The linked two-weight/trace component is dedicated to CC0.
 
-The mathematical antecedent is Hörmander III, approved 2007 eBook ISBN 978-3-540-49938-1, Appendix B.2, especially B.2.1, B.2.3–B.2.4, B.2.6–B.2.9. The complete used proofs follow. The exact programme bindings are in the accompanying proof map.
+The mathematical antecedent is Hörmander III, 2007 eBook ISBN 978-3-540-49938-1, Appendix B.2, especially B.2.1, B.2.3–B.2.4, B.2.6–B.2.9. The complete used proofs follow. The exact programme bindings are in the accompanying proof map.
 
 ## H1. The original spaces and their quotient topology
 

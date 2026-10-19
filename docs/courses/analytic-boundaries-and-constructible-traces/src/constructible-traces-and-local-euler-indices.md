@@ -68,7 +68,7 @@ On an $n$-dimensional component, the manifold normalization is
  \tag{7}
 \]
 
-For the constant sheaf $k_X$, the coordinate-ball support calculation gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
+For the constant sheaf $k_X$, the [coordinate-ball support calculation](../../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
 
 ## Global indices require a separate finiteness check
 

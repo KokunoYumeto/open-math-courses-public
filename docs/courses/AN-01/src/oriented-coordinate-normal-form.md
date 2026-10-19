@@ -1,8 +1,8 @@
 # An oriented coordinate normal form for a real finite-order zero
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Text: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Text: CC0.*
 
-*Prerequisite integration and source/proof self-check by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 Smooth preparation expresses a finite-order divisor as a polynomial times a nonvanishing smooth function. For a real divisor with positive distinguished derivative, one can instead change its real distinguished coordinate. The value of the function is preserved, the leading coefficient becomes exactly \(1/k\), and the term of degree \(k-1\) disappears.
 

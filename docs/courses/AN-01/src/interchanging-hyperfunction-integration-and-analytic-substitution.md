@@ -1,6 +1,6 @@
 # Interchanging hyperfunction integration and analytic substitution
 
-*Original exposition and proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI; no independent review. CC0.*
+*Original exposition and proofs: GPT-6 Astra (OpenAI), October 2026. CC0.*
 
 Contracting two kernels produces another kernel. To identify its action with two successive actions, integration must commute with an admitted singular product. We prove the stronger underlying fact: noncharacteristic analytic substitution commutes with proper fiber integration. It applies at critical points of the analytic map as well as at regular points.
 
@@ -240,7 +240,7 @@ then
  \tag{P2}
 \]
 
-**Proof.** On compact representatives, tensoring with an independent factor and then integrating pairs the tensor functional with exactly the same entire test as integrating first and then tensoring. The full iterated germ-pairing identity is Analytic tests and real carriers, Proposition 7. The whole-fiber compact representatives of the integration lesson identify these compact formulas with the actual proper operations; locality glues them.
+**Proof.** On compact representatives, tensoring with an independent factor and then integrating pairs the tensor functional with exactly the same entire test as integrating first and then tensoring. The full iterated germ-pairing identity is [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), Proposition 7. The whole-fiber compact representatives of the integration lesson identify these compact formulas with the actual proper operations; locality glues them.
 
 To prove (P2), use independent base variables \(s,t\) and form \(v(s)\otimes w(t,y)\). Its support is proper over \((s,t)\). The base diagonal \(x\mapsto(x,x)\) has nonzero normal \((\xi,-\xi)\). For its product with the fiber identity, the normal is \((\xi,-\xi,0)\). The full tensor bound shows that such a normal is excluded exactly by (P1); neither support-zero component alone can produce it. Theorem 3 commutes this pullback with fiber integration. Independent-factor integration gives \(v\otimes p_*w\) before pullback. Tensor naturality and the definition of the diagonal product give the two sides of (P2). The proper-integral wavefront bound also directly admits the left product; the right product's support is a closed subset of the original proper support. \(\square\)
 
@@ -376,7 +376,7 @@ in its extended primed relations, over \(y=z=0\). They violate (K2). Either atte
 
 ## Programme proofs and mathematical source
 
-- [Localizing analytic sources without analytic cutoffs](localizing-analytic-sources-without-analytic-cutoffs.md), Theorem 6, supplies full completeness modulo a smaller real carrier, including complex intermediate carriers and every original tail index. Analytic tests and real carriers, Theorem 5 and Proposition 7, supplies germ action, exact tensors and compact transport.
+- [Localizing analytic sources without analytic cutoffs](localizing-analytic-sources-without-analytic-cutoffs.md), Theorem 6, supplies full completeness modulo a smaller real carrier, including complex intermediate carriers and every original tail index. [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), Theorem 5 and Proposition 7, supplies germ action, exact tensors and compact transport.
 - [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md), Proposition 2, Theorem 4, Proposition 5(ii) and Theorems 6–7, supplies the actual boundary construction, carrier comparisons, angular recovery, uniqueness and cone independence. [Directional splitting and holomorphic compatibility](directional-splitting-and-holomorphic-compatibility.md), Lemma 1, supplies finite angular integration and its boundary identification.
 - [Analytic substitution for hyperfunctions](analytic-substitution-for-hyperfunctions.md), Lemma 2, Proposition 3, Theorem 4, Proposition 5, Lemma 6 and Theorem 7, supplies adapted cones, independence, functoriality and the exact moving-contour and coordinate formulas. Its [contour prerequisite](../prerequisites/U011-free-foundations/contour-homotopy-U095.md), (A3)–(A4), proves the determinant identity.
 - [Tensor directions and admissible hyperfunction products](tensor-directions-and-admissible-hyperfunction-products.md), Theorems 1 and 4, Lemma 5 and Theorems 6–7, supplies the support-aware tensor bounds, products and their compatibility. [Integrating hyperfunctions over proper fibers](integrating-hyperfunctions-over-proper-fibers.md), Lemmas 1, 3–4, Theorems 2, 5–6 and Proposition 7, supplies compact representatives, closed-ball angular recovery, all exponential tail and contour-shift estimates, proper integration and full Fubini.

@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The uniform slice estimate</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Symplectic balls and the symmetric Mahler inequality)</a><a href="a-planar-conformal-map.html">Previous lesson</a><a href="realization-in-a-polar-product.html">Next lesson</a><a href="src/the-uniform-slice-estimate.md">Editable source</a></nav><main><article><h1 id="the-uniform-slice-estimate">The uniform slice estimate</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(F:\mathbb D\to D\)">\(F:\mathbb D\to D\)</span> and its inverse <span class="math" data-tex="\(g\)">\(g\)</span> be the maps of <a href="a-planar-conformal-map.html">A planar conformal map</a>. For an integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and <span class="math" data-tex="\(v+it\in D\)">\(v+it\in D\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_k(v,t)=k^2\int_0^v&amp;|g(h+it)|^{2k-2}\\
+&amp;\cdot|g&#x27;(h+it)|^2\,dh ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+J_k(v,t)=k^2\int_0^v&amp;|g(h+it)|^{2k-2}\\
+&amp;\cdot|g&#x27;(h+it)|^2\,dh ,
+\end{aligned}
+\]</span>
+the integral along the horizontal segment from <span class="math" data-tex="\(it\)">\(it\)</span> to <span class="math" data-tex="\(v+it\)">\(v+it\)</span>, which lies in <span class="math" data-tex="\(D\)">\(D\)</span> by Theorem 5.2(d). These signed integrals will be momentum coordinates in the last lesson. This lesson proves that <span class="math" data-tex="\(|J_k|/k\)">\(|J_k|/k\)</span> is at most <span class="math" data-tex="\(\frac\pi4|g|^{2k}\)">\(\frac\pi4|g|^{2k}\)</span> plus an error that tends to <span class="math" data-tex="\(0\)">\(0\)</span> uniformly on <span class="math" data-tex="\(D\)">\(D\)</span> (Proposition 6.1). The constant <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span> comes from the bound <span class="math" data-tex="\(A&lt;2/\pi\)">\(A&lt;2/\pi\)</span> of Theorem 5.2(b); the difficulty is near the tips <span class="math" data-tex="\(\pm i\)">\(\pm i\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>, where the slices are short and the height may approach <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> as <span class="math" data-tex="\(k\)">\(k\)</span> grows. The estimate is OpenAI's [OpenAI-SB, Proposition 3.2].</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p><strong>Proposition 6.1.</strong> Each <span class="math" data-tex="\(J_k\)">\(J_k\)</span> is smooth on <span class="math" data-tex="\(D\)">\(D\)</span>, odd in <span class="math" data-tex="\(v\)">\(v\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\partial_vJ_k(v,t)\\
+&amp;\quad=k^2|g(v+it)|^{2k-2}|g&#x27;(v+it)|^2\ge0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\partial_vJ_k(v,t)\\
+&amp;\quad=k^2|g(v+it)|^{2k-2}|g&#x27;(v+it)|^2\ge0.
+\end{aligned}
+\]</span>
+There are numbers <span class="math" data-tex="\(\varepsilon_k\ge0\)">\(\varepsilon_k\ge0\)</span>, depending only on <span class="math" data-tex="\(F\)">\(F\)</span>, with <span class="math" data-tex="\(\varepsilon_k\to0\)">\(\varepsilon_k\to0\)</span>, such that for every <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and every <span class="math" data-tex="\(v+it\in D\)">\(v+it\in D\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{|J_k(v,t)|}k\le\frac\pi4\,|g(v+it)|^{2k}+\varepsilon_k .
+\]">\[
+\frac{|J_k(v,t)|}k\le\frac\pi4\,|g(v+it)|^{2k}+\varepsilon_k .
+\]</span></p>
+<h2 id="2-two-elementary-bounds">2. Two elementary bounds</h2>
+<p><strong>Lemma 6.2.</strong> For every <span class="math" data-tex="\(X&gt;0\)">\(X&gt;0\)</span>, <span class="math" data-tex="\(\dfrac1{\arctan X}-\dfrac2\pi\le\dfrac2X\)">\(\dfrac1{\arctan X}-\dfrac2\pi\le\dfrac2X\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(0&lt;X\le1\)">\(0&lt;X\le1\)</span>, concavity of <span class="math" data-tex="\(\arctan\)">\(\arctan\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> gives <span class="math" data-tex="\(\arctan X\ge\frac\pi4X\ge\frac X2\)">\(\arctan X\ge\frac\pi4X\ge\frac X2\)</span>, so <span class="math" data-tex="\(1/\arctan X\le2/X\)">\(1/\arctan X\le2/X\)</span>. For <span class="math" data-tex="\(X\ge1\)">\(X\ge1\)</span>, <span class="math" data-tex="\(\frac\pi2-\arctan X=\arctan\frac1X\le\frac1X\)">\(\frac\pi2-\arctan X=\arctan\frac1X\le\frac1X\)</span> and <span class="math" data-tex="\(\arctan X\ge\frac\pi4\)">\(\arctan X\ge\frac\pi4\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1{\arctan X}-\frac2\pi&amp;=\frac{\frac\pi2-\arctan X}{\frac\pi2\arctan X}\\
+&amp;\le\frac{8}{\pi^2X}\le\frac2X.\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac1{\arctan X}-\frac2\pi&amp;=\frac{\frac\pi2-\arctan X}{\frac\pi2\arctan X}\\
+&amp;\le\frac{8}{\pi^2X}\le\frac2X.\qquad\square
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 6.3.</strong> For integers <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> and <span class="math" data-tex="\(0\le r_a&lt;1\)">\(0\le r_a&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(k,r_a)&amp;=k\int_{r_a}^1r^{2k-1}\sqrt{\frac{1-r}{r-r_a}}\,dr\\
+&amp;\le1+\frac\pi e .
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(k,r_a)&amp;=k\int_{r_a}^1r^{2k-1}\sqrt{\frac{1-r}{r-r_a}}\,dr\\
+&amp;\le1+\frac\pi e .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Substitute <span class="math" data-tex="\(y=k(1-r)\)">\(y=k(1-r)\)</span> and put <span class="math" data-tex="\(H=k(1-r_a)\)">\(H=k(1-r_a)\)</span>; then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I(k,r_a)\\
+&amp;\quad=\int_0^H\Bigl(1-\frac yk\Bigr)^{2k-1}\sqrt{\frac y{H-y}}\,dy\\
+&amp;\quad\le\int_0^He^{-y}\sqrt{\frac y{H-y}}\,dy,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;I(k,r_a)\\
+&amp;\quad=\int_0^H\Bigl(1-\frac yk\Bigr)^{2k-1}\sqrt{\frac y{H-y}}\,dy\\
+&amp;\quad\le\int_0^He^{-y}\sqrt{\frac y{H-y}}\,dy,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(0\le1-y/k\le1\)">\(0\le1-y/k\le1\)</span>, <span class="math" data-tex="\(2k-1\ge k\)">\(2k-1\ge k\)</span> and <span class="math" data-tex="\(\log(1-x)\le-x\)">\(\log(1-x)\le-x\)</span>. On <span class="math" data-tex="\([0,H/2]\)">\([0,H/2]\)</span> the square root is at most <span class="math" data-tex="\(1\)">\(1\)</span>, which contributes at most <span class="math" data-tex="\(\int_0^\infty e^{-y}dy=1\)">\(\int_0^\infty e^{-y}dy=1\)</span>. On <span class="math" data-tex="\([H/2,H]\)">\([H/2,H]\)</span> bound <span class="math" data-tex="\(e^{-y}\)">\(e^{-y}\)</span> by <span class="math" data-tex="\(e^{-H/2}\)">\(e^{-H/2}\)</span> and use <span class="math" data-tex="\(\int_0^H\sqrt{y/(H-y)}\,dy=\frac{\pi H}2\)">\(\int_0^H\sqrt{y/(H-y)}\,dy=\frac{\pi H}2\)</span> (substitute <span class="math" data-tex="\(y=H\sin^2\phi\)">\(y=H\sin^2\phi\)</span>); this contributes at most <span class="math" data-tex="\(\frac{\pi H}2e^{-H/2}\le\frac\pi e\)">\(\frac{\pi H}2e^{-H/2}\le\frac\pi e\)</span>, since <span class="math" data-tex="\(xe^{-x}\le e^{-1}\)">\(xe^{-x}\le e^{-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-proof">3. The proof</h2>
+<p><em>Step 1: smoothness and the radial form.</em> For fixed <span class="math" data-tex="\(v+it\in D\)">\(v+it\in D\)</span>, the segment from <span class="math" data-tex="\(it\)">\(it\)</span> to <span class="math" data-tex="\(v+it\)">\(v+it\)</span> is a compact subset of the open set <span class="math" data-tex="\(D\)">\(D\)</span>, and so are the segments for all nearby endpoints. Writing
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_k(v,t)=k^2v\int_0^1&amp;|g(av+it)|^{2k-2}\\
+&amp;\cdot|g&#x27;(av+it)|^2\,da,
+\end{aligned}
+\]">\[
+\begin{aligned}
+J_k(v,t)=k^2v\int_0^1&amp;|g(av+it)|^{2k-2}\\
+&amp;\cdot|g&#x27;(av+it)|^2\,da,
+\end{aligned}
+\]</span>
+the integrand is smooth in <span class="math" data-tex="\((a,v,t)\)">\((a,v,t)\)</span>, because <span class="math" data-tex="\(|g|^{2k-2}=(g\bar g)^{k-1}\)">\(|g|^{2k-2}=(g\bar g)^{k-1}\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span> an integer; differentiation under the integral sign (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>; <a href="https://www1.essex.ac.uk/maths/people/fremlin/cont12.htm">Fremlin, <em>Measure Theory</em>, Volume 1, 123D</a>) shows that <span class="math" data-tex="\(J_k\)">\(J_k\)</span> is smooth, and the fundamental theorem of calculus gives <span class="math" data-tex="\(\partial_vJ_k\)">\(\partial_vJ_k\)</span>. By Theorem 5.2(d), <span class="math" data-tex="\(g(-h+it)=-\overline{g(h+it)}\)">\(g(-h+it)=-\overline{g(h+it)}\)</span>; differentiating <span class="math" data-tex="\(F(-\bar w)=-\overline{F(w)}\)">\(F(-\bar w)=-\overline{F(w)}\)</span> gives <span class="math" data-tex="\(|F&#x27;(-\bar w)|=|F&#x27;(w)|\)">\(|F&#x27;(-\bar w)|=|F&#x27;(w)|\)</span>, hence <span class="math" data-tex="\(|g&#x27;(-h+it)|=|g&#x27;(h+it)|\)">\(|g&#x27;(-h+it)|=|g&#x27;(h+it)|\)</span> by <span class="math" data-tex="\(g&#x27;=1/F&#x27;(g)\)">\(g&#x27;=1/F&#x27;(g)\)</span>. So the integrand is even in <span class="math" data-tex="\(h\)">\(h\)</span>, and <span class="math" data-tex="\(J_k\)">\(J_k\)</span> is odd in <span class="math" data-tex="\(v\)">\(v\)</span>. It suffices to treat <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span> with <span class="math" data-tex="\(v+it\in D\)">\(v+it\in D\)</span>, and put <span class="math" data-tex="\(R=|g(v+it)|\)">\(R=|g(v+it)|\)</span> and <span class="math" data-tex="\(r_0=T^{-1}(|t|)\)">\(r_0=T^{-1}(|t|)\)</span>. By Theorem 5.2(e), the positive half of the slice at height <span class="math" data-tex="\(t\)">\(t\)</span> is the image of the arc <span class="math" data-tex="\(r\mapsto re^{i\theta(r,t)}\)">\(r\mapsto re^{i\theta(r,t)}\)</span>, <span class="math" data-tex="\(r_0&lt;r&lt;1\)">\(r_0&lt;r&lt;1\)</span>, with <span class="math" data-tex="\(h=v(r,t)\)">\(h=v(r,t)\)</span>; along it <span class="math" data-tex="\(|g|=r\)">\(|g|=r\)</span>, <span class="math" data-tex="\(|g&#x27;|=1/|F&#x27;(w)|\)">\(|g&#x27;|=1/|F&#x27;(w)|\)</span>, and <span class="math" data-tex="\(dh=\frac{|wF&#x27;(w)|^2}{rA}\,dr\)">\(dh=\frac{|wF&#x27;(w)|^2}{rA}\,dr\)</span> with <span class="math" data-tex="\(A=A(r,\theta(r,t))\)">\(A=A(r,\theta(r,t))\)</span>. Since <span class="math" data-tex="\(|wF&#x27;(w)|^2=r^2|F&#x27;(w)|^2\)">\(|wF&#x27;(w)|^2=r^2|F&#x27;(w)|^2\)</span>,
+<span class="math math-display" data-tex="\[
+|g|^{2k-2}|g&#x27;|^2\,dh=\frac{r^{2k-1}}A\,dr,
+\]">\[
+|g|^{2k-2}|g&#x27;|^2\,dh=\frac{r^{2k-1}}A\,dr,
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{J_k(v,t)}k\\
+&amp;\quad=k\int_{r_0}^R\frac{r^{2k-1}}{A(r,\theta(r,t))}\,dr.
+\end{aligned} \tag{6.1}
+\]">\[
+\begin{aligned}
+&amp;\frac{J_k(v,t)}k\\
+&amp;\quad=k\int_{r_0}^R\frac{r^{2k-1}}{A(r,\theta(r,t))}\,dr.
+\end{aligned} \tag{6.1}
+\]</span>
+The change of variables is made on segments <span class="math" data-tex="\([h_1,v]\)">\([h_1,v]\)</span> with <span class="math" data-tex="\(h_1&gt;0\)">\(h_1&gt;0\)</span> and then <span class="math" data-tex="\(h_1\downarrow0\)">\(h_1\downarrow0\)</span>; both integrands are nonnegative and the limit is the same. Since <span class="math" data-tex="\(0&lt;A&lt;2/\pi\)">\(0&lt;A&lt;2/\pi\)</span>, write <span class="math" data-tex="\(\frac1A=\frac\pi2+\bigl(\frac1A-\frac\pi2\bigr)\)">\(\frac1A=\frac\pi2+\bigl(\frac1A-\frac\pi2\bigr)\)</span> with a nonnegative second term; the constant part of (6.1) contributes <span class="math" data-tex="\(\frac\pi4(R^{2k}-r_0^{2k})\le\frac\pi4R^{2k}\)">\(\frac\pi4(R^{2k}-r_0^{2k})\le\frac\pi4R^{2k}\)</span>. It remains to bound the contribution of the excess uniformly.</p>
+<p><em>Step 2: the excess near the tips.</em> Let <span class="math" data-tex="\(\frac12\le r&lt;1\)">\(\frac12\le r&lt;1\)</span> and <span class="math" data-tex="\(w=re^{i\theta}\)">\(w=re^{i\theta}\)</span> with <span class="math" data-tex="\(|\theta|&lt;\pi/2\)">\(|\theta|&lt;\pi/2\)</span>; put <span class="math" data-tex="\(s=\frac\pi2-|\theta|\)">\(s=\frac\pi2-|\theta|\)</span> and <span class="math" data-tex="\(X=\frac{2r\sin s}{1-r^2}\)">\(X=\frac{2r\sin s}{1-r^2}\)</span>, so that <span class="math" data-tex="\(A=\frac4{\pi^2}\arctan X\)">\(A=\frac4{\pi^2}\arctan X\)</span>. By Lemma 6.2, <span class="math" data-tex="\(\sin s\ge2s/\pi\)">\(\sin s\ge2s/\pi\)</span> and <span class="math" data-tex="\((1+r)/r\le3\)">\((1+r)/r\le3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1A&amp;\le\frac{\pi^2}4\Bigl(\frac2\pi+\frac2X\Bigr)\\
+&amp;=\frac\pi2+\frac{\pi^2(1-r)(1+r)}{4r\sin s},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac1A&amp;\le\frac{\pi^2}4\Bigl(\frac2\pi+\frac2X\Bigr)\\
+&amp;=\frac\pi2+\frac{\pi^2(1-r)(1+r)}{4r\sin s},
+\end{aligned}
+\]</span>
+so that
+<span class="math math-display" data-tex="\[
+\frac1A\le\frac\pi2+\frac{3\pi^3}8\,\frac{1-r}s. \tag{6.2}
+\]">\[
+\frac1A\le\frac\pi2+\frac{3\pi^3}8\,\frac{1-r}s. \tag{6.2}
+\]</span>
+On the other hand, the gap between <span class="math" data-tex="\(|\operatorname{Im}F(w)|\)">\(|\operatorname{Im}F(w)|\)</span> and the endpoint value <span class="math" data-tex="\(T(r)\)">\(T(r)\)</span> is, by (5.1) and <span class="math" data-tex="\(\cos(\frac\pi2-\xi)=\sin\xi\)">\(\cos(\frac\pi2-\xi)=\sin\xi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta&amp;=T(r)-|\operatorname{Im}F(w)|\\
+&amp;=\int_0^s\frac4{\pi^2}\arctan\frac{2r\sin\xi}{1-r^2}\,d\xi\\
+&amp;\le\frac{4r\,s^2}{\pi^2(1-r^2)}\le\frac2{\pi^2}\,\frac{s^2}{1-r},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta&amp;=T(r)-|\operatorname{Im}F(w)|\\
+&amp;=\int_0^s\frac4{\pi^2}\arctan\frac{2r\sin\xi}{1-r^2}\,d\xi\\
+&amp;\le\frac{4r\,s^2}{\pi^2(1-r^2)}\le\frac2{\pi^2}\,\frac{s^2}{1-r},
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\arctan y\le y\)">\(\arctan y\le y\)</span>, <span class="math" data-tex="\(\sin\xi\le\xi\)">\(\sin\xi\le\xi\)</span> and <span class="math" data-tex="\(2r\le1+r\)">\(2r\le1+r\)</span>. Hence <span class="math" data-tex="\(s\ge\frac\pi{\sqrt2}\sqrt{\Delta(1-r)}\)">\(s\ge\frac\pi{\sqrt2}\sqrt{\Delta(1-r)}\)</span>, and (6.2) becomes, with <span class="math" data-tex="\(C_0=3\sqrt2\pi^2/8\)">\(C_0=3\sqrt2\pi^2/8\)</span>,
+<span class="math math-display" data-tex="\[
+\frac1A\le\frac\pi2+C_0\sqrt{\frac{1-r}{\Delta}}. \tag{6.3}
+\]">\[
+\frac1A\le\frac\pi2+C_0\sqrt{\frac{1-r}{\Delta}}. \tag{6.3}
+\]</span>
+On the slice at height <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(w=re^{i\theta(r,t)}\)">\(w=re^{i\theta(r,t)}\)</span> and <span class="math" data-tex="\(\Delta=T(r)-|t|\)">\(\Delta=T(r)-|t|\)</span>.</p>
+<p><em>Step 3: a compact part and a tip part.</em> Fix <span class="math" data-tex="\(r_*\in(\frac12,1)\)">\(r_*\in(\frac12,1)\)</span>. Along the positive slice the radius <span class="math" data-tex="\(|g|\)">\(|g|\)</span> increases, so the points with <span class="math" data-tex="\(|g|\le r_*\)">\(|g|\le r_*\)</span> form an initial segment of <span class="math" data-tex="\([0,v]\)">\([0,v]\)</span>, of length at most the diameter of <span class="math" data-tex="\(D\)">\(D\)</span>. On it <span class="math" data-tex="\(|g&#x27;|=1/|F&#x27;(g)|\le\max_{|w|\le r_*}|F&#x27;(w)|^{-1}\)">\(|g&#x27;|=1/|F&#x27;(g)|\le\max_{|w|\le r_*}|F&#x27;(w)|^{-1}\)</span>, so its contribution to <span class="math" data-tex="\(J_k/k\)">\(J_k/k\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_*\,k\,r_*^{2k-2},\\
+C_*=\operatorname{diam}(D)\max_{|w|\le r_*}|F&#x27;(w)|^{-2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+C_*\,k\,r_*^{2k-2},\\
+C_*=\operatorname{diam}(D)\max_{|w|\le r_*}|F&#x27;(w)|^{-2}.
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(R&gt;r_a=\max(r_0,r_*)\)">\(R&gt;r_a=\max(r_0,r_*)\)</span>, the remaining contribution is the part of (6.1) with <span class="math" data-tex="\(r_a&lt;r&lt;R\)">\(r_a&lt;r&lt;R\)</span>. Let <span class="math" data-tex="\(L_*=\inf_{r_*\le r&lt;1}T&#x27;(r)&gt;0\)">\(L_*=\inf_{r_*\le r&lt;1}T&#x27;(r)&gt;0\)</span>. Since <span class="math" data-tex="\(T(r_a)\ge T(r_0)=|t|\)">\(T(r_a)\ge T(r_0)=|t|\)</span>, the mean value theorem gives <span class="math" data-tex="\(T(r)-|t|\ge L_*(r-r_a)\)">\(T(r)-|t|\ge L_*(r-r_a)\)</span> for <span class="math" data-tex="\(r&gt;r_a\)">\(r&gt;r_a\)</span>. By (6.3), the remaining contribution is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac\pi4\bigl(R^{2k}-r_a^{2k}\bigr)+\frac{C_0}{\sqrt{L_*}}\,I(k,r_a)\\
+&amp;\quad\le\frac\pi4R^{2k}+\frac{C_0}{\sqrt{L_*}}\Bigl(1+\frac\pi e\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac\pi4\bigl(R^{2k}-r_a^{2k}\bigr)+\frac{C_0}{\sqrt{L_*}}\,I(k,r_a)\\
+&amp;\quad\le\frac\pi4R^{2k}+\frac{C_0}{\sqrt{L_*}}\Bigl(1+\frac\pi e\Bigr),
+\end{aligned}
+\]</span>
+where the integral up to <span class="math" data-tex="\(R\)">\(R\)</span> was enlarged to the integral up to <span class="math" data-tex="\(1\)">\(1\)</span> and Lemma 6.3 was used. In all cases,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{|J_k(v,t)|}k-\frac\pi4|g(v+it)|^{2k}\\
+&amp;\quad\le C_*k\,r_*^{2k-2}\\
+&amp;\qquad+\frac{C_0(1+\pi/e)}{\sqrt{L_*}}.
+\end{aligned} \tag{6.4}
+\]">\[
+\begin{aligned}
+&amp;\frac{|J_k(v,t)|}k-\frac\pi4|g(v+it)|^{2k}\\
+&amp;\quad\le C_*k\,r_*^{2k-2}\\
+&amp;\qquad+\frac{C_0(1+\pi/e)}{\sqrt{L_*}}.
+\end{aligned} \tag{6.4}
+\]</span></p>
+<p><em>Step 4: uniformity.</em> Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\varepsilon_k=\max\Bigl\{0,\ \sup_{v+it\in D}\Bigl(\frac{|J_k(v,t)|}k\\
+&amp;\qquad\qquad-\frac\pi4|g(v+it)|^{2k}\Bigr)\Bigr\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\varepsilon_k=\max\Bigl\{0,\ \sup_{v+it\in D}\Bigl(\frac{|J_k(v,t)|}k\\
+&amp;\qquad\qquad-\frac\pi4|g(v+it)|^{2k}\Bigr)\Bigr\},
+\end{aligned}
+\]</span>
+finite by (6.4). By Theorem 5.2(c), <span class="math" data-tex="\(T&#x27;(r)\ge\frac8{\pi^2}\operatorname{arctanh}r\)">\(T&#x27;(r)\ge\frac8{\pi^2}\operatorname{arctanh}r\)</span>, so <span class="math" data-tex="\(L_*\ge\frac8{\pi^2}\operatorname{arctanh}r_*\to\infty\)">\(L_*\ge\frac8{\pi^2}\operatorname{arctanh}r_*\to\infty\)</span> as <span class="math" data-tex="\(r_*\to1\)">\(r_*\to1\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, first choose <span class="math" data-tex="\(r_*\)">\(r_*\)</span> with <span class="math" data-tex="\(C_0(1+\pi/e)/\sqrt{L_*}&lt;\varepsilon/2\)">\(C_0(1+\pi/e)/\sqrt{L_*}&lt;\varepsilon/2\)</span>, and then <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(C_*k\,r_*^{2k-2}&lt;\varepsilon/2\)">\(C_*k\,r_*^{2k-2}&lt;\varepsilon/2\)</span> for <span class="math" data-tex="\(k\ge N\)">\(k\ge N\)</span>. Then <span class="math" data-tex="\(\varepsilon_k&lt;\varepsilon\)">\(\varepsilon_k&lt;\varepsilon\)</span> for <span class="math" data-tex="\(k\ge N\)">\(k\ge N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The height <span class="math" data-tex="\(t\)">\(t\)</span>, the lower radius <span class="math" data-tex="\(r_0\)">\(r_0\)</span> and the upper radius <span class="math" data-tex="\(R\)">\(R\)</span> may all depend on <span class="math" data-tex="\(k\)">\(k\)</span>; the bound (6.4) does not depend on them, which is why the error is uniform up to the tips.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>6.1</strong> (easy). Show that <span class="math" data-tex="\(J_k(v,t)/k\ge\frac\pi4\bigl(|g(v+it)|^{2k}-r_0^{2k}\bigr)\)">\(J_k(v,t)/k\ge\frac\pi4\bigl(|g(v+it)|^{2k}-r_0^{2k}\bigr)\)</span> for <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, so the constant <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span> in Proposition 6.1 cannot be lowered along slices with <span class="math" data-tex="\(r_0\)">\(r_0\)</span> small.</p>
+<p><strong>6.2</strong> (medium). For <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, show that <span class="math" data-tex="\(J_k(v,0)/k=k\int_0^R r^{2k-1}/A(r,0)\,dr\)">\(J_k(v,0)/k=k\int_0^R r^{2k-1}/A(r,0)\,dr\)</span> with <span class="math" data-tex="\(A(r,0)=\frac4{\pi^2}\arctan\frac{2r}{1-r^2}\)">\(A(r,0)=\frac4{\pi^2}\arctan\frac{2r}{1-r^2}\)</span>, and that <span class="math" data-tex="\(J_k(v,0)/k-\frac\pi4R^{2k}\to0\)">\(J_k(v,0)/k-\frac\pi4R^{2k}\to0\)</span> as <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>, uniformly in <span class="math" data-tex="\(R\le1\)">\(R\le1\)</span>.</p>
+<p><strong>6.3</strong> (easy). Verify <span class="math" data-tex="\(\int_0^H\sqrt{y/(H-y)}\,dy=\pi H/2\)">\(\int_0^H\sqrt{y/(H-y)}\,dy=\pi H/2\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>6.1.</strong> In (6.1), <span class="math" data-tex="\(1/A&gt;\pi/2\)">\(1/A&gt;\pi/2\)</span>.</p>
+<p><strong>6.2.</strong> At height <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(\theta(r,0)=0\)">\(\theta(r,0)=0\)</span> and <span class="math" data-tex="\(r_0=0\)">\(r_0=0\)</span>. For <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, <span class="math" data-tex="\(\frac{2r}{1-r^2}=\tan(2\arctan r)\)">\(\frac{2r}{1-r^2}=\tan(2\arctan r)\)</span>, so <span class="math" data-tex="\(A(r,0)=\frac8{\pi^2}\arctan r\)">\(A(r,0)=\frac8{\pi^2}\arctan r\)</span> and <span class="math" data-tex="\(\frac1A-\frac\pi2=\frac{\pi^2}8\bigl(\frac1{\arctan r}-\frac4\pi\bigr)\ge0\)">\(\frac1A-\frac\pi2=\frac{\pi^2}8\bigl(\frac1{\arctan r}-\frac4\pi\bigr)\ge0\)</span>, which is bounded near <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and at most <span class="math" data-tex="\(c/r\)">\(c/r\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span>. The excess <span class="math" data-tex="\(k\int_0^Rr^{2k-1}(\frac1A-\frac\pi2)\,dr\)">\(k\int_0^Rr^{2k-1}(\frac1A-\frac\pi2)\,dr\)</span> is at most <span class="math" data-tex="\(k\int_0^1r^{2k-1}\cdot c&#x27;(1-r+r^{-1}\mathbf 1_{r&lt;1/2})\,dr\)">\(k\int_0^1r^{2k-1}\cdot c&#x27;(1-r+r^{-1}\mathbf 1_{r&lt;1/2})\,dr\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span>: the term <span class="math" data-tex="\(k\int_0^1r^{2k-1}(1-r)\,dr=\frac k{2k(2k+1)}\)">\(k\int_0^1r^{2k-1}(1-r)\,dr=\frac k{2k(2k+1)}\)</span> and the term <span class="math" data-tex="\(k\int_0^{1/2}r^{2k-2}dr\)">\(k\int_0^{1/2}r^{2k-2}dr\)</span> both tend to <span class="math" data-tex="\(0\)">\(0\)</span>. Here <span class="math" data-tex="\(\frac1{\arctan r}-\frac4\pi\le c&#x27;&#x27;(1-r)\)">\(\frac1{\arctan r}-\frac4\pi\le c&#x27;&#x27;(1-r)\)</span> on <span class="math" data-tex="\([\frac12,1]\)">\([\frac12,1]\)</span> because the function vanishes at <span class="math" data-tex="\(r=1\)">\(r=1\)</span> and has bounded derivative there.</p>
+<p><strong>6.3.</strong> With <span class="math" data-tex="\(y=H\sin^2\phi\)">\(y=H\sin^2\phi\)</span>, <span class="math" data-tex="\(dy=2H\sin\phi\cos\phi\,d\phi\)">\(dy=2H\sin\phi\cos\phi\,d\phi\)</span> and <span class="math" data-tex="\(\sqrt{y/(H-y)}=\tan\phi\)">\(\sqrt{y/(H-y)}=\tan\phi\)</span>; the integral becomes <span class="math" data-tex="\(\int_0^{\pi/2}2H\sin^2\phi\,d\phi=\frac{\pi H}2\)">\(\int_0^{\pi/2}2H\sin^2\phi\,d\phi=\frac{\pi H}2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-SB] OpenAI, <em>Symplectic balls in symmetric polar products</em>, OpenAI Math Release preprint, 22 September 2026, Section 3, Proposition 3.2. https://github.com/openai/math/tree/main/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

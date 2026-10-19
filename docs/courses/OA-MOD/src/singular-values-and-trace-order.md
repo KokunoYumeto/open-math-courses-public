@@ -1,6 +1,6 @@
 # Spectral tails, singular values and trace order
 
-**Self-checked by the writing AI.**
+
 
 A spectral tail counts how much trace lies above a height. A singular value asks how low the operator norm can be made by discarding a prescribed amount of trace. These descriptions are exact inverses, including at spectral atoms. We use that fact to integrate positive operators, transport scalar functions and compare operators whose spectral projections need not commute.
 

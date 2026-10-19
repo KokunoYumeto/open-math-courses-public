@@ -462,7 +462,7 @@ Indeed the root itself tends to
 \(\sqrt{|\lambda|/h}(1-i\operatorname{sgn}\lambda)/\sqrt2\),
 whose nonzero reciprocal is the displayed value. This establishes the exact
 phase used in Q6, rather than treating a choice of branch as a convention
-with unproved consequences. The change-of-variables reading
+with unproved consequences. The [change-of-variables reading](change-of-variables-prerequisite-completions.html)
 proves polar-coordinate substitution and its exhaustion limits. \(\square\)
 
 **Example: uniform Gaussian factors away from a zero eigenvalue.**

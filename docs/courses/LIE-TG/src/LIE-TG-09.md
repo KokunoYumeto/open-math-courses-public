@@ -1,8 +1,8 @@
 # Prolongation, differential invariants and the projective group
 
-*Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI); Sections 4.2–4.10: GPT-6 Astra (OpenAI). Original exposition and diagrams: CC0 1.0.*
 
-*The source reconciliation and Sections 4.2–4.5 were written and self-checked by GPT-6 Astra (OpenAI), Ultra, 12 October 2026. The earlier proofs and author credits are preserved. These additions are CC0; no independent review or complete general Lie–Tresse proof is claimed.*
+
 
 A transformation of points also transforms derivatives of graphs. Prolongation records that transformation on a finite-dimensional jet space. It makes differential equations into geometric subsets and their symmetry conditions into tangency equations. Curvature and the Schwarzian derivative arise as coordinates transverse to the resulting orbits.
 
@@ -174,7 +174,7 @@ The horizontal differential of another invariant has the unique expression $d_HF
 
 ### 4.2. The global assertion and its precise scope
 
-**Lie–Tresse finite generation: the general proof is still required.** The source used here is Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, §0.1–0.2, Theorems 1–2 and §3. Its setting is a Lie pseudogroup acting transitively on the point manifold, with algebraic finite-order isotropy actions, and an invariant, formally integrable, irreducible differential equation whose jet fibres are nonsingular algebraic varieties. Algebraicity is a condition on the fibre variables; it does not require the smooth base coordinates themselves to be algebraic.
+**Scope.** The general Lie–Tresse finite-generation theorem is stated here but is not proved in this lesson. The source used here is Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, §0.1–0.2, Theorems 1–2 and §3. Its setting is a Lie pseudogroup acting transitively on the point manifold, with algebraic finite-order isotropy actions, and an invariant, formally integrable, irreducible differential equation whose jet fibres are nonsingular algebraic varieties. Algebraicity is a condition on the fibre variables; it does not require the smooth base coordinates themselves to be algebraic.
 
 The finite-generation assertion asks for one finite jet level $\ell$ and a proper invariant fibrewise algebraic exceptional set $S\subset E^\ell$. At every higher order the domain is restricted by the same condition: its projection to $E^\ell$ must avoid $S$. The function class is smooth in the base coordinates, rational in the fibre coordinates through order $\ell$, and polynomial in higher-order jet coordinates. Each function has finite jet order. The asserted generators are finitely many invariants $I_1,\ldots,I_t$ and finitely many invariant derivations $\nabla_1,\ldots,\nabla_s$ of this invariant algebra. Every invariant is to be a finite polynomial in the iterated derivatives $\nabla_{j_1}\cdots\nabla_{j_r}I_i$, with coefficients rational in the $I_i$. Thus generation is differential generation, not ordinary finite generation without derivatives. It also does not authorize denominators in arbitrary higher-order coordinates.
 
@@ -233,7 +233,7 @@ The source also asserts orbit separation. Its passage from complexified orbits t
 
 That counterexample does not disprove finite differential generation: its constant invariant field is already finitely generated. It also does not replace geometric orbits over an algebraic closure by real-point orbits. The explicit metric argument in NOE-SYM-03 and the local proofs in this lesson are retained with their own hypotheses.
 
-For the full Lie–Tresse proof, the remaining tasks are a correctly scoped rational-quotient argument; symbolic stabilization on the pullback of one finite-level open set; the stable-horizontal-rank proof; invariant derivations on the quotient by their common annihilator; the symbol-cohomology and affine-orbit arguments; and the unique higher-jet polynomial expansion followed by order induction and commutator control. Proposition 4.2 supplies the fixed-level algebraic field-generation input without assuming a quotient theorem, and Lemma 4.3 supplies the conditional full-group coefficient step. Neither closes these remaining tasks. The complete general statement is retained as an unfinished proof obligation, not treated as an optional omission.
+The general Lie–Tresse assertion requires a correctly scoped rational quotient; symbolic stabilization on the pullback of one finite-level open set; stable horizontal rank; invariant derivations on the quotient by their common annihilator; symbol cohomology and affine-orbit arguments; and a unique higher-jet polynomial expansion with order induction and commutator control. Proposition 4.2 establishes fixed-level algebraic field generation, and Lemma 4.3 establishes coefficient invariance under its stated hypotheses. These results do not establish the other assertions or prove the general theorem.
 
 ### 4.6. Symbolic stabilization: generators are not a free basis
 
@@ -331,7 +331,7 @@ This is exactly $g_{j+1}=g_j^{(1)}$. If $V=0$, the same proof reduces to zero sp
 
 The author's [erratum to the 2016 paper](https://serre.mat-stat.uit.no/ansatte/boris/corr/Erratum-SM2016.pdf) corrects an invariant derivation and the revisited example in §§3.5 and 4.5. It does not amend the module argument in §2.2. Those example corrections must accompany any future use of that example; none of its formulas is imported here.
 
-*Section 4.6 was written and self-checked by GPT-6 Astra (OpenAI), Ultra, 12 October 2026, using the exact earlier AG-CA proof inputs. It is independent CC0 exposition, not an independent review or a proof of the full global theorem.*
+
 
 ### 4.7. Uniformity: total images do not determine fibre images
 
@@ -401,7 +401,7 @@ In particular the vector $1$ in the lower image has no preimage in this higher f
 
 *Figure 4.2. Exact fibre maps in Example 4.6. At a lower point with product $p=x_2\cdots x_\ell\ne0$, the lift $x_{\ell+1}=1$ has image $F$, whereas the lift $x_{\ell+1}=0$ has image zero. Both project to the same point of $U$. The diagram concerns the displayed algebraic tower, not an asserted realization by a Lie pseudogroup.*
 
-The example disproves the general inference from stabilized total images to uniform fibre-image equality, even with affine-bundle base projections, constant-rank stabilizer-like subbundles, fixed ambient coordinate projections and compatible truncations. It is **not** a realization of those bundles as stabilizers of the prolonged pseudogroup in the Lie–Tresse theorem. Thus it identifies the missing step in that proof; it is not a counterexample to Proposition `prp4` with all of its geometric hypotheses. A repair must use further properties of those actual stabilizers and prove that they prevent this fibre-image loss.
+The example disproves the general inference from stabilized total images to uniform fibre-image equality, even with affine-bundle base projections, constant-rank stabilizer-like subbundles, fixed ambient coordinate projections and compatible truncations. It is **not** a realization of those bundles as stabilizers of the prolonged pseudogroup in the Lie–Tresse theorem. Thus it identifies the missing step in that proof; it is not a counterexample to Proposition `prp4` with all of its geometric hypotheses. Any inference for actual pseudogroup stabilizers needs additional geometric hypotheses that prevent this fibre-image loss.
 
 ### 4.8. What a uniform relation presentation would prove
 
@@ -463,11 +463,11 @@ $$
 
 This is the required prolongation equality, with the same $q$ for every field specialization. Zero-rank $T$ or $V$ causes no exception; if $R$ is the zero ring, there are no unital maps to a field and the quantified assertion is vacuous. $\square$
 
-**The comparison still required.** To use Lemma 4.7 for Lie–Tresse, one must construct such a relation module over an actual finite-level base and prove that the annihilator of every relevant higher-jet orbit symbol is exactly $J_j(\alpha)$ at every point under consideration. Existence of a relation module at each separate infinite jet does not do this. Neither may one replace the image in the definition of $J_j$ by a kernel after specialization without proof. For example, multiplication by $t$ on $\mathbb Q[t]$ has zero kernel; at the specialization $t=0$ its induced map $\mathbb Q\to\mathbb Q$ is zero and has kernel $\mathbb Q$. Thus specialization of a kernel is not in general the kernel of the specialized map.
+**Hypothesis for the orbit-symbol application.** To use Lemma 4.7 for Lie–Tresse, one must construct such a relation module over an actual finite-level base and prove that the annihilator of every relevant higher-jet orbit symbol is exactly $J_j(\alpha)$ at every point under consideration. Existence of a relation module at each separate infinite jet does not do this. Neither may one replace the image in the definition of $J_j$ by a kernel after specialization without proof. For example, multiplication by $t$ on $\mathbb Q[t]$ has zero kernel; at the specialization $t=0$ its induced map $\mathbb Q\to\mathbb Q$ is zero and has kernel $\mathbb Q$. Thus specialization of a kernel is not in general the kernel of the specialized map.
 
 There are consequently two precise outstanding requirements: prove the stabilizer-image lifting at every higher jet over one finite-level open set, and prove a single relation presentation with the stated specialization comparison on that domain. The algebra in Lemma 4.7 closes the uniform bound **after** that comparison; it does not supply the comparison itself. The full general theorem and the downstream horizontal-rank, symbol-cohomology and affine-orbit arguments remain to be proved at their original scope.
 
-*Sections 4.7–4.8 and Figure 4.2: GPT-6 Astra (OpenAI), Ultra, 12 October 2026. Independent CC0 exposition; self-checked by the writing AI. The earlier programme proofs and their author credits are retained.*
+*Figure 4.2 and Sections 4.7–4.8: GPT-6 Astra (OpenAI). CC0 1.0.*
 
 ### 4.9. An actual pseudogroup: stable total images and a necessary domain restriction
 
@@ -549,7 +549,7 @@ There are two distinct failures of the proposed section argument. If the chosen 
 
 ![The same first jet has a straight lift with scalar stabilizer F and a curved lift with zero stabilizer; the uniform domain excludes zero second derivative.](../figures/lie-tresse-homothety-stabilizers.svg)
 
-*Figure 4.3.* At the origin, $u=0$ and $u=x^2/2$ have the same horizontal tangent. Their second derivatives are respectively zero and one. Scaling by $\lambda=2$ fixes the line but sends the parabola to $U=X^2/4$, whose second derivative is $1/2$. The displayed curves and derivative images are the exact objects used in Example 4.8; the figure is not a claim about the general theorem. Original independently authored diagram and proof: GPT-6 Astra (OpenAI), Ultra; CC0-1.0.
+*Figure 4.3.* At the origin, $u=0$ and $u=x^2/2$ have the same horizontal tangent. Their second derivatives are respectively zero and one. Scaling by $\lambda=2$ fixes the line but sends the parabola to $U=X^2/4$, whose second derivative is $1/2$. The displayed curves and derivative images are the exact objects used in Example 4.8; the figure is not a claim about the general theorem. Diagram and proof: GPT-6 Astra (OpenAI). CC0 1.0.
 
 **Proposition 4.9 (a uniform domain proved directly).** For this action the invariant nonempty Zariski open subset
 
@@ -578,7 +578,7 @@ The first two vectors are independent base-coordinate vectors. Above $U^2$ the $
 
 The exclusion is mathematically necessary for a uniform conclusion over the full chart. For any $r\ge2$, the graph $u=x^r/r!$ at the origin has $u_2=\cdots=u_{r-1}=0$ and $u_r=1$. At order $r-1$ its orbit tangent space has rank two, and at order $r$ it acquires the nonzero vertical generator $(1-r)\partial_{u_r}$. Thus $\varpi_{r-1}=0$ and $\varpi_r\ne0$, so $\varpi_r\not\subset\varpi_{r-1}^{(1)}$. Such a failure can occur at an arbitrarily high order on the full space. For $r>2$ these jets lie outside the pullback of $U^2$, exactly as Proposition 4.9 requires. For $r=2$ the failure precedes its order-two starting bound. These examples distinguish a uniform finite-level restriction from a bound chosen separately along each infinite jet.
 
-**Remaining general dependency.** For a general algebraic pseudogroup, one must still prove the existence of a suitable common finite-level invariant domain and the required higher-jet stabilizer lifting there, or supply another full-scope route to symbolic stabilization. This example settles neither that existence statement nor the relation-specialization comparison of Section 4.8. All subsequent general dependencies remain as recorded in Sections 4.5–4.8.
+**Scope.** The general algebraic-pseudogroup application requires a proof of the existence of a suitable common finite-level invariant domain and the required higher-jet stabilizer lifting there, or supply another full-scope route to symbolic stabilization. This example settles neither that existence statement nor the relation-specialization comparison of Section 4.8. The hypotheses for the general application are those described in Sections 4.5–4.8.
 
 ### 4.10. Which representative makes the bracket a symbol contraction?
 
@@ -679,7 +679,7 @@ This does **not** show that no good representative exists: $X_0$ is one. Nor doe
 
 ![Two fields with the same fourth-order orbit symbol give different third-order bracket values, one retaining a second-order component.](../figures/lie-tresse-bracket-obstruction.svg)
 
-*Figure 4.4.* The case $k=4$ of Example 4.10. Both fields represent $24\partial_{u_4}$ and have zero first jet. Only one of the displayed bracket values lies in $\varpi_3$. The lower panel is the exact sequence of Lemma 4.11, not an identification of its last term with a derivative image. Original diagram and proofs: GPT-6 Astra (OpenAI), Ultra; CC0-1.0.
+*Figure 4.4.* The case $k=4$ of Example 4.10. Both fields represent $24\partial_{u_4}$ and have zero first jet. Only one of the displayed bracket values lies in $\varpi_3$. The lower panel is the exact sequence of Lemma 4.11, not an identification of its last term with a derivative image. Diagram and proofs: GPT-6 Astra (OpenAI). CC0 1.0.
 
 **Lemma 4.11 (the exact obstruction to a pure transformation-symbol representative).** Let $L_k,L_{k-1}$ be finite-dimensional spaces of admissible infinitesimal transformation jets at a fixed base point, with surjective truncation $p:L_k\to L_{k-1}$. Suppose their action maps at compatible equation jets are
 
@@ -721,7 +721,7 @@ In the coordinate convention $[Y,X]=DX\,Y-DY\,X$, the Taylor terms below degree 
 
 Lemmas 4.11–4.12 give a correct sufficient route: full stabilizer lifting at the required orders supplies pure transformation-symbol representatives, and their brackets give the contractions. The earlier inclusion $\varpi_k\subset S^k\tau^*\otimes\nu$ then implies $\varpi_k\subset\varpi_{k-1}^{(1)}$, since the first prolongation consists exactly of symmetric tensors whose contractions belong to $\varpi_{k-1}$. This route has a stronger hypothesis than stability of the first-derivative image. Its hypothesis has **not** been proved for the general action, and it is not asserted necessary for the desired inclusion.
 
-**Remaining general dependency.** The general proof still needs both a common finite-level invariant domain and a justified contraction argument on that domain. Full stabilizer lifting would suffice for the latter; alternatively one must supply a weaker, fully justified representative or Spencer-operator construction. Neither equality of total images, equality of first-derivative images, nor the constant-rank hypothesis by itself proves the particular bracket formula used in the cited argument. The original general theorem and all its downstream obligations remain in scope and unfinished.
+**Scope.** The general theorem requires both a common finite-level invariant domain and a justified contraction argument on that domain. Full stabilizer lifting would suffice for the latter; alternatively one must supply a weaker, fully justified representative or Spencer-operator construction. Neither equality of total images, equality of first-derivative images, nor the constant-rank hypothesis by itself proves the particular bracket formula used in the cited argument. These observations do not prove the general theorem.
 
 ### 4.11. Contraction from a section and its Spencer difference
 
@@ -894,9 +894,9 @@ The prolonged coefficient formula in Example 4.10 subtracts $-2j u_j$ at each po
 
 ![A local kernel section is differentiated and its ordinary index shift subtracted; their difference is admissible and acts as minus the inserted orbit symbol.](../figures/lie-tresse-spencer-contraction.svg)
 
-*Figure 4.5.* The maps and hypotheses of Lemma 4.13. The two terms in the difference need not separately be admissible. Equations (4.18) and (4.20) establish admissibility and the action of their difference. Diagram and Section 4.11: GPT-6.1 Sol (OpenAI), Ultra; CC0-1.0.
+*Figure 4.5.* The maps and hypotheses of Lemma 4.13. The two terms in the difference need not separately be admissible. Equations (4.18) and (4.20) establish admissibility and the action of their difference. Diagram and Section 4.11: GPT-6.1 Sol (OpenAI). CC0 1.0.
 
-**Scope of the contraction result.** Lemma 4.13 supplies a weaker representative construction than vanishing of the entire lower ordinary jet. On a finite-order regular neighborhood, Corollary 4.14 turns first-derivative image lifting into contraction by this construction. For the general Lie–Tresse theorem one must still prove that the required regularity and image equality hold over the entire higher-jet inverse image of one finite-level invariant open set, or supply another general comparison giving contraction there. The examples in Sections 4.7–4.9 prevent inferring that assertion from stabilized total images. The single relation-module specialization comparison and the remaining general nodes of Section 4.5 are also still required.
+**Scope of the contraction result.** Lemma 4.13 supplies a weaker representative construction than vanishing of the entire lower ordinary jet. On a finite-order regular neighborhood, Corollary 4.14 turns first-derivative image lifting into contraction by this construction. For the general Lie–Tresse theorem one must still prove that the required regularity and image equality hold over the entire higher-jet inverse image of one finite-level invariant open set, or supply another general comparison giving contraction there. The examples in Sections 4.7–4.9 prevent inferring that assertion from stabilized total images. A full application also requires the relation-module specialization comparison and the assertions listed in Section 4.5.
 
 ### 4.12. A common parameter domain for pure transformation symbols
 
@@ -1001,7 +1001,7 @@ Finally apply Lemma 4.7 to the relation submodule $J\subset\operatorname{Sym}_{R
 
 ![One finite monic elimination computation gives a relation module on D(f); its specialization identifies every pure-action symbol annihilator, in every degree.](../figures/lie-tresse-pure-symbol-specialization.svg)
 
-*Figure 4.6.* Lemma 4.16 and Proposition 4.17. The ring variables $t$ describe the tangent directions; the eliminated variables describe the complementary ambient directions. The single parameter denominator $f$ is independent of symbol degree. Diagram and Section 4.12: GPT-6.1 Sol (OpenAI), Ultra; CC0-1.0.
+*Figure 4.6.* Lemma 4.16 and Proposition 4.17. The ring variables $t$ describe the tangent directions; the eliminated variables describe the complementary ambient directions. The single parameter denominator $f$ is independent of symbol degree. Diagram and Section 4.12: GPT-6.1 Sol (OpenAI). CC0 1.0.
 
 **Example 4.18 (a genuine tangent-plane exceptional set).** For Euclidean plane motions, use the infinitesimal fields $\partial_x,\partial_u,x\partial_u-u\partial_x$ and the tangent line $\tau=F(1,p)$. Their first ordinary symbol is spanned by the rotation matrix, and all ordinary symbols of degree at least two are zero, because all three fields are affine. The normal coordinate of a vector $(v_x,v_u)$ is $v_u-pv_x$. Applying the rotation matrix to $(1,p)$ gives $(-p,1)$, whose normal coordinate is $1+p^2$. Thus
 
@@ -1025,7 +1025,7 @@ $$
 \longrightarrow S_{j-1}/p(S_j)\longrightarrow0
 $$
 
-when the transformation-jet truncation is onto. Thus $\varpi_j^\perp\subseteq H_j^\perp$, and the possible additional orbit directions correspond to the full stabilizer-lifting quotient. Proposition 4.17 neither makes that quotient vanish nor proves a uniform formula for it. Nor is vanishing necessary for using the different contraction route of Corollary 4.14. The full Lie–Tresse argument still requires its common invariant domain, the stated regularity and first-derivative-image comparison or another general contraction argument, and a correct relation presentation for the full orbit symbols. The quotient, horizontal-rank, invariant-derivation, cohomology and order-induction steps retain their full scope.
+when the transformation-jet truncation is onto. Thus $\varpi_j^\perp\subseteq H_j^\perp$, and the possible additional orbit directions correspond to the full stabilizer-lifting quotient. Proposition 4.17 neither makes that quotient vanish nor proves a uniform formula for it. Nor is vanishing necessary for using the different contraction route of Corollary 4.14. The full Lie–Tresse argument still requires its common invariant domain, the stated regularity and first-derivative-image comparison or another general contraction argument, and a correct relation presentation for the full orbit symbols. This proposition does not prove the quotient, horizontal-rank, invariant-derivation, cohomology or order-induction assertions of the general theorem.
 
 ## 5. Euclidean curvature
 
@@ -1228,6 +1228,6 @@ Since $H(x)=1$, the last expression equals $x(H(A)-B-pC)=xc^\alpha_0$. This is e
 - Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*](https://arxiv.org/abs/1111.5480v3), version 3, 13 June 2015, §§0.1–0.2 and 3. Section 4 above distinguishes the finite-generation assertion from the false individual-real-orbit separation inference.
 - Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I, Chapters 26–27, for projective and linear homogeneous transformation groups; Volume II for differential equations and contact transformations.
 
-The five original local results retain their complete proofs on the stated regular domains. Proposition 4.2 and Lemma 4.3 supply algebraic inputs; Lemmas 4.5 and 4.7 prove stabilization for a fixed symbolic system and for the specializations of a single relation module. Examples 4.4 and 4.6 refute two inferences used in the cited route, not the general Lie–Tresse theorem. Its uniform stabilizer and relation-specialization comparisons remain unfinished, as specified in Sections 4.5–4.8. Example 4.8 diagnoses the whole-space image-to-section inference in an actual pseudogroup, and Proposition 4.9 proves the required domain and symbol inclusion for that action only; neither closes the general comparison.
+The local results hold on their stated regular domains. Proposition 4.2 and Lemma 4.3 give algebraic field-generation and coefficient-invariance results. Lemmas 4.5 and 4.7 establish stabilization for a fixed symbolic system and for specializations of a single relation module. Examples 4.4 and 4.6 disprove two algebraic inferences, rather than the general Lie–Tresse theorem. Example 4.8 concerns the whole-space image-to-section inference in an actual pseudogroup; Proposition 4.9 establishes the domain and symbol inclusion for that action. Lemma 4.13 and Corollary 4.14 prove contraction under their stated finite-order regularity and first-derivative-image hypotheses. Proposition 4.17 concerns pure transformation symbols. The uniform stabilizer and full orbit-symbol specialization comparisons are not established here; none of these statements is a proof of the general theorem.
 
-**Lie–Tresse proof inputs:** versioned provider record.
+**Mathematical dependencies:** statements, hypotheses and prerequisite references.

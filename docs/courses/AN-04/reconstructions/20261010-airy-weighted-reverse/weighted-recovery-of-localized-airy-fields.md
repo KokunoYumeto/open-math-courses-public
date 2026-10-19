@@ -1,6 +1,6 @@
 # Weighted recovery of localized Airy fields
 
-The interior extraction theorem controls the decaying coefficient and an Airy multiplier of the normalized coefficient. The boundary-layer trace theorem supplies a different part of the energy norm. We combine them into a reverse estimate for the actual variable-coefficient Airy construction.
+The [interior extraction theorem](../20261010-interior-airy-recovery/interior-airy-coefficient-recovery.md) controls the decaying coefficient and an Airy multiplier of the normalized coefficient. The [boundary-layer trace theorem](../20261010-boundary-layer-trace/frequency-dependent-boundary-trace-estimate.md) supplies a different part of the energy norm. We combine them into a reverse estimate for the actual variable-coefficient Airy construction.
 
 The support issue matters: the Airy multiplier moves input singularities, so it cannot be passed through a spatial cutoff without proof. We bound that displacement, control the complete off-support kernels, and choose the observation supports around all the displaced inputs. The resulting estimate recovers the full stable pair norm from the energy field, up to explicit coarse norms.
 
@@ -277,4 +277,4 @@ The factor \(\pi^{-1}\) is necessary because \(Z=c_\epsilon/F_\epsilon\), not \(
 
 The right panel separates the actual estimates: WR14 recovers \(\alpha\) and \(Zv\) from interior observations; WR16–WR19 recover \(v\) in \(\mathcal H_L\) from the actual boundary trace and the already recovered decaying coefficient. WR2 then combines them exactly. The statement pertains to the range specified in H1; the general PDE representation remains R1.
 
-Independent exposition, proofs, solutions and figure: **CC0-1.0**. Linked components retain their terms. All nine approved books remain valid sources. Required human foundations in the proof map remain external; internal P514 closure of this export is unclaimed.
+Independent exposition, proofs, solutions and figure: **CC0-1.0**. Linked components retain their terms. Required human foundations in the proof map remain external; internal P514 closure of this export is unclaimed.

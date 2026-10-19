@@ -1,6 +1,6 @@
 # Spectral localization and constant equations
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 A small Fourier support forces a small derivative. By cutting a bounded function down to a shrinking neighbourhood of one spectral point, translating to an almost maximal value and normalizing its phase, we obtain an actual plane wave limit. The same construction controls every mixed derivative. We then distinguish the zero sets relevant to distributional, tempered, rapidly decreasing and compactly supported solutions of a constant coefficient equation.
 

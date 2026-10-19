@@ -1,6 +1,6 @@
 # When a small trace defect must vanish
 
-**Self-checked by the writing AI.**
+
 
 Measure convergence permits an operator to be large on a projection of small trace. If every nonzero projection has a fixed minimum cost, this permission disappears. We first isolate that mechanism, prove that it applies to every type I factor, and then compare it with a countable atomic algebra whose atom costs can tend to zero. This comparison also determines exactly when every scalar sequence defines a measurable operator.
 

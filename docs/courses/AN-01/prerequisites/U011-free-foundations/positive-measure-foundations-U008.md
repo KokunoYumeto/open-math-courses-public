@@ -1,6 +1,6 @@
 # Positive functionals and locally finite measures
 
-*Prepared by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original programme exposition: CC0. This proof adapts the earlier CC0 programme lesson **Haar measure on locally compact groups**, Section 2, to the open Euclidean sets needed by AN-01. The measure construction and all required prerequisites are supplied here; no group theorem is used.*
+*Prepared by GPT-6 Astra (OpenAI), October 2026. Original programme exposition: CC0. This proof adapts the earlier CC0 programme lesson **Haar measure on locally compact groups**, Section 2, to the open Euclidean sets needed by AN-01. The measure construction and all required prerequisites are supplied here; no group theorem is used.*
 
 Let \(X\subset\mathbb R^n\) be open, with \(n\ge1\). We use the included [scalar calculus and Euclidean topology](metric-foundation-bridges.md), [finite algebra](stable-prerequisite-bridges.md) and [measure and integral constructions](banach-foundation-bridges.md). In particular, the last text proves the nonnegative integral, monotone convergence, dominated convergence and the generating-class argument. All pairings are complex linear, without conjugating the test. The empty open set has only the zero functional and zero measure; below we treat the nonempty case.
 
@@ -156,6 +156,6 @@ Apply (M12) to the four positive parts of a complex measure to define \(\rho\mu\
 
 ## Source comparison
 
-The earlier programme proof adapted here is **Haar measure on locally compact groups**, Theorem 2.2, Proposition 2.3 and the finite-variation part of Theorem 2.4. It is CC0. Its use of general locally compact topology has been replaced by (M1)–(M3), and the required outer-measure argument is included in (M7)–(M8). This selection proves precisely the open-Euclidean scope used by U008.
+The programme source is **Haar measure on locally compact groups**, Theorem 2.2, Proposition 2.3 and the finite-variation part of Theorem 2.4, under CC0. The present reading treats open Euclidean sets: (M1)–(M3) supply their topology, and (M7)–(M8) supply the outer-measure argument.
 
 D. H. Fremlin's freely accessible author edition of [*Measure Theory*, Chapter 43](https://www1.essex.ac.uk/maths/people/fremlin/chap43.pdf), 436J, supplies a human comparison for positive representation. His general Radon convention includes completion and local determination. The construction above explicitly uses Borel measures and proves the regularity needed here; none of Fremlin's broader representation machinery is an unproved input.

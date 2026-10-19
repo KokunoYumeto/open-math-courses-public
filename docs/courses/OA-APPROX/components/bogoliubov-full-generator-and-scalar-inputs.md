@@ -10,7 +10,7 @@ For the bounded continuous calculus, Hilbert completion, adjoints, orthogonal pr
 
 ## BG0. The complete CAR and product inputs
 
-The concrete construction in CO3 starts with the tracial product of full \(2\)-by-\(2\) matrices. With \(Z_j=1-2n_j\), its fields are
+The concrete construction in [CO3](continuous-outer-action-regular-and-car-inputs.md#co3-complete-tracial-car-action) starts with the tracial product of full \(2\)-by-\(2\) matrices. With \(Z_j=1-2n_j\), its fields are
 \[
 c_j=Z_1\cdots Z_{j-1}e_{12}^{(j)},\qquad
 a(f)=\sum_j\overline{f_j}c_j.
@@ -29,7 +29,7 @@ w_j=e^{-is_j/2}(1-n_j)+e^{is_j/2}n_j
 \]
 sends \(b_j\) to \(e^{-is_j}b_j\) and has trace \(\cos(s_j/2)\). The negative phase agrees with the conjugate-linear annihilator convention.
 
-The complete diagonal necessity and sufficiency argument is CO4, using the whole matrix-tail expectation [FH3](fullness-hypercentrality-and-tail-inputs.md#fh3-exact-matrix-tail-map) and finite trace products [SS2](strong-stability-matrix-and-product-inputs.md#ss2-whole-variable-matrix-tracial-product). Necessity writes \(E_m(U)=a_m\prod_{j\le m}w_j\), with \(|a_m|\to1\), and bounds every later product of overlap moduli from below. Sufficiency adjusts phases after a finite zero-overlap prefix and proves strong convergence of the products and their adjoints on every finite-support vector. Thus the limit is unitary in the factor, not merely an isometry on the trace vector. The zero-prefix cases are part of this proof.
+The complete diagonal necessity and sufficiency argument is [CO4](continuous-outer-action-regular-and-car-inputs.md#co4-whole-hilbert-schmidt-innerness), using the whole matrix-tail expectation [FH3](fullness-hypercentrality-and-tail-inputs.md#fh3-exact-matrix-tail-map) and finite trace products [SS2](strong-stability-matrix-and-product-inputs.md#ss2-whole-variable-matrix-tracial-product). Necessity writes \(E_m(U)=a_m\prod_{j\le m}w_j\), with \(|a_m|\to1\), and bounds every later product of overlap moduli from below. Sufficiency adjusts phases after a finite zero-overlap prefix and proves strong convergence of the products and their adjoints on every finite-support vector. Thus the limit is unitary in the factor, not merely an isometry on the trace vector. The zero-prefix cases are part of this proof.
 
 The five complete analytic arguments [in Sections 6.1–6.5 of the lesson](../src/bogoliubov-automorphisms-and-innerness.md#6-1-the-hilbert-schmidt-space-and-its-whole-ideal-estimate) prove the whole Hilbert–Schmidt ideal, arbitrary compact-normal diagonalization including its kernel, interval projections with every boundary eigenspace, a logarithm including the \(-1\) eigenspace, and the dyadic diagonal perturbation. Its full squared-error budget is \(3M^2\,2^{-N}\), with the initial level counted separately from the later parent-band increments. The proof works on every reducing cyclic component and distributes an arbitrary prescribed tolerance over their countable orthogonal sum. BG1 supplies the unbounded input; using only a bounded exponential does not cover Lemma 3.1.
 

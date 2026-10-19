@@ -1,0 +1,7 @@
+# Boundary-preserving localization of weak sources
+
+Read [the complete proof](boundary-preserving-localization-of-weak-sources.html) or edit [the source](boundary-preserving-localization-of-weak-sources.md). A full-symbol compressed cutoff preserves the actual homogeneous boundary trace. Its complete commutator is reduced with the original equation, producing an L2 source on the whole localized support. The entire natural-dual lift, matrix Robin gauge and local cutoff errors are retained. The new representative has the same indicated microlocal energy regularity as the original solution and meets the hypotheses of the matrix Cauchy and causal-split theorem.
+
+The proof map connects 13 entries to 1068 earlier entries in 58 maps, including 92 external Lebl proofs. Internal P514 closure of this CC0-only export is not claimed. Three complete exercises and an original figure accompany source credit, proof review, [reader checks](reader-check.json) and [20 exact checks](model-check.json). Run python -B check_models.py; the analytic proofs are in the lesson.
+
+Localized incoming regularity, exclusion of complementary boundary response, sharp Airy mapping and strict propagation remain unfinished. Independent text and illustration are CC0-1.0. 

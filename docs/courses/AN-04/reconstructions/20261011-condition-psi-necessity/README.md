@@ -1,0 +1,7 @@
+# Why local solvability requires condition Ψ
+
+Read [the lesson](condition-psi-necessity-and-approximate-adjoint-solutions.html) or edit [its source](condition-psi-necessity-and-approximate-adjoint-solutions.md). A complete construction of approximate adjoint solutions proves necessity even at an infinitely flat sign transition. The full operator reduction, moving complex phase, finite amplitude systems, Fourier-moment remainder estimates and quantitative Sobolev contradiction are retained.
+
+The proof map connects 19 proof entries to 687 earlier entries in 33 maps. The 92 human foundations remain external, so internal P514 closure is unclaimed. Three complete solutions, a reproducible illustration, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [25 exact checks](model-check.json) accompany the lesson. Run python -B model_check.py for the finite identities; the analytic proofs are in the lesson.
+
+The [solvability equivalences](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html) and [geometric sign conditions](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html) are the companion readings for Section 26.4. [Condition P and characteristic saturation](../20261011-condition-p-geometry/condition-p-and-characteristic-saturation.html) develops the next geometric classification. Original expression is CC0-1.0; linked components retain their terms. 

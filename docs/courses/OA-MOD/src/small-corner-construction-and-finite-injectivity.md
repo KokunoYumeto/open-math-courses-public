@@ -1,6 +1,6 @@
 # Small-corner construction and finite injectivity
 
-*Original lesson by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0. Owner checked; independent review and recursive prerequisite review remain open.*
+*Original lesson by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0.*
 
 An almost invariant finite-rank projection lives on the trace Hilbert space, not inside the algebra. This lesson turns it into an internal matrix corner, then fills the identity by maximality. The construction gives the second proof that a separable injective \(\mathrm{II}_1\) factor is AFD.
 

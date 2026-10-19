@@ -1,6 +1,6 @@
 # Tensor order and integral kernel bounds
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 An integral kernel can describe evaluation on a graph, differentiation of an input, or averaging over a region. Its absolute row and column integrals control all its \(L^p\) bounds. For distributional kernels, a different issue is the number of test derivatives needed to bound a pairing. Tensor products can attain the sum of two orders, but sufficiently separated frequencies can reduce that exact order to their maximum.
 

@@ -1,10 +1,10 @@
 # Partial cocycles and their exact mixed KMS domains
 
-**Self-checked by the writing AI.**
+
 
 A nonfaithful weight has a fixed support, while its cocycle relative to a faithful weight has a moving initial projection. The comparison still has a mixed KMS formula. Its two boundary values belong to two different finite linear domains, so a proof must verify both before using the formula.
 
-The source targets are Takesaki, *Theory of Operator Algebras II*, VIII.3.19–21. The inverse construction for 3.21 is already written in PL-01–04; this unit proves the missing six-clause characterization and identifies the two definitions of the supported derivative. Exact inputs are WS-04–06 and CW-05–06 for supports, lifted corners and faithful completion; WH-13 for arbitrary NSF weight existence; CZ-09 for modular restriction to a centralizer corner; GC-03–08 for the faithful balanced cocycle, mixed strips, trajectory recognition and dense mixed domain; WG-003–005 for finite linear domains and Cauchy–Schwarz; PL-03–04 and SI-09/14 for the full spatial corner identity and intrinsic cocycle; and MA-08 for scalar boundary uniqueness and the bounded-strip maximum principle. These are named inputs with their separate closure status retained. No countability or finite mass at the identity is assumed.
+The source targets are Takesaki, *Theory of Operator Algebras II*, VIII.3.19–21. The inverse construction for 3.21 is already written in PL-01–04; this unit proves the missing six-clause characterization and identifies the two definitions of the supported derivative. Exact inputs are WS-04–06 and CW-05–06 for supports, lifted corners and faithful completion; WH-13 for arbitrary NSF weight existence; CZ-09 for modular restriction to a centralizer corner; GC-03–08 for the faithful balanced cocycle, mixed strips, trajectory recognition and dense mixed domain; WG-003–005 for finite linear domains and Cauchy–Schwarz; PL-03–04 and SI-09/14 for the full spatial corner identity and intrinsic cocycle; and MA-08 for scalar boundary uniqueness and the bounded-strip maximum principle. These are the mathematical inputs used below. No countability or finite mass at the identity is assumed.
 
 Throughout, \(\varphi\) is faithful normal semifinite, \(\psi\) is normal semifinite, \(e=s(\psi)\), and \(\sigma_t=\sigma_t^\varphi\). Write \(\psi_e\) for the faithful NSF restriction to \(eMe\). Its modular group acts on that corner. Semifiniteness here is a hypothesis: the restriction of an arbitrary normal weight to its support need not be semifinite.
 

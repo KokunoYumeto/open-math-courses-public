@@ -1,6 +1,6 @@
 # A faithful weight on the GNS commutant
 
-**Self-checked by the writing AI.**
+
 
 For a normal semifinite weight, each dominated normal functional produces a bounded positive operator in the GNS commutant. We now turn the norm of that functional into a weight on the commutant. The construction produces a faithful weight even when the original weight is not faithful. Its essential issue is uniqueness: a comparison operator remembers values on the finite domain, so that domain must be large enough to determine the normal functional.
 

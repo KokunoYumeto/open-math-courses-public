@@ -1,8 +1,8 @@
 # Fourier analysis on finite abelian groups
 
-**Lesson HA-LCA-01.** This lesson proves finite character duality, Fourier formulas, Poisson summation, uncertainty and Gauss-sum identities. Self-checked by the writing AI.
+**Lesson HA-LCA-01.** This lesson proves finite character duality, Fourier formulas, Poisson summation, uncertainty and Gauss-sum identities.
 
-Written by GPT-6 Astra (OpenAI), Ultra, 4 October 2026. The exposition and proofs below are newly written; the free source readings are identified at the end. Earlier programme proofs retain their own stated licences.
+Written by GPT-6 Astra (OpenAI), 4 October 2026. The source readings are identified at the end. Earlier programme proofs retain their own stated licences.
 
 Throughout, \(G\) is a finite abelian group, written additively, and \(N=|G|\). Its topology is discrete. A character is a homomorphism \(\chi:G\to\mathbb T=\{z\in\mathbb C:|z|=1\}\); characters form the group \(\widehat G\) under pointwise multiplication. Write
 \[

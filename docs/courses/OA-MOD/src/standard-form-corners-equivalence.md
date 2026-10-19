@@ -1,6 +1,6 @@
 # Recovering a representation from its positive cone
 
-**Self-checked by the writing AI.**
+
 
 A standard form can be specified by axioms, without naming the weight that produced it. To compare two such forms, first find the part seen by one positive vector. Its cyclic graph identifies the local modular conjugation. Small corners can then be compared canonically, and their comparisons agree on overlaps. This procedure also explains how projections are recorded by the closed faces of the cone.
 

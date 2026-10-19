@@ -1,6 +1,6 @@
 # Hölder Gaussian bounds and operator remainders
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); supplied prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); supplied prerequisites retain their stated licences.*
 
 A Gaussian peak decreases under quadratic evolution, while carefully phased annuli can accumulate at one point. We measure both effects and the exact cancellation of time filters. The full fractional bound and factorial remainder retain every degenerate matrix and iterated-operator hypothesis; three further proofs determine the sharp Hölder-gap loss, all order filters, and anisotropic Gaussian peaks without matrix commutation assumptions.
 

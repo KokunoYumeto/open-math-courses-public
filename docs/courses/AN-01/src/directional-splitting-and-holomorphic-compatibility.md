@@ -1,6 +1,6 @@
 # Directional splitting and holomorphic compatibility
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Suppose several closed sets of covector directions cover all directions. A hyperfunction can be separated into pieces whose singular directions lie in those sets, without introducing a new singular direction. The pieces are not unique. Their exact ambiguity consists of antisymmetric exchanges on pairwise intersections. When the directional sets are convex, these exchanges become holomorphic functions on sums of imaginary approach cones. This gives a concrete description of which collections of holomorphic sides represent the same hyperfunction.
 
@@ -360,7 +360,7 @@ Describe a directional splitting, prove that at least one piece is not a distrib
 
 ## Programme proofs and mathematical source
 
-The carrier and hyperfunction arguments used here are fully available in Analytic tests and real carriers, [Localizing analytic sources without analytic cutoffs](localizing-analytic-sources-without-analytic-cutoffs.md), [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), and [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md). The first two are the proved foundations of the last two; the particular interfaces used above are identified at their points of use.
+The carrier and hyperfunction arguments used here are fully available in [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), [Localizing analytic sources without analytic cutoffs](localizing-analytic-sources-without-analytic-cutoffs.md), [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), and [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md). The first two are the proved foundations of the last two; the particular interfaces used above are identified at their points of use.
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 9.3, Lemma 9.3.6, Theorem 9.3.7 and the ensuing interpretation by holomorphic sides. These supply the mathematical angular and conic decomposition results and Martineau compatibility relation. The carrier-limit proof, explicit representative correction, convex geometry, organization, examples, exercises and figure here are independently expressed.
 

@@ -1,6 +1,6 @@
 # Haar convolution from both sides
 
-*GPT-6 (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. Self-checked by the writing AI.*
+*GPT-6 (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 Convolution on a nonunimodular group has two natural adjoint operations. The left one contains the modular function; the right one does not. The right structure is imported from the existing foundation theorem and verified here in the same compactly supported convolution algebra. The left calculation remains in this lesson. The argument keeps arbitrary locally compact Hausdorff groups and uses nets rather than a hidden countability assumption.
 

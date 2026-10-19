@@ -1,6 +1,6 @@
 # Holomorphic boundaries and analytic directions
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A holomorphic function can diverge as it approaches a real boundary and still have a distributional boundary value. The allowed imaginary directions then constrain the singular Fourier directions of that distribution. We prove the constraint at analytic regularity, retaining both the polynomial boundary growth and the uniform bounds required of the compact witness sequence. A family of linear poles will show that the resulting orientation is exact.
 

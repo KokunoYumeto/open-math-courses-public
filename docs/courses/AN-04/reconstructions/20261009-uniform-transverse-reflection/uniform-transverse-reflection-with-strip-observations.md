@@ -2,7 +2,7 @@
 
 This lesson makes the transverse reflection argument quantitative for a compact smooth family of scalar operators. It proves a uniform estimate from one observed branch on a positive normal strip, the actual tested forcing, the actual Dirichlet value and a coarse mixed norm. The parameter neighborhood and geometric cutoffs are fixed before the desired Sobolev order is chosen.
 
-The starting point is Hörmander, *The Analysis of Linear Partial Differential Operators III*, §24.2, Theorem 24.2.1, and the parameter question in Proposition 24.7.1′. The exact approved 2007 edition is an admitted source. The argument below is independent exposition using the programme's complete [reflection proof](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html), [ordered Cauchy calculus](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.html) and uniform glancing estimates. The last is needed only to identify the remaining assembly problem.
+The starting point is Hörmander, *The Analysis of Linear Partial Differential Operators III*, §24.2, Theorem 24.2.1, and the parameter question in Proposition 24.7.1′. The exact approved 2007 edition is an admitted source. The argument below is independent exposition using the programme's complete [reflection proof](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html), [ordered Cauchy calculus](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.html) and [uniform glancing estimates](../20261009-uniform-glancing-estimate/uniform-half-order-gain-at-glancing.html). The last is needed only to identify the remaining assembly problem.
 
 ## 1. Fix the geometry before the regularity order
 
@@ -282,4 +282,4 @@ Therefore the extra term cannot be set to zero merely from \(b=0\). This example
 
 The right panel records the order of the proof: average the actual strip output, propagate it to zero, use the exact identity (UR16), propagate the other output and invert the root gap. The curve is a base projection, not a wavefront amplitude plot. Reproducible [figure source](figures/build_figure.py), [exact checks](check_models.py), proof map, [receiving review](proof-review.json) and source record accompany the lesson.
 
-The independently written lesson, exercises and original figure are CC0. Earlier programme components retain their recorded terms. Lebl's foundational proofs remain explicitly external author-edition dependencies; they are not included in this CC0 payload. Reading and ordinary citation of the approved source books remain valid.
+The independently written lesson, exercises and original figure are CC0. Earlier programme components retain their recorded terms. Lebl's foundational proofs remain explicitly external author-edition dependencies; they are not included in this CC0 payload. 

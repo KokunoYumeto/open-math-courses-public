@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A ball from a holomorphic zero</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Symplectic balls and the symmetric Mahler inequality)</a><a href="plurisubharmonic-potentials.html">Previous lesson</a><a href="a-planar-conformal-map.html">Next lesson</a><a href="src/a-ball-from-a-holomorphic-zero.md">Editable source</a></nav><main><article><h1 id="a-ball-from-a-holomorphic-zero">A ball from a holomorphic zero</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be a holomorphic map with a single zero, at the origin, of order at least <span class="math" data-tex="\(k\)">\(k\)</span>. This lesson shows that the sublevel set <span class="math" data-tex="\(\{|f|^2&lt;1\}\)">\(\{|f|^2&lt;1\}\)</span>, with the symplectic form of the potential <span class="math" data-tex="\(|z|^2+|f|^2\)">\(|z|^2+|f|^2\)</span>, contains balls of every capacity below <span class="math" data-tex="\(\pi k\)">\(\pi k\)</span> (Theorem 4.1). The order of vanishing gives the logarithmic potential <span class="math" data-tex="\(\log|f|^2\)">\(\log|f|^2\)</span> a slope <span class="math" data-tex="\(k\)">\(k\)</span> near zero; replacing that singularity by a smooth radial potential exposes a ball, and Moser's method transports the ball back to the original form. The theorem and its proof are OpenAI's [OpenAI-SB, Section 2]. The tools are those of <a href="forms-flows-and-moser-s-method.html">Forms, flows and Moser's method</a> and <a href="plurisubharmonic-potentials.html">Plurisubharmonic potentials</a>; the radial coordinate is the radial case of a construction of Loi and Zuddas [LZ].</p>
+<h2 id="1-the-theorem">1. The theorem</h2>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(n,m\ge1\)">\(n,m\ge1\)</span>, let <span class="math" data-tex="\(\Omega\subseteq\mathbf C^n\)">\(\Omega\subseteq\mathbf C^n\)</span> be an open set containing <span class="math" data-tex="\(0\)">\(0\)</span>, and let <span class="math" data-tex="\(f=(f_1,\dots,f_m):\Omega\to\mathbf C^m\)">\(f=(f_1,\dots,f_m):\Omega\to\mathbf C^m\)</span> be holomorphic. Suppose that for some integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(f^{-1}(0)=\{0\}\)">\(f^{-1}(0)=\{0\}\)</span>, and <span class="math" data-tex="\(|f(z)|\le C_0|z|^k\)">\(|f(z)|\le C_0|z|^k\)</span> for some constant <span class="math" data-tex="\(C_0\)">\(C_0\)</span> and all <span class="math" data-tex="\(z\)">\(z\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span>;</li>
+<li>for every <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, the set <span class="math" data-tex="\(\{z\in\Omega:|f(z)|^2\le s\}\)">\(\{z\in\Omega:|f(z)|^2\le s\}\)</span> is compact.</li>
+</ol>
+<p>Put <span class="math" data-tex="\(\tau=|f|^2\)">\(\tau=|f|^2\)</span>, <span class="math" data-tex="\(V=\{z\in\Omega:\tau(z)&lt;1\}\)">\(V=\{z\in\Omega:\tau(z)&lt;1\}\)</span> and <span class="math" data-tex="\(\omega=dd^c(|z|^2+\tau)\)">\(\omega=dd^c(|z|^2+\tau)\)</span>. Then <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a symplectic form on <span class="math" data-tex="\(V\)">\(V\)</span>, and for every <span class="math" data-tex="\(0&lt;c&lt;\pi k\)">\(0&lt;c&lt;\pi k\)</span> there is an injective smooth map <span class="math" data-tex="\(E:B^{2n}(c)\to V\)">\(E:B^{2n}(c)\to V\)</span> with <span class="math" data-tex="\(E^*\omega=\omega_0\)">\(E^*\omega=\omega_0\)</span>; it is a diffeomorphism onto an open subset of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>The form <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is symplectic by Lemmas 3.5 and 3.4. The compactness in condition 2 concerns closed sublevel sets strictly below <span class="math" data-tex="\(1\)">\(1\)</span>; nothing is assumed about the boundary of <span class="math" data-tex="\(V\)">\(V\)</span>, which need not be connected or smooth.</p>
+<h2 id="2-the-proof">2. The proof</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;a&lt;k\)">\(0&lt;a&lt;k\)</span>; we construct <span class="math" data-tex="\(E\)">\(E\)</span> on <span class="math" data-tex="\(B^{2n}(\pi a)\)">\(B^{2n}(\pi a)\)</span>. Choose numbers <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with
+<span class="math math-display" data-tex="\[
+\frac ak&lt;b&lt;1,\qquad a&lt;\mu&lt;bk.
+\]">\[
+\frac ak&lt;b&lt;1,\qquad a&lt;\mu&lt;bk.
+\]</span></p>
+<p><em>Step 1: a logarithmic potential with slope <span class="math" data-tex="\(b\)">\(b\)</span>.</em> Choose <span class="math" data-tex="\(\log b&lt;t_-&lt;t_+&lt;0\)">\(\log b&lt;t_-&lt;t_+&lt;0\)</span> and a smooth nondecreasing function <span class="math" data-tex="\(\beta:\mathbf R\to[0,1]\)">\(\beta:\mathbf R\to[0,1]\)</span> with <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> on <span class="math" data-tex="\((-\infty,t_-]\)">\((-\infty,t_-]\)</span> and <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span> on <span class="math" data-tex="\([t_+,\infty)\)">\([t_+,\infty)\)</span>. Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be the function on <span class="math" data-tex="\((-\infty,0)\)">\((-\infty,0)\)</span> with
+<span class="math math-display" data-tex="\[
+\chi&#x27;(t)=b+\beta(t)\bigl(e^t-b\bigr)
+\]">\[
+\chi&#x27;(t)=b+\beta(t)\bigl(e^t-b\bigr)
+\]</span>
+and <span class="math" data-tex="\(\chi(t)=e^t\)">\(\chi(t)=e^t\)</span> for <span class="math" data-tex="\(t\ge t_+\)">\(t\ge t_+\)</span>; this is consistent because <span class="math" data-tex="\(\chi&#x27;=e^t\)">\(\chi&#x27;=e^t\)</span> there. Where <span class="math" data-tex="\(\beta(t)&gt;0\)">\(\beta(t)&gt;0\)</span> we have <span class="math" data-tex="\(t&gt;t_-\)">\(t&gt;t_-\)</span>, so <span class="math" data-tex="\(e^t&gt;b\)">\(e^t&gt;b\)</span>; hence <span class="math" data-tex="\(\chi&#x27;\ge b&gt;0\)">\(\chi&#x27;\ge b&gt;0\)</span> and
+<span class="math math-display" data-tex="\[
+\chi&#x27;&#x27;(t)=\beta&#x27;(t)\bigl(e^t-b\bigr)+\beta(t)e^t\ge0.
+\]">\[
+\chi&#x27;&#x27;(t)=\beta&#x27;(t)\bigl(e^t-b\bigr)+\beta(t)e^t\ge0.
+\]</span>
+On <span class="math" data-tex="\((-\infty,t_-]\)">\((-\infty,t_-]\)</span>, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is affine with slope <span class="math" data-tex="\(b\)">\(b\)</span>: <span class="math" data-tex="\(\chi(t)=bt+c_-\)">\(\chi(t)=bt+c_-\)</span> for a constant <span class="math" data-tex="\(c_-\)">\(c_-\)</span>.</p>
+<p>On <span class="math" data-tex="\(V\setminus\{0\}\)">\(V\setminus\{0\}\)</span> we have <span class="math" data-tex="\(0&lt;\tau&lt;1\)">\(0&lt;\tau&lt;1\)</span>, and <span class="math" data-tex="\(\log\tau\)">\(\log\tau\)</span> is plurisubharmonic by Lemma 3.5. By Lemma 3.6 with <span class="math" data-tex="\(\Gamma=\chi\)">\(\Gamma=\chi\)</span>, the smooth function
+<span class="math math-display" data-tex="\[
+H=\chi(\log\tau)
+\]">\[
+H=\chi(\log\tau)
+\]</span>
+is plurisubharmonic on <span class="math" data-tex="\(V\setminus\{0\}\)">\(V\setminus\{0\}\)</span>, and <span class="math" data-tex="\(H=\tau\)">\(H=\tau\)</span> wherever <span class="math" data-tex="\(\tau\ge s_0:=e^{t_+}\)">\(\tau\ge s_0:=e^{t_+}\)</span>. Near <span class="math" data-tex="\(0\)">\(0\)</span>, condition 1 gives <span class="math" data-tex="\(\log\tau\le\log C_0^2+k\log|z|^2\)">\(\log\tau\le\log C_0^2+k\log|z|^2\)</span>, which is below <span class="math" data-tex="\(t_-\)">\(t_-\)</span> for small <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>; there <span class="math" data-tex="\(H=b\log\tau+c_-\)">\(H=b\log\tau+c_-\)</span>, so there is a constant <span class="math" data-tex="\(C_1\)">\(C_1\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;H(z)\le bk\log|z|^2+C_1\\
+&amp;\text{for all small }z\ne0.
+\end{aligned} \tag{4.1}
+\]">\[
+\begin{aligned}
+&amp;H(z)\le bk\log|z|^2+C_1\\
+&amp;\text{for all small }z\ne0.
+\end{aligned} \tag{4.1}
+\]</span></p>
+<p><em>Step 2: smoothing the singularity without changing the form near the boundary.</em> Write <span class="math" data-tex="\(B_r=\{|z|&lt;r\}\)">\(B_r=\{|z|&lt;r\}\)</span> and choose <span class="math" data-tex="\(r_2&gt;0\)">\(r_2&gt;0\)</span> with <span class="math" data-tex="\(\overline{B_{r_2}}\subset V\)">\(\overline{B_{r_2}}\subset V\)</span>. For <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span> put
+<span class="math math-display" data-tex="\[
+P_\delta(z)=\mu\log(|z|^2+\delta)-M.
+\]">\[
+P_\delta(z)=\mu\log(|z|^2+\delta)-M.
+\]</span>
+These functions are plurisubharmonic on <span class="math" data-tex="\(\mathbf C^n\)">\(\mathbf C^n\)</span> (Exercise 3.2). The function <span class="math" data-tex="\(H\)">\(H\)</span> is continuous on the sphere <span class="math" data-tex="\(|z|=r_2\)">\(|z|=r_2\)</span>, where <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>; choose
+<span class="math math-display" data-tex="\[
+M&gt;\mu\log(r_2^2+1)-\min_{|z|=r_2}H+2.
+\]">\[
+M&gt;\mu\log(r_2^2+1)-\min_{|z|=r_2}H+2.
+\]</span>
+Since <span class="math" data-tex="\(P_\delta(z)\le\mu\log(|z|^2+1)-M\)">\(P_\delta(z)\le\mu\log(|z|^2+1)-M\)</span>, the strict inequality <span class="math" data-tex="\(P_\delta&lt;H-2\)">\(P_\delta&lt;H-2\)</span> holds on the sphere and, by continuity of the bound <span class="math" data-tex="\(\mu\log(|z|^2+1)-M\)">\(\mu\log(|z|^2+1)-M\)</span> and of <span class="math" data-tex="\(H\)">\(H\)</span>, on a neighbourhood <span class="math" data-tex="\(A\)">\(A\)</span> of the sphere, for every <span class="math" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>. On the other hand, <span class="math" data-tex="\(\log(|z|^2+\delta)\ge\log|z|^2\)">\(\log(|z|^2+\delta)\ge\log|z|^2\)</span> and (4.1) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_\delta(z)-H(z)&amp;\ge(\mu-bk)\log|z|^2\\
+&amp;\quad-M-C_1,
+\end{aligned}
+\]">\[
+\begin{aligned}
+P_\delta(z)-H(z)&amp;\ge(\mu-bk)\log|z|^2\\
+&amp;\quad-M-C_1,
+\end{aligned}
+\]</span>
+which tends to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> as <span class="math" data-tex="\(z\to0\)">\(z\to0\)</span>, uniformly in <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, because <span class="math" data-tex="\(\mu&lt;bk\)">\(\mu&lt;bk\)</span>. Fix <span class="math" data-tex="\(0&lt;r_1&lt;r_2\)">\(0&lt;r_1&lt;r_2\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;P_\delta&gt;H+2\\
+&amp;\text{on }0&lt;|z|\le r_1,\\
+&amp;\text{for every }0&lt;\delta\le1,
+\end{aligned} \tag{4.2}
+\]">\[
+\begin{aligned}
+&amp;P_\delta&gt;H+2\\
+&amp;\text{on }0&lt;|z|\le r_1,\\
+&amp;\text{for every }0&lt;\delta\le1,
+\end{aligned} \tag{4.2}
+\]</span>
+and then fix one <span class="math" data-tex="\(\delta\)">\(\delta\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;0&lt;\delta\\
+&amp;&lt;\min\{1,\,r_1^2(\mu/a-1)\};
+\end{aligned} \tag{4.3}
+\]">\[
+\begin{aligned}
+&amp;0&lt;\delta\\
+&amp;&lt;\min\{1,\,r_1^2(\mu/a-1)\};
+\end{aligned} \tag{4.3}
+\]</span>
+the right side is positive because <span class="math" data-tex="\(\mu&gt;a\)">\(\mu&gt;a\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\operatorname{rmax}\)">\(\operatorname{rmax}\)</span> be the smooth maximum of Lemma 3.7, and define <span class="math" data-tex="\(\widetilde H\)">\(\widetilde H\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> by
+<span class="math math-display" data-tex="\[
+\widetilde H=\begin{cases}\operatorname{rmax}(H,P_\delta)&amp;\text{on }B_{r_2}\setminus\{0\},\\ H&amp;\text{on }V\setminus B_{r_2},\\ P_\delta(0)&amp;\text{at }0.\end{cases}
+\]">\[
+\widetilde H=\begin{cases}\operatorname{rmax}(H,P_\delta)&amp;\text{on }B_{r_2}\setminus\{0\},\\ H&amp;\text{on }V\setminus B_{r_2},\\ P_\delta(0)&amp;\text{at }0.\end{cases}
+\]</span>
+On <span class="math" data-tex="\(A\cap B_{r_2}\)">\(A\cap B_{r_2}\)</span> the two functions differ by more than <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(\operatorname{rmax}(H,P_\delta)=H\)">\(\operatorname{rmax}(H,P_\delta)=H\)</span> there; on <span class="math" data-tex="\(B_{r_1}\setminus\{0\}\)">\(B_{r_1}\setminus\{0\}\)</span>, by (4.2), <span class="math" data-tex="\(\operatorname{rmax}(H,P_\delta)=P_\delta\)">\(\operatorname{rmax}(H,P_\delta)=P_\delta\)</span>. Hence <span class="math" data-tex="\(\widetilde H\)">\(\widetilde H\)</span> is smooth on <span class="math" data-tex="\(V\)">\(V\)</span>, equal to <span class="math" data-tex="\(H\)">\(H\)</span> near the sphere <span class="math" data-tex="\(|z|=r_2\)">\(|z|=r_2\)</span> and to <span class="math" data-tex="\(P_\delta\)">\(P_\delta\)</span> on <span class="math" data-tex="\(B_{r_1}\)">\(B_{r_1}\)</span>, and plurisubharmonic by Lemmas 3.6 and 3.7.</p>
+<p>The difference <span class="math" data-tex="\(\widetilde H-\tau\)">\(\widetilde H-\tau\)</span> vanishes outside a compact subset of <span class="math" data-tex="\(V\)">\(V\)</span>. Indeed, put <span class="math" data-tex="\(s_2=\max_{\overline{B_{r_2}}}\tau&lt;1\)">\(s_2=\max_{\overline{B_{r_2}}}\tau&lt;1\)</span>, choose <span class="math" data-tex="\(\max(s_0,s_2)&lt;\sigma&lt;1\)">\(\max(s_0,s_2)&lt;\sigma&lt;1\)</span>, and let
+<span class="math math-display" data-tex="\[
+C=\{z\in\Omega:\ \tau(z)\le\sigma\},
+\]">\[
+C=\{z\in\Omega:\ \tau(z)\le\sigma\},
+\]</span>
+a compact subset of <span class="math" data-tex="\(V\)">\(V\)</span> by condition 2. A point of <span class="math" data-tex="\(V\)">\(V\)</span> outside <span class="math" data-tex="\(C\)">\(C\)</span> has <span class="math" data-tex="\(\tau&gt;\sigma\ge s_0\)">\(\tau&gt;\sigma\ge s_0\)</span>, so <span class="math" data-tex="\(H=\tau\)">\(H=\tau\)</span> there, and it lies outside <span class="math" data-tex="\(\overline{B_{r_2}}\)">\(\overline{B_{r_2}}\)</span>, where <span class="math" data-tex="\(\widetilde H=H\)">\(\widetilde H=H\)</span>.</p>
+<p><em>Step 3: transport by Moser's method.</em> Let <span class="math" data-tex="\(\sigma_0:\mathbf R\to[0,1]\)">\(\sigma_0:\mathbf R\to[0,1]\)</span> be smooth and nondecreasing with <span class="math" data-tex="\(\sigma_0=0\)">\(\sigma_0=0\)</span> on <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span> and <span class="math" data-tex="\(\sigma_0=1\)">\(\sigma_0=1\)</span> on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Omega_s&amp;=dd^c\bigl(|z|^2+(1-\sigma_0(s))\tau\\
+&amp;\qquad+\sigma_0(s)\widetilde H\bigr)\qquad(s\in\mathbf R).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Omega_s&amp;=dd^c\bigl(|z|^2+(1-\sigma_0(s))\tau\\
+&amp;\qquad+\sigma_0(s)\widetilde H\bigr)\qquad(s\in\mathbf R).
+\end{aligned}
+\]</span>
+A convex combination of plurisubharmonic functions is plurisubharmonic, so each <span class="math" data-tex="\(\Omega_s\)">\(\Omega_s\)</span> is symplectic by Lemma 3.4. Moreover <span class="math" data-tex="\(\partial_s\Omega_s=d\gamma_s\)">\(\partial_s\Omega_s=d\gamma_s\)</span> with
+<span class="math math-display" data-tex="\[
+\gamma_s=\sigma_0&#x27;(s)\,d^c\bigl(\widetilde H-\tau\bigr),
+\]">\[
+\gamma_s=\sigma_0&#x27;(s)\,d^c\bigl(\widetilde H-\tau\bigr),
+\]</span>
+and all these one-forms vanish outside <span class="math" data-tex="\(C\)">\(C\)</span>. By Theorem 2.8 there is a diffeomorphism <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span> onto itself with <span class="math" data-tex="\(\varphi^*\widetilde\omega=\omega\)">\(\varphi^*\widetilde\omega=\omega\)</span>, where <span class="math" data-tex="\(\widetilde\omega=\Omega_1=dd^c(|z|^2+\widetilde H)\)">\(\widetilde\omega=\Omega_1=dd^c(|z|^2+\widetilde H)\)</span> and <span class="math" data-tex="\(\Omega_0=\omega\)">\(\Omega_0=\omega\)</span>. Thus <span class="math" data-tex="\((\varphi^{-1})^*\omega=\widetilde\omega\)">\((\varphi^{-1})^*\omega=\widetilde\omega\)</span>.</p>
+<p><em>Step 4: the ball in the radial model.</em> On <span class="math" data-tex="\(B_{r_1}\)">\(B_{r_1}\)</span> the potential of <span class="math" data-tex="\(\widetilde\omega\)">\(\widetilde\omega\)</span> is <span class="math" data-tex="\(|z|^2+P_\delta=\Psi(|z|^2)-M\)">\(|z|^2+P_\delta=\Psi(|z|^2)-M\)</span>, with
+<span class="math math-display" data-tex="\[
+\Psi(t)=t+\mu\log(t+\delta),
+\]">\[
+\Psi(t)=t+\mu\log(t+\delta),
+\]</span>
+and constants do not change <span class="math" data-tex="\(dd^c\)">\(dd^c\)</span>. The function <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> satisfies the hypotheses of Lemma 3.9 (Exercise 3.4), so the map <span class="math" data-tex="\(R(z)=\sqrt{\Psi&#x27;(|z|^2)}\,z\)">\(R(z)=\sqrt{\Psi&#x27;(|z|^2)}\,z\)</span> is a diffeomorphism of <span class="math" data-tex="\(B_{r_1}\)">\(B_{r_1}\)</span> onto <span class="math" data-tex="\(B^{2n}(\pi Q_\delta)\)">\(B^{2n}(\pi Q_\delta)\)</span> with <span class="math" data-tex="\(R^*\omega_0=\widetilde\omega\)">\(R^*\omega_0=\widetilde\omega\)</span> on <span class="math" data-tex="\(B_{r_1}\)">\(B_{r_1}\)</span>, where
+<span class="math math-display" data-tex="\[
+Q_\delta=r_1^2\Psi&#x27;(r_1^2)=r_1^2+\frac{\mu r_1^2}{r_1^2+\delta}.
+\]">\[
+Q_\delta=r_1^2\Psi&#x27;(r_1^2)=r_1^2+\frac{\mu r_1^2}{r_1^2+\delta}.
+\]</span>
+By (4.3), <span class="math" data-tex="\(r_1^2+\delta&lt;\mu r_1^2/a\)">\(r_1^2+\delta&lt;\mu r_1^2/a\)</span>, so <span class="math" data-tex="\(Q_\delta&gt;r_1^2+a&gt;a\)">\(Q_\delta&gt;r_1^2+a&gt;a\)</span>. Let <span class="math" data-tex="\(\iota:B_{r_1}\to V\)">\(\iota:B_{r_1}\to V\)</span> be the inclusion and put
+<span class="math math-display" data-tex="\[
+E=\varphi^{-1}\circ\iota\circ R^{-1}\quad\text{on }B^{2n}(\pi a).
+\]">\[
+E=\varphi^{-1}\circ\iota\circ R^{-1}\quad\text{on }B^{2n}(\pi a).
+\]</span>
+It is an injective smooth map, a diffeomorphism onto an open subset of <span class="math" data-tex="\(V\)">\(V\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E^*\omega&amp;=(R^{-1})^*\,\iota^*(\varphi^{-1})^*\omega\\
+&amp;=(R^{-1})^*\bigl(\widetilde\omega|_{B_{r_1}}\bigr)=\omega_0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+E^*\omega&amp;=(R^{-1})^*\,\iota^*(\varphi^{-1})^*\omega\\
+&amp;=(R^{-1})^*\bigl(\widetilde\omega|_{B_{r_1}}\bigr)=\omega_0.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(a\in(0,k)\)">\(a\in(0,k)\)</span> was arbitrary, this proves Theorem 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-remarks">3. Remarks</h2>
+<p>The proof never uses a ball of capacity <span class="math" data-tex="\(\pi k\)">\(\pi k\)</span> itself: the strict inequalities <span class="math" data-tex="\(a&lt;\mu&lt;bk\)">\(a&lt;\mu&lt;bk\)</span> leave room for the smoothing in Step 2. The capacity <span class="math" data-tex="\(\pi a\)">\(\pi a\)</span> is visible in the radial model, where the potential <span class="math" data-tex="\(\mu\log(|z|^2+\delta)\)">\(\mu\log(|z|^2+\delta)\)</span> contributes the term <span class="math" data-tex="\(\mu r_1^2/(r_1^2+\delta)\)">\(\mu r_1^2/(r_1^2+\delta)\)</span>, close to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, to the squared radius; the order of vanishing enters only through (4.1), which allows <span class="math" data-tex="\(P_\delta\)">\(P_\delta\)</span> to dominate <span class="math" data-tex="\(H\)">\(H\)</span> near the origin.</p>
+<p>For <span class="math" data-tex="\(f(z)=z_1^k\)">\(f(z)=z_1^k\)</span> on <span class="math" data-tex="\(\Omega=\{|z_1|&lt;1,\ |z_2|&lt;1\}\subset\mathbf C^2\)">\(\Omega=\{|z_1|&lt;1,\ |z_2|&lt;1\}\subset\mathbf C^2\)</span>, condition 1 fails because <span class="math" data-tex="\(f\)">\(f\)</span> vanishes on the line <span class="math" data-tex="\(z_1=0\)">\(z_1=0\)</span>; the hypothesis that <span class="math" data-tex="\(0\)">\(0\)</span> is the only zero cannot be dropped from the argument, since <span class="math" data-tex="\(\log\tau\)">\(\log\tau\)</span> must be defined on <span class="math" data-tex="\(V\setminus\{0\}\)">\(V\setminus\{0\}\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Check that <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is convex and that <span class="math" data-tex="\(\chi(t)=bt+c_-\)">\(\chi(t)=bt+c_-\)</span> for <span class="math" data-tex="\(t\le t_-\)">\(t\le t_-\)</span>, and compute <span class="math" data-tex="\(c_-\)">\(c_-\)</span> when <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is replaced by the indicator of <span class="math" data-tex="\([t_+,\infty)\)">\([t_+,\infty)\)</span> (a nonsmooth model).</p>
+<p><strong>4.2</strong> (medium). Let <span class="math" data-tex="\(n=m=1\)">\(n=m=1\)</span>, <span class="math" data-tex="\(\Omega=\{|z|&lt;1\}\)">\(\Omega=\{|z|&lt;1\}\)</span> and <span class="math" data-tex="\(f(z)=z^k\)">\(f(z)=z^k\)</span>. Show that the hypotheses of Theorem 4.1 hold, that <span class="math" data-tex="\(V=\Omega\)">\(V=\Omega\)</span>, and that <span class="math" data-tex="\((V,\omega)\)">\((V,\omega)\)</span> has area <span class="math" data-tex="\(\pi(1+k)\)">\(\pi(1+k)\)</span>. Explain why balls of capacity below <span class="math" data-tex="\(\pi k\)">\(\pi k\)</span> fit, in accordance with the theorem.</p>
+<p><strong>4.3</strong> (easy). Show that the condition <span class="math" data-tex="\(\delta&lt;r_1^2(\mu/a-1)\)">\(\delta&lt;r_1^2(\mu/a-1)\)</span> is equivalent to <span class="math" data-tex="\(\mu r_1^2/(r_1^2+\delta)&gt;a\)">\(\mu r_1^2/(r_1^2+\delta)&gt;a\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> <span class="math" data-tex="\(\chi&#x27;&#x27;=\beta&#x27;(e^t-b)+\beta e^t\ge0\)">\(\chi&#x27;&#x27;=\beta&#x27;(e^t-b)+\beta e^t\ge0\)</span> as in Step 1, and <span class="math" data-tex="\(\chi&#x27;=b\)">\(\chi&#x27;=b\)</span> on <span class="math" data-tex="\((-\infty,t_-]\)">\((-\infty,t_-]\)</span>. For the indicator model, <span class="math" data-tex="\(\chi&#x27;=b\)">\(\chi&#x27;=b\)</span> for <span class="math" data-tex="\(t&lt;t_+\)">\(t&lt;t_+\)</span> and <span class="math" data-tex="\(\chi(t)=e^t\)">\(\chi(t)=e^t\)</span> for <span class="math" data-tex="\(t\ge t_+\)">\(t\ge t_+\)</span>, so <span class="math" data-tex="\(\chi(t)=b(t-t_+)+e^{t_+}\)">\(\chi(t)=b(t-t_+)+e^{t_+}\)</span> for <span class="math" data-tex="\(t&lt;t_+\)">\(t&lt;t_+\)</span> and <span class="math" data-tex="\(c_-=e^{t_+}-bt_+\)">\(c_-=e^{t_+}-bt_+\)</span>.</p>
+<p><strong>4.2.</strong> <span class="math" data-tex="\(f\)">\(f\)</span> vanishes only at <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(|f(z)|=|z|^k\)">\(|f(z)|=|z|^k\)</span>, and <span class="math" data-tex="\(\{|z|^{2k}\le s\}\)">\(\{|z|^{2k}\le s\}\)</span> is a closed disc inside <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> for <span class="math" data-tex="\(s&lt;1\)">\(s&lt;1\)</span>; <span class="math" data-tex="\(V=\{|z|^{2k}&lt;1\}=\Omega\)">\(V=\{|z|^{2k}&lt;1\}=\Omega\)</span>. By Lemma 3.2, <span class="math" data-tex="\(\omega=(1+k^2|z|^{2k-2})\,du\wedge dx\)">\(\omega=(1+k^2|z|^{2k-2})\,du\wedge dx\)</span>, whose integral over the disc is <span class="math" data-tex="\(\pi+\int_0^12\pi r\,k^2r^{2k-2}\,dr=\pi+\pi k\)">\(\pi+\int_0^12\pi r\,k^2r^{2k-2}\,dr=\pi+\pi k\)</span>. A disc of capacity <span class="math" data-tex="\(c\)">\(c\)</span> has area <span class="math" data-tex="\(c\)">\(c\)</span>, and the theorem gives every <span class="math" data-tex="\(c&lt;\pi k\)">\(c&lt;\pi k\)</span>, within the total area <span class="math" data-tex="\(\pi(1+k)\)">\(\pi(1+k)\)</span>.</p>
+<p><strong>4.3.</strong> Both are equivalent to <span class="math" data-tex="\(r_1^2+\delta&lt;\mu r_1^2/a\)">\(r_1^2+\delta&lt;\mu r_1^2/a\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-SB] OpenAI, <em>Symplectic balls in symmetric polar products</em>, OpenAI Math Release preprint, 22 September 2026, Section 2, Theorem 2.1. https://github.com/openai/math/tree/main/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026</li>
+<li>[LZ] A. Loi and F. Zuddas, <em>Symplectic maps of complex domains into complex space forms</em>, Journal of Geometry and Physics 58 (2008), 888–899; arXiv:0803.3532. https://arxiv.org/abs/0803.3532</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

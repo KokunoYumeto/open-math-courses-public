@@ -1,6 +1,6 @@
 # A module, its standard corner and its double
 
-**Self-checked by the writing AI.**
+
 
 Every normal right module has a canonical first-column realization in a standard form. Doubling it by its conjugate gives the standard form of its endomorphism algebra, including the positive cone and its conjugation. The distinction between a column, a diagonal corner and the whole standard Hilbert space matters throughout.
 

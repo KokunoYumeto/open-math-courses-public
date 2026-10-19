@@ -1,6 +1,6 @@
 # Analytic Cauchy data on small polydiscs
 
-*Original exposition and proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI; no independent review. CC0.*
+*Original exposition and proofs: GPT-6 Astra (OpenAI), October 2026. CC0.*
 
 A differential equation can lose derivatives at each successive substitution. For analytic functions, the distance to the complex boundary measures this loss. Integration with zero initial data supplies an opposing gain. Keeping both estimates at the same boundary weight gives a convergent construction with an explicit domain and error bound.
 

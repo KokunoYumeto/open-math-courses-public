@@ -1,6 +1,6 @@
 # The cotangent complex
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) (Codex), October 2026. Public domain (CC0).*
 
 The naive cotangent complex records generators and first relations. It classifies square-zero extensions, but it can discard relations among relations. The full cotangent complex retains those additional degrees. Its fundamental triangle then turns a lifting problem into a connecting class in an Ext group.
 

@@ -1,6 +1,6 @@
 # Tensor directions and admissible hyperfunction products
 
-*Original exposition and proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI; no independent review. CC0.*
+*Original exposition and proofs: GPT-6 Astra (OpenAI), October 2026. CC0.*
 
 A tensor can be singular while one of its covector components is zero. This occurs already for a singular object that is constant in an extra variable. Keeping those zero components gives the correct condition for restricting a tensor to the diagonal, and hence for multiplying hyperfunctions. We prove this construction and its calculus directly with holomorphic sides and the existing pullback.
 
@@ -12,7 +12,7 @@ Throughout, \(X\subset\mathbb R^n\), \(Y\subset\mathbb R^m\) are open. Write \(W
 \]
 The set \(E(u)\) records support at zero frequency. The set \(K_x(u)\) allows zero at every base point and will be used in sufficient conditions on several factors. Neither notation declares a zero covector singular.
 
-The existing tensor, differential and analytic multiplier operations are [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), Theorem 6; their compact-carrier proofs are Analytic tests and real carriers, Proposition 7. Boundary uniqueness, the positive-dual bound and the converse are [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md), Theorems 4 and 6–7. We use the full conic splitting and convex duality in [Directional splitting and holomorphic compatibility](directional-splitting-and-holomorphic-compatibility.md), Theorem 2 and Lemma 3. Finally [Analytic substitution for hyperfunctions](analytic-substitution-for-hyperfunctions.md), Theorems 4, 7 and 10, Proposition 5, Lemma 8 and Corollary 11, supplies the actual pullback, its composition law, tensor-boundary identity and distributional agreement.
+The existing tensor, differential and analytic multiplier operations are [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), Theorem 6; their compact-carrier proofs are [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), Proposition 7. Boundary uniqueness, the positive-dual bound and the converse are [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md), Theorems 4 and 6–7. We use the full conic splitting and convex duality in [Directional splitting and holomorphic compatibility](directional-splitting-and-holomorphic-compatibility.md), Theorem 2 and Lemma 3. Finally [Analytic substitution for hyperfunctions](analytic-substitution-for-hyperfunctions.md), Theorems 4, 7 and 10, Proposition 5, Lemma 8 and Corollary 11, supplies the actual pullback, its composition law, tensor-boundary identity and distributional agreement.
 
 ## Both components of a tensor covector
 
@@ -391,7 +391,7 @@ which violates (N4). Individual admissibility cannot replace that condition. No 
 
 ## Programme proofs and mathematical source
 
-- Analytic tests and real carriers, Proposition 7, and [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), Theorems 6–7, supply the actual tensor, derivative, multiplier and coordinate operations.
+- [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), Proposition 7, and [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), Theorems 6–7, supply the actual tensor, derivative, multiplier and coordinate operations.
 - [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md), Theorems 4 and 6–7, and [Directional splitting and holomorphic compatibility](directional-splitting-and-holomorphic-compatibility.md), Theorem 2 and Lemma 3, supply the exact boundary and conic proofs.
 - [Analytic substitution for hyperfunctions](analytic-substitution-for-hyperfunctions.md), Theorems 4, 7 and 10, Proposition 5, Lemma 8 and Corollary 11, supplies the pullback and its actual compatibility with the preceding operations. [Keeping zero covectors in kernel operations](keeping-zero-covectors-in-kernel-operations.md), Theorems 1 and 4 and Proposition 4a, gives the already constructed distributional calculus used for comparison.
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 9.3, equation (9.3.3) and its extension of the computation rules in Section 8.5, particularly Theorem 8.5.3. The proofs, organization, examples, exercises and figure here are independently expressed.

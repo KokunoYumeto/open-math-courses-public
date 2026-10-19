@@ -64,7 +64,7 @@ For each theorem record the coefficient ring, boundedness, properness and finite
 1. Derived constructibility through common triangulations
 1. [Weak constructibility under sheaf operations](../../sheaf-proof-readings/SH03-weak-constructibility-under-sheaf-operations.html)
 1. [Perfect operations and finite microlocal coefficients](../../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html)
-1. Constructibility through smooth cutoffs and microlocal properness
+1. [Constructibility through smooth cutoffs and microlocal properness](../../constructibility-and-oriented-duality/constructibility-through-smooth-cutoffs-and-microlocal-properness.html)
 1. [Complex conicity and analytic Lagrangian closures](../../sheaf-proof-readings/SH03-complex-conicity-and-analytic-lagrangian-closures.html)
 1. [Analytic normal cones through complex deformation](../../sheaf-proof-readings/SH03-analytic-normal-cones-through-complex-deformation.html)
 1. [Analytic conormal covers and singular involutivity](../../sheaf-proof-readings/SH03-analytic-conormal-covers-and-singular-involutivity.html)

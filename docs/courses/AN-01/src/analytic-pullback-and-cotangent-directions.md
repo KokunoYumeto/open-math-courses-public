@@ -1,6 +1,6 @@
 # Analytic pullback and cotangent directions
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Composing a distribution with a map requires a condition on directions, not merely on its support. A covector normal to the map can prevent restriction from existing. When those directions are absent, a real analytic map transports every derivative-growth wavefront by its transposed derivative. We prove the estimate for arbitrary maps, obtain equality for changes of coordinates and submersions, and distinguish this sufficient restriction criterion from a necessary condition for every individual example.
 

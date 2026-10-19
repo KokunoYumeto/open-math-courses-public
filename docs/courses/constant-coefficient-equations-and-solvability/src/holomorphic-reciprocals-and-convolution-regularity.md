@@ -61,7 +61,7 @@ Let \(\mu=H\), the Heaviside function on the line. With \(\widehat f(\xi)=\int e
 \]
 For a direct derivation, damp \(H\) by \(e^{-\epsilon x}\). Its transform is
 \((\epsilon+i\xi)^{-1}=-i(\xi-i\epsilon)^{-1}\).
-The lower boundary formula of Cauchy kernels and distributional boundary limits, Theorem 4.1, gives (CL5) as \(\epsilon\downarrow0\). The damping converges in tempered distributions by dominated convergence on Schwartz tests. Multiplication by \(\xi\) kills the point term and changes the principal value into one.
+The lower boundary formula of [Cauchy kernels and distributional boundary limits](../prerequisites/cauchy-kernels-and-boundary-limits.html#a-real-pole-remembers-the-side-of-approach), Theorem 4.1, gives (CL5) as \(\epsilon\downarrow0\). The damping converges in tempered distributions by dominated convergence on Schwartz tests. Multiplication by \(\xi\) kills the point term and changes the principal value into one.
 
 The reciprocal \(\Phi(\zeta)=i\zeta\) is entire and polynomially bounded. Both real rays are allowed, so \(\operatorname{Char}H=\varnothing\). For example, if
 \[

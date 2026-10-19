@@ -1,8 +1,8 @@
 # Weak equations and classical functions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 Distributional differentiation always exists, but its result need not be an ordinary function. A jump contributes a point mass. In the other direction, a differential equation with a continuous right side can force a distribution to become a classical function. The distinction depends on the equation and its coefficients.
 

@@ -1,6 +1,6 @@
 # Convolution estimates and weak-gradient embeddings
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), 4 October 2026. Public domain (CC0).*
 
 Kernel estimates recover functions from their weak derivatives. Near a kernel's singularity, local averages control the input; far away, integrability or cancellation supplies decay. We prove the needed maximal and fractional estimates before applying the Newtonian gradient identity. The resulting global estimates determine a function only modulo the constants or polynomials invisible to its prescribed derivatives.
 
@@ -12,7 +12,7 @@ We use complex-valued functions, completed Lebesgue measure on \(\mathbb R^n\), 
 \]
 with value zero if there are no distinct pairs.
 
-The [integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), Sections 15.0–15.4 and 16, prove the measure, convergence, Fubini, Hölder, Minkowski, two-factor Young, density and mollification facts used below. Section 15.6 proves the planar polar formula. U011, Theorem 2.1 and Corollary 2.2, supplies boundary integration by parts; [U020](point-sources-and-complex-gaussian-kernels.md), Theorem 1.1, supplies the complete Newtonian normalization; [U021](convolution-as-addition-of-supports.md), B0–B3 and Theorems 1.1, 2.1, 4.1, supplies distributional convolution and its local smoothness. [U032](regularity-across-a-distinguished-variable.md), Lemma 1.3, proves the zero-coordinate-derivative result on joint tests. The [Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F3, proves the Gaussian integral used in Solution 7. Additional maximal, fractional and dyadic facts are proved here.
+The [integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), Sections 15.0–15.4 and 16, prove the measure, convergence, Fubini, Hölder, Minkowski, two-factor Young, density and mollification facts used below. Section 15.6 proves the planar polar formula. [U011](boundary-flux-and-weak-identities.md), Theorem 2.1 and Corollary 2.2, supplies boundary integration by parts; [U020](point-sources-and-complex-gaussian-kernels.md), Theorem 1.1, supplies the complete Newtonian normalization; [U021](convolution-as-addition-of-supports.md), B0–B3 and Theorems 1.1, 2.1, 4.1, supplies distributional convolution and its local smoothness. [U032](regularity-across-a-distinguished-variable.md), Lemma 1.3, proves the zero-coordinate-derivative result on joint tests. The [Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F3, proves the Gaussian integral used in Solution 7. Additional maximal, fractional and dyadic facts are proved here.
 
 ## Every finite number of Young factors
 

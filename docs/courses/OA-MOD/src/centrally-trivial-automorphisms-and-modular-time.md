@@ -409,7 +409,7 @@ We have proved the full statement:
  \tag{CTM.38}
 \]
 
-Here \(M\) is any AFD type III₁ factor with separable predual, and \(\varphi\) is any fixed faithful normal state on it. The reverse inclusion was proved in Section 1. Together with AIA-07 this proves both clauses of Takesaki XVIII.4, Theorem 4.29, at the stated hypotheses. Independent review and the audit of all recursive prerequisite chains remain separate obligations; writing this proof does not certify the whole course or those chains.
+Here \(M\) is any AFD type III₁ factor with separable predual, and \(\varphi\) is any fixed faithful normal state on it. The reverse inclusion was proved in Section 1. Together with AIA-07 this proves both clauses of Takesaki XVIII.4, Theorem 4.29, at the stated hypotheses.
 
 ## 8. Mechanism and checks of the boundary cases
 

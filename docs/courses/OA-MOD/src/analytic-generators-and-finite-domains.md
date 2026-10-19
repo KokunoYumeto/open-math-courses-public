@@ -1,6 +1,6 @@
 # Analytic generators and exact finite weight domains
 
-**Self-checked by the writing AI.**
+
 
 An imaginary-time generator is a closed-strip endpoint with a specified domain. Its graph can determine an entire real group, and its relative modular graph can be tested by finite weight pairings. Neither assertion permits replacing a domain by a convenient dense subset.
 

@@ -1,6 +1,6 @@
 # Cosine crossings and spectral-gap bounds
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
 
 A real function bounded strictly below one cannot disturb the pattern of cosine crossings if its spectrum lies in the cosine band. Every half-period retains one simple zero, and the entire extension has no additional complex zeros. A spectral gap gives a different sharp result: a bounded weak derivative forces the function itself to be bounded by Bohr's constant. A periodic sign-change argument and positive periodization prove both conclusions without an initial boundedness assumption in the gap case.
 

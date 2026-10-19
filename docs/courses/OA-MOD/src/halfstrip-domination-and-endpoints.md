@@ -1,6 +1,6 @@
 # Weight domination and exact half-strip endpoints
 
-**Self-checked by the writing AI.**
+
 
 For a modular orbit, analytic continuation to imaginary time \(-i/2\) measures the norm of right multiplication on the GNS space. For a weight cocycle, the same endpoint measures domination of the numerator by the denominator. The conjugating operator at this endpoint has a fixed order; reversing its factors can change the weight even in two dimensions.
 

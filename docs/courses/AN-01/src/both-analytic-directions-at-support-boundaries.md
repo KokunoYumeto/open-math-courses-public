@@ -1,6 +1,6 @@
 # Both analytic directions at support boundaries
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A distribution may have an analytic singularity in only one direction. A boundary of its support is more restrictive: a supporting surface forces both signs of its normal covector into the analytic wavefront. This applies to complex distributions, including smooth functions which become flat at the boundary. We prove the support theorem, extend it to limiting normals and contacts with convex open sets, and deduce uniqueness from the absence of paired directions.
 

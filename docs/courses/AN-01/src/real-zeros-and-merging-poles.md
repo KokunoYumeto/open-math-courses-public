@@ -1,6 +1,6 @@
 # Real zeros and merging poles
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 At a simple real zero, approaching a reciprocal from above or below leaves the same principal value and opposite point masses. On the line, a critical zero prevents either limit: one fixed positive test detects the divergence. When two simple poles merge, a different question arises. Subtracting explicit point derivatives restores a limit, whose finite part has a sharp test order.
 

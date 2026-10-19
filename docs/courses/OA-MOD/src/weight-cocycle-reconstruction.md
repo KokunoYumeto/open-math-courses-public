@@ -1,6 +1,6 @@
 # Reconstructing a weight from a modular cocycle
 
-**Self-checked by the writing AI.**
+
 
 A cocycle specifies how a second modular motion differs from a first. Recovering a weight requires more than recognizing the resulting automorphisms: different weights can have the same modular group. We construct the missing GNS map, prove its full Hilbert-algebra axioms, and identify its relative operator on the entire mixed finite domain. The construction works on an arbitrary von Neumann algebra.
 

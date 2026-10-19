@@ -1,6 +1,6 @@
 # Tracial multiplication actions and the preserving expectation
 
-**Self-checked by the writing AI.** The source targets are Takesaki, *Theory of Operator Algebras I*, V.2 Theorem 2.22, printed 324–325 (PDF 331–332), and Proposition 2.36, printed 332 (PDF 339). This text supplies their full arguments at the named course inputs. The arguments below use the precise course inputs listed next.
+The source targets are Takesaki, *Theory of Operator Algebras I*, V.2 Theorem 2.22, printed 324–325 (PDF 331–332), and Proposition 2.36, printed 332 (PDF 339). This text supplies their full arguments at the named course inputs. The arguments below use the precise course inputs listed next.
 
 Let \(M\) carry a normal, semifinite, faithful trace \(\tau\). No assumption is made about separability, countable decomposability or \(\tau(1)\). Write \(H_\tau=L^2(M,\tau)\), with inner product linear in its first argument. Whenever a von Neumann subalgebra \(N\subseteq M\) is considered below, it has the same identity. This is the subalgebra convention used by the source expectation proof: its finite projections have supremum \(1_M\).
 

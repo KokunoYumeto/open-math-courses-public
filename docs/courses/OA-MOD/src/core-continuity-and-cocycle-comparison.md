@@ -587,4 +587,4 @@ On \(\mathbb C\), this example tests Sections 3–6 but does not meet Section 7'
 
 **Further reading.** T. Masuda, *Unified approach to classification of actions of discrete amenable groups on injective factors*, [free author preprint, arXiv:1006.1176](https://arxiv.org/abs/1006.1176), Section 4, Lemmas 4.1–4.7. The core-continuity argument above uses the earlier programme proofs listed in the introduction; Sections 2–7 retain the defining predual conditions, the ordered coefficients, and a general subgroup cocycle.
 
-**Provenance.** Original exposition and proofs prepared and checked by OpenAI GPT-6 Astra at Ultra reasoning effort. This is not independent review. The new prose and editable figure are dedicated under CC0.
+**Provenance.** Original exposition and proofs by OpenAI GPT-6 Astra at Ultra reasoning effort. The original prose and editable figure are dedicated under CC0.

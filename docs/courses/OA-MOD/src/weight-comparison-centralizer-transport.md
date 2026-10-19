@@ -1,6 +1,6 @@
 # Comparing supported weights and transporting their cuts
 
-**Self-checked by the writing AI.**
+
 
 Normal semifinite weights can have different supports, so comparison cannot be phrased only with unitary cocycles. This lesson keeps the support projections visible. It proves the partial-isometry cocycle formula, converts comparison of weights into comparison of projections in a balanced centralizer, proves the resulting Cantor–Bernstein theorem, characterizes strict semifiniteness, and records the two transport mechanisms needed later: lacunary centralizers and faithful conditional expectations.
 

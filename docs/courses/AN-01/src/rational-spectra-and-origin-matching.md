@@ -1,6 +1,6 @@
 # Rational spectra and origin matching
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 Two exact calculations connect complex functions with distributions. An analytic function around a circle gives an integer spectrum, with geometric decay in both frequency directions. A bounded phase on the frequency line gives every tempered solution of an equation singular at the physical origin. In the second calculation, the behavior at both frequency endpoints determines the physical traces, while a point mass is needed even when those traces are finite.
 

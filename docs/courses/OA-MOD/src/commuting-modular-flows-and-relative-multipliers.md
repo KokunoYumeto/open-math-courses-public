@@ -1,6 +1,6 @@
 # Commuting modular flows and relative half-strip multipliers
 
-**Self-checked by the writing AI.**
+
 
 Two modular flows may commute while each rescales the other weight. A position–momentum example displays this phenomenon with exact signs and full operator domains. A second mechanism identifies an interweight right multiplier with the norm of its relative half-strip endpoint.
 

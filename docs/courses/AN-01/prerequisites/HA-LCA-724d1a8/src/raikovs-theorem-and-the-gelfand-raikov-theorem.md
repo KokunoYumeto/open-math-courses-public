@@ -1,6 +1,6 @@
 # Raikov's theorem and the Gelfand–Raikov theorem
 
-**Lesson HA-LCA-05.** Self-checked by the writing AI.
+**Lesson HA-LCA-05.**
 
 Weak-star convergence tests a function through integrals. Compact convergence tests all its values on a compact set at once. For positive-type functions normalized at the identity, these two kinds of convergence coincide. This lets the extreme-point approximation from the preceding lesson detect individual group elements.
 

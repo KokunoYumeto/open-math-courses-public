@@ -1,0 +1,9 @@
+# Weak hyperbolic normal criterion and transverse reflection
+
+Read [the complete lesson](weak-hyperbolic-normal-criterion-and-reflection.html) or edit [its source](weak-hyperbolic-normal-criterion-and-reflection.md). It proves hyperbolic boundary regularity and transverse reflection for both weak energy domains, with time-variable principal coefficients and arbitrary complex matrix lower terms. The forcing retains its sharp natural-dual index. Five complete solutions include a nonunitary matrix reflection example.
+
+The [coarse normal estimate](weak-reflection-coarse-normal-transfer.html) and [reflection geometry](weak-reflection-geometry-bridge.html) are complete companion proofs. Their [coarse source](weak-reflection-coarse-normal-transfer.md) and [geometry source](weak-reflection-geometry-bridge.md) remain editable. Three retained illustrations show the exact cutoff support, the schematic root geometry and an exact flat reflected ray.
+
+The proof map connects 69 current entries to 962 earlier proofs. All 51 original obligations, 71 displays, 57 main labels and five solutions remain unchanged. The [source record](source-provenance.json) credits the precise Vasy treatments and retains the Hörmander-based programme route. Six [finite model checks](model-check.json), with 96 cases, supplement the proofs; run python -B check_models.py to reproduce them. All 634 formulas across the three readers render; 35 captures were inspected.
+
+Independent expression is CC0; linked components retain their own terms. Strict diffraction and complete singular boundary trajectories remain further course work. 

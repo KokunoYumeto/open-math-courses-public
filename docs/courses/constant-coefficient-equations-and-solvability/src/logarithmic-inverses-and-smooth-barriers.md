@@ -10,9 +10,11 @@ Let \(P\ne0\) be a polynomial of degree \(m\), with arbitrary complex coefficien
 
 [Fixed-support derivatives and logarithmic Fourier graphs](fixed-support-derivatives-and-fourier-graphs.md), Sections 2–3, proves the compact-test Fourier–Laplace estimate and the exact logarithmic graph deformation, including its lateral flux. [Cauchy bounds, root counts and analytic extensions](cauchy-bounds-and-root-counts.md), Sections 1–2, gives the complex-ball estimates and root-counting tools. Convolution with compact data uses [Convolution as addition of supports](../prerequisites/convolution-as-addition-of-supports.html).
 
+The final local consequence also uses the compact singular-hull identity proved in [Locating singularities through logarithmic Fourier strips](../AN02-L158.html#5-a-nonzero-polynomial-cannot-change-the-compact-singular-hull), Theorem 5.1.
+
 ## Moving to a zero-free circle
 
-**Lemma 1.1.** Fix \(b>0\), real \(\xi\), and \(t\geq1\). If
+**Lemma 1.1.** Fix \(b>0\), real \(\xi\), and \(t>0\). If
 \[
 A_{P,W}(\xi,t)\geq bA_P(\xi,t),
 \tag{1}
@@ -362,6 +364,44 @@ The inclusion of this compact annulus set in the smooth region is determined sol
 
 Only first derivatives of the barriers entered the geometric argument. The equation and its solution were treated distributionally throughout.
 
+## Strict supporting tangent planes
+
+At a strictly supporting tangent plane, a compact cutoff gives another continuation argument. It uses the full compact singular-hull identity, and does not require positivity of curvature.
+
+**Corollary 7.1.** Let \(P\ne0\) have constant complex coefficients, let \(u\in\mathcal D'(X)\), and suppose \(P(D)u\) is smooth on the open set \(X\). After a rigid change of coordinates around \(x_0=0\), write \(x=(z,s)\in\mathbb R^{n-1}\times\mathbb R\). Suppose a \(C^1\) graph in this neighborhood satisfies
+\[
+h(0)=0,\qquad h(z)<0\quad(z\ne0),
+\tag{34}
+\]
+and \(u\) is smooth on the side \(s>h(z)\). Then \(u\) is smooth on a neighborhood of zero. That neighborhood can be chosen from the graph, the domain and \(P\), independently of \(u\).
+
+**Proof.** Work in a small ball whose closure lies inside the graph neighborhood and \(X\). Choose a compact smooth cutoff \(\chi\) supported there and equal to one near zero. Extend \(v=\chi u\) by zero to all space. Its image is
+\[
+P(D)v=\chi P(D)u+[P(D),\chi]u.
+\tag{35}
+\]
+The first term is globally smooth. Every positive derivative of \(\chi\) is supported in \(\operatorname{supp}d\chi\), a compact set missing zero. Since \(u\) is smooth above the graph, the singular support of the second term is contained in the geometric compact set
+\[
+K=\{(z,s)\in\operatorname{supp}d\chi:s\leq h(z)\}.
+\tag{36}
+\]
+Every point of \(K\) has \(s<0\). If \(z\ne0\), this follows from (34). If \(z=0\), then \(s\leq0\), and equality would give the excluded point zero. If \(K\) is nonempty, compactness therefore gives \(a>0\) with \(s\leq-a\) on \(K\).
+
+The compact singular-hull identity gives
+\[
+\operatorname{conv}\operatorname{sing\,supp}v
+=\operatorname{conv}\operatorname{sing\,supp}P(D)v
+\subset\{s\leq-a\}.
+\tag{37}
+\]
+Thus \(v\) is smooth where \(s>-a\). It equals \(u\) near zero, proving the assertion. If \(K\) is empty, \(P(D)v\) is smooth everywhere and the same hull identity makes \(v\) smooth everywhere. The cutoff and the geometric set \(K\), hence the resulting neighborhood, are independent of \(u\). \(\square\)
+
+A differentiable strictly convex boundary has this strict supporting graph at each point. Applying the corollary point by point gives a neighborhood of the surface on which the solution is smooth. The graph \(h(z)=-z^4\) illustrates why a positive lower curvature bound is unnecessary.
+
+![A flat strictly supporting graph and the separated compact source singularities.](../figures/strict-support-annulus.png)
+
+The graph is \(s=-z^4\), and the cutoff is one in the radius-\(1/2\) ball and supported in the radius-one ball. The orange set bounds the possible singularities of the cutoff commutator. It lies below \(s=-9/256\), while the contact point has \(s=0\). Corollary 7.1 and Exercise 7 give the hull argument and the exact gap. [Editable figure generator](../reproduce/strict-support-annulus/make_figure.py).
+
 ## Exercises and full solutions
 
 **Exercise 1. The imaginary sign (basic).** Verify (4), and derive the sign in (28) from (27). Identify the already smooth side for a single barrier \(\phi(x)=a\cdot x\).
@@ -411,7 +451,12 @@ The first coefficient is negative. Outside the smooth region, (32) gives \(b_j^-
 
 **Solution.** A compact distribution of order \(M\) pairs continuously with \(C^M\) functions. To differentiate the convolution \(b\) times in \(x\), the kernel derivatives through order \(b\) must still have \(M\) continuous derivatives in the source variable. A \(C^{M+b}\) kernel supplies precisely these derivatives, and the pairing depends continuously on \(x\). Thus the output is \(C^b\). The common support decomposition puts every kernel argument in the same good regions, independently of \(v\), so one neighborhood works for all \(b\). If the neighborhood shrank with \(b\), the conclusion could be only that each finite order holds on its own neighborhood; their intersection need not contain an open neighborhood on which all orders hold. The fixed geometry prevents that loss.
 
+**Exercise 7. A flat strictly supporting graph (advanced).** Let \(h(z)=-z^4\), and choose a cutoff equal to one in the radius-\(1/2\) ball and supported in the radius-one ball. Prove that the geometric set \(K\) in (36) lies in \(s\leq-9/256\). Explain how this proves local continuation even though \(h''(0)=0\).
+
+**Solution.** A point of \(K\) has \(z^2+s^2\geq1/4\) and \(s\leq-z^4\leq0\). If \(s\leq-1/4\), the required bound already holds. Otherwise \(s^2<1/16\), so \(z^2>3/16\) and \(z^4>9/256\). Thus \(s\leq-9/256\) in both cases. The singular hull of \(P(D)(\chi u)\) lies below that level, so the hull identity makes \(\chi u\), and therefore \(u\) near zero, smooth above it. Strict separation from the supporting plane supplies the positive gap; no positive second derivative is used.
+
 ## References
 
 - **[Grubb]** Gerd Grubb, *Distributions and Operators*, open lectures, sections on Fourier transformation and convolution of distributions. [Lecture-note index](https://web.math.ku.dk/~grubb/distribution.htm).
 - **[Hormander]** Lars Hörmander, “On the singularities of solutions of partial differential equations with constant coefficients,” *Séminaire Goulaouic–Schwartz*, 1971–1972, exposé 25, 1–6. [Original article](https://www.numdam.org/item/SEDP_1971-1972____A25_0/).
+- **[Hormander I]** Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, §7.3, Theorem 7.3.9, for the compact singular-hull identity. The full proof used here is given in the linked course lesson, Theorem 5.1.

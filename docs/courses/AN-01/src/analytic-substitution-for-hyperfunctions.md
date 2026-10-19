@@ -1,6 +1,6 @@
 # Analytic substitution for hyperfunctions
 
-*Original exposition and proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI; no independent review. CC0.*
+*Original exposition and proofs: GPT-6 Astra (OpenAI), October 2026. CC0.*
 
 A hyperfunction can be composed with a real analytic map when none of its singular covectors is killed by the transpose derivative. The construction must respect the relations between holomorphic sides: composing an arbitrary list of sides would otherwise depend on the list. We prove the construction, its precise wavefront bound, and its agreement with both distributional pullback and the earlier coordinate-change formula. In particular, the absolute inverse Jacobian in that formula is retained.
 
@@ -254,7 +254,7 @@ The earlier pullback (C4) of \(a\) is carried by \(\overline V\). Combining (C5)
  b_{G\times H}(f\otimes g)=(b_G f)\otimes(b_H g).
  \tag{T1}
 \]
-An analytic factor may use the full space as its approach cone and ordinary trace. The tensor on the right is the existing analytic-functional tensor from Analytic tests and real carriers, Proposition 7, localized by Theorem 6 of the hyperfunction lesson.
+An analytic factor may use the full space as its approach cone and ordinary trace. The tensor on the right is the existing analytic-functional tensor from [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), Proposition 7, localized by Theorem 6 of the hyperfunction lesson.
 
 **Proof.** On a relatively compact rectangle \(V\times W\), choose the compact boundary representatives \(a,b\) and their translated integrals \(a_y,b_z\). Fubini identifies the translated integral of \(f\otimes g\) with \(a_y\otimes b_z\), including the translation of the entire test in both variables. Algebra gives
 \[
@@ -473,7 +473,7 @@ which proves the assertion at the chosen fiber point, and \(z_0\) was arbitrary.
 
 ## Programme proofs and mathematical source
 
-- Analytic tests and real carriers, Proposition 7, proves complex-carrier tensors and the real-germ transport formula. [Localizing analytic sources without analytic cutoffs](localizing-analytic-sources-without-analytic-cutoffs.md), Lemma 3, proves the thickened-real germ action used in (C5). [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), Theorems 3 and 6–7, supplies the existing local spaces, tensor and coordinate conventions.
+- [Analytic tests and real carriers](analytic-tests-and-real-carriers.md), Proposition 7, proves complex-carrier tensors and the real-germ transport formula. [Localizing analytic sources without analytic cutoffs](localizing-analytic-sources-without-analytic-cutoffs.md), Lemma 3, proves the thickened-real germ action used in (C5). [Hyperfunctions from local analytic sources](hyperfunctions-from-local-analytic-sources.md), Theorems 3 and 6–7, supplies the existing local spaces, tensor and coordinate conventions.
 - [Holomorphic boundary values without growth bounds](holomorphic-boundary-values-without-growth-bounds.md), Theorems 4 and 6–7, and [Directional splitting and holomorphic compatibility](directional-splitting-and-holomorphic-compatibility.md), Theorem 2 and Lemma 3, supply the exact boundary and decomposition interfaces. The full [contour identity](../prerequisites/U011-free-foundations/contour-homotopy-U095.md) is used with its oriented determinant.
 - [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), Theorem 2.1 and its explicit Taylor formula, supplies the finite-order distribution boundary estimate. The [smooth pullback construction](../prerequisites/U011-free-foundations/smooth-pullback-and-fourier-normal-condition.md) and [strong parameter slices](../prerequisites/U011-free-foundations/normal-parameter-slices-U101.md) supply the actual distributional comparison. Their original programme authorship is retained.
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 9.3, the analytic pullback construction and equation (9.3.2), its coordinate interpretation and the required agreement with earlier diffeomorphism pullback; compare Theorem 8.5.1. These supply the mathematical target. The explicit treatment of analytic remainders, contour-carrier comparison, distributional agreement, teaching organization, examples, exercises and figure here are independently expressed.

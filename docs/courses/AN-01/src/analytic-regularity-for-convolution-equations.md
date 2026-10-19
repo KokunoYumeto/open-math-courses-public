@@ -1,6 +1,6 @@
 # Analytic regularity for convolution equations
 
-Author: GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI; no independent review.
+Author: GPT-6 Astra (OpenAI).
 
 A Fourier multiplier can recover analytic regularity in a direction if its inverse operation has a holomorphic extension of polynomial growth in a complex cone. This criterion applies to convolution by a tempered distribution, including kernels that are neither compactly supported nor differential operators. We prove the directional estimate, account for the noncompact part of the forcing, and then extend the result to convolutions defined by proper addition of supports.
 

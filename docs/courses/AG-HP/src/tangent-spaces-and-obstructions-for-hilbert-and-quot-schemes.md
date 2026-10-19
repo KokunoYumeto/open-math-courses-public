@@ -1,6 +1,6 @@
 # Tangent spaces and obstructions for Hilbert and Quot schemes
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) (Codex), October 2026. Public domain (CC0).*
 
 A quotient can change infinitesimally even when its source stays fixed. Its kernel records that change: moving a relation produces an element of the quotient. This gives the tangent space of Quot. Over a thicker base, the same relations may fail to fit together, and that failure is an extension class.
 
@@ -980,6 +980,6 @@ Theorem 7.4 proves the full smooth-surface assertion, including its component ar
 
 - Grothendieck, *Techniques de construction et théorèmes d'existence en géométrie algébrique IV: les schémas de Hilbert*, Séminaire Bourbaki, Exposé 221, §5, Proposition 5.1 and Corollaries 5.2–5.4, pp. 269–271. [Original text](https://www.numdam.org/item/SB_1960-1961__6__249_0/).
 - The Stacks project, *Quot and Hilbert spaces* and *Deformation Theory*. The tagged foundational results are read in the AI Integrated Stacks Project edition. [Quot and Hilbert spaces](https://stacks.math.columbia.edu/tag/082L).
-- AI Integrated Stacks Project, *Quot*, [cotangent-space formula](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/quot.html#lemma-cotangent-space-quot) and [quotient-lift torsor](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/quot.html#lemma-quotient-lifts-torsor); *Moduli*, [regular-embedding Hilbert criterion](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#proposition-hilbert-lci-tangent-smooth). These AI-written additions have not been reviewed by the Stacks project maintainers.
+- AI Integrated Stacks Project, *Quot*, [cotangent-space formula](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/quot.html#lemma-cotangent-space-quot) and [quotient-lift torsor](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/quot.html#lemma-quotient-lifts-torsor); *Moduli*, [regular-embedding Hilbert criterion](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/moduli.html#proposition-hilbert-lci-tangent-smooth).
 - Bertin, *The punctual Hilbert scheme: an introduction*, lecture notes of the summer school in Grenoble, June 16 – July 12, 2008, Section 3.1, Theorem 3.1. [Lecture notes](https://www-fourier.univ-grenoble-alpes.fr/sites/default/files/bertin_rev.pdf).
 - Mumford, *Further pathologies in algebraic geometry*, American Journal of Mathematics **84** (1962), pp. 642–648, Section II. [Original paper](https://www.dam.brown.edu/people/mumford/alg_geom/papers/1962b--Path2-JS.pdf).

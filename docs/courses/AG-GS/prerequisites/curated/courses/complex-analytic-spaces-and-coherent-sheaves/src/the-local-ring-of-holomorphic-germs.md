@@ -4,7 +4,7 @@
 
 Every local question about holomorphic functions of several variables becomes a question about the ring \(\mathcal O_n\) of convergent power series. This lesson establishes the algebraic structure of that ring: it is a regular local ring of dimension \(n\) and a unique factorization domain, coprimality of two germs persists at nearby points, and quotients by ideals containing Weierstrass polynomials are finite modules over a ring of convergent power series in fewer variables. The tool throughout is the Weierstrass preparation and division theorem, which turns a germ into a polynomial in one variable whose coefficients are germs in the others.
 
-We use Holomorphic functions of several variables and the proof of the Weierstrass preparation and division theorem in [Complex analytic spaces and analytification, Section 2](course:AG-QC/complex-analytic-spaces-and-analytification#2-local-analytic-algebra), together with its Lemma 2.1: \(\mathcal O_n\) is Noetherian and its completion is the formal power series ring. From commutative algebra we use Krull's height theorem [Dimension theory of Noetherian local rings, Theorem 3.1](course:AG-CA/dimension-theory-of-noetherian-local-rings#3-how-much-can-one-equation-cut) and the facts that a polynomial ring over a unique factorization domain is again one and that factorial domains are integrally closed, with the proofs cited where they are used.
+We use [Holomorphic functions of several variables](holomorphic-functions-of-several-variables.md) and the proof of the Weierstrass preparation and division theorem in [Complex analytic spaces and analytification, Section 2](course:AG-QC/complex-analytic-spaces-and-analytification#2-local-analytic-algebra), together with its Lemma 2.1: \(\mathcal O_n\) is Noetherian and its completion is the formal power series ring. From commutative algebra we use Krull's height theorem [Dimension theory of Noetherian local rings, Theorem 3.1](course:AG-CA/dimension-theory-of-noetherian-local-rings#3-how-much-can-one-equation-cut) and the facts that a polynomial ring over a unique factorization domain is again one and that factorial domains are integrally closed, with the proofs cited where they are used.
 
 Basic references are [Demailly] and [Lebl SCV].
 
@@ -17,7 +17,7 @@ Let \(\mathcal O_n=\mathbf C\{z_1,\ldots,z_n\}\) be the ring of germs at \(0\) o
 \tag{1.1}
 \]
 
-The last equality holds because a germ with \(f(0)=0\) can be written \(f=\sum_j z_jf_j\), grouping the terms of its power series by the first variable that occurs in them. For \(k\leq n\) we regard \(\mathcal O_k=\mathbf C\{z_1,\ldots,z_k\}\) as the subring of germs independent of \(z_{k+1},\ldots,z_n\). The ring \(\mathcal O_n\) is an integral domain: if \(fg=0\) with \(f\neq0\), then \(f\) does not vanish on some nonempty open set near \(0\), so \(g\) vanishes there and \(g=0\) by the identity theorem Holomorphic functions of several variables, Theorem 2.3.
+The last equality holds because a germ with \(f(0)=0\) can be written \(f=\sum_j z_jf_j\), grouping the terms of its power series by the first variable that occurs in them. For \(k\leq n\) we regard \(\mathcal O_k=\mathbf C\{z_1,\ldots,z_k\}\) as the subring of germs independent of \(z_{k+1},\ldots,z_n\). The ring \(\mathcal O_n\) is an integral domain: if \(fg=0\) with \(f\neq0\), then \(f\) does not vanish on some nonempty open set near \(0\), so \(g\) vanishes there and \(g=0\) by the identity theorem [Holomorphic functions of several variables, Theorem 2.3](holomorphic-functions-of-several-variables.md#2-power-series-and-the-regularity-of-holomorphic-functions).
 
 **Proposition 1.1.** \(\mathcal O_n\) is a regular local ring of Krull dimension \(n\). The classes of \(z_1,\ldots,z_n\) form a basis of \(\mathfrak m_n/\mathfrak m_n^2\).
 
@@ -41,7 +41,7 @@ equivalently a monic element of \(\mathcal O_{n-1}[z_n]\) with \(P(0,z_n)=z_n^s\
 
 **Proof.** This is proved in [Complex analytic spaces and analytification, Section 2](course:AG-QC/complex-analytic-spaces-and-analytification#2-local-analytic-algebra), by C. L. Siegel's contour integral argument. \(\square\)
 
-By Holomorphic functions of several variables, Lemma 4.1, every nonzero germ becomes regular in \(z_n\) after a linear change of coordinates, and the admissible directions form a dense open set. We record the order of the coefficients.
+By [Holomorphic functions of several variables, Lemma 4.1](holomorphic-functions-of-several-variables.md#4-the-riemann-extension-theorem), every nonzero germ becomes regular in \(z_n\) after a linear change of coordinates, and the admissible directions form a dense open set. We record the order of the coefficients.
 
 **Proposition 2.2.** Let \(g\in\mathcal O_n\) vanish to order exactly \(m\) at \(0\), with lowest homogeneous part \(g_m\), and suppose \(g_m(0,\ldots,0,1)\neq0\). Then \(g\) is regular of order \(m\) in \(z_n\), and its Weierstrass polynomial \(z_n^m+\sum_ka_k(z')z_n^{m-k}\) has \(a_k\) vanishing to order at least \(k\) at \(0\).
 

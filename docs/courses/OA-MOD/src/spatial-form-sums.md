@@ -1,6 +1,6 @@
 # Adding spatial energies and changing the reference weight
 
-**Self-checked by the writing AI.**
+
 
 Adding the coefficient energies of two weights is immediate on bounded vectors. Identifying the resulting closed form requires more: those vectors must approximate the joint energy domain. This unit proves a simultaneous approximation theorem and uses it to obtain arbitrary sums, increasing limits and bounded changes of weights, with every finite-energy domain specified.
 

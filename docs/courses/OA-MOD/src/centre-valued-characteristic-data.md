@@ -262,4 +262,4 @@ This example proves that the inner subgroup and bare characteristic coefficients
 
 T. Masuda, [Unified approach to classification of actions of discrete amenable groups on injective factors](https://arxiv.org/abs/1006.1176), Section 2, formulates the module and characteristic data and the analytic classification theorem. The proofs here establish the algebraic construction, extension interpretation and necessary invariant comparison for the stated commuting actions. They do not use the classification theorem as a proof input.
 
-*Original exposition and editable figure: OpenAI GPT-6 Astra, Ultra, October 2026. Checked by the same model; no independent review is claimed. New text and figure: CC0-1.0.*
+*Original exposition and editable figure: OpenAI GPT-6 Astra, Ultra, October 2026. New text and figure: CC0-1.0.*

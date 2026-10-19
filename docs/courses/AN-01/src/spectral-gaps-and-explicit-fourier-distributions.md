@@ -1,6 +1,6 @@
 # Spectral gaps and explicit Fourier distributions
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 A Fourier derivative equation can lose a point mass at zero. We calculate complete distributions, keeping the masses, their derivatives and the precise finite parts. We then prove the norm identities used in the examples and construct the unique bounded primitive with no frequency near zero.
 

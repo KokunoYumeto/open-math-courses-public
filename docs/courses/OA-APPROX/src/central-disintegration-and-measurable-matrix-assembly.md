@@ -4,7 +4,7 @@
 
 Finite-dimensional approximation is the goal. We assemble bounded matrix models from countably many measurable candidate tuples, repair them inside central pieces, and retain finitely many pieces with a controlled trace tail. We then construct the countable candidates, establish the required factor models by stabilization, and build the central tracial field from its Gram data.
 
-Throughout this lesson \(M\) is finite with separable predual and faithful normal tracial state \(\tau\). Write \(Z=Z(M)\), and let \(T:M\to Z\) be its normalized faithful normal center-valued trace. Thus \(\tau=\tau|_Z\circ T\). We use the selected trace and projection inputs of [Hypertraces and finite injectivity](hypertraces-finite-injectivity.md), the [properly infinite theorem](properly-infinite-injective-algebras-and-dyadic-approximation.md#theorem-4-2), the [finite injective-factor theorem](unitary-couplings-and-finite-injective-factors.md#theorem-5-1), and Gram repair.
+Throughout this lesson \(M\) is finite with separable predual and faithful normal tracial state \(\tau\). Write \(Z=Z(M)\), and let \(T:M\to Z\) be its normalized faithful normal center-valued trace. Thus \(\tau=\tau|_Z\circ T\). We use the selected trace and projection inputs of [Hypertraces and finite injectivity](hypertraces-finite-injectivity.md), the [properly infinite theorem](properly-infinite-injective-algebras-and-dyadic-approximation.md#theorem-4-2), the [finite injective-factor theorem](unitary-couplings-and-finite-injective-factors.md#theorem-5-1), and [Gram repair](repairing-small-matrix-corners.md#theorem-2-1).
 
 The full field constructions used here are [Countably generated measurable fields and their algebras](../components/countable-measurable-fields.md), MF1–9. They construct a measurable field from countable Gram data, its Hilbert direct integral and localization, measurable operator fields and the diagonal commutant. Compact metric selections for the supported operator commutant give the countable generators needed for the algebra, center and fixed-base uniqueness formulas. MF9 proves the tensor-field identity. The base here is a probability space, and all Hilbert fibers are separable. Our inner products are linear in the second variable.
 
@@ -22,7 +22,7 @@ The central field, the norm separable algebra \(A\), and the fiber traces used i
 \tag{10}
 \]
 
-**An explicit Gram budget.** Use the modulus supplied by the complete simultaneous Gram-normalization proof. For the fixed \(0<\varepsilon<1\) and every integer \(m\ge1\), choose a positive rational number with
+**An explicit Gram budget.** Use the modulus supplied by the complete [simultaneous Gram-normalization proof](repairing-small-matrix-corners.md#simultaneous-gram-normalization). For the fixed \(0<\varepsilon<1\) and every integer \(m\ge1\), choose a positive rational number with
 \[
 0<b(m)<\frac{\varepsilon^2}{512m^6},
 \qquad

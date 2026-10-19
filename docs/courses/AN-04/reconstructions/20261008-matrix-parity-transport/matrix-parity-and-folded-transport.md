@@ -180,7 +180,7 @@ When \(N=M\) and the permitted value at the marked point is invertible, continui
 
 ## 6. Ordered gauge and the boundary equations
 
-**T0. The geometric transport setting.** Let \(P\) be a smooth manifold carrying a nonvanishing vector field \(X\), and let \(K\subset P\) be a hypersurface. Assume a local characteristic quotient \(\pi:P\to Z\) is given: in a smooth flow box it is projection onto the coordinates constant along \(X\). Suppose \(\pi|_K\) is a fold, its sheet exchange is \(J\), and \(K\) also carries a second fold exchange \(I\) with the same fixed set and a distinct reflection line. The normal form (MP1) is taken on \(K\). These are the precise hypotheses needed below. The glancing pair theorem proves them for the characteristic and boundary quotients of the strict glancing model and its canonical images.
+**T0. The geometric transport setting.** Let \(P\) be a smooth manifold carrying a nonvanishing vector field \(X\), and let \(K\subset P\) be a hypersurface. Assume a local characteristic quotient \(\pi:P\to Z\) is given: in a smooth flow box it is projection onto the coordinates constant along \(X\). Suppose \(\pi|_K\) is a fold, its sheet exchange is \(J\), and \(K\) also carries a second fold exchange \(I\) with the same fixed set and a distinct reflection line. The normal form (MP1) is taken on \(K\). These are the precise hypotheses needed below. The [glancing pair theorem](../20261008-glancing-hypersurface-pair/homogeneous-glancing-pairs-and-boundary-signs.md) proves them for the characteristic and boundary quotients of the strict glancing model and its canonical images.
 
 For arbitrary smooth \(N\)-by-\(N\) matrices \(G\) and smooth \(N\)-by-\(M\) data \(F\) on \(P\), consider
 

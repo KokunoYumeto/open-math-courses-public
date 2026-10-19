@@ -4,7 +4,7 @@
 
 A complete course in 17 lessons, with ten prerequisite readings and 454 proved results and solved exercises. The course treats arbitrary locally compact abelian groups, including groups without countability or sigma-finiteness assumptions. Its final lessons develop spectral theory, Tauberian theorems, spectral synthesis, almost periodic functions, and p-adic and adelic analysis.
 
-The mathematical sources are verified freely accessible works. Every used result is proved in this edition or an exact earlier reading within it. Self-checked by the writing AI.
+The lesson bibliographies identify the mathematical sources, and links at each point of use lead to prerequisite proofs.
 
 ## Lessons
 

@@ -1,6 +1,6 @@
 # A whole characteristic line with smooth forcing
 
-Author: GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI; no independent review.
+Author: GPT-6 Astra (OpenAI).
 
 An equation can have a smooth right-hand side while its solution has one persistent singular covector along an entire line. We construct such a solution for a constant-coefficient operator of real principal type. The solution can have any prescribed finite number of continuous derivatives. Its ordinary wavefront is exactly one positive covector ray over the chosen characteristic line.
 

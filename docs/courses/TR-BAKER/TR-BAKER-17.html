@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class numbers I: products of L-functions and a limit formula · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-17.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 17 of 21</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="class-numbers-i-products-of-l-functions-and-a-limit-formula">Class numbers I: products of L-functions and a limit formula</h1>
+<p><em>Written by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026.
+Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The class number measures how far unique ideal factorization is from
+unique factorization of elements. For imaginary quadratic fields, it
+also counts classes of positive definite binary quadratic forms.
+The aim here is to express a product of two Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-values
+as a finite leading term plus an explicitly bounded Fourier series.
+That expression is the analytic preparation for the class number
+one argument in the next lesson.</p>
+<p>Gauss's discussion in Article 303 of the <em>Disquisitiones</em> led to
+the finiteness question for a prescribed class number; the distinction
+between his form conventions and modern fundamental discriminants
+is explained by <a href="https://people.mpim-bonn.mpg.de/zagier/files/scanned/LseriesBSDandClassNumberGauss/fulltext.pdf">Zagier</a>.
+Heilbronn's 1934 work established growth of imaginary quadratic class
+numbers. Siegel's lower bound and the Brauer–Siegel asymptotic
+<span class="math" data-tex="\(\log h(D)\sim\tfrac12\log|D|\)">\(\log h(D)\sim\tfrac12\log|D|\)</span> describe that growth but do not,
+in their classical ineffective form, supply a computable last
+discriminant of a specified class number. Heegner's 1952 work,
+Baker's 1966 argument and Stark's 1967 resolution are the principal
+milestones for class number one. These historical points are
+discussed in <a href="https://www.math.tau.ac.il/~rudnick/courses/analytic%20number%20theory%202022/Lecture_10:The_class_number_one_problem.pdf">Rudnick's notes</a>
+and <a href="https://webusers.imj-prg.fr/~marc.hindry/Notes_rev_Brasilia.pdf">Hindry's lectures</a>.
+The asymptotic results are background, not inputs to the proofs below.</p>
+<p>The proof has four steps: count representations by ideals, multiply
+Dirichlet series, compute Fourier coefficients with fixed
+normalizations, and take the limit at one with a uniform remainder.
+The exceptional unit counts at discriminants <span class="math" data-tex="\(-3,-4\)">\(-3,-4\)</span> enter the
+first step. The cancellation of the zero Fourier coefficient when
+<span class="math" data-tex="\(k\)">\(k\)</span> has two prime factors enters the last.</p>
+<h2 id="1-from-ideal-classes-to-quadratic-forms">1. From ideal classes to quadratic forms</h2>
+<p>Let <span class="math" data-tex="\(D=-d&lt;0\)">\(D=-d&lt;0\)</span> be a fundamental discriminant and put
+<span class="math" data-tex="\(K=\mathbb Q(\sqrt D)\)">\(K=\mathbb Q(\sqrt D)\)</span>. Fundamental is essential: it means that
+<span class="math" data-tex="\(D\)">\(D\)</span> is the discriminant of the full ring of integers. It does not
+mean that <span class="math" data-tex="\(D\)">\(D\)</span> is always squarefree. For example, the field
+<span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span> has discriminant <span class="math" data-tex="\(-4\)">\(-4\)</span>.</p>
+<p>We use the ideal–form correspondence, reduction theorem and genus
+theorem proved in <a href="../NT-ANT/quadratic-fields-ideal-classes-and-binary-quadratic-forms.html"><em>Quadratic fields: ideal classes and binary
+quadratic forms</em></a>, Theorems 10.1, 10.2 and 10.6 of the algebraic
+number theory course. The quadratic characters are those of
+<a href="../NT-DIRL/NT-DIRL-01.html#4-real-characters-and-quadratic-discriminants"><em>Dirichlet characters</em>, Theorem 4.1</a> of the Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions
+course. These are programme proof inputs.</p>
+<p>A form in this lesson is a primitive positive definite integral form
+<span class="math math-display" data-tex="\[
+ f(x,y)=ax^2+bxy+cy^2,\qquad b^2-4ac=-d.
+ \tag{17.1}
+\]">\[
+ f(x,y)=ax^2+bxy+cy^2,\qquad b^2-4ac=-d.
+ \tag{17.1}
+\]</span>
+Proper equivalence uses integral substitutions of determinant one.
+Choose a set <span class="math" data-tex="\(\mathcal F_D\)">\(\mathcal F_D\)</span> containing one form in each proper
+class. Its cardinality is the ideal class number <span class="math" data-tex="\(h(D)\)">\(h(D)\)</span>.
+For computation we take the unique reduced representative, with
+<span class="math math-display" data-tex="\[
+ |b|\le a\le c,\qquad
+ b\ge0\ \text{when }|b|=a\text{ or }a=c.
+ \tag{17.2}
+\]">\[
+ |b|\le a\le c,\qquad
+ b\ge0\ \text{when }|b|=a\text{ or }a=c.
+ \tag{17.2}
+\]</span>
+The inequalities give <span class="math" data-tex="\(d=4ac-b^2\ge3a^2\)">\(d=4ac-b^2\ge3a^2\)</span>, so
+<span class="math" data-tex="\(1\le a\le\sqrt{d/3}\)">\(1\le a\le\sqrt{d/3}\)</span>. Once <span class="math" data-tex="\(a,b\)">\(a,b\)</span> have been chosen,
+<span class="math" data-tex="\(c=(b^2+d)/(4a)\)">\(c=(b^2+d)/(4a)\)</span>; checking integrality, primitivity and (17.2)
+is a finite enumeration.</p>
+<p><strong>Proposition 17.1 (the genus restriction).</strong> If <span class="math" data-tex="\(d&gt;8\)">\(d&gt;8\)</span> and
+<span class="math" data-tex="\(h(-d)=1\)">\(h(-d)=1\)</span>, then <span class="math" data-tex="\(d\)">\(d\)</span> is a prime congruent to <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>.</p>
+<p><strong>Proof.</strong> Write the fundamental discriminant as the product of its
+<span class="math" data-tex="\(t\)">\(t\)</span> prime discriminants. The programme genus theorem identifies
+the quotient of the form class group by its squares with a group
+of order <span class="math" data-tex="\(2^{t-1}\)">\(2^{t-1}\)</span>. A trivial class group therefore has <span class="math" data-tex="\(t=1\)">\(t=1\)</span>.
+The negative prime discriminants are <span class="math" data-tex="\(-4,-8\)">\(-4,-8\)</span>, and <span class="math" data-tex="\(-p\)">\(-p\)</span> for
+odd primes <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>. The assumption <span class="math" data-tex="\(d&gt;8\)">\(d&gt;8\)</span> excludes
+the two dyadic cases, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is a restriction on a possible discriminant, not a bound on its
+size. The analytic argument will supply a further restriction.</p>
+<p>The unit count is
+<span class="math math-display" data-tex="\[
+ w_D=|\mathcal O_K^\times|=
+ \begin{cases}
+ 6,&amp;D=-3,\\
+ 4,&amp;D=-4,\\
+ 2,&amp;D&lt;-4.
+ \end{cases}
+ \tag{17.3}
+\]">\[
+ w_D=|\mathcal O_K^\times|=
+ \begin{cases}
+ 6,&amp;D=-3,\\
+ 4,&amp;D=-4,\\
+ 2,&amp;D&lt;-4.
+ \end{cases}
+ \tag{17.3}
+\]</span>
+Indeed an imaginary quadratic unit has positive norm one. Write
+an algebraic integer as <span class="math" data-tex="\((u+v\sqrt{-d})/2\)">\((u+v\sqrt{-d})/2\)</span>, with the parity
+conditions prescribed by the integral basis. Its norm equation is
+<span class="math" data-tex="\(u^2+dv^2=4\)">\(u^2+dv^2=4\)</span>. For <span class="math" data-tex="\(d&gt;4\)">\(d&gt;4\)</span> it forces <span class="math" data-tex="\(v=0,u=\pm2\)">\(v=0,u=\pm2\)</span>.
+For <span class="math" data-tex="\(d=3\)">\(d=3\)</span> there are in addition <span class="math" data-tex="\(u=\pm1,v=\pm1\)">\(u=\pm1,v=\pm1\)</span>;
+for <span class="math" data-tex="\(d=4\)">\(d=4\)</span> the two additional solutions are <span class="math" data-tex="\(u=0,v=\pm1\)">\(u=0,v=\pm1\)</span>.
+They all satisfy the required parity conditions, giving (17.3).</p>
+<h2 id="2-representations-count-ideals">2. Representations count ideals</h2>
+<p>Let <span class="math" data-tex="\(r_D(n)\)">\(r_D(n)\)</span> count all pairs representing <span class="math" data-tex="\(n\)">\(n\)</span>, summed over
+<span class="math" data-tex="\(\mathcal F_D\)">\(\mathcal F_D\)</span>. The pairs need not have coprime coordinates:
+<span class="math math-display" data-tex="\[
+ r_D(n)=\sum_{f\in\mathcal F_D}
+        \#\{(x,y)\in\mathbb Z^2:f(x,y)=n\},\qquad n\ge1.
+ \tag{17.4}
+\]">\[
+ r_D(n)=\sum_{f\in\mathcal F_D}
+        \#\{(x,y)\in\mathbb Z^2:f(x,y)=n\},\qquad n\ge1.
+ \tag{17.4}
+\]</span>
+Changing a form by a determinant-one substitution permutes its
+integral pairs, so this count is independent of the chosen representatives.</p>
+<p><strong>Lemma 17.2 (representation identity).</strong> For every positive integer,
+<span class="math math-display" data-tex="\[
+ r_D(n)=w_D\sum_{m\mid n}\chi_D(m),
+ \qquad \chi_D(m)=\left(\frac Dm\right).
+ \tag{17.5}
+\]">\[
+ r_D(n)=w_D\sum_{m\mid n}\chi_D(m),
+ \qquad \chi_D(m)=\left(\frac Dm\right).
+ \tag{17.5}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(f=(a,b,c)\)">\(f=(a,b,c)\)</span>, the ideal–form correspondence uses
+<span class="math math-display" data-tex="\[
+ I_f=\mathbb Za+\mathbb Z\frac{-b+\sqrt D}{2},\qquad NI_f=a.
+ \tag{17.6}
+\]">\[
+ I_f=\mathbb Za+\mathbb Z\frac{-b+\sqrt D}{2},\qquad NI_f=a.
+ \tag{17.6}
+\]</span>
+If <span class="math" data-tex="\(\beta=(-b+\sqrt D)/2\)">\(\beta=(-b+\sqrt D)/2\)</span>, then
+<span class="math math-display" data-tex="\[
+ N(ax-\beta y)=a f(x,y).
+ \tag{17.7}
+\]">\[
+ N(ax-\beta y)=a f(x,y).
+ \tag{17.7}
+\]</span>
+Thus a representing pair determines the integral ideal
+<span class="math" data-tex="\(\mathfrak a=(ax-\beta y)I_f^{-1}\)">\(\mathfrak a=(ax-\beta y)I_f^{-1}\)</span>, of norm <span class="math" data-tex="\(n\)">\(n\)</span>, in the
+class <span class="math" data-tex="\([I_f]^{-1}\)">\([I_f]^{-1}\)</span>.
+It is integral because <span class="math" data-tex="\(ax-\beta y\in I_f\)">\(ax-\beta y\in I_f\)</span>.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> is an integral ideal of norm
+<span class="math" data-tex="\(n\)">\(n\)</span> in this inverse class. Then <span class="math" data-tex="\(\mathfrak a I_f=(z)\)">\(\mathfrak a I_f=(z)\)</span>.
+Since <span class="math" data-tex="\(\mathfrak a I_f\subseteq I_f\)">\(\mathfrak a I_f\subseteq I_f\)</span>, its generator <span class="math" data-tex="\(z\)">\(z\)</span>
+belongs to <span class="math" data-tex="\(I_f\)">\(I_f\)</span>, and has a unique expression <span class="math" data-tex="\(ax-\beta y\)">\(ax-\beta y\)</span>
+with integral <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The norm scaling law gives <span class="math" data-tex="\(f(x,y)=n\)">\(f(x,y)=n\)</span>.
+All generators of the same principal ideal are exactly its unit
+multiples. They give precisely <span class="math" data-tex="\(w_D\)">\(w_D\)</span> different pairs: multiplication
+of a nonzero element by distinct units is free. Every ideal class is
+an inverse class of exactly one form in <span class="math" data-tex="\(\mathcal F_D\)">\(\mathcal F_D\)</span>.
+Consequently <span class="math" data-tex="\(r_D(n)/w_D\)">\(r_D(n)/w_D\)</span> is the number of integral ideals of norm <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>We compute that number prime by prime. The quadratic splitting law
+gives two primes of norm <span class="math" data-tex="\(p\)">\(p\)</span> when <span class="math" data-tex="\(\chi_D(p)=1\)">\(\chi_D(p)=1\)</span>, one prime of
+norm <span class="math" data-tex="\(p^2\)">\(p^2\)</span> when <span class="math" data-tex="\(\chi_D(p)=-1\)">\(\chi_D(p)=-1\)</span>, and one ramified prime of norm
+<span class="math" data-tex="\(p\)">\(p\)</span> when <span class="math" data-tex="\(\chi_D(p)=0\)">\(\chi_D(p)=0\)</span>. This law follows by factoring the
+integral-basis quadratic polynomial modulo <span class="math" data-tex="\(p\)">\(p\)</span>, using the
+factorization theorem in <a href="../NT-ANT/decomposition-of-primes-in-extensions.html#reading-primes-from-a-polynomial"><em>Decomposition of primes in extensions</em>,
+Theorem 5.3</a>:
+the integral basis has index one, so no exceptional index primes
+are discarded. At an odd unramified prime the polynomial has two
+roots exactly when <span class="math" data-tex="\(D\)">\(D\)</span> is a square; at two and <span class="math" data-tex="\(D\)">\(D\)</span> odd it is
+<span class="math" data-tex="\(T^2-T+(1-D)/4\)">\(T^2-T+(1-D)/4\)</span>, which splits for <span class="math" data-tex="\(D\equiv1\pmod8\)">\(D\equiv1\pmod8\)</span> and is
+irreducible for <span class="math" data-tex="\(D\equiv5\pmod8\)">\(D\equiv5\pmod8\)</span>. At a prime dividing <span class="math" data-tex="\(D\)">\(D\)</span>
+it has a repeated linear factor.</p>
+<p>Unique ideal factorization therefore gives the following number of
+ideals of norm <span class="math" data-tex="\(p^e\)">\(p^e\)</span>:
+<span class="math math-display" data-tex="\[
+ \begin{cases}
+ e+1,&amp;\chi_D(p)=1,\\
+ 1\ \text{if }e\text{ is even, and }0\ \text{if }e\text{ is odd},
+       &amp;\chi_D(p)=-1,\\
+ 1,&amp;\chi_D(p)=0.
+ \end{cases}
+ \quad=\sum_{j=0}^{e}\chi_D(p)^j.
+ \tag{17.8}
+\]">\[
+ \begin{cases}
+ e+1,&amp;\chi_D(p)=1,\\
+ 1\ \text{if }e\text{ is even, and }0\ \text{if }e\text{ is odd},
+       &amp;\chi_D(p)=-1,\\
+ 1,&amp;\chi_D(p)=0.
+ \end{cases}
+ \quad=\sum_{j=0}^{e}\chi_D(p)^j.
+ \tag{17.8}
+\]</span>
+Here the term at <span class="math" data-tex="\(j=0\)">\(j=0\)</span> is one, also in the ramified case.
+The counts multiply for distinct rational primes. Multiplying
+(17.8) over the factorization of <span class="math" data-tex="\(n\)">\(n\)</span> proves (17.5).
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exceptional unit counts explain why a universal factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>
+would be wrong at discriminants <span class="math" data-tex="\(-3\)">\(-3\)</span> and <span class="math" data-tex="\(-4\)">\(-4\)</span>. No primitiveness
+restriction on the representing vectors is introduced in (17.5).</p>
+<h2 id="3-the-product-of-two-l-functions">3. The product of two <span class="math" data-tex="\(L\)">\(L\)</span>-functions</h2>
+<p>For a Dirichlet character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, put
+<span class="math" data-tex="\(L(s,\chi)=\sum_{n\ge1}\chi(n)n^{-s}\)">\(L(s,\chi)=\sum_{n\ge1}\chi(n)n^{-s}\)</span> in the half-plane
+<span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>.</p>
+<p><strong>Theorem 17.3 (the twisted form identity).</strong> Let <span class="math" data-tex="\(D&lt;0\)">\(D&lt;0\)</span> be a
+fundamental discriminant and let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be any Dirichlet character.
+For <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+ L(s,\chi)L(s,\chi\chi_D)
+ =\frac1{w_D}\sum_{f\in\mathcal F_D}
+   \sum_{\substack{(x,y)\in\mathbb Z^2\\(x,y)\ne(0,0)}}
+          \frac{\chi(f(x,y))}{f(x,y)^s}.
+ \tag{17.9}
+\]">\[
+ L(s,\chi)L(s,\chi\chi_D)
+ =\frac1{w_D}\sum_{f\in\mathcal F_D}
+   \sum_{\substack{(x,y)\in\mathbb Z^2\\(x,y)\ne(0,0)}}
+          \frac{\chi(f(x,y))}{f(x,y)^s}.
+ \tag{17.9}
+\]</span>
+The product character may be viewed modulo the least common multiple
+of the two moduli. In particular, if <span class="math" data-tex="\(D=-d&lt;-4\)">\(D=-d&lt;-4\)</span>, <span class="math" data-tex="\(k&gt;1\)">\(k&gt;1\)</span> is a
+positive fundamental discriminant coprime to <span class="math" data-tex="\(d\)">\(d\)</span>, and
+<span class="math" data-tex="\(\chi=\chi_k\)">\(\chi=\chi_k\)</span>, the coefficient on the right is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p><strong>Proof.</strong> Absolute convergence permits multiplying the two series.
+Complete multiplicativity, including zero values, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ L(s,\chi)L(s,\chi\chi_D)
+ &amp;=\sum_{u,v\ge1}\frac{\chi(u)\chi(v)\chi_D(v)}{(uv)^s}\\
+ &amp;=\sum_{n\ge1}\frac{\chi(n)}{n^s}\sum_{v\mid n}\chi_D(v)\\
+ &amp;=\frac1{w_D}\sum_{n\ge1}\frac{\chi(n)r_D(n)}{n^s}.
+ \end{aligned}
+ \tag{17.10}
+\]">\[
+ \begin{aligned}
+ L(s,\chi)L(s,\chi\chi_D)
+ &amp;=\sum_{u,v\ge1}\frac{\chi(u)\chi(v)\chi_D(v)}{(uv)^s}\\
+ &amp;=\sum_{n\ge1}\frac{\chi(n)}{n^s}\sum_{v\mid n}\chi_D(v)\\
+ &amp;=\frac1{w_D}\sum_{n\ge1}\frac{\chi(n)r_D(n)}{n^s}.
+ \end{aligned}
+ \tag{17.10}
+\]</span>
+The last equality is Lemma 17.2. Grouping representations according
+to their positive value <span class="math" data-tex="\(n\)">\(n\)</span> yields (17.9). This regrouping is also
+absolutely convergent: the ideal count in (17.5) is at most the
+divisor count, and
+<span class="math" data-tex="\(\sum_{n\ge1}(\sum_{v\mid n}1)n^{-\sigma}=\zeta(\sigma)^2&lt;\infty\)">\(\sum_{n\ge1}(\sum_{v\mid n}1)n^{-\sigma}=\zeta(\sigma)^2&lt;\infty\)</span>
+for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the limit calculation assume <span class="math" data-tex="\(D=-d&lt;-4\)">\(D=-d&lt;-4\)</span>, <span class="math" data-tex="\(k&gt;1\)">\(k&gt;1\)</span> is an odd
+positive fundamental discriminant, and <span class="math" data-tex="\(\gcd(k,d)=1\)">\(\gcd(k,d)=1\)</span>.
+Then <span class="math" data-tex="\(k\)">\(k\)</span> is squarefree, <span class="math" data-tex="\(k\equiv1\pmod4\)">\(k\equiv1\pmod4\)</span>, and quadratic
+reciprocity identifies <span class="math" data-tex="\(\chi_k(j)\)">\(\chi_k(j)\)</span> with the Jacobi symbol
+<span class="math" data-tex="\((j/k)\)">\((j/k)\)</span>, including when a prime of <span class="math" data-tex="\(k\)">\(k\)</span> divides <span class="math" data-tex="\(j\)">\(j\)</span>.
+Separating <span class="math" data-tex="\(y=0\)">\(y=0\)</span> and pairing <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> with <span class="math" data-tex="\((-x,-y)\)">\((-x,-y)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ L(s,\chi_k)L(s,\chi_k\chi_D)
+ &amp;=\zeta(2s)\prod_{p\mid k}(1-p^{-2s})
+                \sum_{f=(a,b,c)\in\mathcal F_D}\frac{\chi_k(a)}{a^s}\\
+ &amp;\quad+\sum_{f\in\mathcal F_D}\sum_{y\ge1}\sum_{x\in\mathbb Z}
+           \chi_k(f(x,y))\,f(x,y)^{-s}.
+ \end{aligned}
+ \tag{17.11}
+\]">\[
+ \begin{aligned}
+ L(s,\chi_k)L(s,\chi_k\chi_D)
+ &amp;=\zeta(2s)\prod_{p\mid k}(1-p^{-2s})
+                \sum_{f=(a,b,c)\in\mathcal F_D}\frac{\chi_k(a)}{a^s}\\
+ &amp;\quad+\sum_{f\in\mathcal F_D}\sum_{y\ge1}\sum_{x\in\mathbb Z}
+           \chi_k(f(x,y))\,f(x,y)^{-s}.
+ \end{aligned}
+ \tag{17.11}
+\]</span>
+Indeed <span class="math" data-tex="\(\chi_k(x^2)\)">\(\chi_k(x^2)\)</span> is one for <span class="math" data-tex="\(\gcd(x,k)=1\)">\(\gcd(x,k)=1\)</span>, and zero
+otherwise. Removing the multiples of primes of <span class="math" data-tex="\(k\)">\(k\)</span> from
+<span class="math" data-tex="\(\sum x^{-2s}\)">\(\sum x^{-2s}\)</span> gives the displayed finite Euler factor.</p>
+<h2 id="4-the-finite-sum-that-controls-the-constant-term">4. The finite sum that controls the constant term</h2>
+<p>Write <span class="math" data-tex="\(e(t)=\exp(2\pi it)\)">\(e(t)=\exp(2\pi it)\)</span>. The following identity includes the
+case when a leading coefficient shares a prime with <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Lemma 17.4.</strong> Suppose <span class="math" data-tex="\(k\)">\(k\)</span> is odd and squarefree,
+<span class="math" data-tex="\(\gcd(k,d)=1\)">\(\gcd(k,d)=1\)</span>, and <span class="math" data-tex="\(f=(a,b,c)\)">\(f=(a,b,c)\)</span> has discriminant <span class="math" data-tex="\(-d\)">\(-d\)</span>.
+For the Jacobi character <span class="math" data-tex="\(\chi(j)=(j/k)\)">\(\chi(j)=(j/k)\)</span> and every integer <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{j\bmod k}\chi(f(j,y))
+ =\chi(a)\sum_{\substack{j\bmod k\\\gcd(j,k)=1}}e(jy/k)
+ =\chi(a)\prod_{p\mid k}
+       \begin{cases}p-1,&amp;p\mid y,\\-1,&amp;p\nmid y.\end{cases}
+ \tag{17.12}
+\]">\[
+ \sum_{j\bmod k}\chi(f(j,y))
+ =\chi(a)\sum_{\substack{j\bmod k\\\gcd(j,k)=1}}e(jy/k)
+ =\chi(a)\prod_{p\mid k}
+       \begin{cases}p-1,&amp;p\mid y,\\-1,&amp;p\nmid y.\end{cases}
+ \tag{17.12}
+\]</span>
+For a positive fundamental <span class="math" data-tex="\(k\)">\(k\)</span>, this is the identity for <span class="math" data-tex="\(\chi_k\)">\(\chi_k\)</span>.</p>
+<p><strong>Proof.</strong> First take an odd prime <span class="math" data-tex="\(p\mid k\)">\(p\mid k\)</span>, and write
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for its Legendre character.
+If <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span>, the nonzero discriminant modulo <span class="math" data-tex="\(p\)">\(p\)</span> forces
+<span class="math" data-tex="\(p\nmid b\)">\(p\nmid b\)</span>. For <span class="math" data-tex="\(y\not\equiv0\pmod p\)">\(y\not\equiv0\pmod p\)</span>, the expression
+<span class="math" data-tex="\(bjy+cy^2\)">\(bjy+cy^2\)</span> runs once over the field as <span class="math" data-tex="\(j\)">\(j\)</span> varies; the sum of
+<span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> over the field is zero. This sum vanishes because
+multiplication by a nonsquare permutes the field and negates the
+character. For <span class="math" data-tex="\(y\equiv0\)">\(y\equiv0\)</span>, all the arguments are zero.
+In either case the answer is zero, agreeing with <span class="math" data-tex="\(\lambda(a)=0\)">\(\lambda(a)=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>, completing the square and changing the summation
+variable gives
+<span class="math math-display" data-tex="\[
+ \sum_{j\bmod p}\lambda(aj^2+bjy+cy^2)
+ =\lambda(a)\sum_{z\bmod p}
+          \lambda\left(z^2-\frac{(b^2-4ac)y^2}{4a^2}\right).
+ \tag{17.13}
+\]">\[
+ \sum_{j\bmod p}\lambda(aj^2+bjy+cy^2)
+ =\lambda(a)\sum_{z\bmod p}
+          \lambda\left(z^2-\frac{(b^2-4ac)y^2}{4a^2}\right).
+ \tag{17.13}
+\]</span>
+When <span class="math" data-tex="\(p\mid y\)">\(p\mid y\)</span>, the last sum is <span class="math" data-tex="\(p-1\)">\(p-1\)</span>.
+Otherwise its subtracted constant <span class="math" data-tex="\(t\)">\(t\)</span> is nonzero. Count the pairs
+<span class="math" data-tex="\((z,u)\)">\((z,u)\)</span> satisfying <span class="math" data-tex="\(u^2=z^2-t\)">\(u^2=z^2-t\)</span>.
+The number is <span class="math" data-tex="\(p+\sum_z\lambda(z^2-t)\)">\(p+\sum_z\lambda(z^2-t)\)</span>, since a square-root
+equation has <span class="math" data-tex="\(1+\lambda\)">\(1+\lambda\)</span> solutions. On the other hand,
+<span class="math" data-tex="\((z-u)(z+u)=t\)">\((z-u)(z+u)=t\)</span> has exactly <span class="math" data-tex="\(p-1\)">\(p-1\)</span> solutions: choose any nonzero
+first factor, and the second is determined; division by two recovers
+<span class="math" data-tex="\(z,u\)">\(z,u\)</span>. Therefore <span class="math" data-tex="\(\sum_z\lambda(z^2-t)=-1\)">\(\sum_z\lambda(z^2-t)=-1\)</span>.
+This proves the local formula in both cases.</p>
+<p>The Chinese remainder theorem makes the left side of (17.12)
+the product of these local sums. To evaluate the middle expression,
+the same theorem separates the additive character into prime
+components. At each prime it is <span class="math" data-tex="\(e(vjy/p)\)">\(e(vjy/p)\)</span> with <span class="math" data-tex="\(v\)">\(v\)</span> a unit;
+multiplication by <span class="math" data-tex="\(v\)">\(v\)</span> permutes the nonzero residues. Its sum is
+<span class="math" data-tex="\(p-1\)">\(p-1\)</span> when <span class="math" data-tex="\(p\mid y\)">\(p\mid y\)</span>, and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise, because the sum
+over all residues of a nontrivial additive character is zero
+by the finite geometric-series formula. Multiplying the local
+equalities proves (17.12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-fourier-coefficients-with-their-normalizations">5. Fourier coefficients with their normalizations</h2>
+<p>Continue with <span class="math" data-tex="\(D=-d&lt;-4\)">\(D=-d&lt;-4\)</span>, an odd positive fundamental discriminant
+<span class="math" data-tex="\(k&gt;1\)">\(k&gt;1\)</span> coprime to <span class="math" data-tex="\(d\)">\(d\)</span>, and <span class="math" data-tex="\(\chi=\chi_k\)">\(\chi=\chi_k\)</span>. Fix a form
+<span class="math" data-tex="\(f=(a,b,c)\in\mathcal F_D\)">\(f=(a,b,c)\in\mathcal F_D\)</span>, and set
+<span class="math math-display" data-tex="\[
+ \beta_f=\frac{\sqrt d}{2a},\qquad
+ C_f(s)=\frac{a^{-s}\beta_f^{\,1-2s}}{k}.
+ \tag{17.14}
+\]">\[
+ \beta_f=\frac{\sqrt d}{2a},\qquad
+ C_f(s)=\frac{a^{-s}\beta_f^{\,1-2s}}{k}.
+ \tag{17.14}
+\]</span>
+The subscript matters: the Fourier coefficients below depend on the
+form, even when it is suppressed in a classical formula.</p>
+<p>For real <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>, introduce the <span class="math" data-tex="\(k\)">\(k\)</span>-periodic function
+<span class="math math-display" data-tex="\[
+ F_f(v;s)=\sum_{y\ge1}\sum_{x\in\mathbb Z}
+   \frac{\chi(f(x,y))}
+   {\{a(x+vy)^2+a\beta_f^2y^2\}^{s}}.
+ \tag{17.15}
+\]">\[
+ F_f(v;s)=\sum_{y\ge1}\sum_{x\in\mathbb Z}
+   \frac{\chi(f(x,y))}
+   {\{a(x+vy)^2+a\beta_f^2y^2\}^{s}}.
+ \tag{17.15}
+\]</span>
+The character in the numerator is fixed as <span class="math" data-tex="\(v\)">\(v\)</span> varies.
+At <span class="math" data-tex="\(v=b/(2a)\)">\(v=b/(2a)\)</span>, completing the square makes the denominator
+equal to <span class="math" data-tex="\(f(x,y)^s\)">\(f(x,y)^s\)</span>.
+The substitution <span class="math" data-tex="\(x\mapsto x+ky\)">\(x\mapsto x+ky\)</span> proves periodicity, because
+the change of <span class="math" data-tex="\(x\)">\(x\)</span> does not change the numerator modulo <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ I_{f,r}(s)&amp;=\int_{-\infty}^{\infty}
+       (1+u^2)^{-s}\exp(-2\pi ir\beta_fu/k)\,du,\\
+ S_{f,h}(y)&amp;=\sum_{j\bmod k}\chi(f(j,y))e(hj/k).
+ \end{aligned}
+ \tag{17.16}
+\]">\[
+ \begin{aligned}
+ I_{f,r}(s)&amp;=\int_{-\infty}^{\infty}
+       (1+u^2)^{-s}\exp(-2\pi ir\beta_fu/k)\,du,\\
+ S_{f,h}(y)&amp;=\sum_{j\bmod k}\chi(f(j,y))e(hj/k).
+ \end{aligned}
+ \tag{17.16}
+\]</span></p>
+<p><strong>Lemma 17.5 (kernel integrals).</strong> At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>,
+<span class="math math-display" data-tex="\[
+ I_{f,r}(1)=\pi\exp(-2\pi|r|\beta_f/k).
+ \tag{17.17}
+\]">\[
+ I_{f,r}(1)=\pi\exp(-2\pi|r|\beta_f/k).
+ \tag{17.17}
+\]</span>
+For <span class="math" data-tex="\(1\le s\le3/2\)">\(1\le s\le3/2\)</span> and every nonzero integer <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+ |I_{f,r}(s)|\le9\exp(-\pi|r|\beta_f/k).
+ \tag{17.18}
+\]">\[
+ |I_{f,r}(s)|\le9\exp(-\pi|r|\beta_f/k).
+ \tag{17.18}
+\]</span>
+Also <span class="math" data-tex="\(I_{f,0}(s)\longrightarrow\pi\)">\(I_{f,0}(s)\longrightarrow\pi\)</span> as <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>.</p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(r=0,s=1\)">\(r=0,s=1\)</span>, integration of
+<span class="math" data-tex="\((1+u^2)^{-1}\)">\((1+u^2)^{-1}\)</span> gives <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.
+For <span class="math" data-tex="\(\lambda=2\pi r\beta_f/k&gt;0\)">\(\lambda=2\pi r\beta_f/k&gt;0\)</span>, integrate
+<span class="math" data-tex="\(e^{-i\lambda z}/(1+z^2)\)">\(e^{-i\lambda z}/(1+z^2)\)</span> around the lower semicircle.
+The contour has negative orientation and encloses the pole <span class="math" data-tex="\(-i\)">\(-i\)</span>.
+Apply the integral formula in
+<a href="../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html#OA-FND-CT-04"><em>Cauchy's theorem for cycles and its consequences</em>, Theorem 4.2</a>
+to the holomorphic numerator <span class="math" data-tex="\(H(z)=e^{-i\lambda z}/(z-i)\)">\(H(z)=e^{-i\lambda z}/(z-i)\)</span>
+on <span class="math" data-tex="\(\operatorname{Im}z&lt;1/2\)">\(\operatorname{Im}z&lt;1/2\)</span>. The index at <span class="math" data-tex="\(-i\)">\(-i\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>,
+and <span class="math" data-tex="\(H(-i)=e^{-\lambda}/(-2i)\)">\(H(-i)=e^{-\lambda}/(-2i)\)</span>, so the contour integral is
+<span class="math" data-tex="\(-2\pi iH(-i)=\pi e^{-\lambda}\)">\(-2\pi iH(-i)=\pi e^{-\lambda}\)</span>.
+The semicircle contribution tends to zero:
+on it <span class="math" data-tex="\(|e^{-i\lambda z}|\le1\)">\(|e^{-i\lambda z}|\le1\)</span>, while the integral of the
+absolute value is at most <span class="math" data-tex="\(\pi R/(R^2-1)\)">\(\pi R/(R^2-1)\)</span>.
+For <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>, use the upper semicircle and the pole <span class="math" data-tex="\(i\)">\(i\)</span>.
+This proves (17.17).</p>
+<p>For the uniform estimate, use the analytic branch of
+<span class="math" data-tex="\((1+z^2)^{-s}\)">\((1+z^2)^{-s}\)</span> in <span class="math" data-tex="\(|\operatorname{Im}z|&lt;1\)">\(|\operatorname{Im}z|&lt;1\)</span> that is positive
+on the real axis. Explicitly it is
+<span class="math" data-tex="\(\exp[-s\{\log(1+iz)+\log(1-iz)\}]\)">\(\exp[-s\{\log(1+iz)+\log(1-iz)\}]\)</span>, where both logarithms
+are taken in the right half-plane. Cauchy's theorem in the same
+programme result permits the following rectangle deformation.
+For <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, move the real line to
+<span class="math" data-tex="\(\operatorname{Im}z=-1/2\)">\(\operatorname{Im}z=-1/2\)</span>; for <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>, move it to
+<span class="math" data-tex="\(\operatorname{Im}z=1/2\)">\(\operatorname{Im}z=1/2\)</span>. The vertical edges at <span class="math" data-tex="\(\pm R\)">\(\pm R\)</span>
+vanish as <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, since their lengths are bounded and
+the algebraic factor is <span class="math" data-tex="\(O(R^{-2s})\)">\(O(R^{-2s})\)</span>.
+The exponential now contributes <span class="math" data-tex="\(e^{-|\lambda|/2}\)">\(e^{-|\lambda|/2}\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+ |1+(u\pm i/2)^2|\ge u^2+\tfrac34.
+\]">\[
+ |1+(u\pm i/2)^2|\ge u^2+\tfrac34.
+\]</span>
+For <span class="math" data-tex="\(|u|\le2\)">\(|u|\le2\)</span>, the resulting integrand is at most
+<span class="math" data-tex="\((4/3)^{3/2}&lt;2\)">\((4/3)^{3/2}&lt;2\)</span>; for <span class="math" data-tex="\(|u|&gt;2\)">\(|u|&gt;2\)</span>, it is at most <span class="math" data-tex="\(u^{-2}\)">\(u^{-2}\)</span>.
+Its integral is therefore less than <span class="math" data-tex="\(8+1=9\)">\(8+1=9\)</span>.
+This gives (17.18). Finally,
+<span class="math" data-tex="\((1+u^2)^{-s}\le(1+u^2)^{-1}\)">\((1+u^2)^{-s}\le(1+u^2)^{-1}\)</span> for <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>. Outside
+<span class="math" data-tex="\([-M,M]\)">\([-M,M]\)</span> its integral is at most <span class="math" data-tex="\(2/M\)">\(2/M\)</span>, uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>.
+Inside that interval it tends uniformly to <span class="math" data-tex="\((1+u^2)^{-1}\)">\((1+u^2)^{-1}\)</span>.
+First making the tails small, then taking <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>,
+proves the assertion at zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 17.6 (the Fourier coefficients).</strong> For real <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+ F_f(v;s)=\sum_{r\in\mathbb Z}A_{f,r}(s)e(rv/k).
+ \tag{17.19}
+\]">\[
+ F_f(v;s)=\sum_{r\in\mathbb Z}A_{f,r}(s)e(rv/k).
+ \tag{17.19}
+\]</span>
+For <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+ A_{f,r}(s)=C_f(s)I_{f,r}(s)
+       \sum_{\substack{y\ge1\\y\mid |r|}}
+              y^{1-2s}S_{f,r/y}(y),
+ \tag{17.20}
+\]">\[
+ A_{f,r}(s)=C_f(s)I_{f,r}(s)
+       \sum_{\substack{y\ge1\\y\mid |r|}}
+              y^{1-2s}S_{f,r/y}(y),
+ \tag{17.20}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+ A_{f,0}(s)=
+ C_f(s)I_{f,0}(s)\chi(a)\zeta(2s-1)
+             \prod_{p\mid k}(p^{\,2-2s}-1).
+ \tag{17.21}
+\]">\[
+ A_{f,0}(s)=
+ C_f(s)I_{f,0}(s)\chi(a)\zeta(2s-1)
+             \prod_{p\mid k}(p^{\,2-2s}-1).
+ \tag{17.21}
+\]</span>
+The series of the nonzero coefficients is absolutely and uniformly
+convergent for <span class="math" data-tex="\(v\in\mathbb R\)">\(v\in\mathbb R\)</span> and <span class="math" data-tex="\(1\le s\le3/2\)">\(1\le s\le3/2\)</span>, where at
+<span class="math" data-tex="\(s=1\)">\(s=1\)</span> those coefficients are defined by (17.20).</p>
+<p><strong>Proof.</strong> On a compact <span class="math" data-tex="\(v\)">\(v\)</span>-interval, the positive definite
+quadratic expression in (17.15) is bounded below by a fixed
+positive multiple of <span class="math" data-tex="\(x^2+y^2\)">\(x^2+y^2\)</span>. Thus the double series converges
+uniformly there for <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>: pairs with
+<span class="math" data-tex="\(\max\{|x|,y\}=m\)">\(\max\{|x|,y\}=m\)</span> number <span class="math" data-tex="\(O(m)\)">\(O(m)\)</span>, and
+<span class="math" data-tex="\(\sum m^{1-2s}&lt;\infty\)">\(\sum m^{1-2s}&lt;\infty\)</span>.
+This proves continuity and permits integration term by term in
+the Fourier coefficient
+<span class="math math-display" data-tex="\[
+ \frac1k\int_0^kF_f(v;s)e(-rv/k)\,dv.
+ \tag{17.22}
+\]">\[
+ \frac1k\int_0^kF_f(v;s)e(-rv/k)\,dv.
+ \tag{17.22}
+\]</span></p>
+<p>For fixed <span class="math" data-tex="\(y\)">\(y\)</span>, write <span class="math" data-tex="\(x=m+ky\ell\)">\(x=m+ky\ell\)</span>, with <span class="math" data-tex="\(m\bmod ky\)">\(m\bmod ky\)</span>.
+The numerator depends only on <span class="math" data-tex="\(m\)">\(m\)</span>. Substitute <span class="math" data-tex="\(t=v+x/y\)">\(t=v+x/y\)</span>.
+As <span class="math" data-tex="\(\ell\)">\(\ell\)</span> varies, the intervals of integration partition the
+real line. The exponential contributes <span class="math" data-tex="\(e(rm/(ky))e(-rt/k)\)">\(e(rm/(ky))e(-rt/k)\)</span>,
+because <span class="math" data-tex="\(e(r\ell)=1\)">\(e(r\ell)=1\)</span>. The denominator becomes
+<span class="math" data-tex="\(a^sy^{2s}(t^2+\beta_f^2)^s\)">\(a^sy^{2s}(t^2+\beta_f^2)^s\)</span>.
+Scaling <span class="math" data-tex="\(t=\beta_fu\)">\(t=\beta_fu\)</span> therefore yields
+<span class="math math-display" data-tex="\[
+ C_f(s)I_{f,r}(s)\sum_{y\ge1}y^{-2s}
+       \sum_{m\bmod ky}\chi(f(m,y))e(rm/(ky)).
+ \tag{17.23}
+\]">\[
+ C_f(s)I_{f,r}(s)\sum_{y\ge1}y^{-2s}
+       \sum_{m\bmod ky}\chi(f(m,y))e(rm/(ky)).
+ \tag{17.23}
+\]</span>
+Now write <span class="math" data-tex="\(m=j+k\ell\)">\(m=j+k\ell\)</span>, with <span class="math" data-tex="\(j\bmod k\)">\(j\bmod k\)</span> and
+<span class="math" data-tex="\(0\le\ell&lt;y\)">\(0\le\ell&lt;y\)</span>. The inner sum over <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is zero unless
+<span class="math" data-tex="\(y\mid r\)">\(y\mid r\)</span>, in which case it is <span class="math" data-tex="\(y\)">\(y\)</span>. This proves (17.20).
+For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, every <span class="math" data-tex="\(y\)">\(y\)</span> survives and the coefficient is
+<span class="math math-display" data-tex="\[
+ C_f(s)I_{f,0}(s)\sum_{y\ge1}y^{1-2s}S_{f,0}(y).
+ \tag{17.24}
+\]">\[
+ C_f(s)I_{f,0}(s)\sum_{y\ge1}y^{1-2s}S_{f,0}(y).
+ \tag{17.24}
+\]</span></p>
+<p>Lemma 17.4 gives
+<span class="math math-display" data-tex="\[
+ S_{f,0}(y)=\chi(a)\sum_{\substack{t\mid k\\t\mid y}}
+                            t\mu(k/t).
+ \tag{17.25}
+\]">\[
+ S_{f,0}(y)=\chi(a)\sum_{\substack{t\mid k\\t\mid y}}
+                            t\mu(k/t).
+ \tag{17.25}
+\]</span>
+To verify this version directly, its local factor at <span class="math" data-tex="\(p\mid k\)">\(p\mid k\)</span>
+is <span class="math" data-tex="\(p-1\)">\(p-1\)</span> if <span class="math" data-tex="\(p\mid y\)">\(p\mid y\)</span>, and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise, precisely as
+in (17.12). The Möbius function is the one defined in Lesson 16.
+For <span class="math" data-tex="\(z=2s-1&gt;1\)">\(z=2s-1&gt;1\)</span>, summing over the multiples of <span class="math" data-tex="\(t\)">\(t\)</span> gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \sum_{y\ge1}y^{-z}S_{f,0}(y)
+ &amp;=\chi(a)\zeta(z)\sum_{t\mid k}t^{1-z}\mu(k/t)\\
+ &amp;=\chi(a)\zeta(z)\prod_{p\mid k}(p^{1-z}-1).
+ \end{aligned}
+ \tag{17.26}
+\]">\[
+ \begin{aligned}
+ \sum_{y\ge1}y^{-z}S_{f,0}(y)
+ &amp;=\chi(a)\zeta(z)\sum_{t\mid k}t^{1-z}\mu(k/t)\\
+ &amp;=\chi(a)\zeta(z)\prod_{p\mid k}(p^{1-z}-1).
+ \end{aligned}
+ \tag{17.26}
+\]</span>
+All divisor sums here are finite. This proves (17.21), including
+the case <span class="math" data-tex="\(\chi(a)=0\)">\(\chi(a)=0\)</span>.</p>
+<p>For uniform convergence of the nonzero terms, use
+<span class="math" data-tex="\(|S_{f,h}(y)|\le k\)">\(|S_{f,h}(y)|\le k\)</span>, <span class="math" data-tex="\(y^{1-2s}\le1/y\)">\(y^{1-2s}\le1/y\)</span>, and
+<span class="math" data-tex="\(\sum_{y\mid|r|}1/y\le |r|\)">\(\sum_{y\mid|r|}1/y\le |r|\)</span>.
+The continuous positive function <span class="math" data-tex="\(C_f(s)\)">\(C_f(s)\)</span> is bounded on
+<span class="math" data-tex="\([1,3/2]\)">\([1,3/2]\)</span>. Lemma 17.5 bounds the terms of (17.20) by a constant
+times <span class="math" data-tex="\(|r|\exp(-\pi|r|\beta_f/k)\)">\(|r|\exp(-\pi|r|\beta_f/k)\)</span>, a summable sequence.
+For any other fixed <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>, the same contour shift gives a finite
+constant in place of <span class="math" data-tex="\(9\)">\(9\)</span>, so the coefficients are still summable.
+Their Fourier series defines a continuous periodic function with
+the coefficients computed in (17.22).
+Uniqueness of Fourier coefficients for continuous periodic
+functions, proved in <a href="../NT-DIRL/NT-DIRL-03.html#periodization-and-fourier-uniqueness"><em>Gauss sums</em>, §3, “Periodization and Fourier
+uniqueness”</a>, identifies it with <span class="math" data-tex="\(F_f\)">\(F_f\)</span>. This proves (17.19).
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-limit-formula-and-an-explicit-remainder">6. The limit formula and an explicit remainder</h2>
+<p>For <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, put
+<span class="math math-display" data-tex="\[
+ A_{f,r}=\frac{2\pi}{k\sqrt d}
+       \exp\!\left(-\frac{\pi|r|\sqrt d}{ka}\right)
+       \sum_{y\mid |r|}\frac1y
+           \sum_{j\bmod k}\chi(f(j,y))e(rj/(ky)).
+ \tag{17.27}
+\]">\[
+ A_{f,r}=\frac{2\pi}{k\sqrt d}
+       \exp\!\left(-\frac{\pi|r|\sqrt d}{ka}\right)
+       \sum_{y\mid |r|}\frac1y
+           \sum_{j\bmod k}\chi(f(j,y))e(rj/(ky)).
+ \tag{17.27}
+\]</span>
+The zero coefficient is
+<span class="math math-display" data-tex="\[
+ A_{f,0}=
+ \begin{cases}
+ -\dfrac{2\pi}{k\sqrt d}\chi(a)\log p,&amp;k=p\text{ is prime},\\[4pt]
+ 0,&amp;k\text{ has at least two distinct prime divisors}.
+ \end{cases}
+ \tag{17.28}
+\]">\[
+ A_{f,0}=
+ \begin{cases}
+ -\dfrac{2\pi}{k\sqrt d}\chi(a)\log p,&amp;k=p\text{ is prime},\\[4pt]
+ 0,&amp;k\text{ has at least two distinct prime divisors}.
+ \end{cases}
+ \tag{17.28}
+\]</span>
+Since an odd fundamental discriminant is squarefree, the prime
+case is exactly the prime-power case under our hypotheses.</p>
+<p><strong>Theorem 17.7 (the twisted limit formula).</strong> With the hypotheses of
+Proposition 17.6,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ L(1,\chi)L(1,\chi\chi_D)
+ &amp;=\frac{\pi^2}{6}\prod_{p\mid k}(1-p^{-2})
+                       \sum_{f=(a,b,c)\in\mathcal F_D}\frac{\chi(a)}a\\
+ &amp;\quad+\sum_{f=(a,b,c)\in\mathcal F_D}
+           \sum_{r\in\mathbb Z}A_{f,r}
+                   \exp\!\left(\frac{\pi irb}{ka}\right).
+ \end{aligned}
+ \tag{17.29}
+\]">\[
+ \begin{aligned}
+ L(1,\chi)L(1,\chi\chi_D)
+ &amp;=\frac{\pi^2}{6}\prod_{p\mid k}(1-p^{-2})
+                       \sum_{f=(a,b,c)\in\mathcal F_D}\frac{\chi(a)}a\\
+ &amp;\quad+\sum_{f=(a,b,c)\in\mathcal F_D}
+           \sum_{r\in\mathbb Z}A_{f,r}
+                   \exp\!\left(\frac{\pi irb}{ka}\right).
+ \end{aligned}
+ \tag{17.29}
+\]</span>
+The latter series is absolutely convergent, with
+<span class="math math-display" data-tex="\[
+ |A_{f,r}|\le\frac{2\pi}{\sqrt d}|r|
+                  \exp\!\left(-\frac{\pi|r|\sqrt d}{ka}\right)
+ \qquad(r\ne0).
+ \tag{17.30}
+\]">\[
+ |A_{f,r}|\le\frac{2\pi}{\sqrt d}|r|
+                  \exp\!\left(-\frac{\pi|r|\sqrt d}{ka}\right)
+ \qquad(r\ne0).
+ \tag{17.30}
+\]</span>
+If <span class="math" data-tex="\(q_f=\exp(-\pi\sqrt d/(ka))\)">\(q_f=\exp(-\pi\sqrt d/(ka))\)</span>, omitting all terms
+<span class="math" data-tex="\(|r|&gt;R\)">\(|r|&gt;R\)</span>, for any integer <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, incurs absolute error at most
+<span class="math math-display" data-tex="\[
+ \frac{4\pi}{\sqrt d}\sum_{f\in\mathcal F_D}
+       \frac{q_f^{R+1}\{(R+1)-Rq_f\}}{(1-q_f)^2}.
+ \tag{17.31}
+\]">\[
+ \frac{4\pi}{\sqrt d}\sum_{f\in\mathcal F_D}
+       \frac{q_f^{R+1}\{(R+1)-Rq_f\}}{(1-q_f)^2}.
+ \tag{17.31}
+\]</span></p>
+<p><strong>Proof.</strong> Equation (17.17) and
+<span class="math" data-tex="\(C_f(1)=2/(k\sqrt d)\)">\(C_f(1)=2/(k\sqrt d)\)</span> give (17.27).
+Bounding each finite character sum by <span class="math" data-tex="\(k\)">\(k\)</span> and its divisor sum
+by <span class="math" data-tex="\(|r|\)">\(|r|\)</span> gives (17.30).</p>
+<p>For the zero term, the zeta continuation in <a href="../NT-DIRL/NT-DIRL-02.html#2-periodicity-gives-continuation"><em>Dirichlet's theorem on
+primes in arithmetic progressions</em>, §2, equation (2.3)</a>, gives
+<span class="math" data-tex="\(\zeta(2s-1)=1/(2s-2)+O(1)\)">\(\zeta(2s-1)=1/(2s-2)+O(1)\)</span>.
+Each factor <span class="math" data-tex="\(p^{2-2s}-1\)">\(p^{2-2s}-1\)</span> has a simple zero at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, with
+first-order term <span class="math" data-tex="\(-2(s-1)\log p\)">\(-2(s-1)\log p\)</span>.
+If <span class="math" data-tex="\(k\)">\(k\)</span> has at least two prime factors, their product cancels the
+pole and leaves a zero. If <span class="math" data-tex="\(k=p\)">\(k=p\)</span>, the limit of the zeta factor
+times that product is <span class="math" data-tex="\(-\log p\)">\(-\log p\)</span>.
+Lemma 17.5 supplies <span class="math" data-tex="\(I_{f,0}(s)\to\pi\)">\(I_{f,0}(s)\to\pi\)</span>; hence (17.21) tends
+to exactly (17.28).</p>
+<p>Substitute (17.19) into (17.11) and evaluate at <span class="math" data-tex="\(v=b/(2a)\)">\(v=b/(2a)\)</span>.
+Both <span class="math" data-tex="\(L\)">\(L\)</span>-functions are continuous at one. Indeed <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is
+nonprincipal, and <span class="math" data-tex="\(\chi\chi_D\)">\(\chi\chi_D\)</span> is odd and thus nonprincipal;
+the bounded-period partial summation proof is in the same
+Dirichlet lesson, §2, equation (2.1).
+Proposition 17.6 allows the limit to pass through the nonzero
+Fourier series. The zero term has just been treated separately.
+The finite Euler product also has its evident limit.</p>
+<p>For the remaining elementary constant, the Fourier coefficients of
+the continuous periodic function <span class="math" data-tex="\(x^2\)">\(x^2\)</span> on <span class="math" data-tex="\([-\pi,\pi]\)">\([-\pi,\pi]\)</span>, calculated
+by two integrations by parts, give the uniformly convergent series
+<span class="math math-display" data-tex="\[
+ x^2=\frac{\pi^2}{3}
+       +4\sum_{n\ge1}\frac{(-1)^n\cos(nx)}{n^2}.
+\]">\[
+ x^2=\frac{\pi^2}{3}
+       +4\sum_{n\ge1}\frac{(-1)^n\cos(nx)}{n^2}.
+\]</span>
+Absolute convergence follows by comparison with
+<span class="math" data-tex="\(\sum n^{-2}&lt;1+\int_1^\infty t^{-2}\,dt\)">\(\sum n^{-2}&lt;1+\int_1^\infty t^{-2}\,dt\)</span>, and Fourier uniqueness
+justifies the equality. At <span class="math" data-tex="\(x=\pi\)">\(x=\pi\)</span> this gives
+<span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>. We have now proved every factor in (17.29).</p>
+<p>Finally, (17.30) bounds the two tails for positive and negative
+indices by <span class="math" data-tex="\((4\pi/\sqrt d)\sum_{r&gt;R}r q_f^r\)">\((4\pi/\sqrt d)\sum_{r&gt;R}r q_f^r\)</span>.
+Differentiating the convergent geometric series, or multiplying
+and subtracting two such tails, gives
+<span class="math math-display" data-tex="\[
+ \sum_{r&gt;R}r q^r
+ =\frac{q^{R+1}\{(R+1)-Rq\}}{(1-q)^2}\quad(0&lt;q&lt;1).
+\]">\[
+ \sum_{r&gt;R}r q^r
+ =\frac{q^{R+1}\{(R+1)-Rq\}}{(1-q)^2}\quad(0&lt;q&lt;1).
+\]</span>
+Summing this equality over the finitely many forms proves (17.31).
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Because the character values are real,
+<span class="math" data-tex="\(A_{f,-r}=\overline{A_{f,r}}\)">\(A_{f,-r}=\overline{A_{f,r}}\)</span>. For numerical work one may therefore
+replace the two nonzero half-series by twice the real part of the
+positive-index series. This identity follows directly from (17.27)
+and preserves the phase <span class="math" data-tex="\(\pi rb/(ka)\)">\(\pi rb/(ka)\)</span>.</p>
+<h2 id="7-a-numerical-example-with-independent-values">7. A numerical example with independent values</h2>
+<p>We first derive finite formulas for the two values on the left of
+(17.29). Their evaluation will not use the Fourier expansion of
+the quadratic forms.</p>
+<p><strong>Proposition 17.8 (finite formulas at one).</strong> Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a
+nonprincipal primitive real character of conductor <span class="math" data-tex="\(Q\)">\(Q\)</span>. Then
+<span class="math math-display" data-tex="\[
+ L(1,\psi)=
+ \begin{cases}
+ -\dfrac1{\sqrt Q}\displaystyle\sum_{j=1}^{Q-1}
+       \psi(j)\log\bigl(2\sin(\pi j/Q)\bigr),&amp;\psi(-1)=1,\\[6pt]
+ -\dfrac{\pi}{Q\sqrt Q}\displaystyle\sum_{j=1}^{Q-1}j\psi(j),
+       &amp;\psi(-1)=-1.
+ \end{cases}
+ \tag{17.32}
+\]">\[
+ L(1,\psi)=
+ \begin{cases}
+ -\dfrac1{\sqrt Q}\displaystyle\sum_{j=1}^{Q-1}
+       \psi(j)\log\bigl(2\sin(\pi j/Q)\bigr),&amp;\psi(-1)=1,\\[6pt]
+ -\dfrac{\pi}{Q\sqrt Q}\displaystyle\sum_{j=1}^{Q-1}j\psi(j),
+       &amp;\psi(-1)=-1.
+ \end{cases}
+ \tag{17.32}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\zeta=e(1/Q)\)">\(\zeta=e(1/Q)\)</span> and
+<span class="math" data-tex="\(\tau(\psi)=\sum_{j\bmod Q}\psi(j)\zeta^j\)">\(\tau(\psi)=\sum_{j\bmod Q}\psi(j)\zeta^j\)</span>.
+The finite Fourier identity and the phase evaluation in
+<a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em>, Theorems 1.1 and 5.1</a>
+give
+<span class="math math-display" data-tex="\[
+ \sum_{j\bmod Q}\psi(j)\zeta^{nj}
+       =\psi(n)\tau(\psi),\qquad
+ \tau(\psi)=
+ \begin{cases}
+ \sqrt Q,&amp;\psi(-1)=1,\\
+ i\sqrt Q,&amp;\psi(-1)=-1.
+ \end{cases}
+ \tag{17.33}
+\]">\[
+ \sum_{j\bmod Q}\psi(j)\zeta^{nj}
+       =\psi(n)\tau(\psi),\qquad
+ \tau(\psi)=
+ \begin{cases}
+ \sqrt Q,&amp;\psi(-1)=1,\\
+ i\sqrt Q,&amp;\psi(-1)=-1.
+ \end{cases}
+ \tag{17.33}
+\]</span>
+For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, integrate the geometric series on the segment
+from zero to <span class="math" data-tex="\(t\zeta^j\)">\(t\zeta^j\)</span>. Uniform convergence on each smaller
+closed disc justifies the integration and gives
+<span class="math" data-tex="\(-\log(1-t\zeta^j)=\sum_{n\ge1}t^n\zeta^{nj}/n\)">\(-\log(1-t\zeta^j)=\sum_{n\ge1}t^n\zeta^{nj}/n\)</span>.
+Multiplying by <span class="math" data-tex="\(\psi(j)\)">\(\psi(j)\)</span> and summing the finitely many residues,
+we obtain
+<span class="math math-display" data-tex="\[
+ \tau(\psi)\sum_{n\ge1}\frac{\psi(n)t^n}{n}
+     =-\sum_{j=1}^{Q-1}\psi(j)\log(1-t\zeta^j).
+ \tag{17.34}
+\]">\[
+ \tau(\psi)\sum_{n\ge1}\frac{\psi(n)t^n}{n}
+     =-\sum_{j=1}^{Q-1}\psi(j)\log(1-t\zeta^j).
+ \tag{17.34}
+\]</span>
+The logarithm is continuous along these segments, starting at zero;
+its argument stays in the right half-plane.</p>
+<p>The series <span class="math" data-tex="\(\sum\psi(n)/n\)">\(\sum\psi(n)/n\)</span> converges by bounded periodic partial
+sums, as in the Dirichlet lesson cited above. Its Abel limit equals
+its sum: if <span class="math" data-tex="\(S_N=\sum_{n\le N}\psi(n)/n\)">\(S_N=\sum_{n\le N}\psi(n)/n\)</span> and <span class="math" data-tex="\(S_N\to S\)">\(S_N\to S\)</span>,
+summation by parts gives
+<span class="math math-display" data-tex="\[
+ \sum_{n\ge1}\frac{\psi(n)t^n}{n}
+       =(1-t)\sum_{N\ge1}S_Nt^N.
+\]">\[
+ \sum_{n\ge1}\frac{\psi(n)t^n}{n}
+       =(1-t)\sum_{N\ge1}S_Nt^N.
+\]</span>
+Subtract <span class="math" data-tex="\(St\)">\(St\)</span>. For <span class="math" data-tex="\(N\)">\(N\)</span> beyond a fixed index the difference
+<span class="math" data-tex="\(|S_N-S|\)">\(|S_N-S|\)</span> is arbitrarily small, and the weighted tail has total
+weight at most one; the finite initial part tends to zero.
+Since <span class="math" data-tex="\(St\to S\)">\(St\to S\)</span>, the assertion follows.</p>
+<p>For <span class="math" data-tex="\(0&lt;x&lt;1\)">\(0&lt;x&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+ 1-e(x)=2\sin(\pi x)e^{\pi i(x-1/2)},
+ \qquad
+ \log(1-e(x))=\log(2\sin\pi x)+\pi i(x-1/2).
+ \tag{17.35}
+\]">\[
+ 1-e(x)=2\sin(\pi x)e^{\pi i(x-1/2)},
+ \qquad
+ \log(1-e(x))=\log(2\sin\pi x)+\pi i(x-1/2).
+ \tag{17.35}
+\]</span>
+The argument on the right is between <span class="math" data-tex="\(-\pi/2\)">\(-\pi/2\)</span> and <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>,
+so it is the same branch as in (17.34). Letting <span class="math" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span>
+in that formula is now legitimate term by term on its finite right
+side. If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is even, the imaginary contributions cancel in
+the pairs <span class="math" data-tex="\(j,Q-j\)">\(j,Q-j\)</span>. If it is odd, the real contributions cancel;
+the remaining constant term also vanishes because <span class="math" data-tex="\(\sum_j\psi(j)=0\)">\(\sum_j\psi(j)=0\)</span>.
+Divide by the appropriate value of <span class="math" data-tex="\(\tau(\psi)\)">\(\tau(\psi)\)</span> in (17.33).
+This proves both formulas. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Take <span class="math" data-tex="\(d=11\)">\(d=11\)</span>, <span class="math" data-tex="\(k=21\)">\(k=21\)</span>. The only reduced form is
+<span class="math" data-tex="\(f=(1,1,3)\)">\(f=(1,1,3)\)</span>, as the first exercise verifies. The character
+<span class="math" data-tex="\(\chi_{21}\)">\(\chi_{21}\)</span> is positive on
+<span class="math" data-tex="\(1,4,5,16,17,20\)">\(1,4,5,16,17,20\)</span>, negative on <span class="math" data-tex="\(2,8,10,11,13,19\)">\(2,8,10,11,13,19\)</span>,
+and zero on the other nonzero residues modulo 21. Pairing those
+residues gives the exact expression
+<span class="math math-display" data-tex="\[
+ L(1,\chi_{21})
+ =-\frac2{\sqrt{21}}
+   \log\frac{\sin(\pi/21)\sin(4\pi/21)\sin(5\pi/21)}
+                 {\sin(2\pi/21)\sin(8\pi/21)\sin(10\pi/21)}.
+ \tag{17.36}
+\]">\[
+ L(1,\chi_{21})
+ =-\frac2{\sqrt{21}}
+   \log\frac{\sin(\pi/21)\sin(4\pi/21)\sin(5\pi/21)}
+                 {\sin(2\pi/21)\sin(8\pi/21)\sin(10\pi/21)}.
+ \tag{17.36}
+\]</span>
+The product character is <span class="math" data-tex="\(\chi_{21}\chi_{-11}=\chi_{-231}\)">\(\chi_{21}\chi_{-11}=\chi_{-231}\)</span>.
+The discriminant <span class="math" data-tex="\(-231\)">\(-231\)</span> is fundamental, so this is a primitive
+odd character of conductor 231. Its values can be computed as
+<span class="math" data-tex="\((j/3)(j/7)(j/11)\)">\((j/3)(j/7)(j/11)\)</span>. For a compact integer certificate, put
+<span class="math" data-tex="\(M_m=\sum_{j=21m+1}^{21(m+1)}j\chi_{-231}(j)\)">\(M_m=\sum_{j=21m+1}^{21(m+1)}j\chi_{-231}(j)\)</span>. The eleven
+values, with <span class="math" data-tex="\(m=0,\ldots,10\)">\(m=0,\ldots,10\)</span>, are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (M_0,\ldots,M_5)&amp;=(81,98,123,116,-82,21),\\
+ (M_6,\ldots,M_{10})&amp;=(149,-346,-339,-595,-1998).
+ \end{aligned}
+ \tag{17.37}
+\]">\[
+ \begin{aligned}
+ (M_0,\ldots,M_5)&amp;=(81,98,123,116,-82,21),\\
+ (M_6,\ldots,M_{10})&amp;=(149,-346,-339,-595,-1998).
+ \end{aligned}
+ \tag{17.37}
+\]</span>
+Their sum is <span class="math" data-tex="\(-2772=-12\cdot231\)">\(-2772=-12\cdot231\)</span>; the last term at <span class="math" data-tex="\(j=231\)">\(j=231\)</span>
+is zero. Thus (17.32) gives
+<span class="math math-display" data-tex="\[
+ L(1,\chi_{-231})=\frac{12\pi}{\sqrt{231}}.
+ \tag{17.38}
+\]">\[
+ L(1,\chi_{-231})=\frac{12\pi}{\sqrt{231}}.
+ \tag{17.38}
+\]</span>
+The two values are, respectively,
+<span class="math" data-tex="\(0.683807247830964433\ldots\)">\(0.683807247830964433\ldots\)</span> and
+<span class="math" data-tex="\(2.480419453563075414\ldots\)">\(2.480419453563075414\ldots\)</span>. Their product lies in
+<span class="math math-display" data-tex="\[
+ [1.69612880000735128,\ 1.69612880000735130].
+ \tag{17.39}
+\]">\[
+ [1.69612880000735128,\ 1.69612880000735130].
+ \tag{17.39}
+\]</span></p>
+<p>Now evaluate the right side of (17.29). Here <span class="math" data-tex="\(A_{f,0}=0\)">\(A_{f,0}=0\)</span>, since
+<span class="math" data-tex="\(21=3\cdot7\)">\(21=3\cdot7\)</span>, and its leading term is
+<span class="math math-display" data-tex="\[
+ B=\frac{\pi^2}{6}(1-3^{-2})(1-7^{-2})
+      =\frac{64\pi^2}{441}.
+ \tag{17.40}
+\]">\[
+ B=\frac{\pi^2}{6}(1-3^{-2})(1-7^{-2})
+      =\frac{64\pi^2}{441}.
+ \tag{17.40}
+\]</span>
+Put <span class="math" data-tex="\(q=e^{-\pi\sqrt{11}/21}\)">\(q=e^{-\pi\sqrt{11}/21}\)</span>. The partial sum through both
+frequencies <span class="math" data-tex="\(\pm R\)">\(\pm R\)</span> is the following finite real expression:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ T_R=B+\frac{4\pi}{21\sqrt{11}}
+ \sum_{r=1}^{R}q^r\sum_{y\mid r}\frac1y\\
+ \qquad\times
+ \sum_{j=0}^{20}\chi_{21}(j^2+jy+3y^2)
+ \cos\!\left(\frac{2\pi rj}{21y}+\frac{\pi r}{21}\right).
+ \end{aligned}
+ \tag{17.41}
+\]">\[
+ \begin{aligned}
+ T_R=B+\frac{4\pi}{21\sqrt{11}}
+ \sum_{r=1}^{R}q^r\sum_{y\mid r}\frac1y\\
+ \qquad\times
+ \sum_{j=0}^{20}\chi_{21}(j^2+jy+3y^2)
+ \cos\!\left(\frac{2\pi rj}{21y}+\frac{\pi r}{21}\right).
+ \end{aligned}
+ \tag{17.41}
+\]</span>
+In particular the last phase is retained; dropping it changes the
+value. The displayed decimal approximations below are accompanied
+by upper bounds for the entire omitted infinite tail, not merely
+by the difference between successive partial sums.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(R\)">\(R\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(T_R\)">\(T_R\)</span>, rounded</th>
+<th style="text-align:right">Bound from (17.31)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">1.689535026372472</td>
+<td style="text-align:right"><span class="math" data-tex="\(0.519\)">\(0.519\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td style="text-align:right">1.696154020695969</td>
+<td style="text-align:right"><span class="math" data-tex="\(0.00653\)">\(0.00653\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">40</td>
+<td style="text-align:right">1.696128799176940</td>
+<td style="text-align:right"><span class="math" data-tex="\(6.04\cdot10^{-7}\)">\(6.04\cdot10^{-7}\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">80</td>
+<td style="text-align:right">1.696128800007351</td>
+<td style="text-align:right"><span class="math" data-tex="\(2.82\cdot10^{-15}\)">\(2.82\cdot10^{-15}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Evaluating (17.41) by interval arithmetic at 55 decimal digits and
+adding the remainder interval gives the outward enclosure
+<span class="math math-display" data-tex="\[
+ L(1,\chi_{21})L(1,\chi_{-231})
+       \in[1.6961288000073484,\ 1.6961288000073541].
+ \tag{17.42}
+\]">\[
+ L(1,\chi_{21})L(1,\chi_{-231})
+       \in[1.6961288000073484,\ 1.6961288000073541].
+ \tag{17.42}
+\]</span>
+The finite evaluation error is less than <span class="math" data-tex="\(10^{-50}\)">\(10^{-50}\)</span>; it is
+included in this interval. Both the independent finite-value
+calculation (17.39) and the Fourier calculation therefore give
+<span class="math" data-tex="\(1.69613\)">\(1.69613\)</span> to five decimal places (or <span class="math" data-tex="\(1.6961\)">\(1.6961\)</span> to five
+significant digits).</p>
+<p>The accompanying arithmetic certificate evaluates Legendre and
+Kronecker symbols exactly, encloses each elementary real operation,
+and uses the explicit remainder (17.31). It also compares the
+two formulas for <span class="math" data-tex="\((d,k)=(11,5),(7,33),(23,5),(84,5)\)">\((d,k)=(11,5),(7,33),(23,5),(84,5)\)</span>.
+These cases include a nonzero constant coefficient, multiple form
+classes, and <span class="math" data-tex="\(\chi_k(a)=0\)">\(\chi_k(a)=0\)</span>. They provide numerical checks of the
+normalizations; the proof for every permitted pair is Theorem 17.7.</p>
+<p><img src="figures/fourier-decay.png" alt="Contour deformation and Fourier decay" class="course-figure" width="1512" height="684" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="fourier-decay" data-asset-sha256="8137868BC3A025639068B735FD57C28215435658C24CF00DAFA515C84DF50213"></p>
+<p><em>The strip between the poles permits the half-unit contour shift in
+Lemma 17.5. For the example <span class="math" data-tex="\(d=11,k=21\)">\(d=11,k=21\)</span>, the points are the
+absolute values of the computed paired Fourier terms; the solid
+line is their bound from (17.30), and the dashed line is the proved
+tail bound (17.31). The graph illustrates the estimates proved in
+Theorem 17.7; the numerical enclosure is (17.42).</em></p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Reduced forms (easy).</strong> List all reduced primitive positive
+definite forms of discriminants <span class="math" data-tex="\(-11,-19,-43\)">\(-11,-19,-43\)</span>, and deduce the
+three class numbers.</li>
+<li><strong>The character sum (medium).</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be odd and
+<span class="math" data-tex="\(p\nmid b^2-4ac\)">\(p\nmid b^2-4ac\)</span>. Prove
+<span class="math math-display" data-tex="\[
+ \sum_{j\bmod p}\left(\frac{aj^2+bjy+cy^2}{p}\right)
+ =\left(\frac ap\right)
+    \sum_{j\bmod p}\left(\frac{j^2}{p}\right)e(jy/p).
+\]">\[
+ \sum_{j\bmod p}\left(\frac{aj^2+bjy+cy^2}{p}\right)
+ =\left(\frac ap\right)
+    \sum_{j\bmod p}\left(\frac{j^2}{p}\right)e(jy/p).
+\]</span>
+Include <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span>, and identify the two possible nonzero
+values of the additive sum.</li>
+<li><strong>Kernel and remainder (medium).</strong> Starting with the integral
+<span class="math" data-tex="\(I_{f,r}(1)\)">\(I_{f,r}(1)\)</span>, derive (17.30) and (17.31). Explain why
+computing each coefficient's limit separately would not, by
+itself, justify the limit of the whole series.</li>
+<li><strong>Representation numbers (hard).</strong> Prove the product identity
+(17.9) by counting ideals of each norm. Explain exactly why the
+factor is <span class="math" data-tex="\(1/w_D\)">\(1/w_D\)</span>, why nonprimitive vectors are counted, and
+why <span class="math" data-tex="\(\chi\)">\(\chi\)</span> need not be quadratic for this identity.</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>1.</strong> The bound <span class="math" data-tex="\(a\le\sqrt{d/3}\)">\(a\le\sqrt{d/3}\)</span> gives respectively
+<span class="math" data-tex="\(a\le1,2,3\)">\(a\le1,2,3\)</span>. Since each discriminant is odd, <span class="math" data-tex="\(b\)">\(b\)</span> is odd.
+For <span class="math" data-tex="\(a=1\)">\(a=1\)</span> the boundary convention forces <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, and
+<span class="math" data-tex="\(c=(d+1)/4\)">\(c=(d+1)/4\)</span>. This gives
+<span class="math math-display" data-tex="\[
+ \begin{array}{c|c|c}
+ D&amp;\text{complete reduced list}&amp;h(D)\\\hline
+ -11&amp;(1,1,3)&amp;1\\
+ -19&amp;(1,1,5)&amp;1\\
+ -43&amp;(1,1,11)&amp;1.
+ \end{array}
+\]">\[
+ \begin{array}{c|c|c}
+ D&amp;\text{complete reduced list}&amp;h(D)\\\hline
+ -11&amp;(1,1,3)&amp;1\\
+ -19&amp;(1,1,5)&amp;1\\
+ -43&amp;(1,1,11)&amp;1.
+ \end{array}
+\]</span>
+For <span class="math" data-tex="\(d=19\)">\(d=19\)</span> or <span class="math" data-tex="\(43\)">\(43\)</span>, the remaining possibility <span class="math" data-tex="\(a=2\)">\(a=2\)</span>
+has <span class="math" data-tex="\(b=\pm1\)">\(b=\pm1\)</span>. The numerator <span class="math" data-tex="\(b^2+d\)">\(b^2+d\)</span> is respectively 20
+or 44, neither divisible by <span class="math" data-tex="\(4a=8\)">\(4a=8\)</span>. For <span class="math" data-tex="\(d=43,a=3\)">\(d=43,a=3\)</span>,
+the allowed odd values have <span class="math" data-tex="\(b^2=1\)">\(b^2=1\)</span> or 9; neither 44 nor 52
+is divisible by 12. There are no other possible <span class="math" data-tex="\(a\)">\(a\)</span>. Every
+listed form is primitive, and the reduction and ideal–form
+theorems identify the number of entries with the class number.</p>
+<p><strong>2.</strong> Denote the Legendre character by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.
+If <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span>, then <span class="math" data-tex="\(p\nmid b\)">\(p\nmid b\)</span>. For <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> in the
+field, <span class="math" data-tex="\(j\mapsto bjy+cy^2\)">\(j\mapsto bjy+cy^2\)</span> is a bijection, so its character
+sum is <span class="math" data-tex="\(\sum_t\lambda(t)=0\)">\(\sum_t\lambda(t)=0\)</span>. For <span class="math" data-tex="\(y=0\)">\(y=0\)</span> all the arguments
+are zero. The right side also vanishes because <span class="math" data-tex="\(\lambda(a)=0\)">\(\lambda(a)=0\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>. Completing the square reduces the sum to
+<span class="math" data-tex="\(\lambda(a)\sum_z\lambda(z^2-t)\)">\(\lambda(a)\sum_z\lambda(z^2-t)\)</span>, where
+<span class="math" data-tex="\(t=(b^2-4ac)y^2/(4a^2)\)">\(t=(b^2-4ac)y^2/(4a^2)\)</span>. If <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, its inner sum is
+<span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Otherwise <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, and the correspondence
+<span class="math math-display" data-tex="\[
+ (z,u)\longleftrightarrow(z-u,z+u)
+\]">\[
+ (z,u)\longleftrightarrow(z-u,z+u)
+\]</span>
+identifies the solutions of <span class="math" data-tex="\(u^2=z^2-t\)">\(u^2=z^2-t\)</span> with the <span class="math" data-tex="\(p-1\)">\(p-1\)</span>
+ordered factor pairs of <span class="math" data-tex="\(t\)">\(t\)</span>. Since their other count is
+<span class="math" data-tex="\(p+\sum_z\lambda(z^2-t)\)">\(p+\sum_z\lambda(z^2-t)\)</span>, the inner sum equals <span class="math" data-tex="\(-1\)">\(-1\)</span>.
+On the right, <span class="math" data-tex="\(\lambda(j^2)\)">\(\lambda(j^2)\)</span> is zero at zero and one on the
+nonzero residues. Their additive sum is <span class="math" data-tex="\(p-1\)">\(p-1\)</span> for <span class="math" data-tex="\(p\mid y\)">\(p\mid y\)</span>
+and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise, by the finite geometric series. Both sides
+therefore have the same value. This proves the identity, including
+the vanishing leading-character case.</p>
+<p><strong>3.</strong> On the lower semicircle for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, the simple pole at
+<span class="math" data-tex="\(-i\)">\(-i\)</span> gives <span class="math" data-tex="\(I_{f,r}(1)=\pi e^{-2\pi r\beta_f/k}\)">\(I_{f,r}(1)=\pi e^{-2\pi r\beta_f/k}\)</span>;
+the opposite semicircle handles <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>. The arc is bounded by
+<span class="math" data-tex="\(\pi R/(R^2-1)\)">\(\pi R/(R^2-1)\)</span>, hence vanishes as its radius tends to infinity.
+In (17.20), set <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, use <span class="math" data-tex="\(C_f(1)=2/(k\sqrt d)\)">\(C_f(1)=2/(k\sqrt d)\)</span>,
+and bound <span class="math" data-tex="\(|S_{f,h}(y)|\le k\)">\(|S_{f,h}(y)|\le k\)</span>. The elementary estimate
+<span class="math" data-tex="\(\sum_{y\mid|r|}1/y\le|r|\)">\(\sum_{y\mid|r|}1/y\le|r|\)</span> proves (17.30).
+For the two tails, sum
+<span class="math" data-tex="\((4\pi/\sqrt d)\sum_{r&gt;R}r q_f^r\)">\((4\pi/\sqrt d)\sum_{r&gt;R}r q_f^r\)</span>; differentiating
+<span class="math" data-tex="\(q^{R+1}/(1-q)\)">\(q^{R+1}/(1-q)\)</span> and multiplying by <span class="math" data-tex="\(q\)">\(q\)</span> gives (17.31).</p>
+<p>Coefficientwise convergence would permit an unjustified exchange
+of an infinite sum with a limit. The missing ingredient is the
+summable bound uniform for <span class="math" data-tex="\(1\le s\le3/2\)">\(1\le s\le3/2\)</span>: shifting the kernel
+contour by half a unit bounds <span class="math" data-tex="\(|I_{f,r}(s)|\)">\(|I_{f,r}(s)|\)</span> by
+<span class="math" data-tex="\(9e^{-\pi|r|\beta_f/k}\)">\(9e^{-\pi|r|\beta_f/k}\)</span>. The remaining factors in (17.20)
+then give a constant times <span class="math" data-tex="\(|r|e^{-\pi|r|\beta_f/k}\)">\(|r|e^{-\pi|r|\beta_f/k}\)</span>.
+This bound makes all sufficiently long tails uniformly small;
+one takes the limit in the finite initial sum and then in the
+tail bound. The zero coefficient is handled separately by (17.21).</p>
+<p><strong>4.</strong> For <span class="math" data-tex="\(f=(a,b,c)\)">\(f=(a,b,c)\)</span>, let
+<span class="math" data-tex="\(I_f=[a,(-b+\sqrt D)/2]\)">\(I_f=[a,(-b+\sqrt D)/2]\)</span> and <span class="math" data-tex="\(\beta=(-b+\sqrt D)/2\)">\(\beta=(-b+\sqrt D)/2\)</span>.
+The identity <span class="math" data-tex="\(N(ax-\beta y)=af(x,y)\)">\(N(ax-\beta y)=af(x,y)\)</span> sends a representation
+of <span class="math" data-tex="\(n\)">\(n\)</span> to the integral ideal <span class="math" data-tex="\((ax-\beta y)I_f^{-1}\)">\((ax-\beta y)I_f^{-1}\)</span>
+of norm <span class="math" data-tex="\(n\)">\(n\)</span>, in the inverse class of <span class="math" data-tex="\(I_f\)">\(I_f\)</span>. Conversely,
+an integral ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> in that inverse class has
+<span class="math" data-tex="\(\mathfrak a I_f=(z)\subseteq I_f\)">\(\mathfrak a I_f=(z)\subseteq I_f\)</span>; writing
+<span class="math" data-tex="\(z=ax-\beta y\)">\(z=ax-\beta y\)</span> gives a representation. There are exactly
+<span class="math" data-tex="\(w_D\)">\(w_D\)</span> generators for each such principal ideal, hence exactly
+<span class="math" data-tex="\(w_D\)">\(w_D\)</span> representing pairs. No condition <span class="math" data-tex="\(\gcd(x,y)=1\)">\(\gcd(x,y)=1\)</span>
+appears: imposing one would exclude ideals with rational integer
+factors and change the Dirichlet coefficients.</p>
+<p>At a split prime there are <span class="math" data-tex="\(e+1\)">\(e+1\)</span> ideals of norm <span class="math" data-tex="\(p^e\)">\(p^e\)</span>;
+at an inert prime there is one for even <span class="math" data-tex="\(e\)">\(e\)</span> and none for odd
+<span class="math" data-tex="\(e\)">\(e\)</span>; at a ramified prime there is one. These counts are all
+<span class="math" data-tex="\(\sum_{j=0}^{e}\chi_D(p)^j\)">\(\sum_{j=0}^{e}\chi_D(p)^j\)</span>. Multiplying over primes shows
+<span class="math" data-tex="\(r_D(n)=w_D\sum_{m\mid n}\chi_D(m)\)">\(r_D(n)=w_D\sum_{m\mid n}\chi_D(m)\)</span>.
+Multiplication of the two absolutely convergent Dirichlet series
+now gives
+<span class="math math-display" data-tex="\[
+ \sum_{u,v\ge1}\frac{\chi(u)\chi(v)\chi_D(v)}{(uv)^s}
+ =\sum_{n\ge1}\frac{\chi(n)}{n^s}
+                         \sum_{v\mid n}\chi_D(v)
+ =\frac1{w_D}\sum_{n\ge1}\frac{\chi(n)r_D(n)}{n^s}.
+\]">\[
+ \sum_{u,v\ge1}\frac{\chi(u)\chi(v)\chi_D(v)}{(uv)^s}
+ =\sum_{n\ge1}\frac{\chi(n)}{n^s}
+                         \sum_{v\mid n}\chi_D(v)
+ =\frac1{w_D}\sum_{n\ge1}\frac{\chi(n)r_D(n)}{n^s}.
+\]</span>
+Regroup by representing pairs to obtain (17.9). Absolute convergence
+follows from the bound by <span class="math" data-tex="\(\zeta(\operatorname{Re}s)^2\)">\(\zeta(\operatorname{Re}s)^2\)</span>.
+Only complete multiplicativity and <span class="math" data-tex="\(|\chi(n)|\le1\)">\(|\chi(n)|\le1\)</span> were used,
+so any Dirichlet character is allowed. For <span class="math" data-tex="\(D=-3,-4\)">\(D=-3,-4\)</span>, the
+same proof gives <span class="math" data-tex="\(1/6,1/4\)">\(1/6,1/4\)</span>, respectively, as it must.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The historical Heilbronn, Siegel and Brauer–Siegel theorems and the
+classification of class number one fields are not used here. The
+classification is the subject of the next lesson. The Fourier
+calculation assumes an odd positive fundamental discriminant <span class="math" data-tex="\(k\)">\(k\)</span>;
+the product identity itself permits any Dirichlet character and
+every negative fundamental discriminant, with its exact unit factor.</p>
+<p>The programme inputs are the ideal–form correspondence, reduction
+and genus theorem, ideal factorization and the quadratic splitting
+law, primitive quadratic characters and their Gauss sums, the
+continuity of nonprincipal <span class="math" data-tex="\(L\)">\(L\)</span>-series at one, Fourier uniqueness,
+and Cauchy's theorem. Their proof locators are given where used.
+The representation count, twisted product identity, finite
+character identity, kernel estimates, limiting coefficients,
+remainder bound and finite special-value formulas are proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Sjoerd de Vries, <a href="https://staff.math.su.se/sjoerd.devries/files/Classnumbers.pdf"><em>The Class Number 1 Problem</em></a>, seminar notes, 2019.</li>
+<li>Zeev Rudnick, <a href="https://www.math.tau.ac.il/~rudnick/courses/analytic%20number%20theory%202022/Lecture_10:The_class_number_one_problem.pdf"><em>The class number one problem</em></a>, analytic number theory lectures, 2022.</li>
+<li>Don Zagier, <a href="https://people.mpim-bonn.mpg.de/zagier/files/scanned/LseriesBSDandClassNumberGauss/fulltext.pdf"><em>Application to the class number problem of Gauss</em></a>.</li>
+<li>Marc Hindry, <a href="https://webusers.imj-prg.fr/~marc.hindry/Notes_rev_Brasilia.pdf"><em>Introduction to zeta and L-functions from arithmetic geometry and some applications</em></a>, lecture notes, 2010.</li>
+<li>Programme lessons: <a href="../NT-ANT/quadratic-fields-ideal-classes-and-binary-quadratic-forms.html"><em>Quadratic fields: ideal classes and binary quadratic forms</em></a>, <a href="../NT-ANT/decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>, <a href="../NT-DIRL/NT-DIRL-01.html"><em>Dirichlet characters</em></a>, <a href="../NT-DIRL/NT-DIRL-02.html"><em>Dirichlet's theorem on primes in arithmetic progressions</em></a>, <a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em></a>, and <a href="../foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html"><em>Cauchy's theorem for cycles and its consequences</em></a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-16.html">← Perfect powers: primitive divisors, Catalan and Pillai</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-18.html">Class numbers II: class number one (and two) →</a></span></nav>
+<p class="small source-link"><a href="TR-BAKER-17.pdf" download>PDF of this lesson</a> · <a href="sources/TR-BAKER-17.tex" download>Editable LaTeX source of this lesson</a> · <span class="unlinked">Complete course source package</span> · <a href="src/TR-BAKER-17.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

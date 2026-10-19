@@ -1,11 +1,11 @@
 # From the weak normal criterion to transverse reflected segments
 
-Original geometric receiving bridge. This lemma proves the passage from the stated analytic normal criterion to reflection. That criterion is supplied in U067, Sections 1–9. Strict diffraction remains separate.
+Original geometric receiving bridge. This lemma proves the passage from the stated analytic normal criterion to reflection. That criterion is supplied in [U067, Sections 1–9](weak-hyperbolic-normal-criterion-and-reflection.md). Strict diffraction remains separate.
 
 The exact current proof of [U051, Section 1, RF7–RF10](../20261007-restored-boundary-reflection/boundary-reflection-preparation.md)
 supplies the two normal lifts, their smooth transverse flows, invariant root
 interchange and compression. Its later Dirichlet factorization is not used as a
-weak Neumann estimate. The exact current U066, Section 5, IP18–IP19
+weak Neumann estimate. The exact current [U066, Section 5, IP18–IP19](../20261007-restored-interior-front/interior-energy-fronts-and-matrix-propagation.md)
 supplies the interior energy-front propagation for both weak domains and all
 complex finite matrix lower terms. The full weak source and both form domains
 are retained throughout.

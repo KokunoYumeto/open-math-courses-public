@@ -4,4 +4,4 @@ Read [the lesson](weighted-energy-bounds-for-the-growing-airy-kernel.html) or ed
 
 The proof map connects 22 entries to 945 earlier entries in 58 maps. Its 92 required human proofs remain external; internal P514 closure of this CC0 export is unclaimed. Three complete solutions and a reproducible figure accompany source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [33 exact checks](model-check.json). Run python -B model_check.py to reproduce the finite checks; the analytic proof is in the lesson.
 
-The general weighted reverse estimate and representation of every variable-coefficient energy solution remain unfinished. The full AN-04 objective stays active. Original expression is CC0-1.0; linked components retain their terms. All nine approved books remain valid sources.
+The general weighted reverse estimate and representation of every variable-coefficient energy solution remain unfinished. The full AN-04 objective stays active. Original expression is CC0-1.0; linked components retain their terms. 

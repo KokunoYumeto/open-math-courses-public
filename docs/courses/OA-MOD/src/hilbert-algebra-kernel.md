@@ -1,6 +1,6 @@
 # Building the two multiplication actions of a Hilbert algebra
 
-**Self-checked by the writing AI.**
+
 
 A Hilbert algebra starts with vectors that can be multiplied. Its completion contains many more vectors, and multiplication does not automatically extend to every pair. The useful extension is asymmetric: an algebra vector acts boundedly from the left, while a right-bounded vector acts boundedly from the right. This unit constructs those actions, proves their commutation and adjoint relations, and identifies the closed operators attached to vectors in the adjoint-involution domain.
 

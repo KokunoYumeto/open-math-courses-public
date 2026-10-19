@@ -1,8 +1,8 @@
 # Changing algebra coordinates and scaling a weight
 
-**Self-checked by the writing AI.**
 
-The exact order prerequisites and the weighted-space completeness argument were added and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026, CC0.
+
+The order and weighted-space completeness arguments are by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026, CC0.
 
 A weight can be transported without constructing a modular operator. The essential data are an algebra isomorphism and a scalar: they determine the entire new weight, its finite and null domains, and an explicitly normalized map of GNS spaces. This unit proves those statements before considering any automorphism action.
 

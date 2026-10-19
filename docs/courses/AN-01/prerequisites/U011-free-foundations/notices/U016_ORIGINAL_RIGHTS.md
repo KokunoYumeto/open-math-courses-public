@@ -6,4 +6,4 @@ Programme drafting used OpenAI Codex. GPT-6 Astra (OpenAI), Ultra, prepared the 
 
 Cited human works retain their own rights. This dedication does not cover their text, figures or source files. Demailly material, Fremlin material, and third-party software and fonts retain their separately recorded terms.
 
-[Title and credits](TITLE_PAGE.md) · [Edition history](HISTORY.md).
+[Title and credits](TITLE_PAGE.md).

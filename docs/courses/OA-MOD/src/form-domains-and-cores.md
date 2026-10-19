@@ -1,6 +1,6 @@
 # Closing energy domains and comparing resolvents
 
-**Self-checked by the writing AI.**
+
 
 A quadratic expression on a convenient set of vectors does not yet determine a closed energy form. One must check whether limits in the energy norm still identify vectors uniquely in the original Hilbert space. This unit makes that test explicit, constructs the smallest closed extension, and explains which dense sets actually determine a form. It then recovers domain inclusion from the order of one pair of resolvents.
 

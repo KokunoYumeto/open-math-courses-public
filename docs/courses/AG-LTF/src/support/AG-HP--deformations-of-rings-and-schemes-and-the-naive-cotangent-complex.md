@@ -1,6 +1,6 @@
 # Deformations of rings and schemes and the naive cotangent complex
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) (Codex), October 2026. Public domain (CC0).*
 
 An infinitesimal change of an equation can disappear after an infinitesimal change of coordinates. The naive cotangent complex keeps both operations in one object: its degree \(-1\) term records relations, and its degree zero term records coordinates. Applying \(\operatorname{Hom}(-,M)\) turns the differential into the operation that changes a relation by a derivation.
 

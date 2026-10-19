@@ -568,7 +568,7 @@ These are identities in the full normal algebras for every \(a\). Together with 
 
 The first panel separates the two partitions in (IC7): the band widths carry no trace or probability information, and the final band represents all further return indices. The second panel is a finite window of two locally finite hit sets, with pairs \(0\mapsto1\) and \(4\mapsto7\). It has \(a=1\), \(a'=3\), \(R_1=4\), \(R_2=6\), so (IC46) reads \(6=4-1+3\). The coincident-hit row uses displacement zero. These are orbit samples, not finite-orbit models of a type III zero flow.
 
-The last panel uses \(s=9\). The upper point map in (IC51) sends \((9,x)\) to \((8,Wx)\). The two deck maps send these to \((5,x')\) and \((2,Wx')\); the lower point map subtracts \(a'=3\), again giving \(2\). Its fiber identity is exactly (IC59). The shear aligns heights only when extracting the constant coefficient map in (IC56); no false whole-deck conjugacy by \(D\) is drawn. [Reproduction source](../assets/induced-corners/render.py), [exact data and checks](../assets/induced-corners/data.json) and asset terms accompany the figure.
+The last panel uses \(s=9\). The upper point map in (IC51) sends \((9,x)\) to \((8,Wx)\). The two deck maps send these to \((5,x')\) and \((2,Wx')\); the lower point map subtracts \(a'=3\), again giving \(2\). Its fiber identity is exactly (IC59). The shear aligns heights only when extracting the constant coefficient map in (IC56); no false whole-deck conjugacy by \(D\) is drawn. [Reproduction source](../assets/induced-corners/render.py), [exact data and checks](../assets/induced-corners/data.json) and [asset terms](../assets/induced-corners/TERMS.md) accompany the figure.
 
 <a id="ic-diagnostics"></a>
 ## 12. Eight checks on the hypotheses and signs
@@ -748,7 +748,7 @@ Together with [ZDC's existence theorem](OA-FLOW-ZDC.md#zdc-4), this gives the co
 
 ![An inner perturbation acts by an explicit regular unitary; first returns replace its one-step unitary by the sum of the integer cocycle products on the arrival partition.](../assets/induced-corners/cocycle-comparison.svg)
 
-*Figure 2.* The top row is the restriction of (IC62) to the return corners. The lower row is the map for the induced automorphisms, with unit \(e\). The vertical maps are the normal return-corner identifications (IC17); the square commutes by (IC70). The sum defining \(v_e\) uses the arrival projections \(\alpha^n(e_n)\). They are central, orthogonal and sum to \(e\). [Editable vector source](../assets/induced-corners/cocycle-comparison.svg) and component terms.
+*Figure 2.* The top row is the restriction of (IC62) to the return corners. The lower row is the map for the induced automorphisms, with unit \(e\). The vertical maps are the normal return-corner identifications (IC17); the square commutes by (IC70). The sum defining \(v_e\) uses the arrival projections \(\alpha^n(e_n)\). They are central, orthogonal and sum to \(e\). [Editable vector source](../assets/induced-corners/cocycle-comparison.svg) and [component terms](../assets/induced-corners/TERMS.md).
 
 <a id="ic-sources"></a>
 ## 16. Sources

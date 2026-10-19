@@ -4,4 +4,4 @@ Read [the lesson](stable-airy-coefficients-and-spatial-localization.html) or edi
 
 The proof map connects 17 entries to 978 earlier entries in 60 maps. Its 92 required human proofs remain external; internal P514 closure of this CC0 export is unclaimed. Three complete solutions and a reproducible figure accompany source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [29 exact checks](model-check.json). Run python -B model_check.py to reproduce the finite checks; the all-frequency proof is in the lesson.
 
-The general weighted reverse estimate, enhanced trace recovery and representation of every variable-coefficient energy solution remain unfinished. The full AN-04 objective stays active. Original expression is CC0-1.0; linked components retain their terms. All nine approved books remain valid sources.
+The general weighted reverse estimate, enhanced trace recovery and representation of every variable-coefficient energy solution remain unfinished. The full AN-04 objective stays active. Original expression is CC0-1.0; linked components retain their terms. 

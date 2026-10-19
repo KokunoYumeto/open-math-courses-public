@@ -4,7 +4,7 @@
 
 A unital Kraus family has \(\sum b_i^*b_i=1\). To turn its reconstruction map into an approximate unitary intertwiner, we also need \(\sum b_i b_i^*=1\). We will average the second sum, scale down slightly, and fill both remaining defects exactly. The repaired map changes arbitrarily little on the matrix algebra being modeled.
 
-The inputs are the trace-preserving finite models, the [internal matrix Kraus formula](properly-infinite-injective-algebras-and-dyadic-approximation.md#lemma-4-1), and the full [center-valued trace and projection comparison proofs](../components/central-finite-trace-inputs.md). The [central trace cuts](central-traces-and-afd-finite-algebras.md#lemma-1-1) provide projections of arbitrary prescribed scalar trace in a \(\mathrm{II}_1\) factor. [Finite trace expectations, TL3](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation), constructs the normal trace-preserving expectation onto every unital subalgebra. We prove both norm-averaging arguments here.
+The inputs are the [trace-preserving finite models](trace-preserving-finite-models.md), the [internal matrix Kraus formula](properly-infinite-injective-algebras-and-dyadic-approximation.md#lemma-4-1), and the full [center-valued trace and projection comparison proofs](../components/central-finite-trace-inputs.md). The [central trace cuts](central-traces-and-afd-finite-algebras.md#lemma-1-1) provide projections of arbitrary prescribed scalar trace in a \(\mathrm{II}_1\) factor. [Finite trace expectations, TL3](../components/invariant-state-trace-hilbert-inputs.md#finite-trace-expectation), constructs the normal trace-preserving expectation onto every unital subalgebra. We prove both norm-averaging arguments here.
 
 The coupling-energy identity gives the approximation goal first. We then construct a balanced reconstruction map, and prove the two mechanisms it needs: simultaneous norm averaging and countable matching of positive defects.
 
@@ -33,7 +33,7 @@ for any two unitaries \(u,v\).
 
 **Corollary 4.2.** In an injective \(\mathrm{II}_1\) factor, every finite tuple \((u_k)\) is \(\delta\)-related to a tuple of unitaries in some unital matrix subfactor, for every \(\delta>0\).
 
-**Proof.** The balanced reconstruction theorem used here is proved in the next section. Trace-preserving finite models gives a trace-preserving ucp reconstruction from \(M_m\) with unitary input models. Projection cuts and comparison embed \(M_m\) unitally as a subfactor \(D\subset M\), preserving its normalized trace. Choose its reconstruction errors below \(\delta/4\). Apply Theorem 3.1 with operator-norm map error below \(\delta/4\). On each unitary model the two errors add to less than \(\delta/2\) in \(2\)-norm. Equation (16) proves (15). \(\square\)
+**Proof.** The balanced reconstruction theorem used here is proved in the next section. [Trace-preserving finite models](trace-preserving-finite-models.md#corollary-4-2) gives a trace-preserving ucp reconstruction from \(M_m\) with unitary input models. Projection cuts and comparison embed \(M_m\) unitally as a subfactor \(D\subset M\), preserving its normalized trace. Choose its reconstruction errors below \(\delta/4\). Apply Theorem 3.1 with operator-norm map error below \(\delta/4\). On each unitary model the two errors add to less than \(\delta/2\) in \(2\)-norm. Equation (16) proves (15). \(\square\)
 
 <a id="3-balanced-reconstruction-on-a-matrix-subfactor"></a>
 

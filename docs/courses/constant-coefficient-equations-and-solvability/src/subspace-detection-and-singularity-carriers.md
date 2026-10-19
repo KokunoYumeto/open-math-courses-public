@@ -26,6 +26,8 @@ A_P(\xi,t)=A_{P,\mathbb R^n}(\xi,t),\\
 \]
 The full norm \(A_P\) is positive: a polynomial vanishing on a real ball is zero. Thus \(0\leq\sigma_P(W)\leq1\). A nonzero constant gives \(\sigma_P(W)=1\) for every \(W\), and \(\sigma_P(\mathbb R^n)=1\) for every nonzero \(P\).
 
+The two ball maxima are defined by the same formulas for every positive radius. Only the infimum defining the invariant is restricted to radii at least one.
+
 The radius is held fixed while taking the lower limit. Its infimum is taken afterwards. A sequence whose radii also tend to infinity requires a separate argument; Lemma 2.1 below provides it.
 
 Choose orthonormal coordinates in \(W\). Finite-dimensional polynomial norm comparison gives
@@ -55,6 +57,13 @@ In particular \(\sigma_P\) is continuous on every Grassmannian of a fixed dimens
 \tag{4}
 \]
 One can obtain this by integrating the gradient on the segment and using (2); the segment stays in the radius-\(t\) ball. Take the maximum in \(\theta\), divide by \(A_P\), and pass to the lower limit and then the infimum. This gives \(\sigma_P(W)\leq\sigma_P(Z)+Cg(W,Z)\). Reverse the subspaces. The argument includes the zero subspace, whose unit sphere is empty. \(\square\)
+
+For the directed comparison, put \(e(W,Z)=\|(I-\pi_Z)\pi_W\|\). The same proof uses \(|\theta-\pi_Z\theta|\leq t e(W,Z)\) and yields \(\sigma_P(W)\leq\sigma_P(Z)+Ce(W,Z)\). When both subspaces have nonempty unit spheres, \(e(W,Z)\) is at most
+\[
+\sup_{\substack{w\in W\\|w|=1}}
+\inf_{\substack{z\in Z\\|z|=1}}|w-z|,
+\]
+because distance to a subspace is no greater than distance to its unit sphere. This proves the corresponding directed unit-sphere comparison as well. The projection formula also covers a zero subspace.
 
 ## Quantitative tests at large frequencies
 
@@ -122,7 +131,7 @@ V=\{x'=0\},\qquad W=V^\perp.
 \]
 The same split is used in frequency space. The prime block may have dimension zero.
 
-**Lemma 3.2.** Suppose \(m\geq1\), \(t\geq1\), and
+**Lemma 3.2.** Suppose \(m\geq1\), \(t>0\), and
 \[
 \begin{gathered}
 A_{P,W}(\xi,t)\leq\varepsilon A_P(\xi,t),\\
@@ -188,6 +197,8 @@ U(\theta,x'')=H(\theta/t,t\rho x'').
 \tag{13}
 \]
 Equation (10) converts the equation for \(H\) into the equation in (9). The normalization and exponential bound follow at once. \(\square\)
+
+The argument also gives a uniform degree-bound version. If an integer \(M\geq1\) bounds the degree of \(P\), perform the coefficient norm comparisons on the space of polynomials of degree at most \(M\) and take \(\rho=(K\varepsilon)^{1/M}\). The resulting growth exponent is \(\varepsilon^{1/M}\), with constants depending only on \(M,n\). No step requires the positive scale \(t\) to be at least one.
 
 The contour counts all enclosed roots together. No continuous choice of individual roots is needed, even at multiple roots.
 

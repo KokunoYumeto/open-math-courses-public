@@ -1,8 +1,8 @@
 # When a kernel is smooth
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 Smoothness of an operator's output on smooth inputs is a weak test. Differentiation passes that test. A more revealing question is what happens to point masses and their derivatives. If an operator sends every compactly supported distribution to a smooth function continuously, its entire kernel is smooth. This lesson proves both directions and explains the continuity behind the assertion.
 

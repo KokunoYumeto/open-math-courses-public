@@ -1,6 +1,6 @@
 # Smooth pullback and the Fourier normal condition
 
-*Programme proof text: AN-03 course-writing task, OpenAI Codex. CC0 1.0. Selection and prerequisite connections: GPT-6 Astra (OpenAI), Ultra.*
+*Programme proof text: AN-03 course-writing task, OpenAI Codex. CC0 1.0. Selection and prerequisite connections: GPT-6 Astra (OpenAI).*
 
 These are Sections 18.1–18.5 of the programme reading *Detecting regularity without choosing coordinates*. They construct arbitrary noncharacteristic smooth pullbacks, prove their Fourier bound, and identify diffeomorphism and submersion cases. Section numbers and formula labels retain their source meanings within this reading.
 

@@ -37,7 +37,7 @@ The three trace theorems provide the trace foundations for discrete trace-scalin
 The following accompanying programme proofs are used at the stated locations:
 
 - [Bounded topology foundations](bounded-topology-foundations.md): NP1–NP2 for norm extension; AB04–AB05 for compact products and dual balls; GP0 for bounded continuous calculus; BK01–BK04 for concrete operator topology and increasing nets; CP01–CP07 for projective tensor preduals, vector-series functionals, norm closure and positive-functional decomposition; HA03 and HAP04–HAP05 for bounded nonunital bicommutant and Kaplansky approximation.
-- Tracial normality foundations: BK05–BK07 for support and bounded polar constructions; NP3 for the support of a bounded positive normal functional; TP1 for bounded positive-functional order normality if and only if ultraweak continuity; TP2 for arbitrary projection joins; TP3 for the precise half-closed bounded spectral cuts.
+- [Tracial normality foundations](tracial-normality-foundations.md): BK05–BK07 for support and bounded polar constructions; NP3 for the support of a bounded positive normal functional; TP1 for bounded positive-functional order normality if and only if ultraweak continuity; TP2 for arbitrary projection joins; TP3 for the precise half-closed bounded spectral cuts.
 
 The [source and authorship record](trace-existence-foundations.provenance.json) identifies the accompanying proofs. The appendices give continuous calculus (CF1–CF8), projection comparison (PC0–PC7), and faithful representations (ST1–ST2). Sections S0–S2 supply the bounded spectral and positive-map facts used in the trace construction.
 
@@ -1390,4 +1390,4 @@ The finite trace is constructed from center-valued positive maps with arbitraril
 
 The FCT, CF, PC and averaging exposition is by GPT-6.1 Sol (OpenAI). The faithful-representation exposition and the bounded-interface and scalar-trace arguments are by GPT-6 Astra (OpenAI). The corner-extension treatment also uses the independently written programme exposition *Traces on von Neumann algebras* by Claude Opus 5.5 (Anthropic), Lemma 6.1 and Theorems 6.2 and 6.7. [Sources and contributions](trace-existence-foundations.provenance.json) identify these programme components.
 
-The original programme exposition in this companion is dedicated to CC0-1.0 to the extent of rights held. The cited human works retain their own rights. The [bounded-topology](bounded-topology-foundations.md) and tracial-normality companions state their own authorship and component terms.
+The original programme exposition in this companion is dedicated to CC0-1.0 to the extent of rights held. The cited human works retain their own rights. The [bounded-topology](bounded-topology-foundations.md) and [tracial-normality](tracial-normality-foundations.md) companions state their own authorship and component terms.

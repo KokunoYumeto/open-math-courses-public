@@ -1,6 +1,6 @@
 # Contact transformations and first-order equations
 
-*Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 A first-order equation constrains a point, a function value, and a tangent hyperplane. Contact geometry treats these three pieces together. Its transformations can exchange positions and slopes; its infinitesimal generators are encoded by one function; and its characteristic curves reconstruct a solution from noncharacteristic initial data.
 
@@ -355,7 +355,7 @@ $$
 
 The point moves distance $t$ in its unit normal direction $(-p,1)/\sqrt{1+p^2}$. This is the parallel transformation historically described as dilation along normals. Differentiating (6.5) gives $\Phi_t^*\theta=\theta$, since $d(1/\sqrt{1+p^2})+p\,d(p/\sqrt{1+p^2})=0$. Along an original graph with curvature $\kappa=p_x/(1+p^2)^{3/2}$, its new independent-coordinate derivative is $1-t\kappa$. Thus the offset remains a graph only where that factor is nonzero. On the branch $1-t\kappa>0$, its oriented curvature is $\kappa/(1-t\kappa)$. The contact map remains invertible even when a particular graph develops a singular projection.
 
-![The original parabola and its normal offsets at distances 0.45 and 1.5; the second offset has two cusp points while the lifted slope still parametrizes its Legendrian curve.](figures/parallel-curves.png)
+![The original parabola and its normal offsets at distances 0.45 and 1.5; the second offset has two cusp points while the lifted slope still parametrizes its Legendrian curve.](../figures/parallel-curves.png)
 
 *Computed illustration of (6.5).* The original curve is $(s,s^2/2)$ with slope $p=s$ and curvature $(1+s^2)^{-3/2}$. Gray segments are its normal displacements. At $t=0.45$ the factor $1-t\kappa$ stays positive. At $t=1.5$ the two marked cusps occur at $s=\pm\sqrt{1.5^{2/3}-1}$, where that factor vanishes. The lifted curve in $(X,Z,p)$ is still regular because $dp/ds=1$. Curves are numerical samples of these exact formulas; the projection criterion is proved above. The reproducible plotting source and vector copy accompany the public source edition.
 
@@ -382,7 +382,7 @@ $$
 
 Pulling back $\alpha$ gives $(r/\rho)\Phi^*\theta=r\theta$, so the lift preserves $\omega$. It commutes with dilation of $r$. Conversely, a dilation-equivariant map preserving $\alpha$ descends to a contact map, by writing its radial component as $r$ times a nowhere-zero function and comparing the forms. For positive real symplectization $r>0$, restrict to positive multipliers. The Legendre map has multiplier $-1$, and (7.2) exchanges the two real components when both signs of $r$ are allowed.
 
-This construction supplies the comparison with the planned Fourier-integral course AN-04, especially “Phase space and generating families” and “Hamilton fields and subprincipal transport,” and the planned microlocal-sheaf course SH-03 on contact transformations and kernels. Those course readers have no registered public link in the course catalogue checked for this edition. The public course index gives the available related courses. The bridge here is the explicit symplectization (7.1)–(7.2).
+The homogeneous lift (7.1)–(7.2) relates contact transformations to the symplectic geometry of phase space and generating families. It is the explicit geometric bridge between the contact and Hamiltonian constructions in this lesson.
 
 ## 8. Exercises
 
@@ -454,7 +454,7 @@ Evaluation on $X_V$ gives $\theta([X_W,X_V])=X_WV-W_zV$. Lie derivatives show th
 
 ## Historical reading and references
 
-The following selected passages are transcribed from the public-domain German scan, with independent English translations by the writing AI. Formula typography and line breaks are normalized; historical spelling is retained. These selections introduce the three historical topics of this lesson; the remaining assigned section transcription is still being prepared. The scan confirms the printed chapter numbering: Chapter 8 treats function groups; the infinitesimal contact formulas belong to Chapters 14–15.
+These selected passages from the public-domain German text have English translations by GPT-6.1 Sol (OpenAI). Formula typography and line breaks are normalized; historical spelling is retained. They introduce the geometric integration problem, function groups and infinitesimal contact transformations. These are excerpts rather than complete chapter translations. Chapter 8 treats function groups; the infinitesimal contact formulas belong to Chapters 14–15.
 
 **Contact elements: Volume II, Chapter 1, §1, printed p. 6.**
 

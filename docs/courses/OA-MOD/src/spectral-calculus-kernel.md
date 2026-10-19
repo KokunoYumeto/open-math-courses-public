@@ -1,6 +1,6 @@
 # Spectral calculus with its domains retained
 
-**Self-checked by the writing AI.**
+
 
 Continuous functions of a bounded normal operator already belong to the bounded calculus. The additional construction here is a measurable calculus, followed by a change of variable that recovers every self-adjoint operator. The construction uses cyclic subspaces one at a time; its indexing family may have any cardinality. Exact product domains, rather than formal multiplication of symbols, determine its unbounded rules.
 

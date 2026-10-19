@@ -1,6 +1,6 @@
 # Subgroups, quotients and annihilators
 
-**Lesson HA-LCA-10.** Self-checked by the writing AI.
+**Lesson HA-LCA-10.**
 
 Let \(G\) be an arbitrary locally compact Hausdorff abelian group, \(H\) a closed subgroup, \(Q=G/H\), and \(q:G\to Q\) the quotient map. Put \(\Gamma=\widehat G\). The quotient is LCA and \(q\) is open by [HA-LCA-09, Lemma 6.0](the-pontryagin-duality-theorem.md#ha-lca-09-lemma-6-0). The subgroup \(H\) is LCA: intersect a compact identity neighbourhood of \(G\) with the closed set \(H\). We use Pontryagin evaluation to identify every LCA group with its bidual, as proved in [HA-LCA-09, Theorem 2.1](the-pontryagin-duality-theorem.md#ha-lca-09-theorem-2-1). Fourier transforms have negative sign.
 
@@ -13,7 +13,7 @@ For a subset of \(\Gamma\), use the same notation for its annihilator in \(G\). 
 
 The free mathematical sources are Dikran Dikranjan, [*Introduction to Topological Groups*](https://users.dimi.uniud.it/~dikran.dikranjan/ITG.pdf), version 26 February 2018, Lemma 7.2.5, §§8.1–8.2, Lemma 12.3.5 and §§12.4.2, 12.5; D. H. Fremlin, [*Measure Theory*, §§443P–Q](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex), version 14 January 2013; Pekka Salmi, [*Idempotent states on locally compact groups and quantum groups*, §§2–3](https://arxiv.org/pdf/1209.0314v1), 3 September 2012; and Keith Conrad, [*The Character Group of \(\mathbb Q\)*, §2 and Appendix A](https://kconrad.math.uconn.edu/blurbs/gradnumthy/characterQ.pdf), for the \(p\)-adic example. The topology notes' contents have stale page numbers; the relevant printed pages for §§8.1–8.2 and §12.5 are 51–54 and 97.
 
-Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 2001 and original notices are retained in the unchanged volume 4 source package. The other cited works are linked, not reproduced.
+Written by GPT-6 Astra (OpenAI), October 2026. Original text: public domain (CC0). Fremlin's copyright 2001 and original notices are retained in the unchanged volume 4 source package. The other cited works are linked, not reproduced.
 
 ## 1. Compact lifts and double annihilation
 

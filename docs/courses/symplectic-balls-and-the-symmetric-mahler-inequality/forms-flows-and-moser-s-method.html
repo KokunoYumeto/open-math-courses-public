@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forms, flows and Moser&#x27;s method</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Symplectic balls and the symmetric Mahler inequality)</a><a href="polar-bodies-and-the-volume-product.html">Previous lesson</a><a href="plurisubharmonic-potentials.html">Next lesson</a><a href="src/forms-flows-and-moser-s-method.md">Editable source</a></nav><main><article><h1 id="forms-flows-and-moser-s-method">Forms, flows and Moser's method</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson collects the calculus of one-forms and two-forms on open subsets of <span class="math" data-tex="\(\mathbf R^N\)">\(\mathbf R^N\)</span> that the course needs, in the language of vectors and matrices: pullbacks, exterior derivatives of one-forms, closed and symplectic two-forms, the volume preserved by symplectic maps (Lemma 2.4), and Moser's method, which turns a compactly supported deformation of symplectic forms into a diffeomorphism (Theorem 2.8). Moser introduced the method for volume forms [Mo]. Solutions of differential equations and their smooth dependence on the initial data are taken from the programme lesson <a href="../DG-FND/local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools for bundles and transport</a>, Theorem 2.1, and the inverse function theorem from Theorem 1.2 of the same lesson.</p>
+<p>Throughout, <span class="math" data-tex="\(U\subseteq\mathbf R^N\)">\(U\subseteq\mathbf R^N\)</span> is open, &quot;smooth&quot; means infinitely differentiable, and vectors are columns.</p>
+<h2 id="1-one-forms-and-two-forms">1. One-forms and two-forms</h2>
+<p>A <em>one-form</em> on <span class="math" data-tex="\(U\)">\(U\)</span> is a smooth map <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> assigning to each <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span> a linear functional <span class="math" data-tex="\(\alpha(x)\)">\(\alpha(x)\)</span> on <span class="math" data-tex="\(\mathbf R^N\)">\(\mathbf R^N\)</span>; we write <span class="math" data-tex="\(\alpha=\sum_i\alpha_i\,dx_i\)">\(\alpha=\sum_i\alpha_i\,dx_i\)</span> with smooth coefficients, so that <span class="math" data-tex="\(\alpha(x)(X)=\sum_i\alpha_i(x)X_i\)">\(\alpha(x)(X)=\sum_i\alpha_i(x)X_i\)</span>. The <em>differential</em> of a smooth function is <span class="math" data-tex="\(d\varphi=\sum_i\partial_i\varphi\,dx_i\)">\(d\varphi=\sum_i\partial_i\varphi\,dx_i\)</span>. A <em>two-form</em> <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> assigns to each <span class="math" data-tex="\(x\)">\(x\)</span> a skew-symmetric bilinear form,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Omega(x)(X,Y)&amp;=X^{\mathsf T}\,\Omega(x)\,Y\\
+&amp;=\sum_{i,j}\Omega_{ij}(x)X_iY_j,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Omega(x)(X,Y)&amp;=X^{\mathsf T}\,\Omega(x)\,Y\\
+&amp;=\sum_{i,j}\Omega_{ij}(x)X_iY_j,
+\end{aligned}
+\]</span>
+where we use the same letter for the skew-symmetric matrix of smooth functions <span class="math" data-tex="\((\Omega_{ij})\)">\((\Omega_{ij})\)</span>. For one-forms, <span class="math" data-tex="\(\alpha\wedge\beta\)">\(\alpha\wedge\beta\)</span> is the two-form <span class="math" data-tex="\((X,Y)\mapsto\alpha(X)\beta(Y)-\alpha(Y)\beta(X)\)">\((X,Y)\mapsto\alpha(X)\beta(Y)-\alpha(Y)\beta(X)\)</span>; in particular <span class="math" data-tex="\(dx_i\wedge dx_j\)">\(dx_i\wedge dx_j\)</span> has the matrix <span class="math" data-tex="\(E_{ij}-E_{ji}\)">\(E_{ij}-E_{ji}\)</span>. The <em>exterior derivative</em> of a one-form is the two-form
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d\alpha&amp;=\sum_j d\alpha_j\wedge dx_j,\\
+(d\alpha)_{ij}&amp;=\partial_i\alpha_j-\partial_j\alpha_i.
+\end{aligned}
+\]">\[
+\begin{aligned}
+d\alpha&amp;=\sum_j d\alpha_j\wedge dx_j,\\
+(d\alpha)_{ij}&amp;=\partial_i\alpha_j-\partial_j\alpha_i.
+\end{aligned}
+\]</span>
+The symmetry of second derivatives gives <span class="math" data-tex="\(d(d\varphi)=0\)">\(d(d\varphi)=0\)</span>. A two-form is <em>closed</em> if
+<span class="math math-display" data-tex="\[
+\partial_i\Omega_{jk}+\partial_j\Omega_{ki}+\partial_k\Omega_{ij}=0\ \text{ for all }i,j,k;
+\]">\[
+\partial_i\Omega_{jk}+\partial_j\Omega_{ki}+\partial_k\Omega_{ij}=0\ \text{ for all }i,j,k;
+\]</span>
+a direct computation, using again the symmetry of second derivatives, shows that every <span class="math" data-tex="\(d\alpha\)">\(d\alpha\)</span> is closed. The <em>interior product</em> of a vector field <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is the one-form <span class="math" data-tex="\(\iota_Y\Omega=\Omega(Y,\cdot\,)\)">\(\iota_Y\Omega=\Omega(Y,\cdot\,)\)</span>, with components <span class="math" data-tex="\((\iota_Y\Omega)_j=\sum_kY_k\Omega_{kj}\)">\((\iota_Y\Omega)_j=\sum_kY_k\Omega_{kj}\)</span>. A two-form is <em>nondegenerate</em> if the matrix <span class="math" data-tex="\(\Omega(x)\)">\(\Omega(x)\)</span> is invertible at every point, and <em>symplectic</em> if it is closed and nondegenerate. On <span class="math" data-tex="\(\mathbf R^{2n}=\mathbf R^n_q\times\mathbf R^n_p\)">\(\mathbf R^{2n}=\mathbf R^n_q\times\mathbf R^n_p\)</span>, the standard symplectic form <span class="math" data-tex="\(\omega_0=\sum_jdq_j\wedge dp_j\)">\(\omega_0=\sum_jdq_j\wedge dp_j\)</span> has the matrix <span class="math" data-tex="\(J\)">\(J\)</span> of <a href="polar-bodies-and-the-volume-product.html">Polar bodies and the volume product</a>.</p>
+<p><strong>Pullbacks.</strong> Let <span class="math" data-tex="\(F:U\to U&#x27;\)">\(F:U\to U&#x27;\)</span> be smooth, <span class="math" data-tex="\(U&#x27;\subseteq\mathbf R^{N&#x27;}\)">\(U&#x27;\subseteq\mathbf R^{N&#x27;}\)</span> open. For a function, a one-form and a two-form on <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F^*\varphi=\varphi\circ F,\\
+(F^*\alpha)(x)(X)=\alpha(F(x))(DF(x)X),\\
+F^*\Omega(x)=DF(x)^{\mathsf T}\,\Omega(F(x))\,DF(x).
+\end{gathered}
+\]">\[
+\begin{gathered}
+F^*\varphi=\varphi\circ F,\\
+(F^*\alpha)(x)(X)=\alpha(F(x))(DF(x)X),\\
+F^*\Omega(x)=DF(x)^{\mathsf T}\,\Omega(F(x))\,DF(x).
+\end{gathered}
+\]</span>
+By the chain rule <span class="math" data-tex="\((G\circ F)^*=F^*G^*\)">\((G\circ F)^*=F^*G^*\)</span>, and <span class="math" data-tex="\(F^*\)">\(F^*\)</span> respects wedge products of one-forms. Thus a smooth map <span class="math" data-tex="\(e\)">\(e\)</span> is symplectic in the sense of the first lesson exactly when <span class="math" data-tex="\(e^*\omega_0=\omega_0\)">\(e^*\omega_0=\omega_0\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For smooth functions <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span>, smooth maps <span class="math" data-tex="\(F\)">\(F\)</span> and one-forms <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>:</p>
+<p>(a) <span class="math" data-tex="\(d(\varphi\,d\psi)=d\varphi\wedge d\psi\)">\(d(\varphi\,d\psi)=d\varphi\wedge d\psi\)</span>;</p>
+<p>(b) <span class="math" data-tex="\(F^*(d\varphi)=d(F^*\varphi)\)">\(F^*(d\varphi)=d(F^*\varphi)\)</span> and <span class="math" data-tex="\(F^*(d\alpha)=d(F^*\alpha)\)">\(F^*(d\alpha)=d(F^*\alpha)\)</span>.</p>
+<p><strong>Proof.</strong> (a) The components of <span class="math" data-tex="\(\varphi\,d\psi\)">\(\varphi\,d\psi\)</span> are <span class="math" data-tex="\(\varphi\,\partial_j\psi\)">\(\varphi\,\partial_j\psi\)</span>, and <span class="math" data-tex="\(\partial_i(\varphi\partial_j\psi)-\partial_j(\varphi\partial_i\psi)\)">\(\partial_i(\varphi\partial_j\psi)-\partial_j(\varphi\partial_i\psi)\)</span> equals <span class="math" data-tex="\(\partial_i\varphi\,\partial_j\psi-\partial_j\varphi\,\partial_i\psi\)">\(\partial_i\varphi\,\partial_j\psi-\partial_j\varphi\,\partial_i\psi\)</span>, the second derivatives of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> cancelling.</p>
+<p>(b) The first identity is the chain rule. For the second, write <span class="math" data-tex="\(\alpha=\sum_j\alpha_j\,dx_j\)">\(\alpha=\sum_j\alpha_j\,dx_j\)</span>; then <span class="math" data-tex="\(F^*\alpha=\sum_j(\alpha_j\circ F)\,d(x_j\circ F)\)">\(F^*\alpha=\sum_j(\alpha_j\circ F)\,d(x_j\circ F)\)</span>. By (a), the first identity, and the definition of <span class="math" data-tex="\(d\alpha\)">\(d\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d(F^*\alpha)&amp;=\sum_jF^*(d\alpha_j)\wedge F^*(dx_j)\\
+&amp;=F^*\Bigl(\sum_jd\alpha_j\wedge dx_j\Bigr)\\
+&amp;=F^*(d\alpha).\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+d(F^*\alpha)&amp;=\sum_jF^*(d\alpha_j)\wedge F^*(dx_j)\\
+&amp;=F^*\Bigl(\sum_jd\alpha_j\wedge dx_j\Bigr)\\
+&amp;=F^*(d\alpha).\qquad\square
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(F:U\to\mathbf R^N\)">\(F:U\to\mathbf R^N\)</span> be smooth and injective with <span class="math" data-tex="\(DF(x)\)">\(DF(x)\)</span> invertible for every <span class="math" data-tex="\(x\)">\(x\)</span>. Then <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span> is open and <span class="math" data-tex="\(F\)">\(F\)</span> is a diffeomorphism of <span class="math" data-tex="\(U\)">\(U\)</span> onto <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span>.</p>
+<p><strong>Proof.</strong> By the inverse function theorem (<a href="../DG-FND/local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools for bundles and transport</a>, Theorem 1.2), every point of <span class="math" data-tex="\(U\)">\(U\)</span> has a neighbourhood that <span class="math" data-tex="\(F\)">\(F\)</span> maps diffeomorphically onto an open set. So <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span> is open, and the inverse of the injective map <span class="math" data-tex="\(F\)">\(F\)</span> agrees near each point with one of these local inverses, hence is smooth. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-volume">2. Volume</h2>
+<p>For a skew-symmetric <span class="math" data-tex="\(2n\times2n\)">\(2n\times2n\)</span> matrix <span class="math" data-tex="\(A\)">\(A\)</span>, put
+<span class="math math-display" data-tex="\[
+\operatorname{Pf}(A)=\frac1{2^nn!}\sum_{\sigma}\operatorname{sgn}\sigma\prod_{i=1}^nA_{\sigma(2i-1)\sigma(2i)},
+\]">\[
+\operatorname{Pf}(A)=\frac1{2^nn!}\sum_{\sigma}\operatorname{sgn}\sigma\prod_{i=1}^nA_{\sigma(2i-1)\sigma(2i)},
+\]</span>
+the sum over all permutations <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(\{1,\dots,2n\}\)">\(\{1,\dots,2n\}\)</span>.</p>
+<p><strong>Lemma 2.3.</strong> <span class="math" data-tex="\(\operatorname{Pf}(M^{\mathsf T}AM)=\det(M)\operatorname{Pf}(A)\)">\(\operatorname{Pf}(M^{\mathsf T}AM)=\det(M)\operatorname{Pf}(A)\)</span> for every real <span class="math" data-tex="\(2n\times2n\)">\(2n\times2n\)</span> matrix <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(\operatorname{Pf}(J)=(-1)^{n(n-1)/2}\)">\(\operatorname{Pf}(J)=(-1)^{n(n-1)/2}\)</span>.</p>
+<p><strong>Proof.</strong> Expanding the entries <span class="math" data-tex="\((M^{\mathsf T}AM)_{ab}=\sum_{k,l}M_{ka}A_{kl}M_{lb}\)">\((M^{\mathsf T}AM)_{ab}=\sum_{k,l}M_{ka}A_{kl}M_{lb}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2^nn!\operatorname{Pf}(M^{\mathsf T}AM)=\sum_{k_1,l_1,\dots,k_n,l_n}\prod_iA_{k_il_i}\\
+&amp;\quad\cdot\sum_\sigma\operatorname{sgn}(\sigma)\prod_iM_{k_i\sigma(2i-1)}M_{l_i\sigma(2i)}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2^nn!\operatorname{Pf}(M^{\mathsf T}AM)=\sum_{k_1,l_1,\dots,k_n,l_n}\prod_iA_{k_il_i}\\
+&amp;\quad\cdot\sum_\sigma\operatorname{sgn}(\sigma)\prod_iM_{k_i\sigma(2i-1)}M_{l_i\sigma(2i)}.
+\end{aligned}
+\]</span>
+The inner sum is the determinant of the matrix whose rows are the rows <span class="math" data-tex="\(k_1,l_1,\dots,k_n,l_n\)">\(k_1,l_1,\dots,k_n,l_n\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>. It vanishes unless these indices form a permutation <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(\{1,\dots,2n\}\)">\(\{1,\dots,2n\}\)</span>, and then it equals <span class="math" data-tex="\(\operatorname{sgn}(\tau)\det M\)">\(\operatorname{sgn}(\tau)\det M\)</span>; the remaining sum over <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is <span class="math" data-tex="\(2^nn!\operatorname{Pf}(A)\)">\(2^nn!\operatorname{Pf}(A)\)</span>. For <span class="math" data-tex="\(J\)">\(J\)</span>, the only nonzero entries are <span class="math" data-tex="\(J_{j,n+j}=1\)">\(J_{j,n+j}=1\)</span> and <span class="math" data-tex="\(J_{n+j,j}=-1\)">\(J_{n+j,j}=-1\)</span>. Each of the <span class="math" data-tex="\(2^nn!\)">\(2^nn!\)</span> permutations that pair every <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(n+j\)">\(n+j\)</span> contributes the same term, the sign of the reordering <span class="math" data-tex="\((1,n+1,2,n+2,\dots,n,2n)\)">\((1,n+1,2,n+2,\dots,n,2n)\)</span>, which is <span class="math" data-tex="\((-1)^{n(n-1)/2}\)">\((-1)^{n(n-1)/2}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.4.</strong> (a) If <span class="math" data-tex="\(M\)">\(M\)</span> is a <span class="math" data-tex="\(2n\times2n\)">\(2n\times2n\)</span> matrix with <span class="math" data-tex="\(M^{\mathsf T}JM=J\)">\(M^{\mathsf T}JM=J\)</span>, then <span class="math" data-tex="\(\det M=1\)">\(\det M=1\)</span>.</p>
+<p>(b) Let <span class="math" data-tex="\(e:U\to\mathbf R^{2n}\)">\(e:U\to\mathbf R^{2n}\)</span> be an injective smooth map on an open set <span class="math" data-tex="\(U\subseteq\mathbf R^{2n}\)">\(U\subseteq\mathbf R^{2n}\)</span> with <span class="math" data-tex="\(e^*\omega_0=\omega_0\)">\(e^*\omega_0=\omega_0\)</span>. Then <span class="math" data-tex="\(e(U)\)">\(e(U)\)</span> is open and <span class="math" data-tex="\(\operatorname{vol}(e(U))=\operatorname{vol}(U)\)">\(\operatorname{vol}(e(U))=\operatorname{vol}(U)\)</span>.</p>
+<p>(c) <span class="math" data-tex="\(\operatorname{vol}(B^{2n}(c))=c^n/n!\)">\(\operatorname{vol}(B^{2n}(c))=c^n/n!\)</span>.</p>
+<p><strong>Proof.</strong> (a) Lemma 2.3 gives <span class="math" data-tex="\(\operatorname{Pf}(J)=\det(M)\operatorname{Pf}(J)\)">\(\operatorname{Pf}(J)=\det(M)\operatorname{Pf}(J)\)</span>, and <span class="math" data-tex="\(\operatorname{Pf}(J)\ne0\)">\(\operatorname{Pf}(J)\ne0\)</span>.</p>
+<p>(b) By (a), <span class="math" data-tex="\(\det De=1\)">\(\det De=1\)</span> everywhere, so Lemma 2.2 applies, and the change of variables formula (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>; <a href="https://www1.essex.ac.uk/maths/people/fremlin/cont26.htm">Fremlin, <em>Measure Theory</em>, Volume 2, Theorem 263D</a>) gives <span class="math" data-tex="\(\operatorname{vol}(e(U))=\int_U|\det De|=\operatorname{vol}(U)\)">\(\operatorname{vol}(e(U))=\int_U|\det De|=\operatorname{vol}(U)\)</span>.</p>
+<p>(c) The unit ball of <span class="math" data-tex="\(\mathbf R^{2n}\)">\(\mathbf R^{2n}\)</span> has volume <span class="math" data-tex="\(\pi^n/n!\)">\(\pi^n/n!\)</span> (<a href="https://www1.essex.ac.uk/maths/people/fremlin/cont25.htm">Fremlin, <em>Measure Theory</em>, Volume 2, 252Q</a>); the ball <span class="math" data-tex="\(B^{2n}(c)\)">\(B^{2n}(c)\)</span> has radius <span class="math" data-tex="\(\sqrt{c/\pi}\)">\(\sqrt{c/\pi}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Rescalings.</strong> For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, the dilation <span class="math" data-tex="\(D_s(z)=sz\)">\(D_s(z)=sz\)</span> satisfies <span class="math" data-tex="\(D_s^*\omega_0=s^2\omega_0\)">\(D_s^*\omega_0=s^2\omega_0\)</span>, the map <span class="math" data-tex="\(L_s(q,p)=(q,p/s)\)">\(L_s(q,p)=(q,p/s)\)</span> satisfies <span class="math" data-tex="\(L_s^*\omega_0=s^{-1}\omega_0\)">\(L_s^*\omega_0=s^{-1}\omega_0\)</span>, and <span class="math" data-tex="\(Q_s(q,p)=(q/s,p)\)">\(Q_s(q,p)=(q/s,p)\)</span> satisfies <span class="math" data-tex="\(Q_s^*\omega_0=s^{-1}\omega_0\)">\(Q_s^*\omega_0=s^{-1}\omega_0\)</span>. The dilation <span class="math" data-tex="\(D_{\sqrt s}\)">\(D_{\sqrt s}\)</span> maps <span class="math" data-tex="\(B^{2n}(c)\)">\(B^{2n}(c)\)</span> onto <span class="math" data-tex="\(B^{2n}(sc)\)">\(B^{2n}(sc)\)</span>.</p>
+<h2 id="3-lie-derivatives-and-flows">3. Lie derivatives and flows</h2>
+<p>For a vector field <span class="math" data-tex="\(Y\)">\(Y\)</span> and a two-form <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, define the <em>Lie derivative</em> <span class="math" data-tex="\(L_Y\Omega\)">\(L_Y\Omega\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(L_Y\Omega)_{ij}=\sum_k\bigl(&amp;Y_k\,\partial_k\Omega_{ij}+\Omega_{kj}\,\partial_iY_k\\
+&amp;+\Omega_{ik}\,\partial_jY_k\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(L_Y\Omega)_{ij}=\sum_k\bigl(&amp;Y_k\,\partial_k\Omega_{ij}+\Omega_{kj}\,\partial_iY_k\\
+&amp;+\Omega_{ik}\,\partial_jY_k\bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 2.5</strong> (Cartan's formula for closed forms). If <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is closed, then <span class="math" data-tex="\(L_Y\Omega=d(\iota_Y\Omega)\)">\(L_Y\Omega=d(\iota_Y\Omega)\)</span>.</p>
+<p><strong>Proof.</strong> With <span class="math" data-tex="\((\iota_Y\Omega)_j=\sum_kY_k\Omega_{kj}\)">\((\iota_Y\Omega)_j=\sum_kY_k\Omega_{kj}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\partial_i(\iota_Y\Omega)_j-\partial_j(\iota_Y\Omega)_i\\
+&amp;=\sum_k\bigl(\Omega_{kj}\partial_iY_k-\Omega_{ki}\partial_jY_k\\
+&amp;\qquad+Y_k(\partial_i\Omega_{kj}-\partial_j\Omega_{ki})\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\partial_i(\iota_Y\Omega)_j-\partial_j(\iota_Y\Omega)_i\\
+&amp;=\sum_k\bigl(\Omega_{kj}\partial_iY_k-\Omega_{ki}\partial_jY_k\\
+&amp;\qquad+Y_k(\partial_i\Omega_{kj}-\partial_j\Omega_{ki})\bigr).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is skew, <span class="math" data-tex="\(-\Omega_{ki}=\Omega_{ik}\)">\(-\Omega_{ki}=\Omega_{ik}\)</span>, and closedness with skew-symmetry gives <span class="math" data-tex="\(\partial_i\Omega_{kj}-\partial_j\Omega_{ki}=\partial_i\Omega_{kj}+\partial_j\Omega_{ik}\)">\(\partial_i\Omega_{kj}-\partial_j\Omega_{ki}=\partial_i\Omega_{kj}+\partial_j\Omega_{ik}\)</span>, which is <span class="math" data-tex="\(-\partial_k\Omega_{ji}=\partial_k\Omega_{ij}\)">\(-\partial_k\Omega_{ji}=\partial_k\Omega_{ij}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.6</strong> (compactly supported flows). Let <span class="math" data-tex="\(I\)">\(I\)</span> be an open interval containing <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(C\subset\mathbf R^N\)">\(C\subset\mathbf R^N\)</span> compact, and <span class="math" data-tex="\(Y:I\times\mathbf R^N\to\mathbf R^N\)">\(Y:I\times\mathbf R^N\to\mathbf R^N\)</span> smooth with <span class="math" data-tex="\(Y_s(x)=Y(s,x)=0\)">\(Y_s(x)=Y(s,x)=0\)</span> for <span class="math" data-tex="\(x\notin C\)">\(x\notin C\)</span>. There is a smooth map <span class="math" data-tex="\((s,x)\mapsto\varphi_s(x)\)">\((s,x)\mapsto\varphi_s(x)\)</span> on <span class="math" data-tex="\([0,1]\times\mathbf R^N\)">\([0,1]\times\mathbf R^N\)</span> with <span class="math" data-tex="\(\varphi_0(x)=x\)">\(\varphi_0(x)=x\)</span> and <span class="math" data-tex="\(\partial_s\varphi_s(x)=Y_s(\varphi_s(x))\)">\(\partial_s\varphi_s(x)=Y_s(\varphi_s(x))\)</span>. Each <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> is a diffeomorphism of <span class="math" data-tex="\(\mathbf R^N\)">\(\mathbf R^N\)</span> that fixes every point outside <span class="math" data-tex="\(C\)">\(C\)</span> and maps <span class="math" data-tex="\(C\)">\(C\)</span> onto <span class="math" data-tex="\(C\)">\(C\)</span>, and <span class="math" data-tex="\(\partial_sD\varphi_s(x)=DY_s(\varphi_s(x))\,D\varphi_s(x)\)">\(\partial_sD\varphi_s(x)=DY_s(\varphi_s(x))\,D\varphi_s(x)\)</span>.</p>
+<p><strong>Proof.</strong> By Theorem 2.1 of the programme lesson cited above, every initial value problem <span class="math" data-tex="\(y&#x27;=Y(s,y)\)">\(y&#x27;=Y(s,y)\)</span>, <span class="math" data-tex="\(y(s_0)=y_0\)">\(y(s_0)=y_0\)</span>, has a unique local solution, depending smoothly on <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(s_0\)">\(s_0\)</span> and <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. If <span class="math" data-tex="\(y_0\notin C\)">\(y_0\notin C\)</span>, the constant curve is a solution; so a solution that is outside <span class="math" data-tex="\(C\)">\(C\)</span> at one time is constant, and a solution that starts in <span class="math" data-tex="\(C\)">\(C\)</span> stays in <span class="math" data-tex="\(C\)">\(C\)</span>. A maximal solution with values in the compact set <span class="math" data-tex="\(C\)">\(C\)</span>, whose derivative is bounded by <span class="math" data-tex="\(\max|Y|\)">\(\max|Y|\)</span> over <span class="math" data-tex="\([0,1]\times C\)">\([0,1]\times C\)</span>, has a limit at each finite end of its interval and can be continued there; so every solution starting at time <span class="math" data-tex="\(0\)">\(0\)</span> exists on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Define <span class="math" data-tex="\(\varphi_s(x)\)">\(\varphi_s(x)\)</span> as its value at time <span class="math" data-tex="\(s\)">\(s\)</span>. Covering the compact set <span class="math" data-tex="\([0,1]\times C\)">\([0,1]\times C\)</span> by finitely many neighbourhoods on which the local solutions depend smoothly on the data, and writing <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> as a composition of finitely many such local solution maps, shows that <span class="math" data-tex="\((s,x)\mapsto\varphi_s(x)\)">\((s,x)\mapsto\varphi_s(x)\)</span> is smooth. Solving backwards from time <span class="math" data-tex="\(s\)">\(s\)</span> gives an inverse of <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span>, smooth for the same reason, and the map <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> is a bijection of <span class="math" data-tex="\(C\)">\(C\)</span> and the identity outside <span class="math" data-tex="\(C\)">\(C\)</span>. Differentiating the equation <span class="math" data-tex="\(\partial_s\varphi_s(x)=Y_s(\varphi_s(x))\)">\(\partial_s\varphi_s(x)=Y_s(\varphi_s(x))\)</span> in <span class="math" data-tex="\(x\)">\(x\)</span>, and exchanging the derivatives in <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span>, gives the last formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.7.</strong> Let <span class="math" data-tex="\(V\subseteq\mathbf R^N\)">\(V\subseteq\mathbf R^N\)</span> be open, <span class="math" data-tex="\(\Omega_s\)">\(\Omega_s\)</span> a family of two-forms on <span class="math" data-tex="\(V\)">\(V\)</span> that is smooth in <span class="math" data-tex="\((s,x)\in I\times V\)">\((s,x)\in I\times V\)</span>, and <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> as in Lemma 2.6 with <span class="math" data-tex="\(C\subset V\)">\(C\subset V\)</span>. Then each <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> maps <span class="math" data-tex="\(V\)">\(V\)</span> onto itself, and
+<span class="math math-display" data-tex="\[
+\frac{d}{ds}\bigl(\varphi_s^*\Omega_s\bigr)=\varphi_s^*\bigl(\partial_s\Omega_s+L_{Y_s}\Omega_s\bigr).
+\]">\[
+\frac{d}{ds}\bigl(\varphi_s^*\Omega_s\bigr)=\varphi_s^*\bigl(\partial_s\Omega_s+L_{Y_s}\Omega_s\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> The first statement holds because <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> fixes <span class="math" data-tex="\(V\setminus C\)">\(V\setminus C\)</span> and maps <span class="math" data-tex="\(C\)">\(C\)</span> onto itself. Write <span class="math" data-tex="\(\Phi=D\varphi_s(x)\)">\(\Phi=D\varphi_s(x)\)</span> and <span class="math" data-tex="\(y=\varphi_s(x)\)">\(y=\varphi_s(x)\)</span>. By the product rule and Lemma 2.6,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{d}{ds}\bigl(\Phi^{\mathsf T}\Omega_s(y)\Phi\bigr)\\
+&amp;\quad=\Phi^{\mathsf T}\Bigl(\partial_s\Omega_s+\sum_kY_k\partial_k\Omega_s\Bigr)(y)\,\Phi\\
+&amp;\qquad+\Phi^{\mathsf T}\bigl(DY_s^{\mathsf T}\Omega_s+\Omega_sDY_s\bigr)(y)\,\Phi.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{d}{ds}\bigl(\Phi^{\mathsf T}\Omega_s(y)\Phi\bigr)\\
+&amp;\quad=\Phi^{\mathsf T}\Bigl(\partial_s\Omega_s+\sum_kY_k\partial_k\Omega_s\Bigr)(y)\,\Phi\\
+&amp;\qquad+\Phi^{\mathsf T}\bigl(DY_s^{\mathsf T}\Omega_s+\Omega_sDY_s\bigr)(y)\,\Phi.
+\end{aligned}
+\]</span>
+The <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> entry of <span class="math" data-tex="\(DY^{\mathsf T}\Omega+\Omega\,DY\)">\(DY^{\mathsf T}\Omega+\Omega\,DY\)</span> is <span class="math" data-tex="\(\sum_k(\partial_iY_k\,\Omega_{kj}+\Omega_{ik}\,\partial_jY_k)\)">\(\sum_k(\partial_iY_k\,\Omega_{kj}+\Omega_{ik}\,\partial_jY_k)\)</span>, so the bracket is <span class="math" data-tex="\(\partial_s\Omega_s+L_{Y_s}\Omega_s\)">\(\partial_s\Omega_s+L_{Y_s}\Omega_s\)</span>, evaluated at <span class="math" data-tex="\(y\)">\(y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-moser-s-method">4. Moser's method</h2>
+<p><strong>Theorem 2.8</strong> (Moser). Let <span class="math" data-tex="\(V\subseteq\mathbf R^N\)">\(V\subseteq\mathbf R^N\)</span> be open and <span class="math" data-tex="\(\Omega_s\)">\(\Omega_s\)</span>, <span class="math" data-tex="\(s\in I\)">\(s\in I\)</span>, symplectic forms on <span class="math" data-tex="\(V\)">\(V\)</span>, smooth in <span class="math" data-tex="\((s,x)\)">\((s,x)\)</span>, with <span class="math" data-tex="\(\partial_s\Omega_s=d\gamma_s\)">\(\partial_s\Omega_s=d\gamma_s\)</span> for one-forms <span class="math" data-tex="\(\gamma_s\)">\(\gamma_s\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>, smooth in <span class="math" data-tex="\((s,x)\)">\((s,x)\)</span>, that all vanish outside a fixed compact set <span class="math" data-tex="\(C\subset V\)">\(C\subset V\)</span>. Then there is a diffeomorphism <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span> onto itself, equal to the identity outside <span class="math" data-tex="\(C\)">\(C\)</span>, with <span class="math" data-tex="\(\varphi^*\Omega_1=\Omega_0\)">\(\varphi^*\Omega_1=\Omega_0\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\Omega_s(x)\)">\(\Omega_s(x)\)</span> is invertible, the equation <span class="math" data-tex="\(\iota_{Y_s}\Omega_s=-\gamma_s\)">\(\iota_{Y_s}\Omega_s=-\gamma_s\)</span>, that is <span class="math" data-tex="\(\Omega_s(x)^{\mathsf T}Y_s(x)=-\gamma_s(x)\)">\(\Omega_s(x)^{\mathsf T}Y_s(x)=-\gamma_s(x)\)</span> for the column of coefficients of <span class="math" data-tex="\(\gamma_s\)">\(\gamma_s\)</span>, has a unique solution <span class="math" data-tex="\(Y_s(x)\)">\(Y_s(x)\)</span>, smooth in <span class="math" data-tex="\((s,x)\)">\((s,x)\)</span> and zero outside <span class="math" data-tex="\(C\)">\(C\)</span>. Extended by zero outside <span class="math" data-tex="\(V\)">\(V\)</span>, it is smooth on <span class="math" data-tex="\(I\times\mathbf R^N\)">\(I\times\mathbf R^N\)</span>, because every point outside <span class="math" data-tex="\(V\)">\(V\)</span> has a neighbourhood disjoint from the compact set <span class="math" data-tex="\(C\)">\(C\)</span>. Let <span class="math" data-tex="\(\varphi_s\)">\(\varphi_s\)</span> be its flow (Lemma 2.6). By Lemma 2.7, Lemma 2.5 (each <span class="math" data-tex="\(\Omega_s\)">\(\Omega_s\)</span> is closed) and <span class="math" data-tex="\(\partial_s\Omega_s=d\gamma_s\)">\(\partial_s\Omega_s=d\gamma_s\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac d{ds}\bigl(\varphi_s^*\Omega_s\bigr)&amp;=\varphi_s^*\bigl(d\gamma_s+d(\iota_{Y_s}\Omega_s)\bigr)\\
+&amp;=\varphi_s^*(d\gamma_s-d\gamma_s)=0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac d{ds}\bigl(\varphi_s^*\Omega_s\bigr)&amp;=\varphi_s^*\bigl(d\gamma_s+d(\iota_{Y_s}\Omega_s)\bigr)\\
+&amp;=\varphi_s^*(d\gamma_s-d\gamma_s)=0.
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(\varphi_1^*\Omega_1=\varphi_0^*\Omega_0=\Omega_0\)">\(\varphi_1^*\Omega_1=\varphi_0^*\Omega_0=\Omega_0\)</span>, and <span class="math" data-tex="\(\varphi=\varphi_1\)">\(\varphi=\varphi_1\)</span> has the required properties. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The common compact support of the forms <span class="math" data-tex="\(\gamma_s\)">\(\gamma_s\)</span> is what makes the flow exist up to time <span class="math" data-tex="\(1\)">\(1\)</span>; no compactness of <span class="math" data-tex="\(V\)">\(V\)</span> and no regularity of its boundary is needed.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>2.1</strong> (easy). Show that <span class="math" data-tex="\(d\alpha\)">\(d\alpha\)</span> is closed for every one-form <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>2.2</strong> (easy). Check the three rescaling identities, and show that <span class="math" data-tex="\(D_{\sqrt s}\circ L\circ D_{\sqrt{1/s}}\)">\(D_{\sqrt s}\circ L\circ D_{\sqrt{1/s}}\)</span> is symplectic for every linear symplectic map <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>2.3</strong> (medium). On <span class="math" data-tex="\(\mathbf R^2\)">\(\mathbf R^2\)</span>, let <span class="math" data-tex="\(\Omega_s=(1+s\,\partial_x\partial_y\beta)\,dx\wedge dy\)">\(\Omega_s=(1+s\,\partial_x\partial_y\beta)\,dx\wedge dy\)</span> for a smooth compactly supported function <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(|\partial_x\partial_y\beta|&lt;\frac12\)">\(|\partial_x\partial_y\beta|&lt;\frac12\)</span>. Write <span class="math" data-tex="\(\partial_s\Omega_s\)">\(\partial_s\Omega_s\)</span> as <span class="math" data-tex="\(d\gamma\)">\(d\gamma\)</span> with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> compactly supported, and describe the vector field <span class="math" data-tex="\(Y_s\)">\(Y_s\)</span> of the proof of Theorem 2.8.</p>
+<p><strong>2.4</strong> (easy). Show that <span class="math" data-tex="\(\operatorname{Pf}(A)^2=\det A\)">\(\operatorname{Pf}(A)^2=\det A\)</span> for <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> and <span class="math" data-tex="\(4\times4\)">\(4\times4\)</span> skew-symmetric matrices <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>2.1.</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\partial_i(\partial_j\alpha_k-\partial_k\alpha_j)+\partial_j(\partial_k\alpha_i-\partial_i\alpha_k)\\
+&amp;\quad+\partial_k(\partial_i\alpha_j-\partial_j\alpha_i)=0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\partial_i(\partial_j\alpha_k-\partial_k\alpha_j)+\partial_j(\partial_k\alpha_i-\partial_i\alpha_k)\\
+&amp;\quad+\partial_k(\partial_i\alpha_j-\partial_j\alpha_i)=0,
+\end{aligned}
+\]</span>
+the six terms cancelling in pairs.</p>
+<p><strong>2.2.</strong> <span class="math" data-tex="\(DD_s=sI\)">\(DD_s=sI\)</span>, so <span class="math" data-tex="\(D_s^*\omega_0\)">\(D_s^*\omega_0\)</span> has the matrix <span class="math" data-tex="\(s^2J\)">\(s^2J\)</span>; <span class="math" data-tex="\(DL_s=\operatorname{diag}(I,s^{-1}I)\)">\(DL_s=\operatorname{diag}(I,s^{-1}I)\)</span> and <span class="math" data-tex="\(DQ_s=\operatorname{diag}(s^{-1}I,I)\)">\(DQ_s=\operatorname{diag}(s^{-1}I,I)\)</span> give <span class="math" data-tex="\(s^{-1}J\)">\(s^{-1}J\)</span>. The composition has the derivative <span class="math" data-tex="\(L\)">\(L\)</span> (the scalars cancel), and <span class="math" data-tex="\(L^{\mathsf T}JL=J\)">\(L^{\mathsf T}JL=J\)</span>.</p>
+<p><strong>2.3.</strong> <span class="math" data-tex="\(\partial_s\Omega_s=\partial_x\partial_y\beta\,dx\wedge dy=d\gamma\)">\(\partial_s\Omega_s=\partial_x\partial_y\beta\,dx\wedge dy=d\gamma\)</span> with <span class="math" data-tex="\(\gamma=\partial_y\beta\,dy\)">\(\gamma=\partial_y\beta\,dy\)</span>, since <span class="math" data-tex="\(d(\partial_y\beta\,dy)=\partial_x\partial_y\beta\,dx\wedge dy\)">\(d(\partial_y\beta\,dy)=\partial_x\partial_y\beta\,dx\wedge dy\)</span>; <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> vanishes outside the support of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. With <span class="math" data-tex="\(f_s=1+s\,\partial_x\partial_y\beta&gt;\frac12\)">\(f_s=1+s\,\partial_x\partial_y\beta&gt;\frac12\)</span>, the condition <span class="math" data-tex="\(\Omega_s(Y,\cdot)=-\gamma\)">\(\Omega_s(Y,\cdot)=-\gamma\)</span> reads <span class="math" data-tex="\(f_s(Y_1\,dy-Y_2\,dx)=-\partial_y\beta\,dy\)">\(f_s(Y_1\,dy-Y_2\,dx)=-\partial_y\beta\,dy\)</span>, so <span class="math" data-tex="\(Y_s=(-\partial_y\beta/f_s,\,0)\)">\(Y_s=(-\partial_y\beta/f_s,\,0)\)</span>.</p>
+<p><strong>2.4.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(\operatorname{Pf}(A)=A_{12}\)">\(\operatorname{Pf}(A)=A_{12}\)</span> and <span class="math" data-tex="\(\det A=A_{12}^2\)">\(\det A=A_{12}^2\)</span>. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(\operatorname{Pf}(A)=A_{12}A_{34}-A_{13}A_{24}+A_{14}A_{23}\)">\(\operatorname{Pf}(A)=A_{12}A_{34}-A_{13}A_{24}+A_{14}A_{23}\)</span>, and expanding <span class="math" data-tex="\(\det A\)">\(\det A\)</span> gives its square.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-SB] OpenAI, <em>Symplectic balls in symmetric polar products</em>, OpenAI Math Release preprint, 22 September 2026, Section 2. https://github.com/openai/math/tree/main/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026</li>
+<li>[Mo] J. Moser, <em>On the volume elements on a manifold</em>, Transactions of the American Mathematical Society 120 (1965), 286–294. https://doi.org/10.1090/S0002-9947-1965-0182927-5</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

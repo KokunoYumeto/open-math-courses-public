@@ -4,9 +4,7 @@ The real-cutoff energy proof uses a cancellation that fails for a complex cutoff
 
 The antecedent is Hörmander IV, Proposition 26.6.1′ and its proof, printed page 120 of the admitted 2009 edition. The printed statement does not repeat the real-valued assumption used in the preceding proof. Our [real-cutoff lesson](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) proves that case with the actual measured data. This companion proves the local derivative estimate, the exact complex commutator reduction and the pointwise absorption bound. Its geometric estimates are inputs to [the unrestricted complex-cutoff proof](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html).
 
-The proof map pins the earlier metric calculus, operator bounds, real-cutoff argument and elementary Taylor proofs. Original expression, exercises and figure are CC0-1.0. All approved books remain valid sources; the human foundations are still external, so internal export P514 closure remains unclaimed.
-
-## 1. Keep the exact shrinking-support hypotheses
+The proof map pins the earlier metric calculus, operator bounds, real-cutoff argument and elementary Taylor proofs. Original expression, exercises and figure are CC0-1.0. ## 1. Keep the exact shrinking-support hypotheses
 
 **H0. Symbols, sign and the weak order.** Put \(x=(t,y)\), \(\xi=(\tau,\eta)\), \(w=\langle\xi\rangle\), and
 

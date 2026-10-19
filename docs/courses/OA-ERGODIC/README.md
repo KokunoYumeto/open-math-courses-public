@@ -1,6 +1,6 @@
 # Measured relations and operator algebras
 
-This course develops ergodic actions, measured orbit relations, Krieger algebras, diagonal normalizers, groupoid cocycles, isotropy, finite approximation and amenability. Its 57 lessons contain 496 graded exercises with complete solutions and 81 editable mathematical diagrams.
+This course develops ergodic actions, measured orbit relations, Krieger algebras, diagonal normalizers, groupoid cocycles, isotropy, finite approximation and amenability. Its 57 lessons contain 499 graded exercises with complete solutions and 83 editable mathematical diagrams.
 
 Start with [Orbits, stabilizers, and relation algebras](src/orbits-stabilizers-and-relation-algebras.md), then follow the [HTML reader](reader/index.html). The Markdown lessons can be read on GitHub. For the typeset offline edition, download this directory and open `reader/index.html`; bundled KaTeX styles and fonts require no JavaScript.
 

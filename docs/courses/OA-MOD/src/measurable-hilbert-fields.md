@@ -1,6 +1,6 @@
 # Measurable Hilbert fields and their diagonal commutant
 
-**Self-checked by the writing AI.**
+
 
 A Hilbert field needs a specified measurable structure. Fibrewise isometries alone do not determine one. We construct the structure from countable Gram data, choose measurable orthonormal bases through changing dimensions, and realize the fibres as closed subspaces of one ambient Hilbert space. We then construct the exact Hilbert direct integral and prove that commuting with all scalar multiplication operators is equivalent to being a bounded decomposable operator. The last proof constructs the fibre operators explicitly from countably many localized vectors.
 

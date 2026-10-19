@@ -1,8 +1,8 @@
 # Tensor products and parameter-dependent distributions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 Two independent singular measurements should combine into a measurement on a product space. Knowing its value on separated tests is only the beginning: a general test function need not be a product. This lesson constructs the combined distribution, proves that the order of the two pairings does not matter, and identifies its support exactly. Parameter-dependent pairings also explain a support condition that cannot be omitted.
 

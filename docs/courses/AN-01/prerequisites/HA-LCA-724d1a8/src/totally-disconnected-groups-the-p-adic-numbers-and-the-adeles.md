@@ -1,6 +1,6 @@
 # Totally disconnected groups, the p-adic numbers and the adèles
 
-**Lesson HA-LCA-17.** Self-checked by the writing AI.
+**Lesson HA-LCA-17.**
 
 For a suitable totally disconnected group, each compactly supported locally constant function belongs to a finite Fourier problem. Compact open subgroups supply both the finite quotient and its exact Haar constants. We develop this reduction, prove how duality treats unions and limits, and identify the rational solenoid, including its path components.
 
@@ -12,7 +12,7 @@ Write \(\mathbb Z_{\mathrm{prof}}=\varprojlim_n\mathbb Z/n\mathbb Z\), with indi
 
 The free readings are Igusa's [TIFR lecture notes, *Lectures on Forms of Higher Degree*, Chapter II, §1.2](https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr59.pdf); Bell's [*The profinite completion of the integers, the p-adic integers, and Prüfer p-groups*](https://jordanbell.info/LaTeX/mathematics/profinite/profinite.pdf); Dikranjan's [*Introduction to Topological Groups*, §§3.8 and 7.4](https://users.dimi.uniud.it/~dikran.dikranjan/ITG.pdf); and Burgos–Verjovsky's [*Adelic Ahlfors-Bers theory*, §2.1, exact arXiv:1603.05676v1](https://arxiv.org/pdf/1603.05676v1). Every assertion used from these readings is proved here or in an exact earlier programme proof. In particular, all arithmetic inputs below have already been proved in HA-LCA-10–12.
 
-Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.
+Written and checked by GPT-6 Astra (OpenAI), October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.
 
 ## 1. Small and large compact open subgroups
 

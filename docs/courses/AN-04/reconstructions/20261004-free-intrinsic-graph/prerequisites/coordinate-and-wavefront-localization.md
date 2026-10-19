@@ -32,7 +32,7 @@ The compact parameter integral and integration-by-parts arguments use
 the earlier U001 contract FTC-TAYLOR-COMPACT-PARAMETERS and the exact
 [P17.2–P17.5 proofs](../../20261004-free-stationary-phase/global-integral-prerequisite-completions.md).
 Compact chart substitution is proved in
-U001 P21.3–P21.4.
+[U001 P21.3–P21.4](../../20261004-free-stationary-phase/change-of-variables-prerequisite-completions.md).
 No new theorem about general distribution kernels
 or arbitrary smooth-map pullbacks is assumed.
 

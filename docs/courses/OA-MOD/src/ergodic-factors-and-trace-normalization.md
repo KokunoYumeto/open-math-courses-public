@@ -1,6 +1,6 @@
 # Ergodic factors and trace normalization
 
-**Self-checked by the writing AI.**
+
 
 A finite invariant functional rules out the trace-scaling freedom of an automorphism on a semifinite factor. Once this is proved, ergodicity forces its possibly unbounded trace density to be scalar. The source target is Takesaki, *Theory of Operator Algebras II*, Exercise VIII.3(4). Exercises VIII.3(5) and (9) retain their separate solution obligations.
 

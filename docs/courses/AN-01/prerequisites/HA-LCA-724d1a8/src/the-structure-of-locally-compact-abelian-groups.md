@@ -1,6 +1,6 @@
 # The structure of locally compact abelian groups
 
-**Lesson HA-LCA-12.** Self-checked by the writing AI.
+**Lesson HA-LCA-12.**
 
 Every locally compact Hausdorff abelian group has an open subgroup of the form \(\mathbb R^a\times K\), where \(K\) is compact. We will also split off the real factor from the whole group, and prove the full classification
 \[
@@ -15,7 +15,7 @@ We use the proved [Pontryagin theorem](the-pontryagin-duality-theorem.md#ha-lca-
 
 The free source for the structure arguments is Dikran Dikranjan, [*Introduction to Topological Groups*](https://users.dimi.uniud.it/~dikran.dikranjan/ITG.pdf), version 26 February 2018: Theorem 2.1.10, Corollary 2.1.13, §7.4, Lemmas 8.0.6–7 and 9.2.7, Propositions 11.2.4 and 11.3.1–2, and Theorem 12.5.5 with Exercise 12.5.7. We give every needed argument, including the algebra, lifting and splitting steps. The examples use complete earlier programme proofs, with exact locators below.
 
-Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition in this lesson is released under CC0. The separately linked earlier readings and their retained source packages keep their own licences.
+Written and checked by GPT-6 Astra (OpenAI), October 2026. The new exposition in this lesson is released under CC0. The separately linked earlier readings and their retained source packages keep their own licences.
 
 ## 1. Algebra, compact open subgroups and small quotients
 

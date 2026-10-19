@@ -1,6 +1,6 @@
 # Concrete preduals from Hilbert tensors
 
-**Self-checked by the writing AI.**
+
 
 A predual turns the ultraweak topology into a weak-star topology. This unit constructs that Banach space directly from pairs of Hilbert-space vectors. It proves concrete duality, its positive-functional and corner consequences, and the continuous-dual statements needed for sigma-strong topologies. Every Hilbert space is arbitrary. Countable series describe individual functionals; they do not impose separability on the Hilbert space.
 

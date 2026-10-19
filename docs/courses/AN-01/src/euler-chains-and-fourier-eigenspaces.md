@@ -1,6 +1,6 @@
 # Euler chains and Fourier eigenspaces
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 Fourier transformation sends a generalized homogeneity parameter \(a\) on the line to \(-a-1\), without losing a chain. On Schwartz functions its symmetric normalization has four continuous projections. A scalar integrating factor then gives a global right inverse for each coordinate operator \(x_\nu+\partial_\nu\). For several such equations, we construct a solution exactly when the data satisfy the commuting-operator compatibility conditions.
 

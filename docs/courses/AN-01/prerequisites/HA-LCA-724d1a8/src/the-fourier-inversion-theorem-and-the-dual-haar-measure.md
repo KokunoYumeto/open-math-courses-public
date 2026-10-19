@@ -1,6 +1,6 @@
 # The Fourier inversion theorem and the dual Haar measure
 
-**Lesson HA-LCA-07.** Self-checked by the writing AI.
+**Lesson HA-LCA-07.**
 
 Fix a locally compact Hausdorff abelian group \(G\) and a Haar measure \(dx\) on its complete locally determined domain. No countability assumption is made. Its dual \(\Gamma=\widehat G\) is locally compact by [HA-LCA-02, Theorem 5.2](characters-and-the-dual-group.md#ha-lca-02-theorem-5-2). We write \(G\) additively and multiply characters in \(\Gamma\). Our conventions are
 \[
@@ -13,7 +13,7 @@ By [HA-LCA-06, Proposition 4.1](bochners-theorem.md#ha-lca-06-proposition-4-1), 
 
 The freely accessible source for the construction is D. H. Fremlin, [*Measure Theory*, §445P–Q, version of 20 March 2008](https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex). We give the measure-representation step on arbitrary groups and extend the argument from integrable positive-type functions to all of \(B^1(G)\). The sign in (1) determines every formula below.
 
-Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
+Written by GPT-6 Astra (OpenAI), October 2026. Original text: public domain (CC0). Fremlin's copyright 1998 and original notices are retained in the unchanged original source package.
 
 The exact earlier proof tools are these:
 

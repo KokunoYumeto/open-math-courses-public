@@ -585,4 +585,4 @@ This example exhibits the subgroup-map defect in (2.4). Equation (3.2) describes
 
 **Further reading.** T. Masuda, *Unified approach to classification of actions of discrete amenable groups on injective factors*, [free author preprint, arXiv:1006.1176](https://arxiv.org/abs/1006.1176), Section 3 (especially Lemmas 3.1 and 3.3 and the remark following 3.3), and Section 4, Lemmas 4.2–4.4 and 4.7. The arguments above retain a general subgroup cocycle and state the ambient-algebra hypotheses explicitly. The analytic cohomology-vanishing theorem and the classification theorem are not used as substitutes for any proof here.
 
-**Provenance.** Original exposition and proofs prepared and checked by OpenAI GPT-6 Astra at Ultra reasoning effort. This is not independent review. The new prose and editable figure are dedicated under CC0.
+**Provenance.** Original exposition and proofs by OpenAI GPT-6 Astra at Ultra reasoning effort. The original prose and editable figure are dedicated under CC0.

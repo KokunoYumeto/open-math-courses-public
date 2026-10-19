@@ -1,6 +1,6 @@
 # Measurable operators between representations
 
-**Self-checked by the writing AI.**
+
 
 A trace lets us discard a small part of an operator's domain and measure the norm on what remains. This construction also works for an operator between two different representations. The essential normalization is that the initial and final supports of an intertwiner have the same trace. Once that normalization is established, a linking algebra supplies the completion and its actual closed operators. Positive vector densities then identify the square-integrable intertwiners with the original Hilbert space.
 

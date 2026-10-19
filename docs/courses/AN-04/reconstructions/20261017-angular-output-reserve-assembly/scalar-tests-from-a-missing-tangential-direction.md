@@ -2,7 +2,7 @@
 
 A residual test may have a nontrivial kernel at the double boundary corner even when its microsupport is empty. This proof retains that kernel and puts its output in tangential directions avoided by the finite-order target. A frequency-dependent isometry supplies the output space on the original boundary. Normal cutoffs destroy exact orthogonality, so their full error is estimated as a quadratic form in the original Banach norm.
 
-The [global full calculus](../20261005-global-boundary-operators/global-boundary-operator-calculus.html), complete family reduction, global residual factor and [tangential-equator assembly](../20261017-global-tangential-equator-assembly/one-scalar-test-when-all-boundary-tangential-directions-are-allowed.html) fix the conventions and earlier interfaces.
+The [global full calculus](../20261005-global-boundary-operators/global-boundary-operator-calculus.html), [complete family reduction](../20261017-global-finite-family-reduction/global-finite-order-families-and-residual-tests.html), [global residual factor](../20261017-global-boundary-residual-factors/global-scalar-factors-for-boundary-residuals.html) and [tangential-equator assembly](../20261017-global-tangential-equator-assembly/one-scalar-test-when-all-boundary-tangential-directions-are-allowed.html) fix the conventions and earlier interfaces.
 
 ## 1. The scalar family problem
 

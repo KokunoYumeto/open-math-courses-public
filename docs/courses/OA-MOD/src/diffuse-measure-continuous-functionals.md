@@ -1,6 +1,6 @@
 # What a functional can detect in measure
 
-**Self-checked by the writing AI.**
+
 
 A measure neighborhood allows arbitrary size on a sufficiently small projection. A continuous linear functional must therefore vanish on every operator supported there. In a diffuse algebra, splitting finite projections turns this local observation into a description of the entire continuous dual.
 

@@ -130,7 +130,7 @@ The right side is already known to be bounded and complex constructible by (7). 
  \tag{11}
 \]
 
-For clarity, the bounded-Hom contract on a real manifold of dimension at most $2N$ sends inputs in $[a',b']$ and $[c',d']$ to the sufficient range $[c'-b',d'-a'+6N+g+1]$. Apply it to (5)–(6) and $\omega_X\in[-2N,0]$. It gives $D_XE\in[a-g-2N,b+8N+g+1]$. Ordinary direct image is left exact, so (10) further gives the coarse uniform bound $Rj_*F\in[a,b+8N+g+1]$. Sharp local bounds are often much smaller. This numerical estimate exhibits a single global bound; stalkwise boundedness alone would not establish membership in $D^b$.
+For clarity, the [bounded-Hom contract](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-bounded-hom--boundedness-for-arbitrary-bounded-inputs) on a real manifold of dimension at most $2N$ sends inputs in $[a',b']$ and $[c',d']$ to the sufficient range $[c'-b',d'-a'+6N+g+1]$. Apply it to (5)–(6) and $\omega_X\in[-2N,0]$. It gives $D_XE\in[a-g-2N,b+8N+g+1]$. Ordinary direct image is left exact, so (10) further gives the coarse uniform bound $Rj_*F\in[a,b+8N+g+1]$. Sharp local bounds are often much smaller. This numerical estimate exhibits a single global bound; stalkwise boundedness alone would not establish membership in $D^b$.
 
 No biduality on $X$ was used to prove (11). The only biduality input was (9) on the already constructible object $F$ on $U$. We first verified constructibility of $E$, then of its dual, and only then identified that dual with $Rj_*F$. This order avoids assuming the desired output finiteness inside the proof.
 
@@ -426,7 +426,7 @@ On an $n$-dimensional component, the manifold normalization is
  \tag{7}
 \]
 
-For the constant sheaf $k_X$, the coordinate-ball support calculation gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
+For the constant sheaf $k_X$, the [coordinate-ball support calculation](../sheaf-proof-readings/src/SH02/manifold-duality.md#sh02-md-euclidean--the-compact-support-generator) gives $A_x(k_X)=k$ and $C_x(k_X)=\operatorname{or}_{X,x}[-n]$. Hence its ordinary local index is $1$, while its costalk index is $(-1)^n$. No global orientation is needed to count the dimension of the orientation line.
 
 ## Global indices require a separate finiteness check
 

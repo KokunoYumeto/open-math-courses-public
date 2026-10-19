@@ -428,7 +428,7 @@ Pull the cocycle back to line multipliers. This preserves strong continuity, sin
 \[
  c_s(q)=e^{-its}a(q)^*a(q-s).
 \]
-This proves that evaluation \(c\mapsto c_P\) has precisely the coboundaries as its kernel. It is a continuous homomorphism and is onto the scalar circle, already on scalar characters. The cocycle group is Polish by Section 4, so the proved Polish open-mapping theorem identifies its quotient with \(\mathbb T\). Finally \([t]\mapsto e^{-iPt}\) identifies \(\mathbb R/T\mathbb Z\) with that circle, since \(PT=2\pi\). This proves (CS28), its topology, and closedness of the coboundaries. The periodic-core lesson develops the represented compact crossing and lifting problem from these facts.
+This proves that evaluation \(c\mapsto c_P\) has precisely the coboundaries as its kernel. It is a continuous homomorphism and is onto the scalar circle, already on scalar characters. The cocycle group is Polish by Section 4, so the proved Polish open-mapping theorem identifies its quotient with \(\mathbb T\). Finally \([t]\mapsto e^{-iPt}\) identifies \(\mathbb R/T\mathbb Z\) with that circle, since \(PT=2\pi\). This proves (CS28), its topology, and closedness of the coboundaries. The [periodic-core lesson](OA-FLOW-PSQ.md#ps-monodromy) develops the represented compact crossing and lifting problem from these facts.
 
 These results make \(H\) Polish in every non-III0 factor case. In type III0 the exact criterion remains closedness of \(B\) in \(Z\); no assertion that every such \(H\) is non-Hausdorff follows from the general theorem.
 

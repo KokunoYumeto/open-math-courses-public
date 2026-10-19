@@ -1,6 +1,6 @@
 # Every bounded functional becomes normal in one representation
 
-The exact theorem and prerequisites follow. OA-MOD-UB-02–09 build the canonical structure, normal extension, central kernel and functorial maps. The current prerequisite binding, normal-inverse details and supported-representation example are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0. Earlier course authorship is retained.
+The exact theorem and prerequisites follow. OA-MOD-UB-02–09 build the canonical structure, normal extension, central kernel and functorial maps. The normal-inverse argument and supported-representation example include contributions by GPT-6 Astra (OpenAI), under CC0; other contributions are credited in the component notices.
 
 Let \(A\) be any complex C*-algebra, including a nonunital or zero algebra.
 Write \(j_A:A\to A^{**}\) for the Banach evaluation embedding,

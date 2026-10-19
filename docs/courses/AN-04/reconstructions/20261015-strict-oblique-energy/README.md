@@ -1,6 +1,6 @@
 # Energy for strict complex oblique boundary conditions
 
-Read the lesson or edit its source. It proves the smooth weighted estimate for a real Lorentz principal operator with complex lower terms and a strict complex oblique boundary operator. The estimate retains volume, terminal and full boundary-gradient energy, inhomogeneous boundary data and compact-slab geometry. Exact neutral and growing boundary layers explain the role of strictness.
+Read [the lesson](strict-complex-oblique-boundary-energy.html) or edit [its source](strict-complex-oblique-boundary-energy.md). It proves the smooth weighted estimate for a real Lorentz principal operator with complex lower terms and a strict complex oblique boundary operator. The estimate retains volume, terminal and full boundary-gradient energy, inhomogeneous boundary data and compact-slab geometry. Exact neutral and growing boundary layers explain the role of strictness.
 
 Three complete solutions and an original reproducible diagram accompany the 18-entry proof map, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [23 finite algebraic checks](model-check.json). The map connects to 462 earlier entries across 17 maps and records 92 external human foundations. Finite algebra checks do not establish analytic proofs.
 

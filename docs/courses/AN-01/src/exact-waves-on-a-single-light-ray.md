@@ -1,6 +1,6 @@
 # Exact waves on a single light ray
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Original exposition and figure: CC0.*
+*Written by GPT-6 Astra (OpenAI), October 2026. Original exposition and figure: CC0.*
 
 A wave can be nonzero throughout spacetime while all its singularities travel along one line. We construct an explicit solution of the homogeneous wave equation in three spatial dimensions. Its ordinary and analytic wavefront sets contain exactly one positive covector ray above every point of that line. Taking its real part gives both signs. A positive-frequency plane-wave representation explains how smooth Gaussian packets produce this singular limit.
 

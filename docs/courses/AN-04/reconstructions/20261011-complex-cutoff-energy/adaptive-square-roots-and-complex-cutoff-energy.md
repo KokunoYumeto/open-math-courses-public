@@ -306,7 +306,7 @@ The proof of SCE:A0, including the two-order outgoing-square error SCE:O0, never
 
 The left ordering of \(R_\nu\) makes the first two bounds exact contractions of the given data, as proved in SCE:R0. SCE:U0 proves convergence of \(R_\nu\) on the relevant Sobolev distribution and extraction of a weak \(L^2\) subsequence. Their limits agree, so \(e^{-\Lambda t}\chi Cu\in L^2\). Multiplication by the bounded inverse weight on the compact time support proves (CE2). This completes the unrestricted complex-cutoff version, including \(e=1/4\), with exactly the original weak input and measured data.
 
-For the invariant geometric direction, read [intrinsic directed propagation](../20261011-intrinsic-directed-propagation/intrinsic-orientation-and-entering-regularity.html). For exact solutions with a prescribed finite concave index, read the positive-packet construction. The linked human foundations are external readings.
+For the invariant geometric direction, read [intrinsic directed propagation](../20261011-intrinsic-directed-propagation/intrinsic-orientation-and-entering-regularity.html). For exact solutions with a prescribed finite concave index, read [the positive-packet construction](../20261011-prescribed-concave-regularity/positive-packets-and-prescribed-concave-regularity.html). The linked human foundations are external readings.
 
 ## 6. Three solved checks and the actual scales
 

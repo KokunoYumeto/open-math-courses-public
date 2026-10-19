@@ -2,7 +2,7 @@
 
 A two-component quadratic form gives three useful tests: positivity of an operator matrix, positivity of a matrix of normal functionals, and membership of a vector matrix in the standard positive cone. The same scalar inequality drives all three tests, but the positions of the entries and the supports of the diagonal terms matter. We develop that common mechanism first, then construct the matrix standard form needed for the cone test.
 
-**Self-checked by the writing AI.** Inner products are linear in the first variable. The algebra \(M\) is a von Neumann algebra; its Hilbert space and predual need not be separable. Only PX07 assumes a faithful bounded normal positive functional. The other results include zero and nonfaithful diagonal terms.
+Inner products are linear in the first variable. The algebra \(M\) is a von Neumann algebra; its Hilbert space and predual need not be separable. Only PX07 assumes a faithful bounded normal positive functional. The other results include zero and nonfaithful diagonal terms.
 
 The same results are treated in Masamichi Takesaki, *Theory of Operator Algebras II*, Exercise IX.1(12). The proofs below use the earlier programme arguments linked at their points of use. PX02 identifies the correct diagonal entries, PX03 supplies the support condition missing from the printed uniqueness claim, and PX07–08 correct and test the order of the off-diagonal arguments in the printed cone inequality.
 

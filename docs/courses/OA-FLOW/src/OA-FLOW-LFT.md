@@ -432,13 +432,71 @@ The translation and modulation identities hold on all of \(L^2\), by the scalar 
 \]
 No Fourier integral has been interchanged with an arbitrary infinite orbit-matrix sum.
 
-We also need the entire image algebra. The functions \(a\mapsto a^{-it}\) generate every bounded Borel function of \(a\in L\). One explicit verification uses only \(t=1/n\): the continuous map
+### Recover the height from countably many characters
+
+We also need the entire image algebra. Put \(a=\lambda_y>0\) and \(r=\log a\). The characters with \(t=1/n\) already recover this coordinate. In fact the continuous map
 \[
- r\longmapsto(e^{-ir/n})_{n\ge1}\quad
-     \text{from }\mathbb R\text{ to }\mathbb T^{\mathbb N}
+ \iota:\mathbb R\longrightarrow\mathbb T^{\mathbb N},
+ \qquad \iota(r)=(e^{-ir/n})_{n\ge1}
 \tag{LFT4.j}
 \]
-is injective, since a nonzero difference cannot be an integer multiple of \(2\pi n\) for every sufficiently large \(n\). Its image is Borel and its inverse on that image is Borel by the [Borel image and inverse theorem](../../NCG-FOLIATIONS/companions/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-06). Spectral projections of the real and imaginary coordinate multipliers belong to their generated von Neumann algebra by the [bounded Borel spectral calculus](OA-FLOW-SF.md#oa-flow.sf1.spectral-calculus). The class of sets whose characteristic multipliers belong is closed under complements and countable disjoint unions, using bounded strong limits. A monotone-class argument therefore gives every Borel function of \(r\), and hence every bounded Borel function of \(a=e^r\).
+has the explicit inverse
+\[
+ r=\lim_{n\to\infty}s_n(r),\qquad
+ s_n(r)=n\sin(r/n),\qquad
+ |s_n(r)-r|\leq\frac{|r|^3}{6n^2}.
+\tag{LFT4.j1}
+\]
+For the estimate, the elementary trigonometric derivatives justified by the power series in [SF, SB-0](OA-FLOW-SF.md#oa-flow.sf.sb0) give \(\sin u=\int_0^u\cos v\,dv\), hence \(|\sin u|\leq|u|\). Integrating this bound gives \(|1-\cos u|\leq u^2/2\), and integrating once more gives \(|\sin u-u|\leq|u|^3/6\). This proves (LFT4.j1), including negative \(r\). In particular \(\iota\) is injective.
+
+Its image and inverse can also be described by countably many Borel tests. For \(z=(z_n)\in\mathbb T^{\mathbb N}\), put \(t_n(z)=-n\operatorname{Im}z_n\), and let
+\[
+ D=\bigcap_{m\ge1}\ \bigcup_{N\ge1}\
+       \bigcap_{n,k\ge N}
+       \{z:|t_n(z)-t_k(z)|<1/m\}.
+\tag{LFT4.j2}
+\]
+Each \(t_n\) is continuous, so \(D\) is Borel. Real completeness says that \(D\) is exactly the set where \(t_n(z)\) has a finite real limit. The limit \(\ell(z)\) is Borel on \(D\): for each real \(c\),
+\[
+ \{z\in D:\ell(z)>c\}
+  =D\cap\bigcup_{m\ge1}\ \bigcup_{N\ge1}\
+       \bigcap_{n\ge N}\{z:t_n(z)>c+1/m\}.
+\]
+Extend \(\ell\) by zero outside \(D\). Then
+\[
+ \iota(\mathbb R)
+   =D\cap\bigcap_{k\ge1}\{z:z_k=e^{-i\ell(z)/k}\},
+ \qquad \iota^{-1}(z)=\ell(z).
+\tag{LFT4.j3}
+\]
+The right side is Borel. Both inclusions follow directly from (LFT4.j1) and the displayed coordinate equalities. Thus this particular character map has a proved Borel image and inverse.
+
+For the operator conclusion, a bounded approximation avoids treating an unbounded logarithm as a bounded strong limit. Let
+\[
+ \mathcal A=\{U_n:n\ge1\}'',\qquad
+ U_n=W\Lambda(1/n)W^*=M_{a^{-i/n}},\qquad
+ S_n=-\frac{n}{2i}(U_n-U_n^*)=M_{s_n(r)}.
+\]
+Each \(S_n\) is bounded self-adjoint and belongs to \(\mathcal A\). Set \(q(u)=u/(1+|u|)\). The [bounded Borel spectral calculus](OA-FLOW-SF.md#oa-flow.sf1.spectral-calculus) gives \(q(S_n)\in\mathcal A\) and \(\|q(S_n)\|\leq1\). By (LFT4.j1) and [dominated convergence](OA-FLOW-SC.md#sc-05), for every \(\eta\in\widetilde H\),
+\[
+ \|(q(S_n)-M_{q(r)})\eta\|^2
+  =\int_{E\times L}|q(s_n(r))-q(r)|^2|\eta|^2\,
+                         d\nu_r\,d\lambda\longrightarrow0.
+\tag{LFT4.j4}
+\]
+The integrable dominating function is \(4|\eta|^2\); no finite total measure or uniform bound on \(r\) is required. Strong closedness gives \(B=M_{q(r)}\in\mathcal A\).
+
+Given any bounded Borel \(f:(0,\infty)\to\mathbb C\), define the bounded Borel function
+\[
+ g_f(b)=
+ \begin{cases}
+ f\!\left(\exp\!\left(\dfrac{b}{1-|b|}\right)\right),& |b|<1,\\
+ 0,& |b|\ge1.
+ \end{cases}
+ \qquad g_f(B)=M_{f(a)}\in\mathcal A.
+\tag{LFT4.j5}
+\]
+Indeed \(q(r)\in(-1,1)\) and \(q^{-1}(b)=b/(1-|b|)\) there. The spectral projections of \(B\) at the endpoints \(1,-1\) are zero, since \(q(r)\) never takes either value; the chosen endpoint values of \(g_f\) therefore cause no ambiguity. This proves that the characters generate every bounded Borel function of the positive height.
 
 Together with \(\widetilde\pi(f(y))\), these multipliers give every \(\widetilde\pi(F)\) for \(F\in L^\infty(X\times L,\mu\,d\lambda)\). To see the joint assertion, rectangle indicators belong; their finite intersections are again rectangles. Complements and disjoint bounded strong sums give a lambda-system, so the [proved pi–lambda argument](OA-FLOW-L75.md#oa-flow.kernel.integration) gives all product Borel indicators. Simple approximation gives bounded functions, and completion only changes null representatives. The representation \(\widetilde\pi\) is normal and faithful by REL2 applied to the lifted system. Thus (LFT4.h) contains all lifted diagonal generators and all \(\widetilde u_g\). The reverse inclusion of generating algebras is already in (LFT4.h)–(LFT4.i), proving the spatial normal isomorphism
 \[

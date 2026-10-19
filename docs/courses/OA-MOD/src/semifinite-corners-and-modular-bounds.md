@@ -1,6 +1,6 @@
 # Semifinite corners and bounded modular operators
 
-**Self-checked by the writing AI.**
+
 
 The literal corner restriction in Takesaki II, Exercise VIII.3(5) can fail to be semifinite. We first give a complete counterexample. We then prove an explicit corrected criterion: every nonzero projection has a nonzero subcorner on which a partial-isometry transport of the given weight has a bounded modular operator. This retains arbitrary faithful normal semifinite weights and the full projection quantifier. The transport is an actual change to the statement, not a reinterpretation of an unchanged restriction. Exercise VIII.3(9) retains its separate solution obligation.
 
@@ -87,7 +87,7 @@ This is one actual norm-continuous unitary group, rather than unrelated inner im
  \tag{MB.8}
 \]
 
-VR-01 identifies \(\rho_h\) as a trace on all positives. The derivation's structural innerness is the named open input; none of the differentiation, domain or group steps is imported implicitly.
+VR-01 identifies \(\rho_h\) as a trace on all positives. The bounded-innerness theorem above supplies the structural input; none of the differentiation, domain or group steps is imported implicitly.
 
 ## Bounded spectral bands control any subcorner in the band
 

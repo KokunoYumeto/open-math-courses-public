@@ -1,8 +1,8 @@
 # Paths control supported distributions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 A distribution of order \(k\) is usually bounded using derivatives on a neighborhood of its support. Can we use only their values on the support itself? For a general closed set, nearby points can carry incompatible Taylor data, so the divided remainders in Whitney's norm are essential. Paths inside the set can control those remainders. The length of the paths determines how many derivatives are needed.
 

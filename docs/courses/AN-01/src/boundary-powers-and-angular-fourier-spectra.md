@@ -1,6 +1,6 @@
 # Boundary powers and angular Fourier spectra
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied programme foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied programme foundations retain their stated licences.*
 
 Parabolic boundary powers have spectra in a half-plane. Continuing their exponent through zero turns an ordinary density into derivatives of a point mass. Circular complex poles and trace-free spherical principal values instead have regular angular transforms. In each case the defining limit fixes the distribution at the singular set before its Fourier transform is computed.
 

@@ -1,6 +1,6 @@
 # Stationary concentration and point jets
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); supplied prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); supplied prerequisites retain their stated licences.*
 
 A scalar Gaussian detects a stationary point mass; a correlated planar Gaussian detects a mixed derivative that a product test misses. A cancelled phase requires a larger normalization, while a flat direction leaves concentration along a critical subspace. We measure these effects, prove the scalar and mixed strong limits, then derive every finite transverse-jet expansion for real symmetric quadratics and classify the surviving limits for every even scalar monomial amplitude.
 

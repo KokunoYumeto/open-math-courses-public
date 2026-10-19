@@ -1,0 +1,7 @@
+# Boundary barriers and degenerate analytic quotients
+
+Read [the lesson](boundary-barriers-and-degenerate-analytic-quotients.html) or edit [its source](boundary-barriers-and-degenerate-analytic-quotients.md). It proves a uniform rational boundary barrier, identifies exactly the collapsed zero intervals, constructs the actual quotient surface and proves holomorphic descent by a complete positive-perturbation limit. The final argument gives the intrinsic analytic structure on reduced characteristic leaves and the affine structure on conic ray quotients.
+
+The proof map binds 17 entries to 484 earlier entries in 21 maps, retaining 92 external human foundations. Three complete solutions, an original reproducible figure, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [31 exact checks](model-check.json) support review. Run python -B model_check.py for the finite identities; the topology and analytic proofs are in the lesson.
+
+[Uniform degenerate solvability](../20261011-degenerate-cr-solvability/uniform-solvability-and-degenerate-complex-coordinates.html) gives the nonvanishing complex coordinate used here. The [frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) use these uniform barriers in the propagation argument. Original expression is CC0-1.0; cited and linked components retain their own terms. 

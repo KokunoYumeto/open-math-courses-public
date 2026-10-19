@@ -159,7 +159,7 @@ The selector in (3.6) can have uncountably many possible values. Its completed-m
 
 **Proposition 3.2a (the compact selector needed for the converse).** Under the second countable group hypotheses of Theorem 3.2, let \(C\subset G\setminus\{e\}\) be compact. If the set \(E_C\) in that theorem has positive measure, there are a positive Borel subset \(E_0\subset E_C\) and a Borel map \(h:E_0\to C\) with \(h(x)x=x\) for every \(x\in E_0\). Thus the selector used in (3.6) and Theorem 4.6 can be constructed without an arbitrary-fibre measurable-section theorem.
 
-*Proof.* The compact model and its simultaneous point realization, Measurable actions and compact models, Theorems 4.1 and 4.4, give invariant conull Borel sets \(Z\subset X\) and \(\Omega_0\subset\Omega\), and a Borel isomorphism \(\phi:Z\to\Omega_0\) with
+*Proof.* The compact model and its simultaneous point realization, [Measurable actions and compact models, Theorems 4.1 and 4.4](measurable-actions-and-compact-models.md#4-the-compact-space-and-its-nonsingular-measure), give invariant conull Borel sets \(Z\subset X\) and \(\Omega_0\subset\Omega\), and a Borel isomorphism \(\phi:Z\to\Omega_0\) with
 \[
  \begin{aligned}
  \phi(gx)&=g\phi(x),\\
@@ -257,7 +257,7 @@ is compact and avoids the identity. Every \(x\in[-1,1]\) is fixed by \((2,-x)\in
 
 **Theorem 4.4 (measurable free actions).** For a jointly Borel nonsingular action of a second countable locally compact group on a standard sigma-finite measured space, condition (4.1) is equivalent to trivial stabilizers almost everywhere.
 
-*Proof.* Proposition 4.1 proves one direction. For the other, use the compact continuous model and its simultaneous point realization from Measurable actions and compact models, Theorems 4.1 and 4.4. There are invariant conull Borel subsets of the original space and the compact model that are exactly equivariantly isomorphic. Thus corresponding points have identical stabilizers.
+*Proof.* Proposition 4.1 proves one direction. For the other, use the compact continuous model and its simultaneous point realization from [Measurable actions and compact models](measurable-actions-and-compact-models.md), Theorems 4.1 and 4.4. There are invariant conull Borel subsets of the original space and the compact model that are exactly equivariantly isomorphic. Thus corresponding points have identical stabilizers.
 
 The free points of the compact model form a Borel set. Indeed, for each compact \(C\subset G\setminus\{e\}\), the set \(\{\omega:\text{some }s\in C\text{ fixes }\omega\}\) is closed, as the projection of the compact closed fixed-pair set in \(C\times\Omega\). A countable compact exhaustion of \(G\setminus\{e\}\) makes the nonfree points a countable union of such sets. The free set is invariant, and it is conull in this model under the hypothesis.
 

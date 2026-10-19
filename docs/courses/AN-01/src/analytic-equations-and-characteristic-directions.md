@@ -373,4 +373,4 @@ In a word \(\partial_{i_1}a_1\partial_{i_2}a_2\cdots a_{j-1}\partial_{i_j}v\), t
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, 2003 reprint, §8.6, Theorems 8.6.1, 8.6.5 and 8.6.6, Lemmas 8.6.2–8.6.4, and the two following examples ([edition](https://doi.org/10.1007/978-3-642-61497-2)). The exposition uses a finite weighted-seminorm proof for the ordered derivative estimate and supplies the full transpose, frequency split and support arguments. The characteristic-half-space converse is a separate theorem and is not asserted here.
 
-*AI-assisted exposition and reproducible illustration: GPT-6 Astra (OpenAI), Ultra. Original programme text and figures: CC0 1.0 to the extent rights exist. Earlier programme proofs retain their stated authorship and licences. Self-checked by the writing AI; no independent review.*
+*AI-assisted exposition and reproducible illustration: GPT-6 Astra (OpenAI). Original programme text and figures: CC0 1.0 to the extent rights exist. Earlier programme proofs retain their stated authorship and licences. *

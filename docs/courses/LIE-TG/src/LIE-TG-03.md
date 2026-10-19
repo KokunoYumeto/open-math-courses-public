@@ -1,6 +1,6 @@
 # One-parameter groups
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 A vector field specifies a velocity at every point. Its flow is the finite transformation obtained by following those velocities. For analytic fields, repeated differentiation gives a convergent series for the transformation. For a finite-dimensional transformation group, every element sufficiently close to the identity is obtained from these flows.
 

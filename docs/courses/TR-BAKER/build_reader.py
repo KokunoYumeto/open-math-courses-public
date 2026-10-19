@@ -112,7 +112,7 @@ def write_tex(unit, pandoc):
     tex = re.sub(r'\\begin\{(aligned|gathered)\}[\s\S]*?\\end\{\1\}', move_tag, tex)
     tex = tex.replace('\\begin{document}', '\\providecommand{\\Eta}{\\mathrm{H}}\n\\begin{document}', 1)
     if unit['internal_id'] == 'TR-BAKER-07':
-        # Retain the checked table widths of the previous editable edition.
+        # Column widths for the tables in Lesson 7.
         for old, new in [('0.1429', '0.14285'), ('0.0968', '0.1168'),
                          ('0.1290', '0.1261'), ('0.1579', '0.2299'), ('0.2105', '0.1925')]:
             tex = tex.replace('\\real{' + old + '}', '\\real{' + new + '}')

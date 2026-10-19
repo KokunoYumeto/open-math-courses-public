@@ -1,6 +1,6 @@
 # Tensor operators, their full domains, and tensor weights
 
-**Self-checked by the writing AI.**
+
 
 An algebraic tensor product supplies a core, rather than the final domain of an unbounded operator. We first determine its closure and adjoint. We then construct the tensor weight, including its nonfaithful support corner, and calculate its modular group. Hilbert spaces, representations and index sets are arbitrary throughout. Inner products are linear in their first variable.
 
@@ -299,4 +299,4 @@ This is graph convergence for the product, despite the infinite separate energy.
 
 **Problem: does the all-positive tensor formula follow from positive finite approximants below each input?** No such approximation was assumed. For example a diagonal trace-density weight can be infinite on a rank-one projection whose range vector lies outside its form domain; every nonzero positive operator below that projection has the same one-dimensional support and is still infinite. The proof in TG-05 instead uses dominated bounded normal functionals and their right-bounded implementing vectors. Those functionals recover every positive value by NW-11.
 
-The exact source correspondence is: TG-01/02 prove VIII.4.1; TG-03 supplies spatial transport; TG-04/05 construct VIII.4.2 including nonfaithful supports and prove VIII.4.3; TG-06 checks domains, signs and support distinctions. Source pages are printed 133–134, PDF pages 153–154 of the registered Takesaki II authority. These are original author arguments at the named course providers.
+The exact source correspondence is: TG-01/02 prove VIII.4.1; TG-03 supplies spatial transport; TG-04/05 construct VIII.4.2 including nonfaithful supports and prove VIII.4.3; TG-06 checks domains, signs and support distinctions. Source pages are printed 133–134, PDF pages 154–155 (one-based) of the registered Takesaki II authority. These are original author arguments at the named course providers.

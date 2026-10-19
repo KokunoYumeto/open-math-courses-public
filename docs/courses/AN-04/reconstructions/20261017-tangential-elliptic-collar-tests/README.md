@@ -1,6 +1,6 @@
 # Scalar collar tests with all tangential directions allowed
 
-Read the proof or edit its source. One scalar compact test controls the full collar-input portion of bounded finite-order families when the prescribed cone contains every tangential boundary direction. Normal directions may be excluded, and every boundary base point may be covered. A positive Gaussian sum of finite Fourier windows, a direct uniform weak-band estimate and exact front jets retain all residual kernels and the original Banach remainder.
+Read [the proof](scalar-collar-tests-with-all-tangential-directions-allowed.html) or edit [its source](scalar-collar-tests-with-all-tangential-directions-allowed.md). One scalar compact test controls the full collar-input portion of bounded finite-order families when the prescribed cone contains every tangential boundary direction. Normal directions may be excluded, and every boundary base point may be covered. A positive Gaussian sum of finite Fourier windows, a direct uniform weak-band estimate and exact front jets retain all residual kernels and the original Banach remainder.
 
 Three solved examples and a cone-and-kernel diagram accompany the 20-argument proof map, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [finite algebra checks](model-check.json). Run `python -B model_check.py` and `python -B figures/build_figure.py` for the supporting algebra and diagram. Full analytic proofs are in the lesson.
 

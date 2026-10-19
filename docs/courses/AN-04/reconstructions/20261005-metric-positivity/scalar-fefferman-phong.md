@@ -4,7 +4,7 @@ A nonnegative scalar symbol need not quantize to a nonnegative operator. The the
 
 This is a modified selection of AN03-U019, *When a nonnegative scalar symbol acquires a negative part*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Original text: CC0. See the rights notice.
+Original text: CC0. See the [rights notice](notices/RIGHTS.md).
 
 ## F0. Statement, conventions and exact earlier proofs
 
@@ -205,6 +205,6 @@ The upper panel shows the probability density \(|v_2(t)|^2\) in the actual logar
 
 The mathematical bodies of AN03-U019 Sections 5 and 7–9 through F41 are retained, with exact current prerequisite connections and the added verification MP5 of the classical metrics. The general scalar theorem, constant-form uniformity, finite-derivative dependence, cutoff limits, squared-localization weak sum and the classical range \(0\le\delta<\rho\le1\) are preserved. The source's separate endpoint extensions are not selected.
 
-The approved antecedents are Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, §18.6, Theorem 18.6.8 and its scalar splitting and constant-metric lemmas (printed 171–175; PDF 186–190), and Theorem 18.1.15 for the classical statement. The explicit programme proofs supply every required step; citations are attribution, not proof substitutes. MP6–MP7 are direct calculations in the Weyl convention already proved.
+The antecedents are Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, ISBN 978-3-540-49938-1, §18.6, Theorem 18.6.8 and its scalar splitting and constant-metric lemmas (printed 171–175; PDF 186–190), and Theorem 18.1.15 for the classical statement. The explicit programme proofs supply every required step; citations are attribution, not proof substitutes. MP6–MP7 are direct calculations in the Weyl convention already proved.
 
 For the boundary Cauchy receiver, a real nonnegative ordinary symbol \(b\in S^2_{1,0}\) therefore satisfies \((b^wu,u)\ge-C\|u\|^2\), uniformly for a family with bounded relevant seminorms. The symmetric part of left quantization obeys the same form bound, with the imaginary first correction retained as in F41. This completes that positivity prerequisite; the complete boundary-energy lesson and its remaining arguments still require their own review.

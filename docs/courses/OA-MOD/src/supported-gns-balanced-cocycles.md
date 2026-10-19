@@ -1,6 +1,6 @@
 # Supported GNS representations and the balanced cocycle
 
-**Self-checked by the writing AI.**
+
 
 A support projection cuts a corner out of the algebra. Its GNS representation must then be extended by the whole algebra if it is to represent the original weight. We first construct that extension by a matrix of inner products. Next, a weight on two-by-two matrices puts two modular groups on the diagonal and their comparison in an off-diagonal entry. The mixed strip condition and its exact uniqueness argument follow from this construction.
 

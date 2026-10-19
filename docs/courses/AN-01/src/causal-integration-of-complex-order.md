@@ -1,6 +1,6 @@
 # Causal integration of complex order
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition by GPT-6.1 Sol (OpenAI). Original exposition: CC0. Linked programme prerequisites retain their stated licences. Self-checked by the writing AI.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions by GPT-6.1 Sol (OpenAI). Original exposition: CC0. Linked programme prerequisites retain their stated licences. *
 
 A derivative on the whole line loses an integration constant. Causal support—vanishing before time zero—makes that constant impossible. We construct the resulting integration group for every complex order and every causal distribution. A beta integral proves its composition law, and a logarithmic distribution describes its infinitesimal change of order.
 
@@ -26,7 +26,7 @@ where \(\gamma=\lim_{N\to\infty}(\sum_{j=1}^Nj^{-1}-\log N)\). Its zeros are sim
 \tag{1.2}
 \]
 
-These facts include the integral \(\Gamma(a)=\int_0^\infty x^{a-1}e^{-x}\,dx\) for \(\operatorname{Re}a>0\). The foundation's licence and original selection history are retained with that proof.
+These facts include the integral \(\Gamma(a)=\int_0^\infty x^{a-1}e^{-x}\,dx\) for \(\operatorname{Re}a>0\). The foundation's credits and licence accompany that proof.
 
 The normalized family constructed in [Finite parts of singular powers](finite-parts-of-singular-powers.md), N1, is shifted by one:
 
@@ -262,7 +262,7 @@ Take \(0<\epsilon<1<R\) and \(0<\eta<\pi/2\). Let \(\Omega\) be the annular sect
 Its positively oriented boundary runs outward on angle \(\eta\), counterclockwise along the outer arc, inward on angle \(2\pi-\eta\), and clockwise along the inner arc. The function
 \(f(z)=z^{a-1}/(1+z)\) is holomorphic near its closure except at \(-1\).
 
-Here is the entire single-pole argument needed for this contour. Remove a closed disk of radius \(d\) about \(-1\), small enough to lie in \(\Omega\). The complex Green formula for finitely many regular arcs and corners, proved in Boundary flux and weak identities, Corollaries 2.3–2.4, applies to \(f\) on the remaining region. If compact support is needed, multiply by a smooth cutoff equal to one on a neighborhood of that region's closure; \(\bar\partial f=0\) there. Green's formula gives zero total boundary integral. The hole is clockwise, so the outer boundary integral equals the counterclockwise circle integral around \(-1\).
+Here is the entire single-pole argument needed for this contour. Remove a closed disk of radius \(d\) about \(-1\), small enough to lie in \(\Omega\). The complex Green formula for finitely many regular arcs and corners, proved in [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollaries 2.3–2.4, applies to \(f\) on the remaining region. If compact support is needed, multiply by a smooth cutoff equal to one on a neighborhood of that region's closure; \(\bar\partial f=0\) there. Green's formula gives zero total boundary integral. The hole is clockwise, so the outer boundary integral equals the counterclockwise circle integral around \(-1\).
 
 Write \(h(z)=z^{a-1}\), which is continuous near \(-1\). On \(z=-1+de^{it}\),
 \[
@@ -541,7 +541,7 @@ From \(F_1=K-\gamma\delta_0\) we get \((E+1)F_1=\delta_0\). Adding any finite su
 
 - [Gamma foundations](../prerequisites/U011-free-foundations/gamma-foundations-U016.md), G0–G2 and W4a–W4e: logarithmic powers, logarithmic integral bounds, dominated holomorphic differentiation, Euler integral and reciprocal product with all zeros and residues. This selected programme proof retains CC0 1.0 and its accompanying notices.
 - [Scalar foundations](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§13.1–13.9: chain rule and fundamental theorem, exponential series, real logarithms and full circle parameterization. [Integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.0–15.1: convergence, Tonelli, absolute Fubini and affine substitutions.
-- Boundary flux and weak identities, Corollaries 2.3–2.4: complex Green formula including arc endpoints and corners. [Cauchy kernels and boundary limits](cauchy-kernels-and-boundary-limits.md), Corollary 2.2, proves the local holomorphic power series; [Gluing holomorphic sides](gluing-holomorphic-sides.md), Lemma 3.2, proves the identity principle.
+- [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollaries 2.3–2.4: complex Green formula including arc endpoints and corners. [Cauchy kernels and boundary limits](cauchy-kernels-and-boundary-limits.md), Corollary 2.2, proves the local holomorphic power series; [Gluing holomorphic sides](gluing-holomorphic-sides.md), Lemma 3.2, proves the identity principle.
 - [Finite parts of singular powers](finite-parts-of-singular-powers.md), N1, Theorem 2.1 and Lemma J: normalized entire family, exact finite-part normalization and classification of point-supported distributions.
 - [Convolution as addition of supports](convolution-as-addition-of-supports.md), B0–B3, Theorems 1.1 and 3.1–3.2: compact localization, smooth parameter tests, tensors, proper-support convolution, derivatives, associativity and fixed-support continuity.
 - [Euler equations and the order of singularities](euler-equations-and-singularity-order.md), Lemma 4.1: strict local order bound, including the endpoint disjoint-annulus argument used in Solution 6.

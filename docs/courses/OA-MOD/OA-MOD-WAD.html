@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>State-weighted adjoints and modular compatibility · Modular theory and weights</title><link href="../../assets/site.css" rel="stylesheet"/><link href="reader.css" rel="stylesheet"/><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/state-weighted-adjoints-and-modular-compatibility.md">Editable Markdown</a></nav><article class="lesson"><h1 id="state-weighted-adjoints-and-modular-compatibility">State-weighted adjoints and modular compatibility</h1>
+<p>A completely positive map carries observables forward. Reversing its Hilbert-space pairing depends on how the state enters the inner product. Symmetric placement of the density gives a completely positive reverse map. The ordinary GNS inner product need not do so: its adjoint is positive exactly when the forward map respects the two modular groups.</p>
+<p>We prove this equivalence for all finite matrix sizes, compute a two-level example, and retain the full finite-tracial-algebra theorem used in matrix approximation. A final normalization check corrects a missing matrix-size factor in the printed proof of Takesaki III, Lemma XVI.1.11.</p>
+<h2 id="densities-pairings-and-completely-positive-maps"><span id="OA-MOD-WAD-01"></span><span id="oa-mod-wad-01"></span>Densities, pairings and completely positive maps</h2>
+<p>Write <span class="math" data-tex="\(M_m=M_m(\mathbb C)\)">\(M_m=M_m(\mathbb C)\)</span>, with <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and use the ordinary trace <span class="math" data-tex="\(\operatorname{Tr}_m\)">\(\operatorname{Tr}_m\)</span>. A state with density <span class="math" data-tex="\(h\)">\(h\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\varphi_h(x)=\operatorname{Tr}_m(hx),\qquad
+h\ge0,\quad\operatorname{Tr}_m(h)=1.
+\tag{WAD.1}
+\]">\[
+\varphi_h(x)=\operatorname{Tr}_m(hx),\qquad
+h\ge0,\quad\operatorname{Tr}_m(h)=1.
+\tag{WAD.1}
+\]</span>
+<p>It is faithful exactly when <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>. Until WAD-06, both densities below are invertible. Inner products are linear in the second variable.</p>
+<p>We use the complete finite diagonalization and trace-duality proof in <a href="../OA-APPROX/tracial-adjoints-and-rational-matrix-models.html#p03">P03 of the earlier tracial-adjoint lesson</a>. In particular, positive matrices have orthonormal eigenbases; a faithful density has positive eigenvalues and hence all its real and imaginary powers. The pairing <span class="math" data-tex="\(\operatorname{Tr}(ab)\)">\(\operatorname{Tr}(ab)\)</span> is nondegenerate, since pairing with each matrix unit recovers every entry. A matrix is positive if and only if its trace pairing with every positive matrix is real and nonnegative: rank-one tests give its quadratic form, and polarization gives self-adjointness.</p>
+<p>The two Hilbert inner products we compare are</p>
+<span class="math math-display" data-tex="\[
+\langle x,z\rangle_{h,\mathrm G}
+=\operatorname{Tr}_m(hx^*z),\qquad
+\langle x,z\rangle_{h,\mathrm S}
+=\operatorname{Tr}_m(h^{1/2}x^*h^{1/2}z).
+\tag{WAD.2}
+\]">\[
+\langle x,z\rangle_{h,\mathrm G}
+=\operatorname{Tr}_m(hx^*z),\qquad
+\langle x,z\rangle_{h,\mathrm S}
+=\operatorname{Tr}_m(h^{1/2}x^*h^{1/2}z).
+\tag{WAD.2}
+\]</span>
+<p>They are respectively the ordinary Hilbert–Schmidt inner products of <span class="math" data-tex="\(xh^{1/2},zh^{1/2}\)">\(xh^{1/2},zh^{1/2}\)</span> and of <span class="math" data-tex="\(h^{1/4}xh^{1/4},h^{1/4}zh^{1/4}\)">\(h^{1/4}xh^{1/4},h^{1/4}zh^{1/4}\)</span>. Both changes of variables are invertible, so both forms are positive definite.</p>
+<p>Let <span class="math" data-tex="\(T:M_m\to M_n\)">\(T:M_m\to M_n\)</span> be unital and completely positive, abbreviated ucp. Its ordinary trace adjoint <span class="math" data-tex="\(T_*:M_n\to M_m\)">\(T_*:M_n\to M_m\)</span> is specified by</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_n(T(x)y)
+=\operatorname{Tr}_m(xT_*(y)).
+\tag{WAD.3}
+\]">\[
+\operatorname{Tr}_n(T(x)y)
+=\operatorname{Tr}_m(xT_*(y)).
+\tag{WAD.3}
+\]</span>
+<p>There is no normalization factor in (WAD.3).</p>
+<p>Here are the finite-dimensional positivity details. The block matrix <span class="math" data-tex="\([e_{ij}]_{i,j=1}^m\)">\([e_{ij}]_{i,j=1}^m\)</span> is positive: its quadratic form on <span class="math" data-tex="\((z_1,\ldots,z_m)\)">\((z_1,\ldots,z_m)\)</span> is <span class="math" data-tex="\(\left|\sum_j(z_j)_j\right|^2\)">\(\left|\sum_j(z_j)_j\right|^2\)</span>. Thus the Choi block <span class="math" data-tex="\(C=[T(e_{ij})]\)">\(C=[T(e_{ij})]\)</span> is positive. Diagonalizing this finite matrix writes <span class="math" data-tex="\(C=\sum_\alpha v_\alpha v_\alpha^*\)">\(C=\sum_\alpha v_\alpha v_\alpha^*\)</span>, with block coordinates <span class="math" data-tex="\(v_{\alpha i}\in\mathbb C^n\)">\(v_{\alpha i}\in\mathbb C^n\)</span>. Let <span class="math" data-tex="\(V_\alpha:\mathbb C^n\to\mathbb C^m\)">\(V_\alpha:\mathbb C^n\to\mathbb C^m\)</span> have <span class="math" data-tex="\(i\)">\(i\)</span>-th row <span class="math" data-tex="\(v_{\alpha i}^*\)">\(v_{\alpha i}^*\)</span>. Matrix-unit multiplication then gives</p>
+<span class="math math-display" data-tex="\[
+T(x)=\sum_\alpha V_\alpha^*xV_\alpha,\qquad
+T_*(y)=\sum_\alpha V_\alpha yV_\alpha^*,
+\qquad \sum_\alpha V_\alpha^*V_\alpha=1_n.
+\tag{WAD.4}
+\]">\[
+T(x)=\sum_\alpha V_\alpha^*xV_\alpha,\qquad
+T_*(y)=\sum_\alpha V_\alpha yV_\alpha^*,
+\qquad \sum_\alpha V_\alpha^*V_\alpha=1_n.
+\tag{WAD.4}
+\]</span>
+<p>The second formula follows by cyclicity of ordinary trace, including rectangular products. Each sandwich is completely positive: every amplification is the corresponding block-diagonal sandwich of a positive block. Consequently <span class="math" data-tex="\(T_*\)">\(T_*\)</span> is completely positive and preserves adjoints. This also proves the needed finite Kraus representation rather than assuming it.</p>
+<p>Fix <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span> in <span class="math" data-tex="\(M_n\)">\(M_n\)</span>, of ordinary trace one, and assume</p>
+<span class="math math-display" data-tex="\[
+h=T_*(k)&gt;0.
+\tag{WAD.5}
+\]">\[
+h=T_*(k)&gt;0.
+\tag{WAD.5}
+\]</span>
+<p>Then <span class="math" data-tex="\(\operatorname{Tr}_m(h)=1\)">\(\operatorname{Tr}_m(h)=1\)</span>, since <span class="math" data-tex="\(T(1_m)=1_n\)">\(T(1_m)=1_n\)</span>, and
+<span class="math" data-tex="\(\varphi_h=\varphi_kT\)">\(\varphi_h=\varphi_kT\)</span>.
+The faithfulness assumption on <span class="math" data-tex="\(h\)">\(h\)</span> is equivalent to <span class="math" data-tex="\(T\)">\(T\)</span> being faithful on positive elements. Indeed, for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, faithfulness of <span class="math" data-tex="\(\varphi_k\)">\(\varphi_k\)</span> makes <span class="math" data-tex="\(\varphi_h(x)=0\)">\(\varphi_h(x)=0\)</span> equivalent to <span class="math" data-tex="\(T(x)=0\)">\(T(x)=0\)</span>.</p>
+<h2 id="the-symmetric-reverse-map"><span id="OA-MOD-WAD-02"></span><span id="oa-mod-wad-02"></span>The symmetric reverse map</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+R(y)=h^{-1/2}\,
+T_*(k^{1/2}yk^{1/2})\,h^{-1/2}.
+\tag{WAD.6}
+\]">\[
+R(y)=h^{-1/2}\,
+T_*(k^{1/2}yk^{1/2})\,h^{-1/2}.
+\tag{WAD.6}
+\]</span>
+<p>This map is ucp. Every factor in its definition is completely positive, and (WAD.5) gives <span class="math" data-tex="\(R(1_n)=1_m\)">\(R(1_n)=1_m\)</span>. It also preserves the states in the reverse direction:</p>
+<span class="math math-display" data-tex="\[
+\varphi_h(R(y))
+=\operatorname{Tr}_m T_*(k^{1/2}yk^{1/2})
+=\operatorname{Tr}_n(ky)
+=\varphi_k(y).
+\tag{WAD.7}
+\]">\[
+\varphi_h(R(y))
+=\operatorname{Tr}_m T_*(k^{1/2}yk^{1/2})
+=\operatorname{Tr}_n(ky)
+=\varphi_k(y).
+\tag{WAD.7}
+\]</span>
+<p>For the middle equality, apply (WAD.3) at <span class="math" data-tex="\(x=1_m\)">\(x=1_m\)</span>.</p>
+<p>The map <span class="math" data-tex="\(R\)">\(R\)</span> is exactly the Hilbert adjoint of <span class="math" data-tex="\(T\)">\(T\)</span> for the symmetric pairings:</p>
+<span class="math math-display" data-tex="\[
+\langle T(x),y\rangle_{k,\mathrm S}
+=\langle x,R(y)\rangle_{h,\mathrm S}.
+\tag{WAD.8}
+\]">\[
+\langle T(x),y\rangle_{k,\mathrm S}
+=\langle x,R(y)\rangle_{h,\mathrm S}.
+\tag{WAD.8}
+\]</span>
+<p>To verify it, move the outer <span class="math" data-tex="\(k^{1/2}\)">\(k^{1/2}\)</span> through the trace on the left and apply (WAD.3) to <span class="math" data-tex="\(x^*\)">\(x^*\)</span>. This gives
+<span class="math" data-tex="\(\operatorname{Tr}_m(x^*T_*(k^{1/2}yk^{1/2}))\)">\(\operatorname{Tr}_m(x^*T_*(k^{1/2}yk^{1/2}))\)</span>, which is the right side after substituting (WAD.6) and cycling <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span>. Nondegeneracy of the inner product proves uniqueness. No assertion that <span class="math" data-tex="\(RT\)">\(RT\)</span> is the identity follows from (WAD.7) or (WAD.8).</p>
+<h2 id="the-gns-adjoint-has-a-different-formula"><span id="OA-MOD-WAD-03"></span><span id="oa-mod-wad-03"></span>The GNS adjoint has a different formula</h2>
+<p>For the GNS pairings in (WAD.2), the Hilbert adjoint is</p>
+<span class="math math-display" data-tex="\[
+G(y)=T_*(yk)\,h^{-1}.
+\tag{WAD.9}
+\]">\[
+G(y)=T_*(yk)\,h^{-1}.
+\tag{WAD.9}
+\]</span>
+<p>Indeed,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle T(x),y\rangle_{k,\mathrm G}
+&amp;=\operatorname{Tr}_n(T(x)^*yk)\\
+&amp;=\operatorname{Tr}_m(x^*T_*(yk))
+=\langle x,G(y)\rangle_{h,\mathrm G}.
+\end{aligned}
+\tag{WAD.10}
+\]">\[
+\begin{aligned}
+\langle T(x),y\rangle_{k,\mathrm G}
+&amp;=\operatorname{Tr}_n(T(x)^*yk)\\
+&amp;=\operatorname{Tr}_m(x^*T_*(yk))
+=\langle x,G(y)\rangle_{h,\mathrm G}.
+\end{aligned}
+\tag{WAD.10}
+\]</span>
+<p>The multiplication order in (WAD.9) matters. It gives <span class="math" data-tex="\(G(1_n)=1_m\)">\(G(1_n)=1_m\)</span> and <span class="math" data-tex="\(\varphi_hG=\varphi_k\)">\(\varphi_hG=\varphi_k\)</span>, but it does not by itself give positivity.</p>
+<p>For completeness, <span class="math" data-tex="\(T\)">\(T\)</span> is a contraction for these GNS norms. Applying the size-two amplification of a ucp map to</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}x^*x&amp;x^*\\x&amp;1\end{pmatrix}\ge0
+\]">\[
+\begin{pmatrix}x^*x&amp;x^*\\x&amp;1\end{pmatrix}\ge0
+\]</span>
+<p>and sandwiching by the column <span class="math" data-tex="\((1,-T(x))^{\mathsf T}\)">\((1,-T(x))^{\mathsf T}\)</span> proves
+<span class="math" data-tex="\(T(x)^*T(x)\le T(x^*x)\)">\(T(x)^*T(x)\le T(x^*x)\)</span>.
+Apply <span class="math" data-tex="\(\varphi_k\)">\(\varphi_k\)</span> and use <span class="math" data-tex="\(\varphi_kT=\varphi_h\)">\(\varphi_kT=\varphi_h\)</span>. Thus the Hilbert adjoint <span class="math" data-tex="\(G\)">\(G\)</span> is a Hilbert-space contraction, even in examples where it fails to preserve self-adjoint elements. Hilbert-space contraction and positivity as a map of algebras are different properties.</p>
+<h2 id="positivity-is-equivalent-to-modular-compatibility"><span id="OA-MOD-WAD-04"></span><span id="oa-mod-wad-04"></span>Positivity is equivalent to modular compatibility</h2>
+<p>The matrix modular groups are</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^h(x)=h^{it}xh^{-it},\qquad
+\sigma_t^k(y)=k^{it}yk^{-it}\quad(t\in\mathbb R).
+\tag{WAD.11}
+\]">\[
+\sigma_t^h(x)=h^{it}xh^{-it},\qquad
+\sigma_t^k(y)=k^{it}yk^{-it}\quad(t\in\mathbb R).
+\tag{WAD.11}
+\]</span>
+<p>Here is their modular interpretation in every finite size. Identify the GNS Hilbert space with Hilbert–Schmidt matrices by <span class="math" data-tex="\(x\mapsto xh^{1/2}\)">\(x\mapsto xh^{1/2}\)</span>. Its involution is <span class="math" data-tex="\(S(\xi)=h^{-1/2}\xi^*h^{1/2}\)">\(S(\xi)=h^{-1/2}\xi^*h^{1/2}\)</span>. Let <span class="math" data-tex="\(J(\xi)=\xi^*\)">\(J(\xi)=\xi^*\)</span> and <span class="math" data-tex="\(D(\xi)=h^{1/2}\xi h^{-1/2}\)">\(D(\xi)=h^{1/2}\xi h^{-1/2}\)</span>. The map <span class="math" data-tex="\(J\)">\(J\)</span> is antiunitary. In an eigenbasis of <span class="math" data-tex="\(h\)">\(h\)</span>, the matrix units are an orthonormal eigenbasis for <span class="math" data-tex="\(D\)">\(D\)</span>, with strictly positive eigenvalues <span class="math" data-tex="\((h_i/h_j)^{1/2}\)">\((h_i/h_j)^{1/2}\)</span>, so <span class="math" data-tex="\(D\)">\(D\)</span> is positive. The identity <span class="math" data-tex="\(S=JD\)">\(S=JD\)</span> is therefore its polar decomposition. Its modular operator is <span class="math" data-tex="\(\Delta=D^2\)">\(\Delta=D^2\)</span>, and conjugation by <span class="math" data-tex="\(\Delta^{it}\)">\(\Delta^{it}\)</span> on left multiplication gives exactly <span class="math" data-tex="\(\sigma_t^h\)">\(\sigma_t^h\)</span> in (WAD.11). All domains are the whole finite-dimensional space. The same argument applies to <span class="math" data-tex="\(k\)">\(k\)</span>; <a href="OA-MOD-CZ.html#oa-mod-cz-12">Three questions in a matrix algebra</a> gives the concrete two-level example.</p>
+<p><strong>Theorem.</strong> Under (WAD.5), the following statements are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(G\)">\(G\)</span> is positive.</li>
+<li><span class="math" data-tex="\(G\)">\(G\)</span> preserves adjoints.</li>
+<li><span class="math" data-tex="\(T\sigma_t^h=\sigma_t^kT\)">\(T\sigma_t^h=\sigma_t^kT\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>.</li>
+<li><span class="math" data-tex="\(G=R\)">\(G=R\)</span>.</li>
+</ol>
+<p>When they hold, <span class="math" data-tex="\(G\)">\(G\)</span> is ucp.</p>
+<p><strong>Proof.</strong> A positive map preserves adjoints. A self-adjoint matrix is a difference of positive matrices, so its image is self-adjoint; splitting a general matrix into real and imaginary parts proves the assertion. This gives 1 implies 2.</p>
+<p>Suppose 2 holds. Since <span class="math" data-tex="\(T_*\)">\(T_*\)</span> preserves adjoints, comparing <span class="math" data-tex="\(G(y^*)\)">\(G(y^*)\)</span> with <span class="math" data-tex="\(G(y)^*\)">\(G(y)^*\)</span>, and then writing <span class="math" data-tex="\(x=y^*\)">\(x=y^*\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+T_*(xk)h^{-1}=h^{-1}T_*(kx).
+\]">\[
+T_*(xk)h^{-1}=h^{-1}T_*(kx).
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(h\)">\(h\)</span>, followed by substitution <span class="math" data-tex="\(z=xk\)">\(z=xk\)</span>, yields</p>
+<span class="math math-display" data-tex="\[
+T_*(kzk^{-1})=hT_*(z)h^{-1}.
+\tag{WAD.12}
+\]">\[
+T_*(kzk^{-1})=hT_*(z)h^{-1}.
+\tag{WAD.12}
+\]</span>
+<p>Choose orthonormal eigenbases for <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span>. Conjugation by either density acts diagonally on the associated matrix units, with positive eigenvalues given by ratios of density eigenvalues. Equation (WAD.12) says that a nonzero coefficient of <span class="math" data-tex="\(T_*\)">\(T_*\)</span> can connect only equal ratios. The same coefficients therefore intertwine every imaginary power of these ratios:</p>
+<span class="math math-display" data-tex="\[
+T_*\sigma_t^k=\sigma_t^hT_*.
+\tag{WAD.13}
+\]">\[
+T_*\sigma_t^k=\sigma_t^hT_*.
+\tag{WAD.13}
+\]</span>
+<p>This is a finite coefficient argument and requires no analytic continuation theorem. Applying the nondegenerate trace pairing to (WAD.13), and cycling the two powers through it, gives 3.</p>
+<p>Conversely, 3 and trace duality give (WAD.13). In density eigenbases, a coefficient connecting ratios <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span> must satisfy
+<span class="math" data-tex="\(c(a^{it}-b^{it})=0\)">\(c(a^{it}-b^{it})=0\)</span> for all real <span class="math" data-tex="\(t\)">\(t\)</span>. Differentiating the scalar exponentials at zero gives <span class="math" data-tex="\(c(\log a-\log b)=0\)">\(c(\log a-\log b)=0\)</span>, so nonzero coefficients again connect equal ratios. They consequently intertwine the square roots of those ratios:</p>
+<span class="math math-display" data-tex="\[
+T_*(k^{1/2}zk^{-1/2})
+=h^{1/2}T_*(z)h^{-1/2}.
+\tag{WAD.14}
+\]">\[
+T_*(k^{1/2}zk^{-1/2})
+=h^{1/2}T_*(z)h^{-1/2}.
+\tag{WAD.14}
+\]</span>
+<p>Put <span class="math" data-tex="\(z=yk\)">\(z=yk\)</span> in (WAD.14), and substitute in (WAD.6). The result is
+<span class="math" data-tex="\(R(y)=T_*(yk)h^{-1}=G(y)\)">\(R(y)=T_*(yk)h^{-1}=G(y)\)</span>, proving 4.
+Finally 4 implies 1 because WAD-02 proves that <span class="math" data-tex="\(R\)">\(R\)</span> is completely positive. This also proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If both states are normalized traces, both modular groups are trivial and <span class="math" data-tex="\(G=R\)">\(G=R\)</span>. For arbitrary faithful states, even a ucp map preserving the states can fail condition 3; preservation of averages alone does not preserve modular time.</p>
+<h2 id="a-two-level-counterexample-with-exact-reverse-states"><span id="OA-MOD-WAD-05"></span><span id="oa-mod-wad-05"></span>A two-level counterexample with exact reverse states</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\quad
+Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\]">\[
+X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\quad
+Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\]</span>
+<p>Take the dephasing map and densities</p>
+<span class="math math-display" data-tex="\[
+T(y)=\operatorname{diag}(y_{11},y_{22}),\qquad
+k=\tfrac12 I+\tfrac14 X,\qquad h=\tfrac12 I.
+\tag{WAD.15}
+\]">\[
+T(y)=\operatorname{diag}(y_{11},y_{22}),\qquad
+k=\tfrac12 I+\tfrac14 X,\qquad h=\tfrac12 I.
+\tag{WAD.15}
+\]</span>
+<p>The map is the sum of the two sandwiches by the diagonal rank-one projections, so it is ucp and <span class="math" data-tex="\(T_*=T\)">\(T_*=T\)</span>. The eigenvalues of <span class="math" data-tex="\(k\)">\(k\)</span> are <span class="math" data-tex="\(3/4,1/4\)">\(3/4,1/4\)</span>; those of <span class="math" data-tex="\(h\)">\(h\)</span> are <span class="math" data-tex="\(1/2,1/2\)">\(1/2,1/2\)</span>. Both states are faithful and <span class="math" data-tex="\(T_*(k)=h\)">\(T_*(k)=h\)</span>.</p>
+<p>Formula (WAD.9) gives</p>
+<span class="math math-display" data-tex="\[
+G(Y)=2T(Yk)=-\tfrac{i}{2}Z.
+\tag{WAD.16}
+\]">\[
+G(Y)=2T(Yk)=-\tfrac{i}{2}Z.
+\tag{WAD.16}
+\]</span>
+<p>Its input is self-adjoint and its output is a nonzero skew-adjoint matrix. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is not positive. More explicitly <span class="math" data-tex="\(I+Y\ge0\)">\(I+Y\ge0\)</span>, with eigenvalues zero and two, whereas
+<span class="math" data-tex="\(G(I+Y)=I-\tfrac{i}{2}Z\)">\(G(I+Y)=I-\tfrac{i}{2}Z\)</span> is not self-adjoint.</p>
+<p>Here the modular obstruction is visible without using the theorem. Since <span class="math" data-tex="\(h\)">\(h\)</span> is scalar, its modular group is trivial. But <span class="math" data-tex="\(T(Z)=Z\)">\(T(Z)=Z\)</span> does not commute with <span class="math" data-tex="\(k\)">\(k\)</span>, because
+<span class="math" data-tex="\([k,Z]=-\tfrac{i}{2}Y\ne0\)">\([k,Z]=-\tfrac{i}{2}Y\ne0\)</span>.
+In an eigenbasis of <span class="math" data-tex="\(k\)">\(k\)</span>, the logarithm has the same eigenspaces and distinct eigenvalues; hence <span class="math" data-tex="\(Z\)">\(Z\)</span> also fails to commute with <span class="math" data-tex="\(\log k\)">\(\log k\)</span>. Differentiation at zero shows that <span class="math" data-tex="\(\sigma_t^k(Z)\)">\(\sigma_t^k(Z)\)</span> is not constant. Condition 3 therefore fails.</p>
+<p>The symmetric reverse map has a direct geometric description. Put</p>
+<span class="math math-display" data-tex="\[
+a=\frac{\sqrt3+1}{4},\qquad
+b=\frac{\sqrt3-1}{4},\qquad
+k^{1/2}=aI+bX.
+\tag{WAD.17}
+\]">\[
+a=\frac{\sqrt3+1}{4},\qquad
+b=\frac{\sqrt3-1}{4},\qquad
+k^{1/2}=aI+bX.
+\tag{WAD.17}
+\]</span>
+<p>Squaring verifies (WAD.17), since <span class="math" data-tex="\(a^2+b^2=1/2\)">\(a^2+b^2=1/2\)</span> and <span class="math" data-tex="\(2ab=1/4\)">\(2ab=1/4\)</span>. The positive eigenvalues <span class="math" data-tex="\(a+b=\sqrt3/2\)">\(a+b=\sqrt3/2\)</span> and <span class="math" data-tex="\(a-b=1/2\)">\(a-b=1/2\)</span> select the positive square root. Define unit vectors</p>
+<span class="math math-display" data-tex="\[
+\eta_+=\sqrt2\begin{pmatrix}a\\b\end{pmatrix},
+\qquad
+\eta_-=\sqrt2\begin{pmatrix}b\\a\end{pmatrix}.
+\]">\[
+\eta_+=\sqrt2\begin{pmatrix}a\\b\end{pmatrix},
+\qquad
+\eta_-=\sqrt2\begin{pmatrix}b\\a\end{pmatrix}.
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(y)=
+\begin{pmatrix}\eta_+^*y\eta_+&amp;0\\0&amp;\eta_-^*y\eta_-\end{pmatrix},\\
+R(I)=I,\qquad R(X)=\tfrac12I,\\
+R(Y)=0,\qquad R(Z)=\tfrac{\sqrt3}{2}Z.
+\end{gathered}
+\tag{WAD.18}
+\]">\[
+\begin{gathered}
+R(y)=
+\begin{pmatrix}\eta_+^*y\eta_+&amp;0\\0&amp;\eta_-^*y\eta_-\end{pmatrix},\\
+R(I)=I,\qquad R(X)=\tfrac12I,\\
+R(Y)=0,\qquad R(Z)=\tfrac{\sqrt3}{2}Z.
+\end{gathered}
+\tag{WAD.18}
+\]</span>
+<p>To check the first formula, use <span class="math" data-tex="\(R(y)=2T(k^{1/2}yk^{1/2})\)">\(R(y)=2T(k^{1/2}yk^{1/2})\)</span> and its two diagonal entries. The four basis values follow by matrix multiplication. They also verify state preservation: both <span class="math" data-tex="\(\varphi_hR\)">\(\varphi_hR\)</span> and <span class="math" data-tex="\(\varphi_k\)">\(\varphi_k\)</span> take values <span class="math" data-tex="\(1,1/2,0,0\)">\(1,1/2,0,0\)</span> on <span class="math" data-tex="\(I,X,Y,Z\)">\(I,X,Y,Z\)</span>.</p>
+<p>For a unit vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, its three real coordinates
+<span class="math" data-tex="\((\eta^*X\eta,\eta^*Y\eta,\eta^*Z\eta)\)">\((\eta^*X\eta,\eta^*Y\eta,\eta^*Z\eta)\)</span> describe its rank-one density. The two reverse states here have coordinates</p>
+<span class="math math-display" data-tex="\[
+(1/2,0,\sqrt3/2),\qquad(1/2,0,-\sqrt3/2).
+\tag{WAD.19}
+\]">\[
+(1/2,0,\sqrt3/2),\qquad(1/2,0,-\sqrt3/2).
+\tag{WAD.19}
+\]</span>
+<p>They lie on the unit circle in the <span class="math" data-tex="\(X,Z\)">\(X,Z\)</span>-plane. The figure shows these exact coordinates, not a numerical fit.</p>
+<p><img alt="Two reverse vector states have coordinates one-half and plus or minus square-root-three over two in the X-Z plane. The symmetric adjoint sends Y to zero, while the GNS adjoint sends Y to minus i Z over two." src="assets/weighted-adjoint-modular-test.svg"/></p>
+<p><em>The state vectors in (WAD.19) define the two diagonal outputs of <span class="math" data-tex="\(R\)">\(R\)</span>. Equation (WAD.16) explains why the other adjoint is not positive. The native SVG retains the exact construction and labels.</em></p>
+<h2 id="a-singular-density-requires-its-support-corner"><span id="OA-MOD-WAD-06"></span><span id="oa-mod-wad-06"></span>A singular density requires its support corner</h2>
+<p>Retain <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, but allow <span class="math" data-tex="\(h=T_*(k)\)">\(h=T_*(k)\)</span> to have a kernel. Let <span class="math" data-tex="\(p\)">\(p\)</span> be its support projection. Since
+<span class="math" data-tex="\(\varphi_k(T(1-p))=\operatorname{Tr}_m(h(1-p))=0\)">\(\varphi_k(T(1-p))=\operatorname{Tr}_m(h(1-p))=0\)</span>,
+faithfulness of <span class="math" data-tex="\(k\)">\(k\)</span> and positivity give <span class="math" data-tex="\(T(1-p)=0\)">\(T(1-p)=0\)</span>. From (WAD.4),</p>
+<span class="math math-display" data-tex="\[
+0=\sum_\alpha V_\alpha^*(1-p)V_\alpha.
+\]">\[
+0=\sum_\alpha V_\alpha^*(1-p)V_\alpha.
+\]</span>
+<p>Its quadratic form is a sum of squared norms, so <span class="math" data-tex="\((1-p)V_\alpha=0\)">\((1-p)V_\alpha=0\)</span> for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+T(x)=T(pxp),\qquad T_*(y)=pT_*(y)p.
+\tag{WAD.20}
+\]">\[
+T(x)=T(pxp),\qquad T_*(y)=pT_*(y)p.
+\tag{WAD.20}
+\]</span>
+<p>The restriction <span class="math" data-tex="\(T:pM_mp\to M_n\)">\(T:pM_mp\to M_n\)</span> is unital, where the source unit is <span class="math" data-tex="\(p\)">\(p\)</span>, and its pulled-back state is faithful. The density <span class="math" data-tex="\(h_p\)">\(h_p\)</span> is invertible on <span class="math" data-tex="\(p\mathbb C^m\)">\(p\mathbb C^m\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+R_p(y)=h_p^{-1/2}T_*(k^{1/2}yk^{1/2})h_p^{-1/2}
+\tag{WAD.21}
+\]">\[
+R_p(y)=h_p^{-1/2}T_*(k^{1/2}yk^{1/2})h_p^{-1/2}
+\tag{WAD.21}
+\]</span>
+<p>is a ucp map to the corner, with <span class="math" data-tex="\(R_p(1_n)=p\)">\(R_p(1_n)=p\)</span>, and preserves the states.</p>
+<p>The formula with inverses interpreted on the support gives this corner map. Its zero extension into <span class="math" data-tex="\(M_m\)">\(M_m\)</span> has value <span class="math" data-tex="\(p\)">\(p\)</span> at the identity and is not unital when <span class="math" data-tex="\(p\ne1_m\)">\(p\ne1_m\)</span>. For any state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(M_n\)">\(M_n\)</span>, a full unital extension is</p>
+<span class="math math-display" data-tex="\[
+\widetilde R_\omega(y)=R_p(y)+\omega(y)(1_m-p).
+\tag{WAD.22}
+\]">\[
+\widetilde R_\omega(y)=R_p(y)+\omega(y)(1_m-p).
+\tag{WAD.22}
+\]</span>
+<p>The two summands have orthogonal range corners and are completely positive. For the second, positivity of every scalar block <span class="math" data-tex="\([\omega(y_{ij})]\)">\([\omega(y_{ij})]\)</span> follows by testing scalar columns against the positive block <span class="math" data-tex="\([y_{ij}]\)">\([y_{ij}]\)</span>; tensoring that scalar positive matrix with the projection <span class="math" data-tex="\(1-p\)">\(1-p\)</span> preserves positivity. Formula (WAD.22) is unital and preserves the same state because <span class="math" data-tex="\(h(1-p)=0\)">\(h(1-p)=0\)</span>.</p>
+<p>These extensions need not be unique. For <span class="math" data-tex="\(T:M_2\to M_2\)">\(T:M_2\to M_2\)</span> defined by <span class="math" data-tex="\(T(x)=x_{11}I\)">\(T(x)=x_{11}I\)</span>, take <span class="math" data-tex="\(k=I/2\)">\(k=I/2\)</span>. Then <span class="math" data-tex="\(h=p=e_{11}\)">\(h=p=e_{11}\)</span> and <span class="math" data-tex="\(R_p(y)=\operatorname{Tr}_2(ky)e_{11}\)">\(R_p(y)=\operatorname{Tr}_2(ky)e_{11}\)</span>. Distinct choices of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> give distinct values in the <span class="math" data-tex="\(e_{22}\)">\(e_{22}\)</span> corner. The faithful theorem cannot be transferred to the full algebra by ignoring the kernel.</p>
+<h2 id="the-finite-tracial-algebra-theorem-in-full-generality"><span id="OA-MOD-WAD-07"></span><span id="oa-mod-wad-07"></span>The finite-tracial-algebra theorem in full generality</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be any von Neumann algebra with a faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. There is no factor or separability assumption. Let <span class="math" data-tex="\(T:M_m\to M\)">\(T:M_m\to M\)</span> be ucp and faithful on positive elements. In this section use the normalized matrix trace</p>
+<span class="math math-display" data-tex="\[
+\tau_m=\operatorname{Tr}_m/m,\qquad
+\varphi=\tau T,\qquad \varphi(x)=\tau_m(Hx).
+\tag{WAD.23}
+\]">\[
+\tau_m=\operatorname{Tr}_m/m,\qquad
+\varphi=\tau T,\qquad \varphi(x)=\tau_m(Hx).
+\tag{WAD.23}
+\]</span>
+<p>The capital <span class="math" data-tex="\(H\)">\(H\)</span> distinguishes this density from the ordinary-trace convention in (WAD.1). Matrix units give</p>
+<span class="math math-display" data-tex="\[
+H_{ij}=m\,\varphi(e_{ji}),\qquad H&gt;0,\qquad\tau_m(H)=1.
+\tag{WAD.24}
+\]">\[
+H_{ij}=m\,\varphi(e_{ji}),\qquad H&gt;0,\qquad\tau_m(H)=1.
+\tag{WAD.24}
+\]</span>
+<p><strong>Theorem.</strong> There is a unique normal ucp map <span class="math" data-tex="\(S:M\to M_m\)">\(S:M\to M_m\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\tau_m(H^{1/2}S(y)H^{1/2}x)=\tau(yT(x))
+\quad(x\in M_m,\ y\in M).
+\tag{WAD.25}
+\]">\[
+\tau_m(H^{1/2}S(y)H^{1/2}x)=\tau(yT(x))
+\quad(x\in M_m,\ y\in M).
+\tag{WAD.25}
+\]</span>
+<p>It satisfies <span class="math" data-tex="\(\varphi S=\tau\)">\(\varphi S=\tau\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\tau(T(x)^*T(x))
+\le\tau_m(H^{1/2}x^*H^{1/2}x).
+\tag{WAD.26}
+\]">\[
+\tau(T(x)^*T(x))
+\le\tau_m(H^{1/2}x^*H^{1/2}x).
+\tag{WAD.26}
+\]</span>
+<p><strong>Proof.</strong> Define the finite matrix map <span class="math" data-tex="\(A:M\to M_m\)">\(A:M\to M_m\)</span> by</p>
+<span class="math math-display" data-tex="\[
+A(y)_{ij}=m\,\tau(yT(e_{ji})).
+\tag{WAD.27}
+\]">\[
+A(y)_{ij}=m\,\tau(yT(e_{ji})).
+\tag{WAD.27}
+\]</span>
+<p>Its coordinates are bounded normal functionals: multiplication by a fixed bounded operator is ultraweakly continuous, as proved in <a href="OA-MOD-BK.html#oa-mod-bk-03">The ultraweak convergence needed by finite cutoffs</a>. These finitely many coordinates give a bounded normal map. Expansion in matrix units proves
+<span class="math" data-tex="\(\tau_m(A(y)x)=\tau(yT(x))\)">\(\tau_m(A(y)x)=\tau(yT(x))\)</span>, including uniqueness.</p>
+<p>To prove complete positivity, let <span class="math" data-tex="\(Y=[y_{ab}]\ge0\)">\(Y=[y_{ab}]\ge0\)</span> in <span class="math" data-tex="\(M_r(M)\)">\(M_r(M)\)</span> and <span class="math" data-tex="\(X=[x_{ab}]\ge0\)">\(X=[x_{ab}]\ge0\)</span> in <span class="math" data-tex="\(M_r(M_m)\)">\(M_r(M_m)\)</span>. Pair the amplifications:</p>
+<span class="math math-display" data-tex="\[
+(\operatorname{Tr}_r\otimes\tau_m)(A^{(r)}(Y)X)
+=(\operatorname{Tr}_r\otimes\tau)(Y T^{(r)}(X))\ge0.
+\tag{WAD.28}
+\]">\[
+(\operatorname{Tr}_r\otimes\tau_m)(A^{(r)}(Y)X)
+=(\operatorname{Tr}_r\otimes\tau)(Y T^{(r)}(X))\ge0.
+\tag{WAD.28}
+\]</span>
+<p>The equality follows by summing <span class="math" data-tex="\(\tau_m(A(y_{ab})x_{ba})\)">\(\tau_m(A(y_{ab})x_{ba})\)</span>. The functional <span class="math" data-tex="\(\operatorname{Tr}_r\otimes\tau\)">\(\operatorname{Tr}_r\otimes\tau\)</span> is positive and tracial, by its diagonal sum and the trace identity. A trace of the product of two positive elements is nonnegative, since cyclicity turns it into the trace of a positive square-root sandwich. Complete positivity of <span class="math" data-tex="\(T\)">\(T\)</span> therefore proves the inequality. The finite matrix positive-dual-cone test from WAD-01 now gives <span class="math" data-tex="\(A^{(r)}(Y)\ge0\)">\(A^{(r)}(Y)\ge0\)</span>. Since <span class="math" data-tex="\(r\)">\(r\)</span> was arbitrary, <span class="math" data-tex="\(A\)">\(A\)</span> is cp.</p>
+<p>Faithfulness of <span class="math" data-tex="\(\tau T\)">\(\tau T\)</span> makes <span class="math" data-tex="\(H\)">\(H\)</span> invertible, and the pairing at <span class="math" data-tex="\(y=1\)">\(y=1\)</span> gives <span class="math" data-tex="\(A(1)=H\)">\(A(1)=H\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+S(y)=H^{-1/2}A(y)H^{-1/2}
+\]">\[
+S(y)=H^{-1/2}A(y)H^{-1/2}
+\]</span>
+<p>is normal and ucp. It satisfies (WAD.25). Nondegeneracy of the trace pairing and invertibility of <span class="math" data-tex="\(H\)">\(H\)</span> prove uniqueness. Setting <span class="math" data-tex="\(x=1\)">\(x=1\)</span> gives <span class="math" data-tex="\(\varphi S=\tau\)">\(\varphi S=\tau\)</span>.</p>
+<p>It remains to prove the stronger Hilbert estimate, rather than replacing it by the GNS Schwarz estimate. Equip <span class="math" data-tex="\(M_m\)">\(M_m\)</span> with
+<span class="math" data-tex="\(\langle a,b\rangle_H=\tau_m(H^{1/2}a^*H^{1/2}b)\)">\(\langle a,b\rangle_H=\tau_m(H^{1/2}a^*H^{1/2}b)\)</span>.
+This is positive definite by the fourth-root change of variables in WAD-01. Let <span class="math" data-tex="\(K=L^2(M,\tau)\)">\(K=L^2(M,\tau)\)</span>, the completion for <span class="math" data-tex="\(\tau(a^*b)\)">\(\tau(a^*b)\)</span>. The full completion and adjoint details are <a href="../OA-APPROX/tracial-adjoints-and-rational-matrix-models.html#p05">P05–P06 of the earlier lesson</a>. In particular, <span class="math" data-tex="\(T:M_m\to K\)">\(T:M_m\to K\)</span> is bounded before any contraction conclusion: in a finite orthonormal basis <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, Cauchy–Schwarz gives
+<span class="math" data-tex="\(\|T(\sum_jc_jb_j)\|\le(\sum_j\|T(b_j)\|^2)^{1/2}(\sum_j|c_j|^2)^{1/2}\)">\(\|T(\sum_jc_jb_j)\|\le(\sum_j\|T(b_j)\|^2)^{1/2}(\sum_j|c_j|^2)^{1/2}\)</span>.
+Its Hilbert adjoint is defined by the finite coordinate pairings. Equation (WAD.25), applied to <span class="math" data-tex="\(x^*\)">\(x^*\)</span>, identifies that adjoint on <span class="math" data-tex="\(M\subset K\)">\(M\subset K\)</span> with <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>The map <span class="math" data-tex="\(TS:M\to M\)">\(TS:M\to M\)</span> is ucp and <span class="math" data-tex="\(\tau TS=\tau\)">\(\tau TS=\tau\)</span>. The size-two Schwarz proof in WAD-03 therefore gives</p>
+<span class="math math-display" data-tex="\[
+\|TS(y)\|_2^2
+\le\tau(TS(y^*y))=\|y\|_2^2.
+\]">\[
+\|TS(y)\|_2^2
+\le\tau(TS(y^*y))=\|y\|_2^2.
+\]</span>
+<p>This extends to a contraction on <span class="math" data-tex="\(K\)">\(K\)</span>, since <span class="math" data-tex="\(M\)">\(M\)</span> is dense there by the definition of the completion. On this completion it is <span class="math" data-tex="\(TT^\dagger\)">\(TT^\dagger\)</span>, where <span class="math" data-tex="\(\dagger\)">\(\dagger\)</span> denotes the Hilbert adjoint. The elementary Hilbert norm identity
+<span class="math" data-tex="\(\|TT^\dagger\|=\|T\|^2\)">\(\|TT^\dagger\|=\|T\|^2\)</span> follows from
+<span class="math" data-tex="\(\|T^\dagger v\|^2=\langle v,TT^\dagger v\rangle\)">\(\|T^\dagger v\|^2=\langle v,TT^\dagger v\rangle\)</span> and
+<span class="math" data-tex="\(\|T^\dagger\|=\|T\|\)">\(\|T^\dagger\|=\|T\|\)</span>; the latter equality follows by norming vectors with unit-vector pairings. Hence <span class="math" data-tex="\(\|T\|\le1\)">\(\|T\|\le1\)</span>, which is (WAD.26). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All normality and positivity assertions concern bounded maps between the stated algebras. No arbitrary Radon–Nikodym theorem, injectivity assumption or countability reduction is used here.</p>
+<h2 id="normalization-checks-and-source-correspondence"><span id="OA-MOD-WAD-08"></span><span id="oa-mod-wad-08"></span>Normalization checks and source correspondence</h2>
+<p><strong>Check 1: a missing matrix-size factor.</strong> In the printed proof of Takesaki III, Lemma XVI.1.11, page 215, the coordinate expression for the density omits the factor <span class="math" data-tex="\(m\)">\(m\)</span>, although the trace there is explicitly <span class="math" data-tex="\(\tau_m=\operatorname{Tr}_m/m\)">\(\tau_m=\operatorname{Tr}_m/m\)</span>. Formula (WAD.24) is the corrected expression. For <span class="math" data-tex="\(T=\operatorname{id}_{M_2}\)">\(T=\operatorname{id}_{M_2}\)</span> and <span class="math" data-tex="\(\tau=\tau_2\)">\(\tau=\tau_2\)</span>, the state has <span class="math" data-tex="\(\varphi(e_{ii})=1/2\)">\(\varphi(e_{ii})=1/2\)</span>. The density relative to <span class="math" data-tex="\(\tau_2\)">\(\tau_2\)</span> is <span class="math" data-tex="\(H=I\)">\(H=I\)</span>, whereas the printed coordinate expression gives <span class="math" data-tex="\(I/2\)">\(I/2\)</span>, which has <span class="math" data-tex="\(\tau_2(I/2)=1/2\)">\(\tau_2(I/2)=1/2\)</span>. Thus the discrepancy is detected by evaluating the purported state at the identity. The theorem and its weighted norm inequality are valid with the corrected normalization.</p>
+<p><strong>Check 2: changing trace convention.</strong> If <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}_m(hx)=\tau_m(Hx)\)">\(\varphi(x)=\operatorname{Tr}_m(hx)=\tau_m(Hx)\)</span>, nondegeneracy gives <span class="math" data-tex="\(H=mh\)">\(H=mh\)</span>. When the target is <span class="math" data-tex="\(M_n\)">\(M_n\)</span> with <span class="math" data-tex="\(\tau_n\)">\(\tau_n\)</span>, its ordinary density is <span class="math" data-tex="\(k=I_n/n\)">\(k=I_n/n\)</span>, and the map <span class="math" data-tex="\(A\)">\(A\)</span> of (WAD.27) is <span class="math" data-tex="\((m/n)T_*\)">\((m/n)T_*\)</span>. Substitution gives</p>
+<span class="math math-display" data-tex="\[
+H^{-1/2}A(y)H^{-1/2}
+=h^{-1/2}T_*(y/n)h^{-1/2}=R(y).
+\]">\[
+H^{-1/2}A(y)H^{-1/2}
+=h^{-1/2}T_*(y/n)h^{-1/2}=R(y).
+\]</span>
+<p>Thus the two conventions yield exactly the same reverse map.</p>
+<p><strong>Check 3: a positive input lost by the GNS adjoint.</strong> In WAD-05, <span class="math" data-tex="\((I+Y)/2\)">\((I+Y)/2\)</span> is a rank-one projection because <span class="math" data-tex="\(Y=Y^*\)">\(Y=Y^*\)</span> and <span class="math" data-tex="\(Y^2=I\)">\(Y^2=I\)</span>. Its GNS-adjoint image is
+<span class="math" data-tex="\(I/2-iZ/4\)">\(I/2-iZ/4\)</span>, with nonreal diagonal entries. Its symmetric-adjoint image is <span class="math" data-tex="\(I/2\)">\(I/2\)</span>. This is a positive-input test, not only a failure on a nonpositive self-adjoint matrix.</p>
+<p><strong>Check 4: equality in the tracial estimate.</strong> For <span class="math" data-tex="\(T=\operatorname{id}_{M_m}\)">\(T=\operatorname{id}_{M_m}\)</span>, <span class="math" data-tex="\(M=M_m\)">\(M=M_m\)</span>, <span class="math" data-tex="\(\tau=\tau_m\)">\(\tau=\tau_m\)</span>, one has <span class="math" data-tex="\(H=I\)">\(H=I\)</span>, <span class="math" data-tex="\(A=S=\operatorname{id}\)">\(A=S=\operatorname{id}\)</span>. Both sides of (WAD.26) equal <span class="math" data-tex="\(\tau_m(x^*x)\)">\(\tau_m(x^*x)\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. No smaller coefficient can replace one in that inequality.</p>
+<p>The human source for the finite-tracial-algebra theorem is M. Takesaki, <em>Theory of Operator Algebras III</em>, Lemma XVI.1.11, printed pages 215–216. WAD-07 proves both parts, including the normal cp construction, uniqueness, state preservation and the weighted Hilbert bound, for every faithfully tracial von Neumann algebra. The source's surrounding separable injective-factor setting is unnecessary for this lemma. The earlier programme proof is <a href="../OA-APPROX/tracial-adjoints-and-rational-matrix-models.html#2-the-weighted-recording-map">Theorem 2.1 and its trace-adjoint construction</a>; its P00–P06 give the finite-order, normality and Hilbert details. WAD-01–06 provide the matrix modular-compatibility theorem, counterexample and support-corner analysis with their proofs here.</p>
+<p>Lemma XVI.1.12 on rational matrix models and the subsequent injectivity-to-AFD argument have separate statements and proofs.</p>
+</article><footer>Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

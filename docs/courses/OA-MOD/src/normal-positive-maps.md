@@ -1,6 +1,6 @@
 # Normal positive maps and their preadjoints
 
-**Self-checked by the writing AI.**
+
 
 For a positive map, preserving increasing suprema is an order property. Ultraweak continuity is a topology property. This unit proves their equivalence and identifies the bounded map on preduals which records both. The proof applies to arbitrary von Neumann algebras and arbitrary bounded increasing nets, without separability, sigma-finiteness, faithfulness or identity preservation.
 

@@ -1,6 +1,6 @@
 # Convergence on large domains
 
-**Self-checked by the writing AI.**
+
 
 Convergence on vectors, convergence in measure, and uniform convergence after a projection cutoff are different demands. We construct the closed operator determined by vector convergence, then use moving supports to locate the boundaries between these demands. Domains and quantifiers remain part of each statement.
 

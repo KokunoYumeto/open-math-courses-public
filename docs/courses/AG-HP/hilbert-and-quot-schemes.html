@@ -1,0 +1,1268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hilbert and Quot schemes · Hilbert and Picard schemes, deformations and representability</title>
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-HP/hilbert-and-quot-schemes.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="https://kokunoyumeto.github.io/open-math-courses-public/">Open Mathematics Courses</a>
+<nav aria-label="Course"><a href="index.html">Course contents</a> · <span class="unlinked">Sources and terms</span></nav>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Hilbert and Picard schemes, deformations and representability</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 12</span></nav>
+<article class="lesson">
+<h1 id="hilbert-and-quot-schemes">Hilbert and Quot schemes</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) (Codex), October 2026. Public domain (CC0).</em></p>
+<p>A sheaf quotient can be recovered from enough of its sections, provided the meaning of “enough” is uniform across the family. A Grassmannian records a quotient of the resulting finite module of sections. It does not by itself ensure that the induced sheaf has the desired Hilbert polynomial or is flat. Flattening supplies those conditions, and a valuation argument closes the resulting locally closed subscheme. This is the construction of the projective Quot scheme.</p>
+<p>We give the construction over a Noetherian base with a coherent source, allowing that source and its module of sections to be nonflat. The test schemes are arbitrary. We then construct finite-point Hilbert schemes by explicit algebra charts and calculate the two-point scheme of the affine plane.</p>
+<p>The prerequisites are the representability and Plücker proofs in <em>Grassmannians</em>, the uniform kernel theorem in <em>Regularity and bounded families</em>, and the projective flattening theorem in <em>Flattening stratifications</em>. We also use <a href="../AG-AS/moduli-stacks-are-algebraic.html#native-spaces-perfect-lemma-base-change-tensor-perfect">the arbitrary-base perfect pushforward theorem</a>, with its elementary cohomology consequences proved in the latter lesson, and the Noetherian discrete-valuation criterion for properness [Stacks, Tag 0208]. The corrected partial-coefficient strengthening discussed in the regularity lesson is not needed for the construction.</p>
+<h2 id="1-quotients-and-their-families">1 Quotients and their families</h2>
+<p>Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> and let <span class="math" data-tex="\(E\)">\(E\)</span> be quasi-coherent on <span class="math" data-tex="\(X\)">\(X\)</span>. The functor <span class="math" data-tex="\(\operatorname{Quot}_{E/X/S}\)">\(\operatorname{Quot}_{E/X/S}\)</span> assigns to an <span class="math" data-tex="\(S\)">\(S\)</span>-scheme <span class="math" data-tex="\(T\)">\(T\)</span> the equivalence classes of surjections</p>
+<span class="math math-display" data-tex="\[
+E_T\twoheadrightarrow G,
+\]">\[
+E_T\twoheadrightarrow G,
+\]</span>
+<p>where <span class="math" data-tex="\(G\)">\(G\)</span> is finitely presented, flat over <span class="math" data-tex="\(T\)">\(T\)</span>, and has support proper over <span class="math" data-tex="\(T\)">\(T\)</span>. Two quotients are equivalent if there is an isomorphism of their targets respecting the surjections. Equivalently, their kernels are equal. An automorphism respecting a surjection is the identity. Pullback preserves surjectivity, finite presentation and flatness, and proper support remains proper after base change, so this defines a functor.</p>
+<p>The Hilbert functor is the special case <span class="math" data-tex="\(E=\mathcal O_X\)">\(E=\mathcal O_X\)</span>. A submodule <span class="math" data-tex="\(I\subset\mathcal O_{X_T}\)">\(I\subset\mathcal O_{X_T}\)</span> is an ideal, and its quotient is <span class="math" data-tex="\(\mathcal O_Z\)">\(\mathcal O_Z\)</span> for the corresponding closed subscheme <span class="math" data-tex="\(Z\subset X_T\)">\(Z\subset X_T\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hilb}_{X/S}(T)=\\
+\left\{\begin{array}{l}
+Z\subset X_T\text{ closed}:\\
+Z\to T\text{ is proper, flat}\\
+\text{and of finite presentation}
+\end{array}\right\}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Hilb}_{X/S}(T)=\\
+\left\{\begin{array}{l}
+Z\subset X_T\text{ closed}:\\
+Z\to T\text{ is proper, flat}\\
+\text{and of finite presentation}
+\end{array}\right\}.
+\end{gathered}
+\]</span>
+<p>This identification respects arbitrary base change. It also explains why a Hilbert family consists of embedded subschemes, rather than abstract schemes with an embedding chosen up to an unrelated isomorphism.</p>
+<p>These functors are sheaves for faithfully flat quasi-compact descent. To see the mechanism, a compatible family of quotient kernels is descent data for quasi-coherent submodules of <span class="math" data-tex="\(E_T\)">\(E_T\)</span>. Faithfully flat descent glues the submodules and the quotient maps; equality can be tested after the cover. Finite presentation and flatness descend, as does properness of their support. This uses the usual faithfully flat descent theorem for quasi-coherent modules and morphisms. For the Hilbert case, it is descent of ideal sheaves and of the proper flat closed subschemes they define.</p>
+<p>Now suppose <span class="math" data-tex="\(f\)">\(f\)</span> is projective and choose a relatively very ample invertible sheaf <span class="math" data-tex="\(L\)">\(L\)</span>. Write <span class="math" data-tex="\(G(m)=G\otimes L^m\)">\(G(m)=G\otimes L^m\)</span>. The fibre polynomial</p>
+<span class="math math-display" data-tex="\[
+P_{G_t}(m)=\chi(X_t,G_t(m))
+\]">\[
+P_{G_t}(m)=\chi(X_t,G_t(m))
+\]</span>
+<p>is locally constant on <span class="math" data-tex="\(T\)">\(T\)</span>, by flat proper cohomology. Let <span class="math" data-tex="\(\operatorname{Quot}^{P,L}_{E/X/S}\)">\(\operatorname{Quot}^{P,L}_{E/X/S}\)</span> be the subfunctor where it is constantly <span class="math" data-tex="\(P\)">\(P\)</span>. Decomposing every test scheme into its open and closed polynomial loci gives a decomposition of functors</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Quot}_{E/X/S}=
+\coprod_P\operatorname{Quot}^{P,L}_{E/X/S}.
+\]">\[
+\operatorname{Quot}_{E/X/S}=
+\coprod_P\operatorname{Quot}^{P,L}_{E/X/S}.
+\]</span>
+<p>The coproduct here is a sheaf coproduct: a map from a disconnected test scheme can have different polynomials on its open and closed pieces. It need not select one polynomial on the whole scheme.</p>
+<h2 id="2-one-twist-across-the-entire-base">2 One twist across the entire base</h2>
+<p><strong>Lemma 2.1.</strong> Suppose <span class="math" data-tex="\(S\)">\(S\)</span> is Noetherian, <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> is projective, <span class="math" data-tex="\(L\)">\(L\)</span> is relatively very ample, <span class="math" data-tex="\(E\)">\(E\)</span> is coherent, and <span class="math" data-tex="\(P\)">\(P\)</span> is fixed. There is <span class="math" data-tex="\(m_0\)">\(m_0\)</span> such that for every field-valued point <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>, every quotient <span class="math" data-tex="\(E_s\twoheadrightarrow G\)">\(E_s\twoheadrightarrow G\)</span> of polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, and every <span class="math" data-tex="\(m\geq m_0\)">\(m\geq m_0\)</span>, its kernel <span class="math" data-tex="\(K\)">\(K\)</span>, its quotient <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(E_s\)">\(E_s\)</span>, after twist <span class="math" data-tex="\(m\)">\(m\)</span>, are globally generated and have zero higher cohomology. Moreover, after increasing <span class="math" data-tex="\(m_0\)">\(m_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+V_m=f_*E(m)
+\]">\[
+V_m=f_*E(m)
+\]</span>
+<p>is coherent, its evaluation map <span class="math" data-tex="\(f^*V_m\twoheadrightarrow E(m)\)">\(f^*V_m\twoheadrightarrow E(m)\)</span> is surjective, and</p>
+<span class="math math-display" data-tex="\[
+V_m\otimes\kappa(s)\simeq H^0(X_s,E_s(m))
+\]">\[
+V_m\otimes\kappa(s)\simeq H^0(X_s,E_s(m))
+\]</span>
+<p>for every <span class="math" data-tex="\(s\)">\(s\)</span>, including after arbitrary extension of <span class="math" data-tex="\(\kappa(s)\)">\(\kappa(s)\)</span>.</p>
+<p><strong>Proof.</strong> Take a finite affine cover of <span class="math" data-tex="\(S\)">\(S\)</span> on which <span class="math" data-tex="\(X\)">\(X\)</span> embeds in some <span class="math" data-tex="\(\mathbb P^n\)">\(\mathbb P^n\)</span> with <span class="math" data-tex="\(L=\mathcal O(1)|_X\)">\(L=\mathcal O(1)|_X\)</span>. Such a cover exists even if the original projective presentation uses a coherent sheaf rather than a vector bundle: that sheaf has finitely many generators on each affine open, giving a closed immersion into a finite projective space there. Push <span class="math" data-tex="\(E\)">\(E\)</span> forward by the closed immersion.</p>
+<p>On one affine open, relative Serre generation gives an integer <span class="math" data-tex="\(a\)">\(a\)</span> and a surjection <span class="math" data-tex="\(\mathcal O^N\to E(a)\)">\(\mathcal O^N\to E(a)\)</span>. It remains surjective on every fibre. The fibre polynomials of <span class="math" data-tex="\(E_s\)">\(E_s\)</span> range over a finite set, by the numerical finiteness argument in <em>Flattening stratifications</em>. Hence the kernels <span class="math" data-tex="\(K_{0,s}\)">\(K_{0,s}\)</span> of these surjections also have finitely many polynomials. The uniform kernel bound for subsheaves of <span class="math" data-tex="\(\mathcal O^N\)">\(\mathcal O^N\)</span> makes all <span class="math" data-tex="\(K_{0,s}\)">\(K_{0,s}\)</span> uniformly regular, independent of their residue fields.</p>
+<p>For a quotient <span class="math" data-tex="\(E_s\to G\)">\(E_s\to G\)</span>, let <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> be the kernel of the composite <span class="math" data-tex="\(\mathcal O^N\to G(a)\)">\(\mathcal O^N\to G(a)\)</span>. Its polynomial is</p>
+<span class="math math-display" data-tex="\[
+N\binom{t+n}{n}-P(t+a),
+\]">\[
+N\binom{t+n}{n}-P(t+a),
+\]</span>
+<p>so the same theorem uniformly bounds <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. The exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K_{0,s}\longrightarrow K&#x27;
+\longrightarrow K(a)\longrightarrow0
+\]">\[
+0\longrightarrow K_{0,s}\longrightarrow K&#x27;
+\longrightarrow K(a)\longrightarrow0
+\]</span>
+<p>and the long exact cohomology sequence give a uniform regularity bound for <span class="math" data-tex="\(K\)">\(K\)</span>. Explicitly, <span class="math" data-tex="\(K(a)\)">\(K(a)\)</span> is <span class="math" data-tex="\(b\)">\(b\)</span>-regular if <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> is <span class="math" data-tex="\(b\)">\(b\)</span>-regular and <span class="math" data-tex="\(K_{0,s}\)">\(K_{0,s}\)</span> is <span class="math" data-tex="\((b+1)\)">\((b+1)\)</span>-regular. The sequence <span class="math" data-tex="\(0\to K&#x27;\to\mathcal O^N\to G(a)\to0\)">\(0\to K&#x27;\to\mathcal O^N\to G(a)\to0\)</span> also uniformly bounds <span class="math" data-tex="\(G\)">\(G\)</span>. The finitely many polynomials of <span class="math" data-tex="\(E_s\)">\(E_s\)</span>, together with its fixed presentation, uniformly bound <span class="math" data-tex="\(E_s\)">\(E_s\)</span> in the same way. Regularity gives the claimed generation and vanishing.</p>
+<p>For the last comparison, use a finite graded presentation of the pushed-forward <span class="math" data-tex="\(E\)">\(E\)</span>. Its sufficiently high graded pieces equal <span class="math" data-tex="\(H^0(E(m))\)">\(H^0(E(m))\)</span> on the original Noetherian affine base. The uniform fibre comparison in Lemma 5.1 of <em>Flattening stratifications</em> identifies these same graded pieces, after tensoring with any residue field, with <span class="math" data-tex="\(H^0(E_s(m))\)">\(H^0(E_s(m))\)</span>. Increase <span class="math" data-tex="\(m_0\)">\(m_0\)</span> to satisfy both comparisons. Coherence of <span class="math" data-tex="\(V_m\)">\(V_m\)</span> is the proper coherent pushforward theorem. Relative Serre generation makes its evaluation surjective for all sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span>. Taking the maximum of the finitely many integers from the affine cover completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma has not assumed that <span class="math" data-tex="\(V_m\)">\(V_m\)</span> is locally free. It has also not asserted arbitrary-base commutation for <span class="math" data-tex="\(f_*E(m)\)">\(f_*E(m)\)</span> when <span class="math" data-tex="\(E\)">\(E\)</span> is nonflat. The comparison with fields and the evaluation map are what the construction needs.</p>
+<h2 id="3-grassmannians-of-coherent-modules-are-projective">3 Grassmannians of coherent modules are projective</h2>
+<p><strong>Lemma 3.1.</strong> For a finite-type quasi-coherent sheaf <span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, the Grassmannian <span class="math" data-tex="\(\operatorname{Gr}_r(V)\)">\(\operatorname{Gr}_r(V)\)</span> of locally free rank-<span class="math" data-tex="\(r\)">\(r\)</span> quotients has a closed Plücker immersion</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gr}_r(V)\hookrightarrow
+\mathbb P_S(\wedge^rV).
+\]">\[
+\operatorname{Gr}_r(V)\hookrightarrow
+\mathbb P_S(\wedge^rV).
+\]</span>
+<p>In particular, it is projective over <span class="math" data-tex="\(S\)">\(S\)</span>, and the determinant of its universal quotient is relatively very ample.</p>
+<p><strong>Proof.</strong> Representability for quasi-coherent <span class="math" data-tex="\(V\)">\(V\)</span> was proved in <em>Grassmannians</em>. Locally choose a surjection <span class="math" data-tex="\(\mathcal O^q\to V\)">\(\mathcal O^q\to V\)</span>. Factoring a locally free quotient of <span class="math" data-tex="\(\mathcal O^q\)">\(\mathcal O^q\)</span> through <span class="math" data-tex="\(V\)">\(V\)</span> is a closed condition: the relations in the kernel must map to zero in the universal quotient. In quotient-basis charts these are equations in the matrix entries, so <span class="math" data-tex="\(\operatorname{Gr}_r(V)\)">\(\operatorname{Gr}_r(V)\)</span> is closed in <span class="math" data-tex="\(\operatorname{Gr}_r(\mathcal O^q)\)">\(\operatorname{Gr}_r(\mathcal O^q)\)</span>.</p>
+<p>Taking determinants of the quotient gives a quotient line of <span class="math" data-tex="\(\wedge^rV\)">\(\wedge^rV\)</span>. Thus its Plücker map factors through <span class="math" data-tex="\(\mathbb P(\wedge^rV)\)">\(\mathbb P(\wedge^rV)\)</span>, a closed subscheme of <span class="math" data-tex="\(\mathbb P(\wedge^r\mathcal O^q)\)">\(\mathbb P(\wedge^r\mathcal O^q)\)</span>. The composite</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gr}_r(V)\longrightarrow
+\mathbb P(\wedge^r\mathcal O^q)
+\]">\[
+\operatorname{Gr}_r(V)\longrightarrow
+\mathbb P(\wedge^r\mathcal O^q)
+\]</span>
+<p>is a closed immersion, since both the relation locus and the free-bundle Plücker map are closed immersions. A closed immersion factoring through a closed subscheme is a closed immersion into that subscheme: on an affine chart, the corresponding surjective ring map still factors surjectively through the quotient ring. This proves the claim locally and therefore globally. The pullback of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is the determinant of the universal quotient, by its defining line quotient. Since <span class="math" data-tex="\(\wedge^rV\)">\(\wedge^rV\)</span> is finite type, this is projectivity in the convention allowing <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> of a finite-type quasi-coherent sheaf. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the Grassmannian is <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(\wedge^0V=\mathcal O_S\)">\(\wedge^0V=\mathcal O_S\)</span>, and the same assertion holds. When a rank is impossible, the scheme is empty.</p>
+<h2 id="4-the-flattening-stratum-is-the-quot-scheme">4 The flattening stratum is the Quot scheme</h2>
+<p><strong>Theorem 4.1 (Grothendieck).</strong> Under the hypotheses of Lemma 2.1, <span class="math" data-tex="\(\operatorname{Quot}^{P,L}_{E/X/S}\)">\(\operatorname{Quot}^{P,L}_{E/X/S}\)</span> is represented by a projective <span class="math" data-tex="\(S\)">\(S\)</span>-scheme <span class="math" data-tex="\(Q\)">\(Q\)</span>. For every sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span>, there is a closed immersion</p>
+<span class="math math-display" data-tex="\[
+Q\hookrightarrow\operatorname{Gr}_{P(m)}(f_*E(m))
+\hookrightarrow\mathbb P_S\!\left(\wedge^{P(m)}f_*E(m)\right).
+\]">\[
+Q\hookrightarrow\operatorname{Gr}_{P(m)}(f_*E(m))
+\hookrightarrow\mathbb P_S\!\left(\wedge^{P(m)}f_*E(m)\right).
+\]</span>
+<p>If <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is its universal quotient and <span class="math" data-tex="\(p:X_Q\to Q\)">\(p:X_Q\to Q\)</span>, the invertible sheaf</p>
+<span class="math math-display" data-tex="\[
+\det p_*\mathcal G(m)
+\]">\[
+\det p_*\mathcal G(m)
+\]</span>
+<p>is relatively very ample.</p>
+<p><strong>Proof of representability.</strong> Choose <span class="math" data-tex="\(m\geq m_0\)">\(m\geq m_0\)</span> from Lemma 2.1, set <span class="math" data-tex="\(V=f_*E(m)\)">\(V=f_*E(m)\)</span>, and put <span class="math" data-tex="\(r=P(m)\)">\(r=P(m)\)</span>. If this number is negative, no quotient can exist, since it would equal <span class="math" data-tex="\(h^0(G(m))\)">\(h^0(G(m))\)</span>; the empty scheme represents the functor. Otherwise let <span class="math" data-tex="\(H=\operatorname{Gr}_r(V)\)">\(H=\operatorname{Gr}_r(V)\)</span>. Write its universal sequence as</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow U\longrightarrow V_H
+\longrightarrow Q_H\longrightarrow0.
+\]">\[
+0\longrightarrow U\longrightarrow V_H
+\longrightarrow Q_H\longrightarrow0.
+\]</span>
+<p>The target <span class="math" data-tex="\(Q_H\)">\(Q_H\)</span> is locally free. Consequently this sequence remains exact after every base change, even when <span class="math" data-tex="\(V\)">\(V\)</span> is nonflat. On <span class="math" data-tex="\(X_H\)">\(X_H\)</span>, compose the inclusion of <span class="math" data-tex="\(U\)">\(U\)</span> with the evaluation map and untwist:</p>
+<span class="math math-display" data-tex="\[
+p_H^*U\otimes L^{-m}\longrightarrow E_H.
+\]">\[
+p_H^*U\otimes L^{-m}\longrightarrow E_H.
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be its coherent cokernel. Apply the projective flattening theorem to <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Denote its polynomial-<span class="math" data-tex="\(P\)">\(P\)</span> stratum by <span class="math" data-tex="\(H_P\)">\(H_P\)</span>, taking it empty if <span class="math" data-tex="\(P\)">\(P\)</span> does not occur. It is locally closed in <span class="math" data-tex="\(H\)">\(H\)</span>. The flattening theorem applies to <span class="math" data-tex="\(X_H\)">\(X_H\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> by its local projective-space embeddings; the unique polynomial strata glue over a finite affine cover. On <span class="math" data-tex="\(H_P\)">\(H_P\)</span> the quotient <span class="math" data-tex="\(E\to\mathcal F\)">\(E\to\mathcal F\)</span> is flat, finitely presented and has polynomial <span class="math" data-tex="\(P\)">\(P\)</span>. Its support is proper, since <span class="math" data-tex="\(X\)">\(X\)</span> is proper.</p>
+<p>For any test quotient <span class="math" data-tex="\(E_T\to G\)">\(E_T\to G\)</span> in the functor, proper flat cohomology and the uniform fibre vanishings give a finite locally free sheaf <span class="math" data-tex="\(p_*G(m)\)">\(p_*G(m)\)</span> of rank <span class="math" data-tex="\(r\)">\(r\)</span>, compatible with arbitrary base change. The natural map</p>
+<span class="math math-display" data-tex="\[
+V_T\longrightarrow p_*G(m)
+\]">\[
+V_T\longrightarrow p_*G(m)
+\]</span>
+<p>is surjective. On every residue field it is the map <span class="math" data-tex="\(H^0(E_t(m))\to H^0(G_t(m))\)">\(H^0(E_t(m))\to H^0(G_t(m))\)</span>, which is onto because <span class="math" data-tex="\(H^1(K_t(m))=0\)">\(H^1(K_t(m))=0\)</span>. Its cokernel is finite, so fibrewise surjectivity and Nakayama give surjectivity on <span class="math" data-tex="\(T\)">\(T\)</span>. This defines a map <span class="math" data-tex="\(T\to H\)">\(T\to H\)</span>.</p>
+<p>We claim that the candidate cokernel pulled back from <span class="math" data-tex="\(H\)">\(H\)</span> is exactly <span class="math" data-tex="\(G\)">\(G\)</span>. Let <span class="math" data-tex="\(W=\ker(V_T\to p_*G(m))\)">\(W=\ker(V_T\to p_*G(m))\)</span>, and let <span class="math" data-tex="\(K_T=\ker(E_T\to G)\)">\(K_T=\ker(E_T\to G)\)</span>. The evaluation image of <span class="math" data-tex="\(W\otimes L^{-m}\)">\(W\otimes L^{-m}\)</span> is contained in <span class="math" data-tex="\(K_T\)">\(K_T\)</span>. Since <span class="math" data-tex="\(G\)">\(G\)</span> is flat over <span class="math" data-tex="\(T\)">\(T\)</span>, tensoring the kernel sequence with a residue field gives the actual kernel <span class="math" data-tex="\(K_t\)">\(K_t\)</span> of <span class="math" data-tex="\(E_t\to G_t\)">\(E_t\to G_t\)</span>. Since <span class="math" data-tex="\(p_*G(m)\)">\(p_*G(m)\)</span> is locally free, tensoring the section-quotient sequence identifies <span class="math" data-tex="\(W_t\)">\(W_t\)</span> with <span class="math" data-tex="\(H^0(K_t(m))\)">\(H^0(K_t(m))\)</span>. Lemma 2.1 says that these sections generate <span class="math" data-tex="\(K_t(m)\)">\(K_t(m)\)</span>. The cokernel of evaluation into <span class="math" data-tex="\(K_T\)">\(K_T\)</span> is finite locally on <span class="math" data-tex="\(X_T\)">\(X_T\)</span> and has zero fibres at every parameter point. Nakayama at each source point makes it zero. Thus evaluation recovers the kernel, and its cokernel is <span class="math" data-tex="\(G\)">\(G\)</span>. This proves that <span class="math" data-tex="\(T\to H\)">\(T\to H\)</span> factors through <span class="math" data-tex="\(H_P\)">\(H_P\)</span>.</p>
+<p>Here finiteness of <span class="math" data-tex="\(K_T\)">\(K_T\)</span> follows from finite presentation of <span class="math" data-tex="\(G\)">\(G\)</span> and of <span class="math" data-tex="\(E_T\)">\(E_T\)</span>: locally, lift a finite presentation of <span class="math" data-tex="\(G\)">\(G\)</span> through the finite module <span class="math" data-tex="\(E_T\)">\(E_T\)</span> to obtain finitely many generators of the kernel. We do not need to assume that <span class="math" data-tex="\(K_T\)">\(K_T\)</span> is flat or apply a cohomology theorem to it.</p>
+<p>Conversely, on <span class="math" data-tex="\(H_P\)">\(H_P\)</span> the natural map <span class="math" data-tex="\(V_{H_P}\to p_*\mathcal F(m)\)">\(V_{H_P}\to p_*\mathcal F(m)\)</span> is surjective by the same argument. The original <span class="math" data-tex="\(U\)">\(U\)</span> maps to zero, by the definition of the cokernel. It therefore induces a surjection</p>
+<span class="math math-display" data-tex="\[
+Q_H|_{H_P}\longrightarrow p_*\mathcal F(m).
+\]">\[
+Q_H|_{H_P}\longrightarrow p_*\mathcal F(m).
+\]</span>
+<p>Both sides are locally free of rank <span class="math" data-tex="\(r\)">\(r\)</span>, so this is an isomorphism. The same reasoning applies after any base change. Hence the two operations—taking the quotient of sections and taking the sheaf cokernel—are mutually inverse on every test scheme. This proves that <span class="math" data-tex="\(H_P\)">\(H_P\)</span> represents <span class="math" data-tex="\(\operatorname{Quot}^{P,L}_{E/X/S}\)">\(\operatorname{Quot}^{P,L}_{E/X/S}\)</span>. In particular it is a separated scheme of finite type over <span class="math" data-tex="\(S\)">\(S\)</span>, with a locally closed immersion into <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof of properness.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a discrete valuation ring with fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, and let <span class="math" data-tex="\(\operatorname{Spec}R\to S\)">\(\operatorname{Spec}R\to S\)</span>. Given <span class="math" data-tex="\(E_K\twoheadrightarrow G_K\)">\(E_K\twoheadrightarrow G_K\)</span>, let <span class="math" data-tex="\(j:X_K\hookrightarrow X_R\)">\(j:X_K\hookrightarrow X_R\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+G_R=\operatorname{im}(E_R\longrightarrow j_*G_K).
+\]">\[
+G_R=\operatorname{im}(E_R\longrightarrow j_*G_K).
+\]</span>
+<p>Equivalently, its kernel consists of sections of <span class="math" data-tex="\(E_R\)">\(E_R\)</span> whose localization belongs to the generic kernel. Since <span class="math" data-tex="\(X_R\)">\(X_R\)</span> is Noetherian, this kernel and its quotient are coherent. The image is torsion-free as an <span class="math" data-tex="\(R\)">\(R\)</span>-module: multiplication by a nonzero element of <span class="math" data-tex="\(R\)">\(R\)</span> is invertible on <span class="math" data-tex="\(j_*G_K\)">\(j_*G_K\)</span>, so it is injective on the image. A torsion-free module over a discrete valuation ring is flat. One proof is that its finitely generated submodules are free, and it is their filtered union. Thus <span class="math" data-tex="\(G_R\)">\(G_R\)</span> is flat over <span class="math" data-tex="\(R\)">\(R\)</span>. Its support is closed in the proper scheme <span class="math" data-tex="\(X_R\)">\(X_R\)</span>, and hence is proper. Its polynomial is constant on the connected base <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span> and equals the generic polynomial <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>This gives an extension in the quotient functor. It is unique. Any flat quotient <span class="math" data-tex="\(E_R\twoheadrightarrow G&#x27;_R\)">\(E_R\twoheadrightarrow G&#x27;_R\)</span> is torsion-free over <span class="math" data-tex="\(R\)">\(R\)</span> and therefore injects into the localization of its generic fibre. Its kernel is precisely the inverse image in <span class="math" data-tex="\(E_R\)">\(E_R\)</span> of the generic kernel; this is the kernel used above. Quotient equivalence is equality of kernels, so the two extensions agree.</p>
+<p>The finite-type scheme <span class="math" data-tex="\(H_P\to S\)">\(H_P\to S\)</span>, with Noetherian base, thus satisfies existence and uniqueness for every discrete valuation ring diagram. The Noetherian valuative criterion [Stacks, Tag 0208] gives properness. Its immersion into <span class="math" data-tex="\(H\)">\(H\)</span> is proper, since <span class="math" data-tex="\(H\to S\)">\(H\to S\)</span> is separated: its graph is closed and projection from <span class="math" data-tex="\(H_P\times_S H\)">\(H_P\times_S H\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> is proper. A proper locally closed immersion is a closed immersion. For example, factor it into a closed immersion into an open subscheme of <span class="math" data-tex="\(H\)">\(H\)</span>; properness makes its image closed in <span class="math" data-tex="\(H\)">\(H\)</span>, and its closed scheme structure then extends across the complement. Consequently <span class="math" data-tex="\(H_P\)">\(H_P\)</span> is closed in the projective Grassmannian.</p>
+<p>Finally, the universal Grassmannian quotient restricts to <span class="math" data-tex="\(p_*\mathcal G(m)\)">\(p_*\mathcal G(m)\)</span>. The Plücker line bundle restricts to its determinant. Lemma 3.1 makes it relatively very ample, completing the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof shows precisely where three different hypotheses enter: regularity gives a uniform twist, projective flattening represents the flat candidate quotients, and Noetherianity permits the discrete-valuation closure argument. A locally closed flattening stratum alone would prove neither properness nor the closed Grassmannian embedding.</p>
+<p><strong>Corollary 4.2.</strong> Every fixed-polynomial Hilbert functor <span class="math" data-tex="\(\operatorname{Hilb}^{P,L}_{X/S}\)">\(\operatorname{Hilb}^{P,L}_{X/S}\)</span> is represented by a projective <span class="math" data-tex="\(S\)">\(S\)</span>-scheme. The full Hilbert functor is represented by their disjoint union and is locally of finite type.</p>
+<p><strong>Proof.</strong> Apply Theorem 4.1 to <span class="math" data-tex="\(E=\mathcal O_X\)">\(E=\mathcal O_X\)</span> and use Section 1. The polynomial is locally constant in every Hilbert family, so every map factors locally through the corresponding fixed-polynomial scheme, and these factorizations glue over its open and closed polynomial loci. This is the universal property of the disjoint union. Each piece is finite type. There can be infinitely many pieces: already subschemes of <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> have arbitrary finite lengths. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Flatness of <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> is not needed for this corollary. It is the members <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> of the Hilbert functor that must be flat.</p>
+<h3 id="arbitrary-bases-and-proper-algebraic-spaces">Arbitrary bases and proper algebraic spaces</h3>
+<p>The Noetherian hypothesis in the construction above can be removed from properness. In the following theorem, a line bundle ample on a morphism of algebraic spaces has its usual meaning: the morphism is representable by schemes, and the bundle is relatively ample after every scheme base change. The base space itself need not be a scheme or Noetherian.</p>
+<p><strong>Theorem 4.3.</strong> Let <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> be proper and of finite presentation, let <span class="math" data-tex="\(E\)">\(E\)</span> be a finitely presented quasi-coherent sheaf, and let <span class="math" data-tex="\(L\)">\(L\)</span> be ample on <span class="math" data-tex="\(X/S\)">\(X/S\)</span>. For every numerical polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, the functor <span class="math" data-tex="\(\operatorname{Quot}^{P,L}_{E/X/S}\)">\(\operatorname{Quot}^{P,L}_{E/X/S}\)</span> is an algebraic space proper over <span class="math" data-tex="\(S\)">\(S\)</span>. Its formation commutes with every base change. After an étale affine base change on <span class="math" data-tex="\(S\)">\(S\)</span>, it is a projective scheme.</p>
+<p><strong>Proof.</strong> The general Quot space, including its arbitrary-base-change property and separatedness, is <a href="../AG-AS/moduli-stacks-are-algebraic.html#6-quotients-and-closed-subschemes">Moduli stacks are algebraic, Theorem 6.2</a>. The Hilbert polynomial of a flat finitely presented quotient with proper support is locally constant. This follows from the finite-projective cohomology complex for its twists: the first <span class="math" data-tex="\(\dim\mathbf P^N+1\)">\(\dim\mathbf P^N+1\)</span> Euler characteristics determine the polynomial on each projective chart. The fixed-polynomial condition therefore defines an open and closed subspace. We can also obtain that subspace directly from the local construction below, without first assuming its algebraicity.</p>
+<p>Pass to an étale affine chart <span class="math" data-tex="\(\operatorname{Spec}R\to S\)">\(\operatorname{Spec}R\to S\)</span>. Representability in the ampleness hypothesis makes <span class="math" data-tex="\(X_R\)">\(X_R\)</span> a scheme. The <a href="../AG-AS/moduli-stacks-are-algebraic.html#uncovered-morphisms-lemma-quasi-projective-finite-type-over-s">ample embedding theorem</a> gives an immersion</p>
+<span class="math math-display" data-tex="\[
+i:X_R\longrightarrow\mathbf P^N_R,
+\qquad i^*\mathcal O(1)=L^{\otimes d},\quad d&gt;0.
+\]">\[
+i:X_R\longrightarrow\mathbf P^N_R,
+\qquad i^*\mathcal O(1)=L^{\otimes d},\quad d&gt;0.
+\]</span>
+<p>Properness of <span class="math" data-tex="\(X_R\)">\(X_R\)</span> makes this a closed immersion: its graph is closed because the target is separated, so the immersion is proper. It is of finite presentation. Indeed both schemes are of finite presentation over <span class="math" data-tex="\(R\)">\(R\)</span>; a map between finitely presented algebras over one ring is finitely presented, by adjoining the finitely many equations for the images of its generators, and the resulting local assertion applies on the standard affine charts.</p>
+<p>Changing from <span class="math" data-tex="\(L\)">\(L\)</span> to <span class="math" data-tex="\(L^{\otimes d}\)">\(L^{\otimes d}\)</span> replaces <span class="math" data-tex="\(P(t)\)">\(P(t)\)</span> by <span class="math" data-tex="\(Q(t)=P(dt)\)">\(Q(t)=P(dt)\)</span>. This preserves the functor exactly. On a geometric fibre, if <span class="math" data-tex="\(R_G(t)\)">\(R_G(t)\)</span> is the polynomial for <span class="math" data-tex="\(G\)">\(G\)</span> with respect to <span class="math" data-tex="\(L\)">\(L\)</span>, its polynomial for <span class="math" data-tex="\(L^{\otimes d}\)">\(L^{\otimes d}\)</span> is <span class="math" data-tex="\(R_G(dt)\)">\(R_G(dt)\)</span>. Equality <span class="math" data-tex="\(R_G(dt)=P(dt)\)">\(R_G(dt)=P(dt)\)</span> is equivalent to <span class="math" data-tex="\(R_G=P\)">\(R_G=P\)</span>, because substitution by a positive integer is injective on <span class="math" data-tex="\(\mathbf Q[t]\)">\(\mathbf Q[t]\)</span>. This argument concerns integer Euler characteristics and works in every characteristic.</p>
+<p>Closed-immersion pushforward gives, on every parameter scheme, a natural identification</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Quot}^{P,L}_{E/X_R/R}
+\simeq
+\operatorname{Quot}^{Q,\mathcal O(1)}_{i_*E/\mathbf P^N_R/R}.
+\]">\[
+\operatorname{Quot}^{P,L}_{E/X_R/R}
+\simeq
+\operatorname{Quot}^{Q,\mathcal O(1)}_{i_*E/\mathbf P^N_R/R}.
+\]</span>
+<p>For completeness, the ideal of <span class="math" data-tex="\(X_R\)">\(X_R\)</span> annihilates <span class="math" data-tex="\(i_*E\)">\(i_*E\)</span>, and hence annihilates every quotient of it. Such a quotient is uniquely the pushforward of a sheaf on <span class="math" data-tex="\(X_R\)">\(X_R\)</span>. Its finite presentation, relative flatness and proper support have the same meaning before and after pushforward; this is checked on affine charts of the closed immersion. Conversely pushforward is exact and preserves these properties. Quotient equivalence is equality of kernels, so the two constructions are inverse. They commute with all pullbacks, and the projection formula identifies their Hilbert polynomials. The sheaf <span class="math" data-tex="\(i_*E\)">\(i_*E\)</span> is finitely presented: on an affine chart, a finite presentation over a finitely presented quotient ring is a finite presentation over the original ring.</p>
+<p>Now descend only <span class="math" data-tex="\(i_*E\)">\(i_*E\)</span> on the fixed projective space. Write <span class="math" data-tex="\(R\)">\(R\)</span> as the directed union of its finitely generated <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-subalgebras. On the finitely many standard affine charts of <span class="math" data-tex="\(\mathbf P^N_R\)">\(\mathbf P^N_R\)</span>, choose finite module presentations. The overlaps and triple overlaps are principal localizations of those charts. The gluing isomorphisms, their inverses and their cocycle identities are specified by finitely many images of generators and finitely many relations. All coefficients and denominators belong to a common finitely generated subalgebra <span class="math" data-tex="\(R_0\)">\(R_0\)</span>; enlarge it to a later stage so that all these finitely many identities hold. Thus there is a finitely presented sheaf <span class="math" data-tex="\(E_0\)">\(E_0\)</span> on <span class="math" data-tex="\(\mathbf P^N_{R_0}\)">\(\mathbf P^N_{R_0}\)</span> whose pullback is <span class="math" data-tex="\(i_*E\)">\(i_*E\)</span>. This argument does not require the maps <span class="math" data-tex="\(R_0\to R\)">\(R_0\to R\)</span> to be flat.</p>
+<p>The ring <span class="math" data-tex="\(R_0\)">\(R_0\)</span> is Noetherian. Theorem 4.1 constructs the projective scheme</p>
+<span class="math math-display" data-tex="\[
+Q_0=\operatorname{Quot}^{Q,\mathcal O(1)}
+_{E_0/\mathbf P^N_{R_0}/R_0}.
+\]">\[
+Q_0=\operatorname{Quot}^{Q,\mathcal O(1)}
+_{E_0/\mathbf P^N_{R_0}/R_0}.
+\]</span>
+<p>Its base change to <span class="math" data-tex="\(R\)">\(R\)</span> represents the required functor on <strong>every</strong> <span class="math" data-tex="\(R\)">\(R\)</span>-scheme: the pulled-back source sheaves agree, and finite presentation, flatness over the parameter scheme, support and the fibre polynomial are the same conditions. No new uniform regularity estimate over <span class="math" data-tex="\(R\)">\(R\)</span> is needed. Hence the fixed-polynomial space over our affine chart is projective and in particular proper.</p>
+<p>These local identifications agree on overlaps by their common functor, giving the specified subspace of the general Quot space. Properness is étale local on the base. One can see its closedness assertion directly: after any base change, the inverse image of the image of a closed subset is its image after the étale surjective base change, by the residue-field tensor-product argument. That image is closed on the covering, and an étale surjection has the quotient topology. Universal closedness therefore descends; finite type and separatedness descend too. This proves properness over arbitrary <span class="math" data-tex="\(S\)">\(S\)</span>. Finally, restriction of the functor to any new base is exactly the same Quot functor for the pulled-back data, proving the base-change assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-finite-points-on-affine-schemes">5 Finite points on affine schemes</h2>
+<p>For separated <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span>, let <span class="math" data-tex="\(\operatorname{Hilb}^d_{X/S}\)">\(\operatorname{Hilb}^d_{X/S}\)</span> classify closed subschemes <span class="math" data-tex="\(Z\subset X_T\)">\(Z\subset X_T\)</span> finite locally free of degree <span class="math" data-tex="\(d\)">\(d\)</span> over <span class="math" data-tex="\(T\)">\(T\)</span>. For projective <span class="math" data-tex="\(X\)">\(X\)</span>, it is the Hilbert functor of constant polynomial <span class="math" data-tex="\(d\)">\(d\)</span>: a proper finitely presented family with zero-dimensional fibres is finite, and its flat finite algebra is locally free of rank <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> Suppose <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> is separated and of finite presentation, and has the following affine neighbourhood property locally on <span class="math" data-tex="\(S\)">\(S\)</span>: every finite set of points in a fibre is contained in an open <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span> affine over that base neighbourhood. Then <span class="math" data-tex="\(\operatorname{Hilb}^d_{X/S}\)">\(\operatorname{Hilb}^d_{X/S}\)</span> is represented by a scheme. On an affine <span class="math" data-tex="\(X\)">\(X\)</span> it has explicit affine charts given by commuting matrices with a specified cyclic basis.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(S=\operatorname{Spec}A\)">\(S=\operatorname{Spec}A\)</span> and</p>
+<span class="math math-display" data-tex="\[
+X=\operatorname{Spec}C,
+\qquad C=A[z_1,\ldots,z_n]/(f_1,\ldots,f_l).
+\]">\[
+X=\operatorname{Spec}C,
+\qquad C=A[z_1,\ldots,z_n]/(f_1,\ldots,f_l).
+\]</span>
+<p>For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the only quotient algebra is zero, and the representing scheme is <span class="math" data-tex="\(S\)">\(S\)</span>. Suppose <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. A finite-dimensional quotient of this algebra over a field is spanned by monomials of degree at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Indeed, let <span class="math" data-tex="\(C_j\)">\(C_j\)</span> be the subspace spanned by monomials of degree at most <span class="math" data-tex="\(j\)">\(j\)</span>. It begins with dimension one. If <span class="math" data-tex="\(C_j=C_{j+1}\)">\(C_j=C_{j+1}\)</span>, multiplication by every generator preserves <span class="math" data-tex="\(C_j\)">\(C_j\)</span>; since these generators generate the algebra, <span class="math" data-tex="\(C_j\)">\(C_j\)</span> is the whole algebra. There can be at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span> strict increases before dimension <span class="math" data-tex="\(d\)">\(d\)</span> is reached.</p>
+<p>Choose <span class="math" data-tex="\(d\)">\(d\)</span> monomials <span class="math" data-tex="\(m_1=1,m_2,\ldots,m_d\)">\(m_1=1,m_2,\ldots,m_d\)</span> from this finite set. For any finite locally free quotient <span class="math" data-tex="\(C_B\twoheadrightarrow D\)">\(C_B\twoheadrightarrow D\)</span> of rank <span class="math" data-tex="\(d\)">\(d\)</span>, the condition that their images form a basis is open on <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span>: it is invertibility of the determinant of the map <span class="math" data-tex="\(B^d\to D\)">\(B^d\to D\)</span>. These basis opens cover all parameter points by the preceding field argument.</p>
+<p>On this basis open, multiplication by <span class="math" data-tex="\(z_i\)">\(z_i\)</span> is a <span class="math" data-tex="\(d\)">\(d\)</span>-by-<span class="math" data-tex="\(d\)">\(d\)</span> matrix <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span>. The quotient algebra is specified by the equations</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+[Z_i,Z_j]=0,\qquad f_a(Z_1,\ldots,Z_n)=0,\\
+m_j(Z_1,\ldots,Z_n)e_1=e_j.
+\end{gathered}
+\]">\[
+\begin{gathered}
+[Z_i,Z_j]=0,\qquad f_a(Z_1,\ldots,Z_n)=0,\\
+m_j(Z_1,\ldots,Z_n)e_1=e_j.
+\end{gathered}
+\]</span>
+<p>They are finitely many polynomial equations in the matrix entries. Conversely, matrices satisfying these equations give an action of <span class="math" data-tex="\(C_B\)">\(C_B\)</span> on <span class="math" data-tex="\(B^d\)">\(B^d\)</span>, and the map</p>
+<span class="math math-display" data-tex="\[
+C_B\longrightarrow B^d,\qquad h\longmapsto h(Z)e_1
+\]">\[
+C_B\longrightarrow B^d,\qquad h\longmapsto h(Z)e_1
+\]</span>
+<p>is surjective, since it contains every <span class="math" data-tex="\(e_j\)">\(e_j\)</span> in its image. Its kernel is an ideal: if <span class="math" data-tex="\(h(Z)e_1=0\)">\(h(Z)e_1=0\)</span>, then <span class="math" data-tex="\((ah)(Z)e_1=a(Z)h(Z)e_1=0\)">\((ah)(Z)e_1=a(Z)h(Z)e_1=0\)</span>. The resulting algebra quotient is free with the stated basis, and its multiplication matrices are exactly the original <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span>. Thus the matrix equations represent the basis subfunctor. The ideal is finitely generated as well: monic degree-<span class="math" data-tex="\(d\)">\(d\)</span> characteristic equations for each <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span> reduce all monomials to a finite list, whose differences from their expressions in the chosen basis supply finitely many additional relations. Hence the subscheme family is of finite presentation over the base.</p>
+<p>On the intersection of two basis opens, the change-of-basis matrix has columns <span class="math" data-tex="\(m&#x27;_j(Z)e_1\)">\(m&#x27;_j(Z)e_1\)</span>. Inverting its determinant gives the open intersection; conjugating the multiplication matrices gives its inverse change of chart. The identities satisfy the cocycle condition because they are ordinary changes of basis of the same algebra. The affine charts therefore glue to a representing scheme for <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For the general affine neighbourhood property, a finite family <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> is contained in <span class="math" data-tex="\(U_T\)">\(U_T\)</span> on an open subset of <span class="math" data-tex="\(T\)">\(T\)</span>: the complement is the image of the closed subset <span class="math" data-tex="\(Z\cap(X_T\setminus U_T)\)">\(Z\cap(X_T\setminus U_T)\)</span> under the finite, hence proper, map <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span>, and that image is closed. Thus the functors <span class="math" data-tex="\(\operatorname{Hilb}^d_{U/S}\)">\(\operatorname{Hilb}^d_{U/S}\)</span> are open subfunctors. The stated neighbourhood property makes them cover the whole functor. Their represented intersections and the sheaf property glue the affine constructions by the representable-open gluing theorem from <em>Representable functors and the functor of points</em>. This gives the representing scheme. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The affine neighbourhood condition has a specific role: the entire finite support of a fibre must fit into one affine open. Merely knowing that each of its points has an affine neighbourhood would not provide this cover of the Hilbert functor.</p>
+<p><strong>Example 5.2.</strong> If <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> is separated, <span class="math" data-tex="\(\operatorname{Hilb}^1_{X/S}=X\)">\(\operatorname{Hilb}^1_{X/S}=X\)</span>. A finite locally free rank-one algebra over <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(\mathcal O_T\)">\(\mathcal O_T\)</span>: its unit map is an isomorphism on every fibre and hence an isomorphism. Therefore <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> is an isomorphism and its embedding in <span class="math" data-tex="\(X_T\)">\(X_T\)</span> is the graph of a map <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>. Separatedness makes every such graph closed, giving the converse and the functorial identification.</p>
+<h2 id="6-the-two-point-affine-plane">6 The two-point affine plane</h2>
+<p><strong>Proposition 6.1.</strong> Over any field <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(\operatorname{Hilb}^2(\mathbb A^2_k)\)">\(\operatorname{Hilb}^2(\mathbb A^2_k)\)</span> is covered by two affine four-spaces and is smooth of dimension four.</p>
+<p><strong>Proof.</strong> In a length-two algebra generated by <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, at least one of <span class="math" data-tex="\(1,x\)">\(1,x\)</span> or <span class="math" data-tex="\(1,y\)">\(1,y\)</span> is a basis. Otherwise both generators would lie in the scalar subspace, and the algebra they generate would have dimension one. The corresponding basis opens therefore cover the Hilbert scheme.</p>
+<p>On the <span class="math" data-tex="\(1,x\)">\(1,x\)</span> chart, every quotient has unique equations</p>
+<span class="math math-display" data-tex="\[
+x^2=a+bx,\qquad y=c+dx.
+\]">\[
+x^2=a+bx,\qquad y=c+dx.
+\]</span>
+<p>Conversely, these equations give the free algebra <span class="math" data-tex="\(B[x]/(x^2-bx-a)\)">\(B[x]/(x^2-bx-a)\)</span>, with <span class="math" data-tex="\(y\)">\(y\)</span> acting as <span class="math" data-tex="\(c+dx\)">\(c+dx\)</span>, over every parameter algebra <span class="math" data-tex="\(B\)">\(B\)</span>. Thus this chart is <span class="math" data-tex="\(\mathbb A^4\)">\(\mathbb A^4\)</span> with coordinates <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>, with no additional relations. On the <span class="math" data-tex="\(1,y\)">\(1,y\)</span> chart write</p>
+<span class="math math-display" data-tex="\[
+y^2=a&#x27;+b&#x27;y,\qquad x=c&#x27;+d&#x27;y.
+\]">\[
+y^2=a&#x27;+b&#x27;y,\qquad x=c&#x27;+d&#x27;y.
+\]</span>
+<p>The overlap of the charts is <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span>. Substituting <span class="math" data-tex="\(x=(y-c)/d\)">\(x=(y-c)/d\)</span> and expanding gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a&#x27;=d^2a-c^2-bcd,\\
+b&#x27;=2c+bd,\qquad c&#x27;=-c/d,\qquad d&#x27;=1/d.
+\end{gathered}
+\]">\[
+\begin{gathered}
+a&#x27;=d^2a-c^2-bcd,\\
+b&#x27;=2c+bd,\qquad c&#x27;=-c/d,\qquad d&#x27;=1/d.
+\end{gathered}
+\]</span>
+<p>These changes are inverse to the analogous changes with primed variables. They are valid in every characteristic, including characteristic two. Both charts are smooth affine four-spaces, so the glued scheme is smooth of dimension four. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At a double point the parameter <span class="math" data-tex="\(d\)">\(d\)</span> records a tangent direction of finite slope. The other chart records the missing vertical direction. The collision is therefore a point of a projective line of possible tangent directions, rather than a single undifferentiated diagonal point.</p>
+<h2 id="7-a-smooth-curve-unordered-divisors-are-the-hilbert-scheme">7 A smooth curve: unordered divisors are the Hilbert scheme</h2>
+<h3 id="affine-neighbourhoods-on-regular-curves">Affine neighbourhoods on regular curves</h3>
+<p><strong>Lemma 7.A.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be a separated regular finite-type curve over a field, with every component of dimension one. Every finite set of its points has an affine open neighbourhood. An integral such curve is affine or projective. Removing a closed point from an integral regular projective curve gives an affine scheme. Every nonempty component has infinitely many closed points.</p>
+<p><strong>Proof.</strong> First suppose that <span class="math" data-tex="\(C\)">\(C\)</span> is integral. Apply <a href="../AG-MO/projective-morphisms-and-chows-lemma.html#4-chow-s-lemma-over-a-noetherian-base">Chow’s lemma, Theorem 4.1</a>, over the field, and take the reduced closure of the inverse image of its dense isomorphism open. This gives a proper birational map <span class="math" data-tex="\(Z\to C\)">\(Z\to C\)</span>, where <span class="math" data-tex="\(Z\)">\(Z\)</span> is an integral quasi-projective curve. A fibre over a closed point is a proper closed subset of this one-dimensional integral scheme, hence is zero-dimensional. The generic fibre is a point, since the map is an isomorphism on a dense open. The map is finite by <a href="../AG-MO/zariskis-main-theorem.html#5-properness-and-normality">Zariski’s main theorem, Theorem 5.1</a>. A finite birational map to a normal integral scheme is an isomorphism: over an affine open <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> of the target, its finite coordinate algebra is an integral <span class="math" data-tex="\(A\)">\(A\)</span>-subalgebra of <span class="math" data-tex="\(\operatorname{Frac}A\)">\(\operatorname{Frac}A\)</span>, and integral closedness makes it exactly <span class="math" data-tex="\(A\)">\(A\)</span>. Regularity implies normality. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is quasi-projective.</p>
+<p>It follows already that finite sets have affine neighbourhoods. Restrict a projective hyperplane bundle to <span class="math" data-tex="\(C\)">\(C\)</span>, and apply <a href="../AG-MO/effective-cartier-divisors-and-invertible-sheaves.html#5-associated-points-and-effective-representatives">Effective Cartier divisors and invertible sheaves, Lemma 5.2a</a>. Its homogeneous prime-avoidance proof produces an affine section open containing the specified points, including over finite fields.</p>
+<p>We also prove the affine-or-projective assertion used below. Take the reduced projective closure <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span> in a projective embedding. If its boundary is empty, <span class="math" data-tex="\(C=B\)">\(C=B\)</span> is projective. Otherwise normalize <span class="math" data-tex="\(B\)">\(B\)</span>. The normalization <span class="math" data-tex="\(\overline C\to B\)">\(\overline C\to B\)</span> is finite by <a href="../AG-MO/normalization.html#5-finiteness-over-fields-including-inseparability">Normalization, Theorem 5.1</a>, hence proper, and is an isomorphism over the normal open <span class="math" data-tex="\(C\)">\(C\)</span>. The normal one-dimensional Noetherian scheme <span class="math" data-tex="\(\overline C\)">\(\overline C\)</span> is regular. Its boundary is a nonempty finite set of closed points. Let <span class="math" data-tex="\(D\)">\(D\)</span> be their sum as an effective Cartier divisor.</p>
+<p>Assume first that the ground field is infinite. For each boundary point <span class="math" data-tex="\(q\)">\(q\)</span>, the inclusions
+<span class="math math-display" data-tex="\[
+\mathcal O((n-1)D)\subset\mathcal O(nD-q)
+\subset\mathcal O(nD)
+\]">\[
+\mathcal O((n-1)D)\subset\mathcal O(nD-q)
+\subset\mathcal O(nD)
+\]</span>
+have cokernels with finite support. Their induced maps on <span class="math" data-tex="\(H^1\)">\(H^1\)</span> are surjective, since such cokernels have zero higher cohomology. These <span class="math" data-tex="\(H^1\)">\(H^1\)</span> spaces are finite-dimensional by <span class="unlinked">Proper morphisms and coherent direct images, Theorem 5.1</span>. The nonincreasing sequence <span class="math" data-tex="\(h^1(\mathcal O(nD))\)">\(h^1(\mathcal O(nD))\)</span> therefore stabilizes. For every sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, the two displayed maps on <span class="math" data-tex="\(H^1\)">\(H^1\)</span> have equal endpoint dimensions, so both are isomorphisms. The exact sequence for the last inclusion then makes
+<span class="math math-display" data-tex="\[
+H^0(\mathcal O(nD))\longrightarrow
+H^0(\mathcal O(nD)|_q)
+\]">\[
+H^0(\mathcal O(nD))\longrightarrow
+H^0(\mathcal O(nD)|_q)
+\]</span>
+surjective. Consequently the sections whose pole order at <span class="math" data-tex="\(q\)">\(q\)</span> is less than <span class="math" data-tex="\(n\)">\(n\)</span> form a proper linear subspace. Avoid these finitely many proper subspaces over the infinite field. The resulting rational function <span class="math" data-tex="\(f\)">\(f\)</span> has poles at every boundary point and nowhere else.</p>
+<p>A rational function on a regular curve defines a morphism to <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>: at each DVR local ring, either <span class="math" data-tex="\(f\)">\(f\)</span> or <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> is regular, and these two chart definitions agree. Here the map <span class="math" data-tex="\(\overline C\to\mathbb P^1\)">\(\overline C\to\mathbb P^1\)</span> is nonconstant, proper, and has finite fibres, so it is finite. Its inverse image of the affine line is precisely <span class="math" data-tex="\(\overline C\setminus D=C\)">\(\overline C\setminus D=C\)</span>, which is affine. This same construction with <span class="math" data-tex="\(D=q\)">\(D=q\)</span> proves that removing any closed point of a regular projective integral curve gives an affine scheme.</p>
+<p>If the ground field is finite, it is perfect, so the regular curve <span class="math" data-tex="\(\overline C\)">\(\overline C\)</span> is smooth over it; <a href="../AG-FSE/smooth-morphisms.html#2-over-a-field-regularity-must-be-geometric">Smooth morphisms, Section 2</a> proves this field criterion. After extension to an algebraic closure, its components are regular, and the nonempty boundary meets each of them. Indeed flat field extension makes each minimal prime contract to the generic point, while the algebraic field extension is integral and hence has closed image; each geometric component therefore maps onto the original integral curve. Apply the infinite-field argument on each component. The resulting complement is affine, and affineness descends along the faithfully flat field extension by <a href="../AG-DFG/AG-DFG-03.html#2-checking-a-morphism-on-an-fpqc-covering-of-its-target">Descending properties of schemes and morphisms, Theorem 2.1</a>. The removal assertion descends in the same way.</p>
+<p>Finally, regular components of <span class="math" data-tex="\(C\)">\(C\)</span> are pairwise disjoint: a regular local ring is a domain, so two components cannot meet. There are finitely many components, each open and closed. Taking the finite disjoint union of the affine neighbourhoods constructed on the components proves the general finite-set assertion. To see that an integral component has infinitely many closed points, choose a nonempty affine open and apply Noether normalization to obtain a finite surjection onto <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>. The latter has infinitely many closed points: over an infinite field the linear polynomials suffice, and over a finite field the usual product-plus-one argument gives infinitely many monic irreducible polynomials. Lying over supplies a distinct closed point above each of them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="equations-in-flat-families">Equations in flat families</h3>
+<p><strong>Lemma 7.B (the fibrewise Cartier criterion).</strong> Let <span class="math" data-tex="\(Y\to T\)">\(Y\to T\)</span> be flat and locally of finite presentation.</p>
+<ol>
+<li>If a local equation <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor in the fibre local ring at a point, then, near that point, it defines an effective Cartier divisor flat and locally of finite presentation over <span class="math" data-tex="\(T\)">\(T\)</span>.</li>
+<li>Let <span class="math" data-tex="\(D\subset Y\)">\(D\subset Y\)</span> be a closed subscheme flat and locally of finite presentation over <span class="math" data-tex="\(T\)">\(T\)</span>. Then <span class="math" data-tex="\(D\)">\(D\)</span> is a relative effective Cartier divisor exactly when every geometric fibre <span class="math" data-tex="\(D_t\subset Y_t\)">\(D_t\subset Y_t\)</span> is an effective Cartier divisor. Its relative Cartier locus is open.</li>
+<li>These divisor conditions persist after every change of base.</li>
+</ol>
+<p>The equation may be a unit, giving the empty divisor. No Noetherian hypothesis on <span class="math" data-tex="\(T\)">\(T\)</span> is imposed.</p>
+<p><strong>Proof.</strong> We first prove the local equation assertion. Write the local base ring as <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> and the local source ring as <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-flat and essentially of finite presentation. Suppose first that <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are Noetherian. If <span class="math" data-tex="\(fx=0\)">\(fx=0\)</span>, injectivity of <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> on <span class="math" data-tex="\(B/\mathfrak mB\)">\(B/\mathfrak mB\)</span> puts <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(\mathfrak mB\)">\(\mathfrak mB\)</span>. Flatness identifies
+<span class="math math-display" data-tex="\[
+\mathfrak m^jB/\mathfrak m^{j+1}B
+=(\mathfrak m^j/\mathfrak m^{j+1})
+ \otimes_{A/\mathfrak m}(B/\mathfrak mB).
+\]">\[
+\mathfrak m^jB/\mathfrak m^{j+1}B
+=(\mathfrak m^j/\mathfrak m^{j+1})
+ \otimes_{A/\mathfrak m}(B/\mathfrak mB).
+\]</span>
+These are direct sums of copies of the fibre ring, so <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> acts injectively on each of them. Induction puts <span class="math" data-tex="\(x\)">\(x\)</span> in every <span class="math" data-tex="\(\mathfrak m^jB\)">\(\mathfrak m^jB\)</span>. Their intersection is zero by <a href="../AG-CA/noetherian-and-artinian-rings.html#6-what-can-survive-every-power">Noetherian and Artinian rings, Theorem 6.1</a>. Hence <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor on <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>The sequence <span class="math" data-tex="\(0\to B\xrightarrow{f}B\to B/(f)\to0\)">\(0\to B\xrightarrow{f}B\to B/(f)\to0\)</span>, with <span class="math" data-tex="\(B\)">\(B\)</span> flat over <span class="math" data-tex="\(A\)">\(A\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tor}_1^A(A/\mathfrak m,B/(f))
+\\
+=\ker(\bar f:B/\mathfrak mB\to B/\mathfrak mB)=0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Tor}_1^A(A/\mathfrak m,B/(f))
+\\
+=\ker(\bar f:B/\mathfrak mB\to B/\mathfrak mB)=0.
+\end{gathered}
+\]</span>
+The residue-field local flatness criterion, proved in <a href="../AG-FSE/flatness-criteria.html#1-testing-a-quotient-by-an-ideal">Flatness criteria, Theorem 1.2</a>, now makes <span class="math" data-tex="\(B/(f)\)">\(B/(f)\)</span> flat over <span class="math" data-tex="\(A\)">\(A\)</span>. Its reduction is a module over a field and is automatically flat, so all conditions of that criterion hold.</p>
+<p>For an arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>, include <span class="math" data-tex="\(f\)">\(f\)</span> and a finite presentation of the local algebra in the models of <a href="../AG-FSE/flatness-criteria.html#6-finite-presentations-over-an-arbitrary-base">Flatness criteria, Lemma 6.2</a>. Since <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-flat, some Noetherian local model <span class="math" data-tex="\(A_\lambda\to B_\lambda\)">\(A_\lambda\to B_\lambda\)</span> is flat, and we may retain a representative <span class="math" data-tex="\(f_\lambda\)">\(f_\lambda\)</span>. Its local fibre maps faithfully flatly to the original local fibre: this is extension of the residue field followed by localization, and the map is local. Injectivity of <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> therefore descends to injectivity of <span class="math" data-tex="\(\bar f_\lambda\)">\(\bar f_\lambda\)</span>. The Noetherian argument gives a regular <span class="math" data-tex="\(f_\lambda\)">\(f_\lambda\)</span> and an <span class="math" data-tex="\(A_\lambda\)">\(A_\lambda\)</span>-flat quotient.</p>
+<p>Flatness of this quotient makes its equation sequence remain exact after tensoring with any <span class="math" data-tex="\(A_\lambda\)">\(A_\lambda\)</span>-algebra. Base change to <span class="math" data-tex="\(A\)">\(A\)</span> and localization consequently give regularity of <span class="math" data-tex="\(f\)">\(f\)</span>, flatness of <span class="math" data-tex="\(B/(f)\)">\(B/(f)\)</span>, and exactness after every further base change. To obtain a neighbourhood rather than only a local statement, use a finite-presentation model before the localizations. Over its Noetherian base, the coherent kernel of multiplication and the flat locus of the quotient are open conditions at the chosen point; <a href="../AG-FSE/flatness-criteria.html#5-the-flat-locus-over-a-noetherian-base">Flatness criteria, Theorem 5.2</a> proves the latter. Shrink to that open and pull it back. This proves part 1, including its neighbourhood and arbitrary-base assertions.</p>
+<p>For part 2, work locally with <span class="math" data-tex="\(D=\operatorname{Spec}(B/I)\)">\(D=\operatorname{Spec}(B/I)\)</span>. Finite presentation of <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> over the base makes <span class="math" data-tex="\(I\)">\(I\)</span> finitely generated: finite presentations for the two algebras give a finite presentation of the quotient as a <span class="math" data-tex="\(B\)">\(B\)</span>-algebra. Flatness of <span class="math" data-tex="\(B/I\)">\(B/I\)</span> identifies <span class="math" data-tex="\(I\otimes_A\kappa(t)\)">\(I\otimes_A\kappa(t)\)</span> with the ideal of <span class="math" data-tex="\(D_t\)">\(D_t\)</span> in <span class="math" data-tex="\(Y_t\)">\(Y_t\)</span>. If that ideal is generated by a regular <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span>, choose a lift <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span>. Nakayama applied to the finite <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(I/(f)\)">\(I/(f)\)</span> gives <span class="math" data-tex="\(I=(f)\)">\(I=(f)\)</span> in the local ring, hence on a neighbourhood by finite generation. Part 1 makes this equation regular and the divisor flat there. A geometric fibre condition descends to the residue field by faithful flatness, so geometric fibres suffice.</p>
+<p>Conversely, for a regular equation whose quotient is base-flat, tensoring the equation sequence with a residue field preserves its injectivity. It therefore gives an effective Cartier divisor on every fibre. The neighbourhood construction in part 1 and the finite-generation argument just given also prove openness of the relative Cartier locus.</p>
+<p>Finally, tensoring that equation sequence with an arbitrary base algebra stays exact, since its quotient is base-flat. The pulled-back equation is regular, and its quotient remains flat and finitely presented. This proves part 3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.1.</strong> Let <span class="math" data-tex="\(C\)">\(C\)</span> be a smooth separated curve of finite type over a field <span class="math" data-tex="\(k\)">\(k\)</span>, with all components of dimension one. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hilb}^d(C)\simeq\operatorname{Sym}^d(C)=C^d/\mathfrak S_d.
+\]">\[
+\operatorname{Hilb}^d(C)\simeq\operatorname{Sym}^d(C)=C^d/\mathfrak S_d.
+\]</span>
+<p>This is an isomorphism of schemes, in every characteristic. Both schemes are smooth of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, component by component.</p>
+<p><strong>Proof.</strong> We give the scheme-theoretic argument, since a bijection of divisors over algebraically closed fields would not prove the theorem.</p>
+<p>First, the required schemes exist and are finite type. Lemma 7.A proves that a regular irreducible curve is either affine or projective, that removing a closed point from a regular projective curve gives an affine open, and that every component has infinitely many closed points [Stacks, Tag 0A27]. Every finite set of points therefore has a common affine neighbourhood. There is even a finite cover sufficient for the length-<span class="math" data-tex="\(d\)">\(d\)</span> Hilbert functor: on a projective component choose <span class="math" data-tex="\(d+1\)">\(d+1\)</span> distinct closed points <span class="math" data-tex="\(q_j\)">\(q_j\)</span>; any support of at most <span class="math" data-tex="\(d\)">\(d\)</span> points misses one of them and is contained in <span class="math" data-tex="\(C\setminus\{q_j\}\)">\(C\setminus\{q_j\}\)</span>. There are infinitely many closed points on a curve, so such a choice is possible. Smooth components are disjoint, and there are only finitely many of them; take the finitely many corresponding combinations of affine opens. Proposition 5.1 then gives a finite-type Hilbert scheme.</p>
+<p>For the symmetric quotient, the invariant opens <span class="math" data-tex="\(U^d\)">\(U^d\)</span>, with <span class="math" data-tex="\(U\)">\(U\)</span> a common affine neighbourhood of a finite set of points of <span class="math" data-tex="\(C\)">\(C\)</span>, cover <span class="math" data-tex="\(C^d\)">\(C^d\)</span>. On <span class="math" data-tex="\(U^d=\operatorname{Spec}B\)">\(U^d=\operatorname{Spec}B\)</span>, use <span class="math" data-tex="\(\operatorname{Spec}B^{\mathfrak S_d}\)">\(\operatorname{Spec}B^{\mathfrak S_d}\)</span>. Every element <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> is integral over the invariant ring, since it satisfies <span class="math" data-tex="\(\prod_\sigma(T-\sigma b)\)">\(\prod_\sigma(T-\sigma b)\)</span>. Finite generation of <span class="math" data-tex="\(B\)">\(B\)</span> makes this a finite ring extension; the invariant ring is finitely generated over <span class="math" data-tex="\(k\)">\(k\)</span> by the finite-extension algebra lemma proved in Section 9. Its geometric fibres are the finite orbits: invariant functions separate distinct finite orbits, by multiplying suitable separating functions and their translates. Images of invariant open subsets are open, because the finite quotient is closed and the complement is invariant. These affine quotients therefore glue, with their usual categorical universal property for invariant maps to schemes. This constructs <span class="math" data-tex="\(\operatorname{Sym}^d C\)">\(\operatorname{Sym}^d C\)</span>.</p>
+<p>Over <span class="math" data-tex="\(C^d\)">\(C^d\)</span>, sum the <span class="math" data-tex="\(d\)">\(d\)</span> graph divisors in <span class="math" data-tex="\(C\times C^d\)">\(C\times C^d\)</span>. A graph of a section of a smooth relative curve is Cartier; locally its equation is a relative parameter. The sum is defined by the product of the graph ideals. On a geometric fibre it is the divisor consisting of the chosen points with their multiplicities. It is a relative effective Cartier divisor: the product remains a nonzerodivisor on every curve fibre, and the fibrewise Cartier criterion of Lemma 7.B [Stacks, Tag 062Y] gives flatness. Its support is a finite union of graphs; hence the divisor is proper with finite fibres, and is finite locally free of degree <span class="math" data-tex="\(d\)">\(d\)</span>. It defines an invariant map <span class="math" data-tex="\(C^d\to\operatorname{Hilb}^d C\)">\(C^d\to\operatorname{Hilb}^d C\)</span>, and the categorical quotient gives</p>
+<span class="math math-display" data-tex="\[
+a:\operatorname{Sym}^d C\longrightarrow\operatorname{Hilb}^d C.
+\]">\[
+a:\operatorname{Sym}^d C\longrightarrow\operatorname{Hilb}^d C.
+\]</span>
+<p>After an algebraic closure of <span class="math" data-tex="\(k\)">\(k\)</span>, every ideal of finite colength in the local ring of a smooth curve is a power of its maximal ideal, since that ring is a discrete valuation ring. Thus <span class="math" data-tex="\(a\)">\(a\)</span> is bijective on geometric points. We now compare completed local rings to check the infinitesimal structure.</p>
+<p>Let <span class="math" data-tex="\(D=\sum_i d_i p_i\)">\(D=\sum_i d_i p_i\)</span> be such a divisor over an algebraically closed field. Choose formal parameters <span class="math" data-tex="\(u_i\)">\(u_i\)</span> at the distinct points <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, so their completed local rings are <span class="math" data-tex="\(k[[u_i]]\)">\(k[[u_i]]\)</span>. For a local Artinian <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(R\)">\(R\)</span> with residue field <span class="math" data-tex="\(k\)">\(k\)</span>, a finite flat embedded deformation of <span class="math" data-tex="\(D\)">\(D\)</span> splits uniquely into its clusters at the <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. This follows from lifting the idempotents of its special-fibre algebra through the nilpotent maximal ideal of <span class="math" data-tex="\(R\)">\(R\)</span>. Each cluster is a free <span class="math" data-tex="\(R\)">\(R\)</span>-algebra of rank <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, a quotient of <span class="math" data-tex="\(R[[u_i]]\)">\(R[[u_i]]\)</span>.</p>
+<p>Modulo the maximal ideal its basis is <span class="math" data-tex="\(1,u_i,\ldots,u_i^{d_i-1}\)">\(1,u_i,\ldots,u_i^{d_i-1}\)</span>. Nakayama and the rank show that these elements remain a basis over <span class="math" data-tex="\(R\)">\(R\)</span>. There is therefore a unique relation</p>
+<span class="math math-display" data-tex="\[
+u_i^{d_i}+a_{i,1}u_i^{d_i-1}+\cdots+a_{i,d_i}=0,
+\qquad a_{i,j}\in\mathfrak m_R.
+\]">\[
+u_i^{d_i}+a_{i,1}u_i^{d_i-1}+\cdots+a_{i,d_i}=0,
+\qquad a_{i,j}\in\mathfrak m_R.
+\]</span>
+<p>Conversely every such monic relation defines a free rank-<span class="math" data-tex="\(d_i\)">\(d_i\)</span> quotient. The passage from polynomials to formal series is harmless: if <span class="math" data-tex="\(\mathfrak m_R^N=0\)">\(\mathfrak m_R^N=0\)</span>, the relation makes <span class="math" data-tex="\(u_i^{d_iN}=0\)">\(u_i^{d_iN}=0\)</span>, so all series evaluate as finite polynomials. The polynomial quotient and the formal-series quotient are mutually inverse under this evaluation. The completed local ring of the Hilbert scheme at <span class="math" data-tex="\(D\)">\(D\)</span> is consequently</p>
+<span class="math math-display" data-tex="\[
+k[[a_{i,j}\mid 1\leq j\leq d_i]].
+\]">\[
+k[[a_{i,j}\mid 1\leq j\leq d_i]].
+\]</span>
+<p>On the symmetric quotient, take an ordered tuple representing <span class="math" data-tex="\(D\)">\(D\)</span>. Its stabilizer is <span class="math" data-tex="\(\prod_i\mathfrak S_{d_i}\)">\(\prod_i\mathfrak S_{d_i}\)</span>. Completion of the invariant affine quotient ring is the invariants of the product of completed local rings at its orbit: the coordinate ring upstairs is finite over the invariant ring, completion is flat over that invariant ring, and invariants are the kernel of the finite list of maps <span class="math" data-tex="\(b\mapsto\sigma b-b\)">\(b\mapsto\sigma b-b\)</span>. Flat completion preserves this kernel. The group permutes the orbit factors transitively, leaving the invariants of one factor under its stabilizer. This gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat{\mathcal O}_{\operatorname{Sym}^d C,D}\\
+=k[[u_{i,1},\ldots,u_{i,d_i}]]^{\prod_i\mathfrak S_{d_i}}\\
+=k[[e_{i,1},\ldots,e_{i,d_i}]],
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widehat{\mathcal O}_{\operatorname{Sym}^d C,D}\\
+=k[[u_{i,1},\ldots,u_{i,d_i}]]^{\prod_i\mathfrak S_{d_i}}\\
+=k[[e_{i,1},\ldots,e_{i,d_i}]],
+\end{gathered}
+\]</span>
+<p>where <span class="math" data-tex="\(e_{i,j}\)">\(e_{i,j}\)</span> is the <span class="math" data-tex="\(j\)">\(j\)</span>-th elementary symmetric polynomial in the <span class="math" data-tex="\(i\)">\(i\)</span>-th cluster. The final equality holds in every characteristic: apply the fundamental theorem of symmetric polynomials to each homogeneous degree of a symmetric series and pass to completion. Its weighted-degree topology agrees with the power-series topology, since all the weights <span class="math" data-tex="\(j\)">\(j\)</span> are positive. No averaging by the order of the group is used.</p>
+<p>The sum-divisor morphism <span class="math" data-tex="\(a\)">\(a\)</span> takes <span class="math" data-tex="\(a_{i,j}\)">\(a_{i,j}\)</span> to <span class="math" data-tex="\((-1)^j e_{i,j}\)">\((-1)^j e_{i,j}\)</span>, by expanding <span class="math" data-tex="\(\prod_l(u_i-u_{i,l})\)">\(\prod_l(u_i-u_{i,l})\)</span>. It is therefore an isomorphism of these completed local rings. This completed-local-ring isomorphism makes <span class="math" data-tex="\(a\)">\(a\)</span> étale at each closed point. Here are the local steps. Write the local map as <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, with the same algebraically closed residue field. The completion <span class="math" data-tex="\(\widehat B\simeq\widehat A\)">\(\widehat B\simeq\widehat A\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-flat, and <span class="math" data-tex="\(B\to\widehat B\)">\(B\to\widehat B\)</span> is faithfully flat by <a href="../AG-CA/completion.html#3-noetherian-exactness-tensoring-and-flatness">Completion, Theorem 3.2</a>. Flatness therefore descends to <span class="math" data-tex="\(B\)">\(B\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>. The isomorphism on completions identifies cotangent spaces, so
+<span class="math math-display" data-tex="\[
+\mathfrak m_B/(\mathfrak m_AB+\mathfrak m_B^2)=0.
+\]">\[
+\mathfrak m_B/(\mathfrak m_AB+\mathfrak m_B^2)=0.
+\]</span>
+This is the residue-field fibre of the finite module <span class="math" data-tex="\(\Omega_{B/A}\)">\(\Omega_{B/A}\)</span>, since the residue fields are equal. Nakayama gives <span class="math" data-tex="\(\Omega_{B/A}=0\)">\(\Omega_{B/A}=0\)</span>. The flat, finitely presented, unramified criterion in <a href="../AG-FSE/etale-morphisms-and-their-local-structure.html#1-a-definition-and-its-geometric-tests">Étale morphisms and their local structure, Lemma 1.2</a> proves étaleness. The non-étale locus is closed and, if nonempty, has a closed point, so <span class="math" data-tex="\(a\)">\(a\)</span> is étale everywhere. By <a href="../AG-FSE/etale-morphisms-and-their-local-structure.html#4-the-topology-and-the-open-immersion-criterion">Étale morphisms and their local structure, Theorem 4.1</a>, an étale morphism injective on geometric points is a universally injective open immersion; since it is also surjective on geometric points, it is an isomorphism. These are the standard étale and completion criteria recalled among the prerequisites below.</p>
+<p>Finally, this argument after an algebraic closure descends by faithful flatness. The symmetric quotient commutes with a field extension because invariants are the same kernel construction and field extension is flat; the Hilbert scheme commutes with it by its functorial definition. Hence the isomorphism holds over the original field. The displayed completed local rings are power-series rings in <span class="math" data-tex="\(\sum_i d_i=d\)">\(\sum_i d_i=d\)</span> variables, proving smoothness of the symmetric product and Hilbert scheme. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(d=2\)">\(d=2\)</span> on <span class="math" data-tex="\(\mathbb A^1\)">\(\mathbb A^1\)</span>, this says that the unordered pair of roots is recorded by the coefficients of <span class="math" data-tex="\(u^2+a_1u+a_2\)">\(u^2+a_1u+a_2\)</span>. A double root is an ordinary point of the same affine plane of coefficients. On a general smooth curve, the completed local calculation is exactly the same around a double point.</p>
+<h2 id="8-hypersurfaces-and-their-projective-parameter-space">8 Hypersurfaces and their projective parameter space</h2>
+<p>Use the quotient convention <span class="math" data-tex="\(\mathbb P(V)=\operatorname{Proj}\operatorname{Sym}V\)">\(\mathbb P(V)=\operatorname{Proj}\operatorname{Sym}V\)</span>, so <span class="math" data-tex="\(H^0(\mathbb P(V),\mathcal O(d))=\operatorname{Sym}^dV\)">\(H^0(\mathbb P(V),\mathcal O(d))=\operatorname{Sym}^dV\)</span>. An equation up to nonzero scalar is a line subspace of this space, and is thus a point of its dual projective space.</p>
+<p><strong>Proposition 8.1.</strong> Let <span class="math" data-tex="\(\dim V=n+1\)">\(\dim V=n+1\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+P_d(t)=\binom{t+n}{n}-\binom{t-d+n}{n}.
+\]">\[
+P_d(t)=\binom{t+n}{n}-\binom{t-d+n}{n}.
+\]</span>
+<p>Then the Hilbert scheme of polynomial <span class="math" data-tex="\(P_d\)">\(P_d\)</span> on <span class="math" data-tex="\(\mathbb P(V)\)">\(\mathbb P(V)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\mathbb P((\operatorname{Sym}^dV)^\vee).
+\]">\[
+\mathbb P((\operatorname{Sym}^dV)^\vee).
+\]</span>
+<p>It classifies degree-<span class="math" data-tex="\(d\)">\(d\)</span> hypersurfaces, including singular and nonreduced ones, with its universal equation.</p>
+<p><strong>Proof.</strong> First show that every field-valued subscheme with this polynomial is a hypersurface; this also rules out additional subschemes with the same polynomial. Its ideal <span class="math" data-tex="\(I\subset\mathcal O\)">\(I\subset\mathcal O\)</span> is torsion-free of rank one: <span class="math" data-tex="\(P_d\)">\(P_d\)</span> has degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, so the subscheme is not the entire projective space. Its double dual is invertible. Here is an elementary verification on a standard affine chart, whose ring <span class="math" data-tex="\(A\)">\(A\)</span> is a unique factorization domain. Write the ideal as <span class="math" data-tex="\(gJ\)">\(gJ\)</span>, where <span class="math" data-tex="\(g\)">\(g\)</span> is the greatest common divisor of its finite set of generators. The generators of <span class="math" data-tex="\(J\)">\(J\)</span> have no common prime factor. A homomorphism <span class="math" data-tex="\(J\to A\)">\(J\to A\)</span> is multiplication by an element <span class="math" data-tex="\(q\)">\(q\)</span> of the fraction field. If <span class="math" data-tex="\(qJ\subset A\)">\(qJ\subset A\)</span>, every prime in the denominator of <span class="math" data-tex="\(q\)">\(q\)</span> would divide every generator of <span class="math" data-tex="\(J\)">\(J\)</span>; thus <span class="math" data-tex="\(q\in A\)">\(q\in A\)</span>. It follows that <span class="math" data-tex="\(J^*=A\)">\(J^*=A\)</span>, <span class="math" data-tex="\(J^{**}=A\)">\(J^{**}=A\)</span>, and <span class="math" data-tex="\(I^{**}=gA\)">\(I^{**}=gA\)</span>. These local double duals glue to an invertible sheaf <span class="math" data-tex="\(I^{**}=\mathcal O(-e)\)">\(I^{**}=\mathcal O(-e)\)</span>, using <span class="math" data-tex="\(\operatorname{Pic}(\mathbb P^n)=\mathbb Z\)">\(\operatorname{Pic}(\mathbb P^n)=\mathbb Z\)</span>, [Stacks, Tag 0BXJ, with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>]. The quotient <span class="math" data-tex="\(I^{**}/I\)">\(I^{**}/I\)</span> is supported in codimension at least two, since over a codimension-one discrete valuation ring the ideal is already free of rank one.</p>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, comparing the coefficient of <span class="math" data-tex="\(t^{n-1}\)">\(t^{n-1}\)</span> in <span class="math" data-tex="\(P_I=P_{\mathcal O}-P_d\)">\(P_I=P_{\mathcal O}-P_d\)</span> and in <span class="math" data-tex="\(P_{\mathcal O(-e)}\)">\(P_{\mathcal O(-e)}\)</span> gives <span class="math" data-tex="\(e=d\)">\(e=d\)</span>: their difference has degree at most <span class="math" data-tex="\(n-2\)">\(n-2\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the ideal is already invertible and its polynomial directly gives <span class="math" data-tex="\(e=d\)">\(e=d\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+P_{I^{**}/I}=P_{\mathcal O(-d)}-P_I=0.
+\]">\[
+P_{I^{**}/I}=P_{\mathcal O(-d)}-P_I=0.
+\]</span>
+<p>A nonzero coherent sheaf on projective space has a Hilbert polynomial with positive leading coefficient, as proved in the regularity lesson, so this quotient is zero. Hence <span class="math" data-tex="\(I=\mathcal O(-d)\)">\(I=\mathcal O(-d)\)</span>, embedded by a nonzero degree-<span class="math" data-tex="\(d\)">\(d\)</span> equation.</p>
+<p>Now take any Hilbert family <span class="math" data-tex="\(Z\subset\mathbb P(V)_T\)">\(Z\subset\mathbb P(V)_T\)</span> of this polynomial. Its fibres are Cartier divisors by the field argument. Since <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> is flat and finitely presented and projective space is flat and finitely presented, the fibrewise Cartier criterion of Lemma 7.B [Stacks, Tag 062Y] makes <span class="math" data-tex="\(Z\)">\(Z\)</span> a relative effective Cartier divisor. Its ideal <span class="math" data-tex="\(I\)">\(I\)</span> is invertible and flat over <span class="math" data-tex="\(T\)">\(T\)</span>, with <span class="math" data-tex="\(I(d)_t=\mathcal O\)">\(I(d)_t=\mathcal O\)</span> on every fibre. Proper flat cohomology gives</p>
+<span class="math math-display" data-tex="\[
+N=p_*I(d)
+\]">\[
+N=p_*I(d)
+\]</span>
+<p>locally free of rank one, compatible with base change. The evaluation <span class="math" data-tex="\(p^*N\to I(d)\)">\(p^*N\to I(d)\)</span> is an isomorphism: it is so on every fibre, hence is surjective by Nakayama, and a surjection between invertible sheaves is an isomorphism. Pushing its inclusion in <span class="math" data-tex="\(\mathcal O(d)\)">\(\mathcal O(d)\)</span> to the base gives</p>
+<span class="math math-display" data-tex="\[
+N\hookrightarrow\operatorname{Sym}^dV\otimes\mathcal O_T.
+\]">\[
+N\hookrightarrow\operatorname{Sym}^dV\otimes\mathcal O_T.
+\]</span>
+<p>This is a line subbundle. Its fibre is the nonzero equation line, so locally one coefficient is a unit and the inclusion splits with locally free cokernel. It is therefore exactly a <span class="math" data-tex="\(T\)">\(T\)</span>-point of <span class="math" data-tex="\(\mathbb P((\operatorname{Sym}^dV)^\vee)\)">\(\mathbb P((\operatorname{Sym}^dV)^\vee)\)</span>.</p>
+<p>Conversely, a line subbundle <span class="math" data-tex="\(N\)">\(N\)</span> in this vector bundle evaluates as <span class="math" data-tex="\(p^*N\otimes\mathcal O(-d)\to\mathcal O\)">\(p^*N\otimes\mathcal O(-d)\to\mathcal O\)</span>. On every field fibre it is a nonzero equation in a polynomial ring, and hence a nonzerodivisor. Its zero scheme is locally principal with Cartier fibres, so Lemma 7.B gives a relative effective Cartier divisor flat over <span class="math" data-tex="\(T\)">\(T\)</span>. Its ideal sequence yields polynomial <span class="math" data-tex="\(P_d\)">\(P_d\)</span>. The two constructions are inverse, including on arbitrary nonreduced test schemes, proving the proposition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This parameter space is all hypersurfaces, not just the smooth locus. Smooth hypersurfaces form an open subfunctor inside it. The use of the dual in the parameter space is forced by the quotient convention: equations are sublines of the space of sections.</p>
+<h2 id="9-two-points-on-a-smooth-surface">9 Two points on a smooth surface</h2>
+<p>The exceptional divisor of a blow-up records the extra information needed when two points meet: a tangent direction. This statement includes the scheme structure of the parameter space, and remains valid in characteristic two.</p>
+<h3 id="a-finite-extension-algebra-lemma">A finite-extension algebra lemma</h3>
+<p>We will need the finite-extension form of Artin–Tate, also used for the symmetric products in Section 7. Suppose that</p>
+<span class="math math-display" data-tex="\[
+k\subset C\subset A,
+\]">\[
+k\subset C\subset A,
+\]</span>
+<p>where <span class="math" data-tex="$A$">$A$</span> is a finitely generated <span class="math" data-tex="$k$">$k$</span>-algebra and is finite as a <span class="math" data-tex="$C$">$C$</span>-module. Then <span class="math" data-tex="$C$">$C$</span> is a finitely generated <span class="math" data-tex="$k$">$k$</span>-algebra. Here is the proof. Choose algebra generators <span class="math" data-tex="$x_i$">$x_i$</span> of <span class="math" data-tex="$A$">$A$</span> over <span class="math" data-tex="$k$">$k$</span> and module generators <span class="math" data-tex="$a_j$">$a_j$</span> over <span class="math" data-tex="$C$">$C$</span>, including <span class="math" data-tex="$1$">$1$</span>. Express every <span class="math" data-tex="$x_i$">$x_i$</span> as a <span class="math" data-tex="$C$">$C$</span>-linear combination of the <span class="math" data-tex="$a_j$">$a_j$</span>, and do the same for every product <span class="math" data-tex="$a_ja_l$">$a_ja_l$</span>. Let <span class="math" data-tex="$C_0$">$C_0$</span> be the <span class="math" data-tex="$k$">$k$</span>-algebra generated by all the finitely many coefficients in these expressions. The <span class="math" data-tex="$C_0$">$C_0$</span>-span of the <span class="math" data-tex="$a_j$">$a_j$</span> is a subring of <span class="math" data-tex="$A$">$A$</span> containing <span class="math" data-tex="$1$">$1$</span> and all <span class="math" data-tex="$x_i$">$x_i$</span>; hence it equals <span class="math" data-tex="$A$">$A$</span>. Thus <span class="math" data-tex="$A$">$A$</span> is finite over <span class="math" data-tex="$C_0$">$C_0$</span>. The <a href="../AG-CA/noetherian-and-artinian-rings.html#2-polynomial-rings-and-finite-geometric-descriptions">Hilbert basis theorem</a> makes <span class="math" data-tex="$C_0$">$C_0$</span> Noetherian. Its submodule <span class="math" data-tex="$C\subset A$">$C\subset A$</span> is consequently finite over <span class="math" data-tex="$C_0$">$C_0$</span>, and is therefore a finitely generated <span class="math" data-tex="$k$">$k$</span>-algebra. No assumption that arbitrary subrings of Noetherian rings are Noetherian has entered the argument.</p>
+<h3 id="the-quotient-of-a-finite-group-action">The quotient of a finite group action</h3>
+<p>The surface need not have a common affine neighbourhood of every finite set. The following theorem constructs the quotient in that case too.</p>
+<p><strong>Theorem (finite group quotients).</strong> Let a finite abstract group <span class="math" data-tex="$\Gamma$">$\Gamma$</span> act on a separated finite-type <span class="math" data-tex="$k$">$k$</span>-scheme <span class="math" data-tex="$U$">$U$</span>. There is a separated finite-type algebraic space <span class="math" data-tex="$Q$">$Q$</span> and a finite surjective invariant morphism</p>
+<span class="math math-display" data-tex="\[
+\pi:U\longrightarrow Q
+\]">\[
+\pi:U\longrightarrow Q
+\]</span>
+<p>with the following properties. For every algebraically closed extension <span class="math" data-tex="$\Omega/k$">$\Omega/k$</span>, its geometric fibres are exactly the <span class="math" data-tex="$\Gamma$">$\Gamma$</span>-orbits. For every algebraic space <span class="math" data-tex="$E/k$">$E/k$</span>, composition gives a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_k(Q,E)
+\xrightarrow{\sim}
+\operatorname{Hom}_k(U,E)^\Gamma.
+\]">\[
+\operatorname{Hom}_k(Q,E)
+\xrightarrow{\sim}
+\operatorname{Hom}_k(U,E)^\Gamma.
+\]</span>
+<p>On the étale site of <span class="math" data-tex="$Q$">$Q$</span>, its functions are the invariant functions upstairs:</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_Q\simeq(\pi_*\mathcal O_U)^\Gamma.
+\]">\[
+\mathcal O_Q\simeq(\pi_*\mathcal O_U)^\Gamma.
+\]</span>
+<p>The orbit, categorical and invariant-function properties remain true after every flat algebraic-space base change on <span class="math" data-tex="$Q$">$Q$</span>. There is no restriction on the characteristic or on stabilizers.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$U$">$U$</span> empty take <span class="math" data-tex="$Q$">$Q$</span> empty. Otherwise regard <span class="math" data-tex="$\Gamma$">$\Gamma$</span> as the constant finite étale <span class="math" data-tex="$k$">$k$</span>-group scheme and form the algebraic stack</p>
+<span class="math math-display" data-tex="\[
+\mathcal X=[U/\Gamma].
+\]">\[
+\mathcal X=[U/\Gamma].
+\]</span>
+<p>The construction and its torsor description are proved in <a href="../AG-AS/quotient-and-dm-stacks.html#3-classifying-stacks-and-quotient-stacks">Quotient stacks and Deligne–Mumford stacks, Section 3</a>. The atlas <span class="math" data-tex="$U\to\mathcal X$">$U\to\mathcal X$</span> is a finite étale surjection: its pullback along an object over <span class="math" data-tex="$T$">$T$</span> is that object's <span class="math" data-tex="$\Gamma$">$\Gamma$</span>-torsor. This remains true when the action on <span class="math" data-tex="$U$">$U$</span> has fixed points.</p>
+<p>The inertia is finite. On this atlas it is the disjoint union, indexed by <span class="math" data-tex="$\gamma\in\Gamma$">$\gamma\in\Gamma$</span>, of the fixed subschemes <span class="math" data-tex="$U^\gamma$">$U^\gamma$</span>. Each is closed in <span class="math" data-tex="$U$">$U$</span>, since it is the inverse image of the closed diagonal of the separated scheme <span class="math" data-tex="$U$">$U$</span> under <span class="math" data-tex="$(1,\gamma)$">$(1,\gamma)$</span>. Thus the pulled-back inertia is finite over <span class="math" data-tex="$U$">$U$</span>, and finiteness descends through the atlas.</p>
+<p>Apply <a href="../AG-AS/quotient-and-dm-stacks.html#6-1-finite-inertia-and-the-coarse-space">the finite-inertia coarse-space construction, Theorem 6.9</a>. It gives an algebraic space <span class="math" data-tex="$Q$">$Q$</span> and a separated, quasi-compact universal homeomorphism</p>
+<span class="math math-display" data-tex="\[
+f:\mathcal X\longrightarrow Q
+\]">\[
+f:\mathcal X\longrightarrow Q
+\]</span>
+<p>which is categorical for algebraic-space targets and remains so after flat base change on <span class="math" data-tex="$Q$">$Q$</span>. That proof constructs affine invariant charts, descends étale charts preserving the entire stabilizer, and glues their étale equivalence relation. The finite-part step used there has its scheme proof in <a href="../AG-RG/AG-RG-S04.html#d3-finite-pieces-after-an-elementary-%C3%A9tale-neighbourhood">Affine descent, Zariski Main and recognition of spaces, Proposition D3.3 and Lemma E4.3</a>, including the complete finite pieces over an elementary étale neighbourhood. Thus the construction applies without invariant affine neighbourhoods in <span class="math" data-tex="$U$">$U$</span>.</p>
+<p>Let <span class="math" data-tex="$\pi$">$\pi$</span> be the composite of the atlas with <span class="math" data-tex="$f$">$f$</span>. Its geometric fibres are single <span class="math" data-tex="$\Gamma$">$\Gamma$</span>-orbits: over an algebraically closed field every finite constant-group torsor is trivial, and the coarse-space theorem identifies isomorphism classes with points. The same theorem gives the categorical assertion. More explicitly, an invariant map <span class="math" data-tex="$U\to E$">$U\to E$</span> descends along the torsor in each object of <span class="math" data-tex="$[U/\Gamma]$">$[U/\Gamma]$</span>, since maps to an algebraic space form a sheaf. It therefore gives a map <span class="math" data-tex="$\mathcal X\to E$">$\mathcal X\to E$</span>. Conversely every such map restricts to an invariant map. The two constructions are inverse on all parameter schemes, so initiality of <span class="math" data-tex="$f$">$f$</span> proves the displayed bijection.</p>
+<p>We prove that <span class="math" data-tex="$\pi$">$\pi$</span> is finite. Its composite description makes it quasi-compact and universally closed: the atlas is finite, and <span class="math" data-tex="$f$">$f$</span> is a quasi-compact universal homeomorphism. It is separated because its diagonal is the pullback of the closed diagonal of <span class="math" data-tex="$U/k$">$U/k$</span>.</p>
+<p>It is also locally of finite type. To check this, choose an étale scheme chart <span class="math" data-tex="$V\to Q$">$V\to Q$</span>. The scheme <span class="math" data-tex="$U\times_QV$">$U\times_QV$</span> is étale over <span class="math" data-tex="$U$">$U$</span>, hence locally of finite type over <span class="math" data-tex="$k$">$k$</span>. On an affine open of this fibre product mapping into an affine open of <span class="math" data-tex="$V$">$V$</span>, its finitely many algebra generators over <span class="math" data-tex="$k$">$k$</span> also generate over the coordinate algebra of that target open. This proves local finite type over <span class="math" data-tex="$V$">$V$</span>. Together with quasi-compactness it proves finite type of <span class="math" data-tex="$\pi$">$\pi$</span>.</p>
+<p>The properties just proved make <span class="math" data-tex="$\pi$">$\pi$</span> proper. Every geometric fibre has finitely many geometric points. On affine étale tests of <span class="math" data-tex="$Q$">$Q$</span>, the finite-fibre form of <a href="../AG-MO/zariskis-main-theorem.html#5-properness-and-normality">Zariski's Main Theorem, Theorem 5.1</a>, therefore makes it finite. Finiteness descends from those tests, proving the assertion.</p>
+<p>The invariant-function assertion can be proved before imposing any finite-type or separation condition on <span class="math" data-tex="$Q$">$Q$</span>. For an étale scheme <span class="math" data-tex="$V\to Q$">$V\to Q$</span>, the base-changed stack has categorical quotient <span class="math" data-tex="$V$">$V$</span>, by the flat base-change property of <span class="math" data-tex="$f$">$f$</span>. Invariant regular functions on <span class="math" data-tex="$U\times_QV$">$U\times_QV$</span> are maps to <span class="math" data-tex="$\mathbb A^1_k$">$\mathbb A^1_k$</span> which descend to that stack. Categorical initiality identifies them uniquely with maps <span class="math" data-tex="$V\to\mathbb A^1_k$">$V\to\mathbb A^1_k$</span>, that is, regular functions on <span class="math" data-tex="$V$">$V$</span>. This identification commutes with restrictions. Hence it gives the displayed sheaf isomorphism, including all nilpotent functions.</p>
+<p>Finite type of <span class="math" data-tex="$Q/k$">$Q/k$</span> now follows on affine étale charts. Over <span class="math" data-tex="$V=\operatorname{Spec}C$">$V=\operatorname{Spec}C$</span>, the inverse image is affine, say <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span>, because <span class="math" data-tex="$\pi$">$\pi$</span> is finite. It is quasi-compact and étale over <span class="math" data-tex="$U$">$U$</span>, so <span class="math" data-tex="$A$">$A$</span> is finitely generated over <span class="math" data-tex="$k$">$k$</span>. The invariant-function assertion injects <span class="math" data-tex="$C$">$C$</span> into <span class="math" data-tex="$A$">$A$</span>. The finite-extension algebra lemma makes <span class="math" data-tex="$C$">$C$</span> finitely generated over <span class="math" data-tex="$k$">$k$</span>. Thus <span class="math" data-tex="$Q$">$Q$</span> is locally of finite type; surjectivity of the quasi-compact scheme <span class="math" data-tex="$U$">$U$</span> makes <span class="math" data-tex="$Q$">$Q$</span> quasi-compact, and therefore finite type over <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>Finally we prove separatedness of <span class="math" data-tex="$Q$">$Q$</span>. Put <span class="math" data-tex="$D=U\times_QU$">$D=U\times_QU$</span>. Its first projection to <span class="math" data-tex="$U$">$U$</span> is finite. The map</p>
+<span class="math math-display" data-tex="\[
+D\longrightarrow U\times_kU
+\]">\[
+D\longrightarrow U\times_kU
+\]</span>
+<p>is finite as well: factor it as the graph of its second projection, which is closed since <span class="math" data-tex="$U/k$">$U/k$</span> is separated, followed by the base change of the finite first projection. It is the pullback of <span class="math" data-tex="$\Delta_{Q/k}$">$\Delta_{Q/k}$</span> by the finite surjection <span class="math" data-tex="$\pi\times\pi$">$\pi\times\pi$</span>.</p>
+<p>After any affine scheme test <span class="math" data-tex="$T\to Q\times_kQ$">$T\to Q\times_kQ$</span>, the pullback of that finite surjection is finite and surjective over <span class="math" data-tex="$T$">$T$</span>. The inverse image of the tested diagonal is finite over <span class="math" data-tex="$T$">$T$</span>. It surjects finitely onto the tested diagonal itself. Consequently this diagonal is quasi-compact and universally closed over <span class="math" data-tex="$T$">$T$</span>: to test a closed subset after any further base change, pull it back through the finite surjection and use closedness of the composite finite map. The diagonal is locally of finite type, as is the diagonal of a locally finite-type algebraic space over a field, and is a separated monomorphism. It is therefore proper and quasi-finite on these scheme tests. The same proper quasi-finite theorem makes it finite. A finite monomorphism is a closed immersion: its finite residue algebra has dimension <span class="math" data-tex="$d$">$d$</span> satisfying <span class="math" data-tex="$d^2=d$">$d^2=d$</span>, and Nakayama makes the ring map surjective. Thus <span class="math" data-tex="$\Delta_{Q/k}$">$\Delta_{Q/k}$</span> is a closed immersion and <span class="math" data-tex="$Q/k$">$Q/k$</span> is separated.</p>
+<p>The flat base-change assertions follow from the coarse-space theorem and the same function argument. Finiteness itself survives every base change, as do the orbit description and universal closedness. The invariant-function and categorical assertions use flatness. No averaging operator or division by <span class="math" data-tex="$|\Gamma|$">$|\Gamma|$</span> has been used. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="blow-up-coordinates-and-the-hilbert-family">Blow-up coordinates and the Hilbert family</h3>
+<p><strong>Proposition 9.1.</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be a smooth separated surface of finite type over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+B=\operatorname{Bl}_{\Delta}(S\times_k S).
+\]">\[
+B=\operatorname{Bl}_{\Delta}(S\times_k S).
+\]</span>
+<p>The involution exchanging the two factors lifts to <span class="math" data-tex="\(B\)">\(B\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+B/\mathfrak S_2\simeq\operatorname{Hilb}^2_S.
+\]">\[
+B/\mathfrak S_2\simeq\operatorname{Hilb}^2_S.
+\]</span>
+<p>The quotient is the geometric categorical quotient, rather than the quotient stack. In general the statement is in algebraic spaces. If <span class="math" data-tex="\(S\)">\(S\)</span> satisfies the affine-neighbourhood condition of Section 5, both sides are schemes. In particular this holds for a quasi-projective surface. The Hilbert space is smooth of dimension four.</p>
+<p><strong>Proof.</strong> The diagonal ideal is invariant under exchange, so its Rees algebra and its Proj inherit the involution. Over the complement of the exceptional divisor there is a family consisting of the two distinct points. Define <span class="math" data-tex="\(Z\subset S\times B\)">\(Z\subset S\times B\)</span> as the schematic closure of this family. It is contained in the union of the two graphs of <span class="math" data-tex="\(B\to S\)">\(B\to S\)</span>. Consequently <span class="math" data-tex="\(Z\to B\)">\(Z\to B\)</span> is proper and has finite fibres, hence is finite. We will show that it is flat of degree two.</p>
+<p>The calculation can be made after passing to an algebraic closure of the ground field. At a point of the exceptional divisor above <span class="math" data-tex="\(p\in S\)">\(p\in S\)</span>, choose formal smooth coordinates <span class="math" data-tex="\(x,y\)">\(x,y\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span>. In the blow-up chart where the difference of the <span class="math" data-tex="\(x\)">\(x\)</span>-coordinates supplies the direction, put</p>
+<span class="math math-display" data-tex="\[
+h=x_2-x_1,\qquad y_2-y_1=dh.
+\]">\[
+h=x_2-x_1,\qquad y_2-y_1=dh.
+\]</span>
+<p>At a direction of slope <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the completed local ring of <span class="math" data-tex="\(B\)">\(B\)</span> is</p>
+<span class="math math-display" data-tex="\[
+R=k[[x_1,y_1,h,d-\lambda]],
+\]">\[
+R=k[[x_1,y_1,h,d-\lambda]],
+\]</span>
+<p>with the coordinates translated so that <span class="math" data-tex="\(p=(0,0)\)">\(p=(0,0)\)</span>. On the target surface put <span class="math" data-tex="\(X=x-x_1\)">\(X=x-x_1\)</span>, <span class="math" data-tex="\(Y=y-y_1\)">\(Y=y-y_1\)</span>. The completed ideal of the family is</p>
+<span class="math math-display" data-tex="\[
+(Y-dX,\ X(X-h)).                                      \tag{9.1}
+\]">\[
+(Y-dX,\ X(X-h)).                                      \tag{9.1}
+\]</span>
+<p>Indeed, after inverting <span class="math" data-tex="\(h\)">\(h\)</span> it is the ideal of the two graphs. Its quotient is free over <span class="math" data-tex="\(R\)">\(R\)</span>, with basis <span class="math" data-tex="\(1,X\)">\(1,X\)</span>, so multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> is injective. It is therefore already <span class="math" data-tex="\(h\)">\(h\)</span>-saturated and is exactly the schematic closure. Flat completion preserves the kernel defining this closure. The other blow-up chart gives the same calculation with <span class="math" data-tex="\(x,y\)">\(x,y\)</span> exchanged. Away from the exceptional divisor the two graphs are disjoint. Faithful flatness of local completion now proves that the finite module defining <span class="math" data-tex="\(Z\)">\(Z\)</span> is locally free of rank two everywhere. Thus <span class="math" data-tex="\(Z\)">\(Z\)</span> gives an invariant morphism</p>
+<span class="math math-display" data-tex="\[
+B\longrightarrow\operatorname{Hilb}^2_S.
+\]">\[
+B\longrightarrow\operatorname{Hilb}^2_S.
+\]</span>
+<p>Apply the finite-group quotient theorem above to the separated finite-type scheme <span class="math" data-tex="\(B\)">\(B\)</span>. It gives the geometric categorical quotient <span class="math" data-tex="\(Q=B/\mathfrak S_2\)">\(Q=B/\mathfrak S_2\)</span> as a separated finite-type algebraic space and a finite surjection <span class="math" data-tex="\(B\to Q\)">\(B\to Q\)</span>, in every characteristic. Algebraicity of the Hilbert functor is proved in <a href="../AG-AS/moduli-stacks-are-algebraic.html#6-quotients-and-closed-subschemes">Moduli stacks are algebraic, Corollary 6.3</a>. For a quasi-projective surface the quotient also has the invariant-affine construction of Section 7. Categorical initiality for algebraic-space targets descends the invariant Hilbert morphism to <span class="math" data-tex="\(q:Q\to\operatorname{Hilb}^2_S\)">\(q:Q\to\operatorname{Hilb}^2_S\)</span>.</p>
+<p>We identify its completed local rings explicitly. In the affine-plane blow-up chart set</p>
+<span class="math math-display" data-tex="\[
+c=y_1-dx_1,\qquad x_2=x_1+h.
+\]">\[
+c=y_1-dx_1,\qquad x_2=x_1+h.
+\]</span>
+<p>The chart ring is <span class="math" data-tex="\(k[c,d,x_1,x_2]\)">\(k[c,d,x_1,x_2]\)</span>. The involution fixes <span class="math" data-tex="\(c,d\)">\(c,d\)</span> and exchanges <span class="math" data-tex="\(x_1,x_2\)">\(x_1,x_2\)</span>. Hence its invariant ring is</p>
+<span class="math math-display" data-tex="\[
+k[c,d,b,a],\qquad b=x_1+x_2,\quad a=-x_1x_2.
+\]">\[
+k[c,d,b,a],\qquad b=x_1+x_2,\quad a=-x_1x_2.
+\]</span>
+<p>The family (9.1), expressed in <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, has equations</p>
+<span class="math math-display" data-tex="\[
+x^2=a+bx,\qquad y=c+dx.
+\]">\[
+x^2=a+bx,\qquad y=c+dx.
+\]</span>
+<p>This is precisely the first chart of Proposition 6.1. The other blow-up chart gives its second chart, with the same transition formulas. The symmetric-polynomial calculation does not divide by two.</p>
+<p>For an arbitrary smooth surface, the completed calculation is identical: smooth coordinates identify the completion with the completed affine-plane calculation. Completion of the finite quotient takes invariants of the product of the local completions over an orbit. This follows by expressing invariants as a kernel and using the flatness of completion over the invariant ring, as in Section 7. Thus <span class="math" data-tex="\(q\)">\(q\)</span> induces an isomorphism of completed local rings at every double-point family. It also does so at every pair of distinct points: the two orders form one free orbit, and the local family is the product of the two independent point neighbourhoods.</p>
+<p>There is exactly one geometric point of <span class="math" data-tex="\(Q\)">\(Q\)</span> over each length-two subscheme. A subscheme supported at two points is their unordered pair. A subscheme supported at one point has local algebra <span class="math" data-tex="\(k[\epsilon]/(\epsilon^2)\)">\(k[\epsilon]/(\epsilon^2)\)</span>; its embedding is a one-dimensional quotient of <span class="math" data-tex="\(\mathfrak m_p/\mathfrak m_p^2\)">\(\mathfrak m_p/\mathfrak m_p^2\)</span>, or equivalently a line in <span class="math" data-tex="\(T_pS\)">\(T_pS\)</span>. The exceptional fibre is exactly <span class="math" data-tex="\(\mathbb P(T_pS)\)">\(\mathbb P(T_pS)\)</span>. Exchange acts as minus the identity on the normal space to the diagonal, hence fixes its projective directions, also in characteristic two.</p>
+<p>A finite-type morphism with the same residue fields and isomorphic completed local rings is étale at these points; the elementary completion argument is given below. Every nonempty closed subset of a finite-type space over an algebraically closed field has a closed point, so the étale locus is the whole source. The geometric injectivity and étaleness make <span class="math" data-tex="\(q\)">\(q\)</span> an open immersion; geometric surjectivity makes it an isomorphism. The completed rings just computed are power-series rings in four variables, giving smoothness. These conclusions descend from the algebraic closure by faithful flatness. If the affine-neighbourhood condition holds, Section 5 represents <span class="math" data-tex="\(\operatorname{Hilb}^2_S\)">\(\operatorname{Hilb}^2_S\)</span> by a scheme, so its identified quotient is a scheme as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here and in Section 7 the completion criterion does not require a hidden characteristic assumption. If <span class="math" data-tex="\(A\to D\)">\(A\to D\)</span> is the corresponding local homomorphism of Noetherian local rings and <span class="math" data-tex="\(\widehat A\to\widehat D\)">\(\widehat A\to\widehat D\)</span> is an isomorphism, then <span class="math" data-tex="\(\widehat D\)">\(\widehat D\)</span> is flat over <span class="math" data-tex="\(A\)">\(A\)</span>. Since <span class="math" data-tex="\(D\to\widehat D\)">\(D\to\widehat D\)</span> is faithfully flat, <span class="math" data-tex="\(D\)">\(D\)</span> is flat over <span class="math" data-tex="\(A\)">\(A\)</span>. Moreover <span class="math" data-tex="\(D/\mathfrak m_A D=k\)">\(D/\mathfrak m_A D=k\)</span>: its faithfully flat extension <span class="math" data-tex="\(\widehat D/\mathfrak m_A\widehat D\)">\(\widehat D/\mathfrak m_A\widehat D\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>, and injectivity into this field, together with the common coefficient field <span class="math" data-tex="\(k\)">\(k\)</span>, forces the equality. Thus the fibre is unramified at the point. Flatness and unramifiedness give étaleness [Stacks, Tag 02GV]; the completion inputs are [Stacks, Tags 00MB–00MC]. The passage from an étale universally injective morphism to an open immersion is [Stacks, Tag 02LC], or its algebraic-space version [Stacks, Tag 05W5].</p>
+<h2 id="10-lines-and-twisted-cubics">10 Lines and twisted cubics</h2>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> have dimension four and let <span class="math" data-tex="\(F\in\operatorname{Sym}^3V\)">\(F\in\operatorname{Sym}^3V\)</span> define a cubic surface in <span class="math" data-tex="\(\mathbb P(V)\)">\(\mathbb P(V)\)</span>. A line corresponds, in our quotient convention, to a rank-two quotient <span class="math" data-tex="\(V\twoheadrightarrow Q\)">\(V\twoheadrightarrow Q\)</span>. It lies on the cubic exactly when the image of <span class="math" data-tex="\(F\)">\(F\)</span> in <span class="math" data-tex="\(\operatorname{Sym}^3Q\)">\(\operatorname{Sym}^3Q\)</span> vanishes. The Fano scheme is therefore the zero scheme of the universal section</p>
+<span class="math math-display" data-tex="\[
+F_Q\in H^0(\operatorname{Grass}_2(V),\operatorname{Sym}^3Q).
+\]">\[
+F_Q\in H^0(\operatorname{Grass}_2(V),\operatorname{Sym}^3Q).
+\]</span>
+<p>On an affine Grassmannian chart this imposes the four coefficients of a binary cubic. This proves the representing equations, including their nonreduced test points, rather than only describing the set of lines. It is a closed projective subscheme of the Grassmannian. If the cubic surface is smooth, its Fano scheme is finite étale of degree <span class="math" data-tex="\(27\)">\(27\)</span>; over an algebraic closure it consists of <span class="math" data-tex="\(27\)">\(27\)</span> reduced points. The tangent calculation and the degree computation are proved in <em>Tangent spaces and obstructions for Hilbert and Quot schemes</em>. Over a nonclosed field, the points need not all be rational.</p>
+<p>The polynomial <span class="math" data-tex="\(3t+1\)">\(3t+1\)</span> gives another useful warning about components. Over an algebraically closed field of any characteristic, the closure of the locus of twisted cubics in <span class="math" data-tex="\(\operatorname{Hilb}^{3t+1}_{\mathbb P^3}\)">\(\operatorname{Hilb}^{3t+1}_{\mathbb P^3}\)</span> is a smooth irreducible projective component of dimension <span class="math" data-tex="\(12\)">\(12\)</span>. There is a second smooth component of dimension <span class="math" data-tex="\(15\)">\(15\)</span>; their intersection is smooth of dimension <span class="math" data-tex="\(11\)">\(11\)</span>, and the entire Hilbert scheme is singular there. Theorem 10.2 proves this classification, including rationality, the scheme-theoretic intersection and the complete singular locus. The historical theorem is Piene–Schlessinger; Heinrich–Skjelnes–Stevens, <em>The space of twisted cubics</em>, Proposition A.1 and Remark A.2, give its extension to characteristics two and three. The argument below retains those characteristics throughout.</p>
+<p>One can see the dimension of the open twisted-cubic locus directly. Every smooth rational normal cubic is the image of <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> under its complete linear system <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span>, followed by a projective change of coordinates. Its stabilizer in <span class="math" data-tex="\(\operatorname{PGL}_4\)">\(\operatorname{PGL}_4\)</span> is <span class="math" data-tex="\(\operatorname{PGL}_2\)">\(\operatorname{PGL}_2\)</span>: restriction gives an automorphism of the curve, and each such automorphism acts on <span class="math" data-tex="\(H^0(\mathcal O(3))\)">\(H^0(\mathcal O(3))\)</span>; an element restricting to the identity fixes four independent evaluation vectors and their further linear combinations, so is scalar. The orbit dimension is <span class="math" data-tex="\(15-3=12\)">\(15-3=12\)</span>. The compactification and its boundary require the local equations and fixed-ideal argument below in addition to this orbit calculation.</p>
+<h3 id="the-formal-meeting-of-the-two-components">The formal meeting of the two components</h3>
+<p>A nonplanar boundary point already exhibits the different dimensions of the two components. We prove its entire formal neighbourhood, including the equations and their necessity in characteristics two and three. This calculation will also distinguish a flat family from a universal deformation.</p>
+<p><strong>Theorem 10.1.</strong> Let <span class="math" data-tex="$k$">$k$</span> be any field and let <span class="math" data-tex="$Z_0\subset\mathbb P^3_k$">$Z_0\subset\mathbb P^3_k$</span> have saturated ideal</p>
+<span class="math math-display" data-tex="\[
+I_0=(zx,zy,z^2,x^3)\subset k[x,y,z,w].
+\]">\[
+I_0=(zx,zy,z^2,x^3)\subset k[x,y,z,w].
+\]</span>
+<p>At the corresponding <span class="math" data-tex="$k$">$k$</span>-point of the Hilbert scheme, the completed local ring is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat{\mathcal O}_{\operatorname{Hilb}^{3t+1},[Z_0]}
+\simeq T/J,\\
+T=k[[\mathbf a,\beta,c_1,c_2,c_3,c_4]],\\
+J=(\beta c_1,\beta c_2,\beta c_3,\beta c_4),\\
+|\mathbf a|=11.
+\tag{10.1}
+\end{gathered}
+\]" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="\[
+\begin{gathered}
+\widehat{\mathcal O}_{\operatorname{Hilb}^{3t+1},[Z_0]}
+\simeq T/J,\\
+T=k[[\mathbf a,\beta,c_1,c_2,c_3,c_4]],\\
+J=(\beta c_1,\beta c_2,\beta c_3,\beta c_4),\\
+|\mathbf a|=11.
+\end{gathered}
+\tag{10.1}
+\]" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">\[
+\begin{gathered}
+\widehat{\mathcal O}_{\operatorname{Hilb}^{3t+1},[Z_0]}
+\simeq T/J,\\
+T=k[[\mathbf a,\beta,c_1,c_2,c_3,c_4]],\\
+J=(\beta c_1,\beta c_2,\beta c_3,\beta c_4),\\
+|\mathbf a|=11.
+\end{gathered}
+\tag{10.1}
+\]</span>
+<p>The two formal branches are smooth of dimensions <span class="math" data-tex="$12$">$12$</span> and <span class="math" data-tex="$15$">$15$</span>. Their scheme-theoretic intersection is smooth of dimension <span class="math" data-tex="$11$">$11$</span>, and their tangent spaces span the <span class="math" data-tex="$16$">$16$</span>-dimensional tangent space of the Hilbert scheme. The first branch lies in the closure of smooth twisted cubics; the second lies in the closure of plane cubics with a disjoint point. These assertions require no characteristic restriction.</p>
+<p><strong>Proof.</strong> We first connect the projective Hilbert problem to homogeneous ideals. Modulo <span class="math" data-tex="$I_0$">$I_0$</span>, the degree-<span class="math" data-tex="$n$">$n$</span> monomials, for <span class="math" data-tex="$n\geq1$">$n\geq1$</span>, are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x^iy^jw^{n-i-j},\\
+0\leq i\leq2,\quad i+j\leq n,\\
+zw^{n-1}.
+\end{gathered}
+\tag{10.2}
+\]">\[
+\begin{gathered}
+x^iy^jw^{n-i-j},\\
+0\leq i\leq2,\quad i+j\leq n,\\
+zw^{n-1}.
+\end{gathered}
+\tag{10.2}
+\]</span>
+<p>Their number is <span class="math" data-tex="$3n+1$">$3n+1$</span>. Multiplication by <span class="math" data-tex="$w$">$w$</span> is injective, so the ideal is saturated. Put <span class="math" data-tex="$R=S/I_0$">$R=S/I_0$</span> and <span class="math" data-tex="$C=k[x,y,w]/(x^3)$">$C=k[x,y,w]/(x^3)$</span>. There is a graded exact sequence, with its first map sending <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$z$">$z$</span>:</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow k[w](-1)
+\longrightarrow R\longrightarrow C\longrightarrow0.
+\]">\[
+0\longrightarrow k[w](-1)
+\longrightarrow R\longrightarrow C\longrightarrow0.
+\]</span>
+<p>After sheafification, its first term is a length-one sheaf and its last term is the plane cubic <span class="math" data-tex="$x^3=0$">$x^3=0$</span>. The plane-cubic sequence and projective-space cohomology show that <span class="math" data-tex="$H^1(Z_0,\mathcal O_{Z_0}(n))=0$">$H^1(Z_0,\mathcal O_{Z_0}(n))=0$</span> for <span class="math" data-tex="$n\geq1$">$n\geq1$</span>. They also show that the degree-<span class="math" data-tex="$n$">$n$</span> piece in (10.2) maps isomorphically to <span class="math" data-tex="$H^0(Z_0,\mathcal O_{Z_0}(n))$">$H^0(Z_0,\mathcal O_{Z_0}(n))$</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+H^1(\mathbb P^3,\mathcal I_0(n))
+=H^2(\mathbb P^3,\mathcal I_0(n))=0
+\quad(n\geq1).
+\]">\[
+H^1(\mathbb P^3,\mathcal I_0(n))
+=H^2(\mathbb P^3,\mathcal I_0(n))=0
+\quad(n\geq1).
+\]</span>
+<p>For a flat family over a local Artinian <span class="math" data-tex="$k$">$k$</span>-algebra <span class="math" data-tex="$B$">$B$</span>, its ideal sheaf is <span class="math" data-tex="$B$">$B$</span>-flat too, by the ideal sequence. Filter <span class="math" data-tex="$B$">$B$</span> by powers of its maximal ideal. The successive ideal-sheaf quotients are copies of <span class="math" data-tex="$\mathcal I_0$">$\mathcal I_0$</span>, tensored with those finite-dimensional coefficient spaces. The displayed vanishing and the cohomology exact sequences show inductively that positive-degree ideal sections lift and have zero first and second cohomology. Freeness follows at each small extension <span class="math" data-tex="$B\to B^\prime$">$B\to B^\prime$</span> whose kernel <span class="math" data-tex="$V$">$V$</span> is annihilated by the maximal ideal. The section sequence has kernel <span class="math" data-tex="$V\otimes_k H^0(\mathcal I_0(n))$">$V\otimes_k H^0(\mathcal I_0(n))$</span> and surjects onto the sections over <span class="math" data-tex="$B^\prime$">$B^\prime$</span>. Inductively lift a basis from those sections; its products with <span class="math" data-tex="$V$">$V$</span> generate the entire kernel, by the displayed tensor identification. The resulting map from a free <span class="math" data-tex="$B$">$B$</span>-module is surjective, and equality of lengths makes it an isomorphism. The same argument applies to the quotient sections. Thus positive-degree sections commute with every Artinian base change.</p>
+<p>It follows that these deformations are identified with their saturated homogeneous ideals. Three quadratic generators and one cubic generator lift the displayed generators of <span class="math" data-tex="$I_0$">$I_0$</span>. In every higher degree they still generate, by Nakayama applied to the finite module of sections in that degree. Conversely a homogeneous quotient with these free graded pieces and saturated ideal defines the required flat projective family. This explains why the following calculation determines the Hilbert scheme, rather than only an affine piece of its curves.</p>
+<p><strong>The flat family.</strong> Choose five coordinate parameters <span class="math" data-tex="$s,t,p,q,r$">$s,t,p,q,r$</span> and write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X=x+sw,\qquad Y=y+tw,\\
+Z=z+px+qy+rw.
+\end{gathered}
+\]">\[
+\begin{gathered}
+X=x+sw,\qquad Y=y+tw,\\
+Z=z+px+qy+rw.
+\end{gathered}
+\]</span>
+<p>This triangular coordinate change is invertible over every parameter ring. Choose six more parameters <span class="math" data-tex="$a_0,a_1,a_2,\ell_0,\ell_1,h$">$a_0,a_1,a_2,\ell_0,\ell_1,h$</span>, and put</p>
+<span class="math math-display" data-tex="\[
+A=a_0w+a_1Y+a_2X,
+\qquad L=\ell_0w+\ell_1Y.
+\]">\[
+A=a_0w+a_1Y+a_2X,
+\qquad L=\ell_0w+\ell_1Y.
+\]</span>
+<p>These eleven parameters form <span class="math" data-tex="$\mathbf a$">$\mathbf a$</span>. Over <span class="math" data-tex="$k[\mathbf a,\beta,c_1,c_2,c_3,c_4]/J$">$k[\mathbf a,\beta,c_1,c_2,c_3,c_4]/J$</span>, use the four forms</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_1={}&amp;ZX+\beta AX-\beta LY,\\
+F_2={}&amp;ZY-\beta X(X+hw),\\
+F_3={}&amp;Z^2+c_4Zw+\beta AZ\\
+&amp;-\beta^2L(X+hw),\\
+F_4={}&amp;X^3+AXY-LY^2+hX^2w\\
+&amp;+c_1Xw^2+c_2Yw^2\\
+&amp;+c_3Zw^2+c_3c_4w^3.
+\end{aligned}
+\tag{10.3}
+\]">\[
+\begin{aligned}
+F_1={}&amp;ZX+\beta AX-\beta LY,\\
+F_2={}&amp;ZY-\beta X(X+hw),\\
+F_3={}&amp;Z^2+c_4Zw+\beta AZ\\
+&amp;-\beta^2L(X+hw),\\
+F_4={}&amp;X^3+AXY-LY^2+hX^2w\\
+&amp;+c_1Xw^2+c_2Yw^2\\
+&amp;+c_3Zw^2+c_3c_4w^3.
+\end{aligned}
+\tag{10.3}
+\]</span>
+<p>Here and below the coefficients <span class="math" data-tex="$a_i,\ell_i,h,\beta,c_i$">$a_i,\ell_i,h,\beta,c_i$</span> have degree zero; <span class="math" data-tex="$X,Y,Z,w$">$X,Y,Z,w$</span> have degree one. We verify flatness explicitly. Order the monomials first by weights <span class="math" data-tex="$(1,1,2,0)$">$(1,1,2,0)$</span> on <span class="math" data-tex="$(X,Y,Z,w)$">$(X,Y,Z,w)$</span>, then by total degree, then lexicographically with <span class="math" data-tex="$Z&gt;X&gt;Y&gt;w$">$Z&gt;X&gt;Y&gt;w$</span>. The leading monomials of the four monic forms are</p>
+<span class="math math-display" data-tex="\[
+ZX,\qquad ZY,\qquad Z^2,\qquad X^3.
+\]">\[
+ZX,\qquad ZY,\qquad Z^2,\qquad X^3.
+\]</span>
+<p>Write <span class="math" data-tex="$F=(F_1,F_2,F_3,F_4)$">$F=(F_1,F_2,F_3,F_4)$</span>. The columns of the following coefficient matrix <span class="math" data-tex="$M$">$M$</span> record reductions of the four generating monomial relations:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_1=\begin{pmatrix}
+-\beta(X+hw)\\
+-Z-c_4w-\beta A\\
+Y\\
+0
+\end{pmatrix},\\
+M_2=\begin{pmatrix}
+Z+c_4w\\
+\beta L\\
+-X\\
+0
+\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+M_1=\begin{pmatrix}
+-\beta(X+hw)\\
+-Z-c_4w-\beta A\\
+Y\\
+0
+\end{pmatrix},\\
+M_2=\begin{pmatrix}
+Z+c_4w\\
+\beta L\\
+-X\\
+0
+\end{pmatrix}.
+\end{gathered}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_3=\begin{pmatrix}
+-Y\\
+X\\
+0\\
+\beta
+\end{pmatrix},\\
+M_4=\begin{pmatrix}
+-X(X+hw)-c_1w^2\\
+-c_2w^2-AX+LY\\
+-c_3w^2\\
+Z
+\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+M_3=\begin{pmatrix}
+-Y\\
+X\\
+0\\
+\beta
+\end{pmatrix},\\
+M_4=\begin{pmatrix}
+-X(X+hw)-c_1w^2\\
+-c_2w^2-AX+LY\\
+-c_3w^2\\
+Z
+\end{pmatrix}.
+\end{gathered}
+\]</span>
+<p>Before imposing <span class="math" data-tex="$J$">$J$</span>, their four residues are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(FM)_1={}&amp;\beta c_4wX(X+hw),\\
+(FM)_2={}&amp;\beta c_4w(AX-LY),\\
+(FM)_3={}&amp;\beta w^2(c_1X+c_2Y+c_3Z+c_3c_4w),\\
+(FM)_4={}&amp;\beta w^2\bigl[c_2X(X+hw)\\
+&amp;-c_1(AX-LY)\\
+&amp;-c_3\{AZ-\beta L(X+hw)\}\bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+(FM)_1={}&amp;\beta c_4wX(X+hw),\\
+(FM)_2={}&amp;\beta c_4w(AX-LY),\\
+(FM)_3={}&amp;\beta w^2(c_1X+c_2Y+c_3Z+c_3c_4w),\\
+(FM)_4={}&amp;\beta w^2\bigl[c_2X(X+hw)\\
+&amp;-c_1(AX-LY)\\
+&amp;-c_3\{AZ-\beta L(X+hw)\}\bigr].
+\end{aligned}
+\]</span>
+<p>They vanish modulo <span class="math" data-tex="$J$">$J$</span>. In each column, after its two leading terms cancel, all other products have strictly smaller monomial than their least common multiple. The four leading relations are those for the pairs <span class="math" data-tex="$(F_2,F_3)$">$(F_2,F_3)$</span>, <span class="math" data-tex="$(F_1,F_3)$">$(F_1,F_3)$</span>, <span class="math" data-tex="$(F_1,F_2)$">$(F_1,F_2)$</span> and <span class="math" data-tex="$(F_1,F_4)$">$(F_1,F_4)$</span>. The relations for the other two pairs are generated by these: pass from <span class="math" data-tex="$ZY$">$ZY$</span> or <span class="math" data-tex="$Z^2$">$Z^2$</span> to <span class="math" data-tex="$ZX$">$ZX$</span> and then to <span class="math" data-tex="$X^3$">$X^3$</span>. Thus every critical cancellation reduces to zero. Equivalently the usual monic-division proof of the standard-basis criterion applies: a relation of minimal leading monomial would reduce by one of these four relations to smaller leading monomial, a contradiction. This proof works over the coefficient ring, including its zero divisors; all leading coefficients are <span class="math" data-tex="$1$">$1$</span>.</p>
+<p>It follows that (10.2), with <span class="math" data-tex="$X,Y,Z$">$X,Y,Z$</span> in place of <span class="math" data-tex="$x,y,z$">$x,y,z$</span>, is a basis of every positive-degree quotient piece. Multiplication by <span class="math" data-tex="$w$">$w$</span> stays injective, proving saturation on every base change. The forms therefore give a flat Hilbert family over the stated parameter scheme, not just over its reduced locus. Its specialization at the origin is <span class="math" data-tex="$Z_0$">$Z_0$</span>.</p>
+<p><strong>The tangent space.</strong> Put <span class="math" data-tex="$R=S/I_0$">$R=S/I_0$</span>. A first-order perturbation of the four generators is a tuple</p>
+<span class="math math-display" data-tex="\[
+(u,v,t,d)\in R_2^3\oplus R_3.
+\]">\[
+(u,v,t,d)\in R_2^3\oplus R_3.
+\]</span>
+<p>Changing a generator by a multiple of <span class="math" data-tex="$I_0$">$I_0$</span> has already been removed by using <span class="math" data-tex="$R$">$R$</span>. The first syzygies of <span class="math" data-tex="$I_0$">$I_0$</span> are generated by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(y,-x,0,0),\quad(z,0,-x,0),\\
+(0,z,-y,0),\quad(x^2,0,0,-z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+(y,-x,0,0),\quad(z,0,-x,0),\\
+(0,z,-y,0),\quad(x^2,0,0,-z).
+\end{gathered}
+\]</span>
+<p>For a monomial ideal these are checked directly from least common multiples; the remaining two pair relations follow from them. The tangent conditions are consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+yu-xv=0,\quad zu-xt=0,\\
+zv-yt=0,\quad x^2u-zd=0.
+\end{gathered}
+\tag{10.4}
+\]">\[
+\begin{gathered}
+yu-xv=0,\quad zu-xt=0,\\
+zv-yt=0,\quad x^2u-zd=0.
+\end{gathered}
+\tag{10.4}
+\]</span>
+<p>Expanding in (10.2) gives all solutions. The middle two equations force the <span class="math" data-tex="$w^2$">$w^2$</span> coefficients of <span class="math" data-tex="$u,v$">$u,v$</span> to vanish and force <span class="math" data-tex="$t$">$t$</span> to be a scalar multiple of <span class="math" data-tex="$zw$">$zw$</span>. The first equation then gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u={}&amp;\alpha x^2+\delta xy+\rho xw+\sigma zw,\\
+v={}&amp;\tau x^2+\alpha xy+\delta y^2+\rho yw+\nu zw,\\
+t={}&amp;\kappa zw.
+\end{aligned}
+\]">\[
+\begin{aligned}
+u={}&amp;\alpha x^2+\delta xy+\rho xw+\sigma zw,\\
+v={}&amp;\tau x^2+\alpha xy+\delta y^2+\rho yw+\nu zw,\\
+t={}&amp;\kappa zw.
+\end{aligned}
+\]</span>
+<p>The last equation says precisely that the <span class="math" data-tex="$w^3$">$w^3$</span> coefficient of <span class="math" data-tex="$d$">$d$</span> vanishes. There are six coefficients in <span class="math" data-tex="$u,v$">$u,v$</span>, one in <span class="math" data-tex="$t$">$t$</span>, and nine in <span class="math" data-tex="$d$">$d$</span>: the tangent dimension is <span class="math" data-tex="$16$">$16$</span>.</p>
+<p>Differentiating (10.3) realizes all of them. The coordinate changes <span class="math" data-tex="$p,q,r,s,t$">$p,q,r,s,t$</span> account for the six coefficients in <span class="math" data-tex="$u,v$">$u,v$</span>, together with <span class="math" data-tex="$\beta$">$\beta$</span>; <span class="math" data-tex="$c_4$">$c_4$</span> supplies the remaining coefficient in the third generator. In the cubic, <span class="math" data-tex="$a_0,a_1,a_2,\ell_0,\ell_1,h,c_1,c_2,c_3$">$a_0,a_1,a_2,\ell_0,\ell_1,h,c_1,c_2,c_3$</span> supply its nine permitted monomials. The derivative of <span class="math" data-tex="$r$">$r$</span> also contributes <span class="math" data-tex="$2zw$">$2zw$</span> to the third generator, and the derivative of <span class="math" data-tex="$s$">$s$</span> contributes <span class="math" data-tex="$3x^2w$">$3x^2w$</span> to the fourth; subtract the corresponding <span class="math" data-tex="$c_4$">$c_4$</span> and <span class="math" data-tex="$h$">$h$</span> directions. These subtractions divide by neither <span class="math" data-tex="$2$">$2$</span> nor <span class="math" data-tex="$3$">$3$</span>. Hence the parameter family induces an isomorphism on tangent spaces in every characteristic.</p>
+<p><strong>Why all four equations are necessary.</strong> The existence of the family proves flatness on the proposed base; it does not yet exclude a larger deformation base. For that we compute four independent primary obstructions. If the syzygies of (10.4) are lifted to second order, changing the second-order terms of the generators changes their residual tuple by the image of</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial:R_2^3\oplus R_3\longrightarrow R_3^3\oplus R_4,\\
+\partial(u,v,t,d)=\begin{pmatrix}
+yu-xv\\
+zu-xt\\
+zv-yt\\
+x^2u-zd
+\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\partial:R_2^3\oplus R_3\longrightarrow R_3^3\oplus R_4,\\
+\partial(u,v,t,d)=\begin{pmatrix}
+yu-xv\\
+zu-xt\\
+zv-yt\\
+x^2u-zd
+\end{pmatrix}.
+\end{gathered}
+\]</span>
+<p>Thus every linear functional killing this image detects a necessary obstruction. Write <span class="math" data-tex="$[m]v_i$">$[m]v_i$</span> for the coefficient of the monomial <span class="math" data-tex="$m$">$m$</span> in the <span class="math" data-tex="$i$">$i$</span>th residual. The following four functionals kill <span class="math" data-tex="$\operatorname{im}\partial$">$\operatorname{im}\partial$</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda_1(v)&amp;=[xw^2]v_1+[zw^2]v_3,\\
+\lambda_2(v)&amp;=[yw^2]v_1-[zw^2]v_2,\\
+\lambda_3(v)&amp;=[zw^2]v_1,\\
+\lambda_4(v)&amp;=[x^2w]v_3.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\lambda_1(v)&amp;=[xw^2]v_1+[zw^2]v_3,\\
+\lambda_2(v)&amp;=[yw^2]v_1-[zw^2]v_2,\\
+\lambda_3(v)&amp;=[zw^2]v_1,\\
+\lambda_4(v)&amp;=[x^2w]v_3.
+\end{aligned}
+\]</span>
+<p>For example, the first two sums cancel the <span class="math" data-tex="$w^2$">$w^2$</span> coefficients of the perturbations <span class="math" data-tex="$v,u$">$v,u$</span>, respectively. The third is zero because multiplication by <span class="math" data-tex="$x$">$x$</span> or <span class="math" data-tex="$y$">$y$</span> never produces <span class="math" data-tex="$zw^2$">$zw^2$</span> in <span class="math" data-tex="$R$">$R$</span>; the fourth is zero because neither <span class="math" data-tex="$zv$">$zv$</span> nor <span class="math" data-tex="$yt$">$yt$</span> can contain <span class="math" data-tex="$x^2w$">$x^2w$</span>.</p>
+<p>Set the eleven <span class="math" data-tex="$\mathbf a$">$\mathbf a$</span> directions to zero for the calculation. Use the tentative generators</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+zx,\qquad zy-\beta x^2,\qquad z^2+c_4zw,\\
+x^3+c_1xw^2+c_2yw^2+c_3zw^2+c_3c_4w^3.
+\end{gathered}
+\]">\[
+\begin{gathered}
+zx,\qquad zy-\beta x^2,\qquad z^2+c_4zw,\\
+x^3+c_1xw^2+c_2yw^2+c_3zw^2+c_3c_4w^3.
+\end{gathered}
+\]</span>
+<p>Lifting the four original syzygies gives, modulo cubic parameter terms, the residual tuple</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+-\beta(c_1xw^2+c_2yw^2+c_3zw^2),\qquad0,\\
+-\beta c_4x^2w,\qquad-\beta c_2x^2w^2.
+\end{gathered}
+\]">\[
+\begin{gathered}
+-\beta(c_1xw^2+c_2yw^2+c_3zw^2),\qquad0,\\
+-\beta c_4x^2w,\qquad-\beta c_2x^2w^2.
+\end{gathered}
+\]</span>
+<p>One can check it by adding <span class="math" data-tex="$-\beta$">$-\beta$</span> times the fourth generator to the first relation, <span class="math" data-tex="$c_4w$">$c_4w$</span> times the first generator to the second, <span class="math" data-tex="$\beta x$">$\beta x$</span> times the first and <span class="math" data-tex="$c_4w$">$c_4w$</span> times the second to the third, and <span class="math" data-tex="$c_1w^2,c_2w^2,c_3w^2$">$c_1w^2,c_2w^2,c_3w^2$</span> times the first three to the fourth. Applying the functionals gives</p>
+<span class="math math-display" data-tex="\[
+-\beta c_1,\quad-\beta c_2,\quad-\beta c_3,\quad-\beta c_4.
+\tag{10.5}
+\]">\[
+-\beta c_1,\quad-\beta c_2,\quad-\beta c_3,\quad-\beta c_4.
+\tag{10.5}
+\]</span>
+<p>Changing first-order lifts of a relation does not change these obstruction classes: their difference is an original syzygy, whose pairing with a tangent perturbation is zero modulo <span class="math" data-tex="$I_0$">$I_0$</span> by (10.4). Second-order changes were already killed by the functionals. The four products in (10.5) are therefore independent necessary quadratic equations.</p>
+<p><strong>The completed local ring.</strong> Let <span class="math" data-tex="$H$">$H$</span> be the completed Hilbert local ring. The tangent calculation gives a surjection from the formal power-series ring</p>
+<span class="math math-display" data-tex="\[
+T=k[[\mathbf a,\beta,c_1,c_2,c_3,c_4]]
+\longrightarrow H.
+\]">\[
+T=k[[\mathbf a,\beta,c_1,c_2,c_3,c_4]]
+\longrightarrow H.
+\]</span>
+<p>The family gives <span class="math" data-tex="$H\to T/J$">$H\to T/J$</span>, inducing the specified tangent isomorphism. Lift the images of the sixteen formal coordinates back to <span class="math" data-tex="$T$">$T$</span>. They define an automorphism of <span class="math" data-tex="$T$">$T$</span>, because their linear part is invertible; the inverse is constructed recursively by degree. Using that automorphism to choose the presentation, write <span class="math" data-tex="$H=T/K$">$H=T/K$</span> with <span class="math" data-tex="$K\subset J$">$K\subset J$</span> and unchanged tangent coordinates.</p>
+<p>Now compute the four obstruction functionals on the full sixteen-parameter first-order deformation. Their quadratic equations vanish on the flat family <span class="math" data-tex="$T/J$">$T/J$</span>, so they lie in the four-dimensional space spanned by the products <span class="math" data-tex="$\beta c_i$">$\beta c_i$</span>. Restricting to <span class="math" data-tex="$\mathbf a=0$">$\mathbf a=0$</span> gives (10.5), which is a basis of that space. Necessity of the equations therefore says that the degree-two initial part of <span class="math" data-tex="$K$">$K$</span> is all of <span class="math" data-tex="$J_2$">$J_2$</span>. In particular each generator of <span class="math" data-tex="$J$">$J$</span> belongs to <span class="math" data-tex="$K+\mathfrak m^3$">$K+\mathfrak m^3$</span>, where <span class="math" data-tex="$\mathfrak m$">$\mathfrak m$</span> is the maximal ideal of <span class="math" data-tex="$T$">$T$</span>.</p>
+<p>Since <span class="math" data-tex="$K\subset J$">$K\subset J$</span> and <span class="math" data-tex="$J$">$J$</span> is generated by those four quadratic monomials,</p>
+<span class="math math-display" data-tex="\[
+J\cap\mathfrak m^3=\mathfrak mJ.
+\]">\[
+J\cap\mathfrak m^3=\mathfrak mJ.
+\]</span>
+<p>Consequently <span class="math" data-tex="$J=K+\mathfrak mJ$">$J=K+\mathfrak mJ$</span>. The finite <span class="math" data-tex="$T$">$T$</span>-module <span class="math" data-tex="$J/K$">$J/K$</span> equals its maximal-ideal multiple, so Nakayama gives <span class="math" data-tex="$J=K$">$J=K$</span>. This proves (10.1) to every order; no assertion that vanishing quadratic obstructions usually suffices has been made.</p>
+<p><strong>The branches and their geometric meaning.</strong> In the formal power-series ring,</p>
+<span class="math math-display" data-tex="\[
+J=(\beta)\cap(c_1,c_2,c_3,c_4).
+\]">\[
+J=(\beta)\cap(c_1,c_2,c_3,c_4).
+\]</span>
+<p>Both ideals are prime. The quotients are power-series rings in <span class="math" data-tex="$15$">$15$</span> and <span class="math" data-tex="$12$">$12$</span> variables, and their sum gives the <span class="math" data-tex="$11$">$11$</span>-variable intersection. Their tangent spaces have the corresponding dimensions and sum to all sixteen directions. Thus the formal branches are smooth and meet transversely, although their union is singular.</p>
+<p>On the branch <span class="math" data-tex="$c_i=0$">$c_i=0$</span>, the three quadrics are the minors of</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+X&amp;\beta L&amp;Z\\
+Y&amp;Z+\beta A&amp;\beta(X+hw)
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+X&amp;\beta L&amp;Z\\
+Y&amp;Z+\beta A&amp;\beta(X+hw)
+\end{pmatrix}.
+\]</span>
+<p>Where <span class="math" data-tex="$\beta$">$\beta$</span> is invertible, the cubic generator follows from the quadrics. This branch contains smooth twisted cubics: set <span class="math" data-tex="$\beta=1$">$\beta=1$</span>, <span class="math" data-tex="$A=0$">$A=0$</span>, <span class="math" data-tex="$L=w$">$L=w$</span> and <span class="math" data-tex="$h=0$">$h=0$</span>. The equations are the rational normal cubic parametrized by</p>
+<span class="math math-display" data-tex="\[
+[w:X:Z:Y]=[s^3:st^2:s^2t:t^3].
+\]">\[
+[w:X:Z:Y]=[s^3:st^2:s^2t:t^3].
+\]</span>
+<p>Smoothness is open, so the generic curve of this irreducible parameter branch is a smooth twisted cubic, and its origin lies in their closure.</p>
+<p>On the branch <span class="math" data-tex="$\beta=0$">$\beta=0$</span>, take <span class="math" data-tex="$c_4\ne0$">$c_4\ne0$</span>. The quadrics are <span class="math" data-tex="$ZX,ZY,Z(Z+c_4w)$">$ZX,ZY,Z(Z+c_4w)$</span>. They support a plane cubic in <span class="math" data-tex="$Z=0$">$Z=0$</span> and the separate point <span class="math" data-tex="$[X:Y:Z:w]=[0:0:-c_4:1]$">$[X:Y:Z:w]=[0:0:-c_4:1]$</span>. Restriction of <span class="math" data-tex="$F_4$">$F_4$</span> to the plane is an arbitrary cubic in the chart where the <span class="math" data-tex="$X^3$">$X^3$</span> coefficient is <span class="math" data-tex="$1$">$1$</span>: its nine other coefficients are <span class="math" data-tex="$a_2,a_1,-\ell_1,h,a_0,-\ell_0,c_1,c_2,c_3c_4$">$a_2,a_1,-\ell_1,h,a_0,-\ell_0,c_1,c_2,c_3c_4$</span>. The fourth generator vanishes at the separate point. The monomial basis proves the Hilbert polynomial <span class="math" data-tex="$3t+1$">$3t+1$</span>, so there is no further residual part. Generically this is a plane cubic with a disjoint point. The entire branch, including the origin, lies in the closure of that locus. This identifies the two formal branches claimed in the theorem. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For comparison, Heinrich–Skjelnes–Stevens, Appendix A, Lemma A.8 and Remarks A.9–A.10, give the boundary calculation. The proof above obtains the completed local ring from a monic flat family and four explicit obstruction functionals. Theorem 10.2 supplies the global step by classifying the three fixed ideals and excluding every invariant closed locus on which the conclusions could fail; the local calculation at <span class="math" data-tex="$Z_0$">$Z_0$</span> alone would not supply it.</p>
+<h3 id="three-fixed-ideals-suffice-for-the-global-classification">Three fixed ideals suffice for the global classification</h3>
+<p>We now account for every point of the Hilbert scheme. The projective parameter space and its triangular coordinate action make this possible without a separate list of all cubic curves.</p>
+<p><strong>Theorem 10.2 (the two components).</strong> Over an algebraically closed field <span class="math" data-tex="$k$">$k$</span> of any characteristic, <span class="math" data-tex="$\operatorname{Hilb}^{3t+1}_{\mathbb P^3_k}$">$\operatorname{Hilb}^{3t+1}_{\mathbb P^3_k}$</span> is reduced and has exactly two irreducible components. The closure <span class="math" data-tex="$H$">$H$</span> of the smooth twisted cubics is smooth, rational, projective and <span class="math" data-tex="$12$">$12$</span>-dimensional. The closure <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> of plane cubics with a disjoint point is smooth, rational, projective and <span class="math" data-tex="$15$">$15$</span>-dimensional. Their scheme-theoretic intersection <span class="math" data-tex="$D$">$D$</span> is smooth, irreducible, rational and <span class="math" data-tex="$11$">$11$</span>-dimensional.</p>
+<p>At every closed point of <span class="math" data-tex="$D$">$D$</span>, the completed local ring of the whole Hilbert scheme has the form (10.1). Its two component tangent spaces span the <span class="math" data-tex="$16$">$16$</span>-dimensional tangent space and intersect in the tangent space of <span class="math" data-tex="$D$">$D$</span>. The Hilbert scheme is singular precisely along <span class="math" data-tex="$D$">$D$</span>.</p>
+<p><strong>Proof.</strong> All closures of loci in this proof have their reduced induced structure. The orbit calculation above shows that <span class="math" data-tex="$H$">$H$</span> is irreducible of dimension <span class="math" data-tex="$12$">$12$</span>. For <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span>, choose a plane, a cubic in it and a point outside the cubic. This is an irreducible parameter space of dimension</p>
+<span class="math math-display" data-tex="\[
+3+9+3=15.
+\]">\[
+3+9+3=15.
+\]</span>
+<p>The union is a flat family of polynomial <span class="math" data-tex="$3t+1$">$3t+1$</span>. For a general member, its plane cubic and its isolated point are uniquely recovered from the scheme. Thus its image has dimension <span class="math" data-tex="$15$">$15$</span>, and <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> is irreducible of that dimension. Both loci and their closures are invariant under projective coordinate changes.</p>
+<p><strong>A projective fixed-point argument.</strong> Let <span class="math" data-tex="$B$">$B$</span> be the group of invertible triangular changes of the four variables, allowing each variable to acquire a linear combination of the preceding ones in the order <span class="math" data-tex="$x,y,z,w$">$x,y,z,w$</span>. We will use this elementary fact:</p>
+<blockquote>
+<p>Every nonempty closed <span class="math" data-tex="$B$">$B$</span>-invariant subset of the Hilbert scheme contains a <span class="math" data-tex="$B$">$B$</span>-fixed point.</p>
+</blockquote>
+<p>The closed Grassmannian construction in Theorem 4.1 is equivariant: take one sufficiently large degree <span class="math" data-tex="$m$">$m$</span>, use the quotient of <span class="math" data-tex="$S_m$">$S_m$</span>, then its Plücker embedding. The ordered monomials of <span class="math" data-tex="$S_m$">$S_m$</span> give a triangular matrix for every element of <span class="math" data-tex="$B$">$B$</span>. The induced representation on the exterior power, or its dual according to the projective convention, is triangular too. Consequently the ambient projective representation has a complete invariant vector-space flag.</p>
+<p>For a nonempty invariant closed subset <span class="math" data-tex="$Y$">$Y$</span>, choose the first vector space <span class="math" data-tex="$V_i$">$V_i$</span> of that flag whose projectivization meets <span class="math" data-tex="$Y$">$Y$</span>. Then <span class="math" data-tex="$Y\cap\mathbb P(V_i)$">$Y\cap\mathbb P(V_i)$</span> is projective and lies entirely in the affine complement of <span class="math" data-tex="$\mathbb P(V_{i-1})$">$\mathbb P(V_{i-1})$</span>. Give this intersection its reduced structure. Being affine and proper over <span class="math" data-tex="$k$">$k$</span>, it is finite: its coordinate algebra is finite-dimensional by <span class="unlinked">proper coherent cohomology, Corollary 5.1</span>. The irreducible group <span class="math" data-tex="$B$">$B$</span>, a product of a torus with an affine space as a variety, cannot move a point through a nontrivial finite orbit. Thus this intersection contains a fixed <span class="math" data-tex="$k$">$k$</span>-point. This proves the fact without a characteristic-zero triangularization theorem.</p>
+<p><strong>All possible fixed ideals.</strong> A fixed saturated homogeneous ideal is monomial, since the diagonal torus has distinct characters on distinct monomials. We first show that <span class="math" data-tex="$w$">$w$</span> is a nonzerodivisor modulo such an ideal <span class="math" data-tex="$I$">$I$</span>. If a counterexample existed, choose a monomial <span class="math" data-tex="$w^rM\notin I$">$w^rM\notin I$</span>, with <span class="math" data-tex="$M$">$M$</span> not divisible by <span class="math" data-tex="$w$">$w$</span>, for which <span class="math" data-tex="$w^{r+1}M\in I$">$w^{r+1}M\in I$</span>. Substitute <span class="math" data-tex="$w+tx$">$w+tx$</span>, then <span class="math" data-tex="$w+ty$">$w+ty$</span>, then <span class="math" data-tex="$w+tz$">$w+tz$</span>. In each substitution the coefficient of <span class="math" data-tex="$t^{r+1}$">$t^{r+1}$</span> belongs to <span class="math" data-tex="$I$">$I$</span>, because the ideal is fixed and <span class="math" data-tex="$k$">$k$</span> is infinite. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x^{r+1}M,\ y^{r+1}M\in I,\\
+z^{r+1}M,\ w^{r+1}M\in I.
+\end{gathered}
+\]">\[
+\begin{gathered}
+x^{r+1}M,\ y^{r+1}M\in I,\\
+z^{r+1}M,\ w^{r+1}M\in I.
+\end{gathered}
+\]</span>
+<p>Every monomial of sufficiently large degree is divisible by one of those four powers. Saturation would give <span class="math" data-tex="$M\in I$">$M\in I$</span>, a contradiction. Thus no minimal monomial generator involves <span class="math" data-tex="$w$">$w$</span>, and</p>
+<span class="math math-display" data-tex="\[
+I=J\,k[x,y,z,w],\qquad J\subset k[x,y,z].
+\]">\[
+I=J\,k[x,y,z,w],\qquad J\subset k[x,y,z].
+\]</span>
+<p>The one-dimensional monomial support of <span class="math" data-tex="$k[x,y,z]/J$">$k[x,y,z]/J$</span> can contain only the <span class="math" data-tex="$z$">$z$</span>-axis. Indeed its irreducible components are coordinate axes. If it contained the <span class="math" data-tex="$x$">$x$</span>-axis, invariance under <span class="math" data-tex="$y\mapsto y+tx$">$y\mapsto y+tx$</span> would put an entire plane in the support. If it contained the <span class="math" data-tex="$y$">$y$</span>-axis, use <span class="math" data-tex="$z\mapsto z+ty$">$z\mapsto z+ty$</span>. Either contradicts dimension one. Therefore <span class="math" data-tex="$\sqrt J=(x,y)$">$\sqrt J=(x,y)$</span>.</p>
+<p>Put <span class="math" data-tex="$K=J:z^\infty$">$K=J:z^\infty$</span>. It is generated by monomials in <span class="math" data-tex="$x,y$">$x,y$</span>. The quotient <span class="math" data-tex="$K/J$">$K/J$</span> is finite-dimensional: powers of <span class="math" data-tex="$x,y$">$x,y$</span> annihilate it, as does one power of <span class="math" data-tex="$z$">$z$</span>, by finite generation and the definition of the colon ideal. Thus <span class="math" data-tex="$k[x,y]/K$">$k[x,y]/K$</span> has length <span class="math" data-tex="$3$">$3$</span>, the leading coefficient of our Hilbert polynomial. The three possible downward-closed sets of three standard monomials in two variables are</p>
+<span class="math math-display" data-tex="\[
+\{1,x,x^2\},\qquad\{1,x,y\},\qquad\{1,y,y^2\}.
+\]">\[
+\{1,x,x^2\},\qquad\{1,x,y\},\qquad\{1,y,y^2\}.
+\]</span>
+<p>The first is excluded: its ideal contains <span class="math" data-tex="$y$">$y$</span>, so invariance under <span class="math" data-tex="$y\mapsto y+tx$">$y\mapsto y+tx$</span> would also put <span class="math" data-tex="$x$">$x$</span> in the ideal. The other two give</p>
+<span class="math math-display" data-tex="\[
+K=(x,y)^2\quad\hbox{or}\quad K=(x,y^3).
+\]">\[
+K=(x,y)^2\quad\hbox{or}\quad K=(x,y^3).
+\]</span>
+<p>After adjoining <span class="math" data-tex="$w$">$w$</span>, their Hilbert polynomials are respectively <span class="math" data-tex="$3n+1$">$3n+1$</span> and <span class="math" data-tex="$3n$">$3n$</span>. The finite-dimensional graded module <span class="math" data-tex="$K/J$">$K/J$</span>, tensored with <span class="math" data-tex="$k[w]$">$k[w]$</span>, adds the constant <span class="math" data-tex="$\dim_k(K/J)$">$\dim_k(K/J)$</span> to that polynomial. Hence the first case forces <span class="math" data-tex="$J=K$">$J=K$</span>, and the second forces <span class="math" data-tex="$\dim_k(K/J)=1$">$\dim_k(K/J)=1$</span>.</p>
+<p>In the second case the single omitted monomial must be a minimal generator of <span class="math" data-tex="$K$">$K$</span>: a proper divisor in <span class="math" data-tex="$K$">$K$</span> would otherwise belong to <span class="math" data-tex="$J$">$J$</span> and force that monomial back into <span class="math" data-tex="$J$">$J$</span>. The possibilities are <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$y^3$">$y^3$</span>, and multiplication by every variable must kill their classes. We have proved that the complete fixed-point list is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_A&amp;=(x^2,xy,y^2),\\
+J_N&amp;=(x^2,xy,xz,y^3),\\
+J_P&amp;=(x,y^4,y^3z).
+\end{aligned}
+\tag{10.6}
+\]">\[
+\begin{aligned}
+J_A&amp;=(x^2,xy,y^2),\\
+J_N&amp;=(x^2,xy,xz,y^3),\\
+J_P&amp;=(x,y^4,y^3z).
+\end{aligned}
+\tag{10.6}
+\]</span>
+<p>All three are fixed under the triangular group, by direct substitution. The argument used no binomial-coefficient division; it also excludes additional fixed ideals in characteristics two and three.</p>
+<p><strong>The local scheme at <span class="math" data-tex="$J_A$">$J_A$</span>.</strong> Here</p>
+<span class="math math-display" data-tex="\[
+S/J_A=k[z,w]\oplus xk[z,w]\oplus yk[z,w]
+\]">\[
+S/J_A=k[z,w]\oplus xk[z,w]\oplus yk[z,w]
+\]</span>
+<p>as a graded <span class="math" data-tex="$k[z,w]$">$k[z,w]$</span>-module, with the last two generators in degree one. Sheafifying on the supporting line shows that its homogeneous pieces equal global sections in every nonnegative degree. A tangent perturbation of <span class="math" data-tex="$(x^2,xy,y^2)$">$(x^2,xy,y^2)$</span> is a tuple <span class="math" data-tex="$(u,v,t)\in(S/J_A)_2^3$">$(u,v,t)\in(S/J_A)_2^3$</span>. The two generating syzygies give</p>
+<span class="math math-display" data-tex="\[
+yu-xv=0,\qquad yv-xt=0.
+\]">\[
+yu-xv=0,\qquad yv-xt=0.
+\]</span>
+<p>In each perturbation, separate its quadratic part in <span class="math" data-tex="$z,w$">$z,w$</span> from the part in <span class="math" data-tex="$(x,y)\cdot k[z,w]_1$">$(x,y)\cdot k[z,w]_1$</span>. The equations kill all three pure <span class="math" data-tex="$z,w$">$z,w$</span> parts. They impose no condition on the remaining four coefficients in each perturbation, since <span class="math" data-tex="$(x,y)^2=0$">$(x,y)^2=0$</span>. Thus the Hilbert tangent dimension is <span class="math" data-tex="$12$">$12$</span> in every characteristic.</p>
+<p>This point belongs to <span class="math" data-tex="$H$">$H$</span>. An explicit flat degeneration has equations</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x^2-\tau yw,\qquad xy-\tau^2zw,\\
+y^2-\tau xz.
+\end{gathered}
+\]">\[
+\begin{gathered}
+x^2-\tau yw,\qquad xy-\tau^2zw,\\
+y^2-\tau xz.
+\end{gathered}
+\]</span>
+<p>Their leading monomials are <span class="math" data-tex="$x^2,xy,y^2$">$x^2,xy,y^2$</span> when <span class="math" data-tex="$x,y$">$x,y$</span> have weight two and <span class="math" data-tex="$z,w$">$z,w$</span> weight one. With <span class="math" data-tex="$F_i$">$F_i$</span> denoting the three displayed quadrics, the two critical identities are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+yF_1-xF_2&amp;=-\tau wF_3,\\
+xF_3-yF_2&amp;=-\tau zF_1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+yF_1-xF_2&amp;=-\tau wF_3,\\
+xF_3-yF_2&amp;=-\tau zF_1.
+\end{aligned}
+\]</span>
+<p>They prove that the monomial quotient basis is free over <span class="math" data-tex="$k[\tau]$">$k[\tau]$</span>; multiplication by <span class="math" data-tex="$w$">$w$</span> also proves saturation. For <span class="math" data-tex="$\tau\ne0$">$\tau\ne0$</span>, replacing <span class="math" data-tex="$z,w$">$z,w$</span> by <span class="math" data-tex="$\tau z,\tau w$">$\tau z,\tau w$</span> gives the rational normal cubic equations. Thus the closed point <span class="math" data-tex="$J_A$">$J_A$</span> lies on the <span class="math" data-tex="$12$">$12$</span>-dimensional irreducible closed set <span class="math" data-tex="$H$">$H$</span>. Its local Hilbert dimension is at least <span class="math" data-tex="$12$">$12$</span> and its tangent dimension is exactly <span class="math" data-tex="$12$">$12$</span>, so the local ring is regular. The unique local component has the same dimension as <span class="math" data-tex="$H$">$H$</span>, so <span class="math" data-tex="$H$">$H$</span> is an irreducible component of the Hilbert scheme. Over our algebraically closed field, <span class="math" data-tex="$J_A$">$J_A$</span> is a smooth point of that component alone.</p>
+<p><strong>The local scheme at <span class="math" data-tex="$J_P$">$J_P$</span>.</strong> This point is a plane cubic with a length-one contribution at a point on it. There is a sheaf exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow k_P\longrightarrow\mathcal O_Z
+\longrightarrow\mathcal O_C\longrightarrow0,
+\]">\[
+0\longrightarrow k_P\longrightarrow\mathcal O_Z
+\longrightarrow\mathcal O_C\longrightarrow0,
+\]</span>
+<p>where <span class="math" data-tex="$C$">$C$</span> is <span class="math" data-tex="$x=y^3=0$">$x=y^3=0$</span> and <span class="math" data-tex="$P=[0:0:0:1]$">$P=[0:0:0:1]$</span>. Plane-cubic cohomology gives</p>
+<span class="math math-display" data-tex="\[
+h^0(Z,\mathcal O_Z(n))=3n+1\qquad(n\geq1).
+\]">\[
+h^0(Z,\mathcal O_Z(n))=3n+1\qquad(n\geq1).
+\]</span>
+<p>In degree one a basis is <span class="math" data-tex="$y,z,w$">$y,z,w$</span> together with the torsion section <span class="math" data-tex="$y^3/w^2$">$y^3/w^2$</span>, extended by zero away from <span class="math" data-tex="$P$">$P$</span>. It is regular because <span class="math" data-tex="$y^3z=y^4=0$">$y^3z=y^4=0$</span>. In degrees at least three, global sections equal the homogeneous quotient pieces; their usual monomial bases already have dimension <span class="math" data-tex="$3n+1$">$3n+1$</span>.</p>
+<p>Use the generators <span class="math" data-tex="$(x,y^4,y^3z)$">$(x,y^4,y^3z)$</span>. Their first syzygies are generated by</p>
+<span class="math math-display" data-tex="\[
+(-y^4,x,0),\qquad(-y^3z,0,x),\qquad(0,z,-y).
+\]">\[
+(-y^4,x,0),\qquad(-y^3z,0,x),\qquad(0,z,-y).
+\]</span>
+<p>A tangent homomorphism sends them to</p>
+<span class="math math-display" data-tex="\[
+(a,b,c)\in H^0(\mathcal O_Z(1))
+\oplus H^0(\mathcal O_Z(4))^2.
+\]">\[
+(a,b,c)\in H^0(\mathcal O_Z(1))
+\oplus H^0(\mathcal O_Z(4))^2.
+\]</span>
+<p>The first two relations impose no condition, and the third is <span class="math" data-tex="$zb-yc=0$">$zb-yc=0$</span>. Each degree-four section space has dimension <span class="math" data-tex="$13$">$13$</span>. In degree five, the image of <span class="math" data-tex="$(b,c)\mapsto zb-yc$">$(b,c)\mapsto zb-yc$</span> is precisely the span of all standard monomials except <span class="math" data-tex="$w^5$">$w^5$</span>, so has dimension <span class="math" data-tex="$15$">$15$</span>. Therefore the tangent dimension is</p>
+<span class="math math-display" data-tex="\[
+4+2\cdot13-15=15.
+\]">\[
+4+2\cdot13-15=15.
+\]</span>
+<p>The extra degree-one torsion section is essential; using only homogeneous linear polynomials would give an incorrect tangent dimension.</p>
+<p>This point lies on <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span>. To see the flat specialization, let <span class="math" data-tex="$C_\tau$">$C_\tau$</span> be the plane cubic with ideal <span class="math" data-tex="$(x,y^3+\tau w^3)$">$(x,y^3+\tau w^3)$</span> and keep <span class="math" data-tex="$P$">$P$</span> fixed. Map its ideal sheaf surjectively to <span class="math" data-tex="$\mathcal O_P$">$\mathcal O_P$</span> by sending the generator <span class="math" data-tex="$x$">$x$</span> to zero and the cubic generator to <span class="math" data-tex="$1$">$1$</span>, using <span class="math" data-tex="$w$">$w$</span> to trivialize the twists at <span class="math" data-tex="$P$">$P$</span>. Its Koszul relation maps to zero, so the map exists over the whole parameter line. The kernel is an ideal sheaf defining <span class="math" data-tex="$Z_\tau$">$Z_\tau$</span>, and</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O_{P\times\mathbb A^1}
+\longrightarrow\mathcal O_{Z_\tau}
+\longrightarrow\mathcal O_{C_\tau}\longrightarrow0
+\]">\[
+0\longrightarrow\mathcal O_{P\times\mathbb A^1}
+\longrightarrow\mathcal O_{Z_\tau}
+\longrightarrow\mathcal O_{C_\tau}\longrightarrow0
+\]</span>
+<p>proves flatness. At <span class="math" data-tex="$\tau=0$">$\tau=0$</span> its ideal is <span class="math" data-tex="$J_P$">$J_P$</span>. For <span class="math" data-tex="$\tau\ne0$">$\tau\ne0$</span>, the point is disjoint from the cubic and the family is their union. Thus the local Hilbert dimension at <span class="math" data-tex="$J_P$">$J_P$</span> is at least <span class="math" data-tex="$15$">$15$</span>; its tangent dimension is <span class="math" data-tex="$15$">$15$</span>, so its local ring is regular. This makes <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> an irreducible component as well, and <span class="math" data-tex="$J_P$">$J_P$</span> lies on it alone. The components are distinct: the <span class="math" data-tex="$15$">$15$</span>-dimensional <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> cannot pass through the <span class="math" data-tex="$12$">$12$</span>-dimensional local Hilbert scheme at <span class="math" data-tex="$J_A$">$J_A$</span>.</p>
+<p><strong>The local scheme at <span class="math" data-tex="$J_N$">$J_N$</span>.</strong> Permute the variables by <span class="math" data-tex="$Z=x$">$Z=x$</span>, <span class="math" data-tex="$X=y$">$X=y$</span>, <span class="math" data-tex="$Y=z$">$Y=z$</span>. Theorem 10.1 applies. Its finite-type parameter family has an isomorphism on completed local rings at the origin and hence is étale there, by the completion criterion proved in Section 9. Its two actual parameter branches map into <span class="math" data-tex="$H$">$H$</span> and <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> by the geometric identifications in that theorem. They have different dimensions and give the two local components. In this étale neighbourhood, the reduced component pullbacks are exactly <span class="math" data-tex="$c_i=0$">$c_i=0$</span> and <span class="math" data-tex="$\beta=0$">$\beta=0$</span>: étale pullback of a component is a union of components, and the dense generic loci distinguish these two. Thus <span class="math" data-tex="$H,H&#x27;$">$H,H&#x27;$</span> are smooth here, their intersection is smooth of dimension <span class="math" data-tex="$11$">$11$</span>, and the whole local Hilbert ring is reduced. There is no third local component.</p>
+<p><strong>Why there are no other components or nilpotents.</strong> The three local calculations give an open neighbourhood of each fixed point contained in <span class="math" data-tex="$H\cup H&#x27;$">$H\cup H&#x27;$</span>. If the complement of this union were nonempty, its closure would be a nonempty invariant closed subset. The fixed-point argument would put one of (10.6) in that closure, contradicting those neighbourhoods. Thus the underlying Hilbert scheme is <span class="math" data-tex="$H\cup H&#x27;$">$H\cup H&#x27;$</span>. These are its two distinct irreducible components, as already distinguished at <span class="math" data-tex="$J_A,J_P$">$J_A,J_P$</span>.</p>
+<p>The nilradical is a coherent ideal on this Noetherian Hilbert scheme. If nonzero, its support would be a nonempty invariant closed subset and contain a fixed point. All three local Hilbert rings are reduced, so this is impossible. Hence the whole Hilbert scheme is reduced, and it is the scheme-theoretic union of the reduced <span class="math" data-tex="$H,H&#x27;$">$H,H&#x27;$</span>.</p>
+<p>Apply the same fixed-point argument to the nonsmooth locus of <span class="math" data-tex="$H$">$H$</span>. This is a closed invariant subset of the projective <span class="math" data-tex="$H$">$H$</span>. Its only possible fixed points are <span class="math" data-tex="$J_A,J_N$">$J_A,J_N$</span>, where we have proved smoothness; <span class="math" data-tex="$J_P$">$J_P$</span> lies on <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> alone. Thus <span class="math" data-tex="$H$">$H$</span> is smooth everywhere. The argument for <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> uses <span class="math" data-tex="$J_N,J_P$">$J_N,J_P$</span> and is identical. For <span class="math" data-tex="$D=H\cap H&#x27;$">$D=H\cap H&#x27;$</span>, the only possible fixed point is <span class="math" data-tex="$J_N$">$J_N$</span>. Its local intersection is smooth, so the nonsmooth locus of <span class="math" data-tex="$D$">$D$</span> is empty. In particular <span class="math" data-tex="$D$">$D$</span> is reduced. Each irreducible component of <span class="math" data-tex="$D$">$D$</span> is invariant, since <span class="math" data-tex="$B$">$B$</span> is irreducible and cannot permute its finitely many components. Each would therefore contain <span class="math" data-tex="$J_N$">$J_N$</span>. The regular local ring there has only one component, so <span class="math" data-tex="$D$">$D$</span> is irreducible, of dimension <span class="math" data-tex="$11$">$11$</span>.</p>
+<p>At any closed point of <span class="math" data-tex="$D$">$D$</span>, the reduced union gives the local-ring fibre product</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_{H\cup H&#x27;}
+=\mathcal O_H\times_{\mathcal O_D}\mathcal O_{H&#x27;}.
+\]">\[
+\mathcal O_{H\cup H&#x27;}
+=\mathcal O_H\times_{\mathcal O_D}\mathcal O_{H&#x27;}.
+\]</span>
+<p>After completion the same identity holds, by exactness of Noetherian completion. The three schemes are smooth of dimensions <span class="math" data-tex="$12,15,11$">$12,15,11$</span>. Choose eleven formal coordinates on <span class="math" data-tex="$D$">$D$</span>, lift them on both components, and extend by one and four normal coordinates respectively. These choices are possible because a closed immersion between smooth schemes identifies its completed quotient with the power-series ring in the quotient coordinates. The fibre product is then exactly (10.1): a series is a common series in the eleven coordinates, plus a multiple of the one normal coordinate, plus a series in the other four normal coordinates with zero common constant term. Products between the two normal ideals vanish. This proves the transverse tangent statement and shows that the singular locus is precisely <span class="math" data-tex="$D$">$D$</span>.</p>
+<p><strong>Rationality.</strong> For a general point of <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span>, let the plane equation be <span class="math" data-tex="$l$">$l$</span> and the isolated point be <span class="math" data-tex="$P$">$P$</span>, outside that plane. Its three-dimensional space of quadrics is <span class="math" data-tex="$l\cdot I_P(1)$">$l\cdot I_P(1)$</span>: a quadratic vanishing on a plane cubic must restrict to zero on the plane. The common linear factor recovers the plane; the three residual linear forms recover <span class="math" data-tex="$P$">$P$</span>; and restriction of the cubic ideal to the plane recovers the cubic equation up to scalar. On fixed coefficient charts these are rational operations, obtained by common-factor calculation and row reduction. They give an actual rational inverse, including in positive characteristic. Thus the rational <span class="math" data-tex="$15$">$15$</span>-dimensional parameter space used to define <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> is birational to <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span>.</p>
+<p>For <span class="math" data-tex="$H$">$H$</span>, use the <span class="math" data-tex="$12$">$12$</span>-parameter branch <span class="math" data-tex="$c_i=0$">$c_i=0$</span> of (10.3). It parametrizes the entire <span class="math" data-tex="$12$">$12$</span>-dimensional formal branch in Theorem 10.1 and its generic curve is a smooth twisted cubic, so its image is dense in <span class="math" data-tex="$H$">$H$</span>. On the open <span class="math" data-tex="$\beta\ne0$">$\beta\ne0$</span>, all its parameters are recovered rationally from the two normalized quadrics <span class="math" data-tex="$F_1,F_2$">$F_1,F_2$</span>. These are the unique reduced quadrics with leading monomials <span class="math" data-tex="$zx,zy$">$zx,zy$</span> in the monomial order used above; their coefficients are read from the quadratic ideal by row reduction. Denote their coefficients by <span class="math" data-tex="$u_m=[m]F_1$">$u_m=[m]F_1$</span>, <span class="math" data-tex="$v_m=[m]F_2$">$v_m=[m]F_2$</span>. The inverse is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s&amp;=u_{zw},\qquad t=v_{zw},\\
+\beta&amp;=-v_{x^2},\qquad p=v_{xy},\\
+q&amp;=v_{y^2},\qquad r=v_{yw}-qt.
+\end{aligned}
+\]">\[
+\begin{aligned}
+s&amp;=u_{zw},\qquad t=v_{zw},\\
+\beta&amp;=-v_{x^2},\qquad p=v_{xy},\\
+q&amp;=v_{y^2},\qquad r=v_{yw}-qt.
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_2&amp;=(u_{x^2}-p)/\beta,\\
+a_1&amp;=(u_{xy}-q)/\beta,\\
+\ell_1&amp;=-u_{y^2}/\beta,\\
+h&amp;=(pt-v_{xw})/\beta-2s,\\
+a_0&amp;=(u_{xw}-r-ps)/\beta\\
+&amp;\quad-a_1t-2a_2s,\\
+\ell_0&amp;=(qs-u_{yw})/\beta\\
+&amp;\quad+a_1s-2\ell_1t.
+\end{aligned}
+\]">\[
+\begin{aligned}
+a_2&amp;=(u_{x^2}-p)/\beta,\\
+a_1&amp;=(u_{xy}-q)/\beta,\\
+\ell_1&amp;=-u_{y^2}/\beta,\\
+h&amp;=(pt-v_{xw})/\beta-2s,\\
+a_0&amp;=(u_{xw}-r-ps)/\beta\\
+&amp;\quad-a_1t-2a_2s,\\
+\ell_0&amp;=(qs-u_{yw})/\beta\\
+&amp;\quad+a_1s-2\ell_1t.
+\end{aligned}
+\]</span>
+<p>The equalities follow by expanding the two quadrics in <span class="math" data-tex="$x,y,z,w$">$x,y,z,w$</span>. Division uses <span class="math" data-tex="$\beta$">$\beta$</span> only, so the inverse works in every characteristic. Hence <span class="math" data-tex="$H$">$H$</span> is rational.</p>
+<p>Finally choose a plane, a point in it and a plane cubic singular at that point. This rational incidence space has dimension <span class="math" data-tex="$5+6=11$">$5+6=11$</span>: the plane and point contribute five, and value and two local first derivatives impose three independent linear conditions on the ten cubic coefficients. This statement includes characteristic three; the value condition is imposed separately. Lift the plane cubic to an ambient cubic vanishing to order at least two at the point, and take the ideal generated by that lift and the plane equation times the three linear equations of the point. Such a lift exists by lifting the two plane linear coordinates vanishing at the point. Any two such lifts differ by the plane equation times a quadric vanishing at the point: their first normal derivatives agree because both vanish to order two. That difference is already in the ideal, so the scheme is independent of the lift. In coordinates it is <span class="math" data-tex="$(ZX,ZY,Z^2,F)$">$(ZX,ZY,Z^2,F)$</span> with <span class="math" data-tex="$F\in(X,Y)^2$">$F\in(X,Y)^2$</span>. On the chart where the <span class="math" data-tex="$X^3$">$X^3$</span> coefficient is nonzero it is precisely the common branch of (10.3). Its image is therefore dense in <span class="math" data-tex="$D$">$D$</span>. The quadratic ideal recovers its common linear factor, the plane, and the three-dimensional point ideal; restriction to the plane recovers the cubic up to scalar. These recoveries are rational on the indicated coefficient chart. The incidence space is consequently birational to <span class="math" data-tex="$D$">$D$</span>, proving its rationality. Projectivity of the components follows because they are closed in the projective Hilbert scheme. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proves the all-characteristic classification stated in Proposition A.1 and Remark A.2 of Heinrich–Skjelnes–Stevens. The proof uses the explicit local equations, three fixed ideals, and invariant closed loci; the generic orbit dimension alone would not give any of the boundary conclusions.</p>
+<h2 id="11-exercises-with-complete-solutions">11 Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Determine <span class="math" data-tex="\(\operatorname{Quot}^{P}_{\mathcal O^r/\operatorname{Spec}k/k}\)">\(\operatorname{Quot}^{P}_{\mathcal O^r/\operatorname{Spec}k/k}\)</span> when <span class="math" data-tex="\(P\)">\(P\)</span> is constant. Include the impossible values.</p>
+<p><strong>Solution.</strong> The projective scheme here is a point, so the Hilbert polynomial of a fibre is its vector-space dimension. A quotient on a test scheme <span class="math" data-tex="\(T\)">\(T\)</span> is a finitely presented flat module <span class="math" data-tex="\(G\)">\(G\)</span> of constant rank <span class="math" data-tex="\(q=P\)">\(q=P\)</span>, with a surjection <span class="math" data-tex="\(\mathcal O_T^r\to G\)">\(\mathcal O_T^r\to G\)</span>. Finitely presented flat modules are locally free. Thus the functor is exactly <span class="math" data-tex="\(\operatorname{Grass}_q(k^r)\)">\(\operatorname{Grass}_q(k^r)\)</span> if <span class="math" data-tex="\(q\)">\(q\)</span> is an integer with <span class="math" data-tex="\(0\leq q\leq r\)">\(0\leq q\leq r\)</span>. The endpoint values give a single point. If <span class="math" data-tex="\(P\)">\(P\)</span> is nonconstant, a nonintegral constant, a negative integer, or an integer greater than <span class="math" data-tex="\(r\)">\(r\)</span>, no quotient exists over a nonempty field-valued test scheme, and the representing scheme is empty. The empty test scheme has its usual unique map to the empty scheme.</p>
+<p><strong>Exercise 2.</strong> Prove that the Hilbert scheme of degree-<span class="math" data-tex="\(d\)">\(d\)</span> hypersurfaces in <span class="math" data-tex="\(\mathbb P^n\)">\(\mathbb P^n\)</span>, for <span class="math" data-tex="\(n,d\geq1\)">\(n,d\geq1\)</span>, is a projective space. Explain its dual convention and check arbitrary families.</p>
+<p><strong>Solution.</strong> A subscheme with polynomial <span class="math" data-tex="\(P_d\)">\(P_d\)</span> has rank-one ideal. On a factorial affine chart, taking the greatest common divisor of generators shows that its double dual is principal. Globally this double dual is <span class="math" data-tex="\(\mathcal O(-e)\)">\(\mathcal O(-e)\)</span>, with a quotient supported in codimension at least two. Comparing the next coefficient of the ideal polynomial gives <span class="math" data-tex="\(e=d\)">\(e=d\)</span>; in dimension one the ideal is already invertible. The residual quotient then has zero polynomial, so is zero. Thus the field-valued ideal is <span class="math" data-tex="\(\mathcal O(-d)\)">\(\mathcal O(-d)\)</span>.</p>
+<p>For a flat Hilbert family, the fibrewise Cartier criterion makes its ideal <span class="math" data-tex="\(I\)">\(I\)</span> invertible. The fibres of <span class="math" data-tex="\(I(d)\)">\(I(d)\)</span> are trivial with one global section and no higher cohomology. Consequently <span class="math" data-tex="\(N=p_*I(d)\)">\(N=p_*I(d)\)</span> is a line bundle, formation commutes with every base change, and evaluation identifies <span class="math" data-tex="\(p^*N\)">\(p^*N\)</span> with <span class="math" data-tex="\(I(d)\)">\(I(d)\)</span>. The inclusion in <span class="math" data-tex="\(\mathcal O(d)\)">\(\mathcal O(d)\)</span> gives a subline of <span class="math" data-tex="\(H^0(\mathcal O(d))\otimes\mathcal O_T\)">\(H^0(\mathcal O(d))\otimes\mathcal O_T\)</span>, with locally free cokernel since the fibre equation is nonzero. Conversely any such subline evaluates to a locally principal ideal with a nonzero equation on every fibre. The Cartier criterion makes its quotient flat, of the required polynomial. These inverse constructions give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hilb}^{P_d}_{\mathbb P^n}
+=\mathbb P\bigl(H^0(\mathcal O(d))^\vee\bigr).
+\]">\[
+\operatorname{Hilb}^{P_d}_{\mathbb P^n}
+=\mathbb P\bigl(H^0(\mathcal O(d))^\vee\bigr).
+\]</span>
+<p>The dimension is <span class="math" data-tex="\(\binom{n+d}{n}-1\)">\(\binom{n+d}{n}-1\)</span>. The dual appears because <span class="math" data-tex="\(\mathbb P(W)\)">\(\mathbb P(W)\)</span> records quotient lines of <span class="math" data-tex="\(W\)">\(W\)</span>, whereas an equation is a subline of the section space.</p>
+<p><strong>Exercise 3.</strong> Show <span class="math" data-tex="\(\operatorname{Hilb}^d_C=\operatorname{Sym}^d C\)">\(\operatorname{Hilb}^d_C=\operatorname{Sym}^d C\)</span> for a smooth separated finite-type curve. Start with <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, including a double point.</p>
+<p><strong>Solution.</strong> The sum of the <span class="math" data-tex="\(d\)">\(d\)</span> graph divisors gives an invariant family on <span class="math" data-tex="\(C^d\)">\(C^d\)</span>, hence a morphism from its symmetric quotient. For a pair of distinct points it simply forgets their order. At a double point, choose a local parameter <span class="math" data-tex="\(u\)">\(u\)</span>. A deformation over an Artinian local <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(R\)">\(R\)</span> is a free rank-two quotient with basis <span class="math" data-tex="\(1,u\)">\(1,u\)</span>, hence has its unique equation</p>
+<span class="math math-display" data-tex="\[
+u^2+a_1u+a_2=0,\qquad a_1,a_2\in\mathfrak m_R.
+\]">\[
+u^2+a_1u+a_2=0,\qquad a_1,a_2\in\mathfrak m_R.
+\]</span>
+<p>It follows that the completed Hilbert ring is <span class="math" data-tex="\(k[[a_1,a_2]]\)">\(k[[a_1,a_2]]\)</span>. The completed symmetric-square ring is <span class="math" data-tex="\(k[[u_1,u_2]]^{\mathfrak S_2}=k[[e_1,e_2]]\)">\(k[[u_1,u_2]]^{\mathfrak S_2}=k[[e_1,e_2]]\)</span>, in every characteristic. The divisor map sends <span class="math" data-tex="\(a_1\)">\(a_1\)</span> to <span class="math" data-tex="\(-e_1\)">\(-e_1\)</span> and <span class="math" data-tex="\(a_2\)">\(a_2\)</span> to <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, so gives an isomorphism on these completions.</p>
+<p>For a general divisor <span class="math" data-tex="\(\sum d_i p_i\)">\(\sum d_i p_i\)</span>, idempotents lift across nilpotent ideals and split its Artinian deformation into the distinct support clusters. Each cluster is a free quotient with basis <span class="math" data-tex="\(1,u_i,\ldots,u_i^{d_i-1}\)">\(1,u_i,\ldots,u_i^{d_i-1}\)</span> and one monic relation of degree <span class="math" data-tex="\(d_i\)">\(d_i\)</span>. Its <span class="math" data-tex="\(d_i\)">\(d_i\)</span> coefficients independently belong to <span class="math" data-tex="\(\mathfrak m_R\)">\(\mathfrak m_R\)</span>. The symmetric quotient has the same completed ring, using elementary symmetric functions separately in each cluster. These identifications respect the divisor morphism. The morphism is therefore étale at all geometric closed points. Its geometric points are in bijection because a finite-colength ideal in a discrete valuation ring is a unique power of its maximal ideal. Étaleness, geometric injectivity and surjectivity give an isomorphism, which descends from an algebraic closure. Section 7 proves the quotient construction and the formal symmetric-function assertions used here.</p>
+<p><strong>Exercise 4.</strong> Compute <span class="math" data-tex="\(\operatorname{Hilb}^2_{\mathbb A^2}\)">\(\operatorname{Hilb}^2_{\mathbb A^2}\)</span> and prove that it is smooth of dimension four, without restricting the characteristic.</p>
+<p><strong>Solution.</strong> In the open where <span class="math" data-tex="\(1,x\)">\(1,x\)</span> is a basis, a quotient has unique relations <span class="math" data-tex="\(x^2=a+bx\)">\(x^2=a+bx\)</span> and <span class="math" data-tex="\(y=c+dx\)">\(y=c+dx\)</span>, with <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span> arbitrary. These relations conversely give the free algebra <span class="math" data-tex="\(R[x]/(x^2-bx-a)\)">\(R[x]/(x^2-bx-a)\)</span> and a surjection from <span class="math" data-tex="\(R[x,y]\)">\(R[x,y]\)</span>. Thus this open is <span class="math" data-tex="\(\mathbb A^4\)">\(\mathbb A^4\)</span>. There is a second <span class="math" data-tex="\(\mathbb A^4\)">\(\mathbb A^4\)</span> where <span class="math" data-tex="\(1,y\)">\(1,y\)</span> is a basis. They cover: on a field fibre, if neither <span class="math" data-tex="\(x\)">\(x\)</span> nor <span class="math" data-tex="\(y\)">\(y\)</span> is independent from <span class="math" data-tex="\(1\)">\(1\)</span>, both are scalars and cannot generate a two-dimensional algebra. The first basis changes to the second exactly when <span class="math" data-tex="\(d\)">\(d\)</span> is invertible, since its determinant is <span class="math" data-tex="\(d\)">\(d\)</span>. Substitution yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a&#x27;=d^2a-c^2-bcd,\\
+b&#x27;=2c+bd,\qquad c&#x27;=-c/d,\qquad d&#x27;=1/d.
+\end{gathered}
+\]">\[
+\begin{gathered}
+a&#x27;=d^2a-c^2-bcd,\\
+b&#x27;=2c+bd,\qquad c&#x27;=-c/d,\qquad d&#x27;=1/d.
+\end{gathered}
+\]</span>
+<p>The corresponding formula with primes inverted returns <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>, so these identify the two basis opens. Smoothness and dimension four hold on both charts and hence globally. In characteristic two only the summand <span class="math" data-tex="\(2c\)">\(2c\)</span> vanishes; the chart and its invertible transition remain valid.</p>
+<p><strong>Exercise 5.</strong> Prove that the Grassmannian morphism for <span class="math" data-tex="\(\operatorname{Quot}^P\)">\(\operatorname{Quot}^P\)</span> is a closed immersion. Identify where uniformity, flattening, and properness enter.</p>
+<p><strong>Solution.</strong> Choose the common <span class="math" data-tex="\(m\)">\(m\)</span> of Lemma 2.1 and put <span class="math" data-tex="\(V=f_*E(m)\)">\(V=f_*E(m)\)</span>, <span class="math" data-tex="\(r=P(m)\)">\(r=P(m)\)</span>. On <span class="math" data-tex="\(H=\operatorname{Grass}_r(V)\)">\(H=\operatorname{Grass}_r(V)\)</span> let <span class="math" data-tex="\(U\)">\(U\)</span> be the kernel of its universal quotient. Form</p>
+<span class="math math-display" data-tex="\[
+F=\operatorname{coker}\bigl(p^*U\otimes L^{-m}\to E_H\bigr).
+\]">\[
+F=\operatorname{coker}\bigl(p^*U\otimes L^{-m}\to E_H\bigr).
+\]</span>
+<p>Flattening with polynomial <span class="math" data-tex="\(P\)">\(P\)</span> represents the permitted pullbacks of <span class="math" data-tex="\(F\)">\(F\)</span> by a locally closed subscheme <span class="math" data-tex="\(H_P\)">\(H_P\)</span>. For any desired quotient <span class="math" data-tex="\(E_T\to G\)">\(E_T\to G\)</span>, proper flat cohomology makes <span class="math" data-tex="\(p_*G(m)\)">\(p_*G(m)\)</span> a rank-<span class="math" data-tex="\(r\)">\(r\)</span> vector bundle. The map <span class="math" data-tex="\(V_T\to p_*G(m)\)">\(V_T\to p_*G(m)\)</span> is onto, because its fibre is onto by the uniform vanishing of <span class="math" data-tex="\(H^1(K_t(m))\)">\(H^1(K_t(m))\)</span>, and Nakayama kills its finite cokernel. This defines its Grassmannian point.</p>
+<p>Its kernel <span class="math" data-tex="\(U_T\)">\(U_T\)</span> has fibre <span class="math" data-tex="\(H^0(K_t(m))\)">\(H^0(K_t(m))\)</span>. Uniform generation therefore makes the evaluation <span class="math" data-tex="\(p^*U_T\otimes L^{-m}\to K_T\)">\(p^*U_T\otimes L^{-m}\to K_T\)</span> surjective: its finite cokernel has zero fibre everywhere. It follows that the induced candidate <span class="math" data-tex="\(F_T\)">\(F_T\)</span> is exactly <span class="math" data-tex="\(G\)">\(G\)</span>, so the Grassmannian point factors through <span class="math" data-tex="\(H_P\)">\(H_P\)</span>. Conversely, on <span class="math" data-tex="\(H_P\)">\(H_P\)</span>, the quotient of <span class="math" data-tex="\(V\)">\(V\)</span> by <span class="math" data-tex="\(U\)">\(U\)</span> maps onto <span class="math" data-tex="\(p_*F(m)\)">\(p_*F(m)\)</span>; both are locally free of rank <span class="math" data-tex="\(r\)">\(r\)</span>, so this is an isomorphism. The two constructions are inverse on arbitrary test schemes. Hence <span class="math" data-tex="\(\operatorname{Quot}^P\to H\)">\(\operatorname{Quot}^P\to H\)</span> is a locally closed immersion, including all its infinitesimal structure.</p>
+<p>For a discrete valuation ring, saturating the generic kernel inside <span class="math" data-tex="\(E_R\)">\(E_R\)</span> gives a coherent quotient that is torsion-free over <span class="math" data-tex="\(R\)">\(R\)</span>, hence flat. Its polynomial is constant, and any flat extension has that same saturated kernel. The Noetherian valuative criterion gives properness. A proper locally closed immersion into the separated Grassmannian is closed. Thus flattening gives the locally closed part of the argument; properness removes the possibility of missing boundary points. Finally the Grassmannian determinant is very ample, and its restriction is <span class="math" data-tex="\(\det p_*G(m)\)">\(\det p_*G(m)\)</span>.</p>
+<p><strong>Exercise 6.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic two. On <span class="math" data-tex="\(U=\operatorname{Spec}k[x,y]\)">\(U=\operatorname{Spec}k[x,y]\)</span>, let the generator of <span class="math" data-tex="\(\mathbb Z/2\mathbb Z\)">\(\mathbb Z/2\mathbb Z\)</span> act by</p>
+<span class="math math-display" data-tex="\[
+\sigma(x)=x,\qquad\sigma(y)=y+x.
+\]">\[
+\sigma(x)=x,\qquad\sigma(y)=y+x.
+\]</span>
+<p>Compute the invariant ring and the quotient map. Base-change the quotient by the closed subscheme <span class="math" data-tex="\(x=0\)">\(x=0\)</span> of its target. Determine the action and its categorical quotient on that base change, and decide whether the base-changed original quotient is still categorical.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(z=y^2+xy\)">\(z=y^2+xy\)</span>. It is invariant, and the presentation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k[x,y]\simeq k[x,z][Y]/(Y^2+xY-z),\\
+y\longleftrightarrow Y
+\end{gathered}
+\]">\[
+\begin{gathered}
+k[x,y]\simeq k[x,z][Y]/(Y^2+xY-z),\\
+y\longleftrightarrow Y
+\end{gathered}
+\]</span>
+<p>makes the source algebra free with basis <span class="math" data-tex="\(1,y\)">\(1,y\)</span> over <span class="math" data-tex="\(k[x,z]\)">\(k[x,z]\)</span>. In particular the coefficient ring embeds. Every element is uniquely <span class="math" data-tex="\(f(x,z)+y g(x,z)\)">\(f(x,z)+y g(x,z)\)</span>, and its difference from its translate is <span class="math" data-tex="\(xg(x,z)\)">\(xg(x,z)\)</span>. The polynomial ring <span class="math" data-tex="\(k[x,z]\)">\(k[x,z]\)</span> is a domain, so invariance is equivalent to <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. Thus the invariant ring is <span class="math" data-tex="\(k[x,z]\)">\(k[x,z]\)</span>, and the quotient sends <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> to <span class="math" data-tex="\((x,y^2+xy)\)">\((x,y^2+xy)\)</span>. It is finite locally free of degree two.</p>
+<p>After imposing <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, the source is <span class="math" data-tex="\(\operatorname{Spec}k[y]\)">\(\operatorname{Spec}k[y]\)</span>, the action is trivial, and the base-changed morphism is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Spec}k[y]\longrightarrow\operatorname{Spec}k[z],
+\qquad z\longmapsto y^2.
+\]">\[
+\operatorname{Spec}k[y]\longrightarrow\operatorname{Spec}k[z],
+\qquad z\longmapsto y^2.
+\]</span>
+<p>The invariant ring is now all of <span class="math" data-tex="\(k[y]\)">\(k[y]\)</span>. Its categorical quotient is the identity of <span class="math" data-tex="\(\operatorname{Spec}k[y]\)">\(\operatorname{Spec}k[y]\)</span>, whereas the displayed morphism is not categorical: the invariant function <span class="math" data-tex="\(y\)">\(y\)</span> is not a polynomial in <span class="math" data-tex="\(y^2\)">\(y^2\)</span>. Every geometric fibre still has exactly one point, and the morphism is finite and universally closed. Those properties alone do not recover invariant functions or categorical initiality. The target base change is not flat, since multiplication by the nonzero element <span class="math" data-tex="\(x\)">\(x\)</span> becomes zero in <span class="math" data-tex="\(k[x,z]/(x)\)">\(k[x,z]/(x)\)</span>. The flat base-change assertion of the theorem is therefore consistent with this example.</p>
+<h2 id="12-what-this-lesson-does-not-prove">12 What this lesson does not prove</h2>
+<p>The uniform regularity, projective flattening, Grassmannian representation and Plücker results are proved in the preceding lessons. The foundational inputs used here are the following, with their precise scope. The curve affine-neighbourhood and arbitrary-base relative Cartier assertions are proved in Lemmas 7.A–7.B; their construction is independent of the Quot representability theorem.</p>
+<ul>
+<li>Proper pushforward of a finitely presented sheaf flat over an arbitrary base is locally computed by a finite complex of finite locally free modules, compatibly with base change, in the proper finitely presented setting: the full proof is <a href="../AG-AS/moduli-stacks-are-algebraic.html#native-spaces-perfect-lemma-base-change-tensor-perfect">Perfect tensor pushforwards over an arbitrary base</a> [Stacks, Tag 0A1H]. Its vanishing consequences were derived in <em>Flattening stratifications</em>.</li>
+<li><a href="../AG-DFG/faithfully-flat-descent.html#2-recovering-a-module-from-a-cocycle">Faithfully flat descent, Theorem 2.5, Proposition 3.1 and Theorem 5.1</a> proves descent for modules, their finite-presentation and flatness properties, and quasi-coherent sheaves on arbitrary schemes [Stacks, Tag 023R]. Descent of finite presentation, properness and flatness for morphisms is <a href="../AG-DFG/AG-DFG-03.html#2-checking-a-morphism-on-an-fpqc-covering-of-its-target">Descending properties of schemes and morphisms, Theorem 2.1</a> [Stacks, Tags 02L0–02L2]. The sheaf argument in Section 1 applies these results to kernels.</li>
+<li>The Noetherian discrete-valuation criterion for properness is <a href="../AG-MO/proper-morphisms-and-valuative-criteria.html#5-why-discrete-valuation-rings-suffice-over-a-noetherian-base">Proper morphisms and the valuative criterion, Theorem 5.1</a> [Stacks, Tag 0208]. We use it only for the finite-type separated morphism over a Noetherian base obtained above.</li>
+<li>The finite-extension algebra lemma of Section 9 proves Artin–Tate [comparison: Stacks, Tag 00IS]. <a href="../AG-CA/completion.html#3-noetherian-exactness-tensoring-and-flatness">Completion, Theorems 3.1–3.3</a> proves exactness, flatness, faithful flatness for local completion, and Noetherianity [Stacks, Tags 00MB–00MC]. <a href="../AG-FSE/etale-morphisms-and-their-local-structure.html#4-the-topology-and-the-open-immersion-criterion">Étale morphisms and their local structure, Lemma 1.2 and Theorem 4.1</a> proves the flat-unramified and open-immersion criteria [Stacks, Tags 02GV, 02LC and 05W5]; Section 7 above spells out their use after the completed-local-ring calculation. The effect of completion on the invariant rings and its use in the curve and surface morphisms were explained above.</li>
+<li>Lemma 7.A proves finite-set affine neighbourhoods, the affine-or-projective assertion, and point-removal affineness on regular curves over every field [Stacks, Tag 0A27]. The equation and flat-closed-family forms of the relative fibrewise Cartier criterion, with openness and arbitrary base change, are proved in Lemma 7.B [Stacks, Tag 062Y]. Also <span class="math" data-tex="\(\operatorname{Pic}(\mathbb P^n_k)=\mathbb Z\)">\(\operatorname{Pic}(\mathbb P^n_k)=\mathbb Z\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> is <a href="../AG-MO/weil-divisors-and-the-class-group.html#4-affine-and-projective-space">Weil divisors and the class group, Theorem 4.2</a> [Stacks, Tag 0BXJ].</li>
+<li>For a separated finitely presented morphism <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> and an arbitrary quasi-coherent source <span class="math" data-tex="\(E\)">\(E\)</span>, the general Quot functor is an algebraic space; when <span class="math" data-tex="\(E\)">\(E\)</span> is finitely presented, it is locally of finite presentation. The Hilbert functor is a separated algebraic space locally of finite presentation. These are proved in <a href="../AG-AS/moduli-stacks-are-algebraic.html#6-quotients-and-closed-subschemes">Moduli stacks are algebraic, Theorem 6.2 and Corollary 6.3</a>, including all parameter schemes and proper-support conditions. Their Stacks comparisons are Tags 09TU and 0D01. The projective construction in Theorem 4.1 does not use these general algebraicity results; the general surface example does use the Hilbert-space theorem.</li>
+<li>More generally, let <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span> be a proper morphism of finite presentation of algebraic spaces, let <span class="math" data-tex="\(E\)">\(E\)</span> be finitely presented, and let <span class="math" data-tex="\(L\)">\(L\)</span> be relatively ample. For a fixed polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, the algebraic space <span class="math" data-tex="\(\operatorname{Quot}^{P,L}_{E/X/S}\)">\(\operatorname{Quot}^{P,L}_{E/X/S}\)</span> is proper over <span class="math" data-tex="\(S\)">\(S\)</span> [Stacks, Tag 0DPC]. The base need not be Noetherian. Theorem 4.3 proves this general properness statement, by projective embedding, exact polynomial rescaling and finite-presentation descent to a Noetherian coefficient ring. Theorem 4.1 supplies the projective scheme used in that proof.</li>
+<li>The finite-group quotient theorem in Section 9 proves existence, finiteness, separatedness, finite type, invariant functions and categorical initiality, with flat base change and no characteristic restriction. It uses the finite-inertia construction in <a href="../AG-AS/quotient-and-dm-stacks.html#6-1-finite-inertia-and-the-coarse-space">Quotient stacks and Deligne–Mumford stacks, Section 6.1</a>. The finite-piece prerequisite is proved in <a href="../AG-RG/AG-RG-S04.html#d3-finite-pieces-after-an-elementary-%C3%A9tale-neighbourhood">Affine descent, Zariski Main and recognition of spaces, Section D3 and Lemma E4.3</a>; proper quasi-finite finiteness is <a href="../AG-MO/zariskis-main-theorem.html#5-properness-and-normality">Zariski's Main Theorem, Theorem 5.1</a>. The two-point Hilbert identification is then proved by its explicit local rings. These are programme proof routes; Keel–Mori remains the historical comparison.</li>
+<li>Theorems 10.1–10.2 prove the entire twisted-cubic classification in every characteristic: both components, their smoothness and rationality, the reduced Hilbert scheme, the smooth irreducible intersection and its transverse local equations. The three fixed ideals exhaust all possibilities by the projective triangular-flag argument and saturation. Proper affine finiteness in that argument is the exact coherent-cohomology result linked there. The tangent calculations retain the planar torsion section, and both boundary specializations are flat. The cubic-surface degree and tangent assertion is proved in the later tangent–obstruction lesson.</li>
+</ul>
+<p>The fixed-polynomial projectivity theorem has been proved with a possibly nonflat coherent source. The general algebraic-space theorem does not by itself imply projectivity, and the coproduct over all polynomials need not be of finite type.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Grothendieck, <em>Techniques de construction et théorèmes d'existence en géométrie algébrique IV: les schémas de Hilbert</em>, Séminaire Bourbaki, Exposé 221, §§3–4. <a href="https://www.numdam.org/item/SB_1960-1961__6__249_0/">Original text</a>.</li>
+<li>Nitsure, <em>Construction of Hilbert and Quot schemes</em>, §§3–5. <a href="https://arxiv.org/abs/math/0504590">Author's paper</a>.</li>
+<li>The Stacks project: <a href="https://stacks.math.columbia.edu/tag/082L">Quot and Hilbert spaces</a>, particularly Tags 09TU and 0D01; <a href="https://stacks.math.columbia.edu/tag/0208">properness criterion</a>; <a href="https://stacks.math.columbia.edu/tag/062Y">relative Cartier criterion</a>. The tagged results are read in the AI Integrated Stacks Project edition.</li>
+<li>Keel and Mori, <em>Quotients by groupoids</em>, Corollary 1.2, Proposition 5.1 and Lemma 6.3. <a href="https://arxiv.org/abs/alg-geom/9508012">Author's paper</a>.</li>
+<li>Heinrich, Skjelnes and Stevens, <em>The space of twisted cubics</em>, Épijournal de Géométrie Algébrique <strong>5</strong> (2021), Article 10, Appendix A. <a href="https://epiga.episciences.org/7539">Published paper</a>.</li>
+</ul>
+
+</article>
+<nav class="reading-navigation" aria-label="Reading navigation"><a href="flattening-stratifications.html">Previous: Flattening stratifications</a> <span aria-hidden="true">·</span> <a href="index.html">Course contents</a> <span aria-hidden="true">·</span> <a href="formal-moduli-and-schlessingers-theorem.html">Next: Formal moduli and Schlessinger&#x27;s theorem</a></nav>
+<p class="small"><a href="src/hilbert-and-quot-schemes.md">Editable Markdown and TeX source</a> · <span class="unlinked">Building the readings</span></p>
+</main>
+</body>
+</html>

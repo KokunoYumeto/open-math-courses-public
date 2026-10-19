@@ -1,6 +1,6 @@
 # Normal-functional polar decomposition and invariant pairs
 
-**Self-checked by the writing AI.**
+
 
 A normal complex functional has a positive absolute value and a partial isometry in the algebra. For a functional with faithful positive real part, that partial isometry is unitary. Equality of the absolute values of the functional and its adjoint then says that this unitary commutes with the positive functional. This turns a polar-decomposition test into a modular-invariance test.
 

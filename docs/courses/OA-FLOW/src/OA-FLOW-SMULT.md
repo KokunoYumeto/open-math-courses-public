@@ -436,6 +436,73 @@ The regular model \(A=M_{e^u}\otimes1\) on \(L^2(du)\otimes\ell^2\) supplies a d
 \(\operatorname{Ad}(M_{e^{itu}}\otimes1)\), and the [proved regular positive-average calculation](OA-FLOW-TID.md#tid-2) gives
 \(\int e^{itu}\theta_{\xi,\xi}e^{-itu}\,dt=2\pi M_{|\xi|^2}\) for bounded compactly supported \(\xi\). Choose an orthonormal basis \((\xi_j)\) of bounded compactly supported functions and let \(P_n\) be its first-\(n\)-vector projection. With \(q_n\) the first-\(n\)-coordinate projection on \(\ell^2\), the inputs \(P_n\otimes q_n\) increase strongly to the identity, and their averages \(2\pi M_{\sum_{j\le n}|\xi_j|^2}\otimes q_n\) are bounded. The constant \(2\pi\) belongs to the \(dt\) modular averaging convention; it has no effect on the scalar dilation in (SM31).
 
+### A direct positive-average proof for every multiplicity
+
+There is also a proof of (SM37) using only the spectral model and scalar Fourier theory. It identifies the positive operators with which to test integrability, including when the multiplicity varies. On the nonzero support put \(Q=\log A\), \(U_t=e^{itQ}\), and \(\alpha_t=\operatorname{Ad}U_t\). Write \(E_\alpha(a)=\int_{\mathbb R}\alpha_t(a)\,dt\) for the increasing extended-positive limit of compact integrals, with the convention of [TID Section 2](OA-FLOW-TID.md#tid-2). Integrability means that the left ideal
+\[
+ \mathfrak n_E=\{x:E_\alpha(x^*x)\text{ is bounded}\}
+ \tag{SM37.a}
+\]
+is ultraweakly dense. Linearity follows from \((x+y)^*(x+y)\le2x^*x+2y^*y\), and the left-ideal property from \(x^*b^*bx\le\|b\|^2x^*x\).
+
+First suppose \(\mu_A\ll dt\). Logarithmic substitution and the density unitary (SM9) identify the support Hilbert space with
+\[
+ \mathcal K=\int_{\mathbb R}^{\oplus}\mathbb C^{n(u)}\,du,
+ \qquad (U_t\xi)(u)=e^{itu}\xi(u),
+ \qquad n(u)\in\{0,1,2,\ldots,\infty\}.
+ \tag{SM37.b}
+\]
+More explicitly, write \( (\log)_*\mu_A=h(u)\,du\); take \(n(u)=m_A(e^u)\) on \(\{h>0\}\) and \(n(u)=0\) elsewhere. The zero fibers include the complement of the support of this scalar density. This change of measure is onto: divide by the square root of that density on its positive set, exactly as in (SM9). The exponential and logarithm preserve null sets locally, so the absolute-continuity condition is unchanged.
+
+Let \(\xi\in\mathcal K\) be an essentially bounded vector field supported on a bounded interval, and let \(\theta_{\xi,\xi}\zeta=\langle\zeta,\xi\rangle\xi\) be its Hilbert-space rank-one operator. For every \(\eta\in\mathcal K\), the scalar function \(u\mapsto\langle\xi(u),\eta(u)\rangle\) is in \(L^1\cap L^2\), by Cauchy–Schwarz and the bound on \(\xi\). [Scalar Plancherel](OA-FLOW-FF.md#oa-flow.ff.3) therefore gives
+\[
+ \begin{aligned}
+ \langle E_\alpha(\theta_{\xi,\xi})\eta,\eta\rangle
+ &=\int_{\mathbb R}|\langle U_t\xi,\eta\rangle|^2\,dt\\
+ &=2\pi\int_{\mathbb R}|\langle\xi(u),\eta(u)\rangle|^2\,du,\\
+ E_\alpha(\theta_{\xi,\xi})
+ &=2\pi\int_{\mathbb R}^{\oplus}\theta_{\xi(u),\xi(u)}\,du,
+ \qquad \|E_\alpha(\theta_{\xi,\xi})\|\le2\pi\|\xi\|_\infty^2.
+ \end{aligned}
+ \tag{SM37.c}
+\]
+The quadratic identities construct the bounded integral on the whole Hilbert space; polarization identifies the operator. In particular no interchange of unbounded operator products is involved.
+
+To exhaust \(\mathcal K\), take rational interval step functions in each coordinate, restricted to \(\{n\ge j\}\) in coordinate \(j\). Their countable span is dense: regard \(\mathcal K\) as the range of the diagonal projection with entries \(1_{\{n\ge j\}}\) in \(L^2(\mathbb R;\ell^2)\), and project the usual dense step functions. Gram–Schmidt, discarding zero remainders, gives an orthonormal basis \((\xi_j)\) of bounded compactly supported fields. Every step of that procedure uses a finite linear combination, so it preserves these properties. If \(P_N=\sum_{j\le N}\theta_{\xi_j,\xi_j}\), then
+\[
+ P_N\uparrow1_{\mathcal K},\qquad
+ E_\alpha(P_N)=2\pi\int_{\mathbb R}^{\oplus}
+       \sum_{j\le N}\theta_{\xi_j(u),\xi_j(u)}\,du
+ \quad\text{is bounded}.
+ \tag{SM37.d}
+\]
+Thus \(P_N\in\mathfrak n_E\), and \(xP_N\in\mathfrak n_E\) converges strongly, with a common norm bound, to every \(x\in B(\mathcal K)\). Bounded strong convergence implies ultraweak convergence by approximating trace-class functionals by finite sums of vector functionals. This proves integrability for arbitrary measurable multiplicity.
+
+For the converse we need the following scalar fact, whose proof also detects singular continuous measures. If a finite positive Borel measure \(\lambda\) on \(\mathbb R\) has
+\[
+ G(t)=\int_{\mathbb R}e^{itu}\,d\lambda(u)\in L^2(dt),
+ \quad\text{then}\quad \lambda\ll du.
+ \tag{SM37.e}
+\]
+Indeed use the Gaussian probability densities \(\gamma_\varepsilon\) of [FF's approximate-identity proof](OA-FLOW-FF.md#oa-flow.ff.2), and set \(f_\varepsilon=\gamma_\varepsilon*\lambda\). These nonnegative functions lie in \(L^1\cap L^2\): their \(L^1\) norm is \(\lambda(\mathbb R)\), and Cauchy–Schwarz against \(\lambda\), followed by integration, bounds their \(L^2\) norm by \(\lambda(\mathbb R)\|\gamma_\varepsilon\|_2\). Scalar interchange and the Gaussian transform give
+\[
+ \mathcal F_+f_\varepsilon(t)
+   =(2\pi)^{-1/2}e^{-\varepsilon t^2}G(t).
+ \tag{SM37.f}
+\]
+The right side converges in \(L^2\). Surjective Plancherel therefore gives \(f_\varepsilon\to f\) in \(L^2\), with \(f\ge0\) by an almost-everywhere convergent subsequence. For \(h\in C_c(\mathbb R)\), Cauchy–Schwarz gives \(\int hf_\varepsilon\to\int hf\). On the other hand scalar interchange gives \(\int hf_\varepsilon=\int(\gamma_\varepsilon*h)\,d\lambda\to\int h\,d\lambda\). The last convergence is uniform before integration: split the Gaussian convolution into a small translation, controlled by uniform continuity of \(h\), and its vanishing tail. Thus \(f\,du\) and \(\lambda\) agree on every compact continuous test. Local regularity gives equality on bounded Borel sets; increasing compact cutoffs show \(\int f\,du=\lambda(\mathbb R)\), hence equality on all Borel sets. This proves (SM37.e).
+
+Now let \(a\ge0\) have bounded average, and put \(\xi=a^{1/2}\eta\). The rank-one inequality
+\[
+ \theta_{\xi,\xi}\le\|\eta\|^2a
+ \tag{SM37.g}
+\]
+follows by applying Cauchy–Schwarz to \(\langle a^{1/2}\zeta,\eta\rangle\). Consequently \(E_\alpha(\theta_{\xi,\xi})\) is bounded. Its quadratic value at \(\xi\) says that the Fourier transform of the finite positive spectral measure
+\(\lambda_\xi(D)=\langle E_Q(D)\xi,\xi\rangle\)
+belongs to \(L^2(dt)\). By (SM37.e), \(E_Q(D)\xi=0\) for every Lebesgue-null Borel set \(D\).
+
+Apply this with \(a=x^*x\) for \(x\in\mathfrak n_E\). It gives \(E_Q(D)|x|=0\), hence \(|x|E_Q(D)=0\) and \(xE_Q(D)=0\). The last implication follows from \(\|xE_Q(D)\zeta\|^2=\||x|E_Q(D)\zeta\|^2\). If the action is integrable, ultraweak density of \(\mathfrak n_E\) forces \(E_Q(D)=0\), since right multiplication by this fixed projection is ultraweakly continuous. Finally the scalar control measure in Section 3 has exactly the null sets of the spectral projections: each cyclic measure is dominated by its strictly positive weighted sum, and all cyclic summands exhaust the support. Therefore \(E_Q\ll du\) implies \(\mu_A\ll dt\). This proves the converse of (SM37) directly, for finite, infinite and varying multiplicities alike. The zero support has the zero average and satisfies the same equivalence.
+
 <a id="sm-figures"></a>
 ## 9. Exact models and solved diagnostics
 

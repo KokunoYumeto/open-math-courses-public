@@ -2,7 +2,7 @@
 
 The boundary calculus keeps kernels at the double boundary corner. A smooth kernel there need not have a bound from a distribution norm alone. This proof combines the finite-order and complete residual tests into one scalar operator on the whole manifold, including the interior. The hypothesis is that the allowed cone contains every boundary tangential direction. Normal directions may be excluded.
 
-The notation and full kernel calculus are those of [global boundary operators](../20261005-global-boundary-operators/global-boundary-operator-calculus.html). The global family reduction, normal residual factor and collar estimate give the earlier interfaces. Here the decisive additional device is a bounded order-zero test whose difference from identity is tangentially smoothing at each fixed normal frequency. A positive residual regularizer then has an interior smooth commutator with that test.
+The notation and full kernel calculus are those of [global boundary operators](../20261005-global-boundary-operators/global-boundary-operator-calculus.html). The [global family reduction](../20261017-global-finite-family-reduction/global-finite-order-families-and-residual-tests.html), [normal residual factor](../20261017-global-boundary-residual-factors/global-scalar-factors-for-boundary-residuals.html) and [collar estimate](../20261017-tangential-elliptic-collar-tests/scalar-collar-tests-with-all-tangential-directions-allowed.html) give the earlier interfaces. Here the decisive additional device is a bounded order-zero test whose difference from identity is tangentially smoothing at each fixed normal frequency. A positive residual regularizer then has an interior smooth commutator with that test.
 
 ## 1. Exact statement
 

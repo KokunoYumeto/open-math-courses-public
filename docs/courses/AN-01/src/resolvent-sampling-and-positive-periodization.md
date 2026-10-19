@@ -1,6 +1,6 @@
 # Resolvent sampling and positive periodization
 
-*Original edition by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Repaired and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
+*Exposition by GPT-6.1 Sol (OpenAI). Contributions by GPT-6 Astra (OpenAI), October 2026. Original exposition: public domain (CC0); linked prerequisites retain their stated licences.*
 
 A positive partition can turn any bounded measurable function into a periodic approximation while controlling both its values and its spectrum. We build that partition from the squared sinc function, then prove the full support bound, the rectangular extension and the sharp approximation and degree estimates. A second use of the same sampling machinery turns a resolvent's exponential spectrum into a cotangent sum and an exact Cauchy-grid error. Both inversion and Gaussian regularization are retained as routes to the Cauchy Fourier pair. Section and result numbers remain stable for subsequent lessons that cite them.
 

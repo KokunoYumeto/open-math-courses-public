@@ -1,6 +1,6 @@
 # The adjoint group, composition and isomorphism
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 A transformation group has two kinds of structure. It moves points of a manifold, and it moves its own infinitesimal directions by conjugation. The second action is linear. It detects the centre, makes normal subgroups visible as invariant subspaces, and connects transformation groups with triangular matrices.
 

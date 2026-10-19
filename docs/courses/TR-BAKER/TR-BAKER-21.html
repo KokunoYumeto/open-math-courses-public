@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solving Diophantine equations completely: reduction, lattices and certificates · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-21.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 21 of 21</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="solving-diophantine-equations-completely-reduction-lattices-and-certificates">Solving Diophantine equations completely: reduction, lattices and certificates</h1>
+<p><em>Written by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A large effective bound and a list of small solutions answer different
+questions. The bound limits every possible solution; the list records what
+a finite search found. A complete resolution connects them by a proved
+reduction and an exhaustive search over the resulting range.
+This lesson builds that connection for two exponential equations, and
+gives an exact three-logarithm lattice certificate.</p>
+<p>We use <a href="TR-BAKER-07.html"><em>Two logarithms II: explicit lower bounds</em></a>,
+Theorem 7.1, for the initial analytic estimate, and
+<a href="TR-BAKER-11.html"><em>Powers of 2 and 3</em></a>, Theorem 11.3 and
+equation (11.13), for Legendre's criterion and rational logarithm
+intervals. The first equation also reproduces Theorem 11.4 there.
+The lattice arguments, reduction lemmas, finite searches and their
+certification are proved below.</p>
+<h2 id="1-from-an-equation-to-a-finite-certificate">1. From an equation to a finite certificate</h2>
+<p>Suppose an equation yields a nonzero logarithmic form
+<span class="math" data-tex="\(\Lambda=b_1\log\alpha_1+\cdots+b_r\log\alpha_r\)">\(\Lambda=b_1\log\alpha_1+\cdots+b_r\log\alpha_r\)</span> and an upper
+bound that decreases exponentially in a size parameter <span class="math" data-tex="\(X\)">\(X\)</span>.
+An explicit lower bound for <span class="math" data-tex="\(|\Lambda|\)">\(|\Lambda|\)</span> first gives <span class="math" data-tex="\(X\le X_0\)">\(X\le X_0\)</span>.
+The inequality may make <span class="math" data-tex="\(X_0\)">\(X_0\)</span> too large for direct enumeration.
+A continued-fraction calculation or a lattice calculation can then
+give a much stronger lower bound for this particular form, throughout
+the finite coefficient range. Comparing the two bounds reduces <span class="math" data-tex="\(X\)">\(X\)</span>.
+Finally one checks every remaining possibility using exact arithmetic.</p>
+<p>Each transition has its own mathematical obligation. The logarithmic
+form must be nonzero; the analytic theorem's heights, degree and
+coefficient parameter must be correct; the reduction must apply to
+every possible coefficient vector; and the last search must exhaust
+the proved range. Numerical precision also belongs in the proof:
+a decimal that appears positive does not certify a strict inequality.</p>
+<p>For two logarithms, division by one of them leads to
+<span class="math" data-tex="\(|m-n\theta|\)">\(|m-n\theta|\)</span>. If <span class="math" data-tex="\(m/n=a/b\)">\(m/n=a/b\)</span> in lowest terms and
+<span class="math math-display" data-tex="\[
+ \left|\theta-\frac mn\right|&lt;\frac1{2n^2},
+\]">\[
+ \left|\theta-\frac mn\right|&lt;\frac1{2n^2},
+\]</span>
+then <span class="math" data-tex="\(b\le n\)">\(b\le n\)</span>, so Legendre's criterion makes <span class="math" data-tex="\(a/b\)">\(a/b\)</span> a convergent
+of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Writing <span class="math" data-tex="\(m=ga,n=gb\)">\(m=ga,n=gb\)</span> gives
+<span class="math math-display" data-tex="\[
+ |m\log\alpha-n\log\beta|
+   =g|a\log\alpha-b\log\beta|,\qquad g\ge1.
+\]">\[
+ |m\log\alpha-n\log\beta|
+   =g|a\log\alpha-b\log\beta|,\qquad g\ge1.
+\]</span>
+Thus a lower bound for the reduced convergent's error also bounds
+the original error. This common factor is essential when using
+convergents to enumerate all possibilities.</p>
+<p>An additive term changes the problem to
+<span class="math" data-tex="\(u\theta-v+\mu\)">\(u\theta-v+\mu\)</span>. The distance-to-integers argument in the next
+section handles it. With three or more logarithms, an integer
+lattice records several coefficients at once.</p>
+<h2 id="2-an-inhomogeneous-continued-fraction-reduction">2. An inhomogeneous continued-fraction reduction</h2>
+<p>For a real number <span class="math" data-tex="\(x\)">\(x\)</span>, let <span class="math" data-tex="\(\|x\|=\min_{k\in\mathbb Z}|x-k|\)">\(\|x\|=\min_{k\in\mathbb Z}|x-k|\)</span>.
+Choosing nearest integers proves
+<span class="math" data-tex="\(\|x+y\|\le\|x\|+\|y\|\)">\(\|x+y\|\le\|x\|+\|y\|\)</span>, and, for an integer <span class="math" data-tex="\(u\)">\(u\)</span>,
+<span class="math" data-tex="\(\|ux\|\le |u|\|x\|\)">\(\|ux\|\le |u|\|x\|\)</span>. These inequalities are useful even
+when the nearest integers are not known individually.</p>
+<p><strong>Lemma 21.1 (Baker–Davenport reduction).</strong> Let <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span> and
+<span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span> be integers, <span class="math" data-tex="\(\theta,\mu\)">\(\theta,\mu\)</span> real, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, and <span class="math" data-tex="\(B&gt;1\)">\(B&gt;1\)</span>.
+Put
+<span class="math math-display" data-tex="\[
+ \epsilon=\|q\mu\|-M\|q\theta\|.
+ \tag{21.1}
+\]">\[
+ \epsilon=\|q\mu\|-M\|q\theta\|.
+ \tag{21.1}
+\]</span>
+If <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, there are no integers <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ 0&lt;u\le M,\qquad
+ 0&lt;|u\theta-v+\mu|&lt;AB^{-w},\qquad
+ w\ge\frac{\log(Aq/\epsilon)}{\log B}.
+ \tag{21.2}
+\]">\[
+ 0&lt;u\le M,\qquad
+ 0&lt;|u\theta-v+\mu|&lt;AB^{-w},\qquad
+ w\ge\frac{\log(Aq/\epsilon)}{\log B}.
+ \tag{21.2}
+\]</span></p>
+<p><strong>Proof.</strong> Multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>, invariance under integer
+translation, and the preceding triangle inequality give
+<span class="math math-display" data-tex="\[
+ \|q\mu\|\le q|u\theta-v+\mu|+u\|q\theta\|
+             &lt;qAB^{-w}+M\|q\theta\|.
+\]">\[
+ \|q\mu\|\le q|u\theta-v+\mu|+u\|q\theta\|
+             &lt;qAB^{-w}+M\|q\theta\|.
+\]</span>
+Consequently <span class="math" data-tex="\(\epsilon&lt;qAB^{-w}\)">\(\epsilon&lt;qAB^{-w}\)</span>. Taking logarithms and dividing
+by the positive number <span class="math" data-tex="\(\log B\)">\(\log B\)</span> gives the strict opposite of the
+last inequality in (21.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In practice <span class="math" data-tex="\(q\)">\(q\)</span> is a convergent denominator of an irrational
+<span class="math" data-tex="\(\theta\)">\(\theta\)</span>, since this tends to make <span class="math" data-tex="\(\|q\theta\|\)">\(\|q\theta\|\)</span> small.
+The common choice <span class="math" data-tex="\(q&gt;6M\)">\(q&gt;6M\)</span> is a search rule, not a hypothesis used
+by this proof and not a guarantee that <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>.
+Certified intervals must establish that strict positivity.
+The argument also proves the endpoint exclusion in (21.2), because
+the small-linear-form inequality is strict.
+The author version of
+<a href="https://web.math.pmf.unizg.hr/~duje/pdf/qjm.pdf">Dujella and Pethő, <em>Generalization of a theorem of Baker and Davenport</em></a>,
+Lemma 5(a), gives the familiar convergent formulation.</p>
+<h2 id="3-what-an-lll-certificate-proves">3. What an LLL certificate proves</h2>
+<p>Let <span class="math" data-tex="\(z_1,\ldots,z_n\)">\(z_1,\ldots,z_n\)</span> be linearly independent integer vectors in
+<span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Their lattice is
+<span class="math" data-tex="\(\Gamma=\sum_i\mathbb Zz_i\)">\(\Gamma=\sum_i\mathbb Zz_i\)</span>. Define the Gram–Schmidt vectors and
+coefficients by
+<span class="math math-display" data-tex="\[
+ z_i^*=z_i-\sum_{j&lt;i}\mu_{ij}z_j^*,\qquad
+ \mu_{ij}=\frac{\langle z_i,z_j^*\rangle}{d_j},\qquad
+ d_j=\langle z_j^*,z_j^*\rangle&gt;0.
+ \tag{21.3}
+\]">\[
+ z_i^*=z_i-\sum_{j&lt;i}\mu_{ij}z_j^*,\qquad
+ \mu_{ij}=\frac{\langle z_i,z_j^*\rangle}{d_j},\qquad
+ d_j=\langle z_j^*,z_j^*\rangle&gt;0.
+ \tag{21.3}
+\]</span>
+The vectors <span class="math" data-tex="\(z_i^*\)">\(z_i^*\)</span> are mutually orthogonal: taking the inner product
+with an earlier <span class="math" data-tex="\(z_j^*\)">\(z_j^*\)</span> cancels exactly its projection term.
+Induction also gives equality of the first <span class="math" data-tex="\(i\)">\(i\)</span> spans.
+All entries in (21.3) are rational and can be checked exactly.</p>
+<p>A basis is <strong>LLL reduced with parameter <span class="math" data-tex="\(3/4\)">\(3/4\)</span></strong> if
+<span class="math math-display" data-tex="\[
+ |\mu_{ij}|\le\tfrac12\quad(j&lt;i),\qquad
+ d_i\ge(\tfrac34-\mu_{i,i-1}^2)d_{i-1}\quad(2\le i\le n).
+ \tag{21.4}
+\]">\[
+ |\mu_{ij}|\le\tfrac12\quad(j&lt;i),\qquad
+ d_i\ge(\tfrac34-\mu_{i,i-1}^2)d_{i-1}\quad(2\le i\le n).
+ \tag{21.4}
+\]</span></p>
+<p><strong>Proposition 21.2 (the shortest-vector guarantee).</strong> An LLL reduced
+basis satisfies
+<span class="math math-display" data-tex="\[
+ \|x\|_2\ge2^{-(n-1)/2}\|z_1\|_2
+       \quad(0\ne x\in\Gamma).
+ \tag{21.5}
+\]">\[
+ \|x\|_2\ge2^{-(n-1)/2}\|z_1\|_2
+       \quad(0\ne x\in\Gamma).
+ \tag{21.5}
+\]</span>
+For any basis, the possibly stronger certified bound
+<span class="math" data-tex="\(\|x\|_2^2\ge\min_jd_j\)">\(\|x\|_2^2\ge\min_jd_j\)</span> holds.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(x=\sum_i k_i z_i\)">\(x=\sum_i k_i z_i\)</span>, with integers <span class="math" data-tex="\(k_i\)">\(k_i\)</span>, and
+let <span class="math" data-tex="\(j\)">\(j\)</span> be the largest index with <span class="math" data-tex="\(k_j\ne0\)">\(k_j\ne0\)</span>. Projection on the
+orthogonal complement of the first <span class="math" data-tex="\(j-1\)">\(j-1\)</span> basis vectors sends
+<span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(k_jz_j^*\)">\(k_jz_j^*\)</span>. Hence
+<span class="math" data-tex="\(\|x\|_2^2\ge k_j^2d_j\ge d_j\)">\(\|x\|_2^2\ge k_j^2d_j\ge d_j\)</span>, proving the assertion for an
+arbitrary basis. Conditions (21.4) give <span class="math" data-tex="\(d_i\ge d_{i-1}/2\)">\(d_i\ge d_{i-1}/2\)</span>.
+Thus <span class="math" data-tex="\(d_j\ge2^{-(j-1)}d_1\ge2^{-(n-1)}\|z_1\|_2^2\)">\(d_j\ge2^{-(j-1)}d_1\ge2^{-(n-1)}\|z_1\|_2^2\)</span>,
+which proves (21.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the guarantee of
+<a href="https://www.math.ucdavis.edu/~deloera/MISC/LA-BIBLIO/trunk/Lovasz/LovaszLenstraLenstrafactor.pdf">Lenstra, Lenstra and Lovász, <em>Factoring polynomials with rational coefficients</em></a>,
+Proposition (1.11). The computed first vector is an upper bound for
+the shortest length; (21.5) supplies the lower bound needed below.</p>
+<p><strong>Proposition 21.3 (exact reduction terminates).</strong> Integer row
+operations consisting of size reductions and adjacent swaps produce
+a basis satisfying (21.4) in finitely many steps.</p>
+<p><strong>Proof.</strong> Work at an index <span class="math" data-tex="\(k\)">\(k\)</span>, initially two. In decreasing order
+of <span class="math" data-tex="\(j=k-1,\ldots,1\)">\(j=k-1,\ldots,1\)</span>, replace <span class="math" data-tex="\(z_k\)">\(z_k\)</span> by
+<span class="math" data-tex="\(z_k-rz_j\)">\(z_k-rz_j\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> is a nearest integer to the current
+<span class="math" data-tex="\(\mu_{kj}\)">\(\mu_{kj}\)</span>. This makes <span class="math" data-tex="\(|\mu_{kj}|\le1/2\)">\(|\mu_{kj}|\le1/2\)</span>; later reductions
+with smaller indices do not change it. The operation preserves the
+integer lattice, and its inverse adds <span class="math" data-tex="\(rz_j\)">\(rz_j\)</span>.
+If the adjacent inequality in (21.4) holds, increase <span class="math" data-tex="\(k\)">\(k\)</span>.
+Otherwise exchange <span class="math" data-tex="\(z_{k-1},z_k\)">\(z_{k-1},z_k\)</span> and restart at
+<span class="math" data-tex="\(\max\{2,k-1\}\)">\(\max\{2,k-1\}\)</span>. Terminate when <span class="math" data-tex="\(k=n+1\)">\(k=n+1\)</span>.
+At each stage the earlier prefix is reduced; hence termination gives
+all of (21.4).</p>
+<p>Here is a decreasing integer that proves termination. Put
+<span class="math math-display" data-tex="\[
+ D_i=\det(\langle z_r,z_s\rangle_{r,s\le i})
+      =\prod_{j=1}^i d_j,\qquad
+ \mathcal P=\prod_{i=1}^{n-1}D_i.
+ \tag{21.6}
+\]">\[
+ D_i=\det(\langle z_r,z_s\rangle_{r,s\le i})
+      =\prod_{j=1}^i d_j,\qquad
+ \mathcal P=\prod_{i=1}^{n-1}D_i.
+ \tag{21.6}
+\]</span>
+The determinant identity follows by the triangular Gram–Schmidt
+change of basis, whose determinant is one. Each <span class="math" data-tex="\(D_i\)">\(D_i\)</span> is a
+positive integer. Size reductions preserve every prefix lattice
+and hence every <span class="math" data-tex="\(D_i\)">\(D_i\)</span>. A swap at <span class="math" data-tex="\(k\)">\(k\)</span> preserves every factor
+except <span class="math" data-tex="\(D_{k-1}\)">\(D_{k-1}\)</span>. Projecting the new <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-st vector on the
+orthogonal complement of the first <span class="math" data-tex="\(k-2\)">\(k-2\)</span> vectors shows that the
+ratio of the new factor to the old is
+<span class="math math-display" data-tex="\[
+ \frac{d_k+\mu_{k,k-1}^2d_{k-1}}{d_{k-1}}&lt;\frac34.
+\]">\[
+ \frac{d_k+\mu_{k,k-1}^2d_{k-1}}{d_{k-1}}&lt;\frac34.
+\]</span>
+Thus each swap reduces the positive integer <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> by a
+factor below <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. There are finitely many swaps. Between swaps
+the index increases after finitely many size reductions, so the
+entire algorithm terminates. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> there is nothing to do.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a certificate, record the integer change-of-basis matrix as well
+as the output basis. A determinant of <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> and the exact basis
+identity certify equality of lattices. Exact values of the rational
+<span class="math" data-tex="\(\mu_{ij}\)">\(\mu_{ij}\)</span> and <span class="math" data-tex="\(d_i\)">\(d_i\)</span> then certify (21.4). No floating-point
+claim of “LLL reduced” is needed.</p>
+<h2 id="4-a-lattice-lower-bound-for-a-logarithmic-form">4. A lattice lower bound for a logarithmic form</h2>
+<p><strong>Lemma 21.4 (de Weger-type reduction).</strong> Let <span class="math" data-tex="\(\alpha_j&gt;0\)">\(\alpha_j&gt;0\)</span>,
+<span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, <span class="math" data-tex="\(X_0\ge0\)">\(X_0\ge0\)</span>, and <span class="math" data-tex="\(b_j\in\mathbb Z\)">\(b_j\in\mathbb Z\)</span> with
+<span class="math" data-tex="\(|b_j|\le X_0\)">\(|b_j|\le X_0\)</span>, not all zero. Set
+<span class="math" data-tex="\(\Lambda=\sum_jb_j\log\alpha_j\)">\(\Lambda=\sum_jb_j\log\alpha_j\)</span>. Let <span class="math" data-tex="\(A_C\)">\(A_C\)</span> be the integer
+matrix whose first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> rows are the corresponding rows of the
+identity matrix and whose last row is
+<span class="math" data-tex="\((\lfloor C\log\alpha_1\rfloor,\ldots,
+\lfloor C\log\alpha_n\rfloor)\)">\((\lfloor C\log\alpha_1\rfloor,\ldots,
+\lfloor C\log\alpha_n\rfloor)\)</span>.
+Suppose <span class="math" data-tex="\(A_C\)">\(A_C\)</span> is nonsingular and every nonzero vector of
+<span class="math" data-tex="\(\Gamma=A_C\mathbb Z^n\)">\(\Gamma=A_C\mathbb Z^n\)</span> has Euclidean norm at least <span class="math" data-tex="\(l_0\)">\(l_0\)</span>.
+If <span class="math" data-tex="\(l_0^2&gt;(n-1)X_0^2\)">\(l_0^2&gt;(n-1)X_0^2\)</span>, then
+<span class="math math-display" data-tex="\[
+ C|\Lambda|\ge
+ \sqrt{l_0^2-(n-1)X_0^2}-nX_0.
+ \tag{21.7}
+\]">\[
+ C|\Lambda|\ge
+ \sqrt{l_0^2-(n-1)X_0^2}-nX_0.
+ \tag{21.7}
+\]</span></p>
+<p><strong>Proof.</strong> The vector <span class="math" data-tex="\(A_Cb\)">\(A_Cb\)</span> is nonzero by nonsingularity. Its
+first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> coordinates are <span class="math" data-tex="\(b_1,\ldots,b_{n-1}\)">\(b_1,\ldots,b_{n-1}\)</span>; write its
+last coordinate as <span class="math" data-tex="\(s\)">\(s\)</span>. Thus
+<span class="math" data-tex="\(l_0^2\le\|A_Cb\|_2^2\le(n-1)X_0^2+s^2\)">\(l_0^2\le\|A_Cb\|_2^2\le(n-1)X_0^2+s^2\)</span>, giving the
+square-root lower bound for <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. On the other hand,
+<span class="math math-display" data-tex="\[
+ |s-C\Lambda|
+ \le\sum_j|b_j|\,
+       |\lfloor C\log\alpha_j\rfloor-C\log\alpha_j|
+ \le nX_0.
+\]">\[
+ |s-C\Lambda|
+ \le\sum_j|b_j|\,
+       |\lfloor C\log\alpha_j\rfloor-C\log\alpha_j|
+ \le nX_0.
+\]</span>
+The ordinary triangle inequality now proves (21.7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The determinant of <span class="math" data-tex="\(A_C\)">\(A_C\)</span> is <span class="math" data-tex="\(\lfloor C\log\alpha_n\rfloor\)">\(\lfloor C\log\alpha_n\rfloor\)</span>.
+Thus <span class="math" data-tex="\(\alpha_n\ne1\)">\(\alpha_n\ne1\)</span> alone does not certify nonsingularity for
+an arbitrarily small <span class="math" data-tex="\(C\)">\(C\)</span>; check the actual integer.
+Also, the right side of (21.7) must be positive before it gives useful
+information. The sufficient condition is
+<span class="math" data-tex="\(l_0^2&gt;(n^2+n-1)X_0^2\)">\(l_0^2&gt;(n^2+n-1)X_0^2\)</span>.</p>
+<p><strong>Corollary 21.5 (combining the two directions).</strong> Suppose in addition
+that <span class="math" data-tex="\(0&lt;|\Lambda|&lt;A\exp(-\lambda X)\)">\(0&lt;|\Lambda|&lt;A\exp(-\lambda X)\)</span>, with <span class="math" data-tex="\(A,\lambda&gt;0\)">\(A,\lambda&gt;0\)</span>,
+and that the right side <span class="math" data-tex="\(E\)">\(E\)</span> of (21.7) is positive. Then
+<span class="math math-display" data-tex="\[
+ X&lt;\frac{\log(AC/E)}{\lambda}.
+ \tag{21.8}
+\]">\[
+ X&lt;\frac{\log(AC/E)}{\lambda}.
+ \tag{21.8}
+\]</span></p>
+<p><strong>Proof.</strong> We have <span class="math" data-tex="\(0&lt;E/C\le|\Lambda|&lt;A\exp(-\lambda X)\)">\(0&lt;E/C\le|\Lambda|&lt;A\exp(-\lambda X)\)</span>.
+Take logarithms and rearrange. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The small upper bound comes from the original Diophantine equation.
+A bound <span class="math" data-tex="\(|b_j|\le X_0\)">\(|b_j|\le X_0\)</span> by itself does not imply a smaller bound
+for the coefficients. The lattice supplies a lower bound for the
+linear form, which must be compared with that additional upper bound.</p>
+<h2 id="5-two-complete-exponential-resolutions">5. Two complete exponential resolutions</h2>
+<p>All exponents in this section are positive integers. We resolve
+<span class="math math-display" data-tex="\[
+ |2^m-3^n|\le20,\qquad |2^m-5^n|\le20.
+ \tag{21.9}
+\]">\[
+ |2^m-3^n|\le20,\qquad |2^m-5^n|\le20.
+ \tag{21.9}
+\]</span>
+The first calculation reproduces the earlier continued-fraction
+certificate; the second uses the same steps with different exact data.
+In both cases unique prime factorization ensures that the two powers
+are unequal and that their logarithmic form is nonzero.</p>
+<h3 id="5-1-the-powers-of-two-and-three">5.1. The powers of two and three</h3>
+<p><strong>Theorem 21.6.</strong> All solutions of the first inequality in (21.9) are
+<span class="math math-display" data-tex="\[
+\begin{array}{c|l}
+n&amp;\text{allowed }m\\ \hline
+1&amp;1,2,3,4\\
+2&amp;1,2,3,4\\
+3&amp;3,4,5\\
+4&amp;6\\
+5&amp;8
+\end{array}
+\tag{21.10}
+\]">\[
+\begin{array}{c|l}
+n&amp;\text{allowed }m\\ \hline
+1&amp;1,2,3,4\\
+2&amp;1,2,3,4\\
+3&amp;3,4,5\\
+4&amp;6\\
+5&amp;8
+\end{array}
+\tag{21.10}
+\]</span>
+There are no solutions with <span class="math" data-tex="\(n\ge6\)">\(n\ge6\)</span>.</p>
+<p><strong>Proof: initial bound.</strong> For <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span>, the argument of
+Theorem 11.4 gives <span class="math" data-tex="\(m\ge6\)">\(m\ge6\)</span>, <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span>, and
+<span class="math math-display" data-tex="\[
+ 0&lt;|m\log2-n\log3|&lt;30\,2^{-m}.
+\]">\[
+ 0&lt;|m\log2-n\log3|&lt;30\,2^{-m}.
+\]</span>
+For completeness, <span class="math" data-tex="\(2^m\ge3^4-20=61\)">\(2^m\ge3^4-20=61\)</span>; if <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span>, then
+<span class="math" data-tex="\(3^n-2^m\ge3^m-2^m&gt;20\)">\(3^n-2^m\ge3^m-2^m&gt;20\)</span>.
+For positive <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, integration gives
+<span class="math" data-tex="\(|\log x-\log y|\le |x-y|/\min(x,y)\)">\(|\log x-\log y|\le |x-y|/\min(x,y)\)</span>.
+Apply this with <span class="math" data-tex="\(x=2^m,y=3^n\)">\(x=2^m,y=3^n\)</span> and use
+<span class="math" data-tex="\(20/2^m\le5/16\)">\(20/2^m\le5/16\)</span>. The resulting constant is
+<span class="math" data-tex="\(20/(1-5/16)=320/11&lt;30\)">\(20/(1-5/16)=320/11&lt;30\)</span>.</p>
+<p>Theorem 7.1 with field degree one, height parameters
+<span class="math" data-tex="\(a_1=1,a_2=\log3\)">\(a_1=1,a_2=\log3\)</span>, and coefficients <span class="math" data-tex="\(m,-n\)">\(m,-n\)</span>, gives
+<span class="math math-display" data-tex="\[
+ m\log2&lt;\log30+
+ 21600\log3\bigl(\max\{10,\log(2m)\}\bigr)^2.
+ \tag{21.11}
+\]">\[
+ m\log2&lt;\log30+
+ 21600\log3\bigl(\max\{10,\log(2m)\}\bigr)^2.
+ \tag{21.11}
+\]</span>
+Indeed <span class="math" data-tex="\(h(2)=\log2&lt;1\)">\(h(2)=\log2&lt;1\)</span>, <span class="math" data-tex="\(h(3)=\log3&gt;1\)">\(h(3)=\log3&gt;1\)</span>, and the
+theorem's coefficient parameter is <span class="math" data-tex="\(m/\log3+n&lt;2m\)">\(m/\log3+n&lt;2m\)</span>.
+For <span class="math" data-tex="\(x\ge10^7\)">\(x\ge10^7\)</span>, set
+<span class="math math-display" data-tex="\[
+ F_3(x)=x\log2-21600\log3\log^2(2x)-\log30.
+\]">\[
+ F_3(x)=x\log2-21600\log3\log^2(2x)-\log30.
+\]</span>
+The rational bounds
+<span class="math" data-tex="\(\log2&gt;69/100,\ \log3&lt;11/10,\ \log(2\cdot10^7)&lt;17,\ \log30&lt;4\)">\(\log2&gt;69/100,\ \log3&lt;11/10,\ \log(2\cdot10^7)&lt;17,\ \log30&lt;4\)</span>
+give <span class="math" data-tex="\(F_3(10^7)&gt;33356&gt;0\)">\(F_3(10^7)&gt;33356&gt;0\)</span>.
+Also <span class="math" data-tex="\(\log(2x)/x\)">\(\log(2x)/x\)</span> decreases there, and hence
+<span class="math math-display" data-tex="\[
+ F_3&#x27;(x)&gt;
+ \frac{69}{100}-\frac{43200(11/10)17}{10^7}
+ =\frac{9519}{15625}&gt;0.
+\]">\[
+ F_3&#x27;(x)&gt;
+ \frac{69}{100}-\frac{43200(11/10)17}{10^7}
+ =\frac{9519}{15625}&gt;0.
+\]</span>
+The maximum in (21.11) equals <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span> on this range.
+Therefore <span class="math" data-tex="\(m&lt;10^7\)">\(m&lt;10^7\)</span>.</p>
+<p><strong>Proof: reduction.</strong> For <span class="math" data-tex="\(n\ge6\)">\(n\ge6\)</span>,
+<span class="math math-display" data-tex="\[
+ \left|\frac{\log3}{\log2}-\frac mn\right|
+ \le\frac{20}{n\log2(3^n-20)}&lt;\frac1{2n^2}.
+ \tag{21.12}
+\]">\[
+ \left|\frac{\log3}{\log2}-\frac mn\right|
+ \le\frac{20}{n\log2(3^n-20)}&lt;\frac1{2n^2}.
+ \tag{21.12}
+\]</span>
+The last inequality holds at six because
+<span class="math" data-tex="\((69/100)(3^6-20)&gt;40\cdot6\)">\((69/100)(3^6-20)&gt;40\cdot6\)</span>.
+The quantity <span class="math" data-tex="\((3^n-20)/n\)">\((3^n-20)/n\)</span> increases: the numerator of its
+successive difference is <span class="math" data-tex="\((2n-1)3^n+20&gt;0\)">\((2n-1)3^n+20&gt;0\)</span>.
+Legendre therefore applies to <span class="math" data-tex="\(a/b=m/n\)">\(a/b=m/n\)</span> in lowest terms, and
+the reduced numerator satisfies <span class="math" data-tex="\(a&lt;10^7\)">\(a&lt;10^7\)</span>.</p>
+<p>The table lists every eligible convergent and the first excluded one.
+The sign is that of <span class="math" data-tex="\(p_j\log2-q_j\log3\)">\(p_j\log2-q_j\log3\)</span>, and each integer
+<span class="math" data-tex="\(L_j\)">\(L_j\)</span> satisfies
+<span class="math" data-tex="\(10^8|p_j\log2-q_j\log3|&gt;L_j\)">\(10^8|p_j\log2-q_j\log3|&gt;L_j\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(j\)">\(j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(a_j\)">\(a_j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(p_j\)">\(p_j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(q_j\)">\(q_j\)</span></th>
+<th style="text-align:right">sign</th>
+<th style="text-align:right"><span class="math" data-tex="\(L_j\)">\(L_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">40546510</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">28768207</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">11778303</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">5211600</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">19</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">1355103</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">65</td>
+<td style="text-align:right">41</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">1146290</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">84</td>
+<td style="text-align:right">53</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">208813</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">485</td>
+<td style="text-align:right">306</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">102223</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1054</td>
+<td style="text-align:right">665</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">4365</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">24727</td>
+<td style="text-align:right">15601</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">1819</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">50508</td>
+<td style="text-align:right">31867</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">726</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">125743</td>
+<td style="text-align:right">79335</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">366</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">176251</td>
+<td style="text-align:right">111202</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">360</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">301994</td>
+<td style="text-align:right">190537</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">55</td>
+<td style="text-align:right">16785921</td>
+<td style="text-align:right">10590737</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">5</td>
+</tr>
+</tbody>
+</table>
+<p>All rows before the last have <span class="math" data-tex="\(L_j\ge1\)">\(L_j\ge1\)</span>, and subsequent numerators
+are larger still. Multiplication by the common factor <span class="math" data-tex="\(g\ge1\)">\(g\ge1\)</span>
+does not decrease the error. Thus
+<span class="math math-display" data-tex="\[
+ |m\log2-n\log3|&gt;10^{-8}.
+ \tag{21.13}
+\]">\[
+ |m\log2-n\log3|&gt;10^{-8}.
+ \tag{21.13}
+\]</span>
+Together with the upper bound <span class="math" data-tex="\(20/(3^n-20)\)">\(20/(3^n-20)\)</span>, this gives
+<span class="math" data-tex="\(3^n&lt;2000000020\)">\(3^n&lt;2000000020\)</span>. Since <span class="math" data-tex="\(3^{20}=3486784401\)">\(3^{20}=3486784401\)</span>, every solution
+has <span class="math" data-tex="\(n\le19\)">\(n\le19\)</span>. Cases below six are checked separately below.</p>
+<p>For <span class="math" data-tex="\(6\le n\le19\)">\(6\le n\le19\)</span>, let <span class="math" data-tex="\(k=\lfloor\log_2(3^n)\rfloor\)">\(k=\lfloor\log_2(3^n)\rfloor\)</span>.
+The following exact integers give the distances to the powers
+on either side of <span class="math" data-tex="\(3^n\)">\(3^n\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(k\)">\(k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3^n-2^k\)">\(3^n-2^k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2^{k+1}-3^n\)">\(2^{k+1}-3^n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">217</td>
+<td style="text-align:right">295</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">139</td>
+<td style="text-align:right">1909</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">2465</td>
+<td style="text-align:right">1631</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">3299</td>
+<td style="text-align:right">13085</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">26281</td>
+<td style="text-align:right">6487</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">46075</td>
+<td style="text-align:right">84997</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">19</td>
+<td style="text-align:right">7153</td>
+<td style="text-align:right">517135</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">545747</td>
+<td style="text-align:right">502829</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">588665</td>
+<td style="text-align:right">3605639</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">5960299</td>
+<td style="text-align:right">2428309</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">25</td>
+<td style="text-align:right">9492289</td>
+<td style="text-align:right">24062143</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">26</td>
+<td style="text-align:right">62031299</td>
+<td style="text-align:right">5077565</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right">118985033</td>
+<td style="text-align:right">149450423</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">88519643</td>
+<td style="text-align:right">985222181</td>
+</tr>
+</tbody>
+</table>
+<p>Every distance exceeds twenty. Every other power is farther away,
+so this excludes the whole range.
+For <span class="math" data-tex="\(1\le n\le5\)">\(1\le n\le5\)</span>, enumerate every positive <span class="math" data-tex="\(m\)">\(m\)</span> with
+<span class="math" data-tex="\(2^m\le3^n+20\)">\(2^m\le3^n+20\)</span>, which is a finite integer test.
+The successful values are exactly (21.10). Their signed
+differences <span class="math" data-tex="\(2^m-3^n\)">\(2^m-3^n\)</span>, in the order shown, are
+<span class="math math-display" data-tex="\[
+ (-1,1,5,13),\quad(-7,-5,-1,7),\quad(-19,-11,5),\quad-17,\quad13.
+\]">\[
+ (-1,1,5,13),\quad(-7,-5,-1,7),\quad(-19,-11,5),\quad-17,\quad13.
+\]</span>
+The full small-exponent search, including its excluded entries,
+is recorded in the certificate. This proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="5-2-the-powers-of-two-and-five">5.2. The powers of two and five</h3>
+<p><strong>Theorem 21.7.</strong> All solutions of the second inequality in (21.9) are
+<span class="math math-display" data-tex="\[
+\begin{array}{c|l}
+n&amp;\text{allowed }m\\ \hline
+1&amp;1,2,3,4\\
+2&amp;3,4,5\\
+3&amp;7
+\end{array}
+\tag{21.14}
+\]">\[
+\begin{array}{c|l}
+n&amp;\text{allowed }m\\ \hline
+1&amp;1,2,3,4\\
+2&amp;3,4,5\\
+3&amp;7
+\end{array}
+\tag{21.14}
+\]</span>
+There are no solutions with <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span>.</p>
+<p><strong>Proof: initial bound.</strong> Suppose first that <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>.
+Then <span class="math" data-tex="\(2^m\ge125-20=105\)">\(2^m\ge125-20=105\)</span>, so <span class="math" data-tex="\(m\ge7\)">\(m\ge7\)</span>.
+If <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span>, then <span class="math" data-tex="\(5^n-2^m\ge5^m-2^m&gt;20\)">\(5^n-2^m\ge5^m-2^m&gt;20\)</span>, a contradiction.
+Put <span class="math" data-tex="\(\Lambda=m\log2-n\log5\ne0\)">\(\Lambda=m\log2-n\log5\ne0\)</span>. Integration as above gives
+<span class="math math-display" data-tex="\[
+ |\Lambda|\le\frac{20}{2^m-20}
+ \le\frac{640}{27}\,2^{-m}&lt;24\,2^{-m}.
+ \tag{21.15}
+\]">\[
+ |\Lambda|\le\frac{20}{2^m-20}
+ \le\frac{640}{27}\,2^{-m}&lt;24\,2^{-m}.
+ \tag{21.15}
+\]</span>
+The middle inequality uses <span class="math" data-tex="\(20/2^m\le5/32\)">\(20/2^m\le5/32\)</span>.
+Apply Theorem 7.1 with <span class="math" data-tex="\(D=1\)">\(D=1\)</span>, <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>, <span class="math" data-tex="\(a_2=\log5\)">\(a_2=\log5\)</span>.
+The height conditions hold, and <span class="math" data-tex="\(B&#x27;=m/\log5+n&lt;2m\)">\(B&#x27;=m/\log5+n&lt;2m\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+ m\log2&lt;\log24+
+ 21600\log5\bigl(\max\{10,\log(2m)\}\bigr)^2.
+ \tag{21.16}
+\]">\[
+ m\log2&lt;\log24+
+ 21600\log5\bigl(\max\{10,\log(2m)\}\bigr)^2.
+ \tag{21.16}
+\]</span>
+This implies <span class="math" data-tex="\(m&lt;2\cdot10^7\)">\(m&lt;2\cdot10^7\)</span>.
+To check the entire excluded interval, define
+<span class="math" data-tex="\(F_5(x)=x\log2-21600\log5\log^2(2x)-\log24\)">\(F_5(x)=x\log2-21600\log5\log^2(2x)-\log24\)</span>.
+Use <span class="math" data-tex="\(\log5&lt;17/10\)">\(\log5&lt;17/10\)</span>, <span class="math" data-tex="\(\log(4\cdot10^7)&lt;18\)">\(\log(4\cdot10^7)&lt;18\)</span> and <span class="math" data-tex="\(\log24&lt;4\)">\(\log24&lt;4\)</span>.
+At <span class="math" data-tex="\(x=2\cdot10^7\)">\(x=2\cdot10^7\)</span> these give
+<span class="math math-display" data-tex="\[
+ F_5(x)&gt;1902716,\qquad
+ F_5&#x27;(x)&gt;\frac{69}{100}
+ -\frac{43200(17/10)18}{2\cdot10^7}
+ =\frac{19497}{31250}&gt;0.
+\]">\[
+ F_5(x)&gt;1902716,\qquad
+ F_5&#x27;(x)&gt;\frac{69}{100}
+ -\frac{43200(17/10)18}{2\cdot10^7}
+ =\frac{19497}{31250}&gt;0.
+\]</span>
+As before, <span class="math" data-tex="\(\log(2x)/x\)">\(\log(2x)/x\)</span> decreases, so the derivative remains
+positive. The maximum in (21.16) is <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span> throughout this
+interval. Thus (21.16) is impossible there.</p>
+<p><strong>Proof: reduction.</strong> For <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span>,
+<span class="math math-display" data-tex="\[
+ \left|\frac{\log5}{\log2}-\frac mn\right|
+ \le\frac{20}{n\log2(5^n-20)}&lt;\frac1{2n^2}.
+ \tag{21.17}
+\]">\[
+ \left|\frac{\log5}{\log2}-\frac mn\right|
+ \le\frac{20}{n\log2(5^n-20)}&lt;\frac1{2n^2}.
+ \tag{21.17}
+\]</span>
+At four the last inequality follows from
+<span class="math" data-tex="\((69/100)(5^4-20)&gt;40\cdot4\)">\((69/100)(5^4-20)&gt;40\cdot4\)</span>.
+The numerator of the successive difference of <span class="math" data-tex="\((5^n-20)/n\)">\((5^n-20)/n\)</span>
+is <span class="math" data-tex="\((4n-1)5^n+20&gt;0\)">\((4n-1)5^n+20&gt;0\)</span>, so the inequality persists.
+The reduced fraction <span class="math" data-tex="\(a/b=m/n\)">\(a/b=m/n\)</span> is therefore a convergent of
+<span class="math" data-tex="\(\log5/\log2\)">\(\log5/\log2\)</span>, with <span class="math" data-tex="\(a&lt;2\cdot10^7\)">\(a&lt;2\cdot10^7\)</span>.</p>
+<p>The following table has the same meaning as before, with
+<span class="math" data-tex="\(L_j&lt;10^8|p_j\log2-q_j\log5|\)">\(L_j&lt;10^8|p_j\log2-q_j\log5|\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(j\)">\(j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(a_j\)">\(a_j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(p_j\)">\(p_j\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(q_j\)">\(q_j\)</span></th>
+<th style="text-align:right">sign</th>
+<th style="text-align:right"><span class="math" data-tex="\(L_j\)">\(L_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">22314355</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">2371652</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">65</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">969481</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">137</td>
+<td style="text-align:right">59</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">432690</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">339</td>
+<td style="text-align:right">146</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">104100</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">1493</td>
+<td style="text-align:right">643</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">16288</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">9297</td>
+<td style="text-align:right">4004</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">6372</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">20087</td>
+<td style="text-align:right">8651</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">3544</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">29384</td>
+<td style="text-align:right">12655</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">2828</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">49471</td>
+<td style="text-align:right">21306</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">716</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">177797</td>
+<td style="text-align:right">76573</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">679</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">227268</td>
+<td style="text-align:right">97879</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">36</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">4268621</td>
+<td style="text-align:right">1838395</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">31</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">4495889</td>
+<td style="text-align:right">1936274</td>
+<td style="text-align:right">+</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">31243955</td>
+<td style="text-align:right">13456039</td>
+<td style="text-align:right"><span class="math" data-tex="\(-\)">\(-\)</span></td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+<p>The last numerator exceeds <span class="math" data-tex="\(2\cdot10^7\)">\(2\cdot10^7\)</span>; every earlier row
+has <span class="math" data-tex="\(L_j\ge1\)">\(L_j\ge1\)</span>. The same common-factor argument gives
+<span class="math" data-tex="\(|\Lambda|&gt;10^{-8}\)">\(|\Lambda|&gt;10^{-8}\)</span>. Hence <span class="math" data-tex="\(5^n&lt;2000000020\)">\(5^n&lt;2000000020\)</span>, and
+<span class="math math-display" data-tex="\[
+ 5^{14}=6103515625&gt;2000000020
+ \quad\Longrightarrow\quad n\le13.
+ \tag{21.18}
+\]">\[
+ 5^{14}=6103515625&gt;2000000020
+ \quad\Longrightarrow\quad n\le13.
+ \tag{21.18}
+\]</span>
+For <span class="math" data-tex="\(4\le n\le13\)">\(4\le n\le13\)</span>, the exact nearest-power distances are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(k\)">\(k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5^n-2^k\)">\(5^n-2^k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2^{k+1}-5^n\)">\(2^{k+1}-5^n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">113</td>
+<td style="text-align:right">399</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">1077</td>
+<td style="text-align:right">971</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">13</td>
+<td style="text-align:right">7433</td>
+<td style="text-align:right">759</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">12589</td>
+<td style="text-align:right">52947</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">128481</td>
+<td style="text-align:right">133663</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">904549</td>
+<td style="text-align:right">144027</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">1377017</td>
+<td style="text-align:right">7011591</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">25</td>
+<td style="text-align:right">15273693</td>
+<td style="text-align:right">18280739</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">27</td>
+<td style="text-align:right">109922897</td>
+<td style="text-align:right">24294831</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">146961301</td>
+<td style="text-align:right">926780523</td>
+</tr>
+</tbody>
+</table>
+<p>All entries exceed twenty. For <span class="math" data-tex="\(n=1,2,3\)">\(n=1,2,3\)</span>, check every <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>
+with <span class="math" data-tex="\(2^m\le5^n+20\)">\(2^m\le5^n+20\)</span>; the upper endpoints for <span class="math" data-tex="\(m\)">\(m\)</span> are respectively
+four, five and seven. The successful differences are
+<span class="math math-display" data-tex="\[
+ (-3,-1,3,11),\qquad(-17,-9,7),\qquad3,
+\]">\[
+ (-3,-1,3,11),\qquad(-17,-9,7),\qquad3,
+\]</span>
+giving exactly (21.14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="5-3-why-the-numerical-tables-are-proofs">5.3. Why the numerical tables are proofs</h3>
+<p>For a rational <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>, put <span class="math" data-tex="\(z=(x-1)/(x+1)\)">\(z=(x-1)/(x+1)\)</span>. The positive
+series and geometric remainder proved in (11.13) give
+<span class="math math-display" data-tex="\[
+ L_N(x)=2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1},
+ \qquad
+ L_N(x)&lt;\log x&lt;
+ L_N(x)+\frac{2z^{2N+1}}{(2N+1)(1-z^2)}=U_N(x).
+ \tag{21.19}
+\]">\[
+ L_N(x)=2\sum_{j=0}^{N-1}\frac{z^{2j+1}}{2j+1},
+ \qquad
+ L_N(x)&lt;\log x&lt;
+ L_N(x)+\frac{2z^{2N+1}}{(2N+1)(1-z^2)}=U_N(x).
+ \tag{21.19}
+\]</span>
+Use <span class="math" data-tex="\(N=100\)">\(N=100\)</span> for <span class="math" data-tex="\(x=2,3,5\)">\(x=2,3,5\)</span>.
+Start the continued-fraction calculation with the interval
+<span class="math math-display" data-tex="\[
+ [L_N(p)/U_N(2),U_N(p)/L_N(2)].
+\]">\[
+ [L_N(p)/U_N(2),U_N(p)/L_N(2)].
+\]</span>
+At each step both endpoints have the same integer part.
+Subtract that integer and invert the interval, reversing its endpoints.
+This certifies every partial quotient in the two tables.</p>
+<p>The error interval for a row <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is
+<span class="math" data-tex="\([aL_N(2)-bU_N(p),aU_N(2)-bL_N(p)]\)">\([aL_N(2)-bU_N(p),aU_N(2)-bL_N(p)]\)</span>.
+It lies strictly on one side of zero. Multiplying its distance
+from zero by <span class="math" data-tex="\(10^8\)">\(10^8\)</span> and taking the integer part produces the
+printed <span class="math" data-tex="\(L_j\)">\(L_j\)</span>. The recurrence
+<span class="math" data-tex="\(p_j=a_jp_{j-1}+p_{j-2}\)">\(p_j=a_jp_{j-1}+p_{j-2}\)</span>,
+<span class="math" data-tex="\(q_j=a_jq_{j-1}+q_{j-2}\)">\(q_j=a_jq_{j-1}+q_{j-2}\)</span>, with
+<span class="math" data-tex="\((p_{-2},p_{-1})=(0,1)\)">\((p_{-2},p_{-1})=(0,1)\)</span> and
+<span class="math" data-tex="\((q_{-2},q_{-1})=(1,0)\)">\((q_{-2},q_{-1})=(1,0)\)</span>, gives all table entries.
+Their determinant identities
+<span class="math" data-tex="\(|p_jq_{j-1}-p_{j-1}q_j|=1\)">\(|p_jq_{j-1}-p_{j-1}q_j|=1\)</span> are also checked.</p>
+<p>For the scalar logarithm bounds, (21.19) certifies
+<span class="math" data-tex="\(69/100&lt;\log2&lt;7/10\)">\(69/100&lt;\log2&lt;7/10\)</span>, <span class="math" data-tex="\(1&lt;\log3&lt;11/10\)">\(1&lt;\log3&lt;11/10\)</span> and
+<span class="math" data-tex="\(1&lt;\log5&lt;17/10\)">\(1&lt;\log5&lt;17/10\)</span>. Positive exponential partial sums give
+<span class="math math-display" data-tex="\[
+ \sum_{j=0}^{80}\frac{17^j}{j!}&gt;2\cdot10^7,\qquad
+ \sum_{j=0}^{80}\frac{18^j}{j!}&gt;4\cdot10^7,\qquad
+ \sum_{j=0}^{12}\frac{4^j}{j!}&gt;30.
+\]">\[
+ \sum_{j=0}^{80}\frac{17^j}{j!}&gt;2\cdot10^7,\qquad
+ \sum_{j=0}^{80}\frac{18^j}{j!}&gt;4\cdot10^7,\qquad
+ \sum_{j=0}^{12}\frac{4^j}{j!}&gt;30.
+\]</span>
+These are finite rational comparisons. Also
+<span class="math" data-tex="\(2x\ge2\cdot10^7&gt;2^{20}\)">\(2x\ge2\cdot10^7&gt;2^{20}\)</span> at either initial endpoint, so
+<span class="math" data-tex="\(\log(2x)&gt;20(69/100)&gt;10\)">\(\log(2x)&gt;20(69/100)&gt;10\)</span>.
+No floating-point estimate is used to certify these inequalities.</p>
+<p>The <a href="verification/equation-certificates.py">equation certificate program</a>
+reconstructs the intervals, convergents, analytic margins and final
+integer searches. Its <a href="verification/equation-certificates.json">machine-readable data</a>
+include all successful and unsuccessful small-exponent tests.
+The preceding proofs explain why those finite tests settle (21.9)
+for arbitrarily large positive exponents.</p>
+<h2 id="6-a-three-logarithm-certificate-from-10-20">6. A three-logarithm certificate from <span class="math" data-tex="\(10^{20}\)">\(10^{20}\)</span></h2>
+<p>Consider
+<span class="math math-display" data-tex="\[
+ \Lambda=b_1\log2+b_2\log3+b_3\log5,\qquad
+ 0&lt;X=\max_j|b_j|\le X_0=10^{20}.
+ \tag{21.20}
+\]">\[
+ \Lambda=b_1\log2+b_2\log3+b_3\log5,\qquad
+ 0&lt;X=\max_j|b_j|\le X_0=10^{20}.
+ \tag{21.20}
+\]</span>
+We first bound <span class="math" data-tex="\(|\Lambda|\)">\(|\Lambda|\)</span> uniformly on this coefficient range.
+Then we show precisely what follows if the equation under study also
+gives <span class="math" data-tex="\(|\Lambda|&lt;e^{-X}\)">\(|\Lambda|&lt;e^{-X}\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(C=10^{70}\)">\(C=10^{70}\)</span>, and put <span class="math" data-tex="\(N_p=\lfloor C\log p\rfloor\)">\(N_p=\lfloor C\log p\rfloor\)</span>.
+The following expressions give each integer exactly, split into
+two blocks of decimal digits:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N_2={}&amp;69314718055994530941723212145817656\cdot10^{35}\\
+&amp;+80755001343602552541206800094933936.
+\end{aligned}
+\]">\[
+\begin{aligned}
+N_2={}&amp;69314718055994530941723212145817656\cdot10^{35}\\
+&amp;+80755001343602552541206800094933936.
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N_3={}&amp;109861228866810969139524523692252570\cdot10^{35}\\
+&amp;+46474905578227494517346943336374942.
+\end{aligned}
+\]">\[
+\begin{aligned}
+N_3={}&amp;109861228866810969139524523692252570\cdot10^{35}\\
+&amp;+46474905578227494517346943336374942.
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N_5={}&amp;160943791243410037460075933322618763\cdot10^{35}\\
+&amp;+95256013542685177219126478914741789.
+\end{aligned}
+\]">\[
+\begin{aligned}
+N_5={}&amp;160943791243410037460075933322618763\cdot10^{35}\\
+&amp;+95256013542685177219126478914741789.
+\end{aligned}
+\]</span>
+<p>These floors are certified as follows. For <span class="math" data-tex="\(p=2,3,5\)">\(p=2,3,5\)</span>, write
+<span class="math" data-tex="\(p=2^k y\)">\(p=2^k y\)</span> with <span class="math" data-tex="\(1\le y&lt;2\)">\(1\le y&lt;2\)</span>. Use (21.19) with 240 terms
+for <span class="math" data-tex="\(\log2\)">\(\log2\)</span> and <span class="math" data-tex="\(\log y\)">\(\log y\)</span>, and add <span class="math" data-tex="\(k\)">\(k\)</span> times the former
+interval to the latter. If <span class="math" data-tex="\(y=1\)">\(y=1\)</span>, its interval is exactly zero.
+The resulting rational interval <span class="math" data-tex="\([\ell_p,u_p]\)">\([\ell_p,u_p]\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ N_p\le C\ell_p&lt;C u_p&lt;N_p+1
+ \quad(p=2,3,5).
+ \tag{21.21}
+\]">\[
+ N_p\le C\ell_p&lt;C u_p&lt;N_p+1
+ \quad(p=2,3,5).
+ \tag{21.21}
+\]</span>
+Both endpoints are given as exact rational numbers in the
+<a href="verification/reduction-lattice-check.json">lattice certificate data</a>.
+The certified floors, rather than rounded decimal logarithms,
+are the integers used in the lattice.</p>
+<p>Take the matrix
+<span class="math math-display" data-tex="\[
+ A_C=
+ \begin{pmatrix}
+ 1&amp;0&amp;0\\0&amp;1&amp;0\\N_2&amp;N_3&amp;N_5
+ \end{pmatrix}.
+\]">\[
+ A_C=
+ \begin{pmatrix}
+ 1&amp;0&amp;0\\0&amp;1&amp;0\\N_2&amp;N_3&amp;N_5
+ \end{pmatrix}.
+\]</span>
+Its determinant is <span class="math" data-tex="\(N_5&gt;0\)">\(N_5&gt;0\)</span>.
+For the reduction calculation we store its column generators as
+the rows of <span class="math" data-tex="\(B=A_C^{\mathsf T}\)">\(B=A_C^{\mathsf T}\)</span>. Integer row operations give
+the following reduced basis. Each displayed tuple is a row of <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z_1={}&amp;\bigl(-113787772450244355120783,\ 128201904809150744170883,\\
+&amp;\phantom{(}\ -115968960281991971372137\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+z_1={}&amp;\bigl(-113787772450244355120783,\ 128201904809150744170883,\\
+&amp;\phantom{(}\ -115968960281991971372137\bigr).
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z_2={}&amp;\bigl(25526442133869073534457,\ -46145588766202269201100,\\
+&amp;\phantom{(}\ -245168407442614588037248\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+z_2={}&amp;\bigl(25526442133869073534457,\ -46145588766202269201100,\\
+&amp;\phantom{(}\ -245168407442614588037248\bigr).
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z_3={}&amp;\bigl(-307703996139997391582989,\ -152884949282210989518165,\\
+&amp;\phantom{(}\ 29629247620621709800972\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+z_3={}&amp;\bigl(-307703996139997391582989,\ -152884949282210989518165,\\
+&amp;\phantom{(}\ 29629247620621709800972\bigr).
+\end{aligned}
+\]</span>
+<p>To certify that these vectors generate the original lattice, use
+the integer matrix <span class="math" data-tex="\(U\)">\(U\)</span> with the following rows.</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{row}_1(U)={}&amp;\bigl(-113787772450244355120783,\ 128201904809150744170883,\\
+&amp;\phantom{(}\ -38505688177919229524815\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{row}_1(U)={}&amp;\bigl(-113787772450244355120783,\ 128201904809150744170883,\\
+&amp;\phantom{(}\ -38505688177919229524815\bigr).
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{row}_2(U)={}&amp;\bigl(25526442133869073534457,\ -46145588766202269201100,\\
+&amp;\phantom{(}\ 20505624501938193115800\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{row}_2(U)={}&amp;\bigl(25526442133869073534457,\ -46145588766202269201100,\\
+&amp;\phantom{(}\ 20505624501938193115800\bigr).
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{row}_3(U)={}&amp;\bigl(-307703996139997391582989,\ -152884949282210989518165,\\
+&amp;\phantom{(}\ 236881111386715610374554\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{row}_3(U)={}&amp;\bigl(-307703996139997391582989,\ -152884949282210989518165,\\
+&amp;\phantom{(}\ 236881111386715610374554\bigr).
+\end{aligned}
+\]</span>
+<p>Direct integer multiplication gives <span class="math" data-tex="\(Z=UB\)">\(Z=UB\)</span>, and
+<span class="math" data-tex="\(\det U=1\)">\(\det U=1\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> and its inverse have integer entries
+and the two sets of rows generate exactly the same lattice.
+The inverse is integral because the adjugate identity expresses it
+as the integer adjugate divided by <span class="math" data-tex="\(\det U=1\)">\(\det U=1\)</span>.</p>
+<p>The rational Gram–Schmidt calculation (21.3) on <span class="math" data-tex="\(Z\)">\(Z\)</span> satisfies
+all three inequalities <span class="math" data-tex="\(|\mu_{ij}|\le1/2\)">\(|\mu_{ij}|\le1/2\)</span> and both
+Lovász inequalities (21.4). The
+<a href="verification/reduction_lattice_certificate.py">exact reduction program</a>
+records the rational numerators and denominators for each of these
+checks. It also replays every integer row operation:
+there are 126 nonzero size reductions and 110 swaps.
+Each reduction preserves the integer potential (21.6), and
+each swap decreases it by a factor strictly below <span class="math" data-tex="\(3/4\)">\(3/4\)</span>.
+These checks give both a reproducible construction and a certificate
+of the final basis. The final basis identity and inequalities alone
+are sufficient to use Proposition 21.2.</p>
+<p><strong>Proposition 21.8.</strong> Every coefficient vector in (21.20) satisfies
+<span class="math math-display" data-tex="\[
+ |\Lambda|&gt;10^{-48}.
+ \tag{21.22}
+\]">\[
+ |\Lambda|&gt;10^{-48}.
+ \tag{21.22}
+\]</span>
+If, in addition, <span class="math" data-tex="\(0&lt;|\Lambda|&lt;e^{-X}\)">\(0&lt;|\Lambda|&lt;e^{-X}\)</span>, then
+<span class="math math-display" data-tex="\[
+ X\le119.
+ \tag{21.23}
+\]">\[
+ X\le119.
+ \tag{21.23}
+\]</span></p>
+<p><strong>Proof.</strong> Proposition 21.2 with <span class="math" data-tex="\(n=3\)">\(n=3\)</span> permits
+<span class="math math-display" data-tex="\[
+ l_0^2=\frac{\|z_1\|_2^2}{4}
+ =\frac{42832185304769368334706960617223635440163479547}{4}.
+\]">\[
+ l_0^2=\frac{\|z_1\|_2^2}{4}
+ =\frac{42832185304769368334706960617223635440163479547}{4}.
+\]</span>
+Let
+<span class="math math-display" data-tex="\[
+ R=103479593767043471534146,\qquad
+ E_0=R-3\cdot10^{20}=103179593767043471534146.
+\]">\[
+ R=103479593767043471534146,\qquad
+ E_0=R-3\cdot10^{20}=103179593767043471534146.
+\]</span>
+Exact squaring gives
+<span class="math math-display" data-tex="\[
+ R^2\le l_0^2-2\cdot10^{40}&lt;(R+1)^2.
+\]">\[
+ R^2\le l_0^2-2\cdot10^{40}&lt;(R+1)^2.
+\]</span>
+Therefore the square root in (21.7), minus the rounding error
+<span class="math" data-tex="\(3X_0\)">\(3X_0\)</span>, is at least <span class="math" data-tex="\(E_0&gt;0\)">\(E_0&gt;0\)</span>.
+Lemma 21.4 now gives
+<span class="math math-display" data-tex="\[
+ C|\Lambda|\ge E_0,\qquad E_0\,10^{48}&gt;10^{70}=C,
+\]">\[
+ C|\Lambda|\ge E_0,\qquad E_0\,10^{48}&gt;10^{70}=C,
+\]</span>
+which proves (21.22).
+If the additional upper bound holds and <span class="math" data-tex="\(X\ge120\)">\(X\ge120\)</span>, then
+<span class="math math-display" data-tex="\[
+ |\Lambda|&lt;e^{-X}\le e^{-120}&lt;10^{-48},
+\]">\[
+ |\Lambda|&lt;e^{-X}\le e^{-120}&lt;10^{-48},
+\]</span>
+a contradiction. For the last strict comparison,
+<span class="math" data-tex="\(e&gt;1+1+1/2+1/6=8/3\)">\(e&gt;1+1+1/2+1/6=8/3\)</span>, and the integer comparison
+<span class="math" data-tex="\(8^{120}&gt;10^{48}3^{120}\)">\(8^{120}&gt;10^{48}3^{120}\)</span> proves
+<span class="math" data-tex="\((8/3)^{120}&gt;10^{48}\)">\((8/3)^{120}&gt;10^{48}\)</span>. Thus <span class="math" data-tex="\(X&lt;120\)">\(X&lt;120\)</span>, giving (21.23)
+because <span class="math" data-tex="\(X\)">\(X\)</span> is an integer. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The condition <span class="math" data-tex="\(0&lt;|\Lambda|&lt;e^{-X}\)">\(0&lt;|\Lambda|&lt;e^{-X}\)</span> is an explicit assumption
+in the second conclusion. A coefficient bound alone cannot imply
+that all coefficients are small: for example
+<span class="math" data-tex="\((b_1,b_2,b_3)=(10^{20},0,0)\)">\((b_1,b_2,b_3)=(10^{20},0,0)\)</span> belongs to the initial box.
+For another Diophantine problem its own upper bound
+<span class="math" data-tex="\(A e^{-\lambda X}\)">\(A e^{-\lambda X}\)</span> can instead be inserted in (21.8).</p>
+<p>The matrix construction and comparison of its last coordinate with
+the logarithmic form are the mechanism used in
+<a href="https://math.deweger.net/proefschrift/proefschrift-hoofdstuk3.pdf">de Weger, <em>Algorithms for Diophantine Equations</em>, original doctoral thesis</a>,
+Section 3.7, Lemma 3.7 and equation (3.23), printed pages 57–59.
+Here the horizontal scale is one, all rounding is downward, and
+Lemma 21.4 keeps the square-root expression explicit.</p>
+<p><img src="figures/reduction-certificates.png" alt="Certified logarithmic-form bounds for two complete equations and a three-logarithm lattice" class="course-figure" width="1952" height="816" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="reduction-certificates" data-asset-sha256="3687610A003D3A57D0FE71EB9380AC7DB686123FC7A8ABCE9D6F880E7C279D03"></p>
+<p><em>Figure 21.1. Left: exact distances from <span class="math" data-tex="\(5^n\)">\(5^n\)</span> to the adjacent powers
+of two for <span class="math" data-tex="\(4\le n\le13\)">\(4\le n\le13\)</span>; the entire interval is excluded by
+Theorem 21.7. The horizontal dashed line is the allowed distance 20.
+Right: the proved lattice lower bound <span class="math" data-tex="\(10^{-48}\)">\(10^{-48}\)</span> and the additional
+upper bound <span class="math" data-tex="\(e^{-X}\)">\(e^{-X}\)</span>, displayed on a logarithmic vertical scale.
+The sampled curve illustrates Proposition 21.8; the exclusion at
+integer <span class="math" data-tex="\(X=120\)">\(X=120\)</span> is proved by the exact comparison
+<span class="math" data-tex="\(8^{120}&gt;10^{48}3^{120}\)">\(8^{120}&gt;10^{48}3^{120}\)</span>, not by the plot.
+<a href="figure_sources/reduction_certificate_figure.py">Figure program</a>.</em></p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<ol>
+<li><strong>Easy: the distance lemma.</strong> Prove Lemma 21.1 directly.
+Determine whether a convergent hypothesis, <span class="math" data-tex="\(q&gt;6M\)">\(q&gt;6M\)</span>, or a strict
+exclusion threshold for <span class="math" data-tex="\(w\)">\(w\)</span> is necessary.</li>
+<li><strong>Medium: a homogeneous certificate.</strong> Implement the continued-fraction
+reduction for <span class="math" data-tex="\(m\log2-n\log3\)">\(m\log2-n\log3\)</span> using rational arithmetic.
+Reproduce the convergents and the final range of Theorem 11.4.
+Explain why reducing <span class="math" data-tex="\(m/n\)">\(m/n\)</span> to lowest terms loses no solutions,
+and resolve the positive exponents with <span class="math" data-tex="\(n&lt;4\)">\(n&lt;4\)</span>.</li>
+<li><strong>Medium: the lattice lemma.</strong> Prove (21.7). Identify the precise
+purpose of nonsingularity and give a sufficient condition for
+its right side to be positive.</li>
+<li><strong>Hard: an exact LLL reduction.</strong> For the form in (21.20), start
+from <span class="math" data-tex="\(X_0=10^{20}\)">\(X_0=10^{20}\)</span>, choose <span class="math" data-tex="\(C\)">\(C\)</span>, and certify a lattice lower
+bound. Assuming also <span class="math" data-tex="\(0&lt;|\Lambda|&lt;e^{-X}\)">\(0&lt;|\Lambda|&lt;e^{-X}\)</span>, reduce the
+coefficient range. Record enough exact information to reconstruct
+every rounding and every basis operation.</li>
+</ol>
+<p><strong>Solution 1.</strong> Let <span class="math" data-tex="\(t\in\mathbb Z\)">\(t\in\mathbb Z\)</span> be nearest to <span class="math" data-tex="\(q\theta\)">\(q\theta\)</span>.
+The identity
+<span class="math math-display" data-tex="\[
+ q\mu=q(u\theta-v+\mu)-u(q\theta-t)+(qv-ut)
+\]">\[
+ q\mu=q(u\theta-v+\mu)-u(q\theta-t)+(qv-ut)
+\]</span>
+has integer final term. Taking distance to the integers gives
+<span class="math math-display" data-tex="\[
+ \|q\mu\|\le q|u\theta-v+\mu|+u\|q\theta\|
+ &lt;qAB^{-w}+M\|q\theta\|.
+\]">\[
+ \|q\mu\|\le q|u\theta-v+\mu|+u\|q\theta\|
+ &lt;qAB^{-w}+M\|q\theta\|.
+\]</span>
+Thus <span class="math" data-tex="\(\epsilon&lt;qAB^{-w}\)">\(\epsilon&lt;qAB^{-w}\)</span>.
+If <span class="math" data-tex="\(w\ge\log(Aq/\epsilon)/\log B\)">\(w\ge\log(Aq/\epsilon)/\log B\)</span>, then
+<span class="math" data-tex="\(qAB^{-w}\le\epsilon\)">\(qAB^{-w}\le\epsilon\)</span>, a contradiction.
+Neither a convergent nor <span class="math" data-tex="\(q&gt;6M\)">\(q&gt;6M\)</span> was used.
+The endpoint is excluded because the original upper bound is strict.
+The essential numerical condition is <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>; if it fails,
+this argument gives no exclusion.</p>
+<p><strong>Solution 2.</strong> Compute the two intervals (21.19) with <span class="math" data-tex="\(N=100\)">\(N=100\)</span>.
+Apply integer-part extraction and reversed reciprocal intervals
+to their ratio. Starting from the four recurrence values in
+Section 5.3, the partial quotients through the first excluded
+numerator are
+<span class="math math-display" data-tex="\[
+ 1,1,1,2,2,3,1,5,2,23,2,2,1,1,55.
+\]">\[
+ 1,1,1,2,2,3,1,5,2,23,2,2,1,1,55.
+\]</span>
+The last eligible numerator and denominator are <span class="math" data-tex="\(301994,190537\)">\(301994,190537\)</span>;
+the next pair is <span class="math" data-tex="\(16785921,10590737\)">\(16785921,10590737\)</span>, so its numerator violates
+the proved strict bound <span class="math" data-tex="\(m&lt;10^7\)">\(m&lt;10^7\)</span>.
+The least printed <span class="math" data-tex="\(L_j\)">\(L_j\)</span> among eligible rows is six, which is
+more than needed for the uniform error <span class="math" data-tex="\(10^{-8}\)">\(10^{-8}\)</span>.
+For <span class="math" data-tex="\(m=gp,n=gq\)">\(m=gp,n=gq\)</span>, the logarithmic form is <span class="math" data-tex="\(g\)">\(g\)</span> times the reduced
+error. Since <span class="math" data-tex="\(g\ge1\)">\(g\ge1\)</span>, the uniform lower bound remains valid.
+The upper bound <span class="math" data-tex="\(20/(3^n-20)\)">\(20/(3^n-20)\)</span> then gives <span class="math" data-tex="\(n\le19\)">\(n\le19\)</span>.
+Exact integer comparisons for <span class="math" data-tex="\(4\le n\le19\)">\(4\le n\le19\)</span> yield only
+<span class="math" data-tex="\((m,n)=(6,4),(8,5)\)">\((m,n)=(6,4),(8,5)\)</span>.
+For <span class="math" data-tex="\(n=1,2,3\)">\(n=1,2,3\)</span>, enumerate <span class="math" data-tex="\(1\le m\le
+\lfloor\log_2(3^n+20)\rfloor\)">\(1\le m\le
+\lfloor\log_2(3^n+20)\rfloor\)</span>, using integer bit lengths.
+The successful sets are respectively <span class="math" data-tex="\(\{1,2,3,4\}\)">\(\{1,2,3,4\}\)</span>,
+<span class="math" data-tex="\(\{1,2,3,4\}\)">\(\{1,2,3,4\}\)</span> and <span class="math" data-tex="\(\{3,4,5\}\)">\(\{3,4,5\}\)</span>, as in (21.10).
+The linked equation program implements these operations with
+integers and fractions and checks every printed convergent.</p>
+<p><strong>Solution 3.</strong> Put <span class="math" data-tex="\(v=A_Cb\)">\(v=A_Cb\)</span> and write its last coordinate as
+<span class="math" data-tex="\(s=\sum b_j\lfloor C\log\alpha_j\rfloor\)">\(s=\sum b_j\lfloor C\log\alpha_j\rfloor\)</span>.
+Nonsingularity and <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> ensure <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, so
+<span class="math math-display" data-tex="\[
+ l_0^2\le\|v\|_2^2
+ =\sum_{j&lt;n}b_j^2+s^2
+ \le(n-1)X_0^2+s^2.
+\]">\[
+ l_0^2\le\|v\|_2^2
+ =\sum_{j&lt;n}b_j^2+s^2
+ \le(n-1)X_0^2+s^2.
+\]</span>
+The hypothesis makes the resulting lower bound
+<span class="math" data-tex="\(|s|\ge\sqrt{l_0^2-(n-1)X_0^2}\)">\(|s|\ge\sqrt{l_0^2-(n-1)X_0^2}\)</span> real and positive.
+Each floor introduces an error less than one, hence
+<span class="math" data-tex="\(|s-C\Lambda|\le nX_0\)">\(|s-C\Lambda|\le nX_0\)</span>.
+Subtract this error using the triangle inequality to obtain
+(21.7). Its right side is positive exactly when
+<span class="math" data-tex="\(l_0^2&gt;(n^2+n-1)X_0^2\)">\(l_0^2&gt;(n^2+n-1)X_0^2\)</span>.
+The weaker displayed hypothesis in Lemma 21.4 is enough for
+the inequality, but may leave a nonpositive lower bound.</p>
+<p><strong>Solution 4.</strong> Choose <span class="math" data-tex="\(C=10^{70}\)">\(C=10^{70}\)</span>.
+The 240-term intervals in Section 6 certify all three floors
+and hence the integer matrix <span class="math" data-tex="\(A_C\)">\(A_C\)</span>.
+Execute size reductions using nearest integers to the exact
+Gram–Schmidt fractions, and swap only when the exact Lovász
+inequality fails. Carry the same row operations on the identity
+matrix to obtain <span class="math" data-tex="\(U\)">\(U\)</span>. The program records 236 operations,
+including 110 swaps, and verifies every potential comparison.
+Its output is the displayed basis <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(\det U=1\)">\(\det U=1\)</span>.
+Check <span class="math" data-tex="\(Z=UA_C^{\mathsf T}\)">\(Z=UA_C^{\mathsf T}\)</span>, the three size inequalities,
+and the two Lovász inequalities. Proposition 21.2 gives
+<span class="math" data-tex="\(l_0^2=\|z_1\|^2/4\)">\(l_0^2=\|z_1\|^2/4\)</span>.
+The exact square-root bracket in Proposition 21.8 then gives
+<span class="math" data-tex="\(C|\Lambda|\ge103179593767043471534146&gt;C10^{-48}\)">\(C|\Lambda|\ge103179593767043471534146&gt;C10^{-48}\)</span>.
+The assumed upper bound rules out <span class="math" data-tex="\(X\ge120\)">\(X\ge120\)</span>, since
+<span class="math" data-tex="\(8^{120}&gt;10^{48}3^{120}\)">\(8^{120}&gt;10^{48}3^{120}\)</span> and <span class="math" data-tex="\(e&gt;8/3\)">\(e&gt;8/3\)</span>.
+Thus the reduced integer bound is <span class="math" data-tex="\(X\le119\)">\(X\le119\)</span>.
+Without the additional upper bound the certified conclusion is
+<span class="math" data-tex="\(|\Lambda|&gt;10^{-48}\)">\(|\Lambda|&gt;10^{-48}\)</span>, not a smaller coefficient range.</p>
+<h2 id="8-what-to-retain-with-a-complete-resolution">8. What to retain with a complete resolution</h2>
+<p>A reproducible certificate has four connected parts:</p>
+<ol>
+<li>The equation, domain, logarithmic form and proof of nonvanishing,
+followed by the exact analytic theorem, its parameters and the
+resulting initial bound.</li>
+<li>Rational logarithm intervals, their remainder estimates, and
+either all required convergents or the integer lattice matrix,
+change of basis and rational Gram–Schmidt checks.</li>
+<li>The comparison proving the reduced bound, with strict endpoints
+and common factors handled explicitly.</li>
+<li>The exhaustive integer search range and its complete output,
+including the small cases excluded from earlier inequalities.</li>
+</ol>
+<p>For the two equations, the certificate data contain all these finite
+checks and the proofs above supply the analytic implications.
+For the lattice example, the data also contain every elementary
+operation and the positive integer potential that decreases at swaps.
+All programs use the Python standard library for their proof checks.
+The figure uses numerical coordinates only to illustrate inequalities
+already proved exactly.</p>
+<h3 id="what-this-lesson-uses-from-earlier-lessons">What this lesson uses from earlier lessons</h3>
+<p>Theorem 7.1 supplies the explicit two-logarithm lower bound with
+constant <span class="math" data-tex="\(21600\)">\(21600\)</span>. Theorem 11.3 supplies Legendre's criterion,
+and equation (11.13) supplies the rational logarithm intervals.
+These results are proved in the linked earlier lessons.
+Theorem 11.4 is reproduced here, including its finite reduction.
+No external citation replaces a reduction proof or a search
+exhaustiveness argument in this lesson.</p>
+<h3 id="freely-accessible-sources">Freely accessible sources</h3>
+<ul>
+<li>A. Dujella and A. Pethő, <em>Generalization of a theorem of Baker and
+Davenport</em>, Lemma 5(a), <a href="https://web.math.pmf.unizg.hr/~duje/pdf/qjm.pdf">author version</a>.</li>
+<li>A. K. Lenstra, H. W. Lenstra, Jr., and L. Lovász, <em>Factoring
+polynomials with rational coefficients</em>, Section 1, especially
+Proposition (1.11), <a href="https://www.math.ucdavis.edu/~deloera/MISC/LA-BIBLIO/trunk/Lovasz/LovaszLenstraLenstrafactor.pdf">free university-hosted paper</a>.</li>
+<li>B. M. M. de Weger, <em>Algorithms for Diophantine Equations</em>,
+original doctoral thesis (1988), Chapter 3, Section 3.7,
+<a href="https://math.deweger.net/proefschrift/proefschrift-hoofdstuk3.pdf">free author-hosted chapter</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-20.html">← Towards abc II: the theorems of Stewart and Yu</a><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="TR-BAKER-21.pdf" download>PDF of this lesson</a> · <a href="sources/TR-BAKER-21.tex" download>Editable LaTeX source of this lesson</a> · <span class="unlinked">Complete course source package</span> · <a href="src/TR-BAKER-21.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

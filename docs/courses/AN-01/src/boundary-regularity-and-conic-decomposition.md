@@ -1,6 +1,6 @@
 # Boundary regularity and conic decomposition
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A singular covector can be read at one point on the boundary of a complex tube. This lesson proves the exact correspondence: Fourier regularity in the direction \(\theta\) is equivalent to derivative bounds near the boundary point \(x-i\theta\). The correspondence works for smooth, analytic and all the derivative-growth classes considered here. It then gives a decomposition subordinate to any finite closed conic cover, together with the precise ambiguity on cone intersections.
 

@@ -1,6 +1,6 @@
 # Cyclic families and countable detection
 
-**Self-checked by the writing AI.**
+
 
 A family of vectors can describe a representation in two different ways: its algebraic orbits may span the Hilbert space, or its values may detect every operator. Passing to the commutant exchanges these two properties. Countability of operator detection is then equivalent to an intrinsic condition on the algebra's projections, even when the Hilbert space is not separable.
 

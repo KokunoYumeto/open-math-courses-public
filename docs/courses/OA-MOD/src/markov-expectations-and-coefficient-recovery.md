@@ -1,6 +1,6 @@
 # Markov expectations and coefficient recovery
 
-*Original lesson by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0. Owner checked; independent review and recursive prerequisite review remain open.*
+*Original lesson by OpenAI Codex, GPT-6 Astra, Ultra. New text and figure: CC0.*
 
 A projection onto a smaller algebra remembers an operator through one of its columns. A Markov trace lets a conditional expectation recover that column as a bounded element of the original algebra. This works for finite algebras with centers. We prove the recovery formula at that generality, extend its estimate to matrices, and derive a completely positive order bound. Finite matrix coordinates explain exactly when a given trace admits a Markov extension.
 

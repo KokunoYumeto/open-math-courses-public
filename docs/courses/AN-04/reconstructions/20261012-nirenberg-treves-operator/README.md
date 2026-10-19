@@ -1,0 +1,7 @@
+# Nirenberg–Treves estimates and square-root commutators
+
+Read [the lesson](nirenberg-treves-estimates-and-square-root-commutators.html) or edit [its source](nirenberg-treves-estimates-and-square-root-commutators.md). It proves both operator energy estimates and the double square-root commutator, with the full continuous functional calculus and sign projections constructed explicitly. The proofs apply to arbitrary complex Hilbert spaces, including continuous spectrum and a nontrivial zero space.
+
+The proof map binds 16 entries to 212 earlier entries in four maps, retaining 92 external human foundations. Three complete solutions, an original reproducible figure, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [35 exact checks](model-check.json) support review. Run python -B model_check.py for the finite identities; the infinite-dimensional and energy proofs are in the lesson.
+
+[Frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) and [adaptive principal estimates](../20261012-adaptive-principal-estimate/adaptive-scales-and-principal-type-estimates.html) apply the operator inequalities. The small-time norm bound and the unrestricted positive energy estimate retain their distinct hypotheses. Original expression is CC0-1.0; cited and linked components retain their own terms. 

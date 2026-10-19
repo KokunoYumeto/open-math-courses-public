@@ -8,7 +8,7 @@ An infinite group usually has no invariant probability measure on its points. It
 
 We will turn such an average into finitely supported probabilities, then into finite sets with small translation boundaries. The same finite sets produce almost invariant vectors in the regular representation. A final argument explains why they make the full and reduced group operator norms agree.
 
-The prerequisites are Hahn–Banach separation, weak-star compactness of the unit ball of a dual space, and basic unitary representations and \(C^*\)-algebras. The measure-space applications continue in [Invariant means on measured relations](invariant-means-on-measured-relations.md). We use discrete groups throughout this lesson. The locally compact version also requires Haar measure and uniform control over compact sets; it is discussed in [Takesaki].
+The prerequisites are Hahn–Banach separation, weak-star compactness of the unit ball of a dual space, and basic unitary representations and \(C^*\)-algebras. The measure-space applications continue in [Invariant means on measured relations](invariant-means-on-measured-relations.md). We use discrete groups throughout this lesson. The locally compact versions, including compact-uniform Reiter approximation and compact Følner sets, are proved in [Haar averages and compact translation control](haar-averages-and-compact-translation-control.md), Theorems 3.1, 4.1 and 5.1. [Takesaki] gives the classical source context.
 
 Let \(\Gamma\) be a countable discrete group. For bounded functions and summable functions, use the same left translation convention:
 
@@ -302,4 +302,8 @@ This bound is independent of the representation \(\pi\). It tends to zero for th
 
 ## References
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). The amenability results there include locally compact groups.
+- [Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, Chapter XIII, §4, printed pp. 60–70. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Proposition 4.1 and Definition 4.2 give the invariant-mean and fixed-point characterizations. Proposition 4.3 and Example 4.4 treat two-sided means, permanence and free-group nonamenability. Proposition 4.5 and Theorems 4.6–4.7 give the approximation, regular-representation, group-norm and Følner characterizations for locally compact groups.
+- [Programme locally compact groups] [Haar averages and compact translation control](haar-averages-and-compact-translation-control.md), Theorems 1.2, 2.1, 3.1, 4.1 and 5.1, gives the Haar-integration and compact-uniform versions. Its closed-subgroup input is proved in [Closed subgroups and continuous averaging](closed-subgroups-and-continuous-averaging.md), Theorem 2.1. Those topological inputs are separate from the discrete coset argument of Proposition 4.2 here.
+
+This lesson treats countable discrete groups. Its proofs pass from an invariant mean to finitely supported probabilities by finite-family separation, use scalar level sets to obtain finite Følner sets, and compare the group norms by unitary absorption and extension of a state to bounded operators. No Fourier-algebra ideal theorem is a prerequisite of Section 6. The nonabelian dihedral calculation and the uniform representation estimate are worked out in the exercises.
+

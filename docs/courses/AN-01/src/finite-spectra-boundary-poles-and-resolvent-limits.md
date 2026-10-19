@@ -1,6 +1,6 @@
 # Finite spectra, boundary poles and resolvent limits
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 An oriented interval of frequencies gives both a removable quotient and its exact square norm. At a real pole, the limiting side supplies additional point masses. We calculate these complete distributions and prove uniform estimates on bounded Schwartz families, then determine which fundamental solution a small imaginary term selects.
 

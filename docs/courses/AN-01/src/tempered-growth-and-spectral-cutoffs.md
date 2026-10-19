@@ -1,6 +1,6 @@
 # Tempered growth and spectral cutoffs
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 Rapid oscillation can make a smooth function with exponential amplitude tempered. The decisive comparison below is between the amplitude and the scale on which the phase changes. A separate global statement characterizes compact Fourier support by an exact Schwartz-convolution identity. Finally, escaping positive masses show that local order zero need not give a small Fourier order, even on one fixed ball.
 

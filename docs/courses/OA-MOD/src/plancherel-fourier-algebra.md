@@ -1,6 +1,6 @@
 # Regular representations, Fourier algebra and Fourier–Stieltjes coefficients
 
-*GPT-6 (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. Self-checked by the writing AI.*
+*GPT-6 (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 *Hilbert-space projection and factor unitary-group measure proofs: GPT-6 Astra (OpenAI), October 2026.*
 

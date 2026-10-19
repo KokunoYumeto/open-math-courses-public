@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Rational state records and exact coherence loss · Modular theory and weights</title><link href="../../assets/site.css" rel="stylesheet"/><link href="reader.css" rel="stylesheet"/><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Modular theory and weights</a> · <a href="src/rational-state-records-and-coherence-loss.md">Editable Markdown</a></nav><article class="lesson"><h1 id="rational-state-records-and-exact-coherence-loss">Rational state records and exact coherence loss</h1>
+<p>A finite record can preserve a state's averages exactly and still lose off-diagonal information. Here the loss can be computed entry by entry. We construct the two completely positive maps, determine their exact return map, and find the best commutator coefficient for each density. The same coefficients form a continuous semigroup for every faithful matrix density, with an explicit rate of convergence to its centralizer.</p>
+<p>We also prove that any unital completely positive reconstruction can be perturbed to have a rational faithful input state. The proof works for an arbitrary state on a unital C*-algebra and gives a bound at every matrix amplification.</p>
+<h2 id="the-state-and-the-record-space"><span id="OA-MOD-RSR-01"></span><span id="oa-mod-rsr-01"></span>The state and the record space</h2>
+<p>Throughout the first five sections,</p>
+<span class="math math-display" data-tex="\[
+\tau_m=\operatorname{Tr}_m/m,\qquad
+h&gt;0,\quad \tau_m(h)=1,\qquad
+\varphi(x)=\tau_m(hx).
+\tag{RSR.1}
+\]">\[
+\tau_m=\operatorname{Tr}_m/m,\qquad
+h&gt;0,\quad \tau_m(h)=1,\qquad
+\varphi(x)=\tau_m(hx).
+\tag{RSR.1}
+\]</span>
+<p>The matrix size <span class="math" data-tex="\(m\)">\(m\)</span> is a positive integer. The error norm is</p>
+<span class="math math-display" data-tex="\[
+\|x\|_\varphi^\#
+=\left(\frac{\varphi(x^*x)+\varphi(xx^*)}{2}\right)^{1/2}.
+\tag{RSR.2}
+\]">\[
+\|x\|_\varphi^\#
+=\left(\frac{\varphi(x^*x)+\varphi(xx^*)}{2}\right)^{1/2}.
+\tag{RSR.2}
+\]</span>
+<p>This symmetric state norm is distinct from the fourth-root Hilbert norm in <a href="OA-MOD-WAD.html#oa-mod-wad-07">The finite-tracial-algebra theorem in full generality</a>.</p>
+<p>The finite diagonalization, matrix trace duality and completely positive sandwich rules are proved in <a href="OA-MOD-WAD.html#oa-mod-wad-01">Densities, pairings and completely positive maps</a> and its explicit earlier inputs. Assume first that <span class="math" data-tex="\(h\)">\(h\)</span> is diagonal and has rational eigenvalues. Choose positive integers <span class="math" data-tex="\(p_i,q\)">\(p_i,q\)</span> so that</p>
+<span class="math math-display" data-tex="\[
+h_i=\frac{mp_i}{q},\qquad q=\sum_{i=1}^m p_i.
+\tag{RSR.3}
+\]">\[
+h_i=\frac{mp_i}{q},\qquad q=\sum_{i=1}^m p_i.
+\tag{RSR.3}
+\]</span>
+<p>Such integers exist because the positive rational probabilities <span class="math" data-tex="\(h_i/m\)">\(h_i/m\)</span> sum to one: take a common denominator.</p>
+<p>Use the record space</p>
+<span class="math math-display" data-tex="\[
+K=\operatorname{span}\{\xi_{r,i}:1\le i\le m,\ 1\le r\le p_i\},
+\qquad \dim K=q,
+\]">\[
+K=\operatorname{span}\{\xi_{r,i}:1\le i\le m,\ 1\le r\le p_i\},
+\qquad \dim K=q,
+\]</span>
+<p>with the displayed vectors orthonormal. For each layer <span class="math" data-tex="\(r\le p_{\max}=\max_i p_i\)">\(r\le p_{\max}=\max_i p_i\)</span>, let <span class="math" data-tex="\(J_r:\mathbb C^m\to K\)">\(J_r:\mathbb C^m\to K\)</span> be</p>
+<span class="math math-display" data-tex="\[
+J_re_i=
+\begin{cases}\xi_{r,i},&amp;r\le p_i,\\0,&amp;r&gt;p_i.\end{cases}
+\]">\[
+J_re_i=
+\begin{cases}\xi_{r,i},&amp;r\le p_i,\\0,&amp;r&gt;p_i.\end{cases}
+\]</span>
+<p>Put <span class="math" data-tex="\(D=\operatorname{diag}(p_i^{-1/2})\)">\(D=\operatorname{diag}(p_i^{-1/2})\)</span>. Define recording and return maps by</p>
+<span class="math math-display" data-tex="\[
+\mathcal R(x)=\sum_{r=1}^{p_{\max}}J_rxJ_r^*,
+\qquad
+\mathcal L(y)=\sum_{r=1}^{p_{\max}}D J_r^*yJ_rD.
+\tag{RSR.4}
+\]">\[
+\mathcal R(x)=\sum_{r=1}^{p_{\max}}J_rxJ_r^*,
+\qquad
+\mathcal L(y)=\sum_{r=1}^{p_{\max}}D J_r^*yJ_rD.
+\tag{RSR.4}
+\]</span>
+<p>Their domains and codomains are <span class="math" data-tex="\(M_m\xrightarrow{\mathcal R}B(K)\cong M_q\)">\(M_m\xrightarrow{\mathcal R}B(K)\cong M_q\)</span> and <span class="math" data-tex="\(M_q\xrightarrow{\mathcal L}M_m\)">\(M_q\xrightarrow{\mathcal L}M_m\)</span>. Both are completely positive, since their amplifications are finite sums of positive sandwiches. The relations</p>
+<span class="math math-display" data-tex="\[
+\sum_rJ_rJ_r^*=1_K,\qquad
+\sum_rD J_r^*J_rD=1_m
+\]">\[
+\sum_rJ_rJ_r^*=1_K,\qquad
+\sum_rD J_r^*J_rD=1_m
+\]</span>
+<p>show that both maps are unital. The first identity counts each record coordinate once; the second counts each input coordinate <span class="math" data-tex="\(p_i\)">\(p_i\)</span> times with weight <span class="math" data-tex="\(1/p_i\)">\(1/p_i\)</span>. These arguments include <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.</p>
+<h2 id="exact-state-preservation-and-the-return-coefficients"><span id="OA-MOD-RSR-02"></span><span id="oa-mod-rsr-02"></span>Exact state preservation and the return coefficients</h2>
+<p>The diagonal entry <span class="math" data-tex="\(x_{ii}\)">\(x_{ii}\)</span> appears <span class="math" data-tex="\(p_i\)">\(p_i\)</span> times in <span class="math" data-tex="\(\mathcal R(x)\)">\(\mathcal R(x)\)</span>. The diagonal entry of the return map is</p>
+<span class="math math-display" data-tex="\[
+\mathcal L(y)_{ii}=\frac1{p_i}\sum_{r=1}^{p_i}y_{(r,i),(r,i)}.
+\]">\[
+\mathcal L(y)_{ii}=\frac1{p_i}\sum_{r=1}^{p_i}y_{(r,i),(r,i)}.
+\]</span>
+<p>Therefore</p>
+<span class="math math-display" data-tex="\[
+\tau_q\mathcal R=\varphi,\qquad
+\varphi\mathcal L=\tau_q.
+\tag{RSR.5}
+\]">\[
+\tau_q\mathcal R=\varphi,\qquad
+\varphi\mathcal L=\tau_q.
+\tag{RSR.5}
+\]</span>
+<p>Every record diagonal receives weight <span class="math" data-tex="\(1/q\)">\(1/q\)</span> in the second identity. These are identities of linear functionals on the whole matrix algebras, not only on positive inputs.</p>
+<p>For general entries,</p>
+<span class="math math-display" data-tex="\[
+\mathcal L(y)_{ij}
+=\frac1{\sqrt{p_ip_j}}
+\sum_{r\le\min(p_i,p_j)}y_{(r,i),(r,j)}.
+\tag{RSR.6}
+\]">\[
+\mathcal L(y)_{ij}
+=\frac1{\sqrt{p_ip_j}}
+\sum_{r\le\min(p_i,p_j)}y_{(r,i),(r,j)}.
+\tag{RSR.6}
+\]</span>
+<p>Recording a matrix unit repeats it once in each layer shared by its two coordinates. Thus the return map <span class="math" data-tex="\(\Phi=\mathcal L\mathcal R\)">\(\Phi=\mathcal L\mathcal R\)</span> is the Schur multiplier</p>
+<span class="math math-display" data-tex="\[
+\Phi(e_{ij})=c_{ij}e_{ij},\qquad
+c_{ij}=\frac{\min(p_i,p_j)}{\sqrt{p_ip_j}}
+=\sqrt{\frac{\min(h_i,h_j)}{\max(h_i,h_j)}}.
+\tag{RSR.7}
+\]">\[
+\Phi(e_{ij})=c_{ij}e_{ij},\qquad
+c_{ij}=\frac{\min(p_i,p_j)}{\sqrt{p_ip_j}}
+=\sqrt{\frac{\min(h_i,h_j)}{\max(h_i,h_j)}}.
+\tag{RSR.7}
+\]</span>
+<p>A Schur multiplier here simply means entrywise multiplication by the displayed scalar coefficients. Complete positivity has already been proved through (RSR.4).</p>
+<p>The maps also satisfy the symmetric weighted-adjoint pairing</p>
+<span class="math math-display" data-tex="\[
+\tau_m(h^{1/2}\mathcal L(y)h^{1/2}x)
+=\tau_q(y\mathcal R(x)).
+\tag{RSR.8}
+\]">\[
+\tau_m(h^{1/2}\mathcal L(y)h^{1/2}x)
+=\tau_q(y\mathcal R(x)).
+\tag{RSR.8}
+\]</span>
+<p>To check it, the coefficient of <span class="math" data-tex="\(x_{ij}\)">\(x_{ij}\)</span> on the left is
+<span class="math" data-tex="\(m^{-1}\sqrt{h_ih_j}\mathcal L(y)_{ji}\)">\(m^{-1}\sqrt{h_ih_j}\mathcal L(y)_{ji}\)</span>.
+Using (RSR.3) and (RSR.6), this is <span class="math" data-tex="\(q^{-1}\sum_{r\le\min(p_i,p_j)}y_{(r,j),(r,i)}\)">\(q^{-1}\sum_{r\le\min(p_i,p_j)}y_{(r,j),(r,i)}\)</span>, exactly the coefficient on the right. Thus <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> agrees with the unique symmetric adjoint proved in WAD-07. Its explicit positivity proof did not require that theorem.</p>
+<p>If <span class="math" data-tex="\(h=u d u^*\)">\(h=u d u^*\)</span> is not diagonal, use
+<span class="math" data-tex="\(\mathcal R_d\operatorname{Ad}(u^*)\)">\(\mathcal R_d\operatorname{Ad}(u^*)\)</span> and
+<span class="math" data-tex="\(\operatorname{Ad}(u)\mathcal L_d\)">\(\operatorname{Ad}(u)\mathcal L_d\)</span>.
+Unitary invariance of trace proves (RSR.5) and (RSR.8) for this pair. The description of its return map in spectral blocks below shows that it is independent of the chosen eigenbasis.</p>
+<h2 id="the-best-commutator-coefficient-for-each-density"><span id="OA-MOD-RSR-03"></span><span id="oa-mod-rsr-03"></span>The best commutator coefficient for each density</h2>
+<p>Write <span class="math" data-tex="\(\|z\|_{2,\tau_m}^2=\tau_m(z^*z)\)">\(\|z\|_{2,\tau_m}^2=\tau_m(z^*z)\)</span>. Direct entry calculations give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\Phi(x)-x\|_\varphi^{\#\,2}
+&amp;=\frac1{2m}\sum_{i,j}(h_i+h_j)(1-c_{ij})^2|x_{ij}|^2,\\
+\|[h^{1/2},x]\|_{2,\tau_m}^2
+&amp;=\frac1m\sum_{i,j}(\sqrt{h_i}-\sqrt{h_j})^2|x_{ij}|^2.
+\end{aligned}
+\tag{RSR.9}
+\]">\[
+\begin{aligned}
+\|\Phi(x)-x\|_\varphi^{\#\,2}
+&amp;=\frac1{2m}\sum_{i,j}(h_i+h_j)(1-c_{ij})^2|x_{ij}|^2,\\
+\|[h^{1/2},x]\|_{2,\tau_m}^2
+&amp;=\frac1m\sum_{i,j}(\sqrt{h_i}-\sqrt{h_j})^2|x_{ij}|^2.
+\end{aligned}
+\tag{RSR.9}
+\]</span>
+<p>For example,
+<span class="math" data-tex="\(\varphi(x^*x)=m^{-1}\sum_{i,j}h_j|x_{ij}|^2\)">\(\varphi(x^*x)=m^{-1}\sum_{i,j}h_j|x_{ij}|^2\)</span>;
+the other term supplies <span class="math" data-tex="\(h_i\)">\(h_i\)</span>. No self-adjointness of <span class="math" data-tex="\(x\)">\(x\)</span> is used.</p>
+<p>When <span class="math" data-tex="\(h_i\ne h_j\)">\(h_i\ne h_j\)</span>, cancellation of the nonzero square gives the exact ratio of the corresponding coefficients:</p>
+<span class="math math-display" data-tex="\[
+\frac{(h_i+h_j)(1-c_{ij})^2}
+{2(\sqrt{h_i}-\sqrt{h_j})^2}
+=\frac{h_i+h_j}{2\max(h_i,h_j)}.
+\tag{RSR.10}
+\]">\[
+\frac{(h_i+h_j)(1-c_{ij})^2}
+{2(\sqrt{h_i}-\sqrt{h_j})^2}
+=\frac{h_i+h_j}{2\max(h_i,h_j)}.
+\tag{RSR.10}
+\]</span>
+<p>For equal eigenvalues both coefficients are zero. Define</p>
+<span class="math math-display" data-tex="\[
+\beta(h)=
+\begin{cases}
+\displaystyle\max_{h_i\ne h_j}
+\frac{h_i+h_j}{2\max(h_i,h_j)},&amp;h\text{ is not scalar},\\
+0,&amp;h\text{ is scalar}.
+\end{cases}
+\tag{RSR.11}
+\]">\[
+\beta(h)=
+\begin{cases}
+\displaystyle\max_{h_i\ne h_j}
+\frac{h_i+h_j}{2\max(h_i,h_j)},&amp;h\text{ is not scalar},\\
+0,&amp;h\text{ is scalar}.
+\end{cases}
+\tag{RSR.11}
+\]</span>
+<p><strong>Theorem.</strong> The smallest nonnegative constant <span class="math" data-tex="\(C\)">\(C\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\|\Phi(x)-x\|_\varphi^\#
+\le C\,\|[h^{1/2},x]\|_{2,\tau_m}
+\quad\text{for every }x\in M_m
+\tag{RSR.12}
+\]">\[
+\|\Phi(x)-x\|_\varphi^\#
+\le C\,\|[h^{1/2},x]\|_{2,\tau_m}
+\quad\text{for every }x\in M_m
+\tag{RSR.12}
+\]</span>
+<p>is <span class="math" data-tex="\(C=\sqrt{\beta(h)}\)">\(C=\sqrt{\beta(h)}\)</span>.</p>
+<p><strong>Proof.</strong> Bound each nonzero coefficient ratio in (RSR.9) by its maximum. Summing the nonnegative terms proves (RSR.12). A matrix unit <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> for a maximizing pair gives equality and a nonzero denominator, so no smaller constant works. When <span class="math" data-tex="\(h\)">\(h\)</span> is scalar, (RSR.7) gives <span class="math" data-tex="\(\Phi=\operatorname{id}\)">\(\Phi=\operatorname{id}\)</span> and both sides vanish; the smallest nonnegative constant is zero. Unitary conjugation preserves both norms and the commutator, so the conclusion holds for every rational-spectrum <span class="math" data-tex="\(h\)">\(h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For each fixed nonscalar faithful density, <span class="math" data-tex="\(1/2&lt;\beta(h)&lt;1\)">\(1/2&lt;\beta(h)&lt;1\)</span>. Nevertheless the universal coefficient one is sharp for these record maps. In dimension two take multiplicities <span class="math" data-tex="\(p_1=N,p_2=N+1\)">\(p_1=N,p_2=N+1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\beta(h)=\frac{2N+1}{2N+2}\longrightarrow1.
+\]">\[
+\beta(h)=\frac{2N+1}{2N+2}\longrightarrow1.
+\]</span>
+<p>The corresponding matrix unit gives the lower bound on every universal coefficient. Thus the source estimate with coefficient one cannot be uniformly improved, even among these two-dimensional rational states.</p>
+<h2 id="repeated-records-and-a-continuous-modular-filter"><span id="OA-MOD-RSR-04"></span><span id="oa-mod-rsr-04"></span>Repeated records and a continuous modular filter</h2>
+<p>There is a canonical return channel for every faithful density, including irrational spectra. Let
+<span class="math" data-tex="\(h=\sum_{\lambda}\lambda P_\lambda\)">\(h=\sum_{\lambda}\lambda P_\lambda\)</span>
+be its decomposition into distinct positive eigenvalues. For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\Phi_t(x)=
+\sum_{\lambda,\mu}
+\exp\!\left(-\frac t2|\log\lambda-\log\mu|\right)
+P_\lambda xP_\mu.
+\tag{RSR.13}
+\]">\[
+\Phi_t(x)=
+\sum_{\lambda,\mu}
+\exp\!\left(-\frac t2|\log\lambda-\log\mu|\right)
+P_\lambda xP_\mu.
+\tag{RSR.13}
+\]</span>
+<p>For rational spectra, <span class="math" data-tex="\(\Phi_1\)">\(\Phi_1\)</span> is exactly the return map (RSR.7), and <span class="math" data-tex="\(\Phi_N=\Phi_1^N\)">\(\Phi_N=\Phi_1^N\)</span> for nonnegative integers <span class="math" data-tex="\(N\)">\(N\)</span>. Formula (RSR.13) makes sense for irrational spectra without asserting an exact finite record of rational dimension for that state.</p>
+<p>We prove complete positivity directly with finite vectors. Order the eigenvalues with repetitions as <span class="math" data-tex="\(h_1\le\cdots\le h_m\)">\(h_1\le\cdots\le h_m\)</span>, set <span class="math" data-tex="\(a_i=h_i^t\)">\(a_i=h_i^t\)</span>, and put <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>. Define <span class="math" data-tex="\(v_i\in\mathbb C^m\)">\(v_i\in\mathbb C^m\)</span> by</p>
+<span class="math math-display" data-tex="\[
+(v_i)_r=
+\begin{cases}
+\sqrt{a_r-a_{r-1}}/\sqrt{a_i},&amp;r\le i,\\
+0,&amp;r&gt;i.
+\end{cases}
+\]">\[
+(v_i)_r=
+\begin{cases}
+\sqrt{a_r-a_{r-1}}/\sqrt{a_i},&amp;r\le i,\\
+0,&amp;r&gt;i.
+\end{cases}
+\]</span>
+<p>Their squared norms telescope to one, and</p>
+<span class="math math-display" data-tex="\[
+\langle v_i,v_j\rangle
+=\frac{\min(a_i,a_j)}{\sqrt{a_i a_j}}
+=\exp\!\left(-\frac t2|\log h_i-\log h_j|\right).
+\]">\[
+\langle v_i,v_j\rangle
+=\frac{\min(a_i,a_j)}{\sqrt{a_i a_j}}
+=\exp\!\left(-\frac t2|\log h_i-\log h_j|\right).
+\]</span>
+<p>This includes <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, when all <span class="math" data-tex="\(a_i=1\)">\(a_i=1\)</span> and all <span class="math" data-tex="\(v_i\)">\(v_i\)</span> are the first coordinate vector. For each <span class="math" data-tex="\(r\)">\(r\)</span>, let <span class="math" data-tex="\(B_r\)">\(B_r\)</span> be diagonal with entries <span class="math" data-tex="\((v_i)_r\)">\((v_i)_r\)</span>. Then
+<span class="math" data-tex="\(\Phi_t(x)=\sum_r B_r^*xB_r\)">\(\Phi_t(x)=\sum_r B_r^*xB_r\)</span> and <span class="math" data-tex="\(\sum_rB_r^*B_r=I\)">\(\sum_rB_r^*B_r=I\)</span>.
+Thus <span class="math" data-tex="\(\Phi_t\)">\(\Phi_t\)</span> is ucp.</p>
+<p>The coefficients multiply when <span class="math" data-tex="\(t\)">\(t\)</span> is added, so
+<span class="math" data-tex="\(\Phi_{t+s}=\Phi_t\Phi_s\)">\(\Phi_{t+s}=\Phi_t\Phi_s\)</span> and <span class="math" data-tex="\(\Phi_0=\operatorname{id}\)">\(\Phi_0=\operatorname{id}\)</span>.
+There are finitely many coefficients, each continuous in <span class="math" data-tex="\(t\)">\(t\)</span>; hence this is a norm-continuous semigroup. Its generator is explicitly</p>
+<span class="math math-display" data-tex="\[
+\mathcal A(x)=
+-\frac12\sum_{\lambda,\mu}
+|\log\lambda-\log\mu|\,P_\lambda xP_\mu.
+\tag{RSR.14}
+\]">\[
+\mathcal A(x)=
+-\frac12\sum_{\lambda,\mu}
+|\log\lambda-\log\mu|\,P_\lambda xP_\mu.
+\tag{RSR.14}
+\]</span>
+<p>The derivative is obtained term by term in this finite sum.</p>
+<p>Each <span class="math" data-tex="\(\Phi_t\)">\(\Phi_t\)</span> preserves <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, since it fixes every diagonal spectral block and all other blocks have zero state value. It commutes with the modular group
+<span class="math" data-tex="\(\sigma_s^\varphi(x)=h^{is}xh^{-is}\)">\(\sigma_s^\varphi(x)=h^{is}xh^{-is}\)</span>:
+both maps multiply <span class="math" data-tex="\(P_\lambda xP_\mu\)">\(P_\lambda xP_\mu\)</span> by scalar functions of the same two eigenvalues. The modular formula is proved directly in <a href="OA-MOD-WAD.html#oa-mod-wad-04">Positivity is equivalent to modular compatibility</a>.</p>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the fixed algebra is exactly <span class="math" data-tex="\(\{h\}'\cap M_m\)">\(\{h\}'\cap M_m\)</span>. Indeed the off-diagonal spectral coefficients are strictly below one, whereas equal-eigenvalue coefficients are one. This is also the state centralizer, defined by <span class="math" data-tex="\(\varphi(ax)=\varphi(xa)\)">\(\varphi(ax)=\varphi(xa)\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>: cyclicity rewrites that condition as <span class="math" data-tex="\(\tau_m((ha-ah)x)=0\)">\(\tau_m((ha-ah)x)=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, and testing matrix units makes it equivalent to <span class="math" data-tex="\(ha=ah\)">\(ha=ah\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+\Phi_t(x)\longrightarrow E_h(x)
+:=\sum_\lambda P_\lambda xP_\lambda
+\quad(t\longrightarrow\infty).
+\tag{RSR.15}
+\]">\[
+\Phi_t(x)\longrightarrow E_h(x)
+:=\sum_\lambda P_\lambda xP_\lambda
+\quad(t\longrightarrow\infty).
+\tag{RSR.15}
+\]</span>
+<p>The map <span class="math" data-tex="\(E_h\)">\(E_h\)</span> is a <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-preserving conditional expectation onto that algebra: its projection sandwiches prove complete positivity and unitality; its formula proves idempotence, the stated range, and
+<span class="math" data-tex="\(E_h(axb)=aE_h(x)b\)">\(E_h(axb)=aE_h(x)b\)</span> for block-diagonal <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.</p>
+<p>The coefficient proof of RSR-03 uses only (RSR.7), so its sharp bound also applies to <span class="math" data-tex="\(\Phi_1\)">\(\Phi_1\)</span> for every faithful density, without rationality.</p>
+<h2 id="uniform-matrix-level-convergence-and-an-exact-three-level-example"><span id="OA-MOD-RSR-05"></span><span id="oa-mod-rsr-05"></span>Uniform matrix-level convergence and an exact three-level example</h2>
+<p>Let <span class="math" data-tex="\(d\)">\(d\)</span> be the number of distinct eigenvalues of <span class="math" data-tex="\(h\)">\(h\)</span>. If <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\gamma=\frac12\min_{\lambda\ne\mu}|\log\lambda-\log\mu|&gt;0.
+\]">\[
+\gamma=\frac12\min_{\lambda\ne\mu}|\log\lambda-\log\mu|&gt;0.
+\]</span>
+<p>For a linear map <span class="math" data-tex="\(L\)">\(L\)</span>, define
+<span class="math" data-tex="\(\|L\|_{\mathrm{cb}}=\sup_{r\ge1}\|L^{(r)}\|\)">\(\|L\|_{\mathrm{cb}}=\sup_{r\ge1}\|L^{(r)}\|\)</span>, with entrywise amplification at matrix size <span class="math" data-tex="\(r\)">\(r\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|\Phi_t-E_h\|_{\mathrm{cb}}
+\le(d-1)e^{-\gamma t}.
+\tag{RSR.16}
+\]">\[
+\|\Phi_t-E_h\|_{\mathrm{cb}}
+\le(d-1)e^{-\gamma t}.
+\tag{RSR.16}
+\]</span>
+<p>To prove it at every size, decompose the amplified Hilbert space into its <span class="math" data-tex="\(d\)">\(d\)</span> density eigenspace blocks. Each off-diagonal block of an operator of norm at most one has norm at most one; the error multiplies it by at most <span class="math" data-tex="\(e^{-\gamma t}\)">\(e^{-\gamma t}\)</span>. For a vector with block norms <span class="math" data-tex="\(u_j\)">\(u_j\)</span>, the <span class="math" data-tex="\(i\)">\(i\)</span>-th output block has norm at most <span class="math" data-tex="\(e^{-\gamma t}\sum_{j\ne i}u_j\)">\(e^{-\gamma t}\sum_{j\ne i}u_j\)</span>. Cauchy–Schwarz bounds the square by
+<span class="math" data-tex="\(e^{-2\gamma t}(d-1)\sum_{j\ne i}u_j^2\)">\(e^{-2\gamma t}(d-1)\sum_{j\ne i}u_j^2\)</span>.
+Summing in <span class="math" data-tex="\(i\)">\(i\)</span> gives <span class="math" data-tex="\((d-1)^2e^{-2\gamma t}\sum_j u_j^2\)">\((d-1)^2e^{-2\gamma t}\sum_j u_j^2\)</span>. This bound does not depend on the amplification size. If <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, both maps are the identity and their difference is zero.</p>
+<p>For <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, (RSR.16) is exact. The difference is <span class="math" data-tex="\(e^{-\gamma t}\)">\(e^{-\gamma t}\)</span> times the map that keeps the two off-diagonal blocks and kills the diagonal blocks. With <span class="math" data-tex="\(U=P_1-P_2\)">\(U=P_1-P_2\)</span>, that map is <span class="math" data-tex="\((\operatorname{id}-\operatorname{Ad}U)/2\)">\((\operatorname{id}-\operatorname{Ad}U)/2\)</span>, of completely bounded norm at most one by the triangle inequality. A rank-one matrix unit between the two nonzero eigenspaces has norm one and is fixed by it, proving the matching lower bound.</p>
+<p>Now take <span class="math" data-tex="\(m=3\)">\(m=3\)</span> and multiplicities <span class="math" data-tex="\((p_1,p_2,p_3)=(1,2,3)\)">\((p_1,p_2,p_3)=(1,2,3)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+q=6,\qquad h=\operatorname{diag}(1/2,1,3/2),\qquad
+\varphi(x)=\tfrac16x_{11}+\tfrac13x_{22}+\tfrac12x_{33}.
+\]">\[
+q=6,\qquad h=\operatorname{diag}(1/2,1,3/2),\qquad
+\varphi(x)=\tfrac16x_{11}+\tfrac13x_{22}+\tfrac12x_{33}.
+\]</span>
+<p>Order the record by layers. Formula (RSR.4) becomes</p>
+<span class="math math-display" data-tex="\[
+\mathcal R(x)=x\ \oplus\
+\begin{pmatrix}x_{22}&amp;x_{23}\\x_{32}&amp;x_{33}\end{pmatrix}
+\ \oplus\ x_{33}.
+\tag{RSR.17}
+\]">\[
+\mathcal R(x)=x\ \oplus\
+\begin{pmatrix}x_{22}&amp;x_{23}\\x_{32}&amp;x_{33}\end{pmatrix}
+\ \oplus\ x_{33}.
+\tag{RSR.17}
+\]</span>
+<p>The dimensions <span class="math" data-tex="\(3+2+1=6\)">\(3+2+1=6\)</span> and the diagonal multiplicities are explicit. The return coefficients are</p>
+<span class="math math-display" data-tex="\[
+[c_{ij}]=
+\begin{pmatrix}
+1&amp;1/\sqrt2&amp;1/\sqrt3\\
+1/\sqrt2&amp;1&amp;\sqrt{2/3}\\
+1/\sqrt3&amp;\sqrt{2/3}&amp;1
+\end{pmatrix}.
+\tag{RSR.18}
+\]">\[
+[c_{ij}]=
+\begin{pmatrix}
+1&amp;1/\sqrt2&amp;1/\sqrt3\\
+1/\sqrt2&amp;1&amp;\sqrt{2/3}\\
+1/\sqrt3&amp;\sqrt{2/3}&amp;1
+\end{pmatrix}.
+\tag{RSR.18}
+\]</span>
+<p>In particular <span class="math" data-tex="\(e_{23}\)">\(e_{23}\)</span> appears in two layers, so its return coefficient is <span class="math" data-tex="\(2/\sqrt6=\sqrt{2/3}\)">\(2/\sqrt6=\sqrt{2/3}\)</span>. It attains the sharp squared-error ratio <span class="math" data-tex="\(\beta(h)=5/6\)">\(\beta(h)=5/6\)</span>. The slowest decay rate is <span class="math" data-tex="\(\gamma=\tfrac12\log(3/2)\)">\(\gamma=\tfrac12\log(3/2)\)</span>.</p>
+<p><img alt="Three input coordinates are recorded in layers of sizes three, two and one; their shared layers give the exact return coefficients and the sharp five-sixths squared-error ratio." src="assets/rational-state-records.svg"/></p>
+<p><em>For multiplicities <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span>, the record preserves all state averages. The <span class="math" data-tex="\(e_{23}\)">\(e_{23}\)</span> coherence survives with factor <span class="math" data-tex="\(\sqrt{2/3}\)">\(\sqrt{2/3}\)</span> per return, while the density-diagonal algebra is fixed. RSR-03 proves the sharp error ratio; RSR-04–05 prove the semigroup and its convergence.</em></p>
+<h2 id="rationalizing-the-actual-completely-positive-map"><span id="OA-MOD-RSR-06"></span><span id="oa-mod-rsr-06"></span>Rationalizing the actual completely positive map</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a unital C*-algebra, let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be any state on <span class="math" data-tex="\(A\)">\(A\)</span>, and let <span class="math" data-tex="\(T:M_m\to A\)">\(T:M_m\to A\)</span> be ucp. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a ucp map <span class="math" data-tex="\(T'\)">\(T'\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|T'-T\|_{\mathrm{cb}}&lt;\varepsilon
+\]">\[
+\|T'-T\|_{\mathrm{cb}}&lt;\varepsilon
+\]</span>
+<p>such that the density <span class="math" data-tex="\(h'\)">\(h'\)</span> of <span class="math" data-tex="\(\omega T'\)">\(\omega T'\)</span>, relative to <span class="math" data-tex="\(\tau_m\)">\(\tau_m\)</span>, has strictly positive rational eigenvalues. The map <span class="math" data-tex="\(T'\)">\(T'\)</span> is faithful on positive elements. Neither traciality nor faithfulness of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is assumed.</p>
+<p><strong>Proof.</strong> Diagonalize the density of <span class="math" data-tex="\(\omega T\)">\(\omega T\)</span>:</p>
+<span class="math math-display" data-tex="\[
+h=\sum_{i=1}^m\lambda_i e_i,\qquad
+\lambda_i\ge0,\quad\sum_i\lambda_i=m,
+\]">\[
+h=\sum_{i=1}^m\lambda_i e_i,\qquad
+\lambda_i\ge0,\quad\sum_i\lambda_i=m,
+\]</span>
+<p>where the <span class="math" data-tex="\(e_i\)">\(e_i\)</span> are orthogonal rank-one projections. Choose <span class="math" data-tex="\(0&lt;\delta&lt;\min(1,\varepsilon/3)\)">\(0&lt;\delta&lt;\min(1,\varepsilon/3)\)</span>. For every positive <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span>, choose a rational <span class="math" data-tex="\(q_i\)">\(q_i\)</span> strictly between <span class="math" data-tex="\((1-\delta)\lambda_i\)">\((1-\delta)\lambda_i\)</span> and <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span>; put <span class="math" data-tex="\(q_i=0\)">\(q_i=0\)</span> at zero eigenvalues. The rational choice is elementary: for any real interval of positive length, choose an integer denominator whose reciprocal is smaller than that length, then an integer numerator strictly between the scaled endpoints.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+b=\sum_i b_i e_i,\qquad
+b_i=
+\begin{cases}q_i/\lambda_i,&amp;\lambda_i&gt;0,\\1,&amp;\lambda_i=0.\end{cases}
+\tag{RSR.19}
+\]">\[
+b=\sum_i b_i e_i,\qquad
+b_i=
+\begin{cases}q_i/\lambda_i,&amp;\lambda_i&gt;0,\\1,&amp;\lambda_i=0.\end{cases}
+\tag{RSR.19}
+\]</span>
+<p>Thus <span class="math" data-tex="\((1-\delta)I\le b\le I\)">\((1-\delta)I\le b\le I\)</span>. In particular no inverse of a zero density eigenvalue is taken. Define</p>
+<span class="math math-display" data-tex="\[
+T'(x)=T(b^{1/2}xb^{1/2})+\tau_m(x)T(1-b).
+\tag{RSR.20}
+\]">\[
+T'(x)=T(b^{1/2}xb^{1/2})+\tau_m(x)T(1-b).
+\tag{RSR.20}
+\]</span>
+<p>The first term is cp by composition of sandwiches with <span class="math" data-tex="\(T\)">\(T\)</span>. The second is cp because a positive scalar functional is completely positive, and multiplying its scalar positive block by the positive element <span class="math" data-tex="\(T(1-b)\)">\(T(1-b)\)</span> preserves positivity. Explicitly, scalar-column tests prove positivity of <span class="math" data-tex="\([\tau_m(x_{ij})]\)">\([\tau_m(x_{ij})]\)</span> when <span class="math" data-tex="\([x_{ij}]\ge0\)">\([x_{ij}]\ge0\)</span>; sandwiching its tensor product with the identity by the diagonal copies of <span class="math" data-tex="\(T(1-b)^{1/2}\)">\(T(1-b)^{1/2}\)</span> proves the assertion. At the unit the two terms add to <span class="math" data-tex="\(T(b)+T(1-b)=1_A\)">\(T(b)+T(1-b)=1_A\)</span>.</p>
+<p>Every amplification of a ucp map is contractive. Here is the size-two Schwarz argument from <a href="OA-MOD-WAD.html#oa-mod-wad-03">The GNS adjoint has a different formula</a> in the required C*-algebra setting. For a ucp map <span class="math" data-tex="\(U\)">\(U\)</span>, apply its size-two amplification to the positive block <span class="math" data-tex="\(\binom{x^*}{1}(x,1)\)">\(\binom{x^*}{1}(x,1)\)</span>. The resulting block has entries <span class="math" data-tex="\(U(x^*x),U(x)^*,U(x),1\)">\(U(x^*x),U(x)^*,U(x),1\)</span>. Sandwiching it by the column <span class="math" data-tex="\(\binom{1}{-U(x)}\)">\(\binom{1}{-U(x)}\)</span> gives <span class="math" data-tex="\(U(x)^*U(x)\le U(x^*x)\le\|x\|^2 1\)">\(U(x)^*U(x)\le U(x^*x)\le\|x\|^2 1\)</span>. The C*-identity gives <span class="math" data-tex="\(\|U(x)\|\le\|x\|\)">\(\|U(x)\|\le\|x\|\)</span>. This applies to every amplification of <span class="math" data-tex="\(T\)">\(T\)</span>. Write <span class="math" data-tex="\(a=b^{1/2}\)">\(a=b^{1/2}\)</span>. At every size the difference between the congruence map <span class="math" data-tex="\(x\mapsto axa\)">\(x\mapsto axa\)</span> and the identity has norm at most <span class="math" data-tex="\(2\|1-a\|\)">\(2\|1-a\|\)</span>: use
+<span class="math" data-tex="\(axa-x=(a-1)xa+x(a-1)\)">\(axa-x=(a-1)xa+x(a-1)\)</span> and <span class="math" data-tex="\(\|a\|\le1\)">\(\|a\|\le1\)</span>.
+The state map has completely bounded norm one. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T'-T\|_{\mathrm{cb}}
+&amp;\le2\|1-b^{1/2}\|+\|1-b\|\\
+&amp;\le2(1-\sqrt{1-\delta})+\delta
+\le3\delta&lt;\varepsilon.
+\end{aligned}
+\tag{RSR.21}
+\]">\[
+\begin{aligned}
+\|T'-T\|_{\mathrm{cb}}
+&amp;\le2\|1-b^{1/2}\|+\|1-b\|\\
+&amp;\le2(1-\sqrt{1-\delta})+\delta
+\le3\delta&lt;\varepsilon.
+\end{aligned}
+\tag{RSR.21}
+\]</span>
+<p>The last inequality uses <span class="math" data-tex="\(\sqrt{1-\delta}\ge1-\delta\)">\(\sqrt{1-\delta}\ge1-\delta\)</span>.</p>
+<p>Evaluation by <span class="math" data-tex="\(\omega\)">\(\omega\)</span> uses only the finite matrix state <span class="math" data-tex="\(\omega T=\tau_m(h\,\cdot)\)">\(\omega T=\tau_m(h\,\cdot)\)</span>. Cyclicity of the matrix trace and commutation of <span class="math" data-tex="\(h,b\)">\(h,b\)</span> give</p>
+<span class="math math-display" data-tex="\[
+h'=hb+cI,\qquad
+c=\tau_m(h(1-b))
+=1-\frac1m\sum_iq_i.
+\tag{RSR.22}
+\]">\[
+h'=hb+cI,\qquad
+c=\tau_m(h(1-b))
+=1-\frac1m\sum_iq_i.
+\tag{RSR.22}
+\]</span>
+<p>At least one <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> is positive, and every positive eigenvalue was strictly decreased. Hence <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. It is rational because all <span class="math" data-tex="\(q_i\)">\(q_i\)</span> are rational. The eigenvalues <span class="math" data-tex="\(q_i+c\)">\(q_i+c\)</span> of <span class="math" data-tex="\(h'\)">\(h'\)</span> are therefore strictly positive rationals, including on every former zero eigenspace. Their normalized sum is one. Finally, if <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and <span class="math" data-tex="\(T'(x)=0\)">\(T'(x)=0\)</span>, then <span class="math" data-tex="\(\tau_m(h'x)=0\)">\(\tau_m(h'x)=0\)</span>; faithfulness of the matrix state forces <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof modifies the map and its state together. Replacing the density alone would not provide a compatible completely positive reconstruction.</p>
+<h2 id="an-exact-trace-preserving-reconstruction-and-its-limits"><span id="OA-MOD-RSR-07"></span><span id="oa-mod-rsr-07"></span>An exact trace-preserving reconstruction and its limits</h2>
+<p>Apply RSR-06 to <span class="math" data-tex="\(T:M_m\to A\)">\(T:M_m\to A\)</span> and <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, obtaining <span class="math" data-tex="\(T'\)">\(T'\)</span> and the faithful rational state <span class="math" data-tex="\(\varphi'=\omega T'\)">\(\varphi'=\omega T'\)</span>. Construct its record pair <span class="math" data-tex="\(\mathcal R:M_m\to M_q\)">\(\mathcal R:M_m\to M_q\)</span>, <span class="math" data-tex="\(\mathcal L:M_q\to M_m\)">\(\mathcal L:M_q\to M_m\)</span> by RSR-01–02. The new reconstruction</p>
+<span class="math math-display" data-tex="\[
+\widehat T=T'\mathcal L:M_q\to A
+\]">\[
+\widehat T=T'\mathcal L:M_q\to A
+\]</span>
+<p>is ucp and satisfies the exact state identity</p>
+<span class="math math-display" data-tex="\[
+\omega\widehat T=\varphi'\mathcal L=\tau_q.
+\tag{RSR.23}
+\]">\[
+\omega\widehat T=\varphi'\mathcal L=\tau_q.
+\tag{RSR.23}
+\]</span>
+<p>Thus its finite input carries the ordinary normalized trace. This follows without a trace assumption on the target state.</p>
+<p>For <span class="math" data-tex="\(x\)">\(x\)</span> commuting with <span class="math" data-tex="\(h'\)">\(h'\)</span>, the return map fixes <span class="math" data-tex="\(x\)">\(x\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\widehat T\mathcal R(x)=T'(x),\qquad
+\|\widehat T\mathcal R(x)-T(x)\|
+&lt;\varepsilon\|x\|\quad(x\ne0).
+\tag{RSR.24}
+\]">\[
+\widehat T\mathcal R(x)=T'(x),\qquad
+\|\widehat T\mathcal R(x)-T(x)\|
+&lt;\varepsilon\|x\|\quad(x\ne0).
+\tag{RSR.24}
+\]</span>
+<p>For <span class="math" data-tex="\(x=0\)">\(x=0\)</span> both sides are zero. On general inputs there is an additional error:</p>
+<span class="math math-display" data-tex="\[
+\|\widehat T\mathcal R(x)-T(x)\|
+\le\|\mathcal L\mathcal R(x)-x\|
++\|T'-T\|\,\|x\|.
+\tag{RSR.25}
+\]">\[
+\|\widehat T\mathcal R(x)-T(x)\|
+\le\|\mathcal L\mathcal R(x)-x\|
++\|T'-T\|\,\|x\|.
+\tag{RSR.25}
+\]</span>
+<p>Contractivity of <span class="math" data-tex="\(T'\)">\(T'\)</span> proves this inequality. The norm in its first term is the operator norm; the state-norm estimate (RSR.12) is a different estimate and cannot be substituted without a justified comparison.</p>
+<p>These maps need not be algebra homomorphisms. In the example of RSR-05, <span class="math" data-tex="\(\Phi(e_{23})=\sqrt{2/3}e_{23}\)">\(\Phi(e_{23})=\sqrt{2/3}e_{23}\)</span> while <span class="math" data-tex="\(\Phi(e_{22})=e_{22}\)">\(\Phi(e_{22})=e_{22}\)</span> and <span class="math" data-tex="\(\Phi(e_{33})=e_{33}\)">\(\Phi(e_{33})=e_{33}\)</span>. Therefore
+<span class="math" data-tex="\(\Phi(e_{23})\Phi(e_{32})=(2/3)e_{22}\ne\Phi(e_{23}e_{32})\)">\(\Phi(e_{23})\Phi(e_{32})=(2/3)e_{22}\ne\Phi(e_{23}e_{32})\)</span>.
+Exact state preservation does not assert exact recovery or an approximating matrix subalgebra.</p>
+<h2 id="solved-checks-and-the-two-source-corrections"><span id="OA-MOD-RSR-08"></span><span id="oa-mod-rsr-08"></span>Solved checks and the two source corrections</h2>
+<p><strong>Check 1: the sharp ratio in three dimensions.</strong> For <span class="math" data-tex="\(p=(1,2,3)\)">\(p=(1,2,3)\)</span> and <span class="math" data-tex="\(x=e_{23}\)">\(x=e_{23}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|x\|_\varphi^{\#\,2}=\frac5{12},\qquad
+\|[h^{1/2},x]\|_{2,\tau_3}^2
+=\frac{(\sqrt3-\sqrt2)^2}{6}.
+\]">\[
+\|x\|_\varphi^{\#\,2}=\frac5{12},\qquad
+\|[h^{1/2},x]\|_{2,\tau_3}^2
+=\frac{(\sqrt3-\sqrt2)^2}{6}.
+\]</span>
+<p>The return error square is
+<span class="math" data-tex="\(\frac5{12}(1-\sqrt{2/3})^2
+ =\frac5{36}(\sqrt3-\sqrt2)^2\)">\(\frac5{12}(1-\sqrt{2/3})^2
+ =\frac5{36}(\sqrt3-\sqrt2)^2\)</span>.
+Its ratio to the commutator square is <span class="math" data-tex="\(5/6\)">\(5/6\)</span>, proving equality in (RSR.12) for this input.</p>
+<p><strong>Check 2: recording the scalar state.</strong> If all <span class="math" data-tex="\(p_i=p\)">\(p_i=p\)</span>, every layer contains the whole input algebra. Recording is a direct sum of <span class="math" data-tex="\(p\)">\(p\)</span> copies of <span class="math" data-tex="\(x\)">\(x\)</span>, and the return averages the corresponding entries. Hence <span class="math" data-tex="\(\Phi=\operatorname{id}\)">\(\Phi=\operatorname{id}\)</span>, in agreement with <span class="math" data-tex="\(\beta(h)=0\)">\(\beta(h)=0\)</span>. This includes a one-dimensional input.</p>
+<p><strong>Check 3: a nonfaithful state becomes faithful.</strong> Let <span class="math" data-tex="\(T:M_2\to M_2\)">\(T:M_2\to M_2\)</span> be <span class="math" data-tex="\(T(x)=x_{11}I\)">\(T(x)=x_{11}I\)</span>, and let <span class="math" data-tex="\(\omega=\tau_2\)">\(\omega=\tau_2\)</span>. Its density is <span class="math" data-tex="\(h=\operatorname{diag}(2,0)\)">\(h=\operatorname{diag}(2,0)\)</span>. Choose <span class="math" data-tex="\(q_1=19/10,q_2=0\)">\(q_1=19/10,q_2=0\)</span>, with any <span class="math" data-tex="\(\delta&gt;1/20\)">\(\delta&gt;1/20\)</span> allowed by RSR-06. Then</p>
+<span class="math math-display" data-tex="\[
+b=\operatorname{diag}(19/20,1),\qquad
+c=1/20,\qquad
+h'=\operatorname{diag}(39/20,1/20).
+\]">\[
+b=\operatorname{diag}(19/20,1),\qquad
+c=1/20,\qquad
+h'=\operatorname{diag}(39/20,1/20).
+\]</span>
+<p>Direct substitution gives
+<span class="math" data-tex="\(T'(x)=(39x_{11}+x_{22})I/40\)">\(T'(x)=(39x_{11}+x_{22})I/40\)</span>.
+Both input directions now have positive state weight. The construction preserves the unit while changing the actual map.</p>
+<p><strong>Check 4: the commutator in the printed statement.</strong> In Takesaki III, Lemma XVI.1.12(c), printed page 217, the displayed second term is <span class="math" data-tex="\(h x^{1/2}\)">\(h x^{1/2}\)</span>. The theorem is for every matrix <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(x\)">\(x\)</span> need not be positive and a positive square root of <span class="math" data-tex="\(x\)">\(x\)</span> is not available. The proof on page 219 instead computes the entries of <span class="math" data-tex="\(h^{1/2}x-xh^{1/2}\)">\(h^{1/2}x-xh^{1/2}\)</span>. Equations (RSR.9–12) prove the corrected commutator statement for every matrix, with the exact best coefficient for the constructed channel.</p>
+<p><strong>Check 5: the perturbation error budget.</strong> On printed page 220, the displayed estimate in the proof of Lemma XVI.1.13 places the additive <span class="math" data-tex="\(\delta\)">\(\delta\)</span> inside a factor two before concluding <span class="math" data-tex="\(3\delta\)">\(3\delta\)</span>. That intermediate bound need not be at most <span class="math" data-tex="\(3\delta\)">\(3\delta\)</span>: in dimension one take <span class="math" data-tex="\(\delta=1/10\)">\(\delta=1/10\)</span> and <span class="math" data-tex="\(b=91/100\)">\(b=91/100\)</span>, obtained from the admissible rational choice <span class="math" data-tex="\(q_1=91/100\)">\(q_1=91/100\)</span>. Then
+<span class="math" data-tex="\(2(\|1-b\|+\delta)=19/50&gt;3/10\)">\(2(\|1-b\|+\delta)=19/50&gt;3/10\)</span>.
+The valid estimate keeps that additive term outside the factor two:
+<span class="math" data-tex="\(2\|1-b^{1/2}\|+\delta\le3\delta\)">\(2\|1-b^{1/2}\|+\delta\le3\delta\)</span>.
+Our matrix-level bound (RSR.21) supplies this estimate directly. The perturbation theorem remains valid.</p>
+<p>The human source is M. Takesaki, <em>Theory of Operator Algebras III</em>, Lemma XVI.1.12, printed pages 216–219, and Lemma XVI.1.13, pages 219–220. RSR-01–03 prove every clause of the first lemma with the corrected commutator, and RSR-06 proves the second at the stronger arbitrary-state, completely bounded norm generality. RSR-04–05 add the continuous family, exact fixed algebra, convergence rate and sharp coefficient; RSR-07 explains what the combined construction preserves.</p>
+<p>The earlier programme treatments are <a href="../OA-APPROX/tracial-adjoints-and-rational-matrix-models.html#3-rational-densities-become-matrix-dimensions">the rational-record construction</a> and <a href="../OA-APPROX/trace-preserving-finite-models.html#1-rationalizing-a-density-without-losing-positivity">the density-perturbation proof</a>. Their complete selected proofs retain the same normalization and zero-eigenvalue treatment. The subsequent injectivity-to-AFD arguments have separate proof obligations.</p>
+</article><footer>Mathematical exposition by the authors identified in the lesson and source notices, October 2026. <span class="unlinked">Sources and terms</span>.</footer></main></body></html>

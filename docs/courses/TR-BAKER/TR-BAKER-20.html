@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Towards abc II: the theorems of Stewart and Yu · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-20.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 20 of 21</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="towards-abc-ii-the-theorems-of-stewart-and-yu">Towards abc II: the theorems of Stewart and Yu</h1>
+<p><em>Written by GPT-6 Astra (OpenAI) in Codex, Ultra setting,
+October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For a primitive positive triple <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span>, let
+<span class="math" data-tex="\(G=\operatorname{rad}(abc)\)">\(G=\operatorname{rad}(abc)\)</span>. The preceding lesson bounded
+<span class="math" data-tex="\(\log c\)">\(\log c\)</span> by <span class="math" data-tex="\(G^{1+o(1)}\)">\(G^{1+o(1)}\)</span>. Stewart and Yu's argument lowers
+the fixed exponent to one third:
+<span class="math math-display" data-tex="\[
+ \log c&lt;C G^{1/3}(\log G)^3,
+\]">\[
+ \log c&lt;C G^{1/3}(\log G)^3,
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> is an effectively computable absolute constant.
+It also retains information that the radical alone loses. If
+<span class="math" data-tex="\(P(m)\)">\(P(m)\)</span> is the greatest prime factor of <span class="math" data-tex="\(m\)">\(m\)</span>, with <span class="math" data-tex="\(P(1)=1\)">\(P(1)=1\)</span>,
+then, for <span class="math" data-tex="\(c&gt;2\)">\(c&gt;2\)</span>,
+<span class="math math-display" data-tex="\[
+ \log c&lt;\min\{P(a),P(b),P(c)\}\,
+ G^{\kappa\log\log\log(8G)/\log\log G}
+\]">\[
+ \log c&lt;\min\{P(a),P(b),P(c)\}\,
+ G^{\kappa\log\log\log(8G)/\log\log G}
+\]</span>
+for another effective absolute constant <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p>The proof keeps the three greatest primes separate. Among the other
+primes, those below a rank-dependent cutoff are combined into a single
+rational base. The resulting list is short enough for an estimate with
+a factor <span class="math" data-tex="\(n^{2n}\)">\(n^{2n}\)</span>. Before grouping, however, one needs an estimate
+whose rank factor is only exponential. Using these two estimates in
+the opposite order would lose the exponent one third.</p>
+<p>Sections 1–6 prove both bounds and the resulting lower bound for
+<span class="math" data-tex="\(P(ab(a+b))\)">\(P(ab(a+b))\)</span>, with every logarithmic estimate supplied by a proved
+earlier lesson. They include the case at two, a component equal to one,
+empty grouped products, and the real logarithmic form needed when
+<span class="math" data-tex="\(a&lt;\sqrt b\)">\(a&lt;\sqrt b\)</span>. Section 7 shows the grouping on an exact triple and
+compares the bounds at a large radical parameter. Section 8 records
+related results for orientation; none is used in these proofs.</p>
+<p>The argument develops the free author version of
+<a href="https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/s0012-7094-01-10815-6.pdf">Stewart and Yu, <em>On the abc conjecture, II</em></a>,
+Theorems 1–2. Its valuation inputs are derived explicitly from the
+later estimates already proved in this course. The distinction between
+an upper bound for <span class="math" data-tex="\(\log c\)">\(\log c\)</span> and the conjectural bound for <span class="math" data-tex="\(c\)">\(c\)</span>
+remains essential.</p>
+<h2 id="1-two-different-uses-of-a-logarithmic-estimate">1. Two different uses of a logarithmic estimate</h2>
+<p>Throughout, logarithms are natural. For a nonzero rational number <span class="math" data-tex="\(u=s/t\)">\(u=s/t\)</span>
+in lowest terms, with <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, its absolute logarithmic height is
+<span class="math" data-tex="\(h(u)=\log\max\{|s|,t\}\)">\(h(u)=\log\max\{|s|,t\}\)</span>. We use the following consequences of the
+proved estimates in <a href="TR-BAKER-10.html">Two p-adic logarithms and Yu's estimates</a>,
+Theorems 10.154 and 10.234 and Lemma 10.225, and of
+<a href="TR-BAKER-08.html">Linear forms in many logarithms</a>, Theorem 8.6.
+The difference between the first two inequalities is essential.</p>
+<p><strong>Lemma 20.1.</strong> There is an effective absolute constant <span class="math" data-tex="\(D\)">\(D\)</span>; one may take
+<span class="math" data-tex="\(D=10^{30}\)">\(D=10^{30}\)</span>, with the following properties. Let <span class="math" data-tex="\(p\)">\(p\)</span> be prime,
+<span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> be multiplicatively independent positive
+rational <span class="math" data-tex="\(p\)">\(p\)</span>-adic units, and <span class="math" data-tex="\(b_j\)">\(b_j\)</span> be integers, not all zero. Put
+<span class="math math-display" data-tex="\[
+ X=\prod_{j=1}^n\alpha_j^{b_j},\qquad
+ B\ge\max\{3,|b_1|,\ldots,|b_n|\},\qquad s=\log p .
+\]">\[
+ X=\prod_{j=1}^n\alpha_j^{b_j},\qquad
+ B\ge\max\{3,|b_1|,\ldots,|b_n|\},\qquad s=\log p .
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+ v_p(X-1)&lt;
+ D^n\frac{p}{s^2}\left(\prod_jh(\alpha_j)\right)
+             \max\{\log B,s\},
+ \tag{20.1}
+\]">\[
+ v_p(X-1)&lt;
+ D^n\frac{p}{s^2}\left(\prod_jh(\alpha_j)\right)
+             \max\{\log B,s\},
+ \tag{20.1}
+\]</span>
+and, with <span class="math" data-tex="\(H_j=\max\{h(\alpha_j),s\}\)">\(H_j=\max\{h(\alpha_j),s\}\)</span>,
+<span class="math math-display" data-tex="\[
+ v_p(X-1)&lt;
+ \frac p s(Dn)^{2n}
+       \left(\prod_j\frac{H_j}{s}\right)\log B .
+ \tag{20.2}
+\]">\[
+ v_p(X-1)&lt;
+ \frac p s(Dn)^{2n}
+       \left(\prod_j\frac{H_j}{s}\right)\log B .
+ \tag{20.2}
+\]</span>
+For positive rational numbers <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>, without an independence
+condition, a nonzero real form <span class="math" data-tex="\(\Lambda=\sum_jb_j\log\alpha_j\)">\(\Lambda=\sum_jb_j\log\alpha_j\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \log|\Lambda|&gt;
+ -(Dn)^{2n}\left(\prod_j\max\{h(\alpha_j),1\}\right)\log B .
+ \tag{20.3}
+\]">\[
+ \log|\Lambda|&gt;
+ -(Dn)^{2n}\left(\prod_j\max\{h(\alpha_j),1\}\right)\log B .
+ \tag{20.3}
+\]</span></p>
+<p><strong>Proof.</strong> At odd <span class="math" data-tex="\(p\)">\(p\)</span> use the number field <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>; at two use
+<span class="math" data-tex="\(\mathbb Q(\zeta_3)\)">\(\mathbb Q(\zeta_3)\)</span>. As proved in Lesson 10, the latter has
+<span class="math" data-tex="\(d=2,e=1,f=2\)">\(d=2,e=1,f=2\)</span> at two. Thus the valuation on rational numbers remains
+<span class="math" data-tex="\(v_2\)">\(v_2\)</span>, whereas the local parameter <span class="math" data-tex="\(t=f\log p\)">\(t=f\log p\)</span> is <span class="math" data-tex="\(2\log2\)">\(2\log2\)</span>.
+At odd primes <span class="math" data-tex="\(d=e=f=1\)">\(d=e=f=1\)</span> and <span class="math" data-tex="\(t=s\)">\(t=s\)</span>. Heights are unchanged.</p>
+<p>First let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Lemma 10.225 gives
+<span class="math math-display" data-tex="\[
+ 2C_2&lt;(16\mathrm e)^{2(n+1)}
+             n^{3/2}(\log(2n))^2\frac p{s^2}.
+ \tag{20.4}
+\]">\[
+ 2C_2&lt;(16\mathrm e)^{2(n+1)}
+             n^{3/2}(\log(2n))^2\frac p{s^2}.
+ \tag{20.4}
+\]</span>
+For an independent list, the product <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> in (10.1064) is exactly
+<span class="math" data-tex="\(\prod h(\alpha_j)\)">\(\prod h(\alpha_j)\)</span>, and <span class="math" data-tex="\(C_n=(n+1)C_2\)">\(C_n=(n+1)C_2\)</span>.
+Theorem 10.234 and
+<span class="math" data-tex="\(\max\{\log B,t\}\le2\max\{\log B,s\}\)">\(\max\{\log B,t\}\le2\max\{\log B,s\}\)</span> now prove (20.1) with
+<span class="math" data-tex="\(10^{12}\)">\(10^{12}\)</span> in place of <span class="math" data-tex="\(D\)">\(D\)</span>. Here is an explicit envelope for the
+rank factors. For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+ (16\mathrm e)^{2(n+1)}&lt;50^{3n},\quad
+ n+1\le2^n,\quad n^{3/2}\le4^n,\quad
+ (\log(2n))^2\le4^n .
+\]">\[
+ (16\mathrm e)^{2(n+1)}&lt;50^{3n},\quad
+ n+1\le2^n,\quad n^{3/2}\le4^n,\quad
+ (\log(2n))^2\le4^n .
+\]</span>
+Their product is at most <span class="math" data-tex="\((4\,000\,000)^n&lt;10^{12n}\)">\((4\,000\,000)^n&lt;10^{12n}\)</span>.
+The elementary inequalities <span class="math" data-tex="\(n\le2^{n-1}\)">\(n\le2^{n-1}\)</span>, <span class="math" data-tex="\(\log(2n)\le n\)">\(\log(2n)\le n\)</span> follow
+by induction and differentiation, respectively.</p>
+<p>For (20.2), use Theorem 10.154. The constant there is
+<span class="math math-display" data-tex="\[
+ C_1^*=
+ \frac{c\mathfrak a^n n^n(n+1)^{n+2}d^{n+2}}
+      {n!q^ut}
+ \max\left\{\frac{p^f}{\delta t^{n+1}},
+                         \frac{\mathrm e^n}{n^n}\right\}A_n,
+ \qquad
+ A_n=\max\{4+\log((n+1)d),1,t\}.
+ \tag{20.5}
+\]">\[
+ C_1^*=
+ \frac{c\mathfrak a^n n^n(n+1)^{n+2}d^{n+2}}
+      {n!q^ut}
+ \max\left\{\frac{p^f}{\delta t^{n+1}},
+                         \frac{\mathrm e^n}{n^n}\right\}A_n,
+ \qquad
+ A_n=\max\{4+\log((n+1)d),1,t\}.
+ \tag{20.5}
+\]</span>
+For the fields just chosen, <span class="math" data-tex="\(c\le2680\)">\(c\le2680\)</span>, <span class="math" data-tex="\(\mathfrak a\le26\)">\(\mathfrak a\le26\)</span>,
+<span class="math" data-tex="\(d\le2\)">\(d\le2\)</span>, <span class="math" data-tex="\(q^u\ge1\)">\(q^u\ge1\)</span>, <span class="math" data-tex="\(\delta\ge1\)">\(\delta\ge1\)</span>, and <span class="math" data-tex="\(p^f\le2p\)">\(p^f\le2p\)</span>.
+The omitted factor <span class="math" data-tex="\(\max\{1,\log d\}\)">\(\max\{1,\log d\}\)</span> equals one. Calculus gives
+<span class="math math-display" data-tex="\[
+ \frac{\mathrm e^nt^{n+1}}{n^n}&lt;(n+1)\mathrm e^t=(n+1)p^f:
+\]">\[
+ \frac{\mathrm e^nt^{n+1}}{n^n}&lt;(n+1)\mathrm e^t=(n+1)p^f:
+\]</span>
+maximize <span class="math" data-tex="\(t^{n+1}\mathrm e^{-t}\)">\(t^{n+1}\mathrm e^{-t}\)</span> at <span class="math" data-tex="\(t=n+1\)">\(t=n+1\)</span>, and use
+<span class="math" data-tex="\((1+1/n)^n&lt;\mathrm e\)">\((1+1/n)^n&lt;\mathrm e\)</span>.
+Also <span class="math" data-tex="\(n^n/n!&lt;\mathrm e^n&lt;3^n\)">\(n^n/n!&lt;\mathrm e^n&lt;3^n\)</span> and <span class="math" data-tex="\(A_n/t&lt;8(n+1)\)">\(A_n/t&lt;8(n+1)\)</span>.
+Substituting into (20.5) therefore yields
+<span class="math math-display" data-tex="\[
+ C_1^*&lt;
+ 171520\,156^n(n+1)^{n+4}\frac p{s^{n+1}}.
+ \tag{20.6}
+\]">\[
+ C_1^*&lt;
+ 171520\,156^n(n+1)^{n+4}\frac p{s^{n+1}}.
+ \tag{20.6}
+\]</span>
+For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, the rank factor in (20.6), even multiplied by two,
+is smaller than <span class="math" data-tex="\((10^{12}n)^{2n}\)">\((10^{12}n)^{2n}\)</span>. Indeed
+<span class="math" data-tex="\((n+1)^{n+4}\le6(3/2)^n n^{n+4}\)">\((n+1)^{n+4}\le6(3/2)^n n^{n+4}\)</span> and
+<span class="math" data-tex="\(n^{4-n}\le4\)">\(n^{4-n}\le4\)</span>; these reduce the comparison to
+<span class="math" data-tex="\(8\,232\,960\,234^n&lt;10^{24n}\)">\(8\,232\,960\,234^n&lt;10^{24n}\)</span>.</p>
+<p>If <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, or if <span class="math" data-tex="\(B\ge p\)">\(B\ge p\)</span>, the coefficient parameter
+<span class="math" data-tex="\(\max\{\log B,t\}\)">\(\max\{\log B,t\}\)</span> is at most <span class="math" data-tex="\(2\log B\)">\(2\log B\)</span>. Thus (20.6), the theorem,
+and <span class="math" data-tex="\(h(\alpha_j)\le H_j\)">\(h(\alpha_j)\le H_j\)</span> prove (20.2).
+It remains to handle odd <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(3\le B&lt;p\)">\(3\le B&lt;p\)</span>.
+The rational local-height inequality, proved in Lesson 10, gives
+<span class="math math-display" data-tex="\[
+ v_p(X-1)\le
+ \frac{nB h_{\max}+\log2}{s}.
+ \tag{20.7}
+\]">\[
+ v_p(X-1)\le
+ \frac{nB h_{\max}+\log2}{s}.
+ \tag{20.7}
+\]</span>
+The function <span class="math" data-tex="\(x/\log x\)">\(x/\log x\)</span> is increasing for <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>, so
+<span class="math" data-tex="\(B/\log B\le p/s\)">\(B/\log B\le p/s\)</span>. Since
+<span class="math" data-tex="\(\prod_jH_j\ge h_{\max}s^{n-1}\)">\(\prod_jH_j\ge h_{\max}s^{n-1}\)</span>, the first term of (20.7)
+is at most <span class="math" data-tex="\(n p(\prod H_j)\log B/s^{n+1}\)">\(n p(\prod H_j)\log B/s^{n+1}\)</span>.
+For the second term, <span class="math" data-tex="\(h_{\max}\ge\log2\)">\(h_{\max}\ge\log2\)</span> and
+<span class="math" data-tex="\(s&lt;p\log B\)">\(s&lt;p\log B\)</span>; hence it is smaller than
+<span class="math" data-tex="\(p(\prod H_j)\log B/s^{n+1}\)">\(p(\prod H_j)\log B/s^{n+1}\)</span>. This proves the same bound
+with factor <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, which is smaller than the stated rank factor.
+This argument explains why a large <span class="math" data-tex="\(\log p\)">\(\log p\)</span> need not remain in the
+coefficient parameter.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, choose a prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span> among <span class="math" data-tex="\(2,3,5\)">\(2,3,5\)</span> such that
+<span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span> and <span class="math" data-tex="\(\alpha_1,\ell\)">\(\alpha_1,\ell\)</span> are independent. At most one of
+these primes can be multiplicatively dependent with a fixed positive
+rational number different from one; unique prime factorization proves
+this assertion. Append <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with coefficient zero and use the
+already proved <span class="math" data-tex="\(n=2\)">\(n=2\)</span> bounds. In (20.1) the extra height is
+<span class="math" data-tex="\(\log\ell&lt;2\)">\(\log\ell&lt;2\)</span>. In (20.2) its normalized height is at most
+<span class="math" data-tex="\(\log5/\log2&lt;3\)">\(\log5/\log2&lt;3\)</span>. The resulting constants are at most
+<span class="math" data-tex="\(2\cdot10^{24}\)">\(2\cdot10^{24}\)</span> and <span class="math" data-tex="\(3(2\cdot10^{12})^4\)">\(3(2\cdot10^{12})^4\)</span>, respectively.
+They are bounded by <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(D^2\)">\(D^2\)</span> for <span class="math" data-tex="\(D=10^{30}\)">\(D=10^{30}\)</span>.
+Zero coefficients are permitted by both programme estimates.</p>
+<p>Finally apply Theorem 8.6 with <span class="math" data-tex="\(D_{\rm field}=1\)">\(D_{\rm field}=1\)</span> and cutoffs
+<span class="math" data-tex="\(\max\{h(\alpha_j),1\}\)">\(\max\{h(\alpha_j),1\}\)</span>. They dominate the real logarithms in
+absolute value. Its second constant is <span class="math" data-tex="\(2^{6n+20}\)">\(2^{6n+20}\)</span>, and
+<span class="math" data-tex="\(\log(\mathrm eB)\le2\log B\)">\(\log(\mathrm eB)\le2\log B\)</span>. The inequality
+<span class="math" data-tex="\(2^{6n+21}&lt;(10^{30}n)^{2n}\)">\(2^{6n+21}&lt;(10^{30}n)^{2n}\)</span> proves (20.3), including dependent
+lists. Terms with base one or coefficient zero may either be retained
+under the theorem's proved extension or deleted; their cutoffs are
+at least one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bounds (20.1)–(20.3) are proved inputs, rather than references in
+place of proofs. The free primary papers
+<a href="https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/s0012-7094-01-10815-6.pdf">Stewart–Yu, <em>On the abc conjecture, II</em></a>
+and
+<a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa89/aa8944.pdf">Yu, <em>p-adic logarithmic forms and group varieties II</em></a>
+give the original small-prime strategy. Here the later second estimate
+proved in Lesson 10 supplies (20.1) directly for independent rational
+bases.</p>
+<h2 id="2-removing-the-three-greatest-primes">2. Removing the three greatest primes</h2>
+<p>For a positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, write <span class="math" data-tex="\(P(m)\)">\(P(m)\)</span> for its greatest prime
+factor, with <span class="math" data-tex="\(P(1)=1\)">\(P(1)=1\)</span>, and <span class="math" data-tex="\(\operatorname{rad}(m)\)">\(\operatorname{rad}(m)\)</span> for the product
+of its distinct prime factors. Let
+<span class="math math-display" data-tex="\[
+ a+b=c,\qquad \gcd(a,b)=1,\qquad a\le b,\qquad c&gt;2.
+ \tag{20.8}
+\]">\[
+ a+b=c,\qquad \gcd(a,b)=1,\qquad a\le b,\qquad c&gt;2.
+ \tag{20.8}
+\]</span>
+Then <span class="math" data-tex="\(a&lt;b&lt;c\)">\(a&lt;b&lt;c\)</span>, the three integers are pairwise coprime, and
+<span class="math" data-tex="\(G=\operatorname{rad}(abc)\ge6\)">\(G=\operatorname{rad}(abc)\ge6\)</span>. Put
+<span class="math math-display" data-tex="\[
+ p_a=P(a),\quad p_b=P(b),\quad p_c=P(c),\quad
+ M=\frac G{p_ap_bp_c},\quad T=\max\{16,M\},\quad r=\omega(abc).
+ \tag{20.9}
+\]">\[
+ p_a=P(a),\quad p_b=P(b),\quad p_c=P(c),\quad
+ M=\frac G{p_ap_bp_c},\quad T=\max\{16,M\},\quad r=\omega(abc).
+ \tag{20.9}
+\]</span>
+The nonunit greatest primes are distinct, so <span class="math" data-tex="\(M\)">\(M\)</span> is a positive
+squarefree integer. We use the positive, increasing function
+<span class="math math-display" data-tex="\[
+ L=\log T,\qquad \ell=\log L&gt;1,\qquad
+ F(T)=\frac{L\log(\mathrm e+\ell)}{\ell},\qquad
+ E_A(T)=\exp(AF(T)).
+ \tag{20.10}
+\]">\[
+ L=\log T,\qquad \ell=\log L&gt;1,\qquad
+ F(T)=\frac{L\log(\mathrm e+\ell)}{\ell},\qquad
+ E_A(T)=\exp(AF(T)).
+ \tag{20.10}
+\]</span>
+The letter <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(E_A\)">\(E_A\)</span> denotes an effective absolute constant.
+In successive inequalities it may be enlarged by a specified finite
+number of additions or multiplications. This convention does not hide
+dependence on the triple. The proofs below show how each enlargement
+comes from absolute numerical inequalities.</p>
+<p><strong>Lemma 20.2.</strong> With the preceding notation:</p>
+<ol>
+<li><span class="math" data-tex="\(r\le6L/\ell\)">\(r\le6L/\ell\)</span>.</li>
+<li>The product of <span class="math" data-tex="\(\max\{1,\log q\}\)">\(\max\{1,\log q\}\)</span> over any subset of the primes
+dividing <span class="math" data-tex="\(M\)">\(M\)</span> is at most <span class="math" data-tex="\(\exp(12F(T))\)">\(\exp(12F(T))\)</span>.</li>
+<li><span class="math" data-tex="\((\log r)^2\le6F(T)\)">\((\log r)^2\le6F(T)\)</span>, and
+<span class="math" data-tex="\(r\log\max\{1,\log r\}\le6F(T)\)">\(r\log\max\{1,\log r\}\le6F(T)\)</span>.</li>
+<li>If <span class="math" data-tex="\(1\le n\le r\)">\(1\le n\le r\)</span> and <span class="math" data-tex="\(n-3\le L/(\log r)^2\)">\(n-3\le L/(\log r)^2\)</span>, then
+<span class="math" data-tex="\(n\log n\le16L/\ell\)">\(n\log n\le16L/\ell\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(m=\omega(M)\)">\(m=\omega(M)\)</span>. Distinct ordered primes are at least
+<span class="math" data-tex="\(2,3,\ldots,m+1\)">\(2,3,\ldots,m+1\)</span>, so <span class="math" data-tex="\(m!\le M\le T\)">\(m!\le M\le T\)</span>.
+For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, at least <span class="math" data-tex="\(m/2\)">\(m/2\)</span> factors of <span class="math" data-tex="\(m!\)">\(m!\)</span> are at least <span class="math" data-tex="\(m/2\)">\(m/2\)</span>;
+therefore <span class="math" data-tex="\(\log(m!)\ge(m/2)\log(m/2)\)">\(\log(m!)\ge(m/2)\log(m/2)\)</span>.
+If <span class="math" data-tex="\(m&gt;4L/\ell\)">\(m&gt;4L/\ell\)</span>, then <span class="math" data-tex="\(m/2&gt;2L/\ell\ge\sqrt L\)">\(m/2&gt;2L/\ell\ge\sqrt L\)</span>, since
+<span class="math" data-tex="\(\log L\le2\sqrt L\)">\(\log L\le2\sqrt L\)</span>. Consequently <span class="math" data-tex="\(\log(m!)&gt;L\)">\(\log(m!)&gt;L\)</span>, a contradiction.
+The cases <span class="math" data-tex="\(m=0,1\)">\(m=0,1\)</span> satisfy the bound as well.
+There are at most three removed primes. Since <span class="math" data-tex="\(L/\ell\ge\mathrm e\)">\(L/\ell\ge\mathrm e\)</span>,
+<span class="math math-display" data-tex="\[
+ r\le m+3\le4L/\ell+3\le6L/\ell.
+ \tag{20.11}
+\]">\[
+ r\le m+3\le4L/\ell+3\le6L/\ell.
+ \tag{20.11}
+\]</span>
+The inequality <span class="math" data-tex="\(\log L\le2\sqrt L\)">\(\log L\le2\sqrt L\)</span> follows by maximizing
+<span class="math" data-tex="\((\log L)/\sqrt L\)">\((\log L)/\sqrt L\)</span>; its maximum is <span class="math" data-tex="\(2/\mathrm e&lt;2\)">\(2/\mathrm e&lt;2\)</span>.</p>
+<p>For part 2, it suffices to consider all primes dividing <span class="math" data-tex="\(M\)">\(M\)</span>, because
+each enlarged factor is at least one. Their enlarged logarithms sum
+to at most <span class="math" data-tex="\(L+1\le2L\)">\(L+1\le2L\)</span>: only the prime two can have logarithm below
+one. The arithmetic–geometric mean inequality gives the upper bound
+<span class="math" data-tex="\((2L/m)^m\)">\((2L/m)^m\)</span> when <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, and the empty product is one.
+If <span class="math" data-tex="\(\ell\ge6\)">\(\ell\ge6\)</span>, the function <span class="math" data-tex="\(u\log(2L/u)\)">\(u\log(2L/u)\)</span> is increasing on
+<span class="math" data-tex="\(0&lt;u\le4L/\ell\)">\(0&lt;u\le4L/\ell\)</span>, because <span class="math" data-tex="\(4L/\ell\le2L/\mathrm e\)">\(4L/\ell\le2L/\mathrm e\)</span>.
+Its endpoint is at most <span class="math" data-tex="\(4L\log\ell/\ell\le4F(T)\)">\(4L\log\ell/\ell\le4F(T)\)</span>.
+If <span class="math" data-tex="\(1&lt;\ell&lt;6\)">\(1&lt;\ell&lt;6\)</span>, its global maximum <span class="math" data-tex="\(2L/\mathrm e\)">\(2L/\mathrm e\)</span> is at most
+<span class="math" data-tex="\(12F(T)\)">\(12F(T)\)</span>, since <span class="math" data-tex="\(\log(\mathrm e+\ell)&gt;1\)">\(\log(\mathrm e+\ell)&gt;1\)</span>.
+This proves the claimed product bound.</p>
+<p>Equation (20.11) implies <span class="math" data-tex="\(\log r\le\ell+2\)">\(\log r\le\ell+2\)</span>.
+Also <span class="math" data-tex="\((\ell+2)^2\le6\mathrm e^\ell/\ell\)">\((\ell+2)^2\le6\mathrm e^\ell/\ell\)</span>: multiply by
+<span class="math" data-tex="\(\ell\mathrm e^{-\ell}\)">\(\ell\mathrm e^{-\ell}\)</span>, and bound the three terms by
+<span class="math math-display" data-tex="\[
+ \ell^3\mathrm e^{-\ell}\le27/\mathrm e^3,\quad
+ 4\ell^2\mathrm e^{-\ell}\le16/\mathrm e^2,\quad
+ 4\ell\mathrm e^{-\ell}\le4/\mathrm e.
+ \]">\[
+ \ell^3\mathrm e^{-\ell}\le27/\mathrm e^3,\quad
+ 4\ell^2\mathrm e^{-\ell}\le16/\mathrm e^2,\quad
+ 4\ell\mathrm e^{-\ell}\le4/\mathrm e.
+ \]</span>
+Their sum is less than six. These inequalities follow by differentiation.
+They give the first assertion of part 3. For the second, combine
+<span class="math" data-tex="\(\log\max\{1,\log r\}\le\log(\ell+2)\le\log(\mathrm e+\ell)\)">\(\log\max\{1,\log r\}\le\log(\ell+2)\le\log(\mathrm e+\ell)\)</span>
+with (20.11).</p>
+<p>For part 4, <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is immediate. If <span class="math" data-tex="\(r\le\sqrt L\)">\(r\le\sqrt L\)</span>, then
+<span class="math math-display" data-tex="\[
+ n\log n\le\tfrac12\sqrt L\,\ell\le2L/\ell,
+ \]">\[
+ n\log n\le\tfrac12\sqrt L\,\ell\le2L/\ell,
+ \]</span>
+because <span class="math" data-tex="\(\ell^2\mathrm e^{-\ell/2}/2\le8/\mathrm e^2&lt;2\)">\(\ell^2\mathrm e^{-\ell/2}/2\le8/\mathrm e^2&lt;2\)</span>.
+If <span class="math" data-tex="\(r&gt;\sqrt L\)">\(r&gt;\sqrt L\)</span>, the assumed inequality gives
+<span class="math" data-tex="\(n\le3+4L/\ell^2\)">\(n\le3+4L/\ell^2\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ n\log n\le(3+4L/\ell^2)(\ell+2)
+       \le16L/\ell.
+ \tag{20.12}
+\]">\[
+ n\log n\le(3+4L/\ell^2)(\ell+2)
+       \le16L/\ell.
+ \tag{20.12}
+\]</span>
+For the last step use <span class="math" data-tex="\(\ell&gt;1\)">\(\ell&gt;1\)</span> and
+<span class="math" data-tex="\((3\ell+6)\ell\mathrm e^{-\ell}
+\le12/\mathrm e^2+6/\mathrm e&lt;4\)">\((3\ell+6)\ell\mathrm e^{-\ell}
+\le12/\mathrm e^2+6/\mathrm e&lt;4\)</span>.
+This proves all four assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Some elementary consequences will be used repeatedly.
+For every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, constants and factors
+<span class="math math-display" data-tex="\[
+ r^A,\quad (\max\{1,\log r\})^{Ar},\quad
+ \exp(A(\log r)^2),\quad \prod_{q\mid M}\max\{1,\log q\}
+ \tag{20.13}
+\]">\[
+ r^A,\quad (\max\{1,\log r\})^{Ar},\quad
+ \exp(A(\log r)^2),\quad \prod_{q\mid M}\max\{1,\log q\}
+ \tag{20.13}
+\]</span>
+are bounded by <span class="math" data-tex="\(E_C(T)\)">\(E_C(T)\)</span> for an effective absolute <span class="math" data-tex="\(C\)">\(C\)</span>.
+When <span class="math" data-tex="\(n\)">\(n\)</span> satisfies part 4, so is <span class="math" data-tex="\((Dn)^{2n}\)">\((Dn)^{2n}\)</span>.
+Indeed take logarithms and apply the lemma; <span class="math" data-tex="\(r\le6L/\ell\le6F(T)\)">\(r\le6L/\ell\le6F(T)\)</span>,
+<span class="math" data-tex="\(\log r\le r\)">\(\log r\le r\)</span>, and <span class="math" data-tex="\(F(T)&gt;1\)">\(F(T)&gt;1\)</span>.
+No prime number theorem is needed for these bounds.</p>
+<p>The function <span class="math" data-tex="\(F\)">\(F\)</span> is increasing on <span class="math" data-tex="\(T\ge16\)">\(T\ge16\)</span>: in terms of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>,
+its logarithmic derivative is
+<span class="math math-display" data-tex="\[
+ 1-\frac1\ell+
+ \frac1{(\mathrm e+\ell)\log(\mathrm e+\ell)}&gt;0.
+ \tag{20.14}
+\]">\[
+ 1-\frac1\ell+
+ \frac1{(\mathrm e+\ell)\log(\mathrm e+\ell)}&gt;0.
+ \tag{20.14}
+\]</span>
+Furthermore <span class="math" data-tex="\(F(T)/\log T\to0\)">\(F(T)/\log T\to0\)</span>.
+This limit is effective. For <span class="math" data-tex="\(\ell\ge16\)">\(\ell\ge16\)</span>,
+<span class="math" data-tex="\(\log(\mathrm e+\ell)\le\log(2\ell)\le\sqrt\ell\)">\(\log(\mathrm e+\ell)\le\log(2\ell)\le\sqrt\ell\)</span>;
+the last inequality holds at 16 and is preserved by differentiation.
+In particular, for every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> there is an effectively
+computable <span class="math" data-tex="\(C_A\)">\(C_A\)</span> such that
+<span class="math math-display" data-tex="\[
+ E_A(T)\le C_A T\qquad(T\ge16).
+ \tag{20.15}
+\]">\[
+ E_A(T)\le C_A T\qquad(T\ge16).
+ \tag{20.15}
+\]</span>
+For example take <span class="math" data-tex="\(T_0=\exp(\exp(\max\{16,A^2\}))\)">\(T_0=\exp(\exp(\max\{16,A^2\}))\)</span> and
+<span class="math" data-tex="\(C_A=\max\{1,E_A(T_0)/16\}\)">\(C_A=\max\{1,E_A(T_0)/16\}\)</span>. Above <span class="math" data-tex="\(T_0\)">\(T_0\)</span> the inequality holds
+with constant one; below it use monotonicity of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h2 id="3-the-small-prime-parts">3. The small-prime parts</h2>
+<p>Retain (20.8)–(20.10), and put
+<span class="math math-display" data-tex="\[
+ Q=\log c&gt;1,\qquad
+ u_a=\log(2p_a),\quad u_b=\log(2p_b),\quad u_c=\log(2p_c),
+ \qquad m_{ij}=\max\{u_i,u_j\}.
+ \tag{20.16}
+\]">\[
+ Q=\log c&gt;1,\qquad
+ u_a=\log(2p_a),\quad u_b=\log(2p_b),\quad u_c=\log(2p_c),
+ \qquad m_{ij}=\max\{u_i,u_j\}.
+ \tag{20.16}
+\]</span>
+All <span class="math" data-tex="\(u_i\ge\log2\)">\(u_i\ge\log2\)</span>, including <span class="math" data-tex="\(u_a=\log2\)">\(u_a=\log2\)</span> when <span class="math" data-tex="\(a=1\)">\(a=1\)</span>.
+Every exponent in the prime factorizations of <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> is at most
+<span class="math" data-tex="\(Q/\log2\)">\(Q/\log2\)</span>. The bound
+<span class="math math-display" data-tex="\[
+ B=4Q/\log2\ge3,\qquad \log B\le C_0\log Q
+ \tag{20.17}
+\]">\[
+ B=4Q/\log2\ge3,\qquad \log B\le C_0\log Q
+ \tag{20.17}
+\]</span>
+holds with an effective absolute <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. For example
+<span class="math" data-tex="\(C_0=1+\log(4/\log2)/\log\log3\)">\(C_0=1+\log(4/\log2)/\log\log3\)</span> works, since <span class="math" data-tex="\(Q\ge\log3\)">\(Q\ge\log3\)</span>.</p>
+<p><strong>Lemma 20.3 (small primes and their grouped heights).</strong> There is an
+effective absolute <span class="math" data-tex="\(A\)">\(A\)</span> such that, whenever <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span> and
+<span class="math" data-tex="\(p&lt;\exp((\log r)^2)\)">\(p&lt;\exp((\log r)^2)\)</span>,
+<span class="math math-display" data-tex="\[
+ v_p(a)\le E_A(T)u_bu_c\log Q.
+ \tag{20.18}
+\]">\[
+ v_p(a)\le E_A(T)u_bu_c\log Q.
+ \tag{20.18}
+\]</span>
+The two cyclic assertions hold as well. Define
+<span class="math math-display" data-tex="\[
+ R_i=\prod_{\substack{q\mid i,\ q\ne p_i\\
+                         q&lt;\exp((\log r)^2)}}q^{v_q(i)}
+       \qquad(i=a,b,c).
+ \tag{20.19}
+\]">\[
+ R_i=\prod_{\substack{q\mid i,\ q\ne p_i\\
+                         q&lt;\exp((\log r)^2)}}q^{v_q(i)}
+       \qquad(i=a,b,c).
+ \tag{20.19}
+\]</span>
+Then, for distinct <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span> among <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>,
+<span class="math math-display" data-tex="\[
+ \max\{1,h(R_i/R_j)\}
+       \le E_A(T)m_{ij}u_k\log Q.
+ \tag{20.20}
+\]">\[
+ \max\{1,h(R_i/R_j)\}
+       \le E_A(T)m_{ij}u_k\log Q.
+ \tag{20.20}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span>, use
+<span class="math" data-tex="\(X=(c/b)^2\)">\(X=(c/b)^2\)</span>. Then <span class="math" data-tex="\(v_p(a)\le v_p(X-1)\)">\(v_p(a)\le v_p(X-1)\)</span>, because
+<span class="math" data-tex="\(c^2-b^2=a(c+b)\)">\(c^2-b^2=a(c+b)\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-unit.
+If <span class="math" data-tex="\(p\mid b\)">\(p\mid b\)</span>, use <span class="math" data-tex="\(X=(c/a)^2\)">\(X=(c/a)^2\)</span>.
+If <span class="math" data-tex="\(p\mid c\)">\(p\mid c\)</span>, use <span class="math" data-tex="\(X=(a/b)^2\)">\(X=(a/b)^2\)</span>; its numerator difference is
+<span class="math" data-tex="\(a^2-b^2=c(a-b)\)">\(a^2-b^2=c(a-b)\)</span>. Each <span class="math" data-tex="\(X\ne1\)">\(X\ne1\)</span>, since <span class="math" data-tex="\(a&lt;b&lt;c\)">\(a&lt;b&lt;c\)</span>.
+The prime bases in each ratio are distinct, hence independent; they
+are <span class="math" data-tex="\(p\)">\(p\)</span>-units by pairwise coprimality. Their integer coefficients
+have absolute values at most <span class="math" data-tex="\(2Q/\log2&lt;B\)">\(2Q/\log2&lt;B\)</span>.
+Thus (20.1) applies at every prime, including two.</p>
+<p>For example, in the first case the height product is the product of
+the logarithms of the primes dividing <span class="math" data-tex="\(bc\)">\(bc\)</span>. The primes other than
+<span class="math" data-tex="\(p_b,p_c\)">\(p_b,p_c\)</span> divide <span class="math" data-tex="\(M\)">\(M\)</span>; Lemma 20.2 bounds their enlarged product
+by <span class="math" data-tex="\(\exp(12F(T))\)">\(\exp(12F(T))\)</span>. The two remaining factors are at most <span class="math" data-tex="\(u_bu_c\)">\(u_bu_c\)</span>.
+If one component is one, the missing factor is supplied at the
+absolute cost <span class="math" data-tex="\(1/\log2\)">\(1/\log2\)</span>. The small-prime condition gives
+<span class="math math-display" data-tex="\[
+ p\le\exp((\log r)^2),\qquad
+ \max\{\log B,\log p\}
+ \le C_0\log Q\,\max\{1,(\log r)^2\}.
+ \]">\[
+ p\le\exp((\log r)^2),\qquad
+ \max\{\log B,\log p\}
+ \le C_0\log Q\,\max\{1,(\log r)^2\}.
+ \]</span>
+Now use <span class="math" data-tex="\(1/(\log p)^2\le1/(\log2)^2\)">\(1/(\log p)^2\le1/(\log2)^2\)</span>, <span class="math" data-tex="\(n\le r\)">\(n\le r\)</span>, and
+(20.13) to absorb every factor except <span class="math" data-tex="\(u_bu_c\log Q\)">\(u_bu_c\log Q\)</span>
+into <span class="math" data-tex="\(E_A(T)\)">\(E_A(T)\)</span>. This proves all three valuation bounds.</p>
+<p>Pairwise coprimality gives
+<span class="math" data-tex="\(h(R_i/R_j)=\max\{\log R_i,\log R_j\}\)">\(h(R_i/R_j)=\max\{\log R_i,\log R_j\}\)</span>.
+Each sum defining <span class="math" data-tex="\(\log R_i\)">\(\log R_i\)</span> has at most <span class="math" data-tex="\(r\)">\(r\)</span> terms, with
+<span class="math" data-tex="\(\log q&lt;(\log r)^2\)">\(\log q&lt;(\log r)^2\)</span>. The valuation bounds give
+<span class="math math-display" data-tex="\[
+ h(R_i/R_j)\le
+ r(\log r)^2 E_A(T)m_{ij}u_k\log Q.
+ \]">\[
+ h(R_i/R_j)\le
+ r(\log r)^2 E_A(T)m_{ij}u_k\log Q.
+ \]</span>
+Absorb the first factor by (20.13). The right side can also be made
+at least one: <span class="math" data-tex="\(m_{ij}u_k\log Q\ge(\log2)^2\log\log3&gt;0\)">\(m_{ij}u_k\log Q\ge(\log2)^2\log\log3&gt;0\)</span>
+and <span class="math" data-tex="\(F(T)&gt;1\)">\(F(T)&gt;1\)</span>. This proves (20.20), even when <span class="math" data-tex="\(R_i=R_j=1\)">\(R_i=R_j=1\)</span>.
+Every enlargement of <span class="math" data-tex="\(A\)">\(A\)</span> used only explicit inequalities from
+Lemma 20.2 and the fixed constants in Lemma 20.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exponential rank factor in (20.1) contributes <span class="math" data-tex="\(r\log D\)">\(r\log D\)</span> to
+the logarithm of the bound, which is <span class="math" data-tex="\(O(L/\ell)\)">\(O(L/\ell)\)</span>.
+A factor <span class="math" data-tex="\(r^{\eta r}\)">\(r^{\eta r}\)</span>, with fixed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, would instead
+contribute <span class="math" data-tex="\(\eta r\log r=O(L)\)">\(\eta r\log r=O(L)\)</span>. That cost would be a fixed
+power of <span class="math" data-tex="\(T\)">\(T\)</span>, rather than <span class="math" data-tex="\(E_A(T)=T^{o(1)}\)">\(E_A(T)=T^{o(1)}\)</span>. The latter
+distinction will determine the final exponent <span class="math" data-tex="\(1/3\)">\(1/3\)</span>.</p>
+<h2 id="4-grouping-before-treating-the-large-primes">4. Grouping before treating the large primes</h2>
+<p>For each pair of components <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, write <span class="math" data-tex="\(i/j\)">\(i/j\)</span> as
+<span class="math math-display" data-tex="\[
+ \frac{i}{j}=\frac{R_i}{R_j}\prod_{\nu=1}^k q_\nu^{e_\nu},
+ \tag{20.21}
+\]">\[
+ \frac{i}{j}=\frac{R_i}{R_j}\prod_{\nu=1}^k q_\nu^{e_\nu},
+ \tag{20.21}
+\]</span>
+where the <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span> are the distinct remaining primes dividing <span class="math" data-tex="\(ij\)">\(ij\)</span>.
+If <span class="math" data-tex="\(R_i/R_j=1\)">\(R_i/R_j=1\)</span>, omit that base. Otherwise it has a nonempty prime
+support disjoint from the <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span>; hence it and those primes are
+independent. The total number <span class="math" data-tex="\(n\)">\(n\)</span> of retained bases satisfies
+<span class="math math-display" data-tex="\[
+ 1\le n\le r,\qquad n-3\le\frac L{(\log r)^2}.
+ \tag{20.22}
+\]">\[
+ 1\le n\le r,\qquad n-3\le\frac L{(\log r)^2}.
+ \tag{20.22}
+\]</span>
+Indeed at most two remaining primes are the greatest primes of
+the two components. Every other remaining prime divides <span class="math" data-tex="\(M\)">\(M\)</span>
+and has logarithm at least <span class="math" data-tex="\((\log r)^2\)">\((\log r)^2\)</span>, so their number is at
+most <span class="math" data-tex="\(L/(\log r)^2\)">\(L/(\log r)^2\)</span>. Counting a grouped base uses one more place.
+The inequality <span class="math" data-tex="\(n\le r\)">\(n\le r\)</span> holds because a nontrivial grouped base
+replaces at least one of the original prime bases. The ratio <span class="math" data-tex="\(i/j\)">\(i/j\)</span>
+is different from one, so at least one base remains.</p>
+<p><strong>Lemma 20.4 (valuation bounds at every prime).</strong> There is an effective
+absolute <span class="math" data-tex="\(A\)">\(A\)</span> such that, for each <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span>,
+<span class="math math-display" data-tex="\[
+ v_p(a)\log p
+ \le E_A(T)\frac p{(\log p)^3}\,
+          m_{bc}\prod_{i=a,b,c}\max\{u_i,\log p\}\,(\log Q)^2.
+ \tag{20.23}
+\]">\[
+ v_p(a)\log p
+ \le E_A(T)\frac p{(\log p)^3}\,
+          m_{bc}\prod_{i=a,b,c}\max\{u_i,\log p\}\,(\log Q)^2.
+ \tag{20.23}
+\]</span>
+The cyclic assertions hold, with <span class="math" data-tex="\(m_{ac}\)">\(m_{ac}\)</span> for <span class="math" data-tex="\(p\mid b\)">\(p\mid b\)</span>
+and <span class="math" data-tex="\(m_{ab}\)">\(m_{ab}\)</span> for <span class="math" data-tex="\(p\mid c\)">\(p\mid c\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span> and use the grouped expression (20.21)
+for <span class="math" data-tex="\(c/b\)">\(c/b\)</span>, squared. The argument of Lemma 20.3 shows that
+<span class="math" data-tex="\(v_p(a)\le v_p((c/b)^2-1)\)">\(v_p(a)\le v_p((c/b)^2-1)\)</span>. All retained bases are positive
+rational <span class="math" data-tex="\(p\)">\(p\)</span>-units and independent. The coefficient of a grouped
+base is two, and the other coefficients have absolute values at
+most <span class="math" data-tex="\(2Q/\log2\)">\(2Q/\log2\)</span>. Thus (20.2) and (20.17) apply.
+By (20.22) and Lemma 20.2, the rank factor is at most <span class="math" data-tex="\(E_C(T)\)">\(E_C(T)\)</span>.
+It remains to bound the normalized height product in (20.2).</p>
+<p>Write <span class="math" data-tex="\(s=\log p\)">\(s=\log p\)</span>. For the primes dividing <span class="math" data-tex="\(M\)">\(M\)</span>,
+<span class="math math-display" data-tex="\[
+ \prod \max\{1,\log q/s\}
+ \le (1/\log2)^r\prod_{q\mid M}\max\{1,\log q\}
+ \le E_C(T).
+ \tag{20.24}
+\]">\[
+ \prod \max\{1,\log q/s\}
+ \le (1/\log2)^r\prod_{q\mid M}\max\{1,\log q\}
+ \le E_C(T).
+ \tag{20.24}
+\]</span>
+An absent greatest prime contributes one; a present greatest prime
+contributes at most <span class="math" data-tex="\(\max\{u_i,s\}/s\)">\(\max\{u_i,s\}/s\)</span>.
+Their two normalized factors are therefore bounded by
+<span class="math" data-tex="\(\max\{u_b,s\}\max\{u_c,s\}/s^2\)">\(\max\{u_b,s\}\max\{u_c,s\}/s^2\)</span>.
+For the grouped base, (20.20) gives
+<span class="math math-display" data-tex="\[
+ \max\{1,h(R_c/R_b)/s\}
+ \le E_C(T)\,m_{bc}\log Q\,\frac{\max\{u_a,s\}}s.
+ \tag{20.25}
+\]">\[
+ \max\{1,h(R_c/R_b)/s\}
+ \le E_C(T)\,m_{bc}\log Q\,\frac{\max\{u_a,s\}}s.
+ \tag{20.25}
+\]</span>
+The constant can be enlarged to cover the term one, since
+<span class="math" data-tex="\(m_{bc}\log Q\ge\log2\log\log3&gt;0\)">\(m_{bc}\log Q\ge\log2\log\log3&gt;0\)</span> and
+<span class="math" data-tex="\(\max\{u_a,s\}/s\ge1\)">\(\max\{u_a,s\}/s\ge1\)</span>. If the grouped base was omitted,
+the same upper bound still dominates its replacement factor one.</p>
+<p>Multiplying (20.24)–(20.25), the two greatest-prime factors,
+the leading <span class="math" data-tex="\(p/s\)">\(p/s\)</span> in (20.2), and <span class="math" data-tex="\(\log B\le C_0\log Q\)">\(\log B\le C_0\log Q\)</span>
+gives a valuation bound with denominator <span class="math" data-tex="\(s^4\)">\(s^4\)</span>.
+Multiplication by <span class="math" data-tex="\(s\)">\(s\)</span> proves (20.23). The proofs for the other
+components use <span class="math" data-tex="\((c/a)^2\)">\((c/a)^2\)</span> and <span class="math" data-tex="\((a/b)^2\)">\((a/b)^2\)</span> and are identical
+after the indicated change of indices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 20.5 (three bounds for the same height).</strong> Put
+<span class="math" data-tex="\(\mathcal L=m_{ab}m_{ac}m_{bc}\)">\(\mathcal L=m_{ab}m_{ac}m_{bc}\)</span>.
+For an effective absolute <span class="math" data-tex="\(A\)">\(A\)</span>, all three inequalities hold:
+<span class="math math-display" data-tex="\[
+ \frac Q{(\log Q)^2}
+ \le E_A(T)\frac{p_i}{u_i^2}\,\mathcal L
+                 \qquad(i=a,b,c).
+ \tag{20.26}
+\]">\[
+ \frac Q{(\log Q)^2}
+ \le E_A(T)\frac{p_i}{u_i^2}\,\mathcal L
+                 \qquad(i=a,b,c).
+ \tag{20.26}
+\]</span></p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(i=c\)">\(i=c\)</span>. The exact factorization of <span class="math" data-tex="\(c\)">\(c\)</span> gives
+<span class="math math-display" data-tex="\[
+ Q=\sum_{p\mid c}v_p(c)\log p
+       \le r\max_{p\mid c}\bigl(v_p(c)\log p\bigr).
+ \tag{20.27}
+\]">\[
+ Q=\sum_{p\mid c}v_p(c)\log p
+       \le r\max_{p\mid c}\bigl(v_p(c)\log p\bigr).
+ \tag{20.27}
+\]</span>
+For <span class="math" data-tex="\(2\le x\le y\)">\(2\le x\le y\)</span>, elementary calculus gives
+<span class="math math-display" data-tex="\[
+ \frac{x}{(\log x)^3}\le16\,\frac{y}{(\log y)^3}.
+ \tag{20.28}
+\]">\[
+ \frac{x}{(\log x)^3}\le16\,\frac{y}{(\log y)^3}.
+ \tag{20.28}
+\]</span>
+Indeed the function decreases up to <span class="math" data-tex="\(\mathrm e^3\)">\(\mathrm e^3\)</span> and increases
+after it. On the decreasing interval its maximum divided by its
+minimum is <span class="math" data-tex="\(54/(\mathrm e^3(\log2)^3)&lt;16\)">\(54/(\mathrm e^3(\log2)^3)&lt;16\)</span>.
+The other factors <span class="math" data-tex="\(\max\{u_j,\log p\}\)">\(\max\{u_j,\log p\}\)</span> in (20.23) increase
+with <span class="math" data-tex="\(p\)">\(p\)</span>. We may therefore replace <span class="math" data-tex="\(p\le p_c\)">\(p\le p_c\)</span> by <span class="math" data-tex="\(p_c\)">\(p_c\)</span>
+at the cost sixteen.
+At <span class="math" data-tex="\(p=p_c\)">\(p=p_c\)</span>, those three factors have product at most
+<span class="math" data-tex="\(u_c m_{ac}m_{bc}\)">\(u_c m_{ac}m_{bc}\)</span>. Since
+<span class="math" data-tex="\(u_c=\log(2p_c)\le2\log p_c\)">\(u_c=\log(2p_c)\le2\log p_c\)</span>, the result is
+<span class="math math-display" data-tex="\[
+ v_p(c)\log p\le
+ 128 E_A(T)\frac{p_c}{u_c^2}\mathcal L(\log Q)^2.
+ \]">\[
+ v_p(c)\log p\le
+ 128 E_A(T)\frac{p_c}{u_c^2}\mathcal L(\log Q)^2.
+ \]</span>
+Absorb <span class="math" data-tex="\(128r\)">\(128r\)</span> using (20.13), and use (20.27).</p>
+<p>Next <span class="math" data-tex="\(b&gt;c/2\)">\(b&gt;c/2\)</span>, and
+<span class="math" data-tex="\(\log b&gt;Q-\log2&gt;Q/4\)">\(\log b&gt;Q-\log2&gt;Q/4\)</span>, because <span class="math" data-tex="\(c\ge3\)">\(c\ge3\)</span> and
+<span class="math" data-tex="\(\log2/\log3&lt;3/4\)">\(\log2/\log3&lt;3/4\)</span>, the latter being <span class="math" data-tex="\(16&lt;27\)">\(16&lt;27\)</span>.
+The same factorization and valuation argument for <span class="math" data-tex="\(b\)">\(b\)</span>, with
+an extra factor four, proves (20.26) for <span class="math" data-tex="\(i=b\)">\(i=b\)</span>.
+If <span class="math" data-tex="\(a\ge\sqrt b\)">\(a\ge\sqrt b\)</span>, then <span class="math" data-tex="\(\log a&gt;Q/8\)">\(\log a&gt;Q/8\)</span>, and it also proves
+the assertion for <span class="math" data-tex="\(i=a\)">\(i=a\)</span>.</p>
+<p>Suppose instead that <span class="math" data-tex="\(a&lt;\sqrt b\)">\(a&lt;\sqrt b\)</span>, including <span class="math" data-tex="\(a=1\)">\(a=1\)</span>.
+The real logarithmic form
+<span class="math math-display" data-tex="\[
+ 0&lt;\Lambda=\log(c/b)=\log(1+a/b)
+       &lt;b^{-1/2}&lt;\sqrt2\,\exp(-Q/2)
+ \tag{20.29}
+\]">\[
+ 0&lt;\Lambda=\log(c/b)=\log(1+a/b)
+       &lt;b^{-1/2}&lt;\sqrt2\,\exp(-Q/2)
+ \tag{20.29}
+\]</span>
+is nonzero. Use (20.21) for <span class="math" data-tex="\(c/b\)">\(c/b\)</span>, now without squaring.
+Equation (20.3), (20.22), and Lemma 20.2 apply.
+The grouped height is at most <span class="math" data-tex="\(E_C(T)m_{bc}u_a\log Q\)">\(E_C(T)m_{bc}u_a\log Q\)</span>.
+The other height factors contribute at most <span class="math" data-tex="\(E_C(T)u_bu_c\)">\(E_C(T)u_bu_c\)</span>;
+replacing a prime's logarithm by <span class="math" data-tex="\(\max\{1,\log q\}\)">\(\max\{1,\log q\}\)</span> costs
+only the fixed factor <span class="math" data-tex="\(1/\log2\)">\(1/\log2\)</span> at two. Thus
+<span class="math math-display" data-tex="\[
+ \log\Lambda&gt;
+ -E_C(T)m_{bc}u_au_bu_c(\log Q)^2.
+ \tag{20.30}
+\]">\[
+ \log\Lambda&gt;
+ -E_C(T)m_{bc}u_au_bu_c(\log Q)^2.
+ \tag{20.30}
+\]</span>
+Comparing with (20.29), and using
+<span class="math" data-tex="\((Q-\log2)/2&gt;Q/8\)">\((Q-\log2)/2&gt;Q/8\)</span>, proves
+<span class="math math-display" data-tex="\[
+ \frac Q{(\log Q)^2}\le E_C(T)m_{bc}u_au_bu_c.
+ \tag{20.31}
+\]">\[
+ \frac Q{(\log Q)^2}\le E_C(T)m_{bc}u_au_bu_c.
+ \tag{20.31}
+\]</span>
+For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, differentiation shows that
+<span class="math" data-tex="\((\log(2t))^3/t\le54/\mathrm e^3&lt;3\)">\((\log(2t))^3/t\le54/\mathrm e^3&lt;3\)</span>:
+its maximum is at <span class="math" data-tex="\(t=\mathrm e^3/2\)">\(t=\mathrm e^3/2\)</span>.
+Hence <span class="math" data-tex="\(u_a^3\le3p_a\)">\(u_a^3\le3p_a\)</span>.
+Also <span class="math" data-tex="\(u_b\le m_{ab}\)">\(u_b\le m_{ab}\)</span> and <span class="math" data-tex="\(u_c\le m_{ac}\)">\(u_c\le m_{ac}\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+ m_{bc}u_au_bu_c
+ \le3\,\frac{p_a}{u_a^2}\mathcal L.
+ \]">\[
+ m_{bc}u_au_bu_c
+ \le3\,\frac{p_a}{u_a^2}\mathcal L.
+ \]</span>
+Absorb the fixed factor three into <span class="math" data-tex="\(E_A(T)\)">\(E_A(T)\)</span>.
+This proves the last case and the proposition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-two-stewartyu-bounds">5. The two Stewart–Yu bounds</h2>
+<p>We first record the elementary inversion used in both proofs.
+If <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>, <span class="math" data-tex="\(V\ge1\)">\(V\ge1\)</span>, and <span class="math" data-tex="\(x/(\log x)^2\le V\)">\(x/(\log x)^2\le V\)</span>, then
+<span class="math math-display" data-tex="\[
+ x&lt;16V(\log(16V))^2.
+ \tag{20.32}
+\]">\[
+ x&lt;16V(\log(16V))^2.
+ \tag{20.32}
+\]</span>
+To prove this, put <span class="math" data-tex="\(t=\log(16V)&gt;\log16&gt;2\)">\(t=\log(16V)&gt;\log16&gt;2\)</span> and
+<span class="math" data-tex="\(x_0=16Vt^2\)">\(x_0=16Vt^2\)</span>. Since <span class="math" data-tex="\(2\log t\le t\)">\(2\log t\le t\)</span> for <span class="math" data-tex="\(t\ge\log16\)">\(t\ge\log16\)</span>,
+<span class="math" data-tex="\(\log x_0\le2t\)">\(\log x_0\le2t\)</span>; therefore <span class="math" data-tex="\(x_0/(\log x_0)^2\ge4V&gt;V\)">\(x_0/(\log x_0)^2\ge4V&gt;V\)</span>.
+The function <span class="math" data-tex="\(x/(\log x)^2\)">\(x/(\log x)^2\)</span> is increasing for <span class="math" data-tex="\(x&gt;\mathrm e^2\)">\(x&gt;\mathrm e^2\)</span>,
+and <span class="math" data-tex="\(x_0&gt;\mathrm e^2\)">\(x_0&gt;\mathrm e^2\)</span>. Any <span class="math" data-tex="\(x\ge x_0\)">\(x\ge x_0\)</span> is impossible,
+while <span class="math" data-tex="\(1&lt;x\le\mathrm e^2\)">\(1&lt;x\le\mathrm e^2\)</span> already satisfies the claimed bound.</p>
+<p><strong>Theorem 20.6 (the least of the greatest primes).</strong> There is an
+effectively computable absolute <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span> such that every primitive
+triple <span class="math" data-tex="\(a+b=c&gt;2\)">\(a+b=c&gt;2\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \log c&lt;
+ p&#x27;\,G^{\kappa\,\log\log\log(8G)/\log\log G},
+ \qquad p&#x27;=\min\{P(a),P(b),P(c)\}.
+ \tag{20.33}
+\]">\[
+ \log c&lt;
+ p&#x27;\,G^{\kappa\,\log\log\log(8G)/\log\log G},
+ \qquad p&#x27;=\min\{P(a),P(b),P(c)\}.
+ \tag{20.33}
+\]</span>
+Here <span class="math" data-tex="\(P(1)=1\)">\(P(1)=1\)</span> and <span class="math" data-tex="\(G=\operatorname{rad}(abc)\)">\(G=\operatorname{rad}(abc)\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(U=\max\{16,G\}\)">\(U=\max\{16,G\}\)</span>. Then <span class="math" data-tex="\(T\le U\)">\(T\le U\)</span>, and
+Lemma 20.2 shows <span class="math" data-tex="\(F(T)\le F(U)\)">\(F(T)\le F(U)\)</span>.
+Choose the inequality in (20.26) corresponding to <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span>.
+Since <span class="math" data-tex="\(u_i\ge\log2\)">\(u_i\ge\log2\)</span> and <span class="math" data-tex="\(u_i\le\log(2G)\)">\(u_i\le\log(2G)\)</span>, its right side
+is bounded by
+<span class="math math-display" data-tex="\[
+ V=p&#x27;E_C(U)\ge1
+ \tag{20.34}
+\]">\[
+ V=p&#x27;E_C(U)\ge1
+ \tag{20.34}
+\]</span>
+for an effective absolute <span class="math" data-tex="\(C\)">\(C\)</span>.
+Indeed the extra factor is at most
+<span class="math" data-tex="\((\log(2G))^3/(\log2)^2\)">\((\log(2G))^3/(\log2)^2\)</span>, whose logarithm is
+<span class="math" data-tex="\(O(1+\log\log U)=O(F(U))\)">\(O(1+\log\log U)=O(F(U))\)</span>, by the elementary bounds in
+Lemma 20.2. Constants in these comparisons can be chosen explicitly
+from <span class="math" data-tex="\(G\ge6\)">\(G\ge6\)</span> and <span class="math" data-tex="\(F(U)&gt;1\)">\(F(U)&gt;1\)</span>.</p>
+<p>Apply (20.32). The facts <span class="math" data-tex="\(p&#x27;\le G\)">\(p&#x27;\le G\)</span> and <span class="math" data-tex="\(F(U)\le2\log U\)">\(F(U)\le2\log U\)</span>
+give <span class="math" data-tex="\(\log(16V)\le C_1\log U\)">\(\log(16V)\le C_1\log U\)</span>.
+The inequality <span class="math" data-tex="\(F(U)\le2\log U\)">\(F(U)\le2\log U\)</span> follows from
+<span class="math" data-tex="\(\log(\mathrm e+\ell)\le2\ell\)">\(\log(\mathrm e+\ell)\le2\ell\)</span> for <span class="math" data-tex="\(\ell&gt;1\)">\(\ell&gt;1\)</span>;
+check it at <span class="math" data-tex="\(\ell=1\)">\(\ell=1\)</span> and differentiate.
+Thus the factor <span class="math" data-tex="\(16(\log(16V))^2\)">\(16(\log(16V))^2\)</span> is absorbed into
+<span class="math" data-tex="\(E_{C_2}(U)\)">\(E_{C_2}(U)\)</span>, giving <span class="math" data-tex="\(Q&lt;p&#x27;E_{C_3}(U)\)">\(Q&lt;p&#x27;E_{C_3}(U)\)</span>.</p>
+<p>It remains to express this in the announced form.
+For <span class="math" data-tex="\(G\ge16\)">\(G\ge16\)</span>, set <span class="math" data-tex="\(u=\log G\)">\(u=\log G\)</span> and <span class="math" data-tex="\(\ell=\log u&gt;1\)">\(\ell=\log u&gt;1\)</span>.
+There is the elementary comparison
+<span class="math math-display" data-tex="\[
+ \log(\mathrm e+\ell)\le8\log\log(u+\log8).
+ \tag{20.35}
+\]">\[
+ \log(\mathrm e+\ell)\le8\log\log(u+\log8).
+ \tag{20.35}
+\]</span>
+For <span class="math" data-tex="\(1&lt;\ell\le2\)">\(1&lt;\ell\le2\)</span>, the left side is below two. On the right,
+<span class="math" data-tex="\(u+\log8\ge\log128&gt;14/3&gt;4\)">\(u+\log8\ge\log128&gt;14/3&gt;4\)</span>; hence
+<span class="math" data-tex="\(\log(u+\log8)&gt;\log4&gt;4/3\)">\(\log(u+\log8)&gt;\log4&gt;4/3\)</span>, and
+<span class="math" data-tex="\(\log\log(u+\log8)&gt;\log(4/3)&gt;1/4\)">\(\log\log(u+\log8)&gt;\log(4/3)&gt;1/4\)</span>.
+For <span class="math" data-tex="\(\ell\ge2\)">\(\ell\ge2\)</span>, the right-hand logarithm is at least
+<span class="math" data-tex="\(\log\ell\)">\(\log\ell\)</span>, whereas
+<span class="math" data-tex="\(\log(\mathrm e+\ell)\le1+\log\ell\le(5/2)\log\ell\)">\(\log(\mathrm e+\ell)\le1+\log\ell\le(5/2)\log\ell\)</span>.
+This proves (20.35).
+Multiplying it by <span class="math" data-tex="\(u/\ell\)">\(u/\ell\)</span> gives the required comparison with
+<span class="math" data-tex="\(\log G\,\log\log\log(8G)/\log\log G\)">\(\log G\,\log\log\log(8G)/\log\log G\)</span>.</p>
+<p>For <span class="math" data-tex="\(6\le G&lt;16\)">\(6\le G&lt;16\)</span>, the same expression is bounded below by the
+strictly positive number
+<span class="math math-display" data-tex="\[
+ \frac{\log6\,\log\log\log48}{\log\log16}.
+ \]">\[
+ \frac{\log6\,\log\log\log48}{\log\log16}.
+ \]</span>
+Here <span class="math" data-tex="\(\log\log\log48&gt;0\)">\(\log\log\log48&gt;0\)</span>, since <span class="math" data-tex="\(48&gt;\mathrm e^{\mathrm e}\)">\(48&gt;\mathrm e^{\mathrm e}\)</span>.
+Thus a further effective absolute enlargement covers <span class="math" data-tex="\(F(16)\)">\(F(16)\)</span>.
+Combining the comparisons proves (20.33). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 20.7 (Stewart–Yu).</strong> There is an effectively computable
+absolute constant <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> such that every primitive positive triple
+<span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \log c&lt;C\,G^{1/3}(\log G)^3.
+ \tag{20.36}
+\]">\[
+ \log c&lt;C\,G^{1/3}(\log G)^3.
+ \tag{20.36}
+\]</span></p>
+<p><strong>Proof.</strong> The triple with <span class="math" data-tex="\(c=2\)">\(c=2\)</span> is <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span>, and is covered
+by enlarging <span class="math" data-tex="\(C\)">\(C\)</span>. Assume <span class="math" data-tex="\(c&gt;2\)">\(c&gt;2\)</span>, and put <span class="math" data-tex="\(u=\log G\)">\(u=\log G\)</span>.
+The proof of Theorem 20.6 gave
+<span class="math" data-tex="\(Q&lt;p&#x27;E_A(\max\{16,G\})\)">\(Q&lt;p&#x27;E_A(\max\{16,G\})\)</span> for an effective <span class="math" data-tex="\(A\)">\(A\)</span>.
+If <span class="math" data-tex="\(p&#x27;\le G^{1/4}\)">\(p&#x27;\le G^{1/4}\)</span>, then
+<span class="math" data-tex="\(Q&lt;G^{1/4}E_A(\max\{16,G\})\)">\(Q&lt;G^{1/4}E_A(\max\{16,G\})\)</span>.
+Since <span class="math" data-tex="\(AF(G)/\log G\to0\)">\(AF(G)/\log G\to0\)</span> effectively, the last exponential is
+at most <span class="math" data-tex="\(G^{1/12}\)">\(G^{1/12}\)</span> above an effective threshold.
+Below that threshold the same already proved inequality bounds <span class="math" data-tex="\(Q\)">\(Q\)</span>
+by an effective constant. Increasing <span class="math" data-tex="\(C\)">\(C\)</span> proves (20.36)
+in this case as well. This bounded-range argument uses the inequality
+for <span class="math" data-tex="\(Q\)">\(Q\)</span>, not an unproved finiteness assertion about abc triples.</p>
+<p>It remains to consider <span class="math" data-tex="\(p&#x27;&gt;G^{1/4}\)">\(p&#x27;&gt;G^{1/4}\)</span>.
+Every <span class="math" data-tex="\(p_i&gt;1\)">\(p_i&gt;1\)</span>, and
+<span class="math math-display" data-tex="\[
+ \tfrac14u&lt;u_i\le2u.
+ \tag{20.37}
+\]">\[
+ \tfrac14u&lt;u_i\le2u.
+ \tag{20.37}
+\]</span>
+Multiply all three inequalities (20.26). Since
+<span class="math" data-tex="\(\mathcal L\le(2u)^3\)">\(\mathcal L\le(2u)^3\)</span>, the result is
+<span class="math math-display" data-tex="\[
+ \left(\frac Q{(\log Q)^2}\right)^3
+ \le C_1 E_{3A}(T)\,p_ap_bp_c\,u^3.
+ \tag{20.38}
+\]">\[
+ \left(\frac Q{(\log Q)^2}\right)^3
+ \le C_1 E_{3A}(T)\,p_ap_bp_c\,u^3.
+ \tag{20.38}
+\]</span>
+The nine logarithmic powers from <span class="math" data-tex="\(\mathcal L^3\)">\(\mathcal L^3\)</span> have lost
+six powers to <span class="math" data-tex="\((u_au_bu_c)^2\)">\((u_au_bu_c)^2\)</span>; exactly three remain.
+Apply (20.15) with <span class="math" data-tex="\(3A\)">\(3A\)</span>. By definition of <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+ T\,p_ap_bp_c
+ \le16M p_ap_bp_c=16G.
+ \tag{20.39}
+\]">\[
+ T\,p_ap_bp_c
+ \le16M p_ap_bp_c=16G.
+ \tag{20.39}
+\]</span>
+Thus <span class="math" data-tex="\(Q/(\log Q)^2\le C_2G^{1/3}u\)">\(Q/(\log Q)^2\le C_2G^{1/3}u\)</span>.
+Choose <span class="math" data-tex="\(C_2\)">\(C_2\)</span> large enough that this right side is at least one
+for <span class="math" data-tex="\(G\ge6\)">\(G\ge6\)</span>, and apply (20.32) once more.
+Its logarithmic factor is at most <span class="math" data-tex="\(C_3u\)">\(C_3u\)</span>, because
+<span class="math" data-tex="\(\log(C_2G^{1/3}u)\le\log C_2+u/3+\log u=O(u)\)">\(\log(C_2G^{1/3}u)\le\log C_2+u/3+\log u=O(u)\)</span>
+on <span class="math" data-tex="\(u\ge\log6\)">\(u\ge\log6\)</span>. We obtain <span class="math" data-tex="\(Q&lt;C G^{1/3}u^3\)">\(Q&lt;C G^{1/3}u^3\)</span>, as required.
+All thresholds and constants were obtained by explicit elementary
+inequalities and the effective constants of Lemma 20.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-a-lower-bound-for-the-greatest-prime">6. A lower bound for the greatest prime</h2>
+<p><strong>Corollary 20.8.</strong> There is an effectively computable absolute
+<span class="math" data-tex="\(c_0&gt;0\)">\(c_0&gt;0\)</span> such that, whenever <span class="math" data-tex="\(1\le a&lt;b\)">\(1\le a&lt;b\)</span>, <span class="math" data-tex="\(\gcd(a,b)=1\)">\(\gcd(a,b)=1\)</span>,
+and <span class="math" data-tex="\(b\ge16\)">\(b\ge16\)</span>,
+<span class="math math-display" data-tex="\[
+ P(ab(a+b))&gt;
+ c_0\,\frac{\log\log b\,\log\log\log b}
+                 {\max\{1,\log\log\log\log b\}}.
+ \tag{20.40}
+\]">\[
+ P(ab(a+b))&gt;
+ c_0\,\frac{\log\log b\,\log\log\log b}
+                 {\max\{1,\log\log\log\log b\}}.
+ \tag{20.40}
+\]</span>
+The numerator is positive for this range of <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(P=P(ab(a+b))\)">\(P=P(ab(a+b))\)</span> and <span class="math" data-tex="\(G=\operatorname{rad}(ab(a+b))\)">\(G=\operatorname{rad}(ab(a+b))\)</span>.
+We use the proved estimate <span class="math" data-tex="\(\vartheta(x)\le C_\vartheta x\)">\(\vartheta(x)\le C_\vartheta x\)</span> from
+<a href="../NT-ZETA/NT-ZETA-12.html">The prime number theorem</a>,
+Theorem 2.1. Its effective error term gives the inequality above
+an effective threshold, and the finite initial interval is covered
+by increasing <span class="math" data-tex="\(C_\vartheta\)">\(C_\vartheta\)</span>. Since every prime dividing <span class="math" data-tex="\(G\)">\(G\)</span>
+is at most <span class="math" data-tex="\(P\)">\(P\)</span>,
+<span class="math math-display" data-tex="\[
+ \log G\le\vartheta(P)\le C_\vartheta P.
+ \tag{20.41}
+\]">\[
+ \log G\le\vartheta(P)\le C_\vartheta P.
+ \tag{20.41}
+\]</span>
+In fact a Chebyshev upper bound would suffice here.</p>
+<p>Let <span class="math" data-tex="\(Y=\log\log b\)">\(Y=\log\log b\)</span>, so <span class="math" data-tex="\(Y\ge\log\log16&gt;1\)">\(Y\ge\log\log16&gt;1\)</span>.
+Taking a logarithm of the intermediate form of Theorem 20.6, using
+<span class="math" data-tex="\(p&#x27;\le P\)">\(p&#x27;\le P\)</span>, (20.41), and monotonicity of <span class="math" data-tex="\(F\)">\(F\)</span>, gives, for all
+sufficiently large <span class="math" data-tex="\(P\)">\(P\)</span>,
+<span class="math math-display" data-tex="\[
+ Y\le C_4 P\,\frac{\log\log P}{\log P}.
+ \tag{20.42}
+\]">\[
+ Y\le C_4 P\,\frac{\log\log P}{\log P}.
+ \tag{20.42}
+\]</span>
+To verify this substitution explicitly, enlarge <span class="math" data-tex="\(C_\vartheta\)">\(C_\vartheta\)</span> to
+at least one and put <span class="math" data-tex="\(C_* = C_\vartheta+\log16\)">\(C_* = C_\vartheta+\log16\)</span>.
+Then <span class="math" data-tex="\(\log(\max\{16,G\})\le C_*P\)">\(\log(\max\{16,G\})\le C_*P\)</span>.
+Set <span class="math" data-tex="\(v=\log P\)">\(v=\log P\)</span>, and assume <span class="math" data-tex="\(v\ge\max\{4,\log C_*\}\)">\(v\ge\max\{4,\log C_*\}\)</span>.
+Monotonicity of <span class="math" data-tex="\(F\)">\(F\)</span> gives
+<span class="math math-display" data-tex="\[
+ F(\max\{16,G\})\le
+ C_*P\,\frac{\log(\mathrm e+v+\log C_*)}{v+\log C_*}
+ \le 2C_*P\,\frac{\log v}{v}.
+ \]">\[
+ F(\max\{16,G\})\le
+ C_*P\,\frac{\log(\mathrm e+v+\log C_*)}{v+\log C_*}
+ \le 2C_*P\,\frac{\log v}{v}.
+ \]</span>
+Indeed <span class="math" data-tex="\(v+\log C_*\ge v\)">\(v+\log C_*\ge v\)</span>, while
+<span class="math" data-tex="\(\mathrm e+v+\log C_*\le3v\)">\(\mathrm e+v+\log C_*\le3v\)</span> and
+<span class="math" data-tex="\(\log(3v)\le2\log v\)">\(\log(3v)\le2\log v\)</span>.
+Also <span class="math" data-tex="\(v\le\mathrm e^v\log v/v\)">\(v\le\mathrm e^v\log v/v\)</span> for <span class="math" data-tex="\(v\ge4\)">\(v\ge4\)</span>:
+the quotient <span class="math" data-tex="\(\mathrm e^v\log v/v^2\)">\(\mathrm e^v\log v/v^2\)</span> is greater than one at
+four and has positive logarithmic derivative
+<span class="math" data-tex="\(1+1/(v\log v)-2/v\)">\(1+1/(v\log v)-2/v\)</span>.
+Thus (20.42) holds with <span class="math" data-tex="\(C_4=1+2AC_*\)">\(C_4=1+2AC_*\)</span>, where <span class="math" data-tex="\(A\)">\(A\)</span> is the
+constant in the intermediate form of Theorem 20.6.</p>
+<p>For clarity, invert (20.42) without assuming <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>
+are comparable. If <span class="math" data-tex="\(P\ge Y^2\)">\(P\ge Y^2\)</span>, then
+<span class="math" data-tex="\(P\ge Y\log Y/\max\{1,\log\log Y\}\)">\(P\ge Y\log Y/\max\{1,\log\log Y\}\)</span> for <span class="math" data-tex="\(Y&gt;1\)">\(Y&gt;1\)</span>,
+because <span class="math" data-tex="\(\log Y\le Y\)">\(\log Y\le Y\)</span>.
+Otherwise <span class="math" data-tex="\(P&lt;Y^2\)">\(P&lt;Y^2\)</span>. Equation (20.42) first gives
+<span class="math" data-tex="\(P\ge Y/C_4\)">\(P\ge Y/C_4\)</span>, after increasing the threshold so that
+<span class="math" data-tex="\(\log\log P/\log P\le1\)">\(\log\log P/\log P\le1\)</span>.
+For sufficiently large <span class="math" data-tex="\(Y\)">\(Y\)</span> this implies
+<span class="math" data-tex="\(\log P\ge\tfrac12\log Y\)">\(\log P\ge\tfrac12\log Y\)</span>, while <span class="math" data-tex="\(P&lt;Y^2\)">\(P&lt;Y^2\)</span> gives
+<span class="math math-display" data-tex="\[
+ \log\log P\le\log(2\log Y)
+ \le C_5\max\{1,\log\log Y\}.
+ \]">\[
+ \log\log P\le\log(2\log Y)
+ \le C_5\max\{1,\log\log Y\}.
+ \]</span>
+Substitution back into (20.42) yields
+<span class="math math-display" data-tex="\[
+ P\ge C_6^{-1}\,
+       \frac{Y\log Y}{\max\{1,\log\log Y\}}.
+ \tag{20.43}
+\]">\[
+ P\ge C_6^{-1}\,
+       \frac{Y\log Y}{\max\{1,\log\log Y\}}.
+ \tag{20.43}
+\]</span>
+The omitted bounded ranges are also effective. If <span class="math" data-tex="\(P\)">\(P\)</span> is below
+the fixed threshold, (20.41) and the intermediate inequality in
+Theorem 20.6 bound <span class="math" data-tex="\(Y\)">\(Y\)</span> effectively. If <span class="math" data-tex="\(Y\)">\(Y\)</span> itself is bounded,
+the positive continuous expression in (20.43) is bounded above,
+whereas <span class="math" data-tex="\(P\ge2\)">\(P\ge2\)</span>. Choose a smaller positive constant to cover
+both ranges and to make the final inequality strict.
+Finally substitute <span class="math" data-tex="\(Y=\log\log b\)">\(Y=\log\log b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 20.9 (the logarithmic defect on the projective line).</strong>
+Use the three-branch defect <span class="math" data-tex="\(S_3\)">\(S_3\)</span> of
+<a href="../the-field-with-one-element/the-projective-line-over-f-1-and-the-abc-conjecture.html#section-5.1">The projective line over <span class="math" data-tex="\(\mathbb F_1\)">\(\mathbb F_1\)</span> and the abc conjecture</a>,
+Proposition 5.2. There is an effective absolute <span class="math" data-tex="\(K\)">\(K\)</span> such that, for
+the preceding triples with <span class="math" data-tex="\(Q=\log c&gt;\mathrm e\)">\(Q=\log c&gt;\mathrm e\)</span>,
+<span class="math math-display" data-tex="\[
+ S_3&lt;
+ 3-\frac{3\log Q-9\log\log Q-K+1}{Q}.
+ \tag{20.44}
+\]">\[
+ S_3&lt;
+ 3-\frac{3\log Q-9\log\log Q-K+1}{Q}.
+ \tag{20.44}
+\]</span></p>
+<p><strong>Proof.</strong> The cited programme proposition proves
+<span class="math" data-tex="\(S_3=2+(\log b-\log G-1)/Q\)">\(S_3=2+(\log b-\log G-1)/Q\)</span> when <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>.
+Enlarge the constant <span class="math" data-tex="\(C\)">\(C\)</span> of Theorem 20.7 to be at least one,
+and set <span class="math" data-tex="\(L=\log G\)">\(L=\log G\)</span>. Its bound gives
+<span class="math math-display" data-tex="\[
+ \log Q&lt;\log C+L/3+3\log L.
+ \]">\[
+ \log Q&lt;\log C+L/3+3\log L.
+ \]</span>
+If <span class="math" data-tex="\(L&lt;6\log Q\)">\(L&lt;6\log Q\)</span>, substitute
+<span class="math" data-tex="\(\log L&lt;\log6+\log\log Q\)">\(\log L&lt;\log6+\log\log Q\)</span> and rearrange to obtain
+<span class="math math-display" data-tex="\[
+ L&gt;3\log Q-9\log\log Q-3\log C-9\log6.
+ \tag{20.45}
+\]">\[
+ L&gt;3\log Q-9\log\log Q-3\log C-9\log6.
+ \tag{20.45}
+\]</span>
+If <span class="math" data-tex="\(L\ge6\log Q\)">\(L\ge6\log Q\)</span>, the same lower bound is immediate because
+<span class="math" data-tex="\(Q&gt;\mathrm e\)">\(Q&gt;\mathrm e\)</span> makes <span class="math" data-tex="\(\log\log Q&gt;0\)">\(\log\log Q&gt;0\)</span>.
+Take <span class="math" data-tex="\(K=3\log C+9\log6\)">\(K=3\log C+9\log6\)</span>, and use <span class="math" data-tex="\(\log b&lt;Q\)">\(\log b&lt;Q\)</span> in the
+proved defect formula. This proves (20.44). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-two-worked-comparisons">7. Two worked comparisons</h2>
+<p><strong>A grouping with three rational bases.</strong> Reconsider the primitive triple
+<span class="math math-display" data-tex="\[
+ 121+48\,234\,375=48\,234\,496,\qquad
+ 11^2+3^2 5^6 7^3=2^{21}23.
+ \]">\[
+ 121+48\,234\,375=48\,234\,496,\qquad
+ 11^2+3^2 5^6 7^3=2^{21}23.
+ \]</span>
+Its radical is <span class="math" data-tex="\(G=53\,130\)">\(G=53\,130\)</span>, its three greatest primes are
+<span class="math" data-tex="\((p_a,p_b,p_c)=(11,7,23)\)">\((p_a,p_b,p_c)=(11,7,23)\)</span>, and <span class="math" data-tex="\(M=T=30\)">\(M=T=30\)</span>.
+There are <span class="math" data-tex="\(r=6\)">\(r=6\)</span> primes, and
+<span class="math" data-tex="\(\exp((\log6)^2)=24.7890493098\ldots\)">\(\exp((\log6)^2)=24.7890493098\ldots\)</span>.
+Every prime in the triple is below this cutoff, but the greatest
+prime of each component is deliberately excluded from its grouped part.
+Thus
+<span class="math math-display" data-tex="\[
+ R_a=1,\qquad R_b=3^2 5^6=140\,625,\qquad
+ R_c=2^{21}=2\,097\,152.
+ \]">\[
+ R_a=1,\qquad R_b=3^2 5^6=140\,625,\qquad
+ R_c=2^{21}=2\,097\,152.
+ \]</span>
+For the valuation at <span class="math" data-tex="\(p_a=11\)">\(p_a=11\)</span>, the ratio becomes
+<span class="math math-display" data-tex="\[
+ \frac cb=\frac{2^{21}}{3^2 5^6}\,23\,7^{-3}.
+ \]">\[
+ \frac cb=\frac{2^{21}}{3^2 5^6}\,23\,7^{-3}.
+ \]</span>
+The original five prime bases have become three independent rational
+bases: <span class="math" data-tex="\(2^{21}/(3^2 5^6),23,7\)">\(2^{21}/(3^2 5^6),23,7\)</span>.
+Their supports are disjoint. Squaring gives coefficients <span class="math" data-tex="\(2,2,-6\)">\(2,2,-6\)</span>,
+and its difference from one has 11-adic valuation at least two.
+In fact it has valuation exactly two: <span class="math" data-tex="\(c^2-b^2=a(c+b)\)">\(c^2-b^2=a(c+b)\)</span>,
+and <span class="math" data-tex="\(c+b\equiv4\pmod {11}\)">\(c+b\equiv4\pmod {11}\)</span>.
+The alternative <span class="math" data-tex="\(a&lt;\sqrt b\)">\(a&lt;\sqrt b\)</span> also holds, because
+<span class="math" data-tex="\(121^2=14\,641&lt;48\,234\,375\)">\(121^2=14\,641&lt;48\,234\,375\)</span>; the real-form argument is
+therefore available for the bound involving <span class="math" data-tex="\(p_a\)">\(p_a\)</span>.</p>
+<p><img src="figures/prime-parts.png" alt="The three components of an abc triple, with grouped small-prime parts in blue and the greatest-prime powers in ochre." class="course-figure" width="1920" height="1152" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="prime-parts" data-asset-sha256="E4CF17DE1244929A4F43DB8E193538FCB42E92FA47E9A01131966797BCFFC08A"></p>
+<p><em>Figure 20.1. The exact factorization of
+<span class="math" data-tex="\(11^2+3^2 5^6 7^3=2^{21}23\)">\(11^2+3^2 5^6 7^3=2^{21}23\)</span> illustrates (20.19)–(20.22).
+Although every prime here is below the small-prime cutoff, the greatest
+prime of each component is kept separate. For <span class="math" data-tex="\(c/b\)">\(c/b\)</span>, the prime
+supports of the grouped base, 23 and 7 are disjoint, proving their
+independence. The example in Section 7 verifies the radical, the
+grouped parts and the 11-adic valuation. The grouping method is that of
+<a href="https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/s0012-7094-01-10815-6.pdf">Stewart and Yu, Section 3</a>.
+<a href="figure_sources/prime-parts.py">Reproducible figure</a>.</em></p>
+<p><strong>The scale <span class="math" data-tex="\(G=10^{100}\)">\(G=10^{100}\)</span>.</strong> This is a comparison of the bounding
+functions at a real parameter value; <span class="math" data-tex="\(10^{100}\)">\(10^{100}\)</span> itself is not
+squarefree and hence is not the radical of a triple.
+Put
+<span class="math math-display" data-tex="\[
+ \eta=\frac{\log\log\log(8G)}{\log\log G}
+       =0.3116787713820234\ldots.
+ \]">\[
+ \eta=\frac{\log\log\log(8G)}{\log\log G}
+       =0.3116787713820234\ldots.
+ \]</span>
+The following table concerns bounds for <span class="math" data-tex="\(Q=\log c\)">\(Q=\log c\)</span>, not for <span class="math" data-tex="\(c\)">\(c\)</span>.
+The constants <span class="math" data-tex="\(C_{\rm ST}\)">\(C_{\rm ST}\)</span>, <span class="math" data-tex="\(C_{\rm SY}\)">\(C_{\rm SY}\)</span>, and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>
+retain their theorem meanings.</p>
+<table>
+<thead>
+<tr>
+<th>Bound for <span class="math" data-tex="\(Q\)">\(Q\)</span></th>
+<th>Decimal logarithm of the bounding expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stewart–Tijdeman form <span class="math" data-tex="\(C_{\rm ST}G^{15}\)">\(C_{\rm ST}G^{15}\)</span></td>
+<td><span class="math" data-tex="\(1500+\log_{10}C_{\rm ST}\)">\(1500+\log_{10}C_{\rm ST}\)</span></td>
+</tr>
+<tr>
+<td>Lesson 19 form <span class="math" data-tex="\(G^{1+\kappa\eta}\)">\(G^{1+\kappa\eta}\)</span></td>
+<td><span class="math" data-tex="\(100+31.16787713820234\ldots\,\kappa\)">\(100+31.16787713820234\ldots\,\kappa\)</span></td>
+</tr>
+<tr>
+<td>Stewart–Yu form <span class="math" data-tex="\(C_{\rm SY}G^{1/3}(\log G)^3\)">\(C_{\rm SY}G^{1/3}(\log G)^3\)</span></td>
+<td><span class="math" data-tex="\(40.41998039943172\ldots+\log_{10}C_{\rm SY}\)">\(40.41998039943172\ldots+\log_{10}C_{\rm SY}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In the last row the radical-dependent factor is
+<span class="math" data-tex="\(2.63014928538138\ldots\times10^{40}\)">\(2.63014928538138\ldots\times10^{40}\)</span>.
+The elementary explicit choice <span class="math" data-tex="\(\kappa=10500\)">\(\kappa=10500\)</span> proved in Lesson 19
+gives <span class="math" data-tex="\(327362.7099511246\ldots\)">\(327362.7099511246\ldots\)</span> in the middle row.
+Thus the asymptotic improvement of an exponent does not by itself
+rank numerical bounds at one value of <span class="math" data-tex="\(G\)">\(G\)</span>; the constants still matter.
+This table does not set either unspecified effective constant to one.</p>
+<h2 id="8-explicit-constants-and-other-approaches">8. Explicit constants and other approaches</h2>
+<p>The following statements describe further directions. Their proofs
+are not inputs to Sections 1–7. Write <span class="math" data-tex="\(\log_j x\)">\(\log_j x\)</span> for the <span class="math" data-tex="\(j\)">\(j\)</span>-fold
+iterated natural logarithm, <span class="math" data-tex="\(G^*=\max\{G,16\}\)">\(G^*=\max\{G,16\}\)</span>, and
+<span class="math" data-tex="\(P=\max\{P(a),P(b),P(c)\}\)">\(P=\max\{P(a),P(b),P(c)\}\)</span>.</p>
+<p><strong>Explicit logarithmic estimates.</strong>
+<a href="https://www.impan.pl/shop/en/publication/transaction/download/product/83173">Győry and Yu, <em>Bounds for the solutions of S-unit equations and
+decomposable form equations</em></a>,
+Corollary 2 and its rational specialization on page 14, give, for
+primitive positive <span class="math" data-tex="\(a+b=c&gt;2\)">\(a+b=c&gt;2\)</span>,
+<span class="math math-display" data-tex="\[
+ \log c&lt;2^{23}\frac{P}{\log P}
+             G^{653\log_3G^*/\log_2G^*}.
+\]">\[
+ \log c&lt;2^{23}\frac{P}{\log P}
+             G^{653\log_3G^*/\log_2G^*}.
+\]</span>
+The same free paper records the explicit result of Chim Kwok Chi
+(also cited there under “C. K. Chi”):
+<span class="math math-display" data-tex="\[
+ \log c&lt;p&#x27;G^{710\log_3G^*/\log_2G},
+ \qquad p&#x27;=\min\{P(a),P(b),P(c)\}.
+\]">\[
+ \log c&lt;p&#x27;G^{710\log_3G^*/\log_2G},
+ \qquad p&#x27;=\min\{P(a),P(b),P(c)\}.
+\]</span>
+The first formula has the largest of the three greatest primes;
+the second has the smallest. Their numerical exponents alone therefore
+do not compare the bounds. The two denominators above also have their
+stated, different arguments.</p>
+<p><strong>A modular approach.</strong>
+<a href="https://people.math.harvard.edu/~hpasten/preprints/modabcJNT.pdf">Murty and Pasten, <em>Modular forms and effective Diophantine
+approximation</em></a>,
+Sections 7–8, obtain effective abc bounds through the modular degree
+and the discriminant of an elliptic curve. One consequence of their
+displayed conductor and discriminant estimates is
+<span class="math math-display" data-tex="\[
+ \log c&lt;4.8G\log G+13.31G+25.
+\]">\[
+ \log c&lt;4.8G\log G+13.31G+25.
+\]</span>
+Here the coefficient before rounding is
+<span class="math" data-tex="\(4.8\log16=13.3084258667\ldots\)">\(4.8\log16=13.3084258667\ldots\)</span>, and the constant term is
+<span class="math" data-tex="\((93+10\log2)/4&lt;25\)">\((93+10\log2)/4&lt;25\)</span>. These are the constants obtained by
+combining <span class="math" data-tex="\(N_E\le16G\)">\(N_E\le16G\)</span>,
+<span class="math" data-tex="\(\log|\Delta_E|&lt;1.2N_E\log N_E+93\)">\(\log|\Delta_E|&lt;1.2N_E\log N_E+93\)</span>,
+<span class="math" data-tex="\((abc)^2\le2^8|\Delta_E|\)">\((abc)^2\le2^8|\Delta_E|\)</span>, and <span class="math" data-tex="\(c^2\le2abc\)">\(c^2\le2abc\)</span>.
+Their asymptotic estimate is
+<span class="math" data-tex="\(\log c\le4G\log G+O(G\log\log G)\)">\(\log c\le4G\log G+O(G\log\log G)\)</span>.
+The modular argument offers a different route to effectivity; its
+modularity and modular-degree estimates are not proved in this lesson.</p>
+<p><strong>Large lower-bound examples.</strong>
+<a href="https://arxiv.org/pdf/2301.11056">Bright, <em>A new lower bound in the abc conjecture</em></a>,
+Theorem 3.1 and the introduction, gives infinitely many primitive triples
+such that
+<span class="math math-display" data-tex="\[
+ c&gt;G\exp\left(6.563\frac{\sqrt{\log c}}{\log\log c}\right).
+\]">\[
+ c&gt;G\exp\left(6.563\frac{\sqrt{\log c}}{\log\log c}\right).
+\]</span>
+It develops the earlier lattice-packing argument of van Frankenhuysen,
+whose constant was <span class="math" data-tex="\(6.068\)">\(6.068\)</span>. Both constants refer to the displayed
+expression with <span class="math" data-tex="\(\sqrt{\log c}\)">\(\sqrt{\log c}\)</span>; the denominator lies outside the
+square root. This is a lower bound along infinitely many examples,
+whereas Theorem 20.7 is an upper bound for every triple.</p>
+<p><strong>An explicit conjecture and a finite verification.</strong>
+Baker's explicit abc conjecture predicts
+<span class="math math-display" data-tex="\[
+ c\le\frac65 G\frac{(\log G)^\omega}{\omega!},
+ \qquad \omega=\omega(abc),
+\]">\[
+ c\le\frac65 G\frac{(\log G)^\omega}{\omega!},
+ \qquad \omega=\omega(abc),
+\]</span>
+for primitive positive triples other than <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span>.
+<a href="https://arxiv.org/pdf/1605.06079">von Känel and Matschke, <em>Solving S-unit, Mordell, Thue,
+Thue–Mahler and generalized Ramanujan–Nagell equations via the
+Shimura–Taniyama conjecture</em></a>,
+Section 3.2.6, report a verification for all such triples with
+<span class="math" data-tex="\(G\le10^7\)">\(G\le10^7\)</span>, using their complete S-unit database.
+This is the authors' finite verification, not a proof of the unrestricted
+conjecture. Lesson 21 studies the reduction and certification methods
+that make finite Diophantine computations possible.</p>
+<h3 id="what-this-lesson-does-not-prove">What this lesson does not prove</h3>
+<p>The explicit 653 and 710 estimates, the modular estimates, the lattice
+packing improvements with constants 6.068 and 6.563, and the cited database
+completeness and computation are statements for orientation. Baker's
+explicit inequality is a conjecture. None is used to establish any of
+Results 20.1–20.9 or to solve the exercises. Those proofs use the
+programme results identified in Lemma 20.1, Corollary 20.8, and
+Corollary 20.9, together with the elementary arguments given here.</p>
+<h2 id="9-exercises-and-complete-solutions">9. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove
+<span class="math" data-tex="\(\omega(abc)\ll\log G/\log\log G\)">\(\omega(abc)\ll\log G/\log\log G\)</span> for primitive <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span>.
+Give a bound valid for <span class="math" data-tex="\(G\ge6\)">\(G\ge6\)</span> and handle <span class="math" data-tex="\(G=2\)">\(G=2\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(r=\omega(abc)\)">\(r=\omega(abc)\)</span>, <span class="math" data-tex="\(L=\log G&gt;1\)">\(L=\log G&gt;1\)</span>, and
+<span class="math" data-tex="\(\ell=\log L&gt;0\)">\(\ell=\log L&gt;0\)</span>.
+Unique prime factorization gives <span class="math" data-tex="\(r!\le G\)">\(r!\le G\)</span>.
+If <span class="math" data-tex="\(r&gt;4L/\ell\)">\(r&gt;4L/\ell\)</span>, then <span class="math" data-tex="\(r/2&gt;2L/\ell\ge\sqrt L\)">\(r/2&gt;2L/\ell\ge\sqrt L\)</span>, so
+<span class="math math-display" data-tex="\[
+ \log(r!)\ge(r/2)\log(r/2)&gt;r\ell/4&gt;L,
+ \]">\[
+ \log(r!)\ge(r/2)\log(r/2)&gt;r\ell/4&gt;L,
+ \]</span>
+a contradiction. Here <span class="math" data-tex="\(r&gt;4L/\ell\)">\(r&gt;4L/\ell\)</span> automatically implies <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>;
+the factorial estimate is the product of its largest half of factors.
+The inequality <span class="math" data-tex="\(\ell\le2\sqrt L\)">\(\ell\le2\sqrt L\)</span> was proved in Lemma 20.2.
+Hence <span class="math" data-tex="\(r\le4\log G/\log\log G\)">\(r\le4\log G/\log\log G\)</span> for <span class="math" data-tex="\(G\ge6\)">\(G\ge6\)</span>.
+The only primitive triple with radical two is <span class="math" data-tex="\((1,1,2)\)">\((1,1,2)\)</span>:
+pairwise coprimality permits at most one nonunit component supported
+on two, so both smaller components must be one. Its rank is one.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove the factorization step
+<span class="math math-display" data-tex="\[
+ \log c\le r\max_{p\mid c}\{v_p(c)\log p\}.
+ \]">\[
+ \log c\le r\max_{p\mid c}\{v_p(c)\log p\}.
+ \]</span>
+Explain why each prime logarithm belongs inside the maximum.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(c=\prod_{p\mid c}p^{v_p(c)}\)">\(c=\prod_{p\mid c}p^{v_p(c)}\)</span>.
+Taking logarithms gives the sum in (20.27), with exactly
+<span class="math" data-tex="\(\omega(c)\le r\)">\(\omega(c)\le r\)</span> nonnegative summands.
+Each summand is at most the maximum of those entire summands,
+which proves the inequality.
+The products <span class="math" data-tex="\(v_p(c)\log p\)">\(v_p(c)\log p\)</span>, rather than the exponents alone,
+are the summands. For instance, for <span class="math" data-tex="\(c=2^{10}3\)">\(c=2^{10}3\)</span> the two terms
+are <span class="math" data-tex="\(10\log2\)">\(10\log2\)</span> and <span class="math" data-tex="\(\log3\)">\(\log3\)</span>.
+The same proof works with either of the other nonunit components.</p>
+<p><strong>Exercise 3 (medium).</strong> Derive (20.40) from the least-greatest-prime
+bound and the programme estimate <span class="math" data-tex="\(\vartheta(x)\le C_\vartheta x\)">\(\vartheta(x)\le C_\vartheta x\)</span>.
+Keep both ranges in the inversion argument.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(P=P(ab(a+b))\)">\(P=P(ab(a+b))\)</span> and <span class="math" data-tex="\(Y=\log\log b\)">\(Y=\log\log b\)</span>.
+The support of the radical lies among primes at most <span class="math" data-tex="\(P\)">\(P\)</span>, so
+<span class="math" data-tex="\(\log G\le C_\vartheta P\)">\(\log G\le C_\vartheta P\)</span>.
+Theorem 20.6 in its intermediate form yields
+<span class="math" data-tex="\(Y\le\log P+A F(\max\{16,G\})\)">\(Y\le\log P+A F(\max\{16,G\})\)</span>.
+The explicit substitution in the proof of Corollary 20.8 gives
+<span class="math math-display" data-tex="\[
+ Y\le C_4P\log\log P/\log P
+ \]">\[
+ Y\le C_4P\log\log P/\log P
+ \]</span>
+above an effective fixed threshold.
+If <span class="math" data-tex="\(P\ge Y^2\)">\(P\ge Y^2\)</span>, then
+<span class="math" data-tex="\(P\ge Y\log Y/\max\{1,\log\log Y\}\)">\(P\ge Y\log Y/\max\{1,\log\log Y\}\)</span>, since <span class="math" data-tex="\(\log Y\le Y\)">\(\log Y\le Y\)</span>.
+If <span class="math" data-tex="\(P&lt;Y^2\)">\(P&lt;Y^2\)</span>, first use <span class="math" data-tex="\(\log\log P/\log P\le1\)">\(\log\log P/\log P\le1\)</span> to get
+<span class="math" data-tex="\(P\ge Y/C_4\)">\(P\ge Y/C_4\)</span>. For large <span class="math" data-tex="\(Y\)">\(Y\)</span>, this gives
+<span class="math" data-tex="\(\log P\ge(\log Y)/2\)">\(\log P\ge(\log Y)/2\)</span>, while the assumed upper bound gives
+<span class="math" data-tex="\(\log\log P\le\log(2\log Y)\)">\(\log\log P\le\log(2\log Y)\)</span>.
+Substitute these opposite-direction bounds in the displayed inequality:
+<span class="math math-display" data-tex="\[
+ Y\le C_5P\,
+       \frac{\max\{1,\log\log Y\}}{\log Y}.
+ \]">\[
+ Y\le C_5P\,
+       \frac{\max\{1,\log\log Y\}}{\log Y}.
+ \]</span>
+Rearrangement is the desired estimate.
+A bounded <span class="math" data-tex="\(P\)">\(P\)</span> bounds <span class="math" data-tex="\(Y\)">\(Y\)</span> by the original intermediate inequality.
+A bounded <span class="math" data-tex="\(Y&gt;1\)">\(Y&gt;1\)</span> bounds the right-hand comparison function.
+Since <span class="math" data-tex="\(P\ge2\)">\(P\ge2\)</span>, a smaller effective positive constant covers both
+initial ranges, and then replacing <span class="math" data-tex="\(Y\)">\(Y\)</span> by <span class="math" data-tex="\(\log\log b\)">\(\log\log b\)</span>
+gives (20.40), including its maximum with one.</p>
+<p><strong>Exercise 4 (hard).</strong> Locate the use of exponential dependence on
+the number of logarithms. If (20.1) carried an additional factor
+<span class="math" data-tex="\(n^{\gamma n}\)">\(n^{\gamma n}\)</span>, with fixed <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>, what loss would the
+same proof allow? Distinguish this from the dependence in (20.2).</p>
+<p><strong>Solution.</strong> In Lemma 20.3 the number <span class="math" data-tex="\(n\)">\(n\)</span> of prime bases can be
+comparable to <span class="math" data-tex="\(r\)">\(r\)</span>. The factor <span class="math" data-tex="\(D^n\)">\(D^n\)</span> has logarithm at most
+<span class="math" data-tex="\(r\log D\le6(\log D)L/\ell=O(F(T))\)">\(r\log D\le6(\log D)L/\ell=O(F(T))\)</span>.
+By contrast Lemma 20.2 gives only
+<span class="math math-display" data-tex="\[
+ \gamma n\log n\le\gamma r\log r
+ \le6\gamma L(\ell+2)/\ell\le18\gamma L.
+ \]">\[
+ \gamma n\log n\le\gamma r\log r
+ \le6\gamma L(\ell+2)/\ell\le18\gamma L.
+ \]</span>
+Thus the additional factor costs at most <span class="math" data-tex="\(T^{18\gamma}\)">\(T^{18\gamma}\)</span>;
+it cannot be absorbed into <span class="math" data-tex="\(E_A(T)\)">\(E_A(T)\)</span> with a fixed <span class="math" data-tex="\(A\)">\(A\)</span>.
+The small-part heights inherit this factor. Each inequality (20.26)
+then has the extra factor <span class="math" data-tex="\(T^{18\gamma}\)">\(T^{18\gamma}\)</span>.
+On multiplication, (20.38) has <span class="math" data-tex="\(T^{54\gamma}\)">\(T^{54\gamma}\)</span>.
+Using <span class="math" data-tex="\(E_{3A}(T)\ll T\)">\(E_{3A}(T)\ll T\)</span>, <span class="math" data-tex="\(T\le16M\)">\(T\le16M\)</span>, and <span class="math" data-tex="\(M\le G\)">\(M\le G\)</span>
+would give only
+<span class="math math-display" data-tex="\[
+ Q\ll_\gamma G^{1/3+18\gamma}(\log G)^3
+ \]">\[
+ Q\ll_\gamma G^{1/3+18\gamma}(\log G)^3
+ \]</span>
+from that branch. The other branch uses the weakened least-prime bound
+<span class="math math-display" data-tex="\[
+ Q\le p&#x27;G^{18\gamma}E_A(\max\{16,G\}).
+\]">\[
+ Q\le p&#x27;G^{18\gamma}E_A(\max\{16,G\}).
+\]</span>
+When <span class="math" data-tex="\(p&#x27;\le G^{1/4}\)">\(p&#x27;\le G^{1/4}\)</span>, its effective subpower factor is eventually
+at most <span class="math" data-tex="\(G^{1/12}\)">\(G^{1/12}\)</span>, giving the same loss.
+The coefficient 18 is merely the envelope in Lemma 20.2, not an
+optimal loss.</p>
+<p>In (20.2), on the other hand, the base count is the grouped count
+<span class="math" data-tex="\(n\)">\(n\)</span> of (20.22). Now <span class="math" data-tex="\(n\log n\le16L/\ell\)">\(n\log n\le16L/\ell\)</span>.
+Consequently <span class="math" data-tex="\(n^{2n}\)">\(n^{2n}\)</span>, or any fixed power <span class="math" data-tex="\(n^{\gamma n}\)">\(n^{\gamma n}\)</span>,
+is absorbed into <span class="math" data-tex="\(E_A(T)\)">\(E_A(T)\)</span>. Grouping has changed which rank
+dependence is affordable.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-19.html">← Towards abc I: the theorems of Stewart and Tijdeman</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-21.html">Solving Diophantine equations completely: reduction, lattices and certificates →</a></span></nav>
+<p class="small source-link"><a href="TR-BAKER-20.pdf" download>PDF of this lesson</a> · <a href="sources/TR-BAKER-20.tex" download>Editable LaTeX source of this lesson</a> · <span class="unlinked">Complete course source package</span> · <a href="src/TR-BAKER-20.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

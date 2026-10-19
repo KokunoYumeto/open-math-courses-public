@@ -2,7 +2,7 @@
 
 The incoming-field theorem carries the full-space solution through a strict glancing tangency. Its ordinary wavefront conclusion allows pure normal covectors, so restriction to the boundary requires another argument. This supplement supplies that argument for both the value and the actual weak normal trace. It does not yet prove that boundary data outside the Airy patch have a harmless response inside that patch.
 
-**Original exposition, proofs, exercises and figure: CC0-1.0.** The source antecedents are the approved Hörmander III treatment of compressed quantization and the exact programme proofs linked below. Those books remain admitted sources. Required Lebl proofs remain external author-edition dependencies: this export does not claim internal P514 closure. See the proof map, source credit and [review](proof-review.json).
+**Original exposition, proofs, exercises and figure: CC0-1.0.** The source antecedents are the Hörmander III treatment of compressed quantization and the exact programme proofs linked below. Those books remain admitted sources. Required Lebl proofs remain external author-edition dependencies: this export does not claim internal P514 closure. See the proof map, source credit and [review](proof-review.json).
 
 ## 1. The precise trace statement
 
@@ -11,7 +11,7 @@ The incoming-field theorem carries the full-space solution through a strict glan
  b_0=(0,z_0;0,\eta_0),\qquad \eta_0\ne0.
  \tag{IT1}
 \]
-Let \(g\) be compactly supported and L2 on the half-space. Assume that it has every compressed L2 order on one fixed neighborhood \(O\) of \(b_0\), in the sense used in ZE:Z0–Z1. Let \(e^+g\) denote its zero extension. If \(Q\) is a properly supported ordinary matrix pseudodifferential operator of order \(m<-1/2\), then
+Let \(g\) be compactly supported and L2 on the half-space. Assume that it has every compressed L2 order on one fixed neighborhood \(O\) of \(b_0\), in the sense used in [ZE:Z0–Z1](../20261009-zero-extension-incoming/zero-extension-and-incoming-glancing-regularity.html). Let \(e^+g\) denote its zero extension. If \(Q\) is a properly supported ordinary matrix pseudodifferential operator of order \(m<-1/2\), then
 \[
  (z_0,\eta_0)\notin\operatorname{WF}(\gamma Qe^+g).
  \tag{IT2}
@@ -196,7 +196,7 @@ This use of pullback is justified for \(w\); applying it directly to \(V\) befor
  D_q^2V\in L^2_qH^{-1}_z .
  \tag{IT20}
 \]
-Indeed every second tangential derivative of an H1 function is a tangential derivative of an L2 function; coefficient derivatives and the remaining terms are L2. Local smooth multipliers act on \(H^{-1}_z\) by the dual of the H1 product rule. The graph trace WSL:L6 therefore defines \(\gamma D_qV\in H^{-1/2}_{\rm loc}\), with its actual Green identity. We must identify this trace in the decomposition (IT18).
+Indeed every second tangential derivative of an H1 function is a tangential derivative of an L2 function; coefficient derivatives and the remaining terms are L2. Local smooth multipliers act on \(H^{-1}_z\) by the dual of the H1 product rule. The graph trace [WSL:L6](../20261008-weak-source-lift/weak-source-lifting-and-normal-flux.html) therefore defines \(\gamma D_qV\in H^{-1/2}_{\rm loc}\), with its actual Green identity. We must identify this trace in the decomposition (IT18).
 
 The term \(Qe^+(\chi G)\) is H2, so its normal derivative is H1. Smooth full-space approximation converges in H2 and hence in both graph norms of WSL:L6. Its ordinary Sobolev trace and graph trace consequently agree.
 

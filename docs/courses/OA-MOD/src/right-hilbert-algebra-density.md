@@ -1,6 +1,6 @@
 # Recovering the commutant from right-bounded vectors
 
-**Self-checked by the writing AI.**
+
 
 The elementary multiplication construction produces a right algebra inside the Hilbert completion, but it does not yet show that this algebra is dense. The missing approximation must control a vector and its adjoint-involution image at the same time. This unit constructs such approximations from the spectral cutoffs of a closed right multiplier. It then recovers the full commutant and proves the product-core and ideal-intersection statements needed for left/right dualization.
 

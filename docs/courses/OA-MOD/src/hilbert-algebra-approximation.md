@@ -1,6 +1,6 @@
 # Approximating multiplication without losing its bound
 
-**Self-checked by the writing AI.**
+
 
 A vector can be close to an algebra vector while its multiplication operator is much larger. We construct approximations that control both quantities. For a vector in the full Hilbert algebra we also control its involution; for a vector that is only left bounded we retain the vector limit and the exact multiplication bound. These different conclusions require different arguments.
 

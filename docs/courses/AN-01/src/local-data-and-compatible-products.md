@@ -1,8 +1,8 @@
 # Local data and compatible products
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 A distribution has no values at individual points, but it still has restrictions to open sets. Compatible restrictions determine one global distribution. This local principle explains support, extends the possible test functions, and defines some products even when both factors are singular.
 

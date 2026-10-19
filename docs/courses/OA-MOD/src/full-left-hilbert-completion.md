@@ -1,6 +1,6 @@
 # The full left Hilbert algebra obtained by dualizing twice
 
-**Self-checked by the writing AI.**
+
 
 Starting with an arbitrary left Hilbert algebra, the right-bounded vectors form a right Hilbert algebra. Dualizing once more produces the left-bounded vectors and the full left completion. This lesson proves the left-ideal covariance, the closed unbounded left multipliers, the adjoint-intersection formula, and the exact meanings of fullness and equivalence. No separability, identity element, faithful state, or modular commutant theorem is assumed.
 

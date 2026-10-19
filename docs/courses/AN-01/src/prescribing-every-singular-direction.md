@@ -1,6 +1,6 @@
 # Prescribing every singular direction
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Closedness and positive conicity are the only restrictions on the wavefront set of a complex distribution. We prove this in a form that realizes the same set simultaneously for smooth, analytic and every admissible derivative-growth regularity. The construction places singularities at a dense collection of base-direction pairs. A geometric gap gives holomorphic continuation everywhere else, while a strict coefficient bound prevents the chosen singularities from cancelling.
 

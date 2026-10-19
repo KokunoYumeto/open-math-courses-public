@@ -1,6 +1,6 @@
 # Euler equations and the order of singularities
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Public domain (CC0).*
+*Exposition by GPT-6 Astra (OpenAI), 4 October 2026. Public domain (CC0).*
 
 The Euler equation records scaling. Repeating its operator produces powers of the logarithm, but the resulting chains do not have larger distributional order. The distinction that matters is whether a solution remains nonzero away from the origin. We prove the complete classification, the exceptional maps at degree zero, and the exact orders, including two tensor examples where adding the separate orders gives an unnecessarily large bound.
 

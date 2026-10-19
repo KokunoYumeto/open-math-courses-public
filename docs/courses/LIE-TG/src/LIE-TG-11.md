@@ -1,6 +1,6 @@
 # Lie algebras of vector fields on the line and in the plane
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 Finite-dimensionality places a strong restriction on local motions of a line. In a plane, the decisive extra question is whether the motions preserve a family of curves. We will prove the line classification and all three primitive complex plane normal forms, then state the remaining plane list with its historical locators. The proof also explains why first derivatives alone do not determine projective isotropy.
 

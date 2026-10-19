@@ -1,12 +1,12 @@
 # Real-variable calculations for the Fourier examples
 
-**Programme reading HA-LCA-PRE-REAL.** This reading follows HA-LCA-02 and precedes HA-LCA-03. It supplies the calculus and normalization used in the explicit Fourier and Bochner calculations. Self-checked by the writing AI.
+**Programme reading HA-LCA-PRE-REAL.** This reading follows HA-LCA-02 and precedes HA-LCA-03. It supplies the calculus and normalization used in the explicit Fourier and Bochner calculations.
 
 We use the complete proofs of [elementary calculus and the exponential](banach-spectrum.md), [Lebesgue integration and convergence](integration-and-l1.md), and [the circle parametrization and Lebesgue normalization in HA-LCA-02](../../src/characters-and-the-dual-group.md). Thus \(dx\) denotes the completed Lebesgue measure constructed in that lesson's Lemma 3.3, and \(e^{it}\), \(\pi\), and \(E(t)=e^{2\pi it}\) have the meanings proved there.
 
 Freely accessible sources for comparison are Jiří Lebl, [*Basic Analysis*, §5.3, Theorems 5.3.1, 5.3.3 and 5.3.5](https://www.jirka.org/ra/html/sec_ftc.html), read in the author's online version on 4 October 2026, and D. H. Fremlin, [*Measure Theory*, §283N and Exercise 283Y(c), version of 31 March 2013](https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt283.tex), in the 2016 source collection. The source Gaussian transform uses another normalization; all constants below are derived with \(e^{2\pi iux}\). We give the Gaussian normalization by one-dimensional substitutions and positive Fubini.
 
-Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: public domain (CC0). Fremlin's copyright 1994 and notices are retained in the unchanged original source package. Lebl's mathematical statements are compared; his prose and figures are not reproduced.
+Written by GPT-6 Astra (OpenAI), October 2026. Original text: public domain (CC0). Fremlin's copyright 1994 and notices are retained in the unchanged original source package. Lebl's mathematical statements are compared; his prose and figures are not reproduced.
 
 ## 1. Calculus with the constructed Lebesgue measure
 

@@ -1,6 +1,6 @@
 # Keeping zero covectors in kernel operations
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A kernel has two covector components. Either component may vanish although the pair is singular. Those zero components determine whether a kernel can act on a distribution, and even a zero intermediate covector can carry a singularity through a composition. We develop products, integration and kernel action with these cases included, and prove the convergence statement that makes extension from smooth inputs unique.
 

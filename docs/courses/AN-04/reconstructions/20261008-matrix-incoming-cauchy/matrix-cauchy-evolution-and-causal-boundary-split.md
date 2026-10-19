@@ -1,6 +1,6 @@
 # Matrix Cauchy evolution and the causal boundary split
 
-An incoming solution should be constructed from interior Cauchy data. Requiring two individually tempered boundary-normalized Airy inputs would exclude the finite-energy examples in AES. We instead construct the full-space matrix evolution in its actual energy norm, match both initial jets, and obtain a causal boundary correction by subtraction.
+An incoming solution should be constructed from interior Cauchy data. Requiring two individually tempered boundary-normalized Airy inputs would exclude the finite-energy examples in [AES](../20261008-airy-energy-spaces/airy-energy-spaces-and-weak-boundary-data.html). We instead construct the full-space matrix evolution in its actual energy norm, match both initial jets, and obtain a causal boundary correction by subtraction.
 
 The construction of an interior solution followed by a boundary correction is motivated by Melrose–Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), Section 7.4. The proofs below retain arbitrary smooth complex matrix lower terms, rough energy slices, the exact time-interface distribution and the weak Robin trace. The scalar Cauchy theorem used in the construction is proved in [HC](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.html); it is not silently applied to a system.
 

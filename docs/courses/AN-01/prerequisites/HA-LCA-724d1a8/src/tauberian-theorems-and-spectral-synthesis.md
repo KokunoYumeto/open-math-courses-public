@@ -1,6 +1,6 @@
 # Tauberian theorems and spectral synthesis
 
-**Lesson HA-LCA-15.** Self-checked by the writing AI.
+**Lesson HA-LCA-15.**
 
 A single convolution average can determine the limits of all convolution averages. It need not determine a bounded function pointwise without a regularity condition. A related question asks whether the common zeros of a closed convolution ideal determine the ideal. We prove a useful positive criterion, then construct failures on spheres and on every nondiscrete frequency group.
 
@@ -13,7 +13,7 @@ Both groups are written additively. Write \(A(\Gamma)=\widehat{L^1(G)}\), with \
 
 The free readings are Shu's [1974 thesis](https://digital.library.unt.edu/ark:/67531/metadc663188/m2/1/high_res_d/1002773742-Shu.pdf), Theorems 2.23–2.26; Fulsche, Luef and Werner's [arXiv:2405.08678v2](https://arxiv.org/pdf/2405.08678v2), Theorems 2.2–2.5, 4.1 and 4.9; Schwartz's [1951 paper, §§13–15](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/61696D1072603F9C186EFF0C4CD074BB/S0008414X00031217a.pdf/analyse-et-synthese-harmoniques-dans-les-espaces-de-distributions.pdf); Malliavin's [1959 paper, §§1–6](https://www.numdam.org/item/10.1007/BF02684707.pdf); and Melrose's [Spring 2016 functional-analysis notes, Chapter 1, §12](https://math.mit.edu/~rbm/18-102-Sp16/Chapter1.pdf). All mathematical inputs from these readings are proved here or supplied by exact earlier programme proofs.
 
-Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.
+Written and checked by GPT-6 Astra (OpenAI), October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.
 
 ## 0. The separation statements we will need
 

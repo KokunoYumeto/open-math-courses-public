@@ -1,6 +1,6 @@
 # Measurable weight fields and their direct integrals
 
-**Self-checked by the writing AI.**
+
 
 A measurable weight field must control the finite adjoint domain, rather than only assign measurable values to a few positive operators. This unit separates that field comparison from two further questions: how to evaluate every positive field, including infinite values, and how to recover measurable GNS vectors when an input is finite. The resulting integral has an exact finite domain and decomposes its full modular operators.
 
@@ -420,5 +420,5 @@ almost everywhere, with equality also for infinite values. The full associated-w
 
 **One-point check.** Let \(M=D=\mathbb C\) and let the global weight be \(\Phi(z)=z\) for \(z\geq0\). The base of mass one with fibre weight \(\varphi(z)=z\), and the base of mass two with fibre weight \(\psi(z)=z/2\), have the same diagonal algebra, measure class and integrated weight. Here \(r=2\), as in (MW.25). The only complex unital star-automorphism of \(\mathbb C\) is the identity, so the two unrescaled fibre weights are not weight-preservingly isomorphic. The unitary between their weighted fibre Hilbert spaces is \(a\mapsto\sqrt2\,a\), whose value on \(1\cdot1\) is \(\sqrt2\), while the product of its values on the two factors is \(2\). It is not multiplicative. The globally multiplicative map is the identity on algebra vectors with the compensated base measure, as in (MW.26). This example detects the omitted normalization convention; it does not refute the intended source disintegration theorem.
 
-The source map is exact: MW-01 states Definition VIII.4.4 and uses the full compatible comparison in GFR-01–10; MW-04 constructs Definition 4.6 with the explicit global representation \(\Pi\); MW-02/03/05 proves both clauses of Theorem 4.7, including all infinite values and the complete finite left ideal; MW-07 proves Theorem 4.8 at the precise central-decomposition inputs and constructs its compatible GNS realization. The source pages are printed 134–137/PDF 154–157, with set graph density checked on VI.3.1, printed 28/PDF 48. DF, DC and corrected SCF supply original author arguments for their actual DI consumers. No unrestricted DI-08 converse is used or proved.
+The source map is exact: MW-01 states Definition VIII.4.4 and uses the full compatible comparison in GFR-01–10; MW-04 constructs Definition 4.6 with the explicit global representation \(\Pi\); MW-02/03/05 proves both clauses of Theorem 4.7, including all infinite values and the complete finite left ideal; MW-07 proves Theorem 4.8 at the precise central-decomposition inputs and constructs its compatible GNS realization. The source pages are printed 134–137/PDF 155–158 (one-based), with set graph density checked on VI.3.1, printed 28/PDF 49 (one-based). DF, DC and corrected SCF supply original author arguments for their actual DI consumers. No unrestricted DI-08 converse is used or proved.
 

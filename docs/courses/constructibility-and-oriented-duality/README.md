@@ -2,7 +2,7 @@
 
 Three lessons prove constructibility through smooth cutoffs, build constructible models in a cotangent direction, and reconstruct dualizing complexes from oriented simplices. Twenty-two exercises have complete solutions.
 
-- Constructibility through smooth cutoffs and microlocal properness · editable source
+- [Constructibility through smooth cutoffs and microlocal properness](constructibility-through-smooth-cutoffs-and-microlocal-properness.html) · [editable source](src/constructibility-through-smooth-cutoffs-and-microlocal-properness.md)
 - [Constructible models in one cotangent direction](constructible-models-in-one-cotangent-direction.html) · [editable source](src/constructible-models-in-one-cotangent-direction.md)
 - [The dualizing complex from oriented simplices](the-dualizing-complex-from-oriented-simplices.html) · [editable source](src/the-dualizing-complex-from-oriented-simplices.md)
 

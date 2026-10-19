@@ -12,7 +12,7 @@ The included [measure and L2 proofs M0–M8](../20261004-free-intrinsic-graph/pr
 
 This retained text puts the normal coordinate last, \((x',x_n)\), and uses dimension \(n\). The Cauchy receiver writes \((t,x)\), with \(t=x_n\); its spatial dimension is therefore \(n-1\). The literal coordinate permutation preserves Lebesgue measure, the Fourier coefficient, \(R_0\), and all pairings. There is no rescaling. In the isolated discussion of left quantization below, \(\operatorname{Op}(a)u=(2\pi)^{-n}\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi\); no general mixed-symbol boundedness is inferred from the multiplier estimates.
 
-The mathematical antecedents are the approved Hörmander III,2007 eBook ISBN978-3-540-49938-1, Lemma20.1.9 and AppendixB.2. Source citations provide credit; the used programme proofs are included here and in the companion.
+The mathematical antecedents are the Hörmander III,2007 eBook ISBN978-3-540-49938-1, Lemma20.1.9 and AppendixB.2. Source citations provide credit; the used programme proofs are included here and in the companion.
 
 ## Retained definitions
 

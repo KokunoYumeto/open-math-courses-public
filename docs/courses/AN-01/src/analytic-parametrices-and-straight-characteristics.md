@@ -1,6 +1,6 @@
 # Analytic parametrices and straight characteristics
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0). No independent review is claimed.*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0). *
 
 A directional inverse can carry a singularity forward or backward along a characteristic line. To use that inverse at analytic regularity, its error must itself be analytic. We construct two such inverses for constant-coefficient equations, prove their analytic wavefront bounds, and then propagate singularities at every derivative-growth scale. The spatial cutoff in the propagation argument is smooth; we keep track of the analytic directions it introduces.
 

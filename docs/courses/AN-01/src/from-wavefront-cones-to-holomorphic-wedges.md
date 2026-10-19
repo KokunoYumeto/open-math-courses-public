@@ -1,6 +1,6 @@
 # From wavefront cones to holomorphic wedges
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A holomorphic boundary has singular covectors in the positive dual of its imaginary approach cone. We prove the converse with its precise regular remainder: a distribution with this directional bound is locally the boundary of a polynomially bounded holomorphic function, modulo a function of the stated derivative-growth class. In the analytic case the remainder can be absorbed. This yields a local characterization by analytic wavefronts of regular differences and a uniqueness theorem at one-dimensional support boundaries.
 

@@ -1,6 +1,6 @@
 # From a C*-modular condition to the GNS von Neumann algebra
 
-The finite-weight boundedness proof, exact prerequisite bindings, trace-model domain clarification and approved-edition comparison are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0. Earlier authorship is retained.
+The finite-weight boundedness proof and trace-model domain argument are by GPT-6 Astra (OpenAI), under CC0; other contributions are credited in the component notices.
 
 A modular boundary condition on a C*-algebra does more than prescribe scalar functions. It makes the finite-domain involution closable, identifies a faithful normal semifinite weight on the represented von Neumann algebra, and determines the dynamics of that weight. The identification of the normal weight is essential: agreeing on a few finite elements would not identify its values at infinity.
 

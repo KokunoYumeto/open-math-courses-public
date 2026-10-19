@@ -1,6 +1,6 @@
 # Analytic maps and derivative growth
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Repeated differentiation of a composite function produces many terms. Smoothness controls each fixed derivative, but preserving a derivative-growth class requires one estimate for the entire sequence of orders. We prove that composition with any real-analytic map preserves every class considered in the preceding lessons, even when the dimensions differ or the map has critical points. A count of coefficients in finite Taylor polynomials supplies the required uniform bound.
 

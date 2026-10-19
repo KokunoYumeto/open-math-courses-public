@@ -1,6 +1,6 @@
 # Analytic kernels for unbounded modular operators
 
-**Self-checked by the writing AI.**
+
 
 An unbounded power need not commute with a bounded operator or preserve its range. We formulate the required equation as a pairing on its exact common domain. A strip integral then solves it through bounded operators. The same analytic tools construct entire vectors and identify their actual power domains.
 

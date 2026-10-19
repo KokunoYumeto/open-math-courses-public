@@ -1,8 +1,8 @@
 # Jets, supported distributions and local operators
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 A distribution concentrated on a point can measure derivatives of a test there. A distribution concentrated on a plane can measure normal derivatives along that plane, with distributions as tangential coefficients. The total order limits both kinds of measurement: spending one derivative in the normal direction leaves one fewer tangential derivative available. We prove that precise order bound, then use it to characterize operators whose kernels lie on the diagonal.
 

@@ -4,7 +4,7 @@ This is the complete smoothness argument of AN03-U034, *Global boundary operator
 
 The [conormal amplitude and Besov proofs](conormal-amplitudes-and-test-spaces.md) supply (C2) and (C16). The [supported test spaces, approximation, full dual pairing and intrinsic trace](dual-conormal-distributions-and-jets.md) supply (GA1)–(GA2), (GD1)–(GD12) and their actual topologies. The full [Fourier Sobolev embedding](../20261005-restored-first-order-cauchy/spacetime-symbol-composition.md), [Hölder inequality](../20261005-cauchy-foundations/integration-and-duality.md) supply the elementary analytic entries. The exact interpolation identity (SP11) is also proved directly below.
 
-The mathematical antecedent is the approved Hörmander III, 2007 eBook, Section 18.3. The same distribution is used throughout the argument.
+The mathematical antecedent is the Hörmander III, 2007 eBook, Section 18.3. The same distribution is used throughout the argument.
 
 ## 1. The weighted norm with its complete order shift
 

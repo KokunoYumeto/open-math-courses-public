@@ -2,7 +2,7 @@
 
 Boundary collars have no tangential coordinate in dimension one. Their full residual kernels nevertheless need not be ordinary smoothing kernels. We combine the existing scalar Fourier tests in the collars with one positive interior test, retaining every residual term. The resulting norm inequality has the coarse Banach term required for forcing and observation tests in a propagation estimate.
 
-Independent exposition, proofs, examples and illustration: CC0-1.0. The approved antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, ISBN 978-3-540-49938-1, §§18.3 and24.7. The scalar Fourier construction supplies the complete half-line factors in every dimension. The [global kernel calculus](../20261005-global-boundary-operators/global-boundary-operator-calculus.md) supplies their coordinate and support conventions. External human foundation proofs remain explicit in the proof map; internal closure of a CC0-only export is not claimed.
+Independent exposition, proofs, examples and illustration: CC0-1.0. The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, ISBN 978-3-540-49938-1, §§18.3 and24.7. The [scalar Fourier construction](../20261009-scalar-fourier-source-tests/scalar-source-tests-from-compact-logarithmic-kernels.md) supplies the complete half-line factors in every dimension. The [global kernel calculus](../20261005-global-boundary-operators/global-boundary-operator-calculus.md) supplies their coordinate and support conventions. External human foundation proofs remain explicit in the proof map; internal closure of a CC0-only export is not claimed.
 
 ## 1. The inequality and its precise scope
 

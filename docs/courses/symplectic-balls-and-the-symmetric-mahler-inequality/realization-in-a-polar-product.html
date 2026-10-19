@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Realization in a polar product</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Symplectic balls and the symmetric Mahler inequality)</a><a href="the-uniform-slice-estimate.html">Previous lesson</a><a href="src/realization-in-a-polar-product.md">Editable source</a></nav><main><article><h1 id="realization-in-a-polar-product">Realization in a polar product</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson assembles the proof. For a strip body <span class="math" data-tex="\(K=\{x:|\langle b_j,x\rangle|\le1\}\)">\(K=\{x:|\langle b_j,x\rangle|\le1\}\)</span> and a large integer <span class="math" data-tex="\(k\)">\(k\)</span>, the functions <span class="math" data-tex="\(f_j(z)=g(\langle b_j,z\rangle)^k\)">\(f_j(z)=g(\langle b_j,z\rangle)^k\)</span> satisfy the hypotheses of Theorem 4.1, so the domain <span class="math" data-tex="\(V=\{\sum_j|f_j|^2&lt;1\}\)">\(V=\{\sum_j|f_j|^2&lt;1\}\)</span> with the form <span class="math" data-tex="\(\omega=dd^c(|z|^2+\sum_j|f_j|^2)\)">\(\omega=dd^c(|z|^2+\sum_j|f_j|^2)\)</span> contains balls of every capacity below <span class="math" data-tex="\(\pi k\)">\(\pi k\)</span>. An explicit map, whose momentum coordinates are the slice integrals of <a href="the-uniform-slice-estimate.html">The uniform slice estimate</a>, carries <span class="math" data-tex="\((V,\omega)\)">\((V,\omega)\)</span> symplectically into <span class="math" data-tex="\(\operatorname{int}K\times S\operatorname{int}K^\circ\)">\(\operatorname{int}K\times S\operatorname{int}K^\circ\)</span> with <span class="math" data-tex="\(S\)">\(S\)</span> close to <span class="math" data-tex="\(\pi k/4\)">\(\pi k/4\)</span> (Proposition 7.1). Rescaling gives balls of every capacity below <span class="math" data-tex="\(4\)">\(4\)</span>; the polar approximation of <a href="polar-bodies-and-the-volume-product.html">Polar bodies and the volume product</a> passes to arbitrary bodies, and volume preservation gives the Mahler inequality. The construction is OpenAI's [OpenAI-SB, Sections 4 and 5].</p>
+<h2 id="1-strip-bodies">1. Strip bodies</h2>
+<p><strong>Proposition 7.1.</strong> Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let <span class="math" data-tex="\(b_1,\dots,b_m\in\mathbf R^n\)">\(b_1,\dots,b_m\in\mathbf R^n\)</span> span <span class="math" data-tex="\(\mathbf R^n\)">\(\mathbf R^n\)</span>, and let <span class="math" data-tex="\(K\)">\(K\)</span> be their strip body. For every <span class="math" data-tex="\(0&lt;c&lt;4\)">\(0&lt;c&lt;4\)</span> there is an injective symplectic map <span class="math" data-tex="\(B^{2n}(c)\to\operatorname{int}K\times\operatorname{int}K^\circ\)">\(B^{2n}(c)\to\operatorname{int}K\times\operatorname{int}K^\circ\)</span>, a diffeomorphism onto an open subset.</p>
+<p><strong>Proof.</strong> <em>Step 1: the holomorphic functions.</em> Let <span class="math" data-tex="\(F:\mathbb D\to D\)">\(F:\mathbb D\to D\)</span> and <span class="math" data-tex="\(g=F^{-1}\)">\(g=F^{-1}\)</span> be the maps of <a href="a-planar-conformal-map.html">A planar conformal map</a>. Write <span class="math" data-tex="\(\ell_j(z)=\langle b_j,z\rangle=\sum_ib_{ji}z_i\)">\(\ell_j(z)=\langle b_j,z\rangle=\sum_ib_{ji}z_i\)</span> and
+<span class="math math-display" data-tex="\[
+\Omega=\{z\in\mathbf C^n:\ \ell_j(z)\in D\text{ for every }j\}.
+\]">\[
+\Omega=\{z\in\mathbf C^n:\ \ell_j(z)\in D\text{ for every }j\}.
+\]</span>
+This is an open set containing <span class="math" data-tex="\(0\)">\(0\)</span>. The spanning condition makes the complex-linear map <span class="math" data-tex="\(z\mapsto(\ell_j(z))_j\)">\(z\mapsto(\ell_j(z))_j\)</span> injective, so <span class="math" data-tex="\(|z|\le C_b\max_j|\ell_j(z)|\)">\(|z|\le C_b\max_j|\ell_j(z)|\)</span> for a constant <span class="math" data-tex="\(C_b\)">\(C_b\)</span>; since <span class="math" data-tex="\(D\)">\(D\)</span> is bounded, so is <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Neither set depends on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>For an integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_j=(g\circ\ell_j)^k,\quad\tau=\sum_{j=1}^m|f_j|^2,\\
+V=\{z\in\Omega:\tau&lt;1\},\\
+\omega=dd^c(|z|^2+\tau).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_j=(g\circ\ell_j)^k,\quad\tau=\sum_{j=1}^m|f_j|^2,\\
+V=\{z\in\Omega:\tau&lt;1\},\\
+\omega=dd^c(|z|^2+\tau).
+\end{gathered}
+\]</span>
+The map <span class="math" data-tex="\(f=(f_1,\dots,f_m)\)">\(f=(f_1,\dots,f_m)\)</span> is holomorphic on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> vanishes only at <span class="math" data-tex="\(0\)">\(0\)</span>, the common zeros of the <span class="math" data-tex="\(f_j\)">\(f_j\)</span> are the points with all <span class="math" data-tex="\(\ell_j(z)=0\)">\(\ell_j(z)=0\)</span>, that is, only <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Near <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(|g(\zeta)|\le C|\zeta|\)">\(|g(\zeta)|\le C|\zeta|\)</span>, so <span class="math" data-tex="\(|f(z)|\le C&#x27;|z|^k\)">\(|f(z)|\le C&#x27;|z|^k\)</span>. For <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, every point of <span class="math" data-tex="\(\{\tau\le s\}\)">\(\{\tau\le s\}\)</span> has <span class="math" data-tex="\(|g(\ell_j(z))|\le s^{1/(2k)}\)">\(|g(\ell_j(z))|\le s^{1/(2k)}\)</span>, that is, <span class="math" data-tex="\(\ell_j(z)\in F(\{|w|\le s^{1/(2k)}\})\)">\(\ell_j(z)\in F(\{|w|\le s^{1/(2k)}\})\)</span>, a compact subset of <span class="math" data-tex="\(D\)">\(D\)</span>, for every <span class="math" data-tex="\(j\)">\(j\)</span>. Hence this sublevel set is bounded, and a limit of a sequence in it has all <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>-values in the same compact subsets of <span class="math" data-tex="\(D\)">\(D\)</span>, so it lies in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and satisfies <span class="math" data-tex="\(\tau\le s\)">\(\tau\le s\)</span>. Thus the sublevel sets are compact, and Theorem 4.1 gives, for every <span class="math" data-tex="\(c&#x27;&lt;\pi k\)">\(c&#x27;&lt;\pi k\)</span>, an injective symplectic map <span class="math" data-tex="\(E:B^{2n}(c&#x27;)\to(V,\omega)\)">\(E:B^{2n}(c&#x27;)\to(V,\omega)\)</span>.</p>
+<p><em>Step 2: the realization map.</em> Write <span class="math" data-tex="\(z=u+ix\)">\(z=u+ix\)</span>, and for <span class="math" data-tex="\(z\in V\)">\(z\in V\)</span> put <span class="math" data-tex="\(v_j=\langle b_j,u\rangle\)">\(v_j=\langle b_j,u\rangle\)</span>, <span class="math" data-tex="\(t_j=\langle b_j,x\rangle\)">\(t_j=\langle b_j,x\rangle\)</span>, so that <span class="math" data-tex="\(\ell_j(z)=v_j+it_j\in D\)">\(\ell_j(z)=v_j+it_j\in D\)</span>. Define <span class="math" data-tex="\(\Phi:V\to\mathbf R^n_q\times\mathbf R^n_p\)">\(\Phi:V\to\mathbf R^n_q\times\mathbf R^n_p\)</span> by
+<span class="math math-display" data-tex="\[
+q=x,\qquad p=-u-\sum_{j=1}^mJ_k(v_j,t_j)\,b_j .
+\]">\[
+q=x,\qquad p=-u-\sum_{j=1}^mJ_k(v_j,t_j)\,b_j .
+\]</span>
+It is smooth by Proposition 6.1. Since <span class="math" data-tex="\(\omega_0=\sum_ldq_l\wedge dp_l\)">\(\omega_0=\sum_ldq_l\wedge dp_l\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi^*\omega_0&amp;=\sum_ldx_l\wedge(-du_l)\\
+&amp;\quad-\sum_jdt_j\wedge dJ_k(v_j,t_j)\\
+&amp;=\sum_ldu_l\wedge dx_l\\
+&amp;\quad+\sum_j\partial_vJ_k(v_j,t_j)\,dv_j\wedge dt_j,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi^*\omega_0&amp;=\sum_ldx_l\wedge(-du_l)\\
+&amp;\quad-\sum_jdt_j\wedge dJ_k(v_j,t_j)\\
+&amp;=\sum_ldu_l\wedge dx_l\\
+&amp;\quad+\sum_j\partial_vJ_k(v_j,t_j)\,dv_j\wedge dt_j,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(dJ_k(v_j,t_j)=\partial_vJ_k\,dv_j+\partial_tJ_k\,dt_j\)">\(dJ_k(v_j,t_j)=\partial_vJ_k\,dv_j+\partial_tJ_k\,dt_j\)</span> and <span class="math" data-tex="\(dt_j\wedge dt_j=0\)">\(dt_j\wedge dt_j=0\)</span>. By Proposition 6.1, <span class="math" data-tex="\(\partial_vJ_k=k^2|g|^{2k-2}|g&#x27;|^2=|(g^k)&#x27;|^2\)">\(\partial_vJ_k=k^2|g|^{2k-2}|g&#x27;|^2=|(g^k)&#x27;|^2\)</span>, evaluated at <span class="math" data-tex="\(\ell_j(z)\)">\(\ell_j(z)\)</span>; by Lemma 3.8 with <span class="math" data-tex="\(\phi=g^k\)">\(\phi=g^k\)</span>, the <span class="math" data-tex="\(j\)">\(j\)</span>-th term is <span class="math" data-tex="\(dd^c|f_j|^2\)">\(dd^c|f_j|^2\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\Phi^*\omega_0=dd^c|z|^2+\sum_jdd^c|f_j|^2=\omega .
+\]">\[
+\Phi^*\omega_0=dd^c|z|^2+\sum_jdd^c|f_j|^2=\omega .
+\]</span></p>
+<p>The map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is injective. Equal images have equal <span class="math" data-tex="\(q\)">\(q\)</span>, hence the same <span class="math" data-tex="\(x\)">\(x\)</span>. Let <span class="math" data-tex="\(u_1,u_2\)">\(u_1,u_2\)</span> be two real parts at this <span class="math" data-tex="\(x\)">\(x\)</span>, with momenta <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span>, and put <span class="math" data-tex="\(v_{ji}=\langle b_j,u_i\rangle\)">\(v_{ji}=\langle b_j,u_i\rangle\)</span>. Both <span class="math" data-tex="\(v_{j1}\)">\(v_{j1}\)</span> and <span class="math" data-tex="\(v_{j2}\)">\(v_{j2}\)</span> lie in the horizontal slice of <span class="math" data-tex="\(D\)">\(D\)</span> at height <span class="math" data-tex="\(t_j\)">\(t_j\)</span>, an interval on which <span class="math" data-tex="\(J_k(\cdot,t_j)\)">\(J_k(\cdot,t_j)\)</span> is nondecreasing. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle p_2-p_1,u_2-u_1\rangle=-|u_2-u_1|^2\\
+&amp;\quad-\sum_j\bigl(J_k(v_{j2},t_j)-J_k(v_{j1},t_j)\bigr)\\
+&amp;\qquad\cdot(v_{j2}-v_{j1})\\
+&amp;\le-|u_2-u_1|^2,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle p_2-p_1,u_2-u_1\rangle=-|u_2-u_1|^2\\
+&amp;\quad-\sum_j\bigl(J_k(v_{j2},t_j)-J_k(v_{j1},t_j)\bigr)\\
+&amp;\qquad\cdot(v_{j2}-v_{j1})\\
+&amp;\le-|u_2-u_1|^2,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(p_1=p_2\)">\(p_1=p_2\)</span> forces <span class="math" data-tex="\(u_1=u_2\)">\(u_1=u_2\)</span>. The form <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is nondegenerate, so <span class="math" data-tex="\(D\Phi\)">\(D\Phi\)</span> is invertible everywhere (Exercise 7.1), and by Lemma 2.2, <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is a diffeomorphism of <span class="math" data-tex="\(V\)">\(V\)</span> onto an open set, with <span class="math" data-tex="\(\Phi^*\omega_0=\omega\)">\(\Phi^*\omega_0=\omega\)</span>.</p>
+<p><em>Step 3: the momenta lie in a dilate of the polar body.</em> Every point of <span class="math" data-tex="\(D\)">\(D\)</span> has imaginary part in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, so <span class="math" data-tex="\(|\langle b_j,q\rangle|=|t_j|&lt;1\)">\(|\langle b_j,q\rangle|=|t_j|&lt;1\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, and <span class="math" data-tex="\(q\in\operatorname{int}K\)">\(q\in\operatorname{int}K\)</span>. For the momenta use the support function <span class="math" data-tex="\(h_K\)">\(h_K\)</span>: <span class="math" data-tex="\(h_K(\pm b_j)\le1\)">\(h_K(\pm b_j)\le1\)</span> by the definition of <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(\operatorname{int}K^\circ=\{h_K&lt;1\}\)">\(\operatorname{int}K^\circ=\{h_K&lt;1\}\)</span> by Lemma 1.1. Since <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is bounded, <span class="math" data-tex="\(h_K(-u)\le C_K\)">\(h_K(-u)\le C_K\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> for a constant <span class="math" data-tex="\(C_K\)">\(C_K\)</span> independent of <span class="math" data-tex="\(k\)">\(k\)</span>. By subadditivity and positive homogeneity of <span class="math" data-tex="\(h_K\)">\(h_K\)</span>, and Proposition 6.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{h_K(p)}k&amp;\le\frac{C_K}k+\sum_j\frac{|J_k(v_j,t_j)|}k\\
+&amp;\le\frac{C_K}k+\frac\pi4\sum_j|g(\ell_j(z))|^{2k}\\
+&amp;\quad+m\varepsilon_k\\
+&amp;=\frac{C_K}k+\frac\pi4\tau(z)+m\varepsilon_k .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{h_K(p)}k&amp;\le\frac{C_K}k+\sum_j\frac{|J_k(v_j,t_j)|}k\\
+&amp;\le\frac{C_K}k+\frac\pi4\sum_j|g(\ell_j(z))|^{2k}\\
+&amp;\quad+m\varepsilon_k\\
+&amp;=\frac{C_K}k+\frac\pi4\tau(z)+m\varepsilon_k .
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Since <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(C_K\)">\(C_K\)</span> do not depend on <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\varepsilon_k\to0\)">\(\varepsilon_k\to0\)</span>, for all large <span class="math" data-tex="\(k\)">\(k\)</span> we have <span class="math" data-tex="\(C_K/k+m\varepsilon_k&lt;\eta\pi/4\)">\(C_K/k+m\varepsilon_k&lt;\eta\pi/4\)</span>; then <span class="math" data-tex="\(\tau&lt;1\)">\(\tau&lt;1\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span> gives <span class="math" data-tex="\(h_K(p)&lt;(1+\eta)\pi k/4\)">\(h_K(p)&lt;(1+\eta)\pi k/4\)</span>, that is,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi(V)&amp;\subseteq\operatorname{int}K\times S\operatorname{int}K^\circ,\\
+S&amp;=(1+\eta)\frac{\pi k}4.
+\end{aligned} \tag{7.1}
+\]">\[
+\begin{aligned}
+\Phi(V)&amp;\subseteq\operatorname{int}K\times S\operatorname{int}K^\circ,\\
+S&amp;=(1+\eta)\frac{\pi k}4.
+\end{aligned} \tag{7.1}
+\]</span></p>
+<p><em>Step 4: rescaling.</em> Fix <span class="math" data-tex="\(0&lt;c&lt;4\)">\(0&lt;c&lt;4\)</span>, choose <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> with <span class="math" data-tex="\((1+\eta)c&lt;4\)">\((1+\eta)c&lt;4\)</span>, and then <span class="math" data-tex="\(k\)">\(k\)</span> so large that (7.1) holds. Then <span class="math" data-tex="\(Sc&lt;\pi k\)">\(Sc&lt;\pi k\)</span>, and Step 1 gives an injective symplectic map <span class="math" data-tex="\(E:B^{2n}(Sc)\to(V,\omega)\)">\(E:B^{2n}(Sc)\to(V,\omega)\)</span>. With the rescalings of Lemma 2.4,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;L_S\circ\Phi\circ E\circ D_{\sqrt S}:\\
+&amp;\quad B^{2n}(c)\to\operatorname{int}K\times\operatorname{int}K^\circ
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;L_S\circ\Phi\circ E\circ D_{\sqrt S}:\\
+&amp;\quad B^{2n}(c)\to\operatorname{int}K\times\operatorname{int}K^\circ
+\end{aligned}
+\]</span>
+is injective and smooth, a diffeomorphism onto an open set, and its pullback of <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> is <span class="math" data-tex="\(D_{\sqrt S}^*E^*\Phi^*L_S^*\omega_0=S^{-1}\cdot S\,\omega_0=\omega_0\)">\(D_{\sqrt S}^*E^*\Phi^*L_S^*\omega_0=S^{-1}\cdot S\,\omega_0=\omega_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-proofs-of-theorems-b-and-a">2. The proofs of Theorems B and A</h2>
+<p><strong>Proof of Theorem B.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be an origin-symmetric convex body and <span class="math" data-tex="\(0&lt;c&lt;4\)">\(0&lt;c&lt;4\)</span>. Choose <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> with <span class="math" data-tex="\(\lambda c&lt;4\)">\(\lambda c&lt;4\)</span>, where <span class="math" data-tex="\(\lambda=1+\alpha\)">\(\lambda=1+\alpha\)</span>, and let <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> be the strip body of Lemma 1.5: <span class="math" data-tex="\(K\subseteq K&#x27;\subseteq\lambda K\)">\(K\subseteq K&#x27;\subseteq\lambda K\)</span> and <span class="math" data-tex="\((K&#x27;)^\circ\subseteq K^\circ\)">\((K&#x27;)^\circ\subseteq K^\circ\)</span>. Proposition 7.1 gives an injective symplectic map
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e:B^{2n}(\lambda c)&amp;\to\operatorname{int}K&#x27;\times\operatorname{int}(K&#x27;)^\circ\\
+&amp;\subseteq\lambda\operatorname{int}K\times\operatorname{int}K^\circ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+e:B^{2n}(\lambda c)&amp;\to\operatorname{int}K&#x27;\times\operatorname{int}(K&#x27;)^\circ\\
+&amp;\subseteq\lambda\operatorname{int}K\times\operatorname{int}K^\circ,
+\end{aligned}
+\]</span>
+the inclusions of interiors following from the inclusions of the bodies. Then <span class="math" data-tex="\(Q_\lambda\circ e\circ D_{\sqrt\lambda}\)">\(Q_\lambda\circ e\circ D_{\sqrt\lambda}\)</span> maps <span class="math" data-tex="\(B^{2n}(c)\)">\(B^{2n}(c)\)</span> injectively into <span class="math" data-tex="\(\operatorname{int}K\times\operatorname{int}K^\circ\)">\(\operatorname{int}K\times\operatorname{int}K^\circ\)</span>, and its pullback of <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> is <span class="math" data-tex="\(\lambda^{-1}\cdot\lambda\,\omega_0=\omega_0\)">\(\lambda^{-1}\cdot\lambda\,\omega_0=\omega_0\)</span> (Lemma 2.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For each capacity <span class="math" data-tex="\(c&lt;4\)">\(c&lt;4\)</span> the construction is finite: the choices are made in the order <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, then <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> with its <span class="math" data-tex="\(m\)">\(m\)</span> vectors, then <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, then <span class="math" data-tex="\(k\)">\(k\)</span>. No limit of embeddings is taken.</p>
+<p><strong>Proof of Theorem A.</strong> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(K=[-a,a]\)">\(K=[-a,a]\)</span> and <span class="math" data-tex="\(K^\circ=[-a^{-1},a^{-1}]\)">\(K^\circ=[-a^{-1},a^{-1}]\)</span>, with product of lengths <span class="math" data-tex="\(4\)">\(4\)</span>. Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and <span class="math" data-tex="\(0&lt;c&lt;4\)">\(0&lt;c&lt;4\)</span>, and let <span class="math" data-tex="\(e:B^{2n}(c)\to U_K=\operatorname{int}K\times\operatorname{int}K^\circ\)">\(e:B^{2n}(c)\to U_K=\operatorname{int}K\times\operatorname{int}K^\circ\)</span> be the map of Theorem B. By Lemma 2.4,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{c^n}{n!}&amp;=\operatorname{vol}(B^{2n}(c))\\
+&amp;=\operatorname{vol}\bigl(e(B^{2n}(c))\bigr)\le\operatorname{vol}(U_K)\\
+&amp;=\operatorname{vol}(K)\operatorname{vol}(K^\circ),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{c^n}{n!}&amp;=\operatorname{vol}(B^{2n}(c))\\
+&amp;=\operatorname{vol}\bigl(e(B^{2n}(c))\bigr)\le\operatorname{vol}(U_K)\\
+&amp;=\operatorname{vol}(K)\operatorname{vol}(K^\circ),
+\end{aligned}
+\]</span>
+the last equality by Lemma 1.6 and Fubini's theorem for the indicator function of the product (core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a>; <a href="https://www1.essex.ac.uk/maths/people/fremlin/cont25.htm">Fremlin, <em>Measure Theory</em>, Volume 2, 252B</a>). Letting <span class="math" data-tex="\(c\uparrow4\)">\(c\uparrow4\)</span> gives Theorem A. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>7.1</strong> (easy). Show that if <span class="math" data-tex="\(\Phi^*\omega_0=\omega\)">\(\Phi^*\omega_0=\omega\)</span> and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is nondegenerate at a point, then <span class="math" data-tex="\(D\Phi\)">\(D\Phi\)</span> is invertible there.</p>
+<p><strong>7.2</strong> (medium). For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the construction of Proposition 7.1 also makes sense. With <span class="math" data-tex="\(m=1\)">\(m=1\)</span> and <span class="math" data-tex="\(b_1=1\)">\(b_1=1\)</span>, so that <span class="math" data-tex="\(K=[-1,1]\)">\(K=[-1,1]\)</span>, describe <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, and check that <span class="math" data-tex="\(\Phi(V)\)">\(\Phi(V)\)</span> lies in <span class="math" data-tex="\((-1,1)\times\mathbf R\)">\((-1,1)\times\mathbf R\)</span>.</p>
+<p><strong>7.3</strong> (easy). Show that <span class="math" data-tex="\(h_K(\pm b_j)\le1\)">\(h_K(\pm b_j)\le1\)</span> for the strip body <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(b_1,\dots,b_m\)">\(b_1,\dots,b_m\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(\omega=D\Phi^{\mathsf T}J\,D\Phi\)">\(\omega=D\Phi^{\mathsf T}J\,D\Phi\)</span> has nonzero determinant, so <span class="math" data-tex="\(\det D\Phi\ne0\)">\(\det D\Phi\ne0\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(\Omega=D\)">\(\Omega=D\)</span>, <span class="math" data-tex="\(V=\{\zeta\in D:|g(\zeta)|&lt;1\}=D\)">\(V=\{\zeta\in D:|g(\zeta)|&lt;1\}=D\)</span>, and <span class="math" data-tex="\(\Phi(u+ix)=(x,-u-J_k(u,x))\)">\(\Phi(u+ix)=(x,-u-J_k(u,x))\)</span>. The first coordinate is the imaginary part of a point of <span class="math" data-tex="\(D\)">\(D\)</span>, so it lies in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>.</p>
+<p><strong>7.3.</strong> For <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, <span class="math" data-tex="\(\langle\pm b_j,x\rangle\le|\langle b_j,x\rangle|\le1\)">\(\langle\pm b_j,x\rangle\le|\langle b_j,x\rangle|\le1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-SB] OpenAI, <em>Symplectic balls in symmetric polar products</em>, OpenAI Math Release preprint, 22 September 2026, Sections 4 and 5. https://github.com/openai/math/tree/main/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026</li>
+<li>[AKO] S. Artstein-Avidan, R. Karasev and Y. Ostrover, <em>From symplectic measurements to the Mahler conjecture</em>, Duke Mathematical Journal 163 (2014), 2003–2022; arXiv:1303.4197. https://arxiv.org/abs/1303.4197</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

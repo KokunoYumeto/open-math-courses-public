@@ -1,6 +1,6 @@
 # Complete systems and invariants
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
 An invariant is a function constant along the motions of a group. Infinitesimally this is a system of first-order equations. The number of independent equations is the dimension of a moving orbit, rather than the number of group parameters. We first solve the general regular system, then apply it to group invariants, invariant submanifolds, symmetries of complete systems, and integration of an ordinary differential equation.
 

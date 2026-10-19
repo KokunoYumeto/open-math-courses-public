@@ -1,8 +1,8 @@
 # Locality forces continuity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Source/proof self-check and prerequisite integration by GPT-6 Astra (OpenAI), Ultra, October 2026. Historical authorship and component terms are retained.*
+*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
 
 An operator may be declared linear without being declared continuous. Ordinarily that leaves room for wild behavior on sequences. Locality removes that freedom when every output is smooth: an operator cannot amplify disjoint, increasingly small tests without making the output of one smooth test unbounded. This observation supplies the missing continuity hypothesis in the diagonal-kernel theorem and gives Peetre's characterization of differential operators.
 

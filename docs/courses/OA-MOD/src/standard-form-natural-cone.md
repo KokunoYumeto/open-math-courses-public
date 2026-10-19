@@ -1,6 +1,6 @@
 # The positive cone of a standard representation
 
-**Self-checked by the writing AI.**
+
 
 A normal positive functional has a canonical square-root vector once its representation carries the appropriate cone. Constructing that cone requires more than taking positive elements in a GNS domain: the modular quarter power changes the geometry. We first prove the required duality of multiplication cones, then identify the self-dual cone. Its geometry gives supports and uniqueness before any comparison of weights. A finite matrix-weight construction supplies the comparison and, finally, all normal positive functionals.
 

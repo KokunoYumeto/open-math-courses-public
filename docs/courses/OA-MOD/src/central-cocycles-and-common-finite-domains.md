@@ -1,6 +1,6 @@
 # Central cocycles and common finite domains
 
-**Self-checked by the writing AI.**
+
 
 Commutation of modular automorphisms leaves a central obstruction to invariance of the weights. On a factor it is one scalar rate, as in VE-02. On a general algebra its generator can be unbounded over the center. Spectral cutoffs control that rate without imposing a countable exhaustion on the algebra. Gaussian smoothing then gives a dense common finite ideal.
 

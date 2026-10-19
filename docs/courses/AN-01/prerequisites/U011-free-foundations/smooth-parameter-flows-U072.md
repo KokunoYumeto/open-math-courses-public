@@ -1,6 +1,6 @@
 # Smooth flows with all parameter derivatives
 
-*Complete selected AN-03 programme proof, §§17.1–17.5 of Geometric and microlocal calculus. CC0 1.0. Original ownership is retained. See [licence](https://creativecommons.org/publicdomain/zero/1.0/), [rights](notices/RIGHTS.md), and [selection history](notices/U072_SELECTION_HISTORY.md).*
+*Programme proof: AN-03 course contributors, §§17.1–17.5 of Geometric and microlocal calculus; CC0 1.0. [Credits](notices/TITLE_PAGE.md) · [Rights](notices/RIGHTS.md).*
 
 The [scalar calculus and topology foundation](metric-foundation-bridges.md), §§12–13, supplies finite-dimensional completeness, compactness, all finite-coordinate derivative rules, the oriented Riemann integral, exponential and uniform limits. The [finite algebra foundation](stable-prerequisite-bridges.md), §§10.1–10.6, supplies matrix operations, finite norm bounds and the injective/surjective equivalence. All arguments below retain the original norms and two-sided time interval.
 

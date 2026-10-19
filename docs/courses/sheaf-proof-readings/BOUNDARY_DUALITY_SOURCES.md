@@ -30,7 +30,7 @@ The source is Lurie, [*Derived Algebraic Geometry VIII*, 5 November 2011](https:
 
 ## Compact supports and covariant Verdier duality
 
-Read the programme proof.
+[Read the programme proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-02/src/modern-proper-support-construction.md).
 
 The coefficient category is stable and has all small limits and colimits. The construction also covers nonpresentable categories. Compact restrictions and the complement cofiber calculation give a support cosheaf and its inverse. Conjugation by these actual equivalences supplies composition, proper direct image and open extension. This statement is distinct from internal-Hom biduality for arbitrary modules.
 
@@ -38,7 +38,7 @@ The sources are Lurie's [*Higher Topos Theory*, inspected author PDF revised 9 A
 
 ## Proper base change and projection
 
-Read the programme proof.
+[Read the programme proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-02/src/general-basechange-and-tensor.md).
 
 The proof first treats space-valued proper base change, then its spectral and arbitrary stable coefficient comparisons. It keeps the actual adjunction mate and the direction of supported multiplication. The external-product target remains the tensor sheaf model when the coefficient tensor is not itself complete. The bounded classical specialization separately retains the ring dimension needed for tensor bounds and the map dimension needed for exceptional inverse image.
 

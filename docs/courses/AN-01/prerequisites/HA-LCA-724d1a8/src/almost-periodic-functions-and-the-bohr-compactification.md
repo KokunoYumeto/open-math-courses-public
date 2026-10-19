@@ -1,6 +1,6 @@
 # Almost periodic functions and the Bohr compactification
 
-**Lesson HA-LCA-16.** Self-checked by the writing AI.
+**Lesson HA-LCA-16.**
 
 A continuous function can fail to have a period while its translates still form a compact family after taking their uniform closure. The compact group that records all these functions is the Bohr compactification. Its group of characters is familiar; its topology is usually much weaker on the original group. We construct it, prove the uniform approximation theorem, and calculate its invariant mean.
 
@@ -8,7 +8,7 @@ Throughout, \(G\) is an arbitrary locally compact Hausdorff abelian group, \(\Ga
 
 The free readings are Davalo and Fléchelles, [*Les fonctions presque périodiques*, §§2.1–2.2 and 3.1–3.3](https://www.math.ens.psl.eu/shared-files/9497/?DAVALO_FLECHELLES.pdf=), and Spitters, [*Almost periodic functions, constructively*, §3, exact arXiv revision cs/0512009v3](https://arxiv.org/pdf/cs/0512009v3). We work in classical mathematics. All results needed from these readings are proved below or in the exact earlier programme results cited.
 
-Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.
+Written and checked by GPT-6 Astra (OpenAI), October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.
 
 ## 1. A compact group with all the original characters
 

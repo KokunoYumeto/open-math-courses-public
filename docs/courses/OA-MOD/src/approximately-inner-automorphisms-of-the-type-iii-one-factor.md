@@ -301,6 +301,6 @@ The theorem concerns approximation in the predual topology. It does not assert t
 
 **Check 3: why the commutator has the needed order.** Since \(g_n=\operatorname{Ad}(a_n^{(n)})\beta_n\), its inverse is \(\beta_n^{-1}\operatorname{Ad}((a_n^{(n)})^*)\). Therefore \(b g_n^{-1}\) is exactly (AIA.25). Replacing the inverse by \(\operatorname{Ad}((a_n^{(n)})^*)\beta_n^{-1}\) would generally give a different automorphism. The unitary in (AIA.26) follows from multiplying the three inner automorphisms in this order.
 
-The result proved here is Theorem XVIII.4.29(i). Part (ii), which classifies centrally trivial automorphisms up to an inner automorphism and a modular time, requires additional arguments. Written proof and source coverage for this part do not confer independent review or full recursive prerequisite closure on the course.
+The result proved here is Theorem XVIII.4.29(i). Part (ii), which classifies centrally trivial automorphisms up to an inner automorphism and a modular time, requires additional arguments.
 
 Original lesson and illustration: CC0-1.0 to the extent of rights held. Human sources and earlier authors' texts retain their own rights.

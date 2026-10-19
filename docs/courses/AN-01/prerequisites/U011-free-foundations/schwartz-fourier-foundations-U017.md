@@ -1,6 +1,6 @@
 # Schwartz functions and Fourier inversion
 
-*Written by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), 4 October 2026. Public domain (CC0).*
 
 This proof supplies the Fourier operations used in [Complex powers at a boundary](../../src/complex-powers-at-a-boundary.md). Its inputs are the [scalar foundations](metric-foundation-bridges.md), Sections 12.4, 13.1–13.5 and 13.7–13.10, and the [integration foundations](banach-foundation-bridges.md), Sections 15.0–15.1 and 16.1–16.2. These give square roots, calculus, the exponential, arctangent, smooth cutoffs, Lebesgue convergence, Fubini and affine substitution. The Gaussian mass is proved below, including its constant.
 

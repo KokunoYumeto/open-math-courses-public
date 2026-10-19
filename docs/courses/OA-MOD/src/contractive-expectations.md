@@ -1,8 +1,8 @@
 # Contractive retractions and the algebraic structure of expectations
 
-Course: OA-MOD. English course draft. The scalar Tomiyama theorem is proved in an earlier programme lesson. This course supplies the assigned shorter proof and matrix-strengthening arguments, now with exact written prerequisites and an explicit bidual comparison. Current revision by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0; earlier authorship and alternative proofs are retained.
+The scalar Tomiyama theorem is proved in an earlier programme lesson. This lesson gives a shorter proof, matrix positivity inequalities and a bidual comparison. Exposition includes contributions by GPT-6 Astra (OpenAI), under CC0; other contributions are credited in the component notices.
 
-An expectation is useful in weight theory because multiplication by an element of the smaller algebra can pass through it. The exact programme Tomiyama theorem supplies this compatibility and positivity from a single norm condition. The retained shorter proof and matrix arguments explain the mechanism and establish all matrix positivity inequalities. The domain and range may be nonunital C*-algebras. No separability, countability, normality, or faithful state is assumed.
+An expectation is useful in weight theory because multiplication by an element of the smaller algebra can pass through it. The exact programme Tomiyama theorem supplies this compatibility and positivity from a single norm condition. The shorter proof and matrix arguments explain the mechanism and establish all matrix positivity inequalities. The domain and range may be nonunital C*-algebras. No separability, countability, normality, or faithful state is assumed.
 
 ## Objects and dependency contracts
 

@@ -1,6 +1,6 @@
 # Planar rotations and angular spectra
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 In the plane, the Fourier transform of an even distribution of degree minus one is a quarter turn multiplied by \(2\pi\). This statement includes continuous angular profiles, integrable profiles with jumps, measures concentrated in a pair of directions, and derivatives of angular point masses. We prove the common formula on all Schwartz tests and distinguish the different kinds of spatial distributions it describes.
 

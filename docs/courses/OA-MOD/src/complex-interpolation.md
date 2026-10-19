@@ -1,6 +1,6 @@
 # Compatible pairs and complex interpolation
 
-**Self-checked by the writing AI.**
+
 
 Interpolation arguments in modular theory act on two endpoint spaces at once. The
 endpoints need not be nested, reflexive, separable, or dense in one another. What

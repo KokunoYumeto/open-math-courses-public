@@ -1,6 +1,6 @@
 # Holomorphic decompositions of tempered distributions
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Every tempered distribution can be recovered by averaging the boundary values of one holomorphic function over a sphere of imaginary directions. The function is uniquely determined by that average. Its individual boundary values can have analytic singularities only in the opposite cotangent direction. We construct this representation by Fourier multipliers, prove the converse from a global growth bound, and localize the directions carried by an arbitrary finite measure on the sphere.
 

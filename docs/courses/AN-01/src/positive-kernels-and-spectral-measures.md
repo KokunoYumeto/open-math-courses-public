@@ -1,6 +1,6 @@
 # Positive kernels and spectral measures
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 A continuous positive convolution kernel is the Fourier transform of a finite positive measure. A positive distributional kernel can have an infinite spectral mass, but some polynomial weight makes that mass finite. We prove both statements, including the automatic temperedness of a distribution that initially has only local bounds.
 

@@ -1,6 +1,6 @@
 # Inner modular flow and rigidity of finite weight data
 
-**Self-checked by the writing AI.**
+
 
 A continuous unitary group implementing a modular flow can be removed by changing density. This produces a trace, and characterizes semifinite von Neumann algebras. Identifying two weights requires another argument: normal weights are lower semicontinuous, but need not be continuous even on a dense finite algebra. We prove two precise recognition results and construct a dense finite algebra on which distinct faithful weights agree.
 

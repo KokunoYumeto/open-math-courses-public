@@ -481,13 +481,13 @@ give exactly (NS), using the already proved \(|e^{i\phi/h}|=1\).
 The parameter estimates use finite product/chain rules and bounds on that
 common compact set, as stated in Q9. Thus Q1, Q3 and Q9 have complete
 selected programme proof chains. The substitution arguments for Q2, Q4 and Q6–Q8 are supplied by
-the change-of-variables companion,
+[the change-of-variables companion](change-of-variables-prerequisite-completions.html),
 including its full compact Jordan theorem and absolute-improper applications.
 \(\square\)
 
 ## Change of variables and the quadratic calculations
 
-The change-of-variables companion
+The [change-of-variables companion](change-of-variables-prerequisite-completions.html)
 proves the null-image and Jordan-set results, the determinant–volume formula,
 controlled finite subdivisions and the full compact Jordan substitution theorem.
 Its affine and compact-chart substitutions have their exact Jacobians; its

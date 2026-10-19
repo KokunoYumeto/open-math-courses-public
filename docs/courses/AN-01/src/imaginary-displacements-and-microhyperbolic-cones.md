@@ -1,6 +1,6 @@
 # Imaginary displacements and microhyperbolic cones
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra, October 2026. Public domain (CC0).*
+*Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A reciprocal may have a distributional boundary even at a multiple real zero. The useful hypothesis is that one imaginary displacement avoids every nearby zero. We prove that this hypothesis determines a convex cone from the first nonzero Taylor polynomial, gives a uniform reciprocal estimate inside smaller cones, and controls the analytic wavefront of the boundary inverse. The cone is optimal among closed convex bounds, although the actual wavefront fiber need not be convex. A four-dimensional light-cone calculation shows the distinction exactly.
 

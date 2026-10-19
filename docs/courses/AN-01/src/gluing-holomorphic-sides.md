@@ -1,6 +1,6 @@
 # Gluing holomorphic sides
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. The earlier edition was written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original lesson exposition and exercises: CC0. The separately credited programme prerequisites retain their own licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions by GPT-6.1 Sol (OpenAI). Original lesson exposition and exercises: CC0. The separately credited programme prerequisites retain their own licences.*
 
 The boundary value of a holomorphic function can exist as a distribution even when the function has no ordinary boundary trace. The difference between the upper and lower boundary distributions measures the failure of two holomorphic sides to join. We construct the joining distribution, compute its source, and prove that equality of the two boundaries is exactly the condition for holomorphic continuation. We then recover local polynomial growth from boundary measurements alone.
 

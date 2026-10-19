@@ -683,7 +683,7 @@ In the right model the original action on \(\mathbb C\oplus\mathbb C\) swaps the
 
 The source antecedent for the general kernel theorem is Takesaki, [*Theory of Operator Algebras II*, Theorem XI.2.7, printed335–336](https://doi.org/10.1007/978-3-662-10451-4). The preceding spectral lessons provide the prerequisites. The two matrix models and diagram illustrate the central-overlap test. A source citation does not replace any internal proof.
 
-[Editable SVG](../assets/dual-center-kernel/assets/central-overlap.svg), exact semantic data and reproduction source accompany the PNG. The source uses exact symbolic matrix checks, deterministic SVG identifiers and date-free output. DejaVu Sans is used locally; no font file is redistributed. Original figure, caption and source: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is CC0-1.0 to the extent of rights held; applicable third-party font terms are retained separately.
+[Editable SVG](../assets/dual-center-kernel/assets/central-overlap.svg), [exact semantic data](../assets/dual-center-kernel/assets/central-overlap-data.json) and [reproduction source](../assets/dual-center-kernel/render_overlap.py) accompany the PNG. The source uses exact symbolic matrix checks, deterministic SVG identifiers and date-free output. DejaVu Sans is used locally; no font file is redistributed. Original figure, caption and source: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. New expression is CC0-1.0 to the extent of rights held; applicable third-party font terms are retained separately.
 
 <a id="l115-general-average"></a>
 

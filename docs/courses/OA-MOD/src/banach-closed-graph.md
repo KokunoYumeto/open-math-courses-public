@@ -1,6 +1,6 @@
 # Closed graphs and bounded operator cutoffs
 
-*Written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. This independent exposition is CC0.*
+*Written by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. This independent exposition is CC0.*
 
 A closed operator need not be bounded. The decisive extra hypothesis is that its domain is the whole Banach space. We prove this assertion from the Baire theorem in AB03, then explain exactly when it applies to a cutoff of an unbounded operator. The proof works over either the real or the complex field, without separability or a countability assumption on dimension.
 

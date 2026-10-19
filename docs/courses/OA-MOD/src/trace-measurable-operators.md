@@ -1,6 +1,6 @@
 # Operators recovered from small trace defects
 
-**Self-checked by the writing AI.**
+
 
 A large operator can become bounded after removing a projection with very small trace. This observation leads to a topology whose completion remembers both an operator and the vectors on which it acts. We construct that completion, recover its closed operators with their actual domains, and then characterize the result by spectral tails. Projection geometry provides the uniqueness argument that makes the algebraic operations rigorous.
 

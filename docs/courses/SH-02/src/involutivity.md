@@ -1,6 +1,6 @@
 # SH02-INV — Hamiltonian motion forced by a sheaf
 
-The full IC1–IC9 proof completions supply the exact microlocal Hom sign, direct identity detector, integral amplitude and bounded derived models. Their smooth/C1 and angular inputs are proved at the actual used scope. The local compact-cap proof below consequently proves I15 over the integers at every microsupport point; broader coefficient and later-theorem contracts retain their stated scope. Self-checked by the writing AI.
+The full [IC1–IC9 proof completions](../involutivity-foundations.html#SH02-INVOLUTIVITY-FOUNDATIONS) supply the exact microlocal Hom sign, direct identity detector, integral amplitude and bounded derived models. Their [smooth/C1 and angular inputs](../ordinary-involutivity-floor.html#SH02-ORDINARY-FLOOR) are proved at the actual used scope. The local compact-cap proof below consequently proves I15 over the integers at every microsupport point; broader coefficient and later-theorem contracts retain their stated scope. Self-checked by the writing AI.
 
 Let $k$ be a commutative ring of finite global dimension. Manifolds are finite dimensional and countable at infinity. Sheaf complexes belong to $D^b(k_X)$ unless another category is specified. No constructibility, finite generation, or field hypothesis is imposed.
 
@@ -23,7 +23,7 @@ The following are mathematical dependencies, not additional restrictions on $F$ 
 \tag{I1}
 \]
 
-The map $H:T^*M\to TM$ and the order of the two sets are fixed below. This is the contract `SH02-CHE-004` in [the characteristic estimates unit](../../sheaf-proof-readings/SH02-characteristic-estimates.html); its proof uses the specialization estimate and the cotangent Fourier identification. IC1 verifies the exact diagonal sign and set order, including the zero loci. The characteristic-estimate, Fourier and boundary-blowup bodies are pinned by their full used ranges in the proof binding table. IC3 proves the finite integral microlocal Hom bound actually needed for I15; no finite-generation assumption is used.
+The map $H:T^*M\to TM$ and the order of the two sets are fixed below. This is the contract `SH02-CHE-004` in [the characteristic estimates unit](../../sheaf-proof-readings/SH02-characteristic-estimates.html); its proof uses the specialization estimate and the cotangent Fourier identification. [IC1](../involutivity-foundations.html#IC1) verifies the exact diagonal sign and set order, including the zero loci. The characteristic-estimate, Fourier and boundary-blowup bodies are pinned by their full used ranges in the [proof binding table](../involutivity-foundations.html#IC-BINDINGS). [IC3](../involutivity-foundations.html#IC3) proves the finite integral microlocal Hom bound actually needed for I15; no finite-generation assumption is used.
 
 **Support and identity detection.** One has
 
@@ -36,11 +36,11 @@ The map $H:T^*M\to TM$ and the order of the two sets are fixed below. This is th
 \tag{I2}
 \]
 
-IC2 proves the second assertion directly from the actual supported-kernel/projector counit and full neighbourhood test criterion, including zero covectors. The original identity-detection contract `SH02-MC-IDENTITY` in the localized category unit is retained; no quotient-category representability theorem is added as a premise of this direct detector. The first is `SH02-MO-MICROLOCAL-SUPPORT` in [the microsupport operations unit](../../sheaf-proof-readings/SH02-microsupport-operations.html). These are used separately: support containment gives an open region of vanishing, whereas identity detection gives a contradiction at a specified point.
+[IC2](../involutivity-foundations.html#IC2) proves the second assertion directly from the actual supported-kernel/projector counit and full neighbourhood test criterion, including zero covectors. The original identity-detection contract `SH02-MC-IDENTITY` in the localized category unit is retained; no quotient-category representability theorem is added as a premise of this direct detector. The first is `SH02-MO-MICROLOCAL-SUPPORT` in [the microsupport operations unit](../../sheaf-proof-readings/SH02-microsupport-operations.html). These are used separately: support containment gives an open region of vanishing, whereas identity detection gives a contradiction at a specified point.
 
 The proof of involutivity below does not assume that an involutivity result is already available in any of these imports. In particular, the local cone argument is proved from directional propagation rather than inferred from the theorem it will establish. The noncharacteristic deformation import underlying directional propagation uses the corrected closed moving fronts; a submersive-map hypothesis in the source foundations is never replaced by mere differentiability.
 
-The used bounded integral foundations are IC4–IC9: noncompact specialization tautness, convex traces, pointed-cone calculation, closed-strip continuity and bounded derived adjunctions. OF1–OF7 and EA1–EA11 supply their actual variable-neighbourhood geometry, all inward angular margins and the nearest-point differential. Applying I15 to underlying abelian sheaves transfers the whole microsupport statement to arbitrary original commutative unital coefficients by NMC1–NMC4 and NG5; it does not assert that coefficient forgetting commutes with microlocal Hom.
+The used bounded integral foundations are [IC4–IC9](../involutivity-foundations.html#IC4): noncompact specialization tautness, convex traces, pointed-cone calculation, closed-strip continuity and bounded derived adjunctions. [OF1–OF7 and EA1–EA11](../ordinary-involutivity-floor.html#SH02-ORDINARY-FLOOR) supply their actual variable-neighbourhood geometry, all inward angular margins and the nearest-point differential. Applying I15 to underlying abelian sheaves transfers the whole microsupport statement to arbitrary original commutative unital coefficients by NMC1–NMC4 and NG5; it does not assert that coefficient forgetting commutes with microlocal Hom.
 
 ## SH02-INV-SECANTS — Two different limiting constructions
 

@@ -4,7 +4,7 @@
 
 A displaced vector in the regular representation, copied into infinitely many orthogonal summands, gives a continuous outer action on the tracial CAR factor. The copies prevent a Hilbert–Schmidt perturbation of the identity; the complete complex CAR criterion turns that obstruction into outerness.
 
-Here \(G\) is a locally compact Hausdorff group with a countable base. The full CO0–5 inputs supply compact cutoffs, the exact complete Haar-measure route, the entire regular Hilbert space, the completed tracial CAR algebra, full normal extension and point-predual continuity, the whole Hilbert–Schmidt innerness proof and topology transport. The target is every separable AFD factor of type \(\mathrm{II}_1\). Neither amenability nor connectedness nor unimodularity is assumed.
+Here \(G\) is a locally compact Hausdorff group with a countable base. The full [CO0–5 inputs](../components/continuous-outer-action-regular-and-car-inputs.md) supply compact cutoffs, the exact complete Haar-measure route, the entire regular Hilbert space, the completed tracial CAR algebra, full normal extension and point-predual continuity, the whole Hilbert–Schmidt innerness proof and topology transport. The target is every separable AFD factor of type \(\mathrm{II}_1\). Neither amenability nor connectedness nor unimodularity is assumed.
 
 <a id="1-a-faithful-continuous-regular-representation"></a>
 

@@ -1,6 +1,6 @@
 # Complex quadratic powers and the Cauchy kernel
 
-*Reconstructed and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Earlier edition: GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition: CC0. Supplied foundations retain their stated licences.*
+*Exposition by GPT-6 Astra (OpenAI), October 2026. Contributions: GPT-6.1 Sol (OpenAI). Original exposition: CC0. Supplied foundations retain their stated licences.*
 
 A complex quadratic form with positive real part has a singular power that can be integrated against Schwartz tests. Its Fourier transform depends on a square root chosen continuously from the matrix, not merely from the final value of its determinant. We establish that choice, both absolute Gaussian interchanges and the full parameter domain. The planar Cauchy kernel then follows from a whole logarithmic transform, including frequency zero.
 

@@ -235,7 +235,7 @@ Two further normalizations have complete proofs in the linked readings. With \(z
              \bar\partial=\tfrac12(\partial_x+i\partial_y),
              \qquad \partial=\tfrac12(\partial_x-i\partial_y),
 \]
-Corollary 1.2 of Cauchy kernels and distributional boundary limits gives
+Corollary 1.2 of [Cauchy kernels and distributional boundary limits](../prerequisites/cauchy-kernels-and-boundary-limits.html#a-small-circle-detects-the-cauchy-kernel) gives
 \[
            \bar\partial\frac1{\pi z}=\delta_0,\qquad
                 \partial\frac1{\pi\bar z}=\delta_0. \tag{M6}
