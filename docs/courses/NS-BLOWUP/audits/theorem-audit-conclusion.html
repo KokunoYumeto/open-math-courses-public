@@ -1,0 +1,166 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="theorem-audit-conclusion.md">Editable source</a></nav><h1 id="construction-of-the-forced-navier-stokes-blowup-theorem">Construction of the forced Navier–Stokes blowup theorem</h1>
+<p>This construction proves Theorem 1.1 and Corollary 10.6 of OpenAI’s <em>Finite Time Blowup for Navier–Stokes</em>. The linked arguments construct the fields and supply the dependencies identified below.</p>
+<p>The source is the <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original 166-page PDF</a>, SHA256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Theorem 1.1 is on page 1, the local construction theorem on pages 15–16, the leading-profile theorem on pages 32–34, and the final argument on pages 117–126. <a href="SOURCES.json">Bibliography and source locators</a> identify the versions used.</p>
+<p>The theorem concerns the smooth <strong>forced</strong> equations with the stated initial datum, supports, viscosity and comparison class. Its conclusion is blowup of a classical solution under this force; it makes no assertion of unforced blowup or nonexistence of weak solutions. Exposition: GPT-6 Astra (OpenAI).</p>
+<h2 id="1-the-exact-target-and-its-supplied-conclusions">1. The exact target and its supplied conclusions</h2>
+<p>For every prescribed <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the construction gives a force
+<span class="math" data-tex="\(f_\nu\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3)\)">\(f_\nu\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3)\)</span>, a compact set <span class="math" data-tex="\(\mathcal K_\nu\subset\mathbb R^3\)">\(\mathcal K_\nu\subset\mathbb R^3\)</span>, and smooth fields <span class="math" data-tex="\(u_\nu,p_\nu\)">\(u_\nu,p_\nu\)</span> on <span class="math" data-tex="\(\mathbb R^3\times[0,1)\)">\(\mathbb R^3\times[0,1)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\partial_tu_\nu+(u_\nu\cdot\nabla)u_\nu-\nu\Delta u_\nu+\nabla p_\nu=f_\nu,
+\qquad \nabla\cdot u_\nu=0,\qquad u_\nu(\cdot,0)=0,
+\]">\[
+\partial_tu_\nu+(u_\nu\cdot\nabla)u_\nu-\nu\Delta u_\nu+\nabla p_\nu=f_\nu,
+\qquad \nabla\cdot u_\nu=0,\qquad u_\nu(\cdot,0)=0,
+\]</span>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}u_\nu(\cdot,t)\cup\operatorname{supp}p_\nu(\cdot,t)
+\subset\mathcal K_\nu,\qquad
+\sup_{0\le t&lt;1}\|u_\nu(t)\|_2&lt;\infty,\qquad
+\limsup_{t\uparrow1}\|u_\nu(t)\|_\infty=\infty.
+\tag{A1}
+\]">\[
+\operatorname{supp}u_\nu(\cdot,t)\cup\operatorname{supp}p_\nu(\cdot,t)
+\subset\mathcal K_\nu,\qquad
+\sup_{0\le t&lt;1}\|u_\nu(t)\|_2&lt;\infty,\qquad
+\limsup_{t\uparrow1}\|u_\nu(t)\|_\infty=\infty.
+\tag{A1}
+\]</span>
+<p>There is no smooth solution on the whole time interval <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, with the same force and datum, whose kinetic energy is uniformly bounded. On the original torus <span class="math" data-tex="\(\mathbb R^3/\mathbb Z^3\)">\(\mathbb R^3/\mathbb Z^3\)</span>, the construction gives a smooth time-compact force and a solution smooth before time one, with the analogous velocity blowup. Its velocity and periodic pressure are supported in one fixed compact subset of the interior of <span class="math" data-tex="\((-1/2,1/2)^3\)">\((-1/2,1/2)^3\)</span> before time one. No global smooth periodic solution has the same datum and force.</p>
+<p>Every row below is supplied by an actual construction in the linked proofs, not by assuming the target conclusion.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Complete supplying argument</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One local field, its actual vector potential, Cartesian axis regularity and exact divergence</td>
+<td><a href="local-construction-assembly-audit.html">I0 and I4</a>, from the constructed base and full correction potentials</td>
+</tr>
+<tr>
+<td>One domain for every finite correction and every fixed derivative order</td>
+<td><a href="local-construction-assembly-audit.html">I2–I3</a> and <a href="correction-cycle-audit.html">K8</a>; the choice depends on fixed base and primary-pulse margins</td>
+</tr>
+<tr>
+<td>Every residual derivative tends to zero to arbitrary order on each bounded profile interval</td>
+<td><a href="local-construction-assembly-audit.html">I4.1–I4.9</a>, using the stage-independent losses in <a href="physical-realization-audit.html">L1–L5</a></td>
+</tr>
+<tr>
+<td>The actual potential and pressure derivatives have compatible one-sided limits away from the singular point</td>
+<td><a href="local-construction-assembly-audit.html">I5</a>, <a href="base-field-realization-audit.html">Z7</a> and the exact heat integral in <a href="physical-realization-audit.html">L6</a></td>
+</tr>
+<tr>
+<td>Compact velocity and pressure, exact equation and zero initial datum</td>
+<td><a href="terminal-force-and-blowup-audit.html">F0–F1</a>: cut the vector potential before taking curl, retain every nonlinear cutoff term, and define the full residual as force</td>
+</tr>
+<tr>
+<td>Smooth compact force through and after time one</td>
+<td><a href="terminal-force-and-blowup-audit.html">F2–F3</a>: uniform derivative limits in all three terminal regions, compatible jets, and the original explicit cutoff series</td>
+</tr>
+<tr>
+<td>Uniform energy and finite total dissipation</td>
+<td><a href="terminal-force-and-blowup-audit.html">F4</a>: integrate the actual compactly supported equation, then retain the full dissipation identity</td>
+</tr>
+<tr>
+<td>Original inner-growth path survives localization</td>
+<td><a href="local-construction-assembly-audit.html">I6</a>, <a href="terminal-force-and-blowup-audit.html">F6</a>: the unchanged inner angular profile is positive and every annular correction vanishes on that path</td>
+</tr>
+<tr>
+<td>Comparison with an arbitrary smooth bounded-energy competitor, without a pressure-growth hypothesis</td>
+<td><a href="lemma_10_5_reaudit.html">Comparison proof (1)–(64)</a>, with its actual inputs in <a href="terminal-force-and-blowup-audit.html">F5</a> and the contradiction in F6</td>
+</tr>
+<tr>
+<td>Every prescribed positive viscosity, with the original singular time</td>
+<td><a href="terminal-force-and-blowup-audit.html">F7</a>: the full coordinate, velocity, pressure, force, support and energy transformations, including the inverse map on a competitor</td>
+</tr>
+<tr>
+<td>Periodic pressure and velocity, nonoverlapping supports, smooth force, blowup and global comparison</td>
+<td><a href="terminal-force-and-blowup-audit.html">F8</a>: exact space-time scaling, locally finite periodization and the full nonlinear product identity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-the-constructions-supplying-the-local-field">2. The constructions supplying the local field</h2>
+<p>The construction order below records mathematical dependence. Links to a later exposition of an elementary identity do not change that dependence.</p>
+<p>The coordinate, stress, pressure and moment identities are proved in <a href="profile-stress-moment-audit.html">G0–G6</a>. The heat integral and all its derivatives are proved directly in <a href="physical-realization-audit.html">L6.2–L6.10</a>: that proof starts with the stated integral and integration by parts, and uses no constructed base or correction field. It is therefore available in the outer-profile construction despite its position in the exposition.</p>
+<p><a href="outer-profile-audit.html">O0–O8</a> constructs the reference outer profile and its analytic axis pressure. <a href="heat-exterior-stress-audit.html">H0–H6</a> replaces the exterior by the actual heat field, restores the changed moments and proves the outer stress direction and flat weight. The finite small-h condition in H5 is included in O8’s original ordering; its constant is uniform for the earlier fixed choices. No later step requires choosing a conflicting value of h.</p>
+<p>The preserved pressure datum supplies the nonlinear analytic axis solution in <a href="analytic-axis-profile-audit.html">J0–J6</a>. <a href="inner-outer-joining-audit.html">Q0–Q9</a> constructs its continuation, inner flat factor and exact five-moment join. Q9 fixes the matching tolerances and transition length before the large amplitude and radial scale, then chooses the final widths. The bounds used for the earlier choices are uniform over the later width family. <a href="shear-realization-audit.html">V0–V7</a> next chooses one finite radial frequency, restores all five moments and proves each of the six conclusions of the original leading-profile theorem. The analytic axis rectangle, the two distinct reserved intervals, the positive angular field, both endpoint directions and the exact heat exterior survive these operations.</p>
+<p>At positive order n, <a href="higher-axis-coefficients-audit.html">D0–D6</a> uses only the leading profile and completed lower coefficients to solve the six-component system on one fixed radial interval. Its series converges there regardless of the finite size of the current source. The sparse derivative structure D3 is essential: a nonzero operator word of length k contains at most <span class="math" data-tex="\(\lceil k/2\rceil\)">\(\lceil k/2\rceil\)</span> parameter derivatives, while its radial integration has the factorial denominator <span class="math" data-tex="\((k+1)!\)">\((k+1)!\)</span>. D5 proves a single parameter neighborhood for all radial derivatives at this fixed n, by allocating the available radius across each finite differentiation. The neighborhood may depend on n; the radial interval does not shrink.</p>
+<p><a href="positive-order-extension-audit.html">Y0–Y7</a> completes that same order globally, with an explicit affine five-moment solve and exact support and pressure closure, before D is used at order n+1. This is induction on n, not an equation in unspecified higher coefficients. The five rows retain their original powers and amplitude factors. The two constant matrices are invertible for the fixed positive slope parameter, with no smallness requirement on the discrepancies. The corrections leave the separate mean-velocity patch untouched; they do not assert that the pressure equals its leading value on that earlier patch.</p>
+<p><a href="base-field-realization-audit.html">Z0–Z8</a> then constructs the actual base from this one sequence of completed coefficients. The velocity is obtained from the actual cut Stokes potentials, with every cutoff curl retained, and both stress entries use the same chosen sequence. Its finite-truncation comparison controls the full nonlinear residual and both stress divergences. The original component powers, the exceptional first-order heat contribution, the formal expansions, the unchanged mean patch and the exact exterior all have supplying proofs there. This is the actual base used by the later oscillations.</p>
+<h2 id="3-the-correction-cycle-and-its-single-actual-sum">3. The correction cycle and its single actual sum</h2>
+<p>The torus, chart and support maps are fixed in <a href="wave-interaction-audit.html">W1–W3</a>. The finite coloring and rational rectangle construction in W2 gives separation of <strong>closed</strong> auxiliary supports whenever slow supports overlap. Hence products of distinct labels, including differentiated fields, vanish after the actual physical evaluation. The covering is not inverted.</p>
+<p>The supplied leading profile and base satisfy the full receiving maps in <a href="local-construction-assembly-audit.html">I1–I2</a>. The exact chart factors give positive shear denominators, one fixed stress-cone margin and one band threshold. <a href="pulse-inverse-audit.html">P0–P8</a> constructs the actual particular and homogeneous pulses, their normal pressure, complete curls and endpoint errors. <a href="stress-covariance-audit.html">C1–C8</a> constructs the positive primary amplitudes and the fixed signed inverse, with its complete quadratic remainder and all edge derivatives. The latter divides by the original primary amplitude, never by an accumulated signed amplitude.</p>
+<p>The radial pressure and velocity maps are proved in <a href="radial-primitive-audit/src/radial-primitives-and-compact-mean-corrections.html">R1–R8</a>. <a href="temporal-mean-correction-audit.html">T1–T4</a> proves the zero-mean torus inverse with its actual derivative bound, physical scaling, covering compatibility and full compact axial reconstruction. <a href="mean-moment-correction-audit.html">M1–M7</a> constructs the five-profile inverse on the supplied reserved interval and recomputes every pressure and nonlinear moment change. <a href="source-containment-audit.html">S1–S5</a> proves the finite harmonic and support induction, complete conservative equations and the exact retained flat residual.</p>
+<p>These are the inputs actually used in <a href="correction-cycle-audit.html">K0–K8</a>, in the source’s four-operation order. K4 forms its signed stress from the full Haar-averaged tangential residual, so the required auxiliary independence in C5 holds. K5 keeps the compact axial remainder. K6 solves the five exact rows and retains every new-new nonlinear product. K7 verifies both the improved residual and every accumulated-field and zero-moment assertion of the next finite state. It retains the original gain <span class="math" data-tex="\(1/10\)">\(1/10\)</span>.</p>
+<p>K8 and I2 fix the common domain before any correction stage. The higher-harmonic propagator is the same m=1 propagator times</p>
+<span class="math math-display" data-tex="\[
+\exp\!\left[-(m^2-1)\int_w^v\varepsilon k^2|n_\Phi(s)|^2\,ds\right],
+\qquad 0\le w\le v\le L_s,
+\tag{A2}
+\]">\[
+\exp\!\left[-(m^2-1)\int_w^v\varepsilon k^2|n_\Phi(s)|^2\,ds\right],
+\qquad 0\le w\le v\le L_s,
+\tag{A2}
+\]</span>
+<p>which is at most one for every nonzero integer m. Higher derivatives and the finite harmonic set change finite constants; they do not require a new value threshold. Every other inverse is fixed and linear in its target, with its edge weights retained. Thus the intersection of stage domains is not an unproved positive-domain assumption.</p>
+<p><a href="physical-realization-audit.html">L0–L5</a> retains every coordinate, carrier-frequency and cylindrical-frame derivative. The physical derivative loss is independent of the stage. <a href="local-construction-assembly-audit.html">I4</a> then uses the actual potential increments and one sequence of shrinking cutoffs. For each requested residual derivative order and decay power, it compares the actual sum to one sufficiently high finite state. The full residual difference includes both old-new convection terms and the quadratic error term. No sum of uncontrolled finite-stage residuals is used.</p>
+<p>The endpoint and exterior statements follow from I5–I6 with their actual base and correction representatives. The resulting fields therefore have all four properties of the original local construction theorem. <a href="terminal-force-and-blowup-audit.html">F0–F8</a> uses precisely these fields to establish the target assertions in §1.</p>
+<p><img src="assets/local-construction-assembly.png" alt="Actual base-to-chart maps and the unchanged inner and exterior fields" class="course-figure" width="2520" height="1400" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="E7BAF7623B095BB65D2A5A156C001A8E9A8B61D4500992D41A63E5AAED3DAE06"></p>
+<p>This support diagram and the exact factors it displays are proved in I0–I7. Radial positions indicate order, not numerical distances. <a href="assets/local-construction-assembly.py">Reproducible figure source</a>.</p>
+<h2 id="4-comparison-and-a-quantitative-consequence-of-the-original-path">4. Comparison and a quantitative consequence of the original path</h2>
+<p>The whole-space comparison proof is not inferred from a pressure formula that assumes decay of the competitor’s pressure. Equations (7)–(13) of the <a href="lemma_10_5_reaudit.html">comparison audit</a> derive equality of pressure gradients from the difference equation: after testing in time, the harmonic difference lies in <span class="math" data-tex="\(H^{-3}(\mathbb R^3)\)">\(H^{-3}(\mathbb R^3)\)</span>, and its Fourier transform must vanish. Equations (14)–(45) retain the complete expanding-cutoff flux, including the commutator’s outer contribution. Section 5 proves the exact Sobolev and double-Riesz bounds used there. F4 and compact smoothness of the constructed field on every shorter time interval supply all reference-field hypotheses in F5.</p>
+<p>The positive inner path yields an additional precise formulation of the source’s stated limsup conclusion. Let <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>, retain the source’s <span class="math" data-tex="\(X_{\rm in}&gt;0,e_0&gt;0\)">\(X_{\rm in}&gt;0,e_0&gt;0\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+x_\tau=(\sqrt{2X_{\rm in}\tau},0,0).
+\]">\[
+x_\tau=(\sqrt{2X_{\rm in}\tau},0,0).
+\]</span>
+<p>I6 and F6 give, for every sufficiently small <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(u_\nu)_\theta(\sqrt\nu\,x_\tau,1-\tau)
+=\sqrt\nu\,\tau^{-A}\{e_0+O(\tau^{2h})\}
+\ge\frac{\sqrt\nu\,e_0}{2}\tau^{-A}.
+\tag{A3}
+\]">\[
+(u_\nu)_\theta(\sqrt\nu\,x_\tau,1-\tau)
+=\sqrt\nu\,\tau^{-A}\{e_0+O(\tau^{2h})\}
+\ge\frac{\sqrt\nu\,e_0}{2}\tau^{-A}.
+\tag{A3}
+\]</span>
+<p>The original remainder has one finite constant after all construction choices are fixed. Choose the time interval so that its magnitude is at most <span class="math" data-tex="\(e_0/2\)">\(e_0/2\)</span>; the localization cutoffs also equal one there. At the displayed point <span class="math" data-tex="\(e_\theta=(0,1,0)\)">\(e_\theta=(0,1,0)\)</span>, so A3 bounds an actual Cartesian component. Since the estimate holds for every sufficiently small <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span>, it proves</p>
+<span class="math math-display" data-tex="\[
+\lim_{t\uparrow1}\|u_\nu(t)\|_\infty=\infty.
+\tag{A4}
+\]">\[
+\lim_{t\uparrow1}\|u_\nu(t)\|_\infty=\infty.
+\tag{A4}
+\]</span>
+<p>For the periodic scaling in F8, at
+<span class="math" data-tex="\(\widetilde x_\tau=\lambda^{-1}\sqrt\nu\,x_\tau\)">\(\widetilde x_\tau=\lambda^{-1}\sqrt\nu\,x_\tau\)</span> and
+<span class="math" data-tex="\(\widetilde t_\tau=1-\lambda^{-2}\tau\)">\(\widetilde t_\tau=1-\lambda^{-2}\tau\)</span>, the corresponding lower bound is
+<span class="math" data-tex="\(\lambda\sqrt\nu\,e_0\tau^{-A}/2\)">\(\lambda\sqrt\nu\,e_0\tau^{-A}/2\)</span>.
+Retaining <span class="math" data-tex="\(\tau=\lambda^2(1-\widetilde t_\tau)\)">\(\tau=\lambda^2(1-\widetilde t_\tau)\)</span> gives the same full-limit conclusion with every scaling factor present. These are consequences of the already proved source path, not a novelty claim.</p>
+<p>The same construction has the exact energy control from F4 and F7:</p>
+<span class="math math-display" data-tex="\[
+\|u_\nu(t)\|_2^2+
+2\nu\int_0^t\|\nabla u_\nu(s)\|_2^2\,ds
+\le\nu^{5/2}
+\left(\int_0^t\|f(s)\|_2\,ds\right)^2,
+\qquad 0\le t&lt;1,
+\tag{A5}
+\]">\[
+\|u_\nu(t)\|_2^2+
+2\nu\int_0^t\|\nabla u_\nu(s)\|_2^2\,ds
+\le\nu^{5/2}
+\left(\int_0^t\|f(s)\|_2\,ds\right)^2,
+\qquad 0\le t&lt;1,
+\tag{A5}
+\]</span>
+<p>where f is the actual viscosity-one force before applying F7. The component growth and bounded energy concern different norms of this same field, with their exact supplying estimates retained.</p>
+<h2 id="5-scope-of-the-theorem">5. Scope of the theorem</h2>
+<p>The linked proofs supply the original theorem’s constructive inputs, including the complete leading profile, every global coefficient, the actual base, all finite correction states, their single physical sum and the compact terminal force. The final comparison and periodic arguments use those supplied fields. The construction order in Sections 2–3 supplies the inputs used by each successive argument.</p>
+<p>The comparison refinements and A3–A5 are consequences of the same constructed fields. The source statements and the additional mathematical consequences remain identifiable in their respective arguments.</p>
+<p>The linked constructions and final comparison prove the whole-space theorem and its periodic corollary. The <a href="../README.md">lesson series</a> develops the same arguments with examples and solved exercises.</p>
+</article></body></html>

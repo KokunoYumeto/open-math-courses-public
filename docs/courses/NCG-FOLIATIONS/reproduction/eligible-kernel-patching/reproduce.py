@@ -1,7 +1,7 @@
 """Exact finite algebra checks and a new labelled-kernel diagram.
 
 Inputs are literal coordinates and the public COMPONENT-TERMS.md only.
-No mathematical provider or private workflow file is read.
+The generator uses the bundled numerical and geometric inputs.
 """
 from __future__ import annotations
 

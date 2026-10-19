@@ -2,12 +2,12 @@
 
 Thirty-four chapters, self-checked by the writing AI, develop vector bundles, characteristic classes, connections, curvature, holonomy and Riemannian and Kähler geometry.
 
-- Local tools for bundles and transport
+- [Local tools for bundles and transport](src/local-tools-for-bundles-and-transport.md)
 - [Integral Thom classes and Euler indices](supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-06.md)
 - [Manifold duality and the Euler characteristic](supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-07.md)
 - [Projective bundles, Gysin sequences and line classes](supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-08.md)
 - [Chern classes and the Whitney formula](supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-09.md)
-- Curvature, characteristic classes and Gauss–Bonnet
+- [Curvature, characteristic classes and Gauss–Bonnet](supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md)
 - [Principal bundles and associated bundles](src/principal-bundles-and-associated-bundles.md)
 - [Connections and parallel transport](src/connections-and-parallel-transport.md)
 - [Curvature and holonomy groups](src/curvature-and-holonomy-groups.md)
@@ -17,7 +17,7 @@ Thirty-four chapters, self-checked by the writing AI, develop vector bundles, ch
 - [Linear and affine connections](src/linear-and-affine-connections.md)
 - [Geodesics, normal coordinates and curvature](src/geodesics-normal-coordinates-and-curvature.md)
 - [Riemannian connections and convex neighbourhoods](src/riemannian-connections-and-convex-neighbourhoods.md)
-- Completeness and the Hopf–Rinow theorem
+- [Completeness and the Hopf–Rinow theorem](src/completeness-and-the-hopf-rinow-theorem.md)
 - [Holonomy and the de Rham decomposition theorem](src/holonomy-and-the-de-rham-decomposition-theorem.md)
 - [Sectional curvature and space forms](src/sectional-curvature-and-space-forms.md)
 - [Affine transformations and the isometry group](src/affine-transformations-and-the-isometry-group.md)

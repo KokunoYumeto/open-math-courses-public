@@ -9,7 +9,7 @@ Mathematical source: Jiří Lebl, *Basic Analysis*, theorem numbering from
 version 6.3, [freely accessible author edition](https://www.jirka.org/ra/),
 §§3.1.3, 4.1.1, 4.2.1–4.2.3 and 8.1–8.5. The
 human-proof references locate external
-statements and proofs; the programme proof index locates
+statements and proofs; the [programme proof index](proof-map.html) locates
 the local arguments. Original programme text is CC0 to the extent rights
 exist. Human works retain their own terms.
 
@@ -404,7 +404,7 @@ operator-norm denominators. \(\square\)
 
 ## Related calculus readings
 
-The proof index identifies the inputs to the algebra
+The [proof index](proof-map.html) identifies the inputs to the algebra
 and differentiation arguments above. The
 [compact-integral companion](integration-prerequisite-completions.html)
 provides the mixed-derivative, fundamental-theorem, Taylor and parameter

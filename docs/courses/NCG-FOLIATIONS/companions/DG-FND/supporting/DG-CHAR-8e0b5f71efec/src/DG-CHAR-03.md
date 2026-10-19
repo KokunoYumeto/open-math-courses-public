@@ -4,7 +4,7 @@
 
 Let \(\mathbb F\) mean \(\mathbb R\) or \(\mathbb C\), with its usual inner product. Bundles have finite, fixed rank; their bases need not be countable or metrizable. We construct a universal rank-\(r\) bundle and prove that its pullbacks classify bundles over every paracompact Hausdorff base. The topology on the universal space is specified below.
 
-The bundle coordinate, inverse and pullback results are [DG-CHAR-01 A.1](DG-CHAR-01.md#lemma-a-1) and [DG-CHAR-01 B.1](DG-CHAR-01.md#theorem-b-1). The partition theorem is [DG-CHAR-01 B.3](DG-CHAR-01.md#theorem-b-3), including its arbitrary paracompact Hausdorff version. Finite-dimensional estimates, compactness and smooth matrix inversion are proved in Local tools 0.0, Local tools 0.1 and Local tools 0.4; determinant identities are [DG-CHAR-06 L.1](DG-CHAR-06.md#lemma-l-1). These results, and the exact further prerequisites linked in the proofs, are the programme inputs.
+The bundle coordinate, inverse and pullback results are [DG-CHAR-01 A.1](DG-CHAR-01.md#lemma-a-1) and [DG-CHAR-01 B.1](DG-CHAR-01.md#theorem-b-1). The partition theorem is [DG-CHAR-01 B.3](DG-CHAR-01.md#theorem-b-3), including its arbitrary paracompact Hausdorff version. Finite-dimensional estimates, compactness and smooth matrix inversion are proved in [Local tools 0.0](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), [Local tools 0.1](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and [Local tools 0.4](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations); determinant identities are [DG-CHAR-06 L.1](DG-CHAR-06.md#lemma-l-1). These results, and the exact further prerequisites linked in the proofs, are the programme inputs.
 
 ## A. Finite Grassmannians
 
@@ -19,7 +19,7 @@ With its matrix topology this is a compact smooth manifold. Its real dimension i
 **Proof.** An idempotent splits the vector space as its image and kernel: \(x=Px+(x-Px)\), and the intersection is zero. Self-adjointness makes these summands orthogonal. In a basis of the two summands its matrix is \(\operatorname{diag}(I,0)\); the trace is unchanged by basis change because \(\operatorname{tr}(AB)=\operatorname{tr}(BA)\), as expansion of the two finite sums shows. Thus its image has dimension \(r\). Conversely every plane has a unique orthogonal projection. For completeness, an orthonormal basis of a finite-dimensional subspace is obtained by successively subtracting the components along the previously obtained orthonormal vectors and dividing the remaining nonzero vector by its norm. Extending this procedure gives the orthogonal complement and its projection.
 
 The equations (A1) are closed conditions on matrix entries. Orthogonality gives
-\(\|x\|^2=\|Px\|^2+\|x-Px\|^2\), so \(\|P\|\leq1\). In particular every entry has absolute value at most one. Closed bounded subsets of a finite-dimensional real space are compact by Local tools 0.1; complex matrices are regarded as real coordinates here.
+\(\|x\|^2=\|Px\|^2+\|x-Px\|^2\), so \(\|P\|\leq1\). In particular every entry has absolute value at most one. Closed bounded subsets of a finite-dimensional real space are compact by [Local tools 0.1](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations); complex matrices are regarded as real coordinates here.
 
 If the columns of \(A:\mathbb F^r\to\mathbb F^N\) are independent, the Gram matrix \(A^*A\) is invertible: a vector in its kernel has
 \(\|Au\|^2=u^*A^*Au=0\), hence is zero. Direct multiplication shows that
@@ -40,7 +40,7 @@ Every \(W\in U_V\) is uniquely the graph of a map \(T:V\to V^\perp\). Formula (A
  \begin{pmatrix}I&T^*\end{pmatrix}.
 \tag{A3}
 \]
-The inverse chart is the lower-left block of \(P\) multiplied by the inverse of its upper-left block. Both directions are continuous and smooth in real coordinates, by Local tools 0.4. On overlaps the same block formula composed with a fixed orthogonal change of coordinates gives a smooth transition. These charts cover, since \(V\in U_V\), and have the asserted dimension. The matrix subspace is Hausdorff and second countable: intersections with balls having rational centers and radii form a countable base. Thus these are manifold charts with the usual separation and countability properties.
+The inverse chart is the lower-left block of \(P\) multiplied by the inverse of its upper-left block. Both directions are continuous and smooth in real coordinates, by [Local tools 0.4](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). On overlaps the same block formula composed with a fixed orthogonal change of coordinates gives a smooth transition. These charts cover, since \(V\in U_V\), and have the asserted dimension. The matrix subspace is Hausdorff and second countable: intersections with balls having rational centers and radii form a countable base. Thus these are manifold charts with the usual separation and countability properties.
 
 At \(T=0\), the derivative of (A3) in direction \(S\) is
 \[
@@ -198,7 +198,7 @@ In a local frame, evaluate this family on the continuous frame sections. The col
 \tag{C5}
 \]
 If all entries of \(A\) occur in its first \(N\) rows and columns, this is exactly the ordinary norm on \(\mathbb F^N\): later coordinates do not contribute to the output and cannot increase the supremum. The triangle inequality and homogeneity follow pointwise and then by taking suprema. In a fixed finite stage the bound
-\(\|A\|\leq(\sum_{i,j}|A_{ij}|^2)^{1/2}\), from the finite Cauchy–Schwarz inequality of Local tools 0.0, proves continuity in the matrix entries; also
+\(\|A\|\leq(\sum_{i,j}|A_{ij}|^2)^{1/2}\), from the finite Cauchy–Schwarz inequality of [Local tools 0.0](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), proves continuity in the matrix entries; also
 \(|\|A\|-\|B\||\leq\|A-B\|\).
 Consequently the map from the direct-limit Grassmannian to this normed matrix space is continuous, because its restriction to every finite stage is continuous. No completed ambient vector space is needed.
 
@@ -208,7 +208,7 @@ Write \(P(b,t)=H(b,t)\). For each \(b_0\) there are an open neighborhood \(V\) a
  \quad\text{if } b\in V,\quad |s-t|\leq d_V.
 \tag{C6}
 \]
-Here are the uniformity details. The continuous map \(t\mapsto P(b_0,t)\) on the compact interval is uniformly continuous by Local tools 0.1. Choose a positive bound \(d_V\) smaller than half a uniform-continuity threshold so that \(|s-t|\leq d_V\) gives norm variation less than \(1/4\) at \(b_0\). The function
+Here are the uniformity details. The continuous map \(t\mapsto P(b_0,t)\) on the compact interval is uniformly continuous by [Local tools 0.1](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Choose a positive bound \(d_V\) smaller than half a uniform-continuity threshold so that \(|s-t|\leq d_V\) gives norm variation less than \(1/4\) at \(b_0\). The function
 \((b,t)\mapsto\|P(b,t)-P(b_0,t)\|\) is continuous and zero on \(\{b_0\}\times[0,1]\). Each point of that compact slice has a product neighborhood on which it is less than \(1/4\); finitely many interval factors cover the interval. Intersect their base neighborhoods to obtain \(V\) on which the bound holds for every time. The triangle inequality now makes the left side of (C6) less than \(3/4\).
 
 Use [DG-CHAR-01 B.3](DG-CHAR-01.md#theorem-b-3) to choose a locally finite partition \((\rho_a)\) subordinate to neighborhoods \(V_a\) of this kind, and set

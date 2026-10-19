@@ -73,7 +73,7 @@ One hundred and eleven lessons treat distributions and their order, kernels, bou
 - [Stationary concentration and point jets](src/stationary-concentration-and-point-jets.md)
 - [Polynomial phases and Fourier tails](src/polynomial-phases-and-fourier-tails.md)
 - [Hölder Gaussian bounds and operator remainders](src/holder-gaussian-bounds-and-operator-remainders.md)
-- Classical finite-order preparation and division
+- [Classical finite-order preparation and division](src/classical-finite-order-preparation-and-division.md)
 - [Smooth complex equations and flat remainders](src/smooth-complex-equations-and-flat-remainders.md)
 - [An oriented coordinate normal form for a real finite-order zero](src/oriented-coordinate-normal-form.md)
 - [Derivative growth and finite-order localization](src/derivative-growth-and-finite-order-localization.md)

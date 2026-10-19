@@ -1,0 +1,901 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="shear-realization-audit.md">Editable source</a></nav><h1 id="admissible-shear-and-the-completed-leading-profile">Admissible shear and the completed leading profile</h1>
+<p>This note derives the actual shear realization in Appendix C and verifies the six conclusions of Theorem 4.6 for the constructed leading profile. It uses the existing constructions <a href="profile-stress-moment-audit.html">G0–G7</a>, <a href="outer-profile-audit.html">O0–O8</a>, <a href="heat-exterior-stress-audit.html">H0–H7</a>, <a href="analytic-axis-profile-audit.html">J0–J7</a> and <a href="inner-outer-joining-audit.html">Q0–Q9</a>. The positive-order base is constructed in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf#page=158">PDF, pages 158–165</a>, SHA256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f, (C.1)–(C.19). The target and cone coordinates are in original pages 31–35 and 38, (4.21)–(4.30) and (4.35).</p>
+<p><img src="assets/shear-realization.png" alt="Exact shear realization, moment restoration and endpoint preservation" class="course-figure" width="2160" height="1080" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="0C965F724B2B17CADF050B3CEE72CA677FCF371B4E3ED26D4C1A7608F1928B2E"></p>
+<p>The diagram shows the exact maps proved in V1–V7, with schematic positions. It contains no sampled flow or numerical evidence. The source formulas and page locators are cited above. <a href="assets/shear-realization.py">Reproducible figure source</a> · <a href="assets/shear-realization.svg">Vector figure</a>.</p>
+<h2 id="v0-the-actual-input-and-the-interval-of-modification">V0. The actual input and the interval of modification</h2>
+<p>Fix the entire profile constructed in Q, including its finite parameters, common axis pressure and exact exterior matching. Keep</p>
+<span class="math math-display" data-tex="\[
+A=1/2+h,\quad D=1/2-h,\quad d=1-\eta^2,\quad L=1-2h\eta^2,
+\quad 0&lt;h&lt;1/100,\quad -1\le\eta\le1.
+\tag{V0.1}
+\]">\[
+A=1/2+h,\quad D=1/2-h,\quad d=1-\eta^2,\quad L=1-2h\eta^2,
+\quad 0&lt;h&lt;1/100,\quad -1\le\eta\le1.
+\tag{V0.1}
+\]</span>
+<p>Its inner stress endpoint is <span class="math" data-tex="\(X_a=X_0=4/\Lambda\)">\(X_a=X_0=4/\Lambda\)</span>; its outer stress endpoint <span class="math" data-tex="\(X_b\)">\(X_b\)</span> is the endpoint of the actual H exterior. These are not the local continuation radius 100. The original functions are</p>
+<span class="math math-display" data-tex="\[
+F=E/\sqrt{2X},\quad H=\sqrt{2X}E,\quad
+a=1-2X\partial_X\log E,\quad b_s=2XU_X/E,
+\quad p_s=\frac X L(Q_s,N_s/E),\quad
+\mathcal T_0=F[p_s-(a,-b_s)].
+\tag{V0.2}
+\]">\[
+F=E/\sqrt{2X},\quad H=\sqrt{2X}E,\quad
+a=1-2X\partial_X\log E,\quad b_s=2XU_X/E,
+\quad p_s=\frac X L(Q_s,N_s/E),\quad
+\mathcal T_0=F[p_s-(a,-b_s)].
+\tag{V0.2}
+\]</span>
+<p>All five cumulative integrals <span class="math" data-tex="\(\mathbf m=(M,I,J,S,C_p)\)">\(\mathbf m=(M,I,J,S,C_p)\)</span>, their integration constants and <span class="math" data-tex="\(\Pi=\Pi_0+C_p\)">\(\Pi=\Pi_0+C_p\)</span> remain those of G2. The input has <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the strict relaxed cone on <span class="math" data-tex="\((X_a,X_b)\)">\((X_a,X_b)\)</span>, an admissible inner collar and the admissible outer portion beginning in the intermediate power-law interval. These properties were derived in Q9, O8 and H5, rather than assumed for a nonexistent profile.</p>
+<p>Choose <span class="math" data-tex="\(X_{\rm an}\)">\(X_{\rm an}\)</span> strictly inside the analytic admissible inner collar of Q5. Then choose <span class="math" data-tex="\(X_-\)">\(X_-\)</span> beyond <span class="math" data-tex="\(X_{\rm an}\)">\(X_{\rm an}\)</span>, still inside that collar, and <span class="math" data-tex="\(X_+\)">\(X_+\)</span> inside the admissible intermediate power-law interval, before the first reserved patch. This is possible by the positive lengths established in Q5 and O0.4. Set <span class="math" data-tex="\(\mathcal I=[X_-,X_+]\)">\(\mathcal I=[X_-,X_+]\)</span>. The compact interval contains every point where the input need not be admissible; the input is admissible near both endpoints. Retain shorter endpoint collars outside its support. The first reserved patch will restore moments; the third and fourth remain available for later positive-order and mean corrections. The second was already used for the heat compensation, which will be preserved exactly.</p>
+<p>For any <span class="math" data-tex="\(a&gt;0,b\in\mathbb R,p\in\mathbb R^2\)">\(a&gt;0,b\in\mathbb R,p\in\mathbb R^2\)</span>, keep the original gap map</p>
+<span class="math math-display" data-tex="\[
+v=a+b^2/a,\quad c=p_1-(b/a)p_2,\quad j=p_2+(b/a)p_1,
+\qquad
+\Psi(a,b,p)=(a,v-2,c-v,2(c-v)^2-(v-2)j^2).
+\tag{V0.3}
+\]">\[
+v=a+b^2/a,\quad c=p_1-(b/a)p_2,\quad j=p_2+(b/a)p_1,
+\qquad
+\Psi(a,b,p)=(a,v-2,c-v,2(c-v)^2-(v-2)j^2).
+\tag{V0.3}
+\]</span>
+<p>It is smooth on its stated domain. G6 proves that positivity of all four components is exactly the admissible cone. With <span class="math" data-tex="\(t_s=-b_s/a\)">\(t_s=-b_s/a\)</span>, its c and j are <span class="math" data-tex="\(P_c(t_s)\)">\(P_c(t_s)\)</span> and <span class="math" data-tex="\(J_c(t_s)\)">\(J_c(t_s)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+P_c(t)=p_{s,1}+p_{s,2}t,\qquad J_c(t)=p_{s,2}-p_{s,1}t.
+\tag{V0.4}
+\]">\[
+P_c(t)=p_{s,1}+p_{s,2}t,\qquad J_c(t)=p_{s,2}-p_{s,1}t.
+\tag{V0.4}
+\]</span>
+<h2 id="v1-a-smooth-variance-family-including-zero-axial-stress">V1. A smooth variance family, including zero axial stress</h2>
+<p>On the compact rectangle <span class="math" data-tex="\(\mathcal I\times[-1,1]\)">\(\mathcal I\times[-1,1]\)</span>, choose
+<span class="math" data-tex="\(0&lt;d_0&lt;\tfrac12\min(P_c(t_s)-2)\)">\(0&lt;d_0&lt;\tfrac12\min(P_c(t_s)-2)\)</span>. This minimum is positive by the already constructed strict relaxed cone. With the separate auxiliary angle <span class="math" data-tex="\(\theta&#x27;\)">\(\theta&#x27;\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+M_e(z)=\frac1{2\pi}\int_0^{2\pi}e^{z\sin\theta&#x27;}\,d\theta&#x27;,\qquad
+t(\theta&#x27;;\mu)=t_s+d_0\frac{e^{\mu p\sin\theta&#x27;}/M_e(\mu p)-1}{p},
+\quad p=p_{s,2},\quad \mu\ge0.
+\tag{V1.1}
+\]">\[
+M_e(z)=\frac1{2\pi}\int_0^{2\pi}e^{z\sin\theta&#x27;}\,d\theta&#x27;,\qquad
+t(\theta&#x27;;\mu)=t_s+d_0\frac{e^{\mu p\sin\theta&#x27;}/M_e(\mu p)-1}{p},
+\quad p=p_{s,2},\quad \mu\ge0.
+\tag{V1.1}
+\]</span>
+<p>This auxiliary average is not the physical angular or wave-torus average. Differentiation under the integral on compact z intervals proves smoothness, and <span class="math" data-tex="\(M_e&gt;0\)">\(M_e&gt;0\)</span>. The change <span class="math" data-tex="\(\theta&#x27;\mapsto\theta&#x27;+\pi\)">\(\theta&#x27;\mapsto\theta&#x27;+\pi\)</span> proves evenness. The numerator in the quotient vanishes at p=0. Writing it as <span class="math" data-tex="\(p\int_0^1\partial_pG(up)du\)">\(p\int_0^1\partial_pG(up)du\)</span> proves a joint smooth extension in <span class="math" data-tex="\((\theta&#x27;,\mu,p)\)">\((\theta&#x27;,\mu,p)\)</span>, with value <span class="math" data-tex="\(t=t_s+d_0\mu\sin\theta&#x27;\)">\(t=t_s+d_0\mu\sin\theta&#x27;\)</span> at zero. Direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\langle t\rangle=t_s,\qquad
+P_c(t)=P_c(t_s)+d_0[e^{\mu p\sin\theta&#x27;}/M_e(\mu p)-1]&gt;P_c(t_s)-d_0&gt;2,
+\tag{V1.2}
+\]">\[
+\langle t\rangle=t_s,\qquad
+P_c(t)=P_c(t_s)+d_0[e^{\mu p\sin\theta&#x27;}/M_e(\mu p)-1]&gt;P_c(t_s)-d_0&gt;2,
+\tag{V1.2}
+\]</span>
+<p>and the exact variance</p>
+<span class="math math-display" data-tex="\[
+V(\mu,p)=\langle(t-t_s)^2\rangle
+=\frac{d_0^2}{p^2}\left[\frac{M_e(2\mu p)}{M_e(\mu p)^2}-1\right],
+\qquad V(\mu,0)=d_0^2\mu^2/2.
+\tag{V1.3}
+\]">\[
+V(\mu,p)=\langle(t-t_s)^2\rangle
+=\frac{d_0^2}{p^2}\left[\frac{M_e(2\mu p)}{M_e(\mu p)^2}-1\right],
+\qquad V(\mu,0)=d_0^2\mu^2/2.
+\tag{V1.3}
+\]</span>
+<p>The integral of the squared smoothly extended quotient is also a direct proof of smoothness at p=0.</p>
+<p>For <span class="math" data-tex="\(g=\log M_e\)">\(g=\log M_e\)</span>, differentiating the quotient for <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> gives exactly the variance of <span class="math" data-tex="\(\sin\theta&#x27;\)">\(\sin\theta&#x27;\)</span> under density <span class="math" data-tex="\(e^{z\sin\theta&#x27;}/(2\pi M_e(z))\)">\(e^{z\sin\theta&#x27;}/(2\pi M_e(z))\)</span>. It is strictly positive: the density is positive everywhere and <span class="math" data-tex="\(\sin\theta&#x27;\)">\(\sin\theta&#x27;\)</span> is not constant on any full-measure set. Thus <span class="math" data-tex="\(g&#x27;&#x27;&gt;0\)">\(g&#x27;&#x27;&gt;0\)</span>. For p nonzero and <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\partial_\mu[g(2\mu p)-2g(\mu p)]
+=2p[g&#x27;(2\mu p)-g&#x27;(\mu p)]&gt;0.
+\tag{V1.4}
+\]">\[
+\partial_\mu[g(2\mu p)-2g(\mu p)]
+=2p[g&#x27;(2\mu p)-g&#x27;(\mu p)]&gt;0.
+\tag{V1.4}
+\]</span>
+<p>For negative p both factors in brackets and outside are negative; for positive p both are positive. This proves strict increase of V for <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>; the p=0 formula does so there as well.</p>
+<p>The unbounded range can be proved with explicit analytic estimates. For <span class="math" data-tex="\(|u|\le\pi\)">\(|u|\le\pi\)</span>,
+<span class="math" data-tex="\(1-u^2/2\le\cos u\le1-2u^2/\pi^2\)">\(1-u^2/2\le\cos u\le1-2u^2/\pi^2\)</span>. The lower bound follows by integrating <span class="math" data-tex="\(1-\cos u\le u^2/2\)">\(1-\cos u\le u^2/2\)</span>; the upper follows from <span class="math" data-tex="\(\sin(|u|/2)\ge |u|/\pi\)">\(\sin(|u|/2)\ge |u|/\pi\)</span>, the chord inequality for the concave sine on <span class="math" data-tex="\([0,\pi/2]\)">\([0,\pi/2]\)</span>, in <span class="math" data-tex="\(1-\cos u=2\sin^2(u/2)\)">\(1-\cos u=2\sin^2(u/2)\)</span>. Centering the angle at its maximum and integrating over <span class="math" data-tex="\(|u|\le z^{-1/2}\)">\(|u|\le z^{-1/2}\)</span> for the lower bound, and over the whole real Gaussian for the upper, yields for <span class="math" data-tex="\(z\ge1\)">\(z\ge1\)</span></p>
+<span class="math math-display" data-tex="\[
+\frac{e^{-1/2}}\pi\frac{e^z}{\sqrt z}
+\le M_e(z)\le\frac{\sqrt\pi}{2\sqrt2}\frac{e^z}{\sqrt z}.
+\tag{V1.5}
+\]">\[
+\frac{e^{-1/2}}\pi\frac{e^z}{\sqrt z}
+\le M_e(z)\le\frac{\sqrt\pi}{2\sqrt2}\frac{e^z}{\sqrt z}.
+\tag{V1.5}
+\]</span>
+<p>Evenness supplies the same bounds for negative z with <span class="math" data-tex="\(|z|\)">\(|z|\)</span>. Consequently the ratio in V1.3 is bounded below by a positive constant times <span class="math" data-tex="\(\sqrt{|\mu p|}\)">\(\sqrt{|\mu p|}\)</span> when <span class="math" data-tex="\(|\mu p|\ge1\)">\(|\mu p|\ge1\)</span>. For each fixed nonzero p this tends to infinity as <span class="math" data-tex="\(\mu\to\infty\)">\(\mu\to\infty\)</span>; for p=0 use V1.3. Given any finite target, continuity gives for each p an open neighborhood and one finite <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> exceeding the target there. A finite subcover of the compact p range and monotonicity give one finite <span class="math" data-tex="\(\mu_{\max}\)">\(\mu_{\max}\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+V(\mu_{\max},p)&gt;3/a_{\min},\qquad a_{\min}=\min_{\mathcal I\times[-1,1]}a&gt;0.
+\tag{V1.6}
+\]">\[
+V(\mu_{\max},p)&gt;3/a_{\min},\qquad a_{\min}=\min_{\mathcal I\times[-1,1]}a&gt;0.
+\tag{V1.6}
+\]</span>
+<p>No uniform large-z estimate near p=0 was assumed in this compactness step.</p>
+<p>The original upper cone bound is</p>
+<span class="math math-display" data-tex="\[
+\mathcal U(P,J)=P+J^2/4-|J|\sqrt{(P-2)/2+J^2/16}.
+\tag{V1.7}
+\]">\[
+\mathcal U(P,J)=P+J^2/4-|J|\sqrt{(P-2)/2+J^2/16}.
+\tag{V1.7}
+\]</span>
+<p>G6 proves <span class="math" data-tex="\(2&lt;\mathcal U(P,J)\le P\)">\(2&lt;\mathcal U(P,J)\le P\)</span> for P&gt;2, including J=0. Continuity suffices here; no derivative of <span class="math" data-tex="\(|J|\)">\(|J|\)</span> is taken. The entire compact family in V1.1 with <span class="math" data-tex="\(0\le\mu\le\mu_{\max}\)">\(0\le\mu\le\mu_{\max}\)</span> has P&gt;2 by V1.2. Choose <span class="math" data-tex="\(0&lt;\delta_L&lt;1\)">\(0&lt;\delta_L&lt;1\)</span> below the minimum of <span class="math" data-tex="\(\mathcal U-2\)">\(\mathcal U-2\)</span> on that family and below the positive minimum of <span class="math" data-tex="\(v_s-2\)">\(v_s-2\)</span> on fixed smaller radial boundary neighborhoods. The order is <span class="math" data-tex="\(d_0,\mu_{\max},\delta_L\)">\(d_0,\mu_{\max},\delta_L\)</span>.</p>
+<h2 id="v2-the-variance-choice-and-the-exact-prescribed-mean">V2. The variance choice and the exact prescribed mean</h2>
+<p>Using the smooth step of O0.1, take
+<span class="math" data-tex="\(\zeta_L(w)=1-\sigma((w-2-\delta_L/8)/(\delta_L/8))\)">\(\zeta_L(w)=1-\sigma((w-2-\delta_L/8)/(\delta_L/8))\)</span>.
+It lies in [0,1], is one below <span class="math" data-tex="\(2+\delta_L/8\)">\(2+\delta_L/8\)</span> and zero above <span class="math" data-tex="\(2+\delta_L/4\)">\(2+\delta_L/4\)</span>. Set exactly</p>
+<span class="math math-display" data-tex="\[
+v_*=2+\delta_L/2,\qquad
+\rho=\zeta_L(v_s)^2(v_*-v_s),\qquad v=v_s+\rho.
+\tag{V2.1}
+\]">\[
+v_*=2+\delta_L/2,\qquad
+\rho=\zeta_L(v_s)^2(v_*-v_s),\qquad v=v_s+\rho.
+\tag{V2.1}
+\]</span>
+<p>Define <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span> where the cutoff vanishes. On its possible nonzero support, <span class="math" data-tex="\(v_*-v_s\ge\delta_L/4\)">\(v_*-v_s\ge\delta_L/4\)</span>; hence
+<span class="math" data-tex="\(\sqrt\rho=\zeta_L(v_s)\sqrt{v_*-v_s}\)">\(\sqrt\rho=\zeta_L(v_s)\sqrt{v_*-v_s}\)</span>, extended by zero, is smooth. Since <span class="math" data-tex="\(v_s=a+b_s^2/a&gt;0\)">\(v_s=a+b_s^2/a&gt;0\)</span> and <span class="math" data-tex="\(v_*&lt;5/2\)">\(v_*&lt;5/2\)</span>, one has <span class="math" data-tex="\(0\le\rho&lt;3\)">\(0\le\rho&lt;3\)</span>. There is a unique <span class="math" data-tex="\(0\le\mu&lt;\mu_{\max}\)">\(0\le\mu&lt;\mu_{\max}\)</span> solving</p>
+<span class="math math-display" data-tex="\[
+V(\mu,p)=\rho/a.
+\tag{V2.2}
+\]">\[
+V(\mu,p)=\rho/a.
+\tag{V2.2}
+\]</span>
+<p>Existence follows from V1.6 and the intermediate value theorem; strict monotonicity proves uniqueness.</p>
+<p>Here is the smooth dependence at zero, which the ordinary derivative of V alone would not justify. Taylor expansion under the defining integral gives <span class="math" data-tex="\(M_e(z)=1+z^2/4+O(z^4)\)">\(M_e(z)=1+z^2/4+O(z^4)\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\frac{M_e(2z)}{M_e(z)^2}-1=z^2F_e(z),\quad F_e(0)=1/2,
+\qquad V(\mu,p)=d_0^2\mu^2F_e(\mu p),
+\tag{V2.3}
+\]">\[
+\frac{M_e(2z)}{M_e(z)^2}-1=z^2F_e(z),\quad F_e(0)=1/2,
+\qquad V(\mu,p)=d_0^2\mu^2F_e(\mu p),
+\tag{V2.3}
+\]</span>
+<p>where <span class="math" data-tex="\(F_e\)">\(F_e\)</span> is smooth and even near zero. This is an exact factorization, obtained by the twice-integrated Taylor remainder; the displayed value follows from the second derivative. In a fixed neighborhood it is positive. Therefore the signed square root <span class="math" data-tex="\(d_0\mu\sqrt{F_e(\mu p)}\)">\(d_0\mu\sqrt{F_e(\mu p)}\)</span> is smooth, odd in <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and has derivative <span class="math" data-tex="\(d_0/\sqrt2\)">\(d_0/\sqrt2\)</span> at zero. Its implicit equation with smooth right side <span class="math" data-tex="\(\sqrt\rho/\sqrt a\)">\(\sqrt\rho/\sqrt a\)</span> gives a unique smooth <span class="math" data-tex="\(\mu\)">\(\mu\)</span> through zero. Away from zero use the strictly positive derivative V1.4. Local solutions agree by uniqueness, including at <span class="math" data-tex="\(\eta=\pm1\)">\(\eta=\pm1\)</span>, by smooth local extension or one-sided implicit differentiation. No cusp in <span class="math" data-tex="\(\sqrt\rho\)">\(\sqrt\rho\)</span> is introduced.</p>
+<p>If <span class="math" data-tex="\(v_s\le2+\delta_L/8\)">\(v_s\le2+\delta_L/8\)</span>, then v=v_*&gt;2. In the transition zone, <span class="math" data-tex="\(2&lt;v_s\le v\le v_*\)">\(2&lt;v_s\le v\le v_*\)</span>. Off the cutoff, v=v_s&gt;2 and <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>. Thus where the loop changes, <span class="math" data-tex="\(2&lt;v\le2+\delta_L/2&lt;\mathcal U(P_c(t),J_c(t))\)">\(2&lt;v\le2+\delta_L/2&lt;\mathcal U(P_c(t),J_c(t))\)</span>. Where it does not change, the original relaxed inequality and v_s&gt;2 give the same conclusion. Every vector <span class="math" data-tex="\(v(1,t)/(1+t^2)\)">\(v(1,t)/(1+t^2)\)</span> is therefore admissible.</p>
+<p>To obtain the original average, define the lift</p>
+<span class="math math-display" data-tex="\[
+\varphi(\theta&#x27;)=\int_0^{\theta&#x27;}\frac{a(1+t(s)^2)}{2\pi v}\,ds,
+\qquad (a_L,-b_L)(\varphi)=\frac{v(1,t(\theta&#x27;))}{1+t(\theta&#x27;)^2}.
+\tag{V2.4}
+\]">\[
+\varphi(\theta&#x27;)=\int_0^{\theta&#x27;}\frac{a(1+t(s)^2)}{2\pi v}\,ds,
+\qquad (a_L,-b_L)(\varphi)=\frac{v(1,t(\theta&#x27;))}{1+t(\theta&#x27;)^2}.
+\tag{V2.4}
+\]</span>
+<p>V1.2–V1.3 and V2.2 give <span class="math" data-tex="\(a\langle1+t^2\rangle=a(1+t_s^2)+aV=v_s+\rho=v\)">\(a\langle1+t^2\rangle=a(1+t_s^2)+aV=v_s+\rho=v\)</span>. Consequently the lift increases by exactly one as <span class="math" data-tex="\(\theta&#x27;\)">\(\theta&#x27;\)</span> increases by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Its derivative is bounded below by a positive constant on the compact family, so it has a smooth parameter-dependent inverse. For completeness, the derivative of the inverse is <span class="math" data-tex="\((\partial_{\theta&#x27;}\varphi)^{-1}\)">\((\partial_{\theta&#x27;}\varphi)^{-1}\)</span>, while any parameter derivative is <span class="math" data-tex="\(-\varphi_{\rm parameter}/\varphi_{\theta&#x27;}\)">\(-\varphi_{\rm parameter}/\varphi_{\theta&#x27;}\)</span>; iterating these identities proves all mixed derivative bounds. The exact two averages are</p>
+<span class="math math-display" data-tex="\[
+\int_0^1a_L\,d\varphi=a,\qquad
+\int_0^1(-b_L)\,d\varphi=a\langle t\rangle=at_s=-b_s.
+\tag{V2.5}
+\]">\[
+\int_0^1a_L\,d\varphi=a,\qquad
+\int_0^1(-b_L)\,d\varphi=a\langle t\rangle=at_s=-b_s.
+\tag{V2.5}
+\]</span>
+<p>They follow by substituting the full Jacobian in V2.4. On the radial boundary neighborhoods <span class="math" data-tex="\(\zeta_L=0\)">\(\zeta_L=0\)</span>, so <span class="math" data-tex="\(\mu=0,t=t_s,v=v_s\)">\(\mu=0,t=t_s,v=v_s\)</span>, the lift is <span class="math" data-tex="\(\theta&#x27;/(2\pi)\)">\(\theta&#x27;/(2\pi)\)</span>, and the loop equals the original shear. Positivity of all four components of <span class="math" data-tex="\(\Psi(a_L,b_L,p_s)\)">\(\Psi(a_L,b_L,p_s)\)</span> and compactness yield a common minimum <span class="math" data-tex="\(\kappa_L&gt;0\)">\(\kappa_L&gt;0\)</span>. The fixed neighborhoods yield <span class="math" data-tex="\(\delta_\partial&gt;0\)">\(\delta_\partial&gt;0\)</span>. This establishes every assertion of Lemma C.1, with the exact period-one mean and boundary equalities.</p>
+<h2 id="v3-the-actual-radial-modulation-and-its-moment-estimates">V3. The actual radial modulation and its moment estimates</h2>
+<p>For any smooth period-one zero-mean f, the unique zero-mean primitive is</p>
+<span class="math math-display" data-tex="\[
+(\mathcal P f)(\varphi)=\int_0^\varphi f(s)ds-
+\int_0^1\int_0^u f(s)ds\,du.
+\tag{V3.1}
+\]">\[
+(\mathcal P f)(\varphi)=\int_0^\varphi f(s)ds-
+\int_0^1\int_0^u f(s)ds\,du.
+\tag{V3.1}
+\]</span>
+<p>Its periodicity follows from <span class="math" data-tex="\(\int_0^1f=0\)">\(\int_0^1f=0\)</span>, its derivative is f, and its mean is zero by construction. A constant is the only difference between primitives, proving uniqueness. Every fixed parameter derivative commutes with these bounded integrals. Define</p>
+<span class="math math-display" data-tex="\[
+\partial_\varphi\mathcal A=-\tfrac12(a_L-a),\qquad
+\partial_\varphi\mathcal B=\tfrac12E(b_L-b_s),\qquad
+\langle\mathcal A\rangle_\varphi=\langle\mathcal B\rangle_\varphi=0.
+\tag{V3.2}
+\]">\[
+\partial_\varphi\mathcal A=-\tfrac12(a_L-a),\qquad
+\partial_\varphi\mathcal B=\tfrac12E(b_L-b_s),\qquad
+\langle\mathcal A\rangle_\varphi=\langle\mathcal B\rangle_\varphi=0.
+\tag{V3.2}
+\]</span>
+<p>V2.5 proves compatibility. Both primitives vanish identically on the radial boundary neighborhoods, so extension by zero is smooth. For an integer N≥1 prescribe the actual fields</p>
+<span class="math math-display" data-tex="\[
+E_N=E\exp[\mathcal A(X,\eta,N\log X)/N],\qquad
+U_N=U+\mathcal B(X,\eta,N\log X)/N.
+\tag{V3.3}
+\]">\[
+E_N=E\exp[\mathcal A(X,\eta,N\log X)/N],\qquad
+U_N=U+\mathcal B(X,\eta,N\log X)/N.
+\tag{V3.3}
+\]</span>
+<p>Positivity of E_N and exact agreement outside <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> follow immediately. Let <span class="math" data-tex="\(\mathcal D_X=X\partial_X\)">\(\mathcal D_X=X\partial_X\)</span> hold the independent <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> fixed. Differentiation after substitution is <span class="math" data-tex="\(\mathcal D_X+N\partial_\varphi\)">\(\mathcal D_X+N\partial_\varphi\)</span>. Thus the original shears, with every amplitude factor, are exactly</p>
+<span class="math math-display" data-tex="\[
+a_N=a_L-\frac{2\mathcal D_X\mathcal A}N,\qquad
+b_N=e^{-\mathcal A/N}\left(b_L+\frac{2\mathcal D_X\mathcal B}{NE}\right),
+\qquad \varphi=N\log X.
+\tag{V3.4}
+\]">\[
+a_N=a_L-\frac{2\mathcal D_X\mathcal A}N,\qquad
+b_N=e^{-\mathcal A/N}\left(b_L+\frac{2\mathcal D_X\mathcal B}{NE}\right),
+\qquad \varphi=N\log X.
+\tag{V3.4}
+\]</span>
+<p>In the second formula the numerator is <span class="math" data-tex="\(2\mathcal D_XU+2\partial_\varphi\mathcal B+2\mathcal D_X\mathcal B/N=Eb_L+2\mathcal D_X\mathcal B/N\)">\(2\mathcal D_XU+2\partial_\varphi\mathcal B+2\mathcal D_X\mathcal B/N=Eb_L+2\mathcal D_X\mathcal B/N\)</span>, and the denominator is <span class="math" data-tex="\(Ee^{\mathcal A/N}\)">\(Ee^{\mathcal A/N}\)</span>. This proves the exponential factor as well as both signs.</p>
+<p>All coefficients and derivatives are bounded on the fixed compact radial range from <span class="math" data-tex="\(X_-\)">\(X_-\)</span> through the first reserved patch, with E and X bounded below. The phase is independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The identity <span class="math" data-tex="\(e^z-1=z\int_0^1e^{sz}ds\)">\(e^z-1=z\int_0^1e^{sz}ds\)</span>, followed by parameter differentiation, proves for each fixed m</p>
+<span class="math math-display" data-tex="\[
+\|E_N-E\|_{C^m_\eta}+\|U_N-U\|_{C^m_\eta}
++\|a_N-a_L\|_{C^m_\eta}+\|b_N-b_L\|_{C^m_\eta}
+\le C_m/N.
+\tag{V3.5}
+\]">\[
+\|E_N-E\|_{C^m_\eta}+\|U_N-U\|_{C^m_\eta}
++\|a_N-a_L\|_{C^m_\eta}+\|b_N-b_L\|_{C^m_\eta}
+\le C_m/N.
+\tag{V3.5}
+\]</span>
+<p>The norms include a radial supremum, and loop values are evaluated at the actual phase. Constants depend on the fixed loop and profile, never on N. Each radial differentiation of the composed primitives contributes at most one N, while the original perturbation has factor N^{-1}. Repeated product and chain differentiation therefore gives</p>
+<span class="math math-display" data-tex="\[
+\|\partial_X^r\partial_\eta^m(E_N-E,U_N-U)\|_\infty
+\le C_{r,m}N^{r-1}\quad(r\ge1).
+\tag{V3.6}
+\]">\[
+\|\partial_X^r\partial_\eta^m(E_N-E,U_N-U)\|_\infty
+\le C_{r,m}N^{r-1}\quad(r\ge1).
+\tag{V3.6}
+\]</span>
+<p>Terms differentiating the exponential k times carry N^{-k} and at most N^r, with k≥1; hence they obey the same bound for N≥1. This is not smallness of radial derivatives.</p>
+<p>Compute the actual moments from E_N,U_N, keeping the same <span class="math" data-tex="\(\Pi_0\)">\(\Pi_0\)</span>. For any field increments e,u, their integrand changes are exactly</p>
+<span class="math math-display" data-tex="\[
+u,\quad \sqrt{2X}e,\quad \sqrt{2X}(Ue+Eu+ue),\quad
+2Uu+u^2-Ee-e^2/2,\quad Ee/X+e^2/(2X),
+\tag{V3.7}
+\]">\[
+u,\quad \sqrt{2X}e,\quad \sqrt{2X}(Ue+Eu+ue),\quad
+2Uu+u^2-Ee-e^2/2,\quad Ee/X+e^2/(2X),
+\tag{V3.7}
+\]</span>
+<p>in the original order (M,I,J,S,C_p). All changes vanish before <span class="math" data-tex="\(X_-\)">\(X_-\)</span>, so their denominators are bounded away from zero wherever integrated. V3.5 and product differentiation give <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span> bounds for all five partial integrals, uniformly through the correction interval. The same holds for <span class="math" data-tex="\(\Pi_N-\Pi=C_{p,N}-C_p\)">\(\Pi_N-\Pi=C_{p,N}-C_p\)</span>. G2.5 and G3.4 then give</p>
+<span class="math math-display" data-tex="\[
+\|\mathbf m_N-\mathbf m\|_{C^m_\eta}
++\|\Pi_N-\Pi\|_{C^m_\eta}\le C_m/N,\qquad
+\|p_{s,N}-p_s\|_{C^m_\eta}\le C&#x27;_m/N.
+\tag{V3.8}
+\]">\[
+\|\mathbf m_N-\mathbf m\|_{C^m_\eta}
++\|\Pi_N-\Pi\|_{C^m_\eta}\le C_m/N,\qquad
+\|p_{s,N}-p_s\|_{C^m_\eta}\le C&#x27;_m/N.
+\tag{V3.8}
+\]</span>
+<p>For the last estimate use the first bound through order m+1, positive E_N, and the full multiplier X/L. The multiplier is fixed, although possibly large. None of these formulas differentiates the oscillating fields radially.</p>
+<p>There is a compact neighborhood of the loop values with a positive lower bound for a; the smooth gap map has a finite Lipschitz constant there. V3.4–V3.8 therefore preserve every gap by at least <span class="math" data-tex="\(\kappa_L/2\)">\(\kappa_L/2\)</span> on <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> for sufficiently large N. Between <span class="math" data-tex="\(X_+\)">\(X_+\)</span> and the reserved patch, fields and shears equal the input, while p_s differs by <span class="math" data-tex="\(O(N^{-1})\)">\(O(N^{-1})\)</span>. The input gap has a positive minimum on this compact interval, so the same choice, enlarged if necessary, preserves it. All frequency lower bounds are finite and are chosen after the entire input profile.</p>
+<h2 id="v4-restoring-the-five-original-moments-on-the-first-reserved-patch">V4. Restoring the five original moments on the first reserved patch</h2>
+<p>Let the first patch be <span class="math" data-tex="\((R_-,R_+)\)">\((R_-,R_+)\)</span>, with its actual radii from O0.4. There the unchanged input is</p>
+<span class="math math-display" data-tex="\[
+U=0,\qquad E=K(\eta)X^{-1/2-\lambda},\qquad
+K(\eta)=c_{\rm patch}(1+\eta^2)^{-1}&gt;0.
+\tag{V4.1}
+\]">\[
+U=0,\qquad E=K(\eta)X^{-1/2-\lambda},\qquad
+K(\eta)=c_{\rm patch}(1+\eta^2)^{-1}&gt;0.
+\tag{V4.1}
+\]</span>
+<p>Fix five centers <span class="math" data-tex="\(r_j=R_-+j(R_+-R_-)/6\)">\(r_j=R_-+j(R_+-R_-)/6\)</span> and width <span class="math" data-tex="\(\omega=(R_+-R_-)/20\)">\(\omega=(R_+-R_-)/20\)</span>. Let <span class="math" data-tex="\(\beta_j(X)=\exp[-1/(1-((X-r_j)/\omega)^2)]\)">\(\beta_j(X)=\exp[-1/(1-((X-r_j)/\omega)^2)]\)</span> on <span class="math" data-tex="\(|X-r_j|&lt;\omega\)">\(|X-r_j|&lt;\omega\)</span>, and zero otherwise. They are smooth, positive on their interiors, and have ordered disjoint compact supports inside the original patch. Put <span class="math" data-tex="\(u=c_1\beta_1+c_2\beta_2\)">\(u=c_1\beta_1+c_2\beta_2\)</span>, <span class="math" data-tex="\(e=\sum_{j=3}^5c_j\beta_j\)">\(e=\sum_{j=3}^5c_j\beta_j\)</span>, and add them to the fields after modulation.</p>
+<p>At the patch entrance the fields themselves are exactly V4.1; the accumulated moment discrepancy is <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span>. The correction map, in row order (M,J,I,S,C_p), has the full increments</p>
+<span class="math math-display" data-tex="\[
+\left(
+\int u,\ \int\sqrt{2X}(Eu+ue),\ \int\sqrt{2X}e,
+\ \int(u^2-Ee-e^2/2),\ \int(Ee/X+e^2/(2X))
+\right).
+\tag{V4.2}
+\]">\[
+\left(
+\int u,\ \int\sqrt{2X}(Eu+ue),\ \int\sqrt{2X}e,
+\ \int(u^2-Ee-e^2/2),\ \int(Ee/X+e^2/(2X))
+\right).
+\tag{V4.2}
+\]</span>
+<p>Every integral here is in dX over the patch. At zero coefficients its matrix B is block diagonal. Its U rows have weights <span class="math" data-tex="\(1,\sqrt2KX^{-\lambda}\)">\(1,\sqrt2KX^{-\lambda}\)</span>; its E rows have weights <span class="math" data-tex="\(\sqrt2X^{1/2},-KX^{-1/2-\lambda},KX^{-3/2-\lambda}\)">\(\sqrt2X^{1/2},-KX^{-1/2-\lambda},KX^{-3/2-\lambda}\)</span>. Removing these nonzero row factors for the purpose of the determinant, while retaining them in B and its inverse, gives the exact power lists</p>
+<span class="math math-display" data-tex="\[
+(0,-\lambda),\qquad(1/2,-1/2-\lambda,-3/2-\lambda).
+\tag{V4.3}
+\]">\[
+(0,-\lambda),\qquad(1/2,-1/2-\lambda,-3/2-\lambda).
+\tag{V4.3}
+\]</span>
+<p>The fixed positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> makes both lists distinct. G4's determinant-integral proof applies to the specified bumps, so B is invertible on the closed parameter interval. Its inverse and every fixed parameter derivative are bounded. Its constants may depend on <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, K and the original patch radii; no uniformity as <span class="math" data-tex="\(\lambda\downarrow0\)">\(\lambda\downarrow0\)</span> is asserted or needed.</p>
+<p>The exact quadratic remainder is</p>
+<span class="math math-display" data-tex="\[
+\mathscr Q(c,c)=\left(0,\int\sqrt{2X}ue,0,
+\int(u^2-e^2/2),\int e^2/(2X)\right).
+\tag{V4.4}
+\]">\[
+\mathscr Q(c,c)=\left(0,\int\sqrt{2X}ue,0,
+\int(u^2-e^2/2),\int e^2/(2X)\right).
+\tag{V4.4}
+\]</span>
+<p>Take target d to be minus the preexisting moment discrepancy in that same row order. With <span class="math" data-tex="\(\nu_m\)">\(\nu_m\)</span> the multiplication norm of B^{-1} and q_m the quadratic bilinear norm, including product-rule constants, the iteration</p>
+<span class="math math-display" data-tex="\[
+c_{n+1}=B^{-1}(d-\mathscr Q(c_n,c_n)),\quad c_0=0,
+\qquad 8\nu_m^2q_m\|d\|_{C^m_\eta}\le1
+\tag{V4.5}
+\]">\[
+c_{n+1}=B^{-1}(d-\mathscr Q(c_n,c_n)),\quad c_0=0,
+\qquad 8\nu_m^2q_m\|d\|_{C^m_\eta}\le1
+\tag{V4.5}
+\]</span>
+<p>is a contraction by G5.6–G5.8, provided also the same condition in C^0. Choose N so those finitely many inequalities hold. It yields smooth coefficients with the selected finite norm <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span>, solving the original five equations exactly. All further fixed parameter derivatives exist by the invertible finite-dimensional derivative. They are also <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span> as N grows: differentiation of the equation gives B times the highest derivative plus terms containing c or a lower derivative of c, while every derivative of d is <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span> by V3.8. The inverse derivative is uniformly bounded for the small C^0 branch; induction proves the assertion. This requires no simultaneous smallness threshold for every m.</p>
+<p>The fixed bumps bound the corrections and their first radial derivatives by a finite multiple of the selected coefficient norm. Partial moment increments obey the same bound, using V4.2 with the upper integration endpoint inside the patch. G3 therefore retains the <span class="math" data-tex="\(O(N^{-1})\)">\(O(N^{-1})\)</span> p_s bound throughout that patch. Comparing these three finite bounds with the positive input E and the four positive input gap minima on its closed rectangle gives a further finite lower bound for N that preserves positivity and the cone everywhere, including within each bump. This comparison uses actual partial integrals, not only their endpoint values.</p>
+<p>Let <span class="math" data-tex="\(X_{\rm rep}=R_+\)">\(X_{\rm rep}=R_+\)</span>. The bumps vanish on neighborhoods of both boundaries. At its right endpoint,</p>
+<span class="math math-display" data-tex="\[
+\widetilde{\mathbf m}(X_{\rm rep},\eta)=\mathbf m(X_{\rm rep},\eta),\qquad
+(\widetilde E,\widetilde U)=(E,U)\quad(X\ge X_{\rm rep}).
+\tag{V4.6}
+\]">\[
+\widetilde{\mathbf m}(X_{\rm rep},\eta)=\mathbf m(X_{\rm rep},\eta),\qquad
+(\widetilde E,\widetilde U)=(E,U)\quad(X\ge X_{\rm rep}).
+\tag{V4.6}
+\]</span>
+<p>The forward integrals propagate equality of all five moments, and the common <span class="math" data-tex="\(\Pi_0\)">\(\Pi_0\)</span> gives equality of the complete pressure. G3 proves equality of <span class="math" data-tex="\(V_0,Q_s,N_s,p_s\)">\(V_0,Q_s,N_s,p_s\)</span> and every parameter derivative there; field equality gives all radial derivatives and shears. This preserves the previously performed terminal compensation, heat exterior and outer endpoint. At the inner endpoint both modifications are supported later, and the same forward integration preserves the analytic rectangle and inner collar exactly. The two unused reserved patches are also unchanged. Fix one integer N satisfying the finite requirements before any physical q or later iteration stage is chosen. This proves Proposition C.2.</p>
+<h2 id="v5-nonzero-stress-and-the-direction-on-the-closed-annulus">V5. Nonzero stress and the direction on the closed annulus</h2>
+<p>Use E,U,Π now for the corrected fields. The leading stress vanishes on <span class="math" data-tex="\([0,X_a]\)">\([0,X_a]\)</span> by J and Q3, and on <span class="math" data-tex="\([X_b,\infty)\)">\([X_b,\infty)\)</span> by H4. These intervals are exactly preserved by V4.6 and the unchanged inner construction. In the open annulus admissibility gives <span class="math" data-tex="\(P_c&gt;v_s\)">\(P_c&gt;v_s\)</span>, so
+<span class="math" data-tex="\(\mathcal T_{0,\theta}+t_s\mathcal T_{0,z}=F(P_c-v_s)&gt;0\)">\(\mathcal T_{0,\theta}+t_s\mathcal T_{0,z}=F(P_c-v_s)&gt;0\)</span>.
+Thus the stress cannot vanish anywhere there.</p>
+<p>Define <span class="math" data-tex="\(n=\mathcal T_0/|\mathcal T_0|\)">\(n=\mathcal T_0/|\mathcal T_0|\)</span> in the interior. At the inner edge Q3 supplies the exact factor</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_0=e^{-t_1^2/y_a^2}g_a(y_a)B_0(y_a,\eta),\quad
+y_a=\log(X/X_a),\quad g_a(0)&gt;0,\quad B_0(0,\eta)=F(X_a,\eta)p_s(X_a,\eta)\ne0.
+\tag{V5.1}
+\]">\[
+\mathcal T_0=e^{-t_1^2/y_a^2}g_a(y_a)B_0(y_a,\eta),\quad
+y_a=\log(X/X_a),\quad g_a(0)&gt;0,\quad B_0(0,\eta)=F(X_a,\eta)p_s(X_a,\eta)\ne0.
+\tag{V5.1}
+\]</span>
+<p>Hence n extends smoothly there as <span class="math" data-tex="\(B_0/|B_0|\)">\(B_0/|B_0|\)</span>. At <span class="math" data-tex="\(X_a\)">\(X_a\)</span>, zero leading stress gives <span class="math" data-tex="\(p_s=(a,-b_s)=a(1,t_s)\)">\(p_s=(a,-b_s)=a(1,t_s)\)</span>. The limiting direction is a positive multiple of this vector. Consequently <span class="math" data-tex="\(n_z-t_sn_\theta=0\)">\(n_z-t_sn_\theta=0\)</span> and <span class="math" data-tex="\(n_\theta+t_sn_z=\sqrt{1+t_s^2}&gt;0\)">\(n_\theta+t_sn_z=\sqrt{1+t_s^2}&gt;0\)</span> there.</p>
+<p>At the outer edge the exact H6 factors give</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_0=e^{-4/y_b^2}y_b^{-3}(b_\theta(y_b,\eta),y_b^6b_z(y_b,\eta)),
+\quad y_b=\log(X_b/X),\quad b_\theta(0,\eta)&gt;0,
+\tag{V5.2}
+\]">\[
+\mathcal T_0=e^{-4/y_b^2}y_b^{-3}(b_\theta(y_b,\eta),y_b^6b_z(y_b,\eta)),
+\quad y_b=\log(X_b/X),\quad b_\theta(0,\eta)&gt;0,
+\tag{V5.2}
+\]</span>
+<p>and therefore</p>
+<span class="math math-display" data-tex="\[
+n=\frac{(b_\theta,y_b^6b_z)}{\sqrt{b_\theta^2+y_b^{12}b_z^2}}
+\longrightarrow(1,0).
+\tag{V5.3}
+\]">\[
+n=\frac{(b_\theta,y_b^6b_z)}{\sqrt{b_\theta^2+y_b^{12}b_z^2}}
+\longrightarrow(1,0).
+\tag{V5.3}
+\]</span>
+<p>This is smooth up to the closed edge, including <span class="math" data-tex="\(\eta=\pm1\)">\(\eta=\pm1\)</span>, and b_s=0 there because U=0 in the whole outer collar. F remains positive at both edges. At the inner edge a&gt;0 and <span class="math" data-tex="\(v_s-2&gt;.2\)">\(v_s-2&gt;.2\)</span> by J6; at the outer edge H5 gives <span class="math" data-tex="\(a=v_s\ge2+h\)">\(a=v_s\ge2+h\)</span>. Interior admissibility and compactness now give positive lower bounds for F,a,v_s−2 on the full closed annulus.</p>
+<p>In the interior, division by the actual nonzero stress gives</p>
+<span class="math math-display" data-tex="\[
+u_n:=n_\theta+t_sn_z=\frac{P_c-v_s}{|p_s-(a,-b_s)|}&gt;0,
+\qquad
+n_z-t_sn_\theta=\frac{J_c}{|p_s-(a,-b_s)|}.
+\tag{V5.4}
+\]">\[
+u_n:=n_\theta+t_sn_z=\frac{P_c-v_s}{|p_s-(a,-b_s)|}&gt;0,
+\qquad
+n_z-t_sn_\theta=\frac{J_c}{|p_s-(a,-b_s)|}.
+\tag{V5.4}
+\]</span>
+<p>The quantity
+<span class="math" data-tex="\(r_n=2-(v_s-2)(n_z-t_sn_\theta)^2/u_n^2\)">\(r_n=2-(v_s-2)(n_z-t_sn_\theta)^2/u_n^2\)</span>
+is positive by the cone test. Both u_n and r_n extend continuously to the edges by V5.1–V5.3, with positive u_n and r_n=2 there. Let their minima on the closed rectangle be u_<em>&gt;0 and r_</em>&gt;0. Choose</p>
+<span class="math math-display" data-tex="\[
+0&lt;\kappa=\tfrac12\min\{1,u_*,r_*\}&lt;2.
+\tag{V5.5}
+\]">\[
+0&lt;\kappa=\tfrac12\min\{1,u_*,r_*\}&lt;2.
+\tag{V5.5}
+\]</span>
+<p>Then everywhere on that rectangle</p>
+<span class="math math-display" data-tex="\[
+n_\theta+t_sn_z\ge\kappa,\qquad
+(v_s-2)(n_z-t_sn_\theta)^2
+\le(2-\kappa)(n_\theta+t_sn_z)^2.
+\tag{V5.6}
+\]">\[
+n_\theta+t_sn_z\ge\kappa,\qquad
+(v_s-2)(n_z-t_sn_\theta)^2
+\le(2-\kappa)(n_\theta+t_sn_z)^2.
+\tag{V5.6}
+\]</span>
+<p>This proves the precise directional margin of Theorem 4.6(iii), including both specified endpoint directions. A uniform raw stress-gap minimum at the zero-stress endpoints was not assumed.</p>
+<h2 id="v6-the-common-flat-weight-and-all-fixed-derivatives">V6. The common flat weight and all fixed derivatives</h2>
+<p>Use exactly the original weight and endpoint distances</p>
+<span class="math math-display" data-tex="\[
+\delta=\min\{1,y_a,y_b\},\qquad
+\zeta(X)=\exp[-t_1^2/y_a^2-4/y_b^2]\quad(X_a&lt;X&lt;X_b),
+\tag{V6.1}
+\]">\[
+\delta=\min\{1,y_a,y_b\},\qquad
+\zeta(X)=\exp[-t_1^2/y_a^2-4/y_b^2]\quad(X_a&lt;X&lt;X_b),
+\tag{V6.1}
+\]</span>
+<p>extended by zero outside the annulus. The two positive logarithmic distances have sum <span class="math" data-tex="\(\log(X_b/X_a)&gt;0\)">\(\log(X_b/X_a)&gt;0\)</span>. Near either endpoint the other distance is bounded below; its exponential is a smooth positive factor bounded above and below. Derivatives of the vanishing factor are its exponential times finite sums of inverse powers of the vanishing distance, because <span class="math" data-tex="\(y_{a,X}=1/X\)">\(y_{a,X}=1/X\)</span> and <span class="math" data-tex="\(y_{b,X}=-1/X\)">\(y_{b,X}=-1/X\)</span> have bounded derivatives on the fixed annulus. The exponential dominates each inverse power as its distance tends to zero. This proves smoothness and flatness of ζ at both edges.</p>
+<p>V5.1 with Q3 gives a positive constant times <span class="math" data-tex="\(e^{-t_1^2/y_a^2}\)">\(e^{-t_1^2/y_a^2}\)</span> as a stress lower bound near the inner edge and the same exponential times finite inverse powers as each derivative upper bound. V5.2 and H6 give <span class="math" data-tex="\(ce^{-4/y_b^2}y_b^{-3}\)">\(ce^{-4/y_b^2}y_b^{-3}\)</span> as the outer lower bound and its exponential times finite inverse powers for every derivative. On a collar with y_b≤1 the lower polynomial factor is at least one. Dividing each estimate by the bounded positive factor from the opposite endpoint proves the required comparison with ζ. On the remaining closed interior interval both ζ and |T_0| have positive minima; every fixed derivative is bounded because the frequency N has already been fixed. Taking the minimum of the three positive lower constants and, for each derivative, the maximum of the three upper constants yields</p>
+<span class="math math-display" data-tex="\[
+|\mathcal T_0|\ge c\zeta,\qquad
+|\partial_X^{\alpha_1}\partial_\eta^{\alpha_2}\mathcal T_0|
+\le C_\alpha\zeta\delta^{-m_\alpha}
+\quad(X_a&lt;X&lt;X_b,\ -1\le\eta\le1).
+\tag{V6.2}
+\]">\[
+|\mathcal T_0|\ge c\zeta,\qquad
+|\partial_X^{\alpha_1}\partial_\eta^{\alpha_2}\mathcal T_0|
+\le C_\alpha\zeta\delta^{-m_\alpha}
+\quad(X_a&lt;X&lt;X_b,\ -1\le\eta\le1).
+\tag{V6.2}
+\]</span>
+<p>The lower c is independent of α. Each m_α is a finite nonnegative integer; enlarge it if necessary to cover both endpoint powers. These estimates also prove smooth extension of the stress by zero. All constants depend on fixed profile choices and derivative orders, and none on physical q or later bands and correction stages.</p>
+<h2 id="v7-every-conclusion-of-the-leading-profile-theorem">V7. Every conclusion of the leading-profile theorem</h2>
+<p>The common analytic axis rectangle and smooth Cartesian axis follow from J4 and Q5; V3–V4 leave them unchanged. On every finite closed radial interval, the constructed fields and all fixed mixed derivatives are finite: the only rapid radial frequency is the one fixed finite N, the later corrections have fixed smooth compact supports, and the heat factor is smooth for its full nonnegative argument range by L6/H0. No analyticity of that heat factor at zero is assumed. Positivity of E on X&gt;0 implies positivity of <span class="math" data-tex="\(\phi=\mathsf C E/\sqrt{2X}\)">\(\phi=\mathsf C E/\sqrt{2X}\)</span>; at zero it follows from J. The quantities F,U,V_0/X and Π extend smoothly through the axis by Q5.1.</p>
+<p>The original pressure identity is preserved exactly. The input pressure was canonical, and both the joining and the shear correction restored C_p with the same axis datum. Therefore</p>
+<span class="math math-display" data-tex="\[
+\Pi_0=-\int_0^\infty\frac{E(x,\eta)^2}{2x}\,dx,\qquad
+\Pi(X,\eta)=\Pi_0+\int_0^X\frac{E(x,\eta)^2}{2x}\,dx
+=-\int_X^\infty\frac{E(x,\eta)^2}{2x}\,dx.
+\tag{V7.1}
+\]">\[
+\Pi_0=-\int_0^\infty\frac{E(x,\eta)^2}{2x}\,dx,\qquad
+\Pi(X,\eta)=\Pi_0+\int_0^X\frac{E(x,\eta)^2}{2x}\,dx
+=-\int_X^\infty\frac{E(x,\eta)^2}{2x}\,dx.
+\tag{V7.1}
+\]</span>
+<p>These integrals converge: near zero E=<span class="math" data-tex="\(\sqrt{2X}F\)">\(\sqrt{2X}F\)</span> with smooth F, and at infinity the unchanged heat exterior decays like <span class="math" data-tex="\(X^{-A}\)">\(X^{-A}\)</span>, with A&gt;0 and bounded heat factor. Differentiating gives <span class="math" data-tex="\(\Pi_X=E^2/(2X)=F^2\)">\(\Pi_X=E^2/(2X)=F^2\)</span>, including its smooth limit at zero. G1's exact tangential residual identities apply to these actual fields; the physical leading stress is <span class="math" data-tex="\(q^{-A-1/2}\mathcal T_0\)">\(q^{-A-1/2}\mathcal T_0\)</span>. The full momentum residual still includes the axial-viscosity and radial remainder terms of G1.5–G1.6: completing the leading profile does not solve the entire equation. On <span class="math" data-tex="\(0&lt;X\le X_a\)">\(0&lt;X\le X_a\)</span> the original equations (4.13) hold because that analytic solution is unchanged. This proves parts (i)–(ii); V5 proves (iii) and V6 proves (iv).</p>
+<p>For part (v), all original convergent total moments remain exactly</p>
+<span class="math math-display" data-tex="\[
+M(\infty,\eta)=J(\infty,\eta)=S(\infty,\eta)=0,\qquad
+\int_0^\infty(H-H_{\rm pow})\,dX=0,
+\quad H_{\rm pow}=\sqrt{2X}\,c_\infty X^{-A}.
+\tag{V7.2}
+\]">\[
+M(\infty,\eta)=J(\infty,\eta)=S(\infty,\eta)=0,\qquad
+\int_0^\infty(H-H_{\rm pow})\,dX=0,
+\quad H_{\rm pow}=\sqrt{2X}\,c_\infty X^{-A}.
+\tag{V7.2}
+\]</span>
+<p>They were established in O/H, transferred through the exact Q join, and preserved by V4.6. In particular the convergence of the subtracted angular moment and its exact value are retained, not replaced by an un-subtracted divergent integral. The original heat exterior is</p>
+<span class="math math-display" data-tex="\[
+U=V_0=0,\qquad E=c_\infty X^{-A}\mathcal H(2d/X),\qquad
+\mathcal H(Z)=\frac1{\Gamma(1+h)}\int_0^\infty e^{-v}v^h(1+Zv)^{-h}dv
+\quad(X\ge X_b).
+\tag{V7.3}
+\]">\[
+U=V_0=0,\qquad E=c_\infty X^{-A}\mathcal H(2d/X),\qquad
+\mathcal H(Z)=\frac1{\Gamma(1+h)}\int_0^\infty e^{-v}v^h(1+Zv)^{-h}dv
+\quad(X\ge X_b).
+\tag{V7.3}
+\]</span>
+<p>L6/H0 supply its positive smooth heat solution, including Z=0. In original physical coordinates s=r²/2, its swirl is exactly <span class="math" data-tex="\(c_\infty s^{-A}\mathcal H(2\tau/s)\)">\(c_\infty s^{-A}\mathcal H(2\tau/s)\)</span>; the argument equals <span class="math" data-tex="\(4\tau/r^2\)">\(4\tau/r^2\)</span>. For the earlier radius <span class="math" data-tex="\(X_v=X_{\rm end}\)">\(X_v=X_{\rm end}\)</span> at the end of the pulse, the input has U=M=0 by O1 and O0.6. The correction patch lies before that radius and restores M exactly, so these equalities hold for all X≥X_v. G0's radial-average formula gives V_0=0 there, proving the whole outer-collar assertion.</p>
+<p>For part (vi), retain exactly the third and fourth intervals of O0.4, in their original radii, as <span class="math" data-tex="\(\mathcal I_{\rm pos},\mathcal I_{\rm mean}\)">\(\mathcal I_{\rm pos},\mathcal I_{\rm mean}\)</span>. They are ordered, disjoint, lie in <span class="math" data-tex="\((X_a,X_v)\)">\((X_a,X_v)\)</span>, and were untouched by the Q join, the heat compensation on the second patch, and the V4 correction on the first. They therefore retain</p>
+<span class="math math-display" data-tex="\[
+U=0,\qquad E=c_{\rm patch}(1+\eta^2)^{-1}X^{-1/2-\lambda},\qquad
+\sup\mathcal I_{\rm pos}&lt;\inf\mathcal I_{\rm mean}.
+\tag{V7.4}
+\]">\[
+U=0,\qquad E=c_{\rm patch}(1+\eta^2)^{-1}X^{-1/2-\lambda},\qquad
+\sup\mathcal I_{\rm pos}&lt;\inf\mathcal I_{\rm mean}.
+\tag{V7.4}
+\]</span>
+<p>The positive c_patch is independent of X and η, as required. These are the actual intervals receiving the later corrections, not newly chosen substitutes.</p>
+<p>Finally, for each original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the exact H7 map retains <span class="math" data-tex="\(u_\nu(x_\nu,t)=\sqrt\nu u(x_\nu/\sqrt\nu,t)\)">\(u_\nu(x_\nu,t)=\sqrt\nu u(x_\nu/\sqrt\nu,t)\)</span>, <span class="math" data-tex="\(p_\nu=\nu p\)">\(p_\nu=\nu p\)</span> and <span class="math" data-tex="\(T_\nu=\nu T\)">\(T_\nu=\nu T\)</span> at that same mapped point. Its coordinates satisfy</p>
+<span class="math math-display" data-tex="\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\qquad
+X_\nu=r_\nu^2/(2\nu q_\nu),\qquad
+\eta_\nu=z_\nu/(\sqrt\nu q_\nu^D).
+\tag{V7.5}
+\]">\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\qquad
+X_\nu=r_\nu^2/(2\nu q_\nu),\qquad
+\eta_\nu=z_\nu/(\sqrt\nu q_\nu^D).
+\tag{V7.5}
+\]</span>
+<p>All original viscosity factors remain in the physical equations; the spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>, so divergence of the physical stress has the same <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span> factor as the other momentum terms. The positive scalar stress factor preserves its direction. This is the proved comparison with the source's displayed coefficient-one construction, not a change of the target viscosity.</p>
+<p>V0–V7 derive Lemma C.1 and Propositions C.2–C.3 and, with the supplied G/O/H/J/Q constructions, all six parts of Theorem 4.6. The proof uses no numerical sampling or infinite-frequency limiting field: one finite frequency is selected after the profile data. The positive-order base and Proposition 5.5 are proved separately in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>. <a href="higher-axis-coefficients-audit.html">D0–D6</a> use this actual profile to construct the first positive-order correction on the axis interval and prove the full six-component solution operator on that fixed interval. <a href="positive-order-extension-audit.html">Y0–Y7</a> construct the global moment extension and full coefficient sequence. Their actual base-field summation and both stress entries are derived in <a href="base-field-realization-audit.html">Z0–Z8</a>.</p>
+<h2 id="v8-exact-loop-and-sharper-finite-frequency-consequences">V8. Exact loop and sharper finite-frequency consequences</h2>
+<h3 id="zero-axial-stress-and-the-full-circle-map">Zero axial stress and the full circle map</h3>
+<p>Retain <span class="math" data-tex="\(a&gt;0,t_s,v_s=a(1+t_s^2)\)">\(a&gt;0,t_s,v_s=a(1+t_s^2)\)</span>, the actual cutoff value <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and <span class="math" data-tex="\(v=v_s+\rho\)">\(v=v_s+\rho\)</span> from V2. The removable value in V1 gives</p>
+<span class="math math-display" data-tex="\[
+\mu=\frac{\sqrt{2\rho/a}}{d_0},\qquad
+w=d_0\mu=\sqrt{2\rho/a},\qquad
+t(\theta&#x27;)=t_s+w\sin\theta&#x27;.
+\tag{V8.1}
+\]">\[
+\mu=\frac{\sqrt{2\rho/a}}{d_0},\qquad
+w=d_0\mu=\sqrt{2\rho/a},\qquad
+t(\theta&#x27;)=t_s+w\sin\theta&#x27;.
+\tag{V8.1}
+\]</span>
+<p>The square root is smooth as a function of the profile coordinates by the specific squared cutoff in V2.1. Thus these formulas include <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>. Integrating <span class="math" data-tex="\(1+t^2\)">\(1+t^2\)</span> exactly gives</p>
+<span class="math math-display" data-tex="\[
+\varphi(\theta&#x27;)=\frac{\theta&#x27;}{2\pi}
++\frac{a}{2\pi v}
+\left[2t_sw(1-\cos\theta&#x27;)-\frac{w^2}{4}\sin(2\theta&#x27;)\right].
+\tag{V8.2}
+\]">\[
+\varphi(\theta&#x27;)=\frac{\theta&#x27;}{2\pi}
++\frac{a}{2\pi v}
+\left[2t_sw(1-\cos\theta&#x27;)-\frac{w^2}{4}\sin(2\theta&#x27;)\right].
+\tag{V8.2}
+\]</span>
+<p>The coefficient of <span class="math" data-tex="\(\theta&#x27;\)">\(\theta&#x27;\)</span> is exactly <span class="math" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span>, since
+<span class="math" data-tex="\(a(1+t_s^2+w^2/2)=v_s+\rho=v\)">\(a(1+t_s^2+w^2/2)=v_s+\rho=v\)</span>. In particular,
+<span class="math" data-tex="\(\varphi(0)=0\)">\(\varphi(0)=0\)</span> and <span class="math" data-tex="\(\varphi(\theta&#x27;+2\pi)=\varphi(\theta&#x27;)+1\)">\(\varphi(\theta&#x27;+2\pi)=\varphi(\theta&#x27;)+1\)</span>.
+Differentiating retains the positive Jacobian</p>
+<span class="math math-display" data-tex="\[
+\frac{d\varphi}{d\theta&#x27;}=\frac{a[1+(t_s+w\sin\theta&#x27;)^2]}{2\pi v}&gt;0,\qquad
+\frac{d\theta&#x27;}{d\varphi}=
+\frac{2\pi v}{a[1+(t_s+w\sin\theta&#x27;)^2]}.
+\tag{V8.3}
+\]">\[
+\frac{d\varphi}{d\theta&#x27;}=\frac{a[1+(t_s+w\sin\theta&#x27;)^2]}{2\pi v}&gt;0,\qquad
+\frac{d\theta&#x27;}{d\varphi}=
+\frac{2\pi v}{a[1+(t_s+w\sin\theta&#x27;)^2]}.
+\tag{V8.3}
+\]</span>
+<p>On the fixed compact family both derivatives have finite positive bounds. The lift is strictly increasing and has the stated degree one, so it is a bijection of the circles. The local inverse derivative in V8.3 and its parameter derivatives give its smooth inverse globally by uniqueness.</p>
+<p>With <span class="math" data-tex="\(\theta&#x27;=\theta&#x27;(\varphi)\)">\(\theta&#x27;=\theta&#x27;(\varphi)\)</span>, the loop is exactly</p>
+<span class="math math-display" data-tex="\[
+(a_L,-b_L)=
+\frac{v}{1+(t_s+w\sin\theta&#x27;)^2}(1,t_s+w\sin\theta&#x27;).
+\tag{V8.4}
+\]">\[
+(a_L,-b_L)=
+\frac{v}{1+(t_s+w\sin\theta&#x27;)^2}(1,t_s+w\sin\theta&#x27;).
+\tag{V8.4}
+\]</span>
+<p>Multiplying by the full Jacobian gives the first component average <span class="math" data-tex="\(a\)">\(a\)</span>, and the second <span class="math" data-tex="\(a t_s=-b_s\)">\(a t_s=-b_s\)</span>, since the integral of <span class="math" data-tex="\(\sin\theta&#x27;\)">\(\sin\theta&#x27;\)</span> is zero. If <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>, the lift is <span class="math" data-tex="\(\theta&#x27;/(2\pi)\)">\(\theta&#x27;/(2\pi)\)</span> and the loop is the original shear. All factors <span class="math" data-tex="\(a,v,d_0\)">\(a,v,d_0\)</span> remain identified. The parameter <span class="math" data-tex="\(d_0\)">\(d_0\)</span> cancels from the zero-axial-stress loop itself, while it still determines <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and the common compact family used in V1.</p>
+<h3 id="all-five-original-moment-asymptotics">All five original moment asymptotics</h3>
+<p>All profiles and the loop are now fixed; only the positive integer <span class="math" data-tex="\(N\)">\(N\)</span> varies. Constants below may depend on these fixed objects and on the specified derivative orders. For a smooth period-one function <span class="math" data-tex="\(f(X,\eta,\varphi)\)">\(f(X,\eta,\varphi)\)</span> with zero periodic mean and compact radial support inside <span class="math" data-tex="\((X_-,X_+)\)">\((X_-,X_+)\)</span>, write <span class="math" data-tex="\(f_N(X,\eta)=f(X,\eta,N\log X)\)">\(f_N(X,\eta)=f(X,\eta,N\log X)\)</span>. Let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be V3.1, and let <span class="math" data-tex="\(\mathcal D_X=X\partial_X\)">\(\mathcal D_X=X\partial_X\)</span> hold the independent phase fixed. Direct differentiation gives the exact formula</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\int_{X_-}^{x} f_N(X,\eta)\,dX
+&amp;=\frac{x}{N}(\mathcal P f)(x,\eta,N\log x)\\
+&amp;\quad-\frac1N\int_{X_-}^{x}
+\big[(1+\mathcal D_X)\mathcal P f\big](X,\eta,N\log X)\,dX .
+\end{split}
+\tag{V8.5}
+\]">\[
+\begin{split}
+\int_{X_-}^{x} f_N(X,\eta)\,dX
+&amp;=\frac{x}{N}(\mathcal P f)(x,\eta,N\log x)\\
+&amp;\quad-\frac1N\int_{X_-}^{x}
+\big[(1+\mathcal D_X)\mathcal P f\big](X,\eta,N\log X)\,dX .
+\end{split}
+\tag{V8.5}
+\]</span>
+<p>The lower boundary term is zero because <span class="math" data-tex="\(f\)">\(f\)</span>, and therefore its periodic primitive, vanishes on a radial neighborhood of <span class="math" data-tex="\(X_-\)">\(X_-\)</span>. The formula is also valid at either endpoint by continuity. It proves a uniform <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span> bound for partial integrals in every fixed <span class="math" data-tex="\(C^m_\eta\)">\(C^m_\eta\)</span> norm.</p>
+<p>At <span class="math" data-tex="\(x=X_+\)">\(x=X_+\)</span> the upper boundary term vanishes too. The operator
+<span class="math" data-tex="\(\mathcal K=(1+\mathcal D_X)\mathcal P\)">\(\mathcal K=(1+\mathcal D_X)\mathcal P\)</span> preserves zero periodic mean and compact radial support: differentiation and the bounded phase integrals commute. Repeated use of V8.5 therefore gives, for every integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{X_-}^{X_+} f_N\,dX
+=\frac{(-1)^k}{N^k}
+\int_{X_-}^{X_+}(\mathcal K^k f)(X,\eta,N\log X)\,dX,\qquad
+\left\|\int_{X_-}^{X_+}f_N\,dX\right\|_{C^m_\eta}
+\le \frac{C_{k,m}}{N^k}.
+\tag{V8.6}
+\]">\[
+\int_{X_-}^{X_+} f_N\,dX
+=\frac{(-1)^k}{N^k}
+\int_{X_-}^{X_+}(\mathcal K^k f)(X,\eta,N\log X)\,dX,\qquad
+\left\|\int_{X_-}^{X_+}f_N\,dX\right\|_{C^m_\eta}
+\le \frac{C_{k,m}}{N^k}.
+\tag{V8.6}
+\]</span>
+<p>Every integrand on the right is a fixed smooth function on a compact set, so its integral and each of its finitely many parameter derivatives are bounded. This proves the estimate directly, with no cancellation assumption at a sampled phase.</p>
+<p>Put <span class="math" data-tex="\(A_N=\mathcal A(X,\eta,N\log X)\)">\(A_N=\mathcal A(X,\eta,N\log X)\)</span>, <span class="math" data-tex="\(B_N=\mathcal B(X,\eta,N\log X)\)">\(B_N=\mathcal B(X,\eta,N\log X)\)</span>. The original increments are <span class="math" data-tex="\(u=B_N/N\)">\(u=B_N/N\)</span> and <span class="math" data-tex="\(e=E(e^{A_N/N}-1)\)">\(e=E(e^{A_N/N}-1)\)</span>. Taylor's integral identity</p>
+<span class="math math-display" data-tex="\[
+e^z=1+z+\frac{z^2}{2}
++\frac{z^3}{2}\int_0^1(1-s)^2e^{sz}\,ds
+\tag{V8.7}
+\]">\[
+e^z=1+z+\frac{z^2}{2}
++\frac{z^3}{2}\int_0^1(1-s)^2e^{sz}\,ds
+\tag{V8.7}
+\]</span>
+<p>holds for every real <span class="math" data-tex="\(z\)">\(z\)</span>. Boundedness of <span class="math" data-tex="\(\mathcal A,\mathcal B\)">\(\mathcal A,\mathcal B\)</span> and their fixed parameter derivatives makes the remainders below <span class="math" data-tex="\(O_m(N^{-3})\)">\(O_m(N^{-3})\)</span>, uniformly in <span class="math" data-tex="\(X\)">\(X\)</span>. Substituting into all five original moment integrands yields</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+\text{moment}&amp;N^{-1}\text{ coefficient}&amp;N^{-2}\text{ coefficient}\\ \hline
+M&amp;B_N&amp;0\\
+I&amp;H A_N&amp; H A_N^2/2\\
+J&amp;H(UA_N+B_N)&amp;H(UA_N^2/2+A_NB_N)\\
+S&amp;2UB_N-E^2 A_N&amp;B_N^2-E^2 A_N^2\\
+C_p&amp;E^2 A_N/X&amp;E^2 A_N^2/X
+\end{array}
+\tag{V8.8}
+\]">\[
+\begin{array}{c|c|c}
+\text{moment}&amp;N^{-1}\text{ coefficient}&amp;N^{-2}\text{ coefficient}\\ \hline
+M&amp;B_N&amp;0\\
+I&amp;H A_N&amp; H A_N^2/2\\
+J&amp;H(UA_N+B_N)&amp;H(UA_N^2/2+A_NB_N)\\
+S&amp;2UB_N-E^2 A_N&amp;B_N^2-E^2 A_N^2\\
+C_p&amp;E^2 A_N/X&amp;E^2 A_N^2/X
+\end{array}
+\tag{V8.8}
+\]</span>
+<p>Here <span class="math" data-tex="\(H=\sqrt{2X}E\)">\(H=\sqrt{2X}E\)</span>, and every coefficient is integrated with the original <span class="math" data-tex="\(dX\)">\(dX\)</span>. For the last two rows one can check the factors directly from</p>
+<span class="math math-display" data-tex="\[
+\Delta S&#x27;=2Uu+u^2-\frac{E^2}{2}(e^{2A_N/N}-1),\qquad
+\Delta C_p&#x27;=\frac{E^2}{2X}(e^{2A_N/N}-1).
+\tag{V8.9}
+\]">\[
+\Delta S&#x27;=2Uu+u^2-\frac{E^2}{2}(e^{2A_N/N}-1),\qquad
+\Delta C_p&#x27;=\frac{E^2}{2X}(e^{2A_N/N}-1).
+\tag{V8.9}
+\]</span>
+<p>Primes in this display mean derivatives in <span class="math" data-tex="\(X\)">\(X\)</span>. Both first-order rows in V8.8 have zero periodic mean, as do all the other first-order rows. Formula V8.5 bounds their partial integrals by <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span>, and the extra prefactor gives <span class="math" data-tex="\(O_m(N^{-2})\)">\(O_m(N^{-2})\)</span>. The quadratic terms and their partial integrals are already <span class="math" data-tex="\(O_m(N^{-2})\)">\(O_m(N^{-2})\)</span>. Thus the actual stronger partial-moment and pressure estimates are</p>
+<span class="math math-display" data-tex="\[
+\sup_{x\in[X_-,X_+]}
+\|\mathbf m_N(x,\cdot)-\mathbf m(x,\cdot)\|_{C^m_\eta}
++\sup_{x\in[X_-,X_+]}
+\|\Pi_N(x,\cdot)-\Pi(x,\cdot)\|_{C^m_\eta}
+\le C_mN^{-2}.
+\tag{V8.10}
+\]">\[
+\sup_{x\in[X_-,X_+]}
+\|\mathbf m_N(x,\cdot)-\mathbf m(x,\cdot)\|_{C^m_\eta}
++\sup_{x\in[X_-,X_+]}
+\|\Pi_N(x,\cdot)-\Pi(x,\cdot)\|_{C^m_\eta}
+\le C_mN^{-2}.
+\tag{V8.10}
+\]</span>
+<p>At the upper endpoint use V8.6 with <span class="math" data-tex="\(k=2\)">\(k=2\)</span> on the first-order coefficients. On each second-order coefficient subtract its periodic mean; V8.6 with <span class="math" data-tex="\(k=1\)">\(k=1\)</span> bounds the remaining integral. Consequently</p>
+<span class="math math-display" data-tex="\[
+\mathbf m_N(X_+,\eta)-\mathbf m(X_+,\eta)
+=N^{-2}\mathbf D(\eta)+O_{C^m_\eta}(N^{-3}),
+\tag{V8.11}
+\]">\[
+\mathbf m_N(X_+,\eta)-\mathbf m(X_+,\eta)
+=N^{-2}\mathbf D(\eta)+O_{C^m_\eta}(N^{-3}),
+\tag{V8.11}
+\]</span>
+<p>where the entire original coefficient vector is</p>
+<span class="math math-display" data-tex="\[
+\mathbf D=\int_{X_-}^{X_+}
+\begin{pmatrix}
+0\\
+H\langle\mathcal A^2\rangle_\varphi/2\\
+H\big(U\langle\mathcal A^2\rangle_\varphi/2+
+\langle\mathcal A\mathcal B\rangle_\varphi\big)\\
+\langle\mathcal B^2\rangle_\varphi-E^2\langle\mathcal A^2\rangle_\varphi\\
+(E^2/X)\langle\mathcal A^2\rangle_\varphi
+\end{pmatrix}\,dX .
+\tag{V8.12}
+\]">\[
+\mathbf D=\int_{X_-}^{X_+}
+\begin{pmatrix}
+0\\
+H\langle\mathcal A^2\rangle_\varphi/2\\
+H\big(U\langle\mathcal A^2\rangle_\varphi/2+
+\langle\mathcal A\mathcal B\rangle_\varphi\big)\\
+\langle\mathcal B^2\rangle_\varphi-E^2\langle\mathcal A^2\rangle_\varphi\\
+(E^2/X)\langle\mathcal A^2\rangle_\varphi
+\end{pmatrix}\,dX .
+\tag{V8.12}
+\]</span>
+<p>The original <span class="math" data-tex="\(M\)">\(M\)</span> discrepancy is even smaller: it is <span class="math" data-tex="\(N^{-1}\int B_N\,dX\)">\(N^{-1}\int B_N\,dX\)</span>, so V8.6 bounds it by every prescribed inverse power of <span class="math" data-tex="\(N\)">\(N\)</span>. This statement concerns its endpoint value; the partial integral can have a nonzero <span class="math" data-tex="\(N^{-2}\)">\(N^{-2}\)</span> boundary term in V8.5.</p>
+<p>For each fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(D_{C_p}\ge0\)">\(D_{C_p}\ge0\)</span>, with equality exactly when <span class="math" data-tex="\(\mathcal A(X,\eta,\varphi)=0\)">\(\mathcal A(X,\eta,\varphi)=0\)</span> for every <span class="math" data-tex="\(X,\varphi\)">\(X,\varphi\)</span>. Indeed <span class="math" data-tex="\(E^2/X&gt;0\)">\(E^2/X&gt;0\)</span>; a continuous square with zero weighted integral must vanish everywhere. If <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> at some radial point for that <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, the variance gives a nonconstant continuous <span class="math" data-tex="\(t\)">\(t\)</span> there. The function <span class="math" data-tex="\(v/(1+t^2)\)">\(v/(1+t^2)\)</span> cannot then be constant, since a nonconstant continuous real function cannot have constant square. Thus <span class="math" data-tex="\(a_L-a\)">\(a_L-a\)</span> is not identically zero in phase, <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is not identically zero, and by continuity <span class="math" data-tex="\(D_{C_p}&gt;0\)">\(D_{C_p}&gt;0\)</span>. For that fixed parameter the uncorrected endpoint pressure difference is positive for all sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>, by V8.11. V4 cancels it exactly afterward.</p>
+<p>The bound for <span class="math" data-tex="\(p_{s,N}-p_s\)">\(p_{s,N}-p_s\)</span> on the modulation interval remains <span class="math" data-tex="\(O_m(N^{-1})\)">\(O_m(N^{-1})\)</span>: its original formulas also contain the field values <span class="math" data-tex="\(E_N,U_N\)">\(E_N,U_N\)</span>, whose changes have that order. Between <span class="math" data-tex="\(X_+\)">\(X_+\)</span> and the correction patch those fields agree exactly with the input, so the improved moment estimate through order <span class="math" data-tex="\(m+1\)">\(m+1\)</span> gives <span class="math" data-tex="\(O_m(N^{-2})\)">\(O_m(N^{-2})\)</span> for <span class="math" data-tex="\(p_{s,N}-p_s\)">\(p_{s,N}-p_s\)</span> there. No small radial-derivative bound has been asserted.</p>
+<h3 id="the-actual-correction-coefficient">The actual correction coefficient</h3>
+<p>Let <span class="math" data-tex="\(\mathscr R\)">\(\mathscr R\)</span> denote the exact permutation</p>
+<span class="math math-display" data-tex="\[
+\mathscr R(x_M,x_I,x_J,x_S,x_{C_p})^T
+=(x_M,x_J,x_I,x_S,x_{C_p})^T.
+\tag{V8.13}
+\]">\[
+\mathscr R(x_M,x_I,x_J,x_S,x_{C_p})^T
+=(x_M,x_J,x_I,x_S,x_{C_p})^T.
+\tag{V8.13}
+\]</span>
+<p>No moment changes between the end of modulation and the first patch, so V8.11 makes the actual correction target</p>
+<span class="math math-display" data-tex="\[
+d_N=-N^{-2}\mathscr R\mathbf D+O_{C^m_\eta}(N^{-3}).
+\tag{V8.14}
+\]">\[
+d_N=-N^{-2}\mathscr R\mathbf D+O_{C^m_\eta}(N^{-3}).
+\tag{V8.14}
+\]</span>
+<p>The fixed original matrix <span class="math" data-tex="\(B\)">\(B\)</span> in V4.2–V4.3 includes its factors <span class="math" data-tex="\(\sqrt2,K(\eta)\)">\(\sqrt2,K(\eta)\)</span> and both patch radii. The actual equation is</p>
+<span class="math math-display" data-tex="\[
+Bc_N+\mathscr Q(c_N,c_N)=d_N.
+\tag{V8.15}
+\]">\[
+Bc_N+\mathscr Q(c_N,c_N)=d_N.
+\tag{V8.15}
+\]</span>
+<p>Choose <span class="math" data-tex="\(N\)">\(N\)</span> above the finite smallness thresholds for <span class="math" data-tex="\(C^0\)">\(C^0\)</span> and the required <span class="math" data-tex="\(C^m\)">\(C^m\)</span> norm in V4.5. The same contraction then gives
+<span class="math" data-tex="\(\|c_N\|_{C^m_\eta}\le2\nu_m\|d_N\|_{C^m_\eta}=O_m(N^{-2})\)">\(\|c_N\|_{C^m_\eta}\le2\nu_m\|d_N\|_{C^m_\eta}=O_m(N^{-2})\)</span>.
+For any further fixed derivative order, differentiating V8.15 gives the invertible linear operator <span class="math" data-tex="\(B+2\mathscr Q(c_N,\cdot)\)">\(B+2\mathscr Q(c_N,\cdot)\)</span> on its highest derivative. Its inverse stays bounded on the small <span class="math" data-tex="\(C^0\)">\(C^0\)</span> branch; all lower derivative terms contain a derivative of <span class="math" data-tex="\(c_N\)">\(c_N\)</span> or of <span class="math" data-tex="\(d_N\)">\(d_N\)</span>. Induction gives <span class="math" data-tex="\(O_m(N^{-2})\)">\(O_m(N^{-2})\)</span> for every fixed <span class="math" data-tex="\(m\)">\(m\)</span>, with constants and sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span> allowed to depend on <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Substitute the established bound into the exact quadratic term:
+<span class="math" data-tex="\(\mathscr Q(c_N,c_N)=O_{C^m_\eta}(N^{-4})\)">\(\mathscr Q(c_N,c_N)=O_{C^m_\eta}(N^{-4})\)</span>. Multiplication by the original <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span> in V8.15 gives</p>
+<span class="math math-display" data-tex="\[
+c_N=-N^{-2}B^{-1}\mathscr R\mathbf D+
+O_{C^m_\eta}(N^{-3}).
+\tag{V8.16}
+\]">\[
+c_N=-N^{-2}B^{-1}\mathscr R\mathbf D+
+O_{C^m_\eta}(N^{-3}).
+\tag{V8.16}
+\]</span>
+<p>All five bump coefficients occur here in their original units. The distinct powers in V4.3 and their actual factors remain in the matrix; no bound uniform as <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> tends to zero is used.</p>
+<p>For the specified disjoint supports, define</p>
+<span class="math math-display" data-tex="\[
+A_i=\int\beta_i^2\,dX\quad(i=1,2),\qquad
+B_j=\int\beta_{j+2}^2\,dX,\qquad
+D_j=\int\frac{\beta_{j+2}^2}{X}\,dX\quad(j=1,2,3).
+\tag{V8.17}
+\]">\[
+A_i=\int\beta_i^2\,dX\quad(i=1,2),\qquad
+B_j=\int\beta_{j+2}^2\,dX,\qquad
+D_j=\int\frac{\beta_{j+2}^2}{X}\,dX\quad(j=1,2,3).
+\tag{V8.17}
+\]</span>
+<p>All these integrals are finite and positive. With <span class="math" data-tex="\(c_N=(a_1,a_2,b_1,b_2,b_3)^T\)">\(c_N=(a_1,a_2,b_1,b_2,b_3)^T\)</span>, the retained quadratic vector is exactly</p>
+<span class="math math-display" data-tex="\[
+\mathscr Q(c_N,c_N)=
+\begin{pmatrix}
+0\\
+0\\
+0\\
+\sum_{i=1}^2 A_i a_i^2-\frac12\sum_{j=1}^3 B_j b_j^2\\
+\frac12\sum_{j=1}^3 D_j b_j^2
+\end{pmatrix}.
+\tag{V8.18}
+\]">\[
+\mathscr Q(c_N,c_N)=
+\begin{pmatrix}
+0\\
+0\\
+0\\
+\sum_{i=1}^2 A_i a_i^2-\frac12\sum_{j=1}^3 B_j b_j^2\\
+\frac12\sum_{j=1}^3 D_j b_j^2
+\end{pmatrix}.
+\tag{V8.18}
+\]</span>
+<p>The second component vanishes because <span class="math" data-tex="\(ue=0\)">\(ue=0\)</span> pointwise; the square terms have the displayed signs from V4.2. This is the exact nonlinear map used in V8.15, not a linearized replacement.</p>
+<p>Since the bumps are fixed, the field correction and every fixed radial and parameter derivative are <span class="math" data-tex="\(O_m(N^{-2})\)">\(O_m(N^{-2})\)</span>, with the derivative order included in the constant. Its partial moment increments have the same order by V4.2. Thus the cone estimates on the correction patch can use <span class="math" data-tex="\(N^{-2}\)">\(N^{-2}\)</span> in place of the sufficient <span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span> bound. The modulation interval still requires the <span class="math" data-tex="\(N^{-1}\)">\(N^{-1}\)</span> field and shear comparisons. After the patch all five moments, the pressure and the entire exterior agree exactly, for the fixed selected <span class="math" data-tex="\(N\)">\(N\)</span>, as proved in V4.6.</p>
+<h3 id="endpoint-derivative-powers-and-the-square-root-amplitude">Endpoint derivative powers and the square-root amplitude</h3>
+<p>Put <span class="math" data-tex="\(r=\alpha_1,m=\alpha_2\)">\(r=\alpha_1,m=\alpha_2\)</span>. On the inner collar the stress is
+<span class="math" data-tex="\(e^{-t_1^2/y_a^2}g_aB_0\)">\(e^{-t_1^2/y_a^2}g_aB_0\)</span>, with <span class="math" data-tex="\(g_aB_0\)">\(g_aB_0\)</span> smooth and nonzero at the edge. On the outer collar it is
+<span class="math" data-tex="\(e^{-4/y_b^2}y_b^{-3}(b_\theta,y_b^6b_z)\)">\(e^{-4/y_b^2}y_b^{-3}(b_\theta,y_b^6b_z)\)</span>, with the vector in parentheses smooth and nonzero at the edge. Shrink the fixed collars so these nonvanishing properties hold throughout them.</p>
+<p>Each <span class="math" data-tex="\(y\)">\(y\)</span>-derivative of <span class="math" data-tex="\(e^{-c/y^2}\)">\(e^{-c/y^2}\)</span> contributes a polynomial in <span class="math" data-tex="\(y^{-1}\)">\(y^{-1}\)</span> whose greatest power increases by at most three: the exponential derivative is <span class="math" data-tex="\(2cy^{-3}e^{-c/y^2}\)">\(2cy^{-3}e^{-c/y^2}\)</span>, while differentiating a previous inverse power increases its degree by one. Induction therefore bounds its <span class="math" data-tex="\(j\)">\(j\)</span>-th derivative by <span class="math" data-tex="\(C_j e^{-c/y^2}y^{-3j}\)">\(C_j e^{-c/y^2}y^{-3j}\)</span> for <span class="math" data-tex="\(0&lt;y\le1\)">\(0&lt;y\le1\)</span>. The derivatives of <span class="math" data-tex="\(y_a,y_b\)">\(y_a,y_b\)</span> with respect to <span class="math" data-tex="\(X\)">\(X\)</span> are bounded on the fixed positive annulus. The full product and chain rules, retaining the outer factor <span class="math" data-tex="\(y_b^{-3}\)">\(y_b^{-3}\)</span>, give</p>
+<span class="math math-display" data-tex="\[
+\left|\partial_X^r\partial_\eta^m\mathcal T_0\right|
+\le C_{r,m}\zeta\,\delta^{-(3r+3)}.
+\tag{V8.19}
+\]">\[
+\left|\partial_X^r\partial_\eta^m\mathcal T_0\right|
+\le C_{r,m}\zeta\,\delta^{-(3r+3)}.
+\tag{V8.19}
+\]</span>
+<p>Parameter derivatives fall only on smooth coefficient functions; the endpoint distances and their exponentials are independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The opposite endpoint exponential is bounded above and below on each chosen collar. On the remaining compact interval the same estimate follows by increasing <span class="math" data-tex="\(C_{r,m}\)">\(C_{r,m}\)</span>, since <span class="math" data-tex="\(\zeta,\delta&gt;0\)">\(\zeta,\delta&gt;0\)</span>. Thus <span class="math" data-tex="\(m_\alpha=3\alpha_1+3\)">\(m_\alpha=3\alpha_1+3\)</span> is an explicit admissible integer, independent of <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span>.</p>
+<p>For completeness the original weight has the exact logarithmic derivative</p>
+<span class="math math-display" data-tex="\[
+\frac{\zeta_X}{\zeta}
+=\frac1X\left(\frac{2t_1^2}{y_a^3}-\frac8{y_b^3}\right).
+\tag{V8.20}
+\]">\[
+\frac{\zeta_X}{\zeta}
+=\frac1X\left(\frac{2t_1^2}{y_a^3}-\frac8{y_b^3}\right).
+\tag{V8.20}
+\]</span>
+<p>The second sign comes from <span class="math" data-tex="\(y_{b,X}=-1/X\)">\(y_{b,X}=-1/X\)</span>. This identity also directly verifies the power three at each differentiated endpoint.</p>
+<p>Define <span class="math" data-tex="\(\gamma=|\mathcal T_0|^{1/2}\)">\(\gamma=|\mathcal T_0|^{1/2}\)</span> inside the annulus. Its exact collar formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\gamma&amp;=e^{-t_1^2/(2y_a^2)}\,g_a^{1/2}|B_0|^{1/2}
+&amp;&amp;\text{on the inner collar},\\
+\gamma&amp;=e^{-2/y_b^2}y_b^{-3/2}
+(b_\theta^2+y_b^{12}b_z^2)^{1/4}
+&amp;&amp;\text{on the outer collar}.
+\end{split}
+\tag{V8.21}
+\]">\[
+\begin{split}
+\gamma&amp;=e^{-t_1^2/(2y_a^2)}\,g_a^{1/2}|B_0|^{1/2}
+&amp;&amp;\text{on the inner collar},\\
+\gamma&amp;=e^{-2/y_b^2}y_b^{-3/2}
+(b_\theta^2+y_b^{12}b_z^2)^{1/4}
+&amp;&amp;\text{on the outer collar}.
+\end{split}
+\tag{V8.21}
+\]</span>
+<p>Every coefficient after the displayed scalar powers is smooth and positive, with bounded fixed mixed derivatives on its collar. The fractional factor <span class="math" data-tex="\(y_b^{-3/2}\)">\(y_b^{-3/2}\)</span> is kept explicitly. Its <span class="math" data-tex="\(j\)">\(j\)</span>-th derivative is a constant times <span class="math" data-tex="\(y_b^{-3/2-j}\)">\(y_b^{-3/2-j}\)</span>; the exponential supplies decay exceeding every such power. The product rule gives</p>
+<span class="math math-display" data-tex="\[
+\gamma\ge\sqrt c\,\zeta^{1/2},\qquad
+|\partial_X^r\partial_\eta^m\gamma|
+\le C_{r,m}\zeta^{1/2}\delta^{-(3r+2)}.
+\tag{V8.22}
+\]">\[
+\gamma\ge\sqrt c\,\zeta^{1/2},\qquad
+|\partial_X^r\partial_\eta^m\gamma|
+\le C_{r,m}\zeta^{1/2}\delta^{-(3r+2)}.
+\tag{V8.22}
+\]</span>
+<p>The lower bound is the square root of V6.2. For the upper bound the outer exponent <span class="math" data-tex="\(3r+3/2\)">\(3r+3/2\)</span> is bounded by the displayed integer <span class="math" data-tex="\(3r+2\)">\(3r+2\)</span> when <span class="math" data-tex="\(\delta\le1\)">\(\delta\le1\)</span>; the inner exponent is <span class="math" data-tex="\(3r\)">\(3r\)</span>. The interior is compact and <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> there. Every derivative tends to zero at either edge, so extension by zero is smooth with all radial and mixed derivatives zero. This gives a precise smooth scalar magnitude for later amplitude constructions; it does not supply their separate wave equations or covariance identities.</p>
+<h3 id="the-original-viscosity-phase">The original-viscosity phase</h3>
+<p>Keep <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the original physical coordinates <span class="math" data-tex="\((r_\nu,z_\nu,t)\)">\((r_\nu,z_\nu,t)\)</span> with <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, and V7.5:</p>
+<span class="math math-display" data-tex="\[
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\qquad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu},\qquad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu\,q_\nu^D},\qquad
+L_\nu=1-2h\eta_\nu^2.
+\tag{V8.23}
+\]">\[
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\qquad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu},\qquad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu\,q_\nu^D},\qquad
+L_\nu=1-2h\eta_\nu^2.
+\tag{V8.23}
+\]</span>
+<p>The coefficient of the <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span> derivative in the implicit equation is <span class="math" data-tex="\(L_\nu\)">\(L_\nu\)</span>, because <span class="math" data-tex="\(2D=1-2h\)">\(2D=1-2h\)</span>. It is positive on the parameter domain. Differentiating the original equation at fixed other physical coordinates gives</p>
+<span class="math math-display" data-tex="\[
+\partial_tq_\nu=-L_\nu^{-1},\qquad
+\partial_{z_\nu}q_\nu=\frac{2z_\nu q_\nu^{2h}}{\nu L_\nu},\qquad
+\partial_{r_\nu}q_\nu=0.
+\tag{V8.24}
+\]">\[
+\partial_tq_\nu=-L_\nu^{-1},\qquad
+\partial_{z_\nu}q_\nu=\frac{2z_\nu q_\nu^{2h}}{\nu L_\nu},\qquad
+\partial_{r_\nu}q_\nu=0.
+\tag{V8.24}
+\]</span>
+<p>The actual phase is <span class="math" data-tex="\(\Phi_\nu=N\log X_\nu\)">\(\Phi_\nu=N\log X_\nu\)</span>, considered modulo one when evaluating the period-one primitives. Its three derivatives are therefore</p>
+<span class="math math-display" data-tex="\[
+\partial_{r_\nu}\Phi_\nu=\frac{2N}{r_\nu},\qquad
+\partial_{z_\nu}\Phi_\nu=-\frac{2N\eta_\nu}{\sqrt\nu\,L_\nu q_\nu^D},\qquad
+\partial_t\Phi_\nu=\frac{N}{L_\nu q_\nu}.
+\tag{V8.25}
+\]">\[
+\partial_{r_\nu}\Phi_\nu=\frac{2N}{r_\nu},\qquad
+\partial_{z_\nu}\Phi_\nu=-\frac{2N\eta_\nu}{\sqrt\nu\,L_\nu q_\nu^D},\qquad
+\partial_t\Phi_\nu=\frac{N}{L_\nu q_\nu}.
+\tag{V8.25}
+\]</span>
+<p>In the axial identity, the exact comparison
+<span class="math" data-tex="\(z_\nu q_\nu^{2h-1}/\nu=\eta_\nu/(\sqrt\nu q_\nu^D)\)">\(z_\nu q_\nu^{2h-1}/\nu=\eta_\nu/(\sqrt\nu q_\nu^D)\)</span>
+uses <span class="math" data-tex="\(D+2h-1=-D\)">\(D+2h-1=-D\)</span>, retaining the viscosity factor. At fixed <span class="math" data-tex="\(z_\nu,t\)">\(z_\nu,t\)</span>, one complete increase of the phase by one changes <span class="math" data-tex="\(X_\nu\)">\(X_\nu\)</span> by the ratio <span class="math" data-tex="\(e^{1/N}\)">\(e^{1/N}\)</span> and <span class="math" data-tex="\(r_\nu\)">\(r_\nu\)</span> by the ratio <span class="math" data-tex="\(e^{1/(2N)}\)">\(e^{1/(2N)}\)</span>. Starting at radius <span class="math" data-tex="\(r_\nu\)">\(r_\nu\)</span>, the exact radial distance for one phase period is</p>
+<span class="math math-display" data-tex="\[
+\Delta r_\nu=r_\nu(e^{1/(2N)}-1).
+\tag{V8.26}
+\]">\[
+\Delta r_\nu=r_\nu(e^{1/(2N)}-1).
+\tag{V8.26}
+\]</span>
+<p>This is the period of the fast phase; the full field also has slowly varying coefficients, so it need not itself repeat after that radial shift.</p>
+<p>The primitives vanish outside the original interval <span class="math" data-tex="\((X_-,X_+)\)">\((X_-,X_+)\)</span> and on neighborhoods of both boundaries. Their physical support is accordingly contained in</p>
+<span class="math math-display" data-tex="\[
+\sqrt{2\nu q_\nu X_-}&lt;r_\nu&lt;\sqrt{2\nu q_\nu X_+}.
+\tag{V8.27}
+\]">\[
+\sqrt{2\nu q_\nu X_-}&lt;r_\nu&lt;\sqrt{2\nu q_\nu X_+}.
+\tag{V8.27}
+\]</span>
+<p>The five moment bumps are supported in the distinct later interval</p>
+<span class="math math-display" data-tex="\[
+\sqrt{2\nu q_\nu R_-}&lt;r_\nu&lt;\sqrt{2\nu q_\nu R_+}.
+\tag{V8.28}
+\]">\[
+\sqrt{2\nu q_\nu R_-}&lt;r_\nu&lt;\sqrt{2\nu q_\nu R_+}.
+\tag{V8.28}
+\]</span>
+<p>These formulas retain the fixed original endpoints, every <span class="math" data-tex="\(\nu,q_\nu\)">\(\nu,q_\nu\)</span> factor and the protected collars. The selected finite <span class="math" data-tex="\(N\)">\(N\)</span> is independent of physical <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span>, viscosity transport and later iteration stages. No infinite-frequency limiting field is used.</p>
+<p>These exact consequences refine the existing construction without changing its fields or alleging a source error. The sufficient estimates in V3–V4 are strengthened by V8.10 and V8.16: every fixed parameter derivative of each partial moment difference and of the correction coefficient is O(N^-2), while the field and stress comparison on the modulation interval remains O(N^-1). The two endpoint factors give the explicit exponent 3r+3 for the original stress and 3r+2 for its square-root magnitude. All original endpoint preservation identities remain exact. The <a href="../src/realizing-the-admissible-shear.md">complete shear lesson</a> gives the teaching exposition.</p>
+</article></body></html>

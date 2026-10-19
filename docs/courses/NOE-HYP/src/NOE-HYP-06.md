@@ -301,7 +301,7 @@ Expanding \(ds\psi+sd\psi\), the term omitting the first entry \(1\) in \(sd\psi
 
 Theorem 4.0 supplies the normal basis used in this higher-degree proof. The contracting map itself is displayed, so no vanishing result for an induced module is left implicit. In degree zero, the invariants are \(L^G=K\); they do not vanish.
 
-An alternative proof of Theorem 4.1 is given in Constructible complexes on algebraic varieties, Appendix R.3, equation (R.5). It constructs a contracting homotopy directly from an element of trace one, for any finite Galois extension and in every positive degree. That proof includes finite base fields and characteristic dividing the group order; it does not require a normal basis. Theorem 4.0 also supplies the normal basis used by the first proof and Exercise 6.4.
+An alternative proof of Theorem 4.1 is given in [Constructible complexes on algebraic varieties, Appendix R.3, equation (R.5)](https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/constructible-complexes-on-algebraic-varieties.html#r-3-additive-contraction-and-the-sylow-test). It constructs a contracting homotopy directly from an element of trace one, for any finite Galois extension and in every positive degree. That proof includes finite base fields and characteristic dividing the group order; it does not require a normal basis. Theorem 4.0 also supplies the normal basis used by the first proof and Exercise 6.4.
 
 ## 5. Three concrete calculations
 

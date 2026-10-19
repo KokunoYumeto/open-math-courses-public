@@ -4,7 +4,7 @@ The support estimate needed by the hyperbolicity argument retains the distributi
 
 Independent programme exposition and proof: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; CC0. The mathematical antecedents are Hörmander I, 2003 eBook, ISBN 978-3-642-61497-2, Theorems 2.3.6, 2.3.8 and 2.3.10.  The exact earlier programme proofs are bound in the accompanying proof map.
 
-The [exact proof map](proof-map.json) connects the compact calculus, [finite bumps](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md) and [measure and distribution foundations](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md). The other prerequisite is [the general constant-coefficient inverse](constant-coefficient-fundamental-solutions.md).
+The [exact proof map](proof-map.json) connects the [compact calculus](../20261004-free-stationary-phase/proof-map.html), [finite bumps](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md) and [measure and distribution foundations](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md). The other prerequisite is [the general constant-coefficient inverse](constant-coefficient-fundamental-solutions.md).
 
 ![A maximal dyadic cube outside a convex rectangle, and a rotating annulus avoiding the zeros of a polynomial.](figures/support_and_rotation.png)
 

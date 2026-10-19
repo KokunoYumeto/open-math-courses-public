@@ -1,0 +1,651 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="outer-profile-audit.md">Editable source</a></nav><h1 id="the-reference-outer-profile-moments-pressure-and-stress-cone">The reference outer profile: moments, pressure and stress cone</h1>
+<p>This note derives Proposition A.4 and Lemma A.5 for the reference profile with a power-law exterior. The later replacement by a heat flow, regular inner profile and shear modification are separate parts of Theorem 4.6. They are not established here. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">PDF</a>, SHA256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>, pages 129–137, (A.5)–(A.31). The exact coordinate, stress, moment and finite-system operators are proved in <a href="profile-stress-moment-audit.html">G0–G6</a>; their original formulas and factors are retained below.</p>
+<h2 id="o0-the-complete-reference-schedule-and-the-order-of-choices">O0. The complete reference schedule and the order of choices</h2>
+<p>Retain <span class="math" data-tex="\(A=1/2+h,D=1/2-h,d=1-\eta^2,L=1-2h\eta^2\)">\(A=1/2+h,D=1/2-h,d=1-\eta^2,L=1-2h\eta^2\)</span>, <span class="math" data-tex="\(f=(1+\eta^2)^{-1}\)">\(f=(1+\eta^2)^{-1}\)</span>, <span class="math" data-tex="\(J_0=\log(1+\eta^2)\)">\(J_0=\log(1+\eta^2)\)</span>, <span class="math" data-tex="\(H=\sqrt{2X}E\)">\(H=\sqrt{2X}E\)</span>, <span class="math" data-tex="\(l=X\partial_X\log H\)">\(l=X\partial_X\log H\)</span>. All profiles have <span class="math" data-tex="\(-1\le\eta\le1\)">\(-1\le\eta\le1\)</span>. For each interval the coordinate <span class="math" data-tex="\(y\)">\(y\)</span> starts at its left endpoint and satisfies <span class="math" data-tex="\(dX=X\,dy\)">\(dX=X\,dy\)</span>. Hence prescribing l means solving <span class="math" data-tex="\((\log E)&#x27;=l-1/2\)">\((\log E)&#x27;=l-1/2\)</span>, with the preceding endpoint value of E. Every prime on a radial profile below is a y derivative unless otherwise indicated.</p>
+<p>Use the source's smooth step</p>
+<span class="math math-display" data-tex="\[
+\sigma(y)=\frac{e^{-1/y^2}}{e^{-1/y^2}+e^{-1/(1-y)^2}}\ (0&lt;y&lt;1),\quad
+\sigma(y)=0\ (y\le0),\quad \sigma(y)=1\ (y\ge1).
+\tag{O0.1}
+\]">\[
+\sigma(y)=\frac{e^{-1/y^2}}{e^{-1/y^2}+e^{-1/(1-y)^2}}\ (0&lt;y&lt;1),\quad
+\sigma(y)=0\ (y\le0),\quad \sigma(y)=1\ (y\ge1).
+\tag{O0.1}
+\]</span>
+<p>It is increasing and smooth, flat at its endpoints. Indeed the logarithmic derivative of the ratio of the second exponential to the first is <span class="math" data-tex="\(-2(1-y)^{-3}-2y^{-3}&lt;0\)">\(-2(1-y)^{-3}-2y^{-3}&lt;0\)</span>; endpoint smoothness follows from <span class="math" data-tex="\(y^{-n}e^{-1/y^2}\to0\)">\(y^{-n}e^{-1/y^2}\to0\)</span> for every n. Positive correcting bumps are fixed translates or rescalings of <span class="math" data-tex="\(\sigma&#x27;\)">\(\sigma&#x27;\)</span>, with the supports stated below. Their fixed derivative norms are finite.</p>
+<p>The parameter order is</p>
+<span class="math math-display" data-tex="\[
+M_d,\qquad T_d=e^{M_d}+10,\qquad P_*&gt;e^{T_d},\qquad
+0&lt;\lambda\ll1,\qquad 0&lt;h\ll\min\{\lambda,e^{-T_d}\},\qquad X_R.
+\tag{O0.2}
+\]">\[
+M_d,\qquad T_d=e^{M_d}+10,\qquad P_*&gt;e^{T_d},\qquad
+0&lt;\lambda\ll1,\qquad 0&lt;h\ll\min\{\lambda,e^{-T_d}\},\qquad X_R.
+\tag{O0.2}
+\]</span>
+<p>We always take <span class="math" data-tex="\(h&lt;1/100\)">\(h&lt;1/100\)</span>. Fixed shape constants, including the interpolation length <span class="math" data-tex="\(T_f\)">\(T_f\)</span> and terminal constant <span class="math" data-tex="\(c_o\)">\(c_o\)</span>, are chosen independently of the later small parameters. Below, <span class="math" data-tex="\(C_{\rm pre}\)">\(C_{\rm pre}\)</span> denotes finite constants depending only on those shapes, <span class="math" data-tex="\(M_d,T_d,P_*\)">\(M_d,T_d,P_*\)</span> and a specified finite derivative order, uniformly for sufficiently small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and then sufficiently small h. No such constant depends on <span class="math" data-tex="\(X_R\)">\(X_R\)</span> or the amplitude factor <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Constants denoted C before the choice of <span class="math" data-tex="\(M_d\)">\(M_d\)</span> depend only on the fixed shapes. Estimates below justify this order rather than assuming its compatibility.</p>
+<p>The entire schedule is as follows.</p>
+<ol>
+<li>For <span class="math" data-tex="\(X=X_Re^y\)">\(X=X_Re^y\)</span>, <span class="math" data-tex="\(y\le0\)">\(y\le0\)</span>, set <span class="math" data-tex="\(U=4\eta\)">\(U=4\eta\)</span>, <span class="math" data-tex="\(E=P_*fe^{y/10}\)">\(E=P_*fe^{y/10}\)</span>, so <span class="math" data-tex="\(l=3/5\)">\(l=3/5\)</span>. This is the temporary inner reference, not a regular physical axis.</li>
+<li>For one unit of logarithmic length keep <span class="math" data-tex="\(U=4\eta\)">\(U=4\eta\)</span>, and set <span class="math" data-tex="\(l=(3/5)(1-\sigma(y))\)">\(l=(3/5)(1-\sigma(y))\)</span>.</li>
+<li>On <span class="math" data-tex="\(0\le y\le T_d\)">\(0\le y\le T_d\)</span>, set <span class="math" data-tex="\(l=0\)">\(l=0\)</span>, <span class="math" data-tex="\(E=P_1fe^{-y/2}\)">\(E=P_1fe^{-y/2}\)</span>, and</li>
+</ol>
+<span class="math math-display" data-tex="\[
+U=k(y)\eta,\quad k(y)=4[1-\sigma(\log(1+y)/M_d)],\qquad
+|k&#x27;(y)|\le\frac{e_d}{1+y},\quad e_d=4\|\sigma&#x27;\|_\infty/M_d.
+\tag{O0.3}
+\]">\[
+U=k(y)\eta,\quad k(y)=4[1-\sigma(\log(1+y)/M_d)],\qquad
+|k&#x27;(y)|\le\frac{e_d}{1+y},\quad e_d=4\|\sigma&#x27;\|_\infty/M_d.
+\tag{O0.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(e^{-1/2}P_*\le P_1\le e^{1/10}P_*\)">\(e^{-1/2}P_*\le P_1\le e^{1/10}P_*\)</span>. The function k is zero on the last eleven units, since it is zero for <span class="math" data-tex="\(y\ge e^{M_d}-1=T_d-11\)">\(y\ge e^{M_d}-1=T_d-11\)</span>.
+4. With <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, move l from zero to <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span> by <span class="math" data-tex="\(l=-\lambda\sigma(y)\)">\(l=-\lambda\sigma(y)\)</span> on a unit interval. Keep <span class="math" data-tex="\(l=-\lambda\)">\(l=-\lambda\)</span> for <span class="math" data-tex="\(T_w=60\log(1/\lambda)\)">\(T_w=60\log(1/\lambda)\)</span>. Reserve, in this latter local coordinate, the four intervals</p>
+<span class="math math-display" data-tex="\[
+(T_w-25,T_w-20),\quad(T_w-20,T_w-15),\quad
+(T_w-14,T_w-9),\quad(T_w-8,T_w-3).
+\tag{O0.4}
+\]">\[
+(T_w-25,T_w-20),\quad(T_w-20,T_w-15),\quad
+(T_w-14,T_w-9),\quad(T_w-8,T_w-3).
+\tag{O0.4}
+\]</span>
+<p>For sufficiently small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, all are nonempty, ordered and inside this interval. None of the reference-profile corrections below touches them. On them <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, <span class="math" data-tex="\(E\)">\(E\)</span> is the same positive multiple of <span class="math" data-tex="\(fX^{-1/2-\lambda}\)">\(fX^{-1/2-\lambda}\)</span>.
+5. Let <span class="math" data-tex="\(X_p\)">\(X_p\)</span> be the end radius and <span class="math" data-tex="\(E(X_p,\eta)=e_bf\)">\(E(X_p,\eta)=e_bf\)</span>. For <span class="math" data-tex="\(0\le y\le13/\lambda\)">\(0\le y\le13/\lambda\)</span>, retain <span class="math" data-tex="\(l=-\lambda\)">\(l=-\lambda\)</span>, so <span class="math" data-tex="\(E=e_bfe^{-(1/2+\lambda)y}\)">\(E=e_bfe^{-(1/2+\lambda)y}\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta_b=\lambda y,\quad
+\varphi_b(\zeta)=\int_0^\zeta\sigma(v/.02)\,dv,\quad
+R_0(\zeta)=\varphi_b(\zeta)[1-\sigma(\zeta-10)],\\
+R_b=\operatorname{Amp}(\eta)R_0(\lambda y)+c_1(\eta)\beta_1(y)+c_2(\eta)\beta_2(y),\qquad U=ER_b.
+\end{gathered}
+\tag{O0.5}
+\]">\[
+\begin{gathered}
+\zeta_b=\lambda y,\quad
+\varphi_b(\zeta)=\int_0^\zeta\sigma(v/.02)\,dv,\quad
+R_0(\zeta)=\varphi_b(\zeta)[1-\sigma(\zeta-10)],\\
+R_b=\operatorname{Amp}(\eta)R_0(\lambda y)+c_1(\eta)\beta_1(y)+c_2(\eta)\beta_2(y),\qquad U=ER_b.
+\end{gathered}
+\tag{O0.5}
+\]</span>
+<p>Extend <span class="math" data-tex="\(\varphi_b\)">\(\varphi_b\)</span> by zero on negative arguments. The <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> are identical width-.3 bumps centered at <span class="math" data-tex="\(13/\lambda-3\)">\(13/\lambda-3\)</span> and <span class="math" data-tex="\(13/\lambda-1\)">\(13/\lambda-1\)</span>. Their coefficients restore M and J; Amp restores S. These choices are made in O1–O3.
+6. After the pulse put <span class="math" data-tex="\(U=0\)">\(U=0\)</span> permanently. Writing <span class="math" data-tex="\(E(X_{\rm end},\eta)=e_{\rm end}f\)">\(E(X_{\rm end},\eta)=e_{\rm end}f\)</span>, prescribe</p>
+<span class="math math-display" data-tex="\[
+\log E=\log e_{\rm end}-(1/2+\lambda)y-\vartheta_f(y)J_0-(1-\vartheta_f(y))\log2,
+\quad \vartheta_f(y)=1-\sigma(y/T_f).
+\tag{O0.6}
+\]">\[
+\log E=\log e_{\rm end}-(1/2+\lambda)y-\vartheta_f(y)J_0-(1-\vartheta_f(y))\log2,
+\quad \vartheta_f(y)=1-\sigma(y/T_f).
+\tag{O0.6}
+\]</span>
+<p>Choose the fixed <span class="math" data-tex="\(T_f\ge10\|\sigma&#x27;\|_\infty\log2\)">\(T_f\ge10\|\sigma&#x27;\|_\infty\log2\)</span>, so <span class="math" data-tex="\(-\lambda-.1\le l\le-\lambda\)">\(-\lambda-.1\le l\le-\lambda\)</span>. This also satisfies the source's weaker lower bound <span class="math" data-tex="\(-\lambda-1\)">\(-\lambda-1\)</span>. Continue the resulting <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-independent exponential for <span class="math" data-tex="\(30\log(1/\lambda)\)">\(30\log(1/\lambda)\)</span>. Two relative E bumps of width .3, centered three and one units before that interval ends, impose</p>
+<span class="math math-display" data-tex="\[
+I=\frac{XH}{1-\lambda}\quad\hbox{at the endpoint},\qquad
+\int_{\text{two bumps}}(E^2-E_{\rm unedited}^2)\,dy=0.
+\tag{O0.7}
+\]">\[
+I=\frac{XH}{1-\lambda}\quad\hbox{at the endpoint},\qquad
+\int_{\text{two bumps}}(E^2-E_{\rm unedited}^2)\,dy=0.
+\tag{O0.7}
+\]</span>
+<p>These bumps have zero endpoint values and leave all later E values unchanged.
+7. At radius <span class="math" data-tex="\(X_{\rm rel}\)">\(X_{\rm rel}\)</span>, with common value <span class="math" data-tex="\(e_{\rm rel}\)">\(e_{\rm rel}\)</span>, move l from <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span> to <span class="math" data-tex="\(-1\)">\(-1\)</span> on a unit interval, hold <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(4\log(1/h)\)">\(4\log(1/h)\)</span>, and move from <span class="math" data-tex="\(-1\)">\(-1\)</span> to <span class="math" data-tex="\(-h\)">\(-h\)</span> on a unit interval. Every transition uses <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Then hold <span class="math" data-tex="\(-h\)">\(-h\)</span> for the finite length selected in O2.
+8. On the final interval <span class="math" data-tex="\(0\le y\le3\)">\(0\le y\le3\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\psi_o=1-\sigma((y-1)/2),\quad f_o=1-\rho_o\psi_o,\quad
+\rho_o=c_oh,\quad l=-h+f_o&#x27;/f_o.
+\tag{O0.8}
+\]">\[
+\psi_o=1-\sigma((y-1)/2),\quad f_o=1-\rho_o\psi_o,\quad
+\rho_o=c_oh,\quad l=-h+f_o&#x27;/f_o.
+\tag{O0.8}
+\]</span>
+<p>Choose <span class="math" data-tex="\(c_o&gt;0\)">\(c_o&gt;0\)</span> so small that <span class="math" data-tex="\(0\le f_o&#x27;/f_o\le h/4\)">\(0\le f_o&#x27;/f_o\le h/4\)</span>. For example <span class="math" data-tex="\(c_o\le[16(1+\|\psi_o&#x27;\|_\infty)]^{-1}\)">\(c_o\le[16(1+\|\psi_o&#x27;\|_\infty)]^{-1}\)</span> suffices for <span class="math" data-tex="\(h&lt;1/100\)">\(h&lt;1/100\)</span>. Extend <span class="math" data-tex="\(f_o\)">\(f_o\)</span> constantly on the left and by one on the right. Thereafter <span class="math" data-tex="\(E=E_{\rm pow}=c_\infty X^{-A}\)">\(E=E_{\rm pow}=c_\infty X^{-A}\)</span>, with <span class="math" data-tex="\(c_\infty&gt;0\)">\(c_\infty&gt;0\)</span> independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>Smooth flat endpoint matching of the step functions and bumps makes this schedule smooth for <span class="math" data-tex="\(X&gt;0\)">\(X&gt;0\)</span>; solving the logarithmic equation gives E positive before its small relative corrections. Positivity after those corrections is proved below. All stage lengths are finite after the parameter choices. Their endpoint radii divided by <span class="math" data-tex="\(X_R\)">\(X_R\)</span> are fixed.</p>
+<h2 id="o1-the-actual-axial-correction-and-the-initial-moment-bounds">O1. The actual axial correction and the initial moment bounds</h2>
+<p>Use the five original integrals <span class="math" data-tex="\((M,I,J,S,C_p)\)">\((M,I,J,S,C_p)\)</span> from G2.1. Before the long intermediate interval all dimensionless profiles and their fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span> derivatives have finite bounds depending only on the preceding choices. Radial integration over this finite logarithmic interval, and over the inner reference where the powers are integrable, gives finite bounds on <span class="math" data-tex="\(M/X_R\)">\(M/X_R\)</span>, <span class="math" data-tex="\(J/X_R^{3/2}\)">\(J/X_R^{3/2}\)</span>, <span class="math" data-tex="\(S/X_R\)">\(S/X_R\)</span>, and the corresponding parameter derivatives. On the intermediate interval <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, so M and J remain constant. The exact multiplicative changes in its denominators are</p>
+<span class="math math-display" data-tex="\[
+E/E(0)=e^{-(1/2+\lambda)y},\quad
+XE/[XE](0)=e^{(1/2-\lambda)y},\quad
+XHE/[XHE](0)=e^{(1/2-2\lambda)y},\quad
+XE^2/[XE^2](0)=e^{-2\lambda y}.
+\tag{O1.1}
+\]">\[
+E/E(0)=e^{-(1/2+\lambda)y},\quad
+XE/[XE](0)=e^{(1/2-\lambda)y},\quad
+XHE/[XHE](0)=e^{(1/2-2\lambda)y},\quad
+XE^2/[XE^2](0)=e^{-2\lambda y}.
+\tag{O1.1}
+\]</span>
+<p>The entering unit transition has uniformly bounded factors. At <span class="math" data-tex="\(T_w=60\log(1/\lambda)\)">\(T_w=60\log(1/\lambda)\)</span>, take <span class="math" data-tex="\(\lambda&lt;1/120\)">\(\lambda&lt;1/120\)</span>. Then <span class="math" data-tex="\(e^{-(1/2-2\lambda)T_w}=\lambda^{30-120\lambda}\le\lambda^{29}\)">\(e^{-(1/2-2\lambda)T_w}=\lambda^{30-120\lambda}\le\lambda^{29}\)</span>; the analogous M bound is no larger. The factor <span class="math" data-tex="\(e^{2\lambda T_w}=e^{120\lambda\log(1/\lambda)}\)">\(e^{2\lambda T_w}=e^{120\lambda\log(1/\lambda)}\)</span> stays bounded as <span class="math" data-tex="\(\lambda\downarrow0\)">\(\lambda\downarrow0\)</span>. Integrating <span class="math" data-tex="\(dS/dy=-XE^2/2\)">\(dS/dy=-XE^2/2\)</span> over this interval and retaining the incoming S yields</p>
+<span class="math math-display" data-tex="\[
+e_b\le C_{\rm pre}\lambda^{30},\quad
+\left\|\frac{M(X_p)}{X_pe_bf}\right\|_{C^k_\eta}
++\left\|\frac{J(X_p)}{X_pH(X_p)e_bf}\right\|_{C^k_\eta}
+\le C_{{\rm pre},k}\lambda^{29},\quad
+\left\|\frac{S(X_p)}{X_pe_b^2f^2}\right\|_{C^k_\eta}
+\le C_{{\rm pre},k}(1+\log(1/\lambda)).
+\tag{O1.2}
+\]">\[
+e_b\le C_{\rm pre}\lambda^{30},\quad
+\left\|\frac{M(X_p)}{X_pe_bf}\right\|_{C^k_\eta}
++\left\|\frac{J(X_p)}{X_pH(X_p)e_bf}\right\|_{C^k_\eta}
+\le C_{{\rm pre},k}\lambda^{29},\quad
+\left\|\frac{S(X_p)}{X_pe_b^2f^2}\right\|_{C^k_\eta}
+\le C_{{\rm pre},k}(1+\log(1/\lambda)).
+\tag{O1.2}
+\]</span>
+<p>Every fixed k is allowed here. The factors f and its reciprocal have bounded derivatives on [-1,1]. The preceding estimates follow from exact integrals of the stated powers; they introduce no dependence on h through a divergent exterior integral.</p>
+<p>On the pulse, the two original axial moment rows for a relative bump <span class="math" data-tex="\(c\beta\)">\(c\beta\)</span> are exactly</p>
+<span class="math math-display" data-tex="\[
+\delta M=X_pe_bf\,c\int e^{s_1y}\beta(y)\,dy,\qquad
+\delta J=X_pH(X_p)e_bf\,c\int e^{s_2y}\beta(y)\,dy,
+\quad s_1=1/2-\lambda,\quad s_2=1/2-2\lambda.
+\tag{O1.3}
+\]">\[
+\delta M=X_pe_bf\,c\int e^{s_1y}\beta(y)\,dy,\qquad
+\delta J=X_pH(X_p)e_bf\,c\int e^{s_2y}\beta(y)\,dy,
+\quad s_1=1/2-\lambda,\quad s_2=1/2-2\lambda.
+\tag{O1.3}
+\]</span>
+<p>This includes the Jacobian <span class="math" data-tex="\(dX=X_pe^y\,dy\)">\(dX=X_pe^y\,dy\)</span>. Let <span class="math" data-tex="\(y_1=13/\lambda-3\)">\(y_1=13/\lambda-3\)</span>, <span class="math" data-tex="\(y_2=y_1+2\)">\(y_2=y_1+2\)</span>. After dividing each row by its displayed physical factor and then by <span class="math" data-tex="\(e^{s_iy_1}\)">\(e^{s_iy_1}\)</span>, its two entries are <span class="math" data-tex="\(b(s_i),e^{2s_i}b(s_i)\)">\(b(s_i),e^{2s_i}b(s_i)\)</span>, with <span class="math" data-tex="\(b(s)=\int e^{st}\beta(t)\,dt&gt;0\)">\(b(s)=\int e^{st}\beta(t)\,dt&gt;0\)</span>. The determinant is <span class="math" data-tex="\(b(s_1)b(s_2)(e^{2s_2}-e^{2s_1})\)">\(b(s_1)b(s_2)(e^{2s_2}-e^{2s_1})\)</span>. G4.4 proves an inverse bound <span class="math" data-tex="\(C/\lambda\)">\(C/\lambda\)</span>, retaining the exact row factors to recover the original moments.</p>
+<p>The main pulse ends by <span class="math" data-tex="\(11/\lambda\)">\(11/\lambda\)</span>, and <span class="math" data-tex="\(R_0\le11\)">\(R_0\le11\)</span> on its support. For small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(s_i\ge2/5\)">\(s_i\ge2/5\)</span>. Its first-center-weighted moment has magnitude at most</p>
+<span class="math math-display" data-tex="\[
+11|\operatorname{Amp}|e^{-s_iy_1}\int_0^{11/\lambda}e^{s_iy}\,dy
+\le(55/2)|\operatorname{Amp}|e^{-2s_i/\lambda+3s_i}.
+\tag{O1.4}
+\]">\[
+11|\operatorname{Amp}|e^{-s_iy_1}\int_0^{11/\lambda}e^{s_iy}\,dy
+\le(55/2)|\operatorname{Amp}|e^{-2s_i/\lambda+3s_i}.
+\tag{O1.4}
+\]</span>
+<p>The incoming moments in O1.2 gain the factor <span class="math" data-tex="\(e^{-s_iy_1}\)">\(e^{-s_iy_1}\)</span>. Multiplication by the inverse loss <span class="math" data-tex="\(1/\lambda\)">\(1/\lambda\)</span> is absorbed by a smaller positive exponential rate: for every <span class="math" data-tex="\(a&gt;0,n\)">\(a&gt;0,n\)</span>, <span class="math" data-tex="\(\lambda^{-n}e^{-a/\lambda}\le C_{a,n}e^{-a/(2\lambda)}\)">\(\lambda^{-n}e^{-a/\lambda}\le C_{a,n}e^{-a/(2\lambda)}\)</span>, since <span class="math" data-tex="\(v^ne^{-av/2}\)">\(v^ne^{-av/2}\)</span> is bounded for <span class="math" data-tex="\(v\ge1\)">\(v\ge1\)</span>. Therefore the exact linear solve gives affine functions of Amp with</p>
+<span class="math math-display" data-tex="\[
+c_i=c_{i,0}(\eta)+\operatorname{Amp}\,c_{i,1}(\eta),\qquad
+\|c_{i,0}\|_{C^k_\eta}+\|c_{i,1}\|_{C^k_\eta}\le C_{{\rm pre},k}e^{-c/\lambda},\qquad
+M=J=0\quad\hbox{after the pulse}.
+\tag{O1.5}
+\]">\[
+c_i=c_{i,0}(\eta)+\operatorname{Amp}\,c_{i,1}(\eta),\qquad
+\|c_{i,0}\|_{C^k_\eta}+\|c_{i,1}\|_{C^k_\eta}\le C_{{\rm pre},k}e^{-c/\lambda},\qquad
+M=J=0\quad\hbox{after the pulse}.
+\tag{O1.5}
+\]</span>
+<p>The same statement holds for fixed radial bump derivatives; a <span class="math" data-tex="\(\zeta_b\)">\(\zeta_b\)</span> derivative adds a power of <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>, which remains exponentially small. No quadratic term was dropped: M and J are exactly linear in U for the fixed E used here.</p>
+<h2 id="o2-angular-moment-restoration-and-the-complete-terminal-schedule">O2. Angular moment restoration and the complete terminal schedule</h2>
+<p>The identity <span class="math" data-tex="\(I&#x27;=XH\)">\(I&#x27;=XH\)</span> gives, for <span class="math" data-tex="\(r_I=I/(XH)\)">\(r_I=I/(XH)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+r_I&#x27;+(1+l)r_I=1.
+\tag{O2.1}
+\]">\[
+r_I&#x27;+(1+l)r_I=1.
+\tag{O2.1}
+\]</span>
+<p>Before interpolation, <span class="math" data-tex="\(1+l\)">\(1+l\)</span> has a fixed positive lower bound. The inner reference has <span class="math" data-tex="\(r_I=5/8\)">\(r_I=5/8\)</span>; variation of constants bounds it and every fixed parameter derivative through the subsequent intervals. During interpolation, our choice in O0.6 keeps <span class="math" data-tex="\(1+l\ge1-\lambda-.1&gt;1/2\)">\(1+l\ge1-\lambda-.1&gt;1/2\)</span>. Thus at its end <span class="math" data-tex="\(r_I\)">\(r_I\)</span> and its fixed parameter derivatives are bounded by <span class="math" data-tex="\(C_{{\rm pre},k}\)">\(C_{{\rm pre},k}\)</span>. On the following constant-slope interval the exact discrepancy is</p>
+<span class="math math-display" data-tex="\[
+r_I(y)-(1-\lambda)^{-1}
+=e^{-(1-\lambda)y}\,[r_I(0)-(1-\lambda)^{-1}].
+\tag{O2.2}
+\]">\[
+r_I(y)-(1-\lambda)^{-1}
+=e^{-(1-\lambda)y}\,[r_I(0)-(1-\lambda)^{-1}].
+\tag{O2.2}
+\]</span>
+<p>At the first angular bump center <span class="math" data-tex="\(30\log(1/\lambda)-3\)">\(30\log(1/\lambda)-3\)</span>, its <span class="math" data-tex="\(C^k_\eta\)">\(C^k_\eta\)</span> norm is at most <span class="math" data-tex="\(C_{{\rm pre},k}\lambda^{28}\)">\(C_{{\rm pre},k}\lambda^{28}\)</span> for sufficiently small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>Write the relative change as <span class="math" data-tex="\(E\mapsto E(1+v)\)">\(E\mapsto E(1+v)\)</span>, <span class="math" data-tex="\(v=d_1\beta_1+d_2\beta_2\)">\(v=d_1\beta_1+d_2\beta_2\)</span>. The two exact rows are</p>
+<span class="math math-display" data-tex="\[
+\delta I=\int XHv\,dy,\qquad
+\delta C_p=\int E^2(v+v^2/2)\,dy.
+\tag{O2.3}
+\]">\[
+\delta I=\int XHv\,dy,\qquad
+\delta C_p=\int E^2(v+v^2/2)\,dy.
+\tag{O2.3}
+\]</span>
+<p>Divide by <span class="math" data-tex="\(XH\)">\(XH\)</span> and <span class="math" data-tex="\(E^2\)">\(E^2\)</span> at the first center, respectively. Their linear weights have exponents <span class="math" data-tex="\(1-\lambda\)">\(1-\lambda\)</span> and <span class="math" data-tex="\(-1-2\lambda\)">\(-1-2\lambda\)</span>, separated by <span class="math" data-tex="\(2+\lambda\)">\(2+\lambda\)</span>. G4.4 gives a uniformly bounded inverse. The quadratic pressure term in O2.3 has uniformly bounded bilinear norms on these two fixed supports. The desired first-row discrepancy is O2.2 transported to the endpoint; equivalently, undoing that transport gives an <span class="math" data-tex="\(O_{C^k}(C_{{\rm pre},k}\lambda^{28})\)">\(O_{C^k}(C_{{\rm pre},k}\lambda^{28})\)</span> discrepancy at the first center. The pressure discrepancy is zero. The actual finite solve G5.6–G5.8 therefore applies for sufficiently small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+\|(d_1,d_2)\|_{C^k_\eta}\le C_{{\rm pre},k}\lambda^{28},\qquad
+I=XH/(1-\lambda)\text{ at the endpoint},\qquad \delta C_p=0.
+\tag{O2.4}
+\]">\[
+\|(d_1,d_2)\|_{C^k_\eta}\le C_{{\rm pre},k}\lambda^{28},\qquad
+I=XH/(1-\lambda)\text{ at the endpoint},\qquad \delta C_p=0.
+\tag{O2.4}
+\]</span>
+<p>Only a specified finite k must have a small bound; smoothness of all orders follows from the same fixed branch. Taking k at least one gives <span class="math" data-tex="\(|v|+|v&#x27;|\le C_{\rm pre}\lambda^{28}\)">\(|v|+|v&#x27;|\le C_{\rm pre}\lambda^{28}\)</span>. Thus <span class="math" data-tex="\(1+v&gt;0\)">\(1+v&gt;0\)</span> and the slope change <span class="math" data-tex="\(v&#x27;/(1+v)\)">\(v&#x27;/(1+v)\)</span> is smaller than <span class="math" data-tex="\(\lambda/2\)">\(\lambda/2\)</span>. On the bumps, <span class="math" data-tex="\(l\le-\lambda/2\)">\(l\le-\lambda/2\)</span>. All earlier and later E values are unchanged. These choices involve E only and are independent of Amp.</p>
+<p>At the exterior-transition start, <span class="math" data-tex="\(U=M=J=0\)">\(U=M=J=0\)</span>, E and I are independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and G2.5 gives exactly</p>
+<span class="math math-display" data-tex="\[
+Q_s=-1+(1-h)I/(XH)=\frac{\lambda-h}{1-\lambda},\qquad
+Q_s&#x27;+(1+l)Q_s=-l-h.
+\tag{O2.5}
+\]">\[
+Q_s=-1+(1-h)I/(XH)=\frac{\lambda-h}{1-\lambda},\qquad
+Q_s&#x27;+(1+l)Q_s=-l-h.
+\tag{O2.5}
+\]</span>
+<p>The first transition keeps a positive lower bound <span class="math" data-tex="\(c\lambda\)">\(c\lambda\)</span> when <span class="math" data-tex="\(h\ll\lambda\)">\(h\ll\lambda\)</span>. On the hold with <span class="math" data-tex="\(l=-1\)">\(l=-1\)</span>, <span class="math" data-tex="\(Q_s&#x27;=1-h\)">\(Q_s&#x27;=1-h\)</span>; its length <span class="math" data-tex="\(4\log(1/h)\)">\(4\log(1/h)\)</span> gives a value comparable to <span class="math" data-tex="\(\log(1/h)\)">\(\log(1/h)\)</span>. The next unit transition changes that value by bounded positive factors and bounded terms, since its coefficients are bounded and its source is nonnegative. Call its final value <span class="math" data-tex="\(Q_{\rm in}\)">\(Q_{\rm in}\)</span>.</p>
+<p>For the terminal profile O0.8 define the source's exact value</p>
+<span class="math math-display" data-tex="\[
+Q_p=\int_0^3\exp\!\left(\int_0^v(1+l(s))\,ds\right)\frac{f_o&#x27;(v)}{f_o(v)}\,dv.
+\tag{O2.6}
+\]">\[
+Q_p=\int_0^3\exp\!\left(\int_0^v(1+l(s))\,ds\right)\frac{f_o&#x27;(v)}{f_o(v)}\,dv.
+\tag{O2.6}
+\]</span>
+<p>On this interval <span class="math" data-tex="\(1+l\)">\(1+l\)</span> is bounded above and below by positive constants. Also <span class="math" data-tex="\(\int_0^3f_o&#x27;/f_o=-\log(1-c_oh)\)">\(\int_0^3f_o&#x27;/f_o=-\log(1-c_oh)\)</span>, between <span class="math" data-tex="\(c_oh\)">\(c_oh\)</span> and <span class="math" data-tex="\(2c_oh\)">\(2c_oh\)</span> for the stated small h. Thus <span class="math" data-tex="\(c h\le Q_p\le C h\)">\(c h\le Q_p\le C h\)</span>, with fixed positive constants. Consequently <span class="math" data-tex="\(Q_{\rm in}&gt;Q_p&gt;0\)">\(Q_{\rm in}&gt;Q_p&gt;0\)</span> for sufficiently small h. The additional hold at <span class="math" data-tex="\(l=-h\)">\(l=-h\)</span> has the explicitly positive finite length</p>
+<span class="math math-display" data-tex="\[
+T_{\rm hold}=(1-h)^{-1}\log(Q_{\rm in}/Q_p).
+\tag{O2.7}
+\]">\[
+T_{\rm hold}=(1-h)^{-1}\log(Q_{\rm in}/Q_p).
+\tag{O2.7}
+\]</span>
+<p>It decreases Q exactly to <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span>. On the terminal interval, variation of constants with final value zero gives</p>
+<span class="math math-display" data-tex="\[
+Q_s(y)=\int_y^3\exp\!\left(\int_y^v(1+l(s))\,ds\right)\frac{f_o&#x27;(v)}{f_o(v)}\,dv.
+\tag{O2.8}
+\]">\[
+Q_s(y)=\int_y^3\exp\!\left(\int_y^v(1+l(s))\,ds\right)\frac{f_o&#x27;(v)}{f_o(v)}\,dv.
+\tag{O2.8}
+\]</span>
+<p>Indeed differentiation gives <span class="math" data-tex="\(Q_s&#x27;+(1+l)Q_s=-f_o&#x27;/f_o=-l-h\)">\(Q_s&#x27;+(1+l)Q_s=-f_o&#x27;/f_o=-l-h\)</span>, and its initial value is O2.6. It is positive for every <span class="math" data-tex="\(y&lt;3\)">\(y&lt;3\)</span>, vanishes at 3, and is zero thereafter. Its lower bound on <span class="math" data-tex="\(0\le y\le1/2\)">\(0\le y\le1/2\)</span> is <span class="math" data-tex="\(ch\)">\(ch\)</span>, because the integral over the fixed portion where <span class="math" data-tex="\(f_o&#x27;&gt;0\)">\(f_o&#x27;&gt;0\)</span> remains present.</p>
+<p>Beyond the terminal interval, <span class="math" data-tex="\(H=H_{\rm pow}=\sqrt2c_\infty X^{-h}\)">\(H=H_{\rm pow}=\sqrt2c_\infty X^{-h}\)</span> and <span class="math" data-tex="\(I=XH/(1-h)\)">\(I=XH/(1-h)\)</span>. But <span class="math" data-tex="\(\int_0^XH_{\rm pow}\,dx=XH_{\rm pow}/(1-h)\)">\(\int_0^XH_{\rm pow}\,dx=XH_{\rm pow}/(1-h)\)</span>, since <span class="math" data-tex="\(h&lt;1\)">\(h&lt;1\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty(H-H_{\rm pow})\,dX=0.
+\tag{O2.9}
+\]">\[
+\int_0^\infty(H-H_{\rm pow})\,dX=0.
+\tag{O2.9}
+\]</span>
+<p>This integral converges at zero and has identically zero integrand sufficiently far out. All exterior lengths and <span class="math" data-tex="\(c_\infty\)">\(c_\infty\)</span> are independent of Amp and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<h2 id="o3-closing-s-with-the-actual-amplitude">O3. Closing S with the actual amplitude</h2>
+<p>The integral after the pulse must be bounded uniformly as h becomes small. On the steep hold <span class="math" data-tex="\(l=-1\)">\(l=-1\)</span>, the exact changes are</p>
+<span class="math math-display" data-tex="\[
+\frac{(XE^2)_{\rm end}}{(XE^2)_{\rm start}}=h^8,\qquad
+\frac{E_{\rm end}}{E_{\rm start}}=h^6.
+\tag{O3.1}
+\]">\[
+\frac{(XE^2)_{\rm end}}{(XE^2)_{\rm start}}=h^8,\qquad
+\frac{E_{\rm end}}{E_{\rm start}}=h^6.
+\tag{O3.1}
+\]</span>
+<p>The first follows from <span class="math" data-tex="\((\log XE^2)&#x27;=2l=-2\)">\((\log XE^2)&#x27;=2l=-2\)</span>; the second from <span class="math" data-tex="\((\log E)&#x27;=-3/2\)">\((\log E)&#x27;=-3/2\)</span>, each over <span class="math" data-tex="\(4\log(1/h)\)">\(4\log(1/h)\)</span>. The first unit transition and steep hold contribute at most <span class="math" data-tex="\(CX_{\rm rel}e_{\rm rel}^2\)">\(CX_{\rm rel}e_{\rm rel}^2\)</span> to <span class="math" data-tex="\(\int XE^2dy\)">\(\int XE^2dy\)</span>. After the steep hold, <span class="math" data-tex="\(l\le-3h/4\)">\(l\le-3h/4\)</span> at every point. Thus the rest is bounded by
+<span class="math" data-tex="\(CX_{\rm rel}e_{\rm rel}^2h^8\int_0^\infty e^{-3hy/2}dy\le CX_{\rm rel}e_{\rm rel}^2h^7\)">\(CX_{\rm rel}e_{\rm rel}^2h^8\int_0^\infty e^{-3hy/2}dy\le CX_{\rm rel}e_{\rm rel}^2h^7\)</span>. In particular the complete exterior release, regardless of its hold length, satisfies</p>
+<span class="math math-display" data-tex="\[
+\int_{\rm release}XE^2\,dy\le CX_{\rm rel}e_{\rm rel}^2.
+\tag{O3.2}
+\]">\[
+\int_{\rm release}XE^2\,dy\le CX_{\rm rel}e_{\rm rel}^2.
+\tag{O3.2}
+\]</span>
+<p>Interpolation and the subsequent uniform interval have length <span class="math" data-tex="\(T_f+30\log(1/\lambda)\)">\(T_f+30\log(1/\lambda)\)</span>, nonincreasing <span class="math" data-tex="\(XE^2\)">\(XE^2\)</span> before the small bumps, and bounded relative bump factors. Their contribution, together with O3.2, is at most <span class="math" data-tex="\(C(1+\log(1/\lambda))X_{\rm end}e_{\rm end}^2\)">\(C(1+\log(1/\lambda))X_{\rm end}e_{\rm end}^2\)</span>. Fixed parameter derivatives obey the same estimate: f, its powers with exponents in [0,1], and the small angular coefficients have bounded derivatives; the release itself is independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>On the pulse the exact identity is <span class="math" data-tex="\(XE^2=X_pe_b^2f^2e^{-2\lambda y}\)">\(XE^2=X_pe_b^2f^2e^{-2\lambda y}\)</span>. The pulse contribution to S, including its two end bumps, is therefore</p>
+<span class="math math-display" data-tex="\[
+\frac{\lambda S(\infty)}{X_pe_b^2f^2}
+=\operatorname{Amp}^2K_b-\frac{1-e^{-26}}4+\mathcal E(\operatorname{Amp},\eta),\qquad
+K_b=\int_0^{13}e^{-2\zeta}R_0(\zeta)^2\,d\zeta.
+\tag{O3.3}
+\]">\[
+\frac{\lambda S(\infty)}{X_pe_b^2f^2}
+=\operatorname{Amp}^2K_b-\frac{1-e^{-26}}4+\mathcal E(\operatorname{Amp},\eta),\qquad
+K_b=\int_0^{13}e^{-2\zeta}R_0(\zeta)^2\,d\zeta.
+\tag{O3.3}
+\]</span>
+<p>To justify every part of the error bound, the incoming S gives <span class="math" data-tex="\(O_{C^k_\eta}(C_{{\rm pre},k}\lambda(1+\log(1/\lambda)))\)">\(O_{C^k_\eta}(C_{{\rm pre},k}\lambda(1+\log(1/\lambda)))\)</span> by O1.2. The post-pulse E integral has the same bound by O3.2 and
+<span class="math" data-tex="\(X_{\rm end}e_{\rm end}^2=X_pe_b^2e^{-26}\)">\(X_{\rm end}e_{\rm end}^2=X_pe_b^2e^{-26}\)</span>, with <span class="math" data-tex="\(f^{-2}\)">\(f^{-2}\)</span> retained in the displayed denominator. The extra U terms are exactly <span class="math" data-tex="\(2\operatorname{Amp}R_0(c_1\beta_1+c_2\beta_2)+(c_1\beta_1+c_2\beta_2)^2\)">\(2\operatorname{Amp}R_0(c_1\beta_1+c_2\beta_2)+(c_1\beta_1+c_2\beta_2)^2\)</span>. In fact the first term is zero because the end bumps lie after the main pulse; even its absolute bound from O1.5 is exponentially small. On the bounded amplitude bracket <span class="math" data-tex="\([.9,1.2]\)">\([.9,1.2]\)</span>, the second term and all its fixed parameter derivatives are exponentially small too. The original coefficients are affine in Amp; differentiating them with respect to Amp uses their equally small linear coefficients. Thus</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal E\|_{C^1(\operatorname{Amp},\eta)}\le C_{\rm pre}\lambda(1+\log(1/\lambda)).
+\tag{O3.4}
+\]">\[
+\|\mathcal E\|_{C^1(\operatorname{Amp},\eta)}\le C_{\rm pre}\lambda(1+\log(1/\lambda)).
+\tag{O3.4}
+\]</span>
+<p>All constants are uniform for the subsequently small h. This supplies the amplitude derivative estimate as well as the parameter estimate needed to infer a unique root.</p>
+<p>Here are exact bounds on <span class="math" data-tex="\(K_b\)">\(K_b\)</span>. Since <span class="math" data-tex="\(0\le R_0\le\zeta\)">\(0\le R_0\le\zeta\)</span>, <span class="math" data-tex="\(K_b\le1/4\)">\(K_b\le1/4\)</span>. On <span class="math" data-tex="\(1/50\le\zeta\le9\)">\(1/50\le\zeta\le9\)</span>, <span class="math" data-tex="\(R_0\ge\zeta-1/50\)">\(R_0\ge\zeta-1/50\)</span>. Direct integration gives</p>
+<span class="math math-display" data-tex="\[
+K_b\ge\frac{e^{-1/25}}4-\frac{225301}{5000}e^{-18}&gt;\frac15.
+\tag{O3.5}
+\]">\[
+K_b\ge\frac{e^{-1/25}}4-\frac{225301}{5000}e^{-18}&gt;\frac15.
+\tag{O3.5}
+\]</span>
+<p>For the strict last inequality, <span class="math" data-tex="\(e^{-1/25}\ge24/25\)">\(e^{-1/25}\ge24/25\)</span> gives a first term at least <span class="math" data-tex="\(6/25\)">\(6/25\)</span>, and <span class="math" data-tex="\(e^{18}&gt;18^4/24=4374\)">\(e^{18}&gt;18^4/24=4374\)</span> gives a second term smaller than <span class="math" data-tex="\(1/25\)">\(1/25\)</span>. These are exact analytic inequalities, not quadrature.</p>
+<p>For <span class="math" data-tex="\(F_0(a)=a^2K_b-(1-e^{-26})/4\)">\(F_0(a)=a^2K_b-(1-e^{-26})/4\)</span>, it follows that</p>
+<span class="math math-display" data-tex="\[
+F_0(.9)&lt;-.047,\qquad F_0(1.2)&gt;.038,\qquad F_0&#x27;(a)&gt;.36\quad(.9\le a\le1.2).
+\tag{O3.6}
+\]">\[
+F_0(.9)&lt;-.047,\qquad F_0(1.2)&gt;.038,\qquad F_0&#x27;(a)&gt;.36\quad(.9\le a\le1.2).
+\tag{O3.6}
+\]</span>
+<p>The first follows from <span class="math" data-tex="\(-19/400+e^{-26}/4&lt;-47/1000\)">\(-19/400+e^{-26}/4&lt;-47/1000\)</span>, using <span class="math" data-tex="\(e^{26}&gt;500\)">\(e^{26}&gt;500\)</span>. The second is <span class="math" data-tex="\((36/25)(1/5)-1/4=19/500\)">\((36/25)(1/5)-1/4=19/500\)</span>, and the derivative is larger than <span class="math" data-tex="\(2(9/10)(1/5)=9/25\)">\(2(9/10)(1/5)=9/25\)</span>. Choose <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> so that O3.4 is smaller than <span class="math" data-tex="\(.01\)">\(.01\)</span>, for example. Then the complete expression is negative and positive at the respective endpoints and has derivative greater than <span class="math" data-tex="\(.35\)">\(.35\)</span>. The intermediate value theorem and this derivative bound give exactly one root Amp in the bracket at each <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The implicit function theorem gives a smooth root, including endpoint derivatives, with</p>
+<span class="math math-display" data-tex="\[
+|\partial_\eta\operatorname{Amp}|\le C_{\rm pre}\lambda(1+\log(1/\lambda)).
+\tag{O3.7}
+\]">\[
+|\partial_\eta\operatorname{Amp}|\le C_{\rm pre}\lambda(1+\log(1/\lambda)).
+\tag{O3.7}
+\]</span>
+<p>Implicit differentiation gives finite higher derivatives, and any finite set of small derivative bounds can be secured before choosing the parameters. Consequently the actual constructed profile has <span class="math" data-tex="\(S(\infty)=0\)">\(S(\infty)=0\)</span>, as well as O2.9 and <span class="math" data-tex="\(M=J=0\)">\(M=J=0\)</span> after the pulse. The integrals converge because U is compactly supported and <span class="math" data-tex="\(E^2\)">\(E^2\)</span> has the exterior power <span class="math" data-tex="\(X^{-1-2h}\)">\(X^{-1-2h}\)</span>.</p>
+<h2 id="o4-the-analytic-pressure-supplied-to-the-inner-construction">O4. The analytic pressure supplied to the inner construction</h2>
+<p>Before the two pressure-preserving angular bumps, the complete schedule has the form <span class="math" data-tex="\(E_{\rm id,sched}(y,\eta)=c(y)f(\eta)^{\vartheta(y)}\)">\(E_{\rm id,sched}(y,\eta)=c(y)f(\eta)^{\vartheta(y)}\)</span>, with <span class="math" data-tex="\(0\le\vartheta\le1\)">\(0\le\vartheta\le1\)</span>. Here use the global coordinate <span class="math" data-tex="\(y=\log(X/X_R)\)">\(y=\log(X/X_R)\)</span>. The coefficient c and all interval lengths are independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>; O2 shows that the later lengths are independent of Amp as well. In the interpolation, c includes <span class="math" data-tex="\(2^{-(1-\vartheta)}\)">\(2^{-(1-\vartheta)}\)</span>, exactly as in O0.6. The exponent is one through the pulse, decreases to zero during interpolation, and is zero afterwards.</p>
+<p>Choose a bounded simply connected complex neighborhood of [-1,1] whose closure avoids <span class="math" data-tex="\(\pm i\)">\(\pm i\)</span>. The function <span class="math" data-tex="\(f(\eta)=(1+\eta^2)^{-1}\)">\(f(\eta)=(1+\eta^2)^{-1}\)</span> is holomorphic and nonvanishing there, so choose an analytic logarithm. The functions <span class="math" data-tex="\(\exp(2\vartheta\log f)\)">\(\exp(2\vartheta\log f)\)</span> are uniformly bounded on the closure for <span class="math" data-tex="\(0\le\vartheta\le1\)">\(0\le\vartheta\le1\)</span>. At the two infinite ends c squared is a fixed multiple of <span class="math" data-tex="\(e^{y/5}\)">\(e^{y/5}\)</span> and <span class="math" data-tex="\(e^{-(1+2h)y}\)">\(e^{-(1+2h)y}\)</span>; the intervening interval is finite. Dominated integration and Morera's theorem therefore prove holomorphy on one common neighborhood of</p>
+<span class="math math-display" data-tex="\[
+\Pi_0(\eta)=-\frac12\int_{-\infty}^\infty c(y)^2f(\eta)^{2\vartheta(y)}\,dy.
+\tag{O4.1}
+\]">\[
+\Pi_0(\eta)=-\frac12\int_{-\infty}^\infty c(y)^2f(\eta)^{2\vartheta(y)}\,dy.
+\tag{O4.1}
+\]</span>
+<p>For completeness, Morera applies because the uniform integrable majorant permits interchanging each triangular contour integral with the y integral, and each interior contour integral is zero. Continuity follows from the same majorant.</p>
+<p>The function is even, and for real <span class="math" data-tex="\(\eta\)">\(\eta\)</span></p>
+<span class="math math-display" data-tex="\[
+\Pi_0&#x27;=J_0&#x27;\int c(y)^2\vartheta(y)f^{2\vartheta(y)}\,dy,\qquad
+J_0&#x27;=\frac{2\eta}{1+\eta^2},\qquad
+\Pi_0\le-\frac52P_*^2f^2.
+\tag{O4.2}
+\]">\[
+\Pi_0&#x27;=J_0&#x27;\int c(y)^2\vartheta(y)f^{2\vartheta(y)}\,dy,\qquad
+J_0&#x27;=\frac{2\eta}{1+\eta^2},\qquad
+\Pi_0\le-\frac52P_*^2f^2.
+\tag{O4.2}
+\]</span>
+<p>The integral in the derivative is strictly positive, since the inner reference has <span class="math" data-tex="\(\vartheta=1,c&gt;0\)">\(\vartheta=1,c&gt;0\)</span>. This proves the required strict sign of <span class="math" data-tex="\(\Pi_0&#x27;\)">\(\Pi_0&#x27;\)</span> for <span class="math" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>. Its inner contribution is exactly <span class="math" data-tex="\(-\frac12P_*^2f^2\int_{-\infty}^0e^{y/5}dy=-(5/2)P_*^2f^2\)">\(-\frac12P_*^2f^2\int_{-\infty}^0e^{y/5}dy=-(5/2)P_*^2f^2\)</span>; all others are nonpositive. Independence of <span class="math" data-tex="\(X_R\)">\(X_R\)</span> follows from <span class="math" data-tex="\(dX/X=dy\)">\(dX/X=dy\)</span>. Restoring the angular bumps leaves the total pressure integral exactly unchanged by O2.4. Thus for the actual reference profile</p>
+<span class="math math-display" data-tex="\[
+\Pi(X,\eta)=\Pi_0+\int_0^X\frac{E(x,\eta)^2}{2x}\,dx
+=-\frac12\int_{\log(X/X_R)}^\infty E(v,\eta)^2\,dv.
+\tag{O4.3}
+\]">\[
+\Pi(X,\eta)=\Pi_0+\int_0^X\frac{E(x,\eta)^2}{2x}\,dx
+=-\frac12\int_{\log(X/X_R)}^\infty E(v,\eta)^2\,dv.
+\tag{O4.3}
+\]</span>
+<p>Later smooth edits need not be analytic to preserve this already fixed analytic datum: exact zero total pressure increment is the sufficient identity, proved by splitting the last integral. This proves Lemma A.5 for the actual constructed reference family.</p>
+<h2 id="o5-the-cone-through-the-reference-and-axial-transitions">O5. The cone through the reference and axial transitions</h2>
+<p>Keep the source test, with <span class="math" data-tex="\(w=N_s/(EQ_s)\)">\(w=N_s/(EQ_s)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a-b_sw&gt;0,\qquad 2b_sw+b_s^2/a+(a-2)w^2&lt;2,
+\quad a=2-2l,\quad b_s=2U&#x27;/E.
+\tag{O5.1}
+\]">\[
+a-b_sw&gt;0,\qquad 2b_sw+b_s^2/a+(a-2)w^2&lt;2,
+\quad a=2-2l,\quad b_s=2U&#x27;/E.
+\tag{O5.1}
+\]</span>
+<p>G6 proves how these inequalities imply the relaxed cone once <span class="math" data-tex="\(p_{s,1}=XQ_s/L\)">\(p_{s,1}=XQ_s/L\)</span> is large enough, and the admissible cone when also <span class="math" data-tex="\(v_s=a+b_s^2/a&gt;2\)">\(v_s=a+b_s^2/a&gt;2\)</span>. We first prove the two strict inequalities and <span class="math" data-tex="\(Q_s&gt;0\)">\(Q_s&gt;0\)</span>, before choosing <span class="math" data-tex="\(X_R\)">\(X_R\)</span>.</p>
+<p>On the reference inner interval <span class="math" data-tex="\(\mathcal A_XU=4\eta\)">\(\mathcal A_XU=4\eta\)</span>, <span class="math" data-tex="\(W=1-4L\)">\(W=1-4L\)</span>, <span class="math" data-tex="\(l=3/5\)">\(l=3/5\)</span>, <span class="math" data-tex="\((\log E)_\eta=-J_0&#x27;\)">\((\log E)_\eta=-J_0&#x27;\)</span>. The regular radial primitive for its constant angular source gives exactly</p>
+<span class="math math-display" data-tex="\[
+Q_s=\frac{(3/5)(4L-1)-h(1-8\eta^2)+(D+4d)\eta J_0&#x27;}{8/5}.
+\tag{O5.2}
+\]">\[
+Q_s=\frac{(3/5)(4L-1)-h(1-8\eta^2)+(D+4d)\eta J_0&#x27;}{8/5}.
+\tag{O5.2}
+\]</span>
+<p>For <span class="math" data-tex="\(h&lt;1/100\)">\(h&lt;1/100\)</span>, <span class="math" data-tex="\(L\ge.98\)">\(L\ge.98\)</span>, and <span class="math" data-tex="\(\eta J_0&#x27;=2\eta^2/(1+\eta^2)\ge0\)">\(\eta J_0&#x27;=2\eta^2/(1+\eta^2)\ge0\)</span>, the numerator is at least <span class="math" data-tex="\((3/5)(4\cdot.98-1)-.01&gt;8/5\)">\((3/5)(4\cdot.98-1)-.01&gt;8/5\)</span>. Hence <span class="math" data-tex="\(Q_s&gt;1\)">\(Q_s&gt;1\)</span>. Here <span class="math" data-tex="\(a=4/5\)">\(a=4/5\)</span>, <span class="math" data-tex="\(b_s=0\)">\(b_s=0\)</span>, so O5.1 holds for every finite w. On any fixed <span class="math" data-tex="\(x=X/X_R\ge x_*&gt;0\)">\(x=X/X_R\ge x_*&gt;0\)</span>, E is positive and all quantities are bounded.</p>
+<p>During the first unit transition U and W retain these values, <span class="math" data-tex="\(0\le l\le3/5\)">\(0\le l\le3/5\)</span>, and the angular source <span class="math" data-tex="\(-Wl-h(1-8\eta^2)+(D+4d)\eta J_0&#x27;\)">\(-Wl-h(1-8\eta^2)+(D+4d)\eta J_0&#x27;\)</span> is at least <span class="math" data-tex="\(-h\)">\(-h\)</span>. Variation of constants in <span class="math" data-tex="\(Q_s&#x27;+(1+l)Q_s=S_q\)">\(Q_s&#x27;+(1+l)Q_s=S_q\)</span> gives at its end
+<span class="math" data-tex="\(Q_s\ge e^{-8/5}-h&gt;1/10\)">\(Q_s\ge e^{-8/5}-h&gt;1/10\)</span>. One may use <span class="math" data-tex="\(e^2&lt;9\)">\(e^2&lt;9\)</span> to verify the last inequality. The same formula gives a positive bound throughout this unit. Since <span class="math" data-tex="\(b_s=0\)">\(b_s=0\)</span> and <span class="math" data-tex="\(4/5\le a\le2\)">\(4/5\le a\le2\)</span>, O5.1 continues to hold.</p>
+<p>On the axial transition, <span class="math" data-tex="\(l=0\)">\(l=0\)</span> and the original source is</p>
+<span class="math math-display" data-tex="\[
+S_q=-h(1-2k\eta^2)+(D+dk)\eta J_0&#x27;,\qquad
+Q_s(y)\ge\tfrac1{10}e^{-y}+D\eta^2(1-e^{-y})-h(1-e^{-y}).
+\tag{O5.3}
+\]">\[
+S_q=-h(1-2k\eta^2)+(D+dk)\eta J_0&#x27;,\qquad
+Q_s(y)\ge\tfrac1{10}e^{-y}+D\eta^2(1-e^{-y})-h(1-e^{-y}).
+\tag{O5.3}
+\]</span>
+<p>The inequality uses <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> and <span class="math" data-tex="\(\eta J_0&#x27;\ge\eta^2\)">\(\eta J_0&#x27;\ge\eta^2\)</span>. Take <span class="math" data-tex="\(h\le e^{-T_d}/20\)">\(h\le e^{-T_d}/20\)</span>. The negative h term is then at most <span class="math" data-tex="\(e^{-y}/20\)">\(e^{-y}/20\)</span>. Splitting at <span class="math" data-tex="\(y=\log2\)">\(y=\log2\)</span>, using <span class="math" data-tex="\(D\ge.49\)">\(D\ge.49\)</span>, proves for example</p>
+<span class="math math-display" data-tex="\[
+Q_s(y)\ge\tfrac1{100}(\eta^2+e^{-y}),\qquad 0\le y\le T_d.
+\tag{O5.4}
+\]">\[
+Q_s(y)\ge\tfrac1{100}(\eta^2+e^{-y}),\qquad 0\le y\le T_d.
+\tag{O5.4}
+\]</span>
+<p>For <span class="math" data-tex="\(y\le\log2\)">\(y\le\log2\)</span>, <span class="math" data-tex="\(\eta^2+e^{-y}\le3e^{-y}\)">\(\eta^2+e^{-y}\le3e^{-y}\)</span>, while the retained exponential term is <span class="math" data-tex="\(e^{-y}/20\)">\(e^{-y}/20\)</span>. For <span class="math" data-tex="\(y\ge\log2\)">\(y\ge\log2\)</span>, the two positive terms dominate <span class="math" data-tex="\(e^{-y}/20+.245\eta^2\)">\(e^{-y}/20+.245\eta^2\)</span>. Thus the constant here is independent of <span class="math" data-tex="\(M_d\)">\(M_d\)</span>.</p>
+<p>We need a uniform axial-source bound to justify choosing <span class="math" data-tex="\(M_d\)">\(M_d\)</span> first. Write <span class="math" data-tex="\(\mathcal A_XU=\bar k\eta\)">\(\mathcal A_XU=\bar k\eta\)</span>; then <span class="math" data-tex="\(0\le k,\bar k\le4\)">\(0\le k,\bar k\le4\)</span> and <span class="math" data-tex="\(W=1-L\bar k\)">\(W=1-L\bar k\)</span> is bounded by fixed constants. Choose <span class="math" data-tex="\(M_d\)">\(M_d\)</span> large enough that <span class="math" data-tex="\(e_d\le1\)">\(e_d\le1\)</span>. The geometric portion
+<span class="math" data-tex="\(-Wk&#x27;\eta-A(1-2k\eta^2)k\eta-(D+dk)\eta k\)">\(-Wk&#x27;\eta-A(1-2k\eta^2)k\eta-(D+dk)\eta k\)</span>
+is bounded by <span class="math" data-tex="\(C|\eta|\)">\(C|\eta|\)</span>, with C independent of <span class="math" data-tex="\(M_d,T_d,P_*\)">\(M_d,T_d,P_*\)</span>. For the pressure portion use O4.3. Every unedited later E is bounded by <span class="math" data-tex="\(E(y)e^{-(v-y)/2}\)">\(E(y)e^{-(v-y)/2}\)</span> for <span class="math" data-tex="\(v\ge y\)">\(v\ge y\)</span>, and its logarithmic parameter derivative has magnitude at most <span class="math" data-tex="\(|J_0&#x27;|\)">\(|J_0&#x27;|\)</span>. The full future angular correction may be omitted in this backward pressure integral because its total pressure increment is zero. Thus</p>
+<span class="math math-display" data-tex="\[
+|\Pi|\le E^2/2,\quad |\Pi_\eta|\le |J_0&#x27;|E^2,
+\qquad |-d\Pi_\eta+4A\eta\Pi+2\eta\mathcal D_X\Pi|\le C|\eta|E^2.
+\tag{O5.5}
+\]">\[
+|\Pi|\le E^2/2,\quad |\Pi_\eta|\le |J_0&#x27;|E^2,
+\qquad |-d\Pi_\eta+4A\eta\Pi+2\eta\mathcal D_X\Pi|\le C|\eta|E^2.
+\tag{O5.5}
+\]</span>
+<p>The last term is exactly <span class="math" data-tex="\(\eta E^2\)">\(\eta E^2\)</span>. At the start of the first unit transition the radial formula <span class="math" data-tex="\(N_s=X^{-1}\int_0^XS_n\,dx\)">\(N_s=X^{-1}\int_0^XS_n\,dx\)</span> gives <span class="math" data-tex="\(|N_s|\le C|\eta|(1+P_*^2)\)">\(|N_s|\le C|\eta|(1+P_*^2)\)</span>: its geometric terms are bounded odd functions of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and its pressure terms are bounded by <span class="math" data-tex="\(CP_*^2|\eta|\)">\(CP_*^2|\eta|\)</span>. Integrability of the inner powers and the fixed first transition preserve this bound to the axial start. The pressure bound is independent of the later transition length, by the exponential estimate just used. Solving <span class="math" data-tex="\(N_s&#x27;+N_s=S_n\)">\(N_s&#x27;+N_s=S_n\)</span> on the axial interval, with <span class="math" data-tex="\(E^2=P_1^2f^2e^{-y}\)">\(E^2=P_1^2f^2e^{-y}\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|N_s|\le C|\eta|\{1+P_1^2(1+y)e^{-y}\},\qquad
+\frac{|N_s|}{E^2}\le C|\eta|\left(\frac{e^{T_d}}{P_*^2}+1+y\right)
+\le C|\eta|(1+y).
+\tag{O5.6}
+\]">\[
+|N_s|\le C|\eta|\{1+P_1^2(1+y)e^{-y}\},\qquad
+\frac{|N_s|}{E^2}\le C|\eta|\left(\frac{e^{T_d}}{P_*^2}+1+y\right)
+\le C|\eta|(1+y).
+\tag{O5.6}
+\]</span>
+<p>We used <span class="math" data-tex="\(f\ge1/2\)">\(f\ge1/2\)</span>, <span class="math" data-tex="\(P_1\asymp P_*\)">\(P_1\asymp P_*\)</span> with fixed comparison constants, and <span class="math" data-tex="\(P_*&gt;e^{T_d}\)">\(P_*&gt;e^{T_d}\)</span>. This proves the stated C can be chosen independently of <span class="math" data-tex="\(M_d\)">\(M_d\)</span>.</p>
+<p>Since <span class="math" data-tex="\(b_s=2k&#x27;\eta/E\)">\(b_s=2k&#x27;\eta/E\)</span>, O5.4–O5.6 yield</p>
+<span class="math math-display" data-tex="\[
+|b_sw|\le C e_d\frac{\eta^2}{\eta^2+e^{-y}}\le C e_d,
+\qquad b_s^2\le C e_d^2e^{T_d}/P_*^2.
+\tag{O5.7}
+\]">\[
+|b_sw|\le C e_d\frac{\eta^2}{\eta^2+e^{-y}}\le C e_d,
+\qquad b_s^2\le C e_d^2e^{T_d}/P_*^2.
+\tag{O5.7}
+\]</span>
+<p>Here <span class="math" data-tex="\(a=2\)">\(a=2\)</span>. Choose <span class="math" data-tex="\(M_d\)">\(M_d\)</span> first so <span class="math" data-tex="\(Ce_d&lt;1/8\)">\(Ce_d&lt;1/8\)</span>, and <span class="math" data-tex="\(P_*\)">\(P_*\)</span> later sufficiently large that the second bound is less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. Then <span class="math" data-tex="\(a-b_sw&gt;15/8\)">\(a-b_sw&gt;15/8\)</span> and <span class="math" data-tex="\(2b_sw+b_s^2/a&lt;3/8&lt;2\)">\(2b_sw+b_s^2/a&lt;3/8&lt;2\)</span>. This proves both strict cone tests throughout the axial interval without a circular parameter choice.</p>
+<h2 id="o6-the-intermediate-interval-and-the-pulse-cone">O6. The intermediate interval and the pulse cone</h2>
+<p>The equation <span class="math" data-tex="\(\bar k&#x27;=k-\bar k\)">\(\bar k&#x27;=k-\bar k\)</span> and the last eleven units with k zero give <span class="math" data-tex="\(\bar k(T_d)\le4e^{-11}\)">\(\bar k(T_d)\le4e^{-11}\)</span>, so <span class="math" data-tex="\(L\bar k&lt;1/2\)">\(L\bar k&lt;1/2\)</span>. On the next unit transition U is zero and <span class="math" data-tex="\(W=1-L\bar k\ge1/2\)">\(W=1-L\bar k\ge1/2\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+c_\eta=D\eta J_0&#x27;=\frac{2D\eta^2}{1+\eta^2}.
+\tag{O6.1}
+\]">\[
+c_\eta=D\eta J_0&#x27;=\frac{2D\eta^2}{1+\eta^2}.
+\tag{O6.1}
+\]</span>
+<p>On that transition <span class="math" data-tex="\(S_q=(-l)W-h+c_\eta\)">\(S_q=(-l)W-h+c_\eta\)</span>. The positive incoming value in O5.4 and variation of constants retain a positive lower bound depending only on the preceding choices, uniformly for small <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and h. On this finite interval w is bounded by <span class="math" data-tex="\(C_{\rm pre}\)">\(C_{\rm pre}\)</span>; hence <span class="math" data-tex="\(\sqrt\lambda|w|\)">\(\sqrt\lambda|w|\)</span> is small after choosing <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. With <span class="math" data-tex="\(b_s=0\)">\(b_s=0\)</span> and <span class="math" data-tex="\(2\le a\le2+2\lambda\)">\(2\le a\le2+2\lambda\)</span>, O5.1 follows. The admissible cone applies wherever <span class="math" data-tex="\(l&lt;0\)">\(l&lt;0\)</span>, and the relaxed cone at its initial endpoint.</p>
+<p>On the constant-slope interval let <span class="math" data-tex="\(\alpha=1-\lambda\)">\(\alpha=1-\lambda\)</span> and <span class="math" data-tex="\(\bar k=\bar k_0e^{-y}\)">\(\bar k=\bar k_0e^{-y}\)</span>. The angular equation is exactly</p>
+<span class="math math-display" data-tex="\[
+Q_s&#x27;+\alpha Q_s=\lambda-h+c_\eta-\lambda L\bar k_0e^{-y}.
+\tag{O6.2}
+\]">\[
+Q_s&#x27;+\alpha Q_s=\lambda-h+c_\eta-\lambda L\bar k_0e^{-y}.
+\tag{O6.2}
+\]</span>
+<p>The incoming value has a lower bound <span class="math" data-tex="\(c_{\rm pre}(1+\eta^2)\)">\(c_{\rm pre}(1+\eta^2)\)</span>. Since <span class="math" data-tex="\(L\bar k_0&lt;1/2\)">\(L\bar k_0&lt;1/2\)</span> and <span class="math" data-tex="\(h&lt;\lambda/4\)">\(h&lt;\lambda/4\)</span>, the right side is at least <span class="math" data-tex="\(\lambda/4+c_\eta\)">\(\lambda/4+c_\eta\)</span>. Its positive convolution proves the first of the following bounds; direct integration proves the second:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+Q_s&amp;\ge c_{\rm pre}(\eta^2+\lambda+e^{-\alpha y}),\\
+Q_s-\frac{\lambda-h+c_\eta}{\alpha}
+&amp;=e^{-\alpha y}\left[Q_s(0)-\frac{\lambda-h+c_\eta}{\alpha}-L\bar k_0(1-e^{-\lambda y})\right]
+=O_{C^1_\eta}(C_{\rm pre}(1+y)e^{-\alpha y}),\\
+|N_s/E|&amp;\le C_{\rm pre}|\eta|(1+y)e^{-(1/2-\lambda)y}.
+\end{split}
+\tag{O6.3}
+\]">\[
+\begin{split}
+Q_s&amp;\ge c_{\rm pre}(\eta^2+\lambda+e^{-\alpha y}),\\
+Q_s-\frac{\lambda-h+c_\eta}{\alpha}
+&amp;=e^{-\alpha y}\left[Q_s(0)-\frac{\lambda-h+c_\eta}{\alpha}-L\bar k_0(1-e^{-\lambda y})\right]
+=O_{C^1_\eta}(C_{\rm pre}(1+y)e^{-\alpha y}),\\
+|N_s/E|&amp;\le C_{\rm pre}|\eta|(1+y)e^{-(1/2-\lambda)y}.
+\end{split}
+\tag{O6.3}
+\]</span>
+<p>For the last line, U zero removes every geometric axial-source term. O5.5 bounds the pressure source by <span class="math" data-tex="\(C|\eta|E^2\)">\(C|\eta|E^2\)</span>. Its convolution with <span class="math" data-tex="\(e^{-y}\)">\(e^{-y}\)</span>, and <span class="math" data-tex="\(E^2=E(0)^2e^{-(1+2\lambda)y}\)">\(E^2=E(0)^2e^{-(1+2\lambda)y}\)</span>, gives <span class="math" data-tex="\(C_{\rm pre}|\eta|(1+y)e^{-y}\)">\(C_{\rm pre}|\eta|(1+y)e^{-y}\)</span> for N. Divide by the exact E. One parameter derivative gives the same bound with the <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span> factor removed. Since <span class="math" data-tex="\(|\eta|/(\eta^2+e^{-\alpha y})\le\frac12e^{\alpha y/2}\)">\(|\eta|/(\eta^2+e^{-\alpha y})\le\frac12e^{\alpha y/2}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sqrt\lambda|w|\le C_{\rm pre}\sqrt\lambda(1+y)e^{\lambda y/2}=o(1),
+\qquad 0\le y\le60\log(1/\lambda).
+\tag{O6.4}
+\]">\[
+\sqrt\lambda|w|\le C_{\rm pre}\sqrt\lambda(1+y)e^{\lambda y/2}=o(1),
+\qquad 0\le y\le60\log(1/\lambda).
+\tag{O6.4}
+\]</span>
+<p>The last limit is uniform on that interval: its right side is at most <span class="math" data-tex="\(C_{\rm pre}\sqrt\lambda(1+60\log(1/\lambda))e^{30\lambda\log(1/\lambda)}\)">\(C_{\rm pre}\sqrt\lambda(1+60\log(1/\lambda))e^{30\lambda\log(1/\lambda)}\)</span>, which tends to zero. Thus <span class="math" data-tex="\(a=2+2\lambda,b_s=0\)">\(a=2+2\lambda,b_s=0\)</span> satisfy both cone tests there.</p>
+<p>For the pulse retain <span class="math" data-tex="\(m=\mathcal A_XU/E\)">\(m=\mathcal A_XU/E\)</span>, <span class="math" data-tex="\(\beta=1/2-\lambda\)">\(\beta=1/2-\lambda\)</span>, and the actual R in O0.5, including both end bumps. Differentiating the radial average gives the exact equation</p>
+<span class="math math-display" data-tex="\[
+m&#x27;+\beta m=R_b.
+\tag{O6.5}
+\]">\[
+m&#x27;+\beta m=R_b.
+\tag{O6.5}
+\]</span>
+<p>Extend R by zero to negative y. The main pulse is flat at its start; the later bumps have exponentially small fixed <span class="math" data-tex="\(\zeta_b\)">\(\zeta_b\)</span> derivatives. Its convolution solution and Taylor's formula give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+m(y)&amp;=m(0)e^{-\beta y}+\int_0^\infty e^{-\beta v}R_b(y-v)\,dv\\
+&amp;=\frac{R_b}{\beta}-\frac{\lambda\partial_{\zeta_b}R_b}{\beta^2}
++O(C_{\rm pre}\lambda^2)+m(0)e^{-\beta y}.
+\end{split}
+\tag{O6.6}
+\]">\[
+\begin{split}
+m(y)&amp;=m(0)e^{-\beta y}+\int_0^\infty e^{-\beta v}R_b(y-v)\,dv\\
+&amp;=\frac{R_b}{\beta}-\frac{\lambda\partial_{\zeta_b}R_b}{\beta^2}
++O(C_{\rm pre}\lambda^2)+m(0)e^{-\beta y}.
+\end{split}
+\tag{O6.6}
+\]</span>
+<p>The remainder is bounded by <span class="math" data-tex="\(\frac12\lambda^2\|\partial_{\zeta_b}^2R_b\|_\infty\int_0^\infty e^{-\beta v}v^2dv\)">\(\frac12\lambda^2\|\partial_{\zeta_b}^2R_b\|_\infty\int_0^\infty e^{-\beta v}v^2dv\)</span>. The same argument works after one <span class="math" data-tex="\(\eta\)">\(\eta\)</span> derivative. The initial m and its derivative are <span class="math" data-tex="\(O(C_{\rm pre}\lambda^{29})\)">\(O(C_{\rm pre}\lambda^{29})\)</span> by O1.2. The fixed point amplitude estimate O3.7 and O1.5 give <span class="math" data-tex="\(\|m_\eta\|_\infty\le C_{\rm pre}\lambda(1+\log(1/\lambda))\)">\(\|m_\eta\|_\infty\le C_{\rm pre}\lambda(1+\log(1/\lambda))\)</span>.</p>
+<p>On the pulse, <span class="math" data-tex="\(W=1-2D\eta Em-d(Em)_\eta\)">\(W=1-2D\eta Em-d(Em)_\eta\)</span>. Since <span class="math" data-tex="\((\log E)_\eta=-J_0&#x27;\)">\((\log E)_\eta=-J_0&#x27;\)</span>, the angular source is <span class="math" data-tex="\(\lambda-h+c_\eta+O(C_{\rm pre}E)\)">\(\lambda-h+c_\eta+O(C_{\rm pre}E)\)</span>. The initial angular discrepancy is bounded by O6.3 at <span class="math" data-tex="\(T_w\)">\(T_w\)</span>; <span class="math" data-tex="\(E\le C_{\rm pre}\lambda^{30}\)">\(E\le C_{\rm pre}\lambda^{30}\)</span> throughout the pulse. Convolution with <span class="math" data-tex="\(e^{-(1-\lambda)y}\)">\(e^{-(1-\lambda)y}\)</span> therefore proves</p>
+<span class="math math-display" data-tex="\[
+Q_s=\frac{\lambda-h+c_\eta}{1-\lambda}+O(C_{\rm pre}\lambda^{28}).
+\tag{O6.7}
+\]">\[
+Q_s=\frac{\lambda-h+c_\eta}{1-\lambda}+O(C_{\rm pre}\lambda^{28}).
+\tag{O6.7}
+\]</span>
+<p>The weakened power 28 retains the source's estimate. To bound all terms of N, integrate the original S: <span class="math" data-tex="\(dS/dy=XE^2(R_b^2-1/2)\)">\(dS/dy=XE^2(R_b^2-1/2)\)</span>. The ratio <span class="math" data-tex="\(XE^2/(X_pe_b^2f^2)\)">\(XE^2/(X_pe_b^2f^2)\)</span> is between <span class="math" data-tex="\(e^{-26}\)">\(e^{-26}\)</span> and one on the pulse. Its length is <span class="math" data-tex="\(13/\lambda\)">\(13/\lambda\)</span>, R and its first parameter derivative are bounded, and O1.2 controls the incoming moment. Thus</p>
+<span class="math math-display" data-tex="\[
+\left\|S/(XE^2)\right\|_{C^1_\eta}\le C_{\rm pre}e^{26}/\lambda.
+\tag{O6.8}
+\]">\[
+\left\|S/(XE^2)\right\|_{C^1_\eta}\le C_{\rm pre}e^{26}/\lambda.
+\tag{O6.8}
+\]</span>
+<p>The canonical pressure and its parameter derivative are <span class="math" data-tex="\(O(E^2)\)">\(O(E^2)\)</span> by O4.3, omitting the complete later pressure-preserving correction. Substitute <span class="math" data-tex="\(M/X=Em\)">\(M/X=Em\)</span>, <span class="math" data-tex="\(U=ER_b\)">\(U=ER_b\)</span> into the complete formula G2.5. In particular <span class="math" data-tex="\((M-\eta M_\eta)/(XE)=m-\eta m_\eta+\eta J_0&#x27;m\)">\((M-\eta M_\eta)/(XE)=m-\eta m_\eta+\eta J_0&#x27;m\)</span>. The S and pressure terms are <span class="math" data-tex="\(O(C_{\rm pre}E/\lambda)\)">\(O(C_{\rm pre}E/\lambda)\)</span>, and <span class="math" data-tex="\((1-W)R_b=O(C_{\rm pre}E)\)">\((1-W)R_b=O(C_{\rm pre}E)\)</span>. This proves the full source formula</p>
+<span class="math math-display" data-tex="\[
+N_s/E=-R_b+(D+c_\eta)m-D\eta m_\eta+O(C_{\rm pre}\lambda^{27}).
+\tag{O6.9}
+\]">\[
+N_s/E=-R_b+(D+c_\eta)m-D\eta m_\eta+O(C_{\rm pre}\lambda^{27}).
+\tag{O6.9}
+\]</span>
+<p>All pressure and moment contributions have thus been bounded rather than omitted.</p>
+<p>Divide O6.9 by O6.7. The factor <span class="math" data-tex="\(|\eta|/(\lambda+c_\eta)\le C/\sqrt\lambda\)">\(|\eta|/(\lambda+c_\eta)\le C/\sqrt\lambda\)</span> and the m derivative bound make its parameter term <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. The Taylor remainder divided by Q is <span class="math" data-tex="\(O(\lambda)\)">\(O(\lambda)\)</span>; the incoming exponential term and angular error give smaller powers. Since <span class="math" data-tex="\(D+c_\eta-\beta=\lambda-h+c_\eta\)">\(D+c_\eta-\beta=\lambda-h+c_\eta\)</span>, the coefficient of R is <span class="math" data-tex="\((1-\lambda)/\beta=2+O(\lambda)\)">\((1-\lambda)/\beta=2+O(\lambda)\)</span>. Therefore, uniformly on the whole pulse,</p>
+<span class="math math-display" data-tex="\[
+w=2R_b-C_d\partial_{\zeta_b}R_b+o(1),\qquad
+C_d=\frac{\lambda(D+c_\eta)(1-\lambda)}{\beta^2(\lambda-h+c_\eta)},\qquad
+0\le C_d\le2+o(1).
+\tag{O6.10}
+\]">\[
+w=2R_b-C_d\partial_{\zeta_b}R_b+o(1),\qquad
+C_d=\frac{\lambda(D+c_\eta)(1-\lambda)}{\beta^2(\lambda-h+c_\eta)},\qquad
+0\le C_d\le2+o(1).
+\tag{O6.10}
+\]</span>
+<p>The quotient <span class="math" data-tex="\((D+c)/(\lambda-h+c)\)">\((D+c)/(\lambda-h+c)\)</span> decreases for <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>, because its derivative has numerator <span class="math" data-tex="\(\lambda-h-D=\lambda-1/2&lt;0\)">\(\lambda-h-D=\lambda-1/2&lt;0\)</span>. Its maximum occurs at zero; taking <span class="math" data-tex="\(\lambda\downarrow0\)">\(\lambda\downarrow0\)</span> and then <span class="math" data-tex="\(h/\lambda\downarrow0\)">\(h/\lambda\downarrow0\)</span> gives the stated upper limit. This is compatible with O0.2.</p>
+<p>The exact other shear is</p>
+<span class="math math-display" data-tex="\[
+a=2+2\lambda,\qquad b_s=-(1+2\lambda)R_b+2\lambda\partial_{\zeta_b}R_b=-R_b+O(\lambda).
+\tag{O6.11}
+\]">\[
+a=2+2\lambda,\qquad b_s=-(1+2\lambda)R_b+2\lambda\partial_{\zeta_b}R_b=-R_b+O(\lambda).
+\tag{O6.11}
+\]</span>
+<p>Apart from exponentially small end bumps, R is nonnegative and <span class="math" data-tex="\(\partial_{\zeta_b}R_b\le1.2\)">\(\partial_{\zeta_b}R_b\le1.2\)</span>: the derivative of <span class="math" data-tex="\(\varphi_b\)">\(\varphi_b\)</span> is at most one, and differentiating its terminal cutoff gives a nonpositive term. Both R and every fixed shape derivative have finite uniform bounds. Choose <span class="math" data-tex="\(\lambda,h\)">\(\lambda,h\)</span> small enough that <span class="math" data-tex="\(1.2C_d\le2.41\)">\(1.2C_d\le2.41\)</span>. The exact quadratic maxima then give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+b_sw&amp;\le\sup_{R\ge0}(-2R^2+2.41R)+o(1)
+=\frac{58081}{80000}+o(1)&lt;.74,\\
+2b_sw+b_s^2/a+(a-2)w^2
+&amp;\le\sup_{R\ge0}(-3.5R^2+4.82R)+o(1)
+=\frac{58081}{35000}+o(1)&lt;1.68.
+\end{split}
+\tag{O6.12}
+\]">\[
+\begin{split}
+b_sw&amp;\le\sup_{R\ge0}(-2R^2+2.41R)+o(1)
+=\frac{58081}{80000}+o(1)&lt;.74,\\
+2b_sw+b_s^2/a+(a-2)w^2
+&amp;\le\sup_{R\ge0}(-3.5R^2+4.82R)+o(1)
+=\frac{58081}{35000}+o(1)&lt;1.68.
+\end{split}
+\tag{O6.12}
+\]</span>
+<p>The rational gaps to the stated upper bounds are <span class="math" data-tex="\(1119/80000\)">\(1119/80000\)</span> and <span class="math" data-tex="\(719/35000\)">\(719/35000\)</span>. Choose the finitely many uniform o(1) terms smaller than half these gaps. This is possible by the explicit preceding bounds, involving <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(\sqrt\lambda\log(1/\lambda)\)">\(\sqrt\lambda\log(1/\lambda)\)</span>, exponentially small terms and <span class="math" data-tex="\(h/\lambda\)">\(h/\lambda\)</span>. Negative shape derivatives only decrease the cross terms, so no lower bound on that derivative is needed. Consequently <span class="math" data-tex="\(a-b_sw&gt;1\)">\(a-b_sw&gt;1\)</span>, the second expression is less than 2, and <span class="math" data-tex="\(v_s\ge a&gt;2\)">\(v_s\ge a&gt;2\)</span>. This proves the admissible cone test throughout the actual pulse, including its correcting bumps.</p>
+<h2 id="o7-interpolation-the-steep-hold-and-the-terminal-half-interval">O7. Interpolation, the steep hold and the terminal half-interval</h2>
+<p>After the pulse <span class="math" data-tex="\(U=M=J=0\)">\(U=M=J=0\)</span> exactly, hence <span class="math" data-tex="\(W=1\)">\(W=1\)</span>. Before the angular bumps the interpolation source is <span class="math" data-tex="\(-l-h+\vartheta_fc_\eta\)">\(-l-h+\vartheta_fc_\eta\)</span>, at least <span class="math" data-tex="\(\lambda-h\)">\(\lambda-h\)</span>. Its integrating coefficient <span class="math" data-tex="\(1+l\)">\(1+l\)</span> has fixed bounds, and the pulse endpoint Q is bounded below by <span class="math" data-tex="\(c\lambda\)">\(c\lambda\)</span>. Thus <span class="math" data-tex="\(Q_s\ge c\lambda\)">\(Q_s\ge c\lambda\)</span> through interpolation and the uniform interval. On the two bumps the perturbations of l and <span class="math" data-tex="\((\log E)_\eta\)">\((\log E)_\eta\)</span> are <span class="math" data-tex="\(O(C_{\rm pre}\lambda^{28})\)">\(O(C_{\rm pre}\lambda^{28})\)</span>, by O2.4, and their total logarithmic length is fixed. Variation of constants changes Q by that same order. It therefore remains at least <span class="math" data-tex="\(c\lambda\)">\(c\lambda\)</span> there, with a smaller fixed c.</p>
+<p>The already established <span class="math" data-tex="\(S(\infty)=0\)">\(S(\infty)=0\)</span>, together with U zero, gives the exact backward identity</p>
+<span class="math math-display" data-tex="\[
+S(X)/X=\frac1{2X}\int_X^\infty E(X&#x27;,\eta)^2\,dX&#x27;.
+\tag{O7.1}
+\]">\[
+S(X)/X=\frac1{2X}\int_X^\infty E(X&#x27;,\eta)^2\,dX&#x27;.
+\tag{O7.1}
+\]</span>
+<p>Before the exterior release, <span class="math" data-tex="\(l\le-\lambda/2\)">\(l\le-\lambda/2\)</span>, including the angular bumps, so the remaining pre-release integral is bounded by <span class="math" data-tex="\(CXE^2/\lambda\)">\(CXE^2/\lambda\)</span>. The release contribution is bounded by O3.2 and is no larger than another <span class="math" data-tex="\(CXE^2\)">\(CXE^2\)</span>, since <span class="math" data-tex="\(XE^2\)">\(XE^2\)</span> decreases before release up to bounded bump factors. The same proof after a parameter derivative uses the bounded logarithmic parameter derivatives and small angular-coefficient derivatives. Also O4.3 gives <span class="math" data-tex="\(|\Pi|+|\Pi_\eta|\le CE^2\)">\(|\Pi|+|\Pi_\eta|\le CE^2\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\frac{|S|+|S_\eta|}{X}\le CE^2/\lambda,\quad
+|N_s|\le CE^2/\lambda,\quad |w|\le CE/\lambda^2=o(1).
+\tag{O7.2}
+\]">\[
+\frac{|S|+|S_\eta|}{X}\le CE^2/\lambda,\quad
+|N_s|\le CE^2/\lambda,\quad |w|\le CE/\lambda^2=o(1).
+\tag{O7.2}
+\]</span>
+<p>The last statement uses <span class="math" data-tex="\(E\le C_{\rm pre}\lambda^{30}e^{-13/(2\lambda)-13}\)">\(E\le C_{\rm pre}\lambda^{30}e^{-13/(2\lambda)-13}\)</span> at pulse end, with a nonincreasing unedited profile and small relative bumps thereafter. Here <span class="math" data-tex="\(b_s=0\)">\(b_s=0\)</span>, and <span class="math" data-tex="\(2&lt;a\le2+2\lambda+.2+O(C_{\rm pre}\lambda^{28})\)">\(2&lt;a\le2+2\lambda+.2+O(C_{\rm pre}\lambda^{28})\)</span>. The two cone margins are positive; <span class="math" data-tex="\(v_s=a&gt;2\)">\(v_s=a&gt;2\)</span>.</p>
+<p>From the release start onward E is independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, as are its remaining moment integrals. Equations O4.3, O7.1 and G2.5 therefore give the exact formula</p>
+<span class="math math-display" data-tex="\[
+N_s=2\eta\int_y^\infty(he^{v-y}-A)E(v)^2\,dv.
+\tag{O7.3}
+\]">\[
+N_s=2\eta\int_y^\infty(he^{v-y}-A)E(v)^2\,dv.
+\tag{O7.3}
+\]</span>
+<p>Every subsequent slope satisfies <span class="math" data-tex="\(l\le-3h/4\)">\(l\le-3h/4\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+E(v)^2\le E(y)^2e^{-(1+3h/2)(v-y)},\quad
+h\int_y^\infty e^{v-y}E(v)^2dv\le\tfrac23E(y)^2,\quad
+\int_y^\infty E(v)^2dv\le\frac{E(y)^2}{1+3h/2}.
+\tag{O7.4}
+\]">\[
+E(v)^2\le E(y)^2e^{-(1+3h/2)(v-y)},\quad
+h\int_y^\infty e^{v-y}E(v)^2dv\le\tfrac23E(y)^2,\quad
+\int_y^\infty E(v)^2dv\le\frac{E(y)^2}{1+3h/2}.
+\tag{O7.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(|N_s|\le CE^2\)">\(|N_s|\le CE^2\)</span> with a constant independent of h. Before and during the steep hold Q is at least <span class="math" data-tex="\(c\lambda\)">\(c\lambda\)</span>; during that hold it increases by O2.5. Hence <span class="math" data-tex="\(|w|\le Ce_{\rm rel}/\lambda=o(1)\)">\(|w|\le Ce_{\rm rel}/\lambda=o(1)\)</span> there. After the steep hold, its next transition retains a large positive Q, the <span class="math" data-tex="\(-h\)">\(-h\)</span> hold decreases it only to <span class="math" data-tex="\(Q_p\asymp h\)">\(Q_p\asymp h\)</span>, and O2.8 gives <span class="math" data-tex="\(Q_s\ge ch\)">\(Q_s\ge ch\)</span> on the first half-unit of the terminal interval. The exact <span class="math" data-tex="\(h^6\)">\(h^6\)</span> amplitude drop in O3.1 yields</p>
+<span class="math math-display" data-tex="\[
+E\le Ce_{\rm rel}h^6,\qquad |w|\le Ce_{\rm rel}h^5=o(1)
+\tag{O7.5}
+\]">\[
+E\le Ce_{\rm rel}h^6,\qquad |w|\le Ce_{\rm rel}h^5=o(1)
+\tag{O7.5}
+\]</span>
+<p>on that latter range. This remains small even if h is much smaller than <span class="math" data-tex="\(e_{\rm rel}\)">\(e_{\rm rel}\)</span>; no reversed parameter order is used. Throughout the release range in question <span class="math" data-tex="\(b_s=0\)">\(b_s=0\)</span>, <span class="math" data-tex="\(2&lt;a\le4\)">\(2&lt;a\le4\)</span>, so O5.1 holds and <span class="math" data-tex="\(v_s=a&gt;2\)">\(v_s=a&gt;2\)</span>. The endpoint collar after terminal coordinate <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is intentionally not included in this conclusion: it is the source's separate heat and endpoint-stress construction.</p>
+<h2 id="o8-one-finite-parameter-choice-and-the-resulting-reference-profile">O8. One finite parameter choice and the resulting reference profile</h2>
+<p>Choose the fixed shapes, <span class="math" data-tex="\(T_f\)">\(T_f\)</span>, and <span class="math" data-tex="\(c_o\)">\(c_o\)</span> as in O0. Select <span class="math" data-tex="\(M_d\)">\(M_d\)</span> to meet O5.7, define <span class="math" data-tex="\(T_d\)">\(T_d\)</span>, then choose <span class="math" data-tex="\(P_*\)">\(P_*\)</span> as there. All constants denoted <span class="math" data-tex="\(C_{\rm pre}\)">\(C_{\rm pre}\)</span> are now fixed. Select <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> sufficiently small to meet the finite list of moment-solve conditions O2.4, the root bracket O3.4–O3.7, the bounds O6.4, and the parts of O6.12 and O7.2 depending on <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. All their controlling quantities tend to zero. Finally select h sufficiently small relative to this <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(e^{-T_d}\)">\(e^{-T_d}\)</span> to meet O5.4, O6.2, O6.10–O6.12 and the positive holding-length condition O2.7. Include also the finite outer heat-stress requirement of <a href="heat-exterior-stress-audit.html">H5.5</a>, with its constant uniform for small h and the already fixed amplitude <span class="math" data-tex="\(e_{\rm rel}\)">\(e_{\rm rel}\)</span>. The h-uniform bounds in O3.2 and O7.4 ensure that making h smaller does not undo any preceding smallness condition. This proves existence of a single finite parameter choice for the entire schedule.</p>
+<p>For any fixed <span class="math" data-tex="\(x_*\in(0,1]\)">\(x_*\in(0,1]\)</span>, the remaining radial range from <span class="math" data-tex="\(X=x_*X_R\)">\(X=x_*X_R\)</span> through terminal coordinate <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is a compact interval in <span class="math" data-tex="\(x=X/X_R\)">\(x=X/X_R\)</span>, after these choices. The proof gives positive Q and strict O5.1 throughout it. All a, <span class="math" data-tex="\(b_s\)">\(b_s\)</span>, w are continuous and bounded there. Their image is therefore a compact subset of the strict set in G6.4–G6.5, with positive minimum gaps. The exact comparison G3.7 proves that these quantities are independent of <span class="math" data-tex="\(X_R\)">\(X_R\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+p_{s,1}=X_R\frac{xQ_s(x,\eta)}{L},\qquad
+\min_{x,\eta}\frac{xQ_s(x,\eta)}L&gt;0.
+\tag{O8.1}
+\]">\[
+p_{s,1}=X_R\frac{xQ_s(x,\eta)}{L},\qquad
+\min_{x,\eta}\frac{xQ_s(x,\eta)}L&gt;0.
+\tag{O8.1}
+\]</span>
+<p>Choose <span class="math" data-tex="\(X_R\)">\(X_R\)</span> large enough that the left side exceeds the finite threshold <span class="math" data-tex="\(P_K\)">\(P_K\)</span> of G6.5 everywhere. The relaxed cone follows on the entire specified compact interval. The admissible cone follows wherever <span class="math" data-tex="\(v_s&gt;2\)">\(v_s&gt;2\)</span>, in particular throughout the intermediate power-law interval, pulse, interpolation and exterior release, and at every point with <span class="math" data-tex="\(l&lt;0\)">\(l&lt;0\)</span> in the transition into the intermediate interval. This is precisely the range in Proposition A.4. All stage boundaries divided by <span class="math" data-tex="\(X_R\)">\(X_R\)</span> are independent of <span class="math" data-tex="\(X_R\)">\(X_R\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>The reference profile has positive E, smooth U and E for <span class="math" data-tex="\(X&gt;0\)">\(X&gt;0\)</span>, <span class="math" data-tex="\(M=J=U=0\)">\(M=J=U=0\)</span> after the pulse, <span class="math" data-tex="\(S(\infty)=0\)">\(S(\infty)=0\)</span>, <span class="math" data-tex="\(\int_0^\infty(H-H_{\rm pow})\,dX=0\)">\(\int_0^\infty(H-H_{\rm pow})\,dX=0\)</span>, and the four unchanged reserved patches. Beyond the terminal interval it equals the stated <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-independent power law. Its canonical pressure has the analyticity, sign, size and scale-independence properties of Lemma A.5. These conclusions establish those two source components. They do not replace the power exterior by a heat flow, construct the regular axis, prove the endpoint stress direction, or complete Theorem 4.6.</p>
+<p>The receiving heat construction is derived in <a href="heat-exterior-stress-audit.html">H0–H7</a>: the exact heat replacement, three restored moments, backward stress with the actual reference axis traces, strict terminal cone, flat factors and smooth endpoint direction. The analytic regular-axis solution and its endpoint inequality are derived in <a href="analytic-axis-profile-audit.html">J0–J7</a>. Its continuation and exact matching to this exterior are derived in <a href="inner-outer-joining-audit.html">Q0–Q9</a>. The subsequent shear modification and every leading-profile property of Theorem 4.6 are derived in <a href="shear-realization-audit.html">V0–V7</a>. The positive-order base is derived in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+</article></body></html>

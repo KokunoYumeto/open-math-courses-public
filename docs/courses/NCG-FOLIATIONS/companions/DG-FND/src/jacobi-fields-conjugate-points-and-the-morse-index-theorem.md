@@ -25,11 +25,11 @@ D_sD_tT-D_tD_sT=R(V,T)T.
 \]
 These identities hold at critical points of \(F\) too. If each \(t\)-curve is geodesic, \(D_tT=0\). Substitute the first identity into the second and restrict to \(s=0\); this is (A.1).
 
-Use a parallel frame along \(\gamma\), whose existence and smoothness follow from [Connections D.2](connections-and-parallel-transport.md#theorem-d-2). In that frame (A.1) is a linear second-order system \(j''+C(t)j'+D(t)j=0\) with smooth coefficients. On the compact interval they are bounded. Writing \(z=(j,j')\) gives \(z'=A(t)z\), with \(\|A(t)\|\leq M\). Local tools 2.1 gives local existence, uniqueness and smooth dependence. To check that this linear solution lasts for the whole interval, on any subinterval of length \(\delta\) with \(M\delta<1/2\), its integral equation gives
+Use a parallel frame along \(\gamma\), whose existence and smoothness follow from [Connections D.2](connections-and-parallel-transport.md#theorem-d-2). In that frame (A.1) is a linear second-order system \(j''+C(t)j'+D(t)j=0\) with smooth coefficients. On the compact interval they are bounded. Writing \(z=(j,j')\) gives \(z'=A(t)z\), with \(\|A(t)\|\leq M\). [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) gives local existence, uniqueness and smooth dependence. To check that this linear solution lasts for the whole interval, on any subinterval of length \(\delta\) with \(M\delta<1/2\), its integral equation gives
 \[
 \sup|z|\leq |z(t_0)|+M\delta\sup|z|,\qquad \sup|z|\leq2|z(t_0)|.
 \]
-The bound holds on every shorter interval of existence. It keeps the graph in a bounded compact set as a finite endpoint is approached, so the continuation assertion of Local tools 2.1 extends the solution. Finitely many such intervals reach both endpoints. The same bound locally uniform in parameters proves no loss of interval when the coefficients and data vary nearby. Linearity and uniqueness identify the solution space with its \(2\dim M\) initial coordinates.
+The bound holds on every shorter interval of existence. It keeps the graph in a bounded compact set as a finite endpoint is approached, so the continuation assertion of [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) extends the solution. Finitely many such intervals reach both endpoints. The same bound locally uniform in parameters proves no loss of interval when the coefficients and data vary nearby. Linearity and uniqueness identify the solution space with its \(2\dim M\) initial coordinates.
 
 For realization, write \(u=J(a)\), \(w=J'(a)\), \(v=T(a)\). Choose a smooth curve \(\sigma(s)\) through \(\gamma(a)\) with velocity \(u\). Let \(P_s\) be parallel transport along \(\sigma\), and prescribe the initial velocity
 \[
@@ -74,7 +74,7 @@ F(s,t)=\exp_{c(t)}(sV(t)),\qquad |s|<\varepsilon,
 \]
 is defined for every \(t\). [Geodesics B.1](geodesics-normal-coordinates-and-curvature.md#theorem-b-1) proves that its \(s\)-derivative at zero is \(V(t)\). The map is continuous across the fixed nodes and smooth on each piece. Where \(V=0\), it leaves the point fixed.
 
-Here is an explicit smoothing argument for (A.4). Choose a smooth frame on the interval, for example a parallel frame, and work with the component vector \(v(t)\). At an interior break \(c\), the two smooth pieces have smooth extensions \(v_-\) and \(v_+\) to a neighbourhood of \(c\), with \(v_-(c)=v_+(c)\). Choose a smooth transition function \(\chi:\mathbb R\to[0,1]\) equal to zero near \((-\infty,-1]\) and one near \([1,\infty)\). Such a function follows explicitly from the flat factor of Local tools 0.5 by taking
+Here is an explicit smoothing argument for (A.4). Choose a smooth frame on the interval, for example a parallel frame, and work with the component vector \(v(t)\). At an interior break \(c\), the two smooth pieces have smooth extensions \(v_-\) and \(v_+\) to a neighbourhood of \(c\), with \(v_-(c)=v_+(c)\). Choose a smooth transition function \(\chi:\mathbb R\to[0,1]\) equal to zero near \((-\infty,-1]\) and one near \([1,\infty)\). Such a function follows explicitly from the flat factor of [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) by taking
 \(\eta(x+1)/(\eta(x+1)+\eta(1-x))\).
 On \([c-\varepsilon,c+\varepsilon]\) replace \(v\) by
 \[
@@ -110,11 +110,11 @@ Fixed-endpoint critical curves of energy are exactly affinely parametrized geode
 \partial_s\frac{|T|^2}{2}=\langle D_tV,T\rangle,\qquad
 \partial_s|T|=\langle D_tV,T/|T|\rangle.
 \]
-Differentiate the finitely many compact-interval integrals, justified by the uniform difference-quotient estimate of Local tools 0.3. In the length case the positive minimum of the central speed keeps the nearby denominators away from zero. Integration by parts on each piece gives (A.6)–(A.7); the inner endpoints sum to the displayed jumps because \(V\) is continuous.
+Differentiate the finitely many compact-interval integrals, justified by the uniform difference-quotient estimate of [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). In the length case the positive minimum of the central speed keeps the nearby denominators away from zero. Integration by parts on each piece gives (A.6)–(A.7); the inner endpoints sum to the displayed jumps because \(V\) is continuous.
 
-If the energy derivative vanishes for every endpoint-fixed variation, take fields supported in one piece. A.2 realizes them. If \(T'\) were nonzero at a point, a nonnegative smooth bump there multiplied by \(T'\) would have a strictly positive integral against \(T'\), contradicting (A.6). Cutoffs are supplied by Local tools 0.5. Thus \(T'=0\) on each piece. Fields with an arbitrary prescribed value at a single node, constructed with the same cutoffs and a smooth local frame, now force \(T_i^-=T_i^+\). The pieces have identical positions and velocities at their joins. Uniqueness of the geodesic equation, [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1), makes them one smooth affinely parametrized geodesic. The converse follows immediately from (A.6), and includes zero velocity.
+If the energy derivative vanishes for every endpoint-fixed variation, take fields supported in one piece. A.2 realizes them. If \(T'\) were nonzero at a point, a nonnegative smooth bump there multiplied by \(T'\) would have a strictly positive integral against \(T'\), contradicting (A.6). Cutoffs are supplied by [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Thus \(T'=0\) on each piece. Fields with an arbitrary prescribed value at a single node, constructed with the same cutoffs and a smooth local frame, now force \(T_i^-=T_i^+\). The pieces have identical positions and velocities at their joins. Uniqueness of the geodesic equation, [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1), makes them one smooth affinely parametrized geodesic. The converse follows immediately from (A.6), and includes zero velocity.
 
-For length the identical argument forces \(u'=0\) on each piece and \(u_i^-=u_i^+\) at each node. The increasing parameter \(\rho(t)=\int_a^t|T|\,dt\) has positive derivative on each piece and has a smooth inverse there by Local tools 1.2. In that parameter the velocity is \(u\), with zero covariant derivative. At the joins the unit velocities agree, so geodesic uniqueness again glues the pieces. Conversely these conditions make (A.7) zero. 
+For length the identical argument forces \(u'=0\) on each piece and \(u_i^-=u_i^+\) at each node. The increasing parameter \(\rho(t)=\int_a^t|T|\,dt\) has positive derivative on each piece and has a smooth inverse there by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion). In that parameter the velocity is \(u\), with zero covariant derivative. At the joins the unit velocities agree, so geodesic uniqueness again glues the pieces. Conversely these conditions make (A.7) zero. 
 
 There is also an exact relation between energy and length. Put \(h=b-a>0\), \(v(t)=|\dot c(t)|\), \(L=\int_a^b v\) and \(E=\frac12\int_a^b v^2\). Expanding a square and integrating gives
 \[
@@ -256,7 +256,7 @@ where \(S_k,C_k\) are the scalar functions of [Sectional curvature B.2](sectiona
 
 ## C. A finite space that retains the entire index
 
-The next lemmas apply to any smooth symmetric matrix function \(B:[0,b]\to\operatorname{Sym}(d,\mathbb R)\) and its form (B.1), whether or not the matrix was obtained from curvature. Dimension \(d=0\) means the zero space and causes no exception. Fix \(C\geq0\) with \(\|B(t)\|\leq C\), which exists by compactness and Local tools 0.1–0.2.
+The next lemmas apply to any smooth symmetric matrix function \(B:[0,b]\to\operatorname{Sym}(d,\mathbb R)\) and its form (B.1), whether or not the matrix was obtained from curvature. Dimension \(d=0\) means the zero space and causes no exception. Fix \(C\geq0\) with \(\|B(t)\|\leq C\), which exists by compactness and [Local tools 0.1–0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 **Lemma C.1 (short-interval positivity and interpolation).** On an interval \([c,e]\) of length \(\delta\) satisfying \(C\delta^2/2<1\), the form \(I_B\) is positive definite on nonzero fields vanishing at its two ends. Every two endpoint values determine a unique solution of \(j''+Bj=0\) on this interval. That solution depends smoothly on the endpoint values and on \(c,e\) while the strict bound holds.
 
@@ -273,7 +273,7 @@ I_B(w,w)\geq(1-C\delta^2/2)\int_c^e|w'|^2.
 \]
 A nonzero continuous piecewise smooth field with both endpoints zero cannot have zero derivative on every piece, so the latter integral is positive.
 
-Solutions of the matrix equation have \(2d\) initial coordinates by the linear-system argument in A.1. The linear map sending a solution to its two endpoint values has trivial kernel: an element of its kernel has \(I_B(j,j)=0\) by integration by parts, so (C.1) forces zero. Between spaces of equal finite dimension an injective linear map is bijective. Its matrix depends smoothly on the interval endpoints, by Local tools 2.1. Matrix inversion is smooth where invertible, by Local tools 0.4. This proves the claimed smooth dependence, together with the same theorem's dependence on initial data. □
+Solutions of the matrix equation have \(2d\) initial coordinates by the linear-system argument in A.1. The linear map sending a solution to its two endpoint values has trivial kernel: an element of its kernel has \(I_B(j,j)=0\) by integration by parts, so (C.1) forces zero. Between spaces of equal finite dimension an injective linear map is bijective. Its matrix depends smoothly on the interval endpoints, by [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). Matrix inversion is smooth where invertible, by [Local tools 0.4](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). This proves the claimed smooth dependence, together with the same theorem's dependence on initial data. □
 
 **Lemma C.2 (finite symmetric forms and their variation).** A symmetric bilinear form \(Q\) on \(\mathbb R^D\) has an orthogonal decomposition into a negative, a zero and a positive space of dimensions \(p,k,q\). Its index is \(p\), its nullity is \(k\), and its maximal nonpositive dimension is \(p+k\). If \(Q(r)\) is a continuous family and \(Q(r_0)\) has those dimensions, then for all nearby \(r\),
 \[
@@ -282,7 +282,7 @@ p\leq i(Q(r))\leq p+k.
 \]
 In particular its index is locally constant when its nullity is zero.
 
-**Proof.** Dimension zero is immediate. Otherwise represent \(Q\) by a real symmetric matrix \(A\). The function \(x\mapsto x\cdot Ax\) attains its maximum on the unit sphere by Local tools 0.1. Differentiation along every tangent direction at a maximizer \(v\) shows \(Av=\lambda v\). Its orthogonal complement is invariant because \(A\) is symmetric. Induction on dimension gives an orthonormal eigenbasis, including dimension zero. Split it by the signs of its eigenvalues. The kernel is exactly the zero space. Projection of a negative definite subspace to the negative space is injective, since a vector with zero such projection has \(Q(x,x)\geq0\). Thus the maximal negative dimension is \(p\). Similarly a nonpositive subspace projects injectively to the sum of the negative and zero spaces, because a nonzero vector in the positive space has positive square. This proves the dimension \(p+k\) and attainment.
+**Proof.** Dimension zero is immediate. Otherwise represent \(Q\) by a real symmetric matrix \(A\). The function \(x\mapsto x\cdot Ax\) attains its maximum on the unit sphere by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Differentiation along every tangent direction at a maximizer \(v\) shows \(Av=\lambda v\). Its orthogonal complement is invariant because \(A\) is symmetric. Induction on dimension gives an orthonormal eigenbasis, including dimension zero. Split it by the signs of its eigenvalues. The kernel is exactly the zero space. Projection of a negative definite subspace to the negative space is injective, since a vector with zero such projection has \(Q(x,x)\geq0\). Thus the maximal negative dimension is \(p\). Similarly a nonpositive subspace projects injectively to the sum of the negative and zero spaces, because a nonzero vector in the positive space has positive square. This proves the dimension \(p+k\) and attainment.
 
 On the unit sphere of the negative space the square is bounded above by a strictly negative number. On the unit sphere of the positive space it is bounded below by a strictly positive number. Continuity of the finitely many matrix entries preserves both bounds for all sufficiently close \(r\). Therefore \(i(Q(r))\geq p\). Any negative subspace of dimension greater than \(p+k=D-q\) would meet that fixed positive space nontrivially, by the dimension formula for subspaces, which is impossible. This gives the upper bound. When \(k=0\) the bounds coincide. □
 
@@ -329,7 +329,7 @@ in the fixed parallel component frame. This is linear in \(j\) and vanishes at \
 I(j^0,w_j)=-|j'(\tau)|^2.
 \tag{C.6}
 \]
-Give \(K\) the norm \(\|j\|=|j'(\tau)|\), and choose any Euclidean coefficient norm on \(E\). Finite-dimensional boundedness, Local tools 0.2, supplies \(\alpha>0\) and \(M<\infty\) such that
+Give \(K\) the norm \(\|j\|=|j'(\tau)|\), and choose any Euclidean coefficient norm on \(E\). Finite-dimensional boundedness, [Local tools 0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), supplies \(\alpha>0\) and \(M<\infty\) such that
 \[
 I(x^0,x^0)\leq-\alpha\|x\|^2,\quad
 |I(x^0,w_j)|\leq M\|x\|\|j\|,\quad
@@ -367,7 +367,7 @@ Choose an integer \(N\) large enough that \(C(b/N)^2/2<1\). For each \(r>0\), us
 t_j(r)=jr/N,\qquad 0\leq j\leq N.
 \tag{D.2}
 \]
-On the fixed coordinate space \((\mathbb R^d)^{N-1}\), let \(Q(r)\) be the form on the interpolants with those node values. C.1 makes the interpolants smooth in \(r\) after each interval is parametrized by a fixed unit interval. Differentiation under a compact integral, Local tools 0.3, shows that all entries of \(Q(r)\) are smooth for \(r>0\). C.3 and B.1 identify
+On the fixed coordinate space \((\mathbb R^d)^{N-1}\), let \(Q(r)\) be the form on the interpolants with those node values. C.1 makes the interpolants smooth in \(r\) after each interval is parametrized by a fixed unit interval. Differentiation under a compact integral, [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), shows that all entries of \(Q(r)\) are smooth for \(r>0\). C.3 and B.1 identify
 \[
 i(Q(r))=i(r),\qquad \dim\ker Q(r)=\mu(r).
 \tag{D.3}
@@ -427,7 +427,7 @@ Integration by parts identifies the radical of \(I_\lambda\) with the solution s
 For a nonzero endpoint-fixed solution both \(\int|v|^2\) and \(\int|v'|^2\) are positive; the latter could vanish only for a constant vector, then zero by its endpoint. Division proves the strict bound, independent of \(r\).
 
 On a compact parameter interval enlarge \(\|B+\lambda I_d\|\)'s uniform bound slightly so it also holds in an open neighbourhood of that interval. Choose all subdivision lengths to satisfy C.1 for this bound. The solution of
-\(j''+(B+\lambda I_d)j=0\) interpolating each pair of node values depends smoothly on \(\lambda\), by the parameter version of Local tools 2.1 and the invertible endpoint matrix in C.1. Integrating its quadratic form on each fixed interval gives a smooth matrix \(Q(\lambda)\), by Local tools 0.3. C.3 gives
+\(j''+(B+\lambda I_d)j=0\) interpolating each pair of node values depends smoothly on \(\lambda\), by the parameter version of [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) and the invertible endpoint matrix in C.1. Integrating its quadratic form on each fixed interval gives a smooth matrix \(Q(\lambda)\), by [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). C.3 gives
 \[
 i(Q(\lambda))=i(I_\lambda),\qquad
 \dim\ker Q(\lambda)=\dim\ker(\mathcal L-\lambda I).
@@ -442,7 +442,7 @@ No basis of eigenfunctions is needed for this construction. □
 Q(s)=
 \begin{pmatrix}A(s)&D(s)\\D(s)^{\mathsf T}&E(s)\end{pmatrix}.
 \]
-At \(s_0\), \(D=0\), \(E=0\), and \(A\) is invertible. It remains invertible nearby by Local tools 0.4. Completing the square by the invertible change \(x\mapsto x+A^{-1}Dy\) decomposes the form into \(A(s)\) and
+At \(s_0\), \(D=0\), \(E=0\), and \(A\) is invertible. It remains invertible nearby by [Local tools 0.4](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Completing the square by the invertible change \(x\mapsto x+A^{-1}Dy\) decomposes the form into \(A(s)\) and
 \[
 S(s)=E(s)-D(s)^{\mathsf T}A(s)^{-1}D(s).
 \tag{E.5}
@@ -476,7 +476,7 @@ We compute its derivative on a kernel. Fix a node-coordinate vector \(x\in\ker Q
 \]
 The middle pairing is zero because \(j\) is in the radical on all endpoint-fixed fields. Node interpolation is injective, so \(x\ne0\) implies \(j\ne0\). Thus (E.7) is negative definite on the kernel. Polarization supplies the corresponding bilinear identity.
 
-E.2 makes every singular parameter isolated. The singular set in \([\lambda_0,0]\) is closed, since it is the zero set of the continuous determinant, and hence compact by Local tools 0.1. The neighbourhoods isolating its individual points form an open cover; a finite subcover shows that the singular set is finite. Each multiplicity is finite because an endpoint-zero solution is determined by its initial derivative in \(\mathbb R^d\), by A.1.
+E.2 makes every singular parameter isolated. The singular set in \([\lambda_0,0]\) is closed, since it is the zero set of the continuous determinant, and hence compact by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). The neighbourhoods isolating its individual points form an open cover; a finite subcover shows that the singular set is finite. Each multiplicity is finite because an endpoint-zero solution is determined by its initial derivative in \(\mathbb R^d\), by A.1.
 
 The initial index is zero. It is constant between singular parameters by C.2, and increases at each interior singular parameter by exactly its kernel dimension, by E.2. At a possible final singular parameter \(0\), its value equals the preceding index; that endpoint contributes nullity, not negative index. Combining this count with (E.4) at zero proves (E.6). Integration by parts gives the asserted identification of the zero eigenspace, and B.2 identifies its geometric multiplicity. For the full energy operator the tangential scalar equation is \(-f''=\lambda f\) with zero endpoints. Its integrated identity
 \(\lambda\int f^2=\int(f')^2\) excludes negative and zero eigenvalues, so it changes neither the negative count nor nullity. 
@@ -492,7 +492,7 @@ For \(\lambda\ne\eta\) the integral is therefore zero. On a negative eigenspace 
 
 **Theorem F.1 (the first conjugate obstruction).** If a nonconstant geodesic on \([0,b]\) has a conjugate time in \((0,b)\), it admits arbitrarily small smooth endpoint-fixed variations with smaller energy and smaller length. A minimizing geodesic has no interior conjugate time. At a first conjugate endpoint the index is zero and the nullity is positive; such a segment can still minimize.
 
-**Proof.** C.5 constructs a negative endpoint-fixed normal field on the longer interval as soon as there is a nonzero endpoint Jacobi field on a strictly shorter interval. Smooth it by A.2. The form converges under this approximation by the estimates in D.1, so a smooth approximation still has negative square. Realize it by (A.5). Its first energy and length variations vanish by A.3, and A.4 gives strictly negative second variations for both, since the speed is constant and positive. The fundamental theorem of calculus twice, or its integral Taylor formula from Local tools 0.3, makes both values strictly smaller for every sufficiently small nonzero variation parameter. The family converges smoothly to the central curve as the parameter tends to zero, giving arbitrary smallness. Thus an interior conjugate point is incompatible with minimization.
+**Proof.** C.5 constructs a negative endpoint-fixed normal field on the longer interval as soon as there is a nonzero endpoint Jacobi field on a strictly shorter interval. Smooth it by A.2. The form converges under this approximation by the estimates in D.1, so a smooth approximation still has negative square. Realize it by (A.5). Its first energy and length variations vanish by A.3, and A.4 gives strictly negative second variations for both, since the speed is constant and positive. The fundamental theorem of calculus twice, or its integral Taylor formula from [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), makes both values strictly smaller for every sufficiently small nonzero variation parameter. The family converges smoothly to the central curve as the parameter tends to zero, giving arbitrary smallness. Thus an interior conjugate point is incompatible with minimization.
 
 If the final endpoint is the first conjugate time, D.1 gives index zero and nullity \(\mu(b)>0\). This situation can occur on a minimizing segment: the unit-sphere meridian from a point to its antipode has first conjugate time \(\pi\) by B.3 and is minimizing by [Riemannian connections E.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-e-1), which proves the exact spherical distance and its minimizing arcs. □
 
@@ -531,7 +531,7 @@ There is a pointwise convexity proof of the absence of conjugate points as well.
 \frac{d^2}{dt^2}|J|^2
  =2|J'|^2-2\langle R(J,T)T,J\rangle\geq0.
 \]
-Indeed the tangential part has zero curvature contribution, so the stated radial sectional-curvature assumption applies to the remaining normal part. If \(f=|J|^2\), the fundamental theorem in Local tools 0.3 makes \(f'\) nondecreasing. For \(a<t<b\), every value of \(f'\) on \([a,t]\) is at most every value on \([t,b]\). Comparing the two averages gives
+Indeed the tangential part has zero curvature contribution, so the stated radial sectional-curvature assumption applies to the remaining normal part. If \(f=|J|^2\), the fundamental theorem in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) makes \(f'\) nondecreasing. For \(a<t<b\), every value of \(f'\) on \([a,t]\) is at most every value on \([t,b]\). Comparing the two averages gives
 \((f(t)-f(a))/(t-a)\leq(f(b)-f(t))/(b-t)\), or
 \(f(t)\leq((b-t)f(a)+(t-a)f(b))/(b-a)\).
 If \(J(a)=J(b)=0\), this is \(0\leq|J(t)|^2\leq0\); hence \(J=0\) throughout. No global length-minimization assertion is needed. □
@@ -539,7 +539,7 @@ If \(J(a)=J(b)=0\), this is \(0\leq|J(t)|^2\leq0\); hence \(J=0\) throughout. No
 **Example F.4 (endpoint degeneracy and global minimization are different).** On the unit \(S^n\), \(n\geq2\), every great semicircle minimizes between its antipodal endpoints despite having nullity \(n-1\). On the flat circle, a geodesic can have no conjugate times and nevertheless fail to minimize globally.
 
 **Proof.** [Sectional curvature C.2](sectional-curvature-and-space-forms.md#theorem-c-2) gives the complete round metric and its unit-speed geodesics
-\(\gamma(t)=\cos t\,p+\sin t\,v\), where \(p,v\) are orthonormal ambient vectors. Hopf–Rinow B.2 supplies a minimizing unit-speed geodesic between \(p\) and \(-p\). Its length \(L>0\) must satisfy \(\cos L=-1,\sin L=0\), so \(L\) is an odd positive multiple of \(\pi\), by [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). The explicit semicircle of length \(\pi\) is a competitor, forcing \(L=\pi\). Every such semicircle therefore minimizes. B.3 and D.1 give its nullity \(n-1\) and index zero.
+\(\gamma(t)=\cos t\,p+\sin t\,v\), where \(p,v\) are orthonormal ambient vectors. [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) supplies a minimizing unit-speed geodesic between \(p\) and \(-p\). Its length \(L>0\) must satisfy \(\cos L=-1,\sin L=0\), so \(L\) is an odd positive multiple of \(\pi\), by [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). The explicit semicircle of length \(\pi\) is a competitor, forcing \(L=\pi\). Every such semicircle therefore minimizes. B.3 and D.1 give its nullity \(n-1\) and index zero.
 
 For the other assertion, form the Euclidean quotient \(\mathbb R/(2\pi\mathbb Z)\) with its descended metric, as in [Sectional curvature G.3](sectional-curvature-and-space-forms.md#theorem-g-3). Its connection is ordinary differentiation in the covering coordinate. Every endpoint-fixed field has energy square \(\int|V'|^2>0\) unless zero. Its Jacobi equation is \(V''=0\), whose two zero endpoint values force the solution to vanish. Thus there are no conjugate times. But on \(0\leq t\leq3\pi/2\), the geodesic \([t]\) has length \(3\pi/2\), whereas the path \([-t/3]\) has the same endpoints and length \(\pi/2\). This explicitly disproves global minimization for that arc. □
 

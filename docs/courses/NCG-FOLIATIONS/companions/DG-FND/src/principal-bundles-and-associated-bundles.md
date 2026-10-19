@@ -6,7 +6,7 @@ A frame identifies an abstract vector space with one particular fibre. Changing 
 
 All manifolds and Lie groups here are finite dimensional, Hausdorff, second countable, smooth and without boundary. A Lie group has smooth multiplication and inversion. Its identity is \(e\). Vector bundles have constant finite rank; rank zero is allowed. Unless a complex bundle is specified, vector spaces are real. We use the usual real and complex number systems and the axiom of choice.
 
-The earlier programme lesson Local tools for bundles and transport, abbreviated **Local tools**, proves the analytic facts used below: finite linear algebra and norms in 0.2, differentiation and the fundamental theorem of calculus in 0.3, smooth matrix inversion in 0.4, inverse and implicit functions in 1.2–1.3, partitions of unity in 3.1, and the quotient by a closed embedded Lie subgroup in 4.1. Its 0.0 proves existence of positive square roots; smoothness on the positive real axis follows from 1.2 applied to \(t\mapsto t^2\), whose derivative is \(2t\ne0\). These are programme proofs, not external references in place of proofs.
+The earlier programme lesson [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md), abbreviated **Local tools**, proves the analytic facts used below: finite linear algebra and norms in 0.2, differentiation and the fundamental theorem of calculus in 0.3, smooth matrix inversion in 0.4, inverse and implicit functions in 1.2–1.3, partitions of unity in 3.1, and the quotient by a closed embedded Lie subgroup in 4.1. Its 0.0 proves existence of positive square roots; smoothness on the positive real axis follows from 1.2 applied to \(t\mapsto t^2\), whose derivative is \(2t\ne0\). These are programme proofs, not external references in place of proofs.
 
 ## A. Coordinates, gluing and a distinguished point in each fibre
 
@@ -353,7 +353,7 @@ The tautological line has fibre the line \(\ell\) itself over \(\ell\). Its loca
 \bigl([z_0:z_1],\,\xi(z_0,z_1)\bigr).
 \tag{E.4}
 \]
-The relation \((z,\xi)a=(za,a^{-1}\xi)\) preserves the product \(\xi z\), proving it is well defined. In the two vector charts it is the identity on \(\xi\), so it is a smooth linear isomorphism. Its first Chern number, with the complex orientation of this base, is \(-1\); a complete curvature computation and integration proof is DG-CHAR-17, Exercise V.4. That earlier programme computation uses the same local spanning vector \((1,w)\), hence the same tautological bundle. □
+The relation \((z,\xi)a=(za,a^{-1}\xi)\) preserves the product \(\xi z\), proving it is well defined. In the two vector charts it is the identity on \(\xi\), so it is a smooth linear isomorphism. Its first Chern number, with the complex orientation of this base, is \(-1\); a complete curvature computation and integration proof is [DG-CHAR-17, Exercise V.4](../supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md). That earlier programme computation uses the same local spanning vector \((1,w)\), hence the same tautological bundle. □
 
 ## F. Exercises with complete solutions
 

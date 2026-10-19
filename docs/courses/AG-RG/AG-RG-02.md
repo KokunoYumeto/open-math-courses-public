@@ -585,7 +585,7 @@ Use the universal diagonal matrix with independent Laurent coordinates $z_i$. Th
 
 If the roots are $a_i$, the discriminant is $\prod_{i<j}(a_i-a_j)^2$, a symmetric polynomial in them. The complete lexicographic elementary-symmetric reduction of S06 Section 1 proves that it is a polynomial in the characteristic coefficients, including in positive characteristic. It is nonzero precisely when all eigenvalues are distinct. A matrix with this property is diagonalizable, and Exercise 6.1 gives its torus centralizer. Conversely a semisimple matrix with repeated eigenvalues has larger centralizer, so is not regular semisimple. The polynomial does not vanish identically: choose distinct nonzero elements in the infinite algebraically closed field and take their diagonal matrix. Its nonvanishing locus in the irreducible variety $\operatorname{GL}_n$ is therefore open dense. No assertion that this locus has a rational point over every finite field is needed.
 
-The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
+The [course prerequisite guide](prerequisites.html) records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
 
 ## References
 

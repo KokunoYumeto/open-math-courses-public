@@ -1,0 +1,619 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="analytic-axis-profile-audit.md">Editable source</a></nav><h1 id="analytic-axis-profile-and-its-endpoint-shear-inequality">Analytic axis profile and its endpoint shear inequality</h1>
+<p>This note constructs the analytic inner profile with the prescribed outer pressure datum. It proves the coefficient-space estimates, the actual nonlinear solution, positive angular source and endpoint inequality of Lemma B.1 and Propositions B.2–B.3. Continuation and exact joining to the outer profile are derived in <a href="inner-outer-joining-audit.html">Q0–Q9</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">PDF</a>, SHA256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>. The source locators are original pages 26–27 and 144–150, (4.7)–(4.13) and (B.1)–(B.21). The previously constructed pressure datum is in <a href="outer-profile-audit.html">O4</a>, the exact stress operators in <a href="profile-stress-moment-audit.html">G0–G1</a>, and the actual exterior in <a href="heat-exterior-stress-audit.html">H0–H7</a>.</p>
+<h2 id="j0-actual-axis-data-and-their-parameter-domains">J0. Actual axis data and their parameter domains</h2>
+<p>Keep the original fixed choices <span class="math" data-tex="\(0&lt;h&lt;1/100\)">\(0&lt;h&lt;1/100\)</span>, <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>, <span class="math" data-tex="\(D=1/2-h\)">\(D=1/2-h\)</span>, <span class="math" data-tex="\(d=1-\eta^2\)">\(d=1-\eta^2\)</span>, <span class="math" data-tex="\(L=1-2h\eta^2\)">\(L=1-2h\eta^2\)</span>. The analytic pressure <span class="math" data-tex="\(\Pi_0\)">\(\Pi_0\)</span> constructed in O4 is even, obeys <span class="math" data-tex="\(\Pi_0\le-(5/2)P_*^2(1+\eta^2)^{-2}\)">\(\Pi_0\le-(5/2)P_*^2(1+\eta^2)^{-2}\)</span>, and has <span class="math" data-tex="\(\eta\Pi_{0\eta}&gt;0\)">\(\eta\Pi_{0\eta}&gt;0\)</span> for nonzero real <span class="math" data-tex="\(\eta\in[-1,1]\)">\(\eta\in[-1,1]\)</span>. Choose <span class="math" data-tex="\(0&lt;j_0\le1/20\)">\(0&lt;j_0\le1/20\)</span> and set exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+U_*&amp;=4\eta+j_0,&amp; H_*&amp;=D\eta+dU_*,\\
+W_*&amp;=1-dU_{*\eta}-2D\eta U_*,&amp;
+Z_*&amp;=-A(1-2\eta U_*)U_*-H_*U_{*\eta}-d\Pi_{0\eta}+4A\eta\Pi_0.
+\end{split}
+\tag{J0.1}
+\]">\[
+\begin{split}
+U_*&amp;=4\eta+j_0,&amp; H_*&amp;=D\eta+dU_*,\\
+W_*&amp;=1-dU_{*\eta}-2D\eta U_*,&amp;
+Z_*&amp;=-A(1-2\eta U_*)U_*-H_*U_{*\eta}-d\Pi_{0\eta}+4A\eta\Pi_0.
+\end{split}
+\tag{J0.1}
+\]</span>
+<p>On <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, <span class="math" data-tex="\(H_*/d=D\eta/d+4\eta+j_0\)">\(H_*/d=D\eta/d+4\eta+j_0\)</span> has derivative <span class="math" data-tex="\(D(1+\eta^2)/d^2+4&gt;0\)">\(D(1+\eta^2)/d^2+4&gt;0\)</span> and ranges from minus infinity to plus infinity. Its unique zero <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> lies in <span class="math" data-tex="\((-1,0)\)">\((-1,0)\)</span>. Writing <span class="math" data-tex="\(x=-\eta_0\)">\(x=-\eta_0\)</span>, its equation is</p>
+<span class="math math-display" data-tex="\[
+j_0=x\left(4+\frac D{1-x^2}\right),\qquad
+\frac{j_0}{5}&lt;x&lt;\frac{j_0}{4},\qquad
+-W_*=3-8h\eta^2+(1-2h)j_0\eta\ge2.87&gt;2.8.
+\tag{J0.2}
+\]">\[
+j_0=x\left(4+\frac D{1-x^2}\right),\qquad
+\frac{j_0}{5}&lt;x&lt;\frac{j_0}{4},\qquad
+-W_*=3-8h\eta^2+(1-2h)j_0\eta\ge2.87&gt;2.8.
+\tag{J0.2}
+\]</span>
+<p>For the bounds on x, the equation first gives <span class="math" data-tex="\(x&lt;j_0/4\le1/80\)">\(x&lt;j_0/4\le1/80\)</span>; its parenthesis is then less than 5 and greater than 4. At <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, <span class="math" data-tex="\(H_*=0\)">\(H_*=0\)</span>, <span class="math" data-tex="\(-d\Pi_{0\eta}\ge0\)">\(-d\Pi_{0\eta}\ge0\)</span>, and <span class="math" data-tex="\(U_*=Dx/d\)">\(U_*=Dx/d\)</span>. The first term of <span class="math" data-tex="\(Z_*\)">\(Z_*\)</span> has absolute value at most <span class="math" data-tex="\(j_0\)">\(j_0\)</span>: use <span class="math" data-tex="\(x&lt;1/80\)">\(x&lt;1/80\)</span>, <span class="math" data-tex="\(D\le1/2\)">\(D\le1/2\)</span>, <span class="math" data-tex="\(A\le.51\)">\(A\le.51\)</span>, and the displayed formula for <span class="math" data-tex="\(U_*\)">\(U_*\)</span>. The last term satisfies</p>
+<span class="math math-display" data-tex="\[
+4A\eta_0\Pi_0(\eta_0)
+\ge10A xP_*^2(1+x^2)^{-2}
+&gt;\tfrac9{10}j_0P_*^2.
+\tag{J0.3}
+\]">\[
+4A\eta_0\Pi_0(\eta_0)
+\ge10A xP_*^2(1+x^2)^{-2}
+&gt;\tfrac9{10}j_0P_*^2.
+\tag{J0.3}
+\]</span>
+<p>The original choice <span class="math" data-tex="\(P_*&gt;e^{T_d}&gt;10\)">\(P_*&gt;e^{T_d}&gt;10\)</span> therefore gives <span class="math" data-tex="\(Z_*(\eta_0)&gt;\tfrac12j_0P_*^2&gt;0\)">\(Z_*(\eta_0)&gt;\tfrac12j_0P_*^2&gt;0\)</span>. This proves the required positivity from the actual datum.</p>
+<p>Choose a neighborhood of <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> on which <span class="math" data-tex="\(Z_*\)">\(Z_*\)</span> has a positive lower bound. A positive <span class="math" data-tex="\(\delta_*\)">\(\delta_*\)</span> smaller than that bound makes the compact set <span class="math" data-tex="\(\{|Z_*|\le\delta_*\}\)">\(\{|Z_*|\le\delta_*\}\)</span> avoid that neighborhood. On this set <span class="math" data-tex="\(|H_*|\)">\(|H_*|\)</span> has a positive minimum. Choose <span class="math" data-tex="\(\sigma_*&gt;0\)">\(\sigma_*&gt;0\)</span> small enough that</p>
+<span class="math math-display" data-tex="\[
+\chi=\frac{H_*^2}{H_*^2+\sigma_*^2}&gt;.99
+\quad\hbox{where }|Z_*|\le\delta_*.
+\tag{J0.4}
+\]">\[
+\chi=\frac{H_*^2}{H_*^2+\sigma_*^2}&gt;.99
+\quad\hbox{where }|Z_*|\le\delta_*.
+\tag{J0.4}
+\]</span>
+<p>If the set is empty any sufficiently small positive <span class="math" data-tex="\(\sigma_*\)">\(\sigma_*\)</span> works. The strict inequalities persist on a slightly larger real compact interval <span class="math" data-tex="\(I\supset[-1,1]\)">\(I\supset[-1,1]\)</span>, chosen so <span class="math" data-tex="\(H_*\)">\(H_*\)</span> has no additional zero there. Choose a bounded simply connected complex neighborhood <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> of I, symmetric about the real axis, with closure in a domain where <span class="math" data-tex="\(\Pi_0\)">\(\Pi_0\)</span> is holomorphic and L and <span class="math" data-tex="\(H_*^2+\sigma_*^2\)">\(H_*^2+\sigma_*^2\)</span> do not vanish. Compactness supplies such a neighborhood.</p>
+<p>For <span class="math" data-tex="\(\Lambda\ge1\)">\(\Lambda\ge1\)</span> retain the original functions and amplitude order:</p>
+<span class="math math-display" data-tex="\[
+\zeta_*=-\frac{LH_*}{H_*^2+\sigma_*^2},\qquad
+\widetilde\zeta_0=\Lambda\zeta_*,\qquad
+\phi_*(\eta)=\exp\!\left(\Lambda\int_0^\eta\zeta_*(w)dw\right).
+\tag{J0.5}
+\]">\[
+\zeta_*=-\frac{LH_*}{H_*^2+\sigma_*^2},\qquad
+\widetilde\zeta_0=\Lambda\zeta_*,\qquad
+\phi_*(\eta)=\exp\!\left(\Lambda\int_0^\eta\zeta_*(w)dw\right).
+\tag{J0.5}
+\]</span>
+<p>The holomorphic primitive exists on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>; it is real on I, so <span class="math" data-tex="\(\phi_*&gt;0\)">\(\phi_*&gt;0\)</span> there. The amplitude <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> will be chosen after <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. None of these choices alters the outer pressure datum.</p>
+<h2 id="j1-the-original-coefficient-space-and-exact-radial-maps">J1. The original coefficient space and exact radial maps</h2>
+<p>Use the scalar radial variable <span class="math" data-tex="\(Y=\Lambda X\)">\(Y=\Lambda X\)</span>. For a small fixed <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, retain the weights and norm</p>
+<span class="math math-display" data-tex="\[
+\mathfrak a_{\alpha\beta}
+=\frac{20^{-\alpha}\rho^{-\beta}\beta!\binom{\alpha+\beta}{\beta}}
+{(\alpha+1)^2(\beta+1)^2},\qquad
+\|F\|_\rho=\sup_{\alpha,\beta\ge0}\sup_{\eta\in I}
+\frac{|\partial_\eta^\beta F_\alpha(\eta)|}{\mathfrak a_{\alpha\beta}},
+\quad F=\sum_{\alpha\ge0}F_\alpha(\eta)Y^\alpha.
+\tag{J1.1}
+\]">\[
+\mathfrak a_{\alpha\beta}
+=\frac{20^{-\alpha}\rho^{-\beta}\beta!\binom{\alpha+\beta}{\beta}}
+{(\alpha+1)^2(\beta+1)^2},\qquad
+\|F\|_\rho=\sup_{\alpha,\beta\ge0}\sup_{\eta\in I}
+\frac{|\partial_\eta^\beta F_\alpha(\eta)|}{\mathfrak a_{\alpha\beta}},
+\quad F=\sum_{\alpha\ge0}F_\alpha(\eta)Y^\alpha.
+\tag{J1.1}
+\]</span>
+<p>The space <span class="math" data-tex="\(\mathcal B_\rho\)">\(\mathcal B_\rho\)</span> consists of smooth coefficient sequences with finite norm. It is complete. Indeed a norm-Cauchy sequence converges uniformly at each coefficient and each derivative order; the fundamental theorem of calculus identifies the successive derivative limits. Passing to the limit in every weighted inequality gives a limit in the space and norm convergence.</p>
+<p>This coefficient space represents actual analytic functions, not just formal series. At a real center <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>, divide the derivative estimate by <span class="math" data-tex="\(\beta!\)">\(\beta!\)</span> and sum the joint Taylor series. For <span class="math" data-tex="\(|Y|\le R&lt;20\)">\(|Y|\le R&lt;20\)</span> and <span class="math" data-tex="\(|\eta-\eta_0|\le r\)">\(|\eta-\eta_0|\le r\)</span> with <span class="math" data-tex="\(R/20+r/\rho&lt;1\)">\(R/20+r/\rho&lt;1\)</span>, its absolute sum is bounded by</p>
+<span class="math math-display" data-tex="\[
+\|F\|_\rho\sum_{\alpha,\beta\ge0}
+\binom{\alpha+\beta}{\beta}(R/20)^\alpha(r/\rho)^\beta
+=\frac{\|F\|_\rho}{1-R/20-r/\rho}.
+\tag{J1.2}
+\]">\[
+\|F\|_\rho\sum_{\alpha,\beta\ge0}
+\binom{\alpha+\beta}{\beta}(R/20)^\alpha(r/\rho)^\beta
+=\frac{\|F\|_\rho}{1-R/20-r/\rho}.
+\tag{J1.2}
+\]</span>
+<p>The identity follows by expanding <span class="math" data-tex="\(\sum_{n\ge0}(R/20+r/\rho)^n\)">\(\sum_{n\ge0}(R/20+r/\rho)^n\)</span>. Taylor's remainder estimate proves equality with the original smooth coefficients on the real interval. Local extensions agree on overlaps and supply a common holomorphic neighborhood, including the endpoints of I. The denominator factors in J1.1 have been retained in the norm; discarding them only in this upper bound does not change the represented function.</p>
+<p>Write <span class="math" data-tex="\(\mathcal I F=\int_0^YF(Y&#x27;,\eta)dY&#x27;\)">\(\mathcal I F=\int_0^YF(Y&#x27;,\eta)dY&#x27;\)</span>, <span class="math" data-tex="\(\mathcal A F=Y^{-1}\mathcal I F\)">\(\mathcal A F=Y^{-1}\mathcal I F\)</span>, and <span class="math" data-tex="\(\mathcal D_X=Y\partial_Y=X\partial_X\)">\(\mathcal D_X=Y\partial_Y=X\partial_X\)</span>. The identity <span class="math" data-tex="\(\mathcal A_X(F)=\int_0^1F(\Lambda aX,\eta)da=\mathcal A(F)(Y,\eta)\)">\(\mathcal A_X(F)=\int_0^1F(\Lambda aX,\eta)da=\mathcal A(F)(Y,\eta)\)</span> proves the exact radial-average comparison. For <span class="math" data-tex="\(\nu=1,2\)">\(\nu=1,2\)</span>, the unique smooth solution of <span class="math" data-tex="\(YG_{YY}+\nu G_Y=F\)">\(YG_{YY}+\nu G_Y=F\)</span>, <span class="math" data-tex="\(G(0)=0\)">\(G(0)=0\)</span>, is <span class="math" data-tex="\(G=\mathcal J_\nu F\)">\(G=\mathcal J_\nu F\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+(\mathcal J_\nu F)_{\alpha+1}=\frac{F_\alpha}{(\alpha+1)(\alpha+\nu)},\qquad
+(\mathcal J_\nu F)_0=0.
+\tag{J1.3}
+\]">\[
+(\mathcal J_\nu F)_{\alpha+1}=\frac{F_\alpha}{(\alpha+1)(\alpha+\nu)},\qquad
+(\mathcal J_\nu F)_0=0.
+\tag{J1.3}
+\]</span>
+<p>One can integrate <span class="math" data-tex="\((Y^\nu G_Y)&#x27;=Y^{\nu-1}F\)">\((Y^\nu G_Y)&#x27;=Y^{\nu-1}F\)</span>; smoothness removes the singular homogeneous derivative and the zero value removes the constant. Expanding that integral gives every divisor in J1.3.</p>
+<h2 id="j2-multiplication-and-the-mixed-derivative-estimate">J2. Multiplication and the mixed derivative estimate</h2>
+<p>Keep the exact finite constant <span class="math" data-tex="\(C_{\rm sq}=8\sum_{i=1}^\infty i^{-2}\)">\(C_{\rm sq}=8\sum_{i=1}^\infty i^{-2}\)</span>. Splitting a sum at <span class="math" data-tex="\(N/2\)">\(N/2\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=0}^N\frac{(N+1)^2}{(i+1)^2(N-i+1)^2}\le C_{\rm sq}.
+\tag{J2.1}
+\]">\[
+\sum_{i=0}^N\frac{(N+1)^2}{(i+1)^2(N-i+1)^2}\le C_{\rm sq}.
+\tag{J2.1}
+\]</span>
+<p>On the first half the ratio <span class="math" data-tex="\((N+1)^2/(N-i+1)^2\)">\((N+1)^2/(N-i+1)^2\)</span> is at most 4; reverse the indices on the other half. The product Leibniz factor <span class="math" data-tex="\(\binom\beta k\)">\(\binom\beta k\)</span> cancels the two derivative factorials against <span class="math" data-tex="\(\beta!\)">\(\beta!\)</span>. The remaining binomial ratio is at most one because</p>
+<span class="math math-display" data-tex="\[
+\binom{i+k}{k}\binom{\alpha-i+\beta-k}{\beta-k}
+\le\binom{\alpha+\beta}{\beta}.
+\tag{J2.2}
+\]">\[
+\binom{i+k}{k}\binom{\alpha-i+\beta-k}{\beta-k}
+\le\binom{\alpha+\beta}{\beta}.
+\tag{J2.2}
+\]</span>
+<p>The left side counts the subsets with exactly k elements in the first of two disjoint blocks of sizes <span class="math" data-tex="\(i+k\)">\(i+k\)</span> and <span class="math" data-tex="\(\alpha-i+\beta-k\)">\(\alpha-i+\beta-k\)</span>. Summing the resulting weight ratio in the radial and derivative indices and applying J2.1 proves</p>
+<span class="math math-display" data-tex="\[
+\|FG\|_\rho\le C_{\rm sq}^2\|F\|_\rho\|G\|_\rho.
+\tag{J2.3}
+\]">\[
+\|FG\|_\rho\le C_{\rm sq}^2\|F\|_\rho\|G\|_\rho.
+\tag{J2.3}
+\]</span>
+<p>The exact ratios for increasing a radial degree are</p>
+<span class="math math-display" data-tex="\[
+\frac{\mathfrak a_{\alpha\beta}}{\mathfrak a_{\alpha+1,\beta}}
+=20\frac{(\alpha+2)^2}{(\alpha+1)^2}\frac{\alpha+1}{\alpha+\beta+1}\le80,
+\quad
+\frac{\mathfrak a_{i,k+1}}{\mathfrak a_{i+1,k}}
+=\frac{20}{\rho}(i+1)\frac{(i+2)^2(k+1)^2}{(i+1)^2(k+2)^2}
+\le\frac{80}{\rho}(i+1).
+\tag{J2.4}
+\]">\[
+\frac{\mathfrak a_{\alpha\beta}}{\mathfrak a_{\alpha+1,\beta}}
+=20\frac{(\alpha+2)^2}{(\alpha+1)^2}\frac{\alpha+1}{\alpha+\beta+1}\le80,
+\quad
+\frac{\mathfrak a_{i,k+1}}{\mathfrak a_{i+1,k}}
+=\frac{20}{\rho}(i+1)\frac{(i+2)^2(k+1)^2}{(i+1)^2(k+2)^2}
+\le\frac{80}{\rho}(i+1).
+\tag{J2.4}
+\]</span>
+<p>Together with J1.3, these bound multiplication by Y, <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> and <span class="math" data-tex="\(\mathcal J_\nu\)">\(\mathcal J_\nu\)</span>. The average divides the radial degree <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> coefficient by <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span>, so its norm is at most one. The second ratio, with the integration divisor <span class="math" data-tex="\(i+1\)">\(i+1\)</span>, proves <span class="math" data-tex="\(\|\partial_\eta\mathcal I F\|_\rho\le(80/\rho)\|F\|_\rho\)">\(\|\partial_\eta\mathcal I F\|_\rho\le(80/\rho)\|F\|_\rho\)</span>.</p>
+<p>For the differentiated product inside <span class="math" data-tex="\(\mathcal J_\nu\)">\(\mathcal J_\nu\)</span>, let the output radial degree be <span class="math" data-tex="\(N=\alpha+1\)">\(N=\alpha+1\)</span>, and let the differentiated F have degree i and G degree <span class="math" data-tex="\(\alpha-i\)">\(\alpha-i\)</span>. Allocate the added radial degree to F, writing <span class="math" data-tex="\(I_1=i+1\)">\(I_1=i+1\)</span>, <span class="math" data-tex="\(J_1=\alpha-i\)">\(J_1=\alpha-i\)</span>. J2.4, the full Leibniz rule, and J2.2 bound its <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-derivative divided by <span class="math" data-tex="\(\mathfrak a_{N\beta}\)">\(\mathfrak a_{N\beta}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\frac{80}{\rho}\|F\|_\rho\|G\|_\rho
+\sum_{i=0}^{\alpha}\sum_{k=0}^{\beta}
+\frac{I_1J_1}{N(\alpha+\nu)}
+\frac{(N+1)^2}{(I_1+1)^2(J_1+1)^2}
+\frac{(\beta+1)^2}{(k+1)^2(\beta-k+1)^2}.
+\tag{J2.5}
+\]">\[
+\frac{80}{\rho}\|F\|_\rho\|G\|_\rho
+\sum_{i=0}^{\alpha}\sum_{k=0}^{\beta}
+\frac{I_1J_1}{N(\alpha+\nu)}
+\frac{(N+1)^2}{(I_1+1)^2(J_1+1)^2}
+\frac{(\beta+1)^2}{(k+1)^2(\beta-k+1)^2}.
+\tag{J2.5}
+\]</span>
+<p>Here the numerator <span class="math" data-tex="\(J_1\)">\(J_1\)</span> is the logarithmic radial derivative and <span class="math" data-tex="\(I_1\)">\(I_1\)</span> is the parameter-derivative weight from J2.4. Since <span class="math" data-tex="\(I_1+J_1=N\)">\(I_1+J_1=N\)</span> and <span class="math" data-tex="\(\nu\ge1\)">\(\nu\ge1\)</span>, the first fraction is at most one. Extending the first sum to all splittings of N and applying J2.1 twice proves</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal J_\nu[(\partial_\eta F)(\mathcal D_XG)]\|_\rho
+\le\frac{80}{\rho}C_{\rm sq}^2\|F\|_\rho\|G\|_\rho.
+\tag{J2.6}
+\]">\[
+\|\mathcal J_\nu[(\partial_\eta F)(\mathcal D_XG)]\|_\rho
+\le\frac{80}{\rho}C_{\rm sq}^2\|F\|_\rho\|G\|_\rho.
+\tag{J2.6}
+\]</span>
+<p>With an average on F its divisor <span class="math" data-tex="\(i+1\)">\(i+1\)</span> cancels <span class="math" data-tex="\(I_1\)">\(I_1\)</span>. Omitting the radial derivative replaces <span class="math" data-tex="\(J_1\)">\(J_1\)</span> by 1, again leaving a fraction at most one. Without the parameter derivative use the first ratio of J2.4 and the radial coefficient at most <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, divided by <span class="math" data-tex="\((\alpha+1)(\alpha+\nu)\)">\((\alpha+1)(\alpha+\nu)\)</span>; J2.1 again applies. Omitting both derivatives follows directly from J2.3 and boundedness of <span class="math" data-tex="\(\mathcal J_\nu\)">\(\mathcal J_\nu\)</span>. Additional undifferentiated factors leave their radial indices unaltered. The same allocation of one degree to the parameter-differentiated factor and the same inverse divisor bound apply, while each additional convolution contributes <span class="math" data-tex="\(C_{\rm sq}^2\)">\(C_{\rm sq}^2\)</span>. These arguments include zero indices and every <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. They prove the full Lemma B.1 needed below.</p>
+<h2 id="j3-original-nonlinear-equations-and-every-remainder">J3. Original nonlinear equations and every remainder</h2>
+<p>The original angular and axial equations for zero leading stress, and radial pressure balance, are</p>
+<span class="math math-display" data-tex="\[
+-2L\frac{X\phi_{XX}+2\phi_X}{\phi}=S_q,\qquad
+-2L(XU_{XX}+U_X)=S_n,\qquad \Pi_X=\phi^2/\mathsf C^2.
+\tag{J3.1}
+\]">\[
+-2L\frac{X\phi_{XX}+2\phi_X}{\phi}=S_q,\qquad
+-2L(XU_{XX}+U_X)=S_n,\qquad \Pi_X=\phi^2/\mathsf C^2.
+\tag{J3.1}
+\]</span>
+<p>Their complete source formulas are G1.1. Make the exact substitutions, retaining the amplitude and radial factors,</p>
+<span class="math math-display" data-tex="\[
+\phi=\phi_*\Phi(Y,\eta),\quad U=U_*+\Lambda^{-1}\mathfrak u(Y,\eta),\quad
+\Pi=\Pi_0+\Lambda^{-1}\mathfrak p,\quad
+g=\phi_*/\mathsf C,\quad\mathfrak p=\mathcal I(g^2\Phi^2).
+\tag{J3.2}
+\]">\[
+\phi=\phi_*\Phi(Y,\eta),\quad U=U_*+\Lambda^{-1}\mathfrak u(Y,\eta),\quad
+\Pi=\Pi_0+\Lambda^{-1}\mathfrak p,\quad
+g=\phi_*/\mathsf C,\quad\mathfrak p=\mathcal I(g^2\Phi^2).
+\tag{J3.2}
+\]</span>
+<p>The intended axis values are <span class="math" data-tex="\(\Phi(0,\eta)=1\)">\(\Phi(0,\eta)=1\)</span>, <span class="math" data-tex="\(\mathfrak u(0,\eta)=0\)">\(\mathfrak u(0,\eta)=0\)</span>. In particular <span class="math" data-tex="\(\Pi_X=\partial_Y\mathfrak p=g^2\Phi^2=\phi^2/\mathsf C^2\)">\(\Pi_X=\partial_Y\mathfrak p=g^2\Phi^2=\phi^2/\mathsf C^2\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+B=-2D\eta\mathcal A(\mathfrak u)-d\partial_\eta\mathcal A(\mathfrak u),\quad
+W=W_*+\Lambda^{-1}B,\quad H_c=H_*+d\Lambda^{-1}\mathfrak u.
+\tag{J3.3}
+\]">\[
+B=-2D\eta\mathcal A(\mathfrak u)-d\partial_\eta\mathcal A(\mathfrak u),\quad
+W=W_*+\Lambda^{-1}B,\quad H_c=H_*+d\Lambda^{-1}\mathfrak u.
+\tag{J3.3}
+\]</span>
+<p>Direct substitution into J3.1 gives</p>
+<span class="math math-display" data-tex="\[
+2(Y\Phi_{YY}+2\Phi_Y)=-\chi\Phi+\Lambda^{-1}R_1,\qquad
+2(Y\mathfrak u_{YY}+\mathfrak u_Y)=-Z_*/L+\Lambda^{-1}R_2,
+\tag{J3.4}
+\]">\[
+2(Y\Phi_{YY}+2\Phi_Y)=-\chi\Phi+\Lambda^{-1}R_1,\qquad
+2(Y\mathfrak u_{YY}+\mathfrak u_Y)=-Z_*/L+\Lambda^{-1}R_2,
+\tag{J3.4}
+\]</span>
+<p>with all terms</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+LR_1={}&amp;[W+h(1-2\eta U)+d\mathfrak u\zeta_*]\Phi
++W\mathcal D_X\Phi+H_c\Phi_\eta,\\
+LR_2={}&amp;[A(1-4\eta U_*)+dU_{*\eta}]\mathfrak u
+-2A\eta\Lambda^{-1}\mathfrak u^2+W\mathcal D_X\mathfrak u
++H_*\mathfrak u_\eta+d\Lambda^{-1}\mathfrak u\mathfrak u_\eta\\
+&amp;-4A\eta\mathfrak p+d\partial_\eta\mathfrak p-2\eta\mathcal D_X\mathfrak p.
+\end{split}
+\tag{J3.5}
+\]">\[
+\begin{split}
+LR_1={}&amp;[W+h(1-2\eta U)+d\mathfrak u\zeta_*]\Phi
++W\mathcal D_X\Phi+H_c\Phi_\eta,\\
+LR_2={}&amp;[A(1-4\eta U_*)+dU_{*\eta}]\mathfrak u
+-2A\eta\Lambda^{-1}\mathfrak u^2+W\mathcal D_X\mathfrak u
++H_*\mathfrak u_\eta+d\Lambda^{-1}\mathfrak u\mathfrak u_\eta\\
+&amp;-4A\eta\mathfrak p+d\partial_\eta\mathfrak p-2\eta\mathcal D_X\mathfrak p.
+\end{split}
+\tag{J3.5}
+\]</span>
+<p>The terms contain the products <span class="math" data-tex="\(A\eta\)">\(A\eta\)</span>, not a derivative <span class="math" data-tex="\(A_\eta\)">\(A_\eta\)</span>; the original page 147 has those products. To check the angular leading sign, <span class="math" data-tex="\(H_*\zeta_*/L=-\chi\)">\(H_*\zeta_*/L=-\chi\)</span>, while <span class="math" data-tex="\(H_c\Lambda\zeta_*=-\Lambda L\chi+d\mathfrak u\zeta_*\)">\(H_c\Lambda\zeta_*=-\Lambda L\chi+d\mathfrak u\zeta_*\)</span>. For the axial equation, expand its negative source before dividing by L:</p>
+<span class="math math-display" data-tex="\[
+A(1-2\eta U)U+W\mathcal D_XU+H_cU_\eta-4A\eta\Pi+d\Pi_\eta-2\eta\mathcal D_X\Pi.
+\tag{J3.6}
+\]">\[
+A(1-2\eta U)U+W\mathcal D_XU+H_cU_\eta-4A\eta\Pi+d\Pi_\eta-2\eta\mathcal D_X\Pi.
+\tag{J3.6}
+\]</span>
+<p>Its constant part is <span class="math" data-tex="\(-Z_*\)">\(-Z_*\)</span>. Expanding the first term about <span class="math" data-tex="\(U_*\)">\(U_*\)</span> gives exactly <span class="math" data-tex="\(\Lambda^{-1}A(1-4\eta U_*)\mathfrak u-2A\eta\Lambda^{-2}\mathfrak u^2\)">\(\Lambda^{-1}A(1-4\eta U_*)\mathfrak u-2A\eta\Lambda^{-2}\mathfrak u^2\)</span>; expanding <span class="math" data-tex="\(H_cU_\eta\)">\(H_cU_\eta\)</span> gives the two linear terms and the mixed quadratic term in J3.5. Pressure contributes the last three displayed terms after multiplication by <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. This verifies the full substitution, rather than replacing the original equations by a different model.</p>
+<p>Choose <span class="math" data-tex="\(\rho\)">\(\rho\)</span> strictly below a common complex-neighborhood distance from I to the boundary of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. For each <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, impose</p>
+<span class="math math-display" data-tex="\[
+\mathsf C\ge\sup_{\eta\in\Omega}|\phi_*(\eta)|.
+\tag{J3.7}
+\]">\[
+\mathsf C\ge\sup_{\eta\in\Omega}|\phi_*(\eta)|.
+\tag{J3.7}
+\]</span>
+<p>The supremum is finite by the choice of closure. Then <span class="math" data-tex="\(|g|\le1\)">\(|g|\le1\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Cauchy's estimate gives <span class="math" data-tex="\(|\partial_\eta^\beta g|\le\beta!r_0^{-\beta}\)">\(|\partial_\eta^\beta g|\le\beta!r_0^{-\beta}\)</span> on a smaller neighborhood for some fixed <span class="math" data-tex="\(r_0&gt;\rho\)">\(r_0&gt;\rho\)</span>. At radial degree zero its norm ratio is bounded by <span class="math" data-tex="\((\beta+1)^2(\rho/r_0)^\beta\)">\((\beta+1)^2(\rho/r_0)^\beta\)</span>, uniformly in <span class="math" data-tex="\(\beta,\Lambda,\mathsf C\)">\(\beta,\Lambda,\mathsf C\)</span>. All fixed coefficients in J3.5 have finite norms by the same estimate. This complex bound is essential: real bounds on <span class="math" data-tex="\(\phi_*\)">\(\phi_*\)</span> alone would not control its large-parameter derivatives.</p>
+<p>The maps <span class="math" data-tex="\((\Phi,\mathfrak u)\mapsto\mathcal J_\nu R_i\)">\((\Phi,\mathfrak u)\mapsto\mathcal J_\nu R_i\)</span> are consequently bounded and locally Lipschitz on any fixed ball in <span class="math" data-tex="\(\mathcal B_\rho^2\)">\(\mathcal B_\rho^2\)</span>, uniformly for <span class="math" data-tex="\(\Lambda\ge1\)">\(\Lambda\ge1\)</span> and amplitudes satisfying J3.7. Here is the full derivative check. In <span class="math" data-tex="\(W\mathcal D_X\Phi\)">\(W\mathcal D_X\Phi\)</span> and <span class="math" data-tex="\(W\mathcal D_X\mathfrak u\)">\(W\mathcal D_X\mathfrak u\)</span>, the only double differentiated products are <span class="math" data-tex="\((\partial_\eta\mathcal A\mathfrak u)\mathcal D_X\Phi\)">\((\partial_\eta\mathcal A\mathfrak u)\mathcal D_X\Phi\)</span> and <span class="math" data-tex="\((\partial_\eta\mathcal A\mathfrak u)\mathcal D_X\mathfrak u\)">\((\partial_\eta\mathcal A\mathfrak u)\mathcal D_X\mathfrak u\)</span>; J2.6 handles them. The factors B without a radial derivative use its omitted-derivative case. The terms <span class="math" data-tex="\(H_c\Phi_\eta\)">\(H_c\Phi_\eta\)</span>, <span class="math" data-tex="\(H_*\mathfrak u_\eta\)">\(H_*\mathfrak u_\eta\)</span> and <span class="math" data-tex="\(\mathfrak u\mathfrak u_\eta\)">\(\mathfrak u\mathfrak u_\eta\)</span> use the same case, with extra undifferentiated factors. Finally <span class="math" data-tex="\(\partial_\eta\mathfrak p=\partial_\eta\mathcal I(g^2\Phi^2)\)">\(\partial_\eta\mathfrak p=\partial_\eta\mathcal I(g^2\Phi^2)\)</span> is bounded by J2.4, and <span class="math" data-tex="\(\mathcal D_X\mathfrak p=Yg^2\Phi^2\)">\(\mathcal D_X\mathfrak p=Yg^2\Phi^2\)</span> is bounded by multiplication and the Y operator. All other factors use J2.3. For Lipschitz bounds, subtract each monomial as a sum with one differing factor; the same estimates apply to each term. No unbounded parameter derivative is treated as a bounded operator by itself.</p>
+<h2 id="j4-actual-inverse-contraction-and-analytic-solution">J4. Actual inverse, contraction and analytic solution</h2>
+<p>Let <span class="math" data-tex="\(M_\chi\)">\(M_\chi\)</span> bound multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> in <span class="math" data-tex="\(\mathcal B_\rho\)">\(\mathcal B_\rho\)</span>, and let <span class="math" data-tex="\(T=\mathcal J_2\chi/2\)">\(T=\mathcal J_2\chi/2\)</span>, with multiplication first. If the input has no radial coefficient below degree b, J2.4 gives</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal J_2F\|_\rho\le\frac{80}{(b+1)(b+2)}\|F\|_\rho,
+\qquad
+\|T^k\|\le\frac{(40M_\chi)^k}{k!(k+1)!}.
+\tag{J4.1}
+\]">\[
+\|\mathcal J_2F\|_\rho\le\frac{80}{(b+1)(b+2)}\|F\|_\rho,
+\qquad
+\|T^k\|\le\frac{(40M_\chi)^k}{k!(k+1)!}.
+\tag{J4.1}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(\chi(\eta)\)">\(\chi(\eta)\)</span> preserves the minimum degree and <span class="math" data-tex="\(\mathcal J_2\)">\(\mathcal J_2\)</span> increases it by one, proving the second inequality by iteration. It includes all parameter derivatives through the norm. The series <span class="math" data-tex="\(\sum_{k\ge0}(-T)^k\)">\(\sum_{k\ge0}(-T)^k\)</span> converges in operator norm by its factorial bound. Multiplication of its finite partial sums by <span class="math" data-tex="\(1+T\)">\(1+T\)</span> leaves a remainder of norm tending to zero, on either side. Thus it is a two-sided inverse without any assumption that <span class="math" data-tex="\(\chi\)">\(\chi\)</span> or <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span> is small.</p>
+<p>The exact unperturbed solution is</p>
+<span class="math math-display" data-tex="\[
+\Phi^0=(1+T)^{-1}1=f_0(Y\chi),\qquad
+\mathfrak u^0=-\frac{YZ_*}{2L},\qquad
+f_0(z)=\sum_{\alpha\ge0}\frac{(-z/2)^\alpha}{\alpha!(\alpha+1)!}.
+\tag{J4.2}
+\]">\[
+\Phi^0=(1+T)^{-1}1=f_0(Y\chi),\qquad
+\mathfrak u^0=-\frac{YZ_*}{2L},\qquad
+f_0(z)=\sum_{\alpha\ge0}\frac{(-z/2)^\alpha}{\alpha!(\alpha+1)!}.
+\tag{J4.2}
+\]</span>
+<p>Indeed the series converges everywhere and its coefficients solve <span class="math" data-tex="\(2(zf_0&#x27;&#x27;+2f_0&#x27;)=-f_0\)">\(2(zf_0&#x27;&#x27;+2f_0&#x27;)=-f_0\)</span>, <span class="math" data-tex="\(f_0(0)=1\)">\(f_0(0)=1\)</span>; J1.3 then gives the first identity. The axial identity follows since <span class="math" data-tex="\(\mathcal J_1\)">\(\mathcal J_1\)</span> applied to a constant equals that constant times Y.</p>
+<p>Use the actual map</p>
+<span class="math math-display" data-tex="\[
+(\Phi,\mathfrak u)\longmapsto
+\left(\Phi^0+\frac{(1+T)^{-1}\mathcal J_2R_1}{2\Lambda},\quad
+\mathfrak u^0+\frac{\mathcal J_1R_2}{2\Lambda}\right).
+\tag{J4.3}
+\]">\[
+(\Phi,\mathfrak u)\longmapsto
+\left(\Phi^0+\frac{(1+T)^{-1}\mathcal J_2R_1}{2\Lambda},\quad
+\mathfrak u^0+\frac{\mathcal J_1R_2}{2\Lambda}\right).
+\tag{J4.3}
+\]</span>
+<p>On the closed ball of radius 1 about the center, in the maximum of the two coefficient norms, J3 supplies finite uniform bounds M and K for the numerator map and its Lipschitz constant, including <span class="math" data-tex="\((1+T)^{-1}\)">\((1+T)^{-1}\)</span>. Choose <span class="math" data-tex="\(\Lambda\ge\max(1,M,K)\)">\(\Lambda\ge\max(1,M,K)\)</span>, increasing it if needed. The map stays within radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span> of the center and has Lipschitz constant at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Iteration from the center is Cauchy, its limit lies in the ball by completeness, and continuity proves that it is a fixed point. The same bound proves uniqueness in the ball. It has distance at most <span class="math" data-tex="\(M/(2\Lambda)\)">\(M/(2\Lambda)\)</span> from the center. All output corrections vanish at Y zero, so the intended axis values hold exactly. Choose <span class="math" data-tex="\(\mathsf C_0(\Lambda)\)">\(\mathsf C_0(\Lambda)\)</span> after <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to include J3.7. The estimates hold for every subsequent <span class="math" data-tex="\(\mathsf C\ge\mathsf C_0(\Lambda)\)">\(\mathsf C\ge\mathsf C_0(\Lambda)\)</span>.</p>
+<p>Choose any fixed <span class="math" data-tex="\(4.1&lt;R&lt;20\)">\(4.1&lt;R&lt;20\)</span> in J1.2 and then a smaller common complex neighborhood. Cauchy estimates for the actual difference from the center give, for every fixed r and s,</p>
+<span class="math math-display" data-tex="\[
+\sup_{[0,4.1]\times I}
+\left|\partial_Y^r\partial_\eta^s
+\left(\Phi-f_0(Y\chi),\ \mathfrak u+\frac{YZ_*}{2L}\right)\right|
+\le\frac{K_{r,s}}\Lambda.
+\tag{J4.4}
+\]">\[
+\sup_{[0,4.1]\times I}
+\left|\partial_Y^r\partial_\eta^s
+\left(\Phi-f_0(Y\chi),\ \mathfrak u+\frac{YZ_*}{2L}\right)\right|
+\le\frac{K_{r,s}}\Lambda.
+\tag{J4.4}
+\]</span>
+<p>The constants and neighborhood are independent of sufficiently large <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and of subsequent <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. The original derivatives satisfy <span class="math" data-tex="\(\partial_X^r=\Lambda^r\partial_Y^r\)">\(\partial_X^r=\Lambda^r\partial_Y^r\)</span>, so their bound is <span class="math" data-tex="\(K_{r,s}\Lambda^{r-1}\)">\(K_{r,s}\Lambda^{r-1}\)</span>, with the original scale retained. Reality follows either from the real iteration or from conjugation and uniqueness.</p>
+<p>The common complex domain gives the following explicit derivative bounds. Write the two-component difference as
+<span class="math" data-tex="\(\Delta=(\Phi-\Phi^0,\mathfrak u-\mathfrak u^0)\)">\(\Delta=(\Phi-\Phi^0,\mathfrak u-\mathfrak u^0)\)</span>.
+J4.3 gives <span class="math" data-tex="\(\|\Delta\|_\rho\le M/(2\Lambda)\)">\(\|\Delta\|_\rho\le M/(2\Lambda)\)</span>, using the maximum norm on the pair. J1.2 implies that <span class="math" data-tex="\(|\Delta|\le4\|\Delta\|_\rho\)">\(|\Delta|\le4\|\Delta\|_\rho\)</span> on every joint disk with <span class="math" data-tex="\(|Y|\le10\)">\(|Y|\le10\)</span> and <span class="math" data-tex="\(|\eta-\eta_c|\le\rho/4\)">\(|\eta-\eta_c|\le\rho/4\)</span>, where <span class="math" data-tex="\(\eta_c\in I\)">\(\eta_c\in I\)</span>. The original radius condition is <span class="math" data-tex="\(10/20+(\rho/4)/\rho=3/4&lt;1\)">\(10/20+(\rho/4)/\rho=3/4&lt;1\)</span>.</p>
+<p>For every real <span class="math" data-tex="\(Y_c\in[0,4.1]\)">\(Y_c\in[0,4.1]\)</span>, the disk <span class="math" data-tex="\(|Y-Y_c|\le5\)">\(|Y-Y_c|\le5\)</span> lies in <span class="math" data-tex="\(|Y|&lt;10\)">\(|Y|&lt;10\)</span>. Cauchy’s formula on the two circles therefore yields</p>
+<span class="math math-display" data-tex="\[
+|\partial_Y^r\partial_\eta^s\Delta(Y_c,\eta_c)|
+\le\frac{2M\,r!\,s!}{\Lambda\,5^r}
+\left(\frac4\rho\right)^s.
+\tag{J4.4a}
+\]">\[
+|\partial_Y^r\partial_\eta^s\Delta(Y_c,\eta_c)|
+\le\frac{2M\,r!\,s!}{\Lambda\,5^r}
+\left(\frac4\rho\right)^s.
+\tag{J4.4a}
+\]</span>
+<p>The same domains and constants work for the whole real rectangle and every subsequent <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> admitted by J3.7. This proves a concrete version of the fixed-order estimates; it does not require a single bound independent of r and s.</p>
+<p>The original axial comparison is <span class="math" data-tex="\(U_* -XZ_*/(2L)\)">\(U_* -XZ_*/(2L)\)</span>, because
+<span class="math" data-tex="\(\Lambda^{-1}\mathfrak u^0=-XZ_*/(2L)\)">\(\Lambda^{-1}\mathfrak u^0=-XZ_*/(2L)\)</span>. Thus the actual original-coordinate estimates are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\left|\partial_X^r\partial_\eta^s
+[\Phi(\Lambda X,\eta)-f_0(\Lambda X\chi)]\right|
+&amp;\le\frac{2M\,r!\,s!}{5^r}\left(\frac4\rho\right)^s\Lambda^{r-1},\\
+\left|\partial_X^r\partial_\eta^s
+\left[U-U_*+\frac{XZ_*}{2L}\right]\right|
+&amp;\le\frac{2M\,r!\,s!}{5^r}\left(\frac4\rho\right)^s\Lambda^{r-2}.
+\end{split}\tag{J4.4b}
+\]">\[
+\begin{split}
+\left|\partial_X^r\partial_\eta^s
+[\Phi(\Lambda X,\eta)-f_0(\Lambda X\chi)]\right|
+&amp;\le\frac{2M\,r!\,s!}{5^r}\left(\frac4\rho\right)^s\Lambda^{r-1},\\
+\left|\partial_X^r\partial_\eta^s
+\left[U-U_*+\frac{XZ_*}{2L}\right]\right|
+&amp;\le\frac{2M\,r!\,s!}{5^r}\left(\frac4\rho\right)^s\Lambda^{r-2}.
+\end{split}\tag{J4.4b}
+\]</span>
+<p>Every bound applies on <span class="math" data-tex="\(0\le X\le4.1/\Lambda\)">\(0\le X\le4.1/\Lambda\)</span>. The extra inverse power in the second line comes from the actual prefactor in U; it is not a change of the original profile.</p>
+<p>For positivity on the actual real rectangle, put <span class="math" data-tex="\(t=z/2\)">\(t=z/2\)</span> with <span class="math" data-tex="\(0\le z\le41/10\)">\(0\le z\le41/10\)</span>. The alternating series after its cubic term has decreasing magnitudes and positive first remaining term. Thus</p>
+<span class="math math-display" data-tex="\[
+f_0(z)\ge1-\frac t2+\frac{t^2}{12}-\frac{t^3}{144}
+\ge\frac{305719}{1152000}&gt;.265,
+\qquad f_0(z)\le1.
+\tag{J4.5}
+\]">\[
+f_0(z)\ge1-\frac t2+\frac{t^2}{12}-\frac{t^3}{144}
+\ge\frac{305719}{1152000}&gt;.265,
+\qquad f_0(z)\le1.
+\tag{J4.5}
+\]</span>
+<p>The cubic derivative is <span class="math" data-tex="\(-[(t-4)^2+8]/48&lt;0\)">\(-[(t-4)^2+8]/48&lt;0\)</span>, so its minimum for <span class="math" data-tex="\(0\le t\le41/20\)">\(0\le t\le41/20\)</span> is the displayed exact endpoint value. For the upper bound group the alternating series after its constant term into negative-positive pairs; magnitudes decrease from the linear term onward because their successive ratio is <span class="math" data-tex="\(t/[(\alpha+1)(\alpha+2)]\le(41/20)/6&lt;1\)">\(t/[(\alpha+1)(\alpha+2)]\le(41/20)/6&lt;1\)</span> for <span class="math" data-tex="\(\alpha\ge1\)">\(\alpha\ge1\)</span>. Since <span class="math" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span> on I, J4.4 and J4.5 give <span class="math" data-tex="\(\Phi\ge c_0&gt;0\)">\(\Phi\ge c_0&gt;0\)</span> on the full real rectangle after increasing <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Consequently <span class="math" data-tex="\(\phi=\phi_*\Phi&gt;0\)">\(\phi=\phi_*\Phi&gt;0\)</span>, and division by <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in the original J3.1 is valid. This proves the nonlinear equations themselves, not just their multiplied version.</p>
+<p>The analytic scalar profiles give a smooth Cartesian axis field by G0.4–G0.7. Explicitly retain <span class="math" data-tex="\(F=\phi/\mathsf C\)">\(F=\phi/\mathsf C\)</span>, <span class="math" data-tex="\(E=\sqrt{2X}F\)">\(E=\sqrt{2X}F\)</span>, and the actual radial average in <span class="math" data-tex="\(V_0=Xv_0\)">\(V_0=Xv_0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+u_1=\frac{v_0x_1}{2q}-q^{-A-1/2}Fx_2,\quad
+u_2=\frac{v_0x_2}{2q}+q^{-A-1/2}Fx_1,\quad
+u_3=q^{-A}U,\quad p=q^{-2A}\Pi.
+\tag{J4.6}
+\]">\[
+u_1=\frac{v_0x_1}{2q}-q^{-A-1/2}Fx_2,\quad
+u_2=\frac{v_0x_2}{2q}+q^{-A-1/2}Fx_1,\quad
+u_3=q^{-A}U,\quad p=q^{-2A}\Pi.
+\tag{J4.6}
+\]</span>
+<p>Here X is <span class="math" data-tex="\((x_1^2+x_2^2)/(2q)\)">\((x_1^2+x_2^2)/(2q)\)</span> and q is positive and smooth for <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>. Every scalar coefficient is smooth in X, so these products extend smoothly across the axis. G1.3 and G1.7 identify their zero leading stress, including the zero axis integration constants. This completes Proposition B.2 on its stated interval.</p>
+<h2 id="j5-positive-angular-source-and-the-actual-stress-coefficients">J5. Positive angular source and the actual stress coefficients</h2>
+<p>The source inequalities in this section and J6 use the original real parameter interval <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>; the larger I remains available for analytic neighborhoods and derivative bounds.</p>
+<p>The identity</p>
+<span class="math math-display" data-tex="\[
+|H_*\chi&#x27;|=\left|\frac{2H_*^2H_*&#x27;\sigma_*^2}{(H_*^2+\sigma_*^2)^2}\right|
+\le2\|H_*&#x27;\|_\infty\chi
+\tag{J5.1}
+\]">\[
+|H_*\chi&#x27;|=\left|\frac{2H_*^2H_*&#x27;\sigma_*^2}{(H_*^2+\sigma_*^2)^2}\right|
+\le2\|H_*&#x27;\|_\infty\chi
+\tag{J5.1}
+\]</span>
+<p>and the positivity of <span class="math" data-tex="\(f_0\)">\(f_0\)</span> show that <span class="math" data-tex="\(\mathcal D_X\log f_0(Y\chi)=O(\chi)\)">\(\mathcal D_X\log f_0(Y\chi)=O(\chi)\)</span> and <span class="math" data-tex="\(H_*\partial_\eta\log f_0(Y\chi)=O(\chi)\)">\(H_*\partial_\eta\log f_0(Y\chi)=O(\chi)\)</span>. J4.4, with the positive lower bounds, therefore gives</p>
+<span class="math math-display" data-tex="\[
+|\mathcal D_X\log\Phi|+|H_*\partial_\eta\log\Phi|
+\le K\chi+K/\Lambda.
+\tag{J5.2}
+\]">\[
+|\mathcal D_X\log\Phi|+|H_*\partial_\eta\log\Phi|
+\le K\chi+K/\Lambda.
+\tag{J5.2}
+\]</span>
+<p>The original logarithmic derivative contains <span class="math" data-tex="\(\Lambda\zeta_*\)">\(\Lambda\zeta_*\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+-H_c\Lambda\zeta_*
+=\Lambda L\chi-d\mathfrak u\zeta_*,\qquad
+|\zeta_*|\le\frac{L}{\sigma_*}\sqrt\chi.
+\tag{J5.3}
+\]">\[
+-H_c\Lambda\zeta_*
+=\Lambda L\chi-d\mathfrak u\zeta_*,\qquad
+|\zeta_*|\le\frac{L}{\sigma_*}\sqrt\chi.
+\tag{J5.3}
+\]</span>
+<p>Also <span class="math" data-tex="\(H_c-H_*=O(\Lambda^{-1})\)">\(H_c-H_*=O(\Lambda^{-1})\)</span>, and the unweighted derivative <span class="math" data-tex="\(\Phi_\eta/\Phi\)">\(\Phi_\eta/\Phi\)</span> is uniformly bounded. The complete source <span class="math" data-tex="\(S_q=-W(1+\mathcal D_X\log\Phi)-h(1-2\eta U)-H_c(\log\phi)_\eta\)">\(S_q=-W(1+\mathcal D_X\log\Phi)-h(1-2\eta U)-H_c(\log\phi)_\eta\)</span>, J5.2–J5.3 and <span class="math" data-tex="\(W-W_*=O(\Lambda^{-1})\)">\(W-W_*=O(\Lambda^{-1})\)</span> imply</p>
+<span class="math math-display" data-tex="\[
+S_q\ge\Lambda L\chi-W_*-10h-K\chi-K_{\sigma_*}\sqrt\chi-K/\Lambda.
+\tag{J5.4}
+\]">\[
+S_q\ge\Lambda L\chi-W_*-10h-K\chi-K_{\sigma_*}\sqrt\chi-K/\Lambda.
+\tag{J5.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(|U|\le4.1\)">\(|U|\le4.1\)</span> follows from J4.4 for large <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and hence <span class="math" data-tex="\(|h(1-2\eta U)|\le10h\)">\(|h(1-2\eta U)|\le10h\)</span>. First increase <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> so <span class="math" data-tex="\(K\chi\le.025\Lambda L\chi\)">\(K\chi\le.025\Lambda L\chi\)</span>; then Young's inequality gives <span class="math" data-tex="\(K_{\sigma_*}\sqrt\chi\le.025\Lambda L\chi+K&#x27;_{\sigma_*}/\Lambda\)">\(K_{\sigma_*}\sqrt\chi\le.025\Lambda L\chi+K&#x27;_{\sigma_*}/\Lambda\)</span>. Since <span class="math" data-tex="\(-W_*&gt;2.8\)">\(-W_*&gt;2.8\)</span>, <span class="math" data-tex="\(10h\le.1\)">\(10h\le.1\)</span>, increase <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> once more so the remaining constant error is at most .2. This proves the original full bound</p>
+<span class="math math-display" data-tex="\[
+S_q\ge2.5+.95\Lambda L\chi.
+\tag{J5.5}
+\]">\[
+S_q\ge2.5+.95\Lambda L\chi.
+\tag{J5.5}
+\]</span>
+<p>No division by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has occurred, so the proof includes its zero at <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span>.</p>
+<p>The actual axis-regular integral G1.3 reads</p>
+<span class="math math-display" data-tex="\[
+Q_s(X,\eta)=\frac{\int_0^X X&#x27;\Phi(\Lambda X&#x27;,\eta)S_q(X&#x27;,\eta)dX&#x27;}{X^2\Phi(\Lambda X,\eta)}.
+\tag{J5.6}
+\]">\[
+Q_s(X,\eta)=\frac{\int_0^X X&#x27;\Phi(\Lambda X&#x27;,\eta)S_q(X&#x27;,\eta)dX&#x27;}{X^2\Phi(\Lambda X,\eta)}.
+\tag{J5.6}
+\]</span>
+<p>Its smooth extension is obtained by setting <span class="math" data-tex="\(X&#x27;=aX\)">\(X&#x27;=aX\)</span>. A uniform lower bound <span class="math" data-tex="\(c_0\)">\(c_0\)</span> and upper bound <span class="math" data-tex="\(C_\Phi\)">\(C_\Phi\)</span> for <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, and J5.5, give <span class="math" data-tex="\(Q_s\ge(5/4)c_0/C_\Phi\)">\(Q_s\ge(5/4)c_0/C_\Phi\)</span>. Retain the original coefficients</p>
+<span class="math math-display" data-tex="\[
+p_1=\frac{XQ_s}L=a=-\frac{2Y\Phi_Y}{\Phi},\quad
+n_s=\frac{N_s}L=-2U_X=-2\mathfrak u_Y=\frac{Z_*}L+O(\Lambda^{-1}),\quad
+p_2=\frac{Xn_s}E.
+\tag{J5.7}
+\]">\[
+p_1=\frac{XQ_s}L=a=-\frac{2Y\Phi_Y}{\Phi},\quad
+n_s=\frac{N_s}L=-2U_X=-2\mathfrak u_Y=\frac{Z_*}L+O(\Lambda^{-1}),\quad
+p_2=\frac{Xn_s}E.
+\tag{J5.7}
+\]</span>
+<p>The equalities with a and <span class="math" data-tex="\(-2U_X\)">\(-2U_X\)</span> follow from the actual zero-stress solution and its axis constants, as proved in G1.7. Thus, for <span class="math" data-tex="\(0&lt;X\le4.1/\Lambda\)">\(0&lt;X\le4.1/\Lambda\)</span>,</p>
+<span class="math math-display" data-tex="\[
+p_1/X\ge c_1&gt;0,\qquad 0&lt;p_1\le C_1.
+\tag{J5.8}
+\]">\[
+p_1/X\ge c_1&gt;0,\qquad 0&lt;p_1\le C_1.
+\tag{J5.8}
+\]</span>
+<p>The upper bound follows from J4.4 and the positive <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> lower bound. Each fixed parameter derivative of <span class="math" data-tex="\(\Phi,\log\Phi,\mathfrak u,p_1,n_s\)">\(\Phi,\log\Phi,\mathfrak u,p_1,n_s\)</span> is bounded uniformly in subsequent <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. For <span class="math" data-tex="\(\log\Phi\)">\(\log\Phi\)</span>, the uniform derivative bound and positivity give a smaller common complex neighborhood without zeros, on which its logarithm is chosen from the positive real values. The explicit formulas and Cauchy estimates then give all these bounds. Original radial derivatives retain their powers of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p>The first axis derivatives and stress-coefficient limits are also exact. At the axis, <span class="math" data-tex="\(U=U_*\)">\(U=U_*\)</span>, <span class="math" data-tex="\(\phi=\phi_*\)">\(\phi=\phi_*\)</span>, <span class="math" data-tex="\(l=1\)">\(l=1\)</span>, <span class="math" data-tex="\(W=W_*\)">\(W=W_*\)</span>, <span class="math" data-tex="\(H_c=H_*\)">\(H_c=H_*\)</span>, and
+<span class="math" data-tex="\((\log\phi)_\eta=\Lambda\zeta_*\)">\((\log\phi)_\eta=\Lambda\zeta_*\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\mathcal S_*(\eta)
+=-W_*-h(1-2\eta U_*)+\Lambda L\chi.
+\tag{J5.9}
+\]">\[
+\mathcal S_*(\eta)
+=-W_*-h(1-2\eta U_*)+\Lambda L\chi.
+\tag{J5.9}
+\]</span>
+<p>This is exactly <span class="math" data-tex="\(S_q(0,\eta)\)">\(S_q(0,\eta)\)</span>, since <span class="math" data-tex="\(-H_*\Lambda\zeta_*=\Lambda L\chi\)">\(-H_*\Lambda\zeta_*=\Lambda L\chi\)</span>. Evaluation of J3.1 at <span class="math" data-tex="\(X=0\)">\(X=0\)</span>, with no limiting approximation, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi_X(0,\eta)=-\frac{\phi_*\mathcal S_*}{4L},\qquad
+U_X(0,\eta)=-\frac{Z_*}{2L},\\
+\Pi_X(0,\eta)=\frac{\phi_*^2}{\mathsf C^2},\qquad
+\Phi_Y(0,\eta)=-\frac{\chi}{4}
++\frac{W_*+h(1-2\eta U_*)}{4\Lambda L}.
+\end{gathered}\tag{J5.10}
+\]">\[
+\begin{gathered}
+\phi_X(0,\eta)=-\frac{\phi_*\mathcal S_*}{4L},\qquad
+U_X(0,\eta)=-\frac{Z_*}{2L},\\
+\Pi_X(0,\eta)=\frac{\phi_*^2}{\mathsf C^2},\qquad
+\Phi_Y(0,\eta)=-\frac{\chi}{4}
++\frac{W_*+h(1-2\eta U_*)}{4\Lambda L}.
+\end{gathered}\tag{J5.10}
+\]</span>
+<p>For the axial identity, <span class="math" data-tex="\(S_n(0,\eta)=Z_*\)">\(S_n(0,\eta)=Z_*\)</span>: the terms containing <span class="math" data-tex="\(\mathcal D_XU\)">\(\mathcal D_XU\)</span> or <span class="math" data-tex="\(\mathcal D_X\Pi\)">\(\mathcal D_X\Pi\)</span> vanish, and the remaining source is precisely J0.1. Thus <span class="math" data-tex="\(\mathfrak u_Y(0,\eta)=-Z_*/(2L)\)">\(\mathfrak u_Y(0,\eta)=-Z_*/(2L)\)</span> exactly, strengthening the approximation at this one radius.</p>
+<p>J5.6 gives <span class="math" data-tex="\(Q_s(0,\eta)=\mathcal S_*/2\)">\(Q_s(0,\eta)=\mathcal S_*/2\)</span>, while <span class="math" data-tex="\(n_s(0,\eta)=Z_*/L\)">\(n_s(0,\eta)=Z_*/L\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lim_{X\downarrow0}\frac{p_1}{X}=\frac{\mathcal S_*}{2L},\qquad
+\lim_{X\downarrow0}\frac{p_2}{\sqrt X}
+=\frac{\mathsf C Z_*}{\sqrt2 L\phi_*}.
+\end{gathered}\tag{J5.11}
+\]">\[
+\begin{gathered}
+\lim_{X\downarrow0}\frac{p_1}{X}=\frac{\mathcal S_*}{2L},\qquad
+\lim_{X\downarrow0}\frac{p_2}{\sqrt X}
+=\frac{\mathsf C Z_*}{\sqrt2 L\phi_*}.
+\end{gathered}\tag{J5.11}
+\]</span>
+<p>The second equality retains <span class="math" data-tex="\(E=\sqrt{2X}\phi/\mathsf C\)">\(E=\sqrt{2X}\phi/\mathsf C\)</span>.
+The data <span class="math" data-tex="\(U_*,Z_*,L,\chi\)">\(U_*,Z_*,L,\chi\)</span> precede <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The derivative <span class="math" data-tex="\(U_X(0,\eta)\)">\(U_X(0,\eta)\)</span> is therefore independent of both subsequent large parameters. In contrast <span class="math" data-tex="\(\mathcal S_*\)">\(\mathcal S_*\)</span> and <span class="math" data-tex="\(\phi_*\)">\(\phi_*\)</span> retain their <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-dependence, and <span class="math" data-tex="\(\Pi_X\)">\(\Pi_X\)</span> and the second coefficient limit retain their original amplitude factors.</p>
+<h2 id="j6-the-strict-endpoint-inequality-in-both-parameter-regions">J6. The strict endpoint inequality, in both parameter regions</h2>
+<p>At <span class="math" data-tex="\(X_0=4/\Lambda\)">\(X_0=4/\Lambda\)</span>, <span class="math" data-tex="\(Y=4\)">\(Y=4\)</span>. First suppose <span class="math" data-tex="\(\chi&gt;.99\)">\(\chi&gt;.99\)</span>. Put <span class="math" data-tex="\(z=4\chi\)">\(z=4\chi\)</span>, <span class="math" data-tex="\(t=z/2\)">\(t=z/2\)</span>, so <span class="math" data-tex="\(1.98&lt;t\le2\)">\(1.98&lt;t\le2\)</span>. The exact series is <span class="math" data-tex="\(f_0(z)+zf_0&#x27;(z)=\sum_{\alpha\ge0}(-t)^\alpha/(\alpha!)^2\)">\(f_0(z)+zf_0&#x27;(z)=\sum_{\alpha\ge0}(-t)^\alpha/(\alpha!)^2\)</span>. The alternating remainder after its fourth term is negative, with decreasing magnitudes, hence</p>
+<span class="math math-display" data-tex="\[
+f_0(z)+zf_0&#x27;(z)
+\le1-t+t^2/4-t^3/36+t^4/576&lt;-.18.
+\tag{J6.1}
+\]">\[
+f_0(z)+zf_0&#x27;(z)
+\le1-t+t^2/4-t^3/36+t^4/576&lt;-.18.
+\tag{J6.1}
+\]</span>
+<p>The polynomial derivative is <span class="math" data-tex="\(-1+t/2-t^2/12+t^3/144\)">\(-1+t/2-t^2/12+t^3/144\)</span>. On <span class="math" data-tex="\([1.98,2]\)">\([1.98,2]\)</span> its first pair is nonpositive and the other terms equal <span class="math" data-tex="\(-t^2(1/12-t/144)&lt;0\)">\(-t^2(1/12-t/144)&lt;0\)</span>. Thus its maximum is at <span class="math" data-tex="\(t=99/50\)">\(t=99/50\)</span>, where its exact value is <span class="math" data-tex="\(-75535511/400000000&lt;-.188\)">\(-75535511/400000000&lt;-.188\)</span>. Using <span class="math" data-tex="\(0&lt;f_0\le1\)">\(0&lt;f_0\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+-\frac{2zf_0&#x27;(z)}{f_0(z)}
+=2-2\frac{f_0(z)+zf_0&#x27;(z)}{f_0(z)}&gt;2.36.
+\tag{J6.2}
+\]">\[
+-\frac{2zf_0&#x27;(z)}{f_0(z)}
+=2-2\frac{f_0(z)+zf_0&#x27;(z)}{f_0(z)}&gt;2.36.
+\tag{J6.2}
+\]</span>
+<p>The actual ratio in J5.7 differs by <span class="math" data-tex="\(O(\Lambda^{-1})\)">\(O(\Lambda^{-1})\)</span>, uniformly on this region. Choose the error below .06. Then <span class="math" data-tex="\(p_1&gt;2.3\)">\(p_1&gt;2.3\)</span> at <span class="math" data-tex="\(X_0\)">\(X_0\)</span>.</p>
+<p>On the complementary region <span class="math" data-tex="\(\chi\le.99\)">\(\chi\le.99\)</span>, the actual choice J0.4 gives <span class="math" data-tex="\(|Z_*|&gt;\delta_*\)">\(|Z_*|&gt;\delta_*\)</span>. Since <span class="math" data-tex="\(L\le1\)">\(L\le1\)</span>, J5.7 gives <span class="math" data-tex="\(|n_s|\ge\delta_*/2\)">\(|n_s|\ge\delta_*/2\)</span> after increasing <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. At the same original radius,</p>
+<span class="math math-display" data-tex="\[
+|p_2|=\mathsf C\sqrt{2/\Lambda}\,\frac{|n_s|}{\phi_*\Phi}.
+\tag{J6.3}
+\]">\[
+|p_2|=\mathsf C\sqrt{2/\Lambda}\,\frac{|n_s|}{\phi_*\Phi}.
+\tag{J6.3}
+\]</span>
+<p>This retains <span class="math" data-tex="\(E=\sqrt{2X}\phi_*\Phi/\mathsf C\)">\(E=\sqrt{2X}\phi_*\Phi/\mathsf C\)</span> and every factor of two. For the now-fixed <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, let <span class="math" data-tex="\(M_\Lambda=(\max_I\phi_*)C_\Phi\)">\(M_\Lambda=(\max_I\phi_*)C_\Phi\)</span>, a finite bound independent of subsequent <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Enlarge its threshold to include <span class="math" data-tex="\(\mathsf C_0(\Lambda)\ge\sqrt{5\Lambda C_1}\,M_\Lambda/\delta_*\)">\(\mathsf C_0(\Lambda)\ge\sqrt{5\Lambda C_1}\,M_\Lambda/\delta_*\)</span>. J5.8 and J6.3 then give</p>
+<span class="math math-display" data-tex="\[
+\frac{p_2^2}{p_1}\ge
+\frac{\mathsf C^2\delta_*^2}{2\Lambda M_\Lambda^2 C_1}\ge\frac52&gt;2.3.
+\tag{J6.4}
+\]">\[
+\frac{p_2^2}{p_1}\ge
+\frac{\mathsf C^2\delta_*^2}{2\Lambda M_\Lambda^2 C_1}\ge\frac52&gt;2.3.
+\tag{J6.4}
+\]</span>
+<p>There is no circular amplitude bound: <span class="math" data-tex="\(C_\Phi,C_1\)">\(C_\Phi,C_1\)</span> came from estimates uniform for every amplitude already meeting J3.7. Taking the maximum of that threshold and the displayed one preserves all prior bounds. On the first parameter region <span class="math" data-tex="\(p_1&gt;2.3\)">\(p_1&gt;2.3\)</span>; on the second <span class="math" data-tex="\(p_2^2/p_1&gt;2.3\)">\(p_2^2/p_1&gt;2.3\)</span>, with <span class="math" data-tex="\(p_1&gt;0\)">\(p_1&gt;0\)</span>. Both prove, for the actual analytic inner profile,</p>
+<span class="math math-display" data-tex="\[
+p_1+\frac{p_2^2}{p_1}&gt;2+c_{\rm ex}\quad\hbox{at }X_0=4/\Lambda,
+\qquad c_{\rm ex}=.2.
+\tag{J6.5}
+\]">\[
+p_1+\frac{p_2^2}{p_1}&gt;2+c_{\rm ex}\quad\hbox{at }X_0=4/\Lambda,
+\qquad c_{\rm ex}=.2.
+\tag{J6.5}
+\]</span>
+<p>Together with J5, this proves Proposition B.3, including its parameter order and all fixed parameter-derivative assertions.</p>
+<h2 id="j7-exact-receiving-scope">J7. Exact receiving scope</h2>
+<p>The constructed profile has the original prescribed pressure at the axis, positive <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, all analytic scalar profiles, a smooth Cartesian field, exactly zero leading stress, positive <span class="math" data-tex="\(S_q\)">\(S_q\)</span>, and the strict endpoint inequality. The maps J3.2 and J4.6 retain the original X and physical fields; <span class="math" data-tex="\(\partial_X=\Lambda\partial_Y\)">\(\partial_X=\Lambda\partial_Y\)</span> retains their derivative scales. For original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, use the exact map in G1 and H7.1–H7.2: <span class="math" data-tex="\(u_\nu=\sqrt\nu u(x_\nu/\sqrt\nu,t)\)">\(u_\nu=\sqrt\nu u(x_\nu/\sqrt\nu,t)\)</span>, <span class="math" data-tex="\(p_\nu=\nu p(x_\nu/\sqrt\nu,t)\)">\(p_\nu=\nu p(x_\nu/\sqrt\nu,t)\)</span>, <span class="math" data-tex="\(T_\nu=\nu T(x_\nu/\sqrt\nu,t)=0\)">\(T_\nu=\nu T(x_\nu/\sqrt\nu,t)=0\)</span>, with <span class="math" data-tex="\(X_\nu=r_\nu^2/(2\nu q_\nu)\)">\(X_\nu=r_\nu^2/(2\nu q_\nu)\)</span>. The full momentum residual retains the axial-viscosity and radial remainder terms in G1.5–G1.6; zero leading stress does not set those terms to zero.</p>
+<p>An explicit component of the remaining full residual can be calculated at the spatial origin. First use viscosity one. On the axis <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the actual axial velocity is</p>
+<span class="math math-display" data-tex="\[
+u_z(0,z,t)=q(z,t)^{-A}[4\eta(z,t)+j_0],
+\qquad q-z^2q^{2h}=\tau=1-t,\quad \eta=z/q^D.
+\tag{J7.1}
+\]">\[
+u_z(0,z,t)=q(z,t)^{-A}[4\eta(z,t)+j_0],
+\qquad q-z^2q^{2h}=\tau=1-t,\quad \eta=z/q^D.
+\tag{J7.1}
+\]</span>
+<p>At <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, implicit differentiation or G0.2 gives</p>
+<span class="math math-display" data-tex="\[
+q=\tau,\quad q_z=0,\quad q_{zz}=2\tau^{1-2D},
+\qquad\eta_z=\tau^{-D},\quad\eta_{zz}=0.
+\]">\[
+q=\tau,\quad q_z=0,\quad q_{zz}=2\tau^{1-2D},
+\qquad\eta_z=\tau^{-D},\quad\eta_{zz}=0.
+\]</span>
+<p>The last equality also follows from the fact that q is even in z and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is odd. The source data <span class="math" data-tex="\(4\eta+j_0\)">\(4\eta+j_0\)</span> have zero second derivative in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Applying the product and chain rules, every term but the one containing <span class="math" data-tex="\(q_{zz}j_0\)">\(q_{zz}j_0\)</span> vanishes. Thus</p>
+<span class="math math-display" data-tex="\[
+\partial_z^2u_z(0,0,t)=-2Aj_0\tau^{-A-2D}.
+\tag{J7.2}
+\]">\[
+\partial_z^2u_z(0,0,t)=-2Aj_0\tau^{-A-2D}.
+\tag{J7.2}
+\]</span>
+<p>The exact physical residual identity G1.5 is
+<span class="math" data-tex="\(\mathcal R_1(u,p)\cdot e_z=-(\partial_r+1/r)T_z-\partial_z^2u_z\)">\(\mathcal R_1(u,p)\cdot e_z=-(\partial_r+1/r)T_z-\partial_z^2u_z\)</span>.
+The constructed stress is identically zero on this inner region. All fields are smooth in Cartesian coordinates, so the identity on <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> extends to the axis. Therefore</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_1(u,p)(0,t)\cdot e_z=2Aj_0\tau^{-A-2D}&gt;0.
+\tag{J7.3}
+\]">\[
+\mathcal R_1(u,p)(0,t)\cdot e_z=2Aj_0\tau^{-A-2D}&gt;0.
+\tag{J7.3}
+\]</span>
+<p>The viscosity map is <span class="math" data-tex="\(u_\nu(x_\nu,t)=\sqrt\nu\,u(x_\nu/\sqrt\nu,t)\)">\(u_\nu(x_\nu,t)=\sqrt\nu\,u(x_\nu/\sqrt\nu,t)\)</span>, <span class="math" data-tex="\(p_\nu=\nu p(x_\nu/\sqrt\nu,t)\)">\(p_\nu=\nu p(x_\nu/\sqrt\nu,t)\)</span>. Each term in the full momentum residual then has the factor <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span>. At the spatial origin the exact original-viscosity identity is</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_\nu(u_\nu,p_\nu)(0,t)\cdot e_z
+=2Aj_0\sqrt\nu\,\tau^{-A-2D}
+=\sqrt\nu\,\tau^{-A-1}(2Aj_0\tau^{2h}).
+\tag{J7.4}
+\]">\[
+\mathcal R_\nu(u_\nu,p_\nu)(0,t)\cdot e_z
+=2Aj_0\sqrt\nu\,\tau^{-A-2D}
+=\sqrt\nu\,\tau^{-A-1}(2Aj_0\tau^{2h}).
+\tag{J7.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(2D=1-2h\)">\(2D=1-2h\)</span>. The final equality proves the precise <span class="math" data-tex="\(q^{2h}\)">\(q^{2h}\)</span> relative factor at this point; the absolute residual is still nonzero. This is the leading inner field. The subsequent base coefficients and corrections address its full residual before the theorem’s final smooth forcing is obtained.</p>
+<p>The actual continuation from <span class="math" data-tex="\(X_0=4/\Lambda\)">\(X_0=4/\Lambda\)</span>, its stress activation, analytic collar, amplitude-independent transition and exact five-moment joining are derived in <a href="inner-outer-joining-audit.html">Q0–Q9</a>, covering Lemma B.4 through Corollary B.10. The actual admissible-shear construction and Theorem 4.6 are derived in <a href="shear-realization-audit.html">V0–V7</a>, preserving this analytic rectangle and inner collar. The positive-order base is derived in <a href="base-field-realization-audit.html">Z0–Z8</a>; the actual local construction and final assembly are proved in <a href="local-construction-assembly-audit.html">I0–I7</a> and <a href="terminal-force-and-blowup-audit.html">F0–F8</a>. The <a href="../src/constructing-the-analytic-axis-profile.md">analytic-axis lesson</a>, J0–J8, supplies the full teaching exposition with five solved exercises. This note is one component of the <a href="theorem-audit-conclusion.html">complete theorem derivation</a>.</p>
+</article></body></html>

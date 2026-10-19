@@ -6,7 +6,7 @@ A covariant derivative compares nearby vectors; an affine connection also record
 
 Let \(E\to M\) be a smooth vector bundle of finite rank \(r\) over \(\mathbb F=\mathbb R\) or \(\mathbb C\). The base manifold and all tangent directions are real. In the complex case, a smooth complex function is a pair of smooth real functions, and a real vector field differentiates its real and imaginary parts. A frame \(e=(e_1,\ldots,e_r)\) acts on a column \(v\in\mathbb F^r\) by \(ev=\sum e_jv^j\). Our change-of-frame convention is \(\widetilde e=eg\), so a section has coordinates \(s=ev=\widetilde e\,\widetilde v\) with \(\widetilde v=g^{-1}v\).
 
-The free construction source is Peter W. Michor's [author manuscript, *Topics in Differential Geometry*](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §§19.10–19.12 and 22.11. We supply the converse frame correspondence and every local-to-global step explicitly. **Local**, **PB**, **Conn** and **Curv** refer respectively to the complete earlier programme lessons Local tools, [Principal bundles](principal-bundles-and-associated-bundles.md), [Connections and parallel transport](connections-and-parallel-transport.md) and [Curvature and holonomy groups](curvature-and-holonomy-groups.md). The external manuscript supplies construction material, never a substitute for these proofs.
+The free construction source is Peter W. Michor's [author manuscript, *Topics in Differential Geometry*](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §§19.10–19.12 and 22.11. We supply the converse frame correspondence and every local-to-global step explicitly. **Local**, **PB**, **Conn** and **Curv** refer respectively to the complete earlier programme lessons [Local tools](local-tools-for-bundles-and-transport.md), [Principal bundles](principal-bundles-and-associated-bundles.md), [Connections and parallel transport](connections-and-parallel-transport.md) and [Curvature and holonomy groups](curvature-and-holonomy-groups.md). The external manuscript supplies construction material, never a substitute for these proofs.
 
 A **covariant derivative** is a map \((X,s)\mapsto\nabla_Xs\) from real smooth vector fields and smooth sections to smooth sections. It is additive in both entries, linear over real smooth functions in \(X\), linear over \(\mathbb F\)-constants in \(s\), and satisfies
 \[
@@ -474,7 +474,7 @@ For any based loop \(c\), write its affine endpoint as \(q h(c)\). Equivariance 
 
 ## F. Transporting points and developing paths
 
-We now derive affine transport from the connection just constructed. The integration and transport arguments use the complete proofs in Local 0.3, [Conn C.1–C.2](connections-and-parallel-transport.md), and B.2. Curvature C.2 in the [curvature chapter](curvature-and-holonomy-groups.md) proves transport for continuous time coefficients, and its D.0 supplies circle angles and winding for the example below.
+We now derive affine transport from the connection just constructed. The integration and transport arguments use the complete proofs in [Local 0.3](local-tools-for-bundles-and-transport.md), [Conn C.1–C.2](connections-and-parallel-transport.md), and B.2. Curvature C.2 in the [curvature chapter](curvature-and-holonomy-groups.md) proves transport for continuous time coefficients, and its D.0 supplies circle angles and winding for the example below.
 
 **Theorem F.1 (affine transport and development).** For a finitely piecewise \(C^1\) path \(\gamma:[0,b]\to M\), let \(T_{st}:T_{\gamma(s)}M\to T_{\gamma(t)}M\) be linear transport. For the generalized affine connection \((\nabla,K)\), set
 \[
@@ -565,7 +565,7 @@ Along the segment, differentiating \(I-(x(t)-x_0)N\) verifies the equation \(G'=
 
 ## G. Geodesics and a complete latitude calculation
 
-The construction source for the sphere frame is Michor's exact free [author manuscript](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §25.7, native pages 327–328. We compute the connection, development and affine holonomy explicitly. DG-CHAR-17 V.1 and V.5 prove the Levi-Civita theorem and the smooth round-sphere model. Conn E.1 proves the circle exponential, its period and differentiation, so the trigonometric notation below has an earlier programme foundation.
+The construction source for the sphere frame is Michor's exact free [author manuscript](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §25.7, native pages 327–328. We compute the connection, development and affine holonomy explicitly. [DG-CHAR-17 V.1 and V.5](../supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md) prove the Levi-Civita theorem and the smooth round-sphere model. Conn E.1 proves the circle exponential, its period and differentiation, so the trigonometric notation below has an earlier programme foundation.
 
 **Theorem G.1 (development and affine parameter).** For a \(C^2\) curve, its normalized development satisfies
 \[

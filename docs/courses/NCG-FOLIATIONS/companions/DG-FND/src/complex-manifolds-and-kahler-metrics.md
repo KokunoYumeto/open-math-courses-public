@@ -9,7 +9,7 @@ All manifolds are finite dimensional, smooth, Hausdorff, second countable and wi
 \omega(X,Y)=g(JX,Y),\qquad
 N_J(X,Y)=[JX,JY]-J[JX,Y]-J[X,JY]-[X,Y].
 \]
-We use the proved calculus in Local tools, Lemma 0.3, smooth inverses in its Theorem 1.2, and the exterior derivative and bracket evaluation in [Curvature and holonomy, Lemma A.2](curvature-and-holonomy-groups.md#lemma-a-2). Exact additional prerequisites are linked when used.
+We use the proved calculus in [Local tools, Lemma 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), smooth inverses in its Theorem 1.2, and the exterior derivative and bracket evaluation in [Curvature and holonomy, Lemma A.2](curvature-and-holonomy-groups.md#lemma-a-2). Exact additional prerequisites are linked when used.
 
 ## A. An analytic test for complex coordinates
 
@@ -28,7 +28,7 @@ f(z)=\frac1{2\pi i}\int_{\partial Q}\frac{f(\zeta)}{\zeta-z}\,d\zeta
 \]
 The last integral exists as an improper integral with the singular point removed.
 
-**Proof.** We spell out the integration facts needed for this particular domain. For a continuous function on a rectangle, uniform continuity makes the oscillation on every sufficiently small rectangular cell uniformly small. Upper and lower rectangular sums differ by at most the total area times that oscillation. Their common limit defines the area integral. Comparing a product partition with the successive one-dimensional sums shows that either order of iterated integration has that same value. This proves the needed interchange directly from the one-dimensional integral in Local tools 0.3. It also proves the bound by area times the supremum and interchange with uniform limits.
+**Proof.** We spell out the integration facts needed for this particular domain. For a continuous function on a rectangle, uniform continuity makes the oscillation on every sufficiently small rectangular cell uniformly small. Upper and lower rectangular sums differ by at most the total area times that oscillation. Their common limit defines the area integral. Comparing a product partition with the successive one-dimensional sums shows that either order of iterated integration has that same value. This proves the needed interchange directly from the one-dimensional integral in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). It also proves the bound by area times the supremum and interchange with uniform limits.
 
 The fundamental theorem of calculus on horizontal and vertical segments now gives, for a smooth complex-valued \(G\),
 \[
@@ -79,7 +79,7 @@ These are successive integrals on finitely many compact segments; no interchange
    \frac{(z_j-a_j)^k}{(\zeta_j-a_j)^{k+1}}.
 \]
 The finite geometric identity shows that the remainder is bounded by
-\(q_j^{K+1}/(r_j(1-q_j))\) after degree \(K\), uniformly on the contour. Products of the series are uniformly absolutely convergent there: their absolute sums are bounded by \(\prod_j(r_j(1-q_j))^{-1}\). The integral bound in Local tools 0.3 permits termwise integration. Thus (A.4) is a power series in \(z-a\), with coefficient bound
+\(q_j^{K+1}/(r_j(1-q_j))\) after degree \(K\), uniformly on the contour. Products of the series are uniformly absolutely convergent there: their absolute sums are bounded by \(\prod_j(r_j(1-q_j))^{-1}\). The integral bound in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) permits termwise integration. Thus (A.4) is a power series in \(z-a\), with coefficient bound
 \[
 |c_\alpha|\leq
  \sup_{\prod\partial Q_j}|f|\,(4/\pi)^n
@@ -88,19 +88,19 @@ The finite geometric identity shows that the remainder is bounded by
 \]
 The perimeter of \(Q_j\) is \(8r_j\), which gives the stated constant. Every formally differentiated series converges uniformly on a smaller polydisc: the extra factor is a polynomial in each \(\alpha_j\), and \(\sum_{k\geq0}k^d q^k\) converges for \(q<1\). To see the latter without a series theorem, choose \(q<s<1\); the ratio of successive terms of \(k^d(q/s)^k\) is eventually smaller than a fixed number below one, so these terms are bounded, and comparison with \(\sum s^k\) suffices.
 
-Uniform convergence of a derivative series justifies differentiation: integrate that series on a real coordinate segment, use Local tools 0.3 to pass its partial sums through the integral, and recover the difference of the original series at the endpoints. Repeat for each derivative. Hence the power series gives smoothness and complex partial derivatives of the same kind.
+Uniform convergence of a derivative series justifies differentiation: integrate that series on a real coordinate segment, use [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) to pass its partial sums through the integral, and recover the difference of the original series at the endpoints. Repeat for each derivative. Hence the power series gives smoothness and complex partial derivatives of the same kind.
 
 Conversely, choose positive radii \(R_j\) whose closed polydisc lies in a neighbourhood of absolute convergence. Convergence at the point with coordinates \(a_j+R_j\) bounds each \(|c_\alpha|\prod_jR_j^{\alpha_j}\) by the finite sum of their absolute values. This is a coefficient bound of the same form as (A.5). The preceding smaller-polydisc argument therefore gives termwise derivatives of every order. Each monomial has zero \(\bar z^j\) derivative, so the sum does also. A complex partial derivative is again a convergent power series. The argument for a map is the scalar argument on each of its finitely many components. □
 
 **Corollary A.3 (complex charts and inverse maps).** A holomorphic map with invertible complex differential has a holomorphic local inverse. A smooth manifold with charts into \(\mathbb C^n\) whose transitions are holomorphic has a well-defined smooth field \(J\) with \(J^2=-I\), obtained by transporting multiplication by \(i\). A smooth map between two such manifolds is holomorphic precisely when its tangent map intertwines their \(J\)'s.
 
-**Proof.** An invertible complex-linear map is also invertible as a real map. The smooth inverse theorem Local tools 1.2 supplies a smooth local inverse \(G\), whose derivative is \(dG=(dF)^{-1}\). The inverse of a map commuting with \(i\) also commutes with \(i\), as follows by multiplying \(dF\,i=i\,dF\) by its inverse on both sides. A.2 makes \(G\) holomorphic.
+**Proof.** An invertible complex-linear map is also invertible as a real map. The smooth inverse theorem [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) supplies a smooth local inverse \(G\), whose derivative is \(dG=(dF)^{-1}\). The inverse of a map commuting with \(i\) also commutes with \(i\), as follows by multiplying \(dF\,i=i\,dF\) by its inverse on both sides. A.2 makes \(G\) holomorphic.
 
 On overlapping charts, A.2 says that the transition differential commutes with multiplication by \(i\). Thus the two transported endomorphisms agree. Their squares are \(-I\) and their coordinate coefficients are smooth. The same calculation for a map in a pair of charts converts the intrinsic intertwining equation exactly into (A.3). A.2 proves the last assertion. The chain rule also shows that compositions preserve the equation, hence are holomorphic. □
 
 **Lemma A.4 (a local right inverse with parameters).** If \(f(z,t)\) is smooth on \(D\times V\), where \(D\subset\mathbb C\) is a disc and \(V\) is an open real parameter set, then on every smaller disc \(D'\) with closure contained in \(D\) there is a smooth \(Tf\) satisfying \(\partial_{\bar z}Tf=f\). The operator can be chosen linear and commuting with all derivatives in \(t\).
 
-**Proof.** Choose a smooth cutoff \(\chi\) compactly supported in \(D\), equal to one near \(\overline{D'}\), using Local tools 3.1. Extend \(F=\chi f\) by zero in its first variable and set
+**Proof.** Choose a smooth cutoff \(\chi\) compactly supported in \(D\), equal to one near \(\overline{D'}\), using [Local tools 3.1](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support). Extend \(F=\chi f\) by zero in its first variable and set
 \[
 Tf(z,t)=\frac1\pi\int_{\mathbb C}\frac{F(z-w,t)}{w}\,dA(w)
        =-\frac1\pi\int_{\mathbb C}\frac{F(\zeta,t)}{\zeta-z}\,dA(\zeta).
@@ -405,7 +405,7 @@ which after multiplication by two is the last formula of (D.7). The matrix is in
 
 **Example D.4 (closedness alone does not suffice).** There is a smooth almost Hermitian structure on \(\mathbb R^4\) whose fundamental form is closed but whose Nijenhuis tensor is nowhere zero. On a Riemann surface, by contrast, every Hermitian metric is Kähler.
 
-**Proof.** The real exponential, its positivity, its derivative and its addition law are proved in Local tools 0.5. With coordinates \(x,y,u,v\), use the global frame
+**Proof.** The real exponential, its positivity, its derivative and its addition law are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). With coordinates \(x,y,u,v\), use the global frame
 \[
 e_1=\partial_x,\quad e_2=\partial_y,\quad
 e_3=e^x\partial_u,\quad e_4=e^{-x}\partial_v.
@@ -489,7 +489,7 @@ Inductively suppose the first \(r-1\) coefficients have been made zero on a prod
 \qquad \alpha=\sum_j\alpha_j\,dx^j.
 \tag{E.1}
 \]
-The segment stays in the ball. The integrands and all their derivatives are continuous uniformly on compact subsets times \([0,1]\); the segment estimate of Local tools 0.3 permits differentiation under the integral, proving smoothness. The coefficients are real.
+The segment stays in the ball. The integrands and all their derivatives are continuous uniformly on compact subsets times \([0,1]\); the segment estimate of [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) permits differentiation under the integral, proving smoothness. The coefficients are real.
 
 Closedness says
 \(\partial_k\omega_{ij}-\partial_j\omega_{ik}=\partial_i\omega_{kj}\).
@@ -540,11 +540,11 @@ Differentiation under the integral is justified by uniform smooth derivative bou
  =2a_k(z).
 \end{aligned}
 \]
-Because \(H\) is holomorphic, \(\partial\Re H=\frac12\partial H=\partial u\); conjugation gives the same equality for \(\bar\partial\). Thus every real partial derivative of \(u-\Re H\) is zero. Integrating along segments by Local tools 0.3 shows it is constant on that ball. Add this real constant to \(H\) to obtain \(u=\Re H\). Conversely, if \(u=\Re H\) with \(H\) holomorphic, its mixed \(z,\bar z\) derivatives vanish, so \(\partial\bar\partial u=0\), proving the last assertion. □
+Because \(H\) is holomorphic, \(\partial\Re H=\frac12\partial H=\partial u\); conjugation gives the same equality for \(\bar\partial\). Thus every real partial derivative of \(u-\Re H\) is zero. Integrating along segments by [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) shows it is constant on that ball. Add this real constant to \(H\) to obtain \(u=\Re H\). Conversely, if \(u=\Re H\) with \(H\) holomorphic, its mixed \(z,\bar z\) derivatives vanish, so \(\partial\bar\partial u=0\), proving the last assertion. □
 
 **Proposition E.4 (why a positive potential cannot be global on a compact manifold).** A nonempty compact complex manifold of positive complex dimension has no smooth globally defined strictly plurisubharmonic function. In particular a Kähler form on it cannot have a globally defined real potential of the form in E.3.
 
-**Proof.** A continuous real function \(\phi\) on a compact space attains a maximum. Indeed its image is compact: an open cover pulls back to a cover of the domain and has a finite subcover. A compact subset of \(\mathbb R\) is bounded by the cover \((-k,k)\), and contains its supremum because otherwise the complements of decreasing closed intervals about that supremum would cover it without a finite subcover. These statements also follow from Local tools 0.1.
+**Proof.** A continuous real function \(\phi\) on a compact space attains a maximum. Indeed its image is compact: an open cover pulls back to a cover of the domain and has a finite subcover. A compact subset of \(\mathbb R\) is bounded by the cover \((-k,k)\), and contains its supremum because otherwise the complements of decreasing closed intervals about that supremum would cover it without a finite subcover. These statements also follow from [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 Choose a maximum point and a complex chart about it. For every real coordinate direction, restriction to a short line segment has a maximum at zero. If its second derivative at zero were positive, continuity would make the second derivative positive on a smaller segment; the fundamental theorem of calculus applied twice, and the zero first derivative at a maximum, would make its value larger on that segment away from zero. Thus both \(\phi_{x^jx^j}\) and \(\phi_{y^jy^j}\) are nonpositive at the maximum. The definition of the Wirtinger derivatives gives
 \[
@@ -593,7 +593,7 @@ w_j=v_j-\sum_{k<j}H(v_j,e_k)e_k,\qquad
 e_j=w_j/\sqrt{H(w_j,w_j)}.
 \tag{F.4}
 \]
-Induction shows \(H(w_j,e_k)=0\) for \(k<j\), and the first \(j-1\) vectors span the same complex space as the preceding \(v_k\)'s. Thus \(w_j\ne0\) and its squared norm is positive. The positive square root is smooth by [Principal bundles D.2](principal-bundles-and-associated-bundles.md#theorem-d-2), so these are smooth unitary frames. Any two differ by a unitary matrix, and conversely such a matrix preserves \(H\). The equations \(A^*A=I\) define an embedded subgroup in complex matrices: the derivative is \(A^*B+B^*A\), which maps \(B=AS/2\) to any prescribed Hermitian \(S\) when \(A^*A=I\); the smooth submersion theorem Local tools 1.3 applies. In each unitary frame chart the selected frames form \(U\times\mathrm U(n)\), establishing the reduction.
+Induction shows \(H(w_j,e_k)=0\) for \(k<j\), and the first \(j-1\) vectors span the same complex space as the preceding \(v_k\)'s. Thus \(w_j\ne0\) and its squared norm is positive. The positive square root is smooth by [Principal bundles D.2](principal-bundles-and-associated-bundles.md#theorem-d-2), so these are smooth unitary frames. Any two differ by a unitary matrix, and conversely such a matrix preserves \(H\). The equations \(A^*A=I\) define an embedded subgroup in complex matrices: the derivative is \(A^*B+B^*A\), which maps \(B=AS/2\) to any prescribed Hermitian \(S\) when \(A^*A=I\); the smooth submersion theorem [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) applies. In each unitary frame chart the selected frames form \(U\times\mathrm U(n)\), establishing the reduction.
 
 A unitary reduction conversely transfers the standard Hermitian form to the fibres, independently of the chosen frame. Its real part gives the compatible positive \(g\), and these constructions are inverse. In real matrices, being unitary is exactly being orthogonal and commuting with \(J_0\); (F.3) shows these matrices lie in \(\mathrm{SO}(2n)\).
 
@@ -762,7 +762,7 @@ Setting this equal to \(1\) proves (G.8). The coordinate change \(u=v^1/2,\ w=v^
 **Theorem H.1 (flat complex tori for every full lattice).** Let \(v_1,\ldots,v_{2n}\) be a real basis of \(\mathbb C^n\) and let
 \(\Lambda=\sum_j\mathbb Z v_j\). Then \(T=\mathbb C^n/\Lambda\) is a compact complex manifold. Every constant positive Hermitian metric on \(\mathbb C^n\) descends to a complete flat Kähler metric on \(T\). The standard complex tensor always descends; the map \(z\mapsto iz\) descends to the quotient precisely when \(i\Lambda\subset\Lambda\).
 
-**Proof.** For \(n=0\) the quotient is a single point and all assertions are immediate. Suppose \(n\geq1\). Let \(B:\mathbb R^{2n}\to\mathbb C^n\) be the real isomorphism with columns \(v_j\). Its bounded inverse, as a finite-dimensional linear map Local tools 0.2, gives
+**Proof.** For \(n=0\) the quotient is a single point and all assertions are immediate. Suppose \(n\geq1\). Let \(B:\mathbb R^{2n}\to\mathbb C^n\) be the real isomorphism with columns \(v_j\). Its bounded inverse, as a finite-dimensional linear map [Local tools 0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), gives
 \[
 |Bm|\geq\|B^{-1}\|^{-1}|m|
 \quad(m\in\mathbb R^{2n}).
@@ -774,11 +774,11 @@ The quotient map \(q\) is open, since the inverse image of the image of an open 
 The quotient is Hausdorff. If \(z-w\notin\Lambda\), then
 \(\eta=\inf_{\lambda\in\Lambda}|z-w-\lambda|>0\): only finitely many lattice vectors can have \(|z-w-\lambda|\leq |z-w|+1\), so the infimum in that bounded range is a positive minimum, and vectors outside it cannot lower the infimum to zero. Balls of radius less than \(\eta/3\) around \(z,w\) have disjoint images. Images of a countable Euclidean basis form a countable basis for the quotient, because \(q\) is open. Thus these are charts on a Hausdorff second-countable manifold.
 
-On chart overlaps their inverse lifts differ by a lattice vector. That vector is locally constant: it depends continuously on the point and any two distinct lattice vectors are at least \(\delta\) apart. Hence every transition is locally a translation. It is holomorphic by A.2, giving a complex atlas. Every orbit has a representative \(B(t_1,\ldots,t_{2n})\) with \(0\leq t_j\leq1\), by subtracting the integer parts of its real coordinates. This parallelepiped is compact Local tools 0.1, and its continuous image is the whole quotient, so \(T\) is compact.
+On chart overlaps their inverse lifts differ by a lattice vector. That vector is locally constant: it depends continuously on the point and any two distinct lattice vectors are at least \(\delta\) apart. Hence every transition is locally a translation. It is holomorphic by A.2, giving a complex atlas. Every orbit has a representative \(B(t_1,\ldots,t_{2n})\) with \(0\leq t_j\leq1\), by subtracting the integer parts of its real coordinates. This parallelepiped is compact [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), and its continuous image is the whole quotient, so \(T\) is compact.
 
 A constant positive Hermitian metric, its tensor \(J_0\), and its fundamental form are invariant under translations. They therefore agree in overlapping lifted charts and descend. The form has constant coefficients there, hence is closed. D.2 makes the descended metric Kähler. Its Levi-Civita coefficients in each lifted real chart are zero by [Riemannian connections A.1](riemannian-connections-and-convex-neighbourhoods.md#theorem-a-1), so the curvature is zero by its definition as the commutator of covariant derivatives.
 
-For any initial position and velocity in the quotient, choose a lift \(z\) and its corresponding velocity \(u\). The curve \(t\mapsto q(z+tu)\) is a geodesic for all real \(t\), since in every local lifted chart its acceleration is zero. Local geodesic uniqueness is proved in [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1). Thus every maximal geodesic extends for all time. The equivalence with metric completeness is Hopf–Rinow B.2.
+For any initial position and velocity in the quotient, choose a lift \(z\) and its corresponding velocity \(u\). The curve \(t\mapsto q(z+tu)\) is a geodesic for all real \(t\), since in every local lifted chart its acceleration is zero. Local geodesic uniqueness is proved in [Geodesics A.1](geodesics-normal-coordinates-and-curvature.md#theorem-a-1). Thus every maximal geodesic extends for all time. The equivalence with metric completeness is [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2).
 
 For the map \(z\mapsto iz\), equality of the images of \(z\) and \(z+\lambda\) requires and is implied by \(i\lambda\in\Lambda\) for all \(\lambda\). This proves the last criterion. If the inclusion holds, multiplying it again by \(i\) gives \(-\Lambda\subset i\Lambda\), hence equality, so it even gives a quotient automorphism. The tensor's descent only used the identity derivative of translations and imposes no such condition. Rank zero gives the one-point torus. □
 
@@ -791,7 +791,7 @@ For the map \(z\mapsto iz\), equality of the images of \(z\) and \(z+\lambda\) r
 \]
 Exterior differentiation commutes with smooth pullback, including its chain-rule proof in the exterior-calculus prerequisites of [Curvature A.1](curvature-and-holonomy-groups.md#lemma-a-1). Thus \(d\omega=f^*d\omega'=0\). D.2 proves the assertion.
 
-For the completeness issue take the inclusion of the unit disc in \(\mathbb C\), with the ambient Euclidean metric. This is a holomorphic immersion and its induced metric is Euclidean on the disc. The geodesic \(\gamma(t)=t\) starting at zero with real unit velocity reaches its boundary as \(t\uparrow1\). A continuous extension at \(t=1\) within the disc would have to have value \(1\) in the ambient plane, which is not in the disc. Local geodesic uniqueness therefore precludes a complete continuation. The ambient Euclidean plane is complete: a Euclidean Cauchy sequence converges coordinatewise by Local tools 0.1. This proves the claimed limitation by a concrete example. □
+For the completeness issue take the inclusion of the unit disc in \(\mathbb C\), with the ambient Euclidean metric. This is a holomorphic immersion and its induced metric is Euclidean on the disc. The geodesic \(\gamma(t)=t\) starting at zero with real unit velocity reaches its boundary as \(t\uparrow1\). A continuous extension at \(t=1\) within the disc would have to have value \(1\) in the ambient plane, which is not in the disc. Local geodesic uniqueness therefore precludes a complete continuation. The ambient Euclidean plane is complete: a Euclidean Cauchy sequence converges coordinatewise by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). This proves the claimed limitation by a concrete example. □
 
 ## I. The octonionic almost complex six-sphere
 
@@ -908,7 +908,7 @@ N_J(U,V)&=-4J A_p(U,V),\\
 \]
 At every point there are orthonormal tangent \(U,V\) with \(|N_J(U,V)|=4\). Thus this particular almost complex structure is not integrable on any nonempty open subset.
 
-**Proof.** The differential of \(p\mapsto |p|^2\) is \(U\mapsto2\langle p,U\rangle\), nonzero on the unit level; Local tools 1.3 gives its smooth tangent bundle with \(T_pS^6=p^\perp\). I.1 makes \(p\times U\) tangent and gives
+**Proof.** The differential of \(p\mapsto |p|^2\) is \(U\mapsto2\langle p,U\rangle\), nonzero on the unit level; [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives its smooth tangent bundle with \(T_pS^6=p^\perp\). I.1 makes \(p\times U\) tangent and gives
 \[
 p\times(p\times U)=-U,\qquad |p\times U|^2=|U|^2.
 \]
@@ -1026,7 +1026,7 @@ L_j=\partial_{\bar z^j}+\sum_a A_j^a(z)\partial_{z^a},
 \]
 Every real derivative of order \(k\leq s\) of \(A\) is \(O(|z|^{s-k})\). The coordinate differential at the chosen point is complex linear for \(J\).
 
-**Proof.** The zero-dimensional case has no equations. Otherwise choose the real paired basis of B.1 at the point, use a real chart with that differential, and put the point at zero. Then \(J(0)\) is the standard complex matrix. Projection of \(T^{0,1}_J\) onto the coordinate \((0,1)\) space is invertible at zero and, by continuity of the determinant, nearby. Its inverse supplies the frame in (J.2), with \(A(0)=0\). The coefficients are smooth by matrix inversion Local tools 0.4.
+**Proof.** The zero-dimensional case has no equations. Otherwise choose the real paired basis of B.1 at the point, use a real chart with that differential, and put the point at zero. Then \(J(0)\) is the standard complex matrix. Projection of \(T^{0,1}_J\) onto the coordinate \((0,1)\) space is invertible at zero and, by continuity of the determinant, nearby. Its inverse supplies the frame in (J.2), with \(A(0)=0\). The coefficients are smooth by matrix inversion [Local tools 0.4](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 The bracket \([L_j,L_k]\) has no coordinate \(\partial_{\bar z}\) component. Involutivity places it in the span of the \(L_a\), whose \(\partial_{\bar z}\) components are the standard basis. Consequently the bracket is zero. Its remaining coefficients give
 \[
@@ -1058,9 +1058,9 @@ This is a homogeneous polynomial of total degree \(s+1\). Differentiating it wit
 \end{aligned}
 \tag{J.5}
 \]
-All these integrals are finite polynomial integrals; the fundamental theorem is Local tools 0.3.
+All these integrals are finite polynomial integrals; the fundamental theorem is [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
-Make the real coordinate change \(w^a=z^a-Q^a(z,\bar z)\). Its differential at zero is the identity, so Local tools 1.2 makes it a smooth local diffeomorphism. Direct differentiation shows
+Make the real coordinate change \(w^a=z^a-Q^a(z,\bar z)\). Its differential at zero is the identity, so [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) makes it a smooth local diffeomorphism. Direct differentiation shows
 \[
 L_jw^a=A_j^a-P_j^a-\sum_b A_j^b\partial_{z^b}Q^a
        =O(|z|^{s+1}).
@@ -1087,7 +1087,7 @@ F+i\partial_J\bar\partial_J\Phi_\varepsilon&\geq\omega
 \tag{J.8}
 \]
 
-**Proof.** The real logarithm and exponential, their derivatives and their inverse and product identities are the integral constructions proved in Local tools 0.5. Positivity means \(\omega(X,JX)>0\) for nonzero real \(X\). In the ordinary coordinates let
+**Proof.** The real logarithm and exponential, their derivatives and their inverse and product identities are the integral constructions proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Positivity means \(\omega(X,JX)>0\) for nonzero real \(X\). In the ordinary coordinates let
 \(\omega_0=i\sum_j dz^j\wedge d\bar z^j\);
 its real metric is twice the Euclidean metric. The graph description (J.2) expresses the two type projections as smooth matrix functions of \(A,\bar A\), equal to the ordinary projections when \(A=0\). J.1 and matrix inversion therefore give projection errors of order \(r^3\), with first and second derivatives of orders \(r^2,r\), where \(r=|z|\). As \(d\psi\) has coefficients of order \(r\),
 \[
@@ -1129,7 +1129,7 @@ i\partial_J\bar\partial_J\log(\psi+\varepsilon^2)
 The last inequality uses \(r^5/(r^2+\varepsilon^2)^2\leq r\), including \(r=0\). It is uniform in \(\varepsilon\).
 
 On the closed smaller ball \(F\geq-B\omega\) for some \(B\geq0\): in finitely many smooth frames its coefficients are bounded and the positive metric has a uniform lower bound. Take
-\(a\geq B+1+(n+1)CR\). Substituting (J.12) proves (J.8). All matrix bounds come from compactness and the finite-dimensional norm estimates in Local tools 0.1–0.2. □
+\(a\geq B+1+(n+1)CR\). Substituting (J.12) proves (J.8). All matrix bounds come from compactness and the finite-dimensional norm estimates in [Local tools 0.1–0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). □
 
 **Lemma J.3 (a complete metric with explicit small-gradient cutoffs).** On a smaller ball \(\Omega=\{\psi<R^2\}\), the form
 \[
@@ -1159,9 +1159,9 @@ Since \(d\psi(X)=2\operatorname{Re}\partial_J\psi(X)\), the associated real metr
 \tag{J.16}
 \]
 
-Here is a direct completeness proof. On the closed ball the metric of \(\omega\) bounds a fixed positive multiple of the Euclidean metric below. As \(\gamma\geq\omega\), a Cauchy sequence for the length distance of \(\gamma\) is Euclidean Cauchy and has a limit in the closed ball. Along any piecewise smooth curve (J.16) gives a bound of \(\sqrt2\) times its length for the change in \(b\). Taking infima over such curves shows that \(b\) is \(\sqrt2\)-Lipschitz for that distance. It is consequently bounded on the Cauchy sequence. The limit cannot lie on the boundary, where \(b\) tends to infinity. At an interior limit, the metric is bounded above on a small convex coordinate ball; straight segments then show convergence also in the \(\gamma\) distance. This proves metric completeness using the real completeness theorem Local tools 0.1.
+Here is a direct completeness proof. On the closed ball the metric of \(\omega\) bounds a fixed positive multiple of the Euclidean metric below. As \(\gamma\geq\omega\), a Cauchy sequence for the length distance of \(\gamma\) is Euclidean Cauchy and has a limit in the closed ball. Along any piecewise smooth curve (J.16) gives a bound of \(\sqrt2\) times its length for the change in \(b\). Taking infima over such curves shows that \(b\) is \(\sqrt2\)-Lipschitz for that distance. It is consequently bounded on the Cauchy sequence. The limit cannot lie on the boundary, where \(b\) tends to infinity. At an interior limit, the metric is bounded above on a small convex coordinate ball; straight segments then show convergence also in the \(\gamma\) distance. This proves metric completeness using the real completeness theorem [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
-Set \(\rho=b-b(0)\). It is nonnegative and proper on \(\Omega\). To obtain a smooth nonincreasing function \(\eta:\mathbb R\to[0,1]\) equal to one on \((-\infty,1]\) and zero on \([2,\infty)\), choose a nonzero nonnegative smooth bump \(\beta\) supported in \((1,2)\), by Local tools 3.1, and put \(\eta(t)=(\int\beta)^{-1}\int_t^\infty\beta(s)\,ds\). The integral is over a fixed compact interval; the fundamental theorem proves smoothness and \(\eta'=-\beta/\int\beta\leq0\). Put \(\chi_k=\eta(\rho/k)\). Its support is contained in the compact sublevel \(\rho\leq2k\), and it equals one where \(\rho\leq k\). These sublevels exhaust \(\Omega\). Finally the chain rule and (J.16) give (J.14), with \(C=\sqrt2\sup|\eta'|\). The sequence is nondecreasing because \(\eta\) is nonincreasing. □
+Set \(\rho=b-b(0)\). It is nonnegative and proper on \(\Omega\). To obtain a smooth nonincreasing function \(\eta:\mathbb R\to[0,1]\) equal to one on \((-\infty,1]\) and zero on \([2,\infty)\), choose a nonzero nonnegative smooth bump \(\beta\) supported in \((1,2)\), by [Local tools 3.1](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support), and put \(\eta(t)=(\int\beta)^{-1}\int_t^\infty\beta(s)\,ds\). The integral is over a fixed compact interval; the fundamental theorem proves smoothness and \(\eta'=-\beta/\int\beta\leq0\). Put \(\chi_k=\eta(\rho/k)\). Its support is contained in the compact sublevel \(\rho\leq2k\), and it equals one where \(\rho\leq k\). These sublevels exhaust \(\Omega\). Finally the chain rule and (J.16) give (J.14), with \(C=\sqrt2\sup|\eta'|\). The sequence is nondecreasing because \(\eta\) is nonincreasing. □
 
 **Lemma J.4 (the weighted equation that suffices for coordinates).** In the normalized ball of J.2 let \(\chi\) be a smooth compactly supported function equal to one near zero, and put
 \[
@@ -1192,7 +1192,7 @@ Now (J.18) forces both \(u_j(0)=0\) and \(du_j(0)=0\). If the value were nonzero
 
 If the value is zero but the real differential is nonzero, there is a real unit direction on which it is nonzero. Continuity of that linear map bounds its modulus below on an open cone about that direction. Differentiability, uniformly for directions in a smaller cone, gives \(|u_j(z)|\geq c|z|\) there for small \(|z|\). Choose \(Q\) in that smaller cone. The factor \(|u_j|^2\) now contributes at least \(c\,2^{-2m}\), exactly canceling the preceding factor \(2^{2m}\). Every scaled box contributes a fixed positive amount, again a contradiction. The density and \(e^{-a\psi}\) have fixed positive lower bounds in these estimates.
 
-Thus \(dw(0)=dz(0)\) and \(\bar\partial_Jw=0\). The real inverse theorem Local tools 1.2 gives a smooth local diffeomorphism. The equation \(\bar\partial_Jw=0\) says its differential intertwines \(J\) with the standard complex structure. Every transition between two such charts has complex-linear differential; A.2–A.3 make it holomorphic. Therefore these are the required complex charts. This lemma is conditional on (J.18). Parts K–M establish the analytic prerequisites, and N.1 constructs functions satisfying that condition. □
+Thus \(dw(0)=dz(0)\) and \(\bar\partial_Jw=0\). The real inverse theorem [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives a smooth local diffeomorphism. The equation \(\bar\partial_Jw=0\) says its differential intertwines \(J\) with the standard complex structure. Every transition between two such charts has complex-linear differential; A.2–A.3 make it holomorphic. Therefore these are the required complex charts. This lemma is conditional on (J.18). Parts K–M establish the analytic prerequisites, and N.1 constructs functions satisfying that condition. □
 
 ## K. Hilbert spaces and domains for the weighted equation
 
@@ -1216,7 +1216,7 @@ For the completion take Cauchy sequences \((x_j)\) and identify two when the nor
 \]
 Its limit defines an inner product on the quotient. A class has zero norm precisely when its representative tends to zero in norm, so this inner product is positive definite. Constant sequences embed the original space isometrically and densely.
 
-To verify completeness explicitly, for a Cauchy sequence \(X_j\) of classes choose original vectors \(x_j\) with \(\|X_j-x_j\|<2^{-j}\), using that density. The sequence \((x_j)\) is Cauchy. Its class \(X\) satisfies \(x_j\to X\): for a fixed index \(j\), its distance to \(X\) is \(\lim_k\|x_j-x_k\|\). The Cauchy property makes this small for large \(j\). Hence \(X_j\to X\). Scalar limits used here exist by Local tools 0.1.
+To verify completeness explicitly, for a Cauchy sequence \(X_j\) of classes choose original vectors \(x_j\) with \(\|X_j-x_j\|<2^{-j}\), using that density. The sequence \((x_j)\) is Cauchy. Its class \(X\) satisfies \(x_j\to X\): for a fixed index \(j\), its distance to \(X\) is \(\lim_k\|x_j-x_k\|\). The Cauchy property makes this small for large \(j\). Hence \(X_j\to X\). Scalar limits used here exist by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 For projection let \(d=\inf_{m\in M}\|x-m\|\), and choose \(m_j\in M\) with \(\|x-m_j\|\to d\). The parallelogram identity, obtained by expanding the four inner products, gives
 \[
@@ -1251,7 +1251,7 @@ Here the lower limit is taken along the selected subsequence.
 \sum_{k=1}^N|\langle u_j,e_k\rangle|^2\leq\|u_j\|^2.
 \tag{K.4}
 \]
-Each scalar coefficient is bounded. Repeated subsequence selection using compactness of a real two-dimensional box, Local tools 0.1, followed by the diagonal subsequence, makes all coefficients converge to numbers \(c_k\). For a finite family only finitely many selections are necessary.
+Each scalar coefficient is bounded. Repeated subsequence selection using compactness of a real two-dimensional box, [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), followed by the diagonal subsequence, makes all coefficients converge to numbers \(c_k\). For a finite family only finitely many selections are necessary.
 
 If the original uniform bound is \(C\), (K.4) gives \(\sum_{k\leq N}|c_k|^2\leq C^2\) for all \(N\). The nonnegative partial sums have a finite supremum and converge to it: otherwise some term would stay a fixed distance below that supremum, contradicting its defining property. Pythagoras makes the partial vector sums \(\sum_{k\leq N}c_ke_k\) Cauchy. By completeness they converge to \(u\in M\).
 
@@ -1377,7 +1377,7 @@ P(v*\rho_\varepsilon)-(Pv)*\rho_\varepsilon
 \]
 The convolutions on the left are defined even when \(Pv\) is initially only a weak section. If both \(v\) and \(Pv\) belong locally to these Hilbert completions, the mollifications approximate \(v\) in the graph norm of \(P\). This holds simultaneously for a finite collection of such operators.
 
-**Proof.** Choose a nonnegative smooth function \(\rho\) of compact support with ordinary integral one. The cutoff construction Local tools 3.1 gives a nonzero nonnegative smooth bump; its integral is positive, so division normalizes it. Write
+**Proof.** Choose a nonnegative smooth function \(\rho\) of compact support with ordinary integral one. The cutoff construction [Local tools 3.1](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support) gives a nonzero nonnegative smooth bump; its integral is positive, so division normalizes it. Write
 \(\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon)\).
 The affine change-of-variables formula in [Killing fields F.1](holonomy-killing-fields-and-analytic-extension.md#lemma-f-1) gives its integral as one.
 
@@ -1444,7 +1444,7 @@ P_j(\chi_k u)=\chi_kP_ju+[P_j,\chi_k]u.
 \]
 The first term tends to \(P_ju\) by K.3. Equations (J.14) and (K.18) bound the second in norm by \(C/k\) times \(\|u\|\). Also \(\chi_ku\to u\). Hence it is enough to approximate a compactly supported weak section in the joint graph norm.
 
-Cover this compact support by finitely many relatively compact trivializing coordinate charts and choose a smooth subordinate partition equal to one on a neighbourhood of the support, by Local tools 3.1. Multiplying by each partition function preserves all the domains: (K.19) applies, and its new coefficients are bounded on the relevant compact sets. The finitely many pieces add to the original weak section, by the injective embedding of K.3. Each piece is now supported strictly inside one chart. Trivialize it, extend its coefficient weak sections by zero, and apply K.5. For sufficiently small mollification radius the supports remain in the chart. The mollifications converge jointly with all \(P_j\) in the equivalent local bundle norms. Adding the finite pieces gives compactly supported smooth approximants. First choose the large cutoff index to make its graph error small, then the finitely many mollification radii to make their total error small. This constructs the required sequence.
+Cover this compact support by finitely many relatively compact trivializing coordinate charts and choose a smooth subordinate partition equal to one on a neighbourhood of the support, by [Local tools 3.1](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support). Multiplying by each partition function preserves all the domains: (K.19) applies, and its new coefficients are bounded on the relevant compact sets. The finitely many pieces add to the original weak section, by the injective embedding of K.3. Each piece is now supported strictly inside one chart. Trivialize it, extend its coefficient weak sections by zero, and apply K.5. For sufficiently small mollification radius the supports remain in the chart. The mollifications converge jointly with all \(P_j\) in the equivalent local bundle norms. Adding the finite pieces gives compactly supported smooth approximants. First choose the large cutoff index to make its graph error small, then the finitely many mollification radii to make their total error small. This constructs the required sequence.
 
 Let \(T=P_{\max}\). Its domain is dense and its graph is closed by K.3. If \(v\in\operatorname{Dom}T^*\), testing the adjoint identity only on compactly supported smooth \(u\) says, by (K.8), that \(P^\dagger v=T^*v\) weakly. Thus \(v\in\operatorname{Dom}(P^\dagger)_{\max}\). Conversely, suppose \(v\) belongs to that maximal domain. For any \(u\in\operatorname{Dom}T\), take the just-proved graph approximants \(u_\ell\). The defining weak identity gives
 \[
@@ -1476,7 +1476,7 @@ There are canonical isomorphisms
 \tag{L.2}
 \]
 
-**Proof.** The real logarithm and exponential and their differentiation rules used for the positive line metric are proved in Local tools 0.5. Work first with \(n>0\). In a local nonzero section \(\tau\) of \(K\), there is a unique \((0,1)\)-form \(b\) such that
+**Proof.** The real logarithm and exponential and their differentiation rules used for the positive line metric are proved in [Local tools 0.5](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Work first with \(n>0\). In a local nonzero section \(\tau\) of \(K\), there is a unique \((0,1)\)-form \(b\) such that
 \(\bar\partial_J\tau=b\wedge\tau\).
 Exterior multiplication by \(\tau\) is an isomorphism from \((0,q)\) covectors onto \((n,q)\) covectors: this follows directly by expanding in the exterior basis of any coframe from B.1. Define
 \[
@@ -1618,7 +1618,7 @@ The Hilbert spaces, weak equations and operator domains are those of K.3–K.6. 
 C=i\sum_j\lambda_j\theta^j\wedge\bar\theta^j,\qquad \lambda_j>0 .
 \tag{L.11}
 \]
-One may justify this finite-dimensional choice without a spectral theorem as an extra premise. A Hermitian matrix has a real quadratic form on the complex unit sphere. Compactness Local tools 0.1 gives a maximum. Vary a maximizing unit vector toward any perpendicular vector, first with a real and then an imaginary parameter; differentiating the quotient of its quadratic form by its squared norm shows that both the real and imaginary parts of the perpendicular pairing vanish. It is therefore an eigenvector. Hermitian symmetry makes its perpendicular complement invariant. Induction on the dimension supplies an orthonormal eigenbasis. Positivity of the quadratic form gives positive eigenvalues. This construction is needed only at a point; no smooth choice of eigenvectors is required.
+One may justify this finite-dimensional choice without a spectral theorem as an extra premise. A Hermitian matrix has a real quadratic form on the complex unit sphere. Compactness [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) gives a maximum. Vary a maximizing unit vector toward any perpendicular vector, first with a real and then an imaginary parameter; differentiating the quotient of its quadratic form by its squared norm shows that both the real and imaginary parts of the perpendicular pairing vanish. It is therefore an eigenvector. Hermitian symmetry makes its perpendicular complement invariant. Induction on the dimension supplies an orthonormal eigenbasis. Positivity of the quadratic form gives positive eigenvalues. This construction is needed only at a point; no smooth choice of eigenvectors is required.
 
 For a fixed \(j\), (L.7) shows that
 \[
@@ -1771,7 +1771,7 @@ They extend to mutually inverse isometries of \(H^0\). On \(\mathcal S\),
 \]
 The defining seminorms of \(\mathcal S\), together with the multinomial expansion of \((1+\sum_j|x_j|)^q\), give such bounds of any required order for every derivative. This also bounds the integral of a Schwartz function by finitely many of its seminorms.
 
-Here is the compact product-integration rule that we need. For a continuous function on a finite rectangle, uniform continuity makes the difference between upper and lower sums at most its oscillation on cells times the total volume. That difference tends to zero under rectangular refinements, exactly as for intervals in Local tools 0.3. Finite rectangular sums can be grouped in either order of the coordinates. For a two-block product rectangle \(X\times Y\), the sums in \(Y\) approximate the \(Y\)-integral uniformly in \(x\in X\), by the same uniform oscillation bound. Their integrals in \(X\) therefore converge to the iterated integral. Grouping instead in \(X\) proves that both iterated integrals equal the rectangular integral. Induction gives the rule for any finite number of coordinates. Products of two integrable bounds in separate variables also control improper double-integral tails: outside a product of two boxes, the bound is at most the first tail times the full second integral plus the second tail times the full first integral. Thus the compact rule passes to all double integrals below with such product bounds. In particular, their order of integration can be changed.
+Here is the compact product-integration rule that we need. For a continuous function on a finite rectangle, uniform continuity makes the difference between upper and lower sums at most its oscillation on cells times the total volume. That difference tends to zero under rectangular refinements, exactly as for intervals in [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Finite rectangular sums can be grouped in either order of the coordinates. For a two-block product rectangle \(X\times Y\), the sums in \(Y\) approximate the \(Y\)-integral uniformly in \(x\in X\), by the same uniform oscillation bound. Their integrals in \(X\) therefore converge to the iterated integral. Grouping instead in \(X\) proves that both iterated integrals equal the rectangular integral. Induction gives the rule for any finite number of coordinates. Products of two integrable bounds in separate variables also control improper double-integral tails: outside a product of two boxes, the bound is at most the first tail times the full second integral plus the second tail times the full first integral. Thus the compact rule passes to all double integrals below with such product bounds. In particular, their order of integration can be changed.
 
 For completeness, the real and complex exponentials here can be defined by their power series. On every bounded set, the series and each derivative series converge uniformly, since successive absolute terms have ratio tending to zero. Differentiation gives \(E'=E\) and \(E(0)=1\); differentiating \(E(t)E(-t)\) gives \(1\). Differentiating \(E(s+t)/E(t)\) gives the addition law. Applied on the imaginary axis, these facts give \(|e^{it}|=1\) and
 \[
@@ -1813,7 +1813,7 @@ For \(f,h\in\mathcal S\), the integrals in
 \]
 can be interchanged using the product bound \(|f(x)||\mathcal F_+h(\xi)|\). Inversion gives the last equality, hence (M1).
 
-Every Schwartz function defines an element of \(H^0\). Indeed, choose a smooth cutoff \(\chi=1\) near zero, of compact support, as in Local tools 3.1; then \(\chi(x/R)f\) converges to \(f\) in the square norm by the polynomial tail bound. Conversely \(C_c^\infty\subset\mathcal S\), so \(\mathcal S\) is dense in \(H^0\). The isometry (M1) extends to the completion by applying it to Cauchy sequences. Its inverse extends in the same way, and the two compositions remain the identity by density. This proves every assertion. □
+Every Schwartz function defines an element of \(H^0\). Indeed, choose a smooth cutoff \(\chi=1\) near zero, of compact support, as in [Local tools 3.1](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support); then \(\chi(x/R)f\) converges to \(f\) in the square norm by the polynomial tail bound. Conversely \(C_c^\infty\subset\mathcal S\), so \(\mathcal S\) is dense in \(H^0\). The isometry (M1) extends to the completion by applying it to Cauchy sequences. Its inverse extends in the same way, and the two compositions remain the identity by density. This proves every assertion. □
 
 **Lemma M.2 (integer Sobolev spaces and smoothing by \(1-\Delta\)).** Write \(w(\xi)=(1+|\xi|^2)^{1/2}\). For every integer \(s\), let \(H^s\) be the completion of \(\mathcal S\) in the norm
 \[
@@ -1966,7 +1966,7 @@ Here is the full iteration, including support. Select finitely many concentric b
 \[
 B_{N+2}\Subset B_{N+1}\Subset\cdots\Subset B_0\Subset B(0,1),
 \]
-all containing zero. For \(k=0,\ldots,N+1\), choose \(\eta_k\) supported in \(B_k\) and equal to \(1\) on a neighbourhood of \(\overline{B_{k+1}}\). These cutoffs exist by Local tools 3.1. Initially \(u_r\) is locally \(H^0\). Suppose that it is locally \(H^k\) on \(B_k\). Choose another cutoff \(\zeta\) supported in \(B_k\), equal to \(1\) on a neighbourhood of the support of \(\eta_k\). Then \(v=\eta_k u_r\in H^k\subset H^0\), extended by zero, and the last term in (M16) can be evaluated on \(\zeta u_r\in H^k\). Its coefficients have compact support inside \(B_k\); extend them smoothly by zero. Formula (M17) and M.2 place this term in \(H^{k-1}\). The middle term is in \(H^k\subset H^{k-1}\), and the first term is compactly supported and smooth, hence lies in every integer Sobolev space. Thus the right side \(g_k\) of (M16) is in \(H^{k-1}\).
+all containing zero. For \(k=0,\ldots,N+1\), choose \(\eta_k\) supported in \(B_k\) and equal to \(1\) on a neighbourhood of \(\overline{B_{k+1}}\). These cutoffs exist by [Local tools 3.1](local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support). Initially \(u_r\) is locally \(H^0\). Suppose that it is locally \(H^k\) on \(B_k\). Choose another cutoff \(\zeta\) supported in \(B_k\), equal to \(1\) on a neighbourhood of the support of \(\eta_k\). Then \(v=\eta_k u_r\in H^k\subset H^0\), extended by zero, and the last term in (M16) can be evaluated on \(\zeta u_r\in H^k\). Its coefficients have compact support inside \(B_k\); extend them smoothly by zero. Formula (M17) and M.2 place this term in \(H^{k-1}\). The middle term is in \(H^k\subset H^{k-1}\), and the first term is compactly supported and smooth, hence lies in every integer Sobolev space. Thus the right side \(g_k\) of (M16) is in \(H^{k-1}\).
 
 Since \(v\in H^0\) and \(P_rv=g_k\) in the injective space of weak functions, this is also an equality in \(H^{-2}\). Equations (M14)–(M15) now give
 \[
@@ -2030,7 +2030,7 @@ We may now use the implication already proved in L.5: (N1) gives the finite sing
 \[
 w^j=\chi z^j-u_j,\qquad \bar\partial_Jw^j=0,\qquad dw(0)=dz(0).
 \]
-Their real inverse exists by Local tools 1.2. Their differential intertwines \(J\) with multiplication by \(i\). Repeating at every point supplies an atlas. The transition maps are smooth and have complex-linear differentials, so A.2 proves their locally convergent complex power series; their inverses have the same property by A.3. Thus this is a complex atlas inducing \(J\). Finally any smooth map intertwining two such structures has complex-linear differential in these charts, so A.2 proves that it is holomorphic. In real dimension zero the conclusion is immediate from charts to the one-point space \(\mathbb C^0\); the argument above covers all positive dimensions. □
+Their real inverse exists by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion). Their differential intertwines \(J\) with multiplication by \(i\). Repeating at every point supplies an atlas. The transition maps are smooth and have complex-linear differentials, so A.2 proves their locally convergent complex power series; their inverses have the same property by A.3. Thus this is a complex atlas inducing \(J\). Finally any smooth map intertwining two such structures has complex-linear differential in these charts, so A.2 proves that it is holomorphic. In real dimension zero the conclusion is immediate from charts to the one-point space \(\mathbb C^0\); the argument above covers all positive dimensions. □
 
 **Theorem N.2 (oriented metric surfaces and isothermal coordinates).** Let \(S\) be a smooth oriented surface with a smooth Riemannian metric \(g\). There is a unique almost complex structure for which \(Je\) is the positive quarter-turn of a unit tangent vector \(e\). It is smooth and comes from a complex atlas. In every chart \(z=x+iy\) of this atlas there is a smooth positive function \(\lambda\) with
 \[

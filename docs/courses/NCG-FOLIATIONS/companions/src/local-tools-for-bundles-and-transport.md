@@ -469,7 +469,7 @@ The supports \([j-3/20,j+3/20]\) are pairwise disjoint, since their length \(3/1
 
 ## References
 
-[Lebl] Jiří Lebl, *Basic Analysis: Introduction to Real Analysis*, volumes I and II, free version 6.3, 15 May 2026. [Author's free edition](https://www.jirka.org/ra/). Section 0 supplies the complete analytic and linear arguments used here. The text is available under CC BY-SA 4.0 and, alternatively, CC BY-NC-SA 4.0.
+[Lebl] Jiří Lebl, *Basic Analysis: Introduction to Real Analysis*, volumes I and II, free version 6.3, 15 May 2026. [Author's free edition](https://www.jirka.org/ra/). Section 0 supplies the complete analytic and linear arguments used here.
 
 [Teschl] Gerald Teschl, *Ordinary Differential Equations and Dynamical Systems*, [free author preliminary version](https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf), April 2012, Sections 2.1–2.2, 2.4 and 2.6. Used for mathematical source comparison; no source prose, images or PDF is reproduced. The fixed-point parameter argument and every group-equation argument used here are proved in this lesson.
 

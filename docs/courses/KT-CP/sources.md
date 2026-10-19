@@ -40,4 +40,4 @@ MathJax uses Apache 2.0; font notices accompany its runtime. External works belo
 - Kevin Aguyar Brix, Toke Meier Carlsen and Aidan Sims, [*Some results regarding the ideal structure of C*-algebras of étale groupoids*](https://arxiv.org/abs/2211.06126v2), arXiv:2211.06126v2, 3 January 2024.
 - Scott M. LaLonde, [*On some permanence properties of exact groupoids*](https://arxiv.org/abs/1703.05190v3), arXiv:1703.05190v3, 6 November 2018; published 2020.
 
-Versioned source records · Mathematical source use · Prerequisite proofs
+Versioned source records · Mathematical source use · [Prerequisite proofs](prerequisites.html)

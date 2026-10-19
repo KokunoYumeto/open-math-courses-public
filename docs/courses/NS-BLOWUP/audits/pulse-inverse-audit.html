@@ -1,0 +1,905 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="pulse-inverse-audit.md">Editable source</a></nav><h1 id="the-pulse-inverse-and-its-actual-linear-residual">The pulse inverse and its actual linear residual</h1>
+<p>The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>. This note derives the local operator estimates in original Lemma 7.1, Proposition 7.2, Corollary 7.3, Lemmas 7.4 and 7.7, and Proposition 9.1. It keeps the phase, moving plane, pressure, viscosity, curl terms and endpoint residuals. The actual global base construction is supplied by <a href="base-field-realization-audit.html">Z0–Z8</a>. The companion stress and cycle proofs supply their local operations; their existence is not inferred from the pulse calculation alone.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original PDF</a>, frozen SHA-256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>. Source locators: pages 74–81, 85–87 and 101–102; pages 63–70 give the coordinate and class definitions used below.</p>
+<p><img src="assets/pulse-envelope-audit.png" alt="The original pulse envelope and its proved bounds" class="course-figure" width="1770" height="1110" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="9AFBE7A8E928705F39253E42BC9D5FC8149A4BE150785B563FB0BE31DFA96EF8"></p>
+<p>The scalar example keeps the original pulse coordinate and displays (P3.2) between the analytically proved bounds (P3.5), at the stated values <span class="math" data-tex="\(\lambda_0=1,u_*=2,L_s=40\)">\(\lambda_0=1,u_*=2,L_s=40\)</span>. It does not instantiate a global flow or supply numerical evidence for the estimates. The shaded endpoint regions contain the possible cutoff error in P6. <a href="assets/pulse-envelope-audit.py">Reproducible figure source</a>; original source locators: (7.2), (7.12), (7.16).</p>
+<h2 id="p0-correction-established-from-the-original-page">P0. The original pulse coefficient and midpoint envelope</h2>
+<p>Original (7.2), page 74, reads</p>
+<span class="math math-display" data-tex="\[
+B_s^2=\frac{\lambda_0}{\varepsilon k^2(1+u_*^2)^{3/2}}.
+\tag{P0.1}
+\]">\[
+B_s^2=\frac{\lambda_0}{\varepsilon k^2(1+u_*^2)^{3/2}}.
+\tag{P0.1}
+\]</span>
+<p>The interaction estimates in W3 use the coefficient bounds in (P0.1).</p>
+<p>The distinction matters in the pulse calculation. With <span class="math" data-tex="\(s(L_s/2)=\sigma u_*\)">\(s(L_s/2)=\sigma u_*\)</span>, original <span class="math" data-tex="\(d_{\rm ref}=\varepsilon k^2B_s^2(1+s^2)\)">\(d_{\rm ref}=\varepsilon k^2B_s^2(1+s^2)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+d_{\rm ref}(L_s/2)=\frac{\lambda_0}{\sqrt{1+u_*^2}}=\lambda(L_s/2).
+\tag{P0.2}
+\]">\[
+d_{\rm ref}(L_s/2)=\frac{\lambda_0}{\sqrt{1+u_*^2}}=\lambda(L_s/2).
+\tag{P0.2}
+\]</span>
+<p>Doubling the numerator would instead give <span class="math" data-tex="\(\lambda-d_{\rm ref}=-\lambda_0/\sqrt{1+u_*^2}\)">\(\lambda-d_{\rm ref}=-\lambda_0/\sqrt{1+u_*^2}\)</span> at that point. Its envelope defined by (7.12), with value one there, would have a negative derivative there and values greater than one immediately to the left. Thus the doubled version cannot support the stated midpoint envelope bound. The original numerator gives the zero midpoint derivative used in the envelope bound.</p>
+<h2 id="p1-original-input-data-and-a-fixed-band-threshold">P1. Original input data and a fixed band threshold</h2>
+<p>Keep the original <span class="math" data-tex="\(0&lt;h&lt;1/100\)">\(0&lt;h&lt;1/100\)</span>, <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>, <span class="math" data-tex="\(D=1/2-h\)">\(D=1/2-h\)</span>, <span class="math" data-tex="\(Q=2^{-\ell}\)">\(Q=2^{-\ell}\)</span>, <span class="math" data-tex="\(\varepsilon=Q^h\)">\(\varepsilon=Q^h\)</span>, <span class="math" data-tex="\(S_*=\ell^2\)">\(S_*=\ell^2\)</span>, <span class="math" data-tex="\(R=r/\sqrt Q\)">\(R=r/\sqrt Q\)</span>, <span class="math" data-tex="\(Z=z/Q^D\)">\(Z=z/Q^D\)</span>, <span class="math" data-tex="\(T=(1-t)/Q\)">\(T=(1-t)/Q\)</span>, <span class="math" data-tex="\(X=r^2/(2q)\)">\(X=r^2/(2q)\)</span>, and the original auxiliary map <span class="math" data-tex="\(Y=v_rr^{d_r}+v_tt\)">\(Y=v_rr^{d_r}+v_tt\)</span>. The matrices, vectors, <span class="math" data-tex="\(d_r\)">\(d_r\)</span>, <span class="math" data-tex="\(\kappa_s=10^{-5}\)">\(\kappa_s=10^{-5}\)</span>, covering indices, chain-rule operators and weighted classes are defined with full factors in the <a href="wave-interaction-audit.html">wave-interaction audit</a>, W1–W3. In particular,</p>
+<span class="math math-display" data-tex="\[
+D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
+D_z=\varepsilon\partial_Z,\quad
+\mathfrak t_*=-\varepsilon\partial_T+c_iN_i,
+\quad T_g^{-1}S_*^{-1}&lt;c_i\le S_*^{-1}.
+\tag{P1.1}
+\]">\[
+D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
+D_z=\varepsilon\partial_Z,\quad
+\mathfrak t_*=-\varepsilon\partial_T+c_iN_i,
+\quad T_g^{-1}S_*^{-1}&lt;c_i\le S_*^{-1}.
+\tag{P1.1}
+\]</span>
+<p>The pulse coordinates on each lifted rectangle satisfy</p>
+<span class="math math-display" data-tex="\[
+v=(\eta_g+r_0)/c_i,\quad L_s=2r_0/c_i,\quad
+2r_0S_*\le L_s&lt;2r_0T_gS_*,\quad
+D_rv=D_zv=0,\quad c_iN_iv=1.
+\tag{P1.2}
+\]">\[
+v=(\eta_g+r_0)/c_i,\quad L_s=2r_0/c_i,\quad
+2r_0S_*\le L_s&lt;2r_0T_gS_*,\quad
+D_rv=D_zv=0,\quad c_iN_iv=1.
+\tag{P1.2}
+\]</span>
+<p>Band and label choices, including the representative, are fixed before any coefficient derivative.</p>
+<p>The source uses the smooth slow base column <span class="math" data-tex="\((b,V,G)\)">\((b,V,G)\)</span>, independent of the auxiliary variable, with <span class="math" data-tex="\(b=O(\varepsilon)\)">\(b=O(\varepsilon)\)</span> in every fixed slow derivative. The tangential base differs from its fixed order-zero profiles by <span class="math" data-tex="\(O(\varepsilon^2)\)">\(O(\varepsilon^2)\)</span>, with all fixed slow derivatives. The boxes and their fixed enlargements have diameter at most <span class="math" data-tex="\(C S_*^{-3}\)">\(C S_*^{-3}\)</span>. At the fixed representative put</p>
+<span class="math math-display" data-tex="\[
+F=V/R,\quad g=(RF_R,G_R),\quad N=g_0/|g_0|,\quad K=(-N_z,N_\theta),
+\]">\[
+F=V/R,\quad g=(RF_R,G_R),\quad N=g_0/|g_0|,\quad K=(-N_z,N_\theta),
+\]</span>
+<span class="math math-display" data-tex="\[
+\lambda_0^2=-2F_0N_\theta(2F_0N_\theta+|g_0|)&gt;0,
+\qquad c_0=\frac{\lambda_0}{2F_0N_\theta}&lt;0.
+\tag{P1.3}
+\]">\[
+\lambda_0^2=-2F_0N_\theta(2F_0N_\theta+|g_0|)&gt;0,
+\qquad c_0=\frac{\lambda_0}{2F_0N_\theta}&lt;0.
+\tag{P1.3}
+\]</span>
+<p>Here subscript zero means the order-zero quantity at the representative; <span class="math" data-tex="\(\lambda_0&gt;0\)">\(\lambda_0&gt;0\)</span>. These are precisely the base properties supplied to Section 7 by Theorem 4.6 and Proposition 5.5. Their actual global construction is supplied by V and Z, and the exact base-to-chart derivative map and positive shear bounds are proved in <a href="local-construction-assembly-audit.html">I1–I2</a>. The calculation below proves the pulse operation with those same input fields.</p>
+<p>Write <span class="math" data-tex="\(0&lt;\lambda_-\le\lambda_0\le\lambda_+\)">\(0&lt;\lambda_-\le\lambda_0\le\lambda_+\)</span> and <span class="math" data-tex="\(|g_0|\le g_+\)">\(|g_0|\le g_+\)</span> for the fixed uniform input bounds. They already imply the relevant nonzero shear and frame factors. Indeed, with <span class="math" data-tex="\(a=2F_0N_\theta\)">\(a=2F_0N_\theta\)</span>, the relation <span class="math" data-tex="\(-a(a+|g_0|)&gt;0\)">\(-a(a+|g_0|)&gt;0\)</span> gives <span class="math" data-tex="\(-|g_0|&lt;a&lt;0\)">\(-|g_0|&lt;a&lt;0\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\lambda_0^2=|a|(|g_0|-|a|)\le |a|g_+,
+\quad |a|\ge\lambda_-^2/g_+,
+\quad |g_0|\ge2\lambda_-,
+\]">\[
+\lambda_0^2=|a|(|g_0|-|a|)\le |a|g_+,
+\quad |a|\ge\lambda_-^2/g_+,
+\quad |g_0|\ge2\lambda_-,
+\]</span>
+<span class="math math-display" data-tex="\[
+\frac{\lambda_-}{g_+}\le |c_0|
+\le\frac{\lambda_+g_+}{\lambda_-^2}.
+\tag{P1.4}
+\]">\[
+\frac{\lambda_-}{g_+}\le |c_0|
+\le\frac{\lambda_+g_+}{\lambda_-^2}.
+\tag{P1.4}
+\]</span>
+<p>The inequality <span class="math" data-tex="\(|g_0|\ge2\lambda_-\)">\(|g_0|\ge2\lambda_-\)</span> follows from <span class="math" data-tex="\(x(g-x)\le g^2/4\)">\(x(g-x)\le g^2/4\)</span>, whose difference from <span class="math" data-tex="\(g^2/4\)">\(g^2/4\)</span> is <span class="math" data-tex="\((x-g/2)^2\)">\((x-g/2)^2\)</span>. Thus the denominators used below have stated lower bounds, rather than implicit nonvanishing assumptions.</p>
+<p>Keep <span class="math" data-tex="\(u_*&gt;0\)">\(u_*&gt;0\)</span> chosen by the original strict stress-cone condition, and retain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k=\lceil\varepsilon^{-1/2}\rceil,\quad
+B_s^2=\frac{\lambda_0}{\varepsilon k^2(1+u_*^2)^{3/2}},\quad
+s(v)=\sigma\left(\frac{u_*}{2}+\frac{u_*v}{L_s}\right),
+\\(\widetilde p/R_0,p_z)=B_s\left(K-\frac{\sigma u_*g_0}{L_s|g_0|^2}\right),
+\quad x_0=\sigma B_su_*/2,
+\\ kp\text{ is a nearest nonzero integer to }k\widetilde p,\qquad
+\Phi=p\theta+p_zZ/\varepsilon+x_0R-v(pF+p_zG).
+\end{gathered}
+\tag{P1.5}
+\]">\[
+\begin{gathered}
+k=\lceil\varepsilon^{-1/2}\rceil,\quad
+B_s^2=\frac{\lambda_0}{\varepsilon k^2(1+u_*^2)^{3/2}},\quad
+s(v)=\sigma\left(\frac{u_*}{2}+\frac{u_*v}{L_s}\right),
+\\(\widetilde p/R_0,p_z)=B_s\left(K-\frac{\sigma u_*g_0}{L_s|g_0|^2}\right),
+\quad x_0=\sigma B_su_*/2,
+\\ kp\text{ is a nearest nonzero integer to }k\widetilde p,\qquad
+\Phi=p\theta+p_zZ/\varepsilon+x_0R-v(pF+p_zG).
+\end{gathered}
+\tag{P1.5}
+\]</span>
+<p>The fixed tie rule is not differentiated. For <span class="math" data-tex="\(\varepsilon\le1\)">\(\varepsilon\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+1\le\varepsilon k^2\le4,\quad |p-\widetilde p|\le k^{-1},\quad
+B_-\le B_s\le B_+,
+\]">\[
+1\le\varepsilon k^2\le4,\quad |p-\widetilde p|\le k^{-1},\quad
+B_-\le B_s\le B_+,
+\]</span>
+<span class="math math-display" data-tex="\[
+B_-^2=\frac{\lambda_-}{4(1+u_*^2)^{3/2}},\qquad
+B_+^2=\frac{\lambda_+}{(1+u_*^2)^{3/2}}.
+\tag{P1.6}
+\]">\[
+B_-^2=\frac{\lambda_-}{4(1+u_*^2)^{3/2}},\qquad
+B_+^2=\frac{\lambda_+}{(1+u_*^2)^{3/2}}.
+\tag{P1.6}
+\]</span>
+<p>For rounding, any real number has a nonzero integer within distance one: ordinary nearest-integer rounding has error at most one half except when it selects zero, in which case one of <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> is within distance one. This proves the displayed error without using the incorrect one-half bound near zero.</p>
+<p>Put <span class="math" data-tex="\(H_\Phi=pF+p_zG\)">\(H_\Phi=pF+p_zG\)</span>. The entire phase gradient is</p>
+<span class="math math-display" data-tex="\[
+n=\nabla_*\Phi=(x_0-v(H_\Phi)_R,\ p/R,\ p_z-\varepsilon v(H_\Phi)_Z).
+\tag{P1.7}
+\]">\[
+n=\nabla_*\Phi=(x_0-v(H_\Phi)_R,\ p/R,\ p_z-\varepsilon v(H_\Phi)_Z).
+\tag{P1.7}
+\]</span>
+<p>This follows by differentiating (P1.5) with (P1.1) and <span class="math" data-tex="\(D_rv=D_zv=0\)">\(D_rv=D_zv=0\)</span>. Before rounding, at the representative,</p>
+<span class="math math-display" data-tex="\[
+(\widetilde p/R_0,p_z)\cdot g_0=-\sigma B_su_*/L_s,
+\]">\[
+(\widetilde p/R_0,p_z)\cdot g_0=-\sigma B_su_*/L_s,
+\]</span>
+<p>since <span class="math" data-tex="\(K\cdot g_0=0\)">\(K\cdot g_0=0\)</span>. Uniform first slow derivative bounds, the box diameter, the <span class="math" data-tex="\(O(\varepsilon^2)\)">\(O(\varepsilon^2)\)</span> base comparison, and rounding therefore give</p>
+<span class="math math-display" data-tex="\[
+(H_\Phi)_R=-\sigma B_su_*/L_s+\mathcal E_R,
+\qquad |\mathcal E_R|\le C(S_*^{-3}+\varepsilon^2+k^{-1}).
+\tag{P1.8}
+\]">\[
+(H_\Phi)_R=-\sigma B_su_*/L_s+\mathcal E_R,
+\qquad |\mathcal E_R|\le C(S_*^{-3}+\varepsilon^2+k^{-1}).
+\tag{P1.8}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(n_r=B_ss(v)-v\mathcal E_R\)">\(n_r=B_ss(v)-v\mathcal E_R\)</span>. The exact tangential wave-number formula gives</p>
+<span class="math math-display" data-tex="\[
+|(p/R,p_z)-B_sK|\le C(S_*^{-1}+S_*^{-3}+k^{-1});
+\]">\[
+|(p/R,p_z)-B_sK|\le C(S_*^{-1}+S_*^{-3}+k^{-1});
+\]</span>
+<p>here <span class="math" data-tex="\(R_0/R-1=O(S_*^{-3})\)">\(R_0/R-1=O(S_*^{-3})\)</span>, using the positive lower bound on <span class="math" data-tex="\(R\)">\(R\)</span>. The remaining axial term in (P1.7) is bounded by <span class="math" data-tex="\(C\varepsilon S_*\)">\(C\varepsilon S_*\)</span>. Since <span class="math" data-tex="\(n&#x27;=(-(H_\Phi)_R,0,-\varepsilon(H_\Phi)_Z)\)">\(n&#x27;=(-(H_\Phi)_R,0,-\varepsilon(H_\Phi)_Z)\)</span>, these estimates prove</p>
+<span class="math math-display" data-tex="\[
+|n-B_s(s,K)|+|n&#x27;|\le C/S_*
+\tag{P1.9}
+\]">\[
+|n-B_s(s,K)|+|n&#x27;|\le C/S_*
+\tag{P1.9}
+\]</span>
+<p>once <span class="math" data-tex="\(S_*^2(\varepsilon+\varepsilon^2+k^{-1})\le1\)">\(S_*^2(\varepsilon+\varepsilon^2+k^{-1})\le1\)</span>. This one condition holds for all sufficiently large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>: <span class="math" data-tex="\(S_*^2=\ell^4\)">\(S_*^2=\ell^4\)</span>, <span class="math" data-tex="\(k^{-1}\le2^{-h\ell/2}\)">\(k^{-1}\le2^{-h\ell/2}\)</span>, and every fixed power of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> times a decreasing exponential tends to zero, as follows by taking its logarithm <span class="math" data-tex="\(4\log\ell-(h\log2)\ell/2\)">\(4\log\ell-(h\log2)\ell/2\)</span>.</p>
+<p>Increase this lower band threshold finitely so that the error in (P1.9) is at most <span class="math" data-tex="\(B_-/2\)">\(B_-/2\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|n_{\rm tan}|\ge B_-/2,\qquad |n|\ge B_-/2,
+\tag{P1.10}
+\]">\[
+|n_{\rm tan}|\ge B_-/2,\qquad |n|\ge B_-/2,
+\tag{P1.10}
+\]</span>
+<p>uniformly. All fixed mixed derivatives in the slow, transverse and pulse coordinates have polynomial bounds in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>, directly from (P1.5)–(P1.7) and the fixed-derivative bounds of the base. Discrete data are fixed; higher derivatives do not differentiate rounding or the representative choice. Product and quotient rules, together with (P1.10), give polynomial bounds for every smooth rational expression in these coefficients whose denominators have the displayed lower bounds. This requires no new smallness condition for a higher derivative order.</p>
+<p>The same denominator argument applies on the enlarged lifted rectangle: its pulse coordinate ranges over <span class="math" data-tex="\(-L_s/2&lt;v&lt;3L_s/2\)">\(-L_s/2&lt;v&lt;3L_s/2\)</span>, so <span class="math" data-tex="\(|v|\le3L_s/2\)">\(|v|\le3L_s/2\)</span> and <span class="math" data-tex="\(|s(v)|\le2u_*\)">\(|s(v)|\le2u_*\)</span>. The error estimates above change only their fixed constants. Include this finite enlargement in the choice of the lower band threshold. Then <span class="math" data-tex="\(|n_{\rm tan}|\ge B_-/2\)">\(|n_{\rm tan}|\ge B_-/2\)</span> there as well, while the base is evaluated on its prescribed smooth enlarged slow box. This supplies the smooth coefficients needed for local continuation past the pulse endpoints. The envelope and propagator bounds below are asserted on <span class="math" data-tex="\(0\le v\le L_s\)">\(0\le v\le L_s\)</span>.</p>
+<p>The full transport defect is also explicit:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak t_*\Phi&amp;=-H_\Phi+\varepsilon v(H_\Phi)_T,\\
+F\partial_\theta\Phi+GD_z\Phi&amp;=H_\Phi-\varepsilon vG(H_\Phi)_Z,\\
+E_{ik}:=(\mathfrak t_*+bD_r+F\partial_\theta+GD_z)\Phi
+&amp;=\varepsilon v((H_\Phi)_T-G(H_\Phi)_Z)+bn_r.
+\end{aligned}
+\tag{P1.11}
+\]">\[
+\begin{aligned}
+\mathfrak t_*\Phi&amp;=-H_\Phi+\varepsilon v(H_\Phi)_T,\\
+F\partial_\theta\Phi+GD_z\Phi&amp;=H_\Phi-\varepsilon vG(H_\Phi)_Z,\\
+E_{ik}:=(\mathfrak t_*+bD_r+F\partial_\theta+GD_z)\Phi
+&amp;=\varepsilon v((H_\Phi)_T-G(H_\Phi)_Z)+bn_r.
+\end{aligned}
+\tag{P1.11}
+\]</span>
+<p>Every fixed coefficient derivative of the last line has a factor <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and a polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>, because every such derivative of <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(O(\varepsilon)\)">\(O(\varepsilon)\)</span>. Finally <span class="math" data-tex="\(kp\ne0\)">\(kp\ne0\)</span> is an integer, so all <span class="math" data-tex="\(e^{ikm\Phi}\)">\(e^{ikm\Phi}\)</span>, <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, have nonzero integer angular frequency.</p>
+<p>Choose a lower band index <span class="math" data-tex="\(\ell_*\)">\(\ell_*\)</span> satisfying these finitely many value conditions and set <span class="math" data-tex="\(q_*\le\min(q_{\rm big},2^{-\ell_*-1})\)">\(q_*\le\min(q_{\rm big},2^{-\ell_*-1})\)</span>. For <span class="math" data-tex="\(q&lt;q_*\)">\(q&lt;q_*\)</span> and <span class="math" data-tex="\(q/Q\in[1/2,2]\)">\(q/Q\in[1/2,2]\)</span>, <span class="math" data-tex="\(Q\le2q&lt;2^{-\ell_*}\)">\(Q\le2q&lt;2^{-\ell_*}\)</span>, so all relevant bands satisfy the chosen threshold. The choice has no dependence on the harmonic bound, derivative order or correction stage.</p>
+<h2 id="p2-exact-moving-plane-equation-frame-and-pressure">P2. Exact moving-plane equation, frame and pressure</h2>
+<p>Retain the original matrix and projection:</p>
+<span class="math math-display" data-tex="\[
+\mathcal K=\begin{pmatrix}0&amp;-2F&amp;0\\2F+RF_R&amp;0&amp;0\\G_R&amp;0&amp;0\end{pmatrix},
+\quad \Pi_n f=f-\frac{n(n\cdot f)}{|n|^2},\quad
+\mathcal A=-\mathcal K+\frac{n(n^T\mathcal K-(n&#x27;)^T)}{|n|^2},
+\]">\[
+\mathcal K=\begin{pmatrix}0&amp;-2F&amp;0\\2F+RF_R&amp;0&amp;0\\G_R&amp;0&amp;0\end{pmatrix},
+\quad \Pi_n f=f-\frac{n(n\cdot f)}{|n|^2},\quad
+\mathcal A=-\mathcal K+\frac{n(n^T\mathcal K-(n&#x27;)^T)}{|n|^2},
+\]</span>
+<span class="math math-display" data-tex="\[
+d=\varepsilon k^2|n|^2&gt;0.
+\tag{P2.1}
+\]">\[
+d=\varepsilon k^2|n|^2&gt;0.
+\tag{P2.1}
+\]</span>
+<p>Dot products here are bilinear extensions of the real Euclidean dot product; <span class="math" data-tex="\(n\)">\(n\)</span> and all these coefficients are real. In particular <span class="math" data-tex="\(n^T\mathcal A=-(n&#x27;)^T\)">\(n^T\mathcal A=-(n&#x27;)^T\)</span> and <span class="math" data-tex="\(n\cdot\Pi_nf=0\)">\(n\cdot\Pi_nf=0\)</span>.</p>
+<p>The three-dimensional initial-value equation</p>
+<span class="math math-display" data-tex="\[
+t_m&#x27;=\mathcal A t_m-m^2dt_m-\Pi_nf_m,\qquad t_m(0)=0
+\tag{P2.2}
+\]">\[
+t_m&#x27;=\mathcal A t_m-m^2dt_m-\Pi_nf_m,\qquad t_m(0)=0
+\tag{P2.2}
+\]</span>
+<p>preserves the constraint exactly:</p>
+<span class="math math-display" data-tex="\[
+(n\cdot t_m)&#x27;=-m^2d(n\cdot t_m),\qquad n(0)\cdot t_m(0)=0.
+\tag{P2.3}
+\]">\[
+(n\cdot t_m)&#x27;=-m^2d(n\cdot t_m),\qquad n(0)\cdot t_m(0)=0.
+\tag{P2.3}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(\exp(m^2\int_0^v d)\)">\(\exp(m^2\int_0^v d)\)</span> proves that the scalar in (P2.3) is zero. Rearranging (P2.2) gives</p>
+<span class="math math-display" data-tex="\[
+t_m&#x27;+\mathcal Kt_m+m^2dt_m+f_m
+=\frac n{|n|^2}(n\cdot\mathcal Kt_m-n&#x27;\cdot t_m+n\cdot f_m).
+\]">\[
+t_m&#x27;+\mathcal Kt_m+m^2dt_m+f_m
+=\frac n{|n|^2}(n\cdot\mathcal Kt_m-n&#x27;\cdot t_m+n\cdot f_m).
+\]</span>
+<p>Therefore the original pressure, including its complex sign, is</p>
+<span class="math math-display" data-tex="\[
+\pi_m=\frac{i}{km}\frac{n\cdot\mathcal Kt_m-n&#x27;\cdot t_m+n\cdot f_m}{|n|^2},
+\tag{P2.4}
+\]">\[
+\pi_m=\frac{i}{km}\frac{n\cdot\mathcal Kt_m-n&#x27;\cdot t_m+n\cdot f_m}{|n|^2},
+\tag{P2.4}
+\]</span>
+<p>and multiplication by <span class="math" data-tex="\(ikmn\)">\(ikmn\)</span> cancels the preceding normal vector because <span class="math" data-tex="\(i^2=-1\)">\(i^2=-1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+t_m&#x27;+\mathcal Kt_m+m^2dt_m+ikmn\pi_m=-f_m,\qquad n\cdot t_m=0.
+\tag{P2.5}
+\]">\[
+t_m&#x27;+\mathcal Kt_m+m^2dt_m+ikmn\pi_m=-f_m,\qquad n\cdot t_m=0.
+\tag{P2.5}
+\]</span>
+<p>This includes the normal component of the source. Conversely any solution of (P2.5) with the constraint has (P2.4), by taking its dot product with <span class="math" data-tex="\(n\)">\(n\)</span>, and then satisfies (P2.2). Thus uniqueness for (P2.2) proves uniqueness for the constrained amplitude and its pressure.</p>
+<p>Define the actual frame without replacing the phase normal:</p>
+<span class="math math-display" data-tex="\[
+K_a=n_{\rm tan}/|n_{\rm tan}|,\quad N_a=((K_a)_z,-(K_a)_\theta),\quad
+s_a=n_r/|n_{\rm tan}|,\quad U=[e_r-s_aK_a,N_a],
+\]">\[
+K_a=n_{\rm tan}/|n_{\rm tan}|,\quad N_a=((K_a)_z,-(K_a)_\theta),\quad
+s_a=n_r/|n_{\rm tan}|,\quad U=[e_r-s_aK_a,N_a],
+\]</span>
+<span class="math math-display" data-tex="\[
+c(v)=c_0\sqrt{1+s(v)^2},\quad
+M=\begin{pmatrix}1&amp;1\\c&amp;-c\end{pmatrix},\quad
+B=UM,\quad M^{-1}=\frac12\begin{pmatrix}1&amp;c^{-1}\\1&amp;-c^{-1}\end{pmatrix},
+\]">\[
+c(v)=c_0\sqrt{1+s(v)^2},\quad
+M=\begin{pmatrix}1&amp;1\\c&amp;-c\end{pmatrix},\quad
+B=UM,\quad M^{-1}=\frac12\begin{pmatrix}1&amp;c^{-1}\\1&amp;-c^{-1}\end{pmatrix},
+\]</span>
+<span class="math math-display" data-tex="\[
+B^\ell=M^{-1}\begin{pmatrix}e_r^T\\N_a^T\end{pmatrix}.
+\tag{P2.6}
+\]">\[
+B^\ell=M^{-1}\begin{pmatrix}e_r^T\\N_a^T\end{pmatrix}.
+\tag{P2.6}
+\]</span>
+<p>The columns of <span class="math" data-tex="\(U\)">\(U\)</span> lie in <span class="math" data-tex="\(n^\perp\)">\(n^\perp\)</span>, are independent, and <span class="math" data-tex="\((e_r^T;N_a^T)U=I_2\)">\((e_r^T;N_a^T)U=I_2\)</span>. Since <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> by (P1.4), <span class="math" data-tex="\(B^\ell B=I_2\)">\(B^\ell B=I_2\)</span>, and <span class="math" data-tex="\(BB^\ell t=t\)">\(BB^\ell t=t\)</span> for <span class="math" data-tex="\(t\in n^\perp\)">\(t\in n^\perp\)</span>. We only assert this last identity on that plane: <span class="math" data-tex="\(BB^\ell\)">\(BB^\ell\)</span> need not be the orthogonal projection on all of <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>. Equations (P1.9)–(P1.10) and (P1.4) bound <span class="math" data-tex="\(B,B^\ell\)">\(B,B^\ell\)</span> uniformly and bound every fixed derivative polynomially.</p>
+<p>At the reference normal <span class="math" data-tex="\(n_0=B_s(s,K)\)">\(n_0=B_s(s,K)\)</span>, let <span class="math" data-tex="\(e=e_r-sK\)">\(e=e_r-sK\)</span> and write <span class="math" data-tex="\(t=xe+yN\)">\(t=xe+yN\)</span>. The frozen <span class="math" data-tex="\(\mathcal K_0\)">\(\mathcal K_0\)</span> uses <span class="math" data-tex="\(F_0\)">\(F_0\)</span> and <span class="math" data-tex="\(g_0=|g_0|N\)">\(g_0=|g_0|N\)</span>. Direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+-\mathcal K_0e=(-2F_0sK_\theta,-2F_0e_\theta-g_0),\qquad
+-\mathcal K_0N=(2F_0N_\theta,0),
+\]">\[
+-\mathcal K_0e=(-2F_0sK_\theta,-2F_0e_\theta-g_0),\qquad
+-\mathcal K_0N=(2F_0N_\theta,0),
+\]</span>
+<p>where each pair lists its radial and tangential parts. Consequently</p>
+<span class="math math-display" data-tex="\[
+e\cdot(-\mathcal K_0e)=sK\cdot g_0=0,\quad
+e\cdot(-\mathcal K_0N)=2F_0N_\theta,\quad
+N\cdot(-\mathcal K_0e)=-(2F_0N_\theta+|g_0|),
+\]">\[
+e\cdot(-\mathcal K_0e)=sK\cdot g_0=0,\quad
+e\cdot(-\mathcal K_0N)=2F_0N_\theta,\quad
+N\cdot(-\mathcal K_0e)=-(2F_0N_\theta+|g_0|),
+\]</span>
+<p>and <span class="math" data-tex="\(N\cdot(-\mathcal K_0N)=0\)">\(N\cdot(-\mathcal K_0N)=0\)</span>. The normal projection contributes zero to these dot products. Since <span class="math" data-tex="\(|e|^2=1+s^2\)">\(|e|^2=1+s^2\)</span>, <span class="math" data-tex="\(|N|^2=1\)">\(|N|^2=1\)</span>, and <span class="math" data-tex="\(e\cdot N=0\)">\(e\cdot N=0\)</span>, the exact two-dimensional reference matrix is</p>
+<span class="math math-display" data-tex="\[
+L_0=\begin{pmatrix}0&amp;2F_0N_\theta/(1+s^2)\\-(2F_0N_\theta+|g_0|)&amp;0\end{pmatrix}.
+\tag{P2.7}
+\]">\[
+L_0=\begin{pmatrix}0&amp;2F_0N_\theta/(1+s^2)\\-(2F_0N_\theta+|g_0|)&amp;0\end{pmatrix}.
+\tag{P2.7}
+\]</span>
+<p>Its eigenvectors are <span class="math" data-tex="\((1,c)^T,(1,-c)^T\)">\((1,c)^T,(1,-c)^T\)</span>. Indeed, writing <span class="math" data-tex="\(a=2F_0N_\theta\)">\(a=2F_0N_\theta\)</span>, the first component of <span class="math" data-tex="\(L_0(1,c)^T\)">\(L_0(1,c)^T\)</span> is <span class="math" data-tex="\(ac/(1+s^2)=\lambda_0/\sqrt{1+s^2}\)">\(ac/(1+s^2)=\lambda_0/\sqrt{1+s^2}\)</span>, and its second is <span class="math" data-tex="\(-(a+|g_0|)=\lambda_0^2/a=\lambda c\)">\(-(a+|g_0|)=\lambda_0^2/a=\lambda c\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+M^{-1}L_0M=\operatorname{diag}(\lambda,-\lambda),\qquad
+\lambda(v)=\lambda_0/\sqrt{1+s^2}&gt;0.
+\tag{P2.8}
+\]">\[
+M^{-1}L_0M=\operatorname{diag}(\lambda,-\lambda),\qquad
+\lambda(v)=\lambda_0/\sqrt{1+s^2}&gt;0.
+\tag{P2.8}
+\]</span>
+<p>For the actual coefficients, the algebraic projection <span class="math" data-tex="\(-\mathcal K+nn^T\mathcal K/|n|^2\)">\(-\mathcal K+nn^T\mathcal K/|n|^2\)</span> differs from its frozen counterpart by <span class="math" data-tex="\(O(S_*^{-1})\)">\(O(S_*^{-1})\)</span>, by (P1.8)–(P1.10), the base comparison and the box diameter. The actual <span class="math" data-tex="\(K_a,N_a,s_a\)">\(K_a,N_a,s_a\)</span> differ from <span class="math" data-tex="\(K,N,s\)">\(K,N,s\)</span> by that order. The moving-normal term <span class="math" data-tex="\(-n(n&#x27;)^T/|n|^2\)">\(-n(n&#x27;)^T/|n|^2\)</span> is also <span class="math" data-tex="\(O(S_*^{-1})\)">\(O(S_*^{-1})\)</span>. Finally <span class="math" data-tex="\(K_a&#x27;,N_a&#x27;,s_a&#x27;=O(S_*^{-1})\)">\(K_a&#x27;,N_a&#x27;,s_a&#x27;=O(S_*^{-1})\)</span> by differentiating their exact quotients and using (P1.9), while <span class="math" data-tex="\(s&#x27;=\sigma u_*/L_s=O(S_*^{-1})\)">\(s&#x27;=\sigma u_*/L_s=O(S_*^{-1})\)</span>. Hence <span class="math" data-tex="\(B&#x27;=O(S_*^{-1})\)">\(B&#x27;=O(S_*^{-1})\)</span>. Substituting all these differences, using the uniform matrix bounds, proves</p>
+<span class="math math-display" data-tex="\[
+B^\ell(\mathcal AB-B&#x27;)=\operatorname{diag}(\lambda,-\lambda)+E,
+\qquad \|E\|\le C_E/S_*.
+\tag{P2.9}
+\]">\[
+B^\ell(\mathcal AB-B&#x27;)=\operatorname{diag}(\lambda,-\lambda)+E,
+\qquad \|E\|\le C_E/S_*.
+\tag{P2.9}
+\]</span>
+<p>All fixed derivatives of <span class="math" data-tex="\(E\)">\(E\)</span> are polynomially bounded; they are not asserted to be <span class="math" data-tex="\(O(S_*^{-1})\)">\(O(S_*^{-1})\)</span>. Similarly, with the original reference damping,</p>
+<span class="math math-display" data-tex="\[
+d_{\rm ref}=\varepsilon k^2B_s^2(1+s^2)
+=\frac{\lambda_0(1+s^2)}{(1+u_*^2)^{3/2}},\qquad
+|d-d_{\rm ref}|\le C_d/S_*.
+\tag{P2.10}
+\]">\[
+d_{\rm ref}=\varepsilon k^2B_s^2(1+s^2)
+=\frac{\lambda_0(1+s^2)}{(1+u_*^2)^{3/2}},\qquad
+|d-d_{\rm ref}|\le C_d/S_*.
+\tag{P2.10}
+\]</span>
+<p>For the last inequality use <span class="math" data-tex="\(\big||n|^2-|n_0|^2\big|\le|n-n_0|(|n|+|n_0|)\)">\(\big||n|^2-|n_0|^2\big|\le|n-n_0|(|n|+|n_0|)\)</span>, (P1.6), and the uniform bounds already proved.</p>
+<p>Because <span class="math" data-tex="\(n^T(\mathcal AB-B&#x27;)=-(n&#x27;)^TB-n^TB&#x27;=0\)">\(n^T(\mathcal AB-B&#x27;)=-(n&#x27;)^TB-n^TB&#x27;=0\)</span>, this matrix maps into the moving plane. Consequently the exact correspondence <span class="math" data-tex="\(t_m=Bz_m\)">\(t_m=Bz_m\)</span> turns (P2.2) into</p>
+<span class="math math-display" data-tex="\[
+z_m&#x27;=A_mz_m+g_m,\quad
+A_m=\operatorname{diag}(\lambda,-\lambda)+E-m^2dI_2,
+\quad g_m=-B^\ell\Pi_nf_m,\quad z_m(0)=0.
+\tag{P2.11}
+\]">\[
+z_m&#x27;=A_mz_m+g_m,\quad
+A_m=\operatorname{diag}(\lambda,-\lambda)+E-m^2dI_2,
+\quad g_m=-B^\ell\Pi_nf_m,\quad z_m(0)=0.
+\tag{P2.11}
+\]</span>
+<p>The verified identities for <span class="math" data-tex="\(BB^\ell\)">\(BB^\ell\)</span> prove both directions of this correspondence; no normal component has been removed without recovering its pressure.</p>
+<h2 id="p3-exact-envelope-and-forward-propagator">P3. Exact envelope and forward propagator</h2>
+<p>Use the original envelope</p>
+<span class="math math-display" data-tex="\[
+P(v)=\exp\left(\int_{L_s/2}^{v}(\lambda(w)-d_{\rm ref}(w))\,dw\right).
+\tag{P3.1}
+\]">\[
+P(v)=\exp\left(\int_{L_s/2}^{v}(\lambda(w)-d_{\rm ref}(w))\,dw\right).
+\tag{P3.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(y=|s(v)|=u_*/2+u_*v/L_s\)">\(y=|s(v)|=u_*/2+u_*v/L_s\)</span>, retaining the original <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(L_s\)">\(L_s\)</span>. Direct integration gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log P(v)=\frac{\lambda_0L_s}{u_*}\bigg[&amp;\operatorname{arsinh}y-\operatorname{arsinh}u_*
+\\&amp;-\frac{y+y^3/3-u_*-u_*^3/3}{(1+u_*^2)^{3/2}}\bigg].
+\end{aligned}
+\tag{P3.2}
+\]">\[
+\begin{aligned}
+\log P(v)=\frac{\lambda_0L_s}{u_*}\bigg[&amp;\operatorname{arsinh}y-\operatorname{arsinh}u_*
+\\&amp;-\frac{y+y^3/3-u_*-u_*^3/3}{(1+u_*^2)^{3/2}}\bigg].
+\end{aligned}
+\tag{P3.2}
+\]</span>
+<p>To verify it, differentiate <span class="math" data-tex="\(\operatorname{arsinh}y\)">\(\operatorname{arsinh}y\)</span> to obtain <span class="math" data-tex="\((1+y^2)^{-1/2}\)">\((1+y^2)^{-1/2}\)</span>, differentiate <span class="math" data-tex="\(y+y^3/3\)">\(y+y^3/3\)</span> to obtain <span class="math" data-tex="\(1+y^2\)">\(1+y^2\)</span>, and use <span class="math" data-tex="\(y&#x27;=u_*/L_s\)">\(y&#x27;=u_*/L_s\)</span>. Both sides vanish at <span class="math" data-tex="\(v=L_s/2\)">\(v=L_s/2\)</span>.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+a(v)=\lambda(v)-d_{\rm ref}(v)
+=\frac{\lambda_0}{\sqrt{1+y^2}}-\frac{\lambda_0(1+y^2)}{(1+u_*^2)^{3/2}}.
+\]">\[
+a(v)=\lambda(v)-d_{\rm ref}(v)
+=\frac{\lambda_0}{\sqrt{1+y^2}}-\frac{\lambda_0(1+y^2)}{(1+u_*^2)^{3/2}}.
+\]</span>
+<p>Then <span class="math" data-tex="\(a(L_s/2)=0\)">\(a(L_s/2)=0\)</span> and exactly</p>
+<span class="math math-display" data-tex="\[
+a&#x27;(v)=-\frac{u_*\lambda_0 y}{L_s}
+\left((1+y^2)^{-3/2}+2(1+u_*^2)^{-3/2}\right).
+\tag{P3.3}
+\]">\[
+a&#x27;(v)=-\frac{u_*\lambda_0 y}{L_s}
+\left((1+y^2)^{-3/2}+2(1+u_*^2)^{-3/2}\right).
+\tag{P3.3}
+\]</span>
+<p>Since <span class="math" data-tex="\(u_*/2\le y\le3u_*/2\)">\(u_*/2\le y\le3u_*/2\)</span>, define the fixed positive constants</p>
+<span class="math math-display" data-tex="\[
+c_- =\frac{\lambda_-u_*^2}{2}
+\left((1+9u_*^2/4)^{-3/2}+2(1+u_*^2)^{-3/2}\right),
+\]">\[
+c_- =\frac{\lambda_-u_*^2}{2}
+\left((1+9u_*^2/4)^{-3/2}+2(1+u_*^2)^{-3/2}\right),
+\]</span>
+<span class="math math-display" data-tex="\[
+c_+ =\frac{3\lambda_+u_*^2}{2}
+\left((1+u_*^2/4)^{-3/2}+2(1+u_*^2)^{-3/2}\right).
+\tag{P3.4}
+\]">\[
+c_+ =\frac{3\lambda_+u_*^2}{2}
+\left((1+u_*^2/4)^{-3/2}+2(1+u_*^2)^{-3/2}\right).
+\tag{P3.4}
+\]</span>
+<p>Each positive factor in (P3.3) is bounded by its respective endpoint bounds, proving <span class="math" data-tex="\(-c_+/L_s\le a&#x27;(v)\le-c_-/L_s\)">\(-c_+/L_s\le a&#x27;(v)\le-c_-/L_s\)</span>. Taylor's integral formula about the midpoint, applied to <span class="math" data-tex="\(\log P\)">\(\log P\)</span> whose value and first derivative vanish there, now gives on both sides</p>
+<span class="math math-display" data-tex="\[
+\exp\left(-\frac{c_+(v-L_s/2)^2}{2L_s}\right)
+\le P(v)\le
+\exp\left(-\frac{c_-(v-L_s/2)^2}{2L_s}\right)\le1.
+\tag{P3.5}
+\]">\[
+\exp\left(-\frac{c_+(v-L_s/2)^2}{2L_s}\right)
+\le P(v)\le
+\exp\left(-\frac{c_-(v-L_s/2)^2}{2L_s}\right)\le1.
+\tag{P3.5}
+\]</span>
+<p>For the left side of the midpoint, substitute <span class="math" data-tex="\(v=L_s/2-x\)">\(v=L_s/2-x\)</span> in Taylor's integral formula; the same nonnegative triangular kernel integrates <span class="math" data-tex="\((\log P)&#x27;&#x27;\)">\((\log P)&#x27;&#x27;\)</span>. Thus no sign is changed by integrating backward. These are analytic bounds, not numerical enclosures.</p>
+<p>For completeness, the fundamental matrix of a continuous matrix coefficient <span class="math" data-tex="\(A_m\)">\(A_m\)</span> on a fixed finite interval is obtained by the series</p>
+<span class="math math-display" data-tex="\[
+V_m(v,w)=I_2+\sum_{n\ge1}
+\int_{w\le a_n\le\cdots\le a_1\le v}
+A_m(a_1)\cdots A_m(a_n)\,da_n\cdots da_1.
+\tag{P3.6}
+\]">\[
+V_m(v,w)=I_2+\sum_{n\ge1}
+\int_{w\le a_n\le\cdots\le a_1\le v}
+A_m(a_1)\cdots A_m(a_n)\,da_n\cdots da_1.
+\tag{P3.6}
+\]</span>
+<p>If <span class="math" data-tex="\(\|A_m\|\le K\)">\(\|A_m\|\le K\)</span> there, the <span class="math" data-tex="\(n\)">\(n\)</span>-th term is bounded by <span class="math" data-tex="\(K^n(v-w)^n/n!\)">\(K^n(v-w)^n/n!\)</span>. Uniform absolute convergence, and the same estimate for the differentiated integral series, prove <span class="math" data-tex="\(\partial_vV_m=A_mV_m\)">\(\partial_vV_m=A_mV_m\)</span>, <span class="math" data-tex="\(V_m(w,w)=I_2\)">\(V_m(w,w)=I_2\)</span>. A difference of two solutions with zero initial value satisfies <span class="math" data-tex="\(u(v)=\int_w^v A_m(a)u(a)\,da\)">\(u(v)=\int_w^v A_m(a)u(a)\,da\)</span>; iterating this identity and letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> with the same factorial bound proves uniqueness. Thus this construction supplies the finite-interval existence and uniqueness used in P2, rather than assuming a solution with the desired bound.</p>
+<p>For a complex solution of <span class="math" data-tex="\(z&#x27;=A_1z\)">\(z&#x27;=A_1z\)</span>, using the Hermitian norm only in this norm estimate,</p>
+<span class="math math-display" data-tex="\[
+\frac12(|z|^2)&#x27;=\operatorname{Re}(z^*A_1z)
+\le\left(\lambda-d_{\rm ref}+\frac{C_E+C_d}{S_*}\right)|z|^2.
+\tag{P3.7}
+\]">\[
+\frac12(|z|^2)&#x27;=\operatorname{Re}(z^*A_1z)
+\le\left(\lambda-d_{\rm ref}+\frac{C_E+C_d}{S_*}\right)|z|^2.
+\tag{P3.7}
+\]</span>
+<p>Multiply by the exponential of minus twice the integral of the scalar coefficient to obtain a nonincreasing quantity. Taking square roots and the supremum over initial vectors proves</p>
+<span class="math math-display" data-tex="\[
+\|V_1(v,w)\|\le
+e^{(C_E+C_d)(v-w)/S_*}\frac{P(v)}{P(w)}
+\le C_V\frac{P(v)}{P(w)},\quad
+C_V=e^{2r_0T_g(C_E+C_d)}.
+\tag{P3.8}
+\]">\[
+\|V_1(v,w)\|\le
+e^{(C_E+C_d)(v-w)/S_*}\frac{P(v)}{P(w)}
+\le C_V\frac{P(v)}{P(w)},\quad
+C_V=e^{2r_0T_g(C_E+C_d)}.
+\tag{P3.8}
+\]</span>
+<p>The scalar damping commutes with every matrix, so direct differentiation and uniqueness in (P3.6) prove the exact identity</p>
+<span class="math math-display" data-tex="\[
+V_m(v,w)=\exp\left(-(m^2-1)\int_w^v d(a)\,da\right)V_1(v,w).
+\tag{P3.9}
+\]">\[
+V_m(v,w)=\exp\left(-(m^2-1)\int_w^v d(a)\,da\right)V_1(v,w).
+\tag{P3.9}
+\]</span>
+<p>Since <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> and <span class="math" data-tex="\(m\in\mathbb Z\setminus\{0\}\)">\(m\in\mathbb Z\setminus\{0\}\)</span>, its scalar factor is at most one. Therefore (P3.8) holds for every nonzero integer <span class="math" data-tex="\(m\)">\(m\)</span>, with the same constant and the same domain. This is why higher harmonics do not require another smallness threshold.</p>
+<h2 id="p4-source-inverse-derivatives-and-the-exact-common-torus-path">P4. Source inverse, derivatives and the exact common-torus path</h2>
+<p>Let <span class="math" data-tex="\(f_m\)">\(f_m\)</span> have exactly the support, smooth-extension and fixed-derivative bounds of original Proposition 7.2: for each fixed multi-index <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\((R,Z,T,H)\)">\((R,Z,T,H)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\partial^I f_m|\le C_I\varepsilon^\alpha S_*^{b_I}
+\sqrt\zeta\,\delta^{-a_I}P(v),\qquad 0\le v\le L_s,
+\tag{P4.1}
+\]">\[
+|\partial^I f_m|\le C_I\varepsilon^\alpha S_*^{b_I}
+\sqrt\zeta\,\delta^{-a_I}P(v),\qquad 0\le v\le L_s,
+\tag{P4.1}
+\]</span>
+<p>with fixed closed slow support inside the label support, compact transverse support inside <span class="math" data-tex="\(\operatorname{supp}\chi_g\)">\(\operatorname{supp}\chi_g\)</span>, and zero extension at the shell edges. The full weights are</p>
+<span class="math math-display" data-tex="\[
+\zeta(X)=\exp\left(-\frac{a_a}{\log^2(X/X_a)}-\frac{a_b}{\log^2(X_b/X)}\right),\quad
+\delta(X)=\min\{1,\log(X/X_a),\log(X_b/X)\},\quad a_a,a_b&gt;0.
+\tag{P4.2}
+\]">\[
+\zeta(X)=\exp\left(-\frac{a_a}{\log^2(X/X_a)}-\frac{a_b}{\log^2(X_b/X)}\right),\quad
+\delta(X)=\min\{1,\log(X/X_a),\log(X_b/X)\},\quad a_a,a_b&gt;0.
+\tag{P4.2}
+\]</span>
+<p>The source may depend on the common torus without descending to the finer band torus; its values on different preimages are not averaged or identified. It need not be transverse to <span class="math" data-tex="\(n\)">\(n\)</span>. No divisibility by a cutoff is assumed.</p>
+<p>The actual solution is</p>
+<span class="math math-display" data-tex="\[
+z_m(v)=\int_0^v V_m(v,w)g_m(w)\,dw,\qquad t_m(v)=B(v)z_m(v),
+\tag{P4.3}
+\]">\[
+z_m(v)=\int_0^v V_m(v,w)g_m(w)\,dw,\qquad t_m(v)=B(v)z_m(v),
+\tag{P4.3}
+\]</span>
+<p>with pressure (P2.4). Inserting (P3.8) and the source bound cancels <span class="math" data-tex="\(P(w)\)">\(P(w)\)</span> exactly. The path fixes <span class="math" data-tex="\((R,Z,T)\)">\((R,Z,T)\)</span>, hence <span class="math" data-tex="\(\zeta,\delta\)">\(\zeta,\delta\)</span>, and its length is at most <span class="math" data-tex="\(2r_0T_gS_*\)">\(2r_0T_gS_*\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+|z_m(v)|\le C\varepsilon^\alpha S_*^{b_0+1}\sqrt\zeta\delta^{-a_0}P(v),
+\tag{P4.4}
+\]">\[
+|z_m(v)|\le C\varepsilon^\alpha S_*^{b_0+1}\sqrt\zeta\delta^{-a_0}P(v),
+\tag{P4.4}
+\]</span>
+<p>enlarging the constant or polynomial degree for the bounded frame factors if needed.</p>
+<p>First differentiate in slow variables and the initial transverse coordinate, holding <span class="math" data-tex="\(v\)">\(v\)</span> fixed. The labels and <span class="math" data-tex="\(L_s\)">\(L_s\)</span> are constants in these derivatives. They commute with <span class="math" data-tex="\(\partial_v\)">\(\partial_v\)</span>. The differentiated equation is exactly</p>
+<span class="math math-display" data-tex="\[
+(\partial^I z_m)&#x27;=A_m\partial^I z_m+\partial^Ig_m
++\sum_{0&lt;J\le I}\binom IJ(\partial^JA_m)\partial^{I-J}z_m,
+\quad \partial^Iz_m(0)=0.
+\tag{P4.5}
+\]">\[
+(\partial^I z_m)&#x27;=A_m\partial^I z_m+\partial^Ig_m
++\sum_{0&lt;J\le I}\binom IJ(\partial^JA_m)\partial^{I-J}z_m,
+\quad \partial^Iz_m(0)=0.
+\tag{P4.5}
+\]</span>
+<p>The coefficient derivatives <span class="math" data-tex="\(\partial^JA_m\)">\(\partial^JA_m\)</span> are bounded by <span class="math" data-tex="\(C_{J,M}S_*^{c_J}\)">\(C_{J,M}S_*^{c_J}\)</span> for a fixed finite harmonic set <span class="math" data-tex="\(0&lt;|m|\le M\)">\(0&lt;|m|\le M\)</span>; the factor <span class="math" data-tex="\(m^2\)">\(m^2\)</span> is retained in the constant. At derivative order <span class="math" data-tex="\(I\)">\(I\)</span>, Leibniz' formula bounds <span class="math" data-tex="\(\partial^Ig_m\)">\(\partial^Ig_m\)</span> by a polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span> times the same <span class="math" data-tex="\(\varepsilon^\alpha\sqrt\zeta\delta^{-a}P\)">\(\varepsilon^\alpha\sqrt\zeta\delta^{-a}P\)</span> weight. Inductively every other source in (P4.5) has this weight too. Applying (P3.8) again increases its polynomial degree by one from the interval length. More explicitly, if the source term for <span class="math" data-tex="\(\partial^Ig_m\)">\(\partial^Ig_m\)</span> has degree <span class="math" data-tex="\(b_I^g\)">\(b_I^g\)</span> and the previously proved solution degrees are <span class="math" data-tex="\(b&#x27;_{I-J}\)">\(b&#x27;_{I-J}\)</span>, choose</p>
+<span class="math math-display" data-tex="\[
+b&#x27;_I=1+\max\left\{b_I^g,\max_{0&lt;J\le I}(c_J+b&#x27;_{I-J})\right\},
+\quad
+a&#x27;_I=\max\left\{a_I^g,\max_{0&lt;J\le I}a&#x27;_{I-J}\right\}.
+\tag{P4.6}
+\]">\[
+b&#x27;_I=1+\max\left\{b_I^g,\max_{0&lt;J\le I}(c_J+b&#x27;_{I-J})\right\},
+\quad
+a&#x27;_I=\max\left\{a_I^g,\max_{0&lt;J\le I}a&#x27;_{I-J}\right\}.
+\tag{P4.6}
+\]</span>
+<p>These choices prove the induction for every fixed multi-index. No additional power of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is lost. Pulse derivatives follow by repeatedly differentiating <span class="math" data-tex="\(z&#x27;_m=A_mz_m+g_m\)">\(z&#x27;_m=A_mz_m+g_m\)</span>; each derivative is a finite sum of products already bounded, so it has the same envelope with enlarged polynomial degree. Applying product rules to <span class="math" data-tex="\(t_m=Bz_m\)">\(t_m=Bz_m\)</span> proves its corresponding estimates. The pressure formula (P2.4), (P1.10), and <span class="math" data-tex="\(|km|^{-1}\le\varepsilon^{1/2}\)">\(|km|^{-1}\le\varepsilon^{1/2}\)</span> give the full bounds</p>
+<span class="math math-display" data-tex="\[
+t_m\in\mathsf W_\alpha\text{ on the labelled interval},\qquad
+\pi_m\in\mathsf W_{\alpha+1/2}\text{ there}.
+\tag{P4.7}
+\]">\[
+t_m\in\mathsf W_\alpha\text{ on the labelled interval},\qquad
+\pi_m\in\mathsf W_{\alpha+1/2}\text{ there}.
+\tag{P4.7}
+\]</span>
+<p>All source and solution derivatives have their own estimates (P4.1); this argument does not infer derivative bounds by differentiating a pointwise inequality for the envelope.</p>
+<p>Here is the precise map on the common torus. For <span class="math" data-tex="\(H=J_g^{i_0}Y\)">\(H=J_g^{i_0}Y\)</span>, <span class="math" data-tex="\(\Delta=i-i_0\in\{0,\ldots,\Delta_{\max}\}\)">\(\Delta=i-i_0\in\{0,\ldots,\Delta_{\max}\}\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\lambda_t(w)=\frac{v_t\cdot w}{1+b_g^2},\quad
+\lambda_r(w)=\frac{v_r\cdot w}{1+b_g^2}.
+\]">\[
+\lambda_t(w)=\frac{v_t\cdot w}{1+b_g^2},\quad
+\lambda_r(w)=\frac{v_r\cdot w}{1+b_g^2}.
+\]</span>
+<p>On a chosen lift, <span class="math" data-tex="\(\eta_g(H)=\lambda_t(J_g^\Delta H-c_\gamma-k_{\rm copy})\)">\(\eta_g(H)=\lambda_t(J_g^\Delta H-c_\gamma-k_{\rm copy})\)</span>, and the source in (P4.3) is evaluated at</p>
+<span class="math math-display" data-tex="\[
+H_w=H+T_g^{-\Delta}c_i(w-v(H))v_t.
+\tag{P4.8}
+\]">\[
+H_w=H+T_g^{-\Delta}c_i(w-v(H))v_t.
+\tag{P4.8}
+\]</span>
+<p>Because <span class="math" data-tex="\(\lambda_tJ_g^\Delta=T_g^\Delta\lambda_t\)">\(\lambda_tJ_g^\Delta=T_g^\Delta\lambda_t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D_HH_w=I_2-v_t\lambda_t,\quad D_H^aH_w=0\ (a\ge2),\quad
+D_Hv=T_g^\Delta\lambda_t/c_i,
+\quad D_H\xi_g=\Lambda_g^\Delta\lambda_r.
+\tag{P4.9}
+\]">\[
+D_HH_w=I_2-v_t\lambda_t,\quad D_H^aH_w=0\ (a\ge2),\quad
+D_Hv=T_g^\Delta\lambda_t/c_i,
+\quad D_H\xi_g=\Lambda_g^\Delta\lambda_r.
+\tag{P4.9}
+\]</span>
+<p>The derivative of the first path map is bounded independently of the band; the derivative of <span class="math" data-tex="\(v\)">\(v\)</span> costs only a factor <span class="math" data-tex="\(C S_*\)">\(C S_*\)</span>. Differentiating a coefficient expressed in <span class="math" data-tex="\((\xi_g,v)\)">\((\xi_g,v)\)</span> thus introduces fixed powers of these constant linear maps. Conversely the initial transverse and pulse directions in <span class="math" data-tex="\(H\)">\(H\)</span> are <span class="math" data-tex="\(J_g^{-\Delta}v_r\)">\(J_g^{-\Delta}v_r\)</span> and <span class="math" data-tex="\(T_g^{-\Delta}c_iv_t\)">\(T_g^{-\Delta}c_iv_t\)</span> on this local lift; these are legitimate linear maps in the covering chart, not an asserted global inverse to a torus covering. They have bounded coefficients. These identities prove (P4.7) in exactly the original <span class="math" data-tex="\((R,Z,T,H)\)">\((R,Z,T,H)\)</span> coefficient variables.</p>
+<p>The path fixes the slow and transverse point. If that point is outside the prescribed support, its source is zero for the entire interval, and (P4.3) makes the solution zero there. Its derivatives extend by zero across those boundaries by (P4.5), or directly by solving the equation for the given smooth source extension. At shell edges, <span class="math" data-tex="\(\sqrt\zeta\delta^{-a}\)">\(\sqrt\zeta\delta^{-a}\)</span> tends to zero with every fixed derivative; the estimates in P4 and the zero-extension argument of W3 therefore prove smooth extension for the solution and pressure. There is no claimed temporal zero extension before the pulse cutoff. Smooth coefficients on the enlarged rectangle provide a local extension of the initial-value solution past each endpoint; the bounds above concern the closed interval itself.</p>
+<p>Deck translations preserving <span class="math" data-tex="\(H\)">\(H\)</span> translate (P4.8) and reindex its lift by the same integer vector. The source values agree under those translations, and uniqueness proves the same for the solution. Distinct preimages of a finer band-torus point remain distinct points of <span class="math" data-tex="\(H\)">\(H\)</span>, with their actual source data. On overlapping common-torus neighborhoods, pull everything to the absolute torus. The path is <span class="math" data-tex="\(Y_w=Y+T_g^{-i}c_i(w-v(Y))v_t\)">\(Y_w=Y+T_g^{-i}c_i(w-v(Y))v_t\)</span> in both descriptions. Compatible source data and uniqueness then prove compatibility of the output. On compact sets with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, uniform one-sided slow derivatives at <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> pass through the same differentiated equations and their integrals, proving the stated one-sided derivative property. The number of derivatives and the finite harmonic set change constants and degrees only, not the previously chosen <span class="math" data-tex="\(q_*\)">\(q_*\)</span>.</p>
+<h2 id="p5-the-homogeneous-pulse-and-its-momentum-flux-direction">P5. The homogeneous pulse and its momentum flux direction</h2>
+<p>The primary stress construction needs a nonzero homogeneous solution, not the zero-data sourced solution. Use the original initial data in the growing coordinate:</p>
+<span class="math math-display" data-tex="\[
+z_+(0)=P(0)&gt;0,\qquad z_-(0)=0,\qquad
+t^h=B(z_+,z_-)^T,\qquad (t^h)&#x27;=\mathcal A t^h-dt^h.
+\tag{P5.1}
+\]">\[
+z_+(0)=P(0)&gt;0,\qquad z_-(0)=0,\qquad
+t^h=B(z_+,z_-)^T,\qquad (t^h)&#x27;=\mathcal A t^h-dt^h.
+\tag{P5.1}
+\]</span>
+<p>All coefficients and data are real. On any interval with <span class="math" data-tex="\(z_+&gt;0\)">\(z_+&gt;0\)</span>, put <span class="math" data-tex="\(r=z_-/z_+\)">\(r=z_-/z_+\)</span>. Subtracting the two quotient terms from (P2.11) gives exactly</p>
+<span class="math math-display" data-tex="\[
+r&#x27;=E_{21}+(-2\lambda+E_{22}-E_{11})r-E_{12}r^2,\qquad r(0)=0.
+\tag{P5.2}
+\]">\[
+r&#x27;=E_{21}+(-2\lambda+E_{22}-E_{11})r-E_{12}r^2,\qquad r(0)=0.
+\tag{P5.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(c_\lambda=\lambda_-/\sqrt{1+9u_*^2/4}&gt;0\)">\(c_\lambda=\lambda_-/\sqrt{1+9u_*^2/4}&gt;0\)</span>, and retain <span class="math" data-tex="\(|E_{ab}|\le C_E/S_*\)">\(|E_{ab}|\le C_E/S_*\)</span>. Choose <span class="math" data-tex="\(K_b=2C_E/c_\lambda+1\)">\(K_b=2C_E/c_\lambda+1\)</span>, and include <span class="math" data-tex="\(S_*\ge4K_b\)">\(S_*\ge4K_b\)</span> among the finite value conditions defining the common threshold in P1. At either boundary <span class="math" data-tex="\(r=\pm K_b/S_*\)">\(r=\pm K_b/S_*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pm r&#x27;\le\frac{C_E-2c_\lambda K_b+2C_EK_b/S_*+C_EK_b^2/S_*^2}{S_*}
+\le\frac{25C_E/16-2c_\lambda K_b}{S_*}&lt;0.
+\tag{P5.3}
+\]">\[
+\pm r&#x27;\le\frac{C_E-2c_\lambda K_b+2C_EK_b/S_*+C_EK_b^2/S_*^2}{S_*}
+\le\frac{25C_E/16-2c_\lambda K_b}{S_*}&lt;0.
+\tag{P5.3}
+\]</span>
+<p>A differentiable function starting inside this interval cannot first cross its upper boundary with strictly negative derivative, or its lower boundary with strictly positive derivative. Hence <span class="math" data-tex="\(|r|\le K_b/S_*\le1/4\)">\(|r|\le K_b/S_*\le1/4\)</span> while the ratio exists. Also</p>
+<span class="math math-display" data-tex="\[
+\left(\log\frac{z_+}{P}\right)&#x27;=-(d-d_{\rm ref})+E_{11}+E_{12}r,
+\]">\[
+\left(\log\frac{z_+}{P}\right)&#x27;=-(d-d_{\rm ref})+E_{11}+E_{12}r,
+\]</span>
+<p>so, with <span class="math" data-tex="\(C_h=C_d+5C_E/4\)">\(C_h=C_d+5C_E/4\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\log\frac{z_+(v)}{P(v)}\right|
+\le C_hv/S_*\le2r_0T_gC_h=:C_{h,0}.
+\tag{P5.4}
+\]">\[
+\left|\log\frac{z_+(v)}{P(v)}\right|
+\le C_hv/S_*\le2r_0T_gC_h=:C_{h,0}.
+\tag{P5.4}
+\]</span>
+<p>For any fixed band, the positive continuous <span class="math" data-tex="\(P\)">\(P\)</span> has positive minimum on <span class="math" data-tex="\([0,L_s]\)">\([0,L_s]\)</span>. The lower bound in (P5.4) therefore prevents <span class="math" data-tex="\(z_+\)">\(z_+\)</span> from reaching zero. The ratio and its bound extend to the entire interval.</p>
+<p>In the actual <span class="math" data-tex="\(U\)">\(U\)</span> coordinates, write <span class="math" data-tex="\(t^h=x(e_r-s_aK_a)+yN_a\)">\(t^h=x(e_r-s_aK_a)+yN_a\)</span>. The full matrix <span class="math" data-tex="\(M\)">\(M\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+x=z_+(1+r),\qquad y=c_0\sqrt{1+s^2}\,z_+(1-r),
+\]">\[
+x=z_+(1+r),\qquad y=c_0\sqrt{1+s^2}\,z_+(1-r),
+\]</span>
+<span class="math math-display" data-tex="\[
+\frac34e^{-C_{h,0}}P(v)\le x(v)\le\frac54e^{C_{h,0}}P(v),
+\quad
+\frac yx-c_0\sqrt{1+s^2}
+=-\frac{2c_0\sqrt{1+s^2}\,r}{1+r}.
+\tag{P5.5}
+\]">\[
+\frac34e^{-C_{h,0}}P(v)\le x(v)\le\frac54e^{C_{h,0}}P(v),
+\quad
+\frac yx-c_0\sqrt{1+s^2}
+=-\frac{2c_0\sqrt{1+s^2}\,r}{1+r}.
+\tag{P5.5}
+\]</span>
+<p>The last expression is bounded by <span class="math" data-tex="\((8/3)\sup|c_0\sqrt{1+s^2}|K_b/S_*\)">\((8/3)\sup|c_0\sqrt{1+s^2}|K_b/S_*\)</span>. This proves the full source direction estimate (7.21), including its sign and radial lower bound.</p>
+<p>The value estimate also follows from <span class="math" data-tex="\(V_1(v,0)(P(0),0)^T\)">\(V_1(v,0)(P(0),0)^T\)</span>, using (P3.8). Initial data <span class="math" data-tex="\(P(0)\)">\(P(0)\)</span> are fixed with the label, so their slow and transverse derivatives vanish. Repeating (P4.5) for this homogeneous solution proves <span class="math" data-tex="\(|\partial^I t^h|\le C_IS_*^{b_I}P(v)\)">\(|\partial^I t^h|\le C_IS_*^{b_I}P(v)\)</span> at every fixed derivative order; pulse derivatives again follow from the equation. Its pressure is (P2.4) with <span class="math" data-tex="\(f_m=0,m=1\)">\(f_m=0,m=1\)</span>, and has the factor <span class="math" data-tex="\(\varepsilon^{1/2}\)">\(\varepsilon^{1/2}\)</span>. These are estimates for the pulse before multiplying by the radial, transverse and slow amplitude factors used in stress realization. No shell weight or compact shell support is asserted for this unweighted homogeneous pulse itself.</p>
+<p>Its energy identity retains the original shear and viscosity contributions. Because <span class="math" data-tex="\(n\cdot t^h=0\)">\(n\cdot t^h=0\)</span>, the normal term in <span class="math" data-tex="\(\mathcal A t^h\)">\(\mathcal A t^h\)</span> has zero dot product with <span class="math" data-tex="\(t^h\)">\(t^h\)</span>. For any real <span class="math" data-tex="\(t=(t_r,t_\theta,t_z)\)">\(t=(t_r,t_\theta,t_z)\)</span>, direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+t\cdot\mathcal Kt=-2Ft_rt_\theta+(2F+RF_R)t_rt_\theta+G_Rt_rt_z
+=g\cdot(t_r(t_\theta,t_z)).
+\]">\[
+t\cdot\mathcal Kt=-2Ft_rt_\theta+(2F+RF_R)t_rt_\theta+G_Rt_rt_z
+=g\cdot(t_r(t_\theta,t_z)).
+\]</span>
+<p>Thus the exact homogeneous identity is</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac d{dv}|t^h|^2
+=-g\cdot(t_r^h(t_\theta^h,t_z^h))
+-\varepsilon k^2|n|^2|t^h|^2.
+\tag{P5.6}
+\]">\[
+\frac12\frac d{dv}|t^h|^2
+=-g\cdot(t_r^h(t_\theta^h,t_z^h))
+-\varepsilon k^2|n|^2|t^h|^2.
+\tag{P5.6}
+\]</span>
+<p>The stress map must match both components of this radial momentum flux. The map is constructed in <a href="stress-covariance-audit.html">C1–C9</a>.</p>
+<h2 id="p6-actual-compact-velocity-pressure-and-every-endpoint-term">P6. Actual compact velocity, pressure, and every endpoint term</h2>
+<p>Let <span class="math" data-tex="\(\psi(v)\)">\(\psi(v)\)</span> be the original smooth pulse cutoff, equal to one on <span class="math" data-tex="\(|v-L_s/2|\le L_s/5\)">\(|v-L_s/2|\le L_s/5\)</span>, supported in <span class="math" data-tex="\(|v-L_s/2|&lt;L_s/3\)">\(|v-L_s/2|&lt;L_s/3\)</span>, rescaled from a fixed function. For the sourced solution set</p>
+<span class="math math-display" data-tex="\[
+\widehat t_m=\psi t_m,\qquad \widehat\pi_m=\psi\pi_m,\qquad
+C_m=\frac{i\,n\times t_m}{km|n|^2},\qquad \widehat C_m=\psi C_m.
+\tag{P6.1}
+\]">\[
+\widehat t_m=\psi t_m,\qquad \widehat\pi_m=\psi\pi_m,\qquad
+C_m=\frac{i\,n\times t_m}{km|n|^2},\qquad \widehat C_m=\psi C_m.
+\tag{P6.1}
+\]</span>
+<p>The exact actual velocity amplitude, rather than just its transverse part, is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}_*(\widehat C_me^{ikm\Phi})
+=(\widehat t_m+\widehat r_m)e^{ikm\Phi},
+\]">\[
+\operatorname{curl}_*(\widehat C_me^{ikm\Phi})
+=(\widehat t_m+\widehat r_m)e^{ikm\Phi},
+\]</span>
+<span class="math math-display" data-tex="\[
+\widehat r_m=
+\big(-D_z(\widehat C_m)_\theta,
+\ D_z(\widehat C_m)_r-D_r(\widehat C_m)_z,
+\ (D_r+R^{-1})(\widehat C_m)_\theta\big).
+\tag{P6.2}
+\]">\[
+\widehat r_m=
+\big(-D_z(\widehat C_m)_\theta,
+\ D_z(\widehat C_m)_r-D_r(\widehat C_m)_z,
+\ (D_r+R^{-1})(\widehat C_m)_\theta\big).
+\tag{P6.2}
+\]</span>
+<p>The curl formula and its exact divergence are proved by all component terms in W4.1–W4.5. Now (P1.10) supplies the uniform denominator bound needed for this particular potential. The factor <span class="math" data-tex="\((km)^{-1}\)">\((km)^{-1}\)</span> increases the exponent by one half; one <span class="math" data-tex="\(D_r\)">\(D_r\)</span> can cost at most <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span>. Hence, with all fixed coefficient derivatives and the original supports,</p>
+<span class="math math-display" data-tex="\[
+\widehat C_m\in\mathsf W_{\alpha+1/2},\quad
+\widehat r_m\in\mathsf W_{\alpha+1/2-\kappa_s},\quad
+\widehat t_m+\widehat r_m\in\mathsf W_\alpha,
+\quad\widehat\pi_m\in\mathsf W_{\alpha+1/2}.
+\tag{P6.3}
+\]">\[
+\widehat C_m\in\mathsf W_{\alpha+1/2},\quad
+\widehat r_m\in\mathsf W_{\alpha+1/2-\kappa_s},\quad
+\widehat t_m+\widehat r_m\in\mathsf W_\alpha,
+\quad\widehat\pi_m\in\mathsf W_{\alpha+1/2}.
+\tag{P6.3}
+\]</span>
+<p>These class bounds follow by Leibniz' rule with (P4.7); derivatives of the quotient <span class="math" data-tex="\(n/|n|^2\)">\(n/|n|^2\)</span> are polynomially bounded by P1. All spatial derivatives of the temporal cutoff actually vanish here: <span class="math" data-tex="\(D_r\psi=D_z\psi=\partial_\theta\psi=0\)">\(D_r\psi=D_z\psi=\partial_\theta\psi=0\)</span>. Thus <span class="math" data-tex="\(\widehat r_m=\psi r_m\)">\(\widehat r_m=\psi r_m\)</span> for the uncut remainder defined by (P6.2) with <span class="math" data-tex="\(C_m\)">\(C_m\)</span>. Time derivatives of this product still contain <span class="math" data-tex="\(\psi&#x27; r_m\)">\(\psi&#x27; r_m\)</span>; none are deleted. Both the potential and pressure vanish on open neighborhoods of the pulse endpoints, which supplies their smooth zero extensions there. P4 proves smooth zero extension at the other support boundaries.</p>
+<p>The complete principal cutoff identity is</p>
+<span class="math math-display" data-tex="\[
+\widehat t_m&#x27;+\mathcal K\widehat t_m+m^2d\widehat t_m
++ikmn\widehat\pi_m+f_m
+=(1-\psi)f_m+\psi&#x27;t_m.
+\tag{P6.4}
+\]">\[
+\widehat t_m&#x27;+\mathcal K\widehat t_m+m^2d\widehat t_m
++ikmn\widehat\pi_m+f_m
+=(1-\psi)f_m+\psi&#x27;t_m.
+\tag{P6.4}
+\]</span>
+<p>It follows by multiplying (P2.5) by <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, retaining the derivative <span class="math" data-tex="\((\psi t_m)&#x27;\)">\((\psi t_m)&#x27;\)</span>, and adding <span class="math" data-tex="\(f_m\)">\(f_m\)</span>. Where either right-hand term is nonzero, <span class="math" data-tex="\(|v-L_s/2|\ge L_s/5\)">\(|v-L_s/2|\ge L_s/5\)</span>, so (P3.5) and (P1.2) give</p>
+<span class="math math-display" data-tex="\[
+P(v)\le e^{-c_-L_s/50}\le e^{-(c_-r_0/25)S_*}.
+\tag{P6.5}
+\]">\[
+P(v)\le e^{-c_-L_s/50}\le e^{-(c_-r_0/25)S_*}.
+\tag{P6.5}
+\]</span>
+<p>Every fixed derivative of these terms has this same exponential smallness, times a permitted polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span> and shell factors, because the solution and source have their differentiated envelope bounds. The cutoff derivatives themselves obey <span class="math" data-tex="\(|\psi^{(j)}|\le C_jL_s^{-j}\)">\(|\psi^{(j)}|\le C_jL_s^{-j}\)</span>, and conversion to <span class="math" data-tex="\(H\)">\(H\)</span> multiplies only by powers of <span class="math" data-tex="\(S_*\)">\(S_*\)</span>.</p>
+<p>For the global assertion in original Proposition 9.1, the incoming source harmonic has its stated smooth zero extension across the entire fixed rectangle, including the temporal endpoints. This additional source property makes (P6.4) a global residual identity after the supported fields are extended by zero. Proposition 7.2 by itself did not impose that property on an arbitrary uncut source, and the present calculation does not add it silently. The actual source containment is proved in <a href="source-containment-audit.html">S1–S5</a>, and the four updates preserving it are proved in <a href="correction-cycle-audit.html">K0–K8</a>.</p>
+<p>Real fields use conjugate harmonic pairs. Since <span class="math" data-tex="\(A_m\)">\(A_m\)</span> depends on <span class="math" data-tex="\(m^2\)">\(m^2\)</span> and is real, uniqueness gives <span class="math" data-tex="\(t_{-m}=\overline{t_m}\)">\(t_{-m}=\overline{t_m}\)</span> for <span class="math" data-tex="\(f_{-m}=\overline{f_m}\)">\(f_{-m}=\overline{f_m}\)</span>. The factors <span class="math" data-tex="\(i/(km)\)">\(i/(km)\)</span> in the pressure and potential give <span class="math" data-tex="\(\pi_{-m}=\overline{\pi_m}\)">\(\pi_{-m}=\overline{\pi_m}\)</span>, <span class="math" data-tex="\(C_{-m}=\overline{C_m}\)">\(C_{-m}=\overline{C_m}\)</span>. The real cosine velocity <span class="math" data-tex="\(t\cos(k\Phi)\)">\(t\cos(k\Phi)\)</span> therefore has amplitudes <span class="math" data-tex="\(t/2\)">\(t/2\)</span> at both <span class="math" data-tex="\(m=1,-1\)">\(m=1,-1\)</span>, with their actual conjugate pressures and potentials. No factor two is suppressed in assembling the real velocity.</p>
+<h2 id="p7-physical-factors-and-infinite-order-cutoff-decay">P7. Physical factors and infinite-order cutoff decay</h2>
+<p>At viscosity one the physical potential, velocity, pressure and residual corresponding to chart fields have the factors</p>
+<span class="math math-display" data-tex="\[
+Q^{1/2-A},\qquad Q^{-A},\qquad Q^{-2A},\qquad Q^{-2A-1/2},
+\tag{P7.1}
+\]">\[
+Q^{1/2-A},\qquad Q^{-A},\qquad Q^{-2A},\qquad Q^{-2A-1/2},
+\tag{P7.1}
+\]</span>
+<p>respectively. Their physical derivatives use the original evaluation map and chain-rule operators (P1.1). At any fixed derivative order and finite stage, each conversion contributes only a fixed power of <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span> and a polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>: the radial factor is <span class="math" data-tex="\(Q^{-1/2}\)">\(Q^{-1/2}\)</span>, the axial factor <span class="math" data-tex="\(Q^{-D}\)">\(Q^{-D}\)</span>, the slow time factor <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span>, and the auxiliary factors come from <span class="math" data-tex="\(T_g^i\)">\(T_g^i\)</span> and <span class="math" data-tex="\(\Lambda_g^i\)">\(\Lambda_g^i\)</span>, bounded by fixed powers of <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span> using their explicit covering-index formula. Derivatives of the oscillatory exponential retain their finite factors <span class="math" data-tex="\(km\)">\(km\)</span> and the displayed phase derivatives; <span class="math" data-tex="\(k\le2Q^{-h/2}\)">\(k\le2Q^{-h/2}\)</span>, <span class="math" data-tex="\(\varepsilon^{-1}=Q^{-h}\)">\(\varepsilon^{-1}=Q^{-h}\)</span>. Derivatives of the cylindrical frame introduce only finite powers of <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span>, with <span class="math" data-tex="\(r=\sqrt Q R\)">\(r=\sqrt Q R\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> bounded away from zero. All remaining fixed coefficient derivatives have already been bounded.</p>
+<p>The edge factors <span class="math" data-tex="\(\sqrt\zeta\delta^{-a}\)">\(\sqrt\zeta\delta^{-a}\)</span> are bounded uniformly on the shell, since they vanish at both edges and are continuous on its interior. Taking any fixed physical space-time derivative of a cutoff term from (P6.4) thus gives a bound</p>
+<span class="math math-display" data-tex="\[
+CQ^{-M}S_*^B e^{-cS_*},\qquad c=c_-r_0/25&gt;0,
+\tag{P7.2}
+\]">\[
+CQ^{-M}S_*^B e^{-cS_*},\qquad c=c_-r_0/25&gt;0,
+\tag{P7.2}
+\]</span>
+<p>for fixed finite <span class="math" data-tex="\(M,B\)">\(M,B\)</span>, allowing them to include the fixed factor <span class="math" data-tex="\(\varepsilon^\alpha\)">\(\varepsilon^\alpha\)</span>. Since <span class="math" data-tex="\(q\ge Q/2\)">\(q\ge Q/2\)</span>, for every fixed <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q^{-N}Q^{-M}S_*^B e^{-cS_*}
+\le2^N\exp\big(-c\ell^2+(M+N)\ell\log2+2B\log\ell\big)\longrightarrow0.
+\tag{P7.3}
+\]">\[
+q^{-N}Q^{-M}S_*^B e^{-cS_*}
+\le2^N\exp\big(-c\ell^2+(M+N)\ell\log2+2B\log\ell\big)\longrightarrow0.
+\tag{P7.3}
+\]</span>
+<p>The limit follows because the negative quadratic term dominates the linear and logarithmic terms; for large <span class="math" data-tex="\(\ell\)">\(\ell\)</span> their sum is at most <span class="math" data-tex="\(-c\ell^2/2\)">\(-c\ell^2/2\)</span>. The finitely many remaining bands enlarge the bound's constant. This proves the all-order <span class="math" data-tex="\(O(q^N)\)">\(O(q^N)\)</span> assertion for each fixed physical derivative, uniformly over the bands and labels. Fixed-stage label sums add at most a polynomial mesh factor, absorbed into <span class="math" data-tex="\(S_*^B\)">\(S_*^B\)</span>. These residuals remain actual additive terms; flatness does not mean they are zero.</p>
+<p>For the original arbitrary <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, keep the exact map of the moment audit M2.4–M2.7:</p>
+<span class="math math-display" data-tex="\[
+y=x/\sqrt\nu,\qquad u_\nu=\sqrt\nu\,u_1(y,t),\quad
+p_\nu=\nu p_1(y,t),\quad f_\nu=\sqrt\nu f_1(y,t).
+\]">\[
+y=x/\sqrt\nu,\qquad u_\nu=\sqrt\nu\,u_1(y,t),\quad
+p_\nu=\nu p_1(y,t),\quad f_\nu=\sqrt\nu f_1(y,t).
+\]</span>
+<p>Thus the four factors in (P7.1) become, in the same order,</p>
+<span class="math math-display" data-tex="\[
+\nu Q^{1/2-A},\qquad\sqrt\nu Q^{-A},\qquad
+\nu Q^{-2A},\qquad\sqrt\nu Q^{-2A-1/2}.
+\tag{P7.4}
+\]">\[
+\nu Q^{1/2-A},\qquad\sqrt\nu Q^{-A},\qquad
+\nu Q^{-2A},\qquad\sqrt\nu Q^{-2A-1/2}.
+\tag{P7.4}
+\]</span>
+<p>The original coordinates are <span class="math" data-tex="\(R=r_\nu/\sqrt{\nu Q}\)">\(R=r_\nu/\sqrt{\nu Q}\)</span>, <span class="math" data-tex="\(Z=z_\nu/(\sqrt\nu Q^D)\)">\(Z=z_\nu/(\sqrt\nu Q^D)\)</span>, <span class="math" data-tex="\(T=(1-t)/Q\)">\(T=(1-t)/Q\)</span>, with <span class="math" data-tex="\(q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t\)">\(q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t\)</span>, <span class="math" data-tex="\(X=r_\nu^2/(2\nu q_\nu)\)">\(X=r_\nu^2/(2\nu q_\nu)\)</span>, and <span class="math" data-tex="\(Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_tt\)">\(Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_tt\)</span>. A fixed number of spatial derivatives adds a fixed power of <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>, absorbed only into the constant for that fixed original viscosity. In particular <span class="math" data-tex="\(\nu\Delta_xu_\nu=\sqrt\nu\Delta_yu_1\)">\(\nu\Delta_xu_\nu=\sqrt\nu\Delta_yu_1\)</span>; the factor <span class="math" data-tex="\(\varepsilon k^2|n|^2\)">\(\varepsilon k^2|n|^2\)</span> in the pulse damping is unchanged by this exact map. All factors are retained, and the same all-order cutoff conclusion follows for each <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>.</p>
+<h2 id="p8-full-linearized-residual-after-the-curl">P8. Full linearized residual after the curl</h2>
+<p>The principal amplitude-pressure operator is</p>
+<span class="math math-display" data-tex="\[
+\mathscr L_m(a,\pi)=c_{i_0}N_{i_0}a+\mathcal Ka
++\varepsilon k^2m^2|n|^2a+ikmn\pi.
+\tag{P8.1}
+\]">\[
+\mathscr L_m(a,\pi)=c_{i_0}N_{i_0}a+\mathcal Ka
++\varepsilon k^2m^2|n|^2a+ikmn\pi.
+\tag{P8.1}
+\]</span>
+<p>On each lifted rectangle <span class="math" data-tex="\(c_{i_0}N_{i_0}=\partial_v\)">\(c_{i_0}N_{i_0}=\partial_v\)</span> with the slow and transverse coordinates held fixed, including for sources that only descend to the common torus. The full linearization of the Navier–Stokes residual about <span class="math" data-tex="\((b,V,G)\)">\((b,V,G)\)</span>, on the harmonic <span class="math" data-tex="\(ae^{ikm\Phi}\)">\(ae^{ikm\Phi}\)</span> with pressure <span class="math" data-tex="\(\pi e^{ikm\Phi}\)">\(\pi e^{ikm\Phi}\)</span>, has coefficient <span class="math" data-tex="\(\mathscr L_m(a,\pi)+\mathscr L_m^{\rm rem}(a,\pi)\)">\(\mathscr L_m(a,\pi)+\mathscr L_m^{\rm rem}(a,\pi)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathscr L_m^{\rm rem}(a,\pi)={}&amp;
+(-\varepsilon\partial_T+bD_r+GD_z)a+ikmE_{ik}a
+\\&amp;+a_r(\partial_Rb)e_r+a_zD_z(b,V,G)+(b/R)a_\theta e_\theta
++(D_r\pi,0,D_z\pi)
+\\&amp;-\varepsilon\big\{(D_r^2+R^{-1}D_r+D_z^2)a
+-R^{-2}(a_r,a_\theta,0)
+\\&amp;\hspace{27mm}+2ikm(n_rD_r+n_zD_z)a
+\\&amp;\hspace{27mm}+ikm(D_rn_r+n_r/R+D_zn_z)a
+\\&amp;\hspace{27mm}+2ikm(n_\theta/R)(-a_\theta,a_r,0)\big\}.
+\end{aligned}
+\tag{P8.2}
+\]">\[
+\begin{aligned}
+\mathscr L_m^{\rm rem}(a,\pi)={}&amp;
+(-\varepsilon\partial_T+bD_r+GD_z)a+ikmE_{ik}a
+\\&amp;+a_r(\partial_Rb)e_r+a_zD_z(b,V,G)+(b/R)a_\theta e_\theta
++(D_r\pi,0,D_z\pi)
+\\&amp;-\varepsilon\big\{(D_r^2+R^{-1}D_r+D_z^2)a
+-R^{-2}(a_r,a_\theta,0)
+\\&amp;\hspace{27mm}+2ikm(n_rD_r+n_zD_z)a
+\\&amp;\hspace{27mm}+ikm(D_rn_r+n_r/R+D_zn_z)a
+\\&amp;\hspace{27mm}+2ikm(n_\theta/R)(-a_\theta,a_r,0)\big\}.
+\end{aligned}
+\tag{P8.2}
+\]</span>
+<p>Here is a component derivation. The two transports use the exact cylindrical formula W1.6. Their frame terms sum to <span class="math" data-tex="\((-2Va_\theta/R,Va_r/R+ba_\theta/R,0)\)">\((-2Va_\theta/R,Va_r/R+ba_\theta/R,0)\)</span>. The radial derivatives of the tangential base add <span class="math" data-tex="\((0,\partial_RV\,a_r,\partial_RG\,a_r)\)">\((0,\partial_RV\,a_r,\partial_RG\,a_r)\)</span>; because <span class="math" data-tex="\(\partial_RV=F+RF_R\)">\(\partial_RV=F+RF_R\)</span>, their sum gives the full <span class="math" data-tex="\(\mathcal K a\)">\(\mathcal K a\)</span> and the remaining <span class="math" data-tex="\((b/R)a_\theta e_\theta\)">\((b/R)a_\theta e_\theta\)</span>. The other base derivatives are exactly <span class="math" data-tex="\(a_r(\partial_Rb)e_r+a_zD_z(b,V,G)\)">\(a_r(\partial_Rb)e_r+a_zD_z(b,V,G)\)</span>. Phase transport gives <span class="math" data-tex="\(ikmE_{ik}a\)">\(ikmE_{ik}a\)</span> after the cancellation in (P1.11). The pressure gradient is <span class="math" data-tex="\(ikmn\pi+(D_r\pi,0,D_z\pi)\)">\(ikmn\pi+(D_r\pi,0,D_z\pi)\)</span>.</p>
+<p>For the scalar Laplacian applied componentwise, the product rule gives its amplitude part <span class="math" data-tex="\((D_r^2+R^{-1}D_r+D_z^2)a\)">\((D_r^2+R^{-1}D_r+D_z^2)a\)</span>, phase-quadratic part <span class="math" data-tex="\(-k^2m^2|n|^2a\)">\(-k^2m^2|n|^2a\)</span>, mixed part <span class="math" data-tex="\(2ikm(n_rD_r+n_zD_z)a\)">\(2ikm(n_rD_r+n_zD_z)a\)</span>, and phase divergence <span class="math" data-tex="\(ikm(D_rn_r+n_r/R+D_zn_z)a\)">\(ikm(D_rn_r+n_r/R+D_zn_z)a\)</span>. The angular derivative of <span class="math" data-tex="\(n_\theta=p/R\)">\(n_\theta=p/R\)</span> is zero. The cylindrical vector Laplacian adds <span class="math" data-tex="\(-R^{-2}(a_r,a_\theta,0)\)">\(-R^{-2}(a_r,a_\theta,0)\)</span> and <span class="math" data-tex="\(2R^{-2}\partial_\theta(-a_\theta,a_r,0)e^{ikm\Phi}\)">\(2R^{-2}\partial_\theta(-a_\theta,a_r,0)e^{ikm\Phi}\)</span>, which gives the last line in (P8.2). Multiplication by the residual sign <span class="math" data-tex="\(-\varepsilon\)">\(-\varepsilon\)</span> places the phase-quadratic part in (P8.1) with its positive sign. This accounts for every term in original (9.2).</p>
+<p>For <span class="math" data-tex="\(a\in\mathsf W_\alpha\)">\(a\in\mathsf W_\alpha\)</span>, <span class="math" data-tex="\(\pi\in\mathsf W_{\alpha+1/2}\)">\(\pi\in\mathsf W_{\alpha+1/2}\)</span>, the gains over <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, with all coefficient derivatives, are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Full group in (P8.2)</th>
+<th>Lower gain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(-\varepsilon\partial_Ta+bD_ra+GD_za\)">\(-\varepsilon\partial_Ta+bD_ra+GD_za\)</span></td>
+<td><span class="math" data-tex="\(1-\kappa_s\)">\(1-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(ikmE_{ik}a\)">\(ikmE_{ik}a\)</span></td>
+<td><span class="math" data-tex="\(1/2\)">\(1/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(a_r(\partial_Rb)e_r+a_zD_z(b,V,G)+(b/R)a_\theta e_\theta\)">\(a_r(\partial_Rb)e_r+a_zD_z(b,V,G)+(b/R)a_\theta e_\theta\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((D_r\pi,0,D_z\pi)\)">\((D_r\pi,0,D_z\pi)\)</span></td>
+<td><span class="math" data-tex="\(1/2-\kappa_s\)">\(1/2-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-\varepsilon(D_r^2+R^{-1}D_r+D_z^2)a+\varepsilon R^{-2}(a_r,a_\theta,0)\)">\(-\varepsilon(D_r^2+R^{-1}D_r+D_z^2)a+\varepsilon R^{-2}(a_r,a_\theta,0)\)</span></td>
+<td><span class="math" data-tex="\(1-2\kappa_s\)">\(1-2\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-2\varepsilon ikm(n_rD_r+n_zD_z)a\)">\(-2\varepsilon ikm(n_rD_r+n_zD_z)a\)</span></td>
+<td><span class="math" data-tex="\(1/2-\kappa_s\)">\(1/2-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-\varepsilon ikm(D_rn_r+n_r/R+D_zn_z)a\)">\(-\varepsilon ikm(D_rn_r+n_r/R+D_zn_z)a\)</span></td>
+<td><span class="math" data-tex="\(1/2-\kappa_s\)">\(1/2-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-2\varepsilon ikm(n_\theta/R)(-a_\theta,a_r,0)\)">\(-2\varepsilon ikm(n_\theta/R)(-a_\theta,a_r,0)\)</span></td>
+<td><span class="math" data-tex="\(1/2\)">\(1/2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The rules behind the table are the exact class maps of W3: one explicit <span class="math" data-tex="\(D_r\)">\(D_r\)</span> costs at most <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span>, <span class="math" data-tex="\(D_z\)">\(D_z\)</span> adds one, <span class="math" data-tex="\(k\)">\(k\)</span> costs one half, and the displayed <span class="math" data-tex="\(b\)">\(b\)</span> or its fixed slow derivatives add one. The multiplier <span class="math" data-tex="\(n\)">\(n\)</span> has polynomial coefficient bounds, as do its derivatives before the possible one <span class="math" data-tex="\(D_r\)">\(D_r\)</span> loss; (P1.11) retains the full <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in the transport defect. Every remaining factor <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> is bounded on the original annulus, with bounded derivatives. Thus Leibniz' formula proves the table for every fixed coefficient derivative, retaining the shell weight and envelope from the amplitude or pressure factor.</p>
+<p>The actual amplitude in (P6.2) is <span class="math" data-tex="\(a=\widehat t_m+\widehat r_m\)">\(a=\widehat t_m+\widehat r_m\)</span>. The exact residual after adding the prescribed source is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathscr L_m(a,\widehat\pi_m)+\mathscr L_m^{\rm rem}(a,\widehat\pi_m)+f_m
+={}&amp;(1-\psi)f_m+\psi&#x27;t_m
+\\&amp;+\mathscr L_m(\widehat r_m,0)
++\mathscr L_m^{\rm rem}(\widehat t_m+\widehat r_m,\widehat\pi_m).
+\end{aligned}
+\tag{P8.3}
+\]">\[
+\begin{aligned}
+\mathscr L_m(a,\widehat\pi_m)+\mathscr L_m^{\rm rem}(a,\widehat\pi_m)+f_m
+={}&amp;(1-\psi)f_m+\psi&#x27;t_m
+\\&amp;+\mathscr L_m(\widehat r_m,0)
++\mathscr L_m^{\rm rem}(\widehat t_m+\widehat r_m,\widehat\pi_m).
+\end{aligned}
+\tag{P8.3}
+\]</span>
+<p>No curl term is absent here. The first line is the actual additive flat source from P6–P7. In the second line, <span class="math" data-tex="\(c_{i_0}N_{i_0}\)">\(c_{i_0}N_{i_0}\)</span> preserves the coefficient exponent, <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> has bounded coefficients, and <span class="math" data-tex="\(\varepsilon k^2m^2|n|^2\)">\(\varepsilon k^2m^2|n|^2\)</span> has polynomial coefficient bounds for each fixed harmonic set. Hence <span class="math" data-tex="\(\mathscr L_m(\widehat r_m,0)\in\mathsf W_{\alpha+1/2-\kappa_s}\)">\(\mathscr L_m(\widehat r_m,0)\in\mathsf W_{\alpha+1/2-\kappa_s}\)</span>. The table and (P6.3) give the same bound for the last term, because <span class="math" data-tex="\(1-2\kappa_s\ge1/2-\kappa_s\)">\(1-2\kappa_s\ge1/2-\kappa_s\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\text{supported linear remainder}\in\mathsf W_{\alpha+1/2-\kappa_s}
+\subset\mathsf W_{\alpha+1/2-3\kappa_s}.
+\tag{P8.4}
+\]">\[
+\text{supported linear remainder}\in\mathsf W_{\alpha+1/2-\kappa_s}
+\subset\mathsf W_{\alpha+1/2-3\kappa_s}.
+\tag{P8.4}
+\]</span>
+<p>The inclusion uses <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>. This proves the source Proposition 9.1, and the full term table yields the stated local strengthening by <span class="math" data-tex="\(2\kappa_s\)">\(2\kappa_s\)</span>. No improvement of the complete correction cycle is inferred; other steps still determine its gain. Supports and torus compatibility follow from the exact products and derivatives in (P8.3), with smooth temporal extension supplied by the cutoff. The flat source is retained separately and is not fed back as a source requiring a new pulse solve. For a homogeneous supported amplitude in the stated wave class, the identical calculation applies with <span class="math" data-tex="\(f_m=0\)">\(f_m=0\)</span>, leaving its actual cutoff term <span class="math" data-tex="\(\psi&#x27;t_m\)">\(\psi&#x27;t_m\)</span>.</p>
+<h2 id="p9-what-has-been-connected-to-the-iteration">P9. What has been connected to the iteration</h2>
+<p>P1–P4 establish the source's local phase/frame comparison, constrained initial-value inverse, normal pressure cancellation, all fixed coefficient derivatives and compatibility on the actual common tori. They give one threshold independent of the finite harmonic set and derivative order. P5 establishes the homogeneous pulse and the original momentum-flux direction and energy identities. P6–P8 turn these amplitudes into compact, exactly divergence-free velocities with their retained curl remainders, pressure and the complete linearized Navier–Stokes residual. The physical cutoff errors have all-order decay proved in P7; they remain in the residual.</p>
+<p>This supplies the pulse operation used by the <a href="wave-interaction-audit.html">nonlinear interaction audit</a>, W4–W7, whenever the original preceding construction supplies its stated base and source inputs. The <a href="stress-covariance-audit.html">stress covariance audit</a>, C1–C9, supplies the positive primary amplitudes, signed linear inverse and actual curl covariance errors. The <a href="source-containment-audit.html">source-containment audit</a>, S1–S5, proves the finite-stage closure and exact conservative means. The <a href="correction-cycle-audit.html">initialization and complete cycle audit</a>, K0–K8, proves the actual four updates, their simultaneous gains, accumulated-field bounds and common finite-stage domain. The <a href="physical-realization-audit.html">physical derivative and realization audit</a>, L0–L7, derives the stage-independent derivative loss, exact potential summation, retained cutoff curls, full nonlinear residual comparison, one-sided endpoint limits and preservation of the exterior and inner fields. The actual leading profile and complete base field are supplied by <a href="shear-realization-audit.html">V0–V7</a> and <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>The local stronger linear exponent (P8.4) is an underclaim of Proposition 9.1 under its existing hypotheses. It affects that operator estimate and can be substituted in the later cycle inequalities, and <a href="correction-cycle-audit.html">K3–K7</a> proves all four steps while preserving the source's stage definitions. No novelty claim is made. P0 proves the envelope estimate with the original pulse coefficient.</p>
+<p>Source/proof locators: original pages 74–77, (7.2)–(7.11), for P1–P2; pages 77–80, (7.12)–(7.20), for P3–P4; pages 80–81, (7.21)–(7.22), for P5; pages 85–87, (7.37)–(7.40), for P6; page 87 for P7; pages 101–102, (9.1)–(9.2), for P8. Supporting original-coordinate proofs are the <a href="mean-moment-correction-audit.html">moment audit</a>, M2, the <a href="temporal-mean-correction-audit.html">temporal audit</a>, T1–T2, and the <a href="wave-interaction-audit.html">wave-interaction audit</a>, W1–W4. The source is <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">OpenAI's original 166-page PDF</a>, with the hash stated above. The independent authored audit is CC0; original sources retain their attribution and rights.</p>
+</article></body></html>

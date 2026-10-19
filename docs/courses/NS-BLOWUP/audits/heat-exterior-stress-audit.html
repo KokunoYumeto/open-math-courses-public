@@ -1,0 +1,562 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="heat-exterior-stress-audit.md">Editable source</a></nav><h1 id="heat-replacement-restored-moments-and-the-outer-stress">Heat replacement, restored moments and the outer stress</h1>
+<p>This note constructs the heat replacement and its actual moment compensation, then derives the exterior stress and its limiting direction. It uses the reference profile already constructed in <a href="outer-profile-audit.html">O0–O8</a>, the exact operators in <a href="profile-stress-moment-audit.html">G0–G6</a>, and the original heat integral derived in <a href="physical-realization-audit.html">L6</a>. The analytic regular-axis solution is derived in <a href="analytic-axis-profile-audit.html">J0–J7</a>, and its continuation and exact matching to this exterior in <a href="inner-outer-joining-audit.html">Q0–Q9</a>. The shear modification and complete leading-profile Theorem 4.6 are derived in <a href="shear-realization-audit.html">V0–V7</a>. The positive-order base is derived in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">PDF</a>, SHA256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>, original pages 138–144, (A.32)–(A.56), Proposition A.7, Lemmas A.8–A.9 and Proposition A.10.</p>
+<h2 id="h0-the-original-heat-factor-and-its-exact-comparison-with-the-power">H0. The original heat factor and its exact comparison with the power</h2>
+<p>Retain <span class="math" data-tex="\(0&lt;h&lt;1/100\)">\(0&lt;h&lt;1/100\)</span>, <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>, <span class="math" data-tex="\(D=1/2-h\)">\(D=1/2-h\)</span>, <span class="math" data-tex="\(d=1-\eta^2\)">\(d=1-\eta^2\)</span>, <span class="math" data-tex="\(L=1-2h\eta^2\)">\(L=1-2h\eta^2\)</span>, and all fixed reference-profile choices. The heat factor is</p>
+<span class="math math-display" data-tex="\[
+\mathcal H(Z)=\frac1{\Gamma(1+h)}\int_0^\infty e^{-v}v^h(1+Zv)^{-h}\,dv,\qquad Z\ge0.
+\tag{H0.1}
+\]">\[
+\mathcal H(Z)=\frac1{\Gamma(1+h)}\int_0^\infty e^{-v}v^h(1+Zv)^{-h}\,dv,\qquad Z\ge0.
+\tag{H0.1}
+\]</span>
+<p>The complete derivative and heat-equation proof is in L6. In particular</p>
+<span class="math math-display" data-tex="\[
+\mathcal H^{(m)}(Z)=\frac{(-1)^m(h)_m}{\Gamma(1+h)}\int_0^\infty e^{-v}v^{h+m}(1+Zv)^{-h-m}dv,
+\quad |\mathcal H^{(m)}(Z)|\le(h)_m(1+h)_m.
+\tag{H0.2}
+\]">\[
+\mathcal H^{(m)}(Z)=\frac{(-1)^m(h)_m}{\Gamma(1+h)}\int_0^\infty e^{-v}v^{h+m}(1+Zv)^{-h-m}dv,
+\quad |\mathcal H^{(m)}(Z)|\le(h)_m(1+h)_m.
+\tag{H0.2}
+\]</span>
+<p>Here every factor in the rising factorial is retained and <span class="math" data-tex="\((h)_0=(1+h)_0=1\)">\((h)_0=(1+h)_0=1\)</span>. The same integrable majorant works at zero, so all right derivatives extend continuously there. The mean value theorem and the bound for <span class="math" data-tex="\(m=2\)">\(m=2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\mathcal H(0)=1,\quad \mathcal H&#x27;(0)=-h(1+h),\quad
+\mathcal H(Z)=1-h(1+h)Z+O_h(Z^2),\quad
+|\mathcal H(Z)-1|+|Z\mathcal H&#x27;(Z)|\le C hZ
+\tag{H0.3}
+\]">\[
+\mathcal H(0)=1,\quad \mathcal H&#x27;(0)=-h(1+h),\quad
+\mathcal H(Z)=1-h(1+h)Z+O_h(Z^2),\quad
+|\mathcal H(Z)-1|+|Z\mathcal H&#x27;(Z)|\le C hZ
+\tag{H0.3}
+\]</span>
+<p>on a fixed bounded nonnegative interval, uniformly for <span class="math" data-tex="\(0&lt;h\le h_0&lt;1/2\)">\(0&lt;h\le h_0&lt;1/2\)</span>. For each fixed positive m, the derivative bound in H0.2 is at most <span class="math" data-tex="\(C_mh\)">\(C_mh\)</span>. This uses a finite Taylor formula, not a convergent series. The exact remainder and coefficient-ratio proof in <a href="physical-realization-audit.html">L6.3a–L6.3b</a> show that the formal heat Taylor series has radius zero for every h&gt;0; all estimates here use only the proved finite-order formulas.</p>
+<p>Let <span class="math" data-tex="\(E_{\rm pow}(X)=c_\infty X^{-A}\)">\(E_{\rm pow}(X)=c_\infty X^{-A}\)</span>, <span class="math" data-tex="\(H_{\rm pow}=\sqrt{2X}E_{\rm pow}\)">\(H_{\rm pow}=\sqrt{2X}E_{\rm pow}\)</span>, <span class="math" data-tex="\(s=r^2/2\)">\(s=r^2/2\)</span>, <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span>. The physical heat swirl is exactly</p>
+<span class="math math-display" data-tex="\[
+K(r,t)=c_\infty s^{-A}\mathcal H(2\tau/s),\quad
+\partial_tK=(\partial_{rr}+r^{-1}\partial_r-r^{-2})K,\quad
+q^AK=E_{\rm pow}(X)\mathcal H(2d/X).
+\tag{H0.4}
+\]">\[
+K(r,t)=c_\infty s^{-A}\mathcal H(2\tau/s),\quad
+\partial_tK=(\partial_{rr}+r^{-1}\partial_r-r^{-2})K,\quad
+q^AK=E_{\rm pow}(X)\mathcal H(2d/X).
+\tag{H0.4}
+\]</span>
+<p>It is independent of z. To check the sign used below, <span class="math" data-tex="\(-Z\mathcal H&#x27;/\mathcal H\)">\(-Z\mathcal H&#x27;/\mathcal H\)</span> is the average of <span class="math" data-tex="\(hZv/(1+Zv)\)">\(hZv/(1+Zv)\)</span> against the positive probability measure obtained by dividing the integrand of H0.1 by its integral. Consequently</p>
+<span class="math math-display" data-tex="\[
+0\le-\frac{Z\mathcal H&#x27;}{\mathcal H}&lt;h,\qquad
+\frac{rK_r}{2K}=-A-\frac{Z\mathcal H&#x27;}{\mathcal H}&lt;-1/2.
+\tag{H0.5}
+\]">\[
+0\le-\frac{Z\mathcal H&#x27;}{\mathcal H}&lt;h,\qquad
+\frac{rK_r}{2K}=-A-\frac{Z\mathcal H&#x27;}{\mathcal H}&lt;-1/2.
+\tag{H0.5}
+\]</span>
+<p>In particular K is positive and strictly decreasing in r. Composition with <span class="math" data-tex="\(Z=2(1-\eta^2)/X\)">\(Z=2(1-\eta^2)/X\)</span> uses only <span class="math" data-tex="\(Z\ge0\)">\(Z\ge0\)</span>. Every parameter derivative is a finite chain-rule sum involving powers of <span class="math" data-tex="\(2/X\)">\(2/X\)</span>, <span class="math" data-tex="\(-2\eta\)">\(-2\eta\)</span>, <span class="math" data-tex="\(-2\)">\(-2\)</span>, and derivatives in H0.2. No division by d occurs, including at <span class="math" data-tex="\(\eta=\pm1\)">\(\eta=\pm1\)</span>.</p>
+<h2 id="h1-the-actual-heat-change-and-its-three-full-moment-changes">H1. The actual heat change and its three full moment changes</h2>
+<p>Use the source terminal coordinate <span class="math" data-tex="\(y=\log(X/X_{\rm tail})\)">\(y=\log(X/X_{\rm tail})\)</span>, <span class="math" data-tex="\(X_b=e^3X_{\rm tail}\)">\(X_b=e^3X_{\rm tail}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+X_K=e^{.2}X_{\rm tail},\qquad 0\le\chi_K\le1,\qquad
+\chi_K=0\ (y\le.2),\quad\chi_K=1\ (y\ge.5).
+\tag{H1.1}
+\]">\[
+X_K=e^{.2}X_{\rm tail},\qquad 0\le\chi_K\le1,\qquad
+\chi_K=0\ (y\le.2),\quad\chi_K=1\ (y\ge.5).
+\tag{H1.1}
+\]</span>
+<p>The actual terminal replacement is</p>
+<span class="math math-display" data-tex="\[
+E_H=E_{\rm cl}\{1+\chi_K(y)[\mathcal H(2d/X)-1]\},\qquad \Delta E=E_H-E_{\rm cl},
+\tag{H1.2}
+\]">\[
+E_H=E_{\rm cl}\{1+\chi_K(y)[\mathcal H(2d/X)-1]\},\qquad \Delta E=E_H-E_{\rm cl},
+\tag{H1.2}
+\]</span>
+<p>where <span class="math" data-tex="\(E_{\rm cl}\)">\(E_{\rm cl}\)</span> is the full reference profile, including its moment corrections. The factor in braces is a convex combination of 1 and the strictly positive heat factor; hence <span class="math" data-tex="\(E_H&gt;0\)">\(E_H&gt;0\)</span> everywhere. On this tail <span class="math" data-tex="\(E_{\rm cl}=E_{\rm pow}f_o(y)\)">\(E_{\rm cl}=E_{\rm pow}f_o(y)\)</span>, and U is zero.</p>
+<p>Set <span class="math" data-tex="\(x=X/X_K\)">\(x=X/X_K\)</span>, and let <span class="math" data-tex="\(e_K=E_{\rm cl}(X_K)\)">\(e_K=E_{\rm cl}(X_K)\)</span>. All logarithmic derivatives of <span class="math" data-tex="\(f_o\)">\(f_o\)</span> and <span class="math" data-tex="\(\chi_K\)">\(\chi_K\)</span> are bounded after the preceding choices. H0.2–H0.3 and the chain rule therefore give, for every fixed <span class="math" data-tex="\(j,m\)">\(j,m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|(X\partial_X)^j\partial_\eta^m\Delta E|
+\le C_{j,m,h}e_KX_K^{-1}x^{-A-1},\qquad x\ge1.
+\tag{H1.3}
+\]">\[
+|(X\partial_X)^j\partial_\eta^m\Delta E|
+\le C_{j,m,h}e_KX_K^{-1}x^{-A-1},\qquad x\ge1.
+\tag{H1.3}
+\]</span>
+<p>For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the factor <span class="math" data-tex="\(X^{-1}\)">\(X^{-1}\)</span> follows from <span class="math" data-tex="\(\mathcal H-1\)">\(\mathcal H-1\)</span>; every differentiated heat term also contains at least one factor <span class="math" data-tex="\(X^{-1}\)">\(X^{-1}\)</span>. Derivatives of the switch are supported in a fixed bounded x interval and obey the same bound. Thus H1.3 holds uniformly at both parameter endpoints.</p>
+<p>Keep the original pressure moment <span class="math" data-tex="\(C_p=\int E^2/(2X)\,dX\)">\(C_p=\int E^2/(2X)\,dX\)</span>, stress moment <span class="math" data-tex="\(S=\int(U^2-E^2/2)\,dX\)">\(S=\int(U^2-E^2/2)\,dX\)</span>, and subtracted angular moment <span class="math" data-tex="\(\mathcal I=\int(H-H_{\rm pow})\,dX\)">\(\mathcal I=\int(H-H_{\rm pow})\,dX\)</span>. The exact discrepancies caused by H1.2 alone are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\Delta C_p(\infty)&amp;=\int_{X_K}^\infty\frac{E_{\rm cl}\Delta E+(\Delta E)^2/2}{X}\,dX,\\
+\Delta S(\infty)&amp;=-\int_{X_K}^\infty[E_{\rm cl}\Delta E+(\Delta E)^2/2]\,dX,\\
+\Delta\mathcal I&amp;=\int_{X_K}^\infty\sqrt{2X}\,\Delta E\,dX.
+\end{split}
+\tag{H1.4}
+\]">\[
+\begin{split}
+\Delta C_p(\infty)&amp;=\int_{X_K}^\infty\frac{E_{\rm cl}\Delta E+(\Delta E)^2/2}{X}\,dX,\\
+\Delta S(\infty)&amp;=-\int_{X_K}^\infty[E_{\rm cl}\Delta E+(\Delta E)^2/2]\,dX,\\
+\Delta\mathcal I&amp;=\int_{X_K}^\infty\sqrt{2X}\,\Delta E\,dX.
+\end{split}
+\tag{H1.4}
+\]</span>
+<p>The subtracted power is unchanged. All quadratic terms and the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> are present. Since <span class="math" data-tex="\(\mathcal H\le1\)">\(\mathcal H\le1\)</span>, <span class="math" data-tex="\(\Delta E\le0\)">\(\Delta E\le0\)</span> and <span class="math" data-tex="\(0&lt;E_H\le E_{\rm cl}\)">\(0&lt;E_H\le E_{\rm cl}\)</span>. Accordingly the three displayed discrepancies have signs nonpositive, nonnegative and nonpositive, respectively. The functions M and J are unchanged pointwise in X, because both their affected integrands contain U, which is zero on the edited tail.</p>
+<p>For every fixed m, differentiating H1.4 under its absolutely convergent integrals is justified by H1.3 and its product-rule bounds. Keeping the radial factors explicitly gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+|\partial_\eta^m\Delta C_p(\infty)|&amp;\le C_{m,h}\frac{e_K^2}{X_K}\int_1^\infty x^{-2A-2}dx
+=C_{m,h}\frac{e_K^2}{X_K(2A+1)},\\
+|\partial_\eta^m\Delta S(\infty)|&amp;\le C_{m,h}e_K^2\int_1^\infty x^{-2A-1}dx
+=C_{m,h}\frac{e_K^2}{2A},\\
+|\partial_\eta^m\Delta\mathcal I|&amp;\le C_{m,h}e_KX_K^{1/2}\int_1^\infty x^{-A-1/2}dx
+=C_{m,h}\frac{e_KX_K^{1/2}}h.
+\end{split}
+\tag{H1.5}
+\]">\[
+\begin{split}
+|\partial_\eta^m\Delta C_p(\infty)|&amp;\le C_{m,h}\frac{e_K^2}{X_K}\int_1^\infty x^{-2A-2}dx
+=C_{m,h}\frac{e_K^2}{X_K(2A+1)},\\
+|\partial_\eta^m\Delta S(\infty)|&amp;\le C_{m,h}e_K^2\int_1^\infty x^{-2A-1}dx
+=C_{m,h}\frac{e_K^2}{2A},\\
+|\partial_\eta^m\Delta\mathcal I|&amp;\le C_{m,h}e_KX_K^{1/2}\int_1^\infty x^{-A-1/2}dx
+=C_{m,h}\frac{e_KX_K^{1/2}}h.
+\end{split}
+\tag{H1.5}
+\]</span>
+<p>The <span class="math" data-tex="\(1/h\)">\(1/h\)</span> in the last row remains explicit. It is finite because h was fixed before the large-radius choice; no uniform limit as h tends to zero is used here.</p>
+<h2 id="h2-three-additive-bumps-their-exact-nonlinear-system-and-preservation">H2. Three additive bumps, their exact nonlinear system and preservation</h2>
+<p>Use only the second reserved interval <span class="math" data-tex="\(\mathcal I_2\)">\(\mathcal I_2\)</span>. At its start <span class="math" data-tex="\(X_*\)">\(X_*\)</span>, set <span class="math" data-tex="\(x_*=X/X_*\)">\(x_*=X/X_*\)</span>. There the unmodified field is <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, <span class="math" data-tex="\(E_0=e_*f(\eta)x_*^{-1/2-\lambda}\)">\(E_0=e_*f(\eta)x_*^{-1/2-\lambda}\)</span>, <span class="math" data-tex="\(f=(1+\eta^2)^{-1}\ge1/2\)">\(f=(1+\eta^2)^{-1}\ge1/2\)</span>. Choose three fixed nonnegative smooth bumps <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> with ordered disjoint compact supports inside this patch and put</p>
+<span class="math math-display" data-tex="\[
+v(x_*,\eta)=\sum_{i=1}^3c_i(\eta)\beta_i(x_*),\qquad \delta E=e_*v.
+\tag{H2.1}
+\]">\[
+v(x_*,\eta)=\sum_{i=1}^3c_i(\eta)\beta_i(x_*),\qquad \delta E=e_*v.
+\tag{H2.1}
+\]</span>
+<p>The tail and this patch are disjoint, so their moment changes add exactly. Divide the three original patch rows by <span class="math" data-tex="\(e_*^2,X_*e_*^2,X_*^{3/2}e_*\)">\(e_*^2,X_*e_*^2,X_*^{3/2}e_*\)</span>, respectively. The resulting complete map is</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}\delta C_p/e_*^2\\\delta S/(X_*e_*^2)\\\delta\mathcal I/(X_*^{3/2}e_*)\end{pmatrix}
+=\begin{pmatrix}
+\int[fx_*^{-3/2-\lambda}v+v^2/(2x_*)]dx_*\\
+\int[-fx_*^{-1/2-\lambda}v-v^2/2]dx_*\\
+\sqrt2\int x_*^{1/2}v\,dx_*
+\end{pmatrix}=B(\eta)c+\mathscr Q_\eta(c,c).
+\tag{H2.2}
+\]">\[
+\begin{pmatrix}\delta C_p/e_*^2\\\delta S/(X_*e_*^2)\\\delta\mathcal I/(X_*^{3/2}e_*)\end{pmatrix}
+=\begin{pmatrix}
+\int[fx_*^{-3/2-\lambda}v+v^2/(2x_*)]dx_*\\
+\int[-fx_*^{-1/2-\lambda}v-v^2/2]dx_*\\
+\sqrt2\int x_*^{1/2}v\,dx_*
+\end{pmatrix}=B(\eta)c+\mathscr Q_\eta(c,c).
+\tag{H2.2}
+\]</span>
+<p>Every sign, Jacobian and row factor is fixed by H1.4 applied to the patch. Recovering the original rows means multiplying by precisely those three factors; none is discarded. The linear weights are <span class="math" data-tex="\(fx_*^{-3/2-\lambda},-fx_*^{-1/2-\lambda},\sqrt2x_*^{1/2}\)">\(fx_*^{-3/2-\lambda},-fx_*^{-1/2-\lambda},\sqrt2x_*^{1/2}\)</span>. Their three exponents are distinct. G4 proves invertibility of the power-moment matrix. The row factors f, -f and <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> give a uniformly invertible B on [-1,1], with bounded derivatives of each fixed order. The first two quadratic integrals remain in <span class="math" data-tex="\(\mathscr Q\)">\(\mathscr Q\)</span>; the last row is exactly linear.</p>
+<p>The desired vector is minus the three full discrepancies H1.4 divided by the corresponding original row factors. The ratios <span class="math" data-tex="\(X_*/X_K\)">\(X_*/X_K\)</span> and <span class="math" data-tex="\(e_*/e_K\)">\(e_*/e_K\)</span> are positive fixed numbers after the reference schedule is chosen. Thus H1.5 proves</p>
+<span class="math math-display" data-tex="\[
+\|d_{\rm mom}\|_{C^m_\eta}\le C_{m,h}X_K^{-1}
+\tag{H2.3}
+\]">\[
+\|d_{\rm mom}\|_{C^m_\eta}\le C_{m,h}X_K^{-1}
+\tag{H2.3}
+\]</span>
+<p>for each fixed m. In the angular row the constant includes the retained <span class="math" data-tex="\(1/h\)">\(1/h\)</span> and the fixed factor <span class="math" data-tex="\((X_K/X_*)^{3/2}(e_K/e_*)\)">\((X_K/X_*)^{3/2}(e_K/e_*)\)</span>. The pressure and S rows retain their respective fixed amplitude ratios as well.</p>
+<p>Apply the actual iteration G5.6 with this d, this B and both quadratic rows in H2.2. Since B and <span class="math" data-tex="\(\mathscr Q\)">\(\mathscr Q\)</span> are independent of <span class="math" data-tex="\(X_R\)">\(X_R\)</span>, their <span class="math" data-tex="\(C^0\)">\(C^0\)</span> operator norms are fixed. For sufficiently large <span class="math" data-tex="\(X_K\)">\(X_K\)</span>, the contraction condition holds and gives the unique small solution <span class="math" data-tex="\(c=O(X_K^{-1})\)">\(c=O(X_K^{-1})\)</span>. Its differential <span class="math" data-tex="\(B+\mathscr Q(c,\cdot)+\mathscr Q(\cdot,c)\)">\(B+\mathscr Q(c,\cdot)+\mathscr Q(\cdot,c)\)</span> has a uniformly bounded inverse, by the same Neumann-series estimate. Differentiate H2.2 m times: the terms containing <span class="math" data-tex="\(c^{(m)}\)">\(c^{(m)}\)</span> are exactly this differential times <span class="math" data-tex="\(c^{(m)}\)">\(c^{(m)}\)</span>. All remaining terms contain either <span class="math" data-tex="\(d_{\rm mom}^{(m)}=O(X_K^{-1})\)">\(d_{\rm mom}^{(m)}=O(X_K^{-1})\)</span>, one lower derivative of c times a fixed derivative of B, or a product of two lower c derivatives and fixed derivatives of <span class="math" data-tex="\(\mathscr Q\)">\(\mathscr Q\)</span>. Induction therefore proves</p>
+<span class="math math-display" data-tex="\[
+\|\partial_\eta^mc\|_\infty\le C_{m,h}X_K^{-1}\qquad\text{for every fixed }m.
+\tag{H2.4}
+\]">\[
+\|\partial_\eta^mc\|_\infty\le C_{m,h}X_K^{-1}\qquad\text{for every fixed }m.
+\tag{H2.4}
+\]</span>
+<p>A single sufficiently large radius for the <span class="math" data-tex="\(C^0\)">\(C^0\)</span> solve suffices for these all-fixed-order estimates, with order-dependent constants. Only the finite small bounds needed below require prescribed thresholds. No smallness of infinitely many derivative norms is assumed.</p>
+<p>The corrected E is positive on the patch: its reference lower bound on this fixed compact <span class="math" data-tex="\(x_*\)">\(x_*\)</span> interval is <span class="math" data-tex="\(e_*c_*&gt;0\)">\(e_*c_*&gt;0\)</span>, while <span class="math" data-tex="\(|\delta E|\le e_*C_h/X_K\)">\(|\delta E|\le e_*C_h/X_K\)</span>. Choose the radius so the latter is smaller than <span class="math" data-tex="\(e_*c_*/2\)">\(e_*c_*/2\)</span>. It is positive elsewhere by H1.2. The solve proves exactly</p>
+<span class="math math-display" data-tex="\[
+\Delta M(X)=\Delta J(X)=0\text{ for every }X,\qquad
+\Delta S(\infty)=\Delta C_p(\infty)=\Delta\mathcal I=0.
+\tag{H2.5}
+\]">\[
+\Delta M(X)=\Delta J(X)=0\text{ for every }X,\qquad
+\Delta S(\infty)=\Delta C_p(\infty)=\Delta\mathcal I=0.
+\tag{H2.5}
+\]</span>
+<p>In particular the actual profile still has <span class="math" data-tex="\(M(\infty)=J(\infty)=S(\infty)=\mathcal I=0\)">\(M(\infty)=J(\infty)=S(\infty)=\mathcal I=0\)</span>. The pressure is integrated forward from the unchanged analytic datum <span class="math" data-tex="\(\Pi_0\)">\(\Pi_0\)</span>. Its total increment is unchanged, so it still vanishes at infinity. Before the compensation patch all profiles and the forward pressure are unchanged. Because U is unchanged everywhere, G0.7 also proves that <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is unchanged everywhere.</p>
+<p>There is an additional exact endpoint fact. At <span class="math" data-tex="\(\eta=\pm1\)">\(\eta=\pm1\)</span>, d is zero and <span class="math" data-tex="\(\mathcal H(0)=1\)">\(\mathcal H(0)=1\)</span>, so all three tail discrepancies vanish. The zero coefficient vector solves H2.2 there, and uniqueness in the same small ball gives <span class="math" data-tex="\(c(\pm1)=0\)">\(c(\pm1)=0\)</span>. Thus the entire modified E agrees with the reference E at both parameter endpoints. Moreover <span class="math" data-tex="\(c=(1-\eta^2)\widetilde c\)">\(c=(1-\eta^2)\widetilde c\)</span> with <span class="math" data-tex="\(\widetilde c\)">\(\widetilde c\)</span> smooth on the closed interval: near an endpoint, the fundamental theorem of calculus writes c as its distance from that endpoint times the integral of its first derivative; the other linear factor is nonzero. The tail change has the same factor directly from</p>
+<span class="math math-display" data-tex="\[
+\mathcal H(2d/X)-1=\frac{2d}{X}\int_0^1\mathcal H&#x27;(2sd/X)\,ds.
+\tag{H2.6}
+\]">\[
+\mathcal H(2d/X)-1=\frac{2d}{X}\int_0^1\mathcal H&#x27;(2sd/X)\,ds.
+\tag{H2.6}
+\]</span>
+<p>This endpoint equality does not set parameter derivatives of the changes to zero; those derivatives enter the stress and are controlled by H2.4.</p>
+<h2 id="h3-preservation-of-the-actual-stress-cone-before-the-terminal-collar">H3. Preservation of the actual stress cone before the terminal collar</h2>
+<p>The compact interval from <span class="math" data-tex="\(\mathcal I_2\)">\(\mathcal I_2\)</span> to terminal coordinate <span class="math" data-tex="\(y=.5\)">\(y=.5\)</span> is fixed in <span class="math" data-tex="\(x=X/X_R\)">\(x=X/X_R\)</span>. On it the reference E, Q and <span class="math" data-tex="\(v_s-2\)">\(v_s-2\)</span>, and both sufficient cone gaps in O5.1, have positive minima. Every fixed radial and parameter derivative of the heat change and the compensating bumps is <span class="math" data-tex="\(O_h(X_K^{-1})\)">\(O_h(X_K^{-1})\)</span> in these x coordinates. This follows from H1.3 on the tail, H2.1–H2.4 on the compact patch, and the fixed ratios of radii. In particular the needed radial shear derivatives are included.</p>
+<p>For the cumulative moments retain exactly</p>
+<span class="math math-display" data-tex="\[
+M=X_R\widehat M,\quad I=X_R^{3/2}\widehat I,\quad J=X_R^{3/2}\widehat J,
+\quad S=X_R\widehat S,\quad C_p=\widehat C_p,
+\quad H=\sqrt{X_R}\widehat H.
+\tag{H3.1}
+\]">\[
+M=X_R\widehat M,\quad I=X_R^{3/2}\widehat I,\quad J=X_R^{3/2}\widehat J,
+\quad S=X_R\widehat S,\quad C_p=\widehat C_p,
+\quad H=\sqrt{X_R}\widehat H.
+\tag{H3.1}
+\]</span>
+<p>Partial integrals of the absolute moment changes satisfy the same <span class="math" data-tex="\(O_h(X_K^{-1})\)">\(O_h(X_K^{-1})\)</span> bounds after these divisions: on the patch use H2.2 with absolute values and the fixed supports, and on the tail use the majorants H1.5. Thus every required parameter derivative of <span class="math" data-tex="\(\Delta\widehat{\mathbf m}\)">\(\Delta\widehat{\mathbf m}\)</span> is <span class="math" data-tex="\(O_h(X_K^{-1})\)">\(O_h(X_K^{-1})\)</span>. G3.4–G3.6, with the unchanged axis pressure, gives <span class="math" data-tex="\(\Delta Q_s,\Delta N_s=O_h(X_K^{-1})\)">\(\Delta Q_s,\Delta N_s=O_h(X_K^{-1})\)</span>, using one additional parameter derivative. Directly differentiating <span class="math" data-tex="\(a=1-2X\partial_X\log E\)">\(a=1-2X\partial_X\log E\)</span> and <span class="math" data-tex="\(b_s=2XU_X/E\)">\(b_s=2XU_X/E\)</span>, with the positive reference E bound, gives the same bound for their differences. Division by the positive reference <span class="math" data-tex="\(EQ_s\)">\(EQ_s\)</span> gives it for <span class="math" data-tex="\(w=N_s/(EQ_s)\)">\(w=N_s/(EQ_s)\)</span> too.</p>
+<p>These estimates preserve the positive lower bounds and strict O5.1 gaps for sufficiently large <span class="math" data-tex="\(X_R\)">\(X_R\)</span>. The image of the perturbed <span class="math" data-tex="\((a,b_s,w)\)">\((a,b_s,w)\)</span> lies in one fixed compact subset of those strict inequalities. G6.5 supplies a common finite threshold <span class="math" data-tex="\(P_K\)">\(P_K\)</span>, while <span class="math" data-tex="\(p_{s,1}=X_RxQ_s/L\)">\(p_{s,1}=X_RxQ_s/L\)</span> grows at least linearly with <span class="math" data-tex="\(X_R\)">\(X_R\)</span>. Choose the radius also to exceed that threshold. Then the actual stress is admissible throughout the stated interval. This argument retains the full scaling: <span class="math" data-tex="\(\widehat p_s=X_R^{-1}p_s\)">\(\widehat p_s=X_R^{-1}p_s\)</span> is close, whereas an absolute small bound on <span class="math" data-tex="\(\Delta p_s\)">\(\Delta p_s\)</span> is not asserted. This completes the construction and cone assertion of Proposition A.7.</p>
+<h2 id="h4-backward-stress-from-the-constructed-profile-and-the-boundary-traces">H4. Backward stress from the constructed profile and the boundary traces</h2>
+<p>The profile now constructed has a temporary inner reference rather than a regular axis. We can nevertheless compute its backward stress directly; this avoids assuming the still-unconstructed inner field. For fixed <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span> with <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, its exact inner powers are</p>
+<span class="math math-display" data-tex="\[
+u_\theta=C_\theta(z,t)r^{1/5},\qquad
+u_z=C_z(z,t),\qquad u_r=C_r(z,t)r,\qquad
+p=p_{\rm ax}(z,t)+C_p^{\rm loc}(z,t)r^{2/5}.
+\tag{H4.1}
+\]">\[
+u_\theta=C_\theta(z,t)r^{1/5},\qquad
+u_z=C_z(z,t),\qquad u_r=C_r(z,t)r,\qquad
+p=p_{\rm ax}(z,t)+C_p^{\rm loc}(z,t)r^{2/5}.
+\tag{H4.1}
+\]</span>
+<p>They follow from <span class="math" data-tex="\(U=4\eta\)">\(U=4\eta\)</span>, <span class="math" data-tex="\(E=P_*f(X/X_R)^{1/10}\)">\(E=P_*f(X/X_R)^{1/10}\)</span>, G0.7 and the pressure integral. The coefficients are smooth on compact sets with <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>. In particular all time and axial derivatives preserve these radial powers. They are not a claim of Cartesian smoothness at the axis.</p>
+<p>For the physical leading tangential residuals, retaining radial viscosity and omitting axial viscosity exactly as in original (4.12), incompressibility gives the conservative identities</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+r^2\mathscr R_\theta^{(0)}&amp;=\partial_t(r^2u_\theta)
++\partial_r(r^2u_ru_\theta)+\partial_z(r^2u_zu_\theta)
+-\partial_r(r^2\partial_ru_\theta-ru_\theta),\\
+r\mathscr R_z^{(0)}&amp;=\partial_t(ru_z)+\partial_r(ru_ru_z)
++\partial_z[r(u_z^2+p)]-\partial_r(r\partial_ru_z).
+\end{split}
+\tag{H4.2}
+\]">\[
+\begin{split}
+r^2\mathscr R_\theta^{(0)}&amp;=\partial_t(r^2u_\theta)
++\partial_r(r^2u_ru_\theta)+\partial_z(r^2u_zu_\theta)
+-\partial_r(r^2\partial_ru_\theta-ru_\theta),\\
+r\mathscr R_z^{(0)}&amp;=\partial_t(ru_z)+\partial_r(ru_ru_z)
++\partial_z[r(u_z^2+p)]-\partial_r(r\partial_ru_z).
+\end{split}
+\tag{H4.2}
+\]</span>
+<p>For example, the first transport divergence has an extra coefficient <span class="math" data-tex="\((2ru_r+r^2\partial_ru_r+r^2\partial_zu_z)u_\theta=ru_ru_\theta\)">\((2ru_r+r^2\partial_ru_r+r^2\partial_zu_z)u_\theta=ru_ru_\theta\)</span>, exactly the cylindrical angular transport term. No angular term has been lost.</p>
+<p>At zero, H4.1 gives</p>
+<span class="math math-display" data-tex="\[
+r^2u_ru_\theta=O(r^{16/5}),\quad
+r^2\partial_ru_\theta-ru_\theta=-\tfrac45C_\theta r^{6/5},\quad
+ru_ru_z=O(r^2),\quad r\partial_ru_z=0.
+\tag{H4.3}
+\]">\[
+r^2u_ru_\theta=O(r^{16/5}),\quad
+r^2\partial_ru_\theta-ru_\theta=-\tfrac45C_\theta r^{6/5},\quad
+ru_ru_z=O(r^2),\quad r\partial_ru_z=0.
+\tag{H4.3}
+\]</span>
+<p>All four boundary traces vanish. The leading angular viscous term is a constant times <span class="math" data-tex="\(r^{-9/5}\)">\(r^{-9/5}\)</span>, whose weighted integral against <span class="math" data-tex="\(r^2dr\)">\(r^2dr\)</span> converges at zero. The other terms of H4.2 are also integrable there. Thus the forthcoming integrations are valid for the actual temporary reference. For a smooth axis field, the standard axis powers <span class="math" data-tex="\(u_\theta,u_r=O(r)\)">\(u_\theta,u_r=O(r)\)</span>, <span class="math" data-tex="\(u_z=O(1)\)">\(u_z=O(1)\)</span>, <span class="math" data-tex="\(\partial_ru_z=O(r)\)">\(\partial_ru_z=O(r)\)</span> give the same vanishing traces; the argument also verifies the receiving identity in Lemma A.8 once the inner field is supplied.</p>
+<p>In the exterior <span class="math" data-tex="\(u_\theta=K\)">\(u_\theta=K\)</span>, <span class="math" data-tex="\(u_r=u_z=0\)">\(u_r=u_z=0\)</span>. Write <span class="math" data-tex="\(K_{\rm pow}=c_\infty s^{-A}\)">\(K_{\rm pow}=c_\infty s^{-A}\)</span>, which is independent of t and z. H0.2–H0.3 give, locally uniformly in nonnegative bounded <span class="math" data-tex="\(\tau\)">\(\tau\)</span>,</p>
+<span class="math math-display" data-tex="\[
+K-K_{\rm pow}=O_h(\tau r^{-3-2h}),\quad
+\partial_tK=O_h(r^{-3-2h}),\quad
+r^2K_r-rK=O_h(r^{-2h}).
+\tag{H4.4}
+\]">\[
+K-K_{\rm pow}=O_h(\tau r^{-3-2h}),\quad
+\partial_tK=O_h(r^{-3-2h}),\quad
+r^2K_r-rK=O_h(r^{-2h}).
+\tag{H4.4}
+\]</span>
+<p>For <span class="math" data-tex="\(R_*\ge1\)">\(R_*\ge1\)</span>, both the subtracted angular moment and its time derivative have the common weighted majorant</p>
+<span class="math math-display" data-tex="\[
+\int_{R_*}^\infty r^2\bigl(|K-K_{\rm pow}|+|\partial_tK|\bigr)dr
+\le C_h(1+\tau)\int_{R_*}^\infty r^{-1-2h}dr
+=\frac{C_h(1+\tau)}{2h}R_*^{-2h}.
+\tag{H4.5}
+\]">\[
+\int_{R_*}^\infty r^2\bigl(|K-K_{\rm pow}|+|\partial_tK|\bigr)dr
+\le C_h(1+\tau)\int_{R_*}^\infty r^{-1-2h}dr
+=\frac{C_h(1+\tau)}{2h}R_*^{-2h}.
+\tag{H4.5}
+\]</span>
+<p>The <span class="math" data-tex="\(r^2\)">\(r^2\)</span> weight multiplies both terms, as in the original page. Near zero the subtracted power has weighted size <span class="math" data-tex="\(r^{1-2h}\)">\(r^{1-2h}\)</span>, integrable since <span class="math" data-tex="\(h&lt;1\)">\(h&lt;1\)</span>, and its time derivative is zero. These bounds justify differentiation of the convergent subtracted moment and its change of variable:</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty r^2(u_\theta-K_{\rm pow})dr
+=q^{3/2-A}\int_0^\infty(H-H_{\rm pow})dX=0,
+\quad \int_0^\infty r^2u_zu_\theta dr=q^{3/2-2A}J(\infty)=0.
+\tag{H4.6}
+\]">\[
+\int_0^\infty r^2(u_\theta-K_{\rm pow})dr
+=q^{3/2-A}\int_0^\infty(H-H_{\rm pow})dX=0,
+\quad \int_0^\infty r^2u_zu_\theta dr=q^{3/2-2A}J(\infty)=0.
+\tag{H4.6}
+\]</span>
+<p>The second integral is supported in a bounded radial region; its z derivative is justified by H4.1 at zero and local boundedness elsewhere. Exterior radial transport vanishes because <span class="math" data-tex="\(U=M=0\)">\(U=M=0\)</span> gives <span class="math" data-tex="\(V_0=0\)">\(V_0=0\)</span> exactly. H4.3–H4.6 in the first conservative identity prove <span class="math" data-tex="\(\int_0^\infty r^2\mathscr R_\theta^{(0)}dr=0\)">\(\int_0^\infty r^2\mathscr R_\theta^{(0)}dr=0\)</span>.</p>
+<p>For the axial identity, <span class="math" data-tex="\(\int_0^\infty ru_zdr=q^{1-A}M(\infty)=0\)">\(\int_0^\infty ru_zdr=q^{1-A}M(\infty)=0\)</span>. The exact pressure calculation, justified by absolute convergence or Tonelli applied to its negative, is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\int_0^\infty rp(r)dr
+&amp;=-\int_0^\infty\frac{u_\theta(r&#x27;)^2}{r&#x27;}\left(\int_0^{r&#x27;}r\,dr\right)dr&#x27;
+=-\tfrac12\int_0^\infty r&#x27;u_\theta(r&#x27;)^2dr&#x27;,\\
+\int_0^\infty r(u_z^2+p)dr&amp;=q^{1-2A}S(\infty)=0.
+\end{split}
+\tag{H4.7}
+\]">\[
+\begin{split}
+\int_0^\infty rp(r)dr
+&amp;=-\int_0^\infty\frac{u_\theta(r&#x27;)^2}{r&#x27;}\left(\int_0^{r&#x27;}r\,dr\right)dr&#x27;
+=-\tfrac12\int_0^\infty r&#x27;u_\theta(r&#x27;)^2dr&#x27;,\\
+\int_0^\infty r(u_z^2+p)dr&amp;=q^{1-2A}S(\infty)=0.
+\end{split}
+\tag{H4.7}
+\]</span>
+<p>At infinity <span class="math" data-tex="\(p=O(r^{-2-4h})\)">\(p=O(r^{-2-4h})\)</span> and <span class="math" data-tex="\(r^2p\to0\)">\(r^2p\to0\)</span>; near zero H4.1 suffices. The axial flux derivative is justified locally in z by the same bounds, and its exterior pressure is z independent. Radial transport and viscosity traces vanish at both ends. Thus <span class="math" data-tex="\(\int_0^\infty r\mathscr R_z^{(0)}dr=0\)">\(\int_0^\infty r\mathscr R_z^{(0)}dr=0\)</span>.</p>
+<p>The original forward primitives can therefore be written with the positive backward sign:</p>
+<span class="math math-display" data-tex="\[
+T_\theta(r)=\frac1{r^2}\int_r^\infty r&#x27;^2\mathscr R_\theta^{(0)}(r&#x27;)dr&#x27;,\qquad
+T_z(r)=\frac1r\int_r^\infty r&#x27;\mathscr R_z^{(0)}(r&#x27;)dr&#x27;,\qquad
+T=q^{-A-1/2}\mathcal T_0.
+\tag{H4.8}
+\]">\[
+T_\theta(r)=\frac1{r^2}\int_r^\infty r&#x27;^2\mathscr R_\theta^{(0)}(r&#x27;)dr&#x27;,\qquad
+T_z(r)=\frac1r\int_r^\infty r&#x27;\mathscr R_z^{(0)}(r&#x27;)dr&#x27;,\qquad
+T=q^{-A-1/2}\mathcal T_0.
+\tag{H4.8}
+\]</span>
+<p>The forward primitives here equal G1.5: their lower boundary constants vanish by H4.3, and their radial integrating factors are the same <span class="math" data-tex="\(r^2,r\)">\(r^2,r\)</span>. Both residuals vanish beyond <span class="math" data-tex="\(X_b\)">\(X_b\)</span>, by the exact swirl heat equation and its z-independent canonical pressure. Hence <span class="math" data-tex="\(\mathcal T_0=0\)">\(\mathcal T_0=0\)</span> for <span class="math" data-tex="\(X\ge X_b\)">\(X\ge X_b\)</span>.</p>
+<p>This calculation proves the outer stress for the actual reference, with its weaker axis powers. It also gives the exact transfer to the future regular inner construction: G3.1 shows that matching the five cumulative moments and common axis pressure at a radius where the profiles rejoin makes all outer <span class="math" data-tex="\(Q_s,N_s,p_s,a,b_s,\mathcal T_0\)">\(Q_s,N_s,p_s,a,b_s,\mathcal T_0\)</span> identical. The actual regular matching is constructed in <a href="inner-outer-joining-audit.html">Q0–Q9</a>; this reference calculation uses its stated temporary axis powers.</p>
+<h2 id="h5-positive-angular-stress-and-the-strict-cone-on-the-terminal-interval">H5. Positive angular stress and the strict cone on the terminal interval</h2>
+<p>On <span class="math" data-tex="\(1/2\le y&lt;3\)">\(1/2\le y&lt;3\)</span>, the switch is identically one. Write <span class="math" data-tex="\(f=f_o(y)\)">\(f=f_o(y)\)</span>, <span class="math" data-tex="\(f&#x27;=\partial_y f\)">\(f&#x27;=\partial_y f\)</span>. Then <span class="math" data-tex="\(u_\theta=Kf\)">\(u_\theta=Kf\)</span>, <span class="math" data-tex="\(u_r=u_z=0\)">\(u_r=u_z=0\)</span>, and K is independent of z. The original coordinate derivatives are</p>
+<span class="math math-display" data-tex="\[
+y_t=\frac1{qL},\qquad y_z=-\frac{2\eta}{q^DL},\qquad y_r=\frac2r.
+\tag{H5.1}
+\]">\[
+y_t=\frac1{qL},\qquad y_z=-\frac{2\eta}{q^DL},\qquad y_r=\frac2r.
+\tag{H5.1}
+\]</span>
+<p>Apply the product rule to the original radial swirl operator, and use its exact heat equation H0.4. Differentiating the canonical pressure at fixed r gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathscr R_\theta^{(0)}&amp;=\frac{Kf&#x27;}{qL}-K(f_{rr}+r^{-1}f_r)-2K_rf_r,\\
+\mathscr R_z^{(0)}=p_z(r)&amp;=\frac{2\eta}{q^DL}\int_y^3K(v)^2f(v)f&#x27;(v)\,dv.
+\end{split}
+\tag{H5.2}
+\]">\[
+\begin{split}
+\mathscr R_\theta^{(0)}&amp;=\frac{Kf&#x27;}{qL}-K(f_{rr}+r^{-1}f_r)-2K_rf_r,\\
+\mathscr R_z^{(0)}=p_z(r)&amp;=\frac{2\eta}{q^DL}\int_y^3K(v)^2f(v)f&#x27;(v)\,dv.
+\end{split}
+\tag{H5.2}
+\]</span>
+<p>For the second identity start with <span class="math" data-tex="\(p=-\int_r^\infty K(r&#x27;)^2f(y(r&#x27;))^2dr&#x27;/r&#x27;\)">\(p=-\int_r^\infty K(r&#x27;)^2f(y(r&#x27;))^2dr&#x27;/r&#x27;\)</span>. Its z derivative is <span class="math" data-tex="\(4\eta(q^DL)^{-1}\int K^2ff&#x27;\,dr&#x27;/r&#x27;\)">\(4\eta(q^DL)^{-1}\int K^2ff&#x27;\,dr&#x27;/r&#x27;\)</span>, and <span class="math" data-tex="\(dr&#x27;/r&#x27;=dv/2\)">\(dr&#x27;/r&#x27;=dv/2\)</span> gives exactly H5.2. The integrand vanishes beyond the terminal endpoint. This also proves the differentiation directly on its bounded support.</p>
+<p>Integrating the viscous terms of H5.2 by parts in H4.8 yields</p>
+<span class="math math-display" data-tex="\[
+T_\theta=Kf_r+\frac1{r^2}\int_r^\infty(r&#x27;K-r&#x27;^2K_{r&#x27;})f_{r&#x27;}\,dr&#x27;
++\frac1{qLr^2}\int_r^\infty r&#x27;^2Kf&#x27;\,dr&#x27;.
+\tag{H5.3}
+\]">\[
+T_\theta=Kf_r+\frac1{r^2}\int_r^\infty(r&#x27;K-r&#x27;^2K_{r&#x27;})f_{r&#x27;}\,dr&#x27;
++\frac1{qLr^2}\int_r^\infty r&#x27;^2Kf&#x27;\,dr&#x27;.
+\tag{H5.3}
+\]</span>
+<p>Indeed the integral of <span class="math" data-tex="\(-r&#x27;^2Kf_{r&#x27;r&#x27;}\)">\(-r&#x27;^2Kf_{r&#x27;r&#x27;}\)</span> has lower boundary <span class="math" data-tex="\(+r^2Kf_r\)">\(+r^2Kf_r\)</span>; its remaining coefficient is <span class="math" data-tex="\(2r&#x27;K+r&#x27;^2K_{r&#x27;}\)">\(2r&#x27;K+r&#x27;^2K_{r&#x27;}\)</span>. Combining it with <span class="math" data-tex="\(-r&#x27;Kf_{r&#x27;}-2r&#x27;^2K_{r&#x27;}f_{r&#x27;}\)">\(-r&#x27;Kf_{r&#x27;}-2r&#x27;^2K_{r&#x27;}f_{r&#x27;}\)</span> leaves <span class="math" data-tex="\((r&#x27;K-r&#x27;^2K_{r&#x27;})f_{r&#x27;}\)">\((r&#x27;K-r&#x27;^2K_{r&#x27;})f_{r&#x27;}\)</span>. The upper boundary is zero because f is constant there. Thus the boundary sign and all three terms in H5.3 are fixed.</p>
+<p>Each term is nonnegative by H0.5 and <span class="math" data-tex="\(f&#x27;\ge0\)">\(f&#x27;\ge0\)</span>. The remaining y interval has length at most <span class="math" data-tex="\(5/2\)">\(5/2\)</span>; hence <span class="math" data-tex="\(1\le r&#x27;/r\le e^{5/4}\)">\(1\le r&#x27;/r\le e^{5/4}\)</span>. H0.5 bounds the logarithmic derivative of K between <span class="math" data-tex="\(-1-2h\)">\(-1-2h\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-tex="\(K(r&#x27;)/K(r)\)">\(K(r&#x27;)/K(r)\)</span> is bounded above and below by positive constants independent of small h and large <span class="math" data-tex="\(X_R\)">\(X_R\)</span> on this interval. Since <span class="math" data-tex="\(\int_y^3f&#x27;(v)dv=\rho_o\psi_o(y)\)">\(\int_y^3f&#x27;(v)dv=\rho_o\psi_o(y)\)</span>, the last term of H5.3, with <span class="math" data-tex="\(dr&#x27;=r&#x27;dv/2\)">\(dr&#x27;=r&#x27;dv/2\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+T_\theta\ge c\frac{rK}{qL}\rho_o\psi_o(y)&gt;0\qquad (y&lt;3).
+\tag{H5.4}
+\]">\[
+T_\theta\ge c\frac{rK}{qL}\rho_o\psi_o(y)&gt;0\qquad (y&lt;3).
+\tag{H5.4}
+\]</span>
+<p>Use <span class="math" data-tex="\(|\eta|\le1\)">\(|\eta|\le1\)</span>, <span class="math" data-tex="\(L\ge1-2h\)">\(L\ge1-2h\)</span>, <span class="math" data-tex="\(0&lt;f\le1\)">\(0&lt;f\le1\)</span>, and monotonic decrease of K and <span class="math" data-tex="\(\psi_o\)">\(\psi_o\)</span> in H5.2 and then H4.8. The finite length and radius ratio just bounded give</p>
+<span class="math math-display" data-tex="\[
+|p_z|\le Cq^{-D}K^2\rho_o\psi_o,
+\quad |T_z|\le Crq^{-D}K^2\rho_o\psi_o,
+\quad \left|\frac{T_z}{T_\theta}\right|\le Cq^{1-D}K
+=CE_{\rm pow}(X)\mathcal H(2d/X).
+\tag{H5.5}
+\]">\[
+|p_z|\le Cq^{-D}K^2\rho_o\psi_o,
+\quad |T_z|\le Crq^{-D}K^2\rho_o\psi_o,
+\quad \left|\frac{T_z}{T_\theta}\right|\le Cq^{1-D}K
+=CE_{\rm pow}(X)\mathcal H(2d/X).
+\tag{H5.5}
+\]</span>
+<p>The last equality retains <span class="math" data-tex="\(1-D=A\)">\(1-D=A\)</span>. The constants can be chosen uniformly for <span class="math" data-tex="\(0&lt;h\le1/100\)">\(0&lt;h\le1/100\)</span> and sufficiently large radius. By the exact amplitude reduction O3.1 and the bounded factor <span class="math" data-tex="\(f_o^{-1}\)">\(f_o^{-1}\)</span>, the last expression is at most <span class="math" data-tex="\(C e_{\rm rel}h^6\)">\(C e_{\rm rel}h^6\)</span>. Here <span class="math" data-tex="\(e_{\rm rel}\)">\(e_{\rm rel}\)</span> was fixed before h. Include the finite requirement <span class="math" data-tex="\(Ce_{\rm rel}h^6\le1\)">\(Ce_{\rm rel}h^6\le1\)</span> among the small-h choices of O8, before choosing <span class="math" data-tex="\(X_R\)">\(X_R\)</span>. This is compatible with the earlier choices: it is one further upper bound on h, not a lower bound or a change of h after the profile is chosen. We henceforth use that common choice.</p>
+<p>The original shear variables now obey</p>
+<span class="math math-display" data-tex="\[
+b_s=0,\qquad
+a=2+2h+2Z\frac{\mathcal H&#x27;(Z)}{\mathcal H(Z)}-2\frac{f&#x27;}f,
+\qquad Z=\frac{2d}{X}.
+\tag{H5.6}
+\]">\[
+b_s=0,\qquad
+a=2+2h+2Z\frac{\mathcal H&#x27;(Z)}{\mathcal H(Z)}-2\frac{f&#x27;}f,
+\qquad Z=\frac{2d}{X}.
+\tag{H5.6}
+\]</span>
+<p>The reference step has <span class="math" data-tex="\(f&#x27;/f&lt;h/4\)">\(f&#x27;/f&lt;h/4\)</span>. H0.3 and positivity of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> give <span class="math" data-tex="\(-Z\mathcal H&#x27;/\mathcal H&lt;h/4\)">\(-Z\mathcal H&#x27;/\mathcal H&lt;h/4\)</span> after increasing <span class="math" data-tex="\(X_R\)">\(X_R\)</span>. Thus <span class="math" data-tex="\(2+h&lt;a\le2+2h\)">\(2+h&lt;a\le2+2h\)</span>. In G6, <span class="math" data-tex="\(t_s=0\)">\(t_s=0\)</span>, <span class="math" data-tex="\(v_s=a&gt;2\)">\(v_s=a&gt;2\)</span>, <span class="math" data-tex="\(P_c-v_s=\mathcal T_{0,\theta}/F&gt;0\)">\(P_c-v_s=\mathcal T_{0,\theta}/F&gt;0\)</span>, and <span class="math" data-tex="\(J_c=\mathcal T_{0,z}/F\)">\(J_c=\mathcal T_{0,z}/F\)</span>. Its exact cone criterion becomes</p>
+<span class="math math-display" data-tex="\[
+(a-2)\left(\frac{T_z}{T_\theta}\right)^2&lt;2,
+\qquad
+2-(a-2)\left(\frac{T_z}{T_\theta}\right)^2\ge2-2h&gt;1.
+\tag{H5.7}
+\]">\[
+(a-2)\left(\frac{T_z}{T_\theta}\right)^2&lt;2,
+\qquad
+2-(a-2)\left(\frac{T_z}{T_\theta}\right)^2\ge2-2h&gt;1.
+\tag{H5.7}
+\]</span>
+<p>This proves admissibility at every point of the terminal interval before its outer endpoint, with fixed directional slack. It uses the actual stress calculated in H4, not an independent replacement for it.</p>
+<h2 id="h6-full-flat-factors-and-the-smooth-limiting-direction">H6. Full flat factors and the smooth limiting direction</h2>
+<p>First prove the integral identity used at the edge. For <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, a fixed integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, and b smooth on <span class="math" data-tex="\([0,\delta_0]\)">\([0,\delta_0]\)</span> times a compact parameter interval,</p>
+<span class="math math-display" data-tex="\[
+\int_0^\delta e^{-c/u^2}u^{-j}b(u,\eta)du
+=\tfrac12e^{-c/\delta^2}\delta^{3-j}B(\delta,\eta),
+\tag{H6.1}
+\]">\[
+\int_0^\delta e^{-c/u^2}u^{-j}b(u,\eta)du
+=\tfrac12e^{-c/\delta^2}\delta^{3-j}B(\delta,\eta),
+\tag{H6.1}
+\]</span>
+<p>where the substitution <span class="math" data-tex="\(u=\delta(1+\delta^2v)^{-1/2}\)">\(u=\delta(1+\delta^2v)^{-1/2}\)</span> gives exactly</p>
+<span class="math math-display" data-tex="\[
+B(\delta,\eta)=\int_0^\infty e^{-cv}(1+\delta^2v)^{(j-3)/2}
+b\!\left(\frac{\delta}{\sqrt{1+\delta^2v}},\eta\right)dv,
+\qquad B(0,\eta)=\frac{b(0,\eta)}c.
+\tag{H6.2}
+\]">\[
+B(\delta,\eta)=\int_0^\infty e^{-cv}(1+\delta^2v)^{(j-3)/2}
+b\!\left(\frac{\delta}{\sqrt{1+\delta^2v}},\eta\right)dv,
+\qquad B(0,\eta)=\frac{b(0,\eta)}c.
+\tag{H6.2}
+\]</span>
+<p>The Jacobian is <span class="math" data-tex="\(-\tfrac12\delta^3(1+\delta^2v)^{-3/2}\)">\(-\tfrac12\delta^3(1+\delta^2v)^{-3/2}\)</span>, and <span class="math" data-tex="\(c/u^2=c/\delta^2+cv\)">\(c/u^2=c/\delta^2+cv\)</span>. These give both the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and every power in H6.1. Each fixed mixed derivative of the last integrand is bounded by <span class="math" data-tex="\(e^{-cv}\)">\(e^{-cv}\)</span> times a polynomial in v, uniformly on the closed parameter rectangle: the denominator <span class="math" data-tex="\(1+\delta^2v\)">\(1+\delta^2v\)</span> is at least one, its numerator factors are polynomially bounded in v, and all derivatives of b on its compact domain are bounded. The same holds for derivatives of its composed argument. Dominated differentiation proves smoothness through <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span> and all fixed derivative bounds; dominated convergence gives the displayed endpoint value. The proof also permits any finite collection of extra compact smooth parameters.</p>
+<p>Put <span class="math" data-tex="\(\delta=3-y=\log(X_b/X)\)">\(\delta=3-y=\log(X_b/X)\)</span>. The specific step in O0 has, for sufficiently small nonnegative <span class="math" data-tex="\(\delta\)">\(\delta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi_o=e^{-4/\delta^2}g(\delta),\qquad
+g(\delta)=\frac1{e^{-(1-\delta/2)^{-2}}+e^{-4/\delta^2}},\qquad g(0)=e.
+\tag{H6.3}
+\]">\[
+\psi_o=e^{-4/\delta^2}g(\delta),\qquad
+g(\delta)=\frac1{e^{-(1-\delta/2)^{-2}}+e^{-4/\delta^2}},\qquad g(0)=e.
+\tag{H6.3}
+\]</span>
+<p>Extend <span class="math" data-tex="\(e^{-4/\delta^2}\)">\(e^{-4/\delta^2}\)</span> by zero at zero; its derivatives of every order are a polynomial in <span class="math" data-tex="\(1/\delta\)">\(1/\delta\)</span> times the same exponential and tend to zero. The denominator defining g has a positive value at zero, so g is smooth on a closed small collar. With <span class="math" data-tex="\(f=1-\rho_o\psi_o\)">\(f=1-\rho_o\psi_o\)</span> and <span class="math" data-tex="\(\partial_y=-\partial_\delta\)">\(\partial_y=-\partial_\delta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f&#x27;=\rho_oe^{-4/\delta^2}\delta^{-3}[8g(\delta)+\delta^3g&#x27;(\delta)].
+\tag{H6.4}
+\]">\[
+f&#x27;=\rho_oe^{-4/\delta^2}\delta^{-3}[8g(\delta)+\delta^3g&#x27;(\delta)].
+\tag{H6.4}
+\]</span>
+<p>To retain every scale and integration weight, set <span class="math" data-tex="\(R(v)=\sqrt{2X_{\rm tail}e^v}\)">\(R(v)=\sqrt{2X_{\rm tail}e^v}\)</span> and <span class="math" data-tex="\(\mathcal E(v,\eta)=E_{\rm pow}(X_{\rm tail}e^v)\mathcal H(2d/(X_{\rm tail}e^v))\)">\(\mathcal E(v,\eta)=E_{\rm pow}(X_{\rm tail}e^v)\mathcal H(2d/(X_{\rm tail}e^v))\)</span>. Thus <span class="math" data-tex="\(r&#x27;=\sqrt qR(v)\)">\(r&#x27;=\sqrt qR(v)\)</span> and <span class="math" data-tex="\(K(r&#x27;,t)=q^{-A}\mathcal E(v,\eta)\)">\(K(r&#x27;,t)=q^{-A}\mathcal E(v,\eta)\)</span>. Multiplying H5.3 and H4.8 by the original <span class="math" data-tex="\(q^{A+1/2}\)">\(q^{A+1/2}\)</span> gives the exact profile formulas</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal T_{0,\theta}(y,\eta)
+={}&amp;\frac{2\mathcal E(y,\eta)}{R(y)}f&#x27;(y)\\
+&amp;+\frac1{R(y)^2}\int_y^3R(v)\,[\mathcal E(v,\eta)-2\partial_v\mathcal E(v,\eta)]f&#x27;(v)\,dv\\
+&amp;+\frac1{2LR(y)^2}\int_y^3R(v)^3\mathcal E(v,\eta)f&#x27;(v)\,dv,\\
+\mathcal T_{0,z}(y,\eta)
+={}&amp;\frac{\eta}{LR(y)}\int_y^3R(v)^2\left[\int_v^3\mathcal E(w,\eta)^2 f(w)f&#x27;(w)\,dw\right]dv.
+\end{split}
+\tag{H6.5}
+\]">\[
+\begin{split}
+\mathcal T_{0,\theta}(y,\eta)
+={}&amp;\frac{2\mathcal E(y,\eta)}{R(y)}f&#x27;(y)\\
+&amp;+\frac1{R(y)^2}\int_y^3R(v)\,[\mathcal E(v,\eta)-2\partial_v\mathcal E(v,\eta)]f&#x27;(v)\,dv\\
+&amp;+\frac1{2LR(y)^2}\int_y^3R(v)^3\mathcal E(v,\eta)f&#x27;(v)\,dv,\\
+\mathcal T_{0,z}(y,\eta)
+={}&amp;\frac{\eta}{LR(y)}\int_y^3R(v)^2\left[\int_v^3\mathcal E(w,\eta)^2 f(w)f&#x27;(w)\,dw\right]dv.
+\end{split}
+\tag{H6.5}
+\]</span>
+<p>For the second angular term use <span class="math" data-tex="\(K_{r&#x27;}=q^{-A-1/2}\partial_{R}\mathcal E\)">\(K_{r&#x27;}=q^{-A-1/2}\partial_{R}\mathcal E\)</span>, <span class="math" data-tex="\(R\partial_R\mathcal E=2\partial_v\mathcal E\)">\(R\partial_R\mathcal E=2\partial_v\mathcal E\)</span>, and <span class="math" data-tex="\(f_{r&#x27;}dr&#x27;=f&#x27;dv\)">\(f_{r&#x27;}dr&#x27;=f&#x27;dv\)</span>. For the last angular term, <span class="math" data-tex="\(r&#x27;^2Kdr&#x27;=q^{3/2-A}R(v)^3\mathcal E\,dv/2\)">\(r&#x27;^2Kdr&#x27;=q^{3/2-A}R(v)^3\mathcal E\,dv/2\)</span>, while its denominator is <span class="math" data-tex="\(qLr^2=q^2LR(y)^2\)">\(qLr^2=q^2LR(y)^2\)</span>. Both have physical factor <span class="math" data-tex="\(q^{-A-1/2}\)">\(q^{-A-1/2}\)</span>. For the axial term, <span class="math" data-tex="\(r&#x27;dr&#x27;=qR(v)^2dv/2\)">\(r&#x27;dr&#x27;=qR(v)^2dv/2\)</span> cancels the 2 in H5.2, leaving physical factor <span class="math" data-tex="\(q^{1/2-D-2A}\)">\(q^{1/2-D-2A}\)</span>. The additional profile factor cancels it exactly because <span class="math" data-tex="\(q^{A+1/2}q^{1/2-D-2A}=q^{1-D-A}=1\)">\(q^{A+1/2}q^{1/2-D-2A}=q^{1-D-A}=1\)</span>. Hence H6.5 retains the original physical factors and contains no hidden dependence on q.</p>
+<p>All remaining coefficients of these integrals are smooth on the closed <span class="math" data-tex="\((\delta,\eta)\)">\((\delta,\eta)\)</span> collar: <span class="math" data-tex="\(X=X_be^{-\delta}\)">\(X=X_be^{-\delta}\)</span> is positive there, <span class="math" data-tex="\(L\ge1-2h&gt;0\)">\(L\ge1-2h&gt;0\)</span>, and the heat derivatives are smooth for the full closed interval <span class="math" data-tex="\(-1\le\eta\le1\)">\(-1\le\eta\le1\)</span>. The first angular term, using H6.4, is already <span class="math" data-tex="\(e^{-4/\delta^2}\delta^{-3}\)">\(e^{-4/\delta^2}\delta^{-3}\)</span> times a smooth coefficient. Apply H6.1 with <span class="math" data-tex="\(j=3,c=4\)">\(j=3,c=4\)</span> to each remaining angular integral. Each becomes <span class="math" data-tex="\(e^{-4/\delta^2}\)">\(e^{-4/\delta^2}\)</span> times a smooth function, and hence contributes <span class="math" data-tex="\(\delta^3\)">\(\delta^3\)</span> times a smooth function to that coefficient. This proves</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{0,\theta}=e^{-4/\delta^2}\delta^{-3}b_\theta(\delta,\eta),
+\quad
+b_\theta(0,\eta)=\frac{16\rho_oE_{\rm pow}(X_b)\mathcal H(2d/X_b)g(0)}{\sqrt{2X_b}}&gt;0.
+\tag{H6.6}
+\]">\[
+\mathcal T_{0,\theta}=e^{-4/\delta^2}\delta^{-3}b_\theta(\delta,\eta),
+\quad
+b_\theta(0,\eta)=\frac{16\rho_oE_{\rm pow}(X_b)\mathcal H(2d/X_b)g(0)}{\sqrt{2X_b}}&gt;0.
+\tag{H6.6}
+\]</span>
+<p>Positivity is uniform in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, since the heat factor has a positive minimum on <span class="math" data-tex="\([0,2/X_b]\)">\([0,2/X_b]\)</span>. Continuity and compactness give a common closed collar where <span class="math" data-tex="\(b_\theta\)">\(b_\theta\)</span> has a positive lower bound.</p>
+<p>The inner axial integral in H6.5 has one factor f'; H6.1 with <span class="math" data-tex="\(j=3,c=4\)">\(j=3,c=4\)</span> writes it as <span class="math" data-tex="\(e^{-4/u^2}\)">\(e^{-4/u^2}\)</span> times a smooth coefficient. The outer integral then uses H6.1 with <span class="math" data-tex="\(j=0,c=4\)">\(j=0,c=4\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{0,z}=e^{-4/\delta^2}\delta^3b_z(\delta,\eta),\qquad
+\frac{\mathcal T_{0,z}}{\mathcal T_{0,\theta}}=\delta^6\frac{b_z}{b_\theta}.
+\tag{H6.7}
+\]">\[
+\mathcal T_{0,z}=e^{-4/\delta^2}\delta^3b_z(\delta,\eta),\qquad
+\frac{\mathcal T_{0,z}}{\mathcal T_{0,\theta}}=\delta^6\frac{b_z}{b_\theta}.
+\tag{H6.7}
+\]</span>
+<p>Both coefficients are smooth on the closed collar. One can retain also the exact first axial coefficient. Set <span class="math" data-tex="\(\mathcal E_b=E_{\rm pow}(X_b)\mathcal H(2d/X_b)\)">\(\mathcal E_b=E_{\rm pow}(X_b)\mathcal H(2d/X_b)\)</span>, <span class="math" data-tex="\(R_b=\sqrt{2X_b}\)">\(R_b=\sqrt{2X_b}\)</span>. The inner integral coefficient at zero is <span class="math" data-tex="\(\rho_og(0)\mathcal E_b^2\)">\(\rho_og(0)\mathcal E_b^2\)</span>: its input coefficient is <span class="math" data-tex="\(8\rho_og(0)\mathcal E_b^2\)">\(8\rho_og(0)\mathcal E_b^2\)</span>, and H6.1–H6.2 divide it by <span class="math" data-tex="\(2c=8\)">\(2c=8\)</span>. The outer integration divides by 8 once more. Thus</p>
+<span class="math math-display" data-tex="\[
+b_z(0,\eta)=\frac{\eta\rho_og(0)R_b\mathcal E_b^2}{8L},\qquad
+\left.\frac{b_z}{b_\theta}\right|_{\delta=0}=\frac{\eta X_b\mathcal E_b}{64L}.
+\tag{H6.8}
+\]">\[
+b_z(0,\eta)=\frac{\eta\rho_og(0)R_b\mathcal E_b^2}{8L},\qquad
+\left.\frac{b_z}{b_\theta}\right|_{\delta=0}=\frac{\eta X_b\mathcal E_b}{64L}.
+\tag{H6.8}
+\]</span>
+<p>This is an explicit consequence of the same source integrals, not an assumption about their leading term. H6.5 also shows that the axial stress has the sign of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on the open collar and is zero at <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\mathcal R=\delta^6b_z/b_\theta\)">\(\mathcal R=\delta^6b_z/b_\theta\)</span>. Since <span class="math" data-tex="\(\mathcal T_{0,\theta}&gt;0\)">\(\mathcal T_{0,\theta}&gt;0\)</span> before the edge, the unit direction is exactly</p>
+<span class="math math-display" data-tex="\[
+\frac{\mathcal T_0}{|\mathcal T_0|}=\frac{(1,\mathcal R)}{\sqrt{1+\mathcal R^2}}
+\longrightarrow(1,0).
+\tag{H6.9}
+\]">\[
+\frac{\mathcal T_0}{|\mathcal T_0|}=\frac{(1,\mathcal R)}{\sqrt{1+\mathcal R^2}}
+\longrightarrow(1,0).
+\tag{H6.9}
+\]</span>
+<p>The expression extends smoothly to the closed collar. It is a direction extension; the stress itself is zero at the endpoint. H5.7 and continuity show that <span class="math" data-tex="\(2-(a-2)\mathcal R^2\)">\(2-(a-2)\mathcal R^2\)</span> remains uniformly positive, with endpoint value 2.</p>
+<p>Finally, differentiating H6.6–H6.7 any fixed number of times in X and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> introduces only finitely many inverse powers of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Indeed <span class="math" data-tex="\(\delta_X=-1/X\)">\(\delta_X=-1/X\)</span> is smooth on the collar and the coefficient derivatives are bounded there. Therefore for every fixed mixed derivative I there are finite profile-dependent constants with</p>
+<span class="math math-display" data-tex="\[
+|\partial^I\mathcal T_0|\le C_Ie^{-4/\delta^2}\delta^{-N_I},\qquad
+|\mathcal T_0|\ge c e^{-4/\delta^2}\delta^{-3}.
+\tag{H6.10}
+\]">\[
+|\partial^I\mathcal T_0|\le C_Ie^{-4/\delta^2}\delta^{-N_I},\qquad
+|\mathcal T_0|\ge c e^{-4/\delta^2}\delta^{-3}.
+\tag{H6.10}
+\]</span>
+<p>The upper bounds tend to zero to every order, proving that the stress extends smoothly by zero to <span class="math" data-tex="\(X\ge X_b\)">\(X\ge X_b\)</span>, as H4 already requires. Neither constant depends on physical q. These calculations complete the outer-edge assertions of Proposition A.10 and the flat integral lemma A.9.</p>
+<h2 id="h7-original-viscosity-and-the-exact-remaining-scope">H7. Original viscosity and the exact remaining scope</h2>
+<p>For any original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, use the exact spatial map and fields of L3, with t unchanged:</p>
+<span class="math math-display" data-tex="\[
+x=x_\nu/\sqrt\nu,\quad u_\nu(x_\nu,t)=\sqrt\nu\,u(x,t),\quad
+p_\nu(x_\nu,t)=\nu p(x,t),\quad T_\nu(x_\nu,t)=\nu T(x,t).
+\tag{H7.1}
+\]">\[
+x=x_\nu/\sqrt\nu,\quad u_\nu(x_\nu,t)=\sqrt\nu\,u(x,t),\quad
+p_\nu(x_\nu,t)=\nu p(x,t),\quad T_\nu(x_\nu,t)=\nu T(x,t).
+\tag{H7.1}
+\]</span>
+<p>The full coordinates, with the original physical r and z now denoted <span class="math" data-tex="\(r_\nu,z_\nu\)">\(r_\nu,z_\nu\)</span>, are</p>
+<span class="math math-display" data-tex="\[
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\quad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu},\quad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu q_\nu^D},\quad
+T_\nu=\nu q_\nu^{-A-1/2}\mathcal T_0(X_\nu,\eta_\nu).
+\tag{H7.2}
+\]">\[
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\quad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu},\quad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu q_\nu^D},\quad
+T_\nu=\nu q_\nu^{-A-1/2}\mathcal T_0(X_\nu,\eta_\nu).
+\tag{H7.2}
+\]</span>
+<p>Each physical leading residual scales by <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span>: time, transport, pressure gradient and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> times the radial viscous operator all do so. The stress divergence scales by the same factor, since one radial derivative of <span class="math" data-tex="\(\nu T(x_\nu/\sqrt\nu,t)\)">\(\nu T(x_\nu/\sqrt\nu,t)\)</span> contributes <span class="math" data-tex="\(1/\sqrt\nu\)">\(1/\sqrt\nu\)</span>. Equivalently, substitution <span class="math" data-tex="\(r&#x27;_\nu=\sqrt\nu r&#x27;\)">\(r&#x27;_\nu=\sqrt\nu r&#x27;\)</span> into the two backward integrals gives <span class="math" data-tex="\(T_{\nu,\theta}=\nu T_\theta\)">\(T_{\nu,\theta}=\nu T_\theta\)</span> and <span class="math" data-tex="\(T_{\nu,z}=\nu T_z\)">\(T_{\nu,z}=\nu T_z\)</span>, with their respective weights <span class="math" data-tex="\(r&#x27;^2\)">\(r&#x27;^2\)</span> and <span class="math" data-tex="\(r&#x27;\)">\(r&#x27;\)</span> retained. The stress ratio and its direction therefore agree exactly with H6.7–H6.9 at the mapped point. No viscosity factor is removed from the physical fields or their bounds.</p>
+<p>H0–H6 construct the actual heat modification of the reference, restore its three changed moments with all parameter derivatives, preserve its earlier strict stress cone, and prove its outer support, cone and endpoint bounds. The calculation also proves the backward formula for the actual temporary reference axis powers H4.1; it does not assert that those powers are regular. Its matching map to a future inner field is exactly G3.1 with all five moments and the axis pressure retained. These supply the outer parts needed by Lemmas 4.8–4.9.</p>
+<p>The actual analytic regular-axis solution with the prescribed <span class="math" data-tex="\(\Pi_0\)">\(\Pi_0\)</span>, its positive source and its endpoint inequality are derived in <a href="analytic-axis-profile-audit.html">J0–J7</a>. Its actual continuation and exact five-moment matching to this outer field are derived in <a href="inner-outer-joining-audit.html">Q0–Q9</a>. The actual admissible-shear realization and all leading-profile properties of Theorem 4.6 are derived in <a href="shear-realization-audit.html">V0–V7</a>. The positive-order base is derived in <a href="base-field-realization-audit.html">Z0–Z8</a>; the actual local construction and final assembly are proved in <a href="local-construction-assembly-audit.html">I0–I7</a> and <a href="terminal-force-and-blowup-audit.html">F0–F8</a>. The actual local field and final localization are proved in <a href="local-construction-assembly-audit.html">I0–I7</a> and <a href="terminal-force-and-blowup-audit.html">F0–F8</a>. This note supplies the outer heat and stress component of the <a href="theorem-audit-conclusion.html">complete theorem derivation</a>. The <a href="../src/constructing-the-outer-profile-and-heat-exterior.md">outer-profile lesson</a>, O0–H7 and X0, develops this construction with five worked exercises.</p>
+</article></body></html>

@@ -8,7 +8,7 @@ A complex equation in real variables can have a singular real zero set even when
 
 We work near the origin, with real variables \(t\in\mathbb R^m\) and \(x\in\mathbb R^n\), and complex-valued smooth functions. The notation \((f_1,\ldots,f_m)\) means the local smooth ideal: its elements are finite sums \(\sum_jq_jf_j\) with smooth complex coefficients. Local assertions can be restricted to one smaller neighborhood. When several input functions have different domains, that neighborhood is first chosen inside their actual common domain.
 
-Our input is the order-one smooth complex division proved in Classical finite-order preparation and division and its complete [AN04 proof component](../prerequisites/U011-free-foundations/AN04-order-one-division.md). If \(f(0,0)=0\) and \(\partial_tf(0,0)\ne0\), it gives
+Our input is the order-one smooth complex division proved in [Classical finite-order preparation and division](classical-finite-order-preparation-and-division.md) and its complete [AN04 proof component](../prerequisites/U011-free-foundations/AN04-order-one-division.md). If \(f(0,0)=0\) and \(\partial_tf(0,0)\ne0\), it gives
 \[
  g(t,x)=q(t,x)f(t,x)+r(x).
  \tag{I1}

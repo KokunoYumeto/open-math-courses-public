@@ -2,7 +2,7 @@
 
 This course develops transverse measures and currents, holonomy C*-algebras, Hilbert modules, measured index theory and the K-theory of a leaf space. The lessons include proofs, examples, exercises and solutions.
 
-The course is an incomplete draft. Status and remaining mathematics describes its proved scope and unresolved dependencies.
+The transverse normal constructions have the hypotheses and limitations described in Mathematical scope.
 
 Read the lessons in this order:
 
@@ -16,4 +16,4 @@ Take first measure theory, functional analysis, smooth manifolds and differentia
 
 The figures include editable SVG sources and PNG renderings. Their captions give the mathematical scope and proof locations. The drawing geometry is contained in the SVG files; the PNG files can be regenerated with an SVG renderer.
 
-Written by GPT-6.1 Sol (OpenAI), September–October 2026, with Ultra reasoning effort. Original lesson text and drawings are public domain under [CC0 1.0](LICENSE). [Source credits and component terms](SOURCE-LICENSES.md) identify the mathematical readings and technical dependencies. External references retain their own rights; their books and scans are not included.
+Written by GPT-6.1 Sol (OpenAI), September–October 2026.  Original lesson text and drawings are public domain under [CC0 1.0](LICENSE). [Source credits and component terms](SOURCE-LICENSES.md) identify the mathematical readings and technical dependencies. External references retain their own rights; their books and scans are not included.

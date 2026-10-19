@@ -1,0 +1,902 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="rapid-forcing-computation-audit.md">Editable source</a></nav><h1 id="rapidly-vanishing-forcing-and-three-exact-fluid-memories">Rapidly vanishing forcing and three exact fluid memories</h1>
+<p><em>Mathematical exposition by GPT-6 Astra (OpenAI).</em></p>
+<p>This note derives the four experiments in OpenAI's <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Computation-under-Rapidly-Vanishing-Navier-Stokes-Forcing-September-27-2026/build/main.tex"><em>Computation under Rapidly Vanishing Navier–Stokes Forcing</em></a>. It retains all three memory mechanisms, their original scales, particle labels, detectors, viscosity and force formulas. The complete author TeX consists of main.tex, addressed.tex, alternating.tex, lattice.tex and references.tex. This exposition is editorial; it does not replace or amend the author's text.</p>
+<h2 id="rc0-the-exact-statements">RC0. The exact statements</h2>
+<p>Fix <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, computable for the algorithmic claims. On the indicated flat domain use</p>
+<span class="math math-display" data-tex="\[
+\partial_tU+(U\cdot\nabla)U=-\nabla p+\nu\Delta U+f,
+\qquad \nabla\cdot U=0,\qquad U(0)=0.
+\tag{RC0.1}
+\]">\[
+\partial_tU+(U\cdot\nabla)U=-\nabla p+\nu\Delta U+f,
+\qquad \nabla\cdot U=0,\qquad U(0)=0.
+\tag{RC0.1}
+\]</span>
+<p>Each finite deterministic machine and finite input determine an effective force and a global smooth solution. Every mixed derivative of both velocity and force satisfies, for every nonnegative integer <span class="math" data-tex="\(J\)">\(J\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sup_{t\ge0,x}(1+t)^J
+\left|\partial_t^l\partial_x^\alpha U(t,x)\right|&lt;\infty,
+\qquad
+\sup_{t\ge0,x}(1+t)^J
+\left|\partial_t^l\partial_x^\alpha f(t,x)\right|&lt;\infty.
+\tag{RC0.2}
+\]">\[
+\sup_{t\ge0,x}(1+t)^J
+\left|\partial_t^l\partial_x^\alpha U(t,x)\right|&lt;\infty,
+\qquad
+\sup_{t\ge0,x}(1+t)^J
+\left|\partial_t^l\partial_x^\alpha f(t,x)\right|&lt;\infty.
+\tag{RC0.2}
+\]</span>
+<p>The Euclidean fields have fixed compact support, so the same statements hold with <span class="math" data-tex="\((1+t+|x|)^J\)">\((1+t+|x|)^J\)</span>. The following events are each equivalent to machine halting:</p>
+<table>
+<thead>
+<tr>
+<th>Construction</th>
+<th>Domain and initial label</th>
+<th>Fixed open detector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addressed compact curls</td>
+<td><span class="math" data-tex="\(\mathbb R^3,\ a_*=0\)">\(\mathbb R^3,\ a_*=0\)</span></td>
+<td><span class="math" data-tex="\(X_1&lt;-1\)">\(X_1&lt;-1\)</span></td>
+</tr>
+<tr>
+<td>Addressed chart image</td>
+<td><span class="math" data-tex="\(\mathbb T^3,\ a_*=(1/2,1/4,1/2)\)">\(\mathbb T^3,\ a_*=(1/2,1/4,1/2)\)</span></td>
+<td><span class="math" data-tex="\(1/4&lt;X_1&lt;3/8\)">\(1/4&lt;X_1&lt;3/8\)</span></td>
+</tr>
+<tr>
+<td>Alternating memories</td>
+<td><span class="math" data-tex="\(\mathbb R^3,\ a_*=(-1,0,0)\)">\(\mathbb R^3,\ a_*=(-1,0,0)\)</span></td>
+<td><span class="math" data-tex="\(X_1&gt;0\)">\(X_1&gt;0\)</span></td>
+</tr>
+<tr>
+<td>Periodic lattice memory</td>
+<td><span class="math" data-tex="\(\mathbb T^3,\ a_*=(1/4,1/2,1/2)\)">\(\mathbb T^3,\ a_*=(1/4,1/2,1/2)\)</span></td>
+<td><span class="math" data-tex="\(1/2&lt;X_1&lt;1\pmod1\)">\(1/2&lt;X_1&lt;1\pmod1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Euclidean pressure is zero. The torus residual forces have pressure zero; their solenoidal projections have pressure specified in RC1. Torus pressure has spatial mean zero. The Euclidean uniqueness class on each <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+U\in C([0,T];H^2)\cap C^1([0,T];L^2),\qquad
+p\in C([0,T];H^1),\qquad
+\sup_{[0,T]\times\mathbb R^3}(|U|+|\nabla U|)&lt;\infty.
+\tag{RC0.3}
+\]">\[
+U\in C([0,T];H^2)\cap C^1([0,T];L^2),\qquad
+p\in C([0,T];H^1),\qquad
+\sup_{[0,T]\times\mathbb R^3}(|U|+|\nabla U|)&lt;\infty.
+\tag{RC0.3}
+\]</span>
+<p>In both domains a classical solution also has continuous velocity, time derivative, spatial derivatives through order two, pressure and pressure gradient on each closed finite cylinder. The competitor's gradient bound in RC0.3 can be omitted. The reference gradient bound remains.</p>
+<p>Every transition occupies a unit physical interval after a unit loading interval. The fields evaluate a local instruction at an arbitrary spatial code; constructing them does not require running the distinguished computation.</p>
+<p><img src="rapid-forcing-memories.svg" alt="Three exact memories and the incompressible receiving maps." class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="E00635C40A543EF492201CBC70BE48594873AB0CD71D05DD80547BC4C2C851F2"></p>
+<p>The <a href="rapid-forcing-memories.py">figure generator</a> retains editable diagram sources. Its arrows describe proved maps, not numerical particle samples.</p>
+<h2 id="rc1-smooth-profiles-the-full-residual-and-uniqueness">RC1. Smooth profiles, the full residual and uniqueness</h2>
+<p>Keep the source profiles</p>
+<span class="math math-display" data-tex="\[
+\rho(r)=\begin{cases}e^{-1/r},&amp;r&gt;0,\\0,&amp;r\le0,\end{cases}
+\quad H(r)=\frac{\rho(r)}{\rho(r)+\rho(1-r)},
+\quad\theta(r)=H(2r-1/2).
+\tag{RC1.1}
+\]">\[
+\rho(r)=\begin{cases}e^{-1/r},&amp;r&gt;0,\\0,&amp;r\le0,\end{cases}
+\quad H(r)=\frac{\rho(r)}{\rho(r)+\rho(1-r)},
+\quad\theta(r)=H(2r-1/2).
+\tag{RC1.1}
+\]</span>
+<p>The polynomial recursion <span class="math" data-tex="\(P_0(y)=1\)">\(P_0(y)=1\)</span>, <span class="math" data-tex="\(P_{j+1}(y)=y^2(P_j(y)-P_j&#x27;(y))\)">\(P_{j+1}(y)=y^2(P_j(y)-P_j&#x27;(y))\)</span> gives
+<span class="math" data-tex="\(\rho^{(j)}(r)=P_j(1/r)e^{-1/r}\)">\(\rho^{(j)}(r)=P_j(1/r)e^{-1/r}\)</span> on the positive half-line. The exponential series gives <span class="math" data-tex="\(y^me^{-y}\le(m+k)!y^{-k}\)">\(y^me^{-y}\le(m+k)!y^{-k}\)</span> and <span class="math" data-tex="\(y^me^{-y}\le m!\)">\(y^me^{-y}\le m!\)</span>. These prove flatness at zero, effective error estimates there and global derivative bounds. At least one of <span class="math" data-tex="\(r,1-r\)">\(r,1-r\)</span> is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so the denominator of <span class="math" data-tex="\(H\)">\(H\)</span> is at least <span class="math" data-tex="\(e^{-2}\)">\(e^{-2}\)</span>. Quotient differentiation gives bounds for every derivative. Thus <span class="math" data-tex="\(H\)">\(H\)</span> is zero below zero and one above one; <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is zero through <span class="math" data-tex="\(1/4\)">\(1/4\)</span> and one from <span class="math" data-tex="\(3/4\)">\(3/4\)</span>, with fixed zero collars for its derivative. Rational translates and rescalings produce all cutoffs used below.</p>
+<p>For a smooth divergence-free reference <span class="math" data-tex="\(U\)">\(U\)</span>, define the actual force</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_\nu[U]=U_t+(U\cdot\nabla)U-\nu\Delta U.
+\tag{RC1.2}
+\]">\[
+\mathcal R_\nu[U]=U_t+(U\cdot\nabla)U-\nu\Delta U.
+\tag{RC1.2}
+\]</span>
+<p>Substitution proves the PDE with pressure zero. For component <span class="math" data-tex="\(i\)">\(i\)</span>, every derivative is exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t^l\partial_x^\alpha(\mathcal R_\nu[U])_i
+={}&amp;\partial_t^{l+1}\partial_x^\alpha U_i
+-\nu\sum_{j=1}^3\partial_t^l\partial_x^{\alpha+2e_j}U_i\\
+&amp;+\sum_{j=1}^3\sum_{h=0}^l\sum_{\gamma\le\alpha}
+\binom lh\binom\alpha\gamma
+(\partial_t^h\partial_x^\gamma U_j)
+(\partial_t^{l-h}\partial_x^{\alpha-\gamma+e_j}U_i).
+\end{aligned}
+\tag{RC1.3}
+\]">\[
+\begin{aligned}
+\partial_t^l\partial_x^\alpha(\mathcal R_\nu[U])_i
+={}&amp;\partial_t^{l+1}\partial_x^\alpha U_i
+-\nu\sum_{j=1}^3\partial_t^l\partial_x^{\alpha+2e_j}U_i\\
+&amp;+\sum_{j=1}^3\sum_{h=0}^l\sum_{\gamma\le\alpha}
+\binom lh\binom\alpha\gamma
+(\partial_t^h\partial_x^\gamma U_j)
+(\partial_t^{l-h}\partial_x^{\alpha-\gamma+e_j}U_i).
+\end{aligned}
+\tag{RC1.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(\binom\alpha\gamma=\prod_j\binom{\alpha_j}{\gamma_j}\)">\(\binom\alpha\gamma=\prod_j\binom{\alpha_j}{\gamma_j}\)</span>. In particular all original viscous factors and nonlinear contributions remain. Rapid bounds for <span class="math" data-tex="\(U\)">\(U\)</span> imply those for the residual: put any requested time weight on the first factor of each product and use the unweighted bound on the second. Support is preserved because differentiation and products do not enlarge the support of a smooth field. The force is affine in viscosity, with coefficient fields <span class="math" data-tex="\(U_t+(U\cdot\nabla)U\)">\(U_t+(U\cdot\nabla)U\)</span> and <span class="math" data-tex="\(-\Delta U\)">\(-\Delta U\)</span>.</p>
+<p>For completeness, compare a reference solution <span class="math" data-tex="\((U,P)\)">\((U,P)\)</span> with a competitor <span class="math" data-tex="\((v,p)\)">\((v,p)\)</span> for the same force and data. Set <span class="math" data-tex="\(w=v-U,\ q=p-P\)">\(w=v-U,\ q=p-P\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+w_t+(v\cdot\nabla)w+(w\cdot\nabla)U=-\nabla q+\nu\Delta w,
+\qquad \nabla\cdot w=0.
+\tag{RC1.4}
+\]">\[
+w_t+(v\cdot\nabla)w+(w\cdot\nabla)U=-\nabla q+\nu\Delta w,
+\qquad \nabla\cdot w=0.
+\tag{RC1.4}
+\]</span>
+<p>On <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, take a smooth compact cutoff <span class="math" data-tex="\(0\le\zeta\le1\)">\(0\le\zeta\le1\)</span>, equal to one on the unit ball, and <span class="math" data-tex="\(\zeta_R(x)=\zeta(x/R)\)">\(\zeta_R(x)=\zeta(x/R)\)</span>. The exact integrated identity is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac12\frac d{dt}\int\zeta_R|w|^2
++\nu\int\zeta_R|\nabla w|^2
+={}&amp;-\int\zeta_R w_iw_j\partial_jU_i
++\frac12\int |w|^2v\cdot\nabla\zeta_R\\
+&amp;+\int q\,w\cdot\nabla\zeta_R
+-\nu\int w_i\partial_jw_i\,\partial_j\zeta_R .
+\end{aligned}
+\tag{RC1.5}
+\]">\[
+\begin{aligned}
+\frac12\frac d{dt}\int\zeta_R|w|^2
++\nu\int\zeta_R|\nabla w|^2
+={}&amp;-\int\zeta_R w_iw_j\partial_jU_i
++\frac12\int |w|^2v\cdot\nabla\zeta_R\\
+&amp;+\int q\,w\cdot\nabla\zeta_R
+-\nu\int w_i\partial_jw_i\,\partial_j\zeta_R .
+\end{aligned}
+\tag{RC1.5}
+\]</span>
+<p>Repeated indices are summed from one to three. The last three terms have absolute bounds</p>
+<span class="math math-display" data-tex="\[
+\frac{\|\nabla\zeta\|_\infty}{2R}\|v\|_\infty\|w\|_2^2,\qquad
+\frac{\|\nabla\zeta\|_\infty}{R}\|q\|_2\|w\|_2,\qquad
+\frac{\nu\|\nabla\zeta\|_\infty}{R}\|w\|_2\|\nabla w\|_2.
+\tag{RC1.6}
+\]">\[
+\frac{\|\nabla\zeta\|_\infty}{2R}\|v\|_\infty\|w\|_2^2,\qquad
+\frac{\|\nabla\zeta\|_\infty}{R}\|q\|_2\|w\|_2,\qquad
+\frac{\nu\|\nabla\zeta\|_\infty}{R}\|w\|_2\|\nabla w\|_2.
+\tag{RC1.6}
+\]</span>
+<p>The Sobolev continuity in RC0.3 bounds all these norms uniformly on a finite interval and justifies the time derivative. Integrate first in time, then let <span class="math" data-tex="\(R\)">\(R\)</span> tend to infinity. Dominated convergence applies to each remaining quadratic term; the three errors tend to zero. On the torus the same calculation has no cutoff errors. Hence in either domain</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac d{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+\le\|\nabla U\|_{\mathrm{op},\infty}\|w\|_2^2.
+\tag{RC1.7}
+\]">\[
+\frac12\frac d{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+\le\|\nabla U\|_{\mathrm{op},\infty}\|w\|_2^2.
+\tag{RC1.7}
+\]</span>
+<p>The integrating factor <span class="math" data-tex="\(\exp(-2\int_0^t\|\nabla U(s)\|_{\mathrm{op},\infty}\,ds)\)">\(\exp(-2\int_0^t\|\nabla U(s)\|_{\mathrm{op},\infty}\,ds)\)</span> and zero initial difference give <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. Then <span class="math" data-tex="\(\nabla q=0\)">\(\nabla q=0\)</span>; mean zero on the torus or <span class="math" data-tex="\(H^1(\mathbb R^3)\)">\(H^1(\mathbb R^3)\)</span> fixes <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. No bound on the competitor's gradient was used. Smooth bounded reference velocities with bounded gradient on finite cylinders have unique material paths through every finite time: local Lipschitz existence and uniqueness apply, and bounded speed prevents finite-time escape. Backward solution gives the inverse finite-time flow.</p>
+<p>The torus projection also has a complete effective proof. For mean-zero <span class="math" data-tex="\(g\)">\(g\)</span>, use the Fourier basis <span class="math" data-tex="\(e^{2\pi i k\cdot x}\)">\(e^{2\pi i k\cdot x}\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+\widehat\phi(k)=-\frac{ik\cdot\widehat g(k)}{2\pi|k|^2}\quad(k\ne0),
+\qquad \widehat\phi(0)=0.
+\tag{RC1.8}
+\]">\[
+\widehat\phi(k)=-\frac{ik\cdot\widehat g(k)}{2\pi|k|^2}\quad(k\ne0),
+\qquad \widehat\phi(0)=0.
+\tag{RC1.8}
+\]</span>
+<p>The gradient multiplier is <span class="math" data-tex="\(kk^{\mathsf T}/|k|^2\)">\(kk^{\mathsf T}/|k|^2\)</span>, of operator norm one. For <span class="math" data-tex="\(r=|\alpha|\)">\(r=|\alpha|\)</span>, integrate by parts <span class="math" data-tex="\(r+5\)">\(r+5\)</span> times in a coordinate with <span class="math" data-tex="\(|k_i|\ge |k|/\sqrt3\)">\(|k_i|\ge |k|/\sqrt3\)</span>. Every differentiated gradient coefficient is bounded by</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-5}3^{(r+5)/2}|k|^{-5}
+\max_i\|\partial_t^l\partial_{x_i}^{r+5}g(t)\|_\infty.
+\tag{RC1.9}
+\]">\[
+(2\pi)^{-5}3^{(r+5)/2}|k|^{-5}
+\max_i\|\partial_t^l\partial_{x_i}^{r+5}g(t)\|_\infty.
+\tag{RC1.9}
+\]</span>
+<p>The shell <span class="math" data-tex="\(\|k\|_\infty=j\)">\(\|k\|_\infty=j\)</span> has <span class="math" data-tex="\(24j^2+2\)">\(24j^2+2\)</span> points. The tail beyond <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span> is bounded by the factor preceding <span class="math" data-tex="\(|k|^{-5}\)">\(|k|^{-5}\)</span> in RC1.9 times</p>
+<span class="math math-display" data-tex="\[
+\sum_{j&gt;M}(24j^2+2)j^{-5}\le26\sum_{j&gt;M}j^{-3}\le13M^{-2}.
+\tag{RC1.10}
+\]">\[
+\sum_{j&gt;M}(24j^2+2)j^{-5}\le26\sum_{j&gt;M}j^{-3}\le13M^{-2}.
+\tag{RC1.10}
+\]</span>
+<p>The full sum is at most <span class="math" data-tex="\(26(1+\int_1^\infty x^{-3}dx)=39\)">\(26(1+\int_1^\infty x^{-3}dx)=39\)</span>. Thus every differentiated series converges absolutely, with effective tails; the series for <span class="math" data-tex="\(\phi\)">\(\phi\)</span> has an additional inverse frequency factor. Fourier coefficients are effectively integrated by Riemann sums using a bound on one more derivative. Reality follows by conjugating the coefficients.</p>
+<p>To identify the functions, the one-dimensional Fejér kernel</p>
+<span class="math math-display" data-tex="\[
+F_N(s)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijs}\right|^2
+\tag{RC1.11}
+\]">\[
+F_N(s)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijs}\right|^2
+\tag{RC1.11}
+\]</span>
+<p>is nonnegative, has integral one by orthogonality, and Fourier coefficients <span class="math" data-tex="\((1-|k|/N)_+\)">\((1-|k|/N)_+\)</span> by expanding the square. Away from the integers, the geometric sum gives <span class="math" data-tex="\(F_N(s)\le[N\sin^2(\pi s)]^{-1}\)">\(F_N(s)\le[N\sin^2(\pi s)]^{-1}\)</span>. Its threefold product has mass outside any fixed coordinate neighborhood of zero tending to zero: use the union of the three coordinate complements and integrate the other factors to one. Uniform continuity therefore gives uniform convergence of convolution to any continuous periodic function. A function with every Fourier coefficient zero is zero. Applying this fact after termwise differentiation proves <span class="math" data-tex="\(\Delta\phi=\operatorname{div}g\)">\(\Delta\phi=\operatorname{div}g\)</span> and uniqueness of its mean-zero solution.</p>
+<p>Consequently the exact force and pressure map is</p>
+<span class="math math-display" data-tex="\[
+f=g-\nabla\phi,\qquad p=P-\phi,\qquad
+-\nabla(P-\phi)+(g-\nabla\phi)=-\nabla P+g.
+\tag{RC1.12}
+\]">\[
+f=g-\nabla\phi,\qquad p=P-\phi,\qquad
+-\nabla(P-\phi)+(g-\nabla\phi)=-\nabla P+g.
+\tag{RC1.12}
+\]</span>
+<p>Every time weight passes through the pointwise bound RC1.9–RC1.10 at the finitely many specified higher spatial orders. The velocity and event are unchanged. Conversely a competitor pressure <span class="math" data-tex="\(q\)">\(q\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span> becomes <span class="math" data-tex="\(q+\phi\)">\(q+\phi\)</span> for <span class="math" data-tex="\(g\)">\(g\)</span>, preserving the normalized periodic class. Projection thus also preserves uniqueness. No Euclidean compact-support assertion is made for this projection.</p>
+<h2 id="rc2-addressed-memory-complete-finite-codes-and-scale-arithmetic">RC2. Addressed memory: complete finite codes and scale arithmetic</h2>
+<p>Use the original tape on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, head initially zero and input in cells <span class="math" data-tex="\(0,\ldots,B-1\)">\(0,\ldots,B-1\)</span>, where <span class="math" data-tex="\(B\)">\(B\)</span> is the input length. Add a fresh terminal state for a missing transition, with no move or symbol change; terminal states have no outgoing transitions. This explicit conversion preserves halting in both directions. Number states and symbols from zero, with blank symbol zero, and retain</p>
+<span class="math math-display" data-tex="\[
+A=2^{r_A}\ge|\Gamma|,\quad S=2^{r_Q}\ge|Q|,\quad r_A,r_Q\ge1,
+\quad P_n=2^{n+2},
+\]">\[
+A=2^{r_A}\ge|\Gamma|,\quad S=2^{r_Q}\ge|Q|,\quad r_A,r_Q\ge1,
+\quad P_n=2^{n+2},
+\]</span>
+<span class="math math-display" data-tex="\[
+M_n=SP_nA^{2n+B+1}=2^{L_n},\qquad
+L_n=r_Q+n+2+r_A(2n+B+1).
+\tag{RC2.1}
+\]">\[
+M_n=SP_nA^{2n+B+1}=2^{L_n},\qquad
+L_n=r_Q+n+2+r_A(2n+B+1).
+\tag{RC2.1}
+\]</span>
+<p>After <span class="math" data-tex="\(n\)">\(n\)</span> transitions the head <span class="math" data-tex="\(i\)">\(i\)</span> satisfies <span class="math" data-tex="\(|i|\le n\)">\(|i|\le n\)</span>, and the finite window <span class="math" data-tex="\([-n,n+B]\)">\([-n,n+B]\)</span> contains every nonblank cell. Its full code is</p>
+<span class="math math-display" data-tex="\[
+T=\sum_{v=-n}^{n+B}\operatorname{id}(\tau(v))A^{v+n},
+\qquad j=i+n,\qquad
+k_n=\operatorname{id}(q)+S(j+P_nT).
+\tag{RC2.2}
+\]">\[
+T=\sum_{v=-n}^{n+B}\operatorname{id}(\tau(v))A^{v+n},
+\qquad j=i+n,\qquad
+k_n=\operatorname{id}(q)+S(j+P_nT).
+\tag{RC2.2}
+\]</span>
+<p>Since <span class="math" data-tex="\(0\le j\le2n&lt;P_n\)">\(0\le j\le2n&lt;P_n\)</span>, the code is in <span class="math" data-tex="\([0,M_n)\)">\([0,M_n)\)</span>. Integer division and remainders recover the state, absolute head and every tape symbol, with blank continuation outside the window.</p>
+<p>At every padded integer <span class="math" data-tex="\(0\le k&lt;M_n\)">\(0\le k&lt;M_n\)</span>, extract</p>
+<span class="math math-display" data-tex="\[
+r=k\bmod S,\quad j=\lfloor k/S\rfloor\bmod P_n,\quad
+T=\lfloor k/(SP_n)\rfloor.
+\tag{RC2.3}
+\]">\[
+r=k\bmod S,\quad j=\lfloor k/S\rfloor\bmod P_n,\quad
+T=\lfloor k/(SP_n)\rfloor.
+\tag{RC2.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(h_n(k)=1\)">\(h_n(k)=1\)</span> exactly when <span class="math" data-tex="\(r\)">\(r\)</span> names a terminal state. If <span class="math" data-tex="\(r\)">\(r\)</span> is a valid nonterminal state, <span class="math" data-tex="\(j\le2n\)">\(j\le2n\)</span>, and <span class="math" data-tex="\(z=\lfloor T/A^j\rfloor\bmod A\)">\(z=\lfloor T/A^j\rfloor\bmod A\)</span> is a valid symbol, look up <span class="math" data-tex="\((q,z)\mapsto(q&#x27;,z&#x27;,d)\)">\((q,z)\mapsto(q&#x27;,z&#x27;,d)\)</span> and define</p>
+<span class="math math-display" data-tex="\[
+F_n(k)=\operatorname{id}(q&#x27;)+
+S\big(j+d+1+P_{n+1}A(T+(z&#x27;-z)A^j)\big).
+\tag{RC2.4}
+\]">\[
+F_n(k)=\operatorname{id}(q&#x27;)+
+S\big(j+d+1+P_{n+1}A(T+(z&#x27;-z)A^j)\big).
+\tag{RC2.4}
+\]</span>
+<p>In all other cases put <span class="math" data-tex="\(F_n(k)=0\)">\(F_n(k)=0\)</span>. The replaced digit stays in <span class="math" data-tex="\(\{0,\ldots,A-1\}\)">\(\{0,\ldots,A-1\}\)</span>; the resulting tape number remains below <span class="math" data-tex="\(A^{2n+B+1}\)">\(A^{2n+B+1}\)</span>. Multiplication by <span class="math" data-tex="\(A\)">\(A\)</span> inserts the new left blank, and the next window also has a new right blank. The new head index is between zero and <span class="math" data-tex="\(2n+2&lt;P_{n+1}\)">\(2n+2&lt;P_{n+1}\)</span>. Thus <span class="math" data-tex="\(0\le F_n(k)&lt;M_{n+1}\)">\(0\le F_n(k)&lt;M_{n+1}\)</span> for every padded code, even when unscanned digits are not actual alphabet symbols. At a genuine nonterminal configuration <span class="math" data-tex="\(F_n(k_n)=k_{n+1}\)">\(F_n(k_n)=k_{n+1}\)</span>.</p>
+<p>Keep exactly</p>
+<span class="math math-display" data-tex="\[
+C=\max\{1,L_0,1+2r_A\},\quad
+s_n=C2^{(n+2)^2},\quad
+\delta_n=2^{-s_n},\quad D_n=2^{s_n},\quad
+b_n=\delta_{n+1}M_{n+1}.
+\tag{RC2.5}
+\]">\[
+C=\max\{1,L_0,1+2r_A\},\quad
+s_n=C2^{(n+2)^2},\quad
+\delta_n=2^{-s_n},\quad D_n=2^{s_n},\quad
+b_n=\delta_{n+1}M_{n+1}.
+\tag{RC2.5}
+\]</span>
+<p>The affine formula for <span class="math" data-tex="\(L_n\)">\(L_n\)</span> gives <span class="math" data-tex="\(L_n\le C(n+1)\)">\(L_n\le C(n+1)\)</span>. Also
+<span class="math" data-tex="\(s_n\ge16C(n+1)\)">\(s_n\ge16C(n+1)\)</span> and
+<span class="math" data-tex="\(s_{n+1}/s_n=2^{2n+5}=32\,4^n\ge32(n+1)\)">\(s_{n+1}/s_n=2^{2n+5}=32\,4^n\ge32(n+1)\)</span>.
+It follows that</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ge0}\delta_nM_n\le\sum_{n\ge0}2^{-15(n+1)}&lt;1,
+\qquad b_n\le\delta_n^{\,n+10}&lt;\delta_n/8,
+\tag{RC2.6}
+\]">\[
+\sum_{n\ge0}\delta_nM_n\le\sum_{n\ge0}2^{-15(n+1)}&lt;1,
+\qquad b_n\le\delta_n^{\,n+10}&lt;\delta_n/8,
+\tag{RC2.6}
+\]</span>
+<span class="math math-display" data-tex="\[
+0\le j&lt;n\quad\Longrightarrow\quad M_n\mid\delta_j/\delta_n.
+\tag{RC2.7}
+\]">\[
+0\le j&lt;n\quad\Longrightarrow\quad M_n\mid\delta_j/\delta_n.
+\tag{RC2.7}
+\]</span>
+<p>For the small displacement, <span class="math" data-tex="\(s_{n+1}-L_{n+1}\ge(15/16)s_{n+1}\ge30(n+1)s_n\ge(n+10)s_n\)">\(s_{n+1}-L_{n+1}\ge(15/16)s_{n+1}\ge30(n+1)s_n\ge(n+10)s_n\)</span>. For divisibility, <span class="math" data-tex="\(s_n-L_n\ge(15/16)s_n\ge30s_{n-1}\ge s_j\)">\(s_n-L_n\ge(15/16)s_n\ge30s_{n-1}\ge s_j\)</span>, so the integer power <span class="math" data-tex="\(2^{s_n-s_j}\)">\(2^{s_n-s_j}\)</span> contains the full factor <span class="math" data-tex="\(2^{L_n}\)">\(2^{L_n}\)</span>. The strict part of RC2.6 uses <span class="math" data-tex="\(\delta_n\le2^{-16}\)">\(\delta_n\le2^{-16}\)</span>.</p>
+<p>The intended history, only used in proving the trajectory, is</p>
+<span class="math math-display" data-tex="\[
+y_n=\sum_{j=0}^n\delta_jk_j\in[0,1),\qquad
+m=y_n/\delta_n\in\{0,\ldots,D_n-1\},\qquad
+m\bmod M_n=k_n.
+\tag{RC2.8}
+\]">\[
+y_n=\sum_{j=0}^n\delta_jk_j\in[0,1),\qquad
+m=y_n/\delta_n\in\{0,\ldots,D_n-1\},\qquad
+m\bmod M_n=k_n.
+\tag{RC2.8}
+\]</span>
+<p>Every older record remains present. RC2.7 removes it from the residue used to read the current record. The compiler does not compute this sequence.</p>
+<h2 id="rc3-addressed-curls-exact-paths-and-the-torus-map">RC3. Addressed curls, exact paths and the torus map</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+\zeta(v)=\prod_{\ell=1}^3H(16(v_\ell+1/8))H(16(1/8-v_\ell)).
+\tag{RC3.1}
+\]">\[
+\zeta(v)=\prod_{\ell=1}^3H(16(v_\ell+1/8))H(16(1/8-v_\ell)).
+\tag{RC3.1}
+\]</span>
+<p>Its support is in <span class="math" data-tex="\([-1/8,1/8]^3\)">\([-1/8,1/8]^3\)</span>, and it equals one on <span class="math" data-tex="\([-1/16,1/16]^3\)">\([-1/16,1/16]^3\)</span>. For a center path <span class="math" data-tex="\(c\)">\(c\)</span> and positive scale <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, define the full vector field</p>
+<span class="math math-display" data-tex="\[
+\mathcal V(\sigma,x)=\nabla_x\times
+\left[\zeta\!\left(\frac{x-c(\sigma)}{\delta}\right)
+\frac{\dot c(\sigma)\times(x-c(\sigma))}{2}\right].
+\tag{RC3.2}
+\]">\[
+\mathcal V(\sigma,x)=\nabla_x\times
+\left[\zeta\!\left(\frac{x-c(\sigma)}{\delta}\right)
+\frac{\dot c(\sigma)\times(x-c(\sigma))}{2}\right].
+\tag{RC3.2}
+\]</span>
+<p>The divergence of a curl is zero. Direct component differentiation gives
+<span class="math" data-tex="\(\nabla_x\times(a\times(x-c))=2a\)">\(\nabla_x\times(a\times(x-c))=2a\)</span>, so this field equals <span class="math" data-tex="\(\dot c\)">\(\dot c\)</span> near its center. The center curve solves its ODE exactly.</p>
+<p>During loading use <span class="math" data-tex="\(\delta=1,\ c(t)=\theta(t)(-1,y_0,0)\)">\(\delta=1,\ c(t)=\theta(t)(-1,y_0,0)\)</span>. On the next slot <span class="math" data-tex="\(t\in[1+n,2+n]\)">\(t\in[1+n,2+n]\)</span>, with <span class="math" data-tex="\(\sigma=t-1-n\)">\(\sigma=t-1-n\)</span>, use every <span class="math" data-tex="\(0\le m\le D_n\)">\(0\le m\le D_n\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+k&amp;=m\bmod M_n,&amp;a_{n,m}&amp;=(-1,m\delta_n,0),\\
+d_{n,m}&amp;=(-b_nh_n(k),\,\delta_{n+1}F_n(k),\,0),&amp;
+c_{n,m}(\sigma)&amp;=a_{n,m}+\theta(\sigma)d_{n,m},\\
+W(t,x)&amp;=\sum_{m=0}^{D_n}\mathcal V_{n,m}(\sigma,x).
+\end{aligned}
+\tag{RC3.3}
+\]">\[
+\begin{aligned}
+k&amp;=m\bmod M_n,&amp;a_{n,m}&amp;=(-1,m\delta_n,0),\\
+d_{n,m}&amp;=(-b_nh_n(k),\,\delta_{n+1}F_n(k),\,0),&amp;
+c_{n,m}(\sigma)&amp;=a_{n,m}+\theta(\sigma)d_{n,m},\\
+W(t,x)&amp;=\sum_{m=0}^{D_n}\mathcal V_{n,m}(\sigma,x).
+\end{aligned}
+\tag{RC3.3}
+\]</span>
+<p>Here each summand uses <span class="math" data-tex="\(\delta=\delta_n\)">\(\delta=\delta_n\)</span>. Since <span class="math" data-tex="\(|d_{n,m}|_\infty\le b_n&lt;\delta_n/8\)">\(|d_{n,m}|_\infty\le b_n&lt;\delta_n/8\)</span>, its support lies inside
+<span class="math" data-tex="\(|x_2-m\delta_n|&lt;\delta_n/4\)">\(|x_2-m\delta_n|&lt;\delta_n/4\)</span>. These strips are pairwise disjoint. At every point at most one summand contributes, including its derivatives. All pieces vanish on quarter-unit time collars. Every bounded time interval meets finitely many finite sums, proving global smoothness and zero initial velocity. Loading lies within a <span class="math" data-tex="\(1/8\)">\(1/8\)</span>-enlargement of the segment from zero to <span class="math" data-tex="\((-1,y_0,0)\)">\((-1,y_0,0)\)</span>; later centers and supports obey the same fixed interior containment</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp} W(t)\subset\operatorname{int}K,\qquad
+K=[-2,1]\times[-1,2]\times[-1,1].
+\tag{RC3.4}
+\]">\[
+\operatorname{supp} W(t)\subset\operatorname{int}K,\qquad
+K=[-2,1]\times[-1,2]\times[-1,1].
+\tag{RC3.4}
+\]</span>
+<p>The derivative estimate retains the original scale factors. Put
+<span class="math" data-tex="\(\bar x=(x-a_{n,m})/\delta_n,\ \eta=d_{n,m}/\delta_n,\ \xi=d_{n,m}/b_n\)">\(\bar x=(x-a_{n,m})/\delta_n,\ \eta=d_{n,m}/\delta_n,\ \xi=d_{n,m}/b_n\)</span>.
+The exact identity, in the original field, is</p>
+<span class="math math-display" data-tex="\[
+\mathcal V_{n,m}(\sigma,x)=
+b_n\nabla_{\bar x}\times
+\left[\zeta(\bar x-\theta(\sigma)\eta)
+\frac{\theta&#x27;(\sigma)\xi\times(\bar x-\theta(\sigma)\eta)}2\right].
+\tag{RC3.5}
+\]">\[
+\mathcal V_{n,m}(\sigma,x)=
+b_n\nabla_{\bar x}\times
+\left[\zeta(\bar x-\theta(\sigma)\eta)
+\frac{\theta&#x27;(\sigma)\xi\times(\bar x-\theta(\sigma)\eta)}2\right].
+\tag{RC3.5}
+\]</span>
+<p>Both parameter vectors lie in <span class="math" data-tex="\([-1,1]^3\)">\([-1,1]^3\)</span>. The bracket and all its derivatives have uniform compact spatial support and effective bounds over this compact parameter set. Returning each spatial derivative to <span class="math" data-tex="\(x\)">\(x\)</span> contributes exactly <span class="math" data-tex="\(\delta_n^{-1}\)">\(\delta_n^{-1}\)</span>. Time derivatives differentiate the fixed profile with bounded parameter <span class="math" data-tex="\(\eta\)">\(\eta\)</span>; they have no additional inverse scale. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|\partial_t^l\partial_x^\alpha W(t)\|_\infty
+\le C_{l,\alpha}b_n\delta_n^{-|\alpha|}.
+\tag{RC3.6}
+\]">\[
+\|\partial_t^l\partial_x^\alpha W(t)\|_\infty
+\le C_{l,\alpha}b_n\delta_n^{-|\alpha|}.
+\tag{RC3.6}
+\]</span>
+<p>Disjoint supports remove any factor counting addresses. RC1.3 gives the more explicit force bound, with <span class="math" data-tex="\(k=|\alpha|\)">\(k=|\alpha|\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\partial_t^l\partial_x^\alpha f(t)\|_\infty
+\le{}&amp;C_{l+1,\alpha}b_n\delta_n^{-k}
++\nu\sum_{j=1}^3C_{l,\alpha+2e_j}b_n\delta_n^{-k-2}\\
+&amp;+\sum_{j=1}^3\sum_{h=0}^l\sum_{\gamma\le\alpha}
+\binom lh\binom\alpha\gamma
+C_{h,\gamma}C_{l-h,\alpha-\gamma+e_j}
+b_n^2\delta_n^{-k-1}.
+\end{aligned}
+\tag{RC3.7}
+\]">\[
+\begin{aligned}
+\|\partial_t^l\partial_x^\alpha f(t)\|_\infty
+\le{}&amp;C_{l+1,\alpha}b_n\delta_n^{-k}
++\nu\sum_{j=1}^3C_{l,\alpha+2e_j}b_n\delta_n^{-k-2}\\
+&amp;+\sum_{j=1}^3\sum_{h=0}^l\sum_{\gamma\le\alpha}
+\binom lh\binom\alpha\gamma
+C_{h,\gamma}C_{l-h,\alpha-\gamma+e_j}
+b_n^2\delta_n^{-k-1}.
+\end{aligned}
+\tag{RC3.7}
+\]</span>
+<p>The constants bound all components. RC2.6 bounds the linear terms by powers <span class="math" data-tex="\(\delta_n^{n+10-k}\)">\(\delta_n^{n+10-k}\)</span> and <span class="math" data-tex="\(\delta_n^{n+8-k}\)">\(\delta_n^{n+8-k}\)</span>, and the product by <span class="math" data-tex="\(\delta_n^{2n+19-k}\)">\(\delta_n^{2n+19-k}\)</span>. For <span class="math" data-tex="\(n\ge k\)">\(n\ge k\)</span> all are at most <span class="math" data-tex="\(\delta_n\)">\(\delta_n\)</span>. Since <span class="math" data-tex="\(\delta_n\le2^{-n}\)">\(\delta_n\le2^{-n}\)</span> and <span class="math" data-tex="\(1+t\le n+3\)">\(1+t\le n+3\)</span>, every time weight is bounded. For an explicit tail cutoff for integer <span class="math" data-tex="\(J\)">\(J\)</span>, take <span class="math" data-tex="\(n+3\ge4J\)">\(n+3\ge4J\)</span>: the successive ratio of <span class="math" data-tex="\((n+3)^J2^{-n}\)">\((n+3)^J2^{-n}\)</span> is at most <span class="math" data-tex="\(e^{1/4}/2&lt;3/4\)">\(e^{1/4}/2&lt;3/4\)</span>. The case <span class="math" data-tex="\(J=0\)">\(J=0\)</span> is immediate. The preceding finite slots and loading have effective individual bounds. This proves RC0.2 for <span class="math" data-tex="\(W\)">\(W\)</span> and its full residual. Compact support and finite-cylinder derivative bounds give every Sobolev condition in RC0.3, so RC1 proves the stated unique solution.</p>
+<p>Loading takes the origin to <span class="math" data-tex="\((-1,y_0,0)\)">\((-1,y_0,0)\)</span> without crossing <span class="math" data-tex="\(X_1=-1\)">\(X_1=-1\)</span>. At time <span class="math" data-tex="\(1+n\)">\(1+n\)</span>, before a halt, RC2.8 puts the particle exactly at <span class="math" data-tex="\(a_{n,m}\)">\(a_{n,m}\)</span> with residue <span class="math" data-tex="\(k_n\)">\(k_n\)</span>. RC3.2–RC3.3 show that its entire next curve is <span class="math" data-tex="\(c_{n,m}\)">\(c_{n,m}\)</span>, since all other supports are disjoint. For a nonterminal state the first coordinate stays exactly <span class="math" data-tex="\(-1\)">\(-1\)</span> and the next memory is <span class="math" data-tex="\(y_n+\delta_{n+1}F_n(k_n)=y_{n+1}\)">\(y_n+\delta_{n+1}F_n(k_n)=y_{n+1}\)</span>. In a terminal state the endpoint is <span class="math" data-tex="\(-1-b_n&lt;-1\)">\(-1-b_n&lt;-1\)</span>. This handles immediate halting too. No intermediate false positive occurs.</p>
+<p>For effective evaluation, a rational enclosure of time of radius less than <span class="math" data-tex="\(1/32\)">\(1/32\)</span> either identifies a slot or places the argument within <span class="math" data-tex="\(1/16\)">\(1/16\)</span> of an integer, where the field is zero. In a selected slot an enclosure of <span class="math" data-tex="\(x_2\)">\(x_2\)</span> of radius less than <span class="math" data-tex="\(\delta_n/32\)">\(\delta_n/32\)</span> either selects the nearest grid address or meets a midpoint. In the latter case the true coordinate lies within <span class="math" data-tex="\(\delta_n/16\)">\(\delta_n/16\)</span> of the midpoint, outside every supporting strip. Address indices outside <span class="math" data-tex="\([0,D_n]\)">\([0,D_n]\)</span> contribute zero. Alternatively the finite sum can be evaluated in full. Integer arithmetic and one transition lookup at the address suffice; no actual orbit is needed. Effective derivative bounds control every requested rational error at flat boundaries.</p>
+<p>For the source's torus corollary retain</p>
+<span class="math math-display" data-tex="\[
+\lambda=1/8,\quad c=(1/2,1/4,1/2),\quad
+v(t,x)=\lambda W\!\left(t,\frac{x-c}{\lambda}\right).
+\tag{RC3.8}
+\]">\[
+\lambda=1/8,\quad c=(1/2,1/4,1/2),\quad
+v(t,x)=\lambda W\!\left(t,\frac{x-c}{\lambda}\right).
+\tag{RC3.8}
+\]</span>
+<p>The image <span class="math" data-tex="\(c+\lambda K=[1/4,5/8]\times[1/8,1/2]\times[3/8,5/8]\)">\(c+\lambda K=[1/4,5/8]\times[1/8,1/2]\times[3/8,5/8]\)</span> lies inside the unit cube. Zero extension and periodization are smooth. If <span class="math" data-tex="\(W=\nabla_y\times A\)">\(W=\nabla_y\times A\)</span>, the actual periodic potential is <span class="math" data-tex="\(\lambda^2A(t,(x-c)/\lambda)\)">\(\lambda^2A(t,(x-c)/\lambda)\)</span>, whose curl is <span class="math" data-tex="\(v\)">\(v\)</span>; hence <span class="math" data-tex="\(v\)">\(v\)</span> is mean zero. Its force at the specified original viscosity is</p>
+<span class="math math-display" data-tex="\[
+g(t,x)=
+\lambda W_t(t,y)+\lambda(W\cdot\nabla_y)W(t,y)
+-\nu\lambda^{-1}\Delta_yW(t,y),\qquad y=(x-c)/\lambda.
+\tag{RC3.9}
+\]">\[
+g(t,x)=
+\lambda W_t(t,y)+\lambda(W\cdot\nabla_y)W(t,y)
+-\nu\lambda^{-1}\Delta_yW(t,y),\qquad y=(x-c)/\lambda.
+\tag{RC3.9}
+\]</span>
+<p>Thus every mixed derivative has the full factor <span class="math" data-tex="\(\lambda^{1-|\alpha|}\)">\(\lambda^{1-|\alpha|}\)</span> in the first two terms and <span class="math" data-tex="\(\nu\lambda^{-1-|\alpha|}\)">\(\nu\lambda^{-1-|\alpha|}\)</span> in the viscous term. No viscosity invariance has been assumed. The divergence-form nonlinear term, time derivative and Laplacian all have zero spatial integral. Apply RC1.8–RC1.12 to obtain the solenoidal force and pressure <span class="math" data-tex="\(-\phi\)">\(-\phi\)</span>, retaining rapid bounds.</p>
+<p>The particle is <span class="math" data-tex="\(c+\lambda X^W(t,0)\)">\(c+\lambda X^W(t,0)\)</span> through the first signal and for every nonhalting run, by the chain rule and ODE uniqueness. Its first coordinate is at least <span class="math" data-tex="\(3/8\)">\(3/8\)</span> during loading, exactly <span class="math" data-tex="\(3/8\)">\(3/8\)</span> on nonterminal slots, and <span class="math" data-tex="\(3/8-b_n/8\in(1/4,3/8)\)">\(3/8-b_n/8\in(1/4,3/8)\)</span> at a terminal endpoint. RC2.6 and the support bounds keep the other coordinates in the same chart. This proves the precise torus event without wrapping ambiguity.</p>
+<h2 id="rc4-alternating-memory-complete-blocks-and-a-smooth-decoder">RC4. Alternating memory: complete blocks and a smooth decoder</h2>
+<p>For this separate construction retain the machine's state set <span class="math" data-tex="\(Q\)">\(Q\)</span>, halting subset <span class="math" data-tex="\(H_Q\)">\(H_Q\)</span>, alphabet <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and input length <span class="math" data-tex="\(N\)">\(N\)</span>. A missing transition enters a new halting state without moving or changing the symbol. Extend halting instructions by <span class="math" data-tex="\((q,a)\mapsto(q,a,0)\)">\((q,a)\mapsto(q,a,0)\)</span>, which freezes the halted configuration. Set</p>
+<span class="math math-display" data-tex="\[
+b=2(1+\max(|Q|,|\Gamma|)),\qquad
+m=\frac{b-2}{b-1}&lt;1,\qquad
+J_s=[g_s/b,(g_s+1)/b],
+\tag{RC4.1}
+\]">\[
+b=2(1+\max(|Q|,|\Gamma|)),\qquad
+m=\frac{b-2}{b-1}&lt;1,\qquad
+J_s=[g_s/b,(g_s+1)/b],
+\tag{RC4.1}
+\]</span>
+<p>where the state digits and symbol digits are distinct even numbers within their respective families, from <span class="math" data-tex="\(0,2,\ldots,b-2\)">\(0,2,\ldots,b-2\)</span>, and the blank symbol has digit zero. Choose smooth selectors <span class="math" data-tex="\(\phi_s\)">\(\phi_s\)</span> equal to one near <span class="math" data-tex="\(J_s\)">\(J_s\)</span>, with disjoint supports within each family. The gaps between the closed intervals are at least <span class="math" data-tex="\(1/b\)">\(1/b\)</span>, so rational enlargements of width less than <span class="math" data-tex="\(1/(3b)\)">\(1/(3b)\)</span> and RC1.1 provide such selectors with effective derivative bounds.</p>
+<p>Use the right-handed cyclic coordinates <span class="math" data-tex="\((x,y,z)=(X_2,X_3,X_1)\)">\((x,y,z)=(X_2,X_3,X_1)\)</span>. Let <span class="math" data-tex="\(\xi_n,\eta_n\)">\(\xi_n,\eta_n\)</span> be the fractional tape codes left of the head and from the head rightward, nearest symbol first. All nonblank symbols fit in</p>
+<span class="math math-display" data-tex="\[
+K_n=N+2n+2,\qquad
+C_n=\frac{g_{q_n}+\xi_n+b^{-K_n}\eta_n}{b},\qquad
+s_n=(N+1)2^{(n+3)^2},\qquad \epsilon_n=b^{-s_n}.
+\tag{RC4.2}
+\]">\[
+K_n=N+2n+2,\qquad
+C_n=\frac{g_{q_n}+\xi_n+b^{-K_n}\eta_n}{b},\qquad
+s_n=(N+1)2^{(n+3)^2},\qquad \epsilon_n=b^{-s_n}.
+\tag{RC4.2}
+\]</span>
+<p>Indeed the head moves at most <span class="math" data-tex="\(n\)">\(n\)</span> cells and nonblank cells are either initially present or visited. Both stacks can be padded with zeros to <span class="math" data-tex="\(K_n\)">\(K_n\)</span> digits. Every fractional tail lies in <span class="math" data-tex="\([0,m]\)">\([0,m]\)</span>, since <span class="math" data-tex="\(\sum_{j\ge1}(b-2)b^{-j}=m\)">\(\sum_{j\ge1}(b-2)b^{-j}=m\)</span>; <span class="math" data-tex="\(b^{1+2K_n}C_n\)">\(b^{1+2K_n}C_n\)</span> is an integer.</p>
+<p>The exact scale relations are</p>
+<span class="math math-display" data-tex="\[
+s_n&gt;1+2K_n,\qquad s_{n+1}/s_n=2^{2n+7},\qquad
+s_{n+1}&gt;s_n+1+2K_n.
+\tag{RC4.3}
+\]">\[
+s_n&gt;1+2K_n,\qquad s_{n+1}/s_n=2^{2n+7},\qquad
+s_{n+1}&gt;s_n+1+2K_n.
+\tag{RC4.3}
+\]</span>
+<p>For the first inequality, <span class="math" data-tex="\(s_n\ge8(N+1)(n+1)\)">\(s_n\ge8(N+1)(n+1)\)</span>, whereas <span class="math" data-tex="\(1+2K_n=2N+4n+5\)">\(1+2K_n=2N+4n+5\)</span>; their difference is at least <span class="math" data-tex="\(6N+4n+3\)">\(6N+4n+3\)</span>. The ratio is at least <span class="math" data-tex="\(128\)">\(128\)</span>, which proves the third inequality. At time <span class="math" data-tex="\(1+n\)">\(1+n\)</span> the proposed histories are</p>
+<span class="math math-display" data-tex="\[
+x_n=\sum_{\substack{0\le j\le n\\ j\ {\rm even}}}\epsilon_jC_j,
+\qquad
+y_n=\sum_{\substack{0\le j\le n\\ j\ {\rm odd}}}\epsilon_jC_j.
+\tag{RC4.4}
+\]">\[
+x_n=\sum_{\substack{0\le j\le n\\ j\ {\rm even}}}\epsilon_jC_j,
+\qquad
+y_n=\sum_{\substack{0\le j\le n\\ j\ {\rm odd}}}\epsilon_jC_j.
+\tag{RC4.4}
+\]</span>
+<p>Choose rationals <span class="math" data-tex="\(m&lt;a_P&lt;b_P&lt;1\)">\(m&lt;a_P&lt;b_P&lt;1\)</span>, and extend</p>
+<span class="math math-display" data-tex="\[
+P(v)=v-H((v-a_P)/(b_P-a_P))\quad(0\le v\le1)
+\tag{RC4.5}
+\]">\[
+P(v)=v-H((v-a_P)/(b_P-a_P))\quad(0\le v\le1)
+\tag{RC4.5}
+\]</span>
+<p>periodically. Near zero it is <span class="math" data-tex="\(v\)">\(v\)</span>, near one it is <span class="math" data-tex="\(v-1\)">\(v-1\)</span>, so the values and every derivative match across the join. It is smooth and bounded, and it equals the fractional part whenever that fractional part lies in <span class="math" data-tex="\([0,m]\)">\([0,m]\)</span>.</p>
+<p>In slot <span class="math" data-tex="\(n\)">\(n\)</span>, the donor <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(x\)">\(x\)</span> for even <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> for odd <span class="math" data-tex="\(n\)">\(n\)</span>. Define on every real donor value</p>
+<span class="math math-display" data-tex="\[
+C=P(b^{s_n}D),\qquad B=P(b^{s_n+1+K_n}D),\qquad
+A=P(b^{s_n+1}D)-b^{-K_n}B.
+\tag{RC4.6}
+\]">\[
+C=P(b^{s_n}D),\qquad B=P(b^{s_n+1+K_n}D),\qquad
+A=P(b^{s_n+1}D)-b^{-K_n}B.
+\tag{RC4.6}
+\]</span>
+<p>At the proposed history, an earlier block <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span> has denominator <span class="math" data-tex="\(b^{s_j+1+2K_j}\)">\(b^{s_j+1+2K_j}\)</span>, and RC4.3 makes it an integer after multiplication by <span class="math" data-tex="\(b^{s_n}\)">\(b^{s_n}\)</span>. The remaining fractional part is <span class="math" data-tex="\(C_n\)">\(C_n\)</span>. Multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> removes the state digit, leaving <span class="math" data-tex="\(\xi_n+b^{-K_n}\eta_n\)">\(\xi_n+b^{-K_n}\eta_n\)</span>; this is a concatenation of allowed tape digits and lies in <span class="math" data-tex="\([0,m]\)">\([0,m]\)</span>. Multiplication by another <span class="math" data-tex="\(b^{K_n}\)">\(b^{K_n}\)</span> removes the finite left stack and leaves <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span>. Therefore RC4.6 gives exactly <span class="math" data-tex="\(C=C_n,\ B=\eta_n,\ A=\xi_n\)">\(C=C_n,\ B=\eta_n,\ A=\xi_n\)</span>, with no discontinuous equality test.</p>
+<p>List every table branch <span class="math" data-tex="\(i:(q,a)\mapsto(p_i,b_i,d_i)\)">\(i:(q,a)\mapsto(p_i,b_i,d_i)\)</span>, including frozen halting rules; split left moves by the left-top symbol <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\Psi_i(D)=\phi_q(C)\phi_a(B)
+\begin{cases}1,&amp;d_i=0,1,\\\phi_\ell(A),&amp;d_i=-1,\end{cases}
+\quad R=bB-g_a,
+\tag{RC4.7}
+\]">\[
+\Psi_i(D)=\phi_q(C)\phi_a(B)
+\begin{cases}1,&amp;d_i=0,1,\\\phi_\ell(A),&amp;d_i=-1,\end{cases}
+\quad R=bB-g_a,
+\tag{RC4.7}
+\]</span>
+<span class="math math-display" data-tex="\[
+(T_i^1,T_i^2)=
+\begin{cases}
+((g_{b_i}+A)/b,R),&amp;d_i=1,\\
+(A,(g_{b_i}+R)/b),&amp;d_i=0,\\
+(bA-g_\ell,(g_\ell+(g_{b_i}+R)/b)/b),&amp;d_i=-1.
+\end{cases}
+\tag{RC4.8}
+\]">\[
+(T_i^1,T_i^2)=
+\begin{cases}
+((g_{b_i}+A)/b,R),&amp;d_i=1,\\
+(A,(g_{b_i}+R)/b),&amp;d_i=0,\\
+(bA-g_\ell,(g_\ell+(g_{b_i}+R)/b)/b),&amp;d_i=-1.
+\end{cases}
+\tag{RC4.8}
+\]</span>
+<p>At a true donor the state and top-symbol codes lie in their correct selector plateaus, so precisely one branch has weight one. Removing or prefixing each first base-<span class="math" data-tex="\(b\)">\(b\)</span> digit gives exactly the three displayed push/pop formulas. Their outputs are <span class="math" data-tex="\(\xi_{n+1},\eta_{n+1}\)">\(\xi_{n+1},\eta_{n+1}\)</span>, fitting the enlarged <span class="math" data-tex="\(K_{n+1}\)">\(K_{n+1}\)</span> places. Retain the full writing and signal functions</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_n(D)&amp;=\frac{\epsilon_{n+1}}b\sum_i\Psi_i(D)
+(g_{p_i}+T_i^1+b^{-K_{n+1}}T_i^2),\\
+E_n(D)&amp;=\epsilon_n-\epsilon_{n+1}
++2\epsilon_{n+1}\sum_{q\in H_Q}\phi_q(C).
+\end{aligned}
+\tag{RC4.9}
+\]">\[
+\begin{aligned}
+L_n(D)&amp;=\frac{\epsilon_{n+1}}b\sum_i\Psi_i(D)
+(g_{p_i}+T_i^1+b^{-K_{n+1}}T_i^2),\\
+E_n(D)&amp;=\epsilon_n-\epsilon_{n+1}
++2\epsilon_{n+1}\sum_{q\in H_Q}\phi_q(C).
+\end{aligned}
+\tag{RC4.9}
+\]</span>
+<p>Thus <span class="math" data-tex="\(L_n=\epsilon_{n+1}C_{n+1}\)">\(L_n=\epsilon_{n+1}C_{n+1}\)</span> at the intended donor. The old memory is retained; no disjointness of the machine's transition images is required.</p>
+<h2 id="rc5-alternating-curls-signal-and-all-derivative-costs">RC5. Alternating curls, signal and all derivative costs</h2>
+<p>Choose a fixed compact smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near <span class="math" data-tex="\([0,1]^2\times[-1,1]\)">\([0,1]^2\times[-1,1]\)</span>. An explicit permissible choice is the product of
+<span class="math" data-tex="\(H(2(x+1))H(2(2-x))\)">\(H(2(x+1))H(2(2-x))\)</span>, the same factors for <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(H(2(z+2))H(2(2-z))\)">\(H(2(z+2))H(2(2-z))\)</span>. Its support lies in <span class="math" data-tex="\([-1,2]^2\times[-2,2]\)">\([-1,2]^2\times[-2,2]\)</span>, and its plateau contains the required box with a positive margin.</p>
+<p>On slot <span class="math" data-tex="\([1+n,2+n]\)">\([1+n,2+n]\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+U(t)=\theta&#x27;(t-1-n)V_n,\qquad
+V_n=
+\begin{cases}
+\operatorname{curl}(\chi(zL_n(x)-yE_n(x)),0,0),&amp;n\text{ even},\\
+\operatorname{curl}(0,\chi(xE_n(y)-zL_n(y)),0),&amp;n\text{ odd}.
+\end{cases}
+\tag{RC5.1}
+\]">\[
+U(t)=\theta&#x27;(t-1-n)V_n,\qquad
+V_n=
+\begin{cases}
+\operatorname{curl}(\chi(zL_n(x)-yE_n(x)),0,0),&amp;n\text{ even},\\
+\operatorname{curl}(0,\chi(xE_n(y)-zL_n(y)),0),&amp;n\text{ odd}.
+\end{cases}
+\tag{RC5.1}
+\]</span>
+<p>On the plateau direct curl differentiation gives respectively <span class="math" data-tex="\((0,L_n,E_n)\)">\((0,L_n,E_n)\)</span> and <span class="math" data-tex="\((L_n,0,E_n)\)">\((L_n,0,E_n)\)</span>. The donor coordinate is exactly stationary throughout its slot. For loading use</p>
+<span class="math math-display" data-tex="\[
+d=(\epsilon_0C_0,0,1-\epsilon_0),\qquad
+U(t,x,y,z)=\theta&#x27;(t)\operatorname{curl}
+\left[\frac12\chi(x,y,z)(d\times(x,y,z))\right].
+\tag{RC5.2}
+\]">\[
+d=(\epsilon_0C_0,0,1-\epsilon_0),\qquad
+U(t,x,y,z)=\theta&#x27;(t)\operatorname{curl}
+\left[\frac12\chi(x,y,z)(d\times(x,y,z))\right].
+\tag{RC5.2}
+\]</span>
+<p>The initial point is <span class="math" data-tex="\((x,y,z)=(0,0,-1)\)">\((x,y,z)=(0,0,-1)\)</span>. Its loading curve is <span class="math" data-tex="\((0,0,-1)+\theta(t)d\)">\((0,0,-1)+\theta(t)d\)</span>, entirely in the plateau, ending at <span class="math" data-tex="\((\epsilon_0C_0,0,-\epsilon_0)\)">\((\epsilon_0C_0,0,-\epsilon_0)\)</span>.</p>
+<p>Assuming RC4.4 at a slot start, RC4.6 and the stationary donor make <span class="math" data-tex="\(L_n,E_n\)">\(L_n,E_n\)</span> constant along the proposed segment. The recipient memory gains <span class="math" data-tex="\(\theta L_n\)">\(\theta L_n\)</span>, and the signal gains <span class="math" data-tex="\(\theta E_n\)">\(\theta E_n\)</span>. Both memories remain between zero and <span class="math" data-tex="\(\sum_j\epsilon_j\le2\epsilon_0&lt;1/4\)">\(\sum_j\epsilon_j\le2\epsilon_0&lt;1/4\)</span>. Indeed <span class="math" data-tex="\(s_{j+1}-s_j\ge1\)">\(s_{j+1}-s_j\ge1\)</span> and <span class="math" data-tex="\(b\ge4\)">\(b\ge4\)</span> give a geometric majorant with ratio at most <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. The signal increment is between zero and <span class="math" data-tex="\(\epsilon_n+\epsilon_{n+1}\)">\(\epsilon_n+\epsilon_{n+1}\)</span>, so its total displacement is less than <span class="math" data-tex="\(2\sum_j\epsilon_j&lt;1/2\)">\(2\sum_j\epsilon_j&lt;1/2\)</span>. All proposed segments therefore stay in the cutoff plateau, even after halting. They solve the actual ODE, and uniqueness proves the full trajectory induction.</p>
+<p>Before the first halting slot, <span class="math" data-tex="\(z=-\epsilon_n\)">\(z=-\epsilon_n\)</span> at its start and interpolates monotonically to <span class="math" data-tex="\(-\epsilon_{n+1}\)">\(-\epsilon_{n+1}\)</span>. At the first halting slot the endpoint is <span class="math" data-tex="\(+\epsilon_{n+1}\)">\(+\epsilon_{n+1}\)</span>. Loading stays negative. Since <span class="math" data-tex="\(z=X_1\)">\(z=X_1\)</span>, this proves precisely the fixed open event, including immediate halting and every intermediate time.</p>
+<p>For derivatives put <span class="math" data-tex="\(\Lambda_n=b^{s_n+1+K_n}\)">\(\Lambda_n=b^{s_n+1+K_n}\)</span>. Each derivative of order <span class="math" data-tex="\(r\)">\(r\)</span> of the three decoder functions is bounded by a fixed constant times <span class="math" data-tex="\(\Lambda_n^r\)">\(\Lambda_n^r\)</span>: their coefficients are bounded, and the greatest frequency is the displayed one. In a chain-rule term of total order <span class="math" data-tex="\(r\)">\(r\)</span>, the orders of differentiated decoder factors sum to <span class="math" data-tex="\(r\)">\(r\)</span>, so their frequency factors multiply to <span class="math" data-tex="\(\Lambda_n^r\)">\(\Lambda_n^r\)</span>. The finite branch list and fixed selectors then give</p>
+<span class="math math-display" data-tex="\[
+\|L_n/\epsilon_{n+1}\|_{C^r}
++\left\|\sum_{q\in H_Q}\phi_q(C)\right\|_{C^r}
+\le C_r b^{r(s_n+1+K_n)}.
+\tag{RC5.3}
+\]">\[
+\|L_n/\epsilon_{n+1}\|_{C^r}
++\left\|\sum_{q\in H_Q}\phi_q(C)\right\|_{C^r}
+\le C_r b^{r(s_n+1+K_n)}.
+\tag{RC5.3}
+\]</span>
+<p>The factors <span class="math" data-tex="\(b^{-K_n}\)">\(b^{-K_n}\)</span> and <span class="math" data-tex="\(b^{-K_{n+1}}\)">\(b^{-K_{n+1}}\)</span> are bounded by one. For <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, retain its constant part <span class="math" data-tex="\(\epsilon_n-\epsilon_{n+1}\)">\(\epsilon_n-\epsilon_{n+1}\)</span> separately from its variable part. One curl derivative and the fixed cutoff give</p>
+<span class="math math-display" data-tex="\[
+\|V_n\|_{C^r}\le C_r&#x27;
+\left(b^{-s_n}+b^{-s_{n+1}+(r+1)(s_n+1+K_n)}\right).
+\tag{RC5.4}
+\]">\[
+\|V_n\|_{C^r}\le C_r&#x27;
+\left(b^{-s_n}+b^{-s_{n+1}+(r+1)(s_n+1+K_n)}\right).
+\tag{RC5.4}
+\]</span>
+<p>Since <span class="math" data-tex="\(K_n+1&lt;s_n\)">\(K_n+1&lt;s_n\)</span>, the second exponent is at most <span class="math" data-tex="\(-s_n\)">\(-s_n\)</span> whenever <span class="math" data-tex="\(2^{2n+7}\ge2r+3\)">\(2^{2n+7}\ge2r+3\)</span>. This is an explicit finite tail threshold. Time derivatives differentiate only the fixed pulse. The zero collars give smooth gluing, and <span class="math" data-tex="\(s_n\ge n\)">\(s_n\ge n\)</span> makes every weighted tail bounded as in RC3. RC1.3 then proves the full force bounds, including its viscosity factors and all product terms. Fixed support gives RC0.3 and the stronger spatial weight. The cyclic coordinate permutation has determinant one; the divergence, curl construction, componentwise Laplacian and prescribed physical event retain their original orientation and meaning.</p>
+<p>Evaluation uses the finite branch list and integer scales. The periodic <span class="math" data-tex="\(P\)">\(P\)</span> is evaluated from neighboring translates or its affine formula near an integer, without deciding a real fractional-part boundary. Certified enclosures and the zero time collars select a finite set of slots; the derivative bounds control all requested errors. Only <span class="math" data-tex="\(C_0\)">\(C_0\)</span> uses the initial word's actual symbols. Later formulas act on their spatial donor arguments.</p>
+<h2 id="rc6-periodic-lattice-complete-integer-codes-and-exact-divisibility">RC6. Periodic lattice: complete integer codes and exact divisibility</h2>
+<p>For the third construction, add a read-only bit track with a single marked bit at the original origin. Every transition preserves and ignores that bit when choosing its instruction. A missing instruction enters a fresh halting state without moving or changing the symbol. Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be the transformed input, containing the marked origin even for an empty original input; let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be this transformed alphabet, with all-blank digit zero. Set</p>
+<span class="math math-display" data-tex="\[
+b=\max(2,|\Gamma|,|Q|),\quad
+d_n=|\omega|+1+2n,\quad p_n=2d_n+1,\quad P_n=b^{p_n}.
+\tag{RC6.1}
+\]">\[
+b=\max(2,|\Gamma|,|Q|),\quad
+d_n=|\omega|+1+2n,\quad p_n=2d_n+1,\quad P_n=b^{p_n}.
+\tag{RC6.1}
+\]</span>
+<p>Symbols and states have distinct digits within their families in <span class="math" data-tex="\(\{0,\ldots,b-1\}\)">\(\{0,\ldots,b-1\}\)</span>. In each head-relative stack the nearest cell is the least significant digit. All nonblank cells fit within the left and right <span class="math" data-tex="\(d_n\)">\(d_n\)</span>-cell stacks, whose integer codes are <span class="math" data-tex="\(L,R\)">\(L,R\)</span>. The exact complete configuration code is</p>
+<span class="math math-display" data-tex="\[
+c_n=L+b^{d_n}R+b^{2d_n}s,\qquad 0\le c_n&lt;P_n.
+\tag{RC6.2}
+\]">\[
+c_n=L+b^{d_n}R+b^{2d_n}s,\qquad 0\le c_n&lt;P_n.
+\tag{RC6.2}
+\]</span>
+<p>The unique origin bit recovers the head's absolute position from those relative stacks. Thus no tape information is lost.</p>
+<p>Square brackets with a positive integer subscript denote the least nonnegative residue modulo that subscript. For every integer address <span class="math" data-tex="\(j\)">\(j\)</span>, reduce <span class="math" data-tex="\(c=[j]_{P_n}\)">\(c=[j]_{P_n}\)</span> and extract</p>
+<span class="math math-display" data-tex="\[
+L=[c]_{b^{d_n}},\quad
+R=[\lfloor c/b^{d_n}\rfloor]_{b^{d_n}},\quad
+s=\lfloor c/b^{2d_n}\rfloor,\quad l=[L]_b,\quad a=[R]_b.
+\tag{RC6.3}
+\]">\[
+L=[c]_{b^{d_n}},\quad
+R=[\lfloor c/b^{d_n}\rfloor]_{b^{d_n}},\quad
+s=\lfloor c/b^{2d_n}\rfloor,\quad l=[L]_b,\quad a=[R]_b.
+\tag{RC6.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(h_n(j)\)">\(h_n(j)\)</span> test whether <span class="math" data-tex="\(s\)">\(s\)</span> is a halting-state index. At a valid nonhalting state and valid scanned symbol, look up <span class="math" data-tex="\((s,a)\mapsto(s&#x27;,a&#x27;,m)\)">\((s,a)\mapsto(s&#x27;,a&#x27;,m)\)</span> and use</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(L&#x27;,R&#x27;)&amp;=
+\begin{cases}
+(a&#x27;+bL,(R-a)/b),&amp;m=1,\\
+((L-l)/b,l+ba&#x27;+b(R-a)),&amp;m=-1,\\
+(L,R-a+a&#x27;),&amp;m=0,
+\end{cases}\\
+F_n(j)&amp;=L&#x27;+b^{d_{n+1}}R&#x27;+b^{2d_{n+1}}s&#x27;.
+\end{aligned}
+\tag{RC6.4}
+\]">\[
+\begin{aligned}
+(L&#x27;,R&#x27;)&amp;=
+\begin{cases}
+(a&#x27;+bL,(R-a)/b),&amp;m=1,\\
+((L-l)/b,l+ba&#x27;+b(R-a)),&amp;m=-1,\\
+(L,R-a+a&#x27;),&amp;m=0,
+\end{cases}\\
+F_n(j)&amp;=L&#x27;+b^{d_{n+1}}R&#x27;+b^{2d_{n+1}}s&#x27;.
+\end{aligned}
+\tag{RC6.4}
+\]</span>
+<p>Otherwise <span class="math" data-tex="\(F_n(j)=0\)">\(F_n(j)=0\)</span>. Both functions are <span class="math" data-tex="\(P_n\)">\(P_n\)</span>-periodic. For the left branch,</p>
+<span class="math math-display" data-tex="\[
+R-a\le b^{d_n}-b,\qquad
+l+ba&#x27;+b(R-a)\le(b-1)+b(b-1)+b(b^{d_n}-b)=b^{d_n+1}-1.
+\tag{RC6.5}
+\]">\[
+R-a\le b^{d_n}-b,\qquad
+l+ba&#x27;+b(R-a)\le(b-1)+b(b-1)+b(b^{d_n}-b)=b^{d_n+1}-1.
+\tag{RC6.5}
+\]</span>
+<p>The other outputs also lie in <span class="math" data-tex="\([0,b^{d_n+1})\)">\([0,b^{d_n+1})\)</span>. Since <span class="math" data-tex="\(d_{n+1}=d_n+2\)">\(d_{n+1}=d_n+2\)</span> and <span class="math" data-tex="\(s&#x27;&lt;b\)">\(s&#x27;&lt;b\)</span>, every padded output satisfies <span class="math" data-tex="\(0\le F_n(j)&lt;P_{n+1}\)">\(0\le F_n(j)&lt;P_{n+1}\)</span>. The formulas remove and prefix the exact least-significant digits. In particular the left branch has the old left top, the just-written symbol and the old right tail, with both shifts retained. Hence <span class="math" data-tex="\(F_n(j)=c_{n+1}\)">\(F_n(j)=c_{n+1}\)</span> whenever <span class="math" data-tex="\(j\equiv c_n\pmod{P_n}\)">\(j\equiv c_n\pmod{P_n}\)</span> at an actual nonterminal configuration.</p>
+<p>Keep the source scales and the exceptional initial signal distance:</p>
+<span class="math math-display" data-tex="\[
+K_n=(p_0+10)2^{n(n+1)},\quad \epsilon_n=b^{-K_n},\qquad
+\beta_0=1/4,\quad\beta_n=\epsilon_n\ (n\ge1).
+\tag{RC6.6}
+\]">\[
+K_n=(p_0+10)2^{n(n+1)},\quad \epsilon_n=b^{-K_n},\qquad
+\beta_0=1/4,\quad\beta_n=\epsilon_n\ (n\ge1).
+\tag{RC6.6}
+\]</span>
+<p>Here <span class="math" data-tex="\(p_n=p_0+4n,\ K_{n+1}=2^{2n+2}K_n\)">\(p_n=p_0+4n,\ K_{n+1}=2^{2n+2}K_n\)</span>. Starting with <span class="math" data-tex="\(K_0=p_0+10\ge p_1\)">\(K_0=p_0+10\ge p_1\)</span>, induction gives <span class="math" data-tex="\(K_n\ge p_{n+1}\)">\(K_n\ge p_{n+1}\)</span>. Indeed the next factor is at least four, whereas <span class="math" data-tex="\(p_{n+2}=p_{n+1}+4\)">\(p_{n+2}=p_{n+1}+4\)</span> and <span class="math" data-tex="\(p_{n+1}\ge3\)">\(p_{n+1}\ge3\)</span>. For <span class="math" data-tex="\(k&lt;n\)">\(k&lt;n\)</span>,
+<span class="math" data-tex="\(K_n-K_k\ge K_n-K_{n-1}\ge3K_{n-1}\ge p_n\)">\(K_n-K_k\ge K_n-K_{n-1}\ge3K_{n-1}\ge p_n\)</span>.
+Therefore</p>
+<span class="math math-display" data-tex="\[
+P_n\mid\epsilon_n^{-1},\qquad
+P_n\mid\epsilon_k/\epsilon_n\ (k&lt;n),\qquad
+P_{n+1}\epsilon_{n+1}
+\le\epsilon_n^{\,2^{2n+2}-1}\le\epsilon_n^3&lt;\epsilon_n/4.
+\tag{RC6.7}
+\]">\[
+P_n\mid\epsilon_n^{-1},\qquad
+P_n\mid\epsilon_k/\epsilon_n\ (k&lt;n),\qquad
+P_{n+1}\epsilon_{n+1}
+\le\epsilon_n^{\,2^{2n+2}-1}\le\epsilon_n^3&lt;\epsilon_n/4.
+\tag{RC6.7}
+\]</span>
+<p>The last strict inequality uses <span class="math" data-tex="\(b\ge2,\ K_0\ge13\)">\(b\ge2,\ K_0\ge13\)</span>. Both scale sequences decrease strictly after their specified initial values; <span class="math" data-tex="\(\epsilon_n\le2^{-n}\)">\(\epsilon_n\le2^{-n}\)</span>.</p>
+<h2 id="rc7-periodic-selectors-the-whole-particle-path-and-incompressible-lift">RC7. Periodic selectors, the whole particle path and incompressible lift</h2>
+<p>Put <span class="math" data-tex="\(y_*=1/2,\ \sigma(t)=H(3t-1)\)">\(y_*=1/2,\ \sigma(t)=H(3t-1)\)</span>. It is zero through <span class="math" data-tex="\(1/3\)">\(1/3\)</span> and one from <span class="math" data-tex="\(2/3\)">\(2/3\)</span>. Choose a smooth effective bump <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> on <span class="math" data-tex="\([-1/4,1/4]\)">\([-1/4,1/4]\)</span>, zero outside <span class="math" data-tex="\([-3/8,3/8]\)">\([-3/8,3/8]\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+J_{n,j}(y)=\psi((y-y_*)/\epsilon_n-j).
+\tag{RC7.1}
+\]">\[
+J_{n,j}(y)=\psi((y-y_*)/\epsilon_n-j).
+\tag{RC7.1}
+\]</span>
+<p>Their supports are pairwise disjoint. On planar coordinates <span class="math" data-tex="\(\xi=(\xi_1,\xi_2)\)">\(\xi=(\xi_1,\xi_2)\)</span> retain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_{\mathrm{in}}(t,\xi)&amp;=\sigma&#x27;(t)(0,\epsilon_0c_0),\\
+v_n(t,\xi)&amp;=\sigma&#x27;(t-1-n)
+\begin{pmatrix}
+\beta_n-\beta_{n+1}+2\beta_{n+1}\sum_{j\in\mathbb Z}h_n(j)J_{n,j}(\xi_2)\\
+\epsilon_{n+1}\sum_{j\in\mathbb Z}F_n(j)J_{n,j}(\xi_2)
+\end{pmatrix},\\
+v&amp;=v_{\mathrm{in}}+\sum_{n\ge0}v_n.
+\end{aligned}
+\tag{RC7.2}
+\]">\[
+\begin{aligned}
+v_{\mathrm{in}}(t,\xi)&amp;=\sigma&#x27;(t)(0,\epsilon_0c_0),\\
+v_n(t,\xi)&amp;=\sigma&#x27;(t-1-n)
+\begin{pmatrix}
+\beta_n-\beta_{n+1}+2\beta_{n+1}\sum_{j\in\mathbb Z}h_n(j)J_{n,j}(\xi_2)\\
+\epsilon_{n+1}\sum_{j\in\mathbb Z}F_n(j)J_{n,j}(\xi_2)
+\end{pmatrix},\\
+v&amp;=v_{\mathrm{in}}+\sum_{n\ge0}v_n.
+\end{aligned}
+\tag{RC7.2}
+\]</span>
+<p>Translation of <span class="math" data-tex="\(\xi_2\)">\(\xi_2\)</span> by one shifts <span class="math" data-tex="\(j\)">\(j\)</span> by the integer <span class="math" data-tex="\(\epsilon_n^{-1}\)">\(\epsilon_n^{-1}\)</span>, a multiple of <span class="math" data-tex="\(P_n\)">\(P_n\)</span>; RC6.7 and coefficient periodicity prove that <span class="math" data-tex="\(v\)">\(v\)</span> is well-defined on <span class="math" data-tex="\(\mathbb T^2\)">\(\mathbb T^2\)</span>. It is independent of <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>. At each time only the loader or one slot is active, with fixed zero collars at the joins. Thus it is smooth and initially zero.</p>
+<p>The real lift <span class="math" data-tex="\(Y\)">\(Y\)</span> from <span class="math" data-tex="\((1/4,y_*)\)">\((1/4,y_*)\)</span> is <span class="math" data-tex="\((1/4,y_*+\sigma(t)\epsilon_0c_0)\)">\((1/4,y_*+\sigma(t)\epsilon_0c_0)\)</span> during loading. At <span class="math" data-tex="\(t_n=1+n\)">\(t_n=1+n\)</span>, before the first halt, the exact invariant is</p>
+<span class="math math-display" data-tex="\[
+Y_1(t_n)=1/2-\beta_n,\qquad
+Y_2(t_n)=y_*+\sum_{k=0}^n\epsilon_kc_k.
+\tag{RC7.3}
+\]">\[
+Y_1(t_n)=1/2-\beta_n,\qquad
+Y_2(t_n)=y_*+\sum_{k=0}^n\epsilon_kc_k.
+\tag{RC7.3}
+\]</span>
+<p>The quotient <span class="math" data-tex="\(j_*=(Y_2(t_n)-y_*)/\epsilon_n\)">\(j_*=(Y_2(t_n)-y_*)/\epsilon_n\)</span> is an integer congruent to <span class="math" data-tex="\(c_n\)">\(c_n\)</span> modulo <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. Changing the torus lift by an integer changes <span class="math" data-tex="\(j_*\)">\(j_*\)</span> by a multiple of <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, so the read instruction is intrinsic to the torus. Throughout the next slot the proposed full path is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y_2(t_n+\tau)&amp;=Y_2(t_n)+\sigma(\tau)\epsilon_{n+1}F_n(j_*),\\
+Y_1(t_n+\tau)&amp;=Y_1(t_n)+\sigma(\tau)
+(\beta_n-\beta_{n+1}+2\beta_{n+1}h_n(j_*)),
+\qquad 0\le\tau\le1.
+\end{aligned}
+\tag{RC7.4}
+\]">\[
+\begin{aligned}
+Y_2(t_n+\tau)&amp;=Y_2(t_n)+\sigma(\tau)\epsilon_{n+1}F_n(j_*),\\
+Y_1(t_n+\tau)&amp;=Y_1(t_n)+\sigma(\tau)
+(\beta_n-\beta_{n+1}+2\beta_{n+1}h_n(j_*)),
+\qquad 0\le\tau\le1.
+\end{aligned}
+\tag{RC7.4}
+\]</span>
+<p>Its memory displacement is less than <span class="math" data-tex="\(\epsilon_n/4\)">\(\epsilon_n/4\)</span> by RC6.7, so the whole path remains where <span class="math" data-tex="\(J_{n,j_*}=1\)">\(J_{n,j_*}=1\)</span> and all other selectors vanish. Differentiation proves the actual ODE; uniqueness identifies the path. For a nonterminal state it gives the next invariant and keeps the first coordinate strictly below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. A terminal slot ends at <span class="math" data-tex="\(1/2+\beta_{n+1}\in(1/2,1)\)">\(1/2+\beta_{n+1}\in(1/2,1)\)</span>. Loading remains at <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, and the first coordinate cannot wrap before detection. This proves the event at every real time, not merely at the endpoints.</p>
+<p>At most one lattice bump contributes at any spatial point. If <span class="math" data-tex="\(k=|\alpha|\)">\(k=|\alpha|\)</span>, every time derivative and spatial derivative therefore obeys</p>
+<span class="math math-display" data-tex="\[
+\|\partial_t^r\partial_\xi^\alpha v_n\|_\infty
+\le C_{r,k}\left(\mathbf1_{k=0}\beta_n+
+P_{n+1}\epsilon_{n+1}\epsilon_n^{-k}\right).
+\tag{RC7.5}
+\]">\[
+\|\partial_t^r\partial_\xi^\alpha v_n\|_\infty
+\le C_{r,k}\left(\mathbf1_{k=0}\beta_n+
+P_{n+1}\epsilon_{n+1}\epsilon_n^{-k}\right).
+\tag{RC7.5}
+\]</span>
+<p>The constant drift disappears when <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, while each bump derivative contributes its exact <span class="math" data-tex="\(\epsilon_n^{-1}\)">\(\epsilon_n^{-1}\)</span>. For <span class="math" data-tex="\(n\ge\max(1,k)\)">\(n\ge\max(1,k)\)</span>, <span class="math" data-tex="\(2^{2n+2}-1-k\ge1\)">\(2^{2n+2}-1-k\ge1\)</span>; RC6.7 bounds the second term by <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span>, and the first by <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> when present. The effective exponential-tail argument of RC3 proves every polynomial time weight. There is no factor counting lattice cells. Earlier slots, including the exceptional <span class="math" data-tex="\(\beta_0=1/4\)">\(\beta_0=1/4\)</span>, are finitely many bounded terms.</p>
+<p>Choose the source's periodic function <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(\eta(1/2)=0,\ \eta&#x27;(1/2)=1\)">\(\eta(1/2)=0,\ \eta&#x27;(1/2)=1\)</span>: take <span class="math" data-tex="\((z-1/2)\)">\((z-1/2)\)</span> times a smooth cutoff supported in <span class="math" data-tex="\((1/2-3/16,1/2+3/16)\)">\((1/2-3/16,1/2+3/16)\)</span>, equal to one near <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and extend periodically. The full three-dimensional lift is</p>
+<span class="math math-display" data-tex="\[
+U(t,\xi,z)=
+(\eta&#x27;(z)v_1(t,\xi),\eta&#x27;(z)v_2(t,\xi),
+-\eta(z)\operatorname{div}_\xi v(t,\xi)).
+\tag{RC7.6}
+\]">\[
+U(t,\xi,z)=
+(\eta&#x27;(z)v_1(t,\xi),\eta&#x27;(z)v_2(t,\xi),
+-\eta(z)\operatorname{div}_\xi v(t,\xi)).
+\tag{RC7.6}
+\]</span>
+<p>Its divergence is <span class="math" data-tex="\(\eta&#x27;\operatorname{div}_\xi v-\eta&#x27;\operatorname{div}_\xi v=0\)">\(\eta&#x27;\operatorname{div}_\xi v-\eta&#x27;\operatorname{div}_\xi v=0\)</span>. The first two mean integrals vanish because <span class="math" data-tex="\(\int_{\mathbb T}\eta&#x27;=0\)">\(\int_{\mathbb T}\eta&#x27;=0\)</span>; the third because <span class="math" data-tex="\(\int_{\mathbb T^2}\operatorname{div}_\xi v=0\)">\(\int_{\mathbb T^2}\operatorname{div}_\xi v=0\)</span>. On <span class="math" data-tex="\(z=1/2\)">\(z=1/2\)</span> the field is exactly <span class="math" data-tex="\((v,0)\)">\((v,0)\)</span>, so ODE uniqueness makes that plane invariant. Its particle from <span class="math" data-tex="\((1/4,1/2,1/2)\)">\((1/4,1/2,1/2)\)</span> is <span class="math" data-tex="\((Y,1/2)\)">\((Y,1/2)\)</span> modulo integers. This is the exact map preserving the event.</p>
+<p>For every planar multi-index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and nonnegative integer <span class="math" data-tex="\(a\)">\(a\)</span>, the differentiated lift is</p>
+<span class="math math-display" data-tex="\[
+\partial_t^r\partial_\xi^\alpha\partial_z^a U
+=\left(
+\eta^{(a+1)}\partial_t^r\partial_\xi^\alpha v_1,\,
+\eta^{(a+1)}\partial_t^r\partial_\xi^\alpha v_2,\,
+-\eta^{(a)}\sum_{j=1}^2\partial_t^r\partial_\xi^{\alpha+e_j}v_j
+\right).
+\tag{RC7.7}
+\]">\[
+\partial_t^r\partial_\xi^\alpha\partial_z^a U
+=\left(
+\eta^{(a+1)}\partial_t^r\partial_\xi^\alpha v_1,\,
+\eta^{(a+1)}\partial_t^r\partial_\xi^\alpha v_2,\,
+-\eta^{(a)}\sum_{j=1}^2\partial_t^r\partial_\xi^{\alpha+e_j}v_j
+\right).
+\tag{RC7.7}
+\]</span>
+<p>Thus at most one additional planar derivative is needed. With
+<span class="math" data-tex="\(g=U_t+(U\cdot\nabla)U-\nu\Delta U\)">\(g=U_t+(U\cdot\nabla)U-\nu\Delta U\)</span>, RC1.3 requires at most three additional planar derivatives and one additional time derivative relative to a requested spatial order of the force. RC7.5 supplies all of them. The mean of <span class="math" data-tex="\(g\)">\(g\)</span> vanishes by integrating its time derivative, Laplacian and divergence-form nonlinear term. RC1 proves uniqueness and gives the effective solenoidal alternative <span class="math" data-tex="\(f=g-\nabla\phi,\ p=-\phi\)">\(f=g-\nabla\phi,\ p=-\phi\)</span>, with the same rapid bounds, velocity and event.</p>
+<p>For finite evaluation, enclose a lift of <span class="math" data-tex="\(\xi_2\)">\(\xi_2\)</span> in a rational interval of length at most <span class="math" data-tex="\(\epsilon_n/2\)">\(\epsilon_n/2\)</span>. Every potentially contributing center lies in its enlargement by <span class="math" data-tex="\(3\epsilon_n/8\)">\(3\epsilon_n/8\)</span> at each end, of total length at most <span class="math" data-tex="\(5\epsilon_n/4\)">\(5\epsilon_n/4\)</span>. At most two lattice centers occur, so a finite candidate sum contains every nonzero term. Each coefficient uses integer arithmetic and one table lookup. The fixed time collars and RC1 profile bounds avoid real-equality tests. Only <span class="math" data-tex="\(c_0\)">\(c_0\)</span> uses the input symbols; subsequent fields use the table and transformed input length. This completes all claims of the periodic lattice theorem.</p>
+<h2 id="rc8-what-the-effective-programs-decide">RC8. What the effective programs decide</h2>
+<p>All three constructions are finite algorithms for fields on every spatial argument, not recorded executions. The integer scales may be extremely large; no complexity bound is asserted. Their construction uses only the machine table, input length and initial configuration. At a queried time, certified rational enclosures select finitely many candidate slots. The addressed model selects finitely many grid cells, the alternating model evaluates a fixed branch list, and the lattice model selects at most two possible bumps. Finite differentiation and the effective tail bounds give values and constants for every specified mixed order and polynomial time weight. For a noncomputable fixed positive viscosity, these same formulas have their relative evaluation meaning given a name for that parameter.</p>
+<p>Suppose an algorithm decided one of the fixed detector events for every force program produced by its construction. Compose the finite compiler with that algorithm. The proved event equivalence would decide machine halting. To see the contradiction directly, if a total algorithm <span class="math" data-tex="\(H(e,w)\)">\(H(e,w)\)</span> decided halting, build a program <span class="math" data-tex="\(D\)">\(D\)</span> which on input <span class="math" data-tex="\(e\)">\(e\)</span> loops when <span class="math" data-tex="\(H(e,e)\)">\(H(e,e)\)</span> says “halts” and halts otherwise. Applying it to its own code contradicts either possible answer. Hence each experiment is undecidable, including the two projected torus versions, which have exactly the same velocities.</p>
+<p>The conclusion concerns exact open tests. In the addressed experiment a nonhalting particle stays on <span class="math" data-tex="\(X_1=-1\)">\(X_1=-1\)</span> after loading, and a terminal slot moves it by <span class="math" data-tex="\(b_n\)">\(b_n\)</span>. Its chart image has boundary <span class="math" data-tex="\(3/8\)">\(3/8\)</span> and signal <span class="math" data-tex="\(b_n/8\)">\(b_n/8\)</span>. Alternating nonhalting signals approach zero from below; a first halt ends at <span class="math" data-tex="\(+\epsilon_{n+1}\)">\(+\epsilon_{n+1}\)</span>. Lattice nonhalting signals approach <span class="math" data-tex="\(1/2\)">\(1/2\)</span> from below; a first halt ends at <span class="math" data-tex="\(1/2+\beta_{n+1}\)">\(1/2+\beta_{n+1}\)</span>. These positive signals shrink with the slot index. The proved equivalences supply no uniform positive observation margin or robustness under a fixed field perturbation.</p>
+<p>There is no finite-time accumulation of instructions. Each step occupies its full original unit slot. The infinite information is kept in retained spatial records, and the displacement for the next write absorbs every fixed cost of differentiation.</p>
+<h2 id="rc9-consequences-of-the-actual-rapid-bounds">RC9. Consequences of the actual rapid bounds</h2>
+<p>These are editorial consequences of the constructions, not replacements for source statements and not novelty claims.</p>
+<p>First, every mixed derivative has finite time-space integrability at all finite time exponents. Let <span class="math" data-tex="\(A_{J,l,\alpha}\)">\(A_{J,l,\alpha}\)</span> be a proved constant in RC0.2. On a fixed spatial support of volume <span class="math" data-tex="\(V\)">\(V\)</span>, or on the unit torus with <span class="math" data-tex="\(V=1\)">\(V=1\)</span>, for <span class="math" data-tex="\(1\le p\le\infty,\ 1\le q&lt;\infty,\ Jq&gt;1\)">\(1\le p\le\infty,\ 1\le q&lt;\infty,\ Jq&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\partial_t^l\partial_x^\alpha U\|_{L^q_tL^p_x}
+\le\frac{V^{1/p}A_{J,l,\alpha}}{(Jq-1)^{1/q}}.
+\tag{RC9.1}
+\]">\[
+\|\partial_t^l\partial_x^\alpha U\|_{L^q_tL^p_x}
+\le\frac{V^{1/p}A_{J,l,\alpha}}{(Jq-1)^{1/q}}.
+\tag{RC9.1}
+\]</span>
+<p>Use the separate force constant for the identical force estimate. This follows by the spatial support bound and the exact integral
+<span class="math" data-tex="\(\int_0^\infty(1+t)^{-Jq}dt=(Jq-1)^{-1}\)">\(\int_0^\infty(1+t)^{-Jq}dt=(Jq-1)^{-1}\)</span>, with <span class="math" data-tex="\(V^{1/\infty}=1\)">\(V^{1/\infty}=1\)</span>. In the addressed construction <span class="math" data-tex="\(V=18\)">\(V=18\)</span> is available from the original <span class="math" data-tex="\(K\)">\(K\)</span>; for the explicit alternating cutoff above <span class="math" data-tex="\(V=36\)">\(V=36\)</span> is available. Torus projection retains all these estimates, although its force need not stay inside the chart.</p>
+<p>Second, the actual particle maps converge uniformly at a quantitative rate, without collapsing distinct initial points. Set</p>
+<span class="math math-display" data-tex="\[
+A_J=\sup_{t\ge0}(1+t)^J\|U(t)\|_\infty,\qquad
+\mathcal L=\int_0^\infty\|\nabla U(t)\|_{\mathrm{op},\infty}\,dt&lt;\infty.
+\tag{RC9.2}
+\]">\[
+A_J=\sup_{t\ge0}(1+t)^J\|U(t)\|_\infty,\qquad
+\mathcal L=\int_0^\infty\|\nabla U(t)\|_{\mathrm{op},\infty}\,dt&lt;\infty.
+\tag{RC9.2}
+\]</span>
+<p>For <span class="math" data-tex="\(J&gt;1\)">\(J&gt;1\)</span> and <span class="math" data-tex="\(t\ge s\)">\(t\ge s\)</span>, direct integration of the trajectory equation gives</p>
+<span class="math math-display" data-tex="\[
+\sup_a|\Phi_t(a)-\Phi_s(a)|
+\le\int_s^t\|U(r)\|_\infty\,dr
+\le\frac{A_J}{J-1}(1+s)^{1-J}.
+\tag{RC9.3}
+\]">\[
+\sup_a|\Phi_t(a)-\Phi_s(a)|
+\le\int_s^t\|U(r)\|_\infty\,dr
+\le\frac{A_J}{J-1}(1+s)^{1-J}.
+\tag{RC9.3}
+\]</span>
+<p>On the torus use the periodic lift with initial lift <span class="math" data-tex="\(a\)">\(a\)</span>; bounded displacements make the same expression meaningful. Thus <span class="math" data-tex="\(\Phi_\infty\)">\(\Phi_\infty\)</span> exists uniformly. For two Euclidean initial points, or their periodic lifts, the difference equation and the operator gradient bound give</p>
+<span class="math math-display" data-tex="\[
+e^{-\mathcal L}|a-b|
+\le|\Phi_t(a)-\Phi_t(b)|
+\le e^{\mathcal L}|a-b|.
+\tag{RC9.4}
+\]">\[
+e^{-\mathcal L}|a-b|
+\le|\Phi_t(a)-\Phi_t(b)|
+\le e^{\mathcal L}|a-b|.
+\tag{RC9.4}
+\]</span>
+<p>For the lower bound integrate the inequality <span class="math" data-tex="\(d|\Delta|/dt\ge-\|\nabla U\|_{\mathrm{op},\infty}|\Delta|\)">\(d|\Delta|/dt\ge-\|\nabla U\|_{\mathrm{op},\infty}|\Delta|\)</span>; finite-time uniqueness keeps a nonzero difference nonzero. Passing to the uniform limit proves the same two bounds for <span class="math" data-tex="\(\Phi_\infty\)">\(\Phi_\infty\)</span>. Periodic translation equivariance lets one take the infimum over integer translates, giving the corresponding torus distance bounds.</p>
+<p>The limit is onto. For a Euclidean target <span class="math" data-tex="\(x\)">\(x\)</span>, let <span class="math" data-tex="\(a_t=\Phi_t^{-1}(x)\)">\(a_t=\Phi_t^{-1}(x)\)</span>. Equation RC9.3 with <span class="math" data-tex="\(s=0\)">\(s=0\)</span> bounds <span class="math" data-tex="\(|a_t-x|\)">\(|a_t-x|\)</span> uniformly, so a sequence tending to infinite time has a convergent subsequence <span class="math" data-tex="\(a_{t_j}\to a\)">\(a_{t_j}\to a\)</span>. Uniform convergence and the uniform Lipschitz bound imply <span class="math" data-tex="\(\Phi_\infty(a)=x\)">\(\Phi_\infty(a)=x\)</span>. On the torus compactness supplies the same subsequence. The lower bound then gives a Lipschitz inverse; hence <span class="math" data-tex="\(\Phi_\infty\)">\(\Phi_\infty\)</span> is a homeomorphism with both Lipschitz constants at most <span class="math" data-tex="\(e^{\mathcal L}\)">\(e^{\mathcal L}\)</span>. In particular the limiting memory does not rely on identifying distinct initial points.</p>
+<p>Finally, the nonhalting boundary limits and arbitrarily small halting signals are compatible with RC9.3–RC9.4. A finite path length and a limiting map with finite two-sided Lipschitz bounds do not give an algorithm for deciding equality to a detector boundary. The exact geometric and algorithmic results above coexist without assuming an unproved discontinuity of the fluid flow.</p>
+<h2 id="rc10-source-correspondence-and-scope">RC10. Source correspondence and scope</h2>
+<p>The original rapid-forcing source at the pinned commit has the following exact coverage: main.tex lines 1–312; addressed.tex lines 1–396; alternating.tex lines 1–276; lattice.tex lines 1–383; references.tex lines 1–52. RC0–RC1 cover the original common statements, solution classes and effective profiles. RC2–RC3 prove the addressed theorem and its torus corollary. RC4–RC5 prove the alternating theorem. RC6–RC7 prove the periodic lattice theorem and its projected version. RC8 proves the detector corollary and retains the exact-observation limits.</p>
+<p>The cited analytical dependency was also read directly in the original TeX of <a href="https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-Fixed-Particle-Test-for-Computation-in-a-Forced-Viscous-Flow-September-27-2026/build"><em>A Fixed Particle Test for Computation in a Forced Viscous Flow</em></a>: analytic-tools.tex lines 1–109 and analytic-appendix.tex lines 1–129. RC1 provides the complete noncompact comparison, Fourier identification and effective projection used here. This does not validate the companion's separate processor construction.</p>
+<p>The source credits Turing's undecidability argument, Landauer and Bennett's information retention, Moore's generalized shifts and Leray's difference-energy method. The <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Computation-under-Rapidly-Vanishing-Navier-Stokes-Forcing-September-27-2026/build/references.tex">original bibliography</a> retains the human citations and comparisons with other fluid-computation work. Reading that bibliography does not constitute reading or validating every cited work.</p>
+<p>RC2–RC7 prove the four rapid-forcing experiments in RC0. RC9 proves their time-space integrability and limiting-flow consequences for the same fields and constants.</p>
+</article></body></html>

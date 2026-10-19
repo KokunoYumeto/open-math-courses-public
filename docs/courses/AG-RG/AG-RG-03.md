@@ -825,7 +825,7 @@ Put \(r=1\) in Theorem 8.1. The list is \(\mathbf G_m\times\operatorname{SL}_2\)
 
 An upper off-diagonal entry is a map $L\to\mathcal O$, so its line is $L^{-1}$; a lower entry is a map $\mathcal O\to L$, so its line is $L$. Composition gives $L^{-1}\otimes L\to\mathcal O$, the perfect pairing in Theorem 7.1. A pinning chooses a nowhere-vanishing section in the simple root line. It therefore requires $L^{-1}$, equivalently $L$, to be trivial. This illustrates the global hypothesis absent from the field case.
 
-The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
+The [course prerequisite guide](prerequisites.html) records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
 
 ## References and prerequisite proofs
 

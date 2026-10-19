@@ -1,0 +1,629 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="profile-stress-moment-audit.md">Editable source</a></nav><h1 id="leading-profile-stress-and-exact-moment-restoration">Leading-profile stress and exact moment restoration</h1>
+<p>The following arguments establish the coordinate, stress, moment and finite-dimensional correction identities used in the leading-profile construction. The leading-profile construction, including all six properties of Theorem 4.6, is supplied by <a href="shear-realization-audit.html">V0–V7</a> and the O/H/J/Q proofs cited there. <a href="higher-axis-coefficients-audit.html">D0–D6</a> construct the first positive-order axis correction and prove the fixed-interval solution step. The global positive-order base is constructed in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">PDF</a>, SHA256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>. The source locators are original pages 24–31, 34–35 and 126–128: (4.1)–(4.23), Lemma 4.7, Lemmas A.1–A.2 and Corollary A.3.</p>
+<h2 id="g0-coordinates-regularity-and-incompressibility">G0. Coordinates, regularity and incompressibility</h2>
+<p>Keep the original parameters and variables</p>
+<span class="math math-display" data-tex="\[
+0&lt;h&lt;\tfrac12,\quad A=\tfrac12+h,\quad D=\tfrac12-h,\quad
+\tau=1-t,\quad z=q^D\eta,\quad \tau=q(1-\eta^2),
+\quad d=1-\eta^2,\quad L=1-2h\eta^2,\quad s=r^2/2,\quad X=s/q.
+\tag{G0.1}
+\]">\[
+0&lt;h&lt;\tfrac12,\quad A=\tfrac12+h,\quad D=\tfrac12-h,\quad
+\tau=1-t,\quad z=q^D\eta,\quad \tau=q(1-\eta^2),
+\quad d=1-\eta^2,\quad L=1-2h\eta^2,\quad s=r^2/2,\quad X=s/q.
+\tag{G0.1}
+\]</span>
+<p>For each <span class="math" data-tex="\(\tau&gt;0,z\in\mathbb R\)">\(\tau&gt;0,z\in\mathbb R\)</span>, the equation <span class="math" data-tex="\(q-z^2q^{2h}=\tau\)">\(q-z^2q^{2h}=\tau\)</span> has exactly one solution <span class="math" data-tex="\(q&gt;|z|^{1/D}\)">\(q&gt;|z|^{1/D}\)</span>. Indeed its left side vanishes at the lower endpoint, tends to infinity, and has derivative <span class="math" data-tex="\(L\ge1-2h&gt;0\)">\(L\ge1-2h&gt;0\)</span> on that half-line. When <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, the endpoint is zero and the same argument applies. Thus <span class="math" data-tex="\(|\eta|&lt;1\)">\(|\eta|&lt;1\)</span>. The implicit function theorem gives smooth <span class="math" data-tex="\(q,\eta\)">\(q,\eta\)</span> at every <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>. Differentiation gives</p>
+<span class="math math-display" data-tex="\[
+q_t=-L^{-1},\quad \eta_t=\frac{D\eta}{qL},\quad X_t=\frac X{qL},
+\qquad q_z=\frac{2\eta q^{1-D}}L,\quad
+\eta_z=\frac d{q^DL},\quad X_z=-\frac{2\eta X}{q^DL}.
+\tag{G0.2}
+\]">\[
+q_t=-L^{-1},\quad \eta_t=\frac{D\eta}{qL},\quad X_t=\frac X{qL},
+\qquad q_z=\frac{2\eta q^{1-D}}L,\quad
+\eta_z=\frac d{q^DL},\quad X_z=-\frac{2\eta X}{q^DL}.
+\tag{G0.2}
+\]</span>
+<p>The identity <span class="math" data-tex="\(L-2D\eta^2=d\)">\(L-2D\eta^2=d\)</span> proves the middle axial formula. For <span class="math" data-tex="\(\mathcal D_X=X\partial_X\)">\(\mathcal D_X=X\partial_X\)</span>, any real <span class="math" data-tex="\(b\)">\(b\)</span>, and a smooth profile <span class="math" data-tex="\(f\)">\(f\)</span>, the chain rule therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\partial_t(q^bf)&amp;=q^{b-1}T_bf,&amp;T_bf&amp;=L^{-1}(-bf+D\eta f_\eta+\mathcal D_Xf),\\
+\partial_z(q^bf)&amp;=q^{b-D}Z_bf,&amp;Z_bf&amp;=L^{-1}(2b\eta f+df_\eta-2\eta\mathcal D_Xf).
+\end{split}
+\tag{G0.3}
+\]">\[
+\begin{split}
+\partial_t(q^bf)&amp;=q^{b-1}T_bf,&amp;T_bf&amp;=L^{-1}(-bf+D\eta f_\eta+\mathcal D_Xf),\\
+\partial_z(q^bf)&amp;=q^{b-D}Z_bf,&amp;Z_bf&amp;=L^{-1}(2b\eta f+df_\eta-2\eta\mathcal D_Xf).
+\end{split}
+\tag{G0.3}
+\]</span>
+<p>All endpoint statements in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> mean continuous one-sided derivatives.</p>
+<p>Retain the fixed amplitude factor <span class="math" data-tex="\(\mathsf C&gt;1\)">\(\mathsf C&gt;1\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+E=\mathsf C^{-1}\sqrt{2X}\phi=\sqrt{2X}F,\quad
+H=\sqrt{2X}E=2XF,\quad V_0=Xv_0,
+\quad (u_\theta^{(0)},u_z^{(0)},ru_r^{(0)},p^{(0)})=(q^{-A}E,q^{-A}U,V_0,q^{-2A}\Pi).
+\tag{G0.4}
+\]">\[
+E=\mathsf C^{-1}\sqrt{2X}\phi=\sqrt{2X}F,\quad
+H=\sqrt{2X}E=2XF,\quad V_0=Xv_0,
+\quad (u_\theta^{(0)},u_z^{(0)},ru_r^{(0)},p^{(0)})=(q^{-A}E,q^{-A}U,V_0,q^{-2A}\Pi).
+\tag{G0.4}
+\]</span>
+<p>The axis data are the smooth functions <span class="math" data-tex="\(F=\phi/\mathsf C,U,v_0,\Pi\)">\(F=\phi/\mathsf C,U,v_0,\Pi\)</span>, with <span class="math" data-tex="\(\phi&gt;0\)">\(\phi&gt;0\)</span>, on each finite closed <span class="math" data-tex="\((X,\eta)\)">\((X,\eta)\)</span> rectangle. This does not require <span class="math" data-tex="\(E\)">\(E\)</span> to be smooth as a function of <span class="math" data-tex="\(X\)">\(X\)</span> at zero. In Cartesian coordinates the exact field is</p>
+<span class="math math-display" data-tex="\[
+u_1^{(0)}=\frac{v_0x_1}{2q}-q^{-A-1/2}Fx_2,\qquad
+u_2^{(0)}=\frac{v_0x_2}{2q}+q^{-A-1/2}Fx_1,\qquad
+u_3^{(0)}=q^{-A}U,\qquad p^{(0)}=q^{-2A}\Pi.
+\tag{G0.5}
+\]">\[
+u_1^{(0)}=\frac{v_0x_1}{2q}-q^{-A-1/2}Fx_2,\qquad
+u_2^{(0)}=\frac{v_0x_2}{2q}+q^{-A-1/2}Fx_1,\qquad
+u_3^{(0)}=q^{-A}U,\qquad p^{(0)}=q^{-2A}\Pi.
+\tag{G0.5}
+\]</span>
+<p>These expressions prove smoothness across the axis for <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>.</p>
+<p>The radial average is <span class="math" data-tex="\(\mathcal A_Xf=\int_0^1f(aX,\eta)\,da\)">\(\mathcal A_Xf=\int_0^1f(aX,\eta)\,da\)</span>. Differentiation under this fixed finite integral proves its smooth extension with value <span class="math" data-tex="\(f(0,\eta)\)">\(f(0,\eta)\)</span>. Since <span class="math" data-tex="\(A+D=1\)">\(A+D=1\)</span>, incompressibility is exactly</p>
+<span class="math math-display" data-tex="\[
+0=\partial_sV_0+\partial_z(q^{-A}U)
+=q^{-1}\left[(V_0)_X+L^{-1}(-2A\eta U+dU_\eta-2\eta XU_X)\right].
+\tag{G0.6}
+\]">\[
+0=\partial_sV_0+\partial_z(q^{-A}U)
+=q^{-1}\left[(V_0)_X+L^{-1}(-2A\eta U+dU_\eta-2\eta XU_X)\right].
+\tag{G0.6}
+\]</span>
+<p>Integrate from zero, use <span class="math" data-tex="\(V_0(0,\eta)=0\)">\(V_0(0,\eta)=0\)</span> and <span class="math" data-tex="\(\int_0^XxU_X\,dx=XU-\int_0^XU\,dx\)">\(\int_0^XxU_X\,dx=XU-\int_0^XU\,dx\)</span>. This gives the original formula, including its sign,</p>
+<span class="math math-display" data-tex="\[
+V_0=\frac X L\left(2\eta U-2D\eta\mathcal A_XU-d\partial_\eta\mathcal A_XU\right).
+\qquad \Pi_X=\frac{E^2}{2X}=F^2.
+\tag{G0.7}
+\]">\[
+V_0=\frac X L\left(2\eta U-2D\eta\mathcal A_XU-d\partial_\eta\mathcal A_XU\right).
+\qquad \Pi_X=\frac{E^2}{2X}=F^2.
+\tag{G0.7}
+\]</span>
+<p>The second identity equates the coefficients <span class="math" data-tex="\(\sqrt{2X}\Pi_X\)">\(\sqrt{2X}\Pi_X\)</span> and <span class="math" data-tex="\(E^2/\sqrt{2X}\)">\(E^2/\sqrt{2X}\)</span> of <span class="math" data-tex="\(\partial_rp^{(0)}\)">\(\partial_rp^{(0)}\)</span> and <span class="math" data-tex="\((u_\theta^{(0)})^2/r\)">\((u_\theta^{(0)})^2/r\)</span>, both with factor <span class="math" data-tex="\(q^{-2A-1/2}\)">\(q^{-2A-1/2}\)</span>. It cancels precisely those radial terms. The remaining radial terms are retained in G1.6 below.</p>
+<h2 id="g1-exact-stress-including-both-kinds-of-viscosity">G1. Exact stress, including both kinds of viscosity</h2>
+<p>Define the original quantities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+l=\mathcal D_X\log H=1+XF_X/F,\qquad
+W=1-2D\eta\mathcal A_XU-d\partial_\eta\mathcal A_XU,\qquad H_c=D\eta+dU,\\
+S_q=-Wl-h(1-2\eta U)-H_cF_\eta/F,\\
+S_n=-W\mathcal D_XU-A(1-2\eta U)U-H_cU_\eta-d\Pi_\eta+4A\eta\Pi+2\eta\mathcal D_X\Pi.
+\end{gathered}
+\tag{G1.1}
+\]">\[
+\begin{gathered}
+l=\mathcal D_X\log H=1+XF_X/F,\qquad
+W=1-2D\eta\mathcal A_XU-d\partial_\eta\mathcal A_XU,\qquad H_c=D\eta+dU,\\
+S_q=-Wl-h(1-2\eta U)-H_cF_\eta/F,\\
+S_n=-W\mathcal D_XU-A(1-2\eta U)U-H_cU_\eta-d\Pi_\eta+4A\eta\Pi+2\eta\mathcal D_X\Pi.
+\end{gathered}
+\tag{G1.1}
+\]</span>
+<p>Using G0.3 and <span class="math" data-tex="\(V_0L=X(2\eta U+W-1)\)">\(V_0L=X(2\eta U+W-1)\)</span>, direct collection of the three derivatives proves the complete material-derivative formula</p>
+<span class="math math-display" data-tex="\[
+(\partial_t+u_r^{(0)}\partial_r+u_z^{(0)}\partial_z)(q^bf)
+=\frac{q^{b-1}}L\left[b(-1+2\eta U)f+W\mathcal D_Xf+H_cf_\eta\right].
+\tag{G1.2}
+\]">\[
+(\partial_t+u_r^{(0)}\partial_r+u_z^{(0)}\partial_z)(q^bf)
+=\frac{q^{b-1}}L\left[b(-1+2\eta U)f+W\mathcal D_Xf+H_cf_\eta\right].
+\tag{G1.2}
+\]</span>
+<p>For <span class="math" data-tex="\(b=-h,f=H\)">\(b=-h,f=H\)</span>, this is <span class="math" data-tex="\(-q^{-h-1}HS_q/L\)">\(-q^{-h-1}HS_q/L\)</span>. For <span class="math" data-tex="\(b=-A,f=U\)">\(b=-A,f=U\)</span>, adding <span class="math" data-tex="\(\partial_zp^{(0)}=q^{-A-1}Z_{-2A}\Pi\)">\(\partial_zp^{(0)}=q^{-A-1}Z_{-2A}\Pi\)</span> gives <span class="math" data-tex="\(-q^{-A-1}S_n/L\)">\(-q^{-A-1}S_n/L\)</span>. The equality of pressure powers uses <span class="math" data-tex="\(2A+D=A+1\)">\(2A+D=A+1\)</span>.</p>
+<p>The two radial equations have the unique axis-regular solutions</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal D_XQ_s+(1+l)Q_s=S_q,\qquad \mathcal D_XN_s+N_s=S_n,\\
+Q_s=\frac{\int_0^XHS_q\,dx}{XH}
+=\frac1{F(X,\eta)}\int_0^1aF(aX,\eta)S_q(aX,\eta)\,da,\\
+N_s=\frac1X\int_0^XS_n\,dx=\int_0^1S_n(aX,\eta)\,da.
+\end{gathered}
+\tag{G1.3}
+\]">\[
+\begin{gathered}
+\mathcal D_XQ_s+(1+l)Q_s=S_q,\qquad \mathcal D_XN_s+N_s=S_n,\\
+Q_s=\frac{\int_0^XHS_q\,dx}{XH}
+=\frac1{F(X,\eta)}\int_0^1aF(aX,\eta)S_q(aX,\eta)\,da,\\
+N_s=\frac1X\int_0^XS_n\,dx=\int_0^1S_n(aX,\eta)\,da.
+\end{gathered}
+\tag{G1.3}
+\]</span>
+<p>Indeed the integrating factors are <span class="math" data-tex="\(XH\)">\(XH\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span>. Their homogeneous constants would give <span class="math" data-tex="\(X^{-2}\)">\(X^{-2}\)</span> and <span class="math" data-tex="\(X^{-1}\)">\(X^{-1}\)</span> singularities, since <span class="math" data-tex="\(H=2X\phi/\mathsf C\)">\(H=2X\phi/\mathsf C\)</span> and <span class="math" data-tex="\(\phi(0,\eta)&gt;0\)">\(\phi(0,\eta)&gt;0\)</span>. The displayed integrals are smooth and have values <span class="math" data-tex="\(S_q(0,\eta)/2\)">\(S_q(0,\eta)/2\)</span> and <span class="math" data-tex="\(S_n(0,\eta)\)">\(S_n(0,\eta)\)</span> at zero.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, write <span class="math" data-tex="\(D_\theta=\partial_r+2/r\)">\(D_\theta=\partial_r+2/r\)</span>, <span class="math" data-tex="\(D_z=\partial_r+1/r\)">\(D_z=\partial_r+1/r\)</span>. The inviscid angular residual is <span class="math" data-tex="\(-q^{-A-1}ES_q/L\)">\(-q^{-A-1}ES_q/L\)</span>, because angular momentum must first be divided by <span class="math" data-tex="\(r\)">\(r\)</span>. Its negative radial primitive is</p>
+<span class="math math-display" data-tex="\[
+\frac1{r^2}\int_0^r\rho^2q^{-A-1}\frac{E S_q}L\,d\rho
+=q^{-A-1/2}F\frac{XQ_s}L.
+\tag{G1.4}
+\]">\[
+\frac1{r^2}\int_0^r\rho^2q^{-A-1}\frac{E S_q}L\,d\rho
+=q^{-A-1/2}F\frac{XQ_s}L.
+\tag{G1.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\rho\,d\rho=q\,dx\)">\(\rho\,d\rho=q\,dx\)</span>, <span class="math" data-tex="\(\rho=\sqrt{2qx}\)">\(\rho=\sqrt{2qx}\)</span>, and <span class="math" data-tex="\(\int_0^X\sqrt{2x}ES_q\,dx=XHQ_s\)">\(\int_0^X\sqrt{2x}ES_q\,dx=XHQ_s\)</span>; thus all powers and factors of two are retained. The axial calculation similarly gives
+<span class="math" data-tex="\(r^{-1}\int_0^r\rho q^{-A-1}S_n/L\,d\rho=q^{-A-1/2}XN_s/(L\sqrt{2X})\)">\(r^{-1}\int_0^r\rho q^{-A-1}S_n/L\,d\rho=q^{-A-1/2}XN_s/(L\sqrt{2X})\)</span>.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_s=\left(\frac{XQ_s}L,\frac{XN_s}{LE}\right),\quad
+a=1-2\mathcal D_X\log E=2-2l,\quad b_s=\frac{2\mathcal D_XU}E,\quad
+\mathfrak s=(a,-b_s),\quad \mathcal T_0=F(p_s-\mathfrak s),\quad T=q^{-A-1/2}\mathcal T_0,\\
+(\partial_ru_\theta^{(0)}-u_\theta^{(0)}/r,\partial_ru_z^{(0)})=-q^{-A-1/2}F\mathfrak s,\\
+\mathcal R_1(u^{(0)},p^{(0)})\cdot e_j=-D_jT_j-\partial_z^2u_j^{(0)},\qquad j\in\{\theta,z\}.
+\end{gathered}
+\tag{G1.5}
+\]">\[
+\begin{gathered}
+p_s=\left(\frac{XQ_s}L,\frac{XN_s}{LE}\right),\quad
+a=1-2\mathcal D_X\log E=2-2l,\quad b_s=\frac{2\mathcal D_XU}E,\quad
+\mathfrak s=(a,-b_s),\quad \mathcal T_0=F(p_s-\mathfrak s),\quad T=q^{-A-1/2}\mathcal T_0,\\
+(\partial_ru_\theta^{(0)}-u_\theta^{(0)}/r,\partial_ru_z^{(0)})=-q^{-A-1/2}F\mathfrak s,\\
+\mathcal R_1(u^{(0)},p^{(0)})\cdot e_j=-D_jT_j-\partial_z^2u_j^{(0)},\qquad j\in\{\theta,z\}.
+\end{gathered}
+\tag{G1.5}
+\]</span>
+<p>The radial viscous operators are exactly <span class="math" data-tex="\(D_\theta(\partial_ru_\theta-u_\theta/r)\)">\(D_\theta(\partial_ru_\theta-u_\theta/r)\)</span> and <span class="math" data-tex="\(D_z\partial_ru_z\)">\(D_z\partial_ru_z\)</span>. Subtracting them from the inviscid residual proves the last line and the stress sign. In particular, <span class="math" data-tex="\(p_s\)">\(p_s\)</span> is the integrated inviscid contribution, not the pressure. Axial viscosity has not vanished: its exact profile is <span class="math" data-tex="\(\partial_z^2(q^{-A}f)=q^{-A-2D}Z_{-A-D}Z_{-A}f\)">\(\partial_z^2(q^{-A}f)=q^{-A-2D}Z_{-A-D}Z_{-A}f\)</span>, for <span class="math" data-tex="\(f=E,U\)">\(f=E,U\)</span>.</p>
+<p>For completeness set <span class="math" data-tex="\(B_r=V_0/\sqrt{2X}\)">\(B_r=V_0/\sqrt{2X}\)</span>, so <span class="math" data-tex="\(u_r^{(0)}=q^{-1/2}B_r\)">\(u_r^{(0)}=q^{-1/2}B_r\)</span>. After the centrifugal-pressure cancellation, the full radial residual is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal R_1(u^{(0)},p^{(0)})\cdot e_r
+={}&amp;q^{-3/2}\left\{\frac{\frac12(1-2\eta U)B_r+W\mathcal D_XB_r+H_c(B_r)_\eta}{L}
+-2X(B_r)_{XX}-2(B_r)_X+\frac{B_r}{2X}\right\}\\
+&amp;-q^{-3/2+2h}Z_{-1/2-D}Z_{-1/2}B_r.
+\end{split}
+\tag{G1.6}
+\]">\[
+\begin{split}
+\mathcal R_1(u^{(0)},p^{(0)})\cdot e_r
+={}&amp;q^{-3/2}\left\{\frac{\frac12(1-2\eta U)B_r+W\mathcal D_XB_r+H_c(B_r)_\eta}{L}
+-2X(B_r)_{XX}-2(B_r)_X+\frac{B_r}{2X}\right\}\\
+&amp;-q^{-3/2+2h}Z_{-1/2-D}Z_{-1/2}B_r.
+\end{split}
+\tag{G1.6}
+\]</span>
+<p>This follows from G1.2 and <span class="math" data-tex="\((\partial_{rr}+r^{-1}\partial_r-r^{-2})(q^{-1/2}B_r)=q^{-3/2}(2X(B_r)_{XX}+2(B_r)_X-B_r/(2X))\)">\((\partial_{rr}+r^{-1}\partial_r-r^{-2})(q^{-1/2}B_r)=q^{-3/2}(2X(B_r)_{XX}+2(B_r)_X-B_r/(2X))\)</span>. It retains every radial term. Its first power is larger than the cancelled leading power <span class="math" data-tex="\(q^{-3/2-2h}\)">\(q^{-3/2-2h}\)</span> by <span class="math" data-tex="\(q^{2h}\)">\(q^{2h}\)</span>; its axial-viscosity power differs by <span class="math" data-tex="\(q^{4h}\)">\(q^{4h}\)</span>. In G1.5 the axial viscosity differs from the leading tangential power <span class="math" data-tex="\(q^{-A-1}\)">\(q^{-A-1}\)</span> by <span class="math" data-tex="\(q^{2h}\)">\(q^{2h}\)</span>. These are exact fixed-profile comparisons, not physical derivative estimates.</p>
+<p>The stress vanishes exactly when <span class="math" data-tex="\(Q_s=-2LF_X/F\)">\(Q_s=-2LF_X/F\)</span> and <span class="math" data-tex="\(N_s=-2LU_X\)">\(N_s=-2LU_X\)</span>. Substitution in G1.3 gives</p>
+<span class="math math-display" data-tex="\[
+-2L\frac{X\phi_{XX}+2\phi_X}{\phi}=S_q,\qquad
+-2L(XU_{XX}+U_X)=S_n.
+\tag{G1.7}
+\]">\[
+-2L\frac{X\phi_{XX}+2\phi_X}{\phi}=S_q,\qquad
+-2L(XU_{XX}+U_X)=S_n.
+\tag{G1.7}
+\]</span>
+<p>Conversely these equations make the displayed expressions for <span class="math" data-tex="\(Q_s,N_s\)">\(Q_s,N_s\)</span> solve their radial equations and be smooth at the axis. Uniqueness in G1.3 then proves zero stress. Thus the equivalence uses the actual axis constants.</p>
+<p>For any original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, retain <span class="math" data-tex="\(y=x_\nu/\sqrt\nu\)">\(y=x_\nu/\sqrt\nu\)</span>, <span class="math" data-tex="\(u_\nu(x_\nu,t)=\sqrt\nu u(y,t)\)">\(u_\nu(x_\nu,t)=\sqrt\nu u(y,t)\)</span>, <span class="math" data-tex="\(p_\nu=\nu p(y,t)\)">\(p_\nu=\nu p(y,t)\)</span>, and <span class="math" data-tex="\(T_\nu=\nu T(y,t)\)">\(T_\nu=\nu T(y,t)\)</span>. Direct differentiation gives <span class="math" data-tex="\(\mathcal R_\nu(u_\nu,p_\nu)=\sqrt\nu\mathcal R_1(u,p)(y,t)\)">\(\mathcal R_\nu(u_\nu,p_\nu)=\sqrt\nu\mathcal R_1(u,p)(y,t)\)</span>, <span class="math" data-tex="\(D_{j,\nu}T_{j,\nu}=\sqrt\nu D_jT_j\)">\(D_{j,\nu}T_{j,\nu}=\sqrt\nu D_jT_j\)</span>, and <span class="math" data-tex="\(\nu\partial_{z_\nu}^2u_{j,\nu}=\sqrt\nu\partial_z^2u_j\)">\(\nu\partial_{z_\nu}^2u_{j,\nu}=\sqrt\nu\partial_z^2u_j\)</span>. G1.5 therefore retains exactly the same physical stress identity at every <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The original coordinates are <span class="math" data-tex="\(X_\nu=r_\nu^2/(2\nu q_\nu)\)">\(X_\nu=r_\nu^2/(2\nu q_\nu)\)</span>, <span class="math" data-tex="\(\eta_\nu=z_\nu/(\sqrt\nu q_\nu^D)\)">\(\eta_\nu=z_\nu/(\sqrt\nu q_\nu^D)\)</span>, with <span class="math" data-tex="\(q_\nu-z_\nu^2q_\nu^{2h}/\nu=\tau\)">\(q_\nu-z_\nu^2q_\nu^{2h}/\nu=\tau\)</span>. No viscosity factor is discarded.</p>
+<h2 id="g2-all-five-cumulative-moments-and-the-pressure-datum">G2. All five cumulative moments and the pressure datum</h2>
+<p>Use the original moments and prescribed axis pressure:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=\int_0^XU\,dx,\quad I=\int_0^XH\,dx,\quad J=\int_0^XUH\,dx,\\
+S=\int_0^X(U^2-E^2/2)\,dx,\quad C_p=\int_0^X\frac{E^2}{2x}\,dx,
+\qquad \Pi=\Pi_{\rm ax}(\eta)+C_p.
+\end{gathered}
+\tag{G2.1}
+\]">\[
+\begin{gathered}
+M=\int_0^XU\,dx,\quad I=\int_0^XH\,dx,\quad J=\int_0^XUH\,dx,\\
+S=\int_0^X(U^2-E^2/2)\,dx,\quad C_p=\int_0^X\frac{E^2}{2x}\,dx,
+\qquad \Pi=\Pi_{\rm ax}(\eta)+C_p.
+\end{gathered}
+\tag{G2.1}
+\]</span>
+<p>The factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span> and the weight <span class="math" data-tex="\(1/(2x)\)">\(1/(2x)\)</span> in <span class="math" data-tex="\(C_p\)">\(C_p\)</span> remain distinct. Since <span class="math" data-tex="\(XW=X-2D\eta M-dM_\eta\)">\(XW=X-2D\eta M-dM_\eta\)</span>,
+<span class="math" data-tex="\(\partial_X(XW)=1-2D\eta U-dU_\eta\)">\(\partial_X(XW)=1-2D\eta U-dU_\eta\)</span>. Integration by parts in <span class="math" data-tex="\(-WXH_X\)">\(-WXH_X\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\int_0^XHS_q\,dx
+={}&amp;-XWH+I-2D\eta J-d\int_0^XU_\eta H\,dx-hI+2h\eta J\\
+&amp;-D\eta I_\eta-d\int_0^XUH_\eta\,dx\\
+={}&amp;-XWH+(1-h)I-D\eta I_\eta-dJ_\eta+2(h-D)\eta J.
+\end{split}
+\tag{G2.2}
+\]">\[
+\begin{split}
+\int_0^XHS_q\,dx
+={}&amp;-XWH+I-2D\eta J-d\int_0^XU_\eta H\,dx-hI+2h\eta J\\
+&amp;-D\eta I_\eta-d\int_0^XUH_\eta\,dx\\
+={}&amp;-XWH+(1-h)I-D\eta I_\eta-dJ_\eta+2(h-D)\eta J.
+\end{split}
+\tag{G2.2}
+\]</span>
+<p>The lower boundary vanishes because <span class="math" data-tex="\(XWH=O(X^2)\)">\(XWH=O(X^2)\)</span>. For the axial terms other than pressure, the identical integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+-XWU+D(M-\eta M_\eta)+4h\eta\int_0^XU^2\,dx-d\partial_\eta\int_0^XU^2\,dx.
+\tag{G2.3}
+\]">\[
+-XWU+D(M-\eta M_\eta)+4h\eta\int_0^XU^2\,dx-d\partial_\eta\int_0^XU^2\,dx.
+\tag{G2.3}
+\]</span>
+<p>Indeed the coefficient of <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(1-A=D\)">\(1-A=D\)</span>, that of <span class="math" data-tex="\(\int U^2\)">\(\int U^2\)</span> is <span class="math" data-tex="\(2(A-D)\eta=4h\eta\)">\(2(A-D)\eta=4h\eta\)</span>, and the two copies of <span class="math" data-tex="\(-d\int UU_\eta\)">\(-d\int UU_\eta\)</span> combine to the derivative shown. No axial boundary value has been omitted: <span class="math" data-tex="\(XWU=O(X)\)">\(XWU=O(X)\)</span> at zero.</p>
+<p>Writing <span class="math" data-tex="\(K_E=\int_0^XE^2/2\,dx\)">\(K_E=\int_0^XE^2/2\,dx\)</span>, integration of <span class="math" data-tex="\(x\Pi_x=E^2/2\)">\(x\Pi_x=E^2/2\)</span> gives <span class="math" data-tex="\(\int_0^X\Pi\,dx=X\Pi-K_E\)">\(\int_0^X\Pi\,dx=X\Pi-K_E\)</span>. Hence the entire pressure contribution is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\int_0^X(-d\Pi_\eta+4A\eta\Pi+2\eta x\Pi_x)\,dx
+&amp;=X(4A\eta\Pi-d\Pi_\eta)+d(K_E)_\eta+(2-4A)\eta K_E\\
+&amp;=X(4A\eta\Pi-d\Pi_\eta)+d(K_E)_\eta-4h\eta K_E.
+\end{split}
+\tag{G2.4}
+\]">\[
+\begin{split}
+\int_0^X(-d\Pi_\eta+4A\eta\Pi+2\eta x\Pi_x)\,dx
+&amp;=X(4A\eta\Pi-d\Pi_\eta)+d(K_E)_\eta+(2-4A)\eta K_E\\
+&amp;=X(4A\eta\Pi-d\Pi_\eta)+d(K_E)_\eta-4h\eta K_E.
+\end{split}
+\tag{G2.4}
+\]</span>
+<p>The axis pressure is included in <span class="math" data-tex="\(X\Pi\)">\(X\Pi\)</span>. Combining G2.2–G2.4 and dividing by the exact integrating factors proves</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+Q_s&amp;=-W+\frac{(1-h)I-D\eta I_\eta-dJ_\eta+2(h-D)\eta J}{XH},\\
+N_s&amp;=-WU+\frac{D(M-\eta M_\eta)+4h\eta S-dS_\eta}{X}
++4A\eta\Pi-d\Pi_\eta.
+\end{split}
+\tag{G2.5}
+\]">\[
+\begin{split}
+Q_s&amp;=-W+\frac{(1-h)I-D\eta I_\eta-dJ_\eta+2(h-D)\eta J}{XH},\\
+N_s&amp;=-WU+\frac{D(M-\eta M_\eta)+4h\eta S-dS_\eta}{X}
++4A\eta\Pi-d\Pi_\eta.
+\end{split}
+\tag{G2.5}
+\]</span>
+<p>These are original (4.16), derived without discarding pressure or an integration constant.</p>
+<h2 id="g3-exact-exterior-preservation-and-stability-without-radial-derivative-loss">G3. Exact exterior preservation and stability without radial derivative loss</h2>
+<p>For two profiles write <span class="math" data-tex="\(\Delta f=f_2-f_1\)">\(\Delta f=f_2-f_1\)</span> and <span class="math" data-tex="\(\mathbf m_i=(M_i,I_i,J_i,S_i,C_{p,i})\)">\(\mathbf m_i=(M_i,I_i,J_i,S_i,C_{p,i})\)</span>. Their exact moment differences are</p>
+<span class="math math-display" data-tex="\[
+\Delta\mathbf m=\left(\int_0^X\Delta U,\ \int_0^X\Delta H,\
+\int_0^X(U_2H_2-U_1H_1),\
+\int_0^X[U_2^2-U_1^2-(E_2^2-E_1^2)/2],\
+\int_0^X\frac{E_2^2-E_1^2}{2x}\right),
+\tag{G3.1}
+\]">\[
+\Delta\mathbf m=\left(\int_0^X\Delta U,\ \int_0^X\Delta H,\
+\int_0^X(U_2H_2-U_1H_1),\
+\int_0^X[U_2^2-U_1^2-(E_2^2-E_1^2)/2],\
+\int_0^X\frac{E_2^2-E_1^2}{2x}\right),
+\tag{G3.1}
+\]</span>
+<p>where every integral has measure <span class="math" data-tex="\(dx\)">\(dx\)</span> and parameter <span class="math" data-tex="\(\eta\)">\(\eta\)</span> fixed. If the profiles agree for <span class="math" data-tex="\(X\ge X_h&gt;0\)">\(X\ge X_h&gt;0\)</span>, all these integrands vanish there. Thus <span class="math" data-tex="\(\Delta\mathbf m(X,\eta)=\Delta\mathbf m(X_h,\eta)\)">\(\Delta\mathbf m(X,\eta)=\Delta\mathbf m(X_h,\eta)\)</span>. When this latter function is zero for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, all its parameter derivatives vanish too. With the same <span class="math" data-tex="\(\Pi_{\rm ax}\)">\(\Pi_{\rm ax}\)</span>, G0.7 and G2.5 give equality of <span class="math" data-tex="\(\Pi,V_0,Q_s,N_s\)">\(\Pi,V_0,Q_s,N_s\)</span> on the entire exterior. Equality of the profiles on that interval also gives equality of their radial derivatives, including their common one-sided value at <span class="math" data-tex="\(X_h\)">\(X_h\)</span>. G1.5 then proves equality of <span class="math" data-tex="\(p_s,a,b_s,\mathcal T_0\)">\(p_s,a,b_s,\mathcal T_0\)</span> there. This proves the full preservation statement of Lemma 4.4(i).</p>
+<p>The pressure datum is essential in this calculation. If instead its difference is <span class="math" data-tex="\(g(\eta)\)">\(g(\eta)\)</span> while the five moments and exterior profiles agree, then</p>
+<span class="math math-display" data-tex="\[
+\Delta\Pi=g,\qquad \Delta Q_s=0,\qquad
+\Delta N_s=4A\eta g-dg&#x27;,\qquad
+\Delta\mathcal T_0=\left(0,\frac{X}{L\sqrt{2X}}(4A\eta g-dg&#x27;)\right).
+\tag{G3.2}
+\]">\[
+\Delta\Pi=g,\qquad \Delta Q_s=0,\qquad
+\Delta N_s=4A\eta g-dg&#x27;,\qquad
+\Delta\mathcal T_0=\left(0,\frac{X}{L\sqrt{2X}}(4A\eta g-dg&#x27;)\right).
+\tag{G3.2}
+\]</span>
+<p>These exact terms identify what preservation requires; there is no inference that the source neglects them.</p>
+<p>The kernel of this pressure-to-stress map can also be determined exactly. On <span class="math" data-tex="\(-1&lt;\eta&lt;1\)">\(-1&lt;\eta&lt;1\)</span>, equality of the stresses is equivalent to <span class="math" data-tex="\(dg&#x27;=4A\eta g\)">\(dg&#x27;=4A\eta g\)</span>, since <span class="math" data-tex="\(X/(L\sqrt{2X})&gt;0\)">\(X/(L\sqrt{2X})&gt;0\)</span> for <span class="math" data-tex="\(X&gt;0\)">\(X&gt;0\)</span>. Product differentiation gives <span class="math" data-tex="\((d^{2A}g)&#x27;=d^{2A-1}(dg&#x27;-4A\eta g)=0\)">\((d^{2A}g)&#x27;=d^{2A-1}(dg&#x27;-4A\eta g)=0\)</span>. Thus every such difference is <span class="math" data-tex="\(g(\eta)=c\,d^{-2A}\)">\(g(\eta)=c\,d^{-2A}\)</span>, with one constant <span class="math" data-tex="\(c\)">\(c\)</span>. Its physical pressure is <span class="math" data-tex="\(q^{-2A}g=c(qd)^{-2A}=c(1-t)^{-2A}\)">\(q^{-2A}g=c(qd)^{-2A}=c(1-t)^{-2A}\)</span>, spatially constant at each <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, so it changes no pressure gradient. In the source's smooth closed profile class, boundedness at either endpoint and <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> force <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. Hence the common axis datum is necessary as well as sufficient for exterior stress preservation within that class. This does not exclude the usual spatially constant pressure freedom in a larger physical class. The complete teaching calculation is Exercise 2 of <a href="../src/from-velocity-profiles-to-stress-and-moments.md">the stress and moment lesson</a>.</p>
+<p>On <span class="math" data-tex="\(\mathcal R=[X_0,X_1]\times[-1,1]\)">\(\mathcal R=[X_0,X_1]\times[-1,1]\)</span>, with <span class="math" data-tex="\(0&lt;X_0&lt;X_1\)">\(0&lt;X_0&lt;X_1\)</span>, set <span class="math" data-tex="\(\|f\|_j=\max_{0\le r\le j}\sup_{\mathcal R}|\partial_\eta^rf|\)">\(\|f\|_j=\max_{0\le r\le j}\sup_{\mathcal R}|\partial_\eta^rf|\)</span>, using the componentwise maximum for tuples. Assume the source bounds <span class="math" data-tex="\(E_i\ge e_{\min}&gt;0\)">\(E_i\ge e_{\min}&gt;0\)</span> and finite common <span class="math" data-tex="\(k+1\)">\(k+1\)</span> norms. The exact difference expressions are</p>
+<span class="math math-display" data-tex="\[
+\Delta H=\sqrt{2X}\Delta E,\quad
+\Delta W=-\frac{2D\eta\Delta M+d\partial_\eta\Delta M}{X},\quad
+\Delta\Pi=\Delta C_p,\quad
+\Delta(H^{-1})=-\frac{\Delta H}{H_1H_2},\quad
+\Delta(E^{-1})=-\frac{\Delta E}{E_1E_2}.
+\tag{G3.3}
+\]">\[
+\Delta H=\sqrt{2X}\Delta E,\quad
+\Delta W=-\frac{2D\eta\Delta M+d\partial_\eta\Delta M}{X},\quad
+\Delta\Pi=\Delta C_p,\quad
+\Delta(H^{-1})=-\frac{\Delta H}{H_1H_2},\quad
+\Delta(E^{-1})=-\frac{\Delta E}{E_1E_2}.
+\tag{G3.3}
+\]</span>
+<p>For clarity, let <span class="math" data-tex="\(A_I=(1-h)I-D\eta I_\eta-dJ_\eta+2(h-D)\eta J\)">\(A_I=(1-h)I-D\eta I_\eta-dJ_\eta+2(h-D)\eta J\)</span> and <span class="math" data-tex="\(A_M=D(M-\eta M_\eta)+4h\eta S-dS_\eta\)">\(A_M=D(M-\eta M_\eta)+4h\eta S-dS_\eta\)</span>, retaining every summand. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\Delta Q_s&amp;=-\Delta W+\frac{\Delta A_I}{XH_2}-\frac{A_{I,1}\Delta H}{XH_1H_2},\\
+\Delta N_s&amp;=-U_2\Delta W-W_1\Delta U+\frac{\Delta A_M}{X}
++4A\eta\Delta C_p-d\partial_\eta\Delta C_p,\\
+\Delta p_{s,1}&amp;=X\Delta Q_s/L,\qquad
+\Delta p_{s,2}=\frac X L\left(\frac{\Delta N_s}{E_2}-\frac{N_{s,1}\Delta E}{E_1E_2}\right).
+\end{split}
+\tag{G3.4}
+\]">\[
+\begin{split}
+\Delta Q_s&amp;=-\Delta W+\frac{\Delta A_I}{XH_2}-\frac{A_{I,1}\Delta H}{XH_1H_2},\\
+\Delta N_s&amp;=-U_2\Delta W-W_1\Delta U+\frac{\Delta A_M}{X}
++4A\eta\Delta C_p-d\partial_\eta\Delta C_p,\\
+\Delta p_{s,1}&amp;=X\Delta Q_s/L,\qquad
+\Delta p_{s,2}=\frac X L\left(\frac{\Delta N_s}{E_2}-\frac{N_{s,1}\Delta E}{E_1E_2}\right).
+\end{split}
+\tag{G3.4}
+\]</span>
+<p>This exposes the one differentiated moment in each term. To bound the other factors explicitly, use
+<span class="math" data-tex="\(\partial_\eta^r(fg)=\sum_{a=0}^r\binom ra f^{(a)}g^{(r-a)}\)">\(\partial_\eta^r(fg)=\sum_{a=0}^r\binom ra f^{(a)}g^{(r-a)}\)</span>, giving <span class="math" data-tex="\(\|fg\|_r\le2^r\|f\|_r\|g\|_r\)">\(\|fg\|_r\le2^r\|f\|_r\|g\|_r\)</span>. If <span class="math" data-tex="\(|f|\ge c&gt;0\)">\(|f|\ge c&gt;0\)</span>, its reciprocal derivatives are recursively</p>
+<span class="math math-display" data-tex="\[
+(f^{-1})^{(r)}=-f^{-1}\sum_{a=1}^r\binom ra f^{(a)}(f^{-1})^{(r-a)},\qquad r\ge1.
+\tag{G3.5}
+\]">\[
+(f^{-1})^{(r)}=-f^{-1}\sum_{a=1}^r\binom ra f^{(a)}(f^{-1})^{(r-a)},\qquad r\ge1.
+\tag{G3.5}
+\]</span>
+<p>Start with <span class="math" data-tex="\(\|f^{-1}\|_0\le c^{-1}\)">\(\|f^{-1}\|_0\le c^{-1}\)</span>; this recursion gives a finite polynomial bound in <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> and <span class="math" data-tex="\(\|f\|_r\)">\(\|f\|_r\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>. Apply it to <span class="math" data-tex="\(E_i,H_i,L\)">\(E_i,H_i,L\)</span>, whose lower bounds are <span class="math" data-tex="\(e_{\min},\sqrt{2X_0}e_{\min},1-2h\)">\(e_{\min},\sqrt{2X_0}e_{\min},1-2h\)</span>. Product differentiation of G3.4 therefore proves, with exactly the source dependence,</p>
+<span class="math math-display" data-tex="\[
+\|\Delta(Q_s,N_s,p_s)\|_k
+\le C_k\left(\|\Delta(U,E)\|_{k+1}+\|\Delta\mathbf m\|_{k+1}\right).
+\tag{G3.6}
+\]">\[
+\|\Delta(Q_s,N_s,p_s)\|_k
+\le C_k\left(\|\Delta(U,E)\|_{k+1}+\|\Delta\mathbf m\|_{k+1}\right).
+\tag{G3.6}
+\]</span>
+<p>Here <span class="math" data-tex="\(C_k\)">\(C_k\)</span> depends only on <span class="math" data-tex="\(k,h,X_0,X_1,e_{\min}\)">\(k,h,X_0,X_1,e_{\min}\)</span>, the common input bounds, and <span class="math" data-tex="\(\|\Pi_{\rm ax}\|_{k+1}\)">\(\|\Pi_{\rm ax}\|_{k+1}\)</span>. No radial derivative of a difference occurs. This estimate does not control the changes of <span class="math" data-tex="\(a,b_s\)">\(a,b_s\)</span> without the corresponding radial derivatives; G1.5 retains that dependence in the full stress.</p>
+<p>For the original joining radius <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, the exact comparison, not a replacement of the original objects, is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X=\rho x,\quad \widehat U(x,\eta)=U(\rho x,\eta),\quad \widehat E(x,\eta)=E(\rho x,\eta),\quad H(\rho x,\eta)=\sqrt\rho\widehat H(x,\eta),\\
+(M,I,J,S,C_p)(\rho x,\eta)
+=(\rho\widehat M,\rho^{3/2}\widehat I,\rho^{3/2}\widehat J,\rho\widehat S,\widehat C_p),\\
+(\widehat Q_s,\widehat N_s)(x,\eta)=(Q_s,N_s)(\rho x,\eta),\quad
+\widehat p_s(x,\eta)=\rho^{-1}p_s(\rho x,\eta).
+\end{gathered}
+\tag{G3.7}
+\]">\[
+\begin{gathered}
+X=\rho x,\quad \widehat U(x,\eta)=U(\rho x,\eta),\quad \widehat E(x,\eta)=E(\rho x,\eta),\quad H(\rho x,\eta)=\sqrt\rho\widehat H(x,\eta),\\
+(M,I,J,S,C_p)(\rho x,\eta)
+=(\rho\widehat M,\rho^{3/2}\widehat I,\rho^{3/2}\widehat J,\rho\widehat S,\widehat C_p),\\
+(\widehat Q_s,\widehat N_s)(x,\eta)=(Q_s,N_s)(\rho x,\eta),\quad
+\widehat p_s(x,\eta)=\rho^{-1}p_s(\rho x,\eta).
+\end{gathered}
+\tag{G3.7}
+\]</span>
+<p>Changing the integration variable in each of G2.1 proves the five factors. Substitution in G2.5 and G1.5 cancels the same factors, so G3.6 holds in a fixed <span class="math" data-tex="\(x\)">\(x\)</span> rectangle with a constant independent of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> whenever the listed hatted bounds are uniform. The shears obey <span class="math" data-tex="\(a(\rho x)=\widehat a(x)\)">\(a(\rho x)=\widehat a(x)\)</span>, <span class="math" data-tex="\(b_s(\rho x)=\widehat b_s(x)\)">\(b_s(\rho x)=\widehat b_s(x)\)</span>, whereas the full stress obeys</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_0(\rho x,\eta)=\rho^{1/2}\widehat F\widehat p_s-\rho^{-1/2}\widehat F\widehat{\mathfrak s}.
+\tag{G3.8}
+\]">\[
+\mathcal T_0(\rho x,\eta)=\rho^{1/2}\widehat F\widehat p_s-\rho^{-1/2}\widehat F\widehat{\mathfrak s}.
+\tag{G3.8}
+\]</span>
+<p>Both different powers are necessary and are retained.</p>
+<h2 id="g4-invertibility-and-the-approaching-exponent-bound">G4. Invertibility and the approaching-exponent bound</h2>
+<p>Let distinct real <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_m\)">\(\alpha_1,\ldots,\alpha_m\)</span> and nonnegative nonzero smooth <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> have supports in ordered disjoint compact subintervals <span class="math" data-tex="\(I_1&lt;\cdots&lt;I_m\)">\(I_1&lt;\cdots&lt;I_m\)</span> of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Define the actual matrix</p>
+<span class="math math-display" data-tex="\[
+B_{ij}=\int_0^\infty x^{\alpha_i}\beta_j(x)\,dx.
+\tag{G4.1}
+\]">\[
+B_{ij}=\int_0^\infty x^{\alpha_i}\beta_j(x)\,dx.
+\tag{G4.1}
+\]</span>
+<p>A nonzero combination of <span class="math" data-tex="\(n\)">\(n\)</span> distinct powers has at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> distinct positive zeros. Here is the induction: divide by its least power, which does not change positive zeros. If <span class="math" data-tex="\(n\)">\(n\)</span> zeros exist, Rolle's theorem gives <span class="math" data-tex="\(n-1\)">\(n-1\)</span> zeros of the derivative. Unless that derivative is zero identically, it is a combination of at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span> distinct powers and so has at most <span class="math" data-tex="\(n-2\)">\(n-2\)</span> zeros by induction. If it is zero identically, the divided function is a nonzero constant and has no zeros. The induction starts with one nonzero monomial. Consequently the evaluation determinant <span class="math" data-tex="\(\det[x_j^{\alpha_i}]\)">\(\det[x_j^{\alpha_i}]\)</span> is nonzero when <span class="math" data-tex="\(0&lt;x_1&lt;\cdots&lt;x_m\)">\(0&lt;x_1&lt;\cdots&lt;x_m\)</span>. It has a constant sign on this connected domain. Expanding the determinant by permutations and applying finite Fubini gives</p>
+<span class="math math-display" data-tex="\[
+\det B=\int_{I_1\times\cdots\times I_m}\det[x_j^{\alpha_i}]\prod_{j=1}^m\beta_j(x_j)\,dx_1\cdots dx_m\ne0.
+\tag{G4.2}
+\]">\[
+\det B=\int_{I_1\times\cdots\times I_m}\det[x_j^{\alpha_i}]\prod_{j=1}^m\beta_j(x_j)\,dx_1\cdots dx_m\ne0.
+\tag{G4.2}
+\]</span>
+<p>There is no cancellation: the product is positive on a product of open sets of positive measure. This proves the matrix assertion of Lemmas 4.7 and A.1.</p>
+<p>For a smooth compact family preserving these hypotheses, the determinant has a positive absolute minimum. The cofactor formula bounds <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span>; all fixed parameter derivatives follow recursively from</p>
+<span class="math math-display" data-tex="\[
+\partial_\eta^r B^{-1}
+=-\sum_{a=0}^{r-1}\binom ra(\partial_\eta^aB^{-1})(\partial_\eta^{r-a}B)B^{-1}.
+\tag{G4.3}
+\]">\[
+\partial_\eta^r B^{-1}
+=-\sum_{a=0}^{r-1}\binom ra(\partial_\eta^aB^{-1})(\partial_\eta^{r-a}B)B^{-1}.
+\tag{G4.3}
+\]</span>
+<p>The assertion requires smooth dependence of the integrals, as in the source's smooth compact family. It supplies no uniform inverse at colliding exponents. For logarithmic coordinates the exact substitution is
+<span class="math" data-tex="\(\int e^{\alpha_i y}\gamma_j(y)\,dy=\int x^{\alpha_i}\gamma_j(\log x)x^{-1}\,dx\)">\(\int e^{\alpha_i y}\gamma_j(y)\,dy=\int x^{\alpha_i}\gamma_j(\log x)x^{-1}\,dx\)</span>. The Jacobian is part of the bump and does not change the ordering or sign.</p>
+<p>The loss needed later is explicit. For fixed translated logarithmic bumps <span class="math" data-tex="\(\beta(y-c_1),\beta(y-c_2)\)">\(\beta(y-c_1),\beta(y-c_2)\)</span>, let <span class="math" data-tex="\(\Delta=c_2-c_1&gt;0\)">\(\Delta=c_2-c_1&gt;0\)</span> and <span class="math" data-tex="\(b(s)=\int e^{st}\beta(t)\,dt&gt;0\)">\(b(s)=\int e^{st}\beta(t)\,dt&gt;0\)</span>. The original matrix and its determinant are</p>
+<span class="math math-display" data-tex="\[
+B_{ij}^{\rm orig}=e^{s_ic_j}b(s_i),\qquad
+\det B^{\rm orig}=e^{(s_1+s_2)c_1}b(s_1)b(s_2)(e^{s_2\Delta}-e^{s_1\Delta}).
+\tag{G4.4}
+\]">\[
+B_{ij}^{\rm orig}=e^{s_ic_j}b(s_i),\qquad
+\det B^{\rm orig}=e^{(s_1+s_2)c_1}b(s_1)b(s_2)(e^{s_2\Delta}-e^{s_1\Delta}).
+\tag{G4.4}
+\]</span>
+<p>The matrix displayed in original (A.1) is obtained by multiplying row <span class="math" data-tex="\(i\)">\(i\)</span> by <span class="math" data-tex="\(e^{-s_ic_1}\)">\(e^{-s_ic_1}\)</span>; recovering the original inverse multiplies by this same diagonal factor on the right. For slopes in a fixed compact interval, those factors and the positive <span class="math" data-tex="\(b(s_i)\)">\(b(s_i)\)</span> have two-sided bounds. The mean value theorem gives <span class="math" data-tex="\(|e^{s_2\Delta}-e^{s_1\Delta}|=\Delta e^{\xi\Delta}|s_2-s_1|\)">\(|e^{s_2\Delta}-e^{s_1\Delta}|=\Delta e^{\xi\Delta}|s_2-s_1|\)</span>. Cofactors are bounded, hence the original inverse is <span class="math" data-tex="\(O(|s_2-s_1|^{-1})\)">\(O(|s_2-s_1|^{-1})\)</span>.</p>
+<p>For weights <span class="math" data-tex="\(1,x^{-\lambda}\)">\(1,x^{-\lambda}\)</span> and fixed ordered bumps <span class="math" data-tex="\(\beta_1,\beta_2\)">\(\beta_1,\beta_2\)</span>, set <span class="math" data-tex="\(m_j=\int\beta_j&gt;0\)">\(m_j=\int\beta_j&gt;0\)</span> and <span class="math" data-tex="\(\mu_j=m_j^{-1}\int\log x\,\beta_j(x)\,dx\)">\(\mu_j=m_j^{-1}\int\log x\,\beta_j(x)\,dx\)</span>. Separation gives <span class="math" data-tex="\(\mu_1&lt;\mu_2\)">\(\mu_1&lt;\mu_2\)</span>. Taylor's formula on their compact positive supports, with its bounded second derivative <span class="math" data-tex="\((\log x)^2x^{-\lambda}\)">\((\log x)^2x^{-\lambda}\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}\int\beta_1&amp;\int\beta_2\\\int x^{-\lambda}\beta_1&amp;\int x^{-\lambda}\beta_2\end{pmatrix}
+=-m_1m_2(\mu_2-\mu_1)\lambda+O(\lambda^2).
+\tag{G4.5}
+\]">\[
+\det\begin{pmatrix}\int\beta_1&amp;\int\beta_2\\\int x^{-\lambda}\beta_1&amp;\int x^{-\lambda}\beta_2\end{pmatrix}
+=-m_1m_2(\mu_2-\mu_1)\lambda+O(\lambda^2).
+\tag{G4.5}
+\]</span>
+<p>The remainder constant is finite on a fixed bounded <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> interval. For sufficiently small positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> it is at most half the magnitude of the displayed linear term, proving the required inverse bound <span class="math" data-tex="\(O(\lambda^{-1})\)">\(O(\lambda^{-1})\)</span>. This is an analytic bound, with no numerical matrix sampling.</p>
+<h2 id="g5-exact-five-moment-correction-and-the-nonlinear-solve">G5. Exact five-moment correction and the nonlinear solve</h2>
+<p>On a correction patch in <span class="math" data-tex="\(X=\rho x\)">\(X=\rho x\)</span>, keep the source base <span class="math" data-tex="\(U_0=u_c(\eta)\)">\(U_0=u_c(\eta)\)</span>, <span class="math" data-tex="\(E_0=e_*f_*(\eta)x^\alpha\)">\(E_0=e_*f_*(\eta)x^\alpha\)</span>, where <span class="math" data-tex="\(e_*&gt;0\)">\(e_*&gt;0\)</span>, <span class="math" data-tex="\(f_*&gt;0\)">\(f_*&gt;0\)</span>. Use two fixed ordered axial bumps and three fixed ordered angular bumps, with additive perturbations
+<span class="math" data-tex="\(u=\sum_{i=1}^2c_i\beta_i\)">\(u=\sum_{i=1}^2c_i\beta_i\)</span>, <span class="math" data-tex="\(e=\sum_{j=1}^3c_{j+2}\gamma_j\)">\(e=\sum_{j=1}^3c_{j+2}\gamma_j\)</span>. Each block has ordered disjoint supports inside the patch. The original five moment increments, integrated over the entire patch, are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\delta M&amp;=\rho\int u\,dx,&amp;\delta I&amp;=\sqrt2\rho^{3/2}\int\sqrt x\,e\,dx,\\
+\delta J&amp;=\sqrt2\rho^{3/2}\int\sqrt x\,(u_ce+E_0u+ue)\,dx,\\
+\delta S&amp;=\rho\int(2u_cu+u^2-E_0e-e^2/2)\,dx,\\
+\delta C_p&amp;=\int(E_0e/x+e^2/(2x))\,dx.
+\end{split}
+\tag{G5.1}
+\]">\[
+\begin{split}
+\delta M&amp;=\rho\int u\,dx,&amp;\delta I&amp;=\sqrt2\rho^{3/2}\int\sqrt x\,e\,dx,\\
+\delta J&amp;=\sqrt2\rho^{3/2}\int\sqrt x\,(u_ce+E_0u+ue)\,dx,\\
+\delta S&amp;=\rho\int(2u_cu+u^2-E_0e-e^2/2)\,dx,\\
+\delta C_p&amp;=\int(E_0e/x+e^2/(2x))\,dx.
+\end{split}
+\tag{G5.1}
+\]</span>
+<p>In particular <span class="math" data-tex="\(ue,u^2,e^2\)">\(ue,u^2,e^2\)</span> remain in the actual moment map. Introduce the explicitly invertible row map <span class="math" data-tex="\(\mathscr L_\eta\)">\(\mathscr L_\eta\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\mathscr L_\eta(\delta\mathbf m)=
+\left(\frac{\delta M}{\rho},\frac{\delta J-u_c\delta I}{\sqrt2\rho^{3/2}e_*f_*},
+\frac{\delta I}{\sqrt2\rho^{3/2}},
+-\frac{\delta S-2u_c\delta M}{\rho e_*f_*},\frac{\delta C_p}{e_*f_*}\right).
+\tag{G5.2}
+\]">\[
+\mathscr L_\eta(\delta\mathbf m)=
+\left(\frac{\delta M}{\rho},\frac{\delta J-u_c\delta I}{\sqrt2\rho^{3/2}e_*f_*},
+\frac{\delta I}{\sqrt2\rho^{3/2}},
+-\frac{\delta S-2u_c\delta M}{\rho e_*f_*},\frac{\delta C_p}{e_*f_*}\right).
+\tag{G5.2}
+\]</span>
+<p>Every factor is retained. Its inverse sends <span class="math" data-tex="\(d=(d_1,\ldots,d_5)\)">\(d=(d_1,\ldots,d_5)\)</span> to</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\delta M=\rho d_1,\quad \delta I=\sqrt2\rho^{3/2}d_3,\quad
+\delta J=\sqrt2\rho^{3/2}(e_*f_*d_2+u_cd_3),\\
+\delta S=2u_c\rho d_1-\rho e_*f_*d_4,\qquad \delta C_p=e_*f_*d_5.
+\end{gathered}
+\tag{G5.3}
+\]">\[
+\begin{gathered}
+\delta M=\rho d_1,\quad \delta I=\sqrt2\rho^{3/2}d_3,\quad
+\delta J=\sqrt2\rho^{3/2}(e_*f_*d_2+u_cd_3),\\
+\delta S=2u_c\rho d_1-\rho e_*f_*d_4,\qquad \delta C_p=e_*f_*d_5.
+\end{gathered}
+\tag{G5.3}
+\]</span>
+<p>Thus solving the transformed equation is proved equivalent to restoring the original moments; it does not replace them. The linear map is block diagonal with the actual entries</p>
+<span class="math math-display" data-tex="\[
+B_U=\begin{pmatrix}\int\beta_1&amp;\int\beta_2\\
+\int x^{\alpha+1/2}\beta_1&amp;\int x^{\alpha+1/2}\beta_2\end{pmatrix},\qquad
+(B_E)_{ij}=\int x^{a_i}\gamma_j\,dx,\quad (a_1,a_2,a_3)=(1/2,\alpha,\alpha-1).
+\tag{G5.4}
+\]">\[
+B_U=\begin{pmatrix}\int\beta_1&amp;\int\beta_2\\
+\int x^{\alpha+1/2}\beta_1&amp;\int x^{\alpha+1/2}\beta_2\end{pmatrix},\qquad
+(B_E)_{ij}=\int x^{a_i}\gamma_j\,dx,\quad (a_1,a_2,a_3)=(1/2,\alpha,\alpha-1).
+\tag{G5.4}
+\]</span>
+<p>The exact remainder in the same row order is</p>
+<span class="math math-display" data-tex="\[
+\mathscr Q_\eta(c,c)=\left(0,\frac{\int\sqrt x\,ue\,dx}{e_*f_*},0,
+\frac{-\int u^2\,dx+\frac12\int e^2\,dx}{e_*f_*},
+\frac{\int e^2/(2x)\,dx}{e_*f_*}\right).
+\tag{G5.5}
+\]">\[
+\mathscr Q_\eta(c,c)=\left(0,\frac{\int\sqrt x\,ue\,dx}{e_*f_*},0,
+\frac{-\int u^2\,dx+\frac12\int e^2\,dx}{e_*f_*},
+\frac{\int e^2/(2x)\,dx}{e_*f_*}\right).
+\tag{G5.5}
+\]</span>
+<p>Polarization supplies a smooth bilinear map with this diagonal. G4 proves invertibility precisely when <span class="math" data-tex="\(\alpha\notin\{-1/2,1/2,3/2\}\)">\(\alpha\notin\{-1/2,1/2,3/2\}\)</span>: the two axial exponents and the three angular exponents are then distinct. At an excluded value the indicated block actually has equal rows, so this particular additive Jacobian is singular. No conclusion about other constructions is inferred. If <span class="math" data-tex="\(u_c=0\)">\(u_c=0\)</span> and <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, then G5.1 gives exactly <span class="math" data-tex="\(\delta M=\delta J=0\)">\(\delta M=\delta J=0\)</span>, while the three angular coefficients control <span class="math" data-tex="\((I,S,C_p)\)">\((I,S,C_p)\)</span>.</p>
+<p>Here is the full quantitative solve of Lemmas 4.7 and A.2. In <span class="math" data-tex="\(C^j([-1,1];\mathbb R^m)\)">\(C^j([-1,1];\mathbb R^m)\)</span>, use the source maximum norm, let <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span> be the multiplication norm of <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span>, and let <span class="math" data-tex="\(q_j\)">\(q_j\)</span> be the bilinear norm of <span class="math" data-tex="\(\mathscr Q\)">\(\mathscr Q\)</span>, including all product-rule constants. For a prescribed smooth discrepancy <span class="math" data-tex="\(d\)">\(d\)</span>, set <span class="math" data-tex="\(r_j=2\nu_j\|d\|_{C^j}\)">\(r_j=2\nu_j\|d\|_{C^j}\)</span>. The iteration</p>
+<span class="math math-display" data-tex="\[
+c_0=0,\qquad c_{n+1}=B^{-1}(d-\mathscr Q(c_n,c_n))
+\tag{G5.6}
+\]">\[
+c_0=0,\qquad c_{n+1}=B^{-1}(d-\mathscr Q(c_n,c_n))
+\tag{G5.6}
+\]</span>
+<p>maps the closed ball of radius <span class="math" data-tex="\(r_j\)">\(r_j\)</span> into itself and has Lipschitz constant at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span> whenever <span class="math" data-tex="\(8\nu_j^2q_j\|d\|_{C^j}\le1\)">\(8\nu_j^2q_j\|d\|_{C^j}\le1\)</span>. In fact</p>
+<span class="math math-display" data-tex="\[
+\|B^{-1}(d-\mathscr Q(c,c))\|_{C^j}\le r_j/2+\nu_jq_jr_j^2\le3r_j/4,
+\quad
+\|\Phi(c)-\Phi(\widetilde c)\|_{C^j}\le2\nu_jq_jr_j\|c-\widetilde c\|_{C^j}\le\tfrac12\|c-\widetilde c\|_{C^j}.
+\tag{G5.7}
+\]">\[
+\|B^{-1}(d-\mathscr Q(c,c))\|_{C^j}\le r_j/2+\nu_jq_jr_j^2\le3r_j/4,
+\quad
+\|\Phi(c)-\Phi(\widetilde c)\|_{C^j}\le2\nu_jq_jr_j\|c-\widetilde c\|_{C^j}\le\tfrac12\|c-\widetilde c\|_{C^j}.
+\tag{G5.7}
+\]</span>
+<p>The case <span class="math" data-tex="\(r_j=0\)">\(r_j=0\)</span> gives the exact zero solution. Completeness and the geometric bound on successive differences give convergence and uniqueness in the specified ball. Applying this for <span class="math" data-tex="\(j=0\)">\(j=0\)</span> and one preselected finite <span class="math" data-tex="\(j=k\)">\(j=k\)</span> gives the same limit: the iterates are literally identical and convergence in <span class="math" data-tex="\(C^k\)">\(C^k\)</span> implies convergence in <span class="math" data-tex="\(C^0\)">\(C^0\)</span>. Therefore <span class="math" data-tex="\(\|c\|_{C^k}\le2\nu_k\|d\|_{C^k}\)">\(\|c\|_{C^k}\le2\nu_k\|d\|_{C^k}\)</span>.</p>
+<p>Smoothness requires no simultaneous smallness of every derivative norm. At the obtained solution the exact differential is
+<span class="math" data-tex="\(D_cF=B+\mathscr Q(c,\cdot)+\mathscr Q(\cdot,c)\)">\(D_cF=B+\mathscr Q(c,\cdot)+\mathscr Q(\cdot,c)\)</span>. Its product with <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span> differs from the identity by an operator of norm at most <span class="math" data-tex="\(2\nu_0q_0r_0\le1/2\)">\(2\nu_0q_0r_0\le1/2\)</span>; the Neumann series converges, so it is invertible. The pointwise implicit function theorem gives a smooth branch, equal to the continuous fixed-point branch by local uniqueness. One-sided endpoint derivatives follow either by smooth local extension of the finite-dimensional data or from successive differentiation and continuity up to the endpoints. The first derivative is exactly</p>
+<span class="math math-display" data-tex="\[
+c&#x27;=(D_cF)^{-1}\left[d&#x27;-B&#x27;c-(\partial_\eta\mathscr Q)(c,c)\right].
+\tag{G5.8}
+\]">\[
+c&#x27;=(D_cF)^{-1}\left[d&#x27;-B&#x27;c-(\partial_\eta\mathscr Q)(c,c)\right].
+\tag{G5.8}
+\]</span>
+<p>For order <span class="math" data-tex="\(r\)">\(r\)</span>, differentiate <span class="math" data-tex="\(Bc+\mathscr Q(c,c)=d\)">\(Bc+\mathscr Q(c,c)=d\)</span> using the finite binomial and multinomial product rules. The terms with <span class="math" data-tex="\(c^{(r)}\)">\(c^{(r)}\)</span> are exactly <span class="math" data-tex="\(D_cF\,c^{(r)}\)">\(D_cF\,c^{(r)}\)</span>. Every other term uses derivatives of <span class="math" data-tex="\(c\)">\(c\)</span> of order at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span> and derivatives of the given smooth data through order <span class="math" data-tex="\(r\)">\(r\)</span>. The inverse bound and induction give finite continuous derivatives of every order on the compact parameter interval. This proves the claimed smoothness without a hidden all-orders smallness assumption. When <span class="math" data-tex="\(\mathscr Q=0\)">\(\mathscr Q=0\)</span>, the exact solution is <span class="math" data-tex="\(B^{-1}d\)">\(B^{-1}d\)</span> with no smallness requirement.</p>
+<p>The actual support-scale derivative bound is also retained. For a fixed family <span class="math" data-tex="\(\delta V=v_*\sum c_j(\eta)\beta_j(X/\rho)\)">\(\delta V=v_*\sum c_j(\eta)\beta_j(X/\rho)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\partial_X^r\partial_\eta^k\delta V
+=v_*\rho^{-r}\sum c_j^{(k)}(\eta)\beta_j^{(r)}(X/\rho),\qquad
+\|\partial_X^r\partial_\eta^k\delta V\|_\infty
+\le |v_*|\rho^{-r}\sum_j\|\beta_j^{(r)}\|_\infty\|c\|_{C^k}.
+\tag{G5.9}
+\]">\[
+\partial_X^r\partial_\eta^k\delta V
+=v_*\rho^{-r}\sum c_j^{(k)}(\eta)\beta_j^{(r)}(X/\rho),\qquad
+\|\partial_X^r\partial_\eta^k\delta V\|_\infty
+\le |v_*|\rho^{-r}\sum_j\|\beta_j^{(r)}\|_\infty\|c\|_{C^k}.
+\tag{G5.9}
+\]</span>
+<p>For fixed-width logarithmic bumps, <span class="math" data-tex="\(X\partial_X=\partial_{\log X}\)">\(X\partial_X=\partial_{\log X}\)</span> gives the analogous formula with the logarithmic bump derivatives. Each later preservation of a strict inequality must compare this bound with its actual positive margin. This general solve does not certify any unexamined application margin.</p>
+<p>In the source's two applications the exponents are explicit. At <span class="math" data-tex="\(\alpha=1/10\)">\(\alpha=1/10\)</span>, the blocks have powers <span class="math" data-tex="\((0,3/5)\)">\((0,3/5)\)</span> and <span class="math" data-tex="\((1/2,1/10,-9/10)\)">\((1/2,1/10,-9/10)\)</span>. At <span class="math" data-tex="\(\alpha=-1/2-\lambda\)">\(\alpha=-1/2-\lambda\)</span>, they have powers <span class="math" data-tex="\((0,-\lambda)\)">\((0,-\lambda)\)</span> and <span class="math" data-tex="\((1/2,-1/2-\lambda,-3/2-\lambda)\)">\((1/2,-1/2-\lambda,-3/2-\lambda)\)</span>. G4.5 gives the possible <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> loss in the first block; the second stays separated near zero. The source fixes positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> before selecting the later radial frequency. The actual comparisons are derived in O, H and Q for the outer and joining constructions, and in <a href="shear-realization-audit.html">V4</a> for the final shear correction, with positive lambda fixed before the radial frequency.</p>
+<h2 id="g6-the-exact-stress-cone-test">G6. The exact stress-cone test</h2>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, set <span class="math" data-tex="\(t_s=-b_s/a\)">\(t_s=-b_s/a\)</span>, <span class="math" data-tex="\(v_s=a(1+t_s^2)\)">\(v_s=a(1+t_s^2)\)</span>, <span class="math" data-tex="\(P_c=p_{s,1}+t_sp_{s,2}\)">\(P_c=p_{s,1}+t_sp_{s,2}\)</span>, <span class="math" data-tex="\(J_c=p_{s,2}-t_sp_{s,1}\)">\(J_c=p_{s,2}-t_sp_{s,1}\)</span>. These are the original coordinates, with no unit-vector factors suppressed. Define</p>
+<span class="math math-display" data-tex="\[
+\mathcal U(P,J)=P+J^2/4-|J|\sqrt{(P-2)/2+J^2/16}.
+\tag{G6.1}
+\]">\[
+\mathcal U(P,J)=P+J^2/4-|J|\sqrt{(P-2)/2+J^2/16}.
+\tag{G6.1}
+\]</span>
+<p>For <span class="math" data-tex="\(P&gt;2\)">\(P&gt;2\)</span>, the roots in <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(2(P-v)^2-(v-2)J^2\)">\(2(P-v)^2-(v-2)J^2\)</span> are <span class="math" data-tex="\(v_\pm=P+J^2/4\pm|J|\sqrt{(P-2)/2+J^2/16}\)">\(v_\pm=P+J^2/4\pm|J|\sqrt{(P-2)/2+J^2/16}\)</span>. To check their location, put <span class="math" data-tex="\(x=P-2&gt;0\)">\(x=P-2&gt;0\)</span>. The inequality <span class="math" data-tex="\(\sqrt{x/2+J^2/16}\ge|J|/4\)">\(\sqrt{x/2+J^2/16}\ge|J|/4\)</span> gives <span class="math" data-tex="\(v_-\le P\)">\(v_-\le P\)</span>; and
+<span class="math" data-tex="\((x+J^2/4)^2-J^2(x/2+J^2/16)=x^2&gt;0\)">\((x+J^2/4)^2-J^2(x/2+J^2/16)=x^2&gt;0\)</span> gives <span class="math" data-tex="\(v_-&gt;2\)">\(v_-&gt;2\)</span>. The quadratic is positive below the smaller root and above the larger root. Since <span class="math" data-tex="\(v_+\ge P\)">\(v_+\ge P\)</span>, on <span class="math" data-tex="\(2&lt;v&lt;P\)">\(2&lt;v&lt;P\)</span> positivity is exactly <span class="math" data-tex="\(v&lt;v_-\)">\(v&lt;v_-\)</span>. This also covers <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, where both roots equal <span class="math" data-tex="\(P\)">\(P\)</span>. Therefore, for <span class="math" data-tex="\(v_s&gt;2\)">\(v_s&gt;2\)</span>, the source's admissible condition is exactly</p>
+<span class="math math-display" data-tex="\[
+P_c&gt;v_s,\qquad (v_s-2)J_c^2&lt;2(P_c-v_s)^2.
+\tag{G6.2}
+\]">\[
+P_c&gt;v_s,\qquad (v_s-2)J_c^2&lt;2(P_c-v_s)^2.
+\tag{G6.2}
+\]</span>
+<p>Its map to the physical stress is exact:</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{0,\theta}+t_s\mathcal T_{0,z}=F(P_c-v_s),\qquad
+\mathcal T_{0,z}-t_s\mathcal T_{0,\theta}=FJ_c.
+\tag{G6.3}
+\]">\[
+\mathcal T_{0,\theta}+t_s\mathcal T_{0,z}=F(P_c-v_s),\qquad
+\mathcal T_{0,z}-t_s\mathcal T_{0,\theta}=FJ_c.
+\tag{G6.3}
+\]</span>
+<p>Thus, where <span class="math" data-tex="\(F&gt;0\)">\(F&gt;0\)</span>, G6.2 is precisely the positive stress-cone inequality used in <a href="stress-covariance-audit.html">the covariance derivation C1–C9</a>. This proves the coordinate connection to that receiving argument, without asserting that the complete profile meets the inequality.</p>
+<p>Finally retain the source's compact-set sufficient condition. For a nonempty compact <span class="math" data-tex="\(K\subset\{(a,b_s,w):a&gt;0\}\)">\(K\subset\{(a,b_s,w):a&gt;0\}\)</span>, suppose its listed pointwise quantities satisfy <span class="math" data-tex="\(a-b_sw&gt;0\)">\(a-b_sw&gt;0\)</span> and <span class="math" data-tex="\(2b_sw+b_s^2/a+(a-2)w^2&lt;2\)">\(2b_sw+b_s^2/a+(a-2)w^2&lt;2\)</span>. Set <span class="math" data-tex="\(c=1-b_sw/a\)">\(c=1-b_sw/a\)</span>, <span class="math" data-tex="\(j=w+b_s/a\)">\(j=w+b_s/a\)</span>, <span class="math" data-tex="\(v=a+b_s^2/a\)">\(v=a+b_s^2/a\)</span>. Expansion gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+(v-2)j^2-2c^2=(1+b_s^2/a^2)\left[(a-2)w^2+2b_sw+b_s^2/a-2\right].
+\tag{G6.4}
+\]">\[
+(v-2)j^2-2c^2=(1+b_s^2/a^2)\left[(a-2)w^2+2b_sw+b_s^2/a-2\right].
+\tag{G6.4}
+\]</span>
+<p>Hence choose <span class="math" data-tex="\(c_K,\gamma_K&gt;0\)">\(c_K,\gamma_K&gt;0\)</span>, <span class="math" data-tex="\(B_K\ge1\)">\(B_K\ge1\)</span> with <span class="math" data-tex="\(c\ge c_K\)">\(c\ge c_K\)</span>, <span class="math" data-tex="\(G:=2c^2-(v-2)j^2\ge\gamma_K\)">\(G:=2c^2-(v-2)j^2\ge\gamma_K\)</span>, <span class="math" data-tex="\(v\le B_K\)">\(v\le B_K\)</span> and <span class="math" data-tex="\(cv\le B_K\)">\(cv\le B_K\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+P_K=\max\{(B_K+2)/c_K,\ 8B_K/\gamma_K\}.
+\tag{G6.5}
+\]">\[
+P_K=\max\{(B_K+2)/c_K,\ 8B_K/\gamma_K\}.
+\tag{G6.5}
+\]</span>
+<p>For <span class="math" data-tex="\(p_{s,1}=p\ge P_K\)">\(p_{s,1}=p\ge P_K\)</span>, <span class="math" data-tex="\(p_{s,2}=wp\)">\(p_{s,2}=wp\)</span>, one has <span class="math" data-tex="\(P_c=pc\ge B_K+2&gt;\max(2,v)\)">\(P_c=pc\ge B_K+2&gt;\max(2,v)\)</span>, <span class="math" data-tex="\(J_c=pj\)">\(J_c=pj\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\frac{2(P_c-v)^2-(v-2)J_c^2}{p^2}
+=G-4cv/p+2v^2/p^2\ge\gamma_K/2&gt;0.
+\tag{G6.6}
+\]">\[
+\frac{2(P_c-v)^2-(v-2)J_c^2}{p^2}
+=G-4cv/p+2v^2/p^2\ge\gamma_K/2&gt;0.
+\tag{G6.6}
+\]</span>
+<p>For <span class="math" data-tex="\(v&gt;2\)">\(v&gt;2\)</span> the equivalence already proved gives admissibility. For <span class="math" data-tex="\(v\le2\)">\(v\le2\)</span>, the inequality <span class="math" data-tex="\(\mathcal U(P_c,J_c)&gt;2\)">\(\mathcal U(P_c,J_c)&gt;2\)</span> proves the relaxed condition directly. This completes Lemma 4.5, including its original threshold.</p>
+<h2 id="g7-exact-scope-of-this-component">G7. Exact scope of this component</h2>
+<p>G0–G6 prove the local formulas and finite correction mechanisms in Lemmas 4.1, 4.3–4.5 and 4.7, Proposition 4.2, Lemmas A.1–A.2 and Corollary A.3. The five original moments, axis pressure, radial shears, scale factors, viscosity factors, endpoint interpretation and quadratic correction terms are explicit. No source error is established by these calculations.</p>
+<p>The actual power-law reference profile and its analytic pressure datum are derived in <a href="outer-profile-audit.html">O0–O8</a>, covering Proposition A.4 and Lemma A.5. The actual heat replacement, three compensating moments, backward stress and terminal endpoint estimates are derived in <a href="heat-exterior-stress-audit.html">H0–H7</a>, using the heat factor of <a href="physical-realization-audit.html">L6</a>. All four total moments and the axis pressure are retained. The backward formula is proved for the temporary reference axis powers themselves; no regular-axis construction is assumed. The actual analytic inner solution and its endpoint inequality are derived in <a href="analytic-axis-profile-audit.html">J0–J7</a>. Its actual continuation and exact five-moment match are derived in <a href="inner-outer-joining-audit.html">Q0–Q9</a>. The actual shear modification and all six parts of the complete leading-profile Theorem 4.6 are derived in <a href="shear-realization-audit.html">V0–V7</a>. The positive-order base and full stress summation are derived in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+</article></body></html>

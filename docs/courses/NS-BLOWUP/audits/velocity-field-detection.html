@@ -1,0 +1,813 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Detecting computation in the velocity of a viscous fluid</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1120px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse}td,th{padding:.5rem;text-align:left;border-bottom:1px solid #b6c5d5;overflow-wrap:normal;white-space:nowrap}a{color:#175e9c}*{box-sizing:border-box}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><h1 id="detecting-computation-in-the-velocity-of-a-viscous-fluid">Detecting computation in the velocity of a viscous fluid</h1>
+<p><em>Separate mathematical derivation and author self-review by GPT-6 Astra (OpenAI). No independent human review or reproduced formal verification is claimed.</em></p>
+<p>This note follows OpenAI's <a href="https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Velocity-Field-Detection-of-Computation-in-Forced-Navier-Stokes-Flows-September-27-2026/build"><em>Velocity-Field Detection of Computation in Forced Navier–Stokes Flows</em></a>. It retains the original two domains, initial data, force formulas, cutoffs, constants, viscosity and fixed observations. The complete original main.tex, compact.tex, bounded.tex and references.bib were read. This is editorial mathematics; it does not replace or amend the author's text.</p>
+<h2 id="vd0-the-two-exact-claims">VD0. The two exact claims</h2>
+<p>Fix a positive computable viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. On <span class="math" data-tex="\(\Omega=\mathbb T^3\)">\(\Omega=\mathbb T^3\)</span> or <span class="math" data-tex="\(\mathbb R^2\times\mathbb T\)">\(\mathbb R^2\times\mathbb T\)</span>, with <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span>, the equation is</p>
+<span class="math math-display" data-tex="\[
+U_t+(U\cdot\nabla)U=-\nabla p+\nu\Delta U+f,
+\qquad\nabla\cdot U=0,\qquad U(0)=0.
+\tag{VD0.1}
+\]">\[
+U_t+(U\cdot\nabla)U=-\nabla p+\nu\Delta U+f,
+\qquad\nabla\cdot U=0,\qquad U(0)=0.
+\tag{VD0.1}
+\]</span>
+<p>Torus integration uses periods of length one. Every machine and finite input effectively give each of the following prescribed forces, with a unique global smooth solution in the class specified below. The first event is</p>
+<span class="math math-display" data-tex="\[
+\exists t\ge0\ \exists(x,y,z)\in\mathbb T^3:
+\quad 1/32&lt;y&lt;1/8,\qquad U_3(t,x,y,z)&gt;1/2.
+\tag{VD0.2}
+\]">\[
+\exists t\ge0\ \exists(x,y,z)\in\mathbb T^3:
+\quad 1/32&lt;y&lt;1/8,\qquad U_3(t,x,y,z)&gt;1/2.
+\tag{VD0.2}
+\]</span>
+<p>Its force is supported in <span class="math" data-tex="\(K\times\mathbb T\)">\(K\times\mathbb T\)</span>, where <span class="math" data-tex="\(K\subset(0,1)^2\)">\(K\subset(0,1)^2\)</span> is compact, fixed in time and allowed to depend on the instance. Every force derivative is bounded on each finite time interval; no bound uniform over all time is asserted for this force.</p>
+<p>The second event is</p>
+<span class="math math-display" data-tex="\[
+\exists t\ge0:\quad
+\int_{\{X_2&gt;0\}\times\mathbb T}U_3(t,X,z)\,dX\,dz&gt;1/2.
+\tag{VD0.3}
+\]">\[
+\exists t\ge0:\quad
+\int_{\{X_2&gt;0\}\times\mathbb T}U_3(t,X,z)\,dX\,dz&gt;1/2.
+\tag{VD0.3}
+\]</span>
+<p>Here every mixed force derivative is globally bounded. Its horizontal support is compact on each finite interval, with no single compact support required for all time. The third velocity component is nonnegative and integrable. Each event is equivalent to the input machine halting. The observation sets and threshold are fixed independently of that input.</p>
+<p>A classical competitor has continuous velocity, time derivative, spatial derivatives through order two, pressure and pressure gradient on each closed finite cylinder, and satisfies VD0.1 pointwise. Torus pressure is periodic with mean zero. On <span class="math" data-tex="\(\mathbb R^2\times\mathbb T\)">\(\mathbb R^2\times\mathbb T\)</span>, retain, for every finite <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+U\in C([0,T];H^2)\cap C^1([0,T];L^2),\qquad
+p\in C([0,T];H^1),\qquad
+\sup_{[0,T]\times\Omega}(|U|+|\nabla U|)&lt;\infty.
+\tag{VD0.4}
+\]">\[
+U\in C([0,T];H^2)\cap C^1([0,T];L^2),\qquad
+p\in C([0,T];H^1),\qquad
+\sup_{[0,T]\times\Omega}(|U|+|\nabla U|)&lt;\infty.
+\tag{VD0.4}
+\]</span>
+<p>The noncompact pressure condition fixes the additive spatial constant. Smoothness at zero is one-sided. The construction gives pressure zero in both cases. Its force is computed from horizontal instructions and a prescribed vertical source, without using the unknown vertical velocity or first executing the selected machine.</p>
+<p><img src="velocity-detection-mechanisms.svg" alt="The two exact ways of retaining a detectable scalar signal" class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="velocity-detection" data-asset-sha256="8D46BAF232F5C56A6F3826624EE5EBE771A7A96EA295A5B5BCEFD02BD16D8F21"></p>
+<p>The <a href="velocity-detection-mechanisms.py">figure generator</a> retains the reproducible diagram. The time bars and gate routes are labeled schematics; the proof retains their actual durations and separations.</p>
+<h2 id="vd1-the-scalar-receiver-and-three-dimensional-comparison">VD1. The scalar receiver and three-dimensional comparison</h2>
+<p>For <span class="math" data-tex="\(Y\in\mathbb T^2\)">\(Y\in\mathbb T^2\)</span> or <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, prescribe a smooth planar divergence-free field <span class="math" data-tex="\(a(t,Y)\)">\(a(t,Y)\)</span> and a scalar source <span class="math" data-tex="\(h\)">\(h\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+F_i=\partial_t a_i+\sum_{j=1}^2a_j\partial_j a_i
+-\nu\sum_{j=1}^2\partial_j^2 a_i,
+\qquad f=(F_1,F_2,h),
+\qquad w_t+a\cdot\nabla_Yw=\nu\Delta_Yw+h.
+\tag{VD1.1}
+\]">\[
+F_i=\partial_t a_i+\sum_{j=1}^2a_j\partial_j a_i
+-\nu\sum_{j=1}^2\partial_j^2 a_i,
+\qquad f=(F_1,F_2,h),
+\qquad w_t+a\cdot\nabla_Yw=\nu\Delta_Yw+h.
+\tag{VD1.1}
+\]</span>
+<p>If <span class="math" data-tex="\(a(0)=0\)">\(a(0)=0\)</span> and <span class="math" data-tex="\(w(0)=0\)">\(w(0)=0\)</span>, then <span class="math" data-tex="\(U=(a_1,a_2,w)\)">\(U=(a_1,a_2,w)\)</span>, independent of <span class="math" data-tex="\(z\)">\(z\)</span>, satisfies VD0.1 with <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Indeed <span class="math" data-tex="\(\partial_z w=0\)">\(\partial_z w=0\)</span>, the divergence is <span class="math" data-tex="\(\nabla_Y\cdot a\)">\(\nabla_Y\cdot a\)</span>, and <span class="math" data-tex="\(U\cdot\nabla=a\cdot\nabla_Y\)">\(U\cdot\nabla=a\cdot\nabla_Y\)</span> on every component. All factors of viscosity remain in VD1.1. For a multi-index <span class="math" data-tex="\(\alpha\in\mathbb N^2\)">\(\alpha\in\mathbb N^2\)</span> and integer <span class="math" data-tex="\(l\ge0\)">\(l\ge0\)</span>, the full residual derivative is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t^l\partial_Y^\alpha F_i
+={}&amp;\partial_t^{l+1}\partial_Y^\alpha a_i
+-\nu\sum_{j=1}^2\partial_t^l\partial_Y^{\alpha+2e_j}a_i\\
+&amp;+\sum_{j=1}^2\sum_{r=0}^l\sum_{\beta\le\alpha}
+{l\choose r}{\alpha\choose\beta}
+(\partial_t^r\partial_Y^\beta a_j)
+(\partial_t^{l-r}\partial_Y^{\alpha-\beta+e_j}a_i).
+\end{aligned}\tag{VD1.2}
+\]">\[
+\begin{aligned}
+\partial_t^l\partial_Y^\alpha F_i
+={}&amp;\partial_t^{l+1}\partial_Y^\alpha a_i
+-\nu\sum_{j=1}^2\partial_t^l\partial_Y^{\alpha+2e_j}a_i\\
+&amp;+\sum_{j=1}^2\sum_{r=0}^l\sum_{\beta\le\alpha}
+{l\choose r}{\alpha\choose\beta}
+(\partial_t^r\partial_Y^\beta a_j)
+(\partial_t^{l-r}\partial_Y^{\alpha-\beta+e_j}a_i).
+\end{aligned}\tag{VD1.2}
+\]</span>
+<p>Here <span class="math" data-tex="\({\alpha\choose\beta}=\prod_j{\alpha_j\choose\beta_j}\)">\({\alpha\choose\beta}=\prod_j{\alpha_j\choose\beta_j}\)</span>. Thus the support and each required mixed bound follow from the actual displayed horizontal field, with the extra two spatial derivatives and viscosity retained.</p>
+<p>Let <span class="math" data-tex="\((v,p)\)">\((v,p)\)</span> be any competitor and let <span class="math" data-tex="\((U,P)\)">\((U,P)\)</span> be the constructed solution with the same force and initial datum. Put <span class="math" data-tex="\(e=v-U\)">\(e=v-U\)</span>, <span class="math" data-tex="\(q=p-P\)">\(q=p-P\)</span>. Their exact difference equation is</p>
+<span class="math math-display" data-tex="\[
+e_t+(v\cdot\nabla)e+(e\cdot\nabla)U=-\nabla q+\nu\Delta e,
+\qquad\nabla\cdot e=0.
+\tag{VD1.3}
+\]">\[
+e_t+(v\cdot\nabla)e+(e\cdot\nabla)U=-\nabla q+\nu\Delta e,
+\qquad\nabla\cdot e=0.
+\tag{VD1.3}
+\]</span>
+<p>On the noncompact domain take a smooth compact horizontal cutoff <span class="math" data-tex="\(0\le\zeta\le1\)">\(0\le\zeta\le1\)</span>, equal to one on the unit disk, and <span class="math" data-tex="\(\zeta_R(Y)=\zeta(Y/R)\)">\(\zeta_R(Y)=\zeta(Y/R)\)</span>. Integrating over both horizontal coordinates and one vertical period gives, with indices summed from one to three,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac12\frac d{dt}\int\zeta_R|e|^2
++\nu\int\zeta_R|\nabla e|^2
+={}&amp;-\int\zeta_Re_i e_j\partial_j U_i
++\frac12\int|e|^2v\cdot\nabla\zeta_R\\
+&amp;+\int q e\cdot\nabla\zeta_R
+-\nu\int e_i\partial_j e_i\partial_j\zeta_R.
+\end{aligned}\tag{VD1.4}
+\]">\[
+\begin{aligned}
+\frac12\frac d{dt}\int\zeta_R|e|^2
++\nu\int\zeta_R|\nabla e|^2
+={}&amp;-\int\zeta_Re_i e_j\partial_j U_i
++\frac12\int|e|^2v\cdot\nabla\zeta_R\\
+&amp;+\int q e\cdot\nabla\zeta_R
+-\nu\int e_i\partial_j e_i\partial_j\zeta_R.
+\end{aligned}\tag{VD1.4}
+\]</span>
+<p>There are no vertical boundary terms. The last three terms have absolute bounds</p>
+<span class="math math-display" data-tex="\[
+\frac{\|\nabla\zeta\|_\infty}{2R}\|v\|_\infty\|e\|_2^2,
+\quad\frac{\|\nabla\zeta\|_\infty}{R}\|q\|_2\|e\|_2,
+\quad\frac{\nu\|\nabla\zeta\|_\infty}{R}\|e\|_2\|\nabla e\|_2.
+\tag{VD1.5}
+\]">\[
+\frac{\|\nabla\zeta\|_\infty}{2R}\|v\|_\infty\|e\|_2^2,
+\quad\frac{\|\nabla\zeta\|_\infty}{R}\|q\|_2\|e\|_2,
+\quad\frac{\nu\|\nabla\zeta\|_\infty}{R}\|e\|_2\|\nabla e\|_2.
+\tag{VD1.5}
+\]</span>
+<p>The time continuity in VD0.4 bounds these on each finite interval and justifies the differentiated energy. Integrate in time before letting <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>. Dominated convergence applies to the remaining quadratic integrands; the three errors vanish. On the torus periodic integration gives the same result without cutoffs:</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac d{dt}\|e\|_2^2+\nu\|\nabla e\|_2^2
+\le\|\nabla U\|_{\mathrm{op},\infty}\|e\|_2^2.
+\tag{VD1.6}
+\]">\[
+\frac12\frac d{dt}\|e\|_2^2+\nu\|\nabla e\|_2^2
+\le\|\nabla U\|_{\mathrm{op},\infty}\|e\|_2^2.
+\tag{VD1.6}
+\]</span>
+<p>The integrating factor <span class="math" data-tex="\(\exp(-2\int_0^t\|\nabla U(s)\|_{\mathrm{op},\infty}\,ds)\)">\(\exp(-2\int_0^t\|\nabla U(s)\|_{\mathrm{op},\infty}\,ds)\)</span> and zero initial difference prove <span class="math" data-tex="\(e=0\)">\(e=0\)</span>. The equation then gives <span class="math" data-tex="\(\nabla q=0\)">\(\nabla q=0\)</span>. Mean zero on the torus, or membership in <span class="math" data-tex="\(H^1(\mathbb R^2\times\mathbb T)\)">\(H^1(\mathbb R^2\times\mathbb T)\)</span>, gives <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. The competitor's gradient bound was not used; the displayed comparison also proves uniqueness if that one requirement is dropped while the other conditions remain. The constructed reference gradient still has to be bounded on finite intervals. This argument compares all three-dimensional competitors, including those with vertical dependence.</p>
+<h2 id="vd2-the-exact-computational-suppliers">VD2. The exact computational suppliers</h2>
+<p>The complete finite recorder and planar processor are proved in <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/eventually-stationary-computation-audit.md">SC2–SC5 of the stationary computation audit</a>. Their original supplier is <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/build/main.tex">Sections 3–4 of OpenAI's stationary-forcing paper</a>. The following are the precise receiving maps; the complete seven-row table and its proof remain available at the first link.</p>
+<p>The compiled alphabet consists of the data, marker and history tracks. The initial tape differs from its full blank at finitely many cells. A preliminary nonterminal instruction handles an originally halted input. The initialized run reaches its unique designated terminal state exactly when the original machine halts, and otherwise has a defined next instruction forever. On the entire domain of the partial table, the target state fixes the incoming displacement, and that state together with the full written symbol recovers the incoming rule and its old read symbol. SC2 proves this for every row, including the scan loops, and proves continuation by the history-frontier invariant. This full-domain property, rather than only injectivity along one orbit, is used in VD5.</p>
+<p>The Hamiltonian processor <span class="math" data-tex="\(V(s,Y)\)">\(V(s,Y)\)</span> is smooth, one-periodic in phase, zero in neighborhoods of integer phases and supported in a compact subset of the open unit square. It is divergence free and has effective global bounds of every derivative. Its distinguished point is exactly <span class="math" data-tex="\(p=(1/4,1/4)\)">\(p=(1/4,1/4)\)</span>. Write <span class="math" data-tex="\(\Psi_s\)">\(\Psi_s\)</span> for its flow from phase zero and</p>
+<span class="math math-display" data-tex="\[
+E=\{(x,y)\in\mathbb T^2:1/32&lt;y&lt;1/8\}.
+\tag{VD2.1}
+\]">\[
+E=\{(x,y)\in\mathbb T^2:1/32&lt;y&lt;1/8\}.
+\tag{VD2.1}
+\]</span>
+<p>SC3–SC5 prove the following using the full closed branch rectangles and all intermediate parking motions. If the run halts, an integer-phase point lies in <span class="math" data-tex="\(E\)">\(E\)</span>, at distance at least <span class="math" data-tex="\(1/32\)">\(1/32\)</span> from its boundary. If it never halts, the whole phase trajectory lies in <span class="math" data-tex="\(3/16\le y\le7/8\)">\(3/16\le y\le7/8\)</span>. On the circle the distance of this corridor from <span class="math" data-tex="\(E\)">\(E\)</span> is at least <span class="math" data-tex="\(1/16\)">\(1/16\)</span>. Thus no intermediate segment of a nonhalting transition can create a false entry.</p>
+<p>There is also an exact comparison between the integer-stack coordinates used below and the processor's positional coordinates. Let <span class="math" data-tex="\(b=|\Sigma|\)">\(b=|\Sigma|\)</span>, let <span class="math" data-tex="\(d: \Sigma\to\{0,\ldots,b-1\}\)">\(d: \Sigma\to\{0,\ldots,b-1\}\)</span> send the full blank to zero, and let the original processor use <span class="math" data-tex="\(B=2b+2\)">\(B=2b+2\)</span> and distinct odd digits <span class="math" data-tex="\(c(\alpha)\in\{1,3,\ldots,2b-1\}\)">\(c(\alpha)\in\{1,3,\ldots,2b-1\}\)</span>. For a nonnegative integer <span class="math" data-tex="\(x\)">\(x\)</span>, denote its base-<span class="math" data-tex="\(b\)">\(b\)</span> digit in place <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(d_j(x)\)">\(d_j(x)\)</span>, including its infinite zero tail. Define</p>
+<span class="math math-display" data-tex="\[
+J(x)=\frac{c(\mathrm{blank})}{B-1}
++\sum_{j\ge0}\frac{c(d^{-1}(d_j(x)))-c(\mathrm{blank})}{B^{j+1}}.
+\tag{VD2.2}
+\]">\[
+J(x)=\frac{c(\mathrm{blank})}{B-1}
++\sum_{j\ge0}\frac{c(d^{-1}(d_j(x)))-c(\mathrm{blank})}{B^{j+1}}.
+\tag{VD2.2}
+\]</span>
+<p>The sum has only finitely many nonzero terms; the first term retains the full blank tail. This is exactly the fractional code of the same eventually blank stack. Its separated digit intervals recover every symbol, so the map is injective. In particular</p>
+<span class="math math-display" data-tex="\[
+J(bx+d_\beta)=\frac{c(\beta)+J(x)}B,
+\qquad J(\lfloor x/b\rfloor)=BJ(x)-c(d^{-1}(d_0(x))).
+\tag{VD2.3}
+\]">\[
+J(bx+d_\beta)=\frac{c(\beta)+J(x)}B,
+\qquad J(\lfloor x/b\rfloor)=BJ(x)-c(d^{-1}(d_0(x))).
+\tag{VD2.3}
+\]</span>
+<p>Applying these identities to both stacks proves that every row of VD5.1 is carried to the corresponding fractional branch in SC3.5. Composing <span class="math" data-tex="\((J(x),J(y))\)">\((J(x),J(y))\)</span> with the original state embedding <span class="math" data-tex="\(\Psi_i\)">\(\Psi_i\)</span> of SC3.3–SC3.4 gives the exact state-coordinate map. No blank contribution or state offset is removed. The two fluid constructions need different spatial realizations, but their compiled instruction maps are related by these proved identities.</p>
+<h2 id="vd3-scalar-existence-on-the-two-torus">VD3. Scalar existence on the two-torus</h2>
+<p>We first prove the scalar construction used by the bursts. For smooth <span class="math" data-tex="\(a,h\)">\(a,h\)</span> on a finite cylinder, with <span class="math" data-tex="\(\nabla_Y\cdot a=0\)">\(\nabla_Y\cdot a=0\)</span>, and smooth initial data, solve</p>
+<span class="math math-display" data-tex="\[
+w_t+a\cdot\nabla_Yw=\kappa\Delta_Yw+h,
+\qquad\kappa&gt;0.
+\tag{VD3.1}
+\]">\[
+w_t+a\cdot\nabla_Yw=\kappa\Delta_Yw+h,
+\qquad\kappa&gt;0.
+\tag{VD3.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(P_J\)">\(P_J\)</span> project onto modes <span class="math" data-tex="\(|k|_\infty\le J\)">\(|k|_\infty\le J\)</span> in the original basis <span class="math" data-tex="\(e^{2\pi i k\cdot Y}\)">\(e^{2\pi i k\cdot Y}\)</span>. The finite linear ODE is</p>
+<span class="math math-display" data-tex="\[
+\partial_t w_J=\kappa\Delta w_J+P_J(-a\cdot\nabla w_J+h),
+\qquad w_J(0)=P_Jw(0).
+\tag{VD3.2}
+\]">\[
+\partial_t w_J=\kappa\Delta w_J+P_J(-a\cdot\nabla w_J+h),
+\qquad w_J(0)=P_Jw(0).
+\tag{VD3.2}
+\]</span>
+<p>Its coefficients are smooth, so the finite system exists on the whole interval. Put <span class="math" data-tex="\(E_m=\sum_{|\alpha|\le m}\|\partial^\alpha w_J\|_2^2\)">\(E_m=\sum_{|\alpha|\le m}\|\partial^\alpha w_J\|_2^2\)</span>. Differentiation gives the exact commutator</p>
+<span class="math math-display" data-tex="\[
+\partial^\alpha(a\cdot\nabla w_J)-a\cdot\nabla\partial^\alpha w_J
+=\sum_{j=1}^2\sum_{0&lt;\beta\le\alpha}{\alpha\choose\beta}
+(\partial^\beta a_j)\partial^{\alpha-\beta+e_j}w_J.
+\tag{VD3.3}
+\]">\[
+\partial^\alpha(a\cdot\nabla w_J)-a\cdot\nabla\partial^\alpha w_J
+=\sum_{j=1}^2\sum_{0&lt;\beta\le\alpha}{\alpha\choose\beta}
+(\partial^\beta a_j)\partial^{\alpha-\beta+e_j}w_J.
+\tag{VD3.3}
+\]</span>
+<p>Every derivative of <span class="math" data-tex="\(w_J\)">\(w_J\)</span> on the right has order at most <span class="math" data-tex="\(m\)">\(m\)</span>. The leading transport has zero inner product; projection drops out because <span class="math" data-tex="\(w_J\)">\(w_J\)</span> is in its range. With</p>
+<span class="math math-display" data-tex="\[
+A_m(t)=\sum_{|\alpha|\le m}\sum_{j=1}^2
+\sum_{0&lt;\beta\le\alpha}{\alpha\choose\beta}
+\|\partial^\beta a_j(t)\|_\infty,
+\qquad H_m(t)=\sum_{|\alpha|\le m}\|\partial^\alpha h(t)\|_2^2,
+\]">\[
+A_m(t)=\sum_{|\alpha|\le m}\sum_{j=1}^2
+\sum_{0&lt;\beta\le\alpha}{\alpha\choose\beta}
+\|\partial^\beta a_j(t)\|_\infty,
+\qquad H_m(t)=\sum_{|\alpha|\le m}\|\partial^\alpha h(t)\|_2^2,
+\]</span>
+<p>Cauchy–Schwarz and <span class="math" data-tex="\(2rs\le r^2+s^2\)">\(2rs\le r^2+s^2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+E_m&#x27;+2\kappa\sum_{|\alpha|\le m}\|\nabla\partial^\alpha w_J\|_2^2
+\le(2A_m+1)E_m+H_m.
+\tag{VD3.4}
+\]">\[
+E_m&#x27;+2\kappa\sum_{|\alpha|\le m}\|\nabla\partial^\alpha w_J\|_2^2
+\le(2A_m+1)E_m+H_m.
+\tag{VD3.4}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(\exp(-\int_0^t(2A_m+1))\)">\(\exp(-\int_0^t(2A_m+1))\)</span> bounds <span class="math" data-tex="\(E_m\)">\(E_m\)</span> independently of <span class="math" data-tex="\(J\)">\(J\)</span>. The exact Fourier weight for this norm is
+<span class="math" data-tex="\(W_m(k)=\sum_{|\alpha|\le m}(2\pi)^{2|\alpha|}k_1^{2\alpha_1}k_2^{2\alpha_2}\)">\(W_m(k)=\sum_{|\alpha|\le m}(2\pi)^{2|\alpha|}k_1^{2\alpha_1}k_2^{2\alpha_2}\)</span>.
+For <span class="math" data-tex="\(|\gamma|\le\ell\)">\(|\gamma|\le\ell\)</span>, Cauchy–Schwarz bounds the derivative tail by</p>
+<span class="math math-display" data-tex="\[
+E_{\ell+2}^{1/2}
+\left(\sum_{|k|_\infty&gt;K}
+\frac{(2\pi)^{2|\gamma|}|k_1^{\gamma_1}k_2^{\gamma_2}|^2}
+{W_{\ell+2}(k)}\right)^{1/2}.
+\tag{VD3.5}
+\]">\[
+E_{\ell+2}^{1/2}
+\left(\sum_{|k|_\infty&gt;K}
+\frac{(2\pi)^{2|\gamma|}|k_1^{\gamma_1}k_2^{\gamma_2}|^2}
+{W_{\ell+2}(k)}\right)^{1/2}.
+\tag{VD3.5}
+\]</span>
+<p>The shell <span class="math" data-tex="\(|k|_\infty=j\)">\(|k|_\infty=j\)</span> has <span class="math" data-tex="\(8j\)">\(8j\)</span> points. Since one coordinate has absolute value <span class="math" data-tex="\(j\)">\(j\)</span>, the denominator contains <span class="math" data-tex="\((2\pi j)^{2(\ell+2)}\)">\((2\pi j)^{2(\ell+2)}\)</span>; the numerator is at most <span class="math" data-tex="\((2\pi)^{2|\gamma|}j^{2|\gamma|}\)">\((2\pi)^{2|\gamma|}j^{2|\gamma|}\)</span>. Thus the sum is bounded by an explicit constant times <span class="math" data-tex="\(\sum_{j&gt;K}8j^{-3}\)">\(\sum_{j&gt;K}8j^{-3}\)</span>, tending to zero. No Fourier scale factor is suppressed.</p>
+<p>The equations uniformly bound the time derivative of each fixed coefficient. Extract coefficientwise uniformly convergent subsequences on the compact time interval and then a diagonal subsequence. VD3.5 promotes convergence to every <span class="math" data-tex="\(C([0,T];C^\ell)\)">\(C([0,T];C^\ell)\)</span> norm. The same tail argument controls products and projections in the integrated equation. Its limit solves VD3.1 with all spatial derivatives. That equation supplies a continuous time derivative, and repeated differentiation supplies every time derivative. This proves existence up to time zero.</p>
+<p>For comparison subtract a proposed scalar upper barrier, then a strictly positive initial gap and <span class="math" data-tex="\(\varepsilon t\)">\(\varepsilon t\)</span>. A first zero maximum has nonnegative time derivative, zero gradient and nonpositive Laplacian, contradicting the resulting strict negative source. Let the gaps tend to zero. Applying the argument to a difference, to its negative, and to <span class="math" data-tex="\(-w\)">\(-w\)</span>, proves uniqueness, nonnegativity for nonnegative data and source, supremum contraction for homogeneous evolution, and the bound <span class="math" data-tex="\(\|w(t)\|_\infty\le A(t-t_0)\)">\(\|w(t)\|_\infty\le A(t-t_0)\)</span> for zero initial data and source of absolute value at most <span class="math" data-tex="\(A\)">\(A\)</span>. These comparisons also apply to a bounded time-dependent scalar source majorant by integrating that majorant.</p>
+<h2 id="vd4-the-complete-torus-burst-estimate-with-physical-viscosity">VD4. The complete torus burst estimate, with physical viscosity</h2>
+<p>Use the source profiles</p>
+<span class="math math-display" data-tex="\[
+b(r)=\begin{cases}e^{-1/r},&amp;r&gt;0,\\0,&amp;r\le0,\end{cases}
+\qquad\theta(r)=\frac{b(r)}{b(r)+b(1-r)},\qquad
+g(Z)=\prod_{j=1}^2\theta(2(Z_j+1))\theta(2(1-Z_j)).
+\tag{VD4.1}
+\]">\[
+b(r)=\begin{cases}e^{-1/r},&amp;r&gt;0,\\0,&amp;r\le0,\end{cases}
+\qquad\theta(r)=\frac{b(r)}{b(r)+b(1-r)},\qquad
+g(Z)=\prod_{j=1}^2\theta(2(Z_j+1))\theta(2(1-Z_j)).
+\tag{VD4.1}
+\]</span>
+<p>The denominator is at least <span class="math" data-tex="\(e^{-2}\)">\(e^{-2}\)</span>. Successive derivatives of <span class="math" data-tex="\(b\)">\(b\)</span> on the positive half-line are explicit polynomials in <span class="math" data-tex="\(1/r\)">\(1/r\)</span> times <span class="math" data-tex="\(e^{-1/r}\)">\(e^{-1/r}\)</span>; the estimate <span class="math" data-tex="\(s^m e^{-s}\le(m+j)!s^{-j}\)">\(s^m e^{-s}\le(m+j)!s^{-j}\)</span> proves flatness and effective error bounds. Differentiating the quotient gives effective derivative bounds for <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, which is nondecreasing, zero below zero and one above one. Thus <span class="math" data-tex="\(0\le g\le1\)">\(0\le g\le1\)</span>, it is one near zero and supported in <span class="math" data-tex="\([-1,1]^2\)">\([-1,1]^2\)</span>. Choose an effective integer <span class="math" data-tex="\(C\ge1\)">\(C\ge1\)</span> bounding its first two derivative operator norms. Choose an effective integer <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> bounding those of <span class="math" data-tex="\(V\)">\(V\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+R=4^L,\quad b_n=10^{-6}(2R)^{-n},\quad
+D_n=2Cb_n^{-2}(1+nL)R^{3n},\quad
+\delta_n=\frac1{100(1+D_n)},\quad t_n=2n,
+\qquad n\ge1.
+\tag{VD4.2}
+\]">\[
+R=4^L,\quad b_n=10^{-6}(2R)^{-n},\quad
+D_n=2Cb_n^{-2}(1+nL)R^{3n},\quad
+\delta_n=\frac1{100(1+D_n)},\quad t_n=2n,
+\qquad n\ge1.
+\tag{VD4.2}
+\]</span>
+<p>The auxiliary phase-time variable used in the original construction is <span class="math" data-tex="\(\tau=\nu t\)">\(\tau=\nu t\)</span>; physical block starts are <span class="math" data-tex="\(t_n/\nu\)">\(t_n/\nu\)</span>, and both active durations are <span class="math" data-tex="\(\delta_n/\nu\)">\(\delta_n/\nu\)</span>. Define the periodized small-square bump <span class="math" data-tex="\(g_n(Y)=g((Y-p)/b_n)\)">\(g_n(Y)=g((Y-p)/b_n)\)</span>. Its copies are disjoint and</p>
+<span class="math math-display" data-tex="\[
+\|Dg_n\|_\infty\le Cb_n^{-1},\quad
+\|D^2g_n\|_\infty\le Cb_n^{-2},\quad
+\int g_n\le4b_n^2.
+\tag{VD4.3}
+\]">\[
+\|Dg_n\|_\infty\le Cb_n^{-1},\quad
+\|D^2g_n\|_\infty\le Cb_n^{-2},\quad
+\int g_n\le4b_n^2.
+\tag{VD4.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(V_0\)">\(V_0\)</span> be one period of <span class="math" data-tex="\(V\)">\(V\)</span>, extended by zero. Phase collars make the extension smooth. Keep the full auxiliary formulas</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s_n(\tau)&amp;=n(\tau-t_n-\delta_n)/\delta_n,\\
+a(\tau,Y)&amp;=\sum_{n\ge1}\frac n{\delta_n}
+\sum_{j=0}^{n-1}V_0(s_n(\tau)-j,Y),\\
+h(\tau,Y)&amp;=\sum_{n\ge1}\delta_n^{-1}
+\theta&#x27;((\tau-t_n)/\delta_n)g_n(Y),\\
+F&amp;=a_\tau+(a\cdot\nabla_Y)a-\Delta_Ya.
+\end{aligned}\tag{VD4.4}
+\]">\[
+\begin{aligned}
+s_n(\tau)&amp;=n(\tau-t_n-\delta_n)/\delta_n,\\
+a(\tau,Y)&amp;=\sum_{n\ge1}\frac n{\delta_n}
+\sum_{j=0}^{n-1}V_0(s_n(\tau)-j,Y),\\
+h(\tau,Y)&amp;=\sum_{n\ge1}\delta_n^{-1}
+\theta&#x27;((\tau-t_n)/\delta_n)g_n(Y),\\
+F&amp;=a_\tau+(a\cdot\nabla_Y)a-\Delta_Ya.
+\end{aligned}\tag{VD4.4}
+\]</span>
+<p>These are locally finite smooth sums with zero endpoint derivatives. Solve <span class="math" data-tex="\(w_\tau+a\cdot\nabla w=\Delta w+h\)">\(w_\tau+a\cdot\nabla w=\Delta w+h\)</span> by VD3. The actual physical solution and force, without dropping any viscosity factor, are</p>
+<span class="math math-display" data-tex="\[
+U_\nu(t,Y,z)=(\nu a(\nu t,Y),w(\nu t,Y)),\qquad
+f_\nu(t,Y,z)=(\nu^2F(\nu t,Y),\nu h(\nu t,Y)),\qquad p=0.
+\tag{VD4.5}
+\]">\[
+U_\nu(t,Y,z)=(\nu a(\nu t,Y),w(\nu t,Y)),\qquad
+f_\nu(t,Y,z)=(\nu^2F(\nu t,Y),\nu h(\nu t,Y)),\qquad p=0.
+\tag{VD4.5}
+\]</span>
+<p>Substitution in VD1.1 makes each horizontal term acquire <span class="math" data-tex="\(\nu^2\)">\(\nu^2\)</span> and each vertical term <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. More generally <span class="math" data-tex="\(\partial_t^l\partial_Y^\alpha f_{\nu,h}=\nu^{l+2}(\partial_\tau^l\partial_Y^\alpha F)(\nu t,Y)\)">\(\partial_t^l\partial_Y^\alpha f_{\nu,h}=\nu^{l+2}(\partial_\tau^l\partial_Y^\alpha F)(\nu t,Y)\)</span> and <span class="math" data-tex="\(\partial_t^l\partial_Y^\alpha f_{\nu,3}=\nu^{l+1}(\partial_\tau^l\partial_Y^\alpha h)(\nu t,Y)\)">\(\partial_t^l\partial_Y^\alpha f_{\nu,3}=\nu^{l+1}(\partial_\tau^l\partial_Y^\alpha h)(\nu t,Y)\)</span>. These identities prove finite-time smooth bounds at the original viscosity and preserve the threshold. The horizontal support is the union of the fixed support of <span class="math" data-tex="\(V\)">\(V\)</span> and one small square about <span class="math" data-tex="\(p\)">\(p\)</span>, contained in a compact subset of the open unit square.</p>
+<p>Nonnegativity and integrating the scalar equation give</p>
+<span class="math math-display" data-tex="\[
+0\le\int w(\tau,Y)\,dY\le
+M_0=\sum_{n\ge1}4b_n^2
+=\frac{4\cdot10^{-12}}{4R^2-1}&lt;10^{-11}.
+\tag{VD4.6}
+\]">\[
+0\le\int w(\tau,Y)\,dY\le
+M_0=\sum_{n\ge1}4b_n^2
+=\frac{4\cdot10^{-12}}{4R^2-1}&lt;10^{-11}.
+\tag{VD4.6}
+\]</span>
+<p>We need an all-time heat bound away from a source point. For either
+<span class="math" data-tex="\((d,H)=(1/32,10^9)\)">\((d,H)=(1/32,10^9)\)</span> or <span class="math" data-tex="\((1/16,10^8)\)">\((1/16,10^8)\)</span>, the auxiliary torus heat kernel is</p>
+<span class="math math-display" data-tex="\[
+K(\sigma,Z)=\frac1{4\pi\sigma}\sum_{k\in\mathbb Z^2}
+e^{-|Z+k|^2/(4\sigma)}.
+\tag{VD4.7}
+\]">\[
+K(\sigma,Z)=\frac1{4\pi\sigma}\sum_{k\in\mathbb Z^2}
+e^{-|Z+k|^2/(4\sigma)}.
+\tag{VD4.7}
+\]</span>
+<p>Periodized Gaussian convolution solves the heat equation and approaches smooth initial data uniformly, so VD3 uniqueness identifies the kernel. Choose <span class="math" data-tex="\(Z\in[-1/2,1/2]^2\)">\(Z\in[-1/2,1/2]^2\)</span>. The shell <span class="math" data-tex="\(|k|_\infty=j\)">\(|k|_\infty=j\)</span> has <span class="math" data-tex="\(8j\)">\(8j\)</span> points and <span class="math" data-tex="\(|Z+k|\ge j/2\)">\(|Z+k|\ge j/2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\sum_k e^{-|Z+k|^2/8}
+\le1+8\sum_{j\ge1}j e^{-j/32}
+\le1+8\cdot1056&lt;10^4.
+\tag{VD4.8}
+\]">\[
+\sum_k e^{-|Z+k|^2/8}
+\le1+8\sum_{j\ge1}j e^{-j/32}
+\le1+8\cdot1056&lt;10^4.
+\tag{VD4.8}
+\]</span>
+<p>The middle estimate uses <span class="math" data-tex="\(e^{-1/32}\le32/33\)">\(e^{-1/32}\le32/33\)</span> and <span class="math" data-tex="\(\sum_{j\ge1}jq^j=q/(1-q)^2\)">\(\sum_{j\ge1}jq^j=q/(1-q)^2\)</span>. If <span class="math" data-tex="\(0&lt;\sigma\le1\)">\(0&lt;\sigma\le1\)</span> and the torus distance of <span class="math" data-tex="\(Z\)">\(Z\)</span> from zero is at least <span class="math" data-tex="\(d\)">\(d\)</span>, split each exponential in VD4.7 in half. One half, together with <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span>, is at most <span class="math" data-tex="\(8/d^2\)">\(8/d^2\)</span>, since <span class="math" data-tex="\(u e^{-u}\le1\)">\(u e^{-u}\le1\)</span>. The sum of the other halves is bounded by VD4.8. Consequently</p>
+<span class="math math-display" data-tex="\[
+K(\sigma,Z)\le\frac{8\cdot10^4}{4\pi d^2}&lt;H.
+\tag{VD4.9}
+\]">\[
+K(\sigma,Z)\le\frac{8\cdot10^4}{4\pi d^2}&lt;H.
+\tag{VD4.9}
+\]</span>
+<p>At <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span>, VD4.8 also bounds the kernel everywhere by <span class="math" data-tex="\(10^4/(4\pi)&lt;H\)">\(10^4/(4\pi)&lt;H\)</span>; supremum contraction extends that bound to <span class="math" data-tex="\(\sigma\ge1\)">\(\sigma\ge1\)</span>. Thus <span class="math" data-tex="\(K\le H\)">\(K\le H\)</span> whenever the distance is at least <span class="math" data-tex="\(d\)">\(d\)</span> or the heat duration is at least one. The physical kernel at viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is <span class="math" data-tex="\(K(\nu\Delta t,Z)\)">\(K(\nu\Delta t,Z)\)</span>, so the waiting condition is exactly <span class="math" data-tex="\(\Delta t\ge1/\nu\)">\(\Delta t\ge1/\nu\)</span>.</p>
+<p>Before every block after the first, the heat-only wait has auxiliary length <span class="math" data-tex="\(2-2\delta_{n-1}&gt;1\)">\(2-2\delta_{n-1}&gt;1\)</span>. Its old scalar is therefore at most <span class="math" data-tex="\(HM_0\)">\(HM_0\)</span>. In the first block it is zero. Split the scalar during block <span class="math" data-tex="\(n\)">\(n\)</span> into this homogeneous old contribution and a new contribution starting at zero with only the current source. The old part stays between zero and <span class="math" data-tex="\(HM_0\)">\(HM_0\)</span>.</p>
+<p>The first and second variational equations of the processor, including the reversed-time inverse flow, give for <span class="math" data-tex="\(0\le s\le n\)">\(0\le s\le n\)</span></p>
+<span class="math math-display" data-tex="\[
+\|D\Psi_s^{\pm1}\|_\infty\le e^{Ln}\le R^n,
+\qquad\|D^2\Psi_s^{\pm1}\|_\infty
+\le\int_0^s e^{L(s-r)}L e^{2Lr}\,dr
+\le nLR^{3n}.
+\tag{VD4.10}
+\]">\[
+\|D\Psi_s^{\pm1}\|_\infty\le e^{Ln}\le R^n,
+\qquad\|D^2\Psi_s^{\pm1}\|_\infty
+\le\int_0^s e^{L(s-r)}L e^{2Lr}\,dr
+\le nLR^{3n}.
+\tag{VD4.10}
+\]</span>
+<p>The inverse is the flow of <span class="math" data-tex="\(-V(s-r,\cdot)\)">\(-V(s-r,\cdot)\)</span> over the reversed interval, so it has the same bounds. Define the undiffused current contribution by</p>
+<span class="math math-display" data-tex="\[
+w^0(\tau,Y)=
+\begin{cases}
+\theta((\tau-t_n)/\delta_n)g_n(Y),&amp;t_n\le\tau\le t_n+\delta_n,\\
+g_n(\Psi_{s_n(\tau)}^{-1}(Y)),&amp;t_n+\delta_n\le\tau\le t_n+2\delta_n.
+\end{cases}\tag{VD4.11}
+\]">\[
+w^0(\tau,Y)=
+\begin{cases}
+\theta((\tau-t_n)/\delta_n)g_n(Y),&amp;t_n\le\tau\le t_n+\delta_n,\\
+g_n(\Psi_{s_n(\tau)}^{-1}(Y)),&amp;t_n+\delta_n\le\tau\le t_n+2\delta_n.
+\end{cases}\tag{VD4.11}
+\]</span>
+<p>Flat endpoints and phase collars give smooth joining. Direct differentiation gives <span class="math" data-tex="\(w^0_\tau+a\cdot\nabla w^0=h\)">\(w^0_\tau+a\cdot\nabla w^0=h\)</span>. The Hessian chain rule costs
+<span class="math" data-tex="\(Cb_n^{-2}R^{2n}+Cb_n^{-1}nLR^{3n}\)">\(Cb_n^{-2}R^{2n}+Cb_n^{-1}nLR^{3n}\)</span>; taking the two-dimensional trace costs at most two. Because <span class="math" data-tex="\(b_n&lt;1\)">\(b_n&lt;1\)</span>, this bounds <span class="math" data-tex="\(\|\Delta w^0\|_\infty\)">\(\|\Delta w^0\|_\infty\)</span> by <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, also during injection. The difference between the new diffusive scalar and VD4.11 has source <span class="math" data-tex="\(\Delta w^0\)">\(\Delta w^0\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+\|w^{\mathrm{new}}-w^0\|_\infty
+\le2\delta_nD_n&lt;1/50&lt;1/16.
+\tag{VD4.12}
+\]">\[
+\|w^{\mathrm{new}}-w^0\|_\infty
+\le2\delta_nD_n&lt;1/50&lt;1/16.
+\tag{VD4.12}
+\]</span>
+<p>Equivalently, in physical time its source is <span class="math" data-tex="\(\nu\Delta w^0\)">\(\nu\Delta w^0\)</span> for at most <span class="math" data-tex="\(2\delta_n/\nu\)">\(2\delta_n/\nu\)</span>, giving exactly the same error. This checks the diffusion scale against the actual viscosity.</p>
+<p>If <span class="math" data-tex="\(\Psi_k(p)\in E\)">\(\Psi_k(p)\in E\)</span> at an integer <span class="math" data-tex="\(k\)">\(k\)</span>, choose <span class="math" data-tex="\(n\ge\max(1,k)\)">\(n\ge\max(1,k)\)</span>. At phase <span class="math" data-tex="\(s_n=k\)">\(s_n=k\)</span>, the reference height at that point is one. The old contribution is nonnegative, so the actual height is greater than <span class="math" data-tex="\(15/16\)">\(15/16\)</span>. If the complete processor orbit stays at distance at least <span class="math" data-tex="\(2d\)">\(2d\)</span> from <span class="math" data-tex="\(E\)">\(E\)</span>, the reference support stays within</p>
+<span class="math math-display" data-tex="\[
+\sqrt2\,b_n R^n=\sqrt2\,10^{-6}2^{-n}&lt;1/32\le d
+\tag{VD4.13}
+\]">\[
+\sqrt2\,b_n R^n=\sqrt2\,10^{-6}2^{-n}&lt;1/32\le d
+\tag{VD4.13}
+\]</span>
+<p>of its center and therefore at distance at least <span class="math" data-tex="\(d\)">\(d\)</span> from <span class="math" data-tex="\(E\)">\(E\)</span>. During active intervals its reference vanishes on <span class="math" data-tex="\(E\)">\(E\)</span>, so <span class="math" data-tex="\(w\le HM_0+1/16\)">\(w\le HM_0+1/16\)</span> there. During the wait, heat evolution of the reference contributes at most <span class="math" data-tex="\(H\int g_n\)">\(H\int g_n\)</span>, and its error remains below <span class="math" data-tex="\(1/16\)">\(1/16\)</span>. Thus at every physical time in a nonhalting run,</p>
+<span class="math math-display" data-tex="\[
+w|_E\le2HM_0+1/16&lt;1/2.
+\tag{VD4.14}
+\]">\[
+w|_E\le2HM_0+1/16&lt;1/2.
+\tag{VD4.14}
+\]</span>
+<p>For the larger <span class="math" data-tex="\(H=10^9\)">\(H=10^9\)</span>, the right side is less than <span class="math" data-tex="\(1/50+1/16&lt;1/2\)">\(1/50+1/16&lt;1/2\)</span>; the smaller choice also works. Before the first block the scalar is zero. Endpoint continuity covers every join. VD2 supplies <span class="math" data-tex="\(d=1/32\)">\(d=1/32\)</span>, proving exactly VD0.2. The source's second choice also applies to a nonhalting corridor <span class="math" data-tex="\(1/8&lt;x&lt;3/8\)">\(1/8&lt;x&lt;3/8\)</span> and target <span class="math" data-tex="\(2/3&lt;x&lt;5/6\)">\(2/3&lt;x&lt;5/6\)</span>, since their infimum circle separation is <span class="math" data-tex="\(\min(2/3-3/8,1+1/8-5/6)=7/24&gt;1/4\)">\(\min(2/3-3/8,1+1/8-5/6)=7/24&gt;1/4\)</span>. This arithmetic checks that specialization without claiming to validate a different companion processor.</p>
+<p>For effective evaluation at computable <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, take rational <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(|q-\tau|\le1\)">\(|q-\tau|\le1\)</span> and use only <span class="math" data-tex="\(n\le\max(1,\lceil(q+1)/2\rceil)\)">\(n\le\max(1,\lceil(q+1)/2\rceil)\)</span>. All later summands and derivatives vanish. Each retained term uses finitely many translates of <span class="math" data-tex="\(V_0\)">\(V_0\)</span>; smooth endpoint estimates from VD4.1 handle uncertain equalities without a discontinuous comparison. The same finite sums and derivative bounds evaluate all force derivatives. The scalar is not an input to this prescription. VD3 and VD1 give existence and uniqueness on each finite interval and hence globally.</p>
+<h2 id="vd5-integer-addresses-and-the-expanding-translation-field">VD5. Integer addresses and the expanding translation field</h2>
+<p>Use the compiled table of VD2, now with states <span class="math" data-tex="\(i=1,\ldots,N\)">\(i=1,\ldots,N\)</span>, alphabet size <span class="math" data-tex="\(b\)">\(b\)</span>, and digits <span class="math" data-tex="\(d_\alpha\)">\(d_\alpha\)</span>. A nonnegative integer encodes a stack least significant digit first, with its zero tail interpreted as full blanks. Let <span class="math" data-tex="\(x\)">\(x\)</span> encode cells strictly left of the head, nearest first, and <span class="math" data-tex="\(y\)">\(y\)</span> the head cell and cells to its right. For a rule reading <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, writing <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and entering <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span>, the exact updates are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cc}
+&amp;x&#x27;&amp;y&#x27;\\\hline
+\mathsf R&amp;bx+d_\beta&amp;\lfloor y/b\rfloor\\
+\mathsf N&amp;x&amp;y-d_\alpha+d_\beta\\
+\mathsf L&amp;\lfloor x/b\rfloor&amp;d_\gamma+bd_\beta+b^2\lfloor y/b\rfloor,
+\quad d_\gamma=x\bmod b.
+\end{array}\tag{VD5.1}
+\]">\[
+\begin{array}{c|cc}
+&amp;x&#x27;&amp;y&#x27;\\\hline
+\mathsf R&amp;bx+d_\beta&amp;\lfloor y/b\rfloor\\
+\mathsf N&amp;x&amp;y-d_\alpha+d_\beta\\
+\mathsf L&amp;\lfloor x/b\rfloor&amp;d_\gamma+bd_\beta+b^2\lfloor y/b\rfloor,
+\quad d_\gamma=x\bmod b.
+\end{array}\tag{VD5.1}
+\]</span>
+<p>The target state determines the row. Its written symbol is the lowest digit of <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span> in the right row, the lowest digit of <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> in the stationary row, and the second lowest digit of <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> in the left row. The compiler then recovers the unique old state and read symbol. The three inverse formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathsf R:&amp;\quad(x,y)=((x&#x27;-d_\beta)/b,\ by&#x27;+d_\alpha),\\
+\mathsf N:&amp;\quad(x,y)=(x&#x27;,\ y&#x27;-d_\beta+d_\alpha),\\
+\mathsf L:&amp;\quad(x,y)=(bx&#x27;+d_\gamma,\ b\lfloor y&#x27;/b^2\rfloor+d_\alpha),
+\quad d_\gamma=y&#x27;\bmod b.
+\end{aligned}\tag{VD5.2}
+\]">\[
+\begin{aligned}
+\mathsf R:&amp;\quad(x,y)=((x&#x27;-d_\beta)/b,\ by&#x27;+d_\alpha),\\
+\mathsf N:&amp;\quad(x,y)=(x&#x27;,\ y&#x27;-d_\beta+d_\alpha),\\
+\mathsf L:&amp;\quad(x,y)=(bx&#x27;+d_\gamma,\ b\lfloor y&#x27;/b^2\rfloor+d_\alpha),
+\quad d_\gamma=y&#x27;\bmod b.
+\end{aligned}\tag{VD5.2}
+\]</span>
+<p>This proves injectivity on every defined address, not only the selected run. Choose <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> so both initial stacks are smaller than <span class="math" data-tex="\(b^m\)">\(b^m\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+B_n=b^{m+n},\quad K_n=NB_n^2=K_0D^n,\quad D=b^2,
+\qquad k=1+x+B_ny+B_n^2(i-1).
+\tag{VD5.3}
+\]">\[
+B_n=b^{m+n},\quad K_n=NB_n^2=K_0D^n,\quad D=b^2,
+\qquad k=1+x+B_ny+B_n^2(i-1).
+\tag{VD5.3}
+\]</span>
+<p>For <span class="math" data-tex="\(0\le x,y&lt;B_n\)">\(0\le x,y&lt;B_n\)</span>, the address is in <span class="math" data-tex="\(\{1,\ldots,K_n\}\)">\(\{1,\ldots,K_n\}\)</span> and integer division recovers all three entries. Every defined target lies at level <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. The largest expression is bounded by
+<span class="math" data-tex="\((b-1)+b(b-1)+b^2(B_n/b-1)=bB_n-1\)">\((b-1)+b(b-1)+b^2(B_n/b-1)=bB_n-1\)</span>; the other stack bounds follow directly from VD5.1. Distinct defined source addresses therefore have distinct target addresses <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>.</p>
+<p>Keep all source scales, including their dependence on the original viscosity:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_*&amp;=3000,&amp;\Lambda&amp;=4D,&amp;
+R_0&amp;=1024C_*(1+\nu)\Lambda(K_0D+2),\\
+R_n&amp;=R_0\Lambda^n,&amp;S_n&amp;=16R_n,&amp;
+T_n&amp;=S_{n+1}(K_{n+1}+2),\\
+t_0&amp;=1,&amp;t_{n+1}&amp;=t_n+T_n.
+\end{aligned}\tag{VD5.4}
+\]">\[
+\begin{aligned}
+C_*&amp;=3000,&amp;\Lambda&amp;=4D,&amp;
+R_0&amp;=1024C_*(1+\nu)\Lambda(K_0D+2),\\
+R_n&amp;=R_0\Lambda^n,&amp;S_n&amp;=16R_n,&amp;
+T_n&amp;=S_{n+1}(K_{n+1}+2),\\
+t_0&amp;=1,&amp;t_{n+1}&amp;=t_n+T_n.
+\end{aligned}\tag{VD5.4}
+\]</span>
+<p>Let <span class="math" data-tex="\(s_i=1\)">\(s_i=1\)</span> for the terminal state and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise, and <span class="math" data-tex="\(p_{n,k}=(S_nk,s_iS_n)\)">\(p_{n,k}=(S_nk,s_iS_n)\)</span>. The known initial address has center <span class="math" data-tex="\(p_*\)">\(p_*\)</span> on the negative row. For a defined source <span class="math" data-tex="\(k\)">\(k\)</span> with target <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> in state <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\Theta(r)=\theta(2r-1/2),\quad Y_k=-(k+2)S_n,\quad
+\theta_j(t)=\Theta(3(t-t_n)/T_n-(j-1)),\quad j=1,2,3.
+\tag{VD5.5}
+\]">\[
+\Theta(r)=\theta(2r-1/2),\quad Y_k=-(k+2)S_n,\quad
+\theta_j(t)=\Theta(3(t-t_n)/T_n-(j-1)),\quad j=1,2,3.
+\tag{VD5.5}
+\]</span>
+<p>The exact center path is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_1&amp;=(1-\theta_2)S_nk+\theta_2S_{n+1}k&#x27;,\\
+c_2&amp;=-(1-\theta_1)S_n+(\theta_1-\theta_3)Y_k
++\theta_3s_{i&#x27;}S_{n+1}.
+\end{aligned}\tag{VD5.6}
+\]">\[
+\begin{aligned}
+c_1&amp;=(1-\theta_2)S_nk+\theta_2S_{n+1}k&#x27;,\\
+c_2&amp;=-(1-\theta_1)S_n+(\theta_1-\theta_3)Y_k
++\theta_3s_{i&#x27;}S_{n+1}.
+\end{aligned}\tag{VD5.6}
+\]</span>
+<p>The three active derivative supports are successive disjoint slots. In the first, different centers are separated in their source first coordinates by at least <span class="math" data-tex="\(S_n\)">\(S_n\)</span>. In the second, the private heights differ by at least <span class="math" data-tex="\(S_n\)">\(S_n\)</span>. In the third, injectivity separates target first coordinates by at least <span class="math" data-tex="\(S_{n+1}\)">\(S_{n+1}\)</span>. These separations persist through the stationary collars. For a nonterminal target, all vertical path segments have <span class="math" data-tex="\(c_2\le-S_n\)">\(c_2\le-S_n\)</span>.</p>
+<p>For <span class="math" data-tex="\(\xi=X-c(t)\)">\(\xi=X-c(t)\)</span>, <span class="math" data-tex="\(G=\dot c\)">\(G=\dot c\)</span>, and
+<span class="math" data-tex="\(\chi(z)=\prod_{j=1}^2\theta(z_j+3)\theta(3-z_j)\)">\(\chi(z)=\prod_{j=1}^2\theta(z_j+3)\theta(3-z_j)\)</span>, install</p>
+<span class="math math-display" data-tex="\[
+W_{n,k}(t,X)=(\partial_{X_2},-\partial_{X_1})
+\left[\chi(\xi/R_n)(G_1\xi_2-G_2\xi_1)\right].
+\tag{VD5.7}
+\]">\[
+W_{n,k}(t,X)=(\partial_{X_2},-\partial_{X_1})
+\left[\chi(\xi/R_n)(G_1\xi_2-G_2\xi_1)\right].
+\tag{VD5.7}
+\]</span>
+<p>It is divergence free, equals <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(|\xi|_\infty\le2R_n\)">\(|\xi|_\infty\le2R_n\)</span>, and vanishes outside <span class="math" data-tex="\(|\xi|_\infty&lt;3R_n\)">\(|\xi|_\infty&lt;3R_n\)</span>. The supports of simultaneously installed gates are disjoint since <span class="math" data-tex="\(16R_n&gt;6R_n\)">\(16R_n&gt;6R_n\)</span>. Sum over every defined source at level <span class="math" data-tex="\(n\)">\(n\)</span> on its stage, and put <span class="math" data-tex="\(W=0\)">\(W=0\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The endpoint collars make this a globally smooth field. Since <span class="math" data-tex="\(t_n\ge n+1\)">\(t_n\ge n+1\)</span>, only finitely many levels occur on a finite time interval, each with finitely many gates and a compact swept support.</p>
+<p>There is no factor counting addresses in a supremum derivative bound. To check all derivative orders explicitly, write VD5.7 as <span class="math" data-tex="\(A((X-c)/R_n)\dot c\)">\(A((X-c)/R_n)\dot c\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+A(z)=\begin{pmatrix}
+\chi+z_2\partial_2\chi&amp;-z_1\partial_2\chi\\
+-z_2\partial_1\chi&amp;\chi+z_1\partial_1\chi
+\end{pmatrix}.
+\tag{VD5.8}
+\]">\[
+A(z)=\begin{pmatrix}
+\chi+z_2\partial_2\chi&amp;-z_1\partial_2\chi\\
+-z_2\partial_1\chi&amp;\chi+z_1\partial_1\chi
+\end{pmatrix}.
+\tag{VD5.8}
+\]</span>
+<p>Each path coefficient has absolute value at most <span class="math" data-tex="\(2T_n\)">\(2T_n\)</span>; more precisely the three changing coefficients in VD5.6 have bounds <span class="math" data-tex="\(T_n,T_n,2T_n\)">\(T_n,T_n,2T_n\)</span>. Hence, for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|c^{(j)}|\le C_jT_n^{1-j},\qquad
+C_j=4\cdot3^j\|\Theta^{(j)}\|_\infty.
+\tag{VD5.9}
+\]">\[
+|c^{(j)}|\le C_jT_n^{1-j},\qquad
+C_j=4\cdot3^j\|\Theta^{(j)}\|_\infty.
+\tag{VD5.9}
+\]</span>
+<p>For integers <span class="math" data-tex="\(l\ge0\)">\(l\ge0\)</span>, let <span class="math" data-tex="\(\Pi(r)\)">\(\Pi(r)\)</span> be the set of partitions of <span class="math" data-tex="\(\{1,\ldots,r\}\)">\(\{1,\ldots,r\}\)</span>, including the empty partition when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. The full time and space chain rule is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t^l\partial_X^\alpha W_{n,k}
+=R_n^{-|\alpha|}\sum_{j=0}^l{l\choose j}
+\sum_{\pi\in\Pi(l-j)}
+D^{|\pi|}(\partial^\alpha A)(\xi/R_n)
+\left[\left(-\frac{c^{(|B|)}}{R_n}\right)_{B\in\pi}\right]
+c^{(j+1)}.
+\end{aligned}\tag{VD5.10}
+\]">\[
+\begin{aligned}
+\partial_t^l\partial_X^\alpha W_{n,k}
+=R_n^{-|\alpha|}\sum_{j=0}^l{l\choose j}
+\sum_{\pi\in\Pi(l-j)}
+D^{|\pi|}(\partial^\alpha A)(\xi/R_n)
+\left[\left(-\frac{c^{(|B|)}}{R_n}\right)_{B\in\pi}\right]
+c^{(j+1)}.
+\end{aligned}\tag{VD5.10}
+\]</span>
+<p>The empty brackets mean the matrix itself. Each summand is bounded by</p>
+<span class="math math-display" data-tex="\[
+{l\choose j}\|D^{|\pi|}\partial^\alpha A\|_\infty
+C_{j+1}\prod_{B\in\pi}C_{|B|}\,
+R_n^{-|\alpha|-|\pi|}T_n^{|\pi|-l}.
+\tag{VD5.11}
+\]">\[
+{l\choose j}\|D^{|\pi|}\partial^\alpha A\|_\infty
+C_{j+1}\prod_{B\in\pi}C_{|B|}\,
+R_n^{-|\alpha|-|\pi|}T_n^{|\pi|-l}.
+\tag{VD5.11}
+\]</span>
+<p>Both scale exponents are nonpositive, since <span class="math" data-tex="\(|\pi|\le l-j\)">\(|\pi|\le l-j\)</span>, and <span class="math" data-tex="\(R_n,T_n\ge1\)">\(R_n,T_n\ge1\)</span>. The finite sum of these bounds is independent of the stage and address. At any point at most one gate contributes, so it bounds every mixed derivative of the actual <span class="math" data-tex="\(W\)">\(W\)</span>. VD1.2 now supplies globally bounded derivatives of its horizontal residual, with every nonlinear factor and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> retained.</p>
+<h2 id="vd6-the-scalar-on-the-unbounded-horizontal-domain">VD6. The scalar on the unbounded horizontal domain</h2>
+<p>Prescribe, independently of the unknown scalar,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G(X)&amp;=\prod_{j=1}^2\theta&#x27;(X_j-(p_*)_j+1/2),\qquad g(t,X)=\theta&#x27;(t)G(X),\\
+f_h&amp;=W_t+(W\cdot\nabla_X)W-\nu\Delta_XW,\qquad f=(f_h,g),\\
+\rho_t+W\cdot\nabla_X\rho&amp;=\nu\Delta_X\rho+g,\qquad\rho(0)=0.
+\end{aligned}\tag{VD6.1}
+\]">\[
+\begin{aligned}
+G(X)&amp;=\prod_{j=1}^2\theta&#x27;(X_j-(p_*)_j+1/2),\qquad g(t,X)=\theta&#x27;(t)G(X),\\
+f_h&amp;=W_t+(W\cdot\nabla_X)W-\nu\Delta_XW,\qquad f=(f_h,g),\\
+\rho_t+W\cdot\nabla_X\rho&amp;=\nu\Delta_X\rho+g,\qquad\rho(0)=0.
+\end{aligned}\tag{VD6.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(g\ge0\)">\(g\ge0\)</span>, its support has <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span> and <span class="math" data-tex="\(|X-p_*|_\infty\le1/2\)">\(|X-p_*|_\infty\le1/2\)</span>, and <span class="math" data-tex="\(\int G=1\)">\(\int G=1\)</span>, so <span class="math" data-tex="\(\int g(t)=\theta&#x27;(t)\)">\(\int g(t)=\theta&#x27;(t)\)</span>. All force derivatives are globally bounded, and their horizontal support is compact on each finite interval.</p>
+<p>For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, keep the physical heat kernel</p>
+<span class="math math-display" data-tex="\[
+H_s(X)=(4\pi\nu s)^{-1}e^{-|X|^2/(4\nu s)},\quad
+\|H_s\|_1=1,\quad
+\|\partial_jH_s\|_1=(\pi\nu s)^{-1/2}.
+\tag{VD6.2}
+\]">\[
+H_s(X)=(4\pi\nu s)^{-1}e^{-|X|^2/(4\nu s)},\quad
+\|H_s\|_1=1,\quad
+\|\partial_jH_s\|_1=(\pi\nu s)^{-1/2}.
+\tag{VD6.2}
+\]</span>
+<p>The last identity follows by integrating <span class="math" data-tex="\(|X_j|H_s/(2\nu s)\)">\(|X_j|H_s/(2\nu s)\)</span>; its one-dimensional Gaussian absolute first moment is <span class="math" data-tex="\(2\sqrt{\nu s/\pi}\)">\(2\sqrt{\nu s/\pi}\)</span>. With <span class="math" data-tex="\(\nabla_X\cdot W=0\)">\(\nabla_X\cdot W=0\)</span>, the mild equation is</p>
+<span class="math math-display" data-tex="\[
+\rho(t)=\int_0^tH_{t-r}*g(r)\,dr
+-\sum_{j=1}^2\int_0^t(\partial_jH_{t-r})*(W_j(r)\rho(r))\,dr.
+\tag{VD6.3}
+\]">\[
+\rho(t)=\int_0^tH_{t-r}*g(r)\,dr
+-\sum_{j=1}^2\int_0^t(\partial_jH_{t-r})*(W_j(r)\rho(r))\,dr.
+\tag{VD6.3}
+\]</span>
+<p>For <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, let <span class="math" data-tex="\(E_a\)">\(E_a\)</span> consist of <span class="math" data-tex="\(C^a\)">\(C^a\)</span> functions with every derivative through order <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(C_0(\mathbb R^2)\cap L^1\)">\(C_0(\mathbb R^2)\cap L^1\)</span>, with norm</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{E_a}=\sum_{|\alpha|\le a}
+(\|\partial^\alpha v\|_\infty+\|\partial^\alpha v\|_1).
+\tag{VD6.4}
+\]">\[
+\|v\|_{E_a}=\sum_{|\alpha|\le a}
+(\|\partial^\alpha v\|_\infty+\|\partial^\alpha v\|_1).
+\tag{VD6.4}
+\]</span>
+<p>This is complete: a Cauchy sequence has uniformly convergent continuous derivatives and convergent <span class="math" data-tex="\(L^1\)">\(L^1\)</span> derivatives; distributional testing identifies these limits and gives the stated classical derivatives. Heat convolution contracts each derivative norm and is strongly continuous, by translation continuity in <span class="math" data-tex="\(C_0\)">\(C_0\)</span> and <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and the Gaussian approximate identity. Products by <span class="math" data-tex="\(W_j\)">\(W_j\)</span> are bounded on <span class="math" data-tex="\(E_a\)">\(E_a\)</span>: the product rule gives an effective bound from the finite sum of <span class="math" data-tex="\({\alpha\choose\beta}\|\partial^\beta W_j\|_\infty\)">\({\alpha\choose\beta}\|\partial^\beta W_j\|_\infty\)</span> over <span class="math" data-tex="\(\beta\le\alpha\)">\(\beta\le\alpha\)</span>, <span class="math" data-tex="\(|\alpha|\le a\)">\(|\alpha|\le a\)</span>. Denote a common upper bound by <span class="math" data-tex="\(M_a\)">\(M_a\)</span>. It can be uniform in time by VD5.11. Higher time derivative bounds imply operator-norm continuity in time on finite intervals.</p>
+<p>On an interval of length <span class="math" data-tex="\(h\)">\(h\)</span>, the second term of VD6.3 has operator norm at most</p>
+<span class="math math-display" data-tex="\[
+q=\frac{4M_a}{\sqrt{\pi\nu}}\sqrt h.
+\tag{VD6.5}
+\]">\[
+q=\frac{4M_a}{\sqrt{\pi\nu}}\sqrt h.
+\tag{VD6.5}
+\]</span>
+<p>Choose <span class="math" data-tex="\(h\)">\(h\)</span> so <span class="math" data-tex="\(q\le1/2\)">\(q\le1/2\)</span>. The convergent Neumann series solves the equation in <span class="math" data-tex="\(C_tE_a\)">\(C_tE_a\)</span>. The integrable <span class="math" data-tex="\((t-r)^{-1/2}\)">\((t-r)^{-1/2}\)</span> bound also proves continuity at the upper endpoints. On the next interval add the heat evolution of the previous endpoint value; the same bound applies. Finitely many steps cover each finite <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>. Uniqueness in <span class="math" data-tex="\(E_0\)">\(E_0\)</span> identifies the solutions for different <span class="math" data-tex="\(a\)">\(a\)</span>, proving all spatial regularity.</p>
+<p>Set <span class="math" data-tex="\(F=g-\nabla_X\cdot(W\rho)\)">\(F=g-\nabla_X\cdot(W\rho)\)</span>. It is continuous into every <span class="math" data-tex="\(E_a\)">\(E_a\)</span>. For <span class="math" data-tex="\(v\in E_{a+2}\)">\(v\in E_{a+2}\)</span>, <span class="math" data-tex="\(d(H_s*v)/ds=\nu H_s*\Delta v\)">\(d(H_s*v)/ds=\nu H_s*\Delta v\)</span>, continuously through <span class="math" data-tex="\(s=0\)">\(s=0\)</span> in <span class="math" data-tex="\(E_a\)">\(E_a\)</span>. Applying this to <span class="math" data-tex="\(\rho=\int H_{t-r}*F(r)\,dr\)">\(\rho=\int H_{t-r}*F(r)\,dr\)</span> gives <span class="math" data-tex="\(\rho_t=F+\nu\Delta\rho\)">\(\rho_t=F+\nu\Delta\rho\)</span> in every <span class="math" data-tex="\(E_a\)">\(E_a\)</span>. Repeated time differentiation proves that every mixed derivative is continuous into <span class="math" data-tex="\(C_0\cap L^1\)">\(C_0\cap L^1\)</span>, including at zero.</p>
+<p>All terms of VD6.3 are absolutely integrable. Since <span class="math" data-tex="\(\int\partial_jH_s=0\)">\(\int\partial_jH_s=0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathcal M(t)=\int\rho(t,X)\,dX=\theta(t)\le1.
+\tag{VD6.6}
+\]">\[
+\mathcal M(t)=\int\rho(t,X)\,dX=\theta(t)\le1.
+\tag{VD6.6}
+\]</span>
+<p>For positivity use <span class="math" data-tex="\(\rho+\varepsilon(1+t)\)">\(\rho+\varepsilon(1+t)\)</span>. On a finite time interval, continuity into <span class="math" data-tex="\(C_0\)">\(C_0\)</span> implies uniform spatial decay: the compact image of the time interval is covered by finitely many small supremum balls, each centered at a function decaying at infinity. Thus this perturbed function is positive outside a fixed compact set and initially positive. At a first zero minimum inside it, its time derivative is nonpositive, its gradient zero and its Laplacian nonnegative, contradicting source <span class="math" data-tex="\(g+\varepsilon&gt;0\)">\(g+\varepsilon&gt;0\)</span>. Let <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>. This proves <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span>.</p>
+<p>Now <span class="math" data-tex="\(U=(W,\rho)\)">\(U=(W,\rho)\)</span>, <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, satisfies VD0.1 by VD1.1. For every derivative, <span class="math" data-tex="\(\|v\|_2^2\le\|v\|_1\|v\|_\infty\)">\(\|v\|_2^2\le\|v\|_1\|v\|_\infty\)</span>, also applied to differences at two times, gives <span class="math" data-tex="\(L^2\)">\(L^2\)</span> continuity from the established <span class="math" data-tex="\(E_a\)">\(E_a\)</span> continuity. Spatial derivatives through order two and the time derivative therefore give exactly VD0.4. The horizontal field has a common compact support on every finite interval. The scalar need not have compact support; its proved tails supply the required spaces. VD1 proves uniqueness in the complete three-dimensional class.</p>
+<h2 id="vd7-the-moving-cutoff-and-every-time-detection">VD7. The moving cutoff and every-time detection</h2>
+<p>Only for the proof of the event equivalence, follow the initialized run. During loading let <span class="math" data-tex="\(c(t)=p_*\)">\(c(t)=p_*\)</span>; then concatenate the installed paths VD5.6 until the first terminal endpoint, if any. The integer-stack bounds ensure every required gate exists, and the compiler ensures continuation for a nonhalting run. Adjacent centers and stationary collars agree.</p>
+<p>Use the original <span class="math" data-tex="\(C^2\)">\(C^2\)</span> cutoff polynomial, extended by zero to the left and one to the right:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(s)&amp;=10s^3-15s^4+6s^5\quad(0\le s\le1),\\
+A_*(s)&amp;=P(2(1+s))P(2(1-s)),\\
+\varphi_R(a)&amp;=A_*(a_1/R)A_*(a_2/R).
+\end{aligned}
+\tag{VD7.1}
+\]">\[
+\begin{aligned}
+P(s)&amp;=10s^3-15s^4+6s^5\quad(0\le s\le1),\\
+A_*(s)&amp;=P(2(1+s))P(2(1-s)),\\
+\varphi_R(a)&amp;=A_*(a_1/R)A_*(a_2/R).
+\end{aligned}
+\tag{VD7.1}
+\]</span>
+<p>The endpoint first and second derivatives vanish, <span class="math" data-tex="\(P&#x27;=30s^2(1-s)^2\ge0\)">\(P&#x27;=30s^2(1-s)^2\ge0\)</span>, and the coefficient bound gives <span class="math" data-tex="\(|P&#x27;&#x27;|\le360\)">\(|P&#x27;&#x27;|\le360\)</span>. The transition intervals of the two factors in <span class="math" data-tex="\(A_*\)">\(A_*\)</span> are disjoint; the other factor is one on either transition. Thus <span class="math" data-tex="\(|A_*&#x27;&#x27;|\le1440\)">\(|A_*&#x27;&#x27;|\le1440\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\le\varphi_R\le1,\quad
+\varphi_R=1\text{ on }|a|_\infty\le R/2,\quad
+\varphi_R=0\text{ on }|a|_\infty\ge R,\quad
+\|\Delta\varphi_R\|_\infty\le2880R^{-2}\le C_*R^{-2}.
+\tag{VD7.2}
+\]">\[
+0\le\varphi_R\le1,\quad
+\varphi_R=1\text{ on }|a|_\infty\le R/2,\quad
+\varphi_R=0\text{ on }|a|_\infty\ge R,\quad
+\|\Delta\varphi_R\|_\infty\le2880R^{-2}\le C_*R^{-2}.
+\tag{VD7.2}
+\]</span>
+<p>Use <span class="math" data-tex="\(R_0\)">\(R_0\)</span> during loading and <span class="math" data-tex="\(R_n\)">\(R_n\)</span> in stage <span class="math" data-tex="\(n\)">\(n\)</span>, and set <span class="math" data-tex="\(\mathcal I(t)=\int\varphi_R(X-c(t))\rho(t,X)\,dX\)">\(\mathcal I(t)=\int\varphi_R(X-c(t))\rho(t,X)\,dX\)</span>. The compact <span class="math" data-tex="\(C^2\)">\(C^2\)</span> cutoff and proved scalar regularity justify differentiation and integration by parts:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal I&#x27;(t)={}&amp;\int\big[(W(t,X)-\dot c(t))\cdot\nabla\varphi_R(X-c(t))
++\nu\Delta\varphi_R(X-c(t))\big]\rho(t,X)\,dX\\
+&amp;+\int\varphi_R(X-c(t))g(t,X)\,dX.
+\end{aligned}
+\tag{VD7.3}
+\]">\[
+\begin{aligned}
+\mathcal I&#x27;(t)={}&amp;\int\big[(W(t,X)-\dot c(t))\cdot\nabla\varphi_R(X-c(t))
++\nu\Delta\varphi_R(X-c(t))\big]\rho(t,X)\,dX\\
+&amp;+\int\varphi_R(X-c(t))g(t,X)\,dX.
+\end{aligned}
+\tag{VD7.3}
+\]</span>
+<p>The transport term is exactly zero: the cutoff derivative is supported where the installed field equals <span class="math" data-tex="\(\dot c\)">\(\dot c\)</span>; during loading both vanish. Positivity and mass at most one bound the diffusion term below by <span class="math" data-tex="\(-\nu C_*R^{-2}\)">\(-\nu C_*R^{-2}\)</span>. The loading source lies in the cutoff's one-plateau because <span class="math" data-tex="\(R_0\ge1\)">\(R_0\ge1\)</span>, and contributes <span class="math" data-tex="\(\mathcal M&#x27;\)">\(\mathcal M&#x27;\)</span>. After time one it is zero.</p>
+<p>At a stage join the center is unchanged and <span class="math" data-tex="\(R_{n+1}\ge2R_n\)">\(R_{n+1}\ge2R_n\)</span>; the new cutoff is one on the entire support of the preceding one. Hence the weighted mass cannot decrease at the radius change. Starting with zero, integrating VD7.3 gives at all times through the first halt</p>
+<span class="math math-display" data-tex="\[
+\mathcal I(t)\ge\mathcal M(t)-\delta,\qquad
+\delta=\nu C_*\left(R_0^{-2}+\sum_{n\ge0}\frac{T_n}{R_n^2}\right).
+\tag{VD7.4}
+\]">\[
+\mathcal I(t)\ge\mathcal M(t)-\delta,\qquad
+\delta=\nu C_*\left(R_0^{-2}+\sum_{n\ge0}\frac{T_n}{R_n^2}\right).
+\tag{VD7.4}
+\]</span>
+<p>Retaining both summands from the address count, the exact series is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{T_n}{R_n^2}
+&amp;=\frac{16\Lambda}{R_0}
+\left[K_0D(D/\Lambda)^n+2\Lambda^{-n}\right],\\
+\delta&amp;=\frac{\nu C_*}{R_0^2}
++\frac{16\nu C_*\Lambda}{R_0}
+\left[\frac{4K_0D}{3}+\frac{2\Lambda}{\Lambda-1}\right].
+\end{aligned}\tag{VD7.5}
+\]">\[
+\begin{aligned}
+\frac{T_n}{R_n^2}
+&amp;=\frac{16\Lambda}{R_0}
+\left[K_0D(D/\Lambda)^n+2\Lambda^{-n}\right],\\
+\delta&amp;=\frac{\nu C_*}{R_0^2}
++\frac{16\nu C_*\Lambda}{R_0}
+\left[\frac{4K_0D}{3}+\frac{2\Lambda}{\Lambda-1}\right].
+\end{aligned}\tag{VD7.5}
+\]</span>
+<p>Since <span class="math" data-tex="\(D/\Lambda=1/4\)">\(D/\Lambda=1/4\)</span> and <span class="math" data-tex="\(\Lambda\ge4\)">\(\Lambda\ge4\)</span>, both geometric sums are at most <span class="math" data-tex="\(4/3\)">\(4/3\)</span>. The chosen original <span class="math" data-tex="\(R_0\)">\(R_0\)</span> therefore gives</p>
+<span class="math math-display" data-tex="\[
+\nu C_*\sum_n\frac{T_n}{R_n^2}
+\le\frac{\nu}{1+\nu}\frac{64}{3\cdot1024}&lt;1/48,
+\qquad
+\frac{\nu C_*}{R_0^2}
+\le\frac{\nu}{1024^2C_*(1+\nu)^2}&lt;1/48.
+\tag{VD7.6}
+\]">\[
+\nu C_*\sum_n\frac{T_n}{R_n^2}
+\le\frac{\nu}{1+\nu}\frac{64}{3\cdot1024}&lt;1/48,
+\qquad
+\frac{\nu C_*}{R_0^2}
+\le\frac{\nu}{1024^2C_*(1+\nu)^2}&lt;1/48.
+\tag{VD7.6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\delta&lt;1/24\)">\(\delta&lt;1/24\)</span>. These are symbolic bounds on the exact scales, requiring no trajectory simulation or numerical quadrature.</p>
+<p>If there is no halt, the loading center and every selected transition lie at or below <span class="math" data-tex="\(-S_n=-16R_n\)">\(-S_n=-16R_n\)</span>. The cutoff is entirely in <span class="math" data-tex="\(X_2&lt;0\)">\(X_2&lt;0\)</span>, so at every time</p>
+<span class="math math-display" data-tex="\[
+\int_{X_2&gt;0}\rho\le\mathcal M-\mathcal I\le\delta&lt;1/24.
+\tag{VD7.7}
+\]">\[
+\int_{X_2&gt;0}\rho\le\mathcal M-\mathcal I\le\delta&lt;1/24.
+\tag{VD7.7}
+\]</span>
+<p>At a terminal arrival of level <span class="math" data-tex="\(n\)">\(n\)</span>, its center height is <span class="math" data-tex="\(S_n=16R_n\)">\(S_n=16R_n\)</span>. The preceding cutoff radius is at most <span class="math" data-tex="\(R_n\)">\(R_n\)</span>, so its entire support lies in <span class="math" data-tex="\(X_2&gt;0\)">\(X_2&gt;0\)</span>, and its mass is at least <span class="math" data-tex="\(1-\delta&gt;23/24\)">\(1-\delta&gt;23/24\)</span>. The arrival time is finite. This includes an originally halted input because the compiled initial state is nonterminal. No statement about mass after the first terminal arrival is needed. The vertical period has length one, so these are exactly the integrals in VD0.3. The threshold <span class="math" data-tex="\(1/2\)">\(1/2\)</span> separates the two cases.</p>
+<p>At any completed nonterminal level, the correct address square of radius <span class="math" data-tex="\(R_n\)">\(R_n\)</span> contains mass greater than <span class="math" data-tex="\(23/24\)">\(23/24\)</span>. Every other address square is disjoint and can contain less than <span class="math" data-tex="\(1/24\)">\(1/24\)</span>, because total mass is one. At a terminal level the arriving smaller cutoff gives the same conclusion for the larger address square. Thus the original construction also detects each completed configuration uniquely by its mass, with all address coordinates retained.</p>
+<h2 id="vd8-effective-force-and-scalar-evaluation">VD8. Effective force and scalar evaluation</h2>
+<p>The finite table, both initial stacks and the single-rule maps determine all addresses and scales. On <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, choose an integer <span class="math" data-tex="\(Q&gt;T\)">\(Q&gt;T\)</span>; since <span class="math" data-tex="\(t_n\ge n+1\)">\(t_n\ge n+1\)</span>, only <span class="math" data-tex="\(0\le n&lt;Q\)">\(0\le n&lt;Q\)</span> can contribute. Evaluate the finite sum over every defined address at these levels, extending each gate by zero through its collars. Uncertain comparison with a computable switching time causes no problem because the endpoint functions are flat and have the effective derivative bounds in VD4.1. Thus the force and every mixed derivative have finite evaluation programs and computable bounds. No selected execution is used to decide which gates to install.</p>
+<p>For completeness the noncompact scalar also has an effective finite-time representation including its tails. On a step satisfying VD6.5, write the mild equation as <span class="math" data-tex="\(\rho=y+B\rho\)">\(\rho=y+B\rho\)</span>, where <span class="math" data-tex="\(y\)">\(y\)</span> includes the heat evolution of the previous datum and the source term. Then</p>
+<span class="math math-display" data-tex="\[
+\left\|\rho-\sum_{j=0}^N B^jy\right\|_{C_tE_a}
+\le\frac{q^{N+1}}{1-q}\|y\|_{C_tE_a}.
+\tag{VD8.1}
+\]">\[
+\left\|\rho-\sum_{j=0}^N B^jy\right\|_{C_tE_a}
+\le\frac{q^{N+1}}{1-q}\|y\|_{C_tE_a}.
+\tag{VD8.1}
+\]</span>
+<p>An initial-data error <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> and equation error <span class="math" data-tex="\(\varepsilon_1\)">\(\varepsilon_1\)</span> change the solution by at most <span class="math" data-tex="\((\varepsilon_0+\varepsilon_1)/(1-q)\)">\((\varepsilon_0+\varepsilon_1)/(1-q)\)</span>. These estimates give finite backwards error budgets for all steps covering <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>.</p>
+<p>Here is the tail construction needed to use those norms on an unbounded domain. Every source and product <span class="math" data-tex="\(W_jv\)">\(W_jv\)</span> has known compact support on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>. In a derivative-kernel integral split the lag at <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. For <span class="math" data-tex="\(\|v\|_{C_tE_a}\le A\)">\(\|v\|_{C_tE_a}\le A\)</span>, its short-lag part has norm at most <span class="math" data-tex="\(4M_aA\sqrt{\eta}/\sqrt{\pi\nu}\)">\(4M_aA\sqrt{\eta}/\sqrt{\pi\nu}\)</span>. For lags in <span class="math" data-tex="\([\eta,T]\)">\([\eta,T]\)</span>, every Gaussian derivative is an explicit polynomial times that Gaussian, with computable supremum and <span class="math" data-tex="\(L^1\)">\(L^1\)</span> tails uniform on the interval. Convolving with data of known compact support and bounded <span class="math" data-tex="\(E_a\)">\(E_a\)</span> norm gives a computable tail outside that support radius plus a chosen radius. For the source term, heat convolution has norm one and the short-lag contribution is bounded by its duration times the source norm.</p>
+<p>At a restart, keep the previous approximant and its certified <span class="math" data-tex="\(E_a\)">\(E_a\)</span> error. Its derivative tails permit multiplication by a smooth cutoff equal to one on a large ball: the product rule bounds the lost tail and every cutoff-derivative contribution. Heat convolution contracts that error; the retained compact datum has Gaussian tails uniformly for lag from zero through the new step. Starting from zero, induction supplies both supremum and <span class="math" data-tex="\(L^1\)">\(L^1\)</span> tails for every finite approximant. On the remaining compact space-time sets, finite derivative bounds give effective integration error; a uniform spatial error bounds its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> contribution by the retained area times that error. Time derivatives follow from VD6.1. This proves the source's stronger scalar computability assertion without using it to define the force and without performing any numerical solver run here.</p>
+<p>Finally, an algorithm deciding either event for every produced force would decide whether any machine halts on its input by composing it with the finite construction. If a total halting decider existed, the program that halts exactly when that decider says its own code does not halt would contradict either answer. This proves the decision obstruction for both exact force families. The strict signal margins above are estimates for those exact forces; no stability under replacing the force by a finite-precision description has been assumed.</p>
+<h2 id="vd9-further-consequences-in-the-original-variables">VD9. Further consequences in the original variables</h2>
+<p>The following consequences are editorial, with no novelty claim. First, the preceding bounded-force construction also has globally bounded velocity, and its vertical component has a global energy and dissipation bound. Let <span class="math" data-tex="\(G_* =\|G\|_\infty\)">\(G_* =\|G\|_\infty\)</span>. Scalar comparison, justified by the same compact-at-infinity argument as in VD6, with the time-dependent barrier <span class="math" data-tex="\(G_*\theta(t)\)">\(G_*\theta(t)\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+0\le\rho(t,X)\le G_*\theta(t)\le G_*.
+\tag{VD9.1}
+\]">\[
+0\le\rho(t,X)\le G_*\theta(t)\le G_*.
+\tag{VD9.1}
+\]</span>
+<p>VD5.11 supplies a uniform bound for <span class="math" data-tex="\(W\)">\(W\)</span>, so <span class="math" data-tex="\(U=(W,\rho)\)">\(U=(W,\rho)\)</span> is uniformly bounded pointwise. This does not assert a uniform horizontal <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound on the expanding support.</p>
+<p>The <span class="math" data-tex="\(E_a\)">\(E_a\)</span> regularity just proved justifies the scalar energy identity by spatial cutoffs and passage to the limit, with vanishing transport and viscous boundary errors bounded by the same <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> estimates as in VD1. Since <span class="math" data-tex="\(\int g(t)=\theta&#x27;(t)\)">\(\int g(t)=\theta&#x27;(t)\)</span>, positivity and VD9.1 give, for every finite <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\rho(t)\|_2^2+2\nu\int_0^t\|\nabla_X\rho(s)\|_2^2\,ds
+&amp;=2\int_0^t\int\rho g\,dX\,ds\\
+&amp;\le2G_*\int_0^t\theta(s)\theta&#x27;(s)\,ds
+=G_*\theta(t)^2\le G_*.
+\end{aligned}\tag{VD9.2}
+\]">\[
+\begin{aligned}
+\|\rho(t)\|_2^2+2\nu\int_0^t\|\nabla_X\rho(s)\|_2^2\,ds
+&amp;=2\int_0^t\int\rho g\,dX\,ds\\
+&amp;\le2G_*\int_0^t\theta(s)\theta&#x27;(s)\,ds
+=G_*\theta(t)^2\le G_*.
+\end{aligned}\tag{VD9.2}
+\]</span>
+<p>Monotone convergence in the nonnegative dissipation integral yields the same finite upper bound through infinite time. This exact vertical-energy estimate is compatible with the expanding horizontal geometry and makes no claim about the total kinetic energy of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Second, the torus scalar also stays uniformly bounded, although its horizontal bursts need not. The new scalar has supremum at most one: during injection compare with the injected fraction, and during stirring and waiting use homogeneous contraction. The old part is at most <span class="math" data-tex="\(HM_0\)">\(HM_0\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+0\le U_{\nu,3}(t,Y,z)\le1+HM_0.
+\tag{VD9.3}
+\]">\[
+0\le U_{\nu,3}(t,Y,z)\le1+HM_0.
+\tag{VD9.3}
+\]</span>
+<p>Its nonzero retained mass prevents finite time-integrability of that velocity component over the entire half-line. Indeed, after the first injection, its mass is at least <span class="math" data-tex="\(m_1=\int g_1&gt;0\)">\(m_1=\int g_1&gt;0\)</span>, since <span class="math" data-tex="\(g_1=1\)">\(g_1=1\)</span> on a nonempty open square. On the unit torus, Hölder gives <span class="math" data-tex="\(\|U_{\nu,3}(t)\|_{L^p}\ge m_1\)">\(\|U_{\nu,3}(t)\|_{L^p}\ge m_1\)</span> for every <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>. Therefore <span class="math" data-tex="\(\|U_{\nu,3}\|_{L^q_tL^p_x}=\infty\)">\(\|U_{\nu,3}\|_{L^q_tL^p_x}=\infty\)</span> for every finite <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>. This is an exact distinction from the earlier rapidly vanishing velocity family, not an obstruction to either detection theorem.</p>
+<h2 id="vd10-source-correspondence-and-conclusion">VD10. Source correspondence and conclusion</h2>
+<p>Original source coverage is main.tex lines 1–288, compact.tex lines 1–437, bounded.tex lines 1–618 and references.bib lines 1–97, at the pinned OpenAI commit above: 1440 lines in total. VD1 supplies main.tex's scalar receiver and full noncompact comparison. VD3–VD4 give the scalar existence, both quantitative heat specializations, every-time burst estimates, actual viscosity map and fixed torus application of compact.tex. VD2 and VD5–VD8 supply the compiler connection, all integer addresses, disjoint gates, every mixed derivative bound, integrable scalar tails, exact moving-cutoff loss, event equivalence and effective evaluation in bounded.tex. The companion slow-clock processor is not silently imported through the optional numerical-pair specialization.</p>
+<p>The proof dependencies are the complete finite recorder and planar processor in the linked stationary audit, whose original author source was already read in full, and the analytical constructions proved here. The original <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Velocity-Field-Detection-of-Computation-in-Forced-Navier-Stokes-Flows-September-27-2026/build/references.bib">bibliography</a> credits Turing, Landauer, Bennett, Moore, Leray, Aronson and the cited earlier fluid-computation works. Reading the bibliography is not a claim to have read or validated every cited paper.</p>
+<p>The written derivation and author self-review support both velocity-detection statements in their stated classes. No original mathematical error was established in this reading. VD1's weaker competitor-gradient requirement, VD2's exact code comparison and VD9's bounds are separate editorial consequences. The original files are unchanged. This note does not claim independent human review, Lean verification, validation of every companion theorem, or completion of the broader lesson series.</p>
+</article></body></html>

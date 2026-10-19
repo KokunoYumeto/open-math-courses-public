@@ -1,0 +1,587 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exact computation with eventually stationary forcing</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1120px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}*{box-sizing:border-box}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><h1 id="exact-computation-with-eventually-stationary-forcing">Exact computation with eventually stationary forcing</h1>
+<p><em>Independent derivation and author self-review by GPT-6 Astra (OpenAI), at Ultra. No independent human review or reproduced formal verification is claimed. This editorial exposition is separate from the original text.</em></p>
+<p>This note proves the construction in OpenAI's <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/build/main.tex"><em>Universal Computation with Eventually Stationary Navier–Stokes Forcing</em></a>, using its original coordinates, seven instruction rows, rectangles, detector, clock and viscosity. The complete author TeX, lines 1–1017, and its bibliography were read. The retained source bytes match the pinned author Git blobs. Source identity is evidence of provenance; the proofs below supply the mathematical argument.</p>
+<p>Fix <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the flat torus <span class="math" data-tex="\(\mathbb T^3=\mathbb R^3/\mathbb Z^3\)">\(\mathbb T^3=\mathbb R^3/\mathbb Z^3\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+P=(1/4,1/4,0),\qquad
+\mathcal O=\{(X,Y,Z):1/32&lt;Y&lt;1/8\}.
+\tag{SC0.1}
+\]">\[
+P=(1/4,1/4,0),\qquad
+\mathcal O=\{(X,Y,Z):1/32&lt;Y&lt;1/8\}.
+\tag{SC0.1}
+\]</span>
+<p>Given a deterministic Turing machine and finite word, we construct a smooth force, with zero spatial mean, that is stationary for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>. Its zero-data Navier–Stokes solution is global, smooth, bounded in kinetic energy, and unique in the classical class. The material particle from <span class="math" data-tex="\(P\)">\(P\)</span> enters <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> if and only if the machine halts. Every mixed force derivative is bounded. A finite program evaluates those derivatives and their bounds when <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is computable; the same formulas are effective relative to a name for any other fixed positive <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>The equation and pressure convention are</p>
+<span class="math math-display" data-tex="\[
+U_t+(U\cdot\nabla)U=-\nabla p+\nu\Delta U+f,
+\qquad \nabla\cdot U=0,\quad U(0)=0,\quad\int_{\mathbb T^3}p=0.
+\tag{SC0.2}
+\]">\[
+U_t+(U\cdot\nabla)U=-\nabla p+\nu\Delta U+f,
+\qquad \nabla\cdot U=0,\quad U(0)=0,\quad\int_{\mathbb T^3}p=0.
+\tag{SC0.2}
+\]</span>
+<p>Here classical means that <span class="math" data-tex="\(U,U_t,D_xU,D_x^2U,p,\nabla p\)">\(U,U_t,D_xU,D_x^2U,p,\nabla p\)</span> are continuous on every closed finite time cylinder. All fields constructed below are smooth. Exact observation is essential: the result supplies no fixed tolerance for an indefinitely long computation. SC8 also proves two editorial consequences, retaining every coefficient: a family of slower clocks with explicit time integrability, and a strictly positive work requirement for the stationary force. Neither is a claim of novelty.</p>
+<p><img src="eventually-stationary-computation.svg" alt="The original detector, tracked corridor, spatial clock and force map." class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="stationary-clock" data-asset-sha256="0A7C0C453E2C52EEC7B6D4ED9B269BF9CA4ADA5F0177D2868ECC6204AB801BC2"></p>
+<p>The <a href="eventually-stationary-computation.py">figure generator</a> supplies the editable diagram. The coordinate panel shows the exact fixed sets, not a sampled fluid trajectory.</p>
+<h2 id="sc1-effective-smooth-functions-and-the-exact-fluid-receiver">SC1. Effective smooth functions and the exact fluid receiver</h2>
+<p>Retain</p>
+<span class="math math-display" data-tex="\[
+E(t)=\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+\qquad \beta(t)=\frac{E(t)}{E(t)+E(1-t)}.
+\tag{SC1.1}
+\]">\[
+E(t)=\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+\qquad \beta(t)=\frac{E(t)}{E(t)+E(1-t)}.
+\tag{SC1.1}
+\]</span>
+<p>If <span class="math" data-tex="\(E^{(j)}(t)=P_j(1/t)e^{-1/t}\)">\(E^{(j)}(t)=P_j(1/t)e^{-1/t}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, differentiation gives</p>
+<span class="math math-display" data-tex="\[
+P_0(y)=1,\qquad P_{j+1}(y)=y^2\big(P_j(y)-P_j&#x27;(y)\big).
+\tag{SC1.2}
+\]">\[
+P_0(y)=1,\qquad P_{j+1}(y)=y^2\big(P_j(y)-P_j&#x27;(y)\big).
+\tag{SC1.2}
+\]</span>
+<p>For nonnegative integers <span class="math" data-tex="\(m,k\)">\(m,k\)</span>, the exponential series implies
+<span class="math" data-tex="\(y^me^{-y}\le(m+k)!y^{-k}\)">\(y^me^{-y}\le(m+k)!y^{-k}\)</span>. Thus every derivative tends to zero at the origin, with a computable modulus. For a global derivative bound use <span class="math" data-tex="\(y^me^{-y}\le m!\)">\(y^me^{-y}\le m!\)</span> term by term in the finite polynomial. At least one of <span class="math" data-tex="\(t,1-t\)">\(t,1-t\)</span> is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so the denominator in SC1.1 is at least <span class="math" data-tex="\(e^{-2}\)">\(e^{-2}\)</span>. Repeated quotient differentiation gives effective derivative bounds for <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, including all endpoint derivatives. It is zero on <span class="math" data-tex="\(( -\infty,0]\)">\(( -\infty,0]\)</span>, one on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\beta(t)+\beta(1-t)=1.
+\tag{SC1.3}
+\]">\[
+\beta(t)+\beta(1-t)=1.
+\tag{SC1.3}
+\]</span>
+<p>Evaluation at a computable real does not require deciding whether that real equals an endpoint: use a rational enclosure and the derivative bounds to control evaluation error; near zero the preceding vanishing estimate controls the entire uncertain contribution.</p>
+<p>For <span class="math" data-tex="\(a&lt;b&lt;c&lt;d\)">\(a&lt;b&lt;c&lt;d\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\beta\!\left(\frac{t-a}{b-a}\right)
+\beta\!\left(\frac{d-t}{d-c}\right)
+\tag{SC1.4}
+\]">\[
+\beta\!\left(\frac{t-a}{b-a}\right)
+\beta\!\left(\frac{d-t}{d-c}\right)
+\tag{SC1.4}
+\]</span>
+<p>is one on <span class="math" data-tex="\([b,c]\)">\([b,c]\)</span> and zero off <span class="math" data-tex="\((a,d)\)">\((a,d)\)</span>. Products over coordinates give the required rational-box cutoffs. Finite products and compositions retain explicit computable bounds by Leibniz' rule and the chain rule.</p>
+<p>A compactly supported smooth profile <span class="math" data-tex="\(F_0\)">\(F_0\)</span> on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, extended by zero, can be periodized effectively without taking the integer part of a computable real. Given <span class="math" data-tex="\(|q-s|&lt;1\)">\(|q-s|&lt;1\)</span> with rational <span class="math" data-tex="\(q\)">\(q\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+F_{\rm per}^{(j)}(s)=
+\sum_{k=\lfloor q\rfloor-2}^{\lceil q\rceil+2}F_0^{(j)}(s-k).
+\tag{SC1.5}
+\]">\[
+F_{\rm per}^{(j)}(s)=
+\sum_{k=\lfloor q\rfloor-2}^{\lceil q\rceil+2}F_0^{(j)}(s-k).
+\tag{SC1.5}
+\]</span>
+<p>Every nonzero summand has <span class="math" data-tex="\(k\in[s-1,s]\)">\(k\in[s-1,s]\)</span>, which is contained in the displayed finite range. Coordinate products give the same procedure for compact spatial charts. All floors and ceilings are applied to rationals.</p>
+<p>For any explicitly supplied smooth, divergence-free periodic velocity <span class="math" data-tex="\(U\)">\(U\)</span> vanishing initially, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_\nu[U]=U_t+(U\cdot\nabla)U-\nu\Delta U.
+\tag{SC1.6}
+\]">\[
+\mathcal R_\nu[U]=U_t+(U\cdot\nabla)U-\nu\Delta U.
+\tag{SC1.6}
+\]</span>
+<p>Then <span class="math" data-tex="\((U,0)\)">\((U,0)\)</span> satisfies SC0.2 by substitution. To prove uniqueness, let <span class="math" data-tex="\((v,p)\)">\((v,p)\)</span> be another classical solution with the same force and datum and put <span class="math" data-tex="\(w=v-U\)">\(w=v-U\)</span>. The exact difference equation is</p>
+<span class="math math-display" data-tex="\[
+w_t+(v\cdot\nabla)w+(w\cdot\nabla)U-\nu\Delta w+\nabla p=0.
+\tag{SC1.7}
+\]">\[
+w_t+(v\cdot\nabla)w+(w\cdot\nabla)U-\nu\Delta w+\nabla p=0.
+\tag{SC1.7}
+\]</span>
+<p>Periodicity and zero divergence remove the integrated transport and pressure terms. Therefore</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac d{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+=-\int_{\mathbb T^3}w\cdot (w\cdot\nabla)U
+\le\|\nabla U\|_{\mathrm{op},\infty}\|w\|_2^2.
+\tag{SC1.8}
+\]">\[
+\frac12\frac d{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+=-\int_{\mathbb T^3}w\cdot (w\cdot\nabla)U
+\le\|\nabla U\|_{\mathrm{op},\infty}\|w\|_2^2.
+\tag{SC1.8}
+\]</span>
+<p>On <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> the coefficient is finite. Multiplication by <span class="math" data-tex="\(\exp(-2\int_0^t\|\nabla U\|_{\mathrm{op},\infty})\)">\(\exp(-2\int_0^t\|\nabla U\|_{\mathrm{op},\infty})\)</span> proves <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. The equation then makes <span class="math" data-tex="\(\nabla p=0\)">\(\nabla p=0\)</span>, and the imposed mean gives <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. This proves uniqueness for every finite <span class="math" data-tex="\(T\)">\(T\)</span>, hence on the whole half-line. Smooth periodic velocities are bounded and Lipschitz on each such cylinder, so their material ODEs have unique solutions on it and continue through every finite time. Finally</p>
+<span class="math math-display" data-tex="\[
+\int\mathcal R_\nu[U]=\frac d{dt}\int U
+\tag{SC1.9}
+\]">\[
+\int\mathcal R_\nu[U]=\frac d{dt}\int U
+\tag{SC1.9}
+\]</span>
+<p>because <span class="math" data-tex="\((U\cdot\nabla)U_i=\sum_j\partial_j(U_jU_i)\)">\((U\cdot\nabla)U_i=\sum_j\partial_j(U_jU_i)\)</span>. Thus zero spatial mean of <span class="math" data-tex="\(U\)">\(U\)</span> gives zero mean of its force. This argument proves the needed comparison directly; it does not invoke a global theorem for arbitrary forcing.</p>
+<h2 id="sc2-the-complete-finite-recorder-and-its-inverse">SC2. The complete finite recorder and its inverse</h2>
+<p>The original machine has a tape on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, finite alphabet <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, a blank symbol, one head, and moves <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>. The word occupies cells <span class="math" data-tex="\(0,\ldots,r-1\)">\(0,\ldots,r-1\)</span>; the head starts at zero. Redirect missing instructions and halting states to a single halting state <span class="math" data-tex="\(q_{\rm H}\)">\(q_{\rm H}\)</span> with no outgoing rules, completing the table elsewhere. Add <span class="math" data-tex="\(q_{\rm start}\)">\(q_{\rm start}\)</span>: it preserves the read symbol and head and enters the old initial state. This finite transformation preserves halting, including immediate halting, while ensuring that the initialized state is nonterminal.</p>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be the augmented state set. For each
+<span class="math" data-tex="\(\tau=(q,a)\in\mathcal T=(Q\setminus\{q_{\rm H}\})\times\Gamma\)">\(\tau=(q,a)\in\mathcal T=(Q\setminus\{q_{\rm H}\})\times\Gamma\)</span>, write the instruction as <span class="math" data-tex="\((q_\tau^+,a_\tau^+,d_\tau)\)">\((q_\tau^+,a_\tau^+,d_\tau)\)</span>. Use exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal L=\{\bot,E\}\sqcup\mathcal T,
+\qquad \Sigma=\Gamma\times\{0,1\}\times\mathcal L.
+\tag{SC2.1}
+\]">\[
+\mathcal L=\{\bot,E\}\sqcup\mathcal T,
+\qquad \Sigma=\Gamma\times\{0,1\}\times\mathcal L.
+\tag{SC2.1}
+\]</span>
+<p>The three tracks hold data, a marker, and history. States are <span class="math" data-tex="\(R_q,C_q,L_q\)">\(R_q,C_q,L_q\)</span> for <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span> and <span class="math" data-tex="\(A_\tau,F_\tau\)">\(A_\tau,F_\tau\)</span> for <span class="math" data-tex="\(\tau\in\mathcal T\)">\(\tau\in\mathcal T\)</span>, distinguished by type and subscript. Only <span class="math" data-tex="\(R_{q_{\rm H}}\)">\(R_{q_{\rm H}}\)</span> is the terminal state reached by an initialized computation. Initially the control is <span class="math" data-tex="\(R_{q_{\rm start}}\)">\(R_{q_{\rm start}}\)</span>, the data and head are the original input, all markers are zero, and history is <span class="math" data-tex="\(E\)">\(E\)</span> at cell 2 and <span class="math" data-tex="\(\bot\)">\(\bot\)</span> elsewhere. The full blank is <span class="math" data-tex="\((\mathrm{blank},0,\bot)\)">\((\mathrm{blank},0,\bot)\)</span>.</p>
+<p>The entire partial table, expanded over all displayed symbol choices, is</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{lll}
+(R_q,(a,0,\ell))&amp;\mapsto(A_\tau,(a_\tau^+,0,\ell),d_\tau)
+&amp;q\ne q_{\rm H},\ \tau=(q,a),\ \ell\ne E,\\
+(A_\tau,(a,0,\ell))&amp;\mapsto(F_\tau,(a,1,\ell),1)&amp;\ell\ne E,\\
+(F_\tau,(a,0,\ell))&amp;\mapsto(F_\tau,(a,0,\ell),1)&amp;\ell\ne E,\\
+(F_\tau,(a,0,E))&amp;\mapsto(C_{q_\tau^+},(a,0,\tau),1),&amp;\\
+(C_q,(a,0,\bot))&amp;\mapsto(L_q,(a,0,E),-1),&amp;\\
+(L_q,(a,0,\ell))&amp;\mapsto(L_q,(a,0,\ell),-1)&amp;\ell\ne E,\\
+(L_q,(a,1,\ell))&amp;\mapsto(R_q,(a,0,\ell),0)&amp;\ell\ne E.
+\end{array}
+\tag{SC2.2}
+\]">\[
+\begin{array}{lll}
+(R_q,(a,0,\ell))&amp;\mapsto(A_\tau,(a_\tau^+,0,\ell),d_\tau)
+&amp;q\ne q_{\rm H},\ \tau=(q,a),\ \ell\ne E,\\
+(A_\tau,(a,0,\ell))&amp;\mapsto(F_\tau,(a,1,\ell),1)&amp;\ell\ne E,\\
+(F_\tau,(a,0,\ell))&amp;\mapsto(F_\tau,(a,0,\ell),1)&amp;\ell\ne E,\\
+(F_\tau,(a,0,E))&amp;\mapsto(C_{q_\tau^+},(a,0,\tau),1),&amp;\\
+(C_q,(a,0,\bot))&amp;\mapsto(L_q,(a,0,E),-1),&amp;\\
+(L_q,(a,0,\ell))&amp;\mapsto(L_q,(a,0,\ell),-1)&amp;\ell\ne E,\\
+(L_q,(a,1,\ell))&amp;\mapsto(R_q,(a,0,\ell),0)&amp;\ell\ne E.
+\end{array}
+\tag{SC2.2}
+\]</span>
+<p>At the ready checkpoint after <span class="math" data-tex="\(n\)">\(n\)</span> augmented steps, the data and head are those of the original computation, <span class="math" data-tex="\(|h|\le n\)">\(|h|\le n\)</span>, all markers vanish, history cells <span class="math" data-tex="\(2,\ldots,n+1\)">\(2,\ldots,n+1\)</span> contain the successive instruction tags, cell <span class="math" data-tex="\(n+2\)">\(n+2\)</span> contains <span class="math" data-tex="\(E\)">\(E\)</span>, and other history cells contain <span class="math" data-tex="\(\bot\)">\(\bot\)</span>. This is true for <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. Row 1 executes the next data instruction and moves to <span class="math" data-tex="\(h&#x27;=h+d_\tau\)">\(h&#x27;=h+d_\tau\)</span>, where <span class="math" data-tex="\(h&#x27;\le n+1&lt;n+2\)">\(h&#x27;\le n+1&lt;n+2\)</span>. Row 2 marks <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> and starts a rightward scan. Rows 3–4 reach the finite frontier <span class="math" data-tex="\(n+2\)">\(n+2\)</span>, replace <span class="math" data-tex="\(E\)">\(E\)</span> by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and move right. Row 5 writes <span class="math" data-tex="\(E\)">\(E\)</span> at <span class="math" data-tex="\(n+3\)">\(n+3\)</span> and turns left. Rows 6–7 find the unique mark, erase it and enter the new ready state at <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span>. None of the forbidden symbols is read in these steps. The exact number of table transitions is</p>
+<span class="math math-display" data-tex="\[
+1+1+(n+1-h&#x27;)+1+1+(n+2-h&#x27;)+1
+=4+2(n+2-h&#x27;).
+\tag{SC2.3}
+\]">\[
+1+1+(n+1-h&#x27;)+1+1+(n+2-h&#x27;)+1
+=4+2(n+2-h&#x27;).
+\tag{SC2.3}
+\]</span>
+<p>The invariant therefore holds at the next checkpoint. Halting of the augmented machine is exactly arrival at <span class="math" data-tex="\(R_{q_{\rm H}}\)">\(R_{q_{\rm H}}\)</span>; otherwise this finite cycle repeats indefinitely.</p>
+<p>The map on all configurations in the table's domain is injective, not only on the initialized run. A destination <span class="math" data-tex="\(A_\tau\)">\(A_\tau\)</span> identifies the old <span class="math" data-tex="\((q,a)\)">\((q,a)\)</span>; the written history letter recovers the remaining old symbol. Into <span class="math" data-tex="\(F_\tau\)">\(F_\tau\)</span>, both incoming moves are right, and the written marker distinguishes the arrival from <span class="math" data-tex="\(A_\tau\)">\(A_\tau\)</span> from its scan loop. Into <span class="math" data-tex="\(C_q\)">\(C_q\)</span>, the right move and written tag identify <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, while the written data letter recovers the old data letter. Into <span class="math" data-tex="\(L_q\)">\(L_q\)</span>, both moves are left, and the written history <span class="math" data-tex="\(E\)">\(E\)</span> distinguishes arrival from <span class="math" data-tex="\(C_q\)">\(C_q\)</span> from the loop. Into <span class="math" data-tex="\(R_q\)">\(R_q\)</span>, only row 7 arrives and its displacement is zero. Thus the destination state fixes the incoming displacement, and that state together with the full written symbol identifies a unique expanded row and its old read symbol. The predecessor head is the new head minus this displacement. Restore the old symbol at that cell and retain every other tape cell. This gives the exact inverse on the image.</p>
+<h2 id="sc3-original-radix-coordinates-and-all-branch-maps">SC3. Original radix coordinates and all branch maps</h2>
+<p>Let <span class="math" data-tex="\(K=|\Sigma|\)">\(K=|\Sigma|\)</span>, <span class="math" data-tex="\(B=2K+2\)">\(B=2K+2\)</span>, and assign distinct odd digits
+<span class="math" data-tex="\(c(a)\in\{1,3,\ldots,2K-1\}\)">\(c(a)\in\{1,3,\ldots,2K-1\}\)</span>. Keep</p>
+<span class="math math-display" data-tex="\[
+C(a_1,a_2,\ldots)=\sum_{k\ge1}c(a_k)B^{-k},
+\quad I_a=\frac{c(a)+[0,1]}B,
+\quad I_{a,b}=\frac{c(a)+I_b}B.
+\tag{SC3.1}
+\]">\[
+C(a_1,a_2,\ldots)=\sum_{k\ge1}c(a_k)B^{-k},
+\quad I_a=\frac{c(a)+[0,1]}B,
+\quad I_{a,b}=\frac{c(a)+I_b}B.
+\tag{SC3.1}
+\]</span>
+<p>The code lies in <span class="math" data-tex="\([1/(B-1),(2K-1)/(B-1)]\subset(0,1)\)">\([1/(B-1),(2K-1)/(B-1)]\subset(0,1)\)</span>. Distinct first digits have gap at least <span class="math" data-tex="\(1/B\)">\(1/B\)</span> between their closed intervals. For a fixed first digit, distinct second digits have gap at least <span class="math" data-tex="\(1/B^2\)">\(1/B^2\)</span>; different first digits retain their first-level gap. A code lies in the interior of its own first-symbol interval because its tail lies strictly between zero and one. Recovering that digit and multiplying by <span class="math" data-tex="\(B\)">\(B\)</span> after subtracting it recovers the tail, proving uniqueness of the sequence code.</p>
+<p>For state <span class="math" data-tex="\(i\)">\(i\)</span>, head <span class="math" data-tex="\(h\)">\(h\)</span>, and tape <span class="math" data-tex="\((a_k)\)">\((a_k)\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+x=C(a_{h-1},a_{h-2},\ldots),\qquad
+y=C(a_h,a_{h+1},\ldots).
+\tag{SC3.2}
+\]">\[
+x=C(a_{h-1},a_{h-2},\ldots),\qquad
+y=C(a_h,a_{h+1},\ldots).
+\tag{SC3.2}
+\]</span>
+<p>The initialized codes <span class="math" data-tex="\(x_0,y_0\)">\(x_0,y_0\)</span> are rational: the finite nonblank prefixes are followed by constant-symbol geometric series. Let <span class="math" data-tex="\(m\)">\(m\)</span> be the number of compiled states. Count each right or stationary rule once and each left rule <span class="math" data-tex="\(K\)">\(K\)</span> times, obtaining <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\lambda=\frac1{100(m+N+1)},\quad a_* =1/4-\lambda x_0,
+\quad \Psi_i(x,y)=(a_*+\lambda x,b_i+\lambda y),
+\tag{SC3.3}
+\]">\[
+\lambda=\frac1{100(m+N+1)},\quad a_* =1/4-\lambda x_0,
+\quad \Psi_i(x,y)=(a_*+\lambda x,b_i+\lambda y),
+\tag{SC3.3}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+b_i=\begin{cases}
+1/4-\lambda y_0,&amp;i=R_{q_{\rm start}},\\
+1/16,&amp;i=R_{q_{\rm H}},\\
+1/3+\ell/[12(m+1)],&amp;i\text{ is the }\ell\text{th other state}.
+\end{cases}
+\tag{SC3.4}
+\]">\[
+b_i=\begin{cases}
+1/4-\lambda y_0,&amp;i=R_{q_{\rm start}},\\
+1/16,&amp;i=R_{q_{\rm H}},\\
+1/3+\ell/[12(m+1)],&amp;i\text{ is the }\ell\text{th other state}.
+\end{cases}
+\tag{SC3.4}
+\]</span>
+<p>The separation of the remaining state heights exceeds <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; the initial and terminal squares lie in disjoint lower bands. All nonterminal squares satisfy
+<span class="math" data-tex="\(1/4-\lambda\le Y&lt;1/2\)">\(1/4-\lambda\le Y&lt;1/2\)</span>, and the terminal square satisfies
+<span class="math" data-tex="\(1/16\le Y\le1/16+\lambda\)">\(1/16\le Y\le1/16+\lambda\)</span>. The initial code maps exactly to <span class="math" data-tex="\((1/4,1/4)\)">\((1/4,1/4)\)</span>.</p>
+<p>For an expanded rule <span class="math" data-tex="\((i,a)\mapsto(j,b,d)\)">\((i,a)\mapsto(j,b,d)\)</span>, retain all three cases:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c|c}
+d&amp;\text{domain}&amp;(x&#x27;,y&#x27;)&amp;\text{image}\\\hline
+1 &amp;[0,1]\times I_a&amp;((c(b)+x)/B,\ By-c(a))&amp;I_b\times[0,1]\\
+0 &amp;[0,1]\times I_a&amp;(x,\ y+(c(b)-c(a))/B)&amp;[0,1]\times I_b\\
+-1&amp;I_e\times I_a&amp;(Bx-c(e),\ c(e)/B+(c(b)+By-c(a))/B^2)
+&amp;[0,1]\times I_{e,b}.
+\end{array}
+\tag{SC3.5}
+\]">\[
+\begin{array}{c|c|c|c}
+d&amp;\text{domain}&amp;(x&#x27;,y&#x27;)&amp;\text{image}\\\hline
+1 &amp;[0,1]\times I_a&amp;((c(b)+x)/B,\ By-c(a))&amp;I_b\times[0,1]\\
+0 &amp;[0,1]\times I_a&amp;(x,\ y+(c(b)-c(a))/B)&amp;[0,1]\times I_b\\
+-1&amp;I_e\times I_a&amp;(Bx-c(e),\ c(e)/B+(c(b)+By-c(a))/B^2)
+&amp;[0,1]\times I_{e,b}.
+\end{array}
+\tag{SC3.5}
+\]</span>
+<p>The left case is expanded over every <span class="math" data-tex="\(e\in\Sigma\)">\(e\in\Sigma\)</span>. A right move prefixes <span class="math" data-tex="\(b\)">\(b\)</span> to the left stack and removes <span class="math" data-tex="\(a\)">\(a\)</span> from the right one. A left move removes <span class="math" data-tex="\(e\)">\(e\)</span> from the left stack and prefixes <span class="math" data-tex="\(e,b\)">\(e,b\)</span> to the old right tail. A stationary move replaces only the first right digit. These operations prove every formula in SC3.5 directly from SC3.1; the linear parts are respectively <span class="math" data-tex="\(\operatorname{diag}(B^{-1},B)\)">\(\operatorname{diag}(B^{-1},B)\)</span>, identity, and <span class="math" data-tex="\(\operatorname{diag}(B,B^{-1})\)">\(\operatorname{diag}(B,B^{-1})\)</span>. Their determinants are one.</p>
+<p>Apply <span class="math" data-tex="\(\Psi_i\)">\(\Psi_i\)</span> to the domain and <span class="math" data-tex="\(\Psi_j\)">\(\Psi_j\)</span> to its image. Enumerate the resulting actual rectangles as <span class="math" data-tex="\(D_r,H_r\)">\(D_r,H_r\)</span>, with centers <span class="math" data-tex="\(\mathbf d_r,\mathbf h_r\)">\(\mathbf d_r,\mathbf h_r\)</span>. The resulting map is exactly</p>
+<span class="math math-display" data-tex="\[
+F_r(\mathbf w)=\mathbf h_r+A_r(\mathbf w-\mathbf d_r),
+\quad A_r=\operatorname{diag}(\mu_r,\mu_r^{-1}),
+\quad\mu_r=B^{-d}.
+\tag{SC3.6}
+\]">\[
+F_r(\mathbf w)=\mathbf h_r+A_r(\mathbf w-\mathbf d_r),
+\quad A_r=\operatorname{diag}(\mu_r,\mu_r^{-1}),
+\quad\mu_r=B^{-d}.
+\tag{SC3.6}
+\]</span>
+<p>Each side has length at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The source rectangles are pairwise disjoint: states separate squares, deterministic read symbols separate digit intervals, and the left branches have separated <span class="math" data-tex="\(I_e\)">\(I_e\)</span>. Target states determine the common incoming displacement by SC2. Distinct incoming rules have different full written symbols. For displacements 0 and 1, these separate their <span class="math" data-tex="\(I_b\)">\(I_b\)</span> factors; for displacement <span class="math" data-tex="\(-1\)">\(-1\)</span>, the ordered pairs <span class="math" data-tex="\((e,b)\)">\((e,b)\)</span> separate <span class="math" data-tex="\(I_{e,b}\)">\(I_{e,b}\)</span>. Thus the targets too are pairwise disjoint. Source and target families may overlap each other; the following construction treats that possibility explicitly.</p>
+<h2 id="sc4-full-hamiltonian-motions-and-the-collision-check">SC4. Full Hamiltonian motions and the collision check</h2>
+<p>For a slot <span class="math" data-tex="\([s_0,s_1]\)">\([s_0,s_1]\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\theta(s)=\beta\!\left(\frac{3(s-s_0)}{s_1-s_0}-1\right).
+\tag{SC4.1}
+\]">\[
+\theta(s)=\beta\!\left(\frac{3(s-s_0)}{s_1-s_0}-1\right).
+\tag{SC4.1}
+\]</span>
+<p>It is constant on neighborhoods of both ends. Let <span class="math" data-tex="\(J\)">\(J\)</span> be the rational swept bounding rectangle of a desired motion, disjoint from all other currently tracked rectangles and from the chart boundary. Let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> be one third of its minimum sup-norm distance to these sets. For each coordinate interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\beta\!\left(\frac{u-a+\delta}{\delta/2}\right)
+\beta\!\left(\frac{b+\delta-u}{\delta/2}\right).
+\tag{SC4.2}
+\]">\[
+\beta\!\left(\frac{u-a+\delta}{\delta/2}\right)
+\beta\!\left(\frac{b+\delta-u}{\delta/2}\right).
+\tag{SC4.2}
+\]</span>
+<p>Their product <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is one on the <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> coordinate enlargement of <span class="math" data-tex="\(J\)">\(J\)</span>, zero outside its <span class="math" data-tex="\(\delta\)">\(\delta\)</span> enlargement, and zero on neighborhoods of every held rectangle. All clearances are positive rationals. For a potential <span class="math" data-tex="\(G\)">\(G\)</span>, the pulse is</p>
+<span class="math math-display" data-tex="\[
+V(s,X,Y)=\theta&#x27;(s)
+\big(\partial_Y(\chi G),-\partial_X(\chi G)\big).
+\tag{SC4.3}
+\]">\[
+V(s,X,Y)=\theta&#x27;(s)
+\big(\partial_Y(\chi G),-\partial_X(\chi G)\big).
+\tag{SC4.3}
+\]</span>
+<p>Its divergence is zero by equality of mixed derivatives. Its two component integrals vanish because each is a derivative of a compactly supported function, then periodically extended. It therefore has zero planar mean.</p>
+<p>For translation by <span class="math" data-tex="\(\mathbf u=(u_1,u_2)\)">\(\mathbf u=(u_1,u_2)\)</span>, choose <span class="math" data-tex="\(G=u_1Y-u_2X\)">\(G=u_1Y-u_2X\)</span>. On the active plateau the exact path is <span class="math" data-tex="\(\mathbf w+\theta(s)\mathbf u\)">\(\mathbf w+\theta(s)\mathbf u\)</span>. For reciprocal scaling about <span class="math" data-tex="\(\boldsymbol\pi\)">\(\boldsymbol\pi\)</span>, choose</p>
+<span class="math math-display" data-tex="\[
+G=(\log\mu)(X-\pi_1)(Y-\pi_2),\quad
+\mathbf w(s)=\boldsymbol\pi+
+\operatorname{diag}(\mu^{\theta(s)},\mu^{-\theta(s)})(\mathbf w-\boldsymbol\pi).
+\tag{SC4.4}
+\]">\[
+G=(\log\mu)(X-\pi_1)(Y-\pi_2),\quad
+\mathbf w(s)=\boldsymbol\pi+
+\operatorname{diag}(\mu^{\theta(s)},\mu^{-\theta(s)})(\mathbf w-\boldsymbol\pi).
+\tag{SC4.4}
+\]</span>
+<p>Differentiation proves both ODE identities, with the signs in SC4.3 unchanged. The paths remain in the one-plateau by the definition of <span class="math" data-tex="\(J\)">\(J\)</span>. ODE uniqueness identifies them with the actual pulse flow. Held rectangles remain fixed because the pulse vanishes near them.</p>
+<p>Use the original parking centers</p>
+<span class="math math-display" data-tex="\[
+\boldsymbol\pi_r=(1/2+r/[4(N+1)],\ 3/4),\qquad 1\le r\le N,
+\tag{SC4.5}
+\]">\[
+\boldsymbol\pi_r=(1/2+r/[4(N+1)],\ 3/4),\qquad 1\le r\le N,
+\tag{SC4.5}
+\]</span>
+<p>and <span class="math" data-tex="\(5N\)">\(5N\)</span> equal phase slots. First, in decreasing source horizontal-center order, move each source right to its parking column and then vertically to its center. Second, scale each parked rectangle by <span class="math" data-tex="\(A_r\)">\(A_r\)</span>. Third, in increasing target horizontal-center order, move each parked rectangle vertically to its target height and then left to its target. Break equal centers by branch index. This is exactly <span class="math" data-tex="\(2N+N+2N\)">\(2N+N+2N\)</span> motions.</p>
+<p>Here is the full clearance argument, including unequal rectangles. For a horizontal extraction, any remaining source with overlapping vertical projection has a disjoint horizontal interval. Its center is no larger than the active center; its horizontal interval therefore lies entirely to the left. Equal horizontal centers can occur only with disjoint vertical intervals. Thus no unextracted source intersects the swept box. Already parked boxes lie near <span class="math" data-tex="\(Y=3/4\)">\(Y=3/4\)</span>, while every source lies below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. A vertical extraction stays in one parking column. Columns are separated by <span class="math" data-tex="\(1/[4(N+1)]&gt;\lambda\)">\(1/[4(N+1)]&gt;\lambda\)</span>, and all state squares lie near <span class="math" data-tex="\(X=1/4\)">\(X=1/4\)</span>, to the left of them. It therefore avoids both remaining sources and parked boxes.</p>
+<p>During scaling, each coordinate side length varies monotonically between its initial and final lengths, each at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The swept box lies in <span class="math" data-tex="\(\boldsymbol\pi_r+[-\lambda/2,\lambda/2]^2\)">\(\boldsymbol\pi_r+[-\lambda/2,\lambda/2]^2\)</span>; it avoids all other columns. In a vertical insertion the same column clearance applies, and all already inserted targets are near <span class="math" data-tex="\(X=1/4\)">\(X=1/4\)</span>. For the final leftward move, remaining parked boxes are above all targets. An already inserted target whose vertical interval meets the current target has smaller horizontal center, and its disjoint horizontal interval lies entirely to the left of the current target. The active swept box stops at that target and therefore does not hit the earlier one. These arguments apply to closed rectangles and give strictly positive distances.</p>
+<p>All swept boxes are contained in the open unit square; their endpoints are rational, including the bound for reciprocal scaling. Thus SC4.2 applies at every slot. Induction through the ordered motions proves that the period map sends every full <span class="math" data-tex="\(D_r\)">\(D_r\)</span> by exactly <span class="math" data-tex="\(F_r\)">\(F_r\)</span>. All sources have left the state region before target insertion starts, so source–target overlaps create no simultaneous obstacles.</p>
+<p>This equality holds on an effective positive neighborhood of each full rectangle. Minimize, over all slots and all tracked rectangles, the active path's clearance from the complement of its one-plateau and the held path's clearance from the pulse support, obtaining a positive computable lower bound <span class="math" data-tex="\(m_0\)">\(m_0\)</span>. Let <span class="math" data-tex="\(M_0\ge1\)">\(M_0\ge1\)</span> bound every partial affine product along every branch, including intermediate reciprocal scalings. Such a bound is finite and computable: translations have linear part identity and all scaling parameters lie between their endpoint values. Choose rational</p>
+<span class="math math-display" data-tex="\[
+0&lt;\rho&lt;m_0/(2M_0).
+\tag{SC4.6}
+\]">\[
+0&lt;\rho&lt;m_0/(2M_0).
+\tag{SC4.6}
+\]</span>
+<p>For an initial perturbation of norm less than <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, induction through the slots gives displacement from the corresponding tracked path at most <span class="math" data-tex="\(M_0\rho&lt;m_0/2\)">\(M_0\rho&lt;m_0/2\)</span>. It stays in the same active or held region and follows the same affine formula. This proves neighborhood action even at the rectangle boundaries.</p>
+<h2 id="sc5-exact-observations-global-derivative-bounds-and-flow-estimates">SC5. Exact observations, global derivative bounds and flow estimates</h2>
+<p>Join the pulses and repeat them with phase period one. Since every pulse vanishes near its slot endpoints, all derivatives match at joints and at integers. Periodic extension of the compact chart potentials gives a smooth Hamiltonian field <span class="math" data-tex="\(V(s,X,Y)\)">\(V(s,X,Y)\)</span>, compactly supported in the open square in its planar variables, with zero divergence and mean. All its derivatives have effective uniform bounds. Indeed there are finitely many slots and rational cutoffs; SC1 bounds every cutoff derivative, while the only additional constants, such as <span class="math" data-tex="\(\log B\)">\(\log B\)</span>, are computable. No branch of the chosen execution is needed to construct these bounds or evaluate the field.</p>
+<p>At integer phase times, SC3.5 and induction give the next compiled configuration from the initialized point <span class="math" data-tex="\((1/4,1/4)\)">\((1/4,1/4)\)</span>. The sequence code is inside the appropriate branch rectangle, including the left-symbol subdivision. Ready checkpoints recover the augmented machine. The history block begins at absolute cell 2, so the recorded tags and frontier also recover the absolute head from the two head-relative stacks when that information is required.</p>
+<p>All tracked paths obey the original bounds</p>
+<span class="math math-display" data-tex="\[
+1/4-\lambda\le X\le3/4+\lambda/2,
+\qquad 1/16\le Y\le3/4+\lambda/2,
+\qquad (X,Y)\in J_*=[1/8,7/8]\times[1/32,7/8].
+\tag{SC5.1}
+\]">\[
+1/4-\lambda\le X\le3/4+\lambda/2,
+\qquad 1/16\le Y\le3/4+\lambda/2,
+\qquad (X,Y)\in J_*=[1/8,7/8]\times[1/32,7/8].
+\tag{SC5.1}
+\]</span>
+<p>For a branch with nonterminal endpoints, the stronger lower bound is <span class="math" data-tex="\(Y\ge1/4-\lambda&gt;3/16\)">\(Y\ge1/4-\lambda&gt;3/16\)</span>. Horizontal moves preserve height; vertical moves interpolate nonterminal heights and the parking height; the scaling occurs at height <span class="math" data-tex="\(3/4\)">\(3/4\)</span> with sides at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. This proves the lower bound throughout the whole period, including intermediate and held times. A nonhalting run therefore never reaches <span class="math" data-tex="\(H=\{1/32&lt;Y&lt;1/8\}\)">\(H=\{1/32&lt;Y&lt;1/8\}\)</span>. If the run halts, an integer-phase point enters the terminal square, whose distance from both boundaries of <span class="math" data-tex="\(H\)">\(H\)</span> is at least <span class="math" data-tex="\(1/32\)">\(1/32\)</span>, because <span class="math" data-tex="\(\lambda&lt;1/32\)">\(\lambda&lt;1/32\)</span>. This proves the event equivalence at all phase times. The field is globally defined after a halt; no absorbing rule is required for an event that asks whether entry occurs at least once.</p>
+<p>Choose an effective <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> bounding both <span class="math" data-tex="\(\|D_{X,Y}V\|\)">\(\|D_{X,Y}V\|\)</span> and <span class="math" data-tex="\(\|D^2_{X,Y}V\|\)">\(\|D^2_{X,Y}V\|\)</span>. For the transition map over any phase interval of length <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>, its first variational equation and the initial identity matrix give</p>
+<span class="math math-display" data-tex="\[
+\|D\Phi_s\|\le e^{Ls}.
+\tag{SC5.2}
+\]">\[
+\|D\Phi_s\|\le e^{Ls}.
+\tag{SC5.2}
+\]</span>
+<p>The second derivative initially vanishes. Its inhomogeneous term is <span class="math" data-tex="\(D^2V[D\Phi,D\Phi]\)">\(D^2V[D\Phi,D\Phi]\)</span>, so variation of constants gives</p>
+<span class="math math-display" data-tex="\[
+\|D^2\Phi_s\|
+\le\int_0^s e^{L(s-r)}L e^{2Lr}\,dr
+=e^{2Ls}-e^{Ls}.
+\tag{SC5.3}
+\]">\[
+\|D^2\Phi_s\|
+\le\int_0^s e^{L(s-r)}L e^{2Lr}\,dr
+=e^{2Ls}-e^{Ls}.
+\tag{SC5.3}
+\]</span>
+<p>The inverse transition from initial phase <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is the length-<span class="math" data-tex="\(s\)">\(s\)</span> flow of <span class="math" data-tex="\(-V(s_0+s-r,\cdot)\)">\(-V(s_0+s-r,\cdot)\)</span>, <span class="math" data-tex="\(0\le r\le s\)">\(0\le r\le s\)</span>. It has the same first and second spatial derivative bounds, so SC5.2–SC5.3 apply to the inverse as well. For two lifted trajectories the difference satisfies the Lipschitz integral inequality, hence the distance is at most <span class="math" data-tex="\(e^{Ls}\)">\(e^{Ls}\)</span> times the initial distance. In particular an initial perturbation less than <span class="math" data-tex="\(\eta e^{-Ls}\)">\(\eta e^{-Ls}\)</span> stays within <span class="math" data-tex="\(\eta\)">\(\eta\)</span> up to phase <span class="math" data-tex="\(s\)">\(s\)</span>. This is a finite-time estimate; its radius decreases with the length of computation.</p>
+<h2 id="sc6-the-original-mean-zero-spatial-clock-and-stationary-force">SC6. The original mean-zero spatial clock and stationary force</h2>
+<p>Choose an effective cutoff <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span>, one near the exact <span class="math" data-tex="\(J_*\)">\(J_*\)</span> of SC5.1 and compactly supported in the open square. Periodize its compact products. Retain the source's field</p>
+<span class="math math-display" data-tex="\[
+g(X,Y)=\partial_X(X\chi_*(X,Y)),\qquad
+W(X,Y,Z)=(V_1(Z,X,Y),V_2(Z,X,Y),g(X,Y)).
+\tag{SC6.1}
+\]">\[
+g(X,Y)=\partial_X(X\chi_*(X,Y)),\qquad
+W(X,Y,Z)=(V_1(Z,X,Y),V_2(Z,X,Y),g(X,Y)).
+\tag{SC6.1}
+\]</span>
+<p>This formula uses the chart coordinate <span class="math" data-tex="\(X\)">\(X\)</span> only inside its compact product; it therefore defines a smooth periodic function. The planar divergence of <span class="math" data-tex="\(V\)">\(V\)</span> is zero and <span class="math" data-tex="\(\partial_Zg=0\)">\(\partial_Zg=0\)</span>, so <span class="math" data-tex="\(\operatorname{div}W=0\)">\(\operatorname{div}W=0\)</span>. All component integrals vanish by the derivative representations. On a neighborhood of <span class="math" data-tex="\(J_*\)">\(J_*\)</span>, <span class="math" data-tex="\(g=1\)">\(g=1\)</span>. Its mean-zero compensation outside that region does not alter the tracked path.</p>
+<p>For each computational phase interval, the path</p>
+<span class="math math-display" data-tex="\[
+s\longmapsto\big(\Phi_s^V(1/4,1/4),\ s\bmod1\big)
+\tag{SC6.2}
+\]">\[
+s\longmapsto\big(\Phi_s^V(1/4,1/4),\ s\bmod1\big)
+\tag{SC6.2}
+\]</span>
+<p>solves the <span class="math" data-tex="\(W\)">\(W\)</span> equation as long as the corresponding compiled segment is being followed: SC5.1 keeps the planar component where <span class="math" data-tex="\(g=1\)">\(g=1\)</span>. The periodic smooth field has a global flow; boundedness and the uniform spatial Lipschitz bound prevent finite-time failure of its ODE. Uniqueness identifies SC6.2 with that flow, period by period. For a nonhalting run this holds at every finite phase. For a halting run it holds through terminal entry, which suffices. Thus its event at <span class="math" data-tex="\(P\)">\(P\)</span> is exactly the machine's halting event.</p>
+<p>Now use the fixed ramp and full residual</p>
+<span class="math math-display" data-tex="\[
+\alpha(t)=\beta(2t-1),\quad U(t,x)=\alpha(t)W(x),
+\tag{SC6.3}
+\]">\[
+\alpha(t)=\beta(2t-1),\quad U(t,x)=\alpha(t)W(x),
+\tag{SC6.3}
+\]</span>
+<span class="math math-display" data-tex="\[
+f(t,x)=\alpha&#x27;(t)W(x)+\alpha(t)^2(W\cdot\nabla)W(x)
+-\nu\alpha(t)\Delta W(x),\qquad p=0.
+\tag{SC6.4}
+\]">\[
+f(t,x)=\alpha&#x27;(t)W(x)+\alpha(t)^2(W\cdot\nabla)W(x)
+-\nu\alpha(t)\Delta W(x),\qquad p=0.
+\tag{SC6.4}
+\]</span>
+<p>The ramp vanishes for <span class="math" data-tex="\(t\le1/2\)">\(t\le1/2\)</span> and is one for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>. Thus the initial data are zero, every mixed force derivative is bounded, and the force is exactly stationary after one. Equation SC1.6 proves the PDE with its original <span class="math" data-tex="\(\nu\)">\(\nu\)</span>; SC1.9 proves zero mean; SC1.8 proves uniqueness. Its energy satisfies</p>
+<span class="math math-display" data-tex="\[
+\frac12\|U(t)\|_2^2=\frac{\alpha(t)^2}{2}\|W\|_2^2
+\le\frac12\|W\|_2^2.
+\tag{SC6.5}
+\]">\[
+\frac12\|U(t)\|_2^2=\frac{\alpha(t)^2}{2}\|W\|_2^2
+\le\frac12\|W\|_2^2.
+\tag{SC6.5}
+\]</span>
+<p>The material curve is the autonomous <span class="math" data-tex="\(W\)">\(W\)</span> curve at</p>
+<span class="math math-display" data-tex="\[
+s(t)=\int_0^t\alpha(r)\,dr,
+\quad s(1)=\frac12\int_0^1\beta(u)\,du=\frac14,
+\quad s(t)=t-\frac34\quad(t\ge1).
+\tag{SC6.6}
+\]">\[
+s(t)=\int_0^t\alpha(r)\,dr,
+\quad s(1)=\frac12\int_0^1\beta(u)\,du=\frac14,
+\quad s(t)=t-\frac34\quad(t\ge1).
+\tag{SC6.6}
+\]</span>
+<p>The middle equality uses SC1.3. The clock is continuous, nondecreasing, finite at every finite time and onto <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Consequently the event transfers in both directions, with every positive integer phase <span class="math" data-tex="\(n\)">\(n\)</span> reached at physical time <span class="math" data-tex="\(n+3/4\)">\(n+3/4\)</span>. All transitions, rational coordinates, orders, margins, cutoffs and potentials came from the finite table and word. Evaluation of SC6.4 at late time does not require computing the intervening machine run. This completes the eventually stationary theorem with all its stated assertions.</p>
+<h2 id="sc7-periodic-forcing-effective-projection-and-undecidability">SC7. Periodic forcing, effective projection and undecidability</h2>
+<p>For the periodic alternative retain</p>
+<span class="math math-display" data-tex="\[
+U_{\mathrm{per}}(t,X,Y,Z)=(V_1(t,X,Y),V_2(t,X,Y),0),
+\quad f_{\mathrm{per}}=\partial_tU_{\mathrm{per}}+(U_{\mathrm{per}}\cdot\nabla)U_{\mathrm{per}}-\nu\Delta U_{\mathrm{per}}.
+\tag{SC7.1}
+\]">\[
+U_{\mathrm{per}}(t,X,Y,Z)=(V_1(t,X,Y),V_2(t,X,Y),0),
+\quad f_{\mathrm{per}}=\partial_tU_{\mathrm{per}}+(U_{\mathrm{per}}\cdot\nabla)U_{\mathrm{per}}-\nu\Delta U_{\mathrm{per}}.
+\tag{SC7.1}
+\]</span>
+<p>Because <span class="math" data-tex="\(V\)">\(V\)</span> vanishes near integer phases, the initial velocity is zero. Both fields are smooth, mean zero and period one, with bounded mixed derivatives. The solution is exactly <span class="math" data-tex="\((U_{\mathrm{per}},0)\)">\((U_{\mathrm{per}},0)\)</span>, unique by SC1.8. Its third particle coordinate remains zero and its first two are precisely the planar processor trajectory. SC5 proves the same fixed event. The bounded spatial and temporal periods also give a uniform kinetic-energy bound.</p>
+<p>For either force <span class="math" data-tex="\(F\)">\(F\)</span>, its solenoidal version is <span class="math" data-tex="\(F-\nabla\phi\)">\(F-\nabla\phi\)</span>, where in the basis <span class="math" data-tex="\(e^{2\pi i k\cdot x}\)">\(e^{2\pi i k\cdot x}\)</span></p>
+<span class="math math-display" data-tex="\[
+\widehat\phi(k)=-\frac{i k\cdot\widehat F(k)}{2\pi|k|^2}\ (k\ne0),
+\qquad \widehat\phi(0)=0.
+\tag{SC7.2}
+\]">\[
+\widehat\phi(k)=-\frac{i k\cdot\widehat F(k)}{2\pi|k|^2}\ (k\ne0),
+\qquad \widehat\phi(0)=0.
+\tag{SC7.2}
+\]</span>
+<p>Then <span class="math" data-tex="\(\Delta\phi=\operatorname{div}F\)">\(\Delta\phi=\operatorname{div}F\)</span> and the multiplier for <span class="math" data-tex="\(\nabla\phi\)">\(\nabla\phi\)</span> is <span class="math" data-tex="\(kk^{\mathsf T}/|k|^2\)">\(kk^{\mathsf T}/|k|^2\)</span>, with norm one. For a spatial multi-index <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, set <span class="math" data-tex="\(r=|\mu|\)">\(r=|\mu|\)</span>. Integration by parts <span class="math" data-tex="\(r+5\)">\(r+5\)</span> times in a coordinate with <span class="math" data-tex="\(|k_i|\ge|k|/\sqrt3\)">\(|k_i|\ge|k|/\sqrt3\)</span> gives, retaining the Fourier factors,</p>
+<span class="math math-display" data-tex="\[
+|(2\pi i k)^\mu\widehat{\partial_t^h\nabla\phi}(k)|
+\le (2\pi)^{-5}3^{(r+5)/2}|k|^{-5}
+\max_i\|\partial_t^h\partial_{x_i}^{r+5}F\|_\infty.
+\tag{SC7.3}
+\]">\[
+|(2\pi i k)^\mu\widehat{\partial_t^h\nabla\phi}(k)|
+\le (2\pi)^{-5}3^{(r+5)/2}|k|^{-5}
+\max_i\|\partial_t^h\partial_{x_i}^{r+5}F\|_\infty.
+\tag{SC7.3}
+\]</span>
+<p>Group lattice points by <span class="math" data-tex="\(j=\|k\|_\infty\)">\(j=\|k\|_\infty\)</span>. There are exactly <span class="math" data-tex="\((2j+1)^3-(2j-1)^3=24j^2+2\)">\((2j+1)^3-(2j-1)^3=24j^2+2\)</span>, and <span class="math" data-tex="\(|k|\ge j\)">\(|k|\ge j\)</span>. Hence the total coefficient bound is finite, and the tail after <span class="math" data-tex="\(\|k\|_\infty\le M\)">\(\|k\|_\infty\le M\)</span>, for integer <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span>, is bounded by the derivative factor in SC7.3 times</p>
+<span class="math math-display" data-tex="\[
+\sum_{j&gt;M}(24j^2+2)j^{-5}
+\le 26\sum_{j&gt;M}j^{-3}\le13M^{-2}.
+\tag{SC7.4}
+\]">\[
+\sum_{j&gt;M}(24j^2+2)j^{-5}
+\le 26\sum_{j&gt;M}j^{-3}\le13M^{-2}.
+\tag{SC7.4}
+\]</span>
+<p>This proves absolute convergence of every differentiated series, with effective tails and derivative bounds. Fourier coefficients on the unit cube are evaluated by Riemann sums with the computable first derivative bounds. Thus the force and all derivatives can be evaluated effectively. The zero Fourier mode remains zero. The fixed multiplier commutes with time differentiation and preserves stationarity, periodicity and the weighted temporal estimates proved below, at the explicitly required higher spatial orders. Pressure changes to <span class="math" data-tex="\(p-\phi\)">\(p-\phi\)</span>, because</p>
+<span class="math math-display" data-tex="\[
+-\nabla(p-\phi)+(F-\nabla\phi)=-\nabla p+F.
+\tag{SC7.5}
+\]">\[
+-\nabla(p-\phi)+(F-\nabla\phi)=-\nabla p+F.
+\tag{SC7.5}
+\]</span>
+<p>The velocity and particle event remain exactly unchanged.</p>
+<p>Finally, a decision procedure for the fixed event on every constructed force would decide machine halting by first executing the finite compiler. Halting is undecidable: if a total algorithm <span class="math" data-tex="\(H(e,w)\)">\(H(e,w)\)</span> correctly decided whether program <span class="math" data-tex="\(e\)">\(e\)</span> halts on input <span class="math" data-tex="\(w\)">\(w\)</span>, construct a program <span class="math" data-tex="\(D\)">\(D\)</span> that, on input <span class="math" data-tex="\(e\)">\(e\)</span>, runs forever when <span class="math" data-tex="\(H(e,e)\)">\(H(e,e)\)</span> says “halts” and halts when it says “does not halt.” Applied to the code of <span class="math" data-tex="\(D\)">\(D\)</span> itself, either output contradicts the stipulated correctness of <span class="math" data-tex="\(H\)">\(H\)</span>. This diagonal argument is the classical obstruction, and the proved event equivalence transfers it to the fixed fluid experiment. It is an exact decision result, not a claim about finite precision measurements.</p>
+<h2 id="sc8-full-slow-clock-coefficients-and-necessary-stationary-work">SC8. Full slow-clock coefficients and necessary stationary work</h2>
+<p>The original slow clock is</p>
+<span class="math math-display" data-tex="\[
+a_1(t)=\frac{\beta(2t-1)}{1+t},\quad
+U_1=a_1W,\quad F_1=a_1&#x27;W+a_1^2(W\cdot\nabla)W-\nu a_1\Delta W.
+\tag{SC8.1}
+\]">\[
+a_1(t)=\frac{\beta(2t-1)}{1+t},\quad
+U_1=a_1W,\quad F_1=a_1&#x27;W+a_1^2(W\cdot\nabla)W-\nu a_1\Delta W.
+\tag{SC8.1}
+\]</span>
+<p>For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, <span class="math" data-tex="\(s_1(t)=s_1(1)+\log((1+t)/2)\)">\(s_1(t)=s_1(1)+\log((1+t)/2)\)</span>, which is onto. The same chain rule as SC6.6 proves the event equivalence. Derivatives of the first two force coefficients decay as <span class="math" data-tex="\((1+t)^{-2-h}\)">\((1+t)^{-2-h}\)</span>, and those of the last as <span class="math" data-tex="\((1+t)^{-1-h}\)">\((1+t)^{-1-h}\)</span>. The bounded initial interval contributes a finite enlarged constant. Thus every mixed derivative of velocity and force is bounded by <span class="math" data-tex="\(C_{h,\mu}(1+t)^{-1-h}\)">\(C_{h,\mu}(1+t)^{-1-h}\)</span>, and its spatial supremum belongs to <span class="math" data-tex="\(L^2_t\)">\(L^2_t\)</span>. This proves the paper's stated slow-clock proposition for its actual constructed clock.</p>
+<p>There is a precise further range with the same construction. For <span class="math" data-tex="\(0&lt;\sigma\le1\)">\(0&lt;\sigma\le1\)</span>, retain</p>
+<span class="math math-display" data-tex="\[
+a_\sigma(t)=\beta(2t-1)(1+t)^{-\sigma},
+\quad U_\sigma=a_\sigma W,\quad
+F_\sigma=a_\sigma&#x27;W+a_\sigma^2C-\nu a_\sigma\Delta W,
+\quad C=(W\cdot\nabla)W.
+\tag{SC8.2}
+\]">\[
+a_\sigma(t)=\beta(2t-1)(1+t)^{-\sigma},
+\quad U_\sigma=a_\sigma W,\quad
+F_\sigma=a_\sigma&#x27;W+a_\sigma^2C-\nu a_\sigma\Delta W,
+\quad C=(W\cdot\nabla)W.
+\tag{SC8.2}
+\]</span>
+<p>With <span class="math" data-tex="\((b)_0=1\)">\((b)_0=1\)</span> and <span class="math" data-tex="\((b)_h=b(b+1)\cdots(b+h-1)\)">\((b)_h=b(b+1)\cdots(b+h-1)\)</span>, every term for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> is exactly</p>
+<span class="math math-display" data-tex="\[
+\partial_t^h\partial_x^\mu U_\sigma
+=(-1)^h(\sigma)_h(1+t)^{-\sigma-h}\partial_x^\mu W,
+\tag{SC8.3}
+\]">\[
+\partial_t^h\partial_x^\mu U_\sigma
+=(-1)^h(\sigma)_h(1+t)^{-\sigma-h}\partial_x^\mu W,
+\tag{SC8.3}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_t^h\partial_x^\mu F_\sigma
+={}&amp;(-1)^{h+1}(\sigma)_{h+1}(1+t)^{-\sigma-h-1}\partial_x^\mu W\\
+&amp;+(-1)^h(2\sigma)_h(1+t)^{-2\sigma-h}\partial_x^\mu C\\
+&amp;-\nu(-1)^h(\sigma)_h(1+t)^{-\sigma-h}\partial_x^\mu\Delta W.
+\end{aligned}
+\tag{SC8.4}
+\]">\[
+\begin{aligned}
+\partial_t^h\partial_x^\mu F_\sigma
+={}&amp;(-1)^{h+1}(\sigma)_{h+1}(1+t)^{-\sigma-h-1}\partial_x^\mu W\\
+&amp;+(-1)^h(2\sigma)_h(1+t)^{-2\sigma-h}\partial_x^\mu C\\
+&amp;-\nu(-1)^h(\sigma)_h(1+t)^{-\sigma-h}\partial_x^\mu\Delta W.
+\end{aligned}
+\tag{SC8.4}
+\]</span>
+<p>These follow by differentiating all three separate coefficient functions; no viscous or nonlinear term is removed. The phase is</p>
+<span class="math math-display" data-tex="\[
+s_\sigma(t)=s_\sigma(1)+
+\begin{cases}
+\big((1+t)^{1-\sigma}-2^{1-\sigma}\big)/(1-\sigma),&amp;0&lt;\sigma&lt;1,\\
+\log((1+t)/2),&amp;\sigma=1.
+\end{cases}
+\tag{SC8.5}
+\]">\[
+s_\sigma(t)=s_\sigma(1)+
+\begin{cases}
+\big((1+t)^{1-\sigma}-2^{1-\sigma}\big)/(1-\sigma),&amp;0&lt;\sigma&lt;1,\\
+\log((1+t)/2),&amp;\sigma=1.
+\end{cases}
+\tag{SC8.5}
+\]</span>
+<p>It is unbounded. All finite phases are reached, so SC6's event and uniqueness proof applies to these exact fields. The coefficients and cutoff bounds give</p>
+<span class="math math-display" data-tex="\[
+\|\partial_t^h\partial_x^\mu U_\sigma(t)\|_\infty+
+\|\partial_t^h\partial_x^\mu F_\sigma(t)\|_\infty
+\le C_{h,\mu,\sigma,\nu}(1+t)^{-\sigma-h}.
+\tag{SC8.6}
+\]">\[
+\|\partial_t^h\partial_x^\mu U_\sigma(t)\|_\infty+
+\|\partial_t^h\partial_x^\mu F_\sigma(t)\|_\infty
+\le C_{h,\mu,\sigma,\nu}(1+t)^{-\sigma-h}.
+\tag{SC8.6}
+\]</span>
+<p>For every <span class="math" data-tex="\(1\le q&lt;\infty\)">\(1\le q&lt;\infty\)</span> with <span class="math" data-tex="\(q(\sigma+h)&gt;1\)">\(q(\sigma+h)&gt;1\)</span>, these supremum norms are in <span class="math" data-tex="\(L^q(0,\infty)\)">\(L^q(0,\infty)\)</span>; integrate the displayed power and include the compact initial interval. For <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, every <span class="math" data-tex="\(q&gt;1/\sigma\)">\(q&gt;1/\sigma\)</span> is therefore available. All derivative orders are in <span class="math" data-tex="\(L^2_t\)">\(L^2_t\)</span> when <span class="math" data-tex="\(1/2&lt;\sigma\le1\)">\(1/2&lt;\sigma\le1\)</span>. The projected versions retain these statements by SC7.3–SC7.4. Computable <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives the same effective construction. This proves a range of integrability claims, not rapid decrease faster than every inverse power; that separate theorem requires another memory construction.</p>
+<p>The stationary force also has a necessary nonzero work rate. For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+F_\infty=C-\nu\Delta W.
+\]">\[
+F_\infty=C-\nu\Delta W.
+\]</span>
+<p>Periodic integration gives</p>
+<span class="math math-display" data-tex="\[
+\int F_\infty\cdot W
+=\int (W\cdot\nabla)(|W|^2/2)-\nu\int\Delta W\cdot W
+=\nu\|\nabla W\|_2^2&gt;0.
+\tag{SC8.7}
+\]">\[
+\int F_\infty\cdot W
+=\int (W\cdot\nabla)(|W|^2/2)-\nu\int\Delta W\cdot W
+=\nu\|\nabla W\|_2^2&gt;0.
+\tag{SC8.7}
+\]</span>
+<p>Strict positivity follows without a new dynamical assumption: if <span class="math" data-tex="\(\nabla W=0\)">\(\nabla W=0\)</span>, smoothness makes <span class="math" data-tex="\(W\)">\(W\)</span> constant on the connected torus; zero mean makes it zero, contradicting <span class="math" data-tex="\(g=1\)">\(g=1\)</span> near <span class="math" data-tex="\(J_*\)">\(J_*\)</span>. Also <span class="math" data-tex="\(\|W\|_2&gt;0\)">\(\|W\|_2&gt;0\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\|F_\infty\|_2\ge
+\frac{\nu\|\nabla W\|_2^2}{\|W\|_2}&gt;0.
+\tag{SC8.8}
+\]">\[
+\|F_\infty\|_2\ge
+\frac{\nu\|\nabla W\|_2^2}{\|W\|_2}&gt;0.
+\tag{SC8.8}
+\]</span>
+<p>The projected force has the same pairing, since <span class="math" data-tex="\(\int\nabla\phi\cdot W=0\)">\(\int\nabla\phi\cdot W=0\)</span>, so the same lower bound applies. In particular an eventually stationary force of this construction cannot have finite <span class="math" data-tex="\(L^q_tL^2_x\)">\(L^q_tL^2_x\)</span> norm for any finite <span class="math" data-tex="\(q\)">\(q\)</span>. This exact energy comparison explains why the slow-clock alternatives are distinct forcing constructions.</p>
+<h2 id="sources-scope-and-remaining-comparison">Sources, scope and remaining comparison</h2>
+<p>The proof above covers the original eventually stationary theorem, complete planar processor, periodic alternative, projection and stated slow clock. Its primary locators are the pinned author TeX: analytic tools, lines 191–300; recorder, 302–422; planar processor and full routing, 424–819; spatial clock and main proof, 821–908; periodic and projected forces, 910–937; slow clock and undecidability, 940–1013. No source error was established in this reading. SC8.2–SC8.8 are separate editorial consequences.</p>
+<p>The source bibliography credits Alan Turing for undecidability, Rolf Landauer and Charles Bennett for retention of computation history, Cristopher Moore for generalized shifts, and Jean Leray for the classical difference-energy method. Their bibliographic details are retained in the <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/build/references.bib">author bibliography</a>. This note proves the particular recorder, geometric realization and comparison it uses. Reading that bibliography does not constitute reading or validating all the cited works, nor does this note assert a novelty comparison with them.</p>
+<p>The rapidly vanishing-force, velocity-field detection and companion constructions have separate hypotheses and proof dependencies. This note makes no validation claim for those theorems or their Lean developments. Its mathematical scope is the eventually stationary construction and the alternatives and consequences proved in SC1–SC8.</p>
+</article></body></html>

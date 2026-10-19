@@ -289,7 +289,7 @@ The genuine internal geometric prerequisites are the supporting lessons [Group s
 
 The reductive centralizer equality and the reflection description used here are proved in the linked later lessons. Neither of those proofs uses the local existence or finiteness conclusion established from them here.
 
-The course prerequisite guide records the exact supporting statements and which lessons are published or still planned.
+The [course prerequisite guide](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/prerequisites.html) records the exact supporting statements and which lessons are published or still planned.
 
 ## References
 

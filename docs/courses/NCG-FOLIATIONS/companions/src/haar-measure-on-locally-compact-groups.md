@@ -846,9 +846,9 @@ A family as in (1) is a *compactly supported approximate identity*. Its translat
 ## References
 
 - [Blackadar] Bruce Blackadar, *Real Analysis*, incomplete preliminary edition, 22 September 2026. Author-hosted PDF: https://www.bruceblackadar.com/Mathematics/Meas.pdf. The numbered background statements cited above are from this exact edition.
-- [Fremlin] D. H. Fremlin, *Measure Theory*, Volume 4, 2013 edition, §§416, 441–442, 444K and Appendix 4A. Exact author-native edition: https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/index.htm. The author issues that source under the Design Science License. It is used here for mathematical comparison; its convention is kept explicit in Proposition 13.1A.
+- [Fremlin] D. H. Fremlin, *Measure Theory*, Volume 4, 2013 edition, §§416, 441–442, 444K and Appendix 4A. Exact author-native edition: https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/index.htm. Its convolution convention is stated in Proposition 13.1A.
 - [Tornier] Stephan Tornier, *Haar Measures*, arXiv:2006.10956v1, 19 June 2020. https://arxiv.org/abs/2006.10956v1. The native source is available from that exact version page. The general existence/uniqueness statement there is not accompanied by a proof; the proofs in this lesson remain complete.
 
 - [van Doorn] F. van Doorn, *Formalized Haar Measure*, 2021, [arXiv version 1](https://arxiv.org/abs/2102.07636v1). The paper constructs Haar measure on arbitrary LCH groups; its uniqueness proof assumes second countability. The [current mathlib uniqueness development](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure/Haar/Unique.html) also distinguishes regularity hypotheses.
 
-- [Fischer–Ruzhansky] V. Fischer and M. Ruzhansky, [*Quantization on Nilpotent Lie Groups*](https://biblio.ugent.be/publication/8585474), Birkhäuser, 2016, freely accessible under CC BY 4.0. Its Heisenberg and homogeneous-group treatment complements Example 12.3; its convolution discussion includes the full Young bound of Theorem 14.4.
+- [Fischer–Ruzhansky] V. Fischer and M. Ruzhansky, [*Quantization on Nilpotent Lie Groups*](https://biblio.ugent.be/publication/8585474), Birkhäuser, 2016. Its Heisenberg and homogeneous-group treatment complements Example 12.3; its convolution discussion includes the full Young bound of Theorem 14.4.

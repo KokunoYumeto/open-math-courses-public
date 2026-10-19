@@ -4,7 +4,7 @@
 
 Begin with a restriction map between two vector spaces. It already exhibits the distinction that matters for gluing: the value at a boundary and the sections supported at that boundary are different objects. After computing this example, we will construct a t-structure across an arbitrary recollement, select an extension without boundary subobjects or quotients, and calculate what that selection does to monodromy around a puncture.
 
-Our shifts satisfy \(H^q(K[m])=H^{q+m}(K)\). The categorical input consists of the triangulated-category and t-structure axioms. Appendix A derives the Hom sequences, truncation adjunctions and abelian-heart facts used in the arguments. Appendix B constructs the classical sheaf realization and its mapping complexes. These local constructions are distinct from the additional finiteness and coefficient requirements for general algebraic or étale applications in the preceding lesson.
+Our shifts satisfy \(H^q(K[m])=H^{q+m}(K)\). The categorical input consists of the triangulated-category and t-structure axioms. Appendix A derives the Hom sequences, truncation adjunctions and abelian-heart facts used in the arguments. Appendix B constructs the classical sheaf realization and its mapping complexes. These local constructions are distinct from the additional finiteness and coefficient requirements for general algebraic or étale applications in [the preceding lesson](constructible-complexes-on-algebraic-varieties.md).
 
 The mathematical references for the categorical results are the [author-hosted free BBD text, §§1.3–1.4](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf) and the [free Laszlo–Olsson preprint, §2](https://www.cmls.polytechnique.fr/perso/laszlo/articleweb/faisceaux-pervers.pdf). The proofs and the two assigned geometric models are developed below; the references do not replace them.
 
@@ -220,7 +220,7 @@ In the arrow model, the comparison \((0\to V)\to(V\to V)\) is zero at the closed
 
 Take \(X=\mathbb C\), \(U=\mathbb C^*\), \(F=\{0\}\), with constructibility on these two strata and field coefficients. Put the heart of shifted local systems \(L[1]\) on \(U\), and vector spaces in degree zero on \(F\). Appendix B.2 verifies the bounded constructible recollement and the ordinary t-structures on the pieces. Theorem 2.1 therefore applies to this actual sheaf category.
 
-Let \(V\) be the fibre of \(L\), let \(T\) be transport around a positive loop, and set \(S=T-1\). The natural puncture calculation of Lesson 1, Proposition 1.1 and Appendix A gives
+Let \(V\) be the fibre of \(L\), let \(T\) be transport around a positive loop, and set \(S=T-1\). The natural puncture calculation of [Lesson 1, Proposition 1.1 and Appendix A](constructible-complexes-on-algebraic-varieties.md#appendix-a-derived-sections-on-the-punctured-disc) gives
 
 \[
 i^*Rj_*L[1]=[V\xrightarrow S V]\quad\text{in degrees }-1,0.
@@ -515,7 +515,7 @@ For complexes, use
 \tag{B.1}
 \]
 
-Thus degree-zero cocycles are chain maps and boundaries are chain homotopies. The first lesson’s Appendices A.1 and B.1–B.2 now contain the complete classical resolution and localization foundations before their uses. The following recalls their complex model. In particular they give the exact injective functor
+Thus degree-zero cocycles are chain maps and boundaries are chain homotopies. The first lesson’s [Appendices A.1 and B.1–B.2](constructible-complexes-on-algebraic-varieties.md#appendix-b-classical-localization-and-the-local-curve-calculations) now contain the complete classical resolution and localization foundations before their uses. The following recalls their complex model. In particular they give the exact injective functor
 \(G(F)=\prod_x(e_x)_*F_x\) and its natural monomorphism \(F\to G(F)\). Exactness of \(G\) can be tested even on sections: its maps are products of exact stalk sequences of vector spaces. Let \(C(F)\) be the cokernel of this monomorphism. The diagram of the two exact rows \(0\to F\to G(F)\to C(F)\to0\), applied to a short exact sequence of \(F\)'s, shows that \(C\) is exact: injectivity at the left follows by subtracting a lift from \(F\), surjectivity at the right by lifting in \(G(F)\), and the same subtraction proves equality of image and kernel in the middle. This is a stalkwise argument.
 
 The functors \(G C^q\), for \(q\ge0\), therefore give an additive functorial injective resolution of every sheaf. For a complex \(E\) zero below degree \(a\), apply these resolutions to every \(E^p\). Totalize with the differential \(d_E+(-1)^p d_{\mathrm{res}}\) on the component \(G C^q(E^p)\). In total degree \(n\), only \(a\le p\le n\) occur, so every term is a finite sum of injectives. Denote this complex by \(I(E)\).

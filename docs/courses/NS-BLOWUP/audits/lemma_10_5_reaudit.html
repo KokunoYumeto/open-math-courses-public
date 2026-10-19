@@ -1,0 +1,815 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="lemma_10_5_reaudit.md">Editable source</a></nav><h1 id="whole-space-comparison-and-quantitative-bounds">Whole-space comparison and quantitative bounds</h1>
+<h2 id="source-identity-and-scope">Source identity and scope</h2>
+<p>The source statement is Lemma 10.5 of <em>Finite Time Blowup for Navier–Stokes</em>, pp. 121–123 of the 166-page capture, SHA-256</p>
+<span class="math math-display" data-tex="\[
+0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f.
+\]">\[
+0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f.
+\]</span>
+<p>The controlling comparison is with pages 121–123 of OpenAI’s <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original PDF</a>. This note retains the original pressure convention and all cutoff powers, proves the comparison result and two strengthenings, and supplies its analytical tools in §5. The actual constructed-field inputs are supplied in <a href="local-construction-assembly-audit.html">I0–I7</a> and <a href="terminal-force-and-blowup-audit.html">F0–F5</a>.</p>
+<p>The source proof cites the <span class="math" data-tex="\(L^p\)">\(L^p\)</span> boundedness of the Riesz transforms; this is classical Calderón–Zygmund theory. The proofs below give the precise tools used here; no novelty claim is made.</p>
+<h2 id="statement-proved">Statement proved</h2>
+<p>Let <span class="math" data-tex="\(u,p\)">\(u,p\)</span> and <span class="math" data-tex="\(v,P\)">\(v,P\)</span> be smooth solutions on <span class="math" data-tex="\(\mathbb R^3\times[0,T]\)">\(\mathbb R^3\times[0,T]\)</span> of the incompressible viscosity-one equation with the same force and the same initial velocity. Assume</p>
+<span class="math math-display" data-tex="\[
+u,v\in L^\infty(0,T;L^2(\mathbb R^3)),\qquad
+u\in L^\infty(0,T;L^6(\mathbb R^3)),\qquad
+\|\nabla u(\,\cdot\,,t)\|_\infty\in L^1(0,T).
+\tag{1}
+\]">\[
+u,v\in L^\infty(0,T;L^2(\mathbb R^3)),\qquad
+u\in L^\infty(0,T;L^6(\mathbb R^3)),\qquad
+\|\nabla u(\,\cdot\,,t)\|_\infty\in L^1(0,T).
+\tag{1}
+\]</span>
+<p>Then <span class="math" data-tex="\(u=v\)">\(u=v\)</span> on <span class="math" data-tex="\(\mathbb R^3\times[0,T]\)">\(\mathbb R^3\times[0,T]\)</span>. In particular, the compact spatial support assumed for the reference field in the source lemma is not needed for the comparison step.</p>
+<p>For the compactly supported reference field of the source, the expanding-cutoff error can be bounded by <span class="math" data-tex="\(C_TR^{-4/3}\)">\(C_TR^{-4/3}\)</span>, which strengthens the displayed source bound <span class="math" data-tex="\(C_TR^{-1}\)">\(C_TR^{-1}\)</span>.</p>
+<h2 id="1-pressure-gradient-recovery">1. Pressure-gradient recovery</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+w=v-u,\qquad \pi=P-p,\qquad
+g_{ij}=v_iv_j-u_iu_j=w_iw_j+w_iu_j+u_iw_j,
+\tag{2}
+\]">\[
+w=v-u,\qquad \pi=P-p,\qquad
+g_{ij}=v_iv_j-u_iu_j=w_iw_j+w_iu_j+u_iw_j,
+\tag{2}
+\]</span>
+<p>and keep the convention</p>
+<span class="math math-display" data-tex="\[
+(\operatorname{div}g)_i=\sum_{j=1}^3\partial_jg_{ij}.
+\tag{3}
+\]">\[
+(\operatorname{div}g)_i=\sum_{j=1}^3\partial_jg_{ij}.
+\tag{3}
+\]</span>
+<p>If</p>
+<span class="math math-display" data-tex="\[
+M=\sup_{0\le t\le T}\|w(t)\|_2,\qquad
+U_2=\sup_{0\le t\le T}\|u(t)\|_2,
+\tag{4}
+\]">\[
+M=\sup_{0\le t\le T}\|w(t)\|_2,\qquad
+U_2=\sup_{0\le t\le T}\|u(t)\|_2,
+\tag{4}
+\]</span>
+<p>then Cauchy–Schwarz, component by component, gives</p>
+<span class="math math-display" data-tex="\[
+\|g_{ij}(t)\|_1
+\le \|w_i(t)\|_2\|w_j(t)\|_2
++\|w_i(t)\|_2\|u_j(t)\|_2
++\|u_i(t)\|_2\|w_j(t)\|_2.
+\tag{5}
+\]">\[
+\|g_{ij}(t)\|_1
+\le \|w_i(t)\|_2\|w_j(t)\|_2
++\|w_i(t)\|_2\|u_j(t)\|_2
++\|u_i(t)\|_2\|w_j(t)\|_2.
+\tag{5}
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+G:=\sup_{0\le t\le T}\sum_{i,j=1}^3\|g_{ij}(t)\|_1&lt;\infty.
+\tag{6}
+\]">\[
+G:=\sup_{0\le t\le T}\sum_{i,j=1}^3\|g_{ij}(t)\|_1&lt;\infty.
+\tag{6}
+\]</span>
+<p>The exact difference equation is</p>
+<span class="math math-display" data-tex="\[
+\partial_tw+\operatorname{div}g=\Delta w-\nabla\pi,
+\qquad \operatorname{div}w=0.
+\tag{7}
+\]">\[
+\partial_tw+\operatorname{div}g=\Delta w-\nabla\pi,
+\qquad \operatorname{div}w=0.
+\tag{7}
+\]</span>
+<p>Use the unitary Fourier transform with derivative multiplier <span class="math" data-tex="\(i\xi_i\)">\(i\xi_i\)</span>, and let <span class="math" data-tex="\(R_i\)">\(R_i\)</span> have multiplier <span class="math" data-tex="\(i\xi_i/|\xi|\)">\(i\xi_i/|\xi|\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\pi_*=\sum_{i,j=1}^3R_iR_jg_{ij}.
+\tag{8}
+\]">\[
+\pi_*=\sum_{i,j=1}^3R_iR_jg_{ij}.
+\tag{8}
+\]</span>
+<p>For every <span class="math" data-tex="\(s&gt;3/2\)">\(s&gt;3/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\pi_*(t)\|_{H^{-s}}^2
+\le (2\pi)^{-3}G^2
+\int_{\mathbb R^3}(1+|\xi|^2)^{-s}\,d\xi&lt;\infty.
+\tag{9}
+\]">\[
+\|\pi_*(t)\|_{H^{-s}}^2
+\le (2\pi)^{-3}G^2
+\int_{\mathbb R^3}(1+|\xi|^2)^{-s}\,d\xi&lt;\infty.
+\tag{9}
+\]</span>
+<p>The integral is finite at the origin and has radial exponent <span class="math" data-tex="\(2-2s&lt;-1\)">\(2-2s&lt;-1\)</span> at infinity. The multiplier in (8) is <span class="math" data-tex="\(-\xi_i\xi_j/|\xi|^2\)">\(-\xi_i\xi_j/|\xi|^2\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\Delta\pi_*=-\sum_{i,j=1}^3\partial_i\partial_jg_{ij}.
+\tag{10}
+\]">\[
+\Delta\pi_*=-\sum_{i,j=1}^3\partial_i\partial_jg_{ij}.
+\tag{10}
+\]</span>
+<p>Taking divergence in (7) gives the same equation for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, locally in distributions.</p>
+<p>For <span class="math" data-tex="\(a\in C_c^\infty(0,T)\)">\(a\in C_c^\infty(0,T)\)</span>, integration by parts in time in (7) yields the exact signs</p>
+<span class="math math-display" data-tex="\[
+\int_0^T a\nabla\pi\,dt
+=\Delta\int_0^T aw\,dt
++\int_0^T a&#x27;w\,dt
+-\operatorname{div}\int_0^T ag\,dt.
+\tag{11}
+\]">\[
+\int_0^T a\nabla\pi\,dt
+=\Delta\int_0^T aw\,dt
++\int_0^T a&#x27;w\,dt
+-\operatorname{div}\int_0^T ag\,dt.
+\tag{11}
+\]</span>
+<p>The three terms on the right belong to <span class="math" data-tex="\(H^{-2}\)">\(H^{-2}\)</span>, <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and <span class="math" data-tex="\(H^{-3}\)">\(H^{-3}\)</span>, respectively. The last inclusion follows from <span class="math" data-tex="\(L^1\subset H^{-2}\)">\(L^1\subset H^{-2}\)</span> in three dimensions and one spatial derivative. Equation (9), with <span class="math" data-tex="\(s=2\)">\(s=2\)</span>, also gives</p>
+<span class="math math-display" data-tex="\[
+H_a:=\int_0^T a(\nabla\pi-\nabla\pi_*)\,dt\in H^{-3}(\mathbb R^3),
+\qquad \Delta H_a=0.
+\tag{12}
+\]">\[
+H_a:=\int_0^T a(\nabla\pi-\nabla\pi_*)\,dt\in H^{-3}(\mathbb R^3),
+\qquad \Delta H_a=0.
+\tag{12}
+\]</span>
+<p>The Fourier transform of each component of <span class="math" data-tex="\(H_a\)">\(H_a\)</span> is a weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function. The harmonic equation makes it vanish away from <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>; a function supported on that measure-zero set is zero almost everywhere. Therefore <span class="math" data-tex="\(H_a=0\)">\(H_a=0\)</span>. Testing against every time test function and every compact spatial test function proves</p>
+<span class="math math-display" data-tex="\[
+\nabla\pi=\nabla\pi_*
+\quad\text{on }\mathbb R^3\times(0,T).
+\tag{13}
+\]">\[
+\nabla\pi=\nabla\pi_*
+\quad\text{on }\mathbb R^3\times(0,T).
+\tag{13}
+\]</span>
+<p>This proves equality of pressure gradients. It neither identifies the scalar pressure gauges nor imposes a growth condition on <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<h2 id="2-the-exact-commutator-and-pressure-flux-estimate">2. The exact commutator and pressure-flux estimate</h2>
+<p>Choose <span class="math" data-tex="\(\varphi\in C_c^\infty(\mathbb R^3)\)">\(\varphi\in C_c^\infty(\mathbb R^3)\)</span> with <span class="math" data-tex="\(0\le\varphi\le1\)">\(0\le\varphi\le1\)</span> and <span class="math" data-tex="\(\varphi=1\)">\(\varphi=1\)</span> on the unit ball. For <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, retain the source definitions</p>
+<span class="math math-display" data-tex="\[
+\varphi_R(x)=\varphi(x/R),\qquad
+\chi_R=\varphi_R^8,
+\tag{14}
+\]">\[
+\varphi_R(x)=\varphi(x/R),\qquad
+\chi_R=\varphi_R^8,
+\tag{14}
+\]</span>
+<span class="math math-display" data-tex="\[
+E_R=\int_{\mathbb R^3}\chi_R|w|^2,\qquad
+A_R=\left(\int_{\mathbb R^3}\chi_R|\nabla w|^2\right)^{1/2},\qquad
+B_R=\|\varphi_R^4w\|_6.
+\tag{15}
+\]">\[
+E_R=\int_{\mathbb R^3}\chi_R|w|^2,\qquad
+A_R=\left(\int_{\mathbb R^3}\chi_R|\nabla w|^2\right)^{1/2},\qquad
+B_R=\|\varphi_R^4w\|_6.
+\tag{15}
+\]</span>
+<p>The homogeneous Sobolev inequality proved in §5.1, with <span class="math" data-tex="\(C_S=4\sqrt3\)">\(C_S=4\sqrt3\)</span>, and the product rule give</p>
+<span class="math math-display" data-tex="\[
+B_R\le C_S\|\nabla(\varphi_R^4w)\|_2
+\le C_S\left(A_R+4\|\nabla\varphi\|_\infty R^{-1}M\right).
+\tag{16}
+\]">\[
+B_R\le C_S\|\nabla(\varphi_R^4w)\|_2
+\le C_S\left(A_R+4\|\nabla\varphi\|_\infty R^{-1}M\right).
+\tag{16}
+\]</span>
+<p>The full distributional kernel of <span class="math" data-tex="\(R_iR_j\)">\(R_iR_j\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{pv}\frac{3y_iy_j-\delta_{ij}|y|^2}{4\pi|y|^5}
+-\frac{\delta_{ij}}3\delta_0.
+\tag{17}
+\]">\[
+\operatorname{pv}\frac{3y_iy_j-\delta_{ij}|y|^2}{4\pi|y|^5}
+-\frac{\delta_{ij}}3\delta_0.
+\tag{17}
+\]</span>
+<p>The local term cancels in a commutator. With <span class="math" data-tex="\(a_R=\varphi_R^4\)">\(a_R=\varphi_R^4\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a_R\pi_*=
+\sum_{i,j}R_iR_j(a_Rg_{ij})
++\sum_{i,j}[a_R,R_iR_j]g_{ij}.
+\tag{18}
+\]">\[
+a_R\pi_*=
+\sum_{i,j}R_iR_j(a_Rg_{ij})
++\sum_{i,j}[a_R,R_iR_j]g_{ij}.
+\tag{18}
+\]</span>
+<p>The nonlocal kernel in (17) is bounded by <span class="math" data-tex="\(\pi^{-1}|y|^{-3}\)">\(\pi^{-1}|y|^{-3}\)</span>, while</p>
+<span class="math math-display" data-tex="\[
+|a_R(x)-a_R(y)|
+\le \min\left\{4\|\nabla\varphi\|_\infty\frac{|x-y|}{R},1\right\}.
+\tag{19}
+\]">\[
+|a_R(x)-a_R(y)|
+\le \min\left\{4\|\nabla\varphi\|_\infty\frac{|x-y|}{R},1\right\}.
+\tag{19}
+\]</span>
+<p>Consequently each commutator is majorized by convolution with</p>
+<span class="math math-display" data-tex="\[
+K_R(y)=C|y|^{-3}\min\{|y|/R,1\}.
+\tag{20}
+\]">\[
+K_R(y)=C|y|^{-3}\min\{|y|/R,1\}.
+\tag{20}
+\]</span>
+<p>The complete radial calculation is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|K_R\|_{4/3}^{4/3}
+&amp;=4\pi C^{4/3}\left[
+R^{-4/3}\int_0^Rr^{-2/3}\,dr
++\int_R^\infty r^{-2}\,dr\right]\\
+&amp;=16\pi C^{4/3}R^{-1}.
+\end{aligned}
+\tag{21}
+\]">\[
+\begin{aligned}
+\|K_R\|_{4/3}^{4/3}
+&amp;=4\pi C^{4/3}\left[
+R^{-4/3}\int_0^Rr^{-2/3}\,dr
++\int_R^\infty r^{-2}\,dr\right]\\
+&amp;=16\pi C^{4/3}R^{-1}.
+\end{aligned}
+\tag{21}
+\]</span>
+<p>Young’s convolution inequality therefore gives</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_{i,j}[a_R,R_iR_j]g_{ij}\right\|_{4/3}
+\le C G R^{-3/4}.
+\tag{22}
+\]">\[
+\left\|\sum_{i,j}[a_R,R_iR_j]g_{ij}\right\|_{4/3}
+\le C G R^{-3/4}.
+\tag{22}
+\]</span>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+U_6=\sup_{0\le t\le T}\|u(t)\|_6.
+\tag{23}
+\]">\[
+U_6=\sup_{0\le t\le T}\|u(t)\|_6.
+\tag{23}
+\]</span>
+<p>The first sum in (18) satisfies</p>
+<span class="math math-display" data-tex="\[
+\|\varphi_R^4w_iw_j\|_{3/2}\le B_RM,
+\tag{24}
+\]">\[
+\|\varphi_R^4w_iw_j\|_{3/2}\le B_RM,
+\tag{24}
+\]</span>
+<span class="math math-display" data-tex="\[
+\|\varphi_R^4w_iu_j\|_{3/2}\le MU_6,\qquad
+\|\varphi_R^4u_iw_j\|_{3/2}\le U_6M.
+\tag{25}
+\]">\[
+\|\varphi_R^4w_iu_j\|_{3/2}\le MU_6,\qquad
+\|\varphi_R^4u_iw_j\|_{3/2}\le U_6M.
+\tag{25}
+\]</span>
+<p>The <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span> bound for each double Riesz transform proved in §5.3 then yields</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_{i,j}R_iR_j(a_Rg_{ij})\right\|_{3/2}
+\le C M(B_R+2U_6).
+\tag{26}
+\]">\[
+\left\|\sum_{i,j}R_iR_j(a_Rg_{ij})\right\|_{3/2}
+\le C M(B_R+2U_6).
+\tag{26}
+\]</span>
+<p>For <span class="math" data-tex="\(g\in L^1\)">\(g\in L^1\)</span>, identity (18) follows by first cutting <span class="math" data-tex="\(g\)">\(g\)</span> off smoothly, applying the identity to the compact smooth approximants, and passing to the limit in <span class="math" data-tex="\(H^{-s}\)">\(H^{-s}\)</span> for the Riesz terms and in <span class="math" data-tex="\(L^{4/3}\)">\(L^{4/3}\)</span> for the commutators. The compact factor <span class="math" data-tex="\(a_Rg\)">\(a_Rg\)</span> is also locally in every finite <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, since the solutions are smooth. Hence <span class="math" data-tex="\(\pi_*\)">\(\pi_*\)</span> is locally integrable.</p>
+<p>Testing (13) against <span class="math" data-tex="\(a(t)\chi_Rw\)">\(a(t)\chi_Rw\)</span> gives, for almost every <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^3}\pi w\cdot\nabla\chi_R
+=\int_{\mathbb R^3}\pi_*w\cdot\nabla\chi_R.
+\tag{27}
+\]">\[
+\int_{\mathbb R^3}\pi w\cdot\nabla\chi_R
+=\int_{\mathbb R^3}\pi_*w\cdot\nabla\chi_R.
+\tag{27}
+\]</span>
+<p>There is no scalar-gauge term because</p>
+<span class="math math-display" data-tex="\[
+\operatorname{div}(\chi_Rw)=w\cdot\nabla\chi_R.
+\tag{28}
+\]">\[
+\operatorname{div}(\chi_Rw)=w\cdot\nabla\chi_R.
+\tag{28}
+\]</span>
+<p>The exact derivative</p>
+<span class="math math-display" data-tex="\[
+\nabla\chi_R
+=8R^{-1}\varphi_R^7(\nabla\varphi)(x/R)
+\tag{29}
+\]">\[
+\nabla\chi_R
+=8R^{-1}\varphi_R^7(\nabla\varphi)(x/R)
+\tag{29}
+\]</span>
+<p>pairs (18) with <span class="math" data-tex="\(CR^{-1}\varphi_R^3w\)">\(CR^{-1}\varphi_R^3w\)</span>. The required interpolations retain the cutoff powers:</p>
+<span class="math math-display" data-tex="\[
+\|\varphi_R^3w\|_3
+\le\|\varphi_R^2w\|_3
+\le B_R^{1/2}M^{1/2},
+\tag{30}
+\]">\[
+\|\varphi_R^3w\|_3
+\le\|\varphi_R^2w\|_3
+\le B_R^{1/2}M^{1/2},
+\tag{30}
+\]</span>
+<span class="math math-display" data-tex="\[
+\|\varphi_R^3w\|_4
+\le B_R^{3/4}M^{1/4}.
+\tag{31}
+\]">\[
+\|\varphi_R^3w\|_4
+\le B_R^{3/4}M^{1/4}.
+\tag{31}
+\]</span>
+<p>Indeed,</p>
+<span class="math math-display" data-tex="\[
+\varphi_R^2|w|=(\varphi_R^4|w|)^{1/2}|w|^{1/2},
+\qquad
+\varphi_R^3|w|=(\varphi_R^4|w|)^{3/4}|w|^{1/4},
+\tag{32}
+\]">\[
+\varphi_R^2|w|=(\varphi_R^4|w|)^{1/2}|w|^{1/2},
+\qquad
+\varphi_R^3|w|=(\varphi_R^4|w|)^{3/4}|w|^{1/4},
+\tag{32}
+\]</span>
+<p>and Hölder gives (30)–(31). Combining (22), (26), and (29)–(31) gives the complete pressure-flux estimate</p>
+<span class="math math-display" data-tex="\[
+\left|\int_{\mathbb R^3}\pi w\cdot\nabla\chi_R\right|
+\le C R^{-1}M(B_R+2U_6)B_R^{1/2}M^{1/2}
++C G R^{-7/4}B_R^{3/4}M^{1/4}.
+\tag{33}
+\]">\[
+\left|\int_{\mathbb R^3}\pi w\cdot\nabla\chi_R\right|
+\le C R^{-1}M(B_R+2U_6)B_R^{1/2}M^{1/2}
++C G R^{-7/4}B_R^{3/4}M^{1/4}.
+\tag{33}
+\]</span>
+<p>After uniform <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and <span class="math" data-tex="\(L^6\)">\(L^6\)</span> bounds are placed in <span class="math" data-tex="\(C_T\)">\(C_T\)</span>, this is exactly the source estimate (10.19).</p>
+<h2 id="3-difference-energy-and-the-stronger-remainder">3. Difference energy and the stronger remainder</h2>
+<p>Pairing (7) with <span class="math" data-tex="\(\chi_Rw\)">\(\chi_Rw\)</span>, with all integrals over <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac12E_R&#x27;+A_R^2
+={}&amp;-\int\chi_R(w\cdot\nabla)u\cdot w
++\frac12\int|w|^2\Delta\chi_R\\
+&amp;+\frac12\int|w|^2v\cdot\nabla\chi_R
++\int\pi w\cdot\nabla\chi_R.
+\end{aligned}
+\tag{34}
+\]">\[
+\begin{aligned}
+\frac12E_R&#x27;+A_R^2
+={}&amp;-\int\chi_R(w\cdot\nabla)u\cdot w
++\frac12\int|w|^2\Delta\chi_R\\
+&amp;+\frac12\int|w|^2v\cdot\nabla\chi_R
++\int\pi w\cdot\nabla\chi_R.
+\end{aligned}
+\tag{34}
+\]</span>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+K(t)=\|\nabla u(t)\|_{\mathrm{op},\infty}.
+\tag{35}
+\]">\[
+K(t)=\|\nabla u(t)\|_{\mathrm{op},\infty}.
+\tag{35}
+\]</span>
+<p>The first term on the right of (34) is bounded by <span class="math" data-tex="\(K(t)E_R\)">\(K(t)E_R\)</span>. Since</p>
+<span class="math math-display" data-tex="\[
+\Delta\varphi_R^8
+=56\varphi_R^6|\nabla\varphi_R|^2
++8\varphi_R^7\Delta\varphi_R,
+\tag{36}
+\]">\[
+\Delta\varphi_R^8
+=56\varphi_R^6|\nabla\varphi_R|^2
++8\varphi_R^7\Delta\varphi_R,
+\tag{36}
+\]</span>
+<p>the Laplacian term is bounded by <span class="math" data-tex="\(CR^{-2}M^2\)">\(CR^{-2}M^2\)</span>.</p>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> is compactly supported and <span class="math" data-tex="\(R\)">\(R\)</span> is large enough that <span class="math" data-tex="\(\chi_R=1\)">\(\chi_R=1\)</span> near its support, then <span class="math" data-tex="\(v=w\)">\(v=w\)</span> on <span class="math" data-tex="\(\operatorname{supp}\nabla\chi_R\)">\(\operatorname{supp}\nabla\chi_R\)</span>. The transport flux is bounded by</p>
+<span class="math math-display" data-tex="\[
+CR^{-1}\int\varphi_R^6|w|^3
+\le CR^{-1}B_R^{3/2}M^{3/2}.
+\tag{37}
+\]">\[
+CR^{-1}\int\varphi_R^6|w|^3
+\le CR^{-1}B_R^{3/2}M^{3/2}.
+\tag{37}
+\]</span>
+<p>The exponent <span class="math" data-tex="\(6\)">\(6\)</span> is an inequality consequence of the actual exponent <span class="math" data-tex="\(7\)">\(7\)</span>, since <span class="math" data-tex="\(0\le\varphi_R\le1\)">\(0\le\varphi_R\le1\)</span>.</p>
+<p>For the stronger theorem, keep <span class="math" data-tex="\(v=w+u\)">\(v=w+u\)</span>. The additional term obeys</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+CR^{-1}\int\varphi_R^7|w|^2|u|
+&amp;\le CR^{-1}U_6\|\varphi_R^{7/2}w\|_{12/5}^2\\
+&amp;\le CR^{-1}U_6B_R^{1/2}M^{3/2}.
+\end{aligned}
+\tag{38}
+\]">\[
+\begin{aligned}
+CR^{-1}\int\varphi_R^7|w|^2|u|
+&amp;\le CR^{-1}U_6\|\varphi_R^{7/2}w\|_{12/5}^2\\
+&amp;\le CR^{-1}U_6B_R^{1/2}M^{3/2}.
+\end{aligned}
+\tag{38}
+\]</span>
+<p>The last step uses <span class="math" data-tex="\(\varphi_R^{7/2}\le\varphi_R\)">\(\varphi_R^{7/2}\le\varphi_R\)</span> and the exact interpolation</p>
+<span class="math math-display" data-tex="\[
+\|\varphi_Rw\|_{12/5}
+\le B_R^{1/4}M^{3/4},
+\qquad
+\frac5{12}=\frac{1/4}{6}+\frac{3/4}{2}.
+\tag{39}
+\]">\[
+\|\varphi_Rw\|_{12/5}
+\le B_R^{1/4}M^{3/4},
+\qquad
+\frac5{12}=\frac{1/4}{6}+\frac{3/4}{2}.
+\tag{39}
+\]</span>
+<p>For <span class="math" data-tex="\(0&lt;\beta&lt;2\)">\(0&lt;\beta&lt;2\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, direct maximization of <span class="math" data-tex="\(ax^\beta-\delta x^2\)">\(ax^\beta-\delta x^2\)</span> over <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+ax^\beta\le\delta x^2
++\left(1-\frac\beta2\right)
+\left(\frac\beta2\right)^{\beta/(2-\beta)}
+\delta^{-\beta/(2-\beta)}
+a^{2/(2-\beta)}.
+\tag{40}
+\]">\[
+ax^\beta\le\delta x^2
++\left(1-\frac\beta2\right)
+\left(\frac\beta2\right)^{\beta/(2-\beta)}
+\delta^{-\beta/(2-\beta)}
+a^{2/(2-\beta)}.
+\tag{40}
+\]</span>
+<p>Substituting (16) into (33), (37), and (38) leaves only these positive powers of <span class="math" data-tex="\(A_R\)">\(A_R\)</span>:</p>
+<span class="math math-display" data-tex="\[
+CR^{-1}A_R^{3/2},\qquad
+CR^{-1}A_R^{1/2},\qquad
+CR^{-7/4}A_R^{3/4}.
+\tag{41}
+\]">\[
+CR^{-1}A_R^{3/2},\qquad
+CR^{-1}A_R^{1/2},\qquad
+CR^{-7/4}A_R^{3/4}.
+\tag{41}
+\]</span>
+<p>Their remainders under (40) have powers</p>
+<span class="math math-display" data-tex="\[
+R^{-4},\qquad R^{-4/3},\qquad R^{-14/5},
+\tag{42}
+\]">\[
+R^{-4},\qquad R^{-4/3},\qquad R^{-14/5},
+\tag{42}
+\]</span>
+<p>respectively. The terms obtained from the <span class="math" data-tex="\(R^{-1}M\)">\(R^{-1}M\)</span> part of (16), together with (36), have powers</p>
+<span class="math math-display" data-tex="\[
+R^{-5/2},\qquad R^{-3/2},\qquad R^{-5/2},\qquad R^{-2}.
+\tag{43}
+\]">\[
+R^{-5/2},\qquad R^{-3/2},\qquad R^{-5/2},\qquad R^{-2}.
+\tag{43}
+\]</span>
+<p>Choose the finitely many <span class="math" data-tex="\(\delta\)">\(\delta\)</span>’s in (40) so that their sum is at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. For <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, equations (34)–(43) yield</p>
+<span class="math math-display" data-tex="\[
+\frac12E_R&#x27;+\frac12A_R^2
+\le K(t)E_R+C_TR^{-4/3}.
+\tag{44}
+\]">\[
+\frac12E_R&#x27;+\frac12A_R^2
+\le K(t)E_R+C_TR^{-4/3}.
+\tag{44}
+\]</span>
+<p>The source’s <span class="math" data-tex="\(C_TR^{-1}\)">\(C_TR^{-1}\)</span> bound is therefore valid and non-sharp; (44) is the stronger bound.</p>
+<p>If the initial velocities agree, then <span class="math" data-tex="\(E_R(0)=0\)">\(E_R(0)=0\)</span>. Gronwall’s inequality and <span class="math" data-tex="\(K\in L^1(0,T)\)">\(K\in L^1(0,T)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+E_R(t)\le
+2C_TR^{-4/3}\int_0^t
+\exp\left(2\int_s^tK(a)\,da\right)\,ds.
+\tag{45}
+\]">\[
+E_R(t)\le
+2C_TR^{-4/3}\int_0^t
+\exp\left(2\int_s^tK(a)\,da\right)\,ds.
+\tag{45}
+\]</span>
+<p>Every fixed spatial ball lies in the region where <span class="math" data-tex="\(\chi_R=1\)">\(\chi_R=1\)</span> once <span class="math" data-tex="\(R\)">\(R\)</span> is large. Letting <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span> in (45) shows that the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> mass of <span class="math" data-tex="\(w(t)\)">\(w(t)\)</span> on every fixed ball is zero. Smoothness gives <span class="math" data-tex="\(w=0\)">\(w=0\)</span> pointwise, including the time endpoints.</p>
+<h2 id="4-the-l-6-input-follows-from-the-source-s-stronger-regularity">4. The <span class="math" data-tex="\(L^6\)">\(L^6\)</span> input follows from the source’s stronger regularity</h2>
+<p>If <span class="math" data-tex="\(u(t)\in L^2\)">\(u(t)\in L^2\)</span> and <span class="math" data-tex="\(L=\|\nabla u(t)\|_{\mathrm{op},\infty}&gt;0\)">\(L=\|\nabla u(t)\|_{\mathrm{op},\infty}&gt;0\)</span>, let <span class="math" data-tex="\(a=|u(x,t)|\)">\(a=|u(x,t)|\)</span>. On the ball of radius <span class="math" data-tex="\(a/(2L)\)">\(a/(2L)\)</span> centered at <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|u(y,t)|\ge a/2.
+\tag{46}
+\]">\[
+|u(y,t)|\ge a/2.
+\tag{46}
+\]</span>
+<p>Therefore</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_2^2
+\ge\frac{a^2}{4}\frac{4\pi}{3}\left(\frac{a}{2L}\right)^3
+=\frac{\pi a^5}{24L^3}.
+\tag{47}
+\]">\[
+\|u(t)\|_2^2
+\ge\frac{a^2}{4}\frac{4\pi}{3}\left(\frac{a}{2L}\right)^3
+=\frac{\pi a^5}{24L^3}.
+\tag{47}
+\]</span>
+<p>Taking the supremum over <span class="math" data-tex="\(x\)">\(x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_\infty
+\le\left(\frac{24}{\pi}\right)^{1/5}
+\|u(t)\|_2^{2/5}L^{3/5}.
+\tag{48}
+\]">\[
+\|u(t)\|_\infty
+\le\left(\frac{24}{\pi}\right)^{1/5}
+\|u(t)\|_2^{2/5}L^{3/5}.
+\tag{48}
+\]</span>
+<p>Also,</p>
+<span class="math math-display" data-tex="\[
+\|u(t)\|_6
+\le\|u(t)\|_\infty^{2/3}\|u(t)\|_2^{1/3}.
+\tag{49}
+\]">\[
+\|u(t)\|_6
+\le\|u(t)\|_\infty^{2/3}\|u(t)\|_2^{1/3}.
+\tag{49}
+\]</span>
+<p>If <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, the field is spatially constant and its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> membership makes it zero. Thus the source’s smooth compactly supported reference field has the required uniform <span class="math" data-tex="\(L^6\)">\(L^6\)</span> bound on every interval <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, <span class="math" data-tex="\(T&lt;1\)">\(T&lt;1\)</span>.</p>
+<h2 id="5-proofs-of-the-analytical-tools-used-above">5. Proofs of the analytical tools used above</h2>
+<h3 id="5-1-the-homogeneous-sobolev-inequality-on-the-actual-cutoff-field">5.1. The homogeneous Sobolev inequality on the actual cutoff field</h3>
+<p>For a scalar <span class="math" data-tex="\(g\in C_c^1(\mathbb R^3)\)">\(g\in C_c^1(\mathbb R^3)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+A_1(x_2,x_3)=\int_{\mathbb R}|\partial_1g(s,x_2,x_3)|\,ds
+\]">\[
+A_1(x_2,x_3)=\int_{\mathbb R}|\partial_1g(s,x_2,x_3)|\,ds
+\]</span>
+<p>and define <span class="math" data-tex="\(A_2(x_1,x_3)\)">\(A_2(x_1,x_3)\)</span>, <span class="math" data-tex="\(A_3(x_1,x_2)\)">\(A_3(x_1,x_2)\)</span> by the corresponding coordinate integrals. The fundamental theorem of calculus, starting beyond the compact support on each coordinate line, gives <span class="math" data-tex="\(|g(x)|\le A_i\)">\(|g(x)|\le A_i\)</span> for every i. Hence</p>
+<span class="math math-display" data-tex="\[
+|g(x)|^{3/2}\le
+\{A_1(x_2,x_3)A_2(x_1,x_3)A_3(x_1,x_2)\}^{1/2}.
+\tag{50}
+\]">\[
+|g(x)|^{3/2}\le
+\{A_1(x_2,x_3)A_2(x_1,x_3)A_3(x_1,x_2)\}^{1/2}.
+\tag{50}
+\]</span>
+<p>Put <span class="math" data-tex="\(B_2(x_3)=\int A_2(x_1,x_3)\,dx_1\)">\(B_2(x_3)=\int A_2(x_1,x_3)\,dx_1\)</span> and
+<span class="math" data-tex="\(B_3(x_2)=\int A_3(x_1,x_2)\,dx_1\)">\(B_3(x_2)=\int A_3(x_1,x_2)\,dx_1\)</span>.
+Cauchy–Schwarz first in <span class="math" data-tex="\(x_1\)">\(x_1\)</span>, then jointly in <span class="math" data-tex="\(x_2,x_3\)">\(x_2,x_3\)</span>, gives the complete estimate</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\int|g|^{3/2}
+&amp;\le\int_{\mathbb R^2}A_1(x_2,x_3)^{1/2}
+B_2(x_3)^{1/2}B_3(x_2)^{1/2}\,dx_2dx_3\\
+&amp;\le\left(\int_{\mathbb R^2}A_1\right)^{1/2}
+\left(\int_{\mathbb R}B_2\int_{\mathbb R}B_3\right)^{1/2}
+=\prod_{i=1}^3\|\partial_i g\|_1^{1/2}.
+\end{split}
+\tag{51}
+\]">\[
+\begin{split}
+\int|g|^{3/2}
+&amp;\le\int_{\mathbb R^2}A_1(x_2,x_3)^{1/2}
+B_2(x_3)^{1/2}B_3(x_2)^{1/2}\,dx_2dx_3\\
+&amp;\le\left(\int_{\mathbb R^2}A_1\right)^{1/2}
+\left(\int_{\mathbb R}B_2\int_{\mathbb R}B_3\right)^{1/2}
+=\prod_{i=1}^3\|\partial_i g\|_1^{1/2}.
+\end{split}
+\tag{51}
+\]</span>
+<p>Raise this to the power <span class="math" data-tex="\(2/3\)">\(2/3\)</span>. The geometric mean of three nonnegative numbers is at most their sum; also
+<span class="math" data-tex="\(\sum_i|\partial_i g|\le\sqrt3|\nabla g|\)">\(\sum_i|\partial_i g|\le\sqrt3|\nabla g|\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|g\|_{3/2}\le\prod_i\|\partial_i g\|_1^{1/3}
+\le\sqrt3\|\nabla g\|_1.
+\tag{52}
+\]">\[
+\|g\|_{3/2}\le\prod_i\|\partial_i g\|_1^{1/3}
+\le\sqrt3\|\nabla g\|_1.
+\tag{52}
+\]</span>
+<p>Apply this to <span class="math" data-tex="\(g=|b|^4\)">\(g=|b|^4\)</span>, where <span class="math" data-tex="\(b\)">\(b\)</span> is a smooth compactly supported vector field. This is a smooth polynomial in its real components. With the Euclidean norm for b and the Frobenius norm for its gradient, the chain rule gives
+<span class="math" data-tex="\(|\nabla |b|^4|\le4|b|^3|\nabla b|\)">\(|\nabla |b|^4|\le4|b|^3|\nabla b|\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|b\|_6^4\le4\sqrt3\int |b|^3|\nabla b|
+\le4\sqrt3\|b\|_6^3\|\nabla b\|_2.
+\tag{53}
+\]">\[
+\|b\|_6^4\le4\sqrt3\int |b|^3|\nabla b|
+\le4\sqrt3\|b\|_6^3\|\nabla b\|_2.
+\tag{53}
+\]</span>
+<p>For nonzero b divide by <span class="math" data-tex="\(\|b\|_6^3\)">\(\|b\|_6^3\)</span>; for zero b the conclusion holds directly. Thus
+<span class="math" data-tex="\(\|b\|_6\le4\sqrt3\|\nabla b\|_2\)">\(\|b\|_6\le4\sqrt3\|\nabla b\|_2\)</span>.
+Taking exactly <span class="math" data-tex="\(b=\varphi_R^4w\)">\(b=\varphi_R^4w\)</span> proves (16), with every cutoff derivative retained. No regularity or decay at infinity for the uncut derivatives of w was assumed.</p>
+<h3 id="5-2-the-complete-kernel-and-its-weak-estimate">5.2. The complete kernel and its weak estimate</h3>
+<p>Fix <span class="math" data-tex="\(i,j\in\{1,2,3\}\)">\(i,j\in\{1,2,3\}\)</span> and let <span class="math" data-tex="\(T=R_iR_j\)">\(T=R_iR_j\)</span> initially act on <span class="math" data-tex="\(L^2(\mathbb R^3)\)">\(L^2(\mathbb R^3)\)</span> by its multiplier
+<span class="math" data-tex="\(-\xi_i\xi_j/|\xi|^2\)">\(-\xi_i\xi_j/|\xi|^2\)</span>. Define it arbitrarily at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>, a null set. Plancherel gives</p>
+<span class="math math-display" data-tex="\[
+\|Tb\|_2\le\|b\|_2.
+\tag{54}
+\]">\[
+\|Tb\|_2\le\|b\|_2.
+\tag{54}
+\]</span>
+<p>Here the unitary convention is
+<span class="math" data-tex="\(\widehat b(\xi)=(2\pi)^{-3/2}\int e^{-ix\cdot\xi}b(x)\,dx\)">\(\widehat b(\xi)=(2\pi)^{-3/2}\int e^{-ix\cdot\xi}b(x)\,dx\)</span>.
+The Newton kernel has the exact heat representation</p>
+<span class="math math-display" data-tex="\[
+G(x)=\frac1{4\pi|x|}
+=\int_0^\infty(4\pi s)^{-3/2}e^{-|x|^2/(4s)}\,ds.
+\tag{55}
+\]">\[
+G(x)=\frac1{4\pi|x|}
+=\int_0^\infty(4\pi s)^{-3/2}e^{-|x|^2/(4s)}\,ds.
+\tag{55}
+\]</span>
+<p>The substitution <span class="math" data-tex="\(a=|x|/(2\sqrt s)\)">\(a=|x|/(2\sqrt s)\)</span> evaluates the integral, using
+<span class="math" data-tex="\(\int_0^\infty e^{-a^2}\,da=\sqrt\pi/2\)">\(\int_0^\infty e^{-a^2}\,da=\sqrt\pi/2\)</span>.
+Fourier transformation of the heat kernels gives
+<span class="math" data-tex="\(\widehat G(\xi)=(2\pi)^{-3/2}|\xi|^{-2}\)">\(\widehat G(\xi)=(2\pi)^{-3/2}|\xi|^{-2}\)</span> as a tempered distribution; the latter is locally integrable in three dimensions. The time integral can first be taken on a compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, then passed to the limit against Schwartz functions. Thus convolution with <span class="math" data-tex="\(\partial_i\partial_jG\)">\(\partial_i\partial_jG\)</span> has precisely T’s multiplier, including its sign.</p>
+<p>For <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+K_{ij}(y)=\partial_i\partial_jG(y)
+=\frac{3y_iy_j-\delta_{ij}|y|^2}{4\pi|y|^5},
+\quad |K_{ij}(y)|\le\frac1{\pi|y|^3},
+\quad |\nabla K_{ij}(y)|\le\frac7{\pi|y|^4}.
+\tag{56}
+\]">\[
+K_{ij}(y)=\partial_i\partial_jG(y)
+=\frac{3y_iy_j-\delta_{ij}|y|^2}{4\pi|y|^5},
+\quad |K_{ij}(y)|\le\frac1{\pi|y|^3},
+\quad |\nabla K_{ij}(y)|\le\frac7{\pi|y|^4}.
+\tag{56}
+\]</span>
+<p>For the last bound the numerator has absolute value at most <span class="math" data-tex="\(4|y|^2\)">\(4|y|^2\)</span> and gradient norm at most <span class="math" data-tex="\(8|y|\)">\(8|y|\)</span>; differentiating <span class="math" data-tex="\(|y|^{-5}\)">\(|y|^{-5}\)</span> contributes <span class="math" data-tex="\(20|y|^{-4}\)">\(20|y|^{-4}\)</span> before division by <span class="math" data-tex="\(4\pi\)">\(4\pi\)</span>, and the differentiated numerator contributes <span class="math" data-tex="\(8|y|^{-4}\)">\(8|y|^{-4}\)</span>.</p>
+<p>To retain the distribution at zero, integrate twice by parts over <span class="math" data-tex="\(|y|&gt;\epsilon\)">\(|y|&gt;\epsilon\)</span> against a smooth compactly supported test function <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The inner sphere has outward normal <span class="math" data-tex="\(-y/|y|\)">\(-y/|y|\)</span>. The boundary contribution containing <span class="math" data-tex="\(G\partial_j\psi\)">\(G\partial_j\psi\)</span> is <span class="math" data-tex="\(O(\epsilon)\)">\(O(\epsilon)\)</span>. The other contribution is</p>
+<span class="math math-display" data-tex="\[
+-\frac1{4\pi}\int_{\mathbb S^2}\omega_i\omega_j
+\psi(\epsilon\omega)\,d\omega
+\longrightarrow-\frac{\delta_{ij}}3\psi(0).
+\tag{57}
+\]">\[
+-\frac1{4\pi}\int_{\mathbb S^2}\omega_i\omega_j
+\psi(\epsilon\omega)\,d\omega
+\longrightarrow-\frac{\delta_{ij}}3\psi(0).
+\tag{57}
+\]</span>
+<p>The spherical integral uses coordinate reflections for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> and
+<span class="math" data-tex="\(\sum_i\omega_i^2=1\)">\(\sum_i\omega_i^2=1\)</span> for the three equal diagonal entries. The principal value of the volume term exists: K has zero spherical mean, its product with the linear term in the Taylor expansion of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has odd spherical mean, and its product with the quadratic remainder is integrable at zero. Thus the complete kernel is
+<span class="math" data-tex="\(\operatorname{pv}K_{ij}-(\delta_{ij}/3)\delta_0\)">\(\operatorname{pv}K_{ij}-(\delta_{ij}/3)\delta_0\)</span>, as in (17). In particular the local term is absent outside the support of the input and cancels in the commutator (18).</p>
+<p>We prove a weak <span class="math" data-tex="\(L^1\)">\(L^1\)</span> estimate with an explicit admissible constant. Let <span class="math" data-tex="\(b\in C_c^\infty(\mathbb R^3)\)">\(b\in C_c^\infty(\mathbb R^3)\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. In one fixed dyadic grid choose all maximal cubes Q for which
+<span class="math" data-tex="\(|Q|^{-1}\int_Q|b|&gt;t\)">\(|Q|^{-1}\int_Q|b|&gt;t\)</span>. Large ancestor cubes have averages tending to zero, so every chosen cube has a maximal ancestor of this kind. The maximal cubes are disjoint. Their parents fail the strict inequality and have eight times their volume. Outside their union the shrinking dyadic averages converge to <span class="math" data-tex="\(|b(x)|\)">\(|b(x)|\)</span> by continuity, apart from the null grid boundaries. These facts give</p>
+<span class="math math-display" data-tex="\[
+\sum_Q|Q|\le\|b\|_1/t,\qquad
+t&lt;|Q|^{-1}\int_Q|b|\le8t,\qquad
+|b|\le t\ \text{a.e. outside }\bigcup_QQ.
+\tag{58}
+\]">\[
+\sum_Q|Q|\le\|b\|_1/t,\qquad
+t&lt;|Q|^{-1}\int_Q|b|\le8t,\qquad
+|b|\le t\ \text{a.e. outside }\bigcup_QQ.
+\tag{58}
+\]</span>
+<p>Set <span class="math" data-tex="\(b_Q=(b-b_Q^{\rm av})1_Q\)">\(b_Q=(b-b_Q^{\rm av})1_Q\)</span>, where <span class="math" data-tex="\(b_Q^{\rm av}=|Q|^{-1}\int_Qb\)">\(b_Q^{\rm av}=|Q|^{-1}\int_Qb\)</span>, and put <span class="math" data-tex="\(g=b-\sum_Qb_Q\)">\(g=b-\sum_Qb_Q\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\int b_Q=0,\quad \sum_Q\|b_Q\|_1\le2\|b\|_1,\quad
+\|g\|_1\le\|b\|_1,\quad \|g\|_\infty\le8t,\quad
+\|g\|_2^2\le8t\|b\|_1.
+\tag{59}
+\]">\[
+\int b_Q=0,\quad \sum_Q\|b_Q\|_1\le2\|b\|_1,\quad
+\|g\|_1\le\|b\|_1,\quad \|g\|_\infty\le8t,\quad
+\|g\|_2^2\le8t\|b\|_1.
+\tag{59}
+\]</span>
+<p>The sum of the <span class="math" data-tex="\(b_Q\)">\(b_Q\)</span> converges in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: disjoint supports and
+<span class="math" data-tex="\(\sum_Q\|b_Q\|_2^2\le4\|b\|_2^2\)">\(\sum_Q\|b_Q\|_2^2\le4\|b\|_2^2\)</span> follow by Cauchy–Schwarz for each average.</p>
+<p>Let E be the union of the concentric cubes <span class="math" data-tex="\(6Q\)">\(6Q\)</span>, whose side lengths are six times those of Q. Then <span class="math" data-tex="\(|E|\le216\|b\|_1/t\)">\(|E|\le216\|b\|_1/t\)</span>.
+If Q has center c and side length <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-tex="\(x\notin6Q\)">\(x\notin6Q\)</span> implies
+<span class="math" data-tex="\(|x-c|\ge3\ell\)">\(|x-c|\ge3\ell\)</span>, whereas <span class="math" data-tex="\(y\in Q\)">\(y\in Q\)</span> implies
+<span class="math" data-tex="\(|y-c|\le\sqrt3\ell/2&lt;|x-c|/2\)">\(|y-c|\le\sqrt3\ell/2&lt;|x-c|/2\)</span>.
+Use <span class="math" data-tex="\(\int b_Q=0\)">\(\int b_Q=0\)</span> and (56) along the segment from <span class="math" data-tex="\(x-c\)">\(x-c\)</span> to <span class="math" data-tex="\(x-y\)">\(x-y\)</span>. The exact off-support representation yields</p>
+<span class="math math-display" data-tex="\[
+Tb_Q(x)=\int_Q\{K_{ij}(x-y)-K_{ij}(x-c)\}b_Q(y)\,dy,
+\]">\[
+Tb_Q(x)=\int_Q\{K_{ij}(x-y)-K_{ij}(x-c)\}b_Q(y)\,dy,
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\int_{(6Q)^c}|Tb_Q(x)|\,dx
+&amp;\le \frac7\pi\,16\,\frac{\sqrt3\ell}2\,
+4\pi\int_{3\ell}^\infty r^{-2}\,dr\,\|b_Q\|_1\\
+&amp;=\frac{224\sqrt3}{3}\|b_Q\|_1=:C_b\|b_Q\|_1.
+\end{split}
+\tag{60}
+\]">\[
+\begin{split}
+\int_{(6Q)^c}|Tb_Q(x)|\,dx
+&amp;\le \frac7\pi\,16\,\frac{\sqrt3\ell}2\,
+4\pi\int_{3\ell}^\infty r^{-2}\,dr\,\|b_Q\|_1\\
+&amp;=\frac{224\sqrt3}{3}\|b_Q\|_1=:C_b\|b_Q\|_1.
+\end{split}
+\tag{60}
+\]</span>
+<p>The off-support formula follows first for smooth approximations to <span class="math" data-tex="\(b_Q\)">\(b_Q\)</span>, then by their <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence on sets at positive distance from Q; the kernel is smooth there and T is <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-continuous. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> sum of the <span class="math" data-tex="\(Tb_Q\)">\(Tb_Q\)</span> and their <span class="math" data-tex="\(L^1(E^c)\)">\(L^1(E^c)\)</span> sum represent the same distribution, so the latter bounds the actual <span class="math" data-tex="\(T(\sum_Qb_Q)\)">\(T(\sum_Qb_Q)\)</span> on <span class="math" data-tex="\(E^c\)">\(E^c\)</span>.</p>
+<p>If <span class="math" data-tex="\(|Tb|&gt;t\)">\(|Tb|&gt;t\)</span> outside E, either <span class="math" data-tex="\(|Tg|&gt;t/2\)">\(|Tg|&gt;t/2\)</span> or
+<span class="math" data-tex="\(|T(\sum_Qb_Q)|&gt;t/2\)">\(|T(\sum_Qb_Q)|&gt;t/2\)</span>. Chebyshev, (54), (59) and (60) give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+|\{|Tb|&gt;t\}|
+&amp;\le216\|b\|_1/t+4t^{-2}\|g\|_2^2
++2t^{-1}C_b\sum_Q\|b_Q\|_1\\
+&amp;\le C_w\|b\|_1/t,\qquad
+C_w=248+\frac{896\sqrt3}{3}.
+\end{split}
+\tag{61}
+\]">\[
+\begin{split}
+|\{|Tb|&gt;t\}|
+&amp;\le216\|b\|_1/t+4t^{-2}\|g\|_2^2
++2t^{-1}C_b\sum_Q\|b_Q\|_1\\
+&amp;\le C_w\|b\|_1/t,\qquad
+C_w=248+\frac{896\sqrt3}{3}.
+\end{split}
+\tag{61}
+\]</span>
+<p>For <span class="math" data-tex="\(b\in L^1\cap L^2\)">\(b\in L^1\cap L^2\)</span>, approximate simultaneously in both norms by smooth compactly supported functions. The images converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and along a subsequence almost everywhere. Apply (61) at threshold <span class="math" data-tex="\(t-\epsilon&gt;0\)">\(t-\epsilon&gt;0\)</span>, use Fatou for the level-set indicators at threshold t of the limit, and then let <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. This extends (61) to <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>.</p>
+<h3 id="5-3-the-exact-l-3-2-bound-required-by-the-pressure-flux">5.3. The exact <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span> bound required by the pressure flux</h3>
+<p>For smooth compactly supported b and each <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, split
+<span class="math" data-tex="\(b=b\,1_{\{|b|&gt;t\}}+b\,1_{\{|b|\le t\}}\)">\(b=b\,1_{\{|b|&gt;t\}}+b\,1_{\{|b|\le t\}}\)</span>.
+Apply (61) to the first part and (54) to the second. The threshold for each image is <span class="math" data-tex="\(t/2\)">\(t/2\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+|\{|Tb|&gt;t\}|
+\le\frac{2C_w}{t}\int_{|b|&gt;t}|b|
++\frac4{t^2}\int_{|b|\le t}|b|^2.
+\tag{62}
+\]">\[
+|\{|Tb|&gt;t\}|
+\le\frac{2C_w}{t}\int_{|b|&gt;t}|b|
++\frac4{t^2}\int_{|b|\le t}|b|^2.
+\tag{62}
+\]</span>
+<p>The layer-cake identity and Tonelli’s theorem, for <span class="math" data-tex="\(1&lt;p&lt;2\)">\(1&lt;p&lt;2\)</span>, now give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\|Tb\|_p^p
+&amp;=p\int_0^\infty t^{p-1}|\{|Tb|&gt;t\}|\,dt\\
+&amp;\le2pC_w\int |b(x)|
+\left(\int_0^{|b(x)|}t^{p-2}\,dt\right)\,dx\\
+&amp;\quad+4p\int |b(x)|^2
+\left(\int_{|b(x)|}^\infty t^{p-3}\,dt\right)\,dx\\
+&amp;=\left(\frac{2pC_w}{p-1}+\frac{4p}{2-p}\right)\|b\|_p^p.
+\end{split}
+\tag{63}
+\]">\[
+\begin{split}
+\|Tb\|_p^p
+&amp;=p\int_0^\infty t^{p-1}|\{|Tb|&gt;t\}|\,dt\\
+&amp;\le2pC_w\int |b(x)|
+\left(\int_0^{|b(x)|}t^{p-2}\,dt\right)\,dx\\
+&amp;\quad+4p\int |b(x)|^2
+\left(\int_{|b(x)|}^\infty t^{p-3}\,dt\right)\,dx\\
+&amp;=\left(\frac{2pC_w}{p-1}+\frac{4p}{2-p}\right)\|b\|_p^p.
+\end{split}
+\tag{63}
+\]</span>
+<p>Both inner integrals converge for the displayed range of p. In particular,</p>
+<span class="math math-display" data-tex="\[
+\|R_iR_jb\|_{3/2}\le(6C_w+12)^{2/3}\|b\|_{3/2}.
+\tag{64}
+\]">\[
+\|R_iR_jb\|_{3/2}\le(6C_w+12)^{2/3}\|b\|_{3/2}.
+\tag{64}
+\]</span>
+<p>Density extends this operator uniquely to <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span>. For inputs also in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, approximation in both norms identifies it with the Fourier multiplier. For the compact smooth factors <span class="math" data-tex="\(a_Rg_{ij}\)">\(a_Rg_{ij}\)</span> in (26), both definitions therefore agree. For the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximations used in (18), Fourier convergence in <span class="math" data-tex="\(H^{-s}\)">\(H^{-s}\)</span>, <span class="math" data-tex="\(s&gt;3/2\)">\(s&gt;3/2\)</span>, follows from the bound in (9), while (64) supplies the <span class="math" data-tex="\(L^{3/2}\)">\(L^{3/2}\)</span> convergence of the compact factors. Thus this proof supplies the exact operator and exponent used in the pressure argument, including compatibility with its distributional definition.</p>
+<h2 id="comparison-consequences">Comparison consequences</h2>
+<p><img src="assets/lemma_10_5_cutoff_flux.png" alt="Cutoff geometry and exact remainder powers" class="course-figure" width="2453" height="1132" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="659AC288535F4359271AE78B1FB8D902E8AA8ED655221AAAEC6B291AE3193BED"></p>
+<p>The figure records the exact proof flow from the transition annulus through the Riesz and commutator terms to the three Young remainders. The two-dimensional section is a schematic of the spatial cutoff, without fixing its outer support radius. Its <a href="assets/lemma_10_5_cutoff_flux.py">reproducible source</a> and equations (14)–(45) above give every displayed power. The source comparison is OpenAI, Lemma 10.5, pages 121–123; §5 supplies the analytical tools. The remainder is a proved estimate, with no assertion of optimality.</p>
+<p>The written proof of Lemma 10.5 is mathematically sound under the constructed-field inputs stated there. The pressure-gradient argument does not require a hidden pressure-growth hypothesis. The calculation above proves two underclaims:</p>
+<ol>
+<li>the source cutoff remainder <span class="math" data-tex="\(C_TR^{-1}\)">\(C_TR^{-1}\)</span> improves to <span class="math" data-tex="\(C_TR^{-4/3}\)">\(C_TR^{-4/3}\)</span>;</li>
+<li>compact support of the reference velocity can be replaced by the three conditions in (1).</li>
+</ol>
+<p>These strengthen the comparison step only. The profile, correction and local-realization arguments are the separate suppliers assembled in <a href="local-construction-assembly-audit.html">I0–I7</a>. The compact localization, force extension, actual receiving hypotheses, energy and blowup implications are proved in <a href="terminal-force-and-blowup-audit.html">F0–F8</a>.</p>
+</article></body></html>

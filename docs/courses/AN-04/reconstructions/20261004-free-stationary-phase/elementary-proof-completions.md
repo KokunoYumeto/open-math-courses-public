@@ -9,7 +9,7 @@ Mathematical source: Jiří Lebl, *Basic Analysis*, theorem numbering from
 version 6.3, [freely accessible author edition](https://www.jirka.org/ra/),
 §§1.2, 2.1–2.4, 7.2–7.6 and 8.2. The
 human-proof references identify external
-statements and proofs. The programme proof index locates
+statements and proofs. The [programme proof index](proof-map.html) locates
 the local arguments and their inputs. Original programme exposition is CC0
 to the extent rights exist; cited human works retain their own terms.
 

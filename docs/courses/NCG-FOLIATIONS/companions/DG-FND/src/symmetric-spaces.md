@@ -76,7 +76,7 @@ defines a geodesic whose value and velocity at \(a\) equal those of \(\gamma\): 
 
 The dependence \(p\mapsto s_p\) is smooth as a map into the affine group. Locally near \(p_0\), its value and differential at \(p_0\) are smooth in \(p\), from the jointly smooth normal-coordinate formula
 \(\exp_p(-\exp_p^{-1}x)\).
-Apply the inverse theorem Local tools 1.2 to the map \((p,v)\mapsto(p,\exp_p v)\); its differential is invertible at \((p_0,0)\) by [Geodesics B.1](geodesics-normal-coordinates-and-curvature.md#theorem-b-1). This justifies the jointly smooth inverse near \((p_0,p_0)\). The frame-value embedding in [Affine transformations D.3](affine-transformations-and-the-isometry-group.md#theorem-d-3) then gives the asserted smooth dependence into the group. In the Riemannian case the corresponding assertion follows from the isometry frame embedding of [Affine transformations C.2](affine-transformations-and-the-isometry-group.md#theorem-c-2).
+Apply the inverse theorem [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) to the map \((p,v)\mapsto(p,\exp_p v)\); its differential is invertible at \((p_0,0)\) by [Geodesics B.1](geodesics-normal-coordinates-and-curvature.md#theorem-b-1). This justifies the jointly smooth inverse near \((p_0,p_0)\). The frame-value embedding in [Affine transformations D.3](affine-transformations-and-the-isometry-group.md#theorem-d-3) then gives the asserted smooth dependence into the group. In the Riemannian case the corresponding assertion follows from the isometry frame embedding of [Affine transformations C.2](affine-transformations-and-the-isometry-group.md#theorem-c-2).
 
 For \(v\) small and \(\gamma(u)=\exp_p(uv)\), the path
 \(t\mapsto s_{\gamma(t/2)}s_p\) starts at the identity and carries \(p\) to \(\gamma(t)\). Consequently the identity-component orbit of \(p\) contains a normal neighbourhood. The same holds at every point. The orbits are disjoint open subsets; connectedness makes there be just one. In the Riemannian case all the path's maps are isometries, giving transitivity of its isometry identity component. For a pseudo-Riemannian metric the symmetries still preserve the metric by A.1, and the same paths give a transitive group of global isometries, with no positive-metric completeness argument used.
@@ -107,7 +107,7 @@ For an explicit different outcome use the Euclidean plane and the group generate
 \tag{A.7}
 \]
 Its elements are \(\alpha^m\beta^n\), \(m,n\in\mathbb Z\), because
-\(\beta\alpha\beta^{-1}=\alpha^{-1}\). For even \(n\) they are translations \((x,y)\mapsto(x+m,y+n)\); for odd \(n\) they are \((x,y)\mapsto(-x+m,y+n)\). This action is free: if \(n\ne0\) the \(y\)-coordinate changes, and if \(n=0,m\ne0\) the \(x\)-coordinate changes. For any compact set, only finitely many integers \(n,m\) can make its image intersect itself, by coordinate boundedness. It is therefore properly discontinuous. The quotient is a smooth flat manifold by [Sectional curvature D.3](sectional-curvature-and-space-forms.md#theorem-d-3), and is compact because the image of \([0,1]\times[0,1]\) covers it. Hopf–Rinow B.3 makes it complete. Its zero curvature and torsion make it locally symmetric by A.1.
+\(\beta\alpha\beta^{-1}=\alpha^{-1}\). For even \(n\) they are translations \((x,y)\mapsto(x+m,y+n)\); for odd \(n\) they are \((x,y)\mapsto(-x+m,y+n)\). This action is free: if \(n\ne0\) the \(y\)-coordinate changes, and if \(n=0,m\ne0\) the \(x\)-coordinate changes. For any compact set, only finitely many integers \(n,m\) can make its image intersect itself, by coordinate boundedness. It is therefore properly discontinuous. The quotient is a smooth flat manifold by [Sectional curvature D.3](sectional-curvature-and-space-forms.md#theorem-d-3), and is compact because the image of \([0,1]\times[0,1]\) covers it. [Hopf–Rinow B.3](completeness-and-the-hopf-rinow-theorem.md#corollary-b-3) makes it complete. Its zero curvature and torsion make it locally symmetric by A.1.
 
 If a global affine point symmetry existed at the image of \((a,b)\), lift it to a diffeomorphism of the simply connected plane fixing that lift, using the covering construction and uniqueness in [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3). The lifted map is affine for the Euclidean connection, by local covering charts, and has differential \(-I\). [Affine transformations E.3](affine-transformations-and-the-isometry-group.md#proposition-e-3) therefore makes it
 \[
@@ -147,12 +147,12 @@ The splitting is invariant under all of \(\operatorname{Ad}(H)\). The quotient \
 
 **Proof.** The fixed group \(G^\sigma\) is closed and hence an embedded Lie subgroup by Invariant connections A.1. A vector fixed by \(\theta\) has its full one-parameter subgroup fixed by \(\sigma\), since
 \(\sigma(\exp tX)=\exp(t\theta X)\);
-this follows from uniqueness of the invariant ODE, Local tools 2.3. Conversely a curve in the fixed group has derivative fixed by \(\theta\). Thus its Lie algebra is \(\ker(\theta-I)\). The inclusions (B.1) make this also the Lie algebra of \(H\).
+this follows from uniqueness of the invariant ODE, [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). Conversely a curve in the fixed group has derivative fixed by \(\theta\). Thus its Lie algebra is \(\ker(\theta-I)\). The inclusions (B.1) make this also the Lie algebra of \(H\).
 
 Since \(\theta^2=I\), each vector splits uniquely as
 \(\frac12(X+\theta X)+\frac12(X-\theta X)\), giving (B.2). Differentiation of a group automorphism preserves the Lie bracket, by [Curvature and holonomy A.3](curvature-and-holonomy-groups.md#lemma-a-3). Therefore the bracket of vectors of signs \(\epsilon,\delta\) has sign \(\epsilon\delta\), proving (B.3). For \(h\in H\), \(\sigma(h)=h\), and differentiation of
 \(\sigma(hgh^{-1})=h\sigma(g)h^{-1}\)
-shows that \(\theta\) commutes with \(\operatorname{Ad}(h)\). This proves invariance of both eigenspaces for the full stabilizer. The quotient and tangent identification are Local tools 4.1 and Invariant connections A.2. □
+shows that \(\theta\) commutes with \(\operatorname{Ad}(h)\). This proves invariance of both eigenspaces for the full stabilizer. The quotient and tangent identification are [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) and Invariant connections A.2. □
 
 **Theorem B.2 (Canonical symmetric geometry).** The canonical connection for (B.2) on \(G/H\) is complete, torsion-free and has parallel curvature. At \(o\), with tangent vectors identified with \(\mathfrak m\),
 \[
@@ -180,7 +180,7 @@ R(X,Y)=-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}.
 \]
 The bracket inclusions (B.3) give zero torsion and (B.4).
 
-The first map in (B.6) is well-defined because \(\sigma\) fixes each element of \(H\), and is smooth in the quotient charts of Local tools 4.1. Its square is the identity. It preserves the canonical connection: on \(G\) that connection has horizontal subspaces \(dL_g\mathfrak m\), as constructed in Invariant connections C.2, and
+The first map in (B.6) is well-defined because \(\sigma\) fixes each element of \(H\), and is smooth in the quotient charts of [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup). Its square is the identity. It preserves the canonical connection: on \(G\) that connection has horizontal subspaces \(dL_g\mathfrak m\), as constructed in Invariant connections C.2, and
 \[
 d\sigma_g(dL_g X)=dL_{\sigma(g)}(\theta X).
 \]
@@ -247,7 +247,7 @@ p^{-1}(p(U))=\coprod_{\gamma\in\ker p}U\gamma .
 Each piece maps diffeomorphically onto \(p(U)\). Translates give this property everywhere. Since \(A\) is connected and \(K\) simply connected, [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) makes \(p\) a diffeomorphism. Set \(F=\operatorname{pr}_L\circ p^{-1}\). It is a homomorphism with derivative \(\varphi\).
 
 Any homomorphism with that derivative satisfies
-\(F(\exp X)=\exp(\varphi X)\), by uniqueness of one-parameter subgroups in Local tools 2.3. These exponentials generate a connected group, as proved in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1). This gives uniqueness.
+\(F(\exp X)=\exp(\varphi X)\), by uniqueness of one-parameter subgroups in [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). These exponentials generate a connected group, as proved in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1). This gives uniqueness.
 
 For a family \(\varphi_a\), the formula
 \[
@@ -314,7 +314,7 @@ Let \(\mathfrak h_V\) be the span of \(R_o(v,w)\) with \(v,w\in V\). Condition (
 \(\mathfrak h_V\oplus V\)
 is a subalgebra of the frame algebra. The constant-coefficient frame fields with these values span a smooth distribution of constant rank \(\dim\mathfrak h_V+\dim V\) on \(Q\), and the bracket formula makes it involutive. [De Rham decomposition B.2](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-b-2) gives a local integral submanifold through the selected frame \(u_o\).
 
-Projection of this integral submanifold to \(M\) has constant rank \(\dim V\): its solder values are exactly \(V\), while its kernel has connection-form values \(\mathfrak h_V\). The constant-rank and submersion coordinate theorems, Local tools 1.4 and Local tools 1.3, give a local embedded image \(N\) through \(o\) and a smooth section \(u:N\to Q\) of this projection taking values in the integral submanifold. Its frames satisfy
+Projection of this integral submanifold to \(M\) has constant rank \(\dim V\): its solder values are exactly \(V\), while its kernel has connection-form values \(\mathfrak h_V\). The constant-rank and submersion coordinate theorems, [Local tools 1.4](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) and [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), give a local embedded image \(N\) through \(o\) and a smooth section \(u:N\to Q\) of this projection taking values in the integral submanifold. Its frames satisfy
 \[
 T_xN=u_xV,\qquad u^*\omega(TN)\subseteq\mathfrak h_V.
 \]
@@ -349,7 +349,7 @@ j:L/H_L\longrightarrow G/H,\qquad \ell H_L\longmapsto i(\ell)H
 \]
 is injective by the definition of \(H_L\). Its derivative at the origin is the injection \(V\hookrightarrow\mathfrak m\), and translation gives injectivity everywhere. Thus it is an injective immersion. The horizontal spaces defining its canonical connection, \(dL_\ell V\), map into the ambient canonical horizontal spaces \(dL_{i(\ell)}\mathfrak m\). The associated tangent connections therefore agree along (C.6), by the construction used in B.2. It is autoparallel and totally geodesic, and B.2 makes its induced connection complete.
 
-For the uniqueness assertion, suppose \(f:N\to M\) is another connected complete injectively immersed totally geodesic submanifold with the same point and tangent space. Its induced torsion is zero and its curvature is parallel, by [Submanifolds G.2](submanifolds-and-hypersurfaces.md#proposition-g-2). These properties also hold for \(L/H_L\). Their local germs agree by C.3, giving a local affine isomorphism. Pass to the connected universal covers of both. [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) constructs the covers, and Hopf–Rinow E.3 proves that covering an affine complete manifold preserves geodesic completeness. [Killing fields C.1](holonomy-killing-fields-and-analytic-extension.md#theorem-c-1) extends the lifted local isomorphism to a global affine isomorphism of the simply connected covers.
+For the uniqueness assertion, suppose \(f:N\to M\) is another connected complete injectively immersed totally geodesic submanifold with the same point and tangent space. Its induced torsion is zero and its curvature is parallel, by [Submanifolds G.2](submanifolds-and-hypersurfaces.md#proposition-g-2). These properties also hold for \(L/H_L\). Their local germs agree by C.3, giving a local affine isomorphism. Pass to the connected universal covers of both. [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) constructs the covers, and [Hopf–Rinow E.3](completeness-and-the-hopf-rinow-theorem.md#theorem-e-3) proves that covering an affine complete manifold preserves geodesic completeness. [Killing fields C.1](holonomy-killing-fields-and-analytic-extension.md#theorem-c-1) extends the lifted local isomorphism to a global affine isomorphism of the simply connected covers.
 
 The two compositions of this isomorphism with the immersions into \(M\) have the same initial value and differential. [Affine transformations A.1](affine-transformations-and-the-isometry-group.md#lemma-a-1) makes these maps equal on the connected cover. Hence their images coincide. Moreover two covering points have the same projection to \(N\) exactly when their common images in \(M\) are equal, because \(f\) is injective; the same holds for (C.6). Thus the isomorphism of covers identifies exactly the same fibres and descends to a bijective local affine isomorphism \(N\to L/H_L\), which is a diffeomorphism. This verifies equality of the intrinsic topologies as well as the images. Allowing covering parametrizations before taking the injective image gives the same conclusion about the image, as stated.
 
@@ -363,9 +363,9 @@ is an injective geodesic immersion: equality of two images would make \(t-s\) an
 
 Its image is dense. For any positive integer \(N\), the \(N+1\) fractional parts of \(0,a,\ldots,Na\) occupy \(N\) equal subintervals of \([0,1]\). Two have distance at most \(1/N\); their difference yields a nonzero integer \(q\) and an integer \(p\) with \(0<|qa-p|\leq1/N\). Changing the sign makes \(qa-p=\delta>0\). Multiples of \(\delta\), up to the last one below \(1\), approximate every number in \([0,1]\) within \(\delta\), and modulo \(1\) they are fractional parts of integer multiples of \(a\). This proves density of those fractional parts. To approximate a prescribed torus point \([(x,y)]\), use \(t=x+m\), \(m\in\mathbb Z\), and approximate \(y-ax\) modulo \(1\) by \(ma\).
 
-The image is proper: over first coordinate zero it has only the countable set \([ma]\) of second coordinates, whereas a circle has uncountably many points. For the latter elementary fact one may use the binary-sequence diagonal argument: no listing includes the sequence differing in its \(j\)-th digit from the \(j\)-th listed sequence, and binary sequences inject into the ternary expansion \(\sum 2b_j3^{-j}\) in \([0,1]\). An embedded one-dimensional submanifold of a surface is locally a coordinate line, by the immersion chart theorem Local tools 1.4, so cannot have a dense image: a small ambient coordinate ball would contain open points off that line. Thus (C.7) is neither closed nor embedded, although its intrinsic orbit is a complete line.
+The image is proper: over first coordinate zero it has only the countable set \([ma]\) of second coordinates, whereas a circle has uncountably many points. For the latter elementary fact one may use the binary-sequence diagonal argument: no listing includes the sequence differing in its \(j\)-th digit from the \(j\)-th listed sequence, and binary sequences inject into the ternary expansion \(\sum 2b_j3^{-j}\) in \([0,1]\). An embedded one-dimensional submanifold of a surface is locally a coordinate line, by the immersion chart theorem [Local tools 1.4](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), so cannot have a dense image: a small ambient coordinate ball would contain open points off that line. Thus (C.7) is neither closed nor embedded, although its intrinsic orbit is a complete line.
 
-In the Riemannian case the intrinsic positive metric on this complete image is complete by Hopf–Rinow B.2, since its geodesics are complete for its induced Levi-Civita connection. The same theorem joins \(o\) to every intrinsic point by one geodesic. Total geodesy therefore yields the exact image formula
+In the Riemannian case the intrinsic positive metric on this complete image is complete by [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2), since its geodesics are complete for its induced Levi-Civita connection. The same theorem joins \(o\) to every intrinsic point by one geodesic. Total geodesy therefore yields the exact image formula
 \[
 j(L/H_L)=\exp_o(V).
 \]
@@ -438,7 +438,7 @@ Now expand \([X,Y]=\sum_a[X_a,Y_a]\). If \(a\ne b\), Jacobi and (D.3) imply
 \]
 For a fixed \(a\), the remaining vector \(-[[X_a,Y_a],Y_a]\) belongs to \(E_a\), since it is \(R(X_a,Y_a)Y_a\). The eigenspaces are orthogonal for \(B\) as well as \(Q\). Pairing the resulting curvature sum with \(X\), and then using (D.6), gives exactly (D.4). Each summand is nonnegative and each \(c_a\) positive, proving its equality criterion. For independent \(X,Y\), division by
 \(B(X,X)B(Y,Y)-B(X,Y)^2>0\)
-gives the sectional assertion; positivity of that denominator is the Gram-matrix argument in Local tools 0.2. No assertion that \(B\) itself extends to an invariant form on all of \(\mathfrak g\) was used. □
+gives the sectional assertion; positivity of that denominator is the Gram-matrix argument in [Local tools 0.2](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). No assertion that \(B\) itself extends to an invariant form on all of \(\mathfrak g\) was used. □
 
 ## E. Matrix models and normalizations
 
@@ -688,7 +688,7 @@ where \(S\) is diagonalizable and \(N\) nilpotent. Both are polynomials in \(A\)
 \]
 Here conjugating the eigenvalues does not mean conjugating matrix entries in an arbitrary basis. For real \(A\), its Jordan parts are real. If \(A\) is a derivation of a Lie algebra, so are its Jordan parts.
 
-**Proof.** We include the polynomial facts needed in this argument. A nonconstant complex polynomial has a root. Indeed its modulus tends to infinity at infinity, by its leading term, so it attains a global minimum on a closed disk, using compactness from Local tools 0.1. If its value at a minimizing point \(z_0\) were nonzero, write
+**Proof.** We include the polynomial facts needed in this argument. A nonconstant complex polynomial has a root. Indeed its modulus tends to infinity at infinity, by its leading term, so it attains a global minimum on a closed disk, using compactness from [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). If its value at a minimizing point \(z_0\) were nonzero, write
 \[
 \frac{p(z_0+w)}{p(z_0)}=1+aw^k+O(|w|^{k+1}),\quad a\ne0,\quad k\geq1.
 \]
@@ -1036,7 +1036,7 @@ We give the group-existence consequence needed for the curvature models in C.2. 
 
 For a finite-dimensional real Lie algebra \(\mathfrak b\), its automorphism group is a closed subgroup of \(GL(\mathfrak b)\): in a basis the equations \(A[x,y]=[Ax,Ay]\) are polynomial in the matrix entries. It is a Lie group by Invariant connections A.1. Its tangent algebra is exactly \(\operatorname{Der}(\mathfrak b)\). Differentiation proves one inclusion. For a derivation \(D\), differentiating
 \(e^{-tD}[e^{tD}x,e^{tD}y]\)
-gives zero by the derivation rule; its initial value is \([x,y]\), so \(e^{tD}\) preserves the bracket and is invertible with inverse \(e^{-tD}\). This proves the other inclusion. The exponential and its differentiation are Local tools 2.3.
+gives zero by the derivation rule; its initial value is \([x,y]\), so \(e^{tD}\) preserves the bracket and is invertible with inverse \(e^{-tD}\). This proves the other inclusion. The exponential and its differentiation are [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters).
 
 The connected universal cover of any connected Lie group is a Lie group. Use the path-class cover of [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2), with based paths starting at the identity, and set \([a][b]=[t\mapsto a(t)b(t)]\), \([a]^{-1}=[t\mapsto a(t)^{-1}]\). Endpoint-preserving homotopies make these operations well-defined, and the group axioms follow pointwise. They are smooth in covering charts: near two fixed path classes, append short coordinate paths at their endpoints. The pointwise product of the resulting paths is a continuous family of paths with endpoint the product in the base group, so it lies in the sheet selected by the two original classes after shrinking the endpoint neighbourhoods. Its endpoint chart is the base multiplication, which is smooth. The inverse has the same description with base inversion. The product family is continuous by continuity on the compact parameter interval, the local path-class chart construction in D.2; no differentiability of the representative paths is needed. Thus the covering is a local Lie-group isomorphism, with the same Lie algebra and simply connected total space.
 
@@ -1078,7 +1078,7 @@ The kernel \(K=\Phi^{-1}(I)\) is a closed embedded Lie subgroup by Invariant con
 \(\Phi(\exp tx)=\exp(t\,d\Phi_e x)=I\)
 for every kernel vector. Its identity component \(K^0\) therefore has Lie algebra \(\mathfrak r\), so uniqueness in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1) makes \(K^0=R\) as a subgroup. Connected components are closed: the closure of a connected set is connected, as a separation of the closure would also separate the dense set. Thus \(R\) is closed in \(K\) and in \(G\).
 
-Local tools 4.1 gives the smooth quotient and local sections. Normality makes multiplication and inversion descend; local sections show that the descended maps are smooth. The quotient projection has differential kernel \(\mathfrak r\), so its Lie algebra is \(\mathfrak g/\mathfrak r\), with the quotient bracket from H.2. It is connected as a continuous image of \(G\), and its Lie algebra is semisimple. □
+[Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives the smooth quotient and local sections. Normality makes multiplication and inversion descend; local sections show that the descended maps are smooth. The quotient projection has differential kernel \(\mathfrak r\), so its Lie algebra is \(\mathfrak g/\mathfrak r\), with the quotient bracket from H.2. It is connected as a continuous image of \(G\), and its Lie algebra is semisimple. □
 
 **Theorem J.2 (The radical bundle of a symmetric space).** For a symmetric presentation \((G,H,\sigma)\), let \(R\) be its radical subgroup and \(\pi:G\to Q=G/R\). Then \(K=\pi(H)\) is closed, and
 \[
@@ -1100,9 +1100,9 @@ The fixed group is a Lie group by Invariant connections A.1. Its identity compon
 
 The inverse image \(\pi^{-1}(K)\) equals \(RH\). Indeed if \(\pi(g)=\pi(h)\), then \(gh^{-1}\in R\), and the reverse inclusion is immediate. The fibre of (J.1) at \(eK\) is therefore exactly the orbit \(RH/H\) of \(R\), with stabilizer \(R\cap H\). This orbit is a smooth embedded fibre: the differential of the map between quotients is the surjection
 \(\mathfrak g/\mathfrak h\to(\mathfrak g/\mathfrak r)/d\pi(\mathfrak h)\),
-so Local tools 1.3 gives its fibre charts. The transitive orbit theorem Invariant connections A.2 identifies that fibre with (J.2).
+so [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives its fibre charts. The transitive orbit theorem Invariant connections A.2 identifies that fibre with (J.2).
 
-For local triviality choose a smooth local section \(s:U\to Q\) of \(Q\to Q/K\), and shrink \(U\) so that its image lifts smoothly to \(\widetilde s:U\to G\) under \(G\to Q\). Both sections exist by Local tools 4.1. The map
+For local triviality choose a smooth local section \(s:U\to Q\) of \(Q\to Q/K\), and shrink \(U\) so that its image lifts smoothly to \(\widetilde s:U\to G\) under \(G\to Q\). Both sections exist by [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup). The map
 \[
 U\times R/(R\cap H)\longrightarrow (J.1)^{-1}(U),\qquad
 (b,r(R\cap H))\longmapsto\widetilde s(b)rH
@@ -1114,7 +1114,7 @@ The group \(R\) is invariant under \(\sigma\), and \(R\cap H\) lies between the 
 
 **Theorem J.3 (A global totally geodesic section).** If in J.2 the group \(G\) is simply connected and \(H\) is connected, every \(\theta\)-stable Levi subalgebra supplied by I.4 integrates to a closed connected subgroup \(S\subseteq G\). Projection identifies \(S\) with \(Q=G/R\), and it gives a global totally geodesic section of (J.1).
 
-**Proof.** First \(Q\) is simply connected. Every loop in \(Q\) based at the identity lifts to a path in \(G\) starting at the identity, by covering its compact parameter interval with finitely many quotient-section neighbourhoods from Local tools 4.1 and adjusting each new lift by an element of \(R\) to match the previous endpoint. Its final point is in \(R\). Because \(R\) is connected and a manifold, it is path connected: coordinate balls are path connected, so path components are open and connectedness leaves only one. Join the final point back to the identity by a path in \(R\). This closes the lifted path into a loop in \(G\), which contracts since \(G\) is simply connected. Projecting the contraction contracts the original loop with an appended constant interval; rescaling that interval gives a contraction of the original loop. Thus \(Q\) is simply connected.
+**Proof.** First \(Q\) is simply connected. Every loop in \(Q\) based at the identity lifts to a path in \(G\) starting at the identity, by covering its compact parameter interval with finitely many quotient-section neighbourhoods from [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) and adjusting each new lift by an element of \(R\) to match the previous endpoint. Its final point is in \(R\). Because \(R\) is connected and a manifold, it is path connected: coordinate balls are path connected, so path components are open and connectedness leaves only one. Join the final point back to the identity by a path in \(R\). This closes the lifted path into a loop in \(G\), which contracts since \(G\) is simply connected. Projecting the contraction contracts the original loop with an appended constant interval; rescaling that interval gives a contraction of the original loop. Thus \(Q\) is simply connected.
 
 Projection restricts to a Lie-algebra isomorphism
 \(\mathfrak s\to\mathfrak g/\mathfrak r\).
@@ -1122,7 +1122,7 @@ Integrate its inverse by C.1, with the now simply connected domain \(Q\), to obt
 \[
 j(Q)=\{g\in G:j(\pi(g))=g\},
 \]
-the equalizer of two continuous maps into a Hausdorff space. It is an embedded subgroup: \(dj\) is injective, and the continuous inverse \(\pi\) makes the immersion a homeomorphism onto its image; its local immersion charts are Local tools 1.4. Its connected Lie algebra is \(\mathfrak s\), so uniqueness in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1) identifies it with the connected analytic subgroup \(S\) specified in the statement.
+the equalizer of two continuous maps into a Hausdorff space. It is an embedded subgroup: \(dj\) is injective, and the continuous inverse \(\pi\) makes the immersion a homeomorphism onto its image; its local immersion charts are [Local tools 1.4](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion). Its connected Lie algebra is \(\mathfrak s\), so uniqueness in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1) identifies it with the connected analytic subgroup \(S\) specified in the statement.
 
 The two homomorphisms \(\sigma j\) and \(j\sigma_Q\) have the same derivative, because \(\mathfrak s\) is stable under the involution. C.1 gives \(\sigma j=j\sigma_Q\). Multiplication defines a diffeomorphism
 \[
@@ -1220,7 +1220,7 @@ K(X(P,Q),X(P',Q'))
 \]
 Each block space is thus isotropic, and the two are paired nondegenerately: individual opposite matrix units have pairing \(2n\), and all other basis pairings vanish. Their sums and differences give \(pq\) positive and \(pq\) negative directions, proving the signature.
 
-For the actual symmetric space take \(G=SL(n,\mathbb R)^0\) and \(H=G^\sigma\). The determinant-one group is a closed Lie subgroup by Invariant connections A.1. Its Lie algebra is the traceless algebra: differentiating the determinant at the identity gives trace; conversely, for traceless \(X\), the determinant of \(\exp(tX)\) has derivative \((\operatorname{tr}X)\det(\exp(tX))=0\) and initial value one. The derivative formula follows by cofactor expansion at an invertible matrix, and the exponential ODE is Local tools 2.3. This whole exponential path lies in the identity component. Conjugation by the indicated diagonal matrix preserves \(G\), and \(H\) is the full closed fixed subgroup, so B.1 applies. Formula (K.1) is invariant under conjugation by cyclicity of trace; hence its nondegenerate odd restriction is invariant under all of \(H\). B.2 now gives the complete globally symmetric pseudo-Riemannian metric. The existence of the two isotropic invariant tangent pieces therefore occurs even for a simple acting algebra; it does not contradict D.2, whose metric is positive definite. □
+For the actual symmetric space take \(G=SL(n,\mathbb R)^0\) and \(H=G^\sigma\). The determinant-one group is a closed Lie subgroup by Invariant connections A.1. Its Lie algebra is the traceless algebra: differentiating the determinant at the identity gives trace; conversely, for traceless \(X\), the determinant of \(\exp(tX)\) has derivative \((\operatorname{tr}X)\det(\exp(tX))=0\) and initial value one. The derivative formula follows by cofactor expansion at an invertible matrix, and the exponential ODE is [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). This whole exponential path lies in the identity component. Conjugation by the indicated diagonal matrix preserves \(G\), and \(H\) is the full closed fixed subgroup, so B.1 applies. Formula (K.1) is invariant under conjugation by cyclicity of trace; hence its nondegenerate odd restriction is invariant under all of \(H\). B.2 now gives the complete globally symmetric pseudo-Riemannian metric. The existence of the two isotropic invariant tangent pieces therefore occurs even for a simple acting algebra; it does not contradict D.2, whose metric is positive definite. □
 
 ## Further reading
 

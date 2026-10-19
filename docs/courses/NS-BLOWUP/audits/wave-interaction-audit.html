@@ -1,0 +1,580 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="wave-interaction-audit.md">Editable source</a></nav><h1 id="nonlinear-wave-interactions">Nonlinear wave interactions</h1>
+<p>The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>. This note proves the nonlinear interaction map used after the two mean corrections, the exact incompressibility cancellation for actual waves, and the separation of distinct labels. The companion pulse audit supplies the local pulse inverse and its full linear residual.</p>
+<p>The source is OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original PDF</a>, SHA-256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>. The relevant source pages are 65–66, 70–74, 85–86 and 102–104. Source locators are (6.1)–(6.16), Definition 6.5, Proposition 6.6, (7.2)–(7.4), (7.37)–(7.39), Lemma 9.2 and the product part of Proposition 9.3.</p>
+<p><img src="assets/wave-interaction-maps.png" alt="Exact interaction maps and the divergence cancellation" class="course-figure" width="1920" height="1275" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="EDF24735E1D8F3ABE86BCC25DF96007347C3B2B6A7D1F42A767EDB786162DD6D"></p>
+<p>This diagram displays the coefficient maps proved in W4–W7. It is a schematic of exact identities and class estimates, not sampled flow data. Both inputs to the lower map use one label and the complete divergence-free amplitudes. The cylinder-frame terms remain in (W5.1) and (W6.2). <a href="assets/wave-interaction-maps.py">Reproducible figure source</a>. Human-source locators: original (7.39) and Lemma 9.2; the full proofs and support construction are below.</p>
+<h2 id="w1-original-coordinates-operators-and-angular-averaging">W1. Original coordinates, operators and angular averaging</h2>
+<p>Keep the original parameters and coordinates</p>
+<span class="math math-display" data-tex="\[
+0&lt;h&lt;1/100,\quad A=1/2+h,\quad D=1/2-h,\quad
+Q=2^{-\ell},\quad\varepsilon=Q^h,\quad S_*=\ell^2,
+\quad R=r/\sqrt Q,\quad Z=z/Q^D,\quad T=(1-t)/Q.
+\tag{W1.1}
+\]">\[
+0&lt;h&lt;1/100,\quad A=1/2+h,\quad D=1/2-h,\quad
+Q=2^{-\ell},\quad\varepsilon=Q^h,\quad S_*=\ell^2,
+\quad R=r/\sqrt Q,\quad Z=z/Q^D,\quad T=(1-t)/Q.
+\tag{W1.1}
+\]</span>
+<p>The original variables satisfy <span class="math" data-tex="\(z=q^D\eta\)">\(z=q^D\eta\)</span>, <span class="math" data-tex="\(1-t=q(1-\eta^2)\)">\(1-t=q(1-\eta^2)\)</span>, <span class="math" data-tex="\(X=r^2/(2q)\)">\(X=r^2/(2q)\)</span>. On a band, <span class="math" data-tex="\(q/Q\in[1/2,2]\)">\(q/Q\in[1/2,2]\)</span>; the active radial shell has <span class="math" data-tex="\(X_a\le X\le X_b\)">\(X_a\le X\le X_b\)</span> with <span class="math" data-tex="\(X_a&gt;0\)">\(X_a&gt;0\)</span>. Thus <span class="math" data-tex="\(R^2=2(q/Q)X\)">\(R^2=2(q/Q)X\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\sqrt{X_a}\le R\le2\sqrt{X_b}.
+\tag{W1.2}
+\]">\[
+\sqrt{X_a}\le R\le2\sqrt{X_b}.
+\tag{W1.2}
+\]</span>
+<p>The bounds may be enlarged by fixed amounts inside the coordinate domain. No term involving <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> or <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span> is suppressed.</p>
+<p>Retain the actual auxiliary torus and its covering maps:</p>
+<span class="math math-display" data-tex="\[
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+\Lambda_g=4-\sqrt2,\quad T_g=4+\sqrt2,\quad b_g=\sqrt2-1,
+\]">\[
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+\Lambda_g=4-\sqrt2,\quad T_g=4+\sqrt2,\quad b_g=\sqrt2-1,
+\]</span>
+<span class="math math-display" data-tex="\[
+v_r=(1,-b_g),\quad v_t=(b_g,1),\quad
+\rho_g=\frac{\log\Lambda_g}{\log T_g},\quad
+\kappa_s=10^{-5},\quad d_r=2((1+h)\rho_g-h\kappa_s),
+\]">\[
+v_r=(1,-b_g),\quad v_t=(b_g,1),\quad
+\rho_g=\frac{\log\Lambda_g}{\log T_g},\quad
+\kappa_s=10^{-5},\quad d_r=2((1+h)\rho_g-h\kappa_s),
+\]</span>
+<span class="math math-display" data-tex="\[
+Y=v_r r^{d_r}+v_t t\pmod{\mathbb Z^2},\quad
+Y_i=J_g^iY,\quad
+i=i(\ell)=\left\lfloor\frac{(1+h)\ell\log2-2\log\ell}{\log T_g}\right\rfloor.
+\tag{W1.3}
+\]">\[
+Y=v_r r^{d_r}+v_t t\pmod{\mathbb Z^2},\quad
+Y_i=J_g^iY,\quad
+i=i(\ell)=\left\lfloor\frac{(1+h)\ell\log2-2\log\ell}{\log T_g}\right\rfloor.
+\tag{W1.3}
+\]</span>
+<p>Only large bands with <span class="math" data-tex="\(i\ge0\)">\(i\ge0\)</span> are used. On a band representative set</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_i=v_r\cdot\partial_{Y_i},\quad N_i=v_t\cdot\partial_{Y_i},\quad
+M_i=\Lambda_g^iQ^{d_r/2},\quad c_i=T_g^iQ^{1+h}.
+\]">\[
+\mathcal L_i=v_r\cdot\partial_{Y_i},\quad N_i=v_t\cdot\partial_{Y_i},\quad
+M_i=\Lambda_g^iQ^{d_r/2},\quad c_i=T_g^iQ^{1+h}.
+\]</span>
+<p>The full physical chain rule is</p>
+<span class="math math-display" data-tex="\[
+D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
+D_z=\varepsilon\partial_Z,\quad D_\theta=R^{-1}\partial_\theta,
+\quad\mathfrak t_*=-\varepsilon\partial_T+c_iN_i.
+\tag{W1.4}
+\]">\[
+D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
+D_z=\varepsilon\partial_Z,\quad D_\theta=R^{-1}\partial_\theta,
+\quad\mathfrak t_*=-\varepsilon\partial_T+c_iN_i.
+\tag{W1.4}
+\]</span>
+<p>These operators have not replaced the physical ones: <span class="math" data-tex="\(D_r=\sqrt Q\,\mathfrak r\)">\(D_r=\sqrt Q\,\mathfrak r\)</span>, <span class="math" data-tex="\(D_z=\sqrt Q\partial_z\)">\(D_z=\sqrt Q\partial_z\)</span>, and <span class="math" data-tex="\(\mathfrak t_*=Q^{1+h}(\partial_t+N_{\rm abs})\)">\(\mathfrak t_*=Q^{1+h}(\partial_t+N_{\rm abs})\)</span> before evaluation, where <span class="math" data-tex="\(\mathfrak r=\partial_r+d_rr^{d_r-1}\mathcal L_{\rm abs}\)">\(\mathfrak r=\partial_r+d_rr^{d_r-1}\mathcal L_{\rm abs}\)</span>. In particular</p>
+<span class="math math-display" data-tex="\[
+[D_r,D_z]=[D_r,\partial_\theta]=[D_z,\partial_\theta]=0,
+\qquad D_r(R^{-1})=-R^{-2},\quad D_z(R^{-1})=0.
+\tag{W1.5}
+\]">\[
+[D_r,D_z]=[D_r,\partial_\theta]=[D_z,\partial_\theta]=0,
+\qquad D_r(R^{-1})=-R^{-2},\quad D_z(R^{-1})=0.
+\tag{W1.5}
+\]</span>
+<p>They follow directly because the only nonconstant coefficient of the auxiliary part of <span class="math" data-tex="\(D_r\)">\(D_r\)</span> depends on <span class="math" data-tex="\(R\)">\(R\)</span> alone. Constant-coefficient auxiliary derivatives commute.</p>
+<p>All vector components below are in the original orthonormal cylindrical frame <span class="math" data-tex="\((e_r,e_\theta,e_z)\)">\((e_r,e_\theta,e_z)\)</span>. Its derivatives are <span class="math" data-tex="\(\partial_\theta e_r=e_\theta\)">\(\partial_\theta e_r=e_\theta\)</span>, <span class="math" data-tex="\(\partial_\theta e_\theta=-e_r\)">\(\partial_\theta e_\theta=-e_r\)</span>, <span class="math" data-tex="\(\partial_\theta e_z=0\)">\(\partial_\theta e_z=0\)</span>. For component columns <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, the exact transport is</p>
+<span class="math math-display" data-tex="\[
+\mathcal B(u,v)=u_rD_rv+u_\theta R^{-1}\partial_\theta v+u_zD_zv
++R^{-1}(-u_\theta v_\theta,u_\theta v_r,0).
+\tag{W1.6}
+\]">\[
+\mathcal B(u,v)=u_rD_rv+u_\theta R^{-1}\partial_\theta v+u_zD_zv
++R^{-1}(-u_\theta v_\theta,u_\theta v_r,0).
+\tag{W1.6}
+\]</span>
+<p>The last column comes from differentiating the frame and is part of transport. The dot products of complex harmonic coefficients used below are bilinear, not Hermitian.</p>
+<p>Here <span class="math" data-tex="\(\langle\cdot\rangle_\theta\)">\(\langle\cdot\rangle_\theta\)</span> averages the cylindrical component columns over <span class="math" data-tex="\(0\le\theta\le2\pi\)">\(0\le\theta\le2\pi\)</span>, exactly as in the source mean equations. It is not the operation of averaging the Cartesian components while keeping a fixed Cartesian frame. It also differs from auxiliary Haar averaging. For a fixed label with</p>
+<span class="math math-display" data-tex="\[
+\Phi=p\theta+\varphi(R,Z,T,H),\qquad kp\in\mathbb Z\setminus\{0\},
+\]">\[
+\Phi=p\theta+\varphi(R,Z,T,H),\qquad kp\in\mathbb Z\setminus\{0\},
+\]</span>
+<p>and a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-independent column <span class="math" data-tex="\(a\)">\(a\)</span>, direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\langle ae^{ikm\Phi}\rangle_\theta=0\quad(m\ne0),\qquad
+\langle ab\,e^{ik(m+m&#x27;)\Phi}\rangle_\theta=
+\begin{cases}ab,&amp;m+m&#x27;=0,\\0,&amp;m+m&#x27;\ne0.\end{cases}
+\tag{W1.7}
+\]">\[
+\langle ae^{ikm\Phi}\rangle_\theta=0\quad(m\ne0),\qquad
+\langle ab\,e^{ik(m+m&#x27;)\Phi}\rangle_\theta=
+\begin{cases}ab,&amp;m+m&#x27;=0,\\0,&amp;m+m&#x27;\ne0.\end{cases}
+\tag{W1.7}
+\]</span>
+<p>Indeed the integral of <span class="math" data-tex="\(e^{in\theta}\)">\(e^{in\theta}\)</span> is <span class="math" data-tex="\((e^{2\pi in}-1)/(in)=0\)">\((e^{2\pi in}-1)/(in)=0\)</span> for a nonzero integer <span class="math" data-tex="\(n\)">\(n\)</span>. The frame terms in (W1.6) have already been expressed in component columns, so this calculation applies to them too.</p>
+<h2 id="w2-separation-on-the-absolute-torus-including-closed-boundaries">W2. Separation on the absolute torus, including closed boundaries</h2>
+<p>This supplies the distinct-label part of Lemma 9.2 rather than discarding those products by an assumption. The labels are <span class="math" data-tex="\(\gamma=(\ell,a,\sigma)\)">\(\gamma=(\ell,a,\sigma)\)</span>, <span class="math" data-tex="\(\sigma\in\{+,-\}\)">\(\sigma\in\{+,-\}\)</span>. The slow cutoff is the original <span class="math" data-tex="\(\eta_\gamma=\chi_\ell(q)\chi_{\ell,a}(R,Z,T)\)">\(\eta_\gamma=\chi_\ell(q)\chi_{\ell,a}(R,Z,T)\)</span>, and <span class="math" data-tex="\(K_\gamma\)">\(K_\gamma\)</span> is its closed physical slow support. Mesh lengths in chart coordinates are <span class="math" data-tex="\(S_*^{-3}=\ell^{-6}\)">\(S_*^{-3}=\ell^{-6}\)</span>; each original box extends at most one mesh length from its grid center in each direction.</p>
+<p>Enlarge the boxes by a fixed factor, writing <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span> for their half-width in mesh units. Join distinct labels whenever the enlarged physical boxes meet and <span class="math" data-tex="\(|\ell-\ell&#x27;|\le4\)">\(|\ell-\ell&#x27;|\le4\)</span>. Opposite signs at one box are joined. If the original slow supports meet, both <span class="math" data-tex="\(q/Q\)">\(q/Q\)</span> and <span class="math" data-tex="\(q/Q&#x27;\)">\(q/Q&#x27;\)</span> belong to <span class="math" data-tex="\([1/2,2]\)">\([1/2,2]\)</span>, hence <span class="math" data-tex="\(|\ell-\ell&#x27;|\le2\)">\(|\ell-\ell&#x27;|\le2\)</span>; this pair is therefore joined.</p>
+<p>The physical mesh lengths in the three directions are</p>
+<span class="math math-display" data-tex="\[
+d_{\ell,r}=2^{-\ell/2}\ell^{-6},\qquad
+d_{\ell,z}=2^{-D\ell}\ell^{-6},\qquad
+d_{\ell,t}=2^{-\ell}\ell^{-6}.
+\]">\[
+d_{\ell,r}=2^{-\ell/2}\ell^{-6},\qquad
+d_{\ell,z}=2^{-D\ell}\ell^{-6},\qquad
+d_{\ell,t}=2^{-\ell}\ell^{-6}.
+\]</span>
+<p>For <span class="math" data-tex="\(\ell,\ell&#x27;\ge\ell_0\ge1\)">\(\ell,\ell&#x27;\ge\ell_0\ge1\)</span> and <span class="math" data-tex="\(|\ell-\ell&#x27;|\le4\)">\(|\ell-\ell&#x27;|\le4\)</span>, every ratio in either direction is at most</p>
+<span class="math math-display" data-tex="\[
+M_{\rm mesh}=2^{4\max\{1/2,|D|,1\}}(1+4/\ell_0)^6.
+\tag{W2.1}
+\]">\[
+M_{\rm mesh}=2^{4\max\{1/2,|D|,1\}}(1+4/\ell_0)^6.
+\tag{W2.1}
+\]</span>
+<p>To meet a fixed box, a grid center in the other band must be within <span class="math" data-tex="\(L(d_{\ell,j}+d_{\ell&#x27;,j})\)">\(L(d_{\ell,j}+d_{\ell&#x27;,j})\)</span> in coordinate <span class="math" data-tex="\(j\)">\(j\)</span>. The number of admissible grid points in that coordinate is at most
+<span class="math" data-tex="\(N_{\rm mesh}=2\lceil L(1+M_{\rm mesh})\rceil+1\)">\(N_{\rm mesh}=2\lceil L(1+M_{\rm mesh})\rceil+1\)</span>.
+There are at most nine bands and two signs. Consequently the graph degree is at most <span class="math" data-tex="\(18N_{\rm mesh}^3-1\)">\(18N_{\rm mesh}^3-1\)</span>. This bound includes the opposite-sign pair. Restricting the grid to boxes meeting the active set only reduces the number.</p>
+<p>Enumerate the countable labels and assign each the first of <span class="math" data-tex="\(18N_{\rm mesh}^3\)">\(18N_{\rm mesh}^3\)</span> colors absent from its already colored neighbors. The degree bound leaves a color at every step. An edge has unequal colors once its later endpoint is colored. This constructs the required finite coloring also for the infinite set of bands.</p>
+<p>For the covering indices, the mean value theorem applied to <span class="math" data-tex="\(\log\ell\)">\(\log\ell\)</span>, followed by the floor inequality <span class="math" data-tex="\(|\lfloor x\rfloor-\lfloor y\rfloor|\le|x-y|+1\)">\(|\lfloor x\rfloor-\lfloor y\rfloor|\le|x-y|+1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|i(\ell)-i(\ell&#x27;)|\le
+1+\frac{4(1+h)\log2+8/\ell_0}{\log T_g}\le\Delta_{\max}
+\tag{W2.2}
+\]">\[
+|i(\ell)-i(\ell&#x27;)|\le
+1+\frac{4(1+h)\log2+8/\ell_0}{\log T_g}\le\Delta_{\max}
+\tag{W2.2}
+\]</span>
+<p>for one fixed integer <span class="math" data-tex="\(\Delta_{\max}\)">\(\Delta_{\max}\)</span>. This is the original (6.14), with its logarithmic and floor contributions retained.</p>
+<p>Choose a torus center <span class="math" data-tex="\(c_\nu\)">\(c_\nu\)</span> for each color, subject to every ordered inequality</p>
+<span class="math math-display" data-tex="\[
+c_\mu\ne J_g^\Delta c_\nu\pmod{\mathbb Z^2},\quad
+0\le\Delta\le\Delta_{\max},
+\quad(\Delta,\nu,\mu)\ne(0,\nu,\nu).
+\tag{W2.3}
+\]">\[
+c_\mu\ne J_g^\Delta c_\nu\pmod{\mathbb Z^2},\quad
+0\le\Delta\le\Delta_{\max},
+\quad(\Delta,\nu,\mu)\ne(0,\nu,\nu).
+\tag{W2.3}
+\]</span>
+<p>There are finitely many constraints. For unequal colors, an excluded equality has empty interior: vary <span class="math" data-tex="\(c_\mu\)">\(c_\mu\)</span> while fixing the other coordinates. For equal colors and <span class="math" data-tex="\(\Delta&gt;0\)">\(\Delta&gt;0\)</span>, the eigenvalues of <span class="math" data-tex="\(J_g^\Delta-I\)">\(J_g^\Delta-I\)</span> are <span class="math" data-tex="\(\Lambda_g^\Delta-1\)">\(\Lambda_g^\Delta-1\)</span> and <span class="math" data-tex="\(T_g^\Delta-1\)">\(T_g^\Delta-1\)</span>, both nonzero. Its torus kernel is finite: in a bounded fundamental square the integer vector <span class="math" data-tex="\((J_g^\Delta-I)c\)">\((J_g^\Delta-I)c\)</span> has only finitely many possible values, each with at most one preimage there. Thus that excluded set too is closed with empty interior. The finite union cannot contain an open set: successively remove each closed set from a nonempty open subset. The complement is open and dense, and contains a rational tuple since rational coordinate points are dense. Fix such a tuple and let <span class="math" data-tex="\(s_0&gt;0\)">\(s_0&gt;0\)</span> be the smallest distance of the finitely many forbidden differences in (W2.3) to <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>.</p>
+<p>Set <span class="math" data-tex="\(C_e=2\sqrt{2(1+b_g^2)}\)">\(C_e=2\sqrt{2(1+b_g^2)}\)</span>. A closed enlarged rectangle centered at <span class="math" data-tex="\(c_\nu\)">\(c_\nu\)</span> has displacements <span class="math" data-tex="\(e=\xi v_r+\eta v_t\)">\(e=\xi v_r+\eta v_t\)</span>, <span class="math" data-tex="\(|\xi|,|\eta|\le2r_0\)">\(|\xi|,|\eta|\le2r_0\)</span>, hence <span class="math" data-tex="\(|e|\le C_e r_0\)">\(|e|\le C_e r_0\)</span>, since the two eigenvectors are orthogonal with norm <span class="math" data-tex="\(\sqrt{1+b_g^2}\)">\(\sqrt{1+b_g^2}\)</span>. Choose</p>
+<span class="math math-display" data-tex="\[
+0&lt;r_0&lt;\min\left\{\frac1{4C_e},\frac{s_0}{2C_e(T_g^{\Delta_{\max}}+1)}\right\}.
+\tag{W2.4}
+\]">\[
+0&lt;r_0&lt;\min\left\{\frac1{4C_e},\frac{s_0}{2C_e(T_g^{\Delta_{\max}}+1)}\right\}.
+\tag{W2.4}
+\]</span>
+<p>The diameter of an enlarged rectangle is less than one, so distinct points in its parameter square cannot differ by a nonzero integer vector; its torus parametrization is injective. Also <span class="math" data-tex="\(J_g\)">\(J_g\)</span> is symmetric positive definite, so <span class="math" data-tex="\(\|J_g^\Delta\|_2=T_g^\Delta\)">\(\|J_g^\Delta\|_2=T_g^\Delta\)</span>. If a point of the absolute torus belonged to closed enlarged preimages for two joined labels at levels <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(i+\Delta\)">\(i+\Delta\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+c_\mu-J_g^\Delta c_\nu=J_g^\Delta e_\nu-e_\mu\pmod{\mathbb Z^2},
+\]">\[
+c_\mu-J_g^\Delta c_\nu=J_g^\Delta e_\nu-e_\mu\pmod{\mathbb Z^2},
+\]</span>
+<p>whose right side has norm at most <span class="math" data-tex="\(C_er_0(T_g^\Delta+1)&lt;s_0/2\)">\(C_er_0(T_g^\Delta+1)&lt;s_0/2\)</span>, contradicting the definition of <span class="math" data-tex="\(s_0\)">\(s_0\)</span>. At <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span> the colors are unequal, so the forbidden constraint is among those imposed. This proves the original closed-support separation (6.13).</p>
+<p>If two labels have disjoint slow supports their field products vanish there. If their slow supports meet, their closed enlarged auxiliary supports have just been proved disjoint on the absolute torus. Thus the product is zero at every extended-space point. A derivative of a smooth field has support contained in the original closed support: on the open complement the field and all derivatives are identically zero. This proves zero products for every pair of derivatives, including derivatives of the cylindrical frame. Restriction to the physical map <span class="math" data-tex="\(Y=v_rr^{d_r}+v_tt\)">\(Y=v_rr^{d_r}+v_tt\)</span> preserves the exact zero identity. No inverse of a torus covering is used in this argument.</p>
+<p>The complete <a href="oscillatory-supports-audit.html">support construction</a>, OS0–OS7, supplies the original slow partitions, common-torus sheets, Haar identities, pulse paths and coefficient algebra. OS7.6–OS7.7 gives a finite rational selection of every color center with an explicit admissible radius. OS7.3 proves the precise directional inverse comparison; OS7.13 retains every band and viscosity factor in the actual angular covariance.</p>
+<h2 id="w3-coefficient-bounds-and-the-phase-factors-that-enter-transport">W3. Coefficient bounds and the phase factors that enter transport</h2>
+<p>The mean class <span class="math" data-tex="\(\mathsf M_\beta\)">\(\mathsf M_\beta\)</span> has, for every fixed multi-index <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\((R,Z,T,H_1,H_2)\)">\((R,Z,T,H_1,H_2)\)</span>, bounds</p>
+<span class="math math-display" data-tex="\[
+|\partial^I f|\le C_I\varepsilon^\beta S_*^{B_I}\zeta\delta^{-D_I}.
+\tag{W3.1}
+\]">\[
+|\partial^I f|\le C_I\varepsilon^\beta S_*^{B_I}\zeta\delta^{-D_I}.
+\tag{W3.1}
+\]</span>
+<p>The wave class <span class="math" data-tex="\(\mathsf W_\alpha\)">\(\mathsf W_\alpha\)</span> has the original local support, torus compatibility and bounds</p>
+<span class="math math-display" data-tex="\[
+|\partial^I a_{\gamma,m}|\le C_{j,I}\varepsilon^\alpha
+S_*^{B_{j,I}}\sqrt\zeta\delta^{-D_{j,I}}P_v,
+\quad 0\le v\le L_s,\quad0&lt;P_v\le1.
+\tag{W3.2}
+\]">\[
+|\partial^I a_{\gamma,m}|\le C_{j,I}\varepsilon^\alpha
+S_*^{B_{j,I}}\sqrt\zeta\delta^{-D_{j,I}}P_v,
+\quad 0\le v\le L_s,\quad0&lt;P_v\le1.
+\tag{W3.2}
+\]</span>
+<p>Retain the full source weight and edge variable from (6.23):</p>
+<span class="math math-display" data-tex="\[
+\zeta(X)=\exp\left(-\frac{a_a}{\log^2(X/X_a)}-\frac{a_b}{\log^2(X_b/X)}\right),\quad
+\delta(X)=\min\{1,\log(X/X_a),\log(X_b/X)\},\quad a_a,a_b&gt;0.
+\]">\[
+\zeta(X)=\exp\left(-\frac{a_a}{\log^2(X/X_a)}-\frac{a_b}{\log^2(X_b/X)}\right),\quad
+\delta(X)=\min\{1,\log(X/X_a),\log(X_b/X)\},\quad a_a,a_b&gt;0.
+\]</span>
+<p>The weight is zero outside <span class="math" data-tex="\((X_a,X_b)\)">\((X_a,X_b)\)</span>, and <span class="math" data-tex="\(0\le\zeta\le1\)">\(0\le\zeta\le1\)</span>. The envelope is a pointwise factor; we do not differentiate an assumed estimate for <span class="math" data-tex="\(P_v\)">\(P_v\)</span>. Instead each differentiated amplitude has its own bound (W3.2). The constants and polynomial degrees may depend on the fixed derivative order and the finite stage, but not on the label or band. Harmonics are in a fixed finite set <span class="math" data-tex="\(\mathscr H_j\subset\mathbb Z\setminus\{0\}\)">\(\mathscr H_j\subset\mathbb Z\setminus\{0\}\)</span>.</p>
+<p>The support in the label domain is <span class="math" data-tex="\(x_*\in K_\gamma^*\)">\(x_*\in K_\gamma^*\)</span>, <span class="math" data-tex="\(\xi_g(H)\in\operatorname{supp}\chi_g\)">\(\xi_g(H)\in\operatorname{supp}\chi_g\)</span>, <span class="math" data-tex="\(X_a\le X\le X_b\)">\(X_a\le X\le X_b\)</span>. Actual velocities also have <span class="math" data-tex="\(v(H)\in\operatorname{supp}\psi\)">\(v(H)\in\operatorname{supp}\psi\)</span>, compactly inside <span class="math" data-tex="\((0,L_s)\)">\((0,L_s)\)</span>, and smooth zero extension. Uncut pulse coefficients have no temporal zero-extension requirement. All global mean-output assertions below concern actual cut fields.</p>
+<p>The floor bounds for (W1.3) give</p>
+<span class="math math-display" data-tex="\[
+T_g^{-1}S_*^{-1}&lt;c_i\le S_*^{-1},\qquad
+\Lambda_g^{-1}\varepsilon^{-\kappa_s}S_*^{-\rho_g}
+&lt;M_i\le\varepsilon^{-\kappa_s}S_*^{-\rho_g}.
+\tag{W3.3}
+\]">\[
+T_g^{-1}S_*^{-1}&lt;c_i\le S_*^{-1},\qquad
+\Lambda_g^{-1}\varepsilon^{-\kappa_s}S_*^{-\rho_g}
+&lt;M_i\le\varepsilon^{-\kappa_s}S_*^{-\rho_g}.
+\tag{W3.3}
+\]</span>
+<p>For the second bound use <span class="math" data-tex="\(\Lambda_g^i=(T_g^i)^{\rho_g}\)">\(\Lambda_g^i=(T_g^i)^{\rho_g}\)</span> and retain
+<span class="math" data-tex="\(Q^{d_r/2-(1+h)\rho_g}=Q^{-h\kappa_s}=\varepsilon^{-\kappa_s}\)">\(Q^{d_r/2-(1+h)\rho_g}=Q^{-h\kappa_s}=\varepsilon^{-\kappa_s}\)</span>.
+Consequently <span class="math" data-tex="\(D_r\)">\(D_r\)</span> costs at most <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span>, <span class="math" data-tex="\(D_z=\varepsilon\partial_Z\)">\(D_z=\varepsilon\partial_Z\)</span> adds one, and coefficient derivatives themselves do not change the exponent. Further fixed derivatives of these estimates differentiate only the displayed coefficients and the amplitude; the single explicit <span class="math" data-tex="\(D_r\)">\(D_r\)</span> does not cost another <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span> each time the estimate is differentiated.</p>
+<p>These assertions also hold on a common torus <span class="math" data-tex="\(H=J_g^{i_0}Y\)">\(H=J_g^{i_0}Y\)</span>. A band function there is the composition with <span class="math" data-tex="\(J_g^{i-i_0}\)">\(J_g^{i-i_0}\)</span>, not with a purported inverse covering. For bands meeting a fixed neighborhood the integer differences are bounded by (W2.2). Repeated chain rules therefore introduce only fixed powers of matrices from a finite set. In the following comparison the physical band scale <span class="math" data-tex="\(Q\)">\(Q\)</span> stays fixed while the torus index changes. On a pullback,</p>
+<span class="math math-display" data-tex="\[
+M_{i_0}\mathcal L_{i_0}(f\circ J_g^{i-i_0})
+=M_{i_0}\Lambda_g^{i-i_0}(\mathcal L_i f)\circ J_g^{i-i_0}
+=M_i(\mathcal L_i f)\circ J_g^{i-i_0}.
+\tag{W3.4}
+\]">\[
+M_{i_0}\mathcal L_{i_0}(f\circ J_g^{i-i_0})
+=M_{i_0}\Lambda_g^{i-i_0}(\mathcal L_i f)\circ J_g^{i-i_0}
+=M_i(\mathcal L_i f)\circ J_g^{i-i_0}.
+\tag{W3.4}
+\]</span>
+<p>The corresponding identity for <span class="math" data-tex="\(c_iN_i\)">\(c_iN_i\)</span> uses <span class="math" data-tex="\(T_g^{i-i_0}\)">\(T_g^{i-i_0}\)</span>. Multiplication, differentiation and the formulas below are thus compatible with the original physical fields.</p>
+<p>Leibniz' formula has finitely many terms at each fixed derivative order. Multiplication of (W3.1) and (W3.2) retains <span class="math" data-tex="\(\zeta^{3/2}P_v\le\sqrt\zeta P_v\)">\(\zeta^{3/2}P_v\le\sqrt\zeta P_v\)</span>; two wave bounds retain <span class="math" data-tex="\(\zeta P_v^2\le\sqrt\zeta P_v\)">\(\zeta P_v^2\le\sqrt\zeta P_v\)</span> for a nonzero output, and <span class="math" data-tex="\(\zeta P_v^2\le\zeta\)">\(\zeta P_v^2\le\zeta\)</span> for a mean output. Polynomial powers add, as do the allowed powers of <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>. This proves the product bounds with all fixed derivatives. Smooth zero extensions at a shell edge follow because every inverse power of the edge distance times <span class="math" data-tex="\(e^{-a/s^2}\)">\(e^{-a/s^2}\)</span>, for fixed <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, tends to zero, also after any fixed number of derivatives: substituting <span class="math" data-tex="\(y=1/s\)">\(y=1/s\)</span> reduces this to <span class="math" data-tex="\(y^M e^{-ay^2}\to0\)">\(y^M e^{-ay^2}\to0\)</span>. Inductively the derivatives extend continuously by zero and are derivatives of the extended function, by the one-dimensional difference quotient at each boundary in a smooth edge chart.</p>
+<p>For precision about the phase multiplier in mean transport, retain its entire formula:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k=\lceil\varepsilon^{-1/2}\rceil,\quad
+B_s^2=\frac{\lambda_0}{\varepsilon k^2(1+u_*^2)^{3/2}},\quad
+(\widetilde p/R_0,p_z)=B_s\left(K-\frac{\sigma u_*g_0}{L_s|g_0|^2}\right),
+\\ kp\text{ is a nearest nonzero integer to }k\widetilde p,
+\quad x_0=\sigma B_su_*/2,\quad L_s=2r_0/c_i,
+\\ \Phi=p\theta+p_zZ/\varepsilon+x_0R-v(pF+p_zG),
+\\ n=\nabla_*\Phi=
+\left(x_0-v(pF_R+p_zG_R),\ p/R,\ p_z-\varepsilon v(pF_Z+p_zG_Z)\right).
+\end{gathered}
+\tag{W3.5}
+\]">\[
+\begin{gathered}
+k=\lceil\varepsilon^{-1/2}\rceil,\quad
+B_s^2=\frac{\lambda_0}{\varepsilon k^2(1+u_*^2)^{3/2}},\quad
+(\widetilde p/R_0,p_z)=B_s\left(K-\frac{\sigma u_*g_0}{L_s|g_0|^2}\right),
+\\ kp\text{ is a nearest nonzero integer to }k\widetilde p,
+\quad x_0=\sigma B_su_*/2,\quad L_s=2r_0/c_i,
+\\ \Phi=p\theta+p_zZ/\varepsilon+x_0R-v(pF+p_zG),
+\\ n=\nabla_*\Phi=
+\left(x_0-v(pF_R+p_zG_R),\ p/R,\ p_z-\varepsilon v(pF_Z+p_zG_Z)\right).
+\end{gathered}
+\tag{W3.5}
+\]</span>
+<p>Here <span class="math" data-tex="\(F=V/R\)">\(F=V/R\)</span>, <span class="math" data-tex="\(g=(RF_R,G_R)\)">\(g=(RF_R,G_R)\)</span>, <span class="math" data-tex="\(N=g_0/|g_0|\)">\(N=g_0/|g_0|\)</span>, <span class="math" data-tex="\(K=(-N_z,N_\theta)\)">\(K=(-N_z,N_\theta)\)</span>, and <span class="math" data-tex="\(\lambda_0^2=-2F_0N_\theta(2F_0N_\theta+|g_0|)\)">\(\lambda_0^2=-2F_0N_\theta(2F_0N_\theta+|g_0|)\)</span>. The subscript zero is the fixed slow representative of that label. The growth and nonzero-shear bounds are supplied by the actual leading profile <a href="shear-realization-audit.html">V5–V7</a>, the realized base <a href="base-field-realization-audit.html">Z6</a>, and the exact chart receiver <a href="local-construction-assembly-audit.html">I1–I2</a>. Those supplying arguments establish the coefficient bounds used in this operator calculation.</p>
+<p>Here are the bounds obtained directly from that displayed phase, rather than from a pulse approximation. Since <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+1\le\varepsilon k^2\le4,\quad
+\varepsilon^{-1/2}\le k\le2\varepsilon^{-1/2},\quad
+|p-\widetilde p|\le k^{-1}.
+\tag{W3.6}
+\]">\[
+1\le\varepsilon k^2\le4,\quad
+\varepsilon^{-1/2}\le k\le2\varepsilon^{-1/2},\quad
+|p-\widetilde p|\le k^{-1}.
+\tag{W3.6}
+\]</span>
+<p>The last error is at most one, rather than one half, before division by <span class="math" data-tex="\(k\)">\(k\)</span>, because zero is excluded in the rounding. Fixed bounds on <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>, <span class="math" data-tex="\(|g_0|^{-1}\)">\(|g_0|^{-1}\)</span>, <span class="math" data-tex="\(R_0\)">\(R_0\)</span>, and <span class="math" data-tex="\(u_*\)">\(u_*\)</span> give fixed bounds on <span class="math" data-tex="\(B_s,p,p_z,x_0\)">\(B_s,p,p_z,x_0\)</span> by the exact formulas, since <span class="math" data-tex="\(L_s\ge2r_0S_*\)">\(L_s\ge2r_0S_*\)</span>. On the lifted rectangle <span class="math" data-tex="\(v=(\eta_g+r_0)/c_i\)">\(v=(\eta_g+r_0)/c_i\)</span>; its first auxiliary derivatives are bounded by a fixed multiple of <span class="math" data-tex="\(S_*\)">\(S_*\)</span>, its higher such derivatives vanish, and its slow derivatives vanish within a fixed chart. In the dual eigenvector coordinates <span class="math" data-tex="\(\mathcal L_i\eta_g=0\)">\(\mathcal L_i\eta_g=0\)</span>, <span class="math" data-tex="\(N_i\eta_g=1\)">\(N_i\eta_g=1\)</span>, so <span class="math" data-tex="\(D_rv=D_zv=0\)">\(D_rv=D_zv=0\)</span>, as required to derive (W3.5). The base coefficients have fixed slow derivative bounds and no auxiliary dependence. Thus (W3.5) and Leibniz' formula give a polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span> bound for every fixed coefficient derivative of <span class="math" data-tex="\(n\)">\(n\)</span>. The same holds on common tori by (W3.4). No bound for <span class="math" data-tex="\(n^{-1}\)">\(n^{-1}\)</span> and no pulse-growth estimate is required for the transport estimate below.</p>
+<h2 id="w4-the-exact-curl-identity-used-by-the-nonlinear-terms">W4. The exact curl identity used by the nonlinear terms</h2>
+<p>For a smooth potential column <span class="math" data-tex="\(C\)">\(C\)</span>, the full source curl is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}_* C=
+\big(R^{-1}\partial_\theta C_z-D_zC_\theta,\quad
+D_zC_r-D_rC_z,\quad
+(D_r+R^{-1})C_\theta-R^{-1}\partial_\theta C_r\big).
+\tag{W4.1}
+\]">\[
+\operatorname{curl}_* C=
+\big(R^{-1}\partial_\theta C_z-D_zC_\theta,\quad
+D_zC_r-D_rC_z,\quad
+(D_r+R^{-1})C_\theta-R^{-1}\partial_\theta C_r\big).
+\tag{W4.1}
+\]</span>
+<p>The divergence is <span class="math" data-tex="\((D_r+R^{-1})u_r+R^{-1}\partial_\theta u_\theta+D_zu_z\)">\((D_r+R^{-1})u_r+R^{-1}\partial_\theta u_\theta+D_zu_z\)</span>. Inserting (W4.1) yields all six terms</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{div}_*\operatorname{curl}_* C={}&amp;
+R^{-1}D_r\partial_\theta C_z-(D_r+R^{-1})D_zC_\theta
+\\&amp;+R^{-1}D_z\partial_\theta C_r-R^{-1}\partial_\theta D_rC_z
+\\&amp;+D_z(D_r+R^{-1})C_\theta-R^{-1}D_z\partial_\theta C_r=0.
+\end{aligned}
+\tag{W4.2}
+\]">\[
+\begin{aligned}
+\operatorname{div}_*\operatorname{curl}_* C={}&amp;
+R^{-1}D_r\partial_\theta C_z-(D_r+R^{-1})D_zC_\theta
+\\&amp;+R^{-1}D_z\partial_\theta C_r-R^{-1}\partial_\theta D_rC_z
+\\&amp;+D_z(D_r+R^{-1})C_\theta-R^{-1}D_z\partial_\theta C_r=0.
+\end{aligned}
+\tag{W4.2}
+\]</span>
+<p>For the first term we used <span class="math" data-tex="\((D_r+R^{-1})(R^{-1}f)=R^{-1}D_rf\)">\((D_r+R^{-1})(R^{-1}f)=R^{-1}D_rf\)</span>. The three pairs cancel by (W1.5), including the <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> contributions.</p>
+<p>For a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-independent potential amplitude <span class="math" data-tex="\(C_m\)">\(C_m\)</span>, expand the actual full curl as</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}_*(C_me^{ikm\Phi})=a_me^{ikm\Phi},
+\]">\[
+\operatorname{curl}_*(C_me^{ikm\Phi})=a_me^{ikm\Phi},
+\]</span>
+<span class="math math-display" data-tex="\[
+a_m=ikm\,n\times C_m+
+\big(-D_z(C_m)_\theta,\ D_z(C_m)_r-D_r(C_m)_z,
+\ (D_r+R^{-1})(C_m)_\theta\big).
+\tag{W4.3}
+\]">\[
+a_m=ikm\,n\times C_m+
+\big(-D_z(C_m)_\theta,\ D_z(C_m)_r-D_r(C_m)_z,
+\ (D_r+R^{-1})(C_m)_\theta\big).
+\tag{W4.3}
+\]</span>
+<p>All potential derivatives, including derivatives of its slow and transverse cutoffs, remain in this expression. A cutoff in <span class="math" data-tex="\(v\)">\(v\)</span> also remains inside the potential. In the original coordinates <span class="math" data-tex="\(D_rv=D_zv=0\)">\(D_rv=D_zv=0\)</span>, so its spatial derivative terms vanish for that exact reason, not because the cutoff is omitted.</p>
+<p>Where the source writes <span class="math" data-tex="\(C_m=i(n\times t_m)/(km|n|^2)\)">\(C_m=i(n\times t_m)/(km|n|^2)\)</span>, <span class="math" data-tex="\(n\cdot t_m=0\)">\(n\cdot t_m=0\)</span>, the first term in (W4.3) equals</p>
+<span class="math math-display" data-tex="\[
+-\frac{n\times(n\times t_m)}{|n|^2}
+=t_m-\frac{n(n\cdot t_m)}{|n|^2}=t_m.
+\tag{W4.4}
+\]">\[
+-\frac{n\times(n\times t_m)}{|n|^2}
+=t_m-\frac{n(n\cdot t_m)}{|n|^2}=t_m.
+\tag{W4.4}
+\]</span>
+<p>This is a pointwise identity for the original potential wherever it is defined. The uniform denominator estimate and the potential class bounds for the original phase are now derived in the <a href="pulse-inverse-audit.html">pulse audit</a>, P1 and P6, retaining the source base inputs. The nonlinear cancellation in this section uses (W4.2), and therefore holds for every smooth potential coefficient, independently of that particular formula or of any pulse solution.</p>
+<p>Expansion of the zero divergence in (W4.2) now proves, for the full actual amplitude,</p>
+<span class="math math-display" data-tex="\[
+ikm\,n\cdot a_m=-\mathfrak d a_m,
+\qquad \mathfrak d a=(D_r+R^{-1})a_r+D_za_z.
+\tag{W4.5}
+\]">\[
+ikm\,n\cdot a_m=-\mathfrak d a_m,
+\qquad \mathfrak d a=(D_r+R^{-1})a_r+D_za_z.
+\tag{W4.5}
+\]</span>
+<p>If <span class="math" data-tex="\(a_m\in\mathsf W_\alpha\)">\(a_m\in\mathsf W_\alpha\)</span>, (W3.3) gives <span class="math" data-tex="\(\mathfrak d a_m\in\mathsf W_{\alpha-\kappa_s}\)">\(\mathfrak d a_m\in\mathsf W_{\alpha-\kappa_s}\)</span>. Since <span class="math" data-tex="\(|m|\ge1\)">\(|m|\ge1\)</span> and <span class="math" data-tex="\(k^{-1}\le\varepsilon^{1/2}\)">\(k^{-1}\le\varepsilon^{1/2}\)</span>, division in the exact identity proves</p>
+<span class="math math-display" data-tex="\[
+n\cdot a_m\in\mathsf W_{\alpha+1/2-\kappa_s}.
+\tag{W4.6}
+\]">\[
+n\cdot a_m\in\mathsf W_{\alpha+1/2-\kappa_s}.
+\tag{W4.6}
+\]</span>
+<p>This remains true for all fixed coefficient derivatives because <span class="math" data-tex="\(k,m\)">\(k,m\)</span> are constant within the label and the bound for <span class="math" data-tex="\(\mathfrak d a_m\)">\(\mathfrak d a_m\)</span> holds at those orders. Using only the transverse leading amplitude while omitting the remainder in (W4.3) would not justify (W4.5) for the actual velocity.</p>
+<p>Conversely, any exactly divergence-free harmonic <span class="math" data-tex="\(a_me^{ikm\Phi}\)">\(a_me^{ikm\Phi}\)</span> with a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-independent amplitude satisfies (W4.5) simply by expanding its divergence. Thus the nonlinear estimates below need exact divergence, not a particular choice of vector potential. The actual source waves satisfy the identity through the full curl construction (W4.2).</p>
+<h2 id="w5-complete-mean-wave-interaction-and-its-output-support">W5. Complete mean–wave interaction and its output support</h2>
+<p>Write the actual mean increment as <span class="math" data-tex="\(d=(d^{r},d^{\theta},d^{z})\)">\(d=(d^{r},d^{\theta},d^{z})\)</span>, avoiding a replacement by its tangential leading part. It is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>; it may depend on the full auxiliary torus. For <span class="math" data-tex="\(w=ae^{ikm\Phi}\)">\(w=ae^{ikm\Phi}\)</span>, (W1.6) gives exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal B(d,w)+\mathcal B(w,d)=e^{ikm\Phi}\,\mathcal Q_m(d,a),
+\]">\[
+\mathcal B(d,w)+\mathcal B(w,d)=e^{ikm\Phi}\,\mathcal Q_m(d,a),
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal Q_m(d,a)={}&amp;ikm(d^{r}n_r+d^{\theta} n_\theta+d^{z}n_z)a
+\\&amp;+d^{r}D_ra+d^{z}D_za+a_rD_rd+a_zD_zd
+\\&amp;+R^{-1}(-2d^{\theta} a_\theta,\ d^{\theta} a_r+a_\theta d^{r},\ 0).
+\end{aligned}
+\tag{W5.1}
+\]">\[
+\begin{aligned}
+\mathcal Q_m(d,a)={}&amp;ikm(d^{r}n_r+d^{\theta} n_\theta+d^{z}n_z)a
+\\&amp;+d^{r}D_ra+d^{z}D_za+a_rD_rd+a_zD_zd
+\\&amp;+R^{-1}(-2d^{\theta} a_\theta,\ d^{\theta} a_r+a_\theta d^{r},\ 0).
+\end{aligned}
+\tag{W5.1}
+\]</span>
+<p>To obtain it, the derivative on the wave exponential contributes <span class="math" data-tex="\(ikm n\)">\(ikm n\)</span> in all three spatial directions. The mean amplitude has no angular component derivative, while each transport contributes its own frame term. Their sum is the last line; in particular its radial coefficient is <span class="math" data-tex="\(-2\)">\(-2\)</span>, not <span class="math" data-tex="\(-1\)">\(-1\)</span>. No divergence identity is needed for (W5.1).</p>
+<p>The source mean increments have <span class="math" data-tex="\(d^{\theta},d^{z}\in\mathsf M_\mu\)">\(d^{\theta},d^{z}\in\mathsf M_\mu\)</span> and <span class="math" data-tex="\(d^{r}\in\mathsf M_{\mu+1}\)">\(d^{r}\in\mathsf M_{\mu+1}\)</span>. For <span class="math" data-tex="\(a\in\mathsf W_\alpha\)">\(a\in\mathsf W_\alpha\)</span>, each complete group in (W5.1) has the following lower exponent, with all powers of <span class="math" data-tex="\(S_*\)">\(S_*\)</span>, <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>, weights and fixed derivatives handled by W3:</p>
+<table>
+<thead>
+<tr>
+<th>Exact group</th>
+<th>Lower exponent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(ikm(d^{\theta} n_\theta+d^{z}n_z)a\)">\(ikm(d^{\theta} n_\theta+d^{z}n_z)a\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu-1/2\)">\(\alpha+\mu-1/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(ikm d^{r}n_ra\)">\(ikm d^{r}n_ra\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1/2\)">\(\alpha+\mu+1/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(d^{r}D_ra\)">\(d^{r}D_ra\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1-\kappa_s\)">\(\alpha+\mu+1-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(d^{z}D_za\)">\(d^{z}D_za\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(a_rD_r(d^{\theta},d^{z})\)">\(a_rD_r(d^{\theta},d^{z})\)</span> and <span class="math" data-tex="\(a_rD_rd^{r}\)">\(a_rD_rd^{r}\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu-\kappa_s\)">\(\alpha+\mu-\kappa_s\)</span> and <span class="math" data-tex="\(\alpha+\mu+1-\kappa_s\)">\(\alpha+\mu+1-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(a_zD_z(d^{\theta},d^{z})\)">\(a_zD_z(d^{\theta},d^{z})\)</span> and <span class="math" data-tex="\(a_zD_zd^{r}\)">\(a_zD_zd^{r}\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span> and <span class="math" data-tex="\(\alpha+\mu+2\)">\(\alpha+\mu+2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(R^{-1}(-2d^{\theta} a_\theta,d^{\theta} a_r,0)\)">\(R^{-1}(-2d^{\theta} a_\theta,d^{\theta} a_r,0)\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu\)">\(\alpha+\mu\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(R^{-1}(0,a_\theta d^{r},0)\)">\(R^{-1}(0,a_\theta d^{r},0)\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Since <span class="math" data-tex="\(\kappa_s=10^{-5}&lt;1/2\)">\(\kappa_s=10^{-5}&lt;1/2\)</span> and <span class="math" data-tex="\(\varepsilon\le1\)">\(\varepsilon\le1\)</span>, every group belongs to <span class="math" data-tex="\(\mathsf W_{\alpha+\mu-1/2}\)">\(\mathsf W_{\alpha+\mu-1/2}\)</span>. Addition proves the first part of original Lemma 9.2, without discarding any cylindrical term.</p>
+<p>Multiplication by a mean, regardless of the extent of its auxiliary support, cannot enlarge the wave support. The derivative of a smoothly extended wave still has its original closed support. The term differentiating the mean contains the undifferentiated wave. Every term in (W5.1) therefore keeps the prescribed slow support, transverse support, enlarged rectangle, shell and actual temporal cutoff support. Its bounds retain the factor <span class="math" data-tex="\(P_v\)">\(P_v\)</span>. There is no division by <span class="math" data-tex="\(\chi_g\)">\(\chi_g\)</span>, <span class="math" data-tex="\(\eta_\gamma\)">\(\eta_\gamma\)</span> or <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The smooth mean multiplied into the smoothly extended wave has the same zero extensions. The result retains precisely the original label and nonzero integer <span class="math" data-tex="\(m\)">\(m\)</span>, so (W1.7) gives zero angular mean.</p>
+<p>For a finite or locally finite wave sum, first collect equal <span class="math" data-tex="\((\gamma,m)\)">\((\gamma,m)\)</span> pairs as in Definition 6.5. Formula (W5.1) is linear in each collected wave coefficient. Hence its bound uses the already uniform bound for that coefficient, without a factor counting its original representations. Fixed-stage finite harmonic sets remain unchanged under this operation. Local finiteness in <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> permits the equality to be summed locally. These observations prove the asserted map on the actual sums, not just on one exponential.</p>
+<p>There is a limited strengthening of the source statement. The same output exponent holds when the radial mean belongs only to <span class="math" data-tex="\(\mathsf M_\mu\)">\(\mathsf M_\mu\)</span>. In the four groups involving <span class="math" data-tex="\(d^{r}\)">\(d^{r}\)</span> or its derivatives, lower the listed exponent by one. Their new lower exponents are respectively <span class="math" data-tex="\(\alpha+\mu-1/2\)">\(\alpha+\mu-1/2\)</span>, <span class="math" data-tex="\(\alpha+\mu-\kappa_s\)">\(\alpha+\mu-\kappa_s\)</span>, <span class="math" data-tex="\(\alpha+\mu-\kappa_s\)">\(\alpha+\mu-\kappa_s\)</span> or <span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span>, and <span class="math" data-tex="\(\alpha+\mu\)">\(\alpha+\mu\)</span>; all are at least <span class="math" data-tex="\(\alpha+\mu-1/2\)">\(\alpha+\mu-1/2\)</span>. All other groups and support arguments are unchanged. Thus the extra radial smallness is unnecessary for this particular interaction estimate. It remains available and important in other mean equations; this calculation changes no hypothesis elsewhere in the iteration and claims no novelty.</p>
+<h2 id="w6-same-label-wave-interactions-with-the-phase-contraction-evaluated-exactly">W6. Same-label wave interactions, with the phase contraction evaluated exactly</h2>
+<p>Take two actual harmonics of one label,
+<span class="math" data-tex="\(w=ae^{ikm\Phi}\)">\(w=ae^{ikm\Phi}\)</span>, <span class="math" data-tex="\(w&#x27;=be^{ikm&#x27;\Phi}\)">\(w&#x27;=be^{ikm&#x27;\Phi}\)</span>, where <span class="math" data-tex="\(m,m&#x27;\ne0\)">\(m,m&#x27;\ne0\)</span>, and use their full exactly divergence-free amplitudes. Before invoking divergence, exact transport is</p>
+<span class="math math-display" data-tex="\[
+\mathcal B(w,w&#x27;)=e^{ik(m+m&#x27;)\Phi}
+\left[a_rD_rb+a_zD_zb+ikm&#x27;(a\cdot n)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0)\right].
+\tag{W6.1}
+\]">\[
+\mathcal B(w,w&#x27;)=e^{ik(m+m&#x27;)\Phi}
+\left[a_rD_rb+a_zD_zb+ikm&#x27;(a\cdot n)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0)\right].
+\tag{W6.1}
+\]</span>
+<p>By (W4.5), its complete coefficient is instead the equal expression</p>
+<span class="math math-display" data-tex="\[
+\mathcal U_{m,m&#x27;}(a,b)=a_rD_rb+a_zD_zb
+-\frac{m&#x27;}m(\mathfrak d a)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0).
+\tag{W6.2}
+\]">\[
+\mathcal U_{m,m&#x27;}(a,b)=a_rD_rb+a_zD_zb
+-\frac{m&#x27;}m(\mathfrak d a)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0).
+\tag{W6.2}
+\]</span>
+<p>The factor <span class="math" data-tex="\(m&#x27;/m\)">\(m&#x27;/m\)</span>, the sign and the <span class="math" data-tex="\(a_r/R\)">\(a_r/R\)</span> term inside <span class="math" data-tex="\(\mathfrak d a\)">\(\mathfrak d a\)</span> are retained. It is an identity, not a projection or an approximate cancellation. The coefficient of the symmetrized expression is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal U_{m,m&#x27;}(a,b)+\mathcal U_{m&#x27;,m}(b,a)={}&amp;
+a_rD_rb+a_zD_zb+b_rD_ra+b_zD_za
+\\&amp;-\frac{m&#x27;}m(\mathfrak d a)b-\frac m{m&#x27;}(\mathfrak d b)a
+\\&amp;+R^{-1}(-2a_\theta b_\theta,a_\theta b_r+b_\theta a_r,0).
+\end{aligned}
+\tag{W6.3}
+\]">\[
+\begin{aligned}
+\mathcal U_{m,m&#x27;}(a,b)+\mathcal U_{m&#x27;,m}(b,a)={}&amp;
+a_rD_rb+a_zD_zb+b_rD_ra+b_zD_za
+\\&amp;-\frac{m&#x27;}m(\mathfrak d a)b-\frac m{m&#x27;}(\mathfrak d b)a
+\\&amp;+R^{-1}(-2a_\theta b_\theta,a_\theta b_r+b_\theta a_r,0).
+\end{aligned}
+\tag{W6.3}
+\]</span>
+<p>If the input exponents are <span class="math" data-tex="\(\alpha,\alpha&#x27;\)">\(\alpha,\alpha&#x27;\)</span>, every radial derivative term in (W6.2) has exponent at least <span class="math" data-tex="\(\alpha+\alpha&#x27;-\kappa_s\)">\(\alpha+\alpha&#x27;-\kappa_s\)</span>, every axial derivative term at least <span class="math" data-tex="\(\alpha+\alpha&#x27;+1\)">\(\alpha+\alpha&#x27;+1\)</span>, and every undifferentiated connection at least <span class="math" data-tex="\(\alpha+\alpha&#x27;\)">\(\alpha+\alpha&#x27;\)</span>. The same bounds apply to <span class="math" data-tex="\(\mathfrak d a\)">\(\mathfrak d a\)</span> expanded as <span class="math" data-tex="\(D_ra_r+a_r/R+D_za_z\)">\(D_ra_r+a_r/R+D_za_z\)</span>. The finite nonzero harmonic sets bound <span class="math" data-tex="\(|m&#x27;/m|\)">\(|m&#x27;/m|\)</span> by <span class="math" data-tex="\(\max_{n\in\mathscr H_j&#x27;}|n|\)">\(\max_{n\in\mathscr H_j&#x27;}|n|\)</span>, and the reverse ratio similarly. These constants may depend on the fixed stage, as the class definitions allow. This proves the exponent <span class="math" data-tex="\(\alpha+\alpha&#x27;-\kappa_s\)">\(\alpha+\alpha&#x27;-\kappa_s\)</span>, with no half-power loss.</p>
+<p>If <span class="math" data-tex="\(m+m&#x27;\ne0\)">\(m+m&#x27;\ne0\)</span>, the output has that nonzero integer harmonic and belongs to <span class="math" data-tex="\(\mathsf W_{\alpha+\alpha&#x27;-\kappa_s}\)">\(\mathsf W_{\alpha+\alpha&#x27;-\kappa_s}\)</span> by W3. If <span class="math" data-tex="\(m+m&#x27;=0\)">\(m+m&#x27;=0\)</span>, the exponential is exactly one and the product weight is <span class="math" data-tex="\(\zeta P_v^2\le\zeta\)">\(\zeta P_v^2\le\zeta\)</span>. The actual temporal cutoffs give a smooth field on the full auxiliary torus, so this output belongs to <span class="math" data-tex="\(\mathsf M_{\alpha+\alpha&#x27;-\kappa_s}\)">\(\mathsf M_{\alpha+\alpha&#x27;-\kappa_s}\)</span>, not merely to a class on an unextended rectangle. Its auxiliary Haar average may be nonzero and is retained by the mean equations. Before cutoff the corresponding assertion is only local on the labelled rectangle.</p>
+<p>The support of every product lies in the intersection of the two input supports. Its extension and all fixed derivative bounds follow as in W5. Distinct-label products and all their derivative terms are exactly zero by W2. Thus there are no additional cross-label frequencies, even if angular frequencies of different labels happen to coincide. Within a label the new finite harmonic set is contained in <span class="math" data-tex="\((\mathscr H_j+\mathscr H_j&#x27;)\setminus\{0\}\)">\((\mathscr H_j+\mathscr H_j&#x27;)\setminus\{0\}\)</span>, with zero outputs assigned to the mean. Collect the finitely many pairs giving the same output integer; their number is at most <span class="math" data-tex="\(|\mathscr H_j||\mathscr H_j&#x27;|\)">\(|\mathscr H_j||\mathscr H_j&#x27;|\)</span>, independent of the band. This proves the map for the actual locally finite sums.</p>
+<p>In particular the unsymmetrized transport (W6.2) has the same bound. For a residual update <span class="math" data-tex="\(w\mapsto w+\delta w\)">\(w\mapsto w+\delta w\)</span> the exact quadratic change is</p>
+<span class="math math-display" data-tex="\[
+\mathcal B(w,\delta w)+\mathcal B(\delta w,w)+\mathcal B(\delta w,\delta w).
+\tag{W6.4}
+\]">\[
+\mathcal B(w,\delta w)+\mathcal B(\delta w,w)+\mathcal B(\delta w,\delta w).
+\tag{W6.4}
+\]</span>
+<p>The final term has coefficient one. Treating it as the symmetrized expression with identical arguments would introduce an erroneous factor two. Equations (W6.2) and (W6.3) bound the three terms in (W6.4) with their actual multiplicities.</p>
+<h2 id="w7-receiver-of-the-two-mean-updates-and-return-to-physical-viscosity">W7. Receiver of the two mean updates and return to physical viscosity</h2>
+<p>Let the current full field be <span class="math" data-tex="\(U=(b+\beta,V+v,G+\gamma)+w\)">\(U=(b+\beta,V+v,G+\gamma)+w\)</span>. The earlier <a href="mean-moment-correction-audit.html">moment audit</a>, M4–M8, and <a href="temporal-mean-correction-audit.html">temporal audit</a>, T3–T4, supply the actual mean increments</p>
+<span class="math math-display" data-tex="\[
+d=(\delta\beta,\delta v,\delta\gamma),\qquad
+\delta\beta\in\mathsf M_{H+1},\quad
+\delta v,\delta\gamma\in\mathsf M_H,
+\quad H=C_*-2\kappa_s
+\tag{W7.1}
+\]">\[
+d=(\delta\beta,\delta v,\delta\gamma),\qquad
+\delta\beta\in\mathsf M_{H+1},\quad
+\delta v,\delta\gamma\in\mathsf M_H,
+\quad H=C_*-2\kappa_s
+\tag{W7.1}
+\]</span>
+<p>in Steps 3 and 4 of Proposition 9.6. In the temporal update, <span class="math" data-tex="\(\delta\gamma=\gamma_d-\mathsf A_1\gamma_d\)">\(\delta\gamma=\gamma_d-\mathsf A_1\gamma_d\)</span> is the full compactly realized axial field. The term <span class="math" data-tex="\(-\mathsf A_1\gamma_d\)">\(-\mathsf A_1\gamma_d\)</span>, although flat after the established scaling, remains in (W7.1) and in every occurrence of <span class="math" data-tex="\(d^{z}\)">\(d^{z}\)</span> in (W5.1). The compact radial field <span class="math" data-tex="\(\delta\beta=-\varepsilon\partial_Z\Psi\)">\(\delta\beta=-\varepsilon\partial_Z\Psi\)</span> also remains. The moment update has its complete supported potential and exact auxiliary-independent increments. No cutoff remainder is removed in applying this note.</p>
+<p>For the full residual <span class="math" data-tex="\(\mathscr R(U,P)=\mathfrak t_*U+\mathcal B(U,U)+\nabla_*P-\varepsilon\Delta_*U\)">\(\mathscr R(U,P)=\mathfrak t_*U+\mathcal B(U,U)+\nabla_*P-\varepsilon\Delta_*U\)</span>, with the full cylindrical vector Laplacian, a mean update <span class="math" data-tex="\((d,\delta P)\)">\((d,\delta P)\)</span> has exact change</p>
+<span class="math math-display" data-tex="\[
+\mathfrak t_*d+\mathcal B(U,d)+\mathcal B(d,U)+\mathcal B(d,d)
++\nabla_*\delta P-\varepsilon\Delta_*d.
+\tag{W7.2}
+\]">\[
+\mathfrak t_*d+\mathcal B(U,d)+\mathcal B(d,U)+\mathcal B(d,d)
++\nabla_*\delta P-\varepsilon\Delta_*d.
+\tag{W7.2}
+\]</span>
+<p>Every term except <span class="math" data-tex="\(\mathcal B(w,d)+\mathcal B(d,w)\)">\(\mathcal B(w,d)+\mathcal B(d,w)\)</span> is angularly constant in cylindrical components: the full vector Laplacian maps a mean column to</p>
+<span class="math math-display" data-tex="\[
+\big((D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{r},
+(D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{\theta},
+(D_r^2+R^{-1}D_r+D_z^2)d^{z}\big),
+\]">\[
+\big((D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{r},
+(D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{\theta},
+(D_r^2+R^{-1}D_r+D_z^2)d^{z}\big),
+\]</span>
+<p>and the other linear terms and mean products also have no angular coefficient dependence. Thus, denoting removal of the cylindrical angular mean by <span class="math" data-tex="\(\mathsf P_{\ne0}\)">\(\mathsf P_{\ne0}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathsf P_{\ne0}\big(\mathscr R(U+d,P+\delta P)-\mathscr R(U,P)\big)
+=\mathcal B(w,d)+\mathcal B(d,w).
+\tag{W7.3}
+\]">\[
+\mathsf P_{\ne0}\big(\mathscr R(U+d,P+\delta P)-\mathscr R(U,P)\big)
+=\mathcal B(w,d)+\mathcal B(d,w).
+\tag{W7.3}
+\]</span>
+<p>This is the exact map between the mean update proved above and its nonzero-harmonic receiver. For the source iteration's incoming wave class <span class="math" data-tex="\(\mathsf W_{1/2}\)">\(\mathsf W_{1/2}\)</span>, W5 gives an added nonzero source in <span class="math" data-tex="\(\mathsf W_H\)">\(\mathsf W_H\)</span>, with all the supports and envelope bounds required for the next pulse source. It has zero angular mean, so it adds no omitted term to the previously computed mean defects. The <a href="pulse-inverse-audit.html">pulse audit</a>, P1–P8, derives the local pulse operation and its full linearized residual. The <a href="stress-covariance-audit.html">stress covariance audit</a>, C1–C9, supplies the positive primary amplitudes, signed linear inverse and actual curl covariance errors. The <a href="source-containment-audit.html">source-containment audit</a>, S1–S5, proves the finite-stage closure and exact conservative means. The <a href="correction-cycle-audit.html">initialization and complete cycle audit</a>, K0–K8, proves the actual four updates, their simultaneous gains, accumulated-field bounds and common finite-stage domain. The <a href="physical-realization-audit.html">physical derivative and realization audit</a>, L0–L7, derives the stage-independent derivative loss, exact potential summation, retained cutoff curls, full nonlinear residual comparison, one-sided endpoint limits and preservation of the exterior and inner fields. The actual leading profile and complete base field are supplied by <a href="shear-realization-audit.html">V0–V7</a> and <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>The physical conversion retains every scale. At viscosity one, <span class="math" data-tex="\(u_*=Q^Au\)">\(u_*=Q^Au\)</span> and <span class="math" data-tex="\(\mathscr R_*=Q^{2A+1/2}\mathscr R\)">\(\mathscr R_*=Q^{2A+1/2}\mathscr R\)</span>; hence the physical mixed transport is <span class="math" data-tex="\(Q^{-2A-1/2}\)">\(Q^{-2A-1/2}\)</span> times the right side of (W7.3), evaluated at the original auxiliary map. For any original <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, use the exact map already proved in M2.4–M2.7:</p>
+<span class="math math-display" data-tex="\[
+y=x/\sqrt\nu,\quad u_\nu(x,t)=\sqrt\nu\,u_1(y,t),\quad
+p_\nu(x,t)=\nu p_1(y,t),\quad f_\nu(x,t)=\sqrt\nu f_1(y,t).
+\tag{W7.4}
+\]">\[
+y=x/\sqrt\nu,\quad u_\nu(x,t)=\sqrt\nu\,u_1(y,t),\quad
+p_\nu(x,t)=\nu p_1(y,t),\quad f_\nu(x,t)=\sqrt\nu f_1(y,t).
+\tag{W7.4}
+\]</span>
+<p>Each spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>; consequently</p>
+<span class="math math-display" data-tex="\[
+(d_\nu\cdot\nabla_x)w_\nu+(w_\nu\cdot\nabla_x)d_\nu
+=\sqrt\nu\big((d_1\cdot\nabla_y)w_1+(w_1\cdot\nabla_y)d_1\big),
+\tag{W7.5}
+\]">\[
+(d_\nu\cdot\nabla_x)w_\nu+(w_\nu\cdot\nabla_x)d_\nu
+=\sqrt\nu\big((d_1\cdot\nabla_y)w_1+(w_1\cdot\nabla_y)d_1\big),
+\tag{W7.5}
+\]</span>
+<p>while <span class="math" data-tex="\(\nu\Delta_xu_\nu=\sqrt\nu\Delta_yu_1\)">\(\nu\Delta_xu_\nu=\sqrt\nu\Delta_yu_1\)</span>. The physical receiver of (W5.1) is therefore <span class="math" data-tex="\(\sqrt\nu Q^{-2A-1/2}\mathcal Q_m(d_*,a_*)e^{ikm\Phi}\)">\(\sqrt\nu Q^{-2A-1/2}\mathcal Q_m(d_*,a_*)e^{ikm\Phi}\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+R=r_\nu/\sqrt{\nu Q},\quad Z=z_\nu/(\sqrt\nu Q^D),\quad
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_t t.
+\tag{W7.6}
+\]">\[
+R=r_\nu/\sqrt{\nu Q},\quad Z=z_\nu/(\sqrt\nu Q^D),\quad
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_t t.
+\tag{W7.6}
+\]</span>
+<p>The angle and time remain unchanged. A chart potential has physical factor <span class="math" data-tex="\(\nu Q^{1/2-A}\)">\(\nu Q^{1/2-A}\)</span>, since its curl contributes <span class="math" data-tex="\((\nu Q)^{-1/2}\)">\((\nu Q)^{-1/2}\)</span>; a chart pressure has physical factor <span class="math" data-tex="\(\nu Q^{-2A}\)">\(\nu Q^{-2A}\)</span>. Thus exact divergence, support separation and all the displayed nonlinear identities survive this map with their full factors. This does not remove viscosity from the original theorem.</p>
+<p>The arguments above prove the mean–wave receiver, the divergence cancellation for full actual curls, the same-label nonlinear map, and the closed-support separation used to eliminate distinct-label products. The full statement of Proposition 9.3 also requires the pulse inverse, stress-amplitude map, weighted radial integrations and propagation of additive flat errors. The <a href="pulse-inverse-audit.html">pulse initial-value inverse and actual linear residual</a> are derived with the original phase, pressure, envelope and endpoint bounds. The stress amplitudes and full finite-stage source containment are derived in the companion audits. K0–K8 of the <a href="correction-cycle-audit.html">cycle audit</a> supplies the initialization, all four updates and the common domain. The physical derivative estimate and summation are derived in <a href="physical-realization-audit.html">L0–L7</a>. The original leading profile and all-order base are supplied by V0–V7 and <a href="base-field-realization-audit.html">Z0–Z8</a>. The receiving maps and final theorem assembly are proved in <a href="local-construction-assembly-audit.html">I0–I7</a> and <a href="terminal-force-and-blowup-audit.html">F0–F8</a>.</p>
+<h2 id="w8-scope-of-the-strengthenings-and-source-comparison">W8. Scope of the strengthenings and source comparison</h2>
+<p>Two local strengthenings have complete proofs above: W5 removes the extra radial power from the mean–wave estimate; W4.5 and W6 establish the wave–wave estimate for any exactly divergence-free harmonics in the stated coefficient classes, whether or not a particular vector potential was chosen. Their hypotheses, support conditions, finite harmonic sets and full cylindrical connection terms remain explicit. The original actual increments and curl-generated waves are included, so the statements do not alter or weaken the source comparison. No gain in the complete iteration, no new global construction and no novelty claim follows. These findings are recorded for later synthesis after the core audit.</p>
+<p>Original pages 85–86 contain the complete curl, positive <span class="math" data-tex="\(i\)">\(i\)</span> in the potential coefficient, and the negative divergence identity used in W4. Original pages 102–103 contain the interaction exponents used here.</p>
+<p>The full arguments are preserved here as audit material under CC0; original sources retain their authorship and rights.</p>
+<p>Formula (W3.5) uses the original numerator <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span> in <span class="math" data-tex="\(B_s^2\)">\(B_s^2\)</span>, as printed in original (7.2), page 74. The interaction estimates use only the displayed positive bounded phase scale and its coefficient bounds; those estimates hold for the original coefficient. The pulse-envelope calculation must use the original value: at its midpoint it gives <span class="math" data-tex="\(\lambda-d_{\rm ref}=0\)">\(\lambda-d_{\rm ref}=0\)</span>, whereas the erroneous doubled coefficient would give <span class="math" data-tex="\(-\lambda_0/\sqrt{1+u_*^2}\)">\(-\lambda_0/\sqrt{1+u_*^2}\)</span>.</p>
+<h2 id="conservative-means-and-exact-divergence-defects">Conservative means and exact divergence defects</h2>
+<p>The <a href="stress-and-interaction-audit.html">complete stress and interaction derivation</a>, SC11.11–SC11.16, derives every conservative cylindrical mean term and the exact transport identity with a nonzero divergence coefficient. For unsymmetrized transport the advecting wave alone needs zero divergence; the target wave can be arbitrary in its stated class. Symmetrization retains both divergence defects. These statements include the full actual curls and all support restrictions; no complete-cycle gain or novelty is claimed.</p>
+</article></body></html>

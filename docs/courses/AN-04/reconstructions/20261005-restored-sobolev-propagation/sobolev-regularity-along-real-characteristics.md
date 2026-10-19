@@ -163,7 +163,7 @@ The lower panel shows the exact radial comparison integrals
  \end{cases}\qquad R\ge1.
  \tag{SPA1}
 \]
-These are comparison integrals for the high-frequency tail, not the entire Sobolev norm. For \(\rho\ge1\), \(1\le\langle\rho\rangle/\rho\le\sqrt2\), so they have exactly the same convergence test as the original weight. The formula follows by the proved [real-power derivative and logarithm integral](../20261004-free-stationary-phase/exponential-prerequisite-completions.md), followed by the fundamental theorem of calculus. If \(2r+1<0\), \(J_r(R)\) increases to \(-1/(2r+1)\); at equality it diverges logarithmically, and for \(2r+1>0\) it diverges as a positive power. The bounded-frequency part is finite. The two frequency rays have the same test, so every nonempty one-dimensional cone has the stated exact threshold.
+These are comparison integrals for the high-frequency tail, not the entire Sobolev norm. For \(\rho\ge1\), \(1\le\langle\rho\rangle/\rho\le\sqrt2\), so they have exactly the same convergence test as the original weight. The formula follows by the proved [real-power derivative and logarithm integral](../20261004-free-stationary-phase/exponential-prerequisite-completions.md), followed by the [fundamental theorem of calculus](../20261004-free-stationary-phase/proof-map.html#FTC-TAYLOR-COMPACT-PARAMETERS). If \(2r+1<0\), \(J_r(R)\) increases to \(-1/(2r+1)\); at equality it diverges logarithmically, and for \(2r+1>0\) it diverges as a positive power. The bounded-frequency part is finite. The two frequency rays have the same test, so every nonempty one-dimensional cone has the stated exact threshold.
 
 ![Exact Sobolev membership along one characteristic and its radial-integral test](figures/sobolev-propagation-threshold.svg)
 

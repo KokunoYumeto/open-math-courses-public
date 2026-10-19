@@ -4,7 +4,7 @@ A connection determines trajectories from initial vectors, local coordinates fro
 
 ## A. From a connection to its trajectories
 
-Let \(M\) be a finite-dimensional Hausdorff, second-countable smooth manifold without boundary, and let \(\nabla\) be a smooth real connection on \(TM\). No metric or torsion hypothesis is imposed. In a coordinate frame our convention is \(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\), with summation over repeated indices. The complete earlier chapter [Linear and affine connections](linear-and-affine-connections.md), abbreviated **Linear**, proves derivatives along maps, tangent connectors and all connection axioms. **Local** refers to Local tools, and **PB** to [Principal bundles](principal-bundles-and-associated-bundles.md).
+Let \(M\) be a finite-dimensional Hausdorff, second-countable smooth manifold without boundary, and let \(\nabla\) be a smooth real connection on \(TM\). No metric or torsion hypothesis is imposed. In a coordinate frame our convention is \(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\), with summation over repeated indices. The complete earlier chapter [Linear and affine connections](linear-and-affine-connections.md), abbreviated **Linear**, proves derivatives along maps, tangent connectors and all connection axioms. **Local** refers to [Local tools](local-tools-for-bundles-and-transport.md), and **PB** to [Principal bundles](principal-bundles-and-associated-bundles.md).
 
 The free construction source is Peter W. Michor's exact [author manuscript, *Topics in Differential Geometry*](https://www.mat.univie.ac.at/~michor/dgbook.pdf), §§22.6–22.8. Its connector uses the opposite sign for its Christoffel symbol. All formulas below are derived with the programme convention \(\nabla=d+A\). Local 2.1 supplies the complete ODE proof and Local 1.2 the complete inverse-function proof; the external source replaces neither.
 
@@ -463,7 +463,7 @@ The right side has constant coefficients and belongs to the same family, so its 
 
 ## E. Coordinate and smooth-jet tests
 
-These computations apply the proved formulas to explicit connections. The smooth flat function used in E.3 is constructed, with all derivative limits proved, in Local 0.5. The principal-bundle analogue in [Flat C.2](flat-connections-and-infinitesimal-holonomy.md) motivates distinguishing all derivatives at one point from curvature in every neighbourhood. We give the tangent-bundle calculation separately, including its torsion and its actual transport groups.
+These computations apply the proved formulas to explicit connections. The smooth flat function used in E.3 is constructed, with all derivative limits proved, in [Local 0.5](local-tools-for-bundles-and-transport.md). The principal-bundle analogue in [Flat C.2](flat-connections-and-infinitesimal-holonomy.md) motivates distinguishing all derivatives at one point from curvature in every neighbourhood. We give the tangent-bundle calculation separately, including its torsion and its actual transport groups.
 
 **Exercise E.1 (Euclidean polar coordinates).** Let the plane have its connection given by ordinary component differentiation in Cartesian coordinates. In a polar coordinate chart with \(r>0\), calculate every connection coefficient and verify its curvature directly.
 

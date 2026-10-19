@@ -25,9 +25,9 @@ Consequently \(K\) is compact in the open-cover sense.
 **Proof inputs.** The real Bolzano–Weierstrass theorem, preservation
 of limits by subsequences, the sequential characterization of closed sets,
 and Lebl's Theorem 7.4.11 relating sequential and open-cover compactness.
-Their statement and proof references are in the proof index.
-The local sequence lemmas P6 and
-positive roots P8 supply the indicated elementary
+Their statement and proof references are in the [proof index](proof-map.html#P1).
+The local [sequence lemmas P6](proof-map.html#P6.0) and
+[positive roots P8](proof-map.html#P8-root) supply the indicated elementary
 steps. The induction below proves the arbitrary-dimensional assertion.
 
 **Proof.** If \(n=0\), the Euclidean space consists of the single empty
@@ -213,8 +213,8 @@ entries \(\pm1\).
 **Proof inputs.** The orthogonal diagonalization
 [Q5](quadratic-stationary-phase.html#proof-Q5), finite-dimensional
 linear independence and determinant multiplication. The explicit
-orthonormal complement P9.4 and
-dimension argument P9.5 supply the linear-algebra
+[orthonormal complement P9.4](proof-map.html#P9.4) and
+[dimension argument P9.5](proof-map.html#P9.5) supply the linear-algebra
 steps used below.
 
 **Proof.** In an orthogonal eigenbasis, suppose there are \(p\) positive
@@ -245,7 +245,7 @@ P1 gives finite-dimensional compactness; P2 gives the inverse-matrix
 formula; P3 gives smooth inverse and implicit maps, jointly in parameters;
 P4 gives the Hessian and determinant under one-variable elimination; and
 P5 gives congruence invariance and the Morse Jacobian. Their lower inputs
-are identified in the programme proof index.
+are identified in the [programme proof index](proof-map.html).
 
 The [mixed-partial and compact-integral companion](integration-prerequisite-completions.html)
 contains P11–P12, including the integral Taylor formula and smooth

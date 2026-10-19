@@ -44,5 +44,5 @@ right.text(0,-1.12,r'$V=(\mathbb{H}^2\times SU(2))/\Gamma$',ha='center',fontsize
 right.text(0,-1.33,r'$\gamma(z,k)=(\gamma z,\rho(\gamma)k)$',ha='center',fontsize=16,color=green)
 right.text(0,-1.53,'Faithful ρ ⇒ trivial leaf stabilizers. Proof: Lemma 11.9.',ha='center',fontsize=12)
 fig.suptitle('Native radial / calibrated inverse: an exact graded comparison',fontsize=20,color=blue)
-for ext in ['png','svg']:fig.savefig(OWN/f'kt-native-delta-interface.{ext}',dpi=170,metadata={'Creator':'NCG-FOLIATIONS mathematical research workflow',**({'Date':'2026-10-04'} if ext=='svg' else {})})
+for ext in ['png','svg']:fig.savefig(OWN/f'kt-native-delta-interface.{ext}',dpi=170,metadata={'Creator':'GPT-6.1 Sol (OpenAI)',**({'Date':'2026-10-04'} if ext=='svg' else {})})
 plt.close(fig)

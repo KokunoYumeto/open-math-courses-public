@@ -16,7 +16,7 @@ r_{K,L}:H_q(M\mid K)\longrightarrow H_q(M\mid L).
 \]
 These maps are induced by the identity on the numerator singular-chain complex; hence \(r_{L,J}r_{K,L}=r_{K,J}\) whenever \(J\subset L\subset K\). For \(K=\varnothing\) the relative complex is zero.
 
-The required chain theory is proved in the earlier Thom chapter: [DG-CHAR-06 K.1](DG-CHAR-06.md#lemma-k-1) gives the boundary and prism identities; [DG-CHAR-06 E.1](DG-CHAR-06.md#lemma-e-1) gives the exact sequence of complexes; [DG-CHAR-06 E.2](DG-CHAR-06.md#theorem-e-2) proves excision; [DG-CHAR-06 E.4](DG-CHAR-06.md#lemma-e-4) proves the exact sequence for two supports; and [DG-CHAR-06 E.5](DG-CHAR-06.md#lemma-e-5) computes sphere and punctured-space homology with arbitrary coefficients. We use their ordinary singular-chain versions, which apply to topological spaces. The elementary compactness and norm facts used below are proved in Local tools 0.0 and Local tools 0.1.
+The required chain theory is proved in the earlier Thom chapter: [DG-CHAR-06 K.1](DG-CHAR-06.md#lemma-k-1) gives the boundary and prism identities; [DG-CHAR-06 E.1](DG-CHAR-06.md#lemma-e-1) gives the exact sequence of complexes; [DG-CHAR-06 E.2](DG-CHAR-06.md#theorem-e-2) proves excision; [DG-CHAR-06 E.4](DG-CHAR-06.md#lemma-e-4) proves the exact sequence for two supports; and [DG-CHAR-06 E.5](DG-CHAR-06.md#lemma-e-5) computes sphere and punctured-space homology with arbitrary coefficients. We use their ordinary singular-chain versions, which apply to topological spaces. The elementary compactness and norm facts used below are proved in [Local tools 0.0](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and [Local tools 0.1](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 ## A. What a chain determines near a point
 
@@ -36,7 +36,7 @@ H_q(\mathbb R^d\mid P)\longrightarrow H_q(\mathbb R^d\mid\{x\}).
 \]
 Consequently \(P\) has a unique class \(\mu_P\) with nonzero restriction at every one of its points. The same assertion holds for the inverse image of \(P\) in a manifold chart containing it.
 
-**Proof.** Compact subsets of a Hausdorff space are closed by Local tools 0.1. If a compact \(K\) lies in an open chart \(U\subset M\), excision gives
+**Proof.** Compact subsets of a Hausdorff space are closed by [Local tools 0.1](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). If a compact \(K\) lies in an open chart \(U\subset M\), excision gives
 \[
 H_q(U,U\setminus K)\ \cong\ H_q(M,M\setminus K).
 \tag{A.5}
@@ -106,7 +106,7 @@ Suppose the two conclusions hold on \(A,B,A\cap B\). If \(q>d\), the group of th
 
 Begin in \(\mathbb R^d\). Empty supports have zero relative groups. For nonempty compact convex supports, A.1 proves both conclusions. They follow for every finite union of compact convex sets by induction on the number of sets: the intersection of the last set with the preceding union is a union of at most one fewer compact convex sets, so the same induction covers that intersection.
 
-Now let \(K\subset\mathbb R^d\) be arbitrary compact and nonempty. If \(d=0\), it is the one-point set and has already been treated. Otherwise, represent any relative class \(\alpha\) by a finite chain \(z\), and let \(C\) be the compact support of its boundary as in A.2. If \(C\ne\varnothing\), its distance from \(K\) is positive. For an elementary verification, if the infimum were zero, choose \(c_j\in C,k_j\in K\) with \(|c_j-k_j|<1/j\). Compactness supplies successive subsequences with \(c_j\to c\in C\) and \(k_j\to k\in K\); then \(c=k\), contrary to disjointness. The compactness and subsequence facts are Local tools 0.1.
+Now let \(K\subset\mathbb R^d\) be arbitrary compact and nonempty. If \(d=0\), it is the one-point set and has already been treated. Otherwise, represent any relative class \(\alpha\) by a finite chain \(z\), and let \(C\) be the compact support of its boundary as in A.2. If \(C\ne\varnothing\), its distance from \(K\) is positive. For an elementary verification, if the infimum were zero, choose \(c_j\in C,k_j\in K\) with \(|c_j-k_j|<1/j\). Compactness supplies successive subsequences with \(c_j\to c\in C\) and \(k_j\to k\in K\); then \(c=k\), contrary to disjointness. The compactness and subsequence facts are [Local tools 0.1](../../../src/local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations).
 
 Choose closed balls centred at points of \(K\), small enough to avoid \(C\), whose interiors cover \(K\); retain finitely many by compactness. If \(C\) is empty there is no avoidance restriction. Their union \(P\) is a finite union of compact convex sets, contains \(K\), and avoids \(C\). The same chain \(z\) gives a class \(\beta\in H_q(\mathbb R^d\mid P)\) with \(r_{P,K}\beta=\alpha\).
 

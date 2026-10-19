@@ -538,7 +538,7 @@ Smooth base change and continuity identify the coordinate-generic restriction of
 \(G_q\subset R^q\psi F\)
 whose quotients \(Q_q\) have only finite-support local sections.
 
-We may work on a projective \(S\)-scheme: take the projective closure of the original affine chart and extend its generic sheaf by zero. This preserves constructibility on the generic fibre; restricting cycles back to the chart is open, hence smooth, base change. Over the separably closed residue field, each \(Q_q\) is the skyscraper sum described above. Hence \(H^a(X_s,Q_q)=0\) for \(a>0\). The groups \(H^a(X_s,G_q)\) are finite by the first lesson's Proposition 3.2, so the long exact sequence makes \(H^a(X_s,R^q\psi F)\) finite for \(a>0\).
+We may work on a projective \(S\)-scheme: take the projective closure of the original affine chart and extend its generic sheaf by zero. This preserves constructibility on the generic fibre; restricting cycles back to the chart is open, hence smooth, base change. Over the separably closed residue field, each \(Q_q\) is the skyscraper sum described above. Hence \(H^a(X_s,Q_q)=0\) for \(a>0\). The groups \(H^a(X_s,G_q)\) are finite by the first lesson's [Proposition 3.2](constructible-complexes-on-algebraic-varieties.md#proposition-3-2-finite-coefficients-and-proper-supports), so the long exact sequence makes \(H^a(X_s,R^q\psi F)\) finite for \(a>0\).
 
 Proper base change gives
 

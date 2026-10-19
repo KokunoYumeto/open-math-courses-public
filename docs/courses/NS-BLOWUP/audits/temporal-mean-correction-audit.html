@@ -1,0 +1,296 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="temporal-mean-correction-audit.md">Editable source</a></nav><h1 id="the-temporal-mean-correction">The temporal mean correction</h1>
+<p>The following construction proves original Lemma 8.6, (8.19)–(8.23), pages 95–96, and its mean-equation receiver in Step 3 of Proposition 9.6. The <a href="radial-primitive-audit/src/radial-primitives-and-compact-mean-corrections.html">radial construction</a>, R1–R8, supplies the preceding compact-primitive operators.</p>
+<h2 id="t1-the-exact-inverse-and-its-domain">T1. The exact inverse and its domain</h2>
+<p>The original torus is <span class="math" data-tex="\(\mathbb T^2=\mathbb R^2/\mathbb Z^2\)">\(\mathbb T^2=\mathbb R^2/\mathbb Z^2\)</span>, with Haar mass one. Retain</p>
+<span class="math math-display" data-tex="\[
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+T_g=4+\sqrt2,\quad\Lambda_g=4-\sqrt2,\quad
+v_t=(\sqrt2-1,1),\quad v_r=(1,1-\sqrt2),\quad
+N=v_t\cdot\partial_y.
+\tag{T1.1}
+\]">\[
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+T_g=4+\sqrt2,\quad\Lambda_g=4-\sqrt2,\quad
+v_t=(\sqrt2-1,1),\quad v_r=(1,1-\sqrt2),\quad
+N=v_t\cdot\partial_y.
+\tag{T1.1}
+\]</span>
+<p>For <span class="math" data-tex="\(k\in\mathbb Z^2\setminus\{0\}\)">\(k\in\mathbb Z^2\setminus\{0\}\)</span>, let <span class="math" data-tex="\(n=\max(|k_1|,|k_2|)\geq1\)">\(n=\max(|k_1|,|k_2|)\geq1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+(v_t\cdot k)((k_2-k_1)-\sqrt2k_1)
+=(k_2-k_1)^2-2k_1^2\in\mathbb Z\setminus\{0\}.
+\]">\[
+(v_t\cdot k)((k_2-k_1)-\sqrt2k_1)
+=(k_2-k_1)^2-2k_1^2\in\mathbb Z\setminus\{0\}.
+\]</span>
+<p>If this integer were zero, irrationality of <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> would force <span class="math" data-tex="\(k_1=0\)">\(k_1=0\)</span>, then <span class="math" data-tex="\(k_2=0\)">\(k_2=0\)</span>. The conjugate's magnitude is at most <span class="math" data-tex="\((2+\sqrt2)n\)">\((2+\sqrt2)n\)</span>, proving</p>
+<span class="math math-display" data-tex="\[
+|v_t\cdot k|^{-1}\leq(2+\sqrt2)n.
+\tag{T1.2}
+\]">\[
+|v_t\cdot k|^{-1}\leq(2+\sqrt2)n.
+\tag{T1.2}
+\]</span>
+<p>For a smooth real or complex function <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(\int_{\mathbb T^2}F=0\)">\(\int_{\mathbb T^2}F=0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\widehat F(k)=\int_{[0,1]^2}F(y)e^{-2\pi i k\cdot y}\,dy,\qquad
+\varphi(y)=\sum_{k\ne0}\frac{\widehat F(k)}{2\pi i\,v_t\cdot k}e^{2\pi i k\cdot y}.
+\tag{T1.3}
+\]">\[
+\widehat F(k)=\int_{[0,1]^2}F(y)e^{-2\pi i k\cdot y}\,dy,\qquad
+\varphi(y)=\sum_{k\ne0}\frac{\widehat F(k)}{2\pi i\,v_t\cdot k}e^{2\pi i k\cdot y}.
+\tag{T1.3}
+\]</span>
+<p>Let the <span class="math" data-tex="\(C^m\)">\(C^m\)</span> norm be the maximum of the suprema of all coordinate derivatives of total order at most <span class="math" data-tex="\(m\)">\(m\)</span>. For a coordinate with <span class="math" data-tex="\(|k_j|=n\)">\(|k_j|=n\)</span>, periodic integration by parts <span class="math" data-tex="\(m+4\)">\(m+4\)</span> times gives</p>
+<span class="math math-display" data-tex="\[
+|\widehat F(k)|\leq\frac{\|F\|_{C^{m+4}}}{(2\pi n)^{m+4}}.
+\]">\[
+|\widehat F(k)|\leq\frac{\|F\|_{C^{m+4}}}{(2\pi n)^{m+4}}.
+\]</span>
+<p>For each derivative of order at most <span class="math" data-tex="\(m\)">\(m\)</span>, its summand in (T1.3) is consequently bounded by
+<span class="math" data-tex="\((2+\sqrt2)(2\pi)^{-5}n^{-3}\|F\|_{C^{m+4}}\)">\((2+\sqrt2)(2\pi)^{-5}n^{-3}\|F\|_{C^{m+4}}\)</span>. Exactly <span class="math" data-tex="\(8n\)">\(8n\)</span> integer vectors have maximum norm <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(\sum_{n\geq1}n^{-2}\leq1+\int_1^\infty x^{-2}dx=2\)">\(\sum_{n\geq1}n^{-2}\leq1+\int_1^\infty x^{-2}dx=2\)</span>. Hence all these differentiated series converge absolutely and uniformly and</p>
+<span class="math math-display" data-tex="\[
+\|\varphi\|_{C^m}\leq\frac{16(2+\sqrt2)}{(2\pi)^5}\|F\|_{C^{m+4}}.
+\tag{T1.4}
+\]">\[
+\|\varphi\|_{C^m}\leq\frac{16(2+\sqrt2)}{(2\pi)^5}\|F\|_{C^{m+4}}.
+\tag{T1.4}
+\]</span>
+<p>Applying this at every <span class="math" data-tex="\(m\)">\(m\)</span> proves smoothness and termwise differentiation. The Fourier coefficients of <span class="math" data-tex="\(N\varphi\)">\(N\varphi\)</span> equal those of <span class="math" data-tex="\(F\)">\(F\)</span>, including the zero coefficient. For completeness, equality of all Fourier coefficients determines a continuous function: its convolution with the product of the two Fejér kernels</p>
+<span class="math math-display" data-tex="\[
+K_L(s)=\frac1{L+1}\left|\sum_{j=0}^{L}e^{2\pi ijs}\right|^2
+\]">\[
+K_L(s)=\frac1{L+1}\left|\sum_{j=0}^{L}e^{2\pi ijs}\right|^2
+\]</span>
+<p>is the corresponding finite Fourier sum. The kernel is nonnegative and has integral one by orthogonality of the exponentials. Outside any fixed neighborhood of the integers it is at most <span class="math" data-tex="\(((L+1)\sin^2(\pi\delta))^{-1}\)">\(((L+1)\sin^2(\pi\delta))^{-1}\)</span>, where <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is the distance of that neighborhood's boundary to the integers. Uniform continuity therefore proves uniform convergence of the product-kernel convolution to the function: split the integral into the small neighborhood, where the function oscillation is small, and its complement, whose kernel mass tends to zero. A function with all coefficients zero is thus zero. This proves <span class="math" data-tex="\(N\varphi=F\)">\(N\varphi=F\)</span>. If <span class="math" data-tex="\(N\psi=0\)">\(N\psi=0\)</span>, its nonzero Fourier coefficients vanish by (T1.2); requiring zero mean removes its constant coefficient. This proves uniqueness. For real <span class="math" data-tex="\(F\)">\(F\)</span>, the coefficients at <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(-k\)">\(-k\)</span> in (T1.3) are complex conjugates, so <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is real.</p>
+<p>Thus (T1.3) is an actual map</p>
+<span class="math math-display" data-tex="\[
+N^{-1}:C^\infty_0(\mathbb T^2)\longrightarrow C^\infty_0(\mathbb T^2),
+\tag{T1.5}
+\]">\[
+N^{-1}:C^\infty_0(\mathbb T^2)\longrightarrow C^\infty_0(\mathbb T^2),
+\tag{T1.5}
+\]</span>
+<p>where the subscript denotes zero Haar mean, with the finite derivative bound (T1.4). It is not defined on a nonzero constant: integrating <span class="math" data-tex="\(N\varphi=F\)">\(N\varphi=F\)</span> proves the necessary condition <span class="math" data-tex="\(\int F=0\)">\(\int F=0\)</span>. All slow and radial coefficient derivatives commute with this fixed Fourier multiplier. It acts at each fixed <span class="math" data-tex="\((R,Z,T)\)">\((R,Z,T)\)</span>, so it preserves their support and smooth zero extensions. It need not preserve a subset of the auxiliary torus, and no such support condition is imposed on mean coefficients.</p>
+<h2 id="t2-original-physical-scaling-and-covering-compatibility">T2. Original physical scaling and covering compatibility</h2>
+<p>Put <span class="math" data-tex="\(P_iF(Y)=F(J_g^iY)\)">\(P_iF(Y)=F(J_g^iY)\)</span>. The identity <span class="math" data-tex="\(J_gv_t=T_gv_t\)">\(J_gv_t=T_gv_t\)</span> gives, by differentiating the composition,</p>
+<span class="math math-display" data-tex="\[
+N_{\rm abs}P_i=T_g^iP_iN_i,
+\qquad N_{\rm abs}^{-1}P_i=T_g^{-i}P_iN_i^{-1}.
+\tag{T2.1}
+\]">\[
+N_{\rm abs}P_i=T_g^iP_iN_i,
+\qquad N_{\rm abs}^{-1}P_i=T_g^{-i}P_iN_i^{-1}.
+\tag{T2.1}
+\]</span>
+<p>For the inverse identity, the proposed right side is a zero-mean solution of the left side's defining equation, so uniqueness from T1 proves it. The covering preserves Haar mean: the pullback of the <span class="math" data-tex="\(k\)">\(k\)</span>-th exponential has frequency <span class="math" data-tex="\((J_g^i)^Tk\)">\((J_g^i)^Tk\)</span>, which is nonzero whenever <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>, since <span class="math" data-tex="\(\det J_g=14\)">\(\det J_g=14\)</span>. The identity follows first for trigonometric polynomials, then for smooth functions by their uniform Fourier convergence. No inverse of the many-to-one covering is used.</p>
+<p>Retain the source's physical velocity and residual factors for its viscosity-one construction. The exact map to every original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, including the force, physical coordinates and all moment multipliers, is proved in the mean-moment audit (M2.4)–(M2.7):</p>
+<span class="math math-display" data-tex="\[
+u_*=Q^Au_{\rm phys},\qquad E_*=Q^{2A+1/2}E_{\rm phys},\quad
+A=1/2+h,\quad Q=2^{-\ell},\quad \varepsilon=Q^h.
+\]">\[
+u_*=Q^Au_{\rm phys},\qquad E_*=Q^{2A+1/2}E_{\rm phys},\quad
+A=1/2+h,\quad Q=2^{-\ell},\quad \varepsilon=Q^h.
+\]</span>
+<p>The physical update is <span class="math" data-tex="\(-N_{\rm abs}^{-1}E_{\rm phys}^\circ\)">\(-N_{\rm abs}^{-1}E_{\rm phys}^\circ\)</span>, where <span class="math" data-tex="\(E^\circ=E-\langle E\rangle_Y\)">\(E^\circ=E-\langle E\rangle_Y\)</span>. On a common torus <span class="math" data-tex="\(y=J_g^{i_0}Y\)">\(y=J_g^{i_0}Y\)</span>, (T2.1) gives exactly</p>
+<span class="math math-display" data-tex="\[
+Q^A[-N_{\rm abs}^{-1}E_{\rm phys}^\circ]
+=-Q^{A-(2A+1/2)}T_g^{-i_0}N_{i_0}^{-1}E_*^\circ
+=-c_{i_0}^{-1}N_{i_0}^{-1}E_*^\circ,
+\quad c_{i_0}=T_g^{i_0}Q^{1+h}.
+\tag{T2.2}
+\]">\[
+Q^A[-N_{\rm abs}^{-1}E_{\rm phys}^\circ]
+=-Q^{A-(2A+1/2)}T_g^{-i_0}N_{i_0}^{-1}E_*^\circ
+=-c_{i_0}^{-1}N_{i_0}^{-1}E_*^\circ,
+\quad c_{i_0}=T_g^{i_0}Q^{1+h}.
+\tag{T2.2}
+\]</span>
+<p>The band integer is <span class="math" data-tex="\(i=\lfloor\log_{T_g}(Q^{-1-h}/S_*)\rfloor\)">\(i=\lfloor\log_{T_g}(Q^{-1-h}/S_*)\rfloor\)</span>, with <span class="math" data-tex="\(S_*=\ell^2\)">\(S_*=\ell^2\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+T_g^{-1}S_*^{-1}&lt;T_g^iQ^{1+h}\leq S_*^{-1}.
+\]">\[
+T_g^{-1}S_*^{-1}&lt;T_g^iQ^{1+h}\leq S_*^{-1}.
+\]</span>
+<p>If the common index satisfies <span class="math" data-tex="\(|i_0-i|\leq C_0\)">\(|i_0-i|\leq C_0\)</span>, the explicit bound is</p>
+<span class="math math-display" data-tex="\[
+c_{i_0}^{-1}&lt;T_g^{C_0+1}S_*.
+\tag{T2.3}
+\]">\[
+c_{i_0}^{-1}&lt;T_g^{C_0+1}S_*.
+\tag{T2.3}
+\]</span>
+<p>Indices and <span class="math" data-tex="\(Q\)">\(Q\)</span> remain fixed during differentiation on a chart. The multiplier therefore costs a polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span> and four additional torus derivatives, not a power of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Original common-torus compatibility (6.20), its bounded index difference, and (T2.1) prove agreement on overlaps of the same physical update.</p>
+<p>Use the full <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> definition and original weights in mean-moment audit (M4.6). Haar averaging and subtraction preserve it. Applying (T1.4) after each fixed slow derivative, at each radial point, retains the factors <span class="math" data-tex="\(\varepsilon^\alpha\zeta\delta^{-D_I}\)">\(\varepsilon^\alpha\zeta\delta^{-D_I}\)</span>. The weights have no auxiliary dependence, so they are unchanged by the torus supremum. Equations (T2.2)–(T2.3) therefore prove</p>
+<span class="math math-display" data-tex="\[
+\Delta v=-c^{-1}N^{-1}E_\theta^\circ\in\mathsf M_\alpha,
+\qquad\gamma_d=-c^{-1}N^{-1}E_z^\circ\in\mathsf M_\alpha.
+\tag{T2.4}
+\]">\[
+\Delta v=-c^{-1}N^{-1}E_\theta^\circ\in\mathsf M_\alpha,
+\qquad\gamma_d=-c^{-1}N^{-1}E_z^\circ\in\mathsf M_\alpha.
+\tag{T2.4}
+\]</span>
+<p>Both have zero auxiliary mean at every radial and slow point. The support, derivative and overlap conclusions also hold up to one-sided endpoints on any closed region <span class="math" data-tex="\(q\geq c_0&gt;0\)">\(q\geq c_0&gt;0\)</span>. They require no target smallness and no stage-dependent reduction of the domain.</p>
+<h2 id="t3-compact-realization-exact-moments-and-the-retained-error">T3. Compact realization, exact moments and the retained error</h2>
+<p>Use the original positive vector potential</p>
+<span class="math math-display" data-tex="\[
+\Psi_*=\mathsf T_1\gamma_d,\qquad
+\Delta\beta=-\varepsilon\partial_Z\Psi_*,\qquad
+\Delta\gamma=(D_r+R^{-1})\Psi_*=\gamma_d-\mathcal A_1\gamma_d.
+\tag{T3.1}
+\]">\[
+\Psi_*=\mathsf T_1\gamma_d,\qquad
+\Delta\beta=-\varepsilon\partial_Z\Psi_*,\qquad
+\Delta\gamma=(D_r+R^{-1})\Psi_*=\gamma_d-\mathcal A_1\gamma_d.
+\tag{T3.1}
+\]</span>
+<p>The compact-primitive identity and estimates are proved in radial audit R3–R6 from original (8.4)–(8.8). Since <span class="math" data-tex="\(\langle\gamma_d\rangle_Y=0\)">\(\langle\gamma_d\rangle_Y=0\)</span> at every radius, its required weighted mean integral is zero. The result is</p>
+<span class="math math-display" data-tex="\[
+\Psi_*,\Delta\gamma\in\mathsf M_\alpha,\quad
+\Delta\beta\in\mathsf M_{\alpha+1},\qquad
+a=-\mathcal A_1\gamma_d.
+\tag{T3.2}
+\]">\[
+\Psi_*,\Delta\gamma\in\mathsf M_\alpha,\quad
+\Delta\beta\in\mathsf M_{\alpha+1},\qquad
+a=-\mathcal A_1\gamma_d.
+\tag{T3.2}
+\]</span>
+<p>The complete <span class="math" data-tex="\(a\)">\(a\)</span> is part of the actual axial velocity. Here it need not vanish pointwise, unlike the auxiliary-independent moment correction.</p>
+<p>Translation invariance of Haar measure gives <span class="math" data-tex="\(\langle\mathcal I g\rangle=\int_0^R\langle g\rangle\,dR&#x27;\)">\(\langle\mathcal I g\rangle=\int_0^R\langle g\rangle\,dR&#x27;\)</span> and the corresponding identity for <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>; the torus translations in (8.5) do not affect the averages. Applied to <span class="math" data-tex="\(g=R\gamma_d\)">\(g=R\gamma_d\)</span>, both averages are zero. The torus-independent cutoff and factor <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> then give <span class="math" data-tex="\(\langle\Psi_*\rangle=0\)">\(\langle\Psi_*\rangle=0\)</span>. Consequently <span class="math" data-tex="\(\langle\Delta\beta\rangle=\langle\Delta\gamma\rangle=0\)">\(\langle\Delta\beta\rangle=\langle\Delta\gamma\rangle=0\)</span>, and <span class="math" data-tex="\(\langle\Delta v\rangle=0\)">\(\langle\Delta v\rangle=0\)</span> was already known. Both moments in (8.2) remain exactly unchanged. The full physical divergence vanishes because</p>
+<span class="math math-display" data-tex="\[
+(D_r+R^{-1})(-\varepsilon\partial_Z\Psi_*)
++\varepsilon\partial_Z(D_r+R^{-1})\Psi_*=0:
+\]">\[
+(D_r+R^{-1})(-\varepsilon\partial_Z\Psi_*)
++\varepsilon\partial_Z(D_r+R^{-1})\Psi_*=0:
+\]</span>
+<p>the coefficients of <span class="math" data-tex="\(D_r\)">\(D_r\)</span> depend only on <span class="math" data-tex="\(R\)">\(R\)</span> on a fixed chart. The azimuthal component is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. All components have the smooth shell zero extensions supplied by the compact inverse.</p>
+<p>The operator <span class="math" data-tex="\(N\)">\(N\)</span> commutes with both translated radial integrals and their cutoff, since it is a constant derivative in the translation variable and the cutoff has no torus dependence. With <span class="math" data-tex="\(c=c_{i_0}\)">\(c=c_{i_0}\)</span>, the exact fast-time equations are therefore</p>
+<span class="math math-display" data-tex="\[
+cN\Delta v=-E_\theta^\circ,\qquad
+cN\Delta\gamma=-E_z^\circ+\mathcal F_{\rm ax},\qquad
+\mathcal F_{\rm ax}=cNa.
+\tag{T3.3}
+\]">\[
+cN\Delta v=-E_\theta^\circ,\qquad
+cN\Delta\gamma=-E_z^\circ+\mathcal F_{\rm ax},\qquad
+\mathcal F_{\rm ax}=cNa.
+\tag{T3.3}
+\]</span>
+<p>For every fixed coefficient multi-index <span class="math" data-tex="\(I\)">\(I\)</span> and integer <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>, the compact remainder estimate gives</p>
+<span class="math math-display" data-tex="\[
+|\partial^I\mathcal F_{\rm ax}|
+\leq C_{I,p}\varepsilon^{\alpha+p\kappa_s}S_*^{B_{I,p}}
+\zeta\delta^{-D_{I,p}}.
+\tag{T3.4}
+\]">\[
+|\partial^I\mathcal F_{\rm ax}|
+\leq C_{I,p}\varepsilon^{\alpha+p\kappa_s}S_*^{B_{I,p}}
+\zeta\delta^{-D_{I,p}}.
+\tag{T3.4}
+\]</span>
+<p>One additional torus derivative is enough to account for <span class="math" data-tex="\(N\)">\(N\)</span>; multiplying by <span class="math" data-tex="\(c\leq T_g^{C_0}S_*^{-1}\)">\(c\leq T_g^{C_0}S_*^{-1}\)</span> changes no <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> power. The physical chain rule has a finite loss for each fixed derivative, independent of <span class="math" data-tex="\(p\)">\(p\)</span>. Choosing <span class="math" data-tex="\(p\)">\(p\)</span> large enough that <span class="math" data-tex="\(hp\kappa_s\)">\(hp\kappa_s\)</span> exceeds that loss and the requested power, and only then taking <span class="math" data-tex="\(q\)">\(q\)</span> small, makes every physical derivative of <span class="math" data-tex="\(\mathcal F_{\rm ax}\)">\(\mathcal F_{\rm ax}\)</span> of order <span class="math" data-tex="\(O(q^L)\)">\(O(q^L)\)</span> for every prescribed <span class="math" data-tex="\(L\)">\(L\)</span>. Polynomial logarithmic factors are absorbed by the strict exponent excess, as proved in radial audit R6. This proves flatness with the actual physical factors retained. It does not identify <span class="math" data-tex="\(a\)">\(a\)</span> or <span class="math" data-tex="\(\mathcal F_{\rm ax}\)">\(\mathcal F_{\rm ax}\)</span> with zero.</p>
+<h2 id="t4-the-pressure-and-exact-nonlinear-receiver">T4. The pressure and exact nonlinear receiver</h2>
+<p>Keep the base and actual wave velocity fixed. The complete radial source and defects are mean-moment audit (M5.2)–(M5.3). Its algebraic difference (M5.4) remains valid for this update, because that identity required no independence of the increments from <span class="math" data-tex="\(Y\)">\(Y\)</span>. Write again</p>
+<span class="math math-display" data-tex="\[
+\Delta g_r=(2V/R)\Delta v+\mathcal R_g,
+\qquad \Delta\mathcal P=\int\langle\Delta g_r\rangle_Y\,dR,
+\qquad \Delta p_m=\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{T4.1}
+\]">\[
+\Delta g_r=(2V/R)\Delta v+\mathcal R_g,
+\qquad \Delta\mathcal P=\int\langle\Delta g_r\rangle_Y\,dR,
+\qquad \Delta p_m=\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{T4.1}
+\]</span>
+<p>This is the full pressure recomputation. Its cutoff error is retained by the exact identity</p>
+<span class="math math-display" data-tex="\[
+D_r\Delta p_m-\Delta g_r=-\rho\Delta\mathcal P
+-\mathcal A_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{T4.2}
+\]">\[
+D_r\Delta p_m-\Delta g_r=-\rho\Delta\mathcal P
+-\mathcal A_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{T4.2}
+\]</span>
+<p>Assume the incoming classes of the source's finite-state definition: <span class="math" data-tex="\(v,\gamma\in\mathsf M_{0.9}\)">\(v,\gamma\in\mathsf M_{0.9}\)</span>, <span class="math" data-tex="\(\beta\in\mathsf M_{1.9}\)">\(\beta\in\mathsf M_{1.9}\)</span>, <span class="math" data-tex="\(\alpha\geq0.9\)">\(\alpha\geq0.9\)</span>. The source's fixed base has coefficient bounds <span class="math" data-tex="\(b=O(\varepsilon S_*^B)\)">\(b=O(\varepsilon S_*^B)\)</span>, <span class="math" data-tex="\(V,G=O(S_*^B)\)">\(V,G=O(S_*^B)\)</span> on the enlarged shell. This step uses those bounds, whose global construction is an earlier audit component; it does not introduce a replacement base. Products add exponents with the full edge weights, since <span class="math" data-tex="\(\zeta^2\leq\zeta\)">\(\zeta^2\leq\zeta\)</span> and powers of <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> add. The original radial operator loses at most <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span>, <span class="math" data-tex="\(D_z\)">\(D_z\)</span> adds one, and the fast term <span class="math" data-tex="\(cN\)">\(cN\)</span> has no <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> loss, with a finite extra coefficient derivative.</p>
+<p>For <span class="math" data-tex="\(\mathcal R_g\)">\(\mathcal R_g\)</span> in (M5.4), the fast-time part of <span class="math" data-tex="\(-\mathfrak t_*\Delta\beta\)">\(-\mathfrak t_*\Delta\beta\)</span> has exponent <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span>, its slow part has exponent <span class="math" data-tex="\(\alpha+2\)">\(\alpha+2\)</span>; the base-linear radial part has <span class="math" data-tex="\(\alpha+2-\kappa_s\)">\(\alpha+2-\kappa_s\)</span>; the remaining radial products have <span class="math" data-tex="\(\alpha+2.9-\kappa_s\)">\(\alpha+2.9-\kappa_s\)</span> or <span class="math" data-tex="\(2\alpha+2-\kappa_s\)">\(2\alpha+2-\kappa_s\)</span>. The base-linear axial terms have <span class="math" data-tex="\(\alpha+2\)">\(\alpha+2\)</span>, the remaining axial terms <span class="math" data-tex="\(\alpha+2.9\)">\(\alpha+2.9\)</span> or <span class="math" data-tex="\(2\alpha+2\)">\(2\alpha+2\)</span>. The angular products have <span class="math" data-tex="\(\alpha+0.9\)">\(\alpha+0.9\)</span> and <span class="math" data-tex="\(2\alpha\)">\(2\alpha\)</span>. The viscous term has exponent at least <span class="math" data-tex="\(\alpha+2-2\kappa_s\)">\(\alpha+2-2\kappa_s\)</span>. All are at least <span class="math" data-tex="\(\alpha+0.9\)">\(\alpha+0.9\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_g\in\mathsf M_{\alpha+0.9},\quad
+\Delta g_r\in\mathsf M_\alpha,\quad
+\Delta p_m\in\mathsf M_\alpha.
+\tag{T4.3}
+\]">\[
+\mathcal R_g\in\mathsf M_{\alpha+0.9},\quad
+\Delta g_r\in\mathsf M_\alpha,\quad
+\Delta p_m\in\mathsf M_\alpha.
+\tag{T4.3}
+\]</span>
+<p>The last conclusion uses the proved compact primitive after subtracting its actual moment, with <span class="math" data-tex="\(\rho\Delta\mathcal P\)">\(\rho\Delta\mathcal P\)</span> retained.</p>
+<p>Unlike the moment solve, this temporal solve does not cancel the old three defects. Its base-linear changes have zero auxiliary average because <span class="math" data-tex="\(V,G\)">\(V,G\)</span> are slow and all increments have zero auxiliary mean. Expanding (M5.3) therefore gives the exact <em>changes</em></p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta\mathcal P&amp;=\int\langle\mathcal R_g\rangle_Y\,dR,\\
+\Delta\mathcal J_\theta&amp;=\int R^2\langle\gamma\Delta v+v\Delta\gamma+\Delta\gamma\Delta v\rangle_Y\,dR,\\
+\Delta\mathcal J_z&amp;=\int R\langle2\gamma\Delta\gamma+(\Delta\gamma)^2\rangle_Y\,dR
+-\frac12\int R^2\langle\mathcal R_g\rangle_Y\,dR.
+\end{aligned}
+\tag{T4.4}
+\]">\[
+\begin{aligned}
+\Delta\mathcal P&amp;=\int\langle\mathcal R_g\rangle_Y\,dR,\\
+\Delta\mathcal J_\theta&amp;=\int R^2\langle\gamma\Delta v+v\Delta\gamma+\Delta\gamma\Delta v\rangle_Y\,dR,\\
+\Delta\mathcal J_z&amp;=\int R\langle2\gamma\Delta\gamma+(\Delta\gamma)^2\rangle_Y\,dR
+-\frac12\int R^2\langle\mathcal R_g\rangle_Y\,dR.
+\end{aligned}
+\tag{T4.4}
+\]</span>
+<p>Their class is <span class="math" data-tex="\(\mathsf S_{\alpha+0.9}\)">\(\mathsf S_{\alpha+0.9}\)</span> by (T4.3), products and the full moment factors (M2.1)–(M2.3). Thus incoming defects of order <span class="math" data-tex="\(\mathsf S_\alpha\)">\(\mathsf S_\alpha\)</span> remain of that order. They are not assumed to vanish.</p>
+<p>The full tangential differences are exactly (M7.3). Substituting (T3.3) into their time terms gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_{\theta,\rm new}-\langle E_\theta\rangle_Y
+={}&amp;-\varepsilon\partial_T\Delta v-\varepsilon(\Delta_0-R^{-2})\Delta v\\
+&amp;+(D_r+2/R)(b\Delta v+V\Delta\beta+\beta\Delta v+v\Delta\beta+\Delta\beta\Delta v)\\
+&amp;+D_z(G\Delta v+V\Delta\gamma+\gamma\Delta v+v\Delta\gamma+\Delta\gamma\Delta v),\\
+E_{z,\rm new}-\langle E_z\rangle_Y
+={}&amp;-\varepsilon\partial_T\Delta\gamma-\varepsilon\Delta_0\Delta\gamma+\mathcal F_{\rm ax}\\
+&amp;+(D_r+1/R)(b\Delta\gamma+G\Delta\beta+\beta\Delta\gamma+\gamma\Delta\beta+\Delta\beta\Delta\gamma)\\
+&amp;+D_z(2G\Delta\gamma+2\gamma\Delta\gamma+(\Delta\gamma)^2+\Delta p_m).
+\end{aligned}
+\tag{T4.5}
+\]">\[
+\begin{aligned}
+E_{\theta,\rm new}-\langle E_\theta\rangle_Y
+={}&amp;-\varepsilon\partial_T\Delta v-\varepsilon(\Delta_0-R^{-2})\Delta v\\
+&amp;+(D_r+2/R)(b\Delta v+V\Delta\beta+\beta\Delta v+v\Delta\beta+\Delta\beta\Delta v)\\
+&amp;+D_z(G\Delta v+V\Delta\gamma+\gamma\Delta v+v\Delta\gamma+\Delta\gamma\Delta v),\\
+E_{z,\rm new}-\langle E_z\rangle_Y
+={}&amp;-\varepsilon\partial_T\Delta\gamma-\varepsilon\Delta_0\Delta\gamma+\mathcal F_{\rm ax}\\
+&amp;+(D_r+1/R)(b\Delta\gamma+G\Delta\beta+\beta\Delta\gamma+\gamma\Delta\beta+\Delta\beta\Delta\gamma)\\
+&amp;+D_z(2G\Delta\gamma+2\gamma\Delta\gamma+(\Delta\gamma)^2+\Delta p_m).
+\end{aligned}
+\tag{T4.5}
+\]</span>
+<p>Every occurrence of <span class="math" data-tex="\(\Delta\gamma\)">\(\Delta\gamma\)</span> means <span class="math" data-tex="\(\gamma_d+a\)">\(\gamma_d+a\)</span>. In particular all products with <span class="math" data-tex="\(a\)">\(a\)</span> remain. The slow time terms have exponent <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span>; the radial base-linear fluxes <span class="math" data-tex="\(\alpha+1-\kappa_s\)">\(\alpha+1-\kappa_s\)</span>; radial products with old means <span class="math" data-tex="\(\alpha+1.9-\kappa_s\)">\(\alpha+1.9-\kappa_s\)</span>; radial new-new products <span class="math" data-tex="\(2\alpha+1-\kappa_s\)">\(2\alpha+1-\kappa_s\)</span>. Axial base-linear and pressure terms have <span class="math" data-tex="\(\alpha+1\)">\(\alpha+1\)</span>, the remaining axial products <span class="math" data-tex="\(\alpha+1.9\)">\(\alpha+1.9\)</span> or <span class="math" data-tex="\(2\alpha+1\)">\(2\alpha+1\)</span>. Viscosity has exponent at least <span class="math" data-tex="\(\alpha+1-2\kappa_s\)">\(\alpha+1-2\kappa_s\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+E_{\theta,\rm new}-\langle E_\theta\rangle_Y\in\mathsf M_{\alpha+1-2\kappa_s},
+\quad
+E_{z,\rm new}-\langle E_z\rangle_Y-\mathcal F_{\rm ax}
+\in\mathsf M_{\alpha+1-2\kappa_s}.
+\tag{T4.6}
+\]">\[
+E_{\theta,\rm new}-\langle E_\theta\rangle_Y\in\mathsf M_{\alpha+1-2\kappa_s},
+\quad
+E_{z,\rm new}-\langle E_z\rangle_Y-\mathcal F_{\rm ax}
+\in\mathsf M_{\alpha+1-2\kappa_s}.
+\tag{T4.6}
+\]</span>
+<p>This is precisely the mean improvement used in Step 3. With <span class="math" data-tex="\(\alpha=H=C_*-2\kappa_s\)">\(\alpha=H=C_*-2\kappa_s\)</span> and the incoming averaged residual order <span class="math" data-tex="\(C_*+0.17\)">\(C_*+0.17\)</span>, the new non-flat mean residual has order
+<span class="math" data-tex="\(\min(C_*+0.17,H+1-2\kappa_s)\)">\(\min(C_*+0.17,H+1-2\kappa_s)\)</span>; the actual axial field still contains the explicitly flat term. The moment update proved in M1–M8 can then be applied to the recomputed defects. The <a href="wave-interaction-audit.html">wave-interaction audit</a>, W5 and W7, proves the nonzero-harmonic receiver for this complete increment, including the actual axial cutoff remainder: it is an added wave source of order H with the same wave support and envelope. The <a href="pulse-inverse-audit.html">pulse inverse and actual linear residual</a>, P1–P8, are derived. The <a href="stress-covariance-audit.html">stress covariance audit</a>, C1–C9, supplies the positive primary amplitudes, signed linear inverse and actual curl covariance errors. The <a href="source-containment-audit.html">source-containment audit</a>, S1–S5, proves the finite-stage closure and exact conservative means. The <a href="correction-cycle-audit.html">initialization and complete cycle audit</a>, K0–K8, proves the actual four updates, their simultaneous gains, accumulated-field bounds and common finite-stage domain. The <a href="physical-realization-audit.html">physical derivative and realization audit</a>, L0–L7, derives the stage-independent derivative loss, exact potential summation, retained cutoff curls, full nonlinear residual comparison, one-sided endpoint limits and preservation of the exterior and inner fields. The actual leading profile and complete base field are supplied by <a href="shear-realization-audit.html">V0–V7</a> and <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original PDF</a>, original pages 63–64 for phase definitions and divisor estimates, 90–93 for the radial inverse, 95–96 for this inverse, and 110 for its receiver. The <a href="mean-moment-correction-audit.html">mean-moment audit</a>, M1–M8, supplies the full original-coordinate row factors and nonlinear difference calculation. The operators proved here are used in the actual finite cycle <a href="correction-cycle-audit.html">K0–K8</a> and local construction <a href="local-construction-assembly-audit.html">I0–I7</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<h2 id="exact-remainder-slow-commutators-and-auxiliary-averages">Exact remainder, slow commutators and auxiliary averages</h2>
+<p>The <a href="auxiliary-time-correction-audit.html">complete auxiliary-time derivation</a>, TM7.7–TM7.16, proves the direct identity for the full axial remainder, both slow derivative commutators, the exact quadratic changes of every auxiliary-averaged equation, and their class bounds. TM5 supplies all original-viscosity factors. These consequences retain the actual compact velocity and pressure and propagate the averaged Step 3 bound without asserting an improved complete iteration rate.</p>
+</article></body></html>

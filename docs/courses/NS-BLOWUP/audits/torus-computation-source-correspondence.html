@@ -1,0 +1,661 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two constructions for the same torus velocity test</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1120px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}table{display:block;overflow-x:auto;max-width:100%;border-collapse:collapse}td,th{padding:.5rem;text-align:left;border-bottom:1px solid #b6c5d5;overflow-wrap:normal;white-space:nowrap}a{color:#175e9c}*{box-sizing:border-box}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><h1 id="two-constructions-for-the-same-torus-velocity-test">Two constructions for the same torus velocity test</h1>
+<p>This note compares the torus construction in OpenAI's <em>Velocity-Field Detection of Computation in Forced Navier–Stokes Flows</em> with the construction in its supplied <code>VelocityDetection</code> Lean sources. It proves the history projection, the finite-prefix transport and diffusion estimates, and the exact mass identity for the latter construction. Both constructions detect the same machine-halting event, but they prescribe different forces. In particular, the persistent positive mass of the paper's construction is not a property that can be transferred to the supplied Lean construction.</p>
+<p>The source edition is <a href="https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a">openai/math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a</a>. The <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/velocity-field-detection-audit.md">written velocity audit</a>, VD3, supplies the periodic scalar existence argument used below; its VD4 supplies the paper's torus detector argument. The present text is a separate mathematical exposition and source comparison. It does not alter the paper or claim that Lean has been run to check these arguments. The cylinder construction and the other computation developments have their own arguments and are outside the correspondence proved here.</p>
+<p><img src="torus-computation-correspondence.svg" alt="Exact machine projection, burst clock and detector margins" class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="torus-computation-correspondence" data-asset-sha256="FF840D4CD2029003D75AD165351B9DF36004E512A1975E2F511D1114A248A251"></p>
+<p>The diagram retains the history radix, the amplitude and transport clock, and the original detector strip. The clock curves show the specified example prefix length three, using the exact smooth step; they illustrate the formulas and are not numerical evidence for the theorem. The mass identity holds for every input, including after halting. Proofs: VC1–VC7. <a href="torus-computation-correspondence.py">Editable figure source</a>.</p>
+<h2 id="vc1-from-the-original-tape-to-an-injective-transition">VC1. From the original tape to an injective transition</h2>
+<p>Fix an alphabet with <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span> symbols, numbered <span class="math" data-tex="\(0,\ldots,b-1\)">\(0,\ldots,b-1\)</span>, with blank symbol <span class="math" data-tex="\(0\)">\(0\)</span>, and a machine with <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span> states. For a finite word <span class="math" data-tex="\(w=(w_0,\ldots,w_{m-1})\)">\(w=(w_0,\ldots,w_{m-1})\)</span>, the source uses</p>
+<span class="math math-display" data-tex="\[
+\operatorname{word}(w)=\sum_{j=0}^{m-1}w_jb^j,
+\qquad \operatorname{word}(a::w)=a+b\operatorname{word}(w).
+\tag{VC1.1}
+\]">\[
+\operatorname{word}(w)=\sum_{j=0}^{m-1}w_jb^j,
+\qquad \operatorname{word}(a::w)=a+b\operatorname{word}(w).
+\tag{VC1.1}
+\]</span>
+<p>Appending blank symbols leaves this integer unchanged. For an eventually blank half-tape <span class="math" data-tex="\(L\)">\(L\)</span>, write <span class="math" data-tex="\(H(L)\)">\(H(L)\)</span> for this integer; then</p>
+<span class="math math-display" data-tex="\[
+H(L)=L_0+bH(\operatorname{tail}L),\quad
+H(L)\bmod b=L_0,\quad
+\left\lfloor H(L)/b\right\rfloor=H(\operatorname{tail}L).
+\tag{VC1.2}
+\]">\[
+H(L)=L_0+bH(\operatorname{tail}L),\quad
+H(L)\bmod b=L_0,\quad
+\left\lfloor H(L)/b\right\rfloor=H(\operatorname{tail}L).
+\tag{VC1.2}
+\]</span>
+<p>These identities follow by division with remainder, since <span class="math" data-tex="\(0\leq L_0&lt;b\)">\(0\leq L_0&lt;b\)</span>. They also hold for <span class="math" data-tex="\(b=1\)">\(b=1\)</span>: the only symbol is zero, and every encoded half-tape is zero. A tape configuration is encoded as <span class="math" data-tex="\(c=(q,x,y)\)">\(c=(q,x,y)\)</span>, where <span class="math" data-tex="\(x\)">\(x\)</span> encodes the symbols to the left of the head, nearest first, and <span class="math" data-tex="\(y\)">\(y\)</span> encodes the head and the right half-tape, head first. The current symbol is <span class="math" data-tex="\(\alpha=y\bmod b\)">\(\alpha=y\bmod b\)</span>.</p>
+<p>For a rule writing <span class="math" data-tex="\(\beta&lt;b\)">\(\beta&lt;b\)</span> and taking direction <span class="math" data-tex="\(d\)">\(d\)</span>, the source's exact stack update is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_{\mathrm{right},\beta}(x,y)&amp;=(bx+\beta,\lfloor y/b\rfloor),\\
+T_{\mathrm{stay},\beta}(x,y)&amp;=(x,y-(y\bmod b)+\beta),\\
+T_{\mathrm{left},\beta}(x,y)&amp;=(\lfloor x/b\rfloor,
+x\bmod b+b\beta+b^2\lfloor y/b\rfloor).
+\end{aligned}
+\tag{VC1.3}
+\]">\[
+\begin{aligned}
+T_{\mathrm{right},\beta}(x,y)&amp;=(bx+\beta,\lfloor y/b\rfloor),\\
+T_{\mathrm{stay},\beta}(x,y)&amp;=(x,y-(y\bmod b)+\beta),\\
+T_{\mathrm{left},\beta}(x,y)&amp;=(\lfloor x/b\rfloor,
+x\bmod b+b\beta+b^2\lfloor y/b\rfloor).
+\end{aligned}
+\tag{VC1.3}
+\]</span>
+<p>For a move instruction, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is the old head symbol; for a write instruction the direction is stay. Applying (VC1.2) to the head and two half-tapes proves that (VC1.3) is exactly the encoding of each of the three original tape operations. An undefined table entry is undefined in both presentations. Consequently the encoding commutes with every defined step and preserves, in both directions, the existence of a finite computation ending at an undefined entry. This is the map in <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/TapeCodes.lean#L74">TapeCodes.lean, <code>apply_rule</code> and <code>step_config</code></a>.</p>
+<p>The supplied construction begins execution in the additional state <span class="math" data-tex="\(N\)">\(N\)</span> before entering the original states <span class="math" data-tex="\(0,\ldots,N-1\)">\(0,\ldots,N-1\)</span>. In that state, on symbol <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, it writes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, stays in place and enters the old initial state <span class="math" data-tex="\(0\)">\(0\)</span>. The first step therefore preserves both integers. Every subsequent step is the embedded original step. This adds exactly one step and makes the initial configuration active, including when the original machine halts immediately. These are the actual last-state convention and embedding of <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/Prelude.lean#L19">Prelude.lean, lines 19–82</a>.</p>
+<p>Put <span class="math" data-tex="\(s=N+1\)">\(s=N+1\)</span> for the resulting number of states. Attach a history integer <span class="math" data-tex="\(h\geq0\)">\(h\geq0\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+r=sb,\qquad \tau(q,x,y)=bq+(y\bmod b),\qquad
+\widehat T(c,h)=(T(c),rh+\tau(c))
+\tag{VC1.4}
+\]">\[
+r=sb,\qquad \tau(q,x,y)=bq+(y\bmod b),\qquad
+\widehat T(c,h)=(T(c),rh+\tau(c))
+\tag{VC1.4}
+\]</span>
+<p>on an active configuration; at an undefined entry, both <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(\widehat T\)">\(\widehat T\)</span> fix the configuration. On active configurations <span class="math" data-tex="\(0\leq\tau&lt;r\)">\(0\leq\tau&lt;r\)</span>, so the new history <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span> determines</p>
+<span class="math math-display" data-tex="\[
+\tau=h&#x27;\bmod r,\quad h=\lfloor h&#x27;/r\rfloor,\quad
+q=\lfloor\tau/b\rfloor,\quad \alpha=\tau\bmod b.
+\tag{VC1.5}
+\]">\[
+\tau=h&#x27;\bmod r,\quad h=\lfloor h&#x27;/r\rfloor,\quad
+q=\lfloor\tau/b\rfloor,\quad \alpha=\tau\bmod b.
+\tag{VC1.5}
+\]</span>
+<p>The pair <span class="math" data-tex="\((q,\alpha)\)">\((q,\alpha)\)</span> determines the old rule, hence its direction and written symbol. From the updated stacks <span class="math" data-tex="\((x&#x27;,y&#x27;)\)">\((x&#x27;,y&#x27;)\)</span>, the inverse formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathrm{right}:&amp;\quad (x,y)=(\lfloor x&#x27;/b\rfloor,by&#x27;+\alpha),\\
+\mathrm{stay}:&amp;\quad (x,y)=(x&#x27;,b\lfloor y&#x27;/b\rfloor+\alpha),\\
+\mathrm{left}:&amp;\quad (x,y)=(bx&#x27;+y&#x27;\bmod b,
+b\lfloor y&#x27;/b^2\rfloor+\alpha).
+\end{aligned}
+\tag{VC1.6}
+\]">\[
+\begin{aligned}
+\mathrm{right}:&amp;\quad (x,y)=(\lfloor x&#x27;/b\rfloor,by&#x27;+\alpha),\\
+\mathrm{stay}:&amp;\quad (x,y)=(x&#x27;,b\lfloor y&#x27;/b\rfloor+\alpha),\\
+\mathrm{left}:&amp;\quad (x,y)=(bx&#x27;+y&#x27;\bmod b,
+b\lfloor y&#x27;/b^2\rfloor+\alpha).
+\end{aligned}
+\tag{VC1.6}
+\]</span>
+<p>For right and stay, substitute (VC1.3) and use <span class="math" data-tex="\(\beta&lt;b\)">\(\beta&lt;b\)</span>. For left, the two lower digits of <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> are <span class="math" data-tex="\(x\bmod b\)">\(x\bmod b\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so <span class="math" data-tex="\(y&#x27;\bmod b=x\bmod b\)">\(y&#x27;\bmod b=x\bmod b\)</span> and <span class="math" data-tex="\(\lfloor y&#x27;/b^2\rfloor=\lfloor y/b\rfloor\)">\(\lfloor y&#x27;/b^2\rfloor=\lfloor y/b\rfloor\)</span>. Division with remainder then restores both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>. Thus two active configurations with equal images under <span class="math" data-tex="\(\widehat T\)">\(\widehat T\)</span> have identical histories, states, read symbols, rules and stacks. The active transition is injective. We make no claim that adjoining all the fixed halting configurations makes the entire total map injective.</p>
+<p>The projection <span class="math" data-tex="\(\pi(c,h)=c\)">\(\pi(c,h)=c\)</span> is an exact semiconjugacy:</p>
+<span class="math math-display" data-tex="\[
+\pi\widehat T=T\pi,\qquad
+\pi(\widehat T^{\,n}(c_0,0))=T^n(c_0),\qquad
+\widehat T^{\,n}(c_0,0)\text{ is halted}\iff T^n(c_0)\text{ is halted}.
+\tag{VC1.7}
+\]">\[
+\pi\widehat T=T\pi,\qquad
+\pi(\widehat T^{\,n}(c_0,0))=T^n(c_0),\qquad
+\widehat T^{\,n}(c_0,0)\text{ is halted}\iff T^n(c_0)\text{ is halted}.
+\tag{VC1.7}
+\]</span>
+<p>The first identity follows separately at defined and undefined entries; induction proves the second, and the table lookup ignores <span class="math" data-tex="\(h\)">\(h\)</span>, proving the third. This proves precisely how the additional history relates to the original computation. See <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/History.lean#L82">History.lean, <code>applyRule_injective</code>, <code>next_tape</code>, <code>orbit_tape</code></a>.</p>
+<h2 id="vc2-finite-addresses-with-every-history-factor-retained">VC2. Finite addresses, with every history factor retained</h2>
+<p>Keep <span class="math" data-tex="\(m=|w|\)">\(m=|w|\)</span>. The source's level-<span class="math" data-tex="\(n\)">\(n\)</span> bounds and address are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_n&amp;=b^{m+1+n},&amp; H_n&amp;=(sb)^n,\\
+0\leq x,y&amp;&lt;B_n,&amp;0\leq h&amp;&lt;H_n,\\
+p(q,h)&amp;=sh+q,&amp;
+A_n(q,x,y,h)&amp;=1+x+B_ny+B_n^2(sh+q).
+\end{aligned}
+\tag{VC2.1}
+\]">\[
+\begin{aligned}
+B_n&amp;=b^{m+1+n},&amp; H_n&amp;=(sb)^n,\\
+0\leq x,y&amp;&lt;B_n,&amp;0\leq h&amp;&lt;H_n,\\
+p(q,h)&amp;=sh+q,&amp;
+A_n(q,x,y,h)&amp;=1+x+B_ny+B_n^2(sh+q).
+\end{aligned}
+\tag{VC2.1}
+\]</span>
+<p>Initially <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, <span class="math" data-tex="\(y=\operatorname{word}(w)&lt;b^m\leq B_0\)">\(y=\operatorname{word}(w)&lt;b^m\leq B_0\)</span> and <span class="math" data-tex="\(h=0&lt;H_0=1\)">\(h=0&lt;H_0=1\)</span>. Suppose the bounds hold at level <span class="math" data-tex="\(n\)">\(n\)</span>. Right motion gives <span class="math" data-tex="\(bx+\beta&lt;bB_n\)">\(bx+\beta&lt;bB_n\)</span> and <span class="math" data-tex="\(\lfloor y/b\rfloor&lt;bB_n\)">\(\lfloor y/b\rfloor&lt;bB_n\)</span>. Stay motion gives <span class="math" data-tex="\(x&lt;bB_n\)">\(x&lt;bB_n\)</span> and <span class="math" data-tex="\(b\lfloor y/b\rfloor+\beta&lt;B_n\leq bB_n\)">\(b\lfloor y/b\rfloor+\beta&lt;B_n\leq bB_n\)</span>. For left motion, use <span class="math" data-tex="\(b\mid B_n\)">\(b\mid B_n\)</span>, <span class="math" data-tex="\(\lfloor y/b\rfloor&lt;B_n/b\)">\(\lfloor y/b\rfloor&lt;B_n/b\)</span> and <span class="math" data-tex="\(x\bmod b+b\beta&lt;b^2\)">\(x\bmod b+b\beta&lt;b^2\)</span> to get the second updated stack strictly below <span class="math" data-tex="\(bB_n\)">\(bB_n\)</span>; the first is also below <span class="math" data-tex="\(bB_n\)">\(bB_n\)</span>. The history satisfies <span class="math" data-tex="\(rh+\tau&lt;rH_n\)">\(rh+\tau&lt;rH_n\)</span>. A frozen configuration continues to satisfy the enlarged bounds because <span class="math" data-tex="\(b,r\geq1\)">\(b,r\geq1\)</span>. Induction proves (VC2.1) for the whole orbit.</p>
+<p>If <span class="math" data-tex="\(a=A_n(q,x,y,h)\)">\(a=A_n(q,x,y,h)\)</span>, its exact inverse on this finite box is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+x&amp;=(a-1)\bmod B_n,&amp;
+y&amp;=\lfloor(a-1)/B_n\rfloor\bmod B_n,\\
+p&amp;=\lfloor(a-1)/B_n^2\rfloor,&amp;
+q&amp;=p\bmod s,&amp;h&amp;=\lfloor p/s\rfloor.
+\end{aligned}
+\tag{VC2.2}
+\]">\[
+\begin{aligned}
+x&amp;=(a-1)\bmod B_n,&amp;
+y&amp;=\lfloor(a-1)/B_n\rfloor\bmod B_n,\\
+p&amp;=\lfloor(a-1)/B_n^2\rfloor,&amp;
+q&amp;=p\bmod s,&amp;h&amp;=\lfloor p/s\rfloor.
+\end{aligned}
+\tag{VC2.2}
+\]</span>
+<p>In particular the address is injective, and its bound is</p>
+<span class="math math-display" data-tex="\[
+1\leq A_n\leq sH_nB_n^2=KD^n,
+\qquad K=sb^{2(m+1)},\qquad D=b^2(sb).
+\tag{VC2.3}
+\]">\[
+1\leq A_n\leq sH_nB_n^2=KD^n,
+\qquad K=sb^{2(m+1)},\qquad D=b^2(sb).
+\tag{VC2.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(p&lt;sH_n\)">\(p&lt;sH_n\)</span>, so the maximum of <span class="math" data-tex="\(x+B_ny+B_n^2p\)">\(x+B_ny+B_n^2p\)</span> is <span class="math" data-tex="\(sH_nB_n^2-1\)">\(sH_nB_n^2-1\)</span>. Expanding the powers in (VC2.1) proves the equality in (VC2.3). The factor <span class="math" data-tex="\(sb\)">\(sb\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span> records the history; it must not be dropped by importing the paper's different address bound.</p>
+<p>For each <span class="math" data-tex="\(n\)">\(n\)</span>, enumerate every active configuration in this finite box. Its source is <span class="math" data-tex="\(A_n(c,h)\)">\(A_n(c,h)\)</span> and its target is <span class="math" data-tex="\(A_{n+1}(\widehat T(c,h))\)">\(A_{n+1}(\widehat T(c,h))\)</span>. Source addresses are injective by (VC2.2), and target addresses are injective by (VC1.5)–(VC1.6). Give an instruction sign <span class="math" data-tex="\(+1\)">\(+1\)</span> if its target has no outgoing rule, and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. This enumeration uses only finite table lookups and integer arithmetic. It does not ask whether the initial machine will ever halt. These are the data in <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/HistoryRouting.lean#L19">HistoryRouting.lean</a>.</p>
+<h2 id="vc3-a-finite-computation-prefix-inside-the-original-torus-chart">VC3. A finite computation prefix inside the original torus chart</h2>
+<p>Let <span class="math" data-tex="\(\ell\geq1\)">\(\ell\geq1\)</span> be a prefix length. It is the argument called <code>N</code> in <code>ChartRouting</code>, distinct from the machine's number of states. Retain the source's coordinates and scales:</p>
+<span class="math math-display" data-tex="\[
+\sigma_\ell=\frac1{1024(KD^{\ell+1}+4)},\qquad
+R_\ell=\frac{\sigma_\ell}{16},\qquad o=(1/4,1/2),
+\quad \mathcal K=[1/8,3/8]\times[1/32,3/4].
+\tag{VC3.1}
+\]">\[
+\sigma_\ell=\frac1{1024(KD^{\ell+1}+4)},\qquad
+R_\ell=\frac{\sigma_\ell}{16},\qquad o=(1/4,1/2),
+\quad \mathcal K=[1/8,3/8]\times[1/32,3/4].
+\tag{VC3.1}
+\]</span>
+<p>Write <span class="math" data-tex="\(S(t)=\operatorname{smoothTransition}(t)\)">\(S(t)=\operatorname{smoothTransition}(t)\)</span>. Explicitly, <span class="math" data-tex="\(S(t)=E(t)/(E(t)+E(1-t))\)">\(S(t)=E(t)/(E(t)+E(1-t))\)</span>, where <span class="math" data-tex="\(E(t)=0\)">\(E(t)=0\)</span> for <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span> and <span class="math" data-tex="\(E(t)=e^{-1/t}\)">\(E(t)=e^{-1/t}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. The denominator is positive everywhere. Derivatives of <span class="math" data-tex="\(E\)">\(E\)</span> on <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> are polynomials in <span class="math" data-tex="\(1/t\)">\(1/t\)</span> times <span class="math" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span>, and tend to zero as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>; hence this defines a smooth function. It is increasing, equals zero on <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span> and one on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>. On <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, the ratio <span class="math" data-tex="\(E(t)/E(1-t)\)">\(E(t)/E(1-t)\)</span> is increasing because the derivative of its logarithm is <span class="math" data-tex="\(t^{-2}+(1-t)^{-2}&gt;0\)">\(t^{-2}+(1-t)^{-2}&gt;0\)</span>. This proves the asserted monotonicity without changing the source's profile. The expression identity is explicit in <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/ExpressionAlgebra.lean#L189">ExpressionAlgebra.lean, lines 189–205</a>.</p>
+<p>For a level-<span class="math" data-tex="\(n\)">\(n\)</span> instruction with source <span class="math" data-tex="\(a\)">\(a\)</span>, target <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and sign <span class="math" data-tex="\(e\)">\(e\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\theta_j(s)&amp;=S\bigl(2(3(s-n)-j)-1/2\bigr),\quad j=0,1,2,\\
+Y_e&amp;=\begin{cases}-7/16&amp;e=+1,\\-\sigma_\ell&amp;e=-1,\end{cases}\\
+c_1(s)&amp;=1/4+(1-\theta_1(s))\sigma_\ell a
++\theta_1(s)\sigma_\ell a&#x27;,\\
+c_2(s)&amp;=1/2-(1-\theta_0(s))\sigma_\ell
+-(\theta_0(s)-\theta_2(s))(a+2)\sigma_\ell
++\theta_2(s)Y_e.
+\end{aligned}
+\tag{VC3.2}
+\]">\[
+\begin{aligned}
+\theta_j(s)&amp;=S\bigl(2(3(s-n)-j)-1/2\bigr),\quad j=0,1,2,\\
+Y_e&amp;=\begin{cases}-7/16&amp;e=+1,\\-\sigma_\ell&amp;e=-1,\end{cases}\\
+c_1(s)&amp;=1/4+(1-\theta_1(s))\sigma_\ell a
++\theta_1(s)\sigma_\ell a&#x27;,\\
+c_2(s)&amp;=1/2-(1-\theta_0(s))\sigma_\ell
+-(\theta_0(s)-\theta_2(s))(a+2)\sigma_\ell
++\theta_2(s)Y_e.
+\end{aligned}
+\tag{VC3.2}
+\]</span>
+<p>These are the source's three successive motions, including its negative parking row. Before the stage, <span class="math" data-tex="\(c=o+(\sigma_\ell a,-\sigma_\ell)\)">\(c=o+(\sigma_\ell a,-\sigma_\ell)\)</span>; after it, <span class="math" data-tex="\(c=o+(\sigma_\ell a&#x27;,Y_e)\)">\(c=o+(\sigma_\ell a&#x27;,Y_e)\)</span>. The path is constant on neighborhoods of <span class="math" data-tex="\(s=n,n+1\)">\(s=n,n+1\)</span>. In the first third of the stage, its first coordinate is the source column; in the middle third its second coordinate is the source's parking row; in the final third its first coordinate is the target column. For two distinct instructions, injectivity of sources and targets therefore gives a coordinate separation at least <span class="math" data-tex="\(\sigma_\ell=16R_\ell\)">\(\sigma_\ell=16R_\ell\)</span> at every time. This argument also covers times before and after the stage.</p>
+<p>All source and target integers for <span class="math" data-tex="\(n&lt;\ell\)">\(n&lt;\ell\)</span> are at most <span class="math" data-tex="\(KD^{\ell+1}\)">\(KD^{\ell+1}\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+0&lt;\sigma_\ell\leq1/4096,\quad
+\sigma_\ell(a+2),\sigma_\ell(a&#x27;+2)\leq1/1024,
+\quad R_\ell\leq1/65536.
+\tag{VC3.3}
+\]">\[
+0&lt;\sigma_\ell\leq1/4096,\quad
+\sigma_\ell(a+2),\sigma_\ell(a&#x27;+2)\leq1/1024,
+\quad R_\ell\leq1/65536.
+\tag{VC3.3}
+\]</span>
+<p>The first coordinate of (VC3.2) lies in <span class="math" data-tex="\([1/4,1/4+1/1024]\)">\([1/4,1/4+1/1024]\)</span>. The second is a convex combination of <span class="math" data-tex="\(1/2-\sigma_\ell\)">\(1/2-\sigma_\ell\)</span>, <span class="math" data-tex="\(1/2-(a+2)\sigma_\ell\)">\(1/2-(a+2)\sigma_\ell\)</span> and <span class="math" data-tex="\(1/2+Y_e\)">\(1/2+Y_e\)</span>: the coefficients are <span class="math" data-tex="\(1-\theta_0\)">\(1-\theta_0\)</span>, <span class="math" data-tex="\(\theta_0-\theta_2\)">\(\theta_0-\theta_2\)</span>, <span class="math" data-tex="\(\theta_2\)">\(\theta_2\)</span>, all nonnegative and summing to one. It lies in <span class="math" data-tex="\([1/16,1/2]\)">\([1/16,1/2]\)</span>. When <span class="math" data-tex="\(e=-1\)">\(e=-1\)</span>, it is at least <span class="math" data-tex="\(1/2-1/1024\)">\(1/2-1/1024\)</span>. Its closed coordinate neighborhood of radius <span class="math" data-tex="\(3R_\ell\)">\(3R_\ell\)</span> is inside <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, because</p>
+<span class="math math-display" data-tex="\[
+1/16-3/65536&gt;1/32,\quad 1/2+3/65536&lt;3/4,
+\quad 1/4-3/65536&gt;1/8,
+\quad 1/4+1/1024+3/65536&lt;3/8.
+\tag{VC3.4}
+\]">\[
+1/16-3/65536&gt;1/32,\quad 1/2+3/65536&lt;3/4,
+\quad 1/4-3/65536&gt;1/8,
+\quad 1/4+1/1024+3/65536&lt;3/8.
+\tag{VC3.4}
+\]</span>
+<p>The actual translation gate is defined by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(z)&amp;=S(z+3)S(3-z),\\
+\Psi_{R,c,G}(X)&amp;=W((X_1-c_1)/R)W((X_2-c_2)/R)
+[G_1(X_2-c_2)-G_2(X_1-c_1)],\\
+V_{R,c,G}&amp;=(\partial_2\Psi_{R,c,G},-\partial_1\Psi_{R,c,G}).
+\end{aligned}
+\tag{VC3.5}
+\]">\[
+\begin{aligned}
+W(z)&amp;=S(z+3)S(3-z),\\
+\Psi_{R,c,G}(X)&amp;=W((X_1-c_1)/R)W((X_2-c_2)/R)
+[G_1(X_2-c_2)-G_2(X_1-c_1)],\\
+V_{R,c,G}&amp;=(\partial_2\Psi_{R,c,G},-\partial_1\Psi_{R,c,G}).
+\end{aligned}
+\tag{VC3.5}
+\]</span>
+<p>Mixed derivatives commute, so <span class="math" data-tex="\(\operatorname{div}V=0\)">\(\operatorname{div}V=0\)</span>. On the coordinate square of radius <span class="math" data-tex="\(2R\)">\(2R\)</span>, both windows are one and their derivatives vanish; hence <span class="math" data-tex="\(V=G\)">\(V=G\)</span>. If any coordinate distance is at least <span class="math" data-tex="\(3R\)">\(3R\)</span>, the corresponding window and derivative vanish, so <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. These statements include equality at the boundaries. For <span class="math" data-tex="\(G=c&#x27;(s)\)">\(G=c&#x27;(s)\)</span>, sum this gate over the finitely many level-<span class="math" data-tex="\(n\)">\(n\)</span> instructions. In a square of radius <span class="math" data-tex="\(R_\ell\)">\(R_\ell\)</span> around one path, all other gates vanish: their separating coordinate has distance at least <span class="math" data-tex="\(16R_\ell-R_\ell=15R_\ell&gt;3R_\ell\)">\(16R_\ell-R_\ell=15R_\ell&gt;3R_\ell\)</span>. The sum there is exactly <span class="math" data-tex="\(c&#x27;(s)\)">\(c&#x27;(s)\)</span>.</p>
+<p>Sum the stages <span class="math" data-tex="\(0\leq n&lt;\ell\)">\(0\leq n&lt;\ell\)</span> to obtain <span class="math" data-tex="\(F_\ell(s,X)\)">\(F_\ell(s,X)\)</span> and periodize in <span class="math" data-tex="\(X\)">\(X\)</span> over <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> to obtain <span class="math" data-tex="\(P_\ell(s,X)\)">\(P_\ell(s,X)\)</span>. The compact chart lies strictly inside the unit square. Periodization is locally finite, agrees with <span class="math" data-tex="\(F_\ell\)">\(F_\ell\)</span> in that square, preserves divergence zero and smoothness, and has support in the image of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. Different stages are active only in their respective intervals <span class="math" data-tex="\((n,n+1)\)">\((n,n+1)\)</span>, and vanish on neighborhoods of the endpoints. Thus no extra stage acts on the transported square. This verifies the force-building geometry of <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/ChartRouting.lean#L167">ChartRouting.lean</a> and <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/TranslationGates.lean#L60">TranslationGates.lean</a>.</p>
+<p>For the actual orbit, as long as configurations <span class="math" data-tex="\(0,\ldots,\ell-1\)">\(0,\ldots,\ell-1\)</span> are active, concatenate the installed paths to obtain <span class="math" data-tex="\(C_\ell(s)\)">\(C_\ell(s)\)</span>. It is constant before zero and after <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and smooth at every integer because the paths have constant endpoint collars. Its starting point is <span class="math" data-tex="\(o+(\sigma_\ell A_0,-\sigma_\ell)\)">\(o+(\sigma_\ell A_0,-\sigma_\ell)\)</span>. If the first halt occurs at <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, its final second coordinate is <span class="math" data-tex="\(1/16\)">\(1/16\)</span>. If the orbit is still active at <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, its entire path has second coordinate at least <span class="math" data-tex="\(1/2-1/1024\)">\(1/2-1/1024\)</span>. On the coordinate square of radius <span class="math" data-tex="\(R_\ell\)">\(R_\ell\)</span> around it,</p>
+<span class="math math-display" data-tex="\[
+P_\ell(s,X)=C_\ell&#x27;(s),\qquad 0\leq s\leq\ell.
+\tag{VC3.6}
+\]">\[
+P_\ell(s,X)=C_\ell&#x27;(s),\qquad 0\leq s\leq\ell.
+\tag{VC3.6}
+\]</span>
+<p>This proves the orbit-to-path relation, including its endpoints. The Lean source writes the same concatenation as a telescoping sum of segments; see <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/ChartTrace.lean#L82">ChartTrace.lean, <code>route</code>, <code>route_eq_segment</code>, <code>route_plateau</code></a>.</p>
+<h2 id="vc4-the-source-s-signed-burst-and-its-reversed-clock">VC4. The source's signed burst and its reversed clock</h2>
+<p>The transported bump is not the cylinder's unit-mass pulse. It is</p>
+<span class="math math-display" data-tex="\[
+\phi(z)=W(3z),\qquad Q_R(X)=\phi(X_1/R)\phi(X_2/R).
+\tag{VC4.1}
+\]">\[
+\phi(z)=W(3z),\qquad Q_R(X)=\phi(X_1/R)\phi(X_2/R).
+\tag{VC4.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(0\leq\phi\leq1\)">\(0\leq\phi\leq1\)</span>, <span class="math" data-tex="\(\phi(0)=1\)">\(\phi(0)=1\)</span>, and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> vanishes when <span class="math" data-tex="\(|z|\geq1\)">\(|z|\geq1\)</span>. Choose the positive integer <span class="math" data-tex="\(B_*\)">\(B_*\)</span> used by the source, with <span class="math" data-tex="\(|\phi&#x27;&#x27;|\leq B_*\)">\(|\phi&#x27;&#x27;|\leq B_*\)</span> everywhere. Such an integer exists because <span class="math" data-tex="\(\phi&#x27;&#x27;\)">\(\phi&#x27;&#x27;\)</span> is continuous and compactly supported. Retain its two-coordinate Laplacian formula:</p>
+<span class="math math-display" data-tex="\[
+\Delta Q_R(X)=\frac{\phi&#x27;&#x27;(X_1/R)\phi(X_2/R)+
+\phi(X_1/R)\phi&#x27;&#x27;(X_2/R)}{R^2},
+\qquad |\Delta Q_R|\leq\frac{2B_*}{R^2}.
+\tag{VC4.2}
+\]">\[
+\Delta Q_R(X)=\frac{\phi&#x27;&#x27;(X_1/R)\phi(X_2/R)+
+\phi(X_1/R)\phi&#x27;&#x27;(X_2/R)}{R^2},
+\qquad |\Delta Q_R|\leq\frac{2B_*}{R^2}.
+\tag{VC4.2}
+\]</span>
+<p>For <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, set <span class="math" data-tex="\(\ell=k+1\)">\(\ell=k+1\)</span> and retain every source factor:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varepsilon_k&amp;=\frac1{16}\left(\frac12\right)^k,&amp;
+L_k&amp;=\frac{2B_*}{R_{k+1}^2},&amp;
+\delta_k&amp;=\frac{\varepsilon_k}{3(1+\nu L_k)},\\
+r_k(t)&amp;=\frac{t-(k+1)}{\delta_k},&amp;
+\alpha(r)&amp;=S(8r)-S(8r-7),&amp;
+\gamma_\ell(r)&amp;=\ell[S(8r-1)-S(8r-5)],\\
+\omega_k(t)&amp;=\alpha(r_k(t)),&amp;
+\lambda_k(t)&amp;=\gamma_{k+1}(r_k(t)).
+\end{aligned}
+\tag{VC4.3}
+\]">\[
+\begin{aligned}
+\varepsilon_k&amp;=\frac1{16}\left(\frac12\right)^k,&amp;
+L_k&amp;=\frac{2B_*}{R_{k+1}^2},&amp;
+\delta_k&amp;=\frac{\varepsilon_k}{3(1+\nu L_k)},\\
+r_k(t)&amp;=\frac{t-(k+1)}{\delta_k},&amp;
+\alpha(r)&amp;=S(8r)-S(8r-7),&amp;
+\gamma_\ell(r)&amp;=\ell[S(8r-1)-S(8r-5)],\\
+\omega_k(t)&amp;=\alpha(r_k(t)),&amp;
+\lambda_k(t)&amp;=\gamma_{k+1}(r_k(t)).
+\end{aligned}
+\tag{VC4.3}
+\]</span>
+<p>For <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, <span class="math" data-tex="\(0&lt;\delta_k\leq1/48\)">\(0&lt;\delta_k\leq1/48\)</span>. The amplitude rises from zero to one on <span class="math" data-tex="\([0,1/8]\)">\([0,1/8]\)</span>, stays one through <span class="math" data-tex="\(7/8\)">\(7/8\)</span>, and falls to zero on <span class="math" data-tex="\([7/8,1]\)">\([7/8,1]\)</span>. The clock rises from zero to <span class="math" data-tex="\(\ell\)">\(\ell\)</span> on <span class="math" data-tex="\([1/8,1/4]\)">\([1/8,1/4]\)</span>, stays <span class="math" data-tex="\(\ell\)">\(\ell\)</span> through <span class="math" data-tex="\(5/8\)">\(5/8\)</span>, and returns to zero on <span class="math" data-tex="\([5/8,3/4]\)">\([5/8,3/4]\)</span>. Both are flat at the stated endpoints. Their full derivatives are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\omega_k&#x27;(t)&amp;=\frac8{\delta_k}
+[S&#x27;(8r_k(t))-S&#x27;(8r_k(t)-7)],\\
+\lambda_k&#x27;(t)&amp;=\frac{8(k+1)}{\delta_k}
+[S&#x27;(8r_k(t)-1)-S&#x27;(8r_k(t)-5)].
+\end{aligned}
+\tag{VC4.4}
+\]">\[
+\begin{aligned}
+\omega_k&#x27;(t)&amp;=\frac8{\delta_k}
+[S&#x27;(8r_k(t))-S&#x27;(8r_k(t)-7)],\\
+\lambda_k&#x27;(t)&amp;=\frac{8(k+1)}{\delta_k}
+[S&#x27;(8r_k(t)-1)-S&#x27;(8r_k(t)-5)].
+\end{aligned}
+\tag{VC4.4}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\omega_k&#x27;(t)\ne0\)">\(\omega_k&#x27;(t)\ne0\)</span> implies <span class="math" data-tex="\(\lambda_k(t)=0\)">\(\lambda_k(t)=0\)</span>. The negative term in <span class="math" data-tex="\(\omega_k&#x27;\)">\(\omega_k&#x27;\)</span> is essential: the source withdraws a bump at its original location after the reverse transport. See <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/BurstSchedule.lean#L13">BurstSchedule.lean, lines 13–106 and 146–235</a>.</p>
+<p>Writing <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> for periodization in the horizontal coordinates and <span class="math" data-tex="\(I_k=o+(\sigma_{k+1}A_0,-\sigma_{k+1})\)">\(I_k=o+(\sigma_{k+1}A_0,-\sigma_{k+1})\)</span>, define the prescribed fields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_k(t,X)&amp;=\lambda_k&#x27;(t)P_{k+1}(\lambda_k(t),X),\\
+g_k(t,X)&amp;=\omega_k&#x27;(t)\,\mathcal P[Q_{R_{k+1}}(\,\cdot-I_k)](X),\\
+a(t,X)&amp;=\sum_{k\geq0}a_k(t,X),&amp;
+g(t,X)&amp;=\sum_{k\geq0}g_k(t,X).
+\end{aligned}
+\tag{VC4.5}
+\]">\[
+\begin{aligned}
+a_k(t,X)&amp;=\lambda_k&#x27;(t)P_{k+1}(\lambda_k(t),X),\\
+g_k(t,X)&amp;=\omega_k&#x27;(t)\,\mathcal P[Q_{R_{k+1}}(\,\cdot-I_k)](X),\\
+a(t,X)&amp;=\sum_{k\geq0}a_k(t,X),&amp;
+g(t,X)&amp;=\sum_{k\geq0}g_k(t,X).
+\end{aligned}
+\tag{VC4.5}
+\]</span>
+<p>Each summand vanishes outside <span class="math" data-tex="\([k+1,k+1+\delta_k]\)">\([k+1,k+1+\delta_k]\)</span>. The intervals are disjoint and locally finite, and flatness makes their endpoint extensions smooth. Thus <span class="math" data-tex="\(a,g\)">\(a,g\)</span> are smooth, periodic, zero for <span class="math" data-tex="\(t\leq1\)">\(t\leq1\)</span> and supported in the fixed horizontal chart. Every derivative is bounded on each finite time cylinder by compactness. The construction enumerates finite boxes, not the initial orbit, so (VC4.5) is defined whether or not the input halts.</p>
+<p>For each prefix before the first halt, define the comparison function</p>
+<span class="math math-display" data-tex="\[
+c_k(t)=C_{k+1}(\lambda_k(t)),\qquad
+\psi_k(t,X)=\omega_k(t)\,
+\mathcal P[Q_{R_{k+1}}(\,\cdot-c_k(t))](X).
+\tag{VC4.6}
+\]">\[
+c_k(t)=C_{k+1}(\lambda_k(t)),\qquad
+\psi_k(t,X)=\omega_k(t)\,
+\mathcal P[Q_{R_{k+1}}(\,\cdot-c_k(t))](X).
+\tag{VC4.6}
+\]</span>
+<p>The chain rule and (VC3.6) give <span class="math" data-tex="\(a_k=c_k&#x27;\)">\(a_k=c_k&#x27;\)</span> on the bump support. Elsewhere the bump and its spatial derivatives vanish. Consequently its moving center terms cancel exactly. Where <span class="math" data-tex="\(\omega_k&#x27;\ne0\)">\(\omega_k&#x27;\ne0\)</span>, <span class="math" data-tex="\(c_k=I_k\)">\(c_k=I_k\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+(\partial_t+a\cdot\nabla)\psi_k=g_k.
+\tag{VC4.7}
+\]">\[
+(\partial_t+a\cdot\nabla)\psi_k=g_k.
+\tag{VC4.7}
+\]</span>
+<p>The total drift may replace <span class="math" data-tex="\(a_k\)">\(a_k\)</span> here because other blocks are zero when <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> is nonzero; at the remaining times all spatial derivatives of <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> vanish. Periodization commutes with these derivatives and products with periodic <span class="math" data-tex="\(a\)">\(a\)</span>. The argument proves (VC4.7) also on the block endpoints. It matches <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/BurstBlock.lean#L163">BurstBlock.lean, <code>source_match</code> and <code>reference_transport</code></a>.</p>
+<h2 id="vc5-the-exact-diffusion-budget-and-both-detector-directions">VC5. The exact diffusion budget and both detector directions</h2>
+<p>Let <span class="math" data-tex="\(w\)">\(w\)</span> be the smooth periodic solution with zero initial data of</p>
+<span class="math math-display" data-tex="\[
+\partial_t w+a\cdot\nabla w-\nu\Delta w=g.
+\tag{VC5.1}
+\]">\[
+\partial_t w+a\cdot\nabla w-\nu\Delta w=g.
+\tag{VC5.1}
+\]</span>
+<p>Existence for this particular <span class="math" data-tex="\(a,g\)">\(a,g\)</span> follows from the Fourier–Galerkin proof in VD3 of the linked written audit: on every finite time interval they are smooth periodic functions with bounded derivatives, and <span class="math" data-tex="\(\operatorname{div}a=0\)">\(\operatorname{div}a=0\)</span>. Its energy estimates and compactness construction apply at the unchanged coefficient <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, give every Sobolev order, and give smoothness by the equation. The intervals agree on overlap by the energy identity for their difference, producing a global solution. Zero coefficients for <span class="math" data-tex="\(t\leq1\)">\(t\leq1\)</span> give <span class="math" data-tex="\(w=0\)">\(w=0\)</span> there and smooth extension through the initial endpoint. The proof does not require <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span>.</p>
+<p>The source's comparison barrier uses the following <span class="math" data-tex="\(C^2\)">\(C^2\)</span> function, which is distinct from the smooth function <span class="math" data-tex="\(S\)">\(S\)</span>:</p>
+<span class="math math-display" data-tex="\[
+J(z)=\begin{cases}0&amp;z\leq0,\\10z^3-15z^4+6z^5&amp;0&lt;z&lt;1,\\1&amp;z\geq1.\end{cases}
+\quad
+\beta_k(t)=\varepsilon_kJ\bigl((r_k(t)+1)/3\bigr).
+\tag{VC5.2}
+\]">\[
+J(z)=\begin{cases}0&amp;z\leq0,\\10z^3-15z^4+6z^5&amp;0&lt;z&lt;1,\\1&amp;z\geq1.\end{cases}
+\quad
+\beta_k(t)=\varepsilon_kJ\bigl((r_k(t)+1)/3\bigr).
+\tag{VC5.2}
+\]</span>
+<p>Its first derivative on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is <span class="math" data-tex="\(30z^2(1-z)^2\)">\(30z^2(1-z)^2\)</span>, and its first and second derivatives match zero at both endpoints. Thus <span class="math" data-tex="\(0\leq J\leq1\)">\(0\leq J\leq1\)</span> and <span class="math" data-tex="\(J&#x27;\geq0\)">\(J&#x27;\geq0\)</span>. On <span class="math" data-tex="\([1/3,2/3]\)">\([1/3,2/3]\)</span>, <span class="math" data-tex="\(z(1-z)\geq2/9\)">\(z(1-z)\geq2/9\)</span>, giving <span class="math" data-tex="\(J&#x27;(z)\geq40/27&gt;1\)">\(J&#x27;(z)\geq40/27&gt;1\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\leq\beta_k(t)&amp;\leq\varepsilon_k,\\
+\beta_k&#x27;(t)&amp;=\frac{\varepsilon_k}{3\delta_k}
+J&#x27;\bigl((r_k(t)+1)/3\bigr)\geq0,\\
+0\leq r_k(t)\leq1&amp;\ \Longrightarrow\
+\beta_k&#x27;(t)\geq\frac{\varepsilon_k}{3\delta_k}
+=1+\nu L_k\geq\nu|\Delta\psi_k(t,X)|.
+\end{aligned}
+\tag{VC5.3}
+\]">\[
+\begin{aligned}
+0\leq\beta_k(t)&amp;\leq\varepsilon_k,\\
+\beta_k&#x27;(t)&amp;=\frac{\varepsilon_k}{3\delta_k}
+J&#x27;\bigl((r_k(t)+1)/3\bigr)\geq0,\\
+0\leq r_k(t)\leq1&amp;\ \Longrightarrow\
+\beta_k&#x27;(t)\geq\frac{\varepsilon_k}{3\delta_k}
+=1+\nu L_k\geq\nu|\Delta\psi_k(t,X)|.
+\end{aligned}
+\tag{VC5.3}
+\]</span>
+<p>Outside that time interval <span class="math" data-tex="\(\Delta\psi_k=0\)">\(\Delta\psi_k=0\)</span>, so the last required inequality holds there as well. This retains the source's extra <span class="math" data-tex="\(1\)">\(1\)</span> and factor <span class="math" data-tex="\(3\)">\(3\)</span> rather than replacing its duration by an asymptotic estimate.</p>
+<p>Suppose that the first <span class="math" data-tex="\(L\)">\(L\)</span> configurations, numbered <span class="math" data-tex="\(0,\ldots,L-1\)">\(0,\ldots,L-1\)</span>, are active. Put <span class="math" data-tex="\(\Psi_L=\sum_{k&lt;L}\psi_k\)">\(\Psi_L=\sum_{k&lt;L}\psi_k\)</span> and <span class="math" data-tex="\(\mathcal B_L=\sum_{k&lt;L}\beta_k\)">\(\mathcal B_L=\sum_{k&lt;L}\beta_k\)</span>. Through time <span class="math" data-tex="\(L+1\)">\(L+1\)</span>, the forcing from every <span class="math" data-tex="\(k\geq L\)">\(k\geq L\)</span> is zero, including at equality. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\partial_t+a\cdot\nabla-\nu\Delta)(w-\Psi_L)&amp;=\nu\Delta\Psi_L,\\
+\nu|\Delta\Psi_L|&amp;\leq\mathcal B_L&#x27;,\\
+0\leq\mathcal B_L(t)&amp;\leq
+\sum_{k=0}^{L-1}\varepsilon_k
+=\frac18(1-2^{-L})\leq\frac18.
+\end{aligned}
+\tag{VC5.4}
+\]">\[
+\begin{aligned}
+(\partial_t+a\cdot\nabla-\nu\Delta)(w-\Psi_L)&amp;=\nu\Delta\Psi_L,\\
+\nu|\Delta\Psi_L|&amp;\leq\mathcal B_L&#x27;,\\
+0\leq\mathcal B_L(t)&amp;\leq
+\sum_{k=0}^{L-1}\varepsilon_k
+=\frac18(1-2^{-L})\leq\frac18.
+\end{aligned}
+\tag{VC5.4}
+\]</span>
+<p>For completeness, the comparison principle used here has a direct proof. If a smooth periodic function <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\((\partial_t+a\cdot\nabla-\nu\Delta)v\leq0\)">\((\partial_t+a\cdot\nabla-\nu\Delta)v\leq0\)</span> and <span class="math" data-tex="\(v(0)\leq0\)">\(v(0)\leq0\)</span>, apply the inequality to <span class="math" data-tex="\(v-\eta t-\eta\)">\(v-\eta t-\eta\)</span> for <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. A positive maximum on a finite time cylinder cannot occur initially. At a spatial maximum the gradient is zero and the Laplacian nonpositive; at its maximal time the left time derivative is nonnegative. These facts contradict the strict residual <span class="math" data-tex="\(-\eta\)">\(-\eta\)</span>. Let <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>. Apply this to <span class="math" data-tex="\((w-\Psi_L)-\mathcal B_L\)">\((w-\Psi_L)-\mathcal B_L\)</span> and its negative counterpart; the initial differences are zero and <span class="math" data-tex="\(\mathcal B_L(0)\geq0\)">\(\mathcal B_L(0)\geq0\)</span>. This proves</p>
+<span class="math math-display" data-tex="\[
+|w(t,X)-\Psi_L(t,X)|\leq\mathcal B_L(t)\leq1/8,
+\qquad 0\leq t\leq L+1.
+\tag{VC5.5}
+\]">\[
+|w(t,X)-\Psi_L(t,X)|\leq\mathcal B_L(t)\leq1/8,
+\qquad 0\leq t\leq L+1.
+\tag{VC5.5}
+\]</span>
+<p>If the machine never halts, every prefix is available. Given any <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, choose <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(t\leq L+1\)">\(t\leq L+1\)</span>. Every comparison bump is centered at height at least <span class="math" data-tex="\(1/2-1/1024\)">\(1/2-1/1024\)</span> and has coordinate radius at most <span class="math" data-tex="\(1/65536\)">\(1/65536\)</span>. It vanishes in <span class="math" data-tex="\(1/32&lt;X_2&lt;1/8\)">\(1/32&lt;X_2&lt;1/8\)</span>, including after reduction of <span class="math" data-tex="\(X_1\)">\(X_1\)</span> modulo one. Hence in that detector strip</p>
+<span class="math math-display" data-tex="\[
+w(t,X)\leq1/8&lt;1/2\qquad\text{for every }t\geq0.
+\tag{VC5.6}
+\]">\[
+w(t,X)\leq1/8&lt;1/2\qquad\text{for every }t\geq0.
+\tag{VC5.6}
+\]</span>
+<p>If the first halt occurs at step <span class="math" data-tex="\(\ell=k+1\)">\(\ell=k+1\)</span>, choose <span class="math" data-tex="\(t_*=k+1+\delta_k/2\)">\(t_*=k+1+\delta_k/2\)</span>. Then <span class="math" data-tex="\(r_k(t_*)=1/2\)">\(r_k(t_*)=1/2\)</span>, <span class="math" data-tex="\(\omega_k(t_*)=1\)">\(\omega_k(t_*)=1\)</span>, <span class="math" data-tex="\(\lambda_k(t_*)=k+1\)">\(\lambda_k(t_*)=k+1\)</span>, and <span class="math" data-tex="\(c_k(t_*)\)">\(c_k(t_*)\)</span> has height <span class="math" data-tex="\(1/16\)">\(1/16\)</span>. At this point the periodized bump is one. Every earlier comparison bump is zero in time; <span class="math" data-tex="\(t_*&lt;k+2=\ell+1\)">\(t_*&lt;k+2=\ell+1\)</span>. Applying (VC5.5) with <span class="math" data-tex="\(L=\ell\)">\(L=\ell\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+w(t_*,c_k(t_*))\geq7/8&gt;3/4&gt;1/2,
+\qquad 1/32&lt;1/16&lt;1/8.
+\tag{VC5.7}
+\]">\[
+w(t_*,c_k(t_*))\geq7/8&gt;3/4&gt;1/2,
+\qquad 1/32&lt;1/16&lt;1/8.
+\tag{VC5.7}
+\]</span>
+<p>Only prefixes through the first halt are used in this direction; no unproved continuation of a halted path is needed. Together with (VC1.7) and the initial extra step, this proves the original machine's halting equivalence for this construction. It is exactly the logic of <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/BurstTotalReferenceSum.lean#L98">BurstTotalReferenceSum.lean, <code>scalar_prefix_error</code>, <code>nonterminal_small</code>, <code>terminal_large</code>, <code>detection</code></a>.</p>
+<h2 id="vc6-the-unchanged-viscosity-and-the-force-representation">VC6. The unchanged viscosity and the force representation</h2>
+<p>On <span class="math" data-tex="\(\mathbb T^3\)">\(\mathbb T^3\)</span>, with horizontal coordinate <span class="math" data-tex="\(X=(x_1,x_2)\)">\(X=(x_1,x_2)\)</span>, the supplied construction is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U(t,x)&amp;=(a_1(t,X),a_2(t,X),w(t,X)),&amp;p(t,x)&amp;=0,\\
+f_1&amp;=\partial_ta_1+a_1\partial_1a_1+a_2\partial_2a_1
+-\nu(\partial_1^2a_1+\partial_2^2a_1),\\
+f_2&amp;=\partial_ta_2+a_1\partial_1a_2+a_2\partial_2a_2
+-\nu(\partial_1^2a_2+\partial_2^2a_2),&amp;f_3&amp;=g.
+\end{aligned}
+\tag{VC6.1}
+\]">\[
+\begin{aligned}
+U(t,x)&amp;=(a_1(t,X),a_2(t,X),w(t,X)),&amp;p(t,x)&amp;=0,\\
+f_1&amp;=\partial_ta_1+a_1\partial_1a_1+a_2\partial_2a_1
+-\nu(\partial_1^2a_1+\partial_2^2a_1),\\
+f_2&amp;=\partial_ta_2+a_1\partial_1a_2+a_2\partial_2a_2
+-\nu(\partial_1^2a_2+\partial_2^2a_2),&amp;f_3&amp;=g.
+\end{aligned}
+\tag{VC6.1}
+\]</span>
+<p>All vertical derivatives vanish. The first two Navier–Stokes equations are the defining residual identities, the third is (VC5.1), and the divergence is <span class="math" data-tex="\(\partial_1a_1+\partial_2a_2=0\)">\(\partial_1a_1+\partial_2a_2=0\)</span>. All initial components vanish. Thus <span class="math" data-tex="\(U\)">\(U\)</span> solves the forced equations at the actual <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, with the prescribed zero pressure. Every derivative of <span class="math" data-tex="\(f\)">\(f\)</span> is bounded on each finite time cylinder, and its horizontal support is inside the image of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>: derivatives of the smooth functions in (VC4.5) vanish on the open complement of that closed set. This is <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/BurstTotalForce.lean#L13">BurstTotalForce.lean, lines 13–89</a>.</p>
+<p>The detector is</p>
+<span class="math math-display" data-tex="\[
+\exists t\geq0,\ \exists x\in\mathbb T^3:
+\quad 1/32&lt;x_2&lt;1/8,\qquad U_3(t,x)&gt;1/2.
+\tag{VC6.2}
+\]">\[
+\exists t\geq0,\ \exists x\in\mathbb T^3:
+\quad 1/32&lt;x_2&lt;1/8,\qquad U_3(t,x)&gt;1/2.
+\tag{VC6.2}
+\]</span>
+<p>The strip is interpreted using the indicated chart representative. Equation (VC5.6) excludes it for every nonhalting input, and (VC5.7) supplies it for every halting input.</p>
+<p>For smooth periodic competitors with the same zero initial data and force, uniqueness follows directly. Let <span class="math" data-tex="\(e=v-U\)">\(e=v-U\)</span> and <span class="math" data-tex="\(q=p_v-p\)">\(q=p_v-p\)</span>. Subtract the equations, write the nonlinear difference as <span class="math" data-tex="\((v\cdot\nabla)e+(e\cdot\nabla)U\)">\((v\cdot\nabla)e+(e\cdot\nabla)U\)</span>, multiply by <span class="math" data-tex="\(e\)">\(e\)</span> and integrate over the unit torus. Periodicity, divergence zero and integration by parts give</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac d{dt}\int_{[0,1]^3}|e|^2
++\nu\int_{[0,1]^3}|\nabla e|^2
+=-\int_{[0,1]^3}\sum_{i,j=1}^3e_i e_j\partial_jU_i.
+\tag{VC6.3}
+\]">\[
+\frac12\frac d{dt}\int_{[0,1]^3}|e|^2
++\nu\int_{[0,1]^3}|\nabla e|^2
+=-\int_{[0,1]^3}\sum_{i,j=1}^3e_i e_j\partial_jU_i.
+\tag{VC6.3}
+\]</span>
+<p>If <span class="math" data-tex="\(|\partial_jU_i|\leq C_T\)">\(|\partial_jU_i|\leq C_T\)</span> on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span>, the absolute right side is at most <span class="math" data-tex="\(3C_T\int|e|^2\)">\(3C_T\int|e|^2\)</span>, since <span class="math" data-tex="\((\sum_i|e_i|)^2\leq3\sum_i e_i^2\)">\((\sum_i|e_i|)^2\leq3\sum_i e_i^2\)</span>. Multiplying the resulting differential inequality by <span class="math" data-tex="\(e^{-6C_Tt}\)">\(e^{-6C_Tt}\)</span> and using zero initial difference gives <span class="math" data-tex="\(e=0\)">\(e=0\)</span>. The equations then give <span class="math" data-tex="\(\nabla q=0\)">\(\nabla q=0\)</span>; a zero spatial mean fixes <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. The same calculation is valid in the source's classical comparison class because its stated continuous derivatives and periodic slices justify each integral and derivative on the compact cylinder. There is no uniqueness assertion for arbitrary weak solutions here.</p>
+<p>The prescription is effective in the source's sense of rational approximation to the force and its mixed derivatives, including derivatives in viscosity. On a bounded time interval only finitely many blocks occur; each block uses finitely many finite-box instructions. Periodization requires finitely many translates near a bounded spatial set. The remaining expressions are rational operations, positive denominators and derivatives of <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span>. At zero, derivatives of <span class="math" data-tex="\(E\)">\(E\)</span> have the explicit flat continuation already proved in VC3; rational Taylor bounds for the exponential and polynomial bounds for these derivatives give convergent rational enclosures. Interval refinement therefore evaluates each expression to any positive rational error. On a compact rational box with viscosity bounded away from zero, denominators have a positive minimum. A finite subdivision eventually certifies their nonvanishing on every cell and bounds every requested derivative. No halting test appears in this algorithm.</p>
+<p>The actual source's residual expression keeps the five variables <span class="math" data-tex="\((\nu,t,x_1,x_2,x_3)\)">\((\nu,t,x_1,x_2,x_3)\)</span> in that order; see <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/ForceExpressions.lean#L12">ForceExpressions.lean, <code>residualCode</code>, <code>force_germ</code>, <code>runTrial_correct</code></a>, and <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/EffectivePrescriptions.lean#L162">EffectivePrescriptions.lean, <code>Program.Represents</code></a>. This paragraph identifies the mathematical evaluation procedure; it is not a claim that the implementation or every imported evaluation lemma has been independently verified. The fixed integer <span class="math" data-tex="\(B_*\)">\(B_*\)</span> is a parameter in the finite prescription. Its existence before the machine and input quantifiers is exactly the order in <a href="https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/MainResult.lean#L11">MainResult.lean</a>.</p>
+<h2 id="vc6a-derivative-bounds-and-effective-evaluation-at-the-flat-endpoints">VC6a. Derivative bounds and effective evaluation at the flat endpoints</h2>
+<p>The cutoff formulas above also give explicit bounds and approximation procedures. This supplies the evaluation step at the endpoints where a test of the sign of an arbitrary real number would be invalid. It leaves the source's chosen integer <span class="math" data-tex="\(B_*\)">\(B_*\)</span> in (VC4.3) unchanged.</p>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, put <span class="math" data-tex="\(y=1/t\)">\(y=1/t\)</span> and define integer polynomials by</p>
+<span class="math math-display" data-tex="\[
+P_0(y)=1,\qquad P_{j+1}(y)=y^2(P_j(y)-P_j&#x27;(y)),\qquad
+E^{(j)}(t)=e^{-y}P_j(y).
+\tag{VC6a.1}
+\]">\[
+P_0(y)=1,\qquad P_{j+1}(y)=y^2(P_j(y)-P_j&#x27;(y)),\qquad
+E^{(j)}(t)=e^{-y}P_j(y).
+\tag{VC6a.1}
+\]</span>
+<p>Differentiation gives the recurrence, since <span class="math" data-tex="\(dy/dt=-y^2\)">\(dy/dt=-y^2\)</span>. Write <span class="math" data-tex="\(P_j(y)=\sum_p c_{j,p}y^p\)">\(P_j(y)=\sum_p c_{j,p}y^p\)</span>, including its zero coefficients, and set</p>
+<span class="math math-display" data-tex="\[
+C_j=\sum_p|c_{j,p}|p!,\qquad
+A_j=\sum_p|c_{j,p}|2^p p!.
+\tag{VC6a.2}
+\]">\[
+C_j=\sum_p|c_{j,p}|p!,\qquad
+A_j=\sum_p|c_{j,p}|2^p p!.
+\tag{VC6a.2}
+\]</span>
+<p>Both are finite integers obtained by the recurrence. The exponential series gives <span class="math" data-tex="\(y^p e^{-y}\le p!\)">\(y^p e^{-y}\le p!\)</span> for <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>. Applying the same inequality at <span class="math" data-tex="\(y/2\)">\(y/2\)</span>, and then using <span class="math" data-tex="\(e^{y/2}\ge(y/2)^N/N!\)">\(e^{y/2}\ge(y/2)^N/N!\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+|E^{(j)}(t)|\le C_j,\qquad
+|E^{(j)}(t)|\le A_jN!(2t)^N\quad(t&gt;0,\ N\ge0).
+\tag{VC6a.3}
+\]">\[
+|E^{(j)}(t)|\le C_j,\qquad
+|E^{(j)}(t)|\le A_jN!(2t)^N\quad(t&gt;0,\ N\ge0).
+\tag{VC6a.3}
+\]</span>
+<p>All derivatives tend to zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Extending them by zero to <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span>, the fundamental theorem of calculus proves inductively that these are the actual derivatives of the globally smooth <span class="math" data-tex="\(E\)">\(E\)</span>. The second bound is an effective, integer-coefficient bound for every derivative near the joining point.</p>
+<p>Let <span class="math" data-tex="\(D_S(t)=E(t)+E(1-t)\)">\(D_S(t)=E(t)+E(1-t)\)</span>. At least one of <span class="math" data-tex="\(t,1-t\)">\(t,1-t\)</span> is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; monotonicity of <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(D_S(t)\ge e^{-2}&gt;1/9\)">\(D_S(t)\ge e^{-2}&gt;1/9\)</span>. The final inequality follows from <span class="math" data-tex="\(e&lt;3\)">\(e&lt;3\)</span>: in <span class="math" data-tex="\(\sum_{n\ge0}1/n!\)">\(\sum_{n\ge0}1/n!\)</span>, the sum from <span class="math" data-tex="\(n=2\)">\(n=2\)</span> is strictly less than <span class="math" data-tex="\(\sum_{n\ge2}2^{1-n}=1\)">\(\sum_{n\ge2}2^{1-n}=1\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+|D_S^{(j)}|\le2C_j.
+\tag{VC6a.4}
+\]">\[
+|D_S^{(j)}|\le2C_j.
+\tag{VC6a.4}
+\]</span>
+<p>Define nonnegative rational bounds <span class="math" data-tex="\(R_j\)">\(R_j\)</span> for the derivatives of <span class="math" data-tex="\(D_S^{-1}\)">\(D_S^{-1}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+R_0=9,\qquad
+R_j=9\sum_{\ell=1}^j\binom j\ell\,2C_\ell R_{j-\ell}
+\quad(j\ge1).
+\tag{VC6a.5}
+\]">\[
+R_0=9,\qquad
+R_j=9\sum_{\ell=1}^j\binom j\ell\,2C_\ell R_{j-\ell}
+\quad(j\ge1).
+\tag{VC6a.5}
+\]</span>
+<p>Differentiate <span class="math" data-tex="\(D_S D_S^{-1}=1\)">\(D_S D_S^{-1}=1\)</span> exactly <span class="math" data-tex="\(j\)">\(j\)</span> times and isolate the term <span class="math" data-tex="\(D_S(D_S^{-1})^{(j)}\)">\(D_S(D_S^{-1})^{(j)}\)</span>. Induction proves <span class="math" data-tex="\(|(D_S^{-1})^{(j)}|\le R_j\)">\(|(D_S^{-1})^{(j)}|\le R_j\)</span>. The product formula <span class="math" data-tex="\(S=E D_S^{-1}\)">\(S=E D_S^{-1}\)</span> therefore yields the explicit bound</p>
+<span class="math math-display" data-tex="\[
+|S^{(j)}|\le\sum_{\ell=0}^j\binom j\ell C_\ell R_{j-\ell}.
+\tag{VC6a.6}
+\]">\[
+|S^{(j)}|\le\sum_{\ell=0}^j\binom j\ell C_\ell R_{j-\ell}.
+\tag{VC6a.6}
+\]</span>
+<p>This bound retains both summands in <span class="math" data-tex="\(D_S\)">\(D_S\)</span> and every term of the reciprocal derivative.</p>
+<p>For an explicit admissible second-derivative bound on the very same bump, <span class="math" data-tex="\(P_1=y^2\)">\(P_1=y^2\)</span> and <span class="math" data-tex="\(P_2=y^4-2y^3\)">\(P_2=y^4-2y^3\)</span> give <span class="math" data-tex="\(|E&#x27;|\le2\)">\(|E&#x27;|\le2\)</span>, <span class="math" data-tex="\(|E&#x27;&#x27;|\le36\)">\(|E&#x27;&#x27;|\le36\)</span>, <span class="math" data-tex="\(|D_S&#x27;|\le4\)">\(|D_S&#x27;|\le4\)</span> and <span class="math" data-tex="\(|D_S&#x27;&#x27;|\le72\)">\(|D_S&#x27;&#x27;|\le72\)</span>. Keep all terms in</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S&#x27;&amp;=E&#x27;/D_S-ED_S&#x27;/D_S^2,\\
+S&#x27;&#x27;&amp;=E&#x27;&#x27;/D_S-2E&#x27;D_S&#x27;/D_S^2
+-ED_S&#x27;&#x27;/D_S^2+2E(D_S&#x27;)^2/D_S^3 .
+\end{aligned}
+\tag{VC6a.7}
+\]">\[
+\begin{aligned}
+S&#x27;&amp;=E&#x27;/D_S-ED_S&#x27;/D_S^2,\\
+S&#x27;&#x27;&amp;=E&#x27;&#x27;/D_S-2E&#x27;D_S&#x27;/D_S^2
+-ED_S&#x27;&#x27;/D_S^2+2E(D_S&#x27;)^2/D_S^3 .
+\end{aligned}
+\tag{VC6a.7}
+\]</span>
+<p>Using <span class="math" data-tex="\(0\le E\le1\)">\(0\le E\le1\)</span> and <span class="math" data-tex="\(D_S^{-1}\le9\)">\(D_S^{-1}\le9\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|S&#x27;|&amp;\le18+324=342,\\
+|S&#x27;&#x27;|&amp;\le324+1296+5832+23328=30780,\\
+|W&#x27;&#x27;|&amp;\le2(30780)+2(342)^2=295488,\\
+|\phi&#x27;&#x27;|&amp;=9|W&#x27;&#x27;(3\,\cdot)|\le2659392.
+\end{aligned}
+\tag{VC6a.8}
+\]">\[
+\begin{aligned}
+|S&#x27;|&amp;\le18+324=342,\\
+|S&#x27;&#x27;|&amp;\le324+1296+5832+23328=30780,\\
+|W&#x27;&#x27;|&amp;\le2(30780)+2(342)^2=295488,\\
+|\phi&#x27;&#x27;|&amp;=9|W&#x27;&#x27;(3\,\cdot)|\le2659392.
+\end{aligned}
+\tag{VC6a.8}
+\]</span>
+<p>Thus <span class="math" data-tex="\(2659392\)">\(2659392\)</span> is one explicit admissible positive integer for the bump bound. It is not an identification of the natural number selected by SmoothBump.bound. Equations (VC4.2)–(VC7.2) concern the original chosen <span class="math" data-tex="\(B_*\)">\(B_*\)</span>; they use its proved bound, not its numerical value. If an explicit implementation instead chooses the displayed admissible integer, its durations must still be defined by the full formula (VC4.3) with that choice. All preceding proofs then apply with those durations.</p>
+<p>Here is the approximation procedure, including the endpoint case. At a positive rational argument, (VC6a.1) reduces evaluation of <span class="math" data-tex="\(E^{(j)}\)">\(E^{(j)}\)</span> to integer polynomials and an exponential. To enclose <span class="math" data-tex="\(e^x\)">\(e^x\)</span> for rational <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, sum through degree <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(n+2&gt;x\)">\(n+2&gt;x\)</span>. The omitted series is nonnegative and bounded by</p>
+<span class="math math-display" data-tex="\[
+0\le e^x-\sum_{p=0}^{n}\frac{x^p}{p!}
+\le \frac{x^{n+1}}{(n+1)!}\,
+\frac{1}{1-x/(n+2)}.
+\tag{VC6a.9}
+\]">\[
+0\le e^x-\sum_{p=0}^{n}\frac{x^p}{p!}
+\le \frac{x^{n+1}}{(n+1)!}\,
+\frac{1}{1-x/(n+2)}.
+\tag{VC6a.9}
+\]</span>
+<p>The ratio of each subsequent term to its predecessor is at most <span class="math" data-tex="\(x/(n+2)&lt;1\)">\(x/(n+2)&lt;1\)</span>, which proves the geometric bound. The right side tends to zero for fixed <span class="math" data-tex="\(x\)">\(x\)</span>, for example after successive ratios become at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. A positive lower bound on the partial sum permits reciprocal intervals for <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span>. A negative rational exponential is evaluated by that reciprocal rule. All these enclosures are rational.</p>
+<p>For an argument given by converging rational intervals, retain the entire interval during evaluation. If it is strictly negative, every derivative of <span class="math" data-tex="\(E\)">\(E\)</span> is zero. If it is bounded away from zero on the positive side, the polynomial and exponential enclosures converge by the preceding formulas and elementary interval arithmetic. If an interval straddles zero, (VC6a.3) bounds the whole derivative by <span class="math" data-tex="\(A_jN!(2u)^N\)">\(A_jN!(2u)^N\)</span>, where <span class="math" data-tex="\(u\)">\(u\)</span> is its positive upper endpoint. Taking <span class="math" data-tex="\(N=1\)">\(N=1\)</span> already makes this bound tend to zero as such intervals shrink. Thus no decision of equality to zero is required. On a positive interval, the bound <span class="math" data-tex="\(C_{j+1}\)">\(C_{j+1}\)</span> gives a computable Lipschitz bound for <span class="math" data-tex="\(E^{(j)}\)">\(E^{(j)}\)</span>; it controls variation between rational samples as well. These observations prove convergence of the interval procedure for every actual argument.</p>
+<p>For <span class="math" data-tex="\(S\)">\(S\)</span>, the fixed lower bound <span class="math" data-tex="\(D_S&gt;1/9\)">\(D_S&gt;1/9\)</span> makes reciprocal evaluation safe. Equations (VC6a.5)–(VC6a.6), followed by finite product and chain rules, handle every derivative of <span class="math" data-tex="\(W,\phi\)">\(W,\phi\)</span>, the gates and the schedules. For a compact rational box in <span class="math" data-tex="\((\nu,t,X)\)">\((\nu,t,X)\)</span> with <span class="math" data-tex="\(\nu\ge\nu_-&gt;0\)">\(\nu\ge\nu_-&gt;0\)</span>, retain all integers <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> with <span class="math" data-tex="\(k+1\le T_+\)">\(k+1\le T_+\)</span>, where <span class="math" data-tex="\(T_+\)">\(T_+\)</span> is the upper time endpoint. All other blocks and every derivative vanish there. This is a finite list obtained from <span class="math" data-tex="\(T_+\)">\(T_+\)</span> alone. Each block enumerates a finite box of configurations. For a spatial box <span class="math" data-tex="\(\prod_i[L_i,U_i]\)">\(\prod_i[L_i,U_i]\)</span>, it suffices in each horizontal coordinate to retain integer translates</p>
+<span class="math math-display" data-tex="\[
+z_i\in[\lceil-U_i\rceil,\ \lfloor1-L_i\rfloor]\cap\mathbb Z.
+\tag{VC6a.10}
+\]">\[
+z_i\in[\lceil-U_i\rceil,\ \lfloor1-L_i\rfloor]\cap\mathbb Z.
+\tag{VC6a.10}
+\]</span>
+<p>Any nonzero gate at <span class="math" data-tex="\(X+z\)">\(X+z\)</span> has both coordinates in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, so every possible nonzero term is on this finite list; endpoints have zero derivatives and may be included. This proves an explicit finite truncation of periodization.</p>
+<p>All remaining denominators in a fixed block are the positive constants <span class="math" data-tex="\(R_{k+1}\)">\(R_{k+1}\)</span>, <span class="math" data-tex="\(\varepsilon_k\)">\(\varepsilon_k\)</span>, the denominator <span class="math" data-tex="\(D_S\)">\(D_S\)</span>, and the positive expression <span class="math" data-tex="\(1+\nu L_k\)">\(1+\nu L_k\)</span>, or products of these. The duration is <span class="math" data-tex="\(\varepsilon_k/[3(1+\nu L_k)]\)">\(\varepsilon_k/[3(1+\nu L_k)]\)</span>; both it and its reciprocal have positive finite bounds on the specified viscosity interval. Repeated quotient and product rules therefore give convergent rational enclosures for the force and every mixed derivative, including viscosity derivatives. The same bounds give a rational uniform upper bound for each requested derivative on the compact box. A finite subdivision and refinement terminates for any prescribed positive rational error: the bounds on one additional derivative control spatial and parameter variation, and the rational evaluation errors tend to zero. This proves the mathematical effectiveness claim made in VC6 for the original expressions, without assuming a halting oracle or a reproduced Lean run.</p>
+<h2 id="vc7-the-exact-mass-identity-and-what-passes-between-the-constructions">VC7. The exact mass identity and what passes between the constructions</h2>
+<p>There is a further identity that makes the difference between the two torus constructions precise. It holds for every input, including after it halts. Let</p>
+<span class="math math-display" data-tex="\[
+I_\phi=\int_{\mathbb R}\phi(z)\,dz&gt;0,\qquad
+M_k=R_{k+1}^2 I_\phi^2.
+\tag{VC7.1}
+\]">\[
+I_\phi=\int_{\mathbb R}\phi(z)\,dz&gt;0,\qquad
+M_k=R_{k+1}^2 I_\phi^2.
+\tag{VC7.1}
+\]</span>
+<p>Positivity follows because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> equals one near zero; finiteness follows from its compact support. Fubini and the changes of variables <span class="math" data-tex="\(z_i=(X_i-I_{k,i})/R_{k+1}\)">\(z_i=(X_i-I_{k,i})/R_{k+1}\)</span> give the full integral of the translated packet as <span class="math" data-tex="\(M_k\)">\(M_k\)</span>. Integrating its periodization over the unit square gives the same value, since the translated unit squares partition <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> up to sets of measure zero. Therefore</p>
+<span class="math math-display" data-tex="\[
+\int_{[0,1]^2}g_k(t,X)\,dX=M_k\omega_k&#x27;(t),\qquad
+\boxed{\displaystyle
+\int_{[0,1]^2}w(t,X)\,dX=\sum_{k\geq0}M_k\omega_k(t)}.
+\tag{VC7.2}
+\]">\[
+\int_{[0,1]^2}g_k(t,X)\,dX=M_k\omega_k&#x27;(t),\qquad
+\boxed{\displaystyle
+\int_{[0,1]^2}w(t,X)\,dX=\sum_{k\geq0}M_k\omega_k(t)}.
+\tag{VC7.2}
+\]</span>
+<p>To prove the second identity, integrate (VC5.1). The integral of its Laplacian is zero by periodicity. The advection integral is zero because <span class="math" data-tex="\(a\)">\(a\)</span> is periodic and divergence free. The time derivative is integrable on each compact time cylinder, so differentiation under the integral is justified. The block sum is locally finite, and both sides of (VC7.2) vanish initially. Integrating their identical derivatives proves equality. This proof uses the prescribed source directly and does not require a nonhalting comparison path.</p>
+<p>In particular the scalar has zero spatial mean throughout every interval</p>
+<span class="math math-display" data-tex="\[
+k+1+\delta_k\leq t\leq k+2,
+\tag{VC7.3}
+\]">\[
+k+1+\delta_k\leq t\leq k+2,
+\tag{VC7.3}
+\]</span>
+<p>and it also has zero mean before the first burst. At the middle of block <span class="math" data-tex="\(k\)">\(k\)</span> the mean is <span class="math" data-tex="\(M_k&gt;0\)">\(M_k&gt;0\)</span>. Zero mean does not say that the scalar field is zero. The withdrawn source and diffusion can leave a nonzero field with positive and negative parts. We do not infer positivity of this torus scalar from the cylinder's positive-source argument.</p>
+<p>For comparison, the original paper's torus construction injects nonnegative mass and retains it. The positive first injection gives the time-independent positive lower mass bound used in VD9 of the written audit to prove divergence of every finite-exponent time norm. Equations (VC7.2)–(VC7.3) show exactly why that proof does not apply to the supplied Lean witness. They do not assert convergence or divergence of those norms for this different witness.</p>
+<p>There is nonetheless an exact common map. To the same finite input <span class="math" data-tex="\((M,w)\)">\((M,w)\)</span>, assign the paper's force <span class="math" data-tex="\(f^{\mathrm{paper}}_{M,w}\)">\(f^{\mathrm{paper}}_{M,w}\)</span> and the supplied source's force <span class="math" data-tex="\(f^{\mathrm{source}}_{M,w}\)">\(f^{\mathrm{source}}_{M,w}\)</span> of (VC6.1). Their respective unique classical solutions satisfy</p>
+<span class="math math-display" data-tex="\[
+\mathbf1_{\mathrm{event}}(U^{\mathrm{paper}}_{M,w})
+=\mathbf1_{\mathrm{halts}}(M,w)
+=\mathbf1_{\mathrm{event}}(U^{\mathrm{source}}_{M,w}).
+\tag{VC7.4}
+\]">\[
+\mathbf1_{\mathrm{event}}(U^{\mathrm{paper}}_{M,w})
+=\mathbf1_{\mathrm{halts}}(M,w)
+=\mathbf1_{\mathrm{event}}(U^{\mathrm{source}}_{M,w}).
+\tag{VC7.4}
+\]</span>
+<p>The left equality is the original paper's detector derivation, supplied in VD4; the right equality is proved in VC1–VC6a. This identity is an equality of predicates on the set of finite inputs, not an algorithm deciding either predicate. It retains the exact decision problem while allowing different fluid realizations. At the discrete level (VC1.7) is the stronger step-by-step projection; at the fluid level (VC7.2) records information specific to the supplied realization that is absent from the common event predicate.</p>
+<p>Thus the alternate source construction supports the same torus detector statement. Its different force formula is not an error in the paper, and it is not a transcription correction. The mass identity (VC7.2) is an editorial consequence with the complete proof above; no novelty claim is made.</p>
+</article></body></html>

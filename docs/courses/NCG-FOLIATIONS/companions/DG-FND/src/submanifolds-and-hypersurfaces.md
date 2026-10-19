@@ -239,7 +239,7 @@ In the graph chart a tangent map \(L_X\) gives
 (dP)_X=
 \begin{pmatrix}0&L_X^*\\ L_X&0\end{pmatrix}.
 \]
-This follows by differentiating the projection at the zero graph, or by differentiating its symmetry and its action on vectors \(v+tL_Xv\). Hence the two curvature blocks are \(L_X^*L_Y-L_Y^*L_X\) and \(L_XL_Y^*-L_YL_X^*\). With \(L_XY=\alpha(X,Y)\), these are precisely the Euclidean Gauss and Ricci formulas of A.2. This also identifies both pulled-back connections and their signs. Finally (A.14) is A.3 followed by taking inner products. The inverse theorem, Local tools 1.2, proves the local-diffeomorphism assertion.
+This follows by differentiating the projection at the zero graph, or by differentiating its symmetry and its action on vectors \(v+tL_Xv\). Hence the two curvature blocks are \(L_X^*L_Y-L_Y^*L_X\) and \(L_XL_Y^*-L_YL_X^*\). With \(L_XY=\alpha(X,Y)\), these are precisely the Euclidean Gauss and Ricci formulas of A.2. This also identifies both pulled-back connections and their signs. Finally (A.14) is A.3 followed by taking inner products. The inverse theorem, [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), proves the local-diffeomorphism assertion.
 
 The bundle correspondence also has a description in principal frames. An adapted orthonormal frame along \(f\) is a pair of orthonormal bases of \(df(TM)\) and \(N_fM\). Local such bases exist by [Riemannian connections F.2](riemannian-connections-and-convex-neighbourhoods.md#theorem-f-2). Their changes are exactly \(O(n)\times O(p)\), so the local charts construct the fibre product of their two orthonormal frame bundles, as in [Principal bundles C.1](principal-bundles-and-associated-bundles.md#theorem-c-1). Dividing out the normal factor leaves the tangent frame bundle, and dividing out the tangent factor leaves the normal frame bundle; the local product charts prove these identifications smoothly.
 
@@ -279,7 +279,7 @@ Here is a direct application of the same flat-transport theorem to the one-form 
 z'(t)=\omega_{\gamma(t)}(\gamma'(t)).
 \tag{B.1}
 \]
-The corresponding connection form is \(dz-\omega\); its curvature is \(-d\omega=0\), since the additive group is abelian. These statements follow from the connection and curvature formulas in [Connections A.2](connections-and-parallel-transport.md#theorem-a-2) and [Curvature and holonomy A.2](curvature-and-holonomy-groups.md#lemma-a-2). [Flat connections E.1](flat-connections-and-infinitesimal-holonomy.md#theorem-e-1) makes the endpoint \(z\) independent of the path on a simply connected base. Define \(F(x)\) to be that endpoint, starting with the prescribed value at the base point. In a coordinate ball it is the integral along a fixed path to its centre and then a straight coordinate segment, so it is smooth by differentiation of parameter integrals (Local tools 0.3). Adjoining a short curve at its endpoint and differentiating (B.1) gives \(dF=\omega\). If two primitives agree at one point, their difference has zero derivative and is constant along the piecewise coordinate paths of [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4). They are equal everywhere. □
+The corresponding connection form is \(dz-\omega\); its curvature is \(-d\omega=0\), since the additive group is abelian. These statements follow from the connection and curvature formulas in [Connections A.2](connections-and-parallel-transport.md#theorem-a-2) and [Curvature and holonomy A.2](curvature-and-holonomy-groups.md#lemma-a-2). [Flat connections E.1](flat-connections-and-infinitesimal-holonomy.md#theorem-e-1) makes the endpoint \(z\) independent of the path on a simply connected base. Define \(F(x)\) to be that endpoint, starting with the prescribed value at the base point. In a coordinate ball it is the integral along a fixed path to its centre and then a straight coordinate segment, so it is smooth by differentiation of parameter integrals ([Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations)). Adjoining a short curve at its endpoint and differentiating (B.1) gives \(dF=\omega\). If two primitives agree at one point, their difference has zero derivative and is constant along the piecewise coordinate paths of [Curvature and holonomy C.4](curvature-and-holonomy-groups.md#lemma-c-4). They are equal everywhere. □
 
 **Theorem B.2 (Euclidean realization of tangent and normal data).** Let \((M^n,g)\) be connected and simply connected. Let \(N\to M\) be a rank-\(p\) Euclidean vector bundle with a metric connection \(\nabla^\perp\), and let \(\alpha:TM\times TM\to N\) be a smooth symmetric bilinear form. Define \(A_\xi\) by
 \[
@@ -340,7 +340,7 @@ The first component is zero because \(\nabla\) is torsion-free, and the second b
 
 Conversely any realization gives a parallel isometry \(\Phi(Z,\xi)=df(Z)+j(\xi)\) for (B.3). For two realizations, their trivializations differ by a constant orthogonal matrix: (B.4) makes the derivative of their comparison zero, and connectedness makes it constant. Their differentials therefore differ by that orthogonal matrix; integrating along paths shows that their positions differ by one additional constant translation. The initial data select both constants.
 
-To see local embedding, choose \(n\) ambient coordinate components of \(f\) whose derivative minor is nonzero at the point. The inverse theorem (Local tools 1.2) makes these components local coordinates on \(M\). The remaining components are smooth functions of them, so the local image is a graph, and the graph parametrization is an embedding.
+To see local embedding, choose \(n\) ambient coordinate components of \(f\) whose derivative minor is nonzero at the point. The inverse theorem ([Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion)) makes these components local coordinates on \(M\). The remaining components are smooth functions of them, so the local image is a graph, and the graph parametrization is an embedding.
 
 For the hypersurface specialization take \(N=M\times\mathbb R\) with its standard metric connection and \(\alpha(X,Y)=g(AX,Y)\). Its normal curvature vanishes and all scalar shape operators commute, so Ricci is automatic. Gauss and Codazzi are exactly (B.2), by (A.3). The section \(1\) of \(N\) becomes the desired global unit normal. □
 
@@ -431,7 +431,7 @@ This proves (C.4). If the form is positive definite, \(U_x=0\), so every vector 
 \]
 and \(\beta(x,x)\ne0\) for every nonzero \(x\). Then \(\dim W\geq\dim V\).
 
-**Proof.** The assertion is immediate if \(V=0\). Otherwise minimize \(|\beta(v,v)|^2\) on its compact unit sphere, using Local tools 0.1. At a minimizer set \(a=\beta(v,v)\ne0\). For unit \(w\perp v\), differentiate along \(v\cos t+w\sin t\). The first derivative is \(4\langle a,\beta(v,w)\rangle\), hence zero. Thus the linear map \(w\mapsto\beta(v,w)\) from \(v^\perp\) takes values in \(a^\perp\).
+**Proof.** The assertion is immediate if \(V=0\). Otherwise minimize \(|\beta(v,v)|^2\) on its compact unit sphere, using [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). At a minimizer set \(a=\beta(v,v)\ne0\). For unit \(w\perp v\), differentiate along \(v\cos t+w\sin t\). The first derivative is \(4\langle a,\beta(v,w)\rangle\), hence zero. Thus the linear map \(w\mapsto\beta(v,w)\) from \(v^\perp\) takes values in \(a^\perp\).
 
 If \(\dim V>\dim W\), rank-nullity supplies a unit \(w\perp v\) with \(\beta(v,w)=0\). In the same variation,
 \[
@@ -441,7 +441,7 @@ If \(\dim V>\dim W\), rank-nullity supplies a unit \(w\perp v\) with \(\beta(v,w
 The second derivative of its squared norm is
 \(4\langle a,\beta(w,w)-a\rangle\), which is nonnegative at a minimum. Hence
 \(\langle\beta(v,v),\beta(w,w)\rangle\geq|a|^2>0\).
-But (C.6) and \(\beta(v,w)=0\) make that inner product nonpositive, a contradiction. The elementary derivative tests and trigonometric differentiations used here are Local tools 0.3 and [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). □
+But (C.6) and \(\beta(v,w)=0\) make that inner product nonpositive, a contradiction. The elementary derivative tests and trigonometric differentiations used here are [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). □
 
 **Proposition C.4 (The two nullities).** For a Euclidean submanifold of codimension \(p\), let
 \[
@@ -607,7 +607,7 @@ If \(|c|>0\), the mean curvature vector \(H=\frac1n\operatorname{tr}\alpha\) is 
 \[
 d(f+c^{-1}\nu)=df-c^{-1}df\circ A=0.
 \]
-Consequently \(f(M)\) lies in the sphere of radius \(c^{-1}\) about the constant vector \(f+c^{-1}\nu\). In either case, the differential into the indicated \(n\)-manifold is an isometry and an isomorphism. Local tools 1.2 makes \(f\) a local diffeomorphism, hence its image is open. If \(M\) is complete, Hopf–Rinow E.4 makes this local isometry a covering onto the entire connected target. The hyperplane is simply connected by its straight-line contraction, and the sphere is simply connected for \(n\geq2\) by [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3). [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) then makes the connected covering a diffeomorphism. □
+Consequently \(f(M)\) lies in the sphere of radius \(c^{-1}\) about the constant vector \(f+c^{-1}\nu\). In either case, the differential into the indicated \(n\)-manifold is an isometry and an isomorphism. [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) makes \(f\) a local diffeomorphism, hence its image is open. If \(M\) is complete, [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4) makes this local isometry a covering onto the entire connected target. The hyperplane is simply connected by its straight-line contraction, and the sphere is simply connected for \(n\geq2\) by [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3). [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) then makes the connected covering a diffeomorphism. □
 
 **Theorem E.2 (Ricci and Einstein hypersurfaces).** For a Euclidean hypersurface,
 \[
@@ -677,7 +677,7 @@ The maximum value is positive for a positive-dimensional immersion, so \(r\ne0\)
 
 Assume condition 3. On each neighbourhood with a normal, a nonsingular symmetric matrix cannot change its numbers of positive and negative eigenvalues: continuity of its quadratic form on the unit sphere preserves any strictly positive or negative subspace under a sufficiently small perturbation, and the dimensions add to \(n\). Thus the subset where the shape is definite is both open and closed. The elliptic point and connectedness make it all of \(M\), proving condition 1.
 
-Under condition 1, choose at each point the unique unit normal \(\nu\) for which \(A_\nu\) is negative definite. These local smooth choices agree on overlaps and define a global smooth normal. By A.4, its differential is \(-df\circ A_\nu\), hence nonsingular. The pullback by \(\nu\) of the round metric is a smooth Riemannian metric on compact \(M\), and is complete by Hopf–Rinow B.3. Hopf–Rinow E.4 makes \(\nu\) a covering of \(S^n\). [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3) and [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) make it a diffeomorphism. This proves condition 2. Conversely condition 2 and the same differential formula give condition 3.
+Under condition 1, choose at each point the unique unit normal \(\nu\) for which \(A_\nu\) is negative definite. These local smooth choices agree on overlaps and define a global smooth normal. By A.4, its differential is \(-df\circ A_\nu\), hence nonsingular. The pullback by \(\nu\) of the round metric is a smooth Riemannian metric on compact \(M\), and is complete by [Hopf–Rinow B.3](completeness-and-the-hopf-rinow-theorem.md#corollary-b-3). [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4) makes \(\nu\) a covering of \(S^n\). [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3) and [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) make it a diffeomorphism. This proves condition 2. Conversely condition 2 and the same differential formula give condition 3.
 
 For any unit \(u\), the critical points of the height \(h_u=\langle f,u\rangle\) are precisely the points with \(\nu=\pm u\), since the normal space is a line. There are exactly two. At the point with \(\nu=u\) the Hessian is \(A_\nu\), negative definite; at the point with \(\nu=-u\) it is \(-A_\nu\), positive definite. A global maximum exists by compactness and must be critical. It cannot be the latter point, which is a strict local minimum on a positive-dimensional manifold. Thus the former is the unique global maximum. All of the image lies on one side of its tangent hyperplane, with equality only at that point.
 
@@ -691,7 +691,7 @@ If \(f(x)=f(y)\), take \(u=\nu(x)\). Both points have the same maximal height, s
 
 **Proof.** Dimension zero is immediate, since the tangent space is zero. For positive dimension, equation (E.5) supplies a point with invertible shape \(A\). For tangent vectors at that point, Gauss expresses its curvature endomorphisms as \(AX\wedge AY\), with the convention in C.1. Since \(A\) is invertible, their span is all skew-adjoint endomorphisms: in an orthonormal basis the wedges \(e_i\wedge e_j\), \(i<j\), are a basis of that space. [Curvature and holonomy G.3](curvature-and-holonomy-groups.md#theorem-g-3) puts this entire space inside the restricted holonomy Lie algebra.
 
-Metric transport and the connected restricted holonomy construction in that theorem put the restricted group inside \(SO(n)\). The equality of Lie algebras makes its inclusion a local diffeomorphism at the identity by Local tools 1.2, so its image contains an identity neighbourhood and is an open subgroup. The elementary plane-rotation argument in [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1) proves that \(SO(n)\) is connected, so an open subgroup must be the whole group: its cosets are open, and a proper one would disconnect the group. Transport to another base point conjugates these groups by a linear isometry, preserving \(SO(n)\). In dimension one the only connected subgroup of \(O(1)\) is the identity, giving the stated case. □
+Metric transport and the connected restricted holonomy construction in that theorem put the restricted group inside \(SO(n)\). The equality of Lie algebras makes its inclusion a local diffeomorphism at the identity by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), so its image contains an identity neighbourhood and is an open subgroup. The elementary plane-rotation argument in [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1) proves that \(SO(n)\) is connected, so an open subgroup must be the whole group: its cosets are open, and a proper one would disconnect the group. Transport to another base point conjugates these groups by a linear isometry, preserving \(SO(n)\). In dimension one the only connected subgroup of \(O(1)\) is the identity, giving the stated case. □
 
 ## F. Two principal curvatures and complete surfaces
 
@@ -734,19 +734,19 @@ The numerator has the asserted sign because along any smooth curve through a loc
 \[
 \lambda(y)\leq c=\mu(x)\leq\mu(y)\leq\lambda(y).
 \]
-All terms are equal; the surface is umbilical. Compactness implies completeness by Hopf–Rinow B.3, and E.1 gives the sphere and embedding.
+All terms are equal; the surface is umbilical. Compactness implies completeness by [Hopf–Rinow B.3](completeness-and-the-hopf-rinow-theorem.md#corollary-b-3), and E.1 gives the sphere and embedding.
 
 For a complete surface of constant \(K>0\), [Sectional curvature D.2](sectional-curvature-and-space-forms.md#theorem-d-2) gives a surjective covering local isometry from the round \(2\)-sphere of curvature \(K\). Its image is compact, hence the surface is compact. Now use \(\psi(t)=K/t\) and the result just proved. Constant mean curvature gives \(\mu=2H-\lambda\), also a nonincreasing relation, and proves the second case. □
 
 **Theorem F.3 (No complete negative constant curvature immersion).** No complete connected surface of constant negative Gaussian curvature admits a smooth isometric immersion in \(\mathbb R^3\).
 
-**Proof.** Rescale a proposed immersion and its induced metric by constant factors to make \(K=-1\). A constant positive metric scaling preserves completeness, as distances scale by its square root. Pass to the universal covering surface with the pulled-back metric and immersion. It is simply connected by [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) and remains complete by the covering and geodesic argument in Hopf–Rinow E.4. Thus we may assume \(M\) simply connected and complete.
+**Proof.** Rescale a proposed immersion and its induced metric by constant factors to make \(K=-1\). A constant positive metric scaling preserves completeness, as distances scale by its square root. Pass to the universal covering surface with the pulled-back metric and immersion. It is simply connected by [Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) and remains complete by the covering and geodesic argument in [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4). Thus we may assume \(M\) simply connected and complete.
 
 The two unit choices in each normal line form a smooth double cover. [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) trivializes it, so choose a global normal. Gauss gives \(\det A=-1\). The eigenvalues are distinct and have the smooth global labels
 \(\lambda>0\) and \(\mu=-1/\lambda<0\).
 The spectral projections used in F.1 define smooth eigenline bundles; their unit-vector double covers likewise have global sections. Hence there is a global orthonormal principal frame \(e_1,e_2\).
 
-Define a smooth function \(0<\theta<\pi/2\) by \(\tan\theta=\lambda\). This is legitimate since the derivative of \(\tan\) is positive on this interval, with limits \(0,+\infty\); its inverse is smooth by Local tools 1.2. The sine and cosine and their derivatives are given by the circle exponential calculation in [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). Substitution in (F.2) gives
+Define a smooth function \(0<\theta<\pi/2\) by \(\tan\theta=\lambda\). This is legitimate since the derivative of \(\tan\) is positive on this interval, with limits \(0,+\infty\); its inverse is smooth by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion). The sine and cosine and their derivatives are given by the circle exponential calculation in [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). Substitution in (F.2) gives
 \[
 a=\tan\theta\,e_2\theta,\qquad
 b=\cot\theta\,e_1\theta .
@@ -764,13 +764,13 @@ The product rule for brackets and (F.1) give
 &+(-\cos\theta\sin\theta\,b+\cos^2\theta\,e_1\theta)e_2=0 .
 \end{aligned}
 \]
-Both fields have norm at most one. Such a smooth field on a complete Riemannian manifold is complete: on any integral curve approaching a finite endpoint in time, the distance between two points is at most the elapsed time. The curve is Cauchy and has a limit by metric completeness. A local solution neighbourhood at this limit, from Local tools 2.1, extends the curve past the endpoint by uniqueness. The same argument applies backwards.
+Both fields have norm at most one. Such a smooth field on a complete Riemannian manifold is complete: on any integral curve approaching a finite endpoint in time, the distance between two points is at most the elapsed time. The curve is Cauchy and has a limit by metric completeness. A local solution neighbourhood at this limit, from [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters), extends the curve past the endpoint by uniqueness. The same argument applies backwards.
 
 The complete flows of \(P,Q\) commute by [De Rham decomposition B.1](holonomy-and-the-de-rham-decomposition-theorem.md#lemma-b-1). They therefore define an \(\mathbb R^2\)-action. For a fixed point \(p\), its orbit map
 \[
 F(u,v)=\phi_P^u\phi_Q^v(p)
 \]
-has differential with columns \(P,Q\), which are independent everywhere. Every orbit is open by Local tools 1.2, so connectedness makes this one orbit all of \(M\). The stabilizer \(H=\{(u,v):F(u,v)=p\}\) is discrete, since \(F\) is a local diffeomorphism at \(0\), and
+has differential with columns \(P,Q\), which are independent everywhere. Every orbit is open by [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion), so connectedness makes this one orbit all of \(M\). The stabilizer \(H=\{(u,v):F(u,v)=p\}\) is discrete, since \(F\) is a local diffeomorphism at \(0\), and
 \(F(a)=F(b)\) holds exactly when \(a-b\in H\).
 Choose a small inverse chart \(U\) about \(0\) whose differences meet \(H\) only at \(0\). Then
 \[
@@ -822,7 +822,7 @@ Choose \(a<a_1<b_1<b\). Integrating this inequality in \(s\), and using \(0<\var
 \]
 For instance take \(\epsilon\) smaller than both
 \(\delta(a_1-a)\) and \(\delta(b-b_1)\).
-Twice applying the fundamental theorem of calculus (Local tools 0.3) to (F.6) now gives
+Twice applying the fundamental theorem of calculus ([Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations)) to (F.6) now gives
 \[
 \begin{aligned}
 &\varphi(b_1,T)-\varphi(a_1,T)
@@ -887,9 +887,9 @@ D_X f=df(X),\qquad
 D_Xdf(Y)=df(\nabla_XY)-g(X,Y)f.
 \tag{G.4}
 \]
-Consequently the rank-\((k+1)\) bundle spanned by \(f\) and \(df(TM)\) is preserved by the ordinary Euclidean connection. The parallel-frame argument of D.1 makes it one constant vector \((k+1)\)-plane \(L\). Thus the image lies in \(L\cap S^N\), a great \(k\)-sphere. The differential is an isometry between spaces of the same dimension, so Local tools 1.2 gives a local isometry with open image.
+Consequently the rank-\((k+1)\) bundle spanned by \(f\) and \(df(TM)\) is preserved by the ordinary Euclidean connection. The parallel-frame argument of D.1 makes it one constant vector \((k+1)\)-plane \(L\). Thus the image lies in \(L\cap S^N\), a great \(k\)-sphere. The differential is an isometry between spaces of the same dimension, so [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives a local isometry with open image.
 
-For a complete source, Hopf–Rinow E.4 makes this a covering onto the great sphere. When \(k\geq2\), [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3) and [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) make it a diffeomorphism. For \(k=1\), the unit-speed parametrization
+For a complete source, [Hopf–Rinow E.4](completeness-and-the-hopf-rinow-theorem.md#corollary-e-4) makes this a covering onto the great sphere. When \(k\geq2\), [Sectional curvature C.3](sectional-curvature-and-space-forms.md#lemma-c-3) and [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) make it a diffeomorphism. For \(k=1\), the unit-speed parametrization
 \(t\mapsto(\cos t,\sin t)\)
 is its universal cover, with deck translations \(2\pi\mathbb Z\), by [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) classifies its connected covers by the subgroups of this group. A nonzero subgroup of \(\mathbb Z\) is \(m\mathbb Z\): choose its least positive member \(m\) and apply division with remainder; the zero subgroup gives the universal cover. These are exactly the finite multiple and universal coverings stated. In dimension zero the connected source is a point and the assertion reduces to that point. □
 
@@ -903,7 +903,7 @@ For such an ambient Killing field \(K\), decompose its pullback along \(f\) into
 \]
 [Affine transformations A.3](affine-transformations-and-the-isometry-group.md#corollary-a-3) makes \(V\) an intrinsic Killing field. Completeness of \(M\) makes its flow complete by [Affine transformations D.4](affine-transformations-and-the-isometry-group.md#theorem-d-4).
 
-At each point, these projected fields span \(TM\), since the ambient values span the ambient tangent space and orthogonal projection is onto. Choose \(k=\dim M\) of them whose values are a basis there. The map obtained by successively flowing for parameters \(t_1,\ldots,t_k\) has invertible differential at zero. Local tools 1.2 makes its image contain a neighbourhood of the point. Thus every orbit of the group generated by these complete intrinsic isometries is open. Connectedness makes there be just one orbit: otherwise one orbit and the union of all others would be disjoint nonempty open subsets. This is homogeneity of \(M\). □
+At each point, these projected fields span \(TM\), since the ambient values span the ambient tangent space and orthogonal projection is onto. Choose \(k=\dim M\) of them whose values are a basis there. The map obtained by successively flowing for parameters \(t_1,\ldots,t_k\) has invertible differential at zero. [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) makes its image contain a neighbourhood of the point. Thus every orbit of the group generated by these complete intrinsic isometries is open. Connectedness makes there be just one orbit: otherwise one orbit and the union of all others would be disjoint nonempty open subsets. This is homogeneity of \(M\). □
 
 **Theorem G.5 (Common affine fixed sets).** On a manifold with any affine connection, the common fixed set of an arbitrary family of global affine transformations is closed, and each of its connected components is an embedded autoparallel submanifold. The same conclusion holds for the common zero set of any family of globally defined infinitesimally affine fields; the fields need not be complete. Components can have different dimensions.
 
@@ -922,7 +922,7 @@ For a common fixed point \(q=\exp_p v\) in this smaller ball, injectivity makes 
 
 On each such local submanifold, a transformation fixes tangent vector fields pointwise. Preservation of the connection implies that it also fixes \(\overline\nabla_XY\), for tangent \(X,Y\). This derivative is therefore in the common fixed subspace of the differentials at the point, which is exactly the tangent space just identified. Proposition G.1 proves autoparallelism.
 
-For the infinitesimal assertion let all fields \(Z\) vanish at \(p\), and take a normal ball there. Their local flows fix \(p\), and their differentials there are \(\exp(t\,dZ_p)\), by the linearized ODE in Local tools 2.1. For each fixed \(v\) in that ball and each fixed field, the flow is defined for a common small time along the compact radial geodesic from \(p\) to \(\exp_pv\). This follows by a finite cover of its image by local flow neighbourhoods. Differentiating (G.5) for that flow at \(t=0\) gives
+For the infinitesimal assertion let all fields \(Z\) vanish at \(p\), and take a normal ball there. Their local flows fix \(p\), and their differentials there are \(\exp(t\,dZ_p)\), by the linearized ODE in [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). For each fixed \(v\) in that ball and each fixed field, the flow is defined for a common small time along the compact radial geodesic from \(p\) to \(\exp_pv\). This follows by a finite cover of its image by local flow neighbourhoods. Differentiating (G.5) for that flow at \(t=0\) gives
 \[
 Z(\exp_pv)=(d\exp_p)_v(dZ_pv).
 \tag{G.6}
@@ -998,7 +998,7 @@ f(x,y)=(\gamma_1(x),\gamma_2(x),y),\qquad
 \nu(x,y)=(-\sin\theta(x),\cos\theta(x),0).
 \tag{H.2}
 \]
-Then \(f_x,f_y\) are orthonormal, \(f_{xx}=a\nu\), and the other second derivatives vanish. Equivalently \(\nu_x=-a f_x,\ \nu_y=0\). The metric and prescribed shape are exactly the required ones. The integrations are justified by Local tools 0.3. Changing \(\gamma_0,\theta_0\) gives Euclidean motions of this realization. Every other cooriented realization of the same data differs by such a motion by B.2, since a rectangle is simply connected by straight-line contraction. For example \(a(x,y)=y\) satisfies Gauss everywhere but violates Codazzi everywhere, so it has no realization. □
+Then \(f_x,f_y\) are orthonormal, \(f_{xx}=a\nu\), and the other second derivatives vanish. Equivalently \(\nu_x=-a f_x,\ \nu_y=0\). The metric and prescribed shape are exactly the required ones. The integrations are justified by [Local tools 0.3](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations). Changing \(\gamma_0,\theta_0\) gives Euclidean motions of this realization. Every other cooriented realization of the same data differs by such a motion by B.2, since a rectangle is simply connected by straight-line contraction. For example \(a(x,y)=y\) satisfies Gauss everywhere but violates Codazzi everywhere, so it has no realization. □
 
 **Exercise H.3 (Completeness and great spheres).** Prove the great-sphere conclusion for a connected totally geodesic immersion, state what completeness adds, and give a proper incomplete example and a complete multiple covering.
 
@@ -1009,7 +1009,7 @@ t\longmapsto(\cos t,\sin t,0)
 \]
 is a totally geodesic unit-speed immersion into a proper open arc of the equator. It is incomplete: a sequence tending to \(\pi/2\) is Cauchy for its interval metric and has no limit there. Total geodesy follows either from the great-circle geodesic formula in [Sectional curvature C.2](sectional-curvature-and-space-forms.md#theorem-c-2) or directly from \(f''=-f\), whose tangent projection to the sphere is zero.
 
-The same formula on \(\mathbb R/(4\pi\mathbb Z)\), with metric \(dt^2\), gives a double covering of the equator. It is well-defined because sine and cosine have period \(2\pi\), is locally unit-speed and totally geodesic, and is complete because its source is compact (Hopf–Rinow B.3). The two distinct classes of \(0\) and \(2\pi\) have the same image, so it is not an embedding. □
+The same formula on \(\mathbb R/(4\pi\mathbb Z)\), with metric \(dt^2\), gives a double covering of the equator. It is well-defined because sine and cosine have period \(2\pi\), is locally unit-speed and totally geodesic, and is complete because its source is compact ([Hopf–Rinow B.3](completeness-and-the-hopf-rinow-theorem.md#corollary-b-3)). The two distinct classes of \(0\) and \(2\pi\) have the same image, so it is not an embedding. □
 
 **Exercise H.4 (Reconstruction and a cylinder period).** Prove existence and uniqueness for compatible \((g,A)\) on a connected simply connected manifold. For
 \[

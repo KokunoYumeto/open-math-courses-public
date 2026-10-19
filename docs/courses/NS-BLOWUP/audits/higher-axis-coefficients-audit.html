@@ -1,0 +1,839 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="higher-axis-coefficients-audit.md">Editable source</a></nav><h1 id="higher-order-coefficients-on-one-fixed-axis-interval">Higher-order coefficients on one fixed axis interval</h1>
+<p>This note derives the original coefficient equations and the complete six-component system in Lemma 5.1, proves its convergent integral solution on a fixed radial interval, and constructs the actual first positive-order correction from the leading profile. The complete leading profile is supplied by <a href="shear-realization-audit.html">V0–V7</a> and its cited constructions. The global extension with exact residual moments and the entire coefficient sequence are constructed in <a href="positive-order-extension-audit.html">Y0–Y7</a>. Their actual summation into the base field is derived in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf#page=45">PDF, pages 45–49</a>, (5.1)–(5.8) and Lemma 5.1, SHA256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Additional source locators are pages 24–26, (4.1)–(4.7). <a href="profile-stress-moment-audit.html">G0–G1</a> prove the coordinate identities and retain the complete leading residual.</p>
+<p><img src="assets/higher-axis-coefficients.png" alt="The six-coordinate derivative structure and its convergent radial integral bound" class="course-figure" width="2160" height="960" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="ADFD212114B9B3649AB69BAA66F9A21D761F66172237D3952239069E2B37A14B"></p>
+<p>This schematic records the exact spaces and operator identities proved in D2–D5. The estimate includes the original singular diagonal coefficients and the parameter-domain loss. <a href="assets/higher-axis-coefficients.py">Reproducible figure source</a> · <a href="assets/higher-axis-coefficients.svg">Vector figure</a>.</p>
+<h2 id="d0-original-physical-coefficients-and-differential-operators">D0. Original physical coefficients and differential operators</h2>
+<p>Keep <span class="math" data-tex="\(A=1/2+h,D=1/2-h,d=1-\eta^2,L=1-2h\eta^2\)">\(A=1/2+h,D=1/2-h,d=1-\eta^2,L=1-2h\eta^2\)</span>, with the already fixed <span class="math" data-tex="\(0&lt;h&lt;1/100\)">\(0&lt;h&lt;1/100\)</span>. Use <span class="math" data-tex="\(z=q^D\eta\)">\(z=q^D\eta\)</span>, <span class="math" data-tex="\(1-t=q(1-\eta^2)\)">\(1-t=q(1-\eta^2)\)</span>, <span class="math" data-tex="\(X=r^2/(2q)\)">\(X=r^2/(2q)\)</span>, and the original amplitude <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. For <span class="math" data-tex="\(\lambda_n=2nh\)">\(\lambda_n=2nh\)</span>, the physical coefficients are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_{\theta,n}=q^{-A+\lambda_n}E_n
+=r q^{-A-1/2+\lambda_n}\phi_n/\mathsf C,
+\qquad E_n=\sqrt{2X}\phi_n/\mathsf C,\\
+u_{z,n}=q^{-A+\lambda_n}U_n,\qquad
+ru_{r,n}=q^{\lambda_n}V_n,\qquad
+p_n=q^{-2A+\lambda_n}\Pi_n.
+\end{gathered}
+\tag{D0.1}
+\]">\[
+\begin{gathered}
+u_{\theta,n}=q^{-A+\lambda_n}E_n
+=r q^{-A-1/2+\lambda_n}\phi_n/\mathsf C,
+\qquad E_n=\sqrt{2X}\phi_n/\mathsf C,\\
+u_{z,n}=q^{-A+\lambda_n}U_n,\qquad
+ru_{r,n}=q^{\lambda_n}V_n,\qquad
+p_n=q^{-2A+\lambda_n}\Pi_n.
+\end{gathered}
+\tag{D0.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\Pi_0(X,\eta)\)">\(\Pi_0(X,\eta)\)</span> is the full leading pressure; its axis trace is the pressure datum previously denoted <span class="math" data-tex="\(\Pi_0(\eta)\)">\(\Pi_0(\eta)\)</span>. The subscript in this section is expansion order. No pressure constant is discarded by this notation.</p>
+<p>For a real exponent <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, retain the original operators</p>
+<span class="math math-display" data-tex="\[
+T_\beta f=\frac{-\beta f+D\eta f_\eta+Xf_X}{L},\qquad
+Z_\beta f=\frac{2\beta\eta f+df_\eta-2\eta Xf_X}{L},
+\tag{D0.2}
+\]">\[
+T_\beta f=\frac{-\beta f+D\eta f_\eta+Xf_X}{L},\qquad
+Z_\beta f=\frac{2\beta\eta f+df_\eta-2\eta Xf_X}{L},
+\tag{D0.2}
+\]</span>
+<p>so <span class="math" data-tex="\(\partial_t(q^\beta f)=q^{\beta-1}T_\beta f\)">\(\partial_t(q^\beta f)=q^{\beta-1}T_\beta f\)</span> and <span class="math" data-tex="\(\partial_z(q^\beta f)=q^{\beta-D}Z_\beta f\)">\(\partial_z(q^\beta f)=q^{\beta-D}Z_\beta f\)</span>. G0.2–G0.3 prove these by differentiation of the actual coordinate map. Write</p>
+<span class="math math-display" data-tex="\[
+T_{\beta,n}=T_{\beta+\lambda_n},\qquad
+Z_{\beta,n}=Z_{\beta+\lambda_n},\qquad
+Z_{\beta,n}^{[2]}=Z_{\beta+\lambda_n-D}Z_{\beta+\lambda_n}.
+\tag{D0.3}
+\]">\[
+T_{\beta,n}=T_{\beta+\lambda_n},\qquad
+Z_{\beta,n}=Z_{\beta+\lambda_n},\qquad
+Z_{\beta,n}^{[2]}=Z_{\beta+\lambda_n-D}Z_{\beta+\lambda_n}.
+\tag{D0.3}
+\]</span>
+<p>The composition order in the last expression retains the change in physical power after the first derivative. Negative-index fields are zero.</p>
+<p>Incompressibility at order n gives
+<span class="math" data-tex="\(q^{\lambda_n-1}[\partial_XV_n+Z_{-A,n}U_n]=0\)">\(q^{\lambda_n-1}[\partial_XV_n+Z_{-A,n}U_n]=0\)</span>, because A+D=1. The regular-axis condition fixes V_n(0)=0. Integrating the displayed equation, with <span class="math" data-tex="\(\int_0^XxU_{n,X}dx=XU_n-\int_0^XU_n dx\)">\(\int_0^XxU_{n,X}dx=XU_n-\int_0^XU_n dx\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+\partial_XV_n=-Z_{-A,n}U_n,\qquad
+\frac{V_n}{X}
+=\frac{2\eta U_n-2\eta(D+\lambda_n)\mathcal A_XU_n-d\partial_\eta\mathcal A_XU_n}{L},
+\quad \mathcal A_XU_n=\int_0^1U_n(sX,\eta)ds.
+\tag{D0.4}
+\]">\[
+\partial_XV_n=-Z_{-A,n}U_n,\qquad
+\frac{V_n}{X}
+=\frac{2\eta U_n-2\eta(D+\lambda_n)\mathcal A_XU_n-d\partial_\eta\mathcal A_XU_n}{L},
+\quad \mathcal A_XU_n=\int_0^1U_n(sX,\eta)ds.
+\tag{D0.4}
+\]</span>
+<p>The integral formula retains its smooth value at X=0 and fixes the integration constant uniquely.</p>
+<h2 id="d1-every-term-of-the-coefficient-equations">D1. Every term of the coefficient equations</h2>
+<p>Set <span class="math" data-tex="\(b=-A-1/2\)">\(b=-A-1/2\)</span>, <span class="math" data-tex="\(c=-A\)">\(c=-A\)</span>. For angular transport, the cylindrical connection term is part of <span class="math" data-tex="\(u_r(\partial_r+r^{-1})u_\theta\)">\(u_r(\partial_r+r^{-1})u_\theta\)</span>. Substitution of D0.1 yields exactly</p>
+<span class="math math-display" data-tex="\[
+u_{r,i}(\partial_r+r^{-1})u_{\theta,j}
+=\frac r{\mathsf C}q^{b-1+\lambda_i+\lambda_j}
+V_i(\phi_{j,X}+\phi_j/X).
+\tag{D1.1}
+\]">\[
+u_{r,i}(\partial_r+r^{-1})u_{\theta,j}
+=\frac r{\mathsf C}q^{b-1+\lambda_i+\lambda_j}
+V_i(\phi_{j,X}+\phi_j/X).
+\tag{D1.1}
+\]</span>
+<p>Indeed <span class="math" data-tex="\((\partial_r+r^{-1})(r\phi_j)=2\phi_j+2X\phi_{j,X}\)">\((\partial_r+r^{-1})(r\phi_j)=2\phi_j+2X\phi_{j,X}\)</span>, and <span class="math" data-tex="\(r^2=2qX\)">\(r^2=2qX\)</span> gives the stated factor. The angular axial transport is
+<span class="math" data-tex="\((r/\mathsf C)q^{b-1+\lambda_i+\lambda_j}U_iZ_{b,j}\phi_j\)">\((r/\mathsf C)q^{b-1+\lambda_i+\lambda_j}U_iZ_{b,j}\phi_j\)</span>, because <span class="math" data-tex="\(-A-D=-1\)">\(-A-D=-1\)</span>. The vector radial Laplacian satisfies</p>
+<span class="math math-display" data-tex="\[
+(\partial_{rr}+r^{-1}\partial_r-r^{-2})(r\phi(X))
+=\frac r q\,2(X\phi_{XX}+2\phi_X).
+\tag{D1.2}
+\]">\[
+(\partial_{rr}+r^{-1}\partial_r-r^{-2})(r\phi(X))
+=\frac r q\,2(X\phi_{XX}+2\phi_X).
+\tag{D1.2}
+\]</span>
+<p>This follows from <span class="math" data-tex="\(X_r=r/q\)">\(X_r=r/q\)</span> by two ordinary derivatives, including the two cylindrical terms. Two axial derivatives introduce <span class="math" data-tex="\(q^{-2D}=q^{-1}q^{2h}\)">\(q^{-2D}=q^{-1}q^{2h}\)</span>, so they move order n−1 to order n. Equating the complete order-n angular residual to zero gives</p>
+<span class="math math-display" data-tex="\[
+2(X\phi_n&#x27;&#x27;+2\phi_n&#x27;)=T_{b,n}\phi_n
++\sum_{i+j=n}\{V_i(\phi_j&#x27;+\phi_j/X)+U_iZ_{b,j}\phi_j\}
+-Z_{b,n-1}^{[2]}\phi_{n-1}.
+\tag{D1.3}
+\]">\[
+2(X\phi_n&#x27;&#x27;+2\phi_n&#x27;)=T_{b,n}\phi_n
++\sum_{i+j=n}\{V_i(\phi_j&#x27;+\phi_j/X)+U_iZ_{b,j}\phi_j\}
+-Z_{b,n-1}^{[2]}\phi_{n-1}.
+\tag{D1.3}
+\]</span>
+<p>Primes here and in D1.4–D1.6 mean <span class="math" data-tex="\(\partial_X\)">\(\partial_X\)</span> at fixed η.</p>
+<p>For the axial component the scalar radial Laplacian is <span class="math" data-tex="\(2q^{-1}(XU&#x27;&#x27;+U&#x27;)\)">\(2q^{-1}(XU&#x27;&#x27;+U&#x27;)\)</span>. Radial transport contributes <span class="math" data-tex="\(V_iU_j&#x27;\)">\(V_iU_j&#x27;\)</span>, and axial transport contributes <span class="math" data-tex="\(U_iZ_{c,j}U_j\)">\(U_iZ_{c,j}U_j\)</span>, each with factor <span class="math" data-tex="\(q^{c-1+\lambda_i+\lambda_j}\)">\(q^{c-1+\lambda_i+\lambda_j}\)</span>. The pressure derivative has the same power because <span class="math" data-tex="\(-2A-D=c-1\)">\(-2A-D=c-1\)</span>. Thus its full equation is</p>
+<span class="math math-display" data-tex="\[
+2(XU_n&#x27;&#x27;+U_n&#x27;)=T_{c,n}U_n
++\sum_{i+j=n}\{V_iU_j&#x27;+U_iZ_{c,j}U_j\}
++Z_{-2A,n}\Pi_n-Z_{c,n-1}^{[2]}U_{n-1}.
+\tag{D1.4}
+\]">\[
+2(XU_n&#x27;&#x27;+U_n&#x27;)=T_{c,n}U_n
++\sum_{i+j=n}\{V_iU_j&#x27;+U_iZ_{c,j}U_j\}
++Z_{-2A,n}\Pi_n-Z_{c,n-1}^{[2]}U_{n-1}.
+\tag{D1.4}
+\]</span>
+<p>For the radial equation multiply the physical momentum equation by r first. The pressure and centrifugal terms at order n are
+<span class="math" data-tex="\(q^{-2A+\lambda_n}[2X\Pi_n&#x27;-2X\mathsf C^{-2}\sum_{i+j=n}\phi_i\phi_j]\)">\(q^{-2A+\lambda_n}[2X\Pi_n&#x27;-2X\mathsf C^{-2}\sum_{i+j=n}\phi_i\phi_j]\)</span>.
+The time and transport terms have power <span class="math" data-tex="\(q^{-1+\lambda_k}\)">\(q^{-1+\lambda_k}\)</span>, with exact coefficients
+<span class="math" data-tex="\(T_{0,k}V_k\)">\(T_{0,k}V_k\)</span>, <span class="math" data-tex="\(V_i(V_j&#x27;-V_j/(2X))\)">\(V_i(V_j&#x27;-V_j/(2X))\)</span> and <span class="math" data-tex="\(U_iZ_{0,j}V_j\)">\(U_iZ_{0,j}V_j\)</span>. The vector radial Laplacian of V(X)/r is <span class="math" data-tex="\(2XV&#x27;&#x27;/(qr)\)">\(2XV&#x27;&#x27;/(qr)\)</span>, so after multiplying by r its contribution is <span class="math" data-tex="\(-2XV_k&#x27;&#x27;\)">\(-2XV_k&#x27;&#x27;\)</span>. The axial-viscosity term at that power is <span class="math" data-tex="\(-Z_{0,k-1}^{[2]}V_{k-1}\)">\(-Z_{0,k-1}^{[2]}V_{k-1}\)</span>. Since <span class="math" data-tex="\(-1+\lambda_k=-2A+\lambda_{k+1}\)">\(-1+\lambda_k=-2A+\lambda_{k+1}\)</span>, the result is exactly</p>
+<span class="math math-display" data-tex="\[
+\Pi_n&#x27;=\mathsf C^{-2}\sum_{i+j=n}\phi_i\phi_j-\frac{\Omega_{n-1}}{2X},
+\tag{D1.5}
+\]">\[
+\Pi_n&#x27;=\mathsf C^{-2}\sum_{i+j=n}\phi_i\phi_j-\frac{\Omega_{n-1}}{2X},
+\tag{D1.5}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+\Omega_k=T_{0,k}V_k
++\sum_{i+j=k}\{V_i(V_j&#x27;-V_j/(2X))+U_iZ_{0,j}V_j\}
+-2XV_k&#x27;&#x27;-Z_{0,k-1}^{[2]}V_{k-1}.
+\tag{D1.6}
+\]">\[
+\Omega_k=T_{0,k}V_k
++\sum_{i+j=k}\{V_i(V_j&#x27;-V_j/(2X))+U_iZ_{0,j}V_j\}
+-2XV_k&#x27;&#x27;-Z_{0,k-1}^{[2]}V_{k-1}.
+\tag{D1.6}
+\]</span>
+<p>These computations retain all physical powers and all radial and axial viscous terms in original (5.2)–(5.6).</p>
+<p>The quotient in D1.5 is regular, with an explicit full formula. Write V_j=Xv_j using D0.4. Direct substitution in D0.2 gives <span class="math" data-tex="\(T_\beta(Xf)=XT_{\beta-1}f\)">\(T_\beta(Xf)=XT_{\beta-1}f\)</span>, <span class="math" data-tex="\(Z_\beta(Xf)=XZ_{\beta-1}f\)">\(Z_\beta(Xf)=XZ_{\beta-1}f\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\frac{\Omega_k}{X}=T_{-1,k}v_k
++\sum_{i+j=k}\{v_i(v_j/2+Xv_j&#x27;)+U_iZ_{-1,j}v_j\}
+-4v_k&#x27;-2Xv_k&#x27;&#x27;-Z_{-1,k-1}^{[2]}v_{k-1}.
+\tag{D1.7}
+\]">\[
+\frac{\Omega_k}{X}=T_{-1,k}v_k
++\sum_{i+j=k}\{v_i(v_j/2+Xv_j&#x27;)+U_iZ_{-1,j}v_j\}
+-4v_k&#x27;-2Xv_k&#x27;&#x27;-Z_{-1,k-1}^{[2]}v_{k-1}.
+\tag{D1.7}
+\]</span>
+<p>Every coefficient is smooth at the axis and holomorphic on a suitable parameter neighborhood whenever the preceding profiles and their needed derivatives are. The factor 1/2 in the quadratic radial term and both radial derivatives remain visible.</p>
+<h2 id="d2-the-full-six-component-system">D2. The full six-component system</h2>
+<p>Fix <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> with <span class="math" data-tex="\(X_a&lt;a^2&lt;X_{\rm an}\)">\(X_a&lt;a^2&lt;X_{\rm an}\)</span>, inside the common analytic rectangle proved in V7. The radius a is fixed independently of the correction order. In this paragraph use the concise symbols <span class="math" data-tex="\(\phi=\phi_0,U=U_0,V=V_0\)">\(\phi=\phi_0,U=U_0,V=V_0\)</span> for the actual leading functions and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\ell=\lambda_n,\quad \beta_n=b+\ell,\quad \gamma_n=c+\ell,\quad \pi_n^{\rm exp}=-2A+\ell,\\
+v_0=V_0/X,\quad W=1+Lv_0-2\eta U_0,\quad H_c=D\eta+dU_0,\quad
+S_\phi=\phi_0+X\phi_{0,X}.
+\end{gathered}
+\tag{D2.1}
+\]">\[
+\begin{gathered}
+\ell=\lambda_n,\quad \beta_n=b+\ell,\quad \gamma_n=c+\ell,\quad \pi_n^{\rm exp}=-2A+\ell,\\
+v_0=V_0/X,\quad W=1+Lv_0-2\eta U_0,\quad H_c=D\eta+dU_0,\quad
+S_\phi=\phi_0+X\phi_{0,X}.
+\end{gathered}
+\tag{D2.1}
+\]</span>
+<p>The W here equals the original transport coefficient in G1.1 by D0.4. The superscript on <span class="math" data-tex="\(\pi_n^{\rm exp}\)">\(\pi_n^{\rm exp}\)</span> distinguishes a scalar exponent from the pressure profile.</p>
+<p>At positive order all middle-index terms are already of lower order. Write them, without omission, as</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+R_{\phi,n}&amp;=\sum_{i=1}^{n-1}\{V_i(\phi_{n-i}&#x27;+\phi_{n-i}/X)+U_iZ_{b,n-i}\phi_{n-i}\}
+-Z_{b,n-1}^{[2]}\phi_{n-1},\\
+R_{U,n}&amp;=\sum_{i=1}^{n-1}\{V_iU_{n-i}&#x27;+U_iZ_{c,n-i}U_{n-i}\}
+-Z_{c,n-1}^{[2]}U_{n-1},\\
+P_n&amp;=\mathsf C^{-2}\sum_{i=1}^{n-1}\phi_i\phi_{n-i}-\Omega_{n-1}/(2X).
+\end{split}
+\tag{D2.2}
+\]">\[
+\begin{split}
+R_{\phi,n}&amp;=\sum_{i=1}^{n-1}\{V_i(\phi_{n-i}&#x27;+\phi_{n-i}/X)+U_iZ_{b,n-i}\phi_{n-i}\}
+-Z_{b,n-1}^{[2]}\phi_{n-1},\\
+R_{U,n}&amp;=\sum_{i=1}^{n-1}\{V_iU_{n-i}&#x27;+U_iZ_{c,n-i}U_{n-i}\}
+-Z_{c,n-1}^{[2]}U_{n-1},\\
+P_n&amp;=\mathsf C^{-2}\sum_{i=1}^{n-1}\phi_i\phi_{n-i}-\Omega_{n-1}/(2X).
+\end{split}
+\tag{D2.2}
+\]</span>
+<p>For n=1 these sums are empty. The factors V_i=Xv_i cancel the apparent 1/X in R_φ,n. D1.7 handles the remaining quotient. These are actual finite source expressions, not new free data.</p>
+<p>Let <span class="math" data-tex="\(\xi=\sqrt X\)">\(\xi=\sqrt X\)</span>, <span class="math" data-tex="\(K_n=\mathcal A_XU_n-U_n\)">\(K_n=\mathcal A_XU_n-U_n\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathbf W_n=(\phi_n,U_n,K_n,\Pi_n,\partial_\xi\phi_n,\partial_\xi U_n)^T,
+\qquad C_d=\operatorname{diag}(0,0,2,0,3,1).
+\tag{D2.3}
+\]">\[
+\mathbf W_n=(\phi_n,U_n,K_n,\Pi_n,\partial_\xi\phi_n,\partial_\xi U_n)^T,
+\qquad C_d=\operatorname{diag}(0,0,2,0,3,1).
+\tag{D2.3}
+\]</span>
+<p>The use of ξ retains X=ξ² and all resulting derivative factors. D0.4 is equivalently</p>
+<span class="math math-display" data-tex="\[
+\frac{V_n}{X}=\frac{2\eta(A-\ell)U_n-2\eta(D+\ell)K_n-d\partial_\eta U_n-d\partial_\eta K_n}{L}.
+\tag{D2.4}
+\]">\[
+\frac{V_n}{X}=\frac{2\eta(A-\ell)U_n-2\eta(D+\ell)K_n-d\partial_\eta U_n-d\partial_\eta K_n}{L}.
+\tag{D2.4}
+\]</span>
+<p>The second-order operators are exactly
+<span class="math" data-tex="\(2(X\partial_{XX}+2\partial_X)=\tfrac12(\partial_{\xi\xi}+3\xi^{-1}\partial_\xi)\)">\(2(X\partial_{XX}+2\partial_X)=\tfrac12(\partial_{\xi\xi}+3\xi^{-1}\partial_\xi)\)</span>
+and
+<span class="math" data-tex="\(2(X\partial_{XX}+\partial_X)=\tfrac12(\partial_{\xi\xi}+\xi^{-1}\partial_\xi)\)">\(2(X\partial_{XX}+\partial_X)=\tfrac12(\partial_{\xi\xi}+\xi^{-1}\partial_\xi)\)</span>.
+Also <span class="math" data-tex="\(\partial_\xi K_n+2K_n/\xi=-\partial_\xi U_n\)">\(\partial_\xi K_n+2K_n/\xi=-\partial_\xi U_n\)</span>. Thus the exact system is</p>
+<span class="math math-display" data-tex="\[
+\partial_\xi\mathbf W_n+\xi^{-1}C_d\mathbf W_n
+=A_0\mathbf W_n+A_1\partial_\eta\mathbf W_n+f_n,\qquad \mathbf W_n(0)=0.
+\tag{D2.5}
+\]">\[
+\partial_\xi\mathbf W_n+\xi^{-1}C_d\mathbf W_n
+=A_0\mathbf W_n+A_1\partial_\eta\mathbf W_n+f_n,\qquad \mathbf W_n(0)=0.
+\tag{D2.5}
+\]</span>
+<p>Here are every nonzero entry of the matrices; all unlisted entries vanish:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(A_0)_{15}=1,\quad (A_0)_{26}=1,\quad (A_0)_{36}=-1,\quad
+(A_0)_{41}=4\xi\phi_0/\mathsf C^2,\\
+(A_0)_{51}=2[\beta_n(-1+2\eta U_0)/L+v_0],\\
+(A_0)_{52}=2Z_b\phi_0+4\eta(A-\ell)S_\phi/L,\qquad
+(A_0)_{53}=-4\eta(D+\ell)S_\phi/L,\qquad (A_0)_{55}=\xi W/L,\\
+(A_0)_{61}=-8\eta X\phi_0/(L\mathsf C^2),\\
+(A_0)_{62}=2[\gamma_n(-1+2\eta U_0)/L+Z_cU_0]+4\eta(A-\ell)XU_{0,X}/L,\\
+(A_0)_{63}=-4\eta(D+\ell)XU_{0,X}/L,\qquad
+(A_0)_{64}=4\pi_n^{\rm exp}\eta/L,\qquad (A_0)_{66}=\xi W/L.
+\end{gathered}
+\tag{D2.6}
+\]">\[
+\begin{gathered}
+(A_0)_{15}=1,\quad (A_0)_{26}=1,\quad (A_0)_{36}=-1,\quad
+(A_0)_{41}=4\xi\phi_0/\mathsf C^2,\\
+(A_0)_{51}=2[\beta_n(-1+2\eta U_0)/L+v_0],\\
+(A_0)_{52}=2Z_b\phi_0+4\eta(A-\ell)S_\phi/L,\qquad
+(A_0)_{53}=-4\eta(D+\ell)S_\phi/L,\qquad (A_0)_{55}=\xi W/L,\\
+(A_0)_{61}=-8\eta X\phi_0/(L\mathsf C^2),\\
+(A_0)_{62}=2[\gamma_n(-1+2\eta U_0)/L+Z_cU_0]+4\eta(A-\ell)XU_{0,X}/L,\\
+(A_0)_{63}=-4\eta(D+\ell)XU_{0,X}/L,\qquad
+(A_0)_{64}=4\pi_n^{\rm exp}\eta/L,\qquad (A_0)_{66}=\xi W/L.
+\end{gathered}
+\tag{D2.6}
+\]</span>
+<p>The parameter-derivative matrix is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(A_1)_{51}=2H_c/L,\qquad
+(A_1)_{52}=(A_1)_{53}=-2dS_\phi/L,\\
+(A_1)_{62}=2(H_c-dXU_{0,X})/L,\qquad
+(A_1)_{63}=-2dXU_{0,X}/L,\qquad
+(A_1)_{64}=2d/L.
+\end{gathered}
+\tag{D2.7}
+\]">\[
+\begin{gathered}
+(A_1)_{51}=2H_c/L,\qquad
+(A_1)_{52}=(A_1)_{53}=-2dS_\phi/L,\\
+(A_1)_{62}=2(H_c-dXU_{0,X})/L,\qquad
+(A_1)_{63}=-2dXU_{0,X}/L,\qquad
+(A_1)_{64}=2d/L.
+\end{gathered}
+\tag{D2.7}
+\]</span>
+<p>The complete source vector is</p>
+<span class="math math-display" data-tex="\[
+f_n=(0,0,0,2\xi P_n,2R_{\phi,n},2R_{U,n}-4\eta XP_n/L)^T.
+\tag{D2.8}
+\]">\[
+f_n=(0,0,0,2\xi P_n,2R_{\phi,n},2R_{U,n}-4\eta XP_n/L)^T.
+\tag{D2.8}
+\]</span>
+<p>To verify these rows, the linear angular equation before the ξ conversion is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+2(X\phi_n&#x27;&#x27;+2\phi_n&#x27;)={}&amp;[\beta_n(-1+2\eta U_0)/L+v_0]\phi_n
++(XW/L)\phi_n&#x27;+(H_c/L)\phi_{n,\eta}\\
+&amp;+S_\phi(V_n/X)+U_nZ_b\phi_0+R_{\phi,n}.
+\end{split}
+\tag{D2.9}
+\]">\[
+\begin{split}
+2(X\phi_n&#x27;&#x27;+2\phi_n&#x27;)={}&amp;[\beta_n(-1+2\eta U_0)/L+v_0]\phi_n
++(XW/L)\phi_n&#x27;+(H_c/L)\phi_{n,\eta}\\
+&amp;+S_\phi(V_n/X)+U_nZ_b\phi_0+R_{\phi,n}.
+\end{split}
+\tag{D2.9}
+\]</span>
+<p>Insert D2.4 and multiply by two; <span class="math" data-tex="\(X\phi_n&#x27;=\xi\partial_\xi\phi_n/2\)">\(X\phi_n&#x27;=\xi\partial_\xi\phi_n/2\)</span> gives (A_0)55. The axial row has the same derivative coefficients with U_n, together with <span class="math" data-tex="\(XU_{0,X}(V_n/X)+U_nZ_cU_0+Z_{-2A,n}\Pi_n+R_{U,n}\)">\(XU_{0,X}(V_n/X)+U_nZ_cU_0+Z_{-2A,n}\Pi_n+R_{U,n}\)</span>. Use the already derived pressure row
+<span class="math" data-tex="\(\Pi_n&#x27;=2\phi_0\phi_n/\mathsf C^2+P_n\)">\(\Pi_n&#x27;=2\phi_0\phi_n/\mathsf C^2+P_n\)</span>
+inside <span class="math" data-tex="\(Z_{-2A,n}\Pi_n=(2\pi_n^{\rm exp}\eta\Pi_n+d\Pi_{n,\eta}-2\eta X\Pi_n&#x27;)/L\)">\(Z_{-2A,n}\Pi_n=(2\pi_n^{\rm exp}\eta\Pi_n+d\Pi_{n,\eta}-2\eta X\Pi_n&#x27;)/L\)</span>.
+This supplies (A_0)61, (A_0)64, (A_1)64 and the last term in D2.8. The first four equations then follow from the definitions and the pressure row. This proves the full matrix system, including the terms not printed explicitly in the source.</p>
+<h2 id="d3-exact-integral-inverse-and-the-sparse-derivative-structure">D3. Exact integral inverse and the sparse derivative structure</h2>
+<p>For <span class="math" data-tex="\(c_i=(C_d)_{ii}\)">\(c_i=(C_d)_{ii}\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(Gg)_i(\xi,\eta)=\int_0^\xi(s/\xi)^{c_i}g_i(s,\eta)ds
+=\xi\int_0^1t^{c_i}g_i(t\xi,\eta)dt.
+\tag{D3.1}
+\]">\[
+(Gg)_i(\xi,\eta)=\int_0^\xi(s/\xi)^{c_i}g_i(s,\eta)ds
+=\xi\int_0^1t^{c_i}g_i(t\xi,\eta)dt.
+\tag{D3.1}
+\]</span>
+<p>For positive ξ, differentiating the first expression gives
+<span class="math" data-tex="\((Gg)_i&#x27;+c_i(Gg)_i/\xi=g_i\)">\((Gg)_i&#x27;+c_i(Gg)_i/\xi=g_i\)</span>. The second expression extends continuously by zero at ξ=0. Conversely multiplication of a regular solution of that scalar equation by ξ^{c_i}, integration from zero, and its zero axis value recover D3.1. For c_i&gt;0 a nonzero homogeneous integration constant is singular; for c_i=0 it violates the prescribed zero value. Thus G is the exact inverse with these boundary conditions.</p>
+<p>Let <span class="math" data-tex="\(E_4=\operatorname{span}(e_1,e_2,e_3,e_4)\)">\(E_4=\operatorname{span}(e_1,e_2,e_3,e_4)\)</span>, <span class="math" data-tex="\(E_2=\operatorname{span}(e_5,e_6)\)">\(E_2=\operatorname{span}(e_5,e_6)\)</span>. D2.7 proves that A_1 maps E_4 into E_2 and annihilates E_2. Every η derivative of A_1 has the identical support pattern. All G kernels are diagonal and independent of η, so they preserve both spaces. For any such diagonal kernel D_0 and any radii ξ,s,</p>
+<span class="math math-display" data-tex="\[
+A_1(\xi)D_0A_1(s)=0,\qquad
+A_1(\xi)D_0\partial_\eta^jA_1(s)=0\quad(j\ge0).
+\tag{D3.2}
+\]">\[
+A_1(\xi)D_0A_1(s)=0,\qquad
+A_1(\xi)D_0\partial_\eta^jA_1(s)=0\quad(j\ge0).
+\tag{D3.2}
+\]</span>
+<p>In particular, composing two adjacent factors of the type <span class="math" data-tex="\(A_1\partial_\eta\)">\(A_1\partial_\eta\)</span> vanishes, including the term where the left derivative strikes the right coefficient. These are exact matrix identities on the original six coordinates.</p>
+<p>Put <span class="math" data-tex="\(\mathcal K=G(A_0+A_1\partial_\eta)\)">\(\mathcal K=G(A_0+A_1\partial_\eta)\)</span>. In the expansion of <span class="math" data-tex="\(\mathcal K^kG\)">\(\mathcal K^kG\)</span>, there are at most 2^k choices of the two operator types. A nonzero choice cannot contain adjacent parameter-derivative types by D3.2. Hence it has at most</p>
+<span class="math math-display" data-tex="\[
+p_k=\lceil k/2\rceil
+\tag{D3.3}
+\]">\[
+p_k=\lceil k/2\rceil
+\tag{D3.3}
+\]</span>
+<p>parameter derivatives. This count concerns differential-operator compositions, so it already includes the product-rule terms on variable coefficients. No coefficient is treated as constant in η.</p>
+<h2 id="d4-convergence-on-the-whole-fixed-radial-interval">D4. Convergence on the whole fixed radial interval</h2>
+<p>For the current order choose a bounded complex neighborhood
+<span class="math" data-tex="\(S_\rho=\{\eta:\operatorname{dist}(\eta,[-1,1])&lt;\rho\}\)">\(S_\rho=\{\eta:\operatorname{dist}(\eta,[-1,1])&lt;\rho\}\)</span>
+with no zero of L, on which all current coefficients and sources are bounded and holomorphic, uniformly for <span class="math" data-tex="\(0\le\xi\le a\)">\(0\le\xi\le a\)</span>. Its radius may depend on n. Such a neighborhood exists for n=1 by V7 and for the induction receiver from the finitely many lower profiles and derivatives that enter D2.2. Take a smaller radius than those available for those finitely many data, so the suprema are finite on its closure. No bound uniform in n is assumed.</p>
+<p>For <span class="math" data-tex="\(0&lt;\rho&#x27;&lt;\rho\)">\(0&lt;\rho&#x27;&lt;\rho\)</span>, set <span class="math" data-tex="\(\Delta=\rho-\rho&#x27;\)">\(\Delta=\rho-\rho&#x27;\)</span>. Cauchy's integral formula on a disk of radius ε inside the larger domain gives <span class="math" data-tex="\(\|\partial_\eta f\|_{S_{r-\varepsilon}}\le\varepsilon^{-1}\|f\|_{S_r}\)">\(\|\partial_\eta f\|_{S_{r-\varepsilon}}\le\varepsilon^{-1}\|f\|_{S_r}\)</span>. In a word with p derivatives allocate loss Δ/p to each derivative; coefficient multiplications need no radius loss. For p=0 the derivative factor is one. This bounds the full operator word by a coefficient factor times <span class="math" data-tex="\((p/\Delta)^p\)">\((p/\Delta)^p\)</span>, without expanding all product-rule terms separately.</p>
+<p>Each diagonal integration kernel has norm at most one since c_i≥0 and the nested radii are ordered. Its k+1 integrations range over a simplex of volume <span class="math" data-tex="\(\xi^{k+1}/(k+1)!\)">\(\xi^{k+1}/(k+1)!\)</span>. Choose C_n≥1 bounding the matrices, source and the factor from at most 2^k words. D3.3 then gives the complete estimate</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal K^kGf_n\|_{[0,a]\times S_{\rho&#x27;}}
+\le\frac{C_n^{k+1}a^{k+1}}{(k+1)!}
+\left(\max\{1,p_k/\Delta\}\right)^{p_k}.
+\tag{D4.1}
+\]">\[
+\|\mathcal K^kGf_n\|_{[0,a]\times S_{\rho&#x27;}}
+\le\frac{C_n^{k+1}a^{k+1}}{(k+1)!}
+\left(\max\{1,p_k/\Delta\}\right)^{p_k}.
+\tag{D4.1}
+\]</span>
+<p>The convention at p_k=0 is one. The simplex and radius-loss estimates can be applied simultaneously: before taking suprema, each integrand has exactly the same ordered radial variables and parameter-domain losses, and all coefficient bounds are uniform in those radial variables.</p>
+<p>The root of the right side tends to zero. For example <span class="math" data-tex="\((k+1)!\ge((k+1)/e)^{k+1}\)">\((k+1)!\ge((k+1)/e)^{k+1}\)</span>, from summing <span class="math" data-tex="\(\log j\ge\int_{j-1}^j\log x\,dx\)">\(\log j\ge\int_{j-1}^j\log x\,dx\)</span> for j≥2, while p_k≤(k+1)/2. The kth root is bounded by a fixed multiple of <span class="math" data-tex="\((k+1)^{-1/2}\)">\((k+1)^{-1/2}\)</span>, with fixed a,C_n,Δ. Thus the actual series</p>
+<span class="math math-display" data-tex="\[
+\mathbf W_n=\sum_{k=0}^{\infty}\mathcal K^kGf_n
+\tag{D4.2}
+\]">\[
+\mathbf W_n=\sum_{k=0}^{\infty}\mathcal K^kGf_n
+\tag{D4.2}
+\]</span>
+<p>converges uniformly on the whole fixed interval and every smaller parameter neighborhood. Uniform convergence preserves holomorphy in η. On a further smaller domain Cauchy's bound also gives convergence of the parameter derivative series, so bounded radial integration passes through the series. Consequently <span class="math" data-tex="\(\mathbf W_n=G(A_0\mathbf W_n+A_1\partial_\eta\mathbf W_n+f_n)\)">\(\mathbf W_n=G(A_0\mathbf W_n+A_1\partial_\eta\mathbf W_n+f_n)\)</span>, and D3.1 proves D2.5. No infinite-frequency or numerical approximation is used.</p>
+<p>For uniqueness take two bounded holomorphic solutions on a common parameter neighborhood; their difference H satisfies H=<span class="math" data-tex="\(\mathcal K^kH\)">\(\mathcal K^kH\)</span> for every k. The same argument, with k integrations, bounds it by</p>
+<span class="math math-display" data-tex="\[
+\|H\|_{[0,a]\times S_{\rho&#x27;}}
+\le\frac{(C_na)^k}{k!}
+\left(\max\{1,p_k/\Delta\}\right)^{p_k}
+\|H\|_{[0,a]\times S_\rho}.
+\tag{D4.3}
+\]">\[
+\|H\|_{[0,a]\times S_{\rho&#x27;}}
+\le\frac{(C_na)^k}{k!}
+\left(\max\{1,p_k/\Delta\}\right)^{p_k}
+\|H\|_{[0,a]\times S_\rho}.
+\tag{D4.3}
+\]</span>
+<p>The right side tends to zero. A common larger domain with finite suprema is obtained by first shrinking the intersection of the two solutions' domains. Hence H=0. This is exactly the stated holomorphic uniqueness class, not a uniqueness assertion for arbitrary smooth parameter dependence.</p>
+<p>The chosen a did not enter any smallness condition. Increasing C_n or decreasing the parameter neighborhood still gives convergence by D4.1. Therefore the radial interval stays fixed at every application of this solution operator.</p>
+<h2 id="d5-smoothness-parity-and-recovery-of-the-original-unknowns">D5. Smoothness, parity and recovery of the original unknowns</h2>
+<p>For continuous g the inverse formula has the nonsingular derivative</p>
+<span class="math math-display" data-tex="\[
+\partial_\xi(Gg)_i=g_i(\xi,\eta)-c_i\int_0^1t^{c_i}g_i(t\xi,\eta)dt.
+\tag{D5.1}
+\]">\[
+\partial_\xi(Gg)_i=g_i(\xi,\eta)-c_i\int_0^1t^{c_i}g_i(t\xi,\eta)dt.
+\tag{D5.1}
+\]</span>
+<p>It follows either by differentiating the first integral away from zero and passing to zero in the second expression, or by its scalar equation and continuous quotient. Thus continuous g gives one continuous radial derivative. Apply this to <span class="math" data-tex="\(g=A_0\mathbf W_n+A_1\partial_\eta\mathbf W_n+f_n\)">\(g=A_0\mathbf W_n+A_1\partial_\eta\mathbf W_n+f_n\)</span>; the parameter derivative is continuous on a smaller neighborhood by Cauchy's formula. Once <span class="math" data-tex="\(\mathbf W_n\)">\(\mathbf W_n\)</span> is C^r in ξ, the same formula and product differentiation give C^{r+1} on a smaller parameter domain.</p>
+<p>Here is the common-domain conclusion required by the next coefficient construction. At this fixed order n, take the parameter neighborhood <span class="math" data-tex="\(S_\rho\)">\(S_\rho\)</span> on which the input coefficients, source and all their radial derivatives are holomorphic. For n=1 it is supplied by the common analytic rectangle of V7; for the induction it is the intersection of the finitely many neighborhoods of the completed lower coefficients. The source formulas D2.2 use only finitely many derivatives of those fields. On any smaller closed neighborhood, each fixed radial derivative of these data is bounded uniformly on the compact radial interval. The bounds may depend on its derivative order.</p>
+<p>Choose once <span class="math" data-tex="\(0&lt;\rho_2&lt;\rho_1&lt;\rho\)">\(0&lt;\rho_2&lt;\rho_1&lt;\rho\)</span>. For any prescribed integer r, perform the r applications of D5.1 on the nested neighborhoods with radii
+<span class="math" data-tex="\(\rho_1-j(\rho_1-\rho_2)/(r+1)\)">\(\rho_1-j(\rho_1-\rho_2)/(r+1)\)</span>, <span class="math" data-tex="\(j=0,\ldots,r\)">\(j=0,\ldots,r\)</span>.
+Each application uses a positive radius difference, so Cauchy's formula controls the one additional parameter derivative. Radial differentiation of the integral in D5.1 introduces the factor <span class="math" data-tex="\(t^k\)">\(t^k\)</span> for a k-th radial derivative of its integrand; this is bounded by one on <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>, so the same differentiated integral formula remains valid at the axis. Induction therefore supplies all radial derivatives through r, continuous and holomorphic on a neighborhood strictly larger than <span class="math" data-tex="\(S_{\rho_2}\)">\(S_{\rho_2}\)</span>. Every occurrence is a derivative of the one D4.2 solution, by uniqueness, not a new solution chosen with r. Since r was arbitrary, all radial derivatives are holomorphic on this same fixed <span class="math" data-tex="\(S_{\rho_2}\)">\(S_{\rho_2}\)</span>; their bounds can grow with r. Further parameter derivatives follow from Cauchy's formula on the positive remaining margin. This proves the common parameter neighborhood for all mixed derivatives at this fixed n. Its radius may decrease with n, while the radial interval <span class="math" data-tex="\([0,a]\)">\([0,a]\)</span> stays unchanged.</p>
+<p>For the parity argument extend the original coefficients to negative ξ by X=ξ². Set <span class="math" data-tex="\(S=\operatorname{diag}(1,1,1,1,-1,-1)\)">\(S=\operatorname{diag}(1,1,1,1,-1,-1)\)</span>. Inspection of every entry in D2.6–D2.8 gives</p>
+<span class="math math-display" data-tex="\[
+A_j(-\xi)=-SA_j(\xi)S\quad(j=0,1),\qquad f_n(-\xi)=-Sf_n(\xi).
+\tag{D5.2}
+\]">\[
+A_j(-\xi)=-SA_j(\xi)S\quad(j=0,1),\qquad f_n(-\xi)=-Sf_n(\xi).
+\tag{D5.2}
+\]</span>
+<p>For example (A_0)41 is odd, (A_0)15 is even, and A_1 has only last-two-row, first-four-column entries, all even. The lower source profiles are functions of X; f_n's fourth component is odd and its last two are even. The extended G formula in D3.1 and the same absolute estimates construct a unique smooth solution on [-a,a]. Reflection <span class="math" data-tex="\(\widetilde{\mathbf W}_n(\xi)=S\mathbf W_n(-\xi)\)">\(\widetilde{\mathbf W}_n(\xi)=S\mathbf W_n(-\xi)\)</span> obeys the same integral equation and axis data by D5.2, so uniqueness gives equality. The first four components are therefore even and the last two odd.</p>
+<p>An even smooth function of ξ is smooth as a function of X=ξ² on the half interval. Here is the boundary check with its derivative content. For each integer M, Taylor's formula at zero has only even coefficients through degree 2M, with remainder <span class="math" data-tex="\(\xi^{2M+2}R_M(\xi)\)">\(\xi^{2M+2}R_M(\xi)\)</span> whose needed derivatives are bounded. Applying <span class="math" data-tex="\(\partial_X=(2\xi)^{-1}\partial_\xi\)">\(\partial_X=(2\xi)^{-1}\partial_\xi\)</span> k times to this remainder gives a finite sum bounded by a constant times <span class="math" data-tex="\(\xi^{2M+2-2k}\)">\(\xi^{2M+2-2k}\)</span> for M≥k. The polynomial terms give the required limits of each derivative. Taking larger M for each k proves the smooth extension; parameter derivatives and their holomorphy obey the same argument on the smaller neighborhoods already supplied above.</p>
+<p>The first two rows recover the derivative coordinates. The third row also recovers the original radial average exactly, rather than a replacement variable. Indeed</p>
+<span class="math math-display" data-tex="\[
+\xi^2K_n=-\int_0^\xi s^2\partial_sU_n(s^2,\eta)ds
+=-\xi^2U_n(\xi^2,\eta)+2\int_0^\xi sU_n(s^2,\eta)ds,
+\tag{D5.3}
+\]">\[
+\xi^2K_n=-\int_0^\xi s^2\partial_sU_n(s^2,\eta)ds
+=-\xi^2U_n(\xi^2,\eta)+2\int_0^\xi sU_n(s^2,\eta)ds,
+\tag{D5.3}
+\]</span>
+<p>where <span class="math" data-tex="\(\partial_sU_n(s^2,\eta)\)">\(\partial_sU_n(s^2,\eta)\)</span> denotes the derivative of the composed function. Changing variables x=s² gives <span class="math" data-tex="\(K_n=\mathcal A_XU_n-U_n\)">\(K_n=\mathcal A_XU_n-U_n\)</span>. Formula D2.4 then reconstructs V_n and D0.4, with V_n(0)=0. The fourth row reconstructs D1.5 with <span class="math" data-tex="\(\Pi_n(0)=0\)">\(\Pi_n(0)=0\)</span>; the last two rows, by D2.9 and the pressure substitution, reconstruct D1.3–D1.4. Thus the integral solution solves all original equations, with <span class="math" data-tex="\(\phi_n(0)=U_n(0)=\Pi_n(0)=0\)">\(\phi_n(0)=U_n(0)=\Pi_n(0)=0\)</span>. Conversely any solution in the source's regular holomorphic class gives this six-component solution and is unique by D4.3.</p>
+<h2 id="d6-the-actual-first-correction-and-the-induction-receiver">D6. The actual first correction and the induction receiver</h2>
+<p>At n=1 all inputs are already supplied by the verified leading profile. Specifically,</p>
+<span class="math math-display" data-tex="\[
+R_{\phi,1}=-Z_{b,0}^{[2]}\phi_0,\qquad
+R_{U,1}=-Z_{c,0}^{[2]}U_0,\qquad
+P_1=-\Omega_0/(2X),
+\tag{D6.1}
+\]">\[
+R_{\phi,1}=-Z_{b,0}^{[2]}\phi_0,\qquad
+R_{U,1}=-Z_{c,0}^{[2]}U_0,\qquad
+P_1=-\Omega_0/(2X),
+\tag{D6.1}
+\]</span>
+<p>with the full <span class="math" data-tex="\(\Omega_0/X\)">\(\Omega_0/X\)</span> given by D1.7 using only v_0,U_0 and their derivatives; its negative-index term is zero. Put these actual functions, <span class="math" data-tex="\(\ell=2h\)">\(\ell=2h\)</span>, and the actual leading coefficients into D2.6–D2.8. The convergent series D4.2 is therefore an explicit exact construction of <span class="math" data-tex="\((\phi_1,U_1,V_1,\Pi_1)\)">\((\phi_1,U_1,V_1,\Pi_1)\)</span> on <span class="math" data-tex="\([0,a^2]\)">\([0,a^2]\)</span>, not an existence statement depending on an unspecified source. Its zero axis values preserve all leading traces. Its original physical fields are D0.1 with <span class="math" data-tex="\(\lambda_1=2h\)">\(\lambda_1=2h\)</span>, and the preceding identities cancel every order-one residual on this interval.</p>
+<p>For higher orders D2.2 displays precisely the finite receiving map from previously completed coefficients. D1.7 proves that its axis source is regular; D4 proves that its size never forces the radial interval to shrink; D5 proves the regularity needed to form the next source. This establishes the full linear solution step of original Lemma 5.1. The actual global extension in <a href="positive-order-extension-audit.html">Y0–Y7</a> completes original Lemma 5.2: it extends each current solution, imposes the five actual residual moments and finishes that order before using it at the next. Together these constructions supply the entire global coefficient sequence; its summation into the actual base field is derived in <a href="base-field-realization-audit.html">Z0–Z8</a>.</p>
+<p>For the original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, retain the exact map proved in G1 and H7, with <span class="math" data-tex="\(r_\nu=\sqrt\nu r,z_\nu=\sqrt\nu z\)">\(r_\nu=\sqrt\nu r,z_\nu=\sqrt\nu z\)</span> and time unchanged. The physical coefficient fields become</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_{\theta,n,\nu}=\sqrt\nu q^{-A+\lambda_n}E_n
+=r_\nu q^{-A-1/2+\lambda_n}\phi_n/\mathsf C,\qquad
+u_{z,n,\nu}=\sqrt\nu q^{-A+\lambda_n}U_n,\\
+r_\nu u_{r,n,\nu}=\nu q^{\lambda_n}V_n,\qquad
+p_{n,\nu}=\nu q^{-2A+\lambda_n}\Pi_n,\\
+X=\frac{r_\nu^2}{2\nu q},\quad \eta=\frac{z_\nu}{\sqrt\nu q^D},\quad
+q-\frac{z_\nu^2}{\nu}q^{2h}=1-t.
+\end{gathered}
+\tag{D6.2}
+\]">\[
+\begin{gathered}
+u_{\theta,n,\nu}=\sqrt\nu q^{-A+\lambda_n}E_n
+=r_\nu q^{-A-1/2+\lambda_n}\phi_n/\mathsf C,\qquad
+u_{z,n,\nu}=\sqrt\nu q^{-A+\lambda_n}U_n,\\
+r_\nu u_{r,n,\nu}=\nu q^{\lambda_n}V_n,\qquad
+p_{n,\nu}=\nu q^{-2A+\lambda_n}\Pi_n,\\
+X=\frac{r_\nu^2}{2\nu q},\quad \eta=\frac{z_\nu}{\sqrt\nu q^D},\quad
+q-\frac{z_\nu^2}{\nu}q^{2h}=1-t.
+\end{gathered}
+\tag{D6.2}
+\]</span>
+<p>Each full physical momentum term has the same additional factor <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span>: one spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>, the pressure has factor ν, and the two derivatives in νΔ cancel their ν^{-1} with the original viscosity. Thus the coefficient cancellations hold at the unchanged target viscosity with every field factor retained.</p>
+<p>The global moment extension and coefficient induction are proved in <a href="positive-order-extension-audit.html">Y0–Y7</a>. Base-field summation and its full stress entries are proved in <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<h2 id="d7-exact-operator-convergence-and-axis-consequences">D7. Exact operator, convergence and axis consequences</h2>
+<h3 id="original-physical-operator-compositions">Original physical operator compositions</h3>
+<p>Let <span class="math" data-tex="\(f(X,\eta)\)">\(f(X,\eta)\)</span> be smooth on the profile rectangle, and let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be a real physical exponent. D0.2 gives</p>
+<span class="math math-display" data-tex="\[
+\partial_{zz}(q^\beta f)
+=q^{\beta-2D}Z_{\beta-D}Z_\beta f,\qquad
+\partial_t\partial_z(q^\beta f)
+=q^{\beta-D-1}T_{\beta-D}Z_\beta f.
+\tag{D7.1}
+\]">\[
+\partial_{zz}(q^\beta f)
+=q^{\beta-2D}Z_{\beta-D}Z_\beta f,\qquad
+\partial_t\partial_z(q^\beta f)
+=q^{\beta-D-1}T_{\beta-D}Z_\beta f.
+\tag{D7.1}
+\]</span>
+<p>Applying the same identities in the opposite order gives
+<span class="math" data-tex="\(\partial_z\partial_t(q^\beta f)=q^{\beta-1-D}Z_{\beta-1}T_\beta f\)">\(\partial_z\partial_t(q^\beta f)=q^{\beta-1-D}Z_{\beta-1}T_\beta f\)</span>.
+The original smooth coordinate map has <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span>, so physical mixed derivatives commute and their common scalar factor is nonzero. Each <span class="math" data-tex="\((X,\eta)\)">\((X,\eta)\)</span> with <span class="math" data-tex="\(X\ge0,|\eta|&lt;1\)">\(X\ge0,|\eta|&lt;1\)</span> is reached by taking any positive <span class="math" data-tex="\(q\)">\(q\)</span> and setting <span class="math" data-tex="\(r=\sqrt{2qX},z=q^D\eta,t=1-q(1-\eta^2)\)">\(r=\sqrt{2qX},z=q^D\eta,t=1-q(1-\eta^2)\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+T_{\beta-D}Z_\beta f=Z_{\beta-1}T_\beta f.
+\tag{D7.2}
+\]">\[
+T_{\beta-D}Z_\beta f=Z_{\beta-1}T_\beta f.
+\tag{D7.2}
+\]</span>
+<p>This proves an identity on the original profile domain, not merely on one coordinate trajectory. Continuity gives the one-sided identities at <span class="math" data-tex="\(\eta=\pm1\)">\(\eta=\pm1\)</span> and <span class="math" data-tex="\(X=0\)">\(X=0\)</span>.</p>
+<p>Direct substitution into the full formulas D0.2 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_\beta(Xf)=XT_{\beta-1}f,\qquad
+Z_\beta(Xf)=XZ_{\beta-1}f,\\
+\partial_XT_\beta f=T_{\beta-1}\partial_Xf,\qquad
+\partial_XZ_\beta f=Z_{\beta-1}\partial_Xf.
+\end{gathered}
+\tag{D7.3}
+\]">\[
+\begin{gathered}
+T_\beta(Xf)=XT_{\beta-1}f,\qquad
+Z_\beta(Xf)=XZ_{\beta-1}f,\\
+\partial_XT_\beta f=T_{\beta-1}\partial_Xf,\qquad
+\partial_XZ_\beta f=Z_{\beta-1}\partial_Xf.
+\end{gathered}
+\tag{D7.3}
+\]</span>
+<p>For instance, <span class="math" data-tex="\(X\partial_X(Xf)=Xf+X^2f_X\)">\(X\partial_X(Xf)=Xf+X^2f_X\)</span> changes the time coefficient from <span class="math" data-tex="\(-\beta\)">\(-\beta\)</span> to <span class="math" data-tex="\(1-\beta\)">\(1-\beta\)</span>, while <span class="math" data-tex="\(-2\eta X\partial_X(Xf)\)">\(-2\eta X\partial_X(Xf)\)</span> changes the axial coefficient from <span class="math" data-tex="\(2\beta\eta\)">\(2\beta\eta\)</span> to <span class="math" data-tex="\(2(\beta-1)\eta\)">\(2(\beta-1)\eta\)</span>. Differentiating the original operators gives the last two identities by the same product rule; <span class="math" data-tex="\(L\)">\(L\)</span> has no <span class="math" data-tex="\(X\)">\(X\)</span>-dependence.</p>
+<p>The order spacing is also exact:</p>
+<span class="math math-display" data-tex="\[
+q^{-2D}=q^{-1}q^{2h},\qquad
+q^{-1+\lambda_k}=q^{-2A+\lambda_{k+1}},\qquad
+\lambda_k=2kh.
+\tag{D7.4}
+\]">\[
+q^{-2D}=q^{-1}q^{2h},\qquad
+q^{-1+\lambda_k}=q^{-2A+\lambda_{k+1}},\qquad
+\lambda_k=2kh.
+\tag{D7.4}
+\]</span>
+<p>The first identity accounts for axial viscosity relative to radial viscosity. The second accounts for the remaining radial momentum terms relative to centrifugal pressure. Neither permits replacing <span class="math" data-tex="\(Z_{\beta-D}Z_\beta\)">\(Z_{\beta-D}Z_\beta\)</span> by <span class="math" data-tex="\(Z_\beta^2\)">\(Z_\beta^2\)</span>.</p>
+<h3 id="finite-integral-series-remainder">Finite integral-series remainder</h3>
+<p>Let <span class="math" data-tex="\(z=C_na&gt;0\)">\(z=C_na&gt;0\)</span>, <span class="math" data-tex="\(\Delta=\rho-\rho&#x27;&gt;0\)">\(\Delta=\rho-\rho&#x27;&gt;0\)</span>, and retain the actual majorants</p>
+<span class="math math-display" data-tex="\[
+t_k=\frac{z^{k+1}}{(k+1)!}
+\big(\max\{1,p_k/\Delta\}\big)^{p_k},\qquad
+p_k=\lceil k/2\rceil.
+\tag{D7.5}
+\]">\[
+t_k=\frac{z^{k+1}}{(k+1)!}
+\big(\max\{1,p_k/\Delta\}\big)^{p_k},\qquad
+p_k=\lceil k/2\rceil.
+\tag{D7.5}
+\]</span>
+<p>For <span class="math" data-tex="\(m\ge\max\{1,\lceil\Delta\rceil\}\)">\(m\ge\max\{1,\lceil\Delta\rceil\}\)</span>, put <span class="math" data-tex="\(B_m=(m/\Delta)^m\)">\(B_m=(m/\Delta)^m\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+t_{2m-1}=\frac{z^{2m}}{(2m)!}B_m,\qquad
+t_{2m}=\frac{z^{2m+1}}{(2m+1)!}B_m,\qquad
+\frac{B_{m+1}}{B_m}
+=\frac{m+1}{\Delta}(1+1/m)^m
+\le\frac{e(m+1)}{\Delta}.
+\tag{D7.6}
+\]">\[
+t_{2m-1}=\frac{z^{2m}}{(2m)!}B_m,\qquad
+t_{2m}=\frac{z^{2m+1}}{(2m+1)!}B_m,\qquad
+\frac{B_{m+1}}{B_m}
+=\frac{m+1}{\Delta}(1+1/m)^m
+\le\frac{e(m+1)}{\Delta}.
+\tag{D7.6}
+\]</span>
+<p>The last bound follows by integrating <span class="math" data-tex="\(1/(1+s)\le1\)">\(1/(1+s)\le1\)</span> on <span class="math" data-tex="\([0,1/m]\)">\([0,1/m]\)</span>, giving <span class="math" data-tex="\(m\log(1+1/m)\le1\)">\(m\log(1+1/m)\le1\)</span>. Hence the two exact adjacent-parity comparisons are</p>
+<span class="math math-display" data-tex="\[
+\frac{t_{2m+1}}{t_{2m-1}}\le
+\frac{ez^2}{2\Delta(2m+1)},\qquad
+\frac{t_{2m+2}}{t_{2m}}\le
+\frac{ez^2}{2\Delta(2m+3)}.
+\tag{D7.7}
+\]">\[
+\frac{t_{2m+1}}{t_{2m-1}}\le
+\frac{ez^2}{2\Delta(2m+1)},\qquad
+\frac{t_{2m+2}}{t_{2m}}\le
+\frac{ez^2}{2\Delta(2m+3)}.
+\tag{D7.7}
+\]</span>
+<p>Choose any integer</p>
+<span class="math math-display" data-tex="\[
+M\ge \max\left\{1,\lceil\Delta\rceil,
+\left\lceil\frac{ez^2}{2\Delta}\right\rceil\right\}.
+\tag{D7.8}
+\]">\[
+M\ge \max\left\{1,\lceil\Delta\rceil,
+\left\lceil\frac{ez^2}{2\Delta}\right\rceil\right\}.
+\tag{D7.8}
+\]</span>
+<p>Both ratios in D7.7 are then at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span> for every <span class="math" data-tex="\(m\ge M\)">\(m\ge M\)</span>. Summing each parity class as a geometric majorant proves the actual remainder bound</p>
+<span class="math math-display" data-tex="\[
+\left\|\mathbf W_n-\sum_{k=0}^{2M-2}\mathcal K^kGf_n\right\|_{[0,a]\times S_{\rho&#x27;}}
+\le 2\big(t_{2M-1}+t_{2M}\big).
+\tag{D7.9}
+\]">\[
+\left\|\mathbf W_n-\sum_{k=0}^{2M-2}\mathcal K^kGf_n\right\|_{[0,a]\times S_{\rho&#x27;}}
+\le 2\big(t_{2M-1}+t_{2M}\big).
+\tag{D7.9}
+\]</span>
+<p>All constants in this formula are those from the already established coefficient and source bounds. Increasing <span class="math" data-tex="\(M\)">\(M\)</span> makes the right side tend to zero by D7.7. The radius <span class="math" data-tex="\(a\)">\(a\)</span>, parameter margin <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, source and physical coordinates remain unchanged. This is an analytic error estimate for the actual infinite integral series.</p>
+<h3 id="all-positive-order-axis-slopes">All positive-order axis slopes</h3>
+<p>For an axis trace <span class="math" data-tex="\(f(\eta)\)">\(f(\eta)\)</span>, define the restrictions of the original operators by</p>
+<span class="math math-display" data-tex="\[
+\mathscr T_\beta f=\frac{-\beta f+D\eta f&#x27;}L,\qquad
+\mathscr Z_\beta f=\frac{2\beta\eta f+df&#x27;}L.
+\tag{D7.10}
+\]">\[
+\mathscr T_\beta f=\frac{-\beta f+D\eta f&#x27;}L,\qquad
+\mathscr Z_\beta f=\frac{2\beta\eta f+df&#x27;}L.
+\tag{D7.10}
+\]</span>
+<p>Here primes mean parameter derivatives. At <span class="math" data-tex="\(X=0\)">\(X=0\)</span>, the term <span class="math" data-tex="\(Xf_X\)">\(Xf_X\)</span> in D0.2 vanishes for each smooth profile. This remains true after either operator is applied, so taking the axis trace of their composition gives precisely the composition in D7.10.</p>
+<p>At each positive order all three prescribed axis traces <span class="math" data-tex="\(\phi_n,U_n,\Pi_n\)">\(\phi_n,U_n,\Pi_n\)</span> vanish identically in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, as do their parameter derivatives. D0.4 then gives <span class="math" data-tex="\(V_n/X=0\)">\(V_n/X=0\)</span> at the axis. Evaluating D1.3–D1.5 there gives</p>
+<span class="math math-display" data-tex="\[
+4\phi_{n,X}(0,\eta)=R_{\phi,n}(0,\eta),\qquad
+2U_{n,X}(0,\eta)=R_{U,n}(0,\eta),\qquad
+\Pi_{n,X}(0,\eta)=P_n(0,\eta).
+\tag{D7.11}
+\]">\[
+4\phi_{n,X}(0,\eta)=R_{\phi,n}(0,\eta),\qquad
+2U_{n,X}(0,\eta)=R_{U,n}(0,\eta),\qquad
+\Pi_{n,X}(0,\eta)=P_n(0,\eta).
+\tag{D7.11}
+\]</span>
+<p>In the angular current-order terms, <span class="math" data-tex="\(V_0(\phi_n&#x27;+\phi_n/X)\)">\(V_0(\phi_n&#x27;+\phi_n/X)\)</span> tends to zero because <span class="math" data-tex="\(V_0=O(X)\)">\(V_0=O(X)\)</span> and <span class="math" data-tex="\(\phi_n=O(X)\)">\(\phi_n=O(X)\)</span>; the term <span class="math" data-tex="\(V_n\phi_0/X\)">\(V_n\phi_0/X\)</span> tends to zero because <span class="math" data-tex="\(V_n/X=0\)">\(V_n/X=0\)</span> at the axis. All other current-order terms vanish from their zero traces or explicit <span class="math" data-tex="\(X\)">\(X\)</span> factors. This verifies the limits rather than cancelling a singular expression formally.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> use D6.1 and the actual traces <span class="math" data-tex="\(\phi_*,U_*=4\eta+j_0\)">\(\phi_*,U_*=4\eta+j_0\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\phi_{1,X}(0,\eta)=-\frac14\mathscr Z_{b-D}\mathscr Z_b\phi_*,
+\qquad
+U_{1,X}(0,\eta)=-\frac12\mathscr Z_{c-D}\mathscr Z_cU_*.
+\tag{D7.12}
+\]">\[
+\phi_{1,X}(0,\eta)=-\frac14\mathscr Z_{b-D}\mathscr Z_b\phi_*,
+\qquad
+U_{1,X}(0,\eta)=-\frac12\mathscr Z_{c-D}\mathscr Z_cU_*.
+\tag{D7.12}
+\]</span>
+<p>In particular the complete <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-dependent function <span class="math" data-tex="\(\phi_*\)">\(\phi_*\)</span> is retained in the first expression.</p>
+<p>To compute the pressure slope, retain <span class="math" data-tex="\(g(\eta)=U_{0,X}(0,\eta)=-Z_*/(2L)\)">\(g(\eta)=U_{0,X}(0,\eta)=-Z_*/(2L)\)</span> from J8.6. The full source <span class="math" data-tex="\(Z_*\)">\(Z_*\)</span>, including the actual axis pressure <span class="math" data-tex="\(\Pi_0(0,\eta)\)">\(\Pi_0(0,\eta)\)</span>, is J0.1. Expanding the exact radial-average formula D0.4 gives</p>
+<span class="math math-display" data-tex="\[
+v_*=\left.\frac{V_0}X\right|_0
+=\frac{2A\eta U_*-dU_*&#x27;}L,\qquad
+w_*=\left.\partial_X\frac{V_0}X\right|_0
+=\frac{(2-D)\eta g-\frac12d g&#x27;}L.
+\tag{D7.13}
+\]">\[
+v_*=\left.\frac{V_0}X\right|_0
+=\frac{2A\eta U_*-dU_*&#x27;}L,\qquad
+w_*=\left.\partial_X\frac{V_0}X\right|_0
+=\frac{(2-D)\eta g-\frac12d g&#x27;}L.
+\tag{D7.13}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\mathcal A_XU_0=U_*+gX/2+O(X^2)\)">\(\mathcal A_XU_0=U_*+gX/2+O(X^2)\)</span>, and <span class="math" data-tex="\(1-D=A\)">\(1-D=A\)</span>. D1.7 at <span class="math" data-tex="\(k=0\)">\(k=0\)</span> now gives the entire finite value</p>
+<span class="math math-display" data-tex="\[
+\Pi_{1,X}(0,\eta)=
+-\frac12\left[
+\mathscr T_{-1}v_*+\frac12v_*^2
++U_*\mathscr Z_{-1}v_*-4w_*
+\right].
+\tag{D7.14}
+\]">\[
+\Pi_{1,X}(0,\eta)=
+-\frac12\left[
+\mathscr T_{-1}v_*+\frac12v_*^2
++U_*\mathscr Z_{-1}v_*-4w_*
+\right].
+\tag{D7.14}
+\]</span>
+<p>The terms with an explicit <span class="math" data-tex="\(X\)">\(X\)</span> and the negative-index axial-viscosity term vanish at this endpoint. The remaining radial derivative <span class="math" data-tex="\(-4w_*\)">\(-4w_*\)</span>, the quadratic factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and the original pressure inside <span class="math" data-tex="\(g\)">\(g\)</span> have not been discarded.</p>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, all middle-index terms in <span class="math" data-tex="\(R_{\phi,n}\)">\(R_{\phi,n}\)</span> and <span class="math" data-tex="\(R_{U,n}\)">\(R_{U,n}\)</span> vanish at the axis: every positive-order field has zero trace and <span class="math" data-tex="\(V_i/X\)">\(V_i/X\)</span> has zero trace. The final axial-viscosity terms have the zero trace of the <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-st field and all its parameter derivatives. Therefore</p>
+<span class="math math-display" data-tex="\[
+\phi_{n,X}(0,\eta)=U_{n,X}(0,\eta)=0\qquad(n\ge2).
+\tag{D7.15}
+\]">\[
+\phi_{n,X}(0,\eta)=U_{n,X}(0,\eta)=0\qquad(n\ge2).
+\tag{D7.15}
+\]</span>
+<p>This conclusion concerns these two slopes; it does not assert that every pressure slope or higher radial derivative vanishes.</p>
+<p>Finally, writing <span class="math" data-tex="\(\alpha(\eta)=U_{1,X}(0,\eta)\)">\(\alpha(\eta)=U_{1,X}(0,\eta)\)</span>, the exact reconstruction gives</p>
+<span class="math math-display" data-tex="\[
+K_1=-\frac{\alpha X}{2}+O(X^2),\qquad
+V_1=\frac{(2-D-\lambda_1)\eta\alpha-\frac12d\alpha&#x27;}L\,X^2+O(X^3).
+\tag{D7.16}
+\]">\[
+K_1=-\frac{\alpha X}{2}+O(X^2),\qquad
+V_1=\frac{(2-D-\lambda_1)\eta\alpha-\frac12d\alpha&#x27;}L\,X^2+O(X^3).
+\tag{D7.16}
+\]</span>
+<p>Every fixed parameter derivative has the same remainder order on a smaller common domain, by D5 and Taylor's integral remainder. These formulas describe the actual first correction, not a separately chosen axis polynomial.</p>
+<h3 id="bounded-source-to-solution-map">Bounded source-to-solution map</h3>
+<p>Use the maximum norm on the original six coordinates and its induced matrix norm. Let <span class="math" data-tex="\(\mathcal H_\rho\)">\(\mathcal H_\rho\)</span> be the normed space of continuous functions on <span class="math" data-tex="\([0,a]\times S_\rho\)">\([0,a]\times S_\rho\)</span>, holomorphic in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, with finite supremum norm <span class="math" data-tex="\(\|\cdot\|_\rho\)">\(\|\cdot\|_\rho\)</span>. We use only bounded holomorphic data; taking uniform limits makes this a Banach space. The actual matrices are bounded on this domain after the prior shrinking in D4. Put</p>
+<span class="math math-display" data-tex="\[
+\mathsf M=\max\{1,\|A_0\|_\rho,\|A_1\|_\rho\},\qquad
+\Delta=\rho-\rho&#x27;&gt;0,\qquad
+\mathfrak S(z,\Delta)=
+\sum_{k=0}^{\infty}\frac{z^k}{(k+1)!}
+\big(\max\{1,p_k/\Delta\}\big)^{p_k}.
+\tag{D7.17}
+\]">\[
+\mathsf M=\max\{1,\|A_0\|_\rho,\|A_1\|_\rho\},\qquad
+\Delta=\rho-\rho&#x27;&gt;0,\qquad
+\mathfrak S(z,\Delta)=
+\sum_{k=0}^{\infty}\frac{z^k}{(k+1)!}
+\big(\max\{1,p_k/\Delta\}\big)^{p_k}.
+\tag{D7.17}
+\]</span>
+<p>The same root estimate as D4, or the two parity estimates in Exercise 2, proves that this series is finite for every finite <span class="math" data-tex="\(z\ge0\)">\(z\ge0\)</span> and every <span class="math" data-tex="\(\Delta&gt;0\)">\(\Delta&gt;0\)</span>.</p>
+<p>The word proof in D3–D4 applies to any <span class="math" data-tex="\(f\in\mathcal H_\rho\)">\(f\in\mathcal H_\rho\)</span>. Separate the source norm from the coefficient norms. There are at most <span class="math" data-tex="\(2^k\)">\(2^k\)</span> words, each coefficient multiplication costs at most <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span>, and the full simplex has volume <span class="math" data-tex="\(a^{k+1}/(k+1)!\)">\(a^{k+1}/(k+1)!\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal K^kGf\|_{\rho&#x27;}
+\le\|f\|_\rho\,
+\frac{a(2\mathsf M a)^k}{(k+1)!}
+\big(\max\{1,p_k/\Delta\}\big)^{p_k}.
+\tag{D7.18}
+\]">\[
+\|\mathcal K^kGf\|_{\rho&#x27;}
+\le\|f\|_\rho\,
+\frac{a(2\mathsf M a)^k}{(k+1)!}
+\big(\max\{1,p_k/\Delta\}\big)^{p_k}.
+\tag{D7.18}
+\]</span>
+<p>Consequently the actual integral solution operator is the bounded linear map</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal S_n:\mathcal H_\rho&amp;\longrightarrow\mathcal H_{\rho&#x27;},&amp;
+\mathcal S_nf&amp;=\sum_{k=0}^{\infty}\mathcal K^kGf,\\
+\|\mathcal S_nf\|_{\rho&#x27;}&amp;\le
+a\,\mathfrak S(2\mathsf M a,\Delta)\|f\|_\rho .
+\end{split}
+\tag{D7.19}
+\]">\[
+\begin{split}
+\mathcal S_n:\mathcal H_\rho&amp;\longrightarrow\mathcal H_{\rho&#x27;},&amp;
+\mathcal S_nf&amp;=\sum_{k=0}^{\infty}\mathcal K^kGf,\\
+\|\mathcal S_nf\|_{\rho&#x27;}&amp;\le
+a\,\mathfrak S(2\mathsf M a,\Delta)\|f\|_\rho .
+\end{split}
+\tag{D7.19}
+\]</span>
+<p>Linearity follows term by term and passes through uniform convergence. On an intermediate parameter neighborhood the series converges with its first parameter derivative on a smaller neighborhood. D3.1 then proves the integral equation, the differential equation and the zero-axis value. The uniqueness argument D4.3 applies to this same bounded holomorphic class.</p>
+<p>For two source vectors in the stated space, subtracting the convergent series gives the exact difference map</p>
+<span class="math math-display" data-tex="\[
+\mathcal S_nf-\mathcal S_ng=\mathcal S_n(f-g),\qquad
+\|\mathcal S_nf-\mathcal S_ng\|_{\rho&#x27;}
+\le a\,\mathfrak S(2\mathsf M a,\Delta)\|f-g\|_\rho.
+\tag{D7.20}
+\]">\[
+\mathcal S_nf-\mathcal S_ng=\mathcal S_n(f-g),\qquad
+\|\mathcal S_nf-\mathcal S_ng\|_{\rho&#x27;}
+\le a\,\mathfrak S(2\mathsf M a,\Delta)\|f-g\|_\rho.
+\tag{D7.20}
+\]</span>
+<p>The actual smooth source <span class="math" data-tex="\(f_n\)">\(f_n\)</span> belongs to the domain; D5 gives the extra smoothness and parity needed to recover its original fields. An arbitrary source in <span class="math" data-tex="\(\mathcal H_\rho\)">\(\mathcal H_\rho\)</span> need not have that parity, so the map just proved is a six-component solution map, with original-field recovery asserted for the already verified source <span class="math" data-tex="\(f_n\)">\(f_n\)</span>. The factor <span class="math" data-tex="\(a\)">\(a\)</span>, coefficient norm and full parameter margin remain explicit. No source smallness or radial shrinking is required.</p>
+<h3 id="exact-axial-residual-cancellation">Exact axial residual cancellation</h3>
+<p>The actual leading axial trace is <span class="math" data-tex="\(U_*=4\eta+j_0\)">\(U_*=4\eta+j_0\)</span>, and <span class="math" data-tex="\(c=-A\)">\(c=-A\)</span>. Its first restricted axial derivative is</p>
+<span class="math math-display" data-tex="\[
+\mathscr Z_cU_*=
+\frac{4+2cj_0\eta+(8c-4)\eta^2}{1-2h\eta^2}.
+\tag{D7.21}
+\]">\[
+\mathscr Z_cU_*=
+\frac{4+2cj_0\eta+(8c-4)\eta^2}{1-2h\eta^2}.
+\tag{D7.21}
+\]</span>
+<p>At zero the next operator <span class="math" data-tex="\(\mathscr Z_{c-D}\)">\(\mathscr Z_{c-D}\)</span> acts by parameter differentiation. The derivative of the denominator is zero there, so</p>
+<span class="math math-display" data-tex="\[
+(\mathscr Z_{c-D}\mathscr Z_cU_*)(0)=2cj_0=-2Aj_0,\qquad
+U_{1,X}(0,0)=Aj_0&gt;0.
+\tag{D7.22}
+\]">\[
+(\mathscr Z_{c-D}\mathscr Z_cU_*)(0)=2cj_0=-2Aj_0,\qquad
+U_{1,X}(0,0)=Aj_0&gt;0.
+\tag{D7.22}
+\]</span>
+<p>This value follows from the complete coefficient equations and is independent of the later moment extensions, whose supports lie away from this axis interval.</p>
+<p>Let <span class="math" data-tex="\((u_\nu^{(0)},p_\nu^{(0)})\)">\((u_\nu^{(0)},p_\nu^{(0)})\)</span> be the actual leading physical field and <span class="math" data-tex="\((u_{1,\nu},p_{1,\nu})\)">\((u_{1,\nu},p_{1,\nu})\)</span> the actual first coefficient from D6.2. Use the original physical <span class="math" data-tex="\(q_\nu,\eta_\nu\)">\(q_\nu,\eta_\nu\)</span> there. The leading tangential equations cancel time, convection, axial pressure and radial viscosity on the axis interval. Its remaining axial residual at the axis is therefore exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_\nu(u_\nu^{(0)},p_\nu^{(0)})\cdot e_z
+=-\sqrt\nu\,q_\nu^{c-2D}
+(\mathscr Z_{c-D}\mathscr Z_cU_*)(\eta_\nu),
+\qquad r_\nu=0.
+\tag{D7.23}
+\]">\[
+\mathcal R_\nu(u_\nu^{(0)},p_\nu^{(0)})\cdot e_z
+=-\sqrt\nu\,q_\nu^{c-2D}
+(\mathscr Z_{c-D}\mathscr Z_cU_*)(\eta_\nu),
+\qquad r_\nu=0.
+\tag{D7.23}
+\]</span>
+<p>The factor comes from <span class="math" data-tex="\(\nu\partial_{z_\nu z_\nu}
+[\sqrt\nu\,q_\nu^cU_*]\)">\(\nu\partial_{z_\nu z_\nu}
+[\sqrt\nu\,q_\nu^cU_*]\)</span>: each spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>, leaving exactly <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span>. This is the same full axial-viscosity term retained in the original residual.</p>
+<p>The first correction has zero axial velocity and pressure traces for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and <span class="math" data-tex="\(V_1=O(X^2)\)">\(V_1=O(X^2)\)</span>, <span class="math" data-tex="\(\phi_1=O(X)\)">\(\phi_1=O(X)\)</span>. In Cartesian coordinates its horizontal velocity is <span class="math" data-tex="\(O(r_\nu^3)\)">\(O(r_\nu^3)\)</span> and its axial velocity is <span class="math" data-tex="\(O(r_\nu^2)\)">\(O(r_\nu^2)\)</span> at fixed <span class="math" data-tex="\(z_\nu,t\)">\(z_\nu,t\)</span>. Thus its time derivatives, axial derivatives and axial pressure derivative vanish on the axis. All extra axial convection terms vanish there too: both fields have zero horizontal velocity on the axis, and the correction's axial trace and axial derivative are zero.</p>
+<p>Only its radial viscous term contributes to the axial residual at the axis. Since
+<span class="math" data-tex="\(X=r_\nu^2/(2\nu q_\nu)\)">\(X=r_\nu^2/(2\nu q_\nu)\)</span>, direct radial differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\left.\nu(\partial_{r_\nu r_\nu}
++r_\nu^{-1}\partial_{r_\nu})u_{z,1,\nu}\right|_{r_\nu=0}
+=2\sqrt\nu\,q_\nu^{c+\lambda_1-1}U_{1,X}(0,\eta_\nu).
+\tag{D7.24}
+\]">\[
+\left.\nu(\partial_{r_\nu r_\nu}
++r_\nu^{-1}\partial_{r_\nu})u_{z,1,\nu}\right|_{r_\nu=0}
+=2\sqrt\nu\,q_\nu^{c+\lambda_1-1}U_{1,X}(0,\eta_\nu).
+\tag{D7.24}
+\]</span>
+<p>The displayed axis value is the smooth Cartesian limit. Now
+<span class="math" data-tex="\(\lambda_1-1=2h-1=-2D\)">\(\lambda_1-1=2h-1=-2D\)</span>, and D7.12 gives twice the slope as the negative restricted second axial derivative. Combining D7.23–D7.24 in the momentum residual therefore yields the exact identity</p>
+<span class="math math-display" data-tex="\[
+\mathcal R_\nu(u_\nu^{(0)}+u_{1,\nu},
+p_\nu^{(0)}+p_{1,\nu})\cdot e_z=0
+\qquad(r_\nu=0,\ t&lt;1).
+\tag{D7.25}
+\]">\[
+\mathcal R_\nu(u_\nu^{(0)}+u_{1,\nu},
+p_\nu^{(0)}+p_{1,\nu})\cdot e_z=0
+\qquad(r_\nu=0,\ t&lt;1).
+\tag{D7.25}
+\]</span>
+<p>This is cancellation for the actual first correction throughout the axis, not only cancellation of a formal coefficient at the origin.</p>
+<p>At <span class="math" data-tex="\(z_\nu=0\)">\(z_\nu=0\)</span>, put <span class="math" data-tex="\(\tau=1-t\)">\(\tau=1-t\)</span>. The unchanged leading residual from J8 is
+<span class="math" data-tex="\(2Aj_0\sqrt\nu\,\tau^{-A-2D}\)">\(2Aj_0\sqrt\nu\,\tau^{-A-2D}\)</span>. The first correction's original near-axis expansion is</p>
+<span class="math math-display" data-tex="\[
+u_{z,1,\nu}(r_\nu,0,t)
+=\frac{Aj_0}{2\sqrt\nu}\tau^{-A-2D}r_\nu^2+O(r_\nu^4).
+\tag{D7.26}
+\]">\[
+u_{z,1,\nu}(r_\nu,0,t)
+=\frac{Aj_0}{2\sqrt\nu}\tau^{-A-2D}r_\nu^2+O(r_\nu^4).
+\tag{D7.26}
+\]</span>
+<p>At each fixed <span class="math" data-tex="\(t&lt;1,\nu&gt;0\)">\(t&lt;1,\nu&gt;0\)</span>, the radial Laplacian of its displayed quadratic term, multiplied by <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, is exactly <span class="math" data-tex="\(2Aj_0\sqrt\nu\,\tau^{-A-2D}\)">\(2Aj_0\sqrt\nu\,\tau^{-A-2D}\)</span>. Its negative sign in the momentum residual cancels the positive leading residual.</p>
+<p>The velocity trace itself stays</p>
+<span class="math math-display" data-tex="\[
+(u_\nu^{(0)}+u_{1,\nu})\cdot e_z
+=\sqrt\nu\,q_\nu^{-A}(4\eta_\nu+j_0)
+\qquad(r_\nu=0).
+\tag{D7.27}
+\]">\[
+(u_\nu^{(0)}+u_{1,\nu})\cdot e_z
+=\sqrt\nu\,q_\nu^{-A}(4\eta_\nu+j_0)
+\qquad(r_\nu=0).
+\tag{D7.27}
+\]</span>
+<p>Thus cancellation of the residual does not remove the prescribed growth of the axial trace. D7.15 also shows that later constructed positive orders have zero first radial slope and cannot change this exact axial cancellation. Residuals away from the axis, global moment conditions and the summation into a base field still require their subsequent constructions.</p>
+<p>These consequences keep the original coefficient equations and leading profile. The nonzero leading-field residual in J8 remains correct for that field; D7.23–D7.27 prove its exact cancellation on the axis after adding the actual first correction. Later positive orders preserve this cancellation by D7.15. Global extension and base-field realization remain the constructions in Y and Z. The <a href="../src/correcting-coefficients-on-the-axis.md">complete coefficient lesson</a> supplies the teaching exposition.</p>
+<h3 id="the-actual-base-on-the-axis">The actual base on the axis</h3>
+<p>For the actual potential-cutoff base constructed in <a href="base-field-realization-audit.html">Z0–Z8</a>, the full calculation <a href="base-field-realization-audit.html">Z9.13–Z9.17</a> gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_{B,\nu}(0,0,z_\nu,t)
+=-\sqrt\nu[1-\chi(c_1q_\nu)]q_\nu^{-A-2D}
+(\mathscr Z_{c-D}\mathscr Z_cU_*)(\eta_\nu)e_z,
+\qquad c=-A,\quad U_*=4\eta+j_0.
+\tag{D7.28}
+\]">\[
+\mathcal E_{B,\nu}(0,0,z_\nu,t)
+=-\sqrt\nu[1-\chi(c_1q_\nu)]q_\nu^{-A-2D}
+(\mathscr Z_{c-D}\mathscr Z_cU_*)(\eta_\nu)e_z,
+\qquad c=-A,\quad U_*=4\eta+j_0.
+\tag{D7.28}
+\]</span>
+<p>Indeed every positive-order axial and pressure trace is zero, including all of its time and axial derivatives. The additional radial cutoff term has order <span class="math" data-tex="\(r_\nu^3\)">\(r_\nu^3\)</span>; hence it and every extra axial convection term vanish at the axis. The sole new axial residual is the negative transverse viscosity of the first coefficient, multiplied by <span class="math" data-tex="\(\chi(c_1q_\nu)\)">\(\chi(c_1q_\nu)\)</span>. Its value is D7.24 times that cutoff; all later first slopes vanish by D7.15. Combining it with D7.23 proves D7.28. Stress vanishes near the axis, and rotational invariance makes the horizontal residual zero there. Therefore the actual base residual vanishes exactly on the axis for <span class="math" data-tex="\(q_\nu\le(2c_1)^{-1}\)">\(q_\nu\le(2c_1)^{-1}\)</span>, while its axial velocity remains <span class="math" data-tex="\(\sqrt\nu q_\nu^{-A}(4\eta_\nu+j_0)\)">\(\sqrt\nu q_\nu^{-A}(4\eta_\nu+j_0)\)</span>. This supplies the actual summation receiver of D7.25 and preserves the leading-field statement in J8.</p>
+</article></body></html>

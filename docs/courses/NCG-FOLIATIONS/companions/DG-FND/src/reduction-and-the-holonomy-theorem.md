@@ -2,7 +2,7 @@
 
 Holonomy determines the frames reachable by horizontal transport and the associated objects that can remain parallel. We construct the reduction with its intrinsic topology, prove the fixed-point description for arbitrary smooth associated fibres, and derive how connections behave under bundle changes and path variations. A compactly supported local construction then realizes every connected reduction group as full and restricted holonomy.
 
-Read the complete earlier programme proofs in [Curvature and holonomy groups](curvature-and-holonomy-groups.md), [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), and Local tools for bundles and transport. Each external source below is an exact freely accessible human construction source; every used result is proved here or in an exact earlier programme proof.
+Read the complete earlier programme proofs in [Curvature and holonomy groups](curvature-and-holonomy-groups.md), [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), and [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md). Each external source below is an exact freely accessible human construction source; every used result is proved here or in an exact earlier programme proof.
 
 ## A. Reachable frames and parallel objects
 

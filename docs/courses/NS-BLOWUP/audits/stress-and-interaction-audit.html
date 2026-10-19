@@ -1,0 +1,1635 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="stress-and-interaction-audit.md">Editable source</a></nav><h1 id="realizing-the-stress-and-controlling-nonlinear-interactions">Realizing the stress and controlling nonlinear interactions</h1>
+<p>The <a href="../src/constructing-the-pulses-and-their-velocities.md">pulse lesson</a> constructed actual velocities, their pressures and their complete residuals. We now choose the two pulse amplitudes to produce the prescribed two-component stress. The signed map used later in the iteration inverts the derivative of this covariance. Its finite update also has a quadratic term, which we keep throughout.</p>
+<p>The <a href="../src/separating-the-oscillatory-supports.md">support lesson</a>, OS0–OS7, supplies the original slow partition, disjoint closed auxiliary supports, all covering maps and weighted coefficient classes. A wave coefficient in <span class="math" data-tex="\(\mathsf W_\alpha\)">\(\mathsf W_\alpha\)</span> has, at every fixed derivative order, a bound of the form <span class="math" data-tex="\(\varepsilon^\alpha S_*^{b_I}\sqrt{\zeta}\delta^{-a_I}P(v)\)">\(\varepsilon^\alpha S_*^{b_I}\sqrt{\zeta}\delta^{-a_I}P(v)\)</span>, with its original support, envelope and finite nonzero harmonic set. A mean in <span class="math" data-tex="\(\mathsf M_\mu\)">\(\mathsf M_\mu\)</span> has the corresponding bound <span class="math" data-tex="\(\varepsilon^\mu S_*^{b_I}\zeta\delta^{-a_I}\)">\(\varepsilon^\mu S_*^{b_I}\zeta\delta^{-a_I}\)</span>, may depend on the auxiliary torus and is independent of the cylindrical angle. The actual definitions and zero extensions are those proved in OS5. Products, full coefficient derivatives and chart changes use those proofs. In particular, <span class="math" data-tex="\(D_r\)">\(D_r\)</span> costs at most <span class="math" data-tex="\(\kappa_s=10^{-5}\)">\(\kappa_s=10^{-5}\)</span>, <span class="math" data-tex="\(D_z\)">\(D_z\)</span> gains one power of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and <span class="math" data-tex="\(k\)">\(k\)</span> costs one half power. No support or weight is removed here.</p>
+<p>The leading stress is the actual one constructed in <a href="../src/realizing-the-admissible-shear.md">V0–V8</a>; the background is <a href="../src/constructing-the-actual-base-field.md">Z0–Z9</a>. This lesson supplies the positive amplitude inverse, its fixed signed derivative inverse, smooth extension at both radial boundaries, full curled covariance and nonlinear transport. It also derives positive energy production using the actual shear, retaining its difference from the frozen leading shear and the viscous damping.</p>
+<p><img src="../assets/stress-and-interactions.svg" alt="The covariance inverse and the full velocity update" class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="D6E5EEC848A3138DDB5849156A314F11D6F5BB276F8B8F0E9696B46FF8EF8FE1"></p>
+<p>The diagram records exact maps proved below. It contains no sampled flow data. <a href="../assets/stress-and-interactions.py">Editable diagram source</a>.</p>
+<p>Original source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">sections 7.3–7.4 and Lemma 9.2</a>, pages 81–88 and 102–103. The actual-shear calculation is also developed in the workbench pulse derivation, identified in the accompanying source record.</p>
+<p>The citations W2–W3 below refer to the full support and coefficient proof also supplied as OS0–OS7 in the preceding support lesson. Covariance uses <span class="math" data-tex="\(\mathcal B_{\rm cov}\)">\(\mathcal B_{\rm cov}\)</span>; differential transport uses <span class="math" data-tex="\(\mathcal T_{\rm adv}\)">\(\mathcal T_{\rm adv}\)</span>. Their definitions are displayed separately.</p>
+<h2 id="ni1-original-coordinates-operators-and-angular-averaging">NI1. Original coordinates, operators and angular averaging</h2>
+<p>Keep the original parameters and coordinates</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;h&lt;1/100,\quad A=1/2+h,\quad D=1/2-h,\\
+Q=2^{-\ell},\quad\varepsilon=Q^h,\quad S_*=\ell^2,\\
+R=r/\sqrt Q,\quad Z=z/Q^D,\quad T=(1-t)/Q.
+\end{gathered}
+\tag{NI1.1}
+\]">\[
+\begin{gathered}
+0&lt;h&lt;1/100,\quad A=1/2+h,\quad D=1/2-h,\\
+Q=2^{-\ell},\quad\varepsilon=Q^h,\quad S_*=\ell^2,\\
+R=r/\sqrt Q,\quad Z=z/Q^D,\quad T=(1-t)/Q.
+\end{gathered}
+\tag{NI1.1}
+\]</span>
+<p>The original variables satisfy <span class="math" data-tex="\(z=q^D\eta\)">\(z=q^D\eta\)</span>, <span class="math" data-tex="\(1-t=q(1-\eta^2)\)">\(1-t=q(1-\eta^2)\)</span>, <span class="math" data-tex="\(X=r^2/(2q)\)">\(X=r^2/(2q)\)</span>. On a band, <span class="math" data-tex="\(q/Q\in[1/2,2]\)">\(q/Q\in[1/2,2]\)</span>; the active radial shell has <span class="math" data-tex="\(X_a\le X\le X_b\)">\(X_a\le X\le X_b\)</span> with <span class="math" data-tex="\(X_a&gt;0\)">\(X_a&gt;0\)</span>. Thus <span class="math" data-tex="\(R^2=2(q/Q)X\)">\(R^2=2(q/Q)X\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\sqrt{X_a}\le R\le2\sqrt{X_b}.
+\tag{NI1.2}
+\]">\[
+\sqrt{X_a}\le R\le2\sqrt{X_b}.
+\tag{NI1.2}
+\]</span>
+<p>The bounds may be enlarged by fixed amounts inside the coordinate domain. No term involving <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> or <span class="math" data-tex="\(R^{-2}\)">\(R^{-2}\)</span> is suppressed.</p>
+<p>Retain the actual auxiliary torus and its covering maps:</p>
+<span class="math math-display" data-tex="\[
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+\Lambda_g=4-\sqrt2,\quad T_g=4+\sqrt2,\quad b_g=\sqrt2-1,
+\]">\[
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+\Lambda_g=4-\sqrt2,\quad T_g=4+\sqrt2,\quad b_g=\sqrt2-1,
+\]</span>
+<span class="math math-display" data-tex="\[
+v_r=(1,-b_g),\quad v_t=(b_g,1),\quad
+\rho_g=\frac{\log\Lambda_g}{\log T_g},\quad
+\kappa_s=10^{-5},\quad d_r=2((1+h)\rho_g-h\kappa_s),
+\]">\[
+v_r=(1,-b_g),\quad v_t=(b_g,1),\quad
+\rho_g=\frac{\log\Lambda_g}{\log T_g},\quad
+\kappa_s=10^{-5},\quad d_r=2((1+h)\rho_g-h\kappa_s),
+\]</span>
+<span class="math math-display" data-tex="\[
+Y=v_r r^{d_r}+v_t t\pmod{\mathbb Z^2},\quad
+Y_i=J_g^iY,\quad
+i=i(\ell)=\left\lfloor\frac{(1+h)\ell\log2-2\log\ell}{\log T_g}\right\rfloor.
+\tag{NI1.3}
+\]">\[
+Y=v_r r^{d_r}+v_t t\pmod{\mathbb Z^2},\quad
+Y_i=J_g^iY,\quad
+i=i(\ell)=\left\lfloor\frac{(1+h)\ell\log2-2\log\ell}{\log T_g}\right\rfloor.
+\tag{NI1.3}
+\]</span>
+<p>Only large bands with <span class="math" data-tex="\(i\ge0\)">\(i\ge0\)</span> are used. On a band representative set</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_i=v_r\cdot\partial_{Y_i},\quad N_i=v_t\cdot\partial_{Y_i},\quad
+M_i=\Lambda_g^iQ^{d_r/2},\quad c_i=T_g^iQ^{1+h}.
+\]">\[
+\mathcal L_i=v_r\cdot\partial_{Y_i},\quad N_i=v_t\cdot\partial_{Y_i},\quad
+M_i=\Lambda_g^iQ^{d_r/2},\quad c_i=T_g^iQ^{1+h}.
+\]</span>
+<p>The full physical chain rule is</p>
+<span class="math math-display" data-tex="\[
+D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
+D_z=\varepsilon\partial_Z,\quad D_\theta=R^{-1}\partial_\theta,
+\quad\mathfrak t_*=-\varepsilon\partial_T+c_iN_i.
+\tag{NI1.4}
+\]">\[
+D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
+D_z=\varepsilon\partial_Z,\quad D_\theta=R^{-1}\partial_\theta,
+\quad\mathfrak t_*=-\varepsilon\partial_T+c_iN_i.
+\tag{NI1.4}
+\]</span>
+<p>These operators have not replaced the physical ones: <span class="math" data-tex="\(D_r=\sqrt Q\,\mathfrak r\)">\(D_r=\sqrt Q\,\mathfrak r\)</span>, <span class="math" data-tex="\(D_z=\sqrt Q\partial_z\)">\(D_z=\sqrt Q\partial_z\)</span>, and <span class="math" data-tex="\(\mathfrak t_*=Q^{1+h}(\partial_t+N_{\rm abs})\)">\(\mathfrak t_*=Q^{1+h}(\partial_t+N_{\rm abs})\)</span> before evaluation, where <span class="math" data-tex="\(\mathfrak r=\partial_r+d_rr^{d_r-1}\mathcal L_{\rm abs}\)">\(\mathfrak r=\partial_r+d_rr^{d_r-1}\mathcal L_{\rm abs}\)</span>. In particular</p>
+<span class="math math-display" data-tex="\[
+[D_r,D_z]=[D_r,\partial_\theta]=[D_z,\partial_\theta]=0,
+\qquad D_r(R^{-1})=-R^{-2},\quad D_z(R^{-1})=0.
+\tag{NI1.5}
+\]">\[
+[D_r,D_z]=[D_r,\partial_\theta]=[D_z,\partial_\theta]=0,
+\qquad D_r(R^{-1})=-R^{-2},\quad D_z(R^{-1})=0.
+\tag{NI1.5}
+\]</span>
+<p>They follow directly because the only nonconstant coefficient of the auxiliary part of <span class="math" data-tex="\(D_r\)">\(D_r\)</span> depends on <span class="math" data-tex="\(R\)">\(R\)</span> alone. Constant-coefficient auxiliary derivatives commute.</p>
+<p>All vector components below are in the original orthonormal cylindrical frame <span class="math" data-tex="\((e_r,e_\theta,e_z)\)">\((e_r,e_\theta,e_z)\)</span>. Its derivatives are <span class="math" data-tex="\(\partial_\theta e_r=e_\theta\)">\(\partial_\theta e_r=e_\theta\)</span>, <span class="math" data-tex="\(\partial_\theta e_\theta=-e_r\)">\(\partial_\theta e_\theta=-e_r\)</span>, <span class="math" data-tex="\(\partial_\theta e_z=0\)">\(\partial_\theta e_z=0\)</span>. For component columns <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, the exact transport is</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{\rm adv}(u,v)=u_rD_rv+u_\theta R^{-1}\partial_\theta v+u_zD_zv
++R^{-1}(-u_\theta v_\theta,u_\theta v_r,0).
+\tag{NI1.6}
+\]">\[
+\mathcal T_{\rm adv}(u,v)=u_rD_rv+u_\theta R^{-1}\partial_\theta v+u_zD_zv
++R^{-1}(-u_\theta v_\theta,u_\theta v_r,0).
+\tag{NI1.6}
+\]</span>
+<p>The last column comes from differentiating the frame and is part of transport. The dot products of complex harmonic coefficients used below are bilinear, not Hermitian.</p>
+<p>Here <span class="math" data-tex="\(\langle\cdot\rangle_\theta\)">\(\langle\cdot\rangle_\theta\)</span> averages the cylindrical component columns over <span class="math" data-tex="\(0\le\theta\le2\pi\)">\(0\le\theta\le2\pi\)</span>, exactly as in the source mean equations. It is not the operation of averaging the Cartesian components while keeping a fixed Cartesian frame. It also differs from auxiliary Haar averaging. For a fixed label with</p>
+<span class="math math-display" data-tex="\[
+\Phi=p\theta+\varphi(R,Z,T,H),\qquad kp\in\mathbb Z\setminus\{0\},
+\]">\[
+\Phi=p\theta+\varphi(R,Z,T,H),\qquad kp\in\mathbb Z\setminus\{0\},
+\]</span>
+<p>and a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-independent column <span class="math" data-tex="\(a\)">\(a\)</span>, direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\langle ae^{ikm\Phi}\rangle_\theta=0\quad(m\ne0),\qquad
+\langle ab\,e^{ik(m+m&#x27;)\Phi}\rangle_\theta=
+\begin{cases}ab,&amp;m+m&#x27;=0,\\0,&amp;m+m&#x27;\ne0.\end{cases}
+\tag{NI1.7}
+\]">\[
+\langle ae^{ikm\Phi}\rangle_\theta=0\quad(m\ne0),\qquad
+\langle ab\,e^{ik(m+m&#x27;)\Phi}\rangle_\theta=
+\begin{cases}ab,&amp;m+m&#x27;=0,\\0,&amp;m+m&#x27;\ne0.\end{cases}
+\tag{NI1.7}
+\]</span>
+<p>Indeed the integral of <span class="math" data-tex="\(e^{in\theta}\)">\(e^{in\theta}\)</span> is <span class="math" data-tex="\((e^{2\pi in}-1)/(in)=0\)">\((e^{2\pi in}-1)/(in)=0\)</span> for a nonzero integer <span class="math" data-tex="\(n\)">\(n\)</span>. The frame terms in (NI1.6) have already been expressed in component columns, so this calculation applies to them too.</p>
+<h2 id="sc1-exact-average-and-the-two-columns">SC1. Exact average and the two columns</h2>
+<p>The tangential component order is <span class="math" data-tex="\((\theta,z)\)">\((\theta,z)\)</span>. For real cylindrical-component fields on the extended domain, let</p>
+<span class="math math-display" data-tex="\[
+\mathcal C(w)=\int_{\mathbb T^2}\frac1{2\pi}\int_0^{2\pi}w_r w_{\rm tan}\,d\theta\,d\mu(Y),\qquad
+\mathcal B_{\rm cov}(w,v)=\int_{\mathbb T^2}\frac1{2\pi}\int_0^{2\pi}
+(w_rv_{\rm tan}+v_rw_{\rm tan})\,d\theta\,d\mu(Y),
+\tag{SC1.1}
+\]">\[
+\mathcal C(w)=\int_{\mathbb T^2}\frac1{2\pi}\int_0^{2\pi}w_r w_{\rm tan}\,d\theta\,d\mu(Y),\qquad
+\mathcal B_{\rm cov}(w,v)=\int_{\mathbb T^2}\frac1{2\pi}\int_0^{2\pi}
+(w_rv_{\rm tan}+v_rw_{\rm tan})\,d\theta\,d\mu(Y),
+\tag{SC1.1}
+\]</span>
+<p>where Haar measure has mass one. These are a quadratic map and its symmetric bilinear cross map; <span class="math" data-tex="\(D\mathcal C(w)[v]=\mathcal B_{\rm cov}(w,v)\)">\(D\mathcal C(w)[v]=\mathcal B_{\rm cov}(w,v)\)</span>. The symbol <span class="math" data-tex="\(\mathcal B_{\rm cov}\)">\(\mathcal B_{\rm cov}\)</span> here denotes the covariance map (original (7.23)), not the differential transport map in NI1. The averages act on cylindrical components, with the basis vectors held in that component convention.</p>
+<p>A common torus maps onto each band torus by the integer matrix <span class="math" data-tex="\(J^d\)">\(J^d\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+J=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad \det J=14,
+\quad v_r=(1,-b_g),\quad v_t=(b_g,1),\quad b_g=\sqrt2-1.
+\]">\[
+J=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad \det J=14,
+\quad v_r=(1,-b_g),\quad v_t=(b_g,1),\quad b_g=\sqrt2-1.
+\]</span>
+<p>For <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span>, partition a fundamental domain of the covering torus into the <span class="math" data-tex="\(14^d\)">\(14^d\)</span> inverse-image sheets of a fundamental domain of the band torus, ignoring boundaries of measure zero. Change of variables on each sheet contributes <span class="math" data-tex="\(14^{-d}\)">\(14^{-d}\)</span>. Their sum proves
+<span class="math" data-tex="\(\int f(J^dY)\,d\mu(Y)=\int f(Y_i)\,d\mu(Y_i)\)">\(\int f(J^dY)\,d\mu(Y)=\int f(Y_i)\,d\mu(Y_i)\)</span>.
+Thus no covering degree multiplies (SC1.1). Smooth periodic integrands allow differentiation under this integral. Common-cover compatibility follows by applying this equality twice.</p>
+<p>Fix a slow box <span class="math" data-tex="\(\beta=(\ell,a)\)">\(\beta=(\ell,a)\)</span>. Its two labels are <span class="math" data-tex="\((\beta,\sigma)\)">\((\beta,\sigma)\)</span>, <span class="math" data-tex="\(\sigma=\pm1\)">\(\sigma=\pm1\)</span>, with the same slow cutoff <span class="math" data-tex="\(\eta_\beta\)">\(\eta_\beta\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+Q=2^{-\ell},\quad \varepsilon=Q^h,\quad S_*=\ell^2,
+\quad A=\tfrac12+h,\quad D=\tfrac12-h,\quad 0&lt;h&lt;\tfrac1{100}.
+\]">\[
+Q=2^{-\ell},\quad \varepsilon=Q^h,\quad S_*=\ell^2,
+\quad A=\tfrac12+h,\quad D=\tfrac12-h,\quad 0&lt;h&lt;\tfrac1{100}.
+\]</span>
+<p>With <span class="math" data-tex="\(T_g=4+\sqrt2\)">\(T_g=4+\sqrt2\)</span>, the original band choice gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{T_gS_*}&lt;c_i\le\frac1{S_*},\qquad L_s=\frac{2r_0}{c_i},
+\qquad 2r_0S_*\le L_s&lt;2r_0T_gS_*.
+\tag{SC1.2}
+\]">\[
+\frac1{T_gS_*}&lt;c_i\le\frac1{S_*},\qquad L_s=\frac{2r_0}{c_i},
+\qquad 2r_0S_*\le L_s&lt;2r_0T_gS_*.
+\tag{SC1.2}
+\]</span>
+<p>The positive constant <span class="math" data-tex="\(r_0\)">\(r_0\)</span> and the transverse cutoffs are fixed before bands are chosen. The unweighted, uncurled local basis waves are exactly</p>
+<span class="math math-display" data-tex="\[
+b_\sigma=\chi_g(\xi_g)\psi(v)t^h_\sigma\cos(k\Phi_\sigma),\qquad
+\mathsf H=[\mathcal C(b_+)\mid\mathcal C(b_-)].
+\tag{SC1.3}
+\]">\[
+b_\sigma=\chi_g(\xi_g)\psi(v)t^h_\sigma\cos(k\Phi_\sigma),\qquad
+\mathsf H=[\mathcal C(b_+)\mid\mathcal C(b_-)].
+\tag{SC1.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(k=\lceil\varepsilon^{-1/2}\rceil\)">\(k=\lceil\varepsilon^{-1/2}\rceil\)</span>, <span class="math" data-tex="\(kp\in\mathbb Z\setminus\{0\}\)">\(kp\in\mathbb Z\setminus\{0\}\)</span>, and the pulse cutoff satisfies <span class="math" data-tex="\(0\le\psi\le1\)">\(0\le\psi\le1\)</span>, <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> for <span class="math" data-tex="\(|v-L_s/2|\le L_s/5\)">\(|v-L_s/2|\le L_s/5\)</span>, with support in <span class="math" data-tex="\(|v-L_s/2|&lt;L_s/3\)">\(|v-L_s/2|&lt;L_s/3\)</span>. Neither <span class="math" data-tex="\(\eta_\beta\)">\(\eta_\beta\)</span> nor a scalar stress amplitude is in <span class="math" data-tex="\(b_\sigma\)">\(b_\sigma\)</span>. Their auxiliary supports are disjoint, including the closed support neighborhoods used for derivatives, as constructed in W2.</p>
+<p>For every fixed slow and auxiliary point, write <span class="math" data-tex="\(k\Phi_\sigma=kp\theta+\omega\)">\(k\Phi_\sigma=kp\theta+\omega\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}\cos^2(kp\theta+\omega)\,d\theta
+=\frac12+\left[\frac{\sin(2kp\theta+2\omega)}{8\pi kp}\right]_0^{2\pi}
+=\frac12.
+\tag{SC1.4}
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}\cos^2(kp\theta+\omega)\,d\theta
+=\frac12+\left[\frac{\sin(2kp\theta+2\omega)}{8\pi kp}\right]_0^{2\pi}
+=\frac12.
+\tag{SC1.4}
+\]</span>
+<p>This equality remains exact after every slow derivative; differentiating its right side creates no frequency factor. On the band rectangle the area element is
+<span class="math" data-tex="\(\det(v_r,v_t)d\xi_gd\eta_g=(1+b_g^2)c_i\,d\xi_gdv\)">\(\det(v_r,v_t)d\xi_gd\eta_g=(1+b_g^2)c_i\,d\xi_gdv\)</span>.
+The homogeneous amplitude is independent of <span class="math" data-tex="\(\xi_g\)">\(\xi_g\)</span>; write <span class="math" data-tex="\(x_\sigma=(t^h_\sigma)_r\)">\(x_\sigma=(t^h_\sigma)_r\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\mathsf H_\sigma=\frac{1+b_g^2}{2}
+\left(\int\chi_g^2\,d\xi_g\right)c_i
+\int_0^{L_s}\psi^2x_\sigma(t^h_\sigma)_{\rm tan}\,dv,
+\qquad
+h_\sigma=\frac{1+b_g^2}{2}
+\left(\int\chi_g^2\,d\xi_g\right)c_i
+\int_0^{L_s}\psi^2x_\sigma^2\,dv.
+\tag{SC1.5}
+\]">\[
+\mathsf H_\sigma=\frac{1+b_g^2}{2}
+\left(\int\chi_g^2\,d\xi_g\right)c_i
+\int_0^{L_s}\psi^2x_\sigma(t^h_\sigma)_{\rm tan}\,dv,
+\qquad
+h_\sigma=\frac{1+b_g^2}{2}
+\left(\int\chi_g^2\,d\xi_g\right)c_i
+\int_0^{L_s}\psi^2x_\sigma^2\,dv.
+\tag{SC1.5}
+\]</span>
+<p>The subscript <span class="math" data-tex="\(g\)">\(g\)</span> retains the cutoff belonging to the sign's own rectangle. Its squared integral is positive and bounded above and below uniformly, since these are fixed nonzero cutoffs from finitely many shapes. The determinant, <span class="math" data-tex="\(c_i\)">\(c_i\)</span>, the cosine factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and both stress components have all been retained. For real coefficients independent of both averaging variables, disjointness gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal C(a_+b_++a_-b_-)=\mathsf H(a_+^2,a_-^2)^T.
+\tag{SC1.6}
+\]">\[
+\mathcal C(a_+b_++a_-b_-)=\mathsf H(a_+^2,a_-^2)^T.
+\tag{SC1.6}
+\]</span>
+<h2 id="sc2-covariance-size-and-direction-from-the-exact-pulse">SC2. Covariance size and direction from the exact pulse</h2>
+<p>PU3.5 and PU5.5 establish fixed constants <span class="math" data-tex="\(c_-,c_+,c_x,C_x&gt;0\)">\(c_-,c_+,c_x,C_x&gt;0\)</span>, independent of the band, with</p>
+<span class="math math-display" data-tex="\[
+e^{-c_+(v-L_s/2)^2/(2L_s)}\le P(v)\le
+e^{-c_-(v-L_s/2)^2/(2L_s)},\qquad
+c_xP(v)\le x_\sigma(v)\le C_xP(v).
+\tag{SC2.1}
+\]">\[
+e^{-c_+(v-L_s/2)^2/(2L_s)}\le P(v)\le
+e^{-c_-(v-L_s/2)^2/(2L_s)},\qquad
+c_xP(v)\le x_\sigma(v)\le C_xP(v).
+\tag{SC2.1}
+\]</span>
+<p>These bounds use the original <span class="math" data-tex="\(B_s^2=\lambda_0/[\varepsilon k^2(1+u_*^2)^{3/2}]\)">\(B_s^2=\lambda_0/[\varepsilon k^2(1+u_*^2)^{3/2}]\)</span>. Set
+<span class="math" data-tex="\(I_{0,\sigma}=\int\psi^2x_\sigma^2\,dv\)">\(I_{0,\sigma}=\int\psi^2x_\sigma^2\,dv\)</span> and
+<span class="math" data-tex="\(I_{1,\sigma}=\int |v-L_s/2|\psi^2x_\sigma^2/L_s\,dv\)">\(I_{1,\sigma}=\int |v-L_s/2|\psi^2x_\sigma^2/L_s\,dv\)</span>, each on <span class="math" data-tex="\([0,L_s]\)">\([0,L_s]\)</span>.
+Choose the one band threshold large enough that <span class="math" data-tex="\(L_s\ge25\)">\(L_s\ge25\)</span>. On <span class="math" data-tex="\(|v-L_s/2|\le\sqrt{L_s}\)">\(|v-L_s/2|\le\sqrt{L_s}\)</span>, the cutoff equals one. Integrating the lower bound there and enlarging the upper integrals to the real line proves</p>
+<span class="math math-display" data-tex="\[
+2c_x^2e^{-c_+}\sqrt{L_s}\le I_{0,\sigma}
+\le C_x^2\sqrt{\frac\pi{c_-}}\sqrt{L_s},\qquad
+I_{1,\sigma}\le \frac{C_x^2}{c_-}.
+\tag{SC2.2}
+\]">\[
+2c_x^2e^{-c_+}\sqrt{L_s}\le I_{0,\sigma}
+\le C_x^2\sqrt{\frac\pi{c_-}}\sqrt{L_s},\qquad
+I_{1,\sigma}\le \frac{C_x^2}{c_-}.
+\tag{SC2.2}
+\]</span>
+<p>For the last integral, <span class="math" data-tex="\(2L_s^{-1}\int_0^\infty s e^{-c_-s^2/L_s}\,ds=1/c_-\)">\(2L_s^{-1}\int_0^\infty s e^{-c_-s^2/L_s}\,ds=1/c_-\)</span>. The Gaussian integral in the preceding bound follows by squaring the positive integral and using polar coordinates: <span class="math" data-tex="\(\int_{\mathbb R^2}e^{-c_-(x^2+y^2)}dxdy=2\pi\int_0^\infty r e^{-c_-r^2}dr=\pi/c_-\)">\(\int_{\mathbb R^2}e^{-c_-(x^2+y^2)}dxdy=2\pi\int_0^\infty r e^{-c_-r^2}dr=\pi/c_-\)</span>. Thus these are analytic inequalities, not numerical enclosures. Equations (SC1.2), (SC1.5) and (SC2.2) yield</p>
+<span class="math math-display" data-tex="\[
+0&lt;h_-^*S_*^{-1/2}\le h_\sigma\le h_+^*S_*^{-1/2},\qquad
+\frac{I_{1,\sigma}}{I_{0,\sigma}}\le C S_*^{-1/2}.
+\tag{SC2.3}
+\]">\[
+0&lt;h_-^*S_*^{-1/2}\le h_\sigma\le h_+^*S_*^{-1/2},\qquad
+\frac{I_{1,\sigma}}{I_{0,\sigma}}\le C S_*^{-1/2}.
+\tag{SC2.3}
+\]</span>
+<p>For clarity, <span class="math" data-tex="\(h_-^*,h_+^*\)">\(h_-^*,h_+^*\)</span> are fixed bounds applying to both signs, not the two different numbers <span class="math" data-tex="\(h_-\)">\(h_-\)</span> and <span class="math" data-tex="\(h_+\)">\(h_+\)</span>.</p>
+<p>In the frozen orthonormal tangential frame of PU1,</p>
+<span class="math math-display" data-tex="\[
+N=\frac{g_0}{|g_0|},\quad K=(-N_z,N_\theta),\quad
+c_0=\frac{\lambda_0}{2F_0N_\theta}&lt;0,\quad
+s_\sigma(v)=\sigma\left(\frac{u_*}{2}+\frac{u_*v}{L_s}\right),
+\]">\[
+N=\frac{g_0}{|g_0|},\quad K=(-N_z,N_\theta),\quad
+c_0=\frac{\lambda_0}{2F_0N_\theta}&lt;0,\quad
+s_\sigma(v)=\sigma\left(\frac{u_*}{2}+\frac{u_*v}{L_s}\right),
+\]</span>
+<p>PU1 and PU5 prove, uniformly throughout the enlarged slow box,</p>
+<span class="math math-display" data-tex="\[
+\frac{(t^h_\sigma)_{\rm tan}}{x_\sigma}
+=-s_\sigma(v)K+c_0\sqrt{1+s_\sigma(v)^2}\,N+e^{\rm loc}_\sigma(v),
+\qquad |e^{\rm loc}_\sigma(v)|\le C S_*^{-1}.
+\tag{SC2.4}
+\]">\[
+\frac{(t^h_\sigma)_{\rm tan}}{x_\sigma}
+=-s_\sigma(v)K+c_0\sqrt{1+s_\sigma(v)^2}\,N+e^{\rm loc}_\sigma(v),
+\qquad |e^{\rm loc}_\sigma(v)|\le C S_*^{-1}.
+\tag{SC2.4}
+\]</span>
+<p>This uses the actual formula <span class="math" data-tex="\((t^h)_{\rm tan}=-s_axK_a+yN_a\)">\((t^h)_{\rm tan}=-s_axK_a+yN_a\)</span>, including its moving-frame error. The derivative of <span class="math" data-tex="\(s\mapsto-sK+c_0\sqrt{1+s^2}N\)">\(s\mapsto-sK+c_0\sqrt{1+s^2}N\)</span> has norm at most <span class="math" data-tex="\(1+|c_0|\)">\(1+|c_0|\)</span>. Since
+<span class="math" data-tex="\(|s_\sigma(v)-\sigma u_*|=u_*|v-L_s/2|/L_s\)">\(|s_\sigma(v)-\sigma u_*|=u_*|v-L_s/2|/L_s\)</span>, averaging (SC2.4) with the positive probability density <span class="math" data-tex="\(\psi^2x_\sigma^2/I_{0,\sigma}\)">\(\psi^2x_\sigma^2/I_{0,\sigma}\)</span> gives the exact representation</p>
+<span class="math math-display" data-tex="\[
+\mathsf H_\sigma=h_\sigma(-A_cN-\sigma u_*K+e_\sigma),\qquad
+A_c=-c_0\sqrt{1+u_*^2}&gt;0,\qquad |e_\sigma|\le C_eS_*^{-1/2}.
+\tag{SC2.5}
+\]">\[
+\mathsf H_\sigma=h_\sigma(-A_cN-\sigma u_*K+e_\sigma),\qquad
+A_c=-c_0\sqrt{1+u_*^2}&gt;0,\qquad |e_\sigma|\le C_eS_*^{-1/2}.
+\tag{SC2.5}
+\]</span>
+<p>The error is explicitly the average of <span class="math" data-tex="\(e^{\rm loc}_\sigma\)">\(e^{\rm loc}_\sigma\)</span> plus the difference between the displayed reference direction and its midpoint value. Thus it includes both the moving-frame and finite-width contributions. PU1 supplies fixed <span class="math" data-tex="\(0&lt;A_-\le A_c\le A_+\)">\(0&lt;A_-\le A_c\le A_+\)</span>. All fixed derivatives of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> have polynomial bounds in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>: apply Leibniz to the exact integral (SC1.5), use the PU5 bounds for each differentiated pulse, and integrate on an interval of length <span class="math" data-tex="\(L_s\le2r_0T_gS_*\)">\(L_s\le2r_0T_gS_*\)</span>. The limits, cutoffs and <span class="math" data-tex="\(c_i\)">\(c_i\)</span> are fixed under slow differentiation. No derivative of a pointwise error estimate is being assumed.</p>
+<h2 id="sc3-the-original-cone-margin-and-an-explicit-inverse-estimate">SC3. The original cone margin and an explicit inverse estimate</h2>
+<p>Original (4.20) defines <span class="math" data-tex="\(t_s=-b_s/a\)">\(t_s=-b_s/a\)</span> and <span class="math" data-tex="\(v_s=a(1+t_s^2)\)">\(v_s=a(1+t_s^2)\)</span>. Original (7.1) uses <span class="math" data-tex="\(g=F(-a,b_s)\)">\(g=F(-a,b_s)\)</span>, with <span class="math" data-tex="\(F,a,v_s-2\)">\(F,a,v_s-2\)</span> bounded below positively. Before freezing the point,</p>
+<span class="math math-display" data-tex="\[
+N=-\frac{(1,t_s)}{\sqrt{1+t_s^2}},\qquad
+K=\frac{(t_s,-1)}{\sqrt{1+t_s^2}},\qquad
+c_0^2=\frac{v_s-2}{2}.
+\tag{SC3.1}
+\]">\[
+N=-\frac{(1,t_s)}{\sqrt{1+t_s^2}},\qquad
+K=\frac{(t_s,-1)}{\sqrt{1+t_s^2}},\qquad
+c_0^2=\frac{v_s-2}{2}.
+\tag{SC3.1}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(2FN_\theta=-2F/\sqrt{1+t_s^2}\)">\(2FN_\theta=-2F/\sqrt{1+t_s^2}\)</span>, <span class="math" data-tex="\(|g|=Fa\sqrt{1+t_s^2}\)">\(|g|=Fa\sqrt{1+t_s^2}\)</span>, so
+<span class="math" data-tex="\(\lambda_0^2=-2FN_\theta(2FN_\theta+|g|)=2aF^2(1-2/v_s)\)">\(\lambda_0^2=-2FN_\theta(2FN_\theta+|g|)=2aF^2(1-2/v_s)\)</span>; dividing by <span class="math" data-tex="\((2FN_\theta)^2\)">\((2FN_\theta)^2\)</span> proves the last identity. Here is the full profile-to-chart comparison behind this calculation. Original (4.3)–(4.4) give <span class="math" data-tex="\(u_\theta^{(0)}=q^{-A}E\)">\(u_\theta^{(0)}=q^{-A}E\)</span>, <span class="math" data-tex="\(u_z^{(0)}=q^{-A}U\)">\(u_z^{(0)}=q^{-A}U\)</span>, <span class="math" data-tex="\(E=\sqrt{2X}F_{\rm prof}\)">\(E=\sqrt{2X}F_{\rm prof}\)</span>, <span class="math" data-tex="\(F_{\rm prof}=\phi/\mathsf C\)">\(F_{\rm prof}=\phi/\mathsf C\)</span>. With <span class="math" data-tex="\(\xi=q/Q\)">\(\xi=q/Q\)</span>, their chart values are <span class="math" data-tex="\(V^{(0)}=\xi^{-A}E\)">\(V^{(0)}=\xi^{-A}E\)</span>, <span class="math" data-tex="\(G^{(0)}=\xi^{-A}U\)">\(G^{(0)}=\xi^{-A}U\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{\rm chart}^{(0)}&amp;=V^{(0)}/R=\xi^{-A-1/2}F_{\rm prof},\\
+R\partial_RF_{\rm chart}^{(0)}
+&amp;=\xi^{-A-1/2}2X(F_{\rm prof})_X=-aF_{\rm chart}^{(0)},\\
+\partial_RG^{(0)}&amp;=\xi^{-A-1/2}\sqrt{2X}U_X=b_sF_{\rm chart}^{(0)}.
+\end{aligned}
+\tag{SC3.1a}
+\]">\[
+\begin{aligned}
+F_{\rm chart}^{(0)}&amp;=V^{(0)}/R=\xi^{-A-1/2}F_{\rm prof},\\
+R\partial_RF_{\rm chart}^{(0)}
+&amp;=\xi^{-A-1/2}2X(F_{\rm prof})_X=-aF_{\rm chart}^{(0)},\\
+\partial_RG^{(0)}&amp;=\xi^{-A-1/2}\sqrt{2X}U_X=b_sF_{\rm chart}^{(0)}.
+\end{aligned}
+\tag{SC3.1a}
+\]</span>
+<p>These identities use <span class="math" data-tex="\(X=R^2/(2\xi)\)">\(X=R^2/(2\xi)\)</span>, with <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> fixed under <span class="math" data-tex="\(\partial_R\)">\(\partial_R\)</span>, and the full original (4.11) definitions <span class="math" data-tex="\(a=1-2X\partial_X\log E\)">\(a=1-2X\partial_X\log E\)</span>, <span class="math" data-tex="\(b_s=2XU_X/E\)">\(b_s=2XU_X/E\)</span>. Thus <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span> and the target stress each retain their displayed positive factor <span class="math" data-tex="\(\xi^{-A-1/2}\)">\(\xi^{-A-1/2}\)</span>; that factor cancels only in the explicitly computed frame and in the ratio defining <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. No amplitude normalization <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> or physical stress factor has been discarded.</p>
+<p>Write <span class="math" data-tex="\(\kappa_c\in(0,2)\)">\(\kappa_c\in(0,2)\)</span> for the constant called <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> in original (4.26), to distinguish it from the derivative-loss constant <span class="math" data-tex="\(\kappa_s=10^{-5}\)">\(\kappa_s=10^{-5}\)</span>. For the original unit stress direction <span class="math" data-tex="\(n=\mathcal T_0/|\mathcal T_0|\)">\(n=\mathcal T_0/|\mathcal T_0|\)</span>, that equation is</p>
+<span class="math math-display" data-tex="\[
+n_\theta+t_sn_z\ge\kappa_c,\qquad
+(v_s-2)(n_z-t_sn_\theta)^2\le(2-\kappa_c)(n_\theta+t_sn_z)^2.
+\tag{SC3.2}
+\]">\[
+n_\theta+t_sn_z\ge\kappa_c,\qquad
+(v_s-2)(n_z-t_sn_\theta)^2\le(2-\kappa_c)(n_\theta+t_sn_z)^2.
+\tag{SC3.2}
+\]</span>
+<p>For <span class="math" data-tex="\(T=\mathcal T_{0,*}=(Q/q)^{A+1/2}\mathcal T_0\)">\(T=\mathcal T_{0,*}=(Q/q)^{A+1/2}\mathcal T_0\)</span>, (SC3.1) gives</p>
+<span class="math math-display" data-tex="\[
+T_N=-\frac{T_\theta+t_sT_z}{\sqrt{1+t_s^2}}&lt;0,\quad
+T_K=-\frac{T_z-t_sT_\theta}{\sqrt{1+t_s^2}},\quad
+\left|c_0\frac{T_K}{T_N}\right|\le\sqrt{1-\kappa_c/2}&lt;1.
+\tag{SC3.3}
+\]">\[
+T_N=-\frac{T_\theta+t_sT_z}{\sqrt{1+t_s^2}}&lt;0,\quad
+T_K=-\frac{T_z-t_sT_\theta}{\sqrt{1+t_s^2}},\quad
+\left|c_0\frac{T_K}{T_N}\right|\le\sqrt{1-\kappa_c/2}&lt;1.
+\tag{SC3.3}
+\]</span>
+<p>At either edge use the smooth unit direction in (SC3.2), not the undefined quotient of two zero stress components. Its denominator stays uniformly away from zero, since <span class="math" data-tex="\(t_s\)">\(t_s\)</span> is bounded on the closed annulus. This proves continuity of the directional quotient there.</p>
+<p>Let <span class="math" data-tex="\(m_c\)">\(m_c\)</span> be its supremum on the closed annulus. The original choice of the single constant <span class="math" data-tex="\(u_*&gt;0\)">\(u_*&gt;0\)</span> satisfies <span class="math" data-tex="\(r_u=u_*/\sqrt{1+u_*^2}&gt;m_c\)">\(r_u=u_*/\sqrt{1+u_*^2}&gt;m_c\)</span>. Such a choice exists because <span class="math" data-tex="\(m_c&lt;1\)">\(m_c&lt;1\)</span> and <span class="math" data-tex="\(r_u\to1\)">\(r_u\to1\)</span> as <span class="math" data-tex="\(u_*\to\infty\)">\(u_*\to\infty\)</span>. All frozen frames and coefficients range over a compact set with the positive denominators in PU1. For each actual point of the closed shell, hold its unit stress direction fixed while comparing the frame at that point to the frame at the representative; only the frame and its growth coefficient are frozen. The frame is defined on the fixed enlarged annulus even when the representative lies outside the shell. The smooth profile-to-chart map and frame have bounded first derivatives; the enlarged slow box has diameter at most <span class="math" data-tex="\(CS_*^{-3}\)">\(CS_*^{-3}\)</span>. The mean-value formula along a segment in its fixed enlarged neighborhood therefore bounds the change of the numerator and denominator of this quotient by <span class="math" data-tex="\(C&#x27;S_*^{-3}\)">\(C&#x27;S_*^{-3}\)</span>. For a positive denominator bounded below by <span class="math" data-tex="\(d_0\)">\(d_0\)</span>, the quotient difference is at most <span class="math" data-tex="\(2C&#x27;S_*^{-3}(d_0^{-1}+M_0d_0^{-2})\)">\(2C&#x27;S_*^{-3}(d_0^{-1}+M_0d_0^{-2})\)</span> once its change is at most <span class="math" data-tex="\(d_0/2\)">\(d_0/2\)</span>, with <span class="math" data-tex="\(M_0\)">\(M_0\)</span> a fixed numerator bound. Choose the band threshold so this difference is at most <span class="math" data-tex="\((r_u-m_c)/2\)">\((r_u-m_c)/2\)</span>. The frozen frame then satisfies</p>
+<span class="math math-display" data-tex="\[
+T_N&lt;0,\qquad \frac{|T_K|}{u_*}\le(1-\eta_c)\frac{-T_N}{A_c},\qquad
+\eta_c=\frac{r_u-m_c}{2r_u}\in(0,1).
+\tag{SC3.4}
+\]">\[
+T_N&lt;0,\qquad \frac{|T_K|}{u_*}\le(1-\eta_c)\frac{-T_N}{A_c},\qquad
+\eta_c=\frac{r_u-m_c}{2r_u}\in(0,1).
+\tag{SC3.4}
+\]</span>
+<p>The argument covers the shell edges using their unit directions. It is a value estimate, not smallness of arbitrarily high derivatives. One finite band threshold suffices for this margin and for the pulse estimates.</p>
+<p>Put <span class="math" data-tex="\(F_{NK}=[N\mid K]\)">\(F_{NK}=[N\mid K]\)</span>; this orthogonal matrix has determinant <span class="math" data-tex="\(+1\)">\(+1\)</span> in the original <span class="math" data-tex="\((\theta,z)\)">\((\theta,z)\)</span> orientation. Set</p>
+<span class="math math-display" data-tex="\[
+C_0=\begin{pmatrix}-A_c&amp;-A_c\\-u_*&amp;u_*\end{pmatrix},\quad
+E_c=[F_{NK}^Te_+\mid F_{NK}^Te_-],\quad D_h=\operatorname{diag}(h_+,h_-).
+\]">\[
+C_0=\begin{pmatrix}-A_c&amp;-A_c\\-u_*&amp;u_*\end{pmatrix},\quad
+E_c=[F_{NK}^Te_+\mid F_{NK}^Te_-],\quad D_h=\operatorname{diag}(h_+,h_-).
+\]</span>
+<p>Then the actual covariance matrix, including its error, factors exactly as</p>
+<span class="math math-display" data-tex="\[
+\mathsf H=F_{NK}(C_0+E_c)D_h,
+\quad C_0^{-1}=\frac12\begin{pmatrix}-A_c^{-1}&amp;-u_*^{-1}\\-A_c^{-1}&amp;u_*^{-1}\end{pmatrix},
+\quad \det C_0=-2A_cu_*.
+\tag{SC3.5}
+\]">\[
+\mathsf H=F_{NK}(C_0+E_c)D_h,
+\quad C_0^{-1}=\frac12\begin{pmatrix}-A_c^{-1}&amp;-u_*^{-1}\\-A_c^{-1}&amp;u_*^{-1}\end{pmatrix},
+\quad \det C_0=-2A_cu_*.
+\tag{SC3.5}
+\]</span>
+<p>In the induced infinity norm, <span class="math" data-tex="\(\|C_0^{-1}\|_\infty\le M_c=\tfrac12(A_-^{-1}+u_*^{-1})\)">\(\|C_0^{-1}\|_\infty\le M_c=\tfrac12(A_-^{-1}+u_*^{-1})\)</span> and <span class="math" data-tex="\(\|E_c\|_\infty\le2C_eS_*^{-1/2}\)">\(\|E_c\|_\infty\le2C_eS_*^{-1/2}\)</span>. Enlarge the single threshold so</p>
+<span class="math math-display" data-tex="\[
+\vartheta:=\|C_0^{-1}E_c\|_\infty\le2M_cC_eS_*^{-1/2}\le\frac{\eta_c}{4+\eta_c}&lt;1.
+\tag{SC3.6}
+\]">\[
+\vartheta:=\|C_0^{-1}E_c\|_\infty\le2M_cC_eS_*^{-1/2}\le\frac{\eta_c}{4+\eta_c}&lt;1.
+\tag{SC3.6}
+\]</span>
+<p>The geometric series <span class="math" data-tex="\(\sum_{j\ge0}(-C_0^{-1}E_c)^j\)">\(\sum_{j\ge0}(-C_0^{-1}E_c)^j\)</span> converges absolutely in this matrix norm and its product with <span class="math" data-tex="\(I+C_0^{-1}E_c\)">\(I+C_0^{-1}E_c\)</span> is <span class="math" data-tex="\(I\)">\(I\)</span>, by cancellation of partial sums and a remainder tending to zero. This proves invertibility and the inverse norm bound <span class="math" data-tex="\((1-\vartheta)^{-1}\)">\((1-\vartheta)^{-1}\)</span>.</p>
+<p>For the target set <span class="math" data-tex="\(s_T=-T_N/A_c&gt;0\)">\(s_T=-T_N/A_c&gt;0\)</span>, <span class="math" data-tex="\(t_T=T_K/u_*\)">\(t_T=T_K/u_*\)</span>. The reference vector is</p>
+<span class="math math-display" data-tex="\[
+z^0=C_0^{-1}(T_N,T_K)^T
+=\tfrac12(s_T-t_T,s_T+t_T)^T,
+\qquad \eta_cs_T/2\le z^0_\sigma\le s_T.
+\]">\[
+z^0=C_0^{-1}(T_N,T_K)^T
+=\tfrac12(s_T-t_T,s_T+t_T)^T,
+\qquad \eta_cs_T/2\le z^0_\sigma\le s_T.
+\]</span>
+<p>The actual vector <span class="math" data-tex="\(z=D_h\mathsf H^{-1}T\)">\(z=D_h\mathsf H^{-1}T\)</span> equals <span class="math" data-tex="\((I+C_0^{-1}E_c)^{-1}z^0\)">\((I+C_0^{-1}E_c)^{-1}z^0\)</span>, whence</p>
+<span class="math math-display" data-tex="\[
+\|z-z^0\|_\infty\le\frac{\vartheta}{1-\vartheta}s_T\le\eta_cs_T/4,
+\qquad \eta_cs_T/4\le z_\sigma\le(1+\eta_c/4)s_T.
+\tag{SC3.7}
+\]">\[
+\|z-z^0\|_\infty\le\frac{\vartheta}{1-\vartheta}s_T\le\eta_cs_T/4,
+\qquad \eta_cs_T/4\le z_\sigma\le(1+\eta_c/4)s_T.
+\tag{SC3.7}
+\]</span>
+<p>Also <span class="math" data-tex="\(|T|^2=A_c^2s_T^2+u_*^2t_T^2\)">\(|T|^2=A_c^2s_T^2+u_*^2t_T^2\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\frac{|T|}{\sqrt{A_+^2+u_*^2(1-\eta_c)^2}}\le s_T\le\frac{|T|}{A_-}.
+\tag{SC3.8}
+\]">\[
+\frac{|T|}{\sqrt{A_+^2+u_*^2(1-\eta_c)^2}}\le s_T\le\frac{|T|}{A_-}.
+\tag{SC3.8}
+\]</span>
+<p>Divide (SC3.7) by (SC2.3). This proves the positive, two-sided amplitude bounds, with every component retained:</p>
+<span class="math math-display" data-tex="\[
+c\sqrt{S_*}|T|\le y_\sigma:=(\mathsf H^{-1}T)_\sigma\le C\sqrt{S_*}|T|,
+\qquad \|\mathsf H^{-1}\|_\infty\le C\sqrt{S_*}.
+\tag{SC3.9}
+\]">\[
+c\sqrt{S_*}|T|\le y_\sigma:=(\mathsf H^{-1}T)_\sigma\le C\sqrt{S_*}|T|,
+\qquad \|\mathsf H^{-1}\|_\infty\le C\sqrt{S_*}.
+\tag{SC3.9}
+\]</span>
+<p>For completeness, every complex eigenvalue of <span class="math" data-tex="\(C_0^{-1}E_c\)">\(C_0^{-1}E_c\)</span> has modulus at most <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>: apply the eigenvector equation to a component of maximum modulus. Thus <span class="math" data-tex="\(|\det(I+C_0^{-1}E_c)|\ge(1-\vartheta)^2\)">\(|\det(I+C_0^{-1}E_c)|\ge(1-\vartheta)^2\)</span>. Along the path multiplying this error matrix by <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, this real determinant cannot vanish and starts at one. It is therefore positive. Consequently</p>
+<span class="math math-display" data-tex="\[
+\det\mathsf H&lt;0,\qquad
+|\det\mathsf H|\ge 2A_-u_*(h_-^*)^2(1-\vartheta)^2S_*^{-1}.
+\tag{SC3.10}
+\]">\[
+\det\mathsf H&lt;0,\qquad
+|\det\mathsf H|\ge 2A_-u_*(h_-^*)^2(1-\vartheta)^2S_*^{-1}.
+\tag{SC3.10}
+\]</span>
+<p>This retains the orientation of both original covariance columns.</p>
+<h2 id="sc4-every-derivative-and-both-shell-boundaries">SC4. Every derivative and both shell boundaries</h2>
+<p>The exact chart variables are</p>
+<span class="math math-display" data-tex="\[
+\xi=q/Q,\quad \xi-Z^2\xi^{2h}=T_{\rm time},\quad
+X=R^2/(2\xi),\quad \eta=Z\xi^{-D}.
+\]">\[
+\xi=q/Q,\quad \xi-Z^2\xi^{2h}=T_{\rm time},\quad
+X=R^2/(2\xi),\quad \eta=Z\xi^{-D}.
+\]</span>
+<p>Here <span class="math" data-tex="\(R=r/\sqrt Q\)">\(R=r/\sqrt Q\)</span>, <span class="math" data-tex="\(Z=z/Q^D\)">\(Z=z/Q^D\)</span>, <span class="math" data-tex="\(T_{\rm time}=(1-t)/Q\)">\(T_{\rm time}=(1-t)/Q\)</span>. On the original chart, <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is bounded above and below and <span class="math" data-tex="\(|\eta|\le1\)">\(|\eta|\le1\)</span>. The derivative in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of its defining equation is <span class="math" data-tex="\(1-2h\eta^2\ge1-2h&gt;0\)">\(1-2h\eta^2\ge1-2h&gt;0\)</span>. Repeated implicit differentiation, dividing only by this denominator, bounds every fixed derivative of <span class="math" data-tex="\(\xi,X,\eta\)">\(\xi,X,\eta\)</span> and <span class="math" data-tex="\(\xi^{-A-1/2}\)">\(\xi^{-A-1/2}\)</span>. Apply this chain rule to original (4.27), on page 33:</p>
+<span class="math math-display" data-tex="\[
+|\mathcal T_0|\ge c\zeta,\qquad
+|\partial_X^{j_1}\partial_\eta^{j_2}\mathcal T_0|\le C_j\zeta\delta^{-m_j},\qquad
+\delta=\min\{1,\log(X/X_a),\log(X_b/X)\}.
+\]">\[
+|\mathcal T_0|\ge c\zeta,\qquad
+|\partial_X^{j_1}\partial_\eta^{j_2}\mathcal T_0|\le C_j\zeta\delta^{-m_j},\qquad
+\delta=\min\{1,\log(X/X_a),\log(X_b/X)\}.
+\]</span>
+<p>It gives <span class="math" data-tex="\(|T|\ge c&#x27;\zeta\)">\(|T|\ge c&#x27;\zeta\)</span> and <span class="math" data-tex="\(|\partial^IT|\le C_I\zeta\delta^{-a_I}\)">\(|\partial^IT|\le C_I\zeta\delta^{-a_I}\)</span>. These are the precise leading-profile assertions consumed here. V5–V7 construct them, and <a href="local-construction-assembly-audit.html">I1–I2</a> proves the complete receiving maps with the actual base and its fixed margins.</p>
+<p>For every nonzero multi-index <span class="math" data-tex="\(I\)">\(I\)</span>, differentiating <span class="math" data-tex="\(\mathsf H\mathsf H^{-1}=I_2\)">\(\mathsf H\mathsf H^{-1}=I_2\)</span> gives the recursion</p>
+<span class="math math-display" data-tex="\[
+\partial^I\mathsf H^{-1}
+=-\mathsf H^{-1}\sum_{0&lt;J\le I}\binom IJ
+(\partial^J\mathsf H)(\partial^{I-J}\mathsf H^{-1}).
+\tag{SC4.1}
+\]">\[
+\partial^I\mathsf H^{-1}
+=-\mathsf H^{-1}\sum_{0&lt;J\le I}\binom IJ
+(\partial^J\mathsf H)(\partial^{I-J}\mathsf H^{-1}).
+\tag{SC4.1}
+\]</span>
+<p>Induction using SC2 and (SC3.9) bounds each derivative by a finite polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>. Multiplying by the full derivatives of <span class="math" data-tex="\(T\)">\(T\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+y_\sigma\ge c\sqrt{S_*}\zeta,\qquad
+|\partial^Iy_\sigma|\le C_IS_*^{b_I}\zeta\delta^{-a_I}.
+\tag{SC4.2}
+\]">\[
+y_\sigma\ge c\sqrt{S_*}\zeta,\qquad
+|\partial^Iy_\sigma|\le C_IS_*^{b_I}\zeta\delta^{-a_I}.
+\tag{SC4.2}
+\]</span>
+<p>Set <span class="math" data-tex="\(a_\sigma=\sqrt{y_\sigma}\)">\(a_\sigma=\sqrt{y_\sigma}\)</span> in the open shell. For <span class="math" data-tex="\(|I|&gt;0\)">\(|I|&gt;0\)</span>, repeated chain and product rules give a finite sum</p>
+<span class="math math-display" data-tex="\[
+\partial^Ia_\sigma=
+\sum_{n=1}^{|I|}\ 
+\sum_{I_1+\cdots+I_n=I,\ |I_j|&gt;0}
+c_{I_1,\ldots,I_n}y_\sigma^{1/2-n}\prod_{j=1}^n\partial^{I_j}y_\sigma.
+\tag{SC4.3}
+\]">\[
+\partial^Ia_\sigma=
+\sum_{n=1}^{|I|}\ 
+\sum_{I_1+\cdots+I_n=I,\ |I_j|&gt;0}
+c_{I_1,\ldots,I_n}y_\sigma^{1/2-n}\prod_{j=1}^n\partial^{I_j}y_\sigma.
+\tag{SC4.3}
+\]</span>
+<p>Every term has weight <span class="math" data-tex="\(\zeta^{1/2-n}\zeta^n=\sqrt\zeta\)">\(\zeta^{1/2-n}\zeta^n=\sqrt\zeta\)</span>; all powers of <span class="math" data-tex="\(S_*\)">\(S_*\)</span> and <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> remain in finite order-dependent bounds. For <span class="math" data-tex="\(I=0\)">\(I=0\)</span>, take the square root of the upper bound in (SC4.2). Therefore</p>
+<span class="math math-display" data-tex="\[
+|\partial^Ia_\sigma|\le C_IS_*^{b&#x27;_I}\sqrt\zeta\delta^{-a&#x27;_I}.
+\tag{SC4.4}
+\]">\[
+|\partial^Ia_\sigma|\le C_IS_*^{b&#x27;_I}\sqrt\zeta\delta^{-a&#x27;_I}.
+\tag{SC4.4}
+\]</span>
+<p>The fixed source weight is smooth and flat at each radial edge. Taylor's formula with integral remainder, using its vanishing jets, gives <span class="math" data-tex="\(0\le\zeta\le C_Nd^N\)">\(0\le\zeta\le C_Nd^N\)</span> near either edge for every integer <span class="math" data-tex="\(N\)">\(N\)</span>, where <span class="math" data-tex="\(d\)">\(d\)</span> is the distance to that edge. The logarithmic distances in <span class="math" data-tex="\(\delta\)">\(\delta\)</span> are comparable to <span class="math" data-tex="\(d\)">\(d\)</span> there, since <span class="math" data-tex="\(0&lt;X_a&lt;X_b&lt;\infty\)">\(0&lt;X_a&lt;X_b&lt;\infty\)</span>. Given any fixed power in (SC4.4), choose <span class="math" data-tex="\(N\)">\(N\)</span> more than twice that power. Then <span class="math" data-tex="\(\sqrt\zeta\delta^{-a&#x27;_I}\to0\)">\(\sqrt\zeta\delta^{-a&#x27;_I}\to0\)</span>. Extend every derivative by zero. Difference quotients in a smooth boundary coordinate, followed by induction on derivative order, show that these extended derivatives are derivatives of the zero-extended function. Thus <span class="math" data-tex="\(a_\sigma\)">\(a_\sigma\)</span> extends smoothly by zero; no value of <span class="math" data-tex="\(1/a_\sigma\)">\(1/a_\sigma\)</span> at an edge is being assigned. This argument uses the original flat weight and does not require replacing it by a special exponential formula.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+W_0=\sqrt\varepsilon\sum_{\sigma=\pm1}a_\sigma b_\sigma.
+\tag{SC4.5}
+\]">\[
+W_0=\sqrt\varepsilon\sum_{\sigma=\pm1}a_\sigma b_\sigma.
+\tag{SC4.5}
+\]</span>
+<p>The coefficients of <span class="math" data-tex="\(e^{\pm ik\Phi_\sigma}\)">\(e^{\pm ik\Phi_\sigma}\)</span> are each <span class="math" data-tex="\(\sqrt\varepsilon a_\sigma\chi_g\psi t^h_\sigma/2\)">\(\sqrt\varepsilon a_\sigma\chi_g\psi t^h_\sigma/2\)</span>. PU5 bounds each fixed derivative of <span class="math" data-tex="\(t^h_\sigma\)">\(t^h_\sigma\)</span> by a polynomial in <span class="math" data-tex="\(S_*\)">\(S_*\)</span> times the original envelope <span class="math" data-tex="\(P(v)\)">\(P(v)\)</span>. Thus the coefficients obey <span class="math" data-tex="\(\varepsilon^{1/2}S_*^{b_I}\sqrt\zeta\delta^{-a_I}P(v)\)">\(\varepsilon^{1/2}S_*^{b_I}\sqrt\zeta\delta^{-a_I}P(v)\)</span> bounds. With the slow cutoff, <span class="math" data-tex="\(\eta_\beta W_0\in\mathsf W_{1/2}\)">\(\eta_\beta W_0\in\mathsf W_{1/2}\)</span>, including all support and common-torus requirements. Without that cutoff the same local coefficient bounds hold, and (SC1.6) gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal C(W_0)=\varepsilon\mathsf H y=\varepsilon T.
+\tag{SC4.6}
+\]">\[
+\mathcal C(W_0)=\varepsilon\mathsf H y=\varepsilon T.
+\tag{SC4.6}
+\]</span>
+<h2 id="sc5-signed-increments-and-the-exact-retained-quadratic-term">SC5. Signed increments and the exact retained quadratic term</h2>
+<p>Keep the positive coefficients <span class="math" data-tex="\(a_\sigma\)">\(a_\sigma\)</span> just constructed fixed at all later stages. Let <span class="math" data-tex="\(\Sigma(R,Z,T_{\rm time})\)">\(\Sigma(R,Z,T_{\rm time})\)</span> be the real two-component stress supplied to this operator, independent of both <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and the auxiliary variables, with the original <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> estimates</p>
+<span class="math math-display" data-tex="\[
+|\partial^I\Sigma|\le C_I\varepsilon^\alpha S_*^{b_I}\zeta\delta^{-a_I}.
+\]">\[
+|\partial^I\Sigma|\le C_I\varepsilon^\alpha S_*^{b_I}\zeta\delta^{-a_I}.
+\]</span>
+<p>Auxiliary independence is a required input property of this particular map; membership in <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> alone does not assert it. Define in the open shell</p>
+<span class="math math-display" data-tex="\[
+d_\Sigma=\mathsf H^{-1}(\Sigma/\varepsilon),\qquad
+\delta a_\sigma=\frac{(d_\Sigma)_\sigma}{2a_\sigma},\qquad
+\mathcal L_\beta\Sigma=\sqrt\varepsilon\sum_{\sigma=\pm1}\delta a_\sigma b_\sigma.
+\tag{SC5.1}
+\]">\[
+d_\Sigma=\mathsf H^{-1}(\Sigma/\varepsilon),\qquad
+\delta a_\sigma=\frac{(d_\Sigma)_\sigma}{2a_\sigma},\qquad
+\mathcal L_\beta\Sigma=\sqrt\varepsilon\sum_{\sigma=\pm1}\delta a_\sigma b_\sigma.
+\tag{SC5.1}
+\]</span>
+<p>The inverse bounds give
+<span class="math" data-tex="\(|\partial^I(d_\Sigma)_\sigma|\le C_I\varepsilon^{\alpha-1}S_*^{b&#x27;_I}\zeta\delta^{-a&#x27;_I}\)">\(|\partial^I(d_\Sigma)_\sigma|\le C_I\varepsilon^{\alpha-1}S_*^{b&#x27;_I}\zeta\delta^{-a&#x27;_I}\)</span>.
+Derivatives of <span class="math" data-tex="\(y_\sigma^{-1/2}\)">\(y_\sigma^{-1/2}\)</span> are finite sums of
+<span class="math" data-tex="\(C y_\sigma^{-k-1/2}\prod_{j=1}^k\partial^{I_j}y_\sigma\)">\(C y_\sigma^{-k-1/2}\prod_{j=1}^k\partial^{I_j}y_\sigma\)</span>, including <span class="math" data-tex="\(k=0\)">\(k=0\)</span> at order zero. Their weights are <span class="math" data-tex="\(\zeta^{-k-1/2}\zeta^k=\zeta^{-1/2}\)">\(\zeta^{-k-1/2}\zeta^k=\zeta^{-1/2}\)</span>. The extra <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> from <span class="math" data-tex="\(d_\Sigma\)">\(d_\Sigma\)</span> is therefore sufficient for every term in the product rule, giving</p>
+<span class="math math-display" data-tex="\[
+|\partial^I\delta a_\sigma|\le C_I\varepsilon^{\alpha-1}S_*^{b&#x27;&#x27;_I}\sqrt\zeta\delta^{-a&#x27;&#x27;_I}.
+\tag{SC5.2}
+\]">\[
+|\partial^I\delta a_\sigma|\le C_I\varepsilon^{\alpha-1}S_*^{b&#x27;&#x27;_I}\sqrt\zeta\delta^{-a&#x27;&#x27;_I}.
+\tag{SC5.2}
+\]</span>
+<p>SC4's boundary argument proves smooth zero extension. The pulse bounds then prove
+<span class="math" data-tex="\(\eta_\beta\mathcal L_\beta\Sigma\in\mathsf W_{\alpha-1/2}\)">\(\eta_\beta\mathcal L_\beta\Sigma\in\mathsf W_{\alpha-1/2}\)</span>.
+Linearity in <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> follows because <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>, <span class="math" data-tex="\(a_\sigma\)">\(a_\sigma\)</span>, and <span class="math" data-tex="\(b_\sigma\)">\(b_\sigma\)</span> are fixed, also at the boundary after extension. No sign or relative-size condition on <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> has been introduced.</p>
+<p>The coefficients can be moved outside both averages. Cross-label products are zero. Equations (SC1.5) and (SC5.1) now give</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_{\rm cov}(W_0,\mathcal L_\beta\Sigma)
+=\varepsilon\mathsf H(2a\odot\delta a)
+=\varepsilon\mathsf H d_\Sigma=\Sigma.
+\tag{SC5.3}
+\]">\[
+\mathcal B_{\rm cov}(W_0,\mathcal L_\beta\Sigma)
+=\varepsilon\mathsf H(2a\odot\delta a)
+=\varepsilon\mathsf H d_\Sigma=\Sigma.
+\tag{SC5.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(\odot\)">\(\odot\)</span> denotes componentwise multiplication. The cosine factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is already in each column of <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span>. The cross term has the separate factor two because differentiating <span class="math" data-tex="\(a_\sigma^2\)">\(a_\sigma^2\)</span> gives <span class="math" data-tex="\(2a_\sigma\delta a_\sigma\)">\(2a_\sigma\delta a_\sigma\)</span>. In particular the full change is</p>
+<span class="math math-display" data-tex="\[
+\mathcal C(W_0+\mathcal L_\beta\Sigma)
+=\varepsilon T+\Sigma+\mathcal C(\mathcal L_\beta\Sigma),\qquad
+\mathcal C(\mathcal L_\beta\Sigma)
+=\varepsilon\mathsf H((\delta a_+)^2,(\delta a_-)^2)^T.
+\tag{SC5.4}
+\]">\[
+\mathcal C(W_0+\mathcal L_\beta\Sigma)
+=\varepsilon T+\Sigma+\mathcal C(\mathcal L_\beta\Sigma),\qquad
+\mathcal C(\mathcal L_\beta\Sigma)
+=\varepsilon\mathsf H((\delta a_+)^2,(\delta a_-)^2)^T.
+\tag{SC5.4}
+\]</span>
+<p>Thus the map in (SC5.1) is a right inverse of the derivative of the covariance map. It does not drop the last quadratic term. Its angularly averaged products have the weight <span class="math" data-tex="\(\varepsilon^{2\alpha-1}\zeta\delta^{-a}P^2\)">\(\varepsilon^{2\alpha-1}\zeta\delta^{-a}P^2\)</span>, with <span class="math" data-tex="\(P^2\le1\)">\(P^2\le1\)</span>, and finite polynomial factors. Averaging over the mass-one auxiliary torus preserves this bound. Therefore <span class="math" data-tex="\(\mathcal C(\eta_\beta\mathcal L_\beta\Sigma)\in\mathsf M_{2\alpha-1}\)">\(\mathcal C(\eta_\beta\mathcal L_\beta\Sigma)\in\mathsf M_{2\alpha-1}\)</span>. These statements hold for every real <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; later improvement of an iterative error additionally depends on its actual exponent.</p>
+<h2 id="sc6-squared-partition-chart-transitions-and-physical-assembly">SC6. Squared partition, chart transitions, and physical assembly</h2>
+<p>At each fixed <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, the slow partition has bounded local overlap and <span class="math" data-tex="\(\sum_\beta\eta_\beta^2=1\)">\(\sum_\beta\eta_\beta^2=1\)</span>, counting each box once, not once for each sign. Define exactly as in original (7.35), with <span class="math" data-tex="\(Q_\beta=2^{-\ell_\beta}\)">\(Q_\beta=2^{-\ell_\beta}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+W_{0,\rm phys}^{\rm as}=\sum_\beta Q_\beta^{-A}\eta_\beta W_{0,\beta},\qquad
+\mathcal L_{\rm phys}^{\rm as}\sigma
+=\sum_\beta Q_\beta^{-A}\eta_\beta\mathcal L_\beta(Q_\beta^{2A}\sigma).
+\tag{SC6.1}
+\]">\[
+W_{0,\rm phys}^{\rm as}=\sum_\beta Q_\beta^{-A}\eta_\beta W_{0,\beta},\qquad
+\mathcal L_{\rm phys}^{\rm as}\sigma
+=\sum_\beta Q_\beta^{-A}\eta_\beta\mathcal L_\beta(Q_\beta^{2A}\sigma).
+\tag{SC6.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\sigma(r,z,t)\)">\(\sigma(r,z,t)\)</span> is the physical stress input, independent of the averaging variables; it is distinct from the sign label. A common torus can be chosen for all summands active at that point. Their cross-label products vanish on it by W2, even where their slow supports overlap. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal C(W_{0,\rm phys}^{\rm as})
+&amp;=\sum_\beta Q_\beta^{-2A}\eta_\beta^2\varepsilon_\beta
+(Q_\beta/q)^{A+1/2}\mathcal T_0
+=q^{-A-1/2}\mathcal T_0,\\
+\mathcal B_{\rm cov}(W_{0,\rm phys}^{\rm as},\mathcal L_{\rm phys}^{\rm as}\sigma)
+&amp;=\sum_\beta Q_\beta^{-2A}\eta_\beta^2Q_\beta^{2A}\sigma=\sigma.
+\end{split}
+\tag{SC6.2}
+\]">\[
+\begin{split}
+\mathcal C(W_{0,\rm phys}^{\rm as})
+&amp;=\sum_\beta Q_\beta^{-2A}\eta_\beta^2\varepsilon_\beta
+(Q_\beta/q)^{A+1/2}\mathcal T_0
+=q^{-A-1/2}\mathcal T_0,\\
+\mathcal B_{\rm cov}(W_{0,\rm phys}^{\rm as},\mathcal L_{\rm phys}^{\rm as}\sigma)
+&amp;=\sum_\beta Q_\beta^{-2A}\eta_\beta^2Q_\beta^{2A}\sigma=\sigma.
+\end{split}
+\tag{SC6.2}
+\]</span>
+<p>The scale identity in the first line is
+<span class="math" data-tex="\(Q^{-2A}Q^h(Q/q)^{A+1/2}=Q^{-A+h+1/2}q^{-A-1/2}=q^{-A-1/2}\)">\(Q^{-2A}Q^h(Q/q)^{A+1/2}=Q^{-A+h+1/2}q^{-A-1/2}=q^{-A-1/2}\)</span>, since <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>. There is no missing count of two from the sign labels.</p>
+<p>In a receiving chart of scale <span class="math" data-tex="\(Q\)">\(Q\)</span>, the representatives are</p>
+<span class="math math-display" data-tex="\[
+W_0^{\rm as}=Q^AW_{0,\rm phys}^{\rm as},\qquad
+\Sigma=Q^{2A}\sigma,\qquad
+\mathcal L^{\rm as}\Sigma=Q^A\mathcal L_{\rm phys}^{\rm as}(Q^{-2A}\Sigma).
+\tag{SC6.3}
+\]">\[
+W_0^{\rm as}=Q^AW_{0,\rm phys}^{\rm as},\qquad
+\Sigma=Q^{2A}\sigma,\qquad
+\mathcal L^{\rm as}\Sigma=Q^A\mathcal L_{\rm phys}^{\rm as}(Q^{-2A}\Sigma).
+\tag{SC6.3}
+\]</span>
+<p>An overlapping band has <span class="math" data-tex="\(|\ell_\beta-\ell|\le4\)">\(|\ell_\beta-\ell|\le4\)</span>. The ratios of its scales <span class="math" data-tex="\(Q_\beta/Q\)">\(Q_\beta/Q\)</span>, <span class="math" data-tex="\(\varepsilon_\beta/\varepsilon\)">\(\varepsilon_\beta/\varepsilon\)</span> and <span class="math" data-tex="\(S_{*,\beta}/S_*\)">\(S_{*,\beta}/S_*\)</span> are bounded above and below by constants independent of the band. The exact coordinate transition is</p>
+<span class="math math-display" data-tex="\[
+R_\beta=(Q/Q_\beta)^{1/2}R,\quad
+Z_\beta=(Q/Q_\beta)^DZ,\quad
+T_{{\rm time},\beta}=(Q/Q_\beta)T_{\rm time},
+\]">\[
+R_\beta=(Q/Q_\beta)^{1/2}R,\quad
+Z_\beta=(Q/Q_\beta)^DZ,\quad
+T_{{\rm time},\beta}=(Q/Q_\beta)T_{\rm time},
+\]</span>
+<p>and the common-to-band torus maps are the fixed powers of <span class="math" data-tex="\(J\)">\(J\)</span> with bounded exponent difference from W2. Each fixed derivative of a coefficient after these linear maps has the same class estimate with a changed finite constant and polynomial power. The profile <span class="math" data-tex="\(X\)">\(X\)</span>, its edge weight and the label's own pulse envelope are retained. Collect coefficients having the same label and harmonic before testing membership. Bounded local overlap then proves</p>
+<span class="math math-display" data-tex="\[
+W_0^{\rm as}\in\mathsf W_{1/2},\qquad
+\mathcal L^{\rm as}\Sigma\in\mathsf W_{\alpha-1/2},\qquad
+\mathcal B_{\rm cov}(W_0^{\rm as},\mathcal L^{\rm as}\Sigma)=\Sigma.
+\tag{SC6.4}
+\]">\[
+W_0^{\rm as}\in\mathsf W_{1/2},\qquad
+\mathcal L^{\rm as}\Sigma\in\mathsf W_{\alpha-1/2},\qquad
+\mathcal B_{\rm cov}(W_0^{\rm as},\mathcal L^{\rm as}\Sigma)=\Sigma.
+\tag{SC6.4}
+\]</span>
+<p>The equalities are compatible on chart overlaps because they arise from the same physical fields in (SC6.1). Local finiteness for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> suffices here. No extension at the singular terminal point is asserted by this assembly.</p>
+<h2 id="sc7-full-curls-and-the-stress-of-the-actual-velocity">SC7. Full curls and the stress of the actual velocity</h2>
+<p>For each harmonic <span class="math" data-tex="\(t_me^{ikm\Phi}\)">\(t_me^{ikm\Phi}\)</span> of the assembled primary or signed field, <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, let <span class="math" data-tex="\(n=\nabla_*\Phi\)">\(n=\nabla_*\Phi\)</span>. Its full coefficient is transverse: <span class="math" data-tex="\(n\cdot t_m=0\)">\(n\cdot t_m=0\)</span>. PU1 proves a uniform positive lower bound for <span class="math" data-tex="\(|n|\)">\(|n|\)</span>. The exact potential and remainder from PU6 are</p>
+<span class="math math-display" data-tex="\[
+C_m=\frac{i\,n\times t_m}{km|n|^2},\qquad
+r_m=(-D_z(C_m)_\theta,\ D_z(C_m)_r-D_r(C_m)_z,\ (D_r+R^{-1})(C_m)_\theta).
+\tag{SC7.1}
+\]">\[
+C_m=\frac{i\,n\times t_m}{km|n|^2},\qquad
+r_m=(-D_z(C_m)_\theta,\ D_z(C_m)_r-D_r(C_m)_z,\ (D_r+R^{-1})(C_m)_\theta).
+\tag{SC7.1}
+\]</span>
+<p>The curl of <span class="math" data-tex="\(C_me^{ikm\Phi}\)">\(C_me^{ikm\Phi}\)</span> is <span class="math" data-tex="\((t_m+r_m)e^{ikm\Phi}\)">\((t_m+r_m)e^{ikm\Phi}\)</span>, since <span class="math" data-tex="\(ikm n\times C_m=t_m\)">\(ikm n\times C_m=t_m\)</span>. Its divergence is exactly zero, including the cylindrical connection terms, by NI4. For a signed amplitude in <span class="math" data-tex="\(\mathsf W_{\alpha-1/2}\)">\(\mathsf W_{\alpha-1/2}\)</span>, PU6 gives <span class="math" data-tex="\(C_m\in\mathsf W_\alpha\)">\(C_m\in\mathsf W_\alpha\)</span> and <span class="math" data-tex="\(r_m\in\mathsf W_{\alpha-\kappa_s}\)">\(r_m\in\mathsf W_{\alpha-\kappa_s}\)</span>. It preserves all closed support restrictions. The <span class="math" data-tex="\(m=+1,-1\)">\(m=+1,-1\)</span> coefficients are conjugates, including their potentials: the sign of <span class="math" data-tex="\(i/m\)">\(i/m\)</span> changes on conjugation. The assembled curl field is therefore real.</p>
+<p>In particular the initial actual wave produced by the primary amplitudes is</p>
+<span class="math math-display" data-tex="\[
+U_0=W_0^{\rm as}+R_0,\qquad R_0\in\mathsf W_{1-\kappa_s},\qquad U_0\in\mathsf W_{1/2}.
+\tag{SC7.2}
+\]">\[
+U_0=W_0^{\rm as}+R_0,\qquad R_0\in\mathsf W_{1-\kappa_s},\qquad U_0\in\mathsf W_{1/2}.
+\tag{SC7.2}
+\]</span>
+<p>Its covariance in any chart is the exact expression</p>
+<span class="math math-display" data-tex="\[
+\mathcal C(U_0)=Q^{2A}q^{-A-1/2}\mathcal T_0
++\mathcal B_{\rm cov}(W_0^{\rm as},R_0)+\mathcal C(R_0),
+\tag{SC7.3}
+\]">\[
+\mathcal C(U_0)=Q^{2A}q^{-A-1/2}\mathcal T_0
++\mathcal B_{\rm cov}(W_0^{\rm as},R_0)+\mathcal C(R_0),
+\tag{SC7.3}
+\]</span>
+<p>where the two additional terms are in <span class="math" data-tex="\(\mathsf M_{3/2-\kappa_s}\)">\(\mathsf M_{3/2-\kappa_s}\)</span> and <span class="math" data-tex="\(\mathsf M_{2-2\kappa_s}\)">\(\mathsf M_{2-2\kappa_s}\)</span>, respectively. The target in this receiving chart is the physical one from (SC6.2), not a target frozen at a different box. Since <span class="math" data-tex="\(\kappa_s&lt;1/2\)">\(\kappa_s&lt;1/2\)</span>, their sum is in <span class="math" data-tex="\(\mathsf M_{3/2-\kappa_s}\)">\(\mathsf M_{3/2-\kappa_s}\)</span>. This supplies the primary stress wave and its actual curl defect to the iteration, using the complete actual base in Z0–Z9.</p>
+<p>At a later stage write the actual current wave as <span class="math" data-tex="\(U=W_0^{\rm as}+E\)">\(U=W_0^{\rm as}+E\)</span>, with its original recorded classes <span class="math" data-tex="\(U\in\mathsf W_{1/2}\)">\(U\in\mathsf W_{1/2}\)</span>, <span class="math" data-tex="\(E\in\mathsf W_\rho\)">\(E\in\mathsf W_\rho\)</span>. For a signed increment let
+<span class="math" data-tex="\(V=\mathcal L^{\rm as}\Sigma+R\)">\(V=\mathcal L^{\rm as}\Sigma+R\)</span>, where <span class="math" data-tex="\(R\in\mathsf W_{\alpha-\kappa_s}\)">\(R\in\mathsf W_{\alpha-\kappa_s}\)</span> is its full curl remainder. Direct expansion, with no discarded cross term, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal C(U+V)-\mathcal C(U)
+&amp;=\mathcal B_{\rm cov}(U,V)+\mathcal C(V)\\
+&amp;=\Sigma+\mathcal B_{\rm cov}(E,\mathcal L^{\rm as}\Sigma)
++\mathcal B_{\rm cov}(U,R)+\mathcal C(V).
+\end{split}
+\tag{SC7.4}
+\]">\[
+\begin{split}
+\mathcal C(U+V)-\mathcal C(U)
+&amp;=\mathcal B_{\rm cov}(U,V)+\mathcal C(V)\\
+&amp;=\Sigma+\mathcal B_{\rm cov}(E,\mathcal L^{\rm as}\Sigma)
++\mathcal B_{\rm cov}(U,R)+\mathcal C(V).
+\end{split}
+\tag{SC7.4}
+\]</span>
+<p>All of <span class="math" data-tex="\(\mathcal C(\mathcal L^{\rm as}\Sigma)\)">\(\mathcal C(\mathcal L^{\rm as}\Sigma)\)</span>, <span class="math" data-tex="\(\mathcal B_{\rm cov}(\mathcal L^{\rm as}\Sigma,R)\)">\(\mathcal B_{\rm cov}(\mathcal L^{\rm as}\Sigma,R)\)</span> and <span class="math" data-tex="\(\mathcal C(R)\)">\(\mathcal C(R)\)</span> remain inside <span class="math" data-tex="\(\mathcal C(V)\)">\(\mathcal C(V)\)</span>. The product estimates give respectively</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_{\rm cov}(E,\mathcal L^{\rm as}\Sigma)\in\mathsf M_{\rho+\alpha-1/2},\qquad
+\mathcal B_{\rm cov}(U,R)\in\mathsf M_{\alpha+1/2-\kappa_s},\qquad
+\mathcal C(V)\in\mathsf M_{2\alpha-1}.
+\tag{SC7.5}
+\]">\[
+\mathcal B_{\rm cov}(E,\mathcal L^{\rm as}\Sigma)\in\mathsf M_{\rho+\alpha-1/2},\qquad
+\mathcal B_{\rm cov}(U,R)\in\mathsf M_{\alpha+1/2-\kappa_s},\qquad
+\mathcal C(V)\in\mathsf M_{2\alpha-1}.
+\tag{SC7.5}
+\]</span>
+<p>For the last bound use <span class="math" data-tex="\(\alpha-\kappa_s&gt;\alpha-1/2\)">\(\alpha-\kappa_s&gt;\alpha-1/2\)</span>, so <span class="math" data-tex="\(V\in\mathsf W_{\alpha-1/2}\)">\(V\in\mathsf W_{\alpha-1/2}\)</span>. To justify these product statements at every derivative order, angular averaging of a same-label pair retains only harmonics with <span class="math" data-tex="\(m+m&#x27;=0\)">\(m+m&#x27;=0\)</span>, because <span class="math" data-tex="\(kp\ne0\)">\(kp\ne0\)</span>; their exponential phases cancel exactly. Cross-label products are identically zero. Each derivative of the remaining coefficient products has weight <span class="math" data-tex="\(\varepsilon^{\mu+\mu&#x27;}S_*^b\zeta\delta^{-a}P^2\)">\(\varepsilon^{\mu+\mu&#x27;}S_*^b\zeta\delta^{-a}P^2\)</span>, and <span class="math" data-tex="\(P^2\le1\)">\(P^2\le1\)</span>. Integrating these finite sums over a mass-one common torus proves the displayed mean estimates with all derivatives. This verifies original (7.41)–(7.42) for the actual curl velocities.</p>
+<h2 id="sc8-radial-divergence-after-both-averages">SC8. Radial divergence after both averages</h2>
+<p>There is a small stronger estimate at this exact receiver. The three expressions in (SC7.5) have already been averaged over both the angle and the auxiliary torus. For any same-label zero-harmonic product coefficient <span class="math" data-tex="\(f\)">\(f\)</span>, on a fixed common torus with index <span class="math" data-tex="\(i_0\)">\(i_0\)</span>, holding the receiving scale <span class="math" data-tex="\(Q\)">\(Q\)</span> fixed,</p>
+<span class="math math-display" data-tex="\[
+\partial_R\langle f\rangle_H=\langle\partial_R f\rangle_H,\qquad
+\langle\mathcal L_{i_0}f\rangle_H=0,
+\quad D_r=\partial_R+M_{i_0} d_rR^{d_r-1}\mathcal L_{i_0},\qquad M_{i_0}=\Lambda_g^{i_0}Q^{d_r/2}.
+\tag{SC8.1}
+\]">\[
+\partial_R\langle f\rangle_H=\langle\partial_R f\rangle_H,\qquad
+\langle\mathcal L_{i_0}f\rangle_H=0,
+\quad D_r=\partial_R+M_{i_0} d_rR^{d_r-1}\mathcal L_{i_0},\qquad M_{i_0}=\Lambda_g^{i_0}Q^{d_r/2}.
+\tag{SC8.1}
+\]</span>
+<p>The second equality is integration by parts on the periodic torus; boundary faces cancel. Consequently <span class="math" data-tex="\(D_r\langle f\rangle_H=\partial_R\langle f\rangle_H=\langle D_rf\rangle_H\)">\(D_r\langle f\rangle_H=\partial_R\langle f\rangle_H=\langle D_rf\rangle_H\)</span>. Differentiating the surviving coefficient products by ordinary <span class="math" data-tex="\(\partial_R\)">\(\partial_R\)</span> uses their coefficient bounds and introduces no <span class="math" data-tex="\(\varepsilon^{-\kappa_s}\)">\(\varepsilon^{-\kappa_s}\)</span> factor. The derivative of the cancelled exponential is zero; it must not be estimated separately before cancellation.</p>
+<p>For a two-component auxiliary-averaged radial stress <span class="math" data-tex="\(S=(S_\theta,S_z)\)">\(S=(S_\theta,S_z)\)</span>, define its cylindrical tangential divergence</p>
+<span class="math math-display" data-tex="\[
+\mathfrak D_r S=((D_r+2/R)S_\theta,(D_r+1/R)S_z).
+\tag{SC8.2}
+\]">\[
+\mathfrak D_r S=((D_r+2/R)S_\theta,(D_r+1/R)S_z).
+\tag{SC8.2}
+\]</span>
+<p>The shell has <span class="math" data-tex="\(R\)">\(R\)</span> bounded above and bounded away from zero. The zero-order factors and all their derivatives are therefore bounded. Equations (SC8.1)–(SC8.2) prove that the divergences of the three terms in (SC7.5) retain precisely the exponents displayed there. Original Corollary 7.8 allows a further loss of at most <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span>; it is unnecessary after this full auxiliary average. The stronger claim does not apply to an angular mean still depending on the auxiliary variable, for which the fast derivative remains. It also does not remove the <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span> already paid when taking a curl.</p>
+<h2 id="sc9-all-original-viscosity-factors">SC9. All original viscosity factors</h2>
+<p>For every fixed original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, let <span class="math" data-tex="\(y=x/\sqrt\nu\)">\(y=x/\sqrt\nu\)</span>, with time unchanged. The exact change of fields from M2 is</p>
+<span class="math math-display" data-tex="\[
+u_\nu(x,t)=\sqrt\nu\,u_1(y,t),\quad
+p_\nu(x,t)=\nu p_1(y,t),\quad
+f_\nu(x,t)=\sqrt\nu\,f_1(y,t),\quad
+\mathcal A_\nu(x,t)=\nu\mathcal A_1(y,t).
+\tag{SC9.1}
+\]">\[
+u_\nu(x,t)=\sqrt\nu\,u_1(y,t),\quad
+p_\nu(x,t)=\nu p_1(y,t),\quad
+f_\nu(x,t)=\sqrt\nu\,f_1(y,t),\quad
+\mathcal A_\nu(x,t)=\nu\mathcal A_1(y,t).
+\tag{SC9.1}
+\]</span>
+<p>The last formula gives <span class="math" data-tex="\(\operatorname{curl}_x\mathcal A_\nu=\sqrt\nu\operatorname{curl}_y\mathcal A_1\)">\(\operatorname{curl}_x\mathcal A_\nu=\sqrt\nu\operatorname{curl}_y\mathcal A_1\)</span>, because each spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>. It applies to every potential in (SC7.1), including all cutoffs and remainders.</p>
+<p>The angles and auxiliary torus measures in (SC1.1) do not change under this dilation. There is no physical-space volume integral in that definition. Throughout this note, a covariance of a field in physical units is still the average on the extended domain before evaluating the auxiliary variable at the physical phase map. No equality with the unaveraged pointwise velocity product is inferred. Thus for any two fields <span class="math" data-tex="\(w,v\)">\(w,v\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathcal C_\nu(\sqrt\nu\,w(y,t))=\nu\mathcal C_1(w)(y,t),\qquad
+\mathcal B_{{\rm cov},\nu}(\sqrt\nu\,w(y,t),\sqrt\nu\,v(y,t))=\nu\mathcal B_{{\rm cov},1}(w,v)(y,t).
+\tag{SC9.2}
+\]">\[
+\mathcal C_\nu(\sqrt\nu\,w(y,t))=\nu\mathcal C_1(w)(y,t),\qquad
+\mathcal B_{{\rm cov},\nu}(\sqrt\nu\,w(y,t),\sqrt\nu\,v(y,t))=\nu\mathcal B_{{\rm cov},1}(w,v)(y,t).
+\tag{SC9.2}
+\]</span>
+<p>For a physical input <span class="math" data-tex="\(\sigma_\nu(x,t)\)">\(\sigma_\nu(x,t)\)</span>, set <span class="math" data-tex="\(\sigma_1(y,t)=\nu^{-1}\sigma_\nu(\sqrt\nu y,t)\)">\(\sigma_1(y,t)=\nu^{-1}\sigma_\nu(\sqrt\nu y,t)\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+W_{0,\nu}^{\rm as}(x,t)=\sqrt\nu W_{0,1}^{\rm as}(y,t),\qquad
+\mathcal L_{\nu,\rm phys}^{\rm as}\sigma_\nu(x,t)
+=\sqrt\nu(\mathcal L_{1,\rm phys}^{\rm as}\sigma_1)(y,t).
+\tag{SC9.3}
+\]">\[
+W_{0,\nu}^{\rm as}(x,t)=\sqrt\nu W_{0,1}^{\rm as}(y,t),\qquad
+\mathcal L_{\nu,\rm phys}^{\rm as}\sigma_\nu(x,t)
+=\sqrt\nu(\mathcal L_{1,\rm phys}^{\rm as}\sigma_1)(y,t).
+\tag{SC9.3}
+\]</span>
+<p>Apply (SC6.2) and (SC9.2) to get the exact identities</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_{{\rm cov},\nu}(W_{0,\nu}^{\rm as},\mathcal L_{\nu,\rm phys}^{\rm as}\sigma_\nu)=\sigma_\nu,\qquad
+\mathcal C_\nu(W_{0,\nu}^{\rm as})=\nu q_\nu^{-A-1/2}\mathcal T_0(X_\nu,\eta_\nu).
+\tag{SC9.4}
+\]">\[
+\mathcal B_{{\rm cov},\nu}(W_{0,\nu}^{\rm as},\mathcal L_{\nu,\rm phys}^{\rm as}\sigma_\nu)=\sigma_\nu,\qquad
+\mathcal C_\nu(W_{0,\nu}^{\rm as})=\nu q_\nu^{-A-1/2}\mathcal T_0(X_\nu,\eta_\nu).
+\tag{SC9.4}
+\]</span>
+<p>Here all original coordinates are</p>
+<span class="math math-display" data-tex="\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu},\quad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu q_\nu^D},\quad
+R=\frac{r_\nu}{\sqrt{\nu Q}},\quad Z=\frac{z_\nu}{\sqrt\nu Q^D}.
+\tag{SC9.5}
+\]">\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu},\quad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu q_\nu^D},\quad
+R=\frac{r_\nu}{\sqrt{\nu Q}},\quad Z=\frac{z_\nu}{\sqrt\nu Q^D}.
+\tag{SC9.5}
+\]</span>
+<p>In a chart the stress input is <span class="math" data-tex="\(\Sigma=\nu^{-1}Q^{2A}\sigma_\nu\)">\(\Sigma=\nu^{-1}Q^{2A}\sigma_\nu\)</span>; physical velocity, potential and covariance carry factors <span class="math" data-tex="\(\sqrt\nu Q^{-A}\)">\(\sqrt\nu Q^{-A}\)</span>, <span class="math" data-tex="\(\nu Q^{1/2-A}\)">\(\nu Q^{1/2-A}\)</span> and <span class="math" data-tex="\(\nu Q^{-2A}\)">\(\nu Q^{-2A}\)</span>, respectively. Applying a physical radial divergence multiplies the last factor by <span class="math" data-tex="\(\nu^{-1/2}Q^{-1/2}\)">\(\nu^{-1/2}Q^{-1/2}\)</span>, giving <span class="math" data-tex="\(\sqrt\nu Q^{-2A-1/2}\)">\(\sqrt\nu Q^{-2A-1/2}\)</span>, with both cylindrical terms in (SC8.2) preserved. These are exactly the physical residual factors in M2 and PU7. Thus (SC7.3)–(SC8.2) transfer to every <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> without dropping a viscosity factor or an auxiliary average.</p>
+<h2 id="sc10-production-with-the-actual-shear-and-all-damping">SC10. Production with the actual shear and all damping</h2>
+<p>Here the flux is denoted <span class="math" data-tex="\(T\)">\(T\)</span> within this section; the time coordinate remains <span class="math" data-tex="\(T_{\rm time}\)">\(T_{\rm time}\)</span>. The constants <span class="math" data-tex="\(c_-,c_+\)">\(c_-,c_+\)</span> in this section bound <span class="math" data-tex="\(|c_0|\)">\(|c_0|\)</span>, independently of the Gaussian constants used in SC2. The symbol <span class="math" data-tex="\(p\)">\(p\)</span> in the slow-box comparison is the slow point, not the angular phase coefficient.</p>
+<p>For the real homogeneous amplitude <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(n_\Phi\cdot t=0\)">\(n_\Phi\cdot t=0\)</span> makes the normal component of <span class="math" data-tex="\(\mathcal A_\Phi t\)">\(\mathcal A_\Phi t\)</span> perpendicular to <span class="math" data-tex="\(t\)">\(t\)</span>. Direct multiplication, keeping both cylindrical <span class="math" data-tex="\(2F\)">\(2F\)</span> terms, gives</p>
+<span class="math math-display" data-tex="\[
+t\cdot\mathcal Kt
+=-2Ft_rt_\theta+(2F+RF_R)t_rt_\theta+G_Rt_rt_z
+=g\cdot(t_r(t_\theta,t_z)).
+
+\tag{SC10.1}
+\]">\[
+t\cdot\mathcal Kt
+=-2Ft_rt_\theta+(2F+RF_R)t_rt_\theta+G_Rt_rt_z
+=g\cdot(t_r(t_\theta,t_z)).
+
+\tag{SC10.1}
+\]</span>
+<p>Taking <span class="math" data-tex="\(t\cdot t&#x27;\)">\(t\cdot t&#x27;\)</span> therefore proves the exact identity</p>
+<span class="math math-display" data-tex="\[
+\frac12\frac{d}{dv}|t|^2
+=-g\cdot(t_r(t_\theta,t_z))-\varepsilon k^2|n_\Phi|^2|t|^2.
+
+\tag{SC10.2}
+\]">\[
+\frac12\frac{d}{dv}|t|^2
+=-g\cdot(t_r(t_\theta,t_z))-\varepsilon k^2|n_\Phi|^2|t|^2.
+
+\tag{SC10.2}
+\]</span>
+<p>For the flux <span class="math" data-tex="\(T=t_r(t_\theta,t_z)=T_NN+T_KK\)">\(T=t_r(t_\theta,t_z)=T_NN+T_KK\)</span>, the exact
+production is</p>
+<span class="math math-display" data-tex="\[
+-g\cdot T=-|g_0|T_N-\Delta g\cdot T,\qquad \Delta g=g-g_0.
+
+\tag{SC10.3}
+\]">\[
+-g\cdot T=-|g_0|T_N-\Delta g\cdot T,\qquad \Delta g=g-g_0.
+
+\tag{SC10.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(g_0\)">\(g_0\)</span> is the leading shear frozen at the representative;
+it is not identified with the actual shear even there. To keep both
+sources of its difference, let <span class="math" data-tex="\(V^{(0)},G^{(0)}\)">\(V^{(0)},G^{(0)}\)</span> denote the exact
+leading chart fields, put <span class="math" data-tex="\(\delta V=V-V^{(0)}\)">\(\delta V=V-V^{(0)}\)</span>,
+<span class="math" data-tex="\(\delta G=G-G^{(0)}\)">\(\delta G=G-G^{(0)}\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+g^{(0)}=(\partial_RV^{(0)}-V^{(0)}/R,\partial_RG^{(0)}),
+\quad g_0=g^{(0)}(p_0),
+
+\tag{SC10.4}
+\]">\[
+g^{(0)}=(\partial_RV^{(0)}-V^{(0)}/R,\partial_RG^{(0)}),
+\quad g_0=g^{(0)}(p_0),
+
+\tag{SC10.4}
+\]</span>
+<span class="math math-display" data-tex="\[
+\Delta g=(\partial_R\delta V-\delta V/R,\partial_R\delta G)
++g^{(0)}(p)-g^{(0)}(p_0).
+
+\tag{SC10.5}
+\]">\[
+\Delta g=(\partial_R\delta V-\delta V/R,\partial_R\delta G)
++g^{(0)}(p)-g^{(0)}(p_0).
+
+\tag{SC10.5}
+\]</span>
+<p>The leading and actual fields here are the constructed backgrounds.
+Their proved chart estimates give
+<span class="math" data-tex="\(|\partial^I\delta V|\le C_{V,I}\varepsilon^2\)">\(|\partial^I\delta V|\le C_{V,I}\varepsilon^2\)</span> and
+<span class="math" data-tex="\(|\partial^I\delta G|\le C_{G,I}\varepsilon^2\)">\(|\partial^I\delta G|\le C_{G,I}\varepsilon^2\)</span>.
+Let <span class="math" data-tex="\(R_-&gt;0\)">\(R_-&gt;0\)</span> be the minimum radius on the compact enlarged chart,
+<span class="math" data-tex="\(L_g\)">\(L_g\)</span> bound <span class="math" data-tex="\(D_pg^{(0)}\)">\(D_pg^{(0)}\)</span>, and
+<span class="math" data-tex="\(|p-p_0|\le C_{\rm box}S_*^{-3}\)">\(|p-p_0|\le C_{\rm box}S_*^{-3}\)</span>, with the connecting segment
+in that chart. Set</p>
+<span class="math math-display" data-tex="\[
+C_B=\left[(C_{V,e_R}+R_-^{-1}C_{V,0})^2+C_{G,e_R}^2\right]^{1/2}.
+
+\tag{SC10.6}
+\]">\[
+C_B=\left[(C_{V,e_R}+R_-^{-1}C_{V,0})^2+C_{G,e_R}^2\right]^{1/2}.
+
+\tag{SC10.6}
+\]</span>
+<p>The product rule and segment integration give the actual bound</p>
+<span class="math math-display" data-tex="\[
+|\Delta g|\le C_B\varepsilon^2+L_gC_{\rm box}S_*^{-3}
+=C_B2^{-2h\ell}+L_gC_{\rm box}\ell^{-6}.
+
+\tag{SC10.7}
+\]">\[
+|\Delta g|\le C_B\varepsilon^2+L_gC_{\rm box}S_*^{-3}
+=C_B2^{-2h\ell}+L_gC_{\rm box}\ell^{-6}.
+
+\tag{SC10.7}
+\]</span>
+<p>At <span class="math" data-tex="\(p_0\)">\(p_0\)</span> only the segment term is zero. The Borel term remains.
+For a vector in the prescribed compact stress cone, retain its margin
+<span class="math" data-tex="\(-T_N\ge c_T|T|\)">\(-T_N\ge c_T|T|\)</span>, <span class="math" data-tex="\(c_T&gt;0\)">\(c_T&gt;0\)</span>, and <span class="math" data-tex="\(|g_0|\ge g_-&gt;0\)">\(|g_0|\ge g_-&gt;0\)</span>.
+Then Cauchy--Schwarz proves</p>
+<span class="math math-display" data-tex="\[
+-g\cdot T\ge
+[g_-c_T-C_B2^{-2h\ell}-L_gC_{\rm box}\ell^{-6}]|T|.
+
+\tag{SC10.8}
+\]">\[
+-g\cdot T\ge
+[g_-c_T-C_B2^{-2h\ell}-L_gC_{\rm box}\ell^{-6}]|T|.
+
+\tag{SC10.8}
+\]</span>
+<p>One sufficient additional integer threshold is</p>
+<span class="math math-display" data-tex="\[
+\ell\ge\left\lceil\max\left\{
+1,\left(\frac{4L_gC_{\rm box}}{g_-c_T}\right)^{1/6},
+\frac{\log\max\{1,4C_B/(g_-c_T)\}}{2h\log2}
+\right\}\right\rceil.
+
+\tag{SC10.9}
+\]">\[
+\ell\ge\left\lceil\max\left\{
+1,\left(\frac{4L_gC_{\rm box}}{g_-c_T}\right)^{1/6},
+\frac{\log\max\{1,4C_B/(g_-c_T)\}}{2h\log2}
+\right\}\right\rceil.
+
+\tag{SC10.9}
+\]</span>
+<p>Each error is then at most <span class="math" data-tex="\(g_-c_T/4\)">\(g_-c_T/4\)</span>, so the lower bound is
+<span class="math" data-tex="\((g_-c_T/2)|T|\)">\((g_-c_T/2)|T|\)</span>, including <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p>For the actual homogeneous pulse, positivity follows directly from its
+proved polarization. This requires no assertion that its instantaneous
+flux lies in the prescribed target cone. Retain</p>
+<span class="math math-display" data-tex="\[
+t=x(e_r-s_aK_a)+yN_a,\quad
+s_{\max}=3u_*/2,\quad \gamma_0=c_0\sqrt{1+s^2},
+
+\tag{SC10.10}
+\]">\[
+t=x(e_r-s_aK_a)+yN_a,\quad
+s_{\max}=3u_*/2,\quad \gamma_0=c_0\sqrt{1+s^2},
+
+\tag{SC10.10}
+\]</span>
+<p>and choose the constants in the already proved estimates as</p>
+<span class="math math-display" data-tex="\[
+|n_\Phi-B_s(s,K)|\le E_n/S_*,\quad B_s\ge B_-&gt;0,
+\quad |y/x-\gamma_0|\le E_\gamma/S_*,\quad c_xP\le x\le C_xP.
+
+\tag{SC10.11}
+\]">\[
+|n_\Phi-B_s(s,K)|\le E_n/S_*,\quad B_s\ge B_-&gt;0,
+\quad |y/x-\gamma_0|\le E_\gamma/S_*,\quad c_xP\le x\le C_xP.
+
+\tag{SC10.11}
+\]</span>
+<p>The quantities <span class="math" data-tex="\(g_-,g_+,c_-,c_+\)">\(g_-,g_+,c_-,c_+\)</span> denote positive uniform bounds
+<span class="math" data-tex="\(g_-\le|g_0|\le g_+\)">\(g_-\le|g_0|\le g_+\)</span>, <span class="math" data-tex="\(c_-\le|c_0|\le c_+\)">\(c_-\le|c_0|\le c_+\)</span>, with
+<span class="math" data-tex="\(c_0&lt;0\)">\(c_0&lt;0\)</span>. Choose <span class="math" data-tex="\(S_*\ge2E_n/B_-\)">\(S_*\ge2E_n/B_-\)</span>. Then
+<span class="math" data-tex="\(|n_{\Phi,\tan}|\ge B_-/2\)">\(|n_{\Phi,\tan}|\ge B_-/2\)</span>. For nonzero vectors <span class="math" data-tex="\(a,b\)">\(a,b\)</span>,
+addition and subtraction of <span class="math" data-tex="\(a/|b|\)">\(a/|b|\)</span>, followed by
+<span class="math" data-tex="\(\big||a|-|b|\big|\le|a-b|\)">\(\big||a|-|b|\big|\le|a-b|\)</span>, gives
+<span class="math" data-tex="\(|a/|a|-b/|b||\le2|a-b|/|b|\)">\(|a/|a|-b/|b||\le2|a-b|/|b|\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|K_a-K|=|N_a-N|\le\frac{2E_n}{B_-S_*},\qquad
+|s_a-s|\le\frac{2(1+s_{\max})E_n}{B_-S_*}.
+
+\tag{SC10.12}
+\]">\[
+|K_a-K|=|N_a-N|\le\frac{2E_n}{B_-S_*},\qquad
+|s_a-s|\le\frac{2(1+s_{\max})E_n}{B_-S_*}.
+
+\tag{SC10.12}
+\]</span>
+<p>The last estimate follows by writing
+<span class="math" data-tex="\(n_{\Phi,r}-s|n_{\Phi,\tan}|
+=(n_{\Phi,r}-B_ss)+s(B_s-|n_{\Phi,\tan}|)\)">\(n_{\Phi,r}-s|n_{\Phi,\tan}|
+=(n_{\Phi,r}-B_ss)+s(B_s-|n_{\Phi,\tan}|)\)</span>
+and dividing by the actual tangential norm.
+Define</p>
+<span class="math math-display" data-tex="\[
+\Gamma_{\max}=c_+\sqrt{1+s_{\max}^2},\qquad
+C_T=\frac{2E_n}{B_-}(1+2s_{\max}+\Gamma_{\max})+E_\gamma.
+
+\tag{SC10.13}
+\]">\[
+\Gamma_{\max}=c_+\sqrt{1+s_{\max}^2},\qquad
+C_T=\frac{2E_n}{B_-}(1+2s_{\max}+\Gamma_{\max})+E_\gamma.
+
+\tag{SC10.13}
+\]</span>
+<p>The exact flux and its exact remainder are</p>
+<span class="math math-display" data-tex="\[
+T=x^2[-sK+\gamma_0N+e_T],\qquad
+e_T=-(s_aK_a-sK)+(y/x)N_a-\gamma_0N.
+
+\tag{SC10.14}
+\]">\[
+T=x^2[-sK+\gamma_0N+e_T],\qquad
+e_T=-(s_aK_a-sK)+(y/x)N_a-\gamma_0N.
+
+\tag{SC10.14}
+\]</span>
+<p>Expand the first difference as
+<span class="math" data-tex="\((s_a-s)K_a+s(K_a-K)\)">\((s_a-s)K_a+s(K_a-K)\)</span> and the second as
+<span class="math" data-tex="\((y/x-\gamma_0)N_a+\gamma_0(N_a-N)\)">\((y/x-\gamma_0)N_a+\gamma_0(N_a-N)\)</span>.
+The preceding bounds give <span class="math" data-tex="\(|e_T|\le C_T/S_*\)">\(|e_T|\le C_T/S_*\)</span>, with all four
+terms retained. Hence</p>
+<span class="math math-display" data-tex="\[
+\frac{-g\cdot T}{x^2}=-|g_0|\gamma_0-g_0\cdot e_T
+-\Delta g\cdot(-sK+\gamma_0N+e_T).
+
+\tag{SC10.15}
+\]">\[
+\frac{-g\cdot T}{x^2}=-|g_0|\gamma_0-g_0\cdot e_T
+-\Delta g\cdot(-sK+\gamma_0N+e_T).
+
+\tag{SC10.15}
+\]</span>
+<p>The absolute value of the last two terms is at most</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_\ell=g_+C_T\ell^{-2}
++(C_B2^{-2h\ell}+L_gC_{\rm box}\ell^{-6})
+(s_{\max}+\Gamma_{\max}+C_T\ell^{-2}).
+
+\tag{SC10.16}
+\]">\[
+\mathcal E_\ell=g_+C_T\ell^{-2}
++(C_B2^{-2h\ell}+L_gC_{\rm box}\ell^{-6})
+(s_{\max}+\Gamma_{\max}+C_T\ell^{-2}).
+
+\tag{SC10.16}
+\]</span>
+<p>Set <span class="math" data-tex="\(W=s_{\max}+\Gamma_{\max}+C_T&gt;0\)">\(W=s_{\max}+\Gamma_{\max}+C_T&gt;0\)</span>. In addition to all
+previous phase and invariant-band thresholds, it suffices to choose</p>
+<span class="math math-display" data-tex="\[
+\ell\ge\left\lceil\max\left\{
+1,\left(\frac{2E_n}{B_-}\right)^{1/2},
+\left(\frac{4g_+C_T}{g_-c_-}\right)^{1/2},
+\left(\frac{8WL_gC_{\rm box}}{g_-c_-}\right)^{1/6},
+\frac{\log\max\{1,8WC_B/(g_-c_-)\}}{2h\log2}
+\right\}\right\rceil.
+
+\tag{SC10.17}
+\]">\[
+\ell\ge\left\lceil\max\left\{
+1,\left(\frac{2E_n}{B_-}\right)^{1/2},
+\left(\frac{4g_+C_T}{g_-c_-}\right)^{1/2},
+\left(\frac{8WL_gC_{\rm box}}{g_-c_-}\right)^{1/6},
+\frac{\log\max\{1,8WC_B/(g_-c_-)\}}{2h\log2}
+\right\}\right\rceil.
+
+\tag{SC10.17}
+\]</span>
+<p>For <span class="math" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span>, the last factor in <span class="math" data-tex="\(\mathcal E_\ell\)">\(\mathcal E_\ell\)</span> is at
+most <span class="math" data-tex="\(W\)">\(W\)</span>. The three error contributions are then at most
+<span class="math" data-tex="\(g_-c_-/4,g_-c_-/8,g_-c_-/8\)">\(g_-c_-/4,g_-c_-/8,g_-c_-/8\)</span>, respectively.
+Since <span class="math" data-tex="\(-|g_0|\gamma_0\ge g_-c_-\)">\(-|g_0|\gamma_0\ge g_-c_-\)</span>, this proves</p>
+<span class="math math-display" data-tex="\[
+\tfrac12g_-c_-c_x^2P(v)^2\le-g\cdot T
+\le(g_+\Gamma_{\max}+\tfrac12g_-c_-)C_x^2P(v)^2.
+
+\tag{SC10.18}
+\]">\[
+\tfrac12g_-c_-c_x^2P(v)^2\le-g\cdot T
+\le(g_+\Gamma_{\max}+\tfrac12g_-c_-)C_x^2P(v)^2.
+
+\tag{SC10.18}
+\]</span>
+<p>All constants concern the same selected <span class="math" data-tex="\(h\)">\(h\)</span>, fixed profiles and
+original compact label family. The displayed thresholds are finite and
+are added to the finite value thresholds in PU1–PU5; no uniformity as
+<span class="math" data-tex="\(h\downarrow0\)">\(h\downarrow0\)</span> is asserted. The exact actual-frame norm is</p>
+<span class="math math-display" data-tex="\[
+|t|^2=(1+s_a^2)x^2+y^2.
+
+\tag{SC10.19}
+\]">\[
+|t|^2=(1+s_a^2)x^2+y^2.
+
+\tag{SC10.19}
+\]</span>
+<p>The damping <span class="math" data-tex="\(\varepsilon k^2|n_\Phi|^2|t|^2\)">\(\varepsilon k^2|n_\Phi|^2|t|^2\)</span> remains in the
+energy equation, so positive production is not a claim of positive total
+energy derivative. Covariance mass uses the proved positive <span class="math" data-tex="\(x\)">\(x\)</span> and
+the original positive integral of <span class="math" data-tex="\(\psi^2x^2\)">\(\psi^2x^2\)</span>; its argument does
+not omit this damping. The carrier physical wavelength is <span class="math" data-tex="\(\sqrt Q/k\asymp Q^{1/2+h/2}\)">\(\sqrt Q/k\asymp Q^{1/2+h/2}\)</span>, while the leading physical wave amplitude has power <span class="math" data-tex="\(Q^{-A}\sqrt\varepsilon=Q^{-1/2-h/2}\)">\(Q^{-A}\sqrt\varepsilon=Q^{-1/2-h/2}\)</span>, up to polynomial factors in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>. Their product has power <span class="math" data-tex="\(Q^0\)">\(Q^0\)</span>; this agrees with the retained leading damping <span class="math" data-tex="\(\varepsilon k^2\asymp1\)">\(\varepsilon k^2\asymp1\)</span>.</p>
+<h2 id="ni4-the-exact-curl-identity-used-by-the-nonlinear-terms">NI4. The exact curl identity used by the nonlinear terms</h2>
+<p>For a smooth potential column <span class="math" data-tex="\(C\)">\(C\)</span>, the full source curl is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}_* C=
+\big(R^{-1}\partial_\theta C_z-D_zC_\theta,\quad
+D_zC_r-D_rC_z,\quad
+(D_r+R^{-1})C_\theta-R^{-1}\partial_\theta C_r\big).
+\tag{NI4.1}
+\]">\[
+\operatorname{curl}_* C=
+\big(R^{-1}\partial_\theta C_z-D_zC_\theta,\quad
+D_zC_r-D_rC_z,\quad
+(D_r+R^{-1})C_\theta-R^{-1}\partial_\theta C_r\big).
+\tag{NI4.1}
+\]</span>
+<p>The divergence is <span class="math" data-tex="\((D_r+R^{-1})u_r+R^{-1}\partial_\theta u_\theta+D_zu_z\)">\((D_r+R^{-1})u_r+R^{-1}\partial_\theta u_\theta+D_zu_z\)</span>. Inserting (NI4.1) yields all six terms</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{div}_*\operatorname{curl}_* C={}&amp;
+R^{-1}D_r\partial_\theta C_z-(D_r+R^{-1})D_zC_\theta
+\\&amp;+R^{-1}D_z\partial_\theta C_r-R^{-1}\partial_\theta D_rC_z
+\\&amp;+D_z(D_r+R^{-1})C_\theta-R^{-1}D_z\partial_\theta C_r=0.
+\end{aligned}
+\tag{NI4.2}
+\]">\[
+\begin{aligned}
+\operatorname{div}_*\operatorname{curl}_* C={}&amp;
+R^{-1}D_r\partial_\theta C_z-(D_r+R^{-1})D_zC_\theta
+\\&amp;+R^{-1}D_z\partial_\theta C_r-R^{-1}\partial_\theta D_rC_z
+\\&amp;+D_z(D_r+R^{-1})C_\theta-R^{-1}D_z\partial_\theta C_r=0.
+\end{aligned}
+\tag{NI4.2}
+\]</span>
+<p>For the first term we used <span class="math" data-tex="\((D_r+R^{-1})(R^{-1}f)=R^{-1}D_rf\)">\((D_r+R^{-1})(R^{-1}f)=R^{-1}D_rf\)</span>. The three pairs cancel by (NI1.5), including the <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> contributions.</p>
+<p>For a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-independent potential amplitude <span class="math" data-tex="\(C_m\)">\(C_m\)</span>, expand the actual full curl as</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}_*(C_me^{ikm\Phi})=a_me^{ikm\Phi},
+\]">\[
+\operatorname{curl}_*(C_me^{ikm\Phi})=a_me^{ikm\Phi},
+\]</span>
+<span class="math math-display" data-tex="\[
+a_m=ikm\,n\times C_m+
+\big(-D_z(C_m)_\theta,\ D_z(C_m)_r-D_r(C_m)_z,
+\ (D_r+R^{-1})(C_m)_\theta\big).
+\tag{NI4.3}
+\]">\[
+a_m=ikm\,n\times C_m+
+\big(-D_z(C_m)_\theta,\ D_z(C_m)_r-D_r(C_m)_z,
+\ (D_r+R^{-1})(C_m)_\theta\big).
+\tag{NI4.3}
+\]</span>
+<p>All potential derivatives, including derivatives of its slow and transverse cutoffs, remain in this expression. A cutoff in <span class="math" data-tex="\(v\)">\(v\)</span> also remains inside the potential. In the original coordinates <span class="math" data-tex="\(D_rv=D_zv=0\)">\(D_rv=D_zv=0\)</span>, so its spatial derivative terms vanish for that exact reason, not because the cutoff is omitted.</p>
+<p>Where the source writes <span class="math" data-tex="\(C_m=i(n\times t_m)/(km|n|^2)\)">\(C_m=i(n\times t_m)/(km|n|^2)\)</span>, <span class="math" data-tex="\(n\cdot t_m=0\)">\(n\cdot t_m=0\)</span>, the first term in (NI4.3) equals</p>
+<span class="math math-display" data-tex="\[
+-\frac{n\times(n\times t_m)}{|n|^2}
+=t_m-\frac{n(n\cdot t_m)}{|n|^2}=t_m.
+\tag{NI4.4}
+\]">\[
+-\frac{n\times(n\times t_m)}{|n|^2}
+=t_m-\frac{n(n\cdot t_m)}{|n|^2}=t_m.
+\tag{NI4.4}
+\]</span>
+<p>This is a pointwise identity for the original potential wherever it is defined. The uniform denominator estimate and the potential class bounds for the original phase are now derived in the <a href="pulse-inverse-audit.html">pulse audit</a>, PU1 and PU6, retaining the source base inputs. The nonlinear cancellation in this section uses (NI4.2), and therefore holds for every smooth potential coefficient, independently of that particular formula or of any pulse solution.</p>
+<p>Expansion of the zero divergence in (NI4.2) now proves, for the full actual amplitude,</p>
+<span class="math math-display" data-tex="\[
+ikm\,n\cdot a_m=-\mathfrak d a_m,
+\qquad \mathfrak d a=(D_r+R^{-1})a_r+D_za_z.
+\tag{NI4.5}
+\]">\[
+ikm\,n\cdot a_m=-\mathfrak d a_m,
+\qquad \mathfrak d a=(D_r+R^{-1})a_r+D_za_z.
+\tag{NI4.5}
+\]</span>
+<p>If <span class="math" data-tex="\(a_m\in\mathsf W_\alpha\)">\(a_m\in\mathsf W_\alpha\)</span>, (W3.3) gives <span class="math" data-tex="\(\mathfrak d a_m\in\mathsf W_{\alpha-\kappa_s}\)">\(\mathfrak d a_m\in\mathsf W_{\alpha-\kappa_s}\)</span>. Since <span class="math" data-tex="\(|m|\ge1\)">\(|m|\ge1\)</span> and <span class="math" data-tex="\(k^{-1}\le\varepsilon^{1/2}\)">\(k^{-1}\le\varepsilon^{1/2}\)</span>, division in the exact identity proves</p>
+<span class="math math-display" data-tex="\[
+n\cdot a_m\in\mathsf W_{\alpha+1/2-\kappa_s}.
+\tag{NI4.6}
+\]">\[
+n\cdot a_m\in\mathsf W_{\alpha+1/2-\kappa_s}.
+\tag{NI4.6}
+\]</span>
+<p>This remains true for all fixed coefficient derivatives because <span class="math" data-tex="\(k,m\)">\(k,m\)</span> are constant within the label and the bound for <span class="math" data-tex="\(\mathfrak d a_m\)">\(\mathfrak d a_m\)</span> holds at those orders. Using only the transverse leading amplitude while omitting the remainder in (NI4.3) would not justify (NI4.5) for the actual velocity.</p>
+<p>Conversely, any exactly divergence-free harmonic <span class="math" data-tex="\(a_me^{ikm\Phi}\)">\(a_me^{ikm\Phi}\)</span> with a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-independent amplitude satisfies (NI4.5) simply by expanding its divergence. Thus the nonlinear estimates below need exact divergence, not a particular choice of vector potential. The actual source waves satisfy the identity through the full curl construction (NI4.2).</p>
+<h2 id="ni5-complete-mean-wave-interaction-and-its-output-support">NI5. Complete mean–wave interaction and its output support</h2>
+<p>Write the actual mean increment as <span class="math" data-tex="\(d=(d^{r},d^{\theta},d^{z})\)">\(d=(d^{r},d^{\theta},d^{z})\)</span>, avoiding a replacement by its tangential leading part. It is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>; it may depend on the full auxiliary torus. For <span class="math" data-tex="\(w=ae^{ikm\Phi}\)">\(w=ae^{ikm\Phi}\)</span>, (NI1.6) gives exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{\rm adv}(d,w)+\mathcal T_{\rm adv}(w,d)=e^{ikm\Phi}\,\mathcal Q_m(d,a),
+\]">\[
+\mathcal T_{\rm adv}(d,w)+\mathcal T_{\rm adv}(w,d)=e^{ikm\Phi}\,\mathcal Q_m(d,a),
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal Q_m(d,a)={}&amp;ikm(d^{r}n_r+d^{\theta} n_\theta+d^{z}n_z)a
+\\&amp;+d^{r}D_ra+d^{z}D_za+a_rD_rd+a_zD_zd
+\\&amp;+R^{-1}(-2d^{\theta} a_\theta,\ d^{\theta} a_r+a_\theta d^{r},\ 0).
+\end{aligned}
+\tag{NI5.1}
+\]">\[
+\begin{aligned}
+\mathcal Q_m(d,a)={}&amp;ikm(d^{r}n_r+d^{\theta} n_\theta+d^{z}n_z)a
+\\&amp;+d^{r}D_ra+d^{z}D_za+a_rD_rd+a_zD_zd
+\\&amp;+R^{-1}(-2d^{\theta} a_\theta,\ d^{\theta} a_r+a_\theta d^{r},\ 0).
+\end{aligned}
+\tag{NI5.1}
+\]</span>
+<p>To obtain it, the derivative on the wave exponential contributes <span class="math" data-tex="\(ikm n\)">\(ikm n\)</span> in all three spatial directions. The mean amplitude has no angular component derivative, while each transport contributes its own frame term. Their sum is the last line; in particular its radial coefficient is <span class="math" data-tex="\(-2\)">\(-2\)</span>, not <span class="math" data-tex="\(-1\)">\(-1\)</span>. No divergence identity is needed for (NI5.1).</p>
+<p>The source mean increments have <span class="math" data-tex="\(d^{\theta},d^{z}\in\mathsf M_\mu\)">\(d^{\theta},d^{z}\in\mathsf M_\mu\)</span> and <span class="math" data-tex="\(d^{r}\in\mathsf M_{\mu+1}\)">\(d^{r}\in\mathsf M_{\mu+1}\)</span>. For <span class="math" data-tex="\(a\in\mathsf W_\alpha\)">\(a\in\mathsf W_\alpha\)</span>, each complete group in (NI5.1) has the following lower exponent, with all powers of <span class="math" data-tex="\(S_*\)">\(S_*\)</span>, <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span>, weights and fixed derivatives handled by W3:</p>
+<table>
+<thead>
+<tr>
+<th>Exact group</th>
+<th>Lower exponent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(ikm(d^{\theta} n_\theta+d^{z}n_z)a\)">\(ikm(d^{\theta} n_\theta+d^{z}n_z)a\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu-1/2\)">\(\alpha+\mu-1/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(ikm d^{r}n_ra\)">\(ikm d^{r}n_ra\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1/2\)">\(\alpha+\mu+1/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(d^{r}D_ra\)">\(d^{r}D_ra\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1-\kappa_s\)">\(\alpha+\mu+1-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(d^{z}D_za\)">\(d^{z}D_za\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(a_rD_r(d^{\theta},d^{z})\)">\(a_rD_r(d^{\theta},d^{z})\)</span> and <span class="math" data-tex="\(a_rD_rd^{r}\)">\(a_rD_rd^{r}\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu-\kappa_s\)">\(\alpha+\mu-\kappa_s\)</span> and <span class="math" data-tex="\(\alpha+\mu+1-\kappa_s\)">\(\alpha+\mu+1-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(a_zD_z(d^{\theta},d^{z})\)">\(a_zD_z(d^{\theta},d^{z})\)</span> and <span class="math" data-tex="\(a_zD_zd^{r}\)">\(a_zD_zd^{r}\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span> and <span class="math" data-tex="\(\alpha+\mu+2\)">\(\alpha+\mu+2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(R^{-1}(-2d^{\theta} a_\theta,d^{\theta} a_r,0)\)">\(R^{-1}(-2d^{\theta} a_\theta,d^{\theta} a_r,0)\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu\)">\(\alpha+\mu\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(R^{-1}(0,a_\theta d^{r},0)\)">\(R^{-1}(0,a_\theta d^{r},0)\)</span></td>
+<td><span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Since <span class="math" data-tex="\(\kappa_s=10^{-5}&lt;1/2\)">\(\kappa_s=10^{-5}&lt;1/2\)</span> and <span class="math" data-tex="\(\varepsilon\le1\)">\(\varepsilon\le1\)</span>, every group belongs to <span class="math" data-tex="\(\mathsf W_{\alpha+\mu-1/2}\)">\(\mathsf W_{\alpha+\mu-1/2}\)</span>. Addition proves the first part of original Lemma 9.2, without discarding any cylindrical term.</p>
+<p>Multiplication by a mean, regardless of the extent of its auxiliary support, cannot enlarge the wave support. The derivative of a smoothly extended wave still has its original closed support. The term differentiating the mean contains the undifferentiated wave. Every term in (NI5.1) therefore keeps the prescribed slow support, transverse support, enlarged rectangle, shell and actual temporal cutoff support. Its bounds retain the factor <span class="math" data-tex="\(P_v\)">\(P_v\)</span>. There is no division by <span class="math" data-tex="\(\chi_g\)">\(\chi_g\)</span>, <span class="math" data-tex="\(\eta_\gamma\)">\(\eta_\gamma\)</span> or <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The smooth mean multiplied into the smoothly extended wave has the same zero extensions. The result retains precisely the original label and nonzero integer <span class="math" data-tex="\(m\)">\(m\)</span>, so (NI1.7) gives zero angular mean.</p>
+<p>For a finite or locally finite wave sum, first collect equal <span class="math" data-tex="\((\gamma,m)\)">\((\gamma,m)\)</span> pairs as in Definition 6.5. Formula (NI5.1) is linear in each collected wave coefficient. Hence its bound uses the already uniform bound for that coefficient, without a factor counting its original representations. Fixed-stage finite harmonic sets remain unchanged under this operation. Local finiteness in <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> permits the equality to be summed locally. These observations prove the asserted map on the actual sums, not just on one exponential.</p>
+<p>There is a limited strengthening of the source statement. The same output exponent holds when the radial mean belongs only to <span class="math" data-tex="\(\mathsf M_\mu\)">\(\mathsf M_\mu\)</span>. In the four groups involving <span class="math" data-tex="\(d^{r}\)">\(d^{r}\)</span> or its derivatives, lower the listed exponent by one. Their new lower exponents are respectively <span class="math" data-tex="\(\alpha+\mu-1/2\)">\(\alpha+\mu-1/2\)</span>, <span class="math" data-tex="\(\alpha+\mu-\kappa_s\)">\(\alpha+\mu-\kappa_s\)</span>, <span class="math" data-tex="\(\alpha+\mu-\kappa_s\)">\(\alpha+\mu-\kappa_s\)</span> or <span class="math" data-tex="\(\alpha+\mu+1\)">\(\alpha+\mu+1\)</span>, and <span class="math" data-tex="\(\alpha+\mu\)">\(\alpha+\mu\)</span>; all are at least <span class="math" data-tex="\(\alpha+\mu-1/2\)">\(\alpha+\mu-1/2\)</span>. All other groups and support arguments are unchanged. Thus the extra radial smallness is unnecessary for this particular interaction estimate. It remains available and important in other mean equations; this calculation changes no hypothesis elsewhere in the iteration and claims no novelty.</p>
+<h2 id="ni6-same-label-wave-interactions-with-the-phase-contraction-evaluated-exactly">NI6. Same-label wave interactions, with the phase contraction evaluated exactly</h2>
+<p>Take two actual harmonics of one label,
+<span class="math" data-tex="\(w=ae^{ikm\Phi}\)">\(w=ae^{ikm\Phi}\)</span>, <span class="math" data-tex="\(w&#x27;=be^{ikm&#x27;\Phi}\)">\(w&#x27;=be^{ikm&#x27;\Phi}\)</span>, where <span class="math" data-tex="\(m,m&#x27;\ne0\)">\(m,m&#x27;\ne0\)</span>, and use their full exactly divergence-free amplitudes. Before invoking divergence, exact transport is</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{\rm adv}(w,w&#x27;)=e^{ik(m+m&#x27;)\Phi}
+\left[a_rD_rb+a_zD_zb+ikm&#x27;(a\cdot n)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0)\right].
+\tag{NI6.1}
+\]">\[
+\mathcal T_{\rm adv}(w,w&#x27;)=e^{ik(m+m&#x27;)\Phi}
+\left[a_rD_rb+a_zD_zb+ikm&#x27;(a\cdot n)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0)\right].
+\tag{NI6.1}
+\]</span>
+<p>By (NI4.5), its complete coefficient is instead the equal expression</p>
+<span class="math math-display" data-tex="\[
+\mathcal U_{m,m&#x27;}(a,b)=a_rD_rb+a_zD_zb
+-\frac{m&#x27;}m(\mathfrak d a)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0).
+\tag{NI6.2}
+\]">\[
+\mathcal U_{m,m&#x27;}(a,b)=a_rD_rb+a_zD_zb
+-\frac{m&#x27;}m(\mathfrak d a)b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0).
+\tag{NI6.2}
+\]</span>
+<p>The factor <span class="math" data-tex="\(m&#x27;/m\)">\(m&#x27;/m\)</span>, the sign and the <span class="math" data-tex="\(a_r/R\)">\(a_r/R\)</span> term inside <span class="math" data-tex="\(\mathfrak d a\)">\(\mathfrak d a\)</span> are retained. It is an identity, not a projection or an approximate cancellation. The coefficient of the symmetrized expression is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal U_{m,m&#x27;}(a,b)+\mathcal U_{m&#x27;,m}(b,a)={}&amp;
+a_rD_rb+a_zD_zb+b_rD_ra+b_zD_za
+\\&amp;-\frac{m&#x27;}m(\mathfrak d a)b-\frac m{m&#x27;}(\mathfrak d b)a
+\\&amp;+R^{-1}(-2a_\theta b_\theta,a_\theta b_r+b_\theta a_r,0).
+\end{aligned}
+\tag{NI6.3}
+\]">\[
+\begin{aligned}
+\mathcal U_{m,m&#x27;}(a,b)+\mathcal U_{m&#x27;,m}(b,a)={}&amp;
+a_rD_rb+a_zD_zb+b_rD_ra+b_zD_za
+\\&amp;-\frac{m&#x27;}m(\mathfrak d a)b-\frac m{m&#x27;}(\mathfrak d b)a
+\\&amp;+R^{-1}(-2a_\theta b_\theta,a_\theta b_r+b_\theta a_r,0).
+\end{aligned}
+\tag{NI6.3}
+\]</span>
+<p>If the input exponents are <span class="math" data-tex="\(\alpha,\alpha&#x27;\)">\(\alpha,\alpha&#x27;\)</span>, every radial derivative term in (NI6.2) has exponent at least <span class="math" data-tex="\(\alpha+\alpha&#x27;-\kappa_s\)">\(\alpha+\alpha&#x27;-\kappa_s\)</span>, every axial derivative term at least <span class="math" data-tex="\(\alpha+\alpha&#x27;+1\)">\(\alpha+\alpha&#x27;+1\)</span>, and every undifferentiated connection at least <span class="math" data-tex="\(\alpha+\alpha&#x27;\)">\(\alpha+\alpha&#x27;\)</span>. The same bounds apply to <span class="math" data-tex="\(\mathfrak d a\)">\(\mathfrak d a\)</span> expanded as <span class="math" data-tex="\(D_ra_r+a_r/R+D_za_z\)">\(D_ra_r+a_r/R+D_za_z\)</span>. The finite nonzero harmonic sets bound <span class="math" data-tex="\(|m&#x27;/m|\)">\(|m&#x27;/m|\)</span> by <span class="math" data-tex="\(\max_{n\in\mathscr H_j&#x27;}|n|\)">\(\max_{n\in\mathscr H_j&#x27;}|n|\)</span>, and the reverse ratio similarly. These constants may depend on the fixed stage, as the class definitions allow. This proves the exponent <span class="math" data-tex="\(\alpha+\alpha&#x27;-\kappa_s\)">\(\alpha+\alpha&#x27;-\kappa_s\)</span>, with no half-power loss.</p>
+<p>If <span class="math" data-tex="\(m+m&#x27;\ne0\)">\(m+m&#x27;\ne0\)</span>, the output has that nonzero integer harmonic and belongs to <span class="math" data-tex="\(\mathsf W_{\alpha+\alpha&#x27;-\kappa_s}\)">\(\mathsf W_{\alpha+\alpha&#x27;-\kappa_s}\)</span> by W3. If <span class="math" data-tex="\(m+m&#x27;=0\)">\(m+m&#x27;=0\)</span>, the exponential is exactly one and the product weight is <span class="math" data-tex="\(\zeta P_v^2\le\zeta\)">\(\zeta P_v^2\le\zeta\)</span>. The actual temporal cutoffs give a smooth field on the full auxiliary torus, so this output belongs to <span class="math" data-tex="\(\mathsf M_{\alpha+\alpha&#x27;-\kappa_s}\)">\(\mathsf M_{\alpha+\alpha&#x27;-\kappa_s}\)</span>, not merely to a class on an unextended rectangle. Its auxiliary Haar average may be nonzero and is retained by the mean equations. Before cutoff the corresponding assertion is only local on the labelled rectangle.</p>
+<p>The support of every product lies in the intersection of the two input supports. Its extension and all fixed derivative bounds follow as in NI5. Distinct-label products and all their derivative terms are exactly zero by W2. Thus there are no additional cross-label frequencies, even if angular frequencies of different labels happen to coincide. Within a label the new finite harmonic set is contained in <span class="math" data-tex="\((\mathscr H_j+\mathscr H_j&#x27;)\setminus\{0\}\)">\((\mathscr H_j+\mathscr H_j&#x27;)\setminus\{0\}\)</span>, with zero outputs assigned to the mean. Collect the finitely many pairs giving the same output integer; their number is at most <span class="math" data-tex="\(|\mathscr H_j||\mathscr H_j&#x27;|\)">\(|\mathscr H_j||\mathscr H_j&#x27;|\)</span>, independent of the band. This proves the map for the actual locally finite sums.</p>
+<p>In particular the unsymmetrized transport (NI6.2) has the same bound. For a residual update <span class="math" data-tex="\(w\mapsto w+\delta w\)">\(w\mapsto w+\delta w\)</span> the exact quadratic change is</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{\rm adv}(w,\delta w)+\mathcal T_{\rm adv}(\delta w,w)+\mathcal T_{\rm adv}(\delta w,\delta w).
+\tag{NI6.4}
+\]">\[
+\mathcal T_{\rm adv}(w,\delta w)+\mathcal T_{\rm adv}(\delta w,w)+\mathcal T_{\rm adv}(\delta w,\delta w).
+\tag{NI6.4}
+\]</span>
+<p>The final term has coefficient one. Treating it as the symmetrized expression with identical arguments would introduce an erroneous factor two. Equations (NI6.2) and (NI6.3) bound the three terms in (NI6.4) with their actual multiplicities.</p>
+<h2 id="ni7-receiver-of-the-two-mean-updates-and-return-to-physical-viscosity">NI7. Receiver of the two mean updates and return to physical viscosity</h2>
+<p>Let the current full field be <span class="math" data-tex="\(U=(b+\beta,V+v,G+\gamma)+w\)">\(U=(b+\beta,V+v,G+\gamma)+w\)</span>. The earlier <a href="mean-moment-correction-audit.html">moment audit</a>, M4–M8, and <a href="temporal-mean-correction-audit.html">temporal audit</a>, T3–T4, supply the actual mean increments</p>
+<span class="math math-display" data-tex="\[
+d=(\delta\beta,\delta v,\delta\gamma),\qquad
+\delta\beta\in\mathsf M_{H+1},\quad
+\delta v,\delta\gamma\in\mathsf M_H,
+\quad H=C_*-2\kappa_s
+\tag{NI7.1}
+\]">\[
+d=(\delta\beta,\delta v,\delta\gamma),\qquad
+\delta\beta\in\mathsf M_{H+1},\quad
+\delta v,\delta\gamma\in\mathsf M_H,
+\quad H=C_*-2\kappa_s
+\tag{NI7.1}
+\]</span>
+<p>in Steps 3 and 4 of Proposition 9.6. In the temporal update, <span class="math" data-tex="\(\delta\gamma=\gamma_d-\mathsf A_1\gamma_d\)">\(\delta\gamma=\gamma_d-\mathsf A_1\gamma_d\)</span> is the full compactly realized axial field. The term <span class="math" data-tex="\(-\mathsf A_1\gamma_d\)">\(-\mathsf A_1\gamma_d\)</span>, although flat after the established scaling, remains in (NI7.1) and in every occurrence of <span class="math" data-tex="\(d^{z}\)">\(d^{z}\)</span> in (NI5.1). The compact radial field <span class="math" data-tex="\(\delta\beta=-\varepsilon\partial_Z\Psi\)">\(\delta\beta=-\varepsilon\partial_Z\Psi\)</span> also remains. The moment update has its complete supported potential and exact auxiliary-independent increments. No cutoff remainder is removed in applying this note.</p>
+<p>For the full residual <span class="math" data-tex="\(\mathscr R(U,P)=\mathfrak t_*U+\mathcal T_{\rm adv}(U,U)+\nabla_*P-\varepsilon\Delta_*U\)">\(\mathscr R(U,P)=\mathfrak t_*U+\mathcal T_{\rm adv}(U,U)+\nabla_*P-\varepsilon\Delta_*U\)</span>, with the full cylindrical vector Laplacian, a mean update <span class="math" data-tex="\((d,\delta P)\)">\((d,\delta P)\)</span> has exact change</p>
+<span class="math math-display" data-tex="\[
+\mathfrak t_*d+\mathcal T_{\rm adv}(U,d)+\mathcal T_{\rm adv}(d,U)+\mathcal T_{\rm adv}(d,d)
++\nabla_*\delta P-\varepsilon\Delta_*d.
+\tag{NI7.2}
+\]">\[
+\mathfrak t_*d+\mathcal T_{\rm adv}(U,d)+\mathcal T_{\rm adv}(d,U)+\mathcal T_{\rm adv}(d,d)
++\nabla_*\delta P-\varepsilon\Delta_*d.
+\tag{NI7.2}
+\]</span>
+<p>Every term except <span class="math" data-tex="\(\mathcal T_{\rm adv}(w,d)+\mathcal T_{\rm adv}(d,w)\)">\(\mathcal T_{\rm adv}(w,d)+\mathcal T_{\rm adv}(d,w)\)</span> is angularly constant in cylindrical components: the full vector Laplacian maps a mean column to</p>
+<span class="math math-display" data-tex="\[
+\big((D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{r},
+(D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{\theta},
+(D_r^2+R^{-1}D_r+D_z^2)d^{z}\big),
+\]">\[
+\big((D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{r},
+(D_r^2+R^{-1}D_r+D_z^2-R^{-2})d^{\theta},
+(D_r^2+R^{-1}D_r+D_z^2)d^{z}\big),
+\]</span>
+<p>and the other linear terms and mean products also have no angular coefficient dependence. Thus, denoting removal of the cylindrical angular mean by <span class="math" data-tex="\(\mathsf P_{\ne0}\)">\(\mathsf P_{\ne0}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathsf P_{\ne0}\big(\mathscr R(U+d,P+\delta P)-\mathscr R(U,P)\big)
+=\mathcal T_{\rm adv}(w,d)+\mathcal T_{\rm adv}(d,w).
+\tag{NI7.3}
+\]">\[
+\mathsf P_{\ne0}\big(\mathscr R(U+d,P+\delta P)-\mathscr R(U,P)\big)
+=\mathcal T_{\rm adv}(w,d)+\mathcal T_{\rm adv}(d,w).
+\tag{NI7.3}
+\]</span>
+<p>This is the exact map between the mean update proved above and its nonzero-harmonic receiver. For the source iteration's incoming wave class <span class="math" data-tex="\(\mathsf W_{1/2}\)">\(\mathsf W_{1/2}\)</span>, NI5 gives an added nonzero source in <span class="math" data-tex="\(\mathsf W_H\)">\(\mathsf W_H\)</span>, with all the supports and envelope bounds required for the next pulse source. It has zero angular mean, so it adds no omitted term to the previously computed mean defects.</p>
+<p>The physical conversion retains every scale. At viscosity one, <span class="math" data-tex="\(u_*=Q^Au\)">\(u_*=Q^Au\)</span> and <span class="math" data-tex="\(\mathscr R_*=Q^{2A+1/2}\mathscr R\)">\(\mathscr R_*=Q^{2A+1/2}\mathscr R\)</span>; hence the physical mixed transport is <span class="math" data-tex="\(Q^{-2A-1/2}\)">\(Q^{-2A-1/2}\)</span> times the right side of (NI7.3), evaluated at the original auxiliary map. For any original <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, use the exact map already proved in M2.4–M2.7:</p>
+<span class="math math-display" data-tex="\[
+y=x/\sqrt\nu,\quad u_\nu(x,t)=\sqrt\nu\,u_1(y,t),\quad
+p_\nu(x,t)=\nu p_1(y,t),\quad f_\nu(x,t)=\sqrt\nu f_1(y,t).
+\tag{NI7.4}
+\]">\[
+y=x/\sqrt\nu,\quad u_\nu(x,t)=\sqrt\nu\,u_1(y,t),\quad
+p_\nu(x,t)=\nu p_1(y,t),\quad f_\nu(x,t)=\sqrt\nu f_1(y,t).
+\tag{NI7.4}
+\]</span>
+<p>Each spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>; consequently</p>
+<span class="math math-display" data-tex="\[
+(d_\nu\cdot\nabla_x)w_\nu+(w_\nu\cdot\nabla_x)d_\nu
+=\sqrt\nu\big((d_1\cdot\nabla_y)w_1+(w_1\cdot\nabla_y)d_1\big),
+\tag{NI7.5}
+\]">\[
+(d_\nu\cdot\nabla_x)w_\nu+(w_\nu\cdot\nabla_x)d_\nu
+=\sqrt\nu\big((d_1\cdot\nabla_y)w_1+(w_1\cdot\nabla_y)d_1\big),
+\tag{NI7.5}
+\]</span>
+<p>while <span class="math" data-tex="\(\nu\Delta_xu_\nu=\sqrt\nu\Delta_yu_1\)">\(\nu\Delta_xu_\nu=\sqrt\nu\Delta_yu_1\)</span>. The physical receiver of (NI5.1) is therefore <span class="math" data-tex="\(\sqrt\nu Q^{-2A-1/2}\mathcal Q_m(d_*,a_*)e^{ikm\Phi}\)">\(\sqrt\nu Q^{-2A-1/2}\mathcal Q_m(d_*,a_*)e^{ikm\Phi}\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+R=r_\nu/\sqrt{\nu Q},\quad Z=z_\nu/(\sqrt\nu Q^D),\quad
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_t t.
+\tag{NI7.6}
+\]">\[
+R=r_\nu/\sqrt{\nu Q},\quad Z=z_\nu/(\sqrt\nu Q^D),\quad
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_t t.
+\tag{NI7.6}
+\]</span>
+<p>The angle and time remain unchanged. A chart potential has physical factor <span class="math" data-tex="\(\nu Q^{1/2-A}\)">\(\nu Q^{1/2-A}\)</span>, since its curl contributes <span class="math" data-tex="\((\nu Q)^{-1/2}\)">\((\nu Q)^{-1/2}\)</span>; a chart pressure has physical factor <span class="math" data-tex="\(\nu Q^{-2A}\)">\(\nu Q^{-2A}\)</span>. Thus exact divergence, support separation and all the displayed nonlinear identities survive this map with their full factors. This does not remove viscosity from the original theorem.</p>
+<h2 id="sc11-five-worked-exercises">SC11. Five worked exercises</h2>
+<h3 id="exercise-1-an-exact-finite-amplitude-change">Exercise 1. An exact finite amplitude change</h3>
+<p>For the local waves in SC4–SC5, determine exactly which signed changes admit positive real squared amplitudes. Compare the finite map with its derivative and second derivative.</p>
+<p><strong>Solution.</strong> Keep the slow point and both averaging operations fixed. Put <span class="math" data-tex="\(d=\mathsf H^{-1}(\Sigma/\varepsilon)\)">\(d=\mathsf H^{-1}(\Sigma/\varepsilon)\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+I=\{s\in\mathbb R:a_\sigma^2+s d_\sigma&gt;0
+\text{ for both }\sigma\},\qquad
+a_\sigma(s)=\sqrt{a_\sigma^2+s d_\sigma}.
+\tag{SC11.1}
+\]">\[
+I=\{s\in\mathbb R:a_\sigma^2+s d_\sigma&gt;0
+\text{ for both }\sigma\},\qquad
+a_\sigma(s)=\sqrt{a_\sigma^2+s d_\sigma}.
+\tag{SC11.1}
+\]</span>
+<p>This is the intersection of two open half-lines or whole lines; it contains zero. For <span class="math" data-tex="\(s\in I\)">\(s\in I\)</span>, disjointness and the exact covariance integral give</p>
+<span class="math math-display" data-tex="\[
+W(s)=\sqrt{\varepsilon}\sum_\sigma a_\sigma(s)b_\sigma,\qquad
+\mathcal C(W(s))=\varepsilon T+s\Sigma.
+\tag{SC11.2}
+\]">\[
+W(s)=\sqrt{\varepsilon}\sum_\sigma a_\sigma(s)b_\sigma,\qquad
+\mathcal C(W(s))=\varepsilon T+s\Sigma.
+\tag{SC11.2}
+\]</span>
+<p>Conversely, any field with positive real amplitudes in this fixed two-pulse basis has squared amplitudes <span class="math" data-tex="\(\mathsf H^{-1}(T+s\Sigma/\varepsilon)=a^2+sd\)">\(\mathsf H^{-1}(T+s\Sigma/\varepsilon)=a^2+sd\)</span>, because <span class="math" data-tex="\(\mathsf H\)">\(\mathsf H\)</span> is invertible. Thus <span class="math" data-tex="\(I\)">\(I\)</span> is the exact domain for positive amplitudes in this basis. Allowing a zero amplitude changes the strict inequalities to non-strict inequalities; smooth dependence at such a zero is not asserted.</p>
+<p>At zero, direct differentiation gives</p>
+<span class="math math-display" data-tex="\[
+a&#x27;_\sigma(0)=\frac{d_\sigma}{2a_\sigma},\qquad
+a&#x27;&#x27;_\sigma(0)=-\frac{d_\sigma^2}{4a_\sigma^3},\qquad
+W&#x27;(0)=\mathcal L_\beta\Sigma.
+\tag{SC11.3}
+\]">\[
+a&#x27;_\sigma(0)=\frac{d_\sigma}{2a_\sigma},\qquad
+a&#x27;&#x27;_\sigma(0)=-\frac{d_\sigma^2}{4a_\sigma^3},\qquad
+W&#x27;(0)=\mathcal L_\beta\Sigma.
+\tag{SC11.3}
+\]</span>
+<p>Differentiating SC11.2 twice, or substituting these expressions in the covariance integral, proves</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_{\rm cov}(W(0),W&#x27;&#x27;(0))
++2\mathcal C(\mathcal L_\beta\Sigma)=0.
+\tag{SC11.4}
+\]">\[
+\mathcal B_{\rm cov}(W(0),W&#x27;&#x27;(0))
++2\mathcal C(\mathcal L_\beta\Sigma)=0.
+\tag{SC11.4}
+\]</span>
+<p>Indeed the coefficients inside <span class="math" data-tex="\(\varepsilon\mathsf H\)">\(\varepsilon\mathsf H\)</span> are respectively
+<span class="math" data-tex="\(-d_\sigma^2/(2a_\sigma^2)\)">\(-d_\sigma^2/(2a_\sigma^2)\)</span> and <span class="math" data-tex="\(d_\sigma^2/(2a_\sigma^2)\)">\(d_\sigma^2/(2a_\sigma^2)\)</span>.
+For a finite <span class="math" data-tex="\(s\)">\(s\)</span>, rationalizing the square root gives the exact increment</p>
+<span class="math math-display" data-tex="\[
+a_\sigma(s)-a_\sigma
+=\frac{s d_\sigma}{\sqrt{a_\sigma^2+s d_\sigma}+a_\sigma}.
+\tag{SC11.5}
+\]">\[
+a_\sigma(s)-a_\sigma
+=\frac{s d_\sigma}{\sqrt{a_\sigma^2+s d_\sigma}+a_\sigma}.
+\tag{SC11.5}
+\]</span>
+<p>On any parameter range with <span class="math" data-tex="\(a_\sigma^2+s d_\sigma\ge c a_\sigma^2\)">\(a_\sigma^2+s d_\sigma\ge c a_\sigma^2\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and bounded <span class="math" data-tex="\(s\)">\(s\)</span>, every differentiated numerator has the original <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> weight and every inverse square-root derivative has weight <span class="math" data-tex="\(\zeta^{-1/2}\)">\(\zeta^{-1/2}\)</span> times finite powers of <span class="math" data-tex="\(\delta^{-1}\)">\(\delta^{-1}\)</span> and <span class="math" data-tex="\(S_*\)">\(S_*\)</span>. The chain rule in SC4 therefore proves the same smooth zero extension for this finite increment. This is an identity for the leading pulse field. Taking its actual curl adds the terms in SC7; those terms are not cancelled by SC11.2.</p>
+<h3 id="exercise-2-what-the-signed-map-does-to-an-auxiliary-dependent-input">Exercise 2. What the signed map does to an auxiliary-dependent input</h3>
+<p>Show exactly why auxiliary independence is required in SC5. Determine the map obtained by applying the same amplitude formula to an auxiliary-dependent stress.</p>
+<p><strong>Solution.</strong> At a fixed slow point in the open shell define the matrix-valued function</p>
+<span class="math math-display" data-tex="\[
+\mathsf K(Y)=
+\left[
+\left\langle (b_+)_r(b_+)_{\rm tan}\right\rangle_\theta
+\ \middle|\
+\left\langle (b_-)_r(b_-)_{\rm tan}\right\rangle_\theta
+\right],\qquad \mathsf H=\int\mathsf K(Y)\,d\mu(Y).
+\tag{SC11.6}
+\]">\[
+\mathsf K(Y)=
+\left[
+\left\langle (b_+)_r(b_+)_{\rm tan}\right\rangle_\theta
+\ \middle|\
+\left\langle (b_-)_r(b_-)_{\rm tan}\right\rangle_\theta
+\right],\qquad \mathsf H=\int\mathsf K(Y)\,d\mu(Y).
+\tag{SC11.6}
+\]</span>
+<p>Suppose the same formula is used with
+<span class="math" data-tex="\(\delta a_\sigma(Y)=(\mathsf H^{-1}\Sigma(Y))_\sigma/(2\varepsilon a_\sigma)\)">\(\delta a_\sigma(Y)=(\mathsf H^{-1}\Sigma(Y))_\sigma/(2\varepsilon a_\sigma)\)</span>.
+Coefficients can leave the angular average, but they cannot leave the auxiliary integral. Direct substitution gives exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_{\rm cov}
+\left(W_0,\sqrt{\varepsilon}\sum_\sigma\delta a_\sigma(Y)b_\sigma\right)
+=\mathsf P\Sigma
+:=\int\mathsf K(Y)\mathsf H^{-1}\Sigma(Y)\,d\mu(Y).
+\tag{SC11.7}
+\]">\[
+\mathcal B_{\rm cov}
+\left(W_0,\sqrt{\varepsilon}\sum_\sigma\delta a_\sigma(Y)b_\sigma\right)
+=\mathsf P\Sigma
+:=\int\mathsf K(Y)\mathsf H^{-1}\Sigma(Y)\,d\mu(Y).
+\tag{SC11.7}
+\]</span>
+<p>Regarding the result as a constant function of <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(\mathsf P\)">\(\mathsf P\)</span> is a projection onto the two-dimensional space of constant vectors:</p>
+<span class="math math-display" data-tex="\[
+\mathsf P c=c,\qquad
+\mathsf P^2\Sigma=\mathsf P\Sigma,\qquad
+\ker\mathsf P=
+\left\{\Sigma:\int\mathsf K\mathsf H^{-1}\Sigma\,d\mu=0\right\}.
+\tag{SC11.8}
+\]">\[
+\mathsf P c=c,\qquad
+\mathsf P^2\Sigma=\mathsf P\Sigma,\qquad
+\ker\mathsf P=
+\left\{\Sigma:\int\mathsf K\mathsf H^{-1}\Sigma\,d\mu=0\right\}.
+\tag{SC11.8}
+\]</span>
+<p>The first equality follows from <span class="math" data-tex="\(\int\mathsf K=\mathsf H\)">\(\int\mathsf K=\mathsf H\)</span>, the second applies the first to <span class="math" data-tex="\(\mathsf P\Sigma\)">\(\mathsf P\Sigma\)</span>, and the displayed kernel is the defining equality.</p>
+<p>This projection is not the ordinary Haar average. The two pulse supports are nonempty disjoint closed rectangles. Their union cannot be the connected torus: a union of two disjoint nonempty closed sets covering the torus would disconnect it. Its complement is a nonempty open set. Choose a nonnegative nonzero smooth bump <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with support there and a nonzero constant vector <span class="math" data-tex="\(c\)">\(c\)</span>. For <span class="math" data-tex="\(\Sigma(Y)=\beta(Y)c\)">\(\Sigma(Y)=\beta(Y)c\)</span>, <span class="math" data-tex="\(\mathsf K\Sigma=0\)">\(\mathsf K\Sigma=0\)</span> pointwise, so <span class="math" data-tex="\(\mathsf P\Sigma=0\)">\(\mathsf P\Sigma=0\)</span>, while <span class="math" data-tex="\(\int\Sigma\,d\mu=c\int\beta\,d\mu\ne0\)">\(\int\Sigma\,d\mu=c\int\beta\,d\mu\ne0\)</span>. A supported slow scalar factor with the original edge weight can be included in both expressions. The actual iteration uses the auxiliary-independent stress supplied by its averaged equations; SC5 inverts precisely that domain.</p>
+<h3 id="exercise-3-all-terms-in-a-finite-curled-covariance-update">Exercise 3. All terms in a finite curled covariance update</h3>
+<p>For <span class="math" data-tex="\(U=W_0^{\rm as}+E\)">\(U=W_0^{\rm as}+E\)</span>, put <span class="math" data-tex="\(L=\mathcal L^{\rm as}\Sigma\)">\(L=\mathcal L^{\rm as}\Sigma\)</span> and <span class="math" data-tex="\(V=L+R\)">\(V=L+R\)</span>, as in SC7. Expand the covariance of <span class="math" data-tex="\(U+sV\)">\(U+sV\)</span> and retain the exponent of every term.</p>
+<p><strong>Solution.</strong> Bilinearity and symmetry give the exact polynomial</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal C(U+sV)-\mathcal C(U)
+={}&amp;s\Sigma+s\mathcal B_{\rm cov}(E,L)
++s\mathcal B_{\rm cov}(U,R)\\
+&amp;+s^2\mathcal C(L)
++s^2\mathcal B_{\rm cov}(L,R)
++s^2\mathcal C(R).
+\end{aligned}
+\tag{SC11.9}
+\]">\[
+\begin{aligned}
+\mathcal C(U+sV)-\mathcal C(U)
+={}&amp;s\Sigma+s\mathcal B_{\rm cov}(E,L)
++s\mathcal B_{\rm cov}(U,R)\\
+&amp;+s^2\mathcal C(L)
++s^2\mathcal B_{\rm cov}(L,R)
++s^2\mathcal C(R).
+\end{aligned}
+\tag{SC11.9}
+\]</span>
+<p>The five remainders, in their displayed order, belong to</p>
+<span class="math math-display" data-tex="\[
+\mathsf M_{\rho+\alpha-1/2},\quad
+\mathsf M_{\alpha+1/2-\kappa_s},\quad
+\mathsf M_{2\alpha-1},\quad
+\mathsf M_{2\alpha-1/2-\kappa_s},\quad
+\mathsf M_{2\alpha-2\kappa_s}.
+\tag{SC11.10}
+\]">\[
+\mathsf M_{\rho+\alpha-1/2},\quad
+\mathsf M_{\alpha+1/2-\kappa_s},\quad
+\mathsf M_{2\alpha-1},\quad
+\mathsf M_{2\alpha-1/2-\kappa_s},\quad
+\mathsf M_{2\alpha-2\kappa_s}.
+\tag{SC11.10}
+\]</span>
+<p>To verify them, multiply the exponents of <span class="math" data-tex="\(E\in\mathsf W_\rho\)">\(E\in\mathsf W_\rho\)</span>,
+<span class="math" data-tex="\(U\in\mathsf W_{1/2}\)">\(U\in\mathsf W_{1/2}\)</span>, <span class="math" data-tex="\(L\in\mathsf W_{\alpha-1/2}\)">\(L\in\mathsf W_{\alpha-1/2}\)</span>, and
+<span class="math" data-tex="\(R\in\mathsf W_{\alpha-\kappa_s}\)">\(R\in\mathsf W_{\alpha-\kappa_s}\)</span>. The two square-root edge weights multiply to <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>; the envelopes multiply to <span class="math" data-tex="\(P^2\le1\)">\(P^2\le1\)</span>. Opposite harmonics cancel their phases before any coefficient derivative is taken, and distinct-label products vanish. Leibniz' rule and the mass-one auxiliary integral give every derivative estimate. On a bounded interval of <span class="math" data-tex="\(s\)">\(s\)</span>, its powers change only constants.</p>
+<p>After both averages, SC8 proves that <span class="math" data-tex="\(\mathfrak D_r\)">\(\mathfrak D_r\)</span> retains each of these exponents. In physical units the covariance factor is <span class="math" data-tex="\(\nu Q^{-2A}\)">\(\nu Q^{-2A}\)</span>, and
+<span class="math" data-tex="\(\partial_{r_\nu}=(\nu Q)^{-1/2}D_r\)">\(\partial_{r_\nu}=(\nu Q)^{-1/2}D_r\)</span> on the evaluated chart; the two connection coefficients scale by the same factor. Thus the physical tangential stress divergence has factor <span class="math" data-tex="\(\sqrt\nu Q^{-2A-1/2}\)">\(\sqrt\nu Q^{-2A-1/2}\)</span>, with all five remainders retained. No complete-cycle gain is inferred from this single update.</p>
+<h3 id="exercise-4-the-conservative-mean-of-a-real-harmonic">Exercise 4. The conservative mean of a real harmonic</h3>
+<p>Let <span class="math" data-tex="\(w=ae^{ikm\Phi}+\overline a e^{-ikm\Phi}\)">\(w=ae^{ikm\Phi}+\overline a e^{-ikm\Phi}\)</span> be an actual real divergence-free harmonic pair. Compute its full angularly averaged nonlinear transport.</p>
+<p><strong>Solution.</strong> Define the symmetric real matrix</p>
+<span class="math math-display" data-tex="\[
+W_{ij}=\langle w_iw_j\rangle_\theta
+=a_i\overline a_j+\overline a_i a_j
+=2\operatorname{Re}(a_i\overline a_j).
+\tag{SC11.11}
+\]">\[
+W_{ij}=\langle w_iw_j\rangle_\theta
+=a_i\overline a_j+\overline a_i a_j
+=2\operatorname{Re}(a_i\overline a_j).
+\tag{SC11.11}
+\]</span>
+<p>The nonzero double harmonics integrate to zero because <span class="math" data-tex="\(kp m\)">\(kp m\)</span> is a nonzero integer. For each component <span class="math" data-tex="\(j\)">\(j\)</span>, the product rule gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(D_r+R^{-1})(w_rw_j)
++R^{-1}\partial_\theta(w_\theta w_j)+D_z(w_zw_j)\\
+&amp;\quad=w_rD_rw_j+w_\theta R^{-1}\partial_\theta w_j+w_zD_zw_j
++w_j\operatorname{div}_*w.
+\end{aligned}
+\tag{SC11.12}
+\]">\[
+\begin{aligned}
+&amp;(D_r+R^{-1})(w_rw_j)
++R^{-1}\partial_\theta(w_\theta w_j)+D_z(w_zw_j)\\
+&amp;\quad=w_rD_rw_j+w_\theta R^{-1}\partial_\theta w_j+w_zD_zw_j
++w_j\operatorname{div}_*w.
+\end{aligned}
+\tag{SC11.12}
+\]</span>
+<p>The last term is zero. Add the cylindrical frame column
+<span class="math" data-tex="\(R^{-1}(-w_\theta^2,w_\theta w_r,0)\)">\(R^{-1}(-w_\theta^2,w_\theta w_r,0)\)</span>, then take the angular average. Periodicity removes the angular derivative and the slow operators commute with that average. The result, component by component, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\mathcal T_{\rm adv}(w,w)\rangle_{\theta,r}
+&amp;=(D_r+R^{-1})W_{rr}+D_zW_{zr}-R^{-1}W_{\theta\theta},\\
+\langle\mathcal T_{\rm adv}(w,w)\rangle_{\theta,\theta}
+&amp;=(D_r+2R^{-1})W_{r\theta}+D_zW_{z\theta},\\
+\langle\mathcal T_{\rm adv}(w,w)\rangle_{\theta,z}
+&amp;=(D_r+R^{-1})W_{rz}+D_zW_{zz}.
+\end{aligned}
+\tag{SC11.13}
+\]">\[
+\begin{aligned}
+\langle\mathcal T_{\rm adv}(w,w)\rangle_{\theta,r}
+&amp;=(D_r+R^{-1})W_{rr}+D_zW_{zr}-R^{-1}W_{\theta\theta},\\
+\langle\mathcal T_{\rm adv}(w,w)\rangle_{\theta,\theta}
+&amp;=(D_r+2R^{-1})W_{r\theta}+D_zW_{z\theta},\\
+\langle\mathcal T_{\rm adv}(w,w)\rangle_{\theta,z}
+&amp;=(D_r+R^{-1})W_{rz}+D_zW_{zz}.
+\end{aligned}
+\tag{SC11.13}
+\]</span>
+<p>These are the original conservative mean terms. They include every part of <span class="math" data-tex="\(a=t+r\)">\(a=t+r\)</span>, hence every cutoff and curl remainder. An auxiliary average may now be taken separately; it has not been included in <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<h3 id="exercise-5-the-exact-transport-defect-without-incompressibility">Exercise 5. The exact transport defect without incompressibility</h3>
+<p>For two same-label harmonics, determine which divergence identities are needed for the unsymmetrized estimate and retain the error when a divergence is nonzero.</p>
+<p><strong>Solution.</strong> For the advecting coefficient <span class="math" data-tex="\(a\)">\(a\)</span>, define its actual divergence coefficient by</p>
+<span class="math math-display" data-tex="\[
+\omega_a=\mathfrak d a+ikm\,n\cdot a,\qquad
+\mathfrak d a=(D_r+R^{-1})a_r+D_za_z.
+\tag{SC11.14}
+\]">\[
+\omega_a=\mathfrak d a+ikm\,n\cdot a,\qquad
+\mathfrak d a=(D_r+R^{-1})a_r+D_za_z.
+\tag{SC11.14}
+\]</span>
+<p>Multiplying this identity by <span class="math" data-tex="\(m&#x27;/m\)">\(m&#x27;/m\)</span> gives
+<span class="math" data-tex="\(ikm&#x27;n\cdot a=(m&#x27;/m)(\omega_a-\mathfrak d a)\)">\(ikm&#x27;n\cdot a=(m&#x27;/m)(\omega_a-\mathfrak d a)\)</span>.
+Substitute it into the complete transport formula NI6.1:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e^{-ik(m+m&#x27;)\Phi}\mathcal T_{\rm adv}
+(ae^{ikm\Phi},be^{ikm&#x27;\Phi})
+={}&amp;a_rD_rb+a_zD_zb-\frac{m&#x27;}m(\mathfrak d a)b\\
+&amp;+\frac{m&#x27;}m\omega_a b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0).
+\end{aligned}
+\tag{SC11.15}
+\]">\[
+\begin{aligned}
+e^{-ik(m+m&#x27;)\Phi}\mathcal T_{\rm adv}
+(ae^{ikm\Phi},be^{ikm&#x27;\Phi})
+={}&amp;a_rD_rb+a_zD_zb-\frac{m&#x27;}m(\mathfrak d a)b\\
+&amp;+\frac{m&#x27;}m\omega_a b
++R^{-1}(-a_\theta b_\theta,a_\theta b_r,0).
+\end{aligned}
+\tag{SC11.15}
+\]</span>
+<p>This identity is valid for arbitrary smooth coefficients with the stated angle independence. If <span class="math" data-tex="\(a\in\mathsf W_\alpha\)">\(a\in\mathsf W_\alpha\)</span>, <span class="math" data-tex="\(b\in\mathsf W_{\alpha&#x27;}\)">\(b\in\mathsf W_{\alpha&#x27;}\)</span> and
+<span class="math" data-tex="\(\omega_a\in\mathsf W_\gamma\)">\(\omega_a\in\mathsf W_\gamma\)</span>, the exact output has exponent at least</p>
+<span class="math math-display" data-tex="\[
+\min\{\alpha+\alpha&#x27;-\kappa_s,\ \gamma+\alpha&#x27;\}.
+\tag{SC11.16}
+\]">\[
+\min\{\alpha+\alpha&#x27;-\kappa_s,\ \gamma+\alpha&#x27;\}.
+\tag{SC11.16}
+\]</span>
+<p>All radial derivative terms use the first exponent; the extra divergence product uses the second. The finite harmonic ratios, supports and zero-harmonic mean receiver are exactly those in NI6. If the advecting wave is divergence free, <span class="math" data-tex="\(\omega_a=0\)">\(\omega_a=0\)</span>, the target coefficient <span class="math" data-tex="\(b\)">\(b\)</span> need not be divergence free for this unsymmetrized estimate. For the symmetrized estimate, retain also <span class="math" data-tex="\((m/m&#x27;)\omega_ba\)">\((m/m&#x27;)\omega_ba\)</span>, or impose both zero divergences.</p>
+<p>For a transverse leading coefficient <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(n\cdot t=0\)">\(n\cdot t=0\)</span> gives
+<span class="math" data-tex="\(\omega_t=\mathfrak d t\)">\(\omega_t=\mathfrak d t\)</span>. Substitution in SC11.15 cancels the two ratio terms exactly. Its remaining transport terms obey the same class estimate, since <span class="math" data-tex="\(\mathfrak d t\in\mathsf W_{\alpha-\kappa_s}\)">\(\mathfrak d t\in\mathsf W_{\alpha-\kappa_s}\)</span>. This gives the exact relationship between transversality and the nonlinear bound. The constructed Navier–Stokes velocity still requires its full curl to have zero divergence; no leading field is substituted for it.</p>
+<p>The five exercises are analytic identities and estimates for the specified objects. They introduce no numerical validation, new original-source defect or claim of novelty. The next lesson constructs the mean corrections that receive these stresses and conservative mean terms.</p>
+</article></body></html>

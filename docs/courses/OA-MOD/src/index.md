@@ -1,6 +1,6 @@
 # Modular theory and weights
 
-These draft lessons develop weights, modular time, standard forms, spatial derivatives, traces, expectations and correspondences. The course remains in progress.
+These lessons develop weights, modular time, standard forms, spatial derivatives, traces, expectations and correspondences.
 
 Sources and terms
 

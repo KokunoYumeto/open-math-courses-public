@@ -1,6 +1,6 @@
 """Rebuild this reading's HTML: Python 3.10+ and markdown-it-py 4.0.0.
 
-Run this file without parameters beside readings.json. Mathematics remains
+Run this file beside readings.json; --reading selects one declared page. Mathematics remains
 verbatim in data-tex; MathJax and its font files are supplied in the edition.
 Reader code: CC0-1.0. No mathematical or third-party component is relicensed.
 """
@@ -105,22 +105,31 @@ def render(source):
                 target = child.attrGet("href") or ""
                 parsed = urlsplit(target)
                 if not parsed.scheme and parsed.path.endswith(".md") and not parsed.path.startswith("src/"):
-                    child.attrSet("href", target.replace(".md", ".html", 1))
+                    candidate=parsed.path[:-3]+'.html'
+                    if (ROOT/candidate).is_file():
+                        child.attrSet("href", target.replace(".md", ".html", 1))
     rendered = md.renderer.render(tokens, md.options, {})
     assert next(raw_math, None) is None, 'Unrendered source mathematics'
     return rendered
 
 
-def build():
+def build(reader=None):
     manifest = json.loads((ROOT / "readings.json").read_text(encoding="utf-8"))
-    (ROOT / "reader.css").write_text(CSS + "\n", encoding="utf-8", newline="\n")
+    selected=[entry for entry in manifest['readings'] if reader is None or entry['reader']==reader]
+    if not selected:raise ValueError('Unknown declared reading: '+str(reader))
+    (ROOT / "support-reader.css").write_text(CSS + "\n", encoding="utf-8", newline="\n")
     records = []
-    for entry in manifest["readings"]:
+    for entry in selected:
+        destination=ROOT/entry['reader']
+        existing=destination.read_text(encoding='utf-8') if destination.exists() else ''
+        if entry['reader']=='index.html' or re.search(r'http-equiv=[\"\x27]refresh[\"\x27]',existing,re.I):
+            records.append({'reader':entry['reader'],'preserved':'course catalogue or canonical lesson redirect'})
+            continue
         source = (ROOT / entry["source"]).read_text(encoding="utf-8")
         body = render(source)
         title = html.escape(entry["title"])
         config = {"tex": {"inlineMath": [[r"\(", r"\)"]], "displayMath": [[r"\[", r"\]"]], "processEscapes": True}, "options": {"renderActions": {"addMenu": []}}}
-        page = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + title + ' · Open Mathematics Courses</title><link rel="stylesheet" href="reader.css"><script>window.MathJax=' + json.dumps(config) + ';</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Reading contents</a> · <a href="dependencies.html">Prerequisite results</a> · <a href="sources.html">Sources and terms</a> · <a href="' + html.escape(entry["source"], quote=True) + '">Editable Markdown</a></nav><article>' + body + '</article><footer>Mathematical exposition: OpenAI Codex (AI), October 2026. <a href="sources.html">Human research sources, AI contributions and component terms</a>.</footer></main></body></html>\n'
+        page = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + title + ' · Open Mathematics Courses</title><link rel="stylesheet" href="support-reader.css"><script>window.MathJax=' + json.dumps(config) + ';</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Reading navigation"><a href="../../index.html">Open Mathematics Courses</a> · <a href="index.html">Reading contents</a> · <a href="dependencies.html">Prerequisite results</a> · <a href="sources.html">Sources and terms</a> · <a href="' + html.escape(entry["source"], quote=True) + '">Editable Markdown</a></nav><article>' + body + '</article><footer>Mathematical exposition: OpenAI Codex (AI), October 2026. <a href="sources.html">Human research sources, AI contributions and component terms</a>.</footer></main></body></html>\n'
         destination = ROOT / entry["reader"]
         destination.write_text(page, encoding="utf-8", newline="\n")
         records.append({"source": entry["source"], "source_sha256": hashlib.sha256(source.encode()).hexdigest(), "reader": entry["reader"], "reader_sha256": hashlib.sha256(page.encode()).hexdigest()})
@@ -128,4 +137,7 @@ def build():
 
 
 if __name__ == "__main__":
-    build()
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--reading',help='Build one declared support page, for example sources.html.')
+    build(parser.parse_args().reading)

@@ -58,7 +58,7 @@ are written locally. The [mixed-partial identity P11.2](integration-prerequisite
 [Taylor formula P12.6](integration-prerequisite-completions.html#proof-P12.6)
 and [joint parameter integration P12.7](integration-prerequisite-completions.html#proof-P12.7)
 give the differential and integral steps. The [positive square root P8](elementary-proof-completions.html#proof-P8-smooth)
-supplies existence and smoothness; finite compactness
+supplies existence and smoothness; [finite compactness](proof-map.html#F0-COMP)
 supplies the compact-parameter step.
 
 For \(n=0\), the coordinate space is a singleton. Take \(x_c(s)=x_0\),

@@ -140,7 +140,7 @@ Both \(C_L\) and \(J\) are antiunitary, so \(U=JC_L^{-1}\) is linear, preserves 
  \end{aligned}
 \]
 
-The last equality uses the already proved commutation. Thus \(U\) is the specified \(N\)-\(N\) bimodule self-duality. Under the usual notation \(\zeta^*=J\zeta\), its inverse sends \(\zeta^*\) to \(C_L\zeta\), exactly the correspondence of Takesaki II IX.3.2. That source leaves the proof to the reader; all scalar, normality, fullness and action-order checks needed here have now been supplied. These explanatory additions outside the marked open-definition component are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0-1.0. Earlier original text retains its existing licence.
+The last equality uses the already proved commutation. Thus \(U\) is the specified \(N\)-\(N\) bimodule self-duality. Under the usual notation \(\zeta^*=J\zeta\), its inverse sends \(\zeta^*\) to \(C_L\zeta\), exactly the correspondence of Takesaki II IX.3.2. That source leaves the proof to the reader. The argument here includes the scalar, normality, fullness and action-order steps and contains contributions by GPT-6.1 Sol (OpenAI), CC0-1.0.
 
 **Intertwiner totality.** Put
 
@@ -3290,4 +3290,4 @@ Thus \(H_\rho\) has dimension six, the lifted \(H_{\overline\varphi}\) dimension
 
 The proof corresponds to the complete two-clause Lemma IX.3.5 of Takesaki II, printed pp.190–191 / PDF pp.210–211. In its nonfaithful paragraph on p.191, the complementary support is printed as \(f-q\le e\) and the auxiliary lift uses \(\varphi_1(eXe)\); the types in (LW.1) require \(f-q\le f\) and a second-corner compression instead. Its last two proof-clause labels are interchanged. Equations (LW.3), (LW.8) and (LW.9–11) supply the correctly typed completion and the two correctly assigned proofs. These are editorial and domain corrections, with no claim of novelty. The subsequent closed conjugate-linear spatial-derivative operator and Definition IX.3.6 remain separate obligations.
 
-The new FU-12–13 exposition and solved examples are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0-1.0. The earlier lesson text and its marked adapted components retain their existing licences. No protected source page or source proof is reproduced.
+The FU-12–13 exposition and solved examples include contributions by GPT-6.1 Sol (OpenAI), CC0-1.0. Other contributions have the terms stated in the course component notices.

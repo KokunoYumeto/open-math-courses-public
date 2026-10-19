@@ -11,7 +11,7 @@ IH^a(X,L)=H^{a-\dim X}(X,\operatorname{IC}_X(L)).
 \]
 Closed-support ICs are understood to be pushed into the ambient variety. Our default coefficients \(\Lambda\) are a characteristic-zero field in the classical topology, or \(\overline{\mathbb Q}_\ell\) in the étale topology with \(\ell\) invertible on the variety. Arithmetic formulas keep Tate twists; decompositions obtained from finite-field weights are asserted geometrically. Section 4 separately allows any coefficient field \(k\) on complex varieties. Characteristic two for \(k\) there does not mean that the variety has characteristic two.
 
-The earlier inputs are proper base change, localization and oriented duality from Constructible complexes on algebraic varieties, the strict boundary characterization in [Intermediate extensions and intersection complexes](intermediate-extensions-and-intersection-complexes.md), and, for general characteristic-zero splitting, [The decomposition theorem](the-decomposition-theorem.md). We will distinguish the arguments needing that last theorem from the ones proved by dimensions and adjunction alone.
+The earlier inputs are proper base change, localization and oriented duality from [Constructible complexes on algebraic varieties](constructible-complexes-on-algebraic-varieties.md), the strict boundary characterization in [Intermediate extensions and intersection complexes](intermediate-extensions-and-intersection-complexes.md), and, for general characteristic-zero splitting, [The decomposition theorem](the-decomposition-theorem.md). We will distinguish the arguments needing that last theorem from the ones proved by dimensions and adjunction alone.
 
 ## 1. Two exceptional curves and one small resolution
 

@@ -110,17 +110,17 @@ Editable source: [affine-cohomology-and-serres-criterion.md](src/affine-cohomolo
 
 R Noetherian, F coherent on P_R^N; finite cohomology, eventual higher-twist vanishing and eventual global generation.
 
-Read Theorem 2.1 and its proof. Proposition 1.2; descending induction in Theorem 2.1; preceding projective-space lesson, Theorem 2.2.
+[Read Theorem 2.1 and its proof](serres-theorems-on-projective-schemes.html#AG-QC-05-Serre-projective). Proposition 1.2; descending induction in Theorem 2.1; preceding projective-space lesson, Theorem 2.2.
 
-Editable source: serres-theorems-on-projective-schemes.md. SHA-256: `ddac40fd2bf24adfb7184702da4b3adcf5596f2739bbd9fb2d81bf9941f3f116`.
+Editable source: [serres-theorems-on-projective-schemes.md](src/serres-theorems-on-projective-schemes.md). SHA-256: `ddac40fd2bf24adfb7184702da4b3adcf5596f2739bbd9fb2d81bf9941f3f116`.
 
 ### AG-QC-05: Serre’s theorems for a proper scheme with an ample line bundle
 
 X proper over a Noetherian affine base R, F coherent and L ample; finiteness, and vanishing and global generation for every sufficiently large integer twist. Thresholds on a merely locally Noetherian non-quasi-compact base are only local.
 
-Read Theorem 2.2 and its proof. Lemma 1.3 proves the closed embedding; Theorems 2.1–2.2, with the finite residue-class argument.
+[Read Theorem 2.2 and its proof](serres-theorems-on-projective-schemes.html#AG-QC-05-Serre-ample). Lemma 1.3 proves the closed embedding; Theorems 2.1–2.2, with the finite residue-class argument.
 
-Editable source: serres-theorems-on-projective-schemes.md. SHA-256: `ddac40fd2bf24adfb7184702da4b3adcf5596f2739bbd9fb2d81bf9941f3f116`.
+Editable source: [serres-theorems-on-projective-schemes.md](src/serres-theorems-on-projective-schemes.md). SHA-256: `ddac40fd2bf24adfb7184702da4b3adcf5596f2739bbd9fb2d81bf9941f3f116`.
 
 ### AG-QC-08: Flat base change
 
@@ -150,9 +150,9 @@ Editable source: [the-theorem-on-formal-functions.md](src/the-theorem-on-formal-
 
 X projective over a field k, Cohen–Macaulay and equidimensional of dimension n, F coherent; Ext_X^(n-i)(F,omega_X) is naturally dual to H^i(X,F), for every integer i. For a smooth projective equidimensional curve and invertible L this gives H^1(L)^vee=H^0(omega_X tensor L^-1). No non-Cohen–Macaulay sheaf-duality extension is asserted.
 
-Read Theorem 4.2 and its proof. Sections 2–4; local Ext vanishing, ambient projective-space duality from lesson 14 and Theorem 4.2. Local algebra inputs are recorded separately.
+[Read Theorem 4.2 and its proof](dualizing-sheaves-and-serre-duality-for-projective-schemes.html#AG-QC-15-CM-duality). Sections 2–4; local Ext vanishing, ambient projective-space duality from lesson 14 and Theorem 4.2. Local algebra inputs are recorded separately.
 
-Editable source: dualizing-sheaves-and-serre-duality-for-projective-schemes.md. SHA-256: `2eb5d75cf6789870a3868831c7e701c12ab4033a8f6122f3937cb945e1ad5223`.
+Editable source: [dualizing-sheaves-and-serre-duality-for-projective-schemes.md](src/dualizing-sheaves-and-serre-duality-for-projective-schemes.md). SHA-256: `2eb5d75cf6789870a3868831c7e701c12ab4033a8f6122f3937cb945e1ad5223`.
 
 ## Analytic proof inputs
 

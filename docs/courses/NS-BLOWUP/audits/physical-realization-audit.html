@@ -1,0 +1,659 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="physical-realization-audit.md">Editable source</a></nav><h1 id="physical-derivative-bounds-and-realization-of-the-correction-fields">Physical derivative bounds and realization of the correction fields</h1>
+<p>The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>. This note derives the passage from the actual finite correction cycle to its physical summation. The actual leading profile and complete base field are supplied by <a href="shear-realization-audit.html">V0–V7</a> and <a href="base-field-realization-audit.html">Z0–Z8</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+<p>Source: OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, original <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">PDF</a>, SHA256 <code>0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f</code>. The source passages are on original pages 15–16, 57–59, 63–66, 74, 112–116 and 138. Principal locators are Theorem 3.1, Lemma 5.4, (6.2)–(6.12), (7.2)–(7.4), Lemma 9.8, Proposition 9.9 and Lemma A.6.</p>
+<p>The complete local suppliers are <a href="correction-cycle-audit.html">the cycle K0–K8</a>, <a href="source-containment-audit.html">source closure S1–S5</a>, <a href="pulse-inverse-audit.html">pulse P1–P8</a>, <a href="wave-interaction-audit.html">wave interactions W1–W8</a>, <a href="stress-covariance-audit.html">stress C1–C9</a>, <a href="temporal-mean-correction-audit.html">temporal means T1–T4</a>, <a href="mean-moment-correction-audit.html">five-profile means M1–M8</a>, and <a href="radial-primitive-audit/src/radial-primitives-and-compact-mean-corrections.html">radial primitives R1–R8</a>. The physical summation proof is also retained in the previously delivered <a href="https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/src/summing-the-correction-fields.md">N6.1, S1–S5</a>. The receiving data and summation argument are given below.</p>
+<h2 id="l0-the-actual-potential-and-pressure-increments">L0. The actual potential and pressure increments</h2>
+<p>Retain <span class="math" data-tex="\(0&lt;h&lt;1/100\)">\(0&lt;h&lt;1/100\)</span>, <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>, <span class="math" data-tex="\(D=1/2-h\)">\(D=1/2-h\)</span>, <span class="math" data-tex="\(Q=2^{-\ell}\)">\(Q=2^{-\ell}\)</span>, <span class="math" data-tex="\(\varepsilon=Q^h\)">\(\varepsilon=Q^h\)</span>, <span class="math" data-tex="\(S_*=\ell^2\)">\(S_*=\ell^2\)</span>, <span class="math" data-tex="\(\kappa_s=1/100000\)">\(\kappa_s=1/100000\)</span>, and the original stage orders</p>
+<span class="math math-display" data-tex="\[
+\sigma_j=\tfrac15+\tfrac j{10},\qquad B_j=\tfrac12+\sigma_j,
+\qquad C_j^*=1+\sigma_j.
+\tag{L0.1}
+\]">\[
+\sigma_j=\tfrac15+\tfrac j{10},\qquad B_j=\tfrac12+\sigma_j,
+\qquad C_j^*=1+\sigma_j.
+\tag{L0.1}
+\]</span>
+<p>K2 constructs the finite initialization. For <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, collect the actual physical wave-potential increments of the cycle from <span class="math" data-tex="\(j-1\)">\(j-1\)</span> to <span class="math" data-tex="\(j\)">\(j\)</span> in <span class="math" data-tex="\(A_j^w\)">\(A_j^w\)</span>, its azimuthal-potential coefficients in <span class="math" data-tex="\(\Psi_j\)">\(\Psi_j\)</span>, and its direct azimuthal-velocity coefficients in <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. Original (9.15) is exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_j=A_j^w+\Psi_je_\theta,\quad B_j^{\rm vec}=b_je_\theta,
+\quad p_j=p^{[j]}-p^{[j-1]},\quad Z_j=(A_j,B_j^{\rm vec},p_j),\\
+\Delta u_j=\operatorname{curl}A_j+B_j^{\rm vec}=u^{[j]}-u^{[j-1]},\qquad
+(u^{[J]},p^{[J]})=U_0+\sum_{j=1}^J(\Delta u_j,p_j).
+\end{gathered}
+\tag{L0.2}
+\]">\[
+\begin{gathered}
+A_j=A_j^w+\Psi_je_\theta,\quad B_j^{\rm vec}=b_je_\theta,
+\quad p_j=p^{[j]}-p^{[j-1]},\quad Z_j=(A_j,B_j^{\rm vec},p_j),\\
+\Delta u_j=\operatorname{curl}A_j+B_j^{\rm vec}=u^{[j]}-u^{[j-1]},\qquad
+(u^{[J]},p^{[J]})=U_0+\sum_{j=1}^J(\Delta u_j,p_j).
+\end{gathered}
+\tag{L0.2}
+\]</span>
+<p>The superscript on <span class="math" data-tex="\(B_j^{\rm vec}\)">\(B_j^{\rm vec}\)</span> only distinguishes the vector from the already defined exponent <span class="math" data-tex="\(B_j\)">\(B_j\)</span>; it does not alter either object. Every wave potential retains the factor <span class="math" data-tex="\(i n_\Phi\times(\psi t)/(km|n_\Phi|^2)\)">\(i n_\Phi\times(\psi t)/(km|n_\Phi|^2)\)</span> before its physical rescaling. Every mean potential retains the compact primitive and its remainder. No curl term is discarded.</p>
+<p>Linearity of the same <span class="math" data-tex="\(\mathsf T_0\)">\(\mathsf T_0\)</span> and the fixed <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, with pressure reconstructed after every intermediate update, gives original (9.16):</p>
+<span class="math math-display" data-tex="\[
+Q^{2A}p_j=p_w^{[j]}-p_w^{[j-1]}
++\mathsf T_0\bigl(g_r^{[j]}-g_r^{[j-1]}-\rho(\mathcal P^{[j]}-\mathcal P^{[j-1]})\bigr).
+\tag{L0.3}
+\]">\[
+Q^{2A}p_j=p_w^{[j]}-p_w^{[j-1]}
++\mathsf T_0\bigl(g_r^{[j]}-g_r^{[j-1]}-\rho(\mathcal P^{[j]}-\mathcal P^{[j-1]})\bigr).
+\tag{L0.3}
+\]</span>
+<p>Here the quantities on the right are the complete chart quantities. The intermediate pressure differences telescope because their old and new full radial sources telescope inside a fixed linear operator. The background pressure cancels between the two finite states. The physical pressure has not been replaced by the last pressure increment in a cycle.</p>
+<p>For a physical tuple <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(|V|_m\)">\(|V|_m\)</span> denotes the sum of the absolute values of all its Cartesian component derivatives of total space–time order at most <span class="math" data-tex="\(m\)">\(m\)</span>, evaluated at the point. Constants may depend on <span class="math" data-tex="\(j,m\)">\(j,m\)</span>; the power loss to be proved must not depend on <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<h2 id="l1-physical-differentiation-with-every-graph-and-phase-factor">L1. Physical differentiation with every graph and phase factor</h2>
+<p>First use the source viscosity one. The exact extension-to-physical map is</p>
+<span class="math math-display" data-tex="\[
+R=r/Q^{1/2},\quad Z=z/Q^D,\quad T=(1-t)/Q,\quad
+Y_i=J_g^i(v_rr^{d_r}+v_tt),
+\tag{L1.1}
+\]">\[
+R=r/Q^{1/2},\quad Z=z/Q^D,\quad T=(1-t)/Q,\quad
+Y_i=J_g^i(v_rr^{d_r}+v_tt),
+\tag{L1.1}
+\]</span>
+<p>with the original matrix, eigenvectors and index of W1.3. They remain fixed within a chart. For a coefficient <span class="math" data-tex="\(a(R,Z,T,Y_i)\)">\(a(R,Z,T,Y_i)\)</span>, the physical derivative operators before evaluation are exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\partial_r^{\rm phys}&amp;=Q^{-1/2}(\partial_R+M_i d_rR^{d_r-1}\mathcal L_i),\\
+\partial_z^{\rm phys}&amp;=Q^{-D}\partial_Z,\\
+\partial_t^{\rm phys}&amp;=-Q^{-1}\partial_T+T_g^iN_i,
+\end{split}
+\quad
+M_i=\Lambda_g^iQ^{d_r/2},\quad T_g^i=Q^{-1-h}c_i.
+\tag{L1.2}
+\]">\[
+\begin{split}
+\partial_r^{\rm phys}&amp;=Q^{-1/2}(\partial_R+M_i d_rR^{d_r-1}\mathcal L_i),\\
+\partial_z^{\rm phys}&amp;=Q^{-D}\partial_Z,\\
+\partial_t^{\rm phys}&amp;=-Q^{-1}\partial_T+T_g^iN_i,
+\end{split}
+\quad
+M_i=\Lambda_g^iQ^{d_r/2},\quad T_g^i=Q^{-1-h}c_i.
+\tag{L1.2}
+\]</span>
+<p>The floor inequalities give</p>
+<span class="math math-display" data-tex="\[
+T_g^{-1}S_*^{-1}&lt;c_i\le S_*^{-1},\qquad
+\Lambda_g^{-1}\varepsilon^{-\kappa_s}S_*^{-\rho_g}&lt;M_i
+\le\varepsilon^{-\kappa_s}S_*^{-\rho_g}.
+\tag{L1.3}
+\]">\[
+T_g^{-1}S_*^{-1}&lt;c_i\le S_*^{-1},\qquad
+\Lambda_g^{-1}\varepsilon^{-\kappa_s}S_*^{-\rho_g}&lt;M_i
+\le\varepsilon^{-\kappa_s}S_*^{-\rho_g}.
+\tag{L1.3}
+\]</span>
+<p>Thus one radial derivative of a coefficient costs at most <span class="math" data-tex="\(Q^{-1/2-h\kappa_s}\)">\(Q^{-1/2-h\kappa_s}\)</span>, one axial derivative <span class="math" data-tex="\(Q^{-D}\)">\(Q^{-D}\)</span>, and one time derivative <span class="math" data-tex="\(Q^{-1-h}\)">\(Q^{-1-h}\)</span>, with polynomial factors in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>. The shell has <span class="math" data-tex="\(\sqrt{X_a}\le R\le2\sqrt{X_b}\)">\(\sqrt{X_a}\le R\le2\sqrt{X_b}\)</span>. All derivatives of <span class="math" data-tex="\(R^{d_r-1}\)">\(R^{d_r-1}\)</span> and of <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> are bounded there. Applying (L1.2) repeatedly and the finite product rule proves the same per-derivative bounds at every fixed order: when a derivative hits an operator coefficient, it contributes its ordinary radial cost <span class="math" data-tex="\(Q^{-1/2}\)">\(Q^{-1/2}\)</span>, which is no greater than the allowed radial cost. No new factor tied to the construction stage occurs.</p>
+<p>For Cartesian derivatives retain</p>
+<span class="math math-display" data-tex="\[
+\partial_{x_1}=\cos\theta\,\partial_r-\sin\theta\,r^{-1}\partial_\theta,
+\qquad
+\partial_{x_2}=\sin\theta\,\partial_r+\cos\theta\,r^{-1}\partial_\theta.
+\tag{L1.4}
+\]">\[
+\partial_{x_1}=\cos\theta\,\partial_r-\sin\theta\,r^{-1}\partial_\theta,
+\qquad
+\partial_{x_2}=\sin\theta\,\partial_r+\cos\theta\,r^{-1}\partial_\theta.
+\tag{L1.4}
+\]</span>
+<p>Derivatives of the cylindrical frame and of these coefficients cost <span class="math" data-tex="\(r^{-1}=Q^{-1/2}R^{-1}\)">\(r^{-1}=Q^{-1/2}R^{-1}\)</span>, with the exact frame identities <span class="math" data-tex="\(\partial_\theta e_r=e_\theta\)">\(\partial_\theta e_r=e_\theta\)</span>, <span class="math" data-tex="\(\partial_\theta e_\theta=-e_r\)">\(\partial_\theta e_\theta=-e_r\)</span>. These terms are included by induction in (L1.4); they are not treated as constant frame vectors.</p>
+<p>The scalar phase has a better spatial bound than a general torus-dependent coefficient. On each lifted rectangle, original (6.11)–(6.12) gives</p>
+<span class="math math-display" data-tex="\[
+v=(\eta_g+r_0)/c_i,\quad L_s=2r_0/c_i,\qquad
+\partial_x^{\rm phys}v=0,\quad \partial_t^{\rm phys}v=Q^{-1-h}.
+\tag{L1.5}
+\]">\[
+v=(\eta_g+r_0)/c_i,\quad L_s=2r_0/c_i,\qquad
+\partial_x^{\rm phys}v=0,\quad \partial_t^{\rm phys}v=Q^{-1-h}.
+\tag{L1.5}
+\]</span>
+<p>The time derivative is constant in that chart. The phase is the full original expression</p>
+<span class="math math-display" data-tex="\[
+\Phi=p\theta+p_zZ/\varepsilon+x_0R-v(pF+p_zG),\qquad
+k=\lceil\varepsilon^{-1/2}\rceil\le2Q^{-h/2}.
+\tag{L1.6}
+\]">\[
+\Phi=p\theta+p_zZ/\varepsilon+x_0R-v(pF+p_zG),\qquad
+k=\lceil\varepsilon^{-1/2}\rceil\le2Q^{-h/2}.
+\tag{L1.6}
+\]</span>
+<p>Here <span class="math" data-tex="\(F=V/R\)">\(F=V/R\)</span>, <span class="math" data-tex="\(p,p_z,x_0\)">\(p,p_z,x_0\)</span> are fixed label constants, and the original coefficient <span class="math" data-tex="\(B_s^2=\lambda_0/[\varepsilon k^2(1+u_*^2)^{3/2}]\)">\(B_s^2=\lambda_0/[\varepsilon k^2(1+u_*^2)^{3/2}]\)</span> is used. P1 proves uniform bounds on these constants. They, the rounded integer <span class="math" data-tex="\(kp\)">\(kp\)</span>, and the representative are not differentiated.</p>
+<p>For spatial multi-index <span class="math" data-tex="\(a\)">\(a\)</span>, time order <span class="math" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-tex="\(|a|+b\ge1\)">\(|a|+b\ge1\)</span>, differentiating every summand of (L1.6) gives</p>
+<span class="math math-display" data-tex="\[
+|\partial_x^a\partial_t^b\Phi|
+\le C_{a,b}Q^{-|a|/2-b(1+h)}S_*^{P_{a,b}}.
+\tag{L1.7}
+\]">\[
+|\partial_x^a\partial_t^b\Phi|
+\le C_{a,b}Q^{-|a|/2-b(1+h)}S_*^{P_{a,b}}.
+\tag{L1.7}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(p\theta\)">\(p\theta\)</span> contributes only spatial derivatives bounded by powers of <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span>; <span class="math" data-tex="\(p_zZ/\varepsilon\)">\(p_zZ/\varepsilon\)</span> has its sole nonzero derivative <span class="math" data-tex="\(p_zQ^{-D}\varepsilon^{-1}=p_zQ^{-1/2}\)">\(p_zQ^{-D}\varepsilon^{-1}=p_zQ^{-1/2}\)</span>; and <span class="math" data-tex="\(x_0R\)">\(x_0R\)</span> has only the stated spatial costs. In <span class="math" data-tex="\(v(pF+p_zG)\)">\(v(pF+p_zG)\)</span>, every spatial derivative hits a slow factor, while a time derivative may hit either that factor or the one constant first derivative of <span class="math" data-tex="\(v\)">\(v\)</span>. The slow factors cost <span class="math" data-tex="\(Q^{-1/2}\)">\(Q^{-1/2}\)</span>, <span class="math" data-tex="\(Q^{-D}\)">\(Q^{-D}\)</span>, <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span>, and <span class="math" data-tex="\(|v|\le L_s\le C S_*\)">\(|v|\le L_s\le C S_*\)</span>. Their all-order slow bounds come from P1's actual base inputs. This proves (L1.7), including every term of its product rule.</p>
+<p>Set the original two costs</p>
+<span class="math math-display" data-tex="\[
+s_x=\tfrac12+\tfrac h2,\qquad s_t=1+\tfrac{3h}{2}.
+\tag{L1.8}
+\]">\[
+s_x=\tfrac12+\tfrac h2,\qquad s_t=1+\tfrac{3h}{2}.
+\tag{L1.8}
+\]</span>
+<p>A derivative of <span class="math" data-tex="\(e^{ikn\Phi}\)">\(e^{ikn\Phi}\)</span>, for any fixed nonzero harmonic integer <span class="math" data-tex="\(n\)">\(n\)</span>, is a finite sum of products
+<span class="math" data-tex="\((ikn)^d e^{ikn\Phi}\prod_{v=1}^d\partial_x^{a_v}\partial_t^{b_v}\Phi\)">\((ikn)^d e^{ikn\Phi}\prod_{v=1}^d\partial_x^{a_v}\partial_t^{b_v}\Phi\)</span>, where <span class="math" data-tex="\(d\le |a|+b\)">\(d\le |a|+b\)</span> and the derivative indices sum to <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. Equations (L1.6)–(L1.7) bound each product by</p>
+<span class="math math-display" data-tex="\[
+C_{a,b,n}Q^{-|a|/2-b(1+h)-dh/2}S_*^P
+\le C_{a,b,n}Q^{-|a|s_x-bs_t}S_*^P.
+\tag{L1.9}
+\]">\[
+C_{a,b,n}Q^{-|a|/2-b(1+h)-dh/2}S_*^P
+\le C_{a,b,n}Q^{-|a|s_x-bs_t}S_*^P.
+\tag{L1.9}
+\]</span>
+<p>This keeps the carrier frequency contribution; it is not a bound on the phase alone. Since <span class="math" data-tex="\(s_x\ge1/2+h\kappa_s,D,1/2\)">\(s_x\ge1/2+h\kappa_s,D,1/2\)</span> and <span class="math" data-tex="\(s_t\ge1+h\)">\(s_t\ge1+h\)</span>, the same costs dominate all coefficient and frame derivatives in (L1.2)–(L1.4).</p>
+<p>All weights <span class="math" data-tex="\(\sqrt\zeta\delta^{-M}\)">\(\sqrt\zeta\delta^{-M}\)</span> and <span class="math" data-tex="\(\zeta\delta^{-M}\)">\(\zeta\delta^{-M}\)</span> are bounded on the closed shell for each fixed <span class="math" data-tex="\(M\)">\(M\)</span>, with smooth zero extensions already proved in S2 and C4. To verify boundedness at an edge, set its logarithmic distance to <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>; the factor is bounded by a constant times <span class="math" data-tex="\(s^{-M}\exp(-c/s^2)\)">\(s^{-M}\exp(-c/s^2)\)</span>, which tends to zero because the exponential series dominates any fixed power. The envelopes satisfy <span class="math" data-tex="\(0&lt;P(v)\le1\)">\(0&lt;P(v)\le1\)</span>. Leibniz' rule and (L1.9) consequently give, for an actual coefficient of original class exponent <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\partial_x^a\partial_t^b(a_\gamma e^{ikn\Phi_\gamma})|
+\le C_{j,a,b}Q^{h\alpha-|a|s_x-bs_t}S_*^{P_{j,a,b}}.
+\tag{L1.10}
+\]">\[
+|\partial_x^a\partial_t^b(a_\gamma e^{ikn\Phi_\gamma})|
+\le C_{j,a,b}Q^{h\alpha-|a|s_x-bs_t}S_*^{P_{j,a,b}}.
+\tag{L1.10}
+\]</span>
+<p>The identical bound without the exponential holds for a mean coefficient. Source closure S1 gives a finite harmonic set at each stage, independent of the band; its size and the powers of <span class="math" data-tex="\(n\)">\(n\)</span> enter constants, not powers of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Bounded differences of overlapping covering indices multiply constants by fixed powers of <span class="math" data-tex="\(J_g\)">\(J_g\)</span>. Slow mesh cutoffs cost powers of <span class="math" data-tex="\(S_*\)">\(S_*\)</span>. Their bounded local multiplicity and smooth support extensions therefore preserve (L1.10) across label and band boundaries. Since <span class="math" data-tex="\(q/Q\in[1/2,2]\)">\(q/Q\in[1/2,2]\)</span>, changing <span class="math" data-tex="\(Q\)">\(Q\)</span> to the original <span class="math" data-tex="\(q\)">\(q\)</span> changes constants; even the factor <span class="math" data-tex="\(2^{h\alpha}\)">\(2^{h\alpha}\)</span> is allowed to depend on the stage. Also <span class="math" data-tex="\(S_*^P\le C_P(1+|\log q|)^{2P}\)">\(S_*^P\le C_P(1+|\log q|)^{2P}\)</span> on these bands.</p>
+<h2 id="l2-stage-independent-losses-for-the-exact-tuples">L2. Stage-independent losses for the exact tuples</h2>
+<p>For the cycle from <span class="math" data-tex="\(j-1\)">\(j-1\)</span> to <span class="math" data-tex="\(j\)">\(j\)</span>, K3–K6 give</p>
+<span class="math math-display" data-tex="\[
+B_{j-1}=\tfrac35+\tfrac j{10},\quad
+C_{j-1}^*=\tfrac{11}{10}+\tfrac j{10},\quad
+H_{j-1}=\tfrac{11}{10}+\tfrac j{10}-2\kappa_s.
+\tag{L2.1}
+\]">\[
+B_{j-1}=\tfrac35+\tfrac j{10},\quad
+C_{j-1}^*=\tfrac{11}{10}+\tfrac j{10},\quad
+H_{j-1}=\tfrac{11}{10}+\tfrac j{10}-2\kappa_s.
+\tag{L2.1}
+\]</span>
+<p>The particular and signed wave velocities have exponents <span class="math" data-tex="\(B_{j-1}\)">\(B_{j-1}\)</span> and <span class="math" data-tex="\(B_{j-1}-\kappa_s\)">\(B_{j-1}-\kappa_s\)</span>. Their potentials contain the additional factor <span class="math" data-tex="\(1/(kn)\)">\(1/(kn)\)</span> and have exponents at least <span class="math" data-tex="\(B_{j-1}+1/2\)">\(B_{j-1}+1/2\)</span> and <span class="math" data-tex="\(B_{j-1}+1/2-\kappa_s\)">\(B_{j-1}+1/2-\kappa_s\)</span>, respectively. The derivative and division estimates of P6 and C5 retain those full potential bounds. Mean potentials and direct azimuthal fields have exponent <span class="math" data-tex="\(H_{j-1}\)">\(H_{j-1}\)</span>. Mean-pressure increments have exponents <span class="math" data-tex="\(C_{j-1}^*-\kappa_s\)">\(C_{j-1}^*-\kappa_s\)</span> or <span class="math" data-tex="\(H_{j-1}\)">\(H_{j-1}\)</span>, and the two harmonic pressure increments have the same exponents as their corresponding wave potentials. Consequently every entry of the exact tuple, and every actual velocity increment, has coefficient exponent at least <span class="math" data-tex="\(j/10\)">\(j/10\)</span>. All omitted positive offsets in this last inequality remain recorded in the preceding list; it is an estimate on the original fields, not their replacement by leading terms.</p>
+<p>The physical rescaling factors for velocity, pressure, wave potential and mean potential are, respectively,</p>
+<span class="math math-display" data-tex="\[
+Q^{-A},\qquad Q^{-2A},\qquad Q^{1/2-A},\qquad Q^{1/2-A}.
+\tag{L2.2}
+\]">\[
+Q^{-A},\qquad Q^{-2A},\qquad Q^{1/2-A},\qquad Q^{1/2-A}.
+\tag{L2.2}
+\]</span>
+<p>Every one is bounded above by <span class="math" data-tex="\(Q^{-2A}\)">\(Q^{-2A}\)</span> for <span class="math" data-tex="\(0&lt;Q&lt;1\)">\(0&lt;Q&lt;1\)</span>. The factor <span class="math" data-tex="\((kn)^{-1}\)">\((kn)^{-1}\)</span> is already inside the potential coefficient. One more spatial derivative covers its complete curl. Combining (L1.10) and (L2.1)–(L2.2) therefore proves original (9.17) with the explicit common loss</p>
+<span class="math math-display" data-tex="\[
+|Z_j|_m+|\Delta u_j|_m
+\le C_{j,m}q^{g_j-\ell_m}(1+|\log q|)^{P_{j,m}},\qquad
+g_j=\frac{hj}{10},\quad
+\ell_m=2A+(m+1)\left(1+\frac{3h}{2}\right).
+\tag{L2.3}
+\]">\[
+|Z_j|_m+|\Delta u_j|_m
+\le C_{j,m}q^{g_j-\ell_m}(1+|\log q|)^{P_{j,m}},\qquad
+g_j=\frac{hj}{10},\quad
+\ell_m=2A+(m+1)\left(1+\frac{3h}{2}\right).
+\tag{L2.3}
+\]</span>
+<p>The loss is independent of <span class="math" data-tex="\(j\)">\(j\)</span>, nonnegative and increasing in <span class="math" data-tex="\(m\)">\(m\)</span>. This derivation uses the exact original stage orders, not the stronger cycle gain from K7.</p>
+<p>For the complete residual, K0 and K7 give wave exponent at least <span class="math" data-tex="\(B_j\)">\(B_j\)</span>, exact tangential means at least <span class="math" data-tex="\(C_j^*\)">\(C_j^*\)</span>, and the radial term <span class="math" data-tex="\(-\rho\mathcal P\)">\(-\rho\mathcal P\)</span> at least <span class="math" data-tex="\(C_j^*\)">\(C_j^*\)</span>. All are at least <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span>. The radial compact remainder, Gaussian tails and the base residual are the additive flat terms recorded in S3; they have not been included as new pulse sources. The physical residual factor is <span class="math" data-tex="\(Q^{-2A-1/2}\)">\(Q^{-2A-1/2}\)</span>, so (L1.10) gives on the correction shell</p>
+<span class="math math-display" data-tex="\[
+|\mathscr R_1(u^{[j]},p^{[j]})|_m
+\le C_{j,m}q^{h\sigma_j-K_m^R}(1+|\log q|)^{P_{j,m}}
++E_{j,m},\quad K_m^R=2A+\tfrac12+ms_t,
+\tag{L2.4}
+\]">\[
+|\mathscr R_1(u^{[j]},p^{[j]})|_m
+\le C_{j,m}q^{h\sigma_j-K_m^R}(1+|\log q|)^{P_{j,m}}
++E_{j,m},\quad K_m^R=2A+\tfrac12+ms_t,
+\tag{L2.4}
+\]</span>
+<p>where, for every fixed <span class="math" data-tex="\(j,m,N\)">\(j,m,N\)</span>, <span class="math" data-tex="\(E_{j,m}\le C_{j,m,N}q^N\)">\(E_{j,m}\le C_{j,m,N}q^N\)</span>. The source-base part of this assertion is the actual flat residual proved in <a href="base-field-realization-audit.html#z5-the-complete-augmented-residual-is-flat">Z5</a>, original (5.41). All correction-generated flat terms have the uniform band estimates proved in P7, R5–R6 and S3. The bound is for the actual field after evaluating the torus map. Differentiating that map was included in L1.</p>
+<p>Finite addition and the retained total bounds in K7 also give</p>
+<span class="math math-display" data-tex="\[
+|(u^{[j]},p^{[j]})|_m\le C_{j,m}q^{-K_m^U}(1+|\log q|)^{P_{j,m}},
+\tag{L2.5}
+\]">\[
+|(u^{[j]},p^{[j]})|_m\le C_{j,m}q^{-K_m^U}(1+|\log q|)^{P_{j,m}},
+\tag{L2.5}
+\]</span>
+<p>where one may take <span class="math" data-tex="\(K_m^U=\max\{K_m^{\rm base},\ell_{m+1}\}\)">\(K_m^U=\max\{K_m^{\rm base},\ell_{m+1}\}\)</span>. Here <span class="math" data-tex="\(K_m^{\rm base}\)">\(K_m^{\rm base}\)</span> is the fixed-base exponent supplied by (5.42) and its Cartesian axis/exterior representations; it is independent of the correction stage. A finite number of new constants cannot change <span class="math" data-tex="\(K_m^U\)">\(K_m^U\)</span>. Taking the maximum of <span class="math" data-tex="\(K_m^R\)">\(K_m^R\)</span> and <span class="math" data-tex="\(K_m^U\)">\(K_m^U\)</span> yields the common <span class="math" data-tex="\(K_m\)">\(K_m\)</span> allowed in original (9.18). Outside the annular corrections the finite fields equal the actual base. Thus uniformity on every bounded profile rectangle uses precisely the base assertions just identified, and exterior uniformity uses its exact heat field proved in L6 below. The shell and exterior estimates apply on their stated domains.</p>
+<h2 id="l3-the-original-viscosity-coordinates-and-cutoff-derivatives">L3. The original viscosity, coordinates and cutoff derivatives</h2>
+<p>For every fixed <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, the exact bridge is <span class="math" data-tex="\(y=x_\nu/\sqrt\nu\)">\(y=x_\nu/\sqrt\nu\)</span>, with time unchanged. Put</p>
+<span class="math math-display" data-tex="\[
+A_{j,\nu}(x_\nu,t)=\nu A_j(y,t),\quad
+B_{j,\nu}^{\rm vec}(x_\nu,t)=\sqrt\nu B_j^{\rm vec}(y,t),\quad
+p_{j,\nu}(x_\nu,t)=\nu p_j(y,t),\quad
+\Delta u_{j,\nu}=\sqrt\nu\Delta u_j(y,t).
+\tag{L3.1}
+\]">\[
+A_{j,\nu}(x_\nu,t)=\nu A_j(y,t),\quad
+B_{j,\nu}^{\rm vec}(x_\nu,t)=\sqrt\nu B_j^{\rm vec}(y,t),\quad
+p_{j,\nu}(x_\nu,t)=\nu p_j(y,t),\quad
+\Delta u_{j,\nu}=\sqrt\nu\Delta u_j(y,t).
+\tag{L3.1}
+\]</span>
+<p>The curl of the first field is <span class="math" data-tex="\(\sqrt\nu\operatorname{curl}_y A_j\)">\(\sqrt\nu\operatorname{curl}_y A_j\)</span>. For every spatial multi-index <span class="math" data-tex="\(a\)">\(a\)</span> and time order <span class="math" data-tex="\(b\)">\(b\)</span>, the exact derivative factors are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{field}&amp;\text{factor multiplying its derivative in }(y,t)\\\hline
+A_{j,\nu},p_{j,\nu}&amp;\nu^{1-|a|/2}\\
+B_{j,\nu}^{\rm vec},\Delta u_{j,\nu}&amp;\nu^{1/2-|a|/2}\\
+\mathscr R_\nu(u_\nu,p_\nu)&amp;\nu^{1/2-|a|/2}.
+\end{array}
+\tag{L3.2}
+\]">\[
+\begin{array}{c|c}
+\text{field}&amp;\text{factor multiplying its derivative in }(y,t)\\\hline
+A_{j,\nu},p_{j,\nu}&amp;\nu^{1-|a|/2}\\
+B_{j,\nu}^{\rm vec},\Delta u_{j,\nu}&amp;\nu^{1/2-|a|/2}\\
+\mathscr R_\nu(u_\nu,p_\nu)&amp;\nu^{1/2-|a|/2}.
+\end{array}
+\tag{L3.2}
+\]</span>
+<p>The last line follows by expanding the time, diffusion, convection and pressure terms: each has the common factor <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span> before further differentiation. These fixed positive factors enter the constants in (L2.3)–(L2.5), while their <span class="math" data-tex="\(q\)">\(q\)</span>-exponents and stage independence are unchanged.</p>
+<p>Keep the actual scale variable and profile coordinates</p>
+<span class="math math-display" data-tex="\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+\eta_\nu=z_\nu/(\sqrt\nu q_\nu^D),\quad
+X_\nu=r_\nu^2/(2\nu q_\nu),\quad L=1-2h\eta_\nu^2\ge1-2h&gt;0.
+\tag{L3.3}
+\]">\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\quad
+\eta_\nu=z_\nu/(\sqrt\nu q_\nu^D),\quad
+X_\nu=r_\nu^2/(2\nu q_\nu),\quad L=1-2h\eta_\nu^2\ge1-2h&gt;0.
+\tag{L3.3}
+\]</span>
+<p>The original <span class="math" data-tex="\(q\)">\(q\)</span> is not replaced by a new time variable. Implicit differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\partial_{z_\nu}q_\nu&amp;=\nu^{-1/2}\frac{2\eta_\nu q_\nu^{1-D}}L,
+&amp;\partial_tq_\nu&amp;=-1/L,\\
+\partial_{z_\nu}\eta_\nu&amp;=\nu^{-1/2}\frac{q_\nu^{-D}(1-\eta_\nu^2)}L,
+&amp;\partial_t\eta_\nu&amp;=D\eta_\nu/(q_\nu L).
+\end{split}
+\tag{L3.4}
+\]">\[
+\begin{split}
+\partial_{z_\nu}q_\nu&amp;=\nu^{-1/2}\frac{2\eta_\nu q_\nu^{1-D}}L,
+&amp;\partial_tq_\nu&amp;=-1/L,\\
+\partial_{z_\nu}\eta_\nu&amp;=\nu^{-1/2}\frac{q_\nu^{-D}(1-\eta_\nu^2)}L,
+&amp;\partial_t\eta_\nu&amp;=D\eta_\nu/(q_\nu L).
+\end{split}
+\tag{L3.4}
+\]</span>
+<p>Applying these formulas repeatedly to <span class="math" data-tex="\(q_\nu^\lambda F(\eta_\nu)\)">\(q_\nu^\lambda F(\eta_\nu)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\partial_{z_\nu}^a\partial_t^bq_\nu
+=\nu^{-a/2}q_\nu^{1-aD-b}F_{a,b}(\eta_\nu),\quad
+F_{a,b}\in C^\infty([-1,1]),
+\tag{L3.5}
+\]">\[
+\partial_{z_\nu}^a\partial_t^bq_\nu
+=\nu^{-a/2}q_\nu^{1-aD-b}F_{a,b}(\eta_\nu),\quad
+F_{a,b}\in C^\infty([-1,1]),
+\tag{L3.5}
+\]</span>
+<p>because the recurrences use only derivatives, products and division by powers of the positive <span class="math" data-tex="\(L\)">\(L\)</span>. The first-step operators on <span class="math" data-tex="\(F\)">\(F\)</span> are <span class="math" data-tex="\([2\lambda\eta F+(1-\eta^2)F&#x27;]/L\)">\([2\lambda\eta F+(1-\eta^2)F&#x27;]/L\)</span> and <span class="math" data-tex="\([-\lambda F+D\eta F&#x27;]/L\)">\([-\lambda F+D\eta F&#x27;]/L\)</span>, respectively. They prove the induction and its finite bounds on the closed interval. Also <span class="math" data-tex="\(q_\nu\ge1-t\)">\(q_\nu\ge1-t\)</span>; thus it has a positive lower bound on every compact subset of <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be smooth, one on <span class="math" data-tex="\([0,1/2]\)">\([0,1/2]\)</span>, zero on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>. Such a function is given by <span class="math" data-tex="\(\chi(s)=\psi(1-s)/(\psi(1-s)+\psi(s-1/2))\)">\(\chi(s)=\psi(1-s)/(\psi(1-s)+\psi(s-1/2))\)</span>, with <span class="math" data-tex="\(\psi(s)=e^{-1/s}\)">\(\psi(s)=e^{-1/s}\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> and zero otherwise. Every derivative of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> at zero vanishes, by the exponential-versus-power estimate used in L1. For any scale <span class="math" data-tex="\(a_*&gt;0\)">\(a_*&gt;0\)</span>, a positive-order derivative of <span class="math" data-tex="\(\chi(a_*q_\nu)\)">\(\chi(a_*q_\nu)\)</span> is a finite sum</p>
+<span class="math math-display" data-tex="\[
+c\,a_*^k\chi^{(k)}(a_*q_\nu)
+\prod_{v=1}^k\partial_{z_\nu}^{a_v}\partial_t^{b_v}q_\nu,
+\quad \sum a_v=a,\quad\sum b_v=b,\quad a_v+b_v\ge1.
+\tag{L3.6}
+\]">\[
+c\,a_*^k\chi^{(k)}(a_*q_\nu)
+\prod_{v=1}^k\partial_{z_\nu}^{a_v}\partial_t^{b_v}q_\nu,
+\quad \sum a_v=a,\quad\sum b_v=b,\quad a_v+b_v\ge1.
+\tag{L3.6}
+\]</span>
+<p>It is supported where <span class="math" data-tex="\(1/2\le a_*q_\nu\le1\)">\(1/2\le a_*q_\nu\le1\)</span>. Equation (L3.5) bounds the product by a constant times <span class="math" data-tex="\(\nu^{-a/2}q_\nu^{k-aD-b}\)">\(\nu^{-a/2}q_\nu^{k-aD-b}\)</span>; hence the factor <span class="math" data-tex="\(a_*^k\)">\(a_*^k\)</span> is bounded using <span class="math" data-tex="\((a_*q_\nu)^k\le1\)">\((a_*q_\nu)^k\le1\)</span>. The resulting bound is <span class="math" data-tex="\(C_{a,b}\nu^{-a/2}q_\nu^{-aD-b}\)">\(C_{a,b}\nu^{-a/2}q_\nu^{-aD-b}\)</span>, independent of <span class="math" data-tex="\(a_*\)">\(a_*\)</span>. Derivatives in the first two Cartesian coordinates vanish. Every cutoff derivative of total order at most <span class="math" data-tex="\(m\)">\(m\)</span> therefore costs at most <span class="math" data-tex="\(q_\nu^{-m}\)">\(q_\nu^{-m}\)</span>, with its actual viscosity factors retained.</p>
+<h2 id="l4-one-actual-sum-of-potentials-with-every-cutoff-curl">L4. One actual sum of potentials, with every cutoff curl</h2>
+<p>K8 supplies one domain <span class="math" data-tex="\(0&lt;q&lt;q_{\rm big}\)">\(0&lt;q&lt;q_{\rm big}\)</span> for all finite operations. Take <span class="math" data-tex="\(U_{0,\nu}\)">\(U_{0,\nu}\)</span> to be the actual slow base plus finite initialization. If an outer cutoff is needed for the initialization, apply it to its wave and mean potentials before taking curls, and to its direct azimuthal field and pressure. Keep the slow base itself unchanged. Choose that one cutoff to equal one for <span class="math" data-tex="\(q_\nu&lt;c_0\)">\(q_\nu&lt;c_0\)</span>, with <span class="math" data-tex="\(c_0&gt;0\)">\(c_0&gt;0\)</span>, and to vanish before <span class="math" data-tex="\(q_{\rm big}\)">\(q_{\rm big}\)</span>. Its extra terms have compact annular support with <span class="math" data-tex="\(q_\nu\ge c_0\)">\(q_\nu\ge c_0\)</span>; their derivatives are bounded and hence at most <span class="math" data-tex="\(C_Nq_\nu^N\)">\(C_Nq_\nu^N\)</span> for every fixed <span class="math" data-tex="\(N\)">\(N\)</span>. There are only finitely many dyadic labels in this region. This changes no finite-state comparison near <span class="math" data-tex="\(q_\nu=0\)">\(q_\nu=0\)</span> and preserves the base exterior. It does not set these extra terms to zero.</p>
+<p>For <span class="math" data-tex="\(a_*&gt;0\)">\(a_*&gt;0\)</span>, define the complete cut increment</p>
+<span class="math math-display" data-tex="\[
+W_{j,\nu}(a_*)=
+\left(\operatorname{curl}(\chi(a_*q_\nu)A_{j,\nu})
++\chi(a_*q_\nu)B_{j,\nu}^{\rm vec},\quad
+\chi(a_*q_\nu)p_{j,\nu}\right).
+\tag{L4.1}
+\]">\[
+W_{j,\nu}(a_*)=
+\left(\operatorname{curl}(\chi(a_*q_\nu)A_{j,\nu})
++\chi(a_*q_\nu)B_{j,\nu}^{\rm vec},\quad
+\chi(a_*q_\nu)p_{j,\nu}\right).
+\tag{L4.1}
+\]</span>
+<p>Its velocity contains both terms in</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}(\chi(a_*q_\nu)A_{j,\nu})
+=\chi(a_*q_\nu)\operatorname{curl}A_{j,\nu}
++a_*\chi&#x27;(a_*q_\nu)\nabla q_\nu\times A_{j,\nu}.
+\tag{L4.2}
+\]">\[
+\operatorname{curl}(\chi(a_*q_\nu)A_{j,\nu})
+=\chi(a_*q_\nu)\operatorname{curl}A_{j,\nu}
++a_*\chi&#x27;(a_*q_\nu)\nabla q_\nu\times A_{j,\nu}.
+\tag{L4.2}
+\]</span>
+<p>The full product rule, (L2.3) and (L3.6) imply</p>
+<span class="math math-display" data-tex="\[
+|W_{j,\nu}(a_*)|_m\le\widehat C_{j,m,\nu}
+q_\nu^{g_j-\ell&#x27;_m}(1+|\log q_\nu|)^{\widehat P_{j,m}},
+\qquad \ell&#x27;_m=\ell_{m+1}+m+1,
+\tag{L4.3}
+\]">\[
+|W_{j,\nu}(a_*)|_m\le\widehat C_{j,m,\nu}
+q_\nu^{g_j-\ell&#x27;_m}(1+|\log q_\nu|)^{\widehat P_{j,m}},
+\qquad \ell&#x27;_m=\ell_{m+1}+m+1,
+\tag{L4.3}
+\]</span>
+<p>with constants independent of <span class="math" data-tex="\(a_*\)">\(a_*\)</span>. Indeed the potential needs at most <span class="math" data-tex="\(m+1\)">\(m+1\)</span> derivatives; each term is bounded using <span class="math" data-tex="\(q_\nu^{-m-1}q_\nu^{g_j-\ell_{m+1}}\)">\(q_\nu^{-m-1}q_\nu^{g_j-\ell_{m+1}}\)</span>, and the direct field and pressure need no more derivatives. The fixed <span class="math" data-tex="\(\nu\)">\(\nu\)</span> factors from L3 remain in <span class="math" data-tex="\(\widehat C_{j,m,\nu}\)">\(\widehat C_{j,m,\nu}\)</span>.</p>
+<p>For <span class="math" data-tex="\(g&gt;0\)">\(g&gt;0\)</span> and finite <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(q^g(1+|\log q|)^P\to0\)">\(q^g(1+|\log q|)^P\to0\)</span> as <span class="math" data-tex="\(q\downarrow0\)">\(q\downarrow0\)</span>. Setting <span class="math" data-tex="\(y=-\log q\)">\(y=-\log q\)</span>, this follows from <span class="math" data-tex="\(e^{gy/2}\ge(gy/2)^n/n!\)">\(e^{gy/2}\ge(gy/2)^n/n!\)</span> with an integer <span class="math" data-tex="\(n&gt;P\)">\(n&gt;P\)</span>. We can therefore choose one increasing sequence <span class="math" data-tex="\(a_{j+1}\ge2a_j\)">\(a_{j+1}\ge2a_j\)</span>, <span class="math" data-tex="\(a_1^{-1}&lt;q_{\rm big}\)">\(a_1^{-1}&lt;q_{\rm big}\)</span>, by requiring the finite list</p>
+<span class="math math-display" data-tex="\[
+\widehat C_{j,m,\nu}(1+|\log q_\nu|)^{\widehat P_{j,m}}
+q_\nu^{g_j/2}\le2^{-j}
+\quad(0&lt;q_\nu\le a_j^{-1},\quad0\le m\le j).
+\tag{L4.4}
+\]">\[
+\widehat C_{j,m,\nu}(1+|\log q_\nu|)^{\widehat P_{j,m}}
+q_\nu^{g_j/2}\le2^{-j}
+\quad(0&lt;q_\nu\le a_j^{-1},\quad0\le m\le j).
+\tag{L4.4}
+\]</span>
+<p>The already proved positive <span class="math" data-tex="\(g_j=hj/10\)">\(g_j=hj/10\)</span> makes every member possible. Larger cutoffs meet all members at once. Alternatively, the viscosity-one sequence may be pulled back by (L3.1); its derivative bounds then gain the fixed factors in (L3.2). Either construction uses the same original <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span> and gives the original viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, not a new field equation.</p>
+<p>On compact sets with <span class="math" data-tex="\(q_\nu\ge c&gt;0\)">\(q_\nu\ge c&gt;0\)</span>, all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span> satisfy <span class="math" data-tex="\(a_jq_\nu\ge1\)">\(a_jq_\nu\ge1\)</span>, so their summands vanish. Define the locally finite fields</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal A_\nu&amp;=\mathcal A_{0,\nu}+\sum_{j\ge1}\chi(a_jq_\nu)A_{j,\nu},\\
+\mathcal B_\nu e_\theta&amp;=\mathcal B_{0,\nu}e_\theta+\sum_{j\ge1}\chi(a_jq_\nu)B_{j,\nu}^{\rm vec},\\
+p_{{\rm loc},\nu}&amp;=p_{0,\nu}+\sum_{j\ge1}\chi(a_jq_\nu)p_{j,\nu},\qquad
+u_{{\rm loc},\nu}=\operatorname{curl}\mathcal A_\nu+\mathcal B_\nu e_\theta.
+\end{split}
+\tag{L4.5}
+\]">\[
+\begin{split}
+\mathcal A_\nu&amp;=\mathcal A_{0,\nu}+\sum_{j\ge1}\chi(a_jq_\nu)A_{j,\nu},\\
+\mathcal B_\nu e_\theta&amp;=\mathcal B_{0,\nu}e_\theta+\sum_{j\ge1}\chi(a_jq_\nu)B_{j,\nu}^{\rm vec},\\
+p_{{\rm loc},\nu}&amp;=p_{0,\nu}+\sum_{j\ge1}\chi(a_jq_\nu)p_{j,\nu},\qquad
+u_{{\rm loc},\nu}=\operatorname{curl}\mathcal A_\nu+\mathcal B_\nu e_\theta.
+\end{split}
+\tag{L4.5}
+\]</span>
+<p>These are original (9.21) with every viscosity factor included. Mixed Cartesian derivatives commute, so the curl has zero divergence. Each direct azimuthal field is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, including its auxiliary dependence after evaluation, because <span class="math" data-tex="\(Y(r,t)\)">\(Y(r,t)\)</span> has no angular argument. Its divergence is <span class="math" data-tex="\(r_\nu^{-1}\partial_\theta b=0\)">\(r_\nu^{-1}\partial_\theta b=0\)</span>. Multiplication by <span class="math" data-tex="\(\chi(a_jq_\nu)\)">\(\chi(a_jq_\nu)\)</span> adds <span class="math" data-tex="\(\nabla\chi\cdot(b e_\theta)=0\)">\(\nabla\chi\cdot(b e_\theta)=0\)</span>, since <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span> is independent of radius and angle. Thus incompressibility holds exactly, including (L4.2).</p>
+<p>For <span class="math" data-tex="\(J\ge\max(1,m)\)">\(J\ge\max(1,m)\)</span> and <span class="math" data-tex="\(q_\nu&lt;(2a_J)^{-1}\)">\(q_\nu&lt;(2a_J)^{-1}\)</span>, the first <span class="math" data-tex="\(J\)">\(J\)</span> cutoffs are identically one near the point and their derivatives vanish. Equations (L4.3)–(L4.4) give the exact comparison with the uncut finite state,</p>
+<span class="math math-display" data-tex="\[
+|(u_{{\rm loc},\nu},p_{{\rm loc},\nu})-(u_\nu^{[J]},p_\nu^{[J]})|_m
+\le\sum_{j&gt;J}2^{-j}q_\nu^{g_j/2-\ell&#x27;_m}
+\le2^{-J}q_\nu^{g_{J+1}/2-\ell&#x27;_m}.
+\tag{L4.6}
+\]">\[
+|(u_{{\rm loc},\nu},p_{{\rm loc},\nu})-(u_\nu^{[J]},p_\nu^{[J]})|_m
+\le\sum_{j&gt;J}2^{-j}q_\nu^{g_j/2-\ell&#x27;_m}
+\le2^{-J}q_\nu^{g_{J+1}/2-\ell&#x27;_m}.
+\tag{L4.6}
+\]</span>
+<p>If the finite initialization received its optional cutoff, also require <span class="math" data-tex="\(q_\nu&lt;c_0\)">\(q_\nu&lt;c_0\)</span>. This is one fixed additional restriction, independent of the later stage. The monotonicity of <span class="math" data-tex="\(g_j\)">\(g_j\)</span> and the geometric series prove the second inequality. The first equality of fields behind this estimate holds only in the region where those first cutoffs are one; no assertion has been made about matching a finite state on all transition annuli.</p>
+<p>Every correction potential and direct azimuthal field vanishes in a neighborhood of the axis for each fixed <span class="math" data-tex="\(q_\nu&gt;0\)">\(q_\nu&gt;0\)</span>. Local finiteness makes that neighborhood common for the finite set of nonzero summands near a point. The source base Stokes streamfunction has the form <span class="math" data-tex="\(S=r^2s(r^2,z,t)\)">\(S=r^2s(r^2,z,t)\)</span>; its azimuthal potential is <span class="math" data-tex="\((S/r)e_\theta=(-x_2,x_1,0)s\)">\((S/r)e_\theta=(-x_2,x_1,0)s\)</span>. Its base angular field likewise has <span class="math" data-tex="\(r e(r^2,z,t)e_\theta=(-x_2,x_1,0)e\)">\(r e(r^2,z,t)e_\theta=(-x_2,x_1,0)e\)</span>. These are the precise Cartesian maps used for the base in original (5.27). Their actual source coefficients and Cartesian regularity are proved in <a href="base-field-realization-audit.html">Z0–Z4</a>; these are the same original Stokes potentials, with their full cutoff curls. All correction boundary extensions were proved in S1–S2, and all added series vanish for <span class="math" data-tex="\(q_\nu\ge a_1^{-1}\)">\(q_\nu\ge a_1^{-1}\)</span>. Thus the summation preserves the original Cartesian axis and outer-support properties.</p>
+<h2 id="l5-the-nonlinear-residual-of-the-summed-fields">L5. The nonlinear residual of the summed fields</h2>
+<p>Keep the entire original operator</p>
+<span class="math math-display" data-tex="\[
+\mathscr R_\nu(u,p)=\partial_tu-\nu\Delta u+(u\cdot\nabla)u+\nabla p.
+\tag{L5.1}
+\]">\[
+\mathscr R_\nu(u,p)=\partial_tu-\nu\Delta u+(u\cdot\nabla)u+\nabla p.
+\tag{L5.1}
+\]</span>
+<p>For one finite state put <span class="math" data-tex="\(v=u_\nu^{[J]}\)">\(v=u_\nu^{[J]}\)</span>, <span class="math" data-tex="\(p_*=p_\nu^{[J]}\)">\(p_*=p_\nu^{[J]}\)</span>, <span class="math" data-tex="\(e=u_{{\rm loc},\nu}-v\)">\(e=u_{{\rm loc},\nu}-v\)</span>, and <span class="math" data-tex="\(\pi=p_{{\rm loc},\nu}-p_*\)">\(\pi=p_{{\rm loc},\nu}-p_*\)</span>. Direct subtraction gives</p>
+<span class="math math-display" data-tex="\[
+\mathscr R_\nu(v+e,p_*+\pi)-\mathscr R_\nu(v,p_*)
+=\partial_te-\nu\Delta e+\nabla\pi
++(v\cdot\nabla)e+(e\cdot\nabla)v+(e\cdot\nabla)e.
+\tag{L5.2}
+\]">\[
+\mathscr R_\nu(v+e,p_*+\pi)-\mathscr R_\nu(v,p_*)
+=\partial_te-\nu\Delta e+\nabla\pi
++(v\cdot\nabla)e+(e\cdot\nabla)v+(e\cdot\nabla)e.
+\tag{L5.2}
+\]</span>
+<p>For each component and multi-index <span class="math" data-tex="\(I\)">\(I\)</span>, the convective product rule is
+<span class="math" data-tex="\(\partial^I(v_k\partial_ke_i)=\sum_{L\le I}\binom IL(\partial^Lv_k)(\partial^{I-L}\partial_ke_i)\)">\(\partial^I(v_k\partial_ke_i)=\sum_{L\le I}\binom IL(\partial^Lv_k)(\partial^{I-L}\partial_ke_i)\)</span>; the other two products have the identical formula with their displayed factors. Summing the finite component and multi-index lists proves</p>
+<span class="math math-display" data-tex="\[
+|\mathscr R_\nu(v+e,p_*+\pi)-\mathscr R_\nu(v,p_*)|_m
+\le C_m\bigl((1+\nu)|e|_{m+2}+|\pi|_{m+1}
++|v|_{m+1}|e|_{m+1}+|e|_{m+1}^2\bigr).
+\tag{L5.3}
+\]">\[
+|\mathscr R_\nu(v+e,p_*+\pi)-\mathscr R_\nu(v,p_*)|_m
+\le C_m\bigl((1+\nu)|e|_{m+2}+|\pi|_{m+1}
++|v|_{m+1}|e|_{m+1}+|e|_{m+1}^2\bigr).
+\tag{L5.3}
+\]</span>
+<p>This includes the complete new-new nonlinear term. All cutoff contributions are already part of <span class="math" data-tex="\(e\)">\(e\)</span> through (L4.2).</p>
+<p>Fix <span class="math" data-tex="\(m,N\ge0\)">\(m,N\ge0\)</span>, set <span class="math" data-tex="\(r=m+2\)">\(r=m+2\)</span>, and choose one finite <span class="math" data-tex="\(J\ge r\)">\(J\ge r\)</span> so large that</p>
+<span class="math math-display" data-tex="\[
+\alpha:=g_{J+1}/2-\ell&#x27;_r\ge N+K_r^U+1,
+\qquad h\sigma_J-K_m^R\ge N+1.
+\tag{L5.4}
+\]">\[
+\alpha:=g_{J+1}/2-\ell&#x27;_r\ge N+K_r^U+1,
+\qquad h\sigma_J-K_m^R\ge N+1.
+\tag{L5.4}
+\]</span>
+<p>This is possible because both <span class="math" data-tex="\(g_j\)">\(g_j\)</span> and <span class="math" data-tex="\(h\sigma_j\)">\(h\sigma_j\)</span> tend to infinity, while all displayed losses are independent of the stage. Explicitly, the two latter inequalities require</p>
+<span class="math math-display" data-tex="\[
+J\ge\frac{20}{h}(N+K_r^U+1+\ell&#x27;_r)-1,
+\qquad
+J\ge\frac{10}{h}(N+1+K_m^R)-2.
+\tag{L5.5}
+\]">\[
+J\ge\frac{20}{h}(N+K_r^U+1+\ell&#x27;_r)-1,
+\qquad
+J\ge\frac{10}{h}(N+1+K_m^R)-2.
+\tag{L5.5}
+\]</span>
+<p>Choose an integer meeting these and <span class="math" data-tex="\(J\ge r\)">\(J\ge r\)</span>; this is an existence calculation, with no numerical trajectory or limiting precision required. Keep this <span class="math" data-tex="\(J\)">\(J\)</span> fixed. Shrink the <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span>-neighborhood below <span class="math" data-tex="\((2a_J)^{-1}\)">\((2a_J)^{-1}\)</span> and, if needed, <span class="math" data-tex="\(c_0\)">\(c_0\)</span>, until the finitely many constants and logarithmic factors in (L2.4)–(L2.5) are bounded by <span class="math" data-tex="\(q_\nu^{-1}\)">\(q_\nu^{-1}\)</span>. The limit proved before (L4.4) justifies this choice. Then (L4.6) gives</p>
+<span class="math math-display" data-tex="\[
+|(e,\pi)|_{m+2}\le2^{-J}q_\nu^\alpha,
+\qquad |v|_{m+1}\le q_\nu^{-K_r^U-1}.
+\tag{L5.6}
+\]">\[
+|(e,\pi)|_{m+2}\le2^{-J}q_\nu^\alpha,
+\qquad |v|_{m+1}\le q_\nu^{-K_r^U-1}.
+\tag{L5.6}
+\]</span>
+<p>The terms in (L5.3) have powers at least <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, <span class="math" data-tex="\(\alpha-K_r^U-1\)">\(\alpha-K_r^U-1\)</span>, and <span class="math" data-tex="\(2\alpha\)">\(2\alpha\)</span>, respectively. Every one is at least <span class="math" data-tex="\(N\)">\(N\)</span> by (L5.4). The finite-state residual has its retained remainder and satisfies</p>
+<span class="math math-display" data-tex="\[
+|\mathscr R_\nu(v,p_*)|_m
+\le q_\nu^{h\sigma_J-K_m^R-1}+C_{J,m,N,\nu}q_\nu^N
+\le(1+C_{J,m,N,\nu})q_\nu^N.
+\tag{L5.7}
+\]">\[
+|\mathscr R_\nu(v,p_*)|_m
+\le q_\nu^{h\sigma_J-K_m^R-1}+C_{J,m,N,\nu}q_\nu^N
+\le(1+C_{J,m,N,\nu})q_\nu^N.
+\tag{L5.7}
+\]</span>
+<p>Combining (L5.3), (L5.6) and (L5.7) proves every derivative of the summed residual vanishes to every prescribed order. The order of choices is <span class="math" data-tex="\((m,N)\)">\((m,N)\)</span>, then one finite <span class="math" data-tex="\(J\)">\(J\)</span>, then its neighborhood and constants. No infinite sum of finite-stage flat remainders has been taken. This supplies the actual correction sequence to the summation argument, rather than relying on an unsupported assertion that a sum of flat functions remains flat.</p>
+<h2 id="l6-endpoint-regularity-and-the-exact-exterior-heat-field">L6. Endpoint regularity and the exact exterior heat field</h2>
+<p>Fix a compact spatial set and <span class="math" data-tex="\(0&lt;c&lt;c&#x27;&lt;q_{\rm big}\)">\(0&lt;c&lt;c&#x27;&lt;q_{\rm big}\)</span>, and work up to <span class="math" data-tex="\(\tau=1-t=0\)">\(\tau=1-t=0\)</span> where <span class="math" data-tex="\(c\le q_\nu\le c&#x27;\)">\(c\le q_\nu\le c&#x27;\)</span>. Only finitely many correction stages survive (L4.5). Only finitely many dyadic bands satisfy <span class="math" data-tex="\(q_\nu/Q\in[1/2,2]\)">\(q_\nu/Q\in[1/2,2]\)</span>, and their bounded slow rectangles have finitely many mesh labels. The original labels, representatives, rounded frequencies and torus rectangles were chosen on the closed <span class="math" data-tex="\(\tau\ge0\)">\(\tau\ge0\)</span> range in (6.8), before differentiation. None is recomputed at the endpoint.</p>
+<p>For each of these finite labels, the pulse ODE has fixed positive denominators, its finite derivative bounds from P4–P5, and its original smooth cutoffs. The signed operator divides by the same positive primary amplitude; C4–C5 handles its edge derivatives. The radial and temporal maps have their closed-boundary estimates from R, M and T. The base coefficients extend with all fixed derivatives to <span class="math" data-tex="\(\eta=\pm1\)">\(\eta=\pm1\)</span> by the precise source assertion (5.43) and the following paragraph of Proposition 5.5. The actual supplier is proved in <a href="base-field-realization-audit.html">Z7</a>; <a href="local-construction-assembly-audit.html">I5</a> verifies the complete endpoint assembly for these potentials and pressure. Coordinate conversion uses <span class="math" data-tex="\(L\ge1-2h\)">\(L\ge1-2h\)</span> in (L3.4), while annular support gives a positive lower bound for <span class="math" data-tex="\(r_\nu\)">\(r_\nu\)</span> on <span class="math" data-tex="\(q_\nu\ge c\)">\(q_\nu\ge c\)</span>. At the axis use the Cartesian factors just displayed in L4. Thus each fixed derivative of the finite sum is uniformly bounded on a neighborhood of the chosen compact set up to the endpoint.</p>
+<p>The limits and their compatibility follow explicitly. For each derivative <span class="math" data-tex="\(\partial^I f\)">\(\partial^I f\)</span>, bound one additional time derivative on that neighborhood. The fundamental theorem of calculus gives</p>
+<span class="math math-display" data-tex="\[
+|\partial^I f(x,t_2)-\partial^I f(x,t_1)|\le C_I|t_2-t_1|.
+\tag{L6.1}
+\]">\[
+|\partial^I f(x,t_2)-\partial^I f(x,t_1)|\le C_I|t_2-t_1|.
+\tag{L6.1}
+\]</span>
+<p>It is uniformly Cauchy as <span class="math" data-tex="\(t_1,t_2\uparrow1\)">\(t_1,t_2\uparrow1\)</span>. Denote its continuous limit by <span class="math" data-tex="\(f_I(x)\)">\(f_I(x)\)</span>. On every small coordinate segment in the same neighborhood, the identity
+<span class="math" data-tex="\(\partial^I f(x+s e_k,t)-\partial^I f(x,t)=\int_0^s\partial^{I+e_k}f(x+v e_k,t)\,dv\)">\(\partial^I f(x+s e_k,t)-\partial^I f(x,t)=\int_0^s\partial^{I+e_k}f(x+v e_k,t)\,dv\)</span>
+passes to the uniform limit and proves <span class="math" data-tex="\(\partial_{x_k}f_I=f_{I+e_k}\)">\(\partial_{x_k}f_I=f_{I+e_k}\)</span>. The time integral identity similarly proves the one-sided time derivative equals the corresponding limit. This proves every compatibility assertion for <span class="math" data-tex="\(\mathcal A_\nu,\mathcal B_\nu e_\theta,p_{{\rm loc},\nu}\)">\(\mathcal A_\nu,\mathcal B_\nu e_\theta,p_{{\rm loc},\nu}\)</span> themselves, not merely for the velocity.</p>
+<p>The exact exterior heat factor is also directly checkable. Original (A.32) defines</p>
+<span class="math math-display" data-tex="\[
+a_K=1+h,\qquad
+\mathcal H(Z)=\frac1{\Gamma(1+h)}\int_0^\infty e^{-v}v^h(1+Zv)^{-h}\,dv,
+\qquad Z\ge0.
+\tag{L6.2}
+\]">\[
+a_K=1+h,\qquad
+\mathcal H(Z)=\frac1{\Gamma(1+h)}\int_0^\infty e^{-v}v^h(1+Zv)^{-h}\,dv,
+\qquad Z\ge0.
+\tag{L6.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\Gamma(1+h)=\int_0^\infty e^{-v}v^h\,dv\)">\(\Gamma(1+h)=\int_0^\infty e^{-v}v^h\,dv\)</span>; neither its argument nor the exponent of <span class="math" data-tex="\(1+Zv\)">\(1+Zv\)</span> is altered. For the full rising factorial <span class="math" data-tex="\((b)_m=b(b+1)\cdots(b+m-1)\)">\((b)_m=b(b+1)\cdots(b+m-1)\)</span>, with <span class="math" data-tex="\((b)_0=1\)">\((b)_0=1\)</span>, differentiating under this integral yields exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal H^{(m)}(Z)=\frac{(-1)^m(h)_m}{\Gamma(1+h)}
+\int_0^\infty e^{-v}v^{h+m}(1+Zv)^{-h-m}\,dv,
+\quad
+\sup_{Z\ge0}|\mathcal H^{(m)}(Z)|\le(h)_m(1+h)_m.
+\tag{L6.3}
+\]">\[
+\mathcal H^{(m)}(Z)=\frac{(-1)^m(h)_m}{\Gamma(1+h)}
+\int_0^\infty e^{-v}v^{h+m}(1+Zv)^{-h-m}\,dv,
+\quad
+\sup_{Z\ge0}|\mathcal H^{(m)}(Z)|\le(h)_m(1+h)_m.
+\tag{L6.3}
+\]</span>
+<p>The dominating function is the displayed integrand with its last factor replaced by one; it is integrable at zero since <span class="math" data-tex="\(h+m&gt;-1\)">\(h+m&gt;-1\)</span> and at infinity by exponential decay. Gamma integration by parts gives <span class="math" data-tex="\(\Gamma(1+h+m)/\Gamma(1+h)=(1+h)_m\)">\(\Gamma(1+h+m)/\Gamma(1+h)=(1+h)_m\)</span>. Dominated convergence proves smooth right derivatives at zero of all orders, where equality is <span class="math" data-tex="\(\mathcal H^{(m)}(0)=(-1)^m(h)_m(1+h)_m\)">\(\mathcal H^{(m)}(0)=(-1)^m(h)_m(1+h)_m\)</span>. No convergent Taylor series is asserted.</p>
+<p>The finite Taylor remainder can be retained exactly. For every integer <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span> and <span class="math" data-tex="\(Z\ge0\)">\(Z\ge0\)</span>, the fundamental theorem of calculus and (L6.3) give</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal H(Z)&amp;=\sum_{m=0}^n\frac{(-1)^m(h)_m(1+h)_m}{m!}Z^m+R_n(Z),\\
+R_n(Z)&amp;=\frac1{n!}\int_0^Z(Z-s)^n\mathcal H^{(n+1)}(s)\,ds,\\
+|R_n(Z)|&amp;\le\frac{(h)_{n+1}(1+h)_{n+1}}{(n+1)!}Z^{n+1}.
+\end{split}
+\tag{L6.3a}
+\]">\[
+\begin{split}
+\mathcal H(Z)&amp;=\sum_{m=0}^n\frac{(-1)^m(h)_m(1+h)_m}{m!}Z^m+R_n(Z),\\
+R_n(Z)&amp;=\frac1{n!}\int_0^Z(Z-s)^n\mathcal H^{(n+1)}(s)\,ds,\\
+|R_n(Z)|&amp;\le\frac{(h)_{n+1}(1+h)_{n+1}}{(n+1)!}Z^{n+1}.
+\end{split}
+\tag{L6.3a}
+\]</span>
+<p>For <span class="math" data-tex="\(Z&gt;0\)">\(Z&gt;0\)</span>, its sign is <span class="math" data-tex="\((-1)^{n+1}\)">\((-1)^{n+1}\)</span>, directly from the positive integral in (L6.3). Every fixed truncation is therefore justified with its full error. In contrast, for <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> the absolute Taylor coefficient <span class="math" data-tex="\(a_m=(h)_m(1+h)_m/m!\)">\(a_m=(h)_m(1+h)_m/m!\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\frac{a_{m+1}|Z|^{m+1}}{a_m|Z|^m}
+=|Z|\frac{(h+m)(1+h+m)}{m+1}\longrightarrow\infty
+\quad(Z\ne0).
+\tag{L6.3b}
+\]">\[
+\frac{a_{m+1}|Z|^{m+1}}{a_m|Z|^m}
+=|Z|\frac{(h+m)(1+h+m)}{m+1}\longrightarrow\infty
+\quad(Z\ne0).
+\tag{L6.3b}
+\]</span>
+<p>The formal series has radius zero, since its terms do not tend to zero at any nonzero argument. Thus this heat factor has no analytic extension through zero, while all its right derivatives exist as proved above. This precise regularity statement does not alter the source's finite Taylor argument. It also does not concern the different analytic axis-pressure integral, whose holomorphic extension is proved in <a href="outer-profile-audit.html">O4</a>.</p>
+<p>Multiplying the derivative of <span class="math" data-tex="\(e^{-v}v^{1+h}(1+Zv)^{-1-h}\)">\(e^{-v}v^{1+h}(1+Zv)^{-1-h}\)</span> by <span class="math" data-tex="\(h\)">\(h\)</span>, and expressing the result with the common factor <span class="math" data-tex="\(e^{-v}v^h(1+Zv)^{-h-2}\)">\(e^{-v}v^h(1+Zv)^{-h-2}\)</span>, gives the polynomial <span class="math" data-tex="\(h(1+h-v-Zv^2)\)">\(h(1+h-v-Zv^2)\)</span>. Substituting (L6.2)–(L6.3) into the following left side gives that same integrand. Both endpoint terms vanish, so</p>
+<span class="math math-display" data-tex="\[
+Z^2\mathcal H&#x27;&#x27;+(1+2a_KZ)\mathcal H&#x27;+a_K(a_K-1)\mathcal H=0.
+\tag{L6.4}
+\]">\[
+Z^2\mathcal H&#x27;&#x27;+(1+2a_KZ)\mathcal H&#x27;+a_K(a_K-1)\mathcal H=0.
+\tag{L6.4}
+\]</span>
+<p>This verifies the integral identity in original (A.37) with its boundary terms.</p>
+<p>Retain <span class="math" data-tex="\(s=r^2/2\)">\(s=r^2/2\)</span> and the original positive coefficient <span class="math" data-tex="\(c_\infty\)">\(c_\infty\)</span>. The physical exterior field is</p>
+<span class="math math-display" data-tex="\[
+K(r,\tau)=c_\infty s^{-A}\mathcal H(2\tau/s)
+=r^{-1-2h}\mathcal H_{\rm ext}(\tau/r^2),\qquad
+\mathcal H_{\rm ext}(\omega)=2^Ac_\infty\mathcal H(4\omega).
+\tag{L6.5}
+\]">\[
+K(r,\tau)=c_\infty s^{-A}\mathcal H(2\tau/s)
+=r^{-1-2h}\mathcal H_{\rm ext}(\tau/r^2),\qquad
+\mathcal H_{\rm ext}(\omega)=2^Ac_\infty\mathcal H(4\omega).
+\tag{L6.5}
+\]</span>
+<p>All constants in this comparison remain explicit. Direct differentiation with <span class="math" data-tex="\(Z=2\tau/s\)">\(Z=2\tau/s\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\partial_tK&amp;=-2c_\infty s^{-A-1}\mathcal H&#x27;,\\
+(\partial_r^2+r^{-1}\partial_r-r^{-2})K
+&amp;=2c_\infty s^{-A-1}
+\{Z^2\mathcal H&#x27;&#x27;+(2A+1)Z\mathcal H&#x27;+(A^2-1/4)\mathcal H\}.
+\end{split}
+\tag{L6.6}
+\]">\[
+\begin{split}
+\partial_tK&amp;=-2c_\infty s^{-A-1}\mathcal H&#x27;,\\
+(\partial_r^2+r^{-1}\partial_r-r^{-2})K
+&amp;=2c_\infty s^{-A-1}
+\{Z^2\mathcal H&#x27;&#x27;+(2A+1)Z\mathcal H&#x27;+(A^2-1/4)\mathcal H\}.
+\end{split}
+\tag{L6.6}
+\]</span>
+<p>Since <span class="math" data-tex="\(2A+1=2a_K\)">\(2A+1=2a_K\)</span> and <span class="math" data-tex="\(A^2-1/4=a_K(a_K-1)\)">\(A^2-1/4=a_K(a_K-1)\)</span>, (L6.4) makes these two quantities equal. Thus the exact swirl heat equation, including <span class="math" data-tex="\(-r^{-2}K\)">\(-r^{-2}K\)</span>, holds. Equation (L6.3) also gives the original uniform bound</p>
+<span class="math math-display" data-tex="\[
+\sup_{\omega\ge0}|\mathcal H_{\rm ext}^{(m)}(\omega)|
+\le2^Ac_\infty4^m(h)_m(1+h)_m.
+\tag{L6.7}
+\]">\[
+\sup_{\omega\ge0}|\mathcal H_{\rm ext}^{(m)}(\omega)|
+\le2^Ac_\infty4^m(h)_m(1+h)_m.
+\tag{L6.7}
+\]</span>
+<p>It applies on the full nonnegative half-line.</p>
+<p>The exterior pressure is exactly</p>
+<span class="math math-display" data-tex="\[
+p_{\rm ext}(r,\tau)=-\int_r^\infty\frac{K(\rho,\tau)^2}{\rho}\,d\rho.
+\tag{L6.8}
+\]">\[
+p_{\rm ext}(r,\tau)=-\int_r^\infty\frac{K(\rho,\tau)^2}{\rho}\,d\rho.
+\tag{L6.8}
+\]</span>
+<p>The integral converges because <span class="math" data-tex="\(0&lt;\mathcal H\le1\)">\(0&lt;\mathcal H\le1\)</span> and its integrand is bounded by <span class="math" data-tex="\((2^Ac_\infty)^2\rho^{-3-4h}\)">\((2^Ac_\infty)^2\rho^{-3-4h}\)</span>. Its radial derivative is <span class="math" data-tex="\(+K(r,\tau)^2/r\)">\(+K(r,\tau)^2/r\)</span>, cancelling the centrifugal component <span class="math" data-tex="\(-K^2/r\)">\(-K^2/r\)</span> of <span class="math" data-tex="\((Ke_\theta\cdot\nabla)(Ke_\theta)\)">\((Ke_\theta\cdot\nabla)(Ke_\theta)\)</span>. The other pressure components vanish. Together with (L6.6), this proves the full momentum residual is identically zero in the exterior.</p>
+<p>For completeness, every derivative of the pressure is controlled without discarding its endpoint. Put <span class="math" data-tex="\(d=1+2h\)">\(d=1+2h\)</span>, <span class="math" data-tex="\(\omega=\tau/r^2\)">\(\omega=\tau/r^2\)</span>. Differentiation gives the exact finite formula</p>
+<span class="math math-display" data-tex="\[
+\partial_r^a\partial_\tau^bK
+=r^{-d-a-2b}\sum_{k=0}^a c_{a,b,k}\omega^k\mathcal H_{\rm ext}^{(b+k)}(\omega),
+\tag{L6.9}
+\]">\[
+\partial_r^a\partial_\tau^bK
+=r^{-d-a-2b}\sum_{k=0}^a c_{a,b,k}\omega^k\mathcal H_{\rm ext}^{(b+k)}(\omega),
+\tag{L6.9}
+\]</span>
+<p>where <span class="math" data-tex="\(c_{0,b,0}=1\)">\(c_{0,b,0}=1\)</span>, coefficients outside <span class="math" data-tex="\(0\le k\le a\)">\(0\le k\le a\)</span> are zero, and
+<span class="math" data-tex="\(c_{a+1,b,k}=(-d-a-2b-2k)c_{a,b,k}-2c_{a,b,k-1}\)">\(c_{a+1,b,k}=(-d-a-2b-2k)c_{a,b,k}-2c_{a,b,k-1}\)</span>.
+In the exterior <span class="math" data-tex="\(X\ge X_{\rm ext}\)">\(X\ge X_{\rm ext}\)</span>, <span class="math" data-tex="\(\omega=(1-\eta^2)/(2X)\le1/(2X_{\rm ext})\)">\(\omega=(1-\eta^2)/(2X)\le1/(2X_{\rm ext})\)</span>. Equations (L6.7)–(L6.9) bound every term. Time differentiation of (L6.8) retains the full sum <span class="math" data-tex="\(\sum_{i=0}^b\binom bi(\partial_\tau^iK)(\partial_\tau^{b-i}K)/\rho\)">\(\sum_{i=0}^b\binom bi(\partial_\tau^iK)(\partial_\tau^{b-i}K)/\rho\)</span>, bounded by <span class="math" data-tex="\(C_b\rho^{-3-4h-2b}\)">\(C_b\rho^{-3-4h-2b}\)</span>; it is integrable. Each subsequent radial derivative differentiates its lower-endpoint value. This proves all fixed exterior derivative bounds and right limits for <span class="math" data-tex="\(r\)">\(r\)</span> bounded away from zero, including the pressure.</p>
+<p>For the original viscosity, the exact exterior formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+K_\nu(r_\nu,\tau)&amp;=\sqrt\nu\,K(r_\nu/\sqrt\nu,\tau)
+=\nu^{1+h}r_\nu^{-1-2h}\mathcal H_{\rm ext}(\nu\tau/r_\nu^2),\\
+p_{{\rm ext},\nu}(r_\nu,\tau)&amp;=\nu p_{\rm ext}(r_\nu/\sqrt\nu,\tau)
+=-\int_{r_\nu}^\infty K_\nu(\rho,\tau)^2\,\frac{d\rho}{\rho}.
+\end{split}
+\tag{L6.10}
+\]">\[
+\begin{split}
+K_\nu(r_\nu,\tau)&amp;=\sqrt\nu\,K(r_\nu/\sqrt\nu,\tau)
+=\nu^{1+h}r_\nu^{-1-2h}\mathcal H_{\rm ext}(\nu\tau/r_\nu^2),\\
+p_{{\rm ext},\nu}(r_\nu,\tau)&amp;=\nu p_{\rm ext}(r_\nu/\sqrt\nu,\tau)
+=-\int_{r_\nu}^\infty K_\nu(\rho,\tau)^2\,\frac{d\rho}{\rho}.
+\end{split}
+\tag{L6.10}
+\]</span>
+<p>The derivatives have the factors in (L3.2), and the heat equation is <span class="math" data-tex="\(-\partial_\tau K_\nu=\nu(\partial_{r_\nu}^2+r_\nu^{-1}\partial_{r_\nu}-r_\nu^{-2})K_\nu\)">\(-\partial_\tau K_\nu=\nu(\partial_{r_\nu}^2+r_\nu^{-1}\partial_{r_\nu}-r_\nu^{-2})K_\nu\)</span>. The same exact centrifugal cancellation gives <span class="math" data-tex="\(\mathscr R_\nu=0\)">\(\mathscr R_\nu=0\)</span>.</p>
+<h2 id="l7-the-preserved-inner-and-exterior-fields">L7. The preserved inner and exterior fields</h2>
+<p>All wave and mean potentials, direct angular corrections and pressure increments in this cycle have support in <span class="math" data-tex="\(X_a\le X_\nu\le X_b\)">\(X_a\le X_\nu\le X_b\)</span>. Multiplication by <span class="math" data-tex="\(\chi(a_jq_\nu)\)">\(\chi(a_jq_\nu)\)</span> preserves this support. The extra curl term (L4.2) also has this support; differentiation cannot create a value outside the closed support of the smooth potential. Thus the summed correction is identically zero in both the inner region <span class="math" data-tex="\(X_\nu&lt;X_a\)">\(X_\nu&lt;X_a\)</span> and the common exterior <span class="math" data-tex="\(X_\nu&gt;X_b\)">\(X_\nu&gt;X_b\)</span>.</p>
+<p>The source base's exact exterior is supplied by its leading profile together with the zero total axial moments of every positive-order coefficient, which make its Stokes potentials vanish there. Its pressure is fixed by its value zero at radial infinity. These are proved for the actual fields by V7, Y3 and <a href="base-field-realization-audit.html">Z4/Z7</a>, including the zero exterior pressure and the full cutoff curl. The calculation here proves that no correction or summation cutoff changes that exterior, and L6 proves the full claimed heat-field and pressure properties from its original integral. It does not infer the base's exterior matching from the existence of the heat field alone.</p>
+<p>At the original inner point <span class="math" data-tex="\(X_{\rm in}\in(0,X_a)\)">\(X_{\rm in}\in(0,X_a)\)</span>, <span class="math" data-tex="\(z_\nu=0\)">\(z_\nu=0\)</span>, one has <span class="math" data-tex="\(q_\nu=\tau\)">\(q_\nu=\tau\)</span>, <span class="math" data-tex="\(\eta_\nu=0\)">\(\eta_\nu=0\)</span>, and <span class="math" data-tex="\(r_\nu=\sqrt{2\nu X_{\rm in}\tau}\)">\(r_\nu=\sqrt{2\nu X_{\rm in}\tau}\)</span>. Every annular correction vanishes there, including its cutoff curl. The original leading coefficient and full base remainder therefore pass unchanged to</p>
+<span class="math math-display" data-tex="\[
+u_{\theta,{\rm loc},\nu}(\sqrt{2\nu X_{\rm in}\tau},0,0,1-\tau)
+=\sqrt\nu\,\tau^{-A}\bigl(E_0(X_{\rm in},0)+O(\tau^{2h})\bigr).
+\tag{L7.1}
+\]">\[
+u_{\theta,{\rm loc},\nu}(\sqrt{2\nu X_{\rm in}\tau},0,0,1-\tau)
+=\sqrt\nu\,\tau^{-A}\bigl(E_0(X_{\rm in},0)+O(\tau^{2h})\bigr).
+\tag{L7.1}
+\]</span>
+<p>The entries denote cylindrical position and time, as in original (3.6). V7 proves the actual positive value <span class="math" data-tex="\(e_0=E_0(X_{\rm in},0)&gt;0\)">\(e_0=E_0(X_{\rm in},0)&gt;0\)</span>, and <a href="base-field-realization-audit.html">Z6.2</a> proves the displayed base remainder with every required derivative. The annular support proved above then gives L7.1 for the supplied fields, with the original viscosity factor. Final localization and the global theorem conclusion remain separate checks.</p>
+<p>The physical derivative loss and summation mechanism are derived from the finite cycle proved in K0–K8. The actual leading profile, reserved patches, strict stress cone, edge weights, global coefficient sequence and realized base are supplied by G/O/H/J/Q/V/D/Y and <a href="base-field-realization-audit.html">Z0–Z8</a>. Their exact domains, supports, full curl terms, residual comparison, endpoint limits and exterior integral are retained. The complete assembly of Theorem 3.1 from these actual inputs and K/L is proved in <a href="local-construction-assembly-audit.html">I0–I7</a>. Final localization, smooth force extension, solution class, energy and comparison are derived for the actual fields in <a href="terminal-force-and-blowup-audit.html">F0–F8</a>; their complete proof connections are recorded in the <a href="theorem-audit-conclusion.html">audit conclusion</a>. The complete theorem and its proof dependencies are stated in the <a href="theorem-audit-conclusion.html">theorem construction</a>.</p>
+</article></body></html>

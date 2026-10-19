@@ -2,7 +2,7 @@
 
 Curvature derivatives, nearby loops and global transport contain different information. We construct infinitesimal and local holonomy, prove when constant dimension or analyticity makes them agree with restricted holonomy, and compute three smooth circle-bundle tests. For flat connections we then prove the covering-space prerequisites and classify bundles by representations of the fundamental group, including disconnected structure groups. Worked circle and torus examples keep the representation distinct from its inverse transport multiplier.
 
-Use the complete earlier programme proofs in [Curvature and holonomy groups](curvature-and-holonomy-groups.md), [Reduction and the holonomy theorem](reduction-and-the-holonomy-theorem.md), [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), and Local tools for bundles and transport. Each named locator identifies a complete programme proof. Human construction sources are the exact free versions credited in the chapter.
+Use the complete earlier programme proofs in [Curvature and holonomy groups](curvature-and-holonomy-groups.md), [Reduction and the holonomy theorem](reduction-and-the-holonomy-theorem.md), [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), and [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md). Each named locator identifies a complete programme proof. Human construction sources are the exact free versions credited in the chapter.
 
 ## A. What the curvature derivatives generate
 

@@ -2,7 +2,7 @@
 
 Curvature measures the failure of horizontal transport to commute. We derive its principal and associated forms, prove both Bianchi identities, and construct full and restricted holonomy as immersed Lie groups, including nonclosed holonomy. The chapter then develops intrinsic torsion, binary-form and tensor-product curvature spaces, and complete local connection equations. The final constructions produce actual analytic connections at regular and singular Poisson parameters.
 
-Read first [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), Local tools for bundles and transport, and the exact earlier exterior-calculus and example proofs in DG-CHAR-17. Each part supplies its proofs and identifies its freely accessible human construction sources. The definitions and signs used in subsequent parts are fixed where they first appear.
+Read first [Connections and parallel transport](connections-and-parallel-transport.md), [Principal bundles and associated bundles](principal-bundles-and-associated-bundles.md), [Local tools for bundles and transport](local-tools-for-bundles-and-transport.md), and the exact earlier exterior-calculus and example proofs in [DG-CHAR-17](../supporting/DG-CHAR-8e0b5f71efec/src/DG-CHAR-17.md). Each part supplies its proofs and identifies its freely accessible human construction sources. The definitions and signs used in subsequent parts are fixed where they first appear.
 
 ## A. Exterior calculus and principal curvature
 
@@ -704,7 +704,7 @@ Finally substitute (B.24) into (B.11). The fibre derivatives are \(A_i,A_j\), so
 
 This part reconstructs the mathematical arguments of Gustavo Amilcar Saldaña Moncada and Gregor Weingart, [*On Connections and their Curvatures*, freely accessible arXiv version 2207.06542v1](https://arxiv.org/abs/2207.06542v1), Sections 2–4 and Appendix A. The connection axioms used earlier are already proved in Conn A.1–A.3. The new proofs above include coordinate independence, arbitrary-field cancellation, induced-connection existence and uniqueness, parallelness of the principal vertical trivialization, and the exact mixed exponential identity. The source's ordinary and reordered tangent coordinates are distinguished explicitly.
 
-Original exposition: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. This is newly written exposition and proof completion from the freely accessible paper; its prose, diagrams and page images are not reproduced. The human construction source is credited above.
+Exposition: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. The mathematical construction is credited above.
 
 ## C. Smooth subgroup generation and holonomy
 

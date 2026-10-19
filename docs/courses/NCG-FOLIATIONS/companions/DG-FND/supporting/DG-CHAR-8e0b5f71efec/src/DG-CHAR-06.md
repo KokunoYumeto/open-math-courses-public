@@ -6,7 +6,7 @@ An orientation fixes a sign on each local homology group. We construct those sig
 
 The chapter includes the singular-chain, product and coefficient arguments needed for these constructions. Its algebra uses the integers, real numbers and the axiom of choice in the well-ordering form stated in Section 4. All chains are finite sums; cochains may assign values to every simplex. Manifolds are smooth, Hausdorff, second countable and without boundary.
 
-The earlier programme prerequisite is Local tools for bundles and transport: Lemmas 0.0–0.4 for real estimates, compactness, finite bases, calculus and geometric decay; Theorem 1.2 and Corollary 1.3 for local inversion and level sets; and Lemma 3.B for coordinate balls with compact closures. Every other result used in the proofs is established in this chapter. Lettered statement and equation labels distinguish the algebraic and geometric constructions.
+The earlier programme prerequisite is [Local tools for bundles and transport](../../../src/local-tools-for-bundles-and-transport.md): Lemmas 0.0–0.4 for real estimates, compactness, finite bases, calculus and geometric decay; [Theorem 1.2 and Corollary 1.3](../../../src/local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) for local inversion and level sets; and [Lemma 3.B](../../../src/local-tools-for-bundles-and-transport.md#3-smooth-weights-with-controlled-support) for coordinate balls with compact closures. Every other result used in the proofs is established in this chapter. Lettered statement and equation labels distinguish the algebraic and geometric constructions.
 
 ## 1. Determinants and coordinate signs
 
