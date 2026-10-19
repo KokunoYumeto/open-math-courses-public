@@ -1,0 +1,283 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Homotopy exact squares</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Derivators)</a><a href="kan-extensions-and-the-derivator-axioms.html">Previous lesson</a><a href="the-derivator-of-a-ring.html">Next lesson</a><a href="src/homotopy-exact-squares.md">Editable source</a></nav><main><article><h1 id="homotopy-exact-squares">Homotopy exact squares</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The axiom (Der4) says that two particular squares of small categories, built from comma categories, induce invertible base change morphisms in a derivator. Many other squares share this property, and recognizing them is the main computational tool of the theory: a square is <em>homotopy exact</em> when its base change morphism is invertible in every derivator. This lesson proves that base change is compatible with pasting squares side by side and on top of each other, that a right adjoint does not change homotopy colimits, that homotopy Kan extensions along fully faithful functors are fully faithful, and that extensions along sieves and cosieves are extensions by terminal and initial objects.</p>
+<p><strong>Prerequisites.</strong> The lesson <a href="kan-extensions-and-the-derivator-axioms.html"><em>Kan extensions and the derivator axioms</em></a>: base change morphisms (Section 3, with Lemma 3.1), the axioms (Definition 4.1), Proposition 5.1 and Proposition 6.1.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> is a prederivator that admits the Kan extensions mentioned, with chosen adjoints, units <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and counits <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For a square with a natural transformation <span class="math" data-tex="\(\alpha:u&#x27;v\to wu\)">\(\alpha:u&#x27;v\to wu\)</span>, as in Section 3 of the preceding lesson, the base change morphism is</p>
+<span class="math math-display" data-tex="\[
+\alpha_!=\varepsilon\cdot u_!\alpha^*u&#x27;_!\cdot u_!v^*\eta&#x27;:
+\]">\[
+\alpha_!=\varepsilon\cdot u_!\alpha^*u&#x27;_!\cdot u_!v^*\eta&#x27;:
+\]</span>
+<span class="math math-display" data-tex="\[
+u_!v^*\longrightarrow w^*u&#x27;_!.
+\]">\[
+u_!v^*\longrightarrow w^*u&#x27;_!.
+\]</span>
+<p>Here <span class="math" data-tex="\(\cdot\)">\(\cdot\)</span> is vertical composition, read from right to left, and juxtaposition is whiskering.</p>
+<h2 id="1-pasting">1. Pasting</h2>
+<p><strong>Lemma 1.1 (horizontal pasting).</strong> Consider two adjacent squares</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccccc}
+J_1&amp;\xrightarrow{v_1}&amp;J_2&amp;\xrightarrow{v_2}&amp;J_3\\
+{\scriptstyle u_1}\downarrow&amp;&amp;{\scriptstyle u_2}\downarrow&amp;&amp;\downarrow{\scriptstyle u_3}\\
+K_1&amp;\xrightarrow{w_1}&amp;K_2&amp;\xrightarrow{w_2}&amp;K_3
+\end{array}
+\]">\[
+\begin{array}{ccccc}
+J_1&amp;\xrightarrow{v_1}&amp;J_2&amp;\xrightarrow{v_2}&amp;J_3\\
+{\scriptstyle u_1}\downarrow&amp;&amp;{\scriptstyle u_2}\downarrow&amp;&amp;\downarrow{\scriptstyle u_3}\\
+K_1&amp;\xrightarrow{w_1}&amp;K_2&amp;\xrightarrow{w_2}&amp;K_3
+\end{array}
+\]</span>
+<p>with <span class="math" data-tex="\(\alpha_1:u_2v_1\to w_1u_1\)">\(\alpha_1:u_2v_1\to w_1u_1\)</span> and <span class="math" data-tex="\(\alpha_2:u_3v_2\to w_2u_2\)">\(\alpha_2:u_3v_2\to w_2u_2\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+\alpha=w_2\alpha_1\cdot\alpha_2v_1:\;u_3v_2v_1\to w_2w_1u_1
+\]">\[
+\alpha=w_2\alpha_1\cdot\alpha_2v_1:\;u_3v_2v_1\to w_2w_1u_1
+\]</span>
+<p>be the pasted transformation. Then</p>
+<span class="math math-display" data-tex="\[
+\alpha_!=w_1^*\alpha_{2!}\cdot\alpha_{1!}v_2^*.
+\]">\[
+\alpha_!=w_1^*\alpha_{2!}\cdot\alpha_{1!}v_2^*.
+\]</span>
+<p><strong>Proof.</strong> The 2-functor <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> turns the pasting into</p>
+<span class="math math-display" data-tex="\[
+\alpha^*=\alpha_1^*w_2^*\cdot v_1^*\alpha_2^*:\;
+v_1^*v_2^*u_3^*\to u_1^*w_1^*w_2^*,
+\]">\[
+\alpha^*=\alpha_1^*w_2^*\cdot v_1^*\alpha_2^*:\;
+v_1^*v_2^*u_3^*\to u_1^*w_1^*w_2^*,
+\]</span>
+<p>by the whiskering rules <span class="math" data-tex="\((w\beta)^*=\beta^*w^*\)">\((w\beta)^*=\beta^*w^*\)</span> and <span class="math" data-tex="\((\beta t)^*=t^*\beta^*\)">\((\beta t)^*=t^*\beta^*\)</span>. Expand the right side of the claim, with <span class="math" data-tex="\(\Phi=\alpha_{2!}\)">\(\Phi=\alpha_{2!}\)</span>:</p>
+<span class="math math-display" data-tex="\[
+w_1^*\Phi\cdot\varepsilon_1w_1^*u_{2!}v_2^*
+\cdot u_{1!}\alpha_1^*u_{2!}v_2^*\cdot u_{1!}v_1^*\eta_2v_2^*.
+\]">\[
+w_1^*\Phi\cdot\varepsilon_1w_1^*u_{2!}v_2^*
+\cdot u_{1!}\alpha_1^*u_{2!}v_2^*\cdot u_{1!}v_1^*\eta_2v_2^*.
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(\varepsilon_1\)">\(\varepsilon_1\)</span> moves <span class="math" data-tex="\(w_1^*\Phi\)">\(w_1^*\Phi\)</span> to the right of it, where it appears as <span class="math" data-tex="\(u_{1!}u_1^*w_1^*\Phi\)">\(u_{1!}u_1^*w_1^*\Phi\)</span>; naturality of <span class="math" data-tex="\(\alpha_1^*\)">\(\alpha_1^*\)</span> then moves it past <span class="math" data-tex="\(\alpha_1^*\)">\(\alpha_1^*\)</span>, where it appears as <span class="math" data-tex="\(u_{1!}v_1^*u_2^*\Phi\)">\(u_{1!}v_1^*u_2^*\Phi\)</span>. The expression becomes</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_1\cdot u_{1!}\alpha_1^*w_2^*u_{3!}
+\cdot u_{1!}v_1^*\bigl(u_2^*\Phi\cdot\eta_2v_2^*\bigr).
+\]">\[
+\varepsilon_1\cdot u_{1!}\alpha_1^*w_2^*u_{3!}
+\cdot u_{1!}v_1^*\bigl(u_2^*\Phi\cdot\eta_2v_2^*\bigr).
+\]</span>
+<p>Expanding <span class="math" data-tex="\(\Phi=\varepsilon_2w_2^*u_{3!}\cdot u_{2!}\alpha_2^*u_{3!}\cdot u_{2!}v_2^*\eta_3\)">\(\Phi=\varepsilon_2w_2^*u_{3!}\cdot u_{2!}\alpha_2^*u_{3!}\cdot u_{2!}v_2^*\eta_3\)</span> and moving <span class="math" data-tex="\(\eta_2\)">\(\eta_2\)</span> to the left by naturality,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_2^*\Phi\cdot\eta_2v_2^*
+&amp;=u_2^*\varepsilon_2w_2^*u_{3!}\cdot\eta_2u_2^*w_2^*u_{3!}\\
+&amp;\qquad\cdot\alpha_2^*u_{3!}\cdot v_2^*\eta_3.
+\end{aligned}
+\]">\[
+\begin{aligned}
+u_2^*\Phi\cdot\eta_2v_2^*
+&amp;=u_2^*\varepsilon_2w_2^*u_{3!}\cdot\eta_2u_2^*w_2^*u_{3!}\\
+&amp;\qquad\cdot\alpha_2^*u_{3!}\cdot v_2^*\eta_3.
+\end{aligned}
+\]</span>
+<p>By the triangle identity <span class="math" data-tex="\(u_2^*\varepsilon_2\cdot\eta_2u_2^*=1\)">\(u_2^*\varepsilon_2\cdot\eta_2u_2^*=1\)</span> this is <span class="math" data-tex="\(\alpha_2^*u_{3!}\cdot v_2^*\eta_3\)">\(\alpha_2^*u_{3!}\cdot v_2^*\eta_3\)</span>. Substituting,</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_1\cdot u_{1!}\bigl(\alpha_1^*w_2^*\cdot v_1^*\alpha_2^*\bigr)u_{3!}
+\cdot u_{1!}v_1^*v_2^*\eta_3,
+\]">\[
+\varepsilon_1\cdot u_{1!}\bigl(\alpha_1^*w_2^*\cdot v_1^*\alpha_2^*\bigr)u_{3!}
+\cdot u_{1!}v_1^*v_2^*\eta_3,
+\]</span>
+<p>which is <span class="math" data-tex="\(\alpha_!\)">\(\alpha_!\)</span> by the formula for <span class="math" data-tex="\(\alpha^*\)">\(\alpha^*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (vertical pasting).</strong> Consider two squares stacked vertically,</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+J&amp;\xrightarrow{v}&amp;J&#x27;\\
+{\scriptstyle u}\downarrow&amp;&amp;\downarrow{\scriptstyle u&#x27;}\\
+K&amp;\xrightarrow{w}&amp;K&#x27;\\
+{\scriptstyle x}\downarrow&amp;&amp;\downarrow{\scriptstyle x&#x27;}\\
+L&amp;\xrightarrow{y}&amp;L&#x27;
+\end{array}
+\]">\[
+\begin{array}{ccc}
+J&amp;\xrightarrow{v}&amp;J&#x27;\\
+{\scriptstyle u}\downarrow&amp;&amp;\downarrow{\scriptstyle u&#x27;}\\
+K&amp;\xrightarrow{w}&amp;K&#x27;\\
+{\scriptstyle x}\downarrow&amp;&amp;\downarrow{\scriptstyle x&#x27;}\\
+L&amp;\xrightarrow{y}&amp;L&#x27;
+\end{array}
+\]</span>
+<p>with <span class="math" data-tex="\(\alpha:u&#x27;v\to wu\)">\(\alpha:u&#x27;v\to wu\)</span> and <span class="math" data-tex="\(\beta:x&#x27;w\to yx\)">\(\beta:x&#x27;w\to yx\)</span>. Give <span class="math" data-tex="\((xu)_!=x_!u_!\)">\((xu)_!=x_!u_!\)</span> the composite adjunction, with unit <span class="math" data-tex="\(u^*\eta_xu_!\cdot\eta_u\)">\(u^*\eta_xu_!\cdot\eta_u\)</span> and counit <span class="math" data-tex="\(\varepsilon_x\cdot x_!\varepsilon_ux^*\)">\(\varepsilon_x\cdot x_!\varepsilon_ux^*\)</span>. Then the pasted transformation <span class="math" data-tex="\(\gamma=\beta u\cdot x&#x27;\alpha:x&#x27;u&#x27;v\to yxu\)">\(\gamma=\beta u\cdot x&#x27;\alpha:x&#x27;u&#x27;v\to yxu\)</span> has</p>
+<span class="math math-display" data-tex="\[
+\gamma_!=\beta_!u&#x27;_!\cdot x_!\alpha_!.
+\]">\[
+\gamma_!=\beta_!u&#x27;_!\cdot x_!\alpha_!.
+\]</span>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(\gamma^*=u^*\beta^*\cdot\alpha^*x&#x27;^*\)">\(\gamma^*=u^*\beta^*\cdot\alpha^*x&#x27;^*\)</span>. The right side is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\varepsilon_x y^*x&#x27;_!u&#x27;_!\cdot x_!\beta^*x&#x27;_!u&#x27;_!\\
+&amp;\quad\cdot x_!w^*\eta_{x&#x27;}u&#x27;_!\cdot x_!\varepsilon_uw^*u&#x27;_!\\
+&amp;\quad\cdot x_!u_!\alpha^*u&#x27;_!\cdot x_!u_!v^*\eta_{u&#x27;}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\varepsilon_x y^*x&#x27;_!u&#x27;_!\cdot x_!\beta^*x&#x27;_!u&#x27;_!\\
+&amp;\quad\cdot x_!w^*\eta_{x&#x27;}u&#x27;_!\cdot x_!\varepsilon_uw^*u&#x27;_!\\
+&amp;\quad\cdot x_!u_!\alpha^*u&#x27;_!\cdot x_!u_!v^*\eta_{u&#x27;}.
+\end{aligned}
+\]</span>
+<p>Move <span class="math" data-tex="\(x_!\varepsilon_uw^*u&#x27;_!\)">\(x_!\varepsilon_uw^*u&#x27;_!\)</span> to the left past <span class="math" data-tex="\(x_!w^*\eta_{x&#x27;}u&#x27;_!\)">\(x_!w^*\eta_{x&#x27;}u&#x27;_!\)</span> and <span class="math" data-tex="\(x_!\beta^*x&#x27;_!u&#x27;_!\)">\(x_!\beta^*x&#x27;_!u&#x27;_!\)</span> by naturality of <span class="math" data-tex="\(\varepsilon_u\)">\(\varepsilon_u\)</span>; it becomes <span class="math" data-tex="\(x_!\varepsilon_ux^*y^*x&#x27;_!u&#x27;_!\)">\(x_!\varepsilon_ux^*y^*x&#x27;_!u&#x27;_!\)</span>, next to <span class="math" data-tex="\(\varepsilon_x\)">\(\varepsilon_x\)</span>, and the two maps it passed become <span class="math" data-tex="\(x_!u_!u^*w^*\eta_{x&#x27;}u&#x27;_!\)">\(x_!u_!u^*w^*\eta_{x&#x27;}u&#x27;_!\)</span> and <span class="math" data-tex="\(x_!u_!u^*\beta^*x&#x27;_!u&#x27;_!\)">\(x_!u_!u^*\beta^*x&#x27;_!u&#x27;_!\)</span>. By naturality of <span class="math" data-tex="\(\alpha^*\)">\(\alpha^*\)</span>, the pair <span class="math" data-tex="\(x_!u_!u^*w^*\eta_{x&#x27;}u&#x27;_!\cdot x_!u_!\alpha^*u&#x27;_!\)">\(x_!u_!u^*w^*\eta_{x&#x27;}u&#x27;_!\cdot x_!u_!\alpha^*u&#x27;_!\)</span> equals <span class="math" data-tex="\(x_!u_!\alpha^*x&#x27;^*x&#x27;_!u&#x27;_!\cdot x_!u_!v^*u&#x27;^*\eta_{x&#x27;}u&#x27;_!\)">\(x_!u_!\alpha^*x&#x27;^*x&#x27;_!u&#x27;_!\cdot x_!u_!v^*u&#x27;^*\eta_{x&#x27;}u&#x27;_!\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(\varepsilon_x\cdot x_!\varepsilon_ux^*)y^*x&#x27;_!u&#x27;_!\\
+&amp;\quad\cdot x_!u_!(u^*\beta^*\cdot\alpha^*x&#x27;^*)x&#x27;_!u&#x27;_!\\
+&amp;\quad\cdot x_!u_!v^*(u&#x27;^*\eta_{x&#x27;}u&#x27;_!\cdot\eta_{u&#x27;}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(\varepsilon_x\cdot x_!\varepsilon_ux^*)y^*x&#x27;_!u&#x27;_!\\
+&amp;\quad\cdot x_!u_!(u^*\beta^*\cdot\alpha^*x&#x27;^*)x&#x27;_!u&#x27;_!\\
+&amp;\quad\cdot x_!u_!v^*(u&#x27;^*\eta_{x&#x27;}u&#x27;_!\cdot\eta_{u&#x27;}),
+\end{aligned}
+\]</span>
+<p>which is <span class="math" data-tex="\(\gamma_!\)">\(\gamma_!\)</span> computed with the composite adjunctions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The dual statements for <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span> hold with the dual proofs.</p>
+<h2 id="2-exact-squares">2. Exact squares</h2>
+<p><strong>Definition 2.1.</strong> A square with <span class="math" data-tex="\(\alpha:u&#x27;v\to wu\)">\(\alpha:u&#x27;v\to wu\)</span> is <em><span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>-exact</em> if <span class="math" data-tex="\(\alpha_!\)">\(\alpha_!\)</span> is an isomorphism. It is <em>homotopy exact</em> if it is <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>-exact for every derivator <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>.</p>
+<p>By Lemma 3.1 of the preceding lesson this does not depend on the chosen adjoints. By Lemmas 1.1 and 1.2, a square pasted from two <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>-exact squares is <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>-exact. Axiom (Der4) states that the comma square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+J_{/k}&amp;\xrightarrow{\mathrm{pr}}&amp;J\\
+{\scriptstyle p}\downarrow&amp;&amp;\downarrow{\scriptstyle u}\\
+e&amp;\xrightarrow{k}&amp;K
+\end{array}
+\]">\[
+\begin{array}{ccc}
+J_{/k}&amp;\xrightarrow{\mathrm{pr}}&amp;J\\
+{\scriptstyle p}\downarrow&amp;&amp;\downarrow{\scriptstyle u}\\
+e&amp;\xrightarrow{k}&amp;K
+\end{array}
+\]</span>
+<p>with the transformation <span class="math" data-tex="\(\alpha^{/k}:u\,\mathrm{pr}\to kp\)">\(\alpha^{/k}:u\,\mathrm{pr}\to kp\)</span> is homotopy exact, together with the dual statement for <span class="math" data-tex="\(J_{k/}\)">\(J_{k/}\)</span>.</p>
+<p>The definition depends on the direction of the transformation. A commutative square, regarded with its identity transformation, need not be exact: Exercise 6.4 gives an example in the represented derivator of sets.</p>
+<p><strong>Lemma 2.2 (adjunctions).</strong> Let <span class="math" data-tex="\(L:K\to J\)">\(L:K\to J\)</span> be left adjoint to <span class="math" data-tex="\(R:J\to K\)">\(R:J\to K\)</span>, with unit <span class="math" data-tex="\(\eta:1\to RL\)">\(\eta:1\to RL\)</span> and counit <span class="math" data-tex="\(\varepsilon:LR\to1\)">\(\varepsilon:LR\to1\)</span>. For every prederivator <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span>, the functor <span class="math" data-tex="\(R^*:\mathbb D(K)\to\mathbb D(J)\)">\(R^*:\mathbb D(K)\to\mathbb D(J)\)</span> is left adjoint to <span class="math" data-tex="\(L^*\)">\(L^*\)</span>, with unit <span class="math" data-tex="\(\eta^*\)">\(\eta^*\)</span> and counit <span class="math" data-tex="\(\varepsilon^*\)">\(\varepsilon^*\)</span>. If <span class="math" data-tex="\(L\)">\(L\)</span> is fully faithful, so is <span class="math" data-tex="\(R^*\)">\(R^*\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\eta^*:1\to(RL)^*=L^*R^*\)">\(\eta^*:1\to(RL)^*=L^*R^*\)</span> and <span class="math" data-tex="\(\varepsilon^*:R^*L^*=(LR)^*\to1\)">\(\varepsilon^*:R^*L^*=(LR)^*\to1\)</span>. The triangle identities <span class="math" data-tex="\(R\varepsilon\cdot\eta R=1\)">\(R\varepsilon\cdot\eta R=1\)</span> and <span class="math" data-tex="\(\varepsilon L\cdot L\eta=1\)">\(\varepsilon L\cdot L\eta=1\)</span> become, by the whiskering rules, <span class="math" data-tex="\(\varepsilon^*R^*\cdot R^*\eta^*=1\)">\(\varepsilon^*R^*\cdot R^*\eta^*=1\)</span> and <span class="math" data-tex="\(L^*\varepsilon^*\cdot\eta^*L^*=1\)">\(L^*\varepsilon^*\cdot\eta^*L^*=1\)</span>, which are the triangle identities for <span class="math" data-tex="\(R^*\dashv L^*\)">\(R^*\dashv L^*\)</span>. If <span class="math" data-tex="\(L\)">\(L\)</span> is fully faithful, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is invertible, hence so is <span class="math" data-tex="\(\eta^*\)">\(\eta^*\)</span>, and a left adjoint with invertible unit is fully faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.3 (right adjoints are homotopy final).</strong> Let <span class="math" data-tex="\(R:J\to K\)">\(R:J\to K\)</span> be a right adjoint. The square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+J&amp;\xrightarrow{R}&amp;K\\
+{\scriptstyle p_J}\downarrow&amp;&amp;\downarrow{\scriptstyle p_K}\\
+e&amp;\xrightarrow{1}&amp;e
+\end{array}
+\]">\[
+\begin{array}{ccc}
+J&amp;\xrightarrow{R}&amp;K\\
+{\scriptstyle p_J}\downarrow&amp;&amp;\downarrow{\scriptstyle p_K}\\
+e&amp;\xrightarrow{1}&amp;e
+\end{array}
+\]</span>
+<p>with the identity transformation <span class="math" data-tex="\(p_KR=p_J\)">\(p_KR=p_J\)</span> is homotopy exact. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{hocolim}_JR^*X\cong\operatorname{hocolim}_KX
+\]">\[
+\operatorname{hocolim}_JR^*X\cong\operatorname{hocolim}_KX
+\]</span>
+<p>for every derivator <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\mathbb D(K)\)">\(\mathbb D(K)\)</span>. Dually, if <span class="math" data-tex="\(L:J\to K\)">\(L:J\to K\)</span> is a left adjoint, then <span class="math" data-tex="\(\operatorname{holim}_KX\to\operatorname{holim}_JL^*X\)">\(\operatorname{holim}_KX\to\operatorname{holim}_JL^*X\)</span> is invertible for <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\mathbb D(K)\)">\(\mathbb D(K)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be a left adjoint of <span class="math" data-tex="\(R\)">\(R\)</span>. By Lemma 2.2, <span class="math" data-tex="\(R^*\dashv L^*\)">\(R^*\dashv L^*\)</span>, so <span class="math" data-tex="\(p_{J!}R^*\)">\(p_{J!}R^*\)</span> is left adjoint to <span class="math" data-tex="\(L^*p_J^*=(p_JL)^*=p_K^*\)">\(L^*p_J^*=(p_JL)^*=p_K^*\)</span>, with counit</p>
+<span class="math math-display" data-tex="\[
+p_{J!}R^*L^*p_J^*\xrightarrow{\;p_{J!}\varepsilon^*p_J^*\;}p_{J!}p_J^*\xrightarrow{\;\varepsilon_J\;}1.
+\]">\[
+p_{J!}R^*L^*p_J^*\xrightarrow{\;p_{J!}\varepsilon^*p_J^*\;}p_{J!}p_J^*\xrightarrow{\;\varepsilon_J\;}1.
+\]</span>
+<p>The transformation <span class="math" data-tex="\(\varepsilon^*p_J^*=(p_J\varepsilon)^*\)">\(\varepsilon^*p_J^*=(p_J\varepsilon)^*\)</span> is the identity, because <span class="math" data-tex="\(p_J\varepsilon\)">\(p_J\varepsilon\)</span> is a transformation between functors to <span class="math" data-tex="\(e\)">\(e\)</span>. So this counit is <span class="math" data-tex="\(\varepsilon_J\)">\(\varepsilon_J\)</span>. The base change morphism is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+p_{J!}R^*&amp;\xrightarrow{\;p_{J!}R^*\eta_K\;}p_{J!}R^*p_K^*p_{K!}\\
+&amp;\;=\;p_{J!}p_J^*p_{K!}\xrightarrow{\;\varepsilon_Jp_{K!}\;}p_{K!},
+\end{aligned}
+\]">\[
+\begin{aligned}
+p_{J!}R^*&amp;\xrightarrow{\;p_{J!}R^*\eta_K\;}p_{J!}R^*p_K^*p_{K!}\\
+&amp;\;=\;p_{J!}p_J^*p_{K!}\xrightarrow{\;\varepsilon_Jp_{K!}\;}p_{K!},
+\end{aligned}
+\]</span>
+<p>and this is the canonical comparison between two left adjoints of <span class="math" data-tex="\(p_K^*\)">\(p_K^*\)</span>: for left adjoints <span class="math" data-tex="\(F,G\)">\(F,G\)</span> of the same functor <span class="math" data-tex="\(U\)">\(U\)</span>, the composite <span class="math" data-tex="\(F\to FUG\to G\)">\(F\to FUG\to G\)</span> of the unit of <span class="math" data-tex="\(G\)">\(G\)</span> and the counit of <span class="math" data-tex="\(F\)">\(F\)</span> is an isomorphism, with inverse the analogous composite <span class="math" data-tex="\(G\to GUF\to F\)">\(G\to GUF\to F\)</span>. The dual statement follows by duality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.4.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> has a terminal object <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(X_t\cong\operatorname{hocolim}_KX\)">\(X_t\cong\operatorname{hocolim}_KX\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> has an initial object <span class="math" data-tex="\(i\)">\(i\)</span>, then <span class="math" data-tex="\(\operatorname{holim}_KX\cong X_i\)">\(\operatorname{holim}_KX\cong X_i\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(t:e\to K\)">\(t:e\to K\)</span> is right adjoint to <span class="math" data-tex="\(p_K\)">\(p_K\)</span>, and <span class="math" data-tex="\(t^*X=X_t\)">\(t^*X=X_t\)</span> while <span class="math" data-tex="\(\operatorname{hocolim}_e=1\)">\(\operatorname{hocolim}_e=1\)</span>. Apply Proposition 2.3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-fully-faithful-functors">3. Fully faithful functors</h2>
+<p>The preceding lesson (Proposition 6.1) showed that for a fully faithful <span class="math" data-tex="\(u:J\to K\)">\(u:J\to K\)</span> the unit <span class="math" data-tex="\(X\to u^*u_!X\)">\(X\to u^*u_!X\)</span> and the counit <span class="math" data-tex="\(u^*u_*X\to X\)">\(u^*u_*X\to X\)</span> are invertible, so <span class="math" data-tex="\(u_!\)">\(u_!\)</span> and <span class="math" data-tex="\(u_*\)">\(u_*\)</span> are fully faithful. The next lemma describes their essential images.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> be a derivator, <span class="math" data-tex="\(u:J\to K\)">\(u:J\to K\)</span> fully faithful and <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\mathbb D(K)\)">\(\mathbb D(K)\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(X\)">\(X\)</span> is in the essential image of <span class="math" data-tex="\(u_!\)">\(u_!\)</span> if and only if the counit <span class="math" data-tex="\(\varepsilon:u_!u^*X\to X\)">\(\varepsilon:u_!u^*X\to X\)</span> is invertible at every object <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> outside <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>.</li>
+<li><span class="math" data-tex="\(X\)">\(X\)</span> is in the essential image of <span class="math" data-tex="\(u_*\)">\(u_*\)</span> if and only if the unit <span class="math" data-tex="\(\eta:X\to u_*u^*X\)">\(\eta:X\to u_*u^*X\)</span> is invertible at every object <span class="math" data-tex="\(k\)">\(k\)</span> outside <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> We prove 2. Since <span class="math" data-tex="\(u_*\)">\(u_*\)</span> is fully faithful, <span class="math" data-tex="\(X\)">\(X\)</span> is in its essential image if and only if <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> is invertible: if <span class="math" data-tex="\(X\cong u_*Y\)">\(X\cong u_*Y\)</span>, naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and the triangle identity <span class="math" data-tex="\(u_*\varepsilon\cdot\eta u_*=1\)">\(u_*\varepsilon\cdot\eta u_*=1\)</span>, with <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> invertible, show that <span class="math" data-tex="\(\eta_{u_*Y}\)">\(\eta_{u_*Y}\)</span> is invertible. By (Der2), <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> is invertible if and only if its components are. At objects <span class="math" data-tex="\(u(j)\)">\(u(j)\)</span>, the triangle identity <span class="math" data-tex="\(\varepsilon u^*\cdot u^*\eta=1\)">\(\varepsilon u^*\cdot u^*\eta=1\)</span> and invertibility of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> show that <span class="math" data-tex="\(u^*\eta\)">\(u^*\eta\)</span> is invertible. So only the components at objects outside <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span> need to be checked. Statement 1 is dual. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 3.2.</strong> A fully faithful functor <span class="math" data-tex="\(u:J\to K\)">\(u:J\to K\)</span> that is injective on objects is a <em>cosieve</em> if every object <span class="math" data-tex="\(k\)">\(k\)</span> that receives a morphism <span class="math" data-tex="\(u(j)\to k\)">\(u(j)\to k\)</span> lies in <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>, and a <em>sieve</em> if every object <span class="math" data-tex="\(k\)">\(k\)</span> with a morphism <span class="math" data-tex="\(k\to u(j)\)">\(k\to u(j)\)</span> lies in <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>.</p>
+<p>For example, the inclusion of <span class="math" data-tex="\(1\)">\(1\)</span> into <span class="math" data-tex="\([1]\)">\([1]\)</span> is a cosieve, and the inclusion of <span class="math" data-tex="\(0\)">\(0\)</span> is a sieve.</p>
+<p><strong>Proposition 3.3 (extension by initial and terminal objects).</strong> Let <span class="math" data-tex="\(\mathbb D\)">\(\mathbb D\)</span> be a derivator.</p>
+<ol>
+<li>If <span class="math" data-tex="\(u:J\to K\)">\(u:J\to K\)</span> is a cosieve, <span class="math" data-tex="\(u_!\)">\(u_!\)</span> is fully faithful, and <span class="math" data-tex="\(X\)">\(X\)</span> is in its essential image if and only if <span class="math" data-tex="\(X_k\)">\(X_k\)</span> is an initial object of <span class="math" data-tex="\(\mathbb D(e)\)">\(\mathbb D(e)\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span> outside <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>.</li>
+<li>If <span class="math" data-tex="\(u\)">\(u\)</span> is a sieve, <span class="math" data-tex="\(u_*\)">\(u_*\)</span> is fully faithful, and <span class="math" data-tex="\(X\)">\(X\)</span> is in its essential image if and only if <span class="math" data-tex="\(X_k\)">\(X_k\)</span> is a terminal object for every <span class="math" data-tex="\(k\)">\(k\)</span> outside <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> We prove 1. For <span class="math" data-tex="\(k\)">\(k\)</span> outside <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>, the category <span class="math" data-tex="\(J_{/k}\)">\(J_{/k}\)</span> is empty: an object <span class="math" data-tex="\((j,f:u(j)\to k)\)">\((j,f:u(j)\to k)\)</span> would put <span class="math" data-tex="\(k\)">\(k\)</span> in <span class="math" data-tex="\(u(J)\)">\(u(J)\)</span>. By (Der4),</p>
+<span class="math math-display" data-tex="\[
+(u_!u^*X)_k\cong\operatorname{hocolim}_{\emptyset}(\mathrm{pr}^*u^*X),
+\]">\[
+(u_!u^*X)_k\cong\operatorname{hocolim}_{\emptyset}(\mathrm{pr}^*u^*X),
+\]</span>
+<p>and a homotopy colimit over the empty category is an initial object: <span class="math" data-tex="\(\operatorname{hocolim}_\emptyset\)">\(\operatorname{hocolim}_\emptyset\)</span> is left adjoint to <span class="math" data-tex="\(\mathbb D(e)\to\mathbb D(\emptyset)\simeq e\)">\(\mathbb D(e)\to\mathbb D(\emptyset)\simeq e\)</span> (Proposition 5.1 of the preceding lesson). So <span class="math" data-tex="\((u_!u^*X)_k\)">\((u_!u^*X)_k\)</span> is initial, and <span class="math" data-tex="\(\varepsilon_k\)">\(\varepsilon_k\)</span> is invertible exactly when <span class="math" data-tex="\(X_k\)">\(X_k\)</span> is initial. Lemma 3.1 concludes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-two-examples-in-shapes-of-size-two-and-three">4. Two examples in shapes of size two and three</h2>
+<p>Write <span class="math" data-tex="\([1]=(0\to1)\)">\([1]=(0\to1)\)</span> and <span class="math" data-tex="\([2]=(0\to1\to2)\)">\([2]=(0\to1\to2)\)</span>.</p>
+<ul>
+<li>The inclusion <span class="math" data-tex="\(i_1:\{1\}\to[1]\)">\(i_1:\{1\}\to[1]\)</span> is a cosieve. By Proposition 3.3, <span class="math" data-tex="\(i_{1!}\)">\(i_{1!}\)</span> identifies <span class="math" data-tex="\(\mathbb D(e)\)">\(\mathbb D(e)\)</span> with the objects <span class="math" data-tex="\(X\)">\(X\)</span> of <span class="math" data-tex="\(\mathbb D([1])\)">\(\mathbb D([1])\)</span> with <span class="math" data-tex="\(X_0\)">\(X_0\)</span> initial: these are the arrows &quot;from the initial object&quot;.</li>
+<li>The inclusion <span class="math" data-tex="\(i_0:\{0\}\to[1]\)">\(i_0:\{0\}\to[1]\)</span> is a sieve, and <span class="math" data-tex="\(i_{0*}\)">\(i_{0*}\)</span> identifies <span class="math" data-tex="\(\mathbb D(e)\)">\(\mathbb D(e)\)</span> with the arrows &quot;to the terminal object&quot;.</li>
+<li>The functor <span class="math" data-tex="\(d:[1]\to[2]\)">\(d:[1]\to[2]\)</span>, <span class="math" data-tex="\(0\mapsto0\)">\(0\mapsto0\)</span>, <span class="math" data-tex="\(1\mapsto2\)">\(1\mapsto2\)</span>, is fully faithful but neither a sieve nor a cosieve. It is left adjoint to <span class="math" data-tex="\(r:[2]\to[1]\)">\(r:[2]\to[1]\)</span>, <span class="math" data-tex="\(r(0)=r(1)=0\)">\(r(0)=r(1)=0\)</span>, <span class="math" data-tex="\(r(2)=1\)">\(r(2)=1\)</span>: both <span class="math" data-tex="\(\operatorname{Hom}(d(j),k)\)">\(\operatorname{Hom}(d(j),k)\)</span> and <span class="math" data-tex="\(\operatorname{Hom}(j,r(k))\)">\(\operatorname{Hom}(j,r(k))\)</span> have one element exactly when <span class="math" data-tex="\(j=0\)">\(j=0\)</span> or <span class="math" data-tex="\(k=2\)">\(k=2\)</span>. By Lemma 2.2, <span class="math" data-tex="\(r^*\)">\(r^*\)</span> is left adjoint to <span class="math" data-tex="\(d^*\)">\(d^*\)</span>, so <span class="math" data-tex="\(d_!\cong r^*\)">\(d_!\cong r^*\)</span>. The underlying diagram of <span class="math" data-tex="\(r^*X\)">\(r^*X\)</span> is <span class="math" data-tex="\(X_0\xrightarrow{1}X_0\to X_1\)">\(X_0\xrightarrow{1}X_0\to X_1\)</span>: the arrow <span class="math" data-tex="\(X_0\to X_1\)">\(X_0\to X_1\)</span> with its source repeated.</li>
+</ul>
+<p>These elementary extensions are the building blocks of the cofibre and fibre constructions of the lesson on pointed derivators.</p>
+<h2 id="5-where-homotopy-exactness-fails">5. Where homotopy exactness fails</h2>
+<p>Homotopy exactness depends on the derivator only through the axioms, so a single derivator can refute it. In the represented derivator of a complete and cocomplete category, base change morphisms are computed by Kan's formulas, and Exercise 6.4 shows that the square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+e&amp;\xrightarrow{0}&amp;[1]\\
+\downarrow&amp;&amp;\downarrow{\scriptstyle p}\\
+e&amp;\xrightarrow{1}&amp;e
+\end{array}
+\]">\[
+\begin{array}{ccc}
+e&amp;\xrightarrow{0}&amp;[1]\\
+\downarrow&amp;&amp;\downarrow{\scriptstyle p}\\
+e&amp;\xrightarrow{1}&amp;e
+\end{array}
+\]</span>
+<p>with the identity transformation is not homotopy exact, while the same square with <span class="math" data-tex="\(1\)">\(1\)</span> in place of <span class="math" data-tex="\(0\)">\(0\)</span> is, by Corollary 2.4. The object <span class="math" data-tex="\(0\)">\(0\)</span> is a left adjoint of <span class="math" data-tex="\(p\)">\(p\)</span>, not a right adjoint, and Proposition 2.3 does not apply to it.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1</strong> (easy). Show that a square pasted horizontally from two homotopy exact squares is homotopy exact.</p>
+<p><strong>6.2</strong> (easy). Show that in any derivator, <span class="math" data-tex="\(\operatorname{holim}_{[1]}X\cong X_0\)">\(\operatorname{holim}_{[1]}X\cong X_0\)</span> and <span class="math" data-tex="\(\operatorname{hocolim}_{[1]}X\cong X_1\)">\(\operatorname{hocolim}_{[1]}X\cong X_1\)</span>.</p>
+<p><strong>6.3</strong> (medium). Let <span class="math" data-tex="\(u:J\to K\)">\(u:J\to K\)</span> be fully faithful. Show that <span class="math" data-tex="\(u_!X\)">\(u_!X\)</span> and <span class="math" data-tex="\(u_*X\)">\(u_*X\)</span> restrict to <span class="math" data-tex="\(X\)">\(X\)</span> along <span class="math" data-tex="\(u\)">\(u\)</span>, and give an example, in the represented derivator of sets, with <span class="math" data-tex="\(u_!X\not\cong u_*X\)">\(u_!X\not\cong u_*X\)</span>.</p>
+<p><strong>6.4</strong> (medium). In the represented derivator of sets, compute the base change morphism of the square in Section 5 and show that it is the arrow <span class="math" data-tex="\(X_0\to X_1\)">\(X_0\to X_1\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>. Deduce that the square is not homotopy exact.</p>
+<p><strong>6.5</strong> (hard). Give a functor <span class="math" data-tex="\(u:J\to K\)">\(u:J\to K\)</span> and an object <span class="math" data-tex="\(k\)">\(k\)</span> such that the projection <span class="math" data-tex="\(J_{/k}\to J\)">\(J_{/k}\to J\)</span> has neither a left nor a right adjoint. Show that <span class="math" data-tex="\(J_{/k}\)">\(J_{/k}\)</span> has a terminal object whenever <span class="math" data-tex="\(k=u(j)\)">\(k=u(j)\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> is fully faithful, and use this to give a second proof of Proposition 6.1 of the preceding lesson, through Corollary 2.4.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> By Lemma 1.1 the pasted base change is <span class="math" data-tex="\(w_1^*\alpha_{2!}\cdot\alpha_{1!}v_2^*\)">\(w_1^*\alpha_{2!}\cdot\alpha_{1!}v_2^*\)</span>, a composite of two isomorphisms.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(0\)">\(0\)</span> is initial and <span class="math" data-tex="\(1\)">\(1\)</span> terminal in <span class="math" data-tex="\([1]\)">\([1]\)</span>; apply Corollary 2.4.</p>
+<p><strong>6.3.</strong> Proposition 6.1 of the preceding lesson gives <span class="math" data-tex="\(u^*u_!X\cong X\cong u^*u_*X\)">\(u^*u_!X\cong X\cong u^*u_*X\)</span>. For <span class="math" data-tex="\(u=i_1:\{1\}\to[1]\)">\(u=i_1:\{1\}\to[1]\)</span> and a set <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(u_!S=(\emptyset\to S)\)">\(u_!S=(\emptyset\to S)\)</span> and <span class="math" data-tex="\(u_*S=(S\to S)\)">\(u_*S=(S\to S)\)</span>, by Kan's formulas: <span class="math" data-tex="\(\{1\}_{/0}\)">\(\{1\}_{/0}\)</span> is empty, <span class="math" data-tex="\(\{1\}_{0/}=\{(1,0\to1)\}\)">\(\{1\}_{0/}=\{(1,0\to1)\}\)</span>. These differ when <span class="math" data-tex="\(S\)">\(S\)</span> is not empty.</p>
+<p><strong>6.4.</strong> Write the square as <span class="math" data-tex="\(u=1_e\)">\(u=1_e\)</span>, <span class="math" data-tex="\(v=0:e\to[1]\)">\(v=0:e\to[1]\)</span>, <span class="math" data-tex="\(u&#x27;=p\)">\(u&#x27;=p\)</span>, <span class="math" data-tex="\(w=1\)">\(w=1\)</span>. The unit of <span class="math" data-tex="\(p_!\dashv p^*\)">\(p_!\dashv p^*\)</span> at <span class="math" data-tex="\(X\)">\(X\)</span> is the diagram map <span class="math" data-tex="\(X\to p^*X_1\)">\(X\to p^*X_1\)</span> with components <span class="math" data-tex="\(X_0\to X_1\)">\(X_0\to X_1\)</span> and <span class="math" data-tex="\(1_{X_1}\)">\(1_{X_1}\)</span>, since <span class="math" data-tex="\(p_!X=X_1\)">\(p_!X=X_1\)</span> with the injections of Kan's formula. The base change morphism <span class="math" data-tex="\(\alpha_!:v^*X=X_0\to p_!X=X_1\)">\(\alpha_!:v^*X=X_0\to p_!X=X_1\)</span> is the component of this unit at <span class="math" data-tex="\(0\)">\(0\)</span>, followed by identities: the arrow <span class="math" data-tex="\(X_0\to X_1\)">\(X_0\to X_1\)</span>. For <span class="math" data-tex="\(X=(\emptyset\to\{*\})\)">\(X=(\emptyset\to\{*\})\)</span> it is not invertible.</p>
+<p><strong>6.5.</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> have two objects <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and two parallel morphisms <span class="math" data-tex="\(a\rightrightarrows b\)">\(a\rightrightarrows b\)</span> besides the identities, let <span class="math" data-tex="\(u:J\to[1]\)">\(u:J\to[1]\)</span> send <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> and both morphisms to <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, and take <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Then <span class="math" data-tex="\(J_{/0}\)">\(J_{/0}\)</span> has the single object <span class="math" data-tex="\((a,1_0)\)">\((a,1_0)\)</span>, and <span class="math" data-tex="\(\mathrm{pr}\)">\(\mathrm{pr}\)</span> picks out <span class="math" data-tex="\(a\)">\(a\)</span>. A right adjoint <span class="math" data-tex="\(R\)">\(R\)</span> would give <span class="math" data-tex="\(\operatorname{Hom}_J(a,j)\cong\operatorname{Hom}(*,R(j))\)">\(\operatorname{Hom}_J(a,j)\cong\operatorname{Hom}(*,R(j))\)</span>, a one-element set for every <span class="math" data-tex="\(j\)">\(j\)</span>; but <span class="math" data-tex="\(\operatorname{Hom}_J(a,b)\)">\(\operatorname{Hom}_J(a,b)\)</span> has two elements. A left adjoint <span class="math" data-tex="\(L\)">\(L\)</span> would give <span class="math" data-tex="\(\operatorname{Hom}_J(j,a)\cong\operatorname{Hom}(L(j),*)\)">\(\operatorname{Hom}_J(j,a)\cong\operatorname{Hom}(L(j),*)\)</span>, again one element; but <span class="math" data-tex="\(\operatorname{Hom}_J(b,a)\)">\(\operatorname{Hom}_J(b,a)\)</span> is empty.</p>
+<p>For the second part: if <span class="math" data-tex="\(u\)">\(u\)</span> is fully faithful and <span class="math" data-tex="\(k=u(j)\)">\(k=u(j)\)</span>, then <span class="math" data-tex="\(t=(j,1_k)\)">\(t=(j,1_k)\)</span> is terminal in <span class="math" data-tex="\(J_{/k}\)">\(J_{/k}\)</span>, by the proof of Corollary 2.3 of the preceding lesson. By (Der4) and Corollary 2.4,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(u_!X)_{u(j)}&amp;\cong\operatorname{hocolim}_{J_{/k}}\mathrm{pr}^*X\\
+&amp;\cong(\mathrm{pr}^*X)_t=X_j,
+\end{aligned}
+\]">\[
+\begin{aligned}
+(u_!X)_{u(j)}&amp;\cong\operatorname{hocolim}_{J_{/k}}\mathrm{pr}^*X\\
+&amp;\cong(\mathrm{pr}^*X)_t=X_j,
+\end{aligned}
+\]</span>
+and the composite is the component of the unit at <span class="math" data-tex="\(j\)">\(j\)</span>, as in the proof of Proposition 6.1 of the preceding lesson. By (Der2) the unit is invertible.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[Gr] M. Groth, <em>Derivators, pointed derivators and stable derivators</em>, Algebraic &amp; Geometric Topology 13 (2013), 313–374; arXiv:1112.3840. https://arxiv.org/abs/1112.3840 — Section 1.2 develops the base change calculus; the pasting lemmas, the finality of right adjoints and the extension by initial and terminal objects appear there.</li>
+<li>[PS] A. Grothendieck, <em>Pursuing Stacks</em>, §69, arXiv:2111.01000. https://arxiv.org/abs/2111.01000</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

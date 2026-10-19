@@ -392,7 +392,7 @@ A compatible family of isomorphisms gives a unique homomorphism of the algebraiz
 
 ## 10. Precisely imported inputs and scope
 
-The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. In particular the separately recorded global quasi-coherent quotient, general Kiehl relative image, raw topological-fibre vanishing and unrestricted DG derived-Hom lift remain at their stated unproved scope. Named projective and curve scheme results retain their programme sources.
+The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. In particular the separately recorded global quasi-coherent quotient and raw topological-fibre vanishing remain at their stated unproved scope. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
 
 - **Limits and modules.** On quasi-compact quasi-separated algebraic spaces, finite-presentation data descend along affine limits, quasi-coherent modules are filtered colimits of finitely presented ones, and relative flatness and proper support eventually descend. The particular support statement is [Stacks, Tag 08K2]. These results permit Noetherian models over finitely generated $\mathbf Z$-algebras.
 - **Perfect approximation and proper-support comparison.** For bounded-above coherent $E$ on a Noetherian space and any $m$, a perfect $P\to E$ is an isomorphism above $m$ and a surjection at $m$ [Stacks, Tags 08HI, 08HJ, 08HP]. For a quasi-separated locally finite type map to a Noetherian base, a perfect $P$ and bounded coherent $G$ that is base-flat and properly supported give perfect $Rf_*R\mathcal Hom(P,G)$, with arbitrary derived base change [Stacks, Tags 0DKK, 08JQ]. Section 5.1 gives the low-Ext application [Tag 08JR].
@@ -699,7 +699,7 @@ Lesson 3, Section 5.6.7, C.1, supplies the finite flat-module model result for a
 
 This section contains the supporting statements, their arguments and their explicitly designated prerequisites. The expositions in A.3–A.8 give the algebraic-space and base extensions and retain two alternative constructions. Every statement keeps its hypotheses, qualifications, dependencies and mathematical source credit. The source-specific editorial accounts identify the corresponding map and statement issues.
 
-The diagonal Koszul test and sequential perfect approximation in A.5 give independent reader routes. The native countable construction and second quasi-coherator argument remain as optional alternatives with their own prerequisites; they are not extra assumptions of the selected routes. Their broader unproved DG-lift assertion remains explicitly distinguished from the proved sufficient case. The nonflat proper-support consumer uses the Fitting construction of A.2 and A.6 in place of the source annihilator-base-change assertion. Likewise A.8 proves the proper formal curve consumer rather than the false unrestricted nonproper formulation. These differences in hypotheses remain visible alongside the mathematical source accounts.
+The diagonal Koszul test and sequential perfect approximation in A.5 give independent reader routes. The native countable construction and second quasi-coherator argument remain as optional alternatives with their own prerequisites; they are not extra assumptions of the selected routes. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) follows from localized Yoneda modules under the ordinary derived-functor existence hypothesis. The nonflat proper-support consumer uses the Fitting construction of A.2 and A.6 in place of the source annihilator-base-change assertion. Likewise A.8 proves the proper formal curve consumer rather than the false unrestricted nonproper formulation. These differences in hypotheses remain visible alongside the mathematical source accounts.
 
 #### A.12.1 Henselian limits and compatible finite complexes
 
@@ -8833,7 +8833,315 @@ $$Lg^*Rf_*E\ \xrightarrow{\ \sim\ }\ Rf'_*Lg'^*E.\tag{PFPC1}$$
 
 **Proof.** In the [pseudo-coherent tensor direct-image theorem](#native-perfect-lemma-base-change-tensor-pseudo-coherent), take the coefficient complex to be $\mathcal O_X$ in degree zero. Its sole term is finitely presented as an $\mathcal O_X$-module and flat over $S$; its support is proper over $S$. The theorem gives pseudo-coherence and its canonical base-change map becomes (PFPC1), since the ordinary pullback of this coefficient is $\mathcal O_{X'}$. $\square$
 
-**The more general assertion credited to Kiehl.** The source also states that, for a proper $f:X\to S$, a complex $E$ that is [pseudo-coherent relative to $S$](#context-more-morphisms-definition-relative-pseudo-coherence) has pseudo-coherent direct image $Rf_*E$. Arbitrary base change is not part of that general assertion and need not hold. This is the result cited in the source under *Kiehl*. It is retained here as a cited theorem; the proof just given establishes the flat, finitely presented case and does not prove the full relative statement. A proof of that more general statement remains to be supplied in this treatment.
+**The general relative assertion of Kiehl.** For a proper $f:X\to S$, a complex $E$ that is [pseudo-coherent relative to $S$](#context-more-morphisms-definition-relative-pseudo-coherence) has pseudo-coherent direct image $Rf_*E$. Arbitrary base change is not part of that general assertion and need not hold.
+
+**Proof of the general assertion.**
+
+**Proper relative pseudo-coherent direct image by finite derived descent**
+
+**Target.**
+For every proper morphism of schemes $f:X\to S$ and every complex
+$M$ pseudo-coherent relative to $S$, the object $Rf_*M$ is pseudo-coherent
+on $S$. Neither flatness nor finite presentation of $f$ is assumed.
+This does not assert arbitrary classical base change for $Rf_*M$.
+
+**Conventions.**
+All complexes are cohomological. An animated ring is a simplicial
+commutative ring considered up to weak equivalence. Its module category
+is the stable infinity-category of derived modules; its homotopy
+category has the usual cohomological $t$-structure. Connective means
+$H^i=0$ for $i>0$. Derived tensor is right $t$-exact in this convention.
+Finite free cell modules are obtained from finitely many shifts of
+the ring by finitely many cone attachments. Pseudo-coherence means
+existence, at every integer cutoff $q$, of a finite free cell map
+which is an isomorphism above $q$ and surjective at $q$.
+On a derived affine this is equivalent to the usual finite-projective
+definition: choose finite free generators at the highest degree and
+repeat on cones to any prescribed cutoff.
+
+For derived schemes, modules are Zariski descent data for these affine
+module categories. Cohomology bounds, pseudo-coherence and truncations
+are local. Finite open-cover descent is a homotopy limit; ordinary
+descent data in homotopy categories alone are not substituted for it.
+
+We use the [proper coherent-image theorem](#a-12-3-proper-coherent-cohomology-for-algebraic-spaces),
+[closed finite-presentation envelopes for proper schemes](#uncovered-limits-lemma-proper-limit-of-proper-finite-presentation), [Noetherian approximation for finitely presented proper schemes](#uncovered-spaces-limits-lemma-proper-limit-of-proper-finite-presentation-noetherian), and [independence of the polynomial presentation in relative pseudo-coherence](#uncovered-more-morphisms-lemma-relative-pseudo-coherence-characterize). The
+derived comparison and finite-range descent steps are established below.
+
+**1. Two elementary approximation facts.**
+If $N$ is an $A$-module and $q\in\mathbf Z$, then $q$-pseudo-coherence
+depends only on $\tau^{\geq q}N$. One implication is immediate by
+composition with truncation. For the converse take a finite free cell
+approximation to $\tau^{\geq q}N$ at cutoff $q$. It can be chosen with
+generators only in degrees $\geq q$: construct it downward from a
+common upper cohomological bound and stop upon obtaining surjectivity
+in degree $q$. Maps from such a module to a module in
+$D^{\leq q-2}(A)$ vanish. Applying this to
+$(\tau^{<q}N)[1]$ lifts the approximation through
+$N\to\tau^{\geq q}N$. The lifted map has the required cohomology.
+This argument applies to every connective animated ring; a free cell
+of generator degree $p$ maps to $H^p$ of the target.
+
+Also, if $N$ is pseudo-coherent, then for each integer $r$ there is a
+finite free cell $P$ with
+$$
+       \tau^{\geq r}P\simeq\tau^{\geq r}N.                         \tag{KDC1}
+$$
+Choose an approximation at cutoff $r-1$. It is an isomorphism in every
+degree at least $r$. The generators of $P$ may all be chosen at or
+below a fixed upper bound $b$ for $N$.
+
+**2. Restriction along a pseudo-coherent animated algebra.**
+Suppose $P\to B$ is a map of connective animated rings and $B$ is
+pseudo-coherent as a $P$-module. If a $B$-module $N$, on restricting
+scalars, is pseudo-coherent over $P$, then it is pseudo-coherent over
+$B$.
+
+Indeed $N$ is bounded above. At its highest nonzero degree $b$,
+$H^b(N)$ is finitely generated over $\pi_0(P)$: a finite approximation
+at this highest degree gives finite generators. The same generators
+generate it over $\pi_0(B)$. They give a map of finite free shifted
+$B$-modules to $N$, surjective on $H^b$. The cone is bounded above
+by $b-1$ and remains pseudo-coherent over $P$, since the underlying
+$P$-modules of the finitely many $B$-cells are pseudo-coherent.
+Repeat on the cone. At any specified cutoff there are only finitely
+many repetitions. Splicing these triangles gives a finite free cell
+$B$-approximation to $N$ at that cutoff. The zero module and an empty
+highest range use the zero approximation.
+
+**3. Finite open covers and derived base change.**
+Let $Y_0$ be a quasi-compact separated scheme over $\operatorname{Spec}A_0$.
+Choose a finite affine open cover $U_1,\ldots,U_n$. Every nonempty
+intersection $U_I$ is affine, because $Y_0$ is separated over the
+affine base. Empty intersections contribute zero. For an $A_0$-algebra
+$A$, put $Y_A=Y_0\times^{\mathbf R}_{A_0}\operatorname{Spec}A$ and
+write $B_{I,A}=\Gamma(U_I,\mathcal O_{Y_0})\otimes^{\mathbf L}_{A_0}A$.
+The cover and all its intersections base change to derived affines.
+
+The derived section complex of a quasi-coherent module is the finite
+alternating Cech totalization
+$$
+ R\Gamma(Y_A,N)\simeq
+ \operatorname{Tot}\left[
+ \bigoplus_{|I|=1}N(U_{I,A})\longrightarrow\cdots\longrightarrow
+ \bigoplus_{|I|=n}N(U_{I,A})\right].                                \tag{KDC2}
+$$
+This follows by successive two-open Mayer--Vietoris squares; the
+augmented Cech resolution is stalkwise contracted by any index of an
+open containing the point. The same construction works for module
+complexes, since there are only finitely many Cech degrees. It neither
+uses an infinite totalization nor interchanges two infinite products.
+
+It follows that, with $d=n-1$, uniformly in $A$,
+$$
+ N\in D^{\leq a}(Y_A)\quad\Longrightarrow\quad
+ R\Gamma(Y_A,N)\in D^{\leq a+d}(A).                                \tag{KDC3}
+$$
+For every $A\to A'$ and every $N\in D_{\rm QCoh}(Y_A)$,
+$$
+ R\Gamma(Y_A,N)\otimes_A^{\mathbf L}A'
+ \simeq R\Gamma(Y_{A'},L p^*N).                                   \tag{KDC4}
+$$
+On each affine intersection this is the definition of derived module
+pullback. Derived tensor commutes with the finite sums and finite
+fibres in (KDC2), because it is exact. These maps commute with the
+restriction maps, proving the natural comparison (KDC4).
+
+**4. Finite-range descent lemma.**
+Let $A=\mathop{\rm colim}_{\lambda}A_\lambda$ be a filtered colimit of
+ordinary $A_0$-algebras and keep the finite cover above. If $N$ is
+pseudo-coherent on $Y_A$, then for every integer $r$ there are an
+index $\lambda$ and a module $N_\lambda$ on $Y_{A_\lambda}$ such that
+$$
+ \tau^{\geq r}L p_\lambda^*N_\lambda
+       \simeq\tau^{\geq r}N.                                    \tag{KDC5}
+$$
+If $A_0$ and all $A_\lambda$ are Noetherian and $Y_0$ is of finite
+type over $A_0$, $N_\lambda$ can be chosen bounded with coherent
+cohomology on the underlying classical scheme of $Y_{A_\lambda}$.
+It is then pseudo-coherent on that derived scheme.
+
+Here is the descent argument, including the morphisms and coherences.
+Quasi-compactness gives one upper cohomological bound $b$ for $N$.
+On each intersection $U_{I,A}$ choose (KDC1), with cell generators
+of degrees at most $b$. Finite free cell modules over a filtered
+colimit of animated rings descend to a finite stage: descend a free
+cell, and then each attaching map, successively. Maps out of a free
+cell are homotopy groups of the target; homotopy groups commute with
+filtered colimits. For finitely many cones the same assertion follows
+by their finite fibre sequences. Thus maps out of a finite cell,
+including all their homotopies, commute with these colimits.
+
+We need this assertion also after truncating the source and target
+in degree $r$. For finite cells $P,Q$ there is an equivalence of
+mapping spaces
+$$
+ \operatorname{Map}(\tau^{\geq r}P,\tau^{\geq r}Q)
+       \simeq\operatorname{Map}(P,\tau^{\geq r}Q).                 \tag{KDC6}
+$$
+Indeed maps from $\tau^{<r}P$ to $\tau^{\geq r}Q$, and their higher
+homotopies, vanish by the $t$-structure. Truncated pullback is
+$T_r(N)=\tau^{\geq r}L p^*N$. It is compatible with composition:
+the part discarded in degrees below $r$ remains below $r$ on derived
+pullback. Filtered colimits commute with $\tau^{\geq r}$, since they
+are exact on module complexes. Together with (KDC6) and finite-cell
+compactness, this proves that all mapping spaces between the
+truncated cell models are filtered colimits of the corresponding
+mapping spaces at finite stages.
+
+For clarity, the category in which this last colimit is taken is the
+category of modules truncated below $r$, with transition functors
+$T_r$; ordinary pullback without the final truncation is not being
+silently substituted. On open restrictions, which are flat,
+truncation commutes with pullback.
+
+Zariski module descent for our cover is the homotopy limit over the
+finite poset of nonempty subsets $I\subset\{1,\ldots,n\}$, with the
+restriction functors to intersections. This finite diagram follows
+also by iterating the two-open descent square. Filtered colimits of
+small infinity-categories commute with finite homotopy limits. One
+can check this categorical fact in the complete Segal-space model:
+the nerve in simplicial degree $m$ is the space of functors from the
+finite simplex $\Delta^m$ and equivalences between them. These nerves
+preserve limits and filtered colimits, and filtered colimits of
+spaces commute with finite limits. Thus the comparison is an
+equivalence in every simplicial degree. This is also the proof of
+Lemma 2.4.5 in J. Lurie's [*Derived Algebraic Geometry XII*](https://www.math.ias.edu/~lurie/papers/DAG-XII.pdf),
+8 November 2011.
+
+Apply this fact to the finite diagram of the full local categories
+of modules of the form $\tau^{\geq r}P$, with $P$ a finite free cell
+with generator degrees at most $b$. The affine finite-cell and
+mapping-space arguments above identify its filtered colimit with
+the corresponding diagram over $A$. Its descent object therefore
+comes from one finite stage. Equivalently, the local models,
+overlap equivalences, inverse equivalences and coherent identifications
+all descend together. Their homotopy-coherent compatibilities, not
+only their homotopy classes, are included. The resulting descent
+object is $N_\lambda$, and its truncated pullback is the original
+truncated descent object. This proves (KDC5).
+
+For the last claim, the local objects at this stage are
+$\tau^{\geq r}P_{I,\lambda}$ for finite free cell modules, bounded
+above by $b$. The animated rings $B_{I,A_\lambda}$ are Noetherian in
+the derived sense: their $\pi_0$ are Noetherian and their higher
+homotopy modules are finite over $\pi_0$. To check this without a
+flatness assumption, choose a finite polynomial presentation
+$A_0[t]\twoheadrightarrow B_{I,0}$. The Noetherian polynomial ring
+has a bounded-above resolution of $B_{I,0}$ by finite free modules.
+It is a flat $A_0$-resolution, so tensoring with $A_\lambda$ computes
+$B_{I,A_\lambda}$. Its cohomology is finite over the Noetherian ring
+$A_\lambda[t]$, hence over $\pi_0(B_{I,A_\lambda})$.
+Finite cells and then their truncations have coherent cohomology over
+these rings. The descended object is bounded in $[r,b]$ and coherent
+locally, hence globally. Over a Noetherian animated ring a bounded
+coherent module is pseudo-coherent: successively choose finite
+generators of its top cohomology and repeat on the cone; kernels of
+maps of finite modules stay finite. This completes the proof of the
+finite-range descent lemma.
+
+**5. Proper Noetherian derived base changes.**
+Suppose now that $Y_0\to\operatorname{Spec}A_0$ is proper with $A_0$
+Noetherian. Write $A$ as the filtered union of its finite type
+$A_0$-subalgebras $A_\lambda$ (the image of $A_0$ is allowed).
+Each $A_\lambda$ is Noetherian. We prove that for every
+pseudo-coherent $N$ on $Y_A$,
+$$
+                       R\Gamma(Y_A,N)\text{ is pseudo-coherent over }A.
+                                                                         \tag{KDC7}
+$$
+Choose $d$ as in (KDC3). Fix an arbitrary target cutoff $q$ and apply
+the finite-range lemma with $r=q-d$. The resulting bounded coherent
+$N_\lambda$ has pseudo-coherent sections over $A_\lambda$. Indeed its
+finite Postnikov tower has layers given by coherent modules on the
+classical proper scheme $Y_0\times_{A_0}\operatorname{Spec}A_\lambda$.
+The classical proper coherent-image theorem makes the cohomology of
+each layer's sections finite over $A_\lambda$; (KDC3) bounds the upper
+degree. The tower is finite, so $R\Gamma(Y_{A_\lambda},N_\lambda)$
+is bounded with finite cohomology over a Noetherian ring, hence
+pseudo-coherent. Consequently its derived tensor with $A$ is
+pseudo-coherent over $A$.
+
+The fibre of $N\to\tau^{\geq r}N$ is in $D^{\leq r-1}$. By
+(KDC3), its sections are in $D^{\leq r-1+d}=D^{\leq q-1}$.
+The same applies to $L p_\lambda^*N_\lambda$. Thus (KDC5) and
+(KDC4) give
+$$
+ \tau^{\geq q}R\Gamma(Y_A,N)
+ \simeq\tau^{\geq q}R\Gamma(Y_A,Lp_\lambda^*N_\lambda)
+ \simeq\tau^{\geq q}
+   \bigl(R\Gamma(Y_{A_\lambda},N_\lambda)\otimes_{A_\lambda}^{\mathbf L}A\bigr).
+                                                                         \tag{KDC8}
+$$
+The approximation fact in paragraph 1 makes $R\Gamma(Y_A,N)$
+$q$-pseudo-coherent. Since $q$ was arbitrary, (KDC7) follows.
+
+**6. From relative pseudo-coherence to the derived model.**
+Let $Y\to\operatorname{Spec}A$ be proper and finitely presented.
+Choose a proper finite type model $Y_0$ over a Noetherian finite type
+$\mathbf Z$-subalgebra $A_0\subset A$, with
+$Y=Y_0\times_{A_0}\operatorname{Spec}A$. Put
+$\widetilde Y=Y_0\times^{\mathbf R}_{A_0}\operatorname{Spec}A$ and
+let $i:Y\to\widetilde Y$ be its classical truncation.
+If $M$ is pseudo-coherent relative to $A$ on $Y$, then $i_*M$ is
+pseudo-coherent on $\widetilde Y$.
+
+This is local, so take an affine chart
+$B=B_0\otimes_{A_0}^{\mathbf L}A$ of $\widetilde Y$.
+Choose $P_0=A_0[t_1,\ldots,t_s]\twoheadrightarrow B_0$.
+Its finite free Noetherian resolution shows, after derived base
+change, that $B$ is pseudo-coherent as a module over
+$P=A[t_1,\ldots,t_s]$; these are ordinary polynomial rings.
+Moreover $P\to\pi_0(B)$ is surjective. By independence of polynomial
+presentations in relative pseudo-coherence, the module $M$ restricted
+to this chart is pseudo-coherent as a $P$-module. Paragraph 2 makes
+it pseudo-coherent as a $B$-module. This proves the assertion.
+
+The direct image along $i$ retains the underlying module complexes,
+so global sections agree:
+$$
+              R\Gamma(Y,M)=R\Gamma(\widetilde Y,i_*M).             \tag{KDC9}
+$$
+Paragraph 5 makes (KDC9) pseudo-coherent over $A$.
+This proves the theorem for proper finitely presented $Y$ without
+requiring flatness or discarding any negative Tor groups.
+
+**7. Removing finite presentation and localizing the base.**
+Finally take any proper $f:X\to S$ and relatively pseudo-coherent
+$M$. The conclusion is local on $S$, so work over
+$\operatorname{Spec}A\subset S$. Proper finite-presentation
+approximation gives a closed immersion $j:X\hookrightarrow Y$
+over $A$, with $Y\to\operatorname{Spec}A$ proper and finitely
+presented. The existing approximation proof uses a separated finite
+presentation envelope, finite type ideal approximations and eventual
+properness; it does not assume $X$ is finitely presented.
+
+Closed direct image is exact on quasi-coherent modules, and
+$j_*M$ remains pseudo-coherent relative to $A$. On affine charts this
+is the same underlying module for a finite type quotient
+$B\twoheadrightarrow C$: a polynomial algebra surjecting onto $B$
+also surjects onto $C$, so the two relative tests are identical by
+independence of presentations. Apply paragraph 6 to $j_*M$. Since
+$$
+                 Rf_*M=R(Y\to\operatorname{Spec}A)_*j_*M,
+$$
+the required direct image is pseudo-coherent over $A$. Such affine
+base opens cover $S$, proving the stated theorem. The empty source
+gives zero throughout.$\square$
+
+**Source correspondence.**
+The general assertion follows the flat case in [The Stacks Project, Section 36.30](https://stacks.math.columbia.edu/tag/0A1G),
+`perfect.tex:lemma-flat-proper-pseudo-coherent-direct-image-general`.
+The derived-base-change strategy is related to J. Hall and O. Li,
+*Finiteness theorems for pseudo-coherent complexes on algebraic
+stacks*, [arXiv:2609.24420v1](https://arxiv.org/html/2609.24420v1), Theorem 5.3 and Section 6. The argument
+here specializes to separated schemes and supplies a finite-open-cover
+descent construction in paragraph 4. The truncated pullback functors retain all the finite-range descent
+data needed for the cohomological comparison.
+
+![Derived base change, finite Čech cohomological bounds and finite-range descent](../figures/derived-cech-proper-image.png)
+
+*The derived square retains Tor groups. The bound $d=n-1$ in (KDC3) turns descent above $r=q-d$ into the comparison above $q$ in (KDC8). Here $Y_\lambda=Y_{A_\lambda}$ and $p:Y_A\to Y_\lambda$. The editable vector diagram is [derived-cech-proper-image.svg](../figures/derived-cech-proper-image.svg).*
 
 #### Lemma. The module category modelling projective space
 
@@ -15944,15 +16252,15 @@ since the components below $j$ cancel. Thus $r\delta=1_D$. The sequence splits i
 
 The source omits the minus sign in (PST3). With that sign omitted, the composite with $\delta$ is $-1_D$, not $1_D$. The corrected formula proves the original admissibility statement; no splitting compatible with the differentials is required. $\square$
 
-#### Lemma. The general derived-Hom lift and its remaining proof obligation
+#### Lemma. The general derived-Hom lift
 
-Let $\mathcal A$ be an abelian category, fix a complex $K$, and put $E=\operatorname{Hom}_{\mathrm{dg},\mathcal A}(K,K)$. The assertion retained from the source is the following: if the ordinary right derived functor of
+Let $\mathcal A$ be an abelian category, fix a complex $K$, and put $E=\operatorname{Hom}_{\mathrm{dg},\mathcal A}(K,K)$. If the ordinary right derived functor of
 $$\operatorname{Hom}_{\mathrm{dg},\mathcal A}(K,-):K(\mathcal A)\longrightarrow D(\mathbf Z)$$
 exists on every object of $D(\mathcal A)$, then it has a canonical exact lift
 $$R\operatorname{Hom}_{\mathcal A}(K,-):D(\mathcal A)\longrightarrow D(E)\tag{GHL1}$$
 whose underlying complex is the ordinary derived Hom.
 
-**Proof status.** The assertion under precisely this hypothesis remains unproved in this treatment. The source's cone calculation is valid; the passage from an essentially constant diagram in $D(\mathbf Z)$ to one in $D(E)$ still requires justification. Here is the calculation and the exact missing step, preserving the original scope.
+**Proof.** The cone calculation gives exactness. An essentially constant diagram in $D(\mathbf Z)$ need not be essentially constant in $D(E)$. The lift can be constructed by localizing Yoneda DG modules.
 
 The [DG Hom functor of a fixed object](#native-dga-lemma-construction) sends a complex $Y$ to $F(Y)=\operatorname{Hom}_{\mathrm{dg},\mathcal A}(K,Y)$ with right action by precomposition. For a map $u:Y\to Z$, the cone has underlying graded object $Z\oplus Y[1]$. Therefore
 $$F(C(u))\cong C(F(u)).\tag{GHL2}$$
@@ -15963,15 +16271,339 @@ This proves (GHL2) as an isomorphism of DG $E$-modules. The shift comparison and
 
 For $X\in K(\mathcal A)$, consider its filtered localization diagram
 $$ (s:X\xrightarrow{\sim}Y)\longmapsto F(Y).\tag{GHL3}$$
-Here arrows are quasi-isomorphisms in the homotopy category. The hypothesis on ordinary derived Hom says that (GHL3), after forgetting to $D(\mathbf Z)$, is essentially constant as an ind-object. To finish the source's argument, one must show that it is essentially constant in $D(E)$ itself, and then apply the construction of right derived functors there.
+Here arrows are quasi-isomorphisms in the homotopy category. The hypothesis on ordinary derived Hom says that (GHL3), after forgetting to $D(\mathbf Z)$, is essentially constant as an ind-object. Essential constancy in $D(E)$ itself requires additional information. The localized Yoneda construction below retains the action directly.
 
 Concretely, essential constancy asks for an object $J$ with a compatible cocone $F(Y)\to J$, a map $J\to F(Y_0)$ splitting the cocone map at some index, and eventual factorization of every transition through these maps. These are morphisms and identities in the category in question. The forgetful functor detects isomorphisms because it detects cohomology isomorphisms. That fact alone does not construct the required $E$-linear cocone, splitting and factorization data.
 
 In particular, essential constancy must not be replaced by eventual invertibility of transition maps. The system $\mathbf Z^2\to\mathbf Z^2\to\cdots$ with transition $(a,b)\mapsto(a+b,0)$ is essentially constant with value $\mathbf Z$, yet every transition has a kernel. The retract is given by $(a,b)\mapsto a+b$ and $z\mapsto(z,0)$. Thus an argument that only reflects isomorphisms of transitions would not address the stated definition.
 
-When every complex of $\mathcal A$ admits a K-injective representative, the lift does have a direct construction: choose $X\to I$ and use $F(I)$. Derived maps between such representatives are homotopy classes; $F$ respects homotopies and homotopy equivalences. Cones and shifts of K-injectives remain K-injective, so (GHL2) proves exactness. The same representatives compute ordinary derived Hom after forgetting. This includes the ringed-site case used in the [sheaf tensor-Hom adjunction](#native-dga-lemma-tensor-with-complex-hom-adjoint). It is an additional sufficient hypothesis, not a replacement for (GHL1).
+When every complex of $\mathcal A$ admits a K-injective representative, the lift does have a direct construction: choose $X\to I$ and use $F(I)$. Derived maps between such representatives are homotopy classes; $F$ respects homotopies and homotopy equivalences. Cones and shifts of K-injectives remain K-injective, so (GHL2) proves exactness. The same representatives compute ordinary derived Hom after forgetting. This includes the ringed-site case used in the [sheaf tensor-Hom adjunction](#native-dga-lemma-tensor-with-complex-hom-adjoint). The construction below establishes (GHL1) under the stated existence hypothesis alone.
 
-The remaining obligation is to prove (GHL1) from existence of ordinary derived Hom alone, by justifying the lift of (GHL3) or another complete argument. No counterexample to (GHL1) is asserted. The source assertion and its final inference are also recorded in [The Stacks Project, Tag 09LK](https://stacks.math.columbia.edu/tag/09LK).
+**A derived-Hom lift from localized DG Yoneda modules**
+
+**Statement and conventions.**
+Let $\mathcal A$ be an abelian category, $\mathcal C=\operatorname{Comp}_{\rm dg}(\mathcal A)$,
+$K\in\mathcal C$, and $E=\mathcal C(K,K)$. Complexes are cohomologically graded,
+$M[s]^j=M^{j+s}$ with differential $(-1)^s d_M$, and DG modules are right
+modules. Suppose the Deligne right derived functor of
+$$
+ F=\mathcal C(K,-):K(\mathcal A)\longrightarrow D(\mathbf Z)
+$$
+exists everywhere. There is a canonical exact functor
+$$
+ G_K:D(\mathcal A)\longrightarrow D(E)
+$$
+together with a natural comparison $F\to U G_Kq$, whose associated map
+$RF\to UG_K$ is an isomorphism. Here $q:K(\mathcal A)\to D(\mathcal A)$
+is localization and $U$ forgets the $E$-action. No existence of K-injective
+complexes in $\mathcal A$ is assumed.
+
+We first work in an ambient universe in which the DG categories under
+consideration are small. The final paragraph explains descent to the
+original universe for the scalar DG modules. The construction never
+requires coproducts in $\mathcal A$.
+
+**DG modules over a DG category.**
+A right DG $\mathcal C$-module $M$ has complexes $M(T)$ and associative
+unital composition actions $M(T)\otimes\mathcal C(S,T)\to M(S)$.
+Let $h_X=\mathcal C(-,X)$. The enriched Yoneda identities give
+$$
+ \operatorname{Hom}_{\rm dg}(h_T,M)=M(T),\qquad
+ \operatorname{Hom}_{D(\mathcal C)}(h_T,M[n])=H^n(M(T)).                 \tag{LDY1}
+$$
+The second identity follows directly from the first: $h_T$ is
+K-projective, since evaluation at $T$ takes an objectwise acyclic module
+to an acyclic complex. A quasi-isomorphism of DG modules means an
+objectwise quasi-isomorphism. Kernels, sums and filtered colimits are
+formed objectwise, and filtered colimits are exact.
+
+Here are the resolution facts needed below, with their constructions.
+Every module $M$ admits a semifree resolution $P\to M$ whose cells are
+shifts of representables and whose filtration is indexed by the
+nonnegative integers. Start with one closed free generator at $T$ for
+each cycle of each $M(T)$. This maps onto cohomology. At the next stage,
+for every cycle $z\in P_i(T)$ whose image is a boundary $dm\in M(T)$,
+adjoin a generator $e$ at $T$ of degree $|z|-1$, with $de=z$ and image
+$m$. Use all pairs $(z,m)$; this makes no selection of primitives.
+Repeat and take the union. Cohomology surjectivity is retained because
+only classes mapping to zero are killed. Every kernel class is
+represented at a finite stage and is killed at the next stage. Thus
+$P\to M$ is a quasi-isomorphism.
+
+Such a module is K-projective. If $Z$ is objectwise acyclic and a
+homogeneous closed map $P\to Z$ is given, construct a nullhomotopy on
+the generators in filtration order. At each new generator the required
+value has differential a known cycle in $Z(T)$; the cycle condition
+follows from the already satisfied homotopy equation on its
+differential. A primitive exists because $Z(T)$ is acyclic. This works
+in every absolute degree and yields acyclicity of
+$\operatorname{Hom}_{\rm dg}(P,Z)$. In particular these resolutions
+compute morphisms in the derived category. They also show that a
+semifree module belongs to the triangulated subcategory generated by
+its cells and closed under coproducts: its filtration union is the
+mapping telescope of its finite stages.
+
+**Removing acyclic representables.**
+Let $\mathcal N\subset\mathcal C$ be the full DG subcategory of acyclic
+complexes. Restriction of DG modules is exact. For a semifree
+$\mathcal N$-module $P$, induction $\operatorname{Ind}P$ is obtained by
+replacing every cell $\mathcal N(-,N)[s]$ by $h_N[s]$, retaining its
+attaching maps. Equivalently it is the usual tensor induction; the
+cell description suffices here. Fullness of $\mathcal N\subset\mathcal C$
+gives an actual identification
+$$
+ \operatorname{Res}\operatorname{Ind}P=P.                            \tag{LDY2}
+$$
+The DG adjunction
+$$
+ \operatorname{Hom}_{\rm dg,\mathcal C}(\operatorname{Ind}P,Z)
+ =\operatorname{Hom}_{\rm dg,\mathcal N}(P,\operatorname{Res}Z)        \tag{LDY3}
+$$
+is checked on free cells and then on their attaching maps. Since both
+$P$ and $\operatorname{Ind}P$ are K-projective, it also computes the
+derived adjunction.
+
+For any $M\in D(\mathcal C)$, resolve $\operatorname{Res}M$ by such a
+$P_M$ and use the adjunction to form the triangle
+$$
+ B_M=\operatorname{Ind}P_M\longrightarrow M
+       \xrightarrow{\eta_M}L M\longrightarrow B_M[1].              \tag{LDY4}
+$$
+Restriction of its first arrow is a quasi-isomorphism by (LDY2), so
+$\operatorname{Res}(LM)$ is acyclic. Call such modules local. For every
+local $Z$, (LDY3) gives
+$$
+ \operatorname{Hom}_{D(\mathcal C)}(B_M,Z[n])=0
+ \quad\hbox{for every }n\in\mathbf Z.
+$$
+Consequently (LDY4) induces isomorphisms
+$$
+ \operatorname{Hom}_{D(\mathcal C)}(LM,Z)
+       \xrightarrow{\sim}\operatorname{Hom}_{D(\mathcal C)}(M,Z).   \tag{LDY5}
+$$
+Thus $\eta_M$ is universal for maps from $M$ to local modules. It makes
+$L$ a functor, independent up to the unique isomorphism respecting its
+unit of all resolution choices. The local subcategory is closed under
+shifts and cones. Taking the cone of a map between two localizations
+and applying (LDY5), or its long exact Hom sequence, proves that $L$ is
+exact. This also proves the compatibility of the unit with shifts.
+
+Let $\mathcal S$ be the localizing subcategory of $D(\mathcal C)$
+generated by all $h_N$, $N\in\mathcal N$. A local object is right
+orthogonal in every degree to $\mathcal S$. In fact (LDY1) first proves
+this for its generators, and the property extends across triangles,
+coproducts in the first variable, and telescopes. By the semifree
+filtration, $B_M\in\mathcal S$. For $M\in\mathcal S$, (LDY5) applied to
+$Z=LM$ says that the identity of $LM$ corresponds to zero, so $LM=0$.
+Conversely (LDY4) shows that $LM=0$ implies $M\in\mathcal S$. In
+particular $Lh_N=0$ for every acyclic complex $N$.
+
+**The finite-cell factorization.**
+Every map from a representable $h_T$ to $B_M[n]$ factors through a
+finite-cell submodule of $B_M[n]$. Indeed, $h_T$ is K-projective, so
+the map is represented by a closed element of $B_M(T)^n$ using (LDY1).
+Its expression involves finitely many graded free cells. The
+differential of each selected generator involves finitely many cells
+in strictly earlier filtration layers. Close the selection under these
+dependencies. The largest selected layer is a finite integer, so this
+downward procedure selects only finitely many cells and defines a DG
+submodule. The chosen cycle remains a cycle there, and hence gives
+the asserted factorization. The same argument applies to any shift.
+
+Every finite-cell submodule so obtained is represented by an acyclic
+complex of $\mathcal A$. To see this, order its cells by filtration
+layer. Starting with zero, its successive extensions adjoin one shifted
+$h_N$ with $N$ acyclic. If the earlier module is $h_T$, a generator of
+degree $p$ has differential a closed element
+$z\in h_T(N)^{p+1}=\mathcal C(N,T)^{p+1}$. This is a chain map
+$N[-p-1]\to T$, and the new module is the Yoneda module of its cone
+(with the conventional cone sign). Both $N[-p-1]$ and $T$ are acyclic,
+so its cone is acyclic. Finite direct sums and zero cause no exception.
+This proof takes finite cones only in $\mathcal A$; all infinite sums
+have remained in DG module categories.
+
+**Comparison with Verdier localization.**
+Yoneda is exact from $K(\mathcal A)$ to $D(\mathcal C)$, by its
+identifications with shifts and cones. Its composite with $L$ kills
+acyclic complexes and therefore factors as an exact functor
+$$
+ J:D(\mathcal A)\longrightarrow D(\mathcal C)_{\rm local},
+       \qquad J(X)=Lh_X.                                          \tag{LDY6}
+$$
+We prove that it is fully faithful. By (LDY5), it suffices to prove
+$$
+ \operatorname{Hom}_{D(\mathcal A)}(T,X[n])
+       \xrightarrow{\sim}
+ \operatorname{Hom}_{D(\mathcal C)}(h_T,Lh_X[n]).                    \tag{LDY7}
+$$
+For surjectivity let $v:h_T\to Lh_X[n]$. Its boundary in (LDY4) is a
+map $h_T\to B_{h_X}[n+1]$. The finite-cell factorization writes this
+map through $h_N[n+1]$ for an acyclic complex $N$. The first map
+corresponds by Yoneda to $T\to N[n+1]$. Complete this to a triangle
+$T'\xrightarrow{s}T\to N[n+1]\to T'[1]$ in $K(\mathcal A)$.
+Then $s$ is a quasi-isomorphism. The boundary of $v h_s$ is zero, so
+the exact Hom sequence of (LDY4) lifts it to a map $h_{T'}\to h_X[n]$.
+By (LDY1) this is a homotopy class $f:T'\to X[n]$. Its roof
+$T\xleftarrow{s}T'\xrightarrow{f}X[n]$ maps to $v$, proving
+surjectivity.
+
+For injectivity write a derived morphism as such a roof. If its image
+in the right side of (LDY7) is zero, then the composite
+$h_{T'}\xrightarrow{h_f}h_X[n]\to Lh_X[n]$ is zero. The triangle
+(LDY4) makes $h_f$ factor through $B_{h_X}[n]$. Apply the finite-cell
+factorization again: $f$ factors in $K(\mathcal A)$ through an acyclic
+complex. Its image in $D(\mathcal A)$ is zero. The original roof is
+zero as well. This proves (LDY7), with its stated naturality because
+each map used is induced by Yoneda and the unit of localization.
+
+**Keeping the action.**
+Evaluation at $K$ is an exact functor of DG module categories
+$$
+ \operatorname{ev}_K:D(\mathcal C)\longrightarrow D(E),
+       \quad M\longmapsto M(K).
+$$
+The right action is $m\cdot e=M(e)m$, namely precomposition for a
+representable. The DG composition identity gives
+$d(me)=dm\,e+(-1)^{|m|}m\,de$; no opposite algebra is substituted for
+$E$. Evaluation preserves cones and objectwise quasi-isomorphisms.
+Set $G_K=\operatorname{ev}_K J$. This is exact. Evaluating $\eta_{h_X}$
+gives a natural $E$-linear map
+$$
+ \mathcal C(K,X)\longrightarrow (Lh_X)(K).                         \tag{LDY8}
+$$
+Forgetting $E$ and applying (LDY1), (LDY5), and (LDY7) gives, for every $n$,
+$$
+ H^n(UG_KX)=H^n((Lh_X)(K))
+       =\operatorname{Hom}_{D(\mathcal A)}(K,X[n]).                 \tag{LDY9}
+$$
+
+**Identifying the given right derived functor.**
+For $X\in K(\mathcal A)$ let $I_X$ be the filtered localization
+category of quasi-isomorphisms $s:X\to Y$, with arrows in the homotopy
+category. By hypothesis the ind-diagram $F(Y)$ is essentially constant
+with value $RF(X)$. Since $G_K(s)$ is invertible, the maps
+$$
+ F(Y)\xrightarrow{(LDY8)}UG_K(Y)\xrightarrow{UG_K(s)^{-1}}UG_K(X)
+$$
+give a compatible cocone. Essential constancy therefore gives its
+unique associated map $RF(X)\to UG_K(X)$. The construction is natural
+in $X$ by the calculus of fractions, equivalently by the universal
+property of the Deligne right derived functor.
+
+Taking cohomology of the essentially constant diagram identifies
+$$
+ H^n(RF(X))
+ =\mathop{\rm colim}_{(X\to Y)\in I_X}
+       \operatorname{Hom}_{K(\mathcal A)}(K,Y[n])
+ =\operatorname{Hom}_{D(\mathcal A)}(K,X[n]).                        \tag{LDY10}
+$$
+The second equality is precisely the right-fraction description of
+the Verdier localization. Under (LDY9) and (LDY10) the comparison on
+cohomology sends a roof to the same roof, so it is the identity. It
+is an isomorphism in every degree and hence an isomorphism in
+$D(\mathbf Z)$. This proves the required lift under the original
+existence hypothesis. It does not assert essential constancy of an
+arbitrary ind-diagram merely from conservativity of a forgetful
+functor.
+
+**Size descent.**
+If the preceding construction uses a larger ambient universe than the
+one defining $E$ and scalar DG modules, (LDY9)--(LDY10) show that every
+cohomology group of $(Lh_X)(K)$ is small in the original universe.
+Any DG $E$-module $M$ with that property is quasi-isomorphic to a
+small DG submodule: choose a small set of cycles representing all
+cohomology classes and take their DG $E$-span. For each cycle in that
+small submodule which is a boundary in $M$, adjoin one primitive in
+$M$ and take the DG $E$-span again. Iterate countably. The union is
+small, surjects on cohomology by the first step, and injects by the
+later steps. The inclusion is a quasi-isomorphism.
+
+Moreover, enlarging the universe is fully faithful on the derived
+category of small DG $E$-modules: a small semifree resolution of a
+small source remains K-projective among larger modules, by the same
+generator-by-generator homotopy construction. Its Hom complex into a
+small target is unchanged. Thus the full subcategory of larger
+$D(E)$ consisting of objects with small cohomology is canonically
+equivalent to the original $D(E)$. The functor, its maps, and (LDY8)
+descend through this equivalence. This introduces neither an injective
+resolution assumption nor an infinite-sum assumption on $\mathcal A$.
+$\square$
+
+**Scholarly correspondence.**
+See [The Stacks Project, Tag 09LK](https://stacks.math.columbia.edu/tag/09LK). The localized Yoneda
+construction is the DG-module orthogonal-complement construction of
+Keller and Drinfeld; compare V. Drinfeld, *DG quotients of DG
+categories*, [arXiv:math/0210114v7](https://arxiv.org/abs/math/0210114v7), Sections 4.7--4.9 and 10.1.
+The resolution, finite-cell factorization, action and comparison
+arguments above are given explicitly, so no homotopical flatness of
+the original Hom complexes over $\mathbf Z$ is assumed.
+
+**A conservative forgetful functor need not reflect essential constancy**
+
+Let $k=\mathbf F_2$, let $E=k[\epsilon]/(\epsilon^2)$ in degree zero,
+and let $T=k$ be the $E$-module on which $\epsilon$ acts as zero.
+There is a sequential diagram in $D(E)$ whose underlying diagram in
+$D(\mathbf Z)$ is essentially zero, but which is not essentially constant
+in $D(E)$. The same is true after forgetting only to $D(k)$.
+
+**Proof.**
+A projective resolution of $T$ is
+$$
+ \cdots\xrightarrow{\epsilon}E\xrightarrow{\epsilon}E
+ \xrightarrow{\epsilon}E\longrightarrow T\longrightarrow0.
+$$
+Exactness follows from $\ker(\epsilon:E\to E)=\epsilon E$ and
+$\ker(E\to T)=\epsilon E$. Applying $\operatorname{Hom}_E(-,T)$
+gives zero differentials, so $\operatorname{Ext}^n_E(T,T)=k$ for all
+$n\geq0$. The extension
+$$
+ 0\longrightarrow T\xrightarrow{1\mapsto\epsilon}E
+ \longrightarrow T\longrightarrow0
+$$
+has a nonzero class $\alpha\in\operatorname{Ext}^1_E(T,T)$.
+Under the identification of every first syzygy with $T$, its Yoneda
+powers are represented by the successive segments of the displayed
+resolution. Equivalently, its comparison map is the identity from
+each term of the resolution to the adjacent shifted term; in
+characteristic two this is a chain map. Applying $\operatorname{Hom}_E(-,T)$
+shows that $\alpha^n$ is the nonzero element of
+$\operatorname{Ext}^n_E(T,T)$ for every $n$.
+
+Consider
+$$
+ T\xrightarrow{\alpha}T[1]\xrightarrow{\alpha[1]}T[2]
+ \xrightarrow{\alpha[2]}\cdots.
+$$
+Every transition from stage $i$ to stage $j>i$ is the nonzero element
+$\alpha^{j-i}[i]$. In a filtered diagram representing the zero ind-object,
+the identity of each stage must become zero at some later stage: this
+is the defining colimit test for maps from a constant object into an
+ind-object. Our diagram fails this necessary condition.
+
+On forgetting to $D(k)$ each adjacent transition is zero, since
+$\operatorname{Hom}_{D(k)}(k[i],k[i+1])=\operatorname{Ext}^1_k(k,k)=0$.
+It is consequently zero after further forgetting to $D(\mathbf Z)$.
+Equivalently, the displayed extension splits on its underlying
+abelian groups. This uses the particular extension class: one must
+not claim that $\operatorname{Ext}^1_{\mathbf Z}(k,k)=0$.
+The underlying ind-object is therefore zero. The forgetful functor
+commutes with cohomology and is conservative, yet it does not reflect
+this essential-zero property. If the original diagram were essentially
+constant with some value $J\in D(E)$, its underlying constant value
+would have to be zero; conservativity would give $J=0$, contradicting
+the nonzero-transition test. Thus it is not essentially constant.
+$\square$
+
+**Scope.**
+This is a counterexample to a general inference about forgetful functors,
+not to the derived-Hom statement of Tag 09LK. The indexing diagram
+has not been realized as the localization diagram of a fixed DG Hom
+functor in an abelian category. The theorem therefore requires a
+separate construction which retains that additional structure.
+
+![Localized DG Yoneda modules, their evaluation at K and the endomorphism action](../figures/localized-dg-yoneda.png)
+
+*The triangle (LDY4), evaluation at $K$ and identities (LDY8)–(LDY10). The horizontal map on evaluation is a map of right DG $E$-modules. The editable vector figure is [localized-dg-yoneda.svg](../figures/localized-dg-yoneda.svg).*
 
 #### Lemma. Arbitrary sums and products in a DG derived category
 

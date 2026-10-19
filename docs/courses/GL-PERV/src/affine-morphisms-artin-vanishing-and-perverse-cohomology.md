@@ -1,12 +1,12 @@
 # Affine morphisms, Artin vanishing and perverse cohomology
 
-*Reconstructed by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*AI-generated exposition by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 A direct image can acquire cohomology in two different ways: its fibres can have positive dimension, and sections near a missing boundary can carry higher cohomology. We will calculate both effects before asking what affineness removes. This makes the direction of each perverse inequality visible. The final application cuts a projective variety by a hyperplane: the error in restriction is compactly supported cohomology of the affine complement.
 
 We use the categories of [Constructible complexes on algebraic varieties](constructible-complexes-on-algebraic-varieties.md), the truncation construction in [Gluing t-structures](gluing-t-structures.md), and the support tests of [The perverse t-structure](the-perverse-t-structure.md). Coefficients are the classical field coefficients of those lessons, or rational adic coefficients with the qualifications in Section 4. All maps are separated and of finite type. Dimensions are complex or algebraic dimensions; the dimension of an empty support is minus infinity. Our shift convention is \(\mathcal H^q(K[r])=\mathcal H^{q+r}K\). In the étale case, global cohomology is geometric cohomology over an algebraic closure; relative functors retain descent data and Tate twists.
 
-The free author-hosted edition of Beilinson–Bernstein–Deligne, Sections 4.1–4.2, supplies the affine and smooth statements against which we check the hypotheses. The free de Cataldo–Migliorini survey, Section 5.3, supplies a second comparison of operation directions. The proofs below use the earlier programme constructions at the places specified, with unresolved inputs recorded as such.
+For the affine and smooth statements and their hypotheses, see Beilinson–Bernstein–Deligne, Sections 4.1–4.2, and de Cataldo–Migliorini, Section 5.3. The deductions below use the earlier programme constructions with the coefficient and geometric hypotheses specified at each step.
 
 ## 1. Read degrees from a perverse tower
 
@@ -170,7 +170,7 @@ The ordinary support estimate needed here is
 \tag{4.1}
 \]
 
-for affine \(f\) and an ordinary constructible sheaf \(F\). We first deduce the perverse consequence from this precise estimate, then examine its coefficients and proof obligations.
+for affine \(f\) and an ordinary constructible sheaf \(F\). We first deduce the perverse consequence from this precise estimate, then examine its coefficients and geometric hypotheses.
 
 **Theorem 4.1 (affine bounds).** With (4.1) available at the coefficient version in question,
 
@@ -254,7 +254,7 @@ The [adic-sheaf lesson](course:AG-LTF/l-adic-sheaves-and-their-cohomology#4-chan
 
 The classical form of (4.1) remains a proof obligation for every allowed algebraically constructible field-valued sheaf, not only for sheaves already obtained from an étale coefficient system. The free BBD edition, Remark 4.1.9, states the complex analogue and points to comparison theorems. That remark does not write the comparison proof we need here. In particular, identifying the constant-coefficient cohomology of an algebraic variety with its analytic cohomology would not yet establish the required comparison for arbitrary constructible complexes and relative direct images. Descent of coefficients, constructibility, compatibility of the direct image and preservation of support dimensions must all be supplied at the stated generality before that route proves (4.1).
 
-Another possible route passes through ordinary perverse cohomology on Stein spaces. The analytic programme has written [Morse exhaustion geometry](course:SH-03/holomorphic-morse-exhaustions-on-stein-manifolds) and a [microlocal Stein argument](course:SH-03/microlocal-types-and-stein-cohomology), but its [ordinary/microlocal comparison and transverse restriction](course:SH-03/microlocal-types-and-stein-cohomology#sources-and-the-next-comparison) remain planned. Those texts therefore cannot currently serve as a completed provider for (4.1). We retain the full classical theorem as an assigned result to be proved. Its applications in this lesson are the explicit deductions from (4.1); neither this source pointer nor the proposed analytic route completes that premise.
+A deduction through ordinary perverse cohomology on Stein spaces uses Morse exhaustion geometry and the microlocal Stein argument, together with the ordinary/microlocal comparison and transverse restriction. The classical applications below are conditional on (4.1), including these comparison and restriction results at the ordinary perverse scope. Their full proof is not supplied by the local calculations in this lesson.
 
 ## 5. Extensions and the remaining degree intervals
 
@@ -271,7 +271,7 @@ The affine row has exactly the coefficient and prerequisite qualifications of Se
 \(j_!,Rj_*:\mathcal P(U)\to\mathcal P(X)\).
 To see exactness on hearts, regard a short exact sequence as its distinguished triangle; the perverse cohomology sequence of its image has only degree zero, and is again short exact.
 
-For a local calculation independent of the unfinished general classical Artin input, take \(j:\mathbb C^*\hookrightarrow\mathbb C\), \(A=\Lambda[1]\), and \(i:\{0\}\hookrightarrow\mathbb C\). A circle has cellular cochains \(\Lambda\) in degrees zero and one with zero differential. The earlier boundary triangle and recollement therefore give
+For a local calculation that does not require the general classical Artin theorem, take \(j:\mathbb C^*\hookrightarrow\mathbb C\), \(A=\Lambda[1]\), and \(i:\{0\}\hookrightarrow\mathbb C\). A circle has cellular cochains \(\Lambda\) in degrees zero and one with zero differential. The earlier boundary triangle and recollement therefore give
 
 | Object | Degrees and values of its stalk at zero | Degrees and values of its costalk at zero |
 |---|---|---|
@@ -365,9 +365,9 @@ For a perverse \(P\), its field dual is again perverse. The identity
 \(H_c^n(U,P)^\vee=H^{-n}(U,D_UP)\)
 then gives compact-support vanishing for \(n<0\). On \(\mathbb A^r\), however, the perverse sheaf \(\Lambda[r]\) has an ordinary global group \(\Lambda\) in degree \(-r\) and a compact-support group \(\Lambda(-r)\) in degree \(r\). Classically these follow by contraction and the one-point compactification \(S^{2r}\); the geometric étale versions use affine-space cohomology and smooth duality. They exhibit the two permitted sides of the bounds. Neither functor is asserted to concentrate in degree zero. As in Section 4, the ordinary Artin premise at the exact coefficient version must be supplied, not inferred from a citation.
 
-## Remaining proof obligations and free references
+## Geometric hypotheses and references
 
-This reconstruction retains the following dependencies explicitly. The torsion support theorem is written in the earlier étale companion, but its strict-local models, continuity, curve results and dimension induction still require recursive verification at exact versions. The integral truncation used here now has its construction in (4.4); the exact bounded normalized operations, nonproper finiteness, finite coefficient fibres and rationalization comparisons over fields are supplied by the BV–BX and BP–BQ providers in Section 4. Their recursive prerequisites and the compatible stratification/refinement and purity inputs must still be checked at the scope in use. In particular the field-level theorem is not a finiteness theorem on an arbitrary trait or its strict-local generic limits. The classical ordinary perverse Stein theorem is unfinished because the ordinary/microlocal comparison and transverse restriction have not been supplied. Smooth duality, local smooth sections, constructibility, finite-type dimension, oriented ball/sphere comparisons and the geometric étale curve and affine-space calculations must all have their earlier proofs verified. Thus neither the displayed deductions nor a successful render grants whole-lesson P514 clearance.
+The torsion support theorem in the earlier étale companion uses strict-local models, continuity, curve cohomology and dimension induction. Integral truncation is constructed in (4.4); the bounded normalized operations, nonproper finiteness, finite-coefficient fibres and rationalization comparisons over fields are those of BV–BX and BP–BQ, as specified in Section 4. These arguments require compatible stratifications, refinements and purity. The field-level finiteness theorem does not apply to an arbitrary trait or its strict-local generic limits. The classical perverse Stein deduction remains conditional on the ordinary/microlocal comparison and transverse restriction. Smooth duality, local smooth sections, constructibility, finite-type dimension, oriented ball and sphere comparisons, and geometric étale curve and affine-space cohomology are further inputs. Their general foundations are not all proved in this lesson.
 
 The sources used for the affine and smooth comparison are the freely accessible versions below. The Bhatt–Blickle–Lyubeznik–Singh–Zhang reference concerns a different characteristic-\(p\) coefficient theory; its subsection 5.1 is a further reading direction and supplies no proof input to the prime-to-characteristic arguments here.
 

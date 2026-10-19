@@ -810,7 +810,7 @@ The mathematical source is the Stacks Project authors, *More on Algebra*, labels
 The arguments above establish the space and stack forms of Artin's criterion, openness from naive obstruction theories, and algebraicity of flat groupoid quotients. They also establish the product-compatible obstruction criterion and the criterion using stronger effectiveness. The following inputs retain their stated prerequisite scope.
 
 - The formal-deformation input is Schlessinger's existence of a versal formal object under (S1), (S2) and finite-dimensionality of the tangent space [Stacks, Tag 06IW], together with the field-change, linearity and small-extension tests. The deformation inputs are the cotangent obstruction for ring maps, conormal transitivity for regular immersions and square-zero flatness. Their algebraic-space forms are obtained on étale charts [Stacks, Tags 06CB, 06CC and 06BH].
-- Appendix B proves general Néron desingularization, both polynomial-approximation forms and permanence of G-rings [Stacks, Tags 07GC, 07QY, 07QZ and 07PV]. The full marked-family construction appears in B.6.1 and is used in Section 2.3. Appendix A supplies the finite-complex Artin–Rees argument [Stacks, Tags 07VE and 07VF]. The comparison lemma's sixth assertion has a separately stated proof gap; the desingularization chain uses its proved fifth assertion.
+- Appendix B proves general Néron desingularization, both polynomial-approximation forms and permanence of G-rings [Stacks, Tags 07GC, 07QY, 07QZ and 07PV]. The full marked-family construction appears in B.6.1 and is used in Section 2.3. Appendix A supplies the finite-complex Artin–Rees argument [Stacks, Tags 07VE and 07VF]. The comparison lemma's sixth assertion is false over arbitrary bases, as shown by the integral cusp; its exact differential-basis criterion is proved at that lemma. The desingularization chain uses the valid fifth assertion.
 - The ordinary-scheme Artinian lifting test at a point [Stacks, Tag 02HX] is developed in the supporting chain below. Earlier lessons supply étale lifting over henselian local rings, descent of finite presentations along affine limits, scheme Zariski main and idempotent lifting. The unramified and lci open-locus results for flat finitely presented families, and the Cohen–Macaulay slicing results, are used with the precise formulations [Stacks, Tags 05X8, 06CE, 045U and 0570].
 - Section 5.1 uses the Noetherian topological assertions [Stacks, Tags 0G2F and 0G2R]. The Picard example uses coherent cohomology finiteness and its dimension bound, perfect direct image with arbitrary base change [Stacks, Tag 0B91], and Grothendieck existence for proper schemes [Stacks, Tag 088C; the proper-support extension is Tag 088E]. Existence includes morphisms. Section 7 explains the passage from coherent sheaves to line bundles.
 
@@ -1379,7 +1379,7 @@ The comparison assertions are as follows.
 3. Property 6 implies 4.
 4. Property 5 implies 2.
 5. Under property 2 there is an integer $e_0$ such that $a^e$ is strictly standard whenever $e\geq e_0$.
-6. The source additionally asserts that property 4 makes every sufficiently large power $a^e$ elementary standard. The denominator argument supplied for this assertion has a gap, explained below. This sixth assertion remains a proof obligation in this treatment.
+6. The assertion that property 4 makes every sufficiently large power $a^e$ elementary standard is false over arbitrary bases. The integral cusp counterexample and the corrected differential-basis criterion below give its precise scope.
 
 **Proof of assertions 1–5.** The first assertion follows by eliminating the differentials belonging to an invertible Jacobian minor in a standard presentation. The remaining coordinate differentials freely generate the differential module; the complete calculation is in [Standard smooth algebras](#native-algebra-lemma-standard-smooth). A free module is stably free, and forgetting the module condition gives property 1. For the second assertion, a multiple of one minor is a linear combination of all the minors, with zero coefficients on the others. The relation condition is the same in properties 5 and 6.
 
@@ -1436,9 +1436,176 @@ describe the same algebra. Their determinant in columns $Z,V$ is
 
 $$(N+1)Z^NU.$$
 
-It vanishes whenever $p\mid N+1$. Thus preservation of that minor cannot be inferred from the stated scaling operation. The example does not disprove the existence assertion in part 6; a different construction or an additional argument could establish it. The general sixth assertion remains unproved here. The desingularization proofs below use the established strict-standard conclusion in assertion 5. The elementary-standard conclusion for localization by base scalars has its own argument, in which the scalars have zero relative differential.
+It vanishes whenever $p\mid N+1$. Thus preservation of that minor cannot be inferred from the stated scaling operation. This scaling example alone does not disprove the existence assertion in part 6. The integral cusp below does disprove it, independently of the chosen presentation. The desingularization proofs below use the established strict-standard conclusion in assertion 5. The elementary-standard conclusion for localization by base scalars has its own argument, in which the scalars have zero relative differential.
 
-*Mathematical source:* the Stacks Project authors, [Tag 07EZ](https://stacks.math.columbia.edu/tag/07EZ), `smoothing.tex`, `lemma-compare-standard`, in the [pinned AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/smoothing.tex). All six claims and the scope of the attempted sixth argument are retained above; its gap is recorded explicitly.
+*Mathematical source:* the Stacks Project authors, [Tag 07EZ](https://stacks.math.columbia.edu/tag/07EZ), `smoothing.tex`, `lemma-compare-standard`, in the [pinned AI Integrated Stacks Project edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/smoothing.tex). The six comparison assertions, the failed scaling inference and the distinction between strict and elementary standardness are explicit above.
+
+**Elementary standard powers and exact differential coordinates**
+
+**The assertion and an integral counterexample.**
+The implication from standard smoothness of $A_a$ to eventual elementary
+standardness of $a^e$ is false for general base rings. Put
+$$
+ R=\mathbf Z,\qquad A=\mathbf Z[t^2,t^3]\subset\mathbf Z[t],
+ \qquad a=t^2.                                                     \tag{ESC1}
+$$
+The map $\mathbf Z[X,Y]\to A$, $X\mapsto t^2$, $Y\mapsto t^3$,
+identifies
+$$
+                 A=\mathbf Z[X,Y]/(Y^2-X^3).                      \tag{ESC2}
+$$
+Indeed reduction by the monic relation in $Y$ gives a unique expression
+$P(X)+YQ(X)$. Its image has even exponents from $P(t^2)$ and odd
+exponents at least three from $t^3Q(t^2)$, so it vanishes only when
+$P=Q=0$. In particular this is a finite presentation over $R$.
+
+After inverting $a$, the elements $Y/X=t$ and $Y/X^2=t^{-1}$ belong
+to $A_a$. Consequently
+$$
+ B=A_a=\mathbf Z[t,t^{-1}]
+       =\mathbf Z[T,V]/(TV-1).                                    \tag{ESC3}
+$$
+This is standard smooth over $\mathbf Z$: the derivative of $TV-1$
+with respect to $V$ is the unit $T$. Its differential module is
+$\Omega_{B/\mathbf Z}=B\,dt$.
+
+For every $u\in A$ there are integers $c_n$, only finitely many nonzero,
+such that
+$$
+ u=c_0+\sum_{n\geq2}c_nt^n,
+ \qquad du=\left(\sum_{n\geq2}nc_nt^{n-1}\right)dt.               \tag{ESC4}
+$$
+No such $du$ is a basis of $B\,dt$. To see this, the units of
+$\mathbf Z[t,t^{-1}]$ are exactly $\pm t^k$, $k\in\mathbf Z$.
+For a proof, the smallest and largest exponents of a nonzero Laurent
+polynomial add under multiplication, since $\mathbf Z$ is a domain.
+If a product is $1$, both factors must therefore have only one exponent,
+and their integer coefficients must be units. But a coefficient
+$nc_n$ with $n\geq2$ cannot be $1$ or $-1$. Distinct exponents in (ESC4)
+cannot cancel. Thus its parenthesized Laurent polynomial is never a unit.
+
+This rules out elementary standardness in *every* finite polynomial
+presentation of $A$. Suppose, to the contrary, that some $a^e$, $e\geq1$,
+is elementary standard. Choose a witnessing presentation
+$A=\mathbf Z[z_1,\ldots,z_n]/I$ and distinguished relations
+$f_1,\ldots,f_c$. After localizing at $a$, their classes generate
+$(I/I^2)_a$, and their selected $c$-rowed Jacobian minor is a unit:
+the defining conditions are $a^e(I/I^2)\subset\sum B[f_j]$ after
+restriction and $a^e\in(\Delta)$ before restriction. The conormal
+sequence therefore presents $\Omega_{B/\mathbf Z}$ as the cokernel of
+the $c$ rows $df_j$. Elimination using the invertible minor shows that
+the differentials of the $n-c$ unselected variables are a basis of
+$\Omega_{B/\mathbf Z}$.
+
+Tensoring with $\mathbf Q(t)$ gives $n-c=1$. Thus one variable image
+$u\in A$ has $du$ as a basis of $B\,dt$, contradicting (ESC4).
+There is no elementary standard power $a^e$ for any $e\geq1$.
+This is a counterexample to the implication itself, rather than only
+to one denominator-clearing argument.
+
+The strictly standard conclusion remains valid in this example.
+In presentation (ESC2), the two one-rowed minors are $-3X^2$ and $2Y$,
+and in $A$
+$$
+             X^3=(-X)(-3X^2)+(-Y)(2Y).                            \tag{ESC5}
+$$
+There are no remaining relations beyond the distinguished one.
+Hence $a^e$ is strictly standard for every $e\geq3$.
+
+**A corrected necessary and sufficient condition.**
+Let $R\to A$ be finitely presented, let $a\in A$, and suppose
+$B=A_a\ne0$ is smooth over $R$. The following conditions are equivalent:
+$$
+\begin{array}{ll}
+\text{(i)} & a^e\text{ is elementary standard for some }e\geq1;\\
+\text{(ii)}& a^e\text{ is elementary standard for every sufficiently large }e;\\
+\text{(iii)}& \text{there are }u_1,\ldots,u_r\in A\text{ such that }
+du_1,\ldots,du_r\text{ form a }B\text{-basis of }\Omega_{B/R}.
+\end{array}                                                       \tag{ESC6}
+$$
+The length $r$ may be zero. In particular, freeness of $\Omega_{B/R}$
+or standard smoothness of $B$ alone does not impose the requirement
+that a differential basis come from elements of $A$.
+
+**Proof.**
+Condition (ii) implies (i). For (i) implies (iii), use a witnessing
+presentation and localize. The relation classes are generated by the
+distinguished $c$ relations, and the selected minor becomes invertible.
+The same conormal elimination as above gives a basis consisting of
+the differentials of the unselected variable images, all belonging
+to $A$. This argument allows an empty minor.
+
+For (iii) implies (ii), choose a finite polynomial presentation
+$$
+ A=P/I,\qquad P=R[z_1,\ldots,z_n],\qquad
+ z_i\longmapsto u_i\quad(1\leq i\leq r).                          \tag{ESC7}
+$$
+Adjoining these prescribed images gives such a presentation with
+finitely generated kernel. Explicitly, start with
+$A=R[w_1,\ldots,w_s]/(h_1,\ldots,h_l)$, represent $u_i$ by a polynomial
+$U_i(w)$, and take the variables $z_1,\ldots,z_r,w_1,\ldots,w_s$ with
+relations $h_j(w)$ and $z_i-U_i(w)$. Renumber these as the $n$ variables
+in (ESC7). This proves the finite generation without any Noetherian
+assumption. Choose $H\in P$ mapping to
+$a$. The conormal sequence over $B$ is short exact:
+$$
+ 0\longrightarrow (I/I^2)_a\xrightarrow{\ d\ } B^n
+     \longrightarrow\Omega_{B/R}\longrightarrow0.                \tag{ESC8}
+$$
+Here injectivity follows directly from [formal smoothness](#native-algebra-proposition-smooth-formally-smooth). The square-zero
+surjection $P_H/I_H^2\to B$ admits an $R$-algebra section. Subtracting
+that section from $P_H\to P_H/I_H^2$ gives an $R$-derivation
+$P_H\to I_H/I_H^2$ restricting to the identity on $I_H/I_H^2$.
+The induced map from $\Omega_{P_H/R}\otimes B=B^n$ is a left inverse
+to the conormal map, proving the asserted injectivity.
+
+By the basis condition, the first $r$ coordinate vectors of $B^n$
+map isomorphically to $\Omega_{B/R}$. Consequently projection onto
+the last $c=n-r$ coordinates restricts to an isomorphism from the
+kernel in (ESC8) to $B^c$: each prescribed last-coordinate vector has
+a unique first-coordinate vector making its differential image zero.
+Let $v_1,\ldots,v_c$ be the resulting basis of $(I/I^2)_a$.
+There are $g_j\in I$ and integers $N_j\geq0$ with
+$$
+                         [g_j]/1=a^{N_j}v_j.                     \tag{ESC9}
+$$
+Indeed every element of the localized conormal module has a numerator
+represented by one element of $I$ and a power of $a$ as denominator.
+
+The Jacobian minor of $g_1,\ldots,g_c$ in the last $c$ variables
+therefore satisfies
+$$
+                  \Delta/1=a^{N_1+\cdots+N_c}\quad\text{in }B.    \tag{ESC10}
+$$
+It is a unit. Its inverse has the form $b/a^s$, $b\in A$, so for some
+$t\geq0$ the equality $a^t(b\Delta-a^s)=0$ holds in $A$.
+Thus $a^{s+t}\in(\Delta)$ in $A$.
+
+Extend $g_1,\ldots,g_c$ by finitely many elements to a generating
+list of $I$. The finitely generated quotient
+$(I/I^2)/\sum A[g_j]$ vanishes after inverting $a$, since the classes
+in (ESC9) are a basis after localization. Clearing a denominator for
+each of its finitely many generators gives an integer $q\geq0$ with
+$$
+              a^q(I/I^2)\subset\sum_{j=1}^c A[g_j].               \tag{ESC11}
+$$
+For every $e\geq\max(1,q,s+t)$, both elementary-standard conditions
+hold. Renumber the variables to put the selected last $c$ variables
+first if necessary. For $c=0$, take $\Delta=1$ and use the same finite
+generation argument for the conormal module. This proves (ii) and
+the equivalence. If $A_a=0$, some power of $a$ is zero, and all its
+later powers are elementary standard with $c=0$.$\square$
+
+**Source correspondence.**
+The assertion contradicted by (ESC1)--(ESC4) is part (f) of the
+[Stacks Project, Tag 07EZ](https://stacks.math.columbia.edu/tag/07EZ). The elementary and strictly standard
+conditions are those of [Tag 07C7](https://stacks.math.columbia.edu/tag/07C7). The equivalence (ESC6) supplies
+the missing coordinate requirement over an arbitrary base; it does
+not change the valid strictly standard assertion or its applications.
+
+![The integral cusp, Laurent differentials and the distinction between strict and elementary standardness](../figures/integral-cusp-standardness.png)
+
+*Equations (ESC1)–(ESC5). A unit minor in any presentation would supply one differential basis element from $A$. The Laurent-unit calculation rules this out, while the two-minor identity proves strict standardness. The editable vector figure is [integral-cusp-standardness.svg](../figures/integral-cusp-standardness.svg).*
 
 #### The lifting problem
 
@@ -10926,7 +11093,7 @@ The statement, equation and section anchors preserve the source correspondence u
 
 The mathematical sources are the Stacks Project authors and the separately credited contributors to the AI Integrated Stacks edition. The component record gives the passage authorship and source references.
 
-The proof map in B.8 leads to the completion, coefficient-ring, henselian, formal-smoothness, field-smoothness, regular-sequence, regular-local, differential and flatness arguments. Appendix A provides the Artin–Rees perturbation and flat-extension proofs. Each programme reference is used for the matched statement actually proved there; all further hypotheses and prerequisites remain necessary. The general sixth assertion of the standard-presentation comparison remains explicitly unproved, with its failed inference and the valid downstream scope stated at that lemma.
+The proof map in B.8 leads to the completion, coefficient-ring, henselian, formal-smoothness, field-smoothness, regular-sequence, regular-local, differential and flatness arguments. Appendix A provides the Artin–Rees perturbation and flat-extension proofs. Each programme reference is used for the matched statement actually proved there; all further hypotheses and prerequisites remain necessary. The integral cusp disproves the general sixth assertion of the standard-presentation comparison. The corrected differential-basis criterion, its proof and the valid downstream strict-standard scope are given at that lemma.
 
 This lesson’s expression is dedicated to CC0 1.0.
 

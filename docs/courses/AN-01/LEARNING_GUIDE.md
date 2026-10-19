@@ -123,7 +123,17 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **How does a Gaussian detect an analytic singularity?** [*Gaussian windows and analytic directions*](src/gaussian-windows-and-analytic-directions.md) proves the exact exponential criterion for arbitrary compact hyperfunctions. It connects carrier displacement, a corrected inversion formula, recovery on the imaginary sphere and local representative independence.
 
-Every available lesson contains its own graded problems and complete solutions. The course status identifies the further mathematical scope, including the global characterization by regular differences, the Fourier–Laplace range converse, and the Gaussian scaling and remaining support questions. The complete original theorem and exercise assignment remains in progress.
+- **How does physical support constrain a singular fiber?** [*Tangent support and analytic directions*](src/tangent-support-and-analytic-directions.md) places both signs of every fiber normal in the tangent cone of physical support. It treats affine sections through closure after projection, propagates regularity through convex fiber regions, and proves analytic boundary regularity at every normal frequency. An explicit integral solution shows why smooth Cauchy data do not give that conclusion.
+
+- **Which entire functions represent a compact real source?** [*Entire growth and convex real carriers*](src/entire-growth-and-convex-real-carriers.md) constructs the Fourier–Laplace inverse for every compact convex real carrier using rotated Laplace rays and small Cauchy contours. It includes infinite point derivatives and explains exactly which information a nonconvex set loses in its support function.
+
+- **Can regular germs have global representatives?** [*Global regular differences*](src/global-regular-differences.md) constructs a global function of the same derivative-growth class up to an analytic difference, using Gaussian centers in a small ball. It proves the global wavefront intersection formula and simultaneous representation at finitely many points.
+
+- **How can smooth data cross a boundary or descend through a symmetry?** [*Smooth extension and symmetry coordinates*](src/smooth-extension-and-symmetry-coordinates.md) constructs one extension operator preserving every finite derivative order, then resolves coordinate parity and exchange symmetry. It also gives smooth positive majorants with a flat boundary.
+
+- **How can oscillation permit a singular function to cross an endpoint?** [*Oscillation and extension order*](src/oscillation-and-extension-order.md) gives the exact finite-order threshold, excludes equality, and constructs a real phase for an arbitrary continuously differentiable amplitude.
+
+Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions
 

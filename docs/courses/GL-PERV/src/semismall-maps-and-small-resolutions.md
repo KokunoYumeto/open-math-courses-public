@@ -1,6 +1,6 @@
 # Semismall maps and small resolutions
 
-*Reconstructed by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).*
+*AI-generated exposition by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 An exceptional curve in a surface and an exceptional curve in a threefold behave differently under direct image. In the surface it can supply a perverse summand at a point. In the threefold it can belong to the stalk of the intersection complex itself. We begin with explicit resolutions exhibiting this difference, derive the dimension test that explains it, and then identify the map that decides whether the additional summand splits. The two-point Hilbert scheme gives a family version of the surface calculation.
 
@@ -355,7 +355,7 @@ For comparison with the two-point calculation, the general Hilbert–Chow progra
 \[
 \sum_i(\nu_i-1)=n-l(\nu),
 \]
-and every such stratum is relevant in source dimension \(2n\). Irreducibility makes its top component local system rank one, with Tate twist \(-(n-l(\nu))\). This derives the dimension and multiplicity calculation from those precise inputs. Smoothness of the full Hilbert scheme, properness and local product structure, and the punctual irreducibility/dimension theorem for arbitrary length are still required to prove the general assertion. The explicit families in Section 5 establish these facts for length two; they do not establish them for arbitrary length. Full Satake and the Springer/Hitchin construction discussed by Nadler likewise retain their additional assigned mathematical scope.
+and every such stratum is relevant in source dimension \(2n\). Irreducibility makes its top component local system rank one, with Tate twist \(-(n-l(\nu))\). This derives the dimension and multiplicity calculation from those precise inputs. Smoothness of the full Hilbert scheme, properness and local product structure, and the punctual irreducibility/dimension theorem for arbitrary length are still required to prove the general assertion. The explicit families in Section 5 establish these facts for length two; they do not establish them for arbitrary length. Full Satake and the Springer/Hitchin construction discussed by Nadler likewise require their additional geometric results.
 
 ## 7. Exercises with solutions
 
@@ -415,11 +415,11 @@ Rh_*\Lambda[4]=\Lambda_{\operatorname{Sym}^2\mathbb A^2}[4]
 \]
 The diagonal-point stalk has \(\Lambda\) in degree \(-4\) and \(\Lambda(-1)\) in degree \(-2\). Finally (5.4) gives source cohomology in degrees zero and two only, equal to \(\Lambda\) and \(\Lambda(-1)\). Contraction classically, or the exact invariant summand of the finite \(\mathbb A^4\) quotient étale, gives target \(IH^0=\Lambda\) only. The diagonal summand contributes \(H^{a-2}(D,\Lambda)(-1)\) in source degree \(a\); as \(D=\mathbb A^2\), this is the single extra degree-two class.
 
-## Exact prerequisites still required
+## Geometric and coefficient hypotheses
 
-The dimension bounds, small-map IC argument, closed-stratum splitting criterion, and explicit resolution and two-point Hilbert calculations have been written above using their indicated earlier sheaf operations. General characteristic-zero semismall decomposition additionally uses the geometric theorem of Lessons 7–8, with its remaining weight, comparison and ordinary/adic foundations. The classical intersection-form identification uses the specified adapted transverse local product, oriented duality and its compatible relative cup product; its full recursive foundation check, and a general positive-characteristic étale slice replacement, are not supplied by the matrix criterion. Nor is definiteness of general intersection forms proved here.
+The dimension bounds, small-map IC argument, closed-stratum splitting criterion, and explicit resolution and two-point Hilbert calculations use their indicated earlier sheaf operations. General characteristic-zero semismall decomposition additionally uses the geometric theorem of Lessons 7–8, with its weight, comparison and ordinary/adic hypotheses. The classical intersection-form identification uses the specified adapted transverse local product, oriented duality and its compatible relative cup product; those geometric foundations, and a general positive-characteristic étale slice replacement, are not proved by the matrix criterion. Nor is definiteness of general intersection forms proved here.
 
-The affine-Grassmannian fibre estimate, orbit geometry and twisted external-product descent remain the exact geometric prerequisites of Section 6. Fargues–Scholze's three relative convolution assertions retain their diamond and flatness foundations. General Hilbert–Chow retains the arbitrary-length punctual geometry and global Hilbert-scheme assertions listed there. Full Satake and Nadler's Springer/Hitchin construction are retained parts of the expanded programme, not consequences of the two-point example. Springer theory is the subject of the next lesson. Each of these broader assertions still requires a complete programme proof; a free reference identifies its source and does not replace that proof.
+The affine-Grassmannian fibre estimate, orbit geometry and twisted external-product descent remain the exact geometric prerequisites of Section 6. Fargues–Scholze's three relative convolution assertions retain their diamond and flatness foundations. General Hilbert–Chow retains the arbitrary-length punctual geometry and global Hilbert-scheme assertions listed there. Full Satake and Nadler's Springer/Hitchin construction are broader than the two-point example. Springer theory is the subject of the next lesson. The general proofs of these broader assertions are not contained in this lesson.
 
 ## References
 

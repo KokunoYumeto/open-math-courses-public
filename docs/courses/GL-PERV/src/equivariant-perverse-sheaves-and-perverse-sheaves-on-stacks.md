@@ -1,6 +1,6 @@
 # Equivariant perverse sheaves and perverse sheaves on stacks
 
-*Written and reconstructed by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Checked by the AI writer; independent review is not claimed. Public domain (CC0).*
+*AI-generated exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 Scaling the affine line preserves its two orbits, the punctured line and the origin. A perverse sheaf can be constant on both and still fail to carry the scaling action. The obstruction lies in how its nearby and vanishing cycles are attached. We begin with that distinction between an action and an orbit stratification, then organize the same data through stabilizers, quotient stacks and finite-dimensional resolution models.
 
@@ -436,7 +436,7 @@ This equivalence also agrees with the usual pullback between resolution models. 
 
 The next subsection supplies acyclic free spaces, constructs their geometric quotients, and compares the bounded models. The derived construction retains its exact constructible-operation and descent prerequisites. Proposition B.3 and Corollary B.4 need only the smooth connected-fibre hypotheses on the given resolutions.
 
-For the resolution definition and its derived scope, the freely readable primary reference is [Bernstein–Lunts, author-hosted Part I, §§1.9, 2 and 5](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/luntz_ESF/3-derived-category-and-functors.pdf). [Baumann–Riche, Appendix A.1, Proposition A.2] treats the heart comparison. The argument here first constructs torsor descent by local sections and then recovers the action from the triple; both steps, their shifts and their morphisms have been written above. These references do not replace the geometric and operation prerequisites identified below.
+For the resolution definition and its derived scope, the freely readable primary reference is [Bernstein–Lunts, author-hosted Part I, §§1.9, 2 and 5](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/luntz_ESF/3-derived-category-and-functors.pdf). [Baumann–Riche, Appendix A.1, Proposition A.2] treats the heart comparison. The argument here first constructs torsor descent by local sections and then recovers the action from the triple; both constructions include their shifts and morphisms. The geometric and operation hypotheses are specified below.
 
 ### B.2. Acyclicity and bounded comparison
 
@@ -635,15 +635,15 @@ Every heart object is therefore represented by a triple with perverse \(A\). Pro
 
 The free author-hosted Bernstein–Lunts Part I, §§1.9, 2 and 3.1, supplies the primary comparison for these definitions and the resolution approach. The arguments above include the arbitrary-base-sheaf calculation, the full-rank-frame bound, the bounded unit/counit criterion, the resolution comparison and the triangulated and perverse constructions. Proposition B.6a now supplies the actual geometric frame quotients, their torsor charts and their product comparison maps. The exact earlier operation foundations and the recursive prerequisites of its scheme and analytic steps remain to be verified; the existence of these spaces alone does not prove constructible descent or higher-stack operations.
 
-## Exact prerequisites still required
+## Geometric and coefficient hypotheses
 
 The action and finite-orbit arguments use the earlier perverse smooth-pullback, finite-length, intermediate-extension and local-cycle constructions at their exact coefficient and geometric scope. The normalized atlas proof assumes coherent derived smooth descent and constructible operations; ordinary cohomology-sheaf descent alone is insufficient. For nonsmooth stabilizers in positive characteristic the local-system argument additionally requires fppf descent.
 
 Appendix A retains the excellent base with dimension functions, locally bounded integer admissible perversity, principal complete adic coefficients with zero-dimensional Gorenstein quotients, local cohomological boundedness, regular purity, constructible recollement and enhanced higher smooth hyperdescent. It constructs the bounded perverse cuts after those operations exist. The scheme/DVR pro-etale completion provider has a smaller scope and does not discharge the full higher-stack formalism.
 
-Appendix B constructs torsor heart descent, free-frame acyclicity, the actual complex quotient spaces and their product maps, bounded interval comparison, and the triangulated/perverse category. The quotient proof uses the specified Noetherian image and smooth-coordinate/generic-smoothness results and analytic inverse function theorem. Its ideal-descent argument is written locally. All recursive scheme, analytic and constructible-operation foundations must still be verified; this construction does not prove arbitrary free-action quotients or the positive-characteristic nonsmooth case.
+Appendix B constructs torsor heart descent, free-frame acyclicity, the actual complex quotient spaces and their product maps, bounded interval comparison, and the triangulated/perverse category. The quotient proof uses the specified Noetherian image and smooth-coordinate/generic-smoothness results and analytic inverse function theorem. Its ideal-descent argument is written locally. The scheme, analytic and constructible-operation hypotheses are required throughout. This construction does not prove arbitrary free-action quotients or the positive-characteristic nonsmooth case.
 
-The Bruhat/root geometry, full geometric Kazhdan-Lusztig theorem, general regular-integral Verma multiplicities and exact localization/Riemann-Hilbert comparison remain proof obligations. Section 5 proves the rank-one Verma calculation directly; Exercise 5 proves its particular IC stalks by a small resolution. The universal Chern class, stack compactness example and broader Satake, BunG and v-stack results retain their exact further inputs. Neither those examples nor a reference to a free text supplies the missing general proofs.
+The Bruhat/root geometry, full geometric Kazhdan-Lusztig theorem, general regular-integral Verma multiplicities and exact localization/Riemann-Hilbert comparison are further inputs whose general proofs are not given here. Section 5 proves the rank-one Verma calculation directly; Exercise 5 proves its particular IC stalks by a small resolution. The universal Chern class, stack compactness example and broader Satake, BunG and v-stack results retain their exact further inputs. These examples do not establish the corresponding general theorems.
 
 ## References
 

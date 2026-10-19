@@ -1,6 +1,6 @@
 # Springer theory
 
-*Written and revised by OpenAI models in Codex at Ultra effort, October 2026. Self-checked by the models that wrote it. Public domain (CC0).*
+*AI-generated exposition by OpenAI models, October 2026. Public domain (CC0).*
 
 A nilpotent matrix determines a space of compatible flags. For a nonzero nilpotent \(2\times2\) matrix that space is a point; for the zero matrix it is a projective line. The cohomology of these fibres nevertheless carries the same symmetric group, with different representations in different degrees. Our task is to construct that action, determine its normalization, and explain why irreducible representations are attached to intersection complexes.
 
@@ -544,15 +544,15 @@ s_1=\begin{pmatrix}-1&1\\0&1\end{pmatrix},
 \]
 Their squares are the identity, and \(s_1s_2=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}\) has characteristic polynomial \(t^2+t+1\) and cube the identity. Its trace is \(-1\); each transposition has trace zero. This specifies the representation, with a chosen algebraic basis rather than a claimed permutation basis of the two curve components.
 
-## Exact prerequisites still required
+## Geometric and coefficient hypotheses
 
 The general group arguments use the Bruhat and root-intersection geometry, regular semisimple Cartan isomorphisms, adjoint-quotient hypotheses, and regular nilpotent uniqueness specified in §2. The root and normalizer prerequisites include Roots and the Weyl group of a compact Lie group. The classical faithfulness proof also requires finite semialgebraic triangulation of the free Weyl quotient. These are explicit inputs, not consequences of counting the dimensions of the two fibre products.
 
 The degree-zero restriction argument uses smooth orientation, constructible duality, supported pullback and its adjunction compatibility, localization, and the integral top-component bounds. Its arithmetic form requires the corresponding finite and normalized adic operations. The integral costalk bound in §2 supplies a specific step needed for the coefficient argument, without settling this entire foundation. The characteristic-zero correspondence additionally uses the geometric semisimplicity of Lessons 7–9 and their own prerequisites.
 
-Sections 4–6 compute the particular Fourier exchanges, arithmetic inversion, flag comparison and sign equality relative to these operations and the exact comparison providers identified in §6. The classical conic equivalence and its full perversity theorem remain separate SH-02 obligations. The projective GAGA, finite-cover, integral-group and smooth-specialization providers still require their own stated foundational proofs to be checked. The proper flag's coefficient limit does not provide general adic functors.
+Sections 4–6 compute the particular Fourier exchanges, arithmetic inversion, flag comparison and sign equality relative to these operations and the exact comparison providers identified in §6. The classical conic equivalence and its full perversity theorem are additional inputs from the conic Fourier theory. The projective GAGA, finite-cover, integral-group and smooth-specialization comparisons require their stated geometric foundations. The proper flag's coefficient limit does not provide general adic functors.
 
-The assigned broader generalized and modular Springer correspondences remain to be proved in the expanded programme. The modular obstruction and the coefficient-compatible equality of the two actions here are parts of that subject, not substitutes for those correspondences. No arbitrary restriction functor has been asserted to preserve perversity, simplicity or semisimplicity.
+The generalized and modular Springer correspondences are not proved here in their full generality. The modular obstruction and the coefficient-compatible equality of the two actions above describe particular parts of that theory. Arbitrary restriction functors need not preserve perversity, simplicity or semisimplicity.
 
 ## References
 

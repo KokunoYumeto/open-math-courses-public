@@ -46,3 +46,7 @@ The fluid foundations supply the preceding analysis. The lessons give precise so
 ## Sources and rights
 
 [SOURCES.json](SOURCES.json) gives the bibliography and mathematical source locators. The [radial phase and potential conventions](SOURCE_SCAN_CHECK.md) give the original expressions and their coordinate derivations. Diplomatic transcriptions preserve OpenAI’s text; the arguments and exercises here are separate mathematical exposition. Authored lesson text and figures are CC0. Original sources retain their attribution and rights; MathJax retains its included software and font licenses.
+
+## Vacuum hydrodynamics
+
+The [two vacuum-hydrodynamics companion lessons](../GR-VAC/README.md) construct exact gravitational constraint data with a velocity decoder and derive the linear gravitational shear response with its Navier–Stokes limit. Their ten solved exercises and complete arguments specify the domains of both connections.

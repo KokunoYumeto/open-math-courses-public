@@ -46,7 +46,7 @@ Full faithfulness, rather than faithfulness alone, is the condition used to obta
 
 ## 2. Passing through the formal completion
 
-Let \(X\) be Noetherian, \(Y=V(\mathcal I)\), and \(Y_n=V(\mathcal I^n)\), with \(n\ge1\). A finite étale cover of \(Y\) has a unique compatible lift, up to unique isomorphism, to finite étale covers of all \(Y_n\). More precisely, restriction across a nilpotent thickening is an equivalence, including on morphisms [Stacks, [Tag 0BQB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-thickening)]. This is the usual infinitesimal invariance of étale morphisms. Standard étale presentations lift across nilpotent ideals because their invertible Jacobian remains invertible; uniqueness of lifts of maps gives gluing. Finiteness persists across these thickenings. We use this basic étale fact throughout.
+Let \(X\) be Noetherian, \(Y=V(\mathcal I)\), and \(Y_n=V(\mathcal I^n)\), with \(n\ge1\). A finite étale cover of \(Y\) has a unique compatible lift, up to unique isomorphism, to finite étale covers of all \(Y_n\). More precisely, restriction across a nilpotent thickening is an equivalence, including on morphisms [Stacks, [Tag 0BQB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-thickening)]. The full construction, including finiteness of every lift, is Infinitesimal lifting and invariance under thickenings, Theorem 6.2. Its square-Jacobian presentation gives the finite algebra lift, and its morphism-lifting theorem gives unique overlap maps and their cocycles.
 
 **Proposition 2.1 (formal comparison of covers).** If completion is fully faithful on vector bundles on \(X\), then
 \[
@@ -69,7 +69,11 @@ q:B\longrightarrow B^\vee,\qquad
 b\longmapsto\bigl(c\mapsto\operatorname{Tr}(bc)\bigr).
 \tag{2.2}
 \]
-It is an isomorphism exactly when \(\operatorname{Spec}_XB\to X\) is étale [Stacks, [Tag 0BJF](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html#discriminant-lemma-discriminant)]. Each completed level is étale, so \(q^\wedge\) has an inverse. Fullness lifts that inverse to \(B^\vee\to B\), and faithfulness makes its two composites the identity. Hence \(q\) is an isomorphism on all of \(X\).
+It is an isomorphism exactly when \(\operatorname{Spec}_XB\to X\) is étale [Stacks, [Tag 0BJF](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html#discriminant-lemma-discriminant)].
+
+To verify this criterion, pass to a geometric fibre. A nilpotent element \(a\) of a finite-dimensional commutative algebra pairs to zero with every \(b\), because multiplication by \(ab\) is nilpotent and has trace zero. A perfect trace form therefore forces the algebra to be reduced; over an algebraically closed field it is a product of copies of that field. Conversely this product has the perfect coordinatewise pairing. The finite flat fibre criterion in the earlier Étale morphisms lesson now gives étaleness. Invertibility of \(q\) is detected on these fibres by its determinant. Thus the trace criterion holds over the original base.
+
+Each completed level is étale, so \(q^\wedge\) has an inverse. Fullness lifts that inverse to \(B^\vee\to B\), and faithfulness makes its two composites the identity. Hence \(q\) is an isomorphism on all of \(X\).
 
 For neighbourhood germs, lift the maps after shrinking to one common neighbourhood. Each of the finitely many algebra equations holds after further shrinking, by faithfulness in the germ category. The trace pairing is already invertible on \(Y\); its noninvertibility locus is closed in the neighbourhood and disjoint from \(Y\). Remove that locus. This produces a finite étale cover on an ordinary neighbourhood. Uniqueness of maps is likewise uniqueness after shrinking. ∎
 
@@ -82,12 +86,50 @@ We will also use the finite étale **internal Hom**. For covers \(T,T'\) of \(X\
 
 ## 3. The local Lefschetz theorem
 
-We use (1.1). Here \(f\) is arbitrary; it need not be a nonzerodivisor. A henselian pair \((A,(f))\) has the idempotent-lifting property: for every finite \(A\)-algebra \(B\), idempotents of \(B/fB\) lift uniquely to \(B\). A henselian local ring has this property for every ideal in its maximal ideal.
+We use (1.1). Here \(f\) is arbitrary; it need not be a nonzerodivisor. A henselian pair \((A,(f))\) has the idempotent-lifting property: for every finite \(A\)-algebra \(B\), idempotents of \(B/fB\) lift uniquely to \(B\). A henselian local ring has this property for every ideal in its maximal ideal. The idempotent statement for finite algebras over a henselian pair is proved in Étale neighbourhoods, henselization and quasi-finite morphisms, Lemma 5.3; its Theorem 5.6 proves the corresponding finite étale equivalence.
 
-Two gluing inputs will be used with their exact scopes.
+**Finite formal gluing.** Let \((A,\mathfrak m)\) be Noetherian local, let \(S=\widehat A\) be its maximal-ideal completion, and put \(U=\operatorname{Spec}A\setminus\{\mathfrak m\}\). A coherent module on \(U\) and a finite \(S\)-module, identified on \(U_S\), are the restrictions of a finite \(A\)-module. Maps with compatible restrictions glue uniquely. This also holds for finite algebras.
 
-- **Finite formal gluing.** For a Noetherian local \(A\), put \(\widehat A=\varprojlim A/\mathfrak m^n\), \(\widehat X=\operatorname{Spec}\widehat A\), and \(\widehat U=U\times_X\widehat X\). A finite algebra on \(U\) and a finite \(\widehat A\)-algebra, identified on \(\widehat U\), glue to a finite \(A\)-algebra with those restrictions. Indeed the flat-map gluing equivalence [Stacks, [Tag 05ER](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-proposition-equivalence)] applies to generators \(g_i\) of \(\mathfrak m\), since \(A/\mathfrak m=\widehat A/\mathfrak m\widehat A\). Its data are the module over \(\widehat A\), the modules over \(A_{g_i}\), and their overlap identifications. The equivalence respects tensor products, so multiplication and unit descend. Finiteness is detected after the faithfully flat base change to \(\widehat A\). This proves the finite-algebra assertion of [Stacks, [Tag 0BLH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-fill-in-missing)].
-- **Finite extension across the missing point.** A finite cover of \(\widehat U\) admits a finite extension to \(\widehat X\), without a claim that this extension is étale at the closed point. Its composite to the affine Noetherian \(\widehat X\) is quasi-finite and separated. Zariski's main theorem factors it as an open immersion into a finite scheme [Stacks, [Tag 05K0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-morphisms.html#more-morphisms-lemma-quasi-finite-separated-pass-through-finite)]. Replace that finite scheme by the scheme-theoretic closure of the given open. Over \(\widehat U\) the original open is also closed, because it is finite there; density of the closure therefore makes its restriction exactly the given cover.
+**Proof.** We first construct the module. Write \(F\) for the coherent module on \(U\), and \(C\) for the finite \(S\)-module. The coherent-extension construction in Formal geometry, Section 8, chooses a finite submodule
+\(M_0\subset\Gamma(U,F)\) whose restriction is \(F\). A finite distinguished affine cover and flatness give
+\[
+\Gamma(U,F)\otimes_A S=\Gamma(U_S,F_S).
+\]
+Thus \((M_0)_S\) is a finite submodule of the group on the right.
+
+The kernel \(T\) of \(C\to\Gamma(U_S,\widetilde C)\) is its maximal-ideal torsion. It is finite and is killed by some power of \(\mathfrak m\), hence has finite length. Put \(C_1=C/T\), regarded as another finite submodule of \(\Gamma(U_S,F_S)\). Its intersection with \((M_0)_S\) is finite. The two quotients by that intersection are supported at the closed point, since the modules agree on \(U_S\). They therefore have finite length. Consequently, for some \(a\),
+\[
+(\mathfrak m^aM_0)_S\subset C_1,
+\qquad Q=C_1/(\mathfrak m^aM_0)_S
+\quad\text{has finite length}.
+\]
+Set \(L=\mathfrak m^aM_0\). Both \(Q\) and \(T\) are ordinary finite-length \(A\)-modules: the actions factor through \(S/\mathfrak m^bS=A/\mathfrak m^b\).
+
+The extension \(0\to L_S\to C_1\to Q\to0\) descends to \(A\). Indeed a resolution by free modules of finite rank, flat base change and the fact that a power of \(\mathfrak m\) kills \(Q\) give
+\[
+\operatorname{Ext}^1_S(Q,L_S)
+=\operatorname{Ext}^1_A(Q,L)\otimes_A S
+=\operatorname{Ext}^1_A(Q,L).
+\]
+The last equality holds because this finite Ext module is killed by the same power of \(\mathfrak m\). Choose its extension \(0\to L\to M_1\to Q\to0\). Its completion is the prescribed extension, and on \(U\) its first map identifies \(M_1\) with \(F\), compatibly with the given identification after completion. The remaining extension \(0\to T\to C\to(M_1)_S\to0\) descends too, since
+\[
+\operatorname{Ext}^1_S((M_1)_S,T)
+=\operatorname{Ext}^1_A(M_1,T).
+\]
+It produces a finite module \(M\) with the required restrictions and their specified overlap identification.
+
+Here is the assertion about maps. For finite \(A\)-modules \(M,N\), suppose a map \(\phi_U\) on \(U\) and a map \(\phi_S:M_S\to N_S\) agree on \(U_S\). The support sequence
+\[
+0\to T_N\to N\to\Gamma(U,\widetilde N)
+\to H^1_{\mathfrak m}(N)\to0
+\]
+has \(T_N\) finite length and its last term maximal-ideal torsion. Tensor product with \(S\) is the identity on any maximal-ideal torsion module: this follows first for a module killed by \(\mathfrak m^b\), and then by its filtered union. Flat base change identifies the third term after tensoring with the sections on \(U_S\). Hence the obstruction for the map \(M\to\Gamma(U,\widetilde N)\) to take values in \(N/T_N\) is zero, since \(\phi_S\) lifts it after completion.
+
+Pulling back \(0\to T_N\to N\to N/T_N\to0\) gives an extension of \(M\) by \(T_N\). Its class is zero after completion. The equality of the two Ext groups just used makes it zero over \(A\), so choose a lift \(M\to N\). Its completed difference from \(\phi_S\) has image in \(T_N\). The analogous equality for Hom descends this difference, and subtracting it gives a lift with exactly the prescribed completion. Such a lift is unique by faithful flatness of \(S/A\).
+
+Finally apply this map assertion to multiplication and the unit. Tensor products of the constructed finite modules have the corresponding tensor-product restrictions. The algebra operations therefore descend, and their associativity, commutativity and unit identities hold because completion detects equality of maps. This proves the algebra statement, including [Stacks, Tag 0BLH](https://stacks.math.columbia.edu/tag/0BLH). ∎
+
+**Finite extension across the missing point.** A finite cover of \(\widehat U\) admits a finite extension to \(\widehat X\), without a claim that this extension is étale at the closed point. Its composite to the affine Noetherian \(\widehat X\) is quasi-finite and separated. Zariski's Main Theorem, Theorem 4.2, factors it as an open immersion into a finite scheme [Stacks, [Tag 05K0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-morphisms.html#more-morphisms-lemma-quasi-finite-separated-pass-through-finite)]. Replace that finite scheme by the scheme-theoretic closure of the given open. Over \(\widehat U\) the original open is also closed, because it is finite there; density of the closure therefore makes its restriction exactly the given cover.
 
 **Lemma 3.1 (henselian descent from completion).** Suppose \((A,(f))\) is henselian. If
 \[
@@ -188,24 +230,156 @@ is essentially surjective. This is a hypothesis about objects, as in [Stacks, [T
 
 At each omitted point apply (4.3) to extend the restricted cover over its local spectrum. These extensions glue to the cover on \(V\). For clarity, the gluing fact is elementary finite-presentation descent: an algebra over \(\mathcal O_{U,t}\) spreads to an affine neighbourhood of \(t\); its prescribed isomorphism on the puncture spreads after shrinking because that puncture is quasi-compact. Multiplication, inverse isomorphisms and all relations involve finitely many elements and equations, so one common shrinking suffices. Finiteness and étaleness hold after shrinking as well. Ordinary gluing on that neighbourhood and its overlap with \(V\) adds \(t\). Repeating for the finite set gives a cover of \(U\). This is the point-gluing assertion of [Stacks, [Tag 0BPA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-glueing-near-closed-point)], and proves [Stacks, [Tag 0EKA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-equivalence)]. ∎
 
-The following variants are useful when the two cohomology modules are not explicitly known to be finite. These arguments combine the general formal-section and formal-bundle criteria with the dualizing depth bounds; the last also extends across the omitted local points by purity. Throughout use (1.1).
+### Dualizing depth bounds on a punctured spectrum
 
-1. If \(A\) has a dualizing complex, is \(f\)-adically complete, and every irreducible component of \(X\) not contained in \(X_0\) has dimension at least three, (4.2) is fully faithful [Stacks, [Tag 0DXX](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-fully-faithful-general-better)].
-2. If \(A\) has a dualizing complex and is \(f\)-adically complete, (4.2) is an equivalence under either of these conditions: \(A_f\) is \((S_2)\) and every component of \(X\) not contained in \(X_0\) has dimension at least four; or
-   \[
-   \operatorname{depth}A_{\mathfrak p}+\dim(A/\mathfrak p)>3
-   \]
-   whenever \(f\notin\mathfrak p\) and
-   \(V(\mathfrak p)\cap V(f)\ne\{\mathfrak m\}\) [Stacks, [Tag 0DXY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-essentially-surjective-general-better)].
-3. If \(A\) has a dualizing complex and \((A,(f))\) is henselian, restriction on all of \(U\) is fully faithful under either of these conditions: \(A_f\) is \((S_2)\) and every component not contained in \(X_0\) has dimension at least three; or
-   \[
-   \operatorname{depth}A_{\mathfrak p}+\dim(A/\mathfrak p)>2
-   \quad\text{for every }\mathfrak p\notin V(f)
-   \]
-   [Stacks, [Tag 0EK5](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-fully-faithful-simple)].
-4. Add purity at every maximal localization of \(A_f\) to the hypotheses of item 2. Then restriction on all of \(U\) is essentially surjective [Stacks, [Tag 0EK9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-equivalence-better)]. This assertion alone is not an equivalence unless full faithfulness is also known.
+In the rest of this section \(f\) may be a zero divisor. We continue to use (1.1). A point outside \(V(f)\) will be called relevant if its closure meets \(U_0\); equivalently
+\(V(\mathfrak p)\cap V(f)\ne\{\mathfrak m\}\).
 
-The closure-intersection exclusion in item 2, the different thresholds three and four, and the distinction between a henselian pair and a complete ring are part of these statements.
+**Lemma 4.4 (the component bounds).** Suppose \(A\) has a dualizing complex, \(A_f\) is \((S_2)\), and every component not contained in \(V(f)\) has dimension at least \(a\). For \(a=3\),
+\[
+\operatorname{depth}A_{\mathfrak p}+\dim(A/\mathfrak p)>2
+\qquad(f\notin\mathfrak p).
+\tag{4.4}
+\]
+For \(a=4\), the sum is greater than three at every relevant prime outside \(V(f)\).
+
+**Proof.** The ring is catenary by Local duality and finiteness, Lemma 6.16. Write \(e=\dim A_{\mathfrak p}\), \(b=\dim A/\mathfrak p\), and choose a minimal prime \(q\subset\mathfrak p\). It does not contain \(f\). The chain formula gives
+\[
+e+b\ge\operatorname{ht}(\mathfrak p/q)+b
+=\dim A/q\ge a.
+\]
+The \((S_2)\) condition gives depth at least \(\min(2,e)\). If \(e\le1\), the desired sum is at least \(a\). If \(e\ge2\), its sum is at least \(2+b\). Here \(b\ge1\), since \(\mathfrak p\ne\mathfrak m\), proving (4.4). For a relevant prime, there is \(\mathfrak p\subsetneq q'\subsetneq\mathfrak m\) with \(f\in q'\), so \(b\ge2\). This gives the second assertion. ∎
+
+We next prove the principal formal-bundle existence assertion needed with these bounds. The proof keeps track of the obstruction to lifting sections; individual cohomology groups on the puncture need not be finite.
+
+**Lemma 4.5 (finite dual obstruction modules).** Let \(A\) be \(f\)-adically complete with a dualizing complex, and assume
+\[
+\operatorname{depth}A_{\mathfrak p}+\dim A/\mathfrak p>3
+\quad\text{at every relevant }\mathfrak p\notin V(f).
+\tag{4.5}
+\]
+Let \((E_n)\) be a coherent formal system on \(U\), regular for \(f\), whose completed modules are finite locally free outside \(V(f)\). Choose finite modules \(M_n\), killed by \(f^n\), with \(\widetilde M_n|_U=E_n\), compatible transitions and \(H^0_{\mathfrak m}(M_n)=0\). For \(i=1,2\), there are a finite module \(P_i\), killed by a power of \(f\), and compatible maps, for all sufficiently large \(n\),
+\[
+H^i_{\mathfrak m}(M_n)\longrightarrow
+D(P_i),\qquad D(-)=\operatorname{Hom}_A(-,E_A(k)),
+\tag{4.6}
+\]
+such that the kernel systems have finite-length transition images sufficiently far apart. The maps in (4.6) factor through one fixed finite level of the cohomology system.
+
+**Proof.** Such \(M_n\) can always be chosen. Extend each \(E_n\) by a finite submodule of its sections, as in Formal geometry, Section 8. Choose these submodules inductively: replace a proposed \(M_{n+1}\) by the inverse image of \(M_n\) under its section map to \(E_n\). This is finite and still restricts to \(E_{n+1}\). Being a submodule of sections on \(U\), it has no maximal-ideal torsion.
+
+Normalize the dualizing complex \(\omega\) so that its dimension function is \(\delta(\mathfrak p)=\dim A/\mathfrak p\), and put
+\(L_n^i=\operatorname{Ext}^{-i}_A(M_n,\omega)\).
+These are finite modules with forward transitions. We show that, on \(U\), their forward systems are constant up to systems whose sufficiently long transitions vanish.
+
+Choose generators \(g_j\) of \(\mathfrak m\). On \(D(g_j)\), put \(B=\widehat{A_{g_j}}^{\,(f)}\) and let \(N\) be the finite completed module of the formal system. Then \((M_n)_{g_j}=N/f^nN\). Flat Hom base change identifies
+\[
+(L_n^i)_{g_j}
+=\operatorname{Ext}^{-i}_B(N/f^nN,\omega\otimes_A B).
+\tag{4.7}
+\]
+Indeed the modules on the left are killed by \(f^n\), and \(B/f^nB=A_{g_j}/f^nA_{g_j}\).
+
+At a prime \(Q\supset fB\), its contraction \(q\) is in \(U_0\). Proposition 6.18 of Local duality and finiteness and the residue-field normalization at \(Q\) give, for \(P\subset Q\) and \(p=P\cap A\),
+\[
+\operatorname{depth}B_P+\delta_B(P)
+=\operatorname{depth}A_p+\delta(p).
+\tag{4.8}
+\]
+Here \(\delta_B(Q)=\delta(q)\), and the interval from \(P\) to \(Q\) supplies the remaining difference of dimension functions. Every maximal ideal of \(B\) contains \(f\), so every prime is below such a \(Q\). If \(f\notin P\), then \(p\) is relevant. The module \(N_P\) is free, or zero, and (4.5) therefore makes its depth plus \(\delta_B(P)\) greater than three.
+
+Apply the depth formula for coherent dual Ext from Local duality and finiteness, Lemma 6.10.1, to
+\(L=R\operatorname{Hom}_B(N,\omega\otimes_A B)\).
+The three finite modules \(H^{-1}(L),H^{-2}(L),H^{-3}(L)\) vanish outside \(V(f)\). One power \(f^c\) kills all three. Since \(f\) is regular on \(N\), the multiplication triangle gives exact sequences
+\[
+0\to H^{-i-1}(L)/f^nH^{-i-1}(L)
+\to \operatorname{Ext}^{-i}_B(N/f^nN,\omega\otimes B)
+\to H^{-i}(L)[f^n]\to0.
+\tag{4.9}
+\]
+Their forward transitions multiply the left term by \(f\) and include the right term. For \(n\ge c\), the right term is the fixed module \(H^{-i}(L)\); a transition of length at least \(c\) kills the left term. Its image is consequently a copy of that fixed module. Later cokernel systems have zero transitions after a further length \(c\).
+
+There are finitely many charts. Choose common indices \(n_0<n_1\), far enough apart, and set
+\[
+P_i=\operatorname{im}(L_{n_0}^i\to L_{n_1}^i).
+\]
+On every chart this is the constant image just described. Thus, for \(n\ge n_1\), the maps \(P_i\to L_n^i\) have kernels supported at \(\mathfrak m\), and the forward cokernel systems have transition images supported there sufficiently far apart. All modules involved are finite, so those kernels and transition images have finite length. Also \(f^{n_0}P_i=0\).
+
+Local duality identifies \(H^i_{\mathfrak m}(M_n)\) naturally with \(D(L_n^i)\). This identity holds without maximal-adic completeness of \(A\): the completed finite Ext module has the same Hom into \(E_A(k)\), and Matlis biduality recovers the Artinian local-cohomology module. Exactness of \(D\) now turns the preceding maps into (4.6), with the asserted finite-length transition images in their kernels. Since \(P_i\) is a submodule of \(L_{n_1}^i\), the maps factor through \(H^i_{\mathfrak m}(M_{n_1})\). ∎
+
+**Proposition 4.6 (principal formal bundles on a puncture).** Under (4.5), every finite locally free formal system along \(f\) on \(U\) is the completion of a coherent module on \(U\), locally free on a neighbourhood of \(U_0\).
+
+**Proof.** First consider a regular system \((E_n)\) as in Lemma 4.5. Set
+\[
+M=\varprojlim H^0(U,E_n),\qquad
+O=\varprojlim H^1(U,E_n).
+\]
+The multiplication-sequence argument proving (5.2) in Formal geometry, Lemma 5.1, applies before any finiteness assertion. It says that the two limit topologies are their \(f\)-adic topologies. They are separated and complete. Multiplication by \(f\) is injective on \(M\): a compatible section killed by \(f\) is zero at each level after comparison with the next level.
+
+By the support sequence, \(H^1(U,E_n)=H^2_{\mathfrak m}(M_n)\). Lemma 4.5 gives a map \(O\to D(P_2)\), factoring through one level. Let \(K\) be its kernel. It is the limit of the kernel system in (4.6). Its limit topology is also \(f\)-adic: if \(f^cP_2=0\), then
+\(f^cO\subset K\subset O\), and
+\[
+f^nK\subset K\cap f^nO\subset f^{n-c}K
+\qquad(n\ge c).
+\]
+It is closed in \(O\), since its defining map factors through one discrete level. Hence \(K\) is separated and complete. At any fixed sufficiently late level, its image lies in a finite-length transition image from a later kernel. For an index whose projection kernel is contained in \(fK\), this makes \(K/fK\) finite. Topological Nakayama, proved by successive approximation in Formal geometry, Lemma 5.1, makes \(K\) a finite \(A\)-module.
+
+The same control in degree one makes \(M\) finite. The exact sequences are
+\[
+0\to M_n\to H^0(U,E_n)\to H^1_{\mathfrak m}(M_n)\to0.
+\]
+Choose \(c\) with \(f^cP_1=0\). A compatible section, multiplied by \(f^c\), has its boundary in the kernel at every level. Its boundary at level \(n\) therefore lies in the image of a sufficiently late kernel, a finite-length module by Lemma 4.5. Its part in \(M_n\) is finite too. Consequently the image of \(f^cM\) in \(H^0(U,E_n)\) is finite. Since the projection kernel on \(M\) is \(f^nM\), regularity of \(f\) identifies this image, for \(n\ge c\), with \(M/f^{n-c}M\). In particular \(M/fM\) is finite, and successive approximation makes \(M\) finite.
+
+We must still prove uniform lifting of sections. Let
+\(\partial_n:H^0(U,E_n)\to O\)
+be the compatible boundary for
+\(0\to E_a\xrightarrow{f^n}E_{a+n}\to E_n\to0\), taking the limit over \(a\). A zero boundary means that the section lifts to every finite higher level. Naturality gives
+\(\partial_{n+1}(fs)=\partial_n(s)\).
+Choose \(b\) such that the map \(O\to D(P_2)\) factors through \(H^1(U,E_b)\), and put
+\[
+S_n=\operatorname{im}\bigl(H^0(U,E_{n+b})\to H^0(U,E_n)\bigr).
+\]
+For \(s\in S_n\), its boundary at level \(b\) is zero, so \(\partial_n(s)\in K\). Thus
+\[
+\bigoplus_{n\ge1}\operatorname{im}(S_n\xrightarrow{\partial_n}K)
+\]
+is a graded submodule of \(K[T]\), where \(T\) acts as the identity on coefficients while raising the degree. It is finite over \(A[T]\), since \(K\) is finite and \(A[T]\) Noetherian. Choose homogeneous generators represented by \(s_j\in S_{n_j}\), and set \(a=\max n_j\). If \(n\ge a\) and \(s\in S_n\), subtract a linear combination of \(f^{n-n_j}s_j\) with the same boundary. The remainder lifts to every higher level, and the subtracted terms vanish at level \(n-a\). To obtain a lift in \(S_{n'}\), lift it first to level \(n'+b\) and then reduce to level \(n'\). Hence the image of \(S_n\) at level \(n-a\) is the image of every later \(S_{n'}\). This is the Mittag–Leffler property. The systems \((S_n)\) and \((H^0(U,E_n))\) are pro-isomorphic, by their definition, so both have it.
+
+The limit consequently surjects onto each stable image. Together with the projection kernel \(f^nM\), this identifies the section system with \((M/f^nM)\) as pro-systems. Sheafifying on the quasi-affine open \(U\) recovers \((E_n)\); Formal geometry, Proposition 1.3, turns this pro-isomorphism into an isomorphism of coherent formal objects. This algebraizes every regular system in the lemma.
+
+For the original finite locally free formal system, its completed modules on a finite affine cover are finite. Their \(f\)-power torsion is killed by one common power. Quotienting it out gives a regular system, unchanged outside \(V(f)\), so the preceding proof applies. Restore the bounded torsion kernel by Formal geometry, Lemma 6.2. Its Ext comparison applies on \(U\) as well: a finite distinguished affine cover computes the global Ext groups, and on each chart the finite-free Hom complexes with a target killed by \(f^c\) are unchanged by completion. Therefore the required extension class is an ordinary coherent extension. No regularity of \(f\) on \(A\) is used.
+
+We obtain a coherent \(F\) on \(U\) with the original completion. At \(y\in U_0\), its completed stalk is free: lift a basis at the first formal level and use Nakayama at every subsequent level. The local \(f\)-adic completion is faithfully flat, so a finite presentation descends that freeness to \(F_y\). The open free locus of \(F\) contains \(U_0\). Restriction to it gives the desired bundle. ∎
+
+**Theorem 4.7 (four dualizing-complex variants).** Use (1.1), allowing arbitrary \(f\in\mathfrak m\).
+
+1. If \(A\) has a dualizing complex, is \(f\)-adically complete, and every irreducible component of \(X\) not contained in \(X_0\) has dimension at least three, (4.2) is fully faithful [Stacks, Tag 0DXX](https://stacks.math.columbia.edu/tag/0DXX).
+2. If \(A\) has a dualizing complex and is \(f\)-adically complete, (4.2) is an equivalence under either of these conditions: \(A_f\) is \((S_2)\) and every component not contained in \(X_0\) has dimension at least four; or (4.5) holds at every relevant prime outside \(V(f)\) [Stacks, Tag 0DXY](https://stacks.math.columbia.edu/tag/0DXY).
+3. If \(A\) has a dualizing complex and \((A,(f))\) is henselian, restriction \(\operatorname{FEt}(U)\to\operatorname{FEt}(U_0)\) is fully faithful under either of these conditions: \(A_f\) is \((S_2)\) and every component not contained in \(X_0\) has dimension at least three; or (4.4) holds at every prime outside \(V(f)\) [Stacks, Tag 0EK5](https://stacks.math.columbia.edu/tag/0EK5).
+4. Add purity at every maximal localization of \(A_f\) to the hypotheses of item 2. Then restriction on all of \(U\) is essentially surjective [Stacks, Tag 0EK9](https://stacks.math.columbia.edu/tag/0EK9). This assertion alone gives no full-faithfulness conclusion.
+
+**Proof of item 1.** Replace \(A\) by \(A_{\mathrm{red}}\). Its nilradical is nilpotent, and finite étale invariance under thickenings, including every morphism, is proved in Infinitesimal lifting and invariance under thickenings, Theorem 6.2. The two spectra have the same open neighbourhoods, so this replacement respects the colimit category as well as \(\operatorname{FEt}(U_0)\). The quotient is \(f\)-adically complete by exactness of completion on finite modules and has a dualizing complex by quotient duality. Its component dimensions are unchanged.
+
+In a reduced Noetherian ring the associated primes are minimal: zero is the intersection of its finitely many minimal primes, giving an embedding into the direct sum of the corresponding domain quotients; associated primes of a submodule are among those of the ambient module. A vector bundle has the same associated points as the structure sheaf wherever its rank is nonzero. Thus every relevant associated point \(p\) of such a bundle outside \(V(f)\) has \(\dim A/p\ge3\). The principal Čech complex gives \(\operatorname{cd}(A,(f))\le1\). The coherent Hom criterion of Formal geometry, Theorem 8.5, with \(I=(f)\) and \(\mathfrak a=\mathfrak m\), therefore applies: its required bound is \(\dim A/p>\operatorname{cd}(A,(f))+1\), at most two. It proves full faithfulness for neighbourhood bundles. Proposition 2.1 transfers this to finite étale covers, proving item 1.
+
+**Proof of item 2.** Lemma 4.4 reduces its first alternative to (4.5). For an associated point \(p\) of a vector bundle, depth is zero; hence (4.5) implies \(\dim A/p>3\) at every relevant associated point outside \(V(f)\). Theorem 8.5 of Formal geometry again gives full faithfulness for neighbourhood bundles. Proposition 4.6 gives essential surjectivity for these bundles, retaining the relevant-prime qualification and allowing zero divisors in \(f\).
+
+Lift a prescribed finite étale cover of \(U_0\) through its nilpotent thickenings by the preceding finite étale invariance theorem. Proposition 4.6 algebraizes the resulting formal bundle on some neighbourhood. Its multiplication and unit lift by full faithfulness; their finitely many equations hold after a common shrinking. The trace-pairing argument in Proposition 2.1 makes the algebra étale after another shrinking. This proves essential surjectivity for covers; the same proposition gives full faithfulness, so (4.2) is an equivalence.
+
+**Proof of item 3.** Lemma 4.4 reduces the component alternative to (4.4), imposed here at every prime outside \(V(f)\), not only the relevant ones. Let \(S=\widehat A^{\,\mathfrak m}\). Lemma 6.16 of Local duality and finiteness carries a dualizing complex to \(S\). Its Proposition 6.18, with completion ideal \(\mathfrak m\) and upper prime \(\mathfrak mS\), gives
+\[
+\operatorname{depth}S_P+\dim S/P
+=\operatorname{depth}A_p+\dim A/p>2
+\qquad(f\notin P,\ p=P\cap A).
+\tag{4.10}
+\]
+Apply the annihilator theorem, Theorem 6.1 of that lesson, with support \(\{\mathfrak mS\}\), allowed annihilator locus \(V(f)\), and degrees through two. Condition (4.10) is exactly its prime-pair test. Its annihilator ideal has zero set inside \(V(f)\), so it contains a power of \(f\). This power kills \(H^1_{\mathfrak mS}(S)\) and \(H^2_{\mathfrak mS}(S)\).
+
+The complete local ring \(S\) is also \(f\)-adically complete, as proved in Theorem 3.2. Formal geometry, Lemma 3.2, consequently identifies ordinary sections of \(\mathcal O_{U_S}\) with their formal sections. The quasi-affine bundle test and Proposition 2.1 give full faithfulness for covers of \(U_S\). Lemma 3.1 descends this conclusion to \(U\), using precisely the henselian-pair hypothesis. This proves item 3 without requiring \(A\) to be complete or \(f\) to be regular.
+
+**Proof of item 4.** Item 2 gives the cover on some neighbourhood \(V\) of \(U_0\). Its omitted closed set in \(U\) is a finite set of points maximal in \(\operatorname{Spec}A_f\), by the dimension-one argument in Proposition 4.3; that argument uses only that \(V\) contains \(U_0\). At each point, purity extends the restricted cover from the punctured local spectrum to the whole local spectrum. The finite-presentation gluing argument in Proposition 4.3 spreads the local finite étale algebra and its overlap isomorphism to a neighbourhood and attaches that point. Repeating finitely many times gives a cover of all of \(U\) with the prescribed restriction. This proves essential surjectivity, as asserted. ∎
+
+The thresholds three and four enter different steps. In item 1, reduction makes associated primes minimal and only their dimensions matter. Existence in item 2 instead requires control of both dual obstruction modules in Lemma 4.5. Item 3 imposes its depth inequality even at the nonrelevant primes because it controls sections on all of \(U\). Item 4 uses purity to fill the finitely many points left by neighbourhood algebraization.
 
 ## 5. Global Lefschetz and purity
 
@@ -271,7 +445,33 @@ This proves [Stacks, [Tag 0ELE](https://kokunoyumeto.github.io/stacks-zh-hans-cn
 \]
 Theorem 5.1 also proves that \(Y\) is connected. If \(k\) is algebraically closed and \(\ell\ne\operatorname{char}k\), multiplication by \(\ell\) on the abelian surface gives finite étale covers of degree \(\ell^4\) [Stacks, [Tag 0BFG](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/groupoids.html#groupoids-lemma-degree-multiplication-by-d), [Tag 0BFH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/groupoids.html#groupoids-lemma-abelian-variety-multiplication-by-d-etale)]. Their pullbacks to \(Y\) remain connected: the corresponding transitive finite quotient action stays transitive under a surjective group homomorphism. So the comparison has a concrete consequence for covers, beyond its formal group statement.
 
-**Example 6.2 (projective space without using purity).** Over an algebraically closed field, a connected finite étale cover \(C\to\mathbb P^1\) is a smooth projective curve. The unramified Riemann–Hurwitz formula [Stacks, [Tag 0C1B](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-section-riemann-hurewitz)] gives
+**Lemma (Euler characteristics of an unramified cover).** Let \(h:C\to D\) be a finite étale morphism of degree \(r\) between smooth projective connected curves over an algebraically closed field. In every characteristic,
+\[
+1-g(C)=r(1-g(D)),
+\qquad 2g(C)-2=r(2g(D)-2).
+\tag{6.1}
+\]
+Here \(g(B)=\dim_kH^1(B,\mathcal O_B)\). This is the unramified case of Riemann–Hurwitz.
+
+**Proof.** We recall the required degree and Euler-characteristic calculation. A line bundle on a smooth integral curve has a nonzero rational section. Its zeros and poles form a finite divisor. For a closed point \(p\), the quotient of \(L(p)\) by \(L\) has length one, so its Euler characteristic differs by one. Iterating through the positive and negative parts of a divisor gives
+\[
+\chi(L)=\chi(\mathcal O_D)+\deg L.
+\]
+In particular a principal divisor has degree zero, since its line bundle is trivial. This also proves that degree is additive for tensor products and changes sign on duals.
+
+For a rank-\(r\) vector bundle \(E\), choose a rational basis and an effective divisor \(B\) clearing all its poles. It gives an injective map \(\mathcal O_D(-B)^r\to E\) with torsion cokernel of finite length \(l\). At each point a matrix over the discrete valuation ring has determinant valuation equal to its cokernel length, by diagonalizing the matrix with elementary row and column operations. Thus
+\(\deg(\det E)=l-r\deg B\), and the cohomology sequence gives
+\[
+\chi(E)=r\chi(\mathcal O_D)+\deg(\det E).
+\tag{6.2}
+\]
+All these cohomology groups are finite by Proper morphisms and coherent direct images, Corollary 5.1. There is no cohomology above degree one: two affine complements of disjoint hyperplane sections cover the curve, and their affine intersection gives a Čech complex of length one. Such sections exist because the algebraically closed field is infinite. The same statements hold for a torsion sheaf, whose Euler characteristic is its length.
+
+Apply (6.2) to \(E=h_*\mathcal O_C\). It is finite locally free. Its trace pairing identifies \(E\) with \(E^\vee\): after an étale splitting it is the pairing \((a,b)\mapsto\sum a_ib_i\) on \(\mathcal O_D^r\). Therefore \(2\deg(\det E)=0\), so this integer is zero. A finite morphism is affine, and the affine Čech calculation identifies \(H^i(D,E)\) with \(H^i(C,\mathcal O_C)\). Hence \(\chi(\mathcal O_C)=r\chi(\mathcal O_D)\).
+
+Finally a connected smooth projective curve is integral: its regular irreducible components are disjoint, so connectedness leaves one. Its global function ring is a finite-dimensional domain over \(k\), by proper coherence, and therefore equals \(k\). Thus \(\chi(\mathcal O_C)=1-g(C)\), and likewise for \(D\). This proves both equalities. ∎
+
+**Example 6.2 (projective space without using purity).** Over an algebraically closed field, a connected finite étale cover \(C\to\mathbb P^1\) is a smooth projective curve. The unramified Riemann–Hurwitz formula (6.1) gives
 \[
 2g(C)-2=\deg(C/\mathbb P^1)(-2).
 \]
@@ -321,7 +521,11 @@ If \(n=3\), the degree-two quotient cohomology is its nonzero top local cohomolo
 
 ## Proof inputs
 
-We use nilpotent invariance of finite étale covers, faithfully flat descent, the flat-map formal-gluing theorem, Zariski's main theorem and the Galois-category reconstruction as prerequisites. The local formal-module algebraization used in Theorem 4.2 is proved in Formal geometry, Section 8, equation (8.3). The four dualizing-complex variants in Section 4 correspond to Tags 0DXX, 0DXY, 0EK5 and 0EK9. The unramified Riemann–Hurwitz formula has its exact open proof at [Stacks, Tag 0C1B](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-section-riemann-hurewitz). The multiplication degree and étaleness theorem is also proved in the written programme lesson Abelian varieties, Theorem 6.1: multiplication by an integer n has degree n to the power twice the dimension, and is étale when n is invertible in the field.
+Finite étale invariance across every nil thickening, including finiteness and every map, is proved in Infinitesimal lifting and invariance under thickenings, Theorem 6.2. Étale-local splitting is Étale neighbourhoods, henselization and quasi-finite morphisms, Theorem 5.1. The finite flat fibre criterion for étaleness is proved in Étale morphisms and their local structure, Proposition 1.1 and Lemma 1.2. The étale fundamental-group lesson, Propositions 1.1–1.2, Theorem 1.3 and (2.2), proves the cover-category, internal Hom and fibre-functor identifications, using the module and affine descent proofs in Faithfully flat descent.
+
+Section 3 proves finite completion gluing for the exact module and algebra data used in henselian descent. The finite factorization used to extend across the missing point is proved in the earlier Zariski's Main Theorem, Theorem 4.2. The local formal-module theorem in Theorem 4.2 is Formal geometry, Section 8, equation (8.3). For the four dualizing variants, Lemmas 4.4–4.5 and Proposition 4.6 prove the depth reduction, dual obstruction bounds and principal formal-bundle existence, including zero divisors. Theorem 4.7 then proves each of the four cover assertions. Local duality and finiteness supplies the actual annihilator theorem, local duality, dimension function and completion/depth comparison; Formal geometry supplies coherent Hom comparison, supported corrections and the regular-system limit argument.
+
+The unramified Riemann–Hurwitz formula in every characteristic is proved in (6.1)–(6.2), by the divisor Euler-characteristic calculation and trace pairing. Proper coherent cohomology finiteness is Proper morphisms and coherent direct images, Corollary 5.1. The multiplication degree and étaleness theorem is Abelian varieties, Theorem 6.1: multiplication by an integer n has degree n to the power twice the dimension, and is étale when n is invertible in the field.
 
 Purity for regular local rings and complete intersections is not invoked as a proved result here. It is an explicit hypothesis in the global isomorphism and extension theorems, and the smooth and complete-intersection applications requiring it are correspondingly conditional. This order preserves the local Lefschetz theorem as an input to the later proof of purity.
 

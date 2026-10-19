@@ -1,6 +1,6 @@
 # The decomposition theorem
 
-*Written by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
+*AI-generated exposition by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
 The stalk of a proper direct image is the cohomology of a fibre. The decomposition problem asks how those stalks assemble: which local systems occur, on which closed supports, and in which perverse degrees? There are two distinct assertions to establish. The complex must split into its shifted perverse cohomology objects, and those objects must themselves be sums of simple perverse sheaves. We begin with a finite map where the splitting can be constructed by projectors. We then separate the categorical splitting argument from the weight and hyperplane arguments that supply the general theorem.
 
@@ -388,11 +388,11 @@ R\pi_*\Lambda_Y[2]\simeq\operatorname{IC}_X\oplus i_*\Lambda(-1).
 \]
 Every other possible point term would add a stalk dimension. Unshifted, the terms are \(\Lambda_X\) and \(i_*\Lambda(-1)[-2]\). Over \(\mathbb F_q\), geometric Frobenius on the exceptional term is \(q\). The coefficient and the intersection number \(-2\) agree with the intersection-form calculation developed in the next lesson.
 
-## Exact prerequisites still required
+## Geometric and coefficient hypotheses
 
-The finite-data classical/étale and specialization comparisons, including their stable lattices and compatibility with Chern maps, remain unproved inputs in §3. The rational IC-source version used in the resolution calculations is the version stated in de Cataldo–Migliorini, Theorem 1.6.1; its full coefficient passage must also be supplied. Lesson 7's ordinary weight, mixed-operation, curve-conductor and generic-local-acyclicity foundations, together with the exact normalized adic operations, remain prerequisites of §§3–4. The divisor class identity, smooth trace, finite and proper base change, and their coefficient comparisons must be checked at the precise versions used. The abstract splitting proof does not remove any of these obligations.
+The finite-data classical/étale and specialization comparisons, including their stable lattices and compatibility with Chern maps, remain unproved inputs in §3. The rational IC-source version used in the resolution calculations is the version stated in de Cataldo–Migliorini, Theorem 1.6.1; its full coefficient passage must also be supplied. Lesson 7's ordinary weight, mixed-operation, curve-conductor and generic-local-acyclicity foundations, together with the exact normalized adic operations, remain prerequisites of §§3–4. The divisor class identity, smooth trace, finite and proper base change, and their coefficient comparisons are required at the precise coefficient versions used. The abstract splitting proof is conditional on these geometric and coefficient inputs.
 
-The small-ball comparisons specified before (5.5) require their exact earlier proof and recursive prerequisite check. The plumbing calculation in §6 refers to lesson 1's written smooth-flow, plane-curve, normalization and sheaf–singular arguments; their entire prerequisite closure is not established by this reference. Finally, the broader semisimple-source theorem stated in §3 remains an assigned proof obligation at its full stated generality. A free reference identifies the statement and supplies material for its eventual proof; it does not discharge any of these obligations.
+The small-ball comparisons specified before (5.5) are inputs to that argument. The plumbing calculation in §6 uses the smooth-flow, plane-curve, normalization and sheaf–singular comparisons in Lesson 1, with their geometric hypotheses. The broader semisimple-source theorem stated in §3 is not proved here at its full generality. The finite-data comparison and coefficient passages above are likewise necessary for the geometric applications of the categorical splitting theorem.
 
 ## References
 

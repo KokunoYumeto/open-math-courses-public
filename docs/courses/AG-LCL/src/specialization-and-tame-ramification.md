@@ -190,25 +190,115 @@ Put
 \]
 Its profinite completion is formed from all finite quotients. Its prime-to-\(p\) completion is formed only from finite quotients of order prime to \(p\). For \(g=0\) the group is trivial.
 
-The programme lesson Comparison with the classical topology, Sections 5 and 6.2, supplies the complex comparison and the surface calculation: a smooth projective complex curve of genus \(g\) has group \(\widehat{\Gamma_g}\). It is a written lesson. Its comparison and analytic prerequisites are genuine inputs to the presentations here, rather than consequences of specialization.
+The finite-cover comparison used here is Comparison with the classical topology, Proposition 2.1 and Theorem 3.1: for a proper complex scheme, analytification identifies finite étale covers with finite topological covers, including every morphism. Its proof gives a topological cover its unique locally isomorphic analytic structure, algebraizes its finite locally free analytic algebra and its product and unit by GAGA, and descends freeness and vanishing differentials at each point. Full faithfulness algebraizes every map of covers. For a projective curve the exact GAGA inputs are Serre's comparison theorems and Chow's theorem, Theorems 3.1, 4.1 and 5.2. The construction respects the fibre over a chosen complex point.
 
-**Proposition 5.1 (characteristic zero, with comparison).** Assuming that comparison, a smooth projective connected curve \(C\) of genus \(g\) over any algebraically closed field \(k\) of characteristic zero has
+We prove the genus and surface presentation needed for this application. Constant-sheaf cohomology on a manifold agrees with singular cohomology by Sheaf cohomology and singular cohomology on manifolds, Theorem 1.3. The graph and attaching-cell fundamental-group calculations are Fundamental groups of graphs and two-complexes, Corollary 2.4 and Theorem 3.3. For homology we use the finite-skeleton excision argument in Comparison with singular cohomology, Section 14, and the explicit attaching-boundary calculation in Universal covers and cellular chains, Proposition 5.2. The calculation below only needs the graph and the single attached disc.
+
+**Lemma 5.A (a polygon for the complex curve).** The classical space \(M=C(\mathbf C)\) of a smooth projective connected complex curve has a cell decomposition with one vertex, \(2h\) edges and one face, for some integer \(h\ge0\), whose oriented attaching word is
+\[
+\prod_{i=1}^h a_i b_i a_i^{-1}b_i^{-1}.
+\tag{5.A1}
+\]
+Consequently \(\pi_1^{\mathrm{top}}(M)=\Gamma_h\),
+\(\dim_{\mathbf C}H^1(M,\mathbf C_M)=2h\), and
+\(H^2(M,\mathbf C_M)=\mathbf C\).
+
+**Proof.** Smoothness supplies complex coordinate discs. The space is Hausdorff and compact, since it is closed in complex projective space. It is connected: a nontrivial clopen partition would give a section of the trivial two-sheeted topological cover. Full faithfulness of the finite-cover comparison would algebraize that section and give a nontrivial clopen partition of \(C\). Holomorphic coordinate changes preserve orientation, their real determinant being \(|f'|^2>0\).
+
+We first construct a finite triangulation in this particular situation. Choose a nonconstant rational function \(t\) on \(C\). At every point its DVR either contains \(t\) or contains \(t^{-1}\); these charts extend it to a morphism \(C\to\mathbf P^1\). It is proper and quasi-finite, since a fibre is a proper closed subset of the integral curve. Zariski's Main Theorem, Theorem 4.2, factors it as an open immersion into a finite scheme. This immersion is also proper, since the curve is proper and the intermediate scheme is separated over the base; its image is therefore closed. Thus the morphism is finite. The complex-point map is proper with finite fibres, as proved in the finite-map calculation of the comparison lesson, Section 3.
+
+There are only finitely many branch values. Indeed the nonzero differential of \(t\) in characteristic zero has finitely many zeros on the affine chart, and the same holds for \(t^{-1}\) above infinity. At a point, the convergent power series of the map has the form \(z^e u(z)\), with \(u(0)\ne0\). On a sufficiently small disc, the power-series root of the nonvanishing unit \(u\) gives the coordinate \(w=z\,u(z)^{1/e}\), in which the map is \(w\mapsto w^e\). The change is invertible because its derivative at zero is nonzero. Thus away from those finitely many values it is an ordinary finite covering, and over a branch value it has this explicit local form.
+
+Triangulate the sphere with every branch value a vertex. This can be done starting with a tetrahedral triangulation and inserting the finitely many selected points one at a time, subdividing the face or edge containing the next point. Every open triangle and every open edge has trivial covering sheets. Their lifts close to finitely many triangles upstairs: near an endpoint the model \(w^e\) lifts the radial sectors to sectors, with a single vertex for each endpoint in the fibre. A triangle has distinct base vertices, so its lifted vertices remain distinct. These lifted triangles and edges give a finite cell triangulation; subdivision separates any distinct edges with the same endpoints. This supplies the finite triangulation of \(M\) used below.
+
+Here is the oriented polygon reduction for a connected closed triangulated surface. Choose a spanning tree \(T\) in its edge graph. The dual graph remains connected after deleting the edges dual to \(T\). Otherwise the boundary, modulo two, of one nonempty proper collection of faces would be a nonzero cycle supported in \(T\); a tree has no such cycle. Choose a spanning tree \(T^*\) in this remaining dual graph. Gluing the triangles successively along \(T^*\) makes one polygonal disc: at each tree step one disc is joined to the current disc along a boundary edge.
+
+Contract \(T\) to a point. This contraction preserves the homeomorphism type of the surface. To check it locally, take small vertex discs and rectangular edge bands around the embedded tree. Their union is a disc: remove a leaf vertex and its band successively. For a leaf edge, the two endpoint discs and connecting band are a disc neighbourhood of a polygonal arc. Straighten the arc in this neighbourhood. Boundaries of its nested rounded rectangular neighbourhoods give polar curves in the quotient: collapse the central arc to radius zero and send each surrounding curve to the circle of its radius. This gives a homeomorphism of the quotient neighbourhood to a disc, with the same outer boundary. Extending by the identity outside the neighbourhood and repeating proves the assertion for the tree. Equivalently the polygonal boundary moves merge the two endpoint vertices while deleting that tree edge. We now have one vertex and one face. Every remaining edge occurs twice on the boundary, once in each orientation.
+
+Write \(r\) for the number of remaining edges. The cell counts give
+\(r=2-\chi(M)\). If \(r=0\), the face has its boundary collapsed to the vertex, giving a sphere. If \(r>0\), some two pairs of boundary sides must interlace. If no two pairs interlaced, an innermost pair in the resulting noncrossing pairing would be adjacent. Since its two orientations are opposite, the intervening corner is identified only with itself and is a vertex distinct from all the other corners. That contradicts the one-vertex construction.
+
+For two interlaced pairs, join their midpoints across the interior of the polygon. The two arcs can be chosen to cross transversely once and to have no other intersection. After the side identifications they are two embedded oriented circles meeting at one point. A small regular neighbourhood is a disc with two untwisted bands attached in alternating order. Tracing its boundary gives \(aba^{-1}b^{-1}\); it has one boundary circle and is the usual torus with an open disc removed. This description also follows by cutting the two bands along their centres: the resulting square has its opposite sides identified and one interior disc deleted.
+
+Its complement is connected. Every component of the complement must meet the boundary, since a component with no boundary would be clopen in \(M\). A collar of the single boundary circle belongs to only one component, so there is only one. Cap that circle by a disc, obtaining another connected closed oriented surface \(M'\). The cuts are polygonal after subdivision, so \(M'\) still has a finite triangulation. Additivity of the cell counts along the boundary circle gives
+\[
+\chi(M')=\chi(M)+2,
+\qquad 2-\chi(M')=r-2.
+\tag{5.A2}
+\]
+This is again a nonnegative number of edges in the one-vertex, one-face construction. Repetition therefore terminates at a sphere. It expresses \(M\) as a sphere with \(h\) of these handles. Keep the two band loops on each handle and join their base points by a tree in the remaining sphere. Cutting along these loops and that tree gives a disc; tracing its oriented boundary gives (5.A1), in the order of the handles. This proves the stated cell decomposition.
+
+The graph calculation gives a free group on its \(2h\) edges, and the attaching-cell theorem imposes exactly the normal closure of (5.A1). This proves the fundamental-group assertion.
+
+Here is the homology calculation with \(\mathbf C\) coefficients. Write \(G\) for the one-skeleton and \(v\) for its vertex. Excision for the attached cells gives \(H_q(G,\{v\};\mathbf C)=\mathbf C^{2h}\) in degree one and zero in other degrees, and \(H_q(M,G;\mathbf C)=\mathbf C\) in degree two and zero in other degrees. These are exactly the relative disc generators in the finite-skeleton argument cited above: collapsing the preceding skeleton gives the wedge of its attached spheres, with each generator oriented by its characteristic disc. The graph's edges have the same initial and terminal vertex, so the first pair's connecting map is zero. Consequently \(H_1(G;\mathbf C)=\mathbf C^{2h}\) and \(H_2(G;\mathbf C)=0\). For the second pair, the connecting map sends the disc generator to the class of its boundary walk. Proposition 5.2 computes this as the sum of the oriented occurrences of each edge; every edge occurs once with each sign in (5.A1), so this map is zero. The pair's exact sequence is therefore
+\[
+0\longrightarrow H_2(M;\mathbf C)\longrightarrow\mathbf C
+ \xrightarrow{0}\mathbf C^{2h}
+ \longrightarrow H_1(M;\mathbf C)\longrightarrow0.
+\]
+Thus \(H_2(M;\mathbf C)=\mathbf C\) and \(H_1(M;\mathbf C)=\mathbf C^{2h}\). Dualizing a complex of vector spaces gives the dual homology in cohomology: a functional on cycles that kills boundaries extends to the whole chain space, and a functional vanishing on cycles factors through the boundary map and extends to the preceding chain space. This proves both surjectivity and the stated kernel of the evaluation map, without choosing a natural splitting. It gives singular cohomology of dimensions \(2h\) and one. The constant-sheaf comparison gives the cohomology assertions of the lemma, including \(h=0\). ∎
+
+This polygon argument is the orientable case of the classification of triangulated surfaces; a freely accessible treatment is Jean Gallier, [*The Classification Theorem for Compact Surfaces and a Detour on Fractals*, arXiv:0805.0562v1](https://arxiv.org/abs/0805.0562v1), Section 5.2. The triangulation here comes directly from the finite map of the complex curve.
+
+**Lemma 5.B (algebraic genus and handle number).** In Lemma 5.A,
+\[
+h=\dim_{\mathbf C}H^1(C,\mathcal O_C)=g.
+\tag{5.B1}
+\]
+
+**Proof.** Let \(\Omega_M^1\) be the sheaf of holomorphic one-forms. On a coordinate disc every one-form \(\sum_{n\ge0}c_nz^n\,dz\) has the primitive \(\sum_{n\ge0}c_nz^{n+1}/(n+1)\), convergent on every smaller disc. The kernel of differentiation consists of locally constant functions. Thus the following is an exact sequence of sheaves of complex vector spaces:
+\[
+0\to\mathbf C_M\to\mathcal O_M
+ \xrightarrow{d}\Omega_M^1\to0.
+\tag{5.B2}
+\]
+
+The algebraic canonical bundle of the smooth curve is \(\Omega^1_{C/\mathbf C}\), by Dualizing sheaves and Serre duality for projective schemes, Proposition 8.2. Its analytification is \(\Omega_M^1\): an algebraic étale coordinate gives a local holomorphic coordinate, and the two transition rules are the same differential rule. Serre duality, Theorem 4.2 of that lesson, and cohomological GAGA give
+\[
+\begin{aligned}
+h^0(M,\Omega_M^1)&=h^1(M,\mathcal O_M)=g,\\
+h^1(M,\Omega_M^1)&=h^0(M,\mathcal O_M)=1,\\
+H^2(M,\mathcal O_M)&=0.
+\end{aligned}
+\tag{5.B3}
+\]
+Here \(H^0(C,\mathcal O_C)=\mathbf C\): proper coherence makes it finite-dimensional, and integrality makes this finite-dimensional algebra a field, so algebraic closedness identifies it with \(\mathbf C\). The degree-two coherent vanishing can also be seen by covering the projective curve with two affine hyperplane complements whose omitted finite sets are disjoint; their intersection is affine. The two-open Čech complex has no degree-two term. GAGA transports that vanishing to \(M\).
+
+The map \(H^0(M,\mathbf C_M)\to H^0(M,\mathcal O_M)\) is the identity on \(\mathbf C\). At the other end of the long exact sequence of (5.B2),
+\[
+H^1(M,\Omega_M^1)\longrightarrow H^2(M,\mathbf C_M)
+ \longrightarrow H^2(M,\mathcal O_M)=0
+\]
+is surjective between one-dimensional spaces, by (5.B3) and Lemma 5.A. It is therefore an isomorphism. Exactness consequently gives
+\[
+0\to H^0(M,\Omega_M^1)\to H^1(M,\mathbf C_M)
+ \to H^1(M,\mathcal O_M)\to0.
+\tag{5.B4}
+\]
+Its dimensions give \(2h=2g\), proving (5.B1). ∎
+
+Finite topological covers of the connected surface \(M\), with their fibre over a chosen point, are finite sets with an action of \(\Gamma_g\). Covering-space classification with all morphisms is proved in Galois categories, Section 5.2, and the fibre-functor argument for profinite completion is in the comparison lesson, Section 5. Thus the algebraic cover equivalence gives
+\(\pi_1(C)\simeq\widehat{\Gamma_g}\). Equivalently its profinite presentation is the free profinite group on the displayed generators modulo the **closed** normal subgroup generated by the face word: the finite quotients of that group are exactly the finite quotients of \(\Gamma_g\). This includes \(g=0\), where both the presentation and the group are trivial.
+
+**Proposition 5.1 (characteristic zero).** A smooth projective connected curve \(C\) of genus \(g\) over any algebraically closed field \(k\) of characteristic zero has
 \[
 \pi_1(C)\simeq\widehat{\Gamma_g}.
 \tag{5.2}
 \]
 
-**Proof.** Its projective embedding and equations descend to a field \(K\subset k\) finitely generated over \(\mathbb Q\). Smoothness descends, and geometric connectedness is detected after extending to \(k\). Let \(k_0\) be the algebraic closure of \(K\) inside \(k\). Embed \(K\) in \(\mathbb C\) by choosing algebraically independent images for a transcendence basis, and extend the embedding to \(k_0\). Proper field invariance identifies the finite-cover categories of \(C\), its model over \(k_0\), and its complex base change. A finite affine Čech complex and flat extension of scalars preserve \(H^1(\mathcal O)\), so the genus is the same. The assumed complex comparison and the surface presentation give (5.2). Only the finitely generated field of definition was embedded in \(\mathbb C\); no cardinality restriction on \(k\) is needed. ∎
+**Proof.** Its projective embedding and equations descend to a field \(K\subset k\) finitely generated over \(\mathbb Q\). Smoothness descends, and geometric connectedness is detected after extending to \(k\). Let \(k_0\) be the algebraic closure of \(K\) inside \(k\). Embed \(K\) in \(\mathbb C\) by choosing algebraically independent images for a transcendence basis, and extend the embedding to \(k_0\). Proper field invariance identifies the finite-cover categories of \(C\), its model over \(k_0\), and its complex base change. A finite affine Čech complex and flat extension of scalars preserve \(H^1(\mathcal O)\), so the genus is the same. The complex finite-cover comparison and Lemmas 5.A–5.B give (5.2). Only the finitely generated field of definition was embedded in \(\mathbb C\); no cardinality restriction on \(k\) is needed. ∎
 
 To apply this in characteristic \(p\), the missing bridge is an actual smooth proper lift. The deformation theory is supplied by the lessons Formal moduli and Schlessinger's theorem, Proposition 7.2, and Deformations of rings and schemes and the naive cotangent complex, Theorem 8.1. They prove the small-extension obstruction theorem over a complete local coefficient ring, including mixed characteristic. We apply it rather than repeat its general proof.
 
 **Lemma 5.2 (lifting a curve).** Every smooth proper connected curve \(C/k\), with \(k\) algebraically closed of characteristic \(p>0\), is the special fibre of a smooth projective family with geometrically connected fibres over a complete DVR of characteristic zero with uniformizer \(p\) and residue field \(k\).
 
-**Proof.** Choose a Cohen ring \(R\) for \(k\): this is a complete DVR with uniformizer \(p\) and residue field \(k\), whose existence for every characteristic-\(p\) field is proved in Coefficient rings and the Cohen structure theorem, Theorem 4.1; see also [Stacks, Tag 0328](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-cohen-rings-exist). It has characteristic zero because \(p\) is nonzero and not a unit. A smooth proper curve is projective [Stacks, [Tag 0A27](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-curve-affine-projective)]. In a projective embedding choose one hyperplane divisor, then another avoiding its finite support. Their affine complements cover \(C\); their intersection is affine because \(C\) is separated. The two-open Čech complex proves that every quasi-coherent sheaf on \(C\) has zero cohomology in degrees at least two.
+**Proof.** Choose a Cohen ring \(R\) for \(k\): this is a complete DVR with uniformizer \(p\) and residue field \(k\), whose existence for every characteristic-\(p\) field is proved in Coefficient rings and the Cohen structure theorem, Theorem 4.1; see also [Stacks, Tag 0328](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-cohen-rings-exist). It has characteristic zero because \(p\) is nonzero and not a unit. We first verify projectivity of \(C\). A nonconstant rational function extends to a finite morphism \(f:C\to\mathbf P^1_k\), by the algebraic DVR and proper quasi-finite argument of Lemma 5.A, which works in every characteristic. Put \(L_0=f^*\mathcal O(1)\). For a standard affine chart of the line, its inverse image \(W=C_s\) is affine, since \(f\) is finite. If \(x\in U\subset C\) is open, choose such a \(W\) containing \(x\) and a distinguished open \(W_b\) with \(x\in W_b\subset U\cap W\). The extension-after-a-power lemma in Coherent sheaves on projective schemes: Serre's theorems, Lemma 1.1, extends \(b\) as \(\sigma/s^m\), for a global section \(\sigma\) of \(L_0^m\). The section \(s\sigma\) vanishes outside \(W\) and has nonvanishing open exactly \(W_b\). These affine section opens form a basis, so \(L_0\) is ample. Lemma 1.3 of that lesson embeds a positive power into projective space; properness makes the immersion closed. Thus \(C\) is projective.
+
+In a projective embedding choose one hyperplane divisor, then another avoiding its finite support. Their affine complements cover \(C\); their intersection is affine because \(C\) is separated. The two-open Čech complex proves that every quasi-coherent sheaf on \(C\) has zero cohomology in degrees at least two.
 
 The successive quotients \(R/p^{n+1}\to R/p^n\) are small extensions. The cited deformation theorem places the obstruction to lifting \(C_n\) in \(H^2(C,T_C)=0\). Starting from \(C_1=C\), choose compatible smooth proper lifts \(C_n/R/p^n\).
 
-Choose a sufficiently high power \(L\) of an ample bundle so that it is very ample and \(H^1(C,L)=0\), using the exact open [very-ampleness](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-finite-type-over-affine-ample-very-ample) and [Serre vanishing](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-coherent-proper-ample) inputs. The square-zero units sequence proved in Picard groups and Grothendieck–Lefschetz places its lifting obstruction in \(H^2(C,\mathcal O_C)=0\). Thus it has compatible lifts \(L_n\) on the \(C_n\). Their successive reduction kernels are copies of \(L\); induction in the cohomology sequence gives \(H^1(C_n,L_n)=0\) and surjective reduction on sections. Lift a basis of \(H^0(C,L)\) compatibly. Nakayama makes these sections generate each \(L_n\), giving compatible maps
+Choose a sufficiently high power \(L\) of an ample bundle so that it is very ample and \(H^1(C,L)=0\), by Coherent sheaves on projective schemes: Serre's theorems, Lemma 1.3 and Theorem 2.2. The square-zero units sequence proved in Picard groups and Grothendieck–Lefschetz places its lifting obstruction in \(H^2(C,\mathcal O_C)=0\). Thus it has compatible lifts \(L_n\) on the \(C_n\). Their successive reduction kernels are copies of \(L\); induction in the cohomology sequence gives \(H^1(C_n,L_n)=0\) and surjective reduction on sections. Lift a basis of \(H^0(C,L)\) compatibly. Nakayama makes these sections generate each \(L_n\), giving compatible maps
 \[
 C_n\longrightarrow\mathbb P^N_{R/p^n}.
 \tag{5.3}
@@ -221,9 +311,15 @@ We check the geometric properties of this algebraization. At a closed-fibre poin
 
 For a smooth proper family, the geometric connected-component scheme is finite étale over the base, as in the proper-schemes lesson's component theorem. Its special fibre is one point, so over the strictly henselian \(R\) it is the trivial one-point cover. Hence every fibre is geometrically connected. Projectivity was built into the embedding. ∎
 
-This applies the deformation theorem together with the earlier projective existence and closed-subscheme algebraization proofs. Genus is constant in this family: proper flat perfect cohomology gives constant Euler characteristic, and the connected smooth fibres have \(h^0(\mathcal O)=1\), so \(h^1(\mathcal O)=g\). See the cohomology-and-base-change input already used in the Picard lesson [Stacks, [Tag 07VK](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-perfect-direct-image)].
+Genus is constant in this family by Base change and the Grothendieck complex, Theorem 3.2 and Corollary 4.1. Apply them to the proper family and its structure sheaf, which is flat over the Noetherian DVR \(R\). They give one bounded complex \(K^\bullet\) of finite projective \(R\)-modules computing coherent cohomology after every base change, including each geometric fibre. Since \(R\) is local, these modules are finite free. For every fibre field \(\Omega\), cancellation of the boundary dimensions in a finite complex gives
+\[
+\chi(\mathcal C_\Omega,\mathcal O_{\mathcal C_\Omega})
+ =\sum_i(-1)^i\dim_\Omega H^i(K^\bullet\otimes_R\Omega)
+ =\sum_i(-1)^i\operatorname{rank}_R K^i.
+\]
+The right side is independent of the fibre. A smooth geometrically connected proper curve over an algebraically closed field has \(H^0(\mathcal O)=\Omega\), by proper finiteness and integrality as above, and no coherent cohomology above degree one by the two-affine cover. Its Euler characteristic is therefore \(1-g\). Equality of these Euler characteristics proves that the geometric generic and special fibres have the same genus.
 
-**Corollary 5.3 (characteristic \(p\), with comparison).** With the same comparison input, every smooth proper connected curve of genus \(g\) over an algebraically closed field of characteristic \(p\) has
+**Corollary 5.3 (characteristic \(p\)).** Every smooth proper connected curve of genus \(g\) over an algebraically closed field of characteristic \(p\) has
 \[
 \pi_1'(C)\simeq\Gamma_g^{(p')}.
 \tag{5.4}
@@ -277,7 +373,20 @@ For an elliptic curve \(E/k\) over an algebraically closed field of characterist
 \]
 We give the cohomological proof, including the link to the usual \(p\)-rank distinction.
 
-Quasi-coherent cohomology is the same on the étale and Zariski sites [Stacks, [Tag 03P2](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-theorem-zariski-fpqc-quasi-coherent)], whose open proof supplies this comparison. The Artin–Schreier sequence on the étale site is
+**Quasi-coherent comparison.** For any scheme \(S\), any quasi-coherent module \(\mathcal F\), and every \(q\ge0\), there are canonical natural isomorphisms
+\[
+H^q(S_{\mathrm{Zar}},\mathcal F)
+ \simeq H^q(S_{\mathrm{\acute et}},\mathcal F_{\mathrm{\acute et}})
+ \simeq H^q((\mathrm{Sch}/S)_\tau,\mathcal F^a),
+\tag{6.4a}
+\]
+where \(\tau\) may be Zariski, étale, smooth, syntomic or fppf, and
+\(\mathcal F^a(T\xrightarrow{u}S)=\Gamma(T,u^*\mathcal F)\).
+No separation or quasi-compactness assumption on \(S\) is required.
+
+These are Topologies on schemes, Theorems 5.1 and 7.1, with complete proofs. Lemma 4.1 there contracts the augmented Amitsur complex after faithfully flat base change; faithful flatness then proves its exactness before base change for every module. Its Proposition 4.2 identifies this with each standard affine covering complex. The vanishing criterion in Cohomology on sites, Theorem 4.1, gives positive-degree vanishing on every affine object. Restriction to the Zariski site has zero higher direct images, since these vanish on affine opens; Leray gives the comparison on arbitrary schemes. Theorem 7.1 proves the big/small étale comparison by exact restriction and acyclic resolutions. These comparisons are constructed on abelian sheaves and commute with their additive maps. In particular they commute with Frobenius on the structure sheaf in characteristic \(p\). This is the programme proof of [Stacks, Tag 03P2](https://stacks.math.columbia.edu/tag/03P2).
+
+The Artin–Schreier sequence on the étale site is
 \[
 0\to\mathbb F_p\to\mathcal O_E
 \xrightarrow{F-1}\mathcal O_E\to0.
@@ -357,7 +466,9 @@ The classical complex curve is a compact orientable surface of genus \(g\), as e
 
 The specialization and proper-schemes lessons supply the exact DVR reduction, arithmetic Abhyankar theorem, universal-homeomorphism invariance, proper henselian equivalence, proper algebraically closed field invariance and homotopy sequence used here. The deformation course supplies the proved mixed-characteristic small-extension obstruction theorem; Lemma 5.2 applies it and verifies the algebraized family's properties. The Picard-curve lesson supplies the genus-one identification with its Picard scheme, and the abelian-varieties lesson supplies the degree of multiplication and the \(p\)-rank terminology.
 
-The reduced-fibre theorem and its separable variant have the exact linked Stacks proofs at Tags 09IL and 0BRR. Formal closed-embedding algebraization in Lemma 5.2 uses the earlier Algebraization of formal schemes, Theorem 1.1, with projective existence, as explained in its proof. Étale quasi-coherent cohomology is the comparison at Tag 03P2. The curve presentations use the comparison theorem explicitly; specialization alone has not supplied analytic algebraization or the topology of compact surfaces.
+The reduced-fibre theorem and its separable variant have the exact linked Stacks proofs at Tags 09IL and 0BRR. Formal closed-embedding algebraization in Lemma 5.2 uses the earlier Algebraization of formal schemes, Theorem 1.1, with projective existence, as explained in its proof. Étale quasi-coherent cohomology is the actual Topologies on schemes, Theorems 5.1 and 7.1, applied through the abelian-sheaf comparison (6.4a). The finite-cover comparison is Comparison with the classical topology, Proposition 2.1 and Theorem 3.1, with projective GAGA at the exact scope used here. Lemmas 5.A–5.B prove the polygon and genus calculations, using the earlier manifold sheaf/singular comparison, attaching-cell calculation, projective Serre duality and cohomological GAGA. The projectivity and ample-power arguments in Lemma 5.2 use the earlier Serre theorem lesson with its denominator and immersion proofs.
 
 - [Stacks] The Stacks Project authors, *The Stacks Project*, [official project](https://stacks.math.columbia.edu/). The tag links refer to the AI Integrated Stacks Project edition. Its [English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/) retains upstream tags. Relevant sections are Fundamental Groups of Schemes, specialization and tame ramification; More on Algebra, Abhyankar's lemma; More on Morphisms, the reduced-fibre theorem; and Cohomology of Schemes, formal algebraization.
 - [Grothendieck–Raynaud] A. Grothendieck and M. Raynaud, *Revêtements étales et groupe fondamental (SGA 1)*, [revised edition, arXiv:math/0206203](https://arxiv.org/abs/math/0206203), Exposé X, Sections 2–3, and Exposé XIII, Section 5, for specialization and Abhyankar's lemma.
+
+- [Gallier] Jean Gallier, *The Classification Theorem for Compact Surfaces and a Detour on Fractals*, [arXiv:0805.0562v1](https://arxiv.org/abs/0805.0562v1), Section 5.2, for the oriented polygon construction.

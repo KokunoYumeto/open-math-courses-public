@@ -365,7 +365,7 @@ Finally work on an affine open of \(Y\), and take a finite affine cover of \(X\)
 
 For a finite \(\ell\)-primary \(\Lambda\)-sheaf, filter its underlying abelian sheaf by powers of \(\ell\). The finitely many successive quotients are constructible \(\mathbf F_\ell\)-sheaves. Exact sequences and the preceding result give finite constructible underlying cohomology sheaves of its proper-support image. They are constructible as \(\Lambda\)-sheaves too: on each finite locally constant piece, the actions of the finitely many elements of \(\Lambda\) are morphisms of local systems. Bounded truncation again handles \(K\). Formula (3.2) and the degree bound were established by proper-support base change and proper cohomological dimension. For a structural map to a separably closed field, a constructible output has finite groups; if the map is proper, \(Rf_!=Rf_*\). The amplitude bound follows from the same finite spectral sequence. \(\square\)
 
-For \(\mathcal O\) the valuation ring of a finite extension of \(\mathbf Q_\ell\), this proposition applies to every \(\mathcal O/\pi^m\). It proves the finite-level proper finiteness used in the nearby-cycle argument. BM constructs proper support on complete complexes with bounded-below classical reductions, proves its choice-independent composition and arbitrary base change, and proves bounded constructibility defined by first derived reduction. BN proves uniform finite-level Tor bounds, closure under completed tensor and inverse image, and the completed proper-support projection formula with its coherent comparison maps. BO proves the finite-coefficient local finite-free theorem and constructs the actual compatible adic local model on each connected stratum. BP proves the equivalence of strict constructible systems with complete constructible sheaves in degree zero, including torsion and all their sheaf morphisms. BQ proves normalized constructible cohomology, bounded standard truncations, the strict-system heart, and t-exact completed inverse image and open extension. BR proves equivalence with the specified derived category of cartesian pro-étale coefficient diagrams, including all higher morphisms and their limit sequence. BS proves the corresponding étale-diagram comparison, including transitions and higher morphisms. BT proves bounded-derived realization at each finite coefficient ring, constructs the strict adic heart realization functor, and proves its low-degree comparisons and exact higher-effacement criterion. BU proves full adic heart realization in dimension zero over finite or algebraically closed fields, including torsion coefficients. BV constructs the adic exceptional right adjoint on whole coefficient diagrams, proves ordinary-image and internal-Hom constructibility, and proves singular biduality with its operation exchanges. BW proves the equivalence with actual completed-ring module complexes and constructs central rationalization, its heart and operations. BX proves the full comparison with constructible rational sheaves, including higher morphisms, integral models and ordinary-operation comparisons. BY proves integral and rational heart realization on curves and the formal reduction in general dimension. Higher-dimensional projection and effacement remain further steps. The proposition does not assert nonproper ordinary-direct-image finiteness.
+For \(\mathcal O\) the valuation ring of a finite extension of \(\mathbf Q_\ell\), this proposition applies to every \(\mathcal O/\pi^m\). It proves the finite-level proper finiteness used in the nearby-cycle argument. BM constructs proper support on complete complexes with bounded-below classical reductions, proves its choice-independent composition and arbitrary base change, and proves bounded constructibility defined by first derived reduction. BN proves uniform finite-level Tor bounds, closure under completed tensor and inverse image, and the completed proper-support projection formula with its coherent comparison maps. BO proves the finite-coefficient local finite-free theorem and constructs the actual compatible adic local model on each connected stratum. BP proves the equivalence of strict constructible systems with complete constructible sheaves in degree zero, including torsion and all their sheaf morphisms. BQ proves normalized constructible cohomology, bounded standard truncations, the strict-system heart, and t-exact completed inverse image and open extension. BR proves equivalence with the specified derived category of cartesian pro-étale coefficient diagrams, including all higher morphisms and their limit sequence. BS proves the corresponding étale-diagram comparison, including transitions and higher morphisms. BT proves bounded-derived realization at each finite coefficient ring, constructs the strict adic heart realization functor, and proves its low-degree comparisons and exact higher-effacement criterion. BU proves full adic heart realization in dimension zero over finite or algebraically closed fields, including torsion coefficients. BV constructs the adic exceptional right adjoint on whole coefficient diagrams, proves ordinary-image and internal-Hom constructibility, and proves singular biduality with its operation exchanges. BW proves the equivalence with actual completed-ring module complexes and constructs central rationalization, its heart and operations. BX proves the full comparison with constructible rational sheaves, including higher morphisms, integral models and ordinary-operation comparisons. BY proves integral and rational heart realization on curves and reduces higher-dimensional realization to the geometric fibre comparison (BY.26). BZ–CA establish the incidence and transverse-comparison inputs to the quadratic construction in CB. The resulting higher-dimensional deduction uses the stated coefficient and foundational hypotheses throughout. The proposition does not assert nonproper ordinary-direct-image finiteness.
 
 ### Proposition 3.3. Smooth trace from the affine line
 
@@ -635,7 +635,7 @@ Over an angular branch this quotient is the product with \(V\): every class has 
 
 Conversely, pull any local system to the convex covering domain. Transport gives its constant trivialization. If \(\Phi_{s,\theta}:V\to L_{e^{s+i\theta}}\) denotes transport from the fixed base lift, the loop calculation and concatenation give \(\Phi_{s,\theta+2\pi n}=\Phi_{s,\theta}T^n\). Hence this trivialization factors through (A.11), providing an isomorphism with the original local system on every branch and thus globally. A sheaf morphism commutes with transport, so its base-fibre map satisfies \(bT=T'b\). Conversely that equation makes the constant map \(b\) respect (A.11), and it descends to a unique sheaf morphism. Fibre evaluation and the quotient construction are therefore inverse on objects and morphisms. This construction also identifies restrictions to smaller punctured discs using transport along a fixed radial ray.
 
-The covering calculation is compared with Hatcher's freely accessible Chapter 1, Theorem 1.7 and its lifting proof; the local-system quotient and the transport compatibility required here have been constructed explicitly.
+For the covering calculation and its lifting proof, see Hatcher, Chapter 1, Theorem 1.7. The local-system quotient above includes the required transport compatibility.
 
 Cover it by \(A\), with angle \(-\pi<\theta<\pi\), and \(B\), with angle \(0<\theta<2\pi\). Their intersection has upper and lower components. The coordinates \((\log|z|,\theta)\) identify each region and intersection component with an open convex rectangle. Transport trivializes \(L\) there. Choose the two trivializations to agree on the upper component. In the lower component the trivialization coming from \(B\) differs from that from \(A\) by \(T\): its continuation has made one extra positive turn.
 
@@ -2566,7 +2566,7 @@ Indeed proper base change restricts this complex to the proper map over \(T\). B
 
 K.6–K.7 subsequently construct the compatible algebraic Whitney stratifications used in this statement. K.8 uses affine graph compactifications and finite open-cover descent to prove nonproper classical image constructibility without a global compactification theorem. The étale and normalized adic constructions have separate coefficient and geometric hypotheses.
 
-The general homotopy-invariance statement was compared with the freely accessible author copy of Haine–Porta–Teyssier, Theorem 0.4 and Section 5. At the bounded field-coefficient scope used here, J.1 gives a direct proof from proper base change and the interval calculation already established in this lesson. J.2–J.7 then give the local stabilization, compact finiteness, normal-support comparison and duality arguments themselves.
+For general homotopy invariance, see Haine–Porta–Teyssier, Theorem 0.4 and Section 5. At the bounded field-coefficient scope used here, J.1 gives a direct proof from proper base change and the interval calculation already established in this lesson. J.2–J.7 then give the local stabilization, compact finiteness, normal-support comparison and duality arguments themselves.
 
 
 ## Appendix K. Algebraic Whitney refinements and classical images
@@ -2790,7 +2790,7 @@ f^!G\simeq D_Xf^*D_YG
 
 for bounded algebraically constructible \(G\). The right side is bounded constructible, as just proved. Thus all six classical operations and internal Hom have the bounded algebraic constructibility asserted in Section 3, with the adjunctions, base change, projection and duality maps already constructed in H. These arguments use affine graph compactifications and finite open-cover descent; no unproved global compactification theorem is needed at this classical scope.
 
-The algebraic primitive statements were compared with the freely accessible Stacks Project entries on normalization, the Nullstellensatz, generic freeness and going down. Their needed proofs, including monomial division, the finite characteristic-zero going-down argument, the convergent prescribed-point arc and generic graph-fiber density, are written above. Kaloshin's free arXiv manuscript supplies a comparison for the generic Whitney and finite stratification statements; its external references and the unneeded real transversality proof are not imported as prerequisites.
+Monomial division, finite characteristic-zero going down, convergent prescribed-point arcs and generic graph-fiber density are the inputs to this complex-algebraic proof. For normalization, the Nullstellensatz, generic freeness and going down, see the Stacks Project references below. For generic Whitney regularity and finite stratifications, see [Kaloshin]. Real transversality is not required.
 
 
 ## Appendix L. Nodes, normalization and the actual branches
@@ -3536,7 +3536,7 @@ For \(n=1\) the kernel is the trivial group, as required. This proof uses neithe
 
 ### P.2. Kummer on a proper smooth curve
 
-AD.3 proves the degree-one identification by unit cocycles and line-bundle descent. Appendix R proves the higher vanishing by its function-field and valuation-sheaf calculation, as compared with [The multiplicative group on a curve, Theorem 4.2](course:ag-etale-cohomology/the-multiplicative-group-on-a-curve#4-higher-direct-images-of-rational-units). Together these give
+AD.3 proves the degree-one identification by unit cocycles and line-bundle descent. Appendix R proves the higher vanishing by its function-field and valuation-sheaf calculation, as in [The multiplicative group on a curve, Theorem 4.2](course:ag-etale-cohomology/the-multiplicative-group-on-a-curve#4-higher-direct-images-of-rational-units). Together these give
 
 \[
 H^1(C,\mathbf G_m)=\operatorname{Pic}(C),\qquad
@@ -3565,7 +3565,7 @@ H^2(C,\mu_n)&=\operatorname{Pic}(C)/n,
 \tag{P.7}
 \]
 
-and zero in degrees above two. The second equality in degree one follows because \(\mathbb Z\) has no torsion. The degree map identifies \(\operatorname{Pic}(C)/n\) with \(\mathbb Z/n\): if \(\deg L=na\), choose \(M\) of degree \(a\). Then \(L\otimes M^{-n}\) lies in \(J(k)\), and (P.4) supplies an \(n\)-th root of it. This proves the kernel assertion; a degree-one bundle proves surjectivity. Every group in (P.7) is therefore finite. Choosing a primitive \(n\)-th root identifies \(\mu_n\) with the constant sheaf \(\mathbb Z/n\). The choice is unnecessary for finiteness; the canonical degree map itself has coefficients \(\mu_n\). This is the Kummer deduction compared in [Stacks, Tag 03RN], with only the finiteness part of torsion used.
+and zero in degrees above two. The second equality in degree one follows because \(\mathbb Z\) has no torsion. The degree map identifies \(\operatorname{Pic}(C)/n\) with \(\mathbb Z/n\): if \(\deg L=na\), choose \(M\) of degree \(a\). Then \(L\otimes M^{-n}\) lies in \(J(k)\), and (P.4) supplies an \(n\)-th root of it. This proves the kernel assertion; a degree-one bundle proves surjectivity. Every group in (P.7) is therefore finite. Choosing a primitive \(n\)-th root identifies \(\mu_n\) with the constant sheaf \(\mathbb Z/n\). The choice is unnecessary for finiteness; the canonical degree map itself has coefficients \(\mu_n\). For the Kummer calculation, see [Stacks, Tag 03RN]. Only finiteness of torsion is used here.
 
 ### P.3. The finite boundary and compact supports
 
@@ -3794,7 +3794,7 @@ where the \(h_{ib}\) are homogeneous of degree \(d\), or zero. Thus there are at
 \tag{R.3}
 \]
 
-The preceding dimension argument gives a nonzero solution \(z\). Transcendence of \(t\) and linear independence of the \(w_i\) imply that the resulting tuple \(x\) is nonzero. Equation (R.2) gives \(f(x)=0\). This proves that \(F\) is \(C_1\). It also proves the same assertion for every algebraic extension of \(F\), since that extension still has transcendence degree one over \(k\). No passage of Brauer groups or cohomology through a field limit is used. This is the finite-coefficient form of the proof in [Brauer groups and Tsen's theorem, Section 5](course:ag-etale-cohomology/brauer-groups-and-tsen-s-theorem#5-tsen-s-theorem-by-bounded-polynomials), compared with [Stacks, function fields].
+The preceding dimension argument gives a nonzero solution \(z\). Transcendence of \(t\) and linear independence of the \(w_i\) imply that the resulting tuple \(x\) is nonzero. Equation (R.2) gives \(f(x)=0\). This proves that \(F\) is \(C_1\). It also proves the same assertion for every algebraic extension of \(F\), since that extension still has transcendence degree one over \(k\). No passage of Brauer groups or cohomology through a field limit is used. This is the finite-coefficient form of the proof in [Brauer groups and Tsen's theorem, Section 5](course:ag-etale-cohomology/brauer-groups-and-tsen-s-theorem#5-tsen-s-theorem-by-bounded-polynomials); see also [Stacks, function fields].
 
 ### R.2. From forms to degree-two cohomology
 
@@ -4501,7 +4501,7 @@ H^q(P,\mathcal O_P(m))=
 \tag{W.5}
 \]
 
-For fixed \(m\) each displayed sum is finite, including when it is empty. Thus every group is finite free, and positive-degree groups vanish for \(m\geq0\). If \(N=0\), there is one chart, every twist is the trivial line, and the answer instead is \(A\) in degree zero for every \(m\), zero in higher degrees. The decomposition and contractions involve only signed identity maps, so these particular cohomology calculations commute with *any* ring change. This assertion is about twists, not arbitrary coherent sheaves. It is the calculation in [Cohomology of projective space, Sections 1–3](course:AG-QC/cohomology-of-projective-space#1-the-monomial-section-complex), with the coefficient-wise contraction also compared against [Stacks, coherent cohomology prerequisites].
+For fixed \(m\) each displayed sum is finite, including when it is empty. Thus every group is finite free, and positive-degree groups vanish for \(m\geq0\). If \(N=0\), there is one chart, every twist is the trivial line, and the answer instead is \(A\) in degree zero for every \(m\), zero in higher degrees. The decomposition and contractions involve only signed identity maps, so these particular cohomology calculations commute with *any* ring change. This assertion is about twists, not arbitrary coherent sheaves. It is the calculation in [Cohomology of projective space, Sections 1–3](course:AG-QC/cohomology-of-projective-space#1-the-monomial-section-complex); see also [Stacks, coherent cohomology prerequisites] for the coefficient-wise contraction.
 
 ### W.4. Finite generation, descending induction and the fixed curve
 
@@ -5235,7 +5235,7 @@ The kernel consists precisely of regular units. Valuation zero at every closed p
 To prove surjectivity as a sheaf map, let \(D=\sum_y n_y[y]\) be a section of (S.2), with finite support. At each support point choose a rational representative of a uniformizer \(\pi_y\). Shrink an open neighbourhood \(W_y\) to remove the other support points and all the other zeros and poles of \(\pi_y\). Then
 
 \[
-\operatorname{ord}(\pi_y^{,n_y})|_{W_y}=D|_{W_y}.
+\operatorname{ord}(\pi_y^{n_y})|_{W_y}=D|_{W_y}.
 \tag{AB.11}
 \]
 
@@ -12742,7 +12742,7 @@ The free comparison source is [Bhatt–Scholze, version 2, §§2.2, 6.1 and 6.8]
 
 ## Appendix BY. Constructible effacement and realization on curves
 
-Let \(k\) be algebraically closed or finite, and let \(X\) be separated and of finite type over \(k\). Retain the complete discrete valuation ring \(O\), its finite residue field \(\kappa\), and its fraction field \(E\); the residue characteristic is invertible in \(k\). We prove realization in dimension at most one, including singular schemes, integral torsion and rational coefficients. We also give the reduction of the general realization problem to a precise projection assertion. The projection assertion in higher dimension is not assumed to have been proved.
+Let \(k\) be algebraically closed or finite, and let \(X\) be separated and of finite type over \(k\). Retain the complete discrete valuation ring \(O\), its finite residue field \(\kappa\), and its fraction field \(E\); the residue characteristic is invertible in \(k\). We prove realization in dimension at most one, including singular schemes, integral torsion and rational coefficients. The reduction in general dimension uses the precise projection assertion (BY.26). Appendix CB supplies its geometric argument from BZ–CA; the realization deduction retains the stated coefficient and foundational hypotheses of these appendices.
 
 We use the equivalent actual completed-ring category of BW, with unit \(\mathbf1_X=R_X\), and write \(\mathcal H_X\) for its constructible heart. Thus
 \[
@@ -13248,7 +13248,7 @@ Apply the version with \(P\) and \(P^\vee\) interchanged to \(G=\mathcal RF\). T
 \]
 The cone over a nonempty projective subset has dimension one larger, as is seen by trivializing the tautological line on its projective charts; adjoining the zero section adds a subset of dimension \(n\). This proves the bound also when the incidence subset is empty.
 
-For \(F\) on affine space, extend it by zero to projective space and restrict this candidate cone back to the affine open. The same dimension bound holds. CA.1–CA.4 prove that every transverse test pair is universally locally acyclic, and CA.5–CA.6 prove the canonical exceptional inverse-image comparison for transverse maps. These comparisons turn the candidate into a microsupport bound. The quadratic coordinate construction at infinity needed to apply that bound in (BY.26) remains a separate geometric step; general higher-dimensional realization is still subject to it.
+For \(F\) on affine space, extend it by zero to projective space and restrict this candidate cone back to the affine open. The same dimension bound holds. CA.1–CA.4 prove that every transverse test pair is universally locally acyclic, and CA.5–CA.6 prove the canonical exceptional inverse-image comparison for transverse maps. These comparisons turn the candidate into a microsupport bound. Appendix CB supplies the quadratic coordinate construction at infinity needed in (BY.26). Higher-dimensional realization uses that construction together with the coefficient comparisons and foundational hypotheses of BY–CA.
 
 The freely accessible source for the incidence construction and its dimension induction is [Beilinson, *Constructible sheaves are holonomic*, version 7, §§1.6 and 3](https://arxiv.org/abs/1505.06768v7). The arguments above supply the projective cohomology, kernel triangle, finite-support detection and covering steps used here.
 
@@ -13310,8 +13310,26 @@ For completeness, the criterion must also be checked at a geometric point \(z\) 
 
 It follows that the geometric stalks of \(Rr_{x,*}K\) are the cohomology of these geometric fibres: a geometric residue point is an affine inverse limit of quasi-finite neighbourhoods. The evaluation \(\underline{K_x}\to Rr_{x,*}K\) is obtained from the evaluation of sections on \(V_{(x)}\), whose derived sections are \(K_x\). On every geometric fibre it is exactly the local-acyclicity isomorphism at \(x\). This proves (CA.3) as a morphism of complexes.
 
-Now let \(V\xrightarrow{r}S\xrightarrow{g}T\), where \(g\) is smooth and \(r\) is universally locally acyclic relative to \(K\). For \(x\mapsto s\mapsto t\), and a geometric specialization \(\eta\to T_{(t)}\), the map
-\(S_{(s)}\times_{T_{(t)}}\eta\to S_{(s)}\) is ind-quasi-finite when the field of \(\eta\) is chosen algebraic over its residue field. General geometric fields give the same cohomology by AS field-extension comparison. Apply the base-change part of (CA.3):
+We specify the two limit reductions used in composing maps. First let \(L'/L\) be an extension of separably closed fields, let \(Z/L\) be qcqs, and let \(A\in D^+(Z_{\mathrm{\acute et}})\) have torsion cohomology of orders invertible in \(L\). The canonical pullback gives
+\[
+ R\Gamma(Z,A)\xrightarrow{\sim}
+ R\Gamma(Z_{L'},A|_{Z_{L'}}).
+\tag{CA.4a}
+\]
+To prove this, first suppose both fields are algebraically closed. They are then perfect. Every finitely generated \(L\)-subalgebra \(B\subset L'\) is a domain. The separating-normalization argument of M.1 supplies a nonzero \(b\in B\) for which \(B_b\) is smooth over \(L\); this localization is still a subalgebra of \(L'\). Given two such smooth subalgebras, form the subalgebra generated by their finite generating lists and localize it once more in this way. It contains both. Every element of \(L'\) belongs to one of them. Thus \(L'\) is the filtered union of smooth finitely generated \(L\)-subalgebras, and \(\operatorname{Spec}L'\to\operatorname{Spec}L\) is an affine inverse limit of smooth morphisms.
+
+Apply AS.7 to this change of base and the qcqs structural morphism \(Z\to\operatorname{Spec}L\). The étale topoi of the algebraically closed fields have exact sections by AB.1–AB.2, so the resulting ordinary direct-image comparison is exactly (CA.4a). This argument applies to the given bounded-below complex: AS.7 uses its common lower cohomological bound, rather than an unbounded totalization. No finite-type or properness assumption on \(Z\) has been introduced.
+
+For merely separably closed fields, choose compatible algebraic closures \(\overline L\subset\overline {L'}\). Each vertical extension is purely inseparable: a finite separable subextension of a separably closed field is trivial, and the separable/purely-inseparable decomposition in AH.1 applies to every algebraic element. BE.4 identifies the two vertical cohomology pullbacks with isomorphisms, for the actual pulled-back complex. The algebraically closed case gives the isomorphism between the two upper fields. The square of pullback maps commutes, so its remaining edge is (CA.4a). Its construction is compatible with restrictions and successive field extensions because the AS.7 and BE.4 maps have those compatibilities. This is the cohomology-invariance statement of [Stacks, Lemma 59.90.2(1)](https://stacks.math.columbia.edu/tag/0F0B), with its deduction from the earlier comparisons given here.
+
+Second, suppose \(\eta=\operatorname{Spec}\Omega\to\operatorname{Spec}B\) has image \(\mathfrak p\), and \(\Omega\) is algebraic over \(\kappa(\mathfrak p)=\operatorname{Frac}(B/\mathfrak p)\). Then \(\eta\to\operatorname{Spec}B\) is an affine inverse limit of quasi-finite morphisms. Indeed choose finitely many elements \(\alpha_1,\ldots,\alpha_a\) of \(\Omega\). Their monic algebraic equations have coefficients in \(\operatorname{Frac}(B/\mathfrak p)\). Invert a single nonzero \(u\in B/\mathfrak p\) containing all their denominators. The subalgebra
+\[
+ (B/\mathfrak p)_u[\alpha_1,\ldots,\alpha_a]\subset\Omega
+\]
+is finite over \((B/\mathfrak p)_u\), by the bounded-power argument of K.1. Its spectrum is therefore quasi-finite over \(\operatorname{Spec}B\): the composite is a finite morphism, followed by a principal open immersion and a closed immersion. These subalgebras form a directed system, since any two finite lists and their denominators fit in a third. Their union is \(\Omega\), as every element is algebraic. All transitions are affine, which proves the asserted inverse-limit presentation without requiring \(\Omega\) to be a finite extension.
+
+Now let \(V\xrightarrow{r}S\xrightarrow{g}T\), where \(g\) is smooth and \(r\) is universally locally acyclic relative to \(K\). Fix \(x\mapsto s\mapsto t\) and a geometric specialization \(\eta\to T_{(t)}\). It suffices to take the geometric field of \(\eta\) algebraic over the residue field of its image. To see this, pass to an algebraic closure of that geometric field using BE.4, take the algebraic closure of the image's residue field inside it, and apply (CA.4a) to the local fibres after this inclusion of algebraically closed fields. These local fibres are qcqs, since they are base changes of morphisms between the affine strict localizations. The comparison retains the chosen map to \(T_{(t)}\). The inverse-limit presentation just proved, followed by base change, makes
+\(S_{(s)}\times_{T_{(t)}}\eta\to S_{(s)}\) ind-quasi-finite. Apply the base-change part of (CA.3):
 \[
  R\Gamma(V_{(x)}\times_{T_{(t)}}\eta,K)
  \simeq
@@ -13458,7 +13476,7 @@ For general \(h\), factor it as its closed graph \(W\to W\times X\), followed by
 
 Thus the cone bound in BZ is a microsupport bound with the canonical exceptional comparison for transverse fibres. Appendix CB applies these results to a quadratic coordinate change at infinity, including characteristic two and finite-field choices.
 
-The freely accessible sources compared here are [Illusie's appendix to Deligne's *Théorèmes de finitude*, §§1.1 and 2.2–2.7, in the author-hosted SGA \(4\frac12\)](https://publications.ias.edu/node/378), [Beilinson, version 7, §§1.2–1.3 and 3.3–3.5](https://arxiv.org/abs/1505.06768v7), and [Saito, version 4, §7.4](https://arxiv.org/abs/1510.03018v4). CA.5 gives the needed exceptional comparison directly through the trait and its canonical evaluation map; it does not assume a characteristic-cycle pullback formula.
+For local acyclicity and transversality, see [Illusie's appendix to Deligne's *Théorèmes de finitude*, §§1.1 and 2.2–2.7, in the author-hosted SGA \(4\frac12\)](https://publications.ias.edu/node/378), [Beilinson, version 7, §§1.2–1.3 and 3.3–3.5](https://arxiv.org/abs/1505.06768v7), and [Saito, version 4, §7.4](https://arxiv.org/abs/1510.03018v4). CA.5 gives the needed exceptional comparison directly through the trait and its canonical evaluation map; it does not assume a characteristic-cycle pullback formula.
 
 ## Appendix CB. A quadratic projection with constant boundary comparison
 
@@ -13497,7 +13515,21 @@ Apply CA.4 to the bounded constructible complex
 \[
  L=\sigma^*j'_!H
 \]
-on \(W\). We obtain a closed conical microsupport \(C\subset T^*W\), containing zero, of dimension at most \(n+1\). There is a dense open \(Q\subset D'\) such that every geometric fibre \(C_q\) has dimension at most one. Indeed there are finitely many irreducible components of \(C|_{D'}\). Remove the closures of the images of those not dominating \(D'\). For each remaining component the generic fibre has dimension at most \((n+1)-n=1\); the generic dimension and shrinking argument of M.1 gives this bound on an open. This reasoning only uses a dimension bound, not equidimensionality or minimality of a singular support.
+on \(W\). We obtain a closed conical microsupport \(C\subset T^*W\), containing zero, of dimension at most \(n+1\). There is a dense open \(Q\subset D'\) such that every geometric fibre \(C_q\) has dimension at most one. Here is an algebraic proof of this uniform bound.
+
+Write \(D'=\operatorname{Spec}A\), where \(A\) is a polynomial ring in \(n\) variables over \(k\), and put \(F=\operatorname{Frac}A\). The closed subset \(C|_{D'}\) is affine and has finitely many irreducible components. Remove the closures of the images of the components which do not dominate \(D'\). For a remaining reduced component \(Z=\operatorname{Spec}B\), dominance makes \(A\to B\) injective. The transcendence-degree calculation in M.1 gives
+\[
+ r=\operatorname{trdeg}_{F}\operatorname{Frac}B
+   =\dim Z-n\leq1.
+\]
+Apply the monic-elimination argument of K.1 over the field \(F\). It gives algebraically independent \(t_1,\ldots,t_r\in B\otimes_A F\) such that \(B\otimes_A F\) is finite over \(F[t_1,\ldots,t_r]\). That argument uses only polynomial relations and division by a nonzero field element, so it applies in every characteristic.
+
+Choose finitely many \(A\)-algebra generators \(b_1,\ldots,b_s\) of \(B\). Each \(t_i\) belongs to \(B_f\) after inverting one nonzero \(f\in A\). Enlarge \(f\) by the finitely many denominators in the coefficients of monic equations for the \(b_j\) over \(F[t_1,\ldots,t_r]\). Their equations then have coefficients in \(A_f[t_1,\ldots,t_r]\). The inclusion of this polynomial algebra into \(B_f\) is injective, since the \(t_i\) are independent over \(F\). The bounded powers of the \(b_j\) in their monic equations generate \(B_f\) as a module over it, by K.1. Thus
+\[
+ A_f[t_1,\ldots,t_r]\longrightarrow B_f
+ \quad\text{is finite.}
+\]
+After tensoring with any geometric residue field \(\Omega\) at a point of \(\operatorname{Spec}A_f\), the resulting algebra is finite over \(\Omega[t_1,\ldots,t_r]\). For each prime of this fibre algebra, its domain quotient is integral over a quotient of the polynomial algebra. The fraction-field extension is algebraic, so its transcendence degree is at most \(r\), again by K.1. Consequently every irreducible component of that geometric fibre has dimension at most \(r\leq1\); an empty fibre contributes nothing. Taking the product of the finitely many choices of \(f\), and the preceding open complement of the nondominating images, gives the required dense open \(Q\). No flatness, equidimensionality or minimality of the microsupport is needed.
 
 Shrink \(Q\) to avoid \(\sigma^{-1}\overline Y\). This still leaves a dense open. A component of \(\overline Y\) is the closure of a component meeting \(T\), so it cannot be the hyperplane at infinity. Its intersection with that hyperplane has smaller dimension, by the dimension calculation in M.1/Y. Thus \(\overline Y\) does not contain the whole chart \(D'\).
 
