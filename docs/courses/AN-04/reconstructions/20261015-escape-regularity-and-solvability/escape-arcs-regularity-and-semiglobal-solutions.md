@@ -2,11 +2,11 @@
 
 An escape arc carries information from outside a compact support to a characteristic point inside it. A rank-one arc uses quasi-concavity. A rank-two leaf uses the stronger minimum principle on its reduced complex surface. We prove the compact-support regularity conclusion with the actual endpoint geometry, then discharge the adjoint gain assumed in the preceding strict-loss lesson.
 
-The antecedents are Hörmander IV, Theorems 26.11.2–3 and the two-ended condition in Theorem 26.11.1(i), printed pages 161–163 of the approved 2009 eBook, ISBN 978-3-642-00136-9. The endpoint factorization is Proposition 26.5.5, printed 113. We use the exact earlier programme proofs in the proof map. Our argument checks comparison locally on every affected compact fiber; it does not assume that a patched symbol satisfies condition (P) on unrelated curves.
+The antecedents are Hörmander IV, Theorems 26.11.2–3 and the two-ended condition in Theorem 26.11.1(i), printed pages 161–163 of the 2009 eBook, ISBN 978-3-642-00136-9. The endpoint factorization is Proposition 26.5.5, printed 113. We use the exact earlier programme proofs in the proof map. Our argument checks comparison locally on every affected compact fiber; it does not assume that a patched symbol satisfies condition (P) on unrelated curves.
 
 The regularity and existence theorems under the two-ended arc condition are proved below. [Strict-loss solvability](../20261015-strict-loss-solvability/strict-sobolev-loss-and-compact-solvability.html) supplies the analytic construction with its gain discharged here. [The trapping criterion](../20261015-trapped-characteristics-and-principal-type/trapped-characteristics-and-the-escape-criterion.html) proves the geometric equivalence with the stationary singleton convention. The compact-support gain includes the nonproper case in PR0; existence retains proper support.
 
-Original exposition, proofs, solutions and figure are CC0-1.0.  The remaining human foundations are external; internal P514 closure of this export is not claimed.
+Original exposition, proofs, solutions and figure are CC0-1.0.  The remaining human foundations are external.
 
 ## 1. The exact escape hypothesis
 
@@ -290,4 +290,4 @@ Thus a statement about the base support of a symbol does not by itself justify d
 
 ![A nonnegative endpoint cap outside the support turns a one-ended zero interval into a compact active fiber with two positive faces.](figures/escape-cap-and-active-fiber.svg)
 
-The [figure source](figures/build_figure.py), [exact finite checks](model-check.json), source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the editable proof. [Strict-loss solvability](../20261015-strict-loss-solvability/strict-sobolev-loss-and-compact-solvability.html) supplies the analytic construction with its gain discharged here. [The trapping criterion](../20261015-trapped-characteristics-and-principal-type/trapped-characteristics-and-the-escape-criterion.html) proves the geometric equivalence with the stationary singleton convention. The compact-support gain includes the nonproper case in PR0; existence retains proper support.
+[Computational material](figures/build_figure.py) accompanies the text. [Strict-loss solvability](../20261015-strict-loss-solvability/strict-sobolev-loss-and-compact-solvability.html) supplies the analytic construction with its gain discharged here. [The trapping criterion](../20261015-trapped-characteristics-and-principal-type/trapped-characteristics-and-the-escape-criterion.html) proves the geometric equivalence with the stationary singleton convention. The compact-support gain includes the nonproper case in PR0; existence retains proper support.

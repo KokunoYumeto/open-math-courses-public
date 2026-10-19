@@ -4,7 +4,7 @@ An evolution with a nonnegative operator multiplying a fixed self-adjoint operat
 
 The antecedents are Hörmander IV, Theorem 26.8.1, Lemma 26.8.2 and Theorem 26.8.3, printed pages 134–137 of the 2009 edition. The lesson gives independent proofs, including the continuous functional calculus and sign decomposition needed for these results. An absolutely norm-convergent resolvent formula supplies the square-root bound directly. There is no omitted appeal to a spectral measure or contour integral.
 
-Original expression, exercises and figure are CC0-1.0. The proof map connects the Hilbert, integration and elementary prerequisites to exact earlier proofs. Linked human foundations remain external, so internal export P514 closure is not claimed. 
+Original expression, exercises and figure are CC0-1.0. The proof map connects the Hilbert, integration and elementary prerequisites to exact earlier proofs. Linked human foundations remain external. 
 
 ## 1. The full statements and the operator conventions
 
@@ -324,4 +324,4 @@ At \(r=0\) all these commutators vanish. For \(r>0\), (NT3) applies whenever \(T
 
 ![The actual and bounded double commutator norms, the allowed time threshold, and the growth of the solution-estimate constant.](figures/operator-commutators-and-time-window.svg)
 
-The [figure generator](figures/build_figure.py), [exact checks](model-check.json), source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the complete argument. [Frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) and [adaptive principal estimates](../20261012-adaptive-principal-estimate/adaptive-scales-and-principal-type-estimates.html) apply the operator inequalities. The small-time norm bound and the unrestricted positive energy estimate retain their distinct hypotheses.
+[Computational material](figures/build_figure.py) accompanies the text. [Frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) and [adaptive principal estimates](../20261012-adaptive-principal-estimate/adaptive-scales-and-principal-type-estimates.html) apply the operator inequalities. The small-time norm bound and the unrestricted positive energy estimate retain their distinct hypotheses.

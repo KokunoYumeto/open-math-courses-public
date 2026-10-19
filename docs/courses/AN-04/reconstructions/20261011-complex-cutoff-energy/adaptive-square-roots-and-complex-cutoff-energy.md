@@ -2,7 +2,7 @@
 
 A complex cutoff carries a phase. The favorable imaginary part of the differential operator absorbs that phase, but pointwise absorption alone does not prove an operator inequality. We construct a square root on each frequency band, control its full operator square and both commutators, and then sum the bands. The resulting estimate uses exactly the measured forcing and incoming data of the real-cutoff theorem.
 
-The mathematical antecedent is Hörmander IV, Proposition 26.6.1′, printed page 120 of the 2009 edition. The [real-cutoff proof](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) and [local phase analysis](../20261011-complex-cutoff-absorption/local-sign-geometry-and-complex-cutoff-phase.html) remain useful. The joint operator inequality CA13 is proved here with the full operator form. Our metric extension and the proof organization below are independent exposition. Original text, exercises and figure are CC0-1.0; earlier components retain their recorded terms. Human foundations remain external, so this export does not claim internal P514 closure.
+The mathematical antecedent is Hörmander IV, Proposition 26.6.1′, printed page 120 of the 2009 edition. The [real-cutoff proof](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) and [local phase analysis](../20261011-complex-cutoff-absorption/local-sign-geometry-and-complex-cutoff-phase.html) remain useful. The joint operator inequality CA13 is proved here with the full operator form. Our metric extension and the proof organization below are independent exposition. Original text, exercises and figure are CC0-1.0; earlier components retain their recorded terms. Human foundations remain external.
 
 ## 1. The statement and the operator form to estimate
 
@@ -326,4 +326,4 @@ For the invariant geometric direction, read [intrinsic directed propagation](../
 
 ![Adaptive metric exponents and the precise complex-cutoff commutator bound at the quarter endpoint.](figures/adaptive-root-scales.svg)
 
-[Figure source](figures/build_figure.py), [finite checks](model-check.json), proof map, source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany this lesson.
+[Computational material](figures/build_figure.py) accompanies the text. The prerequisite proof index gives the earlier results used here.

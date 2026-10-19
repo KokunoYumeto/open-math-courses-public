@@ -6,7 +6,7 @@ The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial 
 
 The earlier [test-space companion](../20261004-free-tangent-zoom/prerequisites/complete-test-spaces.html), TG:B1–B3, supplies complete-metric Baire and the original seminorm topology. The fixed-support companion, KS:S1–S4, supplies actual Hilbert spaces, compact embeddings and dual pairings. The [Hilbert companion](../20261004-free-canonical-composition/compactness-and-essential-norms.html), CT:T1, proves representation and compact-adjoint facts. The [graph lesson](../20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.html), GE:D7–D10, supplies the complete graph calculus. We use these precise results and prove the additional functional-analytic steps below.
 
-This exposition, its three solved exercises and its illustration are independent expression, CC0-1.0. Referenced components retain their own terms. The proof map records exact providers; human foundations remain external, so internal P514 closure is unclaimed.
+This exposition, its three solved exercises and its illustration are independent expression, CC0-1.0. Referenced components retain their own terms. The proof map records exact providers; human foundations remain external.
 
 ## 1. Five conditions, with all quantifiers retained
 
@@ -292,4 +292,4 @@ Its kernel is exactly the constants. Its range consists exactly of functions wit
 
 ![Exact Fourier multipliers of a compact correction and identity plus that correction, showing the one-dimensional constant-mode obstruction.](figures/compact-correction-and-obstruction.svg)
 
-The source record, [proof review](proof-review.json), [finite checks](model-check.json) and [reader checks](reader-check.json) accompany this lesson. The [geometric companion](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html) gives the sign equivalences. [The necessity argument](../20261011-condition-psi-necessity/condition-psi-necessity-and-approximate-adjoint-solutions.html) uses the uniform adjoint estimate to exclude forbidden sign transitions, including flat transitions.
+The [geometric companion](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html) gives the sign equivalences. [The necessity argument](../20261011-condition-psi-necessity/condition-psi-necessity-and-approximate-adjoint-solutions.html) uses the uniform adjoint estimate to exclude forbidden sign transitions, including flat transitions.

@@ -1,6 +1,6 @@
 # From modular forms to adelic functions
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A classical cusp form carries three kinds of data: its weight at infinity, its congruence condition at finite primes, and its vanishing at every cusp. We will put these into a single function and recover the classical form from that function. The two numerical comparisons at the end are part of the dictionary: an unnormalized spherical convolution and a classical Hecke operator have different eigenvalues, and a fixed adelic Haar measure gives a level-dependent multiple of the Petersson product.
 

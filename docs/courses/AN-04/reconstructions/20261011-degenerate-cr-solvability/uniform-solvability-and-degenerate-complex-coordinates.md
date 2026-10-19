@@ -4,7 +4,7 @@ The coefficient of a Cauchy–Riemann operator may vanish, and its dependence on
 
 The antecedents are Hörmander IV, Lemmas 26.7.1–5, Theorem 26.7.6 and Corollaries 26.7.7 and 26.7.9, printed pages 124–132 of the 2009 edition. We give independent proofs, including the exact resolvent identities, all six auxiliary commutator bounds, the infinite-weight construction, the time-continuity argument and the bounded parameter factorization. [The boundary-barrier and quotient companion](../20261011-degenerate-analytic-quotient/boundary-barriers-and-degenerate-analytic-quotients.html) proves Corollary 26.7.8 and Theorems 26.7.10–11.
 
-Original expression, exercises and figure are CC0-1.0. Exact earlier providers are pinned in the proof map; linked components retain their terms. The human foundations remain external, so internal export P514 closure is not claimed.
+Original expression, exercises and figure are CC0-1.0. Exact earlier providers are pinned in the proof map; linked components retain their terms. The human foundations remain external.
 
 ## 1. Coefficients with no controlled time derivatives
 
@@ -301,4 +301,4 @@ The identity also holds after integration in \(t\), and extends by density when 
 
 ![A degenerate complex coordinate with a collapsed time interval and successive spatial smoothing products.](figures/degenerate-coordinate-and-products.svg)
 
-[Figure source](figures/build_figure.py), [finite checks](model-check.json), source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the proof. [Boundary barriers and the analytic quotient](../20261011-degenerate-analytic-quotient/boundary-barriers-and-degenerate-analytic-quotients.html) supplies the two-sided activity, quotient topology and holomorphic factorization. The [Hilbert-space operator estimates](../20261012-nirenberg-treves-operator/nirenberg-treves-estimates-and-square-root-commutators.html) provide the next analytic tools.
+[Computational material](figures/build_figure.py) accompanies the text. [Boundary barriers and the analytic quotient](../20261011-degenerate-analytic-quotient/boundary-barriers-and-degenerate-analytic-quotients.html) supplies the two-sided activity, quotient topology and holomorphic factorization. The [Hilbert-space operator estimates](../20261012-nirenberg-treves-operator/nirenberg-treves-estimates-and-square-root-commutators.html) provide the next analytic tools.

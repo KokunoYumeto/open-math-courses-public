@@ -1,8 +1,8 @@
 # Good filtrations and the characteristic variety
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Ore-fraction identities and reference-link corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; both full involutivity and Bernstein proofs retained.*
+
 
 The two operators \(x\partial\) and \(x^2\partial-1\) on the line have leading symbols \(x\xi\) and \(x^2\xi\). Both vanish on the same cross in the cotangent plane: the zero section and the fiber over zero. But the second symbol vanishes twice along that fiber. We will attach this geometric support, together with its multiplicities, to the module of an equation. The construction must survive changing the generators and the filtration used to expose the leading terms.
 

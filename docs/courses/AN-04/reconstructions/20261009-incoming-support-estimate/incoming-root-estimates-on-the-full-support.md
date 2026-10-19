@@ -4,7 +4,7 @@ Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI)
 
 A diffraction estimate uses an incoming first-order factor on an entire conic support. Knowing the principal square root, or knowing regularity at one arbitrary spacetime covector, does not establish that norm. We construct the full matrix factor, transport its cutoff with the matrix commutator retained, identify the actual weak Cauchy trace, and prove the required norm from a regular incoming germ.
 
-The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, approved Springer 2007 eBook, Section 24.4, equation (24.4.14) and its justification on printed pages 448–449. The complete proofs used here are the [ordered calculus and systems evolution](../20261007-restored-first-order-systems/first-order-systems-and-ordered-evolution.md), [matrix oscillatory Cauchy construction](../20261007-restored-oscillatory-cauchy/oscillatory-cauchy-kernels-and-exact-evolution.md), [ordered graph transport](../20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md), and [normal root algebra](../20261007-restored-boundary-reflection/boundary-reflection-preparation.md). The actual weak trace is supplied by [WSL:L6](../20261008-weak-source-lift/weak-source-lifting-and-normal-flux.md). We give the receiving matrix and rough-source arguments below. The proof map retains exact earlier providers; transitive Lebl proofs remain external. Internal P514 closure of this export is not claimed.
+The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, Section 24.4, equation (24.4.14) and its justification on printed pages 448–449. The complete proofs used here are the [ordered calculus and systems evolution](../20261007-restored-first-order-systems/first-order-systems-and-ordered-evolution.md), [matrix oscillatory Cauchy construction](../20261007-restored-oscillatory-cauchy/oscillatory-cauchy-kernels-and-exact-evolution.md), [ordered graph transport](../20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.md), and [normal root algebra](../20261007-restored-boundary-reflection/boundary-reflection-preparation.md). The actual weak trace is supplied by [WSL:L6](../20261008-weak-source-lift/weak-source-lifting-and-normal-flux.md). We give the receiving matrix and rough-source arguments below. The proof map retains exact earlier providers; transitive Lebl proofs remain external. 
 
 ## 1. What the incoming hypothesis means
 
@@ -204,14 +204,14 @@ The construction is fixed for these two supports before taking any Sobolev norms
 \]
 with \(PW\) tangentially regular in every \(L^2H^m\) on one fixed neighborhood. The normal-cap correction is ordinarily regular near the characteristic set, so a regular incoming germ of \(U\) is a regular incoming germ of \(W\). It also preserves every original compressed H1 order by ECR:M7. Therefore I0–I6 apply to \(W\), with its exact source, complete matrix coefficients and all localization terms retained. They verify LG4 on both entire chosen supports.
 
-For the Dirichlet reduction, LG:L7 already proves that the actual value trace of \(W\) is tangentially smooth. Consequently the finite-order theorem LG:L0 now has a proved incoming hypothesis: whenever its remaining local mixed-norm hypothesis holds at order \(s\), it gives
+For the Dirichlet reduction, LG:L7 already proves that the actual value trace of \(W\) is tangentially smooth. Consequently the finite-order theorem LG:L0 now has a proved incoming hypothesis: whenever its remaining local mixed-norm hypothesis holds at order \(s\), it gives 
 \[
  KW\in\mathcal X_{s+1/2},\qquad
  \gamma D_xW\in H^{s-1/2}
                       \quad\hbox{near the strict anchor}.
  \tag{IS22}
-\]
-No incoming condition has been added beyond the regular incoming germ and the source neighborhood stated in I0. This result does not itself prove that iteration of (IS22) keeps one common propagation neighborhood, nor that the surviving Neumann/Robin boundary form has the necessary estimate. In the Neumann/Robin reduction I0–I6 still control the incoming factor, but they do not convert its boundary datum into a smooth Dirichlet value. Full strict propagation and the full AN-04 objective remain active.
+\] No incoming condition has been added beyond the regular incoming germ and the source neighborhood stated in I0. This result does not itself prove that iteration of (IS22) keeps one common propagation neighborhood, nor that the surviving Neumann/Robin boundary form has the necessary estimate. In the Neumann/Robin reduction I0–I6 still control the incoming factor, but they do not convert its boundary datum into a smooth Dirichlet value.
+
 
 ## 8. Three solved exercises
 

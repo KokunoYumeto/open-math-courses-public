@@ -250,7 +250,7 @@ Choose an integer \(\nu>r\) and the isotropic shrinking pullback
  x=h^\nu y,\qquad D_x=h^{-\nu}D_y,\qquad dx=h^{n\nu}dy.                  \tag{HN26}
 \]
 
-It preserves both cones exactly. This is equivalently \(y=\rho^\nu x\). The printed coordinate formula on the approved 2007 H3 edition, PDF page 418 has the inverse dilation; the following coefficient-freezing estimate requires HN26. For example, a coefficient \(1+x_1\) becomes \(1+h^\nu y_1\) under HN26, whereas the inverse formula would sample \(1+h^{-\nu}y_1\). We use the actual shrinking map throughout.
+It preserves both cones exactly. This is equivalently \(y=\rho^\nu x\). The printed coordinate formula on the 2007 H3 edition, PDF page 418 has the inverse dilation; the following coefficient-freezing estimate requires HN26. For example, a coefficient \(1+x_1\) becomes \(1+h^\nu y_1\) under HN26, whereas the inverse formula would sample \(1+h^{-\nu}y_1\). We use the actual shrinking map throughout.
 
 For the full pulled-back adjoint,
 

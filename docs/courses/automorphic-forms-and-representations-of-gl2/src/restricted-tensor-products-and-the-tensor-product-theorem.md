@@ -1,6 +1,6 @@
 # Restricted tensor products and the tensor product theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 An adelic vector has finite level. Outside finitely many primes it is fixed by the standard maximal compact subgroup. The tensor product theorem says considerably more: in an irreducible admissible representation, every place has its own irreducible representation, and the adelic module is assembled from them. The local representations are determined by the adelic module, although a particular tensor product isomorphism and particular spherical vectors need not be canonical.
 
@@ -472,17 +472,17 @@ is an isomorphism. Indeed \(V\) is a direct sum of copies of \(M\), and
 
 Changing the identification of \(M\), changing its nonzero spherical vector, or scaling a global isomorphism changes the map while preserving every local isomorphism class. With fixed local models and fixed reference vectors, two global isomorphisms differ by a scalar: the global simple admissible module has scalar endomorphisms by its finite corner. The theorem asserts uniqueness of the local representations up to isomorphism, not a canonical map with canonical vectors.
 
-## 9. What this lesson does not prove, and source comparison
+## 9. Proofs and prerequisites
 
-The algebraic results promised here are proved: the restricted-product construction and choice independence on lines; the exact finite adelic Hecke-algebra product; the two-algebra factorization lemma with local units; admissibility and irreducibility of the constructed representations; full mixed Flath factorization; almost-everywhere unramifiedness; and uniqueness. The archimedean algebra is used through compatible \((\mathfrak g,K)\)-modules, with its local-unit realization explained in Section 2.
+The algebraic results are: the restricted-product construction and choice independence on lines; the exact finite adelic Hecke-algebra product; the two-algebra factorization lemma with local units; admissibility and irreducibility of the constructed representations; full mixed Flath factorization; almost-everywhere unramifiedness; and uniqueness. The archimedean algebra is used through compatible \((\mathfrak g,K)\)-modules, with its local-unit realization explained in Section 2.
 
-The following earlier inputs remain with their owners.
+The prerequisites and their proof locators are as follows.
 
 - Compact unitarization is in the compact representation prerequisite, Proposition 1.2, and its Hilbert-space decomposition is Theorem 3.1; Schur orthogonality is in Matrix coefficients and the Peter–Weyl theorem, Theorem 2.1. Both are linked in Section 2.
 - Smooth nonarchimedean representations and nondegenerate Hecke modules are equivalent by Lesson 5, Proposition 2.1; its Proposition 1.1 gives the averaging projections. The interpolation and extension arguments needed beyond that dictionary are proved here.
-- Admissibility and the finite-vector comparison for cuspidal Hilbert constituents are the analytic inputs of Lesson 3, Theorem 3.2 and Section 4, together with the discreteness theorem of Lesson 4. The new proof here applies to the resulting algebraic modules.
+- Admissibility and the finite-vector comparison for cuspidal Hilbert constituents are the analytic inputs of Lesson 3, Theorem 3.2 and Section 4, together with the discreteness theorem of Lesson 4. The factorization argument applies to the resulting algebraic modules.
 - The real holomorphic type \(D_k\) is proved in Lesson 11, Theorem 7.1. Its Section 11 isolates smooth globalization and the analytic comparison results. No globalization theorem is used to prove Theorem 6.1.
-- The general newform-to-constituent identification, nonzero factored global Whittaker functional and global multiplicity one are reserved for Lesson 15. The conditional statements of Lesson 8, Section 5, continue to identify those separate hypotheses.
+- The general newform-to-constituent identification, nonzero factored global Whittaker functional and global multiplicity one are treated in Lesson 15. The conditional statements of Lesson 8, Section 5, continue to identify those separate hypotheses.
 
 Flath’s tensor product theorem is treated in the following free texts: Jacquet–Langlands, [*Automorphic Forms on GL(2)*](https://publications.ias.edu/sites/default/files/automorphic-forms-on-gl2_rpl.pdf), Section 9, Proposition 9.1 and Lemmas 9.1.1–9.1.2, and in Getz–Hahn, [*An Introduction to Automorphic Representations*](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf), draft of April 2022, Sections 5.6–5.7, Theorems 5.7.1–5.7.2.
 

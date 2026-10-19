@@ -314,6 +314,6 @@ It is positive and of order \(-1/3\), uniformly on the smaller input cone. The e
 
 The right panel plots the exact numerical modulus \(|F_+(b-qk)/F_+(b)|\), with \(a=0.04\), \(R=\lambda=256\), \(b=aR^{2/3}\), \(k=R^{2/3}\), and \(0\le q\le0.34\). The turning point is \(q=a\), and the same interior slab is shaded. This finite-frequency illustration is not used to prove IR20; that proof uses the exact differentiated Airy bounds. The drawing retains its reproducible generator and labels the logarithmic vertical scale.
 
-The new extraction estimate supplies the interior half of coefficient recovery. Enhanced boundary-trace recovery, a combined weighted reverse estimate, removal of the equation error with all localized complements, and representation of every general energy solution remain active. All other outstanding AN-04 obligations remain active as well. The 92 human foundation proofs inherited by this dependency chain remain external; this CC0 export does not claim internal P514 closure.
+The extraction estimate gives the interior half of coefficient recovery. Representing an arbitrary energy solution also requires the enhanced boundary trace, the combined weighted reverse estimate, the equation correction and all localized complements. Some prerequisite proofs are external readings linked by the proof index.
 
 Original exposition, solutions and illustration: CC0-1.0. The linked primary sources and programme components retain their respective terms. 

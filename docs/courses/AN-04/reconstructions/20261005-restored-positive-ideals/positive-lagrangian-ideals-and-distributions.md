@@ -631,12 +631,12 @@ The division input and its induction are located in Hörmander I, Theorems 7.5.6
 
 All exposition, supporting proofs, models and solved exercises in this lesson are original. The complex analytic contracts used here now have complete local proofs in the companion and its contour/Gaussian foundations, with exact earlier programme prerequisites. Their source citations give credit and do not replace those proofs. The local leading-residue theorem also leaves the additional global complex symbol structure as a separate question.
 
-The restored lesson, complete analytic companion and exact current prerequisites have been reviewed for their stated scope.
 
-## Sources and restoration
+
+## Sources <a id="sources-and-restoration"></a>
 
 The sources are Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, all of Section 25.4, and *The Analysis of Linear Partial Differential Operators I*, Sections 7.5, 7.7, 7.8 and 8.1; Section 14 lists the exact results used.  The source degree discrepancy and uniform-symbol-ideal qualification remain explicit.
 
-The source and restoration record lists the exact proofs used. The seventeen original exercise statements and solutions remain unchanged. Both original illustrations and their reproducible sources are retained with the complete DejaVu, STIX and BaKoMa notices.
+The seventeen original exercise statements and solutions remain unchanged. Both original illustrations and their reproducible sources are retained with the complete DejaVu, STIX and BaKoMa notices.
 
 Original lesson and seventeen solutions: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. The authorship of the analytic companion and the illustration is recorded in the source record. Foundational exposition: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. Earlier programme components retain their own licences. 

@@ -1,6 +1,6 @@
 # Unramified representations of GL₂(F) and Satake parameters
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A spherical vector records an irreducible local representation through two numbers: the eigenvalues of a nearest-neighbor Hecke operator and of a central translation. The Satake transform turns these into an unordered pair of nonzero complex numbers. We will identify the representation belonging to every pair, including the exceptional pairs for which the induced representation is reducible, and derive the precise comparison with a classical Fourier coefficient.
 
@@ -433,13 +433,13 @@ Finally substitute \(s=w-(k-1)/2\) in (3.8). Then
 
 ## 7. What this lesson does not prove
 
-The four assigned representation and dictionary results have been proved above. The external inputs used in those proofs are the following.
+The preceding representation and dictionary results use the following prerequisites.
 
 - Cartan and Iwasawa decompositions are NT-ADL-11, Theorem 11.2 and Proposition 11.4. The spherical algebra and normalized Satake isomorphism are NT-ADL-12, Theorems 12.2–12.4. The latter already proves the normalization of (1.2); our coset computation checks its representation-theoretic interpretation.
 - Smooth Hecke modules, compact averages and uniqueness of a simple module from a nonzero simple corner are Lesson 5, Propositions 1.1 and 2.1 and Theorem 3.1. Admissibility of irreducible smooth \(\mathrm{GL}_2(F)\)-representations is proved in Lesson 6, Theorem 5.4; Getz–Hahn, Theorem 5.3.4, is the original reference.
 - The principal-series criterion, two exceptional sequences and Steinberg irreducibility are Lesson 7, Theorem 4.2. Normalized reciprocity, the principal Jacquet calculation and the noncuspidal embedding are Lesson 6, Theorems 3.1, 4.1 and 5.1. Their full proofs are not repeated here.
 - The generic standard \(L\)-factor is Lesson 9, Theorem 1.1. The agreement of determinant-character factors with matrix zeta integrals is its Section 8, the stated Jacquet–Langlands §13 input. We have kept that distinction in (3.8).
-- The classical lift, central-character convention and exact Hecke factor are Lesson 2, Proposition 1.1 and Section 5. The cuspidal Hilbert decomposition and constituent projections are Lessons 3–4; the tensor-product theorem is Lesson 12, Theorem 6.1. Good-prime equality of parameters does not itself prove the global uniqueness assertion assigned to Lesson 15.
+- The classical lift, central-character convention and exact Hecke factor are Lesson 2, Proposition 1.1 and Section 5. The cuspidal Hilbert decomposition and constituent projections are Lessons 3–4; the tensor-product theorem is Lesson 12, Theorem 6.1. Good-prime equality of parameters does not itself prove the global uniqueness assertion in Lesson 15.
 - The unitary and tempered classifications are proved in Lesson 7, Theorems 7.1–7.2, with Tadić's Theorem D and §7.5 and Getz–Hahn, Theorem 8.4.5, retained as original authorities. Deligne's purity assertion is LG-GAL-12, Section 4, equation (22), based on Deligne 1974, Theorem (8.2). We prove its scaling and triangle-inequality deductions here.
 
 The general Satake isomorphism for unramified reductive groups and the general construction of the dual group belong to the global Langlands prerequisite. Only the explicit \(\mathrm{GL}_2\) isomorphism is used in this lesson.

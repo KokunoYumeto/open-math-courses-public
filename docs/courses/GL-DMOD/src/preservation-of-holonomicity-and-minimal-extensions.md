@@ -1,6 +1,6 @@
 # Preservation of holonomicity and minimal extensions
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A holonomic system has the smallest possible characteristic dimension. Its equations may acquire poles under localization, and its direct image may acquire cohomology, but each resulting differential-operator module still has that same minimal dimension relative to its new ambient variety. We prove this preservation before using it to extend a connection across a boundary with no extra submodule or quotient on that boundary.
 

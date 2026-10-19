@@ -1,6 +1,6 @@
 # Equivariant and twisted D-modules
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A symmetry of a differential equation can mean two different things. The group may transport the equation compatibly, or that transport may itself be horizontal in the group direction. The second condition is what allows the equation to live on a quotient stack. A twist changes another part of the data: it changes how local differential operators are identified when a line bundle changes frame.
 

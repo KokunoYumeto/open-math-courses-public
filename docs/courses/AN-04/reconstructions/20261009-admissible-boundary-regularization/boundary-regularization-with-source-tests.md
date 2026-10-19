@@ -4,7 +4,7 @@ Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), U
 
 The [Banach-to-normal-graph proof](../20261009-coarse-normal-recovery/normal-graphs-from-banach-bounds.md) obtains two ordinary normal derivatives from a full local source norm. Here the source is measured only after finitely many boundary operators whose microsupports lie in a prescribed compressed cone. We prove a corresponding ordinary \(H^2\) bound for a sufficiently negative-order boundary regularization of the solution. The identities keep the full kernels, including their residual terms.
 
-The exact earlier proofs are the [resolved kernel and normal-jet calculus](../20261005-local-boundary-calculus/boundary-tests-and-lacunary-symbols.md), [global kernels and all-real quotient bounds](../20261005-global-boundary-operators/global-boundary-operator-calculus.md), [compressed microsupport calculus](../20261005-boundary-wavefront-and-tangential/compressed-wavefront-and-differential-action.md), [common minimal extension and normal recovery](../20261005-mixed-halfspace-foundations/halfspace-support-and-duality.md), and [actual quotient traces](../20261005-mixed-halfspace-foundations/two-weight-hilbert-spaces-and-traces.md). Their transitive Lebl foundation proofs remain external author-edition dependencies. This CC0 export does not claim internal P514 closure.
+The exact earlier proofs are the [resolved kernel and normal-jet calculus](../20261005-local-boundary-calculus/boundary-tests-and-lacunary-symbols.md), [global kernels and all-real quotient bounds](../20261005-global-boundary-operators/global-boundary-operator-calculus.md), [compressed microsupport calculus](../20261005-boundary-wavefront-and-tangential/compressed-wavefront-and-differential-action.md), [common minimal extension and normal recovery](../20261005-mixed-halfspace-foundations/halfspace-support-and-duality.md), and [actual quotient traces](../20261005-mixed-halfspace-foundations/two-weight-hilbert-spaces-and-traces.md). Their transitive Lebl foundation proofs remain external author-edition dependencies. 
 
 ## 1. What is being estimated
 
@@ -287,4 +287,4 @@ Hence the integral is bounded below by a positive constant for all sufficiently 
 
 ![Three exact source-test levels with 1, 4 and 16 nodes of maximal orders minus 6, minus 4 and minus 2; normal recovery goes from H minus 1 to H zero, H one and H two, with source targets minus 2, minus 1 and zero.](figures/admissible-test-tree.svg)
 
-The finite model checks verify the tree counts, index inequalities, shifted-generator algebra, boundary-layer integrals and scaling powers. They assist the proof review; the complete kernel, quotient-space and completion arguments are the proofs above. The parameter-independent observation theorem and the remaining AN-04 programme remain active.
+The finite model checks verify the tree counts, index inequalities, shifted-generator algebra, boundary-layer integrals and scaling powers. 

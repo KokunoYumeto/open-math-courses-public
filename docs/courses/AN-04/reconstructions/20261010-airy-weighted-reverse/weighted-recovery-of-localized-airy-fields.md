@@ -277,4 +277,4 @@ The factor \(\pi^{-1}\) is necessary because \(Z=c_\epsilon/F_\epsilon\), not \(
 
 The right panel separates the actual estimates: WR14 recovers \(\alpha\) and \(Zv\) from interior observations; WR16–WR19 recover \(v\) in \(\mathcal H_L\) from the actual boundary trace and the already recovered decaying coefficient. WR2 then combines them exactly. The statement pertains to the range specified in H1; the general PDE representation remains R1.
 
-Independent exposition, proofs, solutions and figure: **CC0-1.0**. Linked components retain their terms. Required human foundations in the proof map remain external; internal P514 closure of this export is unclaimed.
+Independent exposition, proofs, solutions and figure: **CC0-1.0**. Linked components retain their terms. Required human foundations in the proof map remain external.

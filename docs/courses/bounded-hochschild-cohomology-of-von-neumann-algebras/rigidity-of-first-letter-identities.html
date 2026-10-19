@@ -1,0 +1,276 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rigidity of first-letter identities</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Bounded Hochschild cohomology of von Neumann algebras)</a><a href="the-cohomology-problem.html">Previous lesson</a><a href="a-random-walk-with-asymptotically-free-products.html">Next lesson</a><a href="src/rigidity-of-first-letter-identities.md">Editable source</a></nav><main><article><h1 id="rigidity-of-first-letter-identities">Rigidity of first-letter identities</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves a rigidity theorem about a bounded linear map <span class="math" data-tex="\(R\)">\(R\)</span> on a finite von Neumann algebra. Suppose that on all words in a free family of Haar unitaries with pairwise distinct indices, <span class="math" data-tex="\(R\)">\(R\)</span> acts as left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> when the first letter is a generator and by <span class="math" data-tex="\(b\)">\(b\)</span> when it is the inverse of one. Then <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. The theorem is the decisive step in the Liouville theorem of a later lesson, which in turn produces the bounded primitives for Hochschild cocycles. Its proof is self-contained apart from basic facts about tracial von Neumann algebras: a norm estimate of Haagerup for free groups (Section 1), an expansion of block products with repeated indices discarded (Section 2), the computation of a polar unitary through Catalan numbers (Section 3), and a spectral argument with bounded sine sums (Section 4).</p>
+<p><strong>Prerequisites.</strong> <a href="the-cohomology-problem.html"><em>The cohomology problem</em></a>, Section 2 (tracial ultrapowers and maps continuous on balls in the <span class="math" data-tex="\(2\)">\(2\)</span>-norm). From <em>Foundations of von Neumann algebras</em>: <a href="../foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators.html"><em>The spectral theorem for bounded self-adjoint operators</em></a> (Borel functional calculus and spectral projections); <a href="../foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html"><em>C*-algebras: continuous functional calculus, automatic continuity, positive cones</em></a>; <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html"><em>Projections and types of von Neumann algebras</em></a> (finite algebras: an isometry is a unitary).</p>
+<p><strong>Notation.</strong> <span class="math" data-tex="\((N,\tau)\)">\((N,\tau)\)</span> is a finite von Neumann algebra with a faithful normal tracial state, <span class="math" data-tex="\(\|x\|_2=\tau(x^*x)^{1/2}\)">\(\|x\|_2=\tau(x^*x)^{1/2}\)</span>, and <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> is the operator norm. In a tracial algebra <span class="math" data-tex="\(\|xyz\|_2\le\|x\|\,\|y\|_2\,\|z\|\)">\(\|xyz\|_2\le\|x\|\,\|y\|_2\,\|z\|\)</span>. A unitary <span class="math" data-tex="\(u\)">\(u\)</span> is <em>Haar</em> if <span class="math" data-tex="\(\tau(u^k)=0\)">\(\tau(u^k)=0\)</span> for all <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>; unitaries <span class="math" data-tex="\(g_1,g_2,\ldots\)">\(g_1,g_2,\ldots\)</span> form a <em>free Haar family</em> if <span class="math" data-tex="\(\tau(w(g))=0\)">\(\tau(w(g))=0\)</span> for every nonidentity reduced word <span class="math" data-tex="\(w\)">\(w\)</span> in the free group <span class="math" data-tex="\(\mathbb F\)">\(\mathbb F\)</span> on generators <span class="math" data-tex="\(x_1,x_2,\ldots\)">\(x_1,x_2,\ldots\)</span>. Then distinct reduced words <span class="math" data-tex="\(w(g)\)">\(w(g)\)</span> are orthonormal in <span class="math" data-tex="\(L^2(N,\tau)\)">\(L^2(N,\tau)\)</span>. A <em>signed word</em> is <span class="math" data-tex="\(w=x_{i_1}^{\varepsilon_1}\cdots x_{i_q}^{\varepsilon_q}\)">\(w=x_{i_1}^{\varepsilon_1}\cdots x_{i_q}^{\varepsilon_q}\)</span> with <span class="math" data-tex="\(\varepsilon_j=\pm1\)">\(\varepsilon_j=\pm1\)</span>; its <em>unsigned indices</em> are <span class="math" data-tex="\(i_1,\ldots,i_q\)">\(i_1,\ldots,i_q\)</span>.</p>
+<p><strong>Theorem 0.1 (rigidity).</strong> Let <span class="math" data-tex="\(R:N\to N\)">\(R:N\to N\)</span> be bounded and complex linear, continuous on operator-norm balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm: <span class="math" data-tex="\(\|R(x_n)\|_2\to0\)">\(\|R(x_n)\|_2\to0\)</span> whenever <span class="math" data-tex="\(\sup_n\|x_n\|&lt;\infty\)">\(\sup_n\|x_n\|&lt;\infty\)</span> and <span class="math" data-tex="\(\|x_n\|_2\to0\)">\(\|x_n\|_2\to0\)</span>. Let <span class="math" data-tex="\((g_j)_{j\ge1}\)">\((g_j)_{j\ge1}\)</span> be a free Haar family in <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(a,b\in N\)">\(a,b\in N\)</span>. Suppose that for every nonempty signed word <span class="math" data-tex="\(w\)">\(w\)</span> with pairwise distinct unsigned indices,
+<span class="math math-display" data-tex="\[
+R\bigl(w(g)\bigr)=\begin{cases}a\,w(g),&amp;\varepsilon_1=1,\\ b\,w(g),&amp;\varepsilon_1=-1.\end{cases}\quad(0.1)
+\]">\[
+R\bigl(w(g)\bigr)=\begin{cases}a\,w(g),&amp;\varepsilon_1=1,\\ b\,w(g),&amp;\varepsilon_1=-1.\end{cases}\quad(0.1)
+\]</span>
+Then <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</p>
+<p>The proof constructs a unitary <span class="math" data-tex="\(V\)">\(V\)</span>, in an ultrapower, with <span class="math" data-tex="\(S(V^k)=aV^k\)">\(S(V^k)=aV^k\)</span> and <span class="math" data-tex="\(S(V^{-k})=bV^{-k}\)">\(S(V^{-k})=bV^{-k}\)</span> for all <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, where <span class="math" data-tex="\(S\)">\(S\)</span> is the induced map; Section 4 shows that these identities force <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Powers of a single <span class="math" data-tex="\(g_j\)">\(g_j\)</span> repeat an index, so (0.1) does not apply to them. Instead <span class="math" data-tex="\(V\)">\(V\)</span> is the polar part of an average of many free generators.</p>
+<h2 id="1-haagerup-s-length-estimate">1. Haagerup's length estimate</h2>
+<p>Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> be the left regular representation of the free group <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span> on <span class="math" data-tex="\(\ell^2(\mathbb F_r)\)">\(\ell^2(\mathbb F_r)\)</span>, and <span class="math" data-tex="\(|w|\)">\(|w|\)</span> the reduced length.</p>
+<p><strong>Lemma 1.1.</strong> For finitely many coefficients <span class="math" data-tex="\(c_w\)">\(c_w\)</span> on reduced words of length <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl\|\sum_{|w|=q}c_w\lambda(w)\Bigr\|\le(q+1)\Bigl(\sum_{|w|=q}|c_w|^2\Bigr)^{1/2}.
+\]">\[
+\Bigl\|\sum_{|w|=q}c_w\lambda(w)\Bigr\|\le(q+1)\Bigl(\sum_{|w|=q}|c_w|^2\Bigr)^{1/2}.
+\]</span>
+If <span class="math" data-tex="\(g_1,\ldots,g_r\)">\(g_1,\ldots,g_r\)</span> is a free Haar family in a von Neumann algebra with a faithful tracial state, then every polynomial <span class="math" data-tex="\(p\)">\(p\)</span> in the <span class="math" data-tex="\(g_i^{\pm1}\)">\(g_i^{\pm1}\)</span> has <span class="math" data-tex="\(\|p(g)\|=\|p(\lambda)\|\)">\(\|p(g)\|=\|p(\lambda)\|\)</span>; so the estimate holds with <span class="math" data-tex="\(w(g)\)">\(w(g)\)</span> in place of <span class="math" data-tex="\(\lambda(w)\)">\(\lambda(w)\)</span>, and its right side equals <span class="math" data-tex="\((q+1)\|\sum_wc_ww(g)\|_2\)">\((q+1)\|\sum_wc_ww(g)\|_2\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L=\sum_{|w|=q}c_w\lambda(w)\)">\(L=\sum_{|w|=q}c_w\lambda(w)\)</span> act on the basis vectors <span class="math" data-tex="\(\delta_x\)">\(\delta_x\)</span>, <span class="math" data-tex="\(x\in\mathbb F_r\)">\(x\in\mathbb F_r\)</span>. The product <span class="math" data-tex="\(wx\)">\(wx\)</span> of two reduced words cancels some number <span class="math" data-tex="\(t\in\{0,\ldots,q\}\)">\(t\in\{0,\ldots,q\}\)</span> of letters at the junction; split <span class="math" data-tex="\(L=\sum_{t=0}^qL_t\)">\(L=\sum_{t=0}^qL_t\)</span> accordingly. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the products with exactly <span class="math" data-tex="\(t\)">\(t\)</span> cancellations are those with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w=uv,\qquad x=v^{-1}h,\qquad wx=uh,\\
+|u|=q-t,\quad |v|=t,
+\end{gathered}
+\]">\[
+\begin{gathered}
+w=uv,\qquad x=v^{-1}h,\qquad wx=uh,\\
+|u|=q-t,\quad |v|=t,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(uv\)">\(uv\)</span>, <span class="math" data-tex="\(v^{-1}h\)">\(v^{-1}h\)</span> and <span class="math" data-tex="\(uh\)">\(uh\)</span> are all reduced. An input word of length at least <span class="math" data-tex="\(t\)">\(t\)</span> determines its prefix of length <span class="math" data-tex="\(t\)">\(t\)</span>, hence <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span>; an output word of length at least <span class="math" data-tex="\(q-t\)">\(q-t\)</span> determines <span class="math" data-tex="\(h\)">\(h\)</span> by deleting its prefix of length <span class="math" data-tex="\(q-t\)">\(q-t\)</span>. So the inputs, and the outputs, split into orthogonal blocks indexed by <span class="math" data-tex="\(h\)">\(h\)</span>, and <span class="math" data-tex="\(L_t\)">\(L_t\)</span> is the direct sum of matrices <span class="math" data-tex="\(B_h\)">\(B_h\)</span> with rows indexed by <span class="math" data-tex="\(u\)">\(u\)</span>, columns by <span class="math" data-tex="\(v\)">\(v\)</span>, and entries <span class="math" data-tex="\(c_{uv}\)">\(c_{uv}\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span>. Since <span class="math" data-tex="\((u,v)\mapsto uv\)">\((u,v)\mapsto uv\)</span> is injective for fixed lengths, the Hilbert–Schmidt norm of each <span class="math" data-tex="\(B_h\)">\(B_h\)</span> is at most <span class="math" data-tex="\((\sum|c_w|^2)^{1/2}\)">\((\sum|c_w|^2)^{1/2}\)</span>, and so is <span class="math" data-tex="\(\|L_t\|=\sup_h\|B_h\|\)">\(\|L_t\|=\sup_h\|B_h\|\)</span>. Summing over the <span class="math" data-tex="\(q+1\)">\(q+1\)</span> values of <span class="math" data-tex="\(t\)">\(t\)</span> gives the estimate.</p>
+<p>For the transfer, recall that for <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span> in a von Neumann algebra with faithful tracial state <span class="math" data-tex="\(\rho\)">\(\rho\)</span>,
+<span class="math math-display" data-tex="\[
+\|A\|=\lim_{n\to\infty}\rho(A^n)^{1/n}.
+\]">\[
+\|A\|=\lim_{n\to\infty}\rho(A^n)^{1/n}.
+\]</span>
+The inequality <span class="math" data-tex="\(\le\)">\(\le\)</span> is <span class="math" data-tex="\(\rho(A^n)\le\|A\|^n\)">\(\rho(A^n)\le\|A\|^n\)</span>. Conversely, for <span class="math" data-tex="\(0&lt;c&lt;\|A\|\)">\(0&lt;c&lt;\|A\|\)</span>, the spectral projection <span class="math" data-tex="\(e=1_{(c,\infty)}(A)\)">\(e=1_{(c,\infty)}(A)\)</span> is nonzero, so <span class="math" data-tex="\(\rho(e)&gt;0\)">\(\rho(e)&gt;0\)</span> and <span class="math" data-tex="\(\rho(A^n)\ge c^n\rho(e)\)">\(\rho(A^n)\ge c^n\rho(e)\)</span>; take <span class="math" data-tex="\(n\)">\(n\)</span>-th roots and let <span class="math" data-tex="\(c\uparrow\|A\|\)">\(c\uparrow\|A\|\)</span>. The free Haar moments give <span class="math" data-tex="\(\tau((p(g)^*p(g))^n)=\tau_{\mathbb F_r}((p(\lambda)^*p(\lambda))^n)\)">\(\tau((p(g)^*p(g))^n)=\tau_{\mathbb F_r}((p(\lambda)^*p(\lambda))^n)\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, where <span class="math" data-tex="\(\tau_{\mathbb F_r}(x)=\langle x\delta_e,\delta_e\rangle\)">\(\tau_{\mathbb F_r}(x)=\langle x\delta_e,\delta_e\rangle\)</span> is the trace of the free group von Neumann algebra, faithful because <span class="math" data-tex="\(\delta_e\)">\(\delta_e\)</span> is cyclic for the right regular representation, which commutes with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; hence <span class="math" data-tex="\(\|p(g)\|=\|p(\lambda)\|\)">\(\|p(g)\|=\|p(\lambda)\|\)</span>. Orthonormality of reduced words gives the <span class="math" data-tex="\(2\)">\(2\)</span>-norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The check script of this course tests Lemma 1.1 on truncations of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> and <span class="math" data-tex="\(q\le3\)">\(q\le3\)</span>.</p>
+<p>For the rest of the lesson, assume the hypotheses of Theorem 0.1. Put
+<span class="math math-display" data-tex="\[
+s_r=r^{-1/2}\sum_{j=1}^rg_j .
+\]">\[
+s_r=r^{-1/2}\sum_{j=1}^rg_j .
+\]</span>
+By Lemma 1.1 with <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, <span class="math" data-tex="\(\|s_r\|_2=1\)">\(\|s_r\|_2=1\)</span> and <span class="math" data-tex="\(\|s_r\|\le2\)">\(\|s_r\|\le2\)</span>. Fix a free ultrafilter <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat N=N^\omega,\qquad S=R^\omega,\\
+s=(s_r)_\omega\in\widehat N .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widehat N=N^\omega,\qquad S=R^\omega,\\
+s=(s_r)_\omega\in\widehat N .
+\end{gathered}
+\]</span>
+By Lemma 2.2 of the lesson on the cohomology problem, <span class="math" data-tex="\(S\)">\(S\)</span> is bounded and continuous on operator-norm balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm. We identify <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with their constant images in <span class="math" data-tex="\(\widehat N\)">\(\widehat N\)</span>.</p>
+<h2 id="2-ordered-blocks">2. Ordered blocks</h2>
+<p>For <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span> put <span class="math" data-tex="\(B_d(z)=z(z^*z)^d\)">\(B_d(z)=z(z^*z)^d\)</span>. The powers of the polar part of <span class="math" data-tex="\(s\)">\(s\)</span> will be approximated by polynomials whose literal expansions are products of such blocks.</p>
+<p><strong>Lemma 2.1.</strong> For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> and <span class="math" data-tex="\(d_1,\ldots,d_k\ge0\)">\(d_1,\ldots,d_k\ge0\)</span>, let <span class="math" data-tex="\(P(z)=B_{d_1}(z)\cdots B_{d_k}(z)\)">\(P(z)=B_{d_1}(z)\cdots B_{d_k}(z)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S\bigl(P(s)\bigr)=a\,P(s),\\
+S\bigl(P(s)^*\bigr)=b\,P(s)^* .
+\end{gathered}
+\]">\[
+\begin{gathered}
+S\bigl(P(s)\bigr)=a\,P(s),\\
+S\bigl(P(s)^*\bigr)=b\,P(s)^* .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L=\sum_j(2d_j+1)\)">\(L=\sum_j(2d_j+1)\)</span> be the degree of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><em>Endpoint signs.</em> Expanding <span class="math" data-tex="\(B_d(s_r)\)">\(B_d(s_r)\)</span> gives words whose sign patterns alternate <span class="math" data-tex="\(+,-,+,\ldots,+\)">\(+,-,+,\ldots,+\)</span>, with one more plus than minus. Free reduction deletes adjacent pairs of opposite signs, so the reduced word is nonempty, alternates, and begins and ends with <span class="math" data-tex="\(+\)">\(+\)</span>. At the junction of two blocks two plus letters meet, and nothing cancels. So every reduced word occurring in <span class="math" data-tex="\(P(s_r)\)">\(P(s_r)\)</span> is nonempty and begins and ends with a positive letter; for <span class="math" data-tex="\(P(s_r)^*\)">\(P(s_r)^*\)</span> the signs are reversed.</p>
+<p><em>Coefficients.</em> Write <span class="math" data-tex="\(P(s_r)=\sum_{q=1}^L\sum_{|w|=q}c_w(r)\,w(g)\)">\(P(s_r)=\sum_{q=1}^L\sum_{|w|=q}c_w(r)\,w(g)\)</span>. An original term of the expansion is a string of <span class="math" data-tex="\(L\)">\(L\)</span> letters with coefficient <span class="math" data-tex="\(r^{-L/2}\)">\(r^{-L/2}\)</span>. Record its free reduction, carried out from left to right against the last surviving letter, as a noncrossing partial matching of the <span class="math" data-tex="\(L\)">\(L\)</span> positions: matched pairs are the cancelling pairs, and the unmatched positions spell the reduced word <span class="math" data-tex="\(w\)">\(w\)</span>. There are at most <span class="math" data-tex="\(3^L\)">\(3^L\)</span> noncrossing partial matchings of <span class="math" data-tex="\(L\)">\(L\)</span> positions (mark each position as opening, closing or unmatched; a closing position is matched with the last unmatched opening one, so the marking determines the matching). For fixed <span class="math" data-tex="\(w\)">\(w\)</span> of length <span class="math" data-tex="\(q\)">\(q\)</span> and a fixed matching, the unmatched labels are those of <span class="math" data-tex="\(w\)">\(w\)</span>, and each of the <span class="math" data-tex="\((L-q)/2\)">\((L-q)/2\)</span> pairs has at most <span class="math" data-tex="\(r\)">\(r\)</span> labels. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|c_w(r)|&amp;\le3^L\,r^{(L-q)/2}\,r^{-L/2}\\
+&amp;=3^Lr^{-q/2}.\qquad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+|c_w(r)|&amp;\le3^L\,r^{(L-q)/2}\,r^{-L/2}\\
+&amp;=3^Lr^{-q/2}.\qquad(2.1)
+\end{aligned}
+\]</span></p>
+<p><em>Repeated indices.</em> Let <span class="math" data-tex="\(E_{r,q}\)">\(E_{r,q}\)</span> be the sum of the terms with <span class="math" data-tex="\(|w|=q\)">\(|w|=q\)</span> whose reduced word repeats an unsigned index; <span class="math" data-tex="\(E_{r,1}=0\)">\(E_{r,1}=0\)</span>. For <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> there are at most <span class="math" data-tex="\(2^q\binom q2r^{q-1}\)">\(2^q\binom q2r^{q-1}\)</span> such words (choose two positions with equal labels, the remaining labels, and the signs). By orthonormality and (2.1), <span class="math" data-tex="\(\|E_{r,q}\|_2^2\le9^L2^q\binom q2r^{-1}\)">\(\|E_{r,q}\|_2^2\le9^L2^q\binom q2r^{-1}\)</span>, and by Lemma 1.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|E_r\|&amp;\le\sum_{q=2}^L(q+1)\|E_{r,q}\|_2\\
+&amp;=O_L(r^{-1/2}),\qquad E_r=\sum_qE_{r,q}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|E_r\|&amp;\le\sum_{q=2}^L(q+1)\|E_{r,q}\|_2\\
+&amp;=O_L(r^{-1/2}),\qquad E_r=\sum_qE_{r,q}.
+\end{aligned}
+\]</span></p>
+<p><em>Conclusion.</em> <span class="math" data-tex="\(Q_r=P(s_r)-E_r\)">\(Q_r=P(s_r)-E_r\)</span> is a finite sum of words with pairwise distinct unsigned indices, all beginning with a positive letter, so (0.1) gives <span class="math" data-tex="\(R(Q_r)=aQ_r\)">\(R(Q_r)=aQ_r\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|R(P(s_r))-aP(s_r)\|\\
+&amp;\quad\le(\|R\|+\|a\|)\,\|E_r\|\to0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|R(P(s_r))-aP(s_r)\|\\
+&amp;\quad\le(\|R\|+\|a\|)\,\|E_r\|\to0,
+\end{aligned}
+\]</span>
+and, <span class="math" data-tex="\(P(s_r)\)">\(P(s_r)\)</span> being bounded by <span class="math" data-tex="\(2^L\)">\(2^L\)</span>, the identity <span class="math" data-tex="\(S(P(s))=aP(s)\)">\(S(P(s))=aP(s)\)</span> holds in <span class="math" data-tex="\(\widehat N\)">\(\widehat N\)</span>. For the adjoint, <span class="math" data-tex="\(Q_r^*\)">\(Q_r^*\)</span> consists of words with distinct indices beginning with a negative letter, and the same estimate with <span class="math" data-tex="\(b\)">\(b\)</span> gives the second identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-polar-unitary">3. A polar unitary</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(A=s^*s\)">\(A=s^*s\)</span>. Then <span class="math" data-tex="\(\widehat\tau(A^d)=C_d=\frac1{d+1}\binom{2d}d\)">\(\widehat\tau(A^d)=C_d=\frac1{d+1}\binom{2d}d\)</span> for all <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span>, the spectral distribution of <span class="math" data-tex="\(A\)">\(A\)</span> is
+<span class="math math-display" data-tex="\[
+d\nu(x)=\frac1{2\pi}\sqrt{\frac{4-x}{x}}\;1_{(0,4)}(x)\,dx,
+\]">\[
+d\nu(x)=\frac1{2\pi}\sqrt{\frac{4-x}{x}}\;1_{(0,4)}(x)\,dx,
+\]</span>
+and the polar part <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(s=VA^{1/2}\)">\(s=VA^{1/2}\)</span> is a unitary.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\tau((s_r^*s_r)^d)\)">\(\tau((s_r^*s_r)^d)\)</span> is <span class="math" data-tex="\(r^{-d}\)">\(r^{-d}\)</span> times the number of labellings, by <span class="math" data-tex="\(\{1,\ldots,r\}\)">\(\{1,\ldots,r\}\)</span>, of <span class="math" data-tex="\(2d\)">\(2d\)</span> positions with alternating signs <span class="math" data-tex="\(-,+,\ldots,-,+\)">\(-,+,\ldots,-,+\)</span> whose word reduces to the identity. A reduction to the identity matches all positions in a noncrossing way, so at most <span class="math" data-tex="\(d\)">\(d\)</span> distinct labels occur; labellings with at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span> labels number <span class="math" data-tex="\(O_d(r^{d-1})\)">\(O_d(r^{d-1})\)</span>. If exactly <span class="math" data-tex="\(d\)">\(d\)</span> labels occur, each occurs twice and its two positions are matched, so the labelling determines a noncrossing perfect matching, each of whose pairs joins positions of opposite parity, hence of opposite sign (a pair encloses an even number of positions, matched among themselves). Conversely, every noncrossing perfect matching with distinct labels on its pairs gives an identity word, by cancelling innermost pairs. So the count is <span class="math" data-tex="\(C_d\,r(r-1)\cdots(r-d+1)+O_d(r^{d-1})\)">\(C_d\,r(r-1)\cdots(r-d+1)+O_d(r^{d-1})\)</span>, where <span class="math" data-tex="\(C_d\)">\(C_d\)</span> is the number of noncrossing perfect matchings of <span class="math" data-tex="\(2d\)">\(2d\)</span> points. Matching the first point gives <span class="math" data-tex="\(C_0=1\)">\(C_0=1\)</span>, <span class="math" data-tex="\(C_d=\sum_{j=0}^{d-1}C_jC_{d-1-j}\)">\(C_d=\sum_{j=0}^{d-1}C_jC_{d-1-j}\)</span>, so the generating function satisfies <span class="math" data-tex="\(C(z)=1+zC(z)^2\)">\(C(z)=1+zC(z)^2\)</span> and <span class="math" data-tex="\(C_d=\frac1{d+1}\binom{2d}d\)">\(C_d=\frac1{d+1}\binom{2d}d\)</span>. Hence <span class="math" data-tex="\(\widehat\tau(A^d)=\lim_{r\to\omega}\tau((s_r^*s_r)^d)=C_d\)">\(\widehat\tau(A^d)=\lim_{r\to\omega}\tau((s_r^*s_r)^d)=C_d\)</span>.</p>
+<p>For the measure, substitute <span class="math" data-tex="\(x=4t\)">\(x=4t\)</span> and use the beta integral:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^4x^d\,d\nu(x)\\
+&amp;=\frac{4^{d+1}}{2\pi}\int_0^1t^{d-1/2}(1-t)^{1/2}\,dt\\
+&amp;=\frac{4^{d+1}}{2\pi}\cdot\frac{\Gamma(d+\frac12)\Gamma(\frac32)}{\Gamma(d+2)}\\
+&amp;=C_d .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^4x^d\,d\nu(x)\\
+&amp;=\frac{4^{d+1}}{2\pi}\int_0^1t^{d-1/2}(1-t)^{1/2}\,dt\\
+&amp;=\frac{4^{d+1}}{2\pi}\cdot\frac{\Gamma(d+\frac12)\Gamma(\frac32)}{\Gamma(d+2)}\\
+&amp;=C_d .
+\end{aligned}
+\]</span>
+Both <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and the spectral distribution <span class="math" data-tex="\(\mu_A(f)=\widehat\tau(f(A))\)">\(\mu_A(f)=\widehat\tau(f(A))\)</span> are probability measures on <span class="math" data-tex="\([0,4]\)">\([0,4]\)</span>, since <span class="math" data-tex="\(0\le A\le4\)">\(0\le A\le4\)</span>; equal moments give equal integrals of polynomials, hence of continuous functions by Weierstrass approximation, so <span class="math" data-tex="\(\mu_A=\nu\)">\(\mu_A=\nu\)</span>. Since <span class="math" data-tex="\(\nu\)">\(\nu\)</span> has no atom at <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(\widehat\tau(1_{\{0\}}(A))=0\)">\(\widehat\tau(1_{\{0\}}(A))=0\)</span>, and <span class="math" data-tex="\(1_{\{0\}}(A)=0\)">\(1_{\{0\}}(A)=0\)</span> by faithfulness. In the polar decomposition, <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> is the support projection of <span class="math" data-tex="\(A\)">\(A\)</span>, here <span class="math" data-tex="\(1\)">\(1\)</span>; in the finite algebra <span class="math" data-tex="\(\widehat N\)">\(\widehat N\)</span>, <span class="math" data-tex="\(\widehat\tau(1-VV^*)=1-\widehat\tau(V^*V)=0\)">\(\widehat\tau(1-VV^*)=1-\widehat\tau(V^*V)=0\)</span>, so <span class="math" data-tex="\(VV^*=1\)">\(VV^*=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> For every <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, <span class="math" data-tex="\(S(V^k)=aV^k\)">\(S(V^k)=aV^k\)</span> and <span class="math" data-tex="\(S(V^{-k})=bV^{-k}\)">\(S(V^{-k})=bV^{-k}\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> put <span class="math" data-tex="\(x_\varepsilon=s(A+\varepsilon)^{-1/2}=V\bigl(A/(A+\varepsilon)\bigr)^{1/2}\)">\(x_\varepsilon=s(A+\varepsilon)^{-1/2}=V\bigl(A/(A+\varepsilon)\bigr)^{1/2}\)</span>, a contraction. For a polynomial <span class="math" data-tex="\(p(t)=\sum_{d=0}^Dc_dt^d\)">\(p(t)=\sum_{d=0}^Dc_dt^d\)</span>, expanding without commuting factors,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[s\,p(A)]^k&amp;=\sum_{d_1,\ldots,d_k}c_{d_1}\cdots c_{d_k}\\
+&amp;\qquad\cdot B_{d_1}(s)\cdots B_{d_k}(s),
+\end{aligned}
+\]">\[
+\begin{aligned}
+[s\,p(A)]^k&amp;=\sum_{d_1,\ldots,d_k}c_{d_1}\cdots c_{d_k}\\
+&amp;\qquad\cdot B_{d_1}(s)\cdots B_{d_k}(s),
+\end{aligned}
+\]</span>
+so Lemma 2.1 gives <span class="math" data-tex="\(S([sp(A)]^k)=a[sp(A)]^k\)">\(S([sp(A)]^k)=a[sp(A)]^k\)</span>, and, taking adjoints of the expansion, <span class="math" data-tex="\(S(([sp(A)]^k)^*)=b([sp(A)]^k)^*\)">\(S(([sp(A)]^k)^*)=b([sp(A)]^k)^*\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> run through polynomials converging uniformly on <span class="math" data-tex="\([0,4]\)">\([0,4]\)</span> to <span class="math" data-tex="\((t+\varepsilon)^{-1/2}\)">\((t+\varepsilon)^{-1/2}\)</span>; norm continuity of <span class="math" data-tex="\(S\)">\(S\)</span> gives <span class="math" data-tex="\(S(x_\varepsilon^k)=ax_\varepsilon^k\)">\(S(x_\varepsilon^k)=ax_\varepsilon^k\)</span> and <span class="math" data-tex="\(S((x_\varepsilon^k)^*)=b(x_\varepsilon^k)^*\)">\(S((x_\varepsilon^k)^*)=b(x_\varepsilon^k)^*\)</span>. Next,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|x_\varepsilon-V\|_2^2&amp;=\int_0^4\Bigl(\sqrt{\tfrac{x}{x+\varepsilon}}-1\Bigr)^2d\nu(x)\\
+&amp;\to0\qquad(\varepsilon\to0)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|x_\varepsilon-V\|_2^2&amp;=\int_0^4\Bigl(\sqrt{\tfrac{x}{x+\varepsilon}}-1\Bigr)^2d\nu(x)\\
+&amp;\to0\qquad(\varepsilon\to0)
+\end{aligned}
+\]</span>
+by dominated convergence, <span class="math" data-tex="\(\nu\)">\(\nu\)</span> having no atom at <span class="math" data-tex="\(0\)">\(0\)</span>; and <span class="math" data-tex="\(x_\varepsilon^k-V^k=\sum_{j=0}^{k-1}x_\varepsilon^j(x_\varepsilon-V)V^{k-1-j}\)">\(x_\varepsilon^k-V^k=\sum_{j=0}^{k-1}x_\varepsilon^j(x_\varepsilon-V)V^{k-1-j}\)</span> gives <span class="math" data-tex="\(\|x_\varepsilon^k-V^k\|_2\le k\|x_\varepsilon-V\|_2\)">\(\|x_\varepsilon^k-V^k\|_2\le k\|x_\varepsilon-V\|_2\)</span>, likewise for adjoints. All these elements are contractions, so the continuity of <span class="math" data-tex="\(S\)">\(S\)</span> on the unit ball for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm passes the identities to <span class="math" data-tex="\(V^k\)">\(V^k\)</span> and <span class="math" data-tex="\(V^{-k}=(V^k)^*\)">\(V^{-k}=(V^k)^*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-spectral-conclusion">4. The spectral conclusion</h2>
+<p><strong>Lemma 4.1.</strong> For all <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(\theta\in\mathbb R\)">\(\theta\in\mathbb R\)</span>, <span class="math" data-tex="\(\bigl|\sum_{k=1}^m\frac{\sin k\theta}k\bigr|\le1+\pi\)">\(\bigl|\sum_{k=1}^m\frac{\sin k\theta}k\bigr|\le1+\pi\)</span>.</p>
+<p><strong>Proof.</strong> By periodicity and oddness assume <span class="math" data-tex="\(t=\theta\in(0,\pi]\)">\(t=\theta\in(0,\pi]\)</span> (the sum vanishes at <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span>). Put <span class="math" data-tex="\(K=\lfloor1/t\rfloor\)">\(K=\lfloor1/t\rfloor\)</span>. The terms with <span class="math" data-tex="\(k\le\min(K,m)\)">\(k\le\min(K,m)\)</span> contribute at most <span class="math" data-tex="\(Kt\le1\)">\(Kt\le1\)</span>, since <span class="math" data-tex="\(|\sin kt|\le kt\)">\(|\sin kt|\le kt\)</span>. For integers <span class="math" data-tex="\(p\le q\)">\(p\le q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Bigl|\sum_{k=p}^q\sin kt\Bigr|&amp;\le\Bigl|\sum_{k=p}^qe^{ikt}\Bigr|\\
+&amp;\le\frac1{\sin(t/2)}\le\frac\pi t ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Bigl|\sum_{k=p}^q\sin kt\Bigr|&amp;\le\Bigl|\sum_{k=p}^qe^{ikt}\Bigr|\\
+&amp;\le\frac1{\sin(t/2)}\le\frac\pi t ,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\sin(t/2)\ge t/\pi\)">\(\sin(t/2)\ge t/\pi\)</span> on <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span>. If <span class="math" data-tex="\(m\ge K+1\)">\(m\ge K+1\)</span>, Abel summation with <span class="math" data-tex="\(A_j=\sum_{k=K+1}^j\sin kt\)">\(A_j=\sum_{k=K+1}^j\sin kt\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{k=K+1}^m\frac{\sin kt}k\Bigr|\\
+&amp;=\Bigl|\frac{A_m}m+\sum_{j=K+1}^{m-1}A_j\Bigl(\frac1j-\frac1{j+1}\Bigr)\Bigr|\\
+&amp;\le\frac\pi t\cdot\frac1{K+1}\le\pi .\qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{k=K+1}^m\frac{\sin kt}k\Bigr|\\
+&amp;=\Bigl|\frac{A_m}m+\sum_{j=K+1}^{m-1}A_j\Bigl(\frac1j-\frac1{j+1}\Bigr)\Bigr|\\
+&amp;\le\frac\pi t\cdot\frac1{K+1}\le\pi .\qquad\square
+\end{aligned}
+\]</span></p>
+<p>(The supremum is in fact the Wilbraham–Gibbs constant <span class="math" data-tex="\(1.8519\ldots\)">\(1.8519\ldots\)</span>; only boundedness matters.)</p>
+<p><strong>Lemma 4.2.</strong> Let <span class="math" data-tex="\((\mathcal A,\rho)\)">\((\mathcal A,\rho)\)</span> be a finite von Neumann algebra with faithful normal tracial state, <span class="math" data-tex="\(V\in\mathcal A\)">\(V\in\mathcal A\)</span> unitary, and <span class="math" data-tex="\(S:\mathcal A\to\mathcal A\)">\(S:\mathcal A\to\mathcal A\)</span> bounded and linear with <span class="math" data-tex="\(S(V^k)=aV^k\)">\(S(V^k)=aV^k\)</span> and <span class="math" data-tex="\(S(V^{-k})=bV^{-k}\)">\(S(V^{-k})=bV^{-k}\)</span> for all <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>. Then <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(H_m(z)=\sum_{k=1}^mz^k/k\)">\(H_m(z)=\sum_{k=1}^mz^k/k\)</span> and <span class="math" data-tex="\(h_m=\sum_{k=1}^m1/k\)">\(h_m=\sum_{k=1}^m1/k\)</span>. For <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on the unit circle write <span class="math" data-tex="\(H_m(\lambda V)=X+iY\)">\(H_m(\lambda V)=X+iY\)</span> with <span class="math" data-tex="\(X=X^*\)">\(X=X^*\)</span>, <span class="math" data-tex="\(Y=Y^*\)">\(Y=Y^*\)</span>; by the functional calculus and Lemma 4.1, <span class="math" data-tex="\(\|Y\|\le B:=1+\pi\)">\(\|Y\|\le B:=1+\pi\)</span>. The identities give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;S\bigl(H_m(\lambda V)-H_m(\lambda V)^*\bigr)\\
+&amp;=aH_m(\lambda V)-bH_m(\lambda V)^*\\
+&amp;=(a-b)X+i(a+b)Y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;S\bigl(H_m(\lambda V)-H_m(\lambda V)^*\bigr)\\
+&amp;=aH_m(\lambda V)-bH_m(\lambda V)^*\\
+&amp;=(a-b)X+i(a+b)Y .
+\end{aligned}
+\]</span>
+The argument of <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(2iY\)">\(2iY\)</span>, of norm at most <span class="math" data-tex="\(2B\)">\(2B\)</span>. Hence, with <span class="math" data-tex="\(c=a-b\)">\(c=a-b\)</span> and <span class="math" data-tex="\(C:=B\,(2\|S\|+\|a\|+\|b\|)\)">\(C:=B\,(2\|S\|+\|a\|+\|b\|)\)</span>,
+<span class="math math-display" data-tex="\[
+\|cX\|\le C\qquad(4.1)
+\]">\[
+\|cX\|\le C\qquad(4.1)
+\]</span>
+uniformly in <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Let <span class="math" data-tex="\(I\)">\(I\)</span> be a half-open arc of the circle of length at most <span class="math" data-tex="\(1/m\)">\(1/m\)</span>, with spectral projection <span class="math" data-tex="\(e=1_I(V)\)">\(e=1_I(V)\)</span>, and choose <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> rotating the midpoint of <span class="math" data-tex="\(I\)">\(I\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. On the rotated arc <span class="math" data-tex="\(|\theta|\le1/(2m)\)">\(|\theta|\le1/(2m)\)</span>, and <span class="math" data-tex="\(\operatorname{Re}H_m(e^{i\theta})=\sum_k\frac{\cos k\theta}k\ge\cos(1)h_m\)">\(\operatorname{Re}H_m(e^{i\theta})=\sum_k\frac{\cos k\theta}k\ge\cos(1)h_m\)</span>. By the Borel functional calculus there is <span class="math" data-tex="\(F\in W^*(V)\)">\(F\in W^*(V)\)</span>, equal to <span class="math" data-tex="\(1/X\)">\(1/X\)</span> on <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> off <span class="math" data-tex="\(I\)">\(I\)</span>, with <span class="math" data-tex="\(XF=e\)">\(XF=e\)</span> and <span class="math" data-tex="\(\|F\|\le1/(\cos(1)h_m)\)">\(\|F\|\le1/(\cos(1)h_m)\)</span>. Multiplying (4.1) on the right by <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|ce\|\le\delta_m:=\frac{C}{\cos(1)\,h_m},\\
+\text{so}\quad ec^*ce\le\delta_m^2e .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|ce\|\le\delta_m:=\frac{C}{\cos(1)\,h_m},\\
+\text{so}\quad ec^*ce\le\delta_m^2e .
+\end{gathered}
+\]</span>
+Partition the circle into finitely many half-open arcs of length at most <span class="math" data-tex="\(1/m\)">\(1/m\)</span>, with spectral projections <span class="math" data-tex="\(e_1,\ldots,e_J\)">\(e_1,\ldots,e_J\)</span>, orthogonal with sum <span class="math" data-tex="\(1\)">\(1\)</span>. By traciality,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|c\|_2^2&amp;=\sum_j\rho(c^*ce_j)\\
+&amp;=\sum_j\rho(e_jc^*ce_j)\\
+&amp;\le\delta_m^2\sum_j\rho(e_j)=\delta_m^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|c\|_2^2&amp;=\sum_j\rho(c^*ce_j)\\
+&amp;=\sum_j\rho(e_jc^*ce_j)\\
+&amp;\le\delta_m^2\sum_j\rho(e_j)=\delta_m^2 .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(h_m\ge\log(m+1)\to\infty\)">\(h_m\ge\log(m+1)\to\infty\)</span>, <span class="math" data-tex="\(\|c\|_2=0\)">\(\|c\|_2=0\)</span>, and <span class="math" data-tex="\(c=0\)">\(c=0\)</span> by faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finiteness of the trace is essential: on <span class="math" data-tex="\(\ell^2(\mathbb Z)\)">\(\ell^2(\mathbb Z)\)</span> with the bilateral shift <span class="math" data-tex="\(V\)">\(V\)</span>, the projection <span class="math" data-tex="\(p\)">\(p\)</span> onto <span class="math" data-tex="\(\mathbb Ce_0\)">\(\mathbb Ce_0\)</span> and the projection <span class="math" data-tex="\(q\)">\(q\)</span> onto the span of the <span class="math" data-tex="\(e_n\)">\(e_n\)</span>, <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, the map <span class="math" data-tex="\(S(X)=pXq\)">\(S(X)=pXq\)</span> satisfies <span class="math" data-tex="\(S(V^k)=pV^k\)">\(S(V^k)=pV^k\)</span> and <span class="math" data-tex="\(S(V^{-k})=0\)">\(S(V^{-k})=0\)</span> for all <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> (Exercise 5.4).</p>
+<p><strong>Proof of Theorem 0.1.</strong> Lemma 3.2 gives a unitary <span class="math" data-tex="\(V\in\widehat N\)">\(V\in\widehat N\)</span> with <span class="math" data-tex="\(S(V^k)=aV^k\)">\(S(V^k)=aV^k\)</span> and <span class="math" data-tex="\(S(V^{-k})=bV^{-k}\)">\(S(V^{-k})=bV^{-k}\)</span>, and Lemma 4.2 gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span> in <span class="math" data-tex="\(\widehat N\)">\(\widehat N\)</span>. The constant embedding <span class="math" data-tex="\(N\to\widehat N\)">\(N\to\widehat N\)</span> preserves the faithful trace, so <span class="math" data-tex="\(a=b\)">\(a=b\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Show that distinct reduced words in a free Haar family are orthonormal for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm, and deduce <span class="math" data-tex="\(\|s_r\|_2=1\)">\(\|s_r\|_2=1\)</span>.</p>
+<p><strong>5.2</strong> (medium). Compute <span class="math" data-tex="\(\tau((s_r^*s_r)^2)\)">\(\tau((s_r^*s_r)^2)\)</span> exactly, and check that it tends to <span class="math" data-tex="\(C_2=2\)">\(C_2=2\)</span>.</p>
+<p><strong>5.3</strong> (medium). Show that the number of noncrossing partial matchings of <span class="math" data-tex="\(L\)">\(L\)</span> points satisfies <span class="math" data-tex="\(M_L=M_{L-1}+\sum_{j=1}^{L-1}M_{j-1}M_{L-j-1}\)">\(M_L=M_{L-1}+\sum_{j=1}^{L-1}M_{j-1}M_{L-j-1}\)</span>, and that <span class="math" data-tex="\(M_L\le3^L\)">\(M_L\le3^L\)</span>.</p>
+<p><strong>5.4</strong> (medium). Verify the counterexample after Lemma 4.2: <span class="math" data-tex="\(S(V^k)=pV^k\)">\(S(V^k)=pV^k\)</span> and <span class="math" data-tex="\(S(V^{-k})=0\)">\(S(V^{-k})=0\)</span> for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>.</p>
+<p><strong>5.5</strong> (medium). Show by an example in <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, with its normalized trace, that the conclusion of Lemma 4.2 can fail if the identities are assumed only for <span class="math" data-tex="\(k=1\)">\(k=1\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> For reduced words <span class="math" data-tex="\(u\ne v\)">\(u\ne v\)</span>, <span class="math" data-tex="\(v^{-1}u\)">\(v^{-1}u\)</span> reduces to a nonidentity word, so <span class="math" data-tex="\(\langle u(g),v(g)\rangle=\tau(v(g)^*u(g))=0\)">\(\langle u(g),v(g)\rangle=\tau(v(g)^*u(g))=0\)</span>, while <span class="math" data-tex="\(\tau(u^*u)=1\)">\(\tau(u^*u)=1\)</span>. So <span class="math" data-tex="\(\|s_r\|_2^2=r^{-1}\sum_{j}\|g_j\|_2^2=1\)">\(\|s_r\|_2^2=r^{-1}\sum_{j}\|g_j\|_2^2=1\)</span>.</p>
+<p><strong>5.2.</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\tau((s_r^*s_r)^2)=r^{-2}\#\{(i,j,k,l):\\
+&amp;\qquad g_i^{-1}g_jg_k^{-1}g_l\text{ reduces to }e\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\tau((s_r^*s_r)^2)=r^{-2}\#\{(i,j,k,l):\\
+&amp;\qquad g_i^{-1}g_jg_k^{-1}g_l\text{ reduces to }e\}.
+\end{aligned}
+\]</span>
+The reduction to the identity needs <span class="math" data-tex="\(i=j\)">\(i=j\)</span>, <span class="math" data-tex="\(k=l\)">\(k=l\)</span> or <span class="math" data-tex="\(j=k\)">\(j=k\)</span>, <span class="math" data-tex="\(l=i\)">\(l=i\)</span> (the two noncrossing matchings), giving <span class="math" data-tex="\(2r^2-r\)">\(2r^2-r\)</span> solutions (the overlap <span class="math" data-tex="\(i=j=k=l\)">\(i=j=k=l\)</span> counted once). So the value is <span class="math" data-tex="\(2-1/r\to2\)">\(2-1/r\to2\)</span>.</p>
+<p><strong>5.3.</strong> Either the first point is unmatched, leaving <span class="math" data-tex="\(L-1\)">\(L-1\)</span> points, or it is matched with point <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, splitting the remaining points into <span class="math" data-tex="\(j-1\)">\(j-1\)</span> inside and <span class="math" data-tex="\(L-j-1\)">\(L-j-1\)</span> outside, matched independently. The bound <span class="math" data-tex="\(3^L\)">\(3^L\)</span> is the marking argument in the proof of Lemma 2.1.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(V^k\)">\(V^k\)</span> maps <span class="math" data-tex="\(e_n\)">\(e_n\)</span> to <span class="math" data-tex="\(e_{n+k}\)">\(e_{n+k}\)</span>. <span class="math" data-tex="\(pV^kq\)">\(pV^kq\)</span> is nonzero only on inputs <span class="math" data-tex="\(e_n\)">\(e_n\)</span>, <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, with <span class="math" data-tex="\(n+k=0\)">\(n+k=0\)</span>, that is on <span class="math" data-tex="\(e_{-k}\)">\(e_{-k}\)</span>, where it equals <span class="math" data-tex="\(pV^k\)">\(pV^k\)</span>. For <span class="math" data-tex="\(V^{-k}\)">\(V^{-k}\)</span>, <span class="math" data-tex="\(pV^{-k}q\)">\(pV^{-k}q\)</span> needs <span class="math" data-tex="\(n-k=0\)">\(n-k=0\)</span> with <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, impossible. And <span class="math" data-tex="\(pV^k\)">\(pV^k\)</span> is also supported on <span class="math" data-tex="\(e_{-k}\)">\(e_{-k}\)</span>, so <span class="math" data-tex="\(pV^kq=pV^k\)">\(pV^kq=pV^k\)</span>.</p>
+<p><strong>5.5.</strong> Let <span class="math" data-tex="\(V=\operatorname{diag}(1,i)\)">\(V=\operatorname{diag}(1,i)\)</span>, so <span class="math" data-tex="\(V^{-1}=\operatorname{diag}(1,-i)\)">\(V^{-1}=\operatorname{diag}(1,-i)\)</span>; these two matrices are linearly independent. Extend them by <span class="math" data-tex="\(E_{12},E_{21}\)">\(E_{12},E_{21}\)</span> to a basis of <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> and define <span class="math" data-tex="\(S\)">\(S\)</span> linearly by <span class="math" data-tex="\(S(V)=V\)">\(S(V)=V\)</span>, <span class="math" data-tex="\(S(V^{-1})=0\)">\(S(V^{-1})=0\)</span>, <span class="math" data-tex="\(S(E_{12})=S(E_{21})=0\)">\(S(E_{12})=S(E_{21})=0\)</span>. Then <span class="math" data-tex="\(S(V)=aV\)">\(S(V)=aV\)</span> and <span class="math" data-tex="\(S(V^{-1})=bV^{-1}\)">\(S(V^{-1})=bV^{-1}\)</span> with <span class="math" data-tex="\(a=1\ne0=b\)">\(a=1\ne0=b\)</span>. The identities fail for <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, as Lemma 4.2 requires: <span class="math" data-tex="\(V^2=\operatorname{diag}(1,-1)=\frac{1+i}2V+\frac{1-i}2V^{-1}\)">\(V^2=\operatorname{diag}(1,-1)=\frac{1+i}2V+\frac{1-i}2V^{-1}\)</span>, so <span class="math" data-tex="\(S(V^2)=\frac{1+i}2V\ne V^2=aV^2\)">\(S(V^2)=\frac{1+i}2V\ne V^2=aV^2\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-295] OpenAI, <em>Vanishing of higher bounded Hochschild cohomology</em>, OpenAI Math Release preprint, 23 September 2026, Section 4 (the rigidity theorem). https://github.com/openai/math/tree/main/preprints/Vanishing-of-higher-bounded-Hochschild-cohomology-September-23-2026</li>
+<li>U. Haagerup, <em>An example of a non nuclear C*-algebra, which has the metric approximation property</em>, Invent. Math. 50 (1979), 279–293, Lemma 1.4; freely readable through the Göttingen digitization centre (GDZ). The length estimate of Section 1.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

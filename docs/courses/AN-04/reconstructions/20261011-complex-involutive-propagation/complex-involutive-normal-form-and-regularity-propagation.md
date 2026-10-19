@@ -4,7 +4,7 @@ An elliptic equation in two directions has more freedom than transport along a r
 
 The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, the 2009 edition, Section 26.2, Theorem 26.2.1 and Corollary 26.2.2, printed pages 74–76. This independently written lesson uses the earlier programme proofs identified in its proof map. In particular, FN:I0–I10 supplies the exact homogeneous geometric normal form, GE:D7–D11 supplies Sobolev continuity and inverse canonical graph operators, and WCR:C0–C1 supplies weak holomorphic regularity and the planar fundamental kernel. Ordinary symbol composition, summation and elliptic inversion are P2:OP3–OP6 and K:K1–K3. These are proof dependencies, with their precise versions recorded; the book citation does not replace any proof below.
 
-The current export still has external human foundation providers. Its dependency map records them explicitly, so internal P514 closure of this export is not claimed. Original expression, the three solutions and the reproducible figure are CC0-1.0.  [Weighted Cauchy–Riemann estimates](../20261011-weighted-cauchy-riemann/weighted-cauchy-riemann-estimates-and-holomorphic-peaks.html) provide the analytic input. [Prescribed superharmonic regularity](../20261011-prescribed-superharmonic-regularity/prescribed-superharmonic-regularity.html) constructs solutions with a specified index on the complex leaf.
+The current export still has external human foundation providers. Its dependency map records them explicitly. Original expression, the three solutions and the reproducible figure are CC0-1.0.  [Weighted Cauchy–Riemann estimates](../20261011-weighted-cauchy-riemann/weighted-cauchy-riemann-estimates-and-holomorphic-peaks.html) provide the analytic input. [Prescribed superharmonic regularity](../20261011-prescribed-superharmonic-regularity/prescribed-superharmonic-regularity.html) constructs solutions with a specified index on the complex leaf.
 
 ## 1. The geometric and regularity statements
 
@@ -232,4 +232,4 @@ This extra term has no order-one improvement and does not disappear near an arbi
 
 ![A characteristic leaf disk with its boundary collar and the exact logarithmic comparison coefficient](figures/complex-leaf-comparison.svg)
 
-The proof locators are M1 for the disk and its two data regions, and P2/X3 for the logarithmic barrier. Source credit, [proof review](proof-review.json), [finite algebra checks](model-check.json) and [reader verification](reader-check.json) accompany the editable source. The finite checks confirm signs and explicit identities; the operator estimates and propagation theorem are proved above.
+The proof locators are M1 for the disk and its two data regions, and P2/X3 for the logarithmic barrier.  The finite checks confirm signs and explicit identities; the operator estimates and propagation theorem are proved above.

@@ -13,7 +13,7 @@ The nonradial condition is essential; it also implies \(n\ge2\). In dimension on
 
 The exact [ordinary cutoff and wavefront proofs W1–W4](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), [proper conic localization K3–K4](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md), weighted Fourier and distributional pairing proof S1, and [Fourier inversion and Schwartz bounds](../20261004-free-stationary-phase/quadratic-stationary-phase.md) supply the operations below. The later correction is the already proved [normalized directional kernel correction](../20261006-restored-kernel-corrections/global-kernel-corrections-from-directional-symbols.md); it is used only after the global assembly still to come. Every prerequisite has an exact locator in the [proof map](proof-map.json).
 
-Self-checked by the writing AI.
+
 
 ## 1. A cutoff depending on displacement preserves every real Sobolev scale
 
@@ -252,7 +252,7 @@ The graph theorem holds at every real order, and (LP5) holds at the real order \
 
 ## 7. The remaining global assembly
 
-This proves the local signed construction, its exact strictly delayed residual, the ordinary difference and the normalized every-real Sobolev bound. To obtain global right parametrices, one must still construct a base-locally-finite conic PDO partition, control the supports of all local kernels, treat elliptic cones with their exact programme parametrix, sum the residuals with their closed strict wavefront bound, and apply the directional kernel correction. The compact-middle proof then supplies both identities by adjoints and same-sign comparison. Global noncharacteristicity of the difference, arbitrary-real-order reduction and disconnected characteristic sign choices also need their full receiving arguments. These are active substantive obligations; the full global theorem and the wider assigned course remain unfinished.
+This proves the local signed construction, its exact strictly delayed residual, the ordinary difference and the normalized every-real Sobolev bound. To obtain global right parametrices, one must still construct a base-locally-finite conic PDO partition, control the supports of all local kernels, treat elliptic cones with their exact programme parametrix, sum the residuals with their closed strict wavefront bound, and apply the directional kernel correction. The compact-middle proof then supplies both identities by adjoints and same-sign comparison. Global noncharacteristicity of the difference, arbitrary-real-order reduction and disconnected characteristic sign choices also need their full receiving arguments.
 
 ## References and scope
 

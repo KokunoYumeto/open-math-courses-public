@@ -1,0 +1,373 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gluing vector fields: the first two orders</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A singular surface with free tangent sheaf)</a><a href="the-trace-form-and-the-residue-data.html">Previous lesson</a><a href="gluing-vector-fields-higher-orders-and-the-determinant.html">Next lesson</a><a href="src/gluing-vector-fields-the-first-two-orders.md">Editable source</a></nav><main><article><h1 id="gluing-vector-fields-the-first-two-orders">Gluing vector fields: the first two orders</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The singular surface is obtained by contracting the curve <span class="math" data-tex="\(C\)">\(C\)</span> of genus 21 in a surface <span class="math" data-tex="\(Y\)">\(Y\)</span> that contains it with self-intersection <span class="math" data-tex="\(-10\)">\(-10\)</span>. The surface <span class="math" data-tex="\(Y\)">\(Y\)</span> is built from the total space of the line bundle <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> by changing how a neighbourhood of each marked point <span class="math" data-tex="\(q_j\)">\(q_j\)</span> is glued to the rest. The aim is to make room for two vector fields <span class="math" data-tex="\(v_1,v_2\)">\(v_1,v_2\)</span> tangent to <span class="math" data-tex="\(C\)">\(C\)</span>, vanishing along it, whose wedge vanishes to order exactly five along <span class="math" data-tex="\(C\)">\(C\)</span>. This lesson sets up the coordinates, the vector fields and the gluing changes, and carries out the construction through the first two orders in the distance to <span class="math" data-tex="\(C\)">\(C\)</span>. The second order contains the one genuine obstruction; the residue data of the preceding lesson make it vanish. The next lesson continues to all orders needed.</p>
+<p><strong>Prerequisites.</strong> <a href="the-trace-form-and-the-residue-data.html"><em>The trace form and the residue data</em></a>, Proposition 3.2 and equation (3.2), with the notation there; <a href="traces-residues-and-vector-bundles-on-the-projective-line.html"><em>Traces, residues and vector bundles on the projective line</em></a>, Theorem 2.2 and Proposition 3.2; <a href="a-curve-of-genus-21-with-a-fourth-root-of-its-canonical-bundle.html"><em>A curve of genus 21 with a fourth root of its canonical bundle</em></a>, Proposition 3.3. From AG-QC: <a href="../AG-QC/affine-cohomology-and-serres-criterion.html"><em>Affine cohomology and Serre's criterion</em></a> (vanishing of higher cohomology of quasi-coherent sheaves on affine schemes). From <em>Complex analytic spaces and coherent sheaves</em>: <span class="unlinked"><em>Holomorphic functions of several variables</em></span> for power series in two variables. Existence and uniqueness of flows of holomorphic vector fields.</p>
+<p>For rows <span class="math" data-tex="\(X=(X_1,X_2)\)">\(X=(X_1,X_2)\)</span>, <span class="math" data-tex="\(Y=(Y_1,Y_2)\)">\(Y=(Y_1,Y_2)\)</span> put <span class="math" data-tex="\(X\wedge Y=X_1Y_2-X_2Y_1\)">\(X\wedge Y=X_1Y_2-X_2Y_1\)</span>, and <span class="math" data-tex="\(\epsilon_{12}=1\)">\(\epsilon_{12}=1\)</span>, <span class="math" data-tex="\(\epsilon_{21}=-1\)">\(\epsilon_{21}=-1\)</span>, <span class="math" data-tex="\(\epsilon_{11}=\epsilon_{22}=0\)">\(\epsilon_{11}=\epsilon_{22}=0\)</span>.</p>
+<h2 id="1-coordinates-orders-and-the-fields">1. Coordinates, orders and the fields</h2>
+<p>Let <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> be the total space of <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span>, with projection <span class="math" data-tex="\(\pi:Y_0\to C\)">\(\pi:Y_0\to C\)</span> and zero section <span class="math" data-tex="\(C\)">\(C\)</span>; the conormal bundle of <span class="math" data-tex="\(C\)">\(C\)</span> in <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>, and <span class="math" data-tex="\(C\cdot C=-\deg L=-10\)">\(C\cdot C=-\deg L=-10\)</span>. A local frame <span class="math" data-tex="\(\ell\)">\(\ell\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> is the same as a fibre-linear function <span class="math" data-tex="\(t\)">\(t\)</span> on <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> vanishing exactly on the zero section. A pair <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span> of a coordinate <span class="math" data-tex="\(z\)">\(z\)</span> on an open set of <span class="math" data-tex="\(C\)">\(C\)</span> and such a function is a <em>split chart</em>; it is <em>compatible</em> if <span class="math" data-tex="\(\ell^4\)">\(\ell^4\)</span> corresponds to <span class="math" data-tex="\(dz\)">\(dz\)</span> under <span class="math" data-tex="\(L^4\cong K_C\)">\(L^4\cong K_C\)</span>. Compatible charts exist near every point, by taking a fourth root of a unit, and two compatible charts are related by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde z=\psi(z),\qquad \widetilde t=g(z)\,t,\\
+g^4=\psi&#x27; .
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\widetilde z=\psi(z),\qquad \widetilde t=g(z)\,t,\\
+g^4=\psi&#x27; .
+\end{gathered}
+\tag{1.1}
+\]</span>
+Write <span class="math" data-tex="\(E_t=t\,\partial_t\)">\(E_t=t\,\partial_t\)</span> and <span class="math" data-tex="\(a=g&#x27;/g\)">\(a=g&#x27;/g\)</span>. In the new chart <span class="math" data-tex="\(\widetilde E_t=E_t\)">\(\widetilde E_t=E_t\)</span> and <span class="math" data-tex="\(\partial_z=\psi&#x27;\partial_{\widetilde z}+a\,\widetilde E_t\)">\(\partial_z=\psi&#x27;\partial_{\widetilde z}+a\,\widetilde E_t\)</span>. The meromorphic two-form
+<span class="math math-display" data-tex="\[
+\sigma=t^{-5}\,dt\wedge dz
+\]">\[
+\sigma=t^{-5}\,dt\wedge dz
+\]</span>
+is the same in all compatible charts, since
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde t^{-5}d\widetilde t\wedge d\widetilde z&amp;=g^{-5}t^{-5}\,g\,dt\wedge\psi&#x27;dz\\
+&amp;=t^{-5}dt\wedge dz .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widetilde t^{-5}d\widetilde t\wedge d\widetilde z&amp;=g^{-5}t^{-5}\,g\,dt\wedge\psi&#x27;dz\\
+&amp;=t^{-5}dt\wedge dz .
+\end{aligned}
+\]</span></p>
+<p><strong>Homogeneous terms.</strong> The group <span class="math" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span> acts on <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> by scaling the fibres. A vector field on <span class="math" data-tex="\(\pi^{-1}(U)\)">\(\pi^{-1}(U)\)</span>, <span class="math" data-tex="\(U\subset C\)">\(U\subset C\)</span> open, is <em>homogeneous of index <span class="math" data-tex="\(k\)">\(k\)</span></em> if, in a split chart, it has the form
+<span class="math math-display" data-tex="\[
+t^{k+1}\bigl(A_k\,E_t+B_k\,\partial_z\bigr)
+\]">\[
+t^{k+1}\bigl(A_k\,E_t+B_k\,\partial_z\bigr)
+\]</span>
+with functions <span class="math" data-tex="\(A_k,B_k\)">\(A_k,B_k\)</span> of <span class="math" data-tex="\(z\)">\(z\)</span>; such a field is tangent to <span class="math" data-tex="\(C\)">\(C\)</span> and vanishes along it to order <span class="math" data-tex="\(k+1\)">\(k+1\)</span>. Under (1.1),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde A_k=g^{-(k+1)}(A_k+aB_k),\\
+\widetilde B_k=g^{-(k+1)}\psi&#x27;B_k=g^{3-k}B_k .\qquad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widetilde A_k=g^{-(k+1)}(A_k+aB_k),\\
+\widetilde B_k=g^{-(k+1)}\psi&#x27;B_k=g^{3-k}B_k .\qquad(1.2)
+\end{gathered}
+\]</span>
+So <span class="math" data-tex="\(B_k\)">\(B_k\)</span> is the coefficient of a section of <span class="math" data-tex="\(L^{k+1}\otimes T_C\cong L^{k-3}\)">\(L^{k+1}\otimes T_C\cong L^{k-3}\)</span>, and when <span class="math" data-tex="\(B_k=0\)">\(B_k=0\)</span>, <span class="math" data-tex="\(A_k\)">\(A_k\)</span> is the coefficient of a section of <span class="math" data-tex="\(L^{k+1}\)">\(L^{k+1}\)</span>. The homogeneous fields of index <span class="math" data-tex="\(k\)">\(k\)</span> are the sections of an algebraic vector bundle <span class="math" data-tex="\(\mathcal E_k\)">\(\mathcal E_k\)</span> of rank two on <span class="math" data-tex="\(C\)">\(C\)</span>, the weight-<span class="math" data-tex="\((k+1)\)">\((k+1)\)</span> part of <span class="math" data-tex="\(\pi_*\)">\(\pi_*\)</span> of the logarithmic tangent sheaf of <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> along <span class="math" data-tex="\(C\)">\(C\)</span>, and there is an exact sequence
+<span class="math math-display" data-tex="\[
+0\to L^{k+1}\to\mathcal E_k\to L^{k-3}\to0,\qquad(1.3)
+\]">\[
+0\to L^{k+1}\to\mathcal E_k\to L^{k-3}\to0,\qquad(1.3)
+\]</span>
+where the first map is <span class="math" data-tex="\(A\mapsto t^{k+1}AE_t\)">\(A\mapsto t^{k+1}AE_t\)</span> and the second takes the horizontal coefficient <span class="math" data-tex="\(B_k\)">\(B_k\)</span>. The splitting given by a split chart depends on the chart, through the term <span class="math" data-tex="\(aB_k\)">\(aB_k\)</span> in (1.2).</p>
+<p><strong>The cover.</strong> Let <span class="math" data-tex="\(U_0=C\setminus Z\)">\(U_0=C\setminus Z\)</span>, an affine curve, since <span class="math" data-tex="\(Z\)">\(Z\)</span> is a divisor of positive degree on the projective curve <span class="math" data-tex="\(C\)">\(C\)</span> and a suitable multiple of it is very ample. Let <span class="math" data-tex="\(U_1,\ldots,U_6\)">\(U_1,\ldots,U_6\)</span> be disjoint discs around <span class="math" data-tex="\(q_1,\ldots,q_6\)">\(q_1,\ldots,q_6\)</span>, each with a compatible chart <span class="math" data-tex="\((z,t)=(z_j,t_j)\)">\((z,t)=(z_j,t_j)\)</span> centred at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, the one used in the preceding lesson. The <em>annuli</em> <span class="math" data-tex="\(U_0\cap U_j=U_j\setminus\{q_j\}\)">\(U_0\cap U_j=U_j\setminus\{q_j\}\)</span> are punctured discs. On <span class="math" data-tex="\(\pi^{-1}(U_0)\)">\(\pi^{-1}(U_0)\)</span> we work with algebraic data: sections over <span class="math" data-tex="\(U_0\)">\(U_0\)</span> of the bundles <span class="math" data-tex="\(L^m\)">\(L^m\)</span> and <span class="math" data-tex="\(\mathcal E_k\)">\(\mathcal E_k\)</span>. In the chart of <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, such a section has coefficients that are meromorphic at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, since it is a rational section on <span class="math" data-tex="\(C\)">\(C\)</span> regular on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. On <span class="math" data-tex="\(\pi^{-1}(U_j)\)">\(\pi^{-1}(U_j)\)</span> we work with holomorphic coefficients on the disc.</p>
+<p>Since <span class="math" data-tex="\(U_0\)">\(U_0\)</span> is affine, every section of <span class="math" data-tex="\(L^{k-3}\)">\(L^{k-3}\)</span> over <span class="math" data-tex="\(U_0\)">\(U_0\)</span> lifts to a section of <span class="math" data-tex="\(\mathcal E_k\)">\(\mathcal E_k\)</span> over <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, and two lifts differ by a section of <span class="math" data-tex="\(L^{k+1}\)">\(L^{k+1}\)</span> (Affine cohomology lesson: <span class="math" data-tex="\(H^1(U_0,L^{k+1})=0\)">\(H^1(U_0,L^{k+1})=0\)</span>).</p>
+<p><strong>The fields.</strong> On each chart we seek two vector fields, written as rows,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v=t\bigl(A(t,z)E_t+B(t,z)\partial_z\bigr),\\
+A=\sum_{k\ge0}A_kt^k,\quad B=\sum_{k\ge0}B_kt^k,\\
+A_0=r,\quad B_0=0,\qquad(1.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+v=t\bigl(A(t,z)E_t+B(t,z)\partial_z\bigr),\\
+A=\sum_{k\ge0}A_kt^k,\quad B=\sum_{k\ge0}B_kt^k,\\
+A_0=r,\quad B_0=0,\qquad(1.4)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(r=\xi u\)">\(r=\xi u\)</span> is the basis of <span class="math" data-tex="\(H^0(C,L)\)">\(H^0(C,L)\)</span> with common zero divisor <span class="math" data-tex="\(Z\)">\(Z\)</span>. Subscripts <span class="math" data-tex="\(k\)">\(k\)</span> are orders; the two entries of a row are the two fields. In the chart,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma(v_1,v_2)=t^{-2}(A\wedge B),\\
+v_1\wedge v_2=t^2(A\wedge B)\,E_t\wedge\partial_z .\qquad(1.5)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sigma(v_1,v_2)=t^{-2}(A\wedge B),\\
+v_1\wedge v_2=t^2(A\wedge B)\,E_t\wedge\partial_z .\qquad(1.5)
+\end{gathered}
+\]</span>
+Indeed, <span class="math" data-tex="\(v_i=t^2A_i\partial_t+tB_i\partial_z\)">\(v_i=t^2A_i\partial_t+tB_i\partial_z\)</span>, and <span class="math" data-tex="\(dt\wedge dz(v_1,v_2)=t^3(A\wedge B)\)">\(dt\wedge dz(v_1,v_2)=t^3(A\wedge B)\)</span>. The goal is <span class="math" data-tex="\(A\wedge B=t^2(1+O(t))\)">\(A\wedge B=t^2(1+O(t))\)</span>, so that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_1\wedge v_2&amp;=t^4(1+O(t))E_t\wedge\partial_z\\
+&amp;=t^5(1+O(t))\,\partial_t\wedge\partial_z .
+\end{aligned}
+\]">\[
+\begin{aligned}
+v_1\wedge v_2&amp;=t^4(1+O(t))E_t\wedge\partial_z\\
+&amp;=t^5(1+O(t))\,\partial_t\wedge\partial_z .
+\end{aligned}
+\]</span></p>
+<h2 id="2-changing-the-gluing">2. Changing the gluing</h2>
+<p>On the annulus <span class="math" data-tex="\(U_0\cap U_j\)">\(U_0\cap U_j\)</span> the two charts are compared through the split identification of <span class="math" data-tex="\(\pi^{-1}(U_0\cap U_j)\)">\(\pi^{-1}(U_0\cap U_j)\)</span>. We modify this identification by time-one flows of vector fields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D=t^k\bigl(b\,E_t+h\,\partial_z\bigr),\\
+k\ge1,
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+D=t^k\bigl(b\,E_t+h\,\partial_z\bigr),\\
+k\ge1,
+\end{gathered}
+\tag{2.1}
+\]</span>
+with <span class="math" data-tex="\(b,h\)">\(b,h\)</span> holomorphic on the annulus, in the disc coordinate; in all applications they are meromorphic at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. The time-one flow of <span class="math" data-tex="\(-D\)">\(-D\)</span> acts on vector fields by <span class="math" data-tex="\(\exp(\operatorname{ad}D)\)">\(\exp(\operatorname{ad}D)\)</span>, where <span class="math" data-tex="\(\operatorname{ad}D(V)=[D,V]\)">\(\operatorname{ad}D(V)=[D,V]\)</span>: if <span class="math" data-tex="\(\phi_s\)">\(\phi_s\)</span> is the flow of <span class="math" data-tex="\(D\)">\(D\)</span>, then <span class="math" data-tex="\(\frac{d}{ds}\phi_s^*V=\phi_s^*[D,V]\)">\(\frac{d}{ds}\phi_s^*V=\phi_s^*[D,V]\)</span>, so <span class="math" data-tex="\(\phi_1^*V=\exp(\operatorname{ad}D)V\)">\(\phi_1^*V=\exp(\operatorname{ad}D)V\)</span> as formal series. Since <span class="math" data-tex="\(\operatorname{ad}D\)">\(\operatorname{ad}D\)</span> raises the index by <span class="math" data-tex="\(k\)">\(k\)</span>, only finitely many terms contribute through any given index. On a compact subannulus, <span class="math" data-tex="\(D\)">\(D\)</span> is holomorphic near the zero section and vanishes there, so its time-one flow and the inverse exist on a neighbourhood of the zero section over the subannulus. The flow fixes <span class="math" data-tex="\(C\)">\(C\)</span> pointwise and changes <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(t\mapsto t+O(t^{k+1})\)">\(t\mapsto t+O(t^{k+1})\)</span>, so <span class="math" data-tex="\(C\)">\(C\)</span> and its conormal bundle <span class="math" data-tex="\(L\)">\(L\)</span> are preserved. Successive modifications are composed, and all formulas are written in the disc chart on the annulus; there are no triple overlaps, since the discs are disjoint.</p>
+<p><strong>Lemma 2.1 (brackets).</strong> For <span class="math" data-tex="\(D\)">\(D\)</span> as in (2.1) and <span class="math" data-tex="\(V=t^{\ell+1}(AE_t+B\partial_z)\)">\(V=t^{\ell+1}(AE_t+B\partial_z)\)</span>, with primes denoting <span class="math" data-tex="\(z\)">\(z\)</span>-derivatives,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;[D,V]=t^{k+\ell+1}\Bigl(\bigl((\ell+1-k)bA\\
+&amp;\quad+hA&#x27;-Bb&#x27;\bigr)E_t+\bigl((\ell+1)bB\\
+&amp;\quad+hB&#x27;-khA-Bh&#x27;\bigr)\partial_z\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;[D,V]=t^{k+\ell+1}\Bigl(\bigl((\ell+1-k)bA\\
+&amp;\quad+hA&#x27;-Bb&#x27;\bigr)E_t+\bigl((\ell+1)bB\\
+&amp;\quad+hB&#x27;-khA-Bh&#x27;\bigr)\partial_z\Bigr).
+\end{aligned}
+\]</span>
+Moreover <span class="math" data-tex="\(\mathcal L_D\sigma=t^k\bigl((k-4)b+h&#x27;\bigr)\sigma\)">\(\mathcal L_D\sigma=t^k\bigl((k-4)b+h&#x27;\bigr)\sigma\)</span>; for <span class="math" data-tex="\(k\ne4\)">\(k\ne4\)</span>, the choice <span class="math" data-tex="\(b=h&#x27;/(4-k)\)">\(b=h&#x27;/(4-k)\)</span> preserves <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The leading action of <span class="math" data-tex="\(D\)">\(D\)</span> on the fields (1.4) is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Delta A_k=(1-k)\,b\,r+h\,r&#x27;,\\
+\Delta B_k=-k\,h\,r .
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\Delta A_k=(1-k)\,b\,r+h\,r&#x27;,\\
+\Delta B_k=-k\,h\,r .
+\end{gathered}
+\tag{2.2}
+\]</span></p>
+<p><strong>Proof.</strong> Use <span class="math" data-tex="\(E_t(t^c)=ct^c\)">\(E_t(t^c)=ct^c\)</span>, <span class="math" data-tex="\([E_t,\partial_z]=0\)">\([E_t,\partial_z]=0\)</span>, and expand both components. For the divergence, the coefficient of <span class="math" data-tex="\(dt\wedge dz\)">\(dt\wedge dz\)</span> in <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is <span class="math" data-tex="\(t^{-5}\)">\(t^{-5}\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{div}_\sigma D\\
+&amp;=t^5\bigl(\partial_t(t^{k-4}b)+\partial_z(t^{k-5}h)\bigr)\\
+&amp;=t^k\bigl((k-4)b+h&#x27;\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{div}_\sigma D\\
+&amp;=t^5\bigl(\partial_t(t^{k-4}b)+\partial_z(t^{k-5}h)\bigr)\\
+&amp;=t^k\bigl((k-4)b+h&#x27;\bigr).
+\end{aligned}
+\]</span>
+For (2.2), take <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, <span class="math" data-tex="\(A=r\)">\(A=r\)</span>, <span class="math" data-tex="\(B=0\)">\(B=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The check script of this course verifies the bracket, the divergence and (2.2) for arbitrary functions <span class="math" data-tex="\(b,h,A,B\)">\(b,h,A,B\)</span> and symbolic <span class="math" data-tex="\(k,\ell\)">\(k,\ell\)</span>.</p>
+<p><strong>Lemma 2.2 (splitting along the marked points).</strong> Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be a line bundle on <span class="math" data-tex="\(C\)">\(C\)</span>, and for each <span class="math" data-tex="\(j\)">\(j\)</span> let <span class="math" data-tex="\(c_j\)">\(c_j\)</span> be a section of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> on the annulus <span class="math" data-tex="\(U_0\cap U_j\)">\(U_0\cap U_j\)</span>, meromorphic at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. There are a section <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> over <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and holomorphic sections <span class="math" data-tex="\(a_j\)">\(a_j\)</span> over <span class="math" data-tex="\(U_j\)">\(U_j\)</span> with <span class="math" data-tex="\(c_j=a_j-a\)">\(c_j=a_j-a\)</span> on every annulus if and only if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{j=1}^6\operatorname{Res}_{q_j}(c_j\,s)=0\\
+\text{for every }s\in H^0(C,K_C-\mathcal B).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{j=1}^6\operatorname{Res}_{q_j}(c_j\,s)=0\\
+\text{for every }s\in H^0(C,K_C-\mathcal B).
+\end{gathered}
+\]</span>
+The section <span class="math" data-tex="\(a\)">\(a\)</span> is then a rational section regular on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(a_j\)">\(a_j\)</span> exist. For <span class="math" data-tex="\(s\in H^0(K_C-\mathcal B)\)">\(s\in H^0(K_C-\mathcal B)\)</span>, <span class="math" data-tex="\(as\)">\(as\)</span> is a meromorphic differential on <span class="math" data-tex="\(C\)">\(C\)</span> with poles only on <span class="math" data-tex="\(Z\)">\(Z\)</span>, so <span class="math" data-tex="\(\sum_j\operatorname{Res}_{q_j}(as)=0\)">\(\sum_j\operatorname{Res}_{q_j}(as)=0\)</span> by the residue theorem, and <span class="math" data-tex="\(\operatorname{Res}_{q_j}(a_js)=0\)">\(\operatorname{Res}_{q_j}(a_js)=0\)</span>; hence <span class="math" data-tex="\(\sum_j\operatorname{Res}_{q_j}(c_js)=0\)">\(\sum_j\operatorname{Res}_{q_j}(c_js)=0\)</span>. Conversely, choose <span class="math" data-tex="\(n\)">\(n\)</span> so that every <span class="math" data-tex="\(c_j\)">\(c_j\)</span> has a pole of order at most <span class="math" data-tex="\(n\)">\(n\)</span>, and let <span class="math" data-tex="\(\mathrm{pp}\in\mathrm{PP}_{nZ}(\mathcal B)\)">\(\mathrm{pp}\in\mathrm{PP}_{nZ}(\mathcal B)\)</span> be the family of principal parts of the <span class="math" data-tex="\(-c_j\)">\(-c_j\)</span>. The hypothesis says that <span class="math" data-tex="\(\mathrm{pp}\)">\(\mathrm{pp}\)</span> annihilates the jets of all sections of <span class="math" data-tex="\(K_C-\mathcal B\)">\(K_C-\mathcal B\)</span>, so by Proposition 3.2 of the lesson on traces there is <span class="math" data-tex="\(a\in H^0(C,\mathcal B(nZ))\)">\(a\in H^0(C,\mathcal B(nZ))\)</span> with principal parts <span class="math" data-tex="\(\mathrm{pp}\)">\(\mathrm{pp}\)</span>. Then <span class="math" data-tex="\(a_j=a+c_j\)">\(a_j=a+c_j\)</span> has no principal part at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, so it extends holomorphically over <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-first-order">3. The first order</h2>
+<p>On the disc <span class="math" data-tex="\(U_j\)">\(U_j\)</span>, with the compatible coordinate of the preceding lesson and its data <span class="math" data-tex="\(c=c_j\)">\(c=c_j\)</span>, <span class="math" data-tex="\(m=c/z\)">\(m=c/z\)</span>, <span class="math" data-tex="\(R=mr=cu\)">\(R=mr=cu\)</span> and <span class="math" data-tex="\(p=P-mr&#x27;\)">\(p=P-mr&#x27;\)</span>, choose the order-one rows as follows, and use the order-one modification on the annulus with
+<span class="math math-display" data-tex="\[
+h=m,\qquad b=\tfrac13m&#x27; :
+\]">\[
+h=m,\qquad b=\tfrac13m&#x27; :
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cc}
+&amp;A_1&amp;B_1\\\hline
+U_j&amp;p&amp;m\,r\\
+U_0&amp;P&amp;0
+\end{array}
+\tag{3.1}
+\]">\[
+\begin{array}{c|cc}
+&amp;A_1&amp;B_1\\\hline
+U_j&amp;p&amp;m\,r\\
+U_0&amp;P&amp;0
+\end{array}
+\tag{3.1}
+\]</span>
+On the disc, <span class="math" data-tex="\(mr=cu\)">\(mr=cu\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> are holomorphic (Proposition 3.2 of the preceding lesson). On <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span> is a pair of sections of <span class="math" data-tex="\(\theta=L^2\)">\(\theta=L^2\)</span>, the type of <span class="math" data-tex="\(A_1\)">\(A_1\)</span> when <span class="math" data-tex="\(B_1=0\)">\(B_1=0\)</span>. By (2.2) with <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, the modification adds <span class="math" data-tex="\((mr&#x27;,-mr)\)">\((mr&#x27;,-mr)\)</span> to the inside rows at index one, giving <span class="math" data-tex="\((p+mr&#x27;,0)=(P,0)\)">\((p+mr&#x27;,0)=(P,0)\)</span>: the rows match at index one. The modification preserves <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, since <span class="math" data-tex="\(b=h&#x27;/3\)">\(b=h&#x27;/3\)</span>. The coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> in <span class="math" data-tex="\(A\wedge B\)">\(A\wedge B\)</span> is <span class="math" data-tex="\(r\wedge B_1\)">\(r\wedge B_1\)</span>, which is <span class="math" data-tex="\(r\wedge mr=0\)">\(r\wedge mr=0\)</span> inside and <span class="math" data-tex="\(0\)">\(0\)</span> outside.</p>
+<h2 id="4-the-second-order">4. The second order</h2>
+<p><strong>Horizontal rows.</strong> Write <span class="math" data-tex="\(U=B_2\)">\(U=B_2\)</span>. The coefficient of <span class="math" data-tex="\(t^2\)">\(t^2\)</span> in <span class="math" data-tex="\(A\wedge B\)">\(A\wedge B\)</span> must be <span class="math" data-tex="\(1\)">\(1\)</span>:
+<span class="math math-display" data-tex="\[
+r\wedge U=1-A_1\wedge B_1 .
+\tag{4.1}
+\]">\[
+r\wedge U=1-A_1\wedge B_1 .
+\tag{4.1}
+\]</span>
+On <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, the right side is <span class="math" data-tex="\(1\)">\(1\)</span>. The row <span class="math" data-tex="\(u\)">\(u\)</span> generates <span class="math" data-tex="\(H\)">\(H\)</span> at every point, and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is invertible on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>; since <span class="math" data-tex="\(U_0\)">\(U_0\)</span> is affine, there is a row <span class="math" data-tex="\(w\)">\(w\)</span> of sections of <span class="math" data-tex="\(L^{-1}\)">\(L^{-1}\)</span> over <span class="math" data-tex="\(U_0\)">\(U_0\)</span> with <span class="math" data-tex="\(r\wedge w=1\)">\(r\wedge w=1\)</span> (the map <span class="math" data-tex="\((x,y)\mapsto r_1y-r_2x\)">\((x,y)\mapsto r_1y-r_2x\)</span> from <span class="math" data-tex="\((L^{-1})^{\oplus2}\)">\((L^{-1})^{\oplus2}\)</span> onto <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is surjective on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, and its kernel has no first cohomology there), and <span class="math" data-tex="\(U=w\)">\(U=w\)</span> solves (4.1). On the disc, <span class="math" data-tex="\(r=z\rho\)">\(r=z\rho\)</span> with <span class="math" data-tex="\(\rho=u\)">\(\rho=u\)</span> nowhere zero after shrinking, and the right side is
+<span class="math math-display" data-tex="\[
+1-p\wedge mr=1-c\,(p\wedge u),
+\]">\[
+1-p\wedge mr=1-c\,(p\wedge u),
+\]</span>
+which vanishes at <span class="math" data-tex="\(z=0\)">\(z=0\)</span> because <span class="math" data-tex="\(c\,(p\wedge u)(0)=p(0)\wedge R(0)=1\)">\(c\,(p\wedge u)(0)=p(0)\wedge R(0)=1\)</span>. So (4.1) becomes <span class="math" data-tex="\(\rho\wedge U=(1-c\,p\wedge u)/z\)">\(\rho\wedge U=(1-c\,p\wedge u)/z\)</span>, with holomorphic right side, solvable because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is nowhere zero.</p>
+<p>After the order-one modification, the inside and outside fields agree at index <span class="math" data-tex="\(\le1\)">\(\le1\)</span>, and both satisfy (4.1); the modification preserves <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so the transported inside fields still have <span class="math" data-tex="\(\sigma(v_1,v_2)=1+O(t)\)">\(\sigma(v_1,v_2)=1+O(t)\)</span>. The coefficient of <span class="math" data-tex="\(t^2\)">\(t^2\)</span> in <span class="math" data-tex="\(A\wedge B\)">\(A\wedge B\)</span> is <span class="math" data-tex="\(r\wedge B_2+A_1\wedge B_1=r\wedge B_2\)">\(r\wedge B_2+A_1\wedge B_1=r\wedge B_2\)</span> on both sides, so the transported inside row and the outside row <span class="math" data-tex="\(U\)">\(U\)</span> differ by a row <span class="math" data-tex="\(\varphi r\)">\(\varphi r\)</span>, with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> holomorphic on the annulus and meromorphic at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, since <span class="math" data-tex="\(r\)">\(r\)</span> has no zero on the annulus. An order-two modification with <span class="math" data-tex="\(h=\varphi/2\)">\(h=\varphi/2\)</span> and <span class="math" data-tex="\(b=h&#x27;/2\)">\(b=h&#x27;/2\)</span>, which preserves <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, removes it, since its horizontal effect is <span class="math" data-tex="\(-2hr\)">\(-2hr\)</span> by (2.2). The outside row <span class="math" data-tex="\(U\)">\(U\)</span> stays fixed.</p>
+<p><strong>Vertical rows.</strong> After the horizontal rows match, the vertical rows at index two differ on each annulus by a row <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span> of sections of <span class="math" data-tex="\(L^3\)">\(L^3\)</span>, meromorphic at <span class="math" data-tex="\(q_j\)">\(q_j\)</span> (difference of two lifts in (1.3) with the same horizontal coefficient). By Lemma 2.2, changing the vertical lifts on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and on the discs makes them match if and only if
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^6\operatorname{Res}_{q_j}\bigl(r_i\,\delta_{j,\iota}\bigr)=0\qquad(i,\iota\in\{1,2\}),
+\]">\[
+\sum_{j=1}^6\operatorname{Res}_{q_j}\bigl(r_i\,\delta_{j,\iota}\bigr)=0\qquad(i,\iota\in\{1,2\}),
+\]</span>
+since <span class="math" data-tex="\(H^0(K_C-L^3)=H^0(C,L)\)">\(H^0(K_C-L^3)=H^0(C,L)\)</span> has basis <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span>; here <span class="math" data-tex="\(\delta_{j,\iota}\)">\(\delta_{j,\iota}\)</span> is the <span class="math" data-tex="\(\iota\)">\(\iota\)</span>-th entry, and <span class="math" data-tex="\(r_i\delta_{j,\iota}\)">\(r_i\delta_{j,\iota}\)</span> is a section of <span class="math" data-tex="\(L^4=K_C\)">\(L^4=K_C\)</span>, written <span class="math" data-tex="\(r_i\delta_{j,\iota}\,dz\)">\(r_i\delta_{j,\iota}\,dz\)</span> in the compatible chart.</p>
+<p><strong>Lemma 4.1 (the second-order obstruction vanishes).</strong> These four sums are zero.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(D^{(2)}=A_2\)">\(D^{(2)}=A_2\)</span> for the vertical row at index two (this is not a modification). For <span class="math" data-tex="\(i,\iota\in\{1,2\}\)">\(i,\iota\in\{1,2\}\)</span> set
+<span class="math math-display" data-tex="\[
+\Psi_{i\iota}=\Bigl(r_iD^{(2)}_\iota+\tfrac14r_i&#x27;U_\iota+\tfrac34r_\iota&#x27;U_i\Bigr)dz .
+\]">\[
+\Psi_{i\iota}=\Bigl(r_iD^{(2)}_\iota+\tfrac14r_i&#x27;U_\iota+\tfrac34r_\iota&#x27;U_i\Bigr)dz .
+\]</span>
+Once the horizontal rows match, the difference of <span class="math" data-tex="\(\Psi_{i\iota}\)">\(\Psi_{i\iota}\)</span> computed with the transported inside rows and with the outside rows is <span class="math" data-tex="\(r_i\delta_{\iota}\,dz\)">\(r_i\delta_{\iota}\,dz\)</span>. So it suffices to show that <span class="math" data-tex="\(\sum_{q\in Z}\operatorname{Res}_q\Psi_{i\iota}\)">\(\sum_{q\in Z}\operatorname{Res}_q\Psi_{i\iota}\)</span> is the same for both.</p>
+<p><em>The outside total.</em> Under a change (1.1) of compatible chart, (1.2) gives <span class="math" data-tex="\(\widetilde r_i=g^{-1}r_i\)">\(\widetilde r_i=g^{-1}r_i\)</span>, <span class="math" data-tex="\(d\widetilde r_i/d\widetilde z=g^{-5}(r_i&#x27;-ar_i)\)">\(d\widetilde r_i/d\widetilde z=g^{-5}(r_i&#x27;-ar_i)\)</span>, <span class="math" data-tex="\(\widetilde U_i=gU_i\)">\(\widetilde U_i=gU_i\)</span> and <span class="math" data-tex="\(\widetilde D^{(2)}_i=g^{-3}(D^{(2)}_i+aU_i)\)">\(\widetilde D^{(2)}_i=g^{-3}(D^{(2)}_i+aU_i)\)</span>. Substituting and using <span class="math" data-tex="\(d\widetilde z=g^4dz\)">\(d\widetilde z=g^4dz\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde\Psi_{i\iota}-\Psi_{i\iota}&amp;=\tfrac34\,(r_iU_\iota-r_\iota U_i)\,\frac{dg}{g}\\
+&amp;=\tfrac34\,\epsilon_{i\iota}\,(r\wedge U)\,\frac{dg}{g}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widetilde\Psi_{i\iota}-\Psi_{i\iota}&amp;=\tfrac34\,(r_iU_\iota-r_\iota U_i)\,\frac{dg}{g}\\
+&amp;=\tfrac34\,\epsilon_{i\iota}\,(r\wedge U)\,\frac{dg}{g}.
+\end{aligned}
+\]</span>
+On <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, <span class="math" data-tex="\(r\wedge U=1\)">\(r\wedge U=1\)</span>. The coefficient of the section <span class="math" data-tex="\(r_1\)">\(r_1\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> changes by <span class="math" data-tex="\(\widetilde r_1=g^{-1}r_1\)">\(\widetilde r_1=g^{-1}r_1\)</span>, so <span class="math" data-tex="\(\Psi_{i\iota}+\frac34\epsilon_{i\iota}\,dr_1/r_1\)">\(\Psi_{i\iota}+\frac34\epsilon_{i\iota}\,dr_1/r_1\)</span> is a differential on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> independent of the chart. It is meromorphic on <span class="math" data-tex="\(C\)">\(C\)</span>: at <span class="math" data-tex="\(Z\)">\(Z\)</span>, because the outside data are rational, and on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> its only poles are those of <span class="math" data-tex="\(dr_1/r_1\)">\(dr_1/r_1\)</span>, simple with residue <span class="math" data-tex="\(\frac34\epsilon_{i\iota}\)">\(\frac34\epsilon_{i\iota}\)</span> at the four zeros of <span class="math" data-tex="\(u_1\)">\(u_1\)</span>. At each <span class="math" data-tex="\(q\in Z\)">\(q\in Z\)</span>, <span class="math" data-tex="\(r_1=\xi u_1\)">\(r_1=\xi u_1\)</span> has a simple zero, so <span class="math" data-tex="\(\operatorname{Res}_q(dr_1/r_1)=1\)">\(\operatorname{Res}_q(dr_1/r_1)=1\)</span>. The residue theorem (Theorem 2.2 of the lesson on traces) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{q\in Z}\operatorname{Res}_q\Psi^{\mathrm{out}}_{i\iota}&amp;=-\tfrac34\epsilon_{i\iota}\,(6+4)\\
+&amp;=-\tfrac34\epsilon_{i\iota}\deg L .\qquad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{q\in Z}\operatorname{Res}_q\Psi^{\mathrm{out}}_{i\iota}&amp;=-\tfrac34\epsilon_{i\iota}\,(6+4)\\
+&amp;=-\tfrac34\epsilon_{i\iota}\deg L .\qquad(4.2)
+\end{aligned}
+\]</span></p>
+<p><em>The transported inside total.</em> Before transport, <span class="math" data-tex="\(\Psi_{i\iota}\)">\(\Psi_{i\iota}\)</span> is holomorphic on the disc, with residue zero. The order-two modification changes the rows at index two by its action on <span class="math" data-tex="\(trE_t\)">\(trE_t\)</span>, namely <span class="math" data-tex="\(\delta D^{(2)}=hr&#x27;-\tfrac12h&#x27;r\)">\(\delta D^{(2)}=hr&#x27;-\tfrac12h&#x27;r\)</span> and <span class="math" data-tex="\(\delta U=-2hr\)">\(\delta U=-2hr\)</span> by Lemma 2.1; this changes <span class="math" data-tex="\(\Psi_{i\iota}\)">\(\Psi_{i\iota}\)</span> by the exact differential <span class="math" data-tex="\(-\tfrac12\,d(h\,r_ir_\iota)\)">\(-\tfrac12\,d(h\,r_ir_\iota)\)</span>, with residue zero. The order-one modification <span class="math" data-tex="\(D=t(\tfrac13m&#x27;E_t+m\partial_z)\)">\(D=t(\tfrac13m&#x27;E_t+m\partial_z)\)</span> acts through <span class="math" data-tex="\(\exp(\operatorname{ad}D)\)">\(\exp(\operatorname{ad}D)\)</span>. Its index-two effect comes from <span class="math" data-tex="\([D,t^2(pE_t+mr\partial_z)]\)">\([D,t^2(pE_t+mr\partial_z)]\)</span> and from <span class="math" data-tex="\(\tfrac12[D,[D,trE_t]]\)">\(\tfrac12[D,[D,trE_t]]\)</span>; by Lemma 2.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta A_2&amp;=\tfrac13m&#x27;p+mp&#x27;+\tfrac23mm&#x27;r&#x27;\\
+&amp;\quad+\tfrac12m^2r&#x27;&#x27;-\tfrac16mm&#x27;&#x27;r,\\
+\Delta U&amp;=-mp+\tfrac13mm&#x27;r .\qquad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta A_2&amp;=\tfrac13m&#x27;p+mp&#x27;+\tfrac23mm&#x27;r&#x27;\\
+&amp;\quad+\tfrac12m^2r&#x27;&#x27;-\tfrac16mm&#x27;&#x27;r,\\
+\Delta U&amp;=-mp+\tfrac13mm&#x27;r .\qquad(4.3)
+\end{aligned}
+\]</span>
+Substitute <span class="math" data-tex="\(m=c/z\)">\(m=c/z\)</span> and <span class="math" data-tex="\(r=zR/c\)">\(r=zR/c\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta A_2&amp;=-\frac{cR}{z^3}+\frac{cR&#x27;}{3z^2}+\frac{cR&#x27;&#x27;}{2z}\\
+&amp;\quad-\frac{cp}{3z^2}+\frac{cp&#x27;}{z},\\
+\Delta U&amp;=-\frac{cp}{z}-\frac{cR}{3z^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta A_2&amp;=-\frac{cR}{z^3}+\frac{cR&#x27;}{3z^2}+\frac{cR&#x27;&#x27;}{2z}\\
+&amp;\quad-\frac{cp}{3z^2}+\frac{cp&#x27;}{z},\\
+\Delta U&amp;=-\frac{cp}{z}-\frac{cR}{3z^2}.
+\end{aligned}
+\]</span>
+Expanding <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> in Taylor series, with all coefficients on the right evaluated at <span class="math" data-tex="\(0\)">\(0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{i\iota}&amp;:=\operatorname{Res}_0(r_i\Delta A_{2,\iota}\,dz)\\
+&amp;=-\tfrac13R_ip_\iota-\tfrac23R_iR_\iota&#x27;-R_i&#x27;R_\iota,\\
+H_{i\iota}&amp;:=\operatorname{Res}_0(r_i&#x27;\Delta U_\iota\,dz)\\
+&amp;=-R_ip_\iota-\tfrac13R_iR_\iota&#x27;-\tfrac23R_i&#x27;R_\iota .
+\end{aligned}
+\]">\[
+\begin{aligned}
+F_{i\iota}&amp;:=\operatorname{Res}_0(r_i\Delta A_{2,\iota}\,dz)\\
+&amp;=-\tfrac13R_ip_\iota-\tfrac23R_iR_\iota&#x27;-R_i&#x27;R_\iota,\\
+H_{i\iota}&amp;:=\operatorname{Res}_0(r_i&#x27;\Delta U_\iota\,dz)\\
+&amp;=-R_ip_\iota-\tfrac13R_iR_\iota&#x27;-\tfrac23R_i&#x27;R_\iota .
+\end{aligned}
+\]</span>
+For example, <span class="math" data-tex="\(r_i\Delta A_{2,\iota}\)">\(r_i\Delta A_{2,\iota}\)</span> contains <span class="math" data-tex="\(-R_iR_\iota/z^2\)">\(-R_iR_\iota/z^2\)</span>, whose residue <span class="math" data-tex="\(-R_i&#x27;R_\iota-R_iR_\iota&#x27;\)">\(-R_i&#x27;R_\iota-R_iR_\iota&#x27;\)</span> accounts for both derivative terms of the second kind. Hence the residue at <span class="math" data-tex="\(q_j\)">\(q_j\)</span> of the change of <span class="math" data-tex="\(\Psi_{i\iota}\)">\(\Psi_{i\iota}\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_{i\iota}&amp;=F_{i\iota}+\tfrac14H_{i\iota}+\tfrac34H_{\iota i}\\
+&amp;=-\tfrac7{12}R_ip_\iota-\tfrac9{12}R_\iota p_i\\
+&amp;\quad-\tfrac54R_iR_\iota&#x27;-\tfrac{17}{12}R_i&#x27;R_\iota .
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_{i\iota}&amp;=F_{i\iota}+\tfrac14H_{i\iota}+\tfrac34H_{\iota i}\\
+&amp;=-\tfrac7{12}R_ip_\iota-\tfrac9{12}R_\iota p_i\\
+&amp;\quad-\tfrac54R_iR_\iota&#x27;-\tfrac{17}{12}R_i&#x27;R_\iota .
+\end{aligned}
+\]</span>
+Its symmetric and alternating parts are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tfrac12(T_{i\iota}+T_{\iota i})&amp;=-\tfrac23\bigl(R_ip_\iota+R_\iota p_i\\
+&amp;\qquad+2R_iR_\iota&#x27;+2R_i&#x27;R_\iota\bigr),\\
+\tfrac12(T_{i\iota}-T_{\iota i})&amp;=\tfrac1{12}\epsilon_{i\iota}\bigl((R\wedge p)(0)\\
+&amp;\qquad+(R\wedge R&#x27;)(0)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tfrac12(T_{i\iota}+T_{\iota i})&amp;=-\tfrac23\bigl(R_ip_\iota+R_\iota p_i\\
+&amp;\qquad+2R_iR_\iota&#x27;+2R_i&#x27;R_\iota\bigr),\\
+\tfrac12(T_{i\iota}-T_{\iota i})&amp;=\tfrac1{12}\epsilon_{i\iota}\bigl((R\wedge p)(0)\\
+&amp;\qquad+(R\wedge R&#x27;)(0)\bigr).
+\end{aligned}
+\]</span>
+By (3.2) of the preceding lesson, <span class="math" data-tex="\(P=R(0)/z+p(0)+2R&#x27;(0)+O(z)\)">\(P=R(0)/z+p(0)+2R&#x27;(0)+O(z)\)</span>, and <span class="math" data-tex="\(P_iP_\iota\)">\(P_iP_\iota\)</span> is a meromorphic section of <span class="math" data-tex="\(L^4=K_C\)">\(L^4=K_C\)</span> with poles only on <span class="math" data-tex="\(Z\)">\(Z\)</span>; its residue at <span class="math" data-tex="\(q_j\)">\(q_j\)</span> is <span class="math" data-tex="\(R_ip_\iota+R_\iota p_i+2R_iR_\iota&#x27;+2R_i&#x27;R_\iota\)">\(R_ip_\iota+R_\iota p_i+2R_iR_\iota&#x27;+2R_i&#x27;R_\iota\)</span>. By the residue theorem, the symmetric parts sum to zero over the six points. By Proposition 3.2(3) of the preceding lesson, <span class="math" data-tex="\((R\wedge p)(0)=-1\)">\((R\wedge p)(0)=-1\)</span> and <span class="math" data-tex="\((R\wedge R&#x27;)(0)=W_j\)">\((R\wedge R&#x27;)(0)=W_j\)</span>, so the alternating parts sum to
+<span class="math math-display" data-tex="\[
+\tfrac1{12}\epsilon_{i\iota}\sum_{j=1}^6(W_j-1)=-\tfrac34\epsilon_{i\iota}\deg L .
+\]">\[
+\tfrac1{12}\epsilon_{i\iota}\sum_{j=1}^6(W_j-1)=-\tfrac34\epsilon_{i\iota}\deg L .
+\]</span>
+So <span class="math" data-tex="\(\sum_{q\in Z}\operatorname{Res}_q\Psi^{\mathrm{in}}_{i\iota}=-\tfrac34\epsilon_{i\iota}\deg L\)">\(\sum_{q\in Z}\operatorname{Res}_q\Psi^{\mathrm{in}}_{i\iota}=-\tfrac34\epsilon_{i\iota}\deg L\)</span>, equal to (4.2) for all four pairs <span class="math" data-tex="\((i,\iota)\)">\((i,\iota)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The check script of this course verifies (4.3) as the index-two part of <span class="math" data-tex="\(\exp(\operatorname{ad}D)\)">\(\exp(\operatorname{ad}D)\)</span>, the residues <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span>, the matrix <span class="math" data-tex="\(T\)">\(T\)</span>, its two parts, the residue of <span class="math" data-tex="\(P_iP_\iota\)">\(P_iP_\iota\)</span>, the transformation law of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> and the exactness of the order-two change, for generic Taylor coefficients.</p>
+<p>By Lemmas 2.2 and 4.1, holomorphic vertical corrections on the discs and an algebraic correction on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> make the rows match through index two. Both modifications used so far preserve <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and on every chart
+<span class="math math-display" data-tex="\[
+A\wedge B=t^2+O(t^3).
+\]">\[
+A\wedge B=t^2+O(t^3).
+\]</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1</strong> (easy). Verify (1.2) from <span class="math" data-tex="\(\partial_z=\psi&#x27;\partial_{\widetilde z}+aE_t\)">\(\partial_z=\psi&#x27;\partial_{\widetilde z}+aE_t\)</span> and <span class="math" data-tex="\(E_t=\widetilde E_t\)">\(E_t=\widetilde E_t\)</span>.</p>
+<p><strong>5.2</strong> (easy). Show that a modification (2.1) with <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> fixes every point of <span class="math" data-tex="\(C\)">\(C\)</span> and induces the identity on the conormal bundle <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>5.3</strong> (medium). Show that the order-one modification of Section 3 cannot be replaced by one with <span class="math" data-tex="\(b=0\)">\(b=0\)</span> without changing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and compute <span class="math" data-tex="\(\mathcal L_D\sigma\)">\(\mathcal L_D\sigma\)</span> for <span class="math" data-tex="\(D=t\,m\,\partial_z\)">\(D=t\,m\,\partial_z\)</span>.</p>
+<p><strong>5.4</strong> (medium). Show that Lemma 2.2 with <span class="math" data-tex="\(\mathcal B=L^3\)">\(\mathcal B=L^3\)</span> needs exactly the two sections <span class="math" data-tex="\(r_1,r_2\)">\(r_1,r_2\)</span>, that is, <span class="math" data-tex="\(h^0(C,K_C-L^3)=2\)">\(h^0(C,K_C-L^3)=2\)</span>.</p>
+<p><strong>5.5</strong> (hard). Suppose the residue data satisfied <span class="math" data-tex="\(\sum_j(W_j-1)=-9\deg L+12\)">\(\sum_j(W_j-1)=-9\deg L+12\)</span> instead. Which of the four sums in Lemma 4.1 would fail, and by how much?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;t^{k+1}(A_kE_t+B_k\partial_z)\\
+&amp;\quad=t^{k+1}\bigl((A_k+aB_k)\widetilde E_t+\psi&#x27;B_k\partial_{\widetilde z}\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;t^{k+1}(A_kE_t+B_k\partial_z)\\
+&amp;\quad=t^{k+1}\bigl((A_k+aB_k)\widetilde E_t+\psi&#x27;B_k\partial_{\widetilde z}\bigr),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(t^{k+1}=g^{-(k+1)}\widetilde t^{k+1}\)">\(t^{k+1}=g^{-(k+1)}\widetilde t^{k+1}\)</span>. With <span class="math" data-tex="\(\psi&#x27;=g^4\)">\(\psi&#x27;=g^4\)</span>, <span class="math" data-tex="\(g^{-(k+1)}\psi&#x27;=g^{3-k}\)">\(g^{-(k+1)}\psi&#x27;=g^{3-k}\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(D=t^{k+1}b\,\partial_t+t^kh\,\partial_z\)">\(D=t^{k+1}b\,\partial_t+t^kh\,\partial_z\)</span> vanishes on <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, so its flow fixes <span class="math" data-tex="\(C\)">\(C\)</span> pointwise. Along the flow, <span class="math" data-tex="\(\dot t=t^{k+1}b\)">\(\dot t=t^{k+1}b\)</span>, so <span class="math" data-tex="\(t\circ\phi_1=t+O(t^{k+1})\)">\(t\circ\phi_1=t+O(t^{k+1})\)</span> and the differential of <span class="math" data-tex="\(t\)">\(t\)</span> along <span class="math" data-tex="\(C\)">\(C\)</span> is unchanged; this is the identity on the conormal bundle.</p>
+<p><strong>5.3.</strong> By Lemma 2.1 with <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, <span class="math" data-tex="\(\mathcal L_D\sigma=t(-3b+h&#x27;)\sigma\)">\(\mathcal L_D\sigma=t(-3b+h&#x27;)\sigma\)</span>, which vanishes only for <span class="math" data-tex="\(b=h&#x27;/3\)">\(b=h&#x27;/3\)</span>. For <span class="math" data-tex="\(D=tm\,\partial_z\)">\(D=tm\,\partial_z\)</span>, <span class="math" data-tex="\(\mathcal L_D\sigma=t\,m&#x27;\sigma\)">\(\mathcal L_D\sigma=t\,m&#x27;\sigma\)</span>, nonzero since <span class="math" data-tex="\(m=c/z\)">\(m=c/z\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(K_C-L^3=L\)">\(K_C-L^3=L\)</span>, and <span class="math" data-tex="\(h^0(C,L)=2\)">\(h^0(C,L)=2\)</span> by Proposition 3.3(3) of the lesson on the curve of genus 21.</p>
+<p><strong>5.5.</strong> The outside totals (4.2) do not involve the residue data. The inside alternating parts would sum to <span class="math" data-tex="\(\frac1{12}\epsilon_{i\iota}(-9\deg L+12)\)">\(\frac1{12}\epsilon_{i\iota}(-9\deg L+12)\)</span>, that is <span class="math" data-tex="\(-\frac34\epsilon_{i\iota}\deg L+\epsilon_{i\iota}\)">\(-\frac34\epsilon_{i\iota}\deg L+\epsilon_{i\iota}\)</span>. The symmetric sums are unchanged. So the sums for <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> and <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span> would be <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> instead of zero, while <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> and <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span> would still vanish: the obstruction would be a nonzero class, and the vertical rows could not be matched.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-048] OpenAI, <em>A singular normal affine surface with free tangent sheaf</em> (manuscript, 23 September 2026), in the release github.com/openai/math, family 048. Section 4: coordinates, transitions and the first two orders. There the outside chart is treated analytically, using that <span class="math" data-tex="\(C\setminus Z\)">\(C\setminus Z\)</span> is Stein; here the outside data are algebraic over the affine curve <span class="math" data-tex="\(C\setminus Z\)">\(C\setminus Z\)</span>, which keeps every cocycle meromorphic at the marked points and reduces the splitting problems to Proposition 3.2 of the lesson on traces.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

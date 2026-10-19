@@ -1,6 +1,6 @@
 # Direct images and the relative de Rham complex
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 Sending a differential equation to a point is a cohomological operation. On the affine line, the polynomial functions give one copy of the ground field in degree $-1$; a module concentrated at the origin gives one copy in degree $0$. The difference comes from a two-term complex, rather than from the ordinary space of sections. We will construct that complex, prove that direct images compose, and compute a finite map whose direct image has a singular summand.
 

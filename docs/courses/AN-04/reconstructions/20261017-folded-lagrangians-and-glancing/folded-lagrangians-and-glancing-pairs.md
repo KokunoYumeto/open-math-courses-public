@@ -322,6 +322,6 @@ Its restriction to \(a=0\) or \(b=0\) is zero, and its full covector vanishes on
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, 2007, §21.4, especially Theorem 21.4.1, Lemma 21.4.7 and Theorems 21.4.8 and 21.4.12, supplies the classification problems and normal forms. The ordinary proof here uses characteristic quotients and a relative homotopy primitive; the earlier homogeneous companion gives its conic route through the same quotients.
 
-The proof map, [source credit](source-provenance.json), [finite model checks](model-check.json) and [reader checks](reader-check.json) accompany the editable exposition. Programme proofs linked outside this export retain their recorded component terms.
+The prerequisite proof index gives the earlier results used here. Programme proofs linked outside this export retain their recorded component terms.
 
 Text, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their own terms.

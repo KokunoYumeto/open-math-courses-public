@@ -2,7 +2,7 @@
 
 A boundary normal form changes with the coefficients of the operator. Its density, first-order terms and right-hand side change too. We construct that change on one common collar, compute the complete transformed operator and transfer the actual source and observation tests back to the original chart. The original Banach norm is retained.
 
-**Independent exposition, proofs, exercises and figure: CC0-1.0.** The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, ISBN 978-3-540-49938-1, §§18.3 and 24.7, especially the observation estimates on printed pages 465–467. The earlier programme proofs of normal coordinates, full boundary kernels, flat-test bounds and the local estimates are identified in the proof map. See source credit and [review](proof-review.json). Required human foundation proofs remain external; internal P514 closure of this CC0 export is not claimed. 
+**Independent exposition, proofs, exercises and figure: CC0-1.0.** The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, ISBN 978-3-540-49938-1, §§18.3 and 24.7, especially the observation estimates on printed pages 465–467. The earlier programme proofs of normal coordinates, full boundary kernels, flat-test bounds and the local estimates are identified in the proof map.  Required human foundation proofs remain external. 
 
 ## 1. A common collar for the coefficient family
 

@@ -2,7 +2,7 @@
 
 The incoming-field theorem carries the full-space solution through a strict glancing tangency. Its ordinary wavefront conclusion allows pure normal covectors, so restriction to the boundary requires another argument. This supplement supplies that argument for both the value and the actual weak normal trace. It does not yet prove that boundary data outside the Airy patch have a harmless response inside that patch.
 
-**Original exposition, proofs, exercises and figure: CC0-1.0.** The source antecedents are the Hörmander III treatment of compressed quantization and the exact programme proofs linked below.  Required Lebl proofs remain external author-edition dependencies: this export does not claim internal P514 closure. See the proof map, source credit and [review](proof-review.json).
+**Original exposition, proofs, exercises and figure: CC0-1.0.** The source antecedents are the Hörmander III treatment of compressed quantization and the exact programme proofs linked below.  Required Lebl proofs remain external author-edition dependencies. The prerequisite proof index gives the earlier results used here.
 
 ## 1. The precise trace statement
 
@@ -240,7 +240,7 @@ Near the glancing contact the initial time \(r\) in IC is strictly earlier, so t
 
 Both imposed data are thus microlocally smooth at \((z_0,\eta_0)\). The original smooth matrix Robin gauge preserves this conclusion: if \(U=S v\), then its face traces are \(S_0\gamma v\) and \(S_0\gamma D_qv+(D_qS)_0\gamma v\). Multiplication by smooth matrices preserves wavefront containment and the displayed matrix order is retained.
 
-The next problem is the response to the remaining boundary frequencies and the cutoff errors on the complete closed dependence region. The complete-data condition of IC:C8 and TBU:T3 is still required for the Airy comparison. A datum being smooth at one covector does not by itself prove that this complementary response is smooth there. Sharp Airy energy mapping, strict propagation for the original weak solution and the remaining full course requirements are not concluded by (IT23).
+The next problem is the response to the remaining boundary frequencies and the cutoff errors on the complete closed dependence region. The complete-data condition of IC:C8 and TBU:T3 is still required for the Airy comparison. A datum being smooth at one covector does not by itself prove that this complementary response is smooth there. Sharp Airy energy mapping and strict propagation for the original weak solution are not concluded by (IT23).
 
 ## 9. Three solved exercises
 
@@ -302,4 +302,4 @@ Thus the transformed lower terms generally change even though the face trace sim
 
 The right panel plots the exact magnitudes \(e^{-\lambda u}/(2\lambda)\) and \(e^{-\lambda u}/2\) from Exercise 1 for \(\lambda=1,4\), \(0\le u\le3\). They coincide for \(\lambda=1\); their distinct normalization for \(\lambda=4\) is visible. This positive resolvent illustrates normal-profile integrability and its scaling; it is not asserted to be the complete inverse of the wave operator. The [figure script](figures/build_figure.py) retains the coordinates, functions and labels.
 
-The proof map binds the full profile calculation, all frequency regions, actual operator limits, elliptic normal decomposition and weak trace identification to exact earlier proofs. Its transitive external dependencies stay external. The [algebra checks](model-check.json) supplement the analytic proofs above; finite model checks do not certify the general theorem.
+The proof map binds the full profile calculation, all frequency regions, actual operator limits, elliptic normal decomposition and weak trace identification to exact earlier proofs. Its transitive external dependencies stay external.

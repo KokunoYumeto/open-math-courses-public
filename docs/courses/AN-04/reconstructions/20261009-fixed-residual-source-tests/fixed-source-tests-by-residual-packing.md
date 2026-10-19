@@ -4,7 +4,7 @@ Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), U
 
 The [admissible regularization proof](../20261009-admissible-boundary-regularization/boundary-regularization-with-source-tests.md) controls a regularized solution by finitely many source operators that can vary with the coefficient parameter. Here we replace a smooth compact parameter family of those operators by two fixed tests: one elliptic in the prescribed compressed cone and one residual. The residual test is an actual compact boundary operator; its source contribution is not discarded.
 
-We use the complete [resolved kernels and boundary calculus](../20261005-global-boundary-operators/global-boundary-operator-calculus.md), [uniform microsupport and separated products](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md), [periodic Fourier basis and Parseval proof](../20261005-restored-graph-egorov/global-inverses-and-periodic-multipliers.md), [complete smooth test spaces](../20261004-free-tangent-zoom/prerequisites/complete-test-spaces.md), and [L2 integration and duality](../20261005-cauchy-foundations/integration-and-duality.md). Their exact transitive Lebl proofs remain external author-edition providers; internal P514 closure of this CC0 export is not claimed.
+We use the complete [resolved kernels and boundary calculus](../20261005-global-boundary-operators/global-boundary-operator-calculus.md), [uniform microsupport and separated products](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md), [periodic Fourier basis and Parseval proof](../20261005-restored-graph-egorov/global-inverses-and-periodic-multipliers.md), [complete smooth test spaces](../20261004-free-tangent-zoom/prerequisites/complete-test-spaces.md), and [L2 integration and duality](../20261005-cauchy-foundations/integration-and-duality.md). Their exact transitive Lebl proofs remain external author-edition providers.
 
 ## 1. The fixed-test statement and its hypotheses
 
@@ -208,7 +208,7 @@ For a fixed parameter the norm on the right defines the corresponding smooth sou
 
 **S9. Remaining scope.** The packing uses a tangential direction to separate output regions, so it proves the fixed-test reduction on boundary charts with \(d\geq1\). It makes no assertion of this construction in dimension \(d=0\). It also produces two fixed tests, whose norms are both written in (FT21); they have not been replaced without proof by a single scalar tester.
 
-For the full observation theorem, the remaining tasks are the required assembly of fixed scalar source and observation tests, uniform estimates in the other local propagation regimes, and their combination with compact ray access. The zero-dimensional boundary case, wherever needed, requires its own argument. The wave-equation application, sharp general Airy mapping and remaining AN-04 programme stay active. The present proof supplies an actual fixed residual-source bound for the positive-dimensional boundary case, where merely dropping that source term would be false.
+[Global scalar assembly](../20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html) gives fixed tests for complete finite families. The packing construction here concerns a positive-dimensional boundary and retains its residual-source norm; dropping that norm would make the bound false.
 
 ## 7. Three solved exercises and the exact packing geometry
 

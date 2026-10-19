@@ -2,9 +2,9 @@
 
 Suppose every maximally continued boundary ray meeting a target region also meets an observation region. A small smooth change of the operator preserves that access on compact target sets. The proof must allow an unbounded number of reflections, limiting gliding motion, stationary normalized rays and nonunique continuation at infinite contact.
 
-We prove the complete geometric statement, including a bounded normalized travel time. The antecedent is Hörmander, *The Analysis of Linear Partial Differential Operators III*, approved corrected edition reprinted in 2007, Lemma 24.7.2, printed pages 466–467. The text and illustration here are independent. This result supplies the geometric part of parameter-dependent propagation; the uniform analytic estimate is a separate obligation.
+We prove the complete geometric statement, including a bounded normalized travel time. The antecedent is Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected edition reprinted in 2007, Lemma 24.7.2, printed pages 466–467. The text and illustration here are independent. This result supplies the geometric part of parameter-dependent propagation; the uniform analytic estimate is a separate obligation.
 
-The exact earlier [generalized-flow proof](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) supplies local existence, reflected compactness and the glancing comparison estimates. The [boundary normalization](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html) and [finite smooth-flow proof](../20261005-restored-phase-space/finite-coordinate-flows.html) supply their parameter-dependent coordinate and ODE inputs. The proof map records the complete receiving dependencies. Required Lebl foundations remain external; internal P514 closure of this CC0-only export is not claimed.
+The exact earlier [generalized-flow proof](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) supplies local existence, reflected compactness and the glancing comparison estimates. The [boundary normalization](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html) and [finite smooth-flow proof](../20261005-restored-phase-space/finite-coordinate-flows.html) supply their parameter-dependent coordinate and ODE inputs. The proof map records the complete receiving dependencies. Required Lebl foundations remain external.
 
 ## 1. What has to remain stable
 
@@ -267,4 +267,4 @@ Let \(q_b(s)=(s-1)^2+b\), with \(0\le b<1/2\), start at \(s=0\), and let the ope
 \]
 The paths and every derivative converge uniformly on compact intervals. Their exit times nevertheless do not converge to the exit time of the limiting path. S8–S10 use subsequential endpoint limits, nested compact regions and positive buffers; they never assume this false continuity statement.
 
-The next analytic work must turn scalar boundary propagation into one estimate uniform in the parameter, with actual boundary data and all lower coefficients retained. The subsequent wave-equation application, sharp general Airy energy mapping and remaining full AN-04 requirements also stay active. Original expression and the reproducible figure are CC0-1.0; linked components retain their actual terms.
+A uniform estimate must turn scalar boundary propagation into one estimate uniform in the parameter, with actual boundary data and all lower coefficients retained.  Original expression and the reproducible figure are CC0-1.0; linked components retain their actual terms.

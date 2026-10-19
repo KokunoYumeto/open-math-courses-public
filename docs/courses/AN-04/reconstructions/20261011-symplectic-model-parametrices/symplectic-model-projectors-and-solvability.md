@@ -4,7 +4,7 @@ A right inverse fails when the forcing has a component in the adjoint kernel. A 
 
 The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, 2009 edition, Section 26.3, printed pages 86–91: the even-contact fundamental solution, Propositions 26.3.7, 26.3.7′ and 26.3.8, and Theorem 26.3.9. The earlier [finite-contact lesson](../20261011-finite-contact-complex-model/finite-contact-complex-models-and-regularity.html), FCM:E0–F2 and N3, supplies exact coercivity, favorable microlocal regularity and the full variable-coefficient reduction. We give a direct one-dimensional proof of the inverse bounds instead of invoking an unproved continuity assertion about the complex kernels.
 
-This exposition, its proofs, three solved exercises and reproducible illustration are independent expression, CC0-1.0. Exact earlier providers are in the proof map. Human foundation proofs remain external in the current export; internal P514 closure is unclaimed. [Global symplectic assembly](../20261011-global-symplectic-parametrix/global-symplectic-parametrix-and-hermitian-projectors.html) treats patching on the characteristic manifold.
+This exposition, its proofs, three solved exercises and reproducible illustration are independent expression, CC0-1.0. Exact earlier providers are in the proof map. Human foundation proofs remain external in the current export. [Global symplectic assembly](../20261011-global-symplectic-parametrix/global-symplectic-parametrix-and-hermitian-projectors.html) treats patching on the characteristic manifold.
 
 ## 1. The model and its closed one-dimensional realization
 
@@ -295,4 +295,4 @@ The original \(f\) is not in the positive-frequency range of \(L_1\), while its 
 
 ![An exact Gaussian profile, its cokernel projection, the corrected forcing, and the signed inverse identities.](figures/projected-forcing-and-inverses.svg)
 
-The source record, [proof review](proof-review.json), [finite checks](model-check.json) and [reader checks](reader-check.json) accompany the lesson. [Global symplectic assembly](../20261011-global-symplectic-parametrix/global-symplectic-parametrix-and-hermitian-projectors.html) combines these local inverses in the stated properly supported pseudolocal class. [The finite-contact companion](../20261011-finite-contact-complex-model/finite-contact-complex-models-and-regularity.html) gives the full operator reduction and the exact favorable and opposite-sign regularity examples.
+[Global symplectic assembly](../20261011-global-symplectic-parametrix/global-symplectic-parametrix-and-hermitian-projectors.html) combines these local inverses in the stated properly supported pseudolocal class. [The finite-contact companion](../20261011-finite-contact-complex-model/finite-contact-complex-models-and-regularity.html) gives the full operator reduction and the exact favorable and opposite-sign regularity examples.

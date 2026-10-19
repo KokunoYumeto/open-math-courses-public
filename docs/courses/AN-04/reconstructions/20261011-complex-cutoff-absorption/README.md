@@ -2,6 +2,6 @@
 
 Read [the companion](local-sign-geometry-and-complex-cutoff-phase.html) or edit [its source](local-sign-geometry-and-complex-cutoff-phase.md). It proves the sharp local derivative inequality, complex-phase absorption at the exact weak order, and the full symmetric commutator reduction. An admissible family attains the pointwise remainder exponent. [The adaptive-root companion](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html) proves the joint operator inequality CA13 and unrestricted complex propagation.
 
-The proof map binds 12 entries to 635 earlier entries in 30 maps, retaining 92 external human foundations. Three complete solutions, an original reproducible figure, source credit, [proof review](proof-review.json), [reader checks](reader-check.json) and [24 exact checks](model-check.json) support review. Run python -B model_check.py for the finite identities; the analytic proofs are in the companion.
+The proof map binds 12 entries to 635 earlier entries in 30 maps, retaining 92 external human foundations.
 
 [Adaptive square roots and complex-cutoff energy](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html) proves the joint operator inequality CA13 with the full quantization errors and a leading constant independent of the time weight. The present companion supplies the local geometric and pointwise estimates, rather than substituting them for operator positivity. Original expression is CC0-1.0; linked components retain their terms. 

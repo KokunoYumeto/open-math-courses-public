@@ -31,18 +31,18 @@ Fix a boundary glancing point \(q_0\), and let \(\nu\) be any prescribed finite 
 \]
 Both testers are elliptic on a fixed larger compact phase neighborhood containing every cutoff used below; assume \(X_-,Y<\infty\). Thus the lower solution order is \(\nu-3/2\), and the forcing order is \(\nu\). Full uniform microsupport, residual bounds, proper support and common compact kernel supports have the meanings of U058. A finite covering handles compact sets of anchors; all leading geometric constants below can be chosen uniformly on such a covering.
 
-The incoming hypothesis will be a tester \(Q_{\rm in}\in\Psi_b^{s-1/2}\), elliptic on the compact incoming derivative region defined in Section 4, with
+The incoming hypothesis will be a tester \(Q_{\rm in}\in\Psi_b^{s-1/2}\), elliptic on the compact incoming derivative region defined in Section 4, with 
 \[
  I=\|u\|_V+\|Q_{\rm in}u\|_V<\infty.
  \tag{PC3}
-\]
-The theorem proved below gives a fixed compactly localized \(B_0\in\Psi_b^\nu\), elliptic at \(q_0\), such that
+\] The theorem proved below gives a fixed compactly localized 
+\(B_0\in\Psi_b^\nu\), elliptic at \(q_0\), such that 
 \[
  \|B_0u\|_{L^2}^2\le C_{\nu,\epsilon,\delta,A_0}
           (X_-^2+Y^2+I^2).
  \tag{PC4}
-\]
-It also gives an elliptic energy tester of order \(\nu-1\) whose value on \(u\) belongs to \(V\). The coefficient on the right is finite at fixed widths; uniformity is in the regularizer. This smooth-face theorem is an analytic input toward the full course. It does not assert a physical-corner calculus, crossing-system theorem or the general trajectory criterion RW4.
+\] It also gives an elliptic energy tester of order 
+\(\nu-1\) whose value on \(u\) belongs to \(V\). The coefficient on the right is finite at fixed widths; uniformity is in the regularizer. This smooth-face theorem is a smooth-face analytic estimate. It does not assert a physical-corner calculus, crossing-system theorem or the general trajectory criterion RW4.
 
 ## 2. Transverse functions, including the defining function of glancing
 
@@ -531,8 +531,8 @@ The first term is bounded by \(|s c'|\,|\zeta/\tau|^2\). The second is bounded b
 
 For the full smooth-face wave principal form and arbitrary complex matrix lower terms, the finite-order uniform positive estimate, source trade, incoming cutoff bound, elliptic guard estimate and norm-specific removal are proved above. The ordinary normal errors have the corrected unsquared and squared scales. The regularizer's nonzero commutator is represented in its complete leading coefficients and lower weak-form remainder.
 
-The next geometric step is to relate the incoming region (PC19) uniformly to the parabolic back-flow windows in U056, and to carry the finite-order induction through a common neighborhood for smooth wave fronts. The parameter \(\beta\) was retained precisely for nested cutoffs; that iteration and the exact RW4 clock/window translation are not declared proved here. Physical corners, general systems and crossings, complex-phase propagation and the full course remain active. Further pertinent, nonduplicative source integration remains active. The exact current transitive provider chain is recorded in the proof map. 
+The geometric argument must relate the incoming region (PC19) uniformly to the parabolic back-flow windows in U056, and to carry the finite-order induction through a common neighborhood for smooth wave fronts. The parameter \(\beta\) was retained precisely for nested cutoffs; that iteration and the exact RW4 clock/window translation are not declared proved here.  The exact current transitive provider chain is recorded in the proof map. 
 
 ## Sources and contribution
 
-Vasy's paper supplies the positive-test and source-trade route; his complete correction supplies the corrected linear normal scale and the normal-coordinate derivative. The current programme proves every adopted step, including the valid Hörmander III antecedent in the boundary calculus. Source citations give credit and do not replace proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving exposition, exercises and original diagram. GPT-6 Astra (OpenAI), Ultra, restored exact providers and repaired the two normal-factor placements, left-parametrix order, full-symbol norm remainders and supported limit. The independently written exposition, exercise solutions and original figure are CC0-1.0; linked components keep their own terms.   
+Vasy's paper supplies the positive-test and source-trade route; his complete correction supplies the corrected linear normal scale and the normal-coordinate derivative. The current programme proves every adopted step, including the Hörmander III antecedent in the boundary calculus. Source citations give credit and do not replace proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving exposition, exercises and original diagram. GPT-6 Astra (OpenAI), Ultra, supplied the normal-factor, left-parametrix-order, full-symbol norm-remainder and supported-limit arguments. The independently written exposition, exercise solutions and original figure are CC0-1.0; linked components keep their own terms.   

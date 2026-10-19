@@ -8,7 +8,7 @@ The symbol-summation companion carries its own CC0 dedication and programme cred
 
 The [complete conic and wavefront proofs W1–W4](../reconstructions/20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md) supply cutoff convolutions, separated frequency cones and pseudolocality. The [base exhaustion and partition PS5](../reconstructions/20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md) is the actual construction of the locally finite covers below. The [ordinary scalar coordinate-invariance proof S4](../reconstructions/20261005-restored-subprincipal-transport/subprincipal-coordinate-invariance.md) supplies the nonhomogeneous lower-symbol class. [Compact-parameter integration](../reconstructions/20261004-free-stationary-phase/integration-prerequisite-completions.md), [powers, exponential factors and flat cutoffs](../reconstructions/20261004-free-stationary-phase/exponential-prerequisite-completions.md) and [Fourier inversion and Schwartz derivatives](../reconstructions/20261004-free-stationary-phase/quadratic-stationary-phase.md) supply the scalar operations used here. Their exact current versions are in the [proof map](../reconstructions/20261006-restored-kernel-corrections/proof-map.json).
 
-Self-checked by the writing AI.
+
 
 ## 1. Realizing a symbol with its closed microsupport
 

@@ -6,7 +6,7 @@ The antecedents are Lars Hörmander, *The Analysis of Linear Partial Differentia
 
 The proof map records the complete receiving chain. The Hilbert-valued calculus [MP:B1 and MP:B7](../20261005-metric-positivity/metric-operator-bounds.html) controls the countably many localizations without a dimension-dependent coefficient constant. The scalar positivity proof [MP:F2–F5](../20261005-metric-positivity/scalar-fefferman-phong.html) bounds the negative quantization error. The complete [Nirenberg–Treves estimates](../20261012-nirenberg-treves-operator/nirenberg-treves-estimates-and-square-root-commutators.html), NTO:E1 and NTO:E3, give both the solution bound and the retained energy.
 
-Original expression, three complete solutions and the reproducible figure are CC0-1.0. Linked components retain their terms. Human foundational proofs remain external, so internal export P514 closure is unclaimed. 
+Original expression, three complete solutions and the reproducible figure are CC0-1.0. Linked components retain their terms. Human foundational proofs remain external. 
 
 ## 1. State the estimate and normalize its coefficients
 
@@ -370,4 +370,4 @@ The gradient wins for \(y<3/5\), since there
 
 ![The exact floor, value and gradient competition, and the resulting reciprocal adaptive scale over one period.](figures/adaptive-trichotomy.svg)
 
-The [generator](figures/build_figure.py), [finite checks](model-check.json), source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the lesson. The adaptive trichotomy, full global \(16T\) estimate and derivative energy are proved here. [Localized energy and quasiconcavity](../20261012-localized-quasiconcave-propagation/localized-weights-and-quasiconcave-propagation.html) supplies the measured estimate, canonical barrier, shell test and exact Sobolev-index bootstrap.
+[Computational material](figures/build_figure.py) accompanies the text. The adaptive trichotomy, full global \(16T\) estimate and derivative energy are proved here. [Localized energy and quasiconcavity](../20261012-localized-quasiconcave-propagation/localized-weights-and-quasiconcave-propagation.html) supplies the measured estimate, canonical barrier, shell test and exact Sobolev-index bootstrap.

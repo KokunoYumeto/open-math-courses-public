@@ -1,6 +1,6 @@
 # The scalar subprincipal symbol on half densities
 
-This companion retains the calculation in Section 3, equations G11–G14, of AN03-U012, *Detecting regularity without choosing coordinates*, in *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. The equations and index calculation are unchanged. Its two references to the general coordinate expansion now point to the explicitly proved first-correction formula (SC2), and its multiplication formula points to the exact existing programme proof. Section S1 below supplies the required coordinate correction with every differentiated remainder.
+This companion retains the calculation in Section 3, equations G11–G14, of AN03-U012, *Detecting regularity without choosing coordinates*, in *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Its two references to the general coordinate expansion now point to the explicitly proved first-correction formula (SC2), and its multiplication formula points to the exact existing programme proof. Section S1 below supplies the required coordinate correction with every differentiated remainder.
 
 Original principal author and publisher: AN-03 course-writing task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI Codex. Selection, prerequisite bindings and Section S1: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 

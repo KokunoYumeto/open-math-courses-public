@@ -385,10 +385,10 @@ Dominated convergence applies on a fixed compact set and a bounded \(v\)-interva
 
 Under the stated global real-principal-type and compact-return hypotheses, we have derived actual signed two-sided parametrices, uniqueness modulo smooth kernels, their exact wavefront sets, every-real gain \(m-1\), and a globally noncharacteristic ordinary difference of order \(1/2-m\). We have also supplied the opposite orientations on a relatively open-and-closed characteristic decomposition. Every conclusion retains arbitrary ordinary complex lower terms and arbitrary real operator order. This completes the scalar global propagation-parametrix construction at its stated scope.
 
-The full AN-04 assignment remains active beyond this scalar theorem. Restored first-order, Cauchy, complex-phase and boundary providers remain available; their existence does not by itself close all remaining source items or extensions. The remaining item-level mathematical coverage and dependencies require their own exact review. Completion of this bounded lesson is not completion of the wider course.
+The prerequisite proof index gives the earlier results used here.
 
 ## References and scope
 
 Hörmander IV, Theorem 26.1.14 and its disconnected-sign extension, printed 70–73/PDF 81–84, supply the antecedents for global assembly, residual correction, exact gain, adjoint comparison, elliptic difference and opposite characteristic signs. The complete local and correction proofs are the preceding programme lessons cited above; the full PDO and corank providers are given with exact scopes. The conic partition, support cutoff, finite residual argument, corank computation, common diagonal jump normalization, ordinary inverse-bound transport, exact order reduction, mixed-sign receiving argument and complete exercises here are independently written.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; support and symbol details by GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI. Original text: public domain CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; support and symbol details by GPT-6 Astra (OpenAI), Ultra. Original text: public domain CC0.*

@@ -1,6 +1,6 @@
 # Quaternion algebras and their automorphic forms
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 The split algebra \(M_2\) produces the noncompact modular quotient and its Eisenstein spectrum. A quaternion division algebra gives another form of the same local matrix group, but its rational quotient is compact after removing the centre. In the definite rational case, imposing weight zero and maximal finite level reduces automorphic forms to functions on finitely many ideal classes. Hecke operators then become explicit integer matrices. We will obtain a two-dimensional example whose nonconstant eigenvalue is the coefficient \(-2\) of the level-eleven newform.
 
@@ -722,5 +722,5 @@ The modularity, cusp conditions and dimension of \(f_{11}\) are Hecke operators 
 
 ## References
 
-- J. Voight, [*Quaternion Algebras*](https://jvoight.github.io/quat.html), Graduate Texts in Mathematics 288, Springer, 2021. The complete assigned comparison scopes are §§13.1–13.4, 14.1–14.6, 27.3, 27.6, 28.4–28.5 and 41.1–41.4. Additional exact inputs are §§11.1–11.3, 12.4, 15.5, 17.5, 25.3, 30.1 and 30.8. Sections 28.4–28.5 concern strong approximation and norm class maps; they do not turn a definite class set into a single class. Sections 41.3–41.4 compare the Brandt multiplication and adjoint conventions.
+- J. Voight, [*Quaternion Algebras*](https://jvoight.github.io/quat.html), Graduate Texts in Mathematics 288, Springer, 2021. The relevant sections are §§13.1–13.4, 14.1–14.6, 27.3, 27.6, 28.4–28.5 and 41.1–41.4. Additional exact inputs are §§11.1–11.3, 12.4, 15.5, 17.5, 25.3, 30.1 and 30.8. Sections 28.4–28.5 concern strong approximation and norm class maps; they do not turn a definite class set into a single class. Sections 41.3–41.4 compare the Brandt multiplication and adjoint conventions.
 - H. Jacquet and R. P. Langlands, [*Automorphic Forms on GL(2)*](https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf), Lecture Notes in Mathematics 114, Springer, 1970, §14, Lemma 14.1 and Theorem 14.2, with its complete proof through Lemma 14.2.1. The latter theorem's quaternionic \(L\)-function context prepares the correspondence in Lesson 19.

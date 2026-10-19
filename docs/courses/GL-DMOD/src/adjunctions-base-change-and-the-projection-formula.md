@@ -1,6 +1,6 @@
 # Adjunctions, base change and the projection formula
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 Direct image integrates differential equations along a map. Extraordinary inverse image asks what remains along another map, including the normal directions and their cohomological degrees. Base change says these operations fit together in a cartesian square. The projection formula then follows by putting a graph opposite a diagonal.
 

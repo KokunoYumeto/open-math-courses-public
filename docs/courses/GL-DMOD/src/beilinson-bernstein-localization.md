@@ -1,6 +1,6 @@
 # Beilinson-Bernstein localization
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 The projective line is not affine: a line bundle can have higher cohomology or no global sections. Yet a quasi-coherent module carrying an ordinary D-action on it has neither obstruction. Differentiation forces enough global sections to recover the module. This is the simplest localization theorem, and we will prove it for every quasi-coherent D-module, not only for connections or holonomic modules.
 

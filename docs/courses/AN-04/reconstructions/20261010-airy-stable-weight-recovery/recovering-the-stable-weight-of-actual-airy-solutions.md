@@ -6,7 +6,7 @@ The [actual matching theorem](../20261010-airy-solution-matching/matching-an-ene
 
 The mechanism is an exact phase-amplitude factorization. The phase multiplier is unitary on every Sobolev space. Its finite input displacement is handled by nested spatial supports. The amplitude commutator gains precisely enough regularity from the known layer norm. No inverse of an exponentially decaying amplitude is used.
 
-Melrose and Taylor's [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*, §§5.3–5.4 and 6.3–6.5](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf) supplies primary background for Airy multipliers and their propagation. The exact scalar bounds, earlier kernel arguments and programme dependencies used here are identified in the proof map. Its human foundation providers remain external; internal P514 closure of this export is unclaimed.
+Melrose and Taylor's [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*, §§5.3–5.4 and 6.3–6.5](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf) supplies primary background for Airy multipliers and their propagation. The exact scalar bounds, earlier kernel arguments and programme dependencies used here are identified in the proof map. Its human foundation providers remain external.
 
 ## 1. Two summands of one norm
 

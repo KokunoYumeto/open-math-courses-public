@@ -608,7 +608,7 @@ Multiplying by \(N^{w/2}\) gives the same completed equation as (6.7). Its dual 
 \boxed{\ \varepsilon(1/2,\pi_f)=i^k\eta_f.\ }
 \tag{6.16}
 \]
-Thus the adelic equation specializes to the level-\(N\) functional equation assigned to LG-MF-12. That lesson's further twist and converse-theorem arguments are separate from the comparison proved here.
+Thus the adelic equation specializes to the level-\(N\) functional equation of LG-MF-12. That lesson's further twist and converse-theorem arguments are separate from the comparison proved here.
 
 ## 7. The discriminant form, with every normalization
 
@@ -749,7 +749,7 @@ Every boundary term vanishes. Integrating against \(e^{i\tau x}\) by parts \(m\)
 
 ## 9. What this lesson does not prove, and source locators
 
-All five assigned global results are proved above. The local theory and the cuspidal analytic foundations are prerequisites, with the following precise boundaries.
+The local theory and the cuspidal analytic foundations are prerequisites, with the following precise boundaries.
 
 * The additive approximation and idèle-class descriptions are Lesson 1, Section 1, and Lesson 2, Proposition 1.1; the classical lift, central character and Petersson comparison are Lesson 2, Sections 1–4. The product formula and conductor-zero global character convention are used there.
 * Cuspidal spectral decomposition, finiteness at fixed level and holomorphic compact type are Lessons 3–4, particularly Lesson 3, Proposition 5.1, and Lesson 4, Theorems 4.2 and 5.2. Rapid decay of every derivative, rather than boundedness alone, is the analytic input in Section 3.
@@ -768,4 +768,4 @@ The scope throughout is \(\mathrm{GL}_2/\mathbb Q\). The same global mechanism o
 * J. R. Getz and H. Hahn, [*An Introduction to Automorphic Representations*](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf), draft of 22 April 2022, §§11.3–11.7.
 * [Classical oldforms, newforms and Fricke operators](https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-10.html), LG-MF-10, Sections 1, 3.1 and 5.
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*

@@ -379,13 +379,13 @@ Compact frame changes multiply this by finite norm-equivalence constants. There 
 
 The proof establishes the invariant ordinary-symbol fold theorem with full joint-puncture closure, both fold hypotheses, the exact common one-form condition, finite microlocal kernel decomposition, order-zero canonical transfer with full parametrix errors, finite-rank bundles, and all-real compact-to-local Sobolev continuity. The actual-fold universal \(L^2\) threshold is sharp under the retained radial hypotheses, which (6.6) verifies.
 
-The preserved proof and its exact current programme dependencies were reviewed for this restoration; independent human mathematical review remains pending. Bounded checks recompute the nonlinear cotangent lifts, projection ranks and fold transversality, the normalized axis-limit example, fractional order arithmetic, an independent weighted finite Fourier norm calculation, both recovery identities, and the radial contractions. The diagram was rendered and inspected with its exact operator directions and orders. These checks do not certify arbitrary operators, admit transitive prerequisites, or close an entire chapter.
+The fold theorem concerns the ordinary nondegenerate fold hypotheses stated above.
 
-The general necessary estimate without its radial exclusions, nonordinary symbol variants, propagation, hyperbolic and mixed problems, glancing, positive complex Lagrangian ideals, and the other unfinished parts of the assigned course remain active. The fold theorem completes one continuity strand of that larger course.
 
-## Sources and restoration
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the corrected second printing (1994), Theorem 25.3.11, printed 35 / PDF 46. Its complete hypotheses and all-real conclusion are retained above; every proof is supplied here or in an exact earlier programme lesson.
-- The source and restoration record identifies the source and exact proof edition. The reproducible operator diagram retains its DejaVu font notice.
+## Sources <a id="sources-and-restoration"></a>
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the corrected second printing (1994), Theorem 25.3.11, printed 35 / PDF 46. Its complete hypotheses and all-real conclusion are retained above; every proof is supplied here or in an exact earlier programme lesson.  The reproducible operator diagram retains its DejaVu font notice.
+
 
 Original lesson, ten solutions and exact operator diagram: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. 

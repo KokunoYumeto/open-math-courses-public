@@ -4,7 +4,7 @@ Solvability gives an estimate for test functions in terms of their adjoint image
 
 The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, 2009 edition, Section 26.4, Theorem 26.4.7 and its reduced form, Corollary 26.4.8, and Lemmas 26.4.14–26.4.16, printed pages 96 and 102–110. The proof below uses the established [condition Ψ geometry](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html), PSG:F1, M0–M1, E1 and N0–N2; the exact [solvability estimate](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html), LSE:D0–D2; and the [complex nonstationary proof](../20261005-restored-positive-ideals/complex-stationary-contract.html), PI:CS0. The ordinary and graph calculus, finite-dimensional flows and smooth division are linked through the exact proof map.
 
-The exposition, three solved exercises and original figure are independent expression, CC0-1.0. Referenced components retain their terms. The proof map retains the external human foundations explicitly; internal export P514 closure is unclaimed.
+The exposition, three solved exercises and original figure are independent expression, CC0-1.0. Referenced components retain their terms. The proof map retains the external human foundations explicitly.
 
 ## 1. The theorem and the exact estimate to contradict
 
@@ -343,4 +343,4 @@ Take the phase (PN27). Its imaginary part is nonnegative and vanishes exactly wh
 
 ![Exact imaginary phase of an infinitely flat adjoint solution, showing its zero segment and positive transverse confinement.](figures/flat-adjoint-phase-and-confinement.svg)
 
-The source record, [proof review](proof-review.json), [finite checks](model-check.json) and [reader checks](reader-check.json) accompany the complete necessity argument. The [solvability equivalences](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html) and [geometric sign conditions](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html) are the companion readings for Section 26.4. [Condition P and characteristic saturation](../20261011-condition-p-geometry/condition-p-and-characteristic-saturation.html) develops the next geometric classification.
+The [solvability equivalences](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html) and [geometric sign conditions](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html) are the companion readings for Section 26.4. [Condition P and characteristic saturation](../20261011-condition-p-geometry/condition-p-and-characteristic-saturation.html) develops the next geometric classification.

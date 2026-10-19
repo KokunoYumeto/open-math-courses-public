@@ -6,7 +6,7 @@ The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial 
 
 We use the exact [indefinite factorization and affine geometry](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html), QAF:F0 and T0–A0, [homogeneous characteristic tubes](../20261011-condition-psi-geometry/condition-psi-and-complex-characteristic-tubes.html), PSG:E0–N2, and [reduced-leaf propagation](../20261012-reduced-leaf-propagation/regularity-on-reduced-characteristic-leaves.html), RLP:T0 and A0. The [graph equivalence](../20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.html) transports every real Sobolev order. Each dependency is pinned in the proof map.
 
-This independent exposition, three complete solutions and original illustration are CC0-1.0. Linked components retain their terms. Human foundational proofs remain external; internal export P514 closure is unclaimed. 
+This independent exposition, three complete solutions and original illustration are CC0-1.0. Linked components retain their terms. Human foundational proofs remain external. 
 
 ## 1. The interval and its actual quotient
 
@@ -254,4 +254,4 @@ Every horizontal interval \([-1,1]\times\{y\}\) collapses to \((0,y)\). The map 
 
 ![The flat primitive beta, its nonnegative derivative, the original t-y strip with the collapsed plateau, its beta-y quotient and the concave function minus beta squared.](figures/constant-variable-descent.svg)
 
-The [reproducible figure](figures/build_figure.py), source credit, [proof review](proof-review.json), [finite checks](model-check.json) and [reader checks](reader-check.json) accompany the lesson. [Semidefinite propagation](../20261012-semiconcave-propagation/semiconcavity-and-semidefinite-characteristics.html) treats its full stated endpoint class with an admissible clock. [General quasiconcavity](../20261012-localized-quasiconcave-propagation/localized-weights-and-quasiconcave-propagation.html) uses constant comparisons without requiring an affine parameter.
+[Computational material](figures/build_figure.py) accompanies the text. [Semidefinite propagation](../20261012-semiconcave-propagation/semiconcavity-and-semidefinite-characteristics.html) treats its full stated endpoint class with an admissible clock. [General quasiconcavity](../20261012-localized-quasiconcave-propagation/localized-weights-and-quasiconcave-propagation.html) uses constant comparisons without requiring an affine parameter.

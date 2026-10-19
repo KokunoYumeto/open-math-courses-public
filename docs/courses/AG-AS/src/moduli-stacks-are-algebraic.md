@@ -392,7 +392,7 @@ A compatible family of isomorphisms gives a unique homomorphism of the algebraiz
 
 ## 10. Precisely imported inputs and scope
 
-The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. In particular the separately recorded global quasi-coherent quotient and raw topological-fibre vanishing remain at their stated unproved scope. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
+The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for Noetherian separated algebraic spaces when $d\geq2$. For $d=1$ it holds when every one-dimensional reduced irreducible component has a nonempty normal open or is geometrically unibranch; in that case the space is affine. This includes separated Noetherian Nagata algebraic spaces. The full bound for arbitrary quasi-compact separated algebraic spaces and arbitrary rings remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
 
 - **Limits and modules.** On quasi-compact quasi-separated algebraic spaces, finite-presentation data descend along affine limits, quasi-coherent modules are filtered colimits of finitely presented ones, and relative flatness and proper support eventually descend. The particular support statement is [Stacks, Tag 08K2]. These results permit Noetherian models over finitely generated $\mathbf Z$-algebras.
 - **Perfect approximation and proper-support comparison.** For bounded-above coherent $E$ on a Noetherian space and any $m$, a perfect $P\to E$ is an isomorphism above $m$ and a surjection at $m$ [Stacks, Tags 08HI, 08HJ, 08HP]. For a quasi-separated locally finite type map to a Noetherian base, a perfect $P$ and bounded coherent $G$ that is base-flat and properly supported give perfect $Rf_*R\mathcal Hom(P,G)$, with arbitrary derived base change [Stacks, Tags 0DKK, 08JQ]. Section 5.1 gives the low-Ext application [Tag 08JR].
@@ -8600,7 +8600,7 @@ is an isomorphism. In particular the compatible injective-resolution constructio
 
 #### Lemma. Cohomology above a pseudo-coherent approximation degree
 
-Let $X$ be a scheme and let $E\in D(\mathcal O_X)$ be $m$-pseudo-coherent. The sheaf $H^i(E)$ is quasi-coherent for every $i>m$. Near every point, $H^m(E)$ is a quotient of a quasi-coherent module. The source additionally asserts that there is a quasi-coherent module on all of $X$ mapping surjectively to $H^m(E)$; the exact proof obligation for that global assertion is retained below. If $E$ is pseudo-coherent, then all its cohomology sheaves are quasi-coherent, so $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$.
+Let $X$ be a scheme and let $E\in D(\mathcal O_X)$ be $m$-pseudo-coherent. The sheaf $H^i(E)$ is quasi-coherent for every $i>m$. Near every point, $H^m(E)$ is a quotient of a quasi-coherent module. The source additionally asserts that there is a quasi-coherent module on all of $X$ mapping surjectively to $H^m(E)$; that global assertion is false, as shown by the locally cyclic sheaf below. If $E$ is pseudo-coherent, then all its cohomology sheaves are quasi-coherent, so $E\in D_{\mathrm{QCoh}}(\mathcal O_X)$.
 
 **Proof of the higher-degree and local assertions.** On a suitable neighborhood $V$ of each point, the approximation is a map $P\to E|_V$ from a strictly perfect complex such that
 $$H^i(P)\cong H^i(E)|_V\quad(i>m),\qquad
@@ -8609,9 +8609,172 @@ Each term of $P$ is a direct summand of a finite free module and is therefore qu
 
 For a pseudo-coherent $E$, fix any integer $i$ and apply this conclusion with $m=i-1$. Pseudo-coherence supplies such an approximation for every $m$, so $H^i(E)$ is quasi-coherent for every $i$. This proves the last assertion without using a global quotient in the boundary degree. $\square$
 
-**Retained global proof obligation.** The Stacks Project, Lemma 36.10.1 (Tag 08E5), asserts that, for an arbitrary scheme $X$, there is an exact sequence
+**The global assertion and its counterexample.** The Stacks Project, Lemma 36.10.1 (Tag 08E5), asserts that, for an arbitrary scheme $X$, there is an exact sequence
 $$Q\longrightarrow H^m(E)\longrightarrow0\qquad\text{with }Q\text{ quasi-coherent on }X.\tag{PCQ2}$$
-The displayed local approximations prove only the corresponding assertion on each $V$. To complete the global assertion, one must construct such a $Q$ on $X$ and its surjection; the local sources and maps have not been shown to glue. This obligation remains open in this treatment. The full source assertion is retained, with no added quasi-separatedness hypothesis and no claim that the local argument settles it.
+The displayed local approximations prove the corresponding assertion on each $V$. They do not imply the existence of such a $Q$ on all of $X$. The counterexample below disproves (PCQ2), while the higher-degree, local-boundary and full pseudo-coherent conclusions remain valid.
+
+**A locally cyclic sheaf with no quasi-coherent quotient source**
+
+**The ambient affine scheme and its closed triangle.**
+Put
+$$
+ R=\mathbf Q[x,y],\quad X=\operatorname{Spec}R,\quad
+ K=\mathbf Q(x,y),\quad
+ Z=V\bigl(xy(x+y-1)\bigr)\subset X.                                \tag{GQT1}
+$$
+Write $L_1=V(x)$, $L_2=V(y)$ and $L_3=V(x+y-1)$ for the three
+components of $Z$. Their pairwise intersections are respectively
+$(0,0)$, $(0,1)$ and $(1,0)$, and their triple intersection is empty.
+Let $i:Z\hookrightarrow X$ denote inclusion of the underlying closed
+topological space, and equip $Z$ with the sheaf of rings
+$$
+                              A=i^{-1}\mathcal O_X.               \tag{GQT2}
+$$
+This is the inverse-image sheaf of ambient regular functions. It is
+*not* the quotient structure sheaf $\mathcal O_Z$ of the closed
+subscheme. At $z\in Z$ its stalk is $A_z=\mathcal O_{X,z}$.
+
+Define open subsets of $Z$ by
+$$
+                       U_j=Z\setminus L_j\quad(1\leq j\leq3).    \tag{GQT3}
+$$
+They cover $Z$, since $L_1\cap L_2\cap L_3$ is empty. Each $U_j$
+is connected. It is the union of the other two irreducible lines
+with finitely many points deleted, and these two nonempty irreducible
+opens still meet at their mutual vertex. For example, $U_1$ contains
+$(1,0)$, $U_2$ contains $(0,1)$, and $U_3$ contains $(0,0)$.
+Every pairwise overlap is nonempty, whereas
+$$
+                         U_1\cap U_2\cap U_3=\varnothing.         \tag{GQT4}
+$$
+For instance the overlaps contain $(1/2,1/2)$, $(0,1/2)$ and
+$(1/2,0)$ on the remaining lines.
+
+**Ambient germs have one rational value on each connected open.**
+Since $X$ is integral, there is an injective map of sheaves
+$\mathcal O_X\hookrightarrow\underline K_X$, sending a regular
+function to its rational function. The sheaf on the right is the
+constant sheaf: every nonempty open of the irreducible space $X$ is
+connected. Inverse image of sheaves preserves monomorphisms and takes
+constant sheaves to constant sheaves. Hence
+$$
+                    A\hookrightarrow\underline K_Z.             \tag{GQT5}
+$$
+In particular, each section of $A$ on the connected open $U_j$
+has a single value in $K$, and the map $A(U_j)\to K$ is injective.
+Its restrictions to nonempty overlaps have the same rational value.
+No claim that every rational function is a section of $A$ is needed.
+
+**An invertible germ module with no sections.**
+Glue the three free rank-one $A|_{U_j}$-modules by the following
+transition maps. In the respective trivializations, a section is
+represented by $s_j\in A(U_j)$, and compatibility requires
+$$
+ s_1=s_2\text{ on }U_1\cap U_2,\qquad
+ s_2=s_3\text{ on }U_2\cap U_3,\qquad
+ s_1=2s_3\text{ on }U_1\cap U_3.                                 \tag{GQT6}
+$$
+All these maps are isomorphisms, since $2\in\mathbf Q^\times$.
+Use their inverses on reversed pairs and identity on repeated indices.
+The only cocycle conditions with three distinct indices have empty
+domain by (GQT4); the conditions with repeated indices follow from
+the inverse identities. Thus ordinary sheaf gluing gives an invertible
+$A$-module $L$ on $Z$.
+
+If $s\in\Gamma(Z,L)$, use (GQT5) to view its three local components
+as $k_1,k_2,k_3\in K$. The nonempty overlaps and (GQT6) give
+$k_1=k_2=k_3$ and $k_1=2k_3$, so all are zero. The injections in
+(GQT5) imply that all local sections are zero. Therefore
+$$
+                               \Gamma(Z,L)=0.                    \tag{GQT7}
+$$
+Equivalently, the three compatibility equations have coefficient
+matrix
+$$
+ D=\begin{pmatrix}1&-1&0\\0&1&-1\\1&0&-2\end{pmatrix},
+                        \qquad\det D=-1.                         \tag{GQT8}
+$$
+This linear calculation concerns the rational values of actual germ
+sections, not an identification of $A(U_j)$ with the whole field $K$.
+
+**A finite-type sheaf on the affine plane.**
+Set
+$$
+                      F=i_*L,\qquad E=F[0].                      \tag{GQT9}
+$$
+The $\mathcal O_X$-module structure on $F$ comes from
+$\mathcal O_X\to i_*A$. At every $z\in Z$, its stalk is
+$F_z=L_z\cong\mathcal O_{X,z}$ after choosing a local trivialization.
+At points outside $Z$ it is zero. In particular $F\ne0$.
+
+The sheaf $F$ is locally generated by one section. In fact the three
+standard opens $V_1=D(x)$, $V_2=D(y)$ and $V_3=D(x+y-1)$ cover $X$,
+because $(x,y,x+y-1)=R$, and $V_j\cap Z=U_j$. Trivializing $L$ gives
+on each $V=V_j$ a natural morphism
+$$
+                \mathcal O_V\longrightarrow F|_V.                \tag{GQT10}
+$$
+At every point of $V\cap Z$ this is an isomorphism of stalks, and at
+every point of $V\setminus Z$ it maps onto zero. It is therefore
+surjective as a sheaf morphism. On $X\setminus Z$, the zero map from
+the zero module suffices. This proves finite type, with no assertion
+of finite presentation or quasi-coherence. Concentrating (GQT10) in
+degree zero gives a strictly perfect approximation to $E|_V$ which is
+surjective in degree zero and an isomorphism in every higher degree.
+Consequently $E$ is $0$-pseudo-coherent under the ringed-space definition.
+
+Nevertheless, $\Gamma(X,F)=\Gamma(Z,L)=0$. Every quasi-coherent module $Q$ on the affine scheme $X$ is [generated by its global sections](#uncovered-schemes-lemma-equivalence-quasi-coherent): write $Q=\widetilde M$ and sheafify the free-module
+surjection with one generator for each element of $M$. Thus any
+morphism $Q\to F$ is zero, because its composite with each global
+generator is a global section of $F$ and hence zero. We obtain
+$$
+             \operatorname{Hom}_{\mathcal O_X}(Q,F)=0
+                     \quad\text{for every quasi-coherent }Q.     \tag{GQT11}
+$$
+Since $F\ne0$, no such morphism can be surjective. This refutes the
+global boundary-quotient assertion for $m=0$, even on a smooth
+Noetherian affine scheme and with $H^0(E)$ locally cyclic.
+
+**Corrected cohomology statement.**
+For any scheme $Y$, integer $m$ and $m$-pseudo-coherent
+$C\in D(\mathcal O_Y)$, the following statements hold:
+$$
+\begin{array}{ll}
+\text{(a)}& H^j(C)\text{ is quasi-coherent for }j>m;\\
+\text{(b)}& H^m(C)\text{ is locally a quotient of a quasi-coherent module};\\
+\text{(c)}& \text{if }C\text{ is }(m-1)\text{-pseudo-coherent, then }
+H^m(C)\text{ is quasi-coherent on }Y.
+\end{array}                                                       \tag{GQT12}
+$$
+In (c), it is in particular a global quasi-coherent quotient of itself.
+If $C$ is pseudo-coherent in every degree, all its cohomology sheaves
+are quasi-coherent. Part (b) cannot in general be strengthened to a
+global quotient, by (GQT1)--(GQT11).
+
+**Proof of the corrected statement.**
+Locally choose a strictly perfect $P\to C$ inducing an isomorphism
+on cohomology above $m$ and a surjection in degree $m$. Each term of
+$P$ is a direct summand of a finite free sheaf, hence quasi-coherent.
+Kernels and cokernels of maps of quasi-coherent modules on a scheme
+are quasi-coherent: on an affine open they are the sheaves associated
+to the corresponding module kernel and cokernel, since localization
+is exact. Therefore every $H^j(P)$ is quasi-coherent. The comparison
+gives (b) and gives (a) locally; quasi-coherence is local, so (a) holds
+on $Y$. Applying (a) at cutoff $m-1$ proves (c). Applying (a) at a
+cutoff below each chosen degree proves the full pseudo-coherent case.
+$\square$
+
+**Source correspondence.**
+The original global assertion is the boundary-degree clause of
+[Stacks Tag 08E5](https://stacks.math.columbia.edu/tag/08E5). The pseudo-coherence definition is Stacks
+[Definition 20.47.1, Section 20.47](https://stacks.math.columbia.edu/tag/08CA). The locally written approximation
+argument proves (GQT12); the additional global clause is disproved
+by the sheaf (GQT9). The ringed space (GQT2) must not be replaced by
+the closed subscheme's quotient structure sheaf in this construction.
+
+![Three affine line components and the gluing factors of a locally cyclic germ sheaf](../figures/global-quotient-triangle.png)
+
+*The left panel is a schematic of the three affine components of $Z$ with their exact pairwise vertices. The right panel is the nerve of the cover $U_j=Z\setminus L_j$, with the compatibility factors in (GQT6). Here $A=i^{-1}\mathcal O_X$ is the ambient germ sheaf, $K=\mathbf Q(x,y)$ and $F=i_*L$. Equations (GQT7)–(GQT11) give the obstruction to a global quasi-coherent source. The editable vector diagram is [global-quotient-triangle.svg](../figures/global-quotient-triangle.svg).*
 
 #### Lemma. Extending quasi-coherent complexes from an open
 
@@ -13294,6 +13457,704 @@ $$\mathbf C\otimes_{\mathbf R}\mathbf C\cong\mathbf C\times\mathbf C.$$
 Deleting the diagonal leaves a nonempty second component, so $W_1\ne\varnothing$ even though the topological bound can be $d=1$. The remaining obligation is to establish (SSV1) for the stated topological bound, or to determine an explicit correction to that statement. No replacement of that hypothesis is implicit here.
 
 The affine quotient step retains the source's credit to FGA, Exposé 212, Théorème 5.1(iv), p. 111.
+
+**The raw-fibre bound for Noetherian schemes when d is at least two**
+
+**Theorem.**
+Let $X$ be a Noetherian separated scheme and let $U\to X$ be a
+surjective etale morphism with $U$ affine. Let $d\geq2$ bound the
+cardinalities of all raw fibres $|U|\to|X|$. Then
+$$
+                 H^q(X,F)=0\qquad(q\geq d)
+$$
+for every quasi-coherent $F$. The same conclusion holds with $d=1$
+if every irreducible component of $X$ has dimension zero or dimension
+at least two. No assertion for arbitrary algebraic spaces or arbitrary
+non-Noetherian schemes is included in this theorem.
+
+**A rational-lift lemma for dense etale opens.**
+Let $T$ be an integral Noetherian scheme of dimension at least two.
+Every nonempty etale scheme $V$ over $T$ has a point $v$ such that
+$\kappa(v)=\kappa(t)$, where $t$ is its image.
+
+Here is a direct proof, using the polynomial argument of Moret-Bailly,
+Theorem 4.3.1. Choose a point $z$ of $T$ whose local ring
+$A=\mathcal O_{T,z}$ has dimension at least two. The image of $V$ is
+a nonempty open of the integral scheme $T$, so its generic fibre is
+nonempty. After passing to $\operatorname{Spec}A$ and then shrinking a
+nonempty principal open $D(s)$, there is an open of $V$ of the form
+$$
+                     \operatorname{Spec}(A_s[T]/(P)),
+$$
+finite etale over $A_s$, where $P$ is monic of positive degree.
+To justify this reduction, select one field factor of the nonempty
+finite etale generic fibre, choose a primitive element, and extend its
+minimal polynomial and finitely many ring generators over $A_s$.
+The generic isomorphism of finite-type algebras extends after one
+further localization. The extra localizations, including those needed
+for the discriminant and an affine open of $V$, can all be absorbed
+in $s$. Multiplying $s$ by any nonzero element of the maximal ideal
+allows us to suppose $s$ is a nonunit.
+
+Clear denominators to obtain
+$$
+ F(T)=\sum_{j=0}^{n}c_jT^j\in A[T],\qquad c=c_n\ne0,
+ \qquad (F)A_s[T]=(P)A_s[T],
+$$
+with $c$ a unit in $A_s$. The primes minimal over $(sc)$ are finitely
+many height-one primes. Choose $b$ in the maximal ideal avoiding all
+of them. The element
+$$
+ \gamma=s^n c^{2n-1}F\!\left(\frac{b}{sc^2}\right)
+   =b^n+\sum_{j=0}^{n-1}c_jb^j s^{n-j}c^{2(n-j)-1}
+   \in b^n+scA
+$$
+belongs to the maximal ideal and belongs to none of those minimal
+primes. Any prime $\mathfrak p$ minimal over $(\gamma)$ has height at
+most one. It cannot contain $sc$: such a height-one prime would be
+minimal over $(sc)$, contradicting the choice of $b$. Thus
+$s,c\notin\mathfrak p$, and $b/(sc^2)\in\kappa(\mathfrak p)$ is a root
+of $F$ and hence of $P$. It defines the required rational point of
+the selected open of $V$. Localization at $z$ has not changed the
+residue field at the image point of $T$. This proves the lemma.
+
+**Integral components of dimension at least two.**
+Let $T$ be an integral closed subscheme of $X$ of dimension at least
+two. The scheme $U_T=U\times_XT$ is affine, since it is a closed
+subscheme of $U$. Its morphism to $T$ is surjective etale. At a point
+$t$ of $T$, closed immersion has not changed the residue field, so
+the raw fibre is exactly the original fibre over $t$, with at most
+$d$ points.
+
+If some geometric fibre had $N>d$ points, the nonempty configuration
+scheme of $N$ pairwise distinct geometric lifts in
+$(U_T)^{\times_TN}$ would be etale over $T$. Apply the preceding lemma
+to obtain a configuration rational over its image $t'$. Each of its
+$N$ coordinates is then a $\kappa(t')$-rational point of the etale
+fibre. Their raw points are distinct: two maps into the same field
+factor could both be rational only if that factor were
+$\kappa(t')$, in which case the maps coincide. This contradicts the
+raw bound. Therefore the geometric degrees of $U_T\to T$ are at most
+$d$ everywhere.
+
+The established alternating configuration resolution for an affine
+etale cover with geometric degrees at most $d$ consequently proves
+$$
+                 H^q(T,G)=0\qquad(q\geq d)
+$$
+for every quasi-coherent $G$ on $T$. This uses the already proved
+geometric-degree theorem, not the raw-fibre assertion being studied.
+If $d=1$, the same argument gives geometric degrees at most one;
+the cover is then an isomorphism, so $T$ is affine.
+
+**Components of small dimension.**
+For an integral component $T$ of dimension at most one, Grothendieck
+vanishing on its Noetherian underlying topological space gives
+$H^q(T,G)=0$ for $q\geq2$, for every quasi-coherent $G$. This supplies
+the desired bound when $d\geq2$. A zero-dimensional integral
+Noetherian scheme consists of one point and is the spectrum of its
+function field, so it also supplies the bound when $d=1$.
+No analogous assertion for the raw-size-one cover of an arbitrary
+one-dimensional component is inferred here.
+
+**A finite component filtration.**
+First suppose $X$ reduced, with irreducible components
+$T_1,\ldots,T_r$ and their ideal sheaves $I_1,\ldots,I_r$.
+Their product is zero, since it lies in their intersection, the
+nilradical of the reduced scheme. For any coherent $F$, the finite
+filtration
+$$
+ F\supset I_1F\supset I_1I_2F\supset\cdots
+          \supset I_1\cdots I_rF=0
+$$
+has $j$th successive quotient annihilated by $I_j$. This quotient is
+the pushforward of a coherent module on the integral component
+$T_j$. Closed immersions do not change the cohomology of a pushed
+forward module, so the preceding component bounds and the long exact
+sequences give $H^q(X,F)=0$ in the claimed degrees.
+
+For general Noetherian $X$, its nilradical $I$ is nilpotent with a
+global finite exponent: use local Noetherianity, finite generation
+and a finite affine cover. Filter $F$ by $I^jF$. Every successive
+quotient is the pushforward of a coherent module on $X_{red}$, where
+the result has just been proved. The long exact sequences again
+give the bound for coherent $F$ on $X$.
+
+Finally, every quasi-coherent module on a Noetherian scheme is the
+filtered union of its coherent submodules. Cohomology commutes with
+these filtered colimits here: a finite affine cover of the separated
+scheme has affine intersections, its Cech complex computes
+quasi-coherent cohomology, its terms commute with filtered colimits,
+and filtered colimits of modules are exact. This extends the bound
+to all quasi-coherent $F$ and proves the theorem.
+
+**Scope.**
+The original assertion allows arbitrary quasi-compact separated algebraic spaces, arbitrary rings and the bound one; those cases are outside the theorem just proved. The
+rank-two valuation example shows that the rational-lift lemma itself
+cannot be extended solely by omitting Noetherianity.
+
+**References.**
+Laurent Moret-Bailly, *Points rationnels dans leur fibre:
+complements a un theoreme de Poonen*, arXiv:1910.14542v3,
+Theorem 4.3.1 and Corollary 4.3.3:
+[Primary source](https://arxiv.org/abs/1910.14542v3).
+The Stacks Project, Proposition 69.7.2 (Tag 072B), is the source of
+the original assertion; only its geometric-degree variant is used
+above. Johan de Jong's original exposition explicitly assumes
+geometric fibre cardinalities:
+[Primary source](https://www.math.columbia.edu/~dejong/wordpress/?p=1786).
+
+
+
+**A rational-generization obstruction outside the Noetherian case**
+
+Put $k=\mathbf R$, $K_0=k((x))$, $D=k[[x]]$, and
+$$
+ K=K_0((y)),\qquad V=D+yK_0[[y]]\subset K.
+$$
+Here $V$ consists of series of nonnegative $y$-order whose constant term,
+when nonzero, has nonnegative $x$-order. Equivalently it is the valuation
+ring for the composite valuation with value group $\mathbf Z^2$ in
+lexicographic order:
+$$
+ v(f)=(\operatorname{ord}_y f,
+        \operatorname{ord}_x\text{ of the leading }y\text{-coefficient}).
+$$
+The values of $y$ and $x$ are $(1,0)$ and $(0,1)$, respectively. Every
+nonzero $f\in K$ has either $v(f)\geq0$ or $v(f^{-1})\geq0$, so this is
+indeed a valuation ring with fraction field $K$.
+
+There are exactly three prime ideals:
+$$
+ (0)\subset P=yK_0[[y]]\subset\mathfrak m=xV=xD+P.
+$$
+Ideals in a valuation ring are linearly ordered by inclusion, as follows
+by comparing the quotient of any two nonzero elements. One can therefore
+verify this list without a classification theorem for valuations.
+The quotient $V/P=D$ has only the primes $(0)$ and $(x)$. A nonzero prime
+$Q$ strictly contained in $P$ cannot exist: if $0\ne f\in Q$, then its
+positive $y$-order is an integer $n$. For any $0\ne z\in P$, a sufficiently
+large power $z^r$ has first valuation coordinate greater than $n$, hence
+$z^r/f\in V$. Primality gives $z\in Q$, and therefore $Q=P$.
+The maximal ideal equality follows because $(0,1)$ is the least positive
+value: division by $x$ preserves every positive value. Thus
+$\dim V=2$, and $\mathfrak m$ is the only prime containing $x$.
+The principal ideal $(x)$ is consequently a height-two prime. In
+particular $V$ is not Noetherian, by the principal ideal theorem.
+
+The residue fields at the three points, in the same order, are
+$$
+                 K_0((y)),\quad K_0,\quad\mathbf R.
+$$
+Both Laurent-series fields are orderable, by the sign of the first
+nonzero coefficient in an ordered coefficient field. All three fields
+are therefore formally real, and none contains a square root of $-1$.
+
+Consider
+$$
+ T=\operatorname{Spec}\bigl(V[z]/(z^2+1)\bigr)
+           \longrightarrow\operatorname{Spec}V.
+$$
+It is finite free of rank two. The derivative $2z$ is a unit in its
+coordinate ring, since $2$ and $z$ are units, so the morphism is etale.
+Every fibre is the spectrum of the quadratic field
+$\kappa(p)[z]/(z^2+1)$ and therefore has exactly one raw point and two
+geometric points. No point of $T$ is rational over its image. In
+particular the point above the closed point has no rational generization,
+although the base local ring has dimension two.
+
+This refutes extending the Noetherian rational-generization lemma to
+arbitrary local domains merely by keeping the dimension assumption.
+It does not refute the original quasi-coherent cohomology assertion:
+$\operatorname{Spec}V$ is affine, so all its positive quasi-coherent
+cohomology vanishes. The punctured spectrum is also affine, namely
+$$
+ (\operatorname{Spec}V)\setminus\{\mathfrak m\}
+       =D(x)=\operatorname{Spec}V[1/x]
+       =\operatorname{Spec}K_0[[y]].
+$$
+This example cannot supply the required nonaffine separated target or a
+nonzero cohomology class in a forbidden degree.
+
+![Specialization chains and raw and geometric fibres of a rank-two valuation-ring cover](../figures/raw-fibre-rank-two-valuation.png)
+
+*The three raw points of $\operatorname{Spec}V$ have residue fields $\mathbf R((x))((y))$, $\mathbf R((x))$ and $\mathbf R$. Each has one raw lift and two geometric lifts in $\operatorname{Spec}V[i]$. The height-two principal prime $\mathfrak m=(x)$ shows why the Noetherian rational-lift argument does not apply. Both $\operatorname{Spec}V$ and $D(x)$ are affine. The editable vector diagram is [raw-fibre-rank-two-valuation.svg](../figures/raw-fibre-rank-two-valuation.svg).*
+
+**Raw-size-one affine covers of normal Noetherian curves**
+
+**Theorem.**
+Let $X$ be an integral separated Noetherian scheme of dimension one,
+and suppose $X$ normal. If $U\to X$ is a surjective etale morphism
+with $U$ affine and every raw fibre has one point, then $X$ is affine.
+
+**Rational lifts on a nonaffine normal curve.**
+We prove the following stronger intermediate statement: if $X$ as
+above is not affine, every nonempty etale scheme $W\to X$ has a
+point rational over its image.
+Suppose otherwise. Choosing an affine neighbourhood of a point of
+the generic fibre, one may restrict to a nonempty affine open
+$V=\operatorname{Spec}A\subset X$ on which an open of $W$ is finite
+etale and monogenic:
+$$
+             W_0=\operatorname{Spec}(A[T]/(P)),\qquad
+             P\in A[T]\text{ monic of degree }e>0.
+$$
+This follows by selecting a generic field factor, a primitive
+element, and clearing the finitely many denominators in the finite
+presentation and the generic isomorphism. The selected finite
+etale open is surjective over the smaller integral base $V$.
+If $P(c)$ were a nonunit of $A$ for some $c\in A$, a prime
+containing it would give a residue-field-rational point of $W_0$.
+Consequently the absence of such points implies
+$$
+                          P(c)\in A^\times\quad(c\in A).       \tag{NCA1}
+$$
+
+Since $X$ is a Noetherian integral curve, its complement
+$X\setminus V=\{x_1,\ldots,x_r\}$ is finite; it is nonempty because
+$X$ is not affine. Put $K=\kappa(\eta)$ and
+$B_j=\mathcal O_{X,x_j}$, with normalized discrete valuation $v_j$.
+There is an element $f\in A$ with
+$$
+                              v_j(f)<0\quad(1\leq j\leq r).  \tag{NCA2}
+$$
+Here is a direct simultaneous construction. For each $j$, $A$ is
+not contained in $B_j$: otherwise the two maps
+$\operatorname{Spec}B_j\to V\to X$ and
+$\operatorname{Spec}B_j\to X$ agree generically but have different
+closed images, contradicting separatedness. Choose $a_j\in A$ with
+$v_j(a_j)<0$. Choose positive integers $N_j$ so that for each $i$
+the minimum of the numbers $N_jv_i(a_j)$ is unique. It is negative
+because the $i$th number is negative. Such a choice exists: take
+$N_j=M^j$ and avoid the finitely many integer roots of the nonzero
+polynomials expressing equality of two negative competing values.
+For $f=\sum_j a_j^{N_j}$, the valuation of the sum is its unique
+least summand valuation, proving (NCA2).
+
+For sufficiently large $n$, the leading term of $P(f^n)$ has
+strictly smaller $v_j$ than every other term, simultaneously for
+all $j$. Indeed, for a coefficient $p_l$ of $T^l$, $l<e$, we need
+$ne\,v_j(f)<v_j(p_l)+nl\,v_j(f)$, which holds for large $n$.
+By (NCA1), $g=P(f^n)$ is a unit of $A$. Therefore
+$$
+             h=g^{-1}\in A^\times,\qquad v_j(h)>0\quad(j=1,\ldots,r).
+                                                                    \tag{NCA3}
+$$
+Normality identifies $B_j$ with the nonnegative valuation ring.
+Thus $h$ is regular on all of $X$, vanishes at all $x_j$, and is
+invertible on $V$. If $R=\Gamma(X,\mathcal O_X)$, then
+$$
+                   X_h=V,\qquad R_h=A,\qquad\operatorname{Frac}R=K.
+                                                                    \tag{NCA4}
+$$
+The equality of sections after localization holds on any
+quasi-compact quasi-separated scheme: take a finite affine cover and finite
+affine covers of its quasi-compact pairwise intersections. Localize the
+resulting finite sheaf equalizer. Here $A$ has fraction field $K$.
+
+Moreover $R$ is a Krull domain. Indeed it is the intersection in
+$K=\operatorname{Frac}R$ of the discrete valuation rings at all
+closed points of $X$. This intersection has finite character: any
+nonzero rational function and its inverse are regular on a common
+nonempty open, and the complement of that open is finite.
+We use the usual finite-character discrete-valuation
+characterization of Krull domains.
+
+**The Krull-domain rational-lift calculation.**
+If a Krull domain $R$ has dimension at least two, every nonempty
+finite etale scheme over a nonempty principal open of
+$\operatorname{Spec}R$ has a point rational over its image. The
+polynomial proof is the one in Moret-Bailly, Theorem 4.3.1 and
+Corollary 4.3.4; its height steps can be read directly as follows.
+In a Krull domain,
+$$
+ \sqrt{cR}=\bigcap_{v_{\mathfrak p}(c)>0}\mathfrak p
+                           \qquad(0\ne c\in R),             \tag{NCA5}
+$$
+where the intersection is finite and all these primes have height
+one. For the reverse inclusion, raise an element in every
+displayed prime to a sufficiently large common power and divide
+by $c$; all height-one valuations of the quotient are nonnegative,
+so the quotient is in $R$.
+
+Localize at a prime of height at least two, shrink the given
+finite etale scheme to a nonempty monogenic principal open, and
+clear denominators to a nonconstant polynomial
+$F(T)=\sum_{l=0}^e c_lT^l$ with leading coefficient $c\ne0$.
+Let $s\ne0$ encode the required principal open and denominators,
+chosen in the maximal ideal, and choose $b$ in that maximal ideal
+avoiding the finitely many primes minimal over $(sc)$.
+The identity
+$$
+ s^ec^{2e-1}F\!\left(\frac{b}{sc^2}\right)
+    =b^e+\sum_{l<e}c_lb^l s^{e-l}c^{2(e-l)-1}
+    \in b^e+scR                                           \tag{NCA6}
+$$
+gives a nonunit $\gamma$ avoiding those primes. By (NCA5), a prime
+minimal over $(\gamma)$ has height one and cannot contain $sc$.
+In its residue field $b/(sc^2)$ is the required root. This
+proves the calculation, including its required principal-open
+restriction. The argument uses the Krull property (NCA5), not
+Noetherianity of $R$.
+
+Applied to $\operatorname{Spec}A=D(h)\subset\operatorname{Spec}R$,
+this calculation contradicts the supposed absence of rational
+points of $W_0$ whenever $\dim R\geq2$.
+
+**The remaining dimension of the global ring.**
+The ring $R$ cannot be a field, since the nonzero element $h$
+vanishes at a point of $X$. If $\dim R=1$, it is a Dedekind domain.
+For completeness, a one-dimensional Krull domain is Noetherian:
+given a nonzero ideal $J$ and $0\ne a\in J$, only finitely many
+maximal ideals have $v_{\mathfrak p}(a)>0$. At each choose an
+element of $J$ attaining its least valuation. Together with $a$
+these elements generate an ideal whose localization agrees with
+$J$ at every maximal ideal, hence generate $J$. Its localizations
+at nonzero primes are discrete valuation rings.
+
+In this case the canonical map
+$q:X\to\operatorname{Spec}R$ is an isomorphism, as we now check
+without assuming finite type of $q$. At each closed point $x$,
+the valuation ring $\mathcal O_{X,x}$ is an overring of $R$ in
+$K$; its center $\mathfrak p$ is nonzero, since center zero would
+force it to contain $K$. An overring of the discrete valuation
+ring $R_{\mathfrak p}$ in $K$ is either that ring or $K$, so
+$$
+                       \mathcal O_{X,x}=R_{\mathfrak p}.    \tag{NCA7}
+$$
+Two closed points cannot have the same center, by separatedness
+and uniqueness for the two maps from this valuation ring agreeing
+on $\operatorname{Spec}K$.
+
+No nonzero prime $\mathfrak p$ of $R$ can be missing from the
+image. If one were missing, the invertible ideal
+$\mathfrak p\subset R$ would become the unit ideal at every
+point of $X$, so its canonical multiplication map
+$\mathfrak p\otimes_R\mathcal O_X\to\mathcal O_X$ would be an
+isomorphism. Since $\mathfrak p$ is a finitely generated
+projective $R$-module, taking global sections identifies this map
+with the proper inclusion $\mathfrak p\to R$, a contradiction.
+Thus $q$ is bijective. Both spaces are Noetherian integral
+one-dimensional spaces, whose proper closed subsets are finite
+sets of closed points, so $q$ is a homeomorphism. Its maps on all
+local rings are isomorphisms by (NCA7) and the common generic field.
+It is consequently an isomorphism of schemes. This contradicts
+the assumption that $X$ is not affine.
+
+All possible dimensions of $R$ have led to a contradiction. The
+rational-lift statement for a nonaffine normal curve follows.
+
+**The affine-cover conclusion.**
+Suppose the theorem's $X$ were not affine. If a geometric fibre of
+$U\to X$ had at least two points, the nonempty etale scheme of
+pairs of distinct geometric lifts would have a rational point over
+its image, by the statement just proved. Its two coordinates would
+then be distinct raw points of that fibre, contradicting the
+raw-size-one hypothesis. Hence every geometric fibre has one point.
+An etale morphism with this property is a surjective open immersion,
+and therefore an isomorphism. This would identify $X$ with the
+affine scheme $U$, another contradiction. The theorem is proved.
+
+**Limits and references.**
+Normality was used both for the boundary valuations and for the
+finite-character Krull representation of the global ring. The
+argument does not transfer a raw bound to a normalization, where
+residue fields may split fibres. The assertion for arbitrary
+singular or non-Noetherian curves is not inferred.
+Laurent Moret-Bailly, *Points rationnels dans leur fibre:
+complements a un theoreme de Poonen*, arXiv:1910.14542v3,
+Theorem 4.3.1 and Corollary 4.3.4,
+[Primary source](https://arxiv.org/abs/1910.14542v3).
+
+
+
+**Noetherian algebraic spaces and the raw-fibre bound**
+
+**Theorem.**
+Let $X$ be a separated Noetherian algebraic space, and let
+$U\to X$ be an affine-scheme surjective etale presentation. If
+$d\geq2$ bounds the raw fibres $|U|\to|X|$, then
+$$
+                       H^q(X,F)=0\quad(q\geq d)
+$$
+for every quasi-coherent $F$. The conclusion also holds for $d=1$
+if every one-dimensional reduced irreducible component of $X$ is
+normal; there is no normality requirement on the components of
+other dimensions. In particular, the raw-size-one presentation of
+a normal Noetherian separated algebraic space has affine target.
+
+**A proper birational scheme model.**
+An integral separated Noetherian algebraic space $T$ has a proper
+surjective birational morphism $p:Y\to T$ with $Y$ an integral
+Noetherian scheme. We give the construction to specify where
+residue fields are retained. By Noetherian approximation there is
+an affine morphism $T\to T_0$ to a separated algebraic space of
+finite type over $\operatorname{Spec}\mathbf Z$. Replace $T_0$
+by the reduced scheme-theoretic image of this morphism. This is
+integral and still of finite type; the morphism remains affine,
+and the generic point of $T$ maps to the generic point of $T_0$.
+
+Apply Chow's lemma to $T_0\to\operatorname{Spec}\mathbf Z$.
+It gives a proper modification $Y_0\to T_0$ which is an
+isomorphism over a nonempty open $T_{00}$ and with $Y_0$ a scheme
+immersed in some projective space over $\mathbf Z$. The fibre
+product $T\times_{T_0}Y_0$ is a scheme because it is affine over
+the scheme $Y_0$. In it take the reduced closure $Y$ of the
+nonempty open $T\times_{T_0}T_{00}$. The space $T$ is integral,
+so this closure is integral. It is Noetherian and proper over
+$T$, and its closed image contains a dense open of $T$; thus it
+is surjective. There is a nonempty open $T_1\subset T$ such that
+$$
+                       p^{-1}(T_1)\xrightarrow{\sim}T_1.    \tag{NAS1}
+$$
+This is also the scheme-model construction in the approximation
+proof of Chow's lemma, Tag 088U. It does not suppose that $T$ is
+of finite type over a field or over $\mathbf Z$.
+
+If $\dim T\geq2$, then $\dim Y\geq2$. A chain of two strict
+specializations from the generic point of $T$ lifts to such a
+chain in $Y$: for a proper map the image of the closure of a
+point $y$ is the closure of $p(y)$. Lift the specializations in
+order, using that equality. The images are distinct, so the
+lifts are distinct.
+
+**Configurations in the isomorphism open.**
+Let $T$ now be an integral reduced irreducible component of $X$
+of dimension at least two. The base change $U_T\to T$ is
+surjective etale, with affine source closed in $U$. A closed
+immersion does not change residue fields, so its raw fibres
+still have at most $d$ points.
+
+Suppose a geometric fibre has $N>d$ points. Its nonempty
+distinct-coordinate configuration scheme $W_N\to T$ is etale.
+It is a scheme: the fibre powers of the affine $U_T$ are closed
+in products of affine schemes, because $T$ is separated, and
+the distinct-coordinate locus is open and closed. Its image is
+a nonempty, hence dense, open of the integral space $T$.
+
+Choose the model $p:Y\to T$ and the open $T_1$ of (NAS1), and
+put $V=p^{-1}(T_1)$. The morphism
+$$
+                       W_N\times_TV\longrightarrow Y       \tag{NAS2}
+$$
+is a nonempty etale morphism of schemes, where the map to $Y$
+includes the open immersion $V\subset Y$. The rational-lift
+lemma for the integral Noetherian scheme $Y$, proved above by
+the explicit polynomial calculation, supplies a point $w$
+of (NAS2) rational over its image $y\in V$. Since $p$ is an
+isomorphism there, its image $t\in T_1$ has
+$$
+                          \kappa(w)=\kappa(y)=\kappa(t).    \tag{NAS3}
+$$
+Thus the configuration has $N$ distinct raw coordinates above
+$t$, a contradiction. Notice that the raw bound was never
+transferred to all of $Y$: (NAS3) uses only the isomorphism
+open, where residue fields are identical.
+
+Every geometric degree of $U_T\to T$ is therefore at most $d$.
+The complete geometric-degree vanishing theorem gives
+$H^q(T,G)=0$ for $q\geq d$ and every quasi-coherent $G$ on $T$.
+When $d=1$, this same argument makes $U_T\to T$ an isomorphism,
+so such a component $T$ is affine.
+
+**Low-dimensional components.**
+Every separated locally Noetherian algebraic space is a scheme
+near a point of local dimension at most one, by the schematic
+locus theorem, Tag 0ADD. In particular every component $T$ of
+dimension at most one here is a scheme. Grothendieck vanishing
+on its Noetherian topological space gives the required bound
+$q\geq2$ for $d\geq2$. A zero-dimensional integral component
+is the spectrum of a field. If $d=1$ and the one-dimensional
+component is normal, the normal-curve affineness theorem just
+proved applies to its raw-size-one cover $U_T\to T$. Hence
+that component is affine as well.
+
+**Coherent filtrations and arbitrary quasi-coherent modules.**
+For reduced $X$, let $I_1,\ldots,I_r$ be the ideal sheaves of
+its finitely many reduced irreducible components. Their product
+is zero. For a coherent $F$ the quotients of
+$$
+ F\supset I_1F\supset I_1I_2F\supset\cdots
+                    \supset I_1\cdots I_rF=0                \tag{NAS4}
+$$
+are coherent pushforwards from individual components. A closed
+immersion has no higher quasi-coherent direct images, so the
+component bounds and the long exact sequences give the desired
+cohomology vanishing. On general Noetherian $X$, filter first
+by the globally nilpotent nilradical to reduce to this reduced
+case. These ideal sheaves, products and quotients are taken in
+the etale quasi-coherent category, so the construction applies
+to algebraic spaces as well as to schemes.
+
+Every quasi-coherent module on a Noetherian algebraic space is
+a filtered union of its coherent submodules, by coherent
+approximation for a Noetherian etale groupoid. Cohomology
+commutes with this filtered colimit here. Indeed, the etale
+Cech nerve of the affine presentation has affine terms because
+$X$ is separated. Its complex of global sections computes
+quasi-coherent cohomology; its terms commute with filtered
+colimits, and filtered colimits are exact. Thus the coherent
+bound extends to every quasi-coherent $F$. This proves the
+theorem. In the raw-size-one normal case it gives vanishing of
+all positive quasi-coherent cohomology, so the cohomological
+affineness criterion also identifies $X$ as an affine scheme.
+
+**Remaining scope.**
+The theorem does not assert the raw-size-one bound on every
+singular one-dimensional Noetherian component, or the bound for
+arbitrary non-Noetherian algebraic spaces. Nor does it change
+the original raw topological-fibre hypothesis into a geometric
+degree hypothesis. The valuation example and the
+$\operatorname{Spec}\mathbf C/\operatorname{Spec}\mathbf R$
+example still distinguish the two counts.
+
+**References.**
+The Stacks Project, Chow's lemma and its approximation proof,
+Tag 088U, [Primary source](https://stacks.math.columbia.edu/tag/088U);
+the schematic locus in codimension one, Tag 0ADD,
+[Primary source](https://stacks.math.columbia.edu/tag/0ADD);
+Grothendieck vanishing, Tag 02UZ,
+[Primary source](https://stacks.math.columbia.edu/tag/02UZ).
+
+![A proper birational scheme model and the open on which rational configurations preserve residue fields](../figures/raw-fibre-noetherian-model.png)
+
+*For an integral Noetherian component $T$ of dimension at least two, a proper scheme model $p:Y\to T$ is an isomorphism on $V=p^{-1}(T_1)\simeq T_1$. The scheme rational-lift lemma is applied to $W_N\times_TV\to Y$. Equations (NAS1)–(NAS3) identify the residue fields exactly where the rational configuration lies, so its $N$ coordinates give $N$ distinct raw lifts over $t$. The editable vector diagram is [raw-fibre-noetherian-model.svg](../figures/raw-fibre-noetherian-model.svg).*
+
+**Two normalization transfers for raw-size-one affine atlases**
+
+**Curve theorem.**
+Let $T$ be an integral separated Noetherian scheme of dimension one,
+and let $U\to T$ be an etale surjection with $U$ affine and one
+raw point in every fibre. Then $T$ is affine if either
+(a) $T$ has a nonempty normal open subscheme, or
+(b) $T$ is geometrically unibranch at every point.
+The alternatives are separate sufficient conditions. Neither is
+assumed to hold for every integral Noetherian curve.
+
+**Normalization and affineness.**
+Write $\nu:T^\nu\to T$ for the normalization. It is integral,
+surjective and birational. By Krull--Akizuki, its affine charts
+are Dedekind; because $T$ is quasi-compact and $\nu$ is affine,
+$T^\nu$ is a Noetherian normal integral curve. It is separated
+because $\nu$ is affine and $T$ is separated. If $T$ is not
+affine, neither is $T^\nu$: affineness descends along an integral
+surjection (Chevalley's affineness theorem).
+
+**Transfer on an isomorphism open.**
+Suppose the first condition holds and $T$ is not affine.
+The preceding normal-curve rational-lift theorem says that every
+nonempty etale scheme over the nonaffine normal curve $T^\nu$
+has a point rational over its image. Let $W\to T$ be any
+nonempty etale scheme, and let $V\subset T$ be a nonempty normal
+open. Since $T$ is integral, the nonempty open image of $W$
+meets $V$. The normalization is an isomorphism over $V$, so
+$W_V$ is a nonempty etale scheme over $T^\nu$ with image in
+$\nu^{-1}(V)$. A rational lift there therefore has
+$$
+                   \kappa(w)=\kappa(t^\nu)=\kappa(t).
+$$
+Thus $T$ itself has the same rational-lift property. The equality
+with $\kappa(t)$ uses the isomorphism open, not a general
+normalization residue extension.
+
+Apply this property to the etale scheme of pairs of distinct
+geometric lifts of $U\to T$, namely
+$(U\times_T U)\setminus\Delta_U$. If it is nonempty, a point
+rational over its image gives two distinct $\kappa(t)$-rational
+coordinates in $U_t$, hence two distinct raw points. This
+contradicts the assumed raw-size-one bound. If it is empty,
+every geometric fibre has one point; the etale surjection is
+then an isomorphism. This identifies $T$ with the affine $U$,
+contrary to nonaffineness. The first case follows.
+
+**Transfer through a universal homeomorphism.**
+For any universal homeomorphism $g:T'\to T$ and any map $U\to T$,
+the two horizontal maps in the Cartesian square
+$$
+\begin{array}{ccc}
+ U'=U\times_T T'&\longrightarrow&U\\
+ \downarrow&&\downarrow\\
+ T'&\longrightarrow&T
+\end{array}
+$$
+induce homeomorphisms on underlying spaces. The top map is a
+universal homeomorphism by base change. Consequently the raw
+fibre over each $t'\in T'$ is in bijection with the original
+raw fibre over its image $t$.
+
+In the second case, geometric unibranchness makes $\nu$ a
+universal homeomorphism. More explicitly its fibre has one
+point and the corresponding residue extension is purely
+inseparable; integrality then gives universal injectivity and
+surjectivity. The square above, with $T'=T^\nu$, preserves the
+raw-size-one bound. Its source $U'$ is affine, since it is
+integral over the affine scheme $U$. Apply the established
+normal Noetherian curve theorem to $U'\to T^\nu$ to see that
+$T^\nu$ is affine. Chevalley's theorem then makes $T$ affine.
+This proves the second case without assuming a normal open.
+
+**Nagata curves.**
+An integral Noetherian Nagata curve satisfies the first case.
+Indeed its normalization is finite. On any nonempty affine
+open, choose finitely many module generators of that
+normalization and clear their denominators in the common
+fraction field. The resulting nonzero denominator $c$ gives
+an isomorphism of the two rings after inverting $c$. The open
+$D(c)$ of the curve is therefore normal. This argument does
+not assert that arbitrary Noetherian curves have a normal open.
+
+**Noetherian algebraic spaces.**
+The following consequence holds for Noetherian algebraic spaces.
+Let $X$ be a separated
+Noetherian algebraic space with an affine etale surjection and
+a raw fibre bound $d\geq1$. If $d\geq2$, no further condition
+is needed. If $d=1$, suppose each one-dimensional reduced
+irreducible component either has a nonempty normal open or is
+geometrically unibranch. Then
+$$
+                  H^q(X,F)=0\quad(q\geq d)
+$$
+for every quasi-coherent $F$. In the $d=1$ case, $X$ is affine.
+
+For high-dimensional components the bound follows from the
+proper scheme model and rational configuration argument.
+Components of dimension at most one
+are schemes by the schematic-locus theorem for separated
+locally Noetherian spaces. The curve theorem treats their
+one-dimensional cases, and zero-dimensional integral components
+are fields. The finite component-ideal and nilradical filtrations,
+followed by coherent approximation and filtered-colimit
+compatibility of the affine etale Cech complex, are exactly those
+in the Noetherian-space proof and apply to these bounds as well.
+All components are affine when $d=1$, so the filtration proves
+all positive quasi-coherent cohomology vanishes, and the
+cohomological affineness criterion applies.
+In particular the stated raw bound holds for every separated
+Noetherian Nagata algebraic space, for every $d\geq1$.
+
+**Remaining scope.**
+The original assertion for arbitrary quasi-compact separated
+algebraic spaces is not settled. Neither arbitrary singular
+Noetherian curves outside the two specified alternatives nor
+arbitrary non-Noetherian spaces have been covered by this
+transfer. No raw fibre bound is transferred through a residue
+extension unless the map is a universal homeomorphism or the
+points lie on the stated isomorphism open.
+
+**Dependencies and precise locators.**
+The normal-curve rational-lift and affineness theorem and the
+Noetherian-space component proof are the preceding course
+arguments. For normalization use Stacks Tag 0C45; for the
+geometrically unibranch universal homeomorphism use Tag 0GIQ;
+for finite normalization of a Nagata scheme use Section 035E,
+Lemma 29.55.11; for integral-surjective affineness descent use
+Tag 07VT.
+[Primary source](https://stacks.math.columbia.edu/tag/0C45);
+[Primary source](https://stacks.math.columbia.edu/tag/0GIQ);
+[Primary source](https://stacks.math.columbia.edu/tag/035E);
+[Primary source](https://stacks.math.columbia.edu/tag/07VT).
+
+
 
 #### Lemma. Finite cohomological dimension from an étale atlas
 

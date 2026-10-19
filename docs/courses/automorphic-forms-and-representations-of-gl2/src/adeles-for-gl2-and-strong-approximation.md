@@ -1,6 +1,6 @@
 # Adèles for GL₂ and strong approximation
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A congruence condition on a modular form records information at finitely many primes. The adelic group puts those conditions in a compact open subgroup, while leaving the real variable free. The purpose of this lesson is to prove that this description recovers the familiar modular quotients, and to explain precisely where the determinant enters.
 

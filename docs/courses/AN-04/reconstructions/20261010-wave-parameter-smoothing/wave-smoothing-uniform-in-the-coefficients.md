@@ -2,7 +2,7 @@
 
 A wave may be singular outside a forward cone while remaining smooth well inside it. We prove that the interior smoothness persists uniformly for a smooth family of operators approaching a constant spatial metric, including all coefficient-parameter derivatives and points on a Dirichlet boundary. The proof uses the full boundary observation estimate. Its observation operators act only where the solution is zero, including their residual kernels.
 
-**Independent exposition, proofs, exercises and figure: CC0-1.0.** The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, ISBN 978-3-540-49938-1, Lemmas 17.5.12–17.5.14 and the application in §24.7, printed pages 56–61 and 467–469. The proof map identifies the complete earlier programme arguments. See source credit and [review](proof-review.json). Required human foundation proofs remain external; internal P514 closure of this CC0 export is not claimed. 
+**Independent exposition, proofs, exercises and figure: CC0-1.0.** The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 eBook, ISBN 978-3-540-49938-1, Lemmas 17.5.12–17.5.14 and the application in §24.7, printed pages 56–61 and 467–469. The proof map identifies the complete earlier programme arguments.  Required human foundation proofs remain external. 
 
 ## 1. The family and the conclusion
 

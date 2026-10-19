@@ -6,7 +6,7 @@ Subtracting a normal elliptic correction prepares a smooth tangential forcing te
 
 Use \(D=-i\partial\), \(x\ge0\) normal, \(z\in\mathbb R^d\) tangential, and Lebesgue measure \(dx\,dz\). Bundle matrices are allowed throughout. The [incoming-trace proof](../20261009-incoming-boundary-traces/incoming-field-boundary-traces.md) supplies the normal Fourier profile estimates; the [zero-extension proof](../20261009-zero-extension-incoming/zero-extension-and-incoming-glancing-regularity.md) supplies the exact source split. The [local compressed calculus](../20261005-local-boundary-calculus/boundary-tests-and-lacunary-symbols.md), its [bounds](../20261005-local-boundary-calculus/boundary-bounds-and-conormal-action.md), and [ordered composition](../20261005-global-boundary-operators/global-boundary-operator-calculus.md) supply the actual testers and remainders. The [localized diffraction estimate](../20261009-localized-diffraction-gain/localized-half-order-diffraction-estimate.md), especially LG:L7, is the receiving application.
 
-Mathematical antecedent: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, Section 24.4, the reduction and estimates on printed pages 448–449. The compressed regularity and original-energy transfer below are proved here from the exact earlier programme components; no book citation replaces a proof. Transitive Lebl prerequisites remain external author-edition dependencies, so internal P514 closure of this export is not claimed.
+Mathematical antecedent: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, 2007 eBook, Section 24.4, the reduction and estimates on printed pages 448–449. The compressed regularity and original-energy transfer below are proved here from the exact earlier programme components; no book citation replaces a proof. Transitive Lebl prerequisites remain external author-edition dependencies.
 
 ## 1. The statement and the fixed neighborhoods
 
@@ -222,7 +222,7 @@ where the ordinary normal-cap operator \(QE\) has order minus two. Its full symb
 \]
 Here absence from \(\operatorname{WF}_{b,H^1}^{s}\) means that a compressed tester elliptic of order \(s\) puts the distribution in H1 near the point. For either direction in (EC24), choose the common tester supplied by the compressed parametrix on the intersection of its elliptic region with \(O_1\). Its action on \(Z\) is H1 by M6; adding or subtracting it preserves H1. This proves the equality without assuming identical testers for \(U\) and \(W\).
 
-The earlier actual source and trace statements LG26–LG27 remain valid. This supplement closes their missing interior energy comparison. It does not supply the incoming-support hypothesis LG4, an iteration on a common propagation neighborhood, or the Neumann/Robin boundary form estimate. Those remain required for strict diffraction of the original solution. No claim of full propagation or full-course completion follows merely from (EC24).
+The earlier actual source and trace statements LG26–LG27 remain valid. This supplement closes their missing interior energy comparison. It does not supply the incoming-support hypothesis LG4, an iteration on a common propagation neighborhood, or the Neumann/Robin boundary form estimate. Those remain required for strict diffraction of the original solution.
 
 ## 8. Three solved exercises
 

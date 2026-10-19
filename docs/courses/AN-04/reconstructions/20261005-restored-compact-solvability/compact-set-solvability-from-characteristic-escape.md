@@ -377,10 +377,10 @@ This is smooth and satisfies \(D_tu=f\), with the required factor \(i\). Integra
 
 ## References and scope
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), §26.1, Theorem 26.1.7, printed 63–64, and the remarks and Definition 26.1.8 on printed 65 (PDF 74–76), supply the mathematical antecedents for this lesson. The exposition, receiving estimates, smooth-jet argument and exercises are independently written. The rotation example follows the source's distinction between escape and solvability, with \(D=-i\partial\) and its scalar phase fixed explicitly. No error in the cited source and no new theorem are claimed.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), §26.1, Theorem 26.1.7, printed 63–64, and the remarks and Definition 26.1.8 on printed 65 (PDF 74–76), supply the mathematical antecedents for this lesson. The exposition, receiving estimates, smooth-jet argument and exercises are independently written. The rotation example follows the source's distinction between escape and solvability, with \(D=-i\partial\) and its scalar phase fixed explicitly. No error in the cited source and no new theorem are claimed.
 
 
 
 This lesson proves existence near a compact set with escape, including the smooth conclusion and the exact Sobolev gain. Global solvability modulo smooth functions, propagation parametrices, systems and boundary problems require their own full arguments. A compact-set existence theorem does not prove those further claims.
 
-*Preserved programme exposition and all three original complete solutions retained. Current source and proof review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC. Independent human review and the wider course remain unfinished.*
+*Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC.*

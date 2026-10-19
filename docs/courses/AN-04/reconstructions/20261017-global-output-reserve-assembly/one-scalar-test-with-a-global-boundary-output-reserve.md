@@ -58,7 +58,7 @@ The constant is uniform in \(\ell,a\). All complete residual corner kernels rema
 
 
 
-This theorem has the stated output-reserve hypothesis. It does not impose a product-cone condition on all residual input supports. It does not assert the still-needed gluing result when a compact boundary is entirely covered by \(\pi(K)\). The earlier global one-dimensional assembly concerns the separate case of zero-dimensional boundary.
+This theorem has the stated output-reserve hypothesis. It does not impose a product-cone condition on all residual input supports. The [tangential-equator construction](../20261017-global-tangential-equator-assembly/one-scalar-test-when-all-boundary-tangential-directions-are-allowed.html) and [angular-reserve construction](../20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html) treat a compact boundary entirely covered by \(\pi(K)\). The earlier global one-dimensional assembly concerns the separate case of zero-dimensional boundary.
 
 
 

@@ -4,7 +4,7 @@ A smooth convex obstacle can have infinitely many transverse reflections in a fi
 
 We construct the boundary, the polygon, its exact reflection law and both Hamilton lifts. The construction complements the variable-coefficient example in [Tangency, gliding and generalized characteristic motion](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.md), Section 10. Its inputs are the contact-order calculation in that lesson's Section 2, its generalized-arc definition in Section 3, and ordinary smooth calculus and convergent series in the [stationary-phase foundations](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md). The exact earlier proofs are identified in the proof map.
 
-Hörmander III, Springer 2007 edition, ISBN 978-3-540-49938-1, Example 24.3.11, printed 438, gives the convex-boundary nonuniqueness phenomenon. The formulas and interpolation below are independently chosen. The book is a valid approved source; its pages are not reproduced.
+Hörmander III, Springer 2007 edition, ISBN 978-3-540-49938-1, Example 24.3.11, printed 438, gives the convex-boundary nonuniqueness phenomenon. The formulas and interpolation below are independently chosen.
 
 ## 1. Prescribe chords and their reflecting tangents
 

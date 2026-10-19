@@ -4,7 +4,7 @@ Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), U
 
 The earlier [Sobolev propagation proof](../20261005-restored-sobolev-propagation/sobolev-regularity-along-real-characteristics.md) identifies the regularity transported along a real characteristic. Here we prove a norm estimate, uniform under small changes of the coefficients, from an observed interval. The original Banach norm is retained throughout. Full boundary residuals are treated by [admissible regularization](../20261009-admissible-boundary-regularization/boundary-regularization-with-source-tests.md) and [scalar assembly on a boundary chart](../20261010-boundary-chart-scalar-assembly/one-scalar-test-across-boundary-chart-patches.md).
 
-The proof map identifies the exact earlier arguments. In particular the coordinate and graph reductions are complete programme proofs, not appeals to book statements. Transitive Lebl foundation proofs remain external author-edition dependencies. This CC0 export does not claim internal P514 closure.
+The proof map identifies the exact earlier arguments. In particular the coordinate and graph reductions are complete programme proofs, not appeals to book statements. Transitive Lebl foundation proofs remain external author-edition dependencies. 
 
 ## 1. The estimate and its geometric scope
 
@@ -234,7 +234,7 @@ Handle the original full target residuals by C0. Apply BSA:R2 once to the comple
 \]
 A Cauchy sequence converges in \(B\), hence in extendible distributions. The source tests act continuously on these distributions: the full boundary-kernel transpose takes a compact smooth test flat at the face to another such test, and the differential transpose of \(P_a\) preserves flatness. The ordinary interior observer has the same property. Thus the \(L^2\) limits of the tested sequence are exactly \(AP_au\) and \(A_2u\) in the distributional sense. Estimate (UI3) makes every tested target sequence Cauchy in \(L^2\); the same transpose argument identifies its limit with \(C_{\ell,a,b}u\). The bound passes to these limits, uniformly in the auxiliary indices. This is the actual graph completion, not a claim that arbitrary elements of \(B\) can be approximated in all the displayed norms by smooth elements of \(B\).
 
-The proof supplies the uniform interior part of a boundary observation argument. The earlier elliptic, reflected and glancing estimates must still be assembled along all permitted generalized rays, with their actual hypotheses. Compact boundary-manifold scalar assembly outside the proved chart/reserve condition, any required zero-dimensional boundary case, the final wave application, sharp general Airy mapping and the remaining full course are not proved merely by this interior result. Radial characteristic states are also outside this incoming-interval normal form; their qualitative invariance does not give (UI13) from an unrelated observation region.
+The proof supplies the uniform interior part of a boundary observation argument. The earlier elliptic, reflected and glancing estimates must still be assembled along all permitted generalized rays, with their actual hypotheses. Radial characteristic states are also outside this incoming-interval normal form; their qualitative invariance does not give (UI13) from an unrelated observation region.
 
 ## 8. Exercises with complete solutions
 

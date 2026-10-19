@@ -1,0 +1,263 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The cohomology problem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Bounded Hochschild cohomology of von Neumann algebras)</a><a href="rigidity-of-first-letter-identities.html">Next lesson</a><a href="src/the-cohomology-problem.md">Editable source</a></nav><main><article><h1 id="the-cohomology-problem">The cohomology problem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> acts on itself by left and right multiplication, and the bounded multilinear maps <span class="math" data-tex="\(M^k\to M\)">\(M^k\to M\)</span> form a complex, the bounded Hochschild complex. In degree one its cocycles are the derivations, and the theorem of Kadison and Sakai that every derivation of a von Neumann algebra is inner says that the first cohomology vanishes. Kadison and Ringrose asked whether all higher cohomology groups vanish as well. This course gives the proof, found by OpenAI in 2026, that they do: every bounded Hochschild cocycle of degree at least two is the coboundary of a bounded cochain.</p>
+<p>This lesson sets up the complex and states the theorem (Section 1). Section 2 proves the facts about tracial von Neumann algebras used throughout, in particular that normal maps are continuous on bounded sets for the tracial <span class="math" data-tex="\(2\)">\(2\)</span>-norm. Section 3 records the two classical reductions on which the proof rests and the route of the course.</p>
+<p><strong>Prerequisites.</strong> From <em>Foundations of von Neumann algebras</em>: <a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html"><em>The double commutant theorem</em></a> (Proposition 7.2, polar decomposition inside a von Neumann algebra; Theorem 10.1, positive normal functionals as sums of vector functionals); <a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html"><em>Compact and trace-class operators, the predual of B(H) and the operator topologies</em></a> (Lemma 8.5 and Proposition 8.6 on bounded sets; Theorems 9.4 and 9.5 on preduals and continuity on the unit ball); <a href="../foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html"><em>Kaplansky's density theorem and its consequences</em></a> (Corollary 1.4, monotone nets of projections); <a href="../foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators.html"><em>The spectral theorem for bounded self-adjoint operators</em></a> (spectral projections); <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html"><em>Projections and types of von Neumann algebras</em></a> (left and right supports, finite algebras, central summands). From <em>Type III factors: central sequences, full factors and almost periodic states</em>: <a href="../type-iii-factors/ultraproducts-and-the-asymptotic-centralizer.html"><em>Ultraproducts and the asymptotic centralizer</em></a>, Theorem 3.2 (a tracial ultraproduct of finite von Neumann algebras is a finite von Neumann algebra with faithful normal tracial state).</p>
+<p><strong>Conventions.</strong> All von Neumann algebras and maps are complex. A map <span class="math" data-tex="\(f:M^k\to M\)">\(f:M^k\to M\)</span> is <em>separately normal</em> if it is ultraweakly continuous in each variable when the others are fixed. A finite von Neumann algebra is said to be of <em>type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span></em> when it has no nonzero type I central summand; its centre need not be trivial. A <em>faithful normal tracial state</em> <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on a von Neumann algebra is an ultraweakly continuous state with <span class="math" data-tex="\(\rho(xy)=\rho(yx)\)">\(\rho(xy)=\rho(yx)\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span> and <span class="math" data-tex="\(\rho(x^*x)=0\)">\(\rho(x^*x)=0\)</span> only for <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<h2 id="1-bounded-hochschild-cohomology">1. Bounded Hochschild cohomology</h2>
+<p>For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> let <span class="math" data-tex="\(C_b^k(M,M)\)">\(C_b^k(M,M)\)</span> be the Banach space of bounded <span class="math" data-tex="\(k\)">\(k\)</span>-linear maps <span class="math" data-tex="\(f:M^k\to M\)">\(f:M^k\to M\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|f\|=\sup\{&amp;\|f(a_1,\ldots,a_k)\|:\\
+&amp;\|a_1\|,\ldots,\|a_k\|\le1\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|f\|=\sup\{&amp;\|f(a_1,\ldots,a_k)\|:\\
+&amp;\|a_1\|,\ldots,\|a_k\|\le1\},
+\end{aligned}
+\]</span>
+and put <span class="math" data-tex="\(C_b^0(M,M)=M\)">\(C_b^0(M,M)=M\)</span>. Boundedness refers to this norm, defined with the operator norm on each variable; no complete boundedness is assumed. The differential <span class="math" data-tex="\(d:C_b^k(M,M)\to C_b^{k+1}(M,M)\)">\(d:C_b^k(M,M)\to C_b^{k+1}(M,M)\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(df)(a_1,\ldots,a_{k+1})\\
+&amp;=a_1f(a_2,\ldots,a_{k+1})\\
+&amp;\quad+\sum_{j=1}^k(-1)^jf(a_1,\ldots,a_ja_{j+1},\\
+&amp;\qquad\qquad\ldots,a_{k+1})\\
+&amp;\quad+(-1)^{k+1}f(a_1,\ldots,a_k)a_{k+1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(df)(a_1,\ldots,a_{k+1})\\
+&amp;=a_1f(a_2,\ldots,a_{k+1})\\
+&amp;\quad+\sum_{j=1}^k(-1)^jf(a_1,\ldots,a_ja_{j+1},\\
+&amp;\qquad\qquad\ldots,a_{k+1})\\
+&amp;\quad+(-1)^{k+1}f(a_1,\ldots,a_k)a_{k+1},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\((db)(a)=ab-ba\)">\((db)(a)=ab-ba\)</span> for <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>. It is bounded, with <span class="math" data-tex="\(\|df\|\le(k+2)\|f\|\)">\(\|df\|\le(k+2)\|f\|\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> <span class="math" data-tex="\(d\circ d=0\)">\(d\circ d=0\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(C_b^k\)">\(C_b^k\)</span> write <span class="math" data-tex="\(d=\sum_{j=0}^{k+1}(-1)^j\delta_j\)">\(d=\sum_{j=0}^{k+1}(-1)^j\delta_j\)</span>, where <span class="math" data-tex="\((\delta_0f)(a_1,\ldots,a_{k+1})=a_1f(a_2,\ldots,a_{k+1})\)">\((\delta_0f)(a_1,\ldots,a_{k+1})=a_1f(a_2,\ldots,a_{k+1})\)</span>, <span class="math" data-tex="\(\delta_jf\)">\(\delta_jf\)</span> evaluates <span class="math" data-tex="\(f\)">\(f\)</span> after multiplying <span class="math" data-tex="\(a_j\)">\(a_j\)</span> and <span class="math" data-tex="\(a_{j+1}\)">\(a_{j+1}\)</span> for <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span>, and <span class="math" data-tex="\((\delta_{k+1}f)(a_1,\ldots,a_{k+1})\)">\((\delta_{k+1}f)(a_1,\ldots,a_{k+1})\)</span> is <span class="math" data-tex="\(f(a_1,\ldots,a_k)a_{k+1}\)">\(f(a_1,\ldots,a_k)a_{k+1}\)</span>. For <span class="math" data-tex="\(0\le i&lt;j\le k+2\)">\(0\le i&lt;j\le k+2\)</span> the identity
+<span class="math math-display" data-tex="\[
+\delta_j\delta_i=\delta_i\delta_{j-1}\qquad(C_b^k\to C_b^{k+2})
+\]">\[
+\delta_j\delta_i=\delta_i\delta_{j-1}\qquad(C_b^k\to C_b^{k+2})
+\]</span>
+holds. If <span class="math" data-tex="\(j&gt;i+1\)">\(j&gt;i+1\)</span>, both sides perform the same two operations on disjoint positions. If <span class="math" data-tex="\(j=i+1\)">\(j=i+1\)</span>, both sides combine three consecutive inputs, and they agree by associativity of the product, or by <span class="math" data-tex="\((ax)b=a(xb)\)">\((ax)b=a(xb)\)</span> when one of the operations is an outer multiplication. Then
+<span class="math math-display" data-tex="\[
+d^2=\sum_{i&lt;j}(-1)^{i+j}\delta_j\delta_i+\sum_{j\le i}(-1)^{i+j}\delta_j\delta_i .
+\]">\[
+d^2=\sum_{i&lt;j}(-1)^{i+j}\delta_j\delta_i+\sum_{j\le i}(-1)^{i+j}\delta_j\delta_i .
+\]</span>
+In the first sum, <span class="math" data-tex="\(\delta_j\delta_i=\delta_i\delta_{j-1}\)">\(\delta_j\delta_i=\delta_i\delta_{j-1}\)</span> and <span class="math" data-tex="\((-1)^{i+j}=-(-1)^{i+(j-1)}\)">\((-1)^{i+j}=-(-1)^{i+(j-1)}\)</span>; as <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> runs over the pairs with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, the pair <span class="math" data-tex="\((i,j-1)\)">\((i,j-1)\)</span> runs over the pairs <span class="math" data-tex="\((i,i&#x27;)\)">\((i,i&#x27;)\)</span> with <span class="math" data-tex="\(i\le i&#x27;\le k+1\)">\(i\le i&#x27;\le k+1\)</span>. The first sum is therefore the negative of the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Put
+<span class="math math-display" data-tex="\[
+H_b^k(M,M)=\frac{\ker\bigl(d:C_b^k\to C_b^{k+1}\bigr)}{\operatorname{im}\bigl(d:C_b^{k-1}\to C_b^k\bigr)},
+\]">\[
+H_b^k(M,M)=\frac{\ker\bigl(d:C_b^k\to C_b^{k+1}\bigr)}{\operatorname{im}\bigl(d:C_b^{k-1}\to C_b^k\bigr)},
+\]</span>
+with the actual image in the denominator, not its closure. A <em>cocycle</em> is an element of the kernel; a <em>primitive</em> of a cocycle <span class="math" data-tex="\(f\)">\(f\)</span> is a cochain <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(dg=f\)">\(dg=f\)</span>. In degree one the cocycles are the derivations, <span class="math" data-tex="\(f(ab)=af(b)+f(a)b\)">\(f(ab)=af(b)+f(a)b\)</span>, and the coboundaries are the inner derivations <span class="math" data-tex="\(a\mapsto ab-ba\)">\(a\mapsto ab-ba\)</span>. Every derivation of a von Neumann algebra is inner (Kadison, Sakai, 1966), so <span class="math" data-tex="\(H^1_b(M,M)=0\)">\(H^1_b(M,M)=0\)</span>. That theorem is context for the course and is not used in it.</p>
+<p><strong>Theorem 1.2 (OpenAI, 2026).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra and <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. Every cocycle <span class="math" data-tex="\(f\in C_b^k(M,M)\)">\(f\in C_b^k(M,M)\)</span> has a primitive <span class="math" data-tex="\(g\in C_b^{k-1}(M,M)\)">\(g\in C_b^{k-1}(M,M)\)</span>. Hence <span class="math" data-tex="\(H_b^k(M,M)=0\)">\(H_b^k(M,M)=0\)</span>.</p>
+<h2 id="2-tracial-algebras-the-2-norm-and-ultrapowers">2. Tracial algebras, the 2-norm and ultrapowers</h2>
+<p>Let <span class="math" data-tex="\((N,\rho)\)">\((N,\rho)\)</span> be a finite von Neumann algebra with a faithful normal tracial state, and put <span class="math" data-tex="\(\|x\|_2=\rho(x^*x)^{1/2}\)">\(\|x\|_2=\rho(x^*x)^{1/2}\)</span>. The trace property gives <span class="math" data-tex="\(\|x^*\|_2=\|x\|_2\)">\(\|x^*\|_2=\|x\|_2\)</span>. Since <span class="math" data-tex="\(y^*x^*xy\le\|x\|^2y^*y\)">\(y^*x^*xy\le\|x\|^2y^*y\)</span>, also <span class="math" data-tex="\(\|xy\|_2\le\|x\|\,\|y\|_2\)">\(\|xy\|_2\le\|x\|\,\|y\|_2\)</span>, and then <span class="math" data-tex="\(\|yz\|_2=\|z^*y^*\|_2\le\|z\|\,\|y\|_2\)">\(\|yz\|_2=\|z^*y^*\|_2\le\|z\|\,\|y\|_2\)</span>. Together,
+<span class="math math-display" data-tex="\[
+\|xyz\|_2\le\|x\|\,\|y\|_2\,\|z\| .
+\]">\[
+\|xyz\|_2\le\|x\|\,\|y\|_2\,\|z\| .
+\]</span>
+On operator-norm bounded subsets of <span class="math" data-tex="\(N\)">\(N\)</span> the topology of the <span class="math" data-tex="\(2\)">\(2\)</span>-norm coincides with the strong and with the strong-star operator topology (Exercise 4.4).</p>
+<p><strong>Definition 2.1.</strong> A linear map <span class="math" data-tex="\(R:N\to N\)">\(R:N\to N\)</span> is <em>continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm</em> if <span class="math" data-tex="\(\|R(x_j)\|_2\to0\)">\(\|R(x_j)\|_2\to0\)</span> whenever <span class="math" data-tex="\(\sup_j\|x_j\|&lt;\infty\)">\(\sup_j\|x_j\|&lt;\infty\)</span> and <span class="math" data-tex="\(\|x_j\|_2\to0\)">\(\|x_j\|_2\to0\)</span>.</p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(R:N\to N\)">\(R:N\to N\)</span> be bounded and linear.</p>
+<ol>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm if and only if for every <span class="math" data-tex="\(r&lt;\infty\)">\(r&lt;\infty\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with <span class="math" data-tex="\(\|R(x)\|_2&lt;\varepsilon\)">\(\|R(x)\|_2&lt;\varepsilon\)</span> whenever <span class="math" data-tex="\(\|x\|\le r\)">\(\|x\|\le r\)</span> and <span class="math" data-tex="\(\|x\|_2&lt;\delta\)">\(\|x\|_2&lt;\delta\)</span>.</li>
+<li>If so, and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a free ultrafilter on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, then <span class="math" data-tex="\(R^\omega((x_j)_\omega)=(R(x_j))_\omega\)">\(R^\omega((x_j)_\omega)=(R(x_j))_\omega\)</span> is a well-defined bounded linear map on the tracial ultrapower <span class="math" data-tex="\(N^\omega\)">\(N^\omega\)</span>, with <span class="math" data-tex="\(\|R^\omega\|\le\|R\|\)">\(\|R^\omega\|\le\|R\|\)</span>, and it is again continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm of the ultrapower trace. In particular, <span class="math" data-tex="\((R^\omega)^\nu\)">\((R^\omega)^\nu\)</span> on <span class="math" data-tex="\((N^\omega)^\nu\)">\((N^\omega)^\nu\)</span> has the same properties for every free ultrafilter <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</li>
+</ol>
+<p>Here <span class="math" data-tex="\(N^\omega=\ell^\infty(\mathbb N,N)/\mathcal I_\omega\)">\(N^\omega=\ell^\infty(\mathbb N,N)/\mathcal I_\omega\)</span>, where <span class="math" data-tex="\(\mathcal I_\omega\)">\(\mathcal I_\omega\)</span> consists of the bounded sequences with <span class="math" data-tex="\(\lim_{j\to\omega}\|x_j\|_2=0\)">\(\lim_{j\to\omega}\|x_j\|_2=0\)</span>, with the quotient norm and the trace <span class="math" data-tex="\(\rho^\omega((x_j)_\omega)=\lim_{j\to\omega}\rho(x_j)\)">\(\rho^\omega((x_j)_\omega)=\lim_{j\to\omega}\rho(x_j)\)</span>. It is a von Neumann algebra with faithful normal tracial state <span class="math" data-tex="\(\rho^\omega\)">\(\rho^\omega\)</span> (Theorem 3.2 of the ultraproduct lesson cited above), its <span class="math" data-tex="\(2\)">\(2\)</span>-norm is <span class="math" data-tex="\(\|(x_j)_\omega\|_2=\lim_{j\to\omega}\|x_j\|_2\)">\(\|(x_j)_\omega\|_2=\lim_{j\to\omega}\|x_j\|_2\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> is identified with the constant sequences.</p>
+<p><strong>Proof.</strong> (1) If the uniform statement fails for some <span class="math" data-tex="\(r,\varepsilon\)">\(r,\varepsilon\)</span>, there are <span class="math" data-tex="\(x_j\)">\(x_j\)</span> with <span class="math" data-tex="\(\|x_j\|\le r\)">\(\|x_j\|\le r\)</span>, <span class="math" data-tex="\(\|x_j\|_2&lt;1/j\)">\(\|x_j\|_2&lt;1/j\)</span> and <span class="math" data-tex="\(\|R(x_j)\|_2\ge\varepsilon\)">\(\|R(x_j)\|_2\ge\varepsilon\)</span>, contradicting continuity. The converse is immediate.</p>
+<p>(2) By (1), <span class="math" data-tex="\(R\)">\(R\)</span> maps bounded sequences in <span class="math" data-tex="\(\mathcal I_\omega\)">\(\mathcal I_\omega\)</span> into <span class="math" data-tex="\(\mathcal I_\omega\)">\(\mathcal I_\omega\)</span>: if <span class="math" data-tex="\(\lim_{j\to\omega}\|x_j\|_2=0\)">\(\lim_{j\to\omega}\|x_j\|_2=0\)</span>, then <span class="math" data-tex="\(\{j:\|x_j\|_2&lt;\delta\}\in\omega\)">\(\{j:\|x_j\|_2&lt;\delta\}\in\omega\)</span>, so <span class="math" data-tex="\(\{j:\|R(x_j)\|_2&lt;\varepsilon\}\in\omega\)">\(\{j:\|R(x_j)\|_2&lt;\varepsilon\}\in\omega\)</span>. Applied to the difference of two representatives, this shows that <span class="math" data-tex="\(R^\omega\)">\(R^\omega\)</span> is well defined. For every representative, <span class="math" data-tex="\(\|R^\omega(X)\|\le\sup_j\|R(x_j)\|\)">\(\|R^\omega(X)\|\le\sup_j\|R(x_j)\|\)</span><span class="math" data-tex="\(\le\|R\|\sup_j\|x_j\|\)">\(\le\|R\|\sup_j\|x_j\|\)</span>, and the infimum over representatives gives <span class="math" data-tex="\(\|R^\omega(X)\|\le\|R\|\,\|X\|\)">\(\|R^\omega(X)\|\le\|R\|\,\|X\|\)</span>.</p>
+<p>For the modulus, let <span class="math" data-tex="\(r&lt;\infty\)">\(r&lt;\infty\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and take <span class="math" data-tex="\(\delta\)">\(\delta\)</span> from (1) for the radius <span class="math" data-tex="\(r+1\)">\(r+1\)</span> and the tolerance <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. If <span class="math" data-tex="\(\|X\|\le r\)">\(\|X\|\le r\)</span>, the quotient norm allows a representative with <span class="math" data-tex="\(\sup_j\|x_j\|\le r+1\)">\(\sup_j\|x_j\|\le r+1\)</span>. If moreover <span class="math" data-tex="\(\|X\|_2&lt;\delta\)">\(\|X\|_2&lt;\delta\)</span>, then <span class="math" data-tex="\(\{j:\|x_j\|_2&lt;\delta\}\in\omega\)">\(\{j:\|x_j\|_2&lt;\delta\}\in\omega\)</span>, and <span class="math" data-tex="\(\|R^\omega(X)\|_2=\lim_{j\to\omega}\|R(x_j)\|_2\)">\(\|R^\omega(X)\|_2=\lim_{j\to\omega}\|R(x_j)\|_2\)</span><span class="math" data-tex="\(\le\varepsilon/2&lt;\varepsilon\)">\(\le\varepsilon/2&lt;\varepsilon\)</span>. So <span class="math" data-tex="\(\delta\)">\(\delta\)</span> works for <span class="math" data-tex="\(R^\omega\)">\(R^\omega\)</span> at the radius <span class="math" data-tex="\(r\)">\(r\)</span>. The argument did not use separability of <span class="math" data-tex="\(N\)">\(N\)</span>, so it applies again to <span class="math" data-tex="\(N^\omega\)">\(N^\omega\)</span> in place of <span class="math" data-tex="\(N\)">\(N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3 (normal maps are continuous on balls).</strong> Let <span class="math" data-tex="\(B:N\to N\)">\(B:N\to N\)</span> be bounded, linear and normal. Then <span class="math" data-tex="\(B\)">\(B\)</span> is continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm.</p>
+<p><strong>Proof.</strong> Two facts about projections are used. First, <span class="math" data-tex="\(\rho(p\vee q)\le\rho(p)+\rho(q)\)">\(\rho(p\vee q)\le\rho(p)+\rho(q)\)</span> for projections <span class="math" data-tex="\(p,q\in N\)">\(p,q\in N\)</span>. Indeed, the closure of the range of <span class="math" data-tex="\((1-p)q\)">\((1-p)q\)</span> is the closure of <span class="math" data-tex="\((1-p)(p\vee q)H\)">\((1-p)(p\vee q)H\)</span>, which is the range of the projection <span class="math" data-tex="\(p\vee q-p\)">\(p\vee q-p\)</span>. So the left support of <span class="math" data-tex="\((1-p)q\)">\((1-p)q\)</span> is <span class="math" data-tex="\(p\vee q-p\)">\(p\vee q-p\)</span>, while its right support is at most <span class="math" data-tex="\(q\)">\(q\)</span>. Left and right supports are <span class="math" data-tex="\(uu^*\)">\(uu^*\)</span> and <span class="math" data-tex="\(u^*u\)">\(u^*u\)</span> for the partial isometry <span class="math" data-tex="\(u\in N\)">\(u\in N\)</span> of the polar decomposition, so they have equal trace, and <span class="math" data-tex="\(\rho(p\vee q)-\rho(p)\le\rho(q)\)">\(\rho(p\vee q)-\rho(p)\le\rho(q)\)</span>. Second, for projections <span class="math" data-tex="\(e_h\)">\(e_h\)</span> the increasing finite joins converge strongly to <span class="math" data-tex="\(\bigvee_he_h\)">\(\bigvee_he_h\)</span> (Corollary 1.4 of the Kaplansky lesson). Strong convergence of a bounded net implies ultraweak convergence (Lemma 8.5 of the lesson on operator topologies), and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is normal. So <span class="math" data-tex="\(\rho(\bigvee_he_h)\le\sum_h\rho(e_h)\)">\(\rho(\bigvee_he_h)\le\sum_h\rho(e_h)\)</span>.</p>
+<p>Suppose that <span class="math" data-tex="\(B\)">\(B\)</span> is not continuous on balls. By Lemma 2.2(1) there are <span class="math" data-tex="\(R,\eta&gt;0\)">\(R,\eta&gt;0\)</span> and <span class="math" data-tex="\(x_j\in N\)">\(x_j\in N\)</span> with <span class="math" data-tex="\(\|x_j\|\le R\)">\(\|x_j\|\le R\)</span>, <span class="math" data-tex="\(\|x_j\|_2\to0\)">\(\|x_j\|_2\to0\)</span> and <span class="math" data-tex="\(\|B(x_j)\|_2\ge\eta\)">\(\|B(x_j)\|_2\ge\eta\)</span>. Choose <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> with <span class="math" data-tex="\(\|B\|\alpha&lt;\eta/4\)">\(\|B\|\alpha&lt;\eta/4\)</span>. With the polar decomposition <span class="math" data-tex="\(x_j=v_j|x_j|\)">\(x_j=v_j|x_j|\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_j=1_{(\alpha,\infty)}(|x_j|),\quad y_j=v_j|x_j|r_j,\\
+\ell_j=v_jr_jv_j^*,\quad e_j=r_j\vee\ell_j .
+\end{gathered}
+\]">\[
+\begin{gathered}
+r_j=1_{(\alpha,\infty)}(|x_j|),\quad y_j=v_j|x_j|r_j,\\
+\ell_j=v_jr_jv_j^*,\quad e_j=r_j\vee\ell_j .
+\end{gathered}
+\]</span>
+The spectral projection <span class="math" data-tex="\(r_j\)">\(r_j\)</span> lies below the support <span class="math" data-tex="\(v_j^*v_j\)">\(v_j^*v_j\)</span> of <span class="math" data-tex="\(|x_j|\)">\(|x_j|\)</span>, so <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> is a projection. Since <span class="math" data-tex="\(|y_j|=|x_j|r_j\)">\(|y_j|=|x_j|r_j\)</span> is invertible on <span class="math" data-tex="\(r_jH\)">\(r_jH\)</span>, the right and left supports of <span class="math" data-tex="\(y_j\)">\(y_j\)</span> are <span class="math" data-tex="\(r_j\)">\(r_j\)</span> and <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>, and <span class="math" data-tex="\(y_j=e_jy_je_j\)">\(y_j=e_jy_je_j\)</span>. Also <span class="math" data-tex="\(\|y_j\|\le R\)">\(\|y_j\|\le R\)</span> and <span class="math" data-tex="\(\|x_j-y_j\|=\|v_j|x_j|(1-r_j)\|\le\alpha\)">\(\|x_j-y_j\|=\|v_j|x_j|(1-r_j)\|\le\alpha\)</span>, hence
+<span class="math math-display" data-tex="\[
+\|B(y_j)\|_2\ge\|B(x_j)\|_2-\|B\|\alpha\ge3\eta/4 .
+\]">\[
+\|B(y_j)\|_2\ge\|B(x_j)\|_2-\|B\|\alpha\ge3\eta/4 .
+\]</span>
+From <span class="math" data-tex="\(\alpha^2r_j\le|x_j|^2\)">\(\alpha^2r_j\le|x_j|^2\)</span> and <span class="math" data-tex="\(\rho(v_jr_jv_j^*)=\rho(r_jv_j^*v_jr_j)=\rho(r_j)\)">\(\rho(v_jr_jv_j^*)=\rho(r_jv_j^*v_jr_j)=\rho(r_j)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho(e_j)&amp;\le\rho(r_j)+\rho(\ell_j)=2\rho(r_j)\\
+&amp;\le2\alpha^{-2}\|x_j\|_2^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\rho(e_j)&amp;\le\rho(r_j)+\rho(\ell_j)=2\rho(r_j)\\
+&amp;\le2\alpha^{-2}\|x_j\|_2^2 .
+\end{aligned}
+\]</span>
+Pass to a subsequence with <span class="math" data-tex="\(\sum_j\rho(e_j)&lt;\infty\)">\(\sum_j\rho(e_j)&lt;\infty\)</span>, and put <span class="math" data-tex="\(p_j=\bigvee_{h\ge j}e_h\)">\(p_j=\bigvee_{h\ge j}e_h\)</span>. The projections <span class="math" data-tex="\(p_j\)">\(p_j\)</span> decrease, and <span class="math" data-tex="\(\rho(p_j)\le\sum_{h\ge j}\rho(e_h)\to0\)">\(\rho(p_j)\le\sum_{h\ge j}\rho(e_h)\to0\)</span>. Their infimum has trace <span class="math" data-tex="\(0\)">\(0\)</span>, so it is <span class="math" data-tex="\(0\)">\(0\)</span> because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is faithful, and <span class="math" data-tex="\(p_j\to0\)">\(p_j\to0\)</span> strongly (Corollary 1.4 of the Kaplansky lesson).</p>
+<p>Fix <span class="math" data-tex="\(j\)">\(j\)</span>. As <span class="math" data-tex="\(h\to\infty\)">\(h\to\infty\)</span>, <span class="math" data-tex="\(p_j-p_h\to p_j\)">\(p_j-p_h\to p_j\)</span> strongly, so <span class="math" data-tex="\((p_j-p_h)y_j(p_j-p_h)\to p_jy_jp_j=y_j\)">\((p_j-p_h)y_j(p_j-p_h)\to p_jy_jp_j=y_j\)</span> strongly (Proposition 8.6 of the lesson on operator topologies), using <span class="math" data-tex="\(e_j\le p_j\)">\(e_j\le p_j\)</span>. This bounded convergence is also ultraweak, and the normal map <span class="math" data-tex="\(B\)">\(B\)</span> preserves it. The <span class="math" data-tex="\(2\)">\(2\)</span>-norm is ultraweakly lower semicontinuous, being
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|y\|_2=\sup\{&amp;|\rho(c^*y)|:\ c\in N,\\
+&amp;\|c\|_2\le1\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|y\|_2=\sup\{&amp;|\rho(c^*y)|:\ c\in N,\\
+&amp;\|c\|_2\le1\},
+\end{aligned}
+\]</span>
+a supremum of ultraweakly continuous functions. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\liminf_{h\to\infty}\|B((p_j-p_h)y_j(p_j-p_h))\|_2\\
+&amp;\qquad\ge3\eta/4 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\liminf_{h\to\infty}\|B((p_j-p_h)y_j(p_j-p_h))\|_2\\
+&amp;\qquad\ge3\eta/4 .
+\end{aligned}
+\]</span>
+Starting from <span class="math" data-tex="\(j_1=1\)">\(j_1=1\)</span>, choose <span class="math" data-tex="\(j_{s+1}&gt;j_s\)">\(j_{s+1}&gt;j_s\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_s=(p_{j_s}-p_{j_{s+1}})\,y_{j_s}\,(p_{j_s}-p_{j_{s+1}})\\
+\text{satisfies}\quad\|B(t_s)\|_2\ge\eta/2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+t_s=(p_{j_s}-p_{j_{s+1}})\,y_{j_s}\,(p_{j_s}-p_{j_{s+1}})\\
+\text{satisfies}\quad\|B(t_s)\|_2\ge\eta/2 .
+\end{gathered}
+\]</span>
+The projections <span class="math" data-tex="\(q_s=p_{j_s}-p_{j_{s+1}}\)">\(q_s=p_{j_s}-p_{j_{s+1}}\)</span> are pairwise orthogonal, since <span class="math" data-tex="\(q_{s&#x27;}\le p_{j_{s+1}}\)">\(q_{s&#x27;}\le p_{j_{s+1}}\)</span> for <span class="math" data-tex="\(s&#x27;&gt;s\)">\(s&#x27;&gt;s\)</span>. As <span class="math" data-tex="\(t_s=q_st_sq_s\)">\(t_s=q_st_sq_s\)</span> and <span class="math" data-tex="\(\|t_s\|\le R\)">\(\|t_s\|\le R\)</span>, every choice of signs <span class="math" data-tex="\(\epsilon_s=\pm1\)">\(\epsilon_s=\pm1\)</span> gives <span class="math" data-tex="\(\|\sum_{s\le n}\epsilon_st_s\|\le R\)">\(\|\sum_{s\le n}\epsilon_st_s\|\le R\)</span>. For independent uniform random signs, <span class="math" data-tex="\(\mathbb E[\epsilon_s\epsilon_{s&#x27;}]=0\)">\(\mathbb E[\epsilon_s\epsilon_{s&#x27;}]=0\)</span> for <span class="math" data-tex="\(s\ne s&#x27;\)">\(s\ne s&#x27;\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{n\eta^2}4&amp;\le\sum_{s=1}^n\|B(t_s)\|_2^2\\
+&amp;=\mathbb E\Bigl\|B\Bigl(\sum_{s=1}^n\epsilon_st_s\Bigr)\Bigr\|_2^2\\
+&amp;\le\|B\|^2R^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{n\eta^2}4&amp;\le\sum_{s=1}^n\|B(t_s)\|_2^2\\
+&amp;=\mathbb E\Bigl\|B\Bigl(\sum_{s=1}^n\epsilon_st_s\Bigr)\Bigr\|_2^2\\
+&amp;\le\|B\|^2R^2 ,
+\end{aligned}
+\]</span>
+which fails for large <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Exercise 4.5 proves the converse: a bounded linear map of <span class="math" data-tex="\(N\)">\(N\)</span> that is continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm is normal.</p>
+<h2 id="3-classical-reductions-and-the-route">3. Classical reductions and the route</h2>
+<p>Two classical theorems reduce Theorem 1.2 to separately normal cocycles on algebras of type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span>. They are used in the course without proof.</p>
+<p><strong>K1 (normal reduction; Johnson, Kadison and Ringrose).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra and <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. If <span class="math" data-tex="\(f\in C_b^k(M,M)\)">\(f\in C_b^k(M,M)\)</span> is a cocycle, there are a separately normal bounded cocycle <span class="math" data-tex="\(f_0\)">\(f_0\)</span> and <span class="math" data-tex="\(b\in C_b^{k-1}(M,M)\)">\(b\in C_b^{k-1}(M,M)\)</span> with <span class="math" data-tex="\(f=f_0+db\)">\(f=f_0+db\)</span>.</p>
+<p>This is Lemma 5.4 and Theorem 5.6 of B. E. Johnson, R. V. Kadison and J. R. Ringrose, <a href="https://www.numdam.org/item/BSMF_1972__100__73_0/"><em>Cohomology of operator algebras III: reduction to normal cohomology</em></a>, Bull. Soc. Math. France 100 (1972), 73–96.</p>
+<p><strong>K2 (algebras without a type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> summand).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra with no type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> central summand, and <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. Then <span class="math" data-tex="\(H_b^k(M,M)=0\)">\(H_b^k(M,M)=0\)</span>.</p>
+<p>This combines the type I case, Theorem 4.4 of R. V. Kadison and J. R. Ringrose, <a href="https://archive.ymsc.tsinghua.edu.cn/pacm_paperurl/20170108203222172234112"><em>Cohomology of operator algebras I. Type I von Neumann algebras</em></a>, Acta Math. 126 (1971), 227–243, with the properly infinite case of E. Christensen, E. G. Effros and A. Sinclair, <a href="https://gdz.sub.uni-goettingen.de/id/PPN356556735_0090"><em>Completely bounded multilinear maps and C*-algebraic cohomology</em></a>, Invent. Math. 90 (1987), 279–296. The combined statement is equation (1.1) of E. Christensen, F. Pop, A. M. Sinclair and R. R. Smith, <a href="https://arxiv.org/abs/math/0107078"><em>Hochschild cohomology of factors with property <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span></em></a>, Ann. of Math. 158 (2003), 635–659.</p>
+<p><strong>Free Haar families.</strong> In a von Neumann algebra with faithful tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, a unitary <span class="math" data-tex="\(u\)">\(u\)</span> is <em>Haar</em> if <span class="math" data-tex="\(\tau(u^k)=0\)">\(\tau(u^k)=0\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>. Unitaries <span class="math" data-tex="\(g_1,g_2,\ldots\)">\(g_1,g_2,\ldots\)</span> form a <em>free Haar family</em> if <span class="math" data-tex="\(\tau(w(g))=0\)">\(\tau(w(g))=0\)</span> for every nonidentity reduced word <span class="math" data-tex="\(w\)">\(w\)</span> in the free group on <span class="math" data-tex="\(x_1,x_2,\ldots\)">\(x_1,x_2,\ldots\)</span>.</p>
+<p><strong>The route.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be of type <span class="math" data-tex="\(\mathrm{II}_1\)">\(\mathrm{II}_1\)</span> with separable predual and faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. The remaining lessons prove Theorem 1.2 in four steps.</p>
+<ol>
+<li><a href="rigidity-of-first-letter-identities.html"><em>Rigidity of first-letter identities</em></a> proves a statement about a single bounded map <span class="math" data-tex="\(R\)">\(R\)</span>, continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm, on a finite von Neumann algebra containing a free Haar family. If <span class="math" data-tex="\(R\)">\(R\)</span> multiplies every word with pairwise distinct indices on the left by <span class="math" data-tex="\(a\)">\(a\)</span> or by <span class="math" data-tex="\(b\)">\(b\)</span>, according to whether its first letter is a generator or an inverse, then <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</li>
+<li><a href="a-random-walk-with-asymptotically-free-products.html"><em>A random walk with asymptotically free products</em></a> constructs a symmetric probability measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on the unitary group of <span class="math" data-tex="\(M\)">\(M\)</span>, with a <span class="math" data-tex="\(2\)">\(2\)</span>-norm dense set of atoms, whose long independent products have asymptotically the joint moments of free Haar unitaries.</li>
+<li><a href="the-liouville-theorem.html"><em>The Liouville theorem</em></a> proves: if <span class="math" data-tex="\(T:M\to M\)">\(T:M\to M\)</span> is bounded, linear, continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm, and harmonic, <span class="math" data-tex="\(T(x)=\mathbb E_{U\sim\mu}[T(xU)U^*]\)">\(T(x)=\mathbb E_{U\sim\mu}[T(xU)U^*]\)</span>, then <span class="math" data-tex="\(T(x)=T(1)x\)">\(T(x)=T(1)x\)</span>. A nonconstant limit of the associated martingale would produce, in an ultrapower, exactly the identities excluded by the rigidity theorem.</li>
+<li><a href="bounded-primitives.html"><em>Bounded primitives</em></a> averages a separately normal cocycle in its last variable along the walk. The Liouville theorem makes the average a right module map in that variable, and this yields a primitive <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(\|g\|\le\|f\|\)">\(\|g\|\le\|f\|\)</span>. The uniform bound removes the separability assumption and allows central pieces to be assembled; K1 and K2 handle the general case.</li>
+</ol>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that <span class="math" data-tex="\(\|df\|\le(k+2)\|f\|\)">\(\|df\|\le(k+2)\|f\|\)</span> on <span class="math" data-tex="\(C_b^k(M,M)\)">\(C_b^k(M,M)\)</span>, and that the kernel of <span class="math" data-tex="\(d:C_b^0\to C_b^1\)">\(d:C_b^0\to C_b^1\)</span> is the centre of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>4.2</strong> (easy). Show that the cocycles of degree one are the derivations of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>4.3</strong> (medium). For <span class="math" data-tex="\(f\in C_b^2(M,M)\)">\(f\in C_b^2(M,M)\)</span>, define a bilinear product on <span class="math" data-tex="\(M\oplus M\)">\(M\oplus M\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(a,a&#x27;)*(b,b&#x27;)\\
+&amp;\quad=\bigl(ab,\ a&#x27;b+ab&#x27;+f(a,b)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(a,a&#x27;)*(b,b&#x27;)\\
+&amp;\quad=\bigl(ab,\ a&#x27;b+ab&#x27;+f(a,b)\bigr).
+\end{aligned}
+\]</span>
+Show that <span class="math" data-tex="\(*\)">\(*\)</span> is associative if and only if <span class="math" data-tex="\(df=0\)">\(df=0\)</span>.</p>
+<p><strong>4.4</strong> (medium). Let <span class="math" data-tex="\(N\subseteq B(H)\)">\(N\subseteq B(H)\)</span> be a von Neumann algebra with a faithful normal tracial state <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and let <span class="math" data-tex="\((x_i)\)">\((x_i)\)</span> be a net in <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\sup_i\|x_i\|&lt;\infty\)">\(\sup_i\|x_i\|&lt;\infty\)</span>. Show that <span class="math" data-tex="\(\|x_i\|_2\to0\)">\(\|x_i\|_2\to0\)</span> if and only if <span class="math" data-tex="\(x_i\to0\)">\(x_i\to0\)</span> strongly, and that both are equivalent to <span class="math" data-tex="\(x_i\to0\)">\(x_i\to0\)</span> strongly-star.</p>
+<p><strong>4.5</strong> (hard). Let <span class="math" data-tex="\((N,\rho)\)">\((N,\rho)\)</span> be as in Exercise 4.4 and let <span class="math" data-tex="\(B:N\to N\)">\(B:N\to N\)</span> be bounded, linear and continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm. Show that <span class="math" data-tex="\(B\)">\(B\)</span> is normal. Together with Lemma 2.3: a bounded linear map of <span class="math" data-tex="\(N\)">\(N\)</span> is normal if and only if it is continuous on balls for the <span class="math" data-tex="\(2\)">\(2\)</span>-norm.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> Each of the <span class="math" data-tex="\(k+2\)">\(k+2\)</span> terms of <span class="math" data-tex="\((df)(a_1,\ldots,a_{k+1})\)">\((df)(a_1,\ldots,a_{k+1})\)</span> has norm at most <span class="math" data-tex="\(\|f\|\prod_i\|a_i\|\)">\(\|f\|\prod_i\|a_i\|\)</span>. The element <span class="math" data-tex="\(b\)">\(b\)</span> lies in the kernel of <span class="math" data-tex="\(d\)">\(d\)</span> exactly when <span class="math" data-tex="\(ab-ba=0\)">\(ab-ba=0\)</span> for all <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>.</p>
+<p><strong>4.2.</strong> For <span class="math" data-tex="\(f\in C_b^1\)">\(f\in C_b^1\)</span>, <span class="math" data-tex="\((df)(a_1,a_2)\)">\((df)(a_1,a_2)\)</span> is <span class="math" data-tex="\(a_1f(a_2)-f(a_1a_2)+f(a_1)a_2\)">\(a_1f(a_2)-f(a_1a_2)+f(a_1)a_2\)</span>, which vanishes for all <span class="math" data-tex="\(a_1,a_2\)">\(a_1,a_2\)</span> exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is a derivation.</p>
+<p><strong>4.3.</strong> Expand both products of three elements. In the first component both are <span class="math" data-tex="\(abc\)">\(abc\)</span>. In the second component, <span class="math" data-tex="\(((a,a&#x27;)*(b,b&#x27;))*(c,c&#x27;)\)">\(((a,a&#x27;)*(b,b&#x27;))*(c,c&#x27;)\)</span> has
+<span class="math math-display" data-tex="\[
+a&#x27;bc+ab&#x27;c+f(a,b)c+abc&#x27;+f(ab,c),
+\]">\[
+a&#x27;bc+ab&#x27;c+f(a,b)c+abc&#x27;+f(ab,c),
+\]</span>
+and <span class="math" data-tex="\((a,a&#x27;)*((b,b&#x27;)*(c,c&#x27;))\)">\((a,a&#x27;)*((b,b&#x27;)*(c,c&#x27;))\)</span> has
+<span class="math math-display" data-tex="\[
+a&#x27;bc+ab&#x27;c+abc&#x27;+af(b,c)+f(a,bc).
+\]">\[
+a&#x27;bc+ab&#x27;c+abc&#x27;+af(b,c)+f(a,bc).
+\]</span>
+The difference is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;f(a,b)c+f(ab,c)\\
+&amp;\quad-af(b,c)-f(a,bc)\\
+&amp;\quad=-(df)(a,b,c).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;f(a,b)c+f(ab,c)\\
+&amp;\quad-af(b,c)-f(a,bc)\\
+&amp;\quad=-(df)(a,b,c).
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(*\)">\(*\)</span> is associative exactly when <span class="math" data-tex="\(df=0\)">\(df=0\)</span>.</p>
+<p><strong>4.4.</strong> Let <span class="math" data-tex="\(r=\sup_i\|x_i\|\)">\(r=\sup_i\|x_i\|\)</span>. The state <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is ultraweakly, hence ultrastrongly, continuous (Theorem 9.1 of the lesson on operator topologies), so by Theorem 10.1 of the double commutant lesson there are vectors <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> with <span class="math" data-tex="\(\sum_n\|\xi_n\|^2&lt;\infty\)">\(\sum_n\|\xi_n\|^2&lt;\infty\)</span> and <span class="math" data-tex="\(\rho(y)=\sum_n\langle y\xi_n,\xi_n\rangle\)">\(\rho(y)=\sum_n\langle y\xi_n,\xi_n\rangle\)</span> for <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span>. Then <span class="math" data-tex="\(\|x\|_2^2=\sum_n\|x\xi_n\|^2\)">\(\|x\|_2^2=\sum_n\|x\xi_n\|^2\)</span>.</p>
+<p>If <span class="math" data-tex="\(x_i\to0\)">\(x_i\to0\)</span> strongly, choose <span class="math" data-tex="\(n_0\)">\(n_0\)</span> with <span class="math" data-tex="\(r^2\sum_{n&gt;n_0}\|\xi_n\|^2&lt;\varepsilon\)">\(r^2\sum_{n&gt;n_0}\|\xi_n\|^2&lt;\varepsilon\)</span>. The finitely many terms with <span class="math" data-tex="\(n\le n_0\)">\(n\le n_0\)</span> tend to <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\limsup_i\|x_i\|_2^2\le\varepsilon\)">\(\limsup_i\|x_i\|_2^2\le\varepsilon\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(e\)">\(e\)</span> be the projection onto the closed span <span class="math" data-tex="\(K\)">\(K\)</span> of the vectors <span class="math" data-tex="\(x&#x27;\xi_n\)">\(x&#x27;\xi_n\)</span>, <span class="math" data-tex="\(x&#x27;\in N&#x27;\)">\(x&#x27;\in N&#x27;\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The subspace <span class="math" data-tex="\(K\)">\(K\)</span> is invariant under the self-adjoint set <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>, so <span class="math" data-tex="\(e\)">\(e\)</span> commutes with <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span> and lies in <span class="math" data-tex="\(N&#x27;&#x27;=N\)">\(N&#x27;&#x27;=N\)</span>. Since every <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(\rho(1-e)=\sum_n\|(1-e)\xi_n\|^2=0\)">\(\rho(1-e)=\sum_n\|(1-e)\xi_n\|^2=0\)</span>, and <span class="math" data-tex="\(e=1\)">\(e=1\)</span> by faithfulness. For <span class="math" data-tex="\(x&#x27;\in N&#x27;\)">\(x&#x27;\in N&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|x_ix&#x27;\xi_n\|&amp;=\|x&#x27;x_i\xi_n\|\\
+&amp;\le\|x&#x27;\|\,\|x_i\xi_n\|\\
+&amp;\le\|x&#x27;\|\,\|x_i\|_2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|x_ix&#x27;\xi_n\|&amp;=\|x&#x27;x_i\xi_n\|\\
+&amp;\le\|x&#x27;\|\,\|x_i\xi_n\|\\
+&amp;\le\|x&#x27;\|\,\|x_i\|_2 .
+\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(\|x_i\|_2\to0\)">\(\|x_i\|_2\to0\)</span> gives <span class="math" data-tex="\(x_i\eta\to0\)">\(x_i\eta\to0\)</span> for all <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in a dense subspace of <span class="math" data-tex="\(H\)">\(H\)</span>, and the bound <span class="math" data-tex="\(\|x_i\|\le r\)">\(\|x_i\|\le r\)</span> extends this to all <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span>. Finally, <span class="math" data-tex="\(\|x_i^*\|_2=\|x_i\|_2\)">\(\|x_i^*\|_2=\|x_i\|_2\)</span>, so the same argument applied to <span class="math" data-tex="\((x_i^*)\)">\((x_i^*)\)</span> gives strong-star convergence.</p>
+<p><strong>4.5.</strong> For <span class="math" data-tex="\(c\in N\)">\(c\in N\)</span> put <span class="math" data-tex="\(\psi_c(x)=\rho(c^*B(x))\)">\(\psi_c(x)=\rho(c^*B(x))\)</span>. By the Cauchy–Schwarz inequality, <span class="math" data-tex="\(|\psi_c(x)-\psi_c(x&#x27;)|\le\|c\|_2\,\|B(x-x&#x27;)\|_2\)">\(|\psi_c(x)-\psi_c(x&#x27;)|\le\|c\|_2\,\|B(x-x&#x27;)\|_2\)</span>. Let <span class="math" data-tex="\((x_i)\)">\((x_i)\)</span> be a net in the unit ball <span class="math" data-tex="\(N_1\)">\(N_1\)</span> converging strongly to <span class="math" data-tex="\(x\in N_1\)">\(x\in N_1\)</span>. By Exercise 4.4, <span class="math" data-tex="\(\|x_i-x\|_2\to0\)">\(\|x_i-x\|_2\to0\)</span>; by Lemma 2.2(1) with the radius <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(\|B(x_i-x)\|_2\to0\)">\(\|B(x_i-x)\|_2\to0\)</span>. So <span class="math" data-tex="\(\psi_c\)">\(\psi_c\)</span> is strongly continuous on <span class="math" data-tex="\(N_1\)">\(N_1\)</span>, and by Theorem 9.5 of the lesson on operator topologies it is ultraweakly continuous.</p>
+<p>The functionals <span class="math" data-tex="\(\rho(c^*\,\cdot\,)\)">\(\rho(c^*\,\cdot\,)\)</span>, <span class="math" data-tex="\(c\in N\)">\(c\in N\)</span>, are ultraweakly continuous, and they are norm dense in the predual <span class="math" data-tex="\(N_*\)">\(N_*\)</span>. Indeed, by Theorem 9.4(b) of the same lesson every bounded functional on <span class="math" data-tex="\(N_*\)">\(N_*\)</span> is evaluation at some <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>; if it vanishes on all <span class="math" data-tex="\(\rho(c^*\,\cdot\,)\)">\(\rho(c^*\,\cdot\,)\)</span>, then <span class="math" data-tex="\(\rho(a^*a)=0\)">\(\rho(a^*a)=0\)</span> and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and the Hahn–Banach theorem gives density. Given <span class="math" data-tex="\(\omega\in N_*\)">\(\omega\in N_*\)</span>, choose <span class="math" data-tex="\(c_n\)">\(c_n\)</span> with <span class="math" data-tex="\(\|\omega-\rho(c_n^*\,\cdot\,)\|\to0\)">\(\|\omega-\rho(c_n^*\,\cdot\,)\|\to0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\omega\circ B-\psi_{c_n}\|&amp;\le\|B\|\,\|\omega-\rho(c_n^*\,\cdot\,)\|\\
+&amp;\to0 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\omega\circ B-\psi_{c_n}\|&amp;\le\|B\|\,\|\omega-\rho(c_n^*\,\cdot\,)\|\\
+&amp;\to0 ,
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(N_*\)">\(N_*\)</span> is norm closed in <span class="math" data-tex="\(N^*\)">\(N^*\)</span> (Theorem 9.4(a)), so <span class="math" data-tex="\(\omega\circ B\in N_*\)">\(\omega\circ B\in N_*\)</span>. Since the ultraweak topology is <span class="math" data-tex="\(\sigma(N,N_*)\)">\(\sigma(N,N_*)\)</span> (Theorem 9.4(b)), <span class="math" data-tex="\(B\)">\(B\)</span> is ultraweakly continuous.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-295] OpenAI, <em>Vanishing of higher bounded Hochschild cohomology</em>, OpenAI Math Release preprint, 23 September 2026, Section 1 (the problem, the classical reductions and the strategy), Section 3.1 (Lemma 2.2) and Section 5.1 (Lemma 2.3). https://github.com/openai/math/tree/main/preprints/Vanishing-of-higher-bounded-Hochschild-cohomology-September-23-2026</li>
+<li>C. A. Akemann, <a href="https://www.ams.org/journals/tran/1967-126-02/S0002-9947-1967-0206732-8/"><em>The dual space of an operator algebra</em></a>, Trans. Amer. Math. Soc. 126 (1967), 286–302, Corollary III.10: the general continuity theorem of which Lemma 2.3 is the tracial case.</li>
+<li>The papers of Johnson, Kadison and Ringrose, Kadison and Ringrose, Christensen, Effros and Sinclair, and Christensen, Pop, Sinclair and Smith cited in Section 3.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

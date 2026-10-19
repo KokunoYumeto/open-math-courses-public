@@ -1,6 +1,6 @@
 # Newvectors, conductors and the passage to classical newforms
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A representation can have many vectors at a given level, but its first nonzero level has exactly one line. Every higher-level fixed vector comes from translating this line. We prove this statement in the Kirillov model, compute the conductors of principal and special representations, and prove that a supercuspidal conductor is at least two. We then give the precise global argument that turns these local lines into classical newforms.
 
@@ -416,7 +416,7 @@ This vanishes for every \(\pi\ne i\), and is nonzero for \(\pi=i\). Applying \(L
 
 It remains to organize the shifted terms. For each \(d>1\), choose one prime \(p\mid d\). The term \(f_\pi(dz)\) is \(\iota_p\) applied to \(f_\pi((d/p)z)\). Since \(d\mid N/M_\pi\), its inner form has level dividing \(M_\pi d/p\), a divisor of \(N/p\). Collecting the finitely many terms for each chosen prime produces \(f_p\) and proves (5.7). \(\square\)
 
-These are the decomposition and main lemma assigned to the modular-forms course, Lesson 10. The argument here derives them from the local and adelic representation theory; the classical Fricke-operator computations remain with that course. Theorem 5.1 uses global multiplicity one, while the separation step (5.9) uses strong multiplicity one. Local uniqueness of a Whittaker functional by itself supplies neither global conclusion.
+These are the decomposition and main lemma of the modular-forms course, Lesson 10. The argument here derives them from the local and adelic representation theory; the classical Fricke-operator computations are in that course. Theorem 5.1 uses global multiplicity one, while the separation step (5.9) uses strong multiplicity one. Local uniqueness of a Whittaker functional by itself supplies neither global conclusion.
 
 Deligne's §2.2, Remarque 2.2.7.1, emphasizes the normalized function of the newvector; §§2.4–2.5 connect it with the classical newform and its coefficients. In our unitary induction convention the local function is not the raw sequence \(a_{p^m}\): formula (5.5) inserts the factor \(p^{mk/2}\). Keeping that factor is what makes the spherical formula and the special coefficient agree.
 

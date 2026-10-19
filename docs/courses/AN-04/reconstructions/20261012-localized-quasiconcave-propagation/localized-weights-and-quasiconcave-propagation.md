@@ -6,7 +6,7 @@ The antecedents are Lars Hörmander, *The Analysis of Linear Partial Differentia
 
 The general theorem uses constant comparisons and requires no affine parameter. The corrected semidefinite clock from [SCP](../20261012-semiconcave-propagation/semiconcavity-and-semidefinite-characteristics.html) is retained where its earlier theorem is used. We do not infer global quasi-concavity from local quasi-concavity.
 
-Original exposition, three complete solutions and the reproducible figure are CC0-1.0. Linked components retain their terms. Human foundations remain external, so internal export P514 closure is unclaimed. 
+Original exposition, three complete solutions and the reproducible figure are CC0-1.0. Linked components retain their terms. Human foundations remain external. 
 
 ## 1. The localized estimate
 
@@ -424,4 +424,4 @@ The converse criterion gives that index. Letting \(\varepsilon\) decrease proves
 
 ![An exact transported complex weight and the frequency-shell powers used in the finite quarter bootstrap.](figures/transported-weight-and-shell-powers.svg)
 
-The [generator](figures/build_figure.py), [finite checks](model-check.json), source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the complete argument. [Escape regularity and semi-global solutions](../20261015-escape-regularity-and-solvability/escape-arcs-regularity-and-semiglobal-solutions.html) uses this constant-comparison theorem. [The trapping criterion](../20261015-trapped-characteristics-and-principal-type/trapped-characteristics-and-the-escape-criterion.html) gives the equivalent global geometry with its explicit stationary-point convention.
+[Computational material](figures/build_figure.py) accompanies the text. [Escape regularity and semi-global solutions](../20261015-escape-regularity-and-solvability/escape-arcs-regularity-and-semiglobal-solutions.html) uses this constant-comparison theorem. [The trapping criterion](../20261015-trapped-characteristics-and-principal-type/trapped-characteristics-and-the-escape-criterion.html) gives the equivalent global geometry with its explicit stationary-point convention.

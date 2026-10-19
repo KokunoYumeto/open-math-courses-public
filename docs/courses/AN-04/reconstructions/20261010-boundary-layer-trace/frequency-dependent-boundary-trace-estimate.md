@@ -344,4 +344,4 @@ The principal cross block has vanished, but the first-order term remains. It map
 
 The right panel plots \(\psi(s)/4=1-3s/2\) and \(27s(1-s)^2/4\), for \(0\le s\le1\). The rescalings are stated in the legend so both exact kernels are legible. The actual constants in the proof use the unscaled kernels, whose squared integrals are \(4\) and \(1/105\). The sign change in \(\psi\) is necessary to cancel the unknown first derivative.
 
-Independent exposition, solutions and figure: **CC0-1.0**. Linked components retain their terms. Required human foundations in the proof map remain external; internal P514 closure of this export is unclaimed. The full AN-04 goal remains active, including the combined weighted reverse estimate, general energy representation and all other outstanding course obligations.
+Independent exposition, solutions and figure: **CC0-1.0**. Linked components retain their terms. Some prerequisite proofs are external readings linked by the proof index. The boundary trace estimate alone does not represent an arbitrary energy solution by an Airy field.

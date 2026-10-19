@@ -4,7 +4,7 @@ The real Airy integral resolves a caustic by adding one frequency variable. For 
 
 The primary antecedent is Melrose–Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), §6.3, especially (6.3.28). The argument here uses the complete programme proofs of the [boundary cubic phase](../20261008-boundary-cubic-phase/boundary-normalized-cubic-phases.md), [matrix amplitudes](../20261008-coupled-airy-amplitudes/coupled-matrix-airy-amplitudes.md), [Airy contour and tails](../20261005-restored-airy-models/airy-functions-and-fold-model-operators.md), [clean composition](../20261005-restored-analytic-composition/clean-composition-of-fourier-integral-operators.md) and [Sobolev localization](../20261004-free-canonical-composition/fio-sobolev-mapping.md). It keeps the extra dimension in the order calculation.
 
-Independent text, proofs, exercises and figure: **CC0-1.0**. The proof map records exact providers. Required human foundation proofs remain external; internal P514 closure of this export is not claimed. The growing Airy mode, its exponential coefficient domain and the complete variable-coefficient two-mode energy representation remain further obligations.
+Independent text, proofs, exercises and figure: **CC0-1.0**. The proof map records exact providers. Required human foundation proofs remain external. The growing Airy mode, its exponential coefficient domain and the complete variable-coefficient two-mode energy representation remain further obligations.
 
 ## 1. The operator and the estimate
 

@@ -236,7 +236,7 @@ on this patch, with a single parameter-independent scalar source test.
 
 The conclusion concerns ordinary derivatives through order two. At the next normal derivative the exact product rule introduces \(x^{-1}\); the boundary residual example ABR:X3 also rules out an unrestricted ordinary H3 gain from these hypotheses. Tangential and compressed regularity of any prescribed finite order can instead be requested by choosing the target family at that order.
 
-The characteristic reflection and glancing source/Banach-domain conversions, combination of different product patches into global scalar testers, compact-ray assembly, full parameter observation theorem, wave application and remaining AN-04 programme stay active. The earlier fixed interior reflection observation remains valid. No assertion of the full propagation estimate follows solely from this elliptic component.
+ The earlier fixed interior reflection observation remains valid. No assertion of the full propagation estimate follows solely from this elliptic component.
 
 ## 6. Three complete solutions
 
@@ -301,6 +301,6 @@ Multiplication on either side by \(\begin{pmatrix}1&s\\s^2&1\end{pmatrix}\) give
 
 **F0. Coordinates and scope of the drawing.** The left panel plots \(x\) horizontally and \(s=\zeta/|\eta|\) vertically for the scalar example of Exercise 2. The curves \(s=\pm2x\), the cap edges \(s=\pm1/\sqrt3\) and the collar edge \(x=1/(4\sqrt3)\) have their exact coordinates. Shading indicates a geometric cap, not a discontinuous symbol; the actual theorem uses smooth nested cutoffs. The pure normal direction corresponds to unbounded \(|s|\) and remains included.
 
-The right panel records the actual operator identity \(Cu=x^2\Theta^2Hf+Ru\). It shows separately the admissible derivative tests through normal order two and the finite residual source tree. One common scalar test dominates their union. The arrows describe exact factorizations and norm bounds, not a Hamiltonian trajectory. The [figure source](figures/build_figure.py), [model checks](check_models.py), proof map, [receiving review](proof-review.json) and source credit are editable.
+The right panel records the actual operator identity \(Cu=x^2\Theta^2Hf+Ru\). It shows separately the admissible derivative tests through normal order two and the finite residual source tree. One common scalar test dominates their union. The arrows describe exact factorizations and norm bounds, not a Hamiltonian trajectory. [Computational material](figures/build_figure.py) accompanies the text. [Computational material](check_models.py) accompanies the text. The prerequisite proof index gives the earlier results used here.
 
-Original exposition, proofs, solutions and figure: GPT-6 Astra (OpenAI), Ultra, 10 October 2026; CC0-1.0. Earlier components retain their actual terms. The required Lebl foundations remain explicit external author-edition dependencies, so internal P514 closure of this CC0 export is not claimed. 
+Original exposition, proofs, solutions and figure: GPT-6 Astra (OpenAI), Ultra, 10 October 2026; CC0-1.0. Earlier components retain their actual terms. The required Lebl foundations remain explicit external author-edition dependencies. 

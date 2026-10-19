@@ -1,8 +1,8 @@
 # The de Rham functor
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Citation, navigation and notation corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; the mathematical statements, proofs and solutions are preserved.*
+
 
 A connection gives a differential on forms with coefficients. Its horizontal sections are the first part of that complex, but a singular differential system can also contribute higher cohomology. The de Rham functor retains the whole complex. We compute it at a puncture, prove its compatibility with proper direct images, and distinguish the information retained by ordinary sheaves from the information lost at an irregular boundary.
 

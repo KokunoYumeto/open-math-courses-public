@@ -4,7 +4,7 @@ An incoming solution should be constructed from interior Cauchy data. Requiring 
 
 The construction of an interior solution followed by a boundary correction is motivated by Melrose–Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), Section 7.4. The proofs below retain arbitrary smooth complex matrix lower terms, rough energy slices, the exact time-interface distribution and the weak Robin trace. The scalar Cauchy theorem used in the construction is proved in [HC](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.html); it is not silently applied to a system.
 
-Independent exposition, examples and illustration: **CC0-1.0**. Exact providers are in the proof map, including the explicitly external Lebl foundations. Internal P514 closure of this export is not claimed. The final section states precisely when the Airy comparison applies; it does not presume that all boundary data lie in one glancing cone.
+Independent exposition, examples and illustration: **CC0-1.0**. Exact providers are in the proof map, including the explicitly external Lebl foundations.  The final section states precisely when the Airy comparison applies; it does not presume that all boundary data lie in one glancing cone.
 
 ## 1. The complete interior matrix equation
 
@@ -212,7 +212,7 @@ The input in the second formula is the \(D_q\)-conormal datum, so the factor \(-
 \]
 In particular the displayed Airy correction inherits local \(H^1\) membership from the actual \(w\); no sharp input-to-energy bound was assumed. The construction uses one stable full-space incoming solution and one boundary correction. It does not require the two normalized Airy coefficients excluded by AES:E9.
 
-For a general solution, IC20–IC24 hold in the stated \(L^2\)-interior-source class, but the complete-data cone hypothesis in C8 is not automatic. A source or boundary remainder that is merely smooth at one covector is insufficient for TBU's full dependence-region comparison. Nor does WSL's general natural-dual lift automatically supply the \(L^2\) source assumed in IC15: its remaining tangential derivatives have their explicitly weaker order. Microlocal source reduction, localization of incoming data and exclusion of the complementary boundary response remain necessary for the full strict-diffraction theorem. IC12 is the sharp ordinary Cauchy energy-scale estimate; it is not the unfinished sharp Fourier–Airy mapping estimate.
+For a general solution, IC20–IC24 hold in the stated \(L^2\)-interior-source class, but the complete-data cone hypothesis in C8 is not automatic. A source or boundary remainder that is merely smooth at one covector is insufficient for TBU's full dependence-region comparison. Nor does WSL's general natural-dual lift automatically supply the \(L^2\) source assumed in IC15: its remaining tangential derivatives have their explicitly weaker order. Microlocal source reduction, localization of incoming data and exclusion of the complementary boundary response remain necessary for the full strict-diffraction theorem. IC12 is the sharp ordinary Cauchy energy-scale estimate; it is not a sharp Fourier–Airy mapping estimate.
 
 ## 6. Three complete exercises
 

@@ -6,7 +6,7 @@ All manifolds here are Hausdorff and second countable, smooth and without bounda
 
 [Compactness and finite calculus](../reconstructions/20261004-free-stationary-phase/prerequisite-completions.md), [integration with all compact parameters](../reconstructions/20261004-free-stationary-phase/integration-prerequisite-completions.md), [real powers, logarithms and exponentials](../reconstructions/20261004-free-stationary-phase/exponential-prerequisite-completions.md), and the [full trigonometric proofs](../reconstructions/20261004-free-stationary-phase/exponential-prerequisite-completions.md) supply the scalar calculations. The [Hamilton identities](../reconstructions/20261005-restored-phase-space/phase-space-and-generating-families.md) and [normalized characteristic lifts](../reconstructions/20261005-restored-compact-solvability/compact-set-solvability-from-characteristic-escape.md) give the exact symplectic convention and all-real-order reduction. We supply the global quotient, affine averaging, invariant-radius and relation arguments here; their [proof map](../reconstructions/20261006-restored-global-flow/proof-map.json) connects the exact earlier proofs.
 
-Self-checked by the writing AI.
+
 
 ## 1. Three descriptions of a global flow
 
@@ -227,7 +227,7 @@ Its coordinates have dimension \(2+(n-1)+(n-1)=2n\). The two transverse symplect
 
 Hörmander IV, Definition 26.1.10, Lemmas 26.1.11–26.1.12 and their two remarks, and Proposition 26.1.13, printed 67–69/PDF 78–80, supply the mathematical antecedents. The quotient dimension, proper embedding, smooth affine section, all symbol derivatives and ambient zero-section exclusion are developed here in full, using the exact written programme foundations. The exposition and exercises are independently written; no source error or new theorem is claimed. The cited AN-03 works retain their own component terms and source credit. Their expression and assets are not reproduced here. Original expression is eligible for the course's CC0 dedication.
 
-The next analytic step is to construct a Fourier-integral parametrix on this relation and solve its successive symbol transport equations. The geometric and scalar transport results proved here supply the global coordinates for that construction.
+The [global parametrix construction](../reconstructions/20261006-restored-global-signed/global-signed-parametrices-from-local-delayed-errors.html) uses these global coordinates and the successive symbol transport equations.
 
 
 The new exact-model drawing and its reproducible source are original programme work under CC0. Its embedded font retains the DejaVu licence.

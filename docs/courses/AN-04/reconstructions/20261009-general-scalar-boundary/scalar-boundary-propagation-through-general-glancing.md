@@ -6,7 +6,7 @@ The quadratic form of a scalar differential operator need not be a wave metric. 
 
 The primary antecedent is Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, §24.5, Proposition 24.5.1, Lemma 24.5.2 and Theorem 24.5.3, printed pages 455–459. Our proof uses the actual normal graph identity, characteristic completion and finite-order localization already established in the programme. A separate parameter in the flat cutoff lets every Sobolev step use the same geometric region.
 
-The earlier [scalar reflection theorem](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html), [rough-data normal recovery](../20261007-elliptic-boundary-wavefront/elliptic-boundary-wavefront.html), [finite-order Dirichlet comparison](../20261009-robin-diffraction-comparison/robin-diffraction-by-dirichlet-comparison.html), [characteristic completion](../20261007-strict-diffraction-symbols/characteristic-squares-and-diffractive-commutants.html) and [generalized-flow construction](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) retain their exact hypotheses. The proof map binds their current versions. Required Lebl proofs remain external; internal P514 closure of this export is not claimed.
+The earlier [scalar reflection theorem](../20261007-restored-boundary-reflection/boundary-reflection-preparation.html), [rough-data normal recovery](../20261007-elliptic-boundary-wavefront/elliptic-boundary-wavefront.html), [finite-order Dirichlet comparison](../20261009-robin-diffraction-comparison/robin-diffraction-by-dirichlet-comparison.html), [characteristic completion](../20261007-strict-diffraction-symbols/characteristic-squares-and-diffractive-commutants.html) and [generalized-flow construction](../20261007-restored-generalized-glancing/generalized-glancing-flow-preparation.html) retain their exact hypotheses. The proof map binds their current versions. Required Lebl proofs remain external.
 
 ## 1. The scalar problem and the exact conclusion
 
@@ -408,7 +408,7 @@ Choose compatible local positive homogeneous normalizations on a compact phase n
 
 Successive choices can make a maximal continuation, exactly by the endpoint-capacity construction GSR:T6 on each nonexceptional region; that construction uses local extension and a bounded parameter on finite intervals, not its later physical-time argument. The finite compact exit-buffer argument is valid here too. We do **not** infer that an infinite-parameter ray must leave every compact set: the general scalar problem has no global monotone physical clock. Periodic motion or approach to an exceptional stationary normalized state is not ruled out by this theorem.
 
-This proves the general scalar Dirichlet propagation of C0 with its radial qualification. The separate construction of distributions on prescribed limiting broken rays, sharp Airy energy mapping and all other remaining HIII21/23/24 and HIV25/26 obligations remain active.
+This proves scalar Dirichlet propagation of C0 with its radial qualification. Propagation is distinct from constructing distributions on prescribed limiting broken rays and from sharp Airy energy mapping.
 
 ## 13. Three solved exercises
 

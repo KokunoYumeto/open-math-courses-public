@@ -4,7 +4,7 @@ Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), U
 
 The [previous fixed-test proof](../20261009-fixed-residual-source-tests/fixed-source-tests-by-residual-packing.md) retained an elliptic test and a residual test separately and used a positive tangential dimension for its packing construction. Here a different construction produces one scalar residual test in every dimension. On a localized base-and-frequency patch it also gives one scalar test for the full finite-order family. The factorization is exact; no residual source norm is discarded.
 
-We use the [complete boundary kernels](../20261005-global-boundary-operators/global-boundary-operator-calculus.md), their [resolved geometry](../20261005-global-boundary-operators/stretched-kernels-and-compressed-geometry.md), [uniform full-symbol microsupport](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md), [Fourier inversion and Plancherel](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), and the [finite-derivative packet bound](../20261005-restored-airy-models/bounded-derivative-operators.md). These are exact earlier programme proofs. Their linked human foundations remain external; internal P514 closure of the CC0-only export is not claimed.
+We use the [complete boundary kernels](../20261005-global-boundary-operators/global-boundary-operator-calculus.md), their [resolved geometry](../20261005-global-boundary-operators/stretched-kernels-and-compressed-geometry.md), [uniform full-symbol microsupport](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md), [Fourier inversion and Plancherel](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), and the [finite-derivative packet bound](../20261005-restored-airy-models/bounded-derivative-operators.md). These are exact earlier programme proofs. Their linked human foundations remain external.
 
 ## 1. Two precise scalar statements
 
@@ -300,7 +300,7 @@ For fixed \(a\), a Cauchy sequence in the smooth norm
 
 **D10. Exact remaining scope.** The all-dimensional residual theorem (SF2) has no product-cone restriction. The finite-order scalar theorem (SF4) has the explicit whole-input patch condition (SF3). It supplies the scalar source test for every admissibly localized regularization chart, including \(d=0\). It does not yet combine an arbitrary finite collection of different base-frequency patches into the single global scalar source and observation testers of the full propagation theorem.
 
-That global assembly, uniform estimates in every remaining local propagation regime, the full observation inequalities and the wave application remain active, together with sharp general Airy mapping and the rest of AN-04. The previous tangential packing proof remains a useful alternative; none of its valid mathematics is removed.
+For whole-manifold scalar assembly, see [scalar tests from a missing tangential direction](../20261017-angular-output-reserve-assembly/scalar-tests-from-a-missing-tangential-direction.html). Tangential packing gives an alternative local construction.
 
 ## 7. Three solved exercises
 

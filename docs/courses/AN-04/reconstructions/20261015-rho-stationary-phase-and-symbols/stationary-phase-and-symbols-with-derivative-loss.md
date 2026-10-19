@@ -4,9 +4,9 @@ A symbol can oscillate more rapidly as its frequency grows. Stationary phase mus
 
 Independent exposition, proofs, three solved exercises and reproducible illustration: GPT-6.1 Sol (OpenAI), Ultra, 15 October 2026. CC0-1.0. Linked earlier components retain their terms.
 
-The antecedent is the exact approved copy of Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, §25.1, especially the general-symbol discussion on printed page 16, and the remainder observation on page 24.  Our normalization retains the proved density degree \(m+n/4\). The displayed general-symbol quotient on page 16 prints \(m+n/2\); Exercise X3 derives the degree and identifies this local discrepancy without asserting an official publisher correction.
+The antecedent is the copy of Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, §25.1, especially the general-symbol discussion on printed page 16, and the remainder observation on page 24.  Our normalization retains the proved density degree \(m+n/4\). The displayed general-symbol quotient on page 16 prints \(m+n/2\); Exercise X3 derives the degree and identifies this local discrepancy without asserting an official publisher correction.
 
-Use the complete [homogeneous symbol transport proofs](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), [quadratic stationary phase](../20261004-free-stationary-phase/quadratic-stationary-phase.md), [parameter Morse reduction](../20261004-free-stationary-phase/parameter-morse-reduction.md), [general oscillatory existence and wavefront bounds](../20261005-restored-oscillatory/oscillatory-distributions-and-order.md), [phase equivalence and stabilization](../20261005-restored-phase-equivalence/homogeneous-phase-equivalence-and-stabilization.md), and [Gaussian lines and densities](../20261005-restored-gaussian-symbols/gaussian-lines-and-invariant-symbols.md). Their exact current versions and complete dependencies are in the proof map. Human foundations remain explicitly external; internal P514 closure of this export is not claimed.
+Use the complete [homogeneous symbol transport proofs](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), [quadratic stationary phase](../20261004-free-stationary-phase/quadratic-stationary-phase.md), [parameter Morse reduction](../20261004-free-stationary-phase/parameter-morse-reduction.md), [general oscillatory existence and wavefront bounds](../20261005-restored-oscillatory/oscillatory-distributions-and-order.md), [phase equivalence and stabilization](../20261005-restored-phase-equivalence/homogeneous-phase-equivalence-and-stabilization.md), and [Gaussian lines and densities](../20261005-restored-gaussian-symbols/gaussian-lines-and-invariant-symbols.md). Their exact current versions and complete dependencies are in the proof map. Human foundations remain explicitly external.
 
 ## 1. Fix the class and the supporting cone
 
@@ -428,7 +428,7 @@ The integrals of odd powers vanish by \(s\mapsto s+\pi\), and
 
 **Solution.** R0 gives \(m=r+n/4\), and the half-density frame contributes \(n/2\), so \(\nu=r+n/2=m+n/4\). With \(H=0\), \(\widehat{\delta_0}=1\), hence the normalized coefficient in (RS21) is \((2\pi)^{-n/4}\), of order zero. The point mass has \(m=n/4\), and its half-density symbol has \(\nu=n/2\). Replacing \(\nu\) by \(m+n/2\) would incorrectly give \(3n/4\).
 
-This checks the discrepancy in the approved page-16 display directly. The same page defines the coefficient by \(S_\rho^{m-n/4}\), and the adjacent Theorem 25.1.10 uses the symbol degree \(m+n/4\). Our quotient (RS28) follows the proved degree; the source citation remains valid.
+This checks the discrepancy in the page-16 display directly. The same page defines the coefficient by \(S_\rho^{m-n/4}\), and the adjacent Theorem 25.1.10 uses the symbol degree \(m+n/4\). Our quotient (RS28) follows the proved degree; the source citation remains valid.
 
 ## 14. Read the scales and the exact remainder
 
@@ -449,4 +449,4 @@ This lesson proves general-\(\rho\) real stationary phase with every symbol deri
 
 The general-\(\rho\) FIO composition and subprincipal transport are proved in [clean composition and transport](../20261015-rho-fio-composition-and-transport/clean-fourier-integral-composition-and-rho-transport.html#4-the-clean-geometry-and-the-theorem), Sections 4–14, and the continuity ranges in [graph and corank continuity](../20261015-rho-fio-continuity/general-symbol-graph-and-corank-continuity.html#3-graph-normalization-and-a-full-left-form), Sections 3–12. The iterated tests of order \(2\rho-1\) and both printed scaled cutoff families are treated in [iterated tests and frequency packets](../20261015-rho-iterated-packets/iterated-tests-and-frequency-packet-regularity.html#1-state-the-endpoint-and-the-vanishing-condition-exactly). That proof gives the precise fixed-endpoint counterexample and the exact frequency-cell replacement. These separate arguments are not inputs to the proofs above. The 92 human providers remain external to this CC0 export and have exact [earlier C10/C20 programme proof routes](../20261004-free-stationary-phase/proof-map.html).
 
-See source credit, [proof review](proof-review.json), [finite model checks](model-check.json) and [reader checks](reader-check.json).  
+  

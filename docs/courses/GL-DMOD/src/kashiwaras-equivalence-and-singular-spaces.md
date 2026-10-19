@@ -1,6 +1,6 @@
 # Kashiwara's equivalence and D-modules on singular spaces
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A module of distributions supported at a point contains the delta vector and all its normal derivatives. Kashiwara's theorem says that this is the general shape of a differential-operator module supported on a smooth closed subvariety: the normal derivatives carry no extra choice. After proving the theorem, we will use smooth ambient varieties to define modules on a singular variety and prove that the resulting category does not depend on the ambient variety.
 

@@ -396,4 +396,4 @@ The symbol inequality now has an actual weak-form realization, with the exact lo
 
 The remaining propagation proof must control the two quadratic forms \(\mathcal A_\alpha[u]\) by the full normal-commutant identity and its regularizer errors. The first-order normal commutant itself need not preserve \(H^1_0\), and an \(H^1\) solution does not automatically have a normal derivative trace. These issues still require an argument. It must retain the natural-dual source, both weak domains, time-dependent coefficients and arbitrary complex lower matrices, and it must produce one common smooth neighborhood. The mixed norm established here must also be connected to the required energy-b front at that scope.
 
-The full AN-04 objective remains active, including strict diffraction, full singular boundary trajectories and all remaining assigned chapters.  This supplement has no public-release authorization.
+The prerequisite proof index gives the earlier results used here.

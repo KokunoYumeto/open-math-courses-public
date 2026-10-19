@@ -8,7 +8,7 @@ Original text: CC0.
 
 ## H0. Earlier proofs and notation
 
-The retained selections below are from AN03-P004, *Banach estimates, quotient spaces and compact parameter arguments*: Section 5 before its unrelated editorial addendum, Section 15.2, and Sections 17.1–17.3. Their mathematical bodies and original labels are unchanged. Section references inside those extracts identify their AN-03 source; the exact included replacements are specified here.
+The retained selections below are from AN03-P004, *Banach estimates, quotient spaces and compact parameter arguments*: Section 5 before its unrelated editorial addendum, Section 15.2, and Sections 17.1–17.3. Section references inside those extracts identify their AN-03 source; the exact included replacements are specified here.
 
 The [measure proof M0–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) proves the chosen Zorn axiom's selection consequence, real and complex integration, completed Lebesgue measure, monotone and dominated convergence, product integration, affine Jacobians, completeness and compact smooth density. LP4 in the retained text is exactly M4's product formula; LP5 is its already proved affine change of variables. General-measure statements below assume a measure and its defining countable additivity; the same simple-function supremum proof in M3 supplies convergence on that measure. The Cauchy receiver uses only Lebesgue measure on a finite real interval.
 

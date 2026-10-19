@@ -1,0 +1,409 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The trace form and the residue data</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (A singular surface with free tangent sheaf)</a><a href="traces-residues-and-vector-bundles-on-the-projective-line.html">Previous lesson</a><a href="gluing-vector-fields-the-first-two-orders.html">Next lesson</a><a href="src/the-trace-form-and-the-residue-data.md">Editable source</a></nav><main><article><h1 id="the-trace-form-and-the-residue-data">The trace form and the residue data</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The vector fields of the next lesson are prescribed to first order by a pair <span class="math" data-tex="\(P=(P_1,P_2)\)">\(P=(P_1,P_2)\)</span> of meromorphic sections of the line bundle <span class="math" data-tex="\(\theta=2L\)">\(\theta=2L\)</span> on the curve <span class="math" data-tex="\(C\)">\(C\)</span> of genus 21, with simple poles at the six marked points. Their residues must satisfy a pointwise normalization at each point and one identity summed over all six. This lesson constructs <span class="math" data-tex="\(P\)">\(P\)</span> (Proposition 3.2). The constraint on the residues comes from a quadratic space <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> of dimension two, defined by the trace form of the degree-four map <span class="math" data-tex="\(f:C\to\mathbb P^1\)">\(f:C\to\mathbb P^1\)</span> (Section 1). Section 2 identifies <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span>, with its scalar and sign, with the quadratic space <span class="math" data-tex="\(H^0(\Gamma,\Phi)\)">\(H^0(\Gamma,\Phi)\)</span> of the elliptic curve, through principal parts at the contact points; the six vectors chosen on the elliptic curve then prescribe the residues.</p>
+<p><strong>Prerequisites.</strong> <a href="an-elliptic-curve-on-the-quadric.html"><em>An elliptic curve on the quadric</em></a>, <a href="a-curve-of-genus-21-with-a-fourth-root-of-its-canonical-bundle.html"><em>A curve of genus 21 with a fourth root of its canonical bundle</em></a> and <a href="traces-residues-and-vector-bundles-on-the-projective-line.html"><em>Traces, residues and vector bundles on the projective line</em></a>, with their notation; in particular Proposition 3.3 of the second and Lemma 3.1, Proposition 3.2, Theorem 4.2 and Proposition 5.1 of the third.</p>
+<p><strong>Setting.</strong> The curve <span class="math" data-tex="\(C\subset\Sigma\)">\(C\subset\Sigma\)</span>, the divisor <span class="math" data-tex="\(Z=q_1+\cdots+q_6\)">\(Z=q_1+\cdots+q_6\)</span>, the canonical section <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(\mathcal O_C(Z)\)">\(\mathcal O_C(Z)\)</span>, the line bundles <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(L=H+Z\)">\(L=H+Z\)</span>, <span class="math" data-tex="\(\theta=2L\)">\(\theta=2L\)</span>, the isomorphism <span class="math" data-tex="\(4L\cong K_C\)">\(4L\cong K_C\)</span> normalized by (2.3) of the lesson on the curve of genus 21, and the basis <span class="math" data-tex="\(u=(u_1,u_2)\)">\(u=(u_1,u_2)\)</span> of <span class="math" data-tex="\(H^0(C,H)\)">\(H^0(C,H)\)</span> of Proposition 3.3 there. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda=\theta+H=3H+2Z,\\
+f:C\to\mathbb P^1\ \text{the map defined by }u,\\
+\eta_C=u_1\,du_2-u_2\,du_1\\
+\in H^0(C,K_C+2H).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Lambda=\theta+H=3H+2Z,\\
+f:C\to\mathbb P^1\ \text{the map defined by }u,\\
+\eta_C=u_1\,du_2-u_2\,du_1\\
+\in H^0(C,K_C+2H).
+\end{gathered}
+\]</span>
+The fixed isomorphism <span class="math" data-tex="\(2\Lambda=2H+4L\cong K_C+2H\)">\(2\Lambda=2H+4L\cong K_C+2H\)</span> is used throughout; through it, for local sections <span class="math" data-tex="\(T_1,T_2\)">\(T_1,T_2\)</span> of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, <span class="math" data-tex="\(T_1T_2/\eta_C\)">\(T_1T_2/\eta_C\)</span> is a meromorphic function. On <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> there are the logarithmic form <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, its residue <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the section <span class="math" data-tex="\(\eta_\Gamma\)">\(\eta_\Gamma\)</span>, the quadratic form <span class="math" data-tex="\(Q\)">\(Q\)</span> on <span class="math" data-tex="\(H^0(\Gamma,\Phi)^*\)">\(H^0(\Gamma,\Phi)^*\)</span>, the section <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> with divisor <span class="math" data-tex="\(Z\)">\(Z\)</span>, and the vectors <span class="math" data-tex="\(w_j\)">\(w_j\)</span>.</p>
+<h2 id="1-a-two-dimensional-quadratic-space">1. A two-dimensional quadratic space</h2>
+<p><strong>Lemma 1.1 (the trace form).</strong> Let <span class="math" data-tex="\(E=f_*\Lambda\)">\(E=f_*\Lambda\)</span>, a vector bundle of rank four on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>.</p>
+<ol>
+<li>The pairing <span class="math" data-tex="\(B(T_1,T_2)=\operatorname{Tr}(T_1T_2/\eta_C)\)">\(B(T_1,T_2)=\operatorname{Tr}(T_1T_2/\eta_C)\)</span> is a perfect symmetric pairing <span class="math" data-tex="\(E\otimes E\to\mathcal O_{\mathbb P^1}\)">\(E\otimes E\to\mathcal O_{\mathbb P^1}\)</span>.</li>
+<li><span class="math" data-tex="\(E\cong\mathcal O(3)\oplus\mathcal O^{\oplus2}\oplus\mathcal O(-3)\)">\(E\cong\mathcal O(3)\oplus\mathcal O^{\oplus2}\oplus\mathcal O(-3)\)</span>. Multiplication by <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span>, <span class="math" data-tex="\(\mathcal O(3)\to E\)">\(\mathcal O(3)\to E\)</span>, <span class="math" data-tex="\(s\mapsto\xi^2f^*s\)">\(s\mapsto\xi^2f^*s\)</span>, maps <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span> isomorphically onto a subbundle <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> that is a summand of this type, and <span class="math" data-tex="\(H^0(\mathcal P)=\xi^2H^0(C,3H)\)">\(H^0(\mathcal P)=\xi^2H^0(C,3H)\)</span>.</li>
+<li>On global sections <span class="math" data-tex="\(B\)">\(B\)</span> takes constant values; its radical is <span class="math" data-tex="\(\xi^2H^0(C,3H)\)">\(\xi^2H^0(C,3H)\)</span>, and it induces a nondegenerate symmetric form <span class="math" data-tex="\(\langle\ ,\ \rangle\)">\(\langle\ ,\ \rangle\)</span> on
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal W=H^0(C,\Lambda)/\xi^2H^0(C,3H),\\
+\dim\mathcal W=2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal W=H^0(C,\Lambda)/\xi^2H^0(C,3H),\\
+\dim\mathcal W=2 .
+\end{gathered}
+\]</span>
+For every <span class="math" data-tex="\(x\in\mathbb P^1\)">\(x\in\mathbb P^1\)</span>, evaluation is an isometry of <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> onto <span class="math" data-tex="\((\mathcal P^\perp/\mathcal P)_x\)">\((\mathcal P^\perp/\mathcal P)_x\)</span>.</li>
+<li>Let <span class="math" data-tex="\(q\in Z\)">\(q\in Z\)</span>. Choose a local frame <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>, a local frame <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and a parameter <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(q\)">\(q\)</span>, and write <span class="math" data-tex="\(\tau^2=s(z)\,dz\,\mathfrak f^2\)">\(\tau^2=s(z)\,dz\,\mathfrak f^2\)</span> and <span class="math" data-tex="\(\eta_C=\mathcal E(z)\,dz\,\mathfrak f^2\)">\(\eta_C=\mathcal E(z)\,dz\,\mathfrak f^2\)</span>. The functional <span class="math" data-tex="\(\ell_q:T\mapsto(T/\tau)(q)\)">\(\ell_q:T\mapsto(T/\tau)(q)\)</span> on <span class="math" data-tex="\(H^0(C,\Lambda)\)">\(H^0(C,\Lambda)\)</span> descends to <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span>, and for the dual form on <span class="math" data-tex="\(\mathcal W^*\)">\(\mathcal W^*\)</span>
+<span class="math math-display" data-tex="\[
+\ell_q^2=\frac{\mathcal E(q)}{s(q)}\ne0 .
+\tag{1.1}
+\]">\[
+\ell_q^2=\frac{\mathcal E(q)}{s(q)}\ne0 .
+\tag{1.1}
+\]</span></li>
+</ol>
+<p>Here the <em>dual form</em> on <span class="math" data-tex="\(\mathcal W^*\)">\(\mathcal W^*\)</span> is <span class="math" data-tex="\(\lambda\cdot\mu=\langle\lambda^\sharp,\mu^\sharp\rangle\)">\(\lambda\cdot\mu=\langle\lambda^\sharp,\mu^\sharp\rangle\)</span>, where <span class="math" data-tex="\(\lambda^\sharp\in\mathcal W\)">\(\lambda^\sharp\in\mathcal W\)</span> is defined by <span class="math" data-tex="\(\langle\lambda^\sharp,\cdot\rangle=\lambda\)">\(\langle\lambda^\sharp,\cdot\rangle=\lambda\)</span>; we write <span class="math" data-tex="\(\lambda^2=\lambda\cdot\lambda\)">\(\lambda^2=\lambda\cdot\lambda\)</span>. The reciprocal in (1.1) reflects the passage from <span class="math" data-tex="\(\langle\ ,\ \rangle\)">\(\langle\ ,\ \rangle\)</span> to the dual form.</p>
+<p><strong>Proof.</strong> (1) This is Proposition 5.1 of the lesson on traces, with <span class="math" data-tex="\(n=4\)">\(n=4\)</span>.</p>
+<p>(2) By Theorem 4.2 of the lesson on traces, <span class="math" data-tex="\(E\cong\bigoplus_i\mathcal O(a_i)\)">\(E\cong\bigoplus_i\mathcal O(a_i)\)</span>, and since <span class="math" data-tex="\(E\cong E^\vee\)">\(E\cong E^\vee\)</span> by (1), the <span class="math" data-tex="\(a_i\)">\(a_i\)</span> occur in pairs <span class="math" data-tex="\(\{a,-a\}\)">\(\{a,-a\}\)</span>. By the projection formula, <span class="math" data-tex="\(E(-k)=f_*(\Lambda-kH)\)">\(E(-k)=f_*(\Lambda-kH)\)</span>, and <span class="math" data-tex="\(H^0(\mathbb P^1,f_*B)=H^0(C,B)\)">\(H^0(\mathbb P^1,f_*B)=H^0(C,B)\)</span>. Proposition 3.3 of the lesson on the curve of genus 21 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h^0(E(-1))=h^0(C,\theta)=3,\\
+h^0(E(-2))=h^0(C,H+2Z)=2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+h^0(E(-1))=h^0(C,\theta)=3,\\
+h^0(E(-2))=h^0(C,H+2Z)=2 .
+\end{gathered}
+\]</span>
+A summand <span class="math" data-tex="\(\mathcal O(a)\)">\(\mathcal O(a)\)</span> with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> contributes <span class="math" data-tex="\(a\)">\(a\)</span> to the first number and <span class="math" data-tex="\(a-1\)">\(a-1\)</span> to the second, and a summand with <span class="math" data-tex="\(a\le0\)">\(a\le0\)</span> contributes nothing to either. Hence there is exactly one positive <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, equal to <span class="math" data-tex="\(3\)">\(3\)</span>; by the pairing there is exactly one negative one, <span class="math" data-tex="\(-3\)">\(-3\)</span>, and the remaining two are <span class="math" data-tex="\(0\)">\(0\)</span>. The map <span class="math" data-tex="\(\mathcal O(3)\to E\)">\(\mathcal O(3)\to E\)</span> given by <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span> is nonzero. Its components into <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> and <span class="math" data-tex="\(\mathcal O(-3)\)">\(\mathcal O(-3)\)</span> vanish, since <span class="math" data-tex="\(\operatorname{Hom}(\mathcal O(3),\mathcal O(b))=H^0(\mathcal O(b-3))=0\)">\(\operatorname{Hom}(\mathcal O(3),\mathcal O(b))=H^0(\mathcal O(b-3))=0\)</span> for <span class="math" data-tex="\(b\le0\)">\(b\le0\)</span>, and its component into <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span> is a nonzero constant. So its image <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is the summand <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span>, a subbundle. The pullback <span class="math" data-tex="\(H^0(\mathbb P^1,\mathcal O(3))\to H^0(C,3H)\)">\(H^0(\mathbb P^1,\mathcal O(3))\to H^0(C,3H)\)</span> is injective, and both spaces have dimension four (Proposition 3.3(3) there), so <span class="math" data-tex="\(H^0(\mathcal P)=\xi^2H^0(C,3H)\)">\(H^0(\mathcal P)=\xi^2H^0(C,3H)\)</span>.</p>
+<p>(3) The pairing of <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> with itself is a map <span class="math" data-tex="\(\mathcal O(6)\to\mathcal O\)">\(\mathcal O(6)\to\mathcal O\)</span>, hence zero, and the pairing of <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> with the summands <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is a map <span class="math" data-tex="\(\mathcal O(3)\to\mathcal O\)">\(\mathcal O(3)\to\mathcal O\)</span>, hence zero. By perfection, <span class="math" data-tex="\(\mathcal P^\perp=\ker(E\to\mathcal P^\vee)\)">\(\mathcal P^\perp=\ker(E\to\mathcal P^\vee)\)</span> is a subbundle of rank three; it contains the rank-three subbundle <span class="math" data-tex="\(\mathcal P\oplus\mathcal O^{\oplus2}\)">\(\mathcal P\oplus\mathcal O^{\oplus2}\)</span>, so they are equal, the quotient of one by the other being a torsion subsheaf of the torsion-free sheaf <span class="math" data-tex="\(E/(\mathcal P\oplus\mathcal O^{\oplus2})\)">\(E/(\mathcal P\oplus\mathcal O^{\oplus2})\)</span>. Since <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is isotropic and <span class="math" data-tex="\((\mathcal P^\perp)^\perp=\mathcal P\)">\((\mathcal P^\perp)^\perp=\mathcal P\)</span>, the form induced on <span class="math" data-tex="\(\mathcal P^\perp/\mathcal P\cong\mathcal O^{\oplus2}\)">\(\mathcal P^\perp/\mathcal P\cong\mathcal O^{\oplus2}\)</span> is perfect; it is a nondegenerate constant symmetric matrix, because <span class="math" data-tex="\(\operatorname{Hom}(\mathcal O,\mathcal O)=\mathbb C\)">\(\operatorname{Hom}(\mathcal O,\mathcal O)=\mathbb C\)</span>. The quotient <span class="math" data-tex="\(E/\mathcal P^\perp\cong\mathcal O(-3)\)">\(E/\mathcal P^\perp\cong\mathcal O(-3)\)</span> has no global sections, so <span class="math" data-tex="\(H^0(E)=H^0(\mathcal P^\perp)\)">\(H^0(E)=H^0(\mathcal P^\perp)\)</span>; and <span class="math" data-tex="\(H^1(\mathcal P)=0\)">\(H^1(\mathcal P)=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal W&amp;=H^0(E)/H^0(\mathcal P)\\
+&amp;=H^0(\mathcal P^\perp/\mathcal P)\cong\mathbb C^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal W&amp;=H^0(E)/H^0(\mathcal P)\\
+&amp;=H^0(\mathcal P^\perp/\mathcal P)\cong\mathbb C^2 ,
+\end{aligned}
+\]</span>
+the values of <span class="math" data-tex="\(B\)">\(B\)</span> on global sections are constants, <span class="math" data-tex="\(H^0(\mathcal P)\)">\(H^0(\mathcal P)\)</span> lies in the radical, and the induced form on <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> is the constant nondegenerate form, which evaluation at any <span class="math" data-tex="\(x\)">\(x\)</span> carries isometrically to the fibre.</p>
+<p>(4) Let <span class="math" data-tex="\(x=f(q)\)">\(x=f(q)\)</span>. By Lemma 1.1 of the lesson on traces, the fibre <span class="math" data-tex="\(E_x\)">\(E_x\)</span> is the direct sum of its pieces at the points over <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(B_x\)">\(B_x\)</span> is the orthogonal sum of their forms. Since <span class="math" data-tex="\(f\)">\(f\)</span> is unramified at <span class="math" data-tex="\(q\)">\(q\)</span> (Proposition 3.3(2) of the lesson on the curve of genus 21), the piece at <span class="math" data-tex="\(q\)">\(q\)</span> is the line <span class="math" data-tex="\(\Lambda_q\)">\(\Lambda_q\)</span>, with form
+<span class="math math-display" data-tex="\[
+B(t_1\tau,t_2\tau)=t_1t_2\,\frac{s(q)}{\mathcal E(q)} .
+\]">\[
+B(t_1\tau,t_2\tau)=t_1t_2\,\frac{s(q)}{\mathcal E(q)} .
+\]</span>
+The functional <span class="math" data-tex="\(\ell_q\)">\(\ell_q\)</span> on <span class="math" data-tex="\(E_x\)">\(E_x\)</span> is the coefficient at <span class="math" data-tex="\(q\)">\(q\)</span>, zero on the other pieces. Its metric dual is <span class="math" data-tex="\(v=(\mathcal E(q)/s(q))\,\tau(q)\)">\(v=(\mathcal E(q)/s(q))\,\tau(q)\)</span>, since <span class="math" data-tex="\(B(v,\tau(q))=1\)">\(B(v,\tau(q))=1\)</span>, and <span class="math" data-tex="\(B(v,v)=\mathcal E(q)/s(q)\)">\(B(v,v)=\mathcal E(q)/s(q)\)</span>. The functional <span class="math" data-tex="\(\ell_q\)">\(\ell_q\)</span> vanishes on <span class="math" data-tex="\(\mathcal P_x\)">\(\mathcal P_x\)</span>, whose elements are <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span> times sections and vanish at <span class="math" data-tex="\(q\)">\(q\)</span>; so <span class="math" data-tex="\(v\in\mathcal P_x^\perp\)">\(v\in\mathcal P_x^\perp\)</span>, and <span class="math" data-tex="\(\ell_q\)">\(\ell_q\)</span> descends to <span class="math" data-tex="\((\mathcal P^\perp/\mathcal P)_x\)">\((\mathcal P^\perp/\mathcal P)_x\)</span>, with metric dual the class of <span class="math" data-tex="\(v\)">\(v\)</span> and the same square. Through the isometry of (3), this is (1.1) on <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span>. Finally <span class="math" data-tex="\(\mathcal E(q)\ne0\)">\(\mathcal E(q)\ne0\)</span> because <span class="math" data-tex="\(\eta_C\)">\(\eta_C\)</span> vanishes only at ramification points (Section 5 of the lesson on traces), and <span class="math" data-tex="\(s(q)\ne0\)">\(s(q)\ne0\)</span> because <span class="math" data-tex="\(\tau^2\)">\(\tau^2\)</span> is a frame. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-identification-by-principal-parts">2. Identification by principal parts</h2>
+<p><strong>Lemma 2.1 (comparison with the elliptic curve).</strong> There is an isomorphism
+<span class="math math-display" data-tex="\[
+\iota:\mathcal W\xrightarrow{\ \sim\ }H^0(\Gamma,\Phi)
+\]">\[
+\iota:\mathcal W\xrightarrow{\ \sim\ }H^0(\Gamma,\Phi)
+\]</span>
+such that, for every <span class="math" data-tex="\(T\in H^0(C,\Lambda)\)">\(T\in H^0(C,\Lambda)\)</span>, the principal parts of <span class="math" data-tex="\(T/\xi^2\)">\(T/\xi^2\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span> along <span class="math" data-tex="\(2Z\)">\(2Z\)</span> and of <span class="math" data-tex="\(\iota([T])/\beta^2\)">\(\iota([T])/\beta^2\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> along <span class="math" data-tex="\(2Z\)">\(2Z\)</span> define the same functional on the common jet space <span class="math" data-tex="\(H^0(2Z,(\Gamma+F)|_{2Z})\)">\(H^0(2Z,(\Gamma+F)|_{2Z})\)</span> through residues. It carries the projective evaluation at each <span class="math" data-tex="\(q_j\)">\(q_j\)</span> on <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> to the projective evaluation at <span class="math" data-tex="\(q_j\)">\(q_j\)</span> on <span class="math" data-tex="\(H^0(\Gamma,\Phi)\)">\(H^0(\Gamma,\Phi)\)</span>. Its dual <span class="math" data-tex="\(\iota^*:H^0(\Gamma,\Phi)^*\to\mathcal W^*\)">\(\iota^*:H^0(\Gamma,\Phi)^*\to\mathcal W^*\)</span> is an isometry from <span class="math" data-tex="\(Q\)">\(Q\)</span> to the dual trace form.</p>
+<p><strong>Proof.</strong> <em>The common jet space.</em> Put <span class="math" data-tex="\(N_\Sigma=\Gamma+F=\mathcal O(3,2)\)">\(N_\Sigma=\Gamma+F=\mathcal O(3,2)\)</span>, <span class="math" data-tex="\(N_\Gamma=N_\Sigma|_\Gamma\)">\(N_\Gamma=N_\Sigma|_\Gamma\)</span>, and <span class="math" data-tex="\(D=2Z\)">\(D=2Z\)</span>. By Proposition 1.4 of the lesson on the curve of genus 21, <span class="math" data-tex="\(D\)">\(D\)</span> is the same subscheme of length twelve of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> whether regarded on <span class="math" data-tex="\(C\)">\(C\)</span> or on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; put <span class="math" data-tex="\(\mathcal J=H^0(D,N_\Sigma|_D)\)">\(\mathcal J=H^0(D,N_\Sigma|_D)\)</span>, of dimension twelve. The adjunction isomorphism <span class="math" data-tex="\(\mathcal O(6,2)|_C\cong K_C\)">\(\mathcal O(6,2)|_C\cong K_C\)</span> gives <span class="math" data-tex="\(N_\Sigma|_C\cong K_C-3H\)">\(N_\Sigma|_C\cong K_C-3H\)</span>, and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> trivializes <span class="math" data-tex="\(K_\Gamma\)">\(K_\Gamma\)</span>, so <span class="math" data-tex="\(K_\Gamma+N_\Gamma\cong N_\Gamma\)">\(K_\Gamma+N_\Gamma\cong N_\Gamma\)</span>. Both jet spaces <span class="math" data-tex="\(\mathrm J_D(K_C-3H)\)">\(\mathrm J_D(K_C-3H)\)</span> and <span class="math" data-tex="\(\mathrm J_D(K_\Gamma+N_\Gamma)\)">\(\mathrm J_D(K_\Gamma+N_\Gamma)\)</span> are thereby <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>.</p>
+<p><em>Principal parts.</em> By Lemma 3.1 of the lesson on traces, the residue pairings identify both
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathrm{PP}^C=\mathrm{PP}_D(3H)\ \text{on }C\quad\text{and}\\
+\mathrm{PP}^\Gamma=\mathrm{PP}_D(-N_\Gamma)\ \text{on }\Gamma
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathrm{PP}^C=\mathrm{PP}_D(3H)\ \text{on }C\quad\text{and}\\
+\mathrm{PP}^\Gamma=\mathrm{PP}_D(-N_\Gamma)\ \text{on }\Gamma
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\mathcal J^*\)">\(\mathcal J^*\)</span>. This defines an isomorphism <span class="math" data-tex="\(\Psi:\mathrm{PP}^C\to\mathrm{PP}^\Gamma\)">\(\Psi:\mathrm{PP}^C\to\mathrm{PP}^\Gamma\)</span> without any choice of coordinates or frames.</p>
+<p><em>The adjoint jets.</em> Restriction from <span class="math" data-tex="\(H^0(\Sigma,N_\Sigma)\)">\(H^0(\Sigma,N_\Sigma)\)</span> to <span class="math" data-tex="\(C\)">\(C\)</span> has kernel <span class="math" data-tex="\(H^0(\mathcal O(-5,-2))=0\)">\(H^0(\mathcal O(-5,-2))=0\)</span> and cokernel inside <span class="math" data-tex="\(H^1(\mathcal O(-5,-2))=0\)">\(H^1(\mathcal O(-5,-2))=0\)</span>; restriction to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has cokernel inside <span class="math" data-tex="\(H^1(\mathcal O(1,0))=0\)">\(H^1(\mathcal O(1,0))=0\)</span> (Lemma 1.1 of the lesson on the elliptic curve). So the images <span class="math" data-tex="\(A\subset\mathcal J\)">\(A\subset\mathcal J\)</span> of <span class="math" data-tex="\(H^0(C,K_C-3H)\)">\(H^0(C,K_C-3H)\)</span> and of <span class="math" data-tex="\(H^0(\Gamma,N_\Gamma)\)">\(H^0(\Gamma,N_\Gamma)\)</span> both equal the image of <span class="math" data-tex="\(H^0(\Sigma,N_\Sigma)\)">\(H^0(\Sigma,N_\Sigma)\)</span>. Moreover <span class="math" data-tex="\(\dim A=10\)">\(\dim A=10\)</span>: <span class="math" data-tex="\(h^0(\Gamma,N_\Gamma)=10\)">\(h^0(\Gamma,N_\Gamma)=10\)</span>, and restriction to <span class="math" data-tex="\(D\)">\(D\)</span> is injective on it because <span class="math" data-tex="\(\deg(N_\Gamma-2Z)=10-12&lt;0\)">\(\deg(N_\Gamma-2Z)=10-12&lt;0\)</span>.</p>
+<p><em>The two global spaces.</em> By Proposition 3.2 of the lesson on traces, applied on <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(B=3H\)">\(B=3H\)</span>, the map <span class="math" data-tex="\(T\mapsto\mathrm{pp}(T/\xi^2)\)">\(T\mapsto\mathrm{pp}(T/\xi^2)\)</span> from <span class="math" data-tex="\(H^0(C,\Lambda)=H^0(C,3H+D)\)">\(H^0(C,\Lambda)=H^0(C,3H+D)\)</span> to <span class="math" data-tex="\(\mathrm{PP}^C\)">\(\mathrm{PP}^C\)</span> has kernel <span class="math" data-tex="\(\xi^2H^0(C,3H)\)">\(\xi^2H^0(C,3H)\)</span> and image the annihilator <span class="math" data-tex="\(A^\perp\subset\mathcal J^*\)">\(A^\perp\subset\mathcal J^*\)</span>. On <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, <span class="math" data-tex="\(\Phi=2M-N_\Gamma\)">\(\Phi=2M-N_\Gamma\)</span> by (2.3) of the lesson on the elliptic curve, and <span class="math" data-tex="\(\beta^2\)">\(\beta^2\)</span> is a section of <span class="math" data-tex="\(2M\)">\(2M\)</span> with divisor <span class="math" data-tex="\(D\)">\(D\)</span>, so <span class="math" data-tex="\(\widetilde T\mapsto\widetilde T/\beta^2\)">\(\widetilde T\mapsto\widetilde T/\beta^2\)</span> identifies <span class="math" data-tex="\(H^0(\Gamma,\Phi)\)">\(H^0(\Gamma,\Phi)\)</span> with <span class="math" data-tex="\(H^0(\Gamma,-N_\Gamma+D)\)">\(H^0(\Gamma,-N_\Gamma+D)\)</span>. Proposition 3.2 there, with <span class="math" data-tex="\(B=-N_\Gamma\)">\(B=-N_\Gamma\)</span>, shows that <span class="math" data-tex="\(\widetilde T\mapsto\mathrm{pp}(\widetilde T/\beta^2)\)">\(\widetilde T\mapsto\mathrm{pp}(\widetilde T/\beta^2)\)</span> has kernel <span class="math" data-tex="\(H^0(\Gamma,-N_\Gamma)=0\)">\(H^0(\Gamma,-N_\Gamma)=0\)</span>, since <span class="math" data-tex="\(\deg N_\Gamma=10&gt;0\)">\(\deg N_\Gamma=10&gt;0\)</span>, and image <span class="math" data-tex="\(A^\perp\)">\(A^\perp\)</span>. Composing gives <span class="math" data-tex="\(\iota\)">\(\iota\)</span>, characterized by <span class="math" data-tex="\(\mathrm{pp}(\iota([T])/\beta^2)=\Psi(\mathrm{pp}(T/\xi^2))\)">\(\mathrm{pp}(\iota([T])/\beta^2)=\Psi(\mathrm{pp}(T/\xi^2))\)</span>. Both spaces have dimension <span class="math" data-tex="\(12-10=2\)">\(12-10=2\)</span>.</p>
+<p><em>Local form.</em> Fix <span class="math" data-tex="\(q\in Z\)">\(q\in Z\)</span>. Choose holomorphic coordinates <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span> on <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> near <span class="math" data-tex="\(q\)">\(q\)</span>, a frame <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> of <span class="math" data-tex="\(\Gamma=\mathcal O(2,2)\)">\(\Gamma=\mathcal O(2,2)\)</span> and a frame <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G=y\,\mathfrak g,\qquad e(0,z)=1,\\
+\Omega=e(y,z)\,\frac{dy}{y}\wedge dz .
+\end{gathered}
+\]">\[
+\begin{gathered}
+G=y\,\mathfrak g,\qquad e(0,z)=1,\\
+\Omega=e(y,z)\,\frac{dy}{y}\wedge dz .
+\end{gathered}
+\]</span>
+This is possible: take a local equation <span class="math" data-tex="\(y\)">\(y\)</span> of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and <span class="math" data-tex="\(\mathfrak g=G/y\)">\(\mathfrak g=G/y\)</span>; then <span class="math" data-tex="\(\Omega=h\,dy\wedge dz_0/y\)">\(\Omega=h\,dy\wedge dz_0/y\)</span> for a coordinate <span class="math" data-tex="\(z_0\)">\(z_0\)</span> and a unit <span class="math" data-tex="\(h\)">\(h\)</span>, and the function <span class="math" data-tex="\(z=\int_0^{z_0}h(0,\zeta)\,d\zeta\)">\(z=\int_0^{z_0}h(0,\zeta)\,d\zeta\)</span> of <span class="math" data-tex="\(z_0\)">\(z_0\)</span> alone gives <span class="math" data-tex="\(\Omega=(h/h(0,z_0))\,dy\wedge dz/y\)">\(\Omega=(h/h(0,z_0))\,dy\wedge dz/y\)</span>. Then <span class="math" data-tex="\(\omega=\operatorname{Res}_\Gamma\Omega=dz\)">\(\omega=\operatorname{Res}_\Gamma\Omega=dz\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Let <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> be a frame of <span class="math" data-tex="\(M\)">\(M\)</span> near <span class="math" data-tex="\(q\)">\(q\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> with <span class="math" data-tex="\(\mathfrak m^4=\mathfrak g^2\mathfrak f^4|_\Gamma\)">\(\mathfrak m^4=\mathfrak g^2\mathfrak f^4|_\Gamma\)</span> under the identification <span class="math" data-tex="\(4M\cong(2\Gamma+4F)|_\Gamma\)">\(4M\cong(2\Gamma+4F)|_\Gamma\)</span> (a fourth root of a unit), and write
+<span class="math math-display" data-tex="\[
+K=k(y,z)\,\mathfrak g^2\mathfrak f^4,\qquad \beta=b(z)\,\mathfrak m .
+\]">\[
+K=k(y,z)\,\mathfrak g^2\mathfrak f^4,\qquad \beta=b(z)\,\mathfrak m .
+\]</span>
+Since <span class="math" data-tex="\(K|_\Gamma=\beta^4\)">\(K|_\Gamma=\beta^4\)</span>, <span class="math" data-tex="\(k(0,z)=b(z)^4\)">\(k(0,z)=b(z)^4\)</span>; moreover <span class="math" data-tex="\(b(0)=0\)">\(b(0)=0\)</span>, <span class="math" data-tex="\(b&#x27;(0)\ne0\)">\(b&#x27;(0)\ne0\)</span>, and <span class="math" data-tex="\(k_y(0,0)\ne0\)">\(k_y(0,0)\ne0\)</span> because <span class="math" data-tex="\(C\)">\(C\)</span> is smooth at <span class="math" data-tex="\(q\)">\(q\)</span>. Put <span class="math" data-tex="\(\kappa(z)=k_y(0,z)\)">\(\kappa(z)=k_y(0,z)\)</span>. On <span class="math" data-tex="\(C\)">\(C\)</span>, where <span class="math" data-tex="\(y=O(z^4)\)">\(y=O(z^4)\)</span>, the equation <span class="math" data-tex="\(k=0\)">\(k=0\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y|_C=-\frac{b(z)^4}{\kappa(z)}+O(z^8),\\
+e|_C=1+O(z^4),\\
+k_y|_C=\kappa(z)+O(z^4).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+y|_C=-\frac{b(z)^4}{\kappa(z)}+O(z^8),\\
+e|_C=1+O(z^4),\\
+k_y|_C=\kappa(z)+O(z^4).
+\end{gathered}
+\tag{2.1}
+\]</span>
+The adjunction isomorphism (2.3) of the lesson on the curve of genus 21 sends the frame <span class="math" data-tex="\(\mathfrak g\mathfrak f^4\)">\(\mathfrak g\mathfrak f^4\)</span> of <span class="math" data-tex="\(\mathcal O(6,2)\)">\(\mathcal O(6,2)\)</span> to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{Res}_C\Bigl(\frac{\mathfrak g\mathfrak f^4\cdot G\,\Omega}{K}\Bigr)\\
+&amp;\quad=\operatorname{Res}_C\Bigl(\frac{e\,dy\wedge dz}{k}\Bigr)\\
+&amp;\quad=\frac{e|_C}{k_y|_C}\,dz,
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{Res}_C\Bigl(\frac{\mathfrak g\mathfrak f^4\cdot G\,\Omega}{K}\Bigr)\\
+&amp;\quad=\operatorname{Res}_C\Bigl(\frac{e\,dy\wedge dz}{k}\Bigr)\\
+&amp;\quad=\frac{e|_C}{k_y|_C}\,dz,
+\end{aligned}
+\tag{2.2}
+\]</span>
+because <span class="math" data-tex="\(dk\wedge dz=k_y\,dy\wedge dz\)">\(dk\wedge dz=k_y\,dy\wedge dz\)</span>.</p>
+<p>Let <span class="math" data-tex="\(a=\xi/z\)">\(a=\xi/z\)</span>, a frame of <span class="math" data-tex="\(\mathcal O_C(Z)\)">\(\mathcal O_C(Z)\)</span> near <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(\tau=\mathfrak f^3a^2\)">\(\tau=\mathfrak f^3a^2\)</span>, a frame of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The identification <span class="math" data-tex="\(4\mathcal O_C(Z)\cong\Gamma|_C\)">\(4\mathcal O_C(Z)\cong\Gamma|_C\)</span>, <span class="math" data-tex="\(\xi^4\mapsto G|_C\)">\(\xi^4\mapsto G|_C\)</span>, sends <span class="math" data-tex="\(a^4\)">\(a^4\)</span> to <span class="math" data-tex="\((y|_C/z^4)\,\mathfrak g\)">\((y|_C/z^4)\,\mathfrak g\)</span>. With (2.2),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau^2=s(z)\,dz\,\mathfrak f^2,\\
+s(z)=\frac{e|_C\,y|_C}{z^4\,k_y|_C},\\
+s(0)=-\frac{b&#x27;(0)^4}{\kappa(0)^2}.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\tau^2=s(z)\,dz\,\mathfrak f^2,\\
+s(z)=\frac{e|_C\,y|_C}{z^4\,k_y|_C},\\
+s(0)=-\frac{b&#x27;(0)^4}{\kappa(0)^2}.
+\end{gathered}
+\tag{2.3}
+\]</span></p>
+<p>Write <span class="math" data-tex="\(T=\pi(z)\tau\)">\(T=\pi(z)\tau\)</span> near <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(\widetilde T=\iota([T])=\widetilde\pi(z)\widetilde\tau\)">\(\widetilde T=\iota([T])=\widetilde\pi(z)\widetilde\tau\)</span> in the frame <span class="math" data-tex="\(\widetilde\tau=\mathfrak m^2/(\mathfrak g\mathfrak f)\)">\(\widetilde\tau=\mathfrak m^2/(\mathfrak g\mathfrak f)\)</span> of <span class="math" data-tex="\(\Phi=2M-(\Gamma+F)|_\Gamma\)">\(\Phi=2M-(\Gamma+F)|_\Gamma\)</span>. Then <span class="math" data-tex="\(T/\xi^2=\pi\mathfrak f^3/z^2\)">\(T/\xi^2=\pi\mathfrak f^3/z^2\)</span> and <span class="math" data-tex="\(\widetilde T/\beta^2=\widetilde\pi/(b^2\,\mathfrak g\mathfrak f)\)">\(\widetilde T/\beta^2=\widetilde\pi/(b^2\,\mathfrak g\mathfrak f)\)</span>. A jet in <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> at <span class="math" data-tex="\(q\)">\(q\)</span> is represented by <span class="math" data-tex="\(A(y,z)\,\mathfrak g\mathfrak f\)">\(A(y,z)\,\mathfrak g\mathfrak f\)</span>, modulo <span class="math" data-tex="\((y,z^2)\)">\((y,z^2)\)</span>; on <span class="math" data-tex="\(C\)">\(C\)</span> it is the section <span class="math" data-tex="\(A|_C\,(e|_C/k_y|_C)\,dz\,\mathfrak f^{-3}\)">\(A|_C\,(e|_C/k_y|_C)\,dz\,\mathfrak f^{-3}\)</span> of <span class="math" data-tex="\(K_C-3H\)">\(K_C-3H\)</span>, by (2.2), and on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> the section <span class="math" data-tex="\(A(0,z)\,\mathfrak g\mathfrak f\)">\(A(0,z)\,\mathfrak g\mathfrak f\)</span> of <span class="math" data-tex="\(N_\Gamma\)">\(N_\Gamma\)</span>. The two residue functionals are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A\mapsto\operatorname{Res}_{z=0}\Bigl(\frac{A|_C\,\pi\,e|_C}{k_y|_C\,z^2}\,dz\Bigr),\\
+A\mapsto\operatorname{Res}_{z=0}\Bigl(\frac{A(0,z)\,\widetilde\pi}{b(z)^2}\,dz\Bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+A\mapsto\operatorname{Res}_{z=0}\Bigl(\frac{A|_C\,\pi\,e|_C}{k_y|_C\,z^2}\,dz\Bigr),\\
+A\mapsto\operatorname{Res}_{z=0}\Bigl(\frac{A(0,z)\,\widetilde\pi}{b(z)^2}\,dz\Bigr).
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(A|_C=A(0,z)+O(z^4)\)">\(A|_C=A(0,z)+O(z^4)\)</span> and by (2.1), they agree for all <span class="math" data-tex="\(A\)">\(A\)</span> exactly when
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathrm{pp}\Bigl(\frac{\pi}{\kappa(z)z^2}\Bigr)\\
+&amp;\quad=\mathrm{pp}\Bigl(\frac{\widetilde\pi}{b(z)^2}\Bigr).
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+&amp;\mathrm{pp}\Bigl(\frac{\pi}{\kappa(z)z^2}\Bigr)\\
+&amp;\quad=\mathrm{pp}\Bigl(\frac{\widetilde\pi}{b(z)^2}\Bigr).
+\end{aligned}
+\tag{2.4}
+\]</span>
+Writing <span class="math" data-tex="\(b=b_1z+b_2z^2+O(z^3)\)">\(b=b_1z+b_2z^2+O(z^3)\)</span>, <span class="math" data-tex="\(\kappa=\kappa_0+\kappa_1z+O(z^2)\)">\(\kappa=\kappa_0+\kappa_1z+O(z^2)\)</span>, <span class="math" data-tex="\(\pi=\pi_0+\pi_1z+O(z^2)\)">\(\pi=\pi_0+\pi_1z+O(z^2)\)</span>, and comparing the coefficients of <span class="math" data-tex="\(z^{-2}\)">\(z^{-2}\)</span> and <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde\pi_0&amp;=\frac{b_1^2}{\kappa_0}\pi_0,\\
+\widetilde\pi_1&amp;=\frac{b_1^2}{\kappa_0}\pi_1\\
+&amp;\quad+\Bigl(\frac{2b_1b_2}{\kappa_0}\\
+&amp;\qquad-\frac{b_1^2\kappa_1}{\kappa_0^2}\Bigr)\pi_0 .
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+\widetilde\pi_0&amp;=\frac{b_1^2}{\kappa_0}\pi_0,\\
+\widetilde\pi_1&amp;=\frac{b_1^2}{\kappa_0}\pi_1\\
+&amp;\quad+\Bigl(\frac{2b_1b_2}{\kappa_0}\\
+&amp;\qquad-\frac{b_1^2\kappa_1}{\kappa_0^2}\Bigr)\pi_0 .
+\end{aligned}
+\tag{2.5}
+\]</span>
+This invertible triangular transformation is the local expression of <span class="math" data-tex="\(\iota\)">\(\iota\)</span>. In particular <span class="math" data-tex="\(\ell_q\circ\iota^{-1}\)">\(\ell_q\circ\iota^{-1}\)</span> and evaluation in <span class="math" data-tex="\(\widetilde\tau\)">\(\widetilde\tau\)</span> at <span class="math" data-tex="\(q\)">\(q\)</span> are proportional, which is the statement about projective evaluations.</p>
+<p><em>The metric.</em> Write <span class="math" data-tex="\(\eta_C=\mathcal E_C\,dz\,\mathfrak f^2\)">\(\eta_C=\mathcal E_C\,dz\,\mathfrak f^2\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(\eta_\Gamma=\mathcal E_\Gamma\,dz\,\mathfrak f^2\)">\(\eta_\Gamma=\mathcal E_\Gamma\,dz\,\mathfrak f^2\)</span> on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. The curves are tangent at <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(z\)">\(z\)</span> is a parameter on both, and <span class="math" data-tex="\(u_1,u_2\)">\(u_1,u_2\)</span> are sections on <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>; so <span class="math" data-tex="\(\mathcal E_C(0)=\mathcal E_\Gamma(0)\)">\(\mathcal E_C(0)=\mathcal E_\Gamma(0)\)</span>. Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be evaluation in <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> and <span class="math" data-tex="\(\widetilde\ell\)">\(\widetilde\ell\)</span> evaluation in <span class="math" data-tex="\(\widetilde\tau\)">\(\widetilde\tau\)</span> on <span class="math" data-tex="\(H^0(\Gamma,\Phi)\)">\(H^0(\Gamma,\Phi)\)</span>. By (2.5), <span class="math" data-tex="\(\iota^*\widetilde\ell=\alpha\ell\)">\(\iota^*\widetilde\ell=\alpha\ell\)</span> with <span class="math" data-tex="\(\alpha=b_1^2/\kappa_0\)">\(\alpha=b_1^2/\kappa_0\)</span>, and by (1.1) and (2.3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\iota^*\widetilde\ell)^2&amp;=\alpha^2\frac{\mathcal E_C(0)}{s(0)}\\
+&amp;=\frac{b_1^4}{\kappa_0^2}\cdot\frac{\mathcal E_C(0)\,\kappa_0^2}{-b_1^4}=-\mathcal E_\Gamma(0).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\iota^*\widetilde\ell)^2&amp;=\alpha^2\frac{\mathcal E_C(0)}{s(0)}\\
+&amp;=\frac{b_1^4}{\kappa_0^2}\cdot\frac{\mathcal E_C(0)\,\kappa_0^2}{-b_1^4}=-\mathcal E_\Gamma(0).
+\end{aligned}
+\]</span>
+On the other side, <span class="math" data-tex="\(\widetilde\tau^2=\mathfrak m^4/(\mathfrak g^2\mathfrak f^2)\)">\(\widetilde\tau^2=\mathfrak m^4/(\mathfrak g^2\mathfrak f^2)\)</span> corresponds to <span class="math" data-tex="\(\mathfrak f^2\)">\(\mathfrak f^2\)</span> under the identifications (2.2) of the lesson on the elliptic curve, which all come from powers of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> and are compatible. The section defining <span class="math" data-tex="\(Q\)">\(Q\)</span> multiplies to <span class="math" data-tex="\(-\eta_\Gamma/\omega=-\mathcal E_\Gamma\,\mathfrak f^2\)">\(-\eta_\Gamma/\omega=-\mathcal E_\Gamma\,\mathfrak f^2\)</span>, so by (3.1) of that lesson <span class="math" data-tex="\(Q(\widetilde\ell)=-\mathcal E_\Gamma(0)\)">\(Q(\widetilde\ell)=-\mathcal E_\Gamma(0)\)</span>. Thus the quadratic forms <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(\lambda\mapsto(\iota^*\lambda)^2\)">\(\lambda\mapsto(\iota^*\lambda)^2\)</span> on <span class="math" data-tex="\(H^0(\Gamma,\Phi)^*\)">\(H^0(\Gamma,\Phi)^*\)</span> agree on the evaluations at <span class="math" data-tex="\(q_1,\ldots,q_6\)">\(q_1,\ldots,q_6\)</span>, which lie in three distinct directions. Their difference is a binary quadratic form vanishing in three distinct directions, hence zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exact check script of this course verifies (2.1), the value <span class="math" data-tex="\(s(0)\)">\(s(0)\)</span>, the solution (2.5) of (2.4), and the scalar identity above, for generic Taylor coefficients.</p>
+<h2 id="3-meromorphic-sections-with-the-required-residues">3. Meromorphic sections with the required residues</h2>
+<p><strong>Compatible coordinates.</strong> At <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, choose a parameter <span class="math" data-tex="\(z_j\)">\(z_j\)</span> on a small disc and a frame <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> whose fourth power corresponds to <span class="math" data-tex="\(dz_j\)">\(dz_j\)</span> under <span class="math" data-tex="\(4L\cong K_C\)">\(4L\cong K_C\)</span>; starting from any frame <span class="math" data-tex="\(\ell^0\)">\(\ell^0\)</span> with <span class="math" data-tex="\((\ell^0)^4\mapsto h\,dz_j\)">\((\ell^0)^4\mapsto h\,dz_j\)</span>, take <span class="math" data-tex="\(\ell_j=h^{-1/4}\ell^0\)">\(\ell_j=h^{-1/4}\ell^0\)</span> for a holomorphic fourth root of the unit <span class="math" data-tex="\(h\)">\(h\)</span>. Put
+<span class="math math-display" data-tex="\[
+a_j=\xi/z_j,\quad \mathfrak f_j=\ell_j/a_j,\quad \tau_j=\ell_j^2\,\mathfrak f_j,
+\]">\[
+a_j=\xi/z_j,\quad \mathfrak f_j=\ell_j/a_j,\quad \tau_j=\ell_j^2\,\mathfrak f_j,
+\]</span>
+frames of <span class="math" data-tex="\(\mathcal O_C(Z)\)">\(\mathcal O_C(Z)\)</span>, <span class="math" data-tex="\(H=L-Z\)">\(H=L-Z\)</span> and <span class="math" data-tex="\(\Lambda=2L+H\)">\(\Lambda=2L+H\)</span>. For <span class="math" data-tex="\(r=\xi u\)">\(r=\xi u\)</span>, a basis of <span class="math" data-tex="\(H^0(C,L)\)">\(H^0(C,L)\)</span>, the coefficient row of <span class="math" data-tex="\(r\)">\(r\)</span> in <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> is <span class="math" data-tex="\(z_ju\)">\(z_ju\)</span>, where <span class="math" data-tex="\(u\)">\(u\)</span> denotes the coefficient row of <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(\mathfrak f_j\)">\(\mathfrak f_j\)</span>. Since <span class="math" data-tex="\(\tau_j^2=\ell_j^4\mathfrak f_j^2\)">\(\tau_j^2=\ell_j^4\mathfrak f_j^2\)</span> corresponds to <span class="math" data-tex="\(dz_j\,\mathfrak f_j^2\)">\(dz_j\,\mathfrak f_j^2\)</span>, Lemma 1.1(4) with <span class="math" data-tex="\(s=1\)">\(s=1\)</span> gives, for evaluation <span class="math" data-tex="\(l_j\)">\(l_j\)</span> in <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span>,
+<span class="math math-display" data-tex="\[
+l_j^2=(u_1u_2&#x27;-u_2u_1&#x27;)(0),
+\tag{3.1}
+\]">\[
+l_j^2=(u_1u_2&#x27;-u_2u_1&#x27;)(0),
+\tag{3.1}
+\]</span>
+where primes denote <span class="math" data-tex="\(z_j\)">\(z_j\)</span>-derivatives on the disc, as in the rest of this section.</p>
+<p><strong>Lemma 3.1 (changing compatible coordinates).</strong> Let <span class="math" data-tex="\(\zeta=\psi(z)\)">\(\zeta=\psi(z)\)</span>, <span class="math" data-tex="\(\psi(0)=0\)">\(\psi(0)=0\)</span>, be another parameter at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, with compatible frame <span class="math" data-tex="\(g(z)\ell_j\)">\(g(z)\ell_j\)</span>, so that <span class="math" data-tex="\(g^4=\psi&#x27;\)">\(g^4=\psi&#x27;\)</span>; put <span class="math" data-tex="\(g_0=g(0)\)">\(g_0=g(0)\)</span>. Then evaluation changes by <span class="math" data-tex="\(l_j^{\mathrm{new}}=g_0^{-7}l_j\)">\(l_j^{\mathrm{new}}=g_0^{-7}l_j\)</span>, coefficient rows of sections of <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(r^{\mathrm{new}}=g^{-1}r\)">\(r^{\mathrm{new}}=g^{-1}r\)</span>, and coefficient rows of sections of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> by <span class="math" data-tex="\(P^{\mathrm{new}}=g^{-2}P\)">\(P^{\mathrm{new}}=g^{-2}P\)</span>.</p>
+<p><strong>Proof.</strong> The new frames are <span class="math" data-tex="\(a^{\mathrm{new}}=(z/\psi)a_j\)">\(a^{\mathrm{new}}=(z/\psi)a_j\)</span>, <span class="math" data-tex="\(\mathfrak f^{\mathrm{new}}=g(\psi/z)\mathfrak f_j\)">\(\mathfrak f^{\mathrm{new}}=g(\psi/z)\mathfrak f_j\)</span> and <span class="math" data-tex="\(\tau^{\mathrm{new}}=g^3(\psi/z)\tau_j\)">\(\tau^{\mathrm{new}}=g^3(\psi/z)\tau_j\)</span>; at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, <span class="math" data-tex="\(g^3\psi/z\)">\(g^3\psi/z\)</span> equals <span class="math" data-tex="\(g_0^3\psi&#x27;(0)=g_0^7\)">\(g_0^3\psi&#x27;(0)=g_0^7\)</span>. The other two statements are the changes of the frames <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (residue data).</strong> Put <span class="math" data-tex="\(v_j^*=\iota^*w_j\in\mathcal W^*\)">\(v_j^*=\iota^*w_j\in\mathcal W^*\)</span> and <span class="math" data-tex="\(V=\sum_{j=1}^6v_j^*\)">\(V=\sum_{j=1}^6v_j^*\)</span>. For disjoint compatible coordinate discs at <span class="math" data-tex="\(q_1,\ldots,q_6\)">\(q_1,\ldots,q_6\)</span> there are nonzero constants <span class="math" data-tex="\(c_j\)">\(c_j\)</span> and a pair
+<span class="math math-display" data-tex="\[
+P=(P_1,P_2)\in H^0(C,\theta+Z)^{\oplus2}
+\]">\[
+P=(P_1,P_2)\in H^0(C,\theta+Z)^{\oplus2}
+\]</span>
+with the following properties.</p>
+<ol>
+<li><span class="math" data-tex="\(c_jl_j=v_j^*\)">\(c_jl_j=v_j^*\)</span>, <span class="math" data-tex="\(V^2=90=9\deg L\)">\(V^2=90=9\deg L\)</span>, and <span class="math" data-tex="\((v_j^*)^2+v_j^*\cdot V=1\)">\((v_j^*)^2+v_j^*\cdot V=1\)</span>.</li>
+<li>On the disc at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, with coefficient rows in the frames above, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m_j=\frac{c_j}{z_j},\qquad R_j=m_jr,\\
+W_j=R_j(0)\wedge R_j&#x27;(0),\\
+p_j=P-m_jr&#x27; .
+\end{gathered}
+\]">\[
+\begin{gathered}
+m_j=\frac{c_j}{z_j},\qquad R_j=m_jr,\\
+W_j=R_j(0)\wedge R_j&#x27;(0),\\
+p_j=P-m_jr&#x27; .
+\end{gathered}
+\]</span>
+The coefficient row of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(\ell_j^2\)">\(\ell_j^2\)</span> has principal part <span class="math" data-tex="\(R_j(0)/z_j\)">\(R_j(0)/z_j\)</span>; the rows <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and <span class="math" data-tex="\(p_j\)">\(p_j\)</span> are holomorphic, and <span class="math" data-tex="\(R_j(0)\ne0\)">\(R_j(0)\ne0\)</span>.</li>
+<li><span class="math" data-tex="\(W_j=(v_j^*)^2\)">\(W_j=(v_j^*)^2\)</span>, <span class="math" data-tex="\(p_j(0)\wedge R_j(0)=1\)">\(p_j(0)\wedge R_j(0)=1\)</span>, and <span class="math" data-tex="\(\sum_{j=1}^6(W_j-1)=-9\deg L\)">\(\sum_{j=1}^6(W_j-1)=-9\deg L\)</span>.</li>
+<li><span class="math" data-tex="\(J=u\wedge P=u_1P_2-u_2P_1\)">\(J=u\wedge P=u_1P_2-u_2P_1\)</span> lies in <span class="math" data-tex="\(H^0(C,\Lambda)\)">\(H^0(C,\Lambda)\)</span>, and <span class="math" data-tex="\(\langle[J],[T]\rangle=-V([T])\)">\(\langle[J],[T]\rangle=-V([T])\)</span> for every <span class="math" data-tex="\(T\in H^0(C,\Lambda)\)">\(T\in H^0(C,\Lambda)\)</span>. Changing <span class="math" data-tex="\(P\)">\(P\)</span> by a pair of holomorphic sections of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> does not change <span class="math" data-tex="\([J]\)">\([J]\)</span>.</li>
+</ol>
+<p>The prescription is consistent under changes of compatible coordinates (Exercise 4.4).</p>
+<p><strong>Proof.</strong> (1) By Lemma 2.1, <span class="math" data-tex="\(\iota^*\)">\(\iota^*\)</span> is an isometry, so the identities (4.1) of the lesson on the elliptic curve for the <span class="math" data-tex="\(w_j\)">\(w_j\)</span> give those for the <span class="math" data-tex="\(v_j^*\)">\(v_j^*\)</span>. The vector <span class="math" data-tex="\(w_j\)">\(w_j\)</span> has the direction of evaluation at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, so <span class="math" data-tex="\(v_j^*\)">\(v_j^*\)</span> has the direction of <span class="math" data-tex="\(\ell_{q_j}\)">\(\ell_{q_j}\)</span>, that is, of <span class="math" data-tex="\(l_j\)">\(l_j\)</span>; since <span class="math" data-tex="\(w_j\ne0\)">\(w_j\ne0\)</span> and <span class="math" data-tex="\(l_j\ne0\)">\(l_j\ne0\)</span>, there is a unique <span class="math" data-tex="\(c_j\ne0\)">\(c_j\ne0\)</span> with <span class="math" data-tex="\(c_jl_j=v_j^*\)">\(c_jl_j=v_j^*\)</span>.</p>
+<p>(2) and the first part of (3). On the disc, <span class="math" data-tex="\(r=z_ju\)">\(r=z_ju\)</span>, so <span class="math" data-tex="\(R_j=c_ju\)">\(R_j=c_ju\)</span> is holomorphic with <span class="math" data-tex="\(R_j(0)=c_ju(0)\ne0\)">\(R_j(0)=c_ju(0)\ne0\)</span>, as <span class="math" data-tex="\(u\)">\(u\)</span> has no base point. By (3.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_j&amp;=c_j^2\,(u_1u_2&#x27;-u_2u_1&#x27;)(0)\\
+&amp;=c_j^2l_j^2=(v_j^*)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+W_j&amp;=c_j^2\,(u_1u_2&#x27;-u_2u_1&#x27;)(0)\\
+&amp;=c_j^2l_j^2=(v_j^*)^2 .
+\end{aligned}
+\]</span>
+To construct <span class="math" data-tex="\(P\)">\(P\)</span>, apply Proposition 3.2 of the lesson on traces to <span class="math" data-tex="\(B=\theta\)">\(B=\theta\)</span> and <span class="math" data-tex="\(D=Z\)">\(D=Z\)</span>: a family of simple principal parts at <span class="math" data-tex="\(Z\)">\(Z\)</span> is realized by a section of <span class="math" data-tex="\(\theta+Z\)">\(\theta+Z\)</span> exactly when it annihilates the values at <span class="math" data-tex="\(Z\)">\(Z\)</span> of the sections of <span class="math" data-tex="\(K_C-\theta=\theta\)">\(K_C-\theta=\theta\)</span>. Every section of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> vanishes on <span class="math" data-tex="\(Z\)">\(Z\)</span> (Proposition 3.3(3) of the lesson on the curve of genus 21), so every family is realized. Doing this for each entry gives <span class="math" data-tex="\(P\)">\(P\)</span> with principal parts <span class="math" data-tex="\(R_j(0)/z_j\)">\(R_j(0)/z_j\)</span>. Since <span class="math" data-tex="\(r&#x27;=u+z_ju&#x27;\)">\(r&#x27;=u+z_ju&#x27;\)</span>, the row <span class="math" data-tex="\(m_jr&#x27;=c_ju/z_j+c_ju&#x27;\)">\(m_jr&#x27;=c_ju/z_j+c_ju&#x27;\)</span> has the same principal part <span class="math" data-tex="\(c_ju(0)/z_j\)">\(c_ju(0)/z_j\)</span> as <span class="math" data-tex="\(P\)">\(P\)</span>, so <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is holomorphic.</p>
+<p>(4) Near <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, <span class="math" data-tex="\(P=c_ju(0)/z_j+O(1)\)">\(P=c_ju(0)/z_j+O(1)\)</span>, so <span class="math" data-tex="\(u\wedge P=c_j\,u(z_j)\wedge u(0)/z_j+O(1)\)">\(u\wedge P=c_j\,u(z_j)\wedge u(0)/z_j+O(1)\)</span>, and <span class="math" data-tex="\(u(z_j)\wedge u(0)=O(z_j)\)">\(u(z_j)\wedge u(0)=O(z_j)\)</span>. Hence <span class="math" data-tex="\(J\)">\(J\)</span> has no pole, and <span class="math" data-tex="\(J\in H^0(C,H+\theta)=H^0(C,\Lambda)\)">\(J\in H^0(C,H+\theta)=H^0(C,\Lambda)\)</span>. Fix <span class="math" data-tex="\(T\in H^0(C,\Lambda)\)">\(T\in H^0(C,\Lambda)\)</span> and consider the meromorphic differential
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nu=\frac{P_1T}{u_1},\\
+(\theta+Z)+\Lambda-H=2\theta+Z=K_C+Z .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\nu=\frac{P_1T}{u_1},\\
+(\theta+Z)+\Lambda-H=2\theta+Z=K_C+Z .
+\end{gathered}
+\]</span>
+Its poles lie in <span class="math" data-tex="\(Z\)">\(Z\)</span> and in the zero divisor of <span class="math" data-tex="\(u_1\)">\(u_1\)</span>, a fibre <span class="math" data-tex="\(f^{-1}(x_\infty)\)">\(f^{-1}(x_\infty)\)</span> of four distinct points disjoint from <span class="math" data-tex="\(Z\)">\(Z\)</span> over a value <span class="math" data-tex="\(x_\infty\)">\(x_\infty\)</span> that is not a branch value. At <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, with <span class="math" data-tex="\(T=t(z_j)\tau_j\)">\(T=t(z_j)\tau_j\)</span>, the product of the frames <span class="math" data-tex="\(\ell_j^2\cdot\tau_j/\mathfrak f_j=\ell_j^4\)">\(\ell_j^2\cdot\tau_j/\mathfrak f_j=\ell_j^4\)</span> corresponds to <span class="math" data-tex="\(dz_j\)">\(dz_j\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{Res}_{q_j}\nu\\
+&amp;=\operatorname{Res}_{z_j=0}\Bigl(\frac{c_ju_1(0)}{z_j}\cdot\frac{t(z_j)}{u_1(z_j)}\,dz_j\Bigr)\\
+&amp;=c_jt(0)=c_jl_j(T),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{Res}_{q_j}\nu\\
+&amp;=\operatorname{Res}_{z_j=0}\Bigl(\frac{c_ju_1(0)}{z_j}\cdot\frac{t(z_j)}{u_1(z_j)}\,dz_j\Bigr)\\
+&amp;=c_jt(0)=c_jl_j(T),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(u_1(0)\ne0\)">\(u_1(0)\ne0\)</span>. At a zero <span class="math" data-tex="\(q\)">\(q\)</span> of <span class="math" data-tex="\(u_1\)">\(u_1\)</span>, the section <span class="math" data-tex="\(u_2\)">\(u_2\)</span> does not vanish, <span class="math" data-tex="\(J(q)=-u_2(q)P_1(q)\)">\(J(q)=-u_2(q)P_1(q)\)</span> and <span class="math" data-tex="\(\eta_C(q)=-u_2(q)\,du_1(q)\)">\(\eta_C(q)=-u_2(q)\,du_1(q)\)</span>; hence, <span class="math" data-tex="\(u_1\)">\(u_1\)</span> having a simple zero,
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_q\nu=\frac{P_1(q)T(q)}{du_1(q)}=\frac{J(q)T(q)}{\eta_C(q)} ,
+\]">\[
+\operatorname{Res}_q\nu=\frac{P_1(q)T(q)}{du_1(q)}=\frac{J(q)T(q)}{\eta_C(q)} ,
+\]</span>
+a ratio of two vectors in the fibre of <span class="math" data-tex="\(K_C+2H\)">\(K_C+2H\)</span> at <span class="math" data-tex="\(q\)">\(q\)</span>. By Lemma 1.1(2) of the lesson on traces, the sum of these four residues is <span class="math" data-tex="\(\operatorname{Tr}(JT/\eta_C)(x_\infty)=B(J,T)=\langle[J],[T]\rangle\)">\(\operatorname{Tr}(JT/\eta_C)(x_\infty)=B(J,T)=\langle[J],[T]\rangle\)</span>, a constant by Lemma 1.1. The residue theorem (Theorem 2.2 of the lesson on traces) gives
+<span class="math math-display" data-tex="\[
+\langle[J],[T]\rangle=-\sum_jc_jl_j(T)=-V([T]).
+\]">\[
+\langle[J],[T]\rangle=-\sum_jc_jl_j(T)=-V([T]).
+\]</span>
+If <span class="math" data-tex="\(P\)">\(P\)</span> is changed by <span class="math" data-tex="\(S\in H^0(C,\theta)^{\oplus2}\)">\(S\in H^0(C,\theta)^{\oplus2}\)</span>, then <span class="math" data-tex="\(S=\xi^2S&#x27;\)">\(S=\xi^2S&#x27;\)</span> with <span class="math" data-tex="\(S&#x27;\in H^0(C,2H)^{\oplus2}\)">\(S&#x27;\in H^0(C,2H)^{\oplus2}\)</span> (Proposition 3.3(3) there), so <span class="math" data-tex="\(u\wedge S=\xi^2(u\wedge S&#x27;)\in\xi^2H^0(C,3H)\)">\(u\wedge S=\xi^2(u\wedge S&#x27;)\in\xi^2H^0(C,3H)\)</span>, and <span class="math" data-tex="\([J]\)">\([J]\)</span> is unchanged.</p>
+<p>(3), remaining parts. On the disc at <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, drop the subscript. Since <span class="math" data-tex="\(r=zu\)">\(r=zu\)</span>, <span class="math" data-tex="\(P=p+mr&#x27;=p+cu/z+cu&#x27;\)">\(P=p+mr&#x27;=p+cu/z+cu&#x27;\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+cJ&amp;=c\,u\wedge p+c\,u\wedge\frac{cu}{z}\\
+&amp;\quad+c\,u\wedge cu&#x27;=R\wedge p+R\wedge R&#x27; .
+\end{aligned}
+\]">\[
+\begin{aligned}
+cJ&amp;=c\,u\wedge p+c\,u\wedge\frac{cu}{z}\\
+&amp;\quad+c\,u\wedge cu&#x27;=R\wedge p+R\wedge R&#x27; .
+\end{aligned}
+\]</span>
+The coefficient of <span class="math" data-tex="\(J\)">\(J\)</span> in <span class="math" data-tex="\(\tau_j=\mathfrak f_j\ell_j^2\)">\(\tau_j=\mathfrak f_j\ell_j^2\)</span> at <span class="math" data-tex="\(q_j\)">\(q_j\)</span> is <span class="math" data-tex="\((u\wedge P)(0)\)">\((u\wedge P)(0)\)</span>, so
+<span class="math math-display" data-tex="\[
+c_jl_j(J)=R_j(0)\wedge p_j(0)+W_j .
+\]">\[
+c_jl_j(J)=R_j(0)\wedge p_j(0)+W_j .
+\]</span>
+By (4), <span class="math" data-tex="\([J]\)">\([J]\)</span> is the metric dual of <span class="math" data-tex="\(-V\)">\(-V\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_jl_j(J)&amp;=v_j^*([J])=-v_j^*\cdot V\\
+&amp;=(v_j^*)^2-1=W_j-1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+c_jl_j(J)&amp;=v_j^*([J])=-v_j^*\cdot V\\
+&amp;=(v_j^*)^2-1=W_j-1 .
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(R_j(0)\wedge p_j(0)=-1\)">\(R_j(0)\wedge p_j(0)=-1\)</span>, that is <span class="math" data-tex="\(p_j(0)\wedge R_j(0)=1\)">\(p_j(0)\wedge R_j(0)=1\)</span>. Summing <span class="math" data-tex="\(W_j-1=-v_j^*\cdot V\)">\(W_j-1=-v_j^*\cdot V\)</span> over <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(-V^2=-90=-9\deg L\)">\(-V^2=-90=-9\deg L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In the same notation,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;=\frac{R_j(0)}{z_j}+p_j(0)\\
+&amp;\quad+2R_j&#x27;(0)+O(z_j),
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+P&amp;=\frac{R_j(0)}{z_j}+p_j(0)\\
+&amp;\quad+2R_j&#x27;(0)+O(z_j),
+\end{aligned}
+\tag{3.2}
+\]</span>
+since <span class="math" data-tex="\(cu/z=R(z)/z\)">\(cu/z=R(z)/z\)</span>, which is <span class="math" data-tex="\(R(0)/z+R&#x27;(0)+O(z)\)">\(R(0)/z+R&#x27;(0)+O(z)\)</span>, and <span class="math" data-tex="\(cu&#x27;=R&#x27;(0)+O(z)\)">\(cu&#x27;=R&#x27;(0)+O(z)\)</span>.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1</strong> (easy). Show that <span class="math" data-tex="\(\xi^2u_1^3,\ \xi^2u_1^2u_2,\ \xi^2u_1u_2^2,\ \xi^2u_2^3\)">\(\xi^2u_1^3,\ \xi^2u_1^2u_2,\ \xi^2u_1u_2^2,\ \xi^2u_2^3\)</span> form a basis of the radical of <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(H^0(C,\Lambda)\)">\(H^0(C,\Lambda)\)</span>.</p>
+<p><strong>4.2</strong> (medium). Show that <span class="math" data-tex="\(\dim\mathcal W=2\)">\(\dim\mathcal W=2\)</span> also follows from Lemma 1.1(2) alone, without Proposition 3.2 of the lesson on traces.</p>
+<p><strong>4.3</strong> (medium). Verify (2.5) from (2.4) by expanding both principal parts to order <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>.</p>
+<p><strong>4.4</strong> (medium). Using Lemma 3.1, show that a change of compatible coordinates at <span class="math" data-tex="\(q_j\)">\(q_j\)</span> replaces <span class="math" data-tex="\(c_j\)">\(c_j\)</span> by <span class="math" data-tex="\(g_0^7c_j\)">\(g_0^7c_j\)</span>, <span class="math" data-tex="\(R_j(0)\)">\(R_j(0)\)</span> by <span class="math" data-tex="\(g_0^2R_j(0)\)">\(g_0^2R_j(0)\)</span>, leaves the principal part prescription satisfied by the same <span class="math" data-tex="\(P\)">\(P\)</span>, and leaves <span class="math" data-tex="\(W_j\)">\(W_j\)</span> and <span class="math" data-tex="\(p_j(0)\wedge R_j(0)\)">\(p_j(0)\wedge R_j(0)\)</span> unchanged.</p>
+<p><strong>4.5</strong> (medium). Show that <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span> and that <span class="math" data-tex="\(J\notin\xi^2H^0(C,3H)\)">\(J\notin\xi^2H^0(C,3H)\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> By Lemma 1.1(3) the radical is <span class="math" data-tex="\(\xi^2H^0(C,3H)\)">\(\xi^2H^0(C,3H)\)</span>. The four cubic monomials in <span class="math" data-tex="\(u_1,u_2\)">\(u_1,u_2\)</span> are pullbacks of a basis of <span class="math" data-tex="\(H^0(\mathbb P^1,\mathcal O(3))\)">\(H^0(\mathbb P^1,\mathcal O(3))\)</span>, and pullback <span class="math" data-tex="\(H^0(\mathbb P^1,\mathcal O(3))\to H^0(C,3H)\)">\(H^0(\mathbb P^1,\mathcal O(3))\to H^0(C,3H)\)</span> is an isomorphism (proof of Lemma 1.1(2)); multiplication by <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span> is injective.</p>
+<p><strong>4.2.</strong> <span class="math" data-tex="\(H^0(C,\Lambda)=H^0(\mathbb P^1,E)\)">\(H^0(C,\Lambda)=H^0(\mathbb P^1,E)\)</span> has dimension <span class="math" data-tex="\(4+1+1+0=6\)">\(4+1+1+0=6\)</span> by the splitting <span class="math" data-tex="\(E\cong\mathcal O(3)\oplus\mathcal O^{\oplus2}\oplus\mathcal O(-3)\)">\(E\cong\mathcal O(3)\oplus\mathcal O^{\oplus2}\oplus\mathcal O(-3)\)</span>, and <span class="math" data-tex="\(\xi^2H^0(C,3H)=H^0(\mathcal P)\)">\(\xi^2H^0(C,3H)=H^0(\mathcal P)\)</span> has dimension four. So <span class="math" data-tex="\(\dim\mathcal W=2\)">\(\dim\mathcal W=2\)</span>.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(1/\kappa=\kappa_0^{-1}-\kappa_1\kappa_0^{-2}z+O(z^2)\)">\(1/\kappa=\kappa_0^{-1}-\kappa_1\kappa_0^{-2}z+O(z^2)\)</span>, so <span class="math" data-tex="\(\pi/(\kappa z^2)\)">\(\pi/(\kappa z^2)\)</span> has principal part <span class="math" data-tex="\(\pi_0\kappa_0^{-1}z^{-2}+(\pi_1\kappa_0^{-1}-\kappa_1\pi_0\kappa_0^{-2})z^{-1}\)">\(\pi_0\kappa_0^{-1}z^{-2}+(\pi_1\kappa_0^{-1}-\kappa_1\pi_0\kappa_0^{-2})z^{-1}\)</span>. Also <span class="math" data-tex="\(b^{-2}=b_1^{-2}z^{-2}(1-2b_2b_1^{-1}z+O(z^2))\)">\(b^{-2}=b_1^{-2}z^{-2}(1-2b_2b_1^{-1}z+O(z^2))\)</span>, so <span class="math" data-tex="\(\widetilde\pi/b^2\)">\(\widetilde\pi/b^2\)</span> has principal part <span class="math" data-tex="\(\widetilde\pi_0b_1^{-2}z^{-2}+(\widetilde\pi_1b_1^{-2}-2b_2\widetilde\pi_0b_1^{-3})z^{-1}\)">\(\widetilde\pi_0b_1^{-2}z^{-2}+(\widetilde\pi_1b_1^{-2}-2b_2\widetilde\pi_0b_1^{-3})z^{-1}\)</span>. Equating the coefficients of <span class="math" data-tex="\(z^{-2}\)">\(z^{-2}\)</span> gives the first formula of (2.5); substituting it into the coefficients of <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> gives the second.</p>
+<p><strong>4.4.</strong> By Lemma 3.1, <span class="math" data-tex="\(l^{\mathrm{new}}=g_0^{-7}l\)">\(l^{\mathrm{new}}=g_0^{-7}l\)</span>, so the same <span class="math" data-tex="\(v^*\)">\(v^*\)</span> gives <span class="math" data-tex="\(c^{\mathrm{new}}=g_0^7c\)">\(c^{\mathrm{new}}=g_0^7c\)</span>. Since <span class="math" data-tex="\(r^{\mathrm{new}}=g^{-1}r\)">\(r^{\mathrm{new}}=g^{-1}r\)</span> and <span class="math" data-tex="\(m^{\mathrm{new}}=c^{\mathrm{new}}/\zeta\)">\(m^{\mathrm{new}}=c^{\mathrm{new}}/\zeta\)</span> with <span class="math" data-tex="\(\zeta=\psi&#x27;(0)z+O(z^2)=g_0^4z+O(z^2)\)">\(\zeta=\psi&#x27;(0)z+O(z^2)=g_0^4z+O(z^2)\)</span>, <span class="math" data-tex="\(R^{\mathrm{new}}(0)=g_0^7c\,g_0^{-1}u(0)/g_0^4=g_0^2R(0)\)">\(R^{\mathrm{new}}(0)=g_0^7c\,g_0^{-1}u(0)/g_0^4=g_0^2R(0)\)</span>. The row <span class="math" data-tex="\(P^{\mathrm{new}}=g^{-2}P\)">\(P^{\mathrm{new}}=g^{-2}P\)</span> has <span class="math" data-tex="\(\zeta^{-1}\)">\(\zeta^{-1}\)</span>-coefficient <span class="math" data-tex="\(g_0^{-2}\psi&#x27;(0)R(0)=g_0^2R(0)\)">\(g_0^{-2}\psi&#x27;(0)R(0)=g_0^2R(0)\)</span>, the new prescription. Near <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(R^{\mathrm{new}}=\lambda R\)">\(R^{\mathrm{new}}=\lambda R\)</span> with <span class="math" data-tex="\(\lambda=g_0^7z/(\psi g)\)">\(\lambda=g_0^7z/(\psi g)\)</span>, <span class="math" data-tex="\(\lambda(0)=g_0^2\)">\(\lambda(0)=g_0^2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;W^{\mathrm{new}}=\lambda(0)R(0)\\
+&amp;\quad\wedge\frac{\lambda&#x27;(0)R(0)+\lambda(0)R&#x27;(0)}{\psi&#x27;(0)}\\
+&amp;=\frac{g_0^4W}{g_0^4}=W .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;W^{\mathrm{new}}=\lambda(0)R(0)\\
+&amp;\quad\wedge\frac{\lambda&#x27;(0)R(0)+\lambda(0)R&#x27;(0)}{\psi&#x27;(0)}\\
+&amp;=\frac{g_0^4W}{g_0^4}=W .
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(p^{\mathrm{new}}=P^{\mathrm{new}}-m^{\mathrm{new}}\,dr^{\mathrm{new}}/d\zeta\)">\(p^{\mathrm{new}}=P^{\mathrm{new}}-m^{\mathrm{new}}\,dr^{\mathrm{new}}/d\zeta\)</span> is holomorphic, and <span class="math" data-tex="\(p^{\mathrm{new}}(0)\wedge R^{\mathrm{new}}(0)=1\)">\(p^{\mathrm{new}}(0)\wedge R^{\mathrm{new}}(0)=1\)</span>: the proof of Proposition 3.2(3) uses only the principal parts of <span class="math" data-tex="\(P\)">\(P\)</span> and property (4), and both hold in the new coordinates. (The check script of this course also verifies <span class="math" data-tex="\(p^{\mathrm{new}}(0)\wedge R^{\mathrm{new}}(0)=p(0)\wedge R(0)\)">\(p^{\mathrm{new}}(0)\wedge R^{\mathrm{new}}(0)=p(0)\wedge R(0)\)</span> directly from the transformation rules, for generic Taylor coefficients.)</p>
+<p><strong>4.5.</strong> <span class="math" data-tex="\(V^2=90\ne0\)">\(V^2=90\ne0\)</span>, so <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span>. By Proposition 3.2(4), <span class="math" data-tex="\(\langle[J],\cdot\rangle=-V\ne0\)">\(\langle[J],\cdot\rangle=-V\ne0\)</span>, so <span class="math" data-tex="\([J]\ne0\)">\([J]\ne0\)</span> in <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span>, that is <span class="math" data-tex="\(J\notin\xi^2H^0(C,3H)\)">\(J\notin\xi^2H^0(C,3H)\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-048] OpenAI, <em>A singular normal affine surface with free tangent sheaf</em> (manuscript, 23 September 2026), in the release github.com/openai/math, family 048. Section 3: the trace form, the identification by full principal parts, and the residue data.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

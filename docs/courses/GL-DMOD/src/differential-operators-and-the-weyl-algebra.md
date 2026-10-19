@@ -1,8 +1,8 @@
 # Differential operators and the Weyl algebra
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Mathematical and source-comparison corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; original exposition and complete solutions retained.*
+
 
 A differential equation allows multiplication by a function and differentiation, and it matters which comes first. On the affine line, differentiating a product gives
 

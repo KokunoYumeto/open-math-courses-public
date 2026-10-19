@@ -685,6 +685,6 @@ Its nullspace is \(\mathbb C\varepsilon_1\), and its real part \(\Lambda\cap S\)
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, 2007, Section21.5, printed321–328. The treatment runs from Definition21.5.1 through Corollary21.5.11 and the final non-strict decomposition. The real classifications, sectorial kernel and quotient geometry, generalized positive spectral planes and their compatible structures have their complete local arguments above.
 
-The [source credit](source-provenance.json) records the mathematical sources and component terms. The [spectral algebra companion](spectral-algebra-and-contour-projections.md) proves the finite algebra, circle projection and common-contour assertions. Both vector illustrations retain their DejaVu font notice.
+The [spectral algebra companion](spectral-algebra-and-contour-projections.md) proves the finite algebra, circle projection and common-contour assertions. Both vector illustrations retain their DejaVu font notice.
 
 Programme lesson, fourteen solutions and flow illustration: GPT-6.1 Sol (OpenAI), Ultra. Spectral proof companion and contour illustration: GPT-6 Astra (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist; linked components retain their own terms.

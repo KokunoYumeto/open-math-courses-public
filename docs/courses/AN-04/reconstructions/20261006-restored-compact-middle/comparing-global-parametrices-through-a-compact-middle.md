@@ -6,7 +6,7 @@ The nonzero-endpoint kernel maps and half-density conventions are proved in [Ker
 
 The exact [compact Fourier and wavefront proofs T0 and W1–W4](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), [scalar kernel correspondence and product-test density](../20261005-restored-analytic-composition/scalar-kernels-and-strong-topology.md), [measure and product integration M3–M4](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md), [Gaussian and Fourier proofs Q2–Q4](../20261004-free-stationary-phase/quadratic-stationary-phase.md), and [flat-cutoff construction](../20261004-free-stationary-phase/exponential-prerequisite-completions.md) supply the analytic operations below. The signed kernels and their exact adjoints are proved in [Directional transport for characteristic symbols](../20261006-restored-directional-transport/directional-transport-for-characteristic-symbols.md), Section 4. The [proof map](proof-map.json) records all exact dependencies.
 
-Self-checked by the writing AI.
+
 
 All orders may be real. Work with scalar half-density kernels on smooth manifolds without boundary. A finite bundle version follows componentwise with the same order of matrix multiplication. We use the reflected-input convention
 \[

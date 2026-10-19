@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Operators, matrix relations and internal tensor–Hom</title><link rel="stylesheet" href="assets/course.css"><style>.math-display:focus-visible{outline:2px solid #155980;outline-offset:3px}</style><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Draft lesson.</p><h1 id="operators-matrix-relations-and-internal-tensor-hom"><span id="ring-actions-and-tensor-hom-in-abelian-categories"></span>Operators, matrix relations and internal tensor–Hom</h1>
-<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0. This reconstructed version has no independent review.</em></p>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0.</em></p>
 <p>An operator gives two useful objects: its kernel and its cokernel. They can have the same dimension while the map naturally joining them fails to be an isomorphism. We begin with that computation, then use finite matrices of operators to interpret module presentations in an abelian category. Infinite presentations require additional limits; the finite calculation tells us precisely which ones.</p>
 <p>Throughout, <span class="math" data-tex="\(k\)">\(k\)</span> is a commutative unital ring, <span class="math" data-tex="\(R\)">\(R\)</span> is an associative unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebra with central scalars, and <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian category. Thus its morphism groups are <span class="math" data-tex="\(k\)">\(k\)</span>-modules and composition is <span class="math" data-tex="\(k\)">\(k\)</span>-bilinear. Neither <span class="math" data-tex="\(R\)">\(R\)</span> nor its internal actions need be commutative. Rings, ordinary modules and indexing sets belong to a fixed universe; morphism groups are small there, and categories may belong to a larger universe. A category need not be essentially small.</p>
 <p>We use the full kernel/cokernel and coimage–image proofs in <a href="kernels-cokernels-and-the-abelian-comparison.html#1-universal-maps-into-and-out-of-zero">Kernels, cokernels and the abelian comparison</a>. Section 6 gives the ordinary balanced-module construction needed for iteration. The constructions here do not require that an object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> have an underlying set.</p>
@@ -160,6 +160,46 @@ Define <span class="math" data-tex="\(D_X:X^m\to X^q\)">\(D_X:X^m\to X^q\)</span
 <p>The one-sided exactness proofs in Section 5 use only the selected presentation. Hence they already apply here to the object variable for every fixed finitely presented module, and to sequences whose ordinary module terms are all finitely presented. Over a general ring this does not assert that finitely presented modules form an abelian category.</p>
 <h2 id="5-which-infinite-operations-are-actually-needed"><span id="4-tensoring-a-module-with-an-object"></span><span id="5-an-internal-hom-object"></span>5. Which infinite operations are actually needed</h2>
 <p>Assume first that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all small coproducts. Every small right <span class="math" data-tex="\(R\)">\(R\)</span>-module has a presentation by small free modules, so the finite tensor matrix extends to a coproduct matrix. Each relation still has finite support.</p>
+<p>The ordinary free presentations can be specified without any tensor construction. Use the finite-support sums, submodules and quotients of <a href="kernels-cokernels-and-the-abelian-comparison.html#5-module-kernels-and-a-missing-finite-kernel">Kernels and cokernels, §5</a>. For a small right module <span class="math" data-tex="\(N\)">\(N\)</span>, let <span class="math" data-tex="\(F_0(N)=\bigoplus_{n\in N}R\)">\(F_0(N)=\bigoplus_{n\in N}R\)</span>, with basis symbol <span class="math" data-tex="\([n]\)">\([n]\)</span>, and define
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+\epsilon_N:F_0(N)\longrightarrow N,\qquad
+\epsilon_N([n]r)=nr,\\
+K_N=\ker\epsilon_N,\qquad
+F_1(N)=\bigoplus_{z\in K_N}R,\\
+d_N:F_1(N)\longrightarrow F_0(N),\qquad
+d_N([z]r)=zr.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\epsilon_N:F_0(N)\longrightarrow N,\qquad
+\epsilon_N([n]r)=nr,\\
+K_N=\ker\epsilon_N,\qquad
+F_1(N)=\bigoplus_{z\in K_N}R,\\
+d_N:F_1(N)\longrightarrow F_0(N),\qquad
+d_N([z]r)=zr.
+\end{gathered}
+\]</span>
+Finite sums define both maps, and their formulas prove right linearity. The map <span class="math" data-tex="\(\epsilon_N\)">\(\epsilon_N\)</span> is onto because <span class="math" data-tex="\(\epsilon_N([n]1)=n\)">\(\epsilon_N([n]1)=n\)</span>. Its kernel is a small submodule of the small module <span class="math" data-tex="\(F_0(N)\)">\(F_0(N)\)</span>. The image of <span class="math" data-tex="\(d_N\)">\(d_N\)</span> is exactly <span class="math" data-tex="\(K_N\)">\(K_N\)</span>: every image belongs to the kernel, and <span class="math" data-tex="\(d_N([z]1)=z\)">\(d_N([z]1)=z\)</span> for every kernel element. Consequently
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+F_1(N)\xrightarrow{d_N}F_0(N)
+\xrightarrow{\epsilon_N}N\longrightarrow0
+\]">\[
+F_1(N)\xrightarrow{d_N}F_0(N)
+\xrightarrow{\epsilon_N}N\longrightarrow0
+\]</span>
+is an actual small free presentation. Each <span class="math" data-tex="\(d_N([z])=z\)">\(d_N([z])=z\)</span> has finite support in <span class="math" data-tex="\(F_0(N)\)">\(F_0(N)\)</span>, supplying the finite support of every matrix column used below.</p>
+<p>For a left module <span class="math" data-tex="\(M\)">\(M\)</span>, take the left free modules <span class="math" data-tex="\(F_0(M)=\bigoplus_{m\in M}R\)">\(F_0(M)=\bigoplus_{m\in M}R\)</span> and <span class="math" data-tex="\(F_1(M)=\bigoplus_{z\in K_M}R\)">\(F_1(M)=\bigoplus_{z\in K_M}R\)</span>, and use
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\epsilon_M(r[m])=rm,\qquad
+K_M=\ker\epsilon_M,\qquad
+d_M(r[z])=rz.
+\]">\[
+\epsilon_M(r[m])=rm,\qquad
+K_M=\ker\epsilon_M,\qquad
+d_M(r[z])=rz.
+\]</span>
+Left linearity, surjectivity, equality of the image with the kernel, and finite column support follow from these formulas by the same individual tests at <span class="math" data-tex="\(1[m]\)">\(1[m]\)</span> and <span class="math" data-tex="\(1[z]\)">\(1[z]\)</span>. No vector-space basis, finite generation, or commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> is required. For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> over a nonzero ring, <span class="math" data-tex="\(F_0(0)\)">\(F_0(0)\)</span> need not vanish: its basis has the single label <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(\epsilon_0=0\)">\(\epsilon_0=0\)</span>, and <span class="math" data-tex="\(d_0\)">\(d_0\)</span> is onto <span class="math" data-tex="\(F_0(0)\)">\(F_0(0)\)</span>. Its cokernel is therefore still zero. The same observation applies to a zero left module. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, every unital module and every free module in the construction is zero. No deletion of the zero-labelled generator is needed. These presentations are also the one-object case of the explicit <a href="modules-and-tensor-functors-over-small-preadditive-categories.html#2-representable-probes-and-actual-presentations">representable-module presentations</a>.</p>
 <p><strong>Theorem 5.1 (arbitrary right modules).</strong> The object in (4.1) exists. These representing objects define a <span class="math" data-tex="\(k\)">\(k\)</span>-linear bifunctor
 <span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
 (-\otimes_R-):

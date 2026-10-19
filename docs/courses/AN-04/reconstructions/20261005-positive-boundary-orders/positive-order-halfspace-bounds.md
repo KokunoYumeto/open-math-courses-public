@@ -1,6 +1,6 @@
 # Boundary operators of every nonnegative real order
 
-This companion retains the complete Section 14 proof of AN03-U032, *Totally characteristic operators on the half space*. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026; both CC0. Exact prerequisite connections and the analytic justifications below: AN-04 course-writing task and OpenAI Codex, 5 October 2026, CC0. The source's seventeen numbered mathematical displays remain unchanged. Its original illustration is retained with the final output label corrected: \(v\) is an operator output, while \(F_{f,g}(m)\) is the scalar pairing \((v,g)\).
+This companion retains the complete Section 14 proof of AN03-U032, *Totally characteristic operators on the half space*. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026; both CC0. Contributions: OpenAI Codex, October 2026, CC0. Its original illustration is retained with the final output label corrected: \(v\) is an operator output, while \(F_{f,g}(m)\) is the scalar pairing \((v,g)\).
 
 The mathematical antecedent is Hörmander III, 2007 eBook, ISBN 978-3-540-49938-1, Section 18.3. Reading, proof construction and ordinary citation are valid. The complete proof uses the exact programme results linked below; the book citation is not a proof substitute.
 

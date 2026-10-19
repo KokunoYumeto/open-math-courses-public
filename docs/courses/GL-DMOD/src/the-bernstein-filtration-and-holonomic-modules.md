@@ -1,8 +1,8 @@
 # The Bernstein filtration and holonomic modules over the Weyl algebra
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Prerequisite reconciliation and reader corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; original proofs and complete solutions retained.*
+
 
 An operator can be complicated in two different ways: it can differentiate many times, or its coefficients can have large polynomial degree. The order filtration measures the first. The Bernstein filtration measures both. Its finite-dimensional pieces let us count how quickly an operator module grows. A remarkable lower bound says that a nonzero module over differential operators in $n$ variables grows at least like a polynomial algebra in $n$ variables. At this smallest possible growth, a positive integer controls every chain of submodules.
 

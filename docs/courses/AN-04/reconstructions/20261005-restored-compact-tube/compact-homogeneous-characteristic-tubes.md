@@ -262,7 +262,7 @@ The figure uses the explicit chart in Exercise 6.3 with \(T=1<\pi/2\). The upper
 
 ## References
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), Section 26.1, Proposition 26.1.6 and Proposition 26.1.3′ PDF 73–74. Source comparison and mathematical credit; the complete geometric extension and quantization bridges are supplied here, using the exact programme proofs named above.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, approved Springer eBook ISBN 978-3-540-49938-1 (2007), Section 21.3, Theorem 21.3.1. Its full receiving local homogeneous-coordinate proof is in the linked prescribed-coordinate and function-normal-form lessons.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), Section 26.1, Proposition 26.1.6 and Proposition 26.1.3′ PDF 73–74. Source comparison and mathematical credit; the complete geometric extension and quantization bridges are supplied here, using the exact programme proofs named above. - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, Springer eBook ISBN 978-3-540-49938-1 (2007), Section 21.3, Theorem 21.3.1. Its full receiving local homogeneous-coordinate proof is in the linked prescribed-coordinate and function-normal-form lessons.
 
-*Preserved programme exposition and all three original solutions retained. Current source and proof review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC. Independent human review and the wider course remain unfinished.*
+
+*Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC.*

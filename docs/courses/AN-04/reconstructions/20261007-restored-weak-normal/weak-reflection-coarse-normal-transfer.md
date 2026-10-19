@@ -87,11 +87,11 @@ its zero-, linear- and quadratic-normal *coefficient* norms sufficiently
 small, keep its weak-equation multiplier and full matrix lower form, and
 establish the sharp source trade separately.
 
-Exact unchanged providers are:
-[U059, Sections 3–5, SF5/SF17](../20261007-restored-sharp-form/sharp-boundary-form-defect.md),
-[U060, Section 3, GN13](../20261007-restored-glancing-normal-operator/glancing-normal-energy-and-operator-errors.md),
-[U058 uniform microsupport](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md),
-and the actual normal-commutator calculus cited by
-[U062, WC6](../20261007-restored-weak-commutator/weak-commutators-and-variable-regularizers.md).
-These complete proofs are used directly. Original eligible receiving
-expression is CC0-1.0; approved source routes remain valid.
+Prerequisite proofs are: [U059, Sections 3–5, SF5/SF17](../20261007-restored-sharp-form/sharp-boundary-form-defect.md), [U060, Section 3, GN13](../20261007-restored-glancing-normal-operator/glancing-normal-energy-and-operator-errors.md), [U058 uniform microsupport](../20261007-restored-uniform-microsupport/uniform-microsupport-and-dual-sources.md), and the actual normal-commutator calculus cited by [U062, WC6](../20261007-restored-weak-commutator/weak-commutators-and-variable-regularizers.md). These complete proofs are used directly. Original expression is CC0-1.0; linked components retain their terms.
+
+
+
+
+
+
+

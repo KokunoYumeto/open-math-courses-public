@@ -489,8 +489,8 @@ the source's exercises and external references are not programme
 proof providers. Its text, HTML, figures and bibliography are
 not reproduced.
 
-This component completes the strict Sobolev-to-intrinsic-order
-implication, separately from F7's leading-symbol cancellation
-criterion. Global principal-symbol and Maslov identification,
-the complete receiving editions and the remaining AN-04 course
-are separate unfinished obligations.
+This component completes the strict Sobolev-to-intrinsic-order implication, separately from F7's leading-symbol cancellation criterion.
+
+
+
+

@@ -755,12 +755,12 @@ The underlying definitions and theorems are Hörmander, *The Analysis of Linear 
 
 The transverse theorem does not close nontransverse complex composition, general complex principal-symbol bundles, arbitrary symbol types, propagation, hyperbolic or mixed problems, or global uniform bounds without support assumptions. The whole course remains in development.
 
-Self-checked by the writing AI. The recorded finite controls verify specific conic, quadratic, Gaussian and metric calculations.
 
-## Sources and restoration
 
-The source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, ISBN 978-3-642-00136-9, PDF 54–63 / printed 43–52, from the Section 25.5 heading through its final endpoint estimate. Reading, proof construction and ordinary citations to that approved book are valid. The source supports the mathematics; the explanations, expanded arguments, examples and solutions are independently written.
+## Sources <a id="sources-and-restoration"></a>
 
-The [source record](source-provenance.json) and [proof map](proof-map.json) identify the exact source and programme providers. All seventeen original solved exercises remain, with only the stated endpoint-provider wording updated in Exercises 14 and 17. The original illustration is retained with its portable source and the DejaVu, STIX and BaKoMa notices. The endpoint companion adds a reproducible illustration of its precise scaling and summation bounds.
+The source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, ISBN 978-3-642-00136-9, PDF 54–63 / printed 43–52, from the Section 25.5 heading through its final endpoint estimate. The source supports the mathematics; the explanations, expanded arguments, examples and solutions are independently written.
 
-Original lesson, examples, seventeen solutions and original illustration: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Endpoint proof: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. Earlier programme components keep their own licences.  The restored lesson and complete endpoint bridge have been reviewed against exact current programme proofs. Independent human review, remaining course work and public-release clearance remain pending.
+The [prerequisite proof index](proof-map.json) gives the earlier results used here. Seventeen solved exercises and two reproducible illustrations accompany the text. The illustrations retain the DejaVu, STIX and BaKoMa notices.
+
+Original lesson, examples, seventeen solutions and original illustration: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Endpoint proof: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. Earlier programme components keep their own licences.

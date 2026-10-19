@@ -8,7 +8,7 @@ The flat-line construction below uses the actual locally constant Maslov transit
 
 [Compact parameter integration](../reconstructions/20261004-free-stationary-phase/integration-prerequisite-completions.md), the [scalar power and cutoff constructions](../reconstructions/20261004-free-stationary-phase/exponential-prerequisite-completions.md), and the preceding lesson's complex exponential calculation supply all elementary operations below. The [proof map](../reconstructions/20261006-restored-directional-transport/proof-map.json) records each exact current provider.
 
-Self-checked by the writing AI.
+
 
 ## 1. Signed time on the relation
 

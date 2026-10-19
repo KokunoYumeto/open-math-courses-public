@@ -761,13 +761,13 @@ Then \(\eta_1dy_1+\eta_2dy_2+\eta_3dy_3=\sum_j\xi_jdx_j\); the \(x_1h\,dx_1\) te
 \]
 It vanishes on \(V\), while it is nonzero at nearby points with \(\xi_2\ne0\). The nonzero homogeneous degree-zero multiplier \(e^{-x_1-i x_2}\) gives \(\xi_1+i\xi_2\) exactly, with identity coordinates and the positive third-momentum mark. This example satisfies the source's on-zero-set bracket condition in its full intended scope.
 
-Independent programme exposition: CC0-1.0 to the extent rights exist. [Source credit and component terms](source-provenance.json) accompany the [exact proof map](proof-map.json).
+Independent programme exposition: CC0-1.0 to the extent rights exist. The [prerequisite proof index](proof-map.json) gives the earlier results used here. Linked components retain their terms.
 
 ## Mathematical sources
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, 2007 edition, Section21.3, printed296–303. The source results include the real, simple complex, fixed-contact and involutive models with both marked signs.
 - Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, 2003 edition, Theorems7.5.5–7.5.6, printed200–201. Section4 proves the needed one-variable complex division, with its common domain and lack of uniqueness.
 - Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, 2005 edition, Theorem13.3.3 and Corollary13.3.5, printed187–189. Section7 proves the two-variable elliptic specialization with a common parameter domain and every derivative estimate.
-- [Source credit and component terms](source-provenance.json) accompany the exact proof dependencies. The numerical illustration carries its DejaVu font notice.
+- The numerical illustration carries its DejaVu font notice.
 
 Programme text, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra. Additional proof arguments: GPT-6 Astra (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their individual terms.

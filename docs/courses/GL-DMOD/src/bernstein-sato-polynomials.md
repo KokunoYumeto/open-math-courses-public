@@ -1,8 +1,8 @@
 # Bernstein–Sato polynomials
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Prerequisite reconciliation, distributional-continuation, cusp-minimality, weighted-homogeneous, polynomial root, analytic local Hom, maximal-contact, tuning, going-up, divisorial-removal and monomial-reduction proofs, and reader corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; original proofs and complete solutions retained.*
+
 
 Differentiating $x^{s+1}$ produces $(s+1)x^s$. For a general polynomial $f$, a suitable differential operator still lowers the formal exponent by one, but the scalar factor becomes a polynomial in $s$. The smallest such scalar factor is the Bernstein–Sato polynomial. Its existence follows from a growth estimate and finite length, even when no useful operator is apparent. The same estimate proves that allowing arbitrary powers of $f$ in denominators preserves holonomicity.
 
@@ -2121,7 +2121,7 @@ By contrast, suppose one repeatedly blows up intersections while leaving the ove
 
 This lemma supplies bounds for any finite stage that has actually been constructed. It does **not** turn an indefinitely continuing construction into a finite one: the neighbourhood and bounds could change at every stage. Theorem 6.19 has its own decreasing invariant, which is why its termination conclusion is stronger than a repeated appeal to compactness.
 
-Divisorial removal and the marked monomial stage are now proved analytically. Completing analytic principalization still requires the synchronized dimension-induction construction for arbitrary non-monomial ideals, its compatible local descent near the compact exceptional fibres, and the passage to the full principalization statement. The analytic proper characteristic estimate remains a further, distinct input to the full holomorphic-germ Bernstein–Sato root theorem.
+The analytic divisorial-removal and marked-monomial arguments apply under the hypotheses of Sections 6.8–6.9. Completing analytic principalization still requires the synchronized dimension-induction construction for arbitrary non-monomial ideals, its compatible local descent near the compact exceptional fibres, and the passage to the full principalization statement. The analytic proper characteristic estimate remains a further, distinct input to the full holomorphic-germ Bernstein–Sato root theorem.
 
 ## 7. Exercises with complete solutions
 

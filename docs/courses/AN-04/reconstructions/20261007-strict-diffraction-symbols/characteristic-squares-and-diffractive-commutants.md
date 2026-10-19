@@ -389,4 +389,4 @@ S5–S6 convert a negative square known on the characteristic roots into a nonpo
 
 The next receiving proof must quantize these symbols, control the complete lower matrix terms and regularizer errors, and derive a legitimate estimate in each original weak domain. A normal differential commutant does not automatically preserve the Dirichlet test space. In the \(H^1\) realization, derivative-on-test lower terms retain their boundary functional. Natural-dual forcing must retain its actual action. These issues are not resolved by the principal-symbol matrix inequality or by the scalar Dirichlet source theorem.
 
-The earlier programme already supplies full weak commutators, interior matrix propagation, transverse reflection, smooth descent, ordinary symbol calculus and matrix transport. Their exact current versions are to be used. The full AN-04 objective, including strict diffraction and all remaining assigned chapters, stays active.  This supplement has no public-release authorization.
+The prerequisite proof index gives the earlier results used here.

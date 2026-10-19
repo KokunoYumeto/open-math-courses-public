@@ -2,7 +2,7 @@
 
 A character has a degree-one Euler product. Inducing it from a quadratic field produces a degree-two Euler product over the base field. The converse theorem turns this elementary change of viewpoint into cusp forms. We will follow the construction far enough to prove the precise weight, primitive level and Fourier expansion of a CM theta series, then compute two examples with very different infinity types.
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 The base field is \(\mathbb Q\), unless another global field is explicitly mentioned. Write \(C_K=K^\times\backslash\mathbb A_K^\times\), \(C_K^1=\ker|\cdot|\), and \(\sigma\) for the nontrivial automorphism of a quadratic extension. Our \(L^*(s,\pi)\) includes the archimedean factor, while \(L_{\mathrm{fin}}\) does not. The unitary normalization is that of Global Whittaker functions and the L-function of a cuspidal representation. In particular, a weight-\(k\) classical form has
 

@@ -8,7 +8,7 @@ There is a necessary geometric correction. The broad Hessian-proportionality ass
 
 The exact earlier proofs are [nonnegative semidefinite division](../20261011-semidefinite-quadratic-division/semidefinite-division-with-a-nonnegative-quotient.html), SQD:H1; [intrinsic quadratic transport](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html), QAF:T0–T2; [one-direction propagation](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.html), ODP:B0; [full cutoff energy](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html), CCE:P0; and [exact-factorization descent](../20261012-one-dimensional-descent/one-dimensional-descent-and-affine-concavity.html), ODD:C2. The proof map pins the complete receiving dependency chain.
 
-This independent exposition, its three complete solutions and original figure are CC0-1.0. Linked components retain their terms. Human foundational proofs remain external, so internal export P514 closure is unclaimed. 
+This independent exposition, its three complete solutions and original figure are CC0-1.0. Linked components retain their terms. Human foundational proofs remain external. 
 
 ## 1. The two comparison properties
 
@@ -430,4 +430,4 @@ It has rank one at zero and rank two elsewhere. Every invertible complex pullbac
 
 ![Allowed and forbidden turning jumps, nested distance cutoffs, and two non-affinely related clocks for a favorable semidefinite symbol.](figures/semiconcave-comparison-and-clocks.svg)
 
-The [figure generator](figures/build_figure.py), [finite checks](model-check.json), source record, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the lesson. [General one-dimensional quasiconcavity](../20261012-localized-quasiconcave-propagation/localized-weights-and-quasiconcave-propagation.html) requires no affine parameter. [Escape regularity and semi-global solutions](../20261015-escape-regularity-and-solvability/escape-arcs-regularity-and-semiglobal-solutions.html) uses the full propagation results and exact two-ended geometry.
+[Computational material](figures/build_figure.py) accompanies the text. [General one-dimensional quasiconcavity](../20261012-localized-quasiconcave-propagation/localized-weights-and-quasiconcave-propagation.html) requires no affine parameter. [Escape regularity and semi-global solutions](../20261015-escape-regularity-and-solvability/escape-arcs-regularity-and-semiglobal-solutions.html) uses the full propagation results and exact two-ended geometry.

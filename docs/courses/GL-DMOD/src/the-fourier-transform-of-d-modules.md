@@ -1,6 +1,6 @@
 # The Fourier transform of D-modules
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 Fourier transformation turns a position into a differentiation operator. For algebraic differential equations this is an exact operation, with no integral convergence condition. An exponential kernel gives the same operation geometrically. On an abelian variety the kernel changes: a universal line bundle with connection replaces the exponential, and the answer lives on a space of flat line bundles.
 

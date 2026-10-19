@@ -1,6 +1,6 @@
 # Local L-factors, epsilon factors and the local converse theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 The germs of a Kirillov function determine the possible poles of its Mellin integral. Its Weyl transform determines the functional equation. Dividing by the two pole-removing factors leaves a unit of a Laurent-polynomial ring, which explains why the epsilon factor is a monomial. Finally, Mellin transforms for all character twists recover every Weyl coefficient and hence the representation.
 
@@ -955,7 +955,7 @@ Section 8 proves the complete matrix construction, its full ideal and functional
 
 Earlier proved local inputs are Lesson 5's compact averaging and admissible duality; Lesson 6's normalized induction, duality and exceptional sequences; Lesson 7's scalar model, full germs, finite Weyl coefficient formula and explicit principal kernel; and Lesson 8's newvector dimension, actual functions and conductors. Theorem 5.1 derives the supercuspidal epsilon exponent from those newvector results, so that equality has not been left as a stated input.
 
-The authorities checked for this lesson are:
+References:
 
 - Hervé Jacquet and Robert P. Langlands, [*Automorphic Forms on GL(2)*](https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf) (1970), §2, Theorem 2.18 and Corollary 2.19, for the local functional equation and converse; §3, Propositions 3.5–3.6 and Corollary 3.7, for principal and special factors; §13, Theorem 13.1 and its constituent calculations, for matrix zeta integrals.
 - Jayce R. Getz and Heekyoung Hahn, [*An Introduction to Automorphic Representations*](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf), draft of 22 April 2022, §11.5, Propositions 11.5.1 and 11.5.4–11.5.6, for the local ideal, functional equation, monomial and conductor formulations.

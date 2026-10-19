@@ -1,14 +1,14 @@
 # D-modules, flat connections and local systems
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Mathematical and source-comparison corrections by GPT-6 Astra (OpenAI), Ultra, October 2026; original exposition and complete solutions retained.*
+
 
 The equation \(u'=u\) has the solution \(e^x\). We can record the equation algebraically without adjoining that function: take a generator \(e\) and impose \(\partial e=e\). A map from this module to a space of functions sends \(e\) to a solution. A horizontal section **inside** the module, however, is \(e^{-x}e\). These two uses of the exponential have opposite signs. Keeping them distinct will organize the passage from differential equations to modules and then to local systems.
 
 We assume the [preceding lesson](differential-operators-and-the-weyl-algebra.md), elementary coherent sheaf theory, Nakayama's lemma and the separatedness of the maximal-ideal filtration on a Noetherian local ring. The analytic part uses holomorphic power series and locally constant sheaves; its local differential-equation argument is proved below. The [Algebraic Geometry Bridge](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100), [Algebraic Topology](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60) and [Complex Analysis](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50) provide background.
 
-For the exact algebra inputs, read finite generators and Nakayama, Theorem 4.2, Artin–Rees, Theorem 5.1, and Krull intersection, Theorem 6.1. The local coordinate construction uses formal étale lifting, Lemma 1.1 and Theorem 1.2 and standard smooth coordinates, Theorems 4.1 and 5.1. The descent step uses free resolutions and comparison, Theorem 1.1, the Tor criterion, Theorem 2.1, and faithfully flat descent, Theorem 3.1. These are programme proofs, not requirements to obtain an outside text. Their exact source and reader revisions are listed in the local-freeness prerequisite record.
+For the exact algebra inputs, read finite generators and Nakayama, Theorem 4.2, Artin–Rees, Theorem 5.1, and Krull intersection, Theorem 6.1. The local coordinate construction uses formal étale lifting, Lemma 1.1 and Theorem 1.2 and standard smooth coordinates, Theorems 4.1 and 5.1. The descent step uses free resolutions and comparison, Theorem 1.1, the Tor criterion, Theorem 2.1, and faithfully flat descent, Theorem 3.1. These are programme proofs, not requirements to obtain an outside text. Their source and reader locations are listed in the local-freeness prerequisite record.
 
 Throughout, \(k\) has characteristic zero and \(X\) is a smooth separated variety of pure dimension \(d\) over \(k\). Write \(\mathcal D=\mathcal D_X\), \(\mathcal T=\mathcal T_X\) and \(\omega_X=\bigwedge^d\Omega_X^1\). A D-module is a left \(\mathcal D\)-module quasi-coherent over \(\mathcal O_X\). Coherence over \(\mathcal O_X\) and coherence over \(\mathcal D\) are different conditions. Analytification is used only over \(\mathbf C\). All local systems here have finite-dimensional complex stalks. No cohomological shift enters the horizontal-section functor in this lesson.
 

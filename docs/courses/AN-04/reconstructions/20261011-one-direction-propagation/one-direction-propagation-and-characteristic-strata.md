@@ -2,7 +2,7 @@
 
 With \(D=-i\partial\), the favorable symbol for increasing-time propagation is \(\tau+i f\) with **\(f\le0\)**. The sign gives an upper quadratic-form bound. An exponential time weight then controls the localized solution by its forcing and incoming regularity. We prove this for distributional inputs, retain the exact outgoing cutoff term, and pass to the unregularized operator on one fixed cone.
 
-The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Springer 2009 eBook, ISBN 978-3-642-00136-9: the characteristic classification at the end of Section 26.5, printed 117, and Proposition 26.6.1, printed 118–119.  Its printed inequality is \(f\le0\); the sign is also checked directly by the differential equation below. This lesson supplies independent exposition and complete receiving arguments. Exact earlier proofs and their versions are in the proof map. The human foundations remain external; internal export P514 closure is not claimed.
+The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Springer 2009 eBook, ISBN 978-3-642-00136-9: the characteristic classification at the end of Section 26.5, printed 117, and Proposition 26.6.1, printed 118–119.  Its printed inequality is \(f\le0\); the sign is also checked directly by the differential equation below. This lesson supplies independent exposition and complete receiving arguments. Exact earlier proofs and their versions are in the proof map. The human foundations remain external.
 
 ## 1. Complete the geometric register
 
@@ -271,6 +271,6 @@ Determine which extension contains \(\gamma(0)\).
 
 ![The favorable time direction in a flat damping model and an isolated zero Hessian inside a quadratic characteristic extension.](figures/one-direction-propagation.svg)
 
-The [figure generator](figures/build_figure.py), [finite checks](model-check.json), [proof review](proof-review.json), [reader checks](reader-check.json) and source credit accompany the editable lesson. Continue with [shrinking real cutoffs](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html), [complex-cutoff energy](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html), [intrinsic directed propagation](../20261011-intrinsic-directed-propagation/intrinsic-orientation-and-entering-regularity.html) and [prescribed concave regularity](../20261011-prescribed-concave-regularity/positive-packets-and-prescribed-concave-regularity.html). These readings keep the indefinite affine scope and the semidefinite rank obstruction.
+[Computational material](figures/build_figure.py) accompanies the text. Continue with [shrinking real cutoffs](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html), [complex-cutoff energy](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html), [intrinsic directed propagation](../20261011-intrinsic-directed-propagation/intrinsic-orientation-and-entering-regularity.html) and [prescribed concave regularity](../20261011-prescribed-concave-regularity/positive-packets-and-prescribed-concave-regularity.html). These readings keep the indefinite affine scope and the semidefinite rank obstruction.
 
 Original expression: CC0-1.0. Linked components retain their terms. 

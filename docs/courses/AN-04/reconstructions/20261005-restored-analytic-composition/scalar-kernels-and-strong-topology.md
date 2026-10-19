@@ -1,6 +1,6 @@
 # Scalar kernels and strong distribution topology
 
-This companion retains the complete scalar kernel proof, Sections 13.1–13.6, equations GK1–GK26, and the bundle adapter G42–G43 from AN03-U012, *Detecting regularity without choosing coordinates*, in *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Both imported mathematical blocks are unchanged. Entry E0 supplies the compact exhaustion referred to in Section 13.1. Entry E1 makes the compact-distribution strong topology and its smooth approximation explicit. Entry E2 gives the same topology conventions on manifolds.
+This companion retains the complete scalar kernel proof, Sections 13.1–13.6, equations GK1–GK26, and the bundle adapter G42–G43 from AN03-U012, *Detecting regularity without choosing coordinates*, in *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Entry E0 supplies the compact exhaustion referred to in Section 13.1. Entry E1 makes the compact-distribution strong topology and its smooth approximation explicit. Entry E2 gives the same topology conventions on manifolds.
 
 Original principal author and publisher: AN-03 course-writing task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI Codex. This selection, exact prerequisite bindings and added entries: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 

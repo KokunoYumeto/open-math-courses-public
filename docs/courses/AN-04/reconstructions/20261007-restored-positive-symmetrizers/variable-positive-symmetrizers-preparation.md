@@ -449,4 +449,4 @@ It is uniformly bounded as a matrix, and its Fourier \(S_b\)-energy is conserved
 
 References: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer, §23.1, printed pages 385–386 (scalar first-order hypotheses and the beginning of the energy argument). The variable-metric system proof is given above, with its exact complete earlier programme proofs linked in the introduction.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra; supporting proofs by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text and figure: CC0-1.0; linked components retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra; supporting proofs by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text and figure: CC0-1.0; linked components retain their own terms.*

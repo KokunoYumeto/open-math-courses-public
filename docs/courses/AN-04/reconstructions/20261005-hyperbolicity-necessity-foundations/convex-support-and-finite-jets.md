@@ -140,4 +140,4 @@ In the Cauchy necessity argument, localize a supported solution by a cutoff \(\e
 \]
 This is the required estimate on the solution support. The order is the same \(k\) as that of \(\eta u\); there is no loss of derivatives and no derivative of \(\eta\) inside \(P^*v\). Complex conjugation converts the bilinear distribution convention to the Hermitian pairing without changing any absolute-value bound.
 
-The proof uses only the compact Taylor, bump, measure, mollifier and distribution-order results explicitly included in the programme. The approved book's support theorem is credited as a mathematical source; CJ1–CJ15 supply the actual programme proof.
+The proof uses only the compact Taylor, bump, measure, mollifier and distribution-order results explicitly included in the programme. The book's support theorem is credited as a mathematical source; CJ1–CJ15 supply the actual programme proof.

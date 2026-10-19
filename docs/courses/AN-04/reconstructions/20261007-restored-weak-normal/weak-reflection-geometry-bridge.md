@@ -171,6 +171,6 @@ not the full phase space. The cap covectors and the tangential coordinate
 \(y=-t/2\) are recorded above. The figure explains the geometric mechanism
 of Sections 1–2; it does not supply the analytic normal estimate.
 
-All prose and the reproducible figure in this owner integration note are
-original eligible expression under CC0-1.0. Exact local provider proofs are
-used directly. Approved sources and complete current programme proofs remain available.
+The prose and reproducible figure are CC0-1.0. Prerequisite proofs are linked above.
+
+

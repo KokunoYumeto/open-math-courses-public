@@ -1,6 +1,6 @@
 # The trace formula for a compact quotient
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A convolution operator can be counted in two ways. Its trace is a sum over irreducible representations, but its kernel is a sum over lattice elements. Evaluating that kernel on the diagonal turns lattice elements into conjugacy classes. We will prove the resulting identity, recover Poisson summation, and compute the trace of a quaternion Hecke operator by counting embeddings of quadratic orders.
 

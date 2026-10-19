@@ -4,7 +4,7 @@ A zero coefficient can collapse an entire characteristic interval to one point o
 
 The antecedents are Hörmander IV, Corollary 26.7.8 and Theorems 26.7.10–11, printed pages 131–134 of the 2009 edition. The earlier [uniform-solvability lesson](../20261011-degenerate-cr-solvability/uniform-solvability-and-degenerate-complex-coordinates.html) supplies Lemmas 26.7.1–5, Theorem 26.7.6 and Corollaries 26.7.7 and 26.7.9. Together the two lessons give the full numbered results of Section 26.7. Here the topology, common domains in the positive perturbation, and the limiting holomorphic argument are proved explicitly.
 
-Original expression, exercises and figure are CC0-1.0. The proof map pins exact earlier proofs and preserves the external human foundation dependencies. Internal export P514 closure is not claimed. 
+Original expression, exercises and figure are CC0-1.0. The proof map pins exact earlier proofs and preserves the external human foundation dependencies.  
 
 ## 1. The coordinate and the exact solution class
 
@@ -278,4 +278,4 @@ If \(1-|x|\le\eta=\delta/16\), its distance from the relevant endpoint is at mos
 
 ![A degenerate coordinate collapses the zero strip to a real line; the rational barrier exceeds one near the endpoint.](figures/degenerate-quotient-and-barrier.svg)
 
-The [figure generator](figures/build_figure.py), [exact checks](model-check.json), source credit, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany the complete proofs. [Uniform degenerate solvability](../20261011-degenerate-cr-solvability/uniform-solvability-and-degenerate-complex-coordinates.html) gives the nonvanishing complex coordinate used here. The [frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) use these uniform barriers in the propagation argument.
+[Computational material](figures/build_figure.py) accompanies the text. [Uniform degenerate solvability](../20261011-degenerate-cr-solvability/uniform-solvability-and-degenerate-complex-coordinates.html) gives the nonvanishing complex coordinate used here. The [frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) use these uniform barriers in the propagation argument.

@@ -312,11 +312,11 @@ Their sum is exactly \(p_1dq_1+p_ndq_n\). Without the correction term in \(Q_1\)
 
 The source pair theorem and common-transversal corollary occur in Hörmander III, Section 21.2. This lesson gives original expanded proofs, including the simultaneous smooth pair chart, common degree-one defining functions, an actual clean cylinder reduction, the full homogeneous model change and inverse, and an ordinary counterpart with its exact primitive corrections. The examples and graded exercises were derived for the course.
 
-The preserved proof and its exact current programme dependencies were reviewed for this restoration; independent human mathematical review and the remaining course work are pending. Bounded exact checks test common normal and radial dimensions, homogeneous and ordinary model changes with both images, common transverse planes including empty blocks, the curved conormal lift, and the clean-versus-tangent distinction. These finite checks support the written proof; they do not independently certify arbitrary smooth pair charts, flow invariance, or the general induction. No source chapter closure, global simultaneous chart, or global field of transversals is claimed.
+The pair charts and transversals here are local. No global simultaneous chart or global field of transversals is asserted.
 
-## Sources and restoration
+## Sources <a id="sources-and-restoration"></a>
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. Both full normal forms and the pointwise linear transversal statement are proved above with their precise ranges and germ qualifications.
-- The [source and restoration record](source-provenance.json) identifies the edition, exact restored proof and reproducible finite checks.
+
 
 Original lesson, examples and ten solutions: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. 

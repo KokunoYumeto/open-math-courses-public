@@ -133,6 +133,22 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **How can oscillation permit a singular function to cross an endpoint?** [*Oscillation and extension order*](src/oscillation-and-extension-order.md) gives the exact finite-order threshold, excludes equality, and constructs a real phase for an arbitrary continuously differentiable amplitude.
 
+- **What survives a concentrating or rapidly oscillating limit?** [*Concentration and oscillatory limits*](src/concentration-and-oscillatory-limits.md) computes point masses, periodic limits and a radial center contribution, resolves two boundary parameters, and proves when weak convergence becomes locally uniform.
+
+- **How do crossings and moving poles affect products?** [*Products, crossings and singular limits*](src/products-crossings-and-singular-limits.md) proves product principal values, quartic subtractions, the logarithmic axis-crossing limit and the exact separation law for overlapping kernels.
+
+- **When does a distribution extend across an endpoint?** [*Primitives and endpoint extension*](src/primitives-and-endpoint-extension.md) proves interval primitive estimates, the finite-measure extension criterion, explicit weighted subtractions and the exact order allowed by an exponential phase.
+
+- **What remains when singular poles cancel?** [*Reciprocal scaling and cancellation at a pole*](src/reciprocal-scaling-and-pole-cancellation.md) proves reciprocal-tail compression, convergent finite-difference formulas for every derivative, and the full smooth-coefficient boundary limits with their point terms.
+
+- **When can a smooth function divide a distribution?** [*Jumps, point jets and smooth division*](src/jumps-jets-and-smooth-division.md) calculates reflected endpoint terms, classifies division by smooth functions on intervals, and proves the obstruction at a flat zero.
+
+- **What happens when a differential coefficient vanishes?** [*Equations across degenerate points*](src/equations-across-degenerate-points.md) classifies flat and growing branches, point-forced solutions, and the exact piecewise constants and point terms at locally finite zeros.
+
+- **How do multipliers constrain singular distributions?** [*Normal jets and parabolic poles*](src/normal-jets-and-parabolic-poles.md) describes finite normal jets with unrestricted tangential coefficients, solves simultaneous polynomial constraints, and proves a directional uniqueness criterion and exact parabolic pole orders.
+
+- **When do singular families converge to points or curves?** [*Concentration and logarithmic boundaries*](src/concentration-and-logarithmic-boundaries.md) proves the full Hessian criterion for planar concentration, a logarithmic condition for cut boundary values, and convergence of moving logarithmic sources to circular arclength.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions

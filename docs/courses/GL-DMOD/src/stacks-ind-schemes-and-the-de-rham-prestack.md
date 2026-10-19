@@ -1,6 +1,6 @@
 # D-modules on stacks, ind-schemes and the de Rham prestack
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A quotient stack remembers the symmetries of its points. For a connected group acting on a point, strong equivariance leaves only vector spaces in the abelian category. Nevertheless the derived category on the quotient remembers the cohomology of the group. This difference is essential on the automorphic side of geometric Langlands.
 

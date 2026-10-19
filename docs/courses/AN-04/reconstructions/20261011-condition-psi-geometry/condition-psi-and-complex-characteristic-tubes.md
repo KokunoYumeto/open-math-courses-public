@@ -6,7 +6,7 @@ The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial 
 
 We use the exact [coordinate and flow proofs](../20261005-restored-prescribed-coordinates/prescribed-canonical-coordinates-and-isotropic-fibers.html), PC:O0–O2, [compact homogeneous tube](../20261005-restored-compact-tube/compact-homogeneous-characteristic-tubes.html), TUBE:D0–I3, and [smooth complex division](../20261005-restored-function-normal-forms/real-and-complex-symplectic-function-normal-forms.html), FN:D0–D5. The [solvability lesson](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html), LSE:M1 and D0–D2, supplies the precise invariance and estimate used in [the analytic necessity argument](../20261011-condition-psi-necessity/condition-psi-necessity-and-approximate-adjoint-solutions.html).
 
-This independent exposition, its three complete solutions and original illustration are CC0-1.0. Linked components retain their terms. The proof map records exact dependencies. Human foundational providers remain external; internal export P514 closure is unclaimed.
+This independent exposition, its three complete solutions and original illustration are CC0-1.0. Linked components retain their terms. The proof map records exact dependencies. Human foundational providers remain external.
 
 ## 1. The directed sign condition
 
@@ -238,4 +238,4 @@ This verifies the multiplier, the independence of the temporal momentum and the 
 
 ![A flat negative-to-positive transition separated by a zero interval, and the collapse of that interval under the explicit perturbation t divided by eight.](figures/flat-transition-and-collapse.svg)
 
-The source record, [proof review](proof-review.json), [finite checks](model-check.json) and [reader checks](reader-check.json) accompany the lesson. The [necessity companion](../20261011-condition-psi-necessity/condition-psi-necessity-and-approximate-adjoint-solutions.html) uses these tubes and sign equivalences to prove necessity of condition Psi. The [solvability companion](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html) supplies the exact adjoint estimate used in that argument.
+The [necessity companion](../20261011-condition-psi-necessity/condition-psi-necessity-and-approximate-adjoint-solutions.html) uses these tubes and sign equivalences to prove necessity of condition Psi. The [solvability companion](../20261011-local-solvability-equivalences/local-solvability-equivalences-and-adjoint-estimates.html) supplies the exact adjoint estimate used in that argument.

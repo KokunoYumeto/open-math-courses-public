@@ -1,6 +1,6 @@
 # The Riemann-Hilbert correspondence
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 The Riemann-Hilbert correspondence turns regular differential equations into constructible topology. At a nonsingular point a connection becomes a local system. Across a singular point, the topology also remembers how that local system attaches to the point. On the affine line this extra information can be calculated with two vector spaces and two arrows.
 

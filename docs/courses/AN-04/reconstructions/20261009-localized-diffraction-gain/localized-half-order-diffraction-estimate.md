@@ -2,7 +2,7 @@
 
 The matrix damping estimate retains a localized source. Its L2 norm can grow without bound when the regularizer is removed, even though every pairing used in the proof stays bounded. We prove those pairing bounds, keep the actual boundary traces, and obtain a half-order gain from a precisely stated incoming hypothesis. We also prepare the actual compressed-regular source for this estimate. The geometric incoming argument, a bootstrap on one common neighborhood, and the Neumann boundary estimate remain separate obligations.
 
-**Independent exposition, proofs, exercises and figure: CC0-1.0.** The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, Section 24.4, Lemma 24.4.7, printed pages 449–451. The complete matrix damping, graph-trace and localized pairing arguments below use the exact programme proofs in the proof map. See source credit and [review](proof-review.json). Required Lebl proofs remain external; internal P514 closure of this export is not claimed. 
+**Independent exposition, proofs, exercises and figure: CC0-1.0.** The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, Section 24.4, Lemma 24.4.7, printed pages 449–451. The complete matrix damping, graph-trace and localized pairing arguments below use the exact programme proofs in the proof map.  Required Lebl proofs remain external. 
 
 ## 1. Exact hypotheses and conclusion
 

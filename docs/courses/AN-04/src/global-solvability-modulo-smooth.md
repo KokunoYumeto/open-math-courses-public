@@ -12,7 +12,7 @@ The complete closed-graph and seminorm-extension proofs, Sections 14.4–14.7, r
 
 **Norm convention.** A positive smooth density \(\rho\) can be constructed by summing positive coordinate densities with the locally finite partition in PS5. Their changes of coordinates have positive absolute Jacobian, so the sum defines a smooth positive density globally. Its positive square root trivializes the half-density line; write \(v=h\rho^{1/2}\) and set \(\|v\|_\infty=\sup|h|\) when \(v\) has compact support. On a fixed compact set the smooth positive coordinate factors and their inverses are bounded. This gives exactly the equivalent compact norms used in the argument.
 
-Self-checked by the writing AI.
+
 
 ## 1. Three conditions, with their exact quantifiers
 
@@ -321,4 +321,4 @@ Hörmander IV, §26.1, Theorem 26.1.9 supplies the three equivalences and the ch
 
 The cited AN-03 works retain their own component terms and source credit. Their proofs are referenced at the sections stated above; their prose and assets are not reproduced here. Original expression and the original mathematical drawing in this lesson are eligible for the course's CC0 dedication.
 
-This theorem gives global solvability modulo a smooth function. Exact global solvability, propagation parametrices, systems and boundary problems require separate arguments. Those subjects and the other assigned course mathematics remain unfinished.
+This theorem gives global solvability modulo a smooth function. Exact global solvability, propagation parametrices, systems and boundary problems require separate arguments.

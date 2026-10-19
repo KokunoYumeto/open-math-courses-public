@@ -2,9 +2,9 @@
 
 The compact-support existence theorem uses a two-ended escape arc through every characteristic point. We now relate that condition to complete characteristic curves and two-dimensional leaves. The compactness argument retains an oriented tangent as well as a point. The rank-two argument retains actual real Hamilton curves rather than assuming that an arbitrary path in a collapsed quotient has a regular lift.
 
-The antecedent is Hörmander IV, Theorem 26.11.1 and Definition 26.11.4, printed pages 161 and 163 of the approved 2009 eBook, ISBN 978-3-642-00136-9. We state the stationary-point convention explicitly. With a definition of one-dimensional bicharacteristics requiring nonzero tangent, a stationary singleton must be listed separately as an obstruction. It is not a regular curve.
+The antecedent is Hörmander IV, Theorem 26.11.1 and Definition 26.11.4, printed pages 161 and 163 of the 2009 eBook, ISBN 978-3-642-00136-9. We state the stationary-point convention explicitly. With a definition of one-dimensional bicharacteristics requiring nonzero tangent, a stationary singleton must be listed separately as an obstruction. It is not a regular curve.
 
-This is an independent receiving proof. Exact earlier geometry, quotient, flow and operator proofs are recorded in the proof map.  Original expression and figures are CC0-1.0; linked components retain their own terms. Human foundations remain external, so internal export P514 closure is not claimed.
+This is an independent receiving proof. Exact earlier geometry, quotient, flow and operator proofs are recorded in the proof map.  Original expression and figures are CC0-1.0; linked components retain their own terms. Human foundations remain external.
 
 ## 1. The criterion, with stationary points explicit
 
@@ -241,4 +241,4 @@ The transverse coordinate is strictly increasing in the interior, so the turn is
 
 ![The rotating component coefficients and an admissible band whose smooth turn gives two outside endpoints through the marked characteristic point.](figures/trapped-limit-and-admissible-band.svg)
 
-The [figure generator](figures/build_figure.py), [exact finite checks](model-check.json), source record, [proof review](proof-review.json) and [reader checks](reader-check.json) accompany this receiving argument. [Escape regularity and semi-global solutions](../20261015-escape-regularity-and-solvability/escape-arcs-regularity-and-semiglobal-solutions.html) and [strict-loss solvability](../20261015-strict-loss-solvability/strict-sobolev-loss-and-compact-solvability.html) give the analytic consequences. The global principal-type definition requires escape over every compact set.
+[Computational material](figures/build_figure.py) accompanies the text. [Escape regularity and semi-global solutions](../20261015-escape-regularity-and-solvability/escape-arcs-regularity-and-semiglobal-solutions.html) and [strict-loss solvability](../20261015-strict-loss-solvability/strict-sobolev-loss-and-compact-solvability.html) give the analytic consequences. The global principal-type definition requires escape over every compact set.

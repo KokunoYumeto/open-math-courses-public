@@ -444,6 +444,6 @@ The proof completes ordinary prescribed canonical functions, their full homogene
 ## Mathematical sources and components
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, Classics in Mathematics, Springer, 2007, reprint of the 1994 edition, e-ISBN 978-3-540-49938-1, [DOI 10.1007/978-3-540-49938-1](https://doi.org/10.1007/978-3-540-49938-1). Theorems 21.1.6 and 21.1.9, printed pp. 273–274 and 279–281; Theorems 21.2.8–21.2.9, printed pp. 287–288; the normal-pair reduction in Theorem 21.2.4, printed pp. 284–285.
-- The [source and component account](source-provenance.json) gives the edition, editable lesson and reproducible model inputs. The cusp illustration includes its DejaVu font notice.
+- The cusp illustration includes its DejaVu font notice.
 
 *AI-assisted exposition: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original programme text, solved exercises and coordinate illustrations: CC0 to the extent rights exist. Cited human works and separately identified components retain their own terms.*

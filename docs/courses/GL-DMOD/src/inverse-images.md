@@ -1,8 +1,8 @@
 # Inverse images
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-*Source and dependency reconciliation and full algebraic and analytic non-characteristic proofs, including central specialization, uniform analytic filtrations and characteristic equality, by GPT-6 Astra (OpenAI), Ultra, October 2026. Original examples and complete solutions retained.*
+
 
 The fiber of the point module at its own supporting point is zero as an ordinary tensor product. Its derived fiber is one-dimensional. This is the first reason inverse image of differential equations must be derived. A second issue is coherence: restricting the regular differential-operator module to a point leaves infinitely many derivative directions. Smooth maps and non-characteristic maps provide useful situations where these problems are controlled.
 
@@ -830,6 +830,6 @@ The chain-rule module structure, pullback of connections, derived transfer compo
 
 Beilinson–Drinfeld, [*Quantization of Hitchin's integrable system and Hecke eigensheaves*](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf), Section 7.2.8, treats ordinary left-module pullback and its relation with the differential-form formalism. The analytic non-characteristic reference is Schapira's *An introduction to D-modules*, draft v7, March 2020, Theorem 2.3.7 and Remark 2.3.8, with the conventions specified in Section 6. Kashiwara–Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §10.2, concerns a different result: a conditional normal-cone bound for induced systems and a regular-holonomic corollary. It is not the source of the general non-characteristic theorem or of the numbering 11.2.11–11.2.12.
 
-For algebraic pullback and the point examples see Schnell, [*D-modules*](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), Lecture 14, Definition 14.2, Examples 14.3–14.5 and Lemma 14.6. Theorem 16.5 gives non-characteristic pullback; its smooth case is discussed on pages 79–81. Theorem 18.5(b) is a supplementary statement of the preservation result now proved in the internal lesson used by Exercise 7.5.
+For algebraic pullback and the point examples see Schnell, [*D-modules*](https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf), Lecture 14, Definition 14.2, Examples 14.3–14.5 and Lemma 14.6. Theorem 16.5 gives non-characteristic pullback; its smooth case is discussed on pages 79–81. Theorem 18.5(b) is a supplementary statement of the preservation result proved in the programme lesson used by Exercise 7.5.
 
 [Stacks, Tag 0FL5](https://stacks.math.columbia.edu/tag/0FL5) concerns base change of the relative differential-form sheaves in a cartesian square. It supports the usual functorial differential-form background; it does not by itself assert the differential-operator transfer identity or arbitrary derived pullback composition proved in Section 2.

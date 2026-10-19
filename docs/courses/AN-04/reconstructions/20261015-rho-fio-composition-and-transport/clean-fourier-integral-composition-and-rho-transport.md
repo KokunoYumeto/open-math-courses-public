@@ -4,9 +4,9 @@ Composing two Fourier-integral operators matches their middle covectors. A clean
 
 Independent exposition, proofs, three complete solutions and reproducible illustration: GPT-6.1 Sol (OpenAI), Ultra, 15 October 2026. CC0-1.0. Earlier linked components retain their terms.
 
-The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, the exact approved Springer 2009 eBook, §25.2, printed 17–24: kernel correspondence and axis exclusions, adjoints, clean composition, density differentiation, the separate-coordinate lemma and subprincipal transport.  The last paragraph on page 24 motivates the general-\(\rho\) remainder extension. The actual transport orders below are derived, with an explicit example showing why its ordinary index cannot be copied unchanged.
+The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, the Springer 2009 eBook, §25.2, printed 17–24: kernel correspondence and axis exclusions, adjoints, clean composition, density differentiation, the separate-coordinate lemma and subprincipal transport.  The last paragraph on page 24 motivates the general-\(\rho\) remainder extension. The actual transport orders below are derived, with an explicit example showing why its ordinary index cannot be copied unchanged.
 
-The exact earlier programme proofs are [general-symbol stationary phase and Lagrangian symbols](../20261015-rho-stationary-phase-and-symbols/stationary-phase-and-symbols-with-derivative-loss.md), [homogeneous symbol transport](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), [kernel maps and ordinary composition](../20261005-restored-analytic-composition/clean-composition-of-fourier-integral-operators.md), [linear density/Maslov reduction](../20261005-restored-linear-reduction/reduction-and-linear-symbol-composition.md), and [density differentiation, separate coordinates and scalar subprincipal invariance](../20261005-restored-subprincipal-transport/hamilton-fields-and-subprincipal-transport.md). We reuse their exact geometry and kernel arguments and prove the changed analytic estimates here. The proof map binds the current versions and all dependencies. The 92 human foundations remain external; internal export P514 closure is not claimed.
+The exact earlier programme proofs are [general-symbol stationary phase and Lagrangian symbols](../20261015-rho-stationary-phase-and-symbols/stationary-phase-and-symbols-with-derivative-loss.md), [homogeneous symbol transport](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), [kernel maps and ordinary composition](../20261005-restored-analytic-composition/clean-composition-of-fourier-integral-operators.md), [linear density/Maslov reduction](../20261005-restored-linear-reduction/reduction-and-linear-symbol-composition.md), and [density differentiation, separate coordinates and scalar subprincipal invariance](../20261005-restored-subprincipal-transport/hamilton-fields-and-subprincipal-transport.md). We reuse their exact geometry and kernel arguments and prove the changed analytic estimates here. The proof map binds the current versions and all dependencies. The 92 human foundations remain external.
 
 ## 1. Classes, axes and actual supports
 
@@ -80,7 +80,7 @@ Here the dagger includes conjugation of the Maslov factor, its canonical identif
 \]
 Assume the intersection is clean, the image \(C\) is an embedded canonical relation, and \(q\) is a submersion with constant fiber dimension \(e\) on the selected component. Require \(q\) proper on the critical supports actually composed. The previously proved proper-connected-fiber criterion supplies embeddedness and the submersion statement in the source's global proper connected case; it includes compact \(Y\) under the full cotangent closure and missing-axis hypotheses. That criterion is geometric and unchanged here. More generally, the theorem applies to any fixed embedded branch satisfying the stated conditions.
 
-**C0. Order and the exact leading fiber density.** Suppose \(A_1,A_2\) are properly supported and
+**C0. Order and the exact leading fiber density.** Suppose \(A_1,A_2\) are properly supported and 
 \[
  A_1\in I_\rho^{m_1}(X\times Y,C_1';
                  \Omega^{1/2}\otimes\operatorname{Hom}(F,E)),
@@ -88,23 +88,23 @@ Assume the intersection is clean, the image \(C\) is an embedded canonical relat
  A_2\in I_\rho^{m_2}(Y\times Z,C_2';
                  \Omega^{1/2}\otimes\operatorname{Hom}(G,F)).
  \tag{FC8}
-\]
-Then the actual product is properly supported and
+\] Then the actual product is properly supported and 
+
 \[
  A_1A_2\in I_\rho^M(X\times Z,C';
                     \Omega^{1/2}\otimes\operatorname{Hom}(G,E)),
  \qquad M=m_1+m_2+e/2.
  \tag{FC9}
-\]
-Let \(\mathfrak b\) be the exact geometric density/Maslov product of the two tangent canonical relations, followed by the bundle-map product in operator order. Use its unscaled geometric convention. Then
+\] Let 
+\(\mathfrak b\) be the exact geometric density/Maslov product of the two tangent canonical relations, followed by the bundle-map product in operator order. Use its unscaled geometric convention. Then 
 \[
  \sigma_\rho(A_1A_2)(\gamma)
  =(2\pi)^{-e/2}\int_{\mathcal F_\gamma}
              \mathfrak b(\sigma_\rho(A_1),\sigma_\rho(A_2))
        \quad\bmod S_\rho^{\,M+(\dim X+\dim Z)/4-\epsilon}.
  \tag{FC10}
-\]
-Equivalently one may include \((2\pi)^{-e/2}\) in the definition of the symbol product, as in the earlier restored lesson, and omit it outside the integral. It occurs once.
+\] Equivalently one may include 
+\((2\pi)^{-e/2}\) in the definition of the symbol product, as in the earlier lesson, and omit it outside the integral. It occurs once.
 
 The proof of (FC9)–(FC10), including all differentiated remainders and the identification with the operator product, occupies the next five sections.
 
@@ -531,6 +531,6 @@ Panel B samples the exact coefficient ratio \(\sqrt{1+\delta^2R^{2\delta}}\) fro
 
 The general-\(\rho\) kernel maps, adjoint, clean composition, leading density product, full phase remainders and scalar subprincipal transport are proved here with actual supports, all symbol derivatives and exact order qualifications. The ordinary results remain special cases and retained alternatives.
 
-The general-\(\rho\) continuity ranges and the iterated characterization with order-\(2\rho-1\) test operators remain receiving obligations. The full original chapter audit, exact manifold assembly review and external foundations also remain active. Neither a full-course completion nor internal P514 export closure is claimed.
+The general-\(\rho\) continuity ranges and the iterated characterization with order-\(2\rho-1\) test operators remain receiving obligations.
 
-See source credit, [proof review](proof-review.json), [finite checks](model-check.json) and [reader checks](reader-check.json). Original expression is CC0-1.0.  
+Original expression is CC0-1.0.  

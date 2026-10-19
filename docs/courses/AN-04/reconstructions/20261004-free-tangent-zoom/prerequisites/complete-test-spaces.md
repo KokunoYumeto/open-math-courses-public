@@ -1,10 +1,10 @@
 # Complete fixed-support test spaces
 
-This separate component retains the full used arguments from AN03-P004,
-*Banach estimates, quotient spaces and compact parameter arguments*, as selected
-in the earlier AN-01 programme. Original numbering and mathematical text are
-unchanged. The omitted Hahn–Banach and general smooth-space paragraphs are not
-used by the tangent lesson.
+This separate component retains the full used arguments from AN03-P004, *Banach estimates, quotient spaces and compact parameter arguments*, as selected in the earlier AN-01 programme. The omitted Hahn–Banach and general smooth-space paragraphs are not used by the tangent lesson.
+
+
+
+
 
 Its scalar, finite-dimensional and compact calculus inputs are the already
 proved [stationary prerequisite chain](../../20261004-free-stationary-phase/quadratic-stationary-phase.md#f0-the-exact-earlier-programme-proofs).

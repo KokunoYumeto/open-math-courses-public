@@ -209,6 +209,6 @@ To use (SR15) rigorously, insert a compact time cutoff in the averaging kernel \
 
 ## References and source use
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), Theorem 26.1.5, printed 61 and 63, PDF 72 and 74. The finite-interval regularization and canonical transfer are credited to this treatment; the retained programme exposition supplies the Gaussian Fourier profile, all conic derivative estimates, endpoint forcing converse and three complete original exercises.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), Theorem 26.1.5, printed 61 and 63, PDF 72 and 74. The finite-interval regularization and canonical transfer are credited to this treatment; the retained programme exposition supplies the Gaussian Fourier profile, all conic derivative estimates, endpoint forcing converse and three complete original exercises.
 
-*Preserved programme exposition, all fifteen original displays, all three original solutions and the original SVG illustration retained. Current source and proof review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC. Independent human review and the wider course remain unfinished.*
+*Preserved programme exposition, all fifteen original displays, all three original solutions and the original SVG illustration retained. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC.*

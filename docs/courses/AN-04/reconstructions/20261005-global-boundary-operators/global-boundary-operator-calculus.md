@@ -1,6 +1,6 @@
 # Global boundary operators, dual action and elliptic parametrices
 
-This component retains AN03-U034 Sections 2.1–2.5, 3.5 and 4.1. Original author: Codex, September 2026, CC0. Current exact proof connections and clarifications: AN-04 course-writing task and OpenAI Codex, 5 October 2026, CC0. All original mathematical displays remain unchanged.
+This component retains AN03-U034 Sections 2.1–2.5, 3.5 and 4.1. Original author: Codex, September 2026, CC0. Contributions: OpenAI Codex, October 2026, CC0.
 
 ## Exact scope and prerequisite proofs
 

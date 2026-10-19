@@ -1,6 +1,6 @@
 # Holonomic D-modules and duality
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A holonomic module can contain both a connection on an open set and a contribution supported on its boundary. Duality reverses how those pieces are attached. On the affine line, the Laurent-polynomial module contains the polynomial connection and has a point module as quotient. Its dual has the point module as submodule and the polynomial connection as quotient. Computing this reversal requires a derived Hom, a dimension shift, and a change from right modules to left modules.
 

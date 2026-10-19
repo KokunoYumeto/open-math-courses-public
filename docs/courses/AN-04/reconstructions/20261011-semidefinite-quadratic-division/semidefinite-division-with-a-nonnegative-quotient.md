@@ -2,7 +2,7 @@
 
 A smooth division can have the right remainder and still have a negative quotient. We complete the missing positivity step by proving a flat correction lemma. The correction preserves the exact quotient wherever the divisor changes sign. It also explains why the one-sided remainder cannot generally be removed.
 
-The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Springer 2009 eBook, ISBN 978-3-642-00136-9, Proposition 26.5.7, printed 114–115.  The proof below supplies the full semidefinite assertion; the [preceding lesson](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html) supplies its indefinite assertion and the invariant affine construction on the indefinite extension. All exposition and the correction construction here are independently written. Human foundations remain external; the proof map gives exact versions and locators, without claiming internal export P514 closure.
+The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Springer 2009 eBook, ISBN 978-3-642-00136-9, Proposition 26.5.7, printed 114–115.  The proof below supplies the full semidefinite assertion; the [preceding lesson](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html) supplies its indefinite assertion and the invariant affine construction on the indefinite extension. All exposition and the correction construction here are independently written. Human foundations remain external; the proof map gives exact versions and locators.
 
 ## 1. What must remain fixed
 
@@ -217,6 +217,6 @@ Replace the imaginary part by its negative to obtain \(p_-=\tau-i\kappa F\). It 
 
 ![A flat positivity correction and a zero of the divisor where the numerator is nonzero.](figures/semidefinite-division.svg)
 
-The [figure generator](figures/build_figure.py), [finite checks](model-check.json), source credit and [proof review](proof-review.json) accompany this editable lesson. Together with [indefinite division](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html), this gives both alternatives of Proposition 26.5.7. The affine construction retains its indefinite scope. For the sign-based operator estimate, read [one-direction propagation](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.html).
+[Computational material](figures/build_figure.py) accompanies the text. Together with [indefinite division](../20261011-quadratic-affine-geometry/indefinite-quadratic-division-and-affine-parameters.html), this gives both alternatives of Proposition 26.5.7. The affine construction retains its indefinite scope. For the sign-based operator estimate, read [one-direction propagation](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.html).
 
 Original expression: CC0-1.0. Linked components retain their terms. 

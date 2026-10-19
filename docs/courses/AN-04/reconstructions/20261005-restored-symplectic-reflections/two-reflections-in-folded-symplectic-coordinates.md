@@ -587,7 +587,7 @@ The simultaneous folded-form proofs are local on the stated ordinary or conic ne
 
 ## References and component notices
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Theorems 21.4.4 and 21.4.10; printed 307–309 and 316–318, PDF 322–324 and 331–333. The exact edition used is recorded in [source provenance](source-provenance.json).
-- The original homogeneous-shift figure retains its embedded DejaVu font outlines under the DejaVu notice.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Theorems 21.4.4 and 21.4.10; printed 307–309 and 316–318, PDF 322–324 and 331–333.  - The original homogeneous-shift figure retains its embedded DejaVu font outlines under the DejaVu notice.
+
 
 *Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Linked prerequisite components retain their own terms.*
