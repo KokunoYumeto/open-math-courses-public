@@ -1,6 +1,6 @@
-# Pulse construction and actual velocity estimates
+# Constructing the pulses and their actual velocities
 
-The [base field](base-field-realization-audit.md) supplies the shear, and the [support construction](oscillatory-supports-audit.md) supplies the slow boxes, auxiliary rectangles and physical differential operators. We now construct the oscillation inside each rectangle. Its phase and amplitude solve exact equations. Taking a curl then produces an exactly divergence-free velocity. We keep its pressure, curl correction and cutoff residual when checking the Navier–Stokes equation.
+The [base field](../src/constructing-the-actual-base-field.md) supplies the shear, and the [support construction](../src/separating-the-oscillatory-supports.md) supplies the slow boxes, auxiliary rectangles and physical differential operators. We now construct the oscillation inside each rectangle. Its phase and amplitude solve exact equations. Taking a curl then produces an exactly divergence-free velocity. We keep its pressure, curl correction and cutoff residual when checking the Navier–Stokes equation.
 
 This lesson gives the local pulse construction in OpenAI, *Finite Time Blowup for Navier–Stokes*, Lemma 7.1, Proposition 7.2, Corollary 7.3, Lemmas 7.4 and 7.7, and Proposition 9.1. The [original paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf#page=73), pages 73–81, 85–87 and 101–102, supplies the original objects and formulas. Exercise 3 derives the covariance column estimate on pages 82–83. The subsequent positive stress representation and its signed inverse are separate constructions.
 
@@ -57,7 +57,7 @@ v_s=a+\frac{b_s^2}{a},\quad
 F^{(0)}=\xi^{-A-1/2}F_{\rm prof}.
 \tag{PU0.4}
 \]
-The [shear construction](shear-realization-audit.md), V5–V7, proves \(F_{\rm prof}>0\), \(a>0\), \(v_s>2\), including strict endpoint margins on the closed active annulus. Thus there are constants \(F_-,a_-,d_v>0\) and finite upper bounds \(F_+,a_+\) with \(F_-\le F^{(0)}\le F_+\), \(a_-\le a\le a_+\), and \(v_s\ge2+d_v\). The same margins hold on a fixed sufficiently small radial enlargement.
+The [shear construction](../src/realizing-the-admissible-shear.md), V5–V7, proves \(F_{\rm prof}>0\), \(a>0\), \(v_s>2\), including strict endpoint margins on the closed active annulus. Thus there are constants \(F_-,a_-,d_v>0\) and finite upper bounds \(F_+,a_+\) with \(F_-\le F^{(0)}\le F_+\), \(a_-\le a\le a_+\), and \(v_s\ge2+d_v\). The same margins hold on a fixed sufficiently small radial enlargement.
 
 Direct differentiation using PU0.2 gives the full leading shear
 \[
@@ -110,7 +110,7 @@ This is one finite positive choice. Representative points, band labels, supports
 
 ## PU1. Original input data and a fixed band threshold
 
-Keep the original \(0<h<1/100\), \(A=1/2+h\), \(D=1/2-h\), \(Q=2^{-\ell}\), \(\varepsilon=Q^h\), \(S_*=\ell^2\), \(R=r/\sqrt Q\), \(Z=z/Q^D\), \(T=(1-t)/Q\), \(X=r^2/(2q)\), and the original auxiliary map \(Y=v_rr^{d_r}+v_tt\). The matrices, vectors, \(d_r\), \(\kappa_s=10^{-5}\), covering indices, chain-rule operators and weighted classes are defined with full factors in the [wave-interaction audit](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/wave-interaction-audit.md), W1–W3. In particular,
+Keep the original \(0<h<1/100\), \(A=1/2+h\), \(D=1/2-h\), \(Q=2^{-\ell}\), \(\varepsilon=Q^h\), \(S_*=\ell^2\), \(R=r/\sqrt Q\), \(Z=z/Q^D\), \(T=(1-t)/Q\), \(X=r^2/(2q)\), and the original auxiliary map \(Y=v_rr^{d_r}+v_tt\). The matrices, vectors, \(d_r\), \(\kappa_s=10^{-5}\), covering indices, chain-rule operators and weighted classes are defined with full factors in the [wave-interaction audit](wave-interaction-audit.md), W1–W3. In particular,
 \[
 D_r=\partial_R+M_id_rR^{d_r-1}\mathcal L_i,\quad
 D_z=\varepsilon\partial_Z,\quad
@@ -136,7 +136,7 @@ F=V/R,\quad g=(RF_R,G_R),\quad N=g_0/|g_0|,\quad K=(-N_z,N_\theta),
 \qquad c_0=\frac{\lambda_0}{2F_0N_\theta}<0.
 \tag{PU1.3}
 \]
-Here subscript zero means the order-zero quantity at the representative; \(\lambda_0>0\). These are precisely the base properties supplied to Section 7 by Theorem 4.6 and Proposition 5.5. Their actual global construction is supplied by V and Z, and the exact base-to-chart derivative map and positive shear bounds are proved in [I1–I2](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/local-construction-assembly-audit.md). The calculation below proves the pulse operation with those same input fields.
+Here subscript zero means the order-zero quantity at the representative; \(\lambda_0>0\). These are precisely the base properties supplied to Section 7 by Theorem 4.6 and Proposition 5.5. Their actual global construction is supplied by V and Z, and the exact base-to-chart derivative map and positive shear bounds are proved in [I1–I2](local-construction-assembly-audit.md). The calculation below proves the pulse operation with those same input fields.
 
 Write \(0<\lambda_-\le\lambda_0\le\lambda_+\) and \(|g_0|\le g_+\) for the fixed uniform input bounds. They already imply the relevant nonzero shear and frame factors. Indeed, with \(a=2F_0N_\theta\), the relation \(-a(a+|g_0|)>0\) gives \(-|g_0|<a<0\). Moreover
 \[
@@ -615,7 +615,7 @@ P(v)\le e^{-c_-L_s/50}\le e^{-(c_-r_0/25)S_*}.
 \]
 Every fixed derivative of these terms has this same exponential smallness, times a permitted polynomial in \(S_*\) and shell factors, because the solution and source have their differentiated envelope bounds. The cutoff derivatives themselves obey \(|\psi^{(j)}|\le C_jL_s^{-j}\), and conversion to \(H\) multiplies only by powers of \(S_*\).
 
-For the global assertion in original Proposition 9.1, the incoming source harmonic has its stated smooth zero extension across the entire fixed rectangle, including the temporal endpoints. This additional source property makes (PU6.4) a global residual identity after the supported fields are extended by zero. Proposition 7.2 by itself did not impose that property on an arbitrary uncut source, and the present calculation does not add it silently. The actual source containment is now proved in [S1–S5](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/source-containment-audit.md), and the four updates preserving it are checked in [K0–K8](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/correction-cycle-audit.md).
+For the global assertion in original Proposition 9.1, the incoming source harmonic has its stated smooth zero extension across the entire fixed rectangle, including the temporal endpoints. This additional source property makes (PU6.4) a global residual identity after the supported fields are extended by zero. Proposition 7.2 by itself did not impose that property on an arbitrary uncut source, and the present calculation does not add it silently. The actual source containment is now proved in [S1–S5](source-containment-audit.md), and the four updates preserving it are checked in [K0–K8](correction-cycle-audit.md).
 
 Real fields use conjugate harmonic pairs. Since \(A_m\) depends on \(m^2\) and is real, uniqueness gives \(t_{-m}=\overline{t_m}\) for \(f_{-m}=\overline{f_m}\). The factors \(i/(km)\) in the pressure and potential give \(\pi_{-m}=\overline{\pi_m}\), \(C_{-m}=\overline{C_m}\). The real cosine velocity \(t\cos(k\Phi)\) therefore has amplitudes \(t/2\) at both \(m=1,-1\), with their actual conjugate pressures and potentials. No factor two is suppressed in assembling the real velocity.
 
@@ -941,6 +941,6 @@ These identities concern the transverse pulse and its stated cutoff. The actual 
 
 OpenAI, *Finite Time Blowup for Navier–Stokes*, [original pages 73–87](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf#page=73), equations (7.1)–(7.40), and [pages 101–102](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf#page=101), Proposition 9.1 and equations (9.1)–(9.2). The source PDF has SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f.
 
-PU0 supplies the actual base inputs. PU1–PU5 prove the phase, moving-plane inverse and homogeneous pulse. PU6–PU8 give the actual compact velocity, pressure and complete linear residual. PU9 supplies five exact worked calculations, including the covariance column bounds needed for the next construction. The complete positive stress representation, signed inverse and nonlinear corrections are supplied in the separate [stress covariance audit](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/stress-covariance-audit.md), C1–C9, and [wave interaction audit](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/wave-interaction-audit.md), W4–W7.
+PU0 supplies the actual base inputs. PU1–PU5 prove the phase, moving-plane inverse and homogeneous pulse. PU6–PU8 give the actual compact velocity, pressure and complete linear residual. PU9 supplies five exact worked calculations, including the covariance column bounds needed for the next construction. The complete positive stress representation, signed inverse and nonlinear corrections are supplied in the separate [stress covariance audit](stress-covariance-audit.md), C1–C9, and [wave interaction audit](wave-interaction-audit.md), W4–W7.
 
-This is an independent exposition of the source mathematics, with author derivation, self-review and comparison against the original page images. No independent human review, formal verification or novelty is claimed. The authored lesson and diagram source are CC0; cited original works retain their attribution and rights.
+Authored exposition: GPT-6 Astra (OpenAI). The authored lesson and diagram source are CC0; cited original works retain their attribution and rights.

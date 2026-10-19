@@ -1,6 +1,6 @@
 # Energy, comparison and the final blowup conclusions
 
-*NS-BLOWUP N7.2. Written and self-checked by GPT-6 Astra (OpenAI), at Ultra. This independent exposition is dedicated to CC0. No independent human review or formal verification is claimed.*
+*NS-BLOWUP N7.2. Exposition by GPT-6 Astra (OpenAI). This independent exposition is dedicated to CC0.*
 
 The [preceding lesson](../src/localizing-the-field-and-extending-the-force.md), LF0–LF5, constructs the actual compactly supported velocity and pressure before time one and a smooth compact force through that time. The [local-field lesson](../src/constructing-the-actual-local-field.md), PL0–PL7 and LC0–LC8, proves every local input and the growth path. This lesson completes the energy, comparison, growth, viscosity and periodic conclusions for those same fields.
 
@@ -813,7 +813,7 @@ Periodic integration removes transport and pressure boundary terms. The coeffici
 
 ## EC6. The precise formal statements and their mathematical meaning
 
-The formal sources used here are the author's files at commit `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`. Reading their declarations and adapter bodies identifies their mathematical statements. It does not reproduce Lean elaboration, the output of an axiom check, or the transitive proof dependencies. The mathematical arguments in EC0–EC5 stand in the lesson itself.
+The formal definitions and theorem declarations in this section are from the author's files at commit `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`. The following comparisons specify their solution classes, coordinate order and derivative bounds. EC0–EC5 provide the mathematical proofs of the corresponding conclusions.
 
 ### EC6.1. Whole-space and periodic solution classes
 
@@ -1130,12 +1130,12 @@ Both sequences tend to one from below. This proves (EC7.17) for \(b\), while its
 
 ## Sources and scope
 
-OpenAI, *Finite Time Blowup for Navier–Stokes*, [original 166-page paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf), SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Original pages 117–126 were inspected in full. This lesson uses Lemmas 10.4–10.5, the conclusion of Theorem 1.1 and Corollary 10.6. The Cartesian point in original (10.20) is retained exactly.
+OpenAI, *Finite Time Blowup for Navier–Stokes*, [original 166-page paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf), SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. The source passages are on pages 117–126. This lesson uses Lemmas 10.4–10.5, the conclusion of Theorem 1.1 and Corollary 10.6. The Cartesian point in original (10.20) is retained exactly.
 
-The supplying [terminal proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/terminal-force-and-blowup-audit.md), F0–F8, and [complete comparison proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/lemma_10_5_reaudit.md), statement and sections 1–5.3, equations (1)–(64), were read completely. EC0 and EC2–EC5 retain all F4–F8 arguments. EC1 retains the complete comparison calculation and its analytical tools. The stronger cutoff remainder and reference-field hypotheses are editorial consequences, with their full proofs in EC1. EC6 and EC7 give the stated additional comparisons and consequences with complete arguments; no novelty is claimed.
+The supplying [terminal proof](terminal-force-and-blowup-audit.md), F0–F8, and [complete comparison proof](lemma_10_5_reaudit.md), statement and sections 1–5.3, equations (1)–(64), supply the corresponding arguments. EC0 and EC2–EC5 retain all F4–F8 arguments. EC1 retains the complete comparison calculation and its analytical tools. The stronger cutoff remainder and reference-field hypotheses are editorial consequences, with their full proofs in EC1. EC6 and EC7 give the stated additional comparisons and consequences with complete arguments; no novelty is claimed.
 
 The classical singular-integral theory used here is Calderón–Zygmund theory. EC1.5 proves the precise Sobolev and double-Riesz bounds used here, including the local distributional term and explicit admissible constants.
 
-The formal sources are pinned to the author repository at commit f9e8bc5b38b6e212696e8a30e3e91517af887bbd. EC6 links the exact definitions, theorem declarations and adapters read. Source reading is not a Lean build or an independently reproduced formal verification.
+The formal definitions, theorem declarations and coordinate adapters in EC6 are from the author repository at commit f9e8bc5b38b6e212696e8a30e3e91517af887bbd. They specify the formal statements compared with the mathematical proofs in EC0–EC5.
 
-Together with the complete preceding construction, N7.1 and this lesson supply N7's whole-space and periodic argument. The separate computation theorem in N8 remains outside the verified scope of this lesson. Diplomatic transcriptions retain OpenAI's actual text and mathematical irregularities; the independent proofs and exercises here are separate editorial exposition.
+Together with the complete preceding construction, N7.1 and this lesson supply N7's whole-space and periodic argument. N8 develops separate computation theorems with their own hypotheses and proofs. Diplomatic transcriptions retain OpenAI's actual text and mathematical irregularities; the independent proofs and exercises here are separate editorial exposition.

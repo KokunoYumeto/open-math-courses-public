@@ -25,7 +25,7 @@ The course uses the complete supporting readings below. Each link is bound to it
 - [Polynomial and contour interfaces for stable boundary models](prerequisites/AN-03/stable-prerequisite-bridges.html) — CC0-1.0.
 - [Curved weights and the directions in which support can end](prerequisites/AN-03/support-continuation.html) — CC0-1.0.
 - [Totally characteristic operators on the half space](prerequisites/AN-03/totally-characteristic-operators.html) — CC0-1.0.
-- Traces that survive passage to cohomology — CC0-1.0.
+- [Traces that survive passage to cohomology](prerequisites/AN-03/traces-and-complexes.html) — CC0-1.0.
 - [From Weyl symbols to operators and changes of coordinates](prerequisites/AN-03/weyl-covariance-action.html) — CC0-1.0.
 - [Two measuring scales, one Weyl product](prerequisites/AN-03/weyl-metric-products.html) — CC0-1.0.
 

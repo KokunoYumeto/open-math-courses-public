@@ -460,4 +460,4 @@ The first three derivatives have the original order, and their scalar coefficien
 - The AN-03 support-preserving symbol-summation theorem (earlier label E6), with its complete programme proof [K1](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md) and the component notices linked there.
 - The original exact density diagram retains its embedded DejaVu outlines under the font notice.
 
-*Original lesson, ten solutions and exact density diagram: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration, supporting details and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Linked prerequisites and embedded fonts retain their stated component rights. No book text or file is included.*
+*Original lesson, ten solutions and exact density diagram: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Linked prerequisites and embedded fonts retain their stated component rights. *

@@ -2,7 +2,7 @@
 
 An independent lesson series on the smooth-force, finite-time blowup construction in OpenAI’s *Finite Time Blowup for Navier–Stokes*. The theorem retains every positive viscosity, zero initial velocity, smooth compact space–time forcing, bounded kinetic energy, compact spatial support before time one, and the stated failure of global smooth continuation.
 
-The [cumulative typeset reader](reader.html) contains the twenty-one complete lessons below. The [offline reader and editable sources](NS-BLOWUP-reader-and-source.zip) include all twenty-one lessons, their SVG figures, editable diagram generators and bibliography, and the local mathematical typesetting runtime. External source papers and the separate full theorem audit remain linked references.
+The [cumulative typeset reader](reader.html) contains the twenty-three complete lessons below. The [offline reader and editable sources](NS-BLOWUP-reader-and-source.zip) include all twenty-three lessons, their SVG figures, editable diagram generators and bibliography, and the local mathematical typesetting runtime. The complete mathematical proof notes are included as well; cited original papers remain external references. The twenty-three lessons contain 115 fully solved exercises.
 
 ## Lessons in this edition
 
@@ -33,9 +33,13 @@ The [cumulative typeset reader](reader.html) contains the twenty-one complete le
 
 21. **N8.1 — [Computation with a force that becomes stationary](src/computation-with-eventually-stationary-forcing.md)** ([reader](reader.html#stationary-computation)). The complete finite recorder and inverse, exact radix coordinates, every branch motion, the fixed detector, mean-zero spatial clock, full residual force and classical uniqueness. Periodic and projected alternatives, slow clocks and five solved exercises include a finite observation tolerance and sharp time-integrability thresholds. The [editable figure source](assets/eventually-stationary-computation.py) records the actual coordinates and force.
 
+22. **N8.2 — [Computation with rapidly decreasing forcing](src/computation-with-rapidly-decreasing-forcing.md)** ([reader](reader.html#rapid-forcing)). Three exact memory constructions, four fluid experiments, full residual and projected forces, effective bounds, classical uniqueness and fixed-detector equivalences. Five solved exercises include the limiting volume-preserving flow and exact post-halting signal. The [figure source](assets/rapid-forcing-memories.py) displays the memory maps and incompressible lift.
+
+23. **N8.3 — [Detecting computation in the velocity of a viscous fluid](src/detecting-computation-in-the-velocity.md)** ([reader](reader.html#velocity-detection)). The scalar receiver, torus burst estimate, expanding integer addresses, scalar existence and tails, moving-cutoff loss and the two exact velocity observations. Five solved exercises give observation margins, physical energy factors, stack coordinates, scalar stability and configuration recovery. The [figure source](assets/velocity-detection-mechanisms.py) displays both mechanisms and their diffusion estimates.
+
 ## The theorem and its prerequisites
 
-N1–N7 construct the profiles, coefficients, base field, pulses, mean corrections, finite correction cycle, convergent field and compact terminal force. The final lesson proves the whole-space theorem and its periodic corollary, together with stability for different initial data, the full viscosity and compression maps, and small integrated force at a fixed singular time. N8.1 gives a separate computation theorem with an exact recorder, geometric processor, spatial clock and stationary force.
+N1–N7 construct the profiles, coefficients, base field, pulses, mean corrections, finite correction cycle, convergent field and compact terminal force. The final lesson proves the whole-space theorem and its periodic corollary, together with stability for different initial data, the full viscosity and compression maps, and small integrated force at a fixed singular time. N8.1 gives a computation theorem with an exact recorder, geometric processor, spatial clock and stationary force. N8.2 proves computation with rapidly decreasing forcing, including the limiting flow. N8.3 proves detection in the velocity itself, using torus bursts and expanding transport regions.
 
 The fluid foundations supply the preceding analysis. The lessons give precise source and proof locators for the human smooth-forcing programme and for each supplying construction.
 

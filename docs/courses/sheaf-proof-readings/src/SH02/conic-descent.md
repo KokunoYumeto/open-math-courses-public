@@ -45,7 +45,7 @@ A locally constant sheaf on an interval is
    at any point identifies its sections with its stalk. These statements hold
    for arbitrary $A$-modules. They also give the analogous evaluation statement
    for a bounded-below complex with locally constant cohomology, by the
-   hypercohomology spectral sequence. The interval-constancy and evaluation proof establishes all these statements for arbitrary module coefficients, including open, closed, half-open and unbounded intervals. Its complex comparison is the actual section-to-germ map, using the bounded-below hypercohomology proof and its canonical edge, not an unspecified isomorphism.
+   hypercohomology spectral sequence. The [interval-constancy and evaluation proof](../../SH02-convex-acyclicity.html#SH02-CA-LOCAL-SYSTEM) establishes all these statements for arbitrary module coefficients, including open, closed, half-open and unbounded intervals. Its complex comparison is the actual section-to-germ map, using the bounded-below hypercohomology proof and its canonical edge, not an unspecified isomorphism.
 
 ### SH02-IMPORT-CONTINUITY — Closed-exhaustion continuity (SH-01 import contract)
 
@@ -134,7 +134,7 @@ $Rq_{n*}(K|_{B\times I_n})$ with $R\Gamma(I_n;K|_{\{b\}\times I_n})$.
 In the spectral sequence for these sections the terms in positive sheaf
 cohomology degree vanish by SH02-IMPORT-INTERVAL. The remaining terms are the
 stalks at $(b,0)$ of $H^j(K)$. The spectral sequence is convergent because
-$K$ is bounded below, by HC1a–HC2. The interval evaluation theorem identifies this calculation with evaluation and proves that
+$K$ is bounded below, by HC1a–HC2. The [interval evaluation theorem](../../SH02-convex-acyclicity.html#SH02-CA-LOCAL-SYSTEM) identifies this calculation with evaluation and proves that
 
 $$
 Rq_{n*}(K|_{B\times I_n})\longrightarrow s_0^{-1}K

@@ -391,4 +391,4 @@ The full AN-04 assignment remains active beyond this scalar theorem. Restored fi
 
 Hörmander IV, Theorem 26.1.14 and its disconnected-sign extension, printed 70–73/PDF 81–84, supply the antecedents for global assembly, residual correction, exact gain, adjoint comparison, elliptic difference and opposite characteristic signs. The complete local and correction proofs are the preceding programme lessons cited above; the full PDO and corank providers are given with exact scopes. The conic partition, support cutoff, finite residual argument, corank computation, common diagonal jump normalization, ordinary inverse-bound transport, exact order reduction, mixed-sign receiving argument and complete exercises here are independently written.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; restoration and additional support and symbol details by GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI. Original text: public domain CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; support and symbol details by GPT-6 Astra (OpenAI), Ultra. Self-checked by the writing AI. Original text: public domain CC0.*

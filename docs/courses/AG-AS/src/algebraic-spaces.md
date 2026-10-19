@@ -1,6 +1,6 @@
 # Algebraic spaces
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 ## Introduction
 
@@ -283,9 +283,9 @@ Finally let \(U=\operatorname{Spec}D\) be such an affine source open over the af
 
 For two data, their compatible morphisms become compatible maps between the recovered schemes after the original covering, and the morphism descent lemma supplies the unique map over \(S\). In particular, two effectivity constructions are uniquely isomorphic, with the specified comparisons, by descending the identity of the original datum and its inverse. The stated equivalence of categories, including uniqueness, is now proved. \(\square\)
 
-The scheme Zariski Main input is *Zariski’s Main Theorem* (AG-MO-12), Theorem 4.1: a separated quasi-finite morphism over an arbitrary affine scheme is quasi-affine and has a finite completion. Its full nonaffine proof and conductor foundations are genuinely assigned prerequisite repairs; the present course does not claim that they are already written. Universal openness, quotient topology and flat going down are *Flat morphisms* (AG-FSE-01), Theorem 2.2 and §3; openness retains that lesson’s finite-presentation Chevalley prerequisite. The local quasi-finiteness criterion is *Quasi-finite morphisms and Chevalley’s theorem* (AG-MO-06), Theorems 1.1–1.2. The affine equalizers, quasi-affine bridge, gluing and all original comparison maps needed here have been proved above.
+The scheme Zariski Main input is *Zariski’s Main Theorem* (AG-MO-12), Theorem 4.1: a separated quasi-finite morphism over an arbitrary affine scheme is quasi-affine and has a finite completion. Its nonaffine finite-completion theorem and conductor foundations are assumed here; their proofs are not supplied in this lesson. Universal openness, quotient topology and flat going down are *Flat morphisms* (AG-FSE-01), Theorem 2.2 and §3; openness retains that lesson’s finite-presentation Chevalley prerequisite. The local quasi-finiteness criterion is *Quasi-finite morphisms and Chevalley’s theorem* (AG-MO-06), Theorems 1.1–1.2. The affine equalizers, quasi-affine bridge, gluing and all original comparison maps needed here have been proved above.
 
-The sources are the Stacks Project authors’ *More on Morphisms*, Tag 02W8, label `lemma-separated-locally-quasi-finite-morphisms-fppf-descend`, and *Descent*, labels `lemma-effective-for-fpqc-is-local-upstairs` and `lemma-quasi-affine` (Tag 0247), as read in the AI Integrated Stacks Project at revision `565b10e987aba5969b21145a0833f42d69f96790`. This proof is independently expressed eligible AI writing under CC0; the consulted source retains its human attribution and GFDL terms.
+The sources are the Stacks Project authors’ *More on Morphisms*, Tag 02W8, label `lemma-separated-locally-quasi-finite-morphisms-fppf-descend`, and *Descent*, labels `lemma-effective-for-fpqc-is-local-upstairs` and `lemma-quasi-affine` (Tag 0247), in the AI Integrated Stacks Project at revision `565b10e987aba5969b21145a0833f42d69f96790`.
 
 The elementary part of quotient sheafification is useful throughout the proof.
 

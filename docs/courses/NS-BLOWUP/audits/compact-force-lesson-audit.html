@@ -1,0 +1,764 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}@media(max-width:600px){
+mjx-container[display="true"],mjx-math[display="true"],mjx-mtable[side="right"]{min-width:0!important}
+mjx-mtable[side="right"]>mjx-table{margin-left:0!important;margin-right:0!important}
+mjx-mtable[side="right"]>mjx-labels{position:static!important;display:block!important;width:auto!important;text-align:right;margin-top:.65em}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable{position:static!important;display:inline-table!important}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable>mjx-mtr{height:auto!important}
+}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="compact-force-lesson-audit.md">Editable source</a></nav><h1 id="localizing-the-field-and-extending-its-smooth-force">Localizing the field and extending its smooth force</h1>
+<p><em>NS-BLOWUP N7.1. Exposition by GPT-6 Astra (OpenAI). This independent exposition is dedicated to CC0.</em></p>
+<p>The local-field construction gives an actual divergence-free velocity, its potentials and pressure. Its momentum residual vanishes to every order near the singular scale, and its exterior is an exact heat flow. This lesson turns those fields into a compactly supported solution from rest before time one, and constructs a smooth compactly supported force through and beyond that time. The force extends; the argument does not extend the singular velocity.</p>
+<p>LF0–LF3 prove the complete localization and force-extension argument. LF4 retains every original positive-viscosity factor, including the full localized residual. LF5 gives five solved exercises on composition of cutoffs, all exterior force components and terminal derivatives, finite bounds for the integer choices, the exact freedom in extension, and the flatness of the constructed force.</p>
+<p>The <a href="../src/constructing-the-actual-local-field.md">preceding local-field lesson</a>, PL0–PL7 and LC0–LC8, proves all local inputs used below. Its LC4 supplies the actual potential sum and all residual derivatives; LC5 proves the endpoint limits; LC6 gives the exact heat exterior and inner growth; LC7 retains viscosity. References to these labels refer to that complete lesson. The energy, whole-space comparison, growth and periodic conclusions are proved in the <a href="../src/energy-comparison-and-the-final-blowup-conclusions.md">following lesson</a>, EC0–EC7.</p>
+<p><img src="../assets/compact-force-extension.svg" alt="The actual localization, three terminal regions, compatible derivative limits and compact force extension, with original viscosity factors." class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="1B35943EB38C0ED41A4DF08AB59A56665835528E4DF87BB9D4A8949C93FF28C5"></p>
+<p>The <a href="../assets/compact-force-extension.py">editable figure source</a> records the maps and proof locators. Spatial regions are schematic; the time supports and equations have their exact stated meanings.</p>
+<h2 id="lf0-the-exact-local-input-and-a-compact-cutoff-inside-its-domain">LF0. The exact local input and a compact cutoff inside its domain</h2>
+<p>Use the actual viscosity-one fields proved in the <a href="../src/constructing-the-actual-local-field.md">local-field lesson</a>, LC4–LC7:</p>
+<span class="math math-display" data-tex="\[
+v=\operatorname{curl}\mathcal A+\mathcal B e_\theta,\qquad p^{\rm loc},
+\qquad \Omega_*=\{(x,t):\tau=1-t&gt;0,\ q&lt;q_*\}.
+\tag{LF0.1}
+\]">\[
+v=\operatorname{curl}\mathcal A+\mathcal B e_\theta,\qquad p^{\rm loc},
+\qquad \Omega_*=\{(x,t):\tau=1-t&gt;0,\ q&lt;q_*\}.
+\tag{LF0.1}
+\]</span>
+<p>The scalar <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is axisymmetric. The actual Cartesian representatives, compatible one-sided derivatives for q bounded below, flat residual on every bounded profile interval, exact heat exterior, and positive inner-growth path are LC4–LC6. Keep the original <span class="math" data-tex="\(0&lt;h&lt;1/100\)">\(0&lt;h&lt;1/100\)</span>, <span class="math" data-tex="\(A=1/2+h\)">\(A=1/2+h\)</span>, <span class="math" data-tex="\(D=1/2-h\)">\(D=1/2-h\)</span>, <span class="math" data-tex="\(\tau=q(1-\eta^2)\)">\(\tau=q(1-\eta^2)\)</span>, <span class="math" data-tex="\(z=q^D\eta\)">\(z=q^D\eta\)</span>, <span class="math" data-tex="\(X=r^2/(2q)\)">\(X=r^2/(2q)\)</span>, and <span class="math" data-tex="\(L=1-2h\eta^2\)">\(L=1-2h\eta^2\)</span>.</p>
+<p>If <span class="math" data-tex="\(1-\eta^2\ge1/2\)">\(1-\eta^2\ge1/2\)</span>, then <span class="math" data-tex="\(q\le2\tau\)">\(q\le2\tau\)</span>. Otherwise <span class="math" data-tex="\(|\eta|&gt;2^{-1/2}\)">\(|\eta|&gt;2^{-1/2}\)</span> and <span class="math" data-tex="\(q\le(\sqrt2|z|)^{1/D}\)">\(q\le(\sqrt2|z|)^{1/D}\)</span>. Consequently the original (10.3) holds with the explicit admissible constant</p>
+<span class="math math-display" data-tex="\[
+q\le C_0(\tau+|z|^{1/D}),\qquad
+C_0=\max\{2,2^{1/(2D)}\}.
+\tag{LF0.2}
+\]">\[
+q\le C_0(\tau+|z|^{1/D}),\qquad
+C_0=\max\{2,2^{1/(2D)}\}.
+\tag{LF0.2}
+\]</span>
+<p>This estimate is uniform in r. Fix</p>
+<span class="math math-display" data-tex="\[
+\tau_0=\frac{q_*}{8C_0}&lt;\frac12,\qquad
+z_0=\left(\frac{q_*}{8C_0}\right)^D,
+\qquad C_0(\tau_0+z_0^{1/D})=q_*/4.
+\tag{LF0.3}
+\]">\[
+\tau_0=\frac{q_*}{8C_0}&lt;\frac12,\qquad
+z_0=\left(\frac{q_*}{8C_0}\right)^D,
+\qquad C_0(\tau_0+z_0^{1/D})=q_*/4.
+\tag{LF0.3}
+\]</span>
+<p>Take any fixed <span class="math" data-tex="\(r_0&gt;0\)">\(r_0&gt;0\)</span>. Use the smooth step</p>
+<span class="math math-display" data-tex="\[
+e(s)=\begin{cases}\exp(-1/s),&amp;s&gt;0,\\0,&amp;s\le0,\end{cases}
+\qquad \sigma(s)=\frac{e(s)}{e(s)+e(1-s)}.
+\tag{LF0.3a}
+\]">\[
+e(s)=\begin{cases}\exp(-1/s),&amp;s&gt;0,\\0,&amp;s\le0,\end{cases}
+\qquad \sigma(s)=\frac{e(s)}{e(s)+e(1-s)}.
+\tag{LF0.3a}
+\]</span>
+<p>The denominator is positive for every real <span class="math" data-tex="\(s\)">\(s\)</span>. Each derivative of <span class="math" data-tex="\(e\)">\(e\)</span> on the positive half-line is <span class="math" data-tex="\(e(s)\)">\(e(s)\)</span> times a polynomial in <span class="math" data-tex="\(1/s\)">\(1/s\)</span>, and tends to zero at zero: for every integer <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(y^ne^{-y}\to0\)">\(y^ne^{-y}\to0\)</span> as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, by the exponential series with an integer power larger than <span class="math" data-tex="\(n\)">\(n\)</span>. Hence <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> are smooth, with <span class="math" data-tex="\(\sigma=0\)">\(\sigma=0\)</span> on <span class="math" data-tex="\(( -\infty,0]\)">\(( -\infty,0]\)</span>, <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span> on <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>, and flat derivatives at both endpoints. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\chi_x(x)&amp;=\left[1-\sigma\!\left(2r^2/r_0^2-\tfrac12\right)\right]
+\left[1-\sigma\!\left(2z^2/z_0^2-\tfrac12\right)\right],\\
+\chi_t(t)&amp;=1-\sigma(2\tau/\tau_0-1),\qquad c(x,t)=\chi_x(x)\chi_t(t).
+\end{split}
+\tag{LF0.4}
+\]">\[
+\begin{split}
+\chi_x(x)&amp;=\left[1-\sigma\!\left(2r^2/r_0^2-\tfrac12\right)\right]
+\left[1-\sigma\!\left(2z^2/z_0^2-\tfrac12\right)\right],\\
+\chi_t(t)&amp;=1-\sigma(2\tau/\tau_0-1),\qquad c(x,t)=\chi_x(x)\chi_t(t).
+\end{split}
+\tag{LF0.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\chi_x=1\)">\(\chi_x=1\)</span> for <span class="math" data-tex="\(r\le r_0/2,\ |z|\le z_0/2\)">\(r\le r_0/2,\ |z|\le z_0/2\)</span>, and its support is contained in <span class="math" data-tex="\(r&lt;r_0,\ |z|&lt;z_0\)">\(r&lt;r_0,\ |z|&lt;z_0\)</span>. It is a smooth function of <span class="math" data-tex="\(r^2,z\)">\(r^2,z\)</span>, including the Cartesian axis. The time cutoff is zero for <span class="math" data-tex="\(\tau\ge\tau_0\)">\(\tau\ge\tau_0\)</span> and one for <span class="math" data-tex="\(0\le\tau\le\tau_0/2\)">\(0\le\tau\le\tau_0/2\)</span>. Its derivatives are flat at its endpoints. For <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, the support of c and all its derivatives lies in <span class="math" data-tex="\(q\le q_*/4&lt;q_*/2\)">\(q\le q_*/4&lt;q_*/2\)</span>, by LF0.2–LF0.3. Let <span class="math" data-tex="\(\mathcal K=\operatorname{supp}\chi_x\)">\(\mathcal K=\operatorname{supp}\chi_x\)</span>; it is a fixed compact subset of <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>.</p>
+<p>Define on the local domain and extend by zero elsewhere</p>
+<span class="math math-display" data-tex="\[
+u=\operatorname{curl}(c\mathcal A)+c\mathcal B e_\theta,\qquad
+p=cp^{\rm loc}.
+\tag{LF0.5}
+\]">\[
+u=\operatorname{curl}(c\mathcal A)+c\mathcal B e_\theta,\qquad
+p=cp^{\rm loc}.
+\tag{LF0.5}
+\]</span>
+<p>There is a positive margin in q between the support and the outer boundary of <span class="math" data-tex="\(\Omega_*\)">\(\Omega_*\)</span>, so the zero extension is smooth. The original Cartesian axis representatives give smoothness at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Commuting Cartesian mixed derivatives gives zero divergence for the curl. Since c and <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> are independent of θ, the divergence of the other term is <span class="math" data-tex="\(r^{-1}\partial_\theta(c\mathcal B)=0\)">\(r^{-1}\partial_\theta(c\mathcal B)=0\)</span>, with its continuous Cartesian interpretation at the axis. Hence u is exactly divergence-free.</p>
+<p>Both u and p are smooth on <span class="math" data-tex="\(\mathbb R^3\times[0,1)\)">\(\mathbb R^3\times[0,1)\)</span>, supported in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> at every time, and identically zero for <span class="math" data-tex="\(0\le t\le1-\tau_0\)">\(0\le t\le1-\tau_0\)</span>. They agree with the original local fields whenever <span class="math" data-tex="\(r&lt;r_0/2,\ |z|&lt;z_0/2,\ \tau&lt;\tau_0/2\)">\(r&lt;r_0/2,\ |z|&lt;z_0/2,\ \tau&lt;\tau_0/2\)</span>. This proves every assertion of Proposition 10.1 for the supplied fields.</p>
+<h2 id="lf1-the-complete-localized-momentum-residual">LF1. The complete localized momentum residual</h2>
+<p>Keep the full curl correction <span class="math" data-tex="\(a=\nabla c\times\mathcal A\)">\(a=\nabla c\times\mathcal A\)</span>, so <span class="math" data-tex="\(u=cv+a\)">\(u=cv+a\)</span>. For <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span> set</p>
+<span class="math math-display" data-tex="\[
+f^-=\partial_tu-\Delta u+(u\cdot\nabla)u+\nabla p.
+\tag{LF1.1}
+\]">\[
+f^-=\partial_tu-\Delta u+(u\cdot\nabla)u+\nabla p.
+\tag{LF1.1}
+\]</span>
+<p>Every term is smooth before terminal time and has spatial support in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. The exact expansion is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^-={}&amp;c\,\mathscr R(v,p^{\rm loc})+(\partial_tc-\Delta c)v\\
+&amp;-2\sum_{i=1}^3(\partial_i c)(\partial_i v)
++p^{\rm loc}\nabla c+(\partial_t-\Delta)a\\
+&amp;+(c^2-c)(v\cdot\nabla)v+c(v\cdot\nabla c)v\\
+&amp;+c(v\cdot\nabla)a+(a\cdot\nabla c)v\\
+&amp;+c(a\cdot\nabla)v+(a\cdot\nabla)a .
+\end{aligned}
+\tag{LF1.2}
+\]">\[
+\begin{aligned}
+f^-={}&amp;c\,\mathscr R(v,p^{\rm loc})+(\partial_tc-\Delta c)v\\
+&amp;-2\sum_{i=1}^3(\partial_i c)(\partial_i v)
++p^{\rm loc}\nabla c+(\partial_t-\Delta)a\\
+&amp;+(c^2-c)(v\cdot\nabla)v+c(v\cdot\nabla c)v\\
+&amp;+c(v\cdot\nabla)a+(a\cdot\nabla c)v\\
+&amp;+c(a\cdot\nabla)v+(a\cdot\nabla)a .
+\end{aligned}
+\tag{LF1.2}
+\]</span>
+<p>To verify it, expand the time derivative and Laplacian of cv, the gradient of <span class="math" data-tex="\(cp^{\rm loc}\)">\(cp^{\rm loc}\)</span>, and all four products in <span class="math" data-tex="\((cv+a)\cdot\nabla(cv+a)\)">\((cv+a)\cdot\nabla(cv+a)\)</span>. Subtract the single <span class="math" data-tex="\(c(v\cdot\nabla)v\)">\(c(v\cdot\nabla)v\)</span> already contained in <span class="math" data-tex="\(c\mathscr R(v,p^{\rm loc})\)">\(c\mathscr R(v,p^{\rm loc})\)</span>. This leaves the coefficient <span class="math" data-tex="\(c^2-c\)">\(c^2-c\)</span>, not zero. The displayed <span class="math" data-tex="\(a\cdot\nabla c\)">\(a\cdot\nabla c\)</span> term is identically zero by <span class="math" data-tex="\((\nabla c\times\mathcal A)\cdot\nabla c=0\)">\((\nabla c\times\mathcal A)\cdot\nabla c=0\)</span>, but it has been retained in the full expansion. No other cutoff term has been suppressed.</p>
+<p>Taking divergence of LF1.1, using <span class="math" data-tex="\(\operatorname{div}u=0\)">\(\operatorname{div}u=0\)</span>, gives exactly</p>
+<span class="math math-display" data-tex="\[
+-\Delta p=\sum_{i,j=1}^3\partial_i\partial_j(u_i u_j)-\operatorname{div}f^-.
+\tag{LF1.3}
+\]">\[
+-\Delta p=\sum_{i,j=1}^3\partial_i\partial_j(u_i u_j)-\operatorname{div}f^-.
+\tag{LF1.3}
+\]</span>
+<p>The force need not be divergence-free; the target theorem imposes no such condition. The compactly supported pressure and this force satisfy the full pressure equation.</p>
+<h2 id="lf2-uniform-terminal-limits-of-every-force-derivative">LF2. Uniform terminal limits of every force derivative</h2>
+<p>First consider a compact spatial region with q bounded below and bounded away from <span class="math" data-tex="\(q_*\)">\(q_*\)</span> near <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. LC5 supplies bounded derivatives of the actual <span class="math" data-tex="\(\mathcal A,\mathcal B e_\theta,p^{\rm loc}\)">\(\mathcal A,\mathcal B e_\theta,p^{\rm loc}\)</span> of every order there. LF1.2 is a finite differential polynomial in these fields and the fixed cutoffs, so the same holds for <span class="math" data-tex="\(f^-\)">\(f^-\)</span>. One additional time derivative gives</p>
+<span class="math math-display" data-tex="\[
+\sup_{x\in K_0}
+|\partial_x^\alpha\partial_t^j f^-(x,t_2)
+-\partial_x^\alpha\partial_t^j f^-(x,t_1)|
+\le C_{\alpha,j,K_0}|t_2-t_1|.
+\tag{LF2.1}
+\]">\[
+\sup_{x\in K_0}
+|\partial_x^\alpha\partial_t^j f^-(x,t_2)
+-\partial_x^\alpha\partial_t^j f^-(x,t_1)|
+\le C_{\alpha,j,K_0}|t_2-t_1|.
+\tag{LF2.1}
+\]</span>
+<p>Thus every derivative is uniformly Cauchy on that compact region.</p>
+<p>The other region away from the origin has r bounded below and q small enough that <span class="math" data-tex="\(X\ge X_{\rm ext}\)">\(X\ge X_{\rm ext}\)</span>. There <span class="math" data-tex="\(\mathcal A=0\)">\(\mathcal A=0\)</span>, <span class="math" data-tex="\(v=K(r,\tau)e_\theta\)">\(v=K(r,\tau)e_\theta\)</span>, and the exact fields are</p>
+<span class="math math-display" data-tex="\[
+K(r,\tau)=c_\infty s^{-A}\mathcal H(2\tau/s),\quad s=r^2/2,\qquad
+p^{\rm loc}(r,\tau)=-\int_r^\infty K(\rho,\tau)^2\,\frac{d\rho}{\rho}.
+\tag{LF2.2}
+\]">\[
+K(r,\tau)=c_\infty s^{-A}\mathcal H(2\tau/s),\quad s=r^2/2,\qquad
+p^{\rm loc}(r,\tau)=-\int_r^\infty K(\rho,\tau)^2\,\frac{d\rho}{\rho}.
+\tag{LF2.2}
+\]</span>
+<p>The original heat integral and its full derivative bounds were proved in PL6/LC6. In particular, for every j,</p>
+<span class="math math-display" data-tex="\[
+|\partial_\tau^jK(r,\tau)|\le C_jr^{-1-2h-2j},\qquad
+\left|\partial_\tau^j(K(\rho,\tau)^2/\rho)\right|
+\le C_j\rho^{-3-4h-2j}.
+\tag{LF2.3}
+\]">\[
+|\partial_\tau^jK(r,\tau)|\le C_jr^{-1-2h-2j},\qquad
+\left|\partial_\tau^j(K(\rho,\tau)^2/\rho)\right|
+\le C_j\rho^{-3-4h-2j}.
+\tag{LF2.3}
+\]</span>
+<p>The second estimate contains every product-rule summand
+<span class="math" data-tex="\(\sum_{i=0}^j\binom ji(\partial_\tau^iK)(\partial_\tau^{j-i}K)/\rho\)">\(\sum_{i=0}^j\binom ji(\partial_\tau^iK)(\partial_\tau^{j-i}K)/\rho\)</span>.
+On a positive-radius interval the majorant is integrable from its lower endpoint to infinity. Dominated convergence gives all one-sided time derivatives of the pressure with its original integral. Each subsequent radial derivative differentiates the lower-endpoint expression; PL6.9 supplies the full radial derivatives of K, including all factors of <span class="math" data-tex="\(\tau/r^2\)">\(\tau/r^2\)</span>. For r bounded below these give smooth Cartesian derivatives as well, since the cylindrical frame and each fixed derivative of it are bounded. All limits are uniform on compact positive-radius sets.</p>
+<p>In this exterior <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and LF1.2 involves just these smooth quantities and fixed cutoffs. Its full nonlinear term <span class="math" data-tex="\((c^2-c)(v\cdot\nabla)v\)">\((c^2-c)(v\cdot\nabla)v\)</span> remains. It too has all uniform derivative limits. The uncut residual is exactly zero, by the swirl heat equation and centrifugal pressure cancellation proved in LC6.</p>
+<p>These two cases cover the terminal slice away from the origin. At <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, <span class="math" data-tex="\(q\ge|z|^{1/D}&gt;0\)">\(q\ge|z|^{1/D}&gt;0\)</span>. At <span class="math" data-tex="\(z=0\)">\(z=0\)</span> but <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>; choosing a small neighborhood and t sufficiently close to one gives q small by LF0.2 and hence <span class="math" data-tex="\(X\ge X_{\rm ext}\)">\(X\ge X_{\rm ext}\)</span>. A finite cover therefore gives uniform convergence on every compact spatial set avoiding the origin. The support margin from LF0.3 keeps the positive-q part away from <span class="math" data-tex="\(q_*\)">\(q_*\)</span>.</p>
+<p>Near the origin and for t sufficiently close to one, both cutoffs equal one. Thus <span class="math" data-tex="\(f^-=\mathscr R(v,p^{\rm loc})\)">\(f^-=\mathscr R(v,p^{\rm loc})\)</span>. On <span class="math" data-tex="\(X\le X_{\rm ext}\)">\(X\le X_{\rm ext}\)</span>, LC4.9 gives arbitrary-order flatness; on <span class="math" data-tex="\(X\ge X_{\rm ext}\)">\(X\ge X_{\rm ext}\)</span>, the residual is identically zero. With LF0.2 this proves, for every <span class="math" data-tex="\(\alpha,j,N\)">\(\alpha,j,N\)</span> on one fixed neighborhood of (0,1),</p>
+<span class="math math-display" data-tex="\[
+|\partial_x^\alpha\partial_t^j f^-(x,t)|
+\le C_{\alpha,j,N}(\tau+|z|^{1/D})^N.
+\tag{LF2.4}
+\]">\[
+|\partial_x^\alpha\partial_t^j f^-(x,t)|
+\le C_{\alpha,j,N}(\tau+|z|^{1/D})^N.
+\tag{LF2.4}
+\]</span>
+<p>To obtain uniform convergence on all of <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, fix <span class="math" data-tex="\(\alpha,j\)">\(\alpha,j\)</span> and a tolerance. Choose a ball inside that neighborhood so small that its <span class="math" data-tex="\(|z|^{1/D}\)">\(|z|^{1/D}\)</span> contribution in LF2.4 is below the tolerance, then take τ small enough for its other contribution. Inside the ball, both members of a time difference are small. On the compact remainder of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, LF2.1 and the exterior argument give a uniformly Cauchy family. Outside <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, all derivatives vanish. These three estimates prove the global uniform Cauchy property.</p>
+<p>Define <span class="math" data-tex="\(F_j(x)=\lim_{t\uparrow1}\partial_t^j f^-(x,t)\)">\(F_j(x)=\lim_{t\uparrow1}\partial_t^j f^-(x,t)\)</span>. Its support is contained in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. Passing to the uniform limit in the fundamental theorem of calculus along a spatial coordinate segment proves</p>
+<span class="math math-display" data-tex="\[
+\lim_{t\uparrow1}\partial_x^\alpha\partial_t^j f^-(x,t)
+=\partial_x^\alpha F_j(x),\qquad
+F_j\in C_c^\infty(\mathbb R^3;\mathbb R^3),\qquad
+\partial_x^\alpha F_j(0)=0.
+\tag{LF2.5}
+\]">\[
+\lim_{t\uparrow1}\partial_x^\alpha\partial_t^j f^-(x,t)
+=\partial_x^\alpha F_j(x),\qquad
+F_j\in C_c^\infty(\mathbb R^3;\mathbb R^3),\qquad
+\partial_x^\alpha F_j(0)=0.
+\tag{LF2.5}
+\]</span>
+<p>The last equality follows by putting <span class="math" data-tex="\(x=0\)">\(x=0\)</span> in LF2.4 and taking <span class="math" data-tex="\(\tau\downarrow0\)">\(\tau\downarrow0\)</span>, for each derivative separately. Passing to the time limit in the corresponding integral identity gives</p>
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha\partial_t^j f^-(x,t)
+=\partial_x^\alpha F_j(x)
+-\int_t^1\partial_x^\alpha\partial_t^{j+1}f^-(x,s)\,ds.
+\tag{LF2.6}
+\]">\[
+\partial_x^\alpha\partial_t^j f^-(x,t)
+=\partial_x^\alpha F_j(x)
+-\int_t^1\partial_x^\alpha\partial_t^{j+1}f^-(x,s)\,ds.
+\tag{LF2.6}
+\]</span>
+<p>This proves the full compatibility of the terminal jets, not just the existence of pointwise limits. It establishes Lemma 10.2 for the actual localized residual.</p>
+<h2 id="lf3-a-compact-smooth-extension-with-every-prescribed-jet">LF3. A compact smooth extension with every prescribed jet</h2>
+<p>Choose the original type of cutoff <span class="math" data-tex="\(\chi_0\in C_c^\infty(\mathbb R)\)">\(\chi_0\in C_c^\infty(\mathbb R)\)</span>, equal to one near zero and zero for arguments at least one. For definiteness, the same step gives</p>
+<span class="math math-display" data-tex="\[
+\chi_0(s)=1-\sigma\left(\frac{4s^2-1}{3}\right).
+\tag{LF3.0}
+\]">\[
+\chi_0(s)=1-\sigma\left(\frac{4s^2-1}{3}\right).
+\tag{LF3.0}
+\]</span>
+<p>It is even, equals one on <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>, vanishes for <span class="math" data-tex="\(|s|\ge1\)">\(|s|\ge1\)</span>, and is smooth with flat endpoint derivatives. For <span class="math" data-tex="\(\sigma=t-1\ge0\)">\(\sigma=t-1\ge0\)</span> use the original series</p>
+<span class="math math-display" data-tex="\[
+f^+(x,1+\sigma)=\sum_{j=0}^\infty
+\chi_0(b_j\sigma)\frac{\sigma^j}{j!}F_j(x).
+\tag{LF3.1}
+\]">\[
+f^+(x,1+\sigma)=\sum_{j=0}^\infty
+\chi_0(b_j\sigma)\frac{\sigma^j}{j!}F_j(x).
+\tag{LF3.1}
+\]</span>
+<p>For a spatial multi-index α and a nonnegative integer m, the exact derivative of its j-th term is</p>
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha\partial_\sigma^m
+\left(\chi_0(b_j\sigma)\frac{\sigma^j}{j!}F_j\right)
+=\sum_{\substack{0\le a\le m\\j-m+a\ge0}}
+\binom ma b_j^a\chi_0^{(a)}(b_j\sigma)
+\frac{\sigma^{j-m+a}}{(j-m+a)!}\partial_x^\alpha F_j.
+\tag{LF3.2}
+\]">\[
+\partial_x^\alpha\partial_\sigma^m
+\left(\chi_0(b_j\sigma)\frac{\sigma^j}{j!}F_j\right)
+=\sum_{\substack{0\le a\le m\\j-m+a\ge0}}
+\binom ma b_j^a\chi_0^{(a)}(b_j\sigma)
+\frac{\sigma^{j-m+a}}{(j-m+a)!}\partial_x^\alpha F_j.
+\tag{LF3.2}
+\]</span>
+<p>Terms with a negative remaining monomial degree are absent. On the support of each term <span class="math" data-tex="\(0\le\sigma\le b_j^{-1}\)">\(0\le\sigma\le b_j^{-1}\)</span>. Define the finite constant</p>
+<span class="math math-display" data-tex="\[
+C_{j,m}=\sum_{\substack{0\le a\le m\\j-m+a\ge0}}
+\binom ma\,\frac{\|\chi_0^{(a)}\|_\infty}{(j-m+a)!}.
+\]">\[
+C_{j,m}=\sum_{\substack{0\le a\le m\\j-m+a\ge0}}
+\binom ma\,\frac{\|\chi_0^{(a)}\|_\infty}{(j-m+a)!}.
+\]</span>
+<p>The full derivative is bounded in the global supremum norm by</p>
+<span class="math math-display" data-tex="\[
+C_{j,m}b_j^{m-j}\|F_j\|_{C^{|\alpha|}}.
+\tag{LF3.3}
+\]">\[
+C_{j,m}b_j^{m-j}\|F_j\|_{C^{|\alpha|}}.
+\tag{LF3.3}
+\]</span>
+<p>Set <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span> and retain the source's exact integer choice for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>:</p>
+<span class="math math-display" data-tex="\[
+b_j=\min\left\{b\in\mathbb N:\ b&gt;b_{j-1},\
+\max_{\substack{a,m\ge0\\a+m\le\lfloor j/2\rfloor}}
+C_{j,m}b^{m-j}\|F_j\|_{C^a}\le2^{-j}\right\}.
+\tag{LF3.4}
+\]">\[
+b_j=\min\left\{b\in\mathbb N:\ b&gt;b_{j-1},\
+\max_{\substack{a,m\ge0\\a+m\le\lfloor j/2\rfloor}}
+C_{j,m}b^{m-j}\|F_j\|_{C^a}\le2^{-j}\right\}.
+\tag{LF3.4}
+\]</span>
+<p>Every <span class="math" data-tex="\(F_j\)">\(F_j\)</span> norm is finite by LF2.5. The maximum has finitely many entries, and in each <span class="math" data-tex="\(m-j&lt;0\)">\(m-j&lt;0\)</span>. Taking b sufficiently large makes all of them at most <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. Thus the defining set is nonempty and its least integer exists at every stage. This constructs the original sequence from the actual jets without any coefficient-growth assumption or numerical run.</p>
+<p>For fixed <span class="math" data-tex="\(\alpha,m\)">\(\alpha,m\)</span>, all sufficiently large j obey <span class="math" data-tex="\(|\alpha|+m\le\lfloor j/2\rfloor\)">\(|\alpha|+m\le\lfloor j/2\rfloor\)</span>, so LF3.3 is at most <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. The differentiated tails consequently converge uniformly, together with every fixed mixed derivative. The finitely many initial terms are smooth. At <span class="math" data-tex="\(\sigma=0\)">\(\sigma=0\)</span>, each fixed cutoff is constant on a neighborhood; its m-th time derivative contributes only when <span class="math" data-tex="\(j=m\)">\(j=m\)</span>, with value <span class="math" data-tex="\(F_m\)">\(F_m\)</span>. Uniform differentiated convergence therefore proves</p>
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha\partial_\sigma^m f^+(x,1)
+=\partial_x^\alpha F_m(x).
+\tag{LF3.5}
+\]">\[
+\partial_x^\alpha\partial_\sigma^m f^+(x,1)
+=\partial_x^\alpha F_m(x).
+\tag{LF3.5}
+\]</span>
+<p>Join <span class="math" data-tex="\(f^-\)">\(f^-\)</span> for <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span> to <span class="math" data-tex="\(f^+\)">\(f^+\)</span> for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>. Equations LF2.6 and LF3.5 give matching derivatives of every order. The fundamental theorem of calculus across <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, followed by induction on derivative order, shows that the joined function is <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> in all space-time variables.</p>
+<p>Every summand has spatial support in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> and vanishes for <span class="math" data-tex="\(\sigma\ge1\)">\(\sigma\ge1\)</span>, since <span class="math" data-tex="\(b_j\ge1\)">\(b_j\ge1\)</span>. Uniform convergence of every derivative also gives the smooth zero extension at the support boundary. On the left, LF0 makes the residual zero for <span class="math" data-tex="\(t\le1-\tau_0&gt;0\)">\(t\le1-\tau_0&gt;0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+f\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3),\qquad
+\operatorname{supp}f\subset\mathcal K\times[1-\tau_0,2],\qquad
+\mathscr R(u,p)=f\quad(0\le t&lt;1).
+\tag{LF3.6}
+\]">\[
+f\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3),\qquad
+\operatorname{supp}f\subset\mathcal K\times[1-\tau_0,2],\qquad
+\mathscr R(u,p)=f\quad(0\le t&lt;1).
+\tag{LF3.6}
+\]</span>
+<p>In particular this has the original weaker support bound <span class="math" data-tex="\(\mathcal K\times[0,2]\)">\(\mathcal K\times[0,2]\)</span>. If <span class="math" data-tex="\(\mathcal K\subset B(0,R)\)">\(\mathcal K\subset B(0,R)\)</span> and <span class="math" data-tex="\(M_{\alpha,m}=\|\partial_x^\alpha\partial_t^m f\|_\infty\)">\(M_{\alpha,m}=\|\partial_x^\alpha\partial_t^m f\|_\infty\)</span>, compact support gives, for every integer k≥0,</p>
+<span class="math math-display" data-tex="\[
+|\partial_x^\alpha\partial_t^m f(x,t)|
+\le M_{\alpha,m}(3+R)^k(1+|x|+t)^{-k}.
+\tag{LF3.7}
+\]">\[
+|\partial_x^\alpha\partial_t^m f(x,t)|
+\le M_{\alpha,m}(3+R)^k(1+|x|+t)^{-k}.
+\tag{LF3.7}
+\]</span>
+<p>Inside the support this follows from <span class="math" data-tex="\(1+|x|+t\le3+R\)">\(1+|x|+t\le3+R\)</span>; outside it the left side is zero. This proves the force's exact regularity, support and all decay conditions in Lemma 10.3.</p>
+<h2 id="lf4-the-construction-at-every-original-positive-viscosity">LF4. The construction at every original positive viscosity</h2>
+<p>Fix the prescribed <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. Use the original spatial map <span class="math" data-tex="\(y=x_\nu/\sqrt\nu\)">\(y=x_\nu/\sqrt\nu\)</span>, with time unchanged, and retain all potentials and coefficients:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal A_\nu(x_\nu,t)=\nu\mathcal A(y,t),\qquad
+\mathcal B_\nu(x_\nu,t)=\sqrt\nu\mathcal B(y,t),\\
+v_\nu(x_\nu,t)=\sqrt\nu v(y,t),\qquad
+p^{\rm loc}_\nu(x_\nu,t)=\nu p^{\rm loc}(y,t),\qquad
+c_\nu(x_\nu,t)=c(y,t).
+\end{gathered}
+\tag{LF4.1}
+\]">\[
+\begin{gathered}
+\mathcal A_\nu(x_\nu,t)=\nu\mathcal A(y,t),\qquad
+\mathcal B_\nu(x_\nu,t)=\sqrt\nu\mathcal B(y,t),\\
+v_\nu(x_\nu,t)=\sqrt\nu v(y,t),\qquad
+p^{\rm loc}_\nu(x_\nu,t)=\nu p^{\rm loc}(y,t),\qquad
+c_\nu(x_\nu,t)=c(y,t).
+\end{gathered}
+\tag{LF4.1}
+\]</span>
+<p>The angular frame is unchanged by this positive radial scaling. The actual coordinates remain</p>
+<span class="math math-display" data-tex="\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\qquad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu q_\nu^D},\qquad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu}.
+\tag{LF4.2}
+\]">\[
+q_\nu-(z_\nu^2/\nu)q_\nu^{2h}=1-t,\qquad
+\eta_\nu=\frac{z_\nu}{\sqrt\nu q_\nu^D},\qquad
+X_\nu=\frac{r_\nu^2}{2\nu q_\nu}.
+\tag{LF4.2}
+\]</span>
+<p>In particular the cutoff is the explicit function</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_\nu(x_\nu,t)
+={}&amp;\left[1-\sigma\left(\frac{2r_\nu^2}{\nu r_0^2}-\frac12\right)\right]
+\left[1-\sigma\left(\frac{2z_\nu^2}{\nu z_0^2}-\frac12\right)\right]\\
+&amp;\times[1-\sigma(2(1-t)/\tau_0-1)].
+\end{aligned}
+\tag{LF4.3}
+\]">\[
+\begin{aligned}
+c_\nu(x_\nu,t)
+={}&amp;\left[1-\sigma\left(\frac{2r_\nu^2}{\nu r_0^2}-\frac12\right)\right]
+\left[1-\sigma\left(\frac{2z_\nu^2}{\nu z_0^2}-\frac12\right)\right]\\
+&amp;\times[1-\sigma(2(1-t)/\tau_0-1)].
+\end{aligned}
+\tag{LF4.3}
+\]</span>
+<p>Thus the spatial support is <span class="math" data-tex="\(\mathcal K_\nu=\sqrt\nu\mathcal K\)">\(\mathcal K_\nu=\sqrt\nu\mathcal K\)</span>, the time support is unchanged, and (LF0.2) becomes</p>
+<span class="math math-display" data-tex="\[
+q_\nu\le C_0\left(1-t+\nu^{-1/(2D)}|z_\nu|^{1/D}\right).
+\tag{LF4.4}
+\]">\[
+q_\nu\le C_0\left(1-t+\nu^{-1/(2D)}|z_\nu|^{1/D}\right).
+\tag{LF4.4}
+\]</span>
+<p>The positive margin <span class="math" data-tex="\(q_\nu\le q_*/4\)">\(q_\nu\le q_*/4\)</span> on the cutoff support follows from the same inequalities with <span class="math" data-tex="\(|z_\nu|\le\sqrt\nu z_0\)">\(|z_\nu|\le\sqrt\nu z_0\)</span>.</p>
+<p>Keep the complete localized fields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_\nu=\nabla_{x_\nu}c_\nu\times\mathcal A_\nu
+=\sqrt\nu a(y,t),\\
+u_\nu=\operatorname{curl}_{x_\nu}(c_\nu\mathcal A_\nu)
++c_\nu\mathcal B_\nu e_\theta
+=c_\nu v_\nu+a_\nu=\sqrt\nu u(y,t),\\
+p_\nu=c_\nu p^{\rm loc}_\nu=\nu p(y,t).
+\end{gathered}
+\tag{LF4.5}
+\]">\[
+\begin{gathered}
+a_\nu=\nabla_{x_\nu}c_\nu\times\mathcal A_\nu
+=\sqrt\nu a(y,t),\\
+u_\nu=\operatorname{curl}_{x_\nu}(c_\nu\mathcal A_\nu)
++c_\nu\mathcal B_\nu e_\theta
+=c_\nu v_\nu+a_\nu=\sqrt\nu u(y,t),\\
+p_\nu=c_\nu p^{\rm loc}_\nu=\nu p(y,t).
+\end{gathered}
+\tag{LF4.5}
+\]</span>
+<p>Every spatial derivative contributes <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>. Consequently all four terms of the momentum equation have factor <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathscr R_\nu(u_\nu,p_\nu)
+&amp;:=\partial_tu_\nu-\nu\Delta_{x_\nu}u_\nu
++(u_\nu\cdot\nabla_{x_\nu})u_\nu+\nabla_{x_\nu}p_\nu\\
+&amp;=\sqrt\nu\,\mathscr R(u,p)(y,t).
+\end{aligned}
+\tag{LF4.6}
+\]">\[
+\begin{aligned}
+\mathscr R_\nu(u_\nu,p_\nu)
+&amp;:=\partial_tu_\nu-\nu\Delta_{x_\nu}u_\nu
++(u_\nu\cdot\nabla_{x_\nu})u_\nu+\nabla_{x_\nu}p_\nu\\
+&amp;=\sqrt\nu\,\mathscr R(u,p)(y,t).
+\end{aligned}
+\tag{LF4.6}
+\]</span>
+<p>Divergence has factor one and remains zero. To exhibit every cutoff contribution directly in the original physical variables, write all derivatives in the next display with respect to <span class="math" data-tex="\(x_\nu\)">\(x_\nu\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^-_\nu={}&amp;c_\nu\mathscr R_\nu(v_\nu,p^{\rm loc}_\nu)
++(\partial_tc_\nu-\nu\Delta c_\nu)v_\nu\\
+&amp;-2\nu\sum_{i=1}^3(\partial_i c_\nu)(\partial_i v_\nu)
++p^{\rm loc}_\nu\nabla c_\nu+(\partial_t-\nu\Delta)a_\nu\\
+&amp;+(c_\nu^2-c_\nu)(v_\nu\cdot\nabla)v_\nu
++c_\nu(v_\nu\cdot\nabla c_\nu)v_\nu\\
+&amp;+c_\nu(v_\nu\cdot\nabla)a_\nu
++(a_\nu\cdot\nabla c_\nu)v_\nu\\
+&amp;+c_\nu(a_\nu\cdot\nabla)v_\nu+(a_\nu\cdot\nabla)a_\nu.
+\end{aligned}
+\tag{LF4.7}
+\]">\[
+\begin{aligned}
+f^-_\nu={}&amp;c_\nu\mathscr R_\nu(v_\nu,p^{\rm loc}_\nu)
++(\partial_tc_\nu-\nu\Delta c_\nu)v_\nu\\
+&amp;-2\nu\sum_{i=1}^3(\partial_i c_\nu)(\partial_i v_\nu)
++p^{\rm loc}_\nu\nabla c_\nu+(\partial_t-\nu\Delta)a_\nu\\
+&amp;+(c_\nu^2-c_\nu)(v_\nu\cdot\nabla)v_\nu
++c_\nu(v_\nu\cdot\nabla c_\nu)v_\nu\\
+&amp;+c_\nu(v_\nu\cdot\nabla)a_\nu
++(a_\nu\cdot\nabla c_\nu)v_\nu\\
+&amp;+c_\nu(a_\nu\cdot\nabla)v_\nu+(a_\nu\cdot\nabla)a_\nu.
+\end{aligned}
+\tag{LF4.7}
+\]</span>
+<p>This is the product expansion of (LF4.6), and agrees term by term with <span class="math" data-tex="\(\sqrt\nu f^-(y,t)\)">\(\sqrt\nu f^-(y,t)\)</span>. For example, the viscosity coefficient cancels the two factors <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span> on the product of first derivatives, leaving the velocity factor <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span>. The pressure-gradient cutoff term has factors <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(\nu^{-1/2}\)">\(\nu^{-1/2}\)</span>. The curl term <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span> retains the potential factor <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The term containing <span class="math" data-tex="\(a_\nu\cdot\nabla c_\nu\)">\(a_\nu\cdot\nabla c_\nu\)</span> is zero by the cross-product identity, and is retained in the expansion. No physical term is discarded.</p>
+<p>Define the actual terminal data</p>
+<span class="math math-display" data-tex="\[
+F_{j,\nu}(x_\nu)=\sqrt\nu F_j(x_\nu/\sqrt\nu),\qquad
+\partial_{x_\nu}^\alpha F_{j,\nu}
+=\nu^{(1-|\alpha|)/2}(\partial_y^\alpha F_j)(y).
+\tag{LF4.8}
+\]">\[
+F_{j,\nu}(x_\nu)=\sqrt\nu F_j(x_\nu/\sqrt\nu),\qquad
+\partial_{x_\nu}^\alpha F_{j,\nu}
+=\nu^{(1-|\alpha|)/2}(\partial_y^\alpha F_j)(y).
+\tag{LF4.8}
+\]</span>
+<p>The same integer sequence <span class="math" data-tex="\(b_j\)">\(b_j\)</span> used in (LF3.4) gives</p>
+<span class="math math-display" data-tex="\[
+f^+_\nu(x_\nu,1+s)
+=\sum_{j=0}^\infty\chi_0(b_js)\frac{s^j}{j!}F_{j,\nu}(x_\nu)
+=\sqrt\nu f^+(y,1+s),\qquad s\ge0.
+\tag{LF4.9}
+\]">\[
+f^+_\nu(x_\nu,1+s)
+=\sum_{j=0}^\infty\chi_0(b_js)\frac{s^j}{j!}F_{j,\nu}(x_\nu)
+=\sqrt\nu f^+(y,1+s),\qquad s\ge0.
+\tag{LF4.9}
+\]</span>
+<p>For each fixed spatial derivative the convergence estimate is multiplied by the fixed positive constant <span class="math" data-tex="\(\nu^{(1-|\alpha|)/2}\)">\(\nu^{(1-|\alpha|)/2}\)</span>, so all mixed derivatives still converge uniformly. The time derivatives at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> are exactly <span class="math" data-tex="\(F_{j,\nu}\)">\(F_{j,\nu}\)</span>. This argument uses the actual sequence and retains its original definition; it does not assume viscosity-independent derivative norms.</p>
+<p>The joined force satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_\nu\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3),\qquad
+\operatorname{supp}f_\nu\subset\mathcal K_\nu\times[1-\tau_0,2],\\
+\mathscr R_\nu(u_\nu,p_\nu)=f_\nu\quad(0\le t&lt;1),\qquad u_\nu(\cdot,0)=0,\\
+-\Delta p_\nu=\sum_{i,j=1}^3\partial_i\partial_j(u_{\nu,i}u_{\nu,j})
+-\operatorname{div}f_\nu.
+\end{gathered}
+\tag{LF4.10}
+\]">\[
+\begin{gathered}
+f_\nu\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3),\qquad
+\operatorname{supp}f_\nu\subset\mathcal K_\nu\times[1-\tau_0,2],\\
+\mathscr R_\nu(u_\nu,p_\nu)=f_\nu\quad(0\le t&lt;1),\qquad u_\nu(\cdot,0)=0,\\
+-\Delta p_\nu=\sum_{i,j=1}^3\partial_i\partial_j(u_{\nu,i}u_{\nu,j})
+-\operatorname{div}f_\nu.
+\end{gathered}
+\tag{LF4.10}
+\]</span>
+<p>These are the original physical equation, datum, support and pressure relation. If <span class="math" data-tex="\(\mathcal K\subset B(0,R)\)">\(\mathcal K\subset B(0,R)\)</span>, put
+<span class="math" data-tex="\(M_{\alpha,m,\nu}=\nu^{(1-|\alpha|)/2}\|\partial_y^\alpha\partial_t^m f\|_\infty\)">\(M_{\alpha,m,\nu}=\nu^{(1-|\alpha|)/2}\|\partial_y^\alpha\partial_t^m f\|_\infty\)</span>. For every integer <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\partial_{x_\nu}^\alpha\partial_t^m f_\nu(x_\nu,t)|
+\le M_{\alpha,m,\nu}(3+\sqrt\nu R)^k(1+|x_\nu|+t)^{-k}.
+\tag{LF4.11}
+\]">\[
+|\partial_{x_\nu}^\alpha\partial_t^m f_\nu(x_\nu,t)|
+\le M_{\alpha,m,\nu}(3+\sqrt\nu R)^k(1+|x_\nu|+t)^{-k}.
+\tag{LF4.11}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(1+|x_\nu|+t\le3+\sqrt\nu R\)">\(1+|x_\nu|+t\le3+\sqrt\nu R\)</span> on the support; elsewhere the derivative is zero. The original viscosity has not changed the singular time or the smooth force's terminal matching.</p>
+<h2 id="lf5-five-exercises-with-complete-solutions">LF5. Five exercises with complete solutions</h2>
+<h3 id="exercise-1-compose-two-localizations-without-losing-a-curl-term">Exercise 1. Compose two localizations without losing a curl term</h3>
+<p>Let <span class="math" data-tex="\(c,d\)">\(c,d\)</span> be smooth axisymmetric cutoffs in the actual local domain. Apply the potential localization first with <span class="math" data-tex="\(c\)">\(c\)</span> and then with <span class="math" data-tex="\(d\)">\(d\)</span>. Prove that the resulting full velocity and pressure equal the result from the single cutoff <span class="math" data-tex="\(cd\)">\(cd\)</span>, including every cross-product term.</p>
+<p><strong>Solution.</strong> Use the original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, and write <span class="math" data-tex="\(\mathcal A_\nu,\mathcal B_\nu,p^{\rm loc}_\nu,v_\nu\)">\(\mathcal A_\nu,\mathcal B_\nu,p^{\rm loc}_\nu,v_\nu\)</span> for the actual fields. The first localization has potential <span class="math" data-tex="\(c\mathcal A_\nu\)">\(c\mathcal A_\nu\)</span>, angular coefficient <span class="math" data-tex="\(c\mathcal B_\nu\)">\(c\mathcal B_\nu\)</span> and pressure <span class="math" data-tex="\(cp^{\rm loc}_\nu\)">\(cp^{\rm loc}_\nu\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_{d\circ c}
+&amp;=\operatorname{curl}(dc\mathcal A_\nu)+dc\mathcal B_\nu e_\theta\\
+&amp;=d\{cv_\nu+\nabla c\times\mathcal A_\nu\}
++\nabla d\times(c\mathcal A_\nu)\\
+&amp;=cdv_\nu+(d\nabla c+c\nabla d)\times\mathcal A_\nu
+=u_{cd},\\
+p_{d\circ c}&amp;=dc p^{\rm loc}_\nu=p_{cd}.
+\end{aligned}
+\tag{LF5.1}
+\]">\[
+\begin{aligned}
+u_{d\circ c}
+&amp;=\operatorname{curl}(dc\mathcal A_\nu)+dc\mathcal B_\nu e_\theta\\
+&amp;=d\{cv_\nu+\nabla c\times\mathcal A_\nu\}
++\nabla d\times(c\mathcal A_\nu)\\
+&amp;=cdv_\nu+(d\nabla c+c\nabla d)\times\mathcal A_\nu
+=u_{cd},\\
+p_{d\circ c}&amp;=dc p^{\rm loc}_\nu=p_{cd}.
+\end{aligned}
+\tag{LF5.1}
+\]</span>
+<p>Here all curls and gradients are physical spatial derivatives. The product rule <span class="math" data-tex="\(\nabla(cd)=d\nabla c+c\nabla d\)">\(\nabla(cd)=d\nabla c+c\nabla d\)</span> proves the equality, including transition regions where both derivatives can be nonzero. Both vector fields have zero divergence: the curl part has zero divergence by commuting Cartesian derivatives, and the direct angular part has divergence <span class="math" data-tex="\(r_\nu^{-1}\partial_\theta(cd\mathcal B_\nu)=0\)">\(r_\nu^{-1}\partial_\theta(cd\mathcal B_\nu)=0\)</span>, with its smooth axis interpretation.</p>
+<p>Because both velocity and pressure agree as smooth fields, substitution into every term of <span class="math" data-tex="\(\mathscr R_\nu\)">\(\mathscr R_\nu\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\mathscr R_\nu(u_{d\circ c},p_{d\circ c})
+=\mathscr R_\nu(u_{cd},p_{cd}).
+\tag{LF5.2}
+\]">\[
+\mathscr R_\nu(u_{d\circ c},p_{d\circ c})
+=\mathscr R_\nu(u_{cd},p_{cd}).
+\tag{LF5.2}
+\]</span>
+<p>In computing the left side by (LF4.7), the inputs for the second step are the full first localized velocity, its potential <span class="math" data-tex="\(c\mathcal A_\nu\)">\(c\mathcal A_\nu\)</span>, its pressure and its residual. Replacing that residual by zero would not be this composition. Equations (LF5.1)–(LF5.2) prove the exact relation without such a replacement.</p>
+<h3 id="exercise-2-the-entire-exterior-force-and-all-its-terminal-derivatives">Exercise 2. The entire exterior force and all its terminal derivatives</h3>
+<p>Work in a neighborhood where the original exact heat exterior holds and the time cutoff is one. Set <span class="math" data-tex="\(r=r_\nu&gt;0\)">\(r=r_\nu&gt;0\)</span>, <span class="math" data-tex="\(z=z_\nu\)">\(z=z_\nu\)</span>, and write the actual spatial cutoff as <span class="math" data-tex="\(c=c_\nu(r,z)\)">\(c=c_\nu(r,z)\)</span>. Compute every cylindrical component of the localized force. Then give each of its time derivatives at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>.</p>
+<p><strong>Solution.</strong> In this neighborhood <span class="math" data-tex="\(\mathcal A_\nu=0\)">\(\mathcal A_\nu=0\)</span>, <span class="math" data-tex="\(v_\nu=K_\nu(r,1-t)e_\theta\)">\(v_\nu=K_\nu(r,1-t)e_\theta\)</span>, and the pressure is the full centrifugal integral. Thus <span class="math" data-tex="\(a_\nu=0\)">\(a_\nu=0\)</span> and <span class="math" data-tex="\(u_\nu=cK_\nu e_\theta\)">\(u_\nu=cK_\nu e_\theta\)</span>. The uncut heat and pressure identities are</p>
+<span class="math math-display" data-tex="\[
+\partial_tK_\nu=\nu(\partial_r^2+r^{-1}\partial_r-r^{-2})K_\nu,
+\qquad \partial_r p^{\rm loc}_\nu=K_\nu^2/r,
+\qquad \partial_zK_\nu=\partial_zp^{\rm loc}_\nu=0.
+\tag{LF5.3}
+\]">\[
+\partial_tK_\nu=\nu(\partial_r^2+r^{-1}\partial_r-r^{-2})K_\nu,
+\qquad \partial_r p^{\rm loc}_\nu=K_\nu^2/r,
+\qquad \partial_zK_\nu=\partial_zp^{\rm loc}_\nu=0.
+\tag{LF5.3}
+\]</span>
+<p>The angular convection is <span class="math" data-tex="\(-(cK_\nu)^2e_r/r\)">\(-(cK_\nu)^2e_r/r\)</span>. The scalar Laplacian of the cutoff is <span class="math" data-tex="\(\Delta c=c_{rr}+r^{-1}c_r+c_{zz}\)">\(\Delta c=c_{rr}+r^{-1}c_r+c_{zz}\)</span>, while the angular vector Laplacian retains its frame term <span class="math" data-tex="\(-r^{-2}\)">\(-r^{-2}\)</span>. Expanding the full equation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^-_{\nu,r}&amp;=(c-c^2)K_\nu^2/r+p^{\rm loc}_\nu c_r,\\
+f^-_{\nu,\theta}&amp;=-\nu\{(c_{rr}+r^{-1}c_r+c_{zz})K_\nu
++2c_r\partial_rK_\nu\},\\
+f^-_{\nu,z}&amp;=p^{\rm loc}_\nu c_z.
+\end{aligned}
+\tag{LF5.4}
+\]">\[
+\begin{aligned}
+f^-_{\nu,r}&amp;=(c-c^2)K_\nu^2/r+p^{\rm loc}_\nu c_r,\\
+f^-_{\nu,\theta}&amp;=-\nu\{(c_{rr}+r^{-1}c_r+c_{zz})K_\nu
++2c_r\partial_rK_\nu\},\\
+f^-_{\nu,z}&amp;=p^{\rm loc}_\nu c_z.
+\end{aligned}
+\tag{LF5.4}
+\]</span>
+<p>The terms <span class="math" data-tex="\(c\partial_tK_\nu\)">\(c\partial_tK_\nu\)</span> and <span class="math" data-tex="\(\nu c(\partial_r^2+r^{-1}\partial_r-r^{-2})K_\nu\)">\(\nu c(\partial_r^2+r^{-1}\partial_r-r^{-2})K_\nu\)</span> cancel by (LF5.3). The pressure and convection leave <span class="math" data-tex="\((c-c^2)K_\nu^2/r\)">\((c-c^2)K_\nu^2/r\)</span>, with the displayed sign. Thus the zero residual of the original exterior does not remove its cutoff force.</p>
+<p>Use <span class="math" data-tex="\(d_*=1+2h\)">\(d_*=1+2h\)</span>, <span class="math" data-tex="\(C_\infty=2^Ac_\infty\)">\(C_\infty=2^Ac_\infty\)</span>, and the terminal formulas proved in the preceding local-field lesson, LC8.18–LC8.21. For <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> define the actual terminal values</p>
+<span class="math math-display" data-tex="\[
+S_j(r)=C_\infty4^j\nu^{1+h+j}r^{-d_*-2j}(h)_j(1+h)_j,
+\tag{LF5.5}
+\]">\[
+S_j(r)=C_\infty4^j\nu^{1+h+j}r^{-d_*-2j}(h)_j(1+h)_j,
+\tag{LF5.5}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_j(r)={}&amp;-\frac{C_\infty^2 4^j\nu^{2+2h+j}}
+{(2d_*+2j)r^{2d_*+2j}}\\
+&amp;\times\sum_{i=0}^j\binom ji(h)_i(1+h)_i(h)_{j-i}(1+h)_{j-i}.
+\end{aligned}
+\tag{LF5.6}
+\]">\[
+\begin{aligned}
+P_j(r)={}&amp;-\frac{C_\infty^2 4^j\nu^{2+2h+j}}
+{(2d_*+2j)r^{2d_*+2j}}\\
+&amp;\times\sum_{i=0}^j\binom ji(h)_i(1+h)_i(h)_{j-i}(1+h)_{j-i}.
+\end{aligned}
+\tag{LF5.6}
+\]</span>
+<p>Here <span class="math" data-tex="\((a)_0=1\)">\((a)_0=1\)</span> and <span class="math" data-tex="\((a)_j=a(a+1)\cdots(a+j-1)\)">\((a)_j=a(a+1)\cdots(a+j-1)\)</span> for positive <span class="math" data-tex="\(j\)">\(j\)</span>. They equal <span class="math" data-tex="\(\partial_t^jK_\nu|_{1^-}\)">\(\partial_t^jK_\nu|_{1^-}\)</span> and <span class="math" data-tex="\(\partial_t^jp^{\rm loc}_\nu|_{1^-}\)">\(\partial_t^jp^{\rm loc}_\nu|_{1^-}\)</span>. In particular <span class="math" data-tex="\(\partial_rS_j=-(d_*+2j)S_j/r\)">\(\partial_rS_j=-(d_*+2j)S_j/r\)</span>. The cutoff has no time dependence in this neighborhood. The full binomial product rule in (LF5.4) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{j,\nu,r}&amp;=\frac{c-c^2}{r}\sum_{i=0}^j\binom jiS_iS_{j-i}+P_jc_r,\\
+F_{j,\nu,\theta}&amp;=-\nu\{(c_{rr}+r^{-1}c_r+c_{zz})S_j
++2c_r\partial_rS_j\},\\
+F_{j,\nu,z}&amp;=P_jc_z.
+\end{aligned}
+\tag{LF5.7}
+\]">\[
+\begin{aligned}
+F_{j,\nu,r}&amp;=\frac{c-c^2}{r}\sum_{i=0}^j\binom jiS_iS_{j-i}+P_jc_r,\\
+F_{j,\nu,\theta}&amp;=-\nu\{(c_{rr}+r^{-1}c_r+c_{zz})S_j
++2c_r\partial_rS_j\},\\
+F_{j,\nu,z}&amp;=P_jc_z.
+\end{aligned}
+\tag{LF5.7}
+\]</span>
+<p>These formulas keep every derivative, viscosity power, centrifugal sign and pressure endpoint factor. The Cartesian jets are obtained from the same components using the smooth frame at positive radius. They describe this exterior neighborhood, not the singular point or a fictitious heat formula outside its domain.</p>
+<h3 id="exercise-3-an-explicit-finite-bound-for-the-integer-cutoff-choice">Exercise 3. An explicit finite bound for the integer cutoff choice</h3>
+<p>Prove that the original minimum in (LF3.4) can be found below a finite explicit integer, and bound every fixed differentiated tail of the force series.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_j=\max_{\substack{a,m\ge0\\a+m\le\lfloor j/2\rfloor}}
+\left(2^jC_{j,m}\|F_j\|_{C^a}\right)^{1/(j-m)},\\
+B_j=\max\{b_{j-1}+1,1,\lceil Q_j\rceil\}.
+\end{gathered}
+\tag{LF5.8}
+\]">\[
+\begin{gathered}
+Q_j=\max_{\substack{a,m\ge0\\a+m\le\lfloor j/2\rfloor}}
+\left(2^jC_{j,m}\|F_j\|_{C^a}\right)^{1/(j-m)},\\
+B_j=\max\{b_{j-1}+1,1,\lceil Q_j\rceil\}.
+\end{gathered}
+\tag{LF5.8}
+\]</span>
+<p>The index set is finite and nonempty, all norms are finite, and <span class="math" data-tex="\(j-m&gt;0\)">\(j-m&gt;0\)</span>. If a norm is zero the corresponding power is zero. Since <span class="math" data-tex="\(B_j\ge Q_j\)">\(B_j\ge Q_j\)</span>, every inequality
+<span class="math" data-tex="\(C_{j,m}B_j^{m-j}\|F_j\|_{C^a}\le2^{-j}\)">\(C_{j,m}B_j^{m-j}\|F_j\|_{C^a}\le2^{-j}\)</span> holds; also <span class="math" data-tex="\(B_j&gt;b_{j-1}\)">\(B_j&gt;b_{j-1}\)</span>. Thus the original integer <span class="math" data-tex="\(b_j\)">\(b_j\)</span> exists and <span class="math" data-tex="\(b_j\le B_j\)">\(b_j\le B_j\)</span>. This is a bound for the original minimum, not a change to its definition.</p>
+<p>Fix a spatial multi-index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, an integer <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>, and <span class="math" data-tex="\(J\ge2(|\alpha|+m)\)">\(J\ge2(|\alpha|+m)\)</span>. For every <span class="math" data-tex="\(j&gt;J\)">\(j&gt;J\)</span>, the original constraint includes <span class="math" data-tex="\(a=|\alpha|\)">\(a=|\alpha|\)</span> and this <span class="math" data-tex="\(m\)">\(m\)</span>. Equation (LF3.2) retains all differentiated cutoff terms and gives</p>
+<span class="math math-display" data-tex="\[
+\sup_{\substack{x\in\mathbb R^3\\s\ge0}}\left|
+\partial_x^\alpha\partial_s^m
+\sum_{j&gt;J}\chi_0(b_js)\frac{s^j}{j!}F_j(x)\right|
+\le\sum_{j&gt;J}2^{-j}=2^{-J}.
+\tag{LF5.9}
+\]">\[
+\sup_{\substack{x\in\mathbb R^3\\s\ge0}}\left|
+\partial_x^\alpha\partial_s^m
+\sum_{j&gt;J}\chi_0(b_js)\frac{s^j}{j!}F_j(x)\right|
+\le\sum_{j&gt;J}2^{-j}=2^{-J}.
+\tag{LF5.9}
+\]</span>
+<p>For the original viscosity, (LF4.8) multiplies this bound by exactly <span class="math" data-tex="\(\nu^{(1-|\alpha|)/2}\)">\(\nu^{(1-|\alpha|)/2}\)</span>. The derivative of the infinite sum is justified by the uniform convergence of each differentiated tail and the fundamental theorem of calculus, as in LF3. The estimate is uniform over the whole spatial domain and the whole future half-line, with no assumption on the growth of the sequence <span class="math" data-tex="\(F_j\)">\(F_j\)</span>.</p>
+<h3 id="exercise-4-the-exact-freedom-in-extending-the-same-terminal-data">Exercise 4. The exact freedom in extending the same terminal data</h3>
+<p>Use two admissible increasing cutoff sequences for the same actual <span class="math" data-tex="\(F_j\)">\(F_j\)</span>. Prove what their future forces have in common, derive the remainder estimate for their difference, and describe the freedom in all smooth compact extensions of the fixed past force.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(f^+\)">\(f^+\)</span> and <span class="math" data-tex="\(\widetilde f^+\)">\(\widetilde f^+\)</span> be the two series. Their exact difference is</p>
+<span class="math math-display" data-tex="\[
+H(x,1+s)=\sum_{j=0}^\infty
+\{\chi_0(\widetilde b_js)-\chi_0(b_js)\}\frac{s^j}{j!}F_j(x).
+\tag{LF5.10}
+\]">\[
+H(x,1+s)=\sum_{j=0}^\infty
+\{\chi_0(\widetilde b_js)-\chi_0(b_js)\}\frac{s^j}{j!}F_j(x).
+\tag{LF5.10}
+\]</span>
+<p>Both series converge with every fixed mixed derivative by (LF3.3)–(LF3.5). They have the same jets <span class="math" data-tex="\(F_m\)">\(F_m\)</span>, so every spatial derivative of every time derivative of <span class="math" data-tex="\(H\)">\(H\)</span> is zero at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Repeated integration from zero gives, for <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_x^\alpha\partial_s^mH(x,1+s)
+={}&amp;\frac1{(N-1)!}\int_0^s(s-a)^{N-1}
+\partial_x^\alpha\partial_s^{m+N}H(x,1+a)\,da,\\
+\|\partial_x^\alpha\partial_s^mH(\cdot,1+s)\|_\infty
+\le{}&amp;\frac{s^N}{N!}\|\partial_x^\alpha\partial_t^{m+N}H\|_\infty.
+\end{aligned}
+\tag{LF5.11}
+\]">\[
+\begin{aligned}
+\partial_x^\alpha\partial_s^mH(x,1+s)
+={}&amp;\frac1{(N-1)!}\int_0^s(s-a)^{N-1}
+\partial_x^\alpha\partial_s^{m+N}H(x,1+a)\,da,\\
+\|\partial_x^\alpha\partial_s^mH(\cdot,1+s)\|_\infty
+\le{}&amp;\frac{s^N}{N!}\|\partial_x^\alpha\partial_t^{m+N}H\|_\infty.
+\end{aligned}
+\tag{LF5.11}
+\]</span>
+<p>The global norm is finite because the difference is smooth with compact support. Extending <span class="math" data-tex="\(H\)">\(H\)</span> by zero for <span class="math" data-tex="\(t\le1\)">\(t\le1\)</span> is smooth by the vanishing jets. Its support is contained in <span class="math" data-tex="\(\mathcal K\times[1,2]\)">\(\mathcal K\times[1,2]\)</span>.</p>
+<p>More generally define the vector space</p>
+<span class="math math-display" data-tex="\[
+\mathcal Z_{\mathcal K}=
+\{H\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3):
+\operatorname{supp}H\subset\mathcal K\times[1,2]\}.
+\tag{LF5.12}
+\]">\[
+\mathcal Z_{\mathcal K}=
+\{H\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3):
+\operatorname{supp}H\subset\mathcal K\times[1,2]\}.
+\tag{LF5.12}
+\]</span>
+<p>Every member is zero for <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, and smoothness forces all its jets at <span class="math" data-tex="\(t=1\)">\(t=1\)</span> to be zero. If <span class="math" data-tex="\(f\)">\(f\)</span> is the force constructed in LF3, the set of smooth extensions with the same past force and support contained in <span class="math" data-tex="\(\mathcal K\times[1-\tau_0,2]\)">\(\mathcal K\times[1-\tau_0,2]\)</span> is exactly</p>
+<span class="math math-display" data-tex="\[
+f+\mathcal Z_{\mathcal K}.
+\tag{LF5.13}
+\]">\[
+f+\mathcal Z_{\mathcal K}.
+\tag{LF5.13}
+\]</span>
+<p>Indeed adding a member preserves the past, terminal jets, smoothness and support. Conversely the difference of two such extensions is a member by those same properties. The freedom is nontrivial: choose a nonzero smooth vector field compactly supported in the interior of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, multiply it by a nonzero smooth function supported in <span class="math" data-tex="\((5/4,3/2)\)">\((5/4,3/2)\)</span>, and use that product as <span class="math" data-tex="\(H\)">\(H\)</span>. This changes the force only after time one. It does not change the constructed solution or its equation on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, and makes no assertion of a velocity extension through blowup. The same proof uses <span class="math" data-tex="\(\mathcal K_\nu\)">\(\mathcal K_\nu\)</span> for the original viscosity.</p>
+<h3 id="exercise-5-spatial-and-space-time-flatness-of-the-constructed-extension">Exercise 5. Spatial and space-time flatness of the constructed extension</h3>
+<p>Prove that the specific series in LF4 is spatially flat at the origin for every <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, and that every mixed derivative of the joined force vanishes to arbitrary order at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Retain the stronger estimate already obtained before terminal time.</p>
+<p><strong>Solution.</strong> Equation (LF2.5), with (LF4.8), gives
+<span class="math" data-tex="\(\partial_{x_\nu}^\alpha F_{j,\nu}(0)=0\)">\(\partial_{x_\nu}^\alpha F_{j,\nu}(0)=0\)</span> for every <span class="math" data-tex="\(\alpha,j\)">\(\alpha,j\)</span>. Termwise differentiation of the uniformly convergent differentiated series (LF4.9) proves</p>
+<span class="math math-display" data-tex="\[
+\partial_{x_\nu}^\alpha\partial_t^m f^+_\nu(0,t)=0
+\qquad(t\ge1,\ \alpha\in\mathbb N^3,\ m\ge0).
+\tag{LF5.14}
+\]">\[
+\partial_{x_\nu}^\alpha\partial_t^m f^+_\nu(0,t)=0
+\qquad(t\ge1,\ \alpha\in\mathbb N^3,\ m\ge0).
+\tag{LF5.14}
+\]</span>
+<p>At time one these equal the derivatives from the past. Fix <span class="math" data-tex="\(\alpha,m\)">\(\alpha,m\)</span>, write
+<span class="math" data-tex="\(g=\partial_{x_\nu}^\alpha\partial_t^m f_\nu\)">\(g=\partial_{x_\nu}^\alpha\partial_t^m f_\nu\)</span>, and choose a convex neighborhood of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> with positive time. For <span class="math" data-tex="\(w=(x_\nu,s)\)">\(w=(x_\nu,s)\)</span>, all derivatives of <span class="math" data-tex="\(g\)">\(g\)</span> at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> vanish. Applying one-variable Taylor's formula to <span class="math" data-tex="\(a\mapsto g(ax_\nu,1+as)\)">\(a\mapsto g(ax_\nu,1+as)\)</span> yields the exact remainder</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(x_\nu,1+s)
+={}&amp;\frac1{(N-1)!}\int_0^1(1-a)^{N-1}
+D^Ng(ax_\nu,1+as)[w,\ldots,w]\,da,\\
+D^Ng[w,\ldots,w]
+={}&amp;\sum_{|\beta|+j=N}\frac{N!}{\beta!j!}
+x_\nu^\beta s^j\partial_{x_\nu}^\beta\partial_t^j g.
+\end{aligned}
+\tag{LF5.15}
+\]">\[
+\begin{aligned}
+g(x_\nu,1+s)
+={}&amp;\frac1{(N-1)!}\int_0^1(1-a)^{N-1}
+D^Ng(ax_\nu,1+as)[w,\ldots,w]\,da,\\
+D^Ng[w,\ldots,w]
+={}&amp;\sum_{|\beta|+j=N}\frac{N!}{\beta!j!}
+x_\nu^\beta s^j\partial_{x_\nu}^\beta\partial_t^j g.
+\end{aligned}
+\tag{LF5.15}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, all derivatives in this finite sum are bounded on a smaller compact neighborhood. If their common bound is <span class="math" data-tex="\(M_N\)">\(M_N\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|g(x_\nu,1+s)|
+\le\frac{M_N}{N!}
+(|x_{\nu,1}|+|x_{\nu,2}|+|x_{\nu,3}|+|s|)^N
+\le C_N(|x_\nu|+|s|)^N.
+\tag{LF5.16}
+\]">\[
+|g(x_\nu,1+s)|
+\le\frac{M_N}{N!}
+(|x_{\nu,1}|+|x_{\nu,2}|+|x_{\nu,3}|+|s|)^N
+\le C_N(|x_\nu|+|s|)^N.
+\tag{LF5.16}
+\]</span>
+<p>All multi-index coefficients and the integral factor <span class="math" data-tex="\(1/N\)">\(1/N\)</span> are retained in deriving this bound. For <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, the previously proved, more specific estimate is still</p>
+<span class="math math-display" data-tex="\[
+|\partial_{x_\nu}^\alpha\partial_t^m f_\nu(x_\nu,t)|
+\le C_{\alpha,m,N}\nu^{(1-|\alpha|)/2}
+\left(1-t+\nu^{-1/(2D)}|z_\nu|^{1/D}\right)^N.
+\tag{LF5.17}
+\]">\[
+|\partial_{x_\nu}^\alpha\partial_t^m f_\nu(x_\nu,t)|
+\le C_{\alpha,m,N}\nu^{(1-|\alpha|)/2}
+\left(1-t+\nu^{-1/(2D)}|z_\nu|^{1/D}\right)^N.
+\tag{LF5.17}
+\]</span>
+<p>It follows by the original scaling from (LF2.4); its constants before the explicit viscosity factor are those of the viscosity-one fields. Estimate (LF5.16) does not replace (LF5.17).</p>
+<p>The line property (LF5.14) belongs to this actual series, whose every coefficient is spatially flat at the origin. Arbitrary additions in <span class="math" data-tex="\(\mathcal Z_{\mathcal K_\nu}\)">\(\mathcal Z_{\mathcal K_\nu}\)</span> need not preserve that property for <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>, although they preserve every mixed jet at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Neither flatness conclusion asserts that the force vanishes on a neighborhood of that point.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original 166-page paper</a>, SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Original pages 117–120 supply Proposition 10.1, Lemmas 10.2–10.3 and equations (10.1)–(10.12). Original (10.22) on page 124 gives the viscosity map used in LF4.</p>
+<p>The supplying <a href="terminal-force-and-blowup-audit.html">terminal-force proof</a>, F0–F8, supplies the corresponding arguments. LF0–LF3 retain all arguments of F0–F3. LF4 gives the full physical localization and force extension. LF5 supplies the exact additional calculations and their proofs; no novelty is claimed. The separately proved energy, comparison, growth and periodic arguments remain available in F4–F8 and the <a href="lemma_10_5_reaudit.html">full comparison proof</a>, equations (1)–(64), including the analytical tools in its sections 5.1–5.3. Those arguments are supplied in the <a href="../src/energy-comparison-and-the-final-blowup-conclusions.md">complete N7.2 lesson</a>, EC0–EC7, including all analytical tools in EC1. The computation chapter has separate statements and proofs.</p>
+<p>Diplomatic transcriptions preserve OpenAI's statements, formulas and irregularities. The proofs and exercises here are separate editorial exposition.</p>
+</article></body></html>

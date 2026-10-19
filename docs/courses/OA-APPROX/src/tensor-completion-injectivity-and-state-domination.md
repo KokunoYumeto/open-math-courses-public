@@ -19,7 +19,7 @@ The two algebraic tensor norms are
 \]
 Both infima use finite decompositions. The real projective norm uses self-adjoint factors and real scalars. A bounded form acts on these completions when its value on an algebraic tensor is bounded by the corresponding norm; its dual norm is the least such bound.
 
-[Section 8.1](#8-1-the-precise-norming-functional-input) proves real and complex functional extension. [Section 8.2](#8-2-completion-and-the-projective-algebra) constructs the completion maps and the projective algebra. [Section 8.3](#8-3-positive-functionals-and-norming-states) constructs the states, using the scalar spectrum, continuous calculus and order proved in ITP F01–F13. The scalar foundations and continuous norm integrals are in [Elementary calculus for infinite products](elementary-calculus-for-infinite-products.md). [Section 9](#9-weak-star-compactness-for-arbitrary-normed-spaces) proves compactness and convergent subnets for arbitrary dual balls. None of these constructions assumes separability. A unital algebra in the state assertions has a nonzero identity of norm one; the injectivity assertion also includes zero and nonunital algebras.
+[Section 8.1](#8-1-the-precise-norming-functional-input) proves real and complex functional extension. [Section 8.2](#8-2-completion-and-the-projective-algebra) constructs the completion maps and the projective algebra. [Section 8.3](#8-3-positive-functionals-and-norming-states) constructs the states, using the scalar spectrum, continuous calculus and order proved in [ITP F01–F13](infinite-tensor-products.md#f01). The scalar foundations and continuous norm integrals are in [Elementary calculus for infinite products](elementary-calculus-for-infinite-products.md). [Section 9](#9-weak-star-compactness-for-arbitrary-normed-spaces) proves compactness and convergent subnets for arbitrary dual balls. None of these constructions assumes separability. A unital algebra in the state assertions has a nonzero identity of norm one; the injectivity assertion also includes zero and nonunital algebras.
 
 <a id="3-injectivity-of-the-canonical-map"></a>
 
@@ -806,7 +806,7 @@ The preceding lesson proves \(\sigma\le\pi\), adjoint isometry and \(\|uv\|_\sig
 
 ### 8.3. Positive functionals and norming states
 
-Let \(A\) be a nonzero unital C*-algebra. The scalar calculus and order facts in ITP F02–F08 give real self-adjoint spectra, positive square roots, \(x^*x\ge0\), and \(0\le p\le\|p\|1\) for positive \(p\). These statements concern every algebra, rather than a particular representation.
+Let \(A\) be a nonzero unital C*-algebra. The scalar calculus and order facts in [ITP F02–F08](infinite-tensor-products.md#f02) give real self-adjoint spectra, positive square roots, \(x^*x\ge0\), and \(0\le p\le\|p\|1\) for positive \(p\). These statements concern every algebra, rather than a particular representation.
 
 If \(f\in A^*\) has \(\|f\|=f(1)=1\), then for \(h=h^*\) and real \(t\),
 \[
@@ -988,4 +988,4 @@ The numerical-reality test has two complete proofs here. The finite cosine proof
 
 Jacob Shapiro, [*Functional Analysis, Princeton University MAT520 Lecture Notes*, last typeset 10 December 2025](https://web.math.princeton.edu/~shapiro/PDFs/teaching/MAT520_fall_2025/MAT520_Lecture_Notes.pdf#page=36), Theorems 4.4–4.5, printed/PDF pp.36–37: norm-preserving functional extension. Theorem 5.18, printed/PDF pp.44–45: weak-* compactness of the dual ball.
 
-ITP F01–F13 prove completion, forced unitization, scalar spectrum, continuous calculus and order. [Elementary calculus for infinite products](elementary-calculus-for-infinite-products.md) proves their scalar and continuous norm-integral foundations. Real dominated functional extension and convex gauge separation are also given in CAR 19.1 and CAR 19.4.
+[ITP F01–F13](infinite-tensor-products.md#f01) prove completion, forced unitization, scalar spectrum, continuous calculus and order. [Elementary calculus for infinite products](elementary-calculus-for-infinite-products.md) proves their scalar and continuous norm-integral foundations. Real dominated functional extension and convex gauge separation are also given in [CAR 19.1](car-fock-and-quasifree-states.md#19-1-hahn-banach-and-the-concrete-coefficient-banach-space) and [CAR 19.4](car-fock-and-quasifree-states.md#19-4-compactness-of-the-entire-positive-convex-hull).

@@ -56,7 +56,7 @@ The Maxim–Schürmann manuscript works with a Noetherian commutative ring of fi
 
 ## Normal Morse data and change of coefficients
 
-Read the programme proof.
+[Read the programme proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/SH-02/src/normal-morse-coefficients.md).
 
 The normal objects, supported tests and full conormal detection use bounded weakly complex-constructible complexes over every commutative unital ring. Their comparisons retain the original restriction and specialization maps. The later perfection and residue-field conclusions keep their separate perfect-stalk and finite-global-dimension hypotheses. The normal-degree extension over the original ring is proved in WC1–WC2; it does not follow by changing the coefficient convention in a cited source.
 

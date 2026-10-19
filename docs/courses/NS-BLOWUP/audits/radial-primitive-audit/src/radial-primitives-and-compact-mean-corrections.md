@@ -509,7 +509,9 @@ The original radial inverse supplies pressure after each correction and the pote
 
 The pulse inverse is proved in [P0–P8](../../pulse-inverse-audit.md), the stress-amplitude map in [C1–C9](../../stress-covariance-audit.md), and the complete nonlinear cycle in [K0–K8](../../correction-cycle-audit.md). Their actual local-field receiver is [I0–I7](../../local-construction-assembly-audit.md), followed by the final force and blowup argument [F0–F8](../../terminal-force-and-blowup-audit.md). The complete theorem and its proof dependencies are stated in the [theorem construction](../../theorem-audit-conclusion.md).
 
-## R9. Retained worked checks from the withheld draft
+<a id="r9-retained-worked-checks-from-the-withheld-draft"></a>
+
+## R9. Worked calculations
 
 **Exercise 1. The exact difference between the two primitives.** For any two positive coefficients \(M_1,M_2\), express \(\mathcal I_{c,M_1}g-\mathcal I_{c,M_2}g\) without dropping either radial integral.
 

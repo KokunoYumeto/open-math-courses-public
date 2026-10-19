@@ -2,7 +2,7 @@
 
 A strict diffractive ray touches the boundary and returns to the interior. Its projected boundary Hamilton field can be zero. We prove a uniform estimate that includes this case. An observation on the incoming interior cap, the actual equation and the original Banach norm control every prescribed finite order near the tangency. The geometric region and coefficient neighborhood are chosen before that order.
 
-**Independent exposition, proofs, exercises and figure: CC0-1.0.** The admitted antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, §24.4, especially the accessible-region argument and Lemma 24.4.7, printed pages 448–451, and the uniform observation framework of §24.7. The proof map identifies the complete earlier programme arguments used below. See source credit and [proof review](proof-review.json). Required human foundation proofs remain explicitly external; internal P514 closure of this CC0 export is not claimed. 
+**Independent exposition, proofs, exercises and figure: CC0-1.0.** The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, §24.4, especially the accessible-region argument and Lemma 24.4.7, printed pages 448–451, and the uniform observation framework of §24.7. The proof map identifies the complete earlier programme arguments used below. See source credit and [proof review](proof-review.json). Required human foundation proofs remain explicitly external; internal P514 closure of this CC0 export is not claimed. 
 
 ## 1. Geometry before regularity
 

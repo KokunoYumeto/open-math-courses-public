@@ -2,7 +2,7 @@
 
 An evolution with a nonnegative operator multiplying a fixed self-adjoint operator need not itself be positive. The obstruction is their failure to commute. We bound that obstruction through two ordinary commutators, then obtain both a small-time solution estimate and a positive energy estimate. Every operator acts on an arbitrary complex Hilbert space; no finite-dimensional reduction or spectral gap is assumed.
 
-The antecedents are Hörmander IV, Theorem 26.8.1, Lemma 26.8.2 and Theorem 26.8.3, printed pages 134–137 of the admitted 2009 edition. The lesson gives independent proofs, including the continuous functional calculus and sign decomposition needed for these results. An absolutely norm-convergent resolvent formula supplies the square-root bound directly. There is no omitted appeal to a spectral measure or contour integral.
+The antecedents are Hörmander IV, Theorem 26.8.1, Lemma 26.8.2 and Theorem 26.8.3, printed pages 134–137 of the 2009 edition. The lesson gives independent proofs, including the continuous functional calculus and sign decomposition needed for these results. An absolutely norm-convergent resolvent formula supplies the square-root bound directly. There is no omitted appeal to a spectral measure or contour integral.
 
 Original expression, exercises and figure are CC0-1.0. The proof map connects the Hilbert, integration and elementary prerequisites to exact earlier proofs. Linked human foundations remain external, so internal export P514 closure is not claimed. 
 

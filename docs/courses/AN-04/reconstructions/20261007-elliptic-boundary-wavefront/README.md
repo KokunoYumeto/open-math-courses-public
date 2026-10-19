@@ -2,8 +2,10 @@
 
 Read [the companion](elliptic-boundary-wavefront.html) or edit [its source](elliptic-boundary-wavefront.md). The proof starts below the ordinary trace threshold, recovers normal regularity, and proves the complete elliptic boundary wavefront identity. It includes intrinsic normal derivatives, every commutator, one fixed final collar, and a local differential theorem with redundant boundary measurements.
 
-The proof map connects 31 new entries to 676 exact earlier proofs. Six complete calculations include the boundary delta correction, a normal-dependent bundle localizer, full cubic commutators and redundant stable data. Six finite check groups pass, including 308 normal-recovery ratio cases. All 317 formulas and 32 numbered displays render; fourteen desktop captures, the figure and two mobile samples were inspected, and every mobile formula extent was measured.
+Exercises treat the boundary delta correction, normal-dependent bundle localizers, full cubic commutators and redundant stable data.
 
-Run `python -B check_models.py` and `python -B figures/build_figure.py` to reproduce the finite checks and figure. These checks supplement the general proofs in the source.
+The prerequisite proof index gives the exact earlier results used in the arguments.
 
-This independent exposition is CC0. Existing linked components retain their own terms. Approved Hörmander III and the AN-03 source comparison are credited. The elliptic interface for U051 is proved; the remaining transverse reflection argument and full receiving lesson are unfinished. 
+[Computational examples](check_models.py) · [Editable figure source](figures/build_figure.py).
+
+The independent exposition is CC0-1.0; linked components retain their own terms.

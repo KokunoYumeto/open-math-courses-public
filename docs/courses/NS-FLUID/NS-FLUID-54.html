@@ -1,0 +1,2441 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Complete vertical certificates and weighted velocity cells — Incompressible flow</title><link rel="stylesheet" href="reader.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Incompressible flow</a><a href="src/complete-vertical-certificates-and-weighted-velocity-cells.md">Editable lesson</a><span class="unlinked">Sources and authorship</span></nav></header><main id="main"><nav aria-label="Lesson sequence"><a href="NS-FLUID-53.html">Previous lesson</a></nav><article class="lesson"><h1 id="complete-vertical-certificates-and-weighted-velocity-cells">Complete vertical certificates and weighted velocity cells</h1>
+<p>This lesson completes the two vertical off-diagonal derivative bounds
+developed in lessons52–53. Both saved scalars remain valid. A local
+regular-cell formula does contain an extra area factor, but a new
+enclosure of the complete original costs proves enough margin to
+recover both full bounds without increasing the saved numbers.</p>
+<p>Part 1 evaluates the complete finite and infinite strips. Part 2
+identifies the regular-cell error and constructs its exact correction.
+Part 3 encloses every original vertical vₓ contribution, including
+singular endpoints and infinite tails. Part 4 proves the full vertical
+uᵧ bound at every midpoint through both original transport partners
+and a complete closed-square interval certificate.</p>
+<p>Part 5 reconstructs the original weighted velocity integral. The
+source's endpoint selector is false when asserted for every exponent,
+but its actual exponent one-half is valid. The five solved exercises
+differentiate the complete strip cost, integrate the full middle
+residual, quantify the midpoint gain, store an exact regular-cell
+repair, and enlarge the valid actual-exponent cell.</p>
+<p>The human sources are Jiajie Chen and Thomas Y. Hou. Source errors,
+their corrections and the remaining conclusions are identified beside
+complete proofs. Historical scope statements in the supporting notes
+are followed by current lesson notes. All prerequisites, interval certificates and reproducible check programs accompany both downloads.
+This certifies the stated derivative bounds, not the full stability
+calculation or the main theorem. Review is author self-review.</p>
+<h2 id="part-1-original-finite-and-infinite-k2-strips">Part 1. Original finite and infinite K2 strips</h2>
+<p>This note proves the exact strip identities used in Chen and Hou's numerical supplement, corrects its intermediate sign, and evaluates the complete infinite-strip coefficient. It also gives a smaller exact finite-strip coefficient. These are local analytic results; they do not certify the remaining directional arrays or the stability theorem.</p>
+<p>Human source: Jiajie Chen and Thomas Y. Hou, Part II, version 3, original author source <a href="https://arxiv.org/abs/2305.05660v3">2305.05660v3</a>, file euler_supp_Part2.tex. The retained source SHA-256 is <code>91fbe8b67384412903f851ccaeaa541cfe1f9658122e0f438d3ba064054dfc1b</code>. Exact source locators are lines 2382–2490 (the strip), 2027–2028 and 2291–2299 (the exterior receiver), and 2174–2187, 2229–2236 and 2274–2280 (finite receivers). The unchanged original source archive is retained separately.</p>
+<p>The already proved <span class="unlinked">physical K2 calculation, PV30–PV43</span> evaluates both singular-square constants and proves the height-subtracted physical strip. The argument here supplies the general finite strip, its exact transport cost and the original infinite strip, without replacing that prior calculation. No novelty is claimed.</p>
+<h3 id="sq1-original-kernel-actual-data-and-the-full-signed-identity">SQ1. Original kernel, actual data and the full signed identity</h3>
+<p>Let <span class="math" data-tex="\(0&lt;a\le b&lt;\infty\)">\(0&lt;a\le b&lt;\infty\)</span>. Retain</p>
+<span class="math math-display" data-tex="\[
+K_2(u,t)=\frac{u^2-t^2}{2(u^2+t^2)^2},\qquad
+Q=[0,a]^2,\qquad
+I_{a,b}=\lim_{\epsilon\downarrow0}
+\int_\epsilon^a\int_0^b K_2(u,t)f(u,t)\,dt\,du.
+\tag{SQ1}
+\]">\[
+K_2(u,t)=\frac{u^2-t^2}{2(u^2+t^2)^2},\qquad
+Q=[0,a]^2,\qquad
+I_{a,b}=\lim_{\epsilon\downarrow0}
+\int_\epsilon^a\int_0^b K_2(u,t)f(u,t)\,dt\,du.
+\tag{SQ1}
+\]</span>
+<p>It suffices that <span class="math" data-tex="\(f\)">\(f\)</span> is measurable on <span class="math" data-tex="\((0,a)\times[0,b]\)">\((0,a)\times[0,b]\)</span>, that for almost every <span class="math" data-tex="\(u\)">\(u\)</span> its height fiber has a representative with</p>
+<span class="math math-display" data-tex="\[
+|f(u,t)-f(u,v)|\le H_y\sqrt{|t-v|}\quad(0\le t,v\le b),
+\qquad |f|\le Q_0\quad\hbox{on }Q
+\tag{SQ2}
+\]">\[
+|f(u,t)-f(u,v)|\le H_y\sqrt{|t-v|}\quad(0\le t,v\le b),
+\qquad |f|\le Q_0\quad\hbox{on }Q
+\tag{SQ2}
+\]</span>
+<p>for finite <span class="math" data-tex="\(H_y,Q_0\ge0\)">\(H_y,Q_0\ge0\)</span>. Essential bounds suffice with these fiber representatives. No horizontal continuity is needed. The square bound and SQ2 give the global bound <span class="math" data-tex="\(Q_0+H_y\sqrt b\)">\(Q_0+H_y\sqrt b\)</span> on the actual rectangle. Thus every integral with <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> in SQ1 is absolutely convergent.</p>
+<p>For each fixed <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, the original partner is the decreasing bijection</p>
+<span class="math math-display" data-tex="\[
+T_u:(u,b)\longrightarrow(u^2/b,u),\qquad
+T_u(t)=\frac{u^2}{t},\qquad T&#x27;_u(t)=-\frac{u^2}{t^2}.
+\tag{SQ3}
+\]">\[
+T_u:(u,b)\longrightarrow(u^2/b,u),\qquad
+T_u(t)=\frac{u^2}{t},\qquad T&#x27;_u(t)=-\frac{u^2}{t^2}.
+\tag{SQ3}
+\]</span>
+<p>When <span class="math" data-tex="\(u=b\)">\(u=b\)</span> both intervals are empty. Direct differentiation and substitution give</p>
+<span class="math math-display" data-tex="\[
+\partial_t\frac{t}{2(u^2+t^2)}=K_2(u,t),\qquad
+K_2(u,T_u(t))\,\frac{u^2}{t^2}=-K_2(u,t).
+\tag{SQ4}
+\]">\[
+\partial_t\frac{t}{2(u^2+t^2)}=K_2(u,t),\qquad
+K_2(u,T_u(t))\,\frac{u^2}{t^2}=-K_2(u,t).
+\tag{SQ4}
+\]</span>
+<p>The first kernel is positive below <span class="math" data-tex="\(u\)">\(u\)</span> and negative above <span class="math" data-tex="\(u\)">\(u\)</span>. Changing variables in the lower matched interval, with its reversed endpoints, proves the full identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^b K_2(u,t)f(u,t)\,dt
+&amp;=\int_u^b K_2(u,t)
+\bigl(f(u,t)-f(u,u^2/t)\bigr)\,dt\\
+&amp;\quad+\int_0^{u^2/b}K_2(u,t)f(u,t)\,dt .
+\end{aligned}\tag{SQ5}
+\]">\[
+\begin{aligned}
+\int_0^b K_2(u,t)f(u,t)\,dt
+&amp;=\int_u^b K_2(u,t)
+\bigl(f(u,t)-f(u,u^2/t)\bigr)\,dt\\
+&amp;\quad+\int_0^{u^2/b}K_2(u,t)f(u,t)\,dt .
+\end{aligned}\tag{SQ5}
+\]</span>
+<p>The residual has not been subtracted from the data or discarded.</p>
+<p>Define its complete nonnegative mass and the complete paired cost by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(a,b)&amp;=\int_0^a\int_0^{u^2/b}K_2(u,t)\,dt\,du
+=\frac12\int_0^a\frac{b}{u^2+b^2}\,du
+=\frac12\arctan(a/b),\\
+C(a,b)&amp;=\int_0^a\int_u^b
+\frac{t^2-u^2}{2(u^2+t^2)^2}
+\sqrt{t-u^2/t}\,dt\,du .
+\end{aligned}\tag{SQ6}
+\]">\[
+\begin{aligned}
+R(a,b)&amp;=\int_0^a\int_0^{u^2/b}K_2(u,t)\,dt\,du
+=\frac12\int_0^a\frac{b}{u^2+b^2}\,du
+=\frac12\arctan(a/b),\\
+C(a,b)&amp;=\int_0^a\int_u^b
+\frac{t^2-u^2}{2(u^2+t^2)^2}
+\sqrt{t-u^2/t}\,dt\,du .
+\end{aligned}\tag{SQ6}
+\]</span>
+<p>Here <span class="math" data-tex="\(0\le t\le u^2/b\le a\)">\(0\le t\le u^2/b\le a\)</span> in the residual, so the data bound is exactly <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> on the original square. Sections SQ2–SQ3 below prove <span class="math" data-tex="\(C(a,b)&lt;\infty\)">\(C(a,b)&lt;\infty\)</span>. Consequently both right-hand terms of SQ5, integrated over <span class="math" data-tex="\(0&lt;u&lt;a\)">\(0&lt;u&lt;a\)</span>, converge absolutely. Taking the cutoff limit proves existence of SQ1 and</p>
+<span class="math math-display" data-tex="\[
+|I_{a,b}|\le Q_0\,\frac12\arctan(a/b)+H_y C(a,b).
+\tag{SQ7}
+\]">\[
+|I_{a,b}|\le Q_0\,\frac12\arctan(a/b)+H_y C(a,b).
+\tag{SQ7}
+\]</span>
+<p>In particular, the absolute value on the left follows from the actual signed identity, not an assumption that the data or the integral is positive.</p>
+<p>For <span class="math" data-tex="\(0&lt;b\le a\)">\(0&lt;b\le a\)</span>, define the source's other strip by cutting off <span class="math" data-tex="\(t\)">\(t\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_{a,b}&amp;=\lim_{\epsilon\downarrow0}
+\int_\epsilon^b\int_0^a K_2(u,t)f(u,t)\,du\,dt,\\
+|J_{a,b}|&amp;\le Q_0\,\frac12\arctan(b/a)+H_x C(b,a),
+\qquad Q_0=\|f\|_{L^\infty([0,b]^2)} .
+\end{aligned}\tag{SQ8}
+\]">\[
+\begin{aligned}
+J_{a,b}&amp;=\lim_{\epsilon\downarrow0}
+\int_\epsilon^b\int_0^a K_2(u,t)f(u,t)\,du\,dt,\\
+|J_{a,b}|&amp;\le Q_0\,\frac12\arctan(b/a)+H_x C(b,a),
+\qquad Q_0=\|f\|_{L^\infty([0,b]^2)} .
+\end{aligned}\tag{SQ8}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(K_2(t,u)=-K_2(u,t)\)">\(K_2(t,u)=-K_2(u,t)\)</span>; applying SQ5 to <span class="math" data-tex="\(g(t,u)=f(u,t)\)">\(g(t,u)=f(u,t)\)</span> proves <span class="math" data-tex="\(J_{a,b}=-I_{b,a}(g)\)">\(J_{a,b}=-I_{b,a}(g)\)</span>, including the minus sign. Fixed reflections <span class="math" data-tex="\((u,t)\mapsto(\sigma_1u,\sigma_2t)\)">\((u,t)\mapsto(\sigma_1u,\sigma_2t)\)</span>, <span class="math" data-tex="\(\sigma_i\in\{-1,1\}\)">\(\sigma_i\in\{-1,1\}\)</span>, preserve the kernel and the positive area measure and replace the data by its reflected fiber. SQ7–SQ8 therefore hold on each reflected rectangle. A union of rectangles requires the sum of their contributions. The square endpoint <span class="math" data-tex="\(a=b\)">\(a=b\)</span> is included.</p>
+<h3 id="sq2-correct-the-intermediate-sign-and-recover-the-source-bound">SQ2. Correct the intermediate sign and recover the source bound</h3>
+<p>The second integrand in source line 2416 uses <span class="math" data-tex="\(K_2\)">\(K_2\)</span> on <span class="math" data-tex="\(u&lt;t&lt;a\)">\(u&lt;t&lt;a\)</span>, where it is strictly negative. Its integral is <span class="math" data-tex="\(-C(a,a)\)">\(-C(a,a)\)</span>, whereas source line 2420 evaluates it as the positive upper-square constant. The corrected split, obtained directly from SQ6, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(a,b)
+&amp;= C(a,a)+\int_0^a\int_a^b
+|K_2(u,t)|\sqrt{t-u^2/t}\,dt\,du\\
+&amp;\le \sqrt a\left(\frac\pi2-\frac{\pi}{2\sqrt2}\right)
++\sqrt a\left(f_s(\sqrt{b/a})-f_s(1)\right),\\
+f_s(v)&amp;=\int_0^v\frac{w^2}{1+w^4}\,dw .
+\end{aligned}\tag{SQ9}
+\]">\[
+\begin{aligned}
+C(a,b)
+&amp;= C(a,a)+\int_0^a\int_a^b
+|K_2(u,t)|\sqrt{t-u^2/t}\,dt\,du\\
+&amp;\le \sqrt a\left(\frac\pi2-\frac{\pi}{2\sqrt2}\right)
++\sqrt a\left(f_s(\sqrt{b/a})-f_s(1)\right),\\
+f_s(v)&amp;=\int_0^v\frac{w^2}{1+w^4}\,dw .
+\end{aligned}\tag{SQ9}
+\]</span>
+<p>The square value will also be proved independently below. For the upper rectangle, <span class="math" data-tex="\(t\ge a\ge u\)">\(t\ge a\ge u\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^a|K_2(u,t)|\,du&amp;=\frac{a}{2(a^2+t^2)},\\
+\int_a^b\frac{a\sqrt t}{2(a^2+t^2)}\,dt
+&amp;=\sqrt a\left(f_s(\sqrt{b/a})-f_s(1)\right).
+\end{aligned}\tag{SQ10}
+\]">\[
+\begin{aligned}
+\int_0^a|K_2(u,t)|\,du&amp;=\frac{a}{2(a^2+t^2)},\\
+\int_a^b\frac{a\sqrt t}{2(a^2+t^2)}\,dt
+&amp;=\sqrt a\left(f_s(\sqrt{b/a})-f_s(1)\right).
+\end{aligned}\tag{SQ10}
+\]</span>
+<p>The first formula follows from the full primitive
+<span class="math" data-tex="\(\partial_u[u/(2(u^2+t^2))]=-K_2(u,t)\)">\(\partial_u[u/(2(u^2+t^2))]=-K_2(u,t)\)</span>.
+The second uses <span class="math" data-tex="\(t=aw^2\)">\(t=aw^2\)</span>, <span class="math" data-tex="\(dt=2aw\,dw\)">\(dt=2aw\,dw\)</span>, with both original endpoints retained.</p>
+<p>This proves exactly the final bounds at source lines 2434–2436 and 2446–2448, with <span class="math" data-tex="\(C_{K_2,\mathrm{up}}=\pi/2-\pi/(2\sqrt2)\)">\(C_{K_2,\mathrm{up}}=\pi/2-\pi/(2\sqrt2)\)</span>. The erroneous intermediate sign is repairable without increasing either final coefficient. For <span class="math" data-tex="\(b&gt;a\)">\(b&gt;a\)</span>, the bound on the second line of SQ9 is strict: on the open upper rectangle <span class="math" data-tex="\(0&lt;u&lt;a&lt;t&lt;b\)">\(0&lt;u&lt;a&lt;t&lt;b\)</span>, the positive kernel multiplies <span class="math" data-tex="\(\sqrt{t-u^2/t}&lt;\sqrt t\)">\(\sqrt{t-u^2/t}&lt;\sqrt t\)</span>. Thus SQ7 supplies a strictly smaller coefficient of <span class="math" data-tex="\(H_y\)">\(H_y\)</span>; it is not a claim of the optimal operator norm, or of strict data-bound improvement when <span class="math" data-tex="\(H_y=0\)">\(H_y=0\)</span>.</p>
+<h3 id="sq3-exact-finite-strip-cost">SQ3. Exact finite-strip cost</h3>
+<p>Set <span class="math" data-tex="\(r=a/b\in(0,1]\)">\(r=a/b\in(0,1]\)</span> and introduce the integration variable <span class="math" data-tex="\(q=u/t\)">\(q=u/t\)</span>. This changes no physical cutoff. Its map is <span class="math" data-tex="\(u=qt\)">\(u=qt\)</span>, <span class="math" data-tex="\(du\,dt=t\,dq\,dt\)">\(du\,dt=t\,dq\,dt\)</span>, and its exact domain is</p>
+<span class="math math-display" data-tex="\[
+0&lt;q&lt;1,\qquad 0&lt;t&lt;\min(b,a/q).
+\tag{SQ11}
+\]">\[
+0&lt;q&lt;1,\qquad 0&lt;t&lt;\min(b,a/q).
+\tag{SQ11}
+\]</span>
+<p>Consequently Tonelli's theorem, first for the nonnegative integrand, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi(q)&amp;=\frac{(1-q^2)^{3/2}}{(1+q^2)^2},\\
+|K_2(qt,t)|\sqrt{t-q^2t}\,t
+&amp;=\frac{\phi(q)}{2\sqrt t},\\
+C(a,b)&amp;=\sqrt b\int_0^r\phi(q)\,dq
++\sqrt a\int_r^1\frac{\phi(q)}{\sqrt q}\,dq .
+\end{aligned}\tag{SQ12}
+\]">\[
+\begin{aligned}
+\phi(q)&amp;=\frac{(1-q^2)^{3/2}}{(1+q^2)^2},\\
+|K_2(qt,t)|\sqrt{t-q^2t}\,t
+&amp;=\frac{\phi(q)}{2\sqrt t},\\
+C(a,b)&amp;=\sqrt b\int_0^r\phi(q)\,dq
++\sqrt a\int_r^1\frac{\phi(q)}{\sqrt q}\,dq .
+\end{aligned}\tag{SQ12}
+\]</span>
+<p>Both integrals are finite: <span class="math" data-tex="\(0\le\phi\le1\)">\(0\le\phi\le1\)</span>, and <span class="math" data-tex="\(q^{-1/2}\)">\(q^{-1/2}\)</span> is integrable at zero. This also supplies the convergence required in SQ7.</p>
+<p>The first integral has the elementary primitive</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A(r)&amp;=\arcsin r-\frac1{\sqrt2}
+\arcsin\!\left(\frac{\sqrt2\,r}{\sqrt{1+r^2}}\right)
++\frac{r\sqrt{1-r^2}}{1+r^2},\\
+A(0)&amp;=0,\qquad A&#x27;(r)=\phi(r)\ (0&lt;r&lt;1),\\
+A(1)&amp;=\frac\pi2-\frac{\pi}{2\sqrt2}.
+\end{aligned}\tag{SQ13}
+\]">\[
+\begin{aligned}
+A(r)&amp;=\arcsin r-\frac1{\sqrt2}
+\arcsin\!\left(\frac{\sqrt2\,r}{\sqrt{1+r^2}}\right)
++\frac{r\sqrt{1-r^2}}{1+r^2},\\
+A(0)&amp;=0,\qquad A&#x27;(r)=\phi(r)\ (0&lt;r&lt;1),\\
+A(1)&amp;=\frac\pi2-\frac{\pi}{2\sqrt2}.
+\end{aligned}\tag{SQ13}
+\]</span>
+<p>Both inverse sines take their values in <span class="math" data-tex="\([0,\pi/2]\)">\([0,\pi/2]\)</span>. The derivative follows using
+<span class="math" data-tex="\(1-2r^2/(1+r^2)=(1-r^2)/(1+r^2)\)">\(1-2r^2/(1+r^2)=(1-r^2)/(1+r^2)\)</span>; all denominators are positive on <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>. The continuous endpoint values follow from the displayed formula. In particular, SQ12 at <span class="math" data-tex="\(a=b\)">\(a=b\)</span> proves the square term in SQ9 with its factor <span class="math" data-tex="\(\sqrt a\)">\(\sqrt a\)</span>.</p>
+<p>For an exact evaluation of the second integral, define, for <span class="math" data-tex="\(p,q&gt;0\)">\(p,q&gt;0\)</span> and <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+B_x(p,q)=\int_0^x v^{p-1}(1-v)^{q-1}\,dv,\qquad
+B(p,q)=B_1(p,q),\qquad x_r=\frac{4r^2}{(1+r^2)^2}.
+\tag{SQ14}
+\]">\[
+B_x(p,q)=\int_0^x v^{p-1}(1-v)^{q-1}\,dv,\qquad
+B(p,q)=B_1(p,q),\qquad x_r=\frac{4r^2}{(1+r^2)^2}.
+\tag{SQ14}
+\]</span>
+<p>Section SQ4 proves the remaining conversion. Its result is the exact full formula</p>
+<span class="math math-display" data-tex="\[
+C(a,b)=\sqrt b\,A(a/b)
++\frac{\sqrt a}{2\sqrt2}
+\left[B(5/4,1/4)-B_{x_{a/b}}(1/4,5/4)\right].
+\tag{SQ15}
+\]">\[
+C(a,b)=\sqrt b\,A(a/b)
++\frac{\sqrt a}{2\sqrt2}
+\left[B(5/4,1/4)-B_{x_{a/b}}(1/4,5/4)\right].
+\tag{SQ15}
+\]</span>
+<p>The two original physical square roots and both beta contributions remain. At <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, symmetry of the beta integral makes the bracket zero. At <span class="math" data-tex="\(b\to\infty\)">\(b\to\infty\)</span>, <span class="math" data-tex="\(\sqrt b A(a/b)\le a/\sqrt b\to0\)">\(\sqrt b A(a/b)\le a/\sqrt b\to0\)</span>, and <span class="math" data-tex="\(x_{a/b}\to0\)">\(x_{a/b}\to0\)</span>. Thus the limit of SQ15 is the infinite-strip cost proved next. The representation SQ12 directly proves monotonic increase in <span class="math" data-tex="\(b\)">\(b\)</span>, because it equals the original positive integral with increasing upper endpoint.</p>
+<h3 id="sq4-evaluate-the-complete-infinite-strip-coefficient-and-its-tail">SQ4. Evaluate the complete infinite-strip coefficient and its tail</h3>
+<p>For actual <span class="math" data-tex="\(0\le a&lt;b&lt;\infty\)">\(0\le a&lt;b&lt;\infty\)</span>, retain the source quantity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_{K_2,\infty}(a,b)
+&amp;=\int_a^b\int_u^\infty
+\frac{t^2-u^2}{2(u^2+t^2)^2}
+\sqrt{t-u^2/t}\,dt\,du\\
+&amp;=(\sqrt b-\sqrt a)\,\kappa,\\
+\kappa&amp;=\int_1^\infty
+\frac{s^2-1}{(s^2+1)^2}\sqrt{s-1/s}\,ds .
+\end{aligned}\tag{SQ16}
+\]">\[
+\begin{aligned}
+I_{K_2,\infty}(a,b)
+&amp;=\int_a^b\int_u^\infty
+\frac{t^2-u^2}{2(u^2+t^2)^2}
+\sqrt{t-u^2/t}\,dt\,du\\
+&amp;=(\sqrt b-\sqrt a)\,\kappa,\\
+\kappa&amp;=\int_1^\infty
+\frac{s^2-1}{(s^2+1)^2}\sqrt{s-1/s}\,ds .
+\end{aligned}\tag{SQ16}
+\]</span>
+<p>The substitution <span class="math" data-tex="\(t=us\)">\(t=us\)</span>, <span class="math" data-tex="\(dt=u\,ds\)">\(dt=u\,ds\)</span> gives the inner factor <span class="math" data-tex="\(1/(2\sqrt u)\)">\(1/(2\sqrt u)\)</span>; integrating it from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span> gives precisely <span class="math" data-tex="\(\sqrt b-\sqrt a\)">\(\sqrt b-\sqrt a\)</span>. When <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, this means the convergent improper integral, not division by zero on the fiber <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p>Use the strictly increasing bijection <span class="math" data-tex="\(z=s-1/s\)">\(z=s-1/s\)</span> from <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span> to <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Its inverse is
+<span class="math" data-tex="\(s=(z+\sqrt{z^2+4})/2\)">\(s=(z+\sqrt{z^2+4})/2\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{s}{s^2+1}&amp;=\frac1{\sqrt{z^2+4}},\\
+\frac{s^2-1}{(s^2+1)^2}\,ds
+&amp;=\frac{z}{(z^2+4)^{3/2}}\,dz,\\
+\kappa&amp;=\int_0^\infty\frac{z^{3/2}}{(z^2+4)^{3/2}}\,dz
+=\frac1{2\sqrt2}B(5/4,1/4).
+\end{aligned}\tag{SQ17}
+\]">\[
+\begin{aligned}
+\frac{s}{s^2+1}&amp;=\frac1{\sqrt{z^2+4}},\\
+\frac{s^2-1}{(s^2+1)^2}\,ds
+&amp;=\frac{z}{(z^2+4)^{3/2}}\,dz,\\
+\kappa&amp;=\int_0^\infty\frac{z^{3/2}}{(z^2+4)^{3/2}}\,dz
+=\frac1{2\sqrt2}B(5/4,1/4).
+\end{aligned}\tag{SQ17}
+\]</span>
+<p>For the last equality put <span class="math" data-tex="\(w=z^2/(z^2+4)\)">\(w=z^2/(z^2+4)\)</span>. Then
+<span class="math" data-tex="\(z=2\sqrt{w/(1-w)}\)">\(z=2\sqrt{w/(1-w)}\)</span> and
+<span class="math" data-tex="\(dz=w^{-1/2}(1-w)^{-3/2}\,dw\)">\(dz=w^{-1/2}(1-w)^{-3/2}\,dw\)</span>.
+The complete transformed density is
+<span class="math" data-tex="\((2\sqrt2)^{-1}w^{1/4}(1-w)^{-3/4}\,dw\)">\((2\sqrt2)^{-1}w^{1/4}(1-w)^{-3/4}\,dw\)</span>.
+It is integrable at both endpoints, proving every improper convergence in SQ16–SQ17.</p>
+<p>This constant also has the exact special-function value</p>
+<span class="math math-display" data-tex="\[
+\kappa=\frac{\Gamma(1/4)^2}{4\sqrt{2\pi}},
+\qquad
+\Gamma(p)=\int_0^\infty v^{p-1}e^{-v}\,dv\quad(p&gt;0).
+\tag{SQ18}
+\]">\[
+\kappa=\frac{\Gamma(1/4)^2}{4\sqrt{2\pi}},
+\qquad
+\Gamma(p)=\int_0^\infty v^{p-1}e^{-v}\,dv\quad(p&gt;0).
+\tag{SQ18}
+\]</span>
+<p>Here is a derivation of the conversion. Apply Tonelli to the positive double integral defining <span class="math" data-tex="\(\Gamma(p)\Gamma(q)\)">\(\Gamma(p)\Gamma(q)\)</span>, then set <span class="math" data-tex="\(v=\rho x,\ w=\rho(1-x)\)">\(v=\rho x,\ w=\rho(1-x)\)</span>, with Jacobian <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, to obtain
+<span class="math" data-tex="\(\Gamma(p)\Gamma(q)=\Gamma(p+q)B(p,q)\)">\(\Gamma(p)\Gamma(q)=\Gamma(p+q)B(p,q)\)</span>.
+Integration by parts, whose endpoint terms vanish for <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, gives <span class="math" data-tex="\(\Gamma(p+1)=p\Gamma(p)\)">\(\Gamma(p+1)=p\Gamma(p)\)</span>. Finally, <span class="math" data-tex="\(\Gamma(1/2)=2\int_0^\infty e^{-t^2}\,dt=\sqrt\pi\)">\(\Gamma(1/2)=2\int_0^\infty e^{-t^2}\,dt=\sqrt\pi\)</span>: square the integral over the real line and use polar coordinates, whose integral is <span class="math" data-tex="\(2\pi\int_0^\infty r e^{-r^2}\,dr=\pi\)">\(2\pi\int_0^\infty r e^{-r^2}\,dr=\pi\)</span>. Substitution of <span class="math" data-tex="\(p=5/4,q=1/4\)">\(p=5/4,q=1/4\)</span> in SQ17 proves SQ18 with every factor.</p>
+<p>The entire tail beyond an actual <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(R)&amp;=\int_R^\infty
+\frac{s^2-1}{(s^2+1)^2}\sqrt{s-1/s}\,ds\\
+&amp;=\frac1{2\sqrt2}
+B_{\,4R^2/(R^2+1)^2}(1/4,5/4)
+\le \frac2{\sqrt R}.
+\end{aligned}\tag{SQ19}
+\]">\[
+\begin{aligned}
+E(R)&amp;=\int_R^\infty
+\frac{s^2-1}{(s^2+1)^2}\sqrt{s-1/s}\,ds\\
+&amp;=\frac1{2\sqrt2}
+B_{\,4R^2/(R^2+1)^2}(1/4,5/4)
+\le \frac2{\sqrt R}.
+\end{aligned}\tag{SQ19}
+\]</span>
+<p>To prove the equality, use SQ17 and then <span class="math" data-tex="\(v=4/(z^2+4)\)">\(v=4/(z^2+4)\)</span>, whose decreasing endpoints are <span class="math" data-tex="\(4R^2/(R^2+1)^2\)">\(4R^2/(R^2+1)^2\)</span> and zero. The full density is
+<span class="math" data-tex="\(-(2\sqrt2)^{-1}v^{-3/4}(1-v)^{1/4}\,dv\)">\(-(2\sqrt2)^{-1}v^{-3/4}(1-v)^{1/4}\,dv\)</span>.
+For the inequality, the original integrand is bounded by <span class="math" data-tex="\(s^{-3/2}\)">\(s^{-3/2}\)</span>: <span class="math" data-tex="\((s^2-1)/(s^2+1)^2\le s^{-2}\)">\((s^2-1)/(s^2+1)^2\le s^{-2}\)</span> and <span class="math" data-tex="\(\sqrt{s-1/s}\le\sqrt s\)">\(\sqrt{s-1/s}\le\sqrt s\)</span>. Integrating retains the source tail <span class="math" data-tex="\(2R^{-1/2}\)">\(2R^{-1/2}\)</span>.</p>
+<p>Putting <span class="math" data-tex="\(q=1/s\)">\(q=1/s\)</span> gives
+<span class="math" data-tex="\(\int_0^r\phi(q)/\sqrt q\,dq=E(1/r)\)">\(\int_0^r\phi(q)/\sqrt q\,dq=E(1/r)\)</span> and
+<span class="math" data-tex="\(\int_0^1\phi(q)/\sqrt q\,dq=\kappa\)">\(\int_0^1\phi(q)/\sqrt q\,dq=\kappa\)</span>.
+Subtracting these two finite integrals proves SQ15.</p>
+<h3 id="sq5-actual-data-on-the-infinite-strip">SQ5. Actual data on the infinite strip</h3>
+<p>Suppose <span class="math" data-tex="\(f\)">\(f\)</span> has the fiber property SQ2 on <span class="math" data-tex="\(0&lt;u&lt;b,\ 0\le t&lt;\infty\)">\(0&lt;u&lt;b,\ 0\le t&lt;\infty\)</span>, with <span class="math" data-tex="\(|f(u,0)|\le Q_0\)">\(|f(u,0)|\le Q_0\)</span>. For each <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, the integral over <span class="math" data-tex="\(\epsilon&lt;u&lt;b,\ 0&lt;t&lt;\infty\)">\(\epsilon&lt;u&lt;b,\ 0&lt;t&lt;\infty\)</span> is absolutely convergent. Indeed <span class="math" data-tex="\(|f(u,t)|\le Q_0+H_y\sqrt t\)">\(|f(u,t)|\le Q_0+H_y\sqrt t\)</span>, and the full kernel is bounded away from its origin and has an integrable height tail after either weight.</p>
+<p>For each <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, SQ3 now maps <span class="math" data-tex="\((u,\infty)\)">\((u,\infty)\)</span> bijectively onto <span class="math" data-tex="\((0,u)\)">\((0,u)\)</span>. The same complete mass identity yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_{b,\infty}(f)
+&amp;=\lim_{\epsilon\downarrow0}
+\int_\epsilon^b\int_0^\infty K_2(u,t)f(u,t)\,dt\,du\\
+&amp;=\int_0^b\int_u^\infty K_2(u,t)
+\bigl(f(u,t)-f(u,u^2/t)\bigr)\,dt\,du,\\
+|I_{b,\infty}(f)-I_{a,\infty}(f)|
+&amp;\le(\sqrt b-\sqrt a)\kappa H_y
+\qquad(0\le a\le b),\qquad I_{0,\infty}=0 .
+\end{aligned}\tag{SQ20}
+\]">\[
+\begin{aligned}
+I_{b,\infty}(f)
+&amp;=\lim_{\epsilon\downarrow0}
+\int_\epsilon^b\int_0^\infty K_2(u,t)f(u,t)\,dt\,du\\
+&amp;=\int_0^b\int_u^\infty K_2(u,t)
+\bigl(f(u,t)-f(u,u^2/t)\bigr)\,dt\,du,\\
+|I_{b,\infty}(f)-I_{a,\infty}(f)|
+&amp;\le(\sqrt b-\sqrt a)\kappa H_y
+\qquad(0\le a\le b),\qquad I_{0,\infty}=0 .
+\end{aligned}\tag{SQ20}
+\]</span>
+<p>The paired integral is absolutely convergent by SQ16. Thus taking the horizontal cutoff limit is justified without assuming an unlocalized operator, horizontal continuity, or a limit of the trace at the origin. The two strip integrals on the last line use the same data on their nested domains; subtracting their convergent paired representations leaves exactly <span class="math" data-tex="\(a&lt;u&lt;b\)">\(a&lt;u&lt;b\)</span>.</p>
+<p>There is also direct control of the infinite height limit, retaining the entire trace contribution. For <span class="math" data-tex="\(L\ge b&gt;0\)">\(L\ge b&gt;0\)</span>, let <span class="math" data-tex="\(I_{b,L}\)">\(I_{b,L}\)</span> mean SQ1 with first width <span class="math" data-tex="\(b\)">\(b\)</span> and second width <span class="math" data-tex="\(L\)">\(L\)</span>. The original negative tail gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_{b,\infty}-I_{b,L}
+&amp;=\int_0^b\int_L^\infty K_2(u,t)
+\bigl(f(u,0)+f(u,t)-f(u,0)\bigr)\,dt\,du,\\
+|I_{b,\infty}-I_{b,L}|
+&amp;\le \frac{Q_0}{2}\arctan(b/L)
++H_y\sqrt b\left(f_s(\infty)-f_s(\sqrt{L/b})\right).
+\end{aligned}\tag{SQ21}
+\]">\[
+\begin{aligned}
+I_{b,\infty}-I_{b,L}
+&amp;=\int_0^b\int_L^\infty K_2(u,t)
+\bigl(f(u,0)+f(u,t)-f(u,0)\bigr)\,dt\,du,\\
+|I_{b,\infty}-I_{b,L}|
+&amp;\le \frac{Q_0}{2}\arctan(b/L)
++H_y\sqrt b\left(f_s(\infty)-f_s(\sqrt{L/b})\right).
+\end{aligned}\tag{SQ21}
+\]</span>
+<p>For the trace, <span class="math" data-tex="\(\int_L^\infty K_2(u,t)\,dt=-L/(2(u^2+L^2))\)">\(\int_L^\infty K_2(u,t)\,dt=-L/(2(u^2+L^2))\)</span>; integrating its magnitude gives the first term. For the height difference, integration in <span class="math" data-tex="\(u\)">\(u\)</span> gives the first formula of SQ10 with <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, and then its second formula with upper endpoint infinity gives the second term. Both terms tend to zero because their defining positive tails are integrable. This proves the infinite-limit passage while retaining the source's finite residual.</p>
+<p>For constant data <span class="math" data-tex="\(f\equiv c\)">\(f\equiv c\)</span>, SQ5 gives exactly <span class="math" data-tex="\(I_{a,b}=(c/2)\arctan(a/b)\)">\(I_{a,b}=(c/2)\arctan(a/b)\)</span>, while SQ20 gives <span class="math" data-tex="\(I_{b,\infty}=0\)">\(I_{b,\infty}=0\)</span>. These values check the sign and residual; no local principal-value correction is silently changed. If radial rather than strip cutoffs are wanted for jointly Hölder data, the separate PV1–PV3 quadrant correction must still be applied.</p>
+<h3 id="sq6-carry-the-exact-coefficient-into-the-original-exterior-receiver">SQ6. Carry the exact coefficient into the original exterior receiver</h3>
+<p>The source at lines 2027–2028 uses auxiliary half-separation one. In those original source coordinates, let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, and <span class="math" data-tex="\(\epsilon_m=\max(m,1+\epsilon)\)">\(\epsilon_m=\max(m,1+\epsilon)\)</span>. Inserting SQ16 gives exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_{\mathrm{out}}(m,\epsilon)
+&amp;=C_{\mathrm{mid},2}(\epsilon_m-1)\\
+&amp;\quad+4\kappa\left[
+\sqrt{\epsilon_m+1}-\sqrt{m+1}
++\sqrt{\epsilon_m-1}-\sqrt{m-1}\right],\\
+C_{\mathrm{out}}(1,\epsilon)
+&amp;=C_{\mathrm{mid},2}(\epsilon)
++4\kappa\left[\sqrt{2+\epsilon}-\sqrt2+\sqrt\epsilon\right].
+\end{aligned}\tag{SQ22}
+\]">\[
+\begin{aligned}
+C_{\mathrm{out}}(m,\epsilon)
+&amp;=C_{\mathrm{mid},2}(\epsilon_m-1)\\
+&amp;\quad+4\kappa\left[
+\sqrt{\epsilon_m+1}-\sqrt{m+1}
++\sqrt{\epsilon_m-1}-\sqrt{m-1}\right],\\
+C_{\mathrm{out}}(1,\epsilon)
+&amp;=C_{\mathrm{mid},2}(\epsilon)
++4\kappa\left[\sqrt{2+\epsilon}-\sqrt2+\sqrt\epsilon\right].
+\end{aligned}\tag{SQ22}
+\]</span>
+<p>Every endpoint, both strip contributions, the factor four and the remaining middle integral are retained. The actual equality of the last two strip endpoints for <span class="math" data-tex="\(m\ge1+\epsilon\)">\(m\ge1+\epsilon\)</span> makes those terms zero; they are not discarded for smaller <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>The source's monotonicity in <span class="math" data-tex="\(m\)">\(m\)</span> now follows explicitly. For <span class="math" data-tex="\(1&lt;m&lt;1+\epsilon\)">\(1&lt;m&lt;1+\epsilon\)</span>, <span class="math" data-tex="\(\epsilon_m\)">\(\epsilon_m\)</span> is constant, the middle integral is constant, and the bracket has derivative
+<span class="math" data-tex="\(-1/(2\sqrt{m+1})-1/(2\sqrt{m-1})&lt;0\)">\(-1/(2\sqrt{m+1})-1/(2\sqrt{m-1})&lt;0\)</span>.
+For <span class="math" data-tex="\(m\ge1+\epsilon\)">\(m\ge1+\epsilon\)</span>, the bracket is zero and <span class="math" data-tex="\(C_{\mathrm{mid},2}(m-1)\)">\(C_{\mathrm{mid},2}(m-1)\)</span> is an integral of a fixed nonnegative density over a decreasing domain. At <span class="math" data-tex="\(m=1+\epsilon\)">\(m=1+\epsilon\)</span>, both formulas agree, and at <span class="math" data-tex="\(m=1\)">\(m=1\)</span> the displayed square-root limit is continuous. Thus the original lower-cell-endpoint bound is valid.</p>
+<p>For the actual physical half-separation <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span>, physical midpoint <span class="math" data-tex="\(M\ge a_0\)">\(M\ge a_0\)</span>, and physical strip width <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, set <span class="math" data-tex="\(E=\max(M,a_0+\delta)\)">\(E=\max(M,a_0+\delta)\)</span>. The original-coordinate exterior integral is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_{\mathrm{vert}}(a_0,E)
+&amp;=4\int_E^\infty\int_{\sigma_{a_0}(s)}^\infty
+\Delta_{a_0}(s,t)\sqrt{t-V_{a_0,s}(t)}\,dt\,ds,\\
+\mathcal C_{\mathrm{out}}(a_0,M,\delta)
+&amp;=C_{\mathrm{vert}}(a_0,E)\\
+&amp;\quad+4\kappa\left[
+\sqrt{E+a_0}-\sqrt{M+a_0}
++\sqrt{E-a_0}-\sqrt{M-a_0}\right].
+\end{aligned}\tag{SQ23}
+\]">\[
+\begin{aligned}
+C_{\mathrm{vert}}(a_0,E)
+&amp;=4\int_E^\infty\int_{\sigma_{a_0}(s)}^\infty
+\Delta_{a_0}(s,t)\sqrt{t-V_{a_0,s}(t)}\,dt\,ds,\\
+\mathcal C_{\mathrm{out}}(a_0,M,\delta)
+&amp;=C_{\mathrm{vert}}(a_0,E)\\
+&amp;\quad+4\kappa\left[
+\sqrt{E+a_0}-\sqrt{M+a_0}
++\sqrt{E-a_0}-\sqrt{M-a_0}\right].
+\end{aligned}\tag{SQ23}
+\]</span>
+<p>Here <span class="math" data-tex="\(\Delta_{a_0}=K_2(s+a_0,t)-K_2(s-a_0,t)\)">\(\Delta_{a_0}=K_2(s+a_0,t)-K_2(s-a_0,t)\)</span>, and <span class="math" data-tex="\(\sigma_{a_0},V_{a_0,s}\)">\(\sigma_{a_0},V_{a_0,s}\)</span> are precisely the threshold and positive cubic partner of <span class="unlinked">RV12–RV14</span>. Those formulas prove that this is a finite nonnegative integral.</p>
+<p>To verify the full comparison with SQ22, use <span class="math" data-tex="\(s=a_0y_1,\ t=a_0y_2\)">\(s=a_0y_1,\ t=a_0y_2\)</span>: the kernel contributes <span class="math" data-tex="\(a_0^{-2}\)">\(a_0^{-2}\)</span>, area contributes <span class="math" data-tex="\(a_0^2\)">\(a_0^2\)</span>, the partner-distance square root contributes <span class="math" data-tex="\(\sqrt{a_0}\)">\(\sqrt{a_0}\)</span>, and the lower endpoint becomes <span class="math" data-tex="\(E/a_0\)">\(E/a_0\)</span>. The exact threshold and cubic scale under this same map, as proved in PV14–PV19. Consequently <span class="math" data-tex="\(C_{\mathrm{vert}}(a_0,E)=\sqrt{a_0}C_{\mathrm{mid},2}(E/a_0-1)\)">\(C_{\mathrm{vert}}(a_0,E)=\sqrt{a_0}C_{\mathrm{mid},2}(E/a_0-1)\)</span>, and multiplying each endpoint square root in SQ22 by <span class="math" data-tex="\(\sqrt{a_0}\)">\(\sqrt{a_0}\)</span> gives SQ23. The contribution to the full velocity quotient remains
+<span class="math" data-tex="\(\mathcal C_{\mathrm{out}}(a_0,M,\delta)H_x/(\pi\sqrt{2a_0})\)">\(\mathcal C_{\mathrm{out}}(a_0,M,\delta)H_x/(\pi\sqrt{2a_0})\)</span>.
+All inner and middle contributions and any local correction in the receiving velocity formula remain separate terms. This calculation exactly evaluates the two strip pieces; it does not certify the remaining middle integral numerically.</p>
+<p>The finite receivers at source 2184–2185, 2232–2233 and 2279–2280 retain their residual mass coefficients and factors two. Their paired factors
+<span class="math" data-tex="\(\sqrt\epsilon[f_s(\sqrt{A/\epsilon})-f_s(1)+C_{K_2,\mathrm{up}}]\)">\(\sqrt\epsilon[f_s(\sqrt{A/\epsilon})-f_s(1)+C_{K_2,\mathrm{up}}]\)</span>
+may be replaced by the proved smaller <span class="math" data-tex="\(C(\epsilon,A)\)">\(C(\epsilon,A)\)</span> for <span class="math" data-tex="\(A\ge\epsilon\)">\(A\ge\epsilon\)</span>, with <span class="math" data-tex="\(A=1\)">\(A=1\)</span>, <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, or <span class="math" data-tex="\(A=\epsilon=m-1\)">\(A=\epsilon=m-1\)</span> as appropriate. This follows by applying the exact reflected identity SQ8 to each original data difference; its horizontal Hölder constant is still at most twice the original one by the triangle inequality. At the square endpoint the two coefficients agree. No residual, reflection multiplicity, data seminorm or physical <span class="math" data-tex="\(1/(\pi\sqrt{2a_0})\)">\(1/(\pi\sqrt{2a_0})\)</span> factor is removed.</p>
+<h3 id="sq7-rational-certification-of-the-newly-evaluated-constant">SQ7. Rational certification of the newly evaluated constant</h3>
+<p>The special-function expression need not be trusted as a floating-point oracle. Split the beta integral at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, reflecting the upper half. For <span class="math" data-tex="\(p,q&gt;0\)">\(p,q&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_{1/2}(p,q)
+&amp;=2^{-p}\sum_{n=0}^\infty
+\frac{(1-q)_n}{n!(p+n)\,2^n},\\
+B(5/4,1/4)
+&amp;=B_{1/2}(1/4,5/4)+B_{1/2}(5/4,1/4),\\
+\kappa&amp;=\frac{2^{-1/4}}{2\sqrt2}
+\left[
+\sum_{n=0}^\infty\frac{(-1/4)_n}{n!(n+1/4)\,2^n}
++\frac12\sum_{n=0}^\infty\frac{(3/4)_n}{n!(n+5/4)\,2^n}
+\right].
+\end{aligned}\tag{SQ24}
+\]">\[
+\begin{aligned}
+B_{1/2}(p,q)
+&amp;=2^{-p}\sum_{n=0}^\infty
+\frac{(1-q)_n}{n!(p+n)\,2^n},\\
+B(5/4,1/4)
+&amp;=B_{1/2}(1/4,5/4)+B_{1/2}(5/4,1/4),\\
+\kappa&amp;=\frac{2^{-1/4}}{2\sqrt2}
+\left[
+\sum_{n=0}^\infty\frac{(-1/4)_n}{n!(n+1/4)\,2^n}
++\frac12\sum_{n=0}^\infty\frac{(3/4)_n}{n!(n+5/4)\,2^n}
+\right].
+\end{aligned}\tag{SQ24}
+\]</span>
+<p>The rising factorial is <span class="math" data-tex="\((c)_0=1\)">\((c)_0=1\)</span> and <span class="math" data-tex="\((c)_n=\prod_{j=0}^{n-1}(c+j)\)">\((c)_n=\prod_{j=0}^{n-1}(c+j)\)</span>. To prove the series, its coefficients satisfy the differential equation for <span class="math" data-tex="\((1-x)^{q-1}\)">\((1-x)^{q-1}\)</span>, with initial value one. The ratio test gives uniform absolute convergence on <span class="math" data-tex="\([0,1/2]\)">\([0,1/2]\)</span>, so multiplying by <span class="math" data-tex="\(x^{p-1}\)">\(x^{p-1}\)</span> and integrating term by term is valid. This yields the first formula; reflection and SQ17 give the other two.</p>
+<p>The terms of the first sum are negative from <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and those of the second sum are positive. For either sum, at every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the ratio of absolute consecutive terms is</p>
+<span class="math math-display" data-tex="\[
+\frac{n+1-q}{2(n+1)}\,\frac{p+n}{p+n+1}&lt;\frac12 .
+\tag{SQ25}
+\]">\[
+\frac{n+1-q}{2(n+1)}\,\frac{p+n}{p+n+1}&lt;\frac12 .
+\tag{SQ25}
+\]</span>
+<p>Thus after terms <span class="math" data-tex="\(0,\ldots,N-1\)">\(0,\ldots,N-1\)</span>, <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, the magnitude of the omitted tail is at most twice the magnitude of term <span class="math" data-tex="\(N\)">\(N\)</span>. Its sign is known. Every coefficient and tail bound is rational. Integer-square-root and fourth-root inequalities enclose <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> and <span class="math" data-tex="\(2^{1/4}\)">\(2^{1/4}\)</span>; interval multiplication then certifies the original <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. The accompanying exact checker records its outward rational enclosure and all derivation identities. Numerical quadrature is used only as a separate diagnostic, never as the proof of this constant.</p>
+<p>With 120 terms in each sum and root denominators <span class="math" data-tex="\(10^{60}\)">\(10^{60}\)</span>, the exact rational comparisons give</p>
+<span class="math math-display" data-tex="\[
+\frac{131102877714605990523}{10^{20}}
+&lt;\kappa&lt;
+\frac{131102877714605990524}{10^{20}} .
+\tag{SQ26}
+\]">\[
+\frac{131102877714605990523}{10^{20}}
+&lt;\kappa&lt;
+\frac{131102877714605990524}{10^{20}} .
+\tag{SQ26}
+\]</span>
+<p>A second calculation with 160 terms and root denominators <span class="math" data-tex="\(10^{80}\)">\(10^{80}\)</span> gives an interval strictly contained in the first. Both use the proved tail signs and SQ25; no decimal approximation supplies an endpoint.</p>
+<p><img src="assets/NS-FLUID-54/chen-hou-exact-strip-E89D888EF85EDD949411AAB1EB931554B10114EC4E17CB6FEE3C321EF3E39BBD.png" alt="Original-coordinate strips, complete finite and infinite costs, and physical endpoints" class="course-figure" width="2275" height="1750" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="chen-hou-exact-strip" data-asset-sha256="E89D888EF85EDD949411AAB1EB931554B10114EC4E17CB6FEE3C321EF3E39BBD"></p>
+<p>The first panel keeps the physical rectangle a=13/10, b=39/10 and its full residual support. The second compares the exact paired coefficient with the corrected source upper bound, retaining the infinite limit. The third shows the complete tail and the source bound. The fourth retains both original exterior strip terms with the physical divisor; its caption explicitly identifies the remaining exterior integral. These are samples of the proved formulas, not a numerical certificate. Source and proof locators: SQ3–SQ25 and the Chen–Hou original author TeX cited above.</p>
+<h3 id="sq8-what-this-proves-and-what-comes-next">SQ8. What this proves and what comes next</h3>
+<p>SQ5–SQ10 proves that the source's strip sign mistake does not invalidate its final estimate. SQ12–SQ19 computes the entire finite paired cost and the infinite coefficient, and SQ22–SQ23 carries the latter through the two original exterior terms with every physical factor. The original singular-square proof and all prior local corrections remain valid.</p>
+<p>The next calculation is to combine these exact strip coefficients with the remaining source inner, middle and exterior quadrature cells and enclose the complete directional sums, before assessing their stability margins. The original saved MATLAB/INTLAB arrays and the full source stability theorem are not certified by this local result. No fatal main-theorem failure or novelty is asserted.</p>
+<p><strong>Current lesson note.</strong> The preceding text preserves the scope of this supporting calculation when it was written. Parts 3 and 4 below complete the two saved vertical scalar bounds; Part 2 identifies a local code error that those independent complete-cost proofs overcome. The remaining directional arrays and the full stability theorem are still under audit.</p>
+<h2 id="part-2-the-regular-positive-strip-contribution-in-the-original-vertical-routine">Part 2. The regular positive strip contribution in the original vertical routine</h2>
+<p>This is a local source-code audit and an exact receiving correction. It establishes an undercount in one displayed real-arithmetic formula. It does not establish failure of the saved directional arrays or of the main theorem: the saved data, other slack and final stability margins still require a complete audit.</p>
+<p>Human source: Chen and Hou's original <code>Holder_const/Holder_vx_const_Y_simp_itl.m</code>, SHA-256 <code>9c82e162ff5369079e0d821fe154396811a8cc55dabcb55dee16464989bfea66</code>. All 478 lines are now read. The bounded original-code package is retained unchanged. The definitions are lines 49–58 and 81–86, the actual call is126, the regular-strip calculation is260–279, and its receivers are148–170. <code>Holder_Mesh_x.m</code>, lines 1–23, and <code>Linear_nhol_step0.m</code>, all 116 lines, are also read. The original numerical supplement <code>euler_supp_Part2.tex</code>, version 3, lines 2154–2187, supplies the intended integral and its full factors.</p>
+<p>Human paper: Jiajie Chen and Thomas Y. Hou, <a href="https://arxiv.org/abs/2210.07191v4">Part I, version 4</a>, original author TeX <code>arXiv_Euler_P1_v2026.tex</code>, lines 3367–3378. The exact original operator and physical local terms are proved in the retained <span class="unlinked">PV1–PV43 prerequisite</span>.</p>
+<h3 id="va1-what-the-primitive-already-contains">VA1. What the primitive already contains</h3>
+<p>Keep the actual source width <span class="math" data-tex="\(\epsilon=2^{-12}\)">\(\epsilon=2^{-12}\)</span>, the source height mesh <span class="math" data-tex="\(t_j=j\epsilon/256\)">\(t_j=j\epsilon/256\)</span>, and any increasing horizontal mesh <span class="math" data-tex="\(0=x_0&lt;\cdots&lt;x_N=1\)">\(0=x_0&lt;\cdots&lt;x_N=1\)</span>. These are the mathematical partitions constructed by source lines 90–99 and 260–264; no binary rounding or INTLAB execution is assumed here. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_+(x,t)&amp;=\frac{(x+1)^2-t^2}{2((x+1)^2+t^2)^2},\\
+F(x,t)&amp;=-\frac12\arctan\!\frac{t}{x+1},
+\qquad \partial_x\partial_t F=K_+,\\
+J_{ij}&amp;=F(x_{i-1},t_{j-1})+F(x_i,t_j)
+-F(x_{i-1},t_j)-F(x_i,t_{j-1})\\
+&amp;=\int_{x_{i-1}}^{x_i}\int_{t_{j-1}}^{t_j}
+K_+(x,t)\,dt\,dx&gt;0 .
+\end{aligned}\tag{VA1}
+\]">\[
+\begin{aligned}
+K_+(x,t)&amp;=\frac{(x+1)^2-t^2}{2((x+1)^2+t^2)^2},\\
+F(x,t)&amp;=-\frac12\arctan\!\frac{t}{x+1},
+\qquad \partial_x\partial_t F=K_+,\\
+J_{ij}&amp;=F(x_{i-1},t_{j-1})+F(x_i,t_j)
+-F(x_{i-1},t_j)-F(x_i,t_{j-1})\\
+&amp;=\int_{x_{i-1}}^{x_i}\int_{t_{j-1}}^{t_j}
+K_+(x,t)\,dt\,dx&gt;0 .
+\end{aligned}\tag{VA1}
+\]</span>
+<p>The derivative follows directly from
+<span class="math" data-tex="\(\partial_tF=-(x+1)/(2((x+1)^2+t^2))\)">\(\partial_tF=-(x+1)/(2((x+1)^2+t^2))\)</span>.
+The kernel is positive because <span class="math" data-tex="\(x+1\ge1&gt;\epsilon\ge t\)">\(x+1\ge1&gt;\epsilon\ge t\)</span>. The four-corner difference called Ing_f in source line 86 therefore already is the full cell integral. It is not its area average.</p>
+<p>Source lines 272–273 compute the real formula</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_{\mathrm{code}}&amp;=\frac12\sum_{i=1}^N\sum_{j=1}^{256}
+J_{ij}(x_i-x_{i-1})(t_j-t_{j-1})\sqrt{2x_i},\\
+U&amp;=\frac12\sum_{i=1}^N\sum_{j=1}^{256}J_{ij}\sqrt{2x_i}.
+\end{aligned}\tag{VA2}
+\]">\[
+\begin{aligned}
+P_{\mathrm{code}}&amp;=\frac12\sum_{i=1}^N\sum_{j=1}^{256}
+J_{ij}(x_i-x_{i-1})(t_j-t_{j-1})\sqrt{2x_i},\\
+U&amp;=\frac12\sum_{i=1}^N\sum_{j=1}^{256}J_{ij}\sqrt{2x_i}.
+\end{aligned}\tag{VA2}
+\]</span>
+<p>The second expression is the correct elementary upper bound for the intended per-quadrant contribution</p>
+<span class="math math-display" data-tex="\[
+A=\frac12\int_0^1\int_0^\epsilon K_+(x,t)\sqrt{2x}\,dt\,dx
+\le U .
+\tag{VA3}
+\]">\[
+A=\frac12\int_0^1\int_0^\epsilon K_+(x,t)\sqrt{2x}\,dt\,dx
+\le U .
+\tag{VA3}
+\]</span>
+<p>The leading one-half is retained: the source full regular term has both height signs, giving twice the integral without that half; the code stores one quarter of that full term. The weight bound <span class="math" data-tex="\(\sqrt{2x}\le\sqrt{2x_i}\)">\(\sqrt{2x}\le\sqrt{2x_i}\)</span> proves VA3 on each cell. The extra area in VA2 has no corresponding operation in this receiving map.</p>
+<h3 id="va2-the-coded-real-formula-is-smaller-than-the-intended-contribution">VA2. The coded real formula is smaller than the intended contribution</h3>
+<p>The entire unweighted positive integral is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J&amp;=\sum_{i,j}J_{ij}
+=\frac12\int_0^1\frac{\epsilon}{(x+1)^2+\epsilon^2}\,dx\\
+&amp;=\frac12\left[\arctan(2/\epsilon)-\arctan(1/\epsilon)\right]
+=\frac12\left[\arctan\epsilon-\arctan(\epsilon/2)\right].
+\end{aligned}\tag{VA4}
+\]">\[
+\begin{aligned}
+J&amp;=\sum_{i,j}J_{ij}
+=\frac12\int_0^1\frac{\epsilon}{(x+1)^2+\epsilon^2}\,dx\\
+&amp;=\frac12\left[\arctan(2/\epsilon)-\arctan(1/\epsilon)\right]
+=\frac12\left[\arctan\epsilon-\arctan(\epsilon/2)\right].
+\end{aligned}\tag{VA4}
+\]</span>
+<p>The first equality integrates the full height primitive. The last equality uses
+<span class="math" data-tex="\(\arctan r+\arctan(1/r)=\pi/2\)">\(\arctan r+\arctan(1/r)=\pi/2\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>; both original endpoints remain.</p>
+<p>Since every horizontal cell width is at most one and every height cell width is <span class="math" data-tex="\(\epsilon/256\)">\(\epsilon/256\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&lt;P_{\mathrm{code}}&amp;\le\frac{\epsilon}{256}U,\\
+U&amp;\le\frac{\sqrt2}{4}
+\left[\arctan\epsilon-\arctan(\epsilon/2)\right]
+\le\frac{\sqrt2\,\epsilon}{8},\\
+P_{\mathrm{code}}&amp;&lt;\frac{3\epsilon^2}{4096}.
+\end{aligned}\tag{VA5}
+\]">\[
+\begin{aligned}
+0&lt;P_{\mathrm{code}}&amp;\le\frac{\epsilon}{256}U,\\
+U&amp;\le\frac{\sqrt2}{4}
+\left[\arctan\epsilon-\arctan(\epsilon/2)\right]
+\le\frac{\sqrt2\,\epsilon}{8},\\
+P_{\mathrm{code}}&amp;&lt;\frac{3\epsilon^2}{4096}.
+\end{aligned}\tag{VA5}
+\]</span>
+<p>For the last step use <span class="math" data-tex="\(\sqrt2&lt;3/2\)">\(\sqrt2&lt;3/2\)</span>. The arctangent difference is the integral of <span class="math" data-tex="\(1/(1+s^2)\)">\(1/(1+s^2)\)</span> from <span class="math" data-tex="\(\epsilon/2\)">\(\epsilon/2\)</span> to <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, at most <span class="math" data-tex="\(\epsilon/2\)">\(\epsilon/2\)</span>.</p>
+<p>On the full subrectangle <span class="math" data-tex="\(1/2\le x\le1,\ 0\le t\le\epsilon\)">\(1/2\le x\le1,\ 0\le t\le\epsilon\)</span>, retain both numerator and denominator bounds:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_+(x,t)&amp;\ge
+\frac{9/4-\epsilon^2}{2(4+\epsilon^2)^2},\\
+A&amp;\ge\frac{\epsilon(9/4-\epsilon^2)}
+{8(4+\epsilon^2)^2}
+\ge\frac{\epsilon}{160}.
+\end{aligned}\tag{VA6}
+\]">\[
+\begin{aligned}
+K_+(x,t)&amp;\ge
+\frac{9/4-\epsilon^2}{2(4+\epsilon^2)^2},\\
+A&amp;\ge\frac{\epsilon(9/4-\epsilon^2)}
+{8(4+\epsilon^2)^2}
+\ge\frac{\epsilon}{160}.
+\end{aligned}\tag{VA6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\sqrt{2x}\ge1\)">\(\sqrt{2x}\ge1\)</span> on this rectangle; its area is <span class="math" data-tex="\(\epsilon/2\)">\(\epsilon/2\)</span>, and VA3 has another factor one-half. The last inequality holds for <span class="math" data-tex="\(0&lt;\epsilon\le1\)">\(0&lt;\epsilon\le1\)</span>, since <span class="math" data-tex="\(9/4-\epsilon^2\ge5/4\)">\(9/4-\epsilon^2\ge5/4\)</span> and <span class="math" data-tex="\((4+\epsilon^2)^2\le25\)">\((4+\epsilon^2)^2\le25\)</span>.
+For the actual <span class="math" data-tex="\(\epsilon=2^{-12}&lt;1\)">\(\epsilon=2^{-12}&lt;1\)</span>,
+<span class="math" data-tex="\(3\epsilon^2/4096&lt;\epsilon/160\)">\(3\epsilon^2/4096&lt;\epsilon/160\)</span>, because <span class="math" data-tex="\(480\epsilon&lt;4096\)">\(480\epsilon&lt;4096\)</span>.
+Combining VA5–VA6 proves</p>
+<span class="math math-display" data-tex="\[
+P_{\mathrm{code}}&lt;A\le U .
+\tag{VA7}
+\]">\[
+P_{\mathrm{code}}&lt;A\le U .
+\tag{VA7}
+\]</span>
+<p>This is a strict defect in the real expression, not just a failure to prove that expression optimal.</p>
+<p>The intended positive contribution is realized by admissible directional data. On the relevant strip set
+<span class="math" data-tex="\(g(s)=\operatorname{sgn}(s)\sqrt{|s|}/\sqrt2\)">\(g(s)=\operatorname{sgn}(s)\sqrt{|s|}/\sqrt2\)</span>, <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, and let the data be independent of height. Its one-half Hölder seminorm is exactly one. For equal signs this follows from <span class="math" data-tex="\(|\sqrt r-\sqrt q|\le\sqrt{|r-q|}\)">\(|\sqrt r-\sqrt q|\le\sqrt{|r-q|}\)</span>; for opposite signs use
+<span class="math" data-tex="\((\sqrt r+\sqrt q)^2\le2(r+q)\)">\((\sqrt r+\sqrt q)^2\le2(r+q)\)</span>. Equality is achieved by the pair <span class="math" data-tex="\(r,-r\)">\(r,-r\)</span>.
+The reflected difference is <span class="math" data-tex="\(g(x)-g(-x)=\sqrt{2x}\)">\(g(x)-g(-x)=\sqrt{2x}\)</span>, giving exactly the weight in VA3. For a physical midpoint <span class="math" data-tex="\(M&gt;1\)">\(M&gt;1\)</span>, it comes from upper-half-plane data
+<span class="math" data-tex="\(\omega(p,h)=g(M-h)\)">\(\omega(p,h)=g(M-h)\)</span> for <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> on the entire required local interval <span class="math" data-tex="\(M-1\le h\le M+1\)">\(M-1\le h\le M+1\)</span>. Thus the defect is relevant to the stated data class. No claim is made that it defeats the full sum of all other source estimates.</p>
+<h3 id="va3-complete-correction-at-both-physical-receivers">VA3. Complete correction at both physical receivers</h3>
+<p>Replacing the line-272 expression by its actual primitive integral changes this stored per-quadrant term by exactly <span class="math" data-tex="\(U-P_{\mathrm{code}}&gt;0\)">\(U-P_{\mathrm{code}}&gt;0\)</span>. At source lines 152–153 it enters both Bulk and Bulk_m1 outside the middle minimum. Lines 165 and 170 put these into both original vertical-data costs. The source explicitly reserves its single <span class="math" data-tex="\(1/\pi\)">\(1/\pi\)</span> division for Linear_nhol_step0 at line 163. Therefore the resulting additive correction to each physical <span class="math" data-tex="\(H_y(\omega)\)">\(H_y(\omega)\)</span> coefficient is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta_Y&amp;=\frac{2\sqrt2}{\pi}(U-P_{\mathrm{code}})&gt;0,\\
+\Delta_Y&amp;\le\frac1\pi
+\left[\arctan\epsilon-\arctan(\epsilon/2)\right]
+\le\frac{\epsilon}{2\pi}=\frac1{8192\pi}.
+\end{aligned}\tag{VA8}
+\]">\[
+\begin{aligned}
+\Delta_Y&amp;=\frac{2\sqrt2}{\pi}(U-P_{\mathrm{code}})&gt;0,\\
+\Delta_Y&amp;\le\frac1\pi
+\left[\arctan\epsilon-\arctan(\epsilon/2)\right]
+\le\frac{\epsilon}{2\pi}=\frac1{8192\pi}.
+\end{aligned}\tag{VA8}
+\]</span>
+<p>The factor <span class="math" data-tex="\(2\sqrt2=4/\sqrt2\)">\(2\sqrt2=4/\sqrt2\)</span> is the original quadrant sum divided by the square root of the physical pair distance; it is not applied again elsewhere. In an actual <span class="math" data-tex="\(N_\tau=\max(H_x,\tau^{-1}H_y)\)">\(N_\tau=\max(H_x,\tau^{-1}H_y)\)</span> receiver, this contribution is at most <span class="math" data-tex="\(\tau\Delta_Y N_\tau\)">\(\tau\Delta_Y N_\tau\)</span>; for <span class="math" data-tex="\(\tau=291/500\)">\(\tau=291/500\)</span> the sufficient additive coefficient is <span class="math" data-tex="\(291/(4096000\pi)\)">\(291/(4096000\pi)\)</span>. All other terms, the middle minimum, the local <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> term and the exterior contribution stay in place.</p>
+<p>VA8 is a proved correction budget. It does not determine whether existing saved bounds already have enough excess, whether their source-to-data identity matches this version, or whether the final stability margin changes sign. VA9–VA11 below enclose the entire regular contribution directly, without requiring the historical mesh bits. The complete remaining costs and final receiving margins still require calculation. Original MATLAB/INTLAB has not been executed, and no fatal main-theorem failure is established.</p>
+<h3 id="va4-enclose-the-entire-intended-contribution-with-its-original-width">VA4. Enclose the entire intended contribution with its original width</h3>
+<p>The contribution <span class="math" data-tex="\(A\)">\(A\)</span> in VA3 can be calculated independently of any mesh. Integrating its complete original kernel in height gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=\frac{\epsilon\sqrt2}{4}
+\int_0^1\frac{\sqrt x}{(1+x)^2+\epsilon^2}\,dx,\\
+M_n&amp;=\int_0^1\frac{\sqrt x}{(1+x)^{2n+2}}\,dx
+=2\int_0^1\frac{y^2}{(1+y^2)^{2n+2}}\,dy .
+\end{aligned}\tag{VA9}
+\]">\[
+\begin{aligned}
+A&amp;=\frac{\epsilon\sqrt2}{4}
+\int_0^1\frac{\sqrt x}{(1+x)^2+\epsilon^2}\,dx,\\
+M_n&amp;=\int_0^1\frac{\sqrt x}{(1+x)^{2n+2}}\,dx
+=2\int_0^1\frac{y^2}{(1+y^2)^{2n+2}}\,dy .
+\end{aligned}\tag{VA9}
+\]</span>
+<p>The last substitution is <span class="math" data-tex="\(x=y^2,\ dx=2y\,dy\)">\(x=y^2,\ dx=2y\,dy\)</span>; the physical <span class="math" data-tex="\(\epsilon=2^{-12}\)">\(\epsilon=2^{-12}\)</span> is unchanged. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_1&amp;=\frac\pi4,\qquad
+J_m=\frac{1}{2(m-1)2^{m-1}}+
+\frac{2m-3}{2m-2}J_{m-1}\quad(m\ge2),\\
+M_n&amp;=2(J_{2n+1}-J_{2n+2}),\qquad
+M_0=\frac\pi4-\frac12 .
+\end{aligned}\tag{VA10}
+\]">\[
+\begin{aligned}
+J_1&amp;=\frac\pi4,\qquad
+J_m=\frac{1}{2(m-1)2^{m-1}}+
+\frac{2m-3}{2m-2}J_{m-1}\quad(m\ge2),\\
+M_n&amp;=2(J_{2n+1}-J_{2n+2}),\qquad
+M_0=\frac\pi4-\frac12 .
+\end{aligned}\tag{VA10}
+\]</span>
+<p>To prove the recurrence, integrate the derivative of
+<span class="math" data-tex="\(y/[2(m-1)(1+y^2)^{m-1}]\)">\(y/[2(m-1)(1+y^2)^{m-1}]\)</span> over <span class="math" data-tex="\(0\le y\le1\)">\(0\le y\le1\)</span>.
+Adding <span class="math" data-tex="\((2m-3)/(2m-2)\)">\((2m-3)/(2m-2)\)</span> times the integral of <span class="math" data-tex="\((1+y^2)^{-(m-1)}\)">\((1+y^2)^{-(m-1)}\)</span> gives exactly the integral of <span class="math" data-tex="\((1+y^2)^{-m}\)">\((1+y^2)^{-m}\)</span>. The endpoint term is the first displayed rational number. Subtracting the two adjacent integrands gives <span class="math" data-tex="\(y^2/(1+y^2)^{2n+2}\)">\(y^2/(1+y^2)^{2n+2}\)</span>, proving the full moment formula.</p>
+<p>For every integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, the finite geometric identity gives, without removing a remainder,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=\frac{\epsilon\sqrt2}{4}
+\sum_{n=0}^{N-1}(-\epsilon^2)^n M_n+R_N,\\
+R_N&amp;=(-1)^N\frac{\epsilon\sqrt2}{4}\epsilon^{2N}
+\int_0^1\frac{\sqrt x}
+{(1+x)^{2N+2}\bigl(1+\epsilon^2/(1+x)^2\bigr)}\,dx,\\
+0&amp;\le(-1)^N R_N
+\le\frac{\epsilon\sqrt2}{4}\epsilon^{2N}M_N .
+\end{aligned}\tag{VA11}
+\]">\[
+\begin{aligned}
+A&amp;=\frac{\epsilon\sqrt2}{4}
+\sum_{n=0}^{N-1}(-\epsilon^2)^n M_n+R_N,\\
+R_N&amp;=(-1)^N\frac{\epsilon\sqrt2}{4}\epsilon^{2N}
+\int_0^1\frac{\sqrt x}
+{(1+x)^{2N+2}\bigl(1+\epsilon^2/(1+x)^2\bigr)}\,dx,\\
+0&amp;\le(-1)^N R_N
+\le\frac{\epsilon\sqrt2}{4}\epsilon^{2N}M_N .
+\end{aligned}\tag{VA11}
+\]</span>
+<p>Every moment and the sign of the entire tail is retained. Thus exact rational enclosures of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, together with the finite recurrence, enclose <span class="math" data-tex="\(A\)">\(A\)</span>. No MATLAB mesh identity or implementation of linspace is needed for this calculation of the actual integral.</p>
+<p>The accompanying checker uses the finite arctangent identity
+<span class="math" data-tex="\(\pi=16\arctan(1/5)-4\arctan(1/239)\)">\(\pi=16\arctan(1/5)-4\arctan(1/239)\)</span>, with the alternating series and its first omitted term, and integer-square-root inequalities for <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. These formulas and the angle choice are proved in PV43. Taking <span class="math" data-tex="\(N=8\)">\(N=8\)</span> in VA11 and retaining its entire tail gives a rational interval for <span class="math" data-tex="\(A\)">\(A\)</span>; a separate higher-precision calculation with <span class="math" data-tex="\(N=10\)">\(N=10\)</span> gives a contained interval. This computes the original contribution rather than replacing it by a unit-width integral.</p>
+<h3 id="va5-exact-saved-endpoints-and-the-limits-of-their-comparison">VA5. Exact saved endpoints and the limits of their comparison</h3>
+<p>The retained <code>Input_data/Est_hol_const_itl.mat</code> has SHA-256
+<code>c02c90a99cb3a557d55398396c4f28559581aac0c1436456230dffac508ee303</code>.
+Its two vertical entries are scalar real intervals, not midpoint-dependent arrays. Reading their original binary64 endpoints as exact rationals gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V_-&amp;=\frac{1462528955430077}{562949953421312},
+&amp;V_+&amp;=\frac{2925058673014367}{1125899906842624},
+&amp;&amp;\text{for holc.y\{3,1\}, }v_x,\\
+W_-&amp;=\frac{5850945274287295}{2251799813685248},
+&amp;W_+&amp;=\frac{5850946798595723}{2251799813685248},
+&amp;&amp;\text{for holc.y\{1,3\}, }u_y,\\
+r_-&amp;=\frac{1310240283489471}{2251799813685248},
+&amp;r_+&amp;=\frac{20472504429523}{35184372088832}.
+\end{aligned}\tag{VA12}
+\]">\[
+\begin{aligned}
+V_-&amp;=\frac{1462528955430077}{562949953421312},
+&amp;V_+&amp;=\frac{2925058673014367}{1125899906842624},
+&amp;&amp;\text{for holc.y\{3,1\}, }v_x,\\
+W_-&amp;=\frac{5850945274287295}{2251799813685248},
+&amp;W_+&amp;=\frac{5850946798595723}{2251799813685248},
+&amp;&amp;\text{for holc.y\{1,3\}, }u_y,\\
+r_-&amp;=\frac{1310240283489471}{2251799813685248},
+&amp;r_+&amp;=\frac{20472504429523}{35184372088832}.
+\end{aligned}\tag{VA12}
+\]</span>
+<p>Here <span class="math" data-tex="\([r_-,r_+]\)">\([r_-,r_+]\)</span> is the saved ratio tau(2)/tau(1); both original first components are five. Its complete comparison to the printed parameter and physical anisotropic norm is in <span class="unlinked">AN1–AN17</span>. In particular <span class="math" data-tex="\(r_+&lt;291/500\)">\(r_+&lt;291/500\)</span>.</p>
+<p>The full conservative correction from VA8, at the printed <span class="math" data-tex="\(\tau=291/500\)">\(\tau=291/500\)</span>, and the exact saved numbers satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d_*&amp;=\frac{291}{4096000\pi},\\
+V_++d_*&amp;&lt;\frac{13}{5},\\
+W_++d_*&amp;&lt;\frac{261}{100}.
+\end{aligned}\tag{VA13}
+\]">\[
+\begin{aligned}
+d_*&amp;=\frac{291}{4096000\pi},\\
+V_++d_*&amp;&lt;\frac{13}{5},\\
+W_++d_*&amp;&lt;\frac{261}{100}.
+\end{aligned}\tag{VA13}
+\]</span>
+<p>These are inequalities between explicitly given real numbers. The checker proves them with outward rational bounds on <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The targets are precisely the separate printed constants <span class="math" data-tex="\(2.60\)">\(2.60\)</span> for <span class="math" data-tex="\(v_x\)">\(v_x\)</span> and <span class="math" data-tex="\(2.61\)">\(2.61\)</span> for <span class="math" data-tex="\(u_y\)">\(u_y\)</span>, from Part I lines 3371–3378; they are not interchanged.</p>
+<p>VA13 quantifies the available numerical room below the paper's stated constants. It is not a proof that <span class="math" data-tex="\(V_+\)">\(V_+\)</span> or <span class="math" data-tex="\(W_+\)">\(W_+\)</span> bounds the complete original integral. Such a conclusion would require the other terms, their numerical enclosures and the actual saved-data provenance. Nor can a larger printed constant silently replace a smaller saved value used in a stability calculation.</p>
+<p>The saved anisotropy is also distinct from the printed one and must be carried through. For any original nonnegative cost pair <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> and <span class="math" data-tex="\(0&lt;r\le\tau\)">\(0&lt;r\le\tau\)</span>, the full cost map satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\tau}{r}\frac{X+rY}{\pi}
+-\frac{X+\tau Y}{\pi}
+&amp;=\frac{(\tau/r-1)X}{\pi}\ge0,\\
+\widehat V&amp;=\frac{291/500}{r_-}\,V_++d_*&lt;\frac{13}{5},\\
+\widehat W&amp;=\frac{291/500}{r_-}\,W_++d_*&lt;\frac{261}{100}.
+\end{aligned}\tag{VA16}
+\]">\[
+\begin{aligned}
+\frac{\tau}{r}\frac{X+rY}{\pi}
+-\frac{X+\tau Y}{\pi}
+&amp;=\frac{(\tau/r-1)X}{\pi}\ge0,\\
+\widehat V&amp;=\frac{291/500}{r_-}\,V_++d_*&lt;\frac{13}{5},\\
+\widehat W&amp;=\frac{291/500}{r_-}\,W_++d_*&lt;\frac{261}{100}.
+\end{aligned}\tag{VA16}
+\]</span>
+<p>The first identity proves the comparison, retaining both directional contributions, their original <span class="math" data-tex="\(1/\pi\)">\(1/\pi\)</span>, and the actual parameter change. Taking a maximum over original cost pairs preserves it. The last two inequalities, checked with exact rational arithmetic, include the complete worst-case saved-to-printed anisotropy conversion as well as the regular-strip correction. They are still comparisons of explicit coefficient values, not a certificate of the remaining original cost integrals.</p>
+<p>The distinction can also be measured locally. Let</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d_{\mathrm{miss}}&amp;=
+r_-\,\frac{2\sqrt2}{\pi}
+\left(A-\frac{3\epsilon^2}{4096}\right)&gt;0 .
+\end{aligned}\tag{VA14}
+\]">\[
+\begin{aligned}
+d_{\mathrm{miss}}&amp;=
+r_-\,\frac{2\sqrt2}{\pi}
+\left(A-\frac{3\epsilon^2}{4096}\right)&gt;0 .
+\end{aligned}\tag{VA14}
+\]</span>
+<p>VA5 and VA7 show that this is a lower bound on the missing weighted contribution in the real regular-strip formula at any saved ratio in <span class="math" data-tex="\([r_-,r_+]\)">\([r_-,r_+]\)</span>. The checker proves
+<span class="math" data-tex="\(d_{\mathrm{miss}}&gt;V_+-V_-\)">\(d_{\mathrm{miss}}&gt;V_+-V_-\)</span> and
+<span class="math" data-tex="\(d_{\mathrm{miss}}&gt;W_+-W_-\)">\(d_{\mathrm{miss}}&gt;W_+-W_-\)</span>.
+Thus the width of those stored intervals alone cannot cover the local defect. This does not remove the possibility of excess in other terms of their full upper-bound sums.</p>
+<h3 id="va6-the-actual-downstream-addition-and-what-remains-to-be-computed">VA6. The actual downstream addition and what remains to be computed</h3>
+<p>Linear_nhol_step0 lines 64–76 forms
+<span class="math" data-tex="\(C_{vx}=X_{vx3}+rY_{vx3}\)">\(C_{vx}=X_{vx3}+rY_{vx3}\)</span> and
+<span class="math" data-tex="\(C_{uy}=X_{tr3}+rY_{tr3}\)">\(C_{uy}=X_{tr3}+rY_{tr3}\)</span>, then takes the maximum and divides by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> once. The regular-strip correction is independent of the midpoint, so it passes through each maximum as the same additive constant. This proves the coefficient map in VA8 directly through the original receiving code.</p>
+<p>The subsequent Est_hol_profi routine forms</p>
+<span class="math math-display" data-tex="\[
+H_{\max}=\max(H_x,\tau_C(1)H_y/\tau_C(2)).
+\tag{VA15}
+\]">\[
+H_{\max}=\max(H_x,\tau_C(1)H_y/\tau_C(2)).
+\tag{VA15}
+\]</span>
+<p>Its singular contribution is Holder_C_main multiplied by <span class="math" data-tex="\(H_{\max}\)">\(H_{\max}\)</span>, then added to the previously computed regular term. It receives no further division by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Therefore increasing the affected coefficient by an actual number <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span> increases that stage by exactly <span class="math" data-tex="\(dH_{\max}\)">\(dH_{\max}\)</span>. This is a calculation about that original addition; later minima, covering and stability operations still need their own exact propagation.</p>
+<p>The selection is confirmed directly in <code>Lip/Holder_C_main.m</code>, lines 19–21, and <code>Lip/Holder_C.m</code>, lines 8–15: for the two off-diagonal derivatives in direction 2, the latter takes the maximum of the corresponding holc.y entry, and the former replicates it for each distance. No window rescaling or second kernel factor occurs on this path. The two saved entries in VA12 are scalars, so these selections do not alter their values.</p>
+<p>Before the later covering routine, the exact componentwise minimum with the separate <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> estimate obeys</p>
+<span class="math math-display" data-tex="\[
+0\le \min(U+dH_{\max},L)-\min(U,L)\le dH_{\max}.
+\tag{VA17}
+\]">\[
+0\le \min(U+dH_{\max},L)-\min(U,L)\le dH_{\max}.
+\tag{VA17}
+\]</span>
+<p>For <span class="math" data-tex="\(U\ge L\)">\(U\ge L\)</span> both minima equal <span class="math" data-tex="\(L\)">\(L\)</span>. For <span class="math" data-tex="\(U&lt;L\)">\(U&lt;L\)</span>, either <span class="math" data-tex="\(U+dH_{\max}\le L\)">\(U+dH_{\max}\le L\)</span>, when the difference is exactly <span class="math" data-tex="\(dH_{\max}\)">\(dH_{\max}\)</span>, or the difference is <span class="math" data-tex="\(L-U&lt;dH_{\max}\)">\(L-U&lt;dH_{\max}\)</span>. This proves the actual next receiving inequality, including every case. It does not replace the subsequent original covering map by an identity.</p>
+<p>The original generator also compares a newly calculated coefficient against the saved one. That comparison is an output check after its full calculation, not a source-to-data certificate for the retained MAT file. No original MATLAB/INTLAB run, reconstruction of its exact historical mesh bits, or complete vertical-array certificate is claimed here.</p>
+<p>The next calculation is to independently enclose the complete original vertical costs, use the repaired regular contribution and exact strip coefficient, and propagate the resulting actual constants through Holder_C_main, the subsequent minima and covering, and the full stability margins. The local code defect is proved and has an explicit correction. Its effect on the main theorem remains unresolved.</p>
+<h3 id="va7-a-direct-certified-replacement-for-the-whole-regular-contribution">VA7. A direct certified replacement for the whole regular contribution</h3>
+<p>The exact integral calculation also removes this regular term's dependence on the mesh. Its complete rational enclosure, obtained by VA9–VA11 and the retained remainder, is</p>
+<span class="math math-display" data-tex="\[
+\frac{24634639988116009633073579}{10^{30}}
+&lt; A &lt;
+\overline A:=\frac{24634639988116009633073580}{10^{30}}.
+\tag{VA18}
+\]">\[
+\frac{24634639988116009633073579}{10^{30}}
+&lt; A &lt;
+\overline A:=\frac{24634639988116009633073580}{10^{30}}.
+\tag{VA18}
+\]</span>
+<p>Replacing the original real regular term by <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span> is therefore sufficient for the full intended positive contribution. VA7 proves <span class="math" data-tex="\(P_{\mathrm{code}}&lt;A&lt;\overline A\)">\(P_{\mathrm{code}}&lt;A&lt;\overline A\)</span>, so the exact coefficient increase and a sufficient uniform increase satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&lt;\Delta_{Y,A}
+&amp;=\frac{2\sqrt2}{\pi}(\overline A-P_{\mathrm{code}})
+&lt;\frac{2\sqrt2}{\pi}\overline A,\\
+d_A&amp;:=\frac{291}{500}\frac{2\sqrt2}{\pi}\overline A
+&lt;\frac{12909}{10^9}
+&lt;d_*,\\
+\frac{291/500}{r_-}V_++d_A&amp;&lt;\frac{13}{5},\\
+\frac{291/500}{r_-}W_++d_A&amp;&lt;\frac{261}{100}.
+\end{aligned}\tag{VA19}
+\]">\[
+\begin{aligned}
+0&lt;\Delta_{Y,A}
+&amp;=\frac{2\sqrt2}{\pi}(\overline A-P_{\mathrm{code}})
+&lt;\frac{2\sqrt2}{\pi}\overline A,\\
+d_A&amp;:=\frac{291}{500}\frac{2\sqrt2}{\pi}\overline A
+&lt;\frac{12909}{10^9}
+&lt;d_*,\\
+\frac{291/500}{r_-}V_++d_A&amp;&lt;\frac{13}{5},\\
+\frac{291/500}{r_-}W_++d_A&amp;&lt;\frac{261}{100}.
+\end{aligned}\tag{VA19}
+\]</span>
+<p>The checker encloses every factor by exact rational interval arithmetic. In particular, the first strict bound uses <span class="math" data-tex="\(P_{\mathrm{code}}&gt;0\)">\(P_{\mathrm{code}}&gt;0\)</span>; the second line retains the printed weighting parameter and the entire physical divisor. The final two comparisons include the full anisotropy change proved in VA16. They concern explicit numbers, with the same limits as VA13 and VA16.</p>
+<p>This gives a concrete corrected calculation for this whole regular term: use the rational <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span> as its per-quadrant upper bound, and apply the existing factors and receivers without another area multiplier. For an interval implementation, that rational must itself be enclosed outward; rounding it to the nearest binary number is not a certified upper bound. This repair covers this term for every horizontal partition in VA1. It does not certify the other terms or retrospectively identify the provenance of the saved MAT endpoints.</p>
+<p><img src="assets/NS-FLUID-54/chen-hou-vertical-cell-area-FBE11E2B020910765887C1714BAB6F1E6C4984C56A61887E81D0DCDF4A45494F.png" alt="The original positive cell, its exact full contribution, and the corrected receiving budgets" class="course-figure" width="2275" height="1662" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="chen-hou-vertical-cell-area" data-asset-sha256="FBE11E2B020910765887C1714BAB6F1E6C4984C56A61887E81D0DCDF4A45494F"></p>
+<p>The figure uses the original width <span class="math" data-tex="\(\epsilon=2^{-12}\)">\(\epsilon=2^{-12}\)</span>. The rectangle has unequal display scales so its height remains visible; its axes retain the original coordinates. The density and cost curves are numerical samples of VA1–VA11. The coefficient comparisons retain the original saved endpoints, the full parameter change and the physical factors in VA16 and VA19. Exact certification comes from the rational calculations in the proof and checker, not from the plotted samples. Human sources: Chen and Hou, Part II v3, equations with labels int_holy_vx_in0–int_holy_vx_in2; original vertical routine lines 260–279; and Part I v4, lines 3367–3378.</p>
+<p><strong>Current lesson note.</strong> The preceding text preserves the scope of this supporting calculation when it was written. Parts 3 and 4 below complete the two saved vertical scalar bounds; Part 2 identifies a local code error that those independent complete-cost proofs overcome. The remaining directional arrays and the full stability theorem are still under audit.</p>
+<h2 id="part-3-complete-original-vertical-costs-exact-integration-maps">Part 3. Complete original vertical costs: exact integration maps</h2>
+<p>This continues <span class="unlinked">RV10–RV14, the complete physical increments</span> and <span class="unlinked">VA1–VA19, the regular-cell correction</span>. It gives an independent enclosure of the complete original vertical vₓ coefficient. The exact coordinate identities and outward derivative bounds provide the certificate; numerical samples alone do not. The original kernel, transport and physical pair distance are retained.</p>
+<p>The full horizontal partner proof is <span class="unlinked">KX1–KX15</span>. All these prerequisites are included in the accompanying collection.</p>
+<p>Human source: Jiajie Chen and Thomas Y. Hou, original numerical supplement to Part II v3, <code>euler_supp_Part2.tex</code>, sections with labels <code>sec:holy_vx</code> and <code>sec:holy_vx_mo</code>; complete physical derivation and source locators in the included RV proof. Use the original</p>
+<span class="math math-display" data-tex="\[
+K_2(s,t)=\frac{s^2-t^2}{2(s^2+t^2)^2},\qquad
+\Delta_a(s,t)=K_2(s+a,t)-K_2(s-a,t),\quad a&gt;0.
+\tag{VN1}
+\]">\[
+K_2(s,t)=\frac{s^2-t^2}{2(s^2+t^2)^2},\qquad
+\Delta_a(s,t)=K_2(s+a,t)-K_2(s-a,t),\quad a&gt;0.
+\tag{VN1}
+\]</span>
+<p>All costs here are the full original integrals, including the singular limit and infinite tails. In particular</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_{\rm in}(a)&amp;=4\int_0^{a/\sqrt3}\int_0^{h_-(a,t)}
+|\Delta_a(s,t)|\sqrt{\mathcal T_{a,t}(s)-s}\,ds\,dt\\
+&amp;\quad+2\int_0^\infty\int_{\sqrt{\max(a^2-3t^2,0)}}^a
+\Delta_a(s,t)\sqrt{2s}\,ds\,dt,\\
+C_{\rm vert}(a,a)&amp;=4\int_a^\infty\int_{\sigma_a(s)}^\infty
+\Delta_a(s,t)\sqrt{t-V_{a,s}(t)}\,dt\,ds.
+\end{aligned}\tag{VN2}
+\]">\[
+\begin{aligned}
+C_{\rm in}(a)&amp;=4\int_0^{a/\sqrt3}\int_0^{h_-(a,t)}
+|\Delta_a(s,t)|\sqrt{\mathcal T_{a,t}(s)-s}\,ds\,dt\\
+&amp;\quad+2\int_0^\infty\int_{\sqrt{\max(a^2-3t^2,0)}}^a
+\Delta_a(s,t)\sqrt{2s}\,ds\,dt,\\
+C_{\rm vert}(a,a)&amp;=4\int_a^\infty\int_{\sigma_a(s)}^\infty
+\Delta_a(s,t)\sqrt{t-V_{a,s}(t)}\,dt\,ds.
+\end{aligned}\tag{VN2}
+\]</span>
+<p>The threshold, horizontal partner and vertical partner are exactly RV10–RV12 and KX3–KX8. Their existence, signs, mass maps and convergence were proved there. Thus Tonelli applies to each positive cost before the changes of variables below.</p>
+<h3 id="vn1-retain-the-complete-shifted-kernel-near-either-singular-side">VN1. Retain the complete shifted kernel near either singular side</h3>
+<p>For either <span class="math" data-tex="\(0&lt;s&lt;a\)">\(0&lt;s&lt;a\)</span> or <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span>, set <span class="math" data-tex="\(u=|s-a|\)">\(u=|s-a|\)</span>, <span class="math" data-tex="\(t=uq\)">\(t=uq\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha&amp;=\frac{u}{s+a},&amp;
+\gamma&amp;=\frac{2(s^2+a^2)}{(s+a)^2},\\
+\beta_a(s)&amp;=\frac{s+a}
+{\sqrt{s^2+a^2+2\sqrt{s^4-a^2s^2+a^4}}},\\
+D_a(s,q)&amp;=\frac{2as}{(s+a)^2}
+\frac{\gamma q^2+3\alpha^2q^4-1}
+{(1+q^2)^2(1+\alpha^2q^2)^2}.
+\end{aligned}\tag{VN3}
+\]">\[
+\begin{aligned}
+\alpha&amp;=\frac{u}{s+a},&amp;
+\gamma&amp;=\frac{2(s^2+a^2)}{(s+a)^2},\\
+\beta_a(s)&amp;=\frac{s+a}
+{\sqrt{s^2+a^2+2\sqrt{s^4-a^2s^2+a^4}}},\\
+D_a(s,q)&amp;=\frac{2as}{(s+a)^2}
+\frac{\gamma q^2+3\alpha^2q^4-1}
+{(1+q^2)^2(1+\alpha^2q^2)^2}.
+\end{aligned}\tag{VN3}
+\]</span>
+<p>Direct subtraction of both fractions in VN1, with both original denominators, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta_a(s,t)&amp;=
+\frac{2as\{3t^4+2t^2(s^2+a^2)-(s^2-a^2)^2\}}
+{((s-a)^2+t^2)^2((s+a)^2+t^2)^2},\\
+u^2\Delta_a(s,uq)&amp;=D_a(s,q),\qquad
+\sigma_a(s)=u\beta_a(s).
+\end{aligned}\tag{VN4}
+\]">\[
+\begin{aligned}
+\Delta_a(s,t)&amp;=
+\frac{2as\{3t^4+2t^2(s^2+a^2)-(s^2-a^2)^2\}}
+{((s-a)^2+t^2)^2((s+a)^2+t^2)^2},\\
+u^2\Delta_a(s,uq)&amp;=D_a(s,q),\qquad
+\sigma_a(s)=u\beta_a(s).
+\end{aligned}\tag{VN4}
+\]</span>
+<p>The last equality rationalizes the exact threshold from RV12: the product of its radical difference and sum is <span class="math" data-tex="\(3(s^2-a^2)^2\)">\(3(s^2-a^2)^2\)</span>. The positive radical sum gives the denominator in VN3. In the inner paired domain <span class="math" data-tex="\(0&lt;q&lt;\beta_a(s)\)">\(0&lt;q&lt;\beta_a(s)\)</span>, <span class="math" data-tex="\(D_a&lt;0\)">\(D_a&lt;0\)</span>; in the vertical upper domain <span class="math" data-tex="\(q&gt;\beta_a(s)\)">\(q&gt;\beta_a(s)\)</span>, <span class="math" data-tex="\(D_a&gt;0\)">\(D_a&gt;0\)</span>. Both inequalities follow from the strictly increasing polynomial <span class="math" data-tex="\(3u^2q^4+2(s^2+a^2)q^2-(s+a)^2\)">\(3u^2q^4+2(s^2+a^2)q^2-(s+a)^2\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;s&lt;a\)">\(0&lt;s&lt;a\)</span>, the exact horizontal partner satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T^2-s^2
+&amp;=u\frac{(s+a)^2-2q^2(s^2+a^2)-3u^2q^4}{s+a+uq^2},\\
+d_a(s,q):=\frac{T-s}{u}
+&amp;=\frac{(s+a)^2-2q^2(s^2+a^2)-3u^2q^4}
+{(s+a+uq^2)(T+s)}.
+\end{aligned}\tag{VN5}
+\]">\[
+\begin{aligned}
+T^2-s^2
+&amp;=u\frac{(s+a)^2-2q^2(s^2+a^2)-3u^2q^4}{s+a+uq^2},\\
+d_a(s,q):=\frac{T-s}{u}
+&amp;=\frac{(s+a)^2-2q^2(s^2+a^2)-3u^2q^4}
+{(s+a+uq^2)(T+s)}.
+\end{aligned}\tag{VN5}
+\]</span>
+<p>This follows by subtracting <span class="math" data-tex="\(s^2\)">\(s^2\)</span> from the original rational expression for <span class="math" data-tex="\(T^2\)">\(T^2\)</span> in KX4, then using <span class="math" data-tex="\(s^2-a^2=-u(s+a)\)">\(s^2-a^2=-u(s+a)\)</span>. Since <span class="math" data-tex="\(T+s&gt;0\)">\(T+s&gt;0\)</span> on the open integration domain, division retains equality. It avoids cancellation in a difference of nearby square roots without changing that difference.</p>
+<p>Put <span class="math" data-tex="\(u=av^2\)">\(u=av^2\)</span>, so <span class="math" data-tex="\(s=a-av^2\)">\(s=a-av^2\)</span>, <span class="math" data-tex="\(|ds|=2av\,dv\)">\(|ds|=2av\,dv\)</span>, <span class="math" data-tex="\(dt=u\,dq\)">\(dt=u\,dq\)</span> at fixed <span class="math" data-tex="\(s\)">\(s\)</span>, and <span class="math" data-tex="\(\sqrt{T-s}=\sqrt u\sqrt{d_a}\)">\(\sqrt{T-s}=\sqrt u\sqrt{d_a}\)</span>. The full paired inner cost becomes</p>
+<span class="math math-display" data-tex="\[
+C_{{\rm in},p}(a)=8\sqrt a\int_0^1
+\int_0^{\beta_a(a-av^2)}
+[-D_a(a-av^2,q)]\sqrt{d_a(a-av^2,q)}\,dq\,dv.
+\tag{VN6}
+\]">\[
+C_{{\rm in},p}(a)=8\sqrt a\int_0^1
+\int_0^{\beta_a(a-av^2)}
+[-D_a(a-av^2,q)]\sqrt{d_a(a-av^2,q)}\,dq\,dv.
+\tag{VN6}
+\]</span>
+<p>Indeed the product of the Jacobian and original kernel factor is
+<span class="math" data-tex="\(4u^{-2}u\sqrt u\,2av=8\sqrt a\)">\(4u^{-2}u\sqrt u\,2av=8\sqrt a\)</span>. The original factor four, half in the kernel and physical <span class="math" data-tex="\(a\)">\(a\)</span> all survive.</p>
+<h3 id="vn2-the-full-residual-and-the-complete-exterior-integral">VN2. The full residual and the complete exterior integral</h3>
+<p>For the inner residual, reverse the integration order in VN2. For each <span class="math" data-tex="\(0&lt;s&lt;a\)">\(0&lt;s&lt;a\)</span>, its lower height is
+<span class="math" data-tex="\(b_a(s)=\sqrt{(a^2-s^2)/3}\)">\(b_a(s)=\sqrt{(a^2-s^2)/3}\)</span>. Integrate the full height primitive of VN1 to infinity. Its limit is zero, giving</p>
+<span class="math math-display" data-tex="\[
+C_{{\rm in},r}(a)=
+\int_0^a\sqrt{2s}\,b_a(s)
+\left[\frac1{(s-a)^2+b_a(s)^2}
+-\frac1{(s+a)^2+b_a(s)^2}\right]ds.
+\tag{VN7}
+\]">\[
+C_{{\rm in},r}(a)=
+\int_0^a\sqrt{2s}\,b_a(s)
+\left[\frac1{(s-a)^2+b_a(s)^2}
+-\frac1{(s+a)^2+b_a(s)^2}\right]ds.
+\tag{VN7}
+\]</span>
+<p>No far-height remainder was discarded: both upper endpoint values of the primitive are zero, and both lower endpoint terms appear in VN7. The same substitution <span class="math" data-tex="\(s=a-av^2\)">\(s=a-av^2\)</span> uses <span class="math" data-tex="\(|ds|=2av\,dv\)">\(|ds|=2av\,dv\)</span>.</p>
+<p>For <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span>, write the exact positive cubic partner as <span class="math" data-tex="\(V_{a,s}(uq)=uw\)">\(V_{a,s}(uq)=uw\)</span>. Its original equation RV12 becomes</p>
+<span class="math math-display" data-tex="\[
+q w\left[\alpha^2(w^2+qw+q^2)+\gamma\right]=1.
+\tag{VN8}
+\]">\[
+q w\left[\alpha^2(w^2+qw+q^2)+\gamma\right]=1.
+\tag{VN8}
+\]</span>
+<p>This identity retains the original right side <span class="math" data-tex="\((s^2-a^2)^2=u^2(s+a)^2\)">\((s^2-a^2)^2=u^2(s+a)^2\)</span>: both sides were divided by this same positive number. For <span class="math" data-tex="\(q\ge\beta_a(s)&gt;0\)">\(q\ge\beta_a(s)&gt;0\)</span>, the left side is zero at <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, strictly increasing for <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span>, and at least one at <span class="math" data-tex="\(w=q\)">\(w=q\)</span>, with equality precisely at the threshold. Thus the unique root lies in <span class="math" data-tex="\((0,q]\)">\((0,q]\)</span>. This gives a rigorous bracket for later outward arithmetic; floating-point bisection alone is only a diagnostic.</p>
+<p>Now put</p>
+<span class="math math-display" data-tex="\[
+u=a\left(\frac v{1-v}\right)^2,\quad s=a+u,
+\quad q=\frac{\beta_a(s)}{(1-z)^2},\quad 0&lt;v,z&lt;1.
+\tag{VN9}
+\]">\[
+u=a\left(\frac v{1-v}\right)^2,\quad s=a+u,
+\quad q=\frac{\beta_a(s)}{(1-z)^2},\quad 0&lt;v,z&lt;1.
+\tag{VN9}
+\]</span>
+<p>These are increasing bijections onto the two original integration ranges. Their complete Jacobians are
+<span class="math" data-tex="\(du/\sqrt u=2\sqrt a\,(1-v)^{-2}dv\)">\(du/\sqrt u=2\sqrt a\,(1-v)^{-2}dv\)</span> and
+<span class="math" data-tex="\(dq=2\beta_a(s)(1-z)^{-3}dz\)">\(dq=2\beta_a(s)(1-z)^{-3}dz\)</span>. Since <span class="math" data-tex="\(dt=u\,dq\)">\(dt=u\,dq\)</span> and <span class="math" data-tex="\(\sqrt{t-V}=\sqrt u\sqrt{q-w}\)">\(\sqrt{t-V}=\sqrt u\sqrt{q-w}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+C_{\rm vert}(a,a)=16\sqrt a\int_0^1\int_0^1
+\frac{\beta_a(s)D_a(s,q)\sqrt{q-w}}
+{(1-v)^2(1-z)^3}\,dz\,dv.
+\tag{VN10}
+\]">\[
+C_{\rm vert}(a,a)=16\sqrt a\int_0^1\int_0^1
+\frac{\beta_a(s)D_a(s,q)\sqrt{q-w}}
+{(1-v)^2(1-z)^3}\,dz\,dv.
+\tag{VN10}
+\]</span>
+<p>Here <span class="math" data-tex="\(s,q,w\)">\(s,q,w\)</span> retain exactly their definitions in VN8–VN9. Both infinite ranges are retained as limits at the open square's boundary. The formula does not delete a neighborhood of any endpoint, and its finiteness is already supplied by RV14 and the local integrability proof preceding it.</p>
+<p>Finally the original vertical <span class="math" data-tex="\(v_x\)">\(v_x\)</span> estimate RV9 and RV13 gives the coefficient</p>
+<span class="math math-display" data-tex="\[
+C_{v_x,y}(a,\tau)=
+\frac{C_{\rm vert}(a,a)+\tau\{C_{{\rm in},p}(a)+C_{{\rm in},r}(a)\}}
+{\pi\sqrt{2a}}+\frac\tau2.
+\tag{VN11}
+\]">\[
+C_{v_x,y}(a,\tau)=
+\frac{C_{\rm vert}(a,a)+\tau\{C_{{\rm in},p}(a)+C_{{\rm in},r}(a)\}}
+{\pi\sqrt{2a}}+\frac\tau2.
+\tag{VN11}
+\]</span>
+<p>For the local term, <span class="math" data-tex="\(|d_\eta|\le H_y\sqrt{2a}\)">\(|d_\eta|\le H_y\sqrt{2a}\)</span>, so its original one-half becomes exactly <span class="math" data-tex="\(\tau/2\)">\(\tau/2\)</span> after division by the pair-distance factor. The two nonlocal terms retain their distinct seminorms. Source evaluation uses the original <span class="math" data-tex="\(a=1\)">\(a=1\)</span>; numerical exploration of VN6–VN11 at that value does not prove a certified inequality. The following calculation supplies a rigorous quadrature enclosure, including every transformed endpoint.</p>
+<h3 id="vn3-an-explicit-upper-integrand-without-solving-the-cubic-numerically">VN3. An explicit upper integrand without solving the cubic numerically</h3>
+<p>For fixed original <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span> and <span class="math" data-tex="\(q\ge\beta_a(s)\)">\(q\ge\beta_a(s)\)</span>, write <span class="math" data-tex="\(h=w/q\)">\(h=w/q\)</span>. Equation VN8 and its interval <span class="math" data-tex="\(0&lt;h\le1\)">\(0&lt;h\le1\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\Phi(h)=\frac1{q^2\{\alpha^2q^2(h^2+h+1)+\gamma\}},\qquad
+h=\Phi(h).
+\tag{VN12}
+\]">\[
+\Phi(h)=\frac1{q^2\{\alpha^2q^2(h^2+h+1)+\gamma\}},\qquad
+h=\Phi(h).
+\tag{VN12}
+\]</span>
+<p>The function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is positive and decreasing on the nonnegative real axis. Consequently, with all factors unchanged,</p>
+<span class="math math-display" data-tex="\[
+L_1=\Phi(1)\le h,\qquad H_1=\Phi(L_1)\ge h,
+\qquad L_2=\Phi(H_1)\le h.
+\tag{VN13}
+\]">\[
+L_1=\Phi(1)\le h,\qquad H_1=\Phi(L_1)\ge h,
+\qquad L_2=\Phi(H_1)\le h.
+\tag{VN13}
+\]</span>
+<p>Both lower bounds are positive and at most one. Either one therefore gives a valid upper bound for the entire factor <span class="math" data-tex="\(\sqrt{q-w}=\sqrt q\sqrt{1-h}\)">\(\sqrt{q-w}=\sqrt q\sqrt{1-h}\)</span> by replacing <span class="math" data-tex="\(h\)">\(h\)</span> with that lower bound. No approximate cubic root enters this bound.</p>
+<p>For numerical integration retain <span class="math" data-tex="\(r=1-z\)">\(r=1-z\)</span>, <span class="math" data-tex="\(b=\beta_a(s)^2\)">\(b=\beta_a(s)^2\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_0&amp;=3\alpha^2b^2,&amp;B_0&amp;=\gamma b,&amp;A_0+B_0&amp;=1,\\
+N&amp;=A_0+B_0r^4-r^8\\
+&amp;=z(1+r+r^2+r^3)\{A_0(1+r^4)+B_0r^4\},\\
+\Phi(h)&amp;=\frac{r^8}{b\{\alpha^2b(h^2+h+1)+\gamma r^4\}},\\
+1-L_1&amp;=\frac{N}{A_0+B_0r^4}.
+\end{aligned}\tag{VN14}
+\]">\[
+\begin{aligned}
+A_0&amp;=3\alpha^2b^2,&amp;B_0&amp;=\gamma b,&amp;A_0+B_0&amp;=1,\\
+N&amp;=A_0+B_0r^4-r^8\\
+&amp;=z(1+r+r^2+r^3)\{A_0(1+r^4)+B_0r^4\},\\
+\Phi(h)&amp;=\frac{r^8}{b\{\alpha^2b(h^2+h+1)+\gamma r^4\}},\\
+1-L_1&amp;=\frac{N}{A_0+B_0r^4}.
+\end{aligned}\tag{VN14}
+\]</span>
+<p>The identity <span class="math" data-tex="\(A_0+B_0=1\)">\(A_0+B_0=1\)</span> is exactly the threshold polynomial in VN4. Substitution and multiplication by its positive denominator prove every equality in VN14. Factoring <span class="math" data-tex="\(1-r^4=z(1+r+r^2+r^3)\)">\(1-r^4=z(1+r+r^2+r^3)\)</span> retains its zero at the threshold and avoids subtracting two nearly equal positive numbers.</p>
+<p>At the source's original <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+P(v)=\frac{2\{v^2+(1-v)^2\}}{\{v^2+2(1-v)^2\}^2}.
+\tag{VN15}
+\]">\[
+P(v)=\frac{2\{v^2+(1-v)^2\}}{\{v^2+2(1-v)^2\}^2}.
+\tag{VN15}
+\]</span>
+<p>It is exactly <span class="math" data-tex="\(2s/((s+1)^2(1-v)^2)\)">\(2s/((s+1)^2(1-v)^2)\)</span> after VN9. The full transformed exterior integrand is</p>
+<span class="math math-display" data-tex="\[
+G(v,z)=16P(v)\beta^{3/2}
+\frac{Nr^4}{(r^4+b)^2(r^4+\alpha^2b)^2}\sqrt{1-h}.
+\tag{VN16}
+\]">\[
+G(v,z)=16P(v)\beta^{3/2}
+\frac{Nr^4}{(r^4+b)^2(r^4+\alpha^2b)^2}\sqrt{1-h}.
+\tag{VN16}
+\]</span>
+<p>Use <span class="math" data-tex="\(L_1\)">\(L_1\)</span> on <span class="math" data-tex="\(0&lt;z&lt;1/16\)">\(0&lt;z&lt;1/16\)</span> and <span class="math" data-tex="\(L_2\)">\(L_2\)</span> on <span class="math" data-tex="\(1/16\le z&lt;1\)">\(1/16\le z&lt;1\)</span> to define the upper integrand <span class="math" data-tex="\(\overline G\)">\(\overline G\)</span>. This fixed division has measure-zero interface and preserves both pieces in the integral. Each piece is a twice continuously differentiable expression on its open rectangle. Its nonnegative square-root argument is strictly positive for <span class="math" data-tex="\(z&gt;0\)">\(z&gt;0\)</span>: the threshold equality occurs only at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, and the true root has <span class="math" data-tex="\(h&lt;1\)">\(h&lt;1\)</span> otherwise.</p>
+<h3 id="vn4-full-endpoint-bounds-and-a-certified-finite-integration-rule">VN4. Full endpoint bounds and a certified finite integration rule</h3>
+<p>The original exterior parameters satisfy
+<span class="math" data-tex="\(1/\sqrt3\le\beta\le1\)">\(1/\sqrt3\le\beta\le1\)</span>, <span class="math" data-tex="\(1\le\gamma\le2\)">\(1\le\gamma\le2\)</span>, and <span class="math" data-tex="\(0\le\alpha\le1\)">\(0\le\alpha\le1\)</span>. For the lower bound on <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, its denominator squared in VN3 is at most <span class="math" data-tex="\(3(s+a)^2\)">\(3(s+a)^2\)</span>; for the upper bound, <span class="math" data-tex="\(\sqrt{s^4-a^2s^2+a^4}\ge as\)">\(\sqrt{s^4-a^2s^2+a^4}\ge as\)</span>. The bounds on <span class="math" data-tex="\(\gamma,\alpha\)">\(\gamma,\alpha\)</span> follow directly from their positive formulas. Also
+<span class="math" data-tex="\(P(v)\le2/(v^2+(1-v)^2)\le4\)">\(P(v)\le2/(v^2+(1-v)^2)\le4\)</span>.
+Since <span class="math" data-tex="\(N\le3b(r^4+\alpha^2b)\)">\(N\le3b(r^4+\alpha^2b)\)</span>, VN16 gives</p>
+<span class="math math-display" data-tex="\[
+0\le G\le\overline G
+\le48P(v)\beta^{7/2}
+\frac{r^4}{(r^4+b)^2(r^4+\alpha^2b)}
+\le\frac{192}{\sqrt\beta}&lt;256.
+\tag{VN17}
+\]">\[
+0\le G\le\overline G
+\le48P(v)\beta^{7/2}
+\frac{r^4}{(r^4+b)^2(r^4+\alpha^2b)}
+\le\frac{192}{\sqrt\beta}&lt;256.
+\tag{VN17}
+\]</span>
+<p>The final strict bound follows from <span class="math" data-tex="\(3^{1/4}&lt;4/3\)">\(3^{1/4}&lt;4/3\)</span>. This bound is uniform even when both original coordinates approach the singularity or either infinite endpoint. It does not require a continuous extension at the square's corners.</p>
+<p>For the inner paired cost, substitute <span class="math" data-tex="\(q=\beta_a(s)z\)">\(q=\beta_a(s)z\)</span> in VN6. At <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, its full transformed nonnegative density is at most four: <span class="math" data-tex="\(\beta\le1\)">\(\beta\le1\)</span>, <span class="math" data-tex="\(T\le1\)">\(T\le1\)</span> gives <span class="math" data-tex="\(d_1\le1\)">\(d_1\le1\)</span>, and VN3 gives <span class="math" data-tex="\(-D_1\le 2s/(s+1)^2\le1/2\)">\(-D_1\le 2s/(s+1)^2\le1/2\)</span>. For the residual cost VN7, its full transformed density is</p>
+<span class="math math-display" data-tex="\[
+R(v)=2\sqrt{2(1-v^2)}\,c
+\left[\frac1{v^2+c^2}
+-\frac{v^2}{(2-v^2)^2+v^2c^2}\right],
+\qquad c=\sqrt{\frac{2-v^2}{3}}.
+\tag{VN18}
+\]">\[
+R(v)=2\sqrt{2(1-v^2)}\,c
+\left[\frac1{v^2+c^2}
+-\frac{v^2}{(2-v^2)^2+v^2c^2}\right],
+\qquad c=\sqrt{\frac{2-v^2}{3}}.
+\tag{VN18}
+\]</span>
+<p>This is the full substitution in VN7, with both terms and its Jacobian retained. It obeys <span class="math" data-tex="\(0\le R(v)\le3\sqrt2&lt;5\)">\(0\le R(v)\le3\sqrt2&lt;5\)</span>, because <span class="math" data-tex="\(c\le1\)">\(c\le1\)</span>, <span class="math" data-tex="\(v^2+c^2\ge2/3\)">\(v^2+c^2\ge2/3\)</span>, and the subtracted term is nonnegative.</p>
+<p>Set <span class="math" data-tex="\(\delta=2^{-20}\)">\(\delta=2^{-20}\)</span>. Integrate each two-dimensional density on <span class="math" data-tex="\([\delta,1-\delta]^2\)">\([\delta,1-\delta]^2\)</span>, and the residual on <span class="math" data-tex="\([\delta,1-\delta]\)">\([\delta,1-\delta]\)</span>. The complementary square area is <span class="math" data-tex="\(4\delta-4\delta^2&lt;4\delta\)">\(4\delta-4\delta^2&lt;4\delta\)</span>, while the complementary interval length is <span class="math" data-tex="\(2\delta\)">\(2\delta\)</span>. Thus adding respectively <span class="math" data-tex="\(16\delta\)">\(16\delta\)</span>, <span class="math" data-tex="\(1024\delta\)">\(1024\delta\)</span> and <span class="math" data-tex="\(10\delta\)">\(10\delta\)</span> encloses the entire omitted inner, exterior and residual contributions. These explicit endpoint terms cover all original near-singularity and infinite ranges.</p>
+<p>On a finite rectangle of widths <span class="math" data-tex="\(d_1,d_2\)">\(d_1,d_2\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be its center and let <span class="math" data-tex="\(M_{11},M_{22}\)">\(M_{11},M_{22}\)</span> bound the absolute pure second derivatives throughout the rectangle. Iterated midpoint integration gives</p>
+<span class="math math-display" data-tex="\[
+\left|\int_Q f-|Q|f(m)\right|
+\le\frac{|Q|}{24}(d_1^2M_{11}+d_2^2M_{22}).
+\tag{VN19}
+\]">\[
+\left|\int_Q f-|Q|f(m)\right|
+\le\frac{|Q|}{24}(d_1^2M_{11}+d_2^2M_{22}).
+\tag{VN19}
+\]</span>
+<p>For completeness, the one-dimensional Taylor identity with integral remainder is</p>
+<span class="math math-display" data-tex="\[
+f(c+h)=f(c)+hf&#x27;(c)+\int_0^h(h-t)f&#x27;&#x27;(c+t)\,dt.
+\]">\[
+f(c+h)=f(c)+hf&#x27;(c)+\int_0^h(h-t)f&#x27;&#x27;(c+t)\,dt.
+\]</span>
+<p>The formula uses the oriented integral when <span class="math" data-tex="\(h&lt;0\)">\(h&lt;0\)</span>. Its remainder has absolute value at most <span class="math" data-tex="\(M h^2/2\)">\(M h^2/2\)</span>. Integrating over the symmetric interval cancels the first derivative and gives <span class="math" data-tex="\(Md^3/24\)">\(Md^3/24\)</span>. Apply this first in the first coordinate for every fixed second coordinate, then to the central slice in the second coordinate. Adding the resulting two bounds proves VN19 without any mixed-derivative assumption.</p>
+<p>The accompanying outward-arithmetic calculation evaluates the center value and both derivative bounds using real balls. It stores the value, both first derivatives and both pure second derivatives. For each coordinate, the product rule is <span class="math" data-tex="\((fg)&#x27;&#x27;=f&#x27;&#x27;g+2f&#x27;g&#x27;+fg&#x27;&#x27;\)">\((fg)&#x27;&#x27;=f&#x27;&#x27;g+2f&#x27;g&#x27;+fg&#x27;&#x27;\)</span>; the chain rule is <span class="math" data-tex="\((F\circ f)&#x27;&#x27;=F&#x27;&#x27;(f)(f&#x27;)^2+F&#x27;(f)f&#x27;&#x27;\)">\((F\circ f)&#x27;&#x27;=F&#x27;&#x27;(f)(f&#x27;)^2+F&#x27;(f)f&#x27;&#x27;\)</span>. For the reciprocal, the two derivatives are <span class="math" data-tex="\(-x^{-2},2x^{-3}\)">\(-x^{-2},2x^{-3}\)</span>; for the square root they are <span class="math" data-tex="\(1/(2\sqrt x),-1/(4x\sqrt x)\)">\(1/(2\sqrt x),-1/(4x\sqrt x)\)</span>. These rules prove all derivative enclosures inductively over the expression. A cell whose derivative expression cannot be bounded receives its proved global bound from VN17 or VN18, or the inner density bound four; it is not dropped. An adaptive subdivision chooses cells for efficiency only. Every final leaf is summed again outward, then every explicit endpoint term above is added. The implementation checks every dyadic width and center exactly, so floating-point subdivision does not change the rectangle or its midpoint.</p>
+<p>The checker uses the exact positive threshold root and factored inner numerator</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b&amp;=\frac{2}{\gamma+\sqrt{\gamma^2+12\alpha^2}},\\
+P_{\rm in}(s,z)&amp;=(1-z^2)
+\{3u^2\beta^4(1+z^2)+2(s^2+a^2)\beta^2\},
+\quad q=\beta z.
+\end{aligned}\tag{VN20}
+\]">\[
+\begin{aligned}
+b&amp;=\frac{2}{\gamma+\sqrt{\gamma^2+12\alpha^2}},\\
+P_{\rm in}(s,z)&amp;=(1-z^2)
+\{3u^2\beta^4(1+z^2)+2(s^2+a^2)\beta^2\},
+\quad q=\beta z.
+\end{aligned}\tag{VN20}
+\]</span>
+<p>The first formula is the positive solution of <span class="math" data-tex="\(3\alpha^2b^2+\gamma b-1=0\)">\(3\alpha^2b^2+\gamma b-1=0\)</span>, including <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. For the second, multiply that threshold equation by <span class="math" data-tex="\((s+a)^2\)">\((s+a)^2\)</span> and subtract the full numerator in VN5 at <span class="math" data-tex="\(q=\beta z\)">\(q=\beta z\)</span>. Factoring both differences gives exactly VN20. These are equalities of the original integrands, retaining their threshold zeros.</p>
+<h3 id="vn5-the-complete-vertical-bound-and-the-saved-coefficient">VN5. The complete vertical bound and the saved coefficient</h3>
+<p>The complete calculation, including VN17–VN20 and every omitted endpoint contribution, gives</p>
+<span class="math math-display" data-tex="\[
+\frac{C_{\rm vert}(1,1)+(291/500)C_{\rm in}(1)}{\pi\sqrt2}
++\frac{291}{1000}
+&lt;\frac{259}{100}.
+\tag{VN21}
+\]">\[
+\frac{C_{\rm vert}(1,1)+(291/500)C_{\rm in}(1)}{\pi\sqrt2}
++\frac{291}{1000}
+&lt;\frac{259}{100}.
+\tag{VN21}
+\]</span>
+<p>The accompanying 128-bit and 256-bit real-ball certificates enclose each entire integral and prove this rational comparison. The rule is VN19 with interval derivative bounds, not an inference from agreement of numerical samples. Each certificate keeps the full inner paired, inner residual, exterior near-threshold and remaining exterior contributions. The latter two bound the original exterior from above by VN12–VN16. Their outer endpoint correction is added once for the full square. The final arithmetic retains the exact <span class="math" data-tex="\(291/500\)">\(291/500\)</span>, one <span class="math" data-tex="\(\pi\sqrt2\)">\(\pi\sqrt2\)</span> divisor and the local <span class="math" data-tex="\(291/1000\)">\(291/1000\)</span>. The exact check also compares each resulting upper endpoint with the original saved lower endpoint in VA12.</p>
+<p>Here is the full physical receiving statement. Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span>, <span class="math" data-tex="\(c\in\mathbb R\)">\(c\in\mathbb R\)</span>, <span class="math" data-tex="\(x=(c,M-a)\)">\(x=(c,M-a)\)</span>, <span class="math" data-tex="\(z=(c,M+a)\)">\(z=(c,M+a)\)</span>, and let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(\mathbb R\times[0,\infty)\)">\(\mathbb R\times[0,\infty)\)</span> have finite directional half-Hölder seminorms <span class="math" data-tex="\(H_x,H_y\)">\(H_x,H_y\)</span>. Keep the original odd extension, expanding-square operators and their local terms from RV1–RV2. Their difference has the limit <span class="math" data-tex="\(\mathscr D_v\)">\(\mathscr D_v\)</span> proved in RV3–RV9. Set <span class="math" data-tex="\(N_\tau=\max(H_x,\tau^{-1}H_y)\)">\(N_\tau=\max(H_x,\tau^{-1}H_y)\)</span>, with <span class="math" data-tex="\(\tau=291/500\)">\(\tau=291/500\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|\mathscr D_v|
+\le\frac{259}{100}\,N_\tau\sqrt{2a}.
+\tag{VN22}
+\]">\[
+|\mathscr D_v|
+\le\frac{259}{100}\,N_\tau\sqrt{2a}.
+\tag{VN22}
+\]</span>
+<p>To prove the full scale comparison rather than substitute a different operator, retain the map <span class="math" data-tex="\((\xi,\theta)\mapsto(s,t)=(a\xi,a\theta)\)">\((\xi,\theta)\mapsto(s,t)=(a\xi,a\theta)\)</span>. Its Jacobian is <span class="math" data-tex="\(a^2\)">\(a^2\)</span>, the full kernel identity is <span class="math" data-tex="\(\Delta_a(a\xi,a\theta)=a^{-2}\Delta_1(\xi,\theta)\)">\(\Delta_a(a\xi,a\theta)=a^{-2}\Delta_1(\xi,\theta)\)</span>, and the partners obey <span class="math" data-tex="\(\mathcal T_{a,a\theta}(a\xi)=a\mathcal T_{1,\theta}(\xi)\)">\(\mathcal T_{a,a\theta}(a\xi)=a\mathcal T_{1,\theta}(\xi)\)</span> and <span class="math" data-tex="\(V_{a,a\xi}(a\theta)=aV_{1,\xi}(\theta)\)">\(V_{a,a\xi}(a\theta)=aV_{1,\xi}(\theta)\)</span>. The first follows from the complete rational formula VN5, and the second from substituting into the original cubic and using uniqueness of its positive root. The thresholds and every endpoint in VN2 map to their stated values under the same bijection. Thus each full cost is <span class="math" data-tex="\(\sqrt a\)">\(\sqrt a\)</span> times its radius-one cost, from <span class="math" data-tex="\(a^{-2}a^2\sqrt a\)">\(a^{-2}a^2\sqrt a\)</span>, including its singular and infinite limits by the positive integral convergence already proved. Substitution into the full VN11, retaining its <span class="math" data-tex="\(\pi\sqrt{2a}\)">\(\pi\sqrt{2a}\)</span> divisor and local term, proves VN22 from VN21. This keeps the original physical coordinates and actual pair distance explicit.</p>
+<p>The original saved parameter satisfies <span class="math" data-tex="\(0&lt;r\le r_+&lt;291/500\)">\(0&lt;r\le r_+&lt;291/500\)</span>, by VA12. Hence <span class="math" data-tex="\(N_\tau\le N_r\)">\(N_\tau\le N_r\)</span>. The exact inequalities
+<span class="math" data-tex="\(259/100&lt;V_-\le V_+&lt;13/5\)">\(259/100&lt;V_-\le V_+&lt;13/5\)</span>, with <span class="math" data-tex="\(V_-,V_+\)">\(V_-,V_+\)</span> from VA12, show that the original saved vertical <span class="math" data-tex="\(v_x\)">\(v_x\)</span> coefficient still bounds this complete physical increment. No increase to that scalar is required for this estimate. This independently proves the validity of its use as an upper bound; it does not reconstruct the original generator's historical output or excuse the extra-area error in VA2.</p>
+<p>The conclusion concerns the complete vertical <span class="math" data-tex="\(v_x\)">\(v_x\)</span> coefficient only. The separate <span class="math" data-tex="\(u_y\)">\(u_y\)</span> estimate includes the midpoint-dependent middle cost and requires its own full calculation. Nor does VN22 certify the other stability estimates or the full theorem. Original MATLAB/INTLAB was not executed. The proof and implementation receive author self-review; no independent or formal verification or novelty is claimed.</p>
+<p><img src="assets/NS-FLUID-54/chen-hou-vertical-full-cost-BB7414CAF76FECB87BE05A1FC62B9869735AB01F873B27084B08E2F09C03B505.png" alt="Complete original vertical costs and the certified vₓ coefficient" class="course-figure" width="2275" height="1750" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="chen-hou-vertical-full-cost" data-asset-sha256="BB7414CAF76FECB87BE05A1FC62B9869735AB01F873B27084B08E2F09C03B505"></p>
+<p>The first two panels show finite windows of the original inner and exterior domains at source radius one. The plotted exterior partner is a numerical sample of the full cubic in VN8. The cost and coefficient panels distinguish numerical samples from proved upper enclosures, including every endpoint contribution. VN21–VN22 supplies the complete physical receiving map. Human sources: Jiajie Chen and Thomas Y. Hou, original author TeX of Part II v3, vertical transport and inner/exterior cost formulas, and Part I v4, lines3367–3378. The full source identities and original factors are retained in the linked prerequisites.</p>
+<p><strong>Current lesson note.</strong> The preceding text preserves the scope of this supporting calculation when it was written. Parts 3 and 4 below complete the two saved vertical scalar bounds; Part 2 identifies a local code error that those independent complete-cost proofs overcome. The remaining directional arrays and the full stability theorem are still under audit.</p>
+<h2 id="part-4-the-complete-vertical-u_y-bound-at-every-midpoint">Part 4. The complete vertical <span class="math" data-tex="\(u_y\)">\(u_y\)</span> bound at every midpoint</h2>
+<p>Human source: Jiajie Chen and Thomas Y. Hou, <a href="https://arxiv.org/abs/2305.05660v3">Part II v3</a>, original author file euler_supp_Part2.tex, SHA-256 <code>91fbe8b67384412903f851ccaeaa541cfe1f9658122e0f438d3ba064054dfc1b</code>, lines 2005–2140, especially eq:holy_vx_est, eq:holy_vx, eq:holy_vx_dom and lem:map_vx_cy. The original physical receiving formulas are proved with their cutoff bands and local terms in <span class="unlinked">RV1–RV22</span>. The horizontal partner, its full residual mass and endpoint concentration are proved in <span class="unlinked">KX1–KX15</span>.</p>
+<p>This editorial calculation proves a comparison between the two original transport costs. It supplies the midpoint-uniform vertical <span class="math" data-tex="\(u_y\)">\(u_y\)</span> estimate from the complete vertical <span class="math" data-tex="\(v_x\)">\(v_x\)</span> certificate <span class="unlinked">VN1–VN22</span>. Those complete prerequisites accompany this note. The finite-square comparison below uses outward real-ball arithmetic; the subsequent differentiation, integration and physical receiving maps are proved explicitly. Numerical midpoint samples are not used as a uniform bound.</p>
+<h3 id="vu-section-1-keep-the-two-partners-and-the-physical-costs">VU section 1. Keep the two partners and the physical costs</h3>
+<p>Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and keep the original half-kernel and difference:</p>
+<span class="math math-display" data-tex="\[
+K_2(s,t)=\frac{s^2-t^2}{2(s^2+t^2)^2},\qquad
+\Delta_a(s,t)=K_2(s+a,t)-K_2(s-a,t).
+\tag{VU1}
+\]">\[
+K_2(s,t)=\frac{s^2-t^2}{2(s^2+t^2)^2},\qquad
+\Delta_a(s,t)=K_2(s+a,t)-K_2(s-a,t).
+\tag{VU1}
+\]</span>
+<p>Write <span class="math" data-tex="\(\sigma_a(s)\)">\(\sigma_a(s)\)</span> for its positive height root. The kernel is negative for <span class="math" data-tex="\(0&lt;t&lt;\sigma_a(s)\)">\(0&lt;t&lt;\sigma_a(s)\)</span> and positive for <span class="math" data-tex="\(t&gt;\sigma_a(s)\)">\(t&gt;\sigma_a(s)\)</span>. On the lower branch define the original horizontal partner <span class="math" data-tex="\(T=\mathcal T_{a,t}(s)\)">\(T=\mathcal T_{a,t}(s)\)</span> and the upper vertical partner <span class="math" data-tex="\(U=U_{a,s}(t)\)">\(U=U_{a,s}(t)\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T^2&amp;=\frac{(a^2+t^2)(s^2-a^2+3t^2)}
+{s^2-a^2-t^2},\qquad a&lt;T&lt;s,\\
+tU(U^2+tU+t^2+2s^2+2a^2)&amp;=(s^2-a^2)^2,
+\qquad U&gt;\sigma_a(s)&gt;t .
+\end{aligned}\tag{VU2}
+\]">\[
+\begin{aligned}
+T^2&amp;=\frac{(a^2+t^2)(s^2-a^2+3t^2)}
+{s^2-a^2-t^2},\qquad a&lt;T&lt;s,\\
+tU(U^2+tU+t^2+2s^2+2a^2)&amp;=(s^2-a^2)^2,
+\qquad U&gt;\sigma_a(s)&gt;t .
+\end{aligned}\tag{VU2}
+\]</span>
+<p>The positive root <span class="math" data-tex="\(U\)">\(U\)</span> is unique because the left side is strictly increasing from zero to infinity in <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span>. The original threshold equation gives the self root <span class="math" data-tex="\(U=t\)">\(U=t\)</span> precisely at <span class="math" data-tex="\(t=\sigma_a(s)\)">\(t=\sigma_a(s)\)</span>. The increasing polynomial has value below its right side when <span class="math" data-tex="\(0&lt;t&lt;\sigma_a(s)\)">\(0&lt;t&lt;\sigma_a(s)\)</span>, so its positive root lies above <span class="math" data-tex="\(t\)">\(t\)</span>; the decreasing involution and full mass identity in <span class="unlinked">PV14–PV19</span> locate it above <span class="math" data-tex="\(\sigma_a(s)\)">\(\sigma_a(s)\)</span> and give</p>
+<span class="math math-display" data-tex="\[
+\Delta_a(s,U)|\partial_t U|=-\Delta_a(s,t).
+\tag{VU3}
+\]">\[
+\Delta_a(s,U)|\partial_t U|=-\Delta_a(s,t).
+\tag{VU3}
+\]</span>
+<p>The horizontal partner and its domains are KX3–KX6, including <span class="math" data-tex="\(\Delta_a(T,t)\partial_sT=\Delta_a(s,t)\)">\(\Delta_a(T,t)\partial_sT=\Delta_a(s,t)\)</span> and <span class="math" data-tex="\(\partial_sT&lt;0\)">\(\partial_sT&lt;0\)</span>. Both maps refer to the same original <span class="math" data-tex="\(\Delta_a\)">\(\Delta_a\)</span>; their directions and weights remain distinct.</p>
+<p>For <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span>, put <span class="math" data-tex="\(h_+(a,t)=\sqrt{a^2+t^2+2t\sqrt{a^2+t^2}}\)">\(h_+(a,t)=\sqrt{a^2+t^2+2t\sqrt{a^2+t^2}}\)</span>, and set <span class="math" data-tex="\(z_M(t)=T_{a,t}(M)\)">\(z_M(t)=T_{a,t}(M)\)</span> when <span class="math" data-tex="\(M&gt;h_+(a,t)\)">\(M&gt;h_+(a,t)\)</span>, and <span class="math" data-tex="\(z_M(t)=M\)">\(z_M(t)=M\)</span> otherwise. Define the complete middle and exterior costs, including all positive heights:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_{\rm mid}(a,M)
+&amp;=4\int_a^M\int_0^{\sigma_a(s)}
+[-\Delta_a(s,t)]\sqrt{s-\mathcal T_{a,t}(s)}\,dt\,ds\\
+&amp;\quad+2\int_0^\infty\int_a^{z_M(t)}
+\Delta_a(s,t)\sqrt{2s}\,ds\,dt,\\
+E_a(s)
+&amp;=4\int_{\sigma_a(s)}^\infty
+\Delta_a(s,t)\sqrt{t-V_{a,s}(t)}\,dt\\
+&amp;=4\int_0^{\sigma_a(s)}
+[-\Delta_a(s,t)]\sqrt{U_{a,s}(t)-t}\,dt,\\
+C_{\rm vert}(a,M)&amp;=\int_M^\infty E_a(s)\,ds.
+\end{aligned}\tag{VU4}
+\]">\[
+\begin{aligned}
+C_{\rm mid}(a,M)
+&amp;=4\int_a^M\int_0^{\sigma_a(s)}
+[-\Delta_a(s,t)]\sqrt{s-\mathcal T_{a,t}(s)}\,dt\,ds\\
+&amp;\quad+2\int_0^\infty\int_a^{z_M(t)}
+\Delta_a(s,t)\sqrt{2s}\,ds\,dt,\\
+E_a(s)
+&amp;=4\int_{\sigma_a(s)}^\infty
+\Delta_a(s,t)\sqrt{t-V_{a,s}(t)}\,dt\\
+&amp;=4\int_0^{\sigma_a(s)}
+[-\Delta_a(s,t)]\sqrt{U_{a,s}(t)-t}\,dt,\\
+C_{\rm vert}(a,M)&amp;=\int_M^\infty E_a(s)\,ds.
+\end{aligned}\tag{VU4}
+\]</span>
+<p>Here <span class="math" data-tex="\(V\)">\(V\)</span> is the lower vertical partner, the inverse of <span class="math" data-tex="\(U\)">\(U\)</span>. VU3 proves the second expression for <span class="math" data-tex="\(E_a\)">\(E_a\)</span> by a change of variables on the entire positive branch; all four factors in VU4 remain. RV14 proves finite costs, the full infinite tail and the improper endpoint at <span class="math" data-tex="\(s=a\)">\(s=a\)</span>.</p>
+<h3 id="vu-section-2-differentiate-the-complete-middle-cost">VU section 2. Differentiate the complete middle cost</h3>
+<p>For every fixed <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span>, direct integration of the original two kernels in height gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty\Delta_a(s,t)\,dt=0,\qquad
+\int_{\sigma_a(s)}^\infty\Delta_a(s,t)\,dt
+=\int_0^{\sigma_a(s)}[-\Delta_a(s,t)]\,dt .
+\tag{VU5}
+\]">\[
+\int_0^\infty\Delta_a(s,t)\,dt=0,\qquad
+\int_{\sigma_a(s)}^\infty\Delta_a(s,t)\,dt
+=\int_0^{\sigma_a(s)}[-\Delta_a(s,t)]\,dt .
+\tag{VU5}
+\]</span>
+<p>Indeed each kernel has height primitive <span class="math" data-tex="\(t/[2((s\pm a)^2+t^2)]\)">\(t/[2((s\pm a)^2+t^2)]\)</span>, which vanishes at both endpoints. Neither shifted term has been suppressed.</p>
+<p>The derivative of the paired term in VU4 is its integrand at <span class="math" data-tex="\(s=M\)">\(s=M\)</span>, integrated in <span class="math" data-tex="\(t\)">\(t\)</span>. For the residual, its moving upper endpoint has derivative <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(M&lt;h_+(a,t)\)">\(M&lt;h_+(a,t)\)</span>. When <span class="math" data-tex="\(M&gt;h_+(a,t)\)">\(M&gt;h_+(a,t)\)</span>, the full horizontal mass identity gives
+<span class="math" data-tex="\(\Delta_a(z_M,t)\partial_M z_M=\Delta_a(M,t)\)">\(\Delta_a(z_M,t)\partial_M z_M=\Delta_a(M,t)\)</span>.
+At <span class="math" data-tex="\(M=h_+\)">\(M=h_+\)</span>, both kernel differences vanish, so the two residual derivatives agree at zero. With <span class="math" data-tex="\(T=\mathcal T_{a,t}(M)\)">\(T=\mathcal T_{a,t}(M)\)</span>, this gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_M C_{\rm mid}(a,M)
+&amp;=4\int_0^{\sigma_a(M)}
+[-\Delta_a(M,t)]\sqrt{M-T}\,dt\\
+&amp;\quad-2\int_0^{\sigma_a(M)}
+[-\Delta_a(M,t)]\sqrt{2T}\,dt
++2\sqrt{2M}\int_{\sigma_a(M)}^\infty\Delta_a(M,t)\,dt\\
+&amp;=4\int_0^{\sigma_a(M)}[-\Delta_a(M,t)]
+\left(\sqrt{M-T}+\frac{\sqrt{2M}-\sqrt{2T}}2\right)dt
+&gt;0.
+\end{aligned}\tag{VU6}
+\]">\[
+\begin{aligned}
+\partial_M C_{\rm mid}(a,M)
+&amp;=4\int_0^{\sigma_a(M)}
+[-\Delta_a(M,t)]\sqrt{M-T}\,dt\\
+&amp;\quad-2\int_0^{\sigma_a(M)}
+[-\Delta_a(M,t)]\sqrt{2T}\,dt
++2\sqrt{2M}\int_{\sigma_a(M)}^\infty\Delta_a(M,t)\,dt\\
+&amp;=4\int_0^{\sigma_a(M)}[-\Delta_a(M,t)]
+\left(\sqrt{M-T}+\frac{\sqrt{2M}-\sqrt{2T}}2\right)dt
+&gt;0.
+\end{aligned}\tag{VU6}
+\]</span>
+<p>These are derivatives of ordinary finite costs on <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span>, not a differentiation at the singular endpoint <span class="math" data-tex="\(M=a\)">\(M=a\)</span>. Here are the needed convergence details. On a compact interval <span class="math" data-tex="\(a&lt;m_0\le M\le m_1\)">\(a&lt;m_0\le M\le m_1\)</span>, the paired height domain lies in <span class="math" data-tex="\(0\le t\le \sigma_a(m_1)\)">\(0\le t\le \sigma_a(m_1)\)</span>. The kernel there is bounded because <span class="math" data-tex="\(M-a\ge m_0-a&gt;0\)">\(M-a\ge m_0-a&gt;0\)</span>; the partner and all square-root weights remain bounded by <span class="math" data-tex="\(m_1\)">\(m_1\)</span>. Its endpoint-integrated derivative is therefore bounded and continuous by dominated convergence, including its vanishing threshold weight. The residual derivative has magnitude at most <span class="math" data-tex="\(2\sqrt{2m_1}|\Delta_a(M,t)|\)">\(2\sqrt{2m_1}|\Delta_a(M,t)|\)</span>. On finite heights the same positive distance from <span class="math" data-tex="\(s=a\)">\(s=a\)</span> bounds this kernel. At large height, the full numerator formula in KX2 has degree four in <span class="math" data-tex="\(t\)">\(t\)</span> and the denominator degree eight; uniformly for <span class="math" data-tex="\(M\)">\(M\)</span> in this compact interval it is bounded by a constant times <span class="math" data-tex="\(t^{-4}\)">\(t^{-4}\)</span>. This is an integrable bound. The residual at one <span class="math" data-tex="\(M\)">\(M\)</span> is finite by KX12 and its weight bound. Apply the fundamental theorem on each side of <span class="math" data-tex="\(M=h_+\)">\(M=h_+\)</span>, join there at the continuous residual value, and then Fubini with the stated derivative majorant. This proves differentiation under the residual integral and VU6. The same large-height argument, using <span class="math" data-tex="\(\sqrt{t-V}\le\sqrt t\)">\(\sqrt{t-V}\le\sqrt t\)</span>, proves continuity and finiteness of <span class="math" data-tex="\(E_a(M)\)">\(E_a(M)\)</span> away from <span class="math" data-tex="\(a\)">\(a\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\partial_M C_{\rm vert}(a,M)=-E_a(M)&lt;0 .
+\tag{VU7}
+\]">\[
+\partial_M C_{\rm vert}(a,M)=-E_a(M)&lt;0 .
+\tag{VU7}
+\]</span>
+<h3 id="vu-section-3-compare-the-entire-transport-distances">VU section 3. Compare the entire transport distances</h3>
+<p>For all <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span>, <span class="math" data-tex="\(0&lt;t&lt;\sigma_a(s)\)">\(0&lt;t&lt;\sigma_a(s)\)</span>, the comparison to be proved is</p>
+<span class="math math-display" data-tex="\[
+\frac23\left(\sqrt{s-T}+
+\frac{\sqrt{2s}-\sqrt{2T}}2\right)
+\le \sqrt{U-t}.
+\tag{VU8}
+\]">\[
+\frac23\left(\sqrt{s-T}+
+\frac{\sqrt{2s}-\sqrt{2T}}2\right)
+\le \sqrt{U-t}.
+\tag{VU8}
+\]</span>
+<p>Retain <span class="math" data-tex="\(u=s-a&gt;0\)">\(u=s-a&gt;0\)</span> and use the exact coordinate map</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha&amp;=\frac{u}{s+a}\in(0,1),\quad q=\frac tu,\quad
+\gamma=\frac{2(s^2+a^2)}{(s+a)^2}=1+\alpha^2,\\
+b&amp;=\frac{2}{\gamma+\sqrt{\gamma^2+12\alpha^2}},
+\quad \beta=\sqrt b,\quad z=q/\beta\in(0,1),\\
+a&amp;=\frac{u(1-\alpha)}{2\alpha},\qquad
+s=\frac{u(1+\alpha)}{2\alpha},\qquad t=u\beta z,\\
+3\alpha^2b^2+\gamma b&amp;=1,\qquad
+\sigma_a(s)=u\beta.
+\end{aligned}\tag{VU9}
+\]">\[
+\begin{aligned}
+\alpha&amp;=\frac{u}{s+a}\in(0,1),\quad q=\frac tu,\quad
+\gamma=\frac{2(s^2+a^2)}{(s+a)^2}=1+\alpha^2,\\
+b&amp;=\frac{2}{\gamma+\sqrt{\gamma^2+12\alpha^2}},
+\quad \beta=\sqrt b,\quad z=q/\beta\in(0,1),\\
+a&amp;=\frac{u(1-\alpha)}{2\alpha},\qquad
+s=\frac{u(1+\alpha)}{2\alpha},\qquad t=u\beta z,\\
+3\alpha^2b^2+\gamma b&amp;=1,\qquad
+\sigma_a(s)=u\beta.
+\end{aligned}\tag{VU9}
+\]</span>
+<p>For each <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> this is a bijection between the stated physical negative branch and <span class="math" data-tex="\(0&lt;\alpha,z&lt;1\)">\(0&lt;\alpha,z&lt;1\)</span>, with the displayed inverse. The threshold identity follows from the full numerator of KX2, after retaining its positive factors. The map is used to certify an inequality; it does not replace the original kernel, physical scale or receiving divisor.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F&amp;=1-\gamma q^2-3\alpha^2q^4\\
+&amp;=(1-z^2)\{3\alpha^2b^2(1+z^2)+\gamma b\},\\
+W&amp;=\frac{2\alpha T}{u}
+=\sqrt{\frac{\{(1-\alpha)^2+4\alpha^2q^2\}(1+3\alpha q^2)}
+{1-\alpha q^2}},\\
+d_0&amp;=\frac{2}{(1-\alpha q^2)(1+\alpha+W)},\qquad
+\frac{s-T}{u}=Fd_0,\\
+\frac1{\sqrt u}\left(\sqrt{s-T}
++\frac{\sqrt{2s}-\sqrt{2T}}2\right)
+&amp;=\sqrt{Fd_0}+\frac{Fd_0\sqrt\alpha}
+{\sqrt{1+\alpha}+\sqrt W}.
+\end{aligned}\tag{VU10}
+\]">\[
+\begin{aligned}
+F&amp;=1-\gamma q^2-3\alpha^2q^4\\
+&amp;=(1-z^2)\{3\alpha^2b^2(1+z^2)+\gamma b\},\\
+W&amp;=\frac{2\alpha T}{u}
+=\sqrt{\frac{\{(1-\alpha)^2+4\alpha^2q^2\}(1+3\alpha q^2)}
+{1-\alpha q^2}},\\
+d_0&amp;=\frac{2}{(1-\alpha q^2)(1+\alpha+W)},\qquad
+\frac{s-T}{u}=Fd_0,\\
+\frac1{\sqrt u}\left(\sqrt{s-T}
++\frac{\sqrt{2s}-\sqrt{2T}}2\right)
+&amp;=\sqrt{Fd_0}+\frac{Fd_0\sqrt\alpha}
+{\sqrt{1+\alpha}+\sqrt W}.
+\end{aligned}\tag{VU10}
+\]</span>
+<p>For the second form of <span class="math" data-tex="\(F\)">\(F\)</span>, subtract its threshold equation at <span class="math" data-tex="\(q=\beta\)">\(q=\beta\)</span> and factor <span class="math" data-tex="\(1-z^2\)">\(1-z^2\)</span> and <span class="math" data-tex="\(1-z^4\)">\(1-z^4\)</span>. Substituting VU9 in the full formula for <span class="math" data-tex="\(T^2\)">\(T^2\)</span> gives the formula for <span class="math" data-tex="\(W\)">\(W\)</span>. Direct cross multiplication in that same formula gives
+<span class="math" data-tex="\((s^2-T^2)/u^2=F/[\alpha(1-\alpha q^2)]\)">\((s^2-T^2)/u^2=F/[\alpha(1-\alpha q^2)]\)</span>.
+Dividing by <span class="math" data-tex="\((s+T)/u=(1+\alpha+W)/(2\alpha)\)">\((s+T)/u=(1+\alpha+W)/(2\alpha)\)</span> proves the distance formula. Finally rationalize <span class="math" data-tex="\(\sqrt s-\sqrt T=(s-T)/(\sqrt s+\sqrt T)\)">\(\sqrt s-\sqrt T=(s-T)/(\sqrt s+\sqrt T)\)</span>; substitution of the two complete squares in VU9–VU10 proves the last line, including its factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p>All displayed denominators extend positively to the closed square <span class="math" data-tex="\(0\le\alpha,z\le1\)">\(0\le\alpha,z\le1\)</span>. In detail <span class="math" data-tex="\(0&lt;b\le1\)">\(0&lt;b\le1\)</span>, and <span class="math" data-tex="\(\alpha b\le1/3\)">\(\alpha b\le1/3\)</span>: for <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, the increasing polynomial <span class="math" data-tex="\(3\alpha^2x^2+(1+\alpha^2)x-1\)">\(3\alpha^2x^2+(1+\alpha^2)x-1\)</span> at <span class="math" data-tex="\(x=1/(3\alpha)\)">\(x=1/(3\alpha)\)</span> equals <span class="math" data-tex="\((1-\alpha)^2/(3\alpha)\ge0\)">\((1-\alpha)^2/(3\alpha)\ge0\)</span>, while its root is <span class="math" data-tex="\(b\)">\(b\)</span>. The endpoint <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span> is immediate. Thus <span class="math" data-tex="\(1-\alpha q^2\ge2/3\)">\(1-\alpha q^2\ge2/3\)</span>; <span class="math" data-tex="\(1+\alpha+W\ge1\)">\(1+\alpha+W\ge1\)</span>; and <span class="math" data-tex="\(\sqrt{1+\alpha}+\sqrt W\ge1\)">\(\sqrt{1+\alpha}+\sqrt W\ge1\)</span>. Every radicand is nonnegative. These assertions include the corner <span class="math" data-tex="\(\alpha=1,z=0\)">\(\alpha=1,z=0\)</span>, where <span class="math" data-tex="\(W=0\)">\(W=0\)</span>.</p>
+<p>Put <span class="math" data-tex="\(g=(U-t)/u&gt;0\)">\(g=(U-t)/u&gt;0\)</span>. Substituting <span class="math" data-tex="\(U=u(q+g)\)">\(U=u(q+g)\)</span> into its original cubic gives exactly</p>
+<span class="math math-display" data-tex="\[
+qg\{\gamma+\alpha^2(g^2+4qg+6q^2)\}=F .
+\tag{VU11}
+\]">\[
+qg\{\gamma+\alpha^2(g^2+4qg+6q^2)\}=F .
+\tag{VU11}
+\]</span>
+<p>To check every coefficient, the equation before subtraction is</p>
+<span class="math math-display" data-tex="\[
+q(q+g)[\gamma+\alpha^2((q+g)^2+q(q+g)+q^2)]=1.
+\]">\[
+q(q+g)[\gamma+\alpha^2((q+g)^2+q(q+g)+q^2)]=1.
+\]</span>
+<p>Its constant term is <span class="math" data-tex="\(q^2(\gamma+3\alpha^2q^2)=1-F\)">\(q^2(\gamma+3\alpha^2q^2)=1-F\)</span>; the remaining terms are precisely VU11. Its left side is strictly increasing in <span class="math" data-tex="\(g\ge0\)">\(g\ge0\)</span> when <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.</p>
+<p>Define the nonnegative trial value <span class="math" data-tex="\(g_*=Fk\)">\(g_*=Fk\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+k&amp;=\frac49d_0\left(1+
+\frac{\sqrt{Fd_0}\sqrt\alpha}{\sqrt{1+\alpha}+\sqrt W}\right)^2,\\
+H(\alpha,z)&amp;=qk\{\gamma+\alpha^2(F^2k^2+4qFk+6q^2)\}.
+\end{aligned}\tag{VU12}
+\]">\[
+\begin{aligned}
+k&amp;=\frac49d_0\left(1+
+\frac{\sqrt{Fd_0}\sqrt\alpha}{\sqrt{1+\alpha}+\sqrt W}\right)^2,\\
+H(\alpha,z)&amp;=qk\{\gamma+\alpha^2(F^2k^2+4qFk+6q^2)\}.
+\end{aligned}\tag{VU12}
+\]</span>
+<p>The complete outward enclosure implemented in the accompanying
+certify_chen_hou_vertical_uy_comparison.py proves</p>
+<span class="math math-display" data-tex="\[
+H(\alpha,z)&lt;\frac{99}{100}&lt;1
+\quad\text{on the entire closed square }[0,1]^2.
+\tag{VU13}
+\]">\[
+H(\alpha,z)&lt;\frac{99}{100}&lt;1
+\quad\text{on the entire closed square }[0,1]^2.
+\tag{VU13}
+\]</span>
+<p>Here is the full certification rule. Start with the entire closed square. A binary address successively bisects the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> coordinates, alternating them starting with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; the address therefore determines exact dyadic endpoints and center. Evaluate VU9–VU12 using outward Arb balls at the recorded precision. Before a square root, intersect its ball with the nonnegative half-line, justified by the radicand signs just proved. A cell is accepted only when the entire resulting ball lies below <span class="math" data-tex="\(99/100\)">\(99/100\)</span>. A nonfinite evaluation or an undecided comparison causes subdivision, never acceptance. No root is inferred from floating-point samples. The saved certificate contains every accepted binary address and its exact rational upper bound. Collapse sibling addresses to their parent until the single empty address remains; this verifies coverage of the closed square and disjoint cell interiors. Thus every physical input belongs to an accepted cell, with all four edges and corners included. The code has explicit cell and depth limits that raise an error rather than silently omit a region. Both complete runs, at 128 and 256 bits, are retained. They use the same implementation and are not independent reviews.</p>
+<p>An additional implementation, replay_chen_hou_vertical_uy_rational.py, re-evaluates every accepted cell using rational interval endpoints and integer square roots, without importing Arb or its evaluator. Each operation is rounded outward to the dyadic lattice with denominator <span class="math" data-tex="\(2^{96}\)">\(2^{96}\)</span>. Addition uses endpoint sums, multiplication all four endpoint products, reciprocal reverses two endpoints of an interval avoiding zero, and squaring includes zero precisely when the interval crosses zero. For a nonnegative rational <span class="math" data-tex="\(x\)">\(x\)</span>, its lower square-root lattice endpoint is</p>
+<span class="math math-display" data-tex="\[
+\frac{\left\lfloor\sqrt{\left\lfloor 2^{192}x\right\rfloor}\right\rfloor}{2^{96}}.
+\tag{VU21}
+\]">\[
+\frac{\left\lfloor\sqrt{\left\lfloor 2^{192}x\right\rfloor}\right\rfloor}{2^{96}}.
+\tag{VU21}
+\]</span>
+<p>Its upper endpoint is this value plus <span class="math" data-tex="\(2^{-96}\)">\(2^{-96}\)</span>, except when its square equals <span class="math" data-tex="\(x\)">\(x\)</span>, in which case the same value suffices. The inner floor and the integer square root are exact integer operations; squaring each computed endpoint verifies the direction of its bound. Intersecting a radicand enclosure with the nonnegative half-line is valid by the preceding sign proof. The replay verifies every prefix cell, exact total area one and an upper bound below <span class="math" data-tex="\(99/100\)">\(99/100\)</span> in all 712 cells. This is a separate arithmetic implementation of the same comparison, with the same author review.</p>
+<p>For the physical open square, <span class="math" data-tex="\(F&gt;0\)">\(F&gt;0\)</span>. VU13 says that the left side of VU11 at <span class="math" data-tex="\(g_*=Fk\)">\(g_*=Fk\)</span> is strictly smaller than <span class="math" data-tex="\(F\)">\(F\)</span>. Strict increase proves <span class="math" data-tex="\(g&gt;g_*\)">\(g&gt;g_*\)</span>. Take nonnegative square roots and use VU10 and VU12, retaining the factor <span class="math" data-tex="\(\sqrt u\)">\(\sqrt u\)</span>. This proves VU8, strictly on the open branch. The compactified edges <span class="math" data-tex="\(\alpha=0,1\)">\(\alpha=0,1\)</span> are certification boundaries, not additional finite physical points.</p>
+<h3 id="vu-section-4-every-midpoint-and-the-complete-physical-coefficient">VU section 4. Every midpoint and the complete physical coefficient</h3>
+<p>Multiply VU8 by <span class="math" data-tex="\(4[-\Delta_a(s,t)]\)">\(4[-\Delta_a(s,t)]\)</span>, integrate the whole negative branch, and apply VU4 and VU6. This proves the exact receiving comparison</p>
+<span class="math math-display" data-tex="\[
+\frac23\partial_M C_{\rm mid}(a,M)\le E_a(M)
+=-\partial_M C_{\rm vert}(a,M)\qquad(M&gt;a).
+\tag{VU14}
+\]">\[
+\frac23\partial_M C_{\rm mid}(a,M)\le E_a(M)
+=-\partial_M C_{\rm vert}(a,M)\qquad(M&gt;a).
+\tag{VU14}
+\]</span>
+<p>Let <span class="math" data-tex="\(0\le\tau\le2/3\)">\(0\le\tau\le2/3\)</span>. The complete weighted cost therefore satisfies, for every <span class="math" data-tex="\(a&lt;M_1&lt;M_2&lt;\infty\)">\(a&lt;M_1&lt;M_2&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp; C_{\rm vert}(a,M_2)+\tau C_{\rm mid}(a,M_2)
+-C_{\rm vert}(a,M_1)-\tau C_{\rm mid}(a,M_1)\\
+&amp;\qquad\le
+-\left(1-\frac{3\tau}{2}\right)\int_{M_1}^{M_2}E_a(s)\,ds
+\le0.
+\end{aligned}\tag{VU15}
+\]">\[
+\begin{aligned}
+&amp; C_{\rm vert}(a,M_2)+\tau C_{\rm mid}(a,M_2)
+-C_{\rm vert}(a,M_1)-\tau C_{\rm mid}(a,M_1)\\
+&amp;\qquad\le
+-\left(1-\frac{3\tau}{2}\right)\int_{M_1}^{M_2}E_a(s)\,ds
+\le0.
+\end{aligned}\tag{VU15}
+\]</span>
+<p>Both derivatives are integrable on this compact interval by the preceding proof, so the fundamental theorem applies. The source cost retains its nonzero right limit:
+<span class="math" data-tex="\(C_{\rm mid}(a,M)\to(\pi/2)\sqrt{2a}\)">\(C_{\rm mid}(a,M)\to(\pi/2)\sqrt{2a}\)</span> as <span class="math" data-tex="\(M\downarrow a\)">\(M\downarrow a\)</span>, by RV17 and KX12–KX14. The exterior tends to <span class="math" data-tex="\(C_{\rm vert}(a,a)\)">\(C_{\rm vert}(a,a)\)</span> by monotone convergence and its proved finite integral. Consequently</p>
+<span class="math math-display" data-tex="\[
+C_{\rm vert}(a,M)+\tau C_{\rm mid}(a,M)
+\le C_{\rm vert}(a,a)+\frac{\pi\tau}{2}\sqrt{2a}
+\quad(a&gt;0,\ M&gt;a,\ 0\le\tau\le2/3).
+\tag{VU16}
+\]">\[
+C_{\rm vert}(a,M)+\tau C_{\rm mid}(a,M)
+\le C_{\rm vert}(a,a)+\frac{\pi\tau}{2}\sqrt{2a}
+\quad(a&gt;0,\ M&gt;a,\ 0\le\tau\le2/3).
+\tag{VU16}
+\]</span>
+<p>This is a statement about the full original costs. At literal <span class="math" data-tex="\(M=a\)">\(M=a\)</span> the middle integration region is empty and its value is zero; VU16 uses its right limit, not that endpoint value. For <span class="math" data-tex="\(\tau&lt;2/3\)">\(\tau&lt;2/3\)</span>, VU15 is strictly negative when <span class="math" data-tex="\(M_2&gt;M_1\)">\(M_2&gt;M_1\)</span>, because <span class="math" data-tex="\(E_a(s)&gt;0\)">\(E_a(s)&gt;0\)</span>.</p>
+<p>For the original physical data let <span class="math" data-tex="\(H_x,H_y\)">\(H_x,H_y\)</span> be the two half-Hölder seminorms and <span class="math" data-tex="\(N_\tau=\max(H_x,\tau^{-1}H_y)\)">\(N_\tau=\max(H_x,\tau^{-1}H_y)\)</span>, with <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>. Retain physical midpoint <span class="math" data-tex="\(M\)">\(M\)</span>, horizontal coordinate <span class="math" data-tex="\(c\)">\(c\)</span>, and the two evaluation points <span class="math" data-tex="\((c,M-a),(c,M+a)\)">\((c,M-a),(c,M+a)\)</span>. RV19, with every local term and expanding-square band already accounted for, now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{|\mathscr D_u|}{\sqrt{2a}}
+&amp;\le
+\frac{C_{\rm vert}(a,M)+\tau\{C_{\rm in}(a)+C_{\rm mid}(a,M)\}}
+{\pi\sqrt{2a}}\,N_\tau\\
+&amp;\le
+\left(\frac{C_{\rm vert}(a,a)+\tau C_{\rm in}(a)}
+{\pi\sqrt{2a}}+\frac{\tau}{2}\right)N_\tau .
+\end{aligned}\tag{VU17}
+\]">\[
+\begin{aligned}
+\frac{|\mathscr D_u|}{\sqrt{2a}}
+&amp;\le
+\frac{C_{\rm vert}(a,M)+\tau\{C_{\rm in}(a)+C_{\rm mid}(a,M)\}}
+{\pi\sqrt{2a}}\,N_\tau\\
+&amp;\le
+\left(\frac{C_{\rm vert}(a,a)+\tau C_{\rm in}(a)}
+{\pi\sqrt{2a}}+\frac{\tau}{2}\right)N_\tau .
+\end{aligned}\tag{VU17}
+\]</span>
+<p>The quantity in the last parentheses is exactly the certified vertical <span class="math" data-tex="\(v_x\)">\(v_x\)</span> coefficient in VN11, not a modified operator. VN22 proves it is below <span class="math" data-tex="\(259/100\)">\(259/100\)</span> for <span class="math" data-tex="\(\tau=291/500&lt;2/3\)">\(\tau=291/500&lt;2/3\)</span>, at every <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>; that proof retains the scale map, all <span class="math" data-tex="\(\sqrt a\)">\(\sqrt a\)</span> cost factors, infinite tails and the original <span class="math" data-tex="\(\pi\sqrt{2a}\)">\(\pi\sqrt{2a}\)</span> divisor. Therefore</p>
+<span class="math math-display" data-tex="\[
+|\mathscr D_u|\le\frac{259}{100}N_{291/500}\sqrt{2a}
+\quad\text{for all original data with finite seminorm, }a&gt;0,\ M&gt;a.
+\tag{VU18}
+\]">\[
+|\mathscr D_u|\le\frac{259}{100}N_{291/500}\sqrt{2a}
+\quad\text{for all original data with finite seminorm, }a&gt;0,\ M&gt;a.
+\tag{VU18}
+\]</span>
+<p>As in RV19, this denotes the limit of the original velocity differences with the prescribed expanding-square cutoffs. It does not assume that both separate infinite operators exist on every Hölder datum.</p>
+<p>The original saved anisotropy ratio obeys <span class="math" data-tex="\(0&lt;r\le r_+&lt;291/500\)">\(0&lt;r\le r_+&lt;291/500\)</span>, as proved in AN. Hence <span class="math" data-tex="\(N_{291/500}\le N_r\)">\(N_{291/500}\le N_r\)</span>. The saved vertical <span class="math" data-tex="\(u_y\)">\(u_y\)</span> interval has exact lower endpoint</p>
+<span class="math math-display" data-tex="\[
+\frac{5850945274287295}{2251799813685248}&gt;\frac{259}{100};
+\tag{VU19}
+\]">\[
+\frac{5850945274287295}{2251799813685248}&gt;\frac{259}{100};
+\tag{VU19}
+\]</span>
+<p>its saved upper endpoint is larger still and the printed bound <span class="math" data-tex="\(261/100\)">\(261/100\)</span> is larger. VU18 proves the saved scalar is a valid upper bound for the original data norm, without increasing it. The local regular-cell undercount in VA remains a genuine code error; this independent complete-cost proof supplies enough margin to validate the scalar itself. It does not reconstruct the historical MATLAB/INTLAB output or prove that each intermediate interval in that run enclosed its intended quantity.</p>
+<h3 id="vu-section-5-consequences-exact-scope-and-illustration">VU section 5. Consequences, exact scope and illustration</h3>
+<p>VU14–VU16 hold on the larger interval <span class="math" data-tex="\(0\le\tau\le2/3\)">\(0\le\tau\le2/3\)</span>, not merely at the source ratio. They prove monotonicity of the complete combined cost and its supremum at the singular right endpoint, while retaining the singular residual mass. Taking increasing finite <span class="math" data-tex="\(M\)">\(M\)</span> in VU14 also gives the proved bound</p>
+<span class="math math-display" data-tex="\[
+\lim_{M\to\infty}C_{\rm mid}(a,M)
+\le\frac\pi2\sqrt{2a}+\frac32 C_{\rm vert}(a,a)&lt;\infty.
+\tag{VU20}
+\]">\[
+\lim_{M\to\infty}C_{\rm mid}(a,M)
+\le\frac\pi2\sqrt{2a}+\frac32 C_{\rm vert}(a,a)&lt;\infty.
+\tag{VU20}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(C_{\rm mid}\)">\(C_{\rm mid}\)</span> increases by VU6. Integrating VU14 from a positive-distance midpoint and then sending that midpoint down to <span class="math" data-tex="\(a\)">\(a\)</span>, using the two established limits, bounds each middle value by the right side of VU20. Monotone convergence gives its finite limit. No novelty is claimed.</p>
+<p>The reproducible accompanying figure keeps both partners at an explicitly specified physical <span class="math" data-tex="\(a,s,t\)">\(a,s,t\)</span>. Its parameter-square panel distinguishes the accepted interval partition from sampled values. The receiving diagram identifies the full derivative comparison, the singular residual mass and the <span class="math" data-tex="\(\pi\sqrt{2a}\)">\(\pi\sqrt{2a}\)</span> divisor, with VU8, VU14 and VU17–VU18 as proof locators.</p>
+<p><img src="assets/NS-FLUID-54/chen-hou-vertical-uy-8085DF48F3AF0A63060A3019300B2619DE058BA1FA9C19F603013CDDBE4C3B7F.png" alt="Original physical partners, full interval partition and complete vertical bound." class="course-figure" width="2310" height="1815" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="chen-hou-vertical-uy" data-asset-sha256="8085DF48F3AF0A63060A3019300B2619DE058BA1FA9C19F603013CDDBE4C3B7F"></p>
+<p>This result certifies the complete saved vertical <span class="math" data-tex="\(u_y\)">\(u_y\)</span> scalar and extends the already certified vertical <span class="math" data-tex="\(v_x\)">\(v_x\)</span> result. The other directional arrays, weighted receiving operations, remeshing, full stability calculation and main theorem remain under audit. Original MATLAB/INTLAB was not executed. The proof and implementation receive author self-review; neither an independent reviewer nor formal verification is claimed.</p>
+<h2 id="part-5-original-weighted-velocity-integral-logarithmic-part-and-exponent-range">Part 5. Original weighted velocity integral: logarithmic part and exponent range</h2>
+<p>Human source: Jiajie Chen and Thomas Y. Hou, <a href="https://arxiv.org/abs/2305.05660v3">Part II v3</a>, original author euler_supp_Part2.tex, SHA-256 <code>91fbe8b67384412903f851ccaeaa541cfe1f9658122e0f438d3ba064054dfc1b</code>, the subsection “Estimate of <span class="math" data-tex="\(u(x)/x_1^{1/2}\)">\(u(x)/x_1^{1/2}\)</span>” at lines 3000–3072. The source defines the two original integrals, gives a formula for <span class="math" data-tex="\(J_1\)">\(J_1\)</span>, describes a regular part of <span class="math" data-tex="\(J_2\)">\(J_2\)</span> with inconsistent logarithm signs, and uses it in an endpoint selection bound for general <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span>. It then states that the actual application uses <span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span>. Original code implementing this selector has not yet been located in the bounded downloaded code collection.</p>
+<p>This note reconstructs the complete original integrals. It proves the correct logarithmic decomposition, global bounds on the regular-part derivative, and the selector inequality for the actual exponent. It also gives an explicit interval on which the source's general-exponent selector fails. That failure concerns the generality of this intermediate statement; it is not a counterexample to the actual <span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span> estimate or the main theorem. The proof receives author self-review; no independent or formal verification or novelty is claimed.</p>
+<h3 id="wj-section-1-the-complete-integrals-and-their-primitives">WJ section 1. The complete integrals and their primitives</h3>
+<p>For <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span> retain the source kernel and both regions:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_s(s_1,s_2)
+&amp;=\frac{2(s_1+1)s_2}
+{(s_1^2+s_2^2)((s_1+2)^2+s_2^2)}\\
+&amp;=\frac12\left(\frac{s_2}{s_1^2+s_2^2}
+-\frac{s_2}{(s_1+2)^2+s_2^2}\right),\\
+J_1(B)&amp;=\int_{-1}^0\int_0^{1/B}K_s(s_1,s_2)\,ds_2\,ds_1,\\
+J_2(B)&amp;=\int_0^{1/B}\int_0^{1/B}K_s(s_1,s_2)\,ds_2\,ds_1.
+\end{aligned}\tag{WJ1}
+\]">\[
+\begin{aligned}
+K_s(s_1,s_2)
+&amp;=\frac{2(s_1+1)s_2}
+{(s_1^2+s_2^2)((s_1+2)^2+s_2^2)}\\
+&amp;=\frac12\left(\frac{s_2}{s_1^2+s_2^2}
+-\frac{s_2}{(s_1+2)^2+s_2^2}\right),\\
+J_1(B)&amp;=\int_{-1}^0\int_0^{1/B}K_s(s_1,s_2)\,ds_2\,ds_1,\\
+J_2(B)&amp;=\int_0^{1/B}\int_0^{1/B}K_s(s_1,s_2)\,ds_2\,ds_1.
+\end{aligned}\tag{WJ1}
+\]</span>
+<p>The equality follows by subtracting the two complete rational terms; their numerator difference is <span class="math" data-tex="\(4(s_1+1)s_2\)">\(4(s_1+1)s_2\)</span>, retaining the half factor. On both stated regions <span class="math" data-tex="\(K_s\ge0\)">\(K_s\ge0\)</span>. Near their only singular point <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, its absolute value is bounded by a constant times <span class="math" data-tex="\((s_1^2+s_2^2)^{-1/2}\)">\((s_1^2+s_2^2)^{-1/2}\)</span>: the shifted denominator stays bounded away from zero and <span class="math" data-tex="\(|s_2|\le\sqrt{s_1^2+s_2^2}\)">\(|s_2|\le\sqrt{s_1^2+s_2^2}\)</span>. This is integrable in two dimensions. The integral exists, with no principal-value convention required. Increasing <span class="math" data-tex="\(B\)">\(B\)</span> shrinks each region, so both integrals decrease, strictly when <span class="math" data-tex="\(B\)">\(B\)</span> increases.</p>
+<p>Set <span class="math" data-tex="\(L=1/B\)">\(L=1/B\)</span>. For <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, define the complete primitives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_L(x)&amp;=x\log(x^2+L^2)-2x+2L\arctan(x/L),\\
+A_0(x)&amp;=2x\log x-2x\quad(x&gt;0),\qquad A_0(0)=0.
+\end{aligned}\tag{WJ2}
+\]">\[
+\begin{aligned}
+A_L(x)&amp;=x\log(x^2+L^2)-2x+2L\arctan(x/L),\\
+A_0(x)&amp;=2x\log x-2x\quad(x&gt;0),\qquad A_0(0)=0.
+\end{aligned}\tag{WJ2}
+\]</span>
+<p>Differentiation gives <span class="math" data-tex="\(A_L&#x27;(x)=\log(x^2+L^2)\)">\(A_L&#x27;(x)=\log(x^2+L^2)\)</span> and <span class="math" data-tex="\(A_0&#x27;(x)=\log x^2\)">\(A_0&#x27;(x)=\log x^2\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>. The value <span class="math" data-tex="\(A_0(0)=0\)">\(A_0(0)=0\)</span> is its continuous limit. Height integration of each original term in WJ1 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^L K_s(x,t)\,dt
+&amp;=\frac14\Bigl\{\log(x^2+L^2)-\log x^2\\
+&amp;\qquad-\log((x+2)^2+L^2)+\log((x+2)^2)\Bigr\}.
+\end{aligned}
+\tag{WJ3}
+\]">\[
+\begin{aligned}
+\int_0^L K_s(x,t)\,dt
+&amp;=\frac14\Bigl\{\log(x^2+L^2)-\log x^2\\
+&amp;\qquad-\log((x+2)^2+L^2)+\log((x+2)^2)\Bigr\}.
+\end{aligned}
+\tag{WJ3}
+\]</span>
+<p>for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, with an integrable logarithmic singularity at zero. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_2(B)=\frac14\{&amp;
+A_L(L)-A_L(L+2)+A_L(2)\\
+&amp;-A_0(L)+A_0(L+2)-A_0(2)\}.
+\end{aligned}\tag{WJ4}
+\]">\[
+\begin{aligned}
+J_2(B)=\frac14\{&amp;
+A_L(L)-A_L(L+2)+A_L(2)\\
+&amp;-A_0(L)+A_0(L+2)-A_0(2)\}.
+\end{aligned}\tag{WJ4}
+\]</span>
+<p>All six primitive values remain, including the shifted lower endpoint <span class="math" data-tex="\(2\)">\(2\)</span>. Formula WJ4 follows first on an interval avoiding zero and then by the proved integrability and the continuous primitive limits.</p>
+<p>For <span class="math" data-tex="\(J_1\)">\(J_1\)</span>, use <span class="math" data-tex="\(x=-s_1\)">\(x=-s_1\)</span> in the first logarithm and <span class="math" data-tex="\(x=s_1+2\)">\(x=s_1+2\)</span> in the shifted one. Keeping both endpoints gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_1(B)
+&amp;=\frac14\{2A_L(1)-A_L(2)+A_0(2)-2A_0(1)\}\\
+&amp;=\frac12\log\frac{1+B^2}{1+4B^2}
++\log2+\frac{2\arctan B-\arctan(2B)}{2B},\\
+\lim_{B\downarrow0}J_1(B)&amp;=\log2.
+\end{aligned}\tag{WJ5}
+\]">\[
+\begin{aligned}
+J_1(B)
+&amp;=\frac14\{2A_L(1)-A_L(2)+A_0(2)-2A_0(1)\}\\
+&amp;=\frac12\log\frac{1+B^2}{1+4B^2}
++\log2+\frac{2\arctan B-\arctan(2B)}{2B},\\
+\lim_{B\downarrow0}J_1(B)&amp;=\log2.
+\end{aligned}\tag{WJ5}
+\]</span>
+<p>For the limit, the logarithm tends to zero. The numerator of the last term vanishes at zero and has derivative zero there, since <span class="math" data-tex="\(2/(1+B^2)-2/(1+4B^2)\to0\)">\(2/(1+B^2)-2/(1+4B^2)\to0\)</span>; the fundamental theorem bounds its quotient by the supremum of that derivative. The source's final <span class="math" data-tex="\(J_1\)">\(J_1\)</span> limit is correct. The intervening display changing a prefactor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> to <span class="math" data-tex="\(1/4\)">\(1/4\)</span> before taking the limit does not preserve the original expression.</p>
+<h3 id="wj-section-2-the-exact-regular-part-its-value-and-derivative">WJ section 2. The exact regular part, its value and derivative</h3>
+<p>Define the regular part with its correct sign:</p>
+<span class="math math-display" data-tex="\[
+R(B)=J_2(B)+\log B,\qquad J_2(B)=R(B)-\log B.
+\tag{WJ6}
+\]">\[
+R(B)=J_2(B)+\log B,\qquad J_2(B)=R(B)-\log B.
+\tag{WJ6}
+\]</span>
+<p>The source notation <span class="math" data-tex="\(J_{21}\)">\(J_{21}\)</span> must equal this <span class="math" data-tex="\(R\)">\(R\)</span> for its displayed decomposition and derivative to hold. Its prose definition <span class="math" data-tex="\(J_{21}=J_2-\log B\)">\(J_{21}=J_2-\log B\)</span> has the opposite sign.</p>
+<p>Here is the complete formula obtained by substituting WJ2 into WJ4. Put <span class="math" data-tex="\(D_0(B)=2+4B+4B^2\)">\(D_0(B)=2+4B+4B^2\)</span>; then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+4R(B)
+={}&amp;\frac{\log2-\log D_0(B)+2\log(1+2B)}B\\
+&amp;+\frac2B\left(\frac\pi4-\arctan(1+2B)+\arctan(2B)\right)\\
+&amp;-2\log D_0(B)+2\log(1+4B^2)
++4\log(1+2B)-4\log2.
+\end{aligned}\tag{WJ7}
+\]">\[
+\begin{aligned}
+4R(B)
+={}&amp;\frac{\log2-\log D_0(B)+2\log(1+2B)}B\\
+&amp;+\frac2B\left(\frac\pi4-\arctan(1+2B)+\arctan(2B)\right)\\
+&amp;-2\log D_0(B)+2\log(1+4B^2)
++4\log(1+2B)-4\log2.
+\end{aligned}\tag{WJ7}
+\]</span>
+<p>To see the retained logarithmic contribution, write
+<span class="math" data-tex="\(\log(L^2c)=2\log L+\log c\)">\(\log(L^2c)=2\log L+\log c\)</span> in all four original logarithms of WJ4. Their total coefficient of <span class="math" data-tex="\(\log L\)">\(\log L\)</span> is four inside its braces, giving precisely <span class="math" data-tex="\(-\log B\)">\(-\log B\)</span> in <span class="math" data-tex="\(J_2\)">\(J_2\)</span>. The remaining logarithms and all three arctangents are exactly WJ7.</p>
+<p>The two numerators divided by <span class="math" data-tex="\(B\)">\(B\)</span> in WJ7 vanish at zero. Their derivative limits are respectively <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, including the displayed factor two in the second line. The last line tends to <span class="math" data-tex="\(-6\log2\)">\(-6\log2\)</span>. The same fundamental-theorem argument as in WJ5 therefore gives</p>
+<span class="math math-display" data-tex="\[
+R(0):=\lim_{B\downarrow0}R(B)=1-\frac32\log2.
+\tag{WJ8}
+\]">\[
+R(0):=\lim_{B\downarrow0}R(B)=1-\frac32\log2.
+\tag{WJ8}
+\]</span>
+<p>In particular this regular part is negative near zero. To control its full derivative, differentiate WJ7, retaining all terms. Direct collection gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R&#x27;(B)&amp;=-\frac{S(B)}{8B^2},\\
+S(B)&amp;=2\log((1+2B)^2)-2\log(1+2B+2B^2)-8B\\
+&amp;\qquad+4\arctan(2B)-4\arctan(1+2B)+\pi,\\
+S(0)&amp;=0,\\
+S&#x27;(B)&amp;=-8B\,\frac{P(B)}{D(B)},\\
+P(B)&amp;=16B^4+24B^3+20B^2+4B+1,\\
+D(B)&amp;=(2B+1)(4B^2+1)(2B^2+2B+1)\\
+&amp;=16B^5+24B^4+20B^3+10B^2+4B+1 .
+\end{aligned}\tag{WJ9}
+\]">\[
+\begin{aligned}
+R&#x27;(B)&amp;=-\frac{S(B)}{8B^2},\\
+S(B)&amp;=2\log((1+2B)^2)-2\log(1+2B+2B^2)-8B\\
+&amp;\qquad+4\arctan(2B)-4\arctan(1+2B)+\pi,\\
+S(0)&amp;=0,\\
+S&#x27;(B)&amp;=-8B\,\frac{P(B)}{D(B)},\\
+P(B)&amp;=16B^4+24B^3+20B^2+4B+1,\\
+D(B)&amp;=(2B+1)(4B^2+1)(2B^2+2B+1)\\
+&amp;=16B^5+24B^4+20B^3+10B^2+4B+1 .
+\end{aligned}\tag{WJ9}
+\]</span>
+<p>The derivative identity agrees with the source derivative when <span class="math" data-tex="\(J_{21}=R\)">\(J_{21}=R\)</span>. Every coefficient of <span class="math" data-tex="\(P,D\)">\(P,D\)</span> is positive. Integrate the exact formula for <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> from zero and divide by <span class="math" data-tex="\(8B^2\)">\(8B^2\)</span>:</p>
+<span class="math math-display" data-tex="\[
+R&#x27;(B)=\frac1{B^2}\int_0^B t\,\frac{P(t)}{D(t)}\,dt&gt;0.
+\tag{WJ10}
+\]">\[
+R&#x27;(B)=\frac1{B^2}\int_0^B t\,\frac{P(t)}{D(t)}\,dt&gt;0.
+\tag{WJ10}
+\]</span>
+<p>This recovers the source's global monotonicity conclusion for <span class="math" data-tex="\(R\)">\(R\)</span>. It also supplies precise bounds without a numerical approximation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2D(B)-P(B)&amp;=32B^5+32B^4+16B^3+4B+1&gt;0,\\
+P(B)-D(B)&amp;=2B^2(5+2B-4B^2-8B^3)&gt;0
+\quad(0&lt;B\le1/2),\\
+0&lt;R&#x27;(B)&amp;&lt;1\quad(B&gt;0),\\
+\frac12&lt;R&#x27;(B)&amp;&lt;1\quad(0&lt;B\le1/2).
+\end{aligned}\tag{WJ11}
+\]">\[
+\begin{aligned}
+2D(B)-P(B)&amp;=32B^5+32B^4+16B^3+4B+1&gt;0,\\
+P(B)-D(B)&amp;=2B^2(5+2B-4B^2-8B^3)&gt;0
+\quad(0&lt;B\le1/2),\\
+0&lt;R&#x27;(B)&amp;&lt;1\quad(B&gt;0),\\
+\frac12&lt;R&#x27;(B)&amp;&lt;1\quad(0&lt;B\le1/2).
+\end{aligned}\tag{WJ11}
+\]</span>
+<p>For the second polynomial, <span class="math" data-tex="\(4B^2+8B^3\le2\)">\(4B^2+8B^3\le2\)</span> on <span class="math" data-tex="\(0\le B\le1/2\)">\(0\le B\le1/2\)</span>, so its parenthesis is at least three. Substitution of the strict ratio bounds into WJ10 gives the derivative bounds, since <span class="math" data-tex="\(\int_0^B t\,dt=B^2/2\)">\(\int_0^B t\,dt=B^2/2\)</span>. Its integral expression also gives <span class="math" data-tex="\(R&#x27;(B)\to1/2\)">\(R&#x27;(B)\to1/2\)</span> as <span class="math" data-tex="\(B\downarrow0\)">\(B\downarrow0\)</span>, by continuity of <span class="math" data-tex="\(P/D\)">\(P/D\)</span> at zero. Combining with WJ8 proves</p>
+<span class="math math-display" data-tex="\[
+R(0)&lt;R(B)&lt;R(0)+B\quad(B&gt;0),\qquad
+R(B)&gt;R(0)+B/2\quad(0&lt;B\le1/2).
+\tag{WJ12}
+\]">\[
+R(0)&lt;R(B)&lt;R(0)+B\quad(B&gt;0),\qquad
+R(B)&gt;R(0)+B/2\quad(0&lt;B\le1/2).
+\tag{WJ12}
+\]</span>
+<h3 id="wj-section-3-recover-the-actual-physical-selector-and-a-larger-valid-range">WJ section 3. Recover the actual physical selector and a larger valid range</h3>
+<p>Keep the actual mesh size <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, physical rescaled coordinate <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, and exponent <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span>. Put <span class="math" data-tex="\(p=1-\alpha\)">\(p=1-\alpha\)</span>, <span class="math" data-tex="\(B=x/h\)">\(B=x/h\)</span>, and retain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{\alpha,h}(x)&amp;=x^pJ_2(x/h),\\
+\partial_x F_{\alpha,h}(x)
+&amp;=x^{p-1}\{pJ_2(B)+BJ_2&#x27;(B)\}\\
+&amp;=x^{p-1}\{p(R(B)-\log B)+BR&#x27;(B)-1\}.
+\end{aligned}\tag{WJ13}
+\]">\[
+\begin{aligned}
+F_{\alpha,h}(x)&amp;=x^pJ_2(x/h),\\
+\partial_x F_{\alpha,h}(x)
+&amp;=x^{p-1}\{pJ_2(B)+BJ_2&#x27;(B)\}\\
+&amp;=x^{p-1}\{p(R(B)-\log B)+BR&#x27;(B)-1\}.
+\end{aligned}\tag{WJ13}
+\]</span>
+<p>The mesh factor is not discarded: differentiating <span class="math" data-tex="\(J_2(x/h)\)">\(J_2(x/h)\)</span> gives <span class="math" data-tex="\(J_2&#x27;(B)/h\)">\(J_2&#x27;(B)/h\)</span>, whose product with <span class="math" data-tex="\(x\)">\(x\)</span> is precisely <span class="math" data-tex="\(BJ_2&#x27;(B)\)">\(BJ_2&#x27;(B)\)</span>. The source's inference from increase of <span class="math" data-tex="\(R(B)\)">\(R(B)\)</span> to increase of <span class="math" data-tex="\(x^pR(B)\)">\(x^pR(B)\)</span> is invalid where <span class="math" data-tex="\(R&lt;0\)">\(R&lt;0\)</span>. We prove the desired complete product directly.</p>
+<p>The following exact logarithm bounds will suffice:</p>
+<span class="math math-display" data-tex="\[
+\frac{56}{81}&lt;\log2&lt;\frac{25}{36},\qquad \log2&gt;\frac23.
+\tag{WJ14}
+\]">\[
+\frac{56}{81}&lt;\log2&lt;\frac{25}{36},\qquad \log2&gt;\frac23.
+\tag{WJ14}
+\]</span>
+<p>Indeed integrating the geometric series on <span class="math" data-tex="\([0,1/3]\)">\([0,1/3]\)</span> gives
+<span class="math" data-tex="\(\log2=2\sum_{n=0}^\infty[(2n+1)3^{2n+1}]^{-1}\)">\(\log2=2\sum_{n=0}^\infty[(2n+1)3^{2n+1}]^{-1}\)</span>.
+The first two positive terms sum to <span class="math" data-tex="\(56/81\)">\(56/81\)</span>, proving its strict lower bound. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, replace <span class="math" data-tex="\(1/(2n+1)\)">\(1/(2n+1)\)</span> by <span class="math" data-tex="\(1/3\)">\(1/3\)</span>; the resulting geometric tail is <span class="math" data-tex="\(1/36\)">\(1/36\)</span>, strictly larger than the original tail after its first term. Adding <span class="math" data-tex="\(2/3\)">\(2/3\)</span> proves the upper bound. This also proves the last inequality.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+p_*=\frac1{1+(3/2)\log2}.
+\tag{WJ15}
+\]">\[
+p_*=\frac1{1+(3/2)\log2}.
+\tag{WJ15}
+\]</span>
+<p>For every <span class="math" data-tex="\(p_*\le p&lt;1\)">\(p_*\le p&lt;1\)</span>, the complete physical function in WJ13 is strictly increasing on</p>
+<span class="math math-display" data-tex="\[
+0&lt;x\le h\min\{e^{-1/p},1/2\}.
+\tag{WJ16}
+\]">\[
+0&lt;x\le h\min\{e^{-1/p},1/2\}.
+\tag{WJ16}
+\]</span>
+<p>To prove this, first suppose <span class="math" data-tex="\(B\le1/8\)">\(B\le1/8\)</span>. From WJ8 and WJ12,</p>
+<span class="math math-display" data-tex="\[
+p(R(B)-\log B)+BR&#x27;(B)-1
+&gt;p\{1-(3/2)\log2+\log8\}-1
+=p\{1+(3/2)\log2\}-1\ge0.
+\]">\[
+p(R(B)-\log B)+BR&#x27;(B)-1
+&gt;p\{1-(3/2)\log2+\log8\}-1
+=p\{1+(3/2)\log2\}-1\ge0.
+\]</span>
+<p>The first inequality is strict because <span class="math" data-tex="\(R(B)&gt;R(0)\)">\(R(B)&gt;R(0)\)</span> and <span class="math" data-tex="\(BR&#x27;(B)&gt;0\)">\(BR&#x27;(B)&gt;0\)</span>. When <span class="math" data-tex="\(B\ge1/8\)">\(B\ge1/8\)</span>, WJ11–WJ14 give</p>
+<span class="math math-display" data-tex="\[
+R(1/8)&gt;1-\frac32\log2+\frac1{16}
+&gt;\frac1{48}&gt;0.
+\]">\[
+R(1/8)&gt;1-\frac32\log2+\frac1{16}
+&gt;\frac1{48}&gt;0.
+\]</span>
+<p>Global increase gives <span class="math" data-tex="\(R(B)&gt;0\)">\(R(B)&gt;0\)</span>. The assumed <span class="math" data-tex="\(B\le e^{-1/p}\)">\(B\le e^{-1/p}\)</span> gives <span class="math" data-tex="\(p(-\log B)\ge1\)">\(p(-\log B)\ge1\)</span>, and <span class="math" data-tex="\(BR&#x27;(B)&gt;0\)">\(BR&#x27;(B)&gt;0\)</span> makes the bracket in WJ13 positive. These two cases prove WJ16 with all source restrictions.</p>
+<p>Because <span class="math" data-tex="\(\log2&gt;2/3\)">\(\log2&gt;2/3\)</span>, WJ15 gives <span class="math" data-tex="\(p_*&lt;1/2\)">\(p_*&lt;1/2\)</span>. The actual source exponent <span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span>, hence <span class="math" data-tex="\(p=1/2\)">\(p=1/2\)</span>, is therefore included. In particular, for every original cell</p>
+<span class="math math-display" data-tex="\[
+0\le z^l\le x\le z^u,\qquad
+0&lt;z^u\le h e^{-2},
+\]">\[
+0\le z^l\le x\le z^u,\qquad
+0&lt;z^u\le h e^{-2},
+\]</span>
+<span class="math math-display" data-tex="\[
+x^{1/2}J_2(x/h)
+\le (z^u)^{1/2}J_2(z^u/h).
+\tag{WJ17}
+\]">\[
+x^{1/2}J_2(x/h)
+\le (z^u)^{1/2}J_2(z^u/h).
+\tag{WJ17}
+\]</span>
+<p>At <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, use the continuous extension by zero: WJ6, WJ8 and <span class="math" data-tex="\(x^p\log(h/x)\to0\)">\(x^p\log(h/x)\to0\)</span> for <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span> prove that extension. The limit follows, for example, by writing <span class="math" data-tex="\(x/h=e^{-y}\)">\(x/h=e^{-y}\)</span> and bounding <span class="math" data-tex="\(ye^{-py}\to0\)">\(ye^{-py}\to0\)</span> from the exponential series. Thus the original cell may include zero. The source restriction <span class="math" data-tex="\(z^u\le h/2\)">\(z^u\le h/2\)</span> is automatic here since <span class="math" data-tex="\(e&gt;2\)">\(e&gt;2\)</span> implies <span class="math" data-tex="\(e^{-2}&lt;1/4\)">\(e^{-2}&lt;1/4\)</span>.</p>
+<h3 id="wj-section-4-explicit-failure-of-the-source-s-full-exponent-range">WJ section 4. Explicit failure of the source's full exponent range</h3>
+<p>Take the original permitted exponent <span class="math" data-tex="\(\alpha=9/10\)">\(\alpha=9/10\)</span>, so <span class="math" data-tex="\(p=1/10\)">\(p=1/10\)</span>, and keep arbitrary <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>. Define an actual source cell by</p>
+<span class="math math-display" data-tex="\[
+z^u=h e^{-10},\qquad z^l=\frac{999}{1000}h e^{-10}.
+\tag{WJ18}
+\]">\[
+z^u=h e^{-10},\qquad z^l=\frac{999}{1000}h e^{-10}.
+\tag{WJ18}
+\]</span>
+<p>It satisfies <span class="math" data-tex="\(z^u\le\min\{h e^{-1/p},h/2\}\)">\(z^u\le\min\{h e^{-1/p},h/2\}\)</span>. On its entire dimensionless interval <span class="math" data-tex="\(999e^{-10}/1000\le B\le e^{-10}\)">\(999e^{-10}/1000\le B\le e^{-10}\)</span>, we have <span class="math" data-tex="\(B&lt;1/1024\)">\(B&lt;1/1024\)</span>, because <span class="math" data-tex="\(e&gt;2\)">\(e&gt;2\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+0\le-\log B-10\le\log(1000/999)&lt;1/999,
+\]">\[
+0\le-\log B-10\le\log(1000/999)&lt;1/999,
+\]</span>
+<p>where the last bound is <span class="math" data-tex="\(\log(1+y)&lt;y\)">\(\log(1+y)&lt;y\)</span> for <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, obtained by integrating <span class="math" data-tex="\(1/(1+y)&lt;1\)">\(1/(1+y)&lt;1\)</span>. WJ8, WJ12 and WJ14 give <span class="math" data-tex="\(R(0)&lt;-1/27\)">\(R(0)&lt;-1/27\)</span>, <span class="math" data-tex="\(R(B)&lt;R(0)+B\)">\(R(B)&lt;R(0)+B\)</span>, and <span class="math" data-tex="\(R&#x27;(B)&lt;1\)">\(R&#x27;(B)&lt;1\)</span>. Hence the complete derivative bracket has the strict bound</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac1{10}(R(B)-\log B)+BR&#x27;(B)-1
+&amp;&lt;-\frac1{270}+\frac{11}{10240}+\frac1{9990}\\
+&amp;&lt;0.
+\end{aligned}\tag{WJ19}
+\]">\[
+\begin{aligned}
+\frac1{10}(R(B)-\log B)+BR&#x27;(B)-1
+&amp;&lt;-\frac1{270}+\frac{11}{10240}+\frac1{9990}\\
+&amp;&lt;0.
+\end{aligned}\tag{WJ19}
+\]</span>
+<p>All denominators are positive, and ordinary rational cross multiplication proves the final sign. Thus WJ13 is strictly negative throughout the actual cell WJ18. The fundamental theorem gives</p>
+<span class="math math-display" data-tex="\[
+F_{9/10,h}(z^l)&gt;F_{9/10,h}(z^u).
+\tag{WJ20}
+\]">\[
+F_{9/10,h}(z^l)&gt;F_{9/10,h}(z^u).
+\tag{WJ20}
+\]</span>
+<p>This is a counterexample to the source endpoint selector when stated for every <span class="math" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span>. It changes none of the original kernel, mesh size, coordinate, cutoff conditions or exponent convention. WJ17 separately proves the selector used by the actual <span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span> application. The stronger valid range WJ15–WJ16 is proved but not asserted optimal. The corresponding code and the remaining near-singularity estimates still require their own receiving audit.</p>
+<p><img src="assets/NS-FLUID-54/chen-hou-weighted-j2-F8E47D256701900923FC9C334F9B00322E9707DB7E4B09321BEA5DDDFE224285.png" alt="Complete original integration regions, logarithmic remainder, valid physical selector and counterexample cell." class="course-figure" width="2145" height="1650" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="chen-hou-weighted-j2" data-asset-sha256="F8E47D256701900923FC9C334F9B00322E9707DB7E4B09321BEA5DDDFE224285"></p>
+<p>The figure retains source coordinates and both integration regions at <span class="math" data-tex="\(B=1/2\)">\(B=1/2\)</span>, and shows physical selector examples with <span class="math" data-tex="\(h=3/5\)">\(h=3/5\)</span>. The regular-part bounds are WJ11–WJ12; the numerical curves illustrate the full original formulas rather than certify them. WJ17 proves the actual-exponent selector, and WJ18–WJ20 proves strict failure on the displayed counterexample cell, for every positive mesh size.</p>
+<h2 id="five-solved-exercises">Five solved exercises</h2>
+<p>These exercises use the original kernels, data norms, physical coordinates
+and mesh size from SQ, VA, VN, VU and WJ. Their human source is Jiajie Chen
+and Thomas Y. Hou, Part II v3, original author file euler_supp_Part2.tex,
+with the exact source locators beside those proofs. Each extension below
+is editorial mathematics; it is not attributed to the source authors,
+and no novelty is claimed.</p>
+<h3 id="exercise-1-differentiate-the-finite-strip-without-losing-its-residual">Exercise 1. Differentiate the finite strip without losing its residual</h3>
+<p>Fix the original width <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and let the actual height <span class="math" data-tex="\(b\ge a\)">\(b\ge a\)</span> vary.
+Find the first and second height derivatives of the full paired cost
+<span class="math" data-tex="\(C(a,b)\)">\(C(a,b)\)</span> in SQ6. Prove strict increase and concavity, and bound its
+entire difference from the infinite cost. Then state the finite-strip
+data estimate with its original residual mass still present.</p>
+<p><strong>Solution.</strong>
+Keep the SQ12 function
+<span class="math" data-tex="\(\phi(q)=(1-q^2)^{3/2}/(1+q^2)^2\)">\(\phi(q)=(1-q^2)^{3/2}/(1+q^2)^2\)</span>, and write <span class="math" data-tex="\(r=a/b\)">\(r=a/b\)</span>.
+The exact expression, including both original cutoff factors, is</p>
+<span class="math math-display" data-tex="\[
+C(a,b)=\sqrt b\int_0^{a/b}\phi(q)\,dq
++\sqrt a\int_{a/b}^1\frac{\phi(q)}{\sqrt q}\,dq .
+\tag{EX1}
+\]">\[
+C(a,b)=\sqrt b\int_0^{a/b}\phi(q)\,dq
++\sqrt a\int_{a/b}^1\frac{\phi(q)}{\sqrt q}\,dq .
+\tag{EX1}
+\]</span>
+<p>On <span class="math" data-tex="\(b&gt;a\)">\(b&gt;a\)</span>, differentiating both variable endpoints gives
+<span class="math" data-tex="\(-a b^{-3/2}\phi(a/b)\)">\(-a b^{-3/2}\phi(a/b)\)</span> from the first integral and
+<span class="math" data-tex="\(a\sqrt a\,b^{-2}\phi(a/b)/\sqrt{a/b}\)">\(a\sqrt a\,b^{-2}\phi(a/b)/\sqrt{a/b}\)</span> from the second.
+They cancel exactly. Thus, with <span class="math" data-tex="\(A\)">\(A\)</span> as in SQ13,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_b C(a,b)&amp;=\frac{A(a/b)}{2\sqrt b}&gt;0,\\
+\partial_b^2 C(a,b)
+&amp;=-\frac{A(a/b)}{4b^{3/2}}
+-\frac{a\,\phi(a/b)}{2b^{5/2}}&lt;0 .
+\end{aligned}\tag{EX2}
+\]">\[
+\begin{aligned}
+\partial_b C(a,b)&amp;=\frac{A(a/b)}{2\sqrt b}&gt;0,\\
+\partial_b^2 C(a,b)
+&amp;=-\frac{A(a/b)}{4b^{3/2}}
+-\frac{a\,\phi(a/b)}{2b^{5/2}}&lt;0 .
+\end{aligned}\tag{EX2}
+\]</span>
+<p>The positivity follows because <span class="math" data-tex="\(\phi(q)&gt;0\)">\(\phi(q)&gt;0\)</span> for <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span>,
+so its integral over any interval of positive length is positive.
+The formulas also have finite right limits at <span class="math" data-tex="\(b=a\)">\(b=a\)</span>:
+<span class="math" data-tex="\(\phi(1)=0\)">\(\phi(1)=0\)</span> and
+<span class="math" data-tex="\(A(1)=\pi/2-\pi/(2\sqrt2)&gt;0\)">\(A(1)=\pi/2-\pi/(2\sqrt2)&gt;0\)</span>. The fundamental theorem on
+compact height intervals, followed by this right limit, proves the
+claimed strict increase and concavity on the complete domain <span class="math" data-tex="\(b\ge a\)">\(b\ge a\)</span>.
+In particular no derivative of an infinite upper endpoint was assumed.</p>
+<p>SQ16–SQ19 gives the convergent limit <span class="math" data-tex="\(\sqrt a\,\kappa\)">\(\sqrt a\,\kappa\)</span>.
+Subtract the two full expressions in SQ12:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sqrt a\,\kappa-C(a,b)
+&amp;=\sqrt a\int_0^{a/b}\frac{\phi(q)}{\sqrt q}\,dq
+-\sqrt b\int_0^{a/b}\phi(q)\,dq\\
+&amp;=\int_0^{a/b}\phi(q)
+\left(\sqrt{\frac a q}-\sqrt b\right)dq\\
+&amp;=\int_b^\infty \frac{A(a/\ell)}{2\sqrt\ell}\,d\ell,\\
+0&lt;\sqrt a\,\kappa-C(a,b)&amp;\le\frac{a}{\sqrt b}.
+\end{aligned}\tag{EX3}
+\]">\[
+\begin{aligned}
+\sqrt a\,\kappa-C(a,b)
+&amp;=\sqrt a\int_0^{a/b}\frac{\phi(q)}{\sqrt q}\,dq
+-\sqrt b\int_0^{a/b}\phi(q)\,dq\\
+&amp;=\int_0^{a/b}\phi(q)
+\left(\sqrt{\frac a q}-\sqrt b\right)dq\\
+&amp;=\int_b^\infty \frac{A(a/\ell)}{2\sqrt\ell}\,d\ell,\\
+0&lt;\sqrt a\,\kappa-C(a,b)&amp;\le\frac{a}{\sqrt b}.
+\end{aligned}\tag{EX3}
+\]</span>
+<p>The first integrand is positive on <span class="math" data-tex="\(0&lt;q&lt;a/b\)">\(0&lt;q&lt;a/b\)</span>.
+For the third line integrate EX2 from <span class="math" data-tex="\(b\)">\(b\)</span> to a finite height and
+then use the proved infinite limit. Since <span class="math" data-tex="\(0\le\phi\le1\)">\(0\le\phi\le1\)</span>,
+<span class="math" data-tex="\(A(a/\ell)\le a/\ell\)">\(A(a/\ell)\le a/\ell\)</span>, and the remaining full tail is
+<span class="math" data-tex="\((a/2)\int_b^\infty\ell^{-3/2}\,d\ell=a/\sqrt b\)">\((a/2)\int_b^\infty\ell^{-3/2}\,d\ell=a/\sqrt b\)</span>.
+This proves the last bound with its physical width and height.</p>
+<p>For actual data obeying SQ2 on the rectangle and square, the result is</p>
+<span class="math math-display" data-tex="\[
+|I_{a,b}|
+\le \frac{Q_0}{2}\arctan(a/b)+H_y C(a,b).
+\tag{EX4}
+\]">\[
+|I_{a,b}|
+\le \frac{Q_0}{2}\arctan(a/b)+H_y C(a,b).
+\tag{EX4}
+\]</span>
+<p>The first term is the full residual, obtained from SQ5; differentiating
+the paired cost does not remove it. For constant data <span class="math" data-tex="\(f\equiv c\)">\(f\equiv c\)</span>,
+the actual integral is <span class="math" data-tex="\((c/2)\arctan(a/b)\)">\((c/2)\arctan(a/b)\)</span>, so omitting that term
+would be false. The infinite comparison in EX3 concerns a coefficient,
+and does not assert strict improvement of a data bound when <span class="math" data-tex="\(H_y=0\)">\(H_y=0\)</span>.</p>
+<h3 id="exercise-2-integrate-every-height-in-the-middle-residual">Exercise 2. Integrate every height in the middle residual</h3>
+<p>Fix <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span>. The second term in VU4 is the complete middle
+residual. Describe its support with the horizontal coordinate first,
+evaluate its entire height integral, and recover its singular right
+limit without discarding any mass.</p>
+<p><strong>Solution.</strong>
+For <span class="math" data-tex="\(a&lt;s&lt;M\)">\(a&lt;s&lt;M\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_0(a,M,s)&amp;=M^2+s^2+2a^2,\\
+C_0(a,M,s)&amp;=(s^2-a^2)(M^2-a^2),\\
+b_{a,M}(s)^2
+&amp;=\frac{2C_0(a,M,s)}
+{B_0(a,M,s)+\sqrt{B_0(a,M,s)^2+12C_0(a,M,s)}} .
+\end{aligned}\tag{EX5}
+\]">\[
+\begin{aligned}
+B_0(a,M,s)&amp;=M^2+s^2+2a^2,\\
+C_0(a,M,s)&amp;=(s^2-a^2)(M^2-a^2),\\
+b_{a,M}(s)^2
+&amp;=\frac{2C_0(a,M,s)}
+{B_0(a,M,s)+\sqrt{B_0(a,M,s)^2+12C_0(a,M,s)}} .
+\end{aligned}\tag{EX5}
+\]</span>
+<p>Both numerator and denominator are positive on the stated open interval.
+Here is the domain proof. For <span class="math" data-tex="\(0&lt;t&lt;\sigma_a(M)\)">\(0&lt;t&lt;\sigma_a(M)\)</span>, the original
+horizontal partner in VU2 is</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{a,t}(M)^2
+=\frac{(a^2+t^2)(M^2-a^2+3t^2)}{M^2-a^2-t^2}.
+\tag{EX6}
+\]">\[
+\mathcal T_{a,t}(M)^2
+=\frac{(a^2+t^2)(M^2-a^2+3t^2)}{M^2-a^2-t^2}.
+\tag{EX6}
+\]</span>
+<p>Its denominator stays positive up to the threshold. Indeed
+<span class="math" data-tex="\(\sigma_a(M)^2&lt;(M-a)^2&lt;M^2-a^2\)">\(\sigma_a(M)^2&lt;(M-a)^2&lt;M^2-a^2\)</span>, by VN3–VN4.
+As a function of <span class="math" data-tex="\(y=t^2\)">\(y=t^2\)</span>, both positive numerator factors increase,
+while the positive denominator decreases. Thus EX6 is strictly
+increasing in <span class="math" data-tex="\(t\)">\(t\)</span>, from <span class="math" data-tex="\(a^2\)">\(a^2\)</span> at zero to <span class="math" data-tex="\(M^2\)">\(M^2\)</span> at
+<span class="math" data-tex="\(t=\sigma_a(M)\)">\(t=\sigma_a(M)\)</span>. There is exactly one height at which the
+partner equals <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>Cross multiplication of EX6 at that height gives the full polynomial</p>
+<span class="math math-display" data-tex="\[
+3y^2+B_0(a,M,s)y-C_0(a,M,s)=0.
+\tag{EX7}
+\]">\[
+3y^2+B_0(a,M,s)y-C_0(a,M,s)=0.
+\tag{EX7}
+\]</span>
+<p>The left side is strictly increasing for <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span>, negative at zero
+and unbounded above. Its unique positive root is EX5, obtained by
+multiplying the radical difference by its conjugate. Hence
+<span class="math" data-tex="\(0&lt;b_{a,M}(s)&lt;\sigma_a(M)\)">\(0&lt;b_{a,M}(s)&lt;\sigma_a(M)\)</span>.
+At this partner point, KX6 locates
+<span class="math" data-tex="\(\mathcal T_{a,t}(M)&lt;h_+(a,t)\)">\(\mathcal T_{a,t}(M)&lt;h_+(a,t)\)</span>, strictly when <span class="math" data-tex="\(M&gt;h_+(a,t)\)">\(M&gt;h_+(a,t)\)</span>.
+The inverse threshold relation <span class="math" data-tex="\(h_+(a,t)=s\)">\(h_+(a,t)=s\)</span> is
+<span class="math" data-tex="\(t=\sigma_a(s)\)">\(t=\sigma_a(s)\)</span>, and <span class="math" data-tex="\(h_+(a,t)\)">\(h_+(a,t)\)</span> is strictly increasing in <span class="math" data-tex="\(t\)">\(t\)</span>.
+Therefore <span class="math" data-tex="\(b_{a,M}(s)&gt;\sigma_a(s)\)">\(b_{a,M}(s)&gt;\sigma_a(s)\)</span>. At <span class="math" data-tex="\(s=M\)">\(s=M\)</span> the limiting
+value is <span class="math" data-tex="\(\sigma_a(M)\)">\(\sigma_a(M)\)</span>, and at <span class="math" data-tex="\(s=a\)">\(s=a\)</span> it is zero.</p>
+<p>For <span class="math" data-tex="\(t&lt;\sigma_a(M)\)">\(t&lt;\sigma_a(M)\)</span>, VU4 has <span class="math" data-tex="\(z_M(t)=\mathcal T_{a,t}(M)\)">\(z_M(t)=\mathcal T_{a,t}(M)\)</span>;
+the monotonicity just proved makes <span class="math" data-tex="\(s\le z_M(t)\)">\(s\le z_M(t)\)</span> equivalent to
+<span class="math" data-tex="\(t\ge b_{a,M}(s)\)">\(t\ge b_{a,M}(s)\)</span>. For <span class="math" data-tex="\(t\ge\sigma_a(M)\)">\(t\ge\sigma_a(M)\)</span>, VU4 has
+<span class="math" data-tex="\(z_M(t)=M\)">\(z_M(t)=M\)</span>, so every <span class="math" data-tex="\(a&lt;s&lt;M\)">\(a&lt;s&lt;M\)</span> is included. The whole residual
+domain is consequently</p>
+<span class="math math-display" data-tex="\[
+\{(s,t):a&lt;s&lt;M,\ t&gt;b_{a,M}(s)\},
+\tag{EX8}
+\]">\[
+\{(s,t):a&lt;s&lt;M,\ t&gt;b_{a,M}(s)\},
+\tag{EX8}
+\]</span>
+<p>up to boundary sets of area zero. It lies on the positive branch of
+<span class="math" data-tex="\(\Delta_a\)">\(\Delta_a\)</span>. Tonelli therefore reverses the integration order without
+a cancellation assumption.</p>
+<p>The complete height primitive is
+<span class="math" data-tex="\(t/[2((s+a)^2+t^2)]-t/[2((s-a)^2+t^2)]\)">\(t/[2((s+a)^2+t^2)]-t/[2((s-a)^2+t^2)]\)</span>.
+Both terms tend to zero at infinity. It follows that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_{{\rm mid},r}(a,M)
+&amp;=2\int_a^M\int_{b_{a,M}(s)}^\infty
+\Delta_a(s,t)\sqrt{2s}\,dt\,ds\\
+&amp;=\int_a^M\sqrt{2s}\,b_{a,M}(s)
+\left[
+\frac1{(s-a)^2+b_{a,M}(s)^2}
+-\frac1{(s+a)^2+b_{a,M}(s)^2}
+\right]ds .
+\end{aligned}\tag{EX9}
+\]">\[
+\begin{aligned}
+C_{{\rm mid},r}(a,M)
+&amp;=2\int_a^M\int_{b_{a,M}(s)}^\infty
+\Delta_a(s,t)\sqrt{2s}\,dt\,ds\\
+&amp;=\int_a^M\sqrt{2s}\,b_{a,M}(s)
+\left[
+\frac1{(s-a)^2+b_{a,M}(s)^2}
+-\frac1{(s+a)^2+b_{a,M}(s)^2}
+\right]ds .
+\end{aligned}\tag{EX9}
+\]</span>
+<p>The endpoints in this expression are improper where necessary. Its
+finiteness follows also from the following exact mass calculation.
+The original horizontal primitive gives, with <span class="math" data-tex="\(d=M-a&gt;0\)">\(d=M-a&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_a^{z_M(t)}\Delta_a(s,t)\,ds
+&amp;=\frac{d}{2(d^2+t^2)}
+-\frac{M+a}{2((M+a)^2+t^2)}
++\frac{a}{4a^2+t^2},\\
+\int_0^\infty\int_a^{z_M(t)}\Delta_a(s,t)\,ds\,dt
+&amp;=\frac\pi4-\frac\pi4+\frac\pi4=\frac\pi4 .
+\end{aligned}\tag{EX10}
+\]">\[
+\begin{aligned}
+\int_a^{z_M(t)}\Delta_a(s,t)\,ds
+&amp;=\frac{d}{2(d^2+t^2)}
+-\frac{M+a}{2((M+a)^2+t^2)}
++\frac{a}{4a^2+t^2},\\
+\int_0^\infty\int_a^{z_M(t)}\Delta_a(s,t)\,ds\,dt
+&amp;=\frac\pi4-\frac\pi4+\frac\pi4=\frac\pi4 .
+\end{aligned}\tag{EX10}
+\]</span>
+<p>The first identity is KX11: the partner and <span class="math" data-tex="\(M\)">\(M\)</span> have equal anchored
+primitive values. Each of the three rational terms has a convergent
+height integral, evaluated by its own arctangent endpoints. Reversing
+this same positive integral as above gives the additional identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_a^M b_{a,M}(s)
+\left[
+\frac1{(s-a)^2+b_{a,M}(s)^2}
+-\frac1{(s+a)^2+b_{a,M}(s)^2}
+\right]ds&amp;=\frac\pi2,\\
+\frac\pi2\sqrt{2a}
+&lt;C_{{\rm mid},r}(a,M)&amp;&lt;\frac\pi2\sqrt{2M},\\
+\lim_{M\downarrow a}C_{{\rm mid},r}(a,M)&amp;=\frac\pi2\sqrt{2a}.
+\end{aligned}\tag{EX11}
+\]">\[
+\begin{aligned}
+\int_a^M b_{a,M}(s)
+\left[
+\frac1{(s-a)^2+b_{a,M}(s)^2}
+-\frac1{(s+a)^2+b_{a,M}(s)^2}
+\right]ds&amp;=\frac\pi2,\\
+\frac\pi2\sqrt{2a}
+&lt;C_{{\rm mid},r}(a,M)&amp;&lt;\frac\pi2\sqrt{2M},\\
+\lim_{M\downarrow a}C_{{\rm mid},r}(a,M)&amp;=\frac\pi2\sqrt{2a}.
+\end{aligned}\tag{EX11}
+\]</span>
+<p>Strictness for <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span> follows from the positive density on the entire
+open interval and the strict bounds
+<span class="math" data-tex="\(\sqrt{2a}&lt;\sqrt{2s}&lt;\sqrt{2M}\)">\(\sqrt{2a}&lt;\sqrt{2s}&lt;\sqrt{2M}\)</span>. The squeeze theorem proves the
+limit. The literal empty domain at <span class="math" data-tex="\(M=a\)">\(M=a\)</span> has zero integral; its
+right limit retains the mass <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span>. No value at the single endpoint
+may replace that limiting calculation.</p>
+<h3 id="exercise-3-quantify-the-gain-at-a-positive-midpoint">Exercise 3. Quantify the gain at a positive midpoint</h3>
+<p>Keep <span class="math" data-tex="\(\tau=291/500\)">\(\tau=291/500\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(M&gt;a\)">\(M&gt;a\)</span>, and the complete coefficient
+in VU17. Give a rigorous improvement over its singular-endpoint
+coefficient. Determine whether the complete weighted cost still
+strictly decreases at the endpoint parameter <span class="math" data-tex="\(\tau=2/3\)">\(\tau=2/3\)</span>.</p>
+<p><strong>Solution.</strong>
+Use the full exterior density <span class="math" data-tex="\(E_a(s)&gt;0\)">\(E_a(s)&gt;0\)</span> in VU4 and set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_a&amp;=\frac{C_{\rm vert}(a,a)+(291/500)C_{\rm in}(a)}
+{\pi\sqrt{2a}}+\frac{291}{1000},\\
+Q_a(M)&amp;=\frac{C_{\rm vert}(a,M)
++(291/500)\{C_{\rm in}(a)+C_{\rm mid}(a,M)\}}
+{\pi\sqrt{2a}},\\
+\eta_a(M)&amp;=\frac{127}{1000\pi\sqrt{2a}}
+\int_a^M E_a(s)\,ds .
+\end{aligned}\tag{EX12}
+\]">\[
+\begin{aligned}
+B_a&amp;=\frac{C_{\rm vert}(a,a)+(291/500)C_{\rm in}(a)}
+{\pi\sqrt{2a}}+\frac{291}{1000},\\
+Q_a(M)&amp;=\frac{C_{\rm vert}(a,M)
++(291/500)\{C_{\rm in}(a)+C_{\rm mid}(a,M)\}}
+{\pi\sqrt{2a}},\\
+\eta_a(M)&amp;=\frac{127}{1000\pi\sqrt{2a}}
+\int_a^M E_a(s)\,ds .
+\end{aligned}\tag{EX12}
+\]</span>
+<p>VU15 has the exact factor
+<span class="math" data-tex="\(1-3(291/500)/2=127/1000\)">\(1-3(291/500)/2=127/1000\)</span>.
+Integrate from a midpoint <span class="math" data-tex="\(M_1&gt;a\)">\(M_1&gt;a\)</span>, then let <span class="math" data-tex="\(M_1\downarrow a\)">\(M_1\downarrow a\)</span>.
+The finite positive exterior integral permits monotone convergence.
+The middle cost tends to <span class="math" data-tex="\((\pi/2)\sqrt{2a}\)">\((\pi/2)\sqrt{2a}\)</span>, giving the displayed
+local term in <span class="math" data-tex="\(B_a\)">\(B_a\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&lt;\eta_a(M)
+&amp;=\frac{127}{1000\pi\sqrt{2a}}
+\{C_{\rm vert}(a,a)-C_{\rm vert}(a,M)\},\\
+0\le Q_a(M)&amp;\le B_a-\eta_a(M)&lt;\frac{259}{100}-\eta_a(M),\\
+|\mathscr D_u|&amp;\le
+\left(\frac{259}{100}-\eta_a(M)\right)
+N_{291/500}\sqrt{2a}.
+\end{aligned}\tag{EX13}
+\]">\[
+\begin{aligned}
+0&lt;\eta_a(M)
+&amp;=\frac{127}{1000\pi\sqrt{2a}}
+\{C_{\rm vert}(a,a)-C_{\rm vert}(a,M)\},\\
+0\le Q_a(M)&amp;\le B_a-\eta_a(M)&lt;\frac{259}{100}-\eta_a(M),\\
+|\mathscr D_u|&amp;\le
+\left(\frac{259}{100}-\eta_a(M)\right)
+N_{291/500}\sqrt{2a}.
+\end{aligned}\tag{EX13}
+\]</span>
+<p>The strict coefficient bound is VN21–VN22, with their full original
+scale map. In particular the coefficient on the last line is positive,
+since it exceeds <span class="math" data-tex="\(B_a-\eta_a(M)\ge Q_a(M)\ge0\)">\(B_a-\eta_a(M)\ge Q_a(M)\ge0\)</span>.
+The physical inequality itself is non-strict, so it includes zero
+seminorm data. The exact equality on the first line retains the complete
+integral over <span class="math" data-tex="\(a&lt;s&lt;M\)">\(a&lt;s&lt;M\)</span>; it is not a sampled midpoint gain.</p>
+<p>More generally VU8 is strict for every <span class="math" data-tex="\(s&gt;a\)">\(s&gt;a\)</span> and
+<span class="math" data-tex="\(0&lt;t&lt;\sigma_a(s)\)">\(0&lt;t&lt;\sigma_a(s)\)</span>. Multiplying it by the strictly positive density
+<span class="math" data-tex="\(4[-\Delta_a(s,t)]\)">\(4[-\Delta_a(s,t)]\)</span> and integrating gives</p>
+<span class="math math-display" data-tex="\[
+\frac23\,\partial_M C_{\rm mid}(a,M)&lt;E_a(M).
+\tag{EX14}
+\]">\[
+\frac23\,\partial_M C_{\rm mid}(a,M)&lt;E_a(M).
+\tag{EX14}
+\]</span>
+<p>Both sides are finite, and the pointwise positive gap has positive
+integral: on a compact subinterval of the open height branch the
+continuous gap is positive at a point and hence on a neighborhood.
+Consequently</p>
+<span class="math math-display" data-tex="\[
+\partial_M\{C_{\rm vert}(a,M)+(2/3)C_{\rm mid}(a,M)\}&lt;0 .
+\tag{EX15}
+\]">\[
+\partial_M\{C_{\rm vert}(a,M)+(2/3)C_{\rm mid}(a,M)\}&lt;0 .
+\tag{EX15}
+\]</span>
+<p>Continuity of the derivatives on every compact midpoint interval,
+proved in VU6–VU7, and the fundamental theorem prove strict decrease
+between any two different midpoints. VU15's zero uniform margin at
+<span class="math" data-tex="\(\tau=2/3\)">\(\tau=2/3\)</span> therefore does not make the complete cost constant.
+The argument proves no uniform positive margin at that parameter.</p>
+<h3 id="exercise-4-make-the-regular-strip-repair-an-exact-stored-number">Exercise 4. Make the regular-strip repair an exact stored number</h3>
+<p>For the original <span class="math" data-tex="\(\epsilon=2^{-12}\)">\(\epsilon=2^{-12}\)</span>, construct an exactly representable
+binary64 upper bound for the entire regular integral <span class="math" data-tex="\(A\)">\(A\)</span> of VA3.
+Carry the resulting additive correction through the full anisotropic
+cost, a maximum, and the actual minimum receiver.</p>
+<p><strong>Solution.</strong>
+Keep the rational bound in VA18:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\overline A&amp;=\frac{24634639988116009633073580}{10^{30}},\\
+A_{64}&amp;=\frac{\lceil2^{64}\overline A\rceil}{2^{64}}
+=\frac{454428899208748}{18446744073709551616},\\
+A&lt;\overline A&amp;&lt;A_{64}&lt;\overline A+2^{-64}.
+\end{aligned}\tag{EX16}
+\]">\[
+\begin{aligned}
+\overline A&amp;=\frac{24634639988116009633073580}{10^{30}},\\
+A_{64}&amp;=\frac{\lceil2^{64}\overline A\rceil}{2^{64}}
+=\frac{454428899208748}{18446744073709551616},\\
+A&lt;\overline A&amp;&lt;A_{64}&lt;\overline A+2^{-64}.
+\end{aligned}\tag{EX16}
+\]</span>
+<p>The integer ceiling is exact. Cross multiplication of the stated
+integers gives
+<span class="math" data-tex="\(454428899208747&lt;2^{64}\overline A&lt;454428899208748\)">\(454428899208747&lt;2^{64}\overline A&lt;454428899208748\)</span>,
+which proves both strict bounds. The numerator is below <span class="math" data-tex="\(2^{49}\)">\(2^{49}\)</span>;
+an integer of at most 49 binary digits times <span class="math" data-tex="\(2^{-64}\)">\(2^{-64}\)</span> is a normal
+binary64 number with at most 49 significant binary digits. It is
+therefore exactly representable. This specifies the stored value
+without rounding the decimal display to the nearest number.</p>
+<p>The source code's original <span class="math" data-tex="\(P_{\rm code}\)">\(P_{\rm code}\)</span> is positive and smaller
+than <span class="math" data-tex="\(A\)">\(A\)</span>, by VA7. The repaired per-quadrant expression is <span class="math" data-tex="\(A_{64}\)">\(A_{64}\)</span>,
+with its original receiving factors. Its exact positive increase and
+a sufficient printed-norm budget are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta_{Y,64}&amp;=\frac{2\sqrt2}{\pi}(A_{64}-P_{\rm code})&gt;0,\\
+d_{64}&amp;=\frac{291}{500}\frac{2\sqrt2}{\pi}A_{64},\\
+\frac{291}{500}\Delta_{Y,64}
+&amp;&lt;d_{64}
+&lt;d_A+\frac{291}{500}\frac{2\sqrt2}{\pi\,2^{64}}
+&lt;\frac{12909}{10^9}.
+\end{aligned}\tag{EX17}
+\]">\[
+\begin{aligned}
+\Delta_{Y,64}&amp;=\frac{2\sqrt2}{\pi}(A_{64}-P_{\rm code})&gt;0,\\
+d_{64}&amp;=\frac{291}{500}\frac{2\sqrt2}{\pi}A_{64},\\
+\frac{291}{500}\Delta_{Y,64}
+&amp;&lt;d_{64}
+&lt;d_A+\frac{291}{500}\frac{2\sqrt2}{\pi\,2^{64}}
+&lt;\frac{12909}{10^9}.
+\end{aligned}\tag{EX17}
+\]</span>
+<p>The first two inequalities use EX16 and <span class="math" data-tex="\(P_{\rm code}&gt;0\)">\(P_{\rm code}&gt;0\)</span>.
+For the last one, and the numerical comparisons below, use exact
+rational upper bounds
+<span class="math" data-tex="\(\sqrt2&lt;14142135623730951/10^{16}\)">\(\sqrt2&lt;14142135623730951/10^{16}\)</span> and
+<span class="math" data-tex="\(\pi&gt;3141592653589793/10^{15}\)">\(\pi&gt;3141592653589793/10^{15}\)</span>.
+Squaring proves the former; the latter follows from the alternating
+arctangent bounds and Machin identity proved in PV43. Substitution
+in the complete positive products and cross multiplication prove
+the stated strict inequalities. The accompanying exact checker
+retains those integers.</p>
+<p>For every actual nonnegative cost pair <span class="math" data-tex="\(X_j,Y_j\)">\(X_j,Y_j\)</span>, and
+<span class="math" data-tex="\(0&lt;r\le\tau=291/500\)">\(0&lt;r\le\tau=291/500\)</span>, the original change of weight is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{X_j+\tau Y_j}{\pi}
+&amp;=\frac{\tau}{r}\frac{X_j+rY_j}{\pi}
+-\frac{(\tau/r-1)X_j}{\pi},\\
+\max_j\frac{X_j+\tau Y_j}{\pi}
+&amp;\le\frac{\tau}{r}\max_j\frac{X_j+rY_j}{\pi}.
+\end{aligned}\tag{EX18}
+\]">\[
+\begin{aligned}
+\frac{X_j+\tau Y_j}{\pi}
+&amp;=\frac{\tau}{r}\frac{X_j+rY_j}{\pi}
+-\frac{(\tau/r-1)X_j}{\pi},\\
+\max_j\frac{X_j+\tau Y_j}{\pi}
+&amp;\le\frac{\tau}{r}\max_j\frac{X_j+rY_j}{\pi}.
+\end{aligned}\tag{EX18}
+\]</span>
+<p>This holds for any nonempty finite family, and for a bounded supremum
+by the same pointwise argument. It keeps the nonnegative horizontal
+term instead of silently identifying the two weights. A uniform
+additive correction passes through a maximum exactly:
+<span class="math" data-tex="\(\max_j(c_j+d_{64})=\max_jc_j+d_{64}\)">\(\max_j(c_j+d_{64})=\max_jc_j+d_{64}\)</span>.
+Using the actual <span class="math" data-tex="\(r_-,V_+,W_+\)">\(r_-,V_+,W_+\)</span> of VA12 gives</p>
+<span class="math math-display" data-tex="\[
+\frac{291/500}{r_-}V_++d_{64}&lt;\frac{13}{5},
+\qquad
+\frac{291/500}{r_-}W_++d_{64}&lt;\frac{261}{100}.
+\tag{EX19}
+\]">\[
+\frac{291/500}{r_-}V_++d_{64}&lt;\frac{13}{5},
+\qquad
+\frac{291/500}{r_-}W_++d_{64}&lt;\frac{261}{100}.
+\tag{EX19}
+\]</span>
+<p>These follow by the same rational comparisons as EX17 and include
+the full saved-to-printed parameter change. They are comparisons
+of explicit coefficients. The complete validity of the saved
+vertical scalars is proved separately in VN and VU.</p>
+<p>At the original downstream receiver, take its actual nonnegative
+seminorm <span class="math" data-tex="\(H_{\max}\)">\(H_{\max}\)</span>, current upper value <span class="math" data-tex="\(U\)">\(U\)</span>, and separate upper
+value <span class="math" data-tex="\(L\)">\(L\)</span>. For <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span> define <span class="math" data-tex="\((L-U)_+=\max(L-U,0)\)">\((L-U)_+=\max(L-U,0)\)</span>. The entire
+effect of the componentwise minimum is the exact identity</p>
+<span class="math math-display" data-tex="\[
+\min(U+dH_{\max},L)-\min(U,L)
+=\min\{dH_{\max},(L-U)_+\}.
+\tag{EX20}
+\]">\[
+\min(U+dH_{\max},L)-\min(U,L)
+=\min\{dH_{\max},(L-U)_+\}.
+\tag{EX20}
+\]</span>
+<p>If <span class="math" data-tex="\(U\ge L\)">\(U\ge L\)</span>, both sides are zero. If <span class="math" data-tex="\(U&lt;L\)">\(U&lt;L\)</span>, subtracting <span class="math" data-tex="\(U\)">\(U\)</span>
+reduces both sides to <span class="math" data-tex="\(\min(dH_{\max},L-U)\)">\(\min(dH_{\max},L-U)\)</span>. This proves all cases,
+including equality and <span class="math" data-tex="\(H_{\max}=0\)">\(H_{\max}=0\)</span>. The coefficient already
+contains its single <span class="math" data-tex="\(1/\pi\)">\(1/\pi\)</span>; this receiver supplies no second
+division. Formula EX20 proves precisely this minimum operation.
+It is not a claim about the later covering or stability operations.</p>
+<h3 id="exercise-5-enlarge-the-actual-weighted-cell-and-measure-the-counterexample">Exercise 5. Enlarge the actual weighted cell and measure the counterexample</h3>
+<p>Keep the original mesh <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> and
+<span class="math" data-tex="\(F_{\alpha,h}(x)=x^{1-\alpha}J_2(x/h)\)">\(F_{\alpha,h}(x)=x^{1-\alpha}J_2(x/h)\)</span> from WJ13.
+Prove that for the actual exponent <span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span> the increasing-cell
+range extends to <span class="math" data-tex="\(0\le x\le h/6\)">\(0\le x\le h/6\)</span>. Then quantify the reversed
+endpoint inequality at <span class="math" data-tex="\(\alpha=9/10\)">\(\alpha=9/10\)</span> on the exact WJ18 cell.</p>
+<p><strong>Solution.</strong>
+Set <span class="math" data-tex="\(B=x/h\)">\(B=x/h\)</span>, retaining <span class="math" data-tex="\(x\)">\(x\)</span> in the derivative and
+<span class="math" data-tex="\(R(0)=1-(3/2)\log2\)">\(R(0)=1-(3/2)\log2\)</span>. WJ11–WJ13 gives, for <span class="math" data-tex="\(0&lt;B\le1/6\)">\(0&lt;B\le1/6\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_x F_{1/2,h}(x)
+&amp;=x^{-1/2}\left\{\frac12(R(B)-\log B)+BR&#x27;(B)-1\right\},\\
+\frac12(R(B)-\log B)+BR&#x27;(B)-1
+&amp;&gt;\frac12\{1-(3/2)\log2-\log B\}+\frac34 B-1 .
+\end{aligned}\tag{EX21}
+\]">\[
+\begin{aligned}
+\partial_x F_{1/2,h}(x)
+&amp;=x^{-1/2}\left\{\frac12(R(B)-\log B)+BR&#x27;(B)-1\right\},\\
+\frac12(R(B)-\log B)+BR&#x27;(B)-1
+&amp;&gt;\frac12\{1-(3/2)\log2-\log B\}+\frac34 B-1 .
+\end{aligned}\tag{EX21}
+\]</span>
+<p>The lower expression has derivative <span class="math" data-tex="\(-1/(2B)+3/4&lt;0\)">\(-1/(2B)+3/4&lt;0\)</span> on this
+entire interval. Its value at <span class="math" data-tex="\(B=1/6\)">\(B=1/6\)</span> is
+<span class="math" data-tex="\(\frac14\log(9/2)-3/8\)">\(\frac14\log(9/2)-3/8\)</span>. This value is strictly positive without
+a numerical logarithm. In fact, integrate the positive geometric
+series for <span class="math" data-tex="\(1/(1-y^2)\)">\(1/(1-y^2)\)</span> from zero to <span class="math" data-tex="\(7/11\)">\(7/11\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\log(9/2)
+=2\sum_{k=0}^{\infty}\frac{(7/11)^{2k+1}}{2k+1}
+&gt;2\sum_{k=0}^{4}\frac{(7/11)^{2k+1}}{2k+1}
+&gt;\frac32 .
+\tag{EX22}
+\]">\[
+\log(9/2)
+=2\sum_{k=0}^{\infty}\frac{(7/11)^{2k+1}}{2k+1}
+&gt;2\sum_{k=0}^{4}\frac{(7/11)^{2k+1}}{2k+1}
+&gt;\frac32 .
+\tag{EX22}
+\]</span>
+<p>The last inequality is exact rational cross multiplication. The series
+identity uses <span class="math" data-tex="\((1+7/11)/(1-7/11)=9/2\)">\((1+7/11)/(1-7/11)=9/2\)</span>, with convergence because
+<span class="math" data-tex="\(7/11&lt;1\)">\(7/11&lt;1\)</span>. Thus EX21 is positive throughout <span class="math" data-tex="\(0&lt;x\le h/6\)">\(0&lt;x\le h/6\)</span>.
+The zero endpoint is the continuous extension already proved in WJ17.
+For every full physical cell this yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\le z^l\le x\le z^u\le h/6
+\quad\Longrightarrow\quad
+x^{1/2}J_2(x/h)&amp;\le (z^u)^{1/2}J_2(z^u/h).
+\end{aligned}\tag{EX23}
+\]">\[
+\begin{aligned}
+0\le z^l\le x\le z^u\le h/6
+\quad\Longrightarrow\quad
+x^{1/2}J_2(x/h)&amp;\le (z^u)^{1/2}J_2(z^u/h).
+\end{aligned}\tag{EX23}
+\]</span>
+<p>The new range strictly contains <span class="math" data-tex="\(0\le x\le he^{-2}\)">\(0\le x\le he^{-2}\)</span>:
+the exponential series gives
+<span class="math" data-tex="\(e&gt;1+1+1/2=5/2\)">\(e&gt;1+1+1/2=5/2\)</span>, hence <span class="math" data-tex="\(e^2&gt;25/4&gt;6\)">\(e^2&gt;25/4&gt;6\)</span>.
+The original additional restriction <span class="math" data-tex="\(z^u\le h/2\)">\(z^u\le h/2\)</span> still holds.
+This is a proved editorial strengthening of the actual-exponent
+selector, not an optimality claim.</p>
+<p>Now retain the different original exponent <span class="math" data-tex="\(\alpha=9/10\)">\(\alpha=9/10\)</span>,
+the same arbitrary <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, and the exact endpoints
+<span class="math" data-tex="\(z^u=he^{-10}\)">\(z^u=he^{-10}\)</span>, <span class="math" data-tex="\(z^l=(999/1000)he^{-10}\)">\(z^l=(999/1000)he^{-10}\)</span>.
+The full rational sum in WJ19 is</p>
+<span class="math math-display" data-tex="\[
+-\frac1{270}+\frac{11}{10240}+\frac1{9990}
+=-\frac{575}{227328}.
+\tag{EX24}
+\]">\[
+-\frac1{270}+\frac{11}{10240}+\frac1{9990}
+=-\frac{575}{227328}.
+\tag{EX24}
+\]</span>
+<p>Consequently the complete original derivative obeys
+<span class="math" data-tex="\(F&#x27;_{9/10,h}(x)&lt;-(575/227328)x^{-9/10}\)">\(F&#x27;_{9/10,h}(x)&lt;-(575/227328)x^{-9/10}\)</span>
+everywhere on that closed positive cell. Integrating and keeping
+both physical endpoints gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{9/10,h}(z^l)-F_{9/10,h}(z^u)
+&amp;&gt;\frac{2875}{113664}
+\{(z^u)^{1/10}-(z^l)^{1/10}\}\\
+&amp;=\frac{2875}{113664}h^{1/10}e^{-1}
+\left[1-\left(\frac{999}{1000}\right)^{1/10}\right]&gt;0 .
+\end{aligned}\tag{EX25}
+\]">\[
+\begin{aligned}
+F_{9/10,h}(z^l)-F_{9/10,h}(z^u)
+&amp;&gt;\frac{2875}{113664}
+\{(z^u)^{1/10}-(z^l)^{1/10}\}\\
+&amp;=\frac{2875}{113664}h^{1/10}e^{-1}
+\left[1-\left(\frac{999}{1000}\right)^{1/10}\right]&gt;0 .
+\end{aligned}\tag{EX25}
+\]</span>
+<p>Here <span class="math" data-tex="\(\int x^{-9/10}\,dx=10x^{1/10}\)">\(\int x^{-9/10}\,dx=10x^{1/10}\)</span>, and
+<span class="math" data-tex="\(10(575/227328)=2875/113664\)">\(10(575/227328)=2875/113664\)</span>.
+No mesh factor, endpoint, exponent or strict sign has been suppressed.
+This gives a quantitative failure for the source's all-exponent claim
+alongside the larger proved range for the actual exponent.</p>
+<p><img src="assets/NS-FLUID-54/chen-hou-certificate-exercises-3B3970BDFAD5139E67DC604F90741010AE58D31655AEE86AB776C8BD72DF6D20.png" alt="Full original residual domain and the larger proved weighted cell." class="course-figure" width="1950" height="870" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="chen-hou-certificate-exercises" data-asset-sha256="3B3970BDFAD5139E67DC604F90741010AE58D31655AEE86AB776C8BD72DF6D20"></p>
+<p>The left panel shows a finite height window of the full EX8 domain at
+the original physical values <span class="math" data-tex="\(a=13/10\)">\(a=13/10\)</span>, <span class="math" data-tex="\(M=13/5\)">\(M=13/5\)</span>; the residual
+continues to infinite height. Its mass and both primitive contributions
+are EX9–EX11. The right panel keeps <span class="math" data-tex="\(h=3/5\)">\(h=3/5\)</span> and the entire original
+function <span class="math" data-tex="\(x^{1/2}J_2(x/h)\)">\(x^{1/2}J_2(x/h)\)</span>. The curves are numerical illustrations.
+The strict increase on the larger interval follows from EX21–EX23,
+not from the plotted samples.</p>
+<h2 id="continue-with-the-remaining-directional-and-stability-estimates">Continue with the remaining directional and stability estimates</h2>
+<p>Both complete saved vertical scalars are now proved upper bounds for
+their original data norms. The regular-cell code defect is still an
+error; validity of the scalars follows from the independent full-cost
+enclosures. The actual-exponent weighted selector is proved on the
+larger physical cell in Exercise 5. Its general-exponent failure does
+not invalidate that actual-exponent estimate.</p>
+<p>The next calculations concern the other directional arrays, exact
+weighted receivers, near-singularity terms, covering, coefficient
+differences, commutators, finite-rank contraction, semigroup and
+nonlinear estimates. The original MATLAB/INTLAB run and its historical
+mesh outputs have not been reconstructed. No complete main-theorem
+validation or fatal main-theorem failure is asserted. The wider
+human constructions, Alpöge–Buckmaster, OpenAI and workbench research
+remain in the active series.</p>
+</article><nav aria-label="Lesson sequence"><a href="NS-FLUID-53.html">Previous lesson</a></nav></main><footer>Mathematical text: CC0 1.0. Cited works and reader software retain their respective terms.</footer></body></html>

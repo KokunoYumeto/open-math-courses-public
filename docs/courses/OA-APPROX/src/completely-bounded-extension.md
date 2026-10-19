@@ -275,7 +275,7 @@ It remains to locate the original algebras and the multiplier. Let \(C=P(A)\subs
 \overline{\operatorname{span}}(B^*B)
 =\overline{\operatorname{span}}(C^*C)=C.
 \]
-The left side is \(B\): the positive contractive approximate identity gives \(be_\lambda\to b\), so a C*-algebra is the closed linear span of its products. Thus \(C=B\). In particular \(uB=B\), and multiplying this equality by \(u^*\) gives \(u^*B=B\). Taking adjoints gives \(Bu=B\) and \(Bu^*=B\). In the bidual idealizer model \(M(B)=\{x\in B^{**}:xB\subset B,\ Bx\subset B\}\), these two-sided conditions place \(u\) and \(u^*\) in \(M(B)\); they remain mutual inverses there. Restricting \(P\) gives the claimed \(\pi:A\to B\).
+The left side is \(B\): the [positive contractive approximate identity](infinite-tensor-products.md#f09) gives \(be_\lambda\to b\), so a C*-algebra is the closed linear span of its products. Thus \(C=B\). In particular \(uB=B\), and multiplying this equality by \(u^*\) gives \(u^*B=B\). Taking adjoints gives \(Bu=B\) and \(Bu^*=B\). In the bidual idealizer model \(M(B)=\{x\in B^{**}:xB\subset B,\ Bx\subset B\}\), these two-sided conditions place \(u\) and \(u^*\) in \(M(B)\); they remain mutual inverses there. Restricting \(P\) gives the claimed \(\pi:A\to B\).
 
 A *-isomorphism is isometric at every matrix size, as is multiplication by the diagonal unitary with entries \(u\). Hence \(\theta\) is a complete isometry. \(\square\)
 

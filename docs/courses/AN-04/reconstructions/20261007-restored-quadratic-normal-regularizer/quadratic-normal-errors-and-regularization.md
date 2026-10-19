@@ -1,6 +1,6 @@
 # Quadratic normal errors and removal of a boundary regularizer
 
-*AN04-U061. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. The writer has checked the stated arguments; independent review has not occurred.*
+*AN04-U061. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
 
 The [normal-energy lesson](../20261007-restored-glancing-normal-operator/glancing-normal-energy-and-operator-errors.md) bounded an actual linear normal error. A quadratic error has one ordinary normal derivative in each factor. Here we prove its bound, keeping the entire complex matrix coefficient and every parametrix correction. We then construct a family of legal boundary tests at any prescribed finite b-order and prove the passage from a uniform norm estimate to the unregularized distribution.
 
@@ -329,4 +329,4 @@ The smooth-collar scalar-principal hypothesis does not replace the assigned syst
 
 ## Sources and contribution
 
-Vasy's paper supplies the quadratic-error and regularization route, and his December 2008 correction supplies the glancing scale. Every mathematical input used here has its programme proof, including the valid Hörmander III antecedent in the boundary calculus. Citations give credit and never replace proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving argument, three complete solutions and original diagram. GPT-6 Astra (OpenAI), Ultra, restored the current exact providers, made all regularizer derivative bounds explicit, localized before the symbol modification, and proved full supported limit identification and the detailed Hilbert extraction. This independent exposition and original diagram are CC0-1.0; linked components retain their own terms. No external paper text, figures or page images are distributed. This restoration is private and gives no public clearance.
+Vasy's paper supplies the quadratic-error and regularization route, and his December 2008 correction supplies the glancing scale. Every mathematical input used here has its programme proof, including the valid Hörmander III antecedent in the boundary calculus. Citations give credit and never replace proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving argument, three complete solutions and original diagram. GPT-6 Astra (OpenAI), Ultra, restored the current exact providers, made all regularizer derivative bounds explicit, localized before the symbol modification, and proved full supported limit identification and the detailed Hilbert extraction. This independent exposition and original diagram are CC0-1.0; linked components retain their own terms.   

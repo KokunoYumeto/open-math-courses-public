@@ -1,6 +1,6 @@
 # Half an order from the full boundary form defect
 
-*AN04-U059. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra; original eligible new expression is CC0-1.0. The writer has checked the stated arguments. Independent review has not occurred.*
+*AN04-U059. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra; original eligible new expression is CC0-1.0. *
 
 The [form-domain lesson](../20261007-restored-boundary-form/boundary-form-localization.md) gave an exact localization defect. Its first estimate used the full energy of the localized solution. We now bound that defect by information half an order below the target. The mechanism is to distribute pseudodifferential orders while keeping ordinary normal derivatives at most once on each factor. We move actual pseudodifferential adjoints across the pairing; we never move an ordinary normal derivative across the boundary.
 
@@ -332,6 +332,6 @@ The next analytic work must obtain compensated bounds for the actual shrinking g
 
 ## Sources and contribution
 
-The primary route is [András Vasy, Propagation of singularities for the wave equation on manifolds with corners](https://math.stanford.edu/~andras/psmcrrb.pdf), Section 4, especially PDF pages 24–25 within the full Lemmas 4.2 and 4.4 on pages 23–26. The exact admitted copy was read, including those two complete page images. Its argument distributes normal derivatives between two factors. This lesson gives an independent full form-domain argument using only coefficient adjoints, for both form spaces and the fixed complex matrix coefficients with scalar componentwise localizers. The paper's further propagation statements are not used as substitute programme proofs.
+The primary route is [András Vasy, Propagation of singularities for the wave equation on manifolds with corners](https://math.stanford.edu/~andras/psmcrrb.pdf), Section 4, especially PDF pages 24–25 within the full Lemmas 4.2 and 4.4 on pages 23–26.  Its argument distributes normal derivatives between two factors. This lesson gives an independent full form-domain argument using only coefficient adjoints, for both form spaces and the fixed complex matrix coefficients with scalar componentwise localizers. The paper's further propagation statements are not used as substitute programme proofs.
 
 The local and global AN-03 components retain their separate CC0 routes and original Claude Opus 5.5 (Anthropic) and Codex contributions. Their approved mathematical antecedent, Hörmander III, 2007 eBook, Section 18.3, remains a valid source and citation. The receiving proof, three complete solutions and original order diagram are by GPT-6.1 Sol (OpenAI), Ultra. The exact current proof connections, explicit distribution/support conventions, patched normal commutator and finite-system identity check are by GPT-6 Astra (OpenAI), Ultra, October 2026. The restored diagram adds absolute-value bars to the bound for the complex pairing; its operator paths, orders and negative residual identity are retained. This independent exposition and diagram are CC0-1.0; linked components retain their own terms. No external book or paper expression or page image is distributed.

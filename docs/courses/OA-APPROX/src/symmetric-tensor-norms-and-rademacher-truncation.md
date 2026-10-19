@@ -45,7 +45,7 @@ To prove nondegeneracy, take a nonzero tensor and finite-dimensional spans \(E_0
 Taking the infimum makes the projective cost of that nonzero tensor positive. The same extension applied to the lines spanned by \(x,y\) gives norm-one \(f,g\) with \(f(x)=\|x\|\), \(g(y)=\|y\|\). Hence
 \(\|x\otimes y\|_\pi=\|x\|\|y\|\); if either factor is zero, both sides are zero. This argument works over either scalar field.
 
-The completion consists of Cauchy sequences modulo sequences whose norm tends to zero. Its norm is the limit of the sequence norms. The original tensor space embeds isometrically and densely. Given a Cauchy sequence of completion vectors, approximate its \(n\)-th member by an algebraic tensor within \(1/n\); these algebraic tensors are Cauchy and define its limit. This proves completeness, as in F01. A bounded map to a complete space extends by taking limits, independently of representatives. In particular a bilinear map \(T:E\times F\to Z\), with \(Z\) Banach and \(\|T(x,y)\|\le C\|x\|\|y\|\), extends to a linear map on \(E\widehat\otimes_\pi F\) with norm at most \(C\). The tensor relations give well-definedness and the displayed projective bound gives continuity; testing elementary tensors gives equality with the bilinear operator norm. An absolutely summable series in a completion converges because the norm of each tail is bounded by the corresponding scalar tail sum.
+The completion consists of Cauchy sequences modulo sequences whose norm tends to zero. Its norm is the limit of the sequence norms. The original tensor space embeds isometrically and densely. Given a Cauchy sequence of completion vectors, approximate its \(n\)-th member by an algebraic tensor within \(1/n\); these algebraic tensors are Cauchy and define its limit. This proves completeness, as in [F01](infinite-tensor-products.md#f01). A bounded map to a complete space extends by taking limits, independently of representatives. In particular a bilinear map \(T:E\times F\to Z\), with \(Z\) Banach and \(\|T(x,y)\|\le C\|x\|\|y\|\), extends to a linear map on \(E\widehat\otimes_\pi F\) with norm at most \(C\). The tensor relations give well-definedness and the displayed projective bound gives continuity; testing elementary tensors gives equality with the bilinear operator norm. An absolutely summable series in a completion converges because the norm of each tail is bounded by the corresponding scalar tail sum.
 
 For \(A,B\), multiplication has projective bound one: the product decomposition has factors \(x_i z_j,y_i t_j\), and its cost is at most the product of the two original costs. Adjoints preserve the projective norm. Both operations extend to the complex projective completion by the Cauchy estimates of F01. The real self-adjoint projective completion is a Banach space; it is not assumed to be an algebra.
 
@@ -70,7 +70,7 @@ We will first make the square-sum cost a genuine norm. Next we will split an alg
 
 ## State detectors make the symmetric cost a norm
 
-Continuous scalar functions of self-adjoint elements, their norms and their order are supplied by the full calculus and order proofs F02–F08. Their scalar spectrum and polynomial-approximation chain is in [the elementary calculus](elementary-calculus-for-infinite-products.md#r00). The extension used above is proved independently in [Section 8.1 of the completion lesson](tensor-completion-injectivity-and-state-domination.md#8-1-the-precise-norming-functional-input), and also in CAR Section 19.1. We need no weak-star compactness or Hilbert representation to construct the state detectors.
+Continuous scalar functions of self-adjoint elements, their norms and their order are supplied by the full [calculus and order proofs F02–F08](infinite-tensor-products.md#f02). Their scalar spectrum and polynomial-approximation chain is in [the elementary calculus](elementary-calculus-for-infinite-products.md#r00). The extension used above is proved independently in [Section 8.1 of the completion lesson](tensor-completion-injectivity-and-state-domination.md#8-1-the-precise-norming-functional-input), and also in [CAR Section 19.1](car-fock-and-quasifree-states.md#19-1-hahn-banach-and-the-concrete-coefficient-banach-space). We need no weak-star compactness or Hilbert representation to construct the state detectors.
 
 **Proposition 1.1.** Formula (1) defines an involution-invariant norm, with
 \[
@@ -91,7 +91,7 @@ For self-adjoint \(u\), the infimum in (1) can be restricted to self-adjoint fac
 \]
 The linear term on the left is \(-2t\operatorname{Im}f(h)\). Divide by positive and negative \(t\), then let \(t\) tend to zero, to conclude that \(f(h)\) is real. If \(0\le h\le1\), continuous calculus gives \(\|1-h\|\le1\). Thus \(|1-f(h)|\le1\) and \(f(h)\ge0\); scaling covers every positive \(h\).
 
-For \(a=a^*\ne0\) in \(A\), use the forced unitization, including when \(A\) already has a unit. Its spectrum contains a nonzero \(\lambda\) with \(|\lambda|=\|a\|\), by F04. Evaluation at \(\lambda\) on \(C^*(1,a)\) has norm one and unit value one by F06. Extend it norm-preservingly. The preceding criterion makes the extension positive. Its restriction \(\varphi\) to \(A\) has norm at most one and \(|\varphi(a)|=\|a\|\), so its norm is exactly one. It is a state norming \(a\). This is the self-adjoint detector construction at the F13 boundary.
+For \(a=a^*\ne0\) in \(A\), use the [forced unitization](infinite-tensor-products.md#f02), including when \(A\) already has a unit. Its spectrum contains a nonzero \(\lambda\) with \(|\lambda|=\|a\|\), by F04. Evaluation at \(\lambda\) on \(C^*(1,a)\) has norm one and unit value one by F06. Extend it norm-preservingly. The preceding criterion makes the extension positive. Its restriction \(\varphi\) to \(A\) has norm at most one and \(|\varphi(a)|=\|a\|\), so its norm is exactly one. It is a state norming \(a\). This is the self-adjoint detector construction at the [F13 boundary](infinite-tensor-products.md#f13).
 
 For any state \(\varphi\) of \(A\), its extension
 \(\Phi(a+\lambda1)=\varphi(a)+\lambda\) is positive. Indeed positivity of \(a+\lambda1\) implies \(\lambda\ge0\), \(a=a^*\), and \(\|a_-\|\le\lambda\), by the scalar quotient and spectral translation. Hence
@@ -261,7 +261,7 @@ This construction uses a rational bounded filter throughout. The spectral clippi
 For \(\tau>0\), define
 \(h_\tau(t)=\max(-\tau,\min(t,\tau))\) and
 \(e_\tau(t)=t-h_\tau(t)\).
-Both are continuous and zero at zero; F06 therefore evaluates them inside the original algebra, even without a unit.
+Both are continuous and zero at zero; [F06](infinite-tensor-products.md#f06) therefore evaluates them inside the original algebra, even without a unit.
 
 **Lemma 3.1.** With (8),
 \[

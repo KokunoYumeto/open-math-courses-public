@@ -1,6 +1,6 @@
 # The bootstrap theorem
 
-*Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 ## Introduction
 

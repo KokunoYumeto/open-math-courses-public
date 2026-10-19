@@ -8,4 +8,4 @@ Run `python generate.py` with NumPy and Matplotlib installed. The default destin
 - **normalized-cone-pairings:** Exact specified-class obstruction, disk-invisible corrections, attainable integral subgroup and actual commutative mapping-cylinder tests. Proofs: FCD.8–FCD.14 and OFD.1–OFD.4.
 - **joint-covariant-rank-seam:** Original degree-three finite suspension, retained rank seams, exact averaged coefficient and noninvariant transport ratios. Proofs: JCN.20–JCN.29 and JCR.1–JCR.7. The omitted endpoints are shown as open circles.
 
-Read the lesson for the complete arguments and the limitations of each construction.
+Read [the lesson](../../k-theory-of-the-leaf-space.html) for the complete arguments and the limitations of each construction.

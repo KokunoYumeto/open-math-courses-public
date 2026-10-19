@@ -4,7 +4,7 @@
 
 A finite holomorphic map preserves the full cotangent image of microsupport even when the coefficient modules are infinitely generated or nonperfect. The proof uses the actual vanishing-cycle object and a finite filtration by normal Morse modules. A nonzero quotient of a finite module filtration cannot disappear from its final object. This gives the required nonvanishing directly over the original ring.
 
-The geometric arguments are those already proved in normal Morse data, [bounded Whitney recollement](../perverse-normal-morse-inputs.html#SH02-PNM-WHITNEY-REALIZATION), [nearby-cycle models](../general-nearby-cycle-models.html), and [holomorphic critical support](../general-critical-support.html). The proof below verifies their coefficient requirements and supplies the additional categorical and module arguments. The analytic, topological and microsupport hypotheses in those geometric proofs are retained throughout.
+The geometric arguments are those already proved in [normal Morse data](../normal-morse-coefficients.html), [bounded Whitney recollement](../perverse-normal-morse-inputs.html#SH02-PNM-WHITNEY-REALIZATION), [nearby-cycle models](../general-nearby-cycle-models.html), and [holomorphic critical support](../general-critical-support.html). The proof below verifies their coefficient requirements and supplies the additional categorical and module arguments. The analytic, topological and microsupport hypotheses in those geometric proofs are retained throughout.
 
 <a id="WC0"></a>
 
@@ -100,7 +100,7 @@ This proves boundedness uniformly even for a globally infinite, locally finite s
 
 ## WC2. Normal degrees and visible conormals
 
-Use the original normal restriction fibre \(N_{S,\lambda}(F)\) at a generic conormal to \(S\), and set \(\mu_{S,\lambda}=N_{S,\lambda}[-d]\). The complex-link filtrations and degree induction PD1–PD4 already hold for bounded weak coefficients over every commutative ring. Their two triangles are the central restriction fibre and the costalk/variation triangle. Their ordinary and compact-support quotients are the actual original normal objects with the tangential shifts; the latter retain the radial exit set and its orientation.
+Use the original normal restriction fibre \(N_{S,\lambda}(F)\) at a generic conormal to \(S\), and set \(\mu_{S,\lambda}=N_{S,\lambda}[-d]\). The [complex-link filtrations and degree induction PD1–PD4](../normal-morse-coefficients.html#SH02-NMC-COMPLEX-LINK-FILTRATION) already hold for bounded weak coefficients over every commutative ring. Their two triangles are the central restriction fibre and the costalk/variation triangle. Their ordinary and compact-support quotients are the actual original normal objects with the tangential shifts; the latter retain the radial exit set and its orientation.
 
 In those finite filtrations, extension of complexes in a fixed degree range preserves that range for arbitrary modules. Consequently the upper and lower normal-degree equivalences, together with WC5, make the fixed exact functor \(\mu_{S,\lambda}\) t-exact. Applying it to the two adjacent perverse truncation triangles and using uniqueness of ordinary truncation gives natural isomorphisms
 
@@ -112,7 +112,7 @@ In those finite filtrations, extension of complexes in a fixed degree range pres
 
 No local system is split into its cohomology complexes in this argument.
 
-The complete NG1–NG9 conormal detection theorem applies to these same weak objects over arbitrary \(k\). Its coefficient reduction is exact restriction to underlying abelian sheaves, not tensor with a field. As shown in NMC1–NMC4, one can use the same flabby resolutions for direct images, localizations, and supported tests; forgetting the module action is conservative and commutes with their actual maps. The involutivity step is performed over \(\mathbb Z\), where its finite-global-dimension hypothesis holds, and returned by these supported-test comparisons. It does not require a comparison of microlocal internal Hom under restriction of scalars.
+The complete [NG1–NG9 conormal detection theorem](../normal-morse-coefficients.html#SH02-NMC-NONGENERIC-DETECTION) applies to these same weak objects over arbitrary \(k\). Its coefficient reduction is exact restriction to underlying abelian sheaves, not tensor with a field. As shown in NMC1–NMC4, one can use the same flabby resolutions for direct images, localizations, and supported tests; forgetting the module action is conservative and commutes with their actual maps. The involutivity step is performed over \(\mathbb Z\), where its finite-global-dimension hypothesis holds, and returned by these supported-test comparisons. It does not require a comparison of microlocal internal Hom under restriction of scalars.
 
 For each original connected stratum, WC7 says its normal object for \(F\) is nonzero exactly when that for at least one \({}^pH^jF\) is nonzero. There are only finitely many such \(j\) by WC6. Taking the same full closed conormals in NG19 proves
 

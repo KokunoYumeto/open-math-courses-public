@@ -40,7 +40,7 @@ $$
 
 The manifold-duality lesson supplies `SH02-MD-SUBMERSION`, `SH02-MD-RELATIVE`, and `SH02-MD-CLOSED`: the orientation line and its shift, the formula $q_Y^!G\simeq q_X^{-1}\omega_X\otimes^Lq_Y^{-1}G$ when $X$ is a topological manifold, and the closed-submanifold costalk formula. These imported contracts are not replaced by a field-coefficient or finite-rank special case here.
 
-For the local geometric models, `SH02-CA-CONSTANT` in the convex acyclicity lesson proves that ordinary cohomology of a nonempty locally closed convex set with constant coefficients is exactly its coefficient module in degree zero. Compact-support cohomology of a ball is the orientation calculation in the manifold-duality lesson; proper-support base change and the projection formula give its product version.
+For the local geometric models, `SH02-CA-CONSTANT` in the [convex acyclicity lesson](../../SH02-convex-acyclicity.html) proves that ordinary cohomology of a nonempty locally closed convex set with constant coefficients is exactly its coefficient module in degree zero. Compact-support cohomology of a ball is the orientation calculation in the manifold-duality lesson; proper-support base change and the projection formula give its product version.
 
 ### SH02-CB-FOUNDATION-ROUTES — Resolutions and neighborhood comparisons
 

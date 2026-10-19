@@ -378,4 +378,4 @@ The input pullback equals it by direct differentiation of \(y=x+zw^2\) and \(\et
 
 - [Hörmander IV, Theorem 25.3.9] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, reprint of the corrected second printing (1994), §25.3, Theorem 25.3.9 and its proof. The preceding partial normalization is equation 25.3.5 and the cubic preparation is equation 25.3.6. The following nonhomogeneous-transformation remark and fold/Airy theorems are separate targets.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original text: public domain (CC0).*

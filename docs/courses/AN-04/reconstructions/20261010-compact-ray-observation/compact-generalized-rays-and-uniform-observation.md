@@ -2,7 +2,7 @@
 
 We assemble the local boundary estimates into one uniform observation estimate on a fixed normalized half-space chart. The proof includes strict diffraction with a stationary projected boundary field, nonunique continuation at infinite contact and stationary normalized rays. Its analytic compactness argument records the full remainders of the operators actually used. A dense list of symbols would not provide that control.
 
-**Independent exposition, proofs, exercises and figure: CC0-1.0.** The admitted antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, §24.7, Propositions 24.7.1 and 24.7.1′ and Lemma 24.7.2, printed pages 465–467. The proof map identifies the exact earlier programme proofs, including every local estimate and the closed-set trajectory construction used here. See source credit and [review](proof-review.json). Human foundation proofs remain explicitly external. Some prerequisite proofs are external readings.
+**Independent exposition, proofs, exercises and figure: CC0-1.0.** The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer 2007 edition, ISBN 978-3-540-49938-1, §24.7, Propositions 24.7.1 and 24.7.1′ and Lemma 24.7.2, printed pages 465–467. The proof map identifies the exact earlier programme proofs, including every local estimate and the closed-set trajectory construction used here. See source credit and [review](proof-review.json). Human foundation proofs remain explicitly external. Some prerequisite proofs are external readings.
 
 ## 1. The chart theorem and its quantifiers
 

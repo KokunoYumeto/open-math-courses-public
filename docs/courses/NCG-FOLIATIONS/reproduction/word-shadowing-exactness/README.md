@@ -3,7 +3,7 @@
 This portable original schematic accompanies Section 11BQ, Theorem 11BQ.1,
 equations IX.1–IX.12 and Exercises 303–305. The figure explains the mechanism;
 the complete mathematical argument remains in
-the complete proof in Section11BQ. It is not replaced by the diagram.
+[the complete proof in Section11BQ](../../k-theory-of-the-leaf-space.html#11bq-reduced-restriction-through-arbitrary-rank-changes). It is not replaced by the diagram.
 
 The diagram's original expression, generator, symbolic data and rendering
 wrapper are dedicated under **CC0 1.0**. This package includes no external

@@ -149,7 +149,7 @@ This holds for every real \(t\) and every self-adjoint \(h\), possibly unbounded
 
 ## BG2. Scalar chords, logarithms and complete diagonal singular sums
 
-The [exponential and logarithm construction](../src/elementary-calculus-for-infinite-products.md#5-exponential-logarithm-and-scalar-powers) gives the absolutely convergent exponential series, its addition law, derivative, positive real range, inverse logarithm and continuity. CAR Section 17.1 proves Rolle and the mean-value theorem from real completeness, and defines \(\pi\) from the first positive cosine zero. Its quadrant calculation gives
+The [exponential and logarithm construction](../src/elementary-calculus-for-infinite-products.md#5-exponential-logarithm-and-scalar-powers) gives the absolutely convergent exponential series, its addition law, derivative, positive real range, inverse logarithm and continuity. [CAR Section 17.1](../src/car-fock-and-quasifree-states.md#17-1-the-elementary-scalar-period-including-the-meaning-of-2-pi) proves Rolle and the mean-value theorem from real completeness, and defines \(\pi\) from the first positive cosine zero. Its quadrant calculation gives
 \[
 \sin''x=-\sin x,\qquad
 \sin x\ge0\ (0\le x\le\pi/2),\qquad

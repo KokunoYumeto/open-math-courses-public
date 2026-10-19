@@ -82,7 +82,7 @@ For the second project, use the $\mu$-stratification condition (Guillermou, Defi
 
 ### The local index, the finite Euler sum and the endpoint check
 
-Here is the solution of the first project at the precise coefficient scope where an index determines the local object. Let \(\varphi\) have a nondegenerate critical point \(x\), with negative Hessian space \(E^-_x\) of dimension \(\tau\). Suppose \(F\) is a constant bounded coefficient complex on a sufficiently small Morse chart. Write \(P=F_x\). The full coordinate and supported-map calculation TMC1–TMC4 gives
+Here is the solution of the first project at the precise coefficient scope where an index determines the local object. Let \(\varphi\) have a nondegenerate critical point \(x\), with negative Hessian space \(E^-_x\) of dimension \(\tau\). Suppose \(F\) is a constant bounded coefficient complex on a sufficiently small Morse chart. Write \(P=F_x\). The full [coordinate and supported-map calculation TMC1–TMC4](../normal-morse-coefficients.html#SH02-NMC-TANGENTIAL-MORSE) gives
 
 \[
 J_x\simeq P\otimes_k\operatorname{or}(E^-_x)[-\tau].

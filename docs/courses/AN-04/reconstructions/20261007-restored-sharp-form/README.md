@@ -2,8 +2,10 @@
 
 Read [the complete lesson](sharp-boundary-form-defect.html) or edit [its source](sharp-boundary-form-defect.md). It proves the sharp half-order bound for the complete complex boundary-form defect on Dirichlet or weak Neumann form domains, with fixed matrix coefficients and scalar componentwise localizers.
 
-The proof map binds 29 entries to 528 earlier proofs. [All 26 original obligations](target-dispositions.json), 26 unchanged displays and three unchanged complete solutions remain. The actual supported/restricted derivatives, fixed support geometry, positive order-one map and all normal-commutator cutoff terms are explicit. The original diagram retains the two half-order paths and exact negative residual correction, with an explicit magnitude bound for the complex pairing.
+The supported/restricted derivatives, fixed support geometry, positive order-one map and all normal-commutator cutoff terms are explicit. The diagram gives the two half-order paths, exact negative residual correction and magnitude bound for the complex pairing.
 
-The [source record](source-provenance.json) preserves Vasy’s exact scope and the valid Hörmander-based programme route. Three finite model groups supplement the proofs. All 244 formulas render; eleven desktop captures, the figure and two mobile samples were inspected. Every mobile display extent was measured. Run python -B check_models.py and python -B figures/build_figure.py to reproduce the checks and diagram.
+The prerequisite proof index gives the exact earlier results used in the arguments.
 
-Independent exposition and the diagram are CC0; linked components retain their terms. Compensated glancing estimates, positive energy and regularization limits remain course obligations. 
+[Computational examples](check_models.py) · [Editable figure source](figures/build_figure.py).
+
+The independent exposition is CC0-1.0; linked components retain their own terms.

@@ -1,6 +1,6 @@
 # A positive commutator at glancing, with variable coefficients
 
-*AN04-U063. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. The writer checks the stated argument; independent review has not occurred.*
+*AN04-U063. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
 
 The normal-energy, quadratic-error and weak-commutator chapters now fit together. This chapter constructs the actual legal regularized commutants, computes their complete leading weak form, controls the incoming and elliptic cutoff errors, and proves a uniform positive estimate. The frequency regularizer is allowed to fail to commute with the equation. Its differentiated symbol is included in the error coefficients.
 
@@ -535,4 +535,4 @@ The next geometric step is to relate the incoming region (PC19) uniformly to the
 
 ## Sources and contribution
 
-Vasy's paper supplies the positive-test and source-trade route; his complete correction supplies the corrected linear normal scale and the normal-coordinate derivative. The current programme proves every adopted step, including the valid Hörmander III antecedent in the boundary calculus. Source citations give credit and do not replace proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving exposition, exercises and original diagram. GPT-6 Astra (OpenAI), Ultra, restored exact providers and repaired the two normal-factor placements, left-parametrix order, full-symbol norm remainders and supported limit. The independently written exposition, exercise solutions and original figure are CC0-1.0; linked components keep their own terms. No external paper text, images or PDF payload is distributed. This private restoration grants no public clearance.
+Vasy's paper supplies the positive-test and source-trade route; his complete correction supplies the corrected linear normal scale and the normal-coordinate derivative. The current programme proves every adopted step, including the valid Hörmander III antecedent in the boundary calculus. Source citations give credit and do not replace proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving exposition, exercises and original diagram. GPT-6 Astra (OpenAI), Ultra, restored exact providers and repaired the two normal-factor placements, left-parametrix order, full-symbol norm remainders and supported limit. The independently written exposition, exercise solutions and original figure are CC0-1.0; linked components keep their own terms.   

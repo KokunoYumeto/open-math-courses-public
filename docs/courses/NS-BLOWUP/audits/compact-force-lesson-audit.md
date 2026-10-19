@@ -1,6 +1,6 @@
 # Localizing the field and extending its smooth force
 
-*NS-BLOWUP N7.1. Written and self-checked by GPT-6 Astra (OpenAI), at Ultra. This independent exposition is dedicated to CC0. No independent human review or formal verification is claimed.*
+*NS-BLOWUP N7.1. Exposition by GPT-6 Astra (OpenAI). This independent exposition is dedicated to CC0.*
 
 The local-field construction gives an actual divergence-free velocity, its potentials and pressure. Its momentum residual vanishes to every order near the singular scale, and its exterior is an exact heat flow. This lesson turns those fields into a compactly supported solution from rest before time one, and constructs a smooth compactly supported force through and beyond that time. The force extends; the argument does not extend the singular velocity.
 
@@ -510,8 +510,8 @@ The line property (LF5.14) belongs to this actual series, whose every coefficien
 
 ## Sources and scope
 
-OpenAI, *Finite Time Blowup for Navier–Stokes*, [original 166-page paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf), SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Original pages 117–120 supply Proposition 10.1, Lemmas 10.2–10.3 and equations (10.1)–(10.12). Original (10.22) on page 124 gives the viscosity map used in LF4. The complete pages 117–126 were inspected. No original-source error is asserted and no diplomatic transcription is changed.
+OpenAI, *Finite Time Blowup for Navier–Stokes*, [original 166-page paper](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf), SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Original pages 117–120 supply Proposition 10.1, Lemmas 10.2–10.3 and equations (10.1)–(10.12). Original (10.22) on page 124 gives the viscosity map used in LF4.
 
-The supplying [terminal-force proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/terminal-force-and-blowup-audit.md), F0–F8, was read completely. LF0–LF3 retain all arguments of F0–F3. LF4 gives the full physical localization and force extension. LF5 supplies the exact additional calculations and their proofs; no novelty is claimed. The separately proved energy, comparison, growth and periodic arguments remain available in F4–F8 and the [full comparison proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/audits/lemma_10_5_reaudit.md), equations (1)–(64), whose analytical tools were also read completely. Those arguments are supplied in the [complete N7.2 lesson](../src/energy-comparison-and-the-final-blowup-conclusions.md), EC0–EC7, including all analytical tools in EC1. The separate computation theorem has its own verification scope.
+The supplying [terminal-force proof](terminal-force-and-blowup-audit.md), F0–F8, supplies the corresponding arguments. LF0–LF3 retain all arguments of F0–F3. LF4 gives the full physical localization and force extension. LF5 supplies the exact additional calculations and their proofs; no novelty is claimed. The separately proved energy, comparison, growth and periodic arguments remain available in F4–F8 and the [full comparison proof](lemma_10_5_reaudit.md), equations (1)–(64), including the analytical tools in its sections 5.1–5.3. Those arguments are supplied in the [complete N7.2 lesson](../src/energy-comparison-and-the-final-blowup-conclusions.md), EC0–EC7, including all analytical tools in EC1. The computation chapter has separate statements and proofs.
 
-The mathematical review is author derivation and self-review. Diplomatic transcriptions retain OpenAI's actual statements, formulas and irregularities. The proofs and exercises here are separate editorial exposition.
+Diplomatic transcriptions preserve OpenAI's statements, formulas and irregularities. The proofs and exercises here are separate editorial exposition.

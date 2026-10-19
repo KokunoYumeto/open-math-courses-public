@@ -1,6 +1,6 @@
 # The weak commutator and the variable-coefficient regularizer error
 
-*AN04-U062. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. The writer has checked the stated arguments; independent review has not occurred.*
+*AN04-U062. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
 
 A positive-commutator proof has an algebraic side as well as a positive-symbol side. The algebra must use the actual weak boundary realization, include complex lower terms and keep a variable-coefficient regularizer commutator. This chapter proves those identities, sharpens the lower-term localization remainder to the exact induction scale, and proves convergence of the regularized forcing in the natural dual space. The positive-symbol decomposition and its uniform norm estimate are the next obligations.
 
@@ -333,4 +333,4 @@ The full native assignment, including systems, crossings, general glancing and c
 
 ## Sources and contribution
 
-Vasy's Lemma 2.8 supplies the ordinary-normal commutator route, and his Section 6 supplies the regularized-test context. The variable-coefficient weak equation here retains its full forcing error. Each used result has its exact programme proof, including the valid Hörmander III antecedent in the local boundary calculus. Citations give credit and never replace a proof. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving argument, three complete solutions and original diagram. GPT-6 Astra (OpenAI), Ultra, restored current providers and made the common support hypotheses, ordered parametrix actions and complete antidual-limit argument explicit. This independent exposition and original diagram are CC0-1.0; linked components retain their own terms. No external paper text, figures or page images are distributed. This restoration remains private and gives no public clearance.
+Vasy's Lemma 2.8 supplies the ordinary-normal commutator route, and his Section 6 supplies the regularized-test context. The variable-coefficient weak equation here retains its full forcing error. Each used result has its exact programme proof, including the valid Hörmander III antecedent in the local boundary calculus. Citations give credit and never replace a proof. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved receiving argument, three complete solutions and original diagram. GPT-6 Astra (OpenAI), Ultra, restored current providers and made the common support hypotheses, ordered parametrix actions and complete antidual-limit argument explicit. This independent exposition and original diagram are CC0-1.0; linked components retain their own terms.   

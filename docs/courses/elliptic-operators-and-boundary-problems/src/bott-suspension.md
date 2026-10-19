@@ -211,7 +211,7 @@ p(Ow)=\Lambda(O)\,p(w)\,\Lambda(O)^{-1},\qquad Ow=Ox+iO\xi .
 
 (5) \(O\) is real and orthogonal, so it preserves \(\langle\cdot,\cdot\rangle\) on \(\mathbb C^n\). The determinant formula then shows that \(\Lambda(O)\) preserves inner products, and it is invertible with inverse \(\Lambda(O^{-1})\). It preserves degrees. From \(\Lambda(O)(w\wedge v)=Ow\wedge\Lambda(O)v\) we get \(\Lambda(O)\Lambda(w)=\Lambda(Ow)\Lambda(O)\). Taking adjoints and using unitarity gives \(\Lambda(O)\Lambda(w)^*=\Lambda(Ow)^*\Lambda(O)\). Add the two identities and restrict to \(\Lambda^e\). \(\square\)
 
-**Remark 3.3.** The invertibility of \(p(w)\) is the finite-dimensional case of a general fact about complexes: for an exact complex, the odd–even operator \(d+d^*\), from the even to the odd part, has zero kernel, and its index is the Euler characteristic, which is zero. See Traces that survive passage to cohomology. The identity (3.3) gives more: an explicit inverse, with norm \(1/|w|\).
+**Remark 3.3.** The invertibility of \(p(w)\) is the finite-dimensional case of a general fact about complexes: for an exact complex, the odd–even operator \(d+d^*\), from the even to the odd part, has zero kernel, and its index is the Euler characteristic, which is zero. See [Traces that survive passage to cohomology](traces-and-complexes.md). The identity (3.3) gives more: an explicit inverse, with norm \(1/|w|\).
 
 **Example 3.4** (Two small cases). For \(n=1\), \(\Lambda^e=\mathbb C\cdot1\), \(\Lambda^o=\mathbb C e_1\), and \(p(w)1=we_1\); so \(p(w)\) is multiplication by \(w\). For \(n=2\), in the bases \(\{1,e_1\wedge e_2\}\) of \(\Lambda^e\) and \(\{e_1,e_2\}\) of \(\Lambda^o\),
 \[

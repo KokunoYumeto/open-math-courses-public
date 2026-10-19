@@ -2,8 +2,10 @@
 
 Read [the complete lesson](uniform-microsupport-and-dual-sources.html) or edit [its source](uniform-microsupport-and-dual-sources.md). It proves uniform localization by one elliptic tester on either energy form space and its antidual, then the half-order source trade and the exact epsilon absorption estimate.
 
-The proof map binds 28 entries to 512 earlier proofs. [All 23 original obligations](target-dispositions.json), 29 unchanged displays and three complete solutions remain. Boundary-supported Neumann sources, proper parametrix support, actual density adjoints and periodic Fourier foundations are explicit. The diagram explains why individual finite rank does not give uniform smoothing and why the half-order source balance matters.
+Boundary-supported Neumann sources, proper parametrix support, density adjoints and periodic Fourier foundations are explicit. The diagram distinguishes individual finite rank from uniform smoothing and gives the half-order source balance.
 
-The [source record](source-provenance.json) preserves Vasy and Melrose’s exact scope and the valid Hörmander-based programme route. Three finite model groups supplement the proofs. All 273 formulas render; thirteen desktop captures, the figure and two mobile samples were inspected. Every mobile display extent was measured. Run python -B check_models.py and python -B figures/build_figure.py to reproduce the checks and diagram.
+The prerequisite proof index gives the exact earlier results used in the arguments.
 
-Independent exposition and the diagram are CC0; linked components retain their terms. Sharp form-defect bounds, compensated glancing constants and full analytic propagation remain course obligations. 
+[Computational examples](check_models.py) · [Editable figure source](figures/build_figure.py).
+
+The independent exposition is CC0-1.0; linked components retain their own terms.

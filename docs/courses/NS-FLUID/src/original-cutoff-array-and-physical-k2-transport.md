@@ -48,11 +48,11 @@ The specific receiving routines are `Lip/Holder_C.m`, lines 17–30,
 `Linear_stability/Est_hol_profi.m`, lines 202–280.
 
 The complete analytic cell proofs and original global certificate are
-included in CB1–CB25.
+included in [CB1–CB25](original-two-point-transport-and-certified-kernel-bounds.md).
 Their previously delivered version is
 the original global certificate.
 The complete reflected-domain and physical-operator comparison is
-included as NL1–NL30,
+included as [NL1–NL30](original-two-point-transport-and-certified-kernel-bounds.md),
 and is also taught in
 lesson51.
 The present result supplies the finer horizontal array left open in

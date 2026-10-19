@@ -1,4 +1,4 @@
-"""Build the hash-bound Artin-axioms and moduli readers from editable sources."""
+"""Build all twelve hash-bound course readers from editable sources."""
 from pathlib import Path, PurePosixPath
 from collections import Counter
 import argparse, hashlib, json, re, sys
@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE/'renderer'))
 from course_reader import render_markdown_math
+from course_assets import read_unit_assets, figure_provenance, asset_output_path
 from output_safety import fresh_directory, isolated_path
 
 def sha(raw):return hashlib.sha256(raw).hexdigest()
@@ -39,7 +40,7 @@ def heads(text):
     return [(i,m[1],m[2]) for i,line in enumerate(text.splitlines(),1)
             if (m:=re.match(r'^(#{1,6})\s+(.+)$',line))]
 
-def render_unit(unit,files,aliases,links):
+def render_unit(unit,files,aliases,links,assets=None,verify_identity=True):
     raw=files[unit['source']]
     if sha(raw)!=unit['source_sha256']:
         raise ValueError('Lesson source does not match its catalogue')
@@ -56,7 +57,10 @@ def render_unit(unit,files,aliases,links):
         raise ValueError('Heading aliases are not bound to this source')
     body=render_markdown_math(projected,local_links=links,
         heading_anchors=[{'line':lines[r['line']],'ids':r['ids']} for r in rows],
-        footnote_bindings=unit.get('footnote_bindings',[]))
+        footnote_bindings=unit.get('footnote_bindings',[]),assets=assets)
+    if assets is not None:
+        for row in assets.records:
+            body=body.replace('src="'+asset_output_path(assets.course_id,assets.unit_id,row).split('/',2)[2]+'"','src="'+row['source']+'"')
     layout=files['reader-source/'+unit['layout']].decode('utf-8')
     if sha(layout.encode())!=unit['layout_sha256']:
         raise ValueError('Layout does not match its declared identity')
@@ -90,7 +94,7 @@ def render_unit(unit,files,aliases,links):
     count=len(dom.select('article [data-tex]'))
     if count!=unit['expected_math']:raise ValueError('Formula coverage differs')
     result=str(dom).encode('utf-8')
-    if sha(result)!=unit['reader_sha256']:
+    if verify_identity and sha(result)!=unit['reader_sha256']:
         raise ValueError('Rebuilt reader differs from the declared edition: '+unit['id'])
     return result,{'id':unit['id'],'source_sha256':sha(raw),'reader_sha256':sha(result),
                    'headings':len(hs),'formulas':count,'exact_current_edition':True}
@@ -103,6 +107,7 @@ def build(root,output):
     files={r['path']:input_bytes(root,r) for r in rows}
     aliases=json.loads(files['heading-aliases.json'])
     components=json.loads(files['components.json'])['components']
+    course_units={u['id']:u for u in json.loads(files['course.json'])['units']}
     results=[];readers={}
     for unit in config['units']:
         component,=[c for c in components if c['id']==unit['id']]
@@ -117,7 +122,7 @@ def build(root,output):
             for key in ('source_notes_authorship','proof_addition_authorship'):
                 if key in span and not span[key].get('writing_ai'):
                     raise ValueError('Additional mathematical authorship is missing')
-        raw,result=render_unit(unit,files,aliases,config['local_links'])
+        raw,result=render_unit(unit,files,aliases,config['local_links'],read_unit_assets(root,'AG-AS',course_units[unit['id']]))
         readers['courses/AG-AS/'+unit['reader']]=raw;results.append(result)
     out=fresh_directory(output,protected=(root,));out.mkdir(parents=True,exist_ok=True)
     for row in rows:

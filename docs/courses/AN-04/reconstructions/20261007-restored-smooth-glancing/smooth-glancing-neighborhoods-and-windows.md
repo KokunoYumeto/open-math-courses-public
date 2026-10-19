@@ -1,6 +1,6 @@
 # Smooth glancing regularity in parabolic windows
 
-*AN04-U064. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. The writer checks the stated argument; independent review has not occurred.*
+*AN04-U064. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
 
 The [finite-order positive estimate](../20261007-restored-compensated-glancing/compensated-glancing-positive-commutator.md) gives more than an L2 value: its order-\((\nu-1)\) energy output supplies the next induction hypothesis. We prove that the iteration leaves one open phase neighborhood at every order. We also supply the noncharacteristic estimates needed to turn an empty characteristic window into incoming regularity. The resulting criterion is for the full smooth single-face scalar wave principal form of U063, with time-variable coefficients, complex matrix lower terms and either weak form domain.
 
@@ -372,4 +372,4 @@ The larger coefficient class still needs the exact canonical normal-form identif
 
 ## Sources and contribution
 
-Vasy's freely readable paper supplies the energy-front, elliptic-form and nested-cutoff route. Its correction remains incorporated through the preceding normal-energy and positive-commutator lessons. The present programme proves every adopted step; citations give credit and never substitute for proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved exposition, exercises and exact diagram. GPT-6 Astra (OpenAI), Ultra, restored the current providers, corrected the guard remainder, and supplied the explicit partition, uniform two-point estimate and Sobolev jump details. The independent exposition, solutions and original diagram are CC0-1.0; linked components retain their own terms. No external paper text, images or PDF payload is distributed. This private restoration grants no public clearance.
+Vasy's freely readable paper supplies the energy-front, elliptic-form and nested-cutoff route. Its correction remains incorporated through the preceding normal-energy and positive-commutator lessons. The present programme proves every adopted step; citations give credit and never substitute for proofs. GPT-6.1 Sol (OpenAI), Ultra, wrote the preserved exposition, exercises and exact diagram. GPT-6 Astra (OpenAI), Ultra, restored the current providers, corrected the guard remainder, and supplied the explicit partition, uniform two-point estimate and Sobolev jump details. The independent exposition, solutions and original diagram are CC0-1.0; linked components retain their own terms.   

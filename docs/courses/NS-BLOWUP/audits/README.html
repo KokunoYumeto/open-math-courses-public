@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}@media(max-width:600px){
+mjx-container[display="true"],mjx-math[display="true"],mjx-mtable[side="right"]{min-width:0!important}
+mjx-mtable[side="right"]>mjx-table{margin-left:0!important;margin-right:0!important}
+mjx-mtable[side="right"]>mjx-labels{position:static!important;display:block!important;width:auto!important;text-align:right;margin-top:.65em}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable{position:static!important;display:inline-table!important}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable>mjx-mtr{height:auto!important}
+}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="README.md">Editable source</a></nav><h1 id="proofs-of-forced-navier-stokes-constructions">Proofs of forced Navier–Stokes constructions</h1>
+<p>This collection gives complete mathematical derivations for Theorem 1.1 and Corollary 10.6 of OpenAI’s <em>Finite Time Blowup for Navier–Stokes</em>. It follows the construction from the original profiles to the actual correction fields, compact smooth forcing, bounded energy, velocity blowup and periodic realization, retaining the original coordinates, viscosity, supports and solution classes.</p>
+<p>The <a href="theorem-audit-conclusion.html">theorem and its construction</a> state the exact whole-space and periodic conclusions and link each required mathematical argument. The companion computation constructions give global smooth flows with prescribed forces and exact halting detectors.</p>
+<p>The collection contains the following mathematical derivations:</p>
+<ul>
+<li>
+<p><a href="radial-primitive-audit/src/radial-primitives-and-compact-mean-corrections.html">Radial primitive</a>, R1–R8: original physical and chart maps, compact support, the retained cutoff remainder, its all-order bound, and the positive axial potential.</p>
+</li>
+<li>
+<p><a href="mean-moment-correction-audit.html">Five-profile moment correction</a>, M1–M8: explicit inverse, all physical row factors, exact divergence and support, complete nonlinear defect recomputation, pressure and tangential-mean changes. M2.4–M2.7 give the exact bridge to every original viscosity. M6 proves a slightly stronger local defect bound under the same source hypotheses.</p>
+</li>
+<li>
+<p><a href="temporal-mean-correction-audit.html">Temporal mean correction</a>, T1–T4: exact torus inverse and finite derivative estimate, covering compatibility, physical scale, compact axial realization, retained remainder and nonlinear mean-equation receiver.</p>
+</li>
+<li>
+<p><a href="wave-interaction-audit.html">Nonlinear wave interactions</a>, W1–W8: full mean–wave receiver, exact curl/divergence cancellation, same-label wave products, closed-support separation, all cylindrical terms and the original viscosity factors.</p>
+</li>
+<li>
+<p><a href="pulse-inverse-audit.html">Pulse inverse and full linear residual</a>, P0–P9: original phase/frame, normal pressure, exact constrained solve, all fixed derivatives, homogeneous pulse, compact curl, all-order cutoff decay and the complete linear residual.</p>
+</li>
+<li>
+<p><a href="stress-covariance-audit.html">Stress realization</a>, C1–C9: exact Haar and angular factors, positive amplitudes with an explicit cone margin, all edge derivatives, signed stress inverse, physical assembly and actual curl covariance remainders.</p>
+</li>
+<li>
+<p><a href="source-containment-audit.html">Finite-stage source containment</a>, S1–S5: support and harmonic induction, weighted mean integration, retained flat residuals and exact conservative equations after pressure reconstruction.</p>
+</li>
+<li>
+<p><a href="correction-cycle-audit.html">Initialization and complete correction cycle</a>, K0–K8: full pressure and moment receivers, the four ordered updates, every simultaneous residual bound, accumulated-field preservation and one domain for every finite stage. K7 proves the common gain 17999/100000 while retaining the original stage definitions.</p>
+</li>
+<li>
+<p><a href="physical-realization-audit.html">Physical derivative bounds and realization</a>, L0–L7: the actual potential and pressure increments, stage-independent derivative losses, all original viscosity factors, one cutoff sequence, exact nonlinear residual comparison, endpoint limits, the complete exterior heat integral and unchanged inner-growth formula. The actual global base supplying these receiving operations is derived in Z0–Z8 below; the local assembly and final implications are proved in I0–I7 and F0–F8 below.</p>
+</li>
+<li>
+<p><a href="profile-stress-moment-audit.html">Leading-profile stress and exact moment restoration</a>, G0–G7: complete coordinate and viscous stress identities; all five cumulative moments and the axis pressure datum; exact exterior preservation; parameter stability; original row and support-scale factors; power-moment invertibility; the quadratic moment solve; and the exact stress-cone map. The complete leading profile is constructed in O, H, J, Q and V below; the positive-order base is constructed in Z0–Z8 below.</p>
+</li>
+<li>
+<p><a href="outer-profile-audit.html">Reference outer profile</a>, O0–O8: the full radial schedule, exact moment corrections, actual amplitude root, analytic axis pressure, stress margins on every reference interval, and a compatible finite parameter choice. This establishes Proposition A.4 and Lemma A.5 for the power-law reference.</p>
+</li>
+<li>
+<p><a href="heat-exterior-stress-audit.html">Heat exterior and endpoint stress</a>, H0–H7: actual heat replacement and three restored moments; boundary traces for the temporary reference; backward stress; positive terminal angular stress; the strict cone; both exact flat factors and the smooth limiting direction; and the original viscosity map. The exact join is derived in Q0–Q9 and the subsequent shear modification in V0–V7.</p>
+</li>
+<li>
+<p><a href="analytic-axis-profile-audit.html">Analytic axis profile</a>, J0–J7: prescribed analytic axis data, the complete coefficient algebra and mixed derivative estimate, the actual nonlinear contraction, a smooth Cartesian axis field, positive angular source and strict endpoint shear inequality. This proves Lemma B.1 and Propositions B.2–B.3. Continuation and exact matching are derived in Q0–Q9.</p>
+</li>
+<li>
+<p><a href="inner-outer-joining-audit.html">Joining the axis and outer profiles</a>, Q0–Q9: actual reference continuation, stress activation with its exact flat factor, analytic collar, amplitude-independent transition bounds, all five original moment factors, an explicit nonlinear five-bump correction, exact exterior preservation and compatible parameter choices. This proves Lemma B.4 through Corollary B.10. The admissible-shear realization is derived in V0–V7.</p>
+</li>
+<li>
+<p><a href="shear-realization-audit.html">Admissible shear and the complete leading profile</a>, V0–V7: a smooth loop with the exact prescribed mean, actual finite-frequency fields, all five restored moments, preserved pressure and exterior, both endpoint directions, the common flat weight and all six properties of Theorem 4.6. This proves Lemma C.1 and Propositions C.2–C.3. The positive-order base is constructed in Z0–Z8 below.</p>
+</li>
+<li>
+<p><a href="higher-axis-coefficients-audit.html">Higher-order coefficients on one fixed axis interval</a>, D0–D6: all original physical coefficient equations, every entry of the six-component system, the exact singular integral inverse, sparse parameter derivatives, convergence on one fixed interval, axis regularity and the actual first correction from the supplied leading profile. This establishes the linear construction in Lemma 5.1. The global extension and coefficient induction are supplied by Y0–Y7 below, and the actual base-field summation by Z0–Z8.</p>
+</li>
+<li>
+<p><a href="positive-order-extension-audit.html">Global coefficients and all five residual moments</a>, Y0–Y7: an explicit fixed-patch affine moment solve, exact radial-velocity and pressure closure, preserved inner analyticity and reserved mean patch, every conservative boundary term, the convergent subtracted leading angular moment, signed stress support and the full first-order heat endpoint bound. With D0–D6 this constructs the actual coefficient sequence at every order, completing Lemmas 5.1–5.2. The finite-truncation estimates, actual summation and Proposition 5.5 are derived in Z0–Z8 below.</p>
+</li>
+<li>
+<p><a href="base-field-realization-audit.html">Realization of the actual base field</a>, Z0–Z8: every finite residual term, order-independent physical derivative losses, the actual Stokes potentials and full cutoff curls, one sequence controlling both stress entries, a complete nonlinear residual comparison, the original coefficient expansion and velocity and weighted stress bounds, endpoint derivatives, exact heat exterior, unchanged reserved mean-patch velocity and original viscosity. This establishes Propositions 5.3 and 5.5 and the actual stress-augmented summation in Lemma 5.4. Theorem 3.1 is assembled in I0–I7 below. The localization and final implications are derived in F0–F8 below; the complete proof connections are set out in the audit conclusion.</p>
+</li>
+<li>
+<p><a href="local-construction-assembly-audit.html">Assembly of the actual local construction</a>, I0–I7: exact base-to-chart derivative maps, the original shear and stress-cone margins, one common domain for every finite correction, the unchanged mean interval, the complete potential sum and residual comparison, compatible terminal derivatives, exact exterior pressure and heat flow, positive inner growth and all original viscosity factors. This assembles all four properties of Theorem 3.1. The actual local fields are used in F0–F8 for compact localization, the smooth force, energy, comparison and blowup.</p>
+</li>
+<li>
+<p><a href="terminal-force-and-blowup-audit.html">Compact forcing, energy and the final blowup argument</a>, F0–F8: full curl localization, every terminal force derivative, the original compact jet-extension series, uniform energy and dissipation, actual comparison inputs, the original inner-growth path, every positive-viscosity factor and the periodic construction.</p>
+</li>
+<li>
+<p><a href="lemma_10_5_reaudit.html">Whole-space comparison and analytical tools</a>, equations (1)–(64): pressure-gradient recovery without a pressure-growth assumption, the complete cutoff flux, the retained R^(-4/3) error, weaker reference-field hypotheses, and proofs of the exact Sobolev and double-Riesz bounds used in the argument.</p>
+</li>
+</ul>
+<p>The separate <a href="eventually-stationary-computation-audit.html">eventually stationary computation construction</a>, with a <a href="eventually-stationary-computation.html">typeset reader</a>, proves the finite reversible recorder, exact rectangle motions, fixed detector, mean-zero spatial clock, residual force, global classical uniqueness, bounded energy and effective evaluation on the flat three-torus. SC7 gives periodic and solenoidal alternatives. SC8 gives complete slow-clock coefficients and a positive lower bound for stationary forcing. The rapidly decreasing-force and velocity-field detection constructions are developed in the following two notes.</p>
+<p>The <a href="rapid-forcing-computation-audit.html">rapidly vanishing forcing construction</a>, with a <a href="rapid-forcing-computation.html">typeset reader</a>, derives all four experiments from three exact memories: addressed moving curls and their torus image, alternating fractional coordinates, and a periodic lattice. RC1 supplies the complete uniqueness and pressure projection arguments. RC2–RC8 prove the finite instruction maps, full particle paths, every mixed rapid-decay bound and the exact detector equivalences. RC9 proves time-space integrability and convergence to a limiting flow with two-sided Lipschitz bounds.</p>
+<p>The <a href="velocity-field-detection-audit.html">velocity-field detection construction</a>, with a <a href="velocity-field-detection.html">typeset reader</a>, gives complete arguments for the pointwise torus test and the integral test on the plane times a circle. VD1–VD4 establish the scalar receiver, classical comparison and short-burst diffusion estimates at the original viscosity. VD5–VD8 give the injective integer addresses, separated translation gates, all mixed force bounds, integrable scalar tails and the moving-mass estimate. VD2 proves the exact map between integer and fractional tape coordinates; VD9 gives global vertical-velocity and energy bounds and the torus time-integrability obstruction for the paper’s positive-injection construction.</p>
+<p>The <a href="torus-computation-source-correspondence.html">comparison of the two torus velocity tests</a>, with a <a href="torus-computation-source-correspondence.html">typeset reader</a>, proves the exact history projection from the supplied Lean construction to the original machine. VC1–VC6a derive the finite prefix gates, signed bursts, diffusion barriers, unchanged-viscosity residual and effective evaluation through the cutoff endpoints. VC7 proves the full mass identity, including after halting: the supplied construction withdraws each burst, whereas the paper’s construction retains its injected mass. Both detect the same halting event. The note includes complete written arguments, an editable diagram and an explicit admissible bump derivative bound.</p>
+<p>The <a href="SOURCES.json">bibliography</a> identifies the original PDF, author LaTeX and mathematical source locators. The diplomatic transcription retains OpenAI’s text and formulas, including any original irregularities. Editorial arguments and mathematical refinements are presented in these separate audit notes. Original sources retain their attribution and rights; the independent authored audit text is CC0.</p>
+</article></body></html>

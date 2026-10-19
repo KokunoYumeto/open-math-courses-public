@@ -1,0 +1,1368 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}@media(max-width:600px){
+mjx-container[display="true"],mjx-math[display="true"],mjx-mtable[side="right"]{min-width:0!important}
+mjx-mtable[side="right"]>mjx-table{margin-left:0!important;margin-right:0!important}
+mjx-mtable[side="right"]>mjx-labels{position:static!important;display:block!important;width:auto!important;text-align:right;margin-top:.65em}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable{position:static!important;display:inline-table!important}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable>mjx-mtr{height:auto!important}
+}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="radial-mean-equations-audit.md">Editable source</a></nav><h1 id="radial-primitives-and-the-complete-mean-equations">Radial primitives and the complete mean equations</h1>
+<p>The mean correction needs a compact pressure and an actual divergence-free velocity. A radial integral alone is insufficient: its source depends on a torus coordinate that changes along a physical radius, and its full radial integral can leave a nonzero tail. This lesson constructs the original radial operator, retains its tail exactly, proves all its derivative estimates, and derives the three scalar defects that the later mean operations must remove.</p>
+<p>The complete component covers original section 8.1–8.4, through Corollary 8.5: the conservative equations, weighted primitives, pressure, axial potential, integrated identities and compact tangential stress. RM4 retains the exact map back to the original viscosity. The auxiliary-time inverse and the five-profile moment solve are subsequent components. The preceding <a href="../src/constructing-the-pulses-and-their-velocities.md">pulse lesson</a>, <a href="../src/realizing-stress-and-controlling-interactions.md">stress lesson</a> and <a href="../src/constructing-the-actual-base-field.md">actual base construction</a> supply their complete input fields.</p>
+<p>This lesson gives separate mathematical exposition of the radial operators and mean equations. The original source passages and the preceding constructions are cited below.</p>
+<p><img src="../assets/radial-mean-corrections.svg" alt="The exact radial path, compact primitive, pressure and solenoidal potential, followed by the three retained mean defects." class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="CA84450EE2E4FBBBDD2B6B3B2E251D25246B8093CE69BAE012E403313C1AF9F9"></p>
+<p>The diagram displays the maps proved in RP1–RP8 and RM1–RM4. The <a href="../assets/radial-mean-corrections.py">editable diagram source</a> uses the exact formulas, without numerical flow samples.</p>
+<h2 id="rp1-the-physical-map-and-every-scale-factor">RP1. The physical map and every scale factor</h2>
+<p>Keep the original constants and coordinates</p>
+<span class="math math-display" data-tex="\[
+0&lt;h&lt;\frac1{100},\quad A=\frac12+h,\quad D=\frac12-h,
+\quad \tau=1-t=q(1-\eta^2),\quad z=q^D\eta,
+\quad X=\frac{r^2}{2q}.
+\tag{RP1.1}
+\]">\[
+0&lt;h&lt;\frac1{100},\quad A=\frac12+h,\quad D=\frac12-h,
+\quad \tau=1-t=q(1-\eta^2),\quad z=q^D\eta,
+\quad X=\frac{r^2}{2q}.
+\tag{RP1.1}
+\]</span>
+<p>For a dyadic band and its auxiliary covering, the source uses</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q=2^{-\ell},\quad \varepsilon=Q^h,\quad S_*=\ell^2,
+\quad R=\frac r{\sqrt Q},\quad Z=\frac z{Q^D},\quad T=\frac{1-t}{Q},\\
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+\Lambda_g=4-\sqrt2,\quad T_g=4+\sqrt2,\quad b_g=\sqrt2-1,\\
+v_r=(1,-b_g),\quad v_t=(b_g,1),\quad
+\rho_g=\frac{\log\Lambda_g}{\log T_g},\quad
+\kappa_s=10^{-5},\quad d_r=2((1+h)\rho_g-h\kappa_s),\\
+i(\ell)=\left\lfloor\log_{T_g}\frac{Q^{-1-h}}{S_*}\right\rfloor.
+\end{gathered}
+\tag{RP1.2}
+\]">\[
+\begin{gathered}
+Q=2^{-\ell},\quad \varepsilon=Q^h,\quad S_*=\ell^2,
+\quad R=\frac r{\sqrt Q},\quad Z=\frac z{Q^D},\quad T=\frac{1-t}{Q},\\
+J_g=\begin{pmatrix}3&amp;1\\1&amp;5\end{pmatrix},\quad
+\Lambda_g=4-\sqrt2,\quad T_g=4+\sqrt2,\quad b_g=\sqrt2-1,\\
+v_r=(1,-b_g),\quad v_t=(b_g,1),\quad
+\rho_g=\frac{\log\Lambda_g}{\log T_g},\quad
+\kappa_s=10^{-5},\quad d_r=2((1+h)\rho_g-h\kappa_s),\\
+i(\ell)=\left\lfloor\log_{T_g}\frac{Q^{-1-h}}{S_*}\right\rfloor.
+\end{gathered}
+\tag{RP1.2}
+\]</span>
+<p>Only sufficiently large <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, for which <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>, are used. The physical evaluation is</p>
+<span class="math math-display" data-tex="\[
+Y(r,t)=v_rr^{d_r}+v_tt\pmod{\mathbb Z^2},\qquad
+Y_i=J_g^iY.
+\tag{RP1.3}
+\]">\[
+Y(r,t)=v_rr^{d_r}+v_tt\pmod{\mathbb Z^2},\qquad
+Y_i=J_g^iY.
+\tag{RP1.3}
+\]</span>
+<p>Direct multiplication gives <span class="math" data-tex="\(J_gv_r=\Lambda_gv_r\)">\(J_gv_r=\Lambda_gv_r\)</span> and <span class="math" data-tex="\(J_gv_t=T_gv_t\)">\(J_gv_t=T_gv_t\)</span>. Before evaluating a coefficient at (RP1.3), its physical derivatives are consequently</p>
+<span class="math math-display" data-tex="\[
+\mathfrak r=\partial_r+d_rr^{d_r-1}v_r\cdot\partial_Y,
+\qquad
+\mathfrak t=\partial_t+v_t\cdot\partial_Y.
+\tag{RP1.4}
+\]">\[
+\mathfrak r=\partial_r+d_rr^{d_r-1}v_r\cdot\partial_Y,
+\qquad
+\mathfrak t=\partial_t+v_t\cdot\partial_Y.
+\tag{RP1.4}
+\]</span>
+<p>Both derivatives on the right hold the independent <span class="math" data-tex="\(Y\)">\(Y\)</span> fixed. Physical axial differentiation is <span class="math" data-tex="\(\partial_z\)">\(\partial_z\)</span>, since <span class="math" data-tex="\(Y\)">\(Y\)</span> does not depend on <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>Fix a common covering index <span class="math" data-tex="\(i_0\)">\(i_0\)</span> on a neighborhood and write <span class="math" data-tex="\(y=J_g^{i_0}Y\)">\(y=J_g^{i_0}Y\)</span>. All discrete indices and <span class="math" data-tex="\(Q\)">\(Q\)</span> remain fixed during differentiation there. Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal L=v_r\cdot\partial_y,\quad N=v_t\cdot\partial_y,
+\quad M=\Lambda_g^{i_0}Q^{d_r/2},\quad c=T_g^{i_0}Q^{1+h}.
+\tag{RP1.5}
+\]">\[
+\mathcal L=v_r\cdot\partial_y,\quad N=v_t\cdot\partial_y,
+\quad M=\Lambda_g^{i_0}Q^{d_r/2},\quad c=T_g^{i_0}Q^{1+h}.
+\tag{RP1.5}
+\]</span>
+<p>The exact evaluated chart operators are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_r&amp;=\sqrt Q\,\mathfrak r
+=\partial_R+Md_rR^{d_r-1}\mathcal L,\\
+D_z&amp;=\sqrt Q\,\partial_z=\varepsilon\partial_Z,\\
+\mathfrak t_*&amp;=Q^{1+h}\mathfrak t
+=-\varepsilon\partial_T+cN.
+\end{aligned}
+\tag{RP1.6}
+\]">\[
+\begin{aligned}
+D_r&amp;=\sqrt Q\,\mathfrak r
+=\partial_R+Md_rR^{d_r-1}\mathcal L,\\
+D_z&amp;=\sqrt Q\,\partial_z=\varepsilon\partial_Z,\\
+\mathfrak t_*&amp;=Q^{1+h}\mathfrak t
+=-\varepsilon\partial_T+cN.
+\end{aligned}
+\tag{RP1.6}
+\]</span>
+<p>For example, <span class="math" data-tex="\(\sqrt Q\,d_rr^{d_r-1}\Lambda_g^{i_0}
+=d_r\Lambda_g^{i_0}Q^{d_r/2}R^{d_r-1}\)">\(\sqrt Q\,d_rr^{d_r-1}\Lambda_g^{i_0}
+=d_r\Lambda_g^{i_0}Q^{d_r/2}R^{d_r-1}\)</span>, proving the first line with every factor retained. The minus sign in the last line comes from <span class="math" data-tex="\(T=(1-t)/Q\)">\(T=(1-t)/Q\)</span>.</p>
+<p>At the band index <span class="math" data-tex="\(i\)">\(i\)</span>, the floor in (RP1.2) gives the explicit bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda_g^{-1}\varepsilon^{-\kappa_s}S_*^{-\rho_g}
+&amp;&lt;\Lambda_g^iQ^{d_r/2}
+\leq\varepsilon^{-\kappa_s}S_*^{-\rho_g},\\
+T_g^{-1}S_*^{-1}&amp;&lt;T_g^iQ^{1+h}\leq S_*^{-1}.
+\end{aligned}
+\tag{RP1.7}
+\]">\[
+\begin{aligned}
+\Lambda_g^{-1}\varepsilon^{-\kappa_s}S_*^{-\rho_g}
+&amp;&lt;\Lambda_g^iQ^{d_r/2}
+\leq\varepsilon^{-\kappa_s}S_*^{-\rho_g},\\
+T_g^{-1}S_*^{-1}&amp;&lt;T_g^iQ^{1+h}\leq S_*^{-1}.
+\end{aligned}
+\tag{RP1.7}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(T_g^{-1}Q^{-1-h}/S_*&lt;T_g^i\leq Q^{-1-h}/S_*\)">\(T_g^{-1}Q^{-1-h}/S_*&lt;T_g^i\leq Q^{-1-h}/S_*\)</span>, and <span class="math" data-tex="\(\Lambda_g^i=(T_g^i)^{\rho_g}\)">\(\Lambda_g^i=(T_g^i)^{\rho_g}\)</span>. Substituting the full definition of <span class="math" data-tex="\(d_r\)">\(d_r\)</span> gives (RP1.7). If <span class="math" data-tex="\(|i_0-i|\leq C_0\)">\(|i_0-i|\leq C_0\)</span>, for a fixed integer <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+M^{-1}\leq\Lambda_g^{C_0+1}\varepsilon^{\kappa_s}S_*^{\rho_g},
+\quad
+M\leq\Lambda_g^{C_0}\varepsilon^{-\kappa_s}S_*^{-\rho_g},
+\quad c\leq T_g^{C_0}S_*^{-1}.
+\tag{RP1.8}
+\]">\[
+M^{-1}\leq\Lambda_g^{C_0+1}\varepsilon^{\kappa_s}S_*^{\rho_g},
+\quad
+M\leq\Lambda_g^{C_0}\varepsilon^{-\kappa_s}S_*^{-\rho_g},
+\quad c\leq T_g^{C_0}S_*^{-1}.
+\tag{RP1.8}
+\]</span>
+<p>No limit of the covering index has been substituted for its integer value.</p>
+<h2 id="rp2-the-exact-path-and-a-comparison-of-radial-scales">RP2. The exact path and a comparison of radial scales</h2>
+<p>For fixed <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span>, the radial path from <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(r&#x27;\)">\(r&#x27;\)</span> changes the absolute coordinate by</p>
+<span class="math math-display" data-tex="\[
+Y&#x27; =Y+((r&#x27;)^{d_r}-r^{d_r})v_r.
+\]">\[
+Y&#x27; =Y+((r&#x27;)^{d_r}-r^{d_r})v_r.
+\]</span>
+<p>Applying <span class="math" data-tex="\(J_g^{i_0}\)">\(J_g^{i_0}\)</span> and then substituting <span class="math" data-tex="\(r=\sqrt Q R\)">\(r=\sqrt Q R\)</span>, <span class="math" data-tex="\(r&#x27;=\sqrt Q R&#x27;\)">\(r&#x27;=\sqrt Q R&#x27;\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+y&#x27;=y+\Lambda_g^{i_0}Q^{d_r/2}
+((R&#x27;)^{d_r}-R^{d_r})v_r.
+\tag{RP2.1}
+\]">\[
+y&#x27;=y+\Lambda_g^{i_0}Q^{d_r/2}
+((R&#x27;)^{d_r}-R^{d_r})v_r.
+\tag{RP2.1}
+\]</span>
+<p>Thus the original coefficient is exactly <span class="math" data-tex="\(M\)">\(M\)</span> in (RP1.5). To examine how its full exponent controls the inverse, compare the explicitly different coefficient</p>
+<span class="math math-display" data-tex="\[
+\widetilde M=\frac{\Lambda_g^{i_0}Q^{d_r}}2
+=\frac{Q^{d_r/2}}2 M.
+\tag{RP2.2}
+\]">\[
+\widetilde M=\frac{\Lambda_g^{i_0}Q^{d_r}}2
+=\frac{Q^{d_r/2}}2 M.
+\tag{RP2.2}
+\]</span>
+<p>These are different for every band <span class="math" data-tex="\(0&lt;Q\leq1\)">\(0&lt;Q\leq1\)</span>, since <span class="math" data-tex="\(d_r&gt;0\)">\(d_r&gt;0\)</span>.</p>
+<p>The change of coefficient changes the estimate used for the inverse. In fact <span class="math" data-tex="\(\rho_g&gt;1/2\)">\(\rho_g&gt;1/2\)</span>: both eigenvalues exceed one, and</p>
+<span class="math math-display" data-tex="\[
+\Lambda_g^2-T_g=14-9\sqrt2&gt;0,
+\]">\[
+\Lambda_g^2-T_g=14-9\sqrt2&gt;0,
+\]</span>
+<p>where the last inequality follows by squaring the positive numbers, <span class="math" data-tex="\(14^2&gt;81\cdot2\)">\(14^2&gt;81\cdot2\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\frac{d_r}{2}=(1+h)\rho_g-h\kappa_s&gt;\frac12,
+\qquad
+\theta:=(1+h)\rho_g-2h\kappa_s&gt;\frac12.
+\tag{RP2.3}
+\]">\[
+\frac{d_r}{2}=(1+h)\rho_g-h\kappa_s&gt;\frac12,
+\qquad
+\theta:=(1+h)\rho_g-2h\kappa_s&gt;\frac12.
+\tag{RP2.3}
+\]</span>
+<p>For <span class="math" data-tex="\(i_0=i\)">\(i_0=i\)</span>, (RP1.7) gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\Lambda_g}Q^\theta S_*^{-\rho_g}
+&lt;\widetilde M\leq\frac12Q^\theta S_*^{-\rho_g}.
+\tag{RP2.4}
+\]">\[
+\frac1{2\Lambda_g}Q^\theta S_*^{-\rho_g}
+&lt;\widetilde M\leq\frac12Q^\theta S_*^{-\rho_g}.
+\tag{RP2.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\widetilde M\to0\)">\(\widetilde M\to0\)</span> as <span class="math" data-tex="\(\ell\to\infty\)">\(\ell\to\infty\)</span>, whereas <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>. The latter assertion follows from <span class="math" data-tex="\(Q^{-h\kappa_s}S_*^{-\rho_g}=2^{\ell h\kappa_s}\ell^{-2\rho_g}\to\infty\)">\(Q^{-h\kappa_s}S_*^{-\rho_g}=2^{\ell h\kappa_s}\ell^{-2\rho_g}\to\infty\)</span>; taking logarithms reduces it to <span class="math" data-tex="\(\ell h\kappa_s\log2-2\rho_g\log\ell\to\infty\)">\(\ell h\kappa_s\log2-2\rho_g\log\ell\to\infty\)</span>. More particularly,</p>
+<span class="math math-display" data-tex="\[
+\frac{\widetilde M^{-1}}{\varepsilon^{\kappa_s}S_*^{\rho_g}}
+\geq 2Q^{-d_r/2}\longrightarrow\infty.
+\tag{RP2.5}
+\]">\[
+\frac{\widetilde M^{-1}}{\varepsilon^{\kappa_s}S_*^{\rho_g}}
+\geq 2Q^{-d_r/2}\longrightarrow\infty.
+\tag{RP2.5}
+\]</span>
+<p>The small inverse-coefficient estimate cannot hold with the literal <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>. Sections RP3–RP6 establish it with the uniquely determined physical coefficient <span class="math" data-tex="\(M\)">\(M\)</span>, without changing the original physical path.</p>
+<h2 id="rp3-the-compact-primitive-in-physical-variables">RP3. The compact primitive in physical variables</h2>
+<p>Choose the original active shell <span class="math" data-tex="\(X_a&lt;X&lt;X_b\)">\(X_a&lt;X&lt;X_b\)</span>, with <span class="math" data-tex="\(0&lt;X_a&lt;X_b\)">\(0&lt;X_a&lt;X_b\)</span>. Let <span class="math" data-tex="\(\chi_m(X)\)">\(\chi_m(X)\)</span> be a fixed smooth function equal to zero near and below its inner boundary and to one near and above its outer boundary. Its derivative is supported in a fixed interior subinterval. Let <span class="math" data-tex="\(g(r,z,t,Y)\)">\(g(r,z,t,Y)\)</span> be smooth, periodic in <span class="math" data-tex="\(Y\)">\(Y\)</span>, and smoothly zero outside the active shell. All radial integrations below hold <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span> fixed.</p>
+<p>Define the original physical operations</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal I_{\rm phys}g(r,Y)
+&amp;=\int_0^r g(r&#x27;,Y+((r&#x27;)^{d_r}-r^{d_r})v_r)\,dr&#x27;,\\
+\mathcal J_{\rm phys}g(r,Y)
+&amp;=\int_0^\infty g(r&#x27;,Y+((r&#x27;)^{d_r}-r^{d_r})v_r)\,dr&#x27;,\\
+\mathcal I_{c,\rm phys}g
+&amp;=\mathcal I_{\rm phys}g-\chi_m(X)\mathcal J_{\rm phys}g.
+\end{aligned}
+\tag{RP3.1}
+\]">\[
+\begin{aligned}
+\mathcal I_{\rm phys}g(r,Y)
+&amp;=\int_0^r g(r&#x27;,Y+((r&#x27;)^{d_r}-r^{d_r})v_r)\,dr&#x27;,\\
+\mathcal J_{\rm phys}g(r,Y)
+&amp;=\int_0^\infty g(r&#x27;,Y+((r&#x27;)^{d_r}-r^{d_r})v_r)\,dr&#x27;,\\
+\mathcal I_{c,\rm phys}g
+&amp;=\mathcal I_{\rm phys}g-\chi_m(X)\mathcal J_{\rm phys}g.
+\end{aligned}
+\tag{RP3.1}
+\]</span>
+<p>Below the shell both the first integral and <span class="math" data-tex="\(\chi_m\)">\(\chi_m\)</span> vanish. Above it the first integral equals the full integral and <span class="math" data-tex="\(\chi_m=1\)">\(\chi_m=1\)</span>. Their difference is therefore zero on both sides. Smooth zero extension follows by differentiating the smooth integrands with compact radial support; the support stays away from the axis at each fixed <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.</p>
+<p>For <span class="math" data-tex="\(e=0,1,2\)">\(e=0,1,2\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathsf T_{e,\rm phys}f&amp;=r^{-e}\mathcal I_{c,\rm phys}(r^ef),\\
+\mathcal A_{e,\rm phys}f&amp;=r^{-e}(\partial_r\chi_m)
+\mathcal J_{\rm phys}(r^ef).
+\end{aligned}
+\tag{RP3.2}
+\]">\[
+\begin{aligned}
+\mathsf T_{e,\rm phys}f&amp;=r^{-e}\mathcal I_{c,\rm phys}(r^ef),\\
+\mathcal A_{e,\rm phys}f&amp;=r^{-e}(\partial_r\chi_m)
+\mathcal J_{\rm phys}(r^ef).
+\end{aligned}
+\tag{RP3.2}
+\]</span>
+<p>Here and below <span class="math" data-tex="\(r^ef\)">\(r^ef\)</span> inside an integral is evaluated at its integration variable. The exact identity is</p>
+<span class="math math-display" data-tex="\[
+(\mathfrak r+e/r)\mathsf T_{e,\rm phys}f
+=f-\mathcal A_{e,\rm phys}f.
+\tag{RP3.3}
+\]">\[
+(\mathfrak r+e/r)\mathsf T_{e,\rm phys}f
+=f-\mathcal A_{e,\rm phys}f.
+\tag{RP3.3}
+\]</span>
+<p>To prove it, differentiate (RP3.1). Differentiating the shift with respect to the endpoint <span class="math" data-tex="\(r\)">\(r\)</span> gives <span class="math" data-tex="\(-d_rr^{d_r-1}v_r\cdot\partial_Y\)">\(-d_rr^{d_r-1}v_r\cdot\partial_Y\)</span> of the integrand. This cancels the added torus derivative in <span class="math" data-tex="\(\mathfrak r\)">\(\mathfrak r\)</span>. The upper endpoint contributes <span class="math" data-tex="\(g(r,Y)\)">\(g(r,Y)\)</span> to <span class="math" data-tex="\(\mathfrak r\mathcal I_{\rm phys}g\)">\(\mathfrak r\mathcal I_{\rm phys}g\)</span>, while <span class="math" data-tex="\(\mathfrak r\mathcal J_{\rm phys}g=0\)">\(\mathfrak r\mathcal J_{\rm phys}g=0\)</span>. The product rule then gives</p>
+<span class="math math-display" data-tex="\[
+\mathfrak r\mathcal I_{c,\rm phys}g
+=g-(\partial_r\chi_m)\mathcal J_{\rm phys}g.
+\]">\[
+\mathfrak r\mathcal I_{c,\rm phys}g
+=g-(\partial_r\chi_m)\mathcal J_{\rm phys}g.
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\(r^{-e}\)">\(r^{-e}\)</span> and adding <span class="math" data-tex="\(e/r\)">\(e/r\)</span> cancels the derivative of that weight, proving (RP3.3). The cutoff term remains part of the answer.</p>
+<p>For the chart operations, replace the shift in (RP3.1) by
+<span class="math" data-tex="\(y+M((R&#x27;)^{d_r}-R^{d_r})v_r\)">\(y+M((R&#x27;)^{d_r}-R^{d_r})v_r\)</span>, replace <span class="math" data-tex="\(r,r&#x27;\)">\(r,r&#x27;\)</span> by <span class="math" data-tex="\(R,R&#x27;\)">\(R,R&#x27;\)</span>, and use <span class="math" data-tex="\(\chi_m(QR^2/(2q))\)">\(\chi_m(QR^2/(2q))\)</span>. Denote these operations by <span class="math" data-tex="\(\mathcal I_M,\mathcal J_M,\mathcal I_{c,M}\)">\(\mathcal I_M,\mathcal J_M,\mathcal I_{c,M}\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\mathsf T_{e,M}f_*=R^{-e}\mathcal I_{c,M}(R^ef_*),\qquad
+\mathcal A_{e,M}f_*=R^{-e}(\partial_R\chi_m)\mathcal J_M(R^ef_*).
+\tag{RP3.4}
+\]">\[
+\mathsf T_{e,M}f_*=R^{-e}\mathcal I_{c,M}(R^ef_*),\qquad
+\mathcal A_{e,M}f_*=R^{-e}(\partial_R\chi_m)\mathcal J_M(R^ef_*).
+\tag{RP3.4}
+\]</span>
+<p>For any specified physical exponent <span class="math" data-tex="\(a\)">\(a\)</span>, put <span class="math" data-tex="\(f_*=Q^af_{\rm phys}\)">\(f_*=Q^af_{\rm phys}\)</span> at corresponding physical and chart points. Substitution, including the radial measure, proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q^{a-1/2}\mathsf T_{e,\rm phys}f_{\rm phys}
+&amp;=\mathsf T_{e,M}f_*,\\
+Q^a\mathcal A_{e,\rm phys}f_{\rm phys}
+&amp;=\mathcal A_{e,M}f_*,\\
+(D_r+e/R)\mathsf T_{e,M}f_*
+&amp;=f_*-\mathcal A_{e,M}f_*.
+\end{aligned}
+\tag{RP3.5}
+\]">\[
+\begin{aligned}
+Q^{a-1/2}\mathsf T_{e,\rm phys}f_{\rm phys}
+&amp;=\mathsf T_{e,M}f_*,\\
+Q^a\mathcal A_{e,\rm phys}f_{\rm phys}
+&amp;=\mathcal A_{e,M}f_*,\\
+(D_r+e/R)\mathsf T_{e,M}f_*
+&amp;=f_*-\mathcal A_{e,M}f_*.
+\end{aligned}
+\tag{RP3.5}
+\]</span>
+<p>For the first equality, the factors are <span class="math" data-tex="\(r^{-e}=Q^{-e/2}R^{-e}\)">\(r^{-e}=Q^{-e/2}R^{-e}\)</span>, <span class="math" data-tex="\((r&#x27;)^e=Q^{e/2}(R&#x27;)^e\)">\((r&#x27;)^e=Q^{e/2}(R&#x27;)^e\)</span>, <span class="math" data-tex="\(dr&#x27;=Q^{1/2}dR&#x27;\)">\(dr&#x27;=Q^{1/2}dR&#x27;\)</span>, and <span class="math" data-tex="\(f_{\rm phys}=Q^{-a}f_*\)">\(f_{\rm phys}=Q^{-a}f_*\)</span>. For the second, the additional derivative contributes <span class="math" data-tex="\(\partial_r\chi_m=Q^{-1/2}\partial_R\chi_m\)">\(\partial_r\chi_m=Q^{-1/2}\partial_R\chi_m\)</span>. These calculations prove the complete comparison with the physical operators.</p>
+<p>The formulas are also compatible with the integer coverings. If <span class="math" data-tex="\(y&#x27;=J_g^sy\)">\(y&#x27;=J_g^sy\)</span>, <span class="math" data-tex="\(M&#x27;=\Lambda_g^sM\)">\(M&#x27;=\Lambda_g^sM\)</span>, and <span class="math" data-tex="\(f(R,y)=f&#x27;(R,J_g^sy)\)">\(f(R,y)=f&#x27;(R,J_g^sy)\)</span>, then each of <span class="math" data-tex="\(\mathcal I,\mathcal J,\mathsf T_e,\mathcal A_e\)">\(\mathcal I,\mathcal J,\mathsf T_e,\mathcal A_e\)</span> applied to <span class="math" data-tex="\(f\)">\(f\)</span> is the pullback under <span class="math" data-tex="\(J_g^s\)">\(J_g^s\)</span> of the corresponding operation with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> applied to <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>. This follows directly from <span class="math" data-tex="\(J_g^sv_r=\Lambda_g^sv_r\)">\(J_g^sv_r=\Lambda_g^sv_r\)</span> inside every integrand. Thus the physical operation is preserved when a source is expressed on another applicable covering. No inverse of the many-to-one torus covering is assumed.</p>
+<p>Using <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> instead gives a precise additional term in the actual chart equation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(D_r+e/R)\mathsf T_{e,\widetilde M}f
+={}&amp;f-\mathcal A_{e,\widetilde M}f\\
+&amp;+(M-\widetilde M)d_rR^{d_r-1}
+\mathcal L\mathsf T_{e,\widetilde M}f.
+\end{aligned}
+\tag{RP3.6}
+\]">\[
+\begin{aligned}
+(D_r+e/R)\mathsf T_{e,\widetilde M}f
+={}&amp;f-\mathcal A_{e,\widetilde M}f\\
+&amp;+(M-\widetilde M)d_rR^{d_r-1}
+\mathcal L\mathsf T_{e,\widetilde M}f.
+\end{aligned}
+\tag{RP3.6}
+\]</span>
+<p>Indeed the operator with <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> satisfies (RP3.5) with <span class="math" data-tex="\(D_r\)">\(D_r\)</span> replaced by <span class="math" data-tex="\(\partial_R+\widetilde Md_rR^{d_r-1}\mathcal L\)">\(\partial_R+\widetilde Md_rR^{d_r-1}\mathcal L\)</span>. Subtract those two derivatives. Equation (RP3.6) identifies the exact missing contribution rather than inferring failure from different notation alone.</p>
+<h2 id="rp4-support-and-all-coefficient-derivatives">RP4. Support and all coefficient derivatives</h2>
+<p>We now prove the estimate required for the original mean class. On the active shell define the original weights</p>
+<span class="math math-display" data-tex="\[
+\zeta(X)=\exp\!\left(-\frac{a_a}{\log^2(X/X_a)}
+-\frac{a_b}{\log^2(X_b/X)}\right),
+\quad
+\delta(X)=\min\{1,\log(X/X_a),\log(X_b/X)\},
+\tag{RP4.1}
+\]">\[
+\zeta(X)=\exp\!\left(-\frac{a_a}{\log^2(X/X_a)}
+-\frac{a_b}{\log^2(X_b/X)}\right),
+\quad
+\delta(X)=\min\{1,\log(X/X_a),\log(X_b/X)\},
+\tag{RP4.1}
+\]</span>
+<p>where <span class="math" data-tex="\(a_a,a_b&gt;0\)">\(a_a,a_b&gt;0\)</span> are fixed. A coefficient in <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> is independent of the physical angle, has the smooth shell extensions and covering compatibility described above, and satisfies, for every fixed multi-index <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\((R,Z,T,y_1,y_2)\)">\((R,Z,T,y_1,y_2)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\partial^I f_*|\leq C_I\varepsilon^\alpha S_*^{B_I}
+\zeta(X)\delta(X)^{-D_I}.
+\tag{RP4.2}
+\]">\[
+|\partial^I f_*|\leq C_I\varepsilon^\alpha S_*^{B_I}
+\zeta(X)\delta(X)^{-D_I}.
+\tag{RP4.2}
+\]</span>
+<p>Constants and nonnegative powers may depend on the finite construction and <span class="math" data-tex="\(I\)">\(I\)</span>, but not on the band or point. The displayed weights are bounds; differentiability of the minimum defining <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is not required.</p>
+<p>Assume <span class="math" data-tex="\(q/Q\)">\(q/Q\)</span> lies in a fixed positive compact interval, as in a chart. Every shell radius <span class="math" data-tex="\(R\)">\(R\)</span> then lies in a fixed compact subset of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. All fixed coefficient derivatives of <span class="math" data-tex="\(q/Q\)">\(q/Q\)</span> are bounded there: the exact equation</p>
+<span class="math math-display" data-tex="\[
+\frac qQ-Z^2\left(\frac qQ\right)^{2h}=T
+\tag{RP4.3}
+\]">\[
+\frac qQ-Z^2\left(\frac qQ\right)^{2h}=T
+\tag{RP4.3}
+\]</span>
+<p>comes from the original <span class="math" data-tex="\(q-z^2q^{2h}=1-t\)">\(q-z^2q^{2h}=1-t\)</span>, and its derivative in <span class="math" data-tex="\(q/Q\)">\(q/Q\)</span> is <span class="math" data-tex="\(1-2h\eta^2\geq1-2h\)">\(1-2h\eta^2\geq1-2h\)</span>. Repeated implicit differentiation on this compact region proves the claim. Thus the moving support and the cutoff have bounded coefficient derivatives.</p>
+<p>Let <span class="math" data-tex="\(g=R^ef_*\)">\(g=R^ef_*\)</span>, <span class="math" data-tex="\(U=R^{d_r}\)">\(U=R^{d_r}\)</span>, and define the zero-extended function</p>
+<span class="math math-display" data-tex="\[
+F(U,Z,T,y)=\frac{g(R,Z,T,y)}{d_rR^{d_r-1}}.
+\tag{RP4.4}
+\]">\[
+F(U,Z,T,y)=\frac{g(R,Z,T,y)}{d_rR^{d_r-1}}.
+\tag{RP4.4}
+\]</span>
+<p>The change between <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(U\)">\(U\)</span> and all its fixed derivatives are bounded on the shell. The exact half-line formulas are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_-(U,y)&amp;=\int_{-\infty}^0 F(U+u,y+Muv_r)\,du,\\
+A_+(U,y)&amp;=\int_0^\infty F(U+u,y+Muv_r)\,du,\\
+\mathcal J_Mg&amp;=A_-+A_+,\qquad
+\mathcal I_{c,M}g=(1-\chi_m)A_- -\chi_m A_+.
+\end{aligned}
+\tag{RP4.5}
+\]">\[
+\begin{aligned}
+A_-(U,y)&amp;=\int_{-\infty}^0 F(U+u,y+Muv_r)\,du,\\
+A_+(U,y)&amp;=\int_0^\infty F(U+u,y+Muv_r)\,du,\\
+\mathcal J_Mg&amp;=A_-+A_+,\qquad
+\mathcal I_{c,M}g=(1-\chi_m)A_- -\chi_m A_+.
+\end{aligned}
+\tag{RP4.5}
+\]</span>
+<p>At fixed <span class="math" data-tex="\(u\)">\(u\)</span>, the shift depends on neither <span class="math" data-tex="\(U\)">\(U\)</span> nor <span class="math" data-tex="\((Z,T)\)">\((Z,T)\)</span>. Coefficient differentiation therefore acts only on <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(\chi_m\)">\(\chi_m\)</span>, and introduces no power of <span class="math" data-tex="\(M\)">\(M\)</span>. The full half-lines have fixed endpoints; smooth zero extension permits differentiation under the integral without a moving-boundary term. For any fixed compact set of slow parameters the integrands have support in a uniformly bounded interval in <span class="math" data-tex="\(u\)">\(u\)</span>, so dominated differentiation follows from (RP4.2).</p>
+<p>Near the inner shell boundary, <span class="math" data-tex="\(\chi_m=0\)">\(\chi_m=0\)</span>, so only the left integral occurs. Set <span class="math" data-tex="\(s=\log(X&#x27;/X_a)\)">\(s=\log(X&#x27;/X_a)\)</span> along that segment. For each finite <span class="math" data-tex="\(B\geq0\)">\(B\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{ds}\log(e^{-a_a/s^2}s^{-B})
+=\frac{2a_a}{s^3}-\frac Bs&gt;0
+\]">\[
+\frac{d}{ds}\log(e^{-a_a/s^2}s^{-B})
+=\frac{2a_a}{s^3}-\frac Bs&gt;0
+\]</span>
+<p>for sufficiently small <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. This bounds the weight at each integration point by the weight of the same type at the endpoint. The opposite-edge factor has upper and lower positive bounds in this collar. The integration length and Jacobian are bounded. Near the outer edge use the right integral and <span class="math" data-tex="\(s=\log(X_b/X&#x27;)\)">\(s=\log(X_b/X&#x27;)\)</span> with the same argument. On the remaining interior region, <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> have positive lower bounds. Applying these estimates after any fixed derivative in (RP4.5), and restoring <span class="math" data-tex="\(R^{-e}\)">\(R^{-e}\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+\mathsf T_{e,M}:\mathsf M_\alpha\longrightarrow\mathsf M_\alpha.
+\tag{RP4.6}
+\]">\[
+\mathsf T_{e,M}:\mathsf M_\alpha\longrightarrow\mathsf M_\alpha.
+\tag{RP4.6}
+\]</span>
+<p>The operation preserves the projection of the source support to <span class="math" data-tex="\((Z,T)\)">\((Z,T)\)</span> because it holds these variables fixed. Every bound includes the original <span class="math" data-tex="\(\varepsilon^\alpha\)">\(\varepsilon^\alpha\)</span>. The factors <span class="math" data-tex="\(\zeta\delta^{-B}\)">\(\zeta\delta^{-B}\)</span> tend to zero with all needed powers at either edge: this follows by substituting <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span> into the exponential estimate in N6.1, S4. Thus the derivative bounds give smooth zero extensions as asserted.</p>
+<h2 id="rp5-the-full-radial-integral-and-its-cutoff-remainder">RP5. The full radial integral and its cutoff remainder</h2>
+<p>Let <span class="math" data-tex="\(\langle\cdot\rangle_y\)">\(\langle\cdot\rangle_y\)</span> be the Haar average on <span class="math" data-tex="\(\mathbb T^2=\mathbb R^2/\mathbb Z^2\)">\(\mathbb T^2=\mathbb R^2/\mathbb Z^2\)</span>, with total mass one. Suppose the weighted mean integral vanishes:</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty R^e\langle f_*\rangle_y\,dR=0.
+\tag{RP5.1}
+\]">\[
+\int_0^\infty R^e\langle f_*\rangle_y\,dR=0.
+\tag{RP5.1}
+\]</span>
+<p>Translation invariance of this average gives</p>
+<span class="math math-display" data-tex="\[
+\langle\mathcal J_M(R^ef_*)\rangle_y=0,
+\qquad \langle\mathcal A_{e,M}f_*\rangle_y=0.
+\tag{RP5.2}
+\]">\[
+\langle\mathcal J_M(R^ef_*)\rangle_y=0,
+\qquad \langle\mathcal A_{e,M}f_*\rangle_y=0.
+\tag{RP5.2}
+\]</span>
+<p>It does not usually make either unaveraged function zero.</p>
+<p>We need an inverse for <span class="math" data-tex="\(\mathcal L=v_r\cdot\partial_y\)">\(\mathcal L=v_r\cdot\partial_y\)</span> on zero-mean functions. For <span class="math" data-tex="\(k=(k_1,k_2)\in\mathbb Z^2\setminus\{0\}\)">\(k=(k_1,k_2)\in\mathbb Z^2\setminus\{0\}\)</span>, put <span class="math" data-tex="\(n=\max(|k_1|,|k_2|)\)">\(n=\max(|k_1|,|k_2|)\)</span>. The exact algebraic identity</p>
+<span class="math math-display" data-tex="\[
+(v_r\cdot k)\bigl((k_1+k_2)+\sqrt2k_2\bigr)
+=(k_1+k_2)^2-2k_2^2
+\tag{RP5.3}
+\]">\[
+(v_r\cdot k)\bigl((k_1+k_2)+\sqrt2k_2\bigr)
+=(k_1+k_2)^2-2k_2^2
+\tag{RP5.3}
+\]</span>
+<p>has a nonzero integer on the right. If it were zero and <span class="math" data-tex="\(k_2\ne0\)">\(k_2\ne0\)</span>, <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> would be rational; if <span class="math" data-tex="\(k_2=0\)">\(k_2=0\)</span>, it would force <span class="math" data-tex="\(k_1=0\)">\(k_1=0\)</span>. The second factor has absolute value at most <span class="math" data-tex="\((2+\sqrt2)n\)">\((2+\sqrt2)n\)</span>, hence</p>
+<span class="math math-display" data-tex="\[
+|v_r\cdot k|\geq\frac1{(2+\sqrt2)n}.
+\tag{RP5.4}
+\]">\[
+|v_r\cdot k|\geq\frac1{(2+\sqrt2)n}.
+\tag{RP5.4}
+\]</span>
+<p>For a smooth zero-mean function <span class="math" data-tex="\(H(y)\)">\(H(y)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\widehat H(k)=\int_{[0,1]^2}H(y)e^{-2\pi i k\cdot y}\,dy,
+\qquad
+\mathcal L^{-p}H
+=\sum_{k\ne0}(2\pi i v_r\cdot k)^{-p}\widehat H(k)e^{2\pi i k\cdot y}.
+\tag{RP5.5}
+\]">\[
+\widehat H(k)=\int_{[0,1]^2}H(y)e^{-2\pi i k\cdot y}\,dy,
+\qquad
+\mathcal L^{-p}H
+=\sum_{k\ne0}(2\pi i v_r\cdot k)^{-p}\widehat H(k)e^{2\pi i k\cdot y}.
+\tag{RP5.5}
+\]</span>
+<p>All factors of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> are retained. The Fourier series of a smooth periodic function represents that function: here is the needed inversion argument. The one-dimensional kernels</p>
+<span class="math math-display" data-tex="\[
+K_n(s)=\frac1n\left|\sum_{j=0}^{n-1}e^{2\pi i js}\right|^2
+\]">\[
+K_n(s)=\frac1n\left|\sum_{j=0}^{n-1}e^{2\pi i js}\right|^2
+\]</span>
+<p>are nonnegative, have integral one, and satisfy <span class="math" data-tex="\(K_n(s)\leq[n\sin^2(\pi\delta)]^{-1}\)">\(K_n(s)\leq[n\sin^2(\pi\delta)]^{-1}\)</span> when the distance from <span class="math" data-tex="\(s\)">\(s\)</span> to an integer is at least <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. The bound follows from the finite geometric sum. The product kernels <span class="math" data-tex="\(K_n(y_1)K_n(y_2)\)">\(K_n(y_1)K_n(y_2)\)</span> therefore form an approximate identity: uniform continuity controls the convolution error where both coordinates have distance below <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and the complement has kernel mass at most <span class="math" data-tex="\(2/[n\sin^2(\pi\delta)]\)">\(2/[n\sin^2(\pi\delta)]\)</span>. First choosing <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and then letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> proves uniform convergence of the convolutions to the function. Expanding the finite sums shows their Fourier coefficients are multiplied by <span class="math" data-tex="\((1-|k_1|/n)_+(1-|k_2|/n)_+\)">\((1-|k_1|/n)_+(1-|k_2|/n)_+\)</span>. For an absolutely summable Fourier series these weighted sums also converge uniformly to that series. Integration by parts, as follows, proves absolute summability for smooth functions. This proves inversion and also uniqueness from Fourier coefficients.</p>
+<p>Integrating <span class="math" data-tex="\(N\)">\(N\)</span> times in a coordinate with <span class="math" data-tex="\(|k_j|=n\)">\(|k_j|=n\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|\widehat H(k)|\leq(2\pi n)^{-N}\|H\|_{C^N},
+\]">\[
+|\widehat H(k)|\leq(2\pi n)^{-N}\|H\|_{C^N},
+\]</span>
+<p>where <span class="math" data-tex="\(\|H\|_{C^N}\)">\(\|H\|_{C^N}\)</span> is the maximum supremum norm of its derivatives through order <span class="math" data-tex="\(N\)">\(N\)</span>. Periodicity cancels every boundary term. For <span class="math" data-tex="\(N=m+p+3\)">\(N=m+p+3\)</span>, (RP5.4) bounds every derivative through order <span class="math" data-tex="\(m\)">\(m\)</span> of (RP5.5) by</p>
+<span class="math math-display" data-tex="\[
+\|\mathcal L^{-p}H\|_{C^m}
+\leq\frac{16(2+\sqrt2)^p}{(2\pi)^{2p+3}}
+\|H\|_{C^{m+p+3}}.
+\tag{RP5.6}
+\]">\[
+\|\mathcal L^{-p}H\|_{C^m}
+\leq\frac{16(2+\sqrt2)^p}{(2\pi)^{2p+3}}
+\|H\|_{C^{m+p+3}}.
+\tag{RP5.6}
+\]</span>
+<p>Indeed the shell <span class="math" data-tex="\(\max(|k_1|,|k_2|)=n\)">\(\max(|k_1|,|k_2|)=n\)</span> has <span class="math" data-tex="\(8n\)">\(8n\)</span> points, and <span class="math" data-tex="\(\sum_{n\geq1}n^{-2}\leq2\)">\(\sum_{n\geq1}n^{-2}\leq2\)</span>. This proves uniform convergence of every required differentiated series. Applying <span class="math" data-tex="\(\mathcal L^p\)">\(\mathcal L^p\)</span> recovers <span class="math" data-tex="\(H\)">\(H\)</span>; uniqueness among zero-mean smooth functions follows because every nonzero Fourier multiplier is nonzero. The operation commutes with parameter derivatives, by the same estimates applied to those derivatives.</p>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be (RP4.4) and <span class="math" data-tex="\(F^\circ=F-\langle F\rangle_y\)">\(F^\circ=F-\langle F\rangle_y\)</span>. The zero Fourier mode of its full <span class="math" data-tex="\(U\)">\(U\)</span> integral vanishes by (RP5.1). Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal J_Mg
+=(-M^{-1})^p\int_{\mathbb R}
+\partial_U^p\mathcal L^{-p}F^\circ(U+u,y+Muv_r)\,du
+\quad(p\geq1).
+\tag{RP5.7}
+\]">\[
+\mathcal J_Mg
+=(-M^{-1})^p\int_{\mathbb R}
+\partial_U^p\mathcal L^{-p}F^\circ(U+u,y+Muv_r)\,du
+\quad(p\geq1).
+\tag{RP5.7}
+\]</span>
+<p>For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, integrate the full derivative</p>
+<span class="math math-display" data-tex="\[
+\frac d{du}\mathcal L^{-1}F^\circ(U+u,y+Muv_r)
+=\partial_U\mathcal L^{-1}F^\circ+MF^\circ.
+\]">\[
+\frac d{du}\mathcal L^{-1}F^\circ(U+u,y+Muv_r)
+=\partial_U\mathcal L^{-1}F^\circ+MF^\circ.
+\]</span>
+<p>Its integral is zero because <span class="math" data-tex="\(F\)">\(F\)</span>, and also <span class="math" data-tex="\(\mathcal L^{-1}F^\circ\)">\(\mathcal L^{-1}F^\circ\)</span>, have compact support in <span class="math" data-tex="\(U\)">\(U\)</span>. Rearrangement proves the case <span class="math" data-tex="\(p=1\)">\(p=1\)</span>; iteration proves (RP5.7), with the indicated sign at every step.</p>
+<p>Further coefficient derivatives can again be taken in the fixed-shift formula. Derivatives through <span class="math" data-tex="\(I_R+p\)">\(I_R+p\)</span> in the radial variable and through <span class="math" data-tex="\(|I_y|+p+3\)">\(|I_y|+p+3\)</span> in the torus variables suffice, together with the requested slow derivatives. Combining (RP5.6)–(RP5.7) with (RP1.8) proves</p>
+<span class="math math-display" data-tex="\[
+|\partial^I\mathcal A_{e,M}f_*|
+\leq C_{I,p}\varepsilon^{\alpha+p\kappa_s}S_*^{B_{I,p}}
+\zeta\delta^{-D_{I,p}}.
+\tag{RP5.8}
+\]">\[
+|\partial^I\mathcal A_{e,M}f_*|
+\leq C_{I,p}\varepsilon^{\alpha+p\kappa_s}S_*^{B_{I,p}}
+\zeta\delta^{-D_{I,p}}.
+\tag{RP5.8}
+\]</span>
+<p>The derivative of the cutoff is supported in a fixed interior part of the shell, where the weights have positive lower bounds; this is why the full-integral estimate yields the displayed weighted bound. All constants are uniform in the band and point. Only finitely many source derivatives are used for each <span class="math" data-tex="\(I,p\)">\(I,p\)</span>. No uniformity as <span class="math" data-tex="\(p\to\infty\)">\(p\to\infty\)</span> is asserted or needed.</p>
+<h2 id="rp6-physical-flatness-and-the-effect-of-a-different-coefficient">RP6. Physical flatness and the effect of a different coefficient</h2>
+<p>Restore the physical factor in (RP3.5). For any fixed Cartesian space–time derivative order <span class="math" data-tex="\(m\)">\(m\)</span>, each physical differentiation costs at most <span class="math" data-tex="\(Q^{-(1+h)}\)">\(Q^{-(1+h)}\)</span> times a fixed power of <span class="math" data-tex="\(S_*\)">\(S_*\)</span>. To check this, the radial operator costs <span class="math" data-tex="\(Q^{-1/2}\)">\(Q^{-1/2}\)</span> times at most <span class="math" data-tex="\(M\)">\(M\)</span>, axial differentiation costs <span class="math" data-tex="\(Q^{-D}\)">\(Q^{-D}\)</span>, and time differentiation costs <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span> or <span class="math" data-tex="\(Q^{-1-h}c\)">\(Q^{-1-h}c\)</span>, by (RP1.6). The Cartesian cylindrical-frame factors cost <span class="math" data-tex="\(r^{-1}=Q^{-1/2}R^{-1}\)">\(r^{-1}=Q^{-1/2}R^{-1}\)</span>. On the shell <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> and its fixed derivatives are bounded; <span class="math" data-tex="\(1/2+h\kappa_s&lt;1+h\)">\(1/2+h\kappa_s&lt;1+h\)</span> and <span class="math" data-tex="\(D&lt;1+h\)">\(D&lt;1+h\)</span>. Repeated product rules give the same bound for each of the finitely many resulting terms. The loss depends on <span class="math" data-tex="\(m\)">\(m\)</span>, not on <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Thus, for the original physical source exponent <span class="math" data-tex="\(a\)">\(a\)</span>, (RP5.8) implies</p>
+<span class="math math-display" data-tex="\[
+|\partial_{x,t}^I\mathcal A_{e,\rm phys}f_{\rm phys}|
+\leq C_{I,p}Q^{h(\alpha+p\kappa_s)-a-m(1+h)}S_*^{B_{I,p}}
+\quad(|I|\leq m).
+\tag{RP6.1}
+\]">\[
+|\partial_{x,t}^I\mathcal A_{e,\rm phys}f_{\rm phys}|
+\leq C_{I,p}Q^{h(\alpha+p\kappa_s)-a-m(1+h)}S_*^{B_{I,p}}
+\quad(|I|\leq m).
+\tag{RP6.1}
+\]</span>
+<p>Choose an integer <span class="math" data-tex="\(p\)">\(p\)</span> so that</p>
+<span class="math math-display" data-tex="\[
+h(\alpha+p\kappa_s)-a-m(1+h)&gt;N.
+\tag{RP6.2}
+\]">\[
+h(\alpha+p\kappa_s)-a-m(1+h)&gt;N.
+\tag{RP6.2}
+\]</span>
+<p>It exists because <span class="math" data-tex="\(h\kappa_s&gt;0\)">\(h\kappa_s&gt;0\)</span>. Then keep <span class="math" data-tex="\(p\)">\(p\)</span> fixed. The strict positive excess absorbs every fixed power of <span class="math" data-tex="\(S_*=\ell^2\)">\(S_*=\ell^2\)</span>, since <span class="math" data-tex="\(Q=2^{-\ell}\)">\(Q=2^{-\ell}\)</span>. Since <span class="math" data-tex="\(q/Q\)">\(q/Q\)</span> is bounded above and below, (RP6.1) is bounded by <span class="math" data-tex="\(C_{I,N}q^N\)">\(C_{I,N}q^N\)</span>. This proves physical flatness for every prescribed derivative and decay order, with its full quantifiers. It is an analytic argument, not a computation of many increasingly accurate approximations.</p>
+<p>The different coefficient in (RP2.2) does not have this property. Work on the slice <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, <span class="math" data-tex="\(\tau=Q\)">\(\tau=Q\)</span>, so <span class="math" data-tex="\(q=Q\)">\(q=Q\)</span>. Choose a nonnegative smooth <span class="math" data-tex="\(\varphi(R)\)">\(\varphi(R)\)</span>, compactly supported in the interior shell, with <span class="math" data-tex="\(\int\varphi\,dR=1\)">\(\int\varphi\,dR=1\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+f(R,y)=\varphi(R)\cos(2\pi y_1),\qquad e=0.
+\tag{RP6.3}
+\]">\[
+f(R,y)=\varphi(R)\cos(2\pi y_1),\qquad e=0.
+\tag{RP6.3}
+\]</span>
+<p>Its auxiliary mean is zero at each <span class="math" data-tex="\(R\)">\(R\)</span>, so (RP5.1) holds. On a slow neighborhood define the source exactly by <span class="math" data-tex="\(\varphi(R\sqrt{Q/q})\cos(2\pi y_1)\)">\(\varphi(R\sqrt{Q/q})\cos(2\pi y_1)\)</span>. It agrees with (RP6.3) on the selected slice and has uniform <span class="math" data-tex="\(\mathsf M_0\)">\(\mathsf M_0\)</span> bounds, because its support stays in a fixed interior part of the shell and the derivatives of <span class="math" data-tex="\(q/Q\)">\(q/Q\)</span> are bounded. The auxiliary mean remains zero at every slow point.</p>
+<p>At <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, the full integral with <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\mathcal J_{\widetilde M}f(R,0)
+=\int\varphi(R&#x27;)\cos\bigl(2\pi\widetilde M((R&#x27;)^{d_r}-R^{d_r})\bigr)\,dR&#x27;
+\longrightarrow1.
+\tag{RP6.4}
+\]">\[
+\mathcal J_{\widetilde M}f(R,0)
+=\int\varphi(R&#x27;)\cos\bigl(2\pi\widetilde M((R&#x27;)^{d_r}-R^{d_r})\bigr)\,dR&#x27;
+\longrightarrow1.
+\tag{RP6.4}
+\]</span>
+<p>The convergence is uniform on the compact shell: the argument of the cosine tends uniformly to zero by (RP2.4), and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is integrable. Choose <span class="math" data-tex="\(R\)">\(R\)</span> at a point where <span class="math" data-tex="\(\partial_R\chi_m\ne0\)">\(\partial_R\chi_m\ne0\)</span>, which exists because the cutoff changes from zero to one. Then <span class="math" data-tex="\(\mathcal A_{0,\widetilde M}f(R,0)\)">\(\mathcal A_{0,\widetilde M}f(R,0)\)</span> tends to this nonzero derivative. Thus the remainder for <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> does not tend to zero in coefficient norm. The original physical coefficient <span class="math" data-tex="\(M\)">\(M\)</span> satisfies the estimate (RP5.8). The exact difference of these two operators is derived in Exercise 1.</p>
+<h2 id="rp7-pressure-and-the-actual-axial-vector-potential">RP7. Pressure and the actual axial vector potential</h2>
+<p>Choose a fixed smooth bump <span class="math" data-tex="\(\widehat\rho\)">\(\widehat\rho\)</span> supported in the reserved interval <span class="math" data-tex="\(I_m=\{\sqrt{2X}:X\in I_{\rm mean}\}\)">\(I_m=\{\sqrt{2X}:X\in I_{\rm mean}\}\)</span> from Theorem 4.6(vi), with <span class="math" data-tex="\(\int\widehat\rho(x)\,dx=1\)">\(\int\widehat\rho(x)\,dx=1\)</span>, and retain its physical scaling</p>
+<span class="math math-display" data-tex="\[
+\rho_{\rm phys}(r,z,t)=q^{-1/2}\widehat\rho(r/\sqrt q),
+\qquad \int\rho_{\rm phys}\,dr=1.
+\tag{RP7.1}
+\]">\[
+\rho_{\rm phys}(r,z,t)=q^{-1/2}\widehat\rho(r/\sqrt q),
+\qquad \int\rho_{\rm phys}\,dr=1.
+\tag{RP7.1}
+\]</span>
+<p>Such a bump is obtained by dividing any nonnegative nonzero smooth interior bump by its positive integral. Let <span class="math" data-tex="\(g_{r,\rm phys}\)">\(g_{r,\rm phys}\)</span> be the complete radial source to be integrated, including every time, transport, covariance and viscous term that defines that source. Define</p>
+<span class="math math-display" data-tex="\[
+\mathcal P_{\rm phys}=\int\langle g_{r,\rm phys}\rangle_Y\,dr,
+\qquad
+p_{m,\rm phys}=\mathsf T_{0,\rm phys}
+(g_{r,\rm phys}-\rho_{\rm phys}\mathcal P_{\rm phys}).
+\tag{RP7.2}
+\]">\[
+\mathcal P_{\rm phys}=\int\langle g_{r,\rm phys}\rangle_Y\,dr,
+\qquad
+p_{m,\rm phys}=\mathsf T_{0,\rm phys}
+(g_{r,\rm phys}-\rho_{\rm phys}\mathcal P_{\rm phys}).
+\tag{RP7.2}
+\]</span>
+<p>The argument of <span class="math" data-tex="\(\mathsf T_0\)">\(\mathsf T_0\)</span> has zero radial integral of its auxiliary mean. Equations (RP3.3) and (RP5.2) therefore give the exact identities</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak r p_{m,\rm phys}-g_{r,\rm phys}
+&amp;=-\rho_{\rm phys}\mathcal P_{\rm phys}
+-\mathcal A_{0,\rm phys}(g_{r,\rm phys}-\rho_{\rm phys}\mathcal P_{\rm phys}),\\
+\partial_r\langle p_{m,\rm phys}\rangle_Y
+&amp;=\langle g_{r,\rm phys}\rangle_Y-\rho_{\rm phys}\mathcal P_{\rm phys}.
+\end{aligned}
+\tag{RP7.3}
+\]">\[
+\begin{aligned}
+\mathfrak r p_{m,\rm phys}-g_{r,\rm phys}
+&amp;=-\rho_{\rm phys}\mathcal P_{\rm phys}
+-\mathcal A_{0,\rm phys}(g_{r,\rm phys}-\rho_{\rm phys}\mathcal P_{\rm phys}),\\
+\partial_r\langle p_{m,\rm phys}\rangle_Y
+&amp;=\langle g_{r,\rm phys}\rangle_Y-\rho_{\rm phys}\mathcal P_{\rm phys}.
+\end{aligned}
+\tag{RP7.3}
+\]</span>
+<p>The pressure is compactly supported in the shell, and its cutoff remainder is flat whenever the source has the bounds of RP4–RP5. No part of the nonzero defect <span class="math" data-tex="\(\rho_{\rm phys}\mathcal P_{\rm phys}\)">\(\rho_{\rm phys}\mathcal P_{\rm phys}\)</span> has been discarded.</p>
+<p>For this pressure source, the original scaling is</p>
+<span class="math math-display" data-tex="\[
+g_{r,*}=Q^{2A+1/2}g_{r,\rm phys},\quad
+\rho_*=Q^{1/2}\rho_{\rm phys},\quad
+\mathcal P_*=Q^{2A}\mathcal P_{\rm phys},\quad
+p_{m,*}=Q^{2A}p_{m,\rm phys}.
+\tag{RP7.4}
+\]">\[
+g_{r,*}=Q^{2A+1/2}g_{r,\rm phys},\quad
+\rho_*=Q^{1/2}\rho_{\rm phys},\quad
+\mathcal P_*=Q^{2A}\mathcal P_{\rm phys},\quad
+p_{m,*}=Q^{2A}p_{m,\rm phys}.
+\tag{RP7.4}
+\]</span>
+<p>Using (RP3.5) with <span class="math" data-tex="\(a=2A+1/2\)">\(a=2A+1/2\)</span> proves <span class="math" data-tex="\(p_{m,*}=\mathsf T_{0,M}(g_{r,*}-\rho_*\mathcal P_*)\)">\(p_{m,*}=\mathsf T_{0,M}(g_{r,*}-\rho_*\mathcal P_*)\)</span> and the full chart version of (RP7.3). The factors in the product <span class="math" data-tex="\(\rho_*\mathcal P_*\)">\(\rho_*\mathcal P_*\)</span> multiply to <span class="math" data-tex="\(Q^{2A+1/2}\)">\(Q^{2A+1/2}\)</span>, as required.</p>
+<p>Now let <span class="math" data-tex="\(\gamma_{d,\rm phys}\)">\(\gamma_{d,\rm phys}\)</span> be the desired axial increment, with</p>
+<span class="math math-display" data-tex="\[
+\int r\langle\gamma_{d,\rm phys}\rangle_Y\,dr=0.
+\tag{RP7.5}
+\]">\[
+\int r\langle\gamma_{d,\rm phys}\rangle_Y\,dr=0.
+\tag{RP7.5}
+\]</span>
+<p>With the source's stated curl convention the physical potential must be</p>
+<span class="math math-display" data-tex="\[
+\Psi_{\rm phys}=+r^{-1}\mathcal I_{c,\rm phys}(r\gamma_{d,\rm phys}),
+\qquad \mathcal A=\Psi_{\rm phys}e_\theta.
+\tag{RP7.6}
+\]">\[
+\Psi_{\rm phys}=+r^{-1}\mathcal I_{c,\rm phys}(r\gamma_{d,\rm phys}),
+\qquad \mathcal A=\Psi_{\rm phys}e_\theta.
+\tag{RP7.6}
+\]</span>
+<p>Indeed the Cartesian expression is <span class="math" data-tex="\(\mathcal A=(\Psi_{\rm phys}/r)(-x_2,x_1,0)\)">\(\mathcal A=(\Psi_{\rm phys}/r)(-x_2,x_1,0)\)</span>. Direct differentiation, or differentiating these three displayed components, gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{curl}\mathcal A
+=(-\partial_z\Psi_{\rm phys})e_r
++((\mathfrak r+r^{-1})\Psi_{\rm phys})e_z.
+\tag{RP7.7}
+\]">\[
+\operatorname{curl}\mathcal A
+=(-\partial_z\Psi_{\rm phys})e_r
++((\mathfrak r+r^{-1})\Psi_{\rm phys})e_z.
+\tag{RP7.7}
+\]</span>
+<p>Here differentiation of a coefficient along the physical graph is <span class="math" data-tex="\(\mathfrak r\)">\(\mathfrak r\)</span>; the independent torus has no axial dependence. The radial and axial operators commute, so the divergence is</p>
+<span class="math math-display" data-tex="\[
+(\mathfrak r+r^{-1})(-\partial_z\Psi_{\rm phys})
++\partial_z((\mathfrak r+r^{-1})\Psi_{\rm phys})=0.
+\tag{RP7.8}
+\]">\[
+(\mathfrak r+r^{-1})(-\partial_z\Psi_{\rm phys})
++\partial_z((\mathfrak r+r^{-1})\Psi_{\rm phys})=0.
+\tag{RP7.8}
+\]</span>
+<p>There are no axis terms: the potential vanishes in a neighborhood of the axis for every fixed <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. The actual axial increment is exactly</p>
+<span class="math math-display" data-tex="\[
+\Delta\gamma_{\rm phys}
+=\gamma_{d,\rm phys}-\mathcal A_{1,\rm phys}\gamma_{d,\rm phys},
+\quad
+\langle\Delta\gamma_{\rm phys}\rangle_Y
+=\langle\gamma_{d,\rm phys}\rangle_Y.
+\tag{RP7.9}
+\]">\[
+\Delta\gamma_{\rm phys}
+=\gamma_{d,\rm phys}-\mathcal A_{1,\rm phys}\gamma_{d,\rm phys},
+\quad
+\langle\Delta\gamma_{\rm phys}\rangle_Y
+=\langle\gamma_{d,\rm phys}\rangle_Y.
+\tag{RP7.9}
+\]</span>
+<p>If the desired increment is independent of <span class="math" data-tex="\(Y\)">\(Y\)</span>, its weighted integral in (RP7.5) makes <span class="math" data-tex="\(\mathcal J_{\rm phys}(r\gamma_{d,\rm phys})=0\)">\(\mathcal J_{\rm phys}(r\gamma_{d,\rm phys})=0\)</span> identically. Then the cutoff remainder is exactly zero and <span class="math" data-tex="\(\Delta\gamma_{\rm phys}=\gamma_{d,\rm phys}\)">\(\Delta\gamma_{\rm phys}=\gamma_{d,\rm phys}\)</span> pointwise, the case used by the five-equation moment correction.</p>
+<p>The complete chart comparison uses</p>
+<span class="math math-display" data-tex="\[
+\gamma_{d,*}=Q^A\gamma_{d,\rm phys},\quad
+\Psi_*=Q^{A-1/2}\Psi_{\rm phys},\quad
+\Delta\beta_*=Q^A\Delta\beta_{\rm phys},\quad
+\Delta\gamma_*=Q^A\Delta\gamma_{\rm phys}.
+\]">\[
+\gamma_{d,*}=Q^A\gamma_{d,\rm phys},\quad
+\Psi_*=Q^{A-1/2}\Psi_{\rm phys},\quad
+\Delta\beta_*=Q^A\Delta\beta_{\rm phys},\quad
+\Delta\gamma_*=Q^A\Delta\gamma_{\rm phys}.
+\]</span>
+<p>Equations (RP3.5) and (RP7.7) give</p>
+<span class="math math-display" data-tex="\[
+\Psi_*=\mathsf T_{1,M}\gamma_{d,*},\qquad
+\Delta\beta_*=-\varepsilon\partial_Z\Psi_*,\qquad
+\Delta\gamma_*=(D_r+1/R)\Psi_*
+=\gamma_{d,*}-\mathcal A_{1,M}\gamma_{d,*}.
+\tag{RP7.10}
+\]">\[
+\Psi_*=\mathsf T_{1,M}\gamma_{d,*},\qquad
+\Delta\beta_*=-\varepsilon\partial_Z\Psi_*,\qquad
+\Delta\gamma_*=(D_r+1/R)\Psi_*
+=\gamma_{d,*}-\mathcal A_{1,M}\gamma_{d,*}.
+\tag{RP7.10}
+\]</span>
+<p>The extra radial factor is <span class="math" data-tex="\(Q^{1/2-D}=Q^h=\varepsilon\)">\(Q^{1/2-D}=Q^h=\varepsilon\)</span>, with its sign unchanged. Thus a source in <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> gives <span class="math" data-tex="\(\Psi_*,\Delta\gamma_*\in\mathsf M_\alpha\)">\(\Psi_*,\Delta\gamma_*\in\mathsf M_\alpha\)</span> and <span class="math" data-tex="\(\Delta\beta_*\in\mathsf M_{\alpha+1}\)">\(\Delta\beta_*\in\mathsf M_{\alpha+1}\)</span>. These follow from RP4 and coefficient differentiation; all supports remain inside the shell.</p>
+<h2 id="rp8-pressure-moments-and-the-receiving-correction-cycle">RP8. Pressure moments and the receiving correction cycle</h2>
+<p>The compact pressure in (RP7.2) satisfies an exact moment identity with both boundary terms present before evaluation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_0^\infty r\langle p_{m,\rm phys}\rangle_Y\,dr
+&amp;=[r^2\langle p_{m,\rm phys}\rangle_Y/2]_0^\infty
+-\frac12\int_0^\infty r^2\partial_r\langle p_{m,\rm phys}\rangle_Y\,dr\\
+&amp;=-\frac12\int_0^\infty r^2\langle g_{r,\rm phys}\rangle_Y\,dr
++c_{\rho,\rm phys}\mathcal P_{\rm phys},\\
+c_{\rho,\rm phys}&amp;=\frac12\int_0^\infty r^2\rho_{\rm phys}\,dr
+=\frac q2\int_0^\infty x^2\widehat\rho(x)\,dx.
+\end{aligned}
+\tag{RP8.1}
+\]">\[
+\begin{aligned}
+\int_0^\infty r\langle p_{m,\rm phys}\rangle_Y\,dr
+&amp;=[r^2\langle p_{m,\rm phys}\rangle_Y/2]_0^\infty
+-\frac12\int_0^\infty r^2\partial_r\langle p_{m,\rm phys}\rangle_Y\,dr\\
+&amp;=-\frac12\int_0^\infty r^2\langle g_{r,\rm phys}\rangle_Y\,dr
++c_{\rho,\rm phys}\mathcal P_{\rm phys},\\
+c_{\rho,\rm phys}&amp;=\frac12\int_0^\infty r^2\rho_{\rm phys}\,dr
+=\frac q2\int_0^\infty x^2\widehat\rho(x)\,dx.
+\end{aligned}
+\tag{RP8.1}
+\]</span>
+<p>The endpoint bracket is zero by compact support and zero near the axis. Both the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and the dependence of <span class="math" data-tex="\(c_\rho\)">\(c_\rho\)</span> on the original <span class="math" data-tex="\(q\)">\(q\)</span> remain. In particular,</p>
+<span class="math math-display" data-tex="\[
+\partial_z(c_{\rho,\rm phys}\mathcal P_{\rm phys})
+=\frac12\left(\int x^2\widehat\rho(x)\,dx\right)
+(q_z\mathcal P_{\rm phys}+q\partial_z\mathcal P_{\rm phys}),
+\quad q_z=\frac{2\eta q^{1-D}}{1-2h\eta^2}.
+\tag{RP8.2}
+\]">\[
+\partial_z(c_{\rho,\rm phys}\mathcal P_{\rm phys})
+=\frac12\left(\int x^2\widehat\rho(x)\,dx\right)
+(q_z\mathcal P_{\rm phys}+q\partial_z\mathcal P_{\rm phys}),
+\quad q_z=\frac{2\eta q^{1-D}}{1-2h\eta^2}.
+\tag{RP8.2}
+\]</span>
+<p>The comparison with the chart pressure moment is</p>
+<span class="math math-display" data-tex="\[
+\int R\langle p_{m,*}\rangle_y\,dR
+=Q^{2A-1}\int r\langle p_{m,\rm phys}\rangle_Y\,dr,
+\qquad c_{\rho,*}=Q^{-1}c_{\rho,\rm phys}.
+\tag{RP8.3}
+\]">\[
+\int R\langle p_{m,*}\rangle_y\,dR
+=Q^{2A-1}\int r\langle p_{m,\rm phys}\rangle_Y\,dr,
+\qquad c_{\rho,*}=Q^{-1}c_{\rho,\rm phys}.
+\tag{RP8.3}
+\]</span>
+<p>This supplies the complete pressure contribution to the source's axial flux defect and its term <span class="math" data-tex="\(\partial_Z(c_\rho\mathcal P)\)">\(\partial_Z(c_\rho\mathcal P)\)</span>.</p>
+<p>The original radial inverse supplies pressure after each correction and the potential used in both the temporal mean update and the five-equation moment update. RP5–RP6 prove that its retained cutoff remainder is flat; RP7 proves the actual divergence-free velocity and its sign, including the exact auxiliary-independent case. The finite-stage residual must still be recomputed from these full velocities, not just their prescribed axial components.</p>
+<h2 id="rm1-the-three-conservative-mean-equations">RM1. The three conservative mean equations</h2>
+<p>Write the complete current chart velocity as</p>
+<span class="math math-display" data-tex="\[
+u_*=(b+\beta,V+v,G+\gamma)+w,\qquad
+\langle w\rangle_\theta=0,\qquad W_{ab}=\langle w_aw_b\rangle_\theta,
+\quad
+\Delta_0=D_r^2+R^{-1}D_r+D_z^2.
+\tag{RM1.1}
+\]">\[
+u_*=(b+\beta,V+v,G+\gamma)+w,\qquad
+\langle w\rangle_\theta=0,\qquad W_{ab}=\langle w_aw_b\rangle_\theta,
+\quad
+\Delta_0=D_r^2+R^{-1}D_r+D_z^2.
+\tag{RM1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\((b,V,G)\)">\((b,V,G)\)</span> is the actual base constructed in Z0–Z9. The mean correction and every wave are divergence free. The covariance uses each complete curled wave from PU7, including its lower order components. Angular averaging and auxiliary Haar averaging are different integrals. All chart operators, their fixed covering index and their factors are those of RP1.</p>
+<p>The full base stress is denoted by <span class="math" data-tex="\(\Sigma^B=(\Sigma^B_\theta,\Sigma^B_z)\)">\(\Sigma^B=(\Sigma^B_\theta,\Sigma^B_z)\)</span>. At viscosity one it equals <span class="math" data-tex="\(Q^{2A}\mathcal T_{\rm phys}\)">\(Q^{2A}\mathcal T_{\rm phys}\)</span>, with <span class="math" data-tex="\(\mathcal T_{\rm phys}\)">\(\mathcal T_{\rm phys}\)</span> the full base stress in original (5.41). Its residual is the negative radial divergence of this stress plus the retained flat base residual. No leading-profile substitution is made here.</p>
+<p>For a divergence-free field, product differentiation gives the conservative transport formulas</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(u\cdot\nabla_*u)_r
+&amp;=(D_r+R^{-1})u_r^2+R^{-1}\partial_\theta(u_\theta u_r)
++D_z(u_zu_r)-u_\theta^2/R,\\
+(u\cdot\nabla_*u)_\theta
+&amp;=(D_r+2/R)(u_ru_\theta)+R^{-1}\partial_\theta(u_\theta^2)
++D_z(u_zu_\theta),\\
+(u\cdot\nabla_*u)_z
+&amp;=(D_r+R^{-1})(u_ru_z)+R^{-1}\partial_\theta(u_\theta u_z)
++D_z(u_z^2).
+\end{aligned}
+\tag{RM1.2}
+\]">\[
+\begin{aligned}
+(u\cdot\nabla_*u)_r
+&amp;=(D_r+R^{-1})u_r^2+R^{-1}\partial_\theta(u_\theta u_r)
++D_z(u_zu_r)-u_\theta^2/R,\\
+(u\cdot\nabla_*u)_\theta
+&amp;=(D_r+2/R)(u_ru_\theta)+R^{-1}\partial_\theta(u_\theta^2)
++D_z(u_zu_\theta),\\
+(u\cdot\nabla_*u)_z
+&amp;=(D_r+R^{-1})(u_ru_z)+R^{-1}\partial_\theta(u_\theta u_z)
++D_z(u_z^2).
+\end{aligned}
+\tag{RM1.2}
+\]</span>
+<p>Indeed the scalar product rule creates the additional factor
+<span class="math" data-tex="\((D_ru_r+u_r/R+R^{-1}\partial_\theta u_\theta+D_zu_z)u_a\)">\((D_ru_r+u_r/R+R^{-1}\partial_\theta u_\theta+D_zu_z)u_a\)</span>, which is zero. Differentiating the frame gives <span class="math" data-tex="\(\partial_\theta e_r=e_\theta\)">\(\partial_\theta e_r=e_\theta\)</span> and <span class="math" data-tex="\(\partial_\theta e_\theta=-e_r\)">\(\partial_\theta e_\theta=-e_r\)</span>. The resulting radial term is <span class="math" data-tex="\(-u_\theta^2/R\)">\(-u_\theta^2/R\)</span>; the resulting azimuthal term is <span class="math" data-tex="\(u_ru_\theta/R\)">\(u_ru_\theta/R\)</span>, giving the second occurrence of <span class="math" data-tex="\(1/R\)">\(1/R\)</span> in the middle line.</p>
+<p>Twice differentiating that frame also gives the full vector Laplacian:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\Delta_*u)_r&amp;=\Delta_{\rm sc}u_r-u_r/R^2-2\partial_\theta u_\theta/R^2,\\
+(\Delta_*u)_\theta&amp;=\Delta_{\rm sc}u_\theta-u_\theta/R^2+2\partial_\theta u_r/R^2,\\
+(\Delta_*u)_z&amp;=\Delta_{\rm sc}u_z,\qquad
+\Delta_{\rm sc}=\Delta_0+R^{-2}\partial_\theta^2.
+\end{aligned}
+\tag{RM1.3}
+\]">\[
+\begin{aligned}
+(\Delta_*u)_r&amp;=\Delta_{\rm sc}u_r-u_r/R^2-2\partial_\theta u_\theta/R^2,\\
+(\Delta_*u)_\theta&amp;=\Delta_{\rm sc}u_\theta-u_\theta/R^2+2\partial_\theta u_r/R^2,\\
+(\Delta_*u)_z&amp;=\Delta_{\rm sc}u_z,\qquad
+\Delta_{\rm sc}=\Delta_0+R^{-2}\partial_\theta^2.
+\end{aligned}
+\tag{RM1.3}
+\]</span>
+<p>The two mixed terms come from the two ways one angular derivative can hit the coefficient and the other the frame. Angular derivatives integrate to zero over a period, as do terms linear in <span class="math" data-tex="\(w\)">\(w\)</span>. Quadratic terms retain all of <span class="math" data-tex="\(W\)">\(W\)</span>. Subtract the base equation, retain its full stress, and write the radial source with the sign appropriate for <span class="math" data-tex="\(D_rp_m=g_r\)">\(D_rp_m=g_r\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g_r={}&amp;-\mathfrak t_*\beta
+-(D_r+R^{-1})(2b\beta+\beta^2+W_{rr})\\
+&amp;-D_z(b\gamma+G\beta+\beta\gamma+W_{zr})
++(2Vv+v^2+W_{\theta\theta})/R
++\varepsilon(\Delta_0-R^{-2})\beta,\\
+E_\theta={}&amp;\mathfrak t_*v
++(D_r+2/R)(bv+V\beta+\beta v+W_{r\theta})\\
+&amp;+D_z(Gv+V\gamma+\gamma v+W_{z\theta})
+-\varepsilon(\Delta_0-R^{-2})v
+-(D_r+2/R)\Sigma^B_\theta,\\
+E_z={}&amp;\mathfrak t_*\gamma
++(D_r+1/R)(b\gamma+\beta G+\beta\gamma+W_{rz})\\
+&amp;+D_z(2G\gamma+\gamma^2+W_{zz}+p_m)
+-\varepsilon\Delta_0\gamma-(D_r+1/R)\Sigma^B_z.
+\end{aligned}
+\tag{RM1.4}
+\]">\[
+\begin{aligned}
+g_r={}&amp;-\mathfrak t_*\beta
+-(D_r+R^{-1})(2b\beta+\beta^2+W_{rr})\\
+&amp;-D_z(b\gamma+G\beta+\beta\gamma+W_{zr})
++(2Vv+v^2+W_{\theta\theta})/R
++\varepsilon(\Delta_0-R^{-2})\beta,\\
+E_\theta={}&amp;\mathfrak t_*v
++(D_r+2/R)(bv+V\beta+\beta v+W_{r\theta})\\
+&amp;+D_z(Gv+V\gamma+\gamma v+W_{z\theta})
+-\varepsilon(\Delta_0-R^{-2})v
+-(D_r+2/R)\Sigma^B_\theta,\\
+E_z={}&amp;\mathfrak t_*\gamma
++(D_r+1/R)(b\gamma+\beta G+\beta\gamma+W_{rz})\\
+&amp;+D_z(2G\gamma+\gamma^2+W_{zz}+p_m)
+-\varepsilon\Delta_0\gamma-(D_r+1/R)\Sigma^B_z.
+\end{aligned}
+\tag{RM1.4}
+\]</span>
+<p>These are the original equations (8.3). RP7 constructs the pressure from this entire <span class="math" data-tex="\(g_r\)">\(g_r\)</span>. Thus the complete angular mean residual, after removing the retained base residual, is</p>
+<span class="math math-display" data-tex="\[
+(D_rp_m-g_r,E_\theta,E_z),\qquad
+D_rp_m-g_r=-\rho\mathcal P-\mathcal A_0(g_r-\rho\mathcal P).
+\tag{RM1.5}
+\]">\[
+(D_rp_m-g_r,E_\theta,E_z),\qquad
+D_rp_m-g_r=-\rho\mathcal P-\mathcal A_0(g_r-\rho\mathcal P).
+\tag{RM1.5}
+\]</span>
+<p>The second term in the radial equation is flat by RP5–RP6; its exact formula remains present. The first term is a scalar defect multiplied by a prescribed bump.</p>
+<h3 id="every-term-after-a-new-correction">Every term after a new correction</h3>
+<p>Fix the original coordinates, cutoffs and base. Let
+<span class="math" data-tex="\((d_\beta,d_v,d_\gamma)\)">\((d_\beta,d_v,d_\gamma)\)</span> be a new mean increment and put
+<span class="math" data-tex="\(\delta W=W&#x27;-W\)">\(\delta W=W&#x27;-W\)</span>, where <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> is recomputed from the new full waves. This notation does not discard the cross terms in a change of waves: if <span class="math" data-tex="\(w&#x27;=w+d_w\)">\(w&#x27;=w+d_w\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\delta W_{ab}
+=\langle w_a(d_w)_b+(d_w)_aw_b+(d_w)_a(d_w)_b\rangle_\theta.
+\tag{RM1.6}
+\]">\[
+\delta W_{ab}
+=\langle w_a(d_w)_b+(d_w)_aw_b+(d_w)_a(d_w)_b\rangle_\theta.
+\tag{RM1.6}
+\]</span>
+<p>Expansion of the three polynomials in RM1.4 gives the exact changes</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta g_r={}&amp;-\mathfrak t_*d_\beta
+-(D_r+R^{-1})\{2(b+\beta)d_\beta+d_\beta^2+\delta W_{rr}\}\\
+&amp;-D_z\{(b+\beta)d_\gamma+(G+\gamma)d_\beta
++d_\beta d_\gamma+\delta W_{zr}\}\\
+&amp;+\{2(V+v)d_v+d_v^2+\delta W_{\theta\theta}\}/R
++\varepsilon(\Delta_0-R^{-2})d_\beta,\\
+\delta\mathcal P&amp;=\int\langle\delta g_r\rangle_y\,dR,\qquad
+\delta p_m=\mathsf T_0(\delta g_r-\rho\,\delta\mathcal P),\\
+\delta E_\theta={}&amp;\mathfrak t_*d_v
++(D_r+2/R)\{(b+\beta)d_v+(V+v)d_\beta
++d_\beta d_v+\delta W_{r\theta}\}\\
+&amp;+D_z\{(G+\gamma)d_v+(V+v)d_\gamma
++d_\gamma d_v+\delta W_{z\theta}\}
+-\varepsilon(\Delta_0-R^{-2})d_v,\\
+\delta E_z={}&amp;\mathfrak t_*d_\gamma
++(D_r+1/R)\{(b+\beta)d_\gamma+(G+\gamma)d_\beta
++d_\beta d_\gamma+\delta W_{rz}\}\\
+&amp;+D_z\{2(G+\gamma)d_\gamma+d_\gamma^2+\delta W_{zz}+\delta p_m\}
+-\varepsilon\Delta_0d_\gamma.
+\end{aligned}
+\tag{RM1.7}
+\]">\[
+\begin{aligned}
+\delta g_r={}&amp;-\mathfrak t_*d_\beta
+-(D_r+R^{-1})\{2(b+\beta)d_\beta+d_\beta^2+\delta W_{rr}\}\\
+&amp;-D_z\{(b+\beta)d_\gamma+(G+\gamma)d_\beta
++d_\beta d_\gamma+\delta W_{zr}\}\\
+&amp;+\{2(V+v)d_v+d_v^2+\delta W_{\theta\theta}\}/R
++\varepsilon(\Delta_0-R^{-2})d_\beta,\\
+\delta\mathcal P&amp;=\int\langle\delta g_r\rangle_y\,dR,\qquad
+\delta p_m=\mathsf T_0(\delta g_r-\rho\,\delta\mathcal P),\\
+\delta E_\theta={}&amp;\mathfrak t_*d_v
++(D_r+2/R)\{(b+\beta)d_v+(V+v)d_\beta
++d_\beta d_v+\delta W_{r\theta}\}\\
+&amp;+D_z\{(G+\gamma)d_v+(V+v)d_\gamma
++d_\gamma d_v+\delta W_{z\theta}\}
+-\varepsilon(\Delta_0-R^{-2})d_v,\\
+\delta E_z={}&amp;\mathfrak t_*d_\gamma
++(D_r+1/R)\{(b+\beta)d_\gamma+(G+\gamma)d_\beta
++d_\beta d_\gamma+\delta W_{rz}\}\\
+&amp;+D_z\{2(G+\gamma)d_\gamma+d_\gamma^2+\delta W_{zz}+\delta p_m\}
+-\varepsilon\Delta_0d_\gamma.
+\end{aligned}
+\tag{RM1.7}
+\]</span>
+<p>For example, <span class="math" data-tex="\((b+\beta+d_\beta)(v+d_v)-(b+\beta)v\)">\((b+\beta+d_\beta)(v+d_v)-(b+\beta)v\)</span> equals
+<span class="math" data-tex="\((b+\beta)d_v+vd_\beta+d_\beta d_v\)">\((b+\beta)d_v+vd_\beta+d_\beta d_v\)</span>; the separately present <span class="math" data-tex="\(V\beta\)">\(V\beta\)</span> contributes <span class="math" data-tex="\(Vd_\beta\)">\(Vd_\beta\)</span>. This proves the radial azimuthal flux line. The other products expand in the same displayed manner, and the pressure identity follows from the linearity of the fixed radial operators. The base stress does not change. All quadratic increments, mixed increments and the new pressure are explicit, so the identities also apply to a finite update.</p>
+<h2 id="rm2-the-weighted-integrated-equations">RM2. The weighted integrated equations</h2>
+<p>All integrals in this section are from zero to infinity. Smooth zero extension in the shell, proved in RP4, justifies differentiation under the integral and all endpoint evaluations. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal M_\theta&amp;=\int R^2\langle v\rangle_y\,dR,
+&amp;\mathcal M_z&amp;=\int R\langle\gamma\rangle_y\,dR,\\
+\mathcal J_\theta&amp;=\int R^2
+\langle Gv+V\gamma+\gamma v+W_{z\theta}\rangle_y\,dR,\\
+\mathcal J_z&amp;=\int R
+\langle 2G\gamma+\gamma^2+W_{zz}\rangle_y\,dR
+-\frac12\int R^2\langle g_r\rangle_y\,dR,\\
+c_\rho&amp;=\frac12\int R^2\rho\,dR.
+\end{aligned}
+\tag{RM2.1}
+\]">\[
+\begin{aligned}
+\mathcal M_\theta&amp;=\int R^2\langle v\rangle_y\,dR,
+&amp;\mathcal M_z&amp;=\int R\langle\gamma\rangle_y\,dR,\\
+\mathcal J_\theta&amp;=\int R^2
+\langle Gv+V\gamma+\gamma v+W_{z\theta}\rangle_y\,dR,\\
+\mathcal J_z&amp;=\int R
+\langle 2G\gamma+\gamma^2+W_{zz}\rangle_y\,dR
+-\frac12\int R^2\langle g_r\rangle_y\,dR,\\
+c_\rho&amp;=\frac12\int R^2\rho\,dR.
+\end{aligned}
+\tag{RM2.1}
+\]</span>
+<p>For every smooth periodic coefficient <span class="math" data-tex="\(f\)">\(f\)</span>, periodic integration gives
+<span class="math" data-tex="\(\langle D_rf\rangle_y=\partial_R\langle f\rangle_y\)">\(\langle D_rf\rangle_y=\partial_R\langle f\rangle_y\)</span> and
+<span class="math" data-tex="\(\langle\mathfrak t_*f\rangle_y=-\varepsilon\partial_T\langle f\rangle_y\)">\(\langle\mathfrak t_*f\rangle_y=-\varepsilon\partial_T\langle f\rangle_y\)</span>.
+For <span class="math" data-tex="\(e=1,2\)">\(e=1,2\)</span>, direct integration gives</p>
+<span class="math math-display" data-tex="\[
+\int R^e\langle(D_r+e/R)f\rangle_y\,dR
+=[R^e\langle f\rangle_y]_0^\infty=0.
+\tag{RM2.2}
+\]">\[
+\int R^e\langle(D_r+e/R)f\rangle_y\,dR
+=[R^e\langle f\rangle_y]_0^\infty=0.
+\tag{RM2.2}
+\]</span>
+<p>This cancels each corresponding radial transport and base-stress term in RM1.4. The radial parts of viscosity cancel with all their cylindrical terms retained:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int R^2(\partial_R^2+R^{-1}\partial_R-R^{-2})
+\langle v\rangle_y\,dR
+&amp;=[R^2\partial_R\langle v\rangle_y-R\langle v\rangle_y]_0^\infty=0,\\
+\int R(\partial_R^2+R^{-1}\partial_R)
+\langle\gamma\rangle_y\,dR
+&amp;=[R\partial_R\langle\gamma\rangle_y]_0^\infty=0.
+\end{aligned}
+\tag{RM2.3}
+\]">\[
+\begin{aligned}
+\int R^2(\partial_R^2+R^{-1}\partial_R-R^{-2})
+\langle v\rangle_y\,dR
+&amp;=[R^2\partial_R\langle v\rangle_y-R\langle v\rangle_y]_0^\infty=0,\\
+\int R(\partial_R^2+R^{-1}\partial_R)
+\langle\gamma\rangle_y\,dR
+&amp;=[R\partial_R\langle\gamma\rangle_y]_0^\infty=0.
+\end{aligned}
+\tag{RM2.3}
+\]</span>
+<p>Haar averaging <span class="math" data-tex="\(D_r^2f\)">\(D_r^2f\)</span> equals <span class="math" data-tex="\(\partial_R^2\langle f\rangle_y\)">\(\partial_R^2\langle f\rangle_y\)</span>: apply the first identity twice, retaining the derivative of the radial coefficient before its directional derivative has zero mean. Thus RM2.3 applies to the actual <span class="math" data-tex="\(D_r^2\)">\(D_r^2\)</span>.</p>
+<p>The time and axial viscosity terms remain derivatives of the two moments. The pressure identity RP8 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int R^2\langle E_\theta\rangle_y\,dR
+&amp;=-\varepsilon\partial_T\mathcal M_\theta
+-\varepsilon D_z^2\mathcal M_\theta+D_z\mathcal J_\theta,\\
+\int R\langle E_z\rangle_y\,dR
+&amp;=-\varepsilon\partial_T\mathcal M_z
+-\varepsilon D_z^2\mathcal M_z+D_z(\mathcal J_z+c_\rho\mathcal P).
+\end{aligned}
+\tag{RM2.4}
+\]">\[
+\begin{aligned}
+\int R^2\langle E_\theta\rangle_y\,dR
+&amp;=-\varepsilon\partial_T\mathcal M_\theta
+-\varepsilon D_z^2\mathcal M_\theta+D_z\mathcal J_\theta,\\
+\int R\langle E_z\rangle_y\,dR
+&amp;=-\varepsilon\partial_T\mathcal M_z
+-\varepsilon D_z^2\mathcal M_z+D_z(\mathcal J_z+c_\rho\mathcal P).
+\end{aligned}
+\tag{RM2.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(D_z=\varepsilon\partial_Z\)">\(D_z=\varepsilon\partial_Z\)</span>, so each axial viscous contribution is
+<span class="math" data-tex="\(-\varepsilon^3\partial_Z^2\mathcal M\)">\(-\varepsilon^3\partial_Z^2\mathcal M\)</span>. In particular, on the original zero-moment domain</p>
+<span class="math math-display" data-tex="\[
+\mathcal M_\theta=\mathcal M_z=0
+\quad\Longrightarrow\quad
+\begin{cases}
+\displaystyle\int R^2\langle E_\theta\rangle_y\,dR
+=\varepsilon\partial_Z\mathcal J_\theta,\\
+\displaystyle\int R\langle E_z\rangle_y\,dR
+=\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P).
+\end{cases}
+\tag{RM2.5}
+\]">\[
+\mathcal M_\theta=\mathcal M_z=0
+\quad\Longrightarrow\quad
+\begin{cases}
+\displaystyle\int R^2\langle E_\theta\rangle_y\,dR
+=\varepsilon\partial_Z\mathcal J_\theta,\\
+\displaystyle\int R\langle E_z\rangle_y\,dR
+=\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P).
+\end{cases}
+\tag{RM2.5}
+\]</span>
+<p>These are Proposition 8.4. Equation RM2.4 proves the full identity before restricting to that domain; it does not assume the vanishing of a moment produced by an unspecified correction.</p>
+<p>The coefficient <span class="math" data-tex="\(c_\rho\)">\(c_\rho\)</span> depends on <span class="math" data-tex="\(Z,T\)">\(Z,T\)</span>. With
+<span class="math" data-tex="\(\mu_2=\int x^2\widehat\rho(x)\,dx\)">\(\mu_2=\int x^2\widehat\rho(x)\,dx\)</span> and <span class="math" data-tex="\(\xi=q/Q\)">\(\xi=q/Q\)</span>, RP8 gives</p>
+<span class="math math-display" data-tex="\[
+c_\rho=\frac{\mu_2}2\xi,\qquad
+\xi-Z^2\xi^{2h}=T,\qquad
+\partial_Z\xi=\frac{2Z\xi^{2h}}{1-2h\eta^2}.
+\tag{RM2.6}
+\]">\[
+c_\rho=\frac{\mu_2}2\xi,\qquad
+\xi-Z^2\xi^{2h}=T,\qquad
+\partial_Z\xi=\frac{2Z\xi^{2h}}{1-2h\eta^2}.
+\tag{RM2.6}
+\]</span>
+<p>Consequently
+<span class="math" data-tex="\(D_z(c_\rho\mathcal P)
+=\varepsilon\mu_2((\partial_Z\xi)\mathcal P+\xi\partial_Z\mathcal P)/2\)">\(D_z(c_\rho\mathcal P)
+=\varepsilon\mu_2((\partial_Z\xi)\mathcal P+\xi\partial_Z\mathcal P)/2\)</span>.
+Both terms enter RM2.4 and RM2.5.</p>
+<h2 id="rm3-compact-tangential-stress-and-its-exact-remaining-bumps">RM3. Compact tangential stress and its exact remaining bumps</h2>
+<p>Let <span class="math" data-tex="\(I_{\rm mean}\)">\(I_{\rm mean}\)</span> be the reserved interior interval from Theorem 4.6(vi), and let
+<span class="math" data-tex="\(I_m=\{\sqrt{2X}:X\in I_{\rm mean}\}\)">\(I_m=\{\sqrt{2X}:X\in I_{\rm mean}\}\)</span>.
+Choose nonnegative nonzero smooth bumps <span class="math" data-tex="\(\phi_\theta,\phi_z\)">\(\phi_\theta,\phi_z\)</span> supported there. Their weighted integrals are positive because the interval is separated from zero. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat\sigma_\theta(x)&amp;=\phi_\theta(x)\big/\int s^2\phi_\theta(s)\,ds,
+&amp;\widehat\sigma_z(x)&amp;=\phi_z(x)\big/\int s\phi_z(s)\,ds,\\
+\sigma_{\theta,\rm phys}&amp;=q^{-3/2}\widehat\sigma_\theta(r/\sqrt q),
+&amp;\sigma_{z,\rm phys}&amp;=q^{-1}\widehat\sigma_z(r/\sqrt q),\\
+\sigma_\theta&amp;=Q^{3/2}\sigma_{\theta,\rm phys},
+&amp;\sigma_z&amp;=Q\sigma_{z,\rm phys}.
+\end{aligned}
+\tag{RM3.1}
+\]">\[
+\begin{aligned}
+\widehat\sigma_\theta(x)&amp;=\phi_\theta(x)\big/\int s^2\phi_\theta(s)\,ds,
+&amp;\widehat\sigma_z(x)&amp;=\phi_z(x)\big/\int s\phi_z(s)\,ds,\\
+\sigma_{\theta,\rm phys}&amp;=q^{-3/2}\widehat\sigma_\theta(r/\sqrt q),
+&amp;\sigma_{z,\rm phys}&amp;=q^{-1}\widehat\sigma_z(r/\sqrt q),\\
+\sigma_\theta&amp;=Q^{3/2}\sigma_{\theta,\rm phys},
+&amp;\sigma_z&amp;=Q\sigma_{z,\rm phys}.
+\end{aligned}
+\tag{RM3.1}
+\]</span>
+<p>The substitutions <span class="math" data-tex="\(r=\sqrt q\,x\)">\(r=\sqrt q\,x\)</span> and <span class="math" data-tex="\(r=\sqrt Q\,R\)">\(r=\sqrt Q\,R\)</span> give
+<span class="math" data-tex="\(\int r^2\sigma_{\theta,\rm phys}\,dr=\int R^2\sigma_\theta\,dR=1\)">\(\int r^2\sigma_{\theta,\rm phys}\,dr=\int R^2\sigma_\theta\,dR=1\)</span> and
+<span class="math" data-tex="\(\int r\sigma_{z,\rm phys}\,dr=\int R\sigma_z\,dR=1\)">\(\int r\sigma_{z,\rm phys}\,dr=\int R\sigma_z\,dR=1\)</span>.
+These are physical bumps whose representatives agree on chart overlaps.</p>
+<p>Assume the two moments in RM2.5 vanish, as in Proposition 8.4. Define the actual linear sources and their compact primitives:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_\theta&amp;=\langle E_\theta\rangle_y-\sigma_\theta D_z\mathcal J_\theta,
+&amp;H_\theta&amp;=-\mathsf T_{2,M}F_\theta,\\
+F_z&amp;=\langle E_z\rangle_y-\sigma_zD_z(\mathcal J_z+c_\rho\mathcal P),
+&amp;H_z&amp;=-\mathsf T_{1,M}F_z.
+\end{aligned}
+\tag{RM3.2}
+\]">\[
+\begin{aligned}
+F_\theta&amp;=\langle E_\theta\rangle_y-\sigma_\theta D_z\mathcal J_\theta,
+&amp;H_\theta&amp;=-\mathsf T_{2,M}F_\theta,\\
+F_z&amp;=\langle E_z\rangle_y-\sigma_zD_z(\mathcal J_z+c_\rho\mathcal P),
+&amp;H_z&amp;=-\mathsf T_{1,M}F_z.
+\end{aligned}
+\tag{RM3.2}
+\]</span>
+<p>By RM2.5 and the two integrals of the bumps,
+<span class="math" data-tex="\(\int R^2F_\theta\,dR=0\)">\(\int R^2F_\theta\,dR=0\)</span> and <span class="math" data-tex="\(\int RF_z\,dR=0\)">\(\int RF_z\,dR=0\)</span>.
+Each <span class="math" data-tex="\(F\)">\(F\)</span> is auxiliary independent, so its shifted full radial integral is precisely this zero integral. Hence both <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> remainders vanish identically, not only to all orders. RP3 now proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(D_r+2/R)H_\theta
+&amp;=-\langle E_\theta\rangle_y+\sigma_\theta\varepsilon\partial_Z\mathcal J_\theta,\\
+(D_r+1/R)H_z
+&amp;=-\langle E_z\rangle_y+\sigma_z\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P).
+\end{aligned}
+\tag{RM3.3}
+\]">\[
+\begin{aligned}
+(D_r+2/R)H_\theta
+&amp;=-\langle E_\theta\rangle_y+\sigma_\theta\varepsilon\partial_Z\mathcal J_\theta,\\
+(D_r+1/R)H_z
+&amp;=-\langle E_z\rangle_y+\sigma_z\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P).
+\end{aligned}
+\tag{RM3.3}
+\]</span>
+<p>These are Corollary 8.5. Each <span class="math" data-tex="\(H\)">\(H\)</span> is smooth, auxiliary independent and compactly supported in the shell. At a fixed <span class="math" data-tex="\(Z,T\)">\(Z,T\)</span>, if its entire radial source vanishes, both defining integrals vanish. Therefore the operation does not enlarge its source's axial support. If <span class="math" data-tex="\(\langle E_\theta\rangle_y\)">\(\langle E_\theta\rangle_y\)</span>, respectively <span class="math" data-tex="\(\langle E_z\rangle_y\)">\(\langle E_z\rangle_y\)</span>, vanishes on an axial region for every radius, RM2.5 makes the corresponding defect derivative zero there, so this assertion also applies directly to the corresponding <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>For coefficient estimates, integrating a source in <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> on the fixed compact chart interval bounds every slow derivative by
+<span class="math" data-tex="\(C_I\varepsilon^\alpha S_*^{B_I}\)">\(C_I\varepsilon^\alpha S_*^{B_I}\)</span>: its factor
+<span class="math" data-tex="\(\zeta\delta^{-D_I}\)">\(\zeta\delta^{-D_I}\)</span> is integrable and bounded after zero extension by RP4. The fixed interior bump restores the <span class="math" data-tex="\(\zeta\delta^{-D}\)">\(\zeta\delta^{-D}\)</span> bounds on its support, where those weights are bounded away from zero. RM2.5 therefore puts <span class="math" data-tex="\(F_\theta,F_z\)">\(F_\theta,F_z\)</span> in <span class="math" data-tex="\(\mathsf M_\alpha\)">\(\mathsf M_\alpha\)</span> whenever the corresponding <span class="math" data-tex="\(E\)">\(E\)</span>'s are in that class. RP4 puts <span class="math" data-tex="\(H_\theta,H_z\)">\(H_\theta,H_z\)</span> in the same class. Exactly this argument applied to <span class="math" data-tex="\(\mathcal P=\int\langle g_r\rangle_y\,dR\)">\(\mathcal P=\int\langle g_r\rangle_y\,dR\)</span> proves all slow estimates on <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, and then <span class="math" data-tex="\(g_r-\rho\mathcal P,p_m\in\mathsf M_\alpha\)">\(g_r-\rho\mathcal P,p_m\in\mathsf M_\alpha\)</span> for <span class="math" data-tex="\(g_r\in\mathsf M_\alpha\)">\(g_r\in\mathsf M_\alpha\)</span>.</p>
+<p>The source terms that remain after the stress cancellation are
+<span class="math" data-tex="\(-\rho\mathcal P\)">\(-\rho\mathcal P\)</span>, <span class="math" data-tex="\(\sigma_\theta\varepsilon\partial_Z\mathcal J_\theta\)">\(\sigma_\theta\varepsilon\partial_Z\mathcal J_\theta\)</span>, and
+<span class="math" data-tex="\(\sigma_z\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P)\)">\(\sigma_z\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P)\)</span>, together with the retained flat radial remainder and the auxiliary-mean-zero part of the tangential residual. The next two mean operations address these explicitly. A stress realization also changes the waves and their other covariances; RM1.6–RM1.7 specify how to recompute the complete equations after that realization.</p>
+<h2 id="rm4-the-original-viscosity-and-every-moment-measure">RM4. The original viscosity and every moment measure</h2>
+<p>Retain the original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>, and use the explicit comparison</p>
+<span class="math math-display" data-tex="\[
+x_\nu=\sqrt\nu\,x_1,\qquad
+u_\nu(x_\nu,t)=\sqrt\nu\,u_1(x_1,t),\quad
+p_\nu(x_\nu,t)=\nu p_1(x_1,t),\quad
+f_\nu(x_\nu,t)=\sqrt\nu\,f_1(x_1,t).
+\tag{RM4.1}
+\]">\[
+x_\nu=\sqrt\nu\,x_1,\qquad
+u_\nu(x_\nu,t)=\sqrt\nu\,u_1(x_1,t),\quad
+p_\nu(x_\nu,t)=\nu p_1(x_1,t),\quad
+f_\nu(x_\nu,t)=\sqrt\nu\,f_1(x_1,t).
+\tag{RM4.1}
+\]</span>
+<p>The time derivative, transport, pressure gradient and <span class="math" data-tex="\(\nu\Delta u_\nu\)">\(\nu\Delta u_\nu\)</span> each equal <span class="math" data-tex="\(\sqrt\nu\)">\(\sqrt\nu\)</span> times their viscosity-one expressions. Divergence equals the viscosity-one divergence. This proves the exact map of equations. In the original variables,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\quad
+\eta=\frac{z_\nu}{\sqrt\nu\,q_\nu^D},\quad
+X=\frac{r_\nu^2}{2\nu q_\nu},\\
+R=\frac{r_\nu}{\sqrt{\nu Q}},\quad
+Z=\frac{z_\nu}{\sqrt\nu Q^D},\quad T=\frac{1-t}{Q},\\
+Y_\nu=v_r(r_\nu/\sqrt\nu)^{d_r}+v_tt,\qquad
+\mathfrak r_\nu=\partial_{r_\nu}
++d_r\nu^{-d_r/2}r_\nu^{d_r-1}v_r\cdot\partial_Y.
+\end{gathered}
+\tag{RM4.2}
+\]">\[
+\begin{gathered}
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\quad
+\eta=\frac{z_\nu}{\sqrt\nu\,q_\nu^D},\quad
+X=\frac{r_\nu^2}{2\nu q_\nu},\\
+R=\frac{r_\nu}{\sqrt{\nu Q}},\quad
+Z=\frac{z_\nu}{\sqrt\nu Q^D},\quad T=\frac{1-t}{Q},\\
+Y_\nu=v_r(r_\nu/\sqrt\nu)^{d_r}+v_tt,\qquad
+\mathfrak r_\nu=\partial_{r_\nu}
++d_r\nu^{-d_r/2}r_\nu^{d_r-1}v_r\cdot\partial_Y.
+\end{gathered}
+\tag{RM4.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\sqrt{\nu Q}\mathfrak r_\nu=D_r\)">\(\sqrt{\nu Q}\mathfrak r_\nu=D_r\)</span>,
+<span class="math" data-tex="\(\sqrt{\nu Q}\partial_{z_\nu}=D_z\)">\(\sqrt{\nu Q}\partial_{z_\nu}=D_z\)</span>, and the time operator is still RP1.6.</p>
+<p>Define the physical primitive in these variables with shift
+<span class="math" data-tex="\(\nu^{-d_r/2}((r_\nu&#x27;)^{d_r}-r_\nu^{d_r})v_r\)">\(\nu^{-d_r/2}((r_\nu&#x27;)^{d_r}-r_\nu^{d_r})v_r\)</span> and cutoff <span class="math" data-tex="\(\chi_m(X)\)">\(\chi_m(X)\)</span>.
+For any exponent <span class="math" data-tex="\(a\)">\(a\)</span> and viscosity exponent <span class="math" data-tex="\(b_\nu\)">\(b_\nu\)</span>, if
+<span class="math" data-tex="\(f_*=Q^a\nu^{-b_\nu}f_\nu\)">\(f_*=Q^a\nu^{-b_\nu}f_\nu\)</span>, substitution of
+<span class="math" data-tex="\(r_\nu=\sqrt{\nu Q}\,R\)">\(r_\nu=\sqrt{\nu Q}\,R\)</span> gives, with every weight included,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathsf T_{e,M}f_*
+&amp;=Q^{a-1/2}\nu^{-b_\nu-1/2}\mathsf T_{e,\nu}f_\nu,\\
+\mathcal A_{e,M}f_*
+&amp;=Q^a\nu^{-b_\nu}\mathcal A_{e,\nu}f_\nu,\\
+\int R^e\langle f_*\rangle_y\,dR
+&amp;=Q^{a-(e+1)/2}\nu^{-b_\nu-(e+1)/2}
+\int r_\nu^e\langle f_\nu\rangle_Y\,dr_\nu.
+\end{aligned}
+\tag{RM4.3}
+\]">\[
+\begin{aligned}
+\mathsf T_{e,M}f_*
+&amp;=Q^{a-1/2}\nu^{-b_\nu-1/2}\mathsf T_{e,\nu}f_\nu,\\
+\mathcal A_{e,M}f_*
+&amp;=Q^a\nu^{-b_\nu}\mathcal A_{e,\nu}f_\nu,\\
+\int R^e\langle f_*\rangle_y\,dR
+&amp;=Q^{a-(e+1)/2}\nu^{-b_\nu-(e+1)/2}
+\int r_\nu^e\langle f_\nu\rangle_Y\,dr_\nu.
+\end{aligned}
+\tag{RM4.3}
+\]</span>
+<p>In the first line, the exterior <span class="math" data-tex="\(R^{-e}\)">\(R^{-e}\)</span>, interior <span class="math" data-tex="\((R&#x27;)^e\)">\((R&#x27;)^e\)</span> and radial measure leave one factor <span class="math" data-tex="\((\nu Q)^{-1/2}\)">\((\nu Q)^{-1/2}\)</span>. In the second line the derivative of the cutoff supplies its reciprocal length, cancelling the integral's length. The last line is the radial change of measure. Haar means agree under each covering because a Fourier frequency <span class="math" data-tex="\(k\)">\(k\)</span> pulls back to <span class="math" data-tex="\((J_g^s)^Tk\)">\((J_g^s)^Tk\)</span>, which vanishes exactly for <span class="math" data-tex="\(k=0\)">\(k=0\)</span>; the convergent series in RP5 justifies integration term by term.</p>
+<p>For the present fields, the exact representatives are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u_*&amp;=Q^A\nu^{-1/2}u_\nu,
+&amp;g_{r,*}&amp;=Q^{2A+1/2}\nu^{-1/2}g_{r,\nu},\\
+p_{m,*}&amp;=Q^{2A}\nu^{-1}p_{m,\nu},
+&amp;\mathcal P_*&amp;=Q^{2A}\nu^{-1}\mathcal P_\nu,\\
+\rho_*&amp;=(\nu Q)^{1/2}\rho_\nu,
+&amp;\rho_\nu&amp;=(\nu q_\nu)^{-1/2}
+\widehat\rho(r_\nu/\sqrt{\nu q_\nu}),\\
+\Psi_*&amp;=Q^{A-1/2}\nu^{-1}\Psi_\nu,
+&amp;\Sigma^B_*&amp;=Q^{2A}\nu^{-1}\mathcal T_\nu.
+\end{aligned}
+\tag{RM4.4}
+\]">\[
+\begin{aligned}
+u_*&amp;=Q^A\nu^{-1/2}u_\nu,
+&amp;g_{r,*}&amp;=Q^{2A+1/2}\nu^{-1/2}g_{r,\nu},\\
+p_{m,*}&amp;=Q^{2A}\nu^{-1}p_{m,\nu},
+&amp;\mathcal P_*&amp;=Q^{2A}\nu^{-1}\mathcal P_\nu,\\
+\rho_*&amp;=(\nu Q)^{1/2}\rho_\nu,
+&amp;\rho_\nu&amp;=(\nu q_\nu)^{-1/2}
+\widehat\rho(r_\nu/\sqrt{\nu q_\nu}),\\
+\Psi_*&amp;=Q^{A-1/2}\nu^{-1}\Psi_\nu,
+&amp;\Sigma^B_*&amp;=Q^{2A}\nu^{-1}\mathcal T_\nu.
+\end{aligned}
+\tag{RM4.4}
+\]</span>
+<p>Every residual component has the multiplier
+<span class="math" data-tex="\(\nu^{-1/2}Q^{2A+1/2}\)">\(\nu^{-1/2}Q^{2A+1/2}\)</span>. For example, multiplying
+<span class="math" data-tex="\(\nu\partial_{z_\nu}^2(Q^{-A}\sqrt\nu\,u_*)\)">\(\nu\partial_{z_\nu}^2(Q^{-A}\sqrt\nu\,u_*)\)</span> by this multiplier leaves
+<span class="math" data-tex="\(Q^{A-1/2}D_z^2u_*=\varepsilon D_z^2u_*\)">\(Q^{A-1/2}D_z^2u_*=\varepsilon D_z^2u_*\)</span>, as in RM1.4.
+The potential satisfies
+<span class="math" data-tex="\(\operatorname{curl}_{x_\nu}(\Psi_\nu e_\theta)
+=(-\partial_{z_\nu}\Psi_\nu)e_r
++(\mathfrak r_\nu+r_\nu^{-1})\Psi_\nu e_z\)">\(\operatorname{curl}_{x_\nu}(\Psi_\nu e_\theta)
+=(-\partial_{z_\nu}\Psi_\nu)e_r
++(\mathfrak r_\nu+r_\nu^{-1})\Psi_\nu e_z\)</span>.
+Its divergence is exactly zero by the same commuting derivatives as RP7.</p>
+<p>Define <span class="math" data-tex="\(\mathcal M_{\theta,\nu},\mathcal M_{z,\nu},
+\mathcal J_{\theta,\nu},\mathcal J_{z,\nu}\)">\(\mathcal M_{\theta,\nu},\mathcal M_{z,\nu},
+\mathcal J_{\theta,\nu},\mathcal J_{z,\nu}\)</span> by the physical versions of the integrals in RM2.1, with each field at viscosity <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(r_\nu\)">\(r_\nu\)</span> as the radial variable. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal M_{\theta,*}&amp;=Q^{A-3/2}\nu^{-2}\mathcal M_{\theta,\nu},&amp;
+\mathcal M_{z,*}&amp;=Q^{A-1}\nu^{-3/2}\mathcal M_{z,\nu},\\
+\mathcal J_{\theta,*}&amp;=Q^{2A-3/2}\nu^{-5/2}\mathcal J_{\theta,\nu},&amp;
+\mathcal J_{z,*}&amp;=Q^{2A-1}\nu^{-2}\mathcal J_{z,\nu},\\
+c_{\rho,*}&amp;=(\nu Q)^{-1}c_{\rho,\nu},&amp;
+c_{\rho,\nu}&amp;=\frac{\nu q_\nu}{2}\mu_2.
+\end{aligned}
+\tag{RM4.5}
+\]">\[
+\begin{aligned}
+\mathcal M_{\theta,*}&amp;=Q^{A-3/2}\nu^{-2}\mathcal M_{\theta,\nu},&amp;
+\mathcal M_{z,*}&amp;=Q^{A-1}\nu^{-3/2}\mathcal M_{z,\nu},\\
+\mathcal J_{\theta,*}&amp;=Q^{2A-3/2}\nu^{-5/2}\mathcal J_{\theta,\nu},&amp;
+\mathcal J_{z,*}&amp;=Q^{2A-1}\nu^{-2}\mathcal J_{z,\nu},\\
+c_{\rho,*}&amp;=(\nu Q)^{-1}c_{\rho,\nu},&amp;
+c_{\rho,\nu}&amp;=\frac{\nu q_\nu}{2}\mu_2.
+\end{aligned}
+\tag{RM4.5}
+\]</span>
+<p>In the axial defect, the first quadratic integral has multiplier
+<span class="math" data-tex="\(Q^{2A}\nu^{-1}(\nu Q)^{-1}\)">\(Q^{2A}\nu^{-1}(\nu Q)^{-1}\)</span>. The radial source integral has multiplier
+<span class="math" data-tex="\(Q^{2A+1/2}\nu^{-1/2}(\nu Q)^{-3/2}\)">\(Q^{2A+1/2}\nu^{-1/2}(\nu Q)^{-3/2}\)</span>, the same number. This proves that both summands in <span class="math" data-tex="\(\mathcal J_z\)">\(\mathcal J_z\)</span> and the product <span class="math" data-tex="\(c_\rho\mathcal P\)">\(c_\rho\mathcal P\)</span> keep their exact relative coefficients.</p>
+<p>The bumps for the two tangential moments have the full original definitions</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sigma_{\theta,\nu}&amp;=(\nu q_\nu)^{-3/2}
+\widehat\sigma_\theta(r_\nu/\sqrt{\nu q_\nu}),&amp;
+\sigma_{\theta,*}&amp;=(\nu Q)^{3/2}\sigma_{\theta,\nu},\\
+\sigma_{z,\nu}&amp;=(\nu q_\nu)^{-1}
+\widehat\sigma_z(r_\nu/\sqrt{\nu q_\nu}),&amp;
+\sigma_{z,*}&amp;=\nu Q\,\sigma_{z,\nu}.
+\end{aligned}
+\tag{RM4.6}
+\]">\[
+\begin{aligned}
+\sigma_{\theta,\nu}&amp;=(\nu q_\nu)^{-3/2}
+\widehat\sigma_\theta(r_\nu/\sqrt{\nu q_\nu}),&amp;
+\sigma_{\theta,*}&amp;=(\nu Q)^{3/2}\sigma_{\theta,\nu},\\
+\sigma_{z,\nu}&amp;=(\nu q_\nu)^{-1}
+\widehat\sigma_z(r_\nu/\sqrt{\nu q_\nu}),&amp;
+\sigma_{z,*}&amp;=\nu Q\,\sigma_{z,\nu}.
+\end{aligned}
+\tag{RM4.6}
+\]</span>
+<p>Their physical weighted integrals are one. Equations RM4.3–RM4.6 prove the correspondence for both complete primitives, all defects, the pressure and the solenoidal velocity at every <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>.</p>
+<h2 id="rp9-five-solved-exercises">RP9. Five solved exercises</h2>
+<h3 id="exercise-1-the-exact-difference-between-the-two-primitives">Exercise 1. The exact difference between the two primitives</h3>
+<p>For any two positive coefficients <span class="math" data-tex="\(M_1,M_2\)">\(M_1,M_2\)</span>, express <span class="math" data-tex="\(\mathcal I_{c,M_1}g-\mathcal I_{c,M_2}g\)">\(\mathcal I_{c,M_1}g-\mathcal I_{c,M_2}g\)</span> without dropping either radial integral.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\Delta=(R&#x27;)^{d_r}-R^{d_r}\)">\(\Delta=(R&#x27;)^{d_r}-R^{d_r}\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+H(R&#x27;,R,y)=\Delta\int_0^1
+\mathcal Lg(R&#x27;,y+(M_2+s(M_1-M_2))\Delta v_r)\,ds.
+\]">\[
+H(R&#x27;,R,y)=\Delta\int_0^1
+\mathcal Lg(R&#x27;,y+(M_2+s(M_1-M_2))\Delta v_r)\,ds.
+\]</span>
+<p>The fundamental theorem of calculus in <span class="math" data-tex="\(s\)">\(s\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal I_{c,M_1}g-\mathcal I_{c,M_2}g
+=(M_1-M_2)\left[\int_0^R H\,dR&#x27;
+-\chi_m\int_0^\infty H\,dR&#x27;\right].
+\]">\[
+\mathcal I_{c,M_1}g-\mathcal I_{c,M_2}g
+=(M_1-M_2)\left[\int_0^R H\,dR&#x27;
+-\chi_m\int_0^\infty H\,dR&#x27;\right].
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(R^{-e}\)">\(R^{-e}\)</span>, with <span class="math" data-tex="\(g=(R&#x27;)^ef\)">\(g=(R&#x27;)^ef\)</span>, gives the difference of the weighted inverses. This formula retains the change of both the interior primitive and its full-integral subtraction.</p>
+<h3 id="exercise-2-a-nonzero-zero-flux-axial-increment">Exercise 2. A nonzero zero-flux axial increment</h3>
+<p>Construct a smooth compactly supported desired axial field with <span class="math" data-tex="\(\int r\gamma_d\,dr=0\)">\(\int r\gamma_d\,dr=0\)</span>, and compare the two potential signs.</p>
+<p><strong>Solution.</strong> Take a nonconstant smooth bump <span class="math" data-tex="\(H(r)\)">\(H(r)\)</span> supported in an annulus away from zero and put <span class="math" data-tex="\(\gamma_d(r)=H&#x27;(r)/r\)">\(\gamma_d(r)=H&#x27;(r)/r\)</span>. Then <span class="math" data-tex="\(\int r\gamma_d\,dr=H(\infty)-H(0)=0\)">\(\int r\gamma_d\,dr=H(\infty)-H(0)=0\)</span>, and <span class="math" data-tex="\(\gamma_d\)">\(\gamma_d\)</span> is not identically zero. Its weighted primitive is <span class="math" data-tex="\(H(r)\)">\(H(r)\)</span>, so the positive potential is <span class="math" data-tex="\(H(r)/r\)">\(H(r)/r\)</span> and its axial curl is <span class="math" data-tex="\(H&#x27;(r)/r=\gamma_d\)">\(H&#x27;(r)/r=\gamma_d\)</span>. The negative potential has axial curl <span class="math" data-tex="\(-\gamma_d\)">\(-\gamma_d\)</span>. Smooth dependence on <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span> can be included by multiplying by any smooth factor; the same radial identity holds at each slow point.</p>
+<h3 id="exercise-3-why-the-zero-mode-must-be-removed">Exercise 3. Why the zero mode must be removed</h3>
+<p>What fails if <span class="math" data-tex="\(H\)">\(H\)</span> in (RP5.5) has nonzero mean?</p>
+<p><strong>Solution.</strong> A periodic directional derivative has zero integral: integrate each coordinate derivative over its unit period. Therefore <span class="math" data-tex="\(\mathcal L U=H\)">\(\mathcal L U=H\)</span> cannot hold if <span class="math" data-tex="\(\int H\ne0\)">\(\int H\ne0\)</span>. In Fourier terms the multiplier at <span class="math" data-tex="\(k=0\)">\(k=0\)</span> is zero and cannot be inverted. In (RP5.7) the zero mode is not inverted; its full radial integral vanishes by the explicit weighted condition (RP5.1). Without that condition the full integral retains its zero mode and the cutoff remainder need not be small.</p>
+<h3 id="exercise-4-the-pressure-scaling">Exercise 4. The pressure scaling</h3>
+<p>Recover the exponent on <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> from the physical definition, rather than from the dimensions of pressure alone.</p>
+<p><strong>Solution.</strong> At viscosity one, with <span class="math" data-tex="\(g_{r,*}=Q^{2A+1/2}g_{r,\rm phys}\)">\(g_{r,*}=Q^{2A+1/2}g_{r,\rm phys}\)</span> and <span class="math" data-tex="\(dr=Q^{1/2}dR\)">\(dr=Q^{1/2}dR\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int\langle g_{r,*}\rangle_y\,dR
+=Q^{2A+1/2}Q^{-1/2}\int\langle g_{r,\rm phys}\rangle_Y\,dr
+=Q^{2A}\mathcal P_{\rm phys}.
+\]">\[
+\int\langle g_{r,*}\rangle_y\,dR
+=Q^{2A+1/2}Q^{-1/2}\int\langle g_{r,\rm phys}\rangle_Y\,dr
+=Q^{2A}\mathcal P_{\rm phys}.
+\]</span>
+<p>The torus averages agree under a covering: a Fourier mode pulled back by <span class="math" data-tex="\(J_g^s\)">\(J_g^s\)</span> has frequency <span class="math" data-tex="\((J_g^s)^Tk\)">\((J_g^s)^Tk\)</span>, which is zero exactly when <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Uniform Fourier convergence extends this observation to smooth periodic functions. The radial measure is essential to the exponent.</p>
+<p>At the original viscosity, RM4.3 gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal P_*=Q^{2A}\nu^{-1}\mathcal P_\nu,\qquad
+c_{\rho,*}\mathcal P_*
+=Q^{2A-1}\nu^{-2}c_{\rho,\nu}\mathcal P_\nu.
+\tag{RP9.4a}
+\]">\[
+\mathcal P_*=Q^{2A}\nu^{-1}\mathcal P_\nu,\qquad
+c_{\rho,*}\mathcal P_*
+=Q^{2A-1}\nu^{-2}c_{\rho,\nu}\mathcal P_\nu.
+\tag{RP9.4a}
+\]</span>
+<p>The latter is exactly the multiplier on both terms in <span class="math" data-tex="\(\mathcal J_z\)">\(\mathcal J_z\)</span>.
+If the velocity moments are not zero, the correct integrated residuals are
+RM2.4. The additional terms are <span class="math" data-tex="\(-\varepsilon\partial_T\mathcal M\)">\(-\varepsilon\partial_T\mathcal M\)</span> and
+<span class="math" data-tex="\(-\varepsilon^3\partial_Z^2\mathcal M\)">\(-\varepsilon^3\partial_Z^2\mathcal M\)</span>; these vanish on the original
+zero-moment domain. Their derivation in RM2.2–RM2.4 evaluates every boundary
+bracket before cancelling it.</p>
+<h3 id="exercise-5-how-many-source-derivatives-does-a-requested-remainder-estimate-use">Exercise 5. How many source derivatives does a requested remainder estimate use?</h3>
+<p>Specify a finite choice for a physical derivative order <span class="math" data-tex="\(m\)">\(m\)</span>, power <span class="math" data-tex="\(N\)">\(N\)</span>, source exponent <span class="math" data-tex="\(a\)">\(a\)</span> and class exponent <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>Solution.</strong> Choose any integer</p>
+<span class="math math-display" data-tex="\[
+p\geq1,\qquad p&gt;\frac{N+a+m(1+h)-h\alpha}{h\kappa_s}.
+\]">\[
+p\geq1,\qquad p&gt;\frac{N+a+m(1+h)-h\alpha}{h\kappa_s}.
+\]</span>
+<p>For each coefficient derivative created by the physical product rules, (RP5.7) uses at most <span class="math" data-tex="\(p\)">\(p\)</span> additional radial derivatives and <span class="math" data-tex="\(p+3\)">\(p+3\)</span> additional torus derivatives beyond that derivative's own indices. There are finitely many physical product-rule terms, so the largest of these finite requirements suffices. The number may be large; the proof needs their existence and the already quantified smooth coefficient bounds, not a numerical computation of all of them. Fixing this <span class="math" data-tex="\(p\)">\(p\)</span> before taking small <span class="math" data-tex="\(q\)">\(q\)</span> makes (RP6.1) an <span class="math" data-tex="\(O(q^N)\)">\(O(q^N)\)</span> bound.</p>
+<h2 id="sources-and-proof-locations">Sources and proof locations</h2>
+<p>OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, section 8.1–8.4, pages 88–95, Proposition 8.1, Lemma 8.2, Propositions 8.3–8.4 and Corollary 8.5, in the <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original 166-page paper</a>. The source identifier is SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. Page 95 also begins the subsequent auxiliary-time construction, which is outside this component's coverage.</p>
+<p>The <a href="../src/summing-the-correction-fields.md">coordinate and summation proof</a>, S1, establishes the original coordinate map. The <a href="../src/constructing-the-actual-base-field.md">complete base construction</a>, Z0–Z9, supplies the actual base and stress. The <a href="../src/realizing-stress-and-controlling-interactions.md">stress and transport proof</a>, SC11.11–SC11.16, derives the cylindrical formulas also proved in RM1. RP1–RP8, RM1–RM4 and RP9 give all the radial and mean arguments in this component. The complete <a href="theorem-audit-conclusion.html">theorem audit</a> states the full theorem and its proof dependencies.</p>
+</article></body></html>

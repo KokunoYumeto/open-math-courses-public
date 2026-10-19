@@ -1,6 +1,6 @@
 # Moduli stacks are algebraic
 
-*Mathematical sources: the Stacks Project authors and the separately credited AI Integrated Stacks edition. Course exposition: GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Publisher: Open Math Courses project, `KokunoYumeto/open-math-courses`. This independently written course expression is dedicated to CC0 1.0. Consulted source editions retain their own terms and the source notice Copyright (C) 2005 -- 2025 Johan de Jong. The component record identifies the mathematical sources and individual passage credits; the source licence accompanies the course.*
+*Mathematical sources: the Stacks Project authors and the separately credited AI Integrated Stacks edition. Course exposition: GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. Published by the Open Math Courses project. Course text: CC0 1.0. Individual passage credits appear in the component record.*
 
 The parameter space of a sheaf depends on its own support and relative flatness. The space carrying the sheaf may be nonproper and nonflat. This lesson constructs the algebraic stack of finitely presented, relatively flat sheaves with proper support, and then treats quotients, closed subspaces, maps and invertible sheaves. Scalar automorphisms distinguish the Picard stack from its associated Picard sheaf.
 
@@ -417,7 +417,7 @@ Numbering in Appendix A is local. References to another lesson or provider ident
 
 The main construction recovers coherent families, including their given transition isomorphisms, from finite quotients of an inverse-limit ring. It applies to the stated arbitrary ring towers and algebraic-space ambient objects. The last constructions treat polarized schemes and the entire curve-space stack of fibre dimension at most one. We first build finite cohomological tests, then use them for strong coherent existence and the two moduli applications.
 
-The mathematical sources are the Stacks Project authors and the separately credited AI Integrated Stacks edition. Course exposition and supporting arguments retain their individual passage credits in the component record. The independently written course expression is dedicated to CC0 1.0. The source edition retains its GNU FDL 1.2-or-later terms and accompanying notices. No copyright ownership is assigned to an AI system.
+Mathematical sources: the Stacks Project authors and the separately credited AI Integrated Stacks edition. Individual exposition and proof credits appear in the component record. Course text: CC0 1.0.
 
 ### A.1. The inverse system and its markings
 
@@ -43833,7 +43833,7 @@ Stable anchors connect the included statements with their surrounding source not
 
 ### Sources and programme proofs
 
-The mathematical sources include the Stacks Project authors and the separately credited AI Integrated Stacks edition. Stable statement, proof-step and equation anchors preserve the source correspondence. Programme providers are cited for the specific claims identified in their entries, with their own hypotheses and lower dependencies. These citations do not assert recursive proof closure.
+The mathematical sources include the Stacks Project authors and the separately credited AI Integrated Stacks edition. Stable statement, proof-step and equation anchors preserve the source correspondence. Programme providers are cited for the specific claims identified in their entries, with their own hypotheses and lower dependencies. All further hypotheses and prerequisites of those statements remain necessary.
 
 - *Completion*, Theorems 3.1–3.3, 4.1 and 5.1.
 - *Coefficient rings and the Cohen structure theorem*, Theorem 6.1 and the stated Noetherianity consequence.
@@ -43851,13 +43851,13 @@ The mathematical sources include the Stacks Project authors and the separately c
 - *Artin's axioms*, Lemma 5.1.
 - Lesson 3, Section 5.6.7, C.1.
 
-The source edition's GNU Free Documentation License 1.2 is included. Its grant permits version 1.2 or later, with no invariant sections or front- or back-cover texts. The component record specifies the licences of the course contributions.
+This lesson’s expression is dedicated to CC0 1.0.
 
 ## Edition and mathematical sources
 
-**Consulted source edition.** The Stacks Project authors, *The Stacks Project*, distributed in the *AI Integrated Stacks Project*, 2026 edition, revision `565b10e987aba5969b21145a0833f42d69f96790`, dated 30 September 2026. The human mathematical authors and source publisher are the Stacks Project. The fork distribution and its separately credited contributions are identified by its [source provenance](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/PROVENANCE.md). Its [application notice](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/introduction.tex) gives the licence grant. The [pinned source tree](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790) identifies the mathematical source files and their distribution locations. The human-source copyright notice appears at the start of this chapter.
+**Mathematical source edition.** The Stacks Project authors, *The Stacks Project*, AI Integrated Stacks Project edition, revision `565b10e987aba5969b21145a0833f42d69f96790` (30 September 2026), [source files](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790). Source copyright: 2005–2025 Johan de Jong; separately credited contributions appear in that edition.
 
-**Course edition.** *Algebraic spaces and stacks — Moduli stacks are algebraic*, October 2026, published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Course exposition and integration: GPT-6.1 Sol (OpenAI), Codex, Ultra. Supporting mathematical exposition and proofs: GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI), Codex, Ultra, with their individual credits in the component record. The lesson treats sheaf Hom and Isom, coherent families, quotients, Hilbert and morphism spaces, Picard stacks and sheaves, strong coherent existence, polarized proper schemes, and proper flat curve spaces of dimension at most one. It includes the algebraic-space and cohomological foundations, specified comparison maps and precise proof qualifications. Mathematical source authorship remains with the credited sources; no human endorsement or AI copyright ownership is asserted. The component record specifies the CC0 1.0 course expression, its individual writing credits and the separate terms of consulted sources and rendering dependencies.
+**Course edition.** *Algebraic spaces and stacks — Moduli stacks are algebraic*, October 2026, published by the Open Math Courses project, `KokunoYumeto/open-math-courses`. Course exposition: GPT-6.1 Sol (OpenAI), Codex, Ultra. Supporting mathematical exposition and proofs: GPT-6 Astra (OpenAI) and GPT-6.1 Sol (OpenAI), Codex, Ultra, with their individual credits in the component record. The lesson treats sheaf Hom and Isom, coherent families, quotients, Hilbert and morphism spaces, Picard stacks and sheaves, strong coherent existence, polarized proper schemes, and proper flat curve spaces of dimension at most one. It includes the algebraic-space and cohomological foundations, specified comparison maps and precise proof qualifications. The component record gives individual writing credits. Course text: CC0 1.0.
 
-**Independent mathematical expression.** The component record identifies the CC0 1.0 passages and their individual writing credits. The 144 reused algebra proofs retain the full independently written treatment in [Artin’s axioms](artin-axioms.md). The exposition treats inverse systems, module patching, Koszul and Čech comparisons, proper-support cohomology, derived operations, étale gluing and supported perfect approximation. The chapter licence and the licences of consulted sources are specified separately in that record.
+The algebraic arguments on inverse systems, module patching, Koszul and Čech comparisons, proper-support cohomology, derived operations, étale gluing and supported perfect approximation use the corresponding proofs in [Artin’s axioms](artin-axioms.md), with individual passage credits in the component record.
 

@@ -511,8 +511,8 @@ construction. C3 proves the needed embedding criterion directly and
 shows that its connected-fibre version needs no additional simple
 connectedness hypothesis.
 
-No source prose or PDF is redistributed. This component proves geometry
-and ordinary half-density composition. The Maslov factor, Gaussian-symbol
-composition and the analytic Fourier-integral operator composition theorem
-remain separate obligations of the full course. No external citation is
-used in place of a prerequisite proof.
+This component proves geometry and ordinary half-density composition. The [Maslov and Gaussian-symbol pairing](maslov-composition-and-gaussian-factors.html) and the [analytic composition theorem](analytic-clean-composition.html) give the corresponding symbol and operator results.
+
+
+
+

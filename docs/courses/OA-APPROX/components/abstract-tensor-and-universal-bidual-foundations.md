@@ -282,7 +282,7 @@ This exposition and its reproducible inline SVG are dedicated under CC0-1.0 to t
 
 ## Universal biduals from state coefficients
 
-Inner products are linear in the second variable. The [scalar GNS and matrix C*-norm proofs](../scalar-gns-and-matrix-cstar-norms.html), [positive functionals and essential cyclic vectors](../positive-functionals-and-essential-cyclic-vectors.html), and [operator density from finite vector tests](../operator-density-foundations.html) provide their full constructions. The retained scalar and concrete-predual foundations prove Hahn–Banach, product compactness, Hilbert representation, and the duality of a concrete von Neumann algebra with its coefficient predual. The positive approximate-identity construction applies to every C*-algebra and every closed ideal used below.
+Inner products are linear in the second variable. The [scalar GNS and matrix C*-norm proofs](../scalar-gns-and-matrix-cstar-norms.html), [positive functionals and essential cyclic vectors](../positive-functionals-and-essential-cyclic-vectors.html), and [operator density from finite vector tests](../operator-density-foundations.html) provide their full constructions. The retained scalar and concrete-predual foundations prove Hahn–Banach, product compactness, Hilbert representation, and the duality of a concrete von Neumann algebra with its coefficient predual. The [positive approximate-identity construction](../infinite-tensor-products.html#f09) applies to every C*-algebra and every closed ideal used below.
 
 <a id="abf-four-positive-parts"></a>
 

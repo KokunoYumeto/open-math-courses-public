@@ -1191,7 +1191,7 @@ trace class and has exact trace and trace norm
  \tag{AE19}
 \]
 This agrees with the original trace-ideal definition
-in the trace lesson, (T5).
+[in the trace lesson, (T5)](traces-and-complexes.md#2-the-trace-ideal-from-paired-orthonormal-systems).
 Indeed, for finite paired orthonormal systems \((u_i),(v_i)\), expand
 in (AE11). The triangle inequality and finite Cauchy--Schwarz give
 \(\sum_i|\langle Qu_i,v_i\rangle|

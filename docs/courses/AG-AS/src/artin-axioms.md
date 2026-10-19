@@ -1,6 +1,6 @@
 # Artin's axioms
 
-*Course exposition by GPT-6.1 Sol (OpenAI), Codex, Ultra; desingularization and supporting algebraic proofs by GPT-6 Astra (OpenAI), Codex, Ultra, October 2026. This lesson's independently written expression is dedicated to CC0 1.0. The mathematical work of the Stacks Project authors and the other cited authors is credited throughout. Consulted source editions retain their own terms. The component record identifies the expression, sources and writing credits.*
+*Course exposition by GPT-6.1 Sol (OpenAI), Codex, Ultra; desingularization and supporting algebraic proofs by GPT-6 Astra (OpenAI), Codex, Ultra, October 2026. This lesson's independently written expression is dedicated to CC0 1.0. The mathematical work of the Stacks Project authors and the other cited authors is credited throughout. The component record identifies the expression, sources and writing credits.*
 
 An algebraic stack has smooth coordinates, whereas a moduli problem usually arrives as a rule assigning a groupoid to each scheme. Artin's criterion constructs coordinates from that rule. The construction has three stages: obtain a versal deformation over a complete local ring, approximate it by a family of finite type, and enlarge its versal locus to an open set. A second argument explains why a flat presentation, even one with inseparable fibres, can be replaced by a smooth presentation.
 
@@ -803,7 +803,7 @@ The perturbation lemma gives exactness at \(P^{\oplus r}\). The graded quotient 
 
 This argument explains why approximating only the ideal generators is insufficient: the exact perturbed syzygy equations supply (AR.2), and (AR.2) supplies the Artin–Rees constant for the perturbed map needed for the reverse graded containment.
 
-The mathematical source is the Stacks Project authors, *More on Algebra*, labels `lemma-approximate-complex` and `lemma-approximate-complex-graded` (Tags 07VE–07VF), and `lemma-works-flat-extension`, at AI Integrated Stacks Project revision `565b10e987aba5969b21145a0833f42d69f96790`. That section credits Conrad–de Jong for part of the material. This independently expressed proof is eligible CC0 programme writing; the consulted human source retains its attribution and GFDL terms.
+The mathematical source is the Stacks Project authors, *More on Algebra*, labels `lemma-approximate-complex` and `lemma-approximate-complex-graded` (Tags 07VE–07VF), and `lemma-works-flat-extension`, at AI Integrated Stacks Project revision `565b10e987aba5969b21145a0833f42d69f96790`. That section credits Conrad–de Jong for part of the material.
 
 ## Prerequisites and proof scope
 
@@ -831,19 +831,19 @@ We prove that a regular map of arbitrary Noetherian rings is a filtered colimit 
 
 The constructions have two jobs. Singularity ideals record where a finite presentation still fails to be smooth, and the lifting lemmas enlarge its smooth locus. Once a smooth factorization exists, a change of polynomial variables encodes the desired finite-order congruence and smooth-section lifting produces an exact solution.
 
-### B.1. Sources, authorship and proof status
+### B.1. Mathematical sources and authorship
 
-The mathematical references are the Stacks Project authors' *Smoothing Ring Maps*, the marked-family approximation in *Artin's Axioms*, and the specified results in *More on Algebra* and *Commutative Algebra*. The consulted [AI Integrated Stacks edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790) is pinned to revision `565b10e987aba5969b21145a0833f42d69f96790`. Popescu proved the principal theorem. The Stacks treatment follows Richard Swan, whose account credits André's notes and Ogoma's arguments. Those historical papers are credited through the consulted exposition; they are not represented as separately consulted sources.
+The mathematical references are the Stacks Project authors' *Smoothing Ring Maps*, the marked-family approximation in *Artin's Axioms*, and the specified results in *More on Algebra* and *Commutative Algebra*. The [AI Integrated Stacks edition](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790) is pinned to revision `565b10e987aba5969b21145a0833f42d69f96790`. Popescu proved the principal theorem. The Stacks treatment follows Richard Swan, whose account credits André's notes and Ogoma's arguments. References to those papers here follow Swan’s exposition.
 
-The mathematical exposition, marked-family approximation and Artin–Rees arguments are by GPT-6.1 Sol (OpenAI), Codex, Ultra. The desingularization and supporting algebraic proofs are by GPT-6 Astra (OpenAI), Codex, Ultra. The component record specifies their contributions and the cited mathematical sources. This course expression is dedicated to CC0 1.0; consulted sources retain their own licences and authorship.
+The mathematical exposition, marked-family approximation and Artin–Rees arguments are by GPT-6.1 Sol (OpenAI), Codex, Ultra. The desingularization and supporting algebraic proofs are by GPT-6 Astra (OpenAI), Codex, Ultra. The component record specifies their contributions and the cited mathematical sources. This course expression is dedicated to CC0 1.0.
 
-The human source credit remains the Stacks Project authors, with their source notice Copyright (C) 2005–2025 Johan de Jong. The pinned fork's separately credited AI contributions retain their provenance. Its source text is under GFDL 1.2 or later, without Invariant Sections, Front-Cover Texts or Back-Cover Texts; the source licence is retained with the course. The source identities below identify consultation, not copied expression in this lesson.
+The source authors are the Stacks Project authors (Copyright (C) 2005–2025 Johan de Jong), with separately credited contributions in the AI Integrated Stacks edition.
 
-| Source ID | Native file at the pinned revision | SHA-256 |
+| Mathematical source | File at the cited revision | Subject |
 | --- | --- | --- |
-| AGAS-NATIVE-STACKS-565B-SMOOTHING | `smoothing.tex` | `85a37c95d5591632d11e7be6775039638b6f5200b44729abcea1a644d9f5b056` |
-| AGAS-NATIVE-STACKS-565B-MORE-ALGEBRA | `more-algebra.tex` | `9b91629d8401d8f4fc439ef834cd69adc75e89b1ed59a75ba4fdd01daff52ad4` |
-| AGAS-NATIVE-STACKS-565B-ALGEBRA | `algebra.tex` | `eb0db6ee32deab7b24e055a73cf2cc19904394e516a5b22567e7ef895a7b9cec` |
+| *Smoothing Ring Maps* | `smoothing.tex` | General Néron desingularization |
+| *More on Algebra* | `more-algebra.tex` | Approximation of complexes and flat extensions |
+| *Commutative Algebra* | `algebra.tex` | Completions, flatness and regular rings |
 
 ### B.2. The finite factorization criterion
 
@@ -10924,15 +10924,15 @@ The statement, equation and section anchors preserve the source correspondence u
 
 ### Sources and programme proofs
 
-Mathematical credit belongs to the cited authors, including the Stacks Project authors and the contributors identified in the pinned AI Integrated Stacks source history. This lesson uses independently written expression and retains the cited mathematical scope, proof alternatives and corrections. Its component record records the current source identity, the credited independent passages and the exact programme proofs reused.
+The mathematical sources are the Stacks Project authors and the separately credited contributors to the AI Integrated Stacks edition. The component record gives the passage authorship and source references.
 
-The proof map in B.8 leads to the completion, coefficient-ring, henselian, formal-smoothness, field-smoothness, regular-sequence, regular-local, differential and flatness arguments. Appendix A provides the Artin–Rees perturbation and flat-extension proofs. Each programme reference is used for the matched statement actually proved there; the reference does not certify every recursively imported prerequisite. The general sixth assertion of the standard-presentation comparison remains explicitly unproved, with its failed inference and the valid downstream scope stated at that lemma.
+The proof map in B.8 leads to the completion, coefficient-ring, henselian, formal-smoothness, field-smoothness, regular-sequence, regular-local, differential and flatness arguments. Appendix A provides the Artin–Rees perturbation and flat-extension proofs. Each programme reference is used for the matched statement actually proved there; all further hypotheses and prerequisites remain necessary. The general sixth assertion of the standard-presentation comparison remains explicitly unproved, with its failed inference and the valid downstream scope stated at that lemma.
 
-This lesson's independently written expression is dedicated to CC0 1.0. The consulted native sources retain their attribution and GFDL 1.2-or-later terms. Their complete licence text accompanies the course unchanged; its presence does not change the separately recorded terms of this lesson or the other components.
+This lesson’s expression is dedicated to CC0 1.0.
 
-## History
+## Edition and credits
 
-**Mathematical source edition.** The Stacks Project authors' work was consulted through the *AI Integrated Stacks Project*, revision `565b10e987aba5969b21145a0833f42d69f96790`, dated 30 September 2026. The human source publisher is the Stacks Project; its notice is Copyright (C) 2005–2025 Johan de Jong. The fork's [provenance record](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/PROVENANCE.md) identifies the separately credited AI contributions. The [source application notice](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/introduction.tex) gives its licence grant, and the [pinned source tree](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790) preserves the cited files and prior source locations.
+**Mathematical source edition.** The Stacks Project authors, *The Stacks Project*, AI Integrated Stacks Project edition, revision `565b10e987aba5969b21145a0833f42d69f96790` (30 September 2026), [source files](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/tree/565b10e987aba5969b21145a0833f42d69f96790). Source copyright: 2005–2025 Johan de Jong; separately credited contributions appear in that edition.
 
-**Course writing.** *Algebraic spaces and stacks — Artin's axioms*, October 2026, is issued by the Open Math Courses project, `KokunoYumeto/open-math-courses`. GPT-6.1 Sol (OpenAI), Codex, Ultra, wrote the main exposition, marked-family approximation and Artin–Rees arguments. GPT-6 Astra (OpenAI), Codex, Ultra, wrote the desingularization and supporting algebraic proofs. The lesson treats the general Noetherian-map theorem, G-ring permanence, marked families, exact graded comparison and both approximation forms. Its symmetric-algebra section gives the relation-module formula and its projective special case. The sixth standard-presentation comparison assertion remains an explicit proof obligation; the proved fifth assertion supplies the desingularization argument. The course expression is dedicated to CC0 1.0. Mathematical source authorship and citations are credited throughout; no human endorsement or AI copyright holder is asserted.
+**Course writing.** *Algebraic spaces and stacks — Artin's axioms*, October 2026, is issued by the Open Math Courses project, `KokunoYumeto/open-math-courses`. GPT-6.1 Sol (OpenAI), Codex, Ultra, wrote the main exposition, marked-family approximation and Artin–Rees arguments. GPT-6 Astra (OpenAI), Codex, Ultra, wrote the desingularization and supporting algebraic proofs. The lesson treats the general Noetherian-map theorem, G-ring permanence, marked families, exact graded comparison and both approximation forms. Its symmetric-algebra section gives the relation-module formula and its projective special case. The sixth standard-presentation comparison assertion remains an explicit proof obligation; the proved fifth assertion supplies the desingularization argument. The course expression is dedicated to CC0 1.0.
 

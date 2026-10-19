@@ -228,7 +228,7 @@ Let
 \[
 R=\bar\bigotimes_{j\ge1}(M_2,\operatorname{tr}_2).
 \]
-The tracial product construction gives its faithful normal product trace and separable trace GNS space. The explicit finite-stage projections in [the matrix-stage expectation theorem](../components/matrix-stage-expectations-and-scalar-center.md#mx1) applied to its local matrix factors give scalar center: a central element has scalar projection at every stage and is their GNS limit. Their matrix sizes are unbounded, so \(R\) is of type \(\mathrm{II}_1\).
+The [tracial product construction](infinite-tensor-products.md) gives its faithful normal product trace and separable trace GNS space. The explicit finite-stage projections in [the matrix-stage expectation theorem](../components/matrix-stage-expectations-and-scalar-center.md#mx1) applied to its local matrix factors give scalar center: a central element has scalar projection at every stage and is their GNS limit. Their matrix sizes are unbounded, so \(R\) is of type \(\mathrm{II}_1\).
 
 **Theorem 5.1.** For a \(\mathrm{II}_1\) factor \(M\) with separable predual, the following are equivalent:
 

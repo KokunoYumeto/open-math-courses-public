@@ -286,7 +286,7 @@ C_k=B_k\cap\{e_0\}'=M_1'\cap M_k\quad(k\ge1).
 \]
 Its given trace \(\sigma_k\) is the restriction of \(\tau_{M_k}\). Its marked projections include every original \(e_i\); all lie in the appropriate \(A_k\), even though \(e_0\) need not lie in \(B_k\). The index is recovered by \(d=\sigma_1(e_0)^{-1}\).
 
-The finite prerequisites are 14.2/14.8, [the two-step blocking theorem 64.1](two-step-cups-and-composed-densities.md), and the complete finite-module comparison argument of [62.2](scalar-commutants-and-tracial-tunnels.md#the-trace-in-the-cup-functional). Normal extension uses the tracial Hilbert-space construction of [40.1](trace-compatible-reflection.md), allowing arbitrary centers. The final classification uses the already proved SA.7 with its original hypotheses. No generating-tunnel or general trace theorem is reproved here.
+The finite prerequisites are 14.2/14.8, [the two-step blocking theorem 64.1](two-step-cups-and-composed-densities.md), and the complete finite-module comparison argument of [62.2](scalar-commutants-and-tracial-tunnels.md#the-trace-in-the-cup-functional). Normal extension uses the tracial Hilbert-space construction of [40.1](trace-compatible-reflection.md), allowing arbitrary centers. The final classification uses the already proved [SA.7](general-tail-supports-and-controlled-tunnels.md) with its original hypotheses. No generating-tunnel or general trace theorem is reproved here.
 
 ### Recover the second finite trace from the marked ladder
 
@@ -585,7 +585,7 @@ For the support assertion use \(a_rf_r=a_r\) and \(f_rg=gf_r\). The preceding fu
 
 The relations \(g a_s^*a_t g=\delta_{st}f_sg\) prove that \(\Psi\) preserves multiplication and adjoints. Equation (17.44) gives \(\Psi(f)=1\). Applying the same Gram relation on both sides proves \(G\Psi(C)=C\). Conversely, insert \(\sum_ra_rg a_r^*=1\) on both sides of \(x\) to obtain \(\Psi G(x)=x\). Hence these are inverse unital normal *-isomorphisms.
 
-For \(b\in Q\), \(G(b)_{rs}=E_P(a_r^*ba_s)\). For \(g\) itself, the entries are \(E_P(a_r^*)E_P(a_s)\). These are exactly the left multiplication representation of \(Q\) and its Jones projection in the complete finite-module model, equations (61.7)–(61.9) of Theorem 61.2. The isomorphism therefore identifies the given inclusion and the original cup with the standard basic construction; it is not an abstract algebra identification that forgets them.
+For \(b\in Q\), \(G(b)_{rs}=E_P(a_r^*ba_s)\). For \(g\) itself, the entries are \(E_P(a_r^*)E_P(a_s)\). These are exactly the left multiplication representation of \(Q\) and its Jones projection in the complete finite-module model, equations (61.7)–(61.9) of [Theorem 61.2](smooth-representations-and-tower-compression.md#constructing-the-expected-tower-without-a-trace-on-the-representation). The isomorphism therefore identifies the given inclusion and the original cup with the standard basic construction; it is not an abstract algebra identification that forgets them.
 
 Finally, for every supported \(C\), physical trace pairing and the Gram relation give
 
@@ -618,7 +618,7 @@ is an actual generating ordinary Jones tunnel, with cups \(g_j\). Its smaller ge
 
 For \(D_j=L_j'\cap M\), we have \(D_j\subset R\) by definition and \(A_j\subset L_j\). Consequently \(D_j\subset A_j'\cap R\). The left side generates \(R\), proving the second equality in (17.48), as already observed in 51.1. Every \(A_j'\cap R\) is finite dimensional: \(A_j\subset R\) is an inclusion of factors of finite index \(d^j\). The internal tunnel thus generates precisely the whole larger core. Restricting the trace expectation to \(S\) gives the smaller closure \(S\), by the same finite-commutant expectation argument 53.1. This is a statement about the actual internal tunnel, rather than only an abstract increasing algebra chain.
 
-Apply the full generating-to-amenability theorem 61.15 to \(S\subset R\). Every smooth nondegenerate normal expected representation of this pair has a compatible \(R\)-central state with the original trace marginal; its state may be singular. The actual internal core is \(R\) itself and is factorial. These are exactly the original amenability and ergodic-core conditions. No physical infinite bicommutant or normal reflection is used. \(\square\)
+Apply the full generating-to-amenability [theorem 61.15](smooth-representations-and-tower-compression.md#extending-a-smooth-representation-down-the-original-tunnel) to \(S\subset R\). Every smooth nondegenerate normal expected representation of this pair has a compatible \(R\)-central state with the original trace marginal; its state may be singular. The actual internal core is \(R\) itself and is factorial. These are exactly the original amenability and ergodic-core conditions. No physical infinite bicommutant or normal reflection is used. \(\square\)
 
 Both endpoints of this core have separable predual because their original defining unions are countable unions of finite-dimensional algebras. This does not impose separability on the original ambient \(M\). When a core endpoint is nonfactor, 17.14 still holds, but 17.15 makes no factor-inclusion or strong-amenability assertion for that nonfactor pair.
 
@@ -634,7 +634,7 @@ Both endpoints of this core have separable predual because their original defini
 
 These are the complete clauses(i)–(v) of Popa's Theorem 4.1.2, including the exact-prefix form. No extremality or finite depth is assumed.
 
-**Proof.** Theorems 61.16 and 61.20 supply the equivalence of the first four conditions. Under condition 3 the corresponding core is literally \(N\subset M\), so condition 5 holds for that choice. The normal full-pair reconstruction 17.9 identifies every other ordinary core with this one using the recovered downward trace. It therefore gives condition 5 for every choice. The different physical opposite trace is not substituted for that recovered trace.
+**Proof.** [Theorems 61.16 and 61.20](smooth-representations-and-tower-compression.md) supply the equivalence of the first four conditions. Under condition 3 the corresponding core is literally \(N\subset M\), so condition 5 holds for that choice. The normal full-pair reconstruction 17.9 identifies every other ordinary core with this one using the recovered downward trace. It therefore gives condition 5 for every choice. The different physical opposite trace is not substituted for that recovered trace.
 
 Conversely let \(\alpha:M\to R\) be the stated normal whole-pair isomorphism, with \(\alpha(N)=S\). Both \(R,S\) are then II₁ factors. Uniqueness of their normalized factor traces makes \(\alpha\) trace preserving. Theorem 17.15 applies to their actual internal tower. Transport it back by
 
@@ -656,7 +656,7 @@ Theorem 17.16 concerns an isomorphism onto the entire original pair. The differe
 
 The specified finite reflection compares the ordinary-model trace with the physical opposite trace. CTS.7 extends that reflection normally precisely at extremality. We use that normal comparison before assuming amenability. This gives both directions of the opposite-model characterization in Popa, Theorem 5.1.1, printed p.226, at arbitrary depth.
 
-The ordinary-model converse is [Theorem 17.16](#the-original-standard-model-converse). The exact reflection used here is CTS.7, and the actual opposite endpoints and trace are those of [63.6–63.8](canonical-rescaling-of-jones-cups.md#the-tracial-tower-in-the-actual-opposite-model). The full generating-to-amenability return remains 61.15–61.16.
+The ordinary-model converse is [Theorem 17.16](#the-original-standard-model-converse). The exact reflection used here is [CTS.7](general-tail-supports-and-controlled-tunnels.md#the-exact-extension-criterion), and the actual opposite endpoints and trace are those of [63.6–63.8](canonical-rescaling-of-jones-cups.md#the-tracial-tower-in-the-actual-opposite-model). The full generating-to-amenability return remains [61.15–61.16](smooth-representations-and-tower-compression.md#extending-a-smooth-representation-down-the-original-tunnel).
 
 ### Transport through a normal anti-isomorphism
 

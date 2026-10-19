@@ -161,7 +161,7 @@ This proof diagram follows the finite-coordinate approximation in TN03. The scal
 <a id="tn07"></a>
 ### TN07. Quotients, completeness and the closed range
 
-Here are all quotient steps consumed by TN04 and the unitization argument. Use the complete calculus, norm separation, unitization and Hilbert proofs CF1–10, and the positive two-sided approximate identity F09. The same quotient conclusion is proved in F10.
+Here are all quotient steps consumed by TN04 and the unitization argument. Use the complete calculus, norm separation, unitization and Hilbert proofs CF1–10, and the [positive two-sided approximate identity F09](infinite-tensor-products.md#f09). The same quotient conclusion is proved in [F10](infinite-tensor-products.md#f10).
 
 Let \(D\) be a C*-algebra and \(J\) a closed self-adjoint two-sided ideal. On the algebraic quotient put
 
@@ -660,7 +660,7 @@ An operator commuting with all \(1_L\otimes E_{ij}\) has off-diagonal entries ze
 <a id="irreducible-norm-detection"></a>
 ### Irreducible representations detect the C*-norm
 
-Use CF1–10, the complete [scalar GNS construction MG01–MG02](../components/scalar-gns-and-matrix-cstar-norms.md#mg01), the [positive norm-preserving scalar extension](completely-positive-finite-models.md#lemma-2-2), F09 positive two-sided approximate identities, and the full [SEPARATION and COMPACT proofs](hypertraces-finite-injectivity.md#separation). The compact-face argument below supplies the needed extreme point directly.
+Use CF1–10, the complete [scalar GNS construction MG01–MG02](../components/scalar-gns-and-matrix-cstar-norms.md#mg01), the [positive norm-preserving scalar extension](completely-positive-finite-models.md#lemma-2-2), [F09 positive two-sided approximate identities](infinite-tensor-products.md#f09), and the full [SEPARATION and COMPACT proofs](hypertraces-finite-injectivity.md#separation). The compact-face argument below supplies the needed extreme point directly.
 
 For a possibly nonunital nonzero C*-algebra \(D\), let \(Q=\{f\in D^*:f\ge0,\ \|f\|\le1\}\). This is weak* compact: positivity is closed on every positive element, and COMPACT gives the compact dual unit ball. It is convex. A faithful representation supplies vector functionals in \(Q\), and the quadratic-form characterization and order calculus give
 \(\sup_{f\in Q}f(h)=\|h\|\) for \(h\ge0\).

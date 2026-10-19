@@ -4,7 +4,7 @@ A scalar expectation of each Jones projection gives a way to collapse the tower 
 
 We begin with the Pimsner–Popa construction of a projection with scalar expectation onto the relative commutant. Its generally non-scalar expectation onto the smaller factor explains why the two expectation targets must be kept separate.
 
-We use [the local-index formula](module-dimension-and-local-index.md), Theorems 2.4–2.5; [downward construction and recognition](towers-and-tunnels.md), Theorems 4.4–4.5; [coherent finite reflection and finite-depth trace agreement](reflected-traces-and-uniform-bounds.md), Proposition 14.2 and Theorem 14.4; [tracial extension](trace-compatible-reflection.md), Theorem 40.1; [the actual weighted-spin tunnel](weighted-spin-tunnel.md), 47.1–47.5; and smooth representations and tower compression, 61.4 and 61.6–61.8. Smooth representations retain all the expected, nondegenerate hypotheses of Lesson 61.
+We use [the local-index formula](module-dimension-and-local-index.md), Theorems 2.4–2.5; [downward construction and recognition](towers-and-tunnels.md), Theorems 4.4–4.5; [coherent finite reflection and finite-depth trace agreement](reflected-traces-and-uniform-bounds.md), Proposition 14.2 and Theorem 14.4; [tracial extension](trace-compatible-reflection.md), Theorem 40.1; [the actual weighted-spin tunnel](weighted-spin-tunnel.md), 47.1–47.5; and [smooth representations and tower compression](smooth-representations-and-tower-compression.md), 61.4 and 61.6–61.8. Smooth representations retain all the expected, nondegenerate hypotheses of Lesson 61.
 
 ## A projection with scalar relative expectation
 

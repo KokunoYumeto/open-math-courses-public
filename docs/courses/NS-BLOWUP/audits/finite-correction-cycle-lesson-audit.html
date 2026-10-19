@@ -1,0 +1,1348 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forced Navier–Stokes: construction and computation</title><style>body{font-family:Georgia,serif;margin:0;background:#f6f8fb;color:#16263b}article{overflow-wrap:anywhere;max-width:1080px;margin:auto;padding:36px 24px;font-size:18px;line-height:1.65}h1,h2,h3{line-height:1.25}h2{margin-top:2em}section+section{border-top:3px solid #becedb;margin-top:4em;padding-top:1em}img{max-width:100%;height:auto}.math-display{display:block;overflow-x:auto;max-width:100%;padding:10px 0}mjx-container[display="true"]{min-width:min-content}a{color:#175e9c}pre{overflow:auto}p code,li code{overflow-wrap:anywhere}*{box-sizing:border-box}table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}td,th{min-width:190px;padding:10px;border:1px solid #cbd5df;vertical-align:top}nav{background:#e4edf6;padding:20px;border-radius:10px}mjx-assistive-mml{max-width:1px!important;max-height:1px!important;overflow:hidden!important}@media(max-width:600px){.math:not(.math-display){display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}}@media(max-width:600px){
+mjx-container[display="true"],mjx-math[display="true"],mjx-mtable[side="right"]{min-width:0!important}
+mjx-mtable[side="right"]>mjx-table{margin-left:0!important;margin-right:0!important}
+mjx-mtable[side="right"]>mjx-labels{position:static!important;display:block!important;width:auto!important;text-align:right;margin-top:.65em}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable{position:static!important;display:inline-table!important}
+mjx-mtable[side="right"]>mjx-labels>mjx-itable>mjx-mtr{height:auto!important}
+}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'},chtml:{displayAlign:'center'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><article><nav><a href="../reader.html">Course reader</a> · <a href="finite-correction-cycle-lesson-audit.md">Editable source</a></nav><h1 id="initializing-and-repeating-the-complete-correction-cycle">Initializing and repeating the complete correction cycle</h1>
+<p><em>NS-BLOWUP N6.2. Exposition by GPT-6 Astra (OpenAI). This independent exposition is dedicated to CC0.</em></p>
+<p>The individual operators now have to work together. A wave correction changes the means; a mean correction changes the wave residual; every pressure and every moment must be recomputed from the actual new velocity. This lesson proves that the original four operations preserve a complete finite state and improve all three residual orders. The same fixed inverses remain available on one positive domain at every finite stage.</p>
+<p>CS1–CS5 prove the support, harmonic, edge and exact-residual closure needed by the next pulse solve. FC0–FC8 construct the initial state, apply all four updates, retain their nonlinear terms, prove the simultaneous bounds and establish the common domain. FC9 gives five worked exercises, including all physical viscosity factors, a bound on harmonic growth and the exact mixed term omitted by using a stale field.</p>
+<p>The supplying lessons are the <a href="../src/constructing-the-actual-base-field.md">actual base</a>, Z0–Z9; <a href="../src/separating-the-oscillatory-supports.md">support construction</a>, OS0–OS7; <a href="../src/constructing-the-pulses-and-their-velocities.md">pulse construction</a>, PU0–PU9; <a href="../src/realizing-stress-and-controlling-interactions.md">stress and interactions</a>, SC1–SC11 and NI1–NI7; <a href="../src/radial-primitives-and-the-mean-equations.md">radial mean equations</a>, RP1–RP9 and RM1–RM4; <a href="../src/cancelling-the-nonconstant-auxiliary-means.md">temporal means</a>, TM0–TM7; and <a href="../src/correcting-the-three-defects-with-five-profiles.md">five compact profiles</a>, MM1–MM9. References P,W,C,R,T,M in the proof retain their precise locations in the linked supplying audits; these are the same operators developed in those lessons.</p>
+<p><img src="../assets/finite-correction-cycle.svg" alt="The original four operations, the complete finite state, and the exact proved end-of-cycle gains." class="course-figure" style="max-width:100%;height:auto;width:1400px" loading="lazy" decoding="async" data-asset-id="figure-1" data-asset-sha256="7BFB4D5DCDE47226119F1CC55186C6F537B5AD805DBEF535D05CE4C3947BFD2C"></p>
+<p>The <a href="../assets/finite-correction-cycle.py">editable drawing source</a> depicts the actual maps and estimates. It is an algebraic construction diagram. The original OpenAI transcription remains separate from this exposition and its proved refinements.</p>
+<h2 id="cs1-the-actual-support-invariant-and-harmonic-sets">CS1. The actual support invariant and harmonic sets</h2>
+<p>Keep the original band, phase and class definitions in W1–W3 and C1. In particular the band <span class="math" data-tex="\(Q=2^{-\ell}\)">\(Q=2^{-\ell}\)</span>, <span class="math" data-tex="\(\varepsilon=Q^h\)">\(\varepsilon=Q^h\)</span>, <span class="math" data-tex="\(S_*=\ell^2\)">\(S_*=\ell^2\)</span> and the integer <span class="math" data-tex="\(kp_\gamma\ne0\)">\(kp_\gamma\ne0\)</span> are fixed before coefficient differentiation. Original (6.28), checked on page 70, prescribes</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal E_\gamma&amp;=\{(x_*,H):H\in\overline{\mathcal R_\gamma^H}\},\\
+\Omega_\gamma&amp;=\{(x_*,H)\in\mathcal E_\gamma:
+x_*\in K_\gamma^*,\ \xi_g(H)\in\operatorname{supp}\chi_g,\ X_a\le X\le X_b\},\\
+\Omega_\gamma^{\rm cut}&amp;=\Omega_\gamma\cap\{v(H)\in\operatorname{supp}\psi\}.
+\end{split}
+\tag{CS1.1}
+\]">\[
+\begin{split}
+\mathcal E_\gamma&amp;=\{(x_*,H):H\in\overline{\mathcal R_\gamma^H}\},\\
+\Omega_\gamma&amp;=\{(x_*,H)\in\mathcal E_\gamma:
+x_*\in K_\gamma^*,\ \xi_g(H)\in\operatorname{supp}\chi_g,\ X_a\le X\le X_b\},\\
+\Omega_\gamma^{\rm cut}&amp;=\Omega_\gamma\cap\{v(H)\in\operatorname{supp}\psi\}.
+\end{split}
+\tag{CS1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(x_*=(R,Z,T)\)">\(x_*=(R,Z,T)\)</span>, <span class="math" data-tex="\(K_\gamma^*\)">\(K_\gamma^*\)</span> is the prescribed slow support, and <span class="math" data-tex="\(\mathcal E_\gamma^+\)">\(\mathcal E_\gamma^+\)</span> replaces the closed rectangle by its fixed open enlargement. The coefficient is independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, smooth on that open domain, and extends by zero across the slow, transverse and radial shell boundaries. On <span class="math" data-tex="\(0\le v\le L_s\)">\(0\le v\le L_s\)</span>, its bound is</p>
+<span class="math math-display" data-tex="\[
+|\partial^Ia_{\gamma,m}|\le C_{j,I}\varepsilon^\alpha S_*^{b_{j,I}}
+\sqrt\zeta\delta^{-d_{j,I}}P(v),\qquad
+0&lt;P(v)\le1.
+\tag{CS1.2}
+\]">\[
+|\partial^Ia_{\gamma,m}|\le C_{j,I}\varepsilon^\alpha S_*^{b_{j,I}}
+\sqrt\zeta\delta^{-d_{j,I}}P(v),\qquad
+0&lt;P(v)\le1.
+\tag{CS1.2}
+\]</span>
+<p>Actual cut velocities have support in <span class="math" data-tex="\(\Omega_\gamma^{\rm cut}\)">\(\Omega_\gamma^{\rm cut}\)</span> and a smooth zero extension in <span class="math" data-tex="\(v\)">\(v\)</span>. The uncut local initial-value solution has no temporal zero-extension requirement. The source entering that solve is an actual supported coefficient; it need not be divisible by <span class="math" data-tex="\(\eta_\beta\chi_g\psi\)">\(\eta_\beta\chi_g\psi\)</span>.</p>
+<p>The primary amplitudes have these properties by C4 and C7. Differentiating an identically zero smooth function outside a closed support leaves it zero there. Applying a smooth local differential operator therefore preserves the support in (CS1.1). Explicit <span class="math" data-tex="\(D_r\)">\(D_r\)</span> occurrences cost at most <span class="math" data-tex="\(\kappa_s=10^{-5}\)">\(\kappa_s=10^{-5}\)</span> each, as proved in W3; further coefficient derivatives of the resulting estimate only change its fixed constants and polynomial degrees. The full linearized residual, including phase derivatives and all cylindrical terms, is expanded in P8, so its class estimate does not omit derivatives falling on an exponential.</p>
+<p>For products, the full unsymmetrized formulas in W5–W6 give the following exhaustive possibilities. A mean coefficient times a nonzero harmonic retains that harmonic and its support. Two waves with the same label have integer multiplier <span class="math" data-tex="\(m+m&#x27;\)">\(m+m&#x27;\)</span>; if this is nonzero they retain the wave weight since <span class="math" data-tex="\(P^2\le P\)">\(P^2\le P\)</span> and <span class="math" data-tex="\(\zeta\le\sqrt\zeta\)">\(\zeta\le\sqrt\zeta\)</span>. If it is zero, the phases cancel and the result has the mean weight <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Angular averaging removes every other integer multiplier because <span class="math" data-tex="\(kp_\gamma\ne0\)">\(kp_\gamma\ne0\)</span>. Products of different labels, including derivatives and curls, vanish on their closed supports by W2. Thus no mixed phase has to be inverted. Products involving exactly one wave and any mean generated earlier inherit the wave's support even if that mean now occupies the entire auxiliary torus.</p>
+<p>Starting with multipliers <span class="math" data-tex="\(\{-1,1\}\)">\(\{-1,1\}\)</span>, the set after one update is contained in</p>
+<span class="math math-display" data-tex="\[
+\mathscr H_{j+1}\subset
+\bigl(\mathscr H_j\cup\{-1,1\}\cup
+\{m+m&#x27;:m,m&#x27;\in\mathscr H_j\cup\{-1,1\}\}\bigr)\setminus\{0\}.
+\tag{CS1.3}
+\]">\[
+\mathscr H_{j+1}\subset
+\bigl(\mathscr H_j\cup\{-1,1\}\cup
+\{m+m&#x27;:m,m&#x27;\in\mathscr H_j\cup\{-1,1\}\}\bigr)\setminus\{0\}.
+\tag{CS1.3}
+\]</span>
+<p>A pulse solve, curl, pressure coefficient or coefficient derivative preserves its multiplier; the signed stress map introduces only <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; means introduce zero only. Formula (CS1.3) is a finite set at every finite stage and does not depend on a band. For example, if all old multipliers have modulus at most <span class="math" data-tex="\(M_j\ge1\)">\(M_j\ge1\)</span>, all newly formed ones have modulus at most <span class="math" data-tex="\(2M_j\)">\(2M_j\)</span>. This supplies a finite stage-dependent harmonic bound rather than presupposing one.</p>
+<p>Finally P4 gives the particular pulse by an integral along the original auxiliary path, holding all slow and transverse coordinates fixed. If that fixed pair is outside its prescribed support, the source vanishes along the entire path, so the integral and all its derivatives vanish. Inside it the P3 forward propagator cancels the source envelope exactly and yields (CS1.2) with a polynomial factor from the length <span class="math" data-tex="\(L_s=O(S_*)\)">\(L_s=O(S_*)\)</span>. P4's differentiated integral equation proves every fixed derivative estimate. Multiplying by the original <span class="math" data-tex="\(\psi\)">\(\psi\)</span> restores <span class="math" data-tex="\(\Omega_\gamma^{\rm cut}\)">\(\Omega_\gamma^{\rm cut}\)</span>; taking the full curl preserves it. This proves the inverse's incoming support property at every finite update, without a cutoff-division assumption.</p>
+<h2 id="cs2-mean-operations-edge-integration-and-stress-input">CS2. Mean operations, edge integration and stress input</h2>
+<p>The mean class allows full auxiliary dependence. Its exact bound is</p>
+<span class="math math-display" data-tex="\[
+|\partial^If|\le C_{j,I}\varepsilon^\mu S_*^{b_{j,I}}
+\zeta(X)\delta(X)^{-d_{j,I}},\qquad
+\zeta(X)=\exp\left(-\frac{a_a}{\log^2(X/X_a)}-
+\frac{a_b}{\log^2(X_b/X)}\right),\quad a_a,a_b&gt;0.
+\tag{CS2.1}
+\]">\[
+|\partial^If|\le C_{j,I}\varepsilon^\mu S_*^{b_{j,I}}
+\zeta(X)\delta(X)^{-d_{j,I}},\qquad
+\zeta(X)=\exp\left(-\frac{a_a}{\log^2(X/X_a)}-
+\frac{a_b}{\log^2(X_b/X)}\right),\quad a_a,a_b&gt;0.
+\tag{CS2.1}
+\]</span>
+<p>Radial integration follows the original shifted auxiliary path and retains its full cutoff remainder; the exact operator and all its coefficient derivatives are proved in R3–R6. Its domain and output are <span class="math" data-tex="\(\mathsf M_\mu\)">\(\mathsf M_\mu\)</span>, with the original physical measures in R1 and M2. The pressure uses the same operator, the axial velocity uses the full compact curl in R7, and the temporal mean inverse is the exact Fourier operator with its finite derivative bound in T1–T3. The five-profile operation has the explicit inverse in M3 and the complete nonlinear recomputation in M5–M7. These mean operations preserve angular independence. They can enlarge auxiliary support; they cannot create a new nonzero angular harmonic. W5 treats their next interaction with each wave using the full resulting mean, including all cutoff remainders.</p>
+<p>For the auxiliary-independent stress passed to C5, fix <span class="math" data-tex="\(e\in\{1,2\}\)">\(e\in\{1,2\}\)</span>. Given its radial source <span class="math" data-tex="\(f(R,Z,T)\)">\(f(R,Z,T)\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_e=\int_0^\infty R^ef\,dR,\qquad f_0=f-\rho_eM_e,\qquad
+\int_0^\infty R^e\rho_e\,dR=1,\\
+\Sigma_e(R)=R^{-e}\int_0^R s^ef_0(s)\,ds
+=-R^{-e}\int_R^\infty s^ef_0(s)\,ds.
+\end{gathered}
+\tag{CS2.2}
+\]">\[
+\begin{gathered}
+M_e=\int_0^\infty R^ef\,dR,\qquad f_0=f-\rho_eM_e,\qquad
+\int_0^\infty R^e\rho_e\,dR=1,\\
+\Sigma_e(R)=R^{-e}\int_0^R s^ef_0(s)\,ds
+=-R^{-e}\int_R^\infty s^ef_0(s)\,ds.
+\end{gathered}
+\tag{CS2.2}
+\]</span>
+<p>The prescribed smooth bump <span class="math" data-tex="\(\rho_e\)">\(\rho_e\)</span> has compact interior support in the shell and is independent of the auxiliary variable. Its chart representative includes the original radial moment normalization in (CS2.2); any slow dependence of this representative is retained under differentiation and has the uniform bounds in R4 and M2. The equality of the two integrals follows from the exact zero total moment of <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. In the original correction it is the auxiliary average of the tangential residual that supplies <span class="math" data-tex="\(f\)">\(f\)</span>; this is precisely why the input here is auxiliary independent. Its moment is retained as a separate mean defect, not discarded. Both formulas vanish outside the closed shell. They show <span class="math" data-tex="\((\partial_R+e/R)\Sigma_e=f_0\)">\((\partial_R+e/R)\Sigma_e=f_0\)</span>, including its sign and radial weight.</p>
+<p>Here is an explicit estimate for the edge integral used in original pages 104–105. For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>, put <span class="math" data-tex="\(p=(M-3)/2\)">\(p=(M-3)/2\)</span> and <span class="math" data-tex="\(v_0=a/\delta^2\)">\(v_0=a/\delta^2\)</span>. Substitution gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^\delta s^{-M}e^{-a/s^2}\,ds
+=\tfrac12a^{(1-M)/2}\int_{v_0}^\infty v^pe^{-v}\,dv.
+\tag{CS2.3}
+\]">\[
+\int_0^\delta s^{-M}e^{-a/s^2}\,ds
+=\tfrac12a^{(1-M)/2}\int_{v_0}^\infty v^pe^{-v}\,dv.
+\tag{CS2.3}
+\]</span>
+<p>For <span class="math" data-tex="\(p\le0\)">\(p\le0\)</span>, the final integral is at most <span class="math" data-tex="\(v_0^pe^{-v_0}\)">\(v_0^pe^{-v_0}\)</span>. For <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span> and <span class="math" data-tex="\(v_0\ge2p\)">\(v_0\ge2p\)</span>, write <span class="math" data-tex="\(v=v_0+w\)">\(v=v_0+w\)</span> and use <span class="math" data-tex="\(\log(1+w/v_0)\le w/v_0\)">\(\log(1+w/v_0)\le w/v_0\)</span> to obtain <span class="math" data-tex="\((v_0+w)^p\le v_0^pe^{w/2}\)">\((v_0+w)^p\le v_0^pe^{w/2}\)</span>. Integration then gives at most <span class="math" data-tex="\(2v_0^pe^{-v_0}\)">\(2v_0^pe^{-v_0}\)</span>. Hence, in both cases for sufficiently small <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_0^\delta s^{-M}e^{-a/s^2}\,ds
+\le a^{-1}\delta^{3-M}e^{-a/\delta^2}.
+\tag{CS2.4}
+\]">\[
+\int_0^\delta s^{-M}e^{-a/s^2}\,ds
+\le a^{-1}\delta^{3-M}e^{-a/\delta^2}.
+\tag{CS2.4}
+\]</span>
+<p>All fixed derivatives of <span class="math" data-tex="\(e^{-a/s^2}\)">\(e^{-a/s^2}\)</span> are a finite linear combination of powers <span class="math" data-tex="\(s^{-j}e^{-a/s^2}\)">\(s^{-j}e^{-a/s^2}\)</span> with <span class="math" data-tex="\(0\le j\le3k\)">\(0\le j\le3k\)</span> at derivative order <span class="math" data-tex="\(k\)">\(k\)</span>: differentiate each term, producing exponents <span class="math" data-tex="\(j+1\)">\(j+1\)</span> and <span class="math" data-tex="\(j+3\)">\(j+3\)</span>, and induct. On <span class="math" data-tex="\(0&lt;s\le1\)">\(0&lt;s\le1\)</span> this bounds them by <span class="math" data-tex="\(C_{k,a}s^{-3k}e^{-a/s^2}\)">\(C_{k,a}s^{-3k}e^{-a/s^2}\)</span>. The other edge factor and its derivatives are bounded in a sufficiently small collar and its value is bounded below positively there.</p>
+<p>Use the forward integral in (CS2.2) at the inner edge and the backward integral at the outer edge. The bump vanishes in both collars; all radial Jacobians and powers of <span class="math" data-tex="\(R\)">\(R\)</span> are bounded there. Equation (CS2.4), after each allowed coefficient derivative, retains <span class="math" data-tex="\(\zeta\delta^{-M&#x27;}\)">\(\zeta\delta^{-M&#x27;}\)</span>. Moving-boundary terms vanish because the integrand has every zero edge jet; equivalently differentiate its zero extension on a fixed half-line as in R4. In the remaining compact interior, <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is bounded below positively. Thus a source in <span class="math" data-tex="\(\mathsf M_\mu\)">\(\mathsf M_\mu\)</span> yields <span class="math" data-tex="\(\Sigma_e\in\mathsf M_\mu\)">\(\Sigma_e\in\mathsf M_\mu\)</span>, with smooth edge extension. The same reasoning applies to the two stress components with <span class="math" data-tex="\(e=2,1\)">\(e=2,1\)</span>, respectively. C5 then proves the signed amplitude division and wave class <span class="math" data-tex="\(\mathsf W_{\mu-1/2}\)">\(\mathsf W_{\mu-1/2}\)</span> at every derivative order. Those are coefficient bounds: one must retain the carrier exponential separately when differentiating an actual velocity field.</p>
+<p>The common band set is unchanged by a radial path because <span class="math" data-tex="\(q\)">\(q\)</span> depends on <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span>, which the path holds fixed. Temporal inversion and pulse propagation fix all slow coordinates. For each of the boundedly many active bands, a radial segment of bounded chart length meets at most <span class="math" data-tex="\(C S_*^3\)">\(C S_*^3\)</span> radial mesh boxes: their chart widths are comparable to <span class="math" data-tex="\(S_*^{-3}\)">\(S_*^{-3}\)</span>. At fixed <span class="math" data-tex="\((Z,T)\)">\((Z,T)\)</span> there are boundedly many transverse/time mesh choices. Thus radial aggregation introduces at most a fixed polynomial factor in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>; any finite composition still has a finite polynomial factor. The common-torus degree differences depend on the bounded band range, not on the number of radial boxes. At a point, wave labels have bounded slow overlap and the disjoint auxiliary supports of W2. These facts justify the uniform-in-band estimates after aggregation.</p>
+<h2 id="cs3-exact-residual-decomposition-and-every-flat-term">CS3. Exact residual decomposition and every flat term</h2>
+<p>For the original viscosity define</p>
+<span class="math math-display" data-tex="\[
+\mathscr R_\nu(u,p)=\partial_tu-\nu\Delta u+(u\cdot\nabla)u+\nabla p.
+\]">\[
+\mathscr R_\nu(u,p)=\partial_tu-\nu\Delta u+(u\cdot\nabla)u+\nabla p.
+\]</span>
+<p>For any actual increment <span class="math" data-tex="\((w,\pi)\)">\((w,\pi)\)</span>, componentwise expansion gives exactly</p>
+<span class="math math-display" data-tex="\[
+\mathscr R_\nu(u+w,p+\pi)=\mathscr R_\nu(u,p)
++\partial_tw-\nu\Delta w+\nabla\pi
++(u\cdot\nabla)w+(w\cdot\nabla)u+(w\cdot\nabla)w.
+\tag{CS3.1}
+\]">\[
+\mathscr R_\nu(u+w,p+\pi)=\mathscr R_\nu(u,p)
++\partial_tw-\nu\Delta w+\nabla\pi
++(u\cdot\nabla)w+(w\cdot\nabla)u+(w\cdot\nabla)w.
+\tag{CS3.1}
+\]</span>
+<p>All velocities in this equation are the full fields, including the curl remainders, compact-primitive remainders and earlier corrections. If <span class="math" data-tex="\(\mathscr R_\nu(u,p)=\mathcal G+\mathcal F\)">\(\mathscr R_\nu(u,p)=\mathcal G+\mathcal F\)</span>, the old <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> enters additively. It is a residual field, not an omitted part of <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>The finite-stage split starts with the original base error <span class="math" data-tex="\(\mathcal E_{B,\nu}\)">\(\mathcal E_{B,\nu}\)</span> in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, together with the generated pulse endpoint and primitive cutoff errors. P6 proves the exact pulse error <span class="math" data-tex="\((1-\psi)f_m+\psi&#x27;t_m\)">\((1-\psi)f_m+\psi&#x27;t_m\)</span>. On its support the Gaussian estimate gives, after any fixed physical derivative, <span class="math" data-tex="\(C Q^{-M}S_*^B e^{-cS_*}\)">\(C Q^{-M}S_*^B e^{-cS_*}\)</span>. Since <span class="math" data-tex="\(S_*=\ell^2\)">\(S_*=\ell^2\)</span>, <span class="math" data-tex="\(Q=2^{-\ell}\)">\(Q=2^{-\ell}\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> is comparable to <span class="math" data-tex="\(Q\)">\(Q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q^{-N}Q^{-M}S_*^B e^{-cS_*}
+\le C_N\exp[-c\ell^2+(M+N)\ell\log2+2B\log\ell]\longrightarrow0.
+\tag{CS3.2}
+\]">\[
+q^{-N}Q^{-M}S_*^B e^{-cS_*}
+\le C_N\exp[-c\ell^2+(M+N)\ell\log2+2B\log\ell]\longrightarrow0.
+\tag{CS3.2}
+\]</span>
+<p>R5–R6 prove the exact primitive cutoff error is <span class="math" data-tex="\(O(q^N)\)">\(O(q^N)\)</span> in every prescribed physical derivative, using finitely many extra coefficient derivatives for each prescribed <span class="math" data-tex="\(N\)">\(N\)</span>. Thus a polynomial count of labels and finitely many error types at a fixed stage preserve these estimates: for the primitive bound first choose the power <span class="math" data-tex="\(N+1\)">\(N+1\)</span>, and use the boundedness of <span class="math" data-tex="\(S_*^Bq\)">\(S_*^Bq\)</span>; for the Gaussian use (CS3.2) with the larger polynomial. Every fixed <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> has the unchanged factors in C9 and M2, so constants may depend on <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, but no viscosity is omitted.</p>
+<p>The actual <span class="math" data-tex="\(\mathcal E_B\)">\(\mathcal E_B\)</span> has the original all-order flat bound in Proposition 5.5 by <a href="base-field-realization-audit.html">Z5</a>; <a href="local-construction-assembly-audit.html">I1</a> identifies that same base and residual in the chart construction. The proof here establishes that the subsequent operators preserve this supplied property and do not require any stronger uniform-in-stage version of it.</p>
+<p>At each update expand (CS3.1) first. Keep its newly identified endpoint errors and uncompensated primitive cutoff errors in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>; all remaining terms form <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> and have the supported coefficient estimates in CS1–CS2. Nonzero-harmonic Gaussian endpoint errors are not fed into a new forward pulse solve. A mean operation can cancel an explicit old flat mean term because the exact conservative residual includes it. If its actual residual change has the form <span class="math" data-tex="\(-H+G_{\rm new}+F_{\rm new}\)">\(-H+G_{\rm new}+F_{\rm new}\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> is that canceled contribution of old <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, the new split is exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal G&#x27;=\mathcal G+G_{\rm new},\qquad
+\mathcal F&#x27;=\mathcal F-H+F_{\rm new}.
+\tag{CS3.3}
+\]">\[
+\mathcal G&#x27;=\mathcal G+G_{\rm new},\qquad
+\mathcal F&#x27;=\mathcal F-H+F_{\rm new}.
+\tag{CS3.3}
+\]</span>
+<p>The compact-primitive estimates put this specific <span class="math" data-tex="\(H\)">\(H\)</span> in every required mean class and give its physical flat bounds. Thus subtraction preserves the finite-stage flat estimate. No inference that every physically flat function has every coefficient-class bound is needed. Formula (CS3.3) prevents double counting a canceled contribution. The exact velocities remain unchanged by how their residual terms are assigned.</p>
+<p>After each finite stage, therefore,</p>
+<span class="math math-display" data-tex="\[
+\mathscr R_\nu(u^{[j]},p^{[j]})=\mathcal G^{[j]}+\mathcal F^{[j]},\qquad
+|\mathcal F^{[j]}|_m\le C_{j,m,N,\nu}q^N
+\tag{CS3.4}
+\]">\[
+\mathscr R_\nu(u^{[j]},p^{[j]})=\mathcal G^{[j]}+\mathcal F^{[j]},\qquad
+|\mathcal F^{[j]}|_m\le C_{j,m,N,\nu}q^N
+\tag{CS3.4}
+\]</span>
+<p>for every fixed derivative order <span class="math" data-tex="\(m\)">\(m\)</span> and power <span class="math" data-tex="\(N\)">\(N\)</span>. Its supported part has the finite locally supported harmonic expansion in CS1, and its angular mean is in the mean class furnished by the actually applied estimates. This statement does not sum <span class="math" data-tex="\(\mathcal F^{[j]}\)">\(\mathcal F^{[j]}\)</span> over infinitely many <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<h2 id="cs4-exact-mean-equations-after-every-update">CS4. Exact mean equations after every update</h2>
+<p>Use the exact chart from M2, with the original viscosity retained by that map. Its representative has viscosity coefficient <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Write the full velocity as</p>
+<span class="math math-display" data-tex="\[
+u_*=(b+\beta,V+v,G+\gamma)+w,\qquad \langle w\rangle_\theta=0,
+\qquad W_{ab}=\langle w_aw_b\rangle_\theta.
+\]">\[
+u_*=(b+\beta,V+v,G+\gamma)+w,\qquad \langle w\rangle_\theta=0,
+\qquad W_{ab}=\langle w_aw_b\rangle_\theta.
+\]</span>
+<p>The base and mean correction are divergence free and every wave is an actual curl. Put
+<span class="math" data-tex="\(\Delta_0=D_r^2+R^{-1}D_r+D_z^2\)">\(\Delta_0=D_r^2+R^{-1}D_r+D_z^2\)</span> and
+<span class="math" data-tex="\(\mathfrak t_*=-\varepsilon\partial_T+c_i\mathcal N_i\)">\(\mathfrak t_*=-\varepsilon\partial_T+c_i\mathcal N_i\)</span>.
+To keep its role distinct from the signed increment of C5, denote the original base stress by
+<span class="math" data-tex="\(\Sigma^B=(\Sigma^B_\theta,\Sigma^B_z)=Q^{2A}\mathcal T_{\rm phys}\)">\(\Sigma^B=(\Sigma^B_\theta,\Sigma^B_z)=Q^{2A}\mathcal T_{\rm phys}\)</span> at viscosity one; at the original viscosity its representative is <span class="math" data-tex="\(\nu^{-1}Q^{2A}\mathcal T_{\rm phys,\nu}\)">\(\nu^{-1}Q^{2A}\mathcal T_{\rm phys,\nu}\)</span>. This is the full base stress of (5.41), not only its order-zero part.</p>
+<p>The conservative transport identity follows directly from divergence zero. For example
+<span class="math" data-tex="\((D_r+R^{-1})(u_ru_\theta)+R^{-1}\partial_\theta(u_\theta^2)+D_z(u_zu_\theta)\)">\((D_r+R^{-1})(u_ru_\theta)+R^{-1}\partial_\theta(u_\theta^2)+D_z(u_zu_\theta)\)</span>
+equals the scalar transport of <span class="math" data-tex="\(u_\theta\)">\(u_\theta\)</span>, because the extra factor multiplying <span class="math" data-tex="\(u_\theta\)">\(u_\theta\)</span> is the divergence. The cylindrical component equation additionally has <span class="math" data-tex="\(u_ru_\theta/R\)">\(u_ru_\theta/R\)</span>, giving <span class="math" data-tex="\(D_r+2/R\)">\(D_r+2/R\)</span>. The same argument for <span class="math" data-tex="\(u_r\)">\(u_r\)</span> adds the centrifugal term <span class="math" data-tex="\(-u_\theta^2/R\)">\(-u_\theta^2/R\)</span>; for <span class="math" data-tex="\(u_z\)">\(u_z\)</span> there is no additional connection term. Hence the exact three transport components are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+(u\cdot\nabla_*u)_r&amp;=(D_r+R^{-1})u_r^2+R^{-1}\partial_\theta(u_\theta u_r)+D_z(u_zu_r)-u_\theta^2/R,\\
+(u\cdot\nabla_*u)_\theta&amp;=(D_r+2/R)(u_ru_\theta)+R^{-1}\partial_\theta(u_\theta^2)+D_z(u_zu_\theta),\\
+(u\cdot\nabla_*u)_z&amp;=(D_r+R^{-1})(u_ru_z)+R^{-1}\partial_\theta(u_\theta u_z)+D_z(u_z^2).
+\end{split}
+\tag{CS4.1}
+\]">\[
+\begin{split}
+(u\cdot\nabla_*u)_r&amp;=(D_r+R^{-1})u_r^2+R^{-1}\partial_\theta(u_\theta u_r)+D_z(u_zu_r)-u_\theta^2/R,\\
+(u\cdot\nabla_*u)_\theta&amp;=(D_r+2/R)(u_ru_\theta)+R^{-1}\partial_\theta(u_\theta^2)+D_z(u_zu_\theta),\\
+(u\cdot\nabla_*u)_z&amp;=(D_r+R^{-1})(u_ru_z)+R^{-1}\partial_\theta(u_\theta u_z)+D_z(u_z^2).
+\end{split}
+\tag{CS4.1}
+\]</span>
+<p>Angular derivatives integrate to zero. Terms with exactly one factor of <span class="math" data-tex="\(w\)">\(w\)</span> have zero average; terms with two retain the entire <span class="math" data-tex="\(W\)">\(W\)</span>. The cylindrical vector Laplacian has components
+<span class="math" data-tex="\(\Delta_{\rm sc}u_r-u_r/R^2-2\partial_\theta u_\theta/R^2\)">\(\Delta_{\rm sc}u_r-u_r/R^2-2\partial_\theta u_\theta/R^2\)</span>,
+<span class="math" data-tex="\(\Delta_{\rm sc}u_\theta-u_\theta/R^2+2\partial_\theta u_r/R^2\)">\(\Delta_{\rm sc}u_\theta-u_\theta/R^2+2\partial_\theta u_r/R^2\)</span>,
+<span class="math" data-tex="\(\Delta_{\rm sc}u_z\)">\(\Delta_{\rm sc}u_z\)</span>, where <span class="math" data-tex="\(\Delta_{\rm sc}=\Delta_0+R^{-2}\partial_\theta^2\)">\(\Delta_{\rm sc}=\Delta_0+R^{-2}\partial_\theta^2\)</span>.
+After averaging it is <span class="math" data-tex="\(\Delta_0-R^{-2}\)">\(\Delta_0-R^{-2}\)</span> on the first two components and <span class="math" data-tex="\(\Delta_0\)">\(\Delta_0\)</span> on the third. These formulas follow by twice differentiating <span class="math" data-tex="\(\partial_\theta e_r=e_\theta\)">\(\partial_\theta e_r=e_\theta\)</span>, <span class="math" data-tex="\(\partial_\theta e_\theta=-e_r\)">\(\partial_\theta e_\theta=-e_r\)</span>, retaining the two cross derivatives. Subtracting the pure base, whose nonflat tangential residual is minus the radial divergence of <span class="math" data-tex="\(\Sigma^B\)">\(\Sigma^B\)</span>, now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+g_r={}&amp;-\mathfrak t_*\beta-(D_r+R^{-1})(2b\beta+\beta^2+W_{rr})
+-D_z(b\gamma+G\beta+\beta\gamma+W_{zr})\\
+&amp;+(2Vv+v^2+W_{\theta\theta})/R+\varepsilon(\Delta_0-R^{-2})\beta,\\
+E_\theta={}&amp;\mathfrak t_*v+(D_r+2/R)(bv+V\beta+\beta v+W_{r\theta})
++D_z(Gv+V\gamma+\gamma v+W_{z\theta})\\
+&amp;-\varepsilon(\Delta_0-R^{-2})v-(D_r+2/R)\Sigma^B_\theta,\\
+E_z={}&amp;\mathfrak t_*\gamma+(D_r+1/R)(b\gamma+\beta G+\beta\gamma+W_{rz})
++D_z(2G\gamma+\gamma^2+W_{zz}+p_m)\\
+&amp;-\varepsilon\Delta_0\gamma-(D_r+1/R)\Sigma^B_z.
+\end{split}
+\tag{CS4.2}
+\]">\[
+\begin{split}
+g_r={}&amp;-\mathfrak t_*\beta-(D_r+R^{-1})(2b\beta+\beta^2+W_{rr})
+-D_z(b\gamma+G\beta+\beta\gamma+W_{zr})\\
+&amp;+(2Vv+v^2+W_{\theta\theta})/R+\varepsilon(\Delta_0-R^{-2})\beta,\\
+E_\theta={}&amp;\mathfrak t_*v+(D_r+2/R)(bv+V\beta+\beta v+W_{r\theta})
++D_z(Gv+V\gamma+\gamma v+W_{z\theta})\\
+&amp;-\varepsilon(\Delta_0-R^{-2})v-(D_r+2/R)\Sigma^B_\theta,\\
+E_z={}&amp;\mathfrak t_*\gamma+(D_r+1/R)(b\gamma+\beta G+\beta\gamma+W_{rz})
++D_z(2G\gamma+\gamma^2+W_{zz}+p_m)\\
+&amp;-\varepsilon\Delta_0\gamma-(D_r+1/R)\Sigma^B_z.
+\end{split}
+\tag{CS4.2}
+\]</span>
+<p>These are original (8.3) with every term retained, checked directly on original page 89. Reconstruct the pressure after each update using the full new <span class="math" data-tex="\(g_r\)">\(g_r\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\mathcal P=\int_0^\infty\langle g_r\rangle_Y\,dR,\qquad
+\int_0^\infty\rho\,dR=1,\qquad
+p_m=\mathsf T_0(g_r-\rho\mathcal P).
+\tag{CS4.3}
+\]">\[
+\mathcal P=\int_0^\infty\langle g_r\rangle_Y\,dR,\qquad
+\int_0^\infty\rho\,dR=1,\qquad
+p_m=\mathsf T_0(g_r-\rho\mathcal P).
+\tag{CS4.3}
+\]</span>
+<p>The exact compact-primitive identity from R7 gives
+<span class="math" data-tex="\(D_rp_m-g_r=-\rho\mathcal P-\mathcal A_0(g_r-\rho\mathcal P)\)">\(D_rp_m-g_r=-\rho\mathcal P-\mathcal A_0(g_r-\rho\mathcal P)\)</span>.
+Thus neither the radial defect nor the cutoff remainder is silently set to zero. The nonzero-harmonic pulse pressures and their endpoint residuals have zero angular average. Recalling the exact split (CS3.4), we obtain at every finite stage</p>
+<span class="math math-display" data-tex="\[
+\left\langle\mathcal G_*^{[j]}+\mathcal F_*^{[j]}-\mathcal E_{B,*}\right\rangle_\theta
+=(D_rp_m^{[j]}-g_r^{[j]},E_\theta^{[j]},E_z^{[j]}),
+\tag{CS4.4}
+\]">\[
+\left\langle\mathcal G_*^{[j]}+\mathcal F_*^{[j]}-\mathcal E_{B,*}\right\rangle_\theta
+=(D_rp_m^{[j]}-g_r^{[j]},E_\theta^{[j]},E_z^{[j]}),
+\tag{CS4.4}
+\]</span>
+<p>where all three physical residual representatives have the factor
+<span class="math" data-tex="\(\nu^{-1/2}Q^{2A+1/2}\)">\(\nu^{-1/2}Q^{2A+1/2}\)</span>. This is original (9.6) at <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>, with its exact extension to every original viscosity. The pressure and flux derivatives in (CS4.2) use the complete current state, so (CS4.4) holds irrespective of whether a cancelable flat mean term is presently recorded in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<h2 id="cs5-what-the-finite-induction-establishes">CS5. What the finite induction establishes</h2>
+<p>At stage zero C1–C7 supply the primary amplitudes, supports, real curls and their covariance errors; CS4 supplies the exact mean identities after pressure reconstruction. Suppose a finite list of operators has been applied. CS1 handles each differential, pulse and wave-product operation, gives its finite harmonic set, and proves the next pulse source has its prescribed support. CS2 handles each mean operation and its next auxiliary-independent signed stress input. CS3 updates the full residual by equality and preserves the all-order physical flat bound. CS4 recomputes pressure and the conservative means from the full new fields. This covers every operator listed in original Proposition 9.3 and proves its finite-stage closure by induction, with the source base's stated input properties left visible.</p>
+<h2 id="fc0-the-original-finite-state-and-all-receiving-quantities">FC0. The original finite state and all receiving quantities</h2>
+<p>Keep the original constants and coordinates</p>
+<span class="math math-display" data-tex="\[
+0&lt;h&lt;1/100,\quad A=1/2+h,\quad D=1/2-h,\quad
+Q=2^{-\ell},\quad\varepsilon=Q^h,\quad S_*=\ell^2,\quad\kappa_s=10^{-5}.
+\]">\[
+0&lt;h&lt;1/100,\quad A=1/2+h,\quad D=1/2-h,\quad
+Q=2^{-\ell},\quad\varepsilon=Q^h,\quad S_*=\ell^2,\quad\kappa_s=10^{-5}.
+\]</span>
+<p>The complete chart velocity and pressure are</p>
+<span class="math math-display" data-tex="\[
+u_*=(b+\beta,V+v,G+\gamma)+w,\qquad
+p_*=p_{B,*}+p_m+p_w,\qquad
+\langle w\rangle_\theta=\langle p_w\rangle_\theta=0.
+\tag{FC0.1}
+\]">\[
+u_*=(b+\beta,V+v,G+\gamma)+w,\qquad
+p_*=p_{B,*}+p_m+p_w,\qquad
+\langle w\rangle_\theta=\langle p_w\rangle_\theta=0.
+\tag{FC0.1}
+\]</span>
+<p>Every wave is an actual curl, including its lower-order curl terms. The mean is the curl of an azimuthal potential plus a direct azimuthal field. Write <span class="math" data-tex="\(w_0^{\rm tan}=W_0^{\rm as}\)">\(w_0^{\rm tan}=W_0^{\rm as}\)</span> for the fixed assembled primary transverse field before its curl remainder. It remains fixed throughout the iteration.</p>
+<p>Original Definition 9.4 requires</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma_j=\tfrac15+\tfrac j{10},\qquad B_j=\tfrac12+\sigma_j,\qquad C_j^*=1+\sigma_j,\\
+\mathcal G_{\rm wave}^{[j]}\in\mathsf W_{B_j},\qquad
+E_\theta,E_z\in\mathsf M_{C_j^*},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)\in\mathsf S_{C_j^*},\\
+w\in\mathsf W_{1/2},\qquad w-w_0^{\rm tan}\in\mathsf W_{0.68},\qquad
+v,\gamma,p_m\in\mathsf M_{0.9},\qquad\beta\in\mathsf M_{1.9},\\
+\int_0^\infty R^2\langle v\rangle_Y\,dR=0,\qquad
+\int_0^\infty R\langle\gamma\rangle_Y\,dR=0.
+\end{gathered}
+\tag{FC0.2}
+\]">\[
+\begin{gathered}
+\sigma_j=\tfrac15+\tfrac j{10},\qquad B_j=\tfrac12+\sigma_j,\qquad C_j^*=1+\sigma_j,\\
+\mathcal G_{\rm wave}^{[j]}\in\mathsf W_{B_j},\qquad
+E_\theta,E_z\in\mathsf M_{C_j^*},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)\in\mathsf S_{C_j^*},\\
+w\in\mathsf W_{1/2},\qquad w-w_0^{\rm tan}\in\mathsf W_{0.68},\qquad
+v,\gamma,p_m\in\mathsf M_{0.9},\qquad\beta\in\mathsf M_{1.9},\\
+\int_0^\infty R^2\langle v\rangle_Y\,dR=0,\qquad
+\int_0^\infty R\langle\gamma\rangle_Y\,dR=0.
+\end{gathered}
+\tag{FC0.2}
+\]</span>
+<p>These are the original (9.8)–(9.10); the decimal constants are retained. The wave class concerns each collected label and nonzero harmonic, with bounds <span class="math" data-tex="\(\varepsilon^a S_*^b\sqrt\zeta\delta^{-d}P(v)\)">\(\varepsilon^a S_*^b\sqrt\zeta\delta^{-d}P(v)\)</span> for every fixed coefficient derivative. The mean class has <span class="math" data-tex="\(\varepsilon^aS_*^b\zeta\delta^{-d}\)">\(\varepsilon^aS_*^b\zeta\delta^{-d}\)</span> bounds and no auxiliary-support restriction. The moment class <span class="math" data-tex="\(\mathsf S_a\)">\(\mathsf S_a\)</span> has <span class="math" data-tex="\(\varepsilon^aS_*^b\)">\(\varepsilon^aS_*^b\)</span> bounds for every fixed <span class="math" data-tex="\((Z,T)\)">\((Z,T)\)</span> derivative, after including its original radial measure. The supports, phases, weight, envelope and covering maps are those explicitly specified in W1–W3 and CS1–CS2. Constants may depend on the finite stage and derivative order. The bound with a larger exponent implies that with a smaller one since <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>; it does not assert a smaller stage-dependent constant.</p>
+<p>Let <span class="math" data-tex="\(W_{ab}=\langle w_aw_b\rangle_\theta\)">\(W_{ab}=\langle w_aw_b\rangle_\theta\)</span>. The radial source is the entire expression CS4.2 or M5.2. Reconstruct pressure after each update using</p>
+<span class="math math-display" data-tex="\[
+\mathcal P=\int\langle g_r\rangle_Y\,dR,\qquad
+p_m=\mathsf T_0(g_r-\rho\mathcal P),\qquad
+\int\rho\,dR=1.
+\tag{FC0.3}
+\]">\[
+\mathcal P=\int\langle g_r\rangle_Y\,dR,\qquad
+p_m=\mathsf T_0(g_r-\rho\mathcal P),\qquad
+\int\rho\,dR=1.
+\tag{FC0.3}
+\]</span>
+<p>The two other defects and the moving pressure-moment coefficient are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal J_\theta&amp;=\int R^2\langle Gv+V\gamma+\gamma v+W_{z\theta}\rangle_Y\,dR,\\
+\mathcal J_z&amp;=\int R\langle2G\gamma+\gamma^2+W_{zz}\rangle_Y\,dR
+-\tfrac12\int R^2\langle g_r\rangle_Y\,dR,\qquad
+c_\rho=\tfrac12\int R^2\rho\,dR.
+\end{split}
+\tag{FC0.4}
+\]">\[
+\begin{split}
+\mathcal J_\theta&amp;=\int R^2\langle Gv+V\gamma+\gamma v+W_{z\theta}\rangle_Y\,dR,\\
+\mathcal J_z&amp;=\int R\langle2G\gamma+\gamma^2+W_{zz}\rangle_Y\,dR
+-\tfrac12\int R^2\langle g_r\rangle_Y\,dR,\qquad
+c_\rho=\tfrac12\int R^2\rho\,dR.
+\end{split}
+\tag{FC0.4}
+\]</span>
+<p>Unspecified radial integrals in this note run from zero to infinity. The radial residual is exactly</p>
+<span class="math math-display" data-tex="\[
+D_rp_m-g_r=-\rho\mathcal P-\mathcal A_0(g_r-\rho\mathcal P).
+\tag{FC0.5}
+\]">\[
+D_rp_m-g_r=-\rho\mathcal P-\mathcal A_0(g_r-\rho\mathcal P).
+\tag{FC0.5}
+\]</span>
+<p>The compact-primitive remainder <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span> is retained. Its all-order physical flatness is proved in R5–R6, not inferred from a finite numerical check.</p>
+<p>The original base inputs consumed by the cycle are (5.41)–(5.44): divergence zero, residual equal to minus the cylindrical radial divergence of its full tangential stress plus <span class="math" data-tex="\(\mathcal E_B\)">\(\mathcal E_B\)</span>, flatness of every fixed derivative of <span class="math" data-tex="\(\mathcal E_B\)">\(\mathcal E_B\)</span>, <span class="math" data-tex="\(b=O(\varepsilon)\)">\(b=O(\varepsilon)\)</span> with all fixed coefficient derivatives, bounded tangential coefficients and their derivatives, and the exact reserved mean patch from M1. The order-zero tangential fields differ from the full ones by <span class="math" data-tex="\(O(\varepsilon^2)\)">\(O(\varepsilon^2)\)</span>. For the stress, original (5.43) gives, with <span class="math" data-tex="\(\widehat{\mathcal T}=q^{A+1/2}\mathcal T_{\rm phys}\)">\(\widehat{\mathcal T}=q^{A+1/2}\mathcal T_{\rm phys}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\mathcal D^I(\widehat{\mathcal T}-\mathcal T_0)|
+\le C_Iq^{2h}\zeta\delta^{-N_I}\le C_Iq^h\zeta\delta^{-N_I}.
+\tag{FC0.6}
+\]">\[
+|\mathcal D^I(\widehat{\mathcal T}-\mathcal T_0)|
+\le C_Iq^{2h}\zeta\delta^{-N_I}\le C_Iq^h\zeta\delta^{-N_I}.
+\tag{FC0.6}
+\]</span>
+<p>Both powers are retained. With <span class="math" data-tex="\(\xi=q/Q\)">\(\xi=q/Q\)</span>, the exact chart difference is</p>
+<span class="math math-display" data-tex="\[
+\Sigma^B-\Sigma^{(0)}=Q^{2A}q^{-A-1/2}(\widehat{\mathcal T}-\mathcal T_0),\qquad
+Q^{2A}q^{-A-1/2}q^{2h}
+=Q^{3h}\xi^{-A-1/2+2h}.
+\tag{FC0.7}
+\]">\[
+\Sigma^B-\Sigma^{(0)}=Q^{2A}q^{-A-1/2}(\widehat{\mathcal T}-\mathcal T_0),\qquad
+Q^{2A}q^{-A-1/2}q^{2h}
+=Q^{3h}\xi^{-A-1/2+2h}.
+\tag{FC0.7}
+\]</span>
+<p>Thus this input gives <span class="math" data-tex="\(\Sigma^B-\Sigma^{(0)}\in\mathsf M_3\subset\mathsf M_2\)">\(\Sigma^B-\Sigma^{(0)}\in\mathsf M_3\subset\mathsf M_2\)</span>, retaining the smooth <span class="math" data-tex="\(\xi\)">\(\xi\)</span> factor. Every fixed derivative follows from the profile-to-chart chain rule C4 and the original <span class="math" data-tex="\(q\partial_q,\partial_X,\partial_\eta\)">\(q\partial_q,\partial_X,\partial_\eta\)</span> bounds. These calculations identify exactly which base assertions the cycle uses. The actual supplying fields and these exact bounds are derived in <a href="base-field-realization-audit.html">Z0–Z8</a>, especially Z6.2–Z6.4.</p>
+<h2 id="fc1-exact-wave-update-receiver-and-weighted-mean-identities">FC1. Exact wave-update receiver and weighted mean identities</h2>
+<p>First keep <span class="math" data-tex="\(\beta,v,\gamma\)">\(\beta,v,\gamma\)</span> fixed and add an actual wave increment <span class="math" data-tex="\(s\)">\(s\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\Delta W_{ab}=\langle w_as_b+s_aw_b+s_as_b\rangle_\theta.
+\tag{FC1.1}
+\]">\[
+\Delta W_{ab}=\langle w_as_b+s_aw_b+s_as_b\rangle_\theta.
+\tag{FC1.1}
+\]</span>
+<p>Subtract the two full conservative equations CS4.2. No base or mean field has changed, so all its terms cancel, leaving</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\Delta g_r&amp;=-(D_r+R^{-1})\Delta W_{rr}-D_z\Delta W_{zr}+\Delta W_{\theta\theta}/R,\\
+\Delta\mathcal P&amp;=\int\langle\Delta g_r\rangle_Y\,dR,\qquad
+\Delta p_m=\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P),\\
+\Delta E_\theta&amp;=(D_r+2/R)\Delta W_{r\theta}+D_z\Delta W_{z\theta},\\
+\Delta E_z&amp;=(D_r+1/R)\Delta W_{rz}+D_z(\Delta W_{zz}+\Delta p_m),\\
+\Delta\mathcal J_\theta&amp;=\int R^2\langle\Delta W_{z\theta}\rangle_Y\,dR,\\
+\Delta\mathcal J_z&amp;=\int R\langle\Delta W_{zz}\rangle_Y\,dR
+-\tfrac12\int R^2\langle\Delta g_r\rangle_Y\,dR.
+\end{split}
+\tag{FC1.2}
+\]">\[
+\begin{split}
+\Delta g_r&amp;=-(D_r+R^{-1})\Delta W_{rr}-D_z\Delta W_{zr}+\Delta W_{\theta\theta}/R,\\
+\Delta\mathcal P&amp;=\int\langle\Delta g_r\rangle_Y\,dR,\qquad
+\Delta p_m=\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P),\\
+\Delta E_\theta&amp;=(D_r+2/R)\Delta W_{r\theta}+D_z\Delta W_{z\theta},\\
+\Delta E_z&amp;=(D_r+1/R)\Delta W_{rz}+D_z(\Delta W_{zz}+\Delta p_m),\\
+\Delta\mathcal J_\theta&amp;=\int R^2\langle\Delta W_{z\theta}\rangle_Y\,dR,\\
+\Delta\mathcal J_z&amp;=\int R\langle\Delta W_{zz}\rangle_Y\,dR
+-\tfrac12\int R^2\langle\Delta g_r\rangle_Y\,dR.
+\end{split}
+\tag{FC1.2}
+\]</span>
+<p>These equations include the square of the new wave, its entire curl remainder, every pressure change and the pressure contribution to the axial flux defect. The harmonic pressure increment has zero angular mean, so it adds no term to (FC1.2). A mean pressure change adds no nonzero angular harmonic.</p>
+<p>Next derive the exact weighted identities needed to remove a compact residual by stress. Average CS4.2 over the auxiliary torus. The fast torus derivatives integrate to zero, so <span class="math" data-tex="\(D_r\)">\(D_r\)</span> becomes <span class="math" data-tex="\(\partial_R\)">\(\partial_R\)</span>, <span class="math" data-tex="\(D_z=\varepsilon\partial_Z\)">\(D_z=\varepsilon\partial_Z\)</span>, and <span class="math" data-tex="\(\mathfrak t_*\)">\(\mathfrak t_*\)</span> becomes <span class="math" data-tex="\(-\varepsilon\partial_T\)">\(-\varepsilon\partial_T\)</span>. Multiply the azimuthal equation by <span class="math" data-tex="\(R^2\)">\(R^2\)</span> and the axial equation by <span class="math" data-tex="\(R\)">\(R\)</span>. The radial divergences become endpoint terms, all zero by smooth compact shell support, including the base stress. The radial viscous terms give exactly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int R^2(f_{RR}+R^{-1}f_R-R^{-2}f)\,dR
+&amp;=(2-1-1)\int f\,dR=0,\\
+\int R(g_{RR}+R^{-1}g_R)\,dR
+&amp;=-\int g_R\,dR+\int g_R\,dR=0.
+\end{aligned}
+\tag{FC1.3}
+\]">\[
+\begin{aligned}
+\int R^2(f_{RR}+R^{-1}f_R-R^{-2}f)\,dR
+&amp;=(2-1-1)\int f\,dR=0,\\
+\int R(g_{RR}+R^{-1}g_R)\,dR
+&amp;=-\int g_R\,dR+\int g_R\,dR=0.
+\end{aligned}
+\tag{FC1.3}
+\]</span>
+<p>The time and axial viscosity contributions are derivatives of the two zero integrals in (FC0.2). The Haar average of the compact remainder in (FC0.5) is zero: R3's full radial integral, after Haar averaging, is the zero total integral of <span class="math" data-tex="\(g_r-\rho\mathcal P\)">\(g_r-\rho\mathcal P\)</span>; its cutoff is auxiliary independent. Integration by parts therefore yields the exact pressure moment</p>
+<span class="math math-display" data-tex="\[
+\int R\langle p_m\rangle_Y\,dR
+=-\tfrac12\int R^2\partial_R\langle p_m\rangle_Y\,dR
+=-\tfrac12\int R^2\langle g_r\rangle_Y\,dR+c_\rho\mathcal P.
+\tag{FC1.4}
+\]">\[
+\int R\langle p_m\rangle_Y\,dR
+=-\tfrac12\int R^2\partial_R\langle p_m\rangle_Y\,dR
+=-\tfrac12\int R^2\langle g_r\rangle_Y\,dR+c_\rho\mathcal P.
+\tag{FC1.4}
+\]</span>
+<p>Combining the surviving axial fluxes proves original (8.16), with no remainder omitted:</p>
+<span class="math math-display" data-tex="\[
+\int R^2\langle E_\theta\rangle_Y\,dR=\varepsilon\partial_Z\mathcal J_\theta,
+\qquad
+\int R\langle E_z\rangle_Y\,dR=\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P).
+\tag{FC1.5}
+\]">\[
+\int R^2\langle E_\theta\rangle_Y\,dR=\varepsilon\partial_Z\mathcal J_\theta,
+\qquad
+\int R\langle E_z\rangle_Y\,dR=\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P).
+\tag{FC1.5}
+\]</span>
+<p>The <span class="math" data-tex="\(q\)">\(q\)</span>-scaled original bump gives
+<span class="math" data-tex="\(c_\rho=(q/(2Q))\int x^2\widehat\rho(x)\,dx\)">\(c_\rho=(q/(2Q))\int x^2\widehat\rho(x)\,dx\)</span>, so all fixed <span class="math" data-tex="\((Z,T)\)">\((Z,T)\)</span> derivatives are bounded, but it need not be constant. Its full product with <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> stays inside <span class="math" data-tex="\(\partial_Z\)">\(\partial_Z\)</span>. Consequently defects of class <span class="math" data-tex="\(\mathsf S_a\)">\(\mathsf S_a\)</span> give the two weighted residual moments in <span class="math" data-tex="\(\mathsf S_{a+1}\)">\(\mathsf S_{a+1}\)</span>.</p>
+<h2 id="fc2-initialization-from-the-actual-primary-curls">FC2. Initialization from the actual primary curls</h2>
+<p>Start with <span class="math" data-tex="\(v=\gamma=\beta=0\)">\(v=\gamma=\beta=0\)</span>. C7 gives the exact primary wave</p>
+<span class="math math-display" data-tex="\[
+w=w_0^{\rm tan}+R_0,\qquad
+w\in\mathsf W_{1/2},\qquad R_0\in\mathsf W_{1-\kappa_s}.
+\tag{FC2.1}
+\]">\[
+w=w_0^{\rm tan}+R_0,\qquad
+w\in\mathsf W_{1/2},\qquad R_0\in\mathsf W_{1-\kappa_s}.
+\tag{FC2.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(R_0\)">\(R_0\)</span> is the actual primary curl remainder from C7. The linear residual bound P8 implies the original conservative exponent <span class="math" data-tex="\(1-3\kappa_s\)">\(1-3\kappa_s\)</span>, and W6 gives the quadratic wave exponent <span class="math" data-tex="\(1-\kappa_s\)">\(1-\kappa_s\)</span>. Thus the supported nonzero harmonic residual is in <span class="math" data-tex="\(\mathsf W_{1-3\kappa_s}\)">\(\mathsf W_{1-3\kappa_s}\)</span>. The excluded Gaussian tails remain additive flat residuals. At zero means, the exact radial source is
+<span class="math" data-tex="\(g_r=-(D_r+R^{-1})W_{rr}-D_zW_{zr}+W_{\theta\theta}/R\)">\(g_r=-(D_r+R^{-1})W_{rr}-D_zW_{zr}+W_{\theta\theta}/R\)</span>.
+Since every <span class="math" data-tex="\(W_{ab}\in\mathsf M_1\)">\(W_{ab}\in\mathsf M_1\)</span>, (FC0.3), CS4.2 and FC0.7 show</p>
+<span class="math math-display" data-tex="\[
+g_r,p_m,E_\theta,E_z\in\mathsf M_{1-\kappa_s},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)\in\mathsf S_{1-\kappa_s}.
+\tag{FC2.2}
+\]">\[
+g_r,p_m,E_\theta,E_z\in\mathsf M_{1-\kappa_s},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)\in\mathsf S_{1-\kappa_s}.
+\tag{FC2.2}
+\]</span>
+<p>All moment measures in (FC0.4) are bounded on the shell; the class estimates hold after each slow derivative by smooth zero extension and differentiation under the integral.</p>
+<p>The auxiliary-averaged tangential residual has a better order. Let <span class="math" data-tex="\(\Sigma^{(0)}\)">\(\Sigma^{(0)}\)</span> be the assembled leading stress and <span class="math" data-tex="\(\Sigma^B\)">\(\Sigma^B\)</span> the full base stress. With zero means, the exact equations are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\langle E_\theta\rangle_Y
+&amp;=(\partial_R+2/R)(\langle W_{r\theta}\rangle_Y-\Sigma^{(0)}_\theta)
+-(\partial_R+2/R)(\Sigma^B_\theta-\Sigma^{(0)}_\theta)
++\varepsilon\partial_Z\langle W_{z\theta}\rangle_Y,\\
+\langle E_z\rangle_Y
+&amp;=(\partial_R+1/R)(\langle W_{rz}\rangle_Y-\Sigma^{(0)}_z)
+-(\partial_R+1/R)(\Sigma^B_z-\Sigma^{(0)}_z)
++\varepsilon\partial_Z\langle W_{zz}+p_m\rangle_Y.
+\end{split}
+\tag{FC2.3}
+\]">\[
+\begin{split}
+\langle E_\theta\rangle_Y
+&amp;=(\partial_R+2/R)(\langle W_{r\theta}\rangle_Y-\Sigma^{(0)}_\theta)
+-(\partial_R+2/R)(\Sigma^B_\theta-\Sigma^{(0)}_\theta)
++\varepsilon\partial_Z\langle W_{z\theta}\rangle_Y,\\
+\langle E_z\rangle_Y
+&amp;=(\partial_R+1/R)(\langle W_{rz}\rangle_Y-\Sigma^{(0)}_z)
+-(\partial_R+1/R)(\Sigma^B_z-\Sigma^{(0)}_z)
++\varepsilon\partial_Z\langle W_{zz}+p_m\rangle_Y.
+\end{split}
+\tag{FC2.3}
+\]</span>
+<p>C6 proves cancellation of the leading covariance with the exact squared partition, including derivatives of its sum. C7 proves the first differences in (FC2.3) have class <span class="math" data-tex="\(\mathsf M_{3/2-\kappa_s}\)">\(\mathsf M_{3/2-\kappa_s}\)</span>; their quadratic curl part has the still higher exponent <span class="math" data-tex="\(2-2\kappa_s\)">\(2-2\kappa_s\)</span>. C8 allows the same exponent after full auxiliary averaging and radial divergence. Even using the source's weaker allowance of an additional <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span> gives <span class="math" data-tex="\(3/2-2\kappa_s\)">\(3/2-2\kappa_s\)</span>. The remaining terms have exponents at least <span class="math" data-tex="\(2-\kappa_s\)">\(2-\kappa_s\)</span>: the axial covariance has exponent two, axial pressure has <span class="math" data-tex="\(2-\kappa_s\)">\(2-\kappa_s\)</span>, and FC0.7 supplies the higher base stress. Since <span class="math" data-tex="\(3/2-2\kappa_s=1.49998&gt;1.49\)">\(3/2-2\kappa_s=1.49998&gt;1.49\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle E_\theta\rangle_Y,\langle E_z\rangle_Y\in\mathsf M_{1.49}.
+\tag{FC2.4}
+\]">\[
+\langle E_\theta\rangle_Y,\langle E_z\rangle_Y\in\mathsf M_{1.49}.
+\tag{FC2.4}
+\]</span>
+<p>Set <span class="math" data-tex="\(H_0=1-\kappa_s\)">\(H_0=1-\kappa_s\)</span>. Apply the actual temporal mean map T1–T4 to the zero-auxiliary-average parts of the residual. Its increments satisfy
+<span class="math" data-tex="\(\Delta v,\Delta\gamma,\Delta p_m\in\mathsf M_{H_0}\)">\(\Delta v,\Delta\gamma,\Delta p_m\in\mathsf M_{H_0}\)</span>,
+<span class="math" data-tex="\(\Delta\beta\in\mathsf M_{H_0+1}\)">\(\Delta\beta\in\mathsf M_{H_0+1}\)</span>. They preserve both moments exactly. Its full tangential change after cancellation, apart from the explicitly retained axial reconstruction term, has exponent <span class="math" data-tex="\(H_0+1-2\kappa_s\)">\(H_0+1-2\kappa_s\)</span>; that reconstruction term belongs to every required mean class by T3.4. Thus the exact tangential residuals retain order <span class="math" data-tex="\(1.49\)">\(1.49\)</span>. Defects remain in <span class="math" data-tex="\(\mathsf S_{H_0}\)">\(\mathsf S_{H_0}\)</span>, because T4 computes their changes in <span class="math" data-tex="\(\mathsf S_{H_0+0.9}\)">\(\mathsf S_{H_0+0.9}\)</span>. Their old values are not set to zero by this step. W5 and W7 give the added nonzero harmonic residual in <span class="math" data-tex="\(\mathsf W_{H_0}\)">\(\mathsf W_{H_0}\)</span>.</p>
+<p>Recompute all three defects and apply the five-profile correction M3–M7 at order <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. Its first two rows preserve the two moments; its other three rows cancel the linear parts of the current defects. Its complete nonlinear recomputation gives defects in <span class="math" data-tex="\(\mathsf S_{H_0+0.9}\)">\(\mathsf S_{H_0+0.9}\)</span>, which implies the weaker bound used in original Proposition 9.5. Its tangential changes have exponent <span class="math" data-tex="\(H_0+1\)">\(H_0+1\)</span> and its wave interaction exponent <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, so they preserve the tangential order <span class="math" data-tex="\(1.49\)">\(1.49\)</span> and the supported wave order <span class="math" data-tex="\(1-3\kappa_s\)">\(1-3\kappa_s\)</span>. These operator proofs apply here because <span class="math" data-tex="\(H_0&gt;0.9\)">\(H_0&gt;0.9\)</span>, all means before the temporal step are zero, and after it they satisfy the <span class="math" data-tex="\(0.9,1.9\)">\(0.9,1.9\)</span> bounds required by M6.</p>
+<p>The initialized bounds are consequently</p>
+<span class="math math-display" data-tex="\[
+\mathcal G_{\rm wave}^{[0]}\in\mathsf W_{1-3\kappa_s}\subset\mathsf W_{0.7},\qquad
+E_\theta,E_z\in\mathsf M_{1.49}\subset\mathsf M_{1.2},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)\in\mathsf S_{1.9-\kappa_s}\subset\mathsf S_{1.2}.
+\tag{FC2.5}
+\]">\[
+\mathcal G_{\rm wave}^{[0]}\in\mathsf W_{1-3\kappa_s}\subset\mathsf W_{0.7},\qquad
+E_\theta,E_z\in\mathsf M_{1.49}\subset\mathsf M_{1.2},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)\in\mathsf S_{1.9-\kappa_s}\subset\mathsf S_{1.2}.
+\tag{FC2.5}
+\]</span>
+<p>The wave itself is unchanged by these mean operations; (FC2.1) gives <span class="math" data-tex="\(w-w_0^{\rm tan}\in\mathsf W_{1-\kappa_s}\subset\mathsf W_{0.68}\)">\(w-w_0^{\rm tan}\in\mathsf W_{1-\kappa_s}\subset\mathsf W_{0.68}\)</span>. All mean velocities and reconstructed mean pressure have exponent at least <span class="math" data-tex="\(H_0&gt;0.9\)">\(H_0&gt;0.9\)</span>, and radial mean velocity at least <span class="math" data-tex="\(H_0+1&gt;1.9\)">\(H_0+1&gt;1.9\)</span>. This proves every part of (FC0.2) at <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, with pressure recomputed before and after both updates. Flat residuals and support remain as proved in CS1–CS4. This establishes the initialization of original Proposition 9.5 with its actual global-base supplier in <a href="base-field-realization-audit.html">Z0–Z8</a>.</p>
+<h2 id="fc3-cycle-step-1-the-inhomogeneous-pulse-update">FC3. Cycle step 1: the inhomogeneous pulse update</h2>
+<p>Fix a finite state and abbreviate <span class="math" data-tex="\(B=B_j\ge0.7\)">\(B=B_j\ge0.7\)</span>, <span class="math" data-tex="\(C_*=C_j^*=B+1/2\)">\(C_*=C_j^*=B+1/2\)</span>. Group each current supported source coefficient as in CS1. Apply the zero-initial-data solve P4 with its full pressure, and form the actual increment</p>
+<span class="math math-display" data-tex="\[
+s_m=\operatorname{curl}_*\left(\frac{i n_\Phi\times(\psi t_m)}{km|n_\Phi|^2}e^{ikm\Phi}\right),\qquad
+\pi_{w,m}=\psi\pi_m e^{ikm\Phi},\qquad
+\mathscr L_m(t_m,\pi_m)=-f_m.
+\tag{FC3.1}
+\]">\[
+s_m=\operatorname{curl}_*\left(\frac{i n_\Phi\times(\psi t_m)}{km|n_\Phi|^2}e^{ikm\Phi}\right),\qquad
+\pi_{w,m}=\psi\pi_m e^{ikm\Phi},\qquad
+\mathscr L_m(t_m,\pi_m)=-f_m.
+\tag{FC3.1}
+\]</span>
+<p>Sum with the original physical factors and conjugate pairs. The full velocity increment is in <span class="math" data-tex="\(\mathsf W_B\)">\(\mathsf W_B\)</span>; its harmonic pressure is in <span class="math" data-tex="\(\mathsf W_{B+1/2}\)">\(\mathsf W_{B+1/2}\)</span>. The exact expansion of the residual is CS3.1, with the old supported harmonic canceled by the principal solve and the complete curl retained. The bounds on the remaining nonzero harmonics are</p>
+<table>
+<thead>
+<tr>
+<th>Term in the exact residual change</th>
+<th style="text-align:right">Class exponent at least</th>
+<th>Complete supplying calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear pulse/curl residual, apart from its retained flat tails</td>
+<td style="text-align:right"><span class="math" data-tex="\(B+1/2-3\kappa_s\)">\(B+1/2-3\kappa_s\)</span></td>
+<td>P8; its proved stronger bound also implies this original exponent</td>
+</tr>
+<tr>
+<td>Cross interaction with the current full wave</td>
+<td style="text-align:right"><span class="math" data-tex="\(B+1/2-\kappa_s\)">\(B+1/2-\kappa_s\)</span></td>
+<td>W6 and <span class="math" data-tex="\(w\in\mathsf W_{1/2}\)">\(w\in\mathsf W_{1/2}\)</span></td>
+</tr>
+<tr>
+<td>Square of the particular increment</td>
+<td style="text-align:right"><span class="math" data-tex="\(2B-\kappa_s\)">\(2B-\kappa_s\)</span></td>
+<td>W6, with coefficient one on the square</td>
+</tr>
+<tr>
+<td>Cross interaction with the total mean correction</td>
+<td style="text-align:right"><span class="math" data-tex="\(B+0.4\)">\(B+0.4\)</span></td>
+<td>W5 with <span class="math" data-tex="\(0.9\)">\(0.9\)</span> tangential mean exponent and <span class="math" data-tex="\(1.9\)">\(1.9\)</span> radial exponent</td>
+</tr>
+</tbody>
+</table>
+<p>The old exact wave may include every earlier correction; its total bound is the one in (FC0.2). Subtracting <span class="math" data-tex="\(B\)">\(B\)</span>, the four lower gains are <span class="math" data-tex="\(1/2-3\kappa_s,1/2-\kappa_s,B-\kappa_s,0.4\)">\(1/2-3\kappa_s,1/2-\kappa_s,B-\kappa_s,0.4\)</span>, whose minimum is <span class="math" data-tex="\(0.4\)">\(0.4\)</span>. Thus the new supported harmonic residual is in <span class="math" data-tex="\(\mathsf W_{B+0.4}\)">\(\mathsf W_{B+0.4}\)</span>.</p>
+<p>The entire covariance change (FC1.1) has mean class <span class="math" data-tex="\(\mathsf M_{C_*}\)">\(\mathsf M_{C_*}\)</span>: its cross terms have exponent <span class="math" data-tex="\(B+1/2=C_*\)">\(B+1/2=C_*\)</span>, while its square has exponent <span class="math" data-tex="\(2B\ge C_*\)">\(2B\ge C_*\)</span>. The complete receiver (FC1.2), including pressure, gives</p>
+<span class="math math-display" data-tex="\[
+\Delta g_r,\Delta p_m,E_{\theta,\rm new},E_{z,\rm new}\in\mathsf M_{C_*-\kappa_s},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)_{\rm new}\in\mathsf S_{C_*-\kappa_s}.
+\tag{FC3.2}
+\]">\[
+\Delta g_r,\Delta p_m,E_{\theta,\rm new},E_{z,\rm new}\in\mathsf M_{C_*-\kappa_s},\qquad
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)_{\rm new}\in\mathsf S_{C_*-\kappa_s}.
+\tag{FC3.2}
+\]</span>
+<p>The statements about <span class="math" data-tex="\(g_r,p_m\)">\(g_r,p_m\)</span> are changes, not an assertion that their old leading parts have disappeared. Old tangential residuals and defects had exponent <span class="math" data-tex="\(C_*\)">\(C_*\)</span>, so adding these changes gives (FC3.2). The zero mean-velocity moments are unchanged, and the pressure has been recomputed. Apply (FC1.5) to this new complete state:</p>
+<span class="math math-display" data-tex="\[
+m_2:=\int R^2\langle E_\theta\rangle_Y\,dR\in\mathsf S_{C_*+1-\kappa_s},\qquad
+m_1:=\int R\langle E_z\rangle_Y\,dR\in\mathsf S_{C_*+1-\kappa_s}.
+\tag{FC3.3}
+\]">\[
+m_2:=\int R^2\langle E_\theta\rangle_Y\,dR\in\mathsf S_{C_*+1-\kappa_s},\qquad
+m_1:=\int R\langle E_z\rangle_Y\,dR\in\mathsf S_{C_*+1-\kappa_s}.
+\tag{FC3.3}
+\]</span>
+<p>This is the extra power required for the retained moment term in the next step. In the axial identity it comes from <span class="math" data-tex="\(\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P)\)">\(\varepsilon\partial_Z(\mathcal J_z+c_\rho\mathcal P)\)</span>, with the full product derivative retained.</p>
+<h2 id="fc4-cycle-step-2-signed-stress-its-physical-sign-and-complete-covariance">FC4. Cycle step 2: signed stress, its physical sign and complete covariance</h2>
+<p>This operation is defined in physical coordinates so that the fields agree on chart overlaps. Retain an arbitrary original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> using the exact bridge C9. Define the physical averaged tangential residuals by</p>
+<span class="math math-display" data-tex="\[
+F_{2,\nu}=\sqrt\nu Q^{-2A-1/2}\langle E_\theta\rangle_Y,
+\qquad F_{1,\nu}=\sqrt\nu Q^{-2A-1/2}\langle E_z\rangle_Y.
+\tag{FC4.1}
+\]">\[
+F_{2,\nu}=\sqrt\nu Q^{-2A-1/2}\langle E_\theta\rangle_Y,
+\qquad F_{1,\nu}=\sqrt\nu Q^{-2A-1/2}\langle E_z\rangle_Y.
+\tag{FC4.1}
+\]</span>
+<p>They are the same physical functions in every chart. The two prescribed interior profiles satisfy <span class="math" data-tex="\(\int_0^\infty x^e\widehat b_e(x)\,dx=1\)">\(\int_0^\infty x^e\widehat b_e(x)\,dx=1\)</span>, <span class="math" data-tex="\(e\in\{1,2\}\)">\(e\in\{1,2\}\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+b_{e,\nu}(r_\nu,z_\nu,t)&amp;=(\nu q_\nu)^{-(e+1)/2}\widehat b_e(r_\nu/\sqrt{\nu q_\nu}),\\
+M_{e,\nu}&amp;=\int_0^\infty r_\nu^eF_{e,\nu}(r_\nu)\,dr_\nu,\\
+\sigma_{e,\nu}(r_\nu)&amp;=-r_\nu^{-e}\int_0^{r_\nu}(r&#x27;)^e
+[F_{e,\nu}(r&#x27;)-b_{e,\nu}(r&#x27;)M_{e,\nu}]\,dr&#x27;.
+\end{split}
+\tag{FC4.2}
+\]">\[
+\begin{split}
+b_{e,\nu}(r_\nu,z_\nu,t)&amp;=(\nu q_\nu)^{-(e+1)/2}\widehat b_e(r_\nu/\sqrt{\nu q_\nu}),\\
+M_{e,\nu}&amp;=\int_0^\infty r_\nu^eF_{e,\nu}(r_\nu)\,dr_\nu,\\
+\sigma_{e,\nu}(r_\nu)&amp;=-r_\nu^{-e}\int_0^{r_\nu}(r&#x27;)^e
+[F_{e,\nu}(r&#x27;)-b_{e,\nu}(r&#x27;)M_{e,\nu}]\,dr&#x27;.
+\end{split}
+\tag{FC4.2}
+\]</span>
+<p>Time and <span class="math" data-tex="\(z_\nu\)">\(z_\nu\)</span> are fixed along these integrals; <span class="math" data-tex="\(q_\nu\)">\(q_\nu\)</span> is independent of the radial coordinate. Changing variable <span class="math" data-tex="\(r_\nu=\sqrt{\nu q_\nu}\,x\)">\(r_\nu=\sqrt{\nu q_\nu}\,x\)</span> shows <span class="math" data-tex="\(\int r_\nu^eb_{e,\nu}\,dr_\nu=1\)">\(\int r_\nu^eb_{e,\nu}\,dr_\nu=1\)</span>. Hence the integrand in the last line has zero total weighted moment. The primitive vanishes on both sides of its shell, with its lower endpoint fixing the integration constant. Its exact divergence, including the minus sign, is</p>
+<span class="math math-display" data-tex="\[
+(\partial_{r_\nu}+e/r_\nu)\sigma_{e,\nu}=-F_{e,\nu}+b_{e,\nu}M_{e,\nu}.
+\tag{FC4.3}
+\]">\[
+(\partial_{r_\nu}+e/r_\nu)\sigma_{e,\nu}=-F_{e,\nu}+b_{e,\nu}M_{e,\nu}.
+\tag{FC4.3}
+\]</span>
+<p>At <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span> these are exactly the physical formulas printed on original page 109.</p>
+<p>With <span class="math" data-tex="\(R=r_\nu/\sqrt{\nu Q}\)">\(R=r_\nu/\sqrt{\nu Q}\)</span>, the complete moment and bump factors are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+M_{e,\nu}&amp;=\nu^{(e+2)/2}Q^{e/2-2A}m_e,\\
+\rho_{e,*}&amp;=(\nu Q)^{(e+1)/2}b_{e,\nu}
+=(Q/q_\nu)^{(e+1)/2}\widehat b_e(\sqrt{Q/q_\nu}\,R),\\
+\int R^e\rho_{e,*}\,dR&amp;=1,
+\qquad \Sigma=(\Sigma_\theta,\Sigma_z)=\nu^{-1}Q^{2A}(\sigma_{2,\nu},\sigma_{1,\nu}).
+\end{split}
+\tag{FC4.4}
+\]">\[
+\begin{split}
+M_{e,\nu}&amp;=\nu^{(e+2)/2}Q^{e/2-2A}m_e,\\
+\rho_{e,*}&amp;=(\nu Q)^{(e+1)/2}b_{e,\nu}
+=(Q/q_\nu)^{(e+1)/2}\widehat b_e(\sqrt{Q/q_\nu}\,R),\\
+\int R^e\rho_{e,*}\,dR&amp;=1,
+\qquad \Sigma=(\Sigma_\theta,\Sigma_z)=\nu^{-1}Q^{2A}(\sigma_{2,\nu},\sigma_{1,\nu}).
+\end{split}
+\tag{FC4.4}
+\]</span>
+<p>Substitution into (FC4.2) gives exactly, with <span class="math" data-tex="\(\overline E_2=\langle E_\theta\rangle_Y\)">\(\overline E_2=\langle E_\theta\rangle_Y\)</span>, <span class="math" data-tex="\(\overline E_1=\langle E_z\rangle_Y\)">\(\overline E_1=\langle E_z\rangle_Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Sigma_e=-R^{-e}\int_0^R s^e(\overline E_e(s)-\rho_{e,*}(s)m_e)\,ds,
+\qquad
+(\partial_R+e/R)\Sigma_e=-\overline E_e+\rho_{e,*}m_e.
+\tag{FC4.5}
+\]">\[
+\Sigma_e=-R^{-e}\int_0^R s^e(\overline E_e(s)-\rho_{e,*}(s)m_e)\,ds,
+\qquad
+(\partial_R+e/R)\Sigma_e=-\overline E_e+\rho_{e,*}m_e.
+\tag{FC4.5}
+\]</span>
+<p>Here <span class="math" data-tex="\(\Sigma_2\)">\(\Sigma_2\)</span> means <span class="math" data-tex="\(\Sigma_\theta\)">\(\Sigma_\theta\)</span>, and <span class="math" data-tex="\(\Sigma_1\)">\(\Sigma_1\)</span> means <span class="math" data-tex="\(\Sigma_z\)">\(\Sigma_z\)</span>. The physical stress factor is <span class="math" data-tex="\(\nu Q^{-2A}\)">\(\nu Q^{-2A}\)</span>, and its radial divergence factor is <span class="math" data-tex="\(\sqrt\nu Q^{-2A-1/2}\)">\(\sqrt\nu Q^{-2A-1/2}\)</span>, as required by (FC4.1). Every slow derivative of <span class="math" data-tex="\(\rho_{e,*}\)">\(\rho_{e,*}\)</span> is bounded by the implicit-coordinate estimates C4. CS2 proves all edge derivatives of the zero-moment primitive. Equations (FC3.2)–(FC3.3) therefore give <span class="math" data-tex="\(\Sigma\in\mathsf M_{C_*-\kappa_s}\)">\(\Sigma\in\mathsf M_{C_*-\kappa_s}\)</span>; the retained source <span class="math" data-tex="\(\rho_{e,*}m_e\)">\(\rho_{e,*}m_e\)</span> has the higher class <span class="math" data-tex="\(\mathsf M_{C_*+1-\kappa_s}\)">\(\mathsf M_{C_*+1-\kappa_s}\)</span>. These are auxiliary-independent stresses because (FC4.1) uses the full Haar average, even when the unaveraged residual depends on that torus.</p>
+<p>Apply the fixed signed operator of C5–C6. Its transverse field and actual curl increment satisfy</p>
+<span class="math math-display" data-tex="\[
+t_s=\mathcal L^{\rm as}\Sigma\in\mathsf W_{B-\kappa_s},\qquad
+s=t_s+r_s,\qquad r_s\in\mathsf W_{C_*-2\kappa_s}.
+\tag{FC4.6}
+\]">\[
+t_s=\mathcal L^{\rm as}\Sigma\in\mathsf W_{B-\kappa_s},\qquad
+s=t_s+r_s,\qquad r_s\in\mathsf W_{C_*-2\kappa_s}.
+\tag{FC4.6}
+\]</span>
+<p>In each box it divides by the fixed primary <span class="math" data-tex="\(2a_\sigma=2\sqrt{y_\sigma}\)">\(2a_\sigma=2\sqrt{y_\sigma}\)</span>; no current-covariance square root is taken. The uncut coefficient is a slow scalar times a transverse cutoff times the homogeneous pulse. The principal pulse derivative leaves the slow scalar and transverse cutoff fixed, so its homogeneous equation has source zero. Use its full homogeneous pressure and then the original pulse cutoff and curl. All slow derivatives of the scalars and cutoffs enter the P8 remainder; its endpoint term remains flat.</p>
+<p>The four newly introduced nonzero harmonic errors have the original bounds</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th style="text-align:right">Class exponent at least</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear homogeneous pulse/curl error</td>
+<td style="text-align:right"><span class="math" data-tex="\(B+1/2-4\kappa_s\)">\(B+1/2-4\kappa_s\)</span></td>
+</tr>
+<tr>
+<td>Interaction with total mean correction</td>
+<td style="text-align:right"><span class="math" data-tex="\(B+0.4-\kappa_s\)">\(B+0.4-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td>Cross term with current exact waves</td>
+<td style="text-align:right"><span class="math" data-tex="\(B+1/2-2\kappa_s\)">\(B+1/2-2\kappa_s\)</span></td>
+</tr>
+<tr>
+<td>Square of the signed increment</td>
+<td style="text-align:right"><span class="math" data-tex="\(2B-3\kappa_s\)">\(2B-3\kappa_s\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These follow by inserting <span class="math" data-tex="\(B-\kappa_s\)">\(B-\kappa_s\)</span> into P8 and W5–W6. The four gains over <span class="math" data-tex="\(B\)">\(B\)</span> are at least <span class="math" data-tex="\(0.4-\kappa_s\)">\(0.4-\kappa_s\)</span>, because <span class="math" data-tex="\(B\ge0.7\)">\(B\ge0.7\)</span>. The old residual after step 1 was in <span class="math" data-tex="\(\mathsf W_{B+0.4}\)">\(\mathsf W_{B+0.4}\)</span>. Their sum is therefore in <span class="math" data-tex="\(\mathsf W_{B+0.4-\kappa_s}\)">\(\mathsf W_{B+0.4-\kappa_s}\)</span>.</p>
+<p>For the averaged stress, retain the full tensor, not only the two prescribed components. Define
+<span class="math" data-tex="\(\mathscr B(a,b)=\langle\langle a\otimes b+b\otimes a\rangle_\theta\rangle_Y\)">\(\mathscr B(a,b)=\langle\langle a\otimes b+b\otimes a\rangle_\theta\rangle_Y\)</span>.
+Equation (FC1.1) becomes exactly</p>
+<span class="math math-display" data-tex="\[
+\langle\Delta W\rangle_Y
+=\mathscr B(w_0^{\rm tan},t_s)
++\mathscr B(w-w_0^{\rm tan},t_s)
++\mathscr B(w,r_s)
++\langle\langle s\otimes s\rangle_\theta\rangle_Y.
+\tag{FC4.7}
+\]">\[
+\langle\Delta W\rangle_Y
+=\mathscr B(w_0^{\rm tan},t_s)
++\mathscr B(w-w_0^{\rm tan},t_s)
++\mathscr B(w,r_s)
++\langle\langle s\otimes s\rangle_\theta\rangle_Y.
+\tag{FC4.7}
+\]</span>
+<p>The radial–tangential components of the first tensor equal <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, by the exact linear covariance inverse C6. Its divergence cancels <span class="math" data-tex="\(-\overline E_e\)">\(-\overline E_e\)</span> with the sign in (FC4.5), leaving <span class="math" data-tex="\(\rho_{e,*}m_e\)">\(\rho_{e,*}m_e\)</span>. The three remaining tensor terms have respective classes</p>
+<span class="math math-display" data-tex="\[
+\mathsf M_{C_*+0.18-\kappa_s},\qquad
+\mathsf M_{C_*+1/2-2\kappa_s},\qquad
+\mathsf M_{C_*+\sigma_j-2\kappa_s}.
+\tag{FC4.8}
+\]">\[
+\mathsf M_{C_*+0.18-\kappa_s},\qquad
+\mathsf M_{C_*+1/2-2\kappa_s},\qquad
+\mathsf M_{C_*+\sigma_j-2\kappa_s}.
+\tag{FC4.8}
+\]</span>
+<p>The first uses the actual accumulated bound <span class="math" data-tex="\(w-w_0^{\rm tan}\in\mathsf W_{0.68}\)">\(w-w_0^{\rm tan}\in\mathsf W_{0.68}\)</span>, still valid after step 1 since its increment had exponent <span class="math" data-tex="\(B\ge0.7\)">\(B\ge0.7\)</span>. The second uses the full <span class="math" data-tex="\(w\in\mathsf W_{1/2}\)">\(w\in\mathsf W_{1/2}\)</span>. The third keeps the entire square of <span class="math" data-tex="\(s\)">\(s\)</span> and uses <span class="math" data-tex="\(2B-2\kappa_s=C_*+\sigma_j-2\kappa_s\)">\(2B-2\kappa_s=C_*+\sigma_j-2\kappa_s\)</span>. No sign condition on the input stress was imposed.</p>
+<p>All unprojected tensor changes have mean class <span class="math" data-tex="\(\mathsf M_{C_*-\kappa_s}\)">\(\mathsf M_{C_*-\kappa_s}\)</span>, including their nonconstant auxiliary parts. Equation (FC1.2) gives changes <span class="math" data-tex="\(\Delta g_r,\Delta p_m\in\mathsf M_H\)">\(\Delta g_r,\Delta p_m\in\mathsf M_H\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+H=C_*-2\kappa_s.
+\tag{FC4.9}
+\]">\[
+H=C_*-2\kappa_s.
+\tag{FC4.9}
+\]</span>
+<p>Thus the axial pressure effect has exponent <span class="math" data-tex="\(H+1\)">\(H+1\)</span>, and the other axial tensor divergences have exponent <span class="math" data-tex="\(C_*+1-\kappa_s\)">\(C_*+1-\kappa_s\)</span>. The full residuals and all three defects have order at least <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For the fully auxiliary-averaged radial divergences of (FC4.8), C8 proves that there is no further fast radial loss. In fact their exact coefficient derivative is <span class="math" data-tex="\(\partial_R\)">\(\partial_R\)</span>, because the torus derivative has zero Haar integral. Combined with the retained moment term and axial terms just listed, the exact averaged tangential residuals have the stronger estimate</p>
+<span class="math math-display" data-tex="\[
+\overline E_\theta,\overline E_z\in\mathsf M_{C_*+0.18-\kappa_s}.
+\tag{FC4.10}
+\]">\[
+\overline E_\theta,\overline E_z\in\mathsf M_{C_*+0.18-\kappa_s}.
+\tag{FC4.10}
+\]</span>
+<p>To verify the minimum, subtract <span class="math" data-tex="\(0.18-\kappa_s\)">\(0.18-\kappa_s\)</span> from the other gains: they are at least <span class="math" data-tex="\(0.32-\kappa_s\)">\(0.32-\kappa_s\)</span>, <span class="math" data-tex="\(\sigma_j-0.18-\kappa_s\ge0.02-\kappa_s\)">\(\sigma_j-0.18-\kappa_s\ge0.02-\kappa_s\)</span>, <span class="math" data-tex="\(0.82\)">\(0.82\)</span>, and <span class="math" data-tex="\(0.82-\kappa_s\)">\(0.82-\kappa_s\)</span>, all positive. Using instead the original allowance of an extra <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span> still gives <span class="math" data-tex="\(0.18-2\kappa_s&gt;0.17\)">\(0.18-2\kappa_s&gt;0.17\)</span> and <span class="math" data-tex="\(\sigma_j-3\kappa_s&gt;0.17\)">\(\sigma_j-3\kappa_s&gt;0.17\)</span>. Thus (FC4.10) implies every original assertion in (9.14): averaged order <span class="math" data-tex="\(C_*+0.17\)">\(C_*+0.17\)</span>, full order <span class="math" data-tex="\(H\)">\(H\)</span>, and defects in <span class="math" data-tex="\(\mathsf S_H\)">\(\mathsf S_H\)</span>. It is important here that (FC4.10) concerns the complete Haar average, while the unaveraged angular mean still only has the bound <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<h2 id="fc5-cycle-step-3-temporal-mean-inverse-and-its-actual-axial-field">FC5. Cycle step 3: temporal mean inverse and its actual axial field</h2>
+<p>For the current exact residual put <span class="math" data-tex="\(E_a^\circ=E_a-\langle E_a\rangle_Y\)">\(E_a^\circ=E_a-\langle E_a\rangle_Y\)</span>, <span class="math" data-tex="\(a=\theta,z\)">\(a=\theta,z\)</span>, and apply the original operation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Delta v=-c_{i_0}^{-1}N_{i_0}^{-1}E_\theta^\circ,\qquad
+\gamma_d=-c_{i_0}^{-1}N_{i_0}^{-1}E_z^\circ,\\
+\Psi_*=\mathsf T_1\gamma_d,\qquad
+\Delta\beta=-\varepsilon\partial_Z\Psi_*,\qquad
+\Delta\gamma=(D_r+R^{-1})\Psi_*.
+\end{gathered}
+\tag{FC5.1}
+\]">\[
+\begin{gathered}
+\Delta v=-c_{i_0}^{-1}N_{i_0}^{-1}E_\theta^\circ,\qquad
+\gamma_d=-c_{i_0}^{-1}N_{i_0}^{-1}E_z^\circ,\\
+\Psi_*=\mathsf T_1\gamma_d,\qquad
+\Delta\beta=-\varepsilon\partial_Z\Psi_*,\qquad
+\Delta\gamma=(D_r+R^{-1})\Psi_*.
+\end{gathered}
+\tag{FC5.1}
+\]</span>
+<p>The torus inverse is the zero-mean inverse with its exact finite derivative estimate in T1–T2. The compact primitive has its original sign and full remainder. Therefore</p>
+<span class="math math-display" data-tex="\[
+\Delta v,\Delta\gamma\in\mathsf M_H,\quad\Delta\beta\in\mathsf M_{H+1},\quad
+\Delta\gamma=\gamma_d-\mathcal A_1\gamma_d,
+\tag{FC5.2}
+\]">\[
+\Delta v,\Delta\gamma\in\mathsf M_H,\quad\Delta\beta\in\mathsf M_{H+1},\quad
+\Delta\gamma=\gamma_d-\mathcal A_1\gamma_d,
+\tag{FC5.2}
+\]</span>
+<p>and the actual fast-time identities are</p>
+<span class="math math-display" data-tex="\[
+c_{i_0}N_{i_0}\Delta v=-E_\theta^\circ,\qquad
+c_{i_0}N_{i_0}\Delta\gamma=-E_z^\circ+\mathcal F_{\rm ax},\qquad
+\mathcal F_{\rm ax}=c_{i_0}N_{i_0}(\Delta\gamma-\gamma_d).
+\tag{FC5.3}
+\]">\[
+c_{i_0}N_{i_0}\Delta v=-E_\theta^\circ,\qquad
+c_{i_0}N_{i_0}\Delta\gamma=-E_z^\circ+\mathcal F_{\rm ax},\qquad
+\mathcal F_{\rm ax}=c_{i_0}N_{i_0}(\Delta\gamma-\gamma_d).
+\tag{FC5.3}
+\]</span>
+<p>For every fixed coefficient derivative <span class="math" data-tex="\(I\)">\(I\)</span> and integer <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, T3.4 proves
+<span class="math" data-tex="\( |\partial^I\mathcal F_{\rm ax}|\le C_{I,p}\varepsilon^{H+p\kappa_s}S_*^{b_{I,p}}\zeta\delta^{-d_{I,p}}\)">\( |\partial^I\mathcal F_{\rm ax}|\le C_{I,p}\varepsilon^{H+p\kappa_s}S_*^{b_{I,p}}\zeta\delta^{-d_{I,p}}\)</span>.
+Thus it belongs to every required mean class by choosing a finite <span class="math" data-tex="\(p\)">\(p\)</span> for that class. All physical derivatives are also flat, with the original viscosity factors. Its actual contribution is retained in both (FC5.2) and (FC5.3); no inference from physical flatness alone to a coefficient estimate is being used.</p>
+<p>Recompute the radial source from the complete new means. Its exact change is</p>
+<span class="math math-display" data-tex="\[
+\Delta g_r=(2V/R)\Delta v+\mathcal R_g,
+\tag{FC5.4}
+\]">\[
+\Delta g_r=(2V/R)\Delta v+\mathcal R_g,
+\tag{FC5.4}
+\]</span>
+<p>where <span class="math" data-tex="\(\mathcal R_g\)">\(\mathcal R_g\)</span> is the full expression (FC6.2) below, with the actual torus-dependent increments in this step. T4 proves <span class="math" data-tex="\(\mathcal R_g\in\mathsf M_{H+0.9}\)">\(\mathcal R_g\in\mathsf M_{H+0.9}\)</span>, <span class="math" data-tex="\(\Delta g_r,\Delta p_m\in\mathsf M_H\)">\(\Delta g_r,\Delta p_m\in\mathsf M_H\)</span>. The linear term is present in the pressure change even though its auxiliary average is zero. Subtracting the two versions of the exact tangential equations yields</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+E_{\theta,\rm new}-\overline E_\theta={}&amp;-\varepsilon\partial_T\Delta v-\varepsilon(\Delta_0-R^{-2})\Delta v\\
+&amp;+(D_r+2/R)((b+\beta)\Delta v+(V+v)\Delta\beta+\Delta\beta\Delta v)\\
+&amp;+D_z((G+\gamma)\Delta v+(V+v)\Delta\gamma+\Delta\gamma\Delta v),\\
+E_{z,\rm new}-\overline E_z={}&amp;-\varepsilon\partial_T\Delta\gamma-\varepsilon\Delta_0\Delta\gamma+\mathcal F_{\rm ax}\\
+&amp;+(D_r+1/R)((b+\beta)\Delta\gamma+(G+\gamma)\Delta\beta+\Delta\beta\Delta\gamma)\\
+&amp;+D_z(2(G+\gamma)\Delta\gamma+(\Delta\gamma)^2+\Delta p_m).
+\end{split}
+\tag{FC5.5}
+\]">\[
+\begin{split}
+E_{\theta,\rm new}-\overline E_\theta={}&amp;-\varepsilon\partial_T\Delta v-\varepsilon(\Delta_0-R^{-2})\Delta v\\
+&amp;+(D_r+2/R)((b+\beta)\Delta v+(V+v)\Delta\beta+\Delta\beta\Delta v)\\
+&amp;+D_z((G+\gamma)\Delta v+(V+v)\Delta\gamma+\Delta\gamma\Delta v),\\
+E_{z,\rm new}-\overline E_z={}&amp;-\varepsilon\partial_T\Delta\gamma-\varepsilon\Delta_0\Delta\gamma+\mathcal F_{\rm ax}\\
+&amp;+(D_r+1/R)((b+\beta)\Delta\gamma+(G+\gamma)\Delta\beta+\Delta\beta\Delta\gamma)\\
+&amp;+D_z(2(G+\gamma)\Delta\gamma+(\Delta\gamma)^2+\Delta p_m).
+\end{split}
+\tag{FC5.5}
+\]</span>
+<p>The wave covariance is unchanged by a mean update. The four nonflat types of terms in (FC5.5) have the following bounds, using <span class="math" data-tex="\(b\)">\(b\)</span> of order one in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, old radial mean order <span class="math" data-tex="\(1.9\)">\(1.9\)</span>, and the new radial order <span class="math" data-tex="\(H+1\)">\(H+1\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th style="text-align:right">Class exponent at least</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slow-time derivative</td>
+<td style="text-align:right"><span class="math" data-tex="\(H+1\)">\(H+1\)</span></td>
+</tr>
+<tr>
+<td>Radial flux, including every old-new and new-new product</td>
+<td style="text-align:right"><span class="math" data-tex="\(H+1-\kappa_s\)">\(H+1-\kappa_s\)</span></td>
+</tr>
+<tr>
+<td>Axial flux, including the full pressure change</td>
+<td style="text-align:right"><span class="math" data-tex="\(H+1\)">\(H+1\)</span></td>
+</tr>
+<tr>
+<td>Viscosity with at most two fast radial derivatives</td>
+<td style="text-align:right"><span class="math" data-tex="\(H+1-2\kappa_s\)">\(H+1-2\kappa_s\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example the new-new radial product has exponent <span class="math" data-tex="\(2H+1-\kappa_s\)">\(2H+1-\kappa_s\)</span>, above the displayed bound since <span class="math" data-tex="\(H\ge1.2-2\kappa_s&gt;0\)">\(H\ge1.2-2\kappa_s&gt;0\)</span>. Every remaining product is included explicitly in (FC5.5); the termwise all-derivative estimates are T4. As <span class="math" data-tex="\(H+1-2\kappa_s=C_*+1-4\kappa_s&gt;C_*+0.18-\kappa_s\)">\(H+1-2\kappa_s=C_*+1-4\kappa_s&gt;C_*+0.18-\kappa_s\)</span>, (FC4.10) gives the full, exact residual estimate</p>
+<span class="math math-display" data-tex="\[
+E_{\theta,\rm new},E_{z,\rm new}\in\mathsf M_{C_*+0.18-\kappa_s}.
+\tag{FC5.6}
+\]">\[
+E_{\theta,\rm new},E_{z,\rm new}\in\mathsf M_{C_*+0.18-\kappa_s}.
+\tag{FC5.6}
+\]</span>
+<p>This includes <span class="math" data-tex="\(\mathcal F_{\rm ax}\)">\(\mathcal F_{\rm ax}\)</span> using its coefficient bounds above. It can simultaneously be recorded as an additive flat residual with the exact decomposition CS3.3. Its velocity contribution continues to enter all later products.</p>
+<p>The increments have zero auxiliary average, including the complete axial reconstruction, by Haar translation invariance in T3. Thus both moments in (FC0.2) are unchanged. T4.4 gives the exact defect changes in <span class="math" data-tex="\(\mathsf S_{H+0.9}\)">\(\mathsf S_{H+0.9}\)</span>; it does not cancel the old defects, so they remain in <span class="math" data-tex="\(\mathsf S_H\)">\(\mathsf S_H\)</span>. The only new nonzero harmonic terms are the interactions of this mean increment with the current exact wave. W7 gives class <span class="math" data-tex="\(\mathsf W_H\)">\(\mathsf W_H\)</span>. All supports and envelopes required for the next pulse solve are preserved by CS1.</p>
+<h2 id="fc6-cycle-step-4-the-five-exact-rows-and-all-nonlinear-terms">FC6. Cycle step 4: the five exact rows and all nonlinear terms</h2>
+<p>Use the current three defects after step 3. The fixed moment inverse M3 supplies auxiliary-independent increments solving the original five equations</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int R^2\Delta v\,dR=0,\qquad\int R\gamma_d\,dR=0,\\
+\int (2V/R)\Delta v\,dR=-\mathcal P,\\
+\int R^2(G\Delta v+V\gamma_d)\,dR=-\mathcal J_\theta,\\
+\int(2RG\gamma_d-RV\Delta v)\,dR=-\mathcal J_z.
+\end{gathered}
+\tag{FC6.1}
+\]">\[
+\begin{gathered}
+\int R^2\Delta v\,dR=0,\qquad\int R\gamma_d\,dR=0,\\
+\int (2V/R)\Delta v\,dR=-\mathcal P,\\
+\int R^2(G\Delta v+V\gamma_d)\,dR=-\mathcal J_\theta,\\
+\int(2RG\gamma_d-RV\Delta v)\,dR=-\mathcal J_z.
+\end{gathered}
+\tag{FC6.1}
+\]</span>
+<p>All terms are retained, including the occurrences of <span class="math" data-tex="\(G\)">\(G\)</span>, which are identically zero on the prescribed mean patch by original (5.44)/(8.24). M2 gives the physical measure and viscosity factor for every row. M3 proves invertibility from the fixed profiles and <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, with no smallness condition on the target triple. M4 proves that the actual potential has <span class="math" data-tex="\(\Delta\gamma=\gamma_d\)">\(\Delta\gamma=\gamma_d\)</span> exactly and <span class="math" data-tex="\(\Delta\beta\in\mathsf M_{H+1}\)">\(\Delta\beta\in\mathsf M_{H+1}\)</span>, because the second row makes its total weighted axial moment zero. The tangential increments are in <span class="math" data-tex="\(\mathsf M_H\)">\(\mathsf M_H\)</span>, all supported in the fixed interior patch. The first two rows preserve the two zero moments.</p>
+<p>Keep the actual wave fixed and expand the radial source. Its complete remainder beyond <span class="math" data-tex="\((2V/R)\Delta v\)">\((2V/R)\Delta v\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal R_g={}&amp;-\mathfrak t_*\Delta\beta
+-(D_r+R^{-1})(2b\Delta\beta+2\beta\Delta\beta+(\Delta\beta)^2)\\
+&amp;-D_z(b\Delta\gamma+G\Delta\beta+\beta\Delta\gamma+\gamma\Delta\beta+\Delta\beta\Delta\gamma)\\
+&amp;+(2v\Delta v+(\Delta v)^2)/R+\varepsilon(\Delta_0-R^{-2})\Delta\beta.
+\end{split}
+\tag{FC6.2}
+\]">\[
+\begin{split}
+\mathcal R_g={}&amp;-\mathfrak t_*\Delta\beta
+-(D_r+R^{-1})(2b\Delta\beta+2\beta\Delta\beta+(\Delta\beta)^2)\\
+&amp;-D_z(b\Delta\gamma+G\Delta\beta+\beta\Delta\gamma+\gamma\Delta\beta+\Delta\beta\Delta\gamma)\\
+&amp;+(2v\Delta v+(\Delta v)^2)/R+\varepsilon(\Delta_0-R^{-2})\Delta\beta.
+\end{split}
+\tag{FC6.2}
+\]</span>
+<p>This equality also applies to step 3 before invoking auxiliary independence. All <span class="math" data-tex="\(W\)">\(W\)</span> terms cancel here because the wave field is unchanged, not because its remainders are ignored. In the present step <span class="math" data-tex="\(\mathfrak t_*\Delta\beta=-\varepsilon\partial_T\Delta\beta\)">\(\mathfrak t_*\Delta\beta=-\varepsilon\partial_T\Delta\beta\)</span>, and all derivatives of new increments in <span class="math" data-tex="\(D_r\)">\(D_r\)</span> are ordinary radial derivatives. The table in M6 covers every term in (FC6.2), with lower bounds</p>
+<span class="math math-display" data-tex="\[
+H+2,\ H+2.9-\kappa_s,\ 2H+2,\ H+2.9,
+\ H+0.9,\ 2H,\ H+4.
+\]">\[
+H+2,\ H+2.9-\kappa_s,\ 2H+2,\ H+2.9,
+\ H+0.9,\ 2H,\ H+4.
+\]</span>
+<p>All are at least <span class="math" data-tex="\(H+0.9\)">\(H+0.9\)</span>, because <span class="math" data-tex="\(H&gt;0.9\)">\(H&gt;0.9\)</span>. These estimates apply after every fixed derivative by the finite product rule. Thus <span class="math" data-tex="\(\mathcal R_g\in\mathsf M_{H+0.9}\)">\(\mathcal R_g\in\mathsf M_{H+0.9}\)</span>.</p>
+<p>The three base-linear changes cancel the old defects by the last three rows in (FC6.1). The exact remaining values are</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal P_{\rm new}&amp;=\int\langle\mathcal R_g\rangle_Y\,dR,\\
+\mathcal J_{\theta,\rm new}&amp;=\int R^2\langle\gamma\Delta v+v\Delta\gamma+\Delta\gamma\Delta v\rangle_Y\,dR,\\
+\mathcal J_{z,\rm new}&amp;=\int R\langle2\gamma\Delta\gamma+(\Delta\gamma)^2\rangle_Y\,dR
+-\tfrac12\int R^2\langle\mathcal R_g\rangle_Y\,dR.
+\end{split}
+\tag{FC6.3}
+\]">\[
+\begin{split}
+\mathcal P_{\rm new}&amp;=\int\langle\mathcal R_g\rangle_Y\,dR,\\
+\mathcal J_{\theta,\rm new}&amp;=\int R^2\langle\gamma\Delta v+v\Delta\gamma+\Delta\gamma\Delta v\rangle_Y\,dR,\\
+\mathcal J_{z,\rm new}&amp;=\int R\langle2\gamma\Delta\gamma+(\Delta\gamma)^2\rangle_Y\,dR
+-\tfrac12\int R^2\langle\mathcal R_g\rangle_Y\,dR.
+\end{split}
+\tag{FC6.3}
+\]</span>
+<p>In the fifth row, the pressure contribution is exactly <span class="math" data-tex="\(-\tfrac12R^2(2V/R)\Delta v=-RV\Delta v\)">\(-\tfrac12R^2(2V/R)\Delta v=-RV\Delta v\)</span>, with its minus sign. Every product in (FC6.3) has exponent at least <span class="math" data-tex="\(H+0.9\)">\(H+0.9\)</span>, using the old <span class="math" data-tex="\(0.9\)">\(0.9\)</span> tangential means and <span class="math" data-tex="\(H\ge0.9\)">\(H\ge0.9\)</span>. Radial integration and its differentiated forms preserve this exponent on the fixed shell. Therefore</p>
+<span class="math math-display" data-tex="\[
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)_{\rm new}
+\in\mathsf S_{H+0.9}=\mathsf S_{C_*+0.9-2\kappa_s}.
+\tag{FC6.4}
+\]">\[
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)_{\rm new}
+\in\mathsf S_{H+0.9}=\mathsf S_{C_*+0.9-2\kappa_s}.
+\tag{FC6.4}
+\]</span>
+<p>This is the proved M6 refinement of the original weaker <span class="math" data-tex="\(C_*+0.9-4\kappa_s\)">\(C_*+0.9-4\kappa_s\)</span>, now propagated through the actual complete cycle.</p>
+<p>Recompute pressure from <span class="math" data-tex="\(g_{r,\rm new}\)">\(g_{r,\rm new}\)</span>. The full change is <span class="math" data-tex="\(\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P)\)">\(\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P)\)</span>, retaining the compact remainder in (FC0.5), and is in <span class="math" data-tex="\(\mathsf M_H\)">\(\mathsf M_H\)</span>. The exact tangential change is M7.3, or (FC5.5) with the original fast-time cancellation removed and <span class="math" data-tex="\(-\varepsilon\partial_T\)">\(-\varepsilon\partial_T\)</span> acting on the new means. M7 proves class <span class="math" data-tex="\(\mathsf M_{H+1}\)">\(\mathsf M_{H+1}\)</span>. It preserves (FC5.6). W7 again gives a nonzero harmonic change in <span class="math" data-tex="\(\mathsf W_H\)">\(\mathsf W_H\)</span>. Every full current quantity, rather than its previous value or just its principal term, has thus been used for the final state.</p>
+<h2 id="fc7-simultaneous-improvement-and-preservation-of-the-accumulated-fields">FC7. Simultaneous improvement and preservation of the accumulated fields</h2>
+<p>The exact operations give the following end-of-cycle bounds:</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\mathcal G_{\rm wave,new}&amp;\in\mathsf W_{B+0.4-\kappa_s},\\
+E_{\theta,\rm new},E_{z,\rm new}&amp;\in\mathsf M_{C_*+0.18-\kappa_s},\\
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)_{\rm new}&amp;\in\mathsf S_{C_*+0.9-2\kappa_s}.
+\end{split}
+\tag{FC7.1}
+\]">\[
+\begin{split}
+\mathcal G_{\rm wave,new}&amp;\in\mathsf W_{B+0.4-\kappa_s},\\
+E_{\theta,\rm new},E_{z,\rm new}&amp;\in\mathsf M_{C_*+0.18-\kappa_s},\\
+(\mathcal P,\mathcal J_\theta,\mathcal J_z)_{\rm new}&amp;\in\mathsf S_{C_*+0.9-2\kappa_s}.
+\end{split}
+\tag{FC7.1}
+\]</span>
+<p>For the wave bound, steps 3–4 add only order <span class="math" data-tex="\(H\)">\(H\)</span>, and
+<span class="math" data-tex="\(H-(B+0.4-\kappa_s)=0.1-\kappa_s&gt;0\)">\(H-(B+0.4-\kappa_s)=0.1-\kappa_s&gt;0\)</span>.
+For the full tangential mean bound, the step 3 changes have gain <span class="math" data-tex="\(1-4\kappa_s\)">\(1-4\kappa_s\)</span> over <span class="math" data-tex="\(C_*\)">\(C_*\)</span>, the step 4 changes gain <span class="math" data-tex="\(1-2\kappa_s\)">\(1-2\kappa_s\)</span>, and both exceed <span class="math" data-tex="\(0.18-\kappa_s\)">\(0.18-\kappa_s\)</span>. The flat axial reconstruction has every required coefficient class, as shown in FC5. The defect bound is the full nonlinear equality FC6.3 and its estimate FC6.4.</p>
+<p>Since <span class="math" data-tex="\(\kappa_s=1/100000\)">\(\kappa_s=1/100000\)</span>, the three guaranteed gains in (FC7.1) are exactly</p>
+<span class="math math-display" data-tex="\[
+\frac{39999}{100000},\qquad\frac{17999}{100000},\qquad\frac{89998}{100000}.
+\tag{FC7.2}
+\]">\[
+\frac{39999}{100000},\qquad\frac{17999}{100000},\qquad\frac{89998}{100000}.
+\tag{FC7.2}
+\]</span>
+<p>Every one exceeds the original required <span class="math" data-tex="\(1/10=10000/100000\)">\(1/10=10000/100000\)</span>. Their smallest value is <span class="math" data-tex="\(17999/100000\)">\(17999/100000\)</span>. Thus (FC7.1) proves the original <span class="math" data-tex="\(B_{j+1}=B_j+1/10\)">\(B_{j+1}=B_j+1/10\)</span>, <span class="math" data-tex="\(C_{j+1}^*=C_j^*+1/10\)">\(C_{j+1}^*=C_j^*+1/10\)</span>, with the exact original <span class="math" data-tex="\(\sigma_j\)">\(\sigma_j\)</span> left unchanged. Even the source's unrevised bounds close directly: its two wave minima are <span class="math" data-tex="\(0.4\)">\(0.4\)</span> and <span class="math" data-tex="\(0.4-\kappa_s\)">\(0.4-\kappa_s\)</span>, its later wave gain is <span class="math" data-tex="\(H-B=1/2-2\kappa_s&gt;0.1\)">\(H-B=1/2-2\kappa_s&gt;0.1\)</span>, its tangential minimum is <span class="math" data-tex="\(\min(0.17,1-4\kappa_s)=0.17&gt;0.1\)">\(\min(0.17,1-4\kappa_s)=0.17&gt;0.1\)</span>, and its defect gain <span class="math" data-tex="\(0.9-4\kappa_s&gt;0.1\)">\(0.9-4\kappa_s&gt;0.1\)</span>. The strengthened bounds are therefore additional consequences of the checked operations, not repairs needed to make the original numerical margins positive.</p>
+<p>It remains to verify every accumulated-field assertion, because improving a residual alone would not establish the next finite state. The two wave-velocity increments have exponents <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(B-\kappa_s\)">\(B-\kappa_s\)</span>, respectively. Their minima over all incoming stages are <span class="math" data-tex="\(0.7\)">\(0.7\)</span> and <span class="math" data-tex="\(0.69999\)">\(0.69999\)</span>, both above <span class="math" data-tex="\(0.68\)">\(0.68\)</span>, and therefore above <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Adding them to the full old wave proves both <span class="math" data-tex="\(w_{\rm new}\in\mathsf W_{1/2}\)">\(w_{\rm new}\in\mathsf W_{1/2}\)</span> and <span class="math" data-tex="\(w_{\rm new}-w_0^{\rm tan}\in\mathsf W_{0.68}\)">\(w_{\rm new}-w_0^{\rm tan}\in\mathsf W_{0.68}\)</span>. The mean operations change no wave velocity. All harmonic coefficients of an equal label are collected before making these assertions; the number is finite at each stage by CS1.</p>
+<p>Only steps 3–4 add mean velocities. Their tangential exponent is <span class="math" data-tex="\(H\ge1.2-2\kappa_s=1.19998&gt;0.9\)">\(H\ge1.2-2\kappa_s=1.19998&gt;0.9\)</span> and radial exponent <span class="math" data-tex="\(H+1&gt;1.9\)">\(H+1&gt;1.9\)</span>. Mean-pressure changes have exponents <span class="math" data-tex="\(C_*-\kappa_s\)">\(C_*-\kappa_s\)</span> in step 1 and at least <span class="math" data-tex="\(H\)">\(H\)</span> in each other step, all greater than <span class="math" data-tex="\(0.9\)">\(0.9\)</span>. The old mean pressure is not replaced by these changes in estimating its total. Finite addition consequently preserves <span class="math" data-tex="\(v,\gamma,p_m\in\mathsf M_{0.9}\)">\(v,\gamma,p_m\in\mathsf M_{0.9}\)</span> and <span class="math" data-tex="\(\beta\in\mathsf M_{1.9}\)">\(\beta\in\mathsf M_{1.9}\)</span>. Constants may grow with this finite stage, as allowed by the definition.</p>
+<p>The two wave updates leave mean velocities and their moments unchanged. The temporal update has zero auxiliary average in every complete mean component. The moment update preserves the two integrals by the first two exact rows of (FC6.1). Hence (9.10) holds exactly in the new state. Every velocity increment is the original full potential curl or direct azimuthal field, so incompressibility and reality are exact. Every pressure was reconstructed from the current radial source. CS1–CS5 prove the source support, finite harmonic set, all fixed derivative bounds, torus compatibility and the exact flat-residual decomposition needed for another cycle. These checks supply every item in the finite-state definition, not only the exponent comparisons.</p>
+<p>Equations (FC7.1)–(FC7.2) also prove the following refinement: the same four operations improve all three decay exponents by at least <span class="math" data-tex="\(0.18-\kappa_s=0.17999\)">\(0.18-\kappa_s=0.17999\)</span>, whereas the original proposition states the common gain <span class="math" data-tex="\(0.1\)">\(0.1\)</span>. Its proof uses the already derived disappearance of the fast radial derivative after full Haar averaging in C8, now applied in FC4, and the complete moment remainder in M6, now applied in FC6. No state definition, original coordinate, operation, source object or target theorem is changed. This is a lower bound on this cycle's gain; no optimality, novelty or stronger global blowup theorem is asserted.</p>
+<p>The opening diagram gives the four operations and the three exact gains in (FC7.2). Their complete proofs are FC1–FC7.</p>
+<h2 id="fc8-a-common-positive-domain-for-every-finite-stage">FC8. A common positive domain for every finite stage</h2>
+<p>Original Lemma 9.7 requires one <span class="math" data-tex="\(q_{\rm big}&gt;0\)">\(q_{\rm big}&gt;0\)</span>, independent of the finite stage and derivative order. The local derivations already identify the finite list of value conditions needed to choose it: the source base's fixed enlarged annulus and mean patch, the pulse's positive denominators and frame comparison from P1, the homogeneous-pulse radial lower bound from P5, and the positive primary covariance margin and invertibility in C3. Choose <span class="math" data-tex="\(0&lt;q_{\rm big}\le q_*\)">\(0&lt;q_{\rm big}\le q_*\)</span> satisfying those conditions and <span class="math" data-tex="\(q_{\rm big}&lt;1\)">\(q_{\rm big}&lt;1\)</span>. V0–V7 and <a href="base-field-realization-audit.html">Z0–Z8</a> supply the actual original input properties for this choice. The base cutoff sequence is fixed first. Its finite value comparisons in Z6.2–Z6.4 have constants independent of the later correction stage; decreasing q_big to meet the finite pulse and cone conditions therefore does not change the constructed base or its coefficients.</p>
+<p>No later step changes the base, primary amplitudes, phases, compact supports or inverse matrices. The inhomogeneous pulse equation is linear with these fixed coefficients. P3 proves the exact propagator relation for every nonzero integer harmonic,</p>
+<span class="math math-display" data-tex="\[
+V_m(v,w)=\exp\left[-(m^2-1)\int_w^v d(s)\,ds\right]V_1(v,w),
+\qquad 0\le w\le v\le L_s,\qquad d(s)=\varepsilon k^2|n_\Phi(s)|^2&gt;0.
+\tag{FC8.1}
+\]">\[
+V_m(v,w)=\exp\left[-(m^2-1)\int_w^v d(s)\,ds\right]V_1(v,w),
+\qquad 0\le w\le v\le L_s,\qquad d(s)=\varepsilon k^2|n_\Phi(s)|^2&gt;0.
+\tag{FC8.1}
+\]</span>
+<p>The scalar factor is at most one; the same value threshold works for every harmonic. Differentiation introduces powers of <span class="math" data-tex="\(m\)">\(m\)</span> into constants for the finite harmonic set and polynomial factors in <span class="math" data-tex="\(S_*\)">\(S_*\)</span>, not a new smallness requirement. The signed inverse always divides by the original <span class="math" data-tex="\(2a_\sigma\)">\(2a_\sigma\)</span>, whose vanishing at the shell edge is handled by the exact weighted division C5. It never divides by an accumulated amplitude. The five-profile inverse is fixed and linear for arbitrary real targets. Pressure reconstruction, temporal inversion and modified radial integration are fixed linear maps. Their estimates are homogeneous in the source norms. Large finite constants near the upper end of the domain do not prevent any of these operations from being defined.</p>
+<p>All higher derivative estimates permit constants depending on that fixed order. The source's unweighted asymptotic derivative bounds can be used on this same <span class="math" data-tex="\(q_{\rm big}\)">\(q_{\rm big}\)</span> interval: for a derivative whose asymptotic bound initially uses a smaller threshold, smoothness on the intervening compact region gives a finite larger constant. The weighted shell estimates are the original (5.43) and the proved weighted operator estimates, retaining their exact edge factors; this argument does not replace them with an unweighted compactness claim at a vanishing edge. The only estimates required to be small are the finite value comparisons already used in choosing the domain.</p>
+<p>For completeness, each fixed output order uses finitely many input derivatives. Represent a finite construction by its actual finite graph of sums, products, explicit derivatives and these inverse maps. For a source vertex <span class="math" data-tex="\(a\)">\(a\)</span>, let <span class="math" data-tex="\(D_{v,a}(m)\)">\(D_{v,a}(m)\)</span> be a sufficient input order at <span class="math" data-tex="\(a\)">\(a\)</span> to control derivatives through order <span class="math" data-tex="\(m\)">\(m\)</span> at vertex <span class="math" data-tex="\(v\)">\(v\)</span>. If the operation at <span class="math" data-tex="\(v\)">\(v\)</span> uses an input <span class="math" data-tex="\(w\)">\(w\)</span> through order <span class="math" data-tex="\(m+d_{v,w}\)">\(m+d_{v,w}\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+D_{v,a}(m)=\max_{w\to v}D_{w,a}(m+d_{v,w}),\qquad
+D_{a,a}(m)=m,\qquad D_{b,a}(m)=0\quad(b\ne a\text{ a source vertex}).
+\tag{FC8.2}
+\]">\[
+D_{v,a}(m)=\max_{w\to v}D_{w,a}(m+d_{v,w}),\qquad
+D_{a,a}(m)=m,\qquad D_{b,a}(m)=0\quad(b\ne a\text{ a source vertex}).
+\tag{FC8.2}
+\]</span>
+<p>Explicit differential operators have finite order; product rules use finite sums through order <span class="math" data-tex="\(m\)">\(m\)</span>; T1's torus inverse uses four additional derivatives in its displayed bound; R4's primitive preserves coefficient derivative order; P4's differentiated initial-value equation uses derivatives through order <span class="math" data-tex="\(m\)">\(m\)</span> and lower solution derivatives already controlled by induction. To request a particular flat-error power, R5–R6 use a finite number of integrations by parts, fixed for that output order and power, and hence a finite additional input order in (FC8.2). Because the graph is finite and has no cycles in its dependence on already constructed quantities, (FC8.2) is finite at each vertex. Exponent losses from explicit <span class="math" data-tex="\(D_r\)">\(D_r\)</span> operators are counted where those operators occur; they are not repeated every time an already established coefficient estimate is differentiated.</p>
+<p>Thus every finite corrected state is defined on the same <span class="math" data-tex="\(0&lt;q&lt;q_{\rm big}\)">\(0&lt;q&lt;q_{\rm big}\)</span>, with its entire finite collection of derivative estimates. This proves the local common-domain statement of Lemma 9.7. The companion <a href="physical-realization-audit.html">physical-realization audit</a>, L0–L7, now derives the stage-independent physical derivative loss and the actual summation, using the exact potentials and pressures in original (9.15). The actual global leading profile and base are supplied by V0–V7 and <a href="base-field-realization-audit.html">Z0–Z8</a>. Their complete receiving maps and all assertions of Theorem 3.1 are assembled in <a href="local-construction-assembly-audit.html">I0–I7</a>. Final localization and the force argument are derived in <a href="terminal-force-and-blowup-audit.html">F0–F8</a>, with the actual fields supplied by I0–I7.</p>
+<h2 id="fc9-five-worked-exercises">FC9. Five worked exercises</h2>
+<h3 id="exercise-1-the-physical-stress-all-moments-and-the-original-viscosity">Exercise 1. The physical stress, all moments, and the original viscosity</h3>
+<p>Carry the complete finite state and the signed-stress operation back to the original viscosity <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>. Keep every coordinate, velocity, pressure, residual and moment factor, and verify the sign of the compact stress.</p>
+<p><strong>Solution.</strong> Use the exact coordinates and original auxiliary phase</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\tfrac12+h,\quad D=\tfrac12-h,\quad Q=2^{-\ell},\quad\varepsilon=Q^h,\\
+R=\frac{r_\nu}{\sqrt{\nu Q}},\quad
+Z=\frac{z_\nu}{\sqrt\nu Q^D},\quad T=\frac{1-t}{Q},\\
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\quad
+X=\frac{r_\nu^2}{2\nu q_\nu},\quad
+\eta=\frac{z_\nu}{\sqrt\nu q_\nu^D},\\
+Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_t t\pmod{\mathbb Z^2}.
+\end{gathered}
+\tag{FC9.1}
+\]">\[
+\begin{gathered}
+A=\tfrac12+h,\quad D=\tfrac12-h,\quad Q=2^{-\ell},\quad\varepsilon=Q^h,\\
+R=\frac{r_\nu}{\sqrt{\nu Q}},\quad
+Z=\frac{z_\nu}{\sqrt\nu Q^D},\quad T=\frac{1-t}{Q},\\
+q_\nu-\frac{z_\nu^2}{\nu}q_\nu^{2h}=1-t,\quad
+X=\frac{r_\nu^2}{2\nu q_\nu},\quad
+\eta=\frac{z_\nu}{\sqrt\nu q_\nu^D},\\
+Y=v_r(r_\nu/\sqrt\nu)^{d_r}+v_t t\pmod{\mathbb Z^2}.
+\end{gathered}
+\tag{FC9.1}
+\]</span>
+<p>The angle and time are unchanged. All the constants defining <span class="math" data-tex="\(v_r,v_t,d_r\)">\(v_r,v_t,d_r\)</span>, the integer covering indices, and the original labelled phases are those of OS1–OS3 in the support lesson. Every field below is evaluated at that same auxiliary map. The full physical fields and residual are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_\nu=\sqrt\nu Q^{-A}u_*,\qquad
+p_\nu=\nu Q^{-2A}p_*,\\
+\mathscr R_\nu(u_\nu,p_\nu)
+=\sqrt\nu Q^{-2A-1/2}\mathscr R_*(u_*,p_*),\\
+\mathscr R_*=\mathfrak t_*u_*+\mathcal B(u_*,u_*)
+-\varepsilon\Delta_*u_*+\nabla_*p_*.
+\end{gathered}
+\tag{FC9.2}
+\]">\[
+\begin{gathered}
+u_\nu=\sqrt\nu Q^{-A}u_*,\qquad
+p_\nu=\nu Q^{-2A}p_*,\\
+\mathscr R_\nu(u_\nu,p_\nu)
+=\sqrt\nu Q^{-2A-1/2}\mathscr R_*(u_*,p_*),\\
+\mathscr R_*=\mathfrak t_*u_*+\mathcal B(u_*,u_*)
+-\varepsilon\Delta_*u_*+\nabla_*p_*.
+\end{gathered}
+\tag{FC9.2}
+\]</span>
+<p>To verify the time factor, <span class="math" data-tex="\(2A+1/2=A+1+h\)">\(2A+1/2=A+1+h\)</span>; therefore division of <span class="math" data-tex="\(\partial_tu_\nu\)">\(\partial_tu_\nu\)</span> by the residual factor gives <span class="math" data-tex="\(Q^{1+h}\partial_t\)">\(Q^{1+h}\partial_t\)</span>, whose complete chain rule is <span class="math" data-tex="\(\mathfrak t_*=-\varepsilon\partial_T+c_iN_i\)">\(\mathfrak t_*=-\varepsilon\partial_T+c_iN_i\)</span>. A spatial derivative has factor <span class="math" data-tex="\((\nu Q)^{-1/2}\)">\((\nu Q)^{-1/2}\)</span>, with the axial part represented by <span class="math" data-tex="\(D_z=\varepsilon\partial_Z\)">\(D_z=\varepsilon\partial_Z\)</span>. The coefficient of the vector Laplacian is consequently
+<span class="math" data-tex="\(\nu\sqrt\nu Q^{-A}(\nu Q)^{-1}/(\sqrt\nu Q^{-2A-1/2})=Q^h\)">\(\nu\sqrt\nu Q^{-A}(\nu Q)^{-1}/(\sqrt\nu Q^{-2A-1/2})=Q^h\)</span>.
+Both transport and pressure have the common factor in (FC9.2). The full cylindrical connection and vector-Laplacian terms are retained in CS4.</p>
+<p>A chart vector potential has physical factor <span class="math" data-tex="\(\nu Q^{1/2-A}\)">\(\nu Q^{1/2-A}\)</span>, so its full physical curl has velocity factor <span class="math" data-tex="\(\sqrt\nu Q^{-A}\)">\(\sqrt\nu Q^{-A}\)</span>. For the direct azimuthal mean and the axial mean, changing the radial variable gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int r_\nu^2\langle v_\nu\rangle_Y\,dr_\nu
+&amp;=\nu^2Q^{3/2-A}\int R^2\langle v\rangle_Y\,dR,\\
+\int r_\nu\langle\gamma_\nu\rangle_Y\,dr_\nu
+&amp;=\nu^{3/2}Q^{1-A}\int R\langle\gamma\rangle_Y\,dR.
+\end{aligned}
+\tag{FC9.3}
+\]">\[
+\begin{aligned}
+\int r_\nu^2\langle v_\nu\rangle_Y\,dr_\nu
+&amp;=\nu^2Q^{3/2-A}\int R^2\langle v\rangle_Y\,dR,\\
+\int r_\nu\langle\gamma_\nu\rangle_Y\,dr_\nu
+&amp;=\nu^{3/2}Q^{1-A}\int R\langle\gamma\rangle_Y\,dR.
+\end{aligned}
+\tag{FC9.3}
+\]</span>
+<p>These two nonzero multipliers preserve both exact zero moments. The three physical defects, defined from the physical radial source and the physical flux integrals with their original measures, obey</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal P_\nu=\nu Q^{-2A}\mathcal P,\\
+\mathcal J_{\theta,\nu}=\nu^{5/2}Q^{3/2-2A}\mathcal J_\theta,\qquad
+\mathcal J_{z,\nu}=\nu^2Q^{1-2A}\mathcal J_z.
+\end{gathered}
+\tag{FC9.4}
+\]">\[
+\begin{gathered}
+\mathcal P_\nu=\nu Q^{-2A}\mathcal P,\\
+\mathcal J_{\theta,\nu}=\nu^{5/2}Q^{3/2-2A}\mathcal J_\theta,\qquad
+\mathcal J_{z,\nu}=\nu^2Q^{1-2A}\mathcal J_z.
+\end{gathered}
+\tag{FC9.4}
+\]</span>
+<p>Indeed the physical radial source has factor <span class="math" data-tex="\(\sqrt\nu Q^{-2A-1/2}\)">\(\sqrt\nu Q^{-2A-1/2}\)</span>; one radial integration supplies <span class="math" data-tex="\(\sqrt{\nu Q}\)">\(\sqrt{\nu Q}\)</span>, while its second moment supplies <span class="math" data-tex="\((\nu Q)^{3/2}\)">\((\nu Q)^{3/2}\)</span>. The quadratic velocity flux has factor <span class="math" data-tex="\(\nu Q^{-2A}\)">\(\nu Q^{-2A}\)</span>; its second and first radial moments respectively supply <span class="math" data-tex="\((\nu Q)^{3/2}\)">\((\nu Q)^{3/2}\)</span> and <span class="math" data-tex="\(\nu Q\)">\(\nu Q\)</span>. These are precisely the three factors in (FC9.4), including the axial pressure moment with coefficient <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span>.</p>
+<p>For <span class="math" data-tex="\(e=2,1\)">\(e=2,1\)</span>, retain <span class="math" data-tex="\(F_{e,\nu},b_{e,\nu},M_{e,\nu}\)">\(F_{e,\nu},b_{e,\nu},M_{e,\nu}\)</span> from FC4.1–FC4.2. Their full conversion is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_{e,\nu}&amp;=\sqrt\nu Q^{-2A-1/2}\overline E_e,\\
+b_{e,\nu}&amp;=(\nu q_\nu)^{-(e+1)/2}
+\widehat b_e(r_\nu/\sqrt{\nu q_\nu}),\\
+M_{e,\nu}&amp;=\nu^{(e+2)/2}Q^{e/2-2A}m_e,\\
+\sigma_{e,\nu}&amp;=\nu Q^{-2A}\Sigma_e.
+\end{aligned}
+\tag{FC9.5}
+\]">\[
+\begin{aligned}
+F_{e,\nu}&amp;=\sqrt\nu Q^{-2A-1/2}\overline E_e,\\
+b_{e,\nu}&amp;=(\nu q_\nu)^{-(e+1)/2}
+\widehat b_e(r_\nu/\sqrt{\nu q_\nu}),\\
+M_{e,\nu}&amp;=\nu^{(e+2)/2}Q^{e/2-2A}m_e,\\
+\sigma_{e,\nu}&amp;=\nu Q^{-2A}\Sigma_e.
+\end{aligned}
+\tag{FC9.5}
+\]</span>
+<p>Differentiate the defining lower-endpoint integral, including its minus sign. The two product-rule terms give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial_{r_\nu}\sigma_{e,\nu}
+&amp;=-\frac e{r_\nu}\sigma_{e,\nu}-F_{e,\nu}
++b_{e,\nu}M_{e,\nu},\\
+(\partial_{r_\nu}+e/r_\nu)\sigma_{e,\nu}
+&amp;=\sqrt\nu Q^{-2A-1/2}
+(-\overline E_e+\rho_{e,*}m_e).
+\end{aligned}
+\tag{FC9.6}
+\]">\[
+\begin{aligned}
+\partial_{r_\nu}\sigma_{e,\nu}
+&amp;=-\frac e{r_\nu}\sigma_{e,\nu}-F_{e,\nu}
++b_{e,\nu}M_{e,\nu},\\
+(\partial_{r_\nu}+e/r_\nu)\sigma_{e,\nu}
+&amp;=\sqrt\nu Q^{-2A-1/2}
+(-\overline E_e+\rho_{e,*}m_e).
+\end{aligned}
+\tag{FC9.6}
+\]</span>
+<p>The integral vanishes below the source, and its total weighted moment is zero, so it vanishes above it as well. CS2 proves every edge derivative. This proves compact support, the sign, and every factor for the operation actually used in the cycle.</p>
+<h3 id="exercise-2-how-many-angular-harmonics-can-one-cycle-create">Exercise 2. How many angular harmonics can one cycle create?</h3>
+<p>Keep the full velocities and supported residuals separate when counting harmonics. Prove a bound for each after <span class="math" data-tex="\(j\)">\(j\)</span> complete cycles, starting from the initialized primary curls. Include signed updates, means, and zero harmonics.</p>
+<p><strong>Solution.</strong> For each label, let <span class="math" data-tex="\(\mathscr V_j\)">\(\mathscr V_j\)</span> be the nonzero integers appearing in its full wave velocity and <span class="math" data-tex="\(\mathscr H_j\)">\(\mathscr H_j\)</span> those appearing in its supported nonzero residual. Take unions over labels; the source classes require finite sets independent of band. Let <span class="math" data-tex="\(v_j\)">\(v_j\)</span> and <span class="math" data-tex="\(g_j\)">\(g_j\)</span> be the maximum absolute integer in these sets, or zero for an empty set. The primary curls have multipliers <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Their linear residual has those multipliers, their quadratic residual has only <span class="math" data-tex="\(0,\pm2\)">\(0,\pm2\)</span>, and the initial mean operations add only interactions with the primary waves. Thus</p>
+<span class="math math-display" data-tex="\[
+v_0\le1,\qquad g_0\le2.
+\tag{FC9.7}
+\]">\[
+v_0\le1,\qquad g_0\le2.
+\tag{FC9.7}
+\]</span>
+<p>In step 1 the pulse inverse and full curl preserve each incoming source multiplier. Put <span class="math" data-tex="\(M_j=\max\{1,v_j,g_j\}\)">\(M_j=\max\{1,v_j,g_j\}\)</span>. The updated velocity therefore has integers of modulus at most <span class="math" data-tex="\(M_j\)">\(M_j\)</span>. Linear operations preserve that bound; the exact quadratic expansion adds at most two such integers, giving <span class="math" data-tex="\(2M_j\)">\(2M_j\)</span> for the supported residual. Its zero sums are assigned to the exact mean equations.</p>
+<p>Step 2 adds only <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, because the fixed signed map changes the fundamental primary amplitudes. It leaves the velocity bound <span class="math" data-tex="\(M_j\)">\(M_j\)</span> valid and the residual bound <span class="math" data-tex="\(2M_j\)">\(2M_j\)</span> valid. Steps 3 and 4 add only angularly independent means. Their linear and mean–mean terms have multiplier zero. Each nonzero output contains exactly one unchanged wave, so its multiplier has modulus at most <span class="math" data-tex="\(M_j\)">\(M_j\)</span>. No product between distinct labels survives, by the closed-support proof CS1. Consequently</p>
+<span class="math math-display" data-tex="\[
+v_{j+1}\le\max\{1,v_j,g_j\},\qquad
+g_{j+1}\le2\max\{1,v_j,g_j\}.
+\tag{FC9.8}
+\]">\[
+v_{j+1}\le\max\{1,v_j,g_j\},\qquad
+g_{j+1}\le2\max\{1,v_j,g_j\}.
+\tag{FC9.8}
+\]</span>
+<p>Induction from (FC9.7) proves</p>
+<span class="math math-display" data-tex="\[
+v_j\le2^j,\qquad g_j\le2^{j+1},\qquad
+|\mathscr V_j|\le2^{j+1},\quad|\mathscr H_j|\le2^{j+2}.
+\tag{FC9.9}
+\]">\[
+v_j\le2^j,\qquad g_j\le2^{j+1},\qquad
+|\mathscr V_j|\le2^{j+1},\quad|\mathscr H_j|\le2^{j+2}.
+\tag{FC9.9}
+\]</span>
+<p>The cardinality bounds count all nonzero integers in the corresponding symmetric interval; actual sets can be smaller. Conjugate pairing preserves reality. Auxiliary inversion may enlarge auxiliary Fourier support, but creates no angular harmonic, so it does not alter this argument. The bounds are independent of band and are finite for every finite stage. They assert no uniform bound as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>.</p>
+<h3 id="exercise-3-the-exact-covariance-left-by-the-signed-correction">Exercise 3. The exact covariance left by the signed correction</h3>
+<p>Derive the full covariance change in step 2 and the combined cycle gain. Identify the term that limits the proved common gain, keeping every old and new curl remainder.</p>
+<p><strong>Solution.</strong> Write the current wave as <span class="math" data-tex="\(w=w_0^{\rm tan}+r\)">\(w=w_0^{\rm tan}+r\)</span> and the actual signed increment as <span class="math" data-tex="\(s=t_s+r_s\)">\(s=t_s+r_s\)</span>. Bilinearity of the two averages gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\overline{\Delta W}
+={}&amp;\mathscr B(w_0^{\rm tan},t_s)+\mathscr B(r,t_s)
++\mathscr B(w,r_s)\\
+&amp;+\overline{\langle t_s\otimes t_s+t_s\otimes r_s
++r_s\otimes t_s+r_s\otimes r_s\rangle_\theta}.
+\end{aligned}
+\tag{FC9.10}
+\]">\[
+\begin{aligned}
+\overline{\Delta W}
+={}&amp;\mathscr B(w_0^{\rm tan},t_s)+\mathscr B(r,t_s)
++\mathscr B(w,r_s)\\
+&amp;+\overline{\langle t_s\otimes t_s+t_s\otimes r_s
++r_s\otimes t_s+r_s\otimes r_s\rangle_\theta}.
+\end{aligned}
+\tag{FC9.10}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathscr B(a,b)=\overline{\langle a\otimes b+b\otimes a\rangle_\theta}\)">\(\mathscr B(a,b)=\overline{\langle a\otimes b+b\otimes a\rangle_\theta}\)</span>. The final four terms together are the square of the full increment, with coefficient one. The fixed inverse prescribes only the radial–tangential components of the first tensor. Their radial divergence is <span class="math" data-tex="\(-\overline E_e+\rho_{e,*}m_e\)">\(-\overline E_e+\rho_{e,*}m_e\)</span>; the remaining components and all other tensors remain in the residual.</p>
+<p>The exact bounds <span class="math" data-tex="\(r\in\mathsf W_{0.68}\)">\(r\in\mathsf W_{0.68}\)</span>, <span class="math" data-tex="\(t_s\in\mathsf W_{B-\kappa_s}\)">\(t_s\in\mathsf W_{B-\kappa_s}\)</span>, <span class="math" data-tex="\(r_s\in\mathsf W_{C_*-2\kappa_s}\)">\(r_s\in\mathsf W_{C_*-2\kappa_s}\)</span>, and <span class="math" data-tex="\(w\in\mathsf W_{1/2}\)">\(w\in\mathsf W_{1/2}\)</span> give the respective tensor exponents</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_*+0.18-\kappa_s,\qquad C_*+1/2-2\kappa_s,\\
+2B-2\kappa_s=C_*+\sigma_j-2\kappa_s.
+\end{gathered}
+\tag{FC9.11}
+\]">\[
+\begin{gathered}
+C_*+0.18-\kappa_s,\qquad C_*+1/2-2\kappa_s,\\
+2B-2\kappa_s=C_*+\sigma_j-2\kappa_s.
+\end{gathered}
+\tag{FC9.11}
+\]</span>
+<p>The square bound follows by treating the full <span class="math" data-tex="\(s\)">\(s\)</span> as <span class="math" data-tex="\(\mathsf W_{B-\kappa_s}\)">\(\mathsf W_{B-\kappa_s}\)</span>; its higher curl terms remain included. Haar averaging commutes with <span class="math" data-tex="\(\partial_R\)">\(\partial_R\)</span> and kills the constant auxiliary derivative in <span class="math" data-tex="\(D_r\)">\(D_r\)</span>. Therefore the averaged radial divergences incur no fast radial loss. FC4.10 compares these terms with the retained moment and axial-pressure terms and gives the first exponent in (FC9.11) for the entire averaged tangential residual.</p>
+<p>The temporal operation has increments of order <span class="math" data-tex="\(H=C_*-2\kappa_s\)">\(H=C_*-2\kappa_s\)</span>, retains its exact axial remainder, and makes the full tangential residual have that same improved averaged order. The moment operation changes it only by <span class="math" data-tex="\(\mathsf M_{H+1}\)">\(\mathsf M_{H+1}\)</span>. Their wave effects are <span class="math" data-tex="\(\mathsf W_H\)">\(\mathsf W_H\)</span>, and their final exact defects have exponent <span class="math" data-tex="\(H+0.9\)">\(H+0.9\)</span>. Combining these with the two preceding wave updates gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\text{wave gain}&amp;\ge 0.4-\kappa_s=39999/100000,\\
+\text{full tangential gain}&amp;\ge0.18-\kappa_s=17999/100000,\\
+\text{defect gain}&amp;\ge0.9-2\kappa_s=89998/100000.
+\end{aligned}
+\tag{FC9.12}
+\]">\[
+\begin{aligned}
+\text{wave gain}&amp;\ge 0.4-\kappa_s=39999/100000,\\
+\text{full tangential gain}&amp;\ge0.18-\kappa_s=17999/100000,\\
+\text{defect gain}&amp;\ge0.9-2\kappa_s=89998/100000.
+\end{aligned}
+\tag{FC9.12}
+\]</span>
+<p>The smallest proved gain comes from the cross tensor <span class="math" data-tex="\(\mathscr B(r,t_s)\)">\(\mathscr B(r,t_s)\)</span>. This identifies the limiting estimate in this proof; it does not prove that this tensor is nonzero or saturates its bound for every state, or that no sharper theorem is possible. All three gains exceed the original <span class="math" data-tex="\(1/10\)">\(1/10\)</span>. Keeping the original sequence <span class="math" data-tex="\(\sigma_j=1/5+j/10\)">\(\sigma_j=1/5+j/10\)</span> consequently gives the complete stated iteration without changing any construction.</p>
+<h3 id="exercise-4-why-each-increment-must-use-the-updated-full-field">Exercise 4. Why each increment must use the updated full field</h3>
+<p>Take two fixed, actual increments <span class="math" data-tex="\((s,\pi_s)\)">\((s,\pi_s)\)</span> and <span class="math" data-tex="\((d,\pi_d)\)">\((d,\pi_d)\)</span> at one chart. Derive the difference between applying the exact residual increment twice to the old field and applying it sequentially. Then compute the pressure error made by retaining the old mean pressure after a wave update.</p>
+<p><strong>Solution.</strong> Let</p>
+<span class="math math-display" data-tex="\[
+\mathcal L(d,\pi)=\mathfrak t_*d-\varepsilon\Delta_*d+\nabla_*\pi,
+\quad
+I_U(d,\pi)=\mathcal L(d,\pi)+\mathcal B(U,d)
++\mathcal B(d,U)+\mathcal B(d,d).
+\tag{FC9.13}
+\]">\[
+\mathcal L(d,\pi)=\mathfrak t_*d-\varepsilon\Delta_*d+\nabla_*\pi,
+\quad
+I_U(d,\pi)=\mathcal L(d,\pi)+\mathcal B(U,d)
++\mathcal B(d,U)+\mathcal B(d,d).
+\tag{FC9.13}
+\]</span>
+<p>This is the full exact residual change. Expanding the four occurrences of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_U(s,\pi_s)+I_{U+s}(d,\pi_d)
+&amp;=I_U(s+d,\pi_s+\pi_d),\\
+I_{U+s}(d,\pi_d)-I_U(d,\pi_d)
+&amp;=\mathcal B(s,d)+\mathcal B(d,s).
+\end{aligned}
+\tag{FC9.14}
+\]">\[
+\begin{aligned}
+I_U(s,\pi_s)+I_{U+s}(d,\pi_d)
+&amp;=I_U(s+d,\pi_s+\pi_d),\\
+I_{U+s}(d,\pi_d)-I_U(d,\pi_d)
+&amp;=\mathcal B(s,d)+\mathcal B(d,s).
+\end{aligned}
+\tag{FC9.14}
+\]</span>
+<p>Thus two changes both evaluated at <span class="math" data-tex="\(U\)">\(U\)</span> omit exactly the displayed mixed transport. Every frame term is included in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. For an angularly independent mean <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(s=ae^{ikm\Phi}\)">\(s=ae^{ikm\Phi}\)</span>, its coefficient is explicitly</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal Q_m(d,a)={}&amp;ikm(d^rn_r+d^\theta n_\theta+d^zn_z)a\\
+&amp;+d^rD_ra+d^zD_za+a_rD_rd+a_zD_zd\\
+&amp;+R^{-1}(-2d^\theta a_\theta,
+d^\theta a_r+a_\theta d^r,0).
+\end{aligned}
+\tag{FC9.15}
+\]">\[
+\begin{aligned}
+\mathcal Q_m(d,a)={}&amp;ikm(d^rn_r+d^\theta n_\theta+d^zn_z)a\\
+&amp;+d^rD_ra+d^zD_za+a_rD_rd+a_zD_zd\\
+&amp;+R^{-1}(-2d^\theta a_\theta,
+d^\theta a_r+a_\theta d^r,0).
+\end{aligned}
+\tag{FC9.15}
+\]</span>
+<p>Directly applying the cylindrical transport formula to both terms proves this identity; in particular both radial connection terms remain. If <span class="math" data-tex="\(a\in\mathsf W_{\lambda_w}\)">\(a\in\mathsf W_{\lambda_w}\)</span>, <span class="math" data-tex="\(d^\theta,d^z\in\mathsf M_\mu\)">\(d^\theta,d^z\in\mathsf M_\mu\)</span>, and <span class="math" data-tex="\(d^r\in\mathsf M_{\mu+1}\)">\(d^r\in\mathsf M_{\mu+1}\)</span>, its lowest term has exponent <span class="math" data-tex="\(\lambda_w+\mu-1/2\)">\(\lambda_w+\mu-1/2\)</span>; every other group has at least that exponent by the phase, derivative and weight estimates in NI5. The actual cycle uses this receiver, rather than dropping the mixed terms.</p>
+<p>For the pressure calculation keep the mean velocities fixed, add the full wave <span class="math" data-tex="\(s\)">\(s\)</span>, and use <span class="math" data-tex="\(\Delta W\)">\(\Delta W\)</span> and <span class="math" data-tex="\(\Delta g_r\)">\(\Delta g_r\)</span> from FC1.1–FC1.2. Put</p>
+<span class="math math-display" data-tex="\[
+\Delta\mathcal P=\int\overline{\Delta g_r}\,dR,
+\qquad \Delta p_m=\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{FC9.16}
+\]">\[
+\Delta\mathcal P=\int\overline{\Delta g_r}\,dR,
+\qquad \Delta p_m=\mathsf T_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{FC9.16}
+\]</span>
+<p>The correct change in the radial residual is</p>
+<span class="math math-display" data-tex="\[
+D_r\Delta p_m-\Delta g_r
+=-\rho\Delta\mathcal P
+-\mathcal A_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{FC9.17}
+\]">\[
+D_r\Delta p_m-\Delta g_r
+=-\rho\Delta\mathcal P
+-\mathcal A_0(\Delta g_r-\rho\Delta\mathcal P).
+\tag{FC9.17}
+\]</span>
+<p>Keeping the old pressure would give <span class="math" data-tex="\(-\Delta g_r\)">\(-\Delta g_r\)</span> instead. Its residual differs from the correct one by <span class="math" data-tex="\(-D_r\Delta p_m\)">\(-D_r\Delta p_m\)</span> radially and <span class="math" data-tex="\(-D_z\Delta p_m\)">\(-D_z\Delta p_m\)</span> axially; the azimuthal difference is zero. In physical units this complete difference is</p>
+<span class="math math-display" data-tex="\[
+-\nabla_x(\nu Q^{-2A}\Delta p_m)
+=-\sqrt\nu Q^{-2A-1/2}
+(D_r\Delta p_m,0,D_z\Delta p_m).
+\tag{FC9.18}
+\]">\[
+-\nabla_x(\nu Q^{-2A}\Delta p_m)
+=-\sqrt\nu Q^{-2A-1/2}
+(D_r\Delta p_m,0,D_z\Delta p_m).
+\tag{FC9.18}
+\]</span>
+<p>This calculation retains the cutoff remainder in (FC9.17). It proves the exact role of recomputation; it does not assert that every possible pressure increment is nonzero.</p>
+<h3 id="exercise-5-finite-stages-a-fixed-domain-and-derivative-counts">Exercise 5. Finite stages, a fixed domain, and derivative counts</h3>
+<p>For prescribed coefficient exponents <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>, give a finite stage that supplies wave order <span class="math" data-tex="\(a\)">\(a\)</span>, tangential order <span class="math" data-tex="\(b\)">\(b\)</span>, and defect order <span class="math" data-tex="\(c\)">\(c\)</span>, using the original stage sequence. Explain precisely why increasing that finite stage or a derivative order does not shrink the domain, and why this statement alone is not an infinite sum.</p>
+<p><strong>Solution.</strong> Choose</p>
+<span class="math math-display" data-tex="\[
+j_* =\max\left\{0,
+\left\lceil10(a-7/10)\right\rceil,
+\left\lceil10(b-6/5)\right\rceil,
+\left\lceil10(c-6/5)\right\rceil\right\}.
+\tag{FC9.19}
+\]">\[
+j_* =\max\left\{0,
+\left\lceil10(a-7/10)\right\rceil,
+\left\lceil10(b-6/5)\right\rceil,
+\left\lceil10(c-6/5)\right\rceil\right\}.
+\tag{FC9.19}
+\]</span>
+<p>The initialization gives <span class="math" data-tex="\(B_0=7/10\)">\(B_0=7/10\)</span>, <span class="math" data-tex="\(C_0^*=6/5\)">\(C_0^*=6/5\)</span>. FC7 proves all hypotheses for the next state as well as the gains, so induction gives <span class="math" data-tex="\(B_j=7/10+j/10\)">\(B_j=7/10+j/10\)</span> and <span class="math" data-tex="\(C_j^*=6/5+j/10\)">\(C_j^*=6/5+j/10\)</span> on the same domain. The definition of the ceiling and monotonicity of coefficient classes for <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span> prove all three requested bounds at <span class="math" data-tex="\(j_*\)">\(j_*\)</span>, with the actual finite constants permitted by those classes.</p>
+<p>For a derivative order <span class="math" data-tex="\(m\)">\(m\)</span>, follow the actual finite graph of operations. Along a path from source <span class="math" data-tex="\(a_0\)">\(a_0\)</span> to output <span class="math" data-tex="\(v\)">\(v\)</span>, add the finite input orders <span class="math" data-tex="\(d_{v,w}\)">\(d_{v,w}\)</span> used by its operations. Repeated substitution in FC8.2 gives, for a source with at least one such path,</p>
+<span class="math math-display" data-tex="\[
+D_{v,a_0}(m)
+=m+\max_{a_0\leadsto v}\sum_{(w\to z)\text{ on path}}d_{z,w}.
+\tag{FC9.20}
+\]">\[
+D_{v,a_0}(m)
+=m+\max_{a_0\leadsto v}\sum_{(w\to z)\text{ on path}}d_{z,w}.
+\tag{FC9.20}
+\]</span>
+<p>If no path exists, its sufficient order is zero. To prove the formula, it is true at the source; at each next vertex, taking the maximum over its incoming edges concatenates each source path with that final edge. This induction is valid because the graph is finite and acyclic. A request for a particular flat-error power inserts only the finite number of integrations by parts specified in RP5–RP6; those extra derivative counts are included before applying (FC9.20).</p>
+<p>For example <span class="math" data-tex="\(N_i^{-1}D_rf\)">\(N_i^{-1}D_rf\)</span> uses one derivative for <span class="math" data-tex="\(D_r\)">\(D_r\)</span> and four more in the displayed torus-inverse estimate, so order <span class="math" data-tex="\(m+5\)">\(m+5\)</span> of <span class="math" data-tex="\(f\)">\(f\)</span> suffices, with the fixed coefficients differentiated through the needed finite orders. There is one explicit <span class="math" data-tex="\(D_r\)">\(D_r\)</span>, hence one possible loss <span class="math" data-tex="\(\kappa_s\)">\(\kappa_s\)</span> in its exponent. Asking for more coefficient derivatives changes the finite derivative count and its constants; it does not repeat that loss once per derivative.</p>
+<p>FC8 fixes <span class="math" data-tex="\(q_{\rm big}\)">\(q_{\rm big}\)</span> using only the already constructed base, pulse denominators, primary covariance and fixed mean profiles. Every subsequent inverse is defined for arbitrary finite source size. Harmonic differentiation changes constants, and the exact forward damping factor in FC8.1 permits the same threshold for every nonzero harmonic. No later operation divides by an accumulated amplitude. The weighted edge estimates of CS2 retain their weights on this fixed domain. These facts prove the same <span class="math" data-tex="\(q_{\rm big}&gt;0\)">\(q_{\rm big}&gt;0\)</span> works for <span class="math" data-tex="\(j_*\)">\(j_*\)</span> and every fixed derivative order.</p>
+<p>This is a sequence of finite states with stage-dependent constants. It does not provide a summable majorant in <span class="math" data-tex="\(j\)">\(j\)</span>, and (FC9.19) does not imply convergence of the uncut series. The summation lesson constructs the required cutoffs at the level of potentials and proves its full nonlinear remainder estimate. The following <a href="../src/constructing-the-actual-local-field.md">physical construction lesson</a> supplies the stage-independent loss for physical derivatives and the actual inputs to that construction.</p>
+<h2 id="sources-and-exact-scope">Sources and exact scope</h2>
+<p>OpenAI, <em>Finite Time Blowup for Navier–Stokes</em>, <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">original 166-page paper</a>, SHA-256 0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f. The source passages are on pages 100–112. Section 9.1 gives the full curl residual and interactions; Proposition 9.3 gives finite-stage closure; Definition 9.4 and Propositions 9.5–9.6 give the state, initialization and complete cycle; Lemma 9.7 gives the common domain. The opening potential identities (9.15) on page 112 introduce the following physical-realization step.</p>
+<p>The supplying <a href="source-containment-audit.html">source-containment derivation</a>, S1–S5, and <a href="correction-cycle-audit.html">complete cycle derivation</a>, K0–K8, supply the corresponding arguments. The <a href="wave-interaction-audit.html">wave derivation</a>, W1–W8, supplies the exact cylindrical interactions. CS1–CS5 and FC0–FC9 retain every term needed for the finite construction. FC9.7–FC9.9 give an explicit finite harmonic bound, and FC9.13–FC9.18 give the exact update and pressure comparisons; no novelty is claimed.</p>
+<p>This lesson completes the finite-state part of N6. The <a href="../src/summing-the-correction-fields.md">summation lesson</a> proves the potential-summation mechanism. The <a href="../src/constructing-the-actual-local-field.md">physical construction lesson</a> supplies its actual physical inputs, derivative losses, endpoint extensions and preserved inner/exterior fields. The <a href="theorem-audit-conclusion.html">whole-theorem audit</a> contains those supplying arguments and identifies the exact mathematical statements. Together, N6.1–N6.3 give the complete correction cycle and local-field construction.</p>
+</article></body></html>

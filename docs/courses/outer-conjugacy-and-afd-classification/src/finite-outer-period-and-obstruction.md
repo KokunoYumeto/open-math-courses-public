@@ -168,7 +168,7 @@ R=\overline{\bigotimes_{v\geq1}}(M_{n_v},\operatorname{tr}_{n_v}),
 \qquad
 a=\bigotimes_{v\geq1}\operatorname{Ad}c_v,
 \]
-let \(c_v\) be the cyclic shift on the \(v\)-th coordinate. The product is the hyperfinite II₁ factor by the tracial product construction and [finite AFD uniqueness theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/hyperfinite-finite-factors.html#theorem-5-1). The coordinate automorphisms preserve the product trace. Their action on the algebraic finite tensor union therefore extends by its trace-GNS unitary to a normal automorphism \(a\), with inverse given by the inverse coordinate actions.
+let \(c_v\) be the cyclic shift on the \(v\)-th coordinate. The product is the hyperfinite II₁ factor by the [tracial product construction](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/infinite-tensor-products.html) and [finite AFD uniqueness theorem](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-APPROX/hyperfinite-finite-factors.html#theorem-5-1). The coordinate automorphisms preserve the product trace. Their action on the algebraic finite tensor union therefore extends by its trace-GNS unitary to a normal automorphism \(a\), with inverse given by the inverse coordinate actions.
 
 **Aperiodicity of the model.** Every nonzero power of \(a\) is outer.
 

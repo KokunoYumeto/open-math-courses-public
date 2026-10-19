@@ -66,7 +66,7 @@ Constructibility, sheaf operations and microlocal geometry. Each reading include
 - SH02-MC — Categories and operations in one cotangent direction · [source](src/SH02/microlocal-categories.md)
 - [SH02-FTE-UNIT. Transposing the complete Fourier trace comparison](SH02-fourier-transpose-endpoint.html) · [source](src/SH02/fourier-transpose-endpoint.md)
 - SH02-PREREQ-OPEN — Open prerequisites and exact import contracts · [source](src/SH02/open-prerequisites.md)
-- SH02-CA — Extending sections on convex sets · source
+- [SH02-CA — Extending sections on convex sets](SH02-convex-acyclicity.html) · [source](src/SH02/convex-acyclicity.md)
 - [Transport along a scaling action](SH02-conic-descent.html) · [source](src/SH02/conic-descent.md)
 - SH02-FSB — Formal stabilization over arbitrary neighborhood sets · [source](src/SH02/formal-system-bridge.md)
 - [Fourier kernels as radial averaging](SH02-fourier-sato.html) · [source](src/SH02/fourier-sato.md)

@@ -443,4 +443,4 @@ Along \(\rho_j=\tfrac32(3\pi/4+2\pi j)\), the sine equals one. Thus (5.6) is not
 - AN-03, *Euclidean symbol calculus*: [complete E23 proof](bounded-derivative-operators.md), with its programme credit; [complete support-preserving sum K1](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md), the earlier E6 contract.
 - Exact source identities are recorded in source provenance. The original numerical diagram retains its DejaVu font notice.
 
-*Original lesson, ten solutions and numerical illustration: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration and exact programme prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. The separate AN-03 proof extract carries its own CC0 dedication; fonts and linked components retain their own rights. No book text or file is included.*
+*Original lesson, ten solutions and numerical illustration: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. The separate AN-03 proof extract carries its own CC0 dedication; fonts and linked components retain their own rights. *

@@ -2,8 +2,10 @@
 
 Read [the companion](volume-boundary-parametrix.html) or edit [its source](volume-boundary-parametrix.md). The proof constructs the full volume and boundary data parametrix on the actual coefficient cylinder, proves all five error estimates and returns to the original collar with every normal cutoff term retained.
 
-The proof map connects 18 new entries to 481 exact earlier proofs. Four full calculations include an explicit Dirichlet Green kernel, noncommuting finite errors and the far tangential input. All four finite check groups pass. All 297 formulas and 29 numbered displays render; eleven desktop captures, the figure and two mobile samples were inspected, and every mobile formula extent was measured.
+Worked calculations include a Dirichlet Green kernel, noncommuting finite errors and the far tangential input.
 
-Run `python -B check_models.py` and `python -B figures/build_figure.py` to reproduce the finite checks and figure. These checks supplement the complete general proofs in the source.
+The prerequisite proof index gives the exact earlier results used in the arguments.
 
-This independent exposition is CC0. Existing linked components retain their own terms. Approved Hörmander III and the AN-03 source comparison are credited. The low-regularity microlocal boundary theorem and final U051 receiving proof remain unfinished. 
+[Computational examples](check_models.py) · [Editable figure source](figures/build_figure.py).
+
+The independent exposition is CC0-1.0; linked components retain their own terms.

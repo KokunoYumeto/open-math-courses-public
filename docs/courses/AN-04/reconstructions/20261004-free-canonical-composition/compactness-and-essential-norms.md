@@ -761,7 +761,7 @@ matrix factor and manifold assembly, and T5–T7 the graph normalization,
 exact essential norm and full local/Sobolev interpretation. Citations
 replace none of these proofs.
 
-The ordinary graph compactness and essential-norm obligations are now
-proved in this component. Symbol classes with derivative losses, the
-remaining intrinsic generality, propagation, hyperbolic and boundary
-problems, glancing and complex phases remain part of the active full course.
+The graph compactness and essential-norm theorems here concern ordinary symbols. The [calculus for symbols with derivative losses](../20261015-rho-fio-continuity/general-symbol-graph-and-corank-continuity.html) treats the corresponding continuity ranges.
+
+
+

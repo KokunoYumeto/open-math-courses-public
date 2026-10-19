@@ -211,7 +211,7 @@ No triangulation-existence theorem is hidden in this lemma: the compatible finit
 The main proof below uses supported real tests and finite sums. The stronger critical-support argument later in the lesson is retained as an alternative; its full vanishing-cycle comparison and nonisolated analytic theorem are not prerequisites of the main proof. The four inputs below are supplied by these lessons, with their exact external theorem statements and coefficient ranges kept visible:
 
 - [Analytic geometry for finite maps](../finite-map-analytic-geometry.html#sh02-fag-unit-analytic-geometry-for-finite-maps) supplies compatible strata, finite analytic images and closed conormals.
-- Normal Morse data and change of coefficients supplies the finite normal pairs, their stabilization and the coefficient comparison.
+- [Normal Morse data and change of coefficients](../normal-morse-coefficients.html#SH02-NMC-UNIT) supplies the finite normal pairs, their stabilization and the coefficient comparison.
 - [Perverse degrees and normal Morse complexes](../perverse-normal-morse-inputs.html#sh02-pnm-unit-perverse-degrees-and-normal-morse-complexes) supplies the field-perverse degree and normal-Morse exactness.
 - [An isolated holomorphic test and its Morse filtration](../isolated-holomorphic-morse-tests.html#sh02-ihm-unit-an-isolated-holomorphic-test-and-its-morse-filtration) supplies the controlled cluster, actual relative filtration and positive integer count.
 

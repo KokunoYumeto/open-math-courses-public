@@ -2,9 +2,11 @@
 
 The real-cutoff energy proof uses a cancellation that fails for a complex cutoff. We isolate the surviving operator term and prove that its principal symbol can be absorbed by the favorable imaginary symbol with exactly the weak Sobolev order in the printed estimate. The geometric estimate is sharp on shrinking supports. An operator positivity step is necessary; [the adaptive-root companion](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html) supplies it. A pointwise inequality is not substituted for that step.
 
-The antecedent is Hörmander IV, Proposition 26.6.1′ and its proof, printed page 120 of the admitted 2009 edition. The printed statement does not repeat the real-valued assumption used in the preceding proof. Our [real-cutoff lesson](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) proves that case with the actual measured data. This companion proves the local derivative estimate, the exact complex commutator reduction and the pointwise absorption bound. Its geometric estimates are inputs to [the unrestricted complex-cutoff proof](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html).
+The antecedent is Hörmander IV, Proposition 26.6.1′ and its proof, printed page 120 of the 2009 edition. The printed statement does not repeat the real-valued assumption used in the preceding proof. Our [real-cutoff lesson](../20261011-shrinking-cutoff-energy/shrinking-cutoffs-and-left-regularized-energy.html) proves that case with the actual measured data. This companion proves the local derivative estimate, the exact complex commutator reduction and the pointwise absorption bound. Its geometric estimates are inputs to [the unrestricted complex-cutoff proof](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html).
 
-The proof map pins the earlier metric calculus, operator bounds, real-cutoff argument and elementary Taylor proofs. Original expression, exercises and figure are CC0-1.0. ## 1. Keep the exact shrinking-support hypotheses
+The proof map pins the earlier metric calculus, operator bounds, real-cutoff argument and elementary Taylor proofs. Original expression, exercises and figure are CC0-1.0. The human foundations are external readings linked by the proof map.
+
+## 1. Keep the exact shrinking-support hypotheses
 
 **H0. Symbols, sign and the weak order.** Put \(x=(t,y)\), \(\xi=(\tau,\eta)\), \(w=\langle\xi\rangle\), and
 

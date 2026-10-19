@@ -589,12 +589,12 @@ Sections 5.13.5–5.14, 7.8 and 8.4.1, and Hörmander,
 [*Fourier integral operators. I*, freely accessible Acta Mathematica
 127 (1971) paper](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
 Section 4.2, especially the density and Maslov comparison on printed
-pages 178–181. Only the identified free editions are mathematical sources.
+pages 178–181. 
 
 Their phase-change arguments are completed here by G1's quadratic
 equivalence proof. G3 handles the clean redundant directions, G4 proves
 the global line map, and G7 derives the excess contribution using the
-actual cokernel pairing. No source text or PDF is redistributed.
-The operator composition theorem, the ordinary-symbol remainder
-estimates and subsequent continuity and propagation theory remain
-unfinished parts of the full course.
+actual cokernel pairing. 
+For the operator composition theorem and ordinary-symbol remainder estimates, see [analytic clean composition](analytic-clean-composition.html). The [Sobolev mapping theorem](fio-sobolev-mapping.html) gives the associated continuity result.
+
+

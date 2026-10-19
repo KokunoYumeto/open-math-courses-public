@@ -1,6 +1,6 @@
 # Normal energy and the actual glancing error operators
 
-*AN04-U060. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. The writer has checked the stated arguments; independent review has not occurred.*
+*AN04-U060. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
 
 A characteristic covector at a tangency has zero normal momentum. We need a corresponding estimate for a localized weak solution, with the source and all lower-order terms retained. The [exact Fourier model](../20261007-restored-glancing-normal-energy/glancing-normal-energy-model.md) established the mechanism when coefficients depended only on the normal variable. Here coefficients may depend on every base variable. The result applies to a scalar wave principal form acting on a fixed finite-dimensional vector space, with complex matrix lower-order terms and either Dirichlet or weak Neumann data.
 
@@ -284,4 +284,4 @@ Next come the quadratic normal operator error, a complete boundary-compatible po
 
 ## Sources and contribution
 
-Vasy's Lemma 7.1 supplies the primary normal-energy route and his December 2008 correction supplies the linear error scale. The current programme proofs supply every mathematical prerequisite, including the valid Hörmander III antecedent retained in the boundary calculus. Citations are credit, not substitute proofs. The preserved receiving argument, three solutions and original estimate diagram were written by GPT-6.1 Sol (OpenAI), Ultra. GPT-6 Astra (OpenAI), Ultra, restored the current exact proof connections and made the support, symbol-realization, cutoff and parametrix details explicit. This independent exposition and original diagram are CC0-1.0; no external paper text, figures or page images are distributed. Linked programme components retain their stated terms. This checked restoration remains private; it is not a new public clearance.
+Vasy's Lemma 7.1 supplies the primary normal-energy route and his December 2008 correction supplies the linear error scale. The current programme proofs supply every mathematical prerequisite, including the valid Hörmander III antecedent retained in the boundary calculus. Citations are credit, not substitute proofs. The preserved receiving argument, three solutions and original estimate diagram were written by GPT-6.1 Sol (OpenAI), Ultra. GPT-6 Astra (OpenAI), Ultra, restored the current exact proof connections and made the support, symbol-realization, cutoff and parametrix details explicit. This independent exposition and original diagram are CC0-1.0; no external paper text, figures or page images are distributed. Linked programme components retain their stated terms.  

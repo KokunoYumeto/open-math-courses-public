@@ -1,6 +1,6 @@
 # Reader sources
 
-This package renders **Artin’s axioms** and **Moduli stacks are algebraic** from their complete editable Markdown and TeX sources. The course archive also contains all twelve lessons, the component and licence records, and the genus-two figure data and drawing sources.
+This package renders **all twelve lessons** from their complete editable Markdown and TeX sources. The course archive also contains all twelve lessons, the component and licence records, and the genus-two figure data and drawing sources.
 
 Use Python 3.11 or later. Install the build dependencies and choose a fresh output directory:
 
@@ -19,7 +19,7 @@ python -m playwright install chromium
 python reader-source/validate_reader.py --site reader-output --report reader-check
 ```
 
-An installed Microsoft Edge browser can be selected with `--channel msedge`. Validation splits each complete reader into ordered heading fragments whose concatenation is exactly the original lesson body. It checks every formula, font loading, browser errors, mobile page width and horizontal access to wide equations. Exact cached fragment checks retain their asset and policy identities and are reported separately from fresh rendering. Temporary HTML fragments are removed after each check. These checks establish reproducibility and rendering behaviour; they do not establish mathematical correctness or independent scholarly review.
+An installed Microsoft Edge browser can be selected with `--channel msedge`. Validation splits each complete reader into ordered heading fragments whose concatenation is exactly the original lesson body. It checks every formula, font loading, browser errors, mobile page width and horizontal access to wide equations. Exact cached fragment checks retain their asset and policy identities and are reported separately from fresh rendering. Temporary HTML fragments are removed after each check. 
 
 The source archive includes the exact MathJax runtime, fonts and notices. A repository checkout can instead use the same hash-bound shared files in `docs/assets/`. Course CSS and JavaScript accompany the sources. Cross-course theorem links require the corresponding companion courses in the collection for offline navigation.
 

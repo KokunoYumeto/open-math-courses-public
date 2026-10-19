@@ -18,7 +18,7 @@ C=Z(A)\cong Z(S).
 
 The finite measure \(\nu\) on this center is \(\nu(z)=\operatorname{Tr}(ez)\); thus \(\nu(1)=1\). Center functions and their smaller-core labels are identified through the full corner, as in 52.2. No assumption that \(C\) commutes with \(M\) is made.
 
-The distinction between variable and constant multiplicity is substantive. IRG.1–IRG.3 proves an actual index-ten affine obstruction to constant central multiplicity, even approximate one-level profiles, after every matrix deletion of one fixed core. The variable integer rounding proved here retains the whole projection and remains valid. The obstruction does not settle the different BF quantifier that allows a new ordinary tunnel after the physical targets are specified.
+The distinction between variable and constant multiplicity is substantive. [IRG.1–IRG.3](general-tail-supports-and-controlled-tunnels.md#scalar-central-multiplicity-and-the-affine-obstruction) proves an actual index-ten affine obstruction to constant central multiplicity, even approximate one-level profiles, after every matrix deletion of one fixed core. The variable integer rounding proved here retains the whole projection and remains valid. The obstruction does not settle the different BF quantifier that allows a new ordinary tunnel after the physical targets are specified.
 
 ## Global rounding does not require selecting a spectral bin
 
